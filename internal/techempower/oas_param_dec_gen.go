@@ -63,10 +63,13 @@ var (
 )
 
 func decodeCachingParams(args map[string]string, r *http.Request) (CachingParams, error) {
-	var params CachingParams
+	var (
+		params    CachingParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode query: count.
 	{
-		values, ok := r.URL.Query()["count"]
+		values, ok := queryArgs["count"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -98,10 +101,13 @@ func decodeCachingParams(args map[string]string, r *http.Request) (CachingParams
 }
 
 func decodeQueriesParams(args map[string]string, r *http.Request) (QueriesParams, error) {
-	var params QueriesParams
+	var (
+		params    QueriesParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode query: queries.
 	{
-		values, ok := r.URL.Query()["queries"]
+		values, ok := queryArgs["queries"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -133,10 +139,13 @@ func decodeQueriesParams(args map[string]string, r *http.Request) (QueriesParams
 }
 
 func decodeUpdatesParams(args map[string]string, r *http.Request) (UpdatesParams, error) {
-	var params UpdatesParams
+	var (
+		params    UpdatesParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode query: queries.
 	{
-		values, ok := r.URL.Query()["queries"]
+		values, ok := queryArgs["queries"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,

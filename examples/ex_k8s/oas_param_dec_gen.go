@@ -63,10 +63,13 @@ var (
 )
 
 func decodeListAdmissionregistrationV1MutatingWebhookConfigurationParams(args map[string]string, r *http.Request) (ListAdmissionregistrationV1MutatingWebhookConfigurationParams, error) {
-	var params ListAdmissionregistrationV1MutatingWebhookConfigurationParams
+	var (
+		params    ListAdmissionregistrationV1MutatingWebhookConfigurationParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode query: allowWatchBookmarks.
 	{
-		values, ok := r.URL.Query()["allowWatchBookmarks"]
+		values, ok := queryArgs["allowWatchBookmarks"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -101,7 +104,7 @@ func decodeListAdmissionregistrationV1MutatingWebhookConfigurationParams(args ma
 	}
 	// Decode query: continue.
 	{
-		values, ok := r.URL.Query()["continue"]
+		values, ok := queryArgs["continue"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -136,7 +139,7 @@ func decodeListAdmissionregistrationV1MutatingWebhookConfigurationParams(args ma
 	}
 	// Decode query: fieldSelector.
 	{
-		values, ok := r.URL.Query()["fieldSelector"]
+		values, ok := queryArgs["fieldSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -171,7 +174,7 @@ func decodeListAdmissionregistrationV1MutatingWebhookConfigurationParams(args ma
 	}
 	// Decode query: labelSelector.
 	{
-		values, ok := r.URL.Query()["labelSelector"]
+		values, ok := queryArgs["labelSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -206,7 +209,7 @@ func decodeListAdmissionregistrationV1MutatingWebhookConfigurationParams(args ma
 	}
 	// Decode query: limit.
 	{
-		values, ok := r.URL.Query()["limit"]
+		values, ok := queryArgs["limit"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -241,7 +244,7 @@ func decodeListAdmissionregistrationV1MutatingWebhookConfigurationParams(args ma
 	}
 	// Decode query: resourceVersion.
 	{
-		values, ok := r.URL.Query()["resourceVersion"]
+		values, ok := queryArgs["resourceVersion"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -276,7 +279,7 @@ func decodeListAdmissionregistrationV1MutatingWebhookConfigurationParams(args ma
 	}
 	// Decode query: resourceVersionMatch.
 	{
-		values, ok := r.URL.Query()["resourceVersionMatch"]
+		values, ok := queryArgs["resourceVersionMatch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -311,7 +314,7 @@ func decodeListAdmissionregistrationV1MutatingWebhookConfigurationParams(args ma
 	}
 	// Decode query: timeoutSeconds.
 	{
-		values, ok := r.URL.Query()["timeoutSeconds"]
+		values, ok := queryArgs["timeoutSeconds"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -346,7 +349,7 @@ func decodeListAdmissionregistrationV1MutatingWebhookConfigurationParams(args ma
 	}
 	// Decode query: watch.
 	{
-		values, ok := r.URL.Query()["watch"]
+		values, ok := queryArgs["watch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -381,7 +384,7 @@ func decodeListAdmissionregistrationV1MutatingWebhookConfigurationParams(args ma
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -418,10 +421,13 @@ func decodeListAdmissionregistrationV1MutatingWebhookConfigurationParams(args ma
 }
 
 func decodeListAdmissionregistrationV1ValidatingWebhookConfigurationParams(args map[string]string, r *http.Request) (ListAdmissionregistrationV1ValidatingWebhookConfigurationParams, error) {
-	var params ListAdmissionregistrationV1ValidatingWebhookConfigurationParams
+	var (
+		params    ListAdmissionregistrationV1ValidatingWebhookConfigurationParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode query: allowWatchBookmarks.
 	{
-		values, ok := r.URL.Query()["allowWatchBookmarks"]
+		values, ok := queryArgs["allowWatchBookmarks"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -456,7 +462,7 @@ func decodeListAdmissionregistrationV1ValidatingWebhookConfigurationParams(args 
 	}
 	// Decode query: continue.
 	{
-		values, ok := r.URL.Query()["continue"]
+		values, ok := queryArgs["continue"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -491,7 +497,7 @@ func decodeListAdmissionregistrationV1ValidatingWebhookConfigurationParams(args 
 	}
 	// Decode query: fieldSelector.
 	{
-		values, ok := r.URL.Query()["fieldSelector"]
+		values, ok := queryArgs["fieldSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -526,7 +532,7 @@ func decodeListAdmissionregistrationV1ValidatingWebhookConfigurationParams(args 
 	}
 	// Decode query: labelSelector.
 	{
-		values, ok := r.URL.Query()["labelSelector"]
+		values, ok := queryArgs["labelSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -561,7 +567,7 @@ func decodeListAdmissionregistrationV1ValidatingWebhookConfigurationParams(args 
 	}
 	// Decode query: limit.
 	{
-		values, ok := r.URL.Query()["limit"]
+		values, ok := queryArgs["limit"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -596,7 +602,7 @@ func decodeListAdmissionregistrationV1ValidatingWebhookConfigurationParams(args 
 	}
 	// Decode query: resourceVersion.
 	{
-		values, ok := r.URL.Query()["resourceVersion"]
+		values, ok := queryArgs["resourceVersion"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -631,7 +637,7 @@ func decodeListAdmissionregistrationV1ValidatingWebhookConfigurationParams(args 
 	}
 	// Decode query: resourceVersionMatch.
 	{
-		values, ok := r.URL.Query()["resourceVersionMatch"]
+		values, ok := queryArgs["resourceVersionMatch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -666,7 +672,7 @@ func decodeListAdmissionregistrationV1ValidatingWebhookConfigurationParams(args 
 	}
 	// Decode query: timeoutSeconds.
 	{
-		values, ok := r.URL.Query()["timeoutSeconds"]
+		values, ok := queryArgs["timeoutSeconds"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -701,7 +707,7 @@ func decodeListAdmissionregistrationV1ValidatingWebhookConfigurationParams(args 
 	}
 	// Decode query: watch.
 	{
-		values, ok := r.URL.Query()["watch"]
+		values, ok := queryArgs["watch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -736,7 +742,7 @@ func decodeListAdmissionregistrationV1ValidatingWebhookConfigurationParams(args 
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -773,10 +779,13 @@ func decodeListAdmissionregistrationV1ValidatingWebhookConfigurationParams(args 
 }
 
 func decodeListApiextensionsV1CustomResourceDefinitionParams(args map[string]string, r *http.Request) (ListApiextensionsV1CustomResourceDefinitionParams, error) {
-	var params ListApiextensionsV1CustomResourceDefinitionParams
+	var (
+		params    ListApiextensionsV1CustomResourceDefinitionParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode query: allowWatchBookmarks.
 	{
-		values, ok := r.URL.Query()["allowWatchBookmarks"]
+		values, ok := queryArgs["allowWatchBookmarks"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -811,7 +820,7 @@ func decodeListApiextensionsV1CustomResourceDefinitionParams(args map[string]str
 	}
 	// Decode query: continue.
 	{
-		values, ok := r.URL.Query()["continue"]
+		values, ok := queryArgs["continue"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -846,7 +855,7 @@ func decodeListApiextensionsV1CustomResourceDefinitionParams(args map[string]str
 	}
 	// Decode query: fieldSelector.
 	{
-		values, ok := r.URL.Query()["fieldSelector"]
+		values, ok := queryArgs["fieldSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -881,7 +890,7 @@ func decodeListApiextensionsV1CustomResourceDefinitionParams(args map[string]str
 	}
 	// Decode query: labelSelector.
 	{
-		values, ok := r.URL.Query()["labelSelector"]
+		values, ok := queryArgs["labelSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -916,7 +925,7 @@ func decodeListApiextensionsV1CustomResourceDefinitionParams(args map[string]str
 	}
 	// Decode query: limit.
 	{
-		values, ok := r.URL.Query()["limit"]
+		values, ok := queryArgs["limit"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -951,7 +960,7 @@ func decodeListApiextensionsV1CustomResourceDefinitionParams(args map[string]str
 	}
 	// Decode query: resourceVersion.
 	{
-		values, ok := r.URL.Query()["resourceVersion"]
+		values, ok := queryArgs["resourceVersion"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -986,7 +995,7 @@ func decodeListApiextensionsV1CustomResourceDefinitionParams(args map[string]str
 	}
 	// Decode query: resourceVersionMatch.
 	{
-		values, ok := r.URL.Query()["resourceVersionMatch"]
+		values, ok := queryArgs["resourceVersionMatch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -1021,7 +1030,7 @@ func decodeListApiextensionsV1CustomResourceDefinitionParams(args map[string]str
 	}
 	// Decode query: timeoutSeconds.
 	{
-		values, ok := r.URL.Query()["timeoutSeconds"]
+		values, ok := queryArgs["timeoutSeconds"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -1056,7 +1065,7 @@ func decodeListApiextensionsV1CustomResourceDefinitionParams(args map[string]str
 	}
 	// Decode query: watch.
 	{
-		values, ok := r.URL.Query()["watch"]
+		values, ok := queryArgs["watch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -1091,7 +1100,7 @@ func decodeListApiextensionsV1CustomResourceDefinitionParams(args map[string]str
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -1128,10 +1137,13 @@ func decodeListApiextensionsV1CustomResourceDefinitionParams(args map[string]str
 }
 
 func decodeListApiregistrationV1APIServiceParams(args map[string]string, r *http.Request) (ListApiregistrationV1APIServiceParams, error) {
-	var params ListApiregistrationV1APIServiceParams
+	var (
+		params    ListApiregistrationV1APIServiceParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode query: allowWatchBookmarks.
 	{
-		values, ok := r.URL.Query()["allowWatchBookmarks"]
+		values, ok := queryArgs["allowWatchBookmarks"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -1166,7 +1178,7 @@ func decodeListApiregistrationV1APIServiceParams(args map[string]string, r *http
 	}
 	// Decode query: continue.
 	{
-		values, ok := r.URL.Query()["continue"]
+		values, ok := queryArgs["continue"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -1201,7 +1213,7 @@ func decodeListApiregistrationV1APIServiceParams(args map[string]string, r *http
 	}
 	// Decode query: fieldSelector.
 	{
-		values, ok := r.URL.Query()["fieldSelector"]
+		values, ok := queryArgs["fieldSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -1236,7 +1248,7 @@ func decodeListApiregistrationV1APIServiceParams(args map[string]string, r *http
 	}
 	// Decode query: labelSelector.
 	{
-		values, ok := r.URL.Query()["labelSelector"]
+		values, ok := queryArgs["labelSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -1271,7 +1283,7 @@ func decodeListApiregistrationV1APIServiceParams(args map[string]string, r *http
 	}
 	// Decode query: limit.
 	{
-		values, ok := r.URL.Query()["limit"]
+		values, ok := queryArgs["limit"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -1306,7 +1318,7 @@ func decodeListApiregistrationV1APIServiceParams(args map[string]string, r *http
 	}
 	// Decode query: resourceVersion.
 	{
-		values, ok := r.URL.Query()["resourceVersion"]
+		values, ok := queryArgs["resourceVersion"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -1341,7 +1353,7 @@ func decodeListApiregistrationV1APIServiceParams(args map[string]string, r *http
 	}
 	// Decode query: resourceVersionMatch.
 	{
-		values, ok := r.URL.Query()["resourceVersionMatch"]
+		values, ok := queryArgs["resourceVersionMatch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -1376,7 +1388,7 @@ func decodeListApiregistrationV1APIServiceParams(args map[string]string, r *http
 	}
 	// Decode query: timeoutSeconds.
 	{
-		values, ok := r.URL.Query()["timeoutSeconds"]
+		values, ok := queryArgs["timeoutSeconds"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -1411,7 +1423,7 @@ func decodeListApiregistrationV1APIServiceParams(args map[string]string, r *http
 	}
 	// Decode query: watch.
 	{
-		values, ok := r.URL.Query()["watch"]
+		values, ok := queryArgs["watch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -1446,7 +1458,7 @@ func decodeListApiregistrationV1APIServiceParams(args map[string]string, r *http
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -1483,10 +1495,13 @@ func decodeListApiregistrationV1APIServiceParams(args map[string]string, r *http
 }
 
 func decodeListAppsV1ControllerRevisionForAllNamespacesParams(args map[string]string, r *http.Request) (ListAppsV1ControllerRevisionForAllNamespacesParams, error) {
-	var params ListAppsV1ControllerRevisionForAllNamespacesParams
+	var (
+		params    ListAppsV1ControllerRevisionForAllNamespacesParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode query: allowWatchBookmarks.
 	{
-		values, ok := r.URL.Query()["allowWatchBookmarks"]
+		values, ok := queryArgs["allowWatchBookmarks"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -1521,7 +1536,7 @@ func decodeListAppsV1ControllerRevisionForAllNamespacesParams(args map[string]st
 	}
 	// Decode query: continue.
 	{
-		values, ok := r.URL.Query()["continue"]
+		values, ok := queryArgs["continue"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -1556,7 +1571,7 @@ func decodeListAppsV1ControllerRevisionForAllNamespacesParams(args map[string]st
 	}
 	// Decode query: fieldSelector.
 	{
-		values, ok := r.URL.Query()["fieldSelector"]
+		values, ok := queryArgs["fieldSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -1591,7 +1606,7 @@ func decodeListAppsV1ControllerRevisionForAllNamespacesParams(args map[string]st
 	}
 	// Decode query: labelSelector.
 	{
-		values, ok := r.URL.Query()["labelSelector"]
+		values, ok := queryArgs["labelSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -1626,7 +1641,7 @@ func decodeListAppsV1ControllerRevisionForAllNamespacesParams(args map[string]st
 	}
 	// Decode query: limit.
 	{
-		values, ok := r.URL.Query()["limit"]
+		values, ok := queryArgs["limit"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -1661,7 +1676,7 @@ func decodeListAppsV1ControllerRevisionForAllNamespacesParams(args map[string]st
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -1696,7 +1711,7 @@ func decodeListAppsV1ControllerRevisionForAllNamespacesParams(args map[string]st
 	}
 	// Decode query: resourceVersion.
 	{
-		values, ok := r.URL.Query()["resourceVersion"]
+		values, ok := queryArgs["resourceVersion"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -1731,7 +1746,7 @@ func decodeListAppsV1ControllerRevisionForAllNamespacesParams(args map[string]st
 	}
 	// Decode query: resourceVersionMatch.
 	{
-		values, ok := r.URL.Query()["resourceVersionMatch"]
+		values, ok := queryArgs["resourceVersionMatch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -1766,7 +1781,7 @@ func decodeListAppsV1ControllerRevisionForAllNamespacesParams(args map[string]st
 	}
 	// Decode query: timeoutSeconds.
 	{
-		values, ok := r.URL.Query()["timeoutSeconds"]
+		values, ok := queryArgs["timeoutSeconds"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -1801,7 +1816,7 @@ func decodeListAppsV1ControllerRevisionForAllNamespacesParams(args map[string]st
 	}
 	// Decode query: watch.
 	{
-		values, ok := r.URL.Query()["watch"]
+		values, ok := queryArgs["watch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -1838,10 +1853,13 @@ func decodeListAppsV1ControllerRevisionForAllNamespacesParams(args map[string]st
 }
 
 func decodeListAppsV1DaemonSetForAllNamespacesParams(args map[string]string, r *http.Request) (ListAppsV1DaemonSetForAllNamespacesParams, error) {
-	var params ListAppsV1DaemonSetForAllNamespacesParams
+	var (
+		params    ListAppsV1DaemonSetForAllNamespacesParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode query: allowWatchBookmarks.
 	{
-		values, ok := r.URL.Query()["allowWatchBookmarks"]
+		values, ok := queryArgs["allowWatchBookmarks"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -1876,7 +1894,7 @@ func decodeListAppsV1DaemonSetForAllNamespacesParams(args map[string]string, r *
 	}
 	// Decode query: continue.
 	{
-		values, ok := r.URL.Query()["continue"]
+		values, ok := queryArgs["continue"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -1911,7 +1929,7 @@ func decodeListAppsV1DaemonSetForAllNamespacesParams(args map[string]string, r *
 	}
 	// Decode query: fieldSelector.
 	{
-		values, ok := r.URL.Query()["fieldSelector"]
+		values, ok := queryArgs["fieldSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -1946,7 +1964,7 @@ func decodeListAppsV1DaemonSetForAllNamespacesParams(args map[string]string, r *
 	}
 	// Decode query: labelSelector.
 	{
-		values, ok := r.URL.Query()["labelSelector"]
+		values, ok := queryArgs["labelSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -1981,7 +1999,7 @@ func decodeListAppsV1DaemonSetForAllNamespacesParams(args map[string]string, r *
 	}
 	// Decode query: limit.
 	{
-		values, ok := r.URL.Query()["limit"]
+		values, ok := queryArgs["limit"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -2016,7 +2034,7 @@ func decodeListAppsV1DaemonSetForAllNamespacesParams(args map[string]string, r *
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -2051,7 +2069,7 @@ func decodeListAppsV1DaemonSetForAllNamespacesParams(args map[string]string, r *
 	}
 	// Decode query: resourceVersion.
 	{
-		values, ok := r.URL.Query()["resourceVersion"]
+		values, ok := queryArgs["resourceVersion"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -2086,7 +2104,7 @@ func decodeListAppsV1DaemonSetForAllNamespacesParams(args map[string]string, r *
 	}
 	// Decode query: resourceVersionMatch.
 	{
-		values, ok := r.URL.Query()["resourceVersionMatch"]
+		values, ok := queryArgs["resourceVersionMatch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -2121,7 +2139,7 @@ func decodeListAppsV1DaemonSetForAllNamespacesParams(args map[string]string, r *
 	}
 	// Decode query: timeoutSeconds.
 	{
-		values, ok := r.URL.Query()["timeoutSeconds"]
+		values, ok := queryArgs["timeoutSeconds"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -2156,7 +2174,7 @@ func decodeListAppsV1DaemonSetForAllNamespacesParams(args map[string]string, r *
 	}
 	// Decode query: watch.
 	{
-		values, ok := r.URL.Query()["watch"]
+		values, ok := queryArgs["watch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -2193,10 +2211,13 @@ func decodeListAppsV1DaemonSetForAllNamespacesParams(args map[string]string, r *
 }
 
 func decodeListAppsV1DeploymentForAllNamespacesParams(args map[string]string, r *http.Request) (ListAppsV1DeploymentForAllNamespacesParams, error) {
-	var params ListAppsV1DeploymentForAllNamespacesParams
+	var (
+		params    ListAppsV1DeploymentForAllNamespacesParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode query: allowWatchBookmarks.
 	{
-		values, ok := r.URL.Query()["allowWatchBookmarks"]
+		values, ok := queryArgs["allowWatchBookmarks"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -2231,7 +2252,7 @@ func decodeListAppsV1DeploymentForAllNamespacesParams(args map[string]string, r 
 	}
 	// Decode query: continue.
 	{
-		values, ok := r.URL.Query()["continue"]
+		values, ok := queryArgs["continue"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -2266,7 +2287,7 @@ func decodeListAppsV1DeploymentForAllNamespacesParams(args map[string]string, r 
 	}
 	// Decode query: fieldSelector.
 	{
-		values, ok := r.URL.Query()["fieldSelector"]
+		values, ok := queryArgs["fieldSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -2301,7 +2322,7 @@ func decodeListAppsV1DeploymentForAllNamespacesParams(args map[string]string, r 
 	}
 	// Decode query: labelSelector.
 	{
-		values, ok := r.URL.Query()["labelSelector"]
+		values, ok := queryArgs["labelSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -2336,7 +2357,7 @@ func decodeListAppsV1DeploymentForAllNamespacesParams(args map[string]string, r 
 	}
 	// Decode query: limit.
 	{
-		values, ok := r.URL.Query()["limit"]
+		values, ok := queryArgs["limit"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -2371,7 +2392,7 @@ func decodeListAppsV1DeploymentForAllNamespacesParams(args map[string]string, r 
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -2406,7 +2427,7 @@ func decodeListAppsV1DeploymentForAllNamespacesParams(args map[string]string, r 
 	}
 	// Decode query: resourceVersion.
 	{
-		values, ok := r.URL.Query()["resourceVersion"]
+		values, ok := queryArgs["resourceVersion"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -2441,7 +2462,7 @@ func decodeListAppsV1DeploymentForAllNamespacesParams(args map[string]string, r 
 	}
 	// Decode query: resourceVersionMatch.
 	{
-		values, ok := r.URL.Query()["resourceVersionMatch"]
+		values, ok := queryArgs["resourceVersionMatch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -2476,7 +2497,7 @@ func decodeListAppsV1DeploymentForAllNamespacesParams(args map[string]string, r 
 	}
 	// Decode query: timeoutSeconds.
 	{
-		values, ok := r.URL.Query()["timeoutSeconds"]
+		values, ok := queryArgs["timeoutSeconds"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -2511,7 +2532,7 @@ func decodeListAppsV1DeploymentForAllNamespacesParams(args map[string]string, r 
 	}
 	// Decode query: watch.
 	{
-		values, ok := r.URL.Query()["watch"]
+		values, ok := queryArgs["watch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -2548,10 +2569,13 @@ func decodeListAppsV1DeploymentForAllNamespacesParams(args map[string]string, r 
 }
 
 func decodeListAppsV1NamespacedControllerRevisionParams(args map[string]string, r *http.Request) (ListAppsV1NamespacedControllerRevisionParams, error) {
-	var params ListAppsV1NamespacedControllerRevisionParams
+	var (
+		params    ListAppsV1NamespacedControllerRevisionParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode query: allowWatchBookmarks.
 	{
-		values, ok := r.URL.Query()["allowWatchBookmarks"]
+		values, ok := queryArgs["allowWatchBookmarks"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -2586,7 +2610,7 @@ func decodeListAppsV1NamespacedControllerRevisionParams(args map[string]string, 
 	}
 	// Decode query: continue.
 	{
-		values, ok := r.URL.Query()["continue"]
+		values, ok := queryArgs["continue"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -2621,7 +2645,7 @@ func decodeListAppsV1NamespacedControllerRevisionParams(args map[string]string, 
 	}
 	// Decode query: fieldSelector.
 	{
-		values, ok := r.URL.Query()["fieldSelector"]
+		values, ok := queryArgs["fieldSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -2656,7 +2680,7 @@ func decodeListAppsV1NamespacedControllerRevisionParams(args map[string]string, 
 	}
 	// Decode query: labelSelector.
 	{
-		values, ok := r.URL.Query()["labelSelector"]
+		values, ok := queryArgs["labelSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -2691,7 +2715,7 @@ func decodeListAppsV1NamespacedControllerRevisionParams(args map[string]string, 
 	}
 	// Decode query: limit.
 	{
-		values, ok := r.URL.Query()["limit"]
+		values, ok := queryArgs["limit"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -2726,7 +2750,7 @@ func decodeListAppsV1NamespacedControllerRevisionParams(args map[string]string, 
 	}
 	// Decode query: resourceVersion.
 	{
-		values, ok := r.URL.Query()["resourceVersion"]
+		values, ok := queryArgs["resourceVersion"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -2761,7 +2785,7 @@ func decodeListAppsV1NamespacedControllerRevisionParams(args map[string]string, 
 	}
 	// Decode query: resourceVersionMatch.
 	{
-		values, ok := r.URL.Query()["resourceVersionMatch"]
+		values, ok := queryArgs["resourceVersionMatch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -2796,7 +2820,7 @@ func decodeListAppsV1NamespacedControllerRevisionParams(args map[string]string, 
 	}
 	// Decode query: timeoutSeconds.
 	{
-		values, ok := r.URL.Query()["timeoutSeconds"]
+		values, ok := queryArgs["timeoutSeconds"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -2831,7 +2855,7 @@ func decodeListAppsV1NamespacedControllerRevisionParams(args map[string]string, 
 	}
 	// Decode query: watch.
 	{
-		values, ok := r.URL.Query()["watch"]
+		values, ok := queryArgs["watch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -2897,7 +2921,7 @@ func decodeListAppsV1NamespacedControllerRevisionParams(args map[string]string, 
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -2934,10 +2958,13 @@ func decodeListAppsV1NamespacedControllerRevisionParams(args map[string]string, 
 }
 
 func decodeListAppsV1NamespacedDaemonSetParams(args map[string]string, r *http.Request) (ListAppsV1NamespacedDaemonSetParams, error) {
-	var params ListAppsV1NamespacedDaemonSetParams
+	var (
+		params    ListAppsV1NamespacedDaemonSetParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode query: allowWatchBookmarks.
 	{
-		values, ok := r.URL.Query()["allowWatchBookmarks"]
+		values, ok := queryArgs["allowWatchBookmarks"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -2972,7 +2999,7 @@ func decodeListAppsV1NamespacedDaemonSetParams(args map[string]string, r *http.R
 	}
 	// Decode query: continue.
 	{
-		values, ok := r.URL.Query()["continue"]
+		values, ok := queryArgs["continue"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -3007,7 +3034,7 @@ func decodeListAppsV1NamespacedDaemonSetParams(args map[string]string, r *http.R
 	}
 	// Decode query: fieldSelector.
 	{
-		values, ok := r.URL.Query()["fieldSelector"]
+		values, ok := queryArgs["fieldSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -3042,7 +3069,7 @@ func decodeListAppsV1NamespacedDaemonSetParams(args map[string]string, r *http.R
 	}
 	// Decode query: labelSelector.
 	{
-		values, ok := r.URL.Query()["labelSelector"]
+		values, ok := queryArgs["labelSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -3077,7 +3104,7 @@ func decodeListAppsV1NamespacedDaemonSetParams(args map[string]string, r *http.R
 	}
 	// Decode query: limit.
 	{
-		values, ok := r.URL.Query()["limit"]
+		values, ok := queryArgs["limit"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -3112,7 +3139,7 @@ func decodeListAppsV1NamespacedDaemonSetParams(args map[string]string, r *http.R
 	}
 	// Decode query: resourceVersion.
 	{
-		values, ok := r.URL.Query()["resourceVersion"]
+		values, ok := queryArgs["resourceVersion"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -3147,7 +3174,7 @@ func decodeListAppsV1NamespacedDaemonSetParams(args map[string]string, r *http.R
 	}
 	// Decode query: resourceVersionMatch.
 	{
-		values, ok := r.URL.Query()["resourceVersionMatch"]
+		values, ok := queryArgs["resourceVersionMatch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -3182,7 +3209,7 @@ func decodeListAppsV1NamespacedDaemonSetParams(args map[string]string, r *http.R
 	}
 	// Decode query: timeoutSeconds.
 	{
-		values, ok := r.URL.Query()["timeoutSeconds"]
+		values, ok := queryArgs["timeoutSeconds"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -3217,7 +3244,7 @@ func decodeListAppsV1NamespacedDaemonSetParams(args map[string]string, r *http.R
 	}
 	// Decode query: watch.
 	{
-		values, ok := r.URL.Query()["watch"]
+		values, ok := queryArgs["watch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -3283,7 +3310,7 @@ func decodeListAppsV1NamespacedDaemonSetParams(args map[string]string, r *http.R
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -3320,10 +3347,13 @@ func decodeListAppsV1NamespacedDaemonSetParams(args map[string]string, r *http.R
 }
 
 func decodeListAppsV1NamespacedDeploymentParams(args map[string]string, r *http.Request) (ListAppsV1NamespacedDeploymentParams, error) {
-	var params ListAppsV1NamespacedDeploymentParams
+	var (
+		params    ListAppsV1NamespacedDeploymentParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode query: allowWatchBookmarks.
 	{
-		values, ok := r.URL.Query()["allowWatchBookmarks"]
+		values, ok := queryArgs["allowWatchBookmarks"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -3358,7 +3388,7 @@ func decodeListAppsV1NamespacedDeploymentParams(args map[string]string, r *http.
 	}
 	// Decode query: continue.
 	{
-		values, ok := r.URL.Query()["continue"]
+		values, ok := queryArgs["continue"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -3393,7 +3423,7 @@ func decodeListAppsV1NamespacedDeploymentParams(args map[string]string, r *http.
 	}
 	// Decode query: fieldSelector.
 	{
-		values, ok := r.URL.Query()["fieldSelector"]
+		values, ok := queryArgs["fieldSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -3428,7 +3458,7 @@ func decodeListAppsV1NamespacedDeploymentParams(args map[string]string, r *http.
 	}
 	// Decode query: labelSelector.
 	{
-		values, ok := r.URL.Query()["labelSelector"]
+		values, ok := queryArgs["labelSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -3463,7 +3493,7 @@ func decodeListAppsV1NamespacedDeploymentParams(args map[string]string, r *http.
 	}
 	// Decode query: limit.
 	{
-		values, ok := r.URL.Query()["limit"]
+		values, ok := queryArgs["limit"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -3498,7 +3528,7 @@ func decodeListAppsV1NamespacedDeploymentParams(args map[string]string, r *http.
 	}
 	// Decode query: resourceVersion.
 	{
-		values, ok := r.URL.Query()["resourceVersion"]
+		values, ok := queryArgs["resourceVersion"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -3533,7 +3563,7 @@ func decodeListAppsV1NamespacedDeploymentParams(args map[string]string, r *http.
 	}
 	// Decode query: resourceVersionMatch.
 	{
-		values, ok := r.URL.Query()["resourceVersionMatch"]
+		values, ok := queryArgs["resourceVersionMatch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -3568,7 +3598,7 @@ func decodeListAppsV1NamespacedDeploymentParams(args map[string]string, r *http.
 	}
 	// Decode query: timeoutSeconds.
 	{
-		values, ok := r.URL.Query()["timeoutSeconds"]
+		values, ok := queryArgs["timeoutSeconds"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -3603,7 +3633,7 @@ func decodeListAppsV1NamespacedDeploymentParams(args map[string]string, r *http.
 	}
 	// Decode query: watch.
 	{
-		values, ok := r.URL.Query()["watch"]
+		values, ok := queryArgs["watch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -3669,7 +3699,7 @@ func decodeListAppsV1NamespacedDeploymentParams(args map[string]string, r *http.
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -3706,10 +3736,13 @@ func decodeListAppsV1NamespacedDeploymentParams(args map[string]string, r *http.
 }
 
 func decodeListAppsV1NamespacedReplicaSetParams(args map[string]string, r *http.Request) (ListAppsV1NamespacedReplicaSetParams, error) {
-	var params ListAppsV1NamespacedReplicaSetParams
+	var (
+		params    ListAppsV1NamespacedReplicaSetParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode query: allowWatchBookmarks.
 	{
-		values, ok := r.URL.Query()["allowWatchBookmarks"]
+		values, ok := queryArgs["allowWatchBookmarks"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -3744,7 +3777,7 @@ func decodeListAppsV1NamespacedReplicaSetParams(args map[string]string, r *http.
 	}
 	// Decode query: continue.
 	{
-		values, ok := r.URL.Query()["continue"]
+		values, ok := queryArgs["continue"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -3779,7 +3812,7 @@ func decodeListAppsV1NamespacedReplicaSetParams(args map[string]string, r *http.
 	}
 	// Decode query: fieldSelector.
 	{
-		values, ok := r.URL.Query()["fieldSelector"]
+		values, ok := queryArgs["fieldSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -3814,7 +3847,7 @@ func decodeListAppsV1NamespacedReplicaSetParams(args map[string]string, r *http.
 	}
 	// Decode query: labelSelector.
 	{
-		values, ok := r.URL.Query()["labelSelector"]
+		values, ok := queryArgs["labelSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -3849,7 +3882,7 @@ func decodeListAppsV1NamespacedReplicaSetParams(args map[string]string, r *http.
 	}
 	// Decode query: limit.
 	{
-		values, ok := r.URL.Query()["limit"]
+		values, ok := queryArgs["limit"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -3884,7 +3917,7 @@ func decodeListAppsV1NamespacedReplicaSetParams(args map[string]string, r *http.
 	}
 	// Decode query: resourceVersion.
 	{
-		values, ok := r.URL.Query()["resourceVersion"]
+		values, ok := queryArgs["resourceVersion"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -3919,7 +3952,7 @@ func decodeListAppsV1NamespacedReplicaSetParams(args map[string]string, r *http.
 	}
 	// Decode query: resourceVersionMatch.
 	{
-		values, ok := r.URL.Query()["resourceVersionMatch"]
+		values, ok := queryArgs["resourceVersionMatch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -3954,7 +3987,7 @@ func decodeListAppsV1NamespacedReplicaSetParams(args map[string]string, r *http.
 	}
 	// Decode query: timeoutSeconds.
 	{
-		values, ok := r.URL.Query()["timeoutSeconds"]
+		values, ok := queryArgs["timeoutSeconds"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -3989,7 +4022,7 @@ func decodeListAppsV1NamespacedReplicaSetParams(args map[string]string, r *http.
 	}
 	// Decode query: watch.
 	{
-		values, ok := r.URL.Query()["watch"]
+		values, ok := queryArgs["watch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -4055,7 +4088,7 @@ func decodeListAppsV1NamespacedReplicaSetParams(args map[string]string, r *http.
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -4092,10 +4125,13 @@ func decodeListAppsV1NamespacedReplicaSetParams(args map[string]string, r *http.
 }
 
 func decodeListAppsV1NamespacedStatefulSetParams(args map[string]string, r *http.Request) (ListAppsV1NamespacedStatefulSetParams, error) {
-	var params ListAppsV1NamespacedStatefulSetParams
+	var (
+		params    ListAppsV1NamespacedStatefulSetParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode query: allowWatchBookmarks.
 	{
-		values, ok := r.URL.Query()["allowWatchBookmarks"]
+		values, ok := queryArgs["allowWatchBookmarks"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -4130,7 +4166,7 @@ func decodeListAppsV1NamespacedStatefulSetParams(args map[string]string, r *http
 	}
 	// Decode query: continue.
 	{
-		values, ok := r.URL.Query()["continue"]
+		values, ok := queryArgs["continue"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -4165,7 +4201,7 @@ func decodeListAppsV1NamespacedStatefulSetParams(args map[string]string, r *http
 	}
 	// Decode query: fieldSelector.
 	{
-		values, ok := r.URL.Query()["fieldSelector"]
+		values, ok := queryArgs["fieldSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -4200,7 +4236,7 @@ func decodeListAppsV1NamespacedStatefulSetParams(args map[string]string, r *http
 	}
 	// Decode query: labelSelector.
 	{
-		values, ok := r.URL.Query()["labelSelector"]
+		values, ok := queryArgs["labelSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -4235,7 +4271,7 @@ func decodeListAppsV1NamespacedStatefulSetParams(args map[string]string, r *http
 	}
 	// Decode query: limit.
 	{
-		values, ok := r.URL.Query()["limit"]
+		values, ok := queryArgs["limit"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -4270,7 +4306,7 @@ func decodeListAppsV1NamespacedStatefulSetParams(args map[string]string, r *http
 	}
 	// Decode query: resourceVersion.
 	{
-		values, ok := r.URL.Query()["resourceVersion"]
+		values, ok := queryArgs["resourceVersion"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -4305,7 +4341,7 @@ func decodeListAppsV1NamespacedStatefulSetParams(args map[string]string, r *http
 	}
 	// Decode query: resourceVersionMatch.
 	{
-		values, ok := r.URL.Query()["resourceVersionMatch"]
+		values, ok := queryArgs["resourceVersionMatch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -4340,7 +4376,7 @@ func decodeListAppsV1NamespacedStatefulSetParams(args map[string]string, r *http
 	}
 	// Decode query: timeoutSeconds.
 	{
-		values, ok := r.URL.Query()["timeoutSeconds"]
+		values, ok := queryArgs["timeoutSeconds"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -4375,7 +4411,7 @@ func decodeListAppsV1NamespacedStatefulSetParams(args map[string]string, r *http
 	}
 	// Decode query: watch.
 	{
-		values, ok := r.URL.Query()["watch"]
+		values, ok := queryArgs["watch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -4441,7 +4477,7 @@ func decodeListAppsV1NamespacedStatefulSetParams(args map[string]string, r *http
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -4478,10 +4514,13 @@ func decodeListAppsV1NamespacedStatefulSetParams(args map[string]string, r *http
 }
 
 func decodeListAppsV1ReplicaSetForAllNamespacesParams(args map[string]string, r *http.Request) (ListAppsV1ReplicaSetForAllNamespacesParams, error) {
-	var params ListAppsV1ReplicaSetForAllNamespacesParams
+	var (
+		params    ListAppsV1ReplicaSetForAllNamespacesParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode query: allowWatchBookmarks.
 	{
-		values, ok := r.URL.Query()["allowWatchBookmarks"]
+		values, ok := queryArgs["allowWatchBookmarks"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -4516,7 +4555,7 @@ func decodeListAppsV1ReplicaSetForAllNamespacesParams(args map[string]string, r 
 	}
 	// Decode query: continue.
 	{
-		values, ok := r.URL.Query()["continue"]
+		values, ok := queryArgs["continue"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -4551,7 +4590,7 @@ func decodeListAppsV1ReplicaSetForAllNamespacesParams(args map[string]string, r 
 	}
 	// Decode query: fieldSelector.
 	{
-		values, ok := r.URL.Query()["fieldSelector"]
+		values, ok := queryArgs["fieldSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -4586,7 +4625,7 @@ func decodeListAppsV1ReplicaSetForAllNamespacesParams(args map[string]string, r 
 	}
 	// Decode query: labelSelector.
 	{
-		values, ok := r.URL.Query()["labelSelector"]
+		values, ok := queryArgs["labelSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -4621,7 +4660,7 @@ func decodeListAppsV1ReplicaSetForAllNamespacesParams(args map[string]string, r 
 	}
 	// Decode query: limit.
 	{
-		values, ok := r.URL.Query()["limit"]
+		values, ok := queryArgs["limit"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -4656,7 +4695,7 @@ func decodeListAppsV1ReplicaSetForAllNamespacesParams(args map[string]string, r 
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -4691,7 +4730,7 @@ func decodeListAppsV1ReplicaSetForAllNamespacesParams(args map[string]string, r 
 	}
 	// Decode query: resourceVersion.
 	{
-		values, ok := r.URL.Query()["resourceVersion"]
+		values, ok := queryArgs["resourceVersion"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -4726,7 +4765,7 @@ func decodeListAppsV1ReplicaSetForAllNamespacesParams(args map[string]string, r 
 	}
 	// Decode query: resourceVersionMatch.
 	{
-		values, ok := r.URL.Query()["resourceVersionMatch"]
+		values, ok := queryArgs["resourceVersionMatch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -4761,7 +4800,7 @@ func decodeListAppsV1ReplicaSetForAllNamespacesParams(args map[string]string, r 
 	}
 	// Decode query: timeoutSeconds.
 	{
-		values, ok := r.URL.Query()["timeoutSeconds"]
+		values, ok := queryArgs["timeoutSeconds"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -4796,7 +4835,7 @@ func decodeListAppsV1ReplicaSetForAllNamespacesParams(args map[string]string, r 
 	}
 	// Decode query: watch.
 	{
-		values, ok := r.URL.Query()["watch"]
+		values, ok := queryArgs["watch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -4833,10 +4872,13 @@ func decodeListAppsV1ReplicaSetForAllNamespacesParams(args map[string]string, r 
 }
 
 func decodeListAppsV1StatefulSetForAllNamespacesParams(args map[string]string, r *http.Request) (ListAppsV1StatefulSetForAllNamespacesParams, error) {
-	var params ListAppsV1StatefulSetForAllNamespacesParams
+	var (
+		params    ListAppsV1StatefulSetForAllNamespacesParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode query: allowWatchBookmarks.
 	{
-		values, ok := r.URL.Query()["allowWatchBookmarks"]
+		values, ok := queryArgs["allowWatchBookmarks"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -4871,7 +4913,7 @@ func decodeListAppsV1StatefulSetForAllNamespacesParams(args map[string]string, r
 	}
 	// Decode query: continue.
 	{
-		values, ok := r.URL.Query()["continue"]
+		values, ok := queryArgs["continue"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -4906,7 +4948,7 @@ func decodeListAppsV1StatefulSetForAllNamespacesParams(args map[string]string, r
 	}
 	// Decode query: fieldSelector.
 	{
-		values, ok := r.URL.Query()["fieldSelector"]
+		values, ok := queryArgs["fieldSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -4941,7 +4983,7 @@ func decodeListAppsV1StatefulSetForAllNamespacesParams(args map[string]string, r
 	}
 	// Decode query: labelSelector.
 	{
-		values, ok := r.URL.Query()["labelSelector"]
+		values, ok := queryArgs["labelSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -4976,7 +5018,7 @@ func decodeListAppsV1StatefulSetForAllNamespacesParams(args map[string]string, r
 	}
 	// Decode query: limit.
 	{
-		values, ok := r.URL.Query()["limit"]
+		values, ok := queryArgs["limit"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -5011,7 +5053,7 @@ func decodeListAppsV1StatefulSetForAllNamespacesParams(args map[string]string, r
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -5046,7 +5088,7 @@ func decodeListAppsV1StatefulSetForAllNamespacesParams(args map[string]string, r
 	}
 	// Decode query: resourceVersion.
 	{
-		values, ok := r.URL.Query()["resourceVersion"]
+		values, ok := queryArgs["resourceVersion"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -5081,7 +5123,7 @@ func decodeListAppsV1StatefulSetForAllNamespacesParams(args map[string]string, r
 	}
 	// Decode query: resourceVersionMatch.
 	{
-		values, ok := r.URL.Query()["resourceVersionMatch"]
+		values, ok := queryArgs["resourceVersionMatch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -5116,7 +5158,7 @@ func decodeListAppsV1StatefulSetForAllNamespacesParams(args map[string]string, r
 	}
 	// Decode query: timeoutSeconds.
 	{
-		values, ok := r.URL.Query()["timeoutSeconds"]
+		values, ok := queryArgs["timeoutSeconds"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -5151,7 +5193,7 @@ func decodeListAppsV1StatefulSetForAllNamespacesParams(args map[string]string, r
 	}
 	// Decode query: watch.
 	{
-		values, ok := r.URL.Query()["watch"]
+		values, ok := queryArgs["watch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -5188,10 +5230,13 @@ func decodeListAppsV1StatefulSetForAllNamespacesParams(args map[string]string, r
 }
 
 func decodeListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesParams(args map[string]string, r *http.Request) (ListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesParams, error) {
-	var params ListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesParams
+	var (
+		params    ListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode query: allowWatchBookmarks.
 	{
-		values, ok := r.URL.Query()["allowWatchBookmarks"]
+		values, ok := queryArgs["allowWatchBookmarks"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -5226,7 +5271,7 @@ func decodeListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesParams(args m
 	}
 	// Decode query: continue.
 	{
-		values, ok := r.URL.Query()["continue"]
+		values, ok := queryArgs["continue"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -5261,7 +5306,7 @@ func decodeListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesParams(args m
 	}
 	// Decode query: fieldSelector.
 	{
-		values, ok := r.URL.Query()["fieldSelector"]
+		values, ok := queryArgs["fieldSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -5296,7 +5341,7 @@ func decodeListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesParams(args m
 	}
 	// Decode query: labelSelector.
 	{
-		values, ok := r.URL.Query()["labelSelector"]
+		values, ok := queryArgs["labelSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -5331,7 +5376,7 @@ func decodeListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesParams(args m
 	}
 	// Decode query: limit.
 	{
-		values, ok := r.URL.Query()["limit"]
+		values, ok := queryArgs["limit"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -5366,7 +5411,7 @@ func decodeListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesParams(args m
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -5401,7 +5446,7 @@ func decodeListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesParams(args m
 	}
 	// Decode query: resourceVersion.
 	{
-		values, ok := r.URL.Query()["resourceVersion"]
+		values, ok := queryArgs["resourceVersion"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -5436,7 +5481,7 @@ func decodeListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesParams(args m
 	}
 	// Decode query: resourceVersionMatch.
 	{
-		values, ok := r.URL.Query()["resourceVersionMatch"]
+		values, ok := queryArgs["resourceVersionMatch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -5471,7 +5516,7 @@ func decodeListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesParams(args m
 	}
 	// Decode query: timeoutSeconds.
 	{
-		values, ok := r.URL.Query()["timeoutSeconds"]
+		values, ok := queryArgs["timeoutSeconds"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -5506,7 +5551,7 @@ func decodeListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesParams(args m
 	}
 	// Decode query: watch.
 	{
-		values, ok := r.URL.Query()["watch"]
+		values, ok := queryArgs["watch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -5543,10 +5588,13 @@ func decodeListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesParams(args m
 }
 
 func decodeListAutoscalingV1NamespacedHorizontalPodAutoscalerParams(args map[string]string, r *http.Request) (ListAutoscalingV1NamespacedHorizontalPodAutoscalerParams, error) {
-	var params ListAutoscalingV1NamespacedHorizontalPodAutoscalerParams
+	var (
+		params    ListAutoscalingV1NamespacedHorizontalPodAutoscalerParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode query: allowWatchBookmarks.
 	{
-		values, ok := r.URL.Query()["allowWatchBookmarks"]
+		values, ok := queryArgs["allowWatchBookmarks"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -5581,7 +5629,7 @@ func decodeListAutoscalingV1NamespacedHorizontalPodAutoscalerParams(args map[str
 	}
 	// Decode query: continue.
 	{
-		values, ok := r.URL.Query()["continue"]
+		values, ok := queryArgs["continue"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -5616,7 +5664,7 @@ func decodeListAutoscalingV1NamespacedHorizontalPodAutoscalerParams(args map[str
 	}
 	// Decode query: fieldSelector.
 	{
-		values, ok := r.URL.Query()["fieldSelector"]
+		values, ok := queryArgs["fieldSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -5651,7 +5699,7 @@ func decodeListAutoscalingV1NamespacedHorizontalPodAutoscalerParams(args map[str
 	}
 	// Decode query: labelSelector.
 	{
-		values, ok := r.URL.Query()["labelSelector"]
+		values, ok := queryArgs["labelSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -5686,7 +5734,7 @@ func decodeListAutoscalingV1NamespacedHorizontalPodAutoscalerParams(args map[str
 	}
 	// Decode query: limit.
 	{
-		values, ok := r.URL.Query()["limit"]
+		values, ok := queryArgs["limit"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -5721,7 +5769,7 @@ func decodeListAutoscalingV1NamespacedHorizontalPodAutoscalerParams(args map[str
 	}
 	// Decode query: resourceVersion.
 	{
-		values, ok := r.URL.Query()["resourceVersion"]
+		values, ok := queryArgs["resourceVersion"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -5756,7 +5804,7 @@ func decodeListAutoscalingV1NamespacedHorizontalPodAutoscalerParams(args map[str
 	}
 	// Decode query: resourceVersionMatch.
 	{
-		values, ok := r.URL.Query()["resourceVersionMatch"]
+		values, ok := queryArgs["resourceVersionMatch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -5791,7 +5839,7 @@ func decodeListAutoscalingV1NamespacedHorizontalPodAutoscalerParams(args map[str
 	}
 	// Decode query: timeoutSeconds.
 	{
-		values, ok := r.URL.Query()["timeoutSeconds"]
+		values, ok := queryArgs["timeoutSeconds"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -5826,7 +5874,7 @@ func decodeListAutoscalingV1NamespacedHorizontalPodAutoscalerParams(args map[str
 	}
 	// Decode query: watch.
 	{
-		values, ok := r.URL.Query()["watch"]
+		values, ok := queryArgs["watch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -5892,7 +5940,7 @@ func decodeListAutoscalingV1NamespacedHorizontalPodAutoscalerParams(args map[str
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -5929,10 +5977,13 @@ func decodeListAutoscalingV1NamespacedHorizontalPodAutoscalerParams(args map[str
 }
 
 func decodeListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespacesParams(args map[string]string, r *http.Request) (ListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespacesParams, error) {
-	var params ListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespacesParams
+	var (
+		params    ListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespacesParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode query: allowWatchBookmarks.
 	{
-		values, ok := r.URL.Query()["allowWatchBookmarks"]
+		values, ok := queryArgs["allowWatchBookmarks"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -5967,7 +6018,7 @@ func decodeListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespacesParams(a
 	}
 	// Decode query: continue.
 	{
-		values, ok := r.URL.Query()["continue"]
+		values, ok := queryArgs["continue"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -6002,7 +6053,7 @@ func decodeListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespacesParams(a
 	}
 	// Decode query: fieldSelector.
 	{
-		values, ok := r.URL.Query()["fieldSelector"]
+		values, ok := queryArgs["fieldSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -6037,7 +6088,7 @@ func decodeListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespacesParams(a
 	}
 	// Decode query: labelSelector.
 	{
-		values, ok := r.URL.Query()["labelSelector"]
+		values, ok := queryArgs["labelSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -6072,7 +6123,7 @@ func decodeListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespacesParams(a
 	}
 	// Decode query: limit.
 	{
-		values, ok := r.URL.Query()["limit"]
+		values, ok := queryArgs["limit"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -6107,7 +6158,7 @@ func decodeListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespacesParams(a
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -6142,7 +6193,7 @@ func decodeListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespacesParams(a
 	}
 	// Decode query: resourceVersion.
 	{
-		values, ok := r.URL.Query()["resourceVersion"]
+		values, ok := queryArgs["resourceVersion"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -6177,7 +6228,7 @@ func decodeListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespacesParams(a
 	}
 	// Decode query: resourceVersionMatch.
 	{
-		values, ok := r.URL.Query()["resourceVersionMatch"]
+		values, ok := queryArgs["resourceVersionMatch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -6212,7 +6263,7 @@ func decodeListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespacesParams(a
 	}
 	// Decode query: timeoutSeconds.
 	{
-		values, ok := r.URL.Query()["timeoutSeconds"]
+		values, ok := queryArgs["timeoutSeconds"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -6247,7 +6298,7 @@ func decodeListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespacesParams(a
 	}
 	// Decode query: watch.
 	{
-		values, ok := r.URL.Query()["watch"]
+		values, ok := queryArgs["watch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -6284,10 +6335,13 @@ func decodeListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespacesParams(a
 }
 
 func decodeListAutoscalingV2beta1NamespacedHorizontalPodAutoscalerParams(args map[string]string, r *http.Request) (ListAutoscalingV2beta1NamespacedHorizontalPodAutoscalerParams, error) {
-	var params ListAutoscalingV2beta1NamespacedHorizontalPodAutoscalerParams
+	var (
+		params    ListAutoscalingV2beta1NamespacedHorizontalPodAutoscalerParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode query: allowWatchBookmarks.
 	{
-		values, ok := r.URL.Query()["allowWatchBookmarks"]
+		values, ok := queryArgs["allowWatchBookmarks"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -6322,7 +6376,7 @@ func decodeListAutoscalingV2beta1NamespacedHorizontalPodAutoscalerParams(args ma
 	}
 	// Decode query: continue.
 	{
-		values, ok := r.URL.Query()["continue"]
+		values, ok := queryArgs["continue"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -6357,7 +6411,7 @@ func decodeListAutoscalingV2beta1NamespacedHorizontalPodAutoscalerParams(args ma
 	}
 	// Decode query: fieldSelector.
 	{
-		values, ok := r.URL.Query()["fieldSelector"]
+		values, ok := queryArgs["fieldSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -6392,7 +6446,7 @@ func decodeListAutoscalingV2beta1NamespacedHorizontalPodAutoscalerParams(args ma
 	}
 	// Decode query: labelSelector.
 	{
-		values, ok := r.URL.Query()["labelSelector"]
+		values, ok := queryArgs["labelSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -6427,7 +6481,7 @@ func decodeListAutoscalingV2beta1NamespacedHorizontalPodAutoscalerParams(args ma
 	}
 	// Decode query: limit.
 	{
-		values, ok := r.URL.Query()["limit"]
+		values, ok := queryArgs["limit"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -6462,7 +6516,7 @@ func decodeListAutoscalingV2beta1NamespacedHorizontalPodAutoscalerParams(args ma
 	}
 	// Decode query: resourceVersion.
 	{
-		values, ok := r.URL.Query()["resourceVersion"]
+		values, ok := queryArgs["resourceVersion"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -6497,7 +6551,7 @@ func decodeListAutoscalingV2beta1NamespacedHorizontalPodAutoscalerParams(args ma
 	}
 	// Decode query: resourceVersionMatch.
 	{
-		values, ok := r.URL.Query()["resourceVersionMatch"]
+		values, ok := queryArgs["resourceVersionMatch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -6532,7 +6586,7 @@ func decodeListAutoscalingV2beta1NamespacedHorizontalPodAutoscalerParams(args ma
 	}
 	// Decode query: timeoutSeconds.
 	{
-		values, ok := r.URL.Query()["timeoutSeconds"]
+		values, ok := queryArgs["timeoutSeconds"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -6567,7 +6621,7 @@ func decodeListAutoscalingV2beta1NamespacedHorizontalPodAutoscalerParams(args ma
 	}
 	// Decode query: watch.
 	{
-		values, ok := r.URL.Query()["watch"]
+		values, ok := queryArgs["watch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -6633,7 +6687,7 @@ func decodeListAutoscalingV2beta1NamespacedHorizontalPodAutoscalerParams(args ma
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -6670,10 +6724,13 @@ func decodeListAutoscalingV2beta1NamespacedHorizontalPodAutoscalerParams(args ma
 }
 
 func decodeListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespacesParams(args map[string]string, r *http.Request) (ListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespacesParams, error) {
-	var params ListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespacesParams
+	var (
+		params    ListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespacesParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode query: allowWatchBookmarks.
 	{
-		values, ok := r.URL.Query()["allowWatchBookmarks"]
+		values, ok := queryArgs["allowWatchBookmarks"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -6708,7 +6765,7 @@ func decodeListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespacesParams(a
 	}
 	// Decode query: continue.
 	{
-		values, ok := r.URL.Query()["continue"]
+		values, ok := queryArgs["continue"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -6743,7 +6800,7 @@ func decodeListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespacesParams(a
 	}
 	// Decode query: fieldSelector.
 	{
-		values, ok := r.URL.Query()["fieldSelector"]
+		values, ok := queryArgs["fieldSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -6778,7 +6835,7 @@ func decodeListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespacesParams(a
 	}
 	// Decode query: labelSelector.
 	{
-		values, ok := r.URL.Query()["labelSelector"]
+		values, ok := queryArgs["labelSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -6813,7 +6870,7 @@ func decodeListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespacesParams(a
 	}
 	// Decode query: limit.
 	{
-		values, ok := r.URL.Query()["limit"]
+		values, ok := queryArgs["limit"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -6848,7 +6905,7 @@ func decodeListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespacesParams(a
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -6883,7 +6940,7 @@ func decodeListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespacesParams(a
 	}
 	// Decode query: resourceVersion.
 	{
-		values, ok := r.URL.Query()["resourceVersion"]
+		values, ok := queryArgs["resourceVersion"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -6918,7 +6975,7 @@ func decodeListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespacesParams(a
 	}
 	// Decode query: resourceVersionMatch.
 	{
-		values, ok := r.URL.Query()["resourceVersionMatch"]
+		values, ok := queryArgs["resourceVersionMatch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -6953,7 +7010,7 @@ func decodeListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespacesParams(a
 	}
 	// Decode query: timeoutSeconds.
 	{
-		values, ok := r.URL.Query()["timeoutSeconds"]
+		values, ok := queryArgs["timeoutSeconds"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -6988,7 +7045,7 @@ func decodeListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespacesParams(a
 	}
 	// Decode query: watch.
 	{
-		values, ok := r.URL.Query()["watch"]
+		values, ok := queryArgs["watch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -7025,10 +7082,13 @@ func decodeListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespacesParams(a
 }
 
 func decodeListAutoscalingV2beta2NamespacedHorizontalPodAutoscalerParams(args map[string]string, r *http.Request) (ListAutoscalingV2beta2NamespacedHorizontalPodAutoscalerParams, error) {
-	var params ListAutoscalingV2beta2NamespacedHorizontalPodAutoscalerParams
+	var (
+		params    ListAutoscalingV2beta2NamespacedHorizontalPodAutoscalerParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode query: allowWatchBookmarks.
 	{
-		values, ok := r.URL.Query()["allowWatchBookmarks"]
+		values, ok := queryArgs["allowWatchBookmarks"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -7063,7 +7123,7 @@ func decodeListAutoscalingV2beta2NamespacedHorizontalPodAutoscalerParams(args ma
 	}
 	// Decode query: continue.
 	{
-		values, ok := r.URL.Query()["continue"]
+		values, ok := queryArgs["continue"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -7098,7 +7158,7 @@ func decodeListAutoscalingV2beta2NamespacedHorizontalPodAutoscalerParams(args ma
 	}
 	// Decode query: fieldSelector.
 	{
-		values, ok := r.URL.Query()["fieldSelector"]
+		values, ok := queryArgs["fieldSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -7133,7 +7193,7 @@ func decodeListAutoscalingV2beta2NamespacedHorizontalPodAutoscalerParams(args ma
 	}
 	// Decode query: labelSelector.
 	{
-		values, ok := r.URL.Query()["labelSelector"]
+		values, ok := queryArgs["labelSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -7168,7 +7228,7 @@ func decodeListAutoscalingV2beta2NamespacedHorizontalPodAutoscalerParams(args ma
 	}
 	// Decode query: limit.
 	{
-		values, ok := r.URL.Query()["limit"]
+		values, ok := queryArgs["limit"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -7203,7 +7263,7 @@ func decodeListAutoscalingV2beta2NamespacedHorizontalPodAutoscalerParams(args ma
 	}
 	// Decode query: resourceVersion.
 	{
-		values, ok := r.URL.Query()["resourceVersion"]
+		values, ok := queryArgs["resourceVersion"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -7238,7 +7298,7 @@ func decodeListAutoscalingV2beta2NamespacedHorizontalPodAutoscalerParams(args ma
 	}
 	// Decode query: resourceVersionMatch.
 	{
-		values, ok := r.URL.Query()["resourceVersionMatch"]
+		values, ok := queryArgs["resourceVersionMatch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -7273,7 +7333,7 @@ func decodeListAutoscalingV2beta2NamespacedHorizontalPodAutoscalerParams(args ma
 	}
 	// Decode query: timeoutSeconds.
 	{
-		values, ok := r.URL.Query()["timeoutSeconds"]
+		values, ok := queryArgs["timeoutSeconds"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -7308,7 +7368,7 @@ func decodeListAutoscalingV2beta2NamespacedHorizontalPodAutoscalerParams(args ma
 	}
 	// Decode query: watch.
 	{
-		values, ok := r.URL.Query()["watch"]
+		values, ok := queryArgs["watch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -7374,7 +7434,7 @@ func decodeListAutoscalingV2beta2NamespacedHorizontalPodAutoscalerParams(args ma
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -7411,10 +7471,13 @@ func decodeListAutoscalingV2beta2NamespacedHorizontalPodAutoscalerParams(args ma
 }
 
 func decodeListBatchV1CronJobForAllNamespacesParams(args map[string]string, r *http.Request) (ListBatchV1CronJobForAllNamespacesParams, error) {
-	var params ListBatchV1CronJobForAllNamespacesParams
+	var (
+		params    ListBatchV1CronJobForAllNamespacesParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode query: allowWatchBookmarks.
 	{
-		values, ok := r.URL.Query()["allowWatchBookmarks"]
+		values, ok := queryArgs["allowWatchBookmarks"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -7449,7 +7512,7 @@ func decodeListBatchV1CronJobForAllNamespacesParams(args map[string]string, r *h
 	}
 	// Decode query: continue.
 	{
-		values, ok := r.URL.Query()["continue"]
+		values, ok := queryArgs["continue"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -7484,7 +7547,7 @@ func decodeListBatchV1CronJobForAllNamespacesParams(args map[string]string, r *h
 	}
 	// Decode query: fieldSelector.
 	{
-		values, ok := r.URL.Query()["fieldSelector"]
+		values, ok := queryArgs["fieldSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -7519,7 +7582,7 @@ func decodeListBatchV1CronJobForAllNamespacesParams(args map[string]string, r *h
 	}
 	// Decode query: labelSelector.
 	{
-		values, ok := r.URL.Query()["labelSelector"]
+		values, ok := queryArgs["labelSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -7554,7 +7617,7 @@ func decodeListBatchV1CronJobForAllNamespacesParams(args map[string]string, r *h
 	}
 	// Decode query: limit.
 	{
-		values, ok := r.URL.Query()["limit"]
+		values, ok := queryArgs["limit"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -7589,7 +7652,7 @@ func decodeListBatchV1CronJobForAllNamespacesParams(args map[string]string, r *h
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -7624,7 +7687,7 @@ func decodeListBatchV1CronJobForAllNamespacesParams(args map[string]string, r *h
 	}
 	// Decode query: resourceVersion.
 	{
-		values, ok := r.URL.Query()["resourceVersion"]
+		values, ok := queryArgs["resourceVersion"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -7659,7 +7722,7 @@ func decodeListBatchV1CronJobForAllNamespacesParams(args map[string]string, r *h
 	}
 	// Decode query: resourceVersionMatch.
 	{
-		values, ok := r.URL.Query()["resourceVersionMatch"]
+		values, ok := queryArgs["resourceVersionMatch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -7694,7 +7757,7 @@ func decodeListBatchV1CronJobForAllNamespacesParams(args map[string]string, r *h
 	}
 	// Decode query: timeoutSeconds.
 	{
-		values, ok := r.URL.Query()["timeoutSeconds"]
+		values, ok := queryArgs["timeoutSeconds"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -7729,7 +7792,7 @@ func decodeListBatchV1CronJobForAllNamespacesParams(args map[string]string, r *h
 	}
 	// Decode query: watch.
 	{
-		values, ok := r.URL.Query()["watch"]
+		values, ok := queryArgs["watch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -7766,10 +7829,13 @@ func decodeListBatchV1CronJobForAllNamespacesParams(args map[string]string, r *h
 }
 
 func decodeListBatchV1JobForAllNamespacesParams(args map[string]string, r *http.Request) (ListBatchV1JobForAllNamespacesParams, error) {
-	var params ListBatchV1JobForAllNamespacesParams
+	var (
+		params    ListBatchV1JobForAllNamespacesParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode query: allowWatchBookmarks.
 	{
-		values, ok := r.URL.Query()["allowWatchBookmarks"]
+		values, ok := queryArgs["allowWatchBookmarks"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -7804,7 +7870,7 @@ func decodeListBatchV1JobForAllNamespacesParams(args map[string]string, r *http.
 	}
 	// Decode query: continue.
 	{
-		values, ok := r.URL.Query()["continue"]
+		values, ok := queryArgs["continue"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -7839,7 +7905,7 @@ func decodeListBatchV1JobForAllNamespacesParams(args map[string]string, r *http.
 	}
 	// Decode query: fieldSelector.
 	{
-		values, ok := r.URL.Query()["fieldSelector"]
+		values, ok := queryArgs["fieldSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -7874,7 +7940,7 @@ func decodeListBatchV1JobForAllNamespacesParams(args map[string]string, r *http.
 	}
 	// Decode query: labelSelector.
 	{
-		values, ok := r.URL.Query()["labelSelector"]
+		values, ok := queryArgs["labelSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -7909,7 +7975,7 @@ func decodeListBatchV1JobForAllNamespacesParams(args map[string]string, r *http.
 	}
 	// Decode query: limit.
 	{
-		values, ok := r.URL.Query()["limit"]
+		values, ok := queryArgs["limit"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -7944,7 +8010,7 @@ func decodeListBatchV1JobForAllNamespacesParams(args map[string]string, r *http.
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -7979,7 +8045,7 @@ func decodeListBatchV1JobForAllNamespacesParams(args map[string]string, r *http.
 	}
 	// Decode query: resourceVersion.
 	{
-		values, ok := r.URL.Query()["resourceVersion"]
+		values, ok := queryArgs["resourceVersion"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -8014,7 +8080,7 @@ func decodeListBatchV1JobForAllNamespacesParams(args map[string]string, r *http.
 	}
 	// Decode query: resourceVersionMatch.
 	{
-		values, ok := r.URL.Query()["resourceVersionMatch"]
+		values, ok := queryArgs["resourceVersionMatch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -8049,7 +8115,7 @@ func decodeListBatchV1JobForAllNamespacesParams(args map[string]string, r *http.
 	}
 	// Decode query: timeoutSeconds.
 	{
-		values, ok := r.URL.Query()["timeoutSeconds"]
+		values, ok := queryArgs["timeoutSeconds"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -8084,7 +8150,7 @@ func decodeListBatchV1JobForAllNamespacesParams(args map[string]string, r *http.
 	}
 	// Decode query: watch.
 	{
-		values, ok := r.URL.Query()["watch"]
+		values, ok := queryArgs["watch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -8121,10 +8187,13 @@ func decodeListBatchV1JobForAllNamespacesParams(args map[string]string, r *http.
 }
 
 func decodeListBatchV1NamespacedCronJobParams(args map[string]string, r *http.Request) (ListBatchV1NamespacedCronJobParams, error) {
-	var params ListBatchV1NamespacedCronJobParams
+	var (
+		params    ListBatchV1NamespacedCronJobParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode query: allowWatchBookmarks.
 	{
-		values, ok := r.URL.Query()["allowWatchBookmarks"]
+		values, ok := queryArgs["allowWatchBookmarks"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -8159,7 +8228,7 @@ func decodeListBatchV1NamespacedCronJobParams(args map[string]string, r *http.Re
 	}
 	// Decode query: continue.
 	{
-		values, ok := r.URL.Query()["continue"]
+		values, ok := queryArgs["continue"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -8194,7 +8263,7 @@ func decodeListBatchV1NamespacedCronJobParams(args map[string]string, r *http.Re
 	}
 	// Decode query: fieldSelector.
 	{
-		values, ok := r.URL.Query()["fieldSelector"]
+		values, ok := queryArgs["fieldSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -8229,7 +8298,7 @@ func decodeListBatchV1NamespacedCronJobParams(args map[string]string, r *http.Re
 	}
 	// Decode query: labelSelector.
 	{
-		values, ok := r.URL.Query()["labelSelector"]
+		values, ok := queryArgs["labelSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -8264,7 +8333,7 @@ func decodeListBatchV1NamespacedCronJobParams(args map[string]string, r *http.Re
 	}
 	// Decode query: limit.
 	{
-		values, ok := r.URL.Query()["limit"]
+		values, ok := queryArgs["limit"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -8299,7 +8368,7 @@ func decodeListBatchV1NamespacedCronJobParams(args map[string]string, r *http.Re
 	}
 	// Decode query: resourceVersion.
 	{
-		values, ok := r.URL.Query()["resourceVersion"]
+		values, ok := queryArgs["resourceVersion"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -8334,7 +8403,7 @@ func decodeListBatchV1NamespacedCronJobParams(args map[string]string, r *http.Re
 	}
 	// Decode query: resourceVersionMatch.
 	{
-		values, ok := r.URL.Query()["resourceVersionMatch"]
+		values, ok := queryArgs["resourceVersionMatch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -8369,7 +8438,7 @@ func decodeListBatchV1NamespacedCronJobParams(args map[string]string, r *http.Re
 	}
 	// Decode query: timeoutSeconds.
 	{
-		values, ok := r.URL.Query()["timeoutSeconds"]
+		values, ok := queryArgs["timeoutSeconds"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -8404,7 +8473,7 @@ func decodeListBatchV1NamespacedCronJobParams(args map[string]string, r *http.Re
 	}
 	// Decode query: watch.
 	{
-		values, ok := r.URL.Query()["watch"]
+		values, ok := queryArgs["watch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -8470,7 +8539,7 @@ func decodeListBatchV1NamespacedCronJobParams(args map[string]string, r *http.Re
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -8507,10 +8576,13 @@ func decodeListBatchV1NamespacedCronJobParams(args map[string]string, r *http.Re
 }
 
 func decodeListBatchV1NamespacedJobParams(args map[string]string, r *http.Request) (ListBatchV1NamespacedJobParams, error) {
-	var params ListBatchV1NamespacedJobParams
+	var (
+		params    ListBatchV1NamespacedJobParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode query: allowWatchBookmarks.
 	{
-		values, ok := r.URL.Query()["allowWatchBookmarks"]
+		values, ok := queryArgs["allowWatchBookmarks"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -8545,7 +8617,7 @@ func decodeListBatchV1NamespacedJobParams(args map[string]string, r *http.Reques
 	}
 	// Decode query: continue.
 	{
-		values, ok := r.URL.Query()["continue"]
+		values, ok := queryArgs["continue"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -8580,7 +8652,7 @@ func decodeListBatchV1NamespacedJobParams(args map[string]string, r *http.Reques
 	}
 	// Decode query: fieldSelector.
 	{
-		values, ok := r.URL.Query()["fieldSelector"]
+		values, ok := queryArgs["fieldSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -8615,7 +8687,7 @@ func decodeListBatchV1NamespacedJobParams(args map[string]string, r *http.Reques
 	}
 	// Decode query: labelSelector.
 	{
-		values, ok := r.URL.Query()["labelSelector"]
+		values, ok := queryArgs["labelSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -8650,7 +8722,7 @@ func decodeListBatchV1NamespacedJobParams(args map[string]string, r *http.Reques
 	}
 	// Decode query: limit.
 	{
-		values, ok := r.URL.Query()["limit"]
+		values, ok := queryArgs["limit"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -8685,7 +8757,7 @@ func decodeListBatchV1NamespacedJobParams(args map[string]string, r *http.Reques
 	}
 	// Decode query: resourceVersion.
 	{
-		values, ok := r.URL.Query()["resourceVersion"]
+		values, ok := queryArgs["resourceVersion"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -8720,7 +8792,7 @@ func decodeListBatchV1NamespacedJobParams(args map[string]string, r *http.Reques
 	}
 	// Decode query: resourceVersionMatch.
 	{
-		values, ok := r.URL.Query()["resourceVersionMatch"]
+		values, ok := queryArgs["resourceVersionMatch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -8755,7 +8827,7 @@ func decodeListBatchV1NamespacedJobParams(args map[string]string, r *http.Reques
 	}
 	// Decode query: timeoutSeconds.
 	{
-		values, ok := r.URL.Query()["timeoutSeconds"]
+		values, ok := queryArgs["timeoutSeconds"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -8790,7 +8862,7 @@ func decodeListBatchV1NamespacedJobParams(args map[string]string, r *http.Reques
 	}
 	// Decode query: watch.
 	{
-		values, ok := r.URL.Query()["watch"]
+		values, ok := queryArgs["watch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -8856,7 +8928,7 @@ func decodeListBatchV1NamespacedJobParams(args map[string]string, r *http.Reques
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -8893,10 +8965,13 @@ func decodeListBatchV1NamespacedJobParams(args map[string]string, r *http.Reques
 }
 
 func decodeListBatchV1beta1CronJobForAllNamespacesParams(args map[string]string, r *http.Request) (ListBatchV1beta1CronJobForAllNamespacesParams, error) {
-	var params ListBatchV1beta1CronJobForAllNamespacesParams
+	var (
+		params    ListBatchV1beta1CronJobForAllNamespacesParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode query: allowWatchBookmarks.
 	{
-		values, ok := r.URL.Query()["allowWatchBookmarks"]
+		values, ok := queryArgs["allowWatchBookmarks"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -8931,7 +9006,7 @@ func decodeListBatchV1beta1CronJobForAllNamespacesParams(args map[string]string,
 	}
 	// Decode query: continue.
 	{
-		values, ok := r.URL.Query()["continue"]
+		values, ok := queryArgs["continue"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -8966,7 +9041,7 @@ func decodeListBatchV1beta1CronJobForAllNamespacesParams(args map[string]string,
 	}
 	// Decode query: fieldSelector.
 	{
-		values, ok := r.URL.Query()["fieldSelector"]
+		values, ok := queryArgs["fieldSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -9001,7 +9076,7 @@ func decodeListBatchV1beta1CronJobForAllNamespacesParams(args map[string]string,
 	}
 	// Decode query: labelSelector.
 	{
-		values, ok := r.URL.Query()["labelSelector"]
+		values, ok := queryArgs["labelSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -9036,7 +9111,7 @@ func decodeListBatchV1beta1CronJobForAllNamespacesParams(args map[string]string,
 	}
 	// Decode query: limit.
 	{
-		values, ok := r.URL.Query()["limit"]
+		values, ok := queryArgs["limit"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -9071,7 +9146,7 @@ func decodeListBatchV1beta1CronJobForAllNamespacesParams(args map[string]string,
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -9106,7 +9181,7 @@ func decodeListBatchV1beta1CronJobForAllNamespacesParams(args map[string]string,
 	}
 	// Decode query: resourceVersion.
 	{
-		values, ok := r.URL.Query()["resourceVersion"]
+		values, ok := queryArgs["resourceVersion"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -9141,7 +9216,7 @@ func decodeListBatchV1beta1CronJobForAllNamespacesParams(args map[string]string,
 	}
 	// Decode query: resourceVersionMatch.
 	{
-		values, ok := r.URL.Query()["resourceVersionMatch"]
+		values, ok := queryArgs["resourceVersionMatch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -9176,7 +9251,7 @@ func decodeListBatchV1beta1CronJobForAllNamespacesParams(args map[string]string,
 	}
 	// Decode query: timeoutSeconds.
 	{
-		values, ok := r.URL.Query()["timeoutSeconds"]
+		values, ok := queryArgs["timeoutSeconds"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -9211,7 +9286,7 @@ func decodeListBatchV1beta1CronJobForAllNamespacesParams(args map[string]string,
 	}
 	// Decode query: watch.
 	{
-		values, ok := r.URL.Query()["watch"]
+		values, ok := queryArgs["watch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -9248,10 +9323,13 @@ func decodeListBatchV1beta1CronJobForAllNamespacesParams(args map[string]string,
 }
 
 func decodeListBatchV1beta1NamespacedCronJobParams(args map[string]string, r *http.Request) (ListBatchV1beta1NamespacedCronJobParams, error) {
-	var params ListBatchV1beta1NamespacedCronJobParams
+	var (
+		params    ListBatchV1beta1NamespacedCronJobParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode query: allowWatchBookmarks.
 	{
-		values, ok := r.URL.Query()["allowWatchBookmarks"]
+		values, ok := queryArgs["allowWatchBookmarks"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -9286,7 +9364,7 @@ func decodeListBatchV1beta1NamespacedCronJobParams(args map[string]string, r *ht
 	}
 	// Decode query: continue.
 	{
-		values, ok := r.URL.Query()["continue"]
+		values, ok := queryArgs["continue"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -9321,7 +9399,7 @@ func decodeListBatchV1beta1NamespacedCronJobParams(args map[string]string, r *ht
 	}
 	// Decode query: fieldSelector.
 	{
-		values, ok := r.URL.Query()["fieldSelector"]
+		values, ok := queryArgs["fieldSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -9356,7 +9434,7 @@ func decodeListBatchV1beta1NamespacedCronJobParams(args map[string]string, r *ht
 	}
 	// Decode query: labelSelector.
 	{
-		values, ok := r.URL.Query()["labelSelector"]
+		values, ok := queryArgs["labelSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -9391,7 +9469,7 @@ func decodeListBatchV1beta1NamespacedCronJobParams(args map[string]string, r *ht
 	}
 	// Decode query: limit.
 	{
-		values, ok := r.URL.Query()["limit"]
+		values, ok := queryArgs["limit"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -9426,7 +9504,7 @@ func decodeListBatchV1beta1NamespacedCronJobParams(args map[string]string, r *ht
 	}
 	// Decode query: resourceVersion.
 	{
-		values, ok := r.URL.Query()["resourceVersion"]
+		values, ok := queryArgs["resourceVersion"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -9461,7 +9539,7 @@ func decodeListBatchV1beta1NamespacedCronJobParams(args map[string]string, r *ht
 	}
 	// Decode query: resourceVersionMatch.
 	{
-		values, ok := r.URL.Query()["resourceVersionMatch"]
+		values, ok := queryArgs["resourceVersionMatch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -9496,7 +9574,7 @@ func decodeListBatchV1beta1NamespacedCronJobParams(args map[string]string, r *ht
 	}
 	// Decode query: timeoutSeconds.
 	{
-		values, ok := r.URL.Query()["timeoutSeconds"]
+		values, ok := queryArgs["timeoutSeconds"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -9531,7 +9609,7 @@ func decodeListBatchV1beta1NamespacedCronJobParams(args map[string]string, r *ht
 	}
 	// Decode query: watch.
 	{
-		values, ok := r.URL.Query()["watch"]
+		values, ok := queryArgs["watch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -9597,7 +9675,7 @@ func decodeListBatchV1beta1NamespacedCronJobParams(args map[string]string, r *ht
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -9634,10 +9712,13 @@ func decodeListBatchV1beta1NamespacedCronJobParams(args map[string]string, r *ht
 }
 
 func decodeListCertificatesV1CertificateSigningRequestParams(args map[string]string, r *http.Request) (ListCertificatesV1CertificateSigningRequestParams, error) {
-	var params ListCertificatesV1CertificateSigningRequestParams
+	var (
+		params    ListCertificatesV1CertificateSigningRequestParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode query: allowWatchBookmarks.
 	{
-		values, ok := r.URL.Query()["allowWatchBookmarks"]
+		values, ok := queryArgs["allowWatchBookmarks"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -9672,7 +9753,7 @@ func decodeListCertificatesV1CertificateSigningRequestParams(args map[string]str
 	}
 	// Decode query: continue.
 	{
-		values, ok := r.URL.Query()["continue"]
+		values, ok := queryArgs["continue"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -9707,7 +9788,7 @@ func decodeListCertificatesV1CertificateSigningRequestParams(args map[string]str
 	}
 	// Decode query: fieldSelector.
 	{
-		values, ok := r.URL.Query()["fieldSelector"]
+		values, ok := queryArgs["fieldSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -9742,7 +9823,7 @@ func decodeListCertificatesV1CertificateSigningRequestParams(args map[string]str
 	}
 	// Decode query: labelSelector.
 	{
-		values, ok := r.URL.Query()["labelSelector"]
+		values, ok := queryArgs["labelSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -9777,7 +9858,7 @@ func decodeListCertificatesV1CertificateSigningRequestParams(args map[string]str
 	}
 	// Decode query: limit.
 	{
-		values, ok := r.URL.Query()["limit"]
+		values, ok := queryArgs["limit"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -9812,7 +9893,7 @@ func decodeListCertificatesV1CertificateSigningRequestParams(args map[string]str
 	}
 	// Decode query: resourceVersion.
 	{
-		values, ok := r.URL.Query()["resourceVersion"]
+		values, ok := queryArgs["resourceVersion"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -9847,7 +9928,7 @@ func decodeListCertificatesV1CertificateSigningRequestParams(args map[string]str
 	}
 	// Decode query: resourceVersionMatch.
 	{
-		values, ok := r.URL.Query()["resourceVersionMatch"]
+		values, ok := queryArgs["resourceVersionMatch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -9882,7 +9963,7 @@ func decodeListCertificatesV1CertificateSigningRequestParams(args map[string]str
 	}
 	// Decode query: timeoutSeconds.
 	{
-		values, ok := r.URL.Query()["timeoutSeconds"]
+		values, ok := queryArgs["timeoutSeconds"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -9917,7 +9998,7 @@ func decodeListCertificatesV1CertificateSigningRequestParams(args map[string]str
 	}
 	// Decode query: watch.
 	{
-		values, ok := r.URL.Query()["watch"]
+		values, ok := queryArgs["watch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -9952,7 +10033,7 @@ func decodeListCertificatesV1CertificateSigningRequestParams(args map[string]str
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -9989,10 +10070,13 @@ func decodeListCertificatesV1CertificateSigningRequestParams(args map[string]str
 }
 
 func decodeListCoordinationV1LeaseForAllNamespacesParams(args map[string]string, r *http.Request) (ListCoordinationV1LeaseForAllNamespacesParams, error) {
-	var params ListCoordinationV1LeaseForAllNamespacesParams
+	var (
+		params    ListCoordinationV1LeaseForAllNamespacesParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode query: allowWatchBookmarks.
 	{
-		values, ok := r.URL.Query()["allowWatchBookmarks"]
+		values, ok := queryArgs["allowWatchBookmarks"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -10027,7 +10111,7 @@ func decodeListCoordinationV1LeaseForAllNamespacesParams(args map[string]string,
 	}
 	// Decode query: continue.
 	{
-		values, ok := r.URL.Query()["continue"]
+		values, ok := queryArgs["continue"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -10062,7 +10146,7 @@ func decodeListCoordinationV1LeaseForAllNamespacesParams(args map[string]string,
 	}
 	// Decode query: fieldSelector.
 	{
-		values, ok := r.URL.Query()["fieldSelector"]
+		values, ok := queryArgs["fieldSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -10097,7 +10181,7 @@ func decodeListCoordinationV1LeaseForAllNamespacesParams(args map[string]string,
 	}
 	// Decode query: labelSelector.
 	{
-		values, ok := r.URL.Query()["labelSelector"]
+		values, ok := queryArgs["labelSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -10132,7 +10216,7 @@ func decodeListCoordinationV1LeaseForAllNamespacesParams(args map[string]string,
 	}
 	// Decode query: limit.
 	{
-		values, ok := r.URL.Query()["limit"]
+		values, ok := queryArgs["limit"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -10167,7 +10251,7 @@ func decodeListCoordinationV1LeaseForAllNamespacesParams(args map[string]string,
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -10202,7 +10286,7 @@ func decodeListCoordinationV1LeaseForAllNamespacesParams(args map[string]string,
 	}
 	// Decode query: resourceVersion.
 	{
-		values, ok := r.URL.Query()["resourceVersion"]
+		values, ok := queryArgs["resourceVersion"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -10237,7 +10321,7 @@ func decodeListCoordinationV1LeaseForAllNamespacesParams(args map[string]string,
 	}
 	// Decode query: resourceVersionMatch.
 	{
-		values, ok := r.URL.Query()["resourceVersionMatch"]
+		values, ok := queryArgs["resourceVersionMatch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -10272,7 +10356,7 @@ func decodeListCoordinationV1LeaseForAllNamespacesParams(args map[string]string,
 	}
 	// Decode query: timeoutSeconds.
 	{
-		values, ok := r.URL.Query()["timeoutSeconds"]
+		values, ok := queryArgs["timeoutSeconds"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -10307,7 +10391,7 @@ func decodeListCoordinationV1LeaseForAllNamespacesParams(args map[string]string,
 	}
 	// Decode query: watch.
 	{
-		values, ok := r.URL.Query()["watch"]
+		values, ok := queryArgs["watch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -10344,10 +10428,13 @@ func decodeListCoordinationV1LeaseForAllNamespacesParams(args map[string]string,
 }
 
 func decodeListCoordinationV1NamespacedLeaseParams(args map[string]string, r *http.Request) (ListCoordinationV1NamespacedLeaseParams, error) {
-	var params ListCoordinationV1NamespacedLeaseParams
+	var (
+		params    ListCoordinationV1NamespacedLeaseParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode query: allowWatchBookmarks.
 	{
-		values, ok := r.URL.Query()["allowWatchBookmarks"]
+		values, ok := queryArgs["allowWatchBookmarks"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -10382,7 +10469,7 @@ func decodeListCoordinationV1NamespacedLeaseParams(args map[string]string, r *ht
 	}
 	// Decode query: continue.
 	{
-		values, ok := r.URL.Query()["continue"]
+		values, ok := queryArgs["continue"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -10417,7 +10504,7 @@ func decodeListCoordinationV1NamespacedLeaseParams(args map[string]string, r *ht
 	}
 	// Decode query: fieldSelector.
 	{
-		values, ok := r.URL.Query()["fieldSelector"]
+		values, ok := queryArgs["fieldSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -10452,7 +10539,7 @@ func decodeListCoordinationV1NamespacedLeaseParams(args map[string]string, r *ht
 	}
 	// Decode query: labelSelector.
 	{
-		values, ok := r.URL.Query()["labelSelector"]
+		values, ok := queryArgs["labelSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -10487,7 +10574,7 @@ func decodeListCoordinationV1NamespacedLeaseParams(args map[string]string, r *ht
 	}
 	// Decode query: limit.
 	{
-		values, ok := r.URL.Query()["limit"]
+		values, ok := queryArgs["limit"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -10522,7 +10609,7 @@ func decodeListCoordinationV1NamespacedLeaseParams(args map[string]string, r *ht
 	}
 	// Decode query: resourceVersion.
 	{
-		values, ok := r.URL.Query()["resourceVersion"]
+		values, ok := queryArgs["resourceVersion"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -10557,7 +10644,7 @@ func decodeListCoordinationV1NamespacedLeaseParams(args map[string]string, r *ht
 	}
 	// Decode query: resourceVersionMatch.
 	{
-		values, ok := r.URL.Query()["resourceVersionMatch"]
+		values, ok := queryArgs["resourceVersionMatch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -10592,7 +10679,7 @@ func decodeListCoordinationV1NamespacedLeaseParams(args map[string]string, r *ht
 	}
 	// Decode query: timeoutSeconds.
 	{
-		values, ok := r.URL.Query()["timeoutSeconds"]
+		values, ok := queryArgs["timeoutSeconds"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -10627,7 +10714,7 @@ func decodeListCoordinationV1NamespacedLeaseParams(args map[string]string, r *ht
 	}
 	// Decode query: watch.
 	{
-		values, ok := r.URL.Query()["watch"]
+		values, ok := queryArgs["watch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -10693,7 +10780,7 @@ func decodeListCoordinationV1NamespacedLeaseParams(args map[string]string, r *ht
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -10730,10 +10817,13 @@ func decodeListCoordinationV1NamespacedLeaseParams(args map[string]string, r *ht
 }
 
 func decodeListCoreV1ComponentStatusParams(args map[string]string, r *http.Request) (ListCoreV1ComponentStatusParams, error) {
-	var params ListCoreV1ComponentStatusParams
+	var (
+		params    ListCoreV1ComponentStatusParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode query: allowWatchBookmarks.
 	{
-		values, ok := r.URL.Query()["allowWatchBookmarks"]
+		values, ok := queryArgs["allowWatchBookmarks"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -10768,7 +10858,7 @@ func decodeListCoreV1ComponentStatusParams(args map[string]string, r *http.Reque
 	}
 	// Decode query: continue.
 	{
-		values, ok := r.URL.Query()["continue"]
+		values, ok := queryArgs["continue"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -10803,7 +10893,7 @@ func decodeListCoreV1ComponentStatusParams(args map[string]string, r *http.Reque
 	}
 	// Decode query: fieldSelector.
 	{
-		values, ok := r.URL.Query()["fieldSelector"]
+		values, ok := queryArgs["fieldSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -10838,7 +10928,7 @@ func decodeListCoreV1ComponentStatusParams(args map[string]string, r *http.Reque
 	}
 	// Decode query: labelSelector.
 	{
-		values, ok := r.URL.Query()["labelSelector"]
+		values, ok := queryArgs["labelSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -10873,7 +10963,7 @@ func decodeListCoreV1ComponentStatusParams(args map[string]string, r *http.Reque
 	}
 	// Decode query: limit.
 	{
-		values, ok := r.URL.Query()["limit"]
+		values, ok := queryArgs["limit"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -10908,7 +10998,7 @@ func decodeListCoreV1ComponentStatusParams(args map[string]string, r *http.Reque
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -10943,7 +11033,7 @@ func decodeListCoreV1ComponentStatusParams(args map[string]string, r *http.Reque
 	}
 	// Decode query: resourceVersion.
 	{
-		values, ok := r.URL.Query()["resourceVersion"]
+		values, ok := queryArgs["resourceVersion"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -10978,7 +11068,7 @@ func decodeListCoreV1ComponentStatusParams(args map[string]string, r *http.Reque
 	}
 	// Decode query: resourceVersionMatch.
 	{
-		values, ok := r.URL.Query()["resourceVersionMatch"]
+		values, ok := queryArgs["resourceVersionMatch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -11013,7 +11103,7 @@ func decodeListCoreV1ComponentStatusParams(args map[string]string, r *http.Reque
 	}
 	// Decode query: timeoutSeconds.
 	{
-		values, ok := r.URL.Query()["timeoutSeconds"]
+		values, ok := queryArgs["timeoutSeconds"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -11048,7 +11138,7 @@ func decodeListCoreV1ComponentStatusParams(args map[string]string, r *http.Reque
 	}
 	// Decode query: watch.
 	{
-		values, ok := r.URL.Query()["watch"]
+		values, ok := queryArgs["watch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -11085,10 +11175,13 @@ func decodeListCoreV1ComponentStatusParams(args map[string]string, r *http.Reque
 }
 
 func decodeListCoreV1ConfigMapForAllNamespacesParams(args map[string]string, r *http.Request) (ListCoreV1ConfigMapForAllNamespacesParams, error) {
-	var params ListCoreV1ConfigMapForAllNamespacesParams
+	var (
+		params    ListCoreV1ConfigMapForAllNamespacesParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode query: allowWatchBookmarks.
 	{
-		values, ok := r.URL.Query()["allowWatchBookmarks"]
+		values, ok := queryArgs["allowWatchBookmarks"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -11123,7 +11216,7 @@ func decodeListCoreV1ConfigMapForAllNamespacesParams(args map[string]string, r *
 	}
 	// Decode query: continue.
 	{
-		values, ok := r.URL.Query()["continue"]
+		values, ok := queryArgs["continue"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -11158,7 +11251,7 @@ func decodeListCoreV1ConfigMapForAllNamespacesParams(args map[string]string, r *
 	}
 	// Decode query: fieldSelector.
 	{
-		values, ok := r.URL.Query()["fieldSelector"]
+		values, ok := queryArgs["fieldSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -11193,7 +11286,7 @@ func decodeListCoreV1ConfigMapForAllNamespacesParams(args map[string]string, r *
 	}
 	// Decode query: labelSelector.
 	{
-		values, ok := r.URL.Query()["labelSelector"]
+		values, ok := queryArgs["labelSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -11228,7 +11321,7 @@ func decodeListCoreV1ConfigMapForAllNamespacesParams(args map[string]string, r *
 	}
 	// Decode query: limit.
 	{
-		values, ok := r.URL.Query()["limit"]
+		values, ok := queryArgs["limit"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -11263,7 +11356,7 @@ func decodeListCoreV1ConfigMapForAllNamespacesParams(args map[string]string, r *
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -11298,7 +11391,7 @@ func decodeListCoreV1ConfigMapForAllNamespacesParams(args map[string]string, r *
 	}
 	// Decode query: resourceVersion.
 	{
-		values, ok := r.URL.Query()["resourceVersion"]
+		values, ok := queryArgs["resourceVersion"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -11333,7 +11426,7 @@ func decodeListCoreV1ConfigMapForAllNamespacesParams(args map[string]string, r *
 	}
 	// Decode query: resourceVersionMatch.
 	{
-		values, ok := r.URL.Query()["resourceVersionMatch"]
+		values, ok := queryArgs["resourceVersionMatch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -11368,7 +11461,7 @@ func decodeListCoreV1ConfigMapForAllNamespacesParams(args map[string]string, r *
 	}
 	// Decode query: timeoutSeconds.
 	{
-		values, ok := r.URL.Query()["timeoutSeconds"]
+		values, ok := queryArgs["timeoutSeconds"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -11403,7 +11496,7 @@ func decodeListCoreV1ConfigMapForAllNamespacesParams(args map[string]string, r *
 	}
 	// Decode query: watch.
 	{
-		values, ok := r.URL.Query()["watch"]
+		values, ok := queryArgs["watch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -11440,10 +11533,13 @@ func decodeListCoreV1ConfigMapForAllNamespacesParams(args map[string]string, r *
 }
 
 func decodeListCoreV1EndpointsForAllNamespacesParams(args map[string]string, r *http.Request) (ListCoreV1EndpointsForAllNamespacesParams, error) {
-	var params ListCoreV1EndpointsForAllNamespacesParams
+	var (
+		params    ListCoreV1EndpointsForAllNamespacesParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode query: allowWatchBookmarks.
 	{
-		values, ok := r.URL.Query()["allowWatchBookmarks"]
+		values, ok := queryArgs["allowWatchBookmarks"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -11478,7 +11574,7 @@ func decodeListCoreV1EndpointsForAllNamespacesParams(args map[string]string, r *
 	}
 	// Decode query: continue.
 	{
-		values, ok := r.URL.Query()["continue"]
+		values, ok := queryArgs["continue"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -11513,7 +11609,7 @@ func decodeListCoreV1EndpointsForAllNamespacesParams(args map[string]string, r *
 	}
 	// Decode query: fieldSelector.
 	{
-		values, ok := r.URL.Query()["fieldSelector"]
+		values, ok := queryArgs["fieldSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -11548,7 +11644,7 @@ func decodeListCoreV1EndpointsForAllNamespacesParams(args map[string]string, r *
 	}
 	// Decode query: labelSelector.
 	{
-		values, ok := r.URL.Query()["labelSelector"]
+		values, ok := queryArgs["labelSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -11583,7 +11679,7 @@ func decodeListCoreV1EndpointsForAllNamespacesParams(args map[string]string, r *
 	}
 	// Decode query: limit.
 	{
-		values, ok := r.URL.Query()["limit"]
+		values, ok := queryArgs["limit"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -11618,7 +11714,7 @@ func decodeListCoreV1EndpointsForAllNamespacesParams(args map[string]string, r *
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -11653,7 +11749,7 @@ func decodeListCoreV1EndpointsForAllNamespacesParams(args map[string]string, r *
 	}
 	// Decode query: resourceVersion.
 	{
-		values, ok := r.URL.Query()["resourceVersion"]
+		values, ok := queryArgs["resourceVersion"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -11688,7 +11784,7 @@ func decodeListCoreV1EndpointsForAllNamespacesParams(args map[string]string, r *
 	}
 	// Decode query: resourceVersionMatch.
 	{
-		values, ok := r.URL.Query()["resourceVersionMatch"]
+		values, ok := queryArgs["resourceVersionMatch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -11723,7 +11819,7 @@ func decodeListCoreV1EndpointsForAllNamespacesParams(args map[string]string, r *
 	}
 	// Decode query: timeoutSeconds.
 	{
-		values, ok := r.URL.Query()["timeoutSeconds"]
+		values, ok := queryArgs["timeoutSeconds"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -11758,7 +11854,7 @@ func decodeListCoreV1EndpointsForAllNamespacesParams(args map[string]string, r *
 	}
 	// Decode query: watch.
 	{
-		values, ok := r.URL.Query()["watch"]
+		values, ok := queryArgs["watch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -11795,10 +11891,13 @@ func decodeListCoreV1EndpointsForAllNamespacesParams(args map[string]string, r *
 }
 
 func decodeListCoreV1EventForAllNamespacesParams(args map[string]string, r *http.Request) (ListCoreV1EventForAllNamespacesParams, error) {
-	var params ListCoreV1EventForAllNamespacesParams
+	var (
+		params    ListCoreV1EventForAllNamespacesParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode query: allowWatchBookmarks.
 	{
-		values, ok := r.URL.Query()["allowWatchBookmarks"]
+		values, ok := queryArgs["allowWatchBookmarks"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -11833,7 +11932,7 @@ func decodeListCoreV1EventForAllNamespacesParams(args map[string]string, r *http
 	}
 	// Decode query: continue.
 	{
-		values, ok := r.URL.Query()["continue"]
+		values, ok := queryArgs["continue"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -11868,7 +11967,7 @@ func decodeListCoreV1EventForAllNamespacesParams(args map[string]string, r *http
 	}
 	// Decode query: fieldSelector.
 	{
-		values, ok := r.URL.Query()["fieldSelector"]
+		values, ok := queryArgs["fieldSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -11903,7 +12002,7 @@ func decodeListCoreV1EventForAllNamespacesParams(args map[string]string, r *http
 	}
 	// Decode query: labelSelector.
 	{
-		values, ok := r.URL.Query()["labelSelector"]
+		values, ok := queryArgs["labelSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -11938,7 +12037,7 @@ func decodeListCoreV1EventForAllNamespacesParams(args map[string]string, r *http
 	}
 	// Decode query: limit.
 	{
-		values, ok := r.URL.Query()["limit"]
+		values, ok := queryArgs["limit"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -11973,7 +12072,7 @@ func decodeListCoreV1EventForAllNamespacesParams(args map[string]string, r *http
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -12008,7 +12107,7 @@ func decodeListCoreV1EventForAllNamespacesParams(args map[string]string, r *http
 	}
 	// Decode query: resourceVersion.
 	{
-		values, ok := r.URL.Query()["resourceVersion"]
+		values, ok := queryArgs["resourceVersion"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -12043,7 +12142,7 @@ func decodeListCoreV1EventForAllNamespacesParams(args map[string]string, r *http
 	}
 	// Decode query: resourceVersionMatch.
 	{
-		values, ok := r.URL.Query()["resourceVersionMatch"]
+		values, ok := queryArgs["resourceVersionMatch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -12078,7 +12177,7 @@ func decodeListCoreV1EventForAllNamespacesParams(args map[string]string, r *http
 	}
 	// Decode query: timeoutSeconds.
 	{
-		values, ok := r.URL.Query()["timeoutSeconds"]
+		values, ok := queryArgs["timeoutSeconds"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -12113,7 +12212,7 @@ func decodeListCoreV1EventForAllNamespacesParams(args map[string]string, r *http
 	}
 	// Decode query: watch.
 	{
-		values, ok := r.URL.Query()["watch"]
+		values, ok := queryArgs["watch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -12150,10 +12249,13 @@ func decodeListCoreV1EventForAllNamespacesParams(args map[string]string, r *http
 }
 
 func decodeListCoreV1LimitRangeForAllNamespacesParams(args map[string]string, r *http.Request) (ListCoreV1LimitRangeForAllNamespacesParams, error) {
-	var params ListCoreV1LimitRangeForAllNamespacesParams
+	var (
+		params    ListCoreV1LimitRangeForAllNamespacesParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode query: allowWatchBookmarks.
 	{
-		values, ok := r.URL.Query()["allowWatchBookmarks"]
+		values, ok := queryArgs["allowWatchBookmarks"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -12188,7 +12290,7 @@ func decodeListCoreV1LimitRangeForAllNamespacesParams(args map[string]string, r 
 	}
 	// Decode query: continue.
 	{
-		values, ok := r.URL.Query()["continue"]
+		values, ok := queryArgs["continue"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -12223,7 +12325,7 @@ func decodeListCoreV1LimitRangeForAllNamespacesParams(args map[string]string, r 
 	}
 	// Decode query: fieldSelector.
 	{
-		values, ok := r.URL.Query()["fieldSelector"]
+		values, ok := queryArgs["fieldSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -12258,7 +12360,7 @@ func decodeListCoreV1LimitRangeForAllNamespacesParams(args map[string]string, r 
 	}
 	// Decode query: labelSelector.
 	{
-		values, ok := r.URL.Query()["labelSelector"]
+		values, ok := queryArgs["labelSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -12293,7 +12395,7 @@ func decodeListCoreV1LimitRangeForAllNamespacesParams(args map[string]string, r 
 	}
 	// Decode query: limit.
 	{
-		values, ok := r.URL.Query()["limit"]
+		values, ok := queryArgs["limit"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -12328,7 +12430,7 @@ func decodeListCoreV1LimitRangeForAllNamespacesParams(args map[string]string, r 
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -12363,7 +12465,7 @@ func decodeListCoreV1LimitRangeForAllNamespacesParams(args map[string]string, r 
 	}
 	// Decode query: resourceVersion.
 	{
-		values, ok := r.URL.Query()["resourceVersion"]
+		values, ok := queryArgs["resourceVersion"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -12398,7 +12500,7 @@ func decodeListCoreV1LimitRangeForAllNamespacesParams(args map[string]string, r 
 	}
 	// Decode query: resourceVersionMatch.
 	{
-		values, ok := r.URL.Query()["resourceVersionMatch"]
+		values, ok := queryArgs["resourceVersionMatch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -12433,7 +12535,7 @@ func decodeListCoreV1LimitRangeForAllNamespacesParams(args map[string]string, r 
 	}
 	// Decode query: timeoutSeconds.
 	{
-		values, ok := r.URL.Query()["timeoutSeconds"]
+		values, ok := queryArgs["timeoutSeconds"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -12468,7 +12570,7 @@ func decodeListCoreV1LimitRangeForAllNamespacesParams(args map[string]string, r 
 	}
 	// Decode query: watch.
 	{
-		values, ok := r.URL.Query()["watch"]
+		values, ok := queryArgs["watch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -12505,10 +12607,13 @@ func decodeListCoreV1LimitRangeForAllNamespacesParams(args map[string]string, r 
 }
 
 func decodeListCoreV1NamespaceParams(args map[string]string, r *http.Request) (ListCoreV1NamespaceParams, error) {
-	var params ListCoreV1NamespaceParams
+	var (
+		params    ListCoreV1NamespaceParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode query: allowWatchBookmarks.
 	{
-		values, ok := r.URL.Query()["allowWatchBookmarks"]
+		values, ok := queryArgs["allowWatchBookmarks"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -12543,7 +12648,7 @@ func decodeListCoreV1NamespaceParams(args map[string]string, r *http.Request) (L
 	}
 	// Decode query: continue.
 	{
-		values, ok := r.URL.Query()["continue"]
+		values, ok := queryArgs["continue"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -12578,7 +12683,7 @@ func decodeListCoreV1NamespaceParams(args map[string]string, r *http.Request) (L
 	}
 	// Decode query: fieldSelector.
 	{
-		values, ok := r.URL.Query()["fieldSelector"]
+		values, ok := queryArgs["fieldSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -12613,7 +12718,7 @@ func decodeListCoreV1NamespaceParams(args map[string]string, r *http.Request) (L
 	}
 	// Decode query: labelSelector.
 	{
-		values, ok := r.URL.Query()["labelSelector"]
+		values, ok := queryArgs["labelSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -12648,7 +12753,7 @@ func decodeListCoreV1NamespaceParams(args map[string]string, r *http.Request) (L
 	}
 	// Decode query: limit.
 	{
-		values, ok := r.URL.Query()["limit"]
+		values, ok := queryArgs["limit"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -12683,7 +12788,7 @@ func decodeListCoreV1NamespaceParams(args map[string]string, r *http.Request) (L
 	}
 	// Decode query: resourceVersion.
 	{
-		values, ok := r.URL.Query()["resourceVersion"]
+		values, ok := queryArgs["resourceVersion"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -12718,7 +12823,7 @@ func decodeListCoreV1NamespaceParams(args map[string]string, r *http.Request) (L
 	}
 	// Decode query: resourceVersionMatch.
 	{
-		values, ok := r.URL.Query()["resourceVersionMatch"]
+		values, ok := queryArgs["resourceVersionMatch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -12753,7 +12858,7 @@ func decodeListCoreV1NamespaceParams(args map[string]string, r *http.Request) (L
 	}
 	// Decode query: timeoutSeconds.
 	{
-		values, ok := r.URL.Query()["timeoutSeconds"]
+		values, ok := queryArgs["timeoutSeconds"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -12788,7 +12893,7 @@ func decodeListCoreV1NamespaceParams(args map[string]string, r *http.Request) (L
 	}
 	// Decode query: watch.
 	{
-		values, ok := r.URL.Query()["watch"]
+		values, ok := queryArgs["watch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -12823,7 +12928,7 @@ func decodeListCoreV1NamespaceParams(args map[string]string, r *http.Request) (L
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -12860,10 +12965,13 @@ func decodeListCoreV1NamespaceParams(args map[string]string, r *http.Request) (L
 }
 
 func decodeListCoreV1NamespacedConfigMapParams(args map[string]string, r *http.Request) (ListCoreV1NamespacedConfigMapParams, error) {
-	var params ListCoreV1NamespacedConfigMapParams
+	var (
+		params    ListCoreV1NamespacedConfigMapParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode query: allowWatchBookmarks.
 	{
-		values, ok := r.URL.Query()["allowWatchBookmarks"]
+		values, ok := queryArgs["allowWatchBookmarks"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -12898,7 +13006,7 @@ func decodeListCoreV1NamespacedConfigMapParams(args map[string]string, r *http.R
 	}
 	// Decode query: continue.
 	{
-		values, ok := r.URL.Query()["continue"]
+		values, ok := queryArgs["continue"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -12933,7 +13041,7 @@ func decodeListCoreV1NamespacedConfigMapParams(args map[string]string, r *http.R
 	}
 	// Decode query: fieldSelector.
 	{
-		values, ok := r.URL.Query()["fieldSelector"]
+		values, ok := queryArgs["fieldSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -12968,7 +13076,7 @@ func decodeListCoreV1NamespacedConfigMapParams(args map[string]string, r *http.R
 	}
 	// Decode query: labelSelector.
 	{
-		values, ok := r.URL.Query()["labelSelector"]
+		values, ok := queryArgs["labelSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -13003,7 +13111,7 @@ func decodeListCoreV1NamespacedConfigMapParams(args map[string]string, r *http.R
 	}
 	// Decode query: limit.
 	{
-		values, ok := r.URL.Query()["limit"]
+		values, ok := queryArgs["limit"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -13038,7 +13146,7 @@ func decodeListCoreV1NamespacedConfigMapParams(args map[string]string, r *http.R
 	}
 	// Decode query: resourceVersion.
 	{
-		values, ok := r.URL.Query()["resourceVersion"]
+		values, ok := queryArgs["resourceVersion"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -13073,7 +13181,7 @@ func decodeListCoreV1NamespacedConfigMapParams(args map[string]string, r *http.R
 	}
 	// Decode query: resourceVersionMatch.
 	{
-		values, ok := r.URL.Query()["resourceVersionMatch"]
+		values, ok := queryArgs["resourceVersionMatch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -13108,7 +13216,7 @@ func decodeListCoreV1NamespacedConfigMapParams(args map[string]string, r *http.R
 	}
 	// Decode query: timeoutSeconds.
 	{
-		values, ok := r.URL.Query()["timeoutSeconds"]
+		values, ok := queryArgs["timeoutSeconds"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -13143,7 +13251,7 @@ func decodeListCoreV1NamespacedConfigMapParams(args map[string]string, r *http.R
 	}
 	// Decode query: watch.
 	{
-		values, ok := r.URL.Query()["watch"]
+		values, ok := queryArgs["watch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -13209,7 +13317,7 @@ func decodeListCoreV1NamespacedConfigMapParams(args map[string]string, r *http.R
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -13246,10 +13354,13 @@ func decodeListCoreV1NamespacedConfigMapParams(args map[string]string, r *http.R
 }
 
 func decodeListCoreV1NamespacedEndpointsParams(args map[string]string, r *http.Request) (ListCoreV1NamespacedEndpointsParams, error) {
-	var params ListCoreV1NamespacedEndpointsParams
+	var (
+		params    ListCoreV1NamespacedEndpointsParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode query: allowWatchBookmarks.
 	{
-		values, ok := r.URL.Query()["allowWatchBookmarks"]
+		values, ok := queryArgs["allowWatchBookmarks"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -13284,7 +13395,7 @@ func decodeListCoreV1NamespacedEndpointsParams(args map[string]string, r *http.R
 	}
 	// Decode query: continue.
 	{
-		values, ok := r.URL.Query()["continue"]
+		values, ok := queryArgs["continue"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -13319,7 +13430,7 @@ func decodeListCoreV1NamespacedEndpointsParams(args map[string]string, r *http.R
 	}
 	// Decode query: fieldSelector.
 	{
-		values, ok := r.URL.Query()["fieldSelector"]
+		values, ok := queryArgs["fieldSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -13354,7 +13465,7 @@ func decodeListCoreV1NamespacedEndpointsParams(args map[string]string, r *http.R
 	}
 	// Decode query: labelSelector.
 	{
-		values, ok := r.URL.Query()["labelSelector"]
+		values, ok := queryArgs["labelSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -13389,7 +13500,7 @@ func decodeListCoreV1NamespacedEndpointsParams(args map[string]string, r *http.R
 	}
 	// Decode query: limit.
 	{
-		values, ok := r.URL.Query()["limit"]
+		values, ok := queryArgs["limit"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -13424,7 +13535,7 @@ func decodeListCoreV1NamespacedEndpointsParams(args map[string]string, r *http.R
 	}
 	// Decode query: resourceVersion.
 	{
-		values, ok := r.URL.Query()["resourceVersion"]
+		values, ok := queryArgs["resourceVersion"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -13459,7 +13570,7 @@ func decodeListCoreV1NamespacedEndpointsParams(args map[string]string, r *http.R
 	}
 	// Decode query: resourceVersionMatch.
 	{
-		values, ok := r.URL.Query()["resourceVersionMatch"]
+		values, ok := queryArgs["resourceVersionMatch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -13494,7 +13605,7 @@ func decodeListCoreV1NamespacedEndpointsParams(args map[string]string, r *http.R
 	}
 	// Decode query: timeoutSeconds.
 	{
-		values, ok := r.URL.Query()["timeoutSeconds"]
+		values, ok := queryArgs["timeoutSeconds"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -13529,7 +13640,7 @@ func decodeListCoreV1NamespacedEndpointsParams(args map[string]string, r *http.R
 	}
 	// Decode query: watch.
 	{
-		values, ok := r.URL.Query()["watch"]
+		values, ok := queryArgs["watch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -13595,7 +13706,7 @@ func decodeListCoreV1NamespacedEndpointsParams(args map[string]string, r *http.R
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -13632,10 +13743,13 @@ func decodeListCoreV1NamespacedEndpointsParams(args map[string]string, r *http.R
 }
 
 func decodeListCoreV1NamespacedEventParams(args map[string]string, r *http.Request) (ListCoreV1NamespacedEventParams, error) {
-	var params ListCoreV1NamespacedEventParams
+	var (
+		params    ListCoreV1NamespacedEventParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode query: allowWatchBookmarks.
 	{
-		values, ok := r.URL.Query()["allowWatchBookmarks"]
+		values, ok := queryArgs["allowWatchBookmarks"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -13670,7 +13784,7 @@ func decodeListCoreV1NamespacedEventParams(args map[string]string, r *http.Reque
 	}
 	// Decode query: continue.
 	{
-		values, ok := r.URL.Query()["continue"]
+		values, ok := queryArgs["continue"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -13705,7 +13819,7 @@ func decodeListCoreV1NamespacedEventParams(args map[string]string, r *http.Reque
 	}
 	// Decode query: fieldSelector.
 	{
-		values, ok := r.URL.Query()["fieldSelector"]
+		values, ok := queryArgs["fieldSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -13740,7 +13854,7 @@ func decodeListCoreV1NamespacedEventParams(args map[string]string, r *http.Reque
 	}
 	// Decode query: labelSelector.
 	{
-		values, ok := r.URL.Query()["labelSelector"]
+		values, ok := queryArgs["labelSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -13775,7 +13889,7 @@ func decodeListCoreV1NamespacedEventParams(args map[string]string, r *http.Reque
 	}
 	// Decode query: limit.
 	{
-		values, ok := r.URL.Query()["limit"]
+		values, ok := queryArgs["limit"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -13810,7 +13924,7 @@ func decodeListCoreV1NamespacedEventParams(args map[string]string, r *http.Reque
 	}
 	// Decode query: resourceVersion.
 	{
-		values, ok := r.URL.Query()["resourceVersion"]
+		values, ok := queryArgs["resourceVersion"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -13845,7 +13959,7 @@ func decodeListCoreV1NamespacedEventParams(args map[string]string, r *http.Reque
 	}
 	// Decode query: resourceVersionMatch.
 	{
-		values, ok := r.URL.Query()["resourceVersionMatch"]
+		values, ok := queryArgs["resourceVersionMatch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -13880,7 +13994,7 @@ func decodeListCoreV1NamespacedEventParams(args map[string]string, r *http.Reque
 	}
 	// Decode query: timeoutSeconds.
 	{
-		values, ok := r.URL.Query()["timeoutSeconds"]
+		values, ok := queryArgs["timeoutSeconds"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -13915,7 +14029,7 @@ func decodeListCoreV1NamespacedEventParams(args map[string]string, r *http.Reque
 	}
 	// Decode query: watch.
 	{
-		values, ok := r.URL.Query()["watch"]
+		values, ok := queryArgs["watch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -13981,7 +14095,7 @@ func decodeListCoreV1NamespacedEventParams(args map[string]string, r *http.Reque
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -14018,10 +14132,13 @@ func decodeListCoreV1NamespacedEventParams(args map[string]string, r *http.Reque
 }
 
 func decodeListCoreV1NamespacedLimitRangeParams(args map[string]string, r *http.Request) (ListCoreV1NamespacedLimitRangeParams, error) {
-	var params ListCoreV1NamespacedLimitRangeParams
+	var (
+		params    ListCoreV1NamespacedLimitRangeParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode query: allowWatchBookmarks.
 	{
-		values, ok := r.URL.Query()["allowWatchBookmarks"]
+		values, ok := queryArgs["allowWatchBookmarks"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -14056,7 +14173,7 @@ func decodeListCoreV1NamespacedLimitRangeParams(args map[string]string, r *http.
 	}
 	// Decode query: continue.
 	{
-		values, ok := r.URL.Query()["continue"]
+		values, ok := queryArgs["continue"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -14091,7 +14208,7 @@ func decodeListCoreV1NamespacedLimitRangeParams(args map[string]string, r *http.
 	}
 	// Decode query: fieldSelector.
 	{
-		values, ok := r.URL.Query()["fieldSelector"]
+		values, ok := queryArgs["fieldSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -14126,7 +14243,7 @@ func decodeListCoreV1NamespacedLimitRangeParams(args map[string]string, r *http.
 	}
 	// Decode query: labelSelector.
 	{
-		values, ok := r.URL.Query()["labelSelector"]
+		values, ok := queryArgs["labelSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -14161,7 +14278,7 @@ func decodeListCoreV1NamespacedLimitRangeParams(args map[string]string, r *http.
 	}
 	// Decode query: limit.
 	{
-		values, ok := r.URL.Query()["limit"]
+		values, ok := queryArgs["limit"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -14196,7 +14313,7 @@ func decodeListCoreV1NamespacedLimitRangeParams(args map[string]string, r *http.
 	}
 	// Decode query: resourceVersion.
 	{
-		values, ok := r.URL.Query()["resourceVersion"]
+		values, ok := queryArgs["resourceVersion"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -14231,7 +14348,7 @@ func decodeListCoreV1NamespacedLimitRangeParams(args map[string]string, r *http.
 	}
 	// Decode query: resourceVersionMatch.
 	{
-		values, ok := r.URL.Query()["resourceVersionMatch"]
+		values, ok := queryArgs["resourceVersionMatch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -14266,7 +14383,7 @@ func decodeListCoreV1NamespacedLimitRangeParams(args map[string]string, r *http.
 	}
 	// Decode query: timeoutSeconds.
 	{
-		values, ok := r.URL.Query()["timeoutSeconds"]
+		values, ok := queryArgs["timeoutSeconds"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -14301,7 +14418,7 @@ func decodeListCoreV1NamespacedLimitRangeParams(args map[string]string, r *http.
 	}
 	// Decode query: watch.
 	{
-		values, ok := r.URL.Query()["watch"]
+		values, ok := queryArgs["watch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -14367,7 +14484,7 @@ func decodeListCoreV1NamespacedLimitRangeParams(args map[string]string, r *http.
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -14404,10 +14521,13 @@ func decodeListCoreV1NamespacedLimitRangeParams(args map[string]string, r *http.
 }
 
 func decodeListCoreV1NamespacedPersistentVolumeClaimParams(args map[string]string, r *http.Request) (ListCoreV1NamespacedPersistentVolumeClaimParams, error) {
-	var params ListCoreV1NamespacedPersistentVolumeClaimParams
+	var (
+		params    ListCoreV1NamespacedPersistentVolumeClaimParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode query: allowWatchBookmarks.
 	{
-		values, ok := r.URL.Query()["allowWatchBookmarks"]
+		values, ok := queryArgs["allowWatchBookmarks"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -14442,7 +14562,7 @@ func decodeListCoreV1NamespacedPersistentVolumeClaimParams(args map[string]strin
 	}
 	// Decode query: continue.
 	{
-		values, ok := r.URL.Query()["continue"]
+		values, ok := queryArgs["continue"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -14477,7 +14597,7 @@ func decodeListCoreV1NamespacedPersistentVolumeClaimParams(args map[string]strin
 	}
 	// Decode query: fieldSelector.
 	{
-		values, ok := r.URL.Query()["fieldSelector"]
+		values, ok := queryArgs["fieldSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -14512,7 +14632,7 @@ func decodeListCoreV1NamespacedPersistentVolumeClaimParams(args map[string]strin
 	}
 	// Decode query: labelSelector.
 	{
-		values, ok := r.URL.Query()["labelSelector"]
+		values, ok := queryArgs["labelSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -14547,7 +14667,7 @@ func decodeListCoreV1NamespacedPersistentVolumeClaimParams(args map[string]strin
 	}
 	// Decode query: limit.
 	{
-		values, ok := r.URL.Query()["limit"]
+		values, ok := queryArgs["limit"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -14582,7 +14702,7 @@ func decodeListCoreV1NamespacedPersistentVolumeClaimParams(args map[string]strin
 	}
 	// Decode query: resourceVersion.
 	{
-		values, ok := r.URL.Query()["resourceVersion"]
+		values, ok := queryArgs["resourceVersion"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -14617,7 +14737,7 @@ func decodeListCoreV1NamespacedPersistentVolumeClaimParams(args map[string]strin
 	}
 	// Decode query: resourceVersionMatch.
 	{
-		values, ok := r.URL.Query()["resourceVersionMatch"]
+		values, ok := queryArgs["resourceVersionMatch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -14652,7 +14772,7 @@ func decodeListCoreV1NamespacedPersistentVolumeClaimParams(args map[string]strin
 	}
 	// Decode query: timeoutSeconds.
 	{
-		values, ok := r.URL.Query()["timeoutSeconds"]
+		values, ok := queryArgs["timeoutSeconds"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -14687,7 +14807,7 @@ func decodeListCoreV1NamespacedPersistentVolumeClaimParams(args map[string]strin
 	}
 	// Decode query: watch.
 	{
-		values, ok := r.URL.Query()["watch"]
+		values, ok := queryArgs["watch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -14753,7 +14873,7 @@ func decodeListCoreV1NamespacedPersistentVolumeClaimParams(args map[string]strin
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -14790,10 +14910,13 @@ func decodeListCoreV1NamespacedPersistentVolumeClaimParams(args map[string]strin
 }
 
 func decodeListCoreV1NamespacedPodParams(args map[string]string, r *http.Request) (ListCoreV1NamespacedPodParams, error) {
-	var params ListCoreV1NamespacedPodParams
+	var (
+		params    ListCoreV1NamespacedPodParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode query: allowWatchBookmarks.
 	{
-		values, ok := r.URL.Query()["allowWatchBookmarks"]
+		values, ok := queryArgs["allowWatchBookmarks"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -14828,7 +14951,7 @@ func decodeListCoreV1NamespacedPodParams(args map[string]string, r *http.Request
 	}
 	// Decode query: continue.
 	{
-		values, ok := r.URL.Query()["continue"]
+		values, ok := queryArgs["continue"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -14863,7 +14986,7 @@ func decodeListCoreV1NamespacedPodParams(args map[string]string, r *http.Request
 	}
 	// Decode query: fieldSelector.
 	{
-		values, ok := r.URL.Query()["fieldSelector"]
+		values, ok := queryArgs["fieldSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -14898,7 +15021,7 @@ func decodeListCoreV1NamespacedPodParams(args map[string]string, r *http.Request
 	}
 	// Decode query: labelSelector.
 	{
-		values, ok := r.URL.Query()["labelSelector"]
+		values, ok := queryArgs["labelSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -14933,7 +15056,7 @@ func decodeListCoreV1NamespacedPodParams(args map[string]string, r *http.Request
 	}
 	// Decode query: limit.
 	{
-		values, ok := r.URL.Query()["limit"]
+		values, ok := queryArgs["limit"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -14968,7 +15091,7 @@ func decodeListCoreV1NamespacedPodParams(args map[string]string, r *http.Request
 	}
 	// Decode query: resourceVersion.
 	{
-		values, ok := r.URL.Query()["resourceVersion"]
+		values, ok := queryArgs["resourceVersion"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -15003,7 +15126,7 @@ func decodeListCoreV1NamespacedPodParams(args map[string]string, r *http.Request
 	}
 	// Decode query: resourceVersionMatch.
 	{
-		values, ok := r.URL.Query()["resourceVersionMatch"]
+		values, ok := queryArgs["resourceVersionMatch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -15038,7 +15161,7 @@ func decodeListCoreV1NamespacedPodParams(args map[string]string, r *http.Request
 	}
 	// Decode query: timeoutSeconds.
 	{
-		values, ok := r.URL.Query()["timeoutSeconds"]
+		values, ok := queryArgs["timeoutSeconds"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -15073,7 +15196,7 @@ func decodeListCoreV1NamespacedPodParams(args map[string]string, r *http.Request
 	}
 	// Decode query: watch.
 	{
-		values, ok := r.URL.Query()["watch"]
+		values, ok := queryArgs["watch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -15139,7 +15262,7 @@ func decodeListCoreV1NamespacedPodParams(args map[string]string, r *http.Request
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -15176,10 +15299,13 @@ func decodeListCoreV1NamespacedPodParams(args map[string]string, r *http.Request
 }
 
 func decodeListCoreV1NamespacedPodTemplateParams(args map[string]string, r *http.Request) (ListCoreV1NamespacedPodTemplateParams, error) {
-	var params ListCoreV1NamespacedPodTemplateParams
+	var (
+		params    ListCoreV1NamespacedPodTemplateParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode query: allowWatchBookmarks.
 	{
-		values, ok := r.URL.Query()["allowWatchBookmarks"]
+		values, ok := queryArgs["allowWatchBookmarks"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -15214,7 +15340,7 @@ func decodeListCoreV1NamespacedPodTemplateParams(args map[string]string, r *http
 	}
 	// Decode query: continue.
 	{
-		values, ok := r.URL.Query()["continue"]
+		values, ok := queryArgs["continue"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -15249,7 +15375,7 @@ func decodeListCoreV1NamespacedPodTemplateParams(args map[string]string, r *http
 	}
 	// Decode query: fieldSelector.
 	{
-		values, ok := r.URL.Query()["fieldSelector"]
+		values, ok := queryArgs["fieldSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -15284,7 +15410,7 @@ func decodeListCoreV1NamespacedPodTemplateParams(args map[string]string, r *http
 	}
 	// Decode query: labelSelector.
 	{
-		values, ok := r.URL.Query()["labelSelector"]
+		values, ok := queryArgs["labelSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -15319,7 +15445,7 @@ func decodeListCoreV1NamespacedPodTemplateParams(args map[string]string, r *http
 	}
 	// Decode query: limit.
 	{
-		values, ok := r.URL.Query()["limit"]
+		values, ok := queryArgs["limit"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -15354,7 +15480,7 @@ func decodeListCoreV1NamespacedPodTemplateParams(args map[string]string, r *http
 	}
 	// Decode query: resourceVersion.
 	{
-		values, ok := r.URL.Query()["resourceVersion"]
+		values, ok := queryArgs["resourceVersion"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -15389,7 +15515,7 @@ func decodeListCoreV1NamespacedPodTemplateParams(args map[string]string, r *http
 	}
 	// Decode query: resourceVersionMatch.
 	{
-		values, ok := r.URL.Query()["resourceVersionMatch"]
+		values, ok := queryArgs["resourceVersionMatch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -15424,7 +15550,7 @@ func decodeListCoreV1NamespacedPodTemplateParams(args map[string]string, r *http
 	}
 	// Decode query: timeoutSeconds.
 	{
-		values, ok := r.URL.Query()["timeoutSeconds"]
+		values, ok := queryArgs["timeoutSeconds"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -15459,7 +15585,7 @@ func decodeListCoreV1NamespacedPodTemplateParams(args map[string]string, r *http
 	}
 	// Decode query: watch.
 	{
-		values, ok := r.URL.Query()["watch"]
+		values, ok := queryArgs["watch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -15525,7 +15651,7 @@ func decodeListCoreV1NamespacedPodTemplateParams(args map[string]string, r *http
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -15562,10 +15688,13 @@ func decodeListCoreV1NamespacedPodTemplateParams(args map[string]string, r *http
 }
 
 func decodeListCoreV1NamespacedReplicationControllerParams(args map[string]string, r *http.Request) (ListCoreV1NamespacedReplicationControllerParams, error) {
-	var params ListCoreV1NamespacedReplicationControllerParams
+	var (
+		params    ListCoreV1NamespacedReplicationControllerParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode query: allowWatchBookmarks.
 	{
-		values, ok := r.URL.Query()["allowWatchBookmarks"]
+		values, ok := queryArgs["allowWatchBookmarks"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -15600,7 +15729,7 @@ func decodeListCoreV1NamespacedReplicationControllerParams(args map[string]strin
 	}
 	// Decode query: continue.
 	{
-		values, ok := r.URL.Query()["continue"]
+		values, ok := queryArgs["continue"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -15635,7 +15764,7 @@ func decodeListCoreV1NamespacedReplicationControllerParams(args map[string]strin
 	}
 	// Decode query: fieldSelector.
 	{
-		values, ok := r.URL.Query()["fieldSelector"]
+		values, ok := queryArgs["fieldSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -15670,7 +15799,7 @@ func decodeListCoreV1NamespacedReplicationControllerParams(args map[string]strin
 	}
 	// Decode query: labelSelector.
 	{
-		values, ok := r.URL.Query()["labelSelector"]
+		values, ok := queryArgs["labelSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -15705,7 +15834,7 @@ func decodeListCoreV1NamespacedReplicationControllerParams(args map[string]strin
 	}
 	// Decode query: limit.
 	{
-		values, ok := r.URL.Query()["limit"]
+		values, ok := queryArgs["limit"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -15740,7 +15869,7 @@ func decodeListCoreV1NamespacedReplicationControllerParams(args map[string]strin
 	}
 	// Decode query: resourceVersion.
 	{
-		values, ok := r.URL.Query()["resourceVersion"]
+		values, ok := queryArgs["resourceVersion"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -15775,7 +15904,7 @@ func decodeListCoreV1NamespacedReplicationControllerParams(args map[string]strin
 	}
 	// Decode query: resourceVersionMatch.
 	{
-		values, ok := r.URL.Query()["resourceVersionMatch"]
+		values, ok := queryArgs["resourceVersionMatch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -15810,7 +15939,7 @@ func decodeListCoreV1NamespacedReplicationControllerParams(args map[string]strin
 	}
 	// Decode query: timeoutSeconds.
 	{
-		values, ok := r.URL.Query()["timeoutSeconds"]
+		values, ok := queryArgs["timeoutSeconds"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -15845,7 +15974,7 @@ func decodeListCoreV1NamespacedReplicationControllerParams(args map[string]strin
 	}
 	// Decode query: watch.
 	{
-		values, ok := r.URL.Query()["watch"]
+		values, ok := queryArgs["watch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -15911,7 +16040,7 @@ func decodeListCoreV1NamespacedReplicationControllerParams(args map[string]strin
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -15948,10 +16077,13 @@ func decodeListCoreV1NamespacedReplicationControllerParams(args map[string]strin
 }
 
 func decodeListCoreV1NamespacedResourceQuotaParams(args map[string]string, r *http.Request) (ListCoreV1NamespacedResourceQuotaParams, error) {
-	var params ListCoreV1NamespacedResourceQuotaParams
+	var (
+		params    ListCoreV1NamespacedResourceQuotaParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode query: allowWatchBookmarks.
 	{
-		values, ok := r.URL.Query()["allowWatchBookmarks"]
+		values, ok := queryArgs["allowWatchBookmarks"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -15986,7 +16118,7 @@ func decodeListCoreV1NamespacedResourceQuotaParams(args map[string]string, r *ht
 	}
 	// Decode query: continue.
 	{
-		values, ok := r.URL.Query()["continue"]
+		values, ok := queryArgs["continue"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -16021,7 +16153,7 @@ func decodeListCoreV1NamespacedResourceQuotaParams(args map[string]string, r *ht
 	}
 	// Decode query: fieldSelector.
 	{
-		values, ok := r.URL.Query()["fieldSelector"]
+		values, ok := queryArgs["fieldSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -16056,7 +16188,7 @@ func decodeListCoreV1NamespacedResourceQuotaParams(args map[string]string, r *ht
 	}
 	// Decode query: labelSelector.
 	{
-		values, ok := r.URL.Query()["labelSelector"]
+		values, ok := queryArgs["labelSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -16091,7 +16223,7 @@ func decodeListCoreV1NamespacedResourceQuotaParams(args map[string]string, r *ht
 	}
 	// Decode query: limit.
 	{
-		values, ok := r.URL.Query()["limit"]
+		values, ok := queryArgs["limit"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -16126,7 +16258,7 @@ func decodeListCoreV1NamespacedResourceQuotaParams(args map[string]string, r *ht
 	}
 	// Decode query: resourceVersion.
 	{
-		values, ok := r.URL.Query()["resourceVersion"]
+		values, ok := queryArgs["resourceVersion"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -16161,7 +16293,7 @@ func decodeListCoreV1NamespacedResourceQuotaParams(args map[string]string, r *ht
 	}
 	// Decode query: resourceVersionMatch.
 	{
-		values, ok := r.URL.Query()["resourceVersionMatch"]
+		values, ok := queryArgs["resourceVersionMatch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -16196,7 +16328,7 @@ func decodeListCoreV1NamespacedResourceQuotaParams(args map[string]string, r *ht
 	}
 	// Decode query: timeoutSeconds.
 	{
-		values, ok := r.URL.Query()["timeoutSeconds"]
+		values, ok := queryArgs["timeoutSeconds"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -16231,7 +16363,7 @@ func decodeListCoreV1NamespacedResourceQuotaParams(args map[string]string, r *ht
 	}
 	// Decode query: watch.
 	{
-		values, ok := r.URL.Query()["watch"]
+		values, ok := queryArgs["watch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -16297,7 +16429,7 @@ func decodeListCoreV1NamespacedResourceQuotaParams(args map[string]string, r *ht
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -16334,10 +16466,13 @@ func decodeListCoreV1NamespacedResourceQuotaParams(args map[string]string, r *ht
 }
 
 func decodeListCoreV1NamespacedSecretParams(args map[string]string, r *http.Request) (ListCoreV1NamespacedSecretParams, error) {
-	var params ListCoreV1NamespacedSecretParams
+	var (
+		params    ListCoreV1NamespacedSecretParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode query: allowWatchBookmarks.
 	{
-		values, ok := r.URL.Query()["allowWatchBookmarks"]
+		values, ok := queryArgs["allowWatchBookmarks"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -16372,7 +16507,7 @@ func decodeListCoreV1NamespacedSecretParams(args map[string]string, r *http.Requ
 	}
 	// Decode query: continue.
 	{
-		values, ok := r.URL.Query()["continue"]
+		values, ok := queryArgs["continue"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -16407,7 +16542,7 @@ func decodeListCoreV1NamespacedSecretParams(args map[string]string, r *http.Requ
 	}
 	// Decode query: fieldSelector.
 	{
-		values, ok := r.URL.Query()["fieldSelector"]
+		values, ok := queryArgs["fieldSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -16442,7 +16577,7 @@ func decodeListCoreV1NamespacedSecretParams(args map[string]string, r *http.Requ
 	}
 	// Decode query: labelSelector.
 	{
-		values, ok := r.URL.Query()["labelSelector"]
+		values, ok := queryArgs["labelSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -16477,7 +16612,7 @@ func decodeListCoreV1NamespacedSecretParams(args map[string]string, r *http.Requ
 	}
 	// Decode query: limit.
 	{
-		values, ok := r.URL.Query()["limit"]
+		values, ok := queryArgs["limit"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -16512,7 +16647,7 @@ func decodeListCoreV1NamespacedSecretParams(args map[string]string, r *http.Requ
 	}
 	// Decode query: resourceVersion.
 	{
-		values, ok := r.URL.Query()["resourceVersion"]
+		values, ok := queryArgs["resourceVersion"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -16547,7 +16682,7 @@ func decodeListCoreV1NamespacedSecretParams(args map[string]string, r *http.Requ
 	}
 	// Decode query: resourceVersionMatch.
 	{
-		values, ok := r.URL.Query()["resourceVersionMatch"]
+		values, ok := queryArgs["resourceVersionMatch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -16582,7 +16717,7 @@ func decodeListCoreV1NamespacedSecretParams(args map[string]string, r *http.Requ
 	}
 	// Decode query: timeoutSeconds.
 	{
-		values, ok := r.URL.Query()["timeoutSeconds"]
+		values, ok := queryArgs["timeoutSeconds"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -16617,7 +16752,7 @@ func decodeListCoreV1NamespacedSecretParams(args map[string]string, r *http.Requ
 	}
 	// Decode query: watch.
 	{
-		values, ok := r.URL.Query()["watch"]
+		values, ok := queryArgs["watch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -16683,7 +16818,7 @@ func decodeListCoreV1NamespacedSecretParams(args map[string]string, r *http.Requ
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -16720,10 +16855,13 @@ func decodeListCoreV1NamespacedSecretParams(args map[string]string, r *http.Requ
 }
 
 func decodeListCoreV1NamespacedServiceParams(args map[string]string, r *http.Request) (ListCoreV1NamespacedServiceParams, error) {
-	var params ListCoreV1NamespacedServiceParams
+	var (
+		params    ListCoreV1NamespacedServiceParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode query: allowWatchBookmarks.
 	{
-		values, ok := r.URL.Query()["allowWatchBookmarks"]
+		values, ok := queryArgs["allowWatchBookmarks"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -16758,7 +16896,7 @@ func decodeListCoreV1NamespacedServiceParams(args map[string]string, r *http.Req
 	}
 	// Decode query: continue.
 	{
-		values, ok := r.URL.Query()["continue"]
+		values, ok := queryArgs["continue"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -16793,7 +16931,7 @@ func decodeListCoreV1NamespacedServiceParams(args map[string]string, r *http.Req
 	}
 	// Decode query: fieldSelector.
 	{
-		values, ok := r.URL.Query()["fieldSelector"]
+		values, ok := queryArgs["fieldSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -16828,7 +16966,7 @@ func decodeListCoreV1NamespacedServiceParams(args map[string]string, r *http.Req
 	}
 	// Decode query: labelSelector.
 	{
-		values, ok := r.URL.Query()["labelSelector"]
+		values, ok := queryArgs["labelSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -16863,7 +17001,7 @@ func decodeListCoreV1NamespacedServiceParams(args map[string]string, r *http.Req
 	}
 	// Decode query: limit.
 	{
-		values, ok := r.URL.Query()["limit"]
+		values, ok := queryArgs["limit"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -16898,7 +17036,7 @@ func decodeListCoreV1NamespacedServiceParams(args map[string]string, r *http.Req
 	}
 	// Decode query: resourceVersion.
 	{
-		values, ok := r.URL.Query()["resourceVersion"]
+		values, ok := queryArgs["resourceVersion"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -16933,7 +17071,7 @@ func decodeListCoreV1NamespacedServiceParams(args map[string]string, r *http.Req
 	}
 	// Decode query: resourceVersionMatch.
 	{
-		values, ok := r.URL.Query()["resourceVersionMatch"]
+		values, ok := queryArgs["resourceVersionMatch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -16968,7 +17106,7 @@ func decodeListCoreV1NamespacedServiceParams(args map[string]string, r *http.Req
 	}
 	// Decode query: timeoutSeconds.
 	{
-		values, ok := r.URL.Query()["timeoutSeconds"]
+		values, ok := queryArgs["timeoutSeconds"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -17003,7 +17141,7 @@ func decodeListCoreV1NamespacedServiceParams(args map[string]string, r *http.Req
 	}
 	// Decode query: watch.
 	{
-		values, ok := r.URL.Query()["watch"]
+		values, ok := queryArgs["watch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -17069,7 +17207,7 @@ func decodeListCoreV1NamespacedServiceParams(args map[string]string, r *http.Req
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -17106,10 +17244,13 @@ func decodeListCoreV1NamespacedServiceParams(args map[string]string, r *http.Req
 }
 
 func decodeListCoreV1NamespacedServiceAccountParams(args map[string]string, r *http.Request) (ListCoreV1NamespacedServiceAccountParams, error) {
-	var params ListCoreV1NamespacedServiceAccountParams
+	var (
+		params    ListCoreV1NamespacedServiceAccountParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode query: allowWatchBookmarks.
 	{
-		values, ok := r.URL.Query()["allowWatchBookmarks"]
+		values, ok := queryArgs["allowWatchBookmarks"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -17144,7 +17285,7 @@ func decodeListCoreV1NamespacedServiceAccountParams(args map[string]string, r *h
 	}
 	// Decode query: continue.
 	{
-		values, ok := r.URL.Query()["continue"]
+		values, ok := queryArgs["continue"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -17179,7 +17320,7 @@ func decodeListCoreV1NamespacedServiceAccountParams(args map[string]string, r *h
 	}
 	// Decode query: fieldSelector.
 	{
-		values, ok := r.URL.Query()["fieldSelector"]
+		values, ok := queryArgs["fieldSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -17214,7 +17355,7 @@ func decodeListCoreV1NamespacedServiceAccountParams(args map[string]string, r *h
 	}
 	// Decode query: labelSelector.
 	{
-		values, ok := r.URL.Query()["labelSelector"]
+		values, ok := queryArgs["labelSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -17249,7 +17390,7 @@ func decodeListCoreV1NamespacedServiceAccountParams(args map[string]string, r *h
 	}
 	// Decode query: limit.
 	{
-		values, ok := r.URL.Query()["limit"]
+		values, ok := queryArgs["limit"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -17284,7 +17425,7 @@ func decodeListCoreV1NamespacedServiceAccountParams(args map[string]string, r *h
 	}
 	// Decode query: resourceVersion.
 	{
-		values, ok := r.URL.Query()["resourceVersion"]
+		values, ok := queryArgs["resourceVersion"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -17319,7 +17460,7 @@ func decodeListCoreV1NamespacedServiceAccountParams(args map[string]string, r *h
 	}
 	// Decode query: resourceVersionMatch.
 	{
-		values, ok := r.URL.Query()["resourceVersionMatch"]
+		values, ok := queryArgs["resourceVersionMatch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -17354,7 +17495,7 @@ func decodeListCoreV1NamespacedServiceAccountParams(args map[string]string, r *h
 	}
 	// Decode query: timeoutSeconds.
 	{
-		values, ok := r.URL.Query()["timeoutSeconds"]
+		values, ok := queryArgs["timeoutSeconds"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -17389,7 +17530,7 @@ func decodeListCoreV1NamespacedServiceAccountParams(args map[string]string, r *h
 	}
 	// Decode query: watch.
 	{
-		values, ok := r.URL.Query()["watch"]
+		values, ok := queryArgs["watch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -17455,7 +17596,7 @@ func decodeListCoreV1NamespacedServiceAccountParams(args map[string]string, r *h
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -17492,10 +17633,13 @@ func decodeListCoreV1NamespacedServiceAccountParams(args map[string]string, r *h
 }
 
 func decodeListCoreV1NodeParams(args map[string]string, r *http.Request) (ListCoreV1NodeParams, error) {
-	var params ListCoreV1NodeParams
+	var (
+		params    ListCoreV1NodeParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode query: allowWatchBookmarks.
 	{
-		values, ok := r.URL.Query()["allowWatchBookmarks"]
+		values, ok := queryArgs["allowWatchBookmarks"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -17530,7 +17674,7 @@ func decodeListCoreV1NodeParams(args map[string]string, r *http.Request) (ListCo
 	}
 	// Decode query: continue.
 	{
-		values, ok := r.URL.Query()["continue"]
+		values, ok := queryArgs["continue"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -17565,7 +17709,7 @@ func decodeListCoreV1NodeParams(args map[string]string, r *http.Request) (ListCo
 	}
 	// Decode query: fieldSelector.
 	{
-		values, ok := r.URL.Query()["fieldSelector"]
+		values, ok := queryArgs["fieldSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -17600,7 +17744,7 @@ func decodeListCoreV1NodeParams(args map[string]string, r *http.Request) (ListCo
 	}
 	// Decode query: labelSelector.
 	{
-		values, ok := r.URL.Query()["labelSelector"]
+		values, ok := queryArgs["labelSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -17635,7 +17779,7 @@ func decodeListCoreV1NodeParams(args map[string]string, r *http.Request) (ListCo
 	}
 	// Decode query: limit.
 	{
-		values, ok := r.URL.Query()["limit"]
+		values, ok := queryArgs["limit"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -17670,7 +17814,7 @@ func decodeListCoreV1NodeParams(args map[string]string, r *http.Request) (ListCo
 	}
 	// Decode query: resourceVersion.
 	{
-		values, ok := r.URL.Query()["resourceVersion"]
+		values, ok := queryArgs["resourceVersion"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -17705,7 +17849,7 @@ func decodeListCoreV1NodeParams(args map[string]string, r *http.Request) (ListCo
 	}
 	// Decode query: resourceVersionMatch.
 	{
-		values, ok := r.URL.Query()["resourceVersionMatch"]
+		values, ok := queryArgs["resourceVersionMatch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -17740,7 +17884,7 @@ func decodeListCoreV1NodeParams(args map[string]string, r *http.Request) (ListCo
 	}
 	// Decode query: timeoutSeconds.
 	{
-		values, ok := r.URL.Query()["timeoutSeconds"]
+		values, ok := queryArgs["timeoutSeconds"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -17775,7 +17919,7 @@ func decodeListCoreV1NodeParams(args map[string]string, r *http.Request) (ListCo
 	}
 	// Decode query: watch.
 	{
-		values, ok := r.URL.Query()["watch"]
+		values, ok := queryArgs["watch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -17810,7 +17954,7 @@ func decodeListCoreV1NodeParams(args map[string]string, r *http.Request) (ListCo
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -17847,10 +17991,13 @@ func decodeListCoreV1NodeParams(args map[string]string, r *http.Request) (ListCo
 }
 
 func decodeListCoreV1PersistentVolumeParams(args map[string]string, r *http.Request) (ListCoreV1PersistentVolumeParams, error) {
-	var params ListCoreV1PersistentVolumeParams
+	var (
+		params    ListCoreV1PersistentVolumeParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode query: allowWatchBookmarks.
 	{
-		values, ok := r.URL.Query()["allowWatchBookmarks"]
+		values, ok := queryArgs["allowWatchBookmarks"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -17885,7 +18032,7 @@ func decodeListCoreV1PersistentVolumeParams(args map[string]string, r *http.Requ
 	}
 	// Decode query: continue.
 	{
-		values, ok := r.URL.Query()["continue"]
+		values, ok := queryArgs["continue"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -17920,7 +18067,7 @@ func decodeListCoreV1PersistentVolumeParams(args map[string]string, r *http.Requ
 	}
 	// Decode query: fieldSelector.
 	{
-		values, ok := r.URL.Query()["fieldSelector"]
+		values, ok := queryArgs["fieldSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -17955,7 +18102,7 @@ func decodeListCoreV1PersistentVolumeParams(args map[string]string, r *http.Requ
 	}
 	// Decode query: labelSelector.
 	{
-		values, ok := r.URL.Query()["labelSelector"]
+		values, ok := queryArgs["labelSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -17990,7 +18137,7 @@ func decodeListCoreV1PersistentVolumeParams(args map[string]string, r *http.Requ
 	}
 	// Decode query: limit.
 	{
-		values, ok := r.URL.Query()["limit"]
+		values, ok := queryArgs["limit"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -18025,7 +18172,7 @@ func decodeListCoreV1PersistentVolumeParams(args map[string]string, r *http.Requ
 	}
 	// Decode query: resourceVersion.
 	{
-		values, ok := r.URL.Query()["resourceVersion"]
+		values, ok := queryArgs["resourceVersion"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -18060,7 +18207,7 @@ func decodeListCoreV1PersistentVolumeParams(args map[string]string, r *http.Requ
 	}
 	// Decode query: resourceVersionMatch.
 	{
-		values, ok := r.URL.Query()["resourceVersionMatch"]
+		values, ok := queryArgs["resourceVersionMatch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -18095,7 +18242,7 @@ func decodeListCoreV1PersistentVolumeParams(args map[string]string, r *http.Requ
 	}
 	// Decode query: timeoutSeconds.
 	{
-		values, ok := r.URL.Query()["timeoutSeconds"]
+		values, ok := queryArgs["timeoutSeconds"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -18130,7 +18277,7 @@ func decodeListCoreV1PersistentVolumeParams(args map[string]string, r *http.Requ
 	}
 	// Decode query: watch.
 	{
-		values, ok := r.URL.Query()["watch"]
+		values, ok := queryArgs["watch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -18165,7 +18312,7 @@ func decodeListCoreV1PersistentVolumeParams(args map[string]string, r *http.Requ
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -18202,10 +18349,13 @@ func decodeListCoreV1PersistentVolumeParams(args map[string]string, r *http.Requ
 }
 
 func decodeListCoreV1PersistentVolumeClaimForAllNamespacesParams(args map[string]string, r *http.Request) (ListCoreV1PersistentVolumeClaimForAllNamespacesParams, error) {
-	var params ListCoreV1PersistentVolumeClaimForAllNamespacesParams
+	var (
+		params    ListCoreV1PersistentVolumeClaimForAllNamespacesParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode query: allowWatchBookmarks.
 	{
-		values, ok := r.URL.Query()["allowWatchBookmarks"]
+		values, ok := queryArgs["allowWatchBookmarks"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -18240,7 +18390,7 @@ func decodeListCoreV1PersistentVolumeClaimForAllNamespacesParams(args map[string
 	}
 	// Decode query: continue.
 	{
-		values, ok := r.URL.Query()["continue"]
+		values, ok := queryArgs["continue"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -18275,7 +18425,7 @@ func decodeListCoreV1PersistentVolumeClaimForAllNamespacesParams(args map[string
 	}
 	// Decode query: fieldSelector.
 	{
-		values, ok := r.URL.Query()["fieldSelector"]
+		values, ok := queryArgs["fieldSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -18310,7 +18460,7 @@ func decodeListCoreV1PersistentVolumeClaimForAllNamespacesParams(args map[string
 	}
 	// Decode query: labelSelector.
 	{
-		values, ok := r.URL.Query()["labelSelector"]
+		values, ok := queryArgs["labelSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -18345,7 +18495,7 @@ func decodeListCoreV1PersistentVolumeClaimForAllNamespacesParams(args map[string
 	}
 	// Decode query: limit.
 	{
-		values, ok := r.URL.Query()["limit"]
+		values, ok := queryArgs["limit"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -18380,7 +18530,7 @@ func decodeListCoreV1PersistentVolumeClaimForAllNamespacesParams(args map[string
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -18415,7 +18565,7 @@ func decodeListCoreV1PersistentVolumeClaimForAllNamespacesParams(args map[string
 	}
 	// Decode query: resourceVersion.
 	{
-		values, ok := r.URL.Query()["resourceVersion"]
+		values, ok := queryArgs["resourceVersion"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -18450,7 +18600,7 @@ func decodeListCoreV1PersistentVolumeClaimForAllNamespacesParams(args map[string
 	}
 	// Decode query: resourceVersionMatch.
 	{
-		values, ok := r.URL.Query()["resourceVersionMatch"]
+		values, ok := queryArgs["resourceVersionMatch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -18485,7 +18635,7 @@ func decodeListCoreV1PersistentVolumeClaimForAllNamespacesParams(args map[string
 	}
 	// Decode query: timeoutSeconds.
 	{
-		values, ok := r.URL.Query()["timeoutSeconds"]
+		values, ok := queryArgs["timeoutSeconds"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -18520,7 +18670,7 @@ func decodeListCoreV1PersistentVolumeClaimForAllNamespacesParams(args map[string
 	}
 	// Decode query: watch.
 	{
-		values, ok := r.URL.Query()["watch"]
+		values, ok := queryArgs["watch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -18557,10 +18707,13 @@ func decodeListCoreV1PersistentVolumeClaimForAllNamespacesParams(args map[string
 }
 
 func decodeListCoreV1PodForAllNamespacesParams(args map[string]string, r *http.Request) (ListCoreV1PodForAllNamespacesParams, error) {
-	var params ListCoreV1PodForAllNamespacesParams
+	var (
+		params    ListCoreV1PodForAllNamespacesParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode query: allowWatchBookmarks.
 	{
-		values, ok := r.URL.Query()["allowWatchBookmarks"]
+		values, ok := queryArgs["allowWatchBookmarks"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -18595,7 +18748,7 @@ func decodeListCoreV1PodForAllNamespacesParams(args map[string]string, r *http.R
 	}
 	// Decode query: continue.
 	{
-		values, ok := r.URL.Query()["continue"]
+		values, ok := queryArgs["continue"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -18630,7 +18783,7 @@ func decodeListCoreV1PodForAllNamespacesParams(args map[string]string, r *http.R
 	}
 	// Decode query: fieldSelector.
 	{
-		values, ok := r.URL.Query()["fieldSelector"]
+		values, ok := queryArgs["fieldSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -18665,7 +18818,7 @@ func decodeListCoreV1PodForAllNamespacesParams(args map[string]string, r *http.R
 	}
 	// Decode query: labelSelector.
 	{
-		values, ok := r.URL.Query()["labelSelector"]
+		values, ok := queryArgs["labelSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -18700,7 +18853,7 @@ func decodeListCoreV1PodForAllNamespacesParams(args map[string]string, r *http.R
 	}
 	// Decode query: limit.
 	{
-		values, ok := r.URL.Query()["limit"]
+		values, ok := queryArgs["limit"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -18735,7 +18888,7 @@ func decodeListCoreV1PodForAllNamespacesParams(args map[string]string, r *http.R
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -18770,7 +18923,7 @@ func decodeListCoreV1PodForAllNamespacesParams(args map[string]string, r *http.R
 	}
 	// Decode query: resourceVersion.
 	{
-		values, ok := r.URL.Query()["resourceVersion"]
+		values, ok := queryArgs["resourceVersion"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -18805,7 +18958,7 @@ func decodeListCoreV1PodForAllNamespacesParams(args map[string]string, r *http.R
 	}
 	// Decode query: resourceVersionMatch.
 	{
-		values, ok := r.URL.Query()["resourceVersionMatch"]
+		values, ok := queryArgs["resourceVersionMatch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -18840,7 +18993,7 @@ func decodeListCoreV1PodForAllNamespacesParams(args map[string]string, r *http.R
 	}
 	// Decode query: timeoutSeconds.
 	{
-		values, ok := r.URL.Query()["timeoutSeconds"]
+		values, ok := queryArgs["timeoutSeconds"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -18875,7 +19028,7 @@ func decodeListCoreV1PodForAllNamespacesParams(args map[string]string, r *http.R
 	}
 	// Decode query: watch.
 	{
-		values, ok := r.URL.Query()["watch"]
+		values, ok := queryArgs["watch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -18912,10 +19065,13 @@ func decodeListCoreV1PodForAllNamespacesParams(args map[string]string, r *http.R
 }
 
 func decodeListCoreV1PodTemplateForAllNamespacesParams(args map[string]string, r *http.Request) (ListCoreV1PodTemplateForAllNamespacesParams, error) {
-	var params ListCoreV1PodTemplateForAllNamespacesParams
+	var (
+		params    ListCoreV1PodTemplateForAllNamespacesParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode query: allowWatchBookmarks.
 	{
-		values, ok := r.URL.Query()["allowWatchBookmarks"]
+		values, ok := queryArgs["allowWatchBookmarks"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -18950,7 +19106,7 @@ func decodeListCoreV1PodTemplateForAllNamespacesParams(args map[string]string, r
 	}
 	// Decode query: continue.
 	{
-		values, ok := r.URL.Query()["continue"]
+		values, ok := queryArgs["continue"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -18985,7 +19141,7 @@ func decodeListCoreV1PodTemplateForAllNamespacesParams(args map[string]string, r
 	}
 	// Decode query: fieldSelector.
 	{
-		values, ok := r.URL.Query()["fieldSelector"]
+		values, ok := queryArgs["fieldSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -19020,7 +19176,7 @@ func decodeListCoreV1PodTemplateForAllNamespacesParams(args map[string]string, r
 	}
 	// Decode query: labelSelector.
 	{
-		values, ok := r.URL.Query()["labelSelector"]
+		values, ok := queryArgs["labelSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -19055,7 +19211,7 @@ func decodeListCoreV1PodTemplateForAllNamespacesParams(args map[string]string, r
 	}
 	// Decode query: limit.
 	{
-		values, ok := r.URL.Query()["limit"]
+		values, ok := queryArgs["limit"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -19090,7 +19246,7 @@ func decodeListCoreV1PodTemplateForAllNamespacesParams(args map[string]string, r
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -19125,7 +19281,7 @@ func decodeListCoreV1PodTemplateForAllNamespacesParams(args map[string]string, r
 	}
 	// Decode query: resourceVersion.
 	{
-		values, ok := r.URL.Query()["resourceVersion"]
+		values, ok := queryArgs["resourceVersion"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -19160,7 +19316,7 @@ func decodeListCoreV1PodTemplateForAllNamespacesParams(args map[string]string, r
 	}
 	// Decode query: resourceVersionMatch.
 	{
-		values, ok := r.URL.Query()["resourceVersionMatch"]
+		values, ok := queryArgs["resourceVersionMatch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -19195,7 +19351,7 @@ func decodeListCoreV1PodTemplateForAllNamespacesParams(args map[string]string, r
 	}
 	// Decode query: timeoutSeconds.
 	{
-		values, ok := r.URL.Query()["timeoutSeconds"]
+		values, ok := queryArgs["timeoutSeconds"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -19230,7 +19386,7 @@ func decodeListCoreV1PodTemplateForAllNamespacesParams(args map[string]string, r
 	}
 	// Decode query: watch.
 	{
-		values, ok := r.URL.Query()["watch"]
+		values, ok := queryArgs["watch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -19267,10 +19423,13 @@ func decodeListCoreV1PodTemplateForAllNamespacesParams(args map[string]string, r
 }
 
 func decodeListCoreV1ReplicationControllerForAllNamespacesParams(args map[string]string, r *http.Request) (ListCoreV1ReplicationControllerForAllNamespacesParams, error) {
-	var params ListCoreV1ReplicationControllerForAllNamespacesParams
+	var (
+		params    ListCoreV1ReplicationControllerForAllNamespacesParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode query: allowWatchBookmarks.
 	{
-		values, ok := r.URL.Query()["allowWatchBookmarks"]
+		values, ok := queryArgs["allowWatchBookmarks"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -19305,7 +19464,7 @@ func decodeListCoreV1ReplicationControllerForAllNamespacesParams(args map[string
 	}
 	// Decode query: continue.
 	{
-		values, ok := r.URL.Query()["continue"]
+		values, ok := queryArgs["continue"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -19340,7 +19499,7 @@ func decodeListCoreV1ReplicationControllerForAllNamespacesParams(args map[string
 	}
 	// Decode query: fieldSelector.
 	{
-		values, ok := r.URL.Query()["fieldSelector"]
+		values, ok := queryArgs["fieldSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -19375,7 +19534,7 @@ func decodeListCoreV1ReplicationControllerForAllNamespacesParams(args map[string
 	}
 	// Decode query: labelSelector.
 	{
-		values, ok := r.URL.Query()["labelSelector"]
+		values, ok := queryArgs["labelSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -19410,7 +19569,7 @@ func decodeListCoreV1ReplicationControllerForAllNamespacesParams(args map[string
 	}
 	// Decode query: limit.
 	{
-		values, ok := r.URL.Query()["limit"]
+		values, ok := queryArgs["limit"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -19445,7 +19604,7 @@ func decodeListCoreV1ReplicationControllerForAllNamespacesParams(args map[string
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -19480,7 +19639,7 @@ func decodeListCoreV1ReplicationControllerForAllNamespacesParams(args map[string
 	}
 	// Decode query: resourceVersion.
 	{
-		values, ok := r.URL.Query()["resourceVersion"]
+		values, ok := queryArgs["resourceVersion"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -19515,7 +19674,7 @@ func decodeListCoreV1ReplicationControllerForAllNamespacesParams(args map[string
 	}
 	// Decode query: resourceVersionMatch.
 	{
-		values, ok := r.URL.Query()["resourceVersionMatch"]
+		values, ok := queryArgs["resourceVersionMatch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -19550,7 +19709,7 @@ func decodeListCoreV1ReplicationControllerForAllNamespacesParams(args map[string
 	}
 	// Decode query: timeoutSeconds.
 	{
-		values, ok := r.URL.Query()["timeoutSeconds"]
+		values, ok := queryArgs["timeoutSeconds"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -19585,7 +19744,7 @@ func decodeListCoreV1ReplicationControllerForAllNamespacesParams(args map[string
 	}
 	// Decode query: watch.
 	{
-		values, ok := r.URL.Query()["watch"]
+		values, ok := queryArgs["watch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -19622,10 +19781,13 @@ func decodeListCoreV1ReplicationControllerForAllNamespacesParams(args map[string
 }
 
 func decodeListCoreV1ResourceQuotaForAllNamespacesParams(args map[string]string, r *http.Request) (ListCoreV1ResourceQuotaForAllNamespacesParams, error) {
-	var params ListCoreV1ResourceQuotaForAllNamespacesParams
+	var (
+		params    ListCoreV1ResourceQuotaForAllNamespacesParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode query: allowWatchBookmarks.
 	{
-		values, ok := r.URL.Query()["allowWatchBookmarks"]
+		values, ok := queryArgs["allowWatchBookmarks"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -19660,7 +19822,7 @@ func decodeListCoreV1ResourceQuotaForAllNamespacesParams(args map[string]string,
 	}
 	// Decode query: continue.
 	{
-		values, ok := r.URL.Query()["continue"]
+		values, ok := queryArgs["continue"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -19695,7 +19857,7 @@ func decodeListCoreV1ResourceQuotaForAllNamespacesParams(args map[string]string,
 	}
 	// Decode query: fieldSelector.
 	{
-		values, ok := r.URL.Query()["fieldSelector"]
+		values, ok := queryArgs["fieldSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -19730,7 +19892,7 @@ func decodeListCoreV1ResourceQuotaForAllNamespacesParams(args map[string]string,
 	}
 	// Decode query: labelSelector.
 	{
-		values, ok := r.URL.Query()["labelSelector"]
+		values, ok := queryArgs["labelSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -19765,7 +19927,7 @@ func decodeListCoreV1ResourceQuotaForAllNamespacesParams(args map[string]string,
 	}
 	// Decode query: limit.
 	{
-		values, ok := r.URL.Query()["limit"]
+		values, ok := queryArgs["limit"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -19800,7 +19962,7 @@ func decodeListCoreV1ResourceQuotaForAllNamespacesParams(args map[string]string,
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -19835,7 +19997,7 @@ func decodeListCoreV1ResourceQuotaForAllNamespacesParams(args map[string]string,
 	}
 	// Decode query: resourceVersion.
 	{
-		values, ok := r.URL.Query()["resourceVersion"]
+		values, ok := queryArgs["resourceVersion"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -19870,7 +20032,7 @@ func decodeListCoreV1ResourceQuotaForAllNamespacesParams(args map[string]string,
 	}
 	// Decode query: resourceVersionMatch.
 	{
-		values, ok := r.URL.Query()["resourceVersionMatch"]
+		values, ok := queryArgs["resourceVersionMatch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -19905,7 +20067,7 @@ func decodeListCoreV1ResourceQuotaForAllNamespacesParams(args map[string]string,
 	}
 	// Decode query: timeoutSeconds.
 	{
-		values, ok := r.URL.Query()["timeoutSeconds"]
+		values, ok := queryArgs["timeoutSeconds"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -19940,7 +20102,7 @@ func decodeListCoreV1ResourceQuotaForAllNamespacesParams(args map[string]string,
 	}
 	// Decode query: watch.
 	{
-		values, ok := r.URL.Query()["watch"]
+		values, ok := queryArgs["watch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -19977,10 +20139,13 @@ func decodeListCoreV1ResourceQuotaForAllNamespacesParams(args map[string]string,
 }
 
 func decodeListCoreV1SecretForAllNamespacesParams(args map[string]string, r *http.Request) (ListCoreV1SecretForAllNamespacesParams, error) {
-	var params ListCoreV1SecretForAllNamespacesParams
+	var (
+		params    ListCoreV1SecretForAllNamespacesParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode query: allowWatchBookmarks.
 	{
-		values, ok := r.URL.Query()["allowWatchBookmarks"]
+		values, ok := queryArgs["allowWatchBookmarks"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -20015,7 +20180,7 @@ func decodeListCoreV1SecretForAllNamespacesParams(args map[string]string, r *htt
 	}
 	// Decode query: continue.
 	{
-		values, ok := r.URL.Query()["continue"]
+		values, ok := queryArgs["continue"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -20050,7 +20215,7 @@ func decodeListCoreV1SecretForAllNamespacesParams(args map[string]string, r *htt
 	}
 	// Decode query: fieldSelector.
 	{
-		values, ok := r.URL.Query()["fieldSelector"]
+		values, ok := queryArgs["fieldSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -20085,7 +20250,7 @@ func decodeListCoreV1SecretForAllNamespacesParams(args map[string]string, r *htt
 	}
 	// Decode query: labelSelector.
 	{
-		values, ok := r.URL.Query()["labelSelector"]
+		values, ok := queryArgs["labelSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -20120,7 +20285,7 @@ func decodeListCoreV1SecretForAllNamespacesParams(args map[string]string, r *htt
 	}
 	// Decode query: limit.
 	{
-		values, ok := r.URL.Query()["limit"]
+		values, ok := queryArgs["limit"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -20155,7 +20320,7 @@ func decodeListCoreV1SecretForAllNamespacesParams(args map[string]string, r *htt
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -20190,7 +20355,7 @@ func decodeListCoreV1SecretForAllNamespacesParams(args map[string]string, r *htt
 	}
 	// Decode query: resourceVersion.
 	{
-		values, ok := r.URL.Query()["resourceVersion"]
+		values, ok := queryArgs["resourceVersion"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -20225,7 +20390,7 @@ func decodeListCoreV1SecretForAllNamespacesParams(args map[string]string, r *htt
 	}
 	// Decode query: resourceVersionMatch.
 	{
-		values, ok := r.URL.Query()["resourceVersionMatch"]
+		values, ok := queryArgs["resourceVersionMatch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -20260,7 +20425,7 @@ func decodeListCoreV1SecretForAllNamespacesParams(args map[string]string, r *htt
 	}
 	// Decode query: timeoutSeconds.
 	{
-		values, ok := r.URL.Query()["timeoutSeconds"]
+		values, ok := queryArgs["timeoutSeconds"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -20295,7 +20460,7 @@ func decodeListCoreV1SecretForAllNamespacesParams(args map[string]string, r *htt
 	}
 	// Decode query: watch.
 	{
-		values, ok := r.URL.Query()["watch"]
+		values, ok := queryArgs["watch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -20332,10 +20497,13 @@ func decodeListCoreV1SecretForAllNamespacesParams(args map[string]string, r *htt
 }
 
 func decodeListCoreV1ServiceAccountForAllNamespacesParams(args map[string]string, r *http.Request) (ListCoreV1ServiceAccountForAllNamespacesParams, error) {
-	var params ListCoreV1ServiceAccountForAllNamespacesParams
+	var (
+		params    ListCoreV1ServiceAccountForAllNamespacesParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode query: allowWatchBookmarks.
 	{
-		values, ok := r.URL.Query()["allowWatchBookmarks"]
+		values, ok := queryArgs["allowWatchBookmarks"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -20370,7 +20538,7 @@ func decodeListCoreV1ServiceAccountForAllNamespacesParams(args map[string]string
 	}
 	// Decode query: continue.
 	{
-		values, ok := r.URL.Query()["continue"]
+		values, ok := queryArgs["continue"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -20405,7 +20573,7 @@ func decodeListCoreV1ServiceAccountForAllNamespacesParams(args map[string]string
 	}
 	// Decode query: fieldSelector.
 	{
-		values, ok := r.URL.Query()["fieldSelector"]
+		values, ok := queryArgs["fieldSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -20440,7 +20608,7 @@ func decodeListCoreV1ServiceAccountForAllNamespacesParams(args map[string]string
 	}
 	// Decode query: labelSelector.
 	{
-		values, ok := r.URL.Query()["labelSelector"]
+		values, ok := queryArgs["labelSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -20475,7 +20643,7 @@ func decodeListCoreV1ServiceAccountForAllNamespacesParams(args map[string]string
 	}
 	// Decode query: limit.
 	{
-		values, ok := r.URL.Query()["limit"]
+		values, ok := queryArgs["limit"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -20510,7 +20678,7 @@ func decodeListCoreV1ServiceAccountForAllNamespacesParams(args map[string]string
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -20545,7 +20713,7 @@ func decodeListCoreV1ServiceAccountForAllNamespacesParams(args map[string]string
 	}
 	// Decode query: resourceVersion.
 	{
-		values, ok := r.URL.Query()["resourceVersion"]
+		values, ok := queryArgs["resourceVersion"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -20580,7 +20748,7 @@ func decodeListCoreV1ServiceAccountForAllNamespacesParams(args map[string]string
 	}
 	// Decode query: resourceVersionMatch.
 	{
-		values, ok := r.URL.Query()["resourceVersionMatch"]
+		values, ok := queryArgs["resourceVersionMatch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -20615,7 +20783,7 @@ func decodeListCoreV1ServiceAccountForAllNamespacesParams(args map[string]string
 	}
 	// Decode query: timeoutSeconds.
 	{
-		values, ok := r.URL.Query()["timeoutSeconds"]
+		values, ok := queryArgs["timeoutSeconds"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -20650,7 +20818,7 @@ func decodeListCoreV1ServiceAccountForAllNamespacesParams(args map[string]string
 	}
 	// Decode query: watch.
 	{
-		values, ok := r.URL.Query()["watch"]
+		values, ok := queryArgs["watch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -20687,10 +20855,13 @@ func decodeListCoreV1ServiceAccountForAllNamespacesParams(args map[string]string
 }
 
 func decodeListCoreV1ServiceForAllNamespacesParams(args map[string]string, r *http.Request) (ListCoreV1ServiceForAllNamespacesParams, error) {
-	var params ListCoreV1ServiceForAllNamespacesParams
+	var (
+		params    ListCoreV1ServiceForAllNamespacesParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode query: allowWatchBookmarks.
 	{
-		values, ok := r.URL.Query()["allowWatchBookmarks"]
+		values, ok := queryArgs["allowWatchBookmarks"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -20725,7 +20896,7 @@ func decodeListCoreV1ServiceForAllNamespacesParams(args map[string]string, r *ht
 	}
 	// Decode query: continue.
 	{
-		values, ok := r.URL.Query()["continue"]
+		values, ok := queryArgs["continue"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -20760,7 +20931,7 @@ func decodeListCoreV1ServiceForAllNamespacesParams(args map[string]string, r *ht
 	}
 	// Decode query: fieldSelector.
 	{
-		values, ok := r.URL.Query()["fieldSelector"]
+		values, ok := queryArgs["fieldSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -20795,7 +20966,7 @@ func decodeListCoreV1ServiceForAllNamespacesParams(args map[string]string, r *ht
 	}
 	// Decode query: labelSelector.
 	{
-		values, ok := r.URL.Query()["labelSelector"]
+		values, ok := queryArgs["labelSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -20830,7 +21001,7 @@ func decodeListCoreV1ServiceForAllNamespacesParams(args map[string]string, r *ht
 	}
 	// Decode query: limit.
 	{
-		values, ok := r.URL.Query()["limit"]
+		values, ok := queryArgs["limit"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -20865,7 +21036,7 @@ func decodeListCoreV1ServiceForAllNamespacesParams(args map[string]string, r *ht
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -20900,7 +21071,7 @@ func decodeListCoreV1ServiceForAllNamespacesParams(args map[string]string, r *ht
 	}
 	// Decode query: resourceVersion.
 	{
-		values, ok := r.URL.Query()["resourceVersion"]
+		values, ok := queryArgs["resourceVersion"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -20935,7 +21106,7 @@ func decodeListCoreV1ServiceForAllNamespacesParams(args map[string]string, r *ht
 	}
 	// Decode query: resourceVersionMatch.
 	{
-		values, ok := r.URL.Query()["resourceVersionMatch"]
+		values, ok := queryArgs["resourceVersionMatch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -20970,7 +21141,7 @@ func decodeListCoreV1ServiceForAllNamespacesParams(args map[string]string, r *ht
 	}
 	// Decode query: timeoutSeconds.
 	{
-		values, ok := r.URL.Query()["timeoutSeconds"]
+		values, ok := queryArgs["timeoutSeconds"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -21005,7 +21176,7 @@ func decodeListCoreV1ServiceForAllNamespacesParams(args map[string]string, r *ht
 	}
 	// Decode query: watch.
 	{
-		values, ok := r.URL.Query()["watch"]
+		values, ok := queryArgs["watch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -21042,10 +21213,13 @@ func decodeListCoreV1ServiceForAllNamespacesParams(args map[string]string, r *ht
 }
 
 func decodeListDiscoveryV1EndpointSliceForAllNamespacesParams(args map[string]string, r *http.Request) (ListDiscoveryV1EndpointSliceForAllNamespacesParams, error) {
-	var params ListDiscoveryV1EndpointSliceForAllNamespacesParams
+	var (
+		params    ListDiscoveryV1EndpointSliceForAllNamespacesParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode query: allowWatchBookmarks.
 	{
-		values, ok := r.URL.Query()["allowWatchBookmarks"]
+		values, ok := queryArgs["allowWatchBookmarks"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -21080,7 +21254,7 @@ func decodeListDiscoveryV1EndpointSliceForAllNamespacesParams(args map[string]st
 	}
 	// Decode query: continue.
 	{
-		values, ok := r.URL.Query()["continue"]
+		values, ok := queryArgs["continue"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -21115,7 +21289,7 @@ func decodeListDiscoveryV1EndpointSliceForAllNamespacesParams(args map[string]st
 	}
 	// Decode query: fieldSelector.
 	{
-		values, ok := r.URL.Query()["fieldSelector"]
+		values, ok := queryArgs["fieldSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -21150,7 +21324,7 @@ func decodeListDiscoveryV1EndpointSliceForAllNamespacesParams(args map[string]st
 	}
 	// Decode query: labelSelector.
 	{
-		values, ok := r.URL.Query()["labelSelector"]
+		values, ok := queryArgs["labelSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -21185,7 +21359,7 @@ func decodeListDiscoveryV1EndpointSliceForAllNamespacesParams(args map[string]st
 	}
 	// Decode query: limit.
 	{
-		values, ok := r.URL.Query()["limit"]
+		values, ok := queryArgs["limit"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -21220,7 +21394,7 @@ func decodeListDiscoveryV1EndpointSliceForAllNamespacesParams(args map[string]st
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -21255,7 +21429,7 @@ func decodeListDiscoveryV1EndpointSliceForAllNamespacesParams(args map[string]st
 	}
 	// Decode query: resourceVersion.
 	{
-		values, ok := r.URL.Query()["resourceVersion"]
+		values, ok := queryArgs["resourceVersion"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -21290,7 +21464,7 @@ func decodeListDiscoveryV1EndpointSliceForAllNamespacesParams(args map[string]st
 	}
 	// Decode query: resourceVersionMatch.
 	{
-		values, ok := r.URL.Query()["resourceVersionMatch"]
+		values, ok := queryArgs["resourceVersionMatch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -21325,7 +21499,7 @@ func decodeListDiscoveryV1EndpointSliceForAllNamespacesParams(args map[string]st
 	}
 	// Decode query: timeoutSeconds.
 	{
-		values, ok := r.URL.Query()["timeoutSeconds"]
+		values, ok := queryArgs["timeoutSeconds"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -21360,7 +21534,7 @@ func decodeListDiscoveryV1EndpointSliceForAllNamespacesParams(args map[string]st
 	}
 	// Decode query: watch.
 	{
-		values, ok := r.URL.Query()["watch"]
+		values, ok := queryArgs["watch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -21397,10 +21571,13 @@ func decodeListDiscoveryV1EndpointSliceForAllNamespacesParams(args map[string]st
 }
 
 func decodeListDiscoveryV1NamespacedEndpointSliceParams(args map[string]string, r *http.Request) (ListDiscoveryV1NamespacedEndpointSliceParams, error) {
-	var params ListDiscoveryV1NamespacedEndpointSliceParams
+	var (
+		params    ListDiscoveryV1NamespacedEndpointSliceParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode query: allowWatchBookmarks.
 	{
-		values, ok := r.URL.Query()["allowWatchBookmarks"]
+		values, ok := queryArgs["allowWatchBookmarks"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -21435,7 +21612,7 @@ func decodeListDiscoveryV1NamespacedEndpointSliceParams(args map[string]string, 
 	}
 	// Decode query: continue.
 	{
-		values, ok := r.URL.Query()["continue"]
+		values, ok := queryArgs["continue"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -21470,7 +21647,7 @@ func decodeListDiscoveryV1NamespacedEndpointSliceParams(args map[string]string, 
 	}
 	// Decode query: fieldSelector.
 	{
-		values, ok := r.URL.Query()["fieldSelector"]
+		values, ok := queryArgs["fieldSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -21505,7 +21682,7 @@ func decodeListDiscoveryV1NamespacedEndpointSliceParams(args map[string]string, 
 	}
 	// Decode query: labelSelector.
 	{
-		values, ok := r.URL.Query()["labelSelector"]
+		values, ok := queryArgs["labelSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -21540,7 +21717,7 @@ func decodeListDiscoveryV1NamespacedEndpointSliceParams(args map[string]string, 
 	}
 	// Decode query: limit.
 	{
-		values, ok := r.URL.Query()["limit"]
+		values, ok := queryArgs["limit"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -21575,7 +21752,7 @@ func decodeListDiscoveryV1NamespacedEndpointSliceParams(args map[string]string, 
 	}
 	// Decode query: resourceVersion.
 	{
-		values, ok := r.URL.Query()["resourceVersion"]
+		values, ok := queryArgs["resourceVersion"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -21610,7 +21787,7 @@ func decodeListDiscoveryV1NamespacedEndpointSliceParams(args map[string]string, 
 	}
 	// Decode query: resourceVersionMatch.
 	{
-		values, ok := r.URL.Query()["resourceVersionMatch"]
+		values, ok := queryArgs["resourceVersionMatch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -21645,7 +21822,7 @@ func decodeListDiscoveryV1NamespacedEndpointSliceParams(args map[string]string, 
 	}
 	// Decode query: timeoutSeconds.
 	{
-		values, ok := r.URL.Query()["timeoutSeconds"]
+		values, ok := queryArgs["timeoutSeconds"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -21680,7 +21857,7 @@ func decodeListDiscoveryV1NamespacedEndpointSliceParams(args map[string]string, 
 	}
 	// Decode query: watch.
 	{
-		values, ok := r.URL.Query()["watch"]
+		values, ok := queryArgs["watch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -21746,7 +21923,7 @@ func decodeListDiscoveryV1NamespacedEndpointSliceParams(args map[string]string, 
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -21783,10 +21960,13 @@ func decodeListDiscoveryV1NamespacedEndpointSliceParams(args map[string]string, 
 }
 
 func decodeListDiscoveryV1beta1EndpointSliceForAllNamespacesParams(args map[string]string, r *http.Request) (ListDiscoveryV1beta1EndpointSliceForAllNamespacesParams, error) {
-	var params ListDiscoveryV1beta1EndpointSliceForAllNamespacesParams
+	var (
+		params    ListDiscoveryV1beta1EndpointSliceForAllNamespacesParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode query: allowWatchBookmarks.
 	{
-		values, ok := r.URL.Query()["allowWatchBookmarks"]
+		values, ok := queryArgs["allowWatchBookmarks"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -21821,7 +22001,7 @@ func decodeListDiscoveryV1beta1EndpointSliceForAllNamespacesParams(args map[stri
 	}
 	// Decode query: continue.
 	{
-		values, ok := r.URL.Query()["continue"]
+		values, ok := queryArgs["continue"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -21856,7 +22036,7 @@ func decodeListDiscoveryV1beta1EndpointSliceForAllNamespacesParams(args map[stri
 	}
 	// Decode query: fieldSelector.
 	{
-		values, ok := r.URL.Query()["fieldSelector"]
+		values, ok := queryArgs["fieldSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -21891,7 +22071,7 @@ func decodeListDiscoveryV1beta1EndpointSliceForAllNamespacesParams(args map[stri
 	}
 	// Decode query: labelSelector.
 	{
-		values, ok := r.URL.Query()["labelSelector"]
+		values, ok := queryArgs["labelSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -21926,7 +22106,7 @@ func decodeListDiscoveryV1beta1EndpointSliceForAllNamespacesParams(args map[stri
 	}
 	// Decode query: limit.
 	{
-		values, ok := r.URL.Query()["limit"]
+		values, ok := queryArgs["limit"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -21961,7 +22141,7 @@ func decodeListDiscoveryV1beta1EndpointSliceForAllNamespacesParams(args map[stri
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -21996,7 +22176,7 @@ func decodeListDiscoveryV1beta1EndpointSliceForAllNamespacesParams(args map[stri
 	}
 	// Decode query: resourceVersion.
 	{
-		values, ok := r.URL.Query()["resourceVersion"]
+		values, ok := queryArgs["resourceVersion"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -22031,7 +22211,7 @@ func decodeListDiscoveryV1beta1EndpointSliceForAllNamespacesParams(args map[stri
 	}
 	// Decode query: resourceVersionMatch.
 	{
-		values, ok := r.URL.Query()["resourceVersionMatch"]
+		values, ok := queryArgs["resourceVersionMatch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -22066,7 +22246,7 @@ func decodeListDiscoveryV1beta1EndpointSliceForAllNamespacesParams(args map[stri
 	}
 	// Decode query: timeoutSeconds.
 	{
-		values, ok := r.URL.Query()["timeoutSeconds"]
+		values, ok := queryArgs["timeoutSeconds"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -22101,7 +22281,7 @@ func decodeListDiscoveryV1beta1EndpointSliceForAllNamespacesParams(args map[stri
 	}
 	// Decode query: watch.
 	{
-		values, ok := r.URL.Query()["watch"]
+		values, ok := queryArgs["watch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -22138,10 +22318,13 @@ func decodeListDiscoveryV1beta1EndpointSliceForAllNamespacesParams(args map[stri
 }
 
 func decodeListDiscoveryV1beta1NamespacedEndpointSliceParams(args map[string]string, r *http.Request) (ListDiscoveryV1beta1NamespacedEndpointSliceParams, error) {
-	var params ListDiscoveryV1beta1NamespacedEndpointSliceParams
+	var (
+		params    ListDiscoveryV1beta1NamespacedEndpointSliceParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode query: allowWatchBookmarks.
 	{
-		values, ok := r.URL.Query()["allowWatchBookmarks"]
+		values, ok := queryArgs["allowWatchBookmarks"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -22176,7 +22359,7 @@ func decodeListDiscoveryV1beta1NamespacedEndpointSliceParams(args map[string]str
 	}
 	// Decode query: continue.
 	{
-		values, ok := r.URL.Query()["continue"]
+		values, ok := queryArgs["continue"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -22211,7 +22394,7 @@ func decodeListDiscoveryV1beta1NamespacedEndpointSliceParams(args map[string]str
 	}
 	// Decode query: fieldSelector.
 	{
-		values, ok := r.URL.Query()["fieldSelector"]
+		values, ok := queryArgs["fieldSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -22246,7 +22429,7 @@ func decodeListDiscoveryV1beta1NamespacedEndpointSliceParams(args map[string]str
 	}
 	// Decode query: labelSelector.
 	{
-		values, ok := r.URL.Query()["labelSelector"]
+		values, ok := queryArgs["labelSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -22281,7 +22464,7 @@ func decodeListDiscoveryV1beta1NamespacedEndpointSliceParams(args map[string]str
 	}
 	// Decode query: limit.
 	{
-		values, ok := r.URL.Query()["limit"]
+		values, ok := queryArgs["limit"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -22316,7 +22499,7 @@ func decodeListDiscoveryV1beta1NamespacedEndpointSliceParams(args map[string]str
 	}
 	// Decode query: resourceVersion.
 	{
-		values, ok := r.URL.Query()["resourceVersion"]
+		values, ok := queryArgs["resourceVersion"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -22351,7 +22534,7 @@ func decodeListDiscoveryV1beta1NamespacedEndpointSliceParams(args map[string]str
 	}
 	// Decode query: resourceVersionMatch.
 	{
-		values, ok := r.URL.Query()["resourceVersionMatch"]
+		values, ok := queryArgs["resourceVersionMatch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -22386,7 +22569,7 @@ func decodeListDiscoveryV1beta1NamespacedEndpointSliceParams(args map[string]str
 	}
 	// Decode query: timeoutSeconds.
 	{
-		values, ok := r.URL.Query()["timeoutSeconds"]
+		values, ok := queryArgs["timeoutSeconds"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -22421,7 +22604,7 @@ func decodeListDiscoveryV1beta1NamespacedEndpointSliceParams(args map[string]str
 	}
 	// Decode query: watch.
 	{
-		values, ok := r.URL.Query()["watch"]
+		values, ok := queryArgs["watch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -22487,7 +22670,7 @@ func decodeListDiscoveryV1beta1NamespacedEndpointSliceParams(args map[string]str
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -22524,10 +22707,13 @@ func decodeListDiscoveryV1beta1NamespacedEndpointSliceParams(args map[string]str
 }
 
 func decodeListEventsV1EventForAllNamespacesParams(args map[string]string, r *http.Request) (ListEventsV1EventForAllNamespacesParams, error) {
-	var params ListEventsV1EventForAllNamespacesParams
+	var (
+		params    ListEventsV1EventForAllNamespacesParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode query: allowWatchBookmarks.
 	{
-		values, ok := r.URL.Query()["allowWatchBookmarks"]
+		values, ok := queryArgs["allowWatchBookmarks"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -22562,7 +22748,7 @@ func decodeListEventsV1EventForAllNamespacesParams(args map[string]string, r *ht
 	}
 	// Decode query: continue.
 	{
-		values, ok := r.URL.Query()["continue"]
+		values, ok := queryArgs["continue"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -22597,7 +22783,7 @@ func decodeListEventsV1EventForAllNamespacesParams(args map[string]string, r *ht
 	}
 	// Decode query: fieldSelector.
 	{
-		values, ok := r.URL.Query()["fieldSelector"]
+		values, ok := queryArgs["fieldSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -22632,7 +22818,7 @@ func decodeListEventsV1EventForAllNamespacesParams(args map[string]string, r *ht
 	}
 	// Decode query: labelSelector.
 	{
-		values, ok := r.URL.Query()["labelSelector"]
+		values, ok := queryArgs["labelSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -22667,7 +22853,7 @@ func decodeListEventsV1EventForAllNamespacesParams(args map[string]string, r *ht
 	}
 	// Decode query: limit.
 	{
-		values, ok := r.URL.Query()["limit"]
+		values, ok := queryArgs["limit"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -22702,7 +22888,7 @@ func decodeListEventsV1EventForAllNamespacesParams(args map[string]string, r *ht
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -22737,7 +22923,7 @@ func decodeListEventsV1EventForAllNamespacesParams(args map[string]string, r *ht
 	}
 	// Decode query: resourceVersion.
 	{
-		values, ok := r.URL.Query()["resourceVersion"]
+		values, ok := queryArgs["resourceVersion"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -22772,7 +22958,7 @@ func decodeListEventsV1EventForAllNamespacesParams(args map[string]string, r *ht
 	}
 	// Decode query: resourceVersionMatch.
 	{
-		values, ok := r.URL.Query()["resourceVersionMatch"]
+		values, ok := queryArgs["resourceVersionMatch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -22807,7 +22993,7 @@ func decodeListEventsV1EventForAllNamespacesParams(args map[string]string, r *ht
 	}
 	// Decode query: timeoutSeconds.
 	{
-		values, ok := r.URL.Query()["timeoutSeconds"]
+		values, ok := queryArgs["timeoutSeconds"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -22842,7 +23028,7 @@ func decodeListEventsV1EventForAllNamespacesParams(args map[string]string, r *ht
 	}
 	// Decode query: watch.
 	{
-		values, ok := r.URL.Query()["watch"]
+		values, ok := queryArgs["watch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -22879,10 +23065,13 @@ func decodeListEventsV1EventForAllNamespacesParams(args map[string]string, r *ht
 }
 
 func decodeListEventsV1NamespacedEventParams(args map[string]string, r *http.Request) (ListEventsV1NamespacedEventParams, error) {
-	var params ListEventsV1NamespacedEventParams
+	var (
+		params    ListEventsV1NamespacedEventParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode query: allowWatchBookmarks.
 	{
-		values, ok := r.URL.Query()["allowWatchBookmarks"]
+		values, ok := queryArgs["allowWatchBookmarks"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -22917,7 +23106,7 @@ func decodeListEventsV1NamespacedEventParams(args map[string]string, r *http.Req
 	}
 	// Decode query: continue.
 	{
-		values, ok := r.URL.Query()["continue"]
+		values, ok := queryArgs["continue"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -22952,7 +23141,7 @@ func decodeListEventsV1NamespacedEventParams(args map[string]string, r *http.Req
 	}
 	// Decode query: fieldSelector.
 	{
-		values, ok := r.URL.Query()["fieldSelector"]
+		values, ok := queryArgs["fieldSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -22987,7 +23176,7 @@ func decodeListEventsV1NamespacedEventParams(args map[string]string, r *http.Req
 	}
 	// Decode query: labelSelector.
 	{
-		values, ok := r.URL.Query()["labelSelector"]
+		values, ok := queryArgs["labelSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -23022,7 +23211,7 @@ func decodeListEventsV1NamespacedEventParams(args map[string]string, r *http.Req
 	}
 	// Decode query: limit.
 	{
-		values, ok := r.URL.Query()["limit"]
+		values, ok := queryArgs["limit"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -23057,7 +23246,7 @@ func decodeListEventsV1NamespacedEventParams(args map[string]string, r *http.Req
 	}
 	// Decode query: resourceVersion.
 	{
-		values, ok := r.URL.Query()["resourceVersion"]
+		values, ok := queryArgs["resourceVersion"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -23092,7 +23281,7 @@ func decodeListEventsV1NamespacedEventParams(args map[string]string, r *http.Req
 	}
 	// Decode query: resourceVersionMatch.
 	{
-		values, ok := r.URL.Query()["resourceVersionMatch"]
+		values, ok := queryArgs["resourceVersionMatch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -23127,7 +23316,7 @@ func decodeListEventsV1NamespacedEventParams(args map[string]string, r *http.Req
 	}
 	// Decode query: timeoutSeconds.
 	{
-		values, ok := r.URL.Query()["timeoutSeconds"]
+		values, ok := queryArgs["timeoutSeconds"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -23162,7 +23351,7 @@ func decodeListEventsV1NamespacedEventParams(args map[string]string, r *http.Req
 	}
 	// Decode query: watch.
 	{
-		values, ok := r.URL.Query()["watch"]
+		values, ok := queryArgs["watch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -23228,7 +23417,7 @@ func decodeListEventsV1NamespacedEventParams(args map[string]string, r *http.Req
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -23265,10 +23454,13 @@ func decodeListEventsV1NamespacedEventParams(args map[string]string, r *http.Req
 }
 
 func decodeListEventsV1beta1EventForAllNamespacesParams(args map[string]string, r *http.Request) (ListEventsV1beta1EventForAllNamespacesParams, error) {
-	var params ListEventsV1beta1EventForAllNamespacesParams
+	var (
+		params    ListEventsV1beta1EventForAllNamespacesParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode query: allowWatchBookmarks.
 	{
-		values, ok := r.URL.Query()["allowWatchBookmarks"]
+		values, ok := queryArgs["allowWatchBookmarks"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -23303,7 +23495,7 @@ func decodeListEventsV1beta1EventForAllNamespacesParams(args map[string]string, 
 	}
 	// Decode query: continue.
 	{
-		values, ok := r.URL.Query()["continue"]
+		values, ok := queryArgs["continue"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -23338,7 +23530,7 @@ func decodeListEventsV1beta1EventForAllNamespacesParams(args map[string]string, 
 	}
 	// Decode query: fieldSelector.
 	{
-		values, ok := r.URL.Query()["fieldSelector"]
+		values, ok := queryArgs["fieldSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -23373,7 +23565,7 @@ func decodeListEventsV1beta1EventForAllNamespacesParams(args map[string]string, 
 	}
 	// Decode query: labelSelector.
 	{
-		values, ok := r.URL.Query()["labelSelector"]
+		values, ok := queryArgs["labelSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -23408,7 +23600,7 @@ func decodeListEventsV1beta1EventForAllNamespacesParams(args map[string]string, 
 	}
 	// Decode query: limit.
 	{
-		values, ok := r.URL.Query()["limit"]
+		values, ok := queryArgs["limit"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -23443,7 +23635,7 @@ func decodeListEventsV1beta1EventForAllNamespacesParams(args map[string]string, 
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -23478,7 +23670,7 @@ func decodeListEventsV1beta1EventForAllNamespacesParams(args map[string]string, 
 	}
 	// Decode query: resourceVersion.
 	{
-		values, ok := r.URL.Query()["resourceVersion"]
+		values, ok := queryArgs["resourceVersion"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -23513,7 +23705,7 @@ func decodeListEventsV1beta1EventForAllNamespacesParams(args map[string]string, 
 	}
 	// Decode query: resourceVersionMatch.
 	{
-		values, ok := r.URL.Query()["resourceVersionMatch"]
+		values, ok := queryArgs["resourceVersionMatch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -23548,7 +23740,7 @@ func decodeListEventsV1beta1EventForAllNamespacesParams(args map[string]string, 
 	}
 	// Decode query: timeoutSeconds.
 	{
-		values, ok := r.URL.Query()["timeoutSeconds"]
+		values, ok := queryArgs["timeoutSeconds"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -23583,7 +23775,7 @@ func decodeListEventsV1beta1EventForAllNamespacesParams(args map[string]string, 
 	}
 	// Decode query: watch.
 	{
-		values, ok := r.URL.Query()["watch"]
+		values, ok := queryArgs["watch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -23620,10 +23812,13 @@ func decodeListEventsV1beta1EventForAllNamespacesParams(args map[string]string, 
 }
 
 func decodeListEventsV1beta1NamespacedEventParams(args map[string]string, r *http.Request) (ListEventsV1beta1NamespacedEventParams, error) {
-	var params ListEventsV1beta1NamespacedEventParams
+	var (
+		params    ListEventsV1beta1NamespacedEventParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode query: allowWatchBookmarks.
 	{
-		values, ok := r.URL.Query()["allowWatchBookmarks"]
+		values, ok := queryArgs["allowWatchBookmarks"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -23658,7 +23853,7 @@ func decodeListEventsV1beta1NamespacedEventParams(args map[string]string, r *htt
 	}
 	// Decode query: continue.
 	{
-		values, ok := r.URL.Query()["continue"]
+		values, ok := queryArgs["continue"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -23693,7 +23888,7 @@ func decodeListEventsV1beta1NamespacedEventParams(args map[string]string, r *htt
 	}
 	// Decode query: fieldSelector.
 	{
-		values, ok := r.URL.Query()["fieldSelector"]
+		values, ok := queryArgs["fieldSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -23728,7 +23923,7 @@ func decodeListEventsV1beta1NamespacedEventParams(args map[string]string, r *htt
 	}
 	// Decode query: labelSelector.
 	{
-		values, ok := r.URL.Query()["labelSelector"]
+		values, ok := queryArgs["labelSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -23763,7 +23958,7 @@ func decodeListEventsV1beta1NamespacedEventParams(args map[string]string, r *htt
 	}
 	// Decode query: limit.
 	{
-		values, ok := r.URL.Query()["limit"]
+		values, ok := queryArgs["limit"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -23798,7 +23993,7 @@ func decodeListEventsV1beta1NamespacedEventParams(args map[string]string, r *htt
 	}
 	// Decode query: resourceVersion.
 	{
-		values, ok := r.URL.Query()["resourceVersion"]
+		values, ok := queryArgs["resourceVersion"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -23833,7 +24028,7 @@ func decodeListEventsV1beta1NamespacedEventParams(args map[string]string, r *htt
 	}
 	// Decode query: resourceVersionMatch.
 	{
-		values, ok := r.URL.Query()["resourceVersionMatch"]
+		values, ok := queryArgs["resourceVersionMatch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -23868,7 +24063,7 @@ func decodeListEventsV1beta1NamespacedEventParams(args map[string]string, r *htt
 	}
 	// Decode query: timeoutSeconds.
 	{
-		values, ok := r.URL.Query()["timeoutSeconds"]
+		values, ok := queryArgs["timeoutSeconds"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -23903,7 +24098,7 @@ func decodeListEventsV1beta1NamespacedEventParams(args map[string]string, r *htt
 	}
 	// Decode query: watch.
 	{
-		values, ok := r.URL.Query()["watch"]
+		values, ok := queryArgs["watch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -23969,7 +24164,7 @@ func decodeListEventsV1beta1NamespacedEventParams(args map[string]string, r *htt
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -24006,10 +24201,13 @@ func decodeListEventsV1beta1NamespacedEventParams(args map[string]string, r *htt
 }
 
 func decodeListFlowcontrolApiserverV1beta1FlowSchemaParams(args map[string]string, r *http.Request) (ListFlowcontrolApiserverV1beta1FlowSchemaParams, error) {
-	var params ListFlowcontrolApiserverV1beta1FlowSchemaParams
+	var (
+		params    ListFlowcontrolApiserverV1beta1FlowSchemaParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode query: allowWatchBookmarks.
 	{
-		values, ok := r.URL.Query()["allowWatchBookmarks"]
+		values, ok := queryArgs["allowWatchBookmarks"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -24044,7 +24242,7 @@ func decodeListFlowcontrolApiserverV1beta1FlowSchemaParams(args map[string]strin
 	}
 	// Decode query: continue.
 	{
-		values, ok := r.URL.Query()["continue"]
+		values, ok := queryArgs["continue"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -24079,7 +24277,7 @@ func decodeListFlowcontrolApiserverV1beta1FlowSchemaParams(args map[string]strin
 	}
 	// Decode query: fieldSelector.
 	{
-		values, ok := r.URL.Query()["fieldSelector"]
+		values, ok := queryArgs["fieldSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -24114,7 +24312,7 @@ func decodeListFlowcontrolApiserverV1beta1FlowSchemaParams(args map[string]strin
 	}
 	// Decode query: labelSelector.
 	{
-		values, ok := r.URL.Query()["labelSelector"]
+		values, ok := queryArgs["labelSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -24149,7 +24347,7 @@ func decodeListFlowcontrolApiserverV1beta1FlowSchemaParams(args map[string]strin
 	}
 	// Decode query: limit.
 	{
-		values, ok := r.URL.Query()["limit"]
+		values, ok := queryArgs["limit"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -24184,7 +24382,7 @@ func decodeListFlowcontrolApiserverV1beta1FlowSchemaParams(args map[string]strin
 	}
 	// Decode query: resourceVersion.
 	{
-		values, ok := r.URL.Query()["resourceVersion"]
+		values, ok := queryArgs["resourceVersion"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -24219,7 +24417,7 @@ func decodeListFlowcontrolApiserverV1beta1FlowSchemaParams(args map[string]strin
 	}
 	// Decode query: resourceVersionMatch.
 	{
-		values, ok := r.URL.Query()["resourceVersionMatch"]
+		values, ok := queryArgs["resourceVersionMatch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -24254,7 +24452,7 @@ func decodeListFlowcontrolApiserverV1beta1FlowSchemaParams(args map[string]strin
 	}
 	// Decode query: timeoutSeconds.
 	{
-		values, ok := r.URL.Query()["timeoutSeconds"]
+		values, ok := queryArgs["timeoutSeconds"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -24289,7 +24487,7 @@ func decodeListFlowcontrolApiserverV1beta1FlowSchemaParams(args map[string]strin
 	}
 	// Decode query: watch.
 	{
-		values, ok := r.URL.Query()["watch"]
+		values, ok := queryArgs["watch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -24324,7 +24522,7 @@ func decodeListFlowcontrolApiserverV1beta1FlowSchemaParams(args map[string]strin
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -24361,10 +24559,13 @@ func decodeListFlowcontrolApiserverV1beta1FlowSchemaParams(args map[string]strin
 }
 
 func decodeListFlowcontrolApiserverV1beta1PriorityLevelConfigurationParams(args map[string]string, r *http.Request) (ListFlowcontrolApiserverV1beta1PriorityLevelConfigurationParams, error) {
-	var params ListFlowcontrolApiserverV1beta1PriorityLevelConfigurationParams
+	var (
+		params    ListFlowcontrolApiserverV1beta1PriorityLevelConfigurationParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode query: allowWatchBookmarks.
 	{
-		values, ok := r.URL.Query()["allowWatchBookmarks"]
+		values, ok := queryArgs["allowWatchBookmarks"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -24399,7 +24600,7 @@ func decodeListFlowcontrolApiserverV1beta1PriorityLevelConfigurationParams(args 
 	}
 	// Decode query: continue.
 	{
-		values, ok := r.URL.Query()["continue"]
+		values, ok := queryArgs["continue"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -24434,7 +24635,7 @@ func decodeListFlowcontrolApiserverV1beta1PriorityLevelConfigurationParams(args 
 	}
 	// Decode query: fieldSelector.
 	{
-		values, ok := r.URL.Query()["fieldSelector"]
+		values, ok := queryArgs["fieldSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -24469,7 +24670,7 @@ func decodeListFlowcontrolApiserverV1beta1PriorityLevelConfigurationParams(args 
 	}
 	// Decode query: labelSelector.
 	{
-		values, ok := r.URL.Query()["labelSelector"]
+		values, ok := queryArgs["labelSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -24504,7 +24705,7 @@ func decodeListFlowcontrolApiserverV1beta1PriorityLevelConfigurationParams(args 
 	}
 	// Decode query: limit.
 	{
-		values, ok := r.URL.Query()["limit"]
+		values, ok := queryArgs["limit"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -24539,7 +24740,7 @@ func decodeListFlowcontrolApiserverV1beta1PriorityLevelConfigurationParams(args 
 	}
 	// Decode query: resourceVersion.
 	{
-		values, ok := r.URL.Query()["resourceVersion"]
+		values, ok := queryArgs["resourceVersion"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -24574,7 +24775,7 @@ func decodeListFlowcontrolApiserverV1beta1PriorityLevelConfigurationParams(args 
 	}
 	// Decode query: resourceVersionMatch.
 	{
-		values, ok := r.URL.Query()["resourceVersionMatch"]
+		values, ok := queryArgs["resourceVersionMatch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -24609,7 +24810,7 @@ func decodeListFlowcontrolApiserverV1beta1PriorityLevelConfigurationParams(args 
 	}
 	// Decode query: timeoutSeconds.
 	{
-		values, ok := r.URL.Query()["timeoutSeconds"]
+		values, ok := queryArgs["timeoutSeconds"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -24644,7 +24845,7 @@ func decodeListFlowcontrolApiserverV1beta1PriorityLevelConfigurationParams(args 
 	}
 	// Decode query: watch.
 	{
-		values, ok := r.URL.Query()["watch"]
+		values, ok := queryArgs["watch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -24679,7 +24880,7 @@ func decodeListFlowcontrolApiserverV1beta1PriorityLevelConfigurationParams(args 
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -24716,10 +24917,13 @@ func decodeListFlowcontrolApiserverV1beta1PriorityLevelConfigurationParams(args 
 }
 
 func decodeListFlowcontrolApiserverV1beta2FlowSchemaParams(args map[string]string, r *http.Request) (ListFlowcontrolApiserverV1beta2FlowSchemaParams, error) {
-	var params ListFlowcontrolApiserverV1beta2FlowSchemaParams
+	var (
+		params    ListFlowcontrolApiserverV1beta2FlowSchemaParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode query: allowWatchBookmarks.
 	{
-		values, ok := r.URL.Query()["allowWatchBookmarks"]
+		values, ok := queryArgs["allowWatchBookmarks"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -24754,7 +24958,7 @@ func decodeListFlowcontrolApiserverV1beta2FlowSchemaParams(args map[string]strin
 	}
 	// Decode query: continue.
 	{
-		values, ok := r.URL.Query()["continue"]
+		values, ok := queryArgs["continue"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -24789,7 +24993,7 @@ func decodeListFlowcontrolApiserverV1beta2FlowSchemaParams(args map[string]strin
 	}
 	// Decode query: fieldSelector.
 	{
-		values, ok := r.URL.Query()["fieldSelector"]
+		values, ok := queryArgs["fieldSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -24824,7 +25028,7 @@ func decodeListFlowcontrolApiserverV1beta2FlowSchemaParams(args map[string]strin
 	}
 	// Decode query: labelSelector.
 	{
-		values, ok := r.URL.Query()["labelSelector"]
+		values, ok := queryArgs["labelSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -24859,7 +25063,7 @@ func decodeListFlowcontrolApiserverV1beta2FlowSchemaParams(args map[string]strin
 	}
 	// Decode query: limit.
 	{
-		values, ok := r.URL.Query()["limit"]
+		values, ok := queryArgs["limit"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -24894,7 +25098,7 @@ func decodeListFlowcontrolApiserverV1beta2FlowSchemaParams(args map[string]strin
 	}
 	// Decode query: resourceVersion.
 	{
-		values, ok := r.URL.Query()["resourceVersion"]
+		values, ok := queryArgs["resourceVersion"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -24929,7 +25133,7 @@ func decodeListFlowcontrolApiserverV1beta2FlowSchemaParams(args map[string]strin
 	}
 	// Decode query: resourceVersionMatch.
 	{
-		values, ok := r.URL.Query()["resourceVersionMatch"]
+		values, ok := queryArgs["resourceVersionMatch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -24964,7 +25168,7 @@ func decodeListFlowcontrolApiserverV1beta2FlowSchemaParams(args map[string]strin
 	}
 	// Decode query: timeoutSeconds.
 	{
-		values, ok := r.URL.Query()["timeoutSeconds"]
+		values, ok := queryArgs["timeoutSeconds"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -24999,7 +25203,7 @@ func decodeListFlowcontrolApiserverV1beta2FlowSchemaParams(args map[string]strin
 	}
 	// Decode query: watch.
 	{
-		values, ok := r.URL.Query()["watch"]
+		values, ok := queryArgs["watch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -25034,7 +25238,7 @@ func decodeListFlowcontrolApiserverV1beta2FlowSchemaParams(args map[string]strin
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -25071,10 +25275,13 @@ func decodeListFlowcontrolApiserverV1beta2FlowSchemaParams(args map[string]strin
 }
 
 func decodeListFlowcontrolApiserverV1beta2PriorityLevelConfigurationParams(args map[string]string, r *http.Request) (ListFlowcontrolApiserverV1beta2PriorityLevelConfigurationParams, error) {
-	var params ListFlowcontrolApiserverV1beta2PriorityLevelConfigurationParams
+	var (
+		params    ListFlowcontrolApiserverV1beta2PriorityLevelConfigurationParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode query: allowWatchBookmarks.
 	{
-		values, ok := r.URL.Query()["allowWatchBookmarks"]
+		values, ok := queryArgs["allowWatchBookmarks"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -25109,7 +25316,7 @@ func decodeListFlowcontrolApiserverV1beta2PriorityLevelConfigurationParams(args 
 	}
 	// Decode query: continue.
 	{
-		values, ok := r.URL.Query()["continue"]
+		values, ok := queryArgs["continue"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -25144,7 +25351,7 @@ func decodeListFlowcontrolApiserverV1beta2PriorityLevelConfigurationParams(args 
 	}
 	// Decode query: fieldSelector.
 	{
-		values, ok := r.URL.Query()["fieldSelector"]
+		values, ok := queryArgs["fieldSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -25179,7 +25386,7 @@ func decodeListFlowcontrolApiserverV1beta2PriorityLevelConfigurationParams(args 
 	}
 	// Decode query: labelSelector.
 	{
-		values, ok := r.URL.Query()["labelSelector"]
+		values, ok := queryArgs["labelSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -25214,7 +25421,7 @@ func decodeListFlowcontrolApiserverV1beta2PriorityLevelConfigurationParams(args 
 	}
 	// Decode query: limit.
 	{
-		values, ok := r.URL.Query()["limit"]
+		values, ok := queryArgs["limit"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -25249,7 +25456,7 @@ func decodeListFlowcontrolApiserverV1beta2PriorityLevelConfigurationParams(args 
 	}
 	// Decode query: resourceVersion.
 	{
-		values, ok := r.URL.Query()["resourceVersion"]
+		values, ok := queryArgs["resourceVersion"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -25284,7 +25491,7 @@ func decodeListFlowcontrolApiserverV1beta2PriorityLevelConfigurationParams(args 
 	}
 	// Decode query: resourceVersionMatch.
 	{
-		values, ok := r.URL.Query()["resourceVersionMatch"]
+		values, ok := queryArgs["resourceVersionMatch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -25319,7 +25526,7 @@ func decodeListFlowcontrolApiserverV1beta2PriorityLevelConfigurationParams(args 
 	}
 	// Decode query: timeoutSeconds.
 	{
-		values, ok := r.URL.Query()["timeoutSeconds"]
+		values, ok := queryArgs["timeoutSeconds"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -25354,7 +25561,7 @@ func decodeListFlowcontrolApiserverV1beta2PriorityLevelConfigurationParams(args 
 	}
 	// Decode query: watch.
 	{
-		values, ok := r.URL.Query()["watch"]
+		values, ok := queryArgs["watch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -25389,7 +25596,7 @@ func decodeListFlowcontrolApiserverV1beta2PriorityLevelConfigurationParams(args 
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -25426,10 +25633,13 @@ func decodeListFlowcontrolApiserverV1beta2PriorityLevelConfigurationParams(args 
 }
 
 func decodeListInternalApiserverV1alpha1StorageVersionParams(args map[string]string, r *http.Request) (ListInternalApiserverV1alpha1StorageVersionParams, error) {
-	var params ListInternalApiserverV1alpha1StorageVersionParams
+	var (
+		params    ListInternalApiserverV1alpha1StorageVersionParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode query: allowWatchBookmarks.
 	{
-		values, ok := r.URL.Query()["allowWatchBookmarks"]
+		values, ok := queryArgs["allowWatchBookmarks"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -25464,7 +25674,7 @@ func decodeListInternalApiserverV1alpha1StorageVersionParams(args map[string]str
 	}
 	// Decode query: continue.
 	{
-		values, ok := r.URL.Query()["continue"]
+		values, ok := queryArgs["continue"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -25499,7 +25709,7 @@ func decodeListInternalApiserverV1alpha1StorageVersionParams(args map[string]str
 	}
 	// Decode query: fieldSelector.
 	{
-		values, ok := r.URL.Query()["fieldSelector"]
+		values, ok := queryArgs["fieldSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -25534,7 +25744,7 @@ func decodeListInternalApiserverV1alpha1StorageVersionParams(args map[string]str
 	}
 	// Decode query: labelSelector.
 	{
-		values, ok := r.URL.Query()["labelSelector"]
+		values, ok := queryArgs["labelSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -25569,7 +25779,7 @@ func decodeListInternalApiserverV1alpha1StorageVersionParams(args map[string]str
 	}
 	// Decode query: limit.
 	{
-		values, ok := r.URL.Query()["limit"]
+		values, ok := queryArgs["limit"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -25604,7 +25814,7 @@ func decodeListInternalApiserverV1alpha1StorageVersionParams(args map[string]str
 	}
 	// Decode query: resourceVersion.
 	{
-		values, ok := r.URL.Query()["resourceVersion"]
+		values, ok := queryArgs["resourceVersion"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -25639,7 +25849,7 @@ func decodeListInternalApiserverV1alpha1StorageVersionParams(args map[string]str
 	}
 	// Decode query: resourceVersionMatch.
 	{
-		values, ok := r.URL.Query()["resourceVersionMatch"]
+		values, ok := queryArgs["resourceVersionMatch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -25674,7 +25884,7 @@ func decodeListInternalApiserverV1alpha1StorageVersionParams(args map[string]str
 	}
 	// Decode query: timeoutSeconds.
 	{
-		values, ok := r.URL.Query()["timeoutSeconds"]
+		values, ok := queryArgs["timeoutSeconds"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -25709,7 +25919,7 @@ func decodeListInternalApiserverV1alpha1StorageVersionParams(args map[string]str
 	}
 	// Decode query: watch.
 	{
-		values, ok := r.URL.Query()["watch"]
+		values, ok := queryArgs["watch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -25744,7 +25954,7 @@ func decodeListInternalApiserverV1alpha1StorageVersionParams(args map[string]str
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -25781,10 +25991,13 @@ func decodeListInternalApiserverV1alpha1StorageVersionParams(args map[string]str
 }
 
 func decodeListNetworkingV1IngressClassParams(args map[string]string, r *http.Request) (ListNetworkingV1IngressClassParams, error) {
-	var params ListNetworkingV1IngressClassParams
+	var (
+		params    ListNetworkingV1IngressClassParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode query: allowWatchBookmarks.
 	{
-		values, ok := r.URL.Query()["allowWatchBookmarks"]
+		values, ok := queryArgs["allowWatchBookmarks"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -25819,7 +26032,7 @@ func decodeListNetworkingV1IngressClassParams(args map[string]string, r *http.Re
 	}
 	// Decode query: continue.
 	{
-		values, ok := r.URL.Query()["continue"]
+		values, ok := queryArgs["continue"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -25854,7 +26067,7 @@ func decodeListNetworkingV1IngressClassParams(args map[string]string, r *http.Re
 	}
 	// Decode query: fieldSelector.
 	{
-		values, ok := r.URL.Query()["fieldSelector"]
+		values, ok := queryArgs["fieldSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -25889,7 +26102,7 @@ func decodeListNetworkingV1IngressClassParams(args map[string]string, r *http.Re
 	}
 	// Decode query: labelSelector.
 	{
-		values, ok := r.URL.Query()["labelSelector"]
+		values, ok := queryArgs["labelSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -25924,7 +26137,7 @@ func decodeListNetworkingV1IngressClassParams(args map[string]string, r *http.Re
 	}
 	// Decode query: limit.
 	{
-		values, ok := r.URL.Query()["limit"]
+		values, ok := queryArgs["limit"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -25959,7 +26172,7 @@ func decodeListNetworkingV1IngressClassParams(args map[string]string, r *http.Re
 	}
 	// Decode query: resourceVersion.
 	{
-		values, ok := r.URL.Query()["resourceVersion"]
+		values, ok := queryArgs["resourceVersion"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -25994,7 +26207,7 @@ func decodeListNetworkingV1IngressClassParams(args map[string]string, r *http.Re
 	}
 	// Decode query: resourceVersionMatch.
 	{
-		values, ok := r.URL.Query()["resourceVersionMatch"]
+		values, ok := queryArgs["resourceVersionMatch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -26029,7 +26242,7 @@ func decodeListNetworkingV1IngressClassParams(args map[string]string, r *http.Re
 	}
 	// Decode query: timeoutSeconds.
 	{
-		values, ok := r.URL.Query()["timeoutSeconds"]
+		values, ok := queryArgs["timeoutSeconds"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -26064,7 +26277,7 @@ func decodeListNetworkingV1IngressClassParams(args map[string]string, r *http.Re
 	}
 	// Decode query: watch.
 	{
-		values, ok := r.URL.Query()["watch"]
+		values, ok := queryArgs["watch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -26099,7 +26312,7 @@ func decodeListNetworkingV1IngressClassParams(args map[string]string, r *http.Re
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -26136,10 +26349,13 @@ func decodeListNetworkingV1IngressClassParams(args map[string]string, r *http.Re
 }
 
 func decodeListNetworkingV1IngressForAllNamespacesParams(args map[string]string, r *http.Request) (ListNetworkingV1IngressForAllNamespacesParams, error) {
-	var params ListNetworkingV1IngressForAllNamespacesParams
+	var (
+		params    ListNetworkingV1IngressForAllNamespacesParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode query: allowWatchBookmarks.
 	{
-		values, ok := r.URL.Query()["allowWatchBookmarks"]
+		values, ok := queryArgs["allowWatchBookmarks"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -26174,7 +26390,7 @@ func decodeListNetworkingV1IngressForAllNamespacesParams(args map[string]string,
 	}
 	// Decode query: continue.
 	{
-		values, ok := r.URL.Query()["continue"]
+		values, ok := queryArgs["continue"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -26209,7 +26425,7 @@ func decodeListNetworkingV1IngressForAllNamespacesParams(args map[string]string,
 	}
 	// Decode query: fieldSelector.
 	{
-		values, ok := r.URL.Query()["fieldSelector"]
+		values, ok := queryArgs["fieldSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -26244,7 +26460,7 @@ func decodeListNetworkingV1IngressForAllNamespacesParams(args map[string]string,
 	}
 	// Decode query: labelSelector.
 	{
-		values, ok := r.URL.Query()["labelSelector"]
+		values, ok := queryArgs["labelSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -26279,7 +26495,7 @@ func decodeListNetworkingV1IngressForAllNamespacesParams(args map[string]string,
 	}
 	// Decode query: limit.
 	{
-		values, ok := r.URL.Query()["limit"]
+		values, ok := queryArgs["limit"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -26314,7 +26530,7 @@ func decodeListNetworkingV1IngressForAllNamespacesParams(args map[string]string,
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -26349,7 +26565,7 @@ func decodeListNetworkingV1IngressForAllNamespacesParams(args map[string]string,
 	}
 	// Decode query: resourceVersion.
 	{
-		values, ok := r.URL.Query()["resourceVersion"]
+		values, ok := queryArgs["resourceVersion"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -26384,7 +26600,7 @@ func decodeListNetworkingV1IngressForAllNamespacesParams(args map[string]string,
 	}
 	// Decode query: resourceVersionMatch.
 	{
-		values, ok := r.URL.Query()["resourceVersionMatch"]
+		values, ok := queryArgs["resourceVersionMatch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -26419,7 +26635,7 @@ func decodeListNetworkingV1IngressForAllNamespacesParams(args map[string]string,
 	}
 	// Decode query: timeoutSeconds.
 	{
-		values, ok := r.URL.Query()["timeoutSeconds"]
+		values, ok := queryArgs["timeoutSeconds"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -26454,7 +26670,7 @@ func decodeListNetworkingV1IngressForAllNamespacesParams(args map[string]string,
 	}
 	// Decode query: watch.
 	{
-		values, ok := r.URL.Query()["watch"]
+		values, ok := queryArgs["watch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -26491,10 +26707,13 @@ func decodeListNetworkingV1IngressForAllNamespacesParams(args map[string]string,
 }
 
 func decodeListNetworkingV1NamespacedIngressParams(args map[string]string, r *http.Request) (ListNetworkingV1NamespacedIngressParams, error) {
-	var params ListNetworkingV1NamespacedIngressParams
+	var (
+		params    ListNetworkingV1NamespacedIngressParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode query: allowWatchBookmarks.
 	{
-		values, ok := r.URL.Query()["allowWatchBookmarks"]
+		values, ok := queryArgs["allowWatchBookmarks"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -26529,7 +26748,7 @@ func decodeListNetworkingV1NamespacedIngressParams(args map[string]string, r *ht
 	}
 	// Decode query: continue.
 	{
-		values, ok := r.URL.Query()["continue"]
+		values, ok := queryArgs["continue"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -26564,7 +26783,7 @@ func decodeListNetworkingV1NamespacedIngressParams(args map[string]string, r *ht
 	}
 	// Decode query: fieldSelector.
 	{
-		values, ok := r.URL.Query()["fieldSelector"]
+		values, ok := queryArgs["fieldSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -26599,7 +26818,7 @@ func decodeListNetworkingV1NamespacedIngressParams(args map[string]string, r *ht
 	}
 	// Decode query: labelSelector.
 	{
-		values, ok := r.URL.Query()["labelSelector"]
+		values, ok := queryArgs["labelSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -26634,7 +26853,7 @@ func decodeListNetworkingV1NamespacedIngressParams(args map[string]string, r *ht
 	}
 	// Decode query: limit.
 	{
-		values, ok := r.URL.Query()["limit"]
+		values, ok := queryArgs["limit"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -26669,7 +26888,7 @@ func decodeListNetworkingV1NamespacedIngressParams(args map[string]string, r *ht
 	}
 	// Decode query: resourceVersion.
 	{
-		values, ok := r.URL.Query()["resourceVersion"]
+		values, ok := queryArgs["resourceVersion"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -26704,7 +26923,7 @@ func decodeListNetworkingV1NamespacedIngressParams(args map[string]string, r *ht
 	}
 	// Decode query: resourceVersionMatch.
 	{
-		values, ok := r.URL.Query()["resourceVersionMatch"]
+		values, ok := queryArgs["resourceVersionMatch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -26739,7 +26958,7 @@ func decodeListNetworkingV1NamespacedIngressParams(args map[string]string, r *ht
 	}
 	// Decode query: timeoutSeconds.
 	{
-		values, ok := r.URL.Query()["timeoutSeconds"]
+		values, ok := queryArgs["timeoutSeconds"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -26774,7 +26993,7 @@ func decodeListNetworkingV1NamespacedIngressParams(args map[string]string, r *ht
 	}
 	// Decode query: watch.
 	{
-		values, ok := r.URL.Query()["watch"]
+		values, ok := queryArgs["watch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -26840,7 +27059,7 @@ func decodeListNetworkingV1NamespacedIngressParams(args map[string]string, r *ht
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -26877,10 +27096,13 @@ func decodeListNetworkingV1NamespacedIngressParams(args map[string]string, r *ht
 }
 
 func decodeListNetworkingV1NamespacedNetworkPolicyParams(args map[string]string, r *http.Request) (ListNetworkingV1NamespacedNetworkPolicyParams, error) {
-	var params ListNetworkingV1NamespacedNetworkPolicyParams
+	var (
+		params    ListNetworkingV1NamespacedNetworkPolicyParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode query: allowWatchBookmarks.
 	{
-		values, ok := r.URL.Query()["allowWatchBookmarks"]
+		values, ok := queryArgs["allowWatchBookmarks"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -26915,7 +27137,7 @@ func decodeListNetworkingV1NamespacedNetworkPolicyParams(args map[string]string,
 	}
 	// Decode query: continue.
 	{
-		values, ok := r.URL.Query()["continue"]
+		values, ok := queryArgs["continue"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -26950,7 +27172,7 @@ func decodeListNetworkingV1NamespacedNetworkPolicyParams(args map[string]string,
 	}
 	// Decode query: fieldSelector.
 	{
-		values, ok := r.URL.Query()["fieldSelector"]
+		values, ok := queryArgs["fieldSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -26985,7 +27207,7 @@ func decodeListNetworkingV1NamespacedNetworkPolicyParams(args map[string]string,
 	}
 	// Decode query: labelSelector.
 	{
-		values, ok := r.URL.Query()["labelSelector"]
+		values, ok := queryArgs["labelSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -27020,7 +27242,7 @@ func decodeListNetworkingV1NamespacedNetworkPolicyParams(args map[string]string,
 	}
 	// Decode query: limit.
 	{
-		values, ok := r.URL.Query()["limit"]
+		values, ok := queryArgs["limit"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -27055,7 +27277,7 @@ func decodeListNetworkingV1NamespacedNetworkPolicyParams(args map[string]string,
 	}
 	// Decode query: resourceVersion.
 	{
-		values, ok := r.URL.Query()["resourceVersion"]
+		values, ok := queryArgs["resourceVersion"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -27090,7 +27312,7 @@ func decodeListNetworkingV1NamespacedNetworkPolicyParams(args map[string]string,
 	}
 	// Decode query: resourceVersionMatch.
 	{
-		values, ok := r.URL.Query()["resourceVersionMatch"]
+		values, ok := queryArgs["resourceVersionMatch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -27125,7 +27347,7 @@ func decodeListNetworkingV1NamespacedNetworkPolicyParams(args map[string]string,
 	}
 	// Decode query: timeoutSeconds.
 	{
-		values, ok := r.URL.Query()["timeoutSeconds"]
+		values, ok := queryArgs["timeoutSeconds"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -27160,7 +27382,7 @@ func decodeListNetworkingV1NamespacedNetworkPolicyParams(args map[string]string,
 	}
 	// Decode query: watch.
 	{
-		values, ok := r.URL.Query()["watch"]
+		values, ok := queryArgs["watch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -27226,7 +27448,7 @@ func decodeListNetworkingV1NamespacedNetworkPolicyParams(args map[string]string,
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -27263,10 +27485,13 @@ func decodeListNetworkingV1NamespacedNetworkPolicyParams(args map[string]string,
 }
 
 func decodeListNetworkingV1NetworkPolicyForAllNamespacesParams(args map[string]string, r *http.Request) (ListNetworkingV1NetworkPolicyForAllNamespacesParams, error) {
-	var params ListNetworkingV1NetworkPolicyForAllNamespacesParams
+	var (
+		params    ListNetworkingV1NetworkPolicyForAllNamespacesParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode query: allowWatchBookmarks.
 	{
-		values, ok := r.URL.Query()["allowWatchBookmarks"]
+		values, ok := queryArgs["allowWatchBookmarks"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -27301,7 +27526,7 @@ func decodeListNetworkingV1NetworkPolicyForAllNamespacesParams(args map[string]s
 	}
 	// Decode query: continue.
 	{
-		values, ok := r.URL.Query()["continue"]
+		values, ok := queryArgs["continue"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -27336,7 +27561,7 @@ func decodeListNetworkingV1NetworkPolicyForAllNamespacesParams(args map[string]s
 	}
 	// Decode query: fieldSelector.
 	{
-		values, ok := r.URL.Query()["fieldSelector"]
+		values, ok := queryArgs["fieldSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -27371,7 +27596,7 @@ func decodeListNetworkingV1NetworkPolicyForAllNamespacesParams(args map[string]s
 	}
 	// Decode query: labelSelector.
 	{
-		values, ok := r.URL.Query()["labelSelector"]
+		values, ok := queryArgs["labelSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -27406,7 +27631,7 @@ func decodeListNetworkingV1NetworkPolicyForAllNamespacesParams(args map[string]s
 	}
 	// Decode query: limit.
 	{
-		values, ok := r.URL.Query()["limit"]
+		values, ok := queryArgs["limit"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -27441,7 +27666,7 @@ func decodeListNetworkingV1NetworkPolicyForAllNamespacesParams(args map[string]s
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -27476,7 +27701,7 @@ func decodeListNetworkingV1NetworkPolicyForAllNamespacesParams(args map[string]s
 	}
 	// Decode query: resourceVersion.
 	{
-		values, ok := r.URL.Query()["resourceVersion"]
+		values, ok := queryArgs["resourceVersion"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -27511,7 +27736,7 @@ func decodeListNetworkingV1NetworkPolicyForAllNamespacesParams(args map[string]s
 	}
 	// Decode query: resourceVersionMatch.
 	{
-		values, ok := r.URL.Query()["resourceVersionMatch"]
+		values, ok := queryArgs["resourceVersionMatch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -27546,7 +27771,7 @@ func decodeListNetworkingV1NetworkPolicyForAllNamespacesParams(args map[string]s
 	}
 	// Decode query: timeoutSeconds.
 	{
-		values, ok := r.URL.Query()["timeoutSeconds"]
+		values, ok := queryArgs["timeoutSeconds"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -27581,7 +27806,7 @@ func decodeListNetworkingV1NetworkPolicyForAllNamespacesParams(args map[string]s
 	}
 	// Decode query: watch.
 	{
-		values, ok := r.URL.Query()["watch"]
+		values, ok := queryArgs["watch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -27618,10 +27843,13 @@ func decodeListNetworkingV1NetworkPolicyForAllNamespacesParams(args map[string]s
 }
 
 func decodeListNodeV1RuntimeClassParams(args map[string]string, r *http.Request) (ListNodeV1RuntimeClassParams, error) {
-	var params ListNodeV1RuntimeClassParams
+	var (
+		params    ListNodeV1RuntimeClassParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode query: allowWatchBookmarks.
 	{
-		values, ok := r.URL.Query()["allowWatchBookmarks"]
+		values, ok := queryArgs["allowWatchBookmarks"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -27656,7 +27884,7 @@ func decodeListNodeV1RuntimeClassParams(args map[string]string, r *http.Request)
 	}
 	// Decode query: continue.
 	{
-		values, ok := r.URL.Query()["continue"]
+		values, ok := queryArgs["continue"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -27691,7 +27919,7 @@ func decodeListNodeV1RuntimeClassParams(args map[string]string, r *http.Request)
 	}
 	// Decode query: fieldSelector.
 	{
-		values, ok := r.URL.Query()["fieldSelector"]
+		values, ok := queryArgs["fieldSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -27726,7 +27954,7 @@ func decodeListNodeV1RuntimeClassParams(args map[string]string, r *http.Request)
 	}
 	// Decode query: labelSelector.
 	{
-		values, ok := r.URL.Query()["labelSelector"]
+		values, ok := queryArgs["labelSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -27761,7 +27989,7 @@ func decodeListNodeV1RuntimeClassParams(args map[string]string, r *http.Request)
 	}
 	// Decode query: limit.
 	{
-		values, ok := r.URL.Query()["limit"]
+		values, ok := queryArgs["limit"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -27796,7 +28024,7 @@ func decodeListNodeV1RuntimeClassParams(args map[string]string, r *http.Request)
 	}
 	// Decode query: resourceVersion.
 	{
-		values, ok := r.URL.Query()["resourceVersion"]
+		values, ok := queryArgs["resourceVersion"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -27831,7 +28059,7 @@ func decodeListNodeV1RuntimeClassParams(args map[string]string, r *http.Request)
 	}
 	// Decode query: resourceVersionMatch.
 	{
-		values, ok := r.URL.Query()["resourceVersionMatch"]
+		values, ok := queryArgs["resourceVersionMatch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -27866,7 +28094,7 @@ func decodeListNodeV1RuntimeClassParams(args map[string]string, r *http.Request)
 	}
 	// Decode query: timeoutSeconds.
 	{
-		values, ok := r.URL.Query()["timeoutSeconds"]
+		values, ok := queryArgs["timeoutSeconds"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -27901,7 +28129,7 @@ func decodeListNodeV1RuntimeClassParams(args map[string]string, r *http.Request)
 	}
 	// Decode query: watch.
 	{
-		values, ok := r.URL.Query()["watch"]
+		values, ok := queryArgs["watch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -27936,7 +28164,7 @@ func decodeListNodeV1RuntimeClassParams(args map[string]string, r *http.Request)
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -27973,10 +28201,13 @@ func decodeListNodeV1RuntimeClassParams(args map[string]string, r *http.Request)
 }
 
 func decodeListNodeV1alpha1RuntimeClassParams(args map[string]string, r *http.Request) (ListNodeV1alpha1RuntimeClassParams, error) {
-	var params ListNodeV1alpha1RuntimeClassParams
+	var (
+		params    ListNodeV1alpha1RuntimeClassParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode query: allowWatchBookmarks.
 	{
-		values, ok := r.URL.Query()["allowWatchBookmarks"]
+		values, ok := queryArgs["allowWatchBookmarks"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -28011,7 +28242,7 @@ func decodeListNodeV1alpha1RuntimeClassParams(args map[string]string, r *http.Re
 	}
 	// Decode query: continue.
 	{
-		values, ok := r.URL.Query()["continue"]
+		values, ok := queryArgs["continue"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -28046,7 +28277,7 @@ func decodeListNodeV1alpha1RuntimeClassParams(args map[string]string, r *http.Re
 	}
 	// Decode query: fieldSelector.
 	{
-		values, ok := r.URL.Query()["fieldSelector"]
+		values, ok := queryArgs["fieldSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -28081,7 +28312,7 @@ func decodeListNodeV1alpha1RuntimeClassParams(args map[string]string, r *http.Re
 	}
 	// Decode query: labelSelector.
 	{
-		values, ok := r.URL.Query()["labelSelector"]
+		values, ok := queryArgs["labelSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -28116,7 +28347,7 @@ func decodeListNodeV1alpha1RuntimeClassParams(args map[string]string, r *http.Re
 	}
 	// Decode query: limit.
 	{
-		values, ok := r.URL.Query()["limit"]
+		values, ok := queryArgs["limit"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -28151,7 +28382,7 @@ func decodeListNodeV1alpha1RuntimeClassParams(args map[string]string, r *http.Re
 	}
 	// Decode query: resourceVersion.
 	{
-		values, ok := r.URL.Query()["resourceVersion"]
+		values, ok := queryArgs["resourceVersion"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -28186,7 +28417,7 @@ func decodeListNodeV1alpha1RuntimeClassParams(args map[string]string, r *http.Re
 	}
 	// Decode query: resourceVersionMatch.
 	{
-		values, ok := r.URL.Query()["resourceVersionMatch"]
+		values, ok := queryArgs["resourceVersionMatch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -28221,7 +28452,7 @@ func decodeListNodeV1alpha1RuntimeClassParams(args map[string]string, r *http.Re
 	}
 	// Decode query: timeoutSeconds.
 	{
-		values, ok := r.URL.Query()["timeoutSeconds"]
+		values, ok := queryArgs["timeoutSeconds"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -28256,7 +28487,7 @@ func decodeListNodeV1alpha1RuntimeClassParams(args map[string]string, r *http.Re
 	}
 	// Decode query: watch.
 	{
-		values, ok := r.URL.Query()["watch"]
+		values, ok := queryArgs["watch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -28291,7 +28522,7 @@ func decodeListNodeV1alpha1RuntimeClassParams(args map[string]string, r *http.Re
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -28328,10 +28559,13 @@ func decodeListNodeV1alpha1RuntimeClassParams(args map[string]string, r *http.Re
 }
 
 func decodeListNodeV1beta1RuntimeClassParams(args map[string]string, r *http.Request) (ListNodeV1beta1RuntimeClassParams, error) {
-	var params ListNodeV1beta1RuntimeClassParams
+	var (
+		params    ListNodeV1beta1RuntimeClassParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode query: allowWatchBookmarks.
 	{
-		values, ok := r.URL.Query()["allowWatchBookmarks"]
+		values, ok := queryArgs["allowWatchBookmarks"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -28366,7 +28600,7 @@ func decodeListNodeV1beta1RuntimeClassParams(args map[string]string, r *http.Req
 	}
 	// Decode query: continue.
 	{
-		values, ok := r.URL.Query()["continue"]
+		values, ok := queryArgs["continue"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -28401,7 +28635,7 @@ func decodeListNodeV1beta1RuntimeClassParams(args map[string]string, r *http.Req
 	}
 	// Decode query: fieldSelector.
 	{
-		values, ok := r.URL.Query()["fieldSelector"]
+		values, ok := queryArgs["fieldSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -28436,7 +28670,7 @@ func decodeListNodeV1beta1RuntimeClassParams(args map[string]string, r *http.Req
 	}
 	// Decode query: labelSelector.
 	{
-		values, ok := r.URL.Query()["labelSelector"]
+		values, ok := queryArgs["labelSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -28471,7 +28705,7 @@ func decodeListNodeV1beta1RuntimeClassParams(args map[string]string, r *http.Req
 	}
 	// Decode query: limit.
 	{
-		values, ok := r.URL.Query()["limit"]
+		values, ok := queryArgs["limit"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -28506,7 +28740,7 @@ func decodeListNodeV1beta1RuntimeClassParams(args map[string]string, r *http.Req
 	}
 	// Decode query: resourceVersion.
 	{
-		values, ok := r.URL.Query()["resourceVersion"]
+		values, ok := queryArgs["resourceVersion"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -28541,7 +28775,7 @@ func decodeListNodeV1beta1RuntimeClassParams(args map[string]string, r *http.Req
 	}
 	// Decode query: resourceVersionMatch.
 	{
-		values, ok := r.URL.Query()["resourceVersionMatch"]
+		values, ok := queryArgs["resourceVersionMatch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -28576,7 +28810,7 @@ func decodeListNodeV1beta1RuntimeClassParams(args map[string]string, r *http.Req
 	}
 	// Decode query: timeoutSeconds.
 	{
-		values, ok := r.URL.Query()["timeoutSeconds"]
+		values, ok := queryArgs["timeoutSeconds"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -28611,7 +28845,7 @@ func decodeListNodeV1beta1RuntimeClassParams(args map[string]string, r *http.Req
 	}
 	// Decode query: watch.
 	{
-		values, ok := r.URL.Query()["watch"]
+		values, ok := queryArgs["watch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -28646,7 +28880,7 @@ func decodeListNodeV1beta1RuntimeClassParams(args map[string]string, r *http.Req
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -28683,10 +28917,13 @@ func decodeListNodeV1beta1RuntimeClassParams(args map[string]string, r *http.Req
 }
 
 func decodeListPolicyV1NamespacedPodDisruptionBudgetParams(args map[string]string, r *http.Request) (ListPolicyV1NamespacedPodDisruptionBudgetParams, error) {
-	var params ListPolicyV1NamespacedPodDisruptionBudgetParams
+	var (
+		params    ListPolicyV1NamespacedPodDisruptionBudgetParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode query: allowWatchBookmarks.
 	{
-		values, ok := r.URL.Query()["allowWatchBookmarks"]
+		values, ok := queryArgs["allowWatchBookmarks"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -28721,7 +28958,7 @@ func decodeListPolicyV1NamespacedPodDisruptionBudgetParams(args map[string]strin
 	}
 	// Decode query: continue.
 	{
-		values, ok := r.URL.Query()["continue"]
+		values, ok := queryArgs["continue"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -28756,7 +28993,7 @@ func decodeListPolicyV1NamespacedPodDisruptionBudgetParams(args map[string]strin
 	}
 	// Decode query: fieldSelector.
 	{
-		values, ok := r.URL.Query()["fieldSelector"]
+		values, ok := queryArgs["fieldSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -28791,7 +29028,7 @@ func decodeListPolicyV1NamespacedPodDisruptionBudgetParams(args map[string]strin
 	}
 	// Decode query: labelSelector.
 	{
-		values, ok := r.URL.Query()["labelSelector"]
+		values, ok := queryArgs["labelSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -28826,7 +29063,7 @@ func decodeListPolicyV1NamespacedPodDisruptionBudgetParams(args map[string]strin
 	}
 	// Decode query: limit.
 	{
-		values, ok := r.URL.Query()["limit"]
+		values, ok := queryArgs["limit"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -28861,7 +29098,7 @@ func decodeListPolicyV1NamespacedPodDisruptionBudgetParams(args map[string]strin
 	}
 	// Decode query: resourceVersion.
 	{
-		values, ok := r.URL.Query()["resourceVersion"]
+		values, ok := queryArgs["resourceVersion"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -28896,7 +29133,7 @@ func decodeListPolicyV1NamespacedPodDisruptionBudgetParams(args map[string]strin
 	}
 	// Decode query: resourceVersionMatch.
 	{
-		values, ok := r.URL.Query()["resourceVersionMatch"]
+		values, ok := queryArgs["resourceVersionMatch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -28931,7 +29168,7 @@ func decodeListPolicyV1NamespacedPodDisruptionBudgetParams(args map[string]strin
 	}
 	// Decode query: timeoutSeconds.
 	{
-		values, ok := r.URL.Query()["timeoutSeconds"]
+		values, ok := queryArgs["timeoutSeconds"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -28966,7 +29203,7 @@ func decodeListPolicyV1NamespacedPodDisruptionBudgetParams(args map[string]strin
 	}
 	// Decode query: watch.
 	{
-		values, ok := r.URL.Query()["watch"]
+		values, ok := queryArgs["watch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -29032,7 +29269,7 @@ func decodeListPolicyV1NamespacedPodDisruptionBudgetParams(args map[string]strin
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -29069,10 +29306,13 @@ func decodeListPolicyV1NamespacedPodDisruptionBudgetParams(args map[string]strin
 }
 
 func decodeListPolicyV1PodDisruptionBudgetForAllNamespacesParams(args map[string]string, r *http.Request) (ListPolicyV1PodDisruptionBudgetForAllNamespacesParams, error) {
-	var params ListPolicyV1PodDisruptionBudgetForAllNamespacesParams
+	var (
+		params    ListPolicyV1PodDisruptionBudgetForAllNamespacesParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode query: allowWatchBookmarks.
 	{
-		values, ok := r.URL.Query()["allowWatchBookmarks"]
+		values, ok := queryArgs["allowWatchBookmarks"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -29107,7 +29347,7 @@ func decodeListPolicyV1PodDisruptionBudgetForAllNamespacesParams(args map[string
 	}
 	// Decode query: continue.
 	{
-		values, ok := r.URL.Query()["continue"]
+		values, ok := queryArgs["continue"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -29142,7 +29382,7 @@ func decodeListPolicyV1PodDisruptionBudgetForAllNamespacesParams(args map[string
 	}
 	// Decode query: fieldSelector.
 	{
-		values, ok := r.URL.Query()["fieldSelector"]
+		values, ok := queryArgs["fieldSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -29177,7 +29417,7 @@ func decodeListPolicyV1PodDisruptionBudgetForAllNamespacesParams(args map[string
 	}
 	// Decode query: labelSelector.
 	{
-		values, ok := r.URL.Query()["labelSelector"]
+		values, ok := queryArgs["labelSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -29212,7 +29452,7 @@ func decodeListPolicyV1PodDisruptionBudgetForAllNamespacesParams(args map[string
 	}
 	// Decode query: limit.
 	{
-		values, ok := r.URL.Query()["limit"]
+		values, ok := queryArgs["limit"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -29247,7 +29487,7 @@ func decodeListPolicyV1PodDisruptionBudgetForAllNamespacesParams(args map[string
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -29282,7 +29522,7 @@ func decodeListPolicyV1PodDisruptionBudgetForAllNamespacesParams(args map[string
 	}
 	// Decode query: resourceVersion.
 	{
-		values, ok := r.URL.Query()["resourceVersion"]
+		values, ok := queryArgs["resourceVersion"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -29317,7 +29557,7 @@ func decodeListPolicyV1PodDisruptionBudgetForAllNamespacesParams(args map[string
 	}
 	// Decode query: resourceVersionMatch.
 	{
-		values, ok := r.URL.Query()["resourceVersionMatch"]
+		values, ok := queryArgs["resourceVersionMatch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -29352,7 +29592,7 @@ func decodeListPolicyV1PodDisruptionBudgetForAllNamespacesParams(args map[string
 	}
 	// Decode query: timeoutSeconds.
 	{
-		values, ok := r.URL.Query()["timeoutSeconds"]
+		values, ok := queryArgs["timeoutSeconds"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -29387,7 +29627,7 @@ func decodeListPolicyV1PodDisruptionBudgetForAllNamespacesParams(args map[string
 	}
 	// Decode query: watch.
 	{
-		values, ok := r.URL.Query()["watch"]
+		values, ok := queryArgs["watch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -29424,10 +29664,13 @@ func decodeListPolicyV1PodDisruptionBudgetForAllNamespacesParams(args map[string
 }
 
 func decodeListPolicyV1beta1NamespacedPodDisruptionBudgetParams(args map[string]string, r *http.Request) (ListPolicyV1beta1NamespacedPodDisruptionBudgetParams, error) {
-	var params ListPolicyV1beta1NamespacedPodDisruptionBudgetParams
+	var (
+		params    ListPolicyV1beta1NamespacedPodDisruptionBudgetParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode query: allowWatchBookmarks.
 	{
-		values, ok := r.URL.Query()["allowWatchBookmarks"]
+		values, ok := queryArgs["allowWatchBookmarks"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -29462,7 +29705,7 @@ func decodeListPolicyV1beta1NamespacedPodDisruptionBudgetParams(args map[string]
 	}
 	// Decode query: continue.
 	{
-		values, ok := r.URL.Query()["continue"]
+		values, ok := queryArgs["continue"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -29497,7 +29740,7 @@ func decodeListPolicyV1beta1NamespacedPodDisruptionBudgetParams(args map[string]
 	}
 	// Decode query: fieldSelector.
 	{
-		values, ok := r.URL.Query()["fieldSelector"]
+		values, ok := queryArgs["fieldSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -29532,7 +29775,7 @@ func decodeListPolicyV1beta1NamespacedPodDisruptionBudgetParams(args map[string]
 	}
 	// Decode query: labelSelector.
 	{
-		values, ok := r.URL.Query()["labelSelector"]
+		values, ok := queryArgs["labelSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -29567,7 +29810,7 @@ func decodeListPolicyV1beta1NamespacedPodDisruptionBudgetParams(args map[string]
 	}
 	// Decode query: limit.
 	{
-		values, ok := r.URL.Query()["limit"]
+		values, ok := queryArgs["limit"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -29602,7 +29845,7 @@ func decodeListPolicyV1beta1NamespacedPodDisruptionBudgetParams(args map[string]
 	}
 	// Decode query: resourceVersion.
 	{
-		values, ok := r.URL.Query()["resourceVersion"]
+		values, ok := queryArgs["resourceVersion"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -29637,7 +29880,7 @@ func decodeListPolicyV1beta1NamespacedPodDisruptionBudgetParams(args map[string]
 	}
 	// Decode query: resourceVersionMatch.
 	{
-		values, ok := r.URL.Query()["resourceVersionMatch"]
+		values, ok := queryArgs["resourceVersionMatch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -29672,7 +29915,7 @@ func decodeListPolicyV1beta1NamespacedPodDisruptionBudgetParams(args map[string]
 	}
 	// Decode query: timeoutSeconds.
 	{
-		values, ok := r.URL.Query()["timeoutSeconds"]
+		values, ok := queryArgs["timeoutSeconds"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -29707,7 +29950,7 @@ func decodeListPolicyV1beta1NamespacedPodDisruptionBudgetParams(args map[string]
 	}
 	// Decode query: watch.
 	{
-		values, ok := r.URL.Query()["watch"]
+		values, ok := queryArgs["watch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -29773,7 +30016,7 @@ func decodeListPolicyV1beta1NamespacedPodDisruptionBudgetParams(args map[string]
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -29810,10 +30053,13 @@ func decodeListPolicyV1beta1NamespacedPodDisruptionBudgetParams(args map[string]
 }
 
 func decodeListPolicyV1beta1PodDisruptionBudgetForAllNamespacesParams(args map[string]string, r *http.Request) (ListPolicyV1beta1PodDisruptionBudgetForAllNamespacesParams, error) {
-	var params ListPolicyV1beta1PodDisruptionBudgetForAllNamespacesParams
+	var (
+		params    ListPolicyV1beta1PodDisruptionBudgetForAllNamespacesParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode query: allowWatchBookmarks.
 	{
-		values, ok := r.URL.Query()["allowWatchBookmarks"]
+		values, ok := queryArgs["allowWatchBookmarks"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -29848,7 +30094,7 @@ func decodeListPolicyV1beta1PodDisruptionBudgetForAllNamespacesParams(args map[s
 	}
 	// Decode query: continue.
 	{
-		values, ok := r.URL.Query()["continue"]
+		values, ok := queryArgs["continue"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -29883,7 +30129,7 @@ func decodeListPolicyV1beta1PodDisruptionBudgetForAllNamespacesParams(args map[s
 	}
 	// Decode query: fieldSelector.
 	{
-		values, ok := r.URL.Query()["fieldSelector"]
+		values, ok := queryArgs["fieldSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -29918,7 +30164,7 @@ func decodeListPolicyV1beta1PodDisruptionBudgetForAllNamespacesParams(args map[s
 	}
 	// Decode query: labelSelector.
 	{
-		values, ok := r.URL.Query()["labelSelector"]
+		values, ok := queryArgs["labelSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -29953,7 +30199,7 @@ func decodeListPolicyV1beta1PodDisruptionBudgetForAllNamespacesParams(args map[s
 	}
 	// Decode query: limit.
 	{
-		values, ok := r.URL.Query()["limit"]
+		values, ok := queryArgs["limit"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -29988,7 +30234,7 @@ func decodeListPolicyV1beta1PodDisruptionBudgetForAllNamespacesParams(args map[s
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -30023,7 +30269,7 @@ func decodeListPolicyV1beta1PodDisruptionBudgetForAllNamespacesParams(args map[s
 	}
 	// Decode query: resourceVersion.
 	{
-		values, ok := r.URL.Query()["resourceVersion"]
+		values, ok := queryArgs["resourceVersion"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -30058,7 +30304,7 @@ func decodeListPolicyV1beta1PodDisruptionBudgetForAllNamespacesParams(args map[s
 	}
 	// Decode query: resourceVersionMatch.
 	{
-		values, ok := r.URL.Query()["resourceVersionMatch"]
+		values, ok := queryArgs["resourceVersionMatch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -30093,7 +30339,7 @@ func decodeListPolicyV1beta1PodDisruptionBudgetForAllNamespacesParams(args map[s
 	}
 	// Decode query: timeoutSeconds.
 	{
-		values, ok := r.URL.Query()["timeoutSeconds"]
+		values, ok := queryArgs["timeoutSeconds"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -30128,7 +30374,7 @@ func decodeListPolicyV1beta1PodDisruptionBudgetForAllNamespacesParams(args map[s
 	}
 	// Decode query: watch.
 	{
-		values, ok := r.URL.Query()["watch"]
+		values, ok := queryArgs["watch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -30165,10 +30411,13 @@ func decodeListPolicyV1beta1PodDisruptionBudgetForAllNamespacesParams(args map[s
 }
 
 func decodeListPolicyV1beta1PodSecurityPolicyParams(args map[string]string, r *http.Request) (ListPolicyV1beta1PodSecurityPolicyParams, error) {
-	var params ListPolicyV1beta1PodSecurityPolicyParams
+	var (
+		params    ListPolicyV1beta1PodSecurityPolicyParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode query: allowWatchBookmarks.
 	{
-		values, ok := r.URL.Query()["allowWatchBookmarks"]
+		values, ok := queryArgs["allowWatchBookmarks"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -30203,7 +30452,7 @@ func decodeListPolicyV1beta1PodSecurityPolicyParams(args map[string]string, r *h
 	}
 	// Decode query: continue.
 	{
-		values, ok := r.URL.Query()["continue"]
+		values, ok := queryArgs["continue"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -30238,7 +30487,7 @@ func decodeListPolicyV1beta1PodSecurityPolicyParams(args map[string]string, r *h
 	}
 	// Decode query: fieldSelector.
 	{
-		values, ok := r.URL.Query()["fieldSelector"]
+		values, ok := queryArgs["fieldSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -30273,7 +30522,7 @@ func decodeListPolicyV1beta1PodSecurityPolicyParams(args map[string]string, r *h
 	}
 	// Decode query: labelSelector.
 	{
-		values, ok := r.URL.Query()["labelSelector"]
+		values, ok := queryArgs["labelSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -30308,7 +30557,7 @@ func decodeListPolicyV1beta1PodSecurityPolicyParams(args map[string]string, r *h
 	}
 	// Decode query: limit.
 	{
-		values, ok := r.URL.Query()["limit"]
+		values, ok := queryArgs["limit"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -30343,7 +30592,7 @@ func decodeListPolicyV1beta1PodSecurityPolicyParams(args map[string]string, r *h
 	}
 	// Decode query: resourceVersion.
 	{
-		values, ok := r.URL.Query()["resourceVersion"]
+		values, ok := queryArgs["resourceVersion"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -30378,7 +30627,7 @@ func decodeListPolicyV1beta1PodSecurityPolicyParams(args map[string]string, r *h
 	}
 	// Decode query: resourceVersionMatch.
 	{
-		values, ok := r.URL.Query()["resourceVersionMatch"]
+		values, ok := queryArgs["resourceVersionMatch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -30413,7 +30662,7 @@ func decodeListPolicyV1beta1PodSecurityPolicyParams(args map[string]string, r *h
 	}
 	// Decode query: timeoutSeconds.
 	{
-		values, ok := r.URL.Query()["timeoutSeconds"]
+		values, ok := queryArgs["timeoutSeconds"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -30448,7 +30697,7 @@ func decodeListPolicyV1beta1PodSecurityPolicyParams(args map[string]string, r *h
 	}
 	// Decode query: watch.
 	{
-		values, ok := r.URL.Query()["watch"]
+		values, ok := queryArgs["watch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -30483,7 +30732,7 @@ func decodeListPolicyV1beta1PodSecurityPolicyParams(args map[string]string, r *h
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -30520,10 +30769,13 @@ func decodeListPolicyV1beta1PodSecurityPolicyParams(args map[string]string, r *h
 }
 
 func decodeListRbacAuthorizationV1ClusterRoleParams(args map[string]string, r *http.Request) (ListRbacAuthorizationV1ClusterRoleParams, error) {
-	var params ListRbacAuthorizationV1ClusterRoleParams
+	var (
+		params    ListRbacAuthorizationV1ClusterRoleParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode query: allowWatchBookmarks.
 	{
-		values, ok := r.URL.Query()["allowWatchBookmarks"]
+		values, ok := queryArgs["allowWatchBookmarks"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -30558,7 +30810,7 @@ func decodeListRbacAuthorizationV1ClusterRoleParams(args map[string]string, r *h
 	}
 	// Decode query: continue.
 	{
-		values, ok := r.URL.Query()["continue"]
+		values, ok := queryArgs["continue"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -30593,7 +30845,7 @@ func decodeListRbacAuthorizationV1ClusterRoleParams(args map[string]string, r *h
 	}
 	// Decode query: fieldSelector.
 	{
-		values, ok := r.URL.Query()["fieldSelector"]
+		values, ok := queryArgs["fieldSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -30628,7 +30880,7 @@ func decodeListRbacAuthorizationV1ClusterRoleParams(args map[string]string, r *h
 	}
 	// Decode query: labelSelector.
 	{
-		values, ok := r.URL.Query()["labelSelector"]
+		values, ok := queryArgs["labelSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -30663,7 +30915,7 @@ func decodeListRbacAuthorizationV1ClusterRoleParams(args map[string]string, r *h
 	}
 	// Decode query: limit.
 	{
-		values, ok := r.URL.Query()["limit"]
+		values, ok := queryArgs["limit"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -30698,7 +30950,7 @@ func decodeListRbacAuthorizationV1ClusterRoleParams(args map[string]string, r *h
 	}
 	// Decode query: resourceVersion.
 	{
-		values, ok := r.URL.Query()["resourceVersion"]
+		values, ok := queryArgs["resourceVersion"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -30733,7 +30985,7 @@ func decodeListRbacAuthorizationV1ClusterRoleParams(args map[string]string, r *h
 	}
 	// Decode query: resourceVersionMatch.
 	{
-		values, ok := r.URL.Query()["resourceVersionMatch"]
+		values, ok := queryArgs["resourceVersionMatch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -30768,7 +31020,7 @@ func decodeListRbacAuthorizationV1ClusterRoleParams(args map[string]string, r *h
 	}
 	// Decode query: timeoutSeconds.
 	{
-		values, ok := r.URL.Query()["timeoutSeconds"]
+		values, ok := queryArgs["timeoutSeconds"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -30803,7 +31055,7 @@ func decodeListRbacAuthorizationV1ClusterRoleParams(args map[string]string, r *h
 	}
 	// Decode query: watch.
 	{
-		values, ok := r.URL.Query()["watch"]
+		values, ok := queryArgs["watch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -30838,7 +31090,7 @@ func decodeListRbacAuthorizationV1ClusterRoleParams(args map[string]string, r *h
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -30875,10 +31127,13 @@ func decodeListRbacAuthorizationV1ClusterRoleParams(args map[string]string, r *h
 }
 
 func decodeListRbacAuthorizationV1ClusterRoleBindingParams(args map[string]string, r *http.Request) (ListRbacAuthorizationV1ClusterRoleBindingParams, error) {
-	var params ListRbacAuthorizationV1ClusterRoleBindingParams
+	var (
+		params    ListRbacAuthorizationV1ClusterRoleBindingParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode query: allowWatchBookmarks.
 	{
-		values, ok := r.URL.Query()["allowWatchBookmarks"]
+		values, ok := queryArgs["allowWatchBookmarks"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -30913,7 +31168,7 @@ func decodeListRbacAuthorizationV1ClusterRoleBindingParams(args map[string]strin
 	}
 	// Decode query: continue.
 	{
-		values, ok := r.URL.Query()["continue"]
+		values, ok := queryArgs["continue"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -30948,7 +31203,7 @@ func decodeListRbacAuthorizationV1ClusterRoleBindingParams(args map[string]strin
 	}
 	// Decode query: fieldSelector.
 	{
-		values, ok := r.URL.Query()["fieldSelector"]
+		values, ok := queryArgs["fieldSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -30983,7 +31238,7 @@ func decodeListRbacAuthorizationV1ClusterRoleBindingParams(args map[string]strin
 	}
 	// Decode query: labelSelector.
 	{
-		values, ok := r.URL.Query()["labelSelector"]
+		values, ok := queryArgs["labelSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -31018,7 +31273,7 @@ func decodeListRbacAuthorizationV1ClusterRoleBindingParams(args map[string]strin
 	}
 	// Decode query: limit.
 	{
-		values, ok := r.URL.Query()["limit"]
+		values, ok := queryArgs["limit"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -31053,7 +31308,7 @@ func decodeListRbacAuthorizationV1ClusterRoleBindingParams(args map[string]strin
 	}
 	// Decode query: resourceVersion.
 	{
-		values, ok := r.URL.Query()["resourceVersion"]
+		values, ok := queryArgs["resourceVersion"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -31088,7 +31343,7 @@ func decodeListRbacAuthorizationV1ClusterRoleBindingParams(args map[string]strin
 	}
 	// Decode query: resourceVersionMatch.
 	{
-		values, ok := r.URL.Query()["resourceVersionMatch"]
+		values, ok := queryArgs["resourceVersionMatch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -31123,7 +31378,7 @@ func decodeListRbacAuthorizationV1ClusterRoleBindingParams(args map[string]strin
 	}
 	// Decode query: timeoutSeconds.
 	{
-		values, ok := r.URL.Query()["timeoutSeconds"]
+		values, ok := queryArgs["timeoutSeconds"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -31158,7 +31413,7 @@ func decodeListRbacAuthorizationV1ClusterRoleBindingParams(args map[string]strin
 	}
 	// Decode query: watch.
 	{
-		values, ok := r.URL.Query()["watch"]
+		values, ok := queryArgs["watch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -31193,7 +31448,7 @@ func decodeListRbacAuthorizationV1ClusterRoleBindingParams(args map[string]strin
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -31230,10 +31485,13 @@ func decodeListRbacAuthorizationV1ClusterRoleBindingParams(args map[string]strin
 }
 
 func decodeListRbacAuthorizationV1NamespacedRoleParams(args map[string]string, r *http.Request) (ListRbacAuthorizationV1NamespacedRoleParams, error) {
-	var params ListRbacAuthorizationV1NamespacedRoleParams
+	var (
+		params    ListRbacAuthorizationV1NamespacedRoleParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode query: allowWatchBookmarks.
 	{
-		values, ok := r.URL.Query()["allowWatchBookmarks"]
+		values, ok := queryArgs["allowWatchBookmarks"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -31268,7 +31526,7 @@ func decodeListRbacAuthorizationV1NamespacedRoleParams(args map[string]string, r
 	}
 	// Decode query: continue.
 	{
-		values, ok := r.URL.Query()["continue"]
+		values, ok := queryArgs["continue"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -31303,7 +31561,7 @@ func decodeListRbacAuthorizationV1NamespacedRoleParams(args map[string]string, r
 	}
 	// Decode query: fieldSelector.
 	{
-		values, ok := r.URL.Query()["fieldSelector"]
+		values, ok := queryArgs["fieldSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -31338,7 +31596,7 @@ func decodeListRbacAuthorizationV1NamespacedRoleParams(args map[string]string, r
 	}
 	// Decode query: labelSelector.
 	{
-		values, ok := r.URL.Query()["labelSelector"]
+		values, ok := queryArgs["labelSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -31373,7 +31631,7 @@ func decodeListRbacAuthorizationV1NamespacedRoleParams(args map[string]string, r
 	}
 	// Decode query: limit.
 	{
-		values, ok := r.URL.Query()["limit"]
+		values, ok := queryArgs["limit"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -31408,7 +31666,7 @@ func decodeListRbacAuthorizationV1NamespacedRoleParams(args map[string]string, r
 	}
 	// Decode query: resourceVersion.
 	{
-		values, ok := r.URL.Query()["resourceVersion"]
+		values, ok := queryArgs["resourceVersion"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -31443,7 +31701,7 @@ func decodeListRbacAuthorizationV1NamespacedRoleParams(args map[string]string, r
 	}
 	// Decode query: resourceVersionMatch.
 	{
-		values, ok := r.URL.Query()["resourceVersionMatch"]
+		values, ok := queryArgs["resourceVersionMatch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -31478,7 +31736,7 @@ func decodeListRbacAuthorizationV1NamespacedRoleParams(args map[string]string, r
 	}
 	// Decode query: timeoutSeconds.
 	{
-		values, ok := r.URL.Query()["timeoutSeconds"]
+		values, ok := queryArgs["timeoutSeconds"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -31513,7 +31771,7 @@ func decodeListRbacAuthorizationV1NamespacedRoleParams(args map[string]string, r
 	}
 	// Decode query: watch.
 	{
-		values, ok := r.URL.Query()["watch"]
+		values, ok := queryArgs["watch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -31579,7 +31837,7 @@ func decodeListRbacAuthorizationV1NamespacedRoleParams(args map[string]string, r
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -31616,10 +31874,13 @@ func decodeListRbacAuthorizationV1NamespacedRoleParams(args map[string]string, r
 }
 
 func decodeListRbacAuthorizationV1NamespacedRoleBindingParams(args map[string]string, r *http.Request) (ListRbacAuthorizationV1NamespacedRoleBindingParams, error) {
-	var params ListRbacAuthorizationV1NamespacedRoleBindingParams
+	var (
+		params    ListRbacAuthorizationV1NamespacedRoleBindingParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode query: allowWatchBookmarks.
 	{
-		values, ok := r.URL.Query()["allowWatchBookmarks"]
+		values, ok := queryArgs["allowWatchBookmarks"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -31654,7 +31915,7 @@ func decodeListRbacAuthorizationV1NamespacedRoleBindingParams(args map[string]st
 	}
 	// Decode query: continue.
 	{
-		values, ok := r.URL.Query()["continue"]
+		values, ok := queryArgs["continue"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -31689,7 +31950,7 @@ func decodeListRbacAuthorizationV1NamespacedRoleBindingParams(args map[string]st
 	}
 	// Decode query: fieldSelector.
 	{
-		values, ok := r.URL.Query()["fieldSelector"]
+		values, ok := queryArgs["fieldSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -31724,7 +31985,7 @@ func decodeListRbacAuthorizationV1NamespacedRoleBindingParams(args map[string]st
 	}
 	// Decode query: labelSelector.
 	{
-		values, ok := r.URL.Query()["labelSelector"]
+		values, ok := queryArgs["labelSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -31759,7 +32020,7 @@ func decodeListRbacAuthorizationV1NamespacedRoleBindingParams(args map[string]st
 	}
 	// Decode query: limit.
 	{
-		values, ok := r.URL.Query()["limit"]
+		values, ok := queryArgs["limit"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -31794,7 +32055,7 @@ func decodeListRbacAuthorizationV1NamespacedRoleBindingParams(args map[string]st
 	}
 	// Decode query: resourceVersion.
 	{
-		values, ok := r.URL.Query()["resourceVersion"]
+		values, ok := queryArgs["resourceVersion"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -31829,7 +32090,7 @@ func decodeListRbacAuthorizationV1NamespacedRoleBindingParams(args map[string]st
 	}
 	// Decode query: resourceVersionMatch.
 	{
-		values, ok := r.URL.Query()["resourceVersionMatch"]
+		values, ok := queryArgs["resourceVersionMatch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -31864,7 +32125,7 @@ func decodeListRbacAuthorizationV1NamespacedRoleBindingParams(args map[string]st
 	}
 	// Decode query: timeoutSeconds.
 	{
-		values, ok := r.URL.Query()["timeoutSeconds"]
+		values, ok := queryArgs["timeoutSeconds"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -31899,7 +32160,7 @@ func decodeListRbacAuthorizationV1NamespacedRoleBindingParams(args map[string]st
 	}
 	// Decode query: watch.
 	{
-		values, ok := r.URL.Query()["watch"]
+		values, ok := queryArgs["watch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -31965,7 +32226,7 @@ func decodeListRbacAuthorizationV1NamespacedRoleBindingParams(args map[string]st
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -32002,10 +32263,13 @@ func decodeListRbacAuthorizationV1NamespacedRoleBindingParams(args map[string]st
 }
 
 func decodeListRbacAuthorizationV1RoleBindingForAllNamespacesParams(args map[string]string, r *http.Request) (ListRbacAuthorizationV1RoleBindingForAllNamespacesParams, error) {
-	var params ListRbacAuthorizationV1RoleBindingForAllNamespacesParams
+	var (
+		params    ListRbacAuthorizationV1RoleBindingForAllNamespacesParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode query: allowWatchBookmarks.
 	{
-		values, ok := r.URL.Query()["allowWatchBookmarks"]
+		values, ok := queryArgs["allowWatchBookmarks"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -32040,7 +32304,7 @@ func decodeListRbacAuthorizationV1RoleBindingForAllNamespacesParams(args map[str
 	}
 	// Decode query: continue.
 	{
-		values, ok := r.URL.Query()["continue"]
+		values, ok := queryArgs["continue"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -32075,7 +32339,7 @@ func decodeListRbacAuthorizationV1RoleBindingForAllNamespacesParams(args map[str
 	}
 	// Decode query: fieldSelector.
 	{
-		values, ok := r.URL.Query()["fieldSelector"]
+		values, ok := queryArgs["fieldSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -32110,7 +32374,7 @@ func decodeListRbacAuthorizationV1RoleBindingForAllNamespacesParams(args map[str
 	}
 	// Decode query: labelSelector.
 	{
-		values, ok := r.URL.Query()["labelSelector"]
+		values, ok := queryArgs["labelSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -32145,7 +32409,7 @@ func decodeListRbacAuthorizationV1RoleBindingForAllNamespacesParams(args map[str
 	}
 	// Decode query: limit.
 	{
-		values, ok := r.URL.Query()["limit"]
+		values, ok := queryArgs["limit"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -32180,7 +32444,7 @@ func decodeListRbacAuthorizationV1RoleBindingForAllNamespacesParams(args map[str
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -32215,7 +32479,7 @@ func decodeListRbacAuthorizationV1RoleBindingForAllNamespacesParams(args map[str
 	}
 	// Decode query: resourceVersion.
 	{
-		values, ok := r.URL.Query()["resourceVersion"]
+		values, ok := queryArgs["resourceVersion"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -32250,7 +32514,7 @@ func decodeListRbacAuthorizationV1RoleBindingForAllNamespacesParams(args map[str
 	}
 	// Decode query: resourceVersionMatch.
 	{
-		values, ok := r.URL.Query()["resourceVersionMatch"]
+		values, ok := queryArgs["resourceVersionMatch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -32285,7 +32549,7 @@ func decodeListRbacAuthorizationV1RoleBindingForAllNamespacesParams(args map[str
 	}
 	// Decode query: timeoutSeconds.
 	{
-		values, ok := r.URL.Query()["timeoutSeconds"]
+		values, ok := queryArgs["timeoutSeconds"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -32320,7 +32584,7 @@ func decodeListRbacAuthorizationV1RoleBindingForAllNamespacesParams(args map[str
 	}
 	// Decode query: watch.
 	{
-		values, ok := r.URL.Query()["watch"]
+		values, ok := queryArgs["watch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -32357,10 +32621,13 @@ func decodeListRbacAuthorizationV1RoleBindingForAllNamespacesParams(args map[str
 }
 
 func decodeListRbacAuthorizationV1RoleForAllNamespacesParams(args map[string]string, r *http.Request) (ListRbacAuthorizationV1RoleForAllNamespacesParams, error) {
-	var params ListRbacAuthorizationV1RoleForAllNamespacesParams
+	var (
+		params    ListRbacAuthorizationV1RoleForAllNamespacesParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode query: allowWatchBookmarks.
 	{
-		values, ok := r.URL.Query()["allowWatchBookmarks"]
+		values, ok := queryArgs["allowWatchBookmarks"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -32395,7 +32662,7 @@ func decodeListRbacAuthorizationV1RoleForAllNamespacesParams(args map[string]str
 	}
 	// Decode query: continue.
 	{
-		values, ok := r.URL.Query()["continue"]
+		values, ok := queryArgs["continue"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -32430,7 +32697,7 @@ func decodeListRbacAuthorizationV1RoleForAllNamespacesParams(args map[string]str
 	}
 	// Decode query: fieldSelector.
 	{
-		values, ok := r.URL.Query()["fieldSelector"]
+		values, ok := queryArgs["fieldSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -32465,7 +32732,7 @@ func decodeListRbacAuthorizationV1RoleForAllNamespacesParams(args map[string]str
 	}
 	// Decode query: labelSelector.
 	{
-		values, ok := r.URL.Query()["labelSelector"]
+		values, ok := queryArgs["labelSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -32500,7 +32767,7 @@ func decodeListRbacAuthorizationV1RoleForAllNamespacesParams(args map[string]str
 	}
 	// Decode query: limit.
 	{
-		values, ok := r.URL.Query()["limit"]
+		values, ok := queryArgs["limit"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -32535,7 +32802,7 @@ func decodeListRbacAuthorizationV1RoleForAllNamespacesParams(args map[string]str
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -32570,7 +32837,7 @@ func decodeListRbacAuthorizationV1RoleForAllNamespacesParams(args map[string]str
 	}
 	// Decode query: resourceVersion.
 	{
-		values, ok := r.URL.Query()["resourceVersion"]
+		values, ok := queryArgs["resourceVersion"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -32605,7 +32872,7 @@ func decodeListRbacAuthorizationV1RoleForAllNamespacesParams(args map[string]str
 	}
 	// Decode query: resourceVersionMatch.
 	{
-		values, ok := r.URL.Query()["resourceVersionMatch"]
+		values, ok := queryArgs["resourceVersionMatch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -32640,7 +32907,7 @@ func decodeListRbacAuthorizationV1RoleForAllNamespacesParams(args map[string]str
 	}
 	// Decode query: timeoutSeconds.
 	{
-		values, ok := r.URL.Query()["timeoutSeconds"]
+		values, ok := queryArgs["timeoutSeconds"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -32675,7 +32942,7 @@ func decodeListRbacAuthorizationV1RoleForAllNamespacesParams(args map[string]str
 	}
 	// Decode query: watch.
 	{
-		values, ok := r.URL.Query()["watch"]
+		values, ok := queryArgs["watch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -32712,10 +32979,13 @@ func decodeListRbacAuthorizationV1RoleForAllNamespacesParams(args map[string]str
 }
 
 func decodeListSchedulingV1PriorityClassParams(args map[string]string, r *http.Request) (ListSchedulingV1PriorityClassParams, error) {
-	var params ListSchedulingV1PriorityClassParams
+	var (
+		params    ListSchedulingV1PriorityClassParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode query: allowWatchBookmarks.
 	{
-		values, ok := r.URL.Query()["allowWatchBookmarks"]
+		values, ok := queryArgs["allowWatchBookmarks"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -32750,7 +33020,7 @@ func decodeListSchedulingV1PriorityClassParams(args map[string]string, r *http.R
 	}
 	// Decode query: continue.
 	{
-		values, ok := r.URL.Query()["continue"]
+		values, ok := queryArgs["continue"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -32785,7 +33055,7 @@ func decodeListSchedulingV1PriorityClassParams(args map[string]string, r *http.R
 	}
 	// Decode query: fieldSelector.
 	{
-		values, ok := r.URL.Query()["fieldSelector"]
+		values, ok := queryArgs["fieldSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -32820,7 +33090,7 @@ func decodeListSchedulingV1PriorityClassParams(args map[string]string, r *http.R
 	}
 	// Decode query: labelSelector.
 	{
-		values, ok := r.URL.Query()["labelSelector"]
+		values, ok := queryArgs["labelSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -32855,7 +33125,7 @@ func decodeListSchedulingV1PriorityClassParams(args map[string]string, r *http.R
 	}
 	// Decode query: limit.
 	{
-		values, ok := r.URL.Query()["limit"]
+		values, ok := queryArgs["limit"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -32890,7 +33160,7 @@ func decodeListSchedulingV1PriorityClassParams(args map[string]string, r *http.R
 	}
 	// Decode query: resourceVersion.
 	{
-		values, ok := r.URL.Query()["resourceVersion"]
+		values, ok := queryArgs["resourceVersion"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -32925,7 +33195,7 @@ func decodeListSchedulingV1PriorityClassParams(args map[string]string, r *http.R
 	}
 	// Decode query: resourceVersionMatch.
 	{
-		values, ok := r.URL.Query()["resourceVersionMatch"]
+		values, ok := queryArgs["resourceVersionMatch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -32960,7 +33230,7 @@ func decodeListSchedulingV1PriorityClassParams(args map[string]string, r *http.R
 	}
 	// Decode query: timeoutSeconds.
 	{
-		values, ok := r.URL.Query()["timeoutSeconds"]
+		values, ok := queryArgs["timeoutSeconds"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -32995,7 +33265,7 @@ func decodeListSchedulingV1PriorityClassParams(args map[string]string, r *http.R
 	}
 	// Decode query: watch.
 	{
-		values, ok := r.URL.Query()["watch"]
+		values, ok := queryArgs["watch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -33030,7 +33300,7 @@ func decodeListSchedulingV1PriorityClassParams(args map[string]string, r *http.R
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -33067,10 +33337,13 @@ func decodeListSchedulingV1PriorityClassParams(args map[string]string, r *http.R
 }
 
 func decodeListStorageV1CSIDriverParams(args map[string]string, r *http.Request) (ListStorageV1CSIDriverParams, error) {
-	var params ListStorageV1CSIDriverParams
+	var (
+		params    ListStorageV1CSIDriverParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode query: allowWatchBookmarks.
 	{
-		values, ok := r.URL.Query()["allowWatchBookmarks"]
+		values, ok := queryArgs["allowWatchBookmarks"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -33105,7 +33378,7 @@ func decodeListStorageV1CSIDriverParams(args map[string]string, r *http.Request)
 	}
 	// Decode query: continue.
 	{
-		values, ok := r.URL.Query()["continue"]
+		values, ok := queryArgs["continue"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -33140,7 +33413,7 @@ func decodeListStorageV1CSIDriverParams(args map[string]string, r *http.Request)
 	}
 	// Decode query: fieldSelector.
 	{
-		values, ok := r.URL.Query()["fieldSelector"]
+		values, ok := queryArgs["fieldSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -33175,7 +33448,7 @@ func decodeListStorageV1CSIDriverParams(args map[string]string, r *http.Request)
 	}
 	// Decode query: labelSelector.
 	{
-		values, ok := r.URL.Query()["labelSelector"]
+		values, ok := queryArgs["labelSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -33210,7 +33483,7 @@ func decodeListStorageV1CSIDriverParams(args map[string]string, r *http.Request)
 	}
 	// Decode query: limit.
 	{
-		values, ok := r.URL.Query()["limit"]
+		values, ok := queryArgs["limit"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -33245,7 +33518,7 @@ func decodeListStorageV1CSIDriverParams(args map[string]string, r *http.Request)
 	}
 	// Decode query: resourceVersion.
 	{
-		values, ok := r.URL.Query()["resourceVersion"]
+		values, ok := queryArgs["resourceVersion"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -33280,7 +33553,7 @@ func decodeListStorageV1CSIDriverParams(args map[string]string, r *http.Request)
 	}
 	// Decode query: resourceVersionMatch.
 	{
-		values, ok := r.URL.Query()["resourceVersionMatch"]
+		values, ok := queryArgs["resourceVersionMatch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -33315,7 +33588,7 @@ func decodeListStorageV1CSIDriverParams(args map[string]string, r *http.Request)
 	}
 	// Decode query: timeoutSeconds.
 	{
-		values, ok := r.URL.Query()["timeoutSeconds"]
+		values, ok := queryArgs["timeoutSeconds"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -33350,7 +33623,7 @@ func decodeListStorageV1CSIDriverParams(args map[string]string, r *http.Request)
 	}
 	// Decode query: watch.
 	{
-		values, ok := r.URL.Query()["watch"]
+		values, ok := queryArgs["watch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -33385,7 +33658,7 @@ func decodeListStorageV1CSIDriverParams(args map[string]string, r *http.Request)
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -33422,10 +33695,13 @@ func decodeListStorageV1CSIDriverParams(args map[string]string, r *http.Request)
 }
 
 func decodeListStorageV1CSINodeParams(args map[string]string, r *http.Request) (ListStorageV1CSINodeParams, error) {
-	var params ListStorageV1CSINodeParams
+	var (
+		params    ListStorageV1CSINodeParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode query: allowWatchBookmarks.
 	{
-		values, ok := r.URL.Query()["allowWatchBookmarks"]
+		values, ok := queryArgs["allowWatchBookmarks"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -33460,7 +33736,7 @@ func decodeListStorageV1CSINodeParams(args map[string]string, r *http.Request) (
 	}
 	// Decode query: continue.
 	{
-		values, ok := r.URL.Query()["continue"]
+		values, ok := queryArgs["continue"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -33495,7 +33771,7 @@ func decodeListStorageV1CSINodeParams(args map[string]string, r *http.Request) (
 	}
 	// Decode query: fieldSelector.
 	{
-		values, ok := r.URL.Query()["fieldSelector"]
+		values, ok := queryArgs["fieldSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -33530,7 +33806,7 @@ func decodeListStorageV1CSINodeParams(args map[string]string, r *http.Request) (
 	}
 	// Decode query: labelSelector.
 	{
-		values, ok := r.URL.Query()["labelSelector"]
+		values, ok := queryArgs["labelSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -33565,7 +33841,7 @@ func decodeListStorageV1CSINodeParams(args map[string]string, r *http.Request) (
 	}
 	// Decode query: limit.
 	{
-		values, ok := r.URL.Query()["limit"]
+		values, ok := queryArgs["limit"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -33600,7 +33876,7 @@ func decodeListStorageV1CSINodeParams(args map[string]string, r *http.Request) (
 	}
 	// Decode query: resourceVersion.
 	{
-		values, ok := r.URL.Query()["resourceVersion"]
+		values, ok := queryArgs["resourceVersion"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -33635,7 +33911,7 @@ func decodeListStorageV1CSINodeParams(args map[string]string, r *http.Request) (
 	}
 	// Decode query: resourceVersionMatch.
 	{
-		values, ok := r.URL.Query()["resourceVersionMatch"]
+		values, ok := queryArgs["resourceVersionMatch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -33670,7 +33946,7 @@ func decodeListStorageV1CSINodeParams(args map[string]string, r *http.Request) (
 	}
 	// Decode query: timeoutSeconds.
 	{
-		values, ok := r.URL.Query()["timeoutSeconds"]
+		values, ok := queryArgs["timeoutSeconds"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -33705,7 +33981,7 @@ func decodeListStorageV1CSINodeParams(args map[string]string, r *http.Request) (
 	}
 	// Decode query: watch.
 	{
-		values, ok := r.URL.Query()["watch"]
+		values, ok := queryArgs["watch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -33740,7 +34016,7 @@ func decodeListStorageV1CSINodeParams(args map[string]string, r *http.Request) (
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -33777,10 +34053,13 @@ func decodeListStorageV1CSINodeParams(args map[string]string, r *http.Request) (
 }
 
 func decodeListStorageV1StorageClassParams(args map[string]string, r *http.Request) (ListStorageV1StorageClassParams, error) {
-	var params ListStorageV1StorageClassParams
+	var (
+		params    ListStorageV1StorageClassParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode query: allowWatchBookmarks.
 	{
-		values, ok := r.URL.Query()["allowWatchBookmarks"]
+		values, ok := queryArgs["allowWatchBookmarks"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -33815,7 +34094,7 @@ func decodeListStorageV1StorageClassParams(args map[string]string, r *http.Reque
 	}
 	// Decode query: continue.
 	{
-		values, ok := r.URL.Query()["continue"]
+		values, ok := queryArgs["continue"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -33850,7 +34129,7 @@ func decodeListStorageV1StorageClassParams(args map[string]string, r *http.Reque
 	}
 	// Decode query: fieldSelector.
 	{
-		values, ok := r.URL.Query()["fieldSelector"]
+		values, ok := queryArgs["fieldSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -33885,7 +34164,7 @@ func decodeListStorageV1StorageClassParams(args map[string]string, r *http.Reque
 	}
 	// Decode query: labelSelector.
 	{
-		values, ok := r.URL.Query()["labelSelector"]
+		values, ok := queryArgs["labelSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -33920,7 +34199,7 @@ func decodeListStorageV1StorageClassParams(args map[string]string, r *http.Reque
 	}
 	// Decode query: limit.
 	{
-		values, ok := r.URL.Query()["limit"]
+		values, ok := queryArgs["limit"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -33955,7 +34234,7 @@ func decodeListStorageV1StorageClassParams(args map[string]string, r *http.Reque
 	}
 	// Decode query: resourceVersion.
 	{
-		values, ok := r.URL.Query()["resourceVersion"]
+		values, ok := queryArgs["resourceVersion"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -33990,7 +34269,7 @@ func decodeListStorageV1StorageClassParams(args map[string]string, r *http.Reque
 	}
 	// Decode query: resourceVersionMatch.
 	{
-		values, ok := r.URL.Query()["resourceVersionMatch"]
+		values, ok := queryArgs["resourceVersionMatch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -34025,7 +34304,7 @@ func decodeListStorageV1StorageClassParams(args map[string]string, r *http.Reque
 	}
 	// Decode query: timeoutSeconds.
 	{
-		values, ok := r.URL.Query()["timeoutSeconds"]
+		values, ok := queryArgs["timeoutSeconds"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -34060,7 +34339,7 @@ func decodeListStorageV1StorageClassParams(args map[string]string, r *http.Reque
 	}
 	// Decode query: watch.
 	{
-		values, ok := r.URL.Query()["watch"]
+		values, ok := queryArgs["watch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -34095,7 +34374,7 @@ func decodeListStorageV1StorageClassParams(args map[string]string, r *http.Reque
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -34132,10 +34411,13 @@ func decodeListStorageV1StorageClassParams(args map[string]string, r *http.Reque
 }
 
 func decodeListStorageV1VolumeAttachmentParams(args map[string]string, r *http.Request) (ListStorageV1VolumeAttachmentParams, error) {
-	var params ListStorageV1VolumeAttachmentParams
+	var (
+		params    ListStorageV1VolumeAttachmentParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode query: allowWatchBookmarks.
 	{
-		values, ok := r.URL.Query()["allowWatchBookmarks"]
+		values, ok := queryArgs["allowWatchBookmarks"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -34170,7 +34452,7 @@ func decodeListStorageV1VolumeAttachmentParams(args map[string]string, r *http.R
 	}
 	// Decode query: continue.
 	{
-		values, ok := r.URL.Query()["continue"]
+		values, ok := queryArgs["continue"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -34205,7 +34487,7 @@ func decodeListStorageV1VolumeAttachmentParams(args map[string]string, r *http.R
 	}
 	// Decode query: fieldSelector.
 	{
-		values, ok := r.URL.Query()["fieldSelector"]
+		values, ok := queryArgs["fieldSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -34240,7 +34522,7 @@ func decodeListStorageV1VolumeAttachmentParams(args map[string]string, r *http.R
 	}
 	// Decode query: labelSelector.
 	{
-		values, ok := r.URL.Query()["labelSelector"]
+		values, ok := queryArgs["labelSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -34275,7 +34557,7 @@ func decodeListStorageV1VolumeAttachmentParams(args map[string]string, r *http.R
 	}
 	// Decode query: limit.
 	{
-		values, ok := r.URL.Query()["limit"]
+		values, ok := queryArgs["limit"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -34310,7 +34592,7 @@ func decodeListStorageV1VolumeAttachmentParams(args map[string]string, r *http.R
 	}
 	// Decode query: resourceVersion.
 	{
-		values, ok := r.URL.Query()["resourceVersion"]
+		values, ok := queryArgs["resourceVersion"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -34345,7 +34627,7 @@ func decodeListStorageV1VolumeAttachmentParams(args map[string]string, r *http.R
 	}
 	// Decode query: resourceVersionMatch.
 	{
-		values, ok := r.URL.Query()["resourceVersionMatch"]
+		values, ok := queryArgs["resourceVersionMatch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -34380,7 +34662,7 @@ func decodeListStorageV1VolumeAttachmentParams(args map[string]string, r *http.R
 	}
 	// Decode query: timeoutSeconds.
 	{
-		values, ok := r.URL.Query()["timeoutSeconds"]
+		values, ok := queryArgs["timeoutSeconds"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -34415,7 +34697,7 @@ func decodeListStorageV1VolumeAttachmentParams(args map[string]string, r *http.R
 	}
 	// Decode query: watch.
 	{
-		values, ok := r.URL.Query()["watch"]
+		values, ok := queryArgs["watch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -34450,7 +34732,7 @@ func decodeListStorageV1VolumeAttachmentParams(args map[string]string, r *http.R
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -34487,10 +34769,13 @@ func decodeListStorageV1VolumeAttachmentParams(args map[string]string, r *http.R
 }
 
 func decodeListStorageV1alpha1CSIStorageCapacityForAllNamespacesParams(args map[string]string, r *http.Request) (ListStorageV1alpha1CSIStorageCapacityForAllNamespacesParams, error) {
-	var params ListStorageV1alpha1CSIStorageCapacityForAllNamespacesParams
+	var (
+		params    ListStorageV1alpha1CSIStorageCapacityForAllNamespacesParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode query: allowWatchBookmarks.
 	{
-		values, ok := r.URL.Query()["allowWatchBookmarks"]
+		values, ok := queryArgs["allowWatchBookmarks"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -34525,7 +34810,7 @@ func decodeListStorageV1alpha1CSIStorageCapacityForAllNamespacesParams(args map[
 	}
 	// Decode query: continue.
 	{
-		values, ok := r.URL.Query()["continue"]
+		values, ok := queryArgs["continue"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -34560,7 +34845,7 @@ func decodeListStorageV1alpha1CSIStorageCapacityForAllNamespacesParams(args map[
 	}
 	// Decode query: fieldSelector.
 	{
-		values, ok := r.URL.Query()["fieldSelector"]
+		values, ok := queryArgs["fieldSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -34595,7 +34880,7 @@ func decodeListStorageV1alpha1CSIStorageCapacityForAllNamespacesParams(args map[
 	}
 	// Decode query: labelSelector.
 	{
-		values, ok := r.URL.Query()["labelSelector"]
+		values, ok := queryArgs["labelSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -34630,7 +34915,7 @@ func decodeListStorageV1alpha1CSIStorageCapacityForAllNamespacesParams(args map[
 	}
 	// Decode query: limit.
 	{
-		values, ok := r.URL.Query()["limit"]
+		values, ok := queryArgs["limit"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -34665,7 +34950,7 @@ func decodeListStorageV1alpha1CSIStorageCapacityForAllNamespacesParams(args map[
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -34700,7 +34985,7 @@ func decodeListStorageV1alpha1CSIStorageCapacityForAllNamespacesParams(args map[
 	}
 	// Decode query: resourceVersion.
 	{
-		values, ok := r.URL.Query()["resourceVersion"]
+		values, ok := queryArgs["resourceVersion"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -34735,7 +35020,7 @@ func decodeListStorageV1alpha1CSIStorageCapacityForAllNamespacesParams(args map[
 	}
 	// Decode query: resourceVersionMatch.
 	{
-		values, ok := r.URL.Query()["resourceVersionMatch"]
+		values, ok := queryArgs["resourceVersionMatch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -34770,7 +35055,7 @@ func decodeListStorageV1alpha1CSIStorageCapacityForAllNamespacesParams(args map[
 	}
 	// Decode query: timeoutSeconds.
 	{
-		values, ok := r.URL.Query()["timeoutSeconds"]
+		values, ok := queryArgs["timeoutSeconds"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -34805,7 +35090,7 @@ func decodeListStorageV1alpha1CSIStorageCapacityForAllNamespacesParams(args map[
 	}
 	// Decode query: watch.
 	{
-		values, ok := r.URL.Query()["watch"]
+		values, ok := queryArgs["watch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -34842,10 +35127,13 @@ func decodeListStorageV1alpha1CSIStorageCapacityForAllNamespacesParams(args map[
 }
 
 func decodeListStorageV1alpha1NamespacedCSIStorageCapacityParams(args map[string]string, r *http.Request) (ListStorageV1alpha1NamespacedCSIStorageCapacityParams, error) {
-	var params ListStorageV1alpha1NamespacedCSIStorageCapacityParams
+	var (
+		params    ListStorageV1alpha1NamespacedCSIStorageCapacityParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode query: allowWatchBookmarks.
 	{
-		values, ok := r.URL.Query()["allowWatchBookmarks"]
+		values, ok := queryArgs["allowWatchBookmarks"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -34880,7 +35168,7 @@ func decodeListStorageV1alpha1NamespacedCSIStorageCapacityParams(args map[string
 	}
 	// Decode query: continue.
 	{
-		values, ok := r.URL.Query()["continue"]
+		values, ok := queryArgs["continue"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -34915,7 +35203,7 @@ func decodeListStorageV1alpha1NamespacedCSIStorageCapacityParams(args map[string
 	}
 	// Decode query: fieldSelector.
 	{
-		values, ok := r.URL.Query()["fieldSelector"]
+		values, ok := queryArgs["fieldSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -34950,7 +35238,7 @@ func decodeListStorageV1alpha1NamespacedCSIStorageCapacityParams(args map[string
 	}
 	// Decode query: labelSelector.
 	{
-		values, ok := r.URL.Query()["labelSelector"]
+		values, ok := queryArgs["labelSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -34985,7 +35273,7 @@ func decodeListStorageV1alpha1NamespacedCSIStorageCapacityParams(args map[string
 	}
 	// Decode query: limit.
 	{
-		values, ok := r.URL.Query()["limit"]
+		values, ok := queryArgs["limit"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -35020,7 +35308,7 @@ func decodeListStorageV1alpha1NamespacedCSIStorageCapacityParams(args map[string
 	}
 	// Decode query: resourceVersion.
 	{
-		values, ok := r.URL.Query()["resourceVersion"]
+		values, ok := queryArgs["resourceVersion"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -35055,7 +35343,7 @@ func decodeListStorageV1alpha1NamespacedCSIStorageCapacityParams(args map[string
 	}
 	// Decode query: resourceVersionMatch.
 	{
-		values, ok := r.URL.Query()["resourceVersionMatch"]
+		values, ok := queryArgs["resourceVersionMatch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -35090,7 +35378,7 @@ func decodeListStorageV1alpha1NamespacedCSIStorageCapacityParams(args map[string
 	}
 	// Decode query: timeoutSeconds.
 	{
-		values, ok := r.URL.Query()["timeoutSeconds"]
+		values, ok := queryArgs["timeoutSeconds"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -35125,7 +35413,7 @@ func decodeListStorageV1alpha1NamespacedCSIStorageCapacityParams(args map[string
 	}
 	// Decode query: watch.
 	{
-		values, ok := r.URL.Query()["watch"]
+		values, ok := queryArgs["watch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -35191,7 +35479,7 @@ func decodeListStorageV1alpha1NamespacedCSIStorageCapacityParams(args map[string
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -35228,10 +35516,13 @@ func decodeListStorageV1alpha1NamespacedCSIStorageCapacityParams(args map[string
 }
 
 func decodeListStorageV1beta1CSIStorageCapacityForAllNamespacesParams(args map[string]string, r *http.Request) (ListStorageV1beta1CSIStorageCapacityForAllNamespacesParams, error) {
-	var params ListStorageV1beta1CSIStorageCapacityForAllNamespacesParams
+	var (
+		params    ListStorageV1beta1CSIStorageCapacityForAllNamespacesParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode query: allowWatchBookmarks.
 	{
-		values, ok := r.URL.Query()["allowWatchBookmarks"]
+		values, ok := queryArgs["allowWatchBookmarks"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -35266,7 +35557,7 @@ func decodeListStorageV1beta1CSIStorageCapacityForAllNamespacesParams(args map[s
 	}
 	// Decode query: continue.
 	{
-		values, ok := r.URL.Query()["continue"]
+		values, ok := queryArgs["continue"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -35301,7 +35592,7 @@ func decodeListStorageV1beta1CSIStorageCapacityForAllNamespacesParams(args map[s
 	}
 	// Decode query: fieldSelector.
 	{
-		values, ok := r.URL.Query()["fieldSelector"]
+		values, ok := queryArgs["fieldSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -35336,7 +35627,7 @@ func decodeListStorageV1beta1CSIStorageCapacityForAllNamespacesParams(args map[s
 	}
 	// Decode query: labelSelector.
 	{
-		values, ok := r.URL.Query()["labelSelector"]
+		values, ok := queryArgs["labelSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -35371,7 +35662,7 @@ func decodeListStorageV1beta1CSIStorageCapacityForAllNamespacesParams(args map[s
 	}
 	// Decode query: limit.
 	{
-		values, ok := r.URL.Query()["limit"]
+		values, ok := queryArgs["limit"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -35406,7 +35697,7 @@ func decodeListStorageV1beta1CSIStorageCapacityForAllNamespacesParams(args map[s
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -35441,7 +35732,7 @@ func decodeListStorageV1beta1CSIStorageCapacityForAllNamespacesParams(args map[s
 	}
 	// Decode query: resourceVersion.
 	{
-		values, ok := r.URL.Query()["resourceVersion"]
+		values, ok := queryArgs["resourceVersion"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -35476,7 +35767,7 @@ func decodeListStorageV1beta1CSIStorageCapacityForAllNamespacesParams(args map[s
 	}
 	// Decode query: resourceVersionMatch.
 	{
-		values, ok := r.URL.Query()["resourceVersionMatch"]
+		values, ok := queryArgs["resourceVersionMatch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -35511,7 +35802,7 @@ func decodeListStorageV1beta1CSIStorageCapacityForAllNamespacesParams(args map[s
 	}
 	// Decode query: timeoutSeconds.
 	{
-		values, ok := r.URL.Query()["timeoutSeconds"]
+		values, ok := queryArgs["timeoutSeconds"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -35546,7 +35837,7 @@ func decodeListStorageV1beta1CSIStorageCapacityForAllNamespacesParams(args map[s
 	}
 	// Decode query: watch.
 	{
-		values, ok := r.URL.Query()["watch"]
+		values, ok := queryArgs["watch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -35583,10 +35874,13 @@ func decodeListStorageV1beta1CSIStorageCapacityForAllNamespacesParams(args map[s
 }
 
 func decodeListStorageV1beta1NamespacedCSIStorageCapacityParams(args map[string]string, r *http.Request) (ListStorageV1beta1NamespacedCSIStorageCapacityParams, error) {
-	var params ListStorageV1beta1NamespacedCSIStorageCapacityParams
+	var (
+		params    ListStorageV1beta1NamespacedCSIStorageCapacityParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode query: allowWatchBookmarks.
 	{
-		values, ok := r.URL.Query()["allowWatchBookmarks"]
+		values, ok := queryArgs["allowWatchBookmarks"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -35621,7 +35915,7 @@ func decodeListStorageV1beta1NamespacedCSIStorageCapacityParams(args map[string]
 	}
 	// Decode query: continue.
 	{
-		values, ok := r.URL.Query()["continue"]
+		values, ok := queryArgs["continue"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -35656,7 +35950,7 @@ func decodeListStorageV1beta1NamespacedCSIStorageCapacityParams(args map[string]
 	}
 	// Decode query: fieldSelector.
 	{
-		values, ok := r.URL.Query()["fieldSelector"]
+		values, ok := queryArgs["fieldSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -35691,7 +35985,7 @@ func decodeListStorageV1beta1NamespacedCSIStorageCapacityParams(args map[string]
 	}
 	// Decode query: labelSelector.
 	{
-		values, ok := r.URL.Query()["labelSelector"]
+		values, ok := queryArgs["labelSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -35726,7 +36020,7 @@ func decodeListStorageV1beta1NamespacedCSIStorageCapacityParams(args map[string]
 	}
 	// Decode query: limit.
 	{
-		values, ok := r.URL.Query()["limit"]
+		values, ok := queryArgs["limit"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -35761,7 +36055,7 @@ func decodeListStorageV1beta1NamespacedCSIStorageCapacityParams(args map[string]
 	}
 	// Decode query: resourceVersion.
 	{
-		values, ok := r.URL.Query()["resourceVersion"]
+		values, ok := queryArgs["resourceVersion"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -35796,7 +36090,7 @@ func decodeListStorageV1beta1NamespacedCSIStorageCapacityParams(args map[string]
 	}
 	// Decode query: resourceVersionMatch.
 	{
-		values, ok := r.URL.Query()["resourceVersionMatch"]
+		values, ok := queryArgs["resourceVersionMatch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -35831,7 +36125,7 @@ func decodeListStorageV1beta1NamespacedCSIStorageCapacityParams(args map[string]
 	}
 	// Decode query: timeoutSeconds.
 	{
-		values, ok := r.URL.Query()["timeoutSeconds"]
+		values, ok := queryArgs["timeoutSeconds"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -35866,7 +36160,7 @@ func decodeListStorageV1beta1NamespacedCSIStorageCapacityParams(args map[string]
 	}
 	// Decode query: watch.
 	{
-		values, ok := r.URL.Query()["watch"]
+		values, ok := queryArgs["watch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -35932,7 +36226,7 @@ func decodeListStorageV1beta1NamespacedCSIStorageCapacityParams(args map[string]
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -35969,7 +36263,9 @@ func decodeListStorageV1beta1NamespacedCSIStorageCapacityParams(args map[string]
 }
 
 func decodeLogFileHandlerParams(args map[string]string, r *http.Request) (LogFileHandlerParams, error) {
-	var params LogFileHandlerParams
+	var (
+		params LogFileHandlerParams
+	)
 	// Decode path: logpath.
 	{
 		param := args["logpath"]
@@ -36005,7 +36301,10 @@ func decodeLogFileHandlerParams(args map[string]string, r *http.Request) (LogFil
 }
 
 func decodeReadAdmissionregistrationV1MutatingWebhookConfigurationParams(args map[string]string, r *http.Request) (ReadAdmissionregistrationV1MutatingWebhookConfigurationParams, error) {
-	var params ReadAdmissionregistrationV1MutatingWebhookConfigurationParams
+	var (
+		params    ReadAdmissionregistrationV1MutatingWebhookConfigurationParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode path: name.
 	{
 		param := args["name"]
@@ -36039,7 +36338,7 @@ func decodeReadAdmissionregistrationV1MutatingWebhookConfigurationParams(args ma
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -36076,7 +36375,10 @@ func decodeReadAdmissionregistrationV1MutatingWebhookConfigurationParams(args ma
 }
 
 func decodeReadAdmissionregistrationV1ValidatingWebhookConfigurationParams(args map[string]string, r *http.Request) (ReadAdmissionregistrationV1ValidatingWebhookConfigurationParams, error) {
-	var params ReadAdmissionregistrationV1ValidatingWebhookConfigurationParams
+	var (
+		params    ReadAdmissionregistrationV1ValidatingWebhookConfigurationParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode path: name.
 	{
 		param := args["name"]
@@ -36110,7 +36412,7 @@ func decodeReadAdmissionregistrationV1ValidatingWebhookConfigurationParams(args 
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -36147,7 +36449,10 @@ func decodeReadAdmissionregistrationV1ValidatingWebhookConfigurationParams(args 
 }
 
 func decodeReadApiextensionsV1CustomResourceDefinitionParams(args map[string]string, r *http.Request) (ReadApiextensionsV1CustomResourceDefinitionParams, error) {
-	var params ReadApiextensionsV1CustomResourceDefinitionParams
+	var (
+		params    ReadApiextensionsV1CustomResourceDefinitionParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode path: name.
 	{
 		param := args["name"]
@@ -36181,7 +36486,7 @@ func decodeReadApiextensionsV1CustomResourceDefinitionParams(args map[string]str
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -36218,7 +36523,10 @@ func decodeReadApiextensionsV1CustomResourceDefinitionParams(args map[string]str
 }
 
 func decodeReadApiextensionsV1CustomResourceDefinitionStatusParams(args map[string]string, r *http.Request) (ReadApiextensionsV1CustomResourceDefinitionStatusParams, error) {
-	var params ReadApiextensionsV1CustomResourceDefinitionStatusParams
+	var (
+		params    ReadApiextensionsV1CustomResourceDefinitionStatusParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode path: name.
 	{
 		param := args["name"]
@@ -36252,7 +36560,7 @@ func decodeReadApiextensionsV1CustomResourceDefinitionStatusParams(args map[stri
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -36289,7 +36597,10 @@ func decodeReadApiextensionsV1CustomResourceDefinitionStatusParams(args map[stri
 }
 
 func decodeReadApiregistrationV1APIServiceParams(args map[string]string, r *http.Request) (ReadApiregistrationV1APIServiceParams, error) {
-	var params ReadApiregistrationV1APIServiceParams
+	var (
+		params    ReadApiregistrationV1APIServiceParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode path: name.
 	{
 		param := args["name"]
@@ -36323,7 +36634,7 @@ func decodeReadApiregistrationV1APIServiceParams(args map[string]string, r *http
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -36360,7 +36671,10 @@ func decodeReadApiregistrationV1APIServiceParams(args map[string]string, r *http
 }
 
 func decodeReadApiregistrationV1APIServiceStatusParams(args map[string]string, r *http.Request) (ReadApiregistrationV1APIServiceStatusParams, error) {
-	var params ReadApiregistrationV1APIServiceStatusParams
+	var (
+		params    ReadApiregistrationV1APIServiceStatusParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode path: name.
 	{
 		param := args["name"]
@@ -36394,7 +36708,7 @@ func decodeReadApiregistrationV1APIServiceStatusParams(args map[string]string, r
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -36431,7 +36745,10 @@ func decodeReadApiregistrationV1APIServiceStatusParams(args map[string]string, r
 }
 
 func decodeReadAppsV1NamespacedControllerRevisionParams(args map[string]string, r *http.Request) (ReadAppsV1NamespacedControllerRevisionParams, error) {
-	var params ReadAppsV1NamespacedControllerRevisionParams
+	var (
+		params    ReadAppsV1NamespacedControllerRevisionParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode path: name.
 	{
 		param := args["name"]
@@ -36496,7 +36813,7 @@ func decodeReadAppsV1NamespacedControllerRevisionParams(args map[string]string, 
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -36533,7 +36850,10 @@ func decodeReadAppsV1NamespacedControllerRevisionParams(args map[string]string, 
 }
 
 func decodeReadAppsV1NamespacedDaemonSetParams(args map[string]string, r *http.Request) (ReadAppsV1NamespacedDaemonSetParams, error) {
-	var params ReadAppsV1NamespacedDaemonSetParams
+	var (
+		params    ReadAppsV1NamespacedDaemonSetParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode path: name.
 	{
 		param := args["name"]
@@ -36598,7 +36918,7 @@ func decodeReadAppsV1NamespacedDaemonSetParams(args map[string]string, r *http.R
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -36635,7 +36955,10 @@ func decodeReadAppsV1NamespacedDaemonSetParams(args map[string]string, r *http.R
 }
 
 func decodeReadAppsV1NamespacedDaemonSetStatusParams(args map[string]string, r *http.Request) (ReadAppsV1NamespacedDaemonSetStatusParams, error) {
-	var params ReadAppsV1NamespacedDaemonSetStatusParams
+	var (
+		params    ReadAppsV1NamespacedDaemonSetStatusParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode path: name.
 	{
 		param := args["name"]
@@ -36700,7 +37023,7 @@ func decodeReadAppsV1NamespacedDaemonSetStatusParams(args map[string]string, r *
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -36737,7 +37060,10 @@ func decodeReadAppsV1NamespacedDaemonSetStatusParams(args map[string]string, r *
 }
 
 func decodeReadAppsV1NamespacedDeploymentParams(args map[string]string, r *http.Request) (ReadAppsV1NamespacedDeploymentParams, error) {
-	var params ReadAppsV1NamespacedDeploymentParams
+	var (
+		params    ReadAppsV1NamespacedDeploymentParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode path: name.
 	{
 		param := args["name"]
@@ -36802,7 +37128,7 @@ func decodeReadAppsV1NamespacedDeploymentParams(args map[string]string, r *http.
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -36839,7 +37165,10 @@ func decodeReadAppsV1NamespacedDeploymentParams(args map[string]string, r *http.
 }
 
 func decodeReadAppsV1NamespacedDeploymentScaleParams(args map[string]string, r *http.Request) (ReadAppsV1NamespacedDeploymentScaleParams, error) {
-	var params ReadAppsV1NamespacedDeploymentScaleParams
+	var (
+		params    ReadAppsV1NamespacedDeploymentScaleParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode path: name.
 	{
 		param := args["name"]
@@ -36904,7 +37233,7 @@ func decodeReadAppsV1NamespacedDeploymentScaleParams(args map[string]string, r *
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -36941,7 +37270,10 @@ func decodeReadAppsV1NamespacedDeploymentScaleParams(args map[string]string, r *
 }
 
 func decodeReadAppsV1NamespacedDeploymentStatusParams(args map[string]string, r *http.Request) (ReadAppsV1NamespacedDeploymentStatusParams, error) {
-	var params ReadAppsV1NamespacedDeploymentStatusParams
+	var (
+		params    ReadAppsV1NamespacedDeploymentStatusParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode path: name.
 	{
 		param := args["name"]
@@ -37006,7 +37338,7 @@ func decodeReadAppsV1NamespacedDeploymentStatusParams(args map[string]string, r 
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -37043,7 +37375,10 @@ func decodeReadAppsV1NamespacedDeploymentStatusParams(args map[string]string, r 
 }
 
 func decodeReadAppsV1NamespacedReplicaSetParams(args map[string]string, r *http.Request) (ReadAppsV1NamespacedReplicaSetParams, error) {
-	var params ReadAppsV1NamespacedReplicaSetParams
+	var (
+		params    ReadAppsV1NamespacedReplicaSetParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode path: name.
 	{
 		param := args["name"]
@@ -37108,7 +37443,7 @@ func decodeReadAppsV1NamespacedReplicaSetParams(args map[string]string, r *http.
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -37145,7 +37480,10 @@ func decodeReadAppsV1NamespacedReplicaSetParams(args map[string]string, r *http.
 }
 
 func decodeReadAppsV1NamespacedReplicaSetScaleParams(args map[string]string, r *http.Request) (ReadAppsV1NamespacedReplicaSetScaleParams, error) {
-	var params ReadAppsV1NamespacedReplicaSetScaleParams
+	var (
+		params    ReadAppsV1NamespacedReplicaSetScaleParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode path: name.
 	{
 		param := args["name"]
@@ -37210,7 +37548,7 @@ func decodeReadAppsV1NamespacedReplicaSetScaleParams(args map[string]string, r *
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -37247,7 +37585,10 @@ func decodeReadAppsV1NamespacedReplicaSetScaleParams(args map[string]string, r *
 }
 
 func decodeReadAppsV1NamespacedReplicaSetStatusParams(args map[string]string, r *http.Request) (ReadAppsV1NamespacedReplicaSetStatusParams, error) {
-	var params ReadAppsV1NamespacedReplicaSetStatusParams
+	var (
+		params    ReadAppsV1NamespacedReplicaSetStatusParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode path: name.
 	{
 		param := args["name"]
@@ -37312,7 +37653,7 @@ func decodeReadAppsV1NamespacedReplicaSetStatusParams(args map[string]string, r 
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -37349,7 +37690,10 @@ func decodeReadAppsV1NamespacedReplicaSetStatusParams(args map[string]string, r 
 }
 
 func decodeReadAppsV1NamespacedStatefulSetParams(args map[string]string, r *http.Request) (ReadAppsV1NamespacedStatefulSetParams, error) {
-	var params ReadAppsV1NamespacedStatefulSetParams
+	var (
+		params    ReadAppsV1NamespacedStatefulSetParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode path: name.
 	{
 		param := args["name"]
@@ -37414,7 +37758,7 @@ func decodeReadAppsV1NamespacedStatefulSetParams(args map[string]string, r *http
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -37451,7 +37795,10 @@ func decodeReadAppsV1NamespacedStatefulSetParams(args map[string]string, r *http
 }
 
 func decodeReadAppsV1NamespacedStatefulSetScaleParams(args map[string]string, r *http.Request) (ReadAppsV1NamespacedStatefulSetScaleParams, error) {
-	var params ReadAppsV1NamespacedStatefulSetScaleParams
+	var (
+		params    ReadAppsV1NamespacedStatefulSetScaleParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode path: name.
 	{
 		param := args["name"]
@@ -37516,7 +37863,7 @@ func decodeReadAppsV1NamespacedStatefulSetScaleParams(args map[string]string, r 
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -37553,7 +37900,10 @@ func decodeReadAppsV1NamespacedStatefulSetScaleParams(args map[string]string, r 
 }
 
 func decodeReadAppsV1NamespacedStatefulSetStatusParams(args map[string]string, r *http.Request) (ReadAppsV1NamespacedStatefulSetStatusParams, error) {
-	var params ReadAppsV1NamespacedStatefulSetStatusParams
+	var (
+		params    ReadAppsV1NamespacedStatefulSetStatusParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode path: name.
 	{
 		param := args["name"]
@@ -37618,7 +37968,7 @@ func decodeReadAppsV1NamespacedStatefulSetStatusParams(args map[string]string, r
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -37655,7 +38005,10 @@ func decodeReadAppsV1NamespacedStatefulSetStatusParams(args map[string]string, r
 }
 
 func decodeReadAutoscalingV1NamespacedHorizontalPodAutoscalerParams(args map[string]string, r *http.Request) (ReadAutoscalingV1NamespacedHorizontalPodAutoscalerParams, error) {
-	var params ReadAutoscalingV1NamespacedHorizontalPodAutoscalerParams
+	var (
+		params    ReadAutoscalingV1NamespacedHorizontalPodAutoscalerParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode path: name.
 	{
 		param := args["name"]
@@ -37720,7 +38073,7 @@ func decodeReadAutoscalingV1NamespacedHorizontalPodAutoscalerParams(args map[str
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -37757,7 +38110,10 @@ func decodeReadAutoscalingV1NamespacedHorizontalPodAutoscalerParams(args map[str
 }
 
 func decodeReadAutoscalingV1NamespacedHorizontalPodAutoscalerStatusParams(args map[string]string, r *http.Request) (ReadAutoscalingV1NamespacedHorizontalPodAutoscalerStatusParams, error) {
-	var params ReadAutoscalingV1NamespacedHorizontalPodAutoscalerStatusParams
+	var (
+		params    ReadAutoscalingV1NamespacedHorizontalPodAutoscalerStatusParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode path: name.
 	{
 		param := args["name"]
@@ -37822,7 +38178,7 @@ func decodeReadAutoscalingV1NamespacedHorizontalPodAutoscalerStatusParams(args m
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -37859,7 +38215,10 @@ func decodeReadAutoscalingV1NamespacedHorizontalPodAutoscalerStatusParams(args m
 }
 
 func decodeReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerParams(args map[string]string, r *http.Request) (ReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerParams, error) {
-	var params ReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerParams
+	var (
+		params    ReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode path: name.
 	{
 		param := args["name"]
@@ -37924,7 +38283,7 @@ func decodeReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerParams(args ma
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -37961,7 +38320,10 @@ func decodeReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerParams(args ma
 }
 
 func decodeReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatusParams(args map[string]string, r *http.Request) (ReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatusParams, error) {
-	var params ReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatusParams
+	var (
+		params    ReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatusParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode path: name.
 	{
 		param := args["name"]
@@ -38026,7 +38388,7 @@ func decodeReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatusParams(a
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -38063,7 +38425,10 @@ func decodeReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatusParams(a
 }
 
 func decodeReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerParams(args map[string]string, r *http.Request) (ReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerParams, error) {
-	var params ReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerParams
+	var (
+		params    ReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode path: name.
 	{
 		param := args["name"]
@@ -38128,7 +38493,7 @@ func decodeReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerParams(args ma
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -38165,7 +38530,10 @@ func decodeReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerParams(args ma
 }
 
 func decodeReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatusParams(args map[string]string, r *http.Request) (ReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatusParams, error) {
-	var params ReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatusParams
+	var (
+		params    ReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatusParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode path: name.
 	{
 		param := args["name"]
@@ -38230,7 +38598,7 @@ func decodeReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatusParams(a
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -38267,7 +38635,10 @@ func decodeReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatusParams(a
 }
 
 func decodeReadBatchV1NamespacedCronJobParams(args map[string]string, r *http.Request) (ReadBatchV1NamespacedCronJobParams, error) {
-	var params ReadBatchV1NamespacedCronJobParams
+	var (
+		params    ReadBatchV1NamespacedCronJobParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode path: name.
 	{
 		param := args["name"]
@@ -38332,7 +38703,7 @@ func decodeReadBatchV1NamespacedCronJobParams(args map[string]string, r *http.Re
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -38369,7 +38740,10 @@ func decodeReadBatchV1NamespacedCronJobParams(args map[string]string, r *http.Re
 }
 
 func decodeReadBatchV1NamespacedCronJobStatusParams(args map[string]string, r *http.Request) (ReadBatchV1NamespacedCronJobStatusParams, error) {
-	var params ReadBatchV1NamespacedCronJobStatusParams
+	var (
+		params    ReadBatchV1NamespacedCronJobStatusParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode path: name.
 	{
 		param := args["name"]
@@ -38434,7 +38808,7 @@ func decodeReadBatchV1NamespacedCronJobStatusParams(args map[string]string, r *h
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -38471,7 +38845,10 @@ func decodeReadBatchV1NamespacedCronJobStatusParams(args map[string]string, r *h
 }
 
 func decodeReadBatchV1NamespacedJobParams(args map[string]string, r *http.Request) (ReadBatchV1NamespacedJobParams, error) {
-	var params ReadBatchV1NamespacedJobParams
+	var (
+		params    ReadBatchV1NamespacedJobParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode path: name.
 	{
 		param := args["name"]
@@ -38536,7 +38913,7 @@ func decodeReadBatchV1NamespacedJobParams(args map[string]string, r *http.Reques
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -38573,7 +38950,10 @@ func decodeReadBatchV1NamespacedJobParams(args map[string]string, r *http.Reques
 }
 
 func decodeReadBatchV1NamespacedJobStatusParams(args map[string]string, r *http.Request) (ReadBatchV1NamespacedJobStatusParams, error) {
-	var params ReadBatchV1NamespacedJobStatusParams
+	var (
+		params    ReadBatchV1NamespacedJobStatusParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode path: name.
 	{
 		param := args["name"]
@@ -38638,7 +39018,7 @@ func decodeReadBatchV1NamespacedJobStatusParams(args map[string]string, r *http.
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -38675,7 +39055,10 @@ func decodeReadBatchV1NamespacedJobStatusParams(args map[string]string, r *http.
 }
 
 func decodeReadBatchV1beta1NamespacedCronJobParams(args map[string]string, r *http.Request) (ReadBatchV1beta1NamespacedCronJobParams, error) {
-	var params ReadBatchV1beta1NamespacedCronJobParams
+	var (
+		params    ReadBatchV1beta1NamespacedCronJobParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode path: name.
 	{
 		param := args["name"]
@@ -38740,7 +39123,7 @@ func decodeReadBatchV1beta1NamespacedCronJobParams(args map[string]string, r *ht
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -38777,7 +39160,10 @@ func decodeReadBatchV1beta1NamespacedCronJobParams(args map[string]string, r *ht
 }
 
 func decodeReadBatchV1beta1NamespacedCronJobStatusParams(args map[string]string, r *http.Request) (ReadBatchV1beta1NamespacedCronJobStatusParams, error) {
-	var params ReadBatchV1beta1NamespacedCronJobStatusParams
+	var (
+		params    ReadBatchV1beta1NamespacedCronJobStatusParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode path: name.
 	{
 		param := args["name"]
@@ -38842,7 +39228,7 @@ func decodeReadBatchV1beta1NamespacedCronJobStatusParams(args map[string]string,
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -38879,7 +39265,10 @@ func decodeReadBatchV1beta1NamespacedCronJobStatusParams(args map[string]string,
 }
 
 func decodeReadCertificatesV1CertificateSigningRequestParams(args map[string]string, r *http.Request) (ReadCertificatesV1CertificateSigningRequestParams, error) {
-	var params ReadCertificatesV1CertificateSigningRequestParams
+	var (
+		params    ReadCertificatesV1CertificateSigningRequestParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode path: name.
 	{
 		param := args["name"]
@@ -38913,7 +39302,7 @@ func decodeReadCertificatesV1CertificateSigningRequestParams(args map[string]str
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -38950,7 +39339,10 @@ func decodeReadCertificatesV1CertificateSigningRequestParams(args map[string]str
 }
 
 func decodeReadCertificatesV1CertificateSigningRequestApprovalParams(args map[string]string, r *http.Request) (ReadCertificatesV1CertificateSigningRequestApprovalParams, error) {
-	var params ReadCertificatesV1CertificateSigningRequestApprovalParams
+	var (
+		params    ReadCertificatesV1CertificateSigningRequestApprovalParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode path: name.
 	{
 		param := args["name"]
@@ -38984,7 +39376,7 @@ func decodeReadCertificatesV1CertificateSigningRequestApprovalParams(args map[st
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -39021,7 +39413,10 @@ func decodeReadCertificatesV1CertificateSigningRequestApprovalParams(args map[st
 }
 
 func decodeReadCertificatesV1CertificateSigningRequestStatusParams(args map[string]string, r *http.Request) (ReadCertificatesV1CertificateSigningRequestStatusParams, error) {
-	var params ReadCertificatesV1CertificateSigningRequestStatusParams
+	var (
+		params    ReadCertificatesV1CertificateSigningRequestStatusParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode path: name.
 	{
 		param := args["name"]
@@ -39055,7 +39450,7 @@ func decodeReadCertificatesV1CertificateSigningRequestStatusParams(args map[stri
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -39092,7 +39487,10 @@ func decodeReadCertificatesV1CertificateSigningRequestStatusParams(args map[stri
 }
 
 func decodeReadCoordinationV1NamespacedLeaseParams(args map[string]string, r *http.Request) (ReadCoordinationV1NamespacedLeaseParams, error) {
-	var params ReadCoordinationV1NamespacedLeaseParams
+	var (
+		params    ReadCoordinationV1NamespacedLeaseParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode path: name.
 	{
 		param := args["name"]
@@ -39157,7 +39555,7 @@ func decodeReadCoordinationV1NamespacedLeaseParams(args map[string]string, r *ht
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -39194,7 +39592,10 @@ func decodeReadCoordinationV1NamespacedLeaseParams(args map[string]string, r *ht
 }
 
 func decodeReadCoreV1ComponentStatusParams(args map[string]string, r *http.Request) (ReadCoreV1ComponentStatusParams, error) {
-	var params ReadCoreV1ComponentStatusParams
+	var (
+		params    ReadCoreV1ComponentStatusParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode path: name.
 	{
 		param := args["name"]
@@ -39228,7 +39629,7 @@ func decodeReadCoreV1ComponentStatusParams(args map[string]string, r *http.Reque
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -39265,7 +39666,10 @@ func decodeReadCoreV1ComponentStatusParams(args map[string]string, r *http.Reque
 }
 
 func decodeReadCoreV1NamespaceParams(args map[string]string, r *http.Request) (ReadCoreV1NamespaceParams, error) {
-	var params ReadCoreV1NamespaceParams
+	var (
+		params    ReadCoreV1NamespaceParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode path: name.
 	{
 		param := args["name"]
@@ -39299,7 +39703,7 @@ func decodeReadCoreV1NamespaceParams(args map[string]string, r *http.Request) (R
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -39336,7 +39740,10 @@ func decodeReadCoreV1NamespaceParams(args map[string]string, r *http.Request) (R
 }
 
 func decodeReadCoreV1NamespaceStatusParams(args map[string]string, r *http.Request) (ReadCoreV1NamespaceStatusParams, error) {
-	var params ReadCoreV1NamespaceStatusParams
+	var (
+		params    ReadCoreV1NamespaceStatusParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode path: name.
 	{
 		param := args["name"]
@@ -39370,7 +39777,7 @@ func decodeReadCoreV1NamespaceStatusParams(args map[string]string, r *http.Reque
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -39407,7 +39814,10 @@ func decodeReadCoreV1NamespaceStatusParams(args map[string]string, r *http.Reque
 }
 
 func decodeReadCoreV1NamespacedConfigMapParams(args map[string]string, r *http.Request) (ReadCoreV1NamespacedConfigMapParams, error) {
-	var params ReadCoreV1NamespacedConfigMapParams
+	var (
+		params    ReadCoreV1NamespacedConfigMapParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode path: name.
 	{
 		param := args["name"]
@@ -39472,7 +39882,7 @@ func decodeReadCoreV1NamespacedConfigMapParams(args map[string]string, r *http.R
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -39509,7 +39919,10 @@ func decodeReadCoreV1NamespacedConfigMapParams(args map[string]string, r *http.R
 }
 
 func decodeReadCoreV1NamespacedEndpointsParams(args map[string]string, r *http.Request) (ReadCoreV1NamespacedEndpointsParams, error) {
-	var params ReadCoreV1NamespacedEndpointsParams
+	var (
+		params    ReadCoreV1NamespacedEndpointsParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode path: name.
 	{
 		param := args["name"]
@@ -39574,7 +39987,7 @@ func decodeReadCoreV1NamespacedEndpointsParams(args map[string]string, r *http.R
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -39611,7 +40024,10 @@ func decodeReadCoreV1NamespacedEndpointsParams(args map[string]string, r *http.R
 }
 
 func decodeReadCoreV1NamespacedEventParams(args map[string]string, r *http.Request) (ReadCoreV1NamespacedEventParams, error) {
-	var params ReadCoreV1NamespacedEventParams
+	var (
+		params    ReadCoreV1NamespacedEventParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode path: name.
 	{
 		param := args["name"]
@@ -39676,7 +40092,7 @@ func decodeReadCoreV1NamespacedEventParams(args map[string]string, r *http.Reque
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -39713,7 +40129,10 @@ func decodeReadCoreV1NamespacedEventParams(args map[string]string, r *http.Reque
 }
 
 func decodeReadCoreV1NamespacedLimitRangeParams(args map[string]string, r *http.Request) (ReadCoreV1NamespacedLimitRangeParams, error) {
-	var params ReadCoreV1NamespacedLimitRangeParams
+	var (
+		params    ReadCoreV1NamespacedLimitRangeParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode path: name.
 	{
 		param := args["name"]
@@ -39778,7 +40197,7 @@ func decodeReadCoreV1NamespacedLimitRangeParams(args map[string]string, r *http.
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -39815,7 +40234,10 @@ func decodeReadCoreV1NamespacedLimitRangeParams(args map[string]string, r *http.
 }
 
 func decodeReadCoreV1NamespacedPersistentVolumeClaimParams(args map[string]string, r *http.Request) (ReadCoreV1NamespacedPersistentVolumeClaimParams, error) {
-	var params ReadCoreV1NamespacedPersistentVolumeClaimParams
+	var (
+		params    ReadCoreV1NamespacedPersistentVolumeClaimParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode path: name.
 	{
 		param := args["name"]
@@ -39880,7 +40302,7 @@ func decodeReadCoreV1NamespacedPersistentVolumeClaimParams(args map[string]strin
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -39917,7 +40339,10 @@ func decodeReadCoreV1NamespacedPersistentVolumeClaimParams(args map[string]strin
 }
 
 func decodeReadCoreV1NamespacedPersistentVolumeClaimStatusParams(args map[string]string, r *http.Request) (ReadCoreV1NamespacedPersistentVolumeClaimStatusParams, error) {
-	var params ReadCoreV1NamespacedPersistentVolumeClaimStatusParams
+	var (
+		params    ReadCoreV1NamespacedPersistentVolumeClaimStatusParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode path: name.
 	{
 		param := args["name"]
@@ -39982,7 +40407,7 @@ func decodeReadCoreV1NamespacedPersistentVolumeClaimStatusParams(args map[string
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -40019,7 +40444,10 @@ func decodeReadCoreV1NamespacedPersistentVolumeClaimStatusParams(args map[string
 }
 
 func decodeReadCoreV1NamespacedPodParams(args map[string]string, r *http.Request) (ReadCoreV1NamespacedPodParams, error) {
-	var params ReadCoreV1NamespacedPodParams
+	var (
+		params    ReadCoreV1NamespacedPodParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode path: name.
 	{
 		param := args["name"]
@@ -40084,7 +40512,7 @@ func decodeReadCoreV1NamespacedPodParams(args map[string]string, r *http.Request
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -40121,7 +40549,10 @@ func decodeReadCoreV1NamespacedPodParams(args map[string]string, r *http.Request
 }
 
 func decodeReadCoreV1NamespacedPodEphemeralcontainersParams(args map[string]string, r *http.Request) (ReadCoreV1NamespacedPodEphemeralcontainersParams, error) {
-	var params ReadCoreV1NamespacedPodEphemeralcontainersParams
+	var (
+		params    ReadCoreV1NamespacedPodEphemeralcontainersParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode path: name.
 	{
 		param := args["name"]
@@ -40186,7 +40617,7 @@ func decodeReadCoreV1NamespacedPodEphemeralcontainersParams(args map[string]stri
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -40223,10 +40654,13 @@ func decodeReadCoreV1NamespacedPodEphemeralcontainersParams(args map[string]stri
 }
 
 func decodeReadCoreV1NamespacedPodLogParams(args map[string]string, r *http.Request) (ReadCoreV1NamespacedPodLogParams, error) {
-	var params ReadCoreV1NamespacedPodLogParams
+	var (
+		params    ReadCoreV1NamespacedPodLogParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode query: container.
 	{
-		values, ok := r.URL.Query()["container"]
+		values, ok := queryArgs["container"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -40261,7 +40695,7 @@ func decodeReadCoreV1NamespacedPodLogParams(args map[string]string, r *http.Requ
 	}
 	// Decode query: follow.
 	{
-		values, ok := r.URL.Query()["follow"]
+		values, ok := queryArgs["follow"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -40296,7 +40730,7 @@ func decodeReadCoreV1NamespacedPodLogParams(args map[string]string, r *http.Requ
 	}
 	// Decode query: insecureSkipTLSVerifyBackend.
 	{
-		values, ok := r.URL.Query()["insecureSkipTLSVerifyBackend"]
+		values, ok := queryArgs["insecureSkipTLSVerifyBackend"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -40331,7 +40765,7 @@ func decodeReadCoreV1NamespacedPodLogParams(args map[string]string, r *http.Requ
 	}
 	// Decode query: limitBytes.
 	{
-		values, ok := r.URL.Query()["limitBytes"]
+		values, ok := queryArgs["limitBytes"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -40428,7 +40862,7 @@ func decodeReadCoreV1NamespacedPodLogParams(args map[string]string, r *http.Requ
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -40463,7 +40897,7 @@ func decodeReadCoreV1NamespacedPodLogParams(args map[string]string, r *http.Requ
 	}
 	// Decode query: previous.
 	{
-		values, ok := r.URL.Query()["previous"]
+		values, ok := queryArgs["previous"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -40498,7 +40932,7 @@ func decodeReadCoreV1NamespacedPodLogParams(args map[string]string, r *http.Requ
 	}
 	// Decode query: sinceSeconds.
 	{
-		values, ok := r.URL.Query()["sinceSeconds"]
+		values, ok := queryArgs["sinceSeconds"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -40533,7 +40967,7 @@ func decodeReadCoreV1NamespacedPodLogParams(args map[string]string, r *http.Requ
 	}
 	// Decode query: tailLines.
 	{
-		values, ok := r.URL.Query()["tailLines"]
+		values, ok := queryArgs["tailLines"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -40568,7 +41002,7 @@ func decodeReadCoreV1NamespacedPodLogParams(args map[string]string, r *http.Requ
 	}
 	// Decode query: timestamps.
 	{
-		values, ok := r.URL.Query()["timestamps"]
+		values, ok := queryArgs["timestamps"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -40605,7 +41039,10 @@ func decodeReadCoreV1NamespacedPodLogParams(args map[string]string, r *http.Requ
 }
 
 func decodeReadCoreV1NamespacedPodStatusParams(args map[string]string, r *http.Request) (ReadCoreV1NamespacedPodStatusParams, error) {
-	var params ReadCoreV1NamespacedPodStatusParams
+	var (
+		params    ReadCoreV1NamespacedPodStatusParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode path: name.
 	{
 		param := args["name"]
@@ -40670,7 +41107,7 @@ func decodeReadCoreV1NamespacedPodStatusParams(args map[string]string, r *http.R
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -40707,7 +41144,10 @@ func decodeReadCoreV1NamespacedPodStatusParams(args map[string]string, r *http.R
 }
 
 func decodeReadCoreV1NamespacedPodTemplateParams(args map[string]string, r *http.Request) (ReadCoreV1NamespacedPodTemplateParams, error) {
-	var params ReadCoreV1NamespacedPodTemplateParams
+	var (
+		params    ReadCoreV1NamespacedPodTemplateParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode path: name.
 	{
 		param := args["name"]
@@ -40772,7 +41212,7 @@ func decodeReadCoreV1NamespacedPodTemplateParams(args map[string]string, r *http
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -40809,7 +41249,10 @@ func decodeReadCoreV1NamespacedPodTemplateParams(args map[string]string, r *http
 }
 
 func decodeReadCoreV1NamespacedReplicationControllerParams(args map[string]string, r *http.Request) (ReadCoreV1NamespacedReplicationControllerParams, error) {
-	var params ReadCoreV1NamespacedReplicationControllerParams
+	var (
+		params    ReadCoreV1NamespacedReplicationControllerParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode path: name.
 	{
 		param := args["name"]
@@ -40874,7 +41317,7 @@ func decodeReadCoreV1NamespacedReplicationControllerParams(args map[string]strin
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -40911,7 +41354,10 @@ func decodeReadCoreV1NamespacedReplicationControllerParams(args map[string]strin
 }
 
 func decodeReadCoreV1NamespacedReplicationControllerScaleParams(args map[string]string, r *http.Request) (ReadCoreV1NamespacedReplicationControllerScaleParams, error) {
-	var params ReadCoreV1NamespacedReplicationControllerScaleParams
+	var (
+		params    ReadCoreV1NamespacedReplicationControllerScaleParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode path: name.
 	{
 		param := args["name"]
@@ -40976,7 +41422,7 @@ func decodeReadCoreV1NamespacedReplicationControllerScaleParams(args map[string]
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -41013,7 +41459,10 @@ func decodeReadCoreV1NamespacedReplicationControllerScaleParams(args map[string]
 }
 
 func decodeReadCoreV1NamespacedReplicationControllerStatusParams(args map[string]string, r *http.Request) (ReadCoreV1NamespacedReplicationControllerStatusParams, error) {
-	var params ReadCoreV1NamespacedReplicationControllerStatusParams
+	var (
+		params    ReadCoreV1NamespacedReplicationControllerStatusParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode path: name.
 	{
 		param := args["name"]
@@ -41078,7 +41527,7 @@ func decodeReadCoreV1NamespacedReplicationControllerStatusParams(args map[string
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -41115,7 +41564,10 @@ func decodeReadCoreV1NamespacedReplicationControllerStatusParams(args map[string
 }
 
 func decodeReadCoreV1NamespacedResourceQuotaParams(args map[string]string, r *http.Request) (ReadCoreV1NamespacedResourceQuotaParams, error) {
-	var params ReadCoreV1NamespacedResourceQuotaParams
+	var (
+		params    ReadCoreV1NamespacedResourceQuotaParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode path: name.
 	{
 		param := args["name"]
@@ -41180,7 +41632,7 @@ func decodeReadCoreV1NamespacedResourceQuotaParams(args map[string]string, r *ht
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -41217,7 +41669,10 @@ func decodeReadCoreV1NamespacedResourceQuotaParams(args map[string]string, r *ht
 }
 
 func decodeReadCoreV1NamespacedResourceQuotaStatusParams(args map[string]string, r *http.Request) (ReadCoreV1NamespacedResourceQuotaStatusParams, error) {
-	var params ReadCoreV1NamespacedResourceQuotaStatusParams
+	var (
+		params    ReadCoreV1NamespacedResourceQuotaStatusParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode path: name.
 	{
 		param := args["name"]
@@ -41282,7 +41737,7 @@ func decodeReadCoreV1NamespacedResourceQuotaStatusParams(args map[string]string,
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -41319,7 +41774,10 @@ func decodeReadCoreV1NamespacedResourceQuotaStatusParams(args map[string]string,
 }
 
 func decodeReadCoreV1NamespacedSecretParams(args map[string]string, r *http.Request) (ReadCoreV1NamespacedSecretParams, error) {
-	var params ReadCoreV1NamespacedSecretParams
+	var (
+		params    ReadCoreV1NamespacedSecretParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode path: name.
 	{
 		param := args["name"]
@@ -41384,7 +41842,7 @@ func decodeReadCoreV1NamespacedSecretParams(args map[string]string, r *http.Requ
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -41421,7 +41879,10 @@ func decodeReadCoreV1NamespacedSecretParams(args map[string]string, r *http.Requ
 }
 
 func decodeReadCoreV1NamespacedServiceParams(args map[string]string, r *http.Request) (ReadCoreV1NamespacedServiceParams, error) {
-	var params ReadCoreV1NamespacedServiceParams
+	var (
+		params    ReadCoreV1NamespacedServiceParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode path: name.
 	{
 		param := args["name"]
@@ -41486,7 +41947,7 @@ func decodeReadCoreV1NamespacedServiceParams(args map[string]string, r *http.Req
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -41523,7 +41984,10 @@ func decodeReadCoreV1NamespacedServiceParams(args map[string]string, r *http.Req
 }
 
 func decodeReadCoreV1NamespacedServiceAccountParams(args map[string]string, r *http.Request) (ReadCoreV1NamespacedServiceAccountParams, error) {
-	var params ReadCoreV1NamespacedServiceAccountParams
+	var (
+		params    ReadCoreV1NamespacedServiceAccountParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode path: name.
 	{
 		param := args["name"]
@@ -41588,7 +42052,7 @@ func decodeReadCoreV1NamespacedServiceAccountParams(args map[string]string, r *h
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -41625,7 +42089,10 @@ func decodeReadCoreV1NamespacedServiceAccountParams(args map[string]string, r *h
 }
 
 func decodeReadCoreV1NamespacedServiceStatusParams(args map[string]string, r *http.Request) (ReadCoreV1NamespacedServiceStatusParams, error) {
-	var params ReadCoreV1NamespacedServiceStatusParams
+	var (
+		params    ReadCoreV1NamespacedServiceStatusParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode path: name.
 	{
 		param := args["name"]
@@ -41690,7 +42157,7 @@ func decodeReadCoreV1NamespacedServiceStatusParams(args map[string]string, r *ht
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -41727,7 +42194,10 @@ func decodeReadCoreV1NamespacedServiceStatusParams(args map[string]string, r *ht
 }
 
 func decodeReadCoreV1NodeParams(args map[string]string, r *http.Request) (ReadCoreV1NodeParams, error) {
-	var params ReadCoreV1NodeParams
+	var (
+		params    ReadCoreV1NodeParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode path: name.
 	{
 		param := args["name"]
@@ -41761,7 +42231,7 @@ func decodeReadCoreV1NodeParams(args map[string]string, r *http.Request) (ReadCo
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -41798,7 +42268,10 @@ func decodeReadCoreV1NodeParams(args map[string]string, r *http.Request) (ReadCo
 }
 
 func decodeReadCoreV1NodeStatusParams(args map[string]string, r *http.Request) (ReadCoreV1NodeStatusParams, error) {
-	var params ReadCoreV1NodeStatusParams
+	var (
+		params    ReadCoreV1NodeStatusParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode path: name.
 	{
 		param := args["name"]
@@ -41832,7 +42305,7 @@ func decodeReadCoreV1NodeStatusParams(args map[string]string, r *http.Request) (
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -41869,7 +42342,10 @@ func decodeReadCoreV1NodeStatusParams(args map[string]string, r *http.Request) (
 }
 
 func decodeReadCoreV1PersistentVolumeParams(args map[string]string, r *http.Request) (ReadCoreV1PersistentVolumeParams, error) {
-	var params ReadCoreV1PersistentVolumeParams
+	var (
+		params    ReadCoreV1PersistentVolumeParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode path: name.
 	{
 		param := args["name"]
@@ -41903,7 +42379,7 @@ func decodeReadCoreV1PersistentVolumeParams(args map[string]string, r *http.Requ
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -41940,7 +42416,10 @@ func decodeReadCoreV1PersistentVolumeParams(args map[string]string, r *http.Requ
 }
 
 func decodeReadCoreV1PersistentVolumeStatusParams(args map[string]string, r *http.Request) (ReadCoreV1PersistentVolumeStatusParams, error) {
-	var params ReadCoreV1PersistentVolumeStatusParams
+	var (
+		params    ReadCoreV1PersistentVolumeStatusParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode path: name.
 	{
 		param := args["name"]
@@ -41974,7 +42453,7 @@ func decodeReadCoreV1PersistentVolumeStatusParams(args map[string]string, r *htt
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -42011,7 +42490,10 @@ func decodeReadCoreV1PersistentVolumeStatusParams(args map[string]string, r *htt
 }
 
 func decodeReadDiscoveryV1NamespacedEndpointSliceParams(args map[string]string, r *http.Request) (ReadDiscoveryV1NamespacedEndpointSliceParams, error) {
-	var params ReadDiscoveryV1NamespacedEndpointSliceParams
+	var (
+		params    ReadDiscoveryV1NamespacedEndpointSliceParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode path: name.
 	{
 		param := args["name"]
@@ -42076,7 +42558,7 @@ func decodeReadDiscoveryV1NamespacedEndpointSliceParams(args map[string]string, 
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -42113,7 +42595,10 @@ func decodeReadDiscoveryV1NamespacedEndpointSliceParams(args map[string]string, 
 }
 
 func decodeReadDiscoveryV1beta1NamespacedEndpointSliceParams(args map[string]string, r *http.Request) (ReadDiscoveryV1beta1NamespacedEndpointSliceParams, error) {
-	var params ReadDiscoveryV1beta1NamespacedEndpointSliceParams
+	var (
+		params    ReadDiscoveryV1beta1NamespacedEndpointSliceParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode path: name.
 	{
 		param := args["name"]
@@ -42178,7 +42663,7 @@ func decodeReadDiscoveryV1beta1NamespacedEndpointSliceParams(args map[string]str
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -42215,7 +42700,10 @@ func decodeReadDiscoveryV1beta1NamespacedEndpointSliceParams(args map[string]str
 }
 
 func decodeReadEventsV1NamespacedEventParams(args map[string]string, r *http.Request) (ReadEventsV1NamespacedEventParams, error) {
-	var params ReadEventsV1NamespacedEventParams
+	var (
+		params    ReadEventsV1NamespacedEventParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode path: name.
 	{
 		param := args["name"]
@@ -42280,7 +42768,7 @@ func decodeReadEventsV1NamespacedEventParams(args map[string]string, r *http.Req
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -42317,7 +42805,10 @@ func decodeReadEventsV1NamespacedEventParams(args map[string]string, r *http.Req
 }
 
 func decodeReadEventsV1beta1NamespacedEventParams(args map[string]string, r *http.Request) (ReadEventsV1beta1NamespacedEventParams, error) {
-	var params ReadEventsV1beta1NamespacedEventParams
+	var (
+		params    ReadEventsV1beta1NamespacedEventParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode path: name.
 	{
 		param := args["name"]
@@ -42382,7 +42873,7 @@ func decodeReadEventsV1beta1NamespacedEventParams(args map[string]string, r *htt
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -42419,7 +42910,10 @@ func decodeReadEventsV1beta1NamespacedEventParams(args map[string]string, r *htt
 }
 
 func decodeReadFlowcontrolApiserverV1beta1FlowSchemaParams(args map[string]string, r *http.Request) (ReadFlowcontrolApiserverV1beta1FlowSchemaParams, error) {
-	var params ReadFlowcontrolApiserverV1beta1FlowSchemaParams
+	var (
+		params    ReadFlowcontrolApiserverV1beta1FlowSchemaParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode path: name.
 	{
 		param := args["name"]
@@ -42453,7 +42947,7 @@ func decodeReadFlowcontrolApiserverV1beta1FlowSchemaParams(args map[string]strin
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -42490,7 +42984,10 @@ func decodeReadFlowcontrolApiserverV1beta1FlowSchemaParams(args map[string]strin
 }
 
 func decodeReadFlowcontrolApiserverV1beta1FlowSchemaStatusParams(args map[string]string, r *http.Request) (ReadFlowcontrolApiserverV1beta1FlowSchemaStatusParams, error) {
-	var params ReadFlowcontrolApiserverV1beta1FlowSchemaStatusParams
+	var (
+		params    ReadFlowcontrolApiserverV1beta1FlowSchemaStatusParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode path: name.
 	{
 		param := args["name"]
@@ -42524,7 +43021,7 @@ func decodeReadFlowcontrolApiserverV1beta1FlowSchemaStatusParams(args map[string
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -42561,7 +43058,10 @@ func decodeReadFlowcontrolApiserverV1beta1FlowSchemaStatusParams(args map[string
 }
 
 func decodeReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationParams(args map[string]string, r *http.Request) (ReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationParams, error) {
-	var params ReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationParams
+	var (
+		params    ReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode path: name.
 	{
 		param := args["name"]
@@ -42595,7 +43095,7 @@ func decodeReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationParams(args 
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -42632,7 +43132,10 @@ func decodeReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationParams(args 
 }
 
 func decodeReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationStatusParams(args map[string]string, r *http.Request) (ReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationStatusParams, error) {
-	var params ReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationStatusParams
+	var (
+		params    ReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationStatusParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode path: name.
 	{
 		param := args["name"]
@@ -42666,7 +43169,7 @@ func decodeReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationStatusParams
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -42703,7 +43206,10 @@ func decodeReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationStatusParams
 }
 
 func decodeReadFlowcontrolApiserverV1beta2FlowSchemaParams(args map[string]string, r *http.Request) (ReadFlowcontrolApiserverV1beta2FlowSchemaParams, error) {
-	var params ReadFlowcontrolApiserverV1beta2FlowSchemaParams
+	var (
+		params    ReadFlowcontrolApiserverV1beta2FlowSchemaParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode path: name.
 	{
 		param := args["name"]
@@ -42737,7 +43243,7 @@ func decodeReadFlowcontrolApiserverV1beta2FlowSchemaParams(args map[string]strin
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -42774,7 +43280,10 @@ func decodeReadFlowcontrolApiserverV1beta2FlowSchemaParams(args map[string]strin
 }
 
 func decodeReadFlowcontrolApiserverV1beta2FlowSchemaStatusParams(args map[string]string, r *http.Request) (ReadFlowcontrolApiserverV1beta2FlowSchemaStatusParams, error) {
-	var params ReadFlowcontrolApiserverV1beta2FlowSchemaStatusParams
+	var (
+		params    ReadFlowcontrolApiserverV1beta2FlowSchemaStatusParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode path: name.
 	{
 		param := args["name"]
@@ -42808,7 +43317,7 @@ func decodeReadFlowcontrolApiserverV1beta2FlowSchemaStatusParams(args map[string
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -42845,7 +43354,10 @@ func decodeReadFlowcontrolApiserverV1beta2FlowSchemaStatusParams(args map[string
 }
 
 func decodeReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationParams(args map[string]string, r *http.Request) (ReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationParams, error) {
-	var params ReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationParams
+	var (
+		params    ReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode path: name.
 	{
 		param := args["name"]
@@ -42879,7 +43391,7 @@ func decodeReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationParams(args 
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -42916,7 +43428,10 @@ func decodeReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationParams(args 
 }
 
 func decodeReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationStatusParams(args map[string]string, r *http.Request) (ReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationStatusParams, error) {
-	var params ReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationStatusParams
+	var (
+		params    ReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationStatusParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode path: name.
 	{
 		param := args["name"]
@@ -42950,7 +43465,7 @@ func decodeReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationStatusParams
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -42987,7 +43502,10 @@ func decodeReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationStatusParams
 }
 
 func decodeReadInternalApiserverV1alpha1StorageVersionParams(args map[string]string, r *http.Request) (ReadInternalApiserverV1alpha1StorageVersionParams, error) {
-	var params ReadInternalApiserverV1alpha1StorageVersionParams
+	var (
+		params    ReadInternalApiserverV1alpha1StorageVersionParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode path: name.
 	{
 		param := args["name"]
@@ -43021,7 +43539,7 @@ func decodeReadInternalApiserverV1alpha1StorageVersionParams(args map[string]str
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -43058,7 +43576,10 @@ func decodeReadInternalApiserverV1alpha1StorageVersionParams(args map[string]str
 }
 
 func decodeReadInternalApiserverV1alpha1StorageVersionStatusParams(args map[string]string, r *http.Request) (ReadInternalApiserverV1alpha1StorageVersionStatusParams, error) {
-	var params ReadInternalApiserverV1alpha1StorageVersionStatusParams
+	var (
+		params    ReadInternalApiserverV1alpha1StorageVersionStatusParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode path: name.
 	{
 		param := args["name"]
@@ -43092,7 +43613,7 @@ func decodeReadInternalApiserverV1alpha1StorageVersionStatusParams(args map[stri
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -43129,7 +43650,10 @@ func decodeReadInternalApiserverV1alpha1StorageVersionStatusParams(args map[stri
 }
 
 func decodeReadNetworkingV1IngressClassParams(args map[string]string, r *http.Request) (ReadNetworkingV1IngressClassParams, error) {
-	var params ReadNetworkingV1IngressClassParams
+	var (
+		params    ReadNetworkingV1IngressClassParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode path: name.
 	{
 		param := args["name"]
@@ -43163,7 +43687,7 @@ func decodeReadNetworkingV1IngressClassParams(args map[string]string, r *http.Re
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -43200,7 +43724,10 @@ func decodeReadNetworkingV1IngressClassParams(args map[string]string, r *http.Re
 }
 
 func decodeReadNetworkingV1NamespacedIngressParams(args map[string]string, r *http.Request) (ReadNetworkingV1NamespacedIngressParams, error) {
-	var params ReadNetworkingV1NamespacedIngressParams
+	var (
+		params    ReadNetworkingV1NamespacedIngressParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode path: name.
 	{
 		param := args["name"]
@@ -43265,7 +43792,7 @@ func decodeReadNetworkingV1NamespacedIngressParams(args map[string]string, r *ht
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -43302,7 +43829,10 @@ func decodeReadNetworkingV1NamespacedIngressParams(args map[string]string, r *ht
 }
 
 func decodeReadNetworkingV1NamespacedIngressStatusParams(args map[string]string, r *http.Request) (ReadNetworkingV1NamespacedIngressStatusParams, error) {
-	var params ReadNetworkingV1NamespacedIngressStatusParams
+	var (
+		params    ReadNetworkingV1NamespacedIngressStatusParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode path: name.
 	{
 		param := args["name"]
@@ -43367,7 +43897,7 @@ func decodeReadNetworkingV1NamespacedIngressStatusParams(args map[string]string,
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -43404,7 +43934,10 @@ func decodeReadNetworkingV1NamespacedIngressStatusParams(args map[string]string,
 }
 
 func decodeReadNetworkingV1NamespacedNetworkPolicyParams(args map[string]string, r *http.Request) (ReadNetworkingV1NamespacedNetworkPolicyParams, error) {
-	var params ReadNetworkingV1NamespacedNetworkPolicyParams
+	var (
+		params    ReadNetworkingV1NamespacedNetworkPolicyParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode path: name.
 	{
 		param := args["name"]
@@ -43469,7 +44002,7 @@ func decodeReadNetworkingV1NamespacedNetworkPolicyParams(args map[string]string,
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -43506,7 +44039,10 @@ func decodeReadNetworkingV1NamespacedNetworkPolicyParams(args map[string]string,
 }
 
 func decodeReadNodeV1RuntimeClassParams(args map[string]string, r *http.Request) (ReadNodeV1RuntimeClassParams, error) {
-	var params ReadNodeV1RuntimeClassParams
+	var (
+		params    ReadNodeV1RuntimeClassParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode path: name.
 	{
 		param := args["name"]
@@ -43540,7 +44076,7 @@ func decodeReadNodeV1RuntimeClassParams(args map[string]string, r *http.Request)
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -43577,7 +44113,10 @@ func decodeReadNodeV1RuntimeClassParams(args map[string]string, r *http.Request)
 }
 
 func decodeReadNodeV1alpha1RuntimeClassParams(args map[string]string, r *http.Request) (ReadNodeV1alpha1RuntimeClassParams, error) {
-	var params ReadNodeV1alpha1RuntimeClassParams
+	var (
+		params    ReadNodeV1alpha1RuntimeClassParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode path: name.
 	{
 		param := args["name"]
@@ -43611,7 +44150,7 @@ func decodeReadNodeV1alpha1RuntimeClassParams(args map[string]string, r *http.Re
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -43648,7 +44187,10 @@ func decodeReadNodeV1alpha1RuntimeClassParams(args map[string]string, r *http.Re
 }
 
 func decodeReadNodeV1beta1RuntimeClassParams(args map[string]string, r *http.Request) (ReadNodeV1beta1RuntimeClassParams, error) {
-	var params ReadNodeV1beta1RuntimeClassParams
+	var (
+		params    ReadNodeV1beta1RuntimeClassParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode path: name.
 	{
 		param := args["name"]
@@ -43682,7 +44224,7 @@ func decodeReadNodeV1beta1RuntimeClassParams(args map[string]string, r *http.Req
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -43719,7 +44261,10 @@ func decodeReadNodeV1beta1RuntimeClassParams(args map[string]string, r *http.Req
 }
 
 func decodeReadPolicyV1NamespacedPodDisruptionBudgetParams(args map[string]string, r *http.Request) (ReadPolicyV1NamespacedPodDisruptionBudgetParams, error) {
-	var params ReadPolicyV1NamespacedPodDisruptionBudgetParams
+	var (
+		params    ReadPolicyV1NamespacedPodDisruptionBudgetParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode path: name.
 	{
 		param := args["name"]
@@ -43784,7 +44329,7 @@ func decodeReadPolicyV1NamespacedPodDisruptionBudgetParams(args map[string]strin
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -43821,7 +44366,10 @@ func decodeReadPolicyV1NamespacedPodDisruptionBudgetParams(args map[string]strin
 }
 
 func decodeReadPolicyV1NamespacedPodDisruptionBudgetStatusParams(args map[string]string, r *http.Request) (ReadPolicyV1NamespacedPodDisruptionBudgetStatusParams, error) {
-	var params ReadPolicyV1NamespacedPodDisruptionBudgetStatusParams
+	var (
+		params    ReadPolicyV1NamespacedPodDisruptionBudgetStatusParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode path: name.
 	{
 		param := args["name"]
@@ -43886,7 +44434,7 @@ func decodeReadPolicyV1NamespacedPodDisruptionBudgetStatusParams(args map[string
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -43923,7 +44471,10 @@ func decodeReadPolicyV1NamespacedPodDisruptionBudgetStatusParams(args map[string
 }
 
 func decodeReadPolicyV1beta1NamespacedPodDisruptionBudgetParams(args map[string]string, r *http.Request) (ReadPolicyV1beta1NamespacedPodDisruptionBudgetParams, error) {
-	var params ReadPolicyV1beta1NamespacedPodDisruptionBudgetParams
+	var (
+		params    ReadPolicyV1beta1NamespacedPodDisruptionBudgetParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode path: name.
 	{
 		param := args["name"]
@@ -43988,7 +44539,7 @@ func decodeReadPolicyV1beta1NamespacedPodDisruptionBudgetParams(args map[string]
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -44025,7 +44576,10 @@ func decodeReadPolicyV1beta1NamespacedPodDisruptionBudgetParams(args map[string]
 }
 
 func decodeReadPolicyV1beta1NamespacedPodDisruptionBudgetStatusParams(args map[string]string, r *http.Request) (ReadPolicyV1beta1NamespacedPodDisruptionBudgetStatusParams, error) {
-	var params ReadPolicyV1beta1NamespacedPodDisruptionBudgetStatusParams
+	var (
+		params    ReadPolicyV1beta1NamespacedPodDisruptionBudgetStatusParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode path: name.
 	{
 		param := args["name"]
@@ -44090,7 +44644,7 @@ func decodeReadPolicyV1beta1NamespacedPodDisruptionBudgetStatusParams(args map[s
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -44127,7 +44681,10 @@ func decodeReadPolicyV1beta1NamespacedPodDisruptionBudgetStatusParams(args map[s
 }
 
 func decodeReadPolicyV1beta1PodSecurityPolicyParams(args map[string]string, r *http.Request) (ReadPolicyV1beta1PodSecurityPolicyParams, error) {
-	var params ReadPolicyV1beta1PodSecurityPolicyParams
+	var (
+		params    ReadPolicyV1beta1PodSecurityPolicyParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode path: name.
 	{
 		param := args["name"]
@@ -44161,7 +44718,7 @@ func decodeReadPolicyV1beta1PodSecurityPolicyParams(args map[string]string, r *h
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -44198,7 +44755,10 @@ func decodeReadPolicyV1beta1PodSecurityPolicyParams(args map[string]string, r *h
 }
 
 func decodeReadRbacAuthorizationV1ClusterRoleParams(args map[string]string, r *http.Request) (ReadRbacAuthorizationV1ClusterRoleParams, error) {
-	var params ReadRbacAuthorizationV1ClusterRoleParams
+	var (
+		params    ReadRbacAuthorizationV1ClusterRoleParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode path: name.
 	{
 		param := args["name"]
@@ -44232,7 +44792,7 @@ func decodeReadRbacAuthorizationV1ClusterRoleParams(args map[string]string, r *h
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -44269,7 +44829,10 @@ func decodeReadRbacAuthorizationV1ClusterRoleParams(args map[string]string, r *h
 }
 
 func decodeReadRbacAuthorizationV1ClusterRoleBindingParams(args map[string]string, r *http.Request) (ReadRbacAuthorizationV1ClusterRoleBindingParams, error) {
-	var params ReadRbacAuthorizationV1ClusterRoleBindingParams
+	var (
+		params    ReadRbacAuthorizationV1ClusterRoleBindingParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode path: name.
 	{
 		param := args["name"]
@@ -44303,7 +44866,7 @@ func decodeReadRbacAuthorizationV1ClusterRoleBindingParams(args map[string]strin
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -44340,7 +44903,10 @@ func decodeReadRbacAuthorizationV1ClusterRoleBindingParams(args map[string]strin
 }
 
 func decodeReadRbacAuthorizationV1NamespacedRoleParams(args map[string]string, r *http.Request) (ReadRbacAuthorizationV1NamespacedRoleParams, error) {
-	var params ReadRbacAuthorizationV1NamespacedRoleParams
+	var (
+		params    ReadRbacAuthorizationV1NamespacedRoleParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode path: name.
 	{
 		param := args["name"]
@@ -44405,7 +44971,7 @@ func decodeReadRbacAuthorizationV1NamespacedRoleParams(args map[string]string, r
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -44442,7 +45008,10 @@ func decodeReadRbacAuthorizationV1NamespacedRoleParams(args map[string]string, r
 }
 
 func decodeReadRbacAuthorizationV1NamespacedRoleBindingParams(args map[string]string, r *http.Request) (ReadRbacAuthorizationV1NamespacedRoleBindingParams, error) {
-	var params ReadRbacAuthorizationV1NamespacedRoleBindingParams
+	var (
+		params    ReadRbacAuthorizationV1NamespacedRoleBindingParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode path: name.
 	{
 		param := args["name"]
@@ -44507,7 +45076,7 @@ func decodeReadRbacAuthorizationV1NamespacedRoleBindingParams(args map[string]st
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -44544,7 +45113,10 @@ func decodeReadRbacAuthorizationV1NamespacedRoleBindingParams(args map[string]st
 }
 
 func decodeReadSchedulingV1PriorityClassParams(args map[string]string, r *http.Request) (ReadSchedulingV1PriorityClassParams, error) {
-	var params ReadSchedulingV1PriorityClassParams
+	var (
+		params    ReadSchedulingV1PriorityClassParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode path: name.
 	{
 		param := args["name"]
@@ -44578,7 +45150,7 @@ func decodeReadSchedulingV1PriorityClassParams(args map[string]string, r *http.R
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -44615,7 +45187,10 @@ func decodeReadSchedulingV1PriorityClassParams(args map[string]string, r *http.R
 }
 
 func decodeReadStorageV1CSIDriverParams(args map[string]string, r *http.Request) (ReadStorageV1CSIDriverParams, error) {
-	var params ReadStorageV1CSIDriverParams
+	var (
+		params    ReadStorageV1CSIDriverParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode path: name.
 	{
 		param := args["name"]
@@ -44649,7 +45224,7 @@ func decodeReadStorageV1CSIDriverParams(args map[string]string, r *http.Request)
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -44686,7 +45261,10 @@ func decodeReadStorageV1CSIDriverParams(args map[string]string, r *http.Request)
 }
 
 func decodeReadStorageV1CSINodeParams(args map[string]string, r *http.Request) (ReadStorageV1CSINodeParams, error) {
-	var params ReadStorageV1CSINodeParams
+	var (
+		params    ReadStorageV1CSINodeParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode path: name.
 	{
 		param := args["name"]
@@ -44720,7 +45298,7 @@ func decodeReadStorageV1CSINodeParams(args map[string]string, r *http.Request) (
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -44757,7 +45335,10 @@ func decodeReadStorageV1CSINodeParams(args map[string]string, r *http.Request) (
 }
 
 func decodeReadStorageV1StorageClassParams(args map[string]string, r *http.Request) (ReadStorageV1StorageClassParams, error) {
-	var params ReadStorageV1StorageClassParams
+	var (
+		params    ReadStorageV1StorageClassParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode path: name.
 	{
 		param := args["name"]
@@ -44791,7 +45372,7 @@ func decodeReadStorageV1StorageClassParams(args map[string]string, r *http.Reque
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -44828,7 +45409,10 @@ func decodeReadStorageV1StorageClassParams(args map[string]string, r *http.Reque
 }
 
 func decodeReadStorageV1VolumeAttachmentParams(args map[string]string, r *http.Request) (ReadStorageV1VolumeAttachmentParams, error) {
-	var params ReadStorageV1VolumeAttachmentParams
+	var (
+		params    ReadStorageV1VolumeAttachmentParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode path: name.
 	{
 		param := args["name"]
@@ -44862,7 +45446,7 @@ func decodeReadStorageV1VolumeAttachmentParams(args map[string]string, r *http.R
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -44899,7 +45483,10 @@ func decodeReadStorageV1VolumeAttachmentParams(args map[string]string, r *http.R
 }
 
 func decodeReadStorageV1VolumeAttachmentStatusParams(args map[string]string, r *http.Request) (ReadStorageV1VolumeAttachmentStatusParams, error) {
-	var params ReadStorageV1VolumeAttachmentStatusParams
+	var (
+		params    ReadStorageV1VolumeAttachmentStatusParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode path: name.
 	{
 		param := args["name"]
@@ -44933,7 +45520,7 @@ func decodeReadStorageV1VolumeAttachmentStatusParams(args map[string]string, r *
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -44970,7 +45557,10 @@ func decodeReadStorageV1VolumeAttachmentStatusParams(args map[string]string, r *
 }
 
 func decodeReadStorageV1alpha1NamespacedCSIStorageCapacityParams(args map[string]string, r *http.Request) (ReadStorageV1alpha1NamespacedCSIStorageCapacityParams, error) {
-	var params ReadStorageV1alpha1NamespacedCSIStorageCapacityParams
+	var (
+		params    ReadStorageV1alpha1NamespacedCSIStorageCapacityParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode path: name.
 	{
 		param := args["name"]
@@ -45035,7 +45625,7 @@ func decodeReadStorageV1alpha1NamespacedCSIStorageCapacityParams(args map[string
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -45072,7 +45662,10 @@ func decodeReadStorageV1alpha1NamespacedCSIStorageCapacityParams(args map[string
 }
 
 func decodeReadStorageV1beta1NamespacedCSIStorageCapacityParams(args map[string]string, r *http.Request) (ReadStorageV1beta1NamespacedCSIStorageCapacityParams, error) {
-	var params ReadStorageV1beta1NamespacedCSIStorageCapacityParams
+	var (
+		params    ReadStorageV1beta1NamespacedCSIStorageCapacityParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode path: name.
 	{
 		param := args["name"]
@@ -45137,7 +45730,7 @@ func decodeReadStorageV1beta1NamespacedCSIStorageCapacityParams(args map[string]
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -45174,10 +45767,13 @@ func decodeReadStorageV1beta1NamespacedCSIStorageCapacityParams(args map[string]
 }
 
 func decodeWatchAdmissionregistrationV1MutatingWebhookConfigurationParams(args map[string]string, r *http.Request) (WatchAdmissionregistrationV1MutatingWebhookConfigurationParams, error) {
-	var params WatchAdmissionregistrationV1MutatingWebhookConfigurationParams
+	var (
+		params    WatchAdmissionregistrationV1MutatingWebhookConfigurationParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode query: allowWatchBookmarks.
 	{
-		values, ok := r.URL.Query()["allowWatchBookmarks"]
+		values, ok := queryArgs["allowWatchBookmarks"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -45212,7 +45808,7 @@ func decodeWatchAdmissionregistrationV1MutatingWebhookConfigurationParams(args m
 	}
 	// Decode query: continue.
 	{
-		values, ok := r.URL.Query()["continue"]
+		values, ok := queryArgs["continue"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -45247,7 +45843,7 @@ func decodeWatchAdmissionregistrationV1MutatingWebhookConfigurationParams(args m
 	}
 	// Decode query: fieldSelector.
 	{
-		values, ok := r.URL.Query()["fieldSelector"]
+		values, ok := queryArgs["fieldSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -45282,7 +45878,7 @@ func decodeWatchAdmissionregistrationV1MutatingWebhookConfigurationParams(args m
 	}
 	// Decode query: labelSelector.
 	{
-		values, ok := r.URL.Query()["labelSelector"]
+		values, ok := queryArgs["labelSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -45317,7 +45913,7 @@ func decodeWatchAdmissionregistrationV1MutatingWebhookConfigurationParams(args m
 	}
 	// Decode query: limit.
 	{
-		values, ok := r.URL.Query()["limit"]
+		values, ok := queryArgs["limit"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -45383,7 +45979,7 @@ func decodeWatchAdmissionregistrationV1MutatingWebhookConfigurationParams(args m
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -45418,7 +46014,7 @@ func decodeWatchAdmissionregistrationV1MutatingWebhookConfigurationParams(args m
 	}
 	// Decode query: resourceVersion.
 	{
-		values, ok := r.URL.Query()["resourceVersion"]
+		values, ok := queryArgs["resourceVersion"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -45453,7 +46049,7 @@ func decodeWatchAdmissionregistrationV1MutatingWebhookConfigurationParams(args m
 	}
 	// Decode query: resourceVersionMatch.
 	{
-		values, ok := r.URL.Query()["resourceVersionMatch"]
+		values, ok := queryArgs["resourceVersionMatch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -45488,7 +46084,7 @@ func decodeWatchAdmissionregistrationV1MutatingWebhookConfigurationParams(args m
 	}
 	// Decode query: timeoutSeconds.
 	{
-		values, ok := r.URL.Query()["timeoutSeconds"]
+		values, ok := queryArgs["timeoutSeconds"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -45523,7 +46119,7 @@ func decodeWatchAdmissionregistrationV1MutatingWebhookConfigurationParams(args m
 	}
 	// Decode query: watch.
 	{
-		values, ok := r.URL.Query()["watch"]
+		values, ok := queryArgs["watch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -45560,10 +46156,13 @@ func decodeWatchAdmissionregistrationV1MutatingWebhookConfigurationParams(args m
 }
 
 func decodeWatchAdmissionregistrationV1MutatingWebhookConfigurationListParams(args map[string]string, r *http.Request) (WatchAdmissionregistrationV1MutatingWebhookConfigurationListParams, error) {
-	var params WatchAdmissionregistrationV1MutatingWebhookConfigurationListParams
+	var (
+		params    WatchAdmissionregistrationV1MutatingWebhookConfigurationListParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode query: allowWatchBookmarks.
 	{
-		values, ok := r.URL.Query()["allowWatchBookmarks"]
+		values, ok := queryArgs["allowWatchBookmarks"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -45598,7 +46197,7 @@ func decodeWatchAdmissionregistrationV1MutatingWebhookConfigurationListParams(ar
 	}
 	// Decode query: continue.
 	{
-		values, ok := r.URL.Query()["continue"]
+		values, ok := queryArgs["continue"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -45633,7 +46232,7 @@ func decodeWatchAdmissionregistrationV1MutatingWebhookConfigurationListParams(ar
 	}
 	// Decode query: fieldSelector.
 	{
-		values, ok := r.URL.Query()["fieldSelector"]
+		values, ok := queryArgs["fieldSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -45668,7 +46267,7 @@ func decodeWatchAdmissionregistrationV1MutatingWebhookConfigurationListParams(ar
 	}
 	// Decode query: labelSelector.
 	{
-		values, ok := r.URL.Query()["labelSelector"]
+		values, ok := queryArgs["labelSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -45703,7 +46302,7 @@ func decodeWatchAdmissionregistrationV1MutatingWebhookConfigurationListParams(ar
 	}
 	// Decode query: limit.
 	{
-		values, ok := r.URL.Query()["limit"]
+		values, ok := queryArgs["limit"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -45738,7 +46337,7 @@ func decodeWatchAdmissionregistrationV1MutatingWebhookConfigurationListParams(ar
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -45773,7 +46372,7 @@ func decodeWatchAdmissionregistrationV1MutatingWebhookConfigurationListParams(ar
 	}
 	// Decode query: resourceVersion.
 	{
-		values, ok := r.URL.Query()["resourceVersion"]
+		values, ok := queryArgs["resourceVersion"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -45808,7 +46407,7 @@ func decodeWatchAdmissionregistrationV1MutatingWebhookConfigurationListParams(ar
 	}
 	// Decode query: resourceVersionMatch.
 	{
-		values, ok := r.URL.Query()["resourceVersionMatch"]
+		values, ok := queryArgs["resourceVersionMatch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -45843,7 +46442,7 @@ func decodeWatchAdmissionregistrationV1MutatingWebhookConfigurationListParams(ar
 	}
 	// Decode query: timeoutSeconds.
 	{
-		values, ok := r.URL.Query()["timeoutSeconds"]
+		values, ok := queryArgs["timeoutSeconds"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -45878,7 +46477,7 @@ func decodeWatchAdmissionregistrationV1MutatingWebhookConfigurationListParams(ar
 	}
 	// Decode query: watch.
 	{
-		values, ok := r.URL.Query()["watch"]
+		values, ok := queryArgs["watch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -45915,10 +46514,13 @@ func decodeWatchAdmissionregistrationV1MutatingWebhookConfigurationListParams(ar
 }
 
 func decodeWatchAdmissionregistrationV1ValidatingWebhookConfigurationParams(args map[string]string, r *http.Request) (WatchAdmissionregistrationV1ValidatingWebhookConfigurationParams, error) {
-	var params WatchAdmissionregistrationV1ValidatingWebhookConfigurationParams
+	var (
+		params    WatchAdmissionregistrationV1ValidatingWebhookConfigurationParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode query: allowWatchBookmarks.
 	{
-		values, ok := r.URL.Query()["allowWatchBookmarks"]
+		values, ok := queryArgs["allowWatchBookmarks"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -45953,7 +46555,7 @@ func decodeWatchAdmissionregistrationV1ValidatingWebhookConfigurationParams(args
 	}
 	// Decode query: continue.
 	{
-		values, ok := r.URL.Query()["continue"]
+		values, ok := queryArgs["continue"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -45988,7 +46590,7 @@ func decodeWatchAdmissionregistrationV1ValidatingWebhookConfigurationParams(args
 	}
 	// Decode query: fieldSelector.
 	{
-		values, ok := r.URL.Query()["fieldSelector"]
+		values, ok := queryArgs["fieldSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -46023,7 +46625,7 @@ func decodeWatchAdmissionregistrationV1ValidatingWebhookConfigurationParams(args
 	}
 	// Decode query: labelSelector.
 	{
-		values, ok := r.URL.Query()["labelSelector"]
+		values, ok := queryArgs["labelSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -46058,7 +46660,7 @@ func decodeWatchAdmissionregistrationV1ValidatingWebhookConfigurationParams(args
 	}
 	// Decode query: limit.
 	{
-		values, ok := r.URL.Query()["limit"]
+		values, ok := queryArgs["limit"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -46124,7 +46726,7 @@ func decodeWatchAdmissionregistrationV1ValidatingWebhookConfigurationParams(args
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -46159,7 +46761,7 @@ func decodeWatchAdmissionregistrationV1ValidatingWebhookConfigurationParams(args
 	}
 	// Decode query: resourceVersion.
 	{
-		values, ok := r.URL.Query()["resourceVersion"]
+		values, ok := queryArgs["resourceVersion"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -46194,7 +46796,7 @@ func decodeWatchAdmissionregistrationV1ValidatingWebhookConfigurationParams(args
 	}
 	// Decode query: resourceVersionMatch.
 	{
-		values, ok := r.URL.Query()["resourceVersionMatch"]
+		values, ok := queryArgs["resourceVersionMatch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -46229,7 +46831,7 @@ func decodeWatchAdmissionregistrationV1ValidatingWebhookConfigurationParams(args
 	}
 	// Decode query: timeoutSeconds.
 	{
-		values, ok := r.URL.Query()["timeoutSeconds"]
+		values, ok := queryArgs["timeoutSeconds"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -46264,7 +46866,7 @@ func decodeWatchAdmissionregistrationV1ValidatingWebhookConfigurationParams(args
 	}
 	// Decode query: watch.
 	{
-		values, ok := r.URL.Query()["watch"]
+		values, ok := queryArgs["watch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -46301,10 +46903,13 @@ func decodeWatchAdmissionregistrationV1ValidatingWebhookConfigurationParams(args
 }
 
 func decodeWatchAdmissionregistrationV1ValidatingWebhookConfigurationListParams(args map[string]string, r *http.Request) (WatchAdmissionregistrationV1ValidatingWebhookConfigurationListParams, error) {
-	var params WatchAdmissionregistrationV1ValidatingWebhookConfigurationListParams
+	var (
+		params    WatchAdmissionregistrationV1ValidatingWebhookConfigurationListParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode query: allowWatchBookmarks.
 	{
-		values, ok := r.URL.Query()["allowWatchBookmarks"]
+		values, ok := queryArgs["allowWatchBookmarks"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -46339,7 +46944,7 @@ func decodeWatchAdmissionregistrationV1ValidatingWebhookConfigurationListParams(
 	}
 	// Decode query: continue.
 	{
-		values, ok := r.URL.Query()["continue"]
+		values, ok := queryArgs["continue"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -46374,7 +46979,7 @@ func decodeWatchAdmissionregistrationV1ValidatingWebhookConfigurationListParams(
 	}
 	// Decode query: fieldSelector.
 	{
-		values, ok := r.URL.Query()["fieldSelector"]
+		values, ok := queryArgs["fieldSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -46409,7 +47014,7 @@ func decodeWatchAdmissionregistrationV1ValidatingWebhookConfigurationListParams(
 	}
 	// Decode query: labelSelector.
 	{
-		values, ok := r.URL.Query()["labelSelector"]
+		values, ok := queryArgs["labelSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -46444,7 +47049,7 @@ func decodeWatchAdmissionregistrationV1ValidatingWebhookConfigurationListParams(
 	}
 	// Decode query: limit.
 	{
-		values, ok := r.URL.Query()["limit"]
+		values, ok := queryArgs["limit"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -46479,7 +47084,7 @@ func decodeWatchAdmissionregistrationV1ValidatingWebhookConfigurationListParams(
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -46514,7 +47119,7 @@ func decodeWatchAdmissionregistrationV1ValidatingWebhookConfigurationListParams(
 	}
 	// Decode query: resourceVersion.
 	{
-		values, ok := r.URL.Query()["resourceVersion"]
+		values, ok := queryArgs["resourceVersion"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -46549,7 +47154,7 @@ func decodeWatchAdmissionregistrationV1ValidatingWebhookConfigurationListParams(
 	}
 	// Decode query: resourceVersionMatch.
 	{
-		values, ok := r.URL.Query()["resourceVersionMatch"]
+		values, ok := queryArgs["resourceVersionMatch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -46584,7 +47189,7 @@ func decodeWatchAdmissionregistrationV1ValidatingWebhookConfigurationListParams(
 	}
 	// Decode query: timeoutSeconds.
 	{
-		values, ok := r.URL.Query()["timeoutSeconds"]
+		values, ok := queryArgs["timeoutSeconds"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -46619,7 +47224,7 @@ func decodeWatchAdmissionregistrationV1ValidatingWebhookConfigurationListParams(
 	}
 	// Decode query: watch.
 	{
-		values, ok := r.URL.Query()["watch"]
+		values, ok := queryArgs["watch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -46656,10 +47261,13 @@ func decodeWatchAdmissionregistrationV1ValidatingWebhookConfigurationListParams(
 }
 
 func decodeWatchApiextensionsV1CustomResourceDefinitionParams(args map[string]string, r *http.Request) (WatchApiextensionsV1CustomResourceDefinitionParams, error) {
-	var params WatchApiextensionsV1CustomResourceDefinitionParams
+	var (
+		params    WatchApiextensionsV1CustomResourceDefinitionParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode query: allowWatchBookmarks.
 	{
-		values, ok := r.URL.Query()["allowWatchBookmarks"]
+		values, ok := queryArgs["allowWatchBookmarks"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -46694,7 +47302,7 @@ func decodeWatchApiextensionsV1CustomResourceDefinitionParams(args map[string]st
 	}
 	// Decode query: continue.
 	{
-		values, ok := r.URL.Query()["continue"]
+		values, ok := queryArgs["continue"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -46729,7 +47337,7 @@ func decodeWatchApiextensionsV1CustomResourceDefinitionParams(args map[string]st
 	}
 	// Decode query: fieldSelector.
 	{
-		values, ok := r.URL.Query()["fieldSelector"]
+		values, ok := queryArgs["fieldSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -46764,7 +47372,7 @@ func decodeWatchApiextensionsV1CustomResourceDefinitionParams(args map[string]st
 	}
 	// Decode query: labelSelector.
 	{
-		values, ok := r.URL.Query()["labelSelector"]
+		values, ok := queryArgs["labelSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -46799,7 +47407,7 @@ func decodeWatchApiextensionsV1CustomResourceDefinitionParams(args map[string]st
 	}
 	// Decode query: limit.
 	{
-		values, ok := r.URL.Query()["limit"]
+		values, ok := queryArgs["limit"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -46865,7 +47473,7 @@ func decodeWatchApiextensionsV1CustomResourceDefinitionParams(args map[string]st
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -46900,7 +47508,7 @@ func decodeWatchApiextensionsV1CustomResourceDefinitionParams(args map[string]st
 	}
 	// Decode query: resourceVersion.
 	{
-		values, ok := r.URL.Query()["resourceVersion"]
+		values, ok := queryArgs["resourceVersion"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -46935,7 +47543,7 @@ func decodeWatchApiextensionsV1CustomResourceDefinitionParams(args map[string]st
 	}
 	// Decode query: resourceVersionMatch.
 	{
-		values, ok := r.URL.Query()["resourceVersionMatch"]
+		values, ok := queryArgs["resourceVersionMatch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -46970,7 +47578,7 @@ func decodeWatchApiextensionsV1CustomResourceDefinitionParams(args map[string]st
 	}
 	// Decode query: timeoutSeconds.
 	{
-		values, ok := r.URL.Query()["timeoutSeconds"]
+		values, ok := queryArgs["timeoutSeconds"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -47005,7 +47613,7 @@ func decodeWatchApiextensionsV1CustomResourceDefinitionParams(args map[string]st
 	}
 	// Decode query: watch.
 	{
-		values, ok := r.URL.Query()["watch"]
+		values, ok := queryArgs["watch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -47042,10 +47650,13 @@ func decodeWatchApiextensionsV1CustomResourceDefinitionParams(args map[string]st
 }
 
 func decodeWatchApiextensionsV1CustomResourceDefinitionListParams(args map[string]string, r *http.Request) (WatchApiextensionsV1CustomResourceDefinitionListParams, error) {
-	var params WatchApiextensionsV1CustomResourceDefinitionListParams
+	var (
+		params    WatchApiextensionsV1CustomResourceDefinitionListParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode query: allowWatchBookmarks.
 	{
-		values, ok := r.URL.Query()["allowWatchBookmarks"]
+		values, ok := queryArgs["allowWatchBookmarks"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -47080,7 +47691,7 @@ func decodeWatchApiextensionsV1CustomResourceDefinitionListParams(args map[strin
 	}
 	// Decode query: continue.
 	{
-		values, ok := r.URL.Query()["continue"]
+		values, ok := queryArgs["continue"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -47115,7 +47726,7 @@ func decodeWatchApiextensionsV1CustomResourceDefinitionListParams(args map[strin
 	}
 	// Decode query: fieldSelector.
 	{
-		values, ok := r.URL.Query()["fieldSelector"]
+		values, ok := queryArgs["fieldSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -47150,7 +47761,7 @@ func decodeWatchApiextensionsV1CustomResourceDefinitionListParams(args map[strin
 	}
 	// Decode query: labelSelector.
 	{
-		values, ok := r.URL.Query()["labelSelector"]
+		values, ok := queryArgs["labelSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -47185,7 +47796,7 @@ func decodeWatchApiextensionsV1CustomResourceDefinitionListParams(args map[strin
 	}
 	// Decode query: limit.
 	{
-		values, ok := r.URL.Query()["limit"]
+		values, ok := queryArgs["limit"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -47220,7 +47831,7 @@ func decodeWatchApiextensionsV1CustomResourceDefinitionListParams(args map[strin
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -47255,7 +47866,7 @@ func decodeWatchApiextensionsV1CustomResourceDefinitionListParams(args map[strin
 	}
 	// Decode query: resourceVersion.
 	{
-		values, ok := r.URL.Query()["resourceVersion"]
+		values, ok := queryArgs["resourceVersion"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -47290,7 +47901,7 @@ func decodeWatchApiextensionsV1CustomResourceDefinitionListParams(args map[strin
 	}
 	// Decode query: resourceVersionMatch.
 	{
-		values, ok := r.URL.Query()["resourceVersionMatch"]
+		values, ok := queryArgs["resourceVersionMatch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -47325,7 +47936,7 @@ func decodeWatchApiextensionsV1CustomResourceDefinitionListParams(args map[strin
 	}
 	// Decode query: timeoutSeconds.
 	{
-		values, ok := r.URL.Query()["timeoutSeconds"]
+		values, ok := queryArgs["timeoutSeconds"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -47360,7 +47971,7 @@ func decodeWatchApiextensionsV1CustomResourceDefinitionListParams(args map[strin
 	}
 	// Decode query: watch.
 	{
-		values, ok := r.URL.Query()["watch"]
+		values, ok := queryArgs["watch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -47397,10 +48008,13 @@ func decodeWatchApiextensionsV1CustomResourceDefinitionListParams(args map[strin
 }
 
 func decodeWatchApiregistrationV1APIServiceParams(args map[string]string, r *http.Request) (WatchApiregistrationV1APIServiceParams, error) {
-	var params WatchApiregistrationV1APIServiceParams
+	var (
+		params    WatchApiregistrationV1APIServiceParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode query: allowWatchBookmarks.
 	{
-		values, ok := r.URL.Query()["allowWatchBookmarks"]
+		values, ok := queryArgs["allowWatchBookmarks"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -47435,7 +48049,7 @@ func decodeWatchApiregistrationV1APIServiceParams(args map[string]string, r *htt
 	}
 	// Decode query: continue.
 	{
-		values, ok := r.URL.Query()["continue"]
+		values, ok := queryArgs["continue"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -47470,7 +48084,7 @@ func decodeWatchApiregistrationV1APIServiceParams(args map[string]string, r *htt
 	}
 	// Decode query: fieldSelector.
 	{
-		values, ok := r.URL.Query()["fieldSelector"]
+		values, ok := queryArgs["fieldSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -47505,7 +48119,7 @@ func decodeWatchApiregistrationV1APIServiceParams(args map[string]string, r *htt
 	}
 	// Decode query: labelSelector.
 	{
-		values, ok := r.URL.Query()["labelSelector"]
+		values, ok := queryArgs["labelSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -47540,7 +48154,7 @@ func decodeWatchApiregistrationV1APIServiceParams(args map[string]string, r *htt
 	}
 	// Decode query: limit.
 	{
-		values, ok := r.URL.Query()["limit"]
+		values, ok := queryArgs["limit"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -47606,7 +48220,7 @@ func decodeWatchApiregistrationV1APIServiceParams(args map[string]string, r *htt
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -47641,7 +48255,7 @@ func decodeWatchApiregistrationV1APIServiceParams(args map[string]string, r *htt
 	}
 	// Decode query: resourceVersion.
 	{
-		values, ok := r.URL.Query()["resourceVersion"]
+		values, ok := queryArgs["resourceVersion"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -47676,7 +48290,7 @@ func decodeWatchApiregistrationV1APIServiceParams(args map[string]string, r *htt
 	}
 	// Decode query: resourceVersionMatch.
 	{
-		values, ok := r.URL.Query()["resourceVersionMatch"]
+		values, ok := queryArgs["resourceVersionMatch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -47711,7 +48325,7 @@ func decodeWatchApiregistrationV1APIServiceParams(args map[string]string, r *htt
 	}
 	// Decode query: timeoutSeconds.
 	{
-		values, ok := r.URL.Query()["timeoutSeconds"]
+		values, ok := queryArgs["timeoutSeconds"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -47746,7 +48360,7 @@ func decodeWatchApiregistrationV1APIServiceParams(args map[string]string, r *htt
 	}
 	// Decode query: watch.
 	{
-		values, ok := r.URL.Query()["watch"]
+		values, ok := queryArgs["watch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -47783,10 +48397,13 @@ func decodeWatchApiregistrationV1APIServiceParams(args map[string]string, r *htt
 }
 
 func decodeWatchApiregistrationV1APIServiceListParams(args map[string]string, r *http.Request) (WatchApiregistrationV1APIServiceListParams, error) {
-	var params WatchApiregistrationV1APIServiceListParams
+	var (
+		params    WatchApiregistrationV1APIServiceListParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode query: allowWatchBookmarks.
 	{
-		values, ok := r.URL.Query()["allowWatchBookmarks"]
+		values, ok := queryArgs["allowWatchBookmarks"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -47821,7 +48438,7 @@ func decodeWatchApiregistrationV1APIServiceListParams(args map[string]string, r 
 	}
 	// Decode query: continue.
 	{
-		values, ok := r.URL.Query()["continue"]
+		values, ok := queryArgs["continue"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -47856,7 +48473,7 @@ func decodeWatchApiregistrationV1APIServiceListParams(args map[string]string, r 
 	}
 	// Decode query: fieldSelector.
 	{
-		values, ok := r.URL.Query()["fieldSelector"]
+		values, ok := queryArgs["fieldSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -47891,7 +48508,7 @@ func decodeWatchApiregistrationV1APIServiceListParams(args map[string]string, r 
 	}
 	// Decode query: labelSelector.
 	{
-		values, ok := r.URL.Query()["labelSelector"]
+		values, ok := queryArgs["labelSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -47926,7 +48543,7 @@ func decodeWatchApiregistrationV1APIServiceListParams(args map[string]string, r 
 	}
 	// Decode query: limit.
 	{
-		values, ok := r.URL.Query()["limit"]
+		values, ok := queryArgs["limit"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -47961,7 +48578,7 @@ func decodeWatchApiregistrationV1APIServiceListParams(args map[string]string, r 
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -47996,7 +48613,7 @@ func decodeWatchApiregistrationV1APIServiceListParams(args map[string]string, r 
 	}
 	// Decode query: resourceVersion.
 	{
-		values, ok := r.URL.Query()["resourceVersion"]
+		values, ok := queryArgs["resourceVersion"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -48031,7 +48648,7 @@ func decodeWatchApiregistrationV1APIServiceListParams(args map[string]string, r 
 	}
 	// Decode query: resourceVersionMatch.
 	{
-		values, ok := r.URL.Query()["resourceVersionMatch"]
+		values, ok := queryArgs["resourceVersionMatch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -48066,7 +48683,7 @@ func decodeWatchApiregistrationV1APIServiceListParams(args map[string]string, r 
 	}
 	// Decode query: timeoutSeconds.
 	{
-		values, ok := r.URL.Query()["timeoutSeconds"]
+		values, ok := queryArgs["timeoutSeconds"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -48101,7 +48718,7 @@ func decodeWatchApiregistrationV1APIServiceListParams(args map[string]string, r 
 	}
 	// Decode query: watch.
 	{
-		values, ok := r.URL.Query()["watch"]
+		values, ok := queryArgs["watch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -48138,10 +48755,13 @@ func decodeWatchApiregistrationV1APIServiceListParams(args map[string]string, r 
 }
 
 func decodeWatchAppsV1ControllerRevisionListForAllNamespacesParams(args map[string]string, r *http.Request) (WatchAppsV1ControllerRevisionListForAllNamespacesParams, error) {
-	var params WatchAppsV1ControllerRevisionListForAllNamespacesParams
+	var (
+		params    WatchAppsV1ControllerRevisionListForAllNamespacesParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode query: allowWatchBookmarks.
 	{
-		values, ok := r.URL.Query()["allowWatchBookmarks"]
+		values, ok := queryArgs["allowWatchBookmarks"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -48176,7 +48796,7 @@ func decodeWatchAppsV1ControllerRevisionListForAllNamespacesParams(args map[stri
 	}
 	// Decode query: continue.
 	{
-		values, ok := r.URL.Query()["continue"]
+		values, ok := queryArgs["continue"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -48211,7 +48831,7 @@ func decodeWatchAppsV1ControllerRevisionListForAllNamespacesParams(args map[stri
 	}
 	// Decode query: fieldSelector.
 	{
-		values, ok := r.URL.Query()["fieldSelector"]
+		values, ok := queryArgs["fieldSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -48246,7 +48866,7 @@ func decodeWatchAppsV1ControllerRevisionListForAllNamespacesParams(args map[stri
 	}
 	// Decode query: labelSelector.
 	{
-		values, ok := r.URL.Query()["labelSelector"]
+		values, ok := queryArgs["labelSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -48281,7 +48901,7 @@ func decodeWatchAppsV1ControllerRevisionListForAllNamespacesParams(args map[stri
 	}
 	// Decode query: limit.
 	{
-		values, ok := r.URL.Query()["limit"]
+		values, ok := queryArgs["limit"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -48316,7 +48936,7 @@ func decodeWatchAppsV1ControllerRevisionListForAllNamespacesParams(args map[stri
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -48351,7 +48971,7 @@ func decodeWatchAppsV1ControllerRevisionListForAllNamespacesParams(args map[stri
 	}
 	// Decode query: resourceVersion.
 	{
-		values, ok := r.URL.Query()["resourceVersion"]
+		values, ok := queryArgs["resourceVersion"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -48386,7 +49006,7 @@ func decodeWatchAppsV1ControllerRevisionListForAllNamespacesParams(args map[stri
 	}
 	// Decode query: resourceVersionMatch.
 	{
-		values, ok := r.URL.Query()["resourceVersionMatch"]
+		values, ok := queryArgs["resourceVersionMatch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -48421,7 +49041,7 @@ func decodeWatchAppsV1ControllerRevisionListForAllNamespacesParams(args map[stri
 	}
 	// Decode query: timeoutSeconds.
 	{
-		values, ok := r.URL.Query()["timeoutSeconds"]
+		values, ok := queryArgs["timeoutSeconds"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -48456,7 +49076,7 @@ func decodeWatchAppsV1ControllerRevisionListForAllNamespacesParams(args map[stri
 	}
 	// Decode query: watch.
 	{
-		values, ok := r.URL.Query()["watch"]
+		values, ok := queryArgs["watch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -48493,10 +49113,13 @@ func decodeWatchAppsV1ControllerRevisionListForAllNamespacesParams(args map[stri
 }
 
 func decodeWatchAppsV1DaemonSetListForAllNamespacesParams(args map[string]string, r *http.Request) (WatchAppsV1DaemonSetListForAllNamespacesParams, error) {
-	var params WatchAppsV1DaemonSetListForAllNamespacesParams
+	var (
+		params    WatchAppsV1DaemonSetListForAllNamespacesParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode query: allowWatchBookmarks.
 	{
-		values, ok := r.URL.Query()["allowWatchBookmarks"]
+		values, ok := queryArgs["allowWatchBookmarks"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -48531,7 +49154,7 @@ func decodeWatchAppsV1DaemonSetListForAllNamespacesParams(args map[string]string
 	}
 	// Decode query: continue.
 	{
-		values, ok := r.URL.Query()["continue"]
+		values, ok := queryArgs["continue"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -48566,7 +49189,7 @@ func decodeWatchAppsV1DaemonSetListForAllNamespacesParams(args map[string]string
 	}
 	// Decode query: fieldSelector.
 	{
-		values, ok := r.URL.Query()["fieldSelector"]
+		values, ok := queryArgs["fieldSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -48601,7 +49224,7 @@ func decodeWatchAppsV1DaemonSetListForAllNamespacesParams(args map[string]string
 	}
 	// Decode query: labelSelector.
 	{
-		values, ok := r.URL.Query()["labelSelector"]
+		values, ok := queryArgs["labelSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -48636,7 +49259,7 @@ func decodeWatchAppsV1DaemonSetListForAllNamespacesParams(args map[string]string
 	}
 	// Decode query: limit.
 	{
-		values, ok := r.URL.Query()["limit"]
+		values, ok := queryArgs["limit"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -48671,7 +49294,7 @@ func decodeWatchAppsV1DaemonSetListForAllNamespacesParams(args map[string]string
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -48706,7 +49329,7 @@ func decodeWatchAppsV1DaemonSetListForAllNamespacesParams(args map[string]string
 	}
 	// Decode query: resourceVersion.
 	{
-		values, ok := r.URL.Query()["resourceVersion"]
+		values, ok := queryArgs["resourceVersion"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -48741,7 +49364,7 @@ func decodeWatchAppsV1DaemonSetListForAllNamespacesParams(args map[string]string
 	}
 	// Decode query: resourceVersionMatch.
 	{
-		values, ok := r.URL.Query()["resourceVersionMatch"]
+		values, ok := queryArgs["resourceVersionMatch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -48776,7 +49399,7 @@ func decodeWatchAppsV1DaemonSetListForAllNamespacesParams(args map[string]string
 	}
 	// Decode query: timeoutSeconds.
 	{
-		values, ok := r.URL.Query()["timeoutSeconds"]
+		values, ok := queryArgs["timeoutSeconds"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -48811,7 +49434,7 @@ func decodeWatchAppsV1DaemonSetListForAllNamespacesParams(args map[string]string
 	}
 	// Decode query: watch.
 	{
-		values, ok := r.URL.Query()["watch"]
+		values, ok := queryArgs["watch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -48848,10 +49471,13 @@ func decodeWatchAppsV1DaemonSetListForAllNamespacesParams(args map[string]string
 }
 
 func decodeWatchAppsV1DeploymentListForAllNamespacesParams(args map[string]string, r *http.Request) (WatchAppsV1DeploymentListForAllNamespacesParams, error) {
-	var params WatchAppsV1DeploymentListForAllNamespacesParams
+	var (
+		params    WatchAppsV1DeploymentListForAllNamespacesParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode query: allowWatchBookmarks.
 	{
-		values, ok := r.URL.Query()["allowWatchBookmarks"]
+		values, ok := queryArgs["allowWatchBookmarks"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -48886,7 +49512,7 @@ func decodeWatchAppsV1DeploymentListForAllNamespacesParams(args map[string]strin
 	}
 	// Decode query: continue.
 	{
-		values, ok := r.URL.Query()["continue"]
+		values, ok := queryArgs["continue"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -48921,7 +49547,7 @@ func decodeWatchAppsV1DeploymentListForAllNamespacesParams(args map[string]strin
 	}
 	// Decode query: fieldSelector.
 	{
-		values, ok := r.URL.Query()["fieldSelector"]
+		values, ok := queryArgs["fieldSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -48956,7 +49582,7 @@ func decodeWatchAppsV1DeploymentListForAllNamespacesParams(args map[string]strin
 	}
 	// Decode query: labelSelector.
 	{
-		values, ok := r.URL.Query()["labelSelector"]
+		values, ok := queryArgs["labelSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -48991,7 +49617,7 @@ func decodeWatchAppsV1DeploymentListForAllNamespacesParams(args map[string]strin
 	}
 	// Decode query: limit.
 	{
-		values, ok := r.URL.Query()["limit"]
+		values, ok := queryArgs["limit"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -49026,7 +49652,7 @@ func decodeWatchAppsV1DeploymentListForAllNamespacesParams(args map[string]strin
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -49061,7 +49687,7 @@ func decodeWatchAppsV1DeploymentListForAllNamespacesParams(args map[string]strin
 	}
 	// Decode query: resourceVersion.
 	{
-		values, ok := r.URL.Query()["resourceVersion"]
+		values, ok := queryArgs["resourceVersion"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -49096,7 +49722,7 @@ func decodeWatchAppsV1DeploymentListForAllNamespacesParams(args map[string]strin
 	}
 	// Decode query: resourceVersionMatch.
 	{
-		values, ok := r.URL.Query()["resourceVersionMatch"]
+		values, ok := queryArgs["resourceVersionMatch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -49131,7 +49757,7 @@ func decodeWatchAppsV1DeploymentListForAllNamespacesParams(args map[string]strin
 	}
 	// Decode query: timeoutSeconds.
 	{
-		values, ok := r.URL.Query()["timeoutSeconds"]
+		values, ok := queryArgs["timeoutSeconds"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -49166,7 +49792,7 @@ func decodeWatchAppsV1DeploymentListForAllNamespacesParams(args map[string]strin
 	}
 	// Decode query: watch.
 	{
-		values, ok := r.URL.Query()["watch"]
+		values, ok := queryArgs["watch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -49203,10 +49829,13 @@ func decodeWatchAppsV1DeploymentListForAllNamespacesParams(args map[string]strin
 }
 
 func decodeWatchAppsV1NamespacedControllerRevisionParams(args map[string]string, r *http.Request) (WatchAppsV1NamespacedControllerRevisionParams, error) {
-	var params WatchAppsV1NamespacedControllerRevisionParams
+	var (
+		params    WatchAppsV1NamespacedControllerRevisionParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode query: allowWatchBookmarks.
 	{
-		values, ok := r.URL.Query()["allowWatchBookmarks"]
+		values, ok := queryArgs["allowWatchBookmarks"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -49241,7 +49870,7 @@ func decodeWatchAppsV1NamespacedControllerRevisionParams(args map[string]string,
 	}
 	// Decode query: continue.
 	{
-		values, ok := r.URL.Query()["continue"]
+		values, ok := queryArgs["continue"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -49276,7 +49905,7 @@ func decodeWatchAppsV1NamespacedControllerRevisionParams(args map[string]string,
 	}
 	// Decode query: fieldSelector.
 	{
-		values, ok := r.URL.Query()["fieldSelector"]
+		values, ok := queryArgs["fieldSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -49311,7 +49940,7 @@ func decodeWatchAppsV1NamespacedControllerRevisionParams(args map[string]string,
 	}
 	// Decode query: labelSelector.
 	{
-		values, ok := r.URL.Query()["labelSelector"]
+		values, ok := queryArgs["labelSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -49346,7 +49975,7 @@ func decodeWatchAppsV1NamespacedControllerRevisionParams(args map[string]string,
 	}
 	// Decode query: limit.
 	{
-		values, ok := r.URL.Query()["limit"]
+		values, ok := queryArgs["limit"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -49443,7 +50072,7 @@ func decodeWatchAppsV1NamespacedControllerRevisionParams(args map[string]string,
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -49478,7 +50107,7 @@ func decodeWatchAppsV1NamespacedControllerRevisionParams(args map[string]string,
 	}
 	// Decode query: resourceVersion.
 	{
-		values, ok := r.URL.Query()["resourceVersion"]
+		values, ok := queryArgs["resourceVersion"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -49513,7 +50142,7 @@ func decodeWatchAppsV1NamespacedControllerRevisionParams(args map[string]string,
 	}
 	// Decode query: resourceVersionMatch.
 	{
-		values, ok := r.URL.Query()["resourceVersionMatch"]
+		values, ok := queryArgs["resourceVersionMatch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -49548,7 +50177,7 @@ func decodeWatchAppsV1NamespacedControllerRevisionParams(args map[string]string,
 	}
 	// Decode query: timeoutSeconds.
 	{
-		values, ok := r.URL.Query()["timeoutSeconds"]
+		values, ok := queryArgs["timeoutSeconds"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -49583,7 +50212,7 @@ func decodeWatchAppsV1NamespacedControllerRevisionParams(args map[string]string,
 	}
 	// Decode query: watch.
 	{
-		values, ok := r.URL.Query()["watch"]
+		values, ok := queryArgs["watch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -49620,10 +50249,13 @@ func decodeWatchAppsV1NamespacedControllerRevisionParams(args map[string]string,
 }
 
 func decodeWatchAppsV1NamespacedControllerRevisionListParams(args map[string]string, r *http.Request) (WatchAppsV1NamespacedControllerRevisionListParams, error) {
-	var params WatchAppsV1NamespacedControllerRevisionListParams
+	var (
+		params    WatchAppsV1NamespacedControllerRevisionListParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode query: allowWatchBookmarks.
 	{
-		values, ok := r.URL.Query()["allowWatchBookmarks"]
+		values, ok := queryArgs["allowWatchBookmarks"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -49658,7 +50290,7 @@ func decodeWatchAppsV1NamespacedControllerRevisionListParams(args map[string]str
 	}
 	// Decode query: continue.
 	{
-		values, ok := r.URL.Query()["continue"]
+		values, ok := queryArgs["continue"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -49693,7 +50325,7 @@ func decodeWatchAppsV1NamespacedControllerRevisionListParams(args map[string]str
 	}
 	// Decode query: fieldSelector.
 	{
-		values, ok := r.URL.Query()["fieldSelector"]
+		values, ok := queryArgs["fieldSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -49728,7 +50360,7 @@ func decodeWatchAppsV1NamespacedControllerRevisionListParams(args map[string]str
 	}
 	// Decode query: labelSelector.
 	{
-		values, ok := r.URL.Query()["labelSelector"]
+		values, ok := queryArgs["labelSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -49763,7 +50395,7 @@ func decodeWatchAppsV1NamespacedControllerRevisionListParams(args map[string]str
 	}
 	// Decode query: limit.
 	{
-		values, ok := r.URL.Query()["limit"]
+		values, ok := queryArgs["limit"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -49829,7 +50461,7 @@ func decodeWatchAppsV1NamespacedControllerRevisionListParams(args map[string]str
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -49864,7 +50496,7 @@ func decodeWatchAppsV1NamespacedControllerRevisionListParams(args map[string]str
 	}
 	// Decode query: resourceVersion.
 	{
-		values, ok := r.URL.Query()["resourceVersion"]
+		values, ok := queryArgs["resourceVersion"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -49899,7 +50531,7 @@ func decodeWatchAppsV1NamespacedControllerRevisionListParams(args map[string]str
 	}
 	// Decode query: resourceVersionMatch.
 	{
-		values, ok := r.URL.Query()["resourceVersionMatch"]
+		values, ok := queryArgs["resourceVersionMatch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -49934,7 +50566,7 @@ func decodeWatchAppsV1NamespacedControllerRevisionListParams(args map[string]str
 	}
 	// Decode query: timeoutSeconds.
 	{
-		values, ok := r.URL.Query()["timeoutSeconds"]
+		values, ok := queryArgs["timeoutSeconds"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -49969,7 +50601,7 @@ func decodeWatchAppsV1NamespacedControllerRevisionListParams(args map[string]str
 	}
 	// Decode query: watch.
 	{
-		values, ok := r.URL.Query()["watch"]
+		values, ok := queryArgs["watch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -50006,10 +50638,13 @@ func decodeWatchAppsV1NamespacedControllerRevisionListParams(args map[string]str
 }
 
 func decodeWatchAppsV1NamespacedDaemonSetParams(args map[string]string, r *http.Request) (WatchAppsV1NamespacedDaemonSetParams, error) {
-	var params WatchAppsV1NamespacedDaemonSetParams
+	var (
+		params    WatchAppsV1NamespacedDaemonSetParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode query: allowWatchBookmarks.
 	{
-		values, ok := r.URL.Query()["allowWatchBookmarks"]
+		values, ok := queryArgs["allowWatchBookmarks"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -50044,7 +50679,7 @@ func decodeWatchAppsV1NamespacedDaemonSetParams(args map[string]string, r *http.
 	}
 	// Decode query: continue.
 	{
-		values, ok := r.URL.Query()["continue"]
+		values, ok := queryArgs["continue"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -50079,7 +50714,7 @@ func decodeWatchAppsV1NamespacedDaemonSetParams(args map[string]string, r *http.
 	}
 	// Decode query: fieldSelector.
 	{
-		values, ok := r.URL.Query()["fieldSelector"]
+		values, ok := queryArgs["fieldSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -50114,7 +50749,7 @@ func decodeWatchAppsV1NamespacedDaemonSetParams(args map[string]string, r *http.
 	}
 	// Decode query: labelSelector.
 	{
-		values, ok := r.URL.Query()["labelSelector"]
+		values, ok := queryArgs["labelSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -50149,7 +50784,7 @@ func decodeWatchAppsV1NamespacedDaemonSetParams(args map[string]string, r *http.
 	}
 	// Decode query: limit.
 	{
-		values, ok := r.URL.Query()["limit"]
+		values, ok := queryArgs["limit"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -50246,7 +50881,7 @@ func decodeWatchAppsV1NamespacedDaemonSetParams(args map[string]string, r *http.
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -50281,7 +50916,7 @@ func decodeWatchAppsV1NamespacedDaemonSetParams(args map[string]string, r *http.
 	}
 	// Decode query: resourceVersion.
 	{
-		values, ok := r.URL.Query()["resourceVersion"]
+		values, ok := queryArgs["resourceVersion"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -50316,7 +50951,7 @@ func decodeWatchAppsV1NamespacedDaemonSetParams(args map[string]string, r *http.
 	}
 	// Decode query: resourceVersionMatch.
 	{
-		values, ok := r.URL.Query()["resourceVersionMatch"]
+		values, ok := queryArgs["resourceVersionMatch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -50351,7 +50986,7 @@ func decodeWatchAppsV1NamespacedDaemonSetParams(args map[string]string, r *http.
 	}
 	// Decode query: timeoutSeconds.
 	{
-		values, ok := r.URL.Query()["timeoutSeconds"]
+		values, ok := queryArgs["timeoutSeconds"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -50386,7 +51021,7 @@ func decodeWatchAppsV1NamespacedDaemonSetParams(args map[string]string, r *http.
 	}
 	// Decode query: watch.
 	{
-		values, ok := r.URL.Query()["watch"]
+		values, ok := queryArgs["watch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -50423,10 +51058,13 @@ func decodeWatchAppsV1NamespacedDaemonSetParams(args map[string]string, r *http.
 }
 
 func decodeWatchAppsV1NamespacedDaemonSetListParams(args map[string]string, r *http.Request) (WatchAppsV1NamespacedDaemonSetListParams, error) {
-	var params WatchAppsV1NamespacedDaemonSetListParams
+	var (
+		params    WatchAppsV1NamespacedDaemonSetListParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode query: allowWatchBookmarks.
 	{
-		values, ok := r.URL.Query()["allowWatchBookmarks"]
+		values, ok := queryArgs["allowWatchBookmarks"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -50461,7 +51099,7 @@ func decodeWatchAppsV1NamespacedDaemonSetListParams(args map[string]string, r *h
 	}
 	// Decode query: continue.
 	{
-		values, ok := r.URL.Query()["continue"]
+		values, ok := queryArgs["continue"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -50496,7 +51134,7 @@ func decodeWatchAppsV1NamespacedDaemonSetListParams(args map[string]string, r *h
 	}
 	// Decode query: fieldSelector.
 	{
-		values, ok := r.URL.Query()["fieldSelector"]
+		values, ok := queryArgs["fieldSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -50531,7 +51169,7 @@ func decodeWatchAppsV1NamespacedDaemonSetListParams(args map[string]string, r *h
 	}
 	// Decode query: labelSelector.
 	{
-		values, ok := r.URL.Query()["labelSelector"]
+		values, ok := queryArgs["labelSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -50566,7 +51204,7 @@ func decodeWatchAppsV1NamespacedDaemonSetListParams(args map[string]string, r *h
 	}
 	// Decode query: limit.
 	{
-		values, ok := r.URL.Query()["limit"]
+		values, ok := queryArgs["limit"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -50632,7 +51270,7 @@ func decodeWatchAppsV1NamespacedDaemonSetListParams(args map[string]string, r *h
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -50667,7 +51305,7 @@ func decodeWatchAppsV1NamespacedDaemonSetListParams(args map[string]string, r *h
 	}
 	// Decode query: resourceVersion.
 	{
-		values, ok := r.URL.Query()["resourceVersion"]
+		values, ok := queryArgs["resourceVersion"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -50702,7 +51340,7 @@ func decodeWatchAppsV1NamespacedDaemonSetListParams(args map[string]string, r *h
 	}
 	// Decode query: resourceVersionMatch.
 	{
-		values, ok := r.URL.Query()["resourceVersionMatch"]
+		values, ok := queryArgs["resourceVersionMatch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -50737,7 +51375,7 @@ func decodeWatchAppsV1NamespacedDaemonSetListParams(args map[string]string, r *h
 	}
 	// Decode query: timeoutSeconds.
 	{
-		values, ok := r.URL.Query()["timeoutSeconds"]
+		values, ok := queryArgs["timeoutSeconds"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -50772,7 +51410,7 @@ func decodeWatchAppsV1NamespacedDaemonSetListParams(args map[string]string, r *h
 	}
 	// Decode query: watch.
 	{
-		values, ok := r.URL.Query()["watch"]
+		values, ok := queryArgs["watch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -50809,10 +51447,13 @@ func decodeWatchAppsV1NamespacedDaemonSetListParams(args map[string]string, r *h
 }
 
 func decodeWatchAppsV1NamespacedDeploymentParams(args map[string]string, r *http.Request) (WatchAppsV1NamespacedDeploymentParams, error) {
-	var params WatchAppsV1NamespacedDeploymentParams
+	var (
+		params    WatchAppsV1NamespacedDeploymentParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode query: allowWatchBookmarks.
 	{
-		values, ok := r.URL.Query()["allowWatchBookmarks"]
+		values, ok := queryArgs["allowWatchBookmarks"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -50847,7 +51488,7 @@ func decodeWatchAppsV1NamespacedDeploymentParams(args map[string]string, r *http
 	}
 	// Decode query: continue.
 	{
-		values, ok := r.URL.Query()["continue"]
+		values, ok := queryArgs["continue"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -50882,7 +51523,7 @@ func decodeWatchAppsV1NamespacedDeploymentParams(args map[string]string, r *http
 	}
 	// Decode query: fieldSelector.
 	{
-		values, ok := r.URL.Query()["fieldSelector"]
+		values, ok := queryArgs["fieldSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -50917,7 +51558,7 @@ func decodeWatchAppsV1NamespacedDeploymentParams(args map[string]string, r *http
 	}
 	// Decode query: labelSelector.
 	{
-		values, ok := r.URL.Query()["labelSelector"]
+		values, ok := queryArgs["labelSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -50952,7 +51593,7 @@ func decodeWatchAppsV1NamespacedDeploymentParams(args map[string]string, r *http
 	}
 	// Decode query: limit.
 	{
-		values, ok := r.URL.Query()["limit"]
+		values, ok := queryArgs["limit"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -51049,7 +51690,7 @@ func decodeWatchAppsV1NamespacedDeploymentParams(args map[string]string, r *http
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -51084,7 +51725,7 @@ func decodeWatchAppsV1NamespacedDeploymentParams(args map[string]string, r *http
 	}
 	// Decode query: resourceVersion.
 	{
-		values, ok := r.URL.Query()["resourceVersion"]
+		values, ok := queryArgs["resourceVersion"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -51119,7 +51760,7 @@ func decodeWatchAppsV1NamespacedDeploymentParams(args map[string]string, r *http
 	}
 	// Decode query: resourceVersionMatch.
 	{
-		values, ok := r.URL.Query()["resourceVersionMatch"]
+		values, ok := queryArgs["resourceVersionMatch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -51154,7 +51795,7 @@ func decodeWatchAppsV1NamespacedDeploymentParams(args map[string]string, r *http
 	}
 	// Decode query: timeoutSeconds.
 	{
-		values, ok := r.URL.Query()["timeoutSeconds"]
+		values, ok := queryArgs["timeoutSeconds"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -51189,7 +51830,7 @@ func decodeWatchAppsV1NamespacedDeploymentParams(args map[string]string, r *http
 	}
 	// Decode query: watch.
 	{
-		values, ok := r.URL.Query()["watch"]
+		values, ok := queryArgs["watch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -51226,10 +51867,13 @@ func decodeWatchAppsV1NamespacedDeploymentParams(args map[string]string, r *http
 }
 
 func decodeWatchAppsV1NamespacedDeploymentListParams(args map[string]string, r *http.Request) (WatchAppsV1NamespacedDeploymentListParams, error) {
-	var params WatchAppsV1NamespacedDeploymentListParams
+	var (
+		params    WatchAppsV1NamespacedDeploymentListParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode query: allowWatchBookmarks.
 	{
-		values, ok := r.URL.Query()["allowWatchBookmarks"]
+		values, ok := queryArgs["allowWatchBookmarks"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -51264,7 +51908,7 @@ func decodeWatchAppsV1NamespacedDeploymentListParams(args map[string]string, r *
 	}
 	// Decode query: continue.
 	{
-		values, ok := r.URL.Query()["continue"]
+		values, ok := queryArgs["continue"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -51299,7 +51943,7 @@ func decodeWatchAppsV1NamespacedDeploymentListParams(args map[string]string, r *
 	}
 	// Decode query: fieldSelector.
 	{
-		values, ok := r.URL.Query()["fieldSelector"]
+		values, ok := queryArgs["fieldSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -51334,7 +51978,7 @@ func decodeWatchAppsV1NamespacedDeploymentListParams(args map[string]string, r *
 	}
 	// Decode query: labelSelector.
 	{
-		values, ok := r.URL.Query()["labelSelector"]
+		values, ok := queryArgs["labelSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -51369,7 +52013,7 @@ func decodeWatchAppsV1NamespacedDeploymentListParams(args map[string]string, r *
 	}
 	// Decode query: limit.
 	{
-		values, ok := r.URL.Query()["limit"]
+		values, ok := queryArgs["limit"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -51435,7 +52079,7 @@ func decodeWatchAppsV1NamespacedDeploymentListParams(args map[string]string, r *
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -51470,7 +52114,7 @@ func decodeWatchAppsV1NamespacedDeploymentListParams(args map[string]string, r *
 	}
 	// Decode query: resourceVersion.
 	{
-		values, ok := r.URL.Query()["resourceVersion"]
+		values, ok := queryArgs["resourceVersion"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -51505,7 +52149,7 @@ func decodeWatchAppsV1NamespacedDeploymentListParams(args map[string]string, r *
 	}
 	// Decode query: resourceVersionMatch.
 	{
-		values, ok := r.URL.Query()["resourceVersionMatch"]
+		values, ok := queryArgs["resourceVersionMatch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -51540,7 +52184,7 @@ func decodeWatchAppsV1NamespacedDeploymentListParams(args map[string]string, r *
 	}
 	// Decode query: timeoutSeconds.
 	{
-		values, ok := r.URL.Query()["timeoutSeconds"]
+		values, ok := queryArgs["timeoutSeconds"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -51575,7 +52219,7 @@ func decodeWatchAppsV1NamespacedDeploymentListParams(args map[string]string, r *
 	}
 	// Decode query: watch.
 	{
-		values, ok := r.URL.Query()["watch"]
+		values, ok := queryArgs["watch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -51612,10 +52256,13 @@ func decodeWatchAppsV1NamespacedDeploymentListParams(args map[string]string, r *
 }
 
 func decodeWatchAppsV1NamespacedReplicaSetParams(args map[string]string, r *http.Request) (WatchAppsV1NamespacedReplicaSetParams, error) {
-	var params WatchAppsV1NamespacedReplicaSetParams
+	var (
+		params    WatchAppsV1NamespacedReplicaSetParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode query: allowWatchBookmarks.
 	{
-		values, ok := r.URL.Query()["allowWatchBookmarks"]
+		values, ok := queryArgs["allowWatchBookmarks"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -51650,7 +52297,7 @@ func decodeWatchAppsV1NamespacedReplicaSetParams(args map[string]string, r *http
 	}
 	// Decode query: continue.
 	{
-		values, ok := r.URL.Query()["continue"]
+		values, ok := queryArgs["continue"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -51685,7 +52332,7 @@ func decodeWatchAppsV1NamespacedReplicaSetParams(args map[string]string, r *http
 	}
 	// Decode query: fieldSelector.
 	{
-		values, ok := r.URL.Query()["fieldSelector"]
+		values, ok := queryArgs["fieldSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -51720,7 +52367,7 @@ func decodeWatchAppsV1NamespacedReplicaSetParams(args map[string]string, r *http
 	}
 	// Decode query: labelSelector.
 	{
-		values, ok := r.URL.Query()["labelSelector"]
+		values, ok := queryArgs["labelSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -51755,7 +52402,7 @@ func decodeWatchAppsV1NamespacedReplicaSetParams(args map[string]string, r *http
 	}
 	// Decode query: limit.
 	{
-		values, ok := r.URL.Query()["limit"]
+		values, ok := queryArgs["limit"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -51852,7 +52499,7 @@ func decodeWatchAppsV1NamespacedReplicaSetParams(args map[string]string, r *http
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -51887,7 +52534,7 @@ func decodeWatchAppsV1NamespacedReplicaSetParams(args map[string]string, r *http
 	}
 	// Decode query: resourceVersion.
 	{
-		values, ok := r.URL.Query()["resourceVersion"]
+		values, ok := queryArgs["resourceVersion"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -51922,7 +52569,7 @@ func decodeWatchAppsV1NamespacedReplicaSetParams(args map[string]string, r *http
 	}
 	// Decode query: resourceVersionMatch.
 	{
-		values, ok := r.URL.Query()["resourceVersionMatch"]
+		values, ok := queryArgs["resourceVersionMatch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -51957,7 +52604,7 @@ func decodeWatchAppsV1NamespacedReplicaSetParams(args map[string]string, r *http
 	}
 	// Decode query: timeoutSeconds.
 	{
-		values, ok := r.URL.Query()["timeoutSeconds"]
+		values, ok := queryArgs["timeoutSeconds"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -51992,7 +52639,7 @@ func decodeWatchAppsV1NamespacedReplicaSetParams(args map[string]string, r *http
 	}
 	// Decode query: watch.
 	{
-		values, ok := r.URL.Query()["watch"]
+		values, ok := queryArgs["watch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -52029,10 +52676,13 @@ func decodeWatchAppsV1NamespacedReplicaSetParams(args map[string]string, r *http
 }
 
 func decodeWatchAppsV1NamespacedReplicaSetListParams(args map[string]string, r *http.Request) (WatchAppsV1NamespacedReplicaSetListParams, error) {
-	var params WatchAppsV1NamespacedReplicaSetListParams
+	var (
+		params    WatchAppsV1NamespacedReplicaSetListParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode query: allowWatchBookmarks.
 	{
-		values, ok := r.URL.Query()["allowWatchBookmarks"]
+		values, ok := queryArgs["allowWatchBookmarks"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -52067,7 +52717,7 @@ func decodeWatchAppsV1NamespacedReplicaSetListParams(args map[string]string, r *
 	}
 	// Decode query: continue.
 	{
-		values, ok := r.URL.Query()["continue"]
+		values, ok := queryArgs["continue"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -52102,7 +52752,7 @@ func decodeWatchAppsV1NamespacedReplicaSetListParams(args map[string]string, r *
 	}
 	// Decode query: fieldSelector.
 	{
-		values, ok := r.URL.Query()["fieldSelector"]
+		values, ok := queryArgs["fieldSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -52137,7 +52787,7 @@ func decodeWatchAppsV1NamespacedReplicaSetListParams(args map[string]string, r *
 	}
 	// Decode query: labelSelector.
 	{
-		values, ok := r.URL.Query()["labelSelector"]
+		values, ok := queryArgs["labelSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -52172,7 +52822,7 @@ func decodeWatchAppsV1NamespacedReplicaSetListParams(args map[string]string, r *
 	}
 	// Decode query: limit.
 	{
-		values, ok := r.URL.Query()["limit"]
+		values, ok := queryArgs["limit"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -52238,7 +52888,7 @@ func decodeWatchAppsV1NamespacedReplicaSetListParams(args map[string]string, r *
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -52273,7 +52923,7 @@ func decodeWatchAppsV1NamespacedReplicaSetListParams(args map[string]string, r *
 	}
 	// Decode query: resourceVersion.
 	{
-		values, ok := r.URL.Query()["resourceVersion"]
+		values, ok := queryArgs["resourceVersion"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -52308,7 +52958,7 @@ func decodeWatchAppsV1NamespacedReplicaSetListParams(args map[string]string, r *
 	}
 	// Decode query: resourceVersionMatch.
 	{
-		values, ok := r.URL.Query()["resourceVersionMatch"]
+		values, ok := queryArgs["resourceVersionMatch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -52343,7 +52993,7 @@ func decodeWatchAppsV1NamespacedReplicaSetListParams(args map[string]string, r *
 	}
 	// Decode query: timeoutSeconds.
 	{
-		values, ok := r.URL.Query()["timeoutSeconds"]
+		values, ok := queryArgs["timeoutSeconds"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -52378,7 +53028,7 @@ func decodeWatchAppsV1NamespacedReplicaSetListParams(args map[string]string, r *
 	}
 	// Decode query: watch.
 	{
-		values, ok := r.URL.Query()["watch"]
+		values, ok := queryArgs["watch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -52415,10 +53065,13 @@ func decodeWatchAppsV1NamespacedReplicaSetListParams(args map[string]string, r *
 }
 
 func decodeWatchAppsV1NamespacedStatefulSetParams(args map[string]string, r *http.Request) (WatchAppsV1NamespacedStatefulSetParams, error) {
-	var params WatchAppsV1NamespacedStatefulSetParams
+	var (
+		params    WatchAppsV1NamespacedStatefulSetParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode query: allowWatchBookmarks.
 	{
-		values, ok := r.URL.Query()["allowWatchBookmarks"]
+		values, ok := queryArgs["allowWatchBookmarks"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -52453,7 +53106,7 @@ func decodeWatchAppsV1NamespacedStatefulSetParams(args map[string]string, r *htt
 	}
 	// Decode query: continue.
 	{
-		values, ok := r.URL.Query()["continue"]
+		values, ok := queryArgs["continue"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -52488,7 +53141,7 @@ func decodeWatchAppsV1NamespacedStatefulSetParams(args map[string]string, r *htt
 	}
 	// Decode query: fieldSelector.
 	{
-		values, ok := r.URL.Query()["fieldSelector"]
+		values, ok := queryArgs["fieldSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -52523,7 +53176,7 @@ func decodeWatchAppsV1NamespacedStatefulSetParams(args map[string]string, r *htt
 	}
 	// Decode query: labelSelector.
 	{
-		values, ok := r.URL.Query()["labelSelector"]
+		values, ok := queryArgs["labelSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -52558,7 +53211,7 @@ func decodeWatchAppsV1NamespacedStatefulSetParams(args map[string]string, r *htt
 	}
 	// Decode query: limit.
 	{
-		values, ok := r.URL.Query()["limit"]
+		values, ok := queryArgs["limit"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -52655,7 +53308,7 @@ func decodeWatchAppsV1NamespacedStatefulSetParams(args map[string]string, r *htt
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -52690,7 +53343,7 @@ func decodeWatchAppsV1NamespacedStatefulSetParams(args map[string]string, r *htt
 	}
 	// Decode query: resourceVersion.
 	{
-		values, ok := r.URL.Query()["resourceVersion"]
+		values, ok := queryArgs["resourceVersion"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -52725,7 +53378,7 @@ func decodeWatchAppsV1NamespacedStatefulSetParams(args map[string]string, r *htt
 	}
 	// Decode query: resourceVersionMatch.
 	{
-		values, ok := r.URL.Query()["resourceVersionMatch"]
+		values, ok := queryArgs["resourceVersionMatch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -52760,7 +53413,7 @@ func decodeWatchAppsV1NamespacedStatefulSetParams(args map[string]string, r *htt
 	}
 	// Decode query: timeoutSeconds.
 	{
-		values, ok := r.URL.Query()["timeoutSeconds"]
+		values, ok := queryArgs["timeoutSeconds"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -52795,7 +53448,7 @@ func decodeWatchAppsV1NamespacedStatefulSetParams(args map[string]string, r *htt
 	}
 	// Decode query: watch.
 	{
-		values, ok := r.URL.Query()["watch"]
+		values, ok := queryArgs["watch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -52832,10 +53485,13 @@ func decodeWatchAppsV1NamespacedStatefulSetParams(args map[string]string, r *htt
 }
 
 func decodeWatchAppsV1NamespacedStatefulSetListParams(args map[string]string, r *http.Request) (WatchAppsV1NamespacedStatefulSetListParams, error) {
-	var params WatchAppsV1NamespacedStatefulSetListParams
+	var (
+		params    WatchAppsV1NamespacedStatefulSetListParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode query: allowWatchBookmarks.
 	{
-		values, ok := r.URL.Query()["allowWatchBookmarks"]
+		values, ok := queryArgs["allowWatchBookmarks"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -52870,7 +53526,7 @@ func decodeWatchAppsV1NamespacedStatefulSetListParams(args map[string]string, r 
 	}
 	// Decode query: continue.
 	{
-		values, ok := r.URL.Query()["continue"]
+		values, ok := queryArgs["continue"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -52905,7 +53561,7 @@ func decodeWatchAppsV1NamespacedStatefulSetListParams(args map[string]string, r 
 	}
 	// Decode query: fieldSelector.
 	{
-		values, ok := r.URL.Query()["fieldSelector"]
+		values, ok := queryArgs["fieldSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -52940,7 +53596,7 @@ func decodeWatchAppsV1NamespacedStatefulSetListParams(args map[string]string, r 
 	}
 	// Decode query: labelSelector.
 	{
-		values, ok := r.URL.Query()["labelSelector"]
+		values, ok := queryArgs["labelSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -52975,7 +53631,7 @@ func decodeWatchAppsV1NamespacedStatefulSetListParams(args map[string]string, r 
 	}
 	// Decode query: limit.
 	{
-		values, ok := r.URL.Query()["limit"]
+		values, ok := queryArgs["limit"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -53041,7 +53697,7 @@ func decodeWatchAppsV1NamespacedStatefulSetListParams(args map[string]string, r 
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -53076,7 +53732,7 @@ func decodeWatchAppsV1NamespacedStatefulSetListParams(args map[string]string, r 
 	}
 	// Decode query: resourceVersion.
 	{
-		values, ok := r.URL.Query()["resourceVersion"]
+		values, ok := queryArgs["resourceVersion"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -53111,7 +53767,7 @@ func decodeWatchAppsV1NamespacedStatefulSetListParams(args map[string]string, r 
 	}
 	// Decode query: resourceVersionMatch.
 	{
-		values, ok := r.URL.Query()["resourceVersionMatch"]
+		values, ok := queryArgs["resourceVersionMatch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -53146,7 +53802,7 @@ func decodeWatchAppsV1NamespacedStatefulSetListParams(args map[string]string, r 
 	}
 	// Decode query: timeoutSeconds.
 	{
-		values, ok := r.URL.Query()["timeoutSeconds"]
+		values, ok := queryArgs["timeoutSeconds"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -53181,7 +53837,7 @@ func decodeWatchAppsV1NamespacedStatefulSetListParams(args map[string]string, r 
 	}
 	// Decode query: watch.
 	{
-		values, ok := r.URL.Query()["watch"]
+		values, ok := queryArgs["watch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -53218,10 +53874,13 @@ func decodeWatchAppsV1NamespacedStatefulSetListParams(args map[string]string, r 
 }
 
 func decodeWatchAppsV1ReplicaSetListForAllNamespacesParams(args map[string]string, r *http.Request) (WatchAppsV1ReplicaSetListForAllNamespacesParams, error) {
-	var params WatchAppsV1ReplicaSetListForAllNamespacesParams
+	var (
+		params    WatchAppsV1ReplicaSetListForAllNamespacesParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode query: allowWatchBookmarks.
 	{
-		values, ok := r.URL.Query()["allowWatchBookmarks"]
+		values, ok := queryArgs["allowWatchBookmarks"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -53256,7 +53915,7 @@ func decodeWatchAppsV1ReplicaSetListForAllNamespacesParams(args map[string]strin
 	}
 	// Decode query: continue.
 	{
-		values, ok := r.URL.Query()["continue"]
+		values, ok := queryArgs["continue"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -53291,7 +53950,7 @@ func decodeWatchAppsV1ReplicaSetListForAllNamespacesParams(args map[string]strin
 	}
 	// Decode query: fieldSelector.
 	{
-		values, ok := r.URL.Query()["fieldSelector"]
+		values, ok := queryArgs["fieldSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -53326,7 +53985,7 @@ func decodeWatchAppsV1ReplicaSetListForAllNamespacesParams(args map[string]strin
 	}
 	// Decode query: labelSelector.
 	{
-		values, ok := r.URL.Query()["labelSelector"]
+		values, ok := queryArgs["labelSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -53361,7 +54020,7 @@ func decodeWatchAppsV1ReplicaSetListForAllNamespacesParams(args map[string]strin
 	}
 	// Decode query: limit.
 	{
-		values, ok := r.URL.Query()["limit"]
+		values, ok := queryArgs["limit"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -53396,7 +54055,7 @@ func decodeWatchAppsV1ReplicaSetListForAllNamespacesParams(args map[string]strin
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -53431,7 +54090,7 @@ func decodeWatchAppsV1ReplicaSetListForAllNamespacesParams(args map[string]strin
 	}
 	// Decode query: resourceVersion.
 	{
-		values, ok := r.URL.Query()["resourceVersion"]
+		values, ok := queryArgs["resourceVersion"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -53466,7 +54125,7 @@ func decodeWatchAppsV1ReplicaSetListForAllNamespacesParams(args map[string]strin
 	}
 	// Decode query: resourceVersionMatch.
 	{
-		values, ok := r.URL.Query()["resourceVersionMatch"]
+		values, ok := queryArgs["resourceVersionMatch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -53501,7 +54160,7 @@ func decodeWatchAppsV1ReplicaSetListForAllNamespacesParams(args map[string]strin
 	}
 	// Decode query: timeoutSeconds.
 	{
-		values, ok := r.URL.Query()["timeoutSeconds"]
+		values, ok := queryArgs["timeoutSeconds"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -53536,7 +54195,7 @@ func decodeWatchAppsV1ReplicaSetListForAllNamespacesParams(args map[string]strin
 	}
 	// Decode query: watch.
 	{
-		values, ok := r.URL.Query()["watch"]
+		values, ok := queryArgs["watch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -53573,10 +54232,13 @@ func decodeWatchAppsV1ReplicaSetListForAllNamespacesParams(args map[string]strin
 }
 
 func decodeWatchAppsV1StatefulSetListForAllNamespacesParams(args map[string]string, r *http.Request) (WatchAppsV1StatefulSetListForAllNamespacesParams, error) {
-	var params WatchAppsV1StatefulSetListForAllNamespacesParams
+	var (
+		params    WatchAppsV1StatefulSetListForAllNamespacesParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode query: allowWatchBookmarks.
 	{
-		values, ok := r.URL.Query()["allowWatchBookmarks"]
+		values, ok := queryArgs["allowWatchBookmarks"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -53611,7 +54273,7 @@ func decodeWatchAppsV1StatefulSetListForAllNamespacesParams(args map[string]stri
 	}
 	// Decode query: continue.
 	{
-		values, ok := r.URL.Query()["continue"]
+		values, ok := queryArgs["continue"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -53646,7 +54308,7 @@ func decodeWatchAppsV1StatefulSetListForAllNamespacesParams(args map[string]stri
 	}
 	// Decode query: fieldSelector.
 	{
-		values, ok := r.URL.Query()["fieldSelector"]
+		values, ok := queryArgs["fieldSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -53681,7 +54343,7 @@ func decodeWatchAppsV1StatefulSetListForAllNamespacesParams(args map[string]stri
 	}
 	// Decode query: labelSelector.
 	{
-		values, ok := r.URL.Query()["labelSelector"]
+		values, ok := queryArgs["labelSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -53716,7 +54378,7 @@ func decodeWatchAppsV1StatefulSetListForAllNamespacesParams(args map[string]stri
 	}
 	// Decode query: limit.
 	{
-		values, ok := r.URL.Query()["limit"]
+		values, ok := queryArgs["limit"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -53751,7 +54413,7 @@ func decodeWatchAppsV1StatefulSetListForAllNamespacesParams(args map[string]stri
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -53786,7 +54448,7 @@ func decodeWatchAppsV1StatefulSetListForAllNamespacesParams(args map[string]stri
 	}
 	// Decode query: resourceVersion.
 	{
-		values, ok := r.URL.Query()["resourceVersion"]
+		values, ok := queryArgs["resourceVersion"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -53821,7 +54483,7 @@ func decodeWatchAppsV1StatefulSetListForAllNamespacesParams(args map[string]stri
 	}
 	// Decode query: resourceVersionMatch.
 	{
-		values, ok := r.URL.Query()["resourceVersionMatch"]
+		values, ok := queryArgs["resourceVersionMatch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -53856,7 +54518,7 @@ func decodeWatchAppsV1StatefulSetListForAllNamespacesParams(args map[string]stri
 	}
 	// Decode query: timeoutSeconds.
 	{
-		values, ok := r.URL.Query()["timeoutSeconds"]
+		values, ok := queryArgs["timeoutSeconds"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -53891,7 +54553,7 @@ func decodeWatchAppsV1StatefulSetListForAllNamespacesParams(args map[string]stri
 	}
 	// Decode query: watch.
 	{
-		values, ok := r.URL.Query()["watch"]
+		values, ok := queryArgs["watch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -53928,10 +54590,13 @@ func decodeWatchAppsV1StatefulSetListForAllNamespacesParams(args map[string]stri
 }
 
 func decodeWatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespacesParams(args map[string]string, r *http.Request) (WatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespacesParams, error) {
-	var params WatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespacesParams
+	var (
+		params    WatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespacesParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode query: allowWatchBookmarks.
 	{
-		values, ok := r.URL.Query()["allowWatchBookmarks"]
+		values, ok := queryArgs["allowWatchBookmarks"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -53966,7 +54631,7 @@ func decodeWatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespacesParams(a
 	}
 	// Decode query: continue.
 	{
-		values, ok := r.URL.Query()["continue"]
+		values, ok := queryArgs["continue"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -54001,7 +54666,7 @@ func decodeWatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespacesParams(a
 	}
 	// Decode query: fieldSelector.
 	{
-		values, ok := r.URL.Query()["fieldSelector"]
+		values, ok := queryArgs["fieldSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -54036,7 +54701,7 @@ func decodeWatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespacesParams(a
 	}
 	// Decode query: labelSelector.
 	{
-		values, ok := r.URL.Query()["labelSelector"]
+		values, ok := queryArgs["labelSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -54071,7 +54736,7 @@ func decodeWatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespacesParams(a
 	}
 	// Decode query: limit.
 	{
-		values, ok := r.URL.Query()["limit"]
+		values, ok := queryArgs["limit"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -54106,7 +54771,7 @@ func decodeWatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespacesParams(a
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -54141,7 +54806,7 @@ func decodeWatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespacesParams(a
 	}
 	// Decode query: resourceVersion.
 	{
-		values, ok := r.URL.Query()["resourceVersion"]
+		values, ok := queryArgs["resourceVersion"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -54176,7 +54841,7 @@ func decodeWatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespacesParams(a
 	}
 	// Decode query: resourceVersionMatch.
 	{
-		values, ok := r.URL.Query()["resourceVersionMatch"]
+		values, ok := queryArgs["resourceVersionMatch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -54211,7 +54876,7 @@ func decodeWatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespacesParams(a
 	}
 	// Decode query: timeoutSeconds.
 	{
-		values, ok := r.URL.Query()["timeoutSeconds"]
+		values, ok := queryArgs["timeoutSeconds"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -54246,7 +54911,7 @@ func decodeWatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespacesParams(a
 	}
 	// Decode query: watch.
 	{
-		values, ok := r.URL.Query()["watch"]
+		values, ok := queryArgs["watch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -54283,10 +54948,13 @@ func decodeWatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespacesParams(a
 }
 
 func decodeWatchAutoscalingV1NamespacedHorizontalPodAutoscalerParams(args map[string]string, r *http.Request) (WatchAutoscalingV1NamespacedHorizontalPodAutoscalerParams, error) {
-	var params WatchAutoscalingV1NamespacedHorizontalPodAutoscalerParams
+	var (
+		params    WatchAutoscalingV1NamespacedHorizontalPodAutoscalerParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode query: allowWatchBookmarks.
 	{
-		values, ok := r.URL.Query()["allowWatchBookmarks"]
+		values, ok := queryArgs["allowWatchBookmarks"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -54321,7 +54989,7 @@ func decodeWatchAutoscalingV1NamespacedHorizontalPodAutoscalerParams(args map[st
 	}
 	// Decode query: continue.
 	{
-		values, ok := r.URL.Query()["continue"]
+		values, ok := queryArgs["continue"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -54356,7 +55024,7 @@ func decodeWatchAutoscalingV1NamespacedHorizontalPodAutoscalerParams(args map[st
 	}
 	// Decode query: fieldSelector.
 	{
-		values, ok := r.URL.Query()["fieldSelector"]
+		values, ok := queryArgs["fieldSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -54391,7 +55059,7 @@ func decodeWatchAutoscalingV1NamespacedHorizontalPodAutoscalerParams(args map[st
 	}
 	// Decode query: labelSelector.
 	{
-		values, ok := r.URL.Query()["labelSelector"]
+		values, ok := queryArgs["labelSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -54426,7 +55094,7 @@ func decodeWatchAutoscalingV1NamespacedHorizontalPodAutoscalerParams(args map[st
 	}
 	// Decode query: limit.
 	{
-		values, ok := r.URL.Query()["limit"]
+		values, ok := queryArgs["limit"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -54523,7 +55191,7 @@ func decodeWatchAutoscalingV1NamespacedHorizontalPodAutoscalerParams(args map[st
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -54558,7 +55226,7 @@ func decodeWatchAutoscalingV1NamespacedHorizontalPodAutoscalerParams(args map[st
 	}
 	// Decode query: resourceVersion.
 	{
-		values, ok := r.URL.Query()["resourceVersion"]
+		values, ok := queryArgs["resourceVersion"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -54593,7 +55261,7 @@ func decodeWatchAutoscalingV1NamespacedHorizontalPodAutoscalerParams(args map[st
 	}
 	// Decode query: resourceVersionMatch.
 	{
-		values, ok := r.URL.Query()["resourceVersionMatch"]
+		values, ok := queryArgs["resourceVersionMatch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -54628,7 +55296,7 @@ func decodeWatchAutoscalingV1NamespacedHorizontalPodAutoscalerParams(args map[st
 	}
 	// Decode query: timeoutSeconds.
 	{
-		values, ok := r.URL.Query()["timeoutSeconds"]
+		values, ok := queryArgs["timeoutSeconds"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -54663,7 +55331,7 @@ func decodeWatchAutoscalingV1NamespacedHorizontalPodAutoscalerParams(args map[st
 	}
 	// Decode query: watch.
 	{
-		values, ok := r.URL.Query()["watch"]
+		values, ok := queryArgs["watch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -54700,10 +55368,13 @@ func decodeWatchAutoscalingV1NamespacedHorizontalPodAutoscalerParams(args map[st
 }
 
 func decodeWatchAutoscalingV1NamespacedHorizontalPodAutoscalerListParams(args map[string]string, r *http.Request) (WatchAutoscalingV1NamespacedHorizontalPodAutoscalerListParams, error) {
-	var params WatchAutoscalingV1NamespacedHorizontalPodAutoscalerListParams
+	var (
+		params    WatchAutoscalingV1NamespacedHorizontalPodAutoscalerListParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode query: allowWatchBookmarks.
 	{
-		values, ok := r.URL.Query()["allowWatchBookmarks"]
+		values, ok := queryArgs["allowWatchBookmarks"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -54738,7 +55409,7 @@ func decodeWatchAutoscalingV1NamespacedHorizontalPodAutoscalerListParams(args ma
 	}
 	// Decode query: continue.
 	{
-		values, ok := r.URL.Query()["continue"]
+		values, ok := queryArgs["continue"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -54773,7 +55444,7 @@ func decodeWatchAutoscalingV1NamespacedHorizontalPodAutoscalerListParams(args ma
 	}
 	// Decode query: fieldSelector.
 	{
-		values, ok := r.URL.Query()["fieldSelector"]
+		values, ok := queryArgs["fieldSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -54808,7 +55479,7 @@ func decodeWatchAutoscalingV1NamespacedHorizontalPodAutoscalerListParams(args ma
 	}
 	// Decode query: labelSelector.
 	{
-		values, ok := r.URL.Query()["labelSelector"]
+		values, ok := queryArgs["labelSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -54843,7 +55514,7 @@ func decodeWatchAutoscalingV1NamespacedHorizontalPodAutoscalerListParams(args ma
 	}
 	// Decode query: limit.
 	{
-		values, ok := r.URL.Query()["limit"]
+		values, ok := queryArgs["limit"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -54909,7 +55580,7 @@ func decodeWatchAutoscalingV1NamespacedHorizontalPodAutoscalerListParams(args ma
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -54944,7 +55615,7 @@ func decodeWatchAutoscalingV1NamespacedHorizontalPodAutoscalerListParams(args ma
 	}
 	// Decode query: resourceVersion.
 	{
-		values, ok := r.URL.Query()["resourceVersion"]
+		values, ok := queryArgs["resourceVersion"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -54979,7 +55650,7 @@ func decodeWatchAutoscalingV1NamespacedHorizontalPodAutoscalerListParams(args ma
 	}
 	// Decode query: resourceVersionMatch.
 	{
-		values, ok := r.URL.Query()["resourceVersionMatch"]
+		values, ok := queryArgs["resourceVersionMatch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -55014,7 +55685,7 @@ func decodeWatchAutoscalingV1NamespacedHorizontalPodAutoscalerListParams(args ma
 	}
 	// Decode query: timeoutSeconds.
 	{
-		values, ok := r.URL.Query()["timeoutSeconds"]
+		values, ok := queryArgs["timeoutSeconds"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -55049,7 +55720,7 @@ func decodeWatchAutoscalingV1NamespacedHorizontalPodAutoscalerListParams(args ma
 	}
 	// Decode query: watch.
 	{
-		values, ok := r.URL.Query()["watch"]
+		values, ok := queryArgs["watch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -55086,10 +55757,13 @@ func decodeWatchAutoscalingV1NamespacedHorizontalPodAutoscalerListParams(args ma
 }
 
 func decodeWatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespacesParams(args map[string]string, r *http.Request) (WatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespacesParams, error) {
-	var params WatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespacesParams
+	var (
+		params    WatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespacesParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode query: allowWatchBookmarks.
 	{
-		values, ok := r.URL.Query()["allowWatchBookmarks"]
+		values, ok := queryArgs["allowWatchBookmarks"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -55124,7 +55798,7 @@ func decodeWatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespacesPar
 	}
 	// Decode query: continue.
 	{
-		values, ok := r.URL.Query()["continue"]
+		values, ok := queryArgs["continue"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -55159,7 +55833,7 @@ func decodeWatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespacesPar
 	}
 	// Decode query: fieldSelector.
 	{
-		values, ok := r.URL.Query()["fieldSelector"]
+		values, ok := queryArgs["fieldSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -55194,7 +55868,7 @@ func decodeWatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespacesPar
 	}
 	// Decode query: labelSelector.
 	{
-		values, ok := r.URL.Query()["labelSelector"]
+		values, ok := queryArgs["labelSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -55229,7 +55903,7 @@ func decodeWatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespacesPar
 	}
 	// Decode query: limit.
 	{
-		values, ok := r.URL.Query()["limit"]
+		values, ok := queryArgs["limit"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -55264,7 +55938,7 @@ func decodeWatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespacesPar
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -55299,7 +55973,7 @@ func decodeWatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespacesPar
 	}
 	// Decode query: resourceVersion.
 	{
-		values, ok := r.URL.Query()["resourceVersion"]
+		values, ok := queryArgs["resourceVersion"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -55334,7 +56008,7 @@ func decodeWatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespacesPar
 	}
 	// Decode query: resourceVersionMatch.
 	{
-		values, ok := r.URL.Query()["resourceVersionMatch"]
+		values, ok := queryArgs["resourceVersionMatch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -55369,7 +56043,7 @@ func decodeWatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespacesPar
 	}
 	// Decode query: timeoutSeconds.
 	{
-		values, ok := r.URL.Query()["timeoutSeconds"]
+		values, ok := queryArgs["timeoutSeconds"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -55404,7 +56078,7 @@ func decodeWatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespacesPar
 	}
 	// Decode query: watch.
 	{
-		values, ok := r.URL.Query()["watch"]
+		values, ok := queryArgs["watch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -55441,10 +56115,13 @@ func decodeWatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespacesPar
 }
 
 func decodeWatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerParams(args map[string]string, r *http.Request) (WatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerParams, error) {
-	var params WatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerParams
+	var (
+		params    WatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode query: allowWatchBookmarks.
 	{
-		values, ok := r.URL.Query()["allowWatchBookmarks"]
+		values, ok := queryArgs["allowWatchBookmarks"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -55479,7 +56156,7 @@ func decodeWatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerParams(args m
 	}
 	// Decode query: continue.
 	{
-		values, ok := r.URL.Query()["continue"]
+		values, ok := queryArgs["continue"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -55514,7 +56191,7 @@ func decodeWatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerParams(args m
 	}
 	// Decode query: fieldSelector.
 	{
-		values, ok := r.URL.Query()["fieldSelector"]
+		values, ok := queryArgs["fieldSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -55549,7 +56226,7 @@ func decodeWatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerParams(args m
 	}
 	// Decode query: labelSelector.
 	{
-		values, ok := r.URL.Query()["labelSelector"]
+		values, ok := queryArgs["labelSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -55584,7 +56261,7 @@ func decodeWatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerParams(args m
 	}
 	// Decode query: limit.
 	{
-		values, ok := r.URL.Query()["limit"]
+		values, ok := queryArgs["limit"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -55681,7 +56358,7 @@ func decodeWatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerParams(args m
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -55716,7 +56393,7 @@ func decodeWatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerParams(args m
 	}
 	// Decode query: resourceVersion.
 	{
-		values, ok := r.URL.Query()["resourceVersion"]
+		values, ok := queryArgs["resourceVersion"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -55751,7 +56428,7 @@ func decodeWatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerParams(args m
 	}
 	// Decode query: resourceVersionMatch.
 	{
-		values, ok := r.URL.Query()["resourceVersionMatch"]
+		values, ok := queryArgs["resourceVersionMatch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -55786,7 +56463,7 @@ func decodeWatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerParams(args m
 	}
 	// Decode query: timeoutSeconds.
 	{
-		values, ok := r.URL.Query()["timeoutSeconds"]
+		values, ok := queryArgs["timeoutSeconds"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -55821,7 +56498,7 @@ func decodeWatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerParams(args m
 	}
 	// Decode query: watch.
 	{
-		values, ok := r.URL.Query()["watch"]
+		values, ok := queryArgs["watch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -55858,10 +56535,13 @@ func decodeWatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerParams(args m
 }
 
 func decodeWatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerListParams(args map[string]string, r *http.Request) (WatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerListParams, error) {
-	var params WatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerListParams
+	var (
+		params    WatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerListParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode query: allowWatchBookmarks.
 	{
-		values, ok := r.URL.Query()["allowWatchBookmarks"]
+		values, ok := queryArgs["allowWatchBookmarks"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -55896,7 +56576,7 @@ func decodeWatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerListParams(ar
 	}
 	// Decode query: continue.
 	{
-		values, ok := r.URL.Query()["continue"]
+		values, ok := queryArgs["continue"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -55931,7 +56611,7 @@ func decodeWatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerListParams(ar
 	}
 	// Decode query: fieldSelector.
 	{
-		values, ok := r.URL.Query()["fieldSelector"]
+		values, ok := queryArgs["fieldSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -55966,7 +56646,7 @@ func decodeWatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerListParams(ar
 	}
 	// Decode query: labelSelector.
 	{
-		values, ok := r.URL.Query()["labelSelector"]
+		values, ok := queryArgs["labelSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -56001,7 +56681,7 @@ func decodeWatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerListParams(ar
 	}
 	// Decode query: limit.
 	{
-		values, ok := r.URL.Query()["limit"]
+		values, ok := queryArgs["limit"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -56067,7 +56747,7 @@ func decodeWatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerListParams(ar
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -56102,7 +56782,7 @@ func decodeWatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerListParams(ar
 	}
 	// Decode query: resourceVersion.
 	{
-		values, ok := r.URL.Query()["resourceVersion"]
+		values, ok := queryArgs["resourceVersion"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -56137,7 +56817,7 @@ func decodeWatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerListParams(ar
 	}
 	// Decode query: resourceVersionMatch.
 	{
-		values, ok := r.URL.Query()["resourceVersionMatch"]
+		values, ok := queryArgs["resourceVersionMatch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -56172,7 +56852,7 @@ func decodeWatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerListParams(ar
 	}
 	// Decode query: timeoutSeconds.
 	{
-		values, ok := r.URL.Query()["timeoutSeconds"]
+		values, ok := queryArgs["timeoutSeconds"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -56207,7 +56887,7 @@ func decodeWatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerListParams(ar
 	}
 	// Decode query: watch.
 	{
-		values, ok := r.URL.Query()["watch"]
+		values, ok := queryArgs["watch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -56244,10 +56924,13 @@ func decodeWatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerListParams(ar
 }
 
 func decodeWatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespacesParams(args map[string]string, r *http.Request) (WatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespacesParams, error) {
-	var params WatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespacesParams
+	var (
+		params    WatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespacesParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode query: allowWatchBookmarks.
 	{
-		values, ok := r.URL.Query()["allowWatchBookmarks"]
+		values, ok := queryArgs["allowWatchBookmarks"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -56282,7 +56965,7 @@ func decodeWatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespacesPar
 	}
 	// Decode query: continue.
 	{
-		values, ok := r.URL.Query()["continue"]
+		values, ok := queryArgs["continue"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -56317,7 +57000,7 @@ func decodeWatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespacesPar
 	}
 	// Decode query: fieldSelector.
 	{
-		values, ok := r.URL.Query()["fieldSelector"]
+		values, ok := queryArgs["fieldSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -56352,7 +57035,7 @@ func decodeWatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespacesPar
 	}
 	// Decode query: labelSelector.
 	{
-		values, ok := r.URL.Query()["labelSelector"]
+		values, ok := queryArgs["labelSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -56387,7 +57070,7 @@ func decodeWatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespacesPar
 	}
 	// Decode query: limit.
 	{
-		values, ok := r.URL.Query()["limit"]
+		values, ok := queryArgs["limit"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -56422,7 +57105,7 @@ func decodeWatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespacesPar
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -56457,7 +57140,7 @@ func decodeWatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespacesPar
 	}
 	// Decode query: resourceVersion.
 	{
-		values, ok := r.URL.Query()["resourceVersion"]
+		values, ok := queryArgs["resourceVersion"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -56492,7 +57175,7 @@ func decodeWatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespacesPar
 	}
 	// Decode query: resourceVersionMatch.
 	{
-		values, ok := r.URL.Query()["resourceVersionMatch"]
+		values, ok := queryArgs["resourceVersionMatch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -56527,7 +57210,7 @@ func decodeWatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespacesPar
 	}
 	// Decode query: timeoutSeconds.
 	{
-		values, ok := r.URL.Query()["timeoutSeconds"]
+		values, ok := queryArgs["timeoutSeconds"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -56562,7 +57245,7 @@ func decodeWatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespacesPar
 	}
 	// Decode query: watch.
 	{
-		values, ok := r.URL.Query()["watch"]
+		values, ok := queryArgs["watch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -56599,10 +57282,13 @@ func decodeWatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespacesPar
 }
 
 func decodeWatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerParams(args map[string]string, r *http.Request) (WatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerParams, error) {
-	var params WatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerParams
+	var (
+		params    WatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode query: allowWatchBookmarks.
 	{
-		values, ok := r.URL.Query()["allowWatchBookmarks"]
+		values, ok := queryArgs["allowWatchBookmarks"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -56637,7 +57323,7 @@ func decodeWatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerParams(args m
 	}
 	// Decode query: continue.
 	{
-		values, ok := r.URL.Query()["continue"]
+		values, ok := queryArgs["continue"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -56672,7 +57358,7 @@ func decodeWatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerParams(args m
 	}
 	// Decode query: fieldSelector.
 	{
-		values, ok := r.URL.Query()["fieldSelector"]
+		values, ok := queryArgs["fieldSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -56707,7 +57393,7 @@ func decodeWatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerParams(args m
 	}
 	// Decode query: labelSelector.
 	{
-		values, ok := r.URL.Query()["labelSelector"]
+		values, ok := queryArgs["labelSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -56742,7 +57428,7 @@ func decodeWatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerParams(args m
 	}
 	// Decode query: limit.
 	{
-		values, ok := r.URL.Query()["limit"]
+		values, ok := queryArgs["limit"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -56839,7 +57525,7 @@ func decodeWatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerParams(args m
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -56874,7 +57560,7 @@ func decodeWatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerParams(args m
 	}
 	// Decode query: resourceVersion.
 	{
-		values, ok := r.URL.Query()["resourceVersion"]
+		values, ok := queryArgs["resourceVersion"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -56909,7 +57595,7 @@ func decodeWatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerParams(args m
 	}
 	// Decode query: resourceVersionMatch.
 	{
-		values, ok := r.URL.Query()["resourceVersionMatch"]
+		values, ok := queryArgs["resourceVersionMatch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -56944,7 +57630,7 @@ func decodeWatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerParams(args m
 	}
 	// Decode query: timeoutSeconds.
 	{
-		values, ok := r.URL.Query()["timeoutSeconds"]
+		values, ok := queryArgs["timeoutSeconds"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -56979,7 +57665,7 @@ func decodeWatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerParams(args m
 	}
 	// Decode query: watch.
 	{
-		values, ok := r.URL.Query()["watch"]
+		values, ok := queryArgs["watch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -57016,10 +57702,13 @@ func decodeWatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerParams(args m
 }
 
 func decodeWatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerListParams(args map[string]string, r *http.Request) (WatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerListParams, error) {
-	var params WatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerListParams
+	var (
+		params    WatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerListParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode query: allowWatchBookmarks.
 	{
-		values, ok := r.URL.Query()["allowWatchBookmarks"]
+		values, ok := queryArgs["allowWatchBookmarks"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -57054,7 +57743,7 @@ func decodeWatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerListParams(ar
 	}
 	// Decode query: continue.
 	{
-		values, ok := r.URL.Query()["continue"]
+		values, ok := queryArgs["continue"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -57089,7 +57778,7 @@ func decodeWatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerListParams(ar
 	}
 	// Decode query: fieldSelector.
 	{
-		values, ok := r.URL.Query()["fieldSelector"]
+		values, ok := queryArgs["fieldSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -57124,7 +57813,7 @@ func decodeWatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerListParams(ar
 	}
 	// Decode query: labelSelector.
 	{
-		values, ok := r.URL.Query()["labelSelector"]
+		values, ok := queryArgs["labelSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -57159,7 +57848,7 @@ func decodeWatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerListParams(ar
 	}
 	// Decode query: limit.
 	{
-		values, ok := r.URL.Query()["limit"]
+		values, ok := queryArgs["limit"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -57225,7 +57914,7 @@ func decodeWatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerListParams(ar
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -57260,7 +57949,7 @@ func decodeWatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerListParams(ar
 	}
 	// Decode query: resourceVersion.
 	{
-		values, ok := r.URL.Query()["resourceVersion"]
+		values, ok := queryArgs["resourceVersion"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -57295,7 +57984,7 @@ func decodeWatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerListParams(ar
 	}
 	// Decode query: resourceVersionMatch.
 	{
-		values, ok := r.URL.Query()["resourceVersionMatch"]
+		values, ok := queryArgs["resourceVersionMatch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -57330,7 +58019,7 @@ func decodeWatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerListParams(ar
 	}
 	// Decode query: timeoutSeconds.
 	{
-		values, ok := r.URL.Query()["timeoutSeconds"]
+		values, ok := queryArgs["timeoutSeconds"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -57365,7 +58054,7 @@ func decodeWatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerListParams(ar
 	}
 	// Decode query: watch.
 	{
-		values, ok := r.URL.Query()["watch"]
+		values, ok := queryArgs["watch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -57402,10 +58091,13 @@ func decodeWatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerListParams(ar
 }
 
 func decodeWatchBatchV1CronJobListForAllNamespacesParams(args map[string]string, r *http.Request) (WatchBatchV1CronJobListForAllNamespacesParams, error) {
-	var params WatchBatchV1CronJobListForAllNamespacesParams
+	var (
+		params    WatchBatchV1CronJobListForAllNamespacesParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode query: allowWatchBookmarks.
 	{
-		values, ok := r.URL.Query()["allowWatchBookmarks"]
+		values, ok := queryArgs["allowWatchBookmarks"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -57440,7 +58132,7 @@ func decodeWatchBatchV1CronJobListForAllNamespacesParams(args map[string]string,
 	}
 	// Decode query: continue.
 	{
-		values, ok := r.URL.Query()["continue"]
+		values, ok := queryArgs["continue"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -57475,7 +58167,7 @@ func decodeWatchBatchV1CronJobListForAllNamespacesParams(args map[string]string,
 	}
 	// Decode query: fieldSelector.
 	{
-		values, ok := r.URL.Query()["fieldSelector"]
+		values, ok := queryArgs["fieldSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -57510,7 +58202,7 @@ func decodeWatchBatchV1CronJobListForAllNamespacesParams(args map[string]string,
 	}
 	// Decode query: labelSelector.
 	{
-		values, ok := r.URL.Query()["labelSelector"]
+		values, ok := queryArgs["labelSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -57545,7 +58237,7 @@ func decodeWatchBatchV1CronJobListForAllNamespacesParams(args map[string]string,
 	}
 	// Decode query: limit.
 	{
-		values, ok := r.URL.Query()["limit"]
+		values, ok := queryArgs["limit"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -57580,7 +58272,7 @@ func decodeWatchBatchV1CronJobListForAllNamespacesParams(args map[string]string,
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -57615,7 +58307,7 @@ func decodeWatchBatchV1CronJobListForAllNamespacesParams(args map[string]string,
 	}
 	// Decode query: resourceVersion.
 	{
-		values, ok := r.URL.Query()["resourceVersion"]
+		values, ok := queryArgs["resourceVersion"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -57650,7 +58342,7 @@ func decodeWatchBatchV1CronJobListForAllNamespacesParams(args map[string]string,
 	}
 	// Decode query: resourceVersionMatch.
 	{
-		values, ok := r.URL.Query()["resourceVersionMatch"]
+		values, ok := queryArgs["resourceVersionMatch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -57685,7 +58377,7 @@ func decodeWatchBatchV1CronJobListForAllNamespacesParams(args map[string]string,
 	}
 	// Decode query: timeoutSeconds.
 	{
-		values, ok := r.URL.Query()["timeoutSeconds"]
+		values, ok := queryArgs["timeoutSeconds"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -57720,7 +58412,7 @@ func decodeWatchBatchV1CronJobListForAllNamespacesParams(args map[string]string,
 	}
 	// Decode query: watch.
 	{
-		values, ok := r.URL.Query()["watch"]
+		values, ok := queryArgs["watch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -57757,10 +58449,13 @@ func decodeWatchBatchV1CronJobListForAllNamespacesParams(args map[string]string,
 }
 
 func decodeWatchBatchV1JobListForAllNamespacesParams(args map[string]string, r *http.Request) (WatchBatchV1JobListForAllNamespacesParams, error) {
-	var params WatchBatchV1JobListForAllNamespacesParams
+	var (
+		params    WatchBatchV1JobListForAllNamespacesParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode query: allowWatchBookmarks.
 	{
-		values, ok := r.URL.Query()["allowWatchBookmarks"]
+		values, ok := queryArgs["allowWatchBookmarks"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -57795,7 +58490,7 @@ func decodeWatchBatchV1JobListForAllNamespacesParams(args map[string]string, r *
 	}
 	// Decode query: continue.
 	{
-		values, ok := r.URL.Query()["continue"]
+		values, ok := queryArgs["continue"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -57830,7 +58525,7 @@ func decodeWatchBatchV1JobListForAllNamespacesParams(args map[string]string, r *
 	}
 	// Decode query: fieldSelector.
 	{
-		values, ok := r.URL.Query()["fieldSelector"]
+		values, ok := queryArgs["fieldSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -57865,7 +58560,7 @@ func decodeWatchBatchV1JobListForAllNamespacesParams(args map[string]string, r *
 	}
 	// Decode query: labelSelector.
 	{
-		values, ok := r.URL.Query()["labelSelector"]
+		values, ok := queryArgs["labelSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -57900,7 +58595,7 @@ func decodeWatchBatchV1JobListForAllNamespacesParams(args map[string]string, r *
 	}
 	// Decode query: limit.
 	{
-		values, ok := r.URL.Query()["limit"]
+		values, ok := queryArgs["limit"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -57935,7 +58630,7 @@ func decodeWatchBatchV1JobListForAllNamespacesParams(args map[string]string, r *
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -57970,7 +58665,7 @@ func decodeWatchBatchV1JobListForAllNamespacesParams(args map[string]string, r *
 	}
 	// Decode query: resourceVersion.
 	{
-		values, ok := r.URL.Query()["resourceVersion"]
+		values, ok := queryArgs["resourceVersion"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -58005,7 +58700,7 @@ func decodeWatchBatchV1JobListForAllNamespacesParams(args map[string]string, r *
 	}
 	// Decode query: resourceVersionMatch.
 	{
-		values, ok := r.URL.Query()["resourceVersionMatch"]
+		values, ok := queryArgs["resourceVersionMatch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -58040,7 +58735,7 @@ func decodeWatchBatchV1JobListForAllNamespacesParams(args map[string]string, r *
 	}
 	// Decode query: timeoutSeconds.
 	{
-		values, ok := r.URL.Query()["timeoutSeconds"]
+		values, ok := queryArgs["timeoutSeconds"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -58075,7 +58770,7 @@ func decodeWatchBatchV1JobListForAllNamespacesParams(args map[string]string, r *
 	}
 	// Decode query: watch.
 	{
-		values, ok := r.URL.Query()["watch"]
+		values, ok := queryArgs["watch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -58112,10 +58807,13 @@ func decodeWatchBatchV1JobListForAllNamespacesParams(args map[string]string, r *
 }
 
 func decodeWatchBatchV1NamespacedCronJobParams(args map[string]string, r *http.Request) (WatchBatchV1NamespacedCronJobParams, error) {
-	var params WatchBatchV1NamespacedCronJobParams
+	var (
+		params    WatchBatchV1NamespacedCronJobParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode query: allowWatchBookmarks.
 	{
-		values, ok := r.URL.Query()["allowWatchBookmarks"]
+		values, ok := queryArgs["allowWatchBookmarks"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -58150,7 +58848,7 @@ func decodeWatchBatchV1NamespacedCronJobParams(args map[string]string, r *http.R
 	}
 	// Decode query: continue.
 	{
-		values, ok := r.URL.Query()["continue"]
+		values, ok := queryArgs["continue"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -58185,7 +58883,7 @@ func decodeWatchBatchV1NamespacedCronJobParams(args map[string]string, r *http.R
 	}
 	// Decode query: fieldSelector.
 	{
-		values, ok := r.URL.Query()["fieldSelector"]
+		values, ok := queryArgs["fieldSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -58220,7 +58918,7 @@ func decodeWatchBatchV1NamespacedCronJobParams(args map[string]string, r *http.R
 	}
 	// Decode query: labelSelector.
 	{
-		values, ok := r.URL.Query()["labelSelector"]
+		values, ok := queryArgs["labelSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -58255,7 +58953,7 @@ func decodeWatchBatchV1NamespacedCronJobParams(args map[string]string, r *http.R
 	}
 	// Decode query: limit.
 	{
-		values, ok := r.URL.Query()["limit"]
+		values, ok := queryArgs["limit"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -58352,7 +59050,7 @@ func decodeWatchBatchV1NamespacedCronJobParams(args map[string]string, r *http.R
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -58387,7 +59085,7 @@ func decodeWatchBatchV1NamespacedCronJobParams(args map[string]string, r *http.R
 	}
 	// Decode query: resourceVersion.
 	{
-		values, ok := r.URL.Query()["resourceVersion"]
+		values, ok := queryArgs["resourceVersion"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -58422,7 +59120,7 @@ func decodeWatchBatchV1NamespacedCronJobParams(args map[string]string, r *http.R
 	}
 	// Decode query: resourceVersionMatch.
 	{
-		values, ok := r.URL.Query()["resourceVersionMatch"]
+		values, ok := queryArgs["resourceVersionMatch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -58457,7 +59155,7 @@ func decodeWatchBatchV1NamespacedCronJobParams(args map[string]string, r *http.R
 	}
 	// Decode query: timeoutSeconds.
 	{
-		values, ok := r.URL.Query()["timeoutSeconds"]
+		values, ok := queryArgs["timeoutSeconds"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -58492,7 +59190,7 @@ func decodeWatchBatchV1NamespacedCronJobParams(args map[string]string, r *http.R
 	}
 	// Decode query: watch.
 	{
-		values, ok := r.URL.Query()["watch"]
+		values, ok := queryArgs["watch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -58529,10 +59227,13 @@ func decodeWatchBatchV1NamespacedCronJobParams(args map[string]string, r *http.R
 }
 
 func decodeWatchBatchV1NamespacedCronJobListParams(args map[string]string, r *http.Request) (WatchBatchV1NamespacedCronJobListParams, error) {
-	var params WatchBatchV1NamespacedCronJobListParams
+	var (
+		params    WatchBatchV1NamespacedCronJobListParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode query: allowWatchBookmarks.
 	{
-		values, ok := r.URL.Query()["allowWatchBookmarks"]
+		values, ok := queryArgs["allowWatchBookmarks"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -58567,7 +59268,7 @@ func decodeWatchBatchV1NamespacedCronJobListParams(args map[string]string, r *ht
 	}
 	// Decode query: continue.
 	{
-		values, ok := r.URL.Query()["continue"]
+		values, ok := queryArgs["continue"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -58602,7 +59303,7 @@ func decodeWatchBatchV1NamespacedCronJobListParams(args map[string]string, r *ht
 	}
 	// Decode query: fieldSelector.
 	{
-		values, ok := r.URL.Query()["fieldSelector"]
+		values, ok := queryArgs["fieldSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -58637,7 +59338,7 @@ func decodeWatchBatchV1NamespacedCronJobListParams(args map[string]string, r *ht
 	}
 	// Decode query: labelSelector.
 	{
-		values, ok := r.URL.Query()["labelSelector"]
+		values, ok := queryArgs["labelSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -58672,7 +59373,7 @@ func decodeWatchBatchV1NamespacedCronJobListParams(args map[string]string, r *ht
 	}
 	// Decode query: limit.
 	{
-		values, ok := r.URL.Query()["limit"]
+		values, ok := queryArgs["limit"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -58738,7 +59439,7 @@ func decodeWatchBatchV1NamespacedCronJobListParams(args map[string]string, r *ht
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -58773,7 +59474,7 @@ func decodeWatchBatchV1NamespacedCronJobListParams(args map[string]string, r *ht
 	}
 	// Decode query: resourceVersion.
 	{
-		values, ok := r.URL.Query()["resourceVersion"]
+		values, ok := queryArgs["resourceVersion"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -58808,7 +59509,7 @@ func decodeWatchBatchV1NamespacedCronJobListParams(args map[string]string, r *ht
 	}
 	// Decode query: resourceVersionMatch.
 	{
-		values, ok := r.URL.Query()["resourceVersionMatch"]
+		values, ok := queryArgs["resourceVersionMatch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -58843,7 +59544,7 @@ func decodeWatchBatchV1NamespacedCronJobListParams(args map[string]string, r *ht
 	}
 	// Decode query: timeoutSeconds.
 	{
-		values, ok := r.URL.Query()["timeoutSeconds"]
+		values, ok := queryArgs["timeoutSeconds"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -58878,7 +59579,7 @@ func decodeWatchBatchV1NamespacedCronJobListParams(args map[string]string, r *ht
 	}
 	// Decode query: watch.
 	{
-		values, ok := r.URL.Query()["watch"]
+		values, ok := queryArgs["watch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -58915,10 +59616,13 @@ func decodeWatchBatchV1NamespacedCronJobListParams(args map[string]string, r *ht
 }
 
 func decodeWatchBatchV1NamespacedJobParams(args map[string]string, r *http.Request) (WatchBatchV1NamespacedJobParams, error) {
-	var params WatchBatchV1NamespacedJobParams
+	var (
+		params    WatchBatchV1NamespacedJobParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode query: allowWatchBookmarks.
 	{
-		values, ok := r.URL.Query()["allowWatchBookmarks"]
+		values, ok := queryArgs["allowWatchBookmarks"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -58953,7 +59657,7 @@ func decodeWatchBatchV1NamespacedJobParams(args map[string]string, r *http.Reque
 	}
 	// Decode query: continue.
 	{
-		values, ok := r.URL.Query()["continue"]
+		values, ok := queryArgs["continue"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -58988,7 +59692,7 @@ func decodeWatchBatchV1NamespacedJobParams(args map[string]string, r *http.Reque
 	}
 	// Decode query: fieldSelector.
 	{
-		values, ok := r.URL.Query()["fieldSelector"]
+		values, ok := queryArgs["fieldSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -59023,7 +59727,7 @@ func decodeWatchBatchV1NamespacedJobParams(args map[string]string, r *http.Reque
 	}
 	// Decode query: labelSelector.
 	{
-		values, ok := r.URL.Query()["labelSelector"]
+		values, ok := queryArgs["labelSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -59058,7 +59762,7 @@ func decodeWatchBatchV1NamespacedJobParams(args map[string]string, r *http.Reque
 	}
 	// Decode query: limit.
 	{
-		values, ok := r.URL.Query()["limit"]
+		values, ok := queryArgs["limit"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -59155,7 +59859,7 @@ func decodeWatchBatchV1NamespacedJobParams(args map[string]string, r *http.Reque
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -59190,7 +59894,7 @@ func decodeWatchBatchV1NamespacedJobParams(args map[string]string, r *http.Reque
 	}
 	// Decode query: resourceVersion.
 	{
-		values, ok := r.URL.Query()["resourceVersion"]
+		values, ok := queryArgs["resourceVersion"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -59225,7 +59929,7 @@ func decodeWatchBatchV1NamespacedJobParams(args map[string]string, r *http.Reque
 	}
 	// Decode query: resourceVersionMatch.
 	{
-		values, ok := r.URL.Query()["resourceVersionMatch"]
+		values, ok := queryArgs["resourceVersionMatch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -59260,7 +59964,7 @@ func decodeWatchBatchV1NamespacedJobParams(args map[string]string, r *http.Reque
 	}
 	// Decode query: timeoutSeconds.
 	{
-		values, ok := r.URL.Query()["timeoutSeconds"]
+		values, ok := queryArgs["timeoutSeconds"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -59295,7 +59999,7 @@ func decodeWatchBatchV1NamespacedJobParams(args map[string]string, r *http.Reque
 	}
 	// Decode query: watch.
 	{
-		values, ok := r.URL.Query()["watch"]
+		values, ok := queryArgs["watch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -59332,10 +60036,13 @@ func decodeWatchBatchV1NamespacedJobParams(args map[string]string, r *http.Reque
 }
 
 func decodeWatchBatchV1NamespacedJobListParams(args map[string]string, r *http.Request) (WatchBatchV1NamespacedJobListParams, error) {
-	var params WatchBatchV1NamespacedJobListParams
+	var (
+		params    WatchBatchV1NamespacedJobListParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode query: allowWatchBookmarks.
 	{
-		values, ok := r.URL.Query()["allowWatchBookmarks"]
+		values, ok := queryArgs["allowWatchBookmarks"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -59370,7 +60077,7 @@ func decodeWatchBatchV1NamespacedJobListParams(args map[string]string, r *http.R
 	}
 	// Decode query: continue.
 	{
-		values, ok := r.URL.Query()["continue"]
+		values, ok := queryArgs["continue"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -59405,7 +60112,7 @@ func decodeWatchBatchV1NamespacedJobListParams(args map[string]string, r *http.R
 	}
 	// Decode query: fieldSelector.
 	{
-		values, ok := r.URL.Query()["fieldSelector"]
+		values, ok := queryArgs["fieldSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -59440,7 +60147,7 @@ func decodeWatchBatchV1NamespacedJobListParams(args map[string]string, r *http.R
 	}
 	// Decode query: labelSelector.
 	{
-		values, ok := r.URL.Query()["labelSelector"]
+		values, ok := queryArgs["labelSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -59475,7 +60182,7 @@ func decodeWatchBatchV1NamespacedJobListParams(args map[string]string, r *http.R
 	}
 	// Decode query: limit.
 	{
-		values, ok := r.URL.Query()["limit"]
+		values, ok := queryArgs["limit"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -59541,7 +60248,7 @@ func decodeWatchBatchV1NamespacedJobListParams(args map[string]string, r *http.R
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -59576,7 +60283,7 @@ func decodeWatchBatchV1NamespacedJobListParams(args map[string]string, r *http.R
 	}
 	// Decode query: resourceVersion.
 	{
-		values, ok := r.URL.Query()["resourceVersion"]
+		values, ok := queryArgs["resourceVersion"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -59611,7 +60318,7 @@ func decodeWatchBatchV1NamespacedJobListParams(args map[string]string, r *http.R
 	}
 	// Decode query: resourceVersionMatch.
 	{
-		values, ok := r.URL.Query()["resourceVersionMatch"]
+		values, ok := queryArgs["resourceVersionMatch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -59646,7 +60353,7 @@ func decodeWatchBatchV1NamespacedJobListParams(args map[string]string, r *http.R
 	}
 	// Decode query: timeoutSeconds.
 	{
-		values, ok := r.URL.Query()["timeoutSeconds"]
+		values, ok := queryArgs["timeoutSeconds"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -59681,7 +60388,7 @@ func decodeWatchBatchV1NamespacedJobListParams(args map[string]string, r *http.R
 	}
 	// Decode query: watch.
 	{
-		values, ok := r.URL.Query()["watch"]
+		values, ok := queryArgs["watch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -59718,10 +60425,13 @@ func decodeWatchBatchV1NamespacedJobListParams(args map[string]string, r *http.R
 }
 
 func decodeWatchBatchV1beta1CronJobListForAllNamespacesParams(args map[string]string, r *http.Request) (WatchBatchV1beta1CronJobListForAllNamespacesParams, error) {
-	var params WatchBatchV1beta1CronJobListForAllNamespacesParams
+	var (
+		params    WatchBatchV1beta1CronJobListForAllNamespacesParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode query: allowWatchBookmarks.
 	{
-		values, ok := r.URL.Query()["allowWatchBookmarks"]
+		values, ok := queryArgs["allowWatchBookmarks"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -59756,7 +60466,7 @@ func decodeWatchBatchV1beta1CronJobListForAllNamespacesParams(args map[string]st
 	}
 	// Decode query: continue.
 	{
-		values, ok := r.URL.Query()["continue"]
+		values, ok := queryArgs["continue"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -59791,7 +60501,7 @@ func decodeWatchBatchV1beta1CronJobListForAllNamespacesParams(args map[string]st
 	}
 	// Decode query: fieldSelector.
 	{
-		values, ok := r.URL.Query()["fieldSelector"]
+		values, ok := queryArgs["fieldSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -59826,7 +60536,7 @@ func decodeWatchBatchV1beta1CronJobListForAllNamespacesParams(args map[string]st
 	}
 	// Decode query: labelSelector.
 	{
-		values, ok := r.URL.Query()["labelSelector"]
+		values, ok := queryArgs["labelSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -59861,7 +60571,7 @@ func decodeWatchBatchV1beta1CronJobListForAllNamespacesParams(args map[string]st
 	}
 	// Decode query: limit.
 	{
-		values, ok := r.URL.Query()["limit"]
+		values, ok := queryArgs["limit"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -59896,7 +60606,7 @@ func decodeWatchBatchV1beta1CronJobListForAllNamespacesParams(args map[string]st
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -59931,7 +60641,7 @@ func decodeWatchBatchV1beta1CronJobListForAllNamespacesParams(args map[string]st
 	}
 	// Decode query: resourceVersion.
 	{
-		values, ok := r.URL.Query()["resourceVersion"]
+		values, ok := queryArgs["resourceVersion"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -59966,7 +60676,7 @@ func decodeWatchBatchV1beta1CronJobListForAllNamespacesParams(args map[string]st
 	}
 	// Decode query: resourceVersionMatch.
 	{
-		values, ok := r.URL.Query()["resourceVersionMatch"]
+		values, ok := queryArgs["resourceVersionMatch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -60001,7 +60711,7 @@ func decodeWatchBatchV1beta1CronJobListForAllNamespacesParams(args map[string]st
 	}
 	// Decode query: timeoutSeconds.
 	{
-		values, ok := r.URL.Query()["timeoutSeconds"]
+		values, ok := queryArgs["timeoutSeconds"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -60036,7 +60746,7 @@ func decodeWatchBatchV1beta1CronJobListForAllNamespacesParams(args map[string]st
 	}
 	// Decode query: watch.
 	{
-		values, ok := r.URL.Query()["watch"]
+		values, ok := queryArgs["watch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -60073,10 +60783,13 @@ func decodeWatchBatchV1beta1CronJobListForAllNamespacesParams(args map[string]st
 }
 
 func decodeWatchBatchV1beta1NamespacedCronJobParams(args map[string]string, r *http.Request) (WatchBatchV1beta1NamespacedCronJobParams, error) {
-	var params WatchBatchV1beta1NamespacedCronJobParams
+	var (
+		params    WatchBatchV1beta1NamespacedCronJobParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode query: allowWatchBookmarks.
 	{
-		values, ok := r.URL.Query()["allowWatchBookmarks"]
+		values, ok := queryArgs["allowWatchBookmarks"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -60111,7 +60824,7 @@ func decodeWatchBatchV1beta1NamespacedCronJobParams(args map[string]string, r *h
 	}
 	// Decode query: continue.
 	{
-		values, ok := r.URL.Query()["continue"]
+		values, ok := queryArgs["continue"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -60146,7 +60859,7 @@ func decodeWatchBatchV1beta1NamespacedCronJobParams(args map[string]string, r *h
 	}
 	// Decode query: fieldSelector.
 	{
-		values, ok := r.URL.Query()["fieldSelector"]
+		values, ok := queryArgs["fieldSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -60181,7 +60894,7 @@ func decodeWatchBatchV1beta1NamespacedCronJobParams(args map[string]string, r *h
 	}
 	// Decode query: labelSelector.
 	{
-		values, ok := r.URL.Query()["labelSelector"]
+		values, ok := queryArgs["labelSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -60216,7 +60929,7 @@ func decodeWatchBatchV1beta1NamespacedCronJobParams(args map[string]string, r *h
 	}
 	// Decode query: limit.
 	{
-		values, ok := r.URL.Query()["limit"]
+		values, ok := queryArgs["limit"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -60313,7 +61026,7 @@ func decodeWatchBatchV1beta1NamespacedCronJobParams(args map[string]string, r *h
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -60348,7 +61061,7 @@ func decodeWatchBatchV1beta1NamespacedCronJobParams(args map[string]string, r *h
 	}
 	// Decode query: resourceVersion.
 	{
-		values, ok := r.URL.Query()["resourceVersion"]
+		values, ok := queryArgs["resourceVersion"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -60383,7 +61096,7 @@ func decodeWatchBatchV1beta1NamespacedCronJobParams(args map[string]string, r *h
 	}
 	// Decode query: resourceVersionMatch.
 	{
-		values, ok := r.URL.Query()["resourceVersionMatch"]
+		values, ok := queryArgs["resourceVersionMatch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -60418,7 +61131,7 @@ func decodeWatchBatchV1beta1NamespacedCronJobParams(args map[string]string, r *h
 	}
 	// Decode query: timeoutSeconds.
 	{
-		values, ok := r.URL.Query()["timeoutSeconds"]
+		values, ok := queryArgs["timeoutSeconds"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -60453,7 +61166,7 @@ func decodeWatchBatchV1beta1NamespacedCronJobParams(args map[string]string, r *h
 	}
 	// Decode query: watch.
 	{
-		values, ok := r.URL.Query()["watch"]
+		values, ok := queryArgs["watch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -60490,10 +61203,13 @@ func decodeWatchBatchV1beta1NamespacedCronJobParams(args map[string]string, r *h
 }
 
 func decodeWatchBatchV1beta1NamespacedCronJobListParams(args map[string]string, r *http.Request) (WatchBatchV1beta1NamespacedCronJobListParams, error) {
-	var params WatchBatchV1beta1NamespacedCronJobListParams
+	var (
+		params    WatchBatchV1beta1NamespacedCronJobListParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode query: allowWatchBookmarks.
 	{
-		values, ok := r.URL.Query()["allowWatchBookmarks"]
+		values, ok := queryArgs["allowWatchBookmarks"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -60528,7 +61244,7 @@ func decodeWatchBatchV1beta1NamespacedCronJobListParams(args map[string]string, 
 	}
 	// Decode query: continue.
 	{
-		values, ok := r.URL.Query()["continue"]
+		values, ok := queryArgs["continue"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -60563,7 +61279,7 @@ func decodeWatchBatchV1beta1NamespacedCronJobListParams(args map[string]string, 
 	}
 	// Decode query: fieldSelector.
 	{
-		values, ok := r.URL.Query()["fieldSelector"]
+		values, ok := queryArgs["fieldSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -60598,7 +61314,7 @@ func decodeWatchBatchV1beta1NamespacedCronJobListParams(args map[string]string, 
 	}
 	// Decode query: labelSelector.
 	{
-		values, ok := r.URL.Query()["labelSelector"]
+		values, ok := queryArgs["labelSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -60633,7 +61349,7 @@ func decodeWatchBatchV1beta1NamespacedCronJobListParams(args map[string]string, 
 	}
 	// Decode query: limit.
 	{
-		values, ok := r.URL.Query()["limit"]
+		values, ok := queryArgs["limit"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -60699,7 +61415,7 @@ func decodeWatchBatchV1beta1NamespacedCronJobListParams(args map[string]string, 
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -60734,7 +61450,7 @@ func decodeWatchBatchV1beta1NamespacedCronJobListParams(args map[string]string, 
 	}
 	// Decode query: resourceVersion.
 	{
-		values, ok := r.URL.Query()["resourceVersion"]
+		values, ok := queryArgs["resourceVersion"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -60769,7 +61485,7 @@ func decodeWatchBatchV1beta1NamespacedCronJobListParams(args map[string]string, 
 	}
 	// Decode query: resourceVersionMatch.
 	{
-		values, ok := r.URL.Query()["resourceVersionMatch"]
+		values, ok := queryArgs["resourceVersionMatch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -60804,7 +61520,7 @@ func decodeWatchBatchV1beta1NamespacedCronJobListParams(args map[string]string, 
 	}
 	// Decode query: timeoutSeconds.
 	{
-		values, ok := r.URL.Query()["timeoutSeconds"]
+		values, ok := queryArgs["timeoutSeconds"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -60839,7 +61555,7 @@ func decodeWatchBatchV1beta1NamespacedCronJobListParams(args map[string]string, 
 	}
 	// Decode query: watch.
 	{
-		values, ok := r.URL.Query()["watch"]
+		values, ok := queryArgs["watch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -60876,10 +61592,13 @@ func decodeWatchBatchV1beta1NamespacedCronJobListParams(args map[string]string, 
 }
 
 func decodeWatchCertificatesV1CertificateSigningRequestParams(args map[string]string, r *http.Request) (WatchCertificatesV1CertificateSigningRequestParams, error) {
-	var params WatchCertificatesV1CertificateSigningRequestParams
+	var (
+		params    WatchCertificatesV1CertificateSigningRequestParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode query: allowWatchBookmarks.
 	{
-		values, ok := r.URL.Query()["allowWatchBookmarks"]
+		values, ok := queryArgs["allowWatchBookmarks"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -60914,7 +61633,7 @@ func decodeWatchCertificatesV1CertificateSigningRequestParams(args map[string]st
 	}
 	// Decode query: continue.
 	{
-		values, ok := r.URL.Query()["continue"]
+		values, ok := queryArgs["continue"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -60949,7 +61668,7 @@ func decodeWatchCertificatesV1CertificateSigningRequestParams(args map[string]st
 	}
 	// Decode query: fieldSelector.
 	{
-		values, ok := r.URL.Query()["fieldSelector"]
+		values, ok := queryArgs["fieldSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -60984,7 +61703,7 @@ func decodeWatchCertificatesV1CertificateSigningRequestParams(args map[string]st
 	}
 	// Decode query: labelSelector.
 	{
-		values, ok := r.URL.Query()["labelSelector"]
+		values, ok := queryArgs["labelSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -61019,7 +61738,7 @@ func decodeWatchCertificatesV1CertificateSigningRequestParams(args map[string]st
 	}
 	// Decode query: limit.
 	{
-		values, ok := r.URL.Query()["limit"]
+		values, ok := queryArgs["limit"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -61085,7 +61804,7 @@ func decodeWatchCertificatesV1CertificateSigningRequestParams(args map[string]st
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -61120,7 +61839,7 @@ func decodeWatchCertificatesV1CertificateSigningRequestParams(args map[string]st
 	}
 	// Decode query: resourceVersion.
 	{
-		values, ok := r.URL.Query()["resourceVersion"]
+		values, ok := queryArgs["resourceVersion"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -61155,7 +61874,7 @@ func decodeWatchCertificatesV1CertificateSigningRequestParams(args map[string]st
 	}
 	// Decode query: resourceVersionMatch.
 	{
-		values, ok := r.URL.Query()["resourceVersionMatch"]
+		values, ok := queryArgs["resourceVersionMatch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -61190,7 +61909,7 @@ func decodeWatchCertificatesV1CertificateSigningRequestParams(args map[string]st
 	}
 	// Decode query: timeoutSeconds.
 	{
-		values, ok := r.URL.Query()["timeoutSeconds"]
+		values, ok := queryArgs["timeoutSeconds"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -61225,7 +61944,7 @@ func decodeWatchCertificatesV1CertificateSigningRequestParams(args map[string]st
 	}
 	// Decode query: watch.
 	{
-		values, ok := r.URL.Query()["watch"]
+		values, ok := queryArgs["watch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -61262,10 +61981,13 @@ func decodeWatchCertificatesV1CertificateSigningRequestParams(args map[string]st
 }
 
 func decodeWatchCertificatesV1CertificateSigningRequestListParams(args map[string]string, r *http.Request) (WatchCertificatesV1CertificateSigningRequestListParams, error) {
-	var params WatchCertificatesV1CertificateSigningRequestListParams
+	var (
+		params    WatchCertificatesV1CertificateSigningRequestListParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode query: allowWatchBookmarks.
 	{
-		values, ok := r.URL.Query()["allowWatchBookmarks"]
+		values, ok := queryArgs["allowWatchBookmarks"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -61300,7 +62022,7 @@ func decodeWatchCertificatesV1CertificateSigningRequestListParams(args map[strin
 	}
 	// Decode query: continue.
 	{
-		values, ok := r.URL.Query()["continue"]
+		values, ok := queryArgs["continue"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -61335,7 +62057,7 @@ func decodeWatchCertificatesV1CertificateSigningRequestListParams(args map[strin
 	}
 	// Decode query: fieldSelector.
 	{
-		values, ok := r.URL.Query()["fieldSelector"]
+		values, ok := queryArgs["fieldSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -61370,7 +62092,7 @@ func decodeWatchCertificatesV1CertificateSigningRequestListParams(args map[strin
 	}
 	// Decode query: labelSelector.
 	{
-		values, ok := r.URL.Query()["labelSelector"]
+		values, ok := queryArgs["labelSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -61405,7 +62127,7 @@ func decodeWatchCertificatesV1CertificateSigningRequestListParams(args map[strin
 	}
 	// Decode query: limit.
 	{
-		values, ok := r.URL.Query()["limit"]
+		values, ok := queryArgs["limit"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -61440,7 +62162,7 @@ func decodeWatchCertificatesV1CertificateSigningRequestListParams(args map[strin
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -61475,7 +62197,7 @@ func decodeWatchCertificatesV1CertificateSigningRequestListParams(args map[strin
 	}
 	// Decode query: resourceVersion.
 	{
-		values, ok := r.URL.Query()["resourceVersion"]
+		values, ok := queryArgs["resourceVersion"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -61510,7 +62232,7 @@ func decodeWatchCertificatesV1CertificateSigningRequestListParams(args map[strin
 	}
 	// Decode query: resourceVersionMatch.
 	{
-		values, ok := r.URL.Query()["resourceVersionMatch"]
+		values, ok := queryArgs["resourceVersionMatch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -61545,7 +62267,7 @@ func decodeWatchCertificatesV1CertificateSigningRequestListParams(args map[strin
 	}
 	// Decode query: timeoutSeconds.
 	{
-		values, ok := r.URL.Query()["timeoutSeconds"]
+		values, ok := queryArgs["timeoutSeconds"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -61580,7 +62302,7 @@ func decodeWatchCertificatesV1CertificateSigningRequestListParams(args map[strin
 	}
 	// Decode query: watch.
 	{
-		values, ok := r.URL.Query()["watch"]
+		values, ok := queryArgs["watch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -61617,10 +62339,13 @@ func decodeWatchCertificatesV1CertificateSigningRequestListParams(args map[strin
 }
 
 func decodeWatchCoordinationV1LeaseListForAllNamespacesParams(args map[string]string, r *http.Request) (WatchCoordinationV1LeaseListForAllNamespacesParams, error) {
-	var params WatchCoordinationV1LeaseListForAllNamespacesParams
+	var (
+		params    WatchCoordinationV1LeaseListForAllNamespacesParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode query: allowWatchBookmarks.
 	{
-		values, ok := r.URL.Query()["allowWatchBookmarks"]
+		values, ok := queryArgs["allowWatchBookmarks"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -61655,7 +62380,7 @@ func decodeWatchCoordinationV1LeaseListForAllNamespacesParams(args map[string]st
 	}
 	// Decode query: continue.
 	{
-		values, ok := r.URL.Query()["continue"]
+		values, ok := queryArgs["continue"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -61690,7 +62415,7 @@ func decodeWatchCoordinationV1LeaseListForAllNamespacesParams(args map[string]st
 	}
 	// Decode query: fieldSelector.
 	{
-		values, ok := r.URL.Query()["fieldSelector"]
+		values, ok := queryArgs["fieldSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -61725,7 +62450,7 @@ func decodeWatchCoordinationV1LeaseListForAllNamespacesParams(args map[string]st
 	}
 	// Decode query: labelSelector.
 	{
-		values, ok := r.URL.Query()["labelSelector"]
+		values, ok := queryArgs["labelSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -61760,7 +62485,7 @@ func decodeWatchCoordinationV1LeaseListForAllNamespacesParams(args map[string]st
 	}
 	// Decode query: limit.
 	{
-		values, ok := r.URL.Query()["limit"]
+		values, ok := queryArgs["limit"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -61795,7 +62520,7 @@ func decodeWatchCoordinationV1LeaseListForAllNamespacesParams(args map[string]st
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -61830,7 +62555,7 @@ func decodeWatchCoordinationV1LeaseListForAllNamespacesParams(args map[string]st
 	}
 	// Decode query: resourceVersion.
 	{
-		values, ok := r.URL.Query()["resourceVersion"]
+		values, ok := queryArgs["resourceVersion"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -61865,7 +62590,7 @@ func decodeWatchCoordinationV1LeaseListForAllNamespacesParams(args map[string]st
 	}
 	// Decode query: resourceVersionMatch.
 	{
-		values, ok := r.URL.Query()["resourceVersionMatch"]
+		values, ok := queryArgs["resourceVersionMatch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -61900,7 +62625,7 @@ func decodeWatchCoordinationV1LeaseListForAllNamespacesParams(args map[string]st
 	}
 	// Decode query: timeoutSeconds.
 	{
-		values, ok := r.URL.Query()["timeoutSeconds"]
+		values, ok := queryArgs["timeoutSeconds"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -61935,7 +62660,7 @@ func decodeWatchCoordinationV1LeaseListForAllNamespacesParams(args map[string]st
 	}
 	// Decode query: watch.
 	{
-		values, ok := r.URL.Query()["watch"]
+		values, ok := queryArgs["watch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -61972,10 +62697,13 @@ func decodeWatchCoordinationV1LeaseListForAllNamespacesParams(args map[string]st
 }
 
 func decodeWatchCoordinationV1NamespacedLeaseParams(args map[string]string, r *http.Request) (WatchCoordinationV1NamespacedLeaseParams, error) {
-	var params WatchCoordinationV1NamespacedLeaseParams
+	var (
+		params    WatchCoordinationV1NamespacedLeaseParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode query: allowWatchBookmarks.
 	{
-		values, ok := r.URL.Query()["allowWatchBookmarks"]
+		values, ok := queryArgs["allowWatchBookmarks"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -62010,7 +62738,7 @@ func decodeWatchCoordinationV1NamespacedLeaseParams(args map[string]string, r *h
 	}
 	// Decode query: continue.
 	{
-		values, ok := r.URL.Query()["continue"]
+		values, ok := queryArgs["continue"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -62045,7 +62773,7 @@ func decodeWatchCoordinationV1NamespacedLeaseParams(args map[string]string, r *h
 	}
 	// Decode query: fieldSelector.
 	{
-		values, ok := r.URL.Query()["fieldSelector"]
+		values, ok := queryArgs["fieldSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -62080,7 +62808,7 @@ func decodeWatchCoordinationV1NamespacedLeaseParams(args map[string]string, r *h
 	}
 	// Decode query: labelSelector.
 	{
-		values, ok := r.URL.Query()["labelSelector"]
+		values, ok := queryArgs["labelSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -62115,7 +62843,7 @@ func decodeWatchCoordinationV1NamespacedLeaseParams(args map[string]string, r *h
 	}
 	// Decode query: limit.
 	{
-		values, ok := r.URL.Query()["limit"]
+		values, ok := queryArgs["limit"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -62212,7 +62940,7 @@ func decodeWatchCoordinationV1NamespacedLeaseParams(args map[string]string, r *h
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -62247,7 +62975,7 @@ func decodeWatchCoordinationV1NamespacedLeaseParams(args map[string]string, r *h
 	}
 	// Decode query: resourceVersion.
 	{
-		values, ok := r.URL.Query()["resourceVersion"]
+		values, ok := queryArgs["resourceVersion"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -62282,7 +63010,7 @@ func decodeWatchCoordinationV1NamespacedLeaseParams(args map[string]string, r *h
 	}
 	// Decode query: resourceVersionMatch.
 	{
-		values, ok := r.URL.Query()["resourceVersionMatch"]
+		values, ok := queryArgs["resourceVersionMatch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -62317,7 +63045,7 @@ func decodeWatchCoordinationV1NamespacedLeaseParams(args map[string]string, r *h
 	}
 	// Decode query: timeoutSeconds.
 	{
-		values, ok := r.URL.Query()["timeoutSeconds"]
+		values, ok := queryArgs["timeoutSeconds"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -62352,7 +63080,7 @@ func decodeWatchCoordinationV1NamespacedLeaseParams(args map[string]string, r *h
 	}
 	// Decode query: watch.
 	{
-		values, ok := r.URL.Query()["watch"]
+		values, ok := queryArgs["watch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -62389,10 +63117,13 @@ func decodeWatchCoordinationV1NamespacedLeaseParams(args map[string]string, r *h
 }
 
 func decodeWatchCoordinationV1NamespacedLeaseListParams(args map[string]string, r *http.Request) (WatchCoordinationV1NamespacedLeaseListParams, error) {
-	var params WatchCoordinationV1NamespacedLeaseListParams
+	var (
+		params    WatchCoordinationV1NamespacedLeaseListParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode query: allowWatchBookmarks.
 	{
-		values, ok := r.URL.Query()["allowWatchBookmarks"]
+		values, ok := queryArgs["allowWatchBookmarks"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -62427,7 +63158,7 @@ func decodeWatchCoordinationV1NamespacedLeaseListParams(args map[string]string, 
 	}
 	// Decode query: continue.
 	{
-		values, ok := r.URL.Query()["continue"]
+		values, ok := queryArgs["continue"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -62462,7 +63193,7 @@ func decodeWatchCoordinationV1NamespacedLeaseListParams(args map[string]string, 
 	}
 	// Decode query: fieldSelector.
 	{
-		values, ok := r.URL.Query()["fieldSelector"]
+		values, ok := queryArgs["fieldSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -62497,7 +63228,7 @@ func decodeWatchCoordinationV1NamespacedLeaseListParams(args map[string]string, 
 	}
 	// Decode query: labelSelector.
 	{
-		values, ok := r.URL.Query()["labelSelector"]
+		values, ok := queryArgs["labelSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -62532,7 +63263,7 @@ func decodeWatchCoordinationV1NamespacedLeaseListParams(args map[string]string, 
 	}
 	// Decode query: limit.
 	{
-		values, ok := r.URL.Query()["limit"]
+		values, ok := queryArgs["limit"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -62598,7 +63329,7 @@ func decodeWatchCoordinationV1NamespacedLeaseListParams(args map[string]string, 
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -62633,7 +63364,7 @@ func decodeWatchCoordinationV1NamespacedLeaseListParams(args map[string]string, 
 	}
 	// Decode query: resourceVersion.
 	{
-		values, ok := r.URL.Query()["resourceVersion"]
+		values, ok := queryArgs["resourceVersion"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -62668,7 +63399,7 @@ func decodeWatchCoordinationV1NamespacedLeaseListParams(args map[string]string, 
 	}
 	// Decode query: resourceVersionMatch.
 	{
-		values, ok := r.URL.Query()["resourceVersionMatch"]
+		values, ok := queryArgs["resourceVersionMatch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -62703,7 +63434,7 @@ func decodeWatchCoordinationV1NamespacedLeaseListParams(args map[string]string, 
 	}
 	// Decode query: timeoutSeconds.
 	{
-		values, ok := r.URL.Query()["timeoutSeconds"]
+		values, ok := queryArgs["timeoutSeconds"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -62738,7 +63469,7 @@ func decodeWatchCoordinationV1NamespacedLeaseListParams(args map[string]string, 
 	}
 	// Decode query: watch.
 	{
-		values, ok := r.URL.Query()["watch"]
+		values, ok := queryArgs["watch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -62775,10 +63506,13 @@ func decodeWatchCoordinationV1NamespacedLeaseListParams(args map[string]string, 
 }
 
 func decodeWatchCoreV1ConfigMapListForAllNamespacesParams(args map[string]string, r *http.Request) (WatchCoreV1ConfigMapListForAllNamespacesParams, error) {
-	var params WatchCoreV1ConfigMapListForAllNamespacesParams
+	var (
+		params    WatchCoreV1ConfigMapListForAllNamespacesParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode query: allowWatchBookmarks.
 	{
-		values, ok := r.URL.Query()["allowWatchBookmarks"]
+		values, ok := queryArgs["allowWatchBookmarks"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -62813,7 +63547,7 @@ func decodeWatchCoreV1ConfigMapListForAllNamespacesParams(args map[string]string
 	}
 	// Decode query: continue.
 	{
-		values, ok := r.URL.Query()["continue"]
+		values, ok := queryArgs["continue"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -62848,7 +63582,7 @@ func decodeWatchCoreV1ConfigMapListForAllNamespacesParams(args map[string]string
 	}
 	// Decode query: fieldSelector.
 	{
-		values, ok := r.URL.Query()["fieldSelector"]
+		values, ok := queryArgs["fieldSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -62883,7 +63617,7 @@ func decodeWatchCoreV1ConfigMapListForAllNamespacesParams(args map[string]string
 	}
 	// Decode query: labelSelector.
 	{
-		values, ok := r.URL.Query()["labelSelector"]
+		values, ok := queryArgs["labelSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -62918,7 +63652,7 @@ func decodeWatchCoreV1ConfigMapListForAllNamespacesParams(args map[string]string
 	}
 	// Decode query: limit.
 	{
-		values, ok := r.URL.Query()["limit"]
+		values, ok := queryArgs["limit"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -62953,7 +63687,7 @@ func decodeWatchCoreV1ConfigMapListForAllNamespacesParams(args map[string]string
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -62988,7 +63722,7 @@ func decodeWatchCoreV1ConfigMapListForAllNamespacesParams(args map[string]string
 	}
 	// Decode query: resourceVersion.
 	{
-		values, ok := r.URL.Query()["resourceVersion"]
+		values, ok := queryArgs["resourceVersion"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -63023,7 +63757,7 @@ func decodeWatchCoreV1ConfigMapListForAllNamespacesParams(args map[string]string
 	}
 	// Decode query: resourceVersionMatch.
 	{
-		values, ok := r.URL.Query()["resourceVersionMatch"]
+		values, ok := queryArgs["resourceVersionMatch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -63058,7 +63792,7 @@ func decodeWatchCoreV1ConfigMapListForAllNamespacesParams(args map[string]string
 	}
 	// Decode query: timeoutSeconds.
 	{
-		values, ok := r.URL.Query()["timeoutSeconds"]
+		values, ok := queryArgs["timeoutSeconds"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -63093,7 +63827,7 @@ func decodeWatchCoreV1ConfigMapListForAllNamespacesParams(args map[string]string
 	}
 	// Decode query: watch.
 	{
-		values, ok := r.URL.Query()["watch"]
+		values, ok := queryArgs["watch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -63130,10 +63864,13 @@ func decodeWatchCoreV1ConfigMapListForAllNamespacesParams(args map[string]string
 }
 
 func decodeWatchCoreV1EndpointsListForAllNamespacesParams(args map[string]string, r *http.Request) (WatchCoreV1EndpointsListForAllNamespacesParams, error) {
-	var params WatchCoreV1EndpointsListForAllNamespacesParams
+	var (
+		params    WatchCoreV1EndpointsListForAllNamespacesParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode query: allowWatchBookmarks.
 	{
-		values, ok := r.URL.Query()["allowWatchBookmarks"]
+		values, ok := queryArgs["allowWatchBookmarks"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -63168,7 +63905,7 @@ func decodeWatchCoreV1EndpointsListForAllNamespacesParams(args map[string]string
 	}
 	// Decode query: continue.
 	{
-		values, ok := r.URL.Query()["continue"]
+		values, ok := queryArgs["continue"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -63203,7 +63940,7 @@ func decodeWatchCoreV1EndpointsListForAllNamespacesParams(args map[string]string
 	}
 	// Decode query: fieldSelector.
 	{
-		values, ok := r.URL.Query()["fieldSelector"]
+		values, ok := queryArgs["fieldSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -63238,7 +63975,7 @@ func decodeWatchCoreV1EndpointsListForAllNamespacesParams(args map[string]string
 	}
 	// Decode query: labelSelector.
 	{
-		values, ok := r.URL.Query()["labelSelector"]
+		values, ok := queryArgs["labelSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -63273,7 +64010,7 @@ func decodeWatchCoreV1EndpointsListForAllNamespacesParams(args map[string]string
 	}
 	// Decode query: limit.
 	{
-		values, ok := r.URL.Query()["limit"]
+		values, ok := queryArgs["limit"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -63308,7 +64045,7 @@ func decodeWatchCoreV1EndpointsListForAllNamespacesParams(args map[string]string
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -63343,7 +64080,7 @@ func decodeWatchCoreV1EndpointsListForAllNamespacesParams(args map[string]string
 	}
 	// Decode query: resourceVersion.
 	{
-		values, ok := r.URL.Query()["resourceVersion"]
+		values, ok := queryArgs["resourceVersion"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -63378,7 +64115,7 @@ func decodeWatchCoreV1EndpointsListForAllNamespacesParams(args map[string]string
 	}
 	// Decode query: resourceVersionMatch.
 	{
-		values, ok := r.URL.Query()["resourceVersionMatch"]
+		values, ok := queryArgs["resourceVersionMatch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -63413,7 +64150,7 @@ func decodeWatchCoreV1EndpointsListForAllNamespacesParams(args map[string]string
 	}
 	// Decode query: timeoutSeconds.
 	{
-		values, ok := r.URL.Query()["timeoutSeconds"]
+		values, ok := queryArgs["timeoutSeconds"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -63448,7 +64185,7 @@ func decodeWatchCoreV1EndpointsListForAllNamespacesParams(args map[string]string
 	}
 	// Decode query: watch.
 	{
-		values, ok := r.URL.Query()["watch"]
+		values, ok := queryArgs["watch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -63485,10 +64222,13 @@ func decodeWatchCoreV1EndpointsListForAllNamespacesParams(args map[string]string
 }
 
 func decodeWatchCoreV1EventListForAllNamespacesParams(args map[string]string, r *http.Request) (WatchCoreV1EventListForAllNamespacesParams, error) {
-	var params WatchCoreV1EventListForAllNamespacesParams
+	var (
+		params    WatchCoreV1EventListForAllNamespacesParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode query: allowWatchBookmarks.
 	{
-		values, ok := r.URL.Query()["allowWatchBookmarks"]
+		values, ok := queryArgs["allowWatchBookmarks"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -63523,7 +64263,7 @@ func decodeWatchCoreV1EventListForAllNamespacesParams(args map[string]string, r 
 	}
 	// Decode query: continue.
 	{
-		values, ok := r.URL.Query()["continue"]
+		values, ok := queryArgs["continue"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -63558,7 +64298,7 @@ func decodeWatchCoreV1EventListForAllNamespacesParams(args map[string]string, r 
 	}
 	// Decode query: fieldSelector.
 	{
-		values, ok := r.URL.Query()["fieldSelector"]
+		values, ok := queryArgs["fieldSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -63593,7 +64333,7 @@ func decodeWatchCoreV1EventListForAllNamespacesParams(args map[string]string, r 
 	}
 	// Decode query: labelSelector.
 	{
-		values, ok := r.URL.Query()["labelSelector"]
+		values, ok := queryArgs["labelSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -63628,7 +64368,7 @@ func decodeWatchCoreV1EventListForAllNamespacesParams(args map[string]string, r 
 	}
 	// Decode query: limit.
 	{
-		values, ok := r.URL.Query()["limit"]
+		values, ok := queryArgs["limit"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -63663,7 +64403,7 @@ func decodeWatchCoreV1EventListForAllNamespacesParams(args map[string]string, r 
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -63698,7 +64438,7 @@ func decodeWatchCoreV1EventListForAllNamespacesParams(args map[string]string, r 
 	}
 	// Decode query: resourceVersion.
 	{
-		values, ok := r.URL.Query()["resourceVersion"]
+		values, ok := queryArgs["resourceVersion"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -63733,7 +64473,7 @@ func decodeWatchCoreV1EventListForAllNamespacesParams(args map[string]string, r 
 	}
 	// Decode query: resourceVersionMatch.
 	{
-		values, ok := r.URL.Query()["resourceVersionMatch"]
+		values, ok := queryArgs["resourceVersionMatch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -63768,7 +64508,7 @@ func decodeWatchCoreV1EventListForAllNamespacesParams(args map[string]string, r 
 	}
 	// Decode query: timeoutSeconds.
 	{
-		values, ok := r.URL.Query()["timeoutSeconds"]
+		values, ok := queryArgs["timeoutSeconds"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -63803,7 +64543,7 @@ func decodeWatchCoreV1EventListForAllNamespacesParams(args map[string]string, r 
 	}
 	// Decode query: watch.
 	{
-		values, ok := r.URL.Query()["watch"]
+		values, ok := queryArgs["watch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -63840,10 +64580,13 @@ func decodeWatchCoreV1EventListForAllNamespacesParams(args map[string]string, r 
 }
 
 func decodeWatchCoreV1LimitRangeListForAllNamespacesParams(args map[string]string, r *http.Request) (WatchCoreV1LimitRangeListForAllNamespacesParams, error) {
-	var params WatchCoreV1LimitRangeListForAllNamespacesParams
+	var (
+		params    WatchCoreV1LimitRangeListForAllNamespacesParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode query: allowWatchBookmarks.
 	{
-		values, ok := r.URL.Query()["allowWatchBookmarks"]
+		values, ok := queryArgs["allowWatchBookmarks"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -63878,7 +64621,7 @@ func decodeWatchCoreV1LimitRangeListForAllNamespacesParams(args map[string]strin
 	}
 	// Decode query: continue.
 	{
-		values, ok := r.URL.Query()["continue"]
+		values, ok := queryArgs["continue"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -63913,7 +64656,7 @@ func decodeWatchCoreV1LimitRangeListForAllNamespacesParams(args map[string]strin
 	}
 	// Decode query: fieldSelector.
 	{
-		values, ok := r.URL.Query()["fieldSelector"]
+		values, ok := queryArgs["fieldSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -63948,7 +64691,7 @@ func decodeWatchCoreV1LimitRangeListForAllNamespacesParams(args map[string]strin
 	}
 	// Decode query: labelSelector.
 	{
-		values, ok := r.URL.Query()["labelSelector"]
+		values, ok := queryArgs["labelSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -63983,7 +64726,7 @@ func decodeWatchCoreV1LimitRangeListForAllNamespacesParams(args map[string]strin
 	}
 	// Decode query: limit.
 	{
-		values, ok := r.URL.Query()["limit"]
+		values, ok := queryArgs["limit"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -64018,7 +64761,7 @@ func decodeWatchCoreV1LimitRangeListForAllNamespacesParams(args map[string]strin
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -64053,7 +64796,7 @@ func decodeWatchCoreV1LimitRangeListForAllNamespacesParams(args map[string]strin
 	}
 	// Decode query: resourceVersion.
 	{
-		values, ok := r.URL.Query()["resourceVersion"]
+		values, ok := queryArgs["resourceVersion"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -64088,7 +64831,7 @@ func decodeWatchCoreV1LimitRangeListForAllNamespacesParams(args map[string]strin
 	}
 	// Decode query: resourceVersionMatch.
 	{
-		values, ok := r.URL.Query()["resourceVersionMatch"]
+		values, ok := queryArgs["resourceVersionMatch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -64123,7 +64866,7 @@ func decodeWatchCoreV1LimitRangeListForAllNamespacesParams(args map[string]strin
 	}
 	// Decode query: timeoutSeconds.
 	{
-		values, ok := r.URL.Query()["timeoutSeconds"]
+		values, ok := queryArgs["timeoutSeconds"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -64158,7 +64901,7 @@ func decodeWatchCoreV1LimitRangeListForAllNamespacesParams(args map[string]strin
 	}
 	// Decode query: watch.
 	{
-		values, ok := r.URL.Query()["watch"]
+		values, ok := queryArgs["watch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -64195,10 +64938,13 @@ func decodeWatchCoreV1LimitRangeListForAllNamespacesParams(args map[string]strin
 }
 
 func decodeWatchCoreV1NamespaceParams(args map[string]string, r *http.Request) (WatchCoreV1NamespaceParams, error) {
-	var params WatchCoreV1NamespaceParams
+	var (
+		params    WatchCoreV1NamespaceParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode query: allowWatchBookmarks.
 	{
-		values, ok := r.URL.Query()["allowWatchBookmarks"]
+		values, ok := queryArgs["allowWatchBookmarks"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -64233,7 +64979,7 @@ func decodeWatchCoreV1NamespaceParams(args map[string]string, r *http.Request) (
 	}
 	// Decode query: continue.
 	{
-		values, ok := r.URL.Query()["continue"]
+		values, ok := queryArgs["continue"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -64268,7 +65014,7 @@ func decodeWatchCoreV1NamespaceParams(args map[string]string, r *http.Request) (
 	}
 	// Decode query: fieldSelector.
 	{
-		values, ok := r.URL.Query()["fieldSelector"]
+		values, ok := queryArgs["fieldSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -64303,7 +65049,7 @@ func decodeWatchCoreV1NamespaceParams(args map[string]string, r *http.Request) (
 	}
 	// Decode query: labelSelector.
 	{
-		values, ok := r.URL.Query()["labelSelector"]
+		values, ok := queryArgs["labelSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -64338,7 +65084,7 @@ func decodeWatchCoreV1NamespaceParams(args map[string]string, r *http.Request) (
 	}
 	// Decode query: limit.
 	{
-		values, ok := r.URL.Query()["limit"]
+		values, ok := queryArgs["limit"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -64404,7 +65150,7 @@ func decodeWatchCoreV1NamespaceParams(args map[string]string, r *http.Request) (
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -64439,7 +65185,7 @@ func decodeWatchCoreV1NamespaceParams(args map[string]string, r *http.Request) (
 	}
 	// Decode query: resourceVersion.
 	{
-		values, ok := r.URL.Query()["resourceVersion"]
+		values, ok := queryArgs["resourceVersion"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -64474,7 +65220,7 @@ func decodeWatchCoreV1NamespaceParams(args map[string]string, r *http.Request) (
 	}
 	// Decode query: resourceVersionMatch.
 	{
-		values, ok := r.URL.Query()["resourceVersionMatch"]
+		values, ok := queryArgs["resourceVersionMatch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -64509,7 +65255,7 @@ func decodeWatchCoreV1NamespaceParams(args map[string]string, r *http.Request) (
 	}
 	// Decode query: timeoutSeconds.
 	{
-		values, ok := r.URL.Query()["timeoutSeconds"]
+		values, ok := queryArgs["timeoutSeconds"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -64544,7 +65290,7 @@ func decodeWatchCoreV1NamespaceParams(args map[string]string, r *http.Request) (
 	}
 	// Decode query: watch.
 	{
-		values, ok := r.URL.Query()["watch"]
+		values, ok := queryArgs["watch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -64581,10 +65327,13 @@ func decodeWatchCoreV1NamespaceParams(args map[string]string, r *http.Request) (
 }
 
 func decodeWatchCoreV1NamespaceListParams(args map[string]string, r *http.Request) (WatchCoreV1NamespaceListParams, error) {
-	var params WatchCoreV1NamespaceListParams
+	var (
+		params    WatchCoreV1NamespaceListParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode query: allowWatchBookmarks.
 	{
-		values, ok := r.URL.Query()["allowWatchBookmarks"]
+		values, ok := queryArgs["allowWatchBookmarks"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -64619,7 +65368,7 @@ func decodeWatchCoreV1NamespaceListParams(args map[string]string, r *http.Reques
 	}
 	// Decode query: continue.
 	{
-		values, ok := r.URL.Query()["continue"]
+		values, ok := queryArgs["continue"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -64654,7 +65403,7 @@ func decodeWatchCoreV1NamespaceListParams(args map[string]string, r *http.Reques
 	}
 	// Decode query: fieldSelector.
 	{
-		values, ok := r.URL.Query()["fieldSelector"]
+		values, ok := queryArgs["fieldSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -64689,7 +65438,7 @@ func decodeWatchCoreV1NamespaceListParams(args map[string]string, r *http.Reques
 	}
 	// Decode query: labelSelector.
 	{
-		values, ok := r.URL.Query()["labelSelector"]
+		values, ok := queryArgs["labelSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -64724,7 +65473,7 @@ func decodeWatchCoreV1NamespaceListParams(args map[string]string, r *http.Reques
 	}
 	// Decode query: limit.
 	{
-		values, ok := r.URL.Query()["limit"]
+		values, ok := queryArgs["limit"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -64759,7 +65508,7 @@ func decodeWatchCoreV1NamespaceListParams(args map[string]string, r *http.Reques
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -64794,7 +65543,7 @@ func decodeWatchCoreV1NamespaceListParams(args map[string]string, r *http.Reques
 	}
 	// Decode query: resourceVersion.
 	{
-		values, ok := r.URL.Query()["resourceVersion"]
+		values, ok := queryArgs["resourceVersion"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -64829,7 +65578,7 @@ func decodeWatchCoreV1NamespaceListParams(args map[string]string, r *http.Reques
 	}
 	// Decode query: resourceVersionMatch.
 	{
-		values, ok := r.URL.Query()["resourceVersionMatch"]
+		values, ok := queryArgs["resourceVersionMatch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -64864,7 +65613,7 @@ func decodeWatchCoreV1NamespaceListParams(args map[string]string, r *http.Reques
 	}
 	// Decode query: timeoutSeconds.
 	{
-		values, ok := r.URL.Query()["timeoutSeconds"]
+		values, ok := queryArgs["timeoutSeconds"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -64899,7 +65648,7 @@ func decodeWatchCoreV1NamespaceListParams(args map[string]string, r *http.Reques
 	}
 	// Decode query: watch.
 	{
-		values, ok := r.URL.Query()["watch"]
+		values, ok := queryArgs["watch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -64936,10 +65685,13 @@ func decodeWatchCoreV1NamespaceListParams(args map[string]string, r *http.Reques
 }
 
 func decodeWatchCoreV1NamespacedConfigMapParams(args map[string]string, r *http.Request) (WatchCoreV1NamespacedConfigMapParams, error) {
-	var params WatchCoreV1NamespacedConfigMapParams
+	var (
+		params    WatchCoreV1NamespacedConfigMapParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode query: allowWatchBookmarks.
 	{
-		values, ok := r.URL.Query()["allowWatchBookmarks"]
+		values, ok := queryArgs["allowWatchBookmarks"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -64974,7 +65726,7 @@ func decodeWatchCoreV1NamespacedConfigMapParams(args map[string]string, r *http.
 	}
 	// Decode query: continue.
 	{
-		values, ok := r.URL.Query()["continue"]
+		values, ok := queryArgs["continue"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -65009,7 +65761,7 @@ func decodeWatchCoreV1NamespacedConfigMapParams(args map[string]string, r *http.
 	}
 	// Decode query: fieldSelector.
 	{
-		values, ok := r.URL.Query()["fieldSelector"]
+		values, ok := queryArgs["fieldSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -65044,7 +65796,7 @@ func decodeWatchCoreV1NamespacedConfigMapParams(args map[string]string, r *http.
 	}
 	// Decode query: labelSelector.
 	{
-		values, ok := r.URL.Query()["labelSelector"]
+		values, ok := queryArgs["labelSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -65079,7 +65831,7 @@ func decodeWatchCoreV1NamespacedConfigMapParams(args map[string]string, r *http.
 	}
 	// Decode query: limit.
 	{
-		values, ok := r.URL.Query()["limit"]
+		values, ok := queryArgs["limit"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -65176,7 +65928,7 @@ func decodeWatchCoreV1NamespacedConfigMapParams(args map[string]string, r *http.
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -65211,7 +65963,7 @@ func decodeWatchCoreV1NamespacedConfigMapParams(args map[string]string, r *http.
 	}
 	// Decode query: resourceVersion.
 	{
-		values, ok := r.URL.Query()["resourceVersion"]
+		values, ok := queryArgs["resourceVersion"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -65246,7 +65998,7 @@ func decodeWatchCoreV1NamespacedConfigMapParams(args map[string]string, r *http.
 	}
 	// Decode query: resourceVersionMatch.
 	{
-		values, ok := r.URL.Query()["resourceVersionMatch"]
+		values, ok := queryArgs["resourceVersionMatch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -65281,7 +66033,7 @@ func decodeWatchCoreV1NamespacedConfigMapParams(args map[string]string, r *http.
 	}
 	// Decode query: timeoutSeconds.
 	{
-		values, ok := r.URL.Query()["timeoutSeconds"]
+		values, ok := queryArgs["timeoutSeconds"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -65316,7 +66068,7 @@ func decodeWatchCoreV1NamespacedConfigMapParams(args map[string]string, r *http.
 	}
 	// Decode query: watch.
 	{
-		values, ok := r.URL.Query()["watch"]
+		values, ok := queryArgs["watch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -65353,10 +66105,13 @@ func decodeWatchCoreV1NamespacedConfigMapParams(args map[string]string, r *http.
 }
 
 func decodeWatchCoreV1NamespacedConfigMapListParams(args map[string]string, r *http.Request) (WatchCoreV1NamespacedConfigMapListParams, error) {
-	var params WatchCoreV1NamespacedConfigMapListParams
+	var (
+		params    WatchCoreV1NamespacedConfigMapListParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode query: allowWatchBookmarks.
 	{
-		values, ok := r.URL.Query()["allowWatchBookmarks"]
+		values, ok := queryArgs["allowWatchBookmarks"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -65391,7 +66146,7 @@ func decodeWatchCoreV1NamespacedConfigMapListParams(args map[string]string, r *h
 	}
 	// Decode query: continue.
 	{
-		values, ok := r.URL.Query()["continue"]
+		values, ok := queryArgs["continue"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -65426,7 +66181,7 @@ func decodeWatchCoreV1NamespacedConfigMapListParams(args map[string]string, r *h
 	}
 	// Decode query: fieldSelector.
 	{
-		values, ok := r.URL.Query()["fieldSelector"]
+		values, ok := queryArgs["fieldSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -65461,7 +66216,7 @@ func decodeWatchCoreV1NamespacedConfigMapListParams(args map[string]string, r *h
 	}
 	// Decode query: labelSelector.
 	{
-		values, ok := r.URL.Query()["labelSelector"]
+		values, ok := queryArgs["labelSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -65496,7 +66251,7 @@ func decodeWatchCoreV1NamespacedConfigMapListParams(args map[string]string, r *h
 	}
 	// Decode query: limit.
 	{
-		values, ok := r.URL.Query()["limit"]
+		values, ok := queryArgs["limit"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -65562,7 +66317,7 @@ func decodeWatchCoreV1NamespacedConfigMapListParams(args map[string]string, r *h
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -65597,7 +66352,7 @@ func decodeWatchCoreV1NamespacedConfigMapListParams(args map[string]string, r *h
 	}
 	// Decode query: resourceVersion.
 	{
-		values, ok := r.URL.Query()["resourceVersion"]
+		values, ok := queryArgs["resourceVersion"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -65632,7 +66387,7 @@ func decodeWatchCoreV1NamespacedConfigMapListParams(args map[string]string, r *h
 	}
 	// Decode query: resourceVersionMatch.
 	{
-		values, ok := r.URL.Query()["resourceVersionMatch"]
+		values, ok := queryArgs["resourceVersionMatch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -65667,7 +66422,7 @@ func decodeWatchCoreV1NamespacedConfigMapListParams(args map[string]string, r *h
 	}
 	// Decode query: timeoutSeconds.
 	{
-		values, ok := r.URL.Query()["timeoutSeconds"]
+		values, ok := queryArgs["timeoutSeconds"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -65702,7 +66457,7 @@ func decodeWatchCoreV1NamespacedConfigMapListParams(args map[string]string, r *h
 	}
 	// Decode query: watch.
 	{
-		values, ok := r.URL.Query()["watch"]
+		values, ok := queryArgs["watch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -65739,10 +66494,13 @@ func decodeWatchCoreV1NamespacedConfigMapListParams(args map[string]string, r *h
 }
 
 func decodeWatchCoreV1NamespacedEndpointsParams(args map[string]string, r *http.Request) (WatchCoreV1NamespacedEndpointsParams, error) {
-	var params WatchCoreV1NamespacedEndpointsParams
+	var (
+		params    WatchCoreV1NamespacedEndpointsParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode query: allowWatchBookmarks.
 	{
-		values, ok := r.URL.Query()["allowWatchBookmarks"]
+		values, ok := queryArgs["allowWatchBookmarks"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -65777,7 +66535,7 @@ func decodeWatchCoreV1NamespacedEndpointsParams(args map[string]string, r *http.
 	}
 	// Decode query: continue.
 	{
-		values, ok := r.URL.Query()["continue"]
+		values, ok := queryArgs["continue"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -65812,7 +66570,7 @@ func decodeWatchCoreV1NamespacedEndpointsParams(args map[string]string, r *http.
 	}
 	// Decode query: fieldSelector.
 	{
-		values, ok := r.URL.Query()["fieldSelector"]
+		values, ok := queryArgs["fieldSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -65847,7 +66605,7 @@ func decodeWatchCoreV1NamespacedEndpointsParams(args map[string]string, r *http.
 	}
 	// Decode query: labelSelector.
 	{
-		values, ok := r.URL.Query()["labelSelector"]
+		values, ok := queryArgs["labelSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -65882,7 +66640,7 @@ func decodeWatchCoreV1NamespacedEndpointsParams(args map[string]string, r *http.
 	}
 	// Decode query: limit.
 	{
-		values, ok := r.URL.Query()["limit"]
+		values, ok := queryArgs["limit"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -65979,7 +66737,7 @@ func decodeWatchCoreV1NamespacedEndpointsParams(args map[string]string, r *http.
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -66014,7 +66772,7 @@ func decodeWatchCoreV1NamespacedEndpointsParams(args map[string]string, r *http.
 	}
 	// Decode query: resourceVersion.
 	{
-		values, ok := r.URL.Query()["resourceVersion"]
+		values, ok := queryArgs["resourceVersion"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -66049,7 +66807,7 @@ func decodeWatchCoreV1NamespacedEndpointsParams(args map[string]string, r *http.
 	}
 	// Decode query: resourceVersionMatch.
 	{
-		values, ok := r.URL.Query()["resourceVersionMatch"]
+		values, ok := queryArgs["resourceVersionMatch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -66084,7 +66842,7 @@ func decodeWatchCoreV1NamespacedEndpointsParams(args map[string]string, r *http.
 	}
 	// Decode query: timeoutSeconds.
 	{
-		values, ok := r.URL.Query()["timeoutSeconds"]
+		values, ok := queryArgs["timeoutSeconds"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -66119,7 +66877,7 @@ func decodeWatchCoreV1NamespacedEndpointsParams(args map[string]string, r *http.
 	}
 	// Decode query: watch.
 	{
-		values, ok := r.URL.Query()["watch"]
+		values, ok := queryArgs["watch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -66156,10 +66914,13 @@ func decodeWatchCoreV1NamespacedEndpointsParams(args map[string]string, r *http.
 }
 
 func decodeWatchCoreV1NamespacedEndpointsListParams(args map[string]string, r *http.Request) (WatchCoreV1NamespacedEndpointsListParams, error) {
-	var params WatchCoreV1NamespacedEndpointsListParams
+	var (
+		params    WatchCoreV1NamespacedEndpointsListParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode query: allowWatchBookmarks.
 	{
-		values, ok := r.URL.Query()["allowWatchBookmarks"]
+		values, ok := queryArgs["allowWatchBookmarks"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -66194,7 +66955,7 @@ func decodeWatchCoreV1NamespacedEndpointsListParams(args map[string]string, r *h
 	}
 	// Decode query: continue.
 	{
-		values, ok := r.URL.Query()["continue"]
+		values, ok := queryArgs["continue"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -66229,7 +66990,7 @@ func decodeWatchCoreV1NamespacedEndpointsListParams(args map[string]string, r *h
 	}
 	// Decode query: fieldSelector.
 	{
-		values, ok := r.URL.Query()["fieldSelector"]
+		values, ok := queryArgs["fieldSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -66264,7 +67025,7 @@ func decodeWatchCoreV1NamespacedEndpointsListParams(args map[string]string, r *h
 	}
 	// Decode query: labelSelector.
 	{
-		values, ok := r.URL.Query()["labelSelector"]
+		values, ok := queryArgs["labelSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -66299,7 +67060,7 @@ func decodeWatchCoreV1NamespacedEndpointsListParams(args map[string]string, r *h
 	}
 	// Decode query: limit.
 	{
-		values, ok := r.URL.Query()["limit"]
+		values, ok := queryArgs["limit"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -66365,7 +67126,7 @@ func decodeWatchCoreV1NamespacedEndpointsListParams(args map[string]string, r *h
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -66400,7 +67161,7 @@ func decodeWatchCoreV1NamespacedEndpointsListParams(args map[string]string, r *h
 	}
 	// Decode query: resourceVersion.
 	{
-		values, ok := r.URL.Query()["resourceVersion"]
+		values, ok := queryArgs["resourceVersion"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -66435,7 +67196,7 @@ func decodeWatchCoreV1NamespacedEndpointsListParams(args map[string]string, r *h
 	}
 	// Decode query: resourceVersionMatch.
 	{
-		values, ok := r.URL.Query()["resourceVersionMatch"]
+		values, ok := queryArgs["resourceVersionMatch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -66470,7 +67231,7 @@ func decodeWatchCoreV1NamespacedEndpointsListParams(args map[string]string, r *h
 	}
 	// Decode query: timeoutSeconds.
 	{
-		values, ok := r.URL.Query()["timeoutSeconds"]
+		values, ok := queryArgs["timeoutSeconds"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -66505,7 +67266,7 @@ func decodeWatchCoreV1NamespacedEndpointsListParams(args map[string]string, r *h
 	}
 	// Decode query: watch.
 	{
-		values, ok := r.URL.Query()["watch"]
+		values, ok := queryArgs["watch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -66542,10 +67303,13 @@ func decodeWatchCoreV1NamespacedEndpointsListParams(args map[string]string, r *h
 }
 
 func decodeWatchCoreV1NamespacedEventParams(args map[string]string, r *http.Request) (WatchCoreV1NamespacedEventParams, error) {
-	var params WatchCoreV1NamespacedEventParams
+	var (
+		params    WatchCoreV1NamespacedEventParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode query: allowWatchBookmarks.
 	{
-		values, ok := r.URL.Query()["allowWatchBookmarks"]
+		values, ok := queryArgs["allowWatchBookmarks"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -66580,7 +67344,7 @@ func decodeWatchCoreV1NamespacedEventParams(args map[string]string, r *http.Requ
 	}
 	// Decode query: continue.
 	{
-		values, ok := r.URL.Query()["continue"]
+		values, ok := queryArgs["continue"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -66615,7 +67379,7 @@ func decodeWatchCoreV1NamespacedEventParams(args map[string]string, r *http.Requ
 	}
 	// Decode query: fieldSelector.
 	{
-		values, ok := r.URL.Query()["fieldSelector"]
+		values, ok := queryArgs["fieldSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -66650,7 +67414,7 @@ func decodeWatchCoreV1NamespacedEventParams(args map[string]string, r *http.Requ
 	}
 	// Decode query: labelSelector.
 	{
-		values, ok := r.URL.Query()["labelSelector"]
+		values, ok := queryArgs["labelSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -66685,7 +67449,7 @@ func decodeWatchCoreV1NamespacedEventParams(args map[string]string, r *http.Requ
 	}
 	// Decode query: limit.
 	{
-		values, ok := r.URL.Query()["limit"]
+		values, ok := queryArgs["limit"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -66782,7 +67546,7 @@ func decodeWatchCoreV1NamespacedEventParams(args map[string]string, r *http.Requ
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -66817,7 +67581,7 @@ func decodeWatchCoreV1NamespacedEventParams(args map[string]string, r *http.Requ
 	}
 	// Decode query: resourceVersion.
 	{
-		values, ok := r.URL.Query()["resourceVersion"]
+		values, ok := queryArgs["resourceVersion"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -66852,7 +67616,7 @@ func decodeWatchCoreV1NamespacedEventParams(args map[string]string, r *http.Requ
 	}
 	// Decode query: resourceVersionMatch.
 	{
-		values, ok := r.URL.Query()["resourceVersionMatch"]
+		values, ok := queryArgs["resourceVersionMatch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -66887,7 +67651,7 @@ func decodeWatchCoreV1NamespacedEventParams(args map[string]string, r *http.Requ
 	}
 	// Decode query: timeoutSeconds.
 	{
-		values, ok := r.URL.Query()["timeoutSeconds"]
+		values, ok := queryArgs["timeoutSeconds"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -66922,7 +67686,7 @@ func decodeWatchCoreV1NamespacedEventParams(args map[string]string, r *http.Requ
 	}
 	// Decode query: watch.
 	{
-		values, ok := r.URL.Query()["watch"]
+		values, ok := queryArgs["watch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -66959,10 +67723,13 @@ func decodeWatchCoreV1NamespacedEventParams(args map[string]string, r *http.Requ
 }
 
 func decodeWatchCoreV1NamespacedEventListParams(args map[string]string, r *http.Request) (WatchCoreV1NamespacedEventListParams, error) {
-	var params WatchCoreV1NamespacedEventListParams
+	var (
+		params    WatchCoreV1NamespacedEventListParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode query: allowWatchBookmarks.
 	{
-		values, ok := r.URL.Query()["allowWatchBookmarks"]
+		values, ok := queryArgs["allowWatchBookmarks"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -66997,7 +67764,7 @@ func decodeWatchCoreV1NamespacedEventListParams(args map[string]string, r *http.
 	}
 	// Decode query: continue.
 	{
-		values, ok := r.URL.Query()["continue"]
+		values, ok := queryArgs["continue"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -67032,7 +67799,7 @@ func decodeWatchCoreV1NamespacedEventListParams(args map[string]string, r *http.
 	}
 	// Decode query: fieldSelector.
 	{
-		values, ok := r.URL.Query()["fieldSelector"]
+		values, ok := queryArgs["fieldSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -67067,7 +67834,7 @@ func decodeWatchCoreV1NamespacedEventListParams(args map[string]string, r *http.
 	}
 	// Decode query: labelSelector.
 	{
-		values, ok := r.URL.Query()["labelSelector"]
+		values, ok := queryArgs["labelSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -67102,7 +67869,7 @@ func decodeWatchCoreV1NamespacedEventListParams(args map[string]string, r *http.
 	}
 	// Decode query: limit.
 	{
-		values, ok := r.URL.Query()["limit"]
+		values, ok := queryArgs["limit"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -67168,7 +67935,7 @@ func decodeWatchCoreV1NamespacedEventListParams(args map[string]string, r *http.
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -67203,7 +67970,7 @@ func decodeWatchCoreV1NamespacedEventListParams(args map[string]string, r *http.
 	}
 	// Decode query: resourceVersion.
 	{
-		values, ok := r.URL.Query()["resourceVersion"]
+		values, ok := queryArgs["resourceVersion"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -67238,7 +68005,7 @@ func decodeWatchCoreV1NamespacedEventListParams(args map[string]string, r *http.
 	}
 	// Decode query: resourceVersionMatch.
 	{
-		values, ok := r.URL.Query()["resourceVersionMatch"]
+		values, ok := queryArgs["resourceVersionMatch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -67273,7 +68040,7 @@ func decodeWatchCoreV1NamespacedEventListParams(args map[string]string, r *http.
 	}
 	// Decode query: timeoutSeconds.
 	{
-		values, ok := r.URL.Query()["timeoutSeconds"]
+		values, ok := queryArgs["timeoutSeconds"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -67308,7 +68075,7 @@ func decodeWatchCoreV1NamespacedEventListParams(args map[string]string, r *http.
 	}
 	// Decode query: watch.
 	{
-		values, ok := r.URL.Query()["watch"]
+		values, ok := queryArgs["watch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -67345,10 +68112,13 @@ func decodeWatchCoreV1NamespacedEventListParams(args map[string]string, r *http.
 }
 
 func decodeWatchCoreV1NamespacedLimitRangeParams(args map[string]string, r *http.Request) (WatchCoreV1NamespacedLimitRangeParams, error) {
-	var params WatchCoreV1NamespacedLimitRangeParams
+	var (
+		params    WatchCoreV1NamespacedLimitRangeParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode query: allowWatchBookmarks.
 	{
-		values, ok := r.URL.Query()["allowWatchBookmarks"]
+		values, ok := queryArgs["allowWatchBookmarks"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -67383,7 +68153,7 @@ func decodeWatchCoreV1NamespacedLimitRangeParams(args map[string]string, r *http
 	}
 	// Decode query: continue.
 	{
-		values, ok := r.URL.Query()["continue"]
+		values, ok := queryArgs["continue"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -67418,7 +68188,7 @@ func decodeWatchCoreV1NamespacedLimitRangeParams(args map[string]string, r *http
 	}
 	// Decode query: fieldSelector.
 	{
-		values, ok := r.URL.Query()["fieldSelector"]
+		values, ok := queryArgs["fieldSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -67453,7 +68223,7 @@ func decodeWatchCoreV1NamespacedLimitRangeParams(args map[string]string, r *http
 	}
 	// Decode query: labelSelector.
 	{
-		values, ok := r.URL.Query()["labelSelector"]
+		values, ok := queryArgs["labelSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -67488,7 +68258,7 @@ func decodeWatchCoreV1NamespacedLimitRangeParams(args map[string]string, r *http
 	}
 	// Decode query: limit.
 	{
-		values, ok := r.URL.Query()["limit"]
+		values, ok := queryArgs["limit"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -67585,7 +68355,7 @@ func decodeWatchCoreV1NamespacedLimitRangeParams(args map[string]string, r *http
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -67620,7 +68390,7 @@ func decodeWatchCoreV1NamespacedLimitRangeParams(args map[string]string, r *http
 	}
 	// Decode query: resourceVersion.
 	{
-		values, ok := r.URL.Query()["resourceVersion"]
+		values, ok := queryArgs["resourceVersion"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -67655,7 +68425,7 @@ func decodeWatchCoreV1NamespacedLimitRangeParams(args map[string]string, r *http
 	}
 	// Decode query: resourceVersionMatch.
 	{
-		values, ok := r.URL.Query()["resourceVersionMatch"]
+		values, ok := queryArgs["resourceVersionMatch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -67690,7 +68460,7 @@ func decodeWatchCoreV1NamespacedLimitRangeParams(args map[string]string, r *http
 	}
 	// Decode query: timeoutSeconds.
 	{
-		values, ok := r.URL.Query()["timeoutSeconds"]
+		values, ok := queryArgs["timeoutSeconds"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -67725,7 +68495,7 @@ func decodeWatchCoreV1NamespacedLimitRangeParams(args map[string]string, r *http
 	}
 	// Decode query: watch.
 	{
-		values, ok := r.URL.Query()["watch"]
+		values, ok := queryArgs["watch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -67762,10 +68532,13 @@ func decodeWatchCoreV1NamespacedLimitRangeParams(args map[string]string, r *http
 }
 
 func decodeWatchCoreV1NamespacedLimitRangeListParams(args map[string]string, r *http.Request) (WatchCoreV1NamespacedLimitRangeListParams, error) {
-	var params WatchCoreV1NamespacedLimitRangeListParams
+	var (
+		params    WatchCoreV1NamespacedLimitRangeListParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode query: allowWatchBookmarks.
 	{
-		values, ok := r.URL.Query()["allowWatchBookmarks"]
+		values, ok := queryArgs["allowWatchBookmarks"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -67800,7 +68573,7 @@ func decodeWatchCoreV1NamespacedLimitRangeListParams(args map[string]string, r *
 	}
 	// Decode query: continue.
 	{
-		values, ok := r.URL.Query()["continue"]
+		values, ok := queryArgs["continue"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -67835,7 +68608,7 @@ func decodeWatchCoreV1NamespacedLimitRangeListParams(args map[string]string, r *
 	}
 	// Decode query: fieldSelector.
 	{
-		values, ok := r.URL.Query()["fieldSelector"]
+		values, ok := queryArgs["fieldSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -67870,7 +68643,7 @@ func decodeWatchCoreV1NamespacedLimitRangeListParams(args map[string]string, r *
 	}
 	// Decode query: labelSelector.
 	{
-		values, ok := r.URL.Query()["labelSelector"]
+		values, ok := queryArgs["labelSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -67905,7 +68678,7 @@ func decodeWatchCoreV1NamespacedLimitRangeListParams(args map[string]string, r *
 	}
 	// Decode query: limit.
 	{
-		values, ok := r.URL.Query()["limit"]
+		values, ok := queryArgs["limit"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -67971,7 +68744,7 @@ func decodeWatchCoreV1NamespacedLimitRangeListParams(args map[string]string, r *
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -68006,7 +68779,7 @@ func decodeWatchCoreV1NamespacedLimitRangeListParams(args map[string]string, r *
 	}
 	// Decode query: resourceVersion.
 	{
-		values, ok := r.URL.Query()["resourceVersion"]
+		values, ok := queryArgs["resourceVersion"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -68041,7 +68814,7 @@ func decodeWatchCoreV1NamespacedLimitRangeListParams(args map[string]string, r *
 	}
 	// Decode query: resourceVersionMatch.
 	{
-		values, ok := r.URL.Query()["resourceVersionMatch"]
+		values, ok := queryArgs["resourceVersionMatch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -68076,7 +68849,7 @@ func decodeWatchCoreV1NamespacedLimitRangeListParams(args map[string]string, r *
 	}
 	// Decode query: timeoutSeconds.
 	{
-		values, ok := r.URL.Query()["timeoutSeconds"]
+		values, ok := queryArgs["timeoutSeconds"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -68111,7 +68884,7 @@ func decodeWatchCoreV1NamespacedLimitRangeListParams(args map[string]string, r *
 	}
 	// Decode query: watch.
 	{
-		values, ok := r.URL.Query()["watch"]
+		values, ok := queryArgs["watch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -68148,10 +68921,13 @@ func decodeWatchCoreV1NamespacedLimitRangeListParams(args map[string]string, r *
 }
 
 func decodeWatchCoreV1NamespacedPersistentVolumeClaimParams(args map[string]string, r *http.Request) (WatchCoreV1NamespacedPersistentVolumeClaimParams, error) {
-	var params WatchCoreV1NamespacedPersistentVolumeClaimParams
+	var (
+		params    WatchCoreV1NamespacedPersistentVolumeClaimParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode query: allowWatchBookmarks.
 	{
-		values, ok := r.URL.Query()["allowWatchBookmarks"]
+		values, ok := queryArgs["allowWatchBookmarks"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -68186,7 +68962,7 @@ func decodeWatchCoreV1NamespacedPersistentVolumeClaimParams(args map[string]stri
 	}
 	// Decode query: continue.
 	{
-		values, ok := r.URL.Query()["continue"]
+		values, ok := queryArgs["continue"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -68221,7 +68997,7 @@ func decodeWatchCoreV1NamespacedPersistentVolumeClaimParams(args map[string]stri
 	}
 	// Decode query: fieldSelector.
 	{
-		values, ok := r.URL.Query()["fieldSelector"]
+		values, ok := queryArgs["fieldSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -68256,7 +69032,7 @@ func decodeWatchCoreV1NamespacedPersistentVolumeClaimParams(args map[string]stri
 	}
 	// Decode query: labelSelector.
 	{
-		values, ok := r.URL.Query()["labelSelector"]
+		values, ok := queryArgs["labelSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -68291,7 +69067,7 @@ func decodeWatchCoreV1NamespacedPersistentVolumeClaimParams(args map[string]stri
 	}
 	// Decode query: limit.
 	{
-		values, ok := r.URL.Query()["limit"]
+		values, ok := queryArgs["limit"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -68388,7 +69164,7 @@ func decodeWatchCoreV1NamespacedPersistentVolumeClaimParams(args map[string]stri
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -68423,7 +69199,7 @@ func decodeWatchCoreV1NamespacedPersistentVolumeClaimParams(args map[string]stri
 	}
 	// Decode query: resourceVersion.
 	{
-		values, ok := r.URL.Query()["resourceVersion"]
+		values, ok := queryArgs["resourceVersion"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -68458,7 +69234,7 @@ func decodeWatchCoreV1NamespacedPersistentVolumeClaimParams(args map[string]stri
 	}
 	// Decode query: resourceVersionMatch.
 	{
-		values, ok := r.URL.Query()["resourceVersionMatch"]
+		values, ok := queryArgs["resourceVersionMatch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -68493,7 +69269,7 @@ func decodeWatchCoreV1NamespacedPersistentVolumeClaimParams(args map[string]stri
 	}
 	// Decode query: timeoutSeconds.
 	{
-		values, ok := r.URL.Query()["timeoutSeconds"]
+		values, ok := queryArgs["timeoutSeconds"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -68528,7 +69304,7 @@ func decodeWatchCoreV1NamespacedPersistentVolumeClaimParams(args map[string]stri
 	}
 	// Decode query: watch.
 	{
-		values, ok := r.URL.Query()["watch"]
+		values, ok := queryArgs["watch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -68565,10 +69341,13 @@ func decodeWatchCoreV1NamespacedPersistentVolumeClaimParams(args map[string]stri
 }
 
 func decodeWatchCoreV1NamespacedPersistentVolumeClaimListParams(args map[string]string, r *http.Request) (WatchCoreV1NamespacedPersistentVolumeClaimListParams, error) {
-	var params WatchCoreV1NamespacedPersistentVolumeClaimListParams
+	var (
+		params    WatchCoreV1NamespacedPersistentVolumeClaimListParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode query: allowWatchBookmarks.
 	{
-		values, ok := r.URL.Query()["allowWatchBookmarks"]
+		values, ok := queryArgs["allowWatchBookmarks"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -68603,7 +69382,7 @@ func decodeWatchCoreV1NamespacedPersistentVolumeClaimListParams(args map[string]
 	}
 	// Decode query: continue.
 	{
-		values, ok := r.URL.Query()["continue"]
+		values, ok := queryArgs["continue"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -68638,7 +69417,7 @@ func decodeWatchCoreV1NamespacedPersistentVolumeClaimListParams(args map[string]
 	}
 	// Decode query: fieldSelector.
 	{
-		values, ok := r.URL.Query()["fieldSelector"]
+		values, ok := queryArgs["fieldSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -68673,7 +69452,7 @@ func decodeWatchCoreV1NamespacedPersistentVolumeClaimListParams(args map[string]
 	}
 	// Decode query: labelSelector.
 	{
-		values, ok := r.URL.Query()["labelSelector"]
+		values, ok := queryArgs["labelSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -68708,7 +69487,7 @@ func decodeWatchCoreV1NamespacedPersistentVolumeClaimListParams(args map[string]
 	}
 	// Decode query: limit.
 	{
-		values, ok := r.URL.Query()["limit"]
+		values, ok := queryArgs["limit"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -68774,7 +69553,7 @@ func decodeWatchCoreV1NamespacedPersistentVolumeClaimListParams(args map[string]
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -68809,7 +69588,7 @@ func decodeWatchCoreV1NamespacedPersistentVolumeClaimListParams(args map[string]
 	}
 	// Decode query: resourceVersion.
 	{
-		values, ok := r.URL.Query()["resourceVersion"]
+		values, ok := queryArgs["resourceVersion"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -68844,7 +69623,7 @@ func decodeWatchCoreV1NamespacedPersistentVolumeClaimListParams(args map[string]
 	}
 	// Decode query: resourceVersionMatch.
 	{
-		values, ok := r.URL.Query()["resourceVersionMatch"]
+		values, ok := queryArgs["resourceVersionMatch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -68879,7 +69658,7 @@ func decodeWatchCoreV1NamespacedPersistentVolumeClaimListParams(args map[string]
 	}
 	// Decode query: timeoutSeconds.
 	{
-		values, ok := r.URL.Query()["timeoutSeconds"]
+		values, ok := queryArgs["timeoutSeconds"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -68914,7 +69693,7 @@ func decodeWatchCoreV1NamespacedPersistentVolumeClaimListParams(args map[string]
 	}
 	// Decode query: watch.
 	{
-		values, ok := r.URL.Query()["watch"]
+		values, ok := queryArgs["watch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -68951,10 +69730,13 @@ func decodeWatchCoreV1NamespacedPersistentVolumeClaimListParams(args map[string]
 }
 
 func decodeWatchCoreV1NamespacedPodParams(args map[string]string, r *http.Request) (WatchCoreV1NamespacedPodParams, error) {
-	var params WatchCoreV1NamespacedPodParams
+	var (
+		params    WatchCoreV1NamespacedPodParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode query: allowWatchBookmarks.
 	{
-		values, ok := r.URL.Query()["allowWatchBookmarks"]
+		values, ok := queryArgs["allowWatchBookmarks"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -68989,7 +69771,7 @@ func decodeWatchCoreV1NamespacedPodParams(args map[string]string, r *http.Reques
 	}
 	// Decode query: continue.
 	{
-		values, ok := r.URL.Query()["continue"]
+		values, ok := queryArgs["continue"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -69024,7 +69806,7 @@ func decodeWatchCoreV1NamespacedPodParams(args map[string]string, r *http.Reques
 	}
 	// Decode query: fieldSelector.
 	{
-		values, ok := r.URL.Query()["fieldSelector"]
+		values, ok := queryArgs["fieldSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -69059,7 +69841,7 @@ func decodeWatchCoreV1NamespacedPodParams(args map[string]string, r *http.Reques
 	}
 	// Decode query: labelSelector.
 	{
-		values, ok := r.URL.Query()["labelSelector"]
+		values, ok := queryArgs["labelSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -69094,7 +69876,7 @@ func decodeWatchCoreV1NamespacedPodParams(args map[string]string, r *http.Reques
 	}
 	// Decode query: limit.
 	{
-		values, ok := r.URL.Query()["limit"]
+		values, ok := queryArgs["limit"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -69191,7 +69973,7 @@ func decodeWatchCoreV1NamespacedPodParams(args map[string]string, r *http.Reques
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -69226,7 +70008,7 @@ func decodeWatchCoreV1NamespacedPodParams(args map[string]string, r *http.Reques
 	}
 	// Decode query: resourceVersion.
 	{
-		values, ok := r.URL.Query()["resourceVersion"]
+		values, ok := queryArgs["resourceVersion"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -69261,7 +70043,7 @@ func decodeWatchCoreV1NamespacedPodParams(args map[string]string, r *http.Reques
 	}
 	// Decode query: resourceVersionMatch.
 	{
-		values, ok := r.URL.Query()["resourceVersionMatch"]
+		values, ok := queryArgs["resourceVersionMatch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -69296,7 +70078,7 @@ func decodeWatchCoreV1NamespacedPodParams(args map[string]string, r *http.Reques
 	}
 	// Decode query: timeoutSeconds.
 	{
-		values, ok := r.URL.Query()["timeoutSeconds"]
+		values, ok := queryArgs["timeoutSeconds"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -69331,7 +70113,7 @@ func decodeWatchCoreV1NamespacedPodParams(args map[string]string, r *http.Reques
 	}
 	// Decode query: watch.
 	{
-		values, ok := r.URL.Query()["watch"]
+		values, ok := queryArgs["watch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -69368,10 +70150,13 @@ func decodeWatchCoreV1NamespacedPodParams(args map[string]string, r *http.Reques
 }
 
 func decodeWatchCoreV1NamespacedPodListParams(args map[string]string, r *http.Request) (WatchCoreV1NamespacedPodListParams, error) {
-	var params WatchCoreV1NamespacedPodListParams
+	var (
+		params    WatchCoreV1NamespacedPodListParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode query: allowWatchBookmarks.
 	{
-		values, ok := r.URL.Query()["allowWatchBookmarks"]
+		values, ok := queryArgs["allowWatchBookmarks"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -69406,7 +70191,7 @@ func decodeWatchCoreV1NamespacedPodListParams(args map[string]string, r *http.Re
 	}
 	// Decode query: continue.
 	{
-		values, ok := r.URL.Query()["continue"]
+		values, ok := queryArgs["continue"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -69441,7 +70226,7 @@ func decodeWatchCoreV1NamespacedPodListParams(args map[string]string, r *http.Re
 	}
 	// Decode query: fieldSelector.
 	{
-		values, ok := r.URL.Query()["fieldSelector"]
+		values, ok := queryArgs["fieldSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -69476,7 +70261,7 @@ func decodeWatchCoreV1NamespacedPodListParams(args map[string]string, r *http.Re
 	}
 	// Decode query: labelSelector.
 	{
-		values, ok := r.URL.Query()["labelSelector"]
+		values, ok := queryArgs["labelSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -69511,7 +70296,7 @@ func decodeWatchCoreV1NamespacedPodListParams(args map[string]string, r *http.Re
 	}
 	// Decode query: limit.
 	{
-		values, ok := r.URL.Query()["limit"]
+		values, ok := queryArgs["limit"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -69577,7 +70362,7 @@ func decodeWatchCoreV1NamespacedPodListParams(args map[string]string, r *http.Re
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -69612,7 +70397,7 @@ func decodeWatchCoreV1NamespacedPodListParams(args map[string]string, r *http.Re
 	}
 	// Decode query: resourceVersion.
 	{
-		values, ok := r.URL.Query()["resourceVersion"]
+		values, ok := queryArgs["resourceVersion"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -69647,7 +70432,7 @@ func decodeWatchCoreV1NamespacedPodListParams(args map[string]string, r *http.Re
 	}
 	// Decode query: resourceVersionMatch.
 	{
-		values, ok := r.URL.Query()["resourceVersionMatch"]
+		values, ok := queryArgs["resourceVersionMatch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -69682,7 +70467,7 @@ func decodeWatchCoreV1NamespacedPodListParams(args map[string]string, r *http.Re
 	}
 	// Decode query: timeoutSeconds.
 	{
-		values, ok := r.URL.Query()["timeoutSeconds"]
+		values, ok := queryArgs["timeoutSeconds"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -69717,7 +70502,7 @@ func decodeWatchCoreV1NamespacedPodListParams(args map[string]string, r *http.Re
 	}
 	// Decode query: watch.
 	{
-		values, ok := r.URL.Query()["watch"]
+		values, ok := queryArgs["watch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -69754,10 +70539,13 @@ func decodeWatchCoreV1NamespacedPodListParams(args map[string]string, r *http.Re
 }
 
 func decodeWatchCoreV1NamespacedPodTemplateParams(args map[string]string, r *http.Request) (WatchCoreV1NamespacedPodTemplateParams, error) {
-	var params WatchCoreV1NamespacedPodTemplateParams
+	var (
+		params    WatchCoreV1NamespacedPodTemplateParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode query: allowWatchBookmarks.
 	{
-		values, ok := r.URL.Query()["allowWatchBookmarks"]
+		values, ok := queryArgs["allowWatchBookmarks"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -69792,7 +70580,7 @@ func decodeWatchCoreV1NamespacedPodTemplateParams(args map[string]string, r *htt
 	}
 	// Decode query: continue.
 	{
-		values, ok := r.URL.Query()["continue"]
+		values, ok := queryArgs["continue"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -69827,7 +70615,7 @@ func decodeWatchCoreV1NamespacedPodTemplateParams(args map[string]string, r *htt
 	}
 	// Decode query: fieldSelector.
 	{
-		values, ok := r.URL.Query()["fieldSelector"]
+		values, ok := queryArgs["fieldSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -69862,7 +70650,7 @@ func decodeWatchCoreV1NamespacedPodTemplateParams(args map[string]string, r *htt
 	}
 	// Decode query: labelSelector.
 	{
-		values, ok := r.URL.Query()["labelSelector"]
+		values, ok := queryArgs["labelSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -69897,7 +70685,7 @@ func decodeWatchCoreV1NamespacedPodTemplateParams(args map[string]string, r *htt
 	}
 	// Decode query: limit.
 	{
-		values, ok := r.URL.Query()["limit"]
+		values, ok := queryArgs["limit"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -69994,7 +70782,7 @@ func decodeWatchCoreV1NamespacedPodTemplateParams(args map[string]string, r *htt
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -70029,7 +70817,7 @@ func decodeWatchCoreV1NamespacedPodTemplateParams(args map[string]string, r *htt
 	}
 	// Decode query: resourceVersion.
 	{
-		values, ok := r.URL.Query()["resourceVersion"]
+		values, ok := queryArgs["resourceVersion"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -70064,7 +70852,7 @@ func decodeWatchCoreV1NamespacedPodTemplateParams(args map[string]string, r *htt
 	}
 	// Decode query: resourceVersionMatch.
 	{
-		values, ok := r.URL.Query()["resourceVersionMatch"]
+		values, ok := queryArgs["resourceVersionMatch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -70099,7 +70887,7 @@ func decodeWatchCoreV1NamespacedPodTemplateParams(args map[string]string, r *htt
 	}
 	// Decode query: timeoutSeconds.
 	{
-		values, ok := r.URL.Query()["timeoutSeconds"]
+		values, ok := queryArgs["timeoutSeconds"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -70134,7 +70922,7 @@ func decodeWatchCoreV1NamespacedPodTemplateParams(args map[string]string, r *htt
 	}
 	// Decode query: watch.
 	{
-		values, ok := r.URL.Query()["watch"]
+		values, ok := queryArgs["watch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -70171,10 +70959,13 @@ func decodeWatchCoreV1NamespacedPodTemplateParams(args map[string]string, r *htt
 }
 
 func decodeWatchCoreV1NamespacedPodTemplateListParams(args map[string]string, r *http.Request) (WatchCoreV1NamespacedPodTemplateListParams, error) {
-	var params WatchCoreV1NamespacedPodTemplateListParams
+	var (
+		params    WatchCoreV1NamespacedPodTemplateListParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode query: allowWatchBookmarks.
 	{
-		values, ok := r.URL.Query()["allowWatchBookmarks"]
+		values, ok := queryArgs["allowWatchBookmarks"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -70209,7 +71000,7 @@ func decodeWatchCoreV1NamespacedPodTemplateListParams(args map[string]string, r 
 	}
 	// Decode query: continue.
 	{
-		values, ok := r.URL.Query()["continue"]
+		values, ok := queryArgs["continue"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -70244,7 +71035,7 @@ func decodeWatchCoreV1NamespacedPodTemplateListParams(args map[string]string, r 
 	}
 	// Decode query: fieldSelector.
 	{
-		values, ok := r.URL.Query()["fieldSelector"]
+		values, ok := queryArgs["fieldSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -70279,7 +71070,7 @@ func decodeWatchCoreV1NamespacedPodTemplateListParams(args map[string]string, r 
 	}
 	// Decode query: labelSelector.
 	{
-		values, ok := r.URL.Query()["labelSelector"]
+		values, ok := queryArgs["labelSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -70314,7 +71105,7 @@ func decodeWatchCoreV1NamespacedPodTemplateListParams(args map[string]string, r 
 	}
 	// Decode query: limit.
 	{
-		values, ok := r.URL.Query()["limit"]
+		values, ok := queryArgs["limit"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -70380,7 +71171,7 @@ func decodeWatchCoreV1NamespacedPodTemplateListParams(args map[string]string, r 
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -70415,7 +71206,7 @@ func decodeWatchCoreV1NamespacedPodTemplateListParams(args map[string]string, r 
 	}
 	// Decode query: resourceVersion.
 	{
-		values, ok := r.URL.Query()["resourceVersion"]
+		values, ok := queryArgs["resourceVersion"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -70450,7 +71241,7 @@ func decodeWatchCoreV1NamespacedPodTemplateListParams(args map[string]string, r 
 	}
 	// Decode query: resourceVersionMatch.
 	{
-		values, ok := r.URL.Query()["resourceVersionMatch"]
+		values, ok := queryArgs["resourceVersionMatch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -70485,7 +71276,7 @@ func decodeWatchCoreV1NamespacedPodTemplateListParams(args map[string]string, r 
 	}
 	// Decode query: timeoutSeconds.
 	{
-		values, ok := r.URL.Query()["timeoutSeconds"]
+		values, ok := queryArgs["timeoutSeconds"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -70520,7 +71311,7 @@ func decodeWatchCoreV1NamespacedPodTemplateListParams(args map[string]string, r 
 	}
 	// Decode query: watch.
 	{
-		values, ok := r.URL.Query()["watch"]
+		values, ok := queryArgs["watch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -70557,10 +71348,13 @@ func decodeWatchCoreV1NamespacedPodTemplateListParams(args map[string]string, r 
 }
 
 func decodeWatchCoreV1NamespacedReplicationControllerParams(args map[string]string, r *http.Request) (WatchCoreV1NamespacedReplicationControllerParams, error) {
-	var params WatchCoreV1NamespacedReplicationControllerParams
+	var (
+		params    WatchCoreV1NamespacedReplicationControllerParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode query: allowWatchBookmarks.
 	{
-		values, ok := r.URL.Query()["allowWatchBookmarks"]
+		values, ok := queryArgs["allowWatchBookmarks"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -70595,7 +71389,7 @@ func decodeWatchCoreV1NamespacedReplicationControllerParams(args map[string]stri
 	}
 	// Decode query: continue.
 	{
-		values, ok := r.URL.Query()["continue"]
+		values, ok := queryArgs["continue"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -70630,7 +71424,7 @@ func decodeWatchCoreV1NamespacedReplicationControllerParams(args map[string]stri
 	}
 	// Decode query: fieldSelector.
 	{
-		values, ok := r.URL.Query()["fieldSelector"]
+		values, ok := queryArgs["fieldSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -70665,7 +71459,7 @@ func decodeWatchCoreV1NamespacedReplicationControllerParams(args map[string]stri
 	}
 	// Decode query: labelSelector.
 	{
-		values, ok := r.URL.Query()["labelSelector"]
+		values, ok := queryArgs["labelSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -70700,7 +71494,7 @@ func decodeWatchCoreV1NamespacedReplicationControllerParams(args map[string]stri
 	}
 	// Decode query: limit.
 	{
-		values, ok := r.URL.Query()["limit"]
+		values, ok := queryArgs["limit"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -70797,7 +71591,7 @@ func decodeWatchCoreV1NamespacedReplicationControllerParams(args map[string]stri
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -70832,7 +71626,7 @@ func decodeWatchCoreV1NamespacedReplicationControllerParams(args map[string]stri
 	}
 	// Decode query: resourceVersion.
 	{
-		values, ok := r.URL.Query()["resourceVersion"]
+		values, ok := queryArgs["resourceVersion"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -70867,7 +71661,7 @@ func decodeWatchCoreV1NamespacedReplicationControllerParams(args map[string]stri
 	}
 	// Decode query: resourceVersionMatch.
 	{
-		values, ok := r.URL.Query()["resourceVersionMatch"]
+		values, ok := queryArgs["resourceVersionMatch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -70902,7 +71696,7 @@ func decodeWatchCoreV1NamespacedReplicationControllerParams(args map[string]stri
 	}
 	// Decode query: timeoutSeconds.
 	{
-		values, ok := r.URL.Query()["timeoutSeconds"]
+		values, ok := queryArgs["timeoutSeconds"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -70937,7 +71731,7 @@ func decodeWatchCoreV1NamespacedReplicationControllerParams(args map[string]stri
 	}
 	// Decode query: watch.
 	{
-		values, ok := r.URL.Query()["watch"]
+		values, ok := queryArgs["watch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -70974,10 +71768,13 @@ func decodeWatchCoreV1NamespacedReplicationControllerParams(args map[string]stri
 }
 
 func decodeWatchCoreV1NamespacedReplicationControllerListParams(args map[string]string, r *http.Request) (WatchCoreV1NamespacedReplicationControllerListParams, error) {
-	var params WatchCoreV1NamespacedReplicationControllerListParams
+	var (
+		params    WatchCoreV1NamespacedReplicationControllerListParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode query: allowWatchBookmarks.
 	{
-		values, ok := r.URL.Query()["allowWatchBookmarks"]
+		values, ok := queryArgs["allowWatchBookmarks"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -71012,7 +71809,7 @@ func decodeWatchCoreV1NamespacedReplicationControllerListParams(args map[string]
 	}
 	// Decode query: continue.
 	{
-		values, ok := r.URL.Query()["continue"]
+		values, ok := queryArgs["continue"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -71047,7 +71844,7 @@ func decodeWatchCoreV1NamespacedReplicationControllerListParams(args map[string]
 	}
 	// Decode query: fieldSelector.
 	{
-		values, ok := r.URL.Query()["fieldSelector"]
+		values, ok := queryArgs["fieldSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -71082,7 +71879,7 @@ func decodeWatchCoreV1NamespacedReplicationControllerListParams(args map[string]
 	}
 	// Decode query: labelSelector.
 	{
-		values, ok := r.URL.Query()["labelSelector"]
+		values, ok := queryArgs["labelSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -71117,7 +71914,7 @@ func decodeWatchCoreV1NamespacedReplicationControllerListParams(args map[string]
 	}
 	// Decode query: limit.
 	{
-		values, ok := r.URL.Query()["limit"]
+		values, ok := queryArgs["limit"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -71183,7 +71980,7 @@ func decodeWatchCoreV1NamespacedReplicationControllerListParams(args map[string]
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -71218,7 +72015,7 @@ func decodeWatchCoreV1NamespacedReplicationControllerListParams(args map[string]
 	}
 	// Decode query: resourceVersion.
 	{
-		values, ok := r.URL.Query()["resourceVersion"]
+		values, ok := queryArgs["resourceVersion"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -71253,7 +72050,7 @@ func decodeWatchCoreV1NamespacedReplicationControllerListParams(args map[string]
 	}
 	// Decode query: resourceVersionMatch.
 	{
-		values, ok := r.URL.Query()["resourceVersionMatch"]
+		values, ok := queryArgs["resourceVersionMatch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -71288,7 +72085,7 @@ func decodeWatchCoreV1NamespacedReplicationControllerListParams(args map[string]
 	}
 	// Decode query: timeoutSeconds.
 	{
-		values, ok := r.URL.Query()["timeoutSeconds"]
+		values, ok := queryArgs["timeoutSeconds"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -71323,7 +72120,7 @@ func decodeWatchCoreV1NamespacedReplicationControllerListParams(args map[string]
 	}
 	// Decode query: watch.
 	{
-		values, ok := r.URL.Query()["watch"]
+		values, ok := queryArgs["watch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -71360,10 +72157,13 @@ func decodeWatchCoreV1NamespacedReplicationControllerListParams(args map[string]
 }
 
 func decodeWatchCoreV1NamespacedResourceQuotaParams(args map[string]string, r *http.Request) (WatchCoreV1NamespacedResourceQuotaParams, error) {
-	var params WatchCoreV1NamespacedResourceQuotaParams
+	var (
+		params    WatchCoreV1NamespacedResourceQuotaParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode query: allowWatchBookmarks.
 	{
-		values, ok := r.URL.Query()["allowWatchBookmarks"]
+		values, ok := queryArgs["allowWatchBookmarks"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -71398,7 +72198,7 @@ func decodeWatchCoreV1NamespacedResourceQuotaParams(args map[string]string, r *h
 	}
 	// Decode query: continue.
 	{
-		values, ok := r.URL.Query()["continue"]
+		values, ok := queryArgs["continue"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -71433,7 +72233,7 @@ func decodeWatchCoreV1NamespacedResourceQuotaParams(args map[string]string, r *h
 	}
 	// Decode query: fieldSelector.
 	{
-		values, ok := r.URL.Query()["fieldSelector"]
+		values, ok := queryArgs["fieldSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -71468,7 +72268,7 @@ func decodeWatchCoreV1NamespacedResourceQuotaParams(args map[string]string, r *h
 	}
 	// Decode query: labelSelector.
 	{
-		values, ok := r.URL.Query()["labelSelector"]
+		values, ok := queryArgs["labelSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -71503,7 +72303,7 @@ func decodeWatchCoreV1NamespacedResourceQuotaParams(args map[string]string, r *h
 	}
 	// Decode query: limit.
 	{
-		values, ok := r.URL.Query()["limit"]
+		values, ok := queryArgs["limit"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -71600,7 +72400,7 @@ func decodeWatchCoreV1NamespacedResourceQuotaParams(args map[string]string, r *h
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -71635,7 +72435,7 @@ func decodeWatchCoreV1NamespacedResourceQuotaParams(args map[string]string, r *h
 	}
 	// Decode query: resourceVersion.
 	{
-		values, ok := r.URL.Query()["resourceVersion"]
+		values, ok := queryArgs["resourceVersion"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -71670,7 +72470,7 @@ func decodeWatchCoreV1NamespacedResourceQuotaParams(args map[string]string, r *h
 	}
 	// Decode query: resourceVersionMatch.
 	{
-		values, ok := r.URL.Query()["resourceVersionMatch"]
+		values, ok := queryArgs["resourceVersionMatch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -71705,7 +72505,7 @@ func decodeWatchCoreV1NamespacedResourceQuotaParams(args map[string]string, r *h
 	}
 	// Decode query: timeoutSeconds.
 	{
-		values, ok := r.URL.Query()["timeoutSeconds"]
+		values, ok := queryArgs["timeoutSeconds"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -71740,7 +72540,7 @@ func decodeWatchCoreV1NamespacedResourceQuotaParams(args map[string]string, r *h
 	}
 	// Decode query: watch.
 	{
-		values, ok := r.URL.Query()["watch"]
+		values, ok := queryArgs["watch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -71777,10 +72577,13 @@ func decodeWatchCoreV1NamespacedResourceQuotaParams(args map[string]string, r *h
 }
 
 func decodeWatchCoreV1NamespacedResourceQuotaListParams(args map[string]string, r *http.Request) (WatchCoreV1NamespacedResourceQuotaListParams, error) {
-	var params WatchCoreV1NamespacedResourceQuotaListParams
+	var (
+		params    WatchCoreV1NamespacedResourceQuotaListParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode query: allowWatchBookmarks.
 	{
-		values, ok := r.URL.Query()["allowWatchBookmarks"]
+		values, ok := queryArgs["allowWatchBookmarks"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -71815,7 +72618,7 @@ func decodeWatchCoreV1NamespacedResourceQuotaListParams(args map[string]string, 
 	}
 	// Decode query: continue.
 	{
-		values, ok := r.URL.Query()["continue"]
+		values, ok := queryArgs["continue"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -71850,7 +72653,7 @@ func decodeWatchCoreV1NamespacedResourceQuotaListParams(args map[string]string, 
 	}
 	// Decode query: fieldSelector.
 	{
-		values, ok := r.URL.Query()["fieldSelector"]
+		values, ok := queryArgs["fieldSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -71885,7 +72688,7 @@ func decodeWatchCoreV1NamespacedResourceQuotaListParams(args map[string]string, 
 	}
 	// Decode query: labelSelector.
 	{
-		values, ok := r.URL.Query()["labelSelector"]
+		values, ok := queryArgs["labelSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -71920,7 +72723,7 @@ func decodeWatchCoreV1NamespacedResourceQuotaListParams(args map[string]string, 
 	}
 	// Decode query: limit.
 	{
-		values, ok := r.URL.Query()["limit"]
+		values, ok := queryArgs["limit"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -71986,7 +72789,7 @@ func decodeWatchCoreV1NamespacedResourceQuotaListParams(args map[string]string, 
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -72021,7 +72824,7 @@ func decodeWatchCoreV1NamespacedResourceQuotaListParams(args map[string]string, 
 	}
 	// Decode query: resourceVersion.
 	{
-		values, ok := r.URL.Query()["resourceVersion"]
+		values, ok := queryArgs["resourceVersion"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -72056,7 +72859,7 @@ func decodeWatchCoreV1NamespacedResourceQuotaListParams(args map[string]string, 
 	}
 	// Decode query: resourceVersionMatch.
 	{
-		values, ok := r.URL.Query()["resourceVersionMatch"]
+		values, ok := queryArgs["resourceVersionMatch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -72091,7 +72894,7 @@ func decodeWatchCoreV1NamespacedResourceQuotaListParams(args map[string]string, 
 	}
 	// Decode query: timeoutSeconds.
 	{
-		values, ok := r.URL.Query()["timeoutSeconds"]
+		values, ok := queryArgs["timeoutSeconds"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -72126,7 +72929,7 @@ func decodeWatchCoreV1NamespacedResourceQuotaListParams(args map[string]string, 
 	}
 	// Decode query: watch.
 	{
-		values, ok := r.URL.Query()["watch"]
+		values, ok := queryArgs["watch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -72163,10 +72966,13 @@ func decodeWatchCoreV1NamespacedResourceQuotaListParams(args map[string]string, 
 }
 
 func decodeWatchCoreV1NamespacedSecretParams(args map[string]string, r *http.Request) (WatchCoreV1NamespacedSecretParams, error) {
-	var params WatchCoreV1NamespacedSecretParams
+	var (
+		params    WatchCoreV1NamespacedSecretParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode query: allowWatchBookmarks.
 	{
-		values, ok := r.URL.Query()["allowWatchBookmarks"]
+		values, ok := queryArgs["allowWatchBookmarks"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -72201,7 +73007,7 @@ func decodeWatchCoreV1NamespacedSecretParams(args map[string]string, r *http.Req
 	}
 	// Decode query: continue.
 	{
-		values, ok := r.URL.Query()["continue"]
+		values, ok := queryArgs["continue"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -72236,7 +73042,7 @@ func decodeWatchCoreV1NamespacedSecretParams(args map[string]string, r *http.Req
 	}
 	// Decode query: fieldSelector.
 	{
-		values, ok := r.URL.Query()["fieldSelector"]
+		values, ok := queryArgs["fieldSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -72271,7 +73077,7 @@ func decodeWatchCoreV1NamespacedSecretParams(args map[string]string, r *http.Req
 	}
 	// Decode query: labelSelector.
 	{
-		values, ok := r.URL.Query()["labelSelector"]
+		values, ok := queryArgs["labelSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -72306,7 +73112,7 @@ func decodeWatchCoreV1NamespacedSecretParams(args map[string]string, r *http.Req
 	}
 	// Decode query: limit.
 	{
-		values, ok := r.URL.Query()["limit"]
+		values, ok := queryArgs["limit"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -72403,7 +73209,7 @@ func decodeWatchCoreV1NamespacedSecretParams(args map[string]string, r *http.Req
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -72438,7 +73244,7 @@ func decodeWatchCoreV1NamespacedSecretParams(args map[string]string, r *http.Req
 	}
 	// Decode query: resourceVersion.
 	{
-		values, ok := r.URL.Query()["resourceVersion"]
+		values, ok := queryArgs["resourceVersion"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -72473,7 +73279,7 @@ func decodeWatchCoreV1NamespacedSecretParams(args map[string]string, r *http.Req
 	}
 	// Decode query: resourceVersionMatch.
 	{
-		values, ok := r.URL.Query()["resourceVersionMatch"]
+		values, ok := queryArgs["resourceVersionMatch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -72508,7 +73314,7 @@ func decodeWatchCoreV1NamespacedSecretParams(args map[string]string, r *http.Req
 	}
 	// Decode query: timeoutSeconds.
 	{
-		values, ok := r.URL.Query()["timeoutSeconds"]
+		values, ok := queryArgs["timeoutSeconds"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -72543,7 +73349,7 @@ func decodeWatchCoreV1NamespacedSecretParams(args map[string]string, r *http.Req
 	}
 	// Decode query: watch.
 	{
-		values, ok := r.URL.Query()["watch"]
+		values, ok := queryArgs["watch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -72580,10 +73386,13 @@ func decodeWatchCoreV1NamespacedSecretParams(args map[string]string, r *http.Req
 }
 
 func decodeWatchCoreV1NamespacedSecretListParams(args map[string]string, r *http.Request) (WatchCoreV1NamespacedSecretListParams, error) {
-	var params WatchCoreV1NamespacedSecretListParams
+	var (
+		params    WatchCoreV1NamespacedSecretListParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode query: allowWatchBookmarks.
 	{
-		values, ok := r.URL.Query()["allowWatchBookmarks"]
+		values, ok := queryArgs["allowWatchBookmarks"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -72618,7 +73427,7 @@ func decodeWatchCoreV1NamespacedSecretListParams(args map[string]string, r *http
 	}
 	// Decode query: continue.
 	{
-		values, ok := r.URL.Query()["continue"]
+		values, ok := queryArgs["continue"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -72653,7 +73462,7 @@ func decodeWatchCoreV1NamespacedSecretListParams(args map[string]string, r *http
 	}
 	// Decode query: fieldSelector.
 	{
-		values, ok := r.URL.Query()["fieldSelector"]
+		values, ok := queryArgs["fieldSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -72688,7 +73497,7 @@ func decodeWatchCoreV1NamespacedSecretListParams(args map[string]string, r *http
 	}
 	// Decode query: labelSelector.
 	{
-		values, ok := r.URL.Query()["labelSelector"]
+		values, ok := queryArgs["labelSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -72723,7 +73532,7 @@ func decodeWatchCoreV1NamespacedSecretListParams(args map[string]string, r *http
 	}
 	// Decode query: limit.
 	{
-		values, ok := r.URL.Query()["limit"]
+		values, ok := queryArgs["limit"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -72789,7 +73598,7 @@ func decodeWatchCoreV1NamespacedSecretListParams(args map[string]string, r *http
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -72824,7 +73633,7 @@ func decodeWatchCoreV1NamespacedSecretListParams(args map[string]string, r *http
 	}
 	// Decode query: resourceVersion.
 	{
-		values, ok := r.URL.Query()["resourceVersion"]
+		values, ok := queryArgs["resourceVersion"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -72859,7 +73668,7 @@ func decodeWatchCoreV1NamespacedSecretListParams(args map[string]string, r *http
 	}
 	// Decode query: resourceVersionMatch.
 	{
-		values, ok := r.URL.Query()["resourceVersionMatch"]
+		values, ok := queryArgs["resourceVersionMatch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -72894,7 +73703,7 @@ func decodeWatchCoreV1NamespacedSecretListParams(args map[string]string, r *http
 	}
 	// Decode query: timeoutSeconds.
 	{
-		values, ok := r.URL.Query()["timeoutSeconds"]
+		values, ok := queryArgs["timeoutSeconds"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -72929,7 +73738,7 @@ func decodeWatchCoreV1NamespacedSecretListParams(args map[string]string, r *http
 	}
 	// Decode query: watch.
 	{
-		values, ok := r.URL.Query()["watch"]
+		values, ok := queryArgs["watch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -72966,10 +73775,13 @@ func decodeWatchCoreV1NamespacedSecretListParams(args map[string]string, r *http
 }
 
 func decodeWatchCoreV1NamespacedServiceParams(args map[string]string, r *http.Request) (WatchCoreV1NamespacedServiceParams, error) {
-	var params WatchCoreV1NamespacedServiceParams
+	var (
+		params    WatchCoreV1NamespacedServiceParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode query: allowWatchBookmarks.
 	{
-		values, ok := r.URL.Query()["allowWatchBookmarks"]
+		values, ok := queryArgs["allowWatchBookmarks"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -73004,7 +73816,7 @@ func decodeWatchCoreV1NamespacedServiceParams(args map[string]string, r *http.Re
 	}
 	// Decode query: continue.
 	{
-		values, ok := r.URL.Query()["continue"]
+		values, ok := queryArgs["continue"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -73039,7 +73851,7 @@ func decodeWatchCoreV1NamespacedServiceParams(args map[string]string, r *http.Re
 	}
 	// Decode query: fieldSelector.
 	{
-		values, ok := r.URL.Query()["fieldSelector"]
+		values, ok := queryArgs["fieldSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -73074,7 +73886,7 @@ func decodeWatchCoreV1NamespacedServiceParams(args map[string]string, r *http.Re
 	}
 	// Decode query: labelSelector.
 	{
-		values, ok := r.URL.Query()["labelSelector"]
+		values, ok := queryArgs["labelSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -73109,7 +73921,7 @@ func decodeWatchCoreV1NamespacedServiceParams(args map[string]string, r *http.Re
 	}
 	// Decode query: limit.
 	{
-		values, ok := r.URL.Query()["limit"]
+		values, ok := queryArgs["limit"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -73206,7 +74018,7 @@ func decodeWatchCoreV1NamespacedServiceParams(args map[string]string, r *http.Re
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -73241,7 +74053,7 @@ func decodeWatchCoreV1NamespacedServiceParams(args map[string]string, r *http.Re
 	}
 	// Decode query: resourceVersion.
 	{
-		values, ok := r.URL.Query()["resourceVersion"]
+		values, ok := queryArgs["resourceVersion"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -73276,7 +74088,7 @@ func decodeWatchCoreV1NamespacedServiceParams(args map[string]string, r *http.Re
 	}
 	// Decode query: resourceVersionMatch.
 	{
-		values, ok := r.URL.Query()["resourceVersionMatch"]
+		values, ok := queryArgs["resourceVersionMatch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -73311,7 +74123,7 @@ func decodeWatchCoreV1NamespacedServiceParams(args map[string]string, r *http.Re
 	}
 	// Decode query: timeoutSeconds.
 	{
-		values, ok := r.URL.Query()["timeoutSeconds"]
+		values, ok := queryArgs["timeoutSeconds"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -73346,7 +74158,7 @@ func decodeWatchCoreV1NamespacedServiceParams(args map[string]string, r *http.Re
 	}
 	// Decode query: watch.
 	{
-		values, ok := r.URL.Query()["watch"]
+		values, ok := queryArgs["watch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -73383,10 +74195,13 @@ func decodeWatchCoreV1NamespacedServiceParams(args map[string]string, r *http.Re
 }
 
 func decodeWatchCoreV1NamespacedServiceAccountParams(args map[string]string, r *http.Request) (WatchCoreV1NamespacedServiceAccountParams, error) {
-	var params WatchCoreV1NamespacedServiceAccountParams
+	var (
+		params    WatchCoreV1NamespacedServiceAccountParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode query: allowWatchBookmarks.
 	{
-		values, ok := r.URL.Query()["allowWatchBookmarks"]
+		values, ok := queryArgs["allowWatchBookmarks"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -73421,7 +74236,7 @@ func decodeWatchCoreV1NamespacedServiceAccountParams(args map[string]string, r *
 	}
 	// Decode query: continue.
 	{
-		values, ok := r.URL.Query()["continue"]
+		values, ok := queryArgs["continue"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -73456,7 +74271,7 @@ func decodeWatchCoreV1NamespacedServiceAccountParams(args map[string]string, r *
 	}
 	// Decode query: fieldSelector.
 	{
-		values, ok := r.URL.Query()["fieldSelector"]
+		values, ok := queryArgs["fieldSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -73491,7 +74306,7 @@ func decodeWatchCoreV1NamespacedServiceAccountParams(args map[string]string, r *
 	}
 	// Decode query: labelSelector.
 	{
-		values, ok := r.URL.Query()["labelSelector"]
+		values, ok := queryArgs["labelSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -73526,7 +74341,7 @@ func decodeWatchCoreV1NamespacedServiceAccountParams(args map[string]string, r *
 	}
 	// Decode query: limit.
 	{
-		values, ok := r.URL.Query()["limit"]
+		values, ok := queryArgs["limit"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -73623,7 +74438,7 @@ func decodeWatchCoreV1NamespacedServiceAccountParams(args map[string]string, r *
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -73658,7 +74473,7 @@ func decodeWatchCoreV1NamespacedServiceAccountParams(args map[string]string, r *
 	}
 	// Decode query: resourceVersion.
 	{
-		values, ok := r.URL.Query()["resourceVersion"]
+		values, ok := queryArgs["resourceVersion"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -73693,7 +74508,7 @@ func decodeWatchCoreV1NamespacedServiceAccountParams(args map[string]string, r *
 	}
 	// Decode query: resourceVersionMatch.
 	{
-		values, ok := r.URL.Query()["resourceVersionMatch"]
+		values, ok := queryArgs["resourceVersionMatch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -73728,7 +74543,7 @@ func decodeWatchCoreV1NamespacedServiceAccountParams(args map[string]string, r *
 	}
 	// Decode query: timeoutSeconds.
 	{
-		values, ok := r.URL.Query()["timeoutSeconds"]
+		values, ok := queryArgs["timeoutSeconds"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -73763,7 +74578,7 @@ func decodeWatchCoreV1NamespacedServiceAccountParams(args map[string]string, r *
 	}
 	// Decode query: watch.
 	{
-		values, ok := r.URL.Query()["watch"]
+		values, ok := queryArgs["watch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -73800,10 +74615,13 @@ func decodeWatchCoreV1NamespacedServiceAccountParams(args map[string]string, r *
 }
 
 func decodeWatchCoreV1NamespacedServiceAccountListParams(args map[string]string, r *http.Request) (WatchCoreV1NamespacedServiceAccountListParams, error) {
-	var params WatchCoreV1NamespacedServiceAccountListParams
+	var (
+		params    WatchCoreV1NamespacedServiceAccountListParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode query: allowWatchBookmarks.
 	{
-		values, ok := r.URL.Query()["allowWatchBookmarks"]
+		values, ok := queryArgs["allowWatchBookmarks"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -73838,7 +74656,7 @@ func decodeWatchCoreV1NamespacedServiceAccountListParams(args map[string]string,
 	}
 	// Decode query: continue.
 	{
-		values, ok := r.URL.Query()["continue"]
+		values, ok := queryArgs["continue"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -73873,7 +74691,7 @@ func decodeWatchCoreV1NamespacedServiceAccountListParams(args map[string]string,
 	}
 	// Decode query: fieldSelector.
 	{
-		values, ok := r.URL.Query()["fieldSelector"]
+		values, ok := queryArgs["fieldSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -73908,7 +74726,7 @@ func decodeWatchCoreV1NamespacedServiceAccountListParams(args map[string]string,
 	}
 	// Decode query: labelSelector.
 	{
-		values, ok := r.URL.Query()["labelSelector"]
+		values, ok := queryArgs["labelSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -73943,7 +74761,7 @@ func decodeWatchCoreV1NamespacedServiceAccountListParams(args map[string]string,
 	}
 	// Decode query: limit.
 	{
-		values, ok := r.URL.Query()["limit"]
+		values, ok := queryArgs["limit"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -74009,7 +74827,7 @@ func decodeWatchCoreV1NamespacedServiceAccountListParams(args map[string]string,
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -74044,7 +74862,7 @@ func decodeWatchCoreV1NamespacedServiceAccountListParams(args map[string]string,
 	}
 	// Decode query: resourceVersion.
 	{
-		values, ok := r.URL.Query()["resourceVersion"]
+		values, ok := queryArgs["resourceVersion"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -74079,7 +74897,7 @@ func decodeWatchCoreV1NamespacedServiceAccountListParams(args map[string]string,
 	}
 	// Decode query: resourceVersionMatch.
 	{
-		values, ok := r.URL.Query()["resourceVersionMatch"]
+		values, ok := queryArgs["resourceVersionMatch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -74114,7 +74932,7 @@ func decodeWatchCoreV1NamespacedServiceAccountListParams(args map[string]string,
 	}
 	// Decode query: timeoutSeconds.
 	{
-		values, ok := r.URL.Query()["timeoutSeconds"]
+		values, ok := queryArgs["timeoutSeconds"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -74149,7 +74967,7 @@ func decodeWatchCoreV1NamespacedServiceAccountListParams(args map[string]string,
 	}
 	// Decode query: watch.
 	{
-		values, ok := r.URL.Query()["watch"]
+		values, ok := queryArgs["watch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -74186,10 +75004,13 @@ func decodeWatchCoreV1NamespacedServiceAccountListParams(args map[string]string,
 }
 
 func decodeWatchCoreV1NamespacedServiceListParams(args map[string]string, r *http.Request) (WatchCoreV1NamespacedServiceListParams, error) {
-	var params WatchCoreV1NamespacedServiceListParams
+	var (
+		params    WatchCoreV1NamespacedServiceListParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode query: allowWatchBookmarks.
 	{
-		values, ok := r.URL.Query()["allowWatchBookmarks"]
+		values, ok := queryArgs["allowWatchBookmarks"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -74224,7 +75045,7 @@ func decodeWatchCoreV1NamespacedServiceListParams(args map[string]string, r *htt
 	}
 	// Decode query: continue.
 	{
-		values, ok := r.URL.Query()["continue"]
+		values, ok := queryArgs["continue"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -74259,7 +75080,7 @@ func decodeWatchCoreV1NamespacedServiceListParams(args map[string]string, r *htt
 	}
 	// Decode query: fieldSelector.
 	{
-		values, ok := r.URL.Query()["fieldSelector"]
+		values, ok := queryArgs["fieldSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -74294,7 +75115,7 @@ func decodeWatchCoreV1NamespacedServiceListParams(args map[string]string, r *htt
 	}
 	// Decode query: labelSelector.
 	{
-		values, ok := r.URL.Query()["labelSelector"]
+		values, ok := queryArgs["labelSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -74329,7 +75150,7 @@ func decodeWatchCoreV1NamespacedServiceListParams(args map[string]string, r *htt
 	}
 	// Decode query: limit.
 	{
-		values, ok := r.URL.Query()["limit"]
+		values, ok := queryArgs["limit"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -74395,7 +75216,7 @@ func decodeWatchCoreV1NamespacedServiceListParams(args map[string]string, r *htt
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -74430,7 +75251,7 @@ func decodeWatchCoreV1NamespacedServiceListParams(args map[string]string, r *htt
 	}
 	// Decode query: resourceVersion.
 	{
-		values, ok := r.URL.Query()["resourceVersion"]
+		values, ok := queryArgs["resourceVersion"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -74465,7 +75286,7 @@ func decodeWatchCoreV1NamespacedServiceListParams(args map[string]string, r *htt
 	}
 	// Decode query: resourceVersionMatch.
 	{
-		values, ok := r.URL.Query()["resourceVersionMatch"]
+		values, ok := queryArgs["resourceVersionMatch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -74500,7 +75321,7 @@ func decodeWatchCoreV1NamespacedServiceListParams(args map[string]string, r *htt
 	}
 	// Decode query: timeoutSeconds.
 	{
-		values, ok := r.URL.Query()["timeoutSeconds"]
+		values, ok := queryArgs["timeoutSeconds"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -74535,7 +75356,7 @@ func decodeWatchCoreV1NamespacedServiceListParams(args map[string]string, r *htt
 	}
 	// Decode query: watch.
 	{
-		values, ok := r.URL.Query()["watch"]
+		values, ok := queryArgs["watch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -74572,10 +75393,13 @@ func decodeWatchCoreV1NamespacedServiceListParams(args map[string]string, r *htt
 }
 
 func decodeWatchCoreV1NodeParams(args map[string]string, r *http.Request) (WatchCoreV1NodeParams, error) {
-	var params WatchCoreV1NodeParams
+	var (
+		params    WatchCoreV1NodeParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode query: allowWatchBookmarks.
 	{
-		values, ok := r.URL.Query()["allowWatchBookmarks"]
+		values, ok := queryArgs["allowWatchBookmarks"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -74610,7 +75434,7 @@ func decodeWatchCoreV1NodeParams(args map[string]string, r *http.Request) (Watch
 	}
 	// Decode query: continue.
 	{
-		values, ok := r.URL.Query()["continue"]
+		values, ok := queryArgs["continue"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -74645,7 +75469,7 @@ func decodeWatchCoreV1NodeParams(args map[string]string, r *http.Request) (Watch
 	}
 	// Decode query: fieldSelector.
 	{
-		values, ok := r.URL.Query()["fieldSelector"]
+		values, ok := queryArgs["fieldSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -74680,7 +75504,7 @@ func decodeWatchCoreV1NodeParams(args map[string]string, r *http.Request) (Watch
 	}
 	// Decode query: labelSelector.
 	{
-		values, ok := r.URL.Query()["labelSelector"]
+		values, ok := queryArgs["labelSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -74715,7 +75539,7 @@ func decodeWatchCoreV1NodeParams(args map[string]string, r *http.Request) (Watch
 	}
 	// Decode query: limit.
 	{
-		values, ok := r.URL.Query()["limit"]
+		values, ok := queryArgs["limit"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -74781,7 +75605,7 @@ func decodeWatchCoreV1NodeParams(args map[string]string, r *http.Request) (Watch
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -74816,7 +75640,7 @@ func decodeWatchCoreV1NodeParams(args map[string]string, r *http.Request) (Watch
 	}
 	// Decode query: resourceVersion.
 	{
-		values, ok := r.URL.Query()["resourceVersion"]
+		values, ok := queryArgs["resourceVersion"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -74851,7 +75675,7 @@ func decodeWatchCoreV1NodeParams(args map[string]string, r *http.Request) (Watch
 	}
 	// Decode query: resourceVersionMatch.
 	{
-		values, ok := r.URL.Query()["resourceVersionMatch"]
+		values, ok := queryArgs["resourceVersionMatch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -74886,7 +75710,7 @@ func decodeWatchCoreV1NodeParams(args map[string]string, r *http.Request) (Watch
 	}
 	// Decode query: timeoutSeconds.
 	{
-		values, ok := r.URL.Query()["timeoutSeconds"]
+		values, ok := queryArgs["timeoutSeconds"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -74921,7 +75745,7 @@ func decodeWatchCoreV1NodeParams(args map[string]string, r *http.Request) (Watch
 	}
 	// Decode query: watch.
 	{
-		values, ok := r.URL.Query()["watch"]
+		values, ok := queryArgs["watch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -74958,10 +75782,13 @@ func decodeWatchCoreV1NodeParams(args map[string]string, r *http.Request) (Watch
 }
 
 func decodeWatchCoreV1NodeListParams(args map[string]string, r *http.Request) (WatchCoreV1NodeListParams, error) {
-	var params WatchCoreV1NodeListParams
+	var (
+		params    WatchCoreV1NodeListParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode query: allowWatchBookmarks.
 	{
-		values, ok := r.URL.Query()["allowWatchBookmarks"]
+		values, ok := queryArgs["allowWatchBookmarks"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -74996,7 +75823,7 @@ func decodeWatchCoreV1NodeListParams(args map[string]string, r *http.Request) (W
 	}
 	// Decode query: continue.
 	{
-		values, ok := r.URL.Query()["continue"]
+		values, ok := queryArgs["continue"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -75031,7 +75858,7 @@ func decodeWatchCoreV1NodeListParams(args map[string]string, r *http.Request) (W
 	}
 	// Decode query: fieldSelector.
 	{
-		values, ok := r.URL.Query()["fieldSelector"]
+		values, ok := queryArgs["fieldSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -75066,7 +75893,7 @@ func decodeWatchCoreV1NodeListParams(args map[string]string, r *http.Request) (W
 	}
 	// Decode query: labelSelector.
 	{
-		values, ok := r.URL.Query()["labelSelector"]
+		values, ok := queryArgs["labelSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -75101,7 +75928,7 @@ func decodeWatchCoreV1NodeListParams(args map[string]string, r *http.Request) (W
 	}
 	// Decode query: limit.
 	{
-		values, ok := r.URL.Query()["limit"]
+		values, ok := queryArgs["limit"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -75136,7 +75963,7 @@ func decodeWatchCoreV1NodeListParams(args map[string]string, r *http.Request) (W
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -75171,7 +75998,7 @@ func decodeWatchCoreV1NodeListParams(args map[string]string, r *http.Request) (W
 	}
 	// Decode query: resourceVersion.
 	{
-		values, ok := r.URL.Query()["resourceVersion"]
+		values, ok := queryArgs["resourceVersion"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -75206,7 +76033,7 @@ func decodeWatchCoreV1NodeListParams(args map[string]string, r *http.Request) (W
 	}
 	// Decode query: resourceVersionMatch.
 	{
-		values, ok := r.URL.Query()["resourceVersionMatch"]
+		values, ok := queryArgs["resourceVersionMatch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -75241,7 +76068,7 @@ func decodeWatchCoreV1NodeListParams(args map[string]string, r *http.Request) (W
 	}
 	// Decode query: timeoutSeconds.
 	{
-		values, ok := r.URL.Query()["timeoutSeconds"]
+		values, ok := queryArgs["timeoutSeconds"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -75276,7 +76103,7 @@ func decodeWatchCoreV1NodeListParams(args map[string]string, r *http.Request) (W
 	}
 	// Decode query: watch.
 	{
-		values, ok := r.URL.Query()["watch"]
+		values, ok := queryArgs["watch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -75313,10 +76140,13 @@ func decodeWatchCoreV1NodeListParams(args map[string]string, r *http.Request) (W
 }
 
 func decodeWatchCoreV1PersistentVolumeParams(args map[string]string, r *http.Request) (WatchCoreV1PersistentVolumeParams, error) {
-	var params WatchCoreV1PersistentVolumeParams
+	var (
+		params    WatchCoreV1PersistentVolumeParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode query: allowWatchBookmarks.
 	{
-		values, ok := r.URL.Query()["allowWatchBookmarks"]
+		values, ok := queryArgs["allowWatchBookmarks"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -75351,7 +76181,7 @@ func decodeWatchCoreV1PersistentVolumeParams(args map[string]string, r *http.Req
 	}
 	// Decode query: continue.
 	{
-		values, ok := r.URL.Query()["continue"]
+		values, ok := queryArgs["continue"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -75386,7 +76216,7 @@ func decodeWatchCoreV1PersistentVolumeParams(args map[string]string, r *http.Req
 	}
 	// Decode query: fieldSelector.
 	{
-		values, ok := r.URL.Query()["fieldSelector"]
+		values, ok := queryArgs["fieldSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -75421,7 +76251,7 @@ func decodeWatchCoreV1PersistentVolumeParams(args map[string]string, r *http.Req
 	}
 	// Decode query: labelSelector.
 	{
-		values, ok := r.URL.Query()["labelSelector"]
+		values, ok := queryArgs["labelSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -75456,7 +76286,7 @@ func decodeWatchCoreV1PersistentVolumeParams(args map[string]string, r *http.Req
 	}
 	// Decode query: limit.
 	{
-		values, ok := r.URL.Query()["limit"]
+		values, ok := queryArgs["limit"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -75522,7 +76352,7 @@ func decodeWatchCoreV1PersistentVolumeParams(args map[string]string, r *http.Req
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -75557,7 +76387,7 @@ func decodeWatchCoreV1PersistentVolumeParams(args map[string]string, r *http.Req
 	}
 	// Decode query: resourceVersion.
 	{
-		values, ok := r.URL.Query()["resourceVersion"]
+		values, ok := queryArgs["resourceVersion"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -75592,7 +76422,7 @@ func decodeWatchCoreV1PersistentVolumeParams(args map[string]string, r *http.Req
 	}
 	// Decode query: resourceVersionMatch.
 	{
-		values, ok := r.URL.Query()["resourceVersionMatch"]
+		values, ok := queryArgs["resourceVersionMatch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -75627,7 +76457,7 @@ func decodeWatchCoreV1PersistentVolumeParams(args map[string]string, r *http.Req
 	}
 	// Decode query: timeoutSeconds.
 	{
-		values, ok := r.URL.Query()["timeoutSeconds"]
+		values, ok := queryArgs["timeoutSeconds"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -75662,7 +76492,7 @@ func decodeWatchCoreV1PersistentVolumeParams(args map[string]string, r *http.Req
 	}
 	// Decode query: watch.
 	{
-		values, ok := r.URL.Query()["watch"]
+		values, ok := queryArgs["watch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -75699,10 +76529,13 @@ func decodeWatchCoreV1PersistentVolumeParams(args map[string]string, r *http.Req
 }
 
 func decodeWatchCoreV1PersistentVolumeClaimListForAllNamespacesParams(args map[string]string, r *http.Request) (WatchCoreV1PersistentVolumeClaimListForAllNamespacesParams, error) {
-	var params WatchCoreV1PersistentVolumeClaimListForAllNamespacesParams
+	var (
+		params    WatchCoreV1PersistentVolumeClaimListForAllNamespacesParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode query: allowWatchBookmarks.
 	{
-		values, ok := r.URL.Query()["allowWatchBookmarks"]
+		values, ok := queryArgs["allowWatchBookmarks"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -75737,7 +76570,7 @@ func decodeWatchCoreV1PersistentVolumeClaimListForAllNamespacesParams(args map[s
 	}
 	// Decode query: continue.
 	{
-		values, ok := r.URL.Query()["continue"]
+		values, ok := queryArgs["continue"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -75772,7 +76605,7 @@ func decodeWatchCoreV1PersistentVolumeClaimListForAllNamespacesParams(args map[s
 	}
 	// Decode query: fieldSelector.
 	{
-		values, ok := r.URL.Query()["fieldSelector"]
+		values, ok := queryArgs["fieldSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -75807,7 +76640,7 @@ func decodeWatchCoreV1PersistentVolumeClaimListForAllNamespacesParams(args map[s
 	}
 	// Decode query: labelSelector.
 	{
-		values, ok := r.URL.Query()["labelSelector"]
+		values, ok := queryArgs["labelSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -75842,7 +76675,7 @@ func decodeWatchCoreV1PersistentVolumeClaimListForAllNamespacesParams(args map[s
 	}
 	// Decode query: limit.
 	{
-		values, ok := r.URL.Query()["limit"]
+		values, ok := queryArgs["limit"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -75877,7 +76710,7 @@ func decodeWatchCoreV1PersistentVolumeClaimListForAllNamespacesParams(args map[s
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -75912,7 +76745,7 @@ func decodeWatchCoreV1PersistentVolumeClaimListForAllNamespacesParams(args map[s
 	}
 	// Decode query: resourceVersion.
 	{
-		values, ok := r.URL.Query()["resourceVersion"]
+		values, ok := queryArgs["resourceVersion"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -75947,7 +76780,7 @@ func decodeWatchCoreV1PersistentVolumeClaimListForAllNamespacesParams(args map[s
 	}
 	// Decode query: resourceVersionMatch.
 	{
-		values, ok := r.URL.Query()["resourceVersionMatch"]
+		values, ok := queryArgs["resourceVersionMatch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -75982,7 +76815,7 @@ func decodeWatchCoreV1PersistentVolumeClaimListForAllNamespacesParams(args map[s
 	}
 	// Decode query: timeoutSeconds.
 	{
-		values, ok := r.URL.Query()["timeoutSeconds"]
+		values, ok := queryArgs["timeoutSeconds"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -76017,7 +76850,7 @@ func decodeWatchCoreV1PersistentVolumeClaimListForAllNamespacesParams(args map[s
 	}
 	// Decode query: watch.
 	{
-		values, ok := r.URL.Query()["watch"]
+		values, ok := queryArgs["watch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -76054,10 +76887,13 @@ func decodeWatchCoreV1PersistentVolumeClaimListForAllNamespacesParams(args map[s
 }
 
 func decodeWatchCoreV1PersistentVolumeListParams(args map[string]string, r *http.Request) (WatchCoreV1PersistentVolumeListParams, error) {
-	var params WatchCoreV1PersistentVolumeListParams
+	var (
+		params    WatchCoreV1PersistentVolumeListParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode query: allowWatchBookmarks.
 	{
-		values, ok := r.URL.Query()["allowWatchBookmarks"]
+		values, ok := queryArgs["allowWatchBookmarks"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -76092,7 +76928,7 @@ func decodeWatchCoreV1PersistentVolumeListParams(args map[string]string, r *http
 	}
 	// Decode query: continue.
 	{
-		values, ok := r.URL.Query()["continue"]
+		values, ok := queryArgs["continue"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -76127,7 +76963,7 @@ func decodeWatchCoreV1PersistentVolumeListParams(args map[string]string, r *http
 	}
 	// Decode query: fieldSelector.
 	{
-		values, ok := r.URL.Query()["fieldSelector"]
+		values, ok := queryArgs["fieldSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -76162,7 +76998,7 @@ func decodeWatchCoreV1PersistentVolumeListParams(args map[string]string, r *http
 	}
 	// Decode query: labelSelector.
 	{
-		values, ok := r.URL.Query()["labelSelector"]
+		values, ok := queryArgs["labelSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -76197,7 +77033,7 @@ func decodeWatchCoreV1PersistentVolumeListParams(args map[string]string, r *http
 	}
 	// Decode query: limit.
 	{
-		values, ok := r.URL.Query()["limit"]
+		values, ok := queryArgs["limit"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -76232,7 +77068,7 @@ func decodeWatchCoreV1PersistentVolumeListParams(args map[string]string, r *http
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -76267,7 +77103,7 @@ func decodeWatchCoreV1PersistentVolumeListParams(args map[string]string, r *http
 	}
 	// Decode query: resourceVersion.
 	{
-		values, ok := r.URL.Query()["resourceVersion"]
+		values, ok := queryArgs["resourceVersion"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -76302,7 +77138,7 @@ func decodeWatchCoreV1PersistentVolumeListParams(args map[string]string, r *http
 	}
 	// Decode query: resourceVersionMatch.
 	{
-		values, ok := r.URL.Query()["resourceVersionMatch"]
+		values, ok := queryArgs["resourceVersionMatch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -76337,7 +77173,7 @@ func decodeWatchCoreV1PersistentVolumeListParams(args map[string]string, r *http
 	}
 	// Decode query: timeoutSeconds.
 	{
-		values, ok := r.URL.Query()["timeoutSeconds"]
+		values, ok := queryArgs["timeoutSeconds"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -76372,7 +77208,7 @@ func decodeWatchCoreV1PersistentVolumeListParams(args map[string]string, r *http
 	}
 	// Decode query: watch.
 	{
-		values, ok := r.URL.Query()["watch"]
+		values, ok := queryArgs["watch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -76409,10 +77245,13 @@ func decodeWatchCoreV1PersistentVolumeListParams(args map[string]string, r *http
 }
 
 func decodeWatchCoreV1PodListForAllNamespacesParams(args map[string]string, r *http.Request) (WatchCoreV1PodListForAllNamespacesParams, error) {
-	var params WatchCoreV1PodListForAllNamespacesParams
+	var (
+		params    WatchCoreV1PodListForAllNamespacesParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode query: allowWatchBookmarks.
 	{
-		values, ok := r.URL.Query()["allowWatchBookmarks"]
+		values, ok := queryArgs["allowWatchBookmarks"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -76447,7 +77286,7 @@ func decodeWatchCoreV1PodListForAllNamespacesParams(args map[string]string, r *h
 	}
 	// Decode query: continue.
 	{
-		values, ok := r.URL.Query()["continue"]
+		values, ok := queryArgs["continue"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -76482,7 +77321,7 @@ func decodeWatchCoreV1PodListForAllNamespacesParams(args map[string]string, r *h
 	}
 	// Decode query: fieldSelector.
 	{
-		values, ok := r.URL.Query()["fieldSelector"]
+		values, ok := queryArgs["fieldSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -76517,7 +77356,7 @@ func decodeWatchCoreV1PodListForAllNamespacesParams(args map[string]string, r *h
 	}
 	// Decode query: labelSelector.
 	{
-		values, ok := r.URL.Query()["labelSelector"]
+		values, ok := queryArgs["labelSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -76552,7 +77391,7 @@ func decodeWatchCoreV1PodListForAllNamespacesParams(args map[string]string, r *h
 	}
 	// Decode query: limit.
 	{
-		values, ok := r.URL.Query()["limit"]
+		values, ok := queryArgs["limit"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -76587,7 +77426,7 @@ func decodeWatchCoreV1PodListForAllNamespacesParams(args map[string]string, r *h
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -76622,7 +77461,7 @@ func decodeWatchCoreV1PodListForAllNamespacesParams(args map[string]string, r *h
 	}
 	// Decode query: resourceVersion.
 	{
-		values, ok := r.URL.Query()["resourceVersion"]
+		values, ok := queryArgs["resourceVersion"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -76657,7 +77496,7 @@ func decodeWatchCoreV1PodListForAllNamespacesParams(args map[string]string, r *h
 	}
 	// Decode query: resourceVersionMatch.
 	{
-		values, ok := r.URL.Query()["resourceVersionMatch"]
+		values, ok := queryArgs["resourceVersionMatch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -76692,7 +77531,7 @@ func decodeWatchCoreV1PodListForAllNamespacesParams(args map[string]string, r *h
 	}
 	// Decode query: timeoutSeconds.
 	{
-		values, ok := r.URL.Query()["timeoutSeconds"]
+		values, ok := queryArgs["timeoutSeconds"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -76727,7 +77566,7 @@ func decodeWatchCoreV1PodListForAllNamespacesParams(args map[string]string, r *h
 	}
 	// Decode query: watch.
 	{
-		values, ok := r.URL.Query()["watch"]
+		values, ok := queryArgs["watch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -76764,10 +77603,13 @@ func decodeWatchCoreV1PodListForAllNamespacesParams(args map[string]string, r *h
 }
 
 func decodeWatchCoreV1PodTemplateListForAllNamespacesParams(args map[string]string, r *http.Request) (WatchCoreV1PodTemplateListForAllNamespacesParams, error) {
-	var params WatchCoreV1PodTemplateListForAllNamespacesParams
+	var (
+		params    WatchCoreV1PodTemplateListForAllNamespacesParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode query: allowWatchBookmarks.
 	{
-		values, ok := r.URL.Query()["allowWatchBookmarks"]
+		values, ok := queryArgs["allowWatchBookmarks"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -76802,7 +77644,7 @@ func decodeWatchCoreV1PodTemplateListForAllNamespacesParams(args map[string]stri
 	}
 	// Decode query: continue.
 	{
-		values, ok := r.URL.Query()["continue"]
+		values, ok := queryArgs["continue"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -76837,7 +77679,7 @@ func decodeWatchCoreV1PodTemplateListForAllNamespacesParams(args map[string]stri
 	}
 	// Decode query: fieldSelector.
 	{
-		values, ok := r.URL.Query()["fieldSelector"]
+		values, ok := queryArgs["fieldSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -76872,7 +77714,7 @@ func decodeWatchCoreV1PodTemplateListForAllNamespacesParams(args map[string]stri
 	}
 	// Decode query: labelSelector.
 	{
-		values, ok := r.URL.Query()["labelSelector"]
+		values, ok := queryArgs["labelSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -76907,7 +77749,7 @@ func decodeWatchCoreV1PodTemplateListForAllNamespacesParams(args map[string]stri
 	}
 	// Decode query: limit.
 	{
-		values, ok := r.URL.Query()["limit"]
+		values, ok := queryArgs["limit"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -76942,7 +77784,7 @@ func decodeWatchCoreV1PodTemplateListForAllNamespacesParams(args map[string]stri
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -76977,7 +77819,7 @@ func decodeWatchCoreV1PodTemplateListForAllNamespacesParams(args map[string]stri
 	}
 	// Decode query: resourceVersion.
 	{
-		values, ok := r.URL.Query()["resourceVersion"]
+		values, ok := queryArgs["resourceVersion"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -77012,7 +77854,7 @@ func decodeWatchCoreV1PodTemplateListForAllNamespacesParams(args map[string]stri
 	}
 	// Decode query: resourceVersionMatch.
 	{
-		values, ok := r.URL.Query()["resourceVersionMatch"]
+		values, ok := queryArgs["resourceVersionMatch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -77047,7 +77889,7 @@ func decodeWatchCoreV1PodTemplateListForAllNamespacesParams(args map[string]stri
 	}
 	// Decode query: timeoutSeconds.
 	{
-		values, ok := r.URL.Query()["timeoutSeconds"]
+		values, ok := queryArgs["timeoutSeconds"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -77082,7 +77924,7 @@ func decodeWatchCoreV1PodTemplateListForAllNamespacesParams(args map[string]stri
 	}
 	// Decode query: watch.
 	{
-		values, ok := r.URL.Query()["watch"]
+		values, ok := queryArgs["watch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -77119,10 +77961,13 @@ func decodeWatchCoreV1PodTemplateListForAllNamespacesParams(args map[string]stri
 }
 
 func decodeWatchCoreV1ReplicationControllerListForAllNamespacesParams(args map[string]string, r *http.Request) (WatchCoreV1ReplicationControllerListForAllNamespacesParams, error) {
-	var params WatchCoreV1ReplicationControllerListForAllNamespacesParams
+	var (
+		params    WatchCoreV1ReplicationControllerListForAllNamespacesParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode query: allowWatchBookmarks.
 	{
-		values, ok := r.URL.Query()["allowWatchBookmarks"]
+		values, ok := queryArgs["allowWatchBookmarks"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -77157,7 +78002,7 @@ func decodeWatchCoreV1ReplicationControllerListForAllNamespacesParams(args map[s
 	}
 	// Decode query: continue.
 	{
-		values, ok := r.URL.Query()["continue"]
+		values, ok := queryArgs["continue"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -77192,7 +78037,7 @@ func decodeWatchCoreV1ReplicationControllerListForAllNamespacesParams(args map[s
 	}
 	// Decode query: fieldSelector.
 	{
-		values, ok := r.URL.Query()["fieldSelector"]
+		values, ok := queryArgs["fieldSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -77227,7 +78072,7 @@ func decodeWatchCoreV1ReplicationControllerListForAllNamespacesParams(args map[s
 	}
 	// Decode query: labelSelector.
 	{
-		values, ok := r.URL.Query()["labelSelector"]
+		values, ok := queryArgs["labelSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -77262,7 +78107,7 @@ func decodeWatchCoreV1ReplicationControllerListForAllNamespacesParams(args map[s
 	}
 	// Decode query: limit.
 	{
-		values, ok := r.URL.Query()["limit"]
+		values, ok := queryArgs["limit"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -77297,7 +78142,7 @@ func decodeWatchCoreV1ReplicationControllerListForAllNamespacesParams(args map[s
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -77332,7 +78177,7 @@ func decodeWatchCoreV1ReplicationControllerListForAllNamespacesParams(args map[s
 	}
 	// Decode query: resourceVersion.
 	{
-		values, ok := r.URL.Query()["resourceVersion"]
+		values, ok := queryArgs["resourceVersion"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -77367,7 +78212,7 @@ func decodeWatchCoreV1ReplicationControllerListForAllNamespacesParams(args map[s
 	}
 	// Decode query: resourceVersionMatch.
 	{
-		values, ok := r.URL.Query()["resourceVersionMatch"]
+		values, ok := queryArgs["resourceVersionMatch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -77402,7 +78247,7 @@ func decodeWatchCoreV1ReplicationControllerListForAllNamespacesParams(args map[s
 	}
 	// Decode query: timeoutSeconds.
 	{
-		values, ok := r.URL.Query()["timeoutSeconds"]
+		values, ok := queryArgs["timeoutSeconds"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -77437,7 +78282,7 @@ func decodeWatchCoreV1ReplicationControllerListForAllNamespacesParams(args map[s
 	}
 	// Decode query: watch.
 	{
-		values, ok := r.URL.Query()["watch"]
+		values, ok := queryArgs["watch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -77474,10 +78319,13 @@ func decodeWatchCoreV1ReplicationControllerListForAllNamespacesParams(args map[s
 }
 
 func decodeWatchCoreV1ResourceQuotaListForAllNamespacesParams(args map[string]string, r *http.Request) (WatchCoreV1ResourceQuotaListForAllNamespacesParams, error) {
-	var params WatchCoreV1ResourceQuotaListForAllNamespacesParams
+	var (
+		params    WatchCoreV1ResourceQuotaListForAllNamespacesParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode query: allowWatchBookmarks.
 	{
-		values, ok := r.URL.Query()["allowWatchBookmarks"]
+		values, ok := queryArgs["allowWatchBookmarks"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -77512,7 +78360,7 @@ func decodeWatchCoreV1ResourceQuotaListForAllNamespacesParams(args map[string]st
 	}
 	// Decode query: continue.
 	{
-		values, ok := r.URL.Query()["continue"]
+		values, ok := queryArgs["continue"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -77547,7 +78395,7 @@ func decodeWatchCoreV1ResourceQuotaListForAllNamespacesParams(args map[string]st
 	}
 	// Decode query: fieldSelector.
 	{
-		values, ok := r.URL.Query()["fieldSelector"]
+		values, ok := queryArgs["fieldSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -77582,7 +78430,7 @@ func decodeWatchCoreV1ResourceQuotaListForAllNamespacesParams(args map[string]st
 	}
 	// Decode query: labelSelector.
 	{
-		values, ok := r.URL.Query()["labelSelector"]
+		values, ok := queryArgs["labelSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -77617,7 +78465,7 @@ func decodeWatchCoreV1ResourceQuotaListForAllNamespacesParams(args map[string]st
 	}
 	// Decode query: limit.
 	{
-		values, ok := r.URL.Query()["limit"]
+		values, ok := queryArgs["limit"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -77652,7 +78500,7 @@ func decodeWatchCoreV1ResourceQuotaListForAllNamespacesParams(args map[string]st
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -77687,7 +78535,7 @@ func decodeWatchCoreV1ResourceQuotaListForAllNamespacesParams(args map[string]st
 	}
 	// Decode query: resourceVersion.
 	{
-		values, ok := r.URL.Query()["resourceVersion"]
+		values, ok := queryArgs["resourceVersion"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -77722,7 +78570,7 @@ func decodeWatchCoreV1ResourceQuotaListForAllNamespacesParams(args map[string]st
 	}
 	// Decode query: resourceVersionMatch.
 	{
-		values, ok := r.URL.Query()["resourceVersionMatch"]
+		values, ok := queryArgs["resourceVersionMatch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -77757,7 +78605,7 @@ func decodeWatchCoreV1ResourceQuotaListForAllNamespacesParams(args map[string]st
 	}
 	// Decode query: timeoutSeconds.
 	{
-		values, ok := r.URL.Query()["timeoutSeconds"]
+		values, ok := queryArgs["timeoutSeconds"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -77792,7 +78640,7 @@ func decodeWatchCoreV1ResourceQuotaListForAllNamespacesParams(args map[string]st
 	}
 	// Decode query: watch.
 	{
-		values, ok := r.URL.Query()["watch"]
+		values, ok := queryArgs["watch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -77829,10 +78677,13 @@ func decodeWatchCoreV1ResourceQuotaListForAllNamespacesParams(args map[string]st
 }
 
 func decodeWatchCoreV1SecretListForAllNamespacesParams(args map[string]string, r *http.Request) (WatchCoreV1SecretListForAllNamespacesParams, error) {
-	var params WatchCoreV1SecretListForAllNamespacesParams
+	var (
+		params    WatchCoreV1SecretListForAllNamespacesParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode query: allowWatchBookmarks.
 	{
-		values, ok := r.URL.Query()["allowWatchBookmarks"]
+		values, ok := queryArgs["allowWatchBookmarks"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -77867,7 +78718,7 @@ func decodeWatchCoreV1SecretListForAllNamespacesParams(args map[string]string, r
 	}
 	// Decode query: continue.
 	{
-		values, ok := r.URL.Query()["continue"]
+		values, ok := queryArgs["continue"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -77902,7 +78753,7 @@ func decodeWatchCoreV1SecretListForAllNamespacesParams(args map[string]string, r
 	}
 	// Decode query: fieldSelector.
 	{
-		values, ok := r.URL.Query()["fieldSelector"]
+		values, ok := queryArgs["fieldSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -77937,7 +78788,7 @@ func decodeWatchCoreV1SecretListForAllNamespacesParams(args map[string]string, r
 	}
 	// Decode query: labelSelector.
 	{
-		values, ok := r.URL.Query()["labelSelector"]
+		values, ok := queryArgs["labelSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -77972,7 +78823,7 @@ func decodeWatchCoreV1SecretListForAllNamespacesParams(args map[string]string, r
 	}
 	// Decode query: limit.
 	{
-		values, ok := r.URL.Query()["limit"]
+		values, ok := queryArgs["limit"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -78007,7 +78858,7 @@ func decodeWatchCoreV1SecretListForAllNamespacesParams(args map[string]string, r
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -78042,7 +78893,7 @@ func decodeWatchCoreV1SecretListForAllNamespacesParams(args map[string]string, r
 	}
 	// Decode query: resourceVersion.
 	{
-		values, ok := r.URL.Query()["resourceVersion"]
+		values, ok := queryArgs["resourceVersion"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -78077,7 +78928,7 @@ func decodeWatchCoreV1SecretListForAllNamespacesParams(args map[string]string, r
 	}
 	// Decode query: resourceVersionMatch.
 	{
-		values, ok := r.URL.Query()["resourceVersionMatch"]
+		values, ok := queryArgs["resourceVersionMatch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -78112,7 +78963,7 @@ func decodeWatchCoreV1SecretListForAllNamespacesParams(args map[string]string, r
 	}
 	// Decode query: timeoutSeconds.
 	{
-		values, ok := r.URL.Query()["timeoutSeconds"]
+		values, ok := queryArgs["timeoutSeconds"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -78147,7 +78998,7 @@ func decodeWatchCoreV1SecretListForAllNamespacesParams(args map[string]string, r
 	}
 	// Decode query: watch.
 	{
-		values, ok := r.URL.Query()["watch"]
+		values, ok := queryArgs["watch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -78184,10 +79035,13 @@ func decodeWatchCoreV1SecretListForAllNamespacesParams(args map[string]string, r
 }
 
 func decodeWatchCoreV1ServiceAccountListForAllNamespacesParams(args map[string]string, r *http.Request) (WatchCoreV1ServiceAccountListForAllNamespacesParams, error) {
-	var params WatchCoreV1ServiceAccountListForAllNamespacesParams
+	var (
+		params    WatchCoreV1ServiceAccountListForAllNamespacesParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode query: allowWatchBookmarks.
 	{
-		values, ok := r.URL.Query()["allowWatchBookmarks"]
+		values, ok := queryArgs["allowWatchBookmarks"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -78222,7 +79076,7 @@ func decodeWatchCoreV1ServiceAccountListForAllNamespacesParams(args map[string]s
 	}
 	// Decode query: continue.
 	{
-		values, ok := r.URL.Query()["continue"]
+		values, ok := queryArgs["continue"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -78257,7 +79111,7 @@ func decodeWatchCoreV1ServiceAccountListForAllNamespacesParams(args map[string]s
 	}
 	// Decode query: fieldSelector.
 	{
-		values, ok := r.URL.Query()["fieldSelector"]
+		values, ok := queryArgs["fieldSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -78292,7 +79146,7 @@ func decodeWatchCoreV1ServiceAccountListForAllNamespacesParams(args map[string]s
 	}
 	// Decode query: labelSelector.
 	{
-		values, ok := r.URL.Query()["labelSelector"]
+		values, ok := queryArgs["labelSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -78327,7 +79181,7 @@ func decodeWatchCoreV1ServiceAccountListForAllNamespacesParams(args map[string]s
 	}
 	// Decode query: limit.
 	{
-		values, ok := r.URL.Query()["limit"]
+		values, ok := queryArgs["limit"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -78362,7 +79216,7 @@ func decodeWatchCoreV1ServiceAccountListForAllNamespacesParams(args map[string]s
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -78397,7 +79251,7 @@ func decodeWatchCoreV1ServiceAccountListForAllNamespacesParams(args map[string]s
 	}
 	// Decode query: resourceVersion.
 	{
-		values, ok := r.URL.Query()["resourceVersion"]
+		values, ok := queryArgs["resourceVersion"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -78432,7 +79286,7 @@ func decodeWatchCoreV1ServiceAccountListForAllNamespacesParams(args map[string]s
 	}
 	// Decode query: resourceVersionMatch.
 	{
-		values, ok := r.URL.Query()["resourceVersionMatch"]
+		values, ok := queryArgs["resourceVersionMatch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -78467,7 +79321,7 @@ func decodeWatchCoreV1ServiceAccountListForAllNamespacesParams(args map[string]s
 	}
 	// Decode query: timeoutSeconds.
 	{
-		values, ok := r.URL.Query()["timeoutSeconds"]
+		values, ok := queryArgs["timeoutSeconds"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -78502,7 +79356,7 @@ func decodeWatchCoreV1ServiceAccountListForAllNamespacesParams(args map[string]s
 	}
 	// Decode query: watch.
 	{
-		values, ok := r.URL.Query()["watch"]
+		values, ok := queryArgs["watch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -78539,10 +79393,13 @@ func decodeWatchCoreV1ServiceAccountListForAllNamespacesParams(args map[string]s
 }
 
 func decodeWatchCoreV1ServiceListForAllNamespacesParams(args map[string]string, r *http.Request) (WatchCoreV1ServiceListForAllNamespacesParams, error) {
-	var params WatchCoreV1ServiceListForAllNamespacesParams
+	var (
+		params    WatchCoreV1ServiceListForAllNamespacesParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode query: allowWatchBookmarks.
 	{
-		values, ok := r.URL.Query()["allowWatchBookmarks"]
+		values, ok := queryArgs["allowWatchBookmarks"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -78577,7 +79434,7 @@ func decodeWatchCoreV1ServiceListForAllNamespacesParams(args map[string]string, 
 	}
 	// Decode query: continue.
 	{
-		values, ok := r.URL.Query()["continue"]
+		values, ok := queryArgs["continue"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -78612,7 +79469,7 @@ func decodeWatchCoreV1ServiceListForAllNamespacesParams(args map[string]string, 
 	}
 	// Decode query: fieldSelector.
 	{
-		values, ok := r.URL.Query()["fieldSelector"]
+		values, ok := queryArgs["fieldSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -78647,7 +79504,7 @@ func decodeWatchCoreV1ServiceListForAllNamespacesParams(args map[string]string, 
 	}
 	// Decode query: labelSelector.
 	{
-		values, ok := r.URL.Query()["labelSelector"]
+		values, ok := queryArgs["labelSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -78682,7 +79539,7 @@ func decodeWatchCoreV1ServiceListForAllNamespacesParams(args map[string]string, 
 	}
 	// Decode query: limit.
 	{
-		values, ok := r.URL.Query()["limit"]
+		values, ok := queryArgs["limit"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -78717,7 +79574,7 @@ func decodeWatchCoreV1ServiceListForAllNamespacesParams(args map[string]string, 
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -78752,7 +79609,7 @@ func decodeWatchCoreV1ServiceListForAllNamespacesParams(args map[string]string, 
 	}
 	// Decode query: resourceVersion.
 	{
-		values, ok := r.URL.Query()["resourceVersion"]
+		values, ok := queryArgs["resourceVersion"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -78787,7 +79644,7 @@ func decodeWatchCoreV1ServiceListForAllNamespacesParams(args map[string]string, 
 	}
 	// Decode query: resourceVersionMatch.
 	{
-		values, ok := r.URL.Query()["resourceVersionMatch"]
+		values, ok := queryArgs["resourceVersionMatch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -78822,7 +79679,7 @@ func decodeWatchCoreV1ServiceListForAllNamespacesParams(args map[string]string, 
 	}
 	// Decode query: timeoutSeconds.
 	{
-		values, ok := r.URL.Query()["timeoutSeconds"]
+		values, ok := queryArgs["timeoutSeconds"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -78857,7 +79714,7 @@ func decodeWatchCoreV1ServiceListForAllNamespacesParams(args map[string]string, 
 	}
 	// Decode query: watch.
 	{
-		values, ok := r.URL.Query()["watch"]
+		values, ok := queryArgs["watch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -78894,10 +79751,13 @@ func decodeWatchCoreV1ServiceListForAllNamespacesParams(args map[string]string, 
 }
 
 func decodeWatchDiscoveryV1EndpointSliceListForAllNamespacesParams(args map[string]string, r *http.Request) (WatchDiscoveryV1EndpointSliceListForAllNamespacesParams, error) {
-	var params WatchDiscoveryV1EndpointSliceListForAllNamespacesParams
+	var (
+		params    WatchDiscoveryV1EndpointSliceListForAllNamespacesParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode query: allowWatchBookmarks.
 	{
-		values, ok := r.URL.Query()["allowWatchBookmarks"]
+		values, ok := queryArgs["allowWatchBookmarks"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -78932,7 +79792,7 @@ func decodeWatchDiscoveryV1EndpointSliceListForAllNamespacesParams(args map[stri
 	}
 	// Decode query: continue.
 	{
-		values, ok := r.URL.Query()["continue"]
+		values, ok := queryArgs["continue"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -78967,7 +79827,7 @@ func decodeWatchDiscoveryV1EndpointSliceListForAllNamespacesParams(args map[stri
 	}
 	// Decode query: fieldSelector.
 	{
-		values, ok := r.URL.Query()["fieldSelector"]
+		values, ok := queryArgs["fieldSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -79002,7 +79862,7 @@ func decodeWatchDiscoveryV1EndpointSliceListForAllNamespacesParams(args map[stri
 	}
 	// Decode query: labelSelector.
 	{
-		values, ok := r.URL.Query()["labelSelector"]
+		values, ok := queryArgs["labelSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -79037,7 +79897,7 @@ func decodeWatchDiscoveryV1EndpointSliceListForAllNamespacesParams(args map[stri
 	}
 	// Decode query: limit.
 	{
-		values, ok := r.URL.Query()["limit"]
+		values, ok := queryArgs["limit"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -79072,7 +79932,7 @@ func decodeWatchDiscoveryV1EndpointSliceListForAllNamespacesParams(args map[stri
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -79107,7 +79967,7 @@ func decodeWatchDiscoveryV1EndpointSliceListForAllNamespacesParams(args map[stri
 	}
 	// Decode query: resourceVersion.
 	{
-		values, ok := r.URL.Query()["resourceVersion"]
+		values, ok := queryArgs["resourceVersion"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -79142,7 +80002,7 @@ func decodeWatchDiscoveryV1EndpointSliceListForAllNamespacesParams(args map[stri
 	}
 	// Decode query: resourceVersionMatch.
 	{
-		values, ok := r.URL.Query()["resourceVersionMatch"]
+		values, ok := queryArgs["resourceVersionMatch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -79177,7 +80037,7 @@ func decodeWatchDiscoveryV1EndpointSliceListForAllNamespacesParams(args map[stri
 	}
 	// Decode query: timeoutSeconds.
 	{
-		values, ok := r.URL.Query()["timeoutSeconds"]
+		values, ok := queryArgs["timeoutSeconds"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -79212,7 +80072,7 @@ func decodeWatchDiscoveryV1EndpointSliceListForAllNamespacesParams(args map[stri
 	}
 	// Decode query: watch.
 	{
-		values, ok := r.URL.Query()["watch"]
+		values, ok := queryArgs["watch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -79249,10 +80109,13 @@ func decodeWatchDiscoveryV1EndpointSliceListForAllNamespacesParams(args map[stri
 }
 
 func decodeWatchDiscoveryV1NamespacedEndpointSliceParams(args map[string]string, r *http.Request) (WatchDiscoveryV1NamespacedEndpointSliceParams, error) {
-	var params WatchDiscoveryV1NamespacedEndpointSliceParams
+	var (
+		params    WatchDiscoveryV1NamespacedEndpointSliceParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode query: allowWatchBookmarks.
 	{
-		values, ok := r.URL.Query()["allowWatchBookmarks"]
+		values, ok := queryArgs["allowWatchBookmarks"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -79287,7 +80150,7 @@ func decodeWatchDiscoveryV1NamespacedEndpointSliceParams(args map[string]string,
 	}
 	// Decode query: continue.
 	{
-		values, ok := r.URL.Query()["continue"]
+		values, ok := queryArgs["continue"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -79322,7 +80185,7 @@ func decodeWatchDiscoveryV1NamespacedEndpointSliceParams(args map[string]string,
 	}
 	// Decode query: fieldSelector.
 	{
-		values, ok := r.URL.Query()["fieldSelector"]
+		values, ok := queryArgs["fieldSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -79357,7 +80220,7 @@ func decodeWatchDiscoveryV1NamespacedEndpointSliceParams(args map[string]string,
 	}
 	// Decode query: labelSelector.
 	{
-		values, ok := r.URL.Query()["labelSelector"]
+		values, ok := queryArgs["labelSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -79392,7 +80255,7 @@ func decodeWatchDiscoveryV1NamespacedEndpointSliceParams(args map[string]string,
 	}
 	// Decode query: limit.
 	{
-		values, ok := r.URL.Query()["limit"]
+		values, ok := queryArgs["limit"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -79489,7 +80352,7 @@ func decodeWatchDiscoveryV1NamespacedEndpointSliceParams(args map[string]string,
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -79524,7 +80387,7 @@ func decodeWatchDiscoveryV1NamespacedEndpointSliceParams(args map[string]string,
 	}
 	// Decode query: resourceVersion.
 	{
-		values, ok := r.URL.Query()["resourceVersion"]
+		values, ok := queryArgs["resourceVersion"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -79559,7 +80422,7 @@ func decodeWatchDiscoveryV1NamespacedEndpointSliceParams(args map[string]string,
 	}
 	// Decode query: resourceVersionMatch.
 	{
-		values, ok := r.URL.Query()["resourceVersionMatch"]
+		values, ok := queryArgs["resourceVersionMatch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -79594,7 +80457,7 @@ func decodeWatchDiscoveryV1NamespacedEndpointSliceParams(args map[string]string,
 	}
 	// Decode query: timeoutSeconds.
 	{
-		values, ok := r.URL.Query()["timeoutSeconds"]
+		values, ok := queryArgs["timeoutSeconds"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -79629,7 +80492,7 @@ func decodeWatchDiscoveryV1NamespacedEndpointSliceParams(args map[string]string,
 	}
 	// Decode query: watch.
 	{
-		values, ok := r.URL.Query()["watch"]
+		values, ok := queryArgs["watch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -79666,10 +80529,13 @@ func decodeWatchDiscoveryV1NamespacedEndpointSliceParams(args map[string]string,
 }
 
 func decodeWatchDiscoveryV1NamespacedEndpointSliceListParams(args map[string]string, r *http.Request) (WatchDiscoveryV1NamespacedEndpointSliceListParams, error) {
-	var params WatchDiscoveryV1NamespacedEndpointSliceListParams
+	var (
+		params    WatchDiscoveryV1NamespacedEndpointSliceListParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode query: allowWatchBookmarks.
 	{
-		values, ok := r.URL.Query()["allowWatchBookmarks"]
+		values, ok := queryArgs["allowWatchBookmarks"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -79704,7 +80570,7 @@ func decodeWatchDiscoveryV1NamespacedEndpointSliceListParams(args map[string]str
 	}
 	// Decode query: continue.
 	{
-		values, ok := r.URL.Query()["continue"]
+		values, ok := queryArgs["continue"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -79739,7 +80605,7 @@ func decodeWatchDiscoveryV1NamespacedEndpointSliceListParams(args map[string]str
 	}
 	// Decode query: fieldSelector.
 	{
-		values, ok := r.URL.Query()["fieldSelector"]
+		values, ok := queryArgs["fieldSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -79774,7 +80640,7 @@ func decodeWatchDiscoveryV1NamespacedEndpointSliceListParams(args map[string]str
 	}
 	// Decode query: labelSelector.
 	{
-		values, ok := r.URL.Query()["labelSelector"]
+		values, ok := queryArgs["labelSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -79809,7 +80675,7 @@ func decodeWatchDiscoveryV1NamespacedEndpointSliceListParams(args map[string]str
 	}
 	// Decode query: limit.
 	{
-		values, ok := r.URL.Query()["limit"]
+		values, ok := queryArgs["limit"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -79875,7 +80741,7 @@ func decodeWatchDiscoveryV1NamespacedEndpointSliceListParams(args map[string]str
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -79910,7 +80776,7 @@ func decodeWatchDiscoveryV1NamespacedEndpointSliceListParams(args map[string]str
 	}
 	// Decode query: resourceVersion.
 	{
-		values, ok := r.URL.Query()["resourceVersion"]
+		values, ok := queryArgs["resourceVersion"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -79945,7 +80811,7 @@ func decodeWatchDiscoveryV1NamespacedEndpointSliceListParams(args map[string]str
 	}
 	// Decode query: resourceVersionMatch.
 	{
-		values, ok := r.URL.Query()["resourceVersionMatch"]
+		values, ok := queryArgs["resourceVersionMatch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -79980,7 +80846,7 @@ func decodeWatchDiscoveryV1NamespacedEndpointSliceListParams(args map[string]str
 	}
 	// Decode query: timeoutSeconds.
 	{
-		values, ok := r.URL.Query()["timeoutSeconds"]
+		values, ok := queryArgs["timeoutSeconds"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -80015,7 +80881,7 @@ func decodeWatchDiscoveryV1NamespacedEndpointSliceListParams(args map[string]str
 	}
 	// Decode query: watch.
 	{
-		values, ok := r.URL.Query()["watch"]
+		values, ok := queryArgs["watch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -80052,10 +80918,13 @@ func decodeWatchDiscoveryV1NamespacedEndpointSliceListParams(args map[string]str
 }
 
 func decodeWatchDiscoveryV1beta1EndpointSliceListForAllNamespacesParams(args map[string]string, r *http.Request) (WatchDiscoveryV1beta1EndpointSliceListForAllNamespacesParams, error) {
-	var params WatchDiscoveryV1beta1EndpointSliceListForAllNamespacesParams
+	var (
+		params    WatchDiscoveryV1beta1EndpointSliceListForAllNamespacesParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode query: allowWatchBookmarks.
 	{
-		values, ok := r.URL.Query()["allowWatchBookmarks"]
+		values, ok := queryArgs["allowWatchBookmarks"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -80090,7 +80959,7 @@ func decodeWatchDiscoveryV1beta1EndpointSliceListForAllNamespacesParams(args map
 	}
 	// Decode query: continue.
 	{
-		values, ok := r.URL.Query()["continue"]
+		values, ok := queryArgs["continue"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -80125,7 +80994,7 @@ func decodeWatchDiscoveryV1beta1EndpointSliceListForAllNamespacesParams(args map
 	}
 	// Decode query: fieldSelector.
 	{
-		values, ok := r.URL.Query()["fieldSelector"]
+		values, ok := queryArgs["fieldSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -80160,7 +81029,7 @@ func decodeWatchDiscoveryV1beta1EndpointSliceListForAllNamespacesParams(args map
 	}
 	// Decode query: labelSelector.
 	{
-		values, ok := r.URL.Query()["labelSelector"]
+		values, ok := queryArgs["labelSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -80195,7 +81064,7 @@ func decodeWatchDiscoveryV1beta1EndpointSliceListForAllNamespacesParams(args map
 	}
 	// Decode query: limit.
 	{
-		values, ok := r.URL.Query()["limit"]
+		values, ok := queryArgs["limit"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -80230,7 +81099,7 @@ func decodeWatchDiscoveryV1beta1EndpointSliceListForAllNamespacesParams(args map
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -80265,7 +81134,7 @@ func decodeWatchDiscoveryV1beta1EndpointSliceListForAllNamespacesParams(args map
 	}
 	// Decode query: resourceVersion.
 	{
-		values, ok := r.URL.Query()["resourceVersion"]
+		values, ok := queryArgs["resourceVersion"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -80300,7 +81169,7 @@ func decodeWatchDiscoveryV1beta1EndpointSliceListForAllNamespacesParams(args map
 	}
 	// Decode query: resourceVersionMatch.
 	{
-		values, ok := r.URL.Query()["resourceVersionMatch"]
+		values, ok := queryArgs["resourceVersionMatch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -80335,7 +81204,7 @@ func decodeWatchDiscoveryV1beta1EndpointSliceListForAllNamespacesParams(args map
 	}
 	// Decode query: timeoutSeconds.
 	{
-		values, ok := r.URL.Query()["timeoutSeconds"]
+		values, ok := queryArgs["timeoutSeconds"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -80370,7 +81239,7 @@ func decodeWatchDiscoveryV1beta1EndpointSliceListForAllNamespacesParams(args map
 	}
 	// Decode query: watch.
 	{
-		values, ok := r.URL.Query()["watch"]
+		values, ok := queryArgs["watch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -80407,10 +81276,13 @@ func decodeWatchDiscoveryV1beta1EndpointSliceListForAllNamespacesParams(args map
 }
 
 func decodeWatchDiscoveryV1beta1NamespacedEndpointSliceParams(args map[string]string, r *http.Request) (WatchDiscoveryV1beta1NamespacedEndpointSliceParams, error) {
-	var params WatchDiscoveryV1beta1NamespacedEndpointSliceParams
+	var (
+		params    WatchDiscoveryV1beta1NamespacedEndpointSliceParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode query: allowWatchBookmarks.
 	{
-		values, ok := r.URL.Query()["allowWatchBookmarks"]
+		values, ok := queryArgs["allowWatchBookmarks"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -80445,7 +81317,7 @@ func decodeWatchDiscoveryV1beta1NamespacedEndpointSliceParams(args map[string]st
 	}
 	// Decode query: continue.
 	{
-		values, ok := r.URL.Query()["continue"]
+		values, ok := queryArgs["continue"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -80480,7 +81352,7 @@ func decodeWatchDiscoveryV1beta1NamespacedEndpointSliceParams(args map[string]st
 	}
 	// Decode query: fieldSelector.
 	{
-		values, ok := r.URL.Query()["fieldSelector"]
+		values, ok := queryArgs["fieldSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -80515,7 +81387,7 @@ func decodeWatchDiscoveryV1beta1NamespacedEndpointSliceParams(args map[string]st
 	}
 	// Decode query: labelSelector.
 	{
-		values, ok := r.URL.Query()["labelSelector"]
+		values, ok := queryArgs["labelSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -80550,7 +81422,7 @@ func decodeWatchDiscoveryV1beta1NamespacedEndpointSliceParams(args map[string]st
 	}
 	// Decode query: limit.
 	{
-		values, ok := r.URL.Query()["limit"]
+		values, ok := queryArgs["limit"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -80647,7 +81519,7 @@ func decodeWatchDiscoveryV1beta1NamespacedEndpointSliceParams(args map[string]st
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -80682,7 +81554,7 @@ func decodeWatchDiscoveryV1beta1NamespacedEndpointSliceParams(args map[string]st
 	}
 	// Decode query: resourceVersion.
 	{
-		values, ok := r.URL.Query()["resourceVersion"]
+		values, ok := queryArgs["resourceVersion"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -80717,7 +81589,7 @@ func decodeWatchDiscoveryV1beta1NamespacedEndpointSliceParams(args map[string]st
 	}
 	// Decode query: resourceVersionMatch.
 	{
-		values, ok := r.URL.Query()["resourceVersionMatch"]
+		values, ok := queryArgs["resourceVersionMatch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -80752,7 +81624,7 @@ func decodeWatchDiscoveryV1beta1NamespacedEndpointSliceParams(args map[string]st
 	}
 	// Decode query: timeoutSeconds.
 	{
-		values, ok := r.URL.Query()["timeoutSeconds"]
+		values, ok := queryArgs["timeoutSeconds"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -80787,7 +81659,7 @@ func decodeWatchDiscoveryV1beta1NamespacedEndpointSliceParams(args map[string]st
 	}
 	// Decode query: watch.
 	{
-		values, ok := r.URL.Query()["watch"]
+		values, ok := queryArgs["watch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -80824,10 +81696,13 @@ func decodeWatchDiscoveryV1beta1NamespacedEndpointSliceParams(args map[string]st
 }
 
 func decodeWatchDiscoveryV1beta1NamespacedEndpointSliceListParams(args map[string]string, r *http.Request) (WatchDiscoveryV1beta1NamespacedEndpointSliceListParams, error) {
-	var params WatchDiscoveryV1beta1NamespacedEndpointSliceListParams
+	var (
+		params    WatchDiscoveryV1beta1NamespacedEndpointSliceListParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode query: allowWatchBookmarks.
 	{
-		values, ok := r.URL.Query()["allowWatchBookmarks"]
+		values, ok := queryArgs["allowWatchBookmarks"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -80862,7 +81737,7 @@ func decodeWatchDiscoveryV1beta1NamespacedEndpointSliceListParams(args map[strin
 	}
 	// Decode query: continue.
 	{
-		values, ok := r.URL.Query()["continue"]
+		values, ok := queryArgs["continue"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -80897,7 +81772,7 @@ func decodeWatchDiscoveryV1beta1NamespacedEndpointSliceListParams(args map[strin
 	}
 	// Decode query: fieldSelector.
 	{
-		values, ok := r.URL.Query()["fieldSelector"]
+		values, ok := queryArgs["fieldSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -80932,7 +81807,7 @@ func decodeWatchDiscoveryV1beta1NamespacedEndpointSliceListParams(args map[strin
 	}
 	// Decode query: labelSelector.
 	{
-		values, ok := r.URL.Query()["labelSelector"]
+		values, ok := queryArgs["labelSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -80967,7 +81842,7 @@ func decodeWatchDiscoveryV1beta1NamespacedEndpointSliceListParams(args map[strin
 	}
 	// Decode query: limit.
 	{
-		values, ok := r.URL.Query()["limit"]
+		values, ok := queryArgs["limit"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -81033,7 +81908,7 @@ func decodeWatchDiscoveryV1beta1NamespacedEndpointSliceListParams(args map[strin
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -81068,7 +81943,7 @@ func decodeWatchDiscoveryV1beta1NamespacedEndpointSliceListParams(args map[strin
 	}
 	// Decode query: resourceVersion.
 	{
-		values, ok := r.URL.Query()["resourceVersion"]
+		values, ok := queryArgs["resourceVersion"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -81103,7 +81978,7 @@ func decodeWatchDiscoveryV1beta1NamespacedEndpointSliceListParams(args map[strin
 	}
 	// Decode query: resourceVersionMatch.
 	{
-		values, ok := r.URL.Query()["resourceVersionMatch"]
+		values, ok := queryArgs["resourceVersionMatch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -81138,7 +82013,7 @@ func decodeWatchDiscoveryV1beta1NamespacedEndpointSliceListParams(args map[strin
 	}
 	// Decode query: timeoutSeconds.
 	{
-		values, ok := r.URL.Query()["timeoutSeconds"]
+		values, ok := queryArgs["timeoutSeconds"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -81173,7 +82048,7 @@ func decodeWatchDiscoveryV1beta1NamespacedEndpointSliceListParams(args map[strin
 	}
 	// Decode query: watch.
 	{
-		values, ok := r.URL.Query()["watch"]
+		values, ok := queryArgs["watch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -81210,10 +82085,13 @@ func decodeWatchDiscoveryV1beta1NamespacedEndpointSliceListParams(args map[strin
 }
 
 func decodeWatchEventsV1EventListForAllNamespacesParams(args map[string]string, r *http.Request) (WatchEventsV1EventListForAllNamespacesParams, error) {
-	var params WatchEventsV1EventListForAllNamespacesParams
+	var (
+		params    WatchEventsV1EventListForAllNamespacesParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode query: allowWatchBookmarks.
 	{
-		values, ok := r.URL.Query()["allowWatchBookmarks"]
+		values, ok := queryArgs["allowWatchBookmarks"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -81248,7 +82126,7 @@ func decodeWatchEventsV1EventListForAllNamespacesParams(args map[string]string, 
 	}
 	// Decode query: continue.
 	{
-		values, ok := r.URL.Query()["continue"]
+		values, ok := queryArgs["continue"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -81283,7 +82161,7 @@ func decodeWatchEventsV1EventListForAllNamespacesParams(args map[string]string, 
 	}
 	// Decode query: fieldSelector.
 	{
-		values, ok := r.URL.Query()["fieldSelector"]
+		values, ok := queryArgs["fieldSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -81318,7 +82196,7 @@ func decodeWatchEventsV1EventListForAllNamespacesParams(args map[string]string, 
 	}
 	// Decode query: labelSelector.
 	{
-		values, ok := r.URL.Query()["labelSelector"]
+		values, ok := queryArgs["labelSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -81353,7 +82231,7 @@ func decodeWatchEventsV1EventListForAllNamespacesParams(args map[string]string, 
 	}
 	// Decode query: limit.
 	{
-		values, ok := r.URL.Query()["limit"]
+		values, ok := queryArgs["limit"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -81388,7 +82266,7 @@ func decodeWatchEventsV1EventListForAllNamespacesParams(args map[string]string, 
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -81423,7 +82301,7 @@ func decodeWatchEventsV1EventListForAllNamespacesParams(args map[string]string, 
 	}
 	// Decode query: resourceVersion.
 	{
-		values, ok := r.URL.Query()["resourceVersion"]
+		values, ok := queryArgs["resourceVersion"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -81458,7 +82336,7 @@ func decodeWatchEventsV1EventListForAllNamespacesParams(args map[string]string, 
 	}
 	// Decode query: resourceVersionMatch.
 	{
-		values, ok := r.URL.Query()["resourceVersionMatch"]
+		values, ok := queryArgs["resourceVersionMatch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -81493,7 +82371,7 @@ func decodeWatchEventsV1EventListForAllNamespacesParams(args map[string]string, 
 	}
 	// Decode query: timeoutSeconds.
 	{
-		values, ok := r.URL.Query()["timeoutSeconds"]
+		values, ok := queryArgs["timeoutSeconds"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -81528,7 +82406,7 @@ func decodeWatchEventsV1EventListForAllNamespacesParams(args map[string]string, 
 	}
 	// Decode query: watch.
 	{
-		values, ok := r.URL.Query()["watch"]
+		values, ok := queryArgs["watch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -81565,10 +82443,13 @@ func decodeWatchEventsV1EventListForAllNamespacesParams(args map[string]string, 
 }
 
 func decodeWatchEventsV1NamespacedEventParams(args map[string]string, r *http.Request) (WatchEventsV1NamespacedEventParams, error) {
-	var params WatchEventsV1NamespacedEventParams
+	var (
+		params    WatchEventsV1NamespacedEventParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode query: allowWatchBookmarks.
 	{
-		values, ok := r.URL.Query()["allowWatchBookmarks"]
+		values, ok := queryArgs["allowWatchBookmarks"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -81603,7 +82484,7 @@ func decodeWatchEventsV1NamespacedEventParams(args map[string]string, r *http.Re
 	}
 	// Decode query: continue.
 	{
-		values, ok := r.URL.Query()["continue"]
+		values, ok := queryArgs["continue"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -81638,7 +82519,7 @@ func decodeWatchEventsV1NamespacedEventParams(args map[string]string, r *http.Re
 	}
 	// Decode query: fieldSelector.
 	{
-		values, ok := r.URL.Query()["fieldSelector"]
+		values, ok := queryArgs["fieldSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -81673,7 +82554,7 @@ func decodeWatchEventsV1NamespacedEventParams(args map[string]string, r *http.Re
 	}
 	// Decode query: labelSelector.
 	{
-		values, ok := r.URL.Query()["labelSelector"]
+		values, ok := queryArgs["labelSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -81708,7 +82589,7 @@ func decodeWatchEventsV1NamespacedEventParams(args map[string]string, r *http.Re
 	}
 	// Decode query: limit.
 	{
-		values, ok := r.URL.Query()["limit"]
+		values, ok := queryArgs["limit"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -81805,7 +82686,7 @@ func decodeWatchEventsV1NamespacedEventParams(args map[string]string, r *http.Re
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -81840,7 +82721,7 @@ func decodeWatchEventsV1NamespacedEventParams(args map[string]string, r *http.Re
 	}
 	// Decode query: resourceVersion.
 	{
-		values, ok := r.URL.Query()["resourceVersion"]
+		values, ok := queryArgs["resourceVersion"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -81875,7 +82756,7 @@ func decodeWatchEventsV1NamespacedEventParams(args map[string]string, r *http.Re
 	}
 	// Decode query: resourceVersionMatch.
 	{
-		values, ok := r.URL.Query()["resourceVersionMatch"]
+		values, ok := queryArgs["resourceVersionMatch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -81910,7 +82791,7 @@ func decodeWatchEventsV1NamespacedEventParams(args map[string]string, r *http.Re
 	}
 	// Decode query: timeoutSeconds.
 	{
-		values, ok := r.URL.Query()["timeoutSeconds"]
+		values, ok := queryArgs["timeoutSeconds"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -81945,7 +82826,7 @@ func decodeWatchEventsV1NamespacedEventParams(args map[string]string, r *http.Re
 	}
 	// Decode query: watch.
 	{
-		values, ok := r.URL.Query()["watch"]
+		values, ok := queryArgs["watch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -81982,10 +82863,13 @@ func decodeWatchEventsV1NamespacedEventParams(args map[string]string, r *http.Re
 }
 
 func decodeWatchEventsV1NamespacedEventListParams(args map[string]string, r *http.Request) (WatchEventsV1NamespacedEventListParams, error) {
-	var params WatchEventsV1NamespacedEventListParams
+	var (
+		params    WatchEventsV1NamespacedEventListParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode query: allowWatchBookmarks.
 	{
-		values, ok := r.URL.Query()["allowWatchBookmarks"]
+		values, ok := queryArgs["allowWatchBookmarks"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -82020,7 +82904,7 @@ func decodeWatchEventsV1NamespacedEventListParams(args map[string]string, r *htt
 	}
 	// Decode query: continue.
 	{
-		values, ok := r.URL.Query()["continue"]
+		values, ok := queryArgs["continue"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -82055,7 +82939,7 @@ func decodeWatchEventsV1NamespacedEventListParams(args map[string]string, r *htt
 	}
 	// Decode query: fieldSelector.
 	{
-		values, ok := r.URL.Query()["fieldSelector"]
+		values, ok := queryArgs["fieldSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -82090,7 +82974,7 @@ func decodeWatchEventsV1NamespacedEventListParams(args map[string]string, r *htt
 	}
 	// Decode query: labelSelector.
 	{
-		values, ok := r.URL.Query()["labelSelector"]
+		values, ok := queryArgs["labelSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -82125,7 +83009,7 @@ func decodeWatchEventsV1NamespacedEventListParams(args map[string]string, r *htt
 	}
 	// Decode query: limit.
 	{
-		values, ok := r.URL.Query()["limit"]
+		values, ok := queryArgs["limit"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -82191,7 +83075,7 @@ func decodeWatchEventsV1NamespacedEventListParams(args map[string]string, r *htt
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -82226,7 +83110,7 @@ func decodeWatchEventsV1NamespacedEventListParams(args map[string]string, r *htt
 	}
 	// Decode query: resourceVersion.
 	{
-		values, ok := r.URL.Query()["resourceVersion"]
+		values, ok := queryArgs["resourceVersion"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -82261,7 +83145,7 @@ func decodeWatchEventsV1NamespacedEventListParams(args map[string]string, r *htt
 	}
 	// Decode query: resourceVersionMatch.
 	{
-		values, ok := r.URL.Query()["resourceVersionMatch"]
+		values, ok := queryArgs["resourceVersionMatch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -82296,7 +83180,7 @@ func decodeWatchEventsV1NamespacedEventListParams(args map[string]string, r *htt
 	}
 	// Decode query: timeoutSeconds.
 	{
-		values, ok := r.URL.Query()["timeoutSeconds"]
+		values, ok := queryArgs["timeoutSeconds"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -82331,7 +83215,7 @@ func decodeWatchEventsV1NamespacedEventListParams(args map[string]string, r *htt
 	}
 	// Decode query: watch.
 	{
-		values, ok := r.URL.Query()["watch"]
+		values, ok := queryArgs["watch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -82368,10 +83252,13 @@ func decodeWatchEventsV1NamespacedEventListParams(args map[string]string, r *htt
 }
 
 func decodeWatchEventsV1beta1EventListForAllNamespacesParams(args map[string]string, r *http.Request) (WatchEventsV1beta1EventListForAllNamespacesParams, error) {
-	var params WatchEventsV1beta1EventListForAllNamespacesParams
+	var (
+		params    WatchEventsV1beta1EventListForAllNamespacesParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode query: allowWatchBookmarks.
 	{
-		values, ok := r.URL.Query()["allowWatchBookmarks"]
+		values, ok := queryArgs["allowWatchBookmarks"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -82406,7 +83293,7 @@ func decodeWatchEventsV1beta1EventListForAllNamespacesParams(args map[string]str
 	}
 	// Decode query: continue.
 	{
-		values, ok := r.URL.Query()["continue"]
+		values, ok := queryArgs["continue"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -82441,7 +83328,7 @@ func decodeWatchEventsV1beta1EventListForAllNamespacesParams(args map[string]str
 	}
 	// Decode query: fieldSelector.
 	{
-		values, ok := r.URL.Query()["fieldSelector"]
+		values, ok := queryArgs["fieldSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -82476,7 +83363,7 @@ func decodeWatchEventsV1beta1EventListForAllNamespacesParams(args map[string]str
 	}
 	// Decode query: labelSelector.
 	{
-		values, ok := r.URL.Query()["labelSelector"]
+		values, ok := queryArgs["labelSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -82511,7 +83398,7 @@ func decodeWatchEventsV1beta1EventListForAllNamespacesParams(args map[string]str
 	}
 	// Decode query: limit.
 	{
-		values, ok := r.URL.Query()["limit"]
+		values, ok := queryArgs["limit"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -82546,7 +83433,7 @@ func decodeWatchEventsV1beta1EventListForAllNamespacesParams(args map[string]str
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -82581,7 +83468,7 @@ func decodeWatchEventsV1beta1EventListForAllNamespacesParams(args map[string]str
 	}
 	// Decode query: resourceVersion.
 	{
-		values, ok := r.URL.Query()["resourceVersion"]
+		values, ok := queryArgs["resourceVersion"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -82616,7 +83503,7 @@ func decodeWatchEventsV1beta1EventListForAllNamespacesParams(args map[string]str
 	}
 	// Decode query: resourceVersionMatch.
 	{
-		values, ok := r.URL.Query()["resourceVersionMatch"]
+		values, ok := queryArgs["resourceVersionMatch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -82651,7 +83538,7 @@ func decodeWatchEventsV1beta1EventListForAllNamespacesParams(args map[string]str
 	}
 	// Decode query: timeoutSeconds.
 	{
-		values, ok := r.URL.Query()["timeoutSeconds"]
+		values, ok := queryArgs["timeoutSeconds"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -82686,7 +83573,7 @@ func decodeWatchEventsV1beta1EventListForAllNamespacesParams(args map[string]str
 	}
 	// Decode query: watch.
 	{
-		values, ok := r.URL.Query()["watch"]
+		values, ok := queryArgs["watch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -82723,10 +83610,13 @@ func decodeWatchEventsV1beta1EventListForAllNamespacesParams(args map[string]str
 }
 
 func decodeWatchEventsV1beta1NamespacedEventParams(args map[string]string, r *http.Request) (WatchEventsV1beta1NamespacedEventParams, error) {
-	var params WatchEventsV1beta1NamespacedEventParams
+	var (
+		params    WatchEventsV1beta1NamespacedEventParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode query: allowWatchBookmarks.
 	{
-		values, ok := r.URL.Query()["allowWatchBookmarks"]
+		values, ok := queryArgs["allowWatchBookmarks"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -82761,7 +83651,7 @@ func decodeWatchEventsV1beta1NamespacedEventParams(args map[string]string, r *ht
 	}
 	// Decode query: continue.
 	{
-		values, ok := r.URL.Query()["continue"]
+		values, ok := queryArgs["continue"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -82796,7 +83686,7 @@ func decodeWatchEventsV1beta1NamespacedEventParams(args map[string]string, r *ht
 	}
 	// Decode query: fieldSelector.
 	{
-		values, ok := r.URL.Query()["fieldSelector"]
+		values, ok := queryArgs["fieldSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -82831,7 +83721,7 @@ func decodeWatchEventsV1beta1NamespacedEventParams(args map[string]string, r *ht
 	}
 	// Decode query: labelSelector.
 	{
-		values, ok := r.URL.Query()["labelSelector"]
+		values, ok := queryArgs["labelSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -82866,7 +83756,7 @@ func decodeWatchEventsV1beta1NamespacedEventParams(args map[string]string, r *ht
 	}
 	// Decode query: limit.
 	{
-		values, ok := r.URL.Query()["limit"]
+		values, ok := queryArgs["limit"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -82963,7 +83853,7 @@ func decodeWatchEventsV1beta1NamespacedEventParams(args map[string]string, r *ht
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -82998,7 +83888,7 @@ func decodeWatchEventsV1beta1NamespacedEventParams(args map[string]string, r *ht
 	}
 	// Decode query: resourceVersion.
 	{
-		values, ok := r.URL.Query()["resourceVersion"]
+		values, ok := queryArgs["resourceVersion"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -83033,7 +83923,7 @@ func decodeWatchEventsV1beta1NamespacedEventParams(args map[string]string, r *ht
 	}
 	// Decode query: resourceVersionMatch.
 	{
-		values, ok := r.URL.Query()["resourceVersionMatch"]
+		values, ok := queryArgs["resourceVersionMatch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -83068,7 +83958,7 @@ func decodeWatchEventsV1beta1NamespacedEventParams(args map[string]string, r *ht
 	}
 	// Decode query: timeoutSeconds.
 	{
-		values, ok := r.URL.Query()["timeoutSeconds"]
+		values, ok := queryArgs["timeoutSeconds"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -83103,7 +83993,7 @@ func decodeWatchEventsV1beta1NamespacedEventParams(args map[string]string, r *ht
 	}
 	// Decode query: watch.
 	{
-		values, ok := r.URL.Query()["watch"]
+		values, ok := queryArgs["watch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -83140,10 +84030,13 @@ func decodeWatchEventsV1beta1NamespacedEventParams(args map[string]string, r *ht
 }
 
 func decodeWatchEventsV1beta1NamespacedEventListParams(args map[string]string, r *http.Request) (WatchEventsV1beta1NamespacedEventListParams, error) {
-	var params WatchEventsV1beta1NamespacedEventListParams
+	var (
+		params    WatchEventsV1beta1NamespacedEventListParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode query: allowWatchBookmarks.
 	{
-		values, ok := r.URL.Query()["allowWatchBookmarks"]
+		values, ok := queryArgs["allowWatchBookmarks"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -83178,7 +84071,7 @@ func decodeWatchEventsV1beta1NamespacedEventListParams(args map[string]string, r
 	}
 	// Decode query: continue.
 	{
-		values, ok := r.URL.Query()["continue"]
+		values, ok := queryArgs["continue"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -83213,7 +84106,7 @@ func decodeWatchEventsV1beta1NamespacedEventListParams(args map[string]string, r
 	}
 	// Decode query: fieldSelector.
 	{
-		values, ok := r.URL.Query()["fieldSelector"]
+		values, ok := queryArgs["fieldSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -83248,7 +84141,7 @@ func decodeWatchEventsV1beta1NamespacedEventListParams(args map[string]string, r
 	}
 	// Decode query: labelSelector.
 	{
-		values, ok := r.URL.Query()["labelSelector"]
+		values, ok := queryArgs["labelSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -83283,7 +84176,7 @@ func decodeWatchEventsV1beta1NamespacedEventListParams(args map[string]string, r
 	}
 	// Decode query: limit.
 	{
-		values, ok := r.URL.Query()["limit"]
+		values, ok := queryArgs["limit"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -83349,7 +84242,7 @@ func decodeWatchEventsV1beta1NamespacedEventListParams(args map[string]string, r
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -83384,7 +84277,7 @@ func decodeWatchEventsV1beta1NamespacedEventListParams(args map[string]string, r
 	}
 	// Decode query: resourceVersion.
 	{
-		values, ok := r.URL.Query()["resourceVersion"]
+		values, ok := queryArgs["resourceVersion"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -83419,7 +84312,7 @@ func decodeWatchEventsV1beta1NamespacedEventListParams(args map[string]string, r
 	}
 	// Decode query: resourceVersionMatch.
 	{
-		values, ok := r.URL.Query()["resourceVersionMatch"]
+		values, ok := queryArgs["resourceVersionMatch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -83454,7 +84347,7 @@ func decodeWatchEventsV1beta1NamespacedEventListParams(args map[string]string, r
 	}
 	// Decode query: timeoutSeconds.
 	{
-		values, ok := r.URL.Query()["timeoutSeconds"]
+		values, ok := queryArgs["timeoutSeconds"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -83489,7 +84382,7 @@ func decodeWatchEventsV1beta1NamespacedEventListParams(args map[string]string, r
 	}
 	// Decode query: watch.
 	{
-		values, ok := r.URL.Query()["watch"]
+		values, ok := queryArgs["watch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -83526,10 +84419,13 @@ func decodeWatchEventsV1beta1NamespacedEventListParams(args map[string]string, r
 }
 
 func decodeWatchFlowcontrolApiserverV1beta1FlowSchemaParams(args map[string]string, r *http.Request) (WatchFlowcontrolApiserverV1beta1FlowSchemaParams, error) {
-	var params WatchFlowcontrolApiserverV1beta1FlowSchemaParams
+	var (
+		params    WatchFlowcontrolApiserverV1beta1FlowSchemaParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode query: allowWatchBookmarks.
 	{
-		values, ok := r.URL.Query()["allowWatchBookmarks"]
+		values, ok := queryArgs["allowWatchBookmarks"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -83564,7 +84460,7 @@ func decodeWatchFlowcontrolApiserverV1beta1FlowSchemaParams(args map[string]stri
 	}
 	// Decode query: continue.
 	{
-		values, ok := r.URL.Query()["continue"]
+		values, ok := queryArgs["continue"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -83599,7 +84495,7 @@ func decodeWatchFlowcontrolApiserverV1beta1FlowSchemaParams(args map[string]stri
 	}
 	// Decode query: fieldSelector.
 	{
-		values, ok := r.URL.Query()["fieldSelector"]
+		values, ok := queryArgs["fieldSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -83634,7 +84530,7 @@ func decodeWatchFlowcontrolApiserverV1beta1FlowSchemaParams(args map[string]stri
 	}
 	// Decode query: labelSelector.
 	{
-		values, ok := r.URL.Query()["labelSelector"]
+		values, ok := queryArgs["labelSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -83669,7 +84565,7 @@ func decodeWatchFlowcontrolApiserverV1beta1FlowSchemaParams(args map[string]stri
 	}
 	// Decode query: limit.
 	{
-		values, ok := r.URL.Query()["limit"]
+		values, ok := queryArgs["limit"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -83735,7 +84631,7 @@ func decodeWatchFlowcontrolApiserverV1beta1FlowSchemaParams(args map[string]stri
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -83770,7 +84666,7 @@ func decodeWatchFlowcontrolApiserverV1beta1FlowSchemaParams(args map[string]stri
 	}
 	// Decode query: resourceVersion.
 	{
-		values, ok := r.URL.Query()["resourceVersion"]
+		values, ok := queryArgs["resourceVersion"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -83805,7 +84701,7 @@ func decodeWatchFlowcontrolApiserverV1beta1FlowSchemaParams(args map[string]stri
 	}
 	// Decode query: resourceVersionMatch.
 	{
-		values, ok := r.URL.Query()["resourceVersionMatch"]
+		values, ok := queryArgs["resourceVersionMatch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -83840,7 +84736,7 @@ func decodeWatchFlowcontrolApiserverV1beta1FlowSchemaParams(args map[string]stri
 	}
 	// Decode query: timeoutSeconds.
 	{
-		values, ok := r.URL.Query()["timeoutSeconds"]
+		values, ok := queryArgs["timeoutSeconds"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -83875,7 +84771,7 @@ func decodeWatchFlowcontrolApiserverV1beta1FlowSchemaParams(args map[string]stri
 	}
 	// Decode query: watch.
 	{
-		values, ok := r.URL.Query()["watch"]
+		values, ok := queryArgs["watch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -83912,10 +84808,13 @@ func decodeWatchFlowcontrolApiserverV1beta1FlowSchemaParams(args map[string]stri
 }
 
 func decodeWatchFlowcontrolApiserverV1beta1FlowSchemaListParams(args map[string]string, r *http.Request) (WatchFlowcontrolApiserverV1beta1FlowSchemaListParams, error) {
-	var params WatchFlowcontrolApiserverV1beta1FlowSchemaListParams
+	var (
+		params    WatchFlowcontrolApiserverV1beta1FlowSchemaListParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode query: allowWatchBookmarks.
 	{
-		values, ok := r.URL.Query()["allowWatchBookmarks"]
+		values, ok := queryArgs["allowWatchBookmarks"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -83950,7 +84849,7 @@ func decodeWatchFlowcontrolApiserverV1beta1FlowSchemaListParams(args map[string]
 	}
 	// Decode query: continue.
 	{
-		values, ok := r.URL.Query()["continue"]
+		values, ok := queryArgs["continue"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -83985,7 +84884,7 @@ func decodeWatchFlowcontrolApiserverV1beta1FlowSchemaListParams(args map[string]
 	}
 	// Decode query: fieldSelector.
 	{
-		values, ok := r.URL.Query()["fieldSelector"]
+		values, ok := queryArgs["fieldSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -84020,7 +84919,7 @@ func decodeWatchFlowcontrolApiserverV1beta1FlowSchemaListParams(args map[string]
 	}
 	// Decode query: labelSelector.
 	{
-		values, ok := r.URL.Query()["labelSelector"]
+		values, ok := queryArgs["labelSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -84055,7 +84954,7 @@ func decodeWatchFlowcontrolApiserverV1beta1FlowSchemaListParams(args map[string]
 	}
 	// Decode query: limit.
 	{
-		values, ok := r.URL.Query()["limit"]
+		values, ok := queryArgs["limit"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -84090,7 +84989,7 @@ func decodeWatchFlowcontrolApiserverV1beta1FlowSchemaListParams(args map[string]
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -84125,7 +85024,7 @@ func decodeWatchFlowcontrolApiserverV1beta1FlowSchemaListParams(args map[string]
 	}
 	// Decode query: resourceVersion.
 	{
-		values, ok := r.URL.Query()["resourceVersion"]
+		values, ok := queryArgs["resourceVersion"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -84160,7 +85059,7 @@ func decodeWatchFlowcontrolApiserverV1beta1FlowSchemaListParams(args map[string]
 	}
 	// Decode query: resourceVersionMatch.
 	{
-		values, ok := r.URL.Query()["resourceVersionMatch"]
+		values, ok := queryArgs["resourceVersionMatch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -84195,7 +85094,7 @@ func decodeWatchFlowcontrolApiserverV1beta1FlowSchemaListParams(args map[string]
 	}
 	// Decode query: timeoutSeconds.
 	{
-		values, ok := r.URL.Query()["timeoutSeconds"]
+		values, ok := queryArgs["timeoutSeconds"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -84230,7 +85129,7 @@ func decodeWatchFlowcontrolApiserverV1beta1FlowSchemaListParams(args map[string]
 	}
 	// Decode query: watch.
 	{
-		values, ok := r.URL.Query()["watch"]
+		values, ok := queryArgs["watch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -84267,10 +85166,13 @@ func decodeWatchFlowcontrolApiserverV1beta1FlowSchemaListParams(args map[string]
 }
 
 func decodeWatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationParams(args map[string]string, r *http.Request) (WatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationParams, error) {
-	var params WatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationParams
+	var (
+		params    WatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode query: allowWatchBookmarks.
 	{
-		values, ok := r.URL.Query()["allowWatchBookmarks"]
+		values, ok := queryArgs["allowWatchBookmarks"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -84305,7 +85207,7 @@ func decodeWatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationParams(args
 	}
 	// Decode query: continue.
 	{
-		values, ok := r.URL.Query()["continue"]
+		values, ok := queryArgs["continue"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -84340,7 +85242,7 @@ func decodeWatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationParams(args
 	}
 	// Decode query: fieldSelector.
 	{
-		values, ok := r.URL.Query()["fieldSelector"]
+		values, ok := queryArgs["fieldSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -84375,7 +85277,7 @@ func decodeWatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationParams(args
 	}
 	// Decode query: labelSelector.
 	{
-		values, ok := r.URL.Query()["labelSelector"]
+		values, ok := queryArgs["labelSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -84410,7 +85312,7 @@ func decodeWatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationParams(args
 	}
 	// Decode query: limit.
 	{
-		values, ok := r.URL.Query()["limit"]
+		values, ok := queryArgs["limit"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -84476,7 +85378,7 @@ func decodeWatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationParams(args
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -84511,7 +85413,7 @@ func decodeWatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationParams(args
 	}
 	// Decode query: resourceVersion.
 	{
-		values, ok := r.URL.Query()["resourceVersion"]
+		values, ok := queryArgs["resourceVersion"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -84546,7 +85448,7 @@ func decodeWatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationParams(args
 	}
 	// Decode query: resourceVersionMatch.
 	{
-		values, ok := r.URL.Query()["resourceVersionMatch"]
+		values, ok := queryArgs["resourceVersionMatch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -84581,7 +85483,7 @@ func decodeWatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationParams(args
 	}
 	// Decode query: timeoutSeconds.
 	{
-		values, ok := r.URL.Query()["timeoutSeconds"]
+		values, ok := queryArgs["timeoutSeconds"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -84616,7 +85518,7 @@ func decodeWatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationParams(args
 	}
 	// Decode query: watch.
 	{
-		values, ok := r.URL.Query()["watch"]
+		values, ok := queryArgs["watch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -84653,10 +85555,13 @@ func decodeWatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationParams(args
 }
 
 func decodeWatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationListParams(args map[string]string, r *http.Request) (WatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationListParams, error) {
-	var params WatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationListParams
+	var (
+		params    WatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationListParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode query: allowWatchBookmarks.
 	{
-		values, ok := r.URL.Query()["allowWatchBookmarks"]
+		values, ok := queryArgs["allowWatchBookmarks"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -84691,7 +85596,7 @@ func decodeWatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationListParams(
 	}
 	// Decode query: continue.
 	{
-		values, ok := r.URL.Query()["continue"]
+		values, ok := queryArgs["continue"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -84726,7 +85631,7 @@ func decodeWatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationListParams(
 	}
 	// Decode query: fieldSelector.
 	{
-		values, ok := r.URL.Query()["fieldSelector"]
+		values, ok := queryArgs["fieldSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -84761,7 +85666,7 @@ func decodeWatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationListParams(
 	}
 	// Decode query: labelSelector.
 	{
-		values, ok := r.URL.Query()["labelSelector"]
+		values, ok := queryArgs["labelSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -84796,7 +85701,7 @@ func decodeWatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationListParams(
 	}
 	// Decode query: limit.
 	{
-		values, ok := r.URL.Query()["limit"]
+		values, ok := queryArgs["limit"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -84831,7 +85736,7 @@ func decodeWatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationListParams(
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -84866,7 +85771,7 @@ func decodeWatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationListParams(
 	}
 	// Decode query: resourceVersion.
 	{
-		values, ok := r.URL.Query()["resourceVersion"]
+		values, ok := queryArgs["resourceVersion"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -84901,7 +85806,7 @@ func decodeWatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationListParams(
 	}
 	// Decode query: resourceVersionMatch.
 	{
-		values, ok := r.URL.Query()["resourceVersionMatch"]
+		values, ok := queryArgs["resourceVersionMatch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -84936,7 +85841,7 @@ func decodeWatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationListParams(
 	}
 	// Decode query: timeoutSeconds.
 	{
-		values, ok := r.URL.Query()["timeoutSeconds"]
+		values, ok := queryArgs["timeoutSeconds"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -84971,7 +85876,7 @@ func decodeWatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationListParams(
 	}
 	// Decode query: watch.
 	{
-		values, ok := r.URL.Query()["watch"]
+		values, ok := queryArgs["watch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -85008,10 +85913,13 @@ func decodeWatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationListParams(
 }
 
 func decodeWatchFlowcontrolApiserverV1beta2FlowSchemaParams(args map[string]string, r *http.Request) (WatchFlowcontrolApiserverV1beta2FlowSchemaParams, error) {
-	var params WatchFlowcontrolApiserverV1beta2FlowSchemaParams
+	var (
+		params    WatchFlowcontrolApiserverV1beta2FlowSchemaParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode query: allowWatchBookmarks.
 	{
-		values, ok := r.URL.Query()["allowWatchBookmarks"]
+		values, ok := queryArgs["allowWatchBookmarks"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -85046,7 +85954,7 @@ func decodeWatchFlowcontrolApiserverV1beta2FlowSchemaParams(args map[string]stri
 	}
 	// Decode query: continue.
 	{
-		values, ok := r.URL.Query()["continue"]
+		values, ok := queryArgs["continue"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -85081,7 +85989,7 @@ func decodeWatchFlowcontrolApiserverV1beta2FlowSchemaParams(args map[string]stri
 	}
 	// Decode query: fieldSelector.
 	{
-		values, ok := r.URL.Query()["fieldSelector"]
+		values, ok := queryArgs["fieldSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -85116,7 +86024,7 @@ func decodeWatchFlowcontrolApiserverV1beta2FlowSchemaParams(args map[string]stri
 	}
 	// Decode query: labelSelector.
 	{
-		values, ok := r.URL.Query()["labelSelector"]
+		values, ok := queryArgs["labelSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -85151,7 +86059,7 @@ func decodeWatchFlowcontrolApiserverV1beta2FlowSchemaParams(args map[string]stri
 	}
 	// Decode query: limit.
 	{
-		values, ok := r.URL.Query()["limit"]
+		values, ok := queryArgs["limit"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -85217,7 +86125,7 @@ func decodeWatchFlowcontrolApiserverV1beta2FlowSchemaParams(args map[string]stri
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -85252,7 +86160,7 @@ func decodeWatchFlowcontrolApiserverV1beta2FlowSchemaParams(args map[string]stri
 	}
 	// Decode query: resourceVersion.
 	{
-		values, ok := r.URL.Query()["resourceVersion"]
+		values, ok := queryArgs["resourceVersion"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -85287,7 +86195,7 @@ func decodeWatchFlowcontrolApiserverV1beta2FlowSchemaParams(args map[string]stri
 	}
 	// Decode query: resourceVersionMatch.
 	{
-		values, ok := r.URL.Query()["resourceVersionMatch"]
+		values, ok := queryArgs["resourceVersionMatch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -85322,7 +86230,7 @@ func decodeWatchFlowcontrolApiserverV1beta2FlowSchemaParams(args map[string]stri
 	}
 	// Decode query: timeoutSeconds.
 	{
-		values, ok := r.URL.Query()["timeoutSeconds"]
+		values, ok := queryArgs["timeoutSeconds"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -85357,7 +86265,7 @@ func decodeWatchFlowcontrolApiserverV1beta2FlowSchemaParams(args map[string]stri
 	}
 	// Decode query: watch.
 	{
-		values, ok := r.URL.Query()["watch"]
+		values, ok := queryArgs["watch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -85394,10 +86302,13 @@ func decodeWatchFlowcontrolApiserverV1beta2FlowSchemaParams(args map[string]stri
 }
 
 func decodeWatchFlowcontrolApiserverV1beta2FlowSchemaListParams(args map[string]string, r *http.Request) (WatchFlowcontrolApiserverV1beta2FlowSchemaListParams, error) {
-	var params WatchFlowcontrolApiserverV1beta2FlowSchemaListParams
+	var (
+		params    WatchFlowcontrolApiserverV1beta2FlowSchemaListParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode query: allowWatchBookmarks.
 	{
-		values, ok := r.URL.Query()["allowWatchBookmarks"]
+		values, ok := queryArgs["allowWatchBookmarks"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -85432,7 +86343,7 @@ func decodeWatchFlowcontrolApiserverV1beta2FlowSchemaListParams(args map[string]
 	}
 	// Decode query: continue.
 	{
-		values, ok := r.URL.Query()["continue"]
+		values, ok := queryArgs["continue"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -85467,7 +86378,7 @@ func decodeWatchFlowcontrolApiserverV1beta2FlowSchemaListParams(args map[string]
 	}
 	// Decode query: fieldSelector.
 	{
-		values, ok := r.URL.Query()["fieldSelector"]
+		values, ok := queryArgs["fieldSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -85502,7 +86413,7 @@ func decodeWatchFlowcontrolApiserverV1beta2FlowSchemaListParams(args map[string]
 	}
 	// Decode query: labelSelector.
 	{
-		values, ok := r.URL.Query()["labelSelector"]
+		values, ok := queryArgs["labelSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -85537,7 +86448,7 @@ func decodeWatchFlowcontrolApiserverV1beta2FlowSchemaListParams(args map[string]
 	}
 	// Decode query: limit.
 	{
-		values, ok := r.URL.Query()["limit"]
+		values, ok := queryArgs["limit"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -85572,7 +86483,7 @@ func decodeWatchFlowcontrolApiserverV1beta2FlowSchemaListParams(args map[string]
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -85607,7 +86518,7 @@ func decodeWatchFlowcontrolApiserverV1beta2FlowSchemaListParams(args map[string]
 	}
 	// Decode query: resourceVersion.
 	{
-		values, ok := r.URL.Query()["resourceVersion"]
+		values, ok := queryArgs["resourceVersion"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -85642,7 +86553,7 @@ func decodeWatchFlowcontrolApiserverV1beta2FlowSchemaListParams(args map[string]
 	}
 	// Decode query: resourceVersionMatch.
 	{
-		values, ok := r.URL.Query()["resourceVersionMatch"]
+		values, ok := queryArgs["resourceVersionMatch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -85677,7 +86588,7 @@ func decodeWatchFlowcontrolApiserverV1beta2FlowSchemaListParams(args map[string]
 	}
 	// Decode query: timeoutSeconds.
 	{
-		values, ok := r.URL.Query()["timeoutSeconds"]
+		values, ok := queryArgs["timeoutSeconds"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -85712,7 +86623,7 @@ func decodeWatchFlowcontrolApiserverV1beta2FlowSchemaListParams(args map[string]
 	}
 	// Decode query: watch.
 	{
-		values, ok := r.URL.Query()["watch"]
+		values, ok := queryArgs["watch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -85749,10 +86660,13 @@ func decodeWatchFlowcontrolApiserverV1beta2FlowSchemaListParams(args map[string]
 }
 
 func decodeWatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationParams(args map[string]string, r *http.Request) (WatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationParams, error) {
-	var params WatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationParams
+	var (
+		params    WatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode query: allowWatchBookmarks.
 	{
-		values, ok := r.URL.Query()["allowWatchBookmarks"]
+		values, ok := queryArgs["allowWatchBookmarks"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -85787,7 +86701,7 @@ func decodeWatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationParams(args
 	}
 	// Decode query: continue.
 	{
-		values, ok := r.URL.Query()["continue"]
+		values, ok := queryArgs["continue"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -85822,7 +86736,7 @@ func decodeWatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationParams(args
 	}
 	// Decode query: fieldSelector.
 	{
-		values, ok := r.URL.Query()["fieldSelector"]
+		values, ok := queryArgs["fieldSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -85857,7 +86771,7 @@ func decodeWatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationParams(args
 	}
 	// Decode query: labelSelector.
 	{
-		values, ok := r.URL.Query()["labelSelector"]
+		values, ok := queryArgs["labelSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -85892,7 +86806,7 @@ func decodeWatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationParams(args
 	}
 	// Decode query: limit.
 	{
-		values, ok := r.URL.Query()["limit"]
+		values, ok := queryArgs["limit"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -85958,7 +86872,7 @@ func decodeWatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationParams(args
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -85993,7 +86907,7 @@ func decodeWatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationParams(args
 	}
 	// Decode query: resourceVersion.
 	{
-		values, ok := r.URL.Query()["resourceVersion"]
+		values, ok := queryArgs["resourceVersion"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -86028,7 +86942,7 @@ func decodeWatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationParams(args
 	}
 	// Decode query: resourceVersionMatch.
 	{
-		values, ok := r.URL.Query()["resourceVersionMatch"]
+		values, ok := queryArgs["resourceVersionMatch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -86063,7 +86977,7 @@ func decodeWatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationParams(args
 	}
 	// Decode query: timeoutSeconds.
 	{
-		values, ok := r.URL.Query()["timeoutSeconds"]
+		values, ok := queryArgs["timeoutSeconds"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -86098,7 +87012,7 @@ func decodeWatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationParams(args
 	}
 	// Decode query: watch.
 	{
-		values, ok := r.URL.Query()["watch"]
+		values, ok := queryArgs["watch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -86135,10 +87049,13 @@ func decodeWatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationParams(args
 }
 
 func decodeWatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationListParams(args map[string]string, r *http.Request) (WatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationListParams, error) {
-	var params WatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationListParams
+	var (
+		params    WatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationListParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode query: allowWatchBookmarks.
 	{
-		values, ok := r.URL.Query()["allowWatchBookmarks"]
+		values, ok := queryArgs["allowWatchBookmarks"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -86173,7 +87090,7 @@ func decodeWatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationListParams(
 	}
 	// Decode query: continue.
 	{
-		values, ok := r.URL.Query()["continue"]
+		values, ok := queryArgs["continue"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -86208,7 +87125,7 @@ func decodeWatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationListParams(
 	}
 	// Decode query: fieldSelector.
 	{
-		values, ok := r.URL.Query()["fieldSelector"]
+		values, ok := queryArgs["fieldSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -86243,7 +87160,7 @@ func decodeWatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationListParams(
 	}
 	// Decode query: labelSelector.
 	{
-		values, ok := r.URL.Query()["labelSelector"]
+		values, ok := queryArgs["labelSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -86278,7 +87195,7 @@ func decodeWatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationListParams(
 	}
 	// Decode query: limit.
 	{
-		values, ok := r.URL.Query()["limit"]
+		values, ok := queryArgs["limit"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -86313,7 +87230,7 @@ func decodeWatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationListParams(
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -86348,7 +87265,7 @@ func decodeWatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationListParams(
 	}
 	// Decode query: resourceVersion.
 	{
-		values, ok := r.URL.Query()["resourceVersion"]
+		values, ok := queryArgs["resourceVersion"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -86383,7 +87300,7 @@ func decodeWatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationListParams(
 	}
 	// Decode query: resourceVersionMatch.
 	{
-		values, ok := r.URL.Query()["resourceVersionMatch"]
+		values, ok := queryArgs["resourceVersionMatch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -86418,7 +87335,7 @@ func decodeWatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationListParams(
 	}
 	// Decode query: timeoutSeconds.
 	{
-		values, ok := r.URL.Query()["timeoutSeconds"]
+		values, ok := queryArgs["timeoutSeconds"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -86453,7 +87370,7 @@ func decodeWatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationListParams(
 	}
 	// Decode query: watch.
 	{
-		values, ok := r.URL.Query()["watch"]
+		values, ok := queryArgs["watch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -86490,10 +87407,13 @@ func decodeWatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationListParams(
 }
 
 func decodeWatchInternalApiserverV1alpha1StorageVersionParams(args map[string]string, r *http.Request) (WatchInternalApiserverV1alpha1StorageVersionParams, error) {
-	var params WatchInternalApiserverV1alpha1StorageVersionParams
+	var (
+		params    WatchInternalApiserverV1alpha1StorageVersionParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode query: allowWatchBookmarks.
 	{
-		values, ok := r.URL.Query()["allowWatchBookmarks"]
+		values, ok := queryArgs["allowWatchBookmarks"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -86528,7 +87448,7 @@ func decodeWatchInternalApiserverV1alpha1StorageVersionParams(args map[string]st
 	}
 	// Decode query: continue.
 	{
-		values, ok := r.URL.Query()["continue"]
+		values, ok := queryArgs["continue"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -86563,7 +87483,7 @@ func decodeWatchInternalApiserverV1alpha1StorageVersionParams(args map[string]st
 	}
 	// Decode query: fieldSelector.
 	{
-		values, ok := r.URL.Query()["fieldSelector"]
+		values, ok := queryArgs["fieldSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -86598,7 +87518,7 @@ func decodeWatchInternalApiserverV1alpha1StorageVersionParams(args map[string]st
 	}
 	// Decode query: labelSelector.
 	{
-		values, ok := r.URL.Query()["labelSelector"]
+		values, ok := queryArgs["labelSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -86633,7 +87553,7 @@ func decodeWatchInternalApiserverV1alpha1StorageVersionParams(args map[string]st
 	}
 	// Decode query: limit.
 	{
-		values, ok := r.URL.Query()["limit"]
+		values, ok := queryArgs["limit"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -86699,7 +87619,7 @@ func decodeWatchInternalApiserverV1alpha1StorageVersionParams(args map[string]st
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -86734,7 +87654,7 @@ func decodeWatchInternalApiserverV1alpha1StorageVersionParams(args map[string]st
 	}
 	// Decode query: resourceVersion.
 	{
-		values, ok := r.URL.Query()["resourceVersion"]
+		values, ok := queryArgs["resourceVersion"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -86769,7 +87689,7 @@ func decodeWatchInternalApiserverV1alpha1StorageVersionParams(args map[string]st
 	}
 	// Decode query: resourceVersionMatch.
 	{
-		values, ok := r.URL.Query()["resourceVersionMatch"]
+		values, ok := queryArgs["resourceVersionMatch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -86804,7 +87724,7 @@ func decodeWatchInternalApiserverV1alpha1StorageVersionParams(args map[string]st
 	}
 	// Decode query: timeoutSeconds.
 	{
-		values, ok := r.URL.Query()["timeoutSeconds"]
+		values, ok := queryArgs["timeoutSeconds"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -86839,7 +87759,7 @@ func decodeWatchInternalApiserverV1alpha1StorageVersionParams(args map[string]st
 	}
 	// Decode query: watch.
 	{
-		values, ok := r.URL.Query()["watch"]
+		values, ok := queryArgs["watch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -86876,10 +87796,13 @@ func decodeWatchInternalApiserverV1alpha1StorageVersionParams(args map[string]st
 }
 
 func decodeWatchInternalApiserverV1alpha1StorageVersionListParams(args map[string]string, r *http.Request) (WatchInternalApiserverV1alpha1StorageVersionListParams, error) {
-	var params WatchInternalApiserverV1alpha1StorageVersionListParams
+	var (
+		params    WatchInternalApiserverV1alpha1StorageVersionListParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode query: allowWatchBookmarks.
 	{
-		values, ok := r.URL.Query()["allowWatchBookmarks"]
+		values, ok := queryArgs["allowWatchBookmarks"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -86914,7 +87837,7 @@ func decodeWatchInternalApiserverV1alpha1StorageVersionListParams(args map[strin
 	}
 	// Decode query: continue.
 	{
-		values, ok := r.URL.Query()["continue"]
+		values, ok := queryArgs["continue"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -86949,7 +87872,7 @@ func decodeWatchInternalApiserverV1alpha1StorageVersionListParams(args map[strin
 	}
 	// Decode query: fieldSelector.
 	{
-		values, ok := r.URL.Query()["fieldSelector"]
+		values, ok := queryArgs["fieldSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -86984,7 +87907,7 @@ func decodeWatchInternalApiserverV1alpha1StorageVersionListParams(args map[strin
 	}
 	// Decode query: labelSelector.
 	{
-		values, ok := r.URL.Query()["labelSelector"]
+		values, ok := queryArgs["labelSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -87019,7 +87942,7 @@ func decodeWatchInternalApiserverV1alpha1StorageVersionListParams(args map[strin
 	}
 	// Decode query: limit.
 	{
-		values, ok := r.URL.Query()["limit"]
+		values, ok := queryArgs["limit"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -87054,7 +87977,7 @@ func decodeWatchInternalApiserverV1alpha1StorageVersionListParams(args map[strin
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -87089,7 +88012,7 @@ func decodeWatchInternalApiserverV1alpha1StorageVersionListParams(args map[strin
 	}
 	// Decode query: resourceVersion.
 	{
-		values, ok := r.URL.Query()["resourceVersion"]
+		values, ok := queryArgs["resourceVersion"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -87124,7 +88047,7 @@ func decodeWatchInternalApiserverV1alpha1StorageVersionListParams(args map[strin
 	}
 	// Decode query: resourceVersionMatch.
 	{
-		values, ok := r.URL.Query()["resourceVersionMatch"]
+		values, ok := queryArgs["resourceVersionMatch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -87159,7 +88082,7 @@ func decodeWatchInternalApiserverV1alpha1StorageVersionListParams(args map[strin
 	}
 	// Decode query: timeoutSeconds.
 	{
-		values, ok := r.URL.Query()["timeoutSeconds"]
+		values, ok := queryArgs["timeoutSeconds"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -87194,7 +88117,7 @@ func decodeWatchInternalApiserverV1alpha1StorageVersionListParams(args map[strin
 	}
 	// Decode query: watch.
 	{
-		values, ok := r.URL.Query()["watch"]
+		values, ok := queryArgs["watch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -87231,10 +88154,13 @@ func decodeWatchInternalApiserverV1alpha1StorageVersionListParams(args map[strin
 }
 
 func decodeWatchNetworkingV1IngressClassParams(args map[string]string, r *http.Request) (WatchNetworkingV1IngressClassParams, error) {
-	var params WatchNetworkingV1IngressClassParams
+	var (
+		params    WatchNetworkingV1IngressClassParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode query: allowWatchBookmarks.
 	{
-		values, ok := r.URL.Query()["allowWatchBookmarks"]
+		values, ok := queryArgs["allowWatchBookmarks"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -87269,7 +88195,7 @@ func decodeWatchNetworkingV1IngressClassParams(args map[string]string, r *http.R
 	}
 	// Decode query: continue.
 	{
-		values, ok := r.URL.Query()["continue"]
+		values, ok := queryArgs["continue"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -87304,7 +88230,7 @@ func decodeWatchNetworkingV1IngressClassParams(args map[string]string, r *http.R
 	}
 	// Decode query: fieldSelector.
 	{
-		values, ok := r.URL.Query()["fieldSelector"]
+		values, ok := queryArgs["fieldSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -87339,7 +88265,7 @@ func decodeWatchNetworkingV1IngressClassParams(args map[string]string, r *http.R
 	}
 	// Decode query: labelSelector.
 	{
-		values, ok := r.URL.Query()["labelSelector"]
+		values, ok := queryArgs["labelSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -87374,7 +88300,7 @@ func decodeWatchNetworkingV1IngressClassParams(args map[string]string, r *http.R
 	}
 	// Decode query: limit.
 	{
-		values, ok := r.URL.Query()["limit"]
+		values, ok := queryArgs["limit"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -87440,7 +88366,7 @@ func decodeWatchNetworkingV1IngressClassParams(args map[string]string, r *http.R
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -87475,7 +88401,7 @@ func decodeWatchNetworkingV1IngressClassParams(args map[string]string, r *http.R
 	}
 	// Decode query: resourceVersion.
 	{
-		values, ok := r.URL.Query()["resourceVersion"]
+		values, ok := queryArgs["resourceVersion"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -87510,7 +88436,7 @@ func decodeWatchNetworkingV1IngressClassParams(args map[string]string, r *http.R
 	}
 	// Decode query: resourceVersionMatch.
 	{
-		values, ok := r.URL.Query()["resourceVersionMatch"]
+		values, ok := queryArgs["resourceVersionMatch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -87545,7 +88471,7 @@ func decodeWatchNetworkingV1IngressClassParams(args map[string]string, r *http.R
 	}
 	// Decode query: timeoutSeconds.
 	{
-		values, ok := r.URL.Query()["timeoutSeconds"]
+		values, ok := queryArgs["timeoutSeconds"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -87580,7 +88506,7 @@ func decodeWatchNetworkingV1IngressClassParams(args map[string]string, r *http.R
 	}
 	// Decode query: watch.
 	{
-		values, ok := r.URL.Query()["watch"]
+		values, ok := queryArgs["watch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -87617,10 +88543,13 @@ func decodeWatchNetworkingV1IngressClassParams(args map[string]string, r *http.R
 }
 
 func decodeWatchNetworkingV1IngressClassListParams(args map[string]string, r *http.Request) (WatchNetworkingV1IngressClassListParams, error) {
-	var params WatchNetworkingV1IngressClassListParams
+	var (
+		params    WatchNetworkingV1IngressClassListParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode query: allowWatchBookmarks.
 	{
-		values, ok := r.URL.Query()["allowWatchBookmarks"]
+		values, ok := queryArgs["allowWatchBookmarks"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -87655,7 +88584,7 @@ func decodeWatchNetworkingV1IngressClassListParams(args map[string]string, r *ht
 	}
 	// Decode query: continue.
 	{
-		values, ok := r.URL.Query()["continue"]
+		values, ok := queryArgs["continue"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -87690,7 +88619,7 @@ func decodeWatchNetworkingV1IngressClassListParams(args map[string]string, r *ht
 	}
 	// Decode query: fieldSelector.
 	{
-		values, ok := r.URL.Query()["fieldSelector"]
+		values, ok := queryArgs["fieldSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -87725,7 +88654,7 @@ func decodeWatchNetworkingV1IngressClassListParams(args map[string]string, r *ht
 	}
 	// Decode query: labelSelector.
 	{
-		values, ok := r.URL.Query()["labelSelector"]
+		values, ok := queryArgs["labelSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -87760,7 +88689,7 @@ func decodeWatchNetworkingV1IngressClassListParams(args map[string]string, r *ht
 	}
 	// Decode query: limit.
 	{
-		values, ok := r.URL.Query()["limit"]
+		values, ok := queryArgs["limit"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -87795,7 +88724,7 @@ func decodeWatchNetworkingV1IngressClassListParams(args map[string]string, r *ht
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -87830,7 +88759,7 @@ func decodeWatchNetworkingV1IngressClassListParams(args map[string]string, r *ht
 	}
 	// Decode query: resourceVersion.
 	{
-		values, ok := r.URL.Query()["resourceVersion"]
+		values, ok := queryArgs["resourceVersion"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -87865,7 +88794,7 @@ func decodeWatchNetworkingV1IngressClassListParams(args map[string]string, r *ht
 	}
 	// Decode query: resourceVersionMatch.
 	{
-		values, ok := r.URL.Query()["resourceVersionMatch"]
+		values, ok := queryArgs["resourceVersionMatch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -87900,7 +88829,7 @@ func decodeWatchNetworkingV1IngressClassListParams(args map[string]string, r *ht
 	}
 	// Decode query: timeoutSeconds.
 	{
-		values, ok := r.URL.Query()["timeoutSeconds"]
+		values, ok := queryArgs["timeoutSeconds"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -87935,7 +88864,7 @@ func decodeWatchNetworkingV1IngressClassListParams(args map[string]string, r *ht
 	}
 	// Decode query: watch.
 	{
-		values, ok := r.URL.Query()["watch"]
+		values, ok := queryArgs["watch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -87972,10 +88901,13 @@ func decodeWatchNetworkingV1IngressClassListParams(args map[string]string, r *ht
 }
 
 func decodeWatchNetworkingV1IngressListForAllNamespacesParams(args map[string]string, r *http.Request) (WatchNetworkingV1IngressListForAllNamespacesParams, error) {
-	var params WatchNetworkingV1IngressListForAllNamespacesParams
+	var (
+		params    WatchNetworkingV1IngressListForAllNamespacesParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode query: allowWatchBookmarks.
 	{
-		values, ok := r.URL.Query()["allowWatchBookmarks"]
+		values, ok := queryArgs["allowWatchBookmarks"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -88010,7 +88942,7 @@ func decodeWatchNetworkingV1IngressListForAllNamespacesParams(args map[string]st
 	}
 	// Decode query: continue.
 	{
-		values, ok := r.URL.Query()["continue"]
+		values, ok := queryArgs["continue"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -88045,7 +88977,7 @@ func decodeWatchNetworkingV1IngressListForAllNamespacesParams(args map[string]st
 	}
 	// Decode query: fieldSelector.
 	{
-		values, ok := r.URL.Query()["fieldSelector"]
+		values, ok := queryArgs["fieldSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -88080,7 +89012,7 @@ func decodeWatchNetworkingV1IngressListForAllNamespacesParams(args map[string]st
 	}
 	// Decode query: labelSelector.
 	{
-		values, ok := r.URL.Query()["labelSelector"]
+		values, ok := queryArgs["labelSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -88115,7 +89047,7 @@ func decodeWatchNetworkingV1IngressListForAllNamespacesParams(args map[string]st
 	}
 	// Decode query: limit.
 	{
-		values, ok := r.URL.Query()["limit"]
+		values, ok := queryArgs["limit"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -88150,7 +89082,7 @@ func decodeWatchNetworkingV1IngressListForAllNamespacesParams(args map[string]st
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -88185,7 +89117,7 @@ func decodeWatchNetworkingV1IngressListForAllNamespacesParams(args map[string]st
 	}
 	// Decode query: resourceVersion.
 	{
-		values, ok := r.URL.Query()["resourceVersion"]
+		values, ok := queryArgs["resourceVersion"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -88220,7 +89152,7 @@ func decodeWatchNetworkingV1IngressListForAllNamespacesParams(args map[string]st
 	}
 	// Decode query: resourceVersionMatch.
 	{
-		values, ok := r.URL.Query()["resourceVersionMatch"]
+		values, ok := queryArgs["resourceVersionMatch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -88255,7 +89187,7 @@ func decodeWatchNetworkingV1IngressListForAllNamespacesParams(args map[string]st
 	}
 	// Decode query: timeoutSeconds.
 	{
-		values, ok := r.URL.Query()["timeoutSeconds"]
+		values, ok := queryArgs["timeoutSeconds"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -88290,7 +89222,7 @@ func decodeWatchNetworkingV1IngressListForAllNamespacesParams(args map[string]st
 	}
 	// Decode query: watch.
 	{
-		values, ok := r.URL.Query()["watch"]
+		values, ok := queryArgs["watch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -88327,10 +89259,13 @@ func decodeWatchNetworkingV1IngressListForAllNamespacesParams(args map[string]st
 }
 
 func decodeWatchNetworkingV1NamespacedIngressParams(args map[string]string, r *http.Request) (WatchNetworkingV1NamespacedIngressParams, error) {
-	var params WatchNetworkingV1NamespacedIngressParams
+	var (
+		params    WatchNetworkingV1NamespacedIngressParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode query: allowWatchBookmarks.
 	{
-		values, ok := r.URL.Query()["allowWatchBookmarks"]
+		values, ok := queryArgs["allowWatchBookmarks"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -88365,7 +89300,7 @@ func decodeWatchNetworkingV1NamespacedIngressParams(args map[string]string, r *h
 	}
 	// Decode query: continue.
 	{
-		values, ok := r.URL.Query()["continue"]
+		values, ok := queryArgs["continue"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -88400,7 +89335,7 @@ func decodeWatchNetworkingV1NamespacedIngressParams(args map[string]string, r *h
 	}
 	// Decode query: fieldSelector.
 	{
-		values, ok := r.URL.Query()["fieldSelector"]
+		values, ok := queryArgs["fieldSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -88435,7 +89370,7 @@ func decodeWatchNetworkingV1NamespacedIngressParams(args map[string]string, r *h
 	}
 	// Decode query: labelSelector.
 	{
-		values, ok := r.URL.Query()["labelSelector"]
+		values, ok := queryArgs["labelSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -88470,7 +89405,7 @@ func decodeWatchNetworkingV1NamespacedIngressParams(args map[string]string, r *h
 	}
 	// Decode query: limit.
 	{
-		values, ok := r.URL.Query()["limit"]
+		values, ok := queryArgs["limit"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -88567,7 +89502,7 @@ func decodeWatchNetworkingV1NamespacedIngressParams(args map[string]string, r *h
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -88602,7 +89537,7 @@ func decodeWatchNetworkingV1NamespacedIngressParams(args map[string]string, r *h
 	}
 	// Decode query: resourceVersion.
 	{
-		values, ok := r.URL.Query()["resourceVersion"]
+		values, ok := queryArgs["resourceVersion"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -88637,7 +89572,7 @@ func decodeWatchNetworkingV1NamespacedIngressParams(args map[string]string, r *h
 	}
 	// Decode query: resourceVersionMatch.
 	{
-		values, ok := r.URL.Query()["resourceVersionMatch"]
+		values, ok := queryArgs["resourceVersionMatch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -88672,7 +89607,7 @@ func decodeWatchNetworkingV1NamespacedIngressParams(args map[string]string, r *h
 	}
 	// Decode query: timeoutSeconds.
 	{
-		values, ok := r.URL.Query()["timeoutSeconds"]
+		values, ok := queryArgs["timeoutSeconds"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -88707,7 +89642,7 @@ func decodeWatchNetworkingV1NamespacedIngressParams(args map[string]string, r *h
 	}
 	// Decode query: watch.
 	{
-		values, ok := r.URL.Query()["watch"]
+		values, ok := queryArgs["watch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -88744,10 +89679,13 @@ func decodeWatchNetworkingV1NamespacedIngressParams(args map[string]string, r *h
 }
 
 func decodeWatchNetworkingV1NamespacedIngressListParams(args map[string]string, r *http.Request) (WatchNetworkingV1NamespacedIngressListParams, error) {
-	var params WatchNetworkingV1NamespacedIngressListParams
+	var (
+		params    WatchNetworkingV1NamespacedIngressListParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode query: allowWatchBookmarks.
 	{
-		values, ok := r.URL.Query()["allowWatchBookmarks"]
+		values, ok := queryArgs["allowWatchBookmarks"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -88782,7 +89720,7 @@ func decodeWatchNetworkingV1NamespacedIngressListParams(args map[string]string, 
 	}
 	// Decode query: continue.
 	{
-		values, ok := r.URL.Query()["continue"]
+		values, ok := queryArgs["continue"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -88817,7 +89755,7 @@ func decodeWatchNetworkingV1NamespacedIngressListParams(args map[string]string, 
 	}
 	// Decode query: fieldSelector.
 	{
-		values, ok := r.URL.Query()["fieldSelector"]
+		values, ok := queryArgs["fieldSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -88852,7 +89790,7 @@ func decodeWatchNetworkingV1NamespacedIngressListParams(args map[string]string, 
 	}
 	// Decode query: labelSelector.
 	{
-		values, ok := r.URL.Query()["labelSelector"]
+		values, ok := queryArgs["labelSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -88887,7 +89825,7 @@ func decodeWatchNetworkingV1NamespacedIngressListParams(args map[string]string, 
 	}
 	// Decode query: limit.
 	{
-		values, ok := r.URL.Query()["limit"]
+		values, ok := queryArgs["limit"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -88953,7 +89891,7 @@ func decodeWatchNetworkingV1NamespacedIngressListParams(args map[string]string, 
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -88988,7 +89926,7 @@ func decodeWatchNetworkingV1NamespacedIngressListParams(args map[string]string, 
 	}
 	// Decode query: resourceVersion.
 	{
-		values, ok := r.URL.Query()["resourceVersion"]
+		values, ok := queryArgs["resourceVersion"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -89023,7 +89961,7 @@ func decodeWatchNetworkingV1NamespacedIngressListParams(args map[string]string, 
 	}
 	// Decode query: resourceVersionMatch.
 	{
-		values, ok := r.URL.Query()["resourceVersionMatch"]
+		values, ok := queryArgs["resourceVersionMatch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -89058,7 +89996,7 @@ func decodeWatchNetworkingV1NamespacedIngressListParams(args map[string]string, 
 	}
 	// Decode query: timeoutSeconds.
 	{
-		values, ok := r.URL.Query()["timeoutSeconds"]
+		values, ok := queryArgs["timeoutSeconds"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -89093,7 +90031,7 @@ func decodeWatchNetworkingV1NamespacedIngressListParams(args map[string]string, 
 	}
 	// Decode query: watch.
 	{
-		values, ok := r.URL.Query()["watch"]
+		values, ok := queryArgs["watch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -89130,10 +90068,13 @@ func decodeWatchNetworkingV1NamespacedIngressListParams(args map[string]string, 
 }
 
 func decodeWatchNetworkingV1NamespacedNetworkPolicyParams(args map[string]string, r *http.Request) (WatchNetworkingV1NamespacedNetworkPolicyParams, error) {
-	var params WatchNetworkingV1NamespacedNetworkPolicyParams
+	var (
+		params    WatchNetworkingV1NamespacedNetworkPolicyParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode query: allowWatchBookmarks.
 	{
-		values, ok := r.URL.Query()["allowWatchBookmarks"]
+		values, ok := queryArgs["allowWatchBookmarks"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -89168,7 +90109,7 @@ func decodeWatchNetworkingV1NamespacedNetworkPolicyParams(args map[string]string
 	}
 	// Decode query: continue.
 	{
-		values, ok := r.URL.Query()["continue"]
+		values, ok := queryArgs["continue"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -89203,7 +90144,7 @@ func decodeWatchNetworkingV1NamespacedNetworkPolicyParams(args map[string]string
 	}
 	// Decode query: fieldSelector.
 	{
-		values, ok := r.URL.Query()["fieldSelector"]
+		values, ok := queryArgs["fieldSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -89238,7 +90179,7 @@ func decodeWatchNetworkingV1NamespacedNetworkPolicyParams(args map[string]string
 	}
 	// Decode query: labelSelector.
 	{
-		values, ok := r.URL.Query()["labelSelector"]
+		values, ok := queryArgs["labelSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -89273,7 +90214,7 @@ func decodeWatchNetworkingV1NamespacedNetworkPolicyParams(args map[string]string
 	}
 	// Decode query: limit.
 	{
-		values, ok := r.URL.Query()["limit"]
+		values, ok := queryArgs["limit"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -89370,7 +90311,7 @@ func decodeWatchNetworkingV1NamespacedNetworkPolicyParams(args map[string]string
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -89405,7 +90346,7 @@ func decodeWatchNetworkingV1NamespacedNetworkPolicyParams(args map[string]string
 	}
 	// Decode query: resourceVersion.
 	{
-		values, ok := r.URL.Query()["resourceVersion"]
+		values, ok := queryArgs["resourceVersion"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -89440,7 +90381,7 @@ func decodeWatchNetworkingV1NamespacedNetworkPolicyParams(args map[string]string
 	}
 	// Decode query: resourceVersionMatch.
 	{
-		values, ok := r.URL.Query()["resourceVersionMatch"]
+		values, ok := queryArgs["resourceVersionMatch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -89475,7 +90416,7 @@ func decodeWatchNetworkingV1NamespacedNetworkPolicyParams(args map[string]string
 	}
 	// Decode query: timeoutSeconds.
 	{
-		values, ok := r.URL.Query()["timeoutSeconds"]
+		values, ok := queryArgs["timeoutSeconds"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -89510,7 +90451,7 @@ func decodeWatchNetworkingV1NamespacedNetworkPolicyParams(args map[string]string
 	}
 	// Decode query: watch.
 	{
-		values, ok := r.URL.Query()["watch"]
+		values, ok := queryArgs["watch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -89547,10 +90488,13 @@ func decodeWatchNetworkingV1NamespacedNetworkPolicyParams(args map[string]string
 }
 
 func decodeWatchNetworkingV1NamespacedNetworkPolicyListParams(args map[string]string, r *http.Request) (WatchNetworkingV1NamespacedNetworkPolicyListParams, error) {
-	var params WatchNetworkingV1NamespacedNetworkPolicyListParams
+	var (
+		params    WatchNetworkingV1NamespacedNetworkPolicyListParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode query: allowWatchBookmarks.
 	{
-		values, ok := r.URL.Query()["allowWatchBookmarks"]
+		values, ok := queryArgs["allowWatchBookmarks"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -89585,7 +90529,7 @@ func decodeWatchNetworkingV1NamespacedNetworkPolicyListParams(args map[string]st
 	}
 	// Decode query: continue.
 	{
-		values, ok := r.URL.Query()["continue"]
+		values, ok := queryArgs["continue"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -89620,7 +90564,7 @@ func decodeWatchNetworkingV1NamespacedNetworkPolicyListParams(args map[string]st
 	}
 	// Decode query: fieldSelector.
 	{
-		values, ok := r.URL.Query()["fieldSelector"]
+		values, ok := queryArgs["fieldSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -89655,7 +90599,7 @@ func decodeWatchNetworkingV1NamespacedNetworkPolicyListParams(args map[string]st
 	}
 	// Decode query: labelSelector.
 	{
-		values, ok := r.URL.Query()["labelSelector"]
+		values, ok := queryArgs["labelSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -89690,7 +90634,7 @@ func decodeWatchNetworkingV1NamespacedNetworkPolicyListParams(args map[string]st
 	}
 	// Decode query: limit.
 	{
-		values, ok := r.URL.Query()["limit"]
+		values, ok := queryArgs["limit"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -89756,7 +90700,7 @@ func decodeWatchNetworkingV1NamespacedNetworkPolicyListParams(args map[string]st
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -89791,7 +90735,7 @@ func decodeWatchNetworkingV1NamespacedNetworkPolicyListParams(args map[string]st
 	}
 	// Decode query: resourceVersion.
 	{
-		values, ok := r.URL.Query()["resourceVersion"]
+		values, ok := queryArgs["resourceVersion"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -89826,7 +90770,7 @@ func decodeWatchNetworkingV1NamespacedNetworkPolicyListParams(args map[string]st
 	}
 	// Decode query: resourceVersionMatch.
 	{
-		values, ok := r.URL.Query()["resourceVersionMatch"]
+		values, ok := queryArgs["resourceVersionMatch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -89861,7 +90805,7 @@ func decodeWatchNetworkingV1NamespacedNetworkPolicyListParams(args map[string]st
 	}
 	// Decode query: timeoutSeconds.
 	{
-		values, ok := r.URL.Query()["timeoutSeconds"]
+		values, ok := queryArgs["timeoutSeconds"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -89896,7 +90840,7 @@ func decodeWatchNetworkingV1NamespacedNetworkPolicyListParams(args map[string]st
 	}
 	// Decode query: watch.
 	{
-		values, ok := r.URL.Query()["watch"]
+		values, ok := queryArgs["watch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -89933,10 +90877,13 @@ func decodeWatchNetworkingV1NamespacedNetworkPolicyListParams(args map[string]st
 }
 
 func decodeWatchNetworkingV1NetworkPolicyListForAllNamespacesParams(args map[string]string, r *http.Request) (WatchNetworkingV1NetworkPolicyListForAllNamespacesParams, error) {
-	var params WatchNetworkingV1NetworkPolicyListForAllNamespacesParams
+	var (
+		params    WatchNetworkingV1NetworkPolicyListForAllNamespacesParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode query: allowWatchBookmarks.
 	{
-		values, ok := r.URL.Query()["allowWatchBookmarks"]
+		values, ok := queryArgs["allowWatchBookmarks"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -89971,7 +90918,7 @@ func decodeWatchNetworkingV1NetworkPolicyListForAllNamespacesParams(args map[str
 	}
 	// Decode query: continue.
 	{
-		values, ok := r.URL.Query()["continue"]
+		values, ok := queryArgs["continue"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -90006,7 +90953,7 @@ func decodeWatchNetworkingV1NetworkPolicyListForAllNamespacesParams(args map[str
 	}
 	// Decode query: fieldSelector.
 	{
-		values, ok := r.URL.Query()["fieldSelector"]
+		values, ok := queryArgs["fieldSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -90041,7 +90988,7 @@ func decodeWatchNetworkingV1NetworkPolicyListForAllNamespacesParams(args map[str
 	}
 	// Decode query: labelSelector.
 	{
-		values, ok := r.URL.Query()["labelSelector"]
+		values, ok := queryArgs["labelSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -90076,7 +91023,7 @@ func decodeWatchNetworkingV1NetworkPolicyListForAllNamespacesParams(args map[str
 	}
 	// Decode query: limit.
 	{
-		values, ok := r.URL.Query()["limit"]
+		values, ok := queryArgs["limit"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -90111,7 +91058,7 @@ func decodeWatchNetworkingV1NetworkPolicyListForAllNamespacesParams(args map[str
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -90146,7 +91093,7 @@ func decodeWatchNetworkingV1NetworkPolicyListForAllNamespacesParams(args map[str
 	}
 	// Decode query: resourceVersion.
 	{
-		values, ok := r.URL.Query()["resourceVersion"]
+		values, ok := queryArgs["resourceVersion"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -90181,7 +91128,7 @@ func decodeWatchNetworkingV1NetworkPolicyListForAllNamespacesParams(args map[str
 	}
 	// Decode query: resourceVersionMatch.
 	{
-		values, ok := r.URL.Query()["resourceVersionMatch"]
+		values, ok := queryArgs["resourceVersionMatch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -90216,7 +91163,7 @@ func decodeWatchNetworkingV1NetworkPolicyListForAllNamespacesParams(args map[str
 	}
 	// Decode query: timeoutSeconds.
 	{
-		values, ok := r.URL.Query()["timeoutSeconds"]
+		values, ok := queryArgs["timeoutSeconds"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -90251,7 +91198,7 @@ func decodeWatchNetworkingV1NetworkPolicyListForAllNamespacesParams(args map[str
 	}
 	// Decode query: watch.
 	{
-		values, ok := r.URL.Query()["watch"]
+		values, ok := queryArgs["watch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -90288,10 +91235,13 @@ func decodeWatchNetworkingV1NetworkPolicyListForAllNamespacesParams(args map[str
 }
 
 func decodeWatchNodeV1RuntimeClassParams(args map[string]string, r *http.Request) (WatchNodeV1RuntimeClassParams, error) {
-	var params WatchNodeV1RuntimeClassParams
+	var (
+		params    WatchNodeV1RuntimeClassParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode query: allowWatchBookmarks.
 	{
-		values, ok := r.URL.Query()["allowWatchBookmarks"]
+		values, ok := queryArgs["allowWatchBookmarks"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -90326,7 +91276,7 @@ func decodeWatchNodeV1RuntimeClassParams(args map[string]string, r *http.Request
 	}
 	// Decode query: continue.
 	{
-		values, ok := r.URL.Query()["continue"]
+		values, ok := queryArgs["continue"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -90361,7 +91311,7 @@ func decodeWatchNodeV1RuntimeClassParams(args map[string]string, r *http.Request
 	}
 	// Decode query: fieldSelector.
 	{
-		values, ok := r.URL.Query()["fieldSelector"]
+		values, ok := queryArgs["fieldSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -90396,7 +91346,7 @@ func decodeWatchNodeV1RuntimeClassParams(args map[string]string, r *http.Request
 	}
 	// Decode query: labelSelector.
 	{
-		values, ok := r.URL.Query()["labelSelector"]
+		values, ok := queryArgs["labelSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -90431,7 +91381,7 @@ func decodeWatchNodeV1RuntimeClassParams(args map[string]string, r *http.Request
 	}
 	// Decode query: limit.
 	{
-		values, ok := r.URL.Query()["limit"]
+		values, ok := queryArgs["limit"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -90497,7 +91447,7 @@ func decodeWatchNodeV1RuntimeClassParams(args map[string]string, r *http.Request
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -90532,7 +91482,7 @@ func decodeWatchNodeV1RuntimeClassParams(args map[string]string, r *http.Request
 	}
 	// Decode query: resourceVersion.
 	{
-		values, ok := r.URL.Query()["resourceVersion"]
+		values, ok := queryArgs["resourceVersion"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -90567,7 +91517,7 @@ func decodeWatchNodeV1RuntimeClassParams(args map[string]string, r *http.Request
 	}
 	// Decode query: resourceVersionMatch.
 	{
-		values, ok := r.URL.Query()["resourceVersionMatch"]
+		values, ok := queryArgs["resourceVersionMatch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -90602,7 +91552,7 @@ func decodeWatchNodeV1RuntimeClassParams(args map[string]string, r *http.Request
 	}
 	// Decode query: timeoutSeconds.
 	{
-		values, ok := r.URL.Query()["timeoutSeconds"]
+		values, ok := queryArgs["timeoutSeconds"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -90637,7 +91587,7 @@ func decodeWatchNodeV1RuntimeClassParams(args map[string]string, r *http.Request
 	}
 	// Decode query: watch.
 	{
-		values, ok := r.URL.Query()["watch"]
+		values, ok := queryArgs["watch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -90674,10 +91624,13 @@ func decodeWatchNodeV1RuntimeClassParams(args map[string]string, r *http.Request
 }
 
 func decodeWatchNodeV1RuntimeClassListParams(args map[string]string, r *http.Request) (WatchNodeV1RuntimeClassListParams, error) {
-	var params WatchNodeV1RuntimeClassListParams
+	var (
+		params    WatchNodeV1RuntimeClassListParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode query: allowWatchBookmarks.
 	{
-		values, ok := r.URL.Query()["allowWatchBookmarks"]
+		values, ok := queryArgs["allowWatchBookmarks"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -90712,7 +91665,7 @@ func decodeWatchNodeV1RuntimeClassListParams(args map[string]string, r *http.Req
 	}
 	// Decode query: continue.
 	{
-		values, ok := r.URL.Query()["continue"]
+		values, ok := queryArgs["continue"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -90747,7 +91700,7 @@ func decodeWatchNodeV1RuntimeClassListParams(args map[string]string, r *http.Req
 	}
 	// Decode query: fieldSelector.
 	{
-		values, ok := r.URL.Query()["fieldSelector"]
+		values, ok := queryArgs["fieldSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -90782,7 +91735,7 @@ func decodeWatchNodeV1RuntimeClassListParams(args map[string]string, r *http.Req
 	}
 	// Decode query: labelSelector.
 	{
-		values, ok := r.URL.Query()["labelSelector"]
+		values, ok := queryArgs["labelSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -90817,7 +91770,7 @@ func decodeWatchNodeV1RuntimeClassListParams(args map[string]string, r *http.Req
 	}
 	// Decode query: limit.
 	{
-		values, ok := r.URL.Query()["limit"]
+		values, ok := queryArgs["limit"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -90852,7 +91805,7 @@ func decodeWatchNodeV1RuntimeClassListParams(args map[string]string, r *http.Req
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -90887,7 +91840,7 @@ func decodeWatchNodeV1RuntimeClassListParams(args map[string]string, r *http.Req
 	}
 	// Decode query: resourceVersion.
 	{
-		values, ok := r.URL.Query()["resourceVersion"]
+		values, ok := queryArgs["resourceVersion"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -90922,7 +91875,7 @@ func decodeWatchNodeV1RuntimeClassListParams(args map[string]string, r *http.Req
 	}
 	// Decode query: resourceVersionMatch.
 	{
-		values, ok := r.URL.Query()["resourceVersionMatch"]
+		values, ok := queryArgs["resourceVersionMatch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -90957,7 +91910,7 @@ func decodeWatchNodeV1RuntimeClassListParams(args map[string]string, r *http.Req
 	}
 	// Decode query: timeoutSeconds.
 	{
-		values, ok := r.URL.Query()["timeoutSeconds"]
+		values, ok := queryArgs["timeoutSeconds"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -90992,7 +91945,7 @@ func decodeWatchNodeV1RuntimeClassListParams(args map[string]string, r *http.Req
 	}
 	// Decode query: watch.
 	{
-		values, ok := r.URL.Query()["watch"]
+		values, ok := queryArgs["watch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -91029,10 +91982,13 @@ func decodeWatchNodeV1RuntimeClassListParams(args map[string]string, r *http.Req
 }
 
 func decodeWatchNodeV1alpha1RuntimeClassParams(args map[string]string, r *http.Request) (WatchNodeV1alpha1RuntimeClassParams, error) {
-	var params WatchNodeV1alpha1RuntimeClassParams
+	var (
+		params    WatchNodeV1alpha1RuntimeClassParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode query: allowWatchBookmarks.
 	{
-		values, ok := r.URL.Query()["allowWatchBookmarks"]
+		values, ok := queryArgs["allowWatchBookmarks"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -91067,7 +92023,7 @@ func decodeWatchNodeV1alpha1RuntimeClassParams(args map[string]string, r *http.R
 	}
 	// Decode query: continue.
 	{
-		values, ok := r.URL.Query()["continue"]
+		values, ok := queryArgs["continue"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -91102,7 +92058,7 @@ func decodeWatchNodeV1alpha1RuntimeClassParams(args map[string]string, r *http.R
 	}
 	// Decode query: fieldSelector.
 	{
-		values, ok := r.URL.Query()["fieldSelector"]
+		values, ok := queryArgs["fieldSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -91137,7 +92093,7 @@ func decodeWatchNodeV1alpha1RuntimeClassParams(args map[string]string, r *http.R
 	}
 	// Decode query: labelSelector.
 	{
-		values, ok := r.URL.Query()["labelSelector"]
+		values, ok := queryArgs["labelSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -91172,7 +92128,7 @@ func decodeWatchNodeV1alpha1RuntimeClassParams(args map[string]string, r *http.R
 	}
 	// Decode query: limit.
 	{
-		values, ok := r.URL.Query()["limit"]
+		values, ok := queryArgs["limit"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -91238,7 +92194,7 @@ func decodeWatchNodeV1alpha1RuntimeClassParams(args map[string]string, r *http.R
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -91273,7 +92229,7 @@ func decodeWatchNodeV1alpha1RuntimeClassParams(args map[string]string, r *http.R
 	}
 	// Decode query: resourceVersion.
 	{
-		values, ok := r.URL.Query()["resourceVersion"]
+		values, ok := queryArgs["resourceVersion"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -91308,7 +92264,7 @@ func decodeWatchNodeV1alpha1RuntimeClassParams(args map[string]string, r *http.R
 	}
 	// Decode query: resourceVersionMatch.
 	{
-		values, ok := r.URL.Query()["resourceVersionMatch"]
+		values, ok := queryArgs["resourceVersionMatch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -91343,7 +92299,7 @@ func decodeWatchNodeV1alpha1RuntimeClassParams(args map[string]string, r *http.R
 	}
 	// Decode query: timeoutSeconds.
 	{
-		values, ok := r.URL.Query()["timeoutSeconds"]
+		values, ok := queryArgs["timeoutSeconds"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -91378,7 +92334,7 @@ func decodeWatchNodeV1alpha1RuntimeClassParams(args map[string]string, r *http.R
 	}
 	// Decode query: watch.
 	{
-		values, ok := r.URL.Query()["watch"]
+		values, ok := queryArgs["watch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -91415,10 +92371,13 @@ func decodeWatchNodeV1alpha1RuntimeClassParams(args map[string]string, r *http.R
 }
 
 func decodeWatchNodeV1alpha1RuntimeClassListParams(args map[string]string, r *http.Request) (WatchNodeV1alpha1RuntimeClassListParams, error) {
-	var params WatchNodeV1alpha1RuntimeClassListParams
+	var (
+		params    WatchNodeV1alpha1RuntimeClassListParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode query: allowWatchBookmarks.
 	{
-		values, ok := r.URL.Query()["allowWatchBookmarks"]
+		values, ok := queryArgs["allowWatchBookmarks"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -91453,7 +92412,7 @@ func decodeWatchNodeV1alpha1RuntimeClassListParams(args map[string]string, r *ht
 	}
 	// Decode query: continue.
 	{
-		values, ok := r.URL.Query()["continue"]
+		values, ok := queryArgs["continue"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -91488,7 +92447,7 @@ func decodeWatchNodeV1alpha1RuntimeClassListParams(args map[string]string, r *ht
 	}
 	// Decode query: fieldSelector.
 	{
-		values, ok := r.URL.Query()["fieldSelector"]
+		values, ok := queryArgs["fieldSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -91523,7 +92482,7 @@ func decodeWatchNodeV1alpha1RuntimeClassListParams(args map[string]string, r *ht
 	}
 	// Decode query: labelSelector.
 	{
-		values, ok := r.URL.Query()["labelSelector"]
+		values, ok := queryArgs["labelSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -91558,7 +92517,7 @@ func decodeWatchNodeV1alpha1RuntimeClassListParams(args map[string]string, r *ht
 	}
 	// Decode query: limit.
 	{
-		values, ok := r.URL.Query()["limit"]
+		values, ok := queryArgs["limit"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -91593,7 +92552,7 @@ func decodeWatchNodeV1alpha1RuntimeClassListParams(args map[string]string, r *ht
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -91628,7 +92587,7 @@ func decodeWatchNodeV1alpha1RuntimeClassListParams(args map[string]string, r *ht
 	}
 	// Decode query: resourceVersion.
 	{
-		values, ok := r.URL.Query()["resourceVersion"]
+		values, ok := queryArgs["resourceVersion"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -91663,7 +92622,7 @@ func decodeWatchNodeV1alpha1RuntimeClassListParams(args map[string]string, r *ht
 	}
 	// Decode query: resourceVersionMatch.
 	{
-		values, ok := r.URL.Query()["resourceVersionMatch"]
+		values, ok := queryArgs["resourceVersionMatch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -91698,7 +92657,7 @@ func decodeWatchNodeV1alpha1RuntimeClassListParams(args map[string]string, r *ht
 	}
 	// Decode query: timeoutSeconds.
 	{
-		values, ok := r.URL.Query()["timeoutSeconds"]
+		values, ok := queryArgs["timeoutSeconds"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -91733,7 +92692,7 @@ func decodeWatchNodeV1alpha1RuntimeClassListParams(args map[string]string, r *ht
 	}
 	// Decode query: watch.
 	{
-		values, ok := r.URL.Query()["watch"]
+		values, ok := queryArgs["watch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -91770,10 +92729,13 @@ func decodeWatchNodeV1alpha1RuntimeClassListParams(args map[string]string, r *ht
 }
 
 func decodeWatchNodeV1beta1RuntimeClassParams(args map[string]string, r *http.Request) (WatchNodeV1beta1RuntimeClassParams, error) {
-	var params WatchNodeV1beta1RuntimeClassParams
+	var (
+		params    WatchNodeV1beta1RuntimeClassParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode query: allowWatchBookmarks.
 	{
-		values, ok := r.URL.Query()["allowWatchBookmarks"]
+		values, ok := queryArgs["allowWatchBookmarks"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -91808,7 +92770,7 @@ func decodeWatchNodeV1beta1RuntimeClassParams(args map[string]string, r *http.Re
 	}
 	// Decode query: continue.
 	{
-		values, ok := r.URL.Query()["continue"]
+		values, ok := queryArgs["continue"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -91843,7 +92805,7 @@ func decodeWatchNodeV1beta1RuntimeClassParams(args map[string]string, r *http.Re
 	}
 	// Decode query: fieldSelector.
 	{
-		values, ok := r.URL.Query()["fieldSelector"]
+		values, ok := queryArgs["fieldSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -91878,7 +92840,7 @@ func decodeWatchNodeV1beta1RuntimeClassParams(args map[string]string, r *http.Re
 	}
 	// Decode query: labelSelector.
 	{
-		values, ok := r.URL.Query()["labelSelector"]
+		values, ok := queryArgs["labelSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -91913,7 +92875,7 @@ func decodeWatchNodeV1beta1RuntimeClassParams(args map[string]string, r *http.Re
 	}
 	// Decode query: limit.
 	{
-		values, ok := r.URL.Query()["limit"]
+		values, ok := queryArgs["limit"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -91979,7 +92941,7 @@ func decodeWatchNodeV1beta1RuntimeClassParams(args map[string]string, r *http.Re
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -92014,7 +92976,7 @@ func decodeWatchNodeV1beta1RuntimeClassParams(args map[string]string, r *http.Re
 	}
 	// Decode query: resourceVersion.
 	{
-		values, ok := r.URL.Query()["resourceVersion"]
+		values, ok := queryArgs["resourceVersion"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -92049,7 +93011,7 @@ func decodeWatchNodeV1beta1RuntimeClassParams(args map[string]string, r *http.Re
 	}
 	// Decode query: resourceVersionMatch.
 	{
-		values, ok := r.URL.Query()["resourceVersionMatch"]
+		values, ok := queryArgs["resourceVersionMatch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -92084,7 +93046,7 @@ func decodeWatchNodeV1beta1RuntimeClassParams(args map[string]string, r *http.Re
 	}
 	// Decode query: timeoutSeconds.
 	{
-		values, ok := r.URL.Query()["timeoutSeconds"]
+		values, ok := queryArgs["timeoutSeconds"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -92119,7 +93081,7 @@ func decodeWatchNodeV1beta1RuntimeClassParams(args map[string]string, r *http.Re
 	}
 	// Decode query: watch.
 	{
-		values, ok := r.URL.Query()["watch"]
+		values, ok := queryArgs["watch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -92156,10 +93118,13 @@ func decodeWatchNodeV1beta1RuntimeClassParams(args map[string]string, r *http.Re
 }
 
 func decodeWatchNodeV1beta1RuntimeClassListParams(args map[string]string, r *http.Request) (WatchNodeV1beta1RuntimeClassListParams, error) {
-	var params WatchNodeV1beta1RuntimeClassListParams
+	var (
+		params    WatchNodeV1beta1RuntimeClassListParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode query: allowWatchBookmarks.
 	{
-		values, ok := r.URL.Query()["allowWatchBookmarks"]
+		values, ok := queryArgs["allowWatchBookmarks"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -92194,7 +93159,7 @@ func decodeWatchNodeV1beta1RuntimeClassListParams(args map[string]string, r *htt
 	}
 	// Decode query: continue.
 	{
-		values, ok := r.URL.Query()["continue"]
+		values, ok := queryArgs["continue"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -92229,7 +93194,7 @@ func decodeWatchNodeV1beta1RuntimeClassListParams(args map[string]string, r *htt
 	}
 	// Decode query: fieldSelector.
 	{
-		values, ok := r.URL.Query()["fieldSelector"]
+		values, ok := queryArgs["fieldSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -92264,7 +93229,7 @@ func decodeWatchNodeV1beta1RuntimeClassListParams(args map[string]string, r *htt
 	}
 	// Decode query: labelSelector.
 	{
-		values, ok := r.URL.Query()["labelSelector"]
+		values, ok := queryArgs["labelSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -92299,7 +93264,7 @@ func decodeWatchNodeV1beta1RuntimeClassListParams(args map[string]string, r *htt
 	}
 	// Decode query: limit.
 	{
-		values, ok := r.URL.Query()["limit"]
+		values, ok := queryArgs["limit"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -92334,7 +93299,7 @@ func decodeWatchNodeV1beta1RuntimeClassListParams(args map[string]string, r *htt
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -92369,7 +93334,7 @@ func decodeWatchNodeV1beta1RuntimeClassListParams(args map[string]string, r *htt
 	}
 	// Decode query: resourceVersion.
 	{
-		values, ok := r.URL.Query()["resourceVersion"]
+		values, ok := queryArgs["resourceVersion"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -92404,7 +93369,7 @@ func decodeWatchNodeV1beta1RuntimeClassListParams(args map[string]string, r *htt
 	}
 	// Decode query: resourceVersionMatch.
 	{
-		values, ok := r.URL.Query()["resourceVersionMatch"]
+		values, ok := queryArgs["resourceVersionMatch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -92439,7 +93404,7 @@ func decodeWatchNodeV1beta1RuntimeClassListParams(args map[string]string, r *htt
 	}
 	// Decode query: timeoutSeconds.
 	{
-		values, ok := r.URL.Query()["timeoutSeconds"]
+		values, ok := queryArgs["timeoutSeconds"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -92474,7 +93439,7 @@ func decodeWatchNodeV1beta1RuntimeClassListParams(args map[string]string, r *htt
 	}
 	// Decode query: watch.
 	{
-		values, ok := r.URL.Query()["watch"]
+		values, ok := queryArgs["watch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -92511,10 +93476,13 @@ func decodeWatchNodeV1beta1RuntimeClassListParams(args map[string]string, r *htt
 }
 
 func decodeWatchPolicyV1NamespacedPodDisruptionBudgetParams(args map[string]string, r *http.Request) (WatchPolicyV1NamespacedPodDisruptionBudgetParams, error) {
-	var params WatchPolicyV1NamespacedPodDisruptionBudgetParams
+	var (
+		params    WatchPolicyV1NamespacedPodDisruptionBudgetParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode query: allowWatchBookmarks.
 	{
-		values, ok := r.URL.Query()["allowWatchBookmarks"]
+		values, ok := queryArgs["allowWatchBookmarks"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -92549,7 +93517,7 @@ func decodeWatchPolicyV1NamespacedPodDisruptionBudgetParams(args map[string]stri
 	}
 	// Decode query: continue.
 	{
-		values, ok := r.URL.Query()["continue"]
+		values, ok := queryArgs["continue"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -92584,7 +93552,7 @@ func decodeWatchPolicyV1NamespacedPodDisruptionBudgetParams(args map[string]stri
 	}
 	// Decode query: fieldSelector.
 	{
-		values, ok := r.URL.Query()["fieldSelector"]
+		values, ok := queryArgs["fieldSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -92619,7 +93587,7 @@ func decodeWatchPolicyV1NamespacedPodDisruptionBudgetParams(args map[string]stri
 	}
 	// Decode query: labelSelector.
 	{
-		values, ok := r.URL.Query()["labelSelector"]
+		values, ok := queryArgs["labelSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -92654,7 +93622,7 @@ func decodeWatchPolicyV1NamespacedPodDisruptionBudgetParams(args map[string]stri
 	}
 	// Decode query: limit.
 	{
-		values, ok := r.URL.Query()["limit"]
+		values, ok := queryArgs["limit"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -92751,7 +93719,7 @@ func decodeWatchPolicyV1NamespacedPodDisruptionBudgetParams(args map[string]stri
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -92786,7 +93754,7 @@ func decodeWatchPolicyV1NamespacedPodDisruptionBudgetParams(args map[string]stri
 	}
 	// Decode query: resourceVersion.
 	{
-		values, ok := r.URL.Query()["resourceVersion"]
+		values, ok := queryArgs["resourceVersion"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -92821,7 +93789,7 @@ func decodeWatchPolicyV1NamespacedPodDisruptionBudgetParams(args map[string]stri
 	}
 	// Decode query: resourceVersionMatch.
 	{
-		values, ok := r.URL.Query()["resourceVersionMatch"]
+		values, ok := queryArgs["resourceVersionMatch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -92856,7 +93824,7 @@ func decodeWatchPolicyV1NamespacedPodDisruptionBudgetParams(args map[string]stri
 	}
 	// Decode query: timeoutSeconds.
 	{
-		values, ok := r.URL.Query()["timeoutSeconds"]
+		values, ok := queryArgs["timeoutSeconds"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -92891,7 +93859,7 @@ func decodeWatchPolicyV1NamespacedPodDisruptionBudgetParams(args map[string]stri
 	}
 	// Decode query: watch.
 	{
-		values, ok := r.URL.Query()["watch"]
+		values, ok := queryArgs["watch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -92928,10 +93896,13 @@ func decodeWatchPolicyV1NamespacedPodDisruptionBudgetParams(args map[string]stri
 }
 
 func decodeWatchPolicyV1NamespacedPodDisruptionBudgetListParams(args map[string]string, r *http.Request) (WatchPolicyV1NamespacedPodDisruptionBudgetListParams, error) {
-	var params WatchPolicyV1NamespacedPodDisruptionBudgetListParams
+	var (
+		params    WatchPolicyV1NamespacedPodDisruptionBudgetListParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode query: allowWatchBookmarks.
 	{
-		values, ok := r.URL.Query()["allowWatchBookmarks"]
+		values, ok := queryArgs["allowWatchBookmarks"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -92966,7 +93937,7 @@ func decodeWatchPolicyV1NamespacedPodDisruptionBudgetListParams(args map[string]
 	}
 	// Decode query: continue.
 	{
-		values, ok := r.URL.Query()["continue"]
+		values, ok := queryArgs["continue"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -93001,7 +93972,7 @@ func decodeWatchPolicyV1NamespacedPodDisruptionBudgetListParams(args map[string]
 	}
 	// Decode query: fieldSelector.
 	{
-		values, ok := r.URL.Query()["fieldSelector"]
+		values, ok := queryArgs["fieldSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -93036,7 +94007,7 @@ func decodeWatchPolicyV1NamespacedPodDisruptionBudgetListParams(args map[string]
 	}
 	// Decode query: labelSelector.
 	{
-		values, ok := r.URL.Query()["labelSelector"]
+		values, ok := queryArgs["labelSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -93071,7 +94042,7 @@ func decodeWatchPolicyV1NamespacedPodDisruptionBudgetListParams(args map[string]
 	}
 	// Decode query: limit.
 	{
-		values, ok := r.URL.Query()["limit"]
+		values, ok := queryArgs["limit"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -93137,7 +94108,7 @@ func decodeWatchPolicyV1NamespacedPodDisruptionBudgetListParams(args map[string]
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -93172,7 +94143,7 @@ func decodeWatchPolicyV1NamespacedPodDisruptionBudgetListParams(args map[string]
 	}
 	// Decode query: resourceVersion.
 	{
-		values, ok := r.URL.Query()["resourceVersion"]
+		values, ok := queryArgs["resourceVersion"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -93207,7 +94178,7 @@ func decodeWatchPolicyV1NamespacedPodDisruptionBudgetListParams(args map[string]
 	}
 	// Decode query: resourceVersionMatch.
 	{
-		values, ok := r.URL.Query()["resourceVersionMatch"]
+		values, ok := queryArgs["resourceVersionMatch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -93242,7 +94213,7 @@ func decodeWatchPolicyV1NamespacedPodDisruptionBudgetListParams(args map[string]
 	}
 	// Decode query: timeoutSeconds.
 	{
-		values, ok := r.URL.Query()["timeoutSeconds"]
+		values, ok := queryArgs["timeoutSeconds"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -93277,7 +94248,7 @@ func decodeWatchPolicyV1NamespacedPodDisruptionBudgetListParams(args map[string]
 	}
 	// Decode query: watch.
 	{
-		values, ok := r.URL.Query()["watch"]
+		values, ok := queryArgs["watch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -93314,10 +94285,13 @@ func decodeWatchPolicyV1NamespacedPodDisruptionBudgetListParams(args map[string]
 }
 
 func decodeWatchPolicyV1PodDisruptionBudgetListForAllNamespacesParams(args map[string]string, r *http.Request) (WatchPolicyV1PodDisruptionBudgetListForAllNamespacesParams, error) {
-	var params WatchPolicyV1PodDisruptionBudgetListForAllNamespacesParams
+	var (
+		params    WatchPolicyV1PodDisruptionBudgetListForAllNamespacesParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode query: allowWatchBookmarks.
 	{
-		values, ok := r.URL.Query()["allowWatchBookmarks"]
+		values, ok := queryArgs["allowWatchBookmarks"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -93352,7 +94326,7 @@ func decodeWatchPolicyV1PodDisruptionBudgetListForAllNamespacesParams(args map[s
 	}
 	// Decode query: continue.
 	{
-		values, ok := r.URL.Query()["continue"]
+		values, ok := queryArgs["continue"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -93387,7 +94361,7 @@ func decodeWatchPolicyV1PodDisruptionBudgetListForAllNamespacesParams(args map[s
 	}
 	// Decode query: fieldSelector.
 	{
-		values, ok := r.URL.Query()["fieldSelector"]
+		values, ok := queryArgs["fieldSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -93422,7 +94396,7 @@ func decodeWatchPolicyV1PodDisruptionBudgetListForAllNamespacesParams(args map[s
 	}
 	// Decode query: labelSelector.
 	{
-		values, ok := r.URL.Query()["labelSelector"]
+		values, ok := queryArgs["labelSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -93457,7 +94431,7 @@ func decodeWatchPolicyV1PodDisruptionBudgetListForAllNamespacesParams(args map[s
 	}
 	// Decode query: limit.
 	{
-		values, ok := r.URL.Query()["limit"]
+		values, ok := queryArgs["limit"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -93492,7 +94466,7 @@ func decodeWatchPolicyV1PodDisruptionBudgetListForAllNamespacesParams(args map[s
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -93527,7 +94501,7 @@ func decodeWatchPolicyV1PodDisruptionBudgetListForAllNamespacesParams(args map[s
 	}
 	// Decode query: resourceVersion.
 	{
-		values, ok := r.URL.Query()["resourceVersion"]
+		values, ok := queryArgs["resourceVersion"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -93562,7 +94536,7 @@ func decodeWatchPolicyV1PodDisruptionBudgetListForAllNamespacesParams(args map[s
 	}
 	// Decode query: resourceVersionMatch.
 	{
-		values, ok := r.URL.Query()["resourceVersionMatch"]
+		values, ok := queryArgs["resourceVersionMatch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -93597,7 +94571,7 @@ func decodeWatchPolicyV1PodDisruptionBudgetListForAllNamespacesParams(args map[s
 	}
 	// Decode query: timeoutSeconds.
 	{
-		values, ok := r.URL.Query()["timeoutSeconds"]
+		values, ok := queryArgs["timeoutSeconds"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -93632,7 +94606,7 @@ func decodeWatchPolicyV1PodDisruptionBudgetListForAllNamespacesParams(args map[s
 	}
 	// Decode query: watch.
 	{
-		values, ok := r.URL.Query()["watch"]
+		values, ok := queryArgs["watch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -93669,10 +94643,13 @@ func decodeWatchPolicyV1PodDisruptionBudgetListForAllNamespacesParams(args map[s
 }
 
 func decodeWatchPolicyV1beta1NamespacedPodDisruptionBudgetParams(args map[string]string, r *http.Request) (WatchPolicyV1beta1NamespacedPodDisruptionBudgetParams, error) {
-	var params WatchPolicyV1beta1NamespacedPodDisruptionBudgetParams
+	var (
+		params    WatchPolicyV1beta1NamespacedPodDisruptionBudgetParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode query: allowWatchBookmarks.
 	{
-		values, ok := r.URL.Query()["allowWatchBookmarks"]
+		values, ok := queryArgs["allowWatchBookmarks"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -93707,7 +94684,7 @@ func decodeWatchPolicyV1beta1NamespacedPodDisruptionBudgetParams(args map[string
 	}
 	// Decode query: continue.
 	{
-		values, ok := r.URL.Query()["continue"]
+		values, ok := queryArgs["continue"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -93742,7 +94719,7 @@ func decodeWatchPolicyV1beta1NamespacedPodDisruptionBudgetParams(args map[string
 	}
 	// Decode query: fieldSelector.
 	{
-		values, ok := r.URL.Query()["fieldSelector"]
+		values, ok := queryArgs["fieldSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -93777,7 +94754,7 @@ func decodeWatchPolicyV1beta1NamespacedPodDisruptionBudgetParams(args map[string
 	}
 	// Decode query: labelSelector.
 	{
-		values, ok := r.URL.Query()["labelSelector"]
+		values, ok := queryArgs["labelSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -93812,7 +94789,7 @@ func decodeWatchPolicyV1beta1NamespacedPodDisruptionBudgetParams(args map[string
 	}
 	// Decode query: limit.
 	{
-		values, ok := r.URL.Query()["limit"]
+		values, ok := queryArgs["limit"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -93909,7 +94886,7 @@ func decodeWatchPolicyV1beta1NamespacedPodDisruptionBudgetParams(args map[string
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -93944,7 +94921,7 @@ func decodeWatchPolicyV1beta1NamespacedPodDisruptionBudgetParams(args map[string
 	}
 	// Decode query: resourceVersion.
 	{
-		values, ok := r.URL.Query()["resourceVersion"]
+		values, ok := queryArgs["resourceVersion"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -93979,7 +94956,7 @@ func decodeWatchPolicyV1beta1NamespacedPodDisruptionBudgetParams(args map[string
 	}
 	// Decode query: resourceVersionMatch.
 	{
-		values, ok := r.URL.Query()["resourceVersionMatch"]
+		values, ok := queryArgs["resourceVersionMatch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -94014,7 +94991,7 @@ func decodeWatchPolicyV1beta1NamespacedPodDisruptionBudgetParams(args map[string
 	}
 	// Decode query: timeoutSeconds.
 	{
-		values, ok := r.URL.Query()["timeoutSeconds"]
+		values, ok := queryArgs["timeoutSeconds"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -94049,7 +95026,7 @@ func decodeWatchPolicyV1beta1NamespacedPodDisruptionBudgetParams(args map[string
 	}
 	// Decode query: watch.
 	{
-		values, ok := r.URL.Query()["watch"]
+		values, ok := queryArgs["watch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -94086,10 +95063,13 @@ func decodeWatchPolicyV1beta1NamespacedPodDisruptionBudgetParams(args map[string
 }
 
 func decodeWatchPolicyV1beta1NamespacedPodDisruptionBudgetListParams(args map[string]string, r *http.Request) (WatchPolicyV1beta1NamespacedPodDisruptionBudgetListParams, error) {
-	var params WatchPolicyV1beta1NamespacedPodDisruptionBudgetListParams
+	var (
+		params    WatchPolicyV1beta1NamespacedPodDisruptionBudgetListParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode query: allowWatchBookmarks.
 	{
-		values, ok := r.URL.Query()["allowWatchBookmarks"]
+		values, ok := queryArgs["allowWatchBookmarks"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -94124,7 +95104,7 @@ func decodeWatchPolicyV1beta1NamespacedPodDisruptionBudgetListParams(args map[st
 	}
 	// Decode query: continue.
 	{
-		values, ok := r.URL.Query()["continue"]
+		values, ok := queryArgs["continue"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -94159,7 +95139,7 @@ func decodeWatchPolicyV1beta1NamespacedPodDisruptionBudgetListParams(args map[st
 	}
 	// Decode query: fieldSelector.
 	{
-		values, ok := r.URL.Query()["fieldSelector"]
+		values, ok := queryArgs["fieldSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -94194,7 +95174,7 @@ func decodeWatchPolicyV1beta1NamespacedPodDisruptionBudgetListParams(args map[st
 	}
 	// Decode query: labelSelector.
 	{
-		values, ok := r.URL.Query()["labelSelector"]
+		values, ok := queryArgs["labelSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -94229,7 +95209,7 @@ func decodeWatchPolicyV1beta1NamespacedPodDisruptionBudgetListParams(args map[st
 	}
 	// Decode query: limit.
 	{
-		values, ok := r.URL.Query()["limit"]
+		values, ok := queryArgs["limit"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -94295,7 +95275,7 @@ func decodeWatchPolicyV1beta1NamespacedPodDisruptionBudgetListParams(args map[st
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -94330,7 +95310,7 @@ func decodeWatchPolicyV1beta1NamespacedPodDisruptionBudgetListParams(args map[st
 	}
 	// Decode query: resourceVersion.
 	{
-		values, ok := r.URL.Query()["resourceVersion"]
+		values, ok := queryArgs["resourceVersion"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -94365,7 +95345,7 @@ func decodeWatchPolicyV1beta1NamespacedPodDisruptionBudgetListParams(args map[st
 	}
 	// Decode query: resourceVersionMatch.
 	{
-		values, ok := r.URL.Query()["resourceVersionMatch"]
+		values, ok := queryArgs["resourceVersionMatch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -94400,7 +95380,7 @@ func decodeWatchPolicyV1beta1NamespacedPodDisruptionBudgetListParams(args map[st
 	}
 	// Decode query: timeoutSeconds.
 	{
-		values, ok := r.URL.Query()["timeoutSeconds"]
+		values, ok := queryArgs["timeoutSeconds"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -94435,7 +95415,7 @@ func decodeWatchPolicyV1beta1NamespacedPodDisruptionBudgetListParams(args map[st
 	}
 	// Decode query: watch.
 	{
-		values, ok := r.URL.Query()["watch"]
+		values, ok := queryArgs["watch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -94472,10 +95452,13 @@ func decodeWatchPolicyV1beta1NamespacedPodDisruptionBudgetListParams(args map[st
 }
 
 func decodeWatchPolicyV1beta1PodDisruptionBudgetListForAllNamespacesParams(args map[string]string, r *http.Request) (WatchPolicyV1beta1PodDisruptionBudgetListForAllNamespacesParams, error) {
-	var params WatchPolicyV1beta1PodDisruptionBudgetListForAllNamespacesParams
+	var (
+		params    WatchPolicyV1beta1PodDisruptionBudgetListForAllNamespacesParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode query: allowWatchBookmarks.
 	{
-		values, ok := r.URL.Query()["allowWatchBookmarks"]
+		values, ok := queryArgs["allowWatchBookmarks"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -94510,7 +95493,7 @@ func decodeWatchPolicyV1beta1PodDisruptionBudgetListForAllNamespacesParams(args 
 	}
 	// Decode query: continue.
 	{
-		values, ok := r.URL.Query()["continue"]
+		values, ok := queryArgs["continue"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -94545,7 +95528,7 @@ func decodeWatchPolicyV1beta1PodDisruptionBudgetListForAllNamespacesParams(args 
 	}
 	// Decode query: fieldSelector.
 	{
-		values, ok := r.URL.Query()["fieldSelector"]
+		values, ok := queryArgs["fieldSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -94580,7 +95563,7 @@ func decodeWatchPolicyV1beta1PodDisruptionBudgetListForAllNamespacesParams(args 
 	}
 	// Decode query: labelSelector.
 	{
-		values, ok := r.URL.Query()["labelSelector"]
+		values, ok := queryArgs["labelSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -94615,7 +95598,7 @@ func decodeWatchPolicyV1beta1PodDisruptionBudgetListForAllNamespacesParams(args 
 	}
 	// Decode query: limit.
 	{
-		values, ok := r.URL.Query()["limit"]
+		values, ok := queryArgs["limit"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -94650,7 +95633,7 @@ func decodeWatchPolicyV1beta1PodDisruptionBudgetListForAllNamespacesParams(args 
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -94685,7 +95668,7 @@ func decodeWatchPolicyV1beta1PodDisruptionBudgetListForAllNamespacesParams(args 
 	}
 	// Decode query: resourceVersion.
 	{
-		values, ok := r.URL.Query()["resourceVersion"]
+		values, ok := queryArgs["resourceVersion"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -94720,7 +95703,7 @@ func decodeWatchPolicyV1beta1PodDisruptionBudgetListForAllNamespacesParams(args 
 	}
 	// Decode query: resourceVersionMatch.
 	{
-		values, ok := r.URL.Query()["resourceVersionMatch"]
+		values, ok := queryArgs["resourceVersionMatch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -94755,7 +95738,7 @@ func decodeWatchPolicyV1beta1PodDisruptionBudgetListForAllNamespacesParams(args 
 	}
 	// Decode query: timeoutSeconds.
 	{
-		values, ok := r.URL.Query()["timeoutSeconds"]
+		values, ok := queryArgs["timeoutSeconds"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -94790,7 +95773,7 @@ func decodeWatchPolicyV1beta1PodDisruptionBudgetListForAllNamespacesParams(args 
 	}
 	// Decode query: watch.
 	{
-		values, ok := r.URL.Query()["watch"]
+		values, ok := queryArgs["watch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -94827,10 +95810,13 @@ func decodeWatchPolicyV1beta1PodDisruptionBudgetListForAllNamespacesParams(args 
 }
 
 func decodeWatchPolicyV1beta1PodSecurityPolicyParams(args map[string]string, r *http.Request) (WatchPolicyV1beta1PodSecurityPolicyParams, error) {
-	var params WatchPolicyV1beta1PodSecurityPolicyParams
+	var (
+		params    WatchPolicyV1beta1PodSecurityPolicyParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode query: allowWatchBookmarks.
 	{
-		values, ok := r.URL.Query()["allowWatchBookmarks"]
+		values, ok := queryArgs["allowWatchBookmarks"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -94865,7 +95851,7 @@ func decodeWatchPolicyV1beta1PodSecurityPolicyParams(args map[string]string, r *
 	}
 	// Decode query: continue.
 	{
-		values, ok := r.URL.Query()["continue"]
+		values, ok := queryArgs["continue"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -94900,7 +95886,7 @@ func decodeWatchPolicyV1beta1PodSecurityPolicyParams(args map[string]string, r *
 	}
 	// Decode query: fieldSelector.
 	{
-		values, ok := r.URL.Query()["fieldSelector"]
+		values, ok := queryArgs["fieldSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -94935,7 +95921,7 @@ func decodeWatchPolicyV1beta1PodSecurityPolicyParams(args map[string]string, r *
 	}
 	// Decode query: labelSelector.
 	{
-		values, ok := r.URL.Query()["labelSelector"]
+		values, ok := queryArgs["labelSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -94970,7 +95956,7 @@ func decodeWatchPolicyV1beta1PodSecurityPolicyParams(args map[string]string, r *
 	}
 	// Decode query: limit.
 	{
-		values, ok := r.URL.Query()["limit"]
+		values, ok := queryArgs["limit"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -95036,7 +96022,7 @@ func decodeWatchPolicyV1beta1PodSecurityPolicyParams(args map[string]string, r *
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -95071,7 +96057,7 @@ func decodeWatchPolicyV1beta1PodSecurityPolicyParams(args map[string]string, r *
 	}
 	// Decode query: resourceVersion.
 	{
-		values, ok := r.URL.Query()["resourceVersion"]
+		values, ok := queryArgs["resourceVersion"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -95106,7 +96092,7 @@ func decodeWatchPolicyV1beta1PodSecurityPolicyParams(args map[string]string, r *
 	}
 	// Decode query: resourceVersionMatch.
 	{
-		values, ok := r.URL.Query()["resourceVersionMatch"]
+		values, ok := queryArgs["resourceVersionMatch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -95141,7 +96127,7 @@ func decodeWatchPolicyV1beta1PodSecurityPolicyParams(args map[string]string, r *
 	}
 	// Decode query: timeoutSeconds.
 	{
-		values, ok := r.URL.Query()["timeoutSeconds"]
+		values, ok := queryArgs["timeoutSeconds"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -95176,7 +96162,7 @@ func decodeWatchPolicyV1beta1PodSecurityPolicyParams(args map[string]string, r *
 	}
 	// Decode query: watch.
 	{
-		values, ok := r.URL.Query()["watch"]
+		values, ok := queryArgs["watch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -95213,10 +96199,13 @@ func decodeWatchPolicyV1beta1PodSecurityPolicyParams(args map[string]string, r *
 }
 
 func decodeWatchPolicyV1beta1PodSecurityPolicyListParams(args map[string]string, r *http.Request) (WatchPolicyV1beta1PodSecurityPolicyListParams, error) {
-	var params WatchPolicyV1beta1PodSecurityPolicyListParams
+	var (
+		params    WatchPolicyV1beta1PodSecurityPolicyListParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode query: allowWatchBookmarks.
 	{
-		values, ok := r.URL.Query()["allowWatchBookmarks"]
+		values, ok := queryArgs["allowWatchBookmarks"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -95251,7 +96240,7 @@ func decodeWatchPolicyV1beta1PodSecurityPolicyListParams(args map[string]string,
 	}
 	// Decode query: continue.
 	{
-		values, ok := r.URL.Query()["continue"]
+		values, ok := queryArgs["continue"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -95286,7 +96275,7 @@ func decodeWatchPolicyV1beta1PodSecurityPolicyListParams(args map[string]string,
 	}
 	// Decode query: fieldSelector.
 	{
-		values, ok := r.URL.Query()["fieldSelector"]
+		values, ok := queryArgs["fieldSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -95321,7 +96310,7 @@ func decodeWatchPolicyV1beta1PodSecurityPolicyListParams(args map[string]string,
 	}
 	// Decode query: labelSelector.
 	{
-		values, ok := r.URL.Query()["labelSelector"]
+		values, ok := queryArgs["labelSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -95356,7 +96345,7 @@ func decodeWatchPolicyV1beta1PodSecurityPolicyListParams(args map[string]string,
 	}
 	// Decode query: limit.
 	{
-		values, ok := r.URL.Query()["limit"]
+		values, ok := queryArgs["limit"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -95391,7 +96380,7 @@ func decodeWatchPolicyV1beta1PodSecurityPolicyListParams(args map[string]string,
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -95426,7 +96415,7 @@ func decodeWatchPolicyV1beta1PodSecurityPolicyListParams(args map[string]string,
 	}
 	// Decode query: resourceVersion.
 	{
-		values, ok := r.URL.Query()["resourceVersion"]
+		values, ok := queryArgs["resourceVersion"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -95461,7 +96450,7 @@ func decodeWatchPolicyV1beta1PodSecurityPolicyListParams(args map[string]string,
 	}
 	// Decode query: resourceVersionMatch.
 	{
-		values, ok := r.URL.Query()["resourceVersionMatch"]
+		values, ok := queryArgs["resourceVersionMatch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -95496,7 +96485,7 @@ func decodeWatchPolicyV1beta1PodSecurityPolicyListParams(args map[string]string,
 	}
 	// Decode query: timeoutSeconds.
 	{
-		values, ok := r.URL.Query()["timeoutSeconds"]
+		values, ok := queryArgs["timeoutSeconds"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -95531,7 +96520,7 @@ func decodeWatchPolicyV1beta1PodSecurityPolicyListParams(args map[string]string,
 	}
 	// Decode query: watch.
 	{
-		values, ok := r.URL.Query()["watch"]
+		values, ok := queryArgs["watch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -95568,10 +96557,13 @@ func decodeWatchPolicyV1beta1PodSecurityPolicyListParams(args map[string]string,
 }
 
 func decodeWatchRbacAuthorizationV1ClusterRoleParams(args map[string]string, r *http.Request) (WatchRbacAuthorizationV1ClusterRoleParams, error) {
-	var params WatchRbacAuthorizationV1ClusterRoleParams
+	var (
+		params    WatchRbacAuthorizationV1ClusterRoleParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode query: allowWatchBookmarks.
 	{
-		values, ok := r.URL.Query()["allowWatchBookmarks"]
+		values, ok := queryArgs["allowWatchBookmarks"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -95606,7 +96598,7 @@ func decodeWatchRbacAuthorizationV1ClusterRoleParams(args map[string]string, r *
 	}
 	// Decode query: continue.
 	{
-		values, ok := r.URL.Query()["continue"]
+		values, ok := queryArgs["continue"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -95641,7 +96633,7 @@ func decodeWatchRbacAuthorizationV1ClusterRoleParams(args map[string]string, r *
 	}
 	// Decode query: fieldSelector.
 	{
-		values, ok := r.URL.Query()["fieldSelector"]
+		values, ok := queryArgs["fieldSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -95676,7 +96668,7 @@ func decodeWatchRbacAuthorizationV1ClusterRoleParams(args map[string]string, r *
 	}
 	// Decode query: labelSelector.
 	{
-		values, ok := r.URL.Query()["labelSelector"]
+		values, ok := queryArgs["labelSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -95711,7 +96703,7 @@ func decodeWatchRbacAuthorizationV1ClusterRoleParams(args map[string]string, r *
 	}
 	// Decode query: limit.
 	{
-		values, ok := r.URL.Query()["limit"]
+		values, ok := queryArgs["limit"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -95777,7 +96769,7 @@ func decodeWatchRbacAuthorizationV1ClusterRoleParams(args map[string]string, r *
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -95812,7 +96804,7 @@ func decodeWatchRbacAuthorizationV1ClusterRoleParams(args map[string]string, r *
 	}
 	// Decode query: resourceVersion.
 	{
-		values, ok := r.URL.Query()["resourceVersion"]
+		values, ok := queryArgs["resourceVersion"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -95847,7 +96839,7 @@ func decodeWatchRbacAuthorizationV1ClusterRoleParams(args map[string]string, r *
 	}
 	// Decode query: resourceVersionMatch.
 	{
-		values, ok := r.URL.Query()["resourceVersionMatch"]
+		values, ok := queryArgs["resourceVersionMatch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -95882,7 +96874,7 @@ func decodeWatchRbacAuthorizationV1ClusterRoleParams(args map[string]string, r *
 	}
 	// Decode query: timeoutSeconds.
 	{
-		values, ok := r.URL.Query()["timeoutSeconds"]
+		values, ok := queryArgs["timeoutSeconds"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -95917,7 +96909,7 @@ func decodeWatchRbacAuthorizationV1ClusterRoleParams(args map[string]string, r *
 	}
 	// Decode query: watch.
 	{
-		values, ok := r.URL.Query()["watch"]
+		values, ok := queryArgs["watch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -95954,10 +96946,13 @@ func decodeWatchRbacAuthorizationV1ClusterRoleParams(args map[string]string, r *
 }
 
 func decodeWatchRbacAuthorizationV1ClusterRoleBindingParams(args map[string]string, r *http.Request) (WatchRbacAuthorizationV1ClusterRoleBindingParams, error) {
-	var params WatchRbacAuthorizationV1ClusterRoleBindingParams
+	var (
+		params    WatchRbacAuthorizationV1ClusterRoleBindingParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode query: allowWatchBookmarks.
 	{
-		values, ok := r.URL.Query()["allowWatchBookmarks"]
+		values, ok := queryArgs["allowWatchBookmarks"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -95992,7 +96987,7 @@ func decodeWatchRbacAuthorizationV1ClusterRoleBindingParams(args map[string]stri
 	}
 	// Decode query: continue.
 	{
-		values, ok := r.URL.Query()["continue"]
+		values, ok := queryArgs["continue"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -96027,7 +97022,7 @@ func decodeWatchRbacAuthorizationV1ClusterRoleBindingParams(args map[string]stri
 	}
 	// Decode query: fieldSelector.
 	{
-		values, ok := r.URL.Query()["fieldSelector"]
+		values, ok := queryArgs["fieldSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -96062,7 +97057,7 @@ func decodeWatchRbacAuthorizationV1ClusterRoleBindingParams(args map[string]stri
 	}
 	// Decode query: labelSelector.
 	{
-		values, ok := r.URL.Query()["labelSelector"]
+		values, ok := queryArgs["labelSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -96097,7 +97092,7 @@ func decodeWatchRbacAuthorizationV1ClusterRoleBindingParams(args map[string]stri
 	}
 	// Decode query: limit.
 	{
-		values, ok := r.URL.Query()["limit"]
+		values, ok := queryArgs["limit"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -96163,7 +97158,7 @@ func decodeWatchRbacAuthorizationV1ClusterRoleBindingParams(args map[string]stri
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -96198,7 +97193,7 @@ func decodeWatchRbacAuthorizationV1ClusterRoleBindingParams(args map[string]stri
 	}
 	// Decode query: resourceVersion.
 	{
-		values, ok := r.URL.Query()["resourceVersion"]
+		values, ok := queryArgs["resourceVersion"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -96233,7 +97228,7 @@ func decodeWatchRbacAuthorizationV1ClusterRoleBindingParams(args map[string]stri
 	}
 	// Decode query: resourceVersionMatch.
 	{
-		values, ok := r.URL.Query()["resourceVersionMatch"]
+		values, ok := queryArgs["resourceVersionMatch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -96268,7 +97263,7 @@ func decodeWatchRbacAuthorizationV1ClusterRoleBindingParams(args map[string]stri
 	}
 	// Decode query: timeoutSeconds.
 	{
-		values, ok := r.URL.Query()["timeoutSeconds"]
+		values, ok := queryArgs["timeoutSeconds"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -96303,7 +97298,7 @@ func decodeWatchRbacAuthorizationV1ClusterRoleBindingParams(args map[string]stri
 	}
 	// Decode query: watch.
 	{
-		values, ok := r.URL.Query()["watch"]
+		values, ok := queryArgs["watch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -96340,10 +97335,13 @@ func decodeWatchRbacAuthorizationV1ClusterRoleBindingParams(args map[string]stri
 }
 
 func decodeWatchRbacAuthorizationV1ClusterRoleBindingListParams(args map[string]string, r *http.Request) (WatchRbacAuthorizationV1ClusterRoleBindingListParams, error) {
-	var params WatchRbacAuthorizationV1ClusterRoleBindingListParams
+	var (
+		params    WatchRbacAuthorizationV1ClusterRoleBindingListParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode query: allowWatchBookmarks.
 	{
-		values, ok := r.URL.Query()["allowWatchBookmarks"]
+		values, ok := queryArgs["allowWatchBookmarks"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -96378,7 +97376,7 @@ func decodeWatchRbacAuthorizationV1ClusterRoleBindingListParams(args map[string]
 	}
 	// Decode query: continue.
 	{
-		values, ok := r.URL.Query()["continue"]
+		values, ok := queryArgs["continue"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -96413,7 +97411,7 @@ func decodeWatchRbacAuthorizationV1ClusterRoleBindingListParams(args map[string]
 	}
 	// Decode query: fieldSelector.
 	{
-		values, ok := r.URL.Query()["fieldSelector"]
+		values, ok := queryArgs["fieldSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -96448,7 +97446,7 @@ func decodeWatchRbacAuthorizationV1ClusterRoleBindingListParams(args map[string]
 	}
 	// Decode query: labelSelector.
 	{
-		values, ok := r.URL.Query()["labelSelector"]
+		values, ok := queryArgs["labelSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -96483,7 +97481,7 @@ func decodeWatchRbacAuthorizationV1ClusterRoleBindingListParams(args map[string]
 	}
 	// Decode query: limit.
 	{
-		values, ok := r.URL.Query()["limit"]
+		values, ok := queryArgs["limit"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -96518,7 +97516,7 @@ func decodeWatchRbacAuthorizationV1ClusterRoleBindingListParams(args map[string]
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -96553,7 +97551,7 @@ func decodeWatchRbacAuthorizationV1ClusterRoleBindingListParams(args map[string]
 	}
 	// Decode query: resourceVersion.
 	{
-		values, ok := r.URL.Query()["resourceVersion"]
+		values, ok := queryArgs["resourceVersion"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -96588,7 +97586,7 @@ func decodeWatchRbacAuthorizationV1ClusterRoleBindingListParams(args map[string]
 	}
 	// Decode query: resourceVersionMatch.
 	{
-		values, ok := r.URL.Query()["resourceVersionMatch"]
+		values, ok := queryArgs["resourceVersionMatch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -96623,7 +97621,7 @@ func decodeWatchRbacAuthorizationV1ClusterRoleBindingListParams(args map[string]
 	}
 	// Decode query: timeoutSeconds.
 	{
-		values, ok := r.URL.Query()["timeoutSeconds"]
+		values, ok := queryArgs["timeoutSeconds"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -96658,7 +97656,7 @@ func decodeWatchRbacAuthorizationV1ClusterRoleBindingListParams(args map[string]
 	}
 	// Decode query: watch.
 	{
-		values, ok := r.URL.Query()["watch"]
+		values, ok := queryArgs["watch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -96695,10 +97693,13 @@ func decodeWatchRbacAuthorizationV1ClusterRoleBindingListParams(args map[string]
 }
 
 func decodeWatchRbacAuthorizationV1ClusterRoleListParams(args map[string]string, r *http.Request) (WatchRbacAuthorizationV1ClusterRoleListParams, error) {
-	var params WatchRbacAuthorizationV1ClusterRoleListParams
+	var (
+		params    WatchRbacAuthorizationV1ClusterRoleListParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode query: allowWatchBookmarks.
 	{
-		values, ok := r.URL.Query()["allowWatchBookmarks"]
+		values, ok := queryArgs["allowWatchBookmarks"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -96733,7 +97734,7 @@ func decodeWatchRbacAuthorizationV1ClusterRoleListParams(args map[string]string,
 	}
 	// Decode query: continue.
 	{
-		values, ok := r.URL.Query()["continue"]
+		values, ok := queryArgs["continue"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -96768,7 +97769,7 @@ func decodeWatchRbacAuthorizationV1ClusterRoleListParams(args map[string]string,
 	}
 	// Decode query: fieldSelector.
 	{
-		values, ok := r.URL.Query()["fieldSelector"]
+		values, ok := queryArgs["fieldSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -96803,7 +97804,7 @@ func decodeWatchRbacAuthorizationV1ClusterRoleListParams(args map[string]string,
 	}
 	// Decode query: labelSelector.
 	{
-		values, ok := r.URL.Query()["labelSelector"]
+		values, ok := queryArgs["labelSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -96838,7 +97839,7 @@ func decodeWatchRbacAuthorizationV1ClusterRoleListParams(args map[string]string,
 	}
 	// Decode query: limit.
 	{
-		values, ok := r.URL.Query()["limit"]
+		values, ok := queryArgs["limit"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -96873,7 +97874,7 @@ func decodeWatchRbacAuthorizationV1ClusterRoleListParams(args map[string]string,
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -96908,7 +97909,7 @@ func decodeWatchRbacAuthorizationV1ClusterRoleListParams(args map[string]string,
 	}
 	// Decode query: resourceVersion.
 	{
-		values, ok := r.URL.Query()["resourceVersion"]
+		values, ok := queryArgs["resourceVersion"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -96943,7 +97944,7 @@ func decodeWatchRbacAuthorizationV1ClusterRoleListParams(args map[string]string,
 	}
 	// Decode query: resourceVersionMatch.
 	{
-		values, ok := r.URL.Query()["resourceVersionMatch"]
+		values, ok := queryArgs["resourceVersionMatch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -96978,7 +97979,7 @@ func decodeWatchRbacAuthorizationV1ClusterRoleListParams(args map[string]string,
 	}
 	// Decode query: timeoutSeconds.
 	{
-		values, ok := r.URL.Query()["timeoutSeconds"]
+		values, ok := queryArgs["timeoutSeconds"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -97013,7 +98014,7 @@ func decodeWatchRbacAuthorizationV1ClusterRoleListParams(args map[string]string,
 	}
 	// Decode query: watch.
 	{
-		values, ok := r.URL.Query()["watch"]
+		values, ok := queryArgs["watch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -97050,10 +98051,13 @@ func decodeWatchRbacAuthorizationV1ClusterRoleListParams(args map[string]string,
 }
 
 func decodeWatchRbacAuthorizationV1NamespacedRoleParams(args map[string]string, r *http.Request) (WatchRbacAuthorizationV1NamespacedRoleParams, error) {
-	var params WatchRbacAuthorizationV1NamespacedRoleParams
+	var (
+		params    WatchRbacAuthorizationV1NamespacedRoleParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode query: allowWatchBookmarks.
 	{
-		values, ok := r.URL.Query()["allowWatchBookmarks"]
+		values, ok := queryArgs["allowWatchBookmarks"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -97088,7 +98092,7 @@ func decodeWatchRbacAuthorizationV1NamespacedRoleParams(args map[string]string, 
 	}
 	// Decode query: continue.
 	{
-		values, ok := r.URL.Query()["continue"]
+		values, ok := queryArgs["continue"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -97123,7 +98127,7 @@ func decodeWatchRbacAuthorizationV1NamespacedRoleParams(args map[string]string, 
 	}
 	// Decode query: fieldSelector.
 	{
-		values, ok := r.URL.Query()["fieldSelector"]
+		values, ok := queryArgs["fieldSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -97158,7 +98162,7 @@ func decodeWatchRbacAuthorizationV1NamespacedRoleParams(args map[string]string, 
 	}
 	// Decode query: labelSelector.
 	{
-		values, ok := r.URL.Query()["labelSelector"]
+		values, ok := queryArgs["labelSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -97193,7 +98197,7 @@ func decodeWatchRbacAuthorizationV1NamespacedRoleParams(args map[string]string, 
 	}
 	// Decode query: limit.
 	{
-		values, ok := r.URL.Query()["limit"]
+		values, ok := queryArgs["limit"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -97290,7 +98294,7 @@ func decodeWatchRbacAuthorizationV1NamespacedRoleParams(args map[string]string, 
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -97325,7 +98329,7 @@ func decodeWatchRbacAuthorizationV1NamespacedRoleParams(args map[string]string, 
 	}
 	// Decode query: resourceVersion.
 	{
-		values, ok := r.URL.Query()["resourceVersion"]
+		values, ok := queryArgs["resourceVersion"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -97360,7 +98364,7 @@ func decodeWatchRbacAuthorizationV1NamespacedRoleParams(args map[string]string, 
 	}
 	// Decode query: resourceVersionMatch.
 	{
-		values, ok := r.URL.Query()["resourceVersionMatch"]
+		values, ok := queryArgs["resourceVersionMatch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -97395,7 +98399,7 @@ func decodeWatchRbacAuthorizationV1NamespacedRoleParams(args map[string]string, 
 	}
 	// Decode query: timeoutSeconds.
 	{
-		values, ok := r.URL.Query()["timeoutSeconds"]
+		values, ok := queryArgs["timeoutSeconds"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -97430,7 +98434,7 @@ func decodeWatchRbacAuthorizationV1NamespacedRoleParams(args map[string]string, 
 	}
 	// Decode query: watch.
 	{
-		values, ok := r.URL.Query()["watch"]
+		values, ok := queryArgs["watch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -97467,10 +98471,13 @@ func decodeWatchRbacAuthorizationV1NamespacedRoleParams(args map[string]string, 
 }
 
 func decodeWatchRbacAuthorizationV1NamespacedRoleBindingParams(args map[string]string, r *http.Request) (WatchRbacAuthorizationV1NamespacedRoleBindingParams, error) {
-	var params WatchRbacAuthorizationV1NamespacedRoleBindingParams
+	var (
+		params    WatchRbacAuthorizationV1NamespacedRoleBindingParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode query: allowWatchBookmarks.
 	{
-		values, ok := r.URL.Query()["allowWatchBookmarks"]
+		values, ok := queryArgs["allowWatchBookmarks"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -97505,7 +98512,7 @@ func decodeWatchRbacAuthorizationV1NamespacedRoleBindingParams(args map[string]s
 	}
 	// Decode query: continue.
 	{
-		values, ok := r.URL.Query()["continue"]
+		values, ok := queryArgs["continue"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -97540,7 +98547,7 @@ func decodeWatchRbacAuthorizationV1NamespacedRoleBindingParams(args map[string]s
 	}
 	// Decode query: fieldSelector.
 	{
-		values, ok := r.URL.Query()["fieldSelector"]
+		values, ok := queryArgs["fieldSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -97575,7 +98582,7 @@ func decodeWatchRbacAuthorizationV1NamespacedRoleBindingParams(args map[string]s
 	}
 	// Decode query: labelSelector.
 	{
-		values, ok := r.URL.Query()["labelSelector"]
+		values, ok := queryArgs["labelSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -97610,7 +98617,7 @@ func decodeWatchRbacAuthorizationV1NamespacedRoleBindingParams(args map[string]s
 	}
 	// Decode query: limit.
 	{
-		values, ok := r.URL.Query()["limit"]
+		values, ok := queryArgs["limit"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -97707,7 +98714,7 @@ func decodeWatchRbacAuthorizationV1NamespacedRoleBindingParams(args map[string]s
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -97742,7 +98749,7 @@ func decodeWatchRbacAuthorizationV1NamespacedRoleBindingParams(args map[string]s
 	}
 	// Decode query: resourceVersion.
 	{
-		values, ok := r.URL.Query()["resourceVersion"]
+		values, ok := queryArgs["resourceVersion"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -97777,7 +98784,7 @@ func decodeWatchRbacAuthorizationV1NamespacedRoleBindingParams(args map[string]s
 	}
 	// Decode query: resourceVersionMatch.
 	{
-		values, ok := r.URL.Query()["resourceVersionMatch"]
+		values, ok := queryArgs["resourceVersionMatch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -97812,7 +98819,7 @@ func decodeWatchRbacAuthorizationV1NamespacedRoleBindingParams(args map[string]s
 	}
 	// Decode query: timeoutSeconds.
 	{
-		values, ok := r.URL.Query()["timeoutSeconds"]
+		values, ok := queryArgs["timeoutSeconds"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -97847,7 +98854,7 @@ func decodeWatchRbacAuthorizationV1NamespacedRoleBindingParams(args map[string]s
 	}
 	// Decode query: watch.
 	{
-		values, ok := r.URL.Query()["watch"]
+		values, ok := queryArgs["watch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -97884,10 +98891,13 @@ func decodeWatchRbacAuthorizationV1NamespacedRoleBindingParams(args map[string]s
 }
 
 func decodeWatchRbacAuthorizationV1NamespacedRoleBindingListParams(args map[string]string, r *http.Request) (WatchRbacAuthorizationV1NamespacedRoleBindingListParams, error) {
-	var params WatchRbacAuthorizationV1NamespacedRoleBindingListParams
+	var (
+		params    WatchRbacAuthorizationV1NamespacedRoleBindingListParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode query: allowWatchBookmarks.
 	{
-		values, ok := r.URL.Query()["allowWatchBookmarks"]
+		values, ok := queryArgs["allowWatchBookmarks"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -97922,7 +98932,7 @@ func decodeWatchRbacAuthorizationV1NamespacedRoleBindingListParams(args map[stri
 	}
 	// Decode query: continue.
 	{
-		values, ok := r.URL.Query()["continue"]
+		values, ok := queryArgs["continue"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -97957,7 +98967,7 @@ func decodeWatchRbacAuthorizationV1NamespacedRoleBindingListParams(args map[stri
 	}
 	// Decode query: fieldSelector.
 	{
-		values, ok := r.URL.Query()["fieldSelector"]
+		values, ok := queryArgs["fieldSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -97992,7 +99002,7 @@ func decodeWatchRbacAuthorizationV1NamespacedRoleBindingListParams(args map[stri
 	}
 	// Decode query: labelSelector.
 	{
-		values, ok := r.URL.Query()["labelSelector"]
+		values, ok := queryArgs["labelSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -98027,7 +99037,7 @@ func decodeWatchRbacAuthorizationV1NamespacedRoleBindingListParams(args map[stri
 	}
 	// Decode query: limit.
 	{
-		values, ok := r.URL.Query()["limit"]
+		values, ok := queryArgs["limit"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -98093,7 +99103,7 @@ func decodeWatchRbacAuthorizationV1NamespacedRoleBindingListParams(args map[stri
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -98128,7 +99138,7 @@ func decodeWatchRbacAuthorizationV1NamespacedRoleBindingListParams(args map[stri
 	}
 	// Decode query: resourceVersion.
 	{
-		values, ok := r.URL.Query()["resourceVersion"]
+		values, ok := queryArgs["resourceVersion"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -98163,7 +99173,7 @@ func decodeWatchRbacAuthorizationV1NamespacedRoleBindingListParams(args map[stri
 	}
 	// Decode query: resourceVersionMatch.
 	{
-		values, ok := r.URL.Query()["resourceVersionMatch"]
+		values, ok := queryArgs["resourceVersionMatch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -98198,7 +99208,7 @@ func decodeWatchRbacAuthorizationV1NamespacedRoleBindingListParams(args map[stri
 	}
 	// Decode query: timeoutSeconds.
 	{
-		values, ok := r.URL.Query()["timeoutSeconds"]
+		values, ok := queryArgs["timeoutSeconds"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -98233,7 +99243,7 @@ func decodeWatchRbacAuthorizationV1NamespacedRoleBindingListParams(args map[stri
 	}
 	// Decode query: watch.
 	{
-		values, ok := r.URL.Query()["watch"]
+		values, ok := queryArgs["watch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -98270,10 +99280,13 @@ func decodeWatchRbacAuthorizationV1NamespacedRoleBindingListParams(args map[stri
 }
 
 func decodeWatchRbacAuthorizationV1NamespacedRoleListParams(args map[string]string, r *http.Request) (WatchRbacAuthorizationV1NamespacedRoleListParams, error) {
-	var params WatchRbacAuthorizationV1NamespacedRoleListParams
+	var (
+		params    WatchRbacAuthorizationV1NamespacedRoleListParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode query: allowWatchBookmarks.
 	{
-		values, ok := r.URL.Query()["allowWatchBookmarks"]
+		values, ok := queryArgs["allowWatchBookmarks"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -98308,7 +99321,7 @@ func decodeWatchRbacAuthorizationV1NamespacedRoleListParams(args map[string]stri
 	}
 	// Decode query: continue.
 	{
-		values, ok := r.URL.Query()["continue"]
+		values, ok := queryArgs["continue"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -98343,7 +99356,7 @@ func decodeWatchRbacAuthorizationV1NamespacedRoleListParams(args map[string]stri
 	}
 	// Decode query: fieldSelector.
 	{
-		values, ok := r.URL.Query()["fieldSelector"]
+		values, ok := queryArgs["fieldSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -98378,7 +99391,7 @@ func decodeWatchRbacAuthorizationV1NamespacedRoleListParams(args map[string]stri
 	}
 	// Decode query: labelSelector.
 	{
-		values, ok := r.URL.Query()["labelSelector"]
+		values, ok := queryArgs["labelSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -98413,7 +99426,7 @@ func decodeWatchRbacAuthorizationV1NamespacedRoleListParams(args map[string]stri
 	}
 	// Decode query: limit.
 	{
-		values, ok := r.URL.Query()["limit"]
+		values, ok := queryArgs["limit"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -98479,7 +99492,7 @@ func decodeWatchRbacAuthorizationV1NamespacedRoleListParams(args map[string]stri
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -98514,7 +99527,7 @@ func decodeWatchRbacAuthorizationV1NamespacedRoleListParams(args map[string]stri
 	}
 	// Decode query: resourceVersion.
 	{
-		values, ok := r.URL.Query()["resourceVersion"]
+		values, ok := queryArgs["resourceVersion"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -98549,7 +99562,7 @@ func decodeWatchRbacAuthorizationV1NamespacedRoleListParams(args map[string]stri
 	}
 	// Decode query: resourceVersionMatch.
 	{
-		values, ok := r.URL.Query()["resourceVersionMatch"]
+		values, ok := queryArgs["resourceVersionMatch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -98584,7 +99597,7 @@ func decodeWatchRbacAuthorizationV1NamespacedRoleListParams(args map[string]stri
 	}
 	// Decode query: timeoutSeconds.
 	{
-		values, ok := r.URL.Query()["timeoutSeconds"]
+		values, ok := queryArgs["timeoutSeconds"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -98619,7 +99632,7 @@ func decodeWatchRbacAuthorizationV1NamespacedRoleListParams(args map[string]stri
 	}
 	// Decode query: watch.
 	{
-		values, ok := r.URL.Query()["watch"]
+		values, ok := queryArgs["watch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -98656,10 +99669,13 @@ func decodeWatchRbacAuthorizationV1NamespacedRoleListParams(args map[string]stri
 }
 
 func decodeWatchRbacAuthorizationV1RoleBindingListForAllNamespacesParams(args map[string]string, r *http.Request) (WatchRbacAuthorizationV1RoleBindingListForAllNamespacesParams, error) {
-	var params WatchRbacAuthorizationV1RoleBindingListForAllNamespacesParams
+	var (
+		params    WatchRbacAuthorizationV1RoleBindingListForAllNamespacesParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode query: allowWatchBookmarks.
 	{
-		values, ok := r.URL.Query()["allowWatchBookmarks"]
+		values, ok := queryArgs["allowWatchBookmarks"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -98694,7 +99710,7 @@ func decodeWatchRbacAuthorizationV1RoleBindingListForAllNamespacesParams(args ma
 	}
 	// Decode query: continue.
 	{
-		values, ok := r.URL.Query()["continue"]
+		values, ok := queryArgs["continue"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -98729,7 +99745,7 @@ func decodeWatchRbacAuthorizationV1RoleBindingListForAllNamespacesParams(args ma
 	}
 	// Decode query: fieldSelector.
 	{
-		values, ok := r.URL.Query()["fieldSelector"]
+		values, ok := queryArgs["fieldSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -98764,7 +99780,7 @@ func decodeWatchRbacAuthorizationV1RoleBindingListForAllNamespacesParams(args ma
 	}
 	// Decode query: labelSelector.
 	{
-		values, ok := r.URL.Query()["labelSelector"]
+		values, ok := queryArgs["labelSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -98799,7 +99815,7 @@ func decodeWatchRbacAuthorizationV1RoleBindingListForAllNamespacesParams(args ma
 	}
 	// Decode query: limit.
 	{
-		values, ok := r.URL.Query()["limit"]
+		values, ok := queryArgs["limit"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -98834,7 +99850,7 @@ func decodeWatchRbacAuthorizationV1RoleBindingListForAllNamespacesParams(args ma
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -98869,7 +99885,7 @@ func decodeWatchRbacAuthorizationV1RoleBindingListForAllNamespacesParams(args ma
 	}
 	// Decode query: resourceVersion.
 	{
-		values, ok := r.URL.Query()["resourceVersion"]
+		values, ok := queryArgs["resourceVersion"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -98904,7 +99920,7 @@ func decodeWatchRbacAuthorizationV1RoleBindingListForAllNamespacesParams(args ma
 	}
 	// Decode query: resourceVersionMatch.
 	{
-		values, ok := r.URL.Query()["resourceVersionMatch"]
+		values, ok := queryArgs["resourceVersionMatch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -98939,7 +99955,7 @@ func decodeWatchRbacAuthorizationV1RoleBindingListForAllNamespacesParams(args ma
 	}
 	// Decode query: timeoutSeconds.
 	{
-		values, ok := r.URL.Query()["timeoutSeconds"]
+		values, ok := queryArgs["timeoutSeconds"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -98974,7 +99990,7 @@ func decodeWatchRbacAuthorizationV1RoleBindingListForAllNamespacesParams(args ma
 	}
 	// Decode query: watch.
 	{
-		values, ok := r.URL.Query()["watch"]
+		values, ok := queryArgs["watch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -99011,10 +100027,13 @@ func decodeWatchRbacAuthorizationV1RoleBindingListForAllNamespacesParams(args ma
 }
 
 func decodeWatchRbacAuthorizationV1RoleListForAllNamespacesParams(args map[string]string, r *http.Request) (WatchRbacAuthorizationV1RoleListForAllNamespacesParams, error) {
-	var params WatchRbacAuthorizationV1RoleListForAllNamespacesParams
+	var (
+		params    WatchRbacAuthorizationV1RoleListForAllNamespacesParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode query: allowWatchBookmarks.
 	{
-		values, ok := r.URL.Query()["allowWatchBookmarks"]
+		values, ok := queryArgs["allowWatchBookmarks"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -99049,7 +100068,7 @@ func decodeWatchRbacAuthorizationV1RoleListForAllNamespacesParams(args map[strin
 	}
 	// Decode query: continue.
 	{
-		values, ok := r.URL.Query()["continue"]
+		values, ok := queryArgs["continue"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -99084,7 +100103,7 @@ func decodeWatchRbacAuthorizationV1RoleListForAllNamespacesParams(args map[strin
 	}
 	// Decode query: fieldSelector.
 	{
-		values, ok := r.URL.Query()["fieldSelector"]
+		values, ok := queryArgs["fieldSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -99119,7 +100138,7 @@ func decodeWatchRbacAuthorizationV1RoleListForAllNamespacesParams(args map[strin
 	}
 	// Decode query: labelSelector.
 	{
-		values, ok := r.URL.Query()["labelSelector"]
+		values, ok := queryArgs["labelSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -99154,7 +100173,7 @@ func decodeWatchRbacAuthorizationV1RoleListForAllNamespacesParams(args map[strin
 	}
 	// Decode query: limit.
 	{
-		values, ok := r.URL.Query()["limit"]
+		values, ok := queryArgs["limit"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -99189,7 +100208,7 @@ func decodeWatchRbacAuthorizationV1RoleListForAllNamespacesParams(args map[strin
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -99224,7 +100243,7 @@ func decodeWatchRbacAuthorizationV1RoleListForAllNamespacesParams(args map[strin
 	}
 	// Decode query: resourceVersion.
 	{
-		values, ok := r.URL.Query()["resourceVersion"]
+		values, ok := queryArgs["resourceVersion"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -99259,7 +100278,7 @@ func decodeWatchRbacAuthorizationV1RoleListForAllNamespacesParams(args map[strin
 	}
 	// Decode query: resourceVersionMatch.
 	{
-		values, ok := r.URL.Query()["resourceVersionMatch"]
+		values, ok := queryArgs["resourceVersionMatch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -99294,7 +100313,7 @@ func decodeWatchRbacAuthorizationV1RoleListForAllNamespacesParams(args map[strin
 	}
 	// Decode query: timeoutSeconds.
 	{
-		values, ok := r.URL.Query()["timeoutSeconds"]
+		values, ok := queryArgs["timeoutSeconds"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -99329,7 +100348,7 @@ func decodeWatchRbacAuthorizationV1RoleListForAllNamespacesParams(args map[strin
 	}
 	// Decode query: watch.
 	{
-		values, ok := r.URL.Query()["watch"]
+		values, ok := queryArgs["watch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -99366,10 +100385,13 @@ func decodeWatchRbacAuthorizationV1RoleListForAllNamespacesParams(args map[strin
 }
 
 func decodeWatchSchedulingV1PriorityClassParams(args map[string]string, r *http.Request) (WatchSchedulingV1PriorityClassParams, error) {
-	var params WatchSchedulingV1PriorityClassParams
+	var (
+		params    WatchSchedulingV1PriorityClassParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode query: allowWatchBookmarks.
 	{
-		values, ok := r.URL.Query()["allowWatchBookmarks"]
+		values, ok := queryArgs["allowWatchBookmarks"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -99404,7 +100426,7 @@ func decodeWatchSchedulingV1PriorityClassParams(args map[string]string, r *http.
 	}
 	// Decode query: continue.
 	{
-		values, ok := r.URL.Query()["continue"]
+		values, ok := queryArgs["continue"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -99439,7 +100461,7 @@ func decodeWatchSchedulingV1PriorityClassParams(args map[string]string, r *http.
 	}
 	// Decode query: fieldSelector.
 	{
-		values, ok := r.URL.Query()["fieldSelector"]
+		values, ok := queryArgs["fieldSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -99474,7 +100496,7 @@ func decodeWatchSchedulingV1PriorityClassParams(args map[string]string, r *http.
 	}
 	// Decode query: labelSelector.
 	{
-		values, ok := r.URL.Query()["labelSelector"]
+		values, ok := queryArgs["labelSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -99509,7 +100531,7 @@ func decodeWatchSchedulingV1PriorityClassParams(args map[string]string, r *http.
 	}
 	// Decode query: limit.
 	{
-		values, ok := r.URL.Query()["limit"]
+		values, ok := queryArgs["limit"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -99575,7 +100597,7 @@ func decodeWatchSchedulingV1PriorityClassParams(args map[string]string, r *http.
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -99610,7 +100632,7 @@ func decodeWatchSchedulingV1PriorityClassParams(args map[string]string, r *http.
 	}
 	// Decode query: resourceVersion.
 	{
-		values, ok := r.URL.Query()["resourceVersion"]
+		values, ok := queryArgs["resourceVersion"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -99645,7 +100667,7 @@ func decodeWatchSchedulingV1PriorityClassParams(args map[string]string, r *http.
 	}
 	// Decode query: resourceVersionMatch.
 	{
-		values, ok := r.URL.Query()["resourceVersionMatch"]
+		values, ok := queryArgs["resourceVersionMatch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -99680,7 +100702,7 @@ func decodeWatchSchedulingV1PriorityClassParams(args map[string]string, r *http.
 	}
 	// Decode query: timeoutSeconds.
 	{
-		values, ok := r.URL.Query()["timeoutSeconds"]
+		values, ok := queryArgs["timeoutSeconds"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -99715,7 +100737,7 @@ func decodeWatchSchedulingV1PriorityClassParams(args map[string]string, r *http.
 	}
 	// Decode query: watch.
 	{
-		values, ok := r.URL.Query()["watch"]
+		values, ok := queryArgs["watch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -99752,10 +100774,13 @@ func decodeWatchSchedulingV1PriorityClassParams(args map[string]string, r *http.
 }
 
 func decodeWatchSchedulingV1PriorityClassListParams(args map[string]string, r *http.Request) (WatchSchedulingV1PriorityClassListParams, error) {
-	var params WatchSchedulingV1PriorityClassListParams
+	var (
+		params    WatchSchedulingV1PriorityClassListParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode query: allowWatchBookmarks.
 	{
-		values, ok := r.URL.Query()["allowWatchBookmarks"]
+		values, ok := queryArgs["allowWatchBookmarks"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -99790,7 +100815,7 @@ func decodeWatchSchedulingV1PriorityClassListParams(args map[string]string, r *h
 	}
 	// Decode query: continue.
 	{
-		values, ok := r.URL.Query()["continue"]
+		values, ok := queryArgs["continue"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -99825,7 +100850,7 @@ func decodeWatchSchedulingV1PriorityClassListParams(args map[string]string, r *h
 	}
 	// Decode query: fieldSelector.
 	{
-		values, ok := r.URL.Query()["fieldSelector"]
+		values, ok := queryArgs["fieldSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -99860,7 +100885,7 @@ func decodeWatchSchedulingV1PriorityClassListParams(args map[string]string, r *h
 	}
 	// Decode query: labelSelector.
 	{
-		values, ok := r.URL.Query()["labelSelector"]
+		values, ok := queryArgs["labelSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -99895,7 +100920,7 @@ func decodeWatchSchedulingV1PriorityClassListParams(args map[string]string, r *h
 	}
 	// Decode query: limit.
 	{
-		values, ok := r.URL.Query()["limit"]
+		values, ok := queryArgs["limit"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -99930,7 +100955,7 @@ func decodeWatchSchedulingV1PriorityClassListParams(args map[string]string, r *h
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -99965,7 +100990,7 @@ func decodeWatchSchedulingV1PriorityClassListParams(args map[string]string, r *h
 	}
 	// Decode query: resourceVersion.
 	{
-		values, ok := r.URL.Query()["resourceVersion"]
+		values, ok := queryArgs["resourceVersion"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -100000,7 +101025,7 @@ func decodeWatchSchedulingV1PriorityClassListParams(args map[string]string, r *h
 	}
 	// Decode query: resourceVersionMatch.
 	{
-		values, ok := r.URL.Query()["resourceVersionMatch"]
+		values, ok := queryArgs["resourceVersionMatch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -100035,7 +101060,7 @@ func decodeWatchSchedulingV1PriorityClassListParams(args map[string]string, r *h
 	}
 	// Decode query: timeoutSeconds.
 	{
-		values, ok := r.URL.Query()["timeoutSeconds"]
+		values, ok := queryArgs["timeoutSeconds"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -100070,7 +101095,7 @@ func decodeWatchSchedulingV1PriorityClassListParams(args map[string]string, r *h
 	}
 	// Decode query: watch.
 	{
-		values, ok := r.URL.Query()["watch"]
+		values, ok := queryArgs["watch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -100107,10 +101132,13 @@ func decodeWatchSchedulingV1PriorityClassListParams(args map[string]string, r *h
 }
 
 func decodeWatchStorageV1CSIDriverParams(args map[string]string, r *http.Request) (WatchStorageV1CSIDriverParams, error) {
-	var params WatchStorageV1CSIDriverParams
+	var (
+		params    WatchStorageV1CSIDriverParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode query: allowWatchBookmarks.
 	{
-		values, ok := r.URL.Query()["allowWatchBookmarks"]
+		values, ok := queryArgs["allowWatchBookmarks"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -100145,7 +101173,7 @@ func decodeWatchStorageV1CSIDriverParams(args map[string]string, r *http.Request
 	}
 	// Decode query: continue.
 	{
-		values, ok := r.URL.Query()["continue"]
+		values, ok := queryArgs["continue"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -100180,7 +101208,7 @@ func decodeWatchStorageV1CSIDriverParams(args map[string]string, r *http.Request
 	}
 	// Decode query: fieldSelector.
 	{
-		values, ok := r.URL.Query()["fieldSelector"]
+		values, ok := queryArgs["fieldSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -100215,7 +101243,7 @@ func decodeWatchStorageV1CSIDriverParams(args map[string]string, r *http.Request
 	}
 	// Decode query: labelSelector.
 	{
-		values, ok := r.URL.Query()["labelSelector"]
+		values, ok := queryArgs["labelSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -100250,7 +101278,7 @@ func decodeWatchStorageV1CSIDriverParams(args map[string]string, r *http.Request
 	}
 	// Decode query: limit.
 	{
-		values, ok := r.URL.Query()["limit"]
+		values, ok := queryArgs["limit"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -100316,7 +101344,7 @@ func decodeWatchStorageV1CSIDriverParams(args map[string]string, r *http.Request
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -100351,7 +101379,7 @@ func decodeWatchStorageV1CSIDriverParams(args map[string]string, r *http.Request
 	}
 	// Decode query: resourceVersion.
 	{
-		values, ok := r.URL.Query()["resourceVersion"]
+		values, ok := queryArgs["resourceVersion"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -100386,7 +101414,7 @@ func decodeWatchStorageV1CSIDriverParams(args map[string]string, r *http.Request
 	}
 	// Decode query: resourceVersionMatch.
 	{
-		values, ok := r.URL.Query()["resourceVersionMatch"]
+		values, ok := queryArgs["resourceVersionMatch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -100421,7 +101449,7 @@ func decodeWatchStorageV1CSIDriverParams(args map[string]string, r *http.Request
 	}
 	// Decode query: timeoutSeconds.
 	{
-		values, ok := r.URL.Query()["timeoutSeconds"]
+		values, ok := queryArgs["timeoutSeconds"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -100456,7 +101484,7 @@ func decodeWatchStorageV1CSIDriverParams(args map[string]string, r *http.Request
 	}
 	// Decode query: watch.
 	{
-		values, ok := r.URL.Query()["watch"]
+		values, ok := queryArgs["watch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -100493,10 +101521,13 @@ func decodeWatchStorageV1CSIDriverParams(args map[string]string, r *http.Request
 }
 
 func decodeWatchStorageV1CSIDriverListParams(args map[string]string, r *http.Request) (WatchStorageV1CSIDriverListParams, error) {
-	var params WatchStorageV1CSIDriverListParams
+	var (
+		params    WatchStorageV1CSIDriverListParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode query: allowWatchBookmarks.
 	{
-		values, ok := r.URL.Query()["allowWatchBookmarks"]
+		values, ok := queryArgs["allowWatchBookmarks"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -100531,7 +101562,7 @@ func decodeWatchStorageV1CSIDriverListParams(args map[string]string, r *http.Req
 	}
 	// Decode query: continue.
 	{
-		values, ok := r.URL.Query()["continue"]
+		values, ok := queryArgs["continue"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -100566,7 +101597,7 @@ func decodeWatchStorageV1CSIDriverListParams(args map[string]string, r *http.Req
 	}
 	// Decode query: fieldSelector.
 	{
-		values, ok := r.URL.Query()["fieldSelector"]
+		values, ok := queryArgs["fieldSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -100601,7 +101632,7 @@ func decodeWatchStorageV1CSIDriverListParams(args map[string]string, r *http.Req
 	}
 	// Decode query: labelSelector.
 	{
-		values, ok := r.URL.Query()["labelSelector"]
+		values, ok := queryArgs["labelSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -100636,7 +101667,7 @@ func decodeWatchStorageV1CSIDriverListParams(args map[string]string, r *http.Req
 	}
 	// Decode query: limit.
 	{
-		values, ok := r.URL.Query()["limit"]
+		values, ok := queryArgs["limit"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -100671,7 +101702,7 @@ func decodeWatchStorageV1CSIDriverListParams(args map[string]string, r *http.Req
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -100706,7 +101737,7 @@ func decodeWatchStorageV1CSIDriverListParams(args map[string]string, r *http.Req
 	}
 	// Decode query: resourceVersion.
 	{
-		values, ok := r.URL.Query()["resourceVersion"]
+		values, ok := queryArgs["resourceVersion"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -100741,7 +101772,7 @@ func decodeWatchStorageV1CSIDriverListParams(args map[string]string, r *http.Req
 	}
 	// Decode query: resourceVersionMatch.
 	{
-		values, ok := r.URL.Query()["resourceVersionMatch"]
+		values, ok := queryArgs["resourceVersionMatch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -100776,7 +101807,7 @@ func decodeWatchStorageV1CSIDriverListParams(args map[string]string, r *http.Req
 	}
 	// Decode query: timeoutSeconds.
 	{
-		values, ok := r.URL.Query()["timeoutSeconds"]
+		values, ok := queryArgs["timeoutSeconds"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -100811,7 +101842,7 @@ func decodeWatchStorageV1CSIDriverListParams(args map[string]string, r *http.Req
 	}
 	// Decode query: watch.
 	{
-		values, ok := r.URL.Query()["watch"]
+		values, ok := queryArgs["watch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -100848,10 +101879,13 @@ func decodeWatchStorageV1CSIDriverListParams(args map[string]string, r *http.Req
 }
 
 func decodeWatchStorageV1CSINodeParams(args map[string]string, r *http.Request) (WatchStorageV1CSINodeParams, error) {
-	var params WatchStorageV1CSINodeParams
+	var (
+		params    WatchStorageV1CSINodeParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode query: allowWatchBookmarks.
 	{
-		values, ok := r.URL.Query()["allowWatchBookmarks"]
+		values, ok := queryArgs["allowWatchBookmarks"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -100886,7 +101920,7 @@ func decodeWatchStorageV1CSINodeParams(args map[string]string, r *http.Request) 
 	}
 	// Decode query: continue.
 	{
-		values, ok := r.URL.Query()["continue"]
+		values, ok := queryArgs["continue"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -100921,7 +101955,7 @@ func decodeWatchStorageV1CSINodeParams(args map[string]string, r *http.Request) 
 	}
 	// Decode query: fieldSelector.
 	{
-		values, ok := r.URL.Query()["fieldSelector"]
+		values, ok := queryArgs["fieldSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -100956,7 +101990,7 @@ func decodeWatchStorageV1CSINodeParams(args map[string]string, r *http.Request) 
 	}
 	// Decode query: labelSelector.
 	{
-		values, ok := r.URL.Query()["labelSelector"]
+		values, ok := queryArgs["labelSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -100991,7 +102025,7 @@ func decodeWatchStorageV1CSINodeParams(args map[string]string, r *http.Request) 
 	}
 	// Decode query: limit.
 	{
-		values, ok := r.URL.Query()["limit"]
+		values, ok := queryArgs["limit"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -101057,7 +102091,7 @@ func decodeWatchStorageV1CSINodeParams(args map[string]string, r *http.Request) 
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -101092,7 +102126,7 @@ func decodeWatchStorageV1CSINodeParams(args map[string]string, r *http.Request) 
 	}
 	// Decode query: resourceVersion.
 	{
-		values, ok := r.URL.Query()["resourceVersion"]
+		values, ok := queryArgs["resourceVersion"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -101127,7 +102161,7 @@ func decodeWatchStorageV1CSINodeParams(args map[string]string, r *http.Request) 
 	}
 	// Decode query: resourceVersionMatch.
 	{
-		values, ok := r.URL.Query()["resourceVersionMatch"]
+		values, ok := queryArgs["resourceVersionMatch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -101162,7 +102196,7 @@ func decodeWatchStorageV1CSINodeParams(args map[string]string, r *http.Request) 
 	}
 	// Decode query: timeoutSeconds.
 	{
-		values, ok := r.URL.Query()["timeoutSeconds"]
+		values, ok := queryArgs["timeoutSeconds"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -101197,7 +102231,7 @@ func decodeWatchStorageV1CSINodeParams(args map[string]string, r *http.Request) 
 	}
 	// Decode query: watch.
 	{
-		values, ok := r.URL.Query()["watch"]
+		values, ok := queryArgs["watch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -101234,10 +102268,13 @@ func decodeWatchStorageV1CSINodeParams(args map[string]string, r *http.Request) 
 }
 
 func decodeWatchStorageV1CSINodeListParams(args map[string]string, r *http.Request) (WatchStorageV1CSINodeListParams, error) {
-	var params WatchStorageV1CSINodeListParams
+	var (
+		params    WatchStorageV1CSINodeListParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode query: allowWatchBookmarks.
 	{
-		values, ok := r.URL.Query()["allowWatchBookmarks"]
+		values, ok := queryArgs["allowWatchBookmarks"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -101272,7 +102309,7 @@ func decodeWatchStorageV1CSINodeListParams(args map[string]string, r *http.Reque
 	}
 	// Decode query: continue.
 	{
-		values, ok := r.URL.Query()["continue"]
+		values, ok := queryArgs["continue"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -101307,7 +102344,7 @@ func decodeWatchStorageV1CSINodeListParams(args map[string]string, r *http.Reque
 	}
 	// Decode query: fieldSelector.
 	{
-		values, ok := r.URL.Query()["fieldSelector"]
+		values, ok := queryArgs["fieldSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -101342,7 +102379,7 @@ func decodeWatchStorageV1CSINodeListParams(args map[string]string, r *http.Reque
 	}
 	// Decode query: labelSelector.
 	{
-		values, ok := r.URL.Query()["labelSelector"]
+		values, ok := queryArgs["labelSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -101377,7 +102414,7 @@ func decodeWatchStorageV1CSINodeListParams(args map[string]string, r *http.Reque
 	}
 	// Decode query: limit.
 	{
-		values, ok := r.URL.Query()["limit"]
+		values, ok := queryArgs["limit"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -101412,7 +102449,7 @@ func decodeWatchStorageV1CSINodeListParams(args map[string]string, r *http.Reque
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -101447,7 +102484,7 @@ func decodeWatchStorageV1CSINodeListParams(args map[string]string, r *http.Reque
 	}
 	// Decode query: resourceVersion.
 	{
-		values, ok := r.URL.Query()["resourceVersion"]
+		values, ok := queryArgs["resourceVersion"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -101482,7 +102519,7 @@ func decodeWatchStorageV1CSINodeListParams(args map[string]string, r *http.Reque
 	}
 	// Decode query: resourceVersionMatch.
 	{
-		values, ok := r.URL.Query()["resourceVersionMatch"]
+		values, ok := queryArgs["resourceVersionMatch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -101517,7 +102554,7 @@ func decodeWatchStorageV1CSINodeListParams(args map[string]string, r *http.Reque
 	}
 	// Decode query: timeoutSeconds.
 	{
-		values, ok := r.URL.Query()["timeoutSeconds"]
+		values, ok := queryArgs["timeoutSeconds"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -101552,7 +102589,7 @@ func decodeWatchStorageV1CSINodeListParams(args map[string]string, r *http.Reque
 	}
 	// Decode query: watch.
 	{
-		values, ok := r.URL.Query()["watch"]
+		values, ok := queryArgs["watch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -101589,10 +102626,13 @@ func decodeWatchStorageV1CSINodeListParams(args map[string]string, r *http.Reque
 }
 
 func decodeWatchStorageV1StorageClassParams(args map[string]string, r *http.Request) (WatchStorageV1StorageClassParams, error) {
-	var params WatchStorageV1StorageClassParams
+	var (
+		params    WatchStorageV1StorageClassParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode query: allowWatchBookmarks.
 	{
-		values, ok := r.URL.Query()["allowWatchBookmarks"]
+		values, ok := queryArgs["allowWatchBookmarks"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -101627,7 +102667,7 @@ func decodeWatchStorageV1StorageClassParams(args map[string]string, r *http.Requ
 	}
 	// Decode query: continue.
 	{
-		values, ok := r.URL.Query()["continue"]
+		values, ok := queryArgs["continue"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -101662,7 +102702,7 @@ func decodeWatchStorageV1StorageClassParams(args map[string]string, r *http.Requ
 	}
 	// Decode query: fieldSelector.
 	{
-		values, ok := r.URL.Query()["fieldSelector"]
+		values, ok := queryArgs["fieldSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -101697,7 +102737,7 @@ func decodeWatchStorageV1StorageClassParams(args map[string]string, r *http.Requ
 	}
 	// Decode query: labelSelector.
 	{
-		values, ok := r.URL.Query()["labelSelector"]
+		values, ok := queryArgs["labelSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -101732,7 +102772,7 @@ func decodeWatchStorageV1StorageClassParams(args map[string]string, r *http.Requ
 	}
 	// Decode query: limit.
 	{
-		values, ok := r.URL.Query()["limit"]
+		values, ok := queryArgs["limit"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -101798,7 +102838,7 @@ func decodeWatchStorageV1StorageClassParams(args map[string]string, r *http.Requ
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -101833,7 +102873,7 @@ func decodeWatchStorageV1StorageClassParams(args map[string]string, r *http.Requ
 	}
 	// Decode query: resourceVersion.
 	{
-		values, ok := r.URL.Query()["resourceVersion"]
+		values, ok := queryArgs["resourceVersion"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -101868,7 +102908,7 @@ func decodeWatchStorageV1StorageClassParams(args map[string]string, r *http.Requ
 	}
 	// Decode query: resourceVersionMatch.
 	{
-		values, ok := r.URL.Query()["resourceVersionMatch"]
+		values, ok := queryArgs["resourceVersionMatch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -101903,7 +102943,7 @@ func decodeWatchStorageV1StorageClassParams(args map[string]string, r *http.Requ
 	}
 	// Decode query: timeoutSeconds.
 	{
-		values, ok := r.URL.Query()["timeoutSeconds"]
+		values, ok := queryArgs["timeoutSeconds"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -101938,7 +102978,7 @@ func decodeWatchStorageV1StorageClassParams(args map[string]string, r *http.Requ
 	}
 	// Decode query: watch.
 	{
-		values, ok := r.URL.Query()["watch"]
+		values, ok := queryArgs["watch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -101975,10 +103015,13 @@ func decodeWatchStorageV1StorageClassParams(args map[string]string, r *http.Requ
 }
 
 func decodeWatchStorageV1StorageClassListParams(args map[string]string, r *http.Request) (WatchStorageV1StorageClassListParams, error) {
-	var params WatchStorageV1StorageClassListParams
+	var (
+		params    WatchStorageV1StorageClassListParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode query: allowWatchBookmarks.
 	{
-		values, ok := r.URL.Query()["allowWatchBookmarks"]
+		values, ok := queryArgs["allowWatchBookmarks"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -102013,7 +103056,7 @@ func decodeWatchStorageV1StorageClassListParams(args map[string]string, r *http.
 	}
 	// Decode query: continue.
 	{
-		values, ok := r.URL.Query()["continue"]
+		values, ok := queryArgs["continue"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -102048,7 +103091,7 @@ func decodeWatchStorageV1StorageClassListParams(args map[string]string, r *http.
 	}
 	// Decode query: fieldSelector.
 	{
-		values, ok := r.URL.Query()["fieldSelector"]
+		values, ok := queryArgs["fieldSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -102083,7 +103126,7 @@ func decodeWatchStorageV1StorageClassListParams(args map[string]string, r *http.
 	}
 	// Decode query: labelSelector.
 	{
-		values, ok := r.URL.Query()["labelSelector"]
+		values, ok := queryArgs["labelSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -102118,7 +103161,7 @@ func decodeWatchStorageV1StorageClassListParams(args map[string]string, r *http.
 	}
 	// Decode query: limit.
 	{
-		values, ok := r.URL.Query()["limit"]
+		values, ok := queryArgs["limit"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -102153,7 +103196,7 @@ func decodeWatchStorageV1StorageClassListParams(args map[string]string, r *http.
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -102188,7 +103231,7 @@ func decodeWatchStorageV1StorageClassListParams(args map[string]string, r *http.
 	}
 	// Decode query: resourceVersion.
 	{
-		values, ok := r.URL.Query()["resourceVersion"]
+		values, ok := queryArgs["resourceVersion"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -102223,7 +103266,7 @@ func decodeWatchStorageV1StorageClassListParams(args map[string]string, r *http.
 	}
 	// Decode query: resourceVersionMatch.
 	{
-		values, ok := r.URL.Query()["resourceVersionMatch"]
+		values, ok := queryArgs["resourceVersionMatch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -102258,7 +103301,7 @@ func decodeWatchStorageV1StorageClassListParams(args map[string]string, r *http.
 	}
 	// Decode query: timeoutSeconds.
 	{
-		values, ok := r.URL.Query()["timeoutSeconds"]
+		values, ok := queryArgs["timeoutSeconds"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -102293,7 +103336,7 @@ func decodeWatchStorageV1StorageClassListParams(args map[string]string, r *http.
 	}
 	// Decode query: watch.
 	{
-		values, ok := r.URL.Query()["watch"]
+		values, ok := queryArgs["watch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -102330,10 +103373,13 @@ func decodeWatchStorageV1StorageClassListParams(args map[string]string, r *http.
 }
 
 func decodeWatchStorageV1VolumeAttachmentParams(args map[string]string, r *http.Request) (WatchStorageV1VolumeAttachmentParams, error) {
-	var params WatchStorageV1VolumeAttachmentParams
+	var (
+		params    WatchStorageV1VolumeAttachmentParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode query: allowWatchBookmarks.
 	{
-		values, ok := r.URL.Query()["allowWatchBookmarks"]
+		values, ok := queryArgs["allowWatchBookmarks"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -102368,7 +103414,7 @@ func decodeWatchStorageV1VolumeAttachmentParams(args map[string]string, r *http.
 	}
 	// Decode query: continue.
 	{
-		values, ok := r.URL.Query()["continue"]
+		values, ok := queryArgs["continue"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -102403,7 +103449,7 @@ func decodeWatchStorageV1VolumeAttachmentParams(args map[string]string, r *http.
 	}
 	// Decode query: fieldSelector.
 	{
-		values, ok := r.URL.Query()["fieldSelector"]
+		values, ok := queryArgs["fieldSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -102438,7 +103484,7 @@ func decodeWatchStorageV1VolumeAttachmentParams(args map[string]string, r *http.
 	}
 	// Decode query: labelSelector.
 	{
-		values, ok := r.URL.Query()["labelSelector"]
+		values, ok := queryArgs["labelSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -102473,7 +103519,7 @@ func decodeWatchStorageV1VolumeAttachmentParams(args map[string]string, r *http.
 	}
 	// Decode query: limit.
 	{
-		values, ok := r.URL.Query()["limit"]
+		values, ok := queryArgs["limit"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -102539,7 +103585,7 @@ func decodeWatchStorageV1VolumeAttachmentParams(args map[string]string, r *http.
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -102574,7 +103620,7 @@ func decodeWatchStorageV1VolumeAttachmentParams(args map[string]string, r *http.
 	}
 	// Decode query: resourceVersion.
 	{
-		values, ok := r.URL.Query()["resourceVersion"]
+		values, ok := queryArgs["resourceVersion"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -102609,7 +103655,7 @@ func decodeWatchStorageV1VolumeAttachmentParams(args map[string]string, r *http.
 	}
 	// Decode query: resourceVersionMatch.
 	{
-		values, ok := r.URL.Query()["resourceVersionMatch"]
+		values, ok := queryArgs["resourceVersionMatch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -102644,7 +103690,7 @@ func decodeWatchStorageV1VolumeAttachmentParams(args map[string]string, r *http.
 	}
 	// Decode query: timeoutSeconds.
 	{
-		values, ok := r.URL.Query()["timeoutSeconds"]
+		values, ok := queryArgs["timeoutSeconds"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -102679,7 +103725,7 @@ func decodeWatchStorageV1VolumeAttachmentParams(args map[string]string, r *http.
 	}
 	// Decode query: watch.
 	{
-		values, ok := r.URL.Query()["watch"]
+		values, ok := queryArgs["watch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -102716,10 +103762,13 @@ func decodeWatchStorageV1VolumeAttachmentParams(args map[string]string, r *http.
 }
 
 func decodeWatchStorageV1VolumeAttachmentListParams(args map[string]string, r *http.Request) (WatchStorageV1VolumeAttachmentListParams, error) {
-	var params WatchStorageV1VolumeAttachmentListParams
+	var (
+		params    WatchStorageV1VolumeAttachmentListParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode query: allowWatchBookmarks.
 	{
-		values, ok := r.URL.Query()["allowWatchBookmarks"]
+		values, ok := queryArgs["allowWatchBookmarks"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -102754,7 +103803,7 @@ func decodeWatchStorageV1VolumeAttachmentListParams(args map[string]string, r *h
 	}
 	// Decode query: continue.
 	{
-		values, ok := r.URL.Query()["continue"]
+		values, ok := queryArgs["continue"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -102789,7 +103838,7 @@ func decodeWatchStorageV1VolumeAttachmentListParams(args map[string]string, r *h
 	}
 	// Decode query: fieldSelector.
 	{
-		values, ok := r.URL.Query()["fieldSelector"]
+		values, ok := queryArgs["fieldSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -102824,7 +103873,7 @@ func decodeWatchStorageV1VolumeAttachmentListParams(args map[string]string, r *h
 	}
 	// Decode query: labelSelector.
 	{
-		values, ok := r.URL.Query()["labelSelector"]
+		values, ok := queryArgs["labelSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -102859,7 +103908,7 @@ func decodeWatchStorageV1VolumeAttachmentListParams(args map[string]string, r *h
 	}
 	// Decode query: limit.
 	{
-		values, ok := r.URL.Query()["limit"]
+		values, ok := queryArgs["limit"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -102894,7 +103943,7 @@ func decodeWatchStorageV1VolumeAttachmentListParams(args map[string]string, r *h
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -102929,7 +103978,7 @@ func decodeWatchStorageV1VolumeAttachmentListParams(args map[string]string, r *h
 	}
 	// Decode query: resourceVersion.
 	{
-		values, ok := r.URL.Query()["resourceVersion"]
+		values, ok := queryArgs["resourceVersion"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -102964,7 +104013,7 @@ func decodeWatchStorageV1VolumeAttachmentListParams(args map[string]string, r *h
 	}
 	// Decode query: resourceVersionMatch.
 	{
-		values, ok := r.URL.Query()["resourceVersionMatch"]
+		values, ok := queryArgs["resourceVersionMatch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -102999,7 +104048,7 @@ func decodeWatchStorageV1VolumeAttachmentListParams(args map[string]string, r *h
 	}
 	// Decode query: timeoutSeconds.
 	{
-		values, ok := r.URL.Query()["timeoutSeconds"]
+		values, ok := queryArgs["timeoutSeconds"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -103034,7 +104083,7 @@ func decodeWatchStorageV1VolumeAttachmentListParams(args map[string]string, r *h
 	}
 	// Decode query: watch.
 	{
-		values, ok := r.URL.Query()["watch"]
+		values, ok := queryArgs["watch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -103071,10 +104120,13 @@ func decodeWatchStorageV1VolumeAttachmentListParams(args map[string]string, r *h
 }
 
 func decodeWatchStorageV1alpha1CSIStorageCapacityListForAllNamespacesParams(args map[string]string, r *http.Request) (WatchStorageV1alpha1CSIStorageCapacityListForAllNamespacesParams, error) {
-	var params WatchStorageV1alpha1CSIStorageCapacityListForAllNamespacesParams
+	var (
+		params    WatchStorageV1alpha1CSIStorageCapacityListForAllNamespacesParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode query: allowWatchBookmarks.
 	{
-		values, ok := r.URL.Query()["allowWatchBookmarks"]
+		values, ok := queryArgs["allowWatchBookmarks"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -103109,7 +104161,7 @@ func decodeWatchStorageV1alpha1CSIStorageCapacityListForAllNamespacesParams(args
 	}
 	// Decode query: continue.
 	{
-		values, ok := r.URL.Query()["continue"]
+		values, ok := queryArgs["continue"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -103144,7 +104196,7 @@ func decodeWatchStorageV1alpha1CSIStorageCapacityListForAllNamespacesParams(args
 	}
 	// Decode query: fieldSelector.
 	{
-		values, ok := r.URL.Query()["fieldSelector"]
+		values, ok := queryArgs["fieldSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -103179,7 +104231,7 @@ func decodeWatchStorageV1alpha1CSIStorageCapacityListForAllNamespacesParams(args
 	}
 	// Decode query: labelSelector.
 	{
-		values, ok := r.URL.Query()["labelSelector"]
+		values, ok := queryArgs["labelSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -103214,7 +104266,7 @@ func decodeWatchStorageV1alpha1CSIStorageCapacityListForAllNamespacesParams(args
 	}
 	// Decode query: limit.
 	{
-		values, ok := r.URL.Query()["limit"]
+		values, ok := queryArgs["limit"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -103249,7 +104301,7 @@ func decodeWatchStorageV1alpha1CSIStorageCapacityListForAllNamespacesParams(args
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -103284,7 +104336,7 @@ func decodeWatchStorageV1alpha1CSIStorageCapacityListForAllNamespacesParams(args
 	}
 	// Decode query: resourceVersion.
 	{
-		values, ok := r.URL.Query()["resourceVersion"]
+		values, ok := queryArgs["resourceVersion"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -103319,7 +104371,7 @@ func decodeWatchStorageV1alpha1CSIStorageCapacityListForAllNamespacesParams(args
 	}
 	// Decode query: resourceVersionMatch.
 	{
-		values, ok := r.URL.Query()["resourceVersionMatch"]
+		values, ok := queryArgs["resourceVersionMatch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -103354,7 +104406,7 @@ func decodeWatchStorageV1alpha1CSIStorageCapacityListForAllNamespacesParams(args
 	}
 	// Decode query: timeoutSeconds.
 	{
-		values, ok := r.URL.Query()["timeoutSeconds"]
+		values, ok := queryArgs["timeoutSeconds"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -103389,7 +104441,7 @@ func decodeWatchStorageV1alpha1CSIStorageCapacityListForAllNamespacesParams(args
 	}
 	// Decode query: watch.
 	{
-		values, ok := r.URL.Query()["watch"]
+		values, ok := queryArgs["watch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -103426,10 +104478,13 @@ func decodeWatchStorageV1alpha1CSIStorageCapacityListForAllNamespacesParams(args
 }
 
 func decodeWatchStorageV1alpha1NamespacedCSIStorageCapacityParams(args map[string]string, r *http.Request) (WatchStorageV1alpha1NamespacedCSIStorageCapacityParams, error) {
-	var params WatchStorageV1alpha1NamespacedCSIStorageCapacityParams
+	var (
+		params    WatchStorageV1alpha1NamespacedCSIStorageCapacityParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode query: allowWatchBookmarks.
 	{
-		values, ok := r.URL.Query()["allowWatchBookmarks"]
+		values, ok := queryArgs["allowWatchBookmarks"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -103464,7 +104519,7 @@ func decodeWatchStorageV1alpha1NamespacedCSIStorageCapacityParams(args map[strin
 	}
 	// Decode query: continue.
 	{
-		values, ok := r.URL.Query()["continue"]
+		values, ok := queryArgs["continue"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -103499,7 +104554,7 @@ func decodeWatchStorageV1alpha1NamespacedCSIStorageCapacityParams(args map[strin
 	}
 	// Decode query: fieldSelector.
 	{
-		values, ok := r.URL.Query()["fieldSelector"]
+		values, ok := queryArgs["fieldSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -103534,7 +104589,7 @@ func decodeWatchStorageV1alpha1NamespacedCSIStorageCapacityParams(args map[strin
 	}
 	// Decode query: labelSelector.
 	{
-		values, ok := r.URL.Query()["labelSelector"]
+		values, ok := queryArgs["labelSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -103569,7 +104624,7 @@ func decodeWatchStorageV1alpha1NamespacedCSIStorageCapacityParams(args map[strin
 	}
 	// Decode query: limit.
 	{
-		values, ok := r.URL.Query()["limit"]
+		values, ok := queryArgs["limit"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -103666,7 +104721,7 @@ func decodeWatchStorageV1alpha1NamespacedCSIStorageCapacityParams(args map[strin
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -103701,7 +104756,7 @@ func decodeWatchStorageV1alpha1NamespacedCSIStorageCapacityParams(args map[strin
 	}
 	// Decode query: resourceVersion.
 	{
-		values, ok := r.URL.Query()["resourceVersion"]
+		values, ok := queryArgs["resourceVersion"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -103736,7 +104791,7 @@ func decodeWatchStorageV1alpha1NamespacedCSIStorageCapacityParams(args map[strin
 	}
 	// Decode query: resourceVersionMatch.
 	{
-		values, ok := r.URL.Query()["resourceVersionMatch"]
+		values, ok := queryArgs["resourceVersionMatch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -103771,7 +104826,7 @@ func decodeWatchStorageV1alpha1NamespacedCSIStorageCapacityParams(args map[strin
 	}
 	// Decode query: timeoutSeconds.
 	{
-		values, ok := r.URL.Query()["timeoutSeconds"]
+		values, ok := queryArgs["timeoutSeconds"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -103806,7 +104861,7 @@ func decodeWatchStorageV1alpha1NamespacedCSIStorageCapacityParams(args map[strin
 	}
 	// Decode query: watch.
 	{
-		values, ok := r.URL.Query()["watch"]
+		values, ok := queryArgs["watch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -103843,10 +104898,13 @@ func decodeWatchStorageV1alpha1NamespacedCSIStorageCapacityParams(args map[strin
 }
 
 func decodeWatchStorageV1alpha1NamespacedCSIStorageCapacityListParams(args map[string]string, r *http.Request) (WatchStorageV1alpha1NamespacedCSIStorageCapacityListParams, error) {
-	var params WatchStorageV1alpha1NamespacedCSIStorageCapacityListParams
+	var (
+		params    WatchStorageV1alpha1NamespacedCSIStorageCapacityListParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode query: allowWatchBookmarks.
 	{
-		values, ok := r.URL.Query()["allowWatchBookmarks"]
+		values, ok := queryArgs["allowWatchBookmarks"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -103881,7 +104939,7 @@ func decodeWatchStorageV1alpha1NamespacedCSIStorageCapacityListParams(args map[s
 	}
 	// Decode query: continue.
 	{
-		values, ok := r.URL.Query()["continue"]
+		values, ok := queryArgs["continue"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -103916,7 +104974,7 @@ func decodeWatchStorageV1alpha1NamespacedCSIStorageCapacityListParams(args map[s
 	}
 	// Decode query: fieldSelector.
 	{
-		values, ok := r.URL.Query()["fieldSelector"]
+		values, ok := queryArgs["fieldSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -103951,7 +105009,7 @@ func decodeWatchStorageV1alpha1NamespacedCSIStorageCapacityListParams(args map[s
 	}
 	// Decode query: labelSelector.
 	{
-		values, ok := r.URL.Query()["labelSelector"]
+		values, ok := queryArgs["labelSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -103986,7 +105044,7 @@ func decodeWatchStorageV1alpha1NamespacedCSIStorageCapacityListParams(args map[s
 	}
 	// Decode query: limit.
 	{
-		values, ok := r.URL.Query()["limit"]
+		values, ok := queryArgs["limit"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -104052,7 +105110,7 @@ func decodeWatchStorageV1alpha1NamespacedCSIStorageCapacityListParams(args map[s
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -104087,7 +105145,7 @@ func decodeWatchStorageV1alpha1NamespacedCSIStorageCapacityListParams(args map[s
 	}
 	// Decode query: resourceVersion.
 	{
-		values, ok := r.URL.Query()["resourceVersion"]
+		values, ok := queryArgs["resourceVersion"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -104122,7 +105180,7 @@ func decodeWatchStorageV1alpha1NamespacedCSIStorageCapacityListParams(args map[s
 	}
 	// Decode query: resourceVersionMatch.
 	{
-		values, ok := r.URL.Query()["resourceVersionMatch"]
+		values, ok := queryArgs["resourceVersionMatch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -104157,7 +105215,7 @@ func decodeWatchStorageV1alpha1NamespacedCSIStorageCapacityListParams(args map[s
 	}
 	// Decode query: timeoutSeconds.
 	{
-		values, ok := r.URL.Query()["timeoutSeconds"]
+		values, ok := queryArgs["timeoutSeconds"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -104192,7 +105250,7 @@ func decodeWatchStorageV1alpha1NamespacedCSIStorageCapacityListParams(args map[s
 	}
 	// Decode query: watch.
 	{
-		values, ok := r.URL.Query()["watch"]
+		values, ok := queryArgs["watch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -104229,10 +105287,13 @@ func decodeWatchStorageV1alpha1NamespacedCSIStorageCapacityListParams(args map[s
 }
 
 func decodeWatchStorageV1beta1CSIStorageCapacityListForAllNamespacesParams(args map[string]string, r *http.Request) (WatchStorageV1beta1CSIStorageCapacityListForAllNamespacesParams, error) {
-	var params WatchStorageV1beta1CSIStorageCapacityListForAllNamespacesParams
+	var (
+		params    WatchStorageV1beta1CSIStorageCapacityListForAllNamespacesParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode query: allowWatchBookmarks.
 	{
-		values, ok := r.URL.Query()["allowWatchBookmarks"]
+		values, ok := queryArgs["allowWatchBookmarks"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -104267,7 +105328,7 @@ func decodeWatchStorageV1beta1CSIStorageCapacityListForAllNamespacesParams(args 
 	}
 	// Decode query: continue.
 	{
-		values, ok := r.URL.Query()["continue"]
+		values, ok := queryArgs["continue"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -104302,7 +105363,7 @@ func decodeWatchStorageV1beta1CSIStorageCapacityListForAllNamespacesParams(args 
 	}
 	// Decode query: fieldSelector.
 	{
-		values, ok := r.URL.Query()["fieldSelector"]
+		values, ok := queryArgs["fieldSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -104337,7 +105398,7 @@ func decodeWatchStorageV1beta1CSIStorageCapacityListForAllNamespacesParams(args 
 	}
 	// Decode query: labelSelector.
 	{
-		values, ok := r.URL.Query()["labelSelector"]
+		values, ok := queryArgs["labelSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -104372,7 +105433,7 @@ func decodeWatchStorageV1beta1CSIStorageCapacityListForAllNamespacesParams(args 
 	}
 	// Decode query: limit.
 	{
-		values, ok := r.URL.Query()["limit"]
+		values, ok := queryArgs["limit"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -104407,7 +105468,7 @@ func decodeWatchStorageV1beta1CSIStorageCapacityListForAllNamespacesParams(args 
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -104442,7 +105503,7 @@ func decodeWatchStorageV1beta1CSIStorageCapacityListForAllNamespacesParams(args 
 	}
 	// Decode query: resourceVersion.
 	{
-		values, ok := r.URL.Query()["resourceVersion"]
+		values, ok := queryArgs["resourceVersion"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -104477,7 +105538,7 @@ func decodeWatchStorageV1beta1CSIStorageCapacityListForAllNamespacesParams(args 
 	}
 	// Decode query: resourceVersionMatch.
 	{
-		values, ok := r.URL.Query()["resourceVersionMatch"]
+		values, ok := queryArgs["resourceVersionMatch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -104512,7 +105573,7 @@ func decodeWatchStorageV1beta1CSIStorageCapacityListForAllNamespacesParams(args 
 	}
 	// Decode query: timeoutSeconds.
 	{
-		values, ok := r.URL.Query()["timeoutSeconds"]
+		values, ok := queryArgs["timeoutSeconds"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -104547,7 +105608,7 @@ func decodeWatchStorageV1beta1CSIStorageCapacityListForAllNamespacesParams(args 
 	}
 	// Decode query: watch.
 	{
-		values, ok := r.URL.Query()["watch"]
+		values, ok := queryArgs["watch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -104584,10 +105645,13 @@ func decodeWatchStorageV1beta1CSIStorageCapacityListForAllNamespacesParams(args 
 }
 
 func decodeWatchStorageV1beta1NamespacedCSIStorageCapacityParams(args map[string]string, r *http.Request) (WatchStorageV1beta1NamespacedCSIStorageCapacityParams, error) {
-	var params WatchStorageV1beta1NamespacedCSIStorageCapacityParams
+	var (
+		params    WatchStorageV1beta1NamespacedCSIStorageCapacityParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode query: allowWatchBookmarks.
 	{
-		values, ok := r.URL.Query()["allowWatchBookmarks"]
+		values, ok := queryArgs["allowWatchBookmarks"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -104622,7 +105686,7 @@ func decodeWatchStorageV1beta1NamespacedCSIStorageCapacityParams(args map[string
 	}
 	// Decode query: continue.
 	{
-		values, ok := r.URL.Query()["continue"]
+		values, ok := queryArgs["continue"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -104657,7 +105721,7 @@ func decodeWatchStorageV1beta1NamespacedCSIStorageCapacityParams(args map[string
 	}
 	// Decode query: fieldSelector.
 	{
-		values, ok := r.URL.Query()["fieldSelector"]
+		values, ok := queryArgs["fieldSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -104692,7 +105756,7 @@ func decodeWatchStorageV1beta1NamespacedCSIStorageCapacityParams(args map[string
 	}
 	// Decode query: labelSelector.
 	{
-		values, ok := r.URL.Query()["labelSelector"]
+		values, ok := queryArgs["labelSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -104727,7 +105791,7 @@ func decodeWatchStorageV1beta1NamespacedCSIStorageCapacityParams(args map[string
 	}
 	// Decode query: limit.
 	{
-		values, ok := r.URL.Query()["limit"]
+		values, ok := queryArgs["limit"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -104824,7 +105888,7 @@ func decodeWatchStorageV1beta1NamespacedCSIStorageCapacityParams(args map[string
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -104859,7 +105923,7 @@ func decodeWatchStorageV1beta1NamespacedCSIStorageCapacityParams(args map[string
 	}
 	// Decode query: resourceVersion.
 	{
-		values, ok := r.URL.Query()["resourceVersion"]
+		values, ok := queryArgs["resourceVersion"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -104894,7 +105958,7 @@ func decodeWatchStorageV1beta1NamespacedCSIStorageCapacityParams(args map[string
 	}
 	// Decode query: resourceVersionMatch.
 	{
-		values, ok := r.URL.Query()["resourceVersionMatch"]
+		values, ok := queryArgs["resourceVersionMatch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -104929,7 +105993,7 @@ func decodeWatchStorageV1beta1NamespacedCSIStorageCapacityParams(args map[string
 	}
 	// Decode query: timeoutSeconds.
 	{
-		values, ok := r.URL.Query()["timeoutSeconds"]
+		values, ok := queryArgs["timeoutSeconds"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -104964,7 +106028,7 @@ func decodeWatchStorageV1beta1NamespacedCSIStorageCapacityParams(args map[string
 	}
 	// Decode query: watch.
 	{
-		values, ok := r.URL.Query()["watch"]
+		values, ok := queryArgs["watch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -105001,10 +106065,13 @@ func decodeWatchStorageV1beta1NamespacedCSIStorageCapacityParams(args map[string
 }
 
 func decodeWatchStorageV1beta1NamespacedCSIStorageCapacityListParams(args map[string]string, r *http.Request) (WatchStorageV1beta1NamespacedCSIStorageCapacityListParams, error) {
-	var params WatchStorageV1beta1NamespacedCSIStorageCapacityListParams
+	var (
+		params    WatchStorageV1beta1NamespacedCSIStorageCapacityListParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode query: allowWatchBookmarks.
 	{
-		values, ok := r.URL.Query()["allowWatchBookmarks"]
+		values, ok := queryArgs["allowWatchBookmarks"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -105039,7 +106106,7 @@ func decodeWatchStorageV1beta1NamespacedCSIStorageCapacityListParams(args map[st
 	}
 	// Decode query: continue.
 	{
-		values, ok := r.URL.Query()["continue"]
+		values, ok := queryArgs["continue"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -105074,7 +106141,7 @@ func decodeWatchStorageV1beta1NamespacedCSIStorageCapacityListParams(args map[st
 	}
 	// Decode query: fieldSelector.
 	{
-		values, ok := r.URL.Query()["fieldSelector"]
+		values, ok := queryArgs["fieldSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -105109,7 +106176,7 @@ func decodeWatchStorageV1beta1NamespacedCSIStorageCapacityListParams(args map[st
 	}
 	// Decode query: labelSelector.
 	{
-		values, ok := r.URL.Query()["labelSelector"]
+		values, ok := queryArgs["labelSelector"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -105144,7 +106211,7 @@ func decodeWatchStorageV1beta1NamespacedCSIStorageCapacityListParams(args map[st
 	}
 	// Decode query: limit.
 	{
-		values, ok := r.URL.Query()["limit"]
+		values, ok := queryArgs["limit"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -105210,7 +106277,7 @@ func decodeWatchStorageV1beta1NamespacedCSIStorageCapacityListParams(args map[st
 	}
 	// Decode query: pretty.
 	{
-		values, ok := r.URL.Query()["pretty"]
+		values, ok := queryArgs["pretty"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -105245,7 +106312,7 @@ func decodeWatchStorageV1beta1NamespacedCSIStorageCapacityListParams(args map[st
 	}
 	// Decode query: resourceVersion.
 	{
-		values, ok := r.URL.Query()["resourceVersion"]
+		values, ok := queryArgs["resourceVersion"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -105280,7 +106347,7 @@ func decodeWatchStorageV1beta1NamespacedCSIStorageCapacityListParams(args map[st
 	}
 	// Decode query: resourceVersionMatch.
 	{
-		values, ok := r.URL.Query()["resourceVersionMatch"]
+		values, ok := queryArgs["resourceVersionMatch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -105315,7 +106382,7 @@ func decodeWatchStorageV1beta1NamespacedCSIStorageCapacityListParams(args map[st
 	}
 	// Decode query: timeoutSeconds.
 	{
-		values, ok := r.URL.Query()["timeoutSeconds"]
+		values, ok := queryArgs["timeoutSeconds"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -105350,7 +106417,7 @@ func decodeWatchStorageV1beta1NamespacedCSIStorageCapacityListParams(args map[st
 	}
 	// Decode query: watch.
 	{
-		values, ok := r.URL.Query()["watch"]
+		values, ok := queryArgs["watch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,

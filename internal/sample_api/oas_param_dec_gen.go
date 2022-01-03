@@ -63,10 +63,13 @@ var (
 )
 
 func decodeFoobarGetParams(args map[string]string, r *http.Request) (FoobarGetParams, error) {
-	var params FoobarGetParams
+	var (
+		params    FoobarGetParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode query: inlinedParam.
 	{
-		values, ok := r.URL.Query()["inlinedParam"]
+		values, ok := queryArgs["inlinedParam"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -96,7 +99,7 @@ func decodeFoobarGetParams(args map[string]string, r *http.Request) (FoobarGetPa
 	}
 	// Decode query: skip.
 	{
-		values, ok := r.URL.Query()["skip"]
+		values, ok := queryArgs["skip"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -128,7 +131,9 @@ func decodeFoobarGetParams(args map[string]string, r *http.Request) (FoobarGetPa
 }
 
 func decodeGetHeaderParams(args map[string]string, r *http.Request) (GetHeaderParams, error) {
-	var params GetHeaderParams
+	var (
+		params GetHeaderParams
+	)
 	// Decode header: x-auth-token.
 	{
 		param := r.Header.Get("x-auth-token")
@@ -161,7 +166,9 @@ func decodeGetHeaderParams(args map[string]string, r *http.Request) (GetHeaderPa
 }
 
 func decodePetFriendsNamesByIDParams(args map[string]string, r *http.Request) (PetFriendsNamesByIDParams, error) {
-	var params PetFriendsNamesByIDParams
+	var (
+		params PetFriendsNamesByIDParams
+	)
 	// Decode path: id.
 	{
 		param := args["id"]
@@ -197,10 +204,13 @@ func decodePetFriendsNamesByIDParams(args map[string]string, r *http.Request) (P
 }
 
 func decodePetGetParams(args map[string]string, r *http.Request) (PetGetParams, error) {
-	var params PetGetParams
+	var (
+		params    PetGetParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode query: petID.
 	{
-		values, ok := r.URL.Query()["petID"]
+		values, ok := queryArgs["petID"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -319,7 +329,7 @@ func decodePetGetParams(args map[string]string, r *http.Request) (PetGetParams, 
 	}
 	// Decode query: token.
 	{
-		values, ok := r.URL.Query()["token"]
+		values, ok := queryArgs["token"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -351,10 +361,13 @@ func decodePetGetParams(args map[string]string, r *http.Request) (PetGetParams, 
 }
 
 func decodePetGetAvatarByIDParams(args map[string]string, r *http.Request) (PetGetAvatarByIDParams, error) {
-	var params PetGetAvatarByIDParams
+	var (
+		params    PetGetAvatarByIDParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode query: petID.
 	{
-		values, ok := r.URL.Query()["petID"]
+		values, ok := queryArgs["petID"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -386,7 +399,9 @@ func decodePetGetAvatarByIDParams(args map[string]string, r *http.Request) (PetG
 }
 
 func decodePetGetByNameParams(args map[string]string, r *http.Request) (PetGetByNameParams, error) {
-	var params PetGetByNameParams
+	var (
+		params PetGetByNameParams
+	)
 	// Decode path: name.
 	{
 		param := args["name"]
@@ -422,7 +437,9 @@ func decodePetGetByNameParams(args map[string]string, r *http.Request) (PetGetBy
 }
 
 func decodePetNameByIDParams(args map[string]string, r *http.Request) (PetNameByIDParams, error) {
-	var params PetNameByIDParams
+	var (
+		params PetNameByIDParams
+	)
 	// Decode path: id.
 	{
 		param := args["id"]
@@ -458,10 +475,13 @@ func decodePetNameByIDParams(args map[string]string, r *http.Request) (PetNameBy
 }
 
 func decodePetUploadAvatarByIDParams(args map[string]string, r *http.Request) (PetUploadAvatarByIDParams, error) {
-	var params PetUploadAvatarByIDParams
+	var (
+		params    PetUploadAvatarByIDParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode query: petID.
 	{
-		values, ok := r.URL.Query()["petID"]
+		values, ok := queryArgs["petID"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
