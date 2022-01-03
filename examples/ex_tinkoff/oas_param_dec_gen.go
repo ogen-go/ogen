@@ -63,10 +63,13 @@ var (
 )
 
 func decodeMarketCandlesGetParams(args map[string]string, r *http.Request) (MarketCandlesGetParams, error) {
-	var params MarketCandlesGetParams
+	var (
+		params    MarketCandlesGetParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode query: figi.
 	{
-		values, ok := r.URL.Query()["figi"]
+		values, ok := queryArgs["figi"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -96,7 +99,7 @@ func decodeMarketCandlesGetParams(args map[string]string, r *http.Request) (Mark
 	}
 	// Decode query: from.
 	{
-		values, ok := r.URL.Query()["from"]
+		values, ok := queryArgs["from"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -126,7 +129,7 @@ func decodeMarketCandlesGetParams(args map[string]string, r *http.Request) (Mark
 	}
 	// Decode query: to.
 	{
-		values, ok := r.URL.Query()["to"]
+		values, ok := queryArgs["to"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -156,7 +159,7 @@ func decodeMarketCandlesGetParams(args map[string]string, r *http.Request) (Mark
 	}
 	// Decode query: interval.
 	{
-		values, ok := r.URL.Query()["interval"]
+		values, ok := queryArgs["interval"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -196,10 +199,13 @@ func decodeMarketCandlesGetParams(args map[string]string, r *http.Request) (Mark
 }
 
 func decodeMarketOrderbookGetParams(args map[string]string, r *http.Request) (MarketOrderbookGetParams, error) {
-	var params MarketOrderbookGetParams
+	var (
+		params    MarketOrderbookGetParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode query: figi.
 	{
-		values, ok := r.URL.Query()["figi"]
+		values, ok := queryArgs["figi"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -229,7 +235,7 @@ func decodeMarketOrderbookGetParams(args map[string]string, r *http.Request) (Ma
 	}
 	// Decode query: depth.
 	{
-		values, ok := r.URL.Query()["depth"]
+		values, ok := queryArgs["depth"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -261,10 +267,13 @@ func decodeMarketOrderbookGetParams(args map[string]string, r *http.Request) (Ma
 }
 
 func decodeMarketSearchByFigiGetParams(args map[string]string, r *http.Request) (MarketSearchByFigiGetParams, error) {
-	var params MarketSearchByFigiGetParams
+	var (
+		params    MarketSearchByFigiGetParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode query: figi.
 	{
-		values, ok := r.URL.Query()["figi"]
+		values, ok := queryArgs["figi"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -296,10 +305,13 @@ func decodeMarketSearchByFigiGetParams(args map[string]string, r *http.Request) 
 }
 
 func decodeMarketSearchByTickerGetParams(args map[string]string, r *http.Request) (MarketSearchByTickerGetParams, error) {
-	var params MarketSearchByTickerGetParams
+	var (
+		params    MarketSearchByTickerGetParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode query: ticker.
 	{
-		values, ok := r.URL.Query()["ticker"]
+		values, ok := queryArgs["ticker"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -331,10 +343,13 @@ func decodeMarketSearchByTickerGetParams(args map[string]string, r *http.Request
 }
 
 func decodeOperationsGetParams(args map[string]string, r *http.Request) (OperationsGetParams, error) {
-	var params OperationsGetParams
+	var (
+		params    OperationsGetParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode query: from.
 	{
-		values, ok := r.URL.Query()["from"]
+		values, ok := queryArgs["from"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -364,7 +379,7 @@ func decodeOperationsGetParams(args map[string]string, r *http.Request) (Operati
 	}
 	// Decode query: to.
 	{
-		values, ok := r.URL.Query()["to"]
+		values, ok := queryArgs["to"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -394,7 +409,7 @@ func decodeOperationsGetParams(args map[string]string, r *http.Request) (Operati
 	}
 	// Decode query: figi.
 	{
-		values, ok := r.URL.Query()["figi"]
+		values, ok := queryArgs["figi"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -429,7 +444,7 @@ func decodeOperationsGetParams(args map[string]string, r *http.Request) (Operati
 	}
 	// Decode query: brokerAccountId.
 	{
-		values, ok := r.URL.Query()["brokerAccountId"]
+		values, ok := queryArgs["brokerAccountId"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -466,10 +481,13 @@ func decodeOperationsGetParams(args map[string]string, r *http.Request) (Operati
 }
 
 func decodeOrdersCancelPostParams(args map[string]string, r *http.Request) (OrdersCancelPostParams, error) {
-	var params OrdersCancelPostParams
+	var (
+		params    OrdersCancelPostParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode query: orderId.
 	{
-		values, ok := r.URL.Query()["orderId"]
+		values, ok := queryArgs["orderId"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -499,7 +517,7 @@ func decodeOrdersCancelPostParams(args map[string]string, r *http.Request) (Orde
 	}
 	// Decode query: brokerAccountId.
 	{
-		values, ok := r.URL.Query()["brokerAccountId"]
+		values, ok := queryArgs["brokerAccountId"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -536,10 +554,13 @@ func decodeOrdersCancelPostParams(args map[string]string, r *http.Request) (Orde
 }
 
 func decodeOrdersGetParams(args map[string]string, r *http.Request) (OrdersGetParams, error) {
-	var params OrdersGetParams
+	var (
+		params    OrdersGetParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode query: brokerAccountId.
 	{
-		values, ok := r.URL.Query()["brokerAccountId"]
+		values, ok := queryArgs["brokerAccountId"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -576,10 +597,13 @@ func decodeOrdersGetParams(args map[string]string, r *http.Request) (OrdersGetPa
 }
 
 func decodeOrdersLimitOrderPostParams(args map[string]string, r *http.Request) (OrdersLimitOrderPostParams, error) {
-	var params OrdersLimitOrderPostParams
+	var (
+		params    OrdersLimitOrderPostParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode query: figi.
 	{
-		values, ok := r.URL.Query()["figi"]
+		values, ok := queryArgs["figi"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -609,7 +633,7 @@ func decodeOrdersLimitOrderPostParams(args map[string]string, r *http.Request) (
 	}
 	// Decode query: brokerAccountId.
 	{
-		values, ok := r.URL.Query()["brokerAccountId"]
+		values, ok := queryArgs["brokerAccountId"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -646,10 +670,13 @@ func decodeOrdersLimitOrderPostParams(args map[string]string, r *http.Request) (
 }
 
 func decodeOrdersMarketOrderPostParams(args map[string]string, r *http.Request) (OrdersMarketOrderPostParams, error) {
-	var params OrdersMarketOrderPostParams
+	var (
+		params    OrdersMarketOrderPostParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode query: figi.
 	{
-		values, ok := r.URL.Query()["figi"]
+		values, ok := queryArgs["figi"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -679,7 +706,7 @@ func decodeOrdersMarketOrderPostParams(args map[string]string, r *http.Request) 
 	}
 	// Decode query: brokerAccountId.
 	{
-		values, ok := r.URL.Query()["brokerAccountId"]
+		values, ok := queryArgs["brokerAccountId"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -716,10 +743,13 @@ func decodeOrdersMarketOrderPostParams(args map[string]string, r *http.Request) 
 }
 
 func decodePortfolioCurrenciesGetParams(args map[string]string, r *http.Request) (PortfolioCurrenciesGetParams, error) {
-	var params PortfolioCurrenciesGetParams
+	var (
+		params    PortfolioCurrenciesGetParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode query: brokerAccountId.
 	{
-		values, ok := r.URL.Query()["brokerAccountId"]
+		values, ok := queryArgs["brokerAccountId"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -756,10 +786,13 @@ func decodePortfolioCurrenciesGetParams(args map[string]string, r *http.Request)
 }
 
 func decodePortfolioGetParams(args map[string]string, r *http.Request) (PortfolioGetParams, error) {
-	var params PortfolioGetParams
+	var (
+		params    PortfolioGetParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode query: brokerAccountId.
 	{
-		values, ok := r.URL.Query()["brokerAccountId"]
+		values, ok := queryArgs["brokerAccountId"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -796,10 +829,13 @@ func decodePortfolioGetParams(args map[string]string, r *http.Request) (Portfoli
 }
 
 func decodeSandboxClearPostParams(args map[string]string, r *http.Request) (SandboxClearPostParams, error) {
-	var params SandboxClearPostParams
+	var (
+		params    SandboxClearPostParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode query: brokerAccountId.
 	{
-		values, ok := r.URL.Query()["brokerAccountId"]
+		values, ok := queryArgs["brokerAccountId"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -836,10 +872,13 @@ func decodeSandboxClearPostParams(args map[string]string, r *http.Request) (Sand
 }
 
 func decodeSandboxCurrenciesBalancePostParams(args map[string]string, r *http.Request) (SandboxCurrenciesBalancePostParams, error) {
-	var params SandboxCurrenciesBalancePostParams
+	var (
+		params    SandboxCurrenciesBalancePostParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode query: brokerAccountId.
 	{
-		values, ok := r.URL.Query()["brokerAccountId"]
+		values, ok := queryArgs["brokerAccountId"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -876,10 +915,13 @@ func decodeSandboxCurrenciesBalancePostParams(args map[string]string, r *http.Re
 }
 
 func decodeSandboxPositionsBalancePostParams(args map[string]string, r *http.Request) (SandboxPositionsBalancePostParams, error) {
-	var params SandboxPositionsBalancePostParams
+	var (
+		params    SandboxPositionsBalancePostParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode query: brokerAccountId.
 	{
-		values, ok := r.URL.Query()["brokerAccountId"]
+		values, ok := queryArgs["brokerAccountId"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -916,10 +958,13 @@ func decodeSandboxPositionsBalancePostParams(args map[string]string, r *http.Req
 }
 
 func decodeSandboxRemovePostParams(args map[string]string, r *http.Request) (SandboxRemovePostParams, error) {
-	var params SandboxRemovePostParams
+	var (
+		params    SandboxRemovePostParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode query: brokerAccountId.
 	{
-		values, ok := r.URL.Query()["brokerAccountId"]
+		values, ok := queryArgs["brokerAccountId"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,

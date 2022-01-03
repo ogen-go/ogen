@@ -63,7 +63,9 @@ var (
 )
 
 func decodePatchGuestDriveByIDParams(args map[string]string, r *http.Request) (PatchGuestDriveByIDParams, error) {
-	var params PatchGuestDriveByIDParams
+	var (
+		params PatchGuestDriveByIDParams
+	)
 	// Decode path: drive_id.
 	{
 		param := args["drive_id"]
@@ -99,7 +101,9 @@ func decodePatchGuestDriveByIDParams(args map[string]string, r *http.Request) (P
 }
 
 func decodePatchGuestNetworkInterfaceByIDParams(args map[string]string, r *http.Request) (PatchGuestNetworkInterfaceByIDParams, error) {
-	var params PatchGuestNetworkInterfaceByIDParams
+	var (
+		params PatchGuestNetworkInterfaceByIDParams
+	)
 	// Decode path: iface_id.
 	{
 		param := args["iface_id"]
@@ -135,7 +139,9 @@ func decodePatchGuestNetworkInterfaceByIDParams(args map[string]string, r *http.
 }
 
 func decodePutGuestDriveByIDParams(args map[string]string, r *http.Request) (PutGuestDriveByIDParams, error) {
-	var params PutGuestDriveByIDParams
+	var (
+		params PutGuestDriveByIDParams
+	)
 	// Decode path: drive_id.
 	{
 		param := args["drive_id"]
@@ -171,7 +177,9 @@ func decodePutGuestDriveByIDParams(args map[string]string, r *http.Request) (Put
 }
 
 func decodePutGuestNetworkInterfaceByIDParams(args map[string]string, r *http.Request) (PutGuestNetworkInterfaceByIDParams, error) {
-	var params PutGuestNetworkInterfaceByIDParams
+	var (
+		params PutGuestNetworkInterfaceByIDParams
+	)
 	// Decode path: iface_id.
 	{
 		param := args["iface_id"]

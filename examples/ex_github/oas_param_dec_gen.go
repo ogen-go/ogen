@@ -63,7 +63,9 @@ var (
 )
 
 func decodeActionsAddRepoAccessToSelfHostedRunnerGroupInOrgParams(args map[string]string, r *http.Request) (ActionsAddRepoAccessToSelfHostedRunnerGroupInOrgParams, error) {
-	var params ActionsAddRepoAccessToSelfHostedRunnerGroupInOrgParams
+	var (
+		params ActionsAddRepoAccessToSelfHostedRunnerGroupInOrgParams
+	)
 	// Decode path: org.
 	{
 		param := args["org"]
@@ -161,7 +163,9 @@ func decodeActionsAddRepoAccessToSelfHostedRunnerGroupInOrgParams(args map[strin
 }
 
 func decodeActionsAddSelectedRepoToOrgSecretParams(args map[string]string, r *http.Request) (ActionsAddSelectedRepoToOrgSecretParams, error) {
-	var params ActionsAddSelectedRepoToOrgSecretParams
+	var (
+		params ActionsAddSelectedRepoToOrgSecretParams
+	)
 	// Decode path: org.
 	{
 		param := args["org"]
@@ -259,7 +263,9 @@ func decodeActionsAddSelectedRepoToOrgSecretParams(args map[string]string, r *ht
 }
 
 func decodeActionsAddSelfHostedRunnerToGroupForOrgParams(args map[string]string, r *http.Request) (ActionsAddSelfHostedRunnerToGroupForOrgParams, error) {
-	var params ActionsAddSelfHostedRunnerToGroupForOrgParams
+	var (
+		params ActionsAddSelfHostedRunnerToGroupForOrgParams
+	)
 	// Decode path: org.
 	{
 		param := args["org"]
@@ -357,7 +363,9 @@ func decodeActionsAddSelfHostedRunnerToGroupForOrgParams(args map[string]string,
 }
 
 func decodeActionsApproveWorkflowRunParams(args map[string]string, r *http.Request) (ActionsApproveWorkflowRunParams, error) {
-	var params ActionsApproveWorkflowRunParams
+	var (
+		params ActionsApproveWorkflowRunParams
+	)
 	// Decode path: owner.
 	{
 		param := args["owner"]
@@ -455,7 +463,9 @@ func decodeActionsApproveWorkflowRunParams(args map[string]string, r *http.Reque
 }
 
 func decodeActionsCancelWorkflowRunParams(args map[string]string, r *http.Request) (ActionsCancelWorkflowRunParams, error) {
-	var params ActionsCancelWorkflowRunParams
+	var (
+		params ActionsCancelWorkflowRunParams
+	)
 	// Decode path: owner.
 	{
 		param := args["owner"]
@@ -553,7 +563,9 @@ func decodeActionsCancelWorkflowRunParams(args map[string]string, r *http.Reques
 }
 
 func decodeActionsCreateOrUpdateEnvironmentSecretParams(args map[string]string, r *http.Request) (ActionsCreateOrUpdateEnvironmentSecretParams, error) {
-	var params ActionsCreateOrUpdateEnvironmentSecretParams
+	var (
+		params ActionsCreateOrUpdateEnvironmentSecretParams
+	)
 	// Decode path: repository_id.
 	{
 		param := args["repository_id"]
@@ -651,7 +663,9 @@ func decodeActionsCreateOrUpdateEnvironmentSecretParams(args map[string]string, 
 }
 
 func decodeActionsCreateOrUpdateOrgSecretParams(args map[string]string, r *http.Request) (ActionsCreateOrUpdateOrgSecretParams, error) {
-	var params ActionsCreateOrUpdateOrgSecretParams
+	var (
+		params ActionsCreateOrUpdateOrgSecretParams
+	)
 	// Decode path: org.
 	{
 		param := args["org"]
@@ -718,7 +732,9 @@ func decodeActionsCreateOrUpdateOrgSecretParams(args map[string]string, r *http.
 }
 
 func decodeActionsCreateOrUpdateRepoSecretParams(args map[string]string, r *http.Request) (ActionsCreateOrUpdateRepoSecretParams, error) {
-	var params ActionsCreateOrUpdateRepoSecretParams
+	var (
+		params ActionsCreateOrUpdateRepoSecretParams
+	)
 	// Decode path: owner.
 	{
 		param := args["owner"]
@@ -816,7 +832,9 @@ func decodeActionsCreateOrUpdateRepoSecretParams(args map[string]string, r *http
 }
 
 func decodeActionsCreateRegistrationTokenForOrgParams(args map[string]string, r *http.Request) (ActionsCreateRegistrationTokenForOrgParams, error) {
-	var params ActionsCreateRegistrationTokenForOrgParams
+	var (
+		params ActionsCreateRegistrationTokenForOrgParams
+	)
 	// Decode path: org.
 	{
 		param := args["org"]
@@ -852,7 +870,9 @@ func decodeActionsCreateRegistrationTokenForOrgParams(args map[string]string, r 
 }
 
 func decodeActionsCreateRegistrationTokenForRepoParams(args map[string]string, r *http.Request) (ActionsCreateRegistrationTokenForRepoParams, error) {
-	var params ActionsCreateRegistrationTokenForRepoParams
+	var (
+		params ActionsCreateRegistrationTokenForRepoParams
+	)
 	// Decode path: owner.
 	{
 		param := args["owner"]
@@ -919,7 +939,9 @@ func decodeActionsCreateRegistrationTokenForRepoParams(args map[string]string, r
 }
 
 func decodeActionsCreateRemoveTokenForOrgParams(args map[string]string, r *http.Request) (ActionsCreateRemoveTokenForOrgParams, error) {
-	var params ActionsCreateRemoveTokenForOrgParams
+	var (
+		params ActionsCreateRemoveTokenForOrgParams
+	)
 	// Decode path: org.
 	{
 		param := args["org"]
@@ -955,7 +977,9 @@ func decodeActionsCreateRemoveTokenForOrgParams(args map[string]string, r *http.
 }
 
 func decodeActionsCreateRemoveTokenForRepoParams(args map[string]string, r *http.Request) (ActionsCreateRemoveTokenForRepoParams, error) {
-	var params ActionsCreateRemoveTokenForRepoParams
+	var (
+		params ActionsCreateRemoveTokenForRepoParams
+	)
 	// Decode path: owner.
 	{
 		param := args["owner"]
@@ -1022,7 +1046,9 @@ func decodeActionsCreateRemoveTokenForRepoParams(args map[string]string, r *http
 }
 
 func decodeActionsCreateSelfHostedRunnerGroupForOrgParams(args map[string]string, r *http.Request) (ActionsCreateSelfHostedRunnerGroupForOrgParams, error) {
-	var params ActionsCreateSelfHostedRunnerGroupForOrgParams
+	var (
+		params ActionsCreateSelfHostedRunnerGroupForOrgParams
+	)
 	// Decode path: org.
 	{
 		param := args["org"]
@@ -1058,7 +1084,9 @@ func decodeActionsCreateSelfHostedRunnerGroupForOrgParams(args map[string]string
 }
 
 func decodeActionsDeleteArtifactParams(args map[string]string, r *http.Request) (ActionsDeleteArtifactParams, error) {
-	var params ActionsDeleteArtifactParams
+	var (
+		params ActionsDeleteArtifactParams
+	)
 	// Decode path: owner.
 	{
 		param := args["owner"]
@@ -1156,7 +1184,9 @@ func decodeActionsDeleteArtifactParams(args map[string]string, r *http.Request) 
 }
 
 func decodeActionsDeleteEnvironmentSecretParams(args map[string]string, r *http.Request) (ActionsDeleteEnvironmentSecretParams, error) {
-	var params ActionsDeleteEnvironmentSecretParams
+	var (
+		params ActionsDeleteEnvironmentSecretParams
+	)
 	// Decode path: repository_id.
 	{
 		param := args["repository_id"]
@@ -1254,7 +1284,9 @@ func decodeActionsDeleteEnvironmentSecretParams(args map[string]string, r *http.
 }
 
 func decodeActionsDeleteOrgSecretParams(args map[string]string, r *http.Request) (ActionsDeleteOrgSecretParams, error) {
-	var params ActionsDeleteOrgSecretParams
+	var (
+		params ActionsDeleteOrgSecretParams
+	)
 	// Decode path: org.
 	{
 		param := args["org"]
@@ -1321,7 +1353,9 @@ func decodeActionsDeleteOrgSecretParams(args map[string]string, r *http.Request)
 }
 
 func decodeActionsDeleteRepoSecretParams(args map[string]string, r *http.Request) (ActionsDeleteRepoSecretParams, error) {
-	var params ActionsDeleteRepoSecretParams
+	var (
+		params ActionsDeleteRepoSecretParams
+	)
 	// Decode path: owner.
 	{
 		param := args["owner"]
@@ -1419,7 +1453,9 @@ func decodeActionsDeleteRepoSecretParams(args map[string]string, r *http.Request
 }
 
 func decodeActionsDeleteSelfHostedRunnerFromOrgParams(args map[string]string, r *http.Request) (ActionsDeleteSelfHostedRunnerFromOrgParams, error) {
-	var params ActionsDeleteSelfHostedRunnerFromOrgParams
+	var (
+		params ActionsDeleteSelfHostedRunnerFromOrgParams
+	)
 	// Decode path: org.
 	{
 		param := args["org"]
@@ -1486,7 +1522,9 @@ func decodeActionsDeleteSelfHostedRunnerFromOrgParams(args map[string]string, r 
 }
 
 func decodeActionsDeleteSelfHostedRunnerFromRepoParams(args map[string]string, r *http.Request) (ActionsDeleteSelfHostedRunnerFromRepoParams, error) {
-	var params ActionsDeleteSelfHostedRunnerFromRepoParams
+	var (
+		params ActionsDeleteSelfHostedRunnerFromRepoParams
+	)
 	// Decode path: owner.
 	{
 		param := args["owner"]
@@ -1584,7 +1622,9 @@ func decodeActionsDeleteSelfHostedRunnerFromRepoParams(args map[string]string, r
 }
 
 func decodeActionsDeleteSelfHostedRunnerGroupFromOrgParams(args map[string]string, r *http.Request) (ActionsDeleteSelfHostedRunnerGroupFromOrgParams, error) {
-	var params ActionsDeleteSelfHostedRunnerGroupFromOrgParams
+	var (
+		params ActionsDeleteSelfHostedRunnerGroupFromOrgParams
+	)
 	// Decode path: org.
 	{
 		param := args["org"]
@@ -1651,7 +1691,9 @@ func decodeActionsDeleteSelfHostedRunnerGroupFromOrgParams(args map[string]strin
 }
 
 func decodeActionsDeleteWorkflowRunParams(args map[string]string, r *http.Request) (ActionsDeleteWorkflowRunParams, error) {
-	var params ActionsDeleteWorkflowRunParams
+	var (
+		params ActionsDeleteWorkflowRunParams
+	)
 	// Decode path: owner.
 	{
 		param := args["owner"]
@@ -1749,7 +1791,9 @@ func decodeActionsDeleteWorkflowRunParams(args map[string]string, r *http.Reques
 }
 
 func decodeActionsDeleteWorkflowRunLogsParams(args map[string]string, r *http.Request) (ActionsDeleteWorkflowRunLogsParams, error) {
-	var params ActionsDeleteWorkflowRunLogsParams
+	var (
+		params ActionsDeleteWorkflowRunLogsParams
+	)
 	// Decode path: owner.
 	{
 		param := args["owner"]
@@ -1847,7 +1891,9 @@ func decodeActionsDeleteWorkflowRunLogsParams(args map[string]string, r *http.Re
 }
 
 func decodeActionsDisableSelectedRepositoryGithubActionsOrganizationParams(args map[string]string, r *http.Request) (ActionsDisableSelectedRepositoryGithubActionsOrganizationParams, error) {
-	var params ActionsDisableSelectedRepositoryGithubActionsOrganizationParams
+	var (
+		params ActionsDisableSelectedRepositoryGithubActionsOrganizationParams
+	)
 	// Decode path: org.
 	{
 		param := args["org"]
@@ -1914,7 +1960,9 @@ func decodeActionsDisableSelectedRepositoryGithubActionsOrganizationParams(args 
 }
 
 func decodeActionsDownloadArtifactParams(args map[string]string, r *http.Request) (ActionsDownloadArtifactParams, error) {
-	var params ActionsDownloadArtifactParams
+	var (
+		params ActionsDownloadArtifactParams
+	)
 	// Decode path: owner.
 	{
 		param := args["owner"]
@@ -2043,7 +2091,9 @@ func decodeActionsDownloadArtifactParams(args map[string]string, r *http.Request
 }
 
 func decodeActionsDownloadJobLogsForWorkflowRunParams(args map[string]string, r *http.Request) (ActionsDownloadJobLogsForWorkflowRunParams, error) {
-	var params ActionsDownloadJobLogsForWorkflowRunParams
+	var (
+		params ActionsDownloadJobLogsForWorkflowRunParams
+	)
 	// Decode path: owner.
 	{
 		param := args["owner"]
@@ -2141,7 +2191,9 @@ func decodeActionsDownloadJobLogsForWorkflowRunParams(args map[string]string, r 
 }
 
 func decodeActionsDownloadWorkflowRunLogsParams(args map[string]string, r *http.Request) (ActionsDownloadWorkflowRunLogsParams, error) {
-	var params ActionsDownloadWorkflowRunLogsParams
+	var (
+		params ActionsDownloadWorkflowRunLogsParams
+	)
 	// Decode path: owner.
 	{
 		param := args["owner"]
@@ -2239,7 +2291,9 @@ func decodeActionsDownloadWorkflowRunLogsParams(args map[string]string, r *http.
 }
 
 func decodeActionsEnableSelectedRepositoryGithubActionsOrganizationParams(args map[string]string, r *http.Request) (ActionsEnableSelectedRepositoryGithubActionsOrganizationParams, error) {
-	var params ActionsEnableSelectedRepositoryGithubActionsOrganizationParams
+	var (
+		params ActionsEnableSelectedRepositoryGithubActionsOrganizationParams
+	)
 	// Decode path: org.
 	{
 		param := args["org"]
@@ -2306,7 +2360,9 @@ func decodeActionsEnableSelectedRepositoryGithubActionsOrganizationParams(args m
 }
 
 func decodeActionsGetAllowedActionsOrganizationParams(args map[string]string, r *http.Request) (ActionsGetAllowedActionsOrganizationParams, error) {
-	var params ActionsGetAllowedActionsOrganizationParams
+	var (
+		params ActionsGetAllowedActionsOrganizationParams
+	)
 	// Decode path: org.
 	{
 		param := args["org"]
@@ -2342,7 +2398,9 @@ func decodeActionsGetAllowedActionsOrganizationParams(args map[string]string, r 
 }
 
 func decodeActionsGetAllowedActionsRepositoryParams(args map[string]string, r *http.Request) (ActionsGetAllowedActionsRepositoryParams, error) {
-	var params ActionsGetAllowedActionsRepositoryParams
+	var (
+		params ActionsGetAllowedActionsRepositoryParams
+	)
 	// Decode path: owner.
 	{
 		param := args["owner"]
@@ -2409,7 +2467,9 @@ func decodeActionsGetAllowedActionsRepositoryParams(args map[string]string, r *h
 }
 
 func decodeActionsGetArtifactParams(args map[string]string, r *http.Request) (ActionsGetArtifactParams, error) {
-	var params ActionsGetArtifactParams
+	var (
+		params ActionsGetArtifactParams
+	)
 	// Decode path: owner.
 	{
 		param := args["owner"]
@@ -2507,7 +2567,9 @@ func decodeActionsGetArtifactParams(args map[string]string, r *http.Request) (Ac
 }
 
 func decodeActionsGetEnvironmentPublicKeyParams(args map[string]string, r *http.Request) (ActionsGetEnvironmentPublicKeyParams, error) {
-	var params ActionsGetEnvironmentPublicKeyParams
+	var (
+		params ActionsGetEnvironmentPublicKeyParams
+	)
 	// Decode path: repository_id.
 	{
 		param := args["repository_id"]
@@ -2574,7 +2636,9 @@ func decodeActionsGetEnvironmentPublicKeyParams(args map[string]string, r *http.
 }
 
 func decodeActionsGetEnvironmentSecretParams(args map[string]string, r *http.Request) (ActionsGetEnvironmentSecretParams, error) {
-	var params ActionsGetEnvironmentSecretParams
+	var (
+		params ActionsGetEnvironmentSecretParams
+	)
 	// Decode path: repository_id.
 	{
 		param := args["repository_id"]
@@ -2672,7 +2736,9 @@ func decodeActionsGetEnvironmentSecretParams(args map[string]string, r *http.Req
 }
 
 func decodeActionsGetGithubActionsPermissionsOrganizationParams(args map[string]string, r *http.Request) (ActionsGetGithubActionsPermissionsOrganizationParams, error) {
-	var params ActionsGetGithubActionsPermissionsOrganizationParams
+	var (
+		params ActionsGetGithubActionsPermissionsOrganizationParams
+	)
 	// Decode path: org.
 	{
 		param := args["org"]
@@ -2708,7 +2774,9 @@ func decodeActionsGetGithubActionsPermissionsOrganizationParams(args map[string]
 }
 
 func decodeActionsGetGithubActionsPermissionsRepositoryParams(args map[string]string, r *http.Request) (ActionsGetGithubActionsPermissionsRepositoryParams, error) {
-	var params ActionsGetGithubActionsPermissionsRepositoryParams
+	var (
+		params ActionsGetGithubActionsPermissionsRepositoryParams
+	)
 	// Decode path: owner.
 	{
 		param := args["owner"]
@@ -2775,7 +2843,9 @@ func decodeActionsGetGithubActionsPermissionsRepositoryParams(args map[string]st
 }
 
 func decodeActionsGetJobForWorkflowRunParams(args map[string]string, r *http.Request) (ActionsGetJobForWorkflowRunParams, error) {
-	var params ActionsGetJobForWorkflowRunParams
+	var (
+		params ActionsGetJobForWorkflowRunParams
+	)
 	// Decode path: owner.
 	{
 		param := args["owner"]
@@ -2873,7 +2943,9 @@ func decodeActionsGetJobForWorkflowRunParams(args map[string]string, r *http.Req
 }
 
 func decodeActionsGetOrgPublicKeyParams(args map[string]string, r *http.Request) (ActionsGetOrgPublicKeyParams, error) {
-	var params ActionsGetOrgPublicKeyParams
+	var (
+		params ActionsGetOrgPublicKeyParams
+	)
 	// Decode path: org.
 	{
 		param := args["org"]
@@ -2909,7 +2981,9 @@ func decodeActionsGetOrgPublicKeyParams(args map[string]string, r *http.Request)
 }
 
 func decodeActionsGetOrgSecretParams(args map[string]string, r *http.Request) (ActionsGetOrgSecretParams, error) {
-	var params ActionsGetOrgSecretParams
+	var (
+		params ActionsGetOrgSecretParams
+	)
 	// Decode path: org.
 	{
 		param := args["org"]
@@ -2976,7 +3050,9 @@ func decodeActionsGetOrgSecretParams(args map[string]string, r *http.Request) (A
 }
 
 func decodeActionsGetRepoPublicKeyParams(args map[string]string, r *http.Request) (ActionsGetRepoPublicKeyParams, error) {
-	var params ActionsGetRepoPublicKeyParams
+	var (
+		params ActionsGetRepoPublicKeyParams
+	)
 	// Decode path: owner.
 	{
 		param := args["owner"]
@@ -3043,7 +3119,9 @@ func decodeActionsGetRepoPublicKeyParams(args map[string]string, r *http.Request
 }
 
 func decodeActionsGetRepoSecretParams(args map[string]string, r *http.Request) (ActionsGetRepoSecretParams, error) {
-	var params ActionsGetRepoSecretParams
+	var (
+		params ActionsGetRepoSecretParams
+	)
 	// Decode path: owner.
 	{
 		param := args["owner"]
@@ -3141,7 +3219,9 @@ func decodeActionsGetRepoSecretParams(args map[string]string, r *http.Request) (
 }
 
 func decodeActionsGetReviewsForRunParams(args map[string]string, r *http.Request) (ActionsGetReviewsForRunParams, error) {
-	var params ActionsGetReviewsForRunParams
+	var (
+		params ActionsGetReviewsForRunParams
+	)
 	// Decode path: owner.
 	{
 		param := args["owner"]
@@ -3239,7 +3319,9 @@ func decodeActionsGetReviewsForRunParams(args map[string]string, r *http.Request
 }
 
 func decodeActionsGetSelfHostedRunnerForOrgParams(args map[string]string, r *http.Request) (ActionsGetSelfHostedRunnerForOrgParams, error) {
-	var params ActionsGetSelfHostedRunnerForOrgParams
+	var (
+		params ActionsGetSelfHostedRunnerForOrgParams
+	)
 	// Decode path: org.
 	{
 		param := args["org"]
@@ -3306,7 +3388,9 @@ func decodeActionsGetSelfHostedRunnerForOrgParams(args map[string]string, r *htt
 }
 
 func decodeActionsGetSelfHostedRunnerForRepoParams(args map[string]string, r *http.Request) (ActionsGetSelfHostedRunnerForRepoParams, error) {
-	var params ActionsGetSelfHostedRunnerForRepoParams
+	var (
+		params ActionsGetSelfHostedRunnerForRepoParams
+	)
 	// Decode path: owner.
 	{
 		param := args["owner"]
@@ -3404,7 +3488,9 @@ func decodeActionsGetSelfHostedRunnerForRepoParams(args map[string]string, r *ht
 }
 
 func decodeActionsGetSelfHostedRunnerGroupForOrgParams(args map[string]string, r *http.Request) (ActionsGetSelfHostedRunnerGroupForOrgParams, error) {
-	var params ActionsGetSelfHostedRunnerGroupForOrgParams
+	var (
+		params ActionsGetSelfHostedRunnerGroupForOrgParams
+	)
 	// Decode path: org.
 	{
 		param := args["org"]
@@ -3471,7 +3557,9 @@ func decodeActionsGetSelfHostedRunnerGroupForOrgParams(args map[string]string, r
 }
 
 func decodeActionsGetWorkflowRunParams(args map[string]string, r *http.Request) (ActionsGetWorkflowRunParams, error) {
-	var params ActionsGetWorkflowRunParams
+	var (
+		params ActionsGetWorkflowRunParams
+	)
 	// Decode path: owner.
 	{
 		param := args["owner"]
@@ -3569,7 +3657,9 @@ func decodeActionsGetWorkflowRunParams(args map[string]string, r *http.Request) 
 }
 
 func decodeActionsGetWorkflowRunUsageParams(args map[string]string, r *http.Request) (ActionsGetWorkflowRunUsageParams, error) {
-	var params ActionsGetWorkflowRunUsageParams
+	var (
+		params ActionsGetWorkflowRunUsageParams
+	)
 	// Decode path: owner.
 	{
 		param := args["owner"]
@@ -3667,7 +3757,10 @@ func decodeActionsGetWorkflowRunUsageParams(args map[string]string, r *http.Requ
 }
 
 func decodeActionsListArtifactsForRepoParams(args map[string]string, r *http.Request) (ActionsListArtifactsForRepoParams, error) {
-	var params ActionsListArtifactsForRepoParams
+	var (
+		params    ActionsListArtifactsForRepoParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode path: owner.
 	{
 		param := args["owner"]
@@ -3732,7 +3825,7 @@ func decodeActionsListArtifactsForRepoParams(args map[string]string, r *http.Req
 	}
 	// Decode query: per_page.
 	{
-		values, ok := r.URL.Query()["per_page"]
+		values, ok := queryArgs["per_page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -3767,7 +3860,7 @@ func decodeActionsListArtifactsForRepoParams(args map[string]string, r *http.Req
 	}
 	// Decode query: page.
 	{
-		values, ok := r.URL.Query()["page"]
+		values, ok := queryArgs["page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -3804,7 +3897,10 @@ func decodeActionsListArtifactsForRepoParams(args map[string]string, r *http.Req
 }
 
 func decodeActionsListEnvironmentSecretsParams(args map[string]string, r *http.Request) (ActionsListEnvironmentSecretsParams, error) {
-	var params ActionsListEnvironmentSecretsParams
+	var (
+		params    ActionsListEnvironmentSecretsParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode path: repository_id.
 	{
 		param := args["repository_id"]
@@ -3869,7 +3965,7 @@ func decodeActionsListEnvironmentSecretsParams(args map[string]string, r *http.R
 	}
 	// Decode query: per_page.
 	{
-		values, ok := r.URL.Query()["per_page"]
+		values, ok := queryArgs["per_page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -3904,7 +4000,7 @@ func decodeActionsListEnvironmentSecretsParams(args map[string]string, r *http.R
 	}
 	// Decode query: page.
 	{
-		values, ok := r.URL.Query()["page"]
+		values, ok := queryArgs["page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -3941,7 +4037,10 @@ func decodeActionsListEnvironmentSecretsParams(args map[string]string, r *http.R
 }
 
 func decodeActionsListJobsForWorkflowRunParams(args map[string]string, r *http.Request) (ActionsListJobsForWorkflowRunParams, error) {
-	var params ActionsListJobsForWorkflowRunParams
+	var (
+		params    ActionsListJobsForWorkflowRunParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode path: owner.
 	{
 		param := args["owner"]
@@ -4037,7 +4136,7 @@ func decodeActionsListJobsForWorkflowRunParams(args map[string]string, r *http.R
 	}
 	// Decode query: filter.
 	{
-		values, ok := r.URL.Query()["filter"]
+		values, ok := queryArgs["filter"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -4088,7 +4187,7 @@ func decodeActionsListJobsForWorkflowRunParams(args map[string]string, r *http.R
 	}
 	// Decode query: per_page.
 	{
-		values, ok := r.URL.Query()["per_page"]
+		values, ok := queryArgs["per_page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -4123,7 +4222,7 @@ func decodeActionsListJobsForWorkflowRunParams(args map[string]string, r *http.R
 	}
 	// Decode query: page.
 	{
-		values, ok := r.URL.Query()["page"]
+		values, ok := queryArgs["page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -4160,7 +4259,10 @@ func decodeActionsListJobsForWorkflowRunParams(args map[string]string, r *http.R
 }
 
 func decodeActionsListOrgSecretsParams(args map[string]string, r *http.Request) (ActionsListOrgSecretsParams, error) {
-	var params ActionsListOrgSecretsParams
+	var (
+		params    ActionsListOrgSecretsParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode path: org.
 	{
 		param := args["org"]
@@ -4194,7 +4296,7 @@ func decodeActionsListOrgSecretsParams(args map[string]string, r *http.Request) 
 	}
 	// Decode query: per_page.
 	{
-		values, ok := r.URL.Query()["per_page"]
+		values, ok := queryArgs["per_page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -4229,7 +4331,7 @@ func decodeActionsListOrgSecretsParams(args map[string]string, r *http.Request) 
 	}
 	// Decode query: page.
 	{
-		values, ok := r.URL.Query()["page"]
+		values, ok := queryArgs["page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -4266,7 +4368,10 @@ func decodeActionsListOrgSecretsParams(args map[string]string, r *http.Request) 
 }
 
 func decodeActionsListRepoAccessToSelfHostedRunnerGroupInOrgParams(args map[string]string, r *http.Request) (ActionsListRepoAccessToSelfHostedRunnerGroupInOrgParams, error) {
-	var params ActionsListRepoAccessToSelfHostedRunnerGroupInOrgParams
+	var (
+		params    ActionsListRepoAccessToSelfHostedRunnerGroupInOrgParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode path: org.
 	{
 		param := args["org"]
@@ -4331,7 +4436,7 @@ func decodeActionsListRepoAccessToSelfHostedRunnerGroupInOrgParams(args map[stri
 	}
 	// Decode query: page.
 	{
-		values, ok := r.URL.Query()["page"]
+		values, ok := queryArgs["page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -4366,7 +4471,7 @@ func decodeActionsListRepoAccessToSelfHostedRunnerGroupInOrgParams(args map[stri
 	}
 	// Decode query: per_page.
 	{
-		values, ok := r.URL.Query()["per_page"]
+		values, ok := queryArgs["per_page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -4403,7 +4508,10 @@ func decodeActionsListRepoAccessToSelfHostedRunnerGroupInOrgParams(args map[stri
 }
 
 func decodeActionsListRepoSecretsParams(args map[string]string, r *http.Request) (ActionsListRepoSecretsParams, error) {
-	var params ActionsListRepoSecretsParams
+	var (
+		params    ActionsListRepoSecretsParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode path: owner.
 	{
 		param := args["owner"]
@@ -4468,7 +4576,7 @@ func decodeActionsListRepoSecretsParams(args map[string]string, r *http.Request)
 	}
 	// Decode query: per_page.
 	{
-		values, ok := r.URL.Query()["per_page"]
+		values, ok := queryArgs["per_page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -4503,7 +4611,7 @@ func decodeActionsListRepoSecretsParams(args map[string]string, r *http.Request)
 	}
 	// Decode query: page.
 	{
-		values, ok := r.URL.Query()["page"]
+		values, ok := queryArgs["page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -4540,7 +4648,10 @@ func decodeActionsListRepoSecretsParams(args map[string]string, r *http.Request)
 }
 
 func decodeActionsListRepoWorkflowsParams(args map[string]string, r *http.Request) (ActionsListRepoWorkflowsParams, error) {
-	var params ActionsListRepoWorkflowsParams
+	var (
+		params    ActionsListRepoWorkflowsParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode path: owner.
 	{
 		param := args["owner"]
@@ -4605,7 +4716,7 @@ func decodeActionsListRepoWorkflowsParams(args map[string]string, r *http.Reques
 	}
 	// Decode query: per_page.
 	{
-		values, ok := r.URL.Query()["per_page"]
+		values, ok := queryArgs["per_page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -4640,7 +4751,7 @@ func decodeActionsListRepoWorkflowsParams(args map[string]string, r *http.Reques
 	}
 	// Decode query: page.
 	{
-		values, ok := r.URL.Query()["page"]
+		values, ok := queryArgs["page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -4677,7 +4788,9 @@ func decodeActionsListRepoWorkflowsParams(args map[string]string, r *http.Reques
 }
 
 func decodeActionsListRunnerApplicationsForOrgParams(args map[string]string, r *http.Request) (ActionsListRunnerApplicationsForOrgParams, error) {
-	var params ActionsListRunnerApplicationsForOrgParams
+	var (
+		params ActionsListRunnerApplicationsForOrgParams
+	)
 	// Decode path: org.
 	{
 		param := args["org"]
@@ -4713,7 +4826,9 @@ func decodeActionsListRunnerApplicationsForOrgParams(args map[string]string, r *
 }
 
 func decodeActionsListRunnerApplicationsForRepoParams(args map[string]string, r *http.Request) (ActionsListRunnerApplicationsForRepoParams, error) {
-	var params ActionsListRunnerApplicationsForRepoParams
+	var (
+		params ActionsListRunnerApplicationsForRepoParams
+	)
 	// Decode path: owner.
 	{
 		param := args["owner"]
@@ -4780,7 +4895,10 @@ func decodeActionsListRunnerApplicationsForRepoParams(args map[string]string, r 
 }
 
 func decodeActionsListSelectedReposForOrgSecretParams(args map[string]string, r *http.Request) (ActionsListSelectedReposForOrgSecretParams, error) {
-	var params ActionsListSelectedReposForOrgSecretParams
+	var (
+		params    ActionsListSelectedReposForOrgSecretParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode path: org.
 	{
 		param := args["org"]
@@ -4845,7 +4963,7 @@ func decodeActionsListSelectedReposForOrgSecretParams(args map[string]string, r 
 	}
 	// Decode query: page.
 	{
-		values, ok := r.URL.Query()["page"]
+		values, ok := queryArgs["page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -4880,7 +4998,7 @@ func decodeActionsListSelectedReposForOrgSecretParams(args map[string]string, r 
 	}
 	// Decode query: per_page.
 	{
-		values, ok := r.URL.Query()["per_page"]
+		values, ok := queryArgs["per_page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -4917,7 +5035,10 @@ func decodeActionsListSelectedReposForOrgSecretParams(args map[string]string, r 
 }
 
 func decodeActionsListSelectedRepositoriesEnabledGithubActionsOrganizationParams(args map[string]string, r *http.Request) (ActionsListSelectedRepositoriesEnabledGithubActionsOrganizationParams, error) {
-	var params ActionsListSelectedRepositoriesEnabledGithubActionsOrganizationParams
+	var (
+		params    ActionsListSelectedRepositoriesEnabledGithubActionsOrganizationParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode path: org.
 	{
 		param := args["org"]
@@ -4951,7 +5072,7 @@ func decodeActionsListSelectedRepositoriesEnabledGithubActionsOrganizationParams
 	}
 	// Decode query: per_page.
 	{
-		values, ok := r.URL.Query()["per_page"]
+		values, ok := queryArgs["per_page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -4986,7 +5107,7 @@ func decodeActionsListSelectedRepositoriesEnabledGithubActionsOrganizationParams
 	}
 	// Decode query: page.
 	{
-		values, ok := r.URL.Query()["page"]
+		values, ok := queryArgs["page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -5023,7 +5144,10 @@ func decodeActionsListSelectedRepositoriesEnabledGithubActionsOrganizationParams
 }
 
 func decodeActionsListSelfHostedRunnerGroupsForOrgParams(args map[string]string, r *http.Request) (ActionsListSelfHostedRunnerGroupsForOrgParams, error) {
-	var params ActionsListSelfHostedRunnerGroupsForOrgParams
+	var (
+		params    ActionsListSelfHostedRunnerGroupsForOrgParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode path: org.
 	{
 		param := args["org"]
@@ -5057,7 +5181,7 @@ func decodeActionsListSelfHostedRunnerGroupsForOrgParams(args map[string]string,
 	}
 	// Decode query: per_page.
 	{
-		values, ok := r.URL.Query()["per_page"]
+		values, ok := queryArgs["per_page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -5092,7 +5216,7 @@ func decodeActionsListSelfHostedRunnerGroupsForOrgParams(args map[string]string,
 	}
 	// Decode query: page.
 	{
-		values, ok := r.URL.Query()["page"]
+		values, ok := queryArgs["page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -5129,7 +5253,10 @@ func decodeActionsListSelfHostedRunnerGroupsForOrgParams(args map[string]string,
 }
 
 func decodeActionsListSelfHostedRunnersForOrgParams(args map[string]string, r *http.Request) (ActionsListSelfHostedRunnersForOrgParams, error) {
-	var params ActionsListSelfHostedRunnersForOrgParams
+	var (
+		params    ActionsListSelfHostedRunnersForOrgParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode path: org.
 	{
 		param := args["org"]
@@ -5163,7 +5290,7 @@ func decodeActionsListSelfHostedRunnersForOrgParams(args map[string]string, r *h
 	}
 	// Decode query: per_page.
 	{
-		values, ok := r.URL.Query()["per_page"]
+		values, ok := queryArgs["per_page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -5198,7 +5325,7 @@ func decodeActionsListSelfHostedRunnersForOrgParams(args map[string]string, r *h
 	}
 	// Decode query: page.
 	{
-		values, ok := r.URL.Query()["page"]
+		values, ok := queryArgs["page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -5235,7 +5362,10 @@ func decodeActionsListSelfHostedRunnersForOrgParams(args map[string]string, r *h
 }
 
 func decodeActionsListSelfHostedRunnersForRepoParams(args map[string]string, r *http.Request) (ActionsListSelfHostedRunnersForRepoParams, error) {
-	var params ActionsListSelfHostedRunnersForRepoParams
+	var (
+		params    ActionsListSelfHostedRunnersForRepoParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode path: owner.
 	{
 		param := args["owner"]
@@ -5300,7 +5430,7 @@ func decodeActionsListSelfHostedRunnersForRepoParams(args map[string]string, r *
 	}
 	// Decode query: per_page.
 	{
-		values, ok := r.URL.Query()["per_page"]
+		values, ok := queryArgs["per_page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -5335,7 +5465,7 @@ func decodeActionsListSelfHostedRunnersForRepoParams(args map[string]string, r *
 	}
 	// Decode query: page.
 	{
-		values, ok := r.URL.Query()["page"]
+		values, ok := queryArgs["page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -5372,7 +5502,10 @@ func decodeActionsListSelfHostedRunnersForRepoParams(args map[string]string, r *
 }
 
 func decodeActionsListSelfHostedRunnersInGroupForOrgParams(args map[string]string, r *http.Request) (ActionsListSelfHostedRunnersInGroupForOrgParams, error) {
-	var params ActionsListSelfHostedRunnersInGroupForOrgParams
+	var (
+		params    ActionsListSelfHostedRunnersInGroupForOrgParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode path: org.
 	{
 		param := args["org"]
@@ -5437,7 +5570,7 @@ func decodeActionsListSelfHostedRunnersInGroupForOrgParams(args map[string]strin
 	}
 	// Decode query: per_page.
 	{
-		values, ok := r.URL.Query()["per_page"]
+		values, ok := queryArgs["per_page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -5472,7 +5605,7 @@ func decodeActionsListSelfHostedRunnersInGroupForOrgParams(args map[string]strin
 	}
 	// Decode query: page.
 	{
-		values, ok := r.URL.Query()["page"]
+		values, ok := queryArgs["page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -5509,7 +5642,10 @@ func decodeActionsListSelfHostedRunnersInGroupForOrgParams(args map[string]strin
 }
 
 func decodeActionsListWorkflowRunArtifactsParams(args map[string]string, r *http.Request) (ActionsListWorkflowRunArtifactsParams, error) {
-	var params ActionsListWorkflowRunArtifactsParams
+	var (
+		params    ActionsListWorkflowRunArtifactsParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode path: owner.
 	{
 		param := args["owner"]
@@ -5605,7 +5741,7 @@ func decodeActionsListWorkflowRunArtifactsParams(args map[string]string, r *http
 	}
 	// Decode query: per_page.
 	{
-		values, ok := r.URL.Query()["per_page"]
+		values, ok := queryArgs["per_page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -5640,7 +5776,7 @@ func decodeActionsListWorkflowRunArtifactsParams(args map[string]string, r *http
 	}
 	// Decode query: page.
 	{
-		values, ok := r.URL.Query()["page"]
+		values, ok := queryArgs["page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -5677,7 +5813,10 @@ func decodeActionsListWorkflowRunArtifactsParams(args map[string]string, r *http
 }
 
 func decodeActionsListWorkflowRunsForRepoParams(args map[string]string, r *http.Request) (ActionsListWorkflowRunsForRepoParams, error) {
-	var params ActionsListWorkflowRunsForRepoParams
+	var (
+		params    ActionsListWorkflowRunsForRepoParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode path: owner.
 	{
 		param := args["owner"]
@@ -5742,7 +5881,7 @@ func decodeActionsListWorkflowRunsForRepoParams(args map[string]string, r *http.
 	}
 	// Decode query: actor.
 	{
-		values, ok := r.URL.Query()["actor"]
+		values, ok := queryArgs["actor"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -5777,7 +5916,7 @@ func decodeActionsListWorkflowRunsForRepoParams(args map[string]string, r *http.
 	}
 	// Decode query: branch.
 	{
-		values, ok := r.URL.Query()["branch"]
+		values, ok := queryArgs["branch"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -5812,7 +5951,7 @@ func decodeActionsListWorkflowRunsForRepoParams(args map[string]string, r *http.
 	}
 	// Decode query: event.
 	{
-		values, ok := r.URL.Query()["event"]
+		values, ok := queryArgs["event"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -5847,7 +5986,7 @@ func decodeActionsListWorkflowRunsForRepoParams(args map[string]string, r *http.
 	}
 	// Decode query: status.
 	{
-		values, ok := r.URL.Query()["status"]
+		values, ok := queryArgs["status"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -5898,7 +6037,7 @@ func decodeActionsListWorkflowRunsForRepoParams(args map[string]string, r *http.
 	}
 	// Decode query: per_page.
 	{
-		values, ok := r.URL.Query()["per_page"]
+		values, ok := queryArgs["per_page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -5933,7 +6072,7 @@ func decodeActionsListWorkflowRunsForRepoParams(args map[string]string, r *http.
 	}
 	// Decode query: page.
 	{
-		values, ok := r.URL.Query()["page"]
+		values, ok := queryArgs["page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -5968,7 +6107,7 @@ func decodeActionsListWorkflowRunsForRepoParams(args map[string]string, r *http.
 	}
 	// Decode query: created.
 	{
-		values, ok := r.URL.Query()["created"]
+		values, ok := queryArgs["created"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -6005,7 +6144,9 @@ func decodeActionsListWorkflowRunsForRepoParams(args map[string]string, r *http.
 }
 
 func decodeActionsReRunWorkflowParams(args map[string]string, r *http.Request) (ActionsReRunWorkflowParams, error) {
-	var params ActionsReRunWorkflowParams
+	var (
+		params ActionsReRunWorkflowParams
+	)
 	// Decode path: owner.
 	{
 		param := args["owner"]
@@ -6103,7 +6244,9 @@ func decodeActionsReRunWorkflowParams(args map[string]string, r *http.Request) (
 }
 
 func decodeActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrgParams(args map[string]string, r *http.Request) (ActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrgParams, error) {
-	var params ActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrgParams
+	var (
+		params ActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrgParams
+	)
 	// Decode path: org.
 	{
 		param := args["org"]
@@ -6201,7 +6344,9 @@ func decodeActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrgParams(args map[st
 }
 
 func decodeActionsRemoveSelectedRepoFromOrgSecretParams(args map[string]string, r *http.Request) (ActionsRemoveSelectedRepoFromOrgSecretParams, error) {
-	var params ActionsRemoveSelectedRepoFromOrgSecretParams
+	var (
+		params ActionsRemoveSelectedRepoFromOrgSecretParams
+	)
 	// Decode path: org.
 	{
 		param := args["org"]
@@ -6299,7 +6444,9 @@ func decodeActionsRemoveSelectedRepoFromOrgSecretParams(args map[string]string, 
 }
 
 func decodeActionsRemoveSelfHostedRunnerFromGroupForOrgParams(args map[string]string, r *http.Request) (ActionsRemoveSelfHostedRunnerFromGroupForOrgParams, error) {
-	var params ActionsRemoveSelfHostedRunnerFromGroupForOrgParams
+	var (
+		params ActionsRemoveSelfHostedRunnerFromGroupForOrgParams
+	)
 	// Decode path: org.
 	{
 		param := args["org"]
@@ -6397,7 +6544,9 @@ func decodeActionsRemoveSelfHostedRunnerFromGroupForOrgParams(args map[string]st
 }
 
 func decodeActionsRetryWorkflowParams(args map[string]string, r *http.Request) (ActionsRetryWorkflowParams, error) {
-	var params ActionsRetryWorkflowParams
+	var (
+		params ActionsRetryWorkflowParams
+	)
 	// Decode path: owner.
 	{
 		param := args["owner"]
@@ -6495,7 +6644,9 @@ func decodeActionsRetryWorkflowParams(args map[string]string, r *http.Request) (
 }
 
 func decodeActionsReviewPendingDeploymentsForRunParams(args map[string]string, r *http.Request) (ActionsReviewPendingDeploymentsForRunParams, error) {
-	var params ActionsReviewPendingDeploymentsForRunParams
+	var (
+		params ActionsReviewPendingDeploymentsForRunParams
+	)
 	// Decode path: owner.
 	{
 		param := args["owner"]
@@ -6593,7 +6744,9 @@ func decodeActionsReviewPendingDeploymentsForRunParams(args map[string]string, r
 }
 
 func decodeActionsSetAllowedActionsOrganizationParams(args map[string]string, r *http.Request) (ActionsSetAllowedActionsOrganizationParams, error) {
-	var params ActionsSetAllowedActionsOrganizationParams
+	var (
+		params ActionsSetAllowedActionsOrganizationParams
+	)
 	// Decode path: org.
 	{
 		param := args["org"]
@@ -6629,7 +6782,9 @@ func decodeActionsSetAllowedActionsOrganizationParams(args map[string]string, r 
 }
 
 func decodeActionsSetAllowedActionsRepositoryParams(args map[string]string, r *http.Request) (ActionsSetAllowedActionsRepositoryParams, error) {
-	var params ActionsSetAllowedActionsRepositoryParams
+	var (
+		params ActionsSetAllowedActionsRepositoryParams
+	)
 	// Decode path: owner.
 	{
 		param := args["owner"]
@@ -6696,7 +6851,9 @@ func decodeActionsSetAllowedActionsRepositoryParams(args map[string]string, r *h
 }
 
 func decodeActionsSetGithubActionsPermissionsOrganizationParams(args map[string]string, r *http.Request) (ActionsSetGithubActionsPermissionsOrganizationParams, error) {
-	var params ActionsSetGithubActionsPermissionsOrganizationParams
+	var (
+		params ActionsSetGithubActionsPermissionsOrganizationParams
+	)
 	// Decode path: org.
 	{
 		param := args["org"]
@@ -6732,7 +6889,9 @@ func decodeActionsSetGithubActionsPermissionsOrganizationParams(args map[string]
 }
 
 func decodeActionsSetGithubActionsPermissionsRepositoryParams(args map[string]string, r *http.Request) (ActionsSetGithubActionsPermissionsRepositoryParams, error) {
-	var params ActionsSetGithubActionsPermissionsRepositoryParams
+	var (
+		params ActionsSetGithubActionsPermissionsRepositoryParams
+	)
 	// Decode path: owner.
 	{
 		param := args["owner"]
@@ -6799,7 +6958,9 @@ func decodeActionsSetGithubActionsPermissionsRepositoryParams(args map[string]st
 }
 
 func decodeActionsSetRepoAccessToSelfHostedRunnerGroupInOrgParams(args map[string]string, r *http.Request) (ActionsSetRepoAccessToSelfHostedRunnerGroupInOrgParams, error) {
-	var params ActionsSetRepoAccessToSelfHostedRunnerGroupInOrgParams
+	var (
+		params ActionsSetRepoAccessToSelfHostedRunnerGroupInOrgParams
+	)
 	// Decode path: org.
 	{
 		param := args["org"]
@@ -6866,7 +7027,9 @@ func decodeActionsSetRepoAccessToSelfHostedRunnerGroupInOrgParams(args map[strin
 }
 
 func decodeActionsSetSelectedReposForOrgSecretParams(args map[string]string, r *http.Request) (ActionsSetSelectedReposForOrgSecretParams, error) {
-	var params ActionsSetSelectedReposForOrgSecretParams
+	var (
+		params ActionsSetSelectedReposForOrgSecretParams
+	)
 	// Decode path: org.
 	{
 		param := args["org"]
@@ -6933,7 +7096,9 @@ func decodeActionsSetSelectedReposForOrgSecretParams(args map[string]string, r *
 }
 
 func decodeActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationParams(args map[string]string, r *http.Request) (ActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationParams, error) {
-	var params ActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationParams
+	var (
+		params ActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationParams
+	)
 	// Decode path: org.
 	{
 		param := args["org"]
@@ -6969,7 +7134,9 @@ func decodeActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationParams(
 }
 
 func decodeActionsSetSelfHostedRunnersInGroupForOrgParams(args map[string]string, r *http.Request) (ActionsSetSelfHostedRunnersInGroupForOrgParams, error) {
-	var params ActionsSetSelfHostedRunnersInGroupForOrgParams
+	var (
+		params ActionsSetSelfHostedRunnersInGroupForOrgParams
+	)
 	// Decode path: org.
 	{
 		param := args["org"]
@@ -7036,7 +7203,9 @@ func decodeActionsSetSelfHostedRunnersInGroupForOrgParams(args map[string]string
 }
 
 func decodeActionsUpdateSelfHostedRunnerGroupForOrgParams(args map[string]string, r *http.Request) (ActionsUpdateSelfHostedRunnerGroupForOrgParams, error) {
-	var params ActionsUpdateSelfHostedRunnerGroupForOrgParams
+	var (
+		params ActionsUpdateSelfHostedRunnerGroupForOrgParams
+	)
 	// Decode path: org.
 	{
 		param := args["org"]
@@ -7103,7 +7272,9 @@ func decodeActionsUpdateSelfHostedRunnerGroupForOrgParams(args map[string]string
 }
 
 func decodeActivityCheckRepoIsStarredByAuthenticatedUserParams(args map[string]string, r *http.Request) (ActivityCheckRepoIsStarredByAuthenticatedUserParams, error) {
-	var params ActivityCheckRepoIsStarredByAuthenticatedUserParams
+	var (
+		params ActivityCheckRepoIsStarredByAuthenticatedUserParams
+	)
 	// Decode path: owner.
 	{
 		param := args["owner"]
@@ -7170,7 +7341,9 @@ func decodeActivityCheckRepoIsStarredByAuthenticatedUserParams(args map[string]s
 }
 
 func decodeActivityDeleteRepoSubscriptionParams(args map[string]string, r *http.Request) (ActivityDeleteRepoSubscriptionParams, error) {
-	var params ActivityDeleteRepoSubscriptionParams
+	var (
+		params ActivityDeleteRepoSubscriptionParams
+	)
 	// Decode path: owner.
 	{
 		param := args["owner"]
@@ -7237,7 +7410,9 @@ func decodeActivityDeleteRepoSubscriptionParams(args map[string]string, r *http.
 }
 
 func decodeActivityDeleteThreadSubscriptionParams(args map[string]string, r *http.Request) (ActivityDeleteThreadSubscriptionParams, error) {
-	var params ActivityDeleteThreadSubscriptionParams
+	var (
+		params ActivityDeleteThreadSubscriptionParams
+	)
 	// Decode path: thread_id.
 	{
 		param := args["thread_id"]
@@ -7273,7 +7448,9 @@ func decodeActivityDeleteThreadSubscriptionParams(args map[string]string, r *htt
 }
 
 func decodeActivityGetRepoSubscriptionParams(args map[string]string, r *http.Request) (ActivityGetRepoSubscriptionParams, error) {
-	var params ActivityGetRepoSubscriptionParams
+	var (
+		params ActivityGetRepoSubscriptionParams
+	)
 	// Decode path: owner.
 	{
 		param := args["owner"]
@@ -7340,7 +7517,9 @@ func decodeActivityGetRepoSubscriptionParams(args map[string]string, r *http.Req
 }
 
 func decodeActivityGetThreadParams(args map[string]string, r *http.Request) (ActivityGetThreadParams, error) {
-	var params ActivityGetThreadParams
+	var (
+		params ActivityGetThreadParams
+	)
 	// Decode path: thread_id.
 	{
 		param := args["thread_id"]
@@ -7376,7 +7555,9 @@ func decodeActivityGetThreadParams(args map[string]string, r *http.Request) (Act
 }
 
 func decodeActivityGetThreadSubscriptionForAuthenticatedUserParams(args map[string]string, r *http.Request) (ActivityGetThreadSubscriptionForAuthenticatedUserParams, error) {
-	var params ActivityGetThreadSubscriptionForAuthenticatedUserParams
+	var (
+		params ActivityGetThreadSubscriptionForAuthenticatedUserParams
+	)
 	// Decode path: thread_id.
 	{
 		param := args["thread_id"]
@@ -7412,7 +7593,10 @@ func decodeActivityGetThreadSubscriptionForAuthenticatedUserParams(args map[stri
 }
 
 func decodeActivityListEventsForAuthenticatedUserParams(args map[string]string, r *http.Request) (ActivityListEventsForAuthenticatedUserParams, error) {
-	var params ActivityListEventsForAuthenticatedUserParams
+	var (
+		params    ActivityListEventsForAuthenticatedUserParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode path: username.
 	{
 		param := args["username"]
@@ -7446,7 +7630,7 @@ func decodeActivityListEventsForAuthenticatedUserParams(args map[string]string, 
 	}
 	// Decode query: per_page.
 	{
-		values, ok := r.URL.Query()["per_page"]
+		values, ok := queryArgs["per_page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -7481,7 +7665,7 @@ func decodeActivityListEventsForAuthenticatedUserParams(args map[string]string, 
 	}
 	// Decode query: page.
 	{
-		values, ok := r.URL.Query()["page"]
+		values, ok := queryArgs["page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -7518,10 +7702,13 @@ func decodeActivityListEventsForAuthenticatedUserParams(args map[string]string, 
 }
 
 func decodeActivityListNotificationsForAuthenticatedUserParams(args map[string]string, r *http.Request) (ActivityListNotificationsForAuthenticatedUserParams, error) {
-	var params ActivityListNotificationsForAuthenticatedUserParams
+	var (
+		params    ActivityListNotificationsForAuthenticatedUserParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode query: all.
 	{
-		values, ok := r.URL.Query()["all"]
+		values, ok := queryArgs["all"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -7556,7 +7743,7 @@ func decodeActivityListNotificationsForAuthenticatedUserParams(args map[string]s
 	}
 	// Decode query: participating.
 	{
-		values, ok := r.URL.Query()["participating"]
+		values, ok := queryArgs["participating"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -7591,7 +7778,7 @@ func decodeActivityListNotificationsForAuthenticatedUserParams(args map[string]s
 	}
 	// Decode query: since.
 	{
-		values, ok := r.URL.Query()["since"]
+		values, ok := queryArgs["since"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -7626,7 +7813,7 @@ func decodeActivityListNotificationsForAuthenticatedUserParams(args map[string]s
 	}
 	// Decode query: before.
 	{
-		values, ok := r.URL.Query()["before"]
+		values, ok := queryArgs["before"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -7661,7 +7848,7 @@ func decodeActivityListNotificationsForAuthenticatedUserParams(args map[string]s
 	}
 	// Decode query: per_page.
 	{
-		values, ok := r.URL.Query()["per_page"]
+		values, ok := queryArgs["per_page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -7696,7 +7883,7 @@ func decodeActivityListNotificationsForAuthenticatedUserParams(args map[string]s
 	}
 	// Decode query: page.
 	{
-		values, ok := r.URL.Query()["page"]
+		values, ok := queryArgs["page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -7733,7 +7920,10 @@ func decodeActivityListNotificationsForAuthenticatedUserParams(args map[string]s
 }
 
 func decodeActivityListOrgEventsForAuthenticatedUserParams(args map[string]string, r *http.Request) (ActivityListOrgEventsForAuthenticatedUserParams, error) {
-	var params ActivityListOrgEventsForAuthenticatedUserParams
+	var (
+		params    ActivityListOrgEventsForAuthenticatedUserParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode path: username.
 	{
 		param := args["username"]
@@ -7798,7 +7988,7 @@ func decodeActivityListOrgEventsForAuthenticatedUserParams(args map[string]strin
 	}
 	// Decode query: per_page.
 	{
-		values, ok := r.URL.Query()["per_page"]
+		values, ok := queryArgs["per_page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -7833,7 +8023,7 @@ func decodeActivityListOrgEventsForAuthenticatedUserParams(args map[string]strin
 	}
 	// Decode query: page.
 	{
-		values, ok := r.URL.Query()["page"]
+		values, ok := queryArgs["page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -7870,10 +8060,13 @@ func decodeActivityListOrgEventsForAuthenticatedUserParams(args map[string]strin
 }
 
 func decodeActivityListPublicEventsParams(args map[string]string, r *http.Request) (ActivityListPublicEventsParams, error) {
-	var params ActivityListPublicEventsParams
+	var (
+		params    ActivityListPublicEventsParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode query: per_page.
 	{
-		values, ok := r.URL.Query()["per_page"]
+		values, ok := queryArgs["per_page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -7908,7 +8101,7 @@ func decodeActivityListPublicEventsParams(args map[string]string, r *http.Reques
 	}
 	// Decode query: page.
 	{
-		values, ok := r.URL.Query()["page"]
+		values, ok := queryArgs["page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -7945,7 +8138,10 @@ func decodeActivityListPublicEventsParams(args map[string]string, r *http.Reques
 }
 
 func decodeActivityListPublicEventsForRepoNetworkParams(args map[string]string, r *http.Request) (ActivityListPublicEventsForRepoNetworkParams, error) {
-	var params ActivityListPublicEventsForRepoNetworkParams
+	var (
+		params    ActivityListPublicEventsForRepoNetworkParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode path: owner.
 	{
 		param := args["owner"]
@@ -8010,7 +8206,7 @@ func decodeActivityListPublicEventsForRepoNetworkParams(args map[string]string, 
 	}
 	// Decode query: per_page.
 	{
-		values, ok := r.URL.Query()["per_page"]
+		values, ok := queryArgs["per_page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -8045,7 +8241,7 @@ func decodeActivityListPublicEventsForRepoNetworkParams(args map[string]string, 
 	}
 	// Decode query: page.
 	{
-		values, ok := r.URL.Query()["page"]
+		values, ok := queryArgs["page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -8082,7 +8278,10 @@ func decodeActivityListPublicEventsForRepoNetworkParams(args map[string]string, 
 }
 
 func decodeActivityListPublicEventsForUserParams(args map[string]string, r *http.Request) (ActivityListPublicEventsForUserParams, error) {
-	var params ActivityListPublicEventsForUserParams
+	var (
+		params    ActivityListPublicEventsForUserParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode path: username.
 	{
 		param := args["username"]
@@ -8116,7 +8315,7 @@ func decodeActivityListPublicEventsForUserParams(args map[string]string, r *http
 	}
 	// Decode query: per_page.
 	{
-		values, ok := r.URL.Query()["per_page"]
+		values, ok := queryArgs["per_page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -8151,7 +8350,7 @@ func decodeActivityListPublicEventsForUserParams(args map[string]string, r *http
 	}
 	// Decode query: page.
 	{
-		values, ok := r.URL.Query()["page"]
+		values, ok := queryArgs["page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -8188,7 +8387,10 @@ func decodeActivityListPublicEventsForUserParams(args map[string]string, r *http
 }
 
 func decodeActivityListPublicOrgEventsParams(args map[string]string, r *http.Request) (ActivityListPublicOrgEventsParams, error) {
-	var params ActivityListPublicOrgEventsParams
+	var (
+		params    ActivityListPublicOrgEventsParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode path: org.
 	{
 		param := args["org"]
@@ -8222,7 +8424,7 @@ func decodeActivityListPublicOrgEventsParams(args map[string]string, r *http.Req
 	}
 	// Decode query: per_page.
 	{
-		values, ok := r.URL.Query()["per_page"]
+		values, ok := queryArgs["per_page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -8257,7 +8459,7 @@ func decodeActivityListPublicOrgEventsParams(args map[string]string, r *http.Req
 	}
 	// Decode query: page.
 	{
-		values, ok := r.URL.Query()["page"]
+		values, ok := queryArgs["page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -8294,7 +8496,10 @@ func decodeActivityListPublicOrgEventsParams(args map[string]string, r *http.Req
 }
 
 func decodeActivityListReceivedEventsForUserParams(args map[string]string, r *http.Request) (ActivityListReceivedEventsForUserParams, error) {
-	var params ActivityListReceivedEventsForUserParams
+	var (
+		params    ActivityListReceivedEventsForUserParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode path: username.
 	{
 		param := args["username"]
@@ -8328,7 +8533,7 @@ func decodeActivityListReceivedEventsForUserParams(args map[string]string, r *ht
 	}
 	// Decode query: per_page.
 	{
-		values, ok := r.URL.Query()["per_page"]
+		values, ok := queryArgs["per_page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -8363,7 +8568,7 @@ func decodeActivityListReceivedEventsForUserParams(args map[string]string, r *ht
 	}
 	// Decode query: page.
 	{
-		values, ok := r.URL.Query()["page"]
+		values, ok := queryArgs["page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -8400,7 +8605,10 @@ func decodeActivityListReceivedEventsForUserParams(args map[string]string, r *ht
 }
 
 func decodeActivityListReceivedPublicEventsForUserParams(args map[string]string, r *http.Request) (ActivityListReceivedPublicEventsForUserParams, error) {
-	var params ActivityListReceivedPublicEventsForUserParams
+	var (
+		params    ActivityListReceivedPublicEventsForUserParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode path: username.
 	{
 		param := args["username"]
@@ -8434,7 +8642,7 @@ func decodeActivityListReceivedPublicEventsForUserParams(args map[string]string,
 	}
 	// Decode query: per_page.
 	{
-		values, ok := r.URL.Query()["per_page"]
+		values, ok := queryArgs["per_page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -8469,7 +8677,7 @@ func decodeActivityListReceivedPublicEventsForUserParams(args map[string]string,
 	}
 	// Decode query: page.
 	{
-		values, ok := r.URL.Query()["page"]
+		values, ok := queryArgs["page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -8506,7 +8714,10 @@ func decodeActivityListReceivedPublicEventsForUserParams(args map[string]string,
 }
 
 func decodeActivityListRepoEventsParams(args map[string]string, r *http.Request) (ActivityListRepoEventsParams, error) {
-	var params ActivityListRepoEventsParams
+	var (
+		params    ActivityListRepoEventsParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode path: owner.
 	{
 		param := args["owner"]
@@ -8571,7 +8782,7 @@ func decodeActivityListRepoEventsParams(args map[string]string, r *http.Request)
 	}
 	// Decode query: per_page.
 	{
-		values, ok := r.URL.Query()["per_page"]
+		values, ok := queryArgs["per_page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -8606,7 +8817,7 @@ func decodeActivityListRepoEventsParams(args map[string]string, r *http.Request)
 	}
 	// Decode query: page.
 	{
-		values, ok := r.URL.Query()["page"]
+		values, ok := queryArgs["page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -8643,7 +8854,10 @@ func decodeActivityListRepoEventsParams(args map[string]string, r *http.Request)
 }
 
 func decodeActivityListRepoNotificationsForAuthenticatedUserParams(args map[string]string, r *http.Request) (ActivityListRepoNotificationsForAuthenticatedUserParams, error) {
-	var params ActivityListRepoNotificationsForAuthenticatedUserParams
+	var (
+		params    ActivityListRepoNotificationsForAuthenticatedUserParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode path: owner.
 	{
 		param := args["owner"]
@@ -8708,7 +8922,7 @@ func decodeActivityListRepoNotificationsForAuthenticatedUserParams(args map[stri
 	}
 	// Decode query: all.
 	{
-		values, ok := r.URL.Query()["all"]
+		values, ok := queryArgs["all"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -8743,7 +8957,7 @@ func decodeActivityListRepoNotificationsForAuthenticatedUserParams(args map[stri
 	}
 	// Decode query: participating.
 	{
-		values, ok := r.URL.Query()["participating"]
+		values, ok := queryArgs["participating"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -8778,7 +8992,7 @@ func decodeActivityListRepoNotificationsForAuthenticatedUserParams(args map[stri
 	}
 	// Decode query: since.
 	{
-		values, ok := r.URL.Query()["since"]
+		values, ok := queryArgs["since"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -8813,7 +9027,7 @@ func decodeActivityListRepoNotificationsForAuthenticatedUserParams(args map[stri
 	}
 	// Decode query: before.
 	{
-		values, ok := r.URL.Query()["before"]
+		values, ok := queryArgs["before"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -8848,7 +9062,7 @@ func decodeActivityListRepoNotificationsForAuthenticatedUserParams(args map[stri
 	}
 	// Decode query: per_page.
 	{
-		values, ok := r.URL.Query()["per_page"]
+		values, ok := queryArgs["per_page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -8883,7 +9097,7 @@ func decodeActivityListRepoNotificationsForAuthenticatedUserParams(args map[stri
 	}
 	// Decode query: page.
 	{
-		values, ok := r.URL.Query()["page"]
+		values, ok := queryArgs["page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -8920,10 +9134,13 @@ func decodeActivityListRepoNotificationsForAuthenticatedUserParams(args map[stri
 }
 
 func decodeActivityListReposStarredByAuthenticatedUserParams(args map[string]string, r *http.Request) (ActivityListReposStarredByAuthenticatedUserParams, error) {
-	var params ActivityListReposStarredByAuthenticatedUserParams
+	var (
+		params    ActivityListReposStarredByAuthenticatedUserParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode query: sort.
 	{
-		values, ok := r.URL.Query()["sort"]
+		values, ok := queryArgs["sort"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -8974,7 +9191,7 @@ func decodeActivityListReposStarredByAuthenticatedUserParams(args map[string]str
 	}
 	// Decode query: direction.
 	{
-		values, ok := r.URL.Query()["direction"]
+		values, ok := queryArgs["direction"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -9025,7 +9242,7 @@ func decodeActivityListReposStarredByAuthenticatedUserParams(args map[string]str
 	}
 	// Decode query: per_page.
 	{
-		values, ok := r.URL.Query()["per_page"]
+		values, ok := queryArgs["per_page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -9060,7 +9277,7 @@ func decodeActivityListReposStarredByAuthenticatedUserParams(args map[string]str
 	}
 	// Decode query: page.
 	{
-		values, ok := r.URL.Query()["page"]
+		values, ok := queryArgs["page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -9097,7 +9314,10 @@ func decodeActivityListReposStarredByAuthenticatedUserParams(args map[string]str
 }
 
 func decodeActivityListReposWatchedByUserParams(args map[string]string, r *http.Request) (ActivityListReposWatchedByUserParams, error) {
-	var params ActivityListReposWatchedByUserParams
+	var (
+		params    ActivityListReposWatchedByUserParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode path: username.
 	{
 		param := args["username"]
@@ -9131,7 +9351,7 @@ func decodeActivityListReposWatchedByUserParams(args map[string]string, r *http.
 	}
 	// Decode query: per_page.
 	{
-		values, ok := r.URL.Query()["per_page"]
+		values, ok := queryArgs["per_page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -9166,7 +9386,7 @@ func decodeActivityListReposWatchedByUserParams(args map[string]string, r *http.
 	}
 	// Decode query: page.
 	{
-		values, ok := r.URL.Query()["page"]
+		values, ok := queryArgs["page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -9203,10 +9423,13 @@ func decodeActivityListReposWatchedByUserParams(args map[string]string, r *http.
 }
 
 func decodeActivityListWatchedReposForAuthenticatedUserParams(args map[string]string, r *http.Request) (ActivityListWatchedReposForAuthenticatedUserParams, error) {
-	var params ActivityListWatchedReposForAuthenticatedUserParams
+	var (
+		params    ActivityListWatchedReposForAuthenticatedUserParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode query: per_page.
 	{
-		values, ok := r.URL.Query()["per_page"]
+		values, ok := queryArgs["per_page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -9241,7 +9464,7 @@ func decodeActivityListWatchedReposForAuthenticatedUserParams(args map[string]st
 	}
 	// Decode query: page.
 	{
-		values, ok := r.URL.Query()["page"]
+		values, ok := queryArgs["page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -9278,7 +9501,10 @@ func decodeActivityListWatchedReposForAuthenticatedUserParams(args map[string]st
 }
 
 func decodeActivityListWatchersForRepoParams(args map[string]string, r *http.Request) (ActivityListWatchersForRepoParams, error) {
-	var params ActivityListWatchersForRepoParams
+	var (
+		params    ActivityListWatchersForRepoParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode path: owner.
 	{
 		param := args["owner"]
@@ -9343,7 +9569,7 @@ func decodeActivityListWatchersForRepoParams(args map[string]string, r *http.Req
 	}
 	// Decode query: per_page.
 	{
-		values, ok := r.URL.Query()["per_page"]
+		values, ok := queryArgs["per_page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -9378,7 +9604,7 @@ func decodeActivityListWatchersForRepoParams(args map[string]string, r *http.Req
 	}
 	// Decode query: page.
 	{
-		values, ok := r.URL.Query()["page"]
+		values, ok := queryArgs["page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -9415,7 +9641,9 @@ func decodeActivityListWatchersForRepoParams(args map[string]string, r *http.Req
 }
 
 func decodeActivityMarkRepoNotificationsAsReadParams(args map[string]string, r *http.Request) (ActivityMarkRepoNotificationsAsReadParams, error) {
-	var params ActivityMarkRepoNotificationsAsReadParams
+	var (
+		params ActivityMarkRepoNotificationsAsReadParams
+	)
 	// Decode path: owner.
 	{
 		param := args["owner"]
@@ -9482,7 +9710,9 @@ func decodeActivityMarkRepoNotificationsAsReadParams(args map[string]string, r *
 }
 
 func decodeActivityMarkThreadAsReadParams(args map[string]string, r *http.Request) (ActivityMarkThreadAsReadParams, error) {
-	var params ActivityMarkThreadAsReadParams
+	var (
+		params ActivityMarkThreadAsReadParams
+	)
 	// Decode path: thread_id.
 	{
 		param := args["thread_id"]
@@ -9518,7 +9748,9 @@ func decodeActivityMarkThreadAsReadParams(args map[string]string, r *http.Reques
 }
 
 func decodeActivitySetRepoSubscriptionParams(args map[string]string, r *http.Request) (ActivitySetRepoSubscriptionParams, error) {
-	var params ActivitySetRepoSubscriptionParams
+	var (
+		params ActivitySetRepoSubscriptionParams
+	)
 	// Decode path: owner.
 	{
 		param := args["owner"]
@@ -9585,7 +9817,9 @@ func decodeActivitySetRepoSubscriptionParams(args map[string]string, r *http.Req
 }
 
 func decodeActivitySetThreadSubscriptionParams(args map[string]string, r *http.Request) (ActivitySetThreadSubscriptionParams, error) {
-	var params ActivitySetThreadSubscriptionParams
+	var (
+		params ActivitySetThreadSubscriptionParams
+	)
 	// Decode path: thread_id.
 	{
 		param := args["thread_id"]
@@ -9621,7 +9855,9 @@ func decodeActivitySetThreadSubscriptionParams(args map[string]string, r *http.R
 }
 
 func decodeActivityStarRepoForAuthenticatedUserParams(args map[string]string, r *http.Request) (ActivityStarRepoForAuthenticatedUserParams, error) {
-	var params ActivityStarRepoForAuthenticatedUserParams
+	var (
+		params ActivityStarRepoForAuthenticatedUserParams
+	)
 	// Decode path: owner.
 	{
 		param := args["owner"]
@@ -9688,7 +9924,9 @@ func decodeActivityStarRepoForAuthenticatedUserParams(args map[string]string, r 
 }
 
 func decodeActivityUnstarRepoForAuthenticatedUserParams(args map[string]string, r *http.Request) (ActivityUnstarRepoForAuthenticatedUserParams, error) {
-	var params ActivityUnstarRepoForAuthenticatedUserParams
+	var (
+		params ActivityUnstarRepoForAuthenticatedUserParams
+	)
 	// Decode path: owner.
 	{
 		param := args["owner"]
@@ -9755,7 +9993,9 @@ func decodeActivityUnstarRepoForAuthenticatedUserParams(args map[string]string, 
 }
 
 func decodeAppsAddRepoToInstallationParams(args map[string]string, r *http.Request) (AppsAddRepoToInstallationParams, error) {
-	var params AppsAddRepoToInstallationParams
+	var (
+		params AppsAddRepoToInstallationParams
+	)
 	// Decode path: installation_id.
 	{
 		param := args["installation_id"]
@@ -9822,7 +10062,9 @@ func decodeAppsAddRepoToInstallationParams(args map[string]string, r *http.Reque
 }
 
 func decodeAppsCheckTokenParams(args map[string]string, r *http.Request) (AppsCheckTokenParams, error) {
-	var params AppsCheckTokenParams
+	var (
+		params AppsCheckTokenParams
+	)
 	// Decode path: client_id.
 	{
 		param := args["client_id"]
@@ -9858,7 +10100,9 @@ func decodeAppsCheckTokenParams(args map[string]string, r *http.Request) (AppsCh
 }
 
 func decodeAppsCreateContentAttachmentParams(args map[string]string, r *http.Request) (AppsCreateContentAttachmentParams, error) {
-	var params AppsCreateContentAttachmentParams
+	var (
+		params AppsCreateContentAttachmentParams
+	)
 	// Decode path: owner.
 	{
 		param := args["owner"]
@@ -9956,7 +10200,9 @@ func decodeAppsCreateContentAttachmentParams(args map[string]string, r *http.Req
 }
 
 func decodeAppsCreateInstallationAccessTokenParams(args map[string]string, r *http.Request) (AppsCreateInstallationAccessTokenParams, error) {
-	var params AppsCreateInstallationAccessTokenParams
+	var (
+		params AppsCreateInstallationAccessTokenParams
+	)
 	// Decode path: installation_id.
 	{
 		param := args["installation_id"]
@@ -9992,7 +10238,9 @@ func decodeAppsCreateInstallationAccessTokenParams(args map[string]string, r *ht
 }
 
 func decodeAppsDeleteAuthorizationParams(args map[string]string, r *http.Request) (AppsDeleteAuthorizationParams, error) {
-	var params AppsDeleteAuthorizationParams
+	var (
+		params AppsDeleteAuthorizationParams
+	)
 	// Decode path: client_id.
 	{
 		param := args["client_id"]
@@ -10028,7 +10276,9 @@ func decodeAppsDeleteAuthorizationParams(args map[string]string, r *http.Request
 }
 
 func decodeAppsDeleteInstallationParams(args map[string]string, r *http.Request) (AppsDeleteInstallationParams, error) {
-	var params AppsDeleteInstallationParams
+	var (
+		params AppsDeleteInstallationParams
+	)
 	// Decode path: installation_id.
 	{
 		param := args["installation_id"]
@@ -10064,7 +10314,9 @@ func decodeAppsDeleteInstallationParams(args map[string]string, r *http.Request)
 }
 
 func decodeAppsDeleteTokenParams(args map[string]string, r *http.Request) (AppsDeleteTokenParams, error) {
-	var params AppsDeleteTokenParams
+	var (
+		params AppsDeleteTokenParams
+	)
 	// Decode path: client_id.
 	{
 		param := args["client_id"]
@@ -10100,7 +10352,9 @@ func decodeAppsDeleteTokenParams(args map[string]string, r *http.Request) (AppsD
 }
 
 func decodeAppsGetBySlugParams(args map[string]string, r *http.Request) (AppsGetBySlugParams, error) {
-	var params AppsGetBySlugParams
+	var (
+		params AppsGetBySlugParams
+	)
 	// Decode path: app_slug.
 	{
 		param := args["app_slug"]
@@ -10136,7 +10390,9 @@ func decodeAppsGetBySlugParams(args map[string]string, r *http.Request) (AppsGet
 }
 
 func decodeAppsGetSubscriptionPlanForAccountParams(args map[string]string, r *http.Request) (AppsGetSubscriptionPlanForAccountParams, error) {
-	var params AppsGetSubscriptionPlanForAccountParams
+	var (
+		params AppsGetSubscriptionPlanForAccountParams
+	)
 	// Decode path: account_id.
 	{
 		param := args["account_id"]
@@ -10172,7 +10428,9 @@ func decodeAppsGetSubscriptionPlanForAccountParams(args map[string]string, r *ht
 }
 
 func decodeAppsGetSubscriptionPlanForAccountStubbedParams(args map[string]string, r *http.Request) (AppsGetSubscriptionPlanForAccountStubbedParams, error) {
-	var params AppsGetSubscriptionPlanForAccountStubbedParams
+	var (
+		params AppsGetSubscriptionPlanForAccountStubbedParams
+	)
 	// Decode path: account_id.
 	{
 		param := args["account_id"]
@@ -10208,7 +10466,9 @@ func decodeAppsGetSubscriptionPlanForAccountStubbedParams(args map[string]string
 }
 
 func decodeAppsGetWebhookDeliveryParams(args map[string]string, r *http.Request) (AppsGetWebhookDeliveryParams, error) {
-	var params AppsGetWebhookDeliveryParams
+	var (
+		params AppsGetWebhookDeliveryParams
+	)
 	// Decode path: delivery_id.
 	{
 		param := args["delivery_id"]
@@ -10244,7 +10504,10 @@ func decodeAppsGetWebhookDeliveryParams(args map[string]string, r *http.Request)
 }
 
 func decodeAppsListAccountsForPlanParams(args map[string]string, r *http.Request) (AppsListAccountsForPlanParams, error) {
-	var params AppsListAccountsForPlanParams
+	var (
+		params    AppsListAccountsForPlanParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode path: plan_id.
 	{
 		param := args["plan_id"]
@@ -10278,7 +10541,7 @@ func decodeAppsListAccountsForPlanParams(args map[string]string, r *http.Request
 	}
 	// Decode query: sort.
 	{
-		values, ok := r.URL.Query()["sort"]
+		values, ok := queryArgs["sort"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -10329,7 +10592,7 @@ func decodeAppsListAccountsForPlanParams(args map[string]string, r *http.Request
 	}
 	// Decode query: direction.
 	{
-		values, ok := r.URL.Query()["direction"]
+		values, ok := queryArgs["direction"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -10380,7 +10643,7 @@ func decodeAppsListAccountsForPlanParams(args map[string]string, r *http.Request
 	}
 	// Decode query: per_page.
 	{
-		values, ok := r.URL.Query()["per_page"]
+		values, ok := queryArgs["per_page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -10415,7 +10678,7 @@ func decodeAppsListAccountsForPlanParams(args map[string]string, r *http.Request
 	}
 	// Decode query: page.
 	{
-		values, ok := r.URL.Query()["page"]
+		values, ok := queryArgs["page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -10452,7 +10715,10 @@ func decodeAppsListAccountsForPlanParams(args map[string]string, r *http.Request
 }
 
 func decodeAppsListAccountsForPlanStubbedParams(args map[string]string, r *http.Request) (AppsListAccountsForPlanStubbedParams, error) {
-	var params AppsListAccountsForPlanStubbedParams
+	var (
+		params    AppsListAccountsForPlanStubbedParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode path: plan_id.
 	{
 		param := args["plan_id"]
@@ -10486,7 +10752,7 @@ func decodeAppsListAccountsForPlanStubbedParams(args map[string]string, r *http.
 	}
 	// Decode query: sort.
 	{
-		values, ok := r.URL.Query()["sort"]
+		values, ok := queryArgs["sort"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -10537,7 +10803,7 @@ func decodeAppsListAccountsForPlanStubbedParams(args map[string]string, r *http.
 	}
 	// Decode query: direction.
 	{
-		values, ok := r.URL.Query()["direction"]
+		values, ok := queryArgs["direction"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -10588,7 +10854,7 @@ func decodeAppsListAccountsForPlanStubbedParams(args map[string]string, r *http.
 	}
 	// Decode query: per_page.
 	{
-		values, ok := r.URL.Query()["per_page"]
+		values, ok := queryArgs["per_page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -10623,7 +10889,7 @@ func decodeAppsListAccountsForPlanStubbedParams(args map[string]string, r *http.
 	}
 	// Decode query: page.
 	{
-		values, ok := r.URL.Query()["page"]
+		values, ok := queryArgs["page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -10660,7 +10926,10 @@ func decodeAppsListAccountsForPlanStubbedParams(args map[string]string, r *http.
 }
 
 func decodeAppsListInstallationReposForAuthenticatedUserParams(args map[string]string, r *http.Request) (AppsListInstallationReposForAuthenticatedUserParams, error) {
-	var params AppsListInstallationReposForAuthenticatedUserParams
+	var (
+		params    AppsListInstallationReposForAuthenticatedUserParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode path: installation_id.
 	{
 		param := args["installation_id"]
@@ -10694,7 +10963,7 @@ func decodeAppsListInstallationReposForAuthenticatedUserParams(args map[string]s
 	}
 	// Decode query: per_page.
 	{
-		values, ok := r.URL.Query()["per_page"]
+		values, ok := queryArgs["per_page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -10729,7 +10998,7 @@ func decodeAppsListInstallationReposForAuthenticatedUserParams(args map[string]s
 	}
 	// Decode query: page.
 	{
-		values, ok := r.URL.Query()["page"]
+		values, ok := queryArgs["page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -10766,10 +11035,13 @@ func decodeAppsListInstallationReposForAuthenticatedUserParams(args map[string]s
 }
 
 func decodeAppsListPlansParams(args map[string]string, r *http.Request) (AppsListPlansParams, error) {
-	var params AppsListPlansParams
+	var (
+		params    AppsListPlansParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode query: per_page.
 	{
-		values, ok := r.URL.Query()["per_page"]
+		values, ok := queryArgs["per_page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -10804,7 +11076,7 @@ func decodeAppsListPlansParams(args map[string]string, r *http.Request) (AppsLis
 	}
 	// Decode query: page.
 	{
-		values, ok := r.URL.Query()["page"]
+		values, ok := queryArgs["page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -10841,10 +11113,13 @@ func decodeAppsListPlansParams(args map[string]string, r *http.Request) (AppsLis
 }
 
 func decodeAppsListPlansStubbedParams(args map[string]string, r *http.Request) (AppsListPlansStubbedParams, error) {
-	var params AppsListPlansStubbedParams
+	var (
+		params    AppsListPlansStubbedParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode query: per_page.
 	{
-		values, ok := r.URL.Query()["per_page"]
+		values, ok := queryArgs["per_page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -10879,7 +11154,7 @@ func decodeAppsListPlansStubbedParams(args map[string]string, r *http.Request) (
 	}
 	// Decode query: page.
 	{
-		values, ok := r.URL.Query()["page"]
+		values, ok := queryArgs["page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -10916,10 +11191,13 @@ func decodeAppsListPlansStubbedParams(args map[string]string, r *http.Request) (
 }
 
 func decodeAppsListReposAccessibleToInstallationParams(args map[string]string, r *http.Request) (AppsListReposAccessibleToInstallationParams, error) {
-	var params AppsListReposAccessibleToInstallationParams
+	var (
+		params    AppsListReposAccessibleToInstallationParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode query: per_page.
 	{
-		values, ok := r.URL.Query()["per_page"]
+		values, ok := queryArgs["per_page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -10954,7 +11232,7 @@ func decodeAppsListReposAccessibleToInstallationParams(args map[string]string, r
 	}
 	// Decode query: page.
 	{
-		values, ok := r.URL.Query()["page"]
+		values, ok := queryArgs["page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -10991,10 +11269,13 @@ func decodeAppsListReposAccessibleToInstallationParams(args map[string]string, r
 }
 
 func decodeAppsListSubscriptionsForAuthenticatedUserParams(args map[string]string, r *http.Request) (AppsListSubscriptionsForAuthenticatedUserParams, error) {
-	var params AppsListSubscriptionsForAuthenticatedUserParams
+	var (
+		params    AppsListSubscriptionsForAuthenticatedUserParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode query: per_page.
 	{
-		values, ok := r.URL.Query()["per_page"]
+		values, ok := queryArgs["per_page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -11029,7 +11310,7 @@ func decodeAppsListSubscriptionsForAuthenticatedUserParams(args map[string]strin
 	}
 	// Decode query: page.
 	{
-		values, ok := r.URL.Query()["page"]
+		values, ok := queryArgs["page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -11066,10 +11347,13 @@ func decodeAppsListSubscriptionsForAuthenticatedUserParams(args map[string]strin
 }
 
 func decodeAppsListSubscriptionsForAuthenticatedUserStubbedParams(args map[string]string, r *http.Request) (AppsListSubscriptionsForAuthenticatedUserStubbedParams, error) {
-	var params AppsListSubscriptionsForAuthenticatedUserStubbedParams
+	var (
+		params    AppsListSubscriptionsForAuthenticatedUserStubbedParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode query: per_page.
 	{
-		values, ok := r.URL.Query()["per_page"]
+		values, ok := queryArgs["per_page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -11104,7 +11388,7 @@ func decodeAppsListSubscriptionsForAuthenticatedUserStubbedParams(args map[strin
 	}
 	// Decode query: page.
 	{
-		values, ok := r.URL.Query()["page"]
+		values, ok := queryArgs["page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -11141,10 +11425,13 @@ func decodeAppsListSubscriptionsForAuthenticatedUserStubbedParams(args map[strin
 }
 
 func decodeAppsListWebhookDeliveriesParams(args map[string]string, r *http.Request) (AppsListWebhookDeliveriesParams, error) {
-	var params AppsListWebhookDeliveriesParams
+	var (
+		params    AppsListWebhookDeliveriesParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode query: per_page.
 	{
-		values, ok := r.URL.Query()["per_page"]
+		values, ok := queryArgs["per_page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -11179,7 +11466,7 @@ func decodeAppsListWebhookDeliveriesParams(args map[string]string, r *http.Reque
 	}
 	// Decode query: cursor.
 	{
-		values, ok := r.URL.Query()["cursor"]
+		values, ok := queryArgs["cursor"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -11216,7 +11503,9 @@ func decodeAppsListWebhookDeliveriesParams(args map[string]string, r *http.Reque
 }
 
 func decodeAppsRedeliverWebhookDeliveryParams(args map[string]string, r *http.Request) (AppsRedeliverWebhookDeliveryParams, error) {
-	var params AppsRedeliverWebhookDeliveryParams
+	var (
+		params AppsRedeliverWebhookDeliveryParams
+	)
 	// Decode path: delivery_id.
 	{
 		param := args["delivery_id"]
@@ -11252,7 +11541,9 @@ func decodeAppsRedeliverWebhookDeliveryParams(args map[string]string, r *http.Re
 }
 
 func decodeAppsRemoveRepoFromInstallationParams(args map[string]string, r *http.Request) (AppsRemoveRepoFromInstallationParams, error) {
-	var params AppsRemoveRepoFromInstallationParams
+	var (
+		params AppsRemoveRepoFromInstallationParams
+	)
 	// Decode path: installation_id.
 	{
 		param := args["installation_id"]
@@ -11319,7 +11610,9 @@ func decodeAppsRemoveRepoFromInstallationParams(args map[string]string, r *http.
 }
 
 func decodeAppsResetTokenParams(args map[string]string, r *http.Request) (AppsResetTokenParams, error) {
-	var params AppsResetTokenParams
+	var (
+		params AppsResetTokenParams
+	)
 	// Decode path: client_id.
 	{
 		param := args["client_id"]
@@ -11355,7 +11648,9 @@ func decodeAppsResetTokenParams(args map[string]string, r *http.Request) (AppsRe
 }
 
 func decodeAppsScopeTokenParams(args map[string]string, r *http.Request) (AppsScopeTokenParams, error) {
-	var params AppsScopeTokenParams
+	var (
+		params AppsScopeTokenParams
+	)
 	// Decode path: client_id.
 	{
 		param := args["client_id"]
@@ -11391,7 +11686,9 @@ func decodeAppsScopeTokenParams(args map[string]string, r *http.Request) (AppsSc
 }
 
 func decodeAppsSuspendInstallationParams(args map[string]string, r *http.Request) (AppsSuspendInstallationParams, error) {
-	var params AppsSuspendInstallationParams
+	var (
+		params AppsSuspendInstallationParams
+	)
 	// Decode path: installation_id.
 	{
 		param := args["installation_id"]
@@ -11427,7 +11724,9 @@ func decodeAppsSuspendInstallationParams(args map[string]string, r *http.Request
 }
 
 func decodeAppsUnsuspendInstallationParams(args map[string]string, r *http.Request) (AppsUnsuspendInstallationParams, error) {
-	var params AppsUnsuspendInstallationParams
+	var (
+		params AppsUnsuspendInstallationParams
+	)
 	// Decode path: installation_id.
 	{
 		param := args["installation_id"]
@@ -11463,7 +11762,9 @@ func decodeAppsUnsuspendInstallationParams(args map[string]string, r *http.Reque
 }
 
 func decodeBillingGetGithubActionsBillingGheParams(args map[string]string, r *http.Request) (BillingGetGithubActionsBillingGheParams, error) {
-	var params BillingGetGithubActionsBillingGheParams
+	var (
+		params BillingGetGithubActionsBillingGheParams
+	)
 	// Decode path: enterprise.
 	{
 		param := args["enterprise"]
@@ -11499,7 +11800,9 @@ func decodeBillingGetGithubActionsBillingGheParams(args map[string]string, r *ht
 }
 
 func decodeBillingGetGithubActionsBillingOrgParams(args map[string]string, r *http.Request) (BillingGetGithubActionsBillingOrgParams, error) {
-	var params BillingGetGithubActionsBillingOrgParams
+	var (
+		params BillingGetGithubActionsBillingOrgParams
+	)
 	// Decode path: org.
 	{
 		param := args["org"]
@@ -11535,7 +11838,9 @@ func decodeBillingGetGithubActionsBillingOrgParams(args map[string]string, r *ht
 }
 
 func decodeBillingGetGithubActionsBillingUserParams(args map[string]string, r *http.Request) (BillingGetGithubActionsBillingUserParams, error) {
-	var params BillingGetGithubActionsBillingUserParams
+	var (
+		params BillingGetGithubActionsBillingUserParams
+	)
 	// Decode path: username.
 	{
 		param := args["username"]
@@ -11571,7 +11876,9 @@ func decodeBillingGetGithubActionsBillingUserParams(args map[string]string, r *h
 }
 
 func decodeBillingGetGithubPackagesBillingGheParams(args map[string]string, r *http.Request) (BillingGetGithubPackagesBillingGheParams, error) {
-	var params BillingGetGithubPackagesBillingGheParams
+	var (
+		params BillingGetGithubPackagesBillingGheParams
+	)
 	// Decode path: enterprise.
 	{
 		param := args["enterprise"]
@@ -11607,7 +11914,9 @@ func decodeBillingGetGithubPackagesBillingGheParams(args map[string]string, r *h
 }
 
 func decodeBillingGetGithubPackagesBillingOrgParams(args map[string]string, r *http.Request) (BillingGetGithubPackagesBillingOrgParams, error) {
-	var params BillingGetGithubPackagesBillingOrgParams
+	var (
+		params BillingGetGithubPackagesBillingOrgParams
+	)
 	// Decode path: org.
 	{
 		param := args["org"]
@@ -11643,7 +11952,9 @@ func decodeBillingGetGithubPackagesBillingOrgParams(args map[string]string, r *h
 }
 
 func decodeBillingGetGithubPackagesBillingUserParams(args map[string]string, r *http.Request) (BillingGetGithubPackagesBillingUserParams, error) {
-	var params BillingGetGithubPackagesBillingUserParams
+	var (
+		params BillingGetGithubPackagesBillingUserParams
+	)
 	// Decode path: username.
 	{
 		param := args["username"]
@@ -11679,7 +11990,9 @@ func decodeBillingGetGithubPackagesBillingUserParams(args map[string]string, r *
 }
 
 func decodeBillingGetSharedStorageBillingGheParams(args map[string]string, r *http.Request) (BillingGetSharedStorageBillingGheParams, error) {
-	var params BillingGetSharedStorageBillingGheParams
+	var (
+		params BillingGetSharedStorageBillingGheParams
+	)
 	// Decode path: enterprise.
 	{
 		param := args["enterprise"]
@@ -11715,7 +12028,9 @@ func decodeBillingGetSharedStorageBillingGheParams(args map[string]string, r *ht
 }
 
 func decodeBillingGetSharedStorageBillingOrgParams(args map[string]string, r *http.Request) (BillingGetSharedStorageBillingOrgParams, error) {
-	var params BillingGetSharedStorageBillingOrgParams
+	var (
+		params BillingGetSharedStorageBillingOrgParams
+	)
 	// Decode path: org.
 	{
 		param := args["org"]
@@ -11751,7 +12066,9 @@ func decodeBillingGetSharedStorageBillingOrgParams(args map[string]string, r *ht
 }
 
 func decodeBillingGetSharedStorageBillingUserParams(args map[string]string, r *http.Request) (BillingGetSharedStorageBillingUserParams, error) {
-	var params BillingGetSharedStorageBillingUserParams
+	var (
+		params BillingGetSharedStorageBillingUserParams
+	)
 	// Decode path: username.
 	{
 		param := args["username"]
@@ -11787,7 +12104,9 @@ func decodeBillingGetSharedStorageBillingUserParams(args map[string]string, r *h
 }
 
 func decodeChecksCreateSuiteParams(args map[string]string, r *http.Request) (ChecksCreateSuiteParams, error) {
-	var params ChecksCreateSuiteParams
+	var (
+		params ChecksCreateSuiteParams
+	)
 	// Decode path: owner.
 	{
 		param := args["owner"]
@@ -11854,7 +12173,9 @@ func decodeChecksCreateSuiteParams(args map[string]string, r *http.Request) (Che
 }
 
 func decodeChecksGetParams(args map[string]string, r *http.Request) (ChecksGetParams, error) {
-	var params ChecksGetParams
+	var (
+		params ChecksGetParams
+	)
 	// Decode path: owner.
 	{
 		param := args["owner"]
@@ -11952,7 +12273,9 @@ func decodeChecksGetParams(args map[string]string, r *http.Request) (ChecksGetPa
 }
 
 func decodeChecksGetSuiteParams(args map[string]string, r *http.Request) (ChecksGetSuiteParams, error) {
-	var params ChecksGetSuiteParams
+	var (
+		params ChecksGetSuiteParams
+	)
 	// Decode path: owner.
 	{
 		param := args["owner"]
@@ -12050,7 +12373,10 @@ func decodeChecksGetSuiteParams(args map[string]string, r *http.Request) (Checks
 }
 
 func decodeChecksListAnnotationsParams(args map[string]string, r *http.Request) (ChecksListAnnotationsParams, error) {
-	var params ChecksListAnnotationsParams
+	var (
+		params    ChecksListAnnotationsParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode path: owner.
 	{
 		param := args["owner"]
@@ -12146,7 +12472,7 @@ func decodeChecksListAnnotationsParams(args map[string]string, r *http.Request) 
 	}
 	// Decode query: per_page.
 	{
-		values, ok := r.URL.Query()["per_page"]
+		values, ok := queryArgs["per_page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -12181,7 +12507,7 @@ func decodeChecksListAnnotationsParams(args map[string]string, r *http.Request) 
 	}
 	// Decode query: page.
 	{
-		values, ok := r.URL.Query()["page"]
+		values, ok := queryArgs["page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -12218,7 +12544,10 @@ func decodeChecksListAnnotationsParams(args map[string]string, r *http.Request) 
 }
 
 func decodeChecksListForRefParams(args map[string]string, r *http.Request) (ChecksListForRefParams, error) {
-	var params ChecksListForRefParams
+	var (
+		params    ChecksListForRefParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode path: owner.
 	{
 		param := args["owner"]
@@ -12314,7 +12643,7 @@ func decodeChecksListForRefParams(args map[string]string, r *http.Request) (Chec
 	}
 	// Decode query: check_name.
 	{
-		values, ok := r.URL.Query()["check_name"]
+		values, ok := queryArgs["check_name"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -12349,7 +12678,7 @@ func decodeChecksListForRefParams(args map[string]string, r *http.Request) (Chec
 	}
 	// Decode query: status.
 	{
-		values, ok := r.URL.Query()["status"]
+		values, ok := queryArgs["status"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -12400,7 +12729,7 @@ func decodeChecksListForRefParams(args map[string]string, r *http.Request) (Chec
 	}
 	// Decode query: filter.
 	{
-		values, ok := r.URL.Query()["filter"]
+		values, ok := queryArgs["filter"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -12451,7 +12780,7 @@ func decodeChecksListForRefParams(args map[string]string, r *http.Request) (Chec
 	}
 	// Decode query: per_page.
 	{
-		values, ok := r.URL.Query()["per_page"]
+		values, ok := queryArgs["per_page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -12486,7 +12815,7 @@ func decodeChecksListForRefParams(args map[string]string, r *http.Request) (Chec
 	}
 	// Decode query: page.
 	{
-		values, ok := r.URL.Query()["page"]
+		values, ok := queryArgs["page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -12521,7 +12850,7 @@ func decodeChecksListForRefParams(args map[string]string, r *http.Request) (Chec
 	}
 	// Decode query: app_id.
 	{
-		values, ok := r.URL.Query()["app_id"]
+		values, ok := queryArgs["app_id"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -12558,7 +12887,10 @@ func decodeChecksListForRefParams(args map[string]string, r *http.Request) (Chec
 }
 
 func decodeChecksListForSuiteParams(args map[string]string, r *http.Request) (ChecksListForSuiteParams, error) {
-	var params ChecksListForSuiteParams
+	var (
+		params    ChecksListForSuiteParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode path: owner.
 	{
 		param := args["owner"]
@@ -12654,7 +12986,7 @@ func decodeChecksListForSuiteParams(args map[string]string, r *http.Request) (Ch
 	}
 	// Decode query: check_name.
 	{
-		values, ok := r.URL.Query()["check_name"]
+		values, ok := queryArgs["check_name"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -12689,7 +13021,7 @@ func decodeChecksListForSuiteParams(args map[string]string, r *http.Request) (Ch
 	}
 	// Decode query: status.
 	{
-		values, ok := r.URL.Query()["status"]
+		values, ok := queryArgs["status"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -12740,7 +13072,7 @@ func decodeChecksListForSuiteParams(args map[string]string, r *http.Request) (Ch
 	}
 	// Decode query: filter.
 	{
-		values, ok := r.URL.Query()["filter"]
+		values, ok := queryArgs["filter"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -12791,7 +13123,7 @@ func decodeChecksListForSuiteParams(args map[string]string, r *http.Request) (Ch
 	}
 	// Decode query: per_page.
 	{
-		values, ok := r.URL.Query()["per_page"]
+		values, ok := queryArgs["per_page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -12826,7 +13158,7 @@ func decodeChecksListForSuiteParams(args map[string]string, r *http.Request) (Ch
 	}
 	// Decode query: page.
 	{
-		values, ok := r.URL.Query()["page"]
+		values, ok := queryArgs["page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -12863,7 +13195,10 @@ func decodeChecksListForSuiteParams(args map[string]string, r *http.Request) (Ch
 }
 
 func decodeChecksListSuitesForRefParams(args map[string]string, r *http.Request) (ChecksListSuitesForRefParams, error) {
-	var params ChecksListSuitesForRefParams
+	var (
+		params    ChecksListSuitesForRefParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode path: owner.
 	{
 		param := args["owner"]
@@ -12959,7 +13294,7 @@ func decodeChecksListSuitesForRefParams(args map[string]string, r *http.Request)
 	}
 	// Decode query: app_id.
 	{
-		values, ok := r.URL.Query()["app_id"]
+		values, ok := queryArgs["app_id"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -12994,7 +13329,7 @@ func decodeChecksListSuitesForRefParams(args map[string]string, r *http.Request)
 	}
 	// Decode query: check_name.
 	{
-		values, ok := r.URL.Query()["check_name"]
+		values, ok := queryArgs["check_name"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -13029,7 +13364,7 @@ func decodeChecksListSuitesForRefParams(args map[string]string, r *http.Request)
 	}
 	// Decode query: per_page.
 	{
-		values, ok := r.URL.Query()["per_page"]
+		values, ok := queryArgs["per_page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -13064,7 +13399,7 @@ func decodeChecksListSuitesForRefParams(args map[string]string, r *http.Request)
 	}
 	// Decode query: page.
 	{
-		values, ok := r.URL.Query()["page"]
+		values, ok := queryArgs["page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -13101,7 +13436,9 @@ func decodeChecksListSuitesForRefParams(args map[string]string, r *http.Request)
 }
 
 func decodeChecksRerequestSuiteParams(args map[string]string, r *http.Request) (ChecksRerequestSuiteParams, error) {
-	var params ChecksRerequestSuiteParams
+	var (
+		params ChecksRerequestSuiteParams
+	)
 	// Decode path: owner.
 	{
 		param := args["owner"]
@@ -13199,7 +13536,9 @@ func decodeChecksRerequestSuiteParams(args map[string]string, r *http.Request) (
 }
 
 func decodeChecksSetSuitesPreferencesParams(args map[string]string, r *http.Request) (ChecksSetSuitesPreferencesParams, error) {
-	var params ChecksSetSuitesPreferencesParams
+	var (
+		params ChecksSetSuitesPreferencesParams
+	)
 	// Decode path: owner.
 	{
 		param := args["owner"]
@@ -13266,7 +13605,10 @@ func decodeChecksSetSuitesPreferencesParams(args map[string]string, r *http.Requ
 }
 
 func decodeCodeScanningDeleteAnalysisParams(args map[string]string, r *http.Request) (CodeScanningDeleteAnalysisParams, error) {
-	var params CodeScanningDeleteAnalysisParams
+	var (
+		params    CodeScanningDeleteAnalysisParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode path: owner.
 	{
 		param := args["owner"]
@@ -13362,7 +13704,7 @@ func decodeCodeScanningDeleteAnalysisParams(args map[string]string, r *http.Requ
 	}
 	// Decode query: confirm_delete.
 	{
-		values, ok := r.URL.Query()["confirm_delete"]
+		values, ok := queryArgs["confirm_delete"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -13399,7 +13741,9 @@ func decodeCodeScanningDeleteAnalysisParams(args map[string]string, r *http.Requ
 }
 
 func decodeCodeScanningGetAlertParams(args map[string]string, r *http.Request) (CodeScanningGetAlertParams, error) {
-	var params CodeScanningGetAlertParams
+	var (
+		params CodeScanningGetAlertParams
+	)
 	// Decode path: owner.
 	{
 		param := args["owner"]
@@ -13504,7 +13848,9 @@ func decodeCodeScanningGetAlertParams(args map[string]string, r *http.Request) (
 }
 
 func decodeCodeScanningGetAnalysisParams(args map[string]string, r *http.Request) (CodeScanningGetAnalysisParams, error) {
-	var params CodeScanningGetAnalysisParams
+	var (
+		params CodeScanningGetAnalysisParams
+	)
 	// Decode path: owner.
 	{
 		param := args["owner"]
@@ -13602,7 +13948,9 @@ func decodeCodeScanningGetAnalysisParams(args map[string]string, r *http.Request
 }
 
 func decodeCodeScanningGetSarifParams(args map[string]string, r *http.Request) (CodeScanningGetSarifParams, error) {
-	var params CodeScanningGetSarifParams
+	var (
+		params CodeScanningGetSarifParams
+	)
 	// Decode path: owner.
 	{
 		param := args["owner"]
@@ -13700,7 +14048,10 @@ func decodeCodeScanningGetSarifParams(args map[string]string, r *http.Request) (
 }
 
 func decodeCodeScanningListAlertInstancesParams(args map[string]string, r *http.Request) (CodeScanningListAlertInstancesParams, error) {
-	var params CodeScanningListAlertInstancesParams
+	var (
+		params    CodeScanningListAlertInstancesParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode path: owner.
 	{
 		param := args["owner"]
@@ -13803,7 +14154,7 @@ func decodeCodeScanningListAlertInstancesParams(args map[string]string, r *http.
 	}
 	// Decode query: page.
 	{
-		values, ok := r.URL.Query()["page"]
+		values, ok := queryArgs["page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -13838,7 +14189,7 @@ func decodeCodeScanningListAlertInstancesParams(args map[string]string, r *http.
 	}
 	// Decode query: per_page.
 	{
-		values, ok := r.URL.Query()["per_page"]
+		values, ok := queryArgs["per_page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -13873,7 +14224,7 @@ func decodeCodeScanningListAlertInstancesParams(args map[string]string, r *http.
 	}
 	// Decode query: ref.
 	{
-		values, ok := r.URL.Query()["ref"]
+		values, ok := queryArgs["ref"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -13917,7 +14268,10 @@ func decodeCodeScanningListAlertInstancesParams(args map[string]string, r *http.
 }
 
 func decodeCodeScanningListAlertsForRepoParams(args map[string]string, r *http.Request) (CodeScanningListAlertsForRepoParams, error) {
-	var params CodeScanningListAlertsForRepoParams
+	var (
+		params    CodeScanningListAlertsForRepoParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode path: owner.
 	{
 		param := args["owner"]
@@ -13982,7 +14336,7 @@ func decodeCodeScanningListAlertsForRepoParams(args map[string]string, r *http.R
 	}
 	// Decode query: tool_name.
 	{
-		values, ok := r.URL.Query()["tool_name"]
+		values, ok := queryArgs["tool_name"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -14024,7 +14378,7 @@ func decodeCodeScanningListAlertsForRepoParams(args map[string]string, r *http.R
 	}
 	// Decode query: tool_guid.
 	{
-		values, ok := r.URL.Query()["tool_guid"]
+		values, ok := queryArgs["tool_guid"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -14066,7 +14420,7 @@ func decodeCodeScanningListAlertsForRepoParams(args map[string]string, r *http.R
 	}
 	// Decode query: page.
 	{
-		values, ok := r.URL.Query()["page"]
+		values, ok := queryArgs["page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -14101,7 +14455,7 @@ func decodeCodeScanningListAlertsForRepoParams(args map[string]string, r *http.R
 	}
 	// Decode query: per_page.
 	{
-		values, ok := r.URL.Query()["per_page"]
+		values, ok := queryArgs["per_page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -14136,7 +14490,7 @@ func decodeCodeScanningListAlertsForRepoParams(args map[string]string, r *http.R
 	}
 	// Decode query: ref.
 	{
-		values, ok := r.URL.Query()["ref"]
+		values, ok := queryArgs["ref"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -14178,7 +14532,7 @@ func decodeCodeScanningListAlertsForRepoParams(args map[string]string, r *http.R
 	}
 	// Decode query: state.
 	{
-		values, ok := r.URL.Query()["state"]
+		values, ok := queryArgs["state"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -14231,7 +14585,10 @@ func decodeCodeScanningListAlertsForRepoParams(args map[string]string, r *http.R
 }
 
 func decodeCodeScanningListRecentAnalysesParams(args map[string]string, r *http.Request) (CodeScanningListRecentAnalysesParams, error) {
-	var params CodeScanningListRecentAnalysesParams
+	var (
+		params    CodeScanningListRecentAnalysesParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode path: owner.
 	{
 		param := args["owner"]
@@ -14296,7 +14653,7 @@ func decodeCodeScanningListRecentAnalysesParams(args map[string]string, r *http.
 	}
 	// Decode query: tool_name.
 	{
-		values, ok := r.URL.Query()["tool_name"]
+		values, ok := queryArgs["tool_name"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -14338,7 +14695,7 @@ func decodeCodeScanningListRecentAnalysesParams(args map[string]string, r *http.
 	}
 	// Decode query: tool_guid.
 	{
-		values, ok := r.URL.Query()["tool_guid"]
+		values, ok := queryArgs["tool_guid"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -14380,7 +14737,7 @@ func decodeCodeScanningListRecentAnalysesParams(args map[string]string, r *http.
 	}
 	// Decode query: page.
 	{
-		values, ok := r.URL.Query()["page"]
+		values, ok := queryArgs["page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -14415,7 +14772,7 @@ func decodeCodeScanningListRecentAnalysesParams(args map[string]string, r *http.
 	}
 	// Decode query: per_page.
 	{
-		values, ok := r.URL.Query()["per_page"]
+		values, ok := queryArgs["per_page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -14450,7 +14807,7 @@ func decodeCodeScanningListRecentAnalysesParams(args map[string]string, r *http.
 	}
 	// Decode query: ref.
 	{
-		values, ok := r.URL.Query()["ref"]
+		values, ok := queryArgs["ref"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -14492,7 +14849,7 @@ func decodeCodeScanningListRecentAnalysesParams(args map[string]string, r *http.
 	}
 	// Decode query: sarif_id.
 	{
-		values, ok := r.URL.Query()["sarif_id"]
+		values, ok := queryArgs["sarif_id"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -14536,7 +14893,9 @@ func decodeCodeScanningListRecentAnalysesParams(args map[string]string, r *http.
 }
 
 func decodeCodeScanningUpdateAlertParams(args map[string]string, r *http.Request) (CodeScanningUpdateAlertParams, error) {
-	var params CodeScanningUpdateAlertParams
+	var (
+		params CodeScanningUpdateAlertParams
+	)
 	// Decode path: owner.
 	{
 		param := args["owner"]
@@ -14641,7 +15000,9 @@ func decodeCodeScanningUpdateAlertParams(args map[string]string, r *http.Request
 }
 
 func decodeCodeScanningUploadSarifParams(args map[string]string, r *http.Request) (CodeScanningUploadSarifParams, error) {
-	var params CodeScanningUploadSarifParams
+	var (
+		params CodeScanningUploadSarifParams
+	)
 	// Decode path: owner.
 	{
 		param := args["owner"]
@@ -14708,7 +15069,9 @@ func decodeCodeScanningUploadSarifParams(args map[string]string, r *http.Request
 }
 
 func decodeCodesOfConductGetConductCodeParams(args map[string]string, r *http.Request) (CodesOfConductGetConductCodeParams, error) {
-	var params CodesOfConductGetConductCodeParams
+	var (
+		params CodesOfConductGetConductCodeParams
+	)
 	// Decode path: key.
 	{
 		param := args["key"]
@@ -14744,7 +15107,9 @@ func decodeCodesOfConductGetConductCodeParams(args map[string]string, r *http.Re
 }
 
 func decodeEnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterpriseParams(args map[string]string, r *http.Request) (EnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterpriseParams, error) {
-	var params EnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterpriseParams
+	var (
+		params EnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterpriseParams
+	)
 	// Decode path: enterprise.
 	{
 		param := args["enterprise"]
@@ -14842,7 +15207,9 @@ func decodeEnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterpriseParams(
 }
 
 func decodeEnterpriseAdminAddSelfHostedRunnerToGroupForEnterpriseParams(args map[string]string, r *http.Request) (EnterpriseAdminAddSelfHostedRunnerToGroupForEnterpriseParams, error) {
-	var params EnterpriseAdminAddSelfHostedRunnerToGroupForEnterpriseParams
+	var (
+		params EnterpriseAdminAddSelfHostedRunnerToGroupForEnterpriseParams
+	)
 	// Decode path: enterprise.
 	{
 		param := args["enterprise"]
@@ -14940,7 +15307,9 @@ func decodeEnterpriseAdminAddSelfHostedRunnerToGroupForEnterpriseParams(args map
 }
 
 func decodeEnterpriseAdminCreateRegistrationTokenForEnterpriseParams(args map[string]string, r *http.Request) (EnterpriseAdminCreateRegistrationTokenForEnterpriseParams, error) {
-	var params EnterpriseAdminCreateRegistrationTokenForEnterpriseParams
+	var (
+		params EnterpriseAdminCreateRegistrationTokenForEnterpriseParams
+	)
 	// Decode path: enterprise.
 	{
 		param := args["enterprise"]
@@ -14976,7 +15345,9 @@ func decodeEnterpriseAdminCreateRegistrationTokenForEnterpriseParams(args map[st
 }
 
 func decodeEnterpriseAdminCreateRemoveTokenForEnterpriseParams(args map[string]string, r *http.Request) (EnterpriseAdminCreateRemoveTokenForEnterpriseParams, error) {
-	var params EnterpriseAdminCreateRemoveTokenForEnterpriseParams
+	var (
+		params EnterpriseAdminCreateRemoveTokenForEnterpriseParams
+	)
 	// Decode path: enterprise.
 	{
 		param := args["enterprise"]
@@ -15012,7 +15383,9 @@ func decodeEnterpriseAdminCreateRemoveTokenForEnterpriseParams(args map[string]s
 }
 
 func decodeEnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseParams(args map[string]string, r *http.Request) (EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseParams, error) {
-	var params EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseParams
+	var (
+		params EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseParams
+	)
 	// Decode path: enterprise.
 	{
 		param := args["enterprise"]
@@ -15048,7 +15421,9 @@ func decodeEnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseParams(args ma
 }
 
 func decodeEnterpriseAdminDeleteScimGroupFromEnterpriseParams(args map[string]string, r *http.Request) (EnterpriseAdminDeleteScimGroupFromEnterpriseParams, error) {
-	var params EnterpriseAdminDeleteScimGroupFromEnterpriseParams
+	var (
+		params EnterpriseAdminDeleteScimGroupFromEnterpriseParams
+	)
 	// Decode path: enterprise.
 	{
 		param := args["enterprise"]
@@ -15115,7 +15490,9 @@ func decodeEnterpriseAdminDeleteScimGroupFromEnterpriseParams(args map[string]st
 }
 
 func decodeEnterpriseAdminDeleteSelfHostedRunnerFromEnterpriseParams(args map[string]string, r *http.Request) (EnterpriseAdminDeleteSelfHostedRunnerFromEnterpriseParams, error) {
-	var params EnterpriseAdminDeleteSelfHostedRunnerFromEnterpriseParams
+	var (
+		params EnterpriseAdminDeleteSelfHostedRunnerFromEnterpriseParams
+	)
 	// Decode path: enterprise.
 	{
 		param := args["enterprise"]
@@ -15182,7 +15559,9 @@ func decodeEnterpriseAdminDeleteSelfHostedRunnerFromEnterpriseParams(args map[st
 }
 
 func decodeEnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterpriseParams(args map[string]string, r *http.Request) (EnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterpriseParams, error) {
-	var params EnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterpriseParams
+	var (
+		params EnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterpriseParams
+	)
 	// Decode path: enterprise.
 	{
 		param := args["enterprise"]
@@ -15249,7 +15628,9 @@ func decodeEnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterpriseParams(args m
 }
 
 func decodeEnterpriseAdminDeleteUserFromEnterpriseParams(args map[string]string, r *http.Request) (EnterpriseAdminDeleteUserFromEnterpriseParams, error) {
-	var params EnterpriseAdminDeleteUserFromEnterpriseParams
+	var (
+		params EnterpriseAdminDeleteUserFromEnterpriseParams
+	)
 	// Decode path: enterprise.
 	{
 		param := args["enterprise"]
@@ -15316,7 +15697,9 @@ func decodeEnterpriseAdminDeleteUserFromEnterpriseParams(args map[string]string,
 }
 
 func decodeEnterpriseAdminDisableSelectedOrganizationGithubActionsEnterpriseParams(args map[string]string, r *http.Request) (EnterpriseAdminDisableSelectedOrganizationGithubActionsEnterpriseParams, error) {
-	var params EnterpriseAdminDisableSelectedOrganizationGithubActionsEnterpriseParams
+	var (
+		params EnterpriseAdminDisableSelectedOrganizationGithubActionsEnterpriseParams
+	)
 	// Decode path: enterprise.
 	{
 		param := args["enterprise"]
@@ -15383,7 +15766,9 @@ func decodeEnterpriseAdminDisableSelectedOrganizationGithubActionsEnterprisePara
 }
 
 func decodeEnterpriseAdminEnableSelectedOrganizationGithubActionsEnterpriseParams(args map[string]string, r *http.Request) (EnterpriseAdminEnableSelectedOrganizationGithubActionsEnterpriseParams, error) {
-	var params EnterpriseAdminEnableSelectedOrganizationGithubActionsEnterpriseParams
+	var (
+		params EnterpriseAdminEnableSelectedOrganizationGithubActionsEnterpriseParams
+	)
 	// Decode path: enterprise.
 	{
 		param := args["enterprise"]
@@ -15450,7 +15835,9 @@ func decodeEnterpriseAdminEnableSelectedOrganizationGithubActionsEnterpriseParam
 }
 
 func decodeEnterpriseAdminGetAllowedActionsEnterpriseParams(args map[string]string, r *http.Request) (EnterpriseAdminGetAllowedActionsEnterpriseParams, error) {
-	var params EnterpriseAdminGetAllowedActionsEnterpriseParams
+	var (
+		params EnterpriseAdminGetAllowedActionsEnterpriseParams
+	)
 	// Decode path: enterprise.
 	{
 		param := args["enterprise"]
@@ -15486,7 +15873,10 @@ func decodeEnterpriseAdminGetAllowedActionsEnterpriseParams(args map[string]stri
 }
 
 func decodeEnterpriseAdminGetAuditLogParams(args map[string]string, r *http.Request) (EnterpriseAdminGetAuditLogParams, error) {
-	var params EnterpriseAdminGetAuditLogParams
+	var (
+		params    EnterpriseAdminGetAuditLogParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode path: enterprise.
 	{
 		param := args["enterprise"]
@@ -15520,7 +15910,7 @@ func decodeEnterpriseAdminGetAuditLogParams(args map[string]string, r *http.Requ
 	}
 	// Decode query: phrase.
 	{
-		values, ok := r.URL.Query()["phrase"]
+		values, ok := queryArgs["phrase"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -15555,7 +15945,7 @@ func decodeEnterpriseAdminGetAuditLogParams(args map[string]string, r *http.Requ
 	}
 	// Decode query: include.
 	{
-		values, ok := r.URL.Query()["include"]
+		values, ok := queryArgs["include"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -15606,7 +15996,7 @@ func decodeEnterpriseAdminGetAuditLogParams(args map[string]string, r *http.Requ
 	}
 	// Decode query: after.
 	{
-		values, ok := r.URL.Query()["after"]
+		values, ok := queryArgs["after"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -15641,7 +16031,7 @@ func decodeEnterpriseAdminGetAuditLogParams(args map[string]string, r *http.Requ
 	}
 	// Decode query: before.
 	{
-		values, ok := r.URL.Query()["before"]
+		values, ok := queryArgs["before"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -15676,7 +16066,7 @@ func decodeEnterpriseAdminGetAuditLogParams(args map[string]string, r *http.Requ
 	}
 	// Decode query: order.
 	{
-		values, ok := r.URL.Query()["order"]
+		values, ok := queryArgs["order"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -15727,7 +16117,7 @@ func decodeEnterpriseAdminGetAuditLogParams(args map[string]string, r *http.Requ
 	}
 	// Decode query: page.
 	{
-		values, ok := r.URL.Query()["page"]
+		values, ok := queryArgs["page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -15762,7 +16152,7 @@ func decodeEnterpriseAdminGetAuditLogParams(args map[string]string, r *http.Requ
 	}
 	// Decode query: per_page.
 	{
-		values, ok := r.URL.Query()["per_page"]
+		values, ok := queryArgs["per_page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -15799,7 +16189,9 @@ func decodeEnterpriseAdminGetAuditLogParams(args map[string]string, r *http.Requ
 }
 
 func decodeEnterpriseAdminGetGithubActionsPermissionsEnterpriseParams(args map[string]string, r *http.Request) (EnterpriseAdminGetGithubActionsPermissionsEnterpriseParams, error) {
-	var params EnterpriseAdminGetGithubActionsPermissionsEnterpriseParams
+	var (
+		params EnterpriseAdminGetGithubActionsPermissionsEnterpriseParams
+	)
 	// Decode path: enterprise.
 	{
 		param := args["enterprise"]
@@ -15835,7 +16227,10 @@ func decodeEnterpriseAdminGetGithubActionsPermissionsEnterpriseParams(args map[s
 }
 
 func decodeEnterpriseAdminGetProvisioningInformationForEnterpriseGroupParams(args map[string]string, r *http.Request) (EnterpriseAdminGetProvisioningInformationForEnterpriseGroupParams, error) {
-	var params EnterpriseAdminGetProvisioningInformationForEnterpriseGroupParams
+	var (
+		params    EnterpriseAdminGetProvisioningInformationForEnterpriseGroupParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode path: enterprise.
 	{
 		param := args["enterprise"]
@@ -15900,7 +16295,7 @@ func decodeEnterpriseAdminGetProvisioningInformationForEnterpriseGroupParams(arg
 	}
 	// Decode query: excludedAttributes.
 	{
-		values, ok := r.URL.Query()["excludedAttributes"]
+		values, ok := queryArgs["excludedAttributes"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -15937,7 +16332,9 @@ func decodeEnterpriseAdminGetProvisioningInformationForEnterpriseGroupParams(arg
 }
 
 func decodeEnterpriseAdminGetProvisioningInformationForEnterpriseUserParams(args map[string]string, r *http.Request) (EnterpriseAdminGetProvisioningInformationForEnterpriseUserParams, error) {
-	var params EnterpriseAdminGetProvisioningInformationForEnterpriseUserParams
+	var (
+		params EnterpriseAdminGetProvisioningInformationForEnterpriseUserParams
+	)
 	// Decode path: enterprise.
 	{
 		param := args["enterprise"]
@@ -16004,7 +16401,9 @@ func decodeEnterpriseAdminGetProvisioningInformationForEnterpriseUserParams(args
 }
 
 func decodeEnterpriseAdminGetSelfHostedRunnerForEnterpriseParams(args map[string]string, r *http.Request) (EnterpriseAdminGetSelfHostedRunnerForEnterpriseParams, error) {
-	var params EnterpriseAdminGetSelfHostedRunnerForEnterpriseParams
+	var (
+		params EnterpriseAdminGetSelfHostedRunnerForEnterpriseParams
+	)
 	// Decode path: enterprise.
 	{
 		param := args["enterprise"]
@@ -16071,7 +16470,9 @@ func decodeEnterpriseAdminGetSelfHostedRunnerForEnterpriseParams(args map[string
 }
 
 func decodeEnterpriseAdminGetSelfHostedRunnerGroupForEnterpriseParams(args map[string]string, r *http.Request) (EnterpriseAdminGetSelfHostedRunnerGroupForEnterpriseParams, error) {
-	var params EnterpriseAdminGetSelfHostedRunnerGroupForEnterpriseParams
+	var (
+		params EnterpriseAdminGetSelfHostedRunnerGroupForEnterpriseParams
+	)
 	// Decode path: enterprise.
 	{
 		param := args["enterprise"]
@@ -16138,7 +16539,10 @@ func decodeEnterpriseAdminGetSelfHostedRunnerGroupForEnterpriseParams(args map[s
 }
 
 func decodeEnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseParams(args map[string]string, r *http.Request) (EnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseParams, error) {
-	var params EnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseParams
+	var (
+		params    EnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode path: enterprise.
 	{
 		param := args["enterprise"]
@@ -16203,7 +16607,7 @@ func decodeEnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseParams
 	}
 	// Decode query: per_page.
 	{
-		values, ok := r.URL.Query()["per_page"]
+		values, ok := queryArgs["per_page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -16238,7 +16642,7 @@ func decodeEnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseParams
 	}
 	// Decode query: page.
 	{
-		values, ok := r.URL.Query()["page"]
+		values, ok := queryArgs["page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -16275,7 +16679,10 @@ func decodeEnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseParams
 }
 
 func decodeEnterpriseAdminListProvisionedGroupsEnterpriseParams(args map[string]string, r *http.Request) (EnterpriseAdminListProvisionedGroupsEnterpriseParams, error) {
-	var params EnterpriseAdminListProvisionedGroupsEnterpriseParams
+	var (
+		params    EnterpriseAdminListProvisionedGroupsEnterpriseParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode path: enterprise.
 	{
 		param := args["enterprise"]
@@ -16309,7 +16716,7 @@ func decodeEnterpriseAdminListProvisionedGroupsEnterpriseParams(args map[string]
 	}
 	// Decode query: startIndex.
 	{
-		values, ok := r.URL.Query()["startIndex"]
+		values, ok := queryArgs["startIndex"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -16344,7 +16751,7 @@ func decodeEnterpriseAdminListProvisionedGroupsEnterpriseParams(args map[string]
 	}
 	// Decode query: count.
 	{
-		values, ok := r.URL.Query()["count"]
+		values, ok := queryArgs["count"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -16379,7 +16786,7 @@ func decodeEnterpriseAdminListProvisionedGroupsEnterpriseParams(args map[string]
 	}
 	// Decode query: filter.
 	{
-		values, ok := r.URL.Query()["filter"]
+		values, ok := queryArgs["filter"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -16414,7 +16821,7 @@ func decodeEnterpriseAdminListProvisionedGroupsEnterpriseParams(args map[string]
 	}
 	// Decode query: excludedAttributes.
 	{
-		values, ok := r.URL.Query()["excludedAttributes"]
+		values, ok := queryArgs["excludedAttributes"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -16451,7 +16858,10 @@ func decodeEnterpriseAdminListProvisionedGroupsEnterpriseParams(args map[string]
 }
 
 func decodeEnterpriseAdminListProvisionedIdentitiesEnterpriseParams(args map[string]string, r *http.Request) (EnterpriseAdminListProvisionedIdentitiesEnterpriseParams, error) {
-	var params EnterpriseAdminListProvisionedIdentitiesEnterpriseParams
+	var (
+		params    EnterpriseAdminListProvisionedIdentitiesEnterpriseParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode path: enterprise.
 	{
 		param := args["enterprise"]
@@ -16485,7 +16895,7 @@ func decodeEnterpriseAdminListProvisionedIdentitiesEnterpriseParams(args map[str
 	}
 	// Decode query: startIndex.
 	{
-		values, ok := r.URL.Query()["startIndex"]
+		values, ok := queryArgs["startIndex"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -16520,7 +16930,7 @@ func decodeEnterpriseAdminListProvisionedIdentitiesEnterpriseParams(args map[str
 	}
 	// Decode query: count.
 	{
-		values, ok := r.URL.Query()["count"]
+		values, ok := queryArgs["count"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -16555,7 +16965,7 @@ func decodeEnterpriseAdminListProvisionedIdentitiesEnterpriseParams(args map[str
 	}
 	// Decode query: filter.
 	{
-		values, ok := r.URL.Query()["filter"]
+		values, ok := queryArgs["filter"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -16592,7 +17002,9 @@ func decodeEnterpriseAdminListProvisionedIdentitiesEnterpriseParams(args map[str
 }
 
 func decodeEnterpriseAdminListRunnerApplicationsForEnterpriseParams(args map[string]string, r *http.Request) (EnterpriseAdminListRunnerApplicationsForEnterpriseParams, error) {
-	var params EnterpriseAdminListRunnerApplicationsForEnterpriseParams
+	var (
+		params EnterpriseAdminListRunnerApplicationsForEnterpriseParams
+	)
 	// Decode path: enterprise.
 	{
 		param := args["enterprise"]
@@ -16628,7 +17040,10 @@ func decodeEnterpriseAdminListRunnerApplicationsForEnterpriseParams(args map[str
 }
 
 func decodeEnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterpriseParams(args map[string]string, r *http.Request) (EnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterpriseParams, error) {
-	var params EnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterpriseParams
+	var (
+		params    EnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterpriseParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode path: enterprise.
 	{
 		param := args["enterprise"]
@@ -16662,7 +17077,7 @@ func decodeEnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterpris
 	}
 	// Decode query: per_page.
 	{
-		values, ok := r.URL.Query()["per_page"]
+		values, ok := queryArgs["per_page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -16697,7 +17112,7 @@ func decodeEnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterpris
 	}
 	// Decode query: page.
 	{
-		values, ok := r.URL.Query()["page"]
+		values, ok := queryArgs["page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -16734,7 +17149,10 @@ func decodeEnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterpris
 }
 
 func decodeEnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseParams(args map[string]string, r *http.Request) (EnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseParams, error) {
-	var params EnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseParams
+	var (
+		params    EnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode path: enterprise.
 	{
 		param := args["enterprise"]
@@ -16768,7 +17186,7 @@ func decodeEnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseParams(args map
 	}
 	// Decode query: per_page.
 	{
-		values, ok := r.URL.Query()["per_page"]
+		values, ok := queryArgs["per_page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -16803,7 +17221,7 @@ func decodeEnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseParams(args map
 	}
 	// Decode query: page.
 	{
-		values, ok := r.URL.Query()["page"]
+		values, ok := queryArgs["page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -16840,7 +17258,10 @@ func decodeEnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseParams(args map
 }
 
 func decodeEnterpriseAdminListSelfHostedRunnersForEnterpriseParams(args map[string]string, r *http.Request) (EnterpriseAdminListSelfHostedRunnersForEnterpriseParams, error) {
-	var params EnterpriseAdminListSelfHostedRunnersForEnterpriseParams
+	var (
+		params    EnterpriseAdminListSelfHostedRunnersForEnterpriseParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode path: enterprise.
 	{
 		param := args["enterprise"]
@@ -16874,7 +17295,7 @@ func decodeEnterpriseAdminListSelfHostedRunnersForEnterpriseParams(args map[stri
 	}
 	// Decode query: per_page.
 	{
-		values, ok := r.URL.Query()["per_page"]
+		values, ok := queryArgs["per_page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -16909,7 +17330,7 @@ func decodeEnterpriseAdminListSelfHostedRunnersForEnterpriseParams(args map[stri
 	}
 	// Decode query: page.
 	{
-		values, ok := r.URL.Query()["page"]
+		values, ok := queryArgs["page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -16946,7 +17367,10 @@ func decodeEnterpriseAdminListSelfHostedRunnersForEnterpriseParams(args map[stri
 }
 
 func decodeEnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseParams(args map[string]string, r *http.Request) (EnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseParams, error) {
-	var params EnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseParams
+	var (
+		params    EnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode path: enterprise.
 	{
 		param := args["enterprise"]
@@ -17011,7 +17435,7 @@ func decodeEnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseParams(args m
 	}
 	// Decode query: per_page.
 	{
-		values, ok := r.URL.Query()["per_page"]
+		values, ok := queryArgs["per_page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -17046,7 +17470,7 @@ func decodeEnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseParams(args m
 	}
 	// Decode query: page.
 	{
-		values, ok := r.URL.Query()["page"]
+		values, ok := queryArgs["page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -17083,7 +17507,9 @@ func decodeEnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseParams(args m
 }
 
 func decodeEnterpriseAdminProvisionAndInviteEnterpriseGroupParams(args map[string]string, r *http.Request) (EnterpriseAdminProvisionAndInviteEnterpriseGroupParams, error) {
-	var params EnterpriseAdminProvisionAndInviteEnterpriseGroupParams
+	var (
+		params EnterpriseAdminProvisionAndInviteEnterpriseGroupParams
+	)
 	// Decode path: enterprise.
 	{
 		param := args["enterprise"]
@@ -17119,7 +17545,9 @@ func decodeEnterpriseAdminProvisionAndInviteEnterpriseGroupParams(args map[strin
 }
 
 func decodeEnterpriseAdminProvisionAndInviteEnterpriseUserParams(args map[string]string, r *http.Request) (EnterpriseAdminProvisionAndInviteEnterpriseUserParams, error) {
-	var params EnterpriseAdminProvisionAndInviteEnterpriseUserParams
+	var (
+		params EnterpriseAdminProvisionAndInviteEnterpriseUserParams
+	)
 	// Decode path: enterprise.
 	{
 		param := args["enterprise"]
@@ -17155,7 +17583,9 @@ func decodeEnterpriseAdminProvisionAndInviteEnterpriseUserParams(args map[string
 }
 
 func decodeEnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterpriseParams(args map[string]string, r *http.Request) (EnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterpriseParams, error) {
-	var params EnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterpriseParams
+	var (
+		params EnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterpriseParams
+	)
 	// Decode path: enterprise.
 	{
 		param := args["enterprise"]
@@ -17253,7 +17683,9 @@ func decodeEnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterprisePara
 }
 
 func decodeEnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterpriseParams(args map[string]string, r *http.Request) (EnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterpriseParams, error) {
-	var params EnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterpriseParams
+	var (
+		params EnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterpriseParams
+	)
 	// Decode path: enterprise.
 	{
 		param := args["enterprise"]
@@ -17351,7 +17783,9 @@ func decodeEnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterpriseParams(arg
 }
 
 func decodeEnterpriseAdminSetAllowedActionsEnterpriseParams(args map[string]string, r *http.Request) (EnterpriseAdminSetAllowedActionsEnterpriseParams, error) {
-	var params EnterpriseAdminSetAllowedActionsEnterpriseParams
+	var (
+		params EnterpriseAdminSetAllowedActionsEnterpriseParams
+	)
 	// Decode path: enterprise.
 	{
 		param := args["enterprise"]
@@ -17387,7 +17821,9 @@ func decodeEnterpriseAdminSetAllowedActionsEnterpriseParams(args map[string]stri
 }
 
 func decodeEnterpriseAdminSetGithubActionsPermissionsEnterpriseParams(args map[string]string, r *http.Request) (EnterpriseAdminSetGithubActionsPermissionsEnterpriseParams, error) {
-	var params EnterpriseAdminSetGithubActionsPermissionsEnterpriseParams
+	var (
+		params EnterpriseAdminSetGithubActionsPermissionsEnterpriseParams
+	)
 	// Decode path: enterprise.
 	{
 		param := args["enterprise"]
@@ -17423,7 +17859,9 @@ func decodeEnterpriseAdminSetGithubActionsPermissionsEnterpriseParams(args map[s
 }
 
 func decodeEnterpriseAdminSetInformationForProvisionedEnterpriseGroupParams(args map[string]string, r *http.Request) (EnterpriseAdminSetInformationForProvisionedEnterpriseGroupParams, error) {
-	var params EnterpriseAdminSetInformationForProvisionedEnterpriseGroupParams
+	var (
+		params EnterpriseAdminSetInformationForProvisionedEnterpriseGroupParams
+	)
 	// Decode path: enterprise.
 	{
 		param := args["enterprise"]
@@ -17490,7 +17928,9 @@ func decodeEnterpriseAdminSetInformationForProvisionedEnterpriseGroupParams(args
 }
 
 func decodeEnterpriseAdminSetInformationForProvisionedEnterpriseUserParams(args map[string]string, r *http.Request) (EnterpriseAdminSetInformationForProvisionedEnterpriseUserParams, error) {
-	var params EnterpriseAdminSetInformationForProvisionedEnterpriseUserParams
+	var (
+		params EnterpriseAdminSetInformationForProvisionedEnterpriseUserParams
+	)
 	// Decode path: enterprise.
 	{
 		param := args["enterprise"]
@@ -17557,7 +17997,9 @@ func decodeEnterpriseAdminSetInformationForProvisionedEnterpriseUserParams(args 
 }
 
 func decodeEnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseParams(args map[string]string, r *http.Request) (EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseParams, error) {
-	var params EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseParams
+	var (
+		params EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseParams
+	)
 	// Decode path: enterprise.
 	{
 		param := args["enterprise"]
@@ -17624,7 +18066,9 @@ func decodeEnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseParams(
 }
 
 func decodeEnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseParams(args map[string]string, r *http.Request) (EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseParams, error) {
-	var params EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseParams
+	var (
+		params EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseParams
+	)
 	// Decode path: enterprise.
 	{
 		param := args["enterprise"]
@@ -17660,7 +18104,9 @@ func decodeEnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterprise
 }
 
 func decodeEnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseParams(args map[string]string, r *http.Request) (EnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseParams, error) {
-	var params EnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseParams
+	var (
+		params EnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseParams
+	)
 	// Decode path: enterprise.
 	{
 		param := args["enterprise"]
@@ -17727,7 +18173,9 @@ func decodeEnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseParams(args ma
 }
 
 func decodeEnterpriseAdminUpdateAttributeForEnterpriseGroupParams(args map[string]string, r *http.Request) (EnterpriseAdminUpdateAttributeForEnterpriseGroupParams, error) {
-	var params EnterpriseAdminUpdateAttributeForEnterpriseGroupParams
+	var (
+		params EnterpriseAdminUpdateAttributeForEnterpriseGroupParams
+	)
 	// Decode path: enterprise.
 	{
 		param := args["enterprise"]
@@ -17794,7 +18242,9 @@ func decodeEnterpriseAdminUpdateAttributeForEnterpriseGroupParams(args map[strin
 }
 
 func decodeEnterpriseAdminUpdateAttributeForEnterpriseUserParams(args map[string]string, r *http.Request) (EnterpriseAdminUpdateAttributeForEnterpriseUserParams, error) {
-	var params EnterpriseAdminUpdateAttributeForEnterpriseUserParams
+	var (
+		params EnterpriseAdminUpdateAttributeForEnterpriseUserParams
+	)
 	// Decode path: enterprise.
 	{
 		param := args["enterprise"]
@@ -17861,7 +18311,9 @@ func decodeEnterpriseAdminUpdateAttributeForEnterpriseUserParams(args map[string
 }
 
 func decodeEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseParams(args map[string]string, r *http.Request) (EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseParams, error) {
-	var params EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseParams
+	var (
+		params EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseParams
+	)
 	// Decode path: enterprise.
 	{
 		param := args["enterprise"]
@@ -17928,7 +18380,9 @@ func decodeEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseParams(args ma
 }
 
 func decodeGistsCheckIsStarredParams(args map[string]string, r *http.Request) (GistsCheckIsStarredParams, error) {
-	var params GistsCheckIsStarredParams
+	var (
+		params GistsCheckIsStarredParams
+	)
 	// Decode path: gist_id.
 	{
 		param := args["gist_id"]
@@ -17964,7 +18418,9 @@ func decodeGistsCheckIsStarredParams(args map[string]string, r *http.Request) (G
 }
 
 func decodeGistsCreateCommentParams(args map[string]string, r *http.Request) (GistsCreateCommentParams, error) {
-	var params GistsCreateCommentParams
+	var (
+		params GistsCreateCommentParams
+	)
 	// Decode path: gist_id.
 	{
 		param := args["gist_id"]
@@ -18000,7 +18456,9 @@ func decodeGistsCreateCommentParams(args map[string]string, r *http.Request) (Gi
 }
 
 func decodeGistsDeleteParams(args map[string]string, r *http.Request) (GistsDeleteParams, error) {
-	var params GistsDeleteParams
+	var (
+		params GistsDeleteParams
+	)
 	// Decode path: gist_id.
 	{
 		param := args["gist_id"]
@@ -18036,7 +18494,9 @@ func decodeGistsDeleteParams(args map[string]string, r *http.Request) (GistsDele
 }
 
 func decodeGistsDeleteCommentParams(args map[string]string, r *http.Request) (GistsDeleteCommentParams, error) {
-	var params GistsDeleteCommentParams
+	var (
+		params GistsDeleteCommentParams
+	)
 	// Decode path: gist_id.
 	{
 		param := args["gist_id"]
@@ -18103,7 +18563,9 @@ func decodeGistsDeleteCommentParams(args map[string]string, r *http.Request) (Gi
 }
 
 func decodeGistsForkParams(args map[string]string, r *http.Request) (GistsForkParams, error) {
-	var params GistsForkParams
+	var (
+		params GistsForkParams
+	)
 	// Decode path: gist_id.
 	{
 		param := args["gist_id"]
@@ -18139,7 +18601,9 @@ func decodeGistsForkParams(args map[string]string, r *http.Request) (GistsForkPa
 }
 
 func decodeGistsGetParams(args map[string]string, r *http.Request) (GistsGetParams, error) {
-	var params GistsGetParams
+	var (
+		params GistsGetParams
+	)
 	// Decode path: gist_id.
 	{
 		param := args["gist_id"]
@@ -18175,7 +18639,9 @@ func decodeGistsGetParams(args map[string]string, r *http.Request) (GistsGetPara
 }
 
 func decodeGistsGetCommentParams(args map[string]string, r *http.Request) (GistsGetCommentParams, error) {
-	var params GistsGetCommentParams
+	var (
+		params GistsGetCommentParams
+	)
 	// Decode path: gist_id.
 	{
 		param := args["gist_id"]
@@ -18242,7 +18708,9 @@ func decodeGistsGetCommentParams(args map[string]string, r *http.Request) (Gists
 }
 
 func decodeGistsGetRevisionParams(args map[string]string, r *http.Request) (GistsGetRevisionParams, error) {
-	var params GistsGetRevisionParams
+	var (
+		params GistsGetRevisionParams
+	)
 	// Decode path: gist_id.
 	{
 		param := args["gist_id"]
@@ -18309,10 +18777,13 @@ func decodeGistsGetRevisionParams(args map[string]string, r *http.Request) (Gist
 }
 
 func decodeGistsListParams(args map[string]string, r *http.Request) (GistsListParams, error) {
-	var params GistsListParams
+	var (
+		params    GistsListParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode query: since.
 	{
-		values, ok := r.URL.Query()["since"]
+		values, ok := queryArgs["since"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -18347,7 +18818,7 @@ func decodeGistsListParams(args map[string]string, r *http.Request) (GistsListPa
 	}
 	// Decode query: per_page.
 	{
-		values, ok := r.URL.Query()["per_page"]
+		values, ok := queryArgs["per_page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -18382,7 +18853,7 @@ func decodeGistsListParams(args map[string]string, r *http.Request) (GistsListPa
 	}
 	// Decode query: page.
 	{
-		values, ok := r.URL.Query()["page"]
+		values, ok := queryArgs["page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -18419,7 +18890,10 @@ func decodeGistsListParams(args map[string]string, r *http.Request) (GistsListPa
 }
 
 func decodeGistsListCommentsParams(args map[string]string, r *http.Request) (GistsListCommentsParams, error) {
-	var params GistsListCommentsParams
+	var (
+		params    GistsListCommentsParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode path: gist_id.
 	{
 		param := args["gist_id"]
@@ -18453,7 +18927,7 @@ func decodeGistsListCommentsParams(args map[string]string, r *http.Request) (Gis
 	}
 	// Decode query: per_page.
 	{
-		values, ok := r.URL.Query()["per_page"]
+		values, ok := queryArgs["per_page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -18488,7 +18962,7 @@ func decodeGistsListCommentsParams(args map[string]string, r *http.Request) (Gis
 	}
 	// Decode query: page.
 	{
-		values, ok := r.URL.Query()["page"]
+		values, ok := queryArgs["page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -18525,7 +18999,10 @@ func decodeGistsListCommentsParams(args map[string]string, r *http.Request) (Gis
 }
 
 func decodeGistsListCommitsParams(args map[string]string, r *http.Request) (GistsListCommitsParams, error) {
-	var params GistsListCommitsParams
+	var (
+		params    GistsListCommitsParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode path: gist_id.
 	{
 		param := args["gist_id"]
@@ -18559,7 +19036,7 @@ func decodeGistsListCommitsParams(args map[string]string, r *http.Request) (Gist
 	}
 	// Decode query: per_page.
 	{
-		values, ok := r.URL.Query()["per_page"]
+		values, ok := queryArgs["per_page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -18594,7 +19071,7 @@ func decodeGistsListCommitsParams(args map[string]string, r *http.Request) (Gist
 	}
 	// Decode query: page.
 	{
-		values, ok := r.URL.Query()["page"]
+		values, ok := queryArgs["page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -18631,7 +19108,10 @@ func decodeGistsListCommitsParams(args map[string]string, r *http.Request) (Gist
 }
 
 func decodeGistsListForUserParams(args map[string]string, r *http.Request) (GistsListForUserParams, error) {
-	var params GistsListForUserParams
+	var (
+		params    GistsListForUserParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode path: username.
 	{
 		param := args["username"]
@@ -18665,7 +19145,7 @@ func decodeGistsListForUserParams(args map[string]string, r *http.Request) (Gist
 	}
 	// Decode query: since.
 	{
-		values, ok := r.URL.Query()["since"]
+		values, ok := queryArgs["since"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -18700,7 +19180,7 @@ func decodeGistsListForUserParams(args map[string]string, r *http.Request) (Gist
 	}
 	// Decode query: per_page.
 	{
-		values, ok := r.URL.Query()["per_page"]
+		values, ok := queryArgs["per_page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -18735,7 +19215,7 @@ func decodeGistsListForUserParams(args map[string]string, r *http.Request) (Gist
 	}
 	// Decode query: page.
 	{
-		values, ok := r.URL.Query()["page"]
+		values, ok := queryArgs["page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -18772,7 +19252,10 @@ func decodeGistsListForUserParams(args map[string]string, r *http.Request) (Gist
 }
 
 func decodeGistsListForksParams(args map[string]string, r *http.Request) (GistsListForksParams, error) {
-	var params GistsListForksParams
+	var (
+		params    GistsListForksParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode path: gist_id.
 	{
 		param := args["gist_id"]
@@ -18806,7 +19289,7 @@ func decodeGistsListForksParams(args map[string]string, r *http.Request) (GistsL
 	}
 	// Decode query: per_page.
 	{
-		values, ok := r.URL.Query()["per_page"]
+		values, ok := queryArgs["per_page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -18841,7 +19324,7 @@ func decodeGistsListForksParams(args map[string]string, r *http.Request) (GistsL
 	}
 	// Decode query: page.
 	{
-		values, ok := r.URL.Query()["page"]
+		values, ok := queryArgs["page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -18878,10 +19361,13 @@ func decodeGistsListForksParams(args map[string]string, r *http.Request) (GistsL
 }
 
 func decodeGistsListPublicParams(args map[string]string, r *http.Request) (GistsListPublicParams, error) {
-	var params GistsListPublicParams
+	var (
+		params    GistsListPublicParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode query: since.
 	{
-		values, ok := r.URL.Query()["since"]
+		values, ok := queryArgs["since"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -18916,7 +19402,7 @@ func decodeGistsListPublicParams(args map[string]string, r *http.Request) (Gists
 	}
 	// Decode query: per_page.
 	{
-		values, ok := r.URL.Query()["per_page"]
+		values, ok := queryArgs["per_page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -18951,7 +19437,7 @@ func decodeGistsListPublicParams(args map[string]string, r *http.Request) (Gists
 	}
 	// Decode query: page.
 	{
-		values, ok := r.URL.Query()["page"]
+		values, ok := queryArgs["page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -18988,10 +19474,13 @@ func decodeGistsListPublicParams(args map[string]string, r *http.Request) (Gists
 }
 
 func decodeGistsListStarredParams(args map[string]string, r *http.Request) (GistsListStarredParams, error) {
-	var params GistsListStarredParams
+	var (
+		params    GistsListStarredParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode query: since.
 	{
-		values, ok := r.URL.Query()["since"]
+		values, ok := queryArgs["since"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -19026,7 +19515,7 @@ func decodeGistsListStarredParams(args map[string]string, r *http.Request) (Gist
 	}
 	// Decode query: per_page.
 	{
-		values, ok := r.URL.Query()["per_page"]
+		values, ok := queryArgs["per_page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -19061,7 +19550,7 @@ func decodeGistsListStarredParams(args map[string]string, r *http.Request) (Gist
 	}
 	// Decode query: page.
 	{
-		values, ok := r.URL.Query()["page"]
+		values, ok := queryArgs["page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -19098,7 +19587,9 @@ func decodeGistsListStarredParams(args map[string]string, r *http.Request) (Gist
 }
 
 func decodeGistsStarParams(args map[string]string, r *http.Request) (GistsStarParams, error) {
-	var params GistsStarParams
+	var (
+		params GistsStarParams
+	)
 	// Decode path: gist_id.
 	{
 		param := args["gist_id"]
@@ -19134,7 +19625,9 @@ func decodeGistsStarParams(args map[string]string, r *http.Request) (GistsStarPa
 }
 
 func decodeGistsUnstarParams(args map[string]string, r *http.Request) (GistsUnstarParams, error) {
-	var params GistsUnstarParams
+	var (
+		params GistsUnstarParams
+	)
 	// Decode path: gist_id.
 	{
 		param := args["gist_id"]
@@ -19170,7 +19663,9 @@ func decodeGistsUnstarParams(args map[string]string, r *http.Request) (GistsUnst
 }
 
 func decodeGistsUpdateCommentParams(args map[string]string, r *http.Request) (GistsUpdateCommentParams, error) {
-	var params GistsUpdateCommentParams
+	var (
+		params GistsUpdateCommentParams
+	)
 	// Decode path: gist_id.
 	{
 		param := args["gist_id"]
@@ -19237,7 +19732,9 @@ func decodeGistsUpdateCommentParams(args map[string]string, r *http.Request) (Gi
 }
 
 func decodeGitCreateBlobParams(args map[string]string, r *http.Request) (GitCreateBlobParams, error) {
-	var params GitCreateBlobParams
+	var (
+		params GitCreateBlobParams
+	)
 	// Decode path: owner.
 	{
 		param := args["owner"]
@@ -19304,7 +19801,9 @@ func decodeGitCreateBlobParams(args map[string]string, r *http.Request) (GitCrea
 }
 
 func decodeGitCreateCommitParams(args map[string]string, r *http.Request) (GitCreateCommitParams, error) {
-	var params GitCreateCommitParams
+	var (
+		params GitCreateCommitParams
+	)
 	// Decode path: owner.
 	{
 		param := args["owner"]
@@ -19371,7 +19870,9 @@ func decodeGitCreateCommitParams(args map[string]string, r *http.Request) (GitCr
 }
 
 func decodeGitCreateRefParams(args map[string]string, r *http.Request) (GitCreateRefParams, error) {
-	var params GitCreateRefParams
+	var (
+		params GitCreateRefParams
+	)
 	// Decode path: owner.
 	{
 		param := args["owner"]
@@ -19438,7 +19939,9 @@ func decodeGitCreateRefParams(args map[string]string, r *http.Request) (GitCreat
 }
 
 func decodeGitCreateTagParams(args map[string]string, r *http.Request) (GitCreateTagParams, error) {
-	var params GitCreateTagParams
+	var (
+		params GitCreateTagParams
+	)
 	// Decode path: owner.
 	{
 		param := args["owner"]
@@ -19505,7 +20008,9 @@ func decodeGitCreateTagParams(args map[string]string, r *http.Request) (GitCreat
 }
 
 func decodeGitCreateTreeParams(args map[string]string, r *http.Request) (GitCreateTreeParams, error) {
-	var params GitCreateTreeParams
+	var (
+		params GitCreateTreeParams
+	)
 	// Decode path: owner.
 	{
 		param := args["owner"]
@@ -19572,7 +20077,9 @@ func decodeGitCreateTreeParams(args map[string]string, r *http.Request) (GitCrea
 }
 
 func decodeGitDeleteRefParams(args map[string]string, r *http.Request) (GitDeleteRefParams, error) {
-	var params GitDeleteRefParams
+	var (
+		params GitDeleteRefParams
+	)
 	// Decode path: owner.
 	{
 		param := args["owner"]
@@ -19670,7 +20177,9 @@ func decodeGitDeleteRefParams(args map[string]string, r *http.Request) (GitDelet
 }
 
 func decodeGitGetBlobParams(args map[string]string, r *http.Request) (GitGetBlobParams, error) {
-	var params GitGetBlobParams
+	var (
+		params GitGetBlobParams
+	)
 	// Decode path: owner.
 	{
 		param := args["owner"]
@@ -19768,7 +20277,9 @@ func decodeGitGetBlobParams(args map[string]string, r *http.Request) (GitGetBlob
 }
 
 func decodeGitGetCommitParams(args map[string]string, r *http.Request) (GitGetCommitParams, error) {
-	var params GitGetCommitParams
+	var (
+		params GitGetCommitParams
+	)
 	// Decode path: owner.
 	{
 		param := args["owner"]
@@ -19866,7 +20377,9 @@ func decodeGitGetCommitParams(args map[string]string, r *http.Request) (GitGetCo
 }
 
 func decodeGitGetRefParams(args map[string]string, r *http.Request) (GitGetRefParams, error) {
-	var params GitGetRefParams
+	var (
+		params GitGetRefParams
+	)
 	// Decode path: owner.
 	{
 		param := args["owner"]
@@ -19964,7 +20477,9 @@ func decodeGitGetRefParams(args map[string]string, r *http.Request) (GitGetRefPa
 }
 
 func decodeGitGetTagParams(args map[string]string, r *http.Request) (GitGetTagParams, error) {
-	var params GitGetTagParams
+	var (
+		params GitGetTagParams
+	)
 	// Decode path: owner.
 	{
 		param := args["owner"]
@@ -20062,7 +20577,10 @@ func decodeGitGetTagParams(args map[string]string, r *http.Request) (GitGetTagPa
 }
 
 func decodeGitGetTreeParams(args map[string]string, r *http.Request) (GitGetTreeParams, error) {
-	var params GitGetTreeParams
+	var (
+		params    GitGetTreeParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode path: owner.
 	{
 		param := args["owner"]
@@ -20158,7 +20676,7 @@ func decodeGitGetTreeParams(args map[string]string, r *http.Request) (GitGetTree
 	}
 	// Decode query: recursive.
 	{
-		values, ok := r.URL.Query()["recursive"]
+		values, ok := queryArgs["recursive"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -20195,7 +20713,10 @@ func decodeGitGetTreeParams(args map[string]string, r *http.Request) (GitGetTree
 }
 
 func decodeGitListMatchingRefsParams(args map[string]string, r *http.Request) (GitListMatchingRefsParams, error) {
-	var params GitListMatchingRefsParams
+	var (
+		params    GitListMatchingRefsParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode path: owner.
 	{
 		param := args["owner"]
@@ -20291,7 +20812,7 @@ func decodeGitListMatchingRefsParams(args map[string]string, r *http.Request) (G
 	}
 	// Decode query: per_page.
 	{
-		values, ok := r.URL.Query()["per_page"]
+		values, ok := queryArgs["per_page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -20326,7 +20847,7 @@ func decodeGitListMatchingRefsParams(args map[string]string, r *http.Request) (G
 	}
 	// Decode query: page.
 	{
-		values, ok := r.URL.Query()["page"]
+		values, ok := queryArgs["page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -20363,7 +20884,9 @@ func decodeGitListMatchingRefsParams(args map[string]string, r *http.Request) (G
 }
 
 func decodeGitUpdateRefParams(args map[string]string, r *http.Request) (GitUpdateRefParams, error) {
-	var params GitUpdateRefParams
+	var (
+		params GitUpdateRefParams
+	)
 	// Decode path: owner.
 	{
 		param := args["owner"]
@@ -20461,7 +20984,9 @@ func decodeGitUpdateRefParams(args map[string]string, r *http.Request) (GitUpdat
 }
 
 func decodeGitignoreGetTemplateParams(args map[string]string, r *http.Request) (GitignoreGetTemplateParams, error) {
-	var params GitignoreGetTemplateParams
+	var (
+		params GitignoreGetTemplateParams
+	)
 	// Decode path: name.
 	{
 		param := args["name"]
@@ -20497,7 +21022,9 @@ func decodeGitignoreGetTemplateParams(args map[string]string, r *http.Request) (
 }
 
 func decodeInteractionsRemoveRestrictionsForOrgParams(args map[string]string, r *http.Request) (InteractionsRemoveRestrictionsForOrgParams, error) {
-	var params InteractionsRemoveRestrictionsForOrgParams
+	var (
+		params InteractionsRemoveRestrictionsForOrgParams
+	)
 	// Decode path: org.
 	{
 		param := args["org"]
@@ -20533,7 +21060,9 @@ func decodeInteractionsRemoveRestrictionsForOrgParams(args map[string]string, r 
 }
 
 func decodeInteractionsRemoveRestrictionsForRepoParams(args map[string]string, r *http.Request) (InteractionsRemoveRestrictionsForRepoParams, error) {
-	var params InteractionsRemoveRestrictionsForRepoParams
+	var (
+		params InteractionsRemoveRestrictionsForRepoParams
+	)
 	// Decode path: owner.
 	{
 		param := args["owner"]
@@ -20600,7 +21129,9 @@ func decodeInteractionsRemoveRestrictionsForRepoParams(args map[string]string, r
 }
 
 func decodeInteractionsSetRestrictionsForOrgParams(args map[string]string, r *http.Request) (InteractionsSetRestrictionsForOrgParams, error) {
-	var params InteractionsSetRestrictionsForOrgParams
+	var (
+		params InteractionsSetRestrictionsForOrgParams
+	)
 	// Decode path: org.
 	{
 		param := args["org"]
@@ -20636,7 +21167,9 @@ func decodeInteractionsSetRestrictionsForOrgParams(args map[string]string, r *ht
 }
 
 func decodeInteractionsSetRestrictionsForRepoParams(args map[string]string, r *http.Request) (InteractionsSetRestrictionsForRepoParams, error) {
-	var params InteractionsSetRestrictionsForRepoParams
+	var (
+		params InteractionsSetRestrictionsForRepoParams
+	)
 	// Decode path: owner.
 	{
 		param := args["owner"]
@@ -20703,7 +21236,9 @@ func decodeInteractionsSetRestrictionsForRepoParams(args map[string]string, r *h
 }
 
 func decodeIssuesAddAssigneesParams(args map[string]string, r *http.Request) (IssuesAddAssigneesParams, error) {
-	var params IssuesAddAssigneesParams
+	var (
+		params IssuesAddAssigneesParams
+	)
 	// Decode path: owner.
 	{
 		param := args["owner"]
@@ -20801,7 +21336,9 @@ func decodeIssuesAddAssigneesParams(args map[string]string, r *http.Request) (Is
 }
 
 func decodeIssuesCheckUserCanBeAssignedParams(args map[string]string, r *http.Request) (IssuesCheckUserCanBeAssignedParams, error) {
-	var params IssuesCheckUserCanBeAssignedParams
+	var (
+		params IssuesCheckUserCanBeAssignedParams
+	)
 	// Decode path: owner.
 	{
 		param := args["owner"]
@@ -20899,7 +21436,9 @@ func decodeIssuesCheckUserCanBeAssignedParams(args map[string]string, r *http.Re
 }
 
 func decodeIssuesCreateParams(args map[string]string, r *http.Request) (IssuesCreateParams, error) {
-	var params IssuesCreateParams
+	var (
+		params IssuesCreateParams
+	)
 	// Decode path: owner.
 	{
 		param := args["owner"]
@@ -20966,7 +21505,9 @@ func decodeIssuesCreateParams(args map[string]string, r *http.Request) (IssuesCr
 }
 
 func decodeIssuesCreateCommentParams(args map[string]string, r *http.Request) (IssuesCreateCommentParams, error) {
-	var params IssuesCreateCommentParams
+	var (
+		params IssuesCreateCommentParams
+	)
 	// Decode path: owner.
 	{
 		param := args["owner"]
@@ -21064,7 +21605,9 @@ func decodeIssuesCreateCommentParams(args map[string]string, r *http.Request) (I
 }
 
 func decodeIssuesCreateLabelParams(args map[string]string, r *http.Request) (IssuesCreateLabelParams, error) {
-	var params IssuesCreateLabelParams
+	var (
+		params IssuesCreateLabelParams
+	)
 	// Decode path: owner.
 	{
 		param := args["owner"]
@@ -21131,7 +21674,9 @@ func decodeIssuesCreateLabelParams(args map[string]string, r *http.Request) (Iss
 }
 
 func decodeIssuesCreateMilestoneParams(args map[string]string, r *http.Request) (IssuesCreateMilestoneParams, error) {
-	var params IssuesCreateMilestoneParams
+	var (
+		params IssuesCreateMilestoneParams
+	)
 	// Decode path: owner.
 	{
 		param := args["owner"]
@@ -21198,7 +21743,9 @@ func decodeIssuesCreateMilestoneParams(args map[string]string, r *http.Request) 
 }
 
 func decodeIssuesDeleteCommentParams(args map[string]string, r *http.Request) (IssuesDeleteCommentParams, error) {
-	var params IssuesDeleteCommentParams
+	var (
+		params IssuesDeleteCommentParams
+	)
 	// Decode path: owner.
 	{
 		param := args["owner"]
@@ -21296,7 +21843,9 @@ func decodeIssuesDeleteCommentParams(args map[string]string, r *http.Request) (I
 }
 
 func decodeIssuesDeleteLabelParams(args map[string]string, r *http.Request) (IssuesDeleteLabelParams, error) {
-	var params IssuesDeleteLabelParams
+	var (
+		params IssuesDeleteLabelParams
+	)
 	// Decode path: owner.
 	{
 		param := args["owner"]
@@ -21394,7 +21943,9 @@ func decodeIssuesDeleteLabelParams(args map[string]string, r *http.Request) (Iss
 }
 
 func decodeIssuesDeleteMilestoneParams(args map[string]string, r *http.Request) (IssuesDeleteMilestoneParams, error) {
-	var params IssuesDeleteMilestoneParams
+	var (
+		params IssuesDeleteMilestoneParams
+	)
 	// Decode path: owner.
 	{
 		param := args["owner"]
@@ -21492,7 +22043,9 @@ func decodeIssuesDeleteMilestoneParams(args map[string]string, r *http.Request) 
 }
 
 func decodeIssuesGetParams(args map[string]string, r *http.Request) (IssuesGetParams, error) {
-	var params IssuesGetParams
+	var (
+		params IssuesGetParams
+	)
 	// Decode path: owner.
 	{
 		param := args["owner"]
@@ -21590,7 +22143,9 @@ func decodeIssuesGetParams(args map[string]string, r *http.Request) (IssuesGetPa
 }
 
 func decodeIssuesGetCommentParams(args map[string]string, r *http.Request) (IssuesGetCommentParams, error) {
-	var params IssuesGetCommentParams
+	var (
+		params IssuesGetCommentParams
+	)
 	// Decode path: owner.
 	{
 		param := args["owner"]
@@ -21688,7 +22243,9 @@ func decodeIssuesGetCommentParams(args map[string]string, r *http.Request) (Issu
 }
 
 func decodeIssuesGetEventParams(args map[string]string, r *http.Request) (IssuesGetEventParams, error) {
-	var params IssuesGetEventParams
+	var (
+		params IssuesGetEventParams
+	)
 	// Decode path: owner.
 	{
 		param := args["owner"]
@@ -21786,7 +22343,9 @@ func decodeIssuesGetEventParams(args map[string]string, r *http.Request) (Issues
 }
 
 func decodeIssuesGetLabelParams(args map[string]string, r *http.Request) (IssuesGetLabelParams, error) {
-	var params IssuesGetLabelParams
+	var (
+		params IssuesGetLabelParams
+	)
 	// Decode path: owner.
 	{
 		param := args["owner"]
@@ -21884,7 +22443,9 @@ func decodeIssuesGetLabelParams(args map[string]string, r *http.Request) (Issues
 }
 
 func decodeIssuesGetMilestoneParams(args map[string]string, r *http.Request) (IssuesGetMilestoneParams, error) {
-	var params IssuesGetMilestoneParams
+	var (
+		params IssuesGetMilestoneParams
+	)
 	// Decode path: owner.
 	{
 		param := args["owner"]
@@ -21982,10 +22543,13 @@ func decodeIssuesGetMilestoneParams(args map[string]string, r *http.Request) (Is
 }
 
 func decodeIssuesListParams(args map[string]string, r *http.Request) (IssuesListParams, error) {
-	var params IssuesListParams
+	var (
+		params    IssuesListParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode query: filter.
 	{
-		values, ok := r.URL.Query()["filter"]
+		values, ok := queryArgs["filter"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -22036,7 +22600,7 @@ func decodeIssuesListParams(args map[string]string, r *http.Request) (IssuesList
 	}
 	// Decode query: state.
 	{
-		values, ok := r.URL.Query()["state"]
+		values, ok := queryArgs["state"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -22087,7 +22651,7 @@ func decodeIssuesListParams(args map[string]string, r *http.Request) (IssuesList
 	}
 	// Decode query: labels.
 	{
-		values, ok := r.URL.Query()["labels"]
+		values, ok := queryArgs["labels"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -22122,7 +22686,7 @@ func decodeIssuesListParams(args map[string]string, r *http.Request) (IssuesList
 	}
 	// Decode query: sort.
 	{
-		values, ok := r.URL.Query()["sort"]
+		values, ok := queryArgs["sort"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -22173,7 +22737,7 @@ func decodeIssuesListParams(args map[string]string, r *http.Request) (IssuesList
 	}
 	// Decode query: direction.
 	{
-		values, ok := r.URL.Query()["direction"]
+		values, ok := queryArgs["direction"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -22224,7 +22788,7 @@ func decodeIssuesListParams(args map[string]string, r *http.Request) (IssuesList
 	}
 	// Decode query: since.
 	{
-		values, ok := r.URL.Query()["since"]
+		values, ok := queryArgs["since"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -22259,7 +22823,7 @@ func decodeIssuesListParams(args map[string]string, r *http.Request) (IssuesList
 	}
 	// Decode query: collab.
 	{
-		values, ok := r.URL.Query()["collab"]
+		values, ok := queryArgs["collab"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -22294,7 +22858,7 @@ func decodeIssuesListParams(args map[string]string, r *http.Request) (IssuesList
 	}
 	// Decode query: orgs.
 	{
-		values, ok := r.URL.Query()["orgs"]
+		values, ok := queryArgs["orgs"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -22329,7 +22893,7 @@ func decodeIssuesListParams(args map[string]string, r *http.Request) (IssuesList
 	}
 	// Decode query: owned.
 	{
-		values, ok := r.URL.Query()["owned"]
+		values, ok := queryArgs["owned"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -22364,7 +22928,7 @@ func decodeIssuesListParams(args map[string]string, r *http.Request) (IssuesList
 	}
 	// Decode query: pulls.
 	{
-		values, ok := r.URL.Query()["pulls"]
+		values, ok := queryArgs["pulls"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -22399,7 +22963,7 @@ func decodeIssuesListParams(args map[string]string, r *http.Request) (IssuesList
 	}
 	// Decode query: per_page.
 	{
-		values, ok := r.URL.Query()["per_page"]
+		values, ok := queryArgs["per_page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -22434,7 +22998,7 @@ func decodeIssuesListParams(args map[string]string, r *http.Request) (IssuesList
 	}
 	// Decode query: page.
 	{
-		values, ok := r.URL.Query()["page"]
+		values, ok := queryArgs["page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -22471,7 +23035,10 @@ func decodeIssuesListParams(args map[string]string, r *http.Request) (IssuesList
 }
 
 func decodeIssuesListAssigneesParams(args map[string]string, r *http.Request) (IssuesListAssigneesParams, error) {
-	var params IssuesListAssigneesParams
+	var (
+		params    IssuesListAssigneesParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode path: owner.
 	{
 		param := args["owner"]
@@ -22536,7 +23103,7 @@ func decodeIssuesListAssigneesParams(args map[string]string, r *http.Request) (I
 	}
 	// Decode query: per_page.
 	{
-		values, ok := r.URL.Query()["per_page"]
+		values, ok := queryArgs["per_page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -22571,7 +23138,7 @@ func decodeIssuesListAssigneesParams(args map[string]string, r *http.Request) (I
 	}
 	// Decode query: page.
 	{
-		values, ok := r.URL.Query()["page"]
+		values, ok := queryArgs["page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -22608,7 +23175,10 @@ func decodeIssuesListAssigneesParams(args map[string]string, r *http.Request) (I
 }
 
 func decodeIssuesListCommentsParams(args map[string]string, r *http.Request) (IssuesListCommentsParams, error) {
-	var params IssuesListCommentsParams
+	var (
+		params    IssuesListCommentsParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode path: owner.
 	{
 		param := args["owner"]
@@ -22704,7 +23274,7 @@ func decodeIssuesListCommentsParams(args map[string]string, r *http.Request) (Is
 	}
 	// Decode query: since.
 	{
-		values, ok := r.URL.Query()["since"]
+		values, ok := queryArgs["since"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -22739,7 +23309,7 @@ func decodeIssuesListCommentsParams(args map[string]string, r *http.Request) (Is
 	}
 	// Decode query: per_page.
 	{
-		values, ok := r.URL.Query()["per_page"]
+		values, ok := queryArgs["per_page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -22774,7 +23344,7 @@ func decodeIssuesListCommentsParams(args map[string]string, r *http.Request) (Is
 	}
 	// Decode query: page.
 	{
-		values, ok := r.URL.Query()["page"]
+		values, ok := queryArgs["page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -22811,7 +23381,10 @@ func decodeIssuesListCommentsParams(args map[string]string, r *http.Request) (Is
 }
 
 func decodeIssuesListCommentsForRepoParams(args map[string]string, r *http.Request) (IssuesListCommentsForRepoParams, error) {
-	var params IssuesListCommentsForRepoParams
+	var (
+		params    IssuesListCommentsForRepoParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode path: owner.
 	{
 		param := args["owner"]
@@ -22876,7 +23449,7 @@ func decodeIssuesListCommentsForRepoParams(args map[string]string, r *http.Reque
 	}
 	// Decode query: sort.
 	{
-		values, ok := r.URL.Query()["sort"]
+		values, ok := queryArgs["sort"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -22927,7 +23500,7 @@ func decodeIssuesListCommentsForRepoParams(args map[string]string, r *http.Reque
 	}
 	// Decode query: direction.
 	{
-		values, ok := r.URL.Query()["direction"]
+		values, ok := queryArgs["direction"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -22978,7 +23551,7 @@ func decodeIssuesListCommentsForRepoParams(args map[string]string, r *http.Reque
 	}
 	// Decode query: since.
 	{
-		values, ok := r.URL.Query()["since"]
+		values, ok := queryArgs["since"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -23013,7 +23586,7 @@ func decodeIssuesListCommentsForRepoParams(args map[string]string, r *http.Reque
 	}
 	// Decode query: per_page.
 	{
-		values, ok := r.URL.Query()["per_page"]
+		values, ok := queryArgs["per_page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -23048,7 +23621,7 @@ func decodeIssuesListCommentsForRepoParams(args map[string]string, r *http.Reque
 	}
 	// Decode query: page.
 	{
-		values, ok := r.URL.Query()["page"]
+		values, ok := queryArgs["page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -23085,7 +23658,10 @@ func decodeIssuesListCommentsForRepoParams(args map[string]string, r *http.Reque
 }
 
 func decodeIssuesListEventsForRepoParams(args map[string]string, r *http.Request) (IssuesListEventsForRepoParams, error) {
-	var params IssuesListEventsForRepoParams
+	var (
+		params    IssuesListEventsForRepoParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode path: owner.
 	{
 		param := args["owner"]
@@ -23150,7 +23726,7 @@ func decodeIssuesListEventsForRepoParams(args map[string]string, r *http.Request
 	}
 	// Decode query: per_page.
 	{
-		values, ok := r.URL.Query()["per_page"]
+		values, ok := queryArgs["per_page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -23185,7 +23761,7 @@ func decodeIssuesListEventsForRepoParams(args map[string]string, r *http.Request
 	}
 	// Decode query: page.
 	{
-		values, ok := r.URL.Query()["page"]
+		values, ok := queryArgs["page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -23222,10 +23798,13 @@ func decodeIssuesListEventsForRepoParams(args map[string]string, r *http.Request
 }
 
 func decodeIssuesListForAuthenticatedUserParams(args map[string]string, r *http.Request) (IssuesListForAuthenticatedUserParams, error) {
-	var params IssuesListForAuthenticatedUserParams
+	var (
+		params    IssuesListForAuthenticatedUserParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode query: filter.
 	{
-		values, ok := r.URL.Query()["filter"]
+		values, ok := queryArgs["filter"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -23276,7 +23855,7 @@ func decodeIssuesListForAuthenticatedUserParams(args map[string]string, r *http.
 	}
 	// Decode query: state.
 	{
-		values, ok := r.URL.Query()["state"]
+		values, ok := queryArgs["state"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -23327,7 +23906,7 @@ func decodeIssuesListForAuthenticatedUserParams(args map[string]string, r *http.
 	}
 	// Decode query: labels.
 	{
-		values, ok := r.URL.Query()["labels"]
+		values, ok := queryArgs["labels"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -23362,7 +23941,7 @@ func decodeIssuesListForAuthenticatedUserParams(args map[string]string, r *http.
 	}
 	// Decode query: sort.
 	{
-		values, ok := r.URL.Query()["sort"]
+		values, ok := queryArgs["sort"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -23413,7 +23992,7 @@ func decodeIssuesListForAuthenticatedUserParams(args map[string]string, r *http.
 	}
 	// Decode query: direction.
 	{
-		values, ok := r.URL.Query()["direction"]
+		values, ok := queryArgs["direction"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -23464,7 +24043,7 @@ func decodeIssuesListForAuthenticatedUserParams(args map[string]string, r *http.
 	}
 	// Decode query: since.
 	{
-		values, ok := r.URL.Query()["since"]
+		values, ok := queryArgs["since"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -23499,7 +24078,7 @@ func decodeIssuesListForAuthenticatedUserParams(args map[string]string, r *http.
 	}
 	// Decode query: per_page.
 	{
-		values, ok := r.URL.Query()["per_page"]
+		values, ok := queryArgs["per_page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -23534,7 +24113,7 @@ func decodeIssuesListForAuthenticatedUserParams(args map[string]string, r *http.
 	}
 	// Decode query: page.
 	{
-		values, ok := r.URL.Query()["page"]
+		values, ok := queryArgs["page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -23571,7 +24150,10 @@ func decodeIssuesListForAuthenticatedUserParams(args map[string]string, r *http.
 }
 
 func decodeIssuesListForOrgParams(args map[string]string, r *http.Request) (IssuesListForOrgParams, error) {
-	var params IssuesListForOrgParams
+	var (
+		params    IssuesListForOrgParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode path: org.
 	{
 		param := args["org"]
@@ -23605,7 +24187,7 @@ func decodeIssuesListForOrgParams(args map[string]string, r *http.Request) (Issu
 	}
 	// Decode query: filter.
 	{
-		values, ok := r.URL.Query()["filter"]
+		values, ok := queryArgs["filter"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -23656,7 +24238,7 @@ func decodeIssuesListForOrgParams(args map[string]string, r *http.Request) (Issu
 	}
 	// Decode query: state.
 	{
-		values, ok := r.URL.Query()["state"]
+		values, ok := queryArgs["state"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -23707,7 +24289,7 @@ func decodeIssuesListForOrgParams(args map[string]string, r *http.Request) (Issu
 	}
 	// Decode query: labels.
 	{
-		values, ok := r.URL.Query()["labels"]
+		values, ok := queryArgs["labels"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -23742,7 +24324,7 @@ func decodeIssuesListForOrgParams(args map[string]string, r *http.Request) (Issu
 	}
 	// Decode query: sort.
 	{
-		values, ok := r.URL.Query()["sort"]
+		values, ok := queryArgs["sort"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -23793,7 +24375,7 @@ func decodeIssuesListForOrgParams(args map[string]string, r *http.Request) (Issu
 	}
 	// Decode query: direction.
 	{
-		values, ok := r.URL.Query()["direction"]
+		values, ok := queryArgs["direction"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -23844,7 +24426,7 @@ func decodeIssuesListForOrgParams(args map[string]string, r *http.Request) (Issu
 	}
 	// Decode query: since.
 	{
-		values, ok := r.URL.Query()["since"]
+		values, ok := queryArgs["since"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -23879,7 +24461,7 @@ func decodeIssuesListForOrgParams(args map[string]string, r *http.Request) (Issu
 	}
 	// Decode query: per_page.
 	{
-		values, ok := r.URL.Query()["per_page"]
+		values, ok := queryArgs["per_page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -23914,7 +24496,7 @@ func decodeIssuesListForOrgParams(args map[string]string, r *http.Request) (Issu
 	}
 	// Decode query: page.
 	{
-		values, ok := r.URL.Query()["page"]
+		values, ok := queryArgs["page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -23951,7 +24533,10 @@ func decodeIssuesListForOrgParams(args map[string]string, r *http.Request) (Issu
 }
 
 func decodeIssuesListForRepoParams(args map[string]string, r *http.Request) (IssuesListForRepoParams, error) {
-	var params IssuesListForRepoParams
+	var (
+		params    IssuesListForRepoParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode path: owner.
 	{
 		param := args["owner"]
@@ -24016,7 +24601,7 @@ func decodeIssuesListForRepoParams(args map[string]string, r *http.Request) (Iss
 	}
 	// Decode query: milestone.
 	{
-		values, ok := r.URL.Query()["milestone"]
+		values, ok := queryArgs["milestone"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -24051,7 +24636,7 @@ func decodeIssuesListForRepoParams(args map[string]string, r *http.Request) (Iss
 	}
 	// Decode query: state.
 	{
-		values, ok := r.URL.Query()["state"]
+		values, ok := queryArgs["state"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -24102,7 +24687,7 @@ func decodeIssuesListForRepoParams(args map[string]string, r *http.Request) (Iss
 	}
 	// Decode query: assignee.
 	{
-		values, ok := r.URL.Query()["assignee"]
+		values, ok := queryArgs["assignee"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -24137,7 +24722,7 @@ func decodeIssuesListForRepoParams(args map[string]string, r *http.Request) (Iss
 	}
 	// Decode query: creator.
 	{
-		values, ok := r.URL.Query()["creator"]
+		values, ok := queryArgs["creator"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -24172,7 +24757,7 @@ func decodeIssuesListForRepoParams(args map[string]string, r *http.Request) (Iss
 	}
 	// Decode query: mentioned.
 	{
-		values, ok := r.URL.Query()["mentioned"]
+		values, ok := queryArgs["mentioned"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -24207,7 +24792,7 @@ func decodeIssuesListForRepoParams(args map[string]string, r *http.Request) (Iss
 	}
 	// Decode query: labels.
 	{
-		values, ok := r.URL.Query()["labels"]
+		values, ok := queryArgs["labels"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -24242,7 +24827,7 @@ func decodeIssuesListForRepoParams(args map[string]string, r *http.Request) (Iss
 	}
 	// Decode query: sort.
 	{
-		values, ok := r.URL.Query()["sort"]
+		values, ok := queryArgs["sort"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -24293,7 +24878,7 @@ func decodeIssuesListForRepoParams(args map[string]string, r *http.Request) (Iss
 	}
 	// Decode query: direction.
 	{
-		values, ok := r.URL.Query()["direction"]
+		values, ok := queryArgs["direction"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -24344,7 +24929,7 @@ func decodeIssuesListForRepoParams(args map[string]string, r *http.Request) (Iss
 	}
 	// Decode query: since.
 	{
-		values, ok := r.URL.Query()["since"]
+		values, ok := queryArgs["since"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -24379,7 +24964,7 @@ func decodeIssuesListForRepoParams(args map[string]string, r *http.Request) (Iss
 	}
 	// Decode query: per_page.
 	{
-		values, ok := r.URL.Query()["per_page"]
+		values, ok := queryArgs["per_page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -24414,7 +24999,7 @@ func decodeIssuesListForRepoParams(args map[string]string, r *http.Request) (Iss
 	}
 	// Decode query: page.
 	{
-		values, ok := r.URL.Query()["page"]
+		values, ok := queryArgs["page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -24451,7 +25036,10 @@ func decodeIssuesListForRepoParams(args map[string]string, r *http.Request) (Iss
 }
 
 func decodeIssuesListLabelsForMilestoneParams(args map[string]string, r *http.Request) (IssuesListLabelsForMilestoneParams, error) {
-	var params IssuesListLabelsForMilestoneParams
+	var (
+		params    IssuesListLabelsForMilestoneParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode path: owner.
 	{
 		param := args["owner"]
@@ -24547,7 +25135,7 @@ func decodeIssuesListLabelsForMilestoneParams(args map[string]string, r *http.Re
 	}
 	// Decode query: per_page.
 	{
-		values, ok := r.URL.Query()["per_page"]
+		values, ok := queryArgs["per_page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -24582,7 +25170,7 @@ func decodeIssuesListLabelsForMilestoneParams(args map[string]string, r *http.Re
 	}
 	// Decode query: page.
 	{
-		values, ok := r.URL.Query()["page"]
+		values, ok := queryArgs["page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -24619,7 +25207,10 @@ func decodeIssuesListLabelsForMilestoneParams(args map[string]string, r *http.Re
 }
 
 func decodeIssuesListLabelsForRepoParams(args map[string]string, r *http.Request) (IssuesListLabelsForRepoParams, error) {
-	var params IssuesListLabelsForRepoParams
+	var (
+		params    IssuesListLabelsForRepoParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode path: owner.
 	{
 		param := args["owner"]
@@ -24684,7 +25275,7 @@ func decodeIssuesListLabelsForRepoParams(args map[string]string, r *http.Request
 	}
 	// Decode query: per_page.
 	{
-		values, ok := r.URL.Query()["per_page"]
+		values, ok := queryArgs["per_page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -24719,7 +25310,7 @@ func decodeIssuesListLabelsForRepoParams(args map[string]string, r *http.Request
 	}
 	// Decode query: page.
 	{
-		values, ok := r.URL.Query()["page"]
+		values, ok := queryArgs["page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -24756,7 +25347,10 @@ func decodeIssuesListLabelsForRepoParams(args map[string]string, r *http.Request
 }
 
 func decodeIssuesListLabelsOnIssueParams(args map[string]string, r *http.Request) (IssuesListLabelsOnIssueParams, error) {
-	var params IssuesListLabelsOnIssueParams
+	var (
+		params    IssuesListLabelsOnIssueParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode path: owner.
 	{
 		param := args["owner"]
@@ -24852,7 +25446,7 @@ func decodeIssuesListLabelsOnIssueParams(args map[string]string, r *http.Request
 	}
 	// Decode query: per_page.
 	{
-		values, ok := r.URL.Query()["per_page"]
+		values, ok := queryArgs["per_page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -24887,7 +25481,7 @@ func decodeIssuesListLabelsOnIssueParams(args map[string]string, r *http.Request
 	}
 	// Decode query: page.
 	{
-		values, ok := r.URL.Query()["page"]
+		values, ok := queryArgs["page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -24924,7 +25518,10 @@ func decodeIssuesListLabelsOnIssueParams(args map[string]string, r *http.Request
 }
 
 func decodeIssuesListMilestonesParams(args map[string]string, r *http.Request) (IssuesListMilestonesParams, error) {
-	var params IssuesListMilestonesParams
+	var (
+		params    IssuesListMilestonesParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode path: owner.
 	{
 		param := args["owner"]
@@ -24989,7 +25586,7 @@ func decodeIssuesListMilestonesParams(args map[string]string, r *http.Request) (
 	}
 	// Decode query: state.
 	{
-		values, ok := r.URL.Query()["state"]
+		values, ok := queryArgs["state"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -25040,7 +25637,7 @@ func decodeIssuesListMilestonesParams(args map[string]string, r *http.Request) (
 	}
 	// Decode query: sort.
 	{
-		values, ok := r.URL.Query()["sort"]
+		values, ok := queryArgs["sort"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -25091,7 +25688,7 @@ func decodeIssuesListMilestonesParams(args map[string]string, r *http.Request) (
 	}
 	// Decode query: direction.
 	{
-		values, ok := r.URL.Query()["direction"]
+		values, ok := queryArgs["direction"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -25142,7 +25739,7 @@ func decodeIssuesListMilestonesParams(args map[string]string, r *http.Request) (
 	}
 	// Decode query: per_page.
 	{
-		values, ok := r.URL.Query()["per_page"]
+		values, ok := queryArgs["per_page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -25177,7 +25774,7 @@ func decodeIssuesListMilestonesParams(args map[string]string, r *http.Request) (
 	}
 	// Decode query: page.
 	{
-		values, ok := r.URL.Query()["page"]
+		values, ok := queryArgs["page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -25214,7 +25811,9 @@ func decodeIssuesListMilestonesParams(args map[string]string, r *http.Request) (
 }
 
 func decodeIssuesLockParams(args map[string]string, r *http.Request) (IssuesLockParams, error) {
-	var params IssuesLockParams
+	var (
+		params IssuesLockParams
+	)
 	// Decode path: owner.
 	{
 		param := args["owner"]
@@ -25312,7 +25911,9 @@ func decodeIssuesLockParams(args map[string]string, r *http.Request) (IssuesLock
 }
 
 func decodeIssuesRemoveAllLabelsParams(args map[string]string, r *http.Request) (IssuesRemoveAllLabelsParams, error) {
-	var params IssuesRemoveAllLabelsParams
+	var (
+		params IssuesRemoveAllLabelsParams
+	)
 	// Decode path: owner.
 	{
 		param := args["owner"]
@@ -25410,7 +26011,9 @@ func decodeIssuesRemoveAllLabelsParams(args map[string]string, r *http.Request) 
 }
 
 func decodeIssuesRemoveAssigneesParams(args map[string]string, r *http.Request) (IssuesRemoveAssigneesParams, error) {
-	var params IssuesRemoveAssigneesParams
+	var (
+		params IssuesRemoveAssigneesParams
+	)
 	// Decode path: owner.
 	{
 		param := args["owner"]
@@ -25508,7 +26111,9 @@ func decodeIssuesRemoveAssigneesParams(args map[string]string, r *http.Request) 
 }
 
 func decodeIssuesRemoveLabelParams(args map[string]string, r *http.Request) (IssuesRemoveLabelParams, error) {
-	var params IssuesRemoveLabelParams
+	var (
+		params IssuesRemoveLabelParams
+	)
 	// Decode path: owner.
 	{
 		param := args["owner"]
@@ -25637,7 +26242,9 @@ func decodeIssuesRemoveLabelParams(args map[string]string, r *http.Request) (Iss
 }
 
 func decodeIssuesUnlockParams(args map[string]string, r *http.Request) (IssuesUnlockParams, error) {
-	var params IssuesUnlockParams
+	var (
+		params IssuesUnlockParams
+	)
 	// Decode path: owner.
 	{
 		param := args["owner"]
@@ -25735,7 +26342,9 @@ func decodeIssuesUnlockParams(args map[string]string, r *http.Request) (IssuesUn
 }
 
 func decodeIssuesUpdateParams(args map[string]string, r *http.Request) (IssuesUpdateParams, error) {
-	var params IssuesUpdateParams
+	var (
+		params IssuesUpdateParams
+	)
 	// Decode path: owner.
 	{
 		param := args["owner"]
@@ -25833,7 +26442,9 @@ func decodeIssuesUpdateParams(args map[string]string, r *http.Request) (IssuesUp
 }
 
 func decodeIssuesUpdateCommentParams(args map[string]string, r *http.Request) (IssuesUpdateCommentParams, error) {
-	var params IssuesUpdateCommentParams
+	var (
+		params IssuesUpdateCommentParams
+	)
 	// Decode path: owner.
 	{
 		param := args["owner"]
@@ -25931,7 +26542,9 @@ func decodeIssuesUpdateCommentParams(args map[string]string, r *http.Request) (I
 }
 
 func decodeIssuesUpdateLabelParams(args map[string]string, r *http.Request) (IssuesUpdateLabelParams, error) {
-	var params IssuesUpdateLabelParams
+	var (
+		params IssuesUpdateLabelParams
+	)
 	// Decode path: owner.
 	{
 		param := args["owner"]
@@ -26029,7 +26642,9 @@ func decodeIssuesUpdateLabelParams(args map[string]string, r *http.Request) (Iss
 }
 
 func decodeIssuesUpdateMilestoneParams(args map[string]string, r *http.Request) (IssuesUpdateMilestoneParams, error) {
-	var params IssuesUpdateMilestoneParams
+	var (
+		params IssuesUpdateMilestoneParams
+	)
 	// Decode path: owner.
 	{
 		param := args["owner"]
@@ -26127,7 +26742,9 @@ func decodeIssuesUpdateMilestoneParams(args map[string]string, r *http.Request) 
 }
 
 func decodeLicensesGetParams(args map[string]string, r *http.Request) (LicensesGetParams, error) {
-	var params LicensesGetParams
+	var (
+		params LicensesGetParams
+	)
 	// Decode path: license.
 	{
 		param := args["license"]
@@ -26163,10 +26780,13 @@ func decodeLicensesGetParams(args map[string]string, r *http.Request) (LicensesG
 }
 
 func decodeLicensesGetAllCommonlyUsedParams(args map[string]string, r *http.Request) (LicensesGetAllCommonlyUsedParams, error) {
-	var params LicensesGetAllCommonlyUsedParams
+	var (
+		params    LicensesGetAllCommonlyUsedParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode query: featured.
 	{
-		values, ok := r.URL.Query()["featured"]
+		values, ok := queryArgs["featured"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -26201,7 +26821,7 @@ func decodeLicensesGetAllCommonlyUsedParams(args map[string]string, r *http.Requ
 	}
 	// Decode query: per_page.
 	{
-		values, ok := r.URL.Query()["per_page"]
+		values, ok := queryArgs["per_page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -26236,7 +26856,7 @@ func decodeLicensesGetAllCommonlyUsedParams(args map[string]string, r *http.Requ
 	}
 	// Decode query: page.
 	{
-		values, ok := r.URL.Query()["page"]
+		values, ok := queryArgs["page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -26273,7 +26893,9 @@ func decodeLicensesGetAllCommonlyUsedParams(args map[string]string, r *http.Requ
 }
 
 func decodeLicensesGetForRepoParams(args map[string]string, r *http.Request) (LicensesGetForRepoParams, error) {
-	var params LicensesGetForRepoParams
+	var (
+		params LicensesGetForRepoParams
+	)
 	// Decode path: owner.
 	{
 		param := args["owner"]
@@ -26340,7 +26962,9 @@ func decodeLicensesGetForRepoParams(args map[string]string, r *http.Request) (Li
 }
 
 func decodeMigrationsCancelImportParams(args map[string]string, r *http.Request) (MigrationsCancelImportParams, error) {
-	var params MigrationsCancelImportParams
+	var (
+		params MigrationsCancelImportParams
+	)
 	// Decode path: owner.
 	{
 		param := args["owner"]
@@ -26407,7 +27031,9 @@ func decodeMigrationsCancelImportParams(args map[string]string, r *http.Request)
 }
 
 func decodeMigrationsDeleteArchiveForAuthenticatedUserParams(args map[string]string, r *http.Request) (MigrationsDeleteArchiveForAuthenticatedUserParams, error) {
-	var params MigrationsDeleteArchiveForAuthenticatedUserParams
+	var (
+		params MigrationsDeleteArchiveForAuthenticatedUserParams
+	)
 	// Decode path: migration_id.
 	{
 		param := args["migration_id"]
@@ -26443,7 +27069,9 @@ func decodeMigrationsDeleteArchiveForAuthenticatedUserParams(args map[string]str
 }
 
 func decodeMigrationsDeleteArchiveForOrgParams(args map[string]string, r *http.Request) (MigrationsDeleteArchiveForOrgParams, error) {
-	var params MigrationsDeleteArchiveForOrgParams
+	var (
+		params MigrationsDeleteArchiveForOrgParams
+	)
 	// Decode path: org.
 	{
 		param := args["org"]
@@ -26510,7 +27138,9 @@ func decodeMigrationsDeleteArchiveForOrgParams(args map[string]string, r *http.R
 }
 
 func decodeMigrationsDownloadArchiveForOrgParams(args map[string]string, r *http.Request) (MigrationsDownloadArchiveForOrgParams, error) {
-	var params MigrationsDownloadArchiveForOrgParams
+	var (
+		params MigrationsDownloadArchiveForOrgParams
+	)
 	// Decode path: org.
 	{
 		param := args["org"]
@@ -26577,7 +27207,9 @@ func decodeMigrationsDownloadArchiveForOrgParams(args map[string]string, r *http
 }
 
 func decodeMigrationsGetArchiveForAuthenticatedUserParams(args map[string]string, r *http.Request) (MigrationsGetArchiveForAuthenticatedUserParams, error) {
-	var params MigrationsGetArchiveForAuthenticatedUserParams
+	var (
+		params MigrationsGetArchiveForAuthenticatedUserParams
+	)
 	// Decode path: migration_id.
 	{
 		param := args["migration_id"]
@@ -26613,7 +27245,10 @@ func decodeMigrationsGetArchiveForAuthenticatedUserParams(args map[string]string
 }
 
 func decodeMigrationsGetCommitAuthorsParams(args map[string]string, r *http.Request) (MigrationsGetCommitAuthorsParams, error) {
-	var params MigrationsGetCommitAuthorsParams
+	var (
+		params    MigrationsGetCommitAuthorsParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode path: owner.
 	{
 		param := args["owner"]
@@ -26678,7 +27313,7 @@ func decodeMigrationsGetCommitAuthorsParams(args map[string]string, r *http.Requ
 	}
 	// Decode query: since.
 	{
-		values, ok := r.URL.Query()["since"]
+		values, ok := queryArgs["since"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -26715,7 +27350,9 @@ func decodeMigrationsGetCommitAuthorsParams(args map[string]string, r *http.Requ
 }
 
 func decodeMigrationsGetImportStatusParams(args map[string]string, r *http.Request) (MigrationsGetImportStatusParams, error) {
-	var params MigrationsGetImportStatusParams
+	var (
+		params MigrationsGetImportStatusParams
+	)
 	// Decode path: owner.
 	{
 		param := args["owner"]
@@ -26782,7 +27419,9 @@ func decodeMigrationsGetImportStatusParams(args map[string]string, r *http.Reque
 }
 
 func decodeMigrationsGetLargeFilesParams(args map[string]string, r *http.Request) (MigrationsGetLargeFilesParams, error) {
-	var params MigrationsGetLargeFilesParams
+	var (
+		params MigrationsGetLargeFilesParams
+	)
 	// Decode path: owner.
 	{
 		param := args["owner"]
@@ -26849,7 +27488,10 @@ func decodeMigrationsGetLargeFilesParams(args map[string]string, r *http.Request
 }
 
 func decodeMigrationsGetStatusForAuthenticatedUserParams(args map[string]string, r *http.Request) (MigrationsGetStatusForAuthenticatedUserParams, error) {
-	var params MigrationsGetStatusForAuthenticatedUserParams
+	var (
+		params    MigrationsGetStatusForAuthenticatedUserParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode path: migration_id.
 	{
 		param := args["migration_id"]
@@ -26883,7 +27525,7 @@ func decodeMigrationsGetStatusForAuthenticatedUserParams(args map[string]string,
 	}
 	// Decode query: exclude.
 	{
-		values, ok := r.URL.Query()["exclude"]
+		values, ok := queryArgs["exclude"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -26922,7 +27564,10 @@ func decodeMigrationsGetStatusForAuthenticatedUserParams(args map[string]string,
 }
 
 func decodeMigrationsGetStatusForOrgParams(args map[string]string, r *http.Request) (MigrationsGetStatusForOrgParams, error) {
-	var params MigrationsGetStatusForOrgParams
+	var (
+		params    MigrationsGetStatusForOrgParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode path: org.
 	{
 		param := args["org"]
@@ -26987,7 +27632,7 @@ func decodeMigrationsGetStatusForOrgParams(args map[string]string, r *http.Reque
 	}
 	// Decode query: exclude.
 	{
-		values, ok := r.URL.Query()["exclude"]
+		values, ok := queryArgs["exclude"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -27048,10 +27693,13 @@ func decodeMigrationsGetStatusForOrgParams(args map[string]string, r *http.Reque
 }
 
 func decodeMigrationsListForAuthenticatedUserParams(args map[string]string, r *http.Request) (MigrationsListForAuthenticatedUserParams, error) {
-	var params MigrationsListForAuthenticatedUserParams
+	var (
+		params    MigrationsListForAuthenticatedUserParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode query: per_page.
 	{
-		values, ok := r.URL.Query()["per_page"]
+		values, ok := queryArgs["per_page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -27086,7 +27734,7 @@ func decodeMigrationsListForAuthenticatedUserParams(args map[string]string, r *h
 	}
 	// Decode query: page.
 	{
-		values, ok := r.URL.Query()["page"]
+		values, ok := queryArgs["page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -27123,7 +27771,10 @@ func decodeMigrationsListForAuthenticatedUserParams(args map[string]string, r *h
 }
 
 func decodeMigrationsListForOrgParams(args map[string]string, r *http.Request) (MigrationsListForOrgParams, error) {
-	var params MigrationsListForOrgParams
+	var (
+		params    MigrationsListForOrgParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode path: org.
 	{
 		param := args["org"]
@@ -27157,7 +27808,7 @@ func decodeMigrationsListForOrgParams(args map[string]string, r *http.Request) (
 	}
 	// Decode query: per_page.
 	{
-		values, ok := r.URL.Query()["per_page"]
+		values, ok := queryArgs["per_page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -27192,7 +27843,7 @@ func decodeMigrationsListForOrgParams(args map[string]string, r *http.Request) (
 	}
 	// Decode query: page.
 	{
-		values, ok := r.URL.Query()["page"]
+		values, ok := queryArgs["page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -27227,7 +27878,7 @@ func decodeMigrationsListForOrgParams(args map[string]string, r *http.Request) (
 	}
 	// Decode query: exclude.
 	{
-		values, ok := r.URL.Query()["exclude"]
+		values, ok := queryArgs["exclude"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -27288,7 +27939,10 @@ func decodeMigrationsListForOrgParams(args map[string]string, r *http.Request) (
 }
 
 func decodeMigrationsListReposForOrgParams(args map[string]string, r *http.Request) (MigrationsListReposForOrgParams, error) {
-	var params MigrationsListReposForOrgParams
+	var (
+		params    MigrationsListReposForOrgParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode path: org.
 	{
 		param := args["org"]
@@ -27353,7 +28007,7 @@ func decodeMigrationsListReposForOrgParams(args map[string]string, r *http.Reque
 	}
 	// Decode query: per_page.
 	{
-		values, ok := r.URL.Query()["per_page"]
+		values, ok := queryArgs["per_page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -27388,7 +28042,7 @@ func decodeMigrationsListReposForOrgParams(args map[string]string, r *http.Reque
 	}
 	// Decode query: page.
 	{
-		values, ok := r.URL.Query()["page"]
+		values, ok := queryArgs["page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -27425,7 +28079,10 @@ func decodeMigrationsListReposForOrgParams(args map[string]string, r *http.Reque
 }
 
 func decodeMigrationsListReposForUserParams(args map[string]string, r *http.Request) (MigrationsListReposForUserParams, error) {
-	var params MigrationsListReposForUserParams
+	var (
+		params    MigrationsListReposForUserParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode path: migration_id.
 	{
 		param := args["migration_id"]
@@ -27459,7 +28116,7 @@ func decodeMigrationsListReposForUserParams(args map[string]string, r *http.Requ
 	}
 	// Decode query: per_page.
 	{
-		values, ok := r.URL.Query()["per_page"]
+		values, ok := queryArgs["per_page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -27494,7 +28151,7 @@ func decodeMigrationsListReposForUserParams(args map[string]string, r *http.Requ
 	}
 	// Decode query: page.
 	{
-		values, ok := r.URL.Query()["page"]
+		values, ok := queryArgs["page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -27531,7 +28188,9 @@ func decodeMigrationsListReposForUserParams(args map[string]string, r *http.Requ
 }
 
 func decodeMigrationsMapCommitAuthorParams(args map[string]string, r *http.Request) (MigrationsMapCommitAuthorParams, error) {
-	var params MigrationsMapCommitAuthorParams
+	var (
+		params MigrationsMapCommitAuthorParams
+	)
 	// Decode path: owner.
 	{
 		param := args["owner"]
@@ -27629,7 +28288,9 @@ func decodeMigrationsMapCommitAuthorParams(args map[string]string, r *http.Reque
 }
 
 func decodeMigrationsSetLfsPreferenceParams(args map[string]string, r *http.Request) (MigrationsSetLfsPreferenceParams, error) {
-	var params MigrationsSetLfsPreferenceParams
+	var (
+		params MigrationsSetLfsPreferenceParams
+	)
 	// Decode path: owner.
 	{
 		param := args["owner"]
@@ -27696,7 +28357,9 @@ func decodeMigrationsSetLfsPreferenceParams(args map[string]string, r *http.Requ
 }
 
 func decodeMigrationsStartForOrgParams(args map[string]string, r *http.Request) (MigrationsStartForOrgParams, error) {
-	var params MigrationsStartForOrgParams
+	var (
+		params MigrationsStartForOrgParams
+	)
 	// Decode path: org.
 	{
 		param := args["org"]
@@ -27732,7 +28395,9 @@ func decodeMigrationsStartForOrgParams(args map[string]string, r *http.Request) 
 }
 
 func decodeMigrationsStartImportParams(args map[string]string, r *http.Request) (MigrationsStartImportParams, error) {
-	var params MigrationsStartImportParams
+	var (
+		params MigrationsStartImportParams
+	)
 	// Decode path: owner.
 	{
 		param := args["owner"]
@@ -27799,7 +28464,9 @@ func decodeMigrationsStartImportParams(args map[string]string, r *http.Request) 
 }
 
 func decodeMigrationsUnlockRepoForAuthenticatedUserParams(args map[string]string, r *http.Request) (MigrationsUnlockRepoForAuthenticatedUserParams, error) {
-	var params MigrationsUnlockRepoForAuthenticatedUserParams
+	var (
+		params MigrationsUnlockRepoForAuthenticatedUserParams
+	)
 	// Decode path: migration_id.
 	{
 		param := args["migration_id"]
@@ -27866,7 +28533,9 @@ func decodeMigrationsUnlockRepoForAuthenticatedUserParams(args map[string]string
 }
 
 func decodeMigrationsUnlockRepoForOrgParams(args map[string]string, r *http.Request) (MigrationsUnlockRepoForOrgParams, error) {
-	var params MigrationsUnlockRepoForOrgParams
+	var (
+		params MigrationsUnlockRepoForOrgParams
+	)
 	// Decode path: org.
 	{
 		param := args["org"]
@@ -27964,7 +28633,9 @@ func decodeMigrationsUnlockRepoForOrgParams(args map[string]string, r *http.Requ
 }
 
 func decodeMigrationsUpdateImportParams(args map[string]string, r *http.Request) (MigrationsUpdateImportParams, error) {
-	var params MigrationsUpdateImportParams
+	var (
+		params MigrationsUpdateImportParams
+	)
 	// Decode path: owner.
 	{
 		param := args["owner"]
@@ -28031,7 +28702,9 @@ func decodeMigrationsUpdateImportParams(args map[string]string, r *http.Request)
 }
 
 func decodeOAuthAuthorizationsDeleteAuthorizationParams(args map[string]string, r *http.Request) (OAuthAuthorizationsDeleteAuthorizationParams, error) {
-	var params OAuthAuthorizationsDeleteAuthorizationParams
+	var (
+		params OAuthAuthorizationsDeleteAuthorizationParams
+	)
 	// Decode path: authorization_id.
 	{
 		param := args["authorization_id"]
@@ -28067,7 +28740,9 @@ func decodeOAuthAuthorizationsDeleteAuthorizationParams(args map[string]string, 
 }
 
 func decodeOAuthAuthorizationsDeleteGrantParams(args map[string]string, r *http.Request) (OAuthAuthorizationsDeleteGrantParams, error) {
-	var params OAuthAuthorizationsDeleteGrantParams
+	var (
+		params OAuthAuthorizationsDeleteGrantParams
+	)
 	// Decode path: grant_id.
 	{
 		param := args["grant_id"]
@@ -28103,7 +28778,9 @@ func decodeOAuthAuthorizationsDeleteGrantParams(args map[string]string, r *http.
 }
 
 func decodeOAuthAuthorizationsGetAuthorizationParams(args map[string]string, r *http.Request) (OAuthAuthorizationsGetAuthorizationParams, error) {
-	var params OAuthAuthorizationsGetAuthorizationParams
+	var (
+		params OAuthAuthorizationsGetAuthorizationParams
+	)
 	// Decode path: authorization_id.
 	{
 		param := args["authorization_id"]
@@ -28139,7 +28816,9 @@ func decodeOAuthAuthorizationsGetAuthorizationParams(args map[string]string, r *
 }
 
 func decodeOAuthAuthorizationsGetGrantParams(args map[string]string, r *http.Request) (OAuthAuthorizationsGetGrantParams, error) {
-	var params OAuthAuthorizationsGetGrantParams
+	var (
+		params OAuthAuthorizationsGetGrantParams
+	)
 	// Decode path: grant_id.
 	{
 		param := args["grant_id"]
@@ -28175,7 +28854,9 @@ func decodeOAuthAuthorizationsGetGrantParams(args map[string]string, r *http.Req
 }
 
 func decodeOAuthAuthorizationsGetOrCreateAuthorizationForAppParams(args map[string]string, r *http.Request) (OAuthAuthorizationsGetOrCreateAuthorizationForAppParams, error) {
-	var params OAuthAuthorizationsGetOrCreateAuthorizationForAppParams
+	var (
+		params OAuthAuthorizationsGetOrCreateAuthorizationForAppParams
+	)
 	// Decode path: client_id.
 	{
 		param := args["client_id"]
@@ -28211,7 +28892,9 @@ func decodeOAuthAuthorizationsGetOrCreateAuthorizationForAppParams(args map[stri
 }
 
 func decodeOAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintParams(args map[string]string, r *http.Request) (OAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintParams, error) {
-	var params OAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintParams
+	var (
+		params OAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintParams
+	)
 	// Decode path: client_id.
 	{
 		param := args["client_id"]
@@ -28278,10 +28961,13 @@ func decodeOAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintParams
 }
 
 func decodeOAuthAuthorizationsListAuthorizationsParams(args map[string]string, r *http.Request) (OAuthAuthorizationsListAuthorizationsParams, error) {
-	var params OAuthAuthorizationsListAuthorizationsParams
+	var (
+		params    OAuthAuthorizationsListAuthorizationsParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode query: per_page.
 	{
-		values, ok := r.URL.Query()["per_page"]
+		values, ok := queryArgs["per_page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -28316,7 +29002,7 @@ func decodeOAuthAuthorizationsListAuthorizationsParams(args map[string]string, r
 	}
 	// Decode query: page.
 	{
-		values, ok := r.URL.Query()["page"]
+		values, ok := queryArgs["page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -28351,7 +29037,7 @@ func decodeOAuthAuthorizationsListAuthorizationsParams(args map[string]string, r
 	}
 	// Decode query: client_id.
 	{
-		values, ok := r.URL.Query()["client_id"]
+		values, ok := queryArgs["client_id"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -28388,10 +29074,13 @@ func decodeOAuthAuthorizationsListAuthorizationsParams(args map[string]string, r
 }
 
 func decodeOAuthAuthorizationsListGrantsParams(args map[string]string, r *http.Request) (OAuthAuthorizationsListGrantsParams, error) {
-	var params OAuthAuthorizationsListGrantsParams
+	var (
+		params    OAuthAuthorizationsListGrantsParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode query: per_page.
 	{
-		values, ok := r.URL.Query()["per_page"]
+		values, ok := queryArgs["per_page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -28426,7 +29115,7 @@ func decodeOAuthAuthorizationsListGrantsParams(args map[string]string, r *http.R
 	}
 	// Decode query: page.
 	{
-		values, ok := r.URL.Query()["page"]
+		values, ok := queryArgs["page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -28461,7 +29150,7 @@ func decodeOAuthAuthorizationsListGrantsParams(args map[string]string, r *http.R
 	}
 	// Decode query: client_id.
 	{
-		values, ok := r.URL.Query()["client_id"]
+		values, ok := queryArgs["client_id"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -28498,7 +29187,9 @@ func decodeOAuthAuthorizationsListGrantsParams(args map[string]string, r *http.R
 }
 
 func decodeOAuthAuthorizationsUpdateAuthorizationParams(args map[string]string, r *http.Request) (OAuthAuthorizationsUpdateAuthorizationParams, error) {
-	var params OAuthAuthorizationsUpdateAuthorizationParams
+	var (
+		params OAuthAuthorizationsUpdateAuthorizationParams
+	)
 	// Decode path: authorization_id.
 	{
 		param := args["authorization_id"]
@@ -28534,7 +29225,9 @@ func decodeOAuthAuthorizationsUpdateAuthorizationParams(args map[string]string, 
 }
 
 func decodeOrgsBlockUserParams(args map[string]string, r *http.Request) (OrgsBlockUserParams, error) {
-	var params OrgsBlockUserParams
+	var (
+		params OrgsBlockUserParams
+	)
 	// Decode path: org.
 	{
 		param := args["org"]
@@ -28601,7 +29294,9 @@ func decodeOrgsBlockUserParams(args map[string]string, r *http.Request) (OrgsBlo
 }
 
 func decodeOrgsCancelInvitationParams(args map[string]string, r *http.Request) (OrgsCancelInvitationParams, error) {
-	var params OrgsCancelInvitationParams
+	var (
+		params OrgsCancelInvitationParams
+	)
 	// Decode path: org.
 	{
 		param := args["org"]
@@ -28668,7 +29363,9 @@ func decodeOrgsCancelInvitationParams(args map[string]string, r *http.Request) (
 }
 
 func decodeOrgsCheckBlockedUserParams(args map[string]string, r *http.Request) (OrgsCheckBlockedUserParams, error) {
-	var params OrgsCheckBlockedUserParams
+	var (
+		params OrgsCheckBlockedUserParams
+	)
 	// Decode path: org.
 	{
 		param := args["org"]
@@ -28735,7 +29432,9 @@ func decodeOrgsCheckBlockedUserParams(args map[string]string, r *http.Request) (
 }
 
 func decodeOrgsCheckMembershipForUserParams(args map[string]string, r *http.Request) (OrgsCheckMembershipForUserParams, error) {
-	var params OrgsCheckMembershipForUserParams
+	var (
+		params OrgsCheckMembershipForUserParams
+	)
 	// Decode path: org.
 	{
 		param := args["org"]
@@ -28802,7 +29501,9 @@ func decodeOrgsCheckMembershipForUserParams(args map[string]string, r *http.Requ
 }
 
 func decodeOrgsCheckPublicMembershipForUserParams(args map[string]string, r *http.Request) (OrgsCheckPublicMembershipForUserParams, error) {
-	var params OrgsCheckPublicMembershipForUserParams
+	var (
+		params OrgsCheckPublicMembershipForUserParams
+	)
 	// Decode path: org.
 	{
 		param := args["org"]
@@ -28869,7 +29570,9 @@ func decodeOrgsCheckPublicMembershipForUserParams(args map[string]string, r *htt
 }
 
 func decodeOrgsConvertMemberToOutsideCollaboratorParams(args map[string]string, r *http.Request) (OrgsConvertMemberToOutsideCollaboratorParams, error) {
-	var params OrgsConvertMemberToOutsideCollaboratorParams
+	var (
+		params OrgsConvertMemberToOutsideCollaboratorParams
+	)
 	// Decode path: org.
 	{
 		param := args["org"]
@@ -28936,7 +29639,9 @@ func decodeOrgsConvertMemberToOutsideCollaboratorParams(args map[string]string, 
 }
 
 func decodeOrgsCreateInvitationParams(args map[string]string, r *http.Request) (OrgsCreateInvitationParams, error) {
-	var params OrgsCreateInvitationParams
+	var (
+		params OrgsCreateInvitationParams
+	)
 	// Decode path: org.
 	{
 		param := args["org"]
@@ -28972,7 +29677,9 @@ func decodeOrgsCreateInvitationParams(args map[string]string, r *http.Request) (
 }
 
 func decodeOrgsCreateWebhookParams(args map[string]string, r *http.Request) (OrgsCreateWebhookParams, error) {
-	var params OrgsCreateWebhookParams
+	var (
+		params OrgsCreateWebhookParams
+	)
 	// Decode path: org.
 	{
 		param := args["org"]
@@ -29008,7 +29715,9 @@ func decodeOrgsCreateWebhookParams(args map[string]string, r *http.Request) (Org
 }
 
 func decodeOrgsDeleteWebhookParams(args map[string]string, r *http.Request) (OrgsDeleteWebhookParams, error) {
-	var params OrgsDeleteWebhookParams
+	var (
+		params OrgsDeleteWebhookParams
+	)
 	// Decode path: org.
 	{
 		param := args["org"]
@@ -29075,7 +29784,9 @@ func decodeOrgsDeleteWebhookParams(args map[string]string, r *http.Request) (Org
 }
 
 func decodeOrgsGetParams(args map[string]string, r *http.Request) (OrgsGetParams, error) {
-	var params OrgsGetParams
+	var (
+		params OrgsGetParams
+	)
 	// Decode path: org.
 	{
 		param := args["org"]
@@ -29111,7 +29822,10 @@ func decodeOrgsGetParams(args map[string]string, r *http.Request) (OrgsGetParams
 }
 
 func decodeOrgsGetAuditLogParams(args map[string]string, r *http.Request) (OrgsGetAuditLogParams, error) {
-	var params OrgsGetAuditLogParams
+	var (
+		params    OrgsGetAuditLogParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode path: org.
 	{
 		param := args["org"]
@@ -29145,7 +29859,7 @@ func decodeOrgsGetAuditLogParams(args map[string]string, r *http.Request) (OrgsG
 	}
 	// Decode query: phrase.
 	{
-		values, ok := r.URL.Query()["phrase"]
+		values, ok := queryArgs["phrase"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -29180,7 +29894,7 @@ func decodeOrgsGetAuditLogParams(args map[string]string, r *http.Request) (OrgsG
 	}
 	// Decode query: include.
 	{
-		values, ok := r.URL.Query()["include"]
+		values, ok := queryArgs["include"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -29231,7 +29945,7 @@ func decodeOrgsGetAuditLogParams(args map[string]string, r *http.Request) (OrgsG
 	}
 	// Decode query: after.
 	{
-		values, ok := r.URL.Query()["after"]
+		values, ok := queryArgs["after"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -29266,7 +29980,7 @@ func decodeOrgsGetAuditLogParams(args map[string]string, r *http.Request) (OrgsG
 	}
 	// Decode query: before.
 	{
-		values, ok := r.URL.Query()["before"]
+		values, ok := queryArgs["before"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -29301,7 +30015,7 @@ func decodeOrgsGetAuditLogParams(args map[string]string, r *http.Request) (OrgsG
 	}
 	// Decode query: order.
 	{
-		values, ok := r.URL.Query()["order"]
+		values, ok := queryArgs["order"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -29352,7 +30066,7 @@ func decodeOrgsGetAuditLogParams(args map[string]string, r *http.Request) (OrgsG
 	}
 	// Decode query: per_page.
 	{
-		values, ok := r.URL.Query()["per_page"]
+		values, ok := queryArgs["per_page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -29387,7 +30101,7 @@ func decodeOrgsGetAuditLogParams(args map[string]string, r *http.Request) (OrgsG
 	}
 	// Decode query: page.
 	{
-		values, ok := r.URL.Query()["page"]
+		values, ok := queryArgs["page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -29424,7 +30138,9 @@ func decodeOrgsGetAuditLogParams(args map[string]string, r *http.Request) (OrgsG
 }
 
 func decodeOrgsGetMembershipForAuthenticatedUserParams(args map[string]string, r *http.Request) (OrgsGetMembershipForAuthenticatedUserParams, error) {
-	var params OrgsGetMembershipForAuthenticatedUserParams
+	var (
+		params OrgsGetMembershipForAuthenticatedUserParams
+	)
 	// Decode path: org.
 	{
 		param := args["org"]
@@ -29460,7 +30176,9 @@ func decodeOrgsGetMembershipForAuthenticatedUserParams(args map[string]string, r
 }
 
 func decodeOrgsGetMembershipForUserParams(args map[string]string, r *http.Request) (OrgsGetMembershipForUserParams, error) {
-	var params OrgsGetMembershipForUserParams
+	var (
+		params OrgsGetMembershipForUserParams
+	)
 	// Decode path: org.
 	{
 		param := args["org"]
@@ -29527,7 +30245,9 @@ func decodeOrgsGetMembershipForUserParams(args map[string]string, r *http.Reques
 }
 
 func decodeOrgsGetWebhookParams(args map[string]string, r *http.Request) (OrgsGetWebhookParams, error) {
-	var params OrgsGetWebhookParams
+	var (
+		params OrgsGetWebhookParams
+	)
 	// Decode path: org.
 	{
 		param := args["org"]
@@ -29594,7 +30314,9 @@ func decodeOrgsGetWebhookParams(args map[string]string, r *http.Request) (OrgsGe
 }
 
 func decodeOrgsGetWebhookConfigForOrgParams(args map[string]string, r *http.Request) (OrgsGetWebhookConfigForOrgParams, error) {
-	var params OrgsGetWebhookConfigForOrgParams
+	var (
+		params OrgsGetWebhookConfigForOrgParams
+	)
 	// Decode path: org.
 	{
 		param := args["org"]
@@ -29661,7 +30383,9 @@ func decodeOrgsGetWebhookConfigForOrgParams(args map[string]string, r *http.Requ
 }
 
 func decodeOrgsGetWebhookDeliveryParams(args map[string]string, r *http.Request) (OrgsGetWebhookDeliveryParams, error) {
-	var params OrgsGetWebhookDeliveryParams
+	var (
+		params OrgsGetWebhookDeliveryParams
+	)
 	// Decode path: org.
 	{
 		param := args["org"]
@@ -29759,10 +30483,13 @@ func decodeOrgsGetWebhookDeliveryParams(args map[string]string, r *http.Request)
 }
 
 func decodeOrgsListParams(args map[string]string, r *http.Request) (OrgsListParams, error) {
-	var params OrgsListParams
+	var (
+		params    OrgsListParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode query: since.
 	{
-		values, ok := r.URL.Query()["since"]
+		values, ok := queryArgs["since"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -29797,7 +30524,7 @@ func decodeOrgsListParams(args map[string]string, r *http.Request) (OrgsListPara
 	}
 	// Decode query: per_page.
 	{
-		values, ok := r.URL.Query()["per_page"]
+		values, ok := queryArgs["per_page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -29834,7 +30561,9 @@ func decodeOrgsListParams(args map[string]string, r *http.Request) (OrgsListPara
 }
 
 func decodeOrgsListBlockedUsersParams(args map[string]string, r *http.Request) (OrgsListBlockedUsersParams, error) {
-	var params OrgsListBlockedUsersParams
+	var (
+		params OrgsListBlockedUsersParams
+	)
 	// Decode path: org.
 	{
 		param := args["org"]
@@ -29870,7 +30599,10 @@ func decodeOrgsListBlockedUsersParams(args map[string]string, r *http.Request) (
 }
 
 func decodeOrgsListFailedInvitationsParams(args map[string]string, r *http.Request) (OrgsListFailedInvitationsParams, error) {
-	var params OrgsListFailedInvitationsParams
+	var (
+		params    OrgsListFailedInvitationsParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode path: org.
 	{
 		param := args["org"]
@@ -29904,7 +30636,7 @@ func decodeOrgsListFailedInvitationsParams(args map[string]string, r *http.Reque
 	}
 	// Decode query: per_page.
 	{
-		values, ok := r.URL.Query()["per_page"]
+		values, ok := queryArgs["per_page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -29939,7 +30671,7 @@ func decodeOrgsListFailedInvitationsParams(args map[string]string, r *http.Reque
 	}
 	// Decode query: page.
 	{
-		values, ok := r.URL.Query()["page"]
+		values, ok := queryArgs["page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -29976,10 +30708,13 @@ func decodeOrgsListFailedInvitationsParams(args map[string]string, r *http.Reque
 }
 
 func decodeOrgsListForAuthenticatedUserParams(args map[string]string, r *http.Request) (OrgsListForAuthenticatedUserParams, error) {
-	var params OrgsListForAuthenticatedUserParams
+	var (
+		params    OrgsListForAuthenticatedUserParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode query: per_page.
 	{
-		values, ok := r.URL.Query()["per_page"]
+		values, ok := queryArgs["per_page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -30014,7 +30749,7 @@ func decodeOrgsListForAuthenticatedUserParams(args map[string]string, r *http.Re
 	}
 	// Decode query: page.
 	{
-		values, ok := r.URL.Query()["page"]
+		values, ok := queryArgs["page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -30051,7 +30786,10 @@ func decodeOrgsListForAuthenticatedUserParams(args map[string]string, r *http.Re
 }
 
 func decodeOrgsListForUserParams(args map[string]string, r *http.Request) (OrgsListForUserParams, error) {
-	var params OrgsListForUserParams
+	var (
+		params    OrgsListForUserParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode path: username.
 	{
 		param := args["username"]
@@ -30085,7 +30823,7 @@ func decodeOrgsListForUserParams(args map[string]string, r *http.Request) (OrgsL
 	}
 	// Decode query: per_page.
 	{
-		values, ok := r.URL.Query()["per_page"]
+		values, ok := queryArgs["per_page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -30120,7 +30858,7 @@ func decodeOrgsListForUserParams(args map[string]string, r *http.Request) (OrgsL
 	}
 	// Decode query: page.
 	{
-		values, ok := r.URL.Query()["page"]
+		values, ok := queryArgs["page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -30157,7 +30895,10 @@ func decodeOrgsListForUserParams(args map[string]string, r *http.Request) (OrgsL
 }
 
 func decodeOrgsListInvitationTeamsParams(args map[string]string, r *http.Request) (OrgsListInvitationTeamsParams, error) {
-	var params OrgsListInvitationTeamsParams
+	var (
+		params    OrgsListInvitationTeamsParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode path: org.
 	{
 		param := args["org"]
@@ -30222,7 +30963,7 @@ func decodeOrgsListInvitationTeamsParams(args map[string]string, r *http.Request
 	}
 	// Decode query: per_page.
 	{
-		values, ok := r.URL.Query()["per_page"]
+		values, ok := queryArgs["per_page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -30257,7 +30998,7 @@ func decodeOrgsListInvitationTeamsParams(args map[string]string, r *http.Request
 	}
 	// Decode query: page.
 	{
-		values, ok := r.URL.Query()["page"]
+		values, ok := queryArgs["page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -30294,7 +31035,10 @@ func decodeOrgsListInvitationTeamsParams(args map[string]string, r *http.Request
 }
 
 func decodeOrgsListMembersParams(args map[string]string, r *http.Request) (OrgsListMembersParams, error) {
-	var params OrgsListMembersParams
+	var (
+		params    OrgsListMembersParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode path: org.
 	{
 		param := args["org"]
@@ -30328,7 +31072,7 @@ func decodeOrgsListMembersParams(args map[string]string, r *http.Request) (OrgsL
 	}
 	// Decode query: filter.
 	{
-		values, ok := r.URL.Query()["filter"]
+		values, ok := queryArgs["filter"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -30379,7 +31123,7 @@ func decodeOrgsListMembersParams(args map[string]string, r *http.Request) (OrgsL
 	}
 	// Decode query: role.
 	{
-		values, ok := r.URL.Query()["role"]
+		values, ok := queryArgs["role"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -30430,7 +31174,7 @@ func decodeOrgsListMembersParams(args map[string]string, r *http.Request) (OrgsL
 	}
 	// Decode query: per_page.
 	{
-		values, ok := r.URL.Query()["per_page"]
+		values, ok := queryArgs["per_page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -30465,7 +31209,7 @@ func decodeOrgsListMembersParams(args map[string]string, r *http.Request) (OrgsL
 	}
 	// Decode query: page.
 	{
-		values, ok := r.URL.Query()["page"]
+		values, ok := queryArgs["page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -30502,10 +31246,13 @@ func decodeOrgsListMembersParams(args map[string]string, r *http.Request) (OrgsL
 }
 
 func decodeOrgsListMembershipsForAuthenticatedUserParams(args map[string]string, r *http.Request) (OrgsListMembershipsForAuthenticatedUserParams, error) {
-	var params OrgsListMembershipsForAuthenticatedUserParams
+	var (
+		params    OrgsListMembershipsForAuthenticatedUserParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode query: state.
 	{
-		values, ok := r.URL.Query()["state"]
+		values, ok := queryArgs["state"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -30556,7 +31303,7 @@ func decodeOrgsListMembershipsForAuthenticatedUserParams(args map[string]string,
 	}
 	// Decode query: per_page.
 	{
-		values, ok := r.URL.Query()["per_page"]
+		values, ok := queryArgs["per_page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -30591,7 +31338,7 @@ func decodeOrgsListMembershipsForAuthenticatedUserParams(args map[string]string,
 	}
 	// Decode query: page.
 	{
-		values, ok := r.URL.Query()["page"]
+		values, ok := queryArgs["page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -30628,7 +31375,10 @@ func decodeOrgsListMembershipsForAuthenticatedUserParams(args map[string]string,
 }
 
 func decodeOrgsListOutsideCollaboratorsParams(args map[string]string, r *http.Request) (OrgsListOutsideCollaboratorsParams, error) {
-	var params OrgsListOutsideCollaboratorsParams
+	var (
+		params    OrgsListOutsideCollaboratorsParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode path: org.
 	{
 		param := args["org"]
@@ -30662,7 +31412,7 @@ func decodeOrgsListOutsideCollaboratorsParams(args map[string]string, r *http.Re
 	}
 	// Decode query: filter.
 	{
-		values, ok := r.URL.Query()["filter"]
+		values, ok := queryArgs["filter"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -30713,7 +31463,7 @@ func decodeOrgsListOutsideCollaboratorsParams(args map[string]string, r *http.Re
 	}
 	// Decode query: per_page.
 	{
-		values, ok := r.URL.Query()["per_page"]
+		values, ok := queryArgs["per_page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -30748,7 +31498,7 @@ func decodeOrgsListOutsideCollaboratorsParams(args map[string]string, r *http.Re
 	}
 	// Decode query: page.
 	{
-		values, ok := r.URL.Query()["page"]
+		values, ok := queryArgs["page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -30785,7 +31535,10 @@ func decodeOrgsListOutsideCollaboratorsParams(args map[string]string, r *http.Re
 }
 
 func decodeOrgsListPendingInvitationsParams(args map[string]string, r *http.Request) (OrgsListPendingInvitationsParams, error) {
-	var params OrgsListPendingInvitationsParams
+	var (
+		params    OrgsListPendingInvitationsParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode path: org.
 	{
 		param := args["org"]
@@ -30819,7 +31572,7 @@ func decodeOrgsListPendingInvitationsParams(args map[string]string, r *http.Requ
 	}
 	// Decode query: per_page.
 	{
-		values, ok := r.URL.Query()["per_page"]
+		values, ok := queryArgs["per_page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -30854,7 +31607,7 @@ func decodeOrgsListPendingInvitationsParams(args map[string]string, r *http.Requ
 	}
 	// Decode query: page.
 	{
-		values, ok := r.URL.Query()["page"]
+		values, ok := queryArgs["page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -30891,7 +31644,10 @@ func decodeOrgsListPendingInvitationsParams(args map[string]string, r *http.Requ
 }
 
 func decodeOrgsListPublicMembersParams(args map[string]string, r *http.Request) (OrgsListPublicMembersParams, error) {
-	var params OrgsListPublicMembersParams
+	var (
+		params    OrgsListPublicMembersParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode path: org.
 	{
 		param := args["org"]
@@ -30925,7 +31681,7 @@ func decodeOrgsListPublicMembersParams(args map[string]string, r *http.Request) 
 	}
 	// Decode query: per_page.
 	{
-		values, ok := r.URL.Query()["per_page"]
+		values, ok := queryArgs["per_page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -30960,7 +31716,7 @@ func decodeOrgsListPublicMembersParams(args map[string]string, r *http.Request) 
 	}
 	// Decode query: page.
 	{
-		values, ok := r.URL.Query()["page"]
+		values, ok := queryArgs["page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -30997,7 +31753,9 @@ func decodeOrgsListPublicMembersParams(args map[string]string, r *http.Request) 
 }
 
 func decodeOrgsListSamlSSOAuthorizationsParams(args map[string]string, r *http.Request) (OrgsListSamlSSOAuthorizationsParams, error) {
-	var params OrgsListSamlSSOAuthorizationsParams
+	var (
+		params OrgsListSamlSSOAuthorizationsParams
+	)
 	// Decode path: org.
 	{
 		param := args["org"]
@@ -31033,7 +31791,10 @@ func decodeOrgsListSamlSSOAuthorizationsParams(args map[string]string, r *http.R
 }
 
 func decodeOrgsListWebhookDeliveriesParams(args map[string]string, r *http.Request) (OrgsListWebhookDeliveriesParams, error) {
-	var params OrgsListWebhookDeliveriesParams
+	var (
+		params    OrgsListWebhookDeliveriesParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode path: org.
 	{
 		param := args["org"]
@@ -31098,7 +31859,7 @@ func decodeOrgsListWebhookDeliveriesParams(args map[string]string, r *http.Reque
 	}
 	// Decode query: per_page.
 	{
-		values, ok := r.URL.Query()["per_page"]
+		values, ok := queryArgs["per_page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -31133,7 +31894,7 @@ func decodeOrgsListWebhookDeliveriesParams(args map[string]string, r *http.Reque
 	}
 	// Decode query: cursor.
 	{
-		values, ok := r.URL.Query()["cursor"]
+		values, ok := queryArgs["cursor"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -31170,7 +31931,10 @@ func decodeOrgsListWebhookDeliveriesParams(args map[string]string, r *http.Reque
 }
 
 func decodeOrgsListWebhooksParams(args map[string]string, r *http.Request) (OrgsListWebhooksParams, error) {
-	var params OrgsListWebhooksParams
+	var (
+		params    OrgsListWebhooksParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode path: org.
 	{
 		param := args["org"]
@@ -31204,7 +31968,7 @@ func decodeOrgsListWebhooksParams(args map[string]string, r *http.Request) (Orgs
 	}
 	// Decode query: per_page.
 	{
-		values, ok := r.URL.Query()["per_page"]
+		values, ok := queryArgs["per_page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -31239,7 +32003,7 @@ func decodeOrgsListWebhooksParams(args map[string]string, r *http.Request) (Orgs
 	}
 	// Decode query: page.
 	{
-		values, ok := r.URL.Query()["page"]
+		values, ok := queryArgs["page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -31276,7 +32040,9 @@ func decodeOrgsListWebhooksParams(args map[string]string, r *http.Request) (Orgs
 }
 
 func decodeOrgsPingWebhookParams(args map[string]string, r *http.Request) (OrgsPingWebhookParams, error) {
-	var params OrgsPingWebhookParams
+	var (
+		params OrgsPingWebhookParams
+	)
 	// Decode path: org.
 	{
 		param := args["org"]
@@ -31343,7 +32109,9 @@ func decodeOrgsPingWebhookParams(args map[string]string, r *http.Request) (OrgsP
 }
 
 func decodeOrgsRedeliverWebhookDeliveryParams(args map[string]string, r *http.Request) (OrgsRedeliverWebhookDeliveryParams, error) {
-	var params OrgsRedeliverWebhookDeliveryParams
+	var (
+		params OrgsRedeliverWebhookDeliveryParams
+	)
 	// Decode path: org.
 	{
 		param := args["org"]
@@ -31441,7 +32209,9 @@ func decodeOrgsRedeliverWebhookDeliveryParams(args map[string]string, r *http.Re
 }
 
 func decodeOrgsRemoveMemberParams(args map[string]string, r *http.Request) (OrgsRemoveMemberParams, error) {
-	var params OrgsRemoveMemberParams
+	var (
+		params OrgsRemoveMemberParams
+	)
 	// Decode path: org.
 	{
 		param := args["org"]
@@ -31508,7 +32278,9 @@ func decodeOrgsRemoveMemberParams(args map[string]string, r *http.Request) (Orgs
 }
 
 func decodeOrgsRemoveMembershipForUserParams(args map[string]string, r *http.Request) (OrgsRemoveMembershipForUserParams, error) {
-	var params OrgsRemoveMembershipForUserParams
+	var (
+		params OrgsRemoveMembershipForUserParams
+	)
 	// Decode path: org.
 	{
 		param := args["org"]
@@ -31575,7 +32347,9 @@ func decodeOrgsRemoveMembershipForUserParams(args map[string]string, r *http.Req
 }
 
 func decodeOrgsRemoveOutsideCollaboratorParams(args map[string]string, r *http.Request) (OrgsRemoveOutsideCollaboratorParams, error) {
-	var params OrgsRemoveOutsideCollaboratorParams
+	var (
+		params OrgsRemoveOutsideCollaboratorParams
+	)
 	// Decode path: org.
 	{
 		param := args["org"]
@@ -31642,7 +32416,9 @@ func decodeOrgsRemoveOutsideCollaboratorParams(args map[string]string, r *http.R
 }
 
 func decodeOrgsRemovePublicMembershipForAuthenticatedUserParams(args map[string]string, r *http.Request) (OrgsRemovePublicMembershipForAuthenticatedUserParams, error) {
-	var params OrgsRemovePublicMembershipForAuthenticatedUserParams
+	var (
+		params OrgsRemovePublicMembershipForAuthenticatedUserParams
+	)
 	// Decode path: org.
 	{
 		param := args["org"]
@@ -31709,7 +32485,9 @@ func decodeOrgsRemovePublicMembershipForAuthenticatedUserParams(args map[string]
 }
 
 func decodeOrgsRemoveSamlSSOAuthorizationParams(args map[string]string, r *http.Request) (OrgsRemoveSamlSSOAuthorizationParams, error) {
-	var params OrgsRemoveSamlSSOAuthorizationParams
+	var (
+		params OrgsRemoveSamlSSOAuthorizationParams
+	)
 	// Decode path: org.
 	{
 		param := args["org"]
@@ -31776,7 +32554,9 @@ func decodeOrgsRemoveSamlSSOAuthorizationParams(args map[string]string, r *http.
 }
 
 func decodeOrgsSetMembershipForUserParams(args map[string]string, r *http.Request) (OrgsSetMembershipForUserParams, error) {
-	var params OrgsSetMembershipForUserParams
+	var (
+		params OrgsSetMembershipForUserParams
+	)
 	// Decode path: org.
 	{
 		param := args["org"]
@@ -31843,7 +32623,9 @@ func decodeOrgsSetMembershipForUserParams(args map[string]string, r *http.Reques
 }
 
 func decodeOrgsSetPublicMembershipForAuthenticatedUserParams(args map[string]string, r *http.Request) (OrgsSetPublicMembershipForAuthenticatedUserParams, error) {
-	var params OrgsSetPublicMembershipForAuthenticatedUserParams
+	var (
+		params OrgsSetPublicMembershipForAuthenticatedUserParams
+	)
 	// Decode path: org.
 	{
 		param := args["org"]
@@ -31910,7 +32692,9 @@ func decodeOrgsSetPublicMembershipForAuthenticatedUserParams(args map[string]str
 }
 
 func decodeOrgsUnblockUserParams(args map[string]string, r *http.Request) (OrgsUnblockUserParams, error) {
-	var params OrgsUnblockUserParams
+	var (
+		params OrgsUnblockUserParams
+	)
 	// Decode path: org.
 	{
 		param := args["org"]
@@ -31977,7 +32761,9 @@ func decodeOrgsUnblockUserParams(args map[string]string, r *http.Request) (OrgsU
 }
 
 func decodeOrgsUpdateMembershipForAuthenticatedUserParams(args map[string]string, r *http.Request) (OrgsUpdateMembershipForAuthenticatedUserParams, error) {
-	var params OrgsUpdateMembershipForAuthenticatedUserParams
+	var (
+		params OrgsUpdateMembershipForAuthenticatedUserParams
+	)
 	// Decode path: org.
 	{
 		param := args["org"]
@@ -32013,7 +32799,9 @@ func decodeOrgsUpdateMembershipForAuthenticatedUserParams(args map[string]string
 }
 
 func decodeOrgsUpdateWebhookParams(args map[string]string, r *http.Request) (OrgsUpdateWebhookParams, error) {
-	var params OrgsUpdateWebhookParams
+	var (
+		params OrgsUpdateWebhookParams
+	)
 	// Decode path: org.
 	{
 		param := args["org"]
@@ -32080,7 +32868,9 @@ func decodeOrgsUpdateWebhookParams(args map[string]string, r *http.Request) (Org
 }
 
 func decodeOrgsUpdateWebhookConfigForOrgParams(args map[string]string, r *http.Request) (OrgsUpdateWebhookConfigForOrgParams, error) {
-	var params OrgsUpdateWebhookConfigForOrgParams
+	var (
+		params OrgsUpdateWebhookConfigForOrgParams
+	)
 	// Decode path: org.
 	{
 		param := args["org"]
@@ -32147,7 +32937,9 @@ func decodeOrgsUpdateWebhookConfigForOrgParams(args map[string]string, r *http.R
 }
 
 func decodePackagesDeletePackageForAuthenticatedUserParams(args map[string]string, r *http.Request) (PackagesDeletePackageForAuthenticatedUserParams, error) {
-	var params PackagesDeletePackageForAuthenticatedUserParams
+	var (
+		params PackagesDeletePackageForAuthenticatedUserParams
+	)
 	// Decode path: package_type.
 	{
 		param := args["package_type"]
@@ -32214,7 +33006,9 @@ func decodePackagesDeletePackageForAuthenticatedUserParams(args map[string]strin
 }
 
 func decodePackagesDeletePackageForOrgParams(args map[string]string, r *http.Request) (PackagesDeletePackageForOrgParams, error) {
-	var params PackagesDeletePackageForOrgParams
+	var (
+		params PackagesDeletePackageForOrgParams
+	)
 	// Decode path: package_type.
 	{
 		param := args["package_type"]
@@ -32312,7 +33106,9 @@ func decodePackagesDeletePackageForOrgParams(args map[string]string, r *http.Req
 }
 
 func decodePackagesDeletePackageForUserParams(args map[string]string, r *http.Request) (PackagesDeletePackageForUserParams, error) {
-	var params PackagesDeletePackageForUserParams
+	var (
+		params PackagesDeletePackageForUserParams
+	)
 	// Decode path: package_type.
 	{
 		param := args["package_type"]
@@ -32410,7 +33206,9 @@ func decodePackagesDeletePackageForUserParams(args map[string]string, r *http.Re
 }
 
 func decodePackagesDeletePackageVersionForAuthenticatedUserParams(args map[string]string, r *http.Request) (PackagesDeletePackageVersionForAuthenticatedUserParams, error) {
-	var params PackagesDeletePackageVersionForAuthenticatedUserParams
+	var (
+		params PackagesDeletePackageVersionForAuthenticatedUserParams
+	)
 	// Decode path: package_type.
 	{
 		param := args["package_type"]
@@ -32508,7 +33306,9 @@ func decodePackagesDeletePackageVersionForAuthenticatedUserParams(args map[strin
 }
 
 func decodePackagesDeletePackageVersionForOrgParams(args map[string]string, r *http.Request) (PackagesDeletePackageVersionForOrgParams, error) {
-	var params PackagesDeletePackageVersionForOrgParams
+	var (
+		params PackagesDeletePackageVersionForOrgParams
+	)
 	// Decode path: package_type.
 	{
 		param := args["package_type"]
@@ -32637,7 +33437,9 @@ func decodePackagesDeletePackageVersionForOrgParams(args map[string]string, r *h
 }
 
 func decodePackagesDeletePackageVersionForUserParams(args map[string]string, r *http.Request) (PackagesDeletePackageVersionForUserParams, error) {
-	var params PackagesDeletePackageVersionForUserParams
+	var (
+		params PackagesDeletePackageVersionForUserParams
+	)
 	// Decode path: package_type.
 	{
 		param := args["package_type"]
@@ -32766,7 +33568,10 @@ func decodePackagesDeletePackageVersionForUserParams(args map[string]string, r *
 }
 
 func decodePackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserParams(args map[string]string, r *http.Request) (PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserParams, error) {
-	var params PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserParams
+	var (
+		params    PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode path: package_type.
 	{
 		param := args["package_type"]
@@ -32831,7 +33636,7 @@ func decodePackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserParams
 	}
 	// Decode query: page.
 	{
-		values, ok := r.URL.Query()["page"]
+		values, ok := queryArgs["page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -32866,7 +33671,7 @@ func decodePackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserParams
 	}
 	// Decode query: per_page.
 	{
-		values, ok := r.URL.Query()["per_page"]
+		values, ok := queryArgs["per_page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -32901,7 +33706,7 @@ func decodePackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserParams
 	}
 	// Decode query: state.
 	{
-		values, ok := r.URL.Query()["state"]
+		values, ok := queryArgs["state"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -32954,7 +33759,10 @@ func decodePackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserParams
 }
 
 func decodePackagesGetAllPackageVersionsForPackageOwnedByOrgParams(args map[string]string, r *http.Request) (PackagesGetAllPackageVersionsForPackageOwnedByOrgParams, error) {
-	var params PackagesGetAllPackageVersionsForPackageOwnedByOrgParams
+	var (
+		params    PackagesGetAllPackageVersionsForPackageOwnedByOrgParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode path: package_type.
 	{
 		param := args["package_type"]
@@ -33050,7 +33858,7 @@ func decodePackagesGetAllPackageVersionsForPackageOwnedByOrgParams(args map[stri
 	}
 	// Decode query: page.
 	{
-		values, ok := r.URL.Query()["page"]
+		values, ok := queryArgs["page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -33085,7 +33893,7 @@ func decodePackagesGetAllPackageVersionsForPackageOwnedByOrgParams(args map[stri
 	}
 	// Decode query: per_page.
 	{
-		values, ok := r.URL.Query()["per_page"]
+		values, ok := queryArgs["per_page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -33120,7 +33928,7 @@ func decodePackagesGetAllPackageVersionsForPackageOwnedByOrgParams(args map[stri
 	}
 	// Decode query: state.
 	{
-		values, ok := r.URL.Query()["state"]
+		values, ok := queryArgs["state"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -33173,7 +33981,9 @@ func decodePackagesGetAllPackageVersionsForPackageOwnedByOrgParams(args map[stri
 }
 
 func decodePackagesGetAllPackageVersionsForPackageOwnedByUserParams(args map[string]string, r *http.Request) (PackagesGetAllPackageVersionsForPackageOwnedByUserParams, error) {
-	var params PackagesGetAllPackageVersionsForPackageOwnedByUserParams
+	var (
+		params PackagesGetAllPackageVersionsForPackageOwnedByUserParams
+	)
 	// Decode path: package_type.
 	{
 		param := args["package_type"]
@@ -33271,7 +34081,9 @@ func decodePackagesGetAllPackageVersionsForPackageOwnedByUserParams(args map[str
 }
 
 func decodePackagesGetPackageForAuthenticatedUserParams(args map[string]string, r *http.Request) (PackagesGetPackageForAuthenticatedUserParams, error) {
-	var params PackagesGetPackageForAuthenticatedUserParams
+	var (
+		params PackagesGetPackageForAuthenticatedUserParams
+	)
 	// Decode path: package_type.
 	{
 		param := args["package_type"]
@@ -33338,7 +34150,9 @@ func decodePackagesGetPackageForAuthenticatedUserParams(args map[string]string, 
 }
 
 func decodePackagesGetPackageForOrganizationParams(args map[string]string, r *http.Request) (PackagesGetPackageForOrganizationParams, error) {
-	var params PackagesGetPackageForOrganizationParams
+	var (
+		params PackagesGetPackageForOrganizationParams
+	)
 	// Decode path: package_type.
 	{
 		param := args["package_type"]
@@ -33436,7 +34250,9 @@ func decodePackagesGetPackageForOrganizationParams(args map[string]string, r *ht
 }
 
 func decodePackagesGetPackageForUserParams(args map[string]string, r *http.Request) (PackagesGetPackageForUserParams, error) {
-	var params PackagesGetPackageForUserParams
+	var (
+		params PackagesGetPackageForUserParams
+	)
 	// Decode path: package_type.
 	{
 		param := args["package_type"]
@@ -33534,7 +34350,9 @@ func decodePackagesGetPackageForUserParams(args map[string]string, r *http.Reque
 }
 
 func decodePackagesGetPackageVersionForAuthenticatedUserParams(args map[string]string, r *http.Request) (PackagesGetPackageVersionForAuthenticatedUserParams, error) {
-	var params PackagesGetPackageVersionForAuthenticatedUserParams
+	var (
+		params PackagesGetPackageVersionForAuthenticatedUserParams
+	)
 	// Decode path: package_type.
 	{
 		param := args["package_type"]
@@ -33632,7 +34450,9 @@ func decodePackagesGetPackageVersionForAuthenticatedUserParams(args map[string]s
 }
 
 func decodePackagesGetPackageVersionForOrganizationParams(args map[string]string, r *http.Request) (PackagesGetPackageVersionForOrganizationParams, error) {
-	var params PackagesGetPackageVersionForOrganizationParams
+	var (
+		params PackagesGetPackageVersionForOrganizationParams
+	)
 	// Decode path: package_type.
 	{
 		param := args["package_type"]
@@ -33761,7 +34581,9 @@ func decodePackagesGetPackageVersionForOrganizationParams(args map[string]string
 }
 
 func decodePackagesGetPackageVersionForUserParams(args map[string]string, r *http.Request) (PackagesGetPackageVersionForUserParams, error) {
-	var params PackagesGetPackageVersionForUserParams
+	var (
+		params PackagesGetPackageVersionForUserParams
+	)
 	// Decode path: package_type.
 	{
 		param := args["package_type"]
@@ -33890,10 +34712,13 @@ func decodePackagesGetPackageVersionForUserParams(args map[string]string, r *htt
 }
 
 func decodePackagesListPackagesForAuthenticatedUserParams(args map[string]string, r *http.Request) (PackagesListPackagesForAuthenticatedUserParams, error) {
-	var params PackagesListPackagesForAuthenticatedUserParams
+	var (
+		params    PackagesListPackagesForAuthenticatedUserParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode query: package_type.
 	{
-		values, ok := r.URL.Query()["package_type"]
+		values, ok := queryArgs["package_type"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -33931,7 +34756,7 @@ func decodePackagesListPackagesForAuthenticatedUserParams(args map[string]string
 	}
 	// Decode query: visibility.
 	{
-		values, ok := r.URL.Query()["visibility"]
+		values, ok := queryArgs["visibility"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -33984,10 +34809,13 @@ func decodePackagesListPackagesForAuthenticatedUserParams(args map[string]string
 }
 
 func decodePackagesListPackagesForOrganizationParams(args map[string]string, r *http.Request) (PackagesListPackagesForOrganizationParams, error) {
-	var params PackagesListPackagesForOrganizationParams
+	var (
+		params    PackagesListPackagesForOrganizationParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode query: package_type.
 	{
-		values, ok := r.URL.Query()["package_type"]
+		values, ok := queryArgs["package_type"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -34056,7 +34884,7 @@ func decodePackagesListPackagesForOrganizationParams(args map[string]string, r *
 	}
 	// Decode query: visibility.
 	{
-		values, ok := r.URL.Query()["visibility"]
+		values, ok := queryArgs["visibility"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -34109,10 +34937,13 @@ func decodePackagesListPackagesForOrganizationParams(args map[string]string, r *
 }
 
 func decodePackagesListPackagesForUserParams(args map[string]string, r *http.Request) (PackagesListPackagesForUserParams, error) {
-	var params PackagesListPackagesForUserParams
+	var (
+		params    PackagesListPackagesForUserParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode query: package_type.
 	{
-		values, ok := r.URL.Query()["package_type"]
+		values, ok := queryArgs["package_type"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -34150,7 +34981,7 @@ func decodePackagesListPackagesForUserParams(args map[string]string, r *http.Req
 	}
 	// Decode query: visibility.
 	{
-		values, ok := r.URL.Query()["visibility"]
+		values, ok := queryArgs["visibility"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -34234,7 +35065,10 @@ func decodePackagesListPackagesForUserParams(args map[string]string, r *http.Req
 }
 
 func decodePackagesRestorePackageForAuthenticatedUserParams(args map[string]string, r *http.Request) (PackagesRestorePackageForAuthenticatedUserParams, error) {
-	var params PackagesRestorePackageForAuthenticatedUserParams
+	var (
+		params    PackagesRestorePackageForAuthenticatedUserParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode path: package_type.
 	{
 		param := args["package_type"]
@@ -34299,7 +35133,7 @@ func decodePackagesRestorePackageForAuthenticatedUserParams(args map[string]stri
 	}
 	// Decode query: token.
 	{
-		values, ok := r.URL.Query()["token"]
+		values, ok := queryArgs["token"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -34336,7 +35170,10 @@ func decodePackagesRestorePackageForAuthenticatedUserParams(args map[string]stri
 }
 
 func decodePackagesRestorePackageForOrgParams(args map[string]string, r *http.Request) (PackagesRestorePackageForOrgParams, error) {
-	var params PackagesRestorePackageForOrgParams
+	var (
+		params    PackagesRestorePackageForOrgParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode path: package_type.
 	{
 		param := args["package_type"]
@@ -34432,7 +35269,7 @@ func decodePackagesRestorePackageForOrgParams(args map[string]string, r *http.Re
 	}
 	// Decode query: token.
 	{
-		values, ok := r.URL.Query()["token"]
+		values, ok := queryArgs["token"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -34469,7 +35306,10 @@ func decodePackagesRestorePackageForOrgParams(args map[string]string, r *http.Re
 }
 
 func decodePackagesRestorePackageForUserParams(args map[string]string, r *http.Request) (PackagesRestorePackageForUserParams, error) {
-	var params PackagesRestorePackageForUserParams
+	var (
+		params    PackagesRestorePackageForUserParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode path: package_type.
 	{
 		param := args["package_type"]
@@ -34565,7 +35405,7 @@ func decodePackagesRestorePackageForUserParams(args map[string]string, r *http.R
 	}
 	// Decode query: token.
 	{
-		values, ok := r.URL.Query()["token"]
+		values, ok := queryArgs["token"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -34602,7 +35442,9 @@ func decodePackagesRestorePackageForUserParams(args map[string]string, r *http.R
 }
 
 func decodePackagesRestorePackageVersionForAuthenticatedUserParams(args map[string]string, r *http.Request) (PackagesRestorePackageVersionForAuthenticatedUserParams, error) {
-	var params PackagesRestorePackageVersionForAuthenticatedUserParams
+	var (
+		params PackagesRestorePackageVersionForAuthenticatedUserParams
+	)
 	// Decode path: package_type.
 	{
 		param := args["package_type"]
@@ -34700,7 +35542,9 @@ func decodePackagesRestorePackageVersionForAuthenticatedUserParams(args map[stri
 }
 
 func decodePackagesRestorePackageVersionForOrgParams(args map[string]string, r *http.Request) (PackagesRestorePackageVersionForOrgParams, error) {
-	var params PackagesRestorePackageVersionForOrgParams
+	var (
+		params PackagesRestorePackageVersionForOrgParams
+	)
 	// Decode path: package_type.
 	{
 		param := args["package_type"]
@@ -34829,7 +35673,9 @@ func decodePackagesRestorePackageVersionForOrgParams(args map[string]string, r *
 }
 
 func decodePackagesRestorePackageVersionForUserParams(args map[string]string, r *http.Request) (PackagesRestorePackageVersionForUserParams, error) {
-	var params PackagesRestorePackageVersionForUserParams
+	var (
+		params PackagesRestorePackageVersionForUserParams
+	)
 	// Decode path: package_type.
 	{
 		param := args["package_type"]
@@ -34958,7 +35804,9 @@ func decodePackagesRestorePackageVersionForUserParams(args map[string]string, r 
 }
 
 func decodeProjectsAddCollaboratorParams(args map[string]string, r *http.Request) (ProjectsAddCollaboratorParams, error) {
-	var params ProjectsAddCollaboratorParams
+	var (
+		params ProjectsAddCollaboratorParams
+	)
 	// Decode path: project_id.
 	{
 		param := args["project_id"]
@@ -35025,7 +35873,9 @@ func decodeProjectsAddCollaboratorParams(args map[string]string, r *http.Request
 }
 
 func decodeProjectsCreateColumnParams(args map[string]string, r *http.Request) (ProjectsCreateColumnParams, error) {
-	var params ProjectsCreateColumnParams
+	var (
+		params ProjectsCreateColumnParams
+	)
 	// Decode path: project_id.
 	{
 		param := args["project_id"]
@@ -35061,7 +35911,9 @@ func decodeProjectsCreateColumnParams(args map[string]string, r *http.Request) (
 }
 
 func decodeProjectsCreateForOrgParams(args map[string]string, r *http.Request) (ProjectsCreateForOrgParams, error) {
-	var params ProjectsCreateForOrgParams
+	var (
+		params ProjectsCreateForOrgParams
+	)
 	// Decode path: org.
 	{
 		param := args["org"]
@@ -35097,7 +35949,9 @@ func decodeProjectsCreateForOrgParams(args map[string]string, r *http.Request) (
 }
 
 func decodeProjectsCreateForRepoParams(args map[string]string, r *http.Request) (ProjectsCreateForRepoParams, error) {
-	var params ProjectsCreateForRepoParams
+	var (
+		params ProjectsCreateForRepoParams
+	)
 	// Decode path: owner.
 	{
 		param := args["owner"]
@@ -35164,7 +36018,9 @@ func decodeProjectsCreateForRepoParams(args map[string]string, r *http.Request) 
 }
 
 func decodeProjectsDeleteParams(args map[string]string, r *http.Request) (ProjectsDeleteParams, error) {
-	var params ProjectsDeleteParams
+	var (
+		params ProjectsDeleteParams
+	)
 	// Decode path: project_id.
 	{
 		param := args["project_id"]
@@ -35200,7 +36056,9 @@ func decodeProjectsDeleteParams(args map[string]string, r *http.Request) (Projec
 }
 
 func decodeProjectsDeleteCardParams(args map[string]string, r *http.Request) (ProjectsDeleteCardParams, error) {
-	var params ProjectsDeleteCardParams
+	var (
+		params ProjectsDeleteCardParams
+	)
 	// Decode path: card_id.
 	{
 		param := args["card_id"]
@@ -35236,7 +36094,9 @@ func decodeProjectsDeleteCardParams(args map[string]string, r *http.Request) (Pr
 }
 
 func decodeProjectsDeleteColumnParams(args map[string]string, r *http.Request) (ProjectsDeleteColumnParams, error) {
-	var params ProjectsDeleteColumnParams
+	var (
+		params ProjectsDeleteColumnParams
+	)
 	// Decode path: column_id.
 	{
 		param := args["column_id"]
@@ -35272,7 +36132,9 @@ func decodeProjectsDeleteColumnParams(args map[string]string, r *http.Request) (
 }
 
 func decodeProjectsGetParams(args map[string]string, r *http.Request) (ProjectsGetParams, error) {
-	var params ProjectsGetParams
+	var (
+		params ProjectsGetParams
+	)
 	// Decode path: project_id.
 	{
 		param := args["project_id"]
@@ -35308,7 +36170,9 @@ func decodeProjectsGetParams(args map[string]string, r *http.Request) (ProjectsG
 }
 
 func decodeProjectsGetCardParams(args map[string]string, r *http.Request) (ProjectsGetCardParams, error) {
-	var params ProjectsGetCardParams
+	var (
+		params ProjectsGetCardParams
+	)
 	// Decode path: card_id.
 	{
 		param := args["card_id"]
@@ -35344,7 +36208,9 @@ func decodeProjectsGetCardParams(args map[string]string, r *http.Request) (Proje
 }
 
 func decodeProjectsGetColumnParams(args map[string]string, r *http.Request) (ProjectsGetColumnParams, error) {
-	var params ProjectsGetColumnParams
+	var (
+		params ProjectsGetColumnParams
+	)
 	// Decode path: column_id.
 	{
 		param := args["column_id"]
@@ -35380,7 +36246,9 @@ func decodeProjectsGetColumnParams(args map[string]string, r *http.Request) (Pro
 }
 
 func decodeProjectsGetPermissionForUserParams(args map[string]string, r *http.Request) (ProjectsGetPermissionForUserParams, error) {
-	var params ProjectsGetPermissionForUserParams
+	var (
+		params ProjectsGetPermissionForUserParams
+	)
 	// Decode path: project_id.
 	{
 		param := args["project_id"]
@@ -35447,7 +36315,10 @@ func decodeProjectsGetPermissionForUserParams(args map[string]string, r *http.Re
 }
 
 func decodeProjectsListCardsParams(args map[string]string, r *http.Request) (ProjectsListCardsParams, error) {
-	var params ProjectsListCardsParams
+	var (
+		params    ProjectsListCardsParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode path: column_id.
 	{
 		param := args["column_id"]
@@ -35481,7 +36352,7 @@ func decodeProjectsListCardsParams(args map[string]string, r *http.Request) (Pro
 	}
 	// Decode query: archived_state.
 	{
-		values, ok := r.URL.Query()["archived_state"]
+		values, ok := queryArgs["archived_state"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -35532,7 +36403,7 @@ func decodeProjectsListCardsParams(args map[string]string, r *http.Request) (Pro
 	}
 	// Decode query: per_page.
 	{
-		values, ok := r.URL.Query()["per_page"]
+		values, ok := queryArgs["per_page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -35567,7 +36438,7 @@ func decodeProjectsListCardsParams(args map[string]string, r *http.Request) (Pro
 	}
 	// Decode query: page.
 	{
-		values, ok := r.URL.Query()["page"]
+		values, ok := queryArgs["page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -35604,7 +36475,10 @@ func decodeProjectsListCardsParams(args map[string]string, r *http.Request) (Pro
 }
 
 func decodeProjectsListCollaboratorsParams(args map[string]string, r *http.Request) (ProjectsListCollaboratorsParams, error) {
-	var params ProjectsListCollaboratorsParams
+	var (
+		params    ProjectsListCollaboratorsParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode path: project_id.
 	{
 		param := args["project_id"]
@@ -35638,7 +36512,7 @@ func decodeProjectsListCollaboratorsParams(args map[string]string, r *http.Reque
 	}
 	// Decode query: affiliation.
 	{
-		values, ok := r.URL.Query()["affiliation"]
+		values, ok := queryArgs["affiliation"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -35689,7 +36563,7 @@ func decodeProjectsListCollaboratorsParams(args map[string]string, r *http.Reque
 	}
 	// Decode query: per_page.
 	{
-		values, ok := r.URL.Query()["per_page"]
+		values, ok := queryArgs["per_page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -35724,7 +36598,7 @@ func decodeProjectsListCollaboratorsParams(args map[string]string, r *http.Reque
 	}
 	// Decode query: page.
 	{
-		values, ok := r.URL.Query()["page"]
+		values, ok := queryArgs["page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -35761,7 +36635,10 @@ func decodeProjectsListCollaboratorsParams(args map[string]string, r *http.Reque
 }
 
 func decodeProjectsListColumnsParams(args map[string]string, r *http.Request) (ProjectsListColumnsParams, error) {
-	var params ProjectsListColumnsParams
+	var (
+		params    ProjectsListColumnsParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode path: project_id.
 	{
 		param := args["project_id"]
@@ -35795,7 +36672,7 @@ func decodeProjectsListColumnsParams(args map[string]string, r *http.Request) (P
 	}
 	// Decode query: per_page.
 	{
-		values, ok := r.URL.Query()["per_page"]
+		values, ok := queryArgs["per_page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -35830,7 +36707,7 @@ func decodeProjectsListColumnsParams(args map[string]string, r *http.Request) (P
 	}
 	// Decode query: page.
 	{
-		values, ok := r.URL.Query()["page"]
+		values, ok := queryArgs["page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -35867,7 +36744,10 @@ func decodeProjectsListColumnsParams(args map[string]string, r *http.Request) (P
 }
 
 func decodeProjectsListForOrgParams(args map[string]string, r *http.Request) (ProjectsListForOrgParams, error) {
-	var params ProjectsListForOrgParams
+	var (
+		params    ProjectsListForOrgParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode path: org.
 	{
 		param := args["org"]
@@ -35901,7 +36781,7 @@ func decodeProjectsListForOrgParams(args map[string]string, r *http.Request) (Pr
 	}
 	// Decode query: state.
 	{
-		values, ok := r.URL.Query()["state"]
+		values, ok := queryArgs["state"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -35952,7 +36832,7 @@ func decodeProjectsListForOrgParams(args map[string]string, r *http.Request) (Pr
 	}
 	// Decode query: per_page.
 	{
-		values, ok := r.URL.Query()["per_page"]
+		values, ok := queryArgs["per_page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -35987,7 +36867,7 @@ func decodeProjectsListForOrgParams(args map[string]string, r *http.Request) (Pr
 	}
 	// Decode query: page.
 	{
-		values, ok := r.URL.Query()["page"]
+		values, ok := queryArgs["page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -36024,7 +36904,10 @@ func decodeProjectsListForOrgParams(args map[string]string, r *http.Request) (Pr
 }
 
 func decodeProjectsListForRepoParams(args map[string]string, r *http.Request) (ProjectsListForRepoParams, error) {
-	var params ProjectsListForRepoParams
+	var (
+		params    ProjectsListForRepoParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode path: owner.
 	{
 		param := args["owner"]
@@ -36089,7 +36972,7 @@ func decodeProjectsListForRepoParams(args map[string]string, r *http.Request) (P
 	}
 	// Decode query: state.
 	{
-		values, ok := r.URL.Query()["state"]
+		values, ok := queryArgs["state"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -36140,7 +37023,7 @@ func decodeProjectsListForRepoParams(args map[string]string, r *http.Request) (P
 	}
 	// Decode query: per_page.
 	{
-		values, ok := r.URL.Query()["per_page"]
+		values, ok := queryArgs["per_page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -36175,7 +37058,7 @@ func decodeProjectsListForRepoParams(args map[string]string, r *http.Request) (P
 	}
 	// Decode query: page.
 	{
-		values, ok := r.URL.Query()["page"]
+		values, ok := queryArgs["page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -36212,7 +37095,10 @@ func decodeProjectsListForRepoParams(args map[string]string, r *http.Request) (P
 }
 
 func decodeProjectsListForUserParams(args map[string]string, r *http.Request) (ProjectsListForUserParams, error) {
-	var params ProjectsListForUserParams
+	var (
+		params    ProjectsListForUserParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode path: username.
 	{
 		param := args["username"]
@@ -36246,7 +37132,7 @@ func decodeProjectsListForUserParams(args map[string]string, r *http.Request) (P
 	}
 	// Decode query: state.
 	{
-		values, ok := r.URL.Query()["state"]
+		values, ok := queryArgs["state"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -36297,7 +37183,7 @@ func decodeProjectsListForUserParams(args map[string]string, r *http.Request) (P
 	}
 	// Decode query: per_page.
 	{
-		values, ok := r.URL.Query()["per_page"]
+		values, ok := queryArgs["per_page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -36332,7 +37218,7 @@ func decodeProjectsListForUserParams(args map[string]string, r *http.Request) (P
 	}
 	// Decode query: page.
 	{
-		values, ok := r.URL.Query()["page"]
+		values, ok := queryArgs["page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -36369,7 +37255,9 @@ func decodeProjectsListForUserParams(args map[string]string, r *http.Request) (P
 }
 
 func decodeProjectsMoveCardParams(args map[string]string, r *http.Request) (ProjectsMoveCardParams, error) {
-	var params ProjectsMoveCardParams
+	var (
+		params ProjectsMoveCardParams
+	)
 	// Decode path: card_id.
 	{
 		param := args["card_id"]
@@ -36405,7 +37293,9 @@ func decodeProjectsMoveCardParams(args map[string]string, r *http.Request) (Proj
 }
 
 func decodeProjectsMoveColumnParams(args map[string]string, r *http.Request) (ProjectsMoveColumnParams, error) {
-	var params ProjectsMoveColumnParams
+	var (
+		params ProjectsMoveColumnParams
+	)
 	// Decode path: column_id.
 	{
 		param := args["column_id"]
@@ -36441,7 +37331,9 @@ func decodeProjectsMoveColumnParams(args map[string]string, r *http.Request) (Pr
 }
 
 func decodeProjectsRemoveCollaboratorParams(args map[string]string, r *http.Request) (ProjectsRemoveCollaboratorParams, error) {
-	var params ProjectsRemoveCollaboratorParams
+	var (
+		params ProjectsRemoveCollaboratorParams
+	)
 	// Decode path: project_id.
 	{
 		param := args["project_id"]
@@ -36508,7 +37400,9 @@ func decodeProjectsRemoveCollaboratorParams(args map[string]string, r *http.Requ
 }
 
 func decodeProjectsUpdateParams(args map[string]string, r *http.Request) (ProjectsUpdateParams, error) {
-	var params ProjectsUpdateParams
+	var (
+		params ProjectsUpdateParams
+	)
 	// Decode path: project_id.
 	{
 		param := args["project_id"]
@@ -36544,7 +37438,9 @@ func decodeProjectsUpdateParams(args map[string]string, r *http.Request) (Projec
 }
 
 func decodeProjectsUpdateCardParams(args map[string]string, r *http.Request) (ProjectsUpdateCardParams, error) {
-	var params ProjectsUpdateCardParams
+	var (
+		params ProjectsUpdateCardParams
+	)
 	// Decode path: card_id.
 	{
 		param := args["card_id"]
@@ -36580,7 +37476,9 @@ func decodeProjectsUpdateCardParams(args map[string]string, r *http.Request) (Pr
 }
 
 func decodeProjectsUpdateColumnParams(args map[string]string, r *http.Request) (ProjectsUpdateColumnParams, error) {
-	var params ProjectsUpdateColumnParams
+	var (
+		params ProjectsUpdateColumnParams
+	)
 	// Decode path: column_id.
 	{
 		param := args["column_id"]
@@ -36616,7 +37514,9 @@ func decodeProjectsUpdateColumnParams(args map[string]string, r *http.Request) (
 }
 
 func decodePullsCheckIfMergedParams(args map[string]string, r *http.Request) (PullsCheckIfMergedParams, error) {
-	var params PullsCheckIfMergedParams
+	var (
+		params PullsCheckIfMergedParams
+	)
 	// Decode path: owner.
 	{
 		param := args["owner"]
@@ -36714,7 +37614,9 @@ func decodePullsCheckIfMergedParams(args map[string]string, r *http.Request) (Pu
 }
 
 func decodePullsCreateParams(args map[string]string, r *http.Request) (PullsCreateParams, error) {
-	var params PullsCreateParams
+	var (
+		params PullsCreateParams
+	)
 	// Decode path: owner.
 	{
 		param := args["owner"]
@@ -36781,7 +37683,9 @@ func decodePullsCreateParams(args map[string]string, r *http.Request) (PullsCrea
 }
 
 func decodePullsCreateReplyForReviewCommentParams(args map[string]string, r *http.Request) (PullsCreateReplyForReviewCommentParams, error) {
-	var params PullsCreateReplyForReviewCommentParams
+	var (
+		params PullsCreateReplyForReviewCommentParams
+	)
 	// Decode path: owner.
 	{
 		param := args["owner"]
@@ -36910,7 +37814,9 @@ func decodePullsCreateReplyForReviewCommentParams(args map[string]string, r *htt
 }
 
 func decodePullsCreateReviewParams(args map[string]string, r *http.Request) (PullsCreateReviewParams, error) {
-	var params PullsCreateReviewParams
+	var (
+		params PullsCreateReviewParams
+	)
 	// Decode path: owner.
 	{
 		param := args["owner"]
@@ -37008,7 +37914,9 @@ func decodePullsCreateReviewParams(args map[string]string, r *http.Request) (Pul
 }
 
 func decodePullsCreateReviewCommentParams(args map[string]string, r *http.Request) (PullsCreateReviewCommentParams, error) {
-	var params PullsCreateReviewCommentParams
+	var (
+		params PullsCreateReviewCommentParams
+	)
 	// Decode path: owner.
 	{
 		param := args["owner"]
@@ -37106,7 +38014,9 @@ func decodePullsCreateReviewCommentParams(args map[string]string, r *http.Reques
 }
 
 func decodePullsDeletePendingReviewParams(args map[string]string, r *http.Request) (PullsDeletePendingReviewParams, error) {
-	var params PullsDeletePendingReviewParams
+	var (
+		params PullsDeletePendingReviewParams
+	)
 	// Decode path: owner.
 	{
 		param := args["owner"]
@@ -37235,7 +38145,9 @@ func decodePullsDeletePendingReviewParams(args map[string]string, r *http.Reques
 }
 
 func decodePullsDeleteReviewCommentParams(args map[string]string, r *http.Request) (PullsDeleteReviewCommentParams, error) {
-	var params PullsDeleteReviewCommentParams
+	var (
+		params PullsDeleteReviewCommentParams
+	)
 	// Decode path: owner.
 	{
 		param := args["owner"]
@@ -37333,7 +38245,9 @@ func decodePullsDeleteReviewCommentParams(args map[string]string, r *http.Reques
 }
 
 func decodePullsDismissReviewParams(args map[string]string, r *http.Request) (PullsDismissReviewParams, error) {
-	var params PullsDismissReviewParams
+	var (
+		params PullsDismissReviewParams
+	)
 	// Decode path: owner.
 	{
 		param := args["owner"]
@@ -37462,7 +38376,9 @@ func decodePullsDismissReviewParams(args map[string]string, r *http.Request) (Pu
 }
 
 func decodePullsGetParams(args map[string]string, r *http.Request) (PullsGetParams, error) {
-	var params PullsGetParams
+	var (
+		params PullsGetParams
+	)
 	// Decode path: owner.
 	{
 		param := args["owner"]
@@ -37560,7 +38476,9 @@ func decodePullsGetParams(args map[string]string, r *http.Request) (PullsGetPara
 }
 
 func decodePullsGetReviewParams(args map[string]string, r *http.Request) (PullsGetReviewParams, error) {
-	var params PullsGetReviewParams
+	var (
+		params PullsGetReviewParams
+	)
 	// Decode path: owner.
 	{
 		param := args["owner"]
@@ -37689,7 +38607,9 @@ func decodePullsGetReviewParams(args map[string]string, r *http.Request) (PullsG
 }
 
 func decodePullsGetReviewCommentParams(args map[string]string, r *http.Request) (PullsGetReviewCommentParams, error) {
-	var params PullsGetReviewCommentParams
+	var (
+		params PullsGetReviewCommentParams
+	)
 	// Decode path: owner.
 	{
 		param := args["owner"]
@@ -37787,7 +38707,10 @@ func decodePullsGetReviewCommentParams(args map[string]string, r *http.Request) 
 }
 
 func decodePullsListParams(args map[string]string, r *http.Request) (PullsListParams, error) {
-	var params PullsListParams
+	var (
+		params    PullsListParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode path: owner.
 	{
 		param := args["owner"]
@@ -37852,7 +38775,7 @@ func decodePullsListParams(args map[string]string, r *http.Request) (PullsListPa
 	}
 	// Decode query: state.
 	{
-		values, ok := r.URL.Query()["state"]
+		values, ok := queryArgs["state"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -37903,7 +38826,7 @@ func decodePullsListParams(args map[string]string, r *http.Request) (PullsListPa
 	}
 	// Decode query: head.
 	{
-		values, ok := r.URL.Query()["head"]
+		values, ok := queryArgs["head"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -37938,7 +38861,7 @@ func decodePullsListParams(args map[string]string, r *http.Request) (PullsListPa
 	}
 	// Decode query: base.
 	{
-		values, ok := r.URL.Query()["base"]
+		values, ok := queryArgs["base"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -37973,7 +38896,7 @@ func decodePullsListParams(args map[string]string, r *http.Request) (PullsListPa
 	}
 	// Decode query: sort.
 	{
-		values, ok := r.URL.Query()["sort"]
+		values, ok := queryArgs["sort"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -38024,7 +38947,7 @@ func decodePullsListParams(args map[string]string, r *http.Request) (PullsListPa
 	}
 	// Decode query: direction.
 	{
-		values, ok := r.URL.Query()["direction"]
+		values, ok := queryArgs["direction"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -38075,7 +38998,7 @@ func decodePullsListParams(args map[string]string, r *http.Request) (PullsListPa
 	}
 	// Decode query: per_page.
 	{
-		values, ok := r.URL.Query()["per_page"]
+		values, ok := queryArgs["per_page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -38110,7 +39033,7 @@ func decodePullsListParams(args map[string]string, r *http.Request) (PullsListPa
 	}
 	// Decode query: page.
 	{
-		values, ok := r.URL.Query()["page"]
+		values, ok := queryArgs["page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -38147,7 +39070,10 @@ func decodePullsListParams(args map[string]string, r *http.Request) (PullsListPa
 }
 
 func decodePullsListCommentsForReviewParams(args map[string]string, r *http.Request) (PullsListCommentsForReviewParams, error) {
-	var params PullsListCommentsForReviewParams
+	var (
+		params    PullsListCommentsForReviewParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode path: owner.
 	{
 		param := args["owner"]
@@ -38274,7 +39200,7 @@ func decodePullsListCommentsForReviewParams(args map[string]string, r *http.Requ
 	}
 	// Decode query: per_page.
 	{
-		values, ok := r.URL.Query()["per_page"]
+		values, ok := queryArgs["per_page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -38309,7 +39235,7 @@ func decodePullsListCommentsForReviewParams(args map[string]string, r *http.Requ
 	}
 	// Decode query: page.
 	{
-		values, ok := r.URL.Query()["page"]
+		values, ok := queryArgs["page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -38346,7 +39272,10 @@ func decodePullsListCommentsForReviewParams(args map[string]string, r *http.Requ
 }
 
 func decodePullsListCommitsParams(args map[string]string, r *http.Request) (PullsListCommitsParams, error) {
-	var params PullsListCommitsParams
+	var (
+		params    PullsListCommitsParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode path: owner.
 	{
 		param := args["owner"]
@@ -38442,7 +39371,7 @@ func decodePullsListCommitsParams(args map[string]string, r *http.Request) (Pull
 	}
 	// Decode query: per_page.
 	{
-		values, ok := r.URL.Query()["per_page"]
+		values, ok := queryArgs["per_page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -38477,7 +39406,7 @@ func decodePullsListCommitsParams(args map[string]string, r *http.Request) (Pull
 	}
 	// Decode query: page.
 	{
-		values, ok := r.URL.Query()["page"]
+		values, ok := queryArgs["page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -38514,7 +39443,10 @@ func decodePullsListCommitsParams(args map[string]string, r *http.Request) (Pull
 }
 
 func decodePullsListFilesParams(args map[string]string, r *http.Request) (PullsListFilesParams, error) {
-	var params PullsListFilesParams
+	var (
+		params    PullsListFilesParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode path: owner.
 	{
 		param := args["owner"]
@@ -38610,7 +39542,7 @@ func decodePullsListFilesParams(args map[string]string, r *http.Request) (PullsL
 	}
 	// Decode query: per_page.
 	{
-		values, ok := r.URL.Query()["per_page"]
+		values, ok := queryArgs["per_page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -38645,7 +39577,7 @@ func decodePullsListFilesParams(args map[string]string, r *http.Request) (PullsL
 	}
 	// Decode query: page.
 	{
-		values, ok := r.URL.Query()["page"]
+		values, ok := queryArgs["page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -38682,7 +39614,10 @@ func decodePullsListFilesParams(args map[string]string, r *http.Request) (PullsL
 }
 
 func decodePullsListRequestedReviewersParams(args map[string]string, r *http.Request) (PullsListRequestedReviewersParams, error) {
-	var params PullsListRequestedReviewersParams
+	var (
+		params    PullsListRequestedReviewersParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode path: owner.
 	{
 		param := args["owner"]
@@ -38778,7 +39713,7 @@ func decodePullsListRequestedReviewersParams(args map[string]string, r *http.Req
 	}
 	// Decode query: per_page.
 	{
-		values, ok := r.URL.Query()["per_page"]
+		values, ok := queryArgs["per_page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -38813,7 +39748,7 @@ func decodePullsListRequestedReviewersParams(args map[string]string, r *http.Req
 	}
 	// Decode query: page.
 	{
-		values, ok := r.URL.Query()["page"]
+		values, ok := queryArgs["page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -38850,7 +39785,10 @@ func decodePullsListRequestedReviewersParams(args map[string]string, r *http.Req
 }
 
 func decodePullsListReviewCommentsParams(args map[string]string, r *http.Request) (PullsListReviewCommentsParams, error) {
-	var params PullsListReviewCommentsParams
+	var (
+		params    PullsListReviewCommentsParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode path: owner.
 	{
 		param := args["owner"]
@@ -38946,7 +39884,7 @@ func decodePullsListReviewCommentsParams(args map[string]string, r *http.Request
 	}
 	// Decode query: sort.
 	{
-		values, ok := r.URL.Query()["sort"]
+		values, ok := queryArgs["sort"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -38997,7 +39935,7 @@ func decodePullsListReviewCommentsParams(args map[string]string, r *http.Request
 	}
 	// Decode query: direction.
 	{
-		values, ok := r.URL.Query()["direction"]
+		values, ok := queryArgs["direction"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -39048,7 +39986,7 @@ func decodePullsListReviewCommentsParams(args map[string]string, r *http.Request
 	}
 	// Decode query: since.
 	{
-		values, ok := r.URL.Query()["since"]
+		values, ok := queryArgs["since"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -39083,7 +40021,7 @@ func decodePullsListReviewCommentsParams(args map[string]string, r *http.Request
 	}
 	// Decode query: per_page.
 	{
-		values, ok := r.URL.Query()["per_page"]
+		values, ok := queryArgs["per_page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -39118,7 +40056,7 @@ func decodePullsListReviewCommentsParams(args map[string]string, r *http.Request
 	}
 	// Decode query: page.
 	{
-		values, ok := r.URL.Query()["page"]
+		values, ok := queryArgs["page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -39155,7 +40093,10 @@ func decodePullsListReviewCommentsParams(args map[string]string, r *http.Request
 }
 
 func decodePullsListReviewCommentsForRepoParams(args map[string]string, r *http.Request) (PullsListReviewCommentsForRepoParams, error) {
-	var params PullsListReviewCommentsForRepoParams
+	var (
+		params    PullsListReviewCommentsForRepoParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode path: owner.
 	{
 		param := args["owner"]
@@ -39220,7 +40161,7 @@ func decodePullsListReviewCommentsForRepoParams(args map[string]string, r *http.
 	}
 	// Decode query: sort.
 	{
-		values, ok := r.URL.Query()["sort"]
+		values, ok := queryArgs["sort"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -39271,7 +40212,7 @@ func decodePullsListReviewCommentsForRepoParams(args map[string]string, r *http.
 	}
 	// Decode query: direction.
 	{
-		values, ok := r.URL.Query()["direction"]
+		values, ok := queryArgs["direction"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -39322,7 +40263,7 @@ func decodePullsListReviewCommentsForRepoParams(args map[string]string, r *http.
 	}
 	// Decode query: since.
 	{
-		values, ok := r.URL.Query()["since"]
+		values, ok := queryArgs["since"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -39357,7 +40298,7 @@ func decodePullsListReviewCommentsForRepoParams(args map[string]string, r *http.
 	}
 	// Decode query: per_page.
 	{
-		values, ok := r.URL.Query()["per_page"]
+		values, ok := queryArgs["per_page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -39392,7 +40333,7 @@ func decodePullsListReviewCommentsForRepoParams(args map[string]string, r *http.
 	}
 	// Decode query: page.
 	{
-		values, ok := r.URL.Query()["page"]
+		values, ok := queryArgs["page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -39429,7 +40370,10 @@ func decodePullsListReviewCommentsForRepoParams(args map[string]string, r *http.
 }
 
 func decodePullsListReviewsParams(args map[string]string, r *http.Request) (PullsListReviewsParams, error) {
-	var params PullsListReviewsParams
+	var (
+		params    PullsListReviewsParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode path: owner.
 	{
 		param := args["owner"]
@@ -39525,7 +40469,7 @@ func decodePullsListReviewsParams(args map[string]string, r *http.Request) (Pull
 	}
 	// Decode query: per_page.
 	{
-		values, ok := r.URL.Query()["per_page"]
+		values, ok := queryArgs["per_page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -39560,7 +40504,7 @@ func decodePullsListReviewsParams(args map[string]string, r *http.Request) (Pull
 	}
 	// Decode query: page.
 	{
-		values, ok := r.URL.Query()["page"]
+		values, ok := queryArgs["page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -39597,7 +40541,9 @@ func decodePullsListReviewsParams(args map[string]string, r *http.Request) (Pull
 }
 
 func decodePullsMergeParams(args map[string]string, r *http.Request) (PullsMergeParams, error) {
-	var params PullsMergeParams
+	var (
+		params PullsMergeParams
+	)
 	// Decode path: owner.
 	{
 		param := args["owner"]
@@ -39695,7 +40641,9 @@ func decodePullsMergeParams(args map[string]string, r *http.Request) (PullsMerge
 }
 
 func decodePullsRemoveRequestedReviewersParams(args map[string]string, r *http.Request) (PullsRemoveRequestedReviewersParams, error) {
-	var params PullsRemoveRequestedReviewersParams
+	var (
+		params PullsRemoveRequestedReviewersParams
+	)
 	// Decode path: owner.
 	{
 		param := args["owner"]
@@ -39793,7 +40741,9 @@ func decodePullsRemoveRequestedReviewersParams(args map[string]string, r *http.R
 }
 
 func decodePullsSubmitReviewParams(args map[string]string, r *http.Request) (PullsSubmitReviewParams, error) {
-	var params PullsSubmitReviewParams
+	var (
+		params PullsSubmitReviewParams
+	)
 	// Decode path: owner.
 	{
 		param := args["owner"]
@@ -39922,7 +40872,9 @@ func decodePullsSubmitReviewParams(args map[string]string, r *http.Request) (Pul
 }
 
 func decodePullsUpdateParams(args map[string]string, r *http.Request) (PullsUpdateParams, error) {
-	var params PullsUpdateParams
+	var (
+		params PullsUpdateParams
+	)
 	// Decode path: owner.
 	{
 		param := args["owner"]
@@ -40020,7 +40972,9 @@ func decodePullsUpdateParams(args map[string]string, r *http.Request) (PullsUpda
 }
 
 func decodePullsUpdateBranchParams(args map[string]string, r *http.Request) (PullsUpdateBranchParams, error) {
-	var params PullsUpdateBranchParams
+	var (
+		params PullsUpdateBranchParams
+	)
 	// Decode path: owner.
 	{
 		param := args["owner"]
@@ -40118,7 +41072,9 @@ func decodePullsUpdateBranchParams(args map[string]string, r *http.Request) (Pul
 }
 
 func decodePullsUpdateReviewParams(args map[string]string, r *http.Request) (PullsUpdateReviewParams, error) {
-	var params PullsUpdateReviewParams
+	var (
+		params PullsUpdateReviewParams
+	)
 	// Decode path: owner.
 	{
 		param := args["owner"]
@@ -40247,7 +41203,9 @@ func decodePullsUpdateReviewParams(args map[string]string, r *http.Request) (Pul
 }
 
 func decodePullsUpdateReviewCommentParams(args map[string]string, r *http.Request) (PullsUpdateReviewCommentParams, error) {
-	var params PullsUpdateReviewCommentParams
+	var (
+		params PullsUpdateReviewCommentParams
+	)
 	// Decode path: owner.
 	{
 		param := args["owner"]
@@ -40345,7 +41303,9 @@ func decodePullsUpdateReviewCommentParams(args map[string]string, r *http.Reques
 }
 
 func decodeReactionsCreateForCommitCommentParams(args map[string]string, r *http.Request) (ReactionsCreateForCommitCommentParams, error) {
-	var params ReactionsCreateForCommitCommentParams
+	var (
+		params ReactionsCreateForCommitCommentParams
+	)
 	// Decode path: owner.
 	{
 		param := args["owner"]
@@ -40443,7 +41403,9 @@ func decodeReactionsCreateForCommitCommentParams(args map[string]string, r *http
 }
 
 func decodeReactionsCreateForIssueParams(args map[string]string, r *http.Request) (ReactionsCreateForIssueParams, error) {
-	var params ReactionsCreateForIssueParams
+	var (
+		params ReactionsCreateForIssueParams
+	)
 	// Decode path: owner.
 	{
 		param := args["owner"]
@@ -40541,7 +41503,9 @@ func decodeReactionsCreateForIssueParams(args map[string]string, r *http.Request
 }
 
 func decodeReactionsCreateForIssueCommentParams(args map[string]string, r *http.Request) (ReactionsCreateForIssueCommentParams, error) {
-	var params ReactionsCreateForIssueCommentParams
+	var (
+		params ReactionsCreateForIssueCommentParams
+	)
 	// Decode path: owner.
 	{
 		param := args["owner"]
@@ -40639,7 +41603,9 @@ func decodeReactionsCreateForIssueCommentParams(args map[string]string, r *http.
 }
 
 func decodeReactionsCreateForPullRequestReviewCommentParams(args map[string]string, r *http.Request) (ReactionsCreateForPullRequestReviewCommentParams, error) {
-	var params ReactionsCreateForPullRequestReviewCommentParams
+	var (
+		params ReactionsCreateForPullRequestReviewCommentParams
+	)
 	// Decode path: owner.
 	{
 		param := args["owner"]
@@ -40737,7 +41703,9 @@ func decodeReactionsCreateForPullRequestReviewCommentParams(args map[string]stri
 }
 
 func decodeReactionsCreateForReleaseParams(args map[string]string, r *http.Request) (ReactionsCreateForReleaseParams, error) {
-	var params ReactionsCreateForReleaseParams
+	var (
+		params ReactionsCreateForReleaseParams
+	)
 	// Decode path: owner.
 	{
 		param := args["owner"]
@@ -40835,7 +41803,9 @@ func decodeReactionsCreateForReleaseParams(args map[string]string, r *http.Reque
 }
 
 func decodeReactionsCreateForTeamDiscussionCommentInOrgParams(args map[string]string, r *http.Request) (ReactionsCreateForTeamDiscussionCommentInOrgParams, error) {
-	var params ReactionsCreateForTeamDiscussionCommentInOrgParams
+	var (
+		params ReactionsCreateForTeamDiscussionCommentInOrgParams
+	)
 	// Decode path: org.
 	{
 		param := args["org"]
@@ -40964,7 +41934,9 @@ func decodeReactionsCreateForTeamDiscussionCommentInOrgParams(args map[string]st
 }
 
 func decodeReactionsCreateForTeamDiscussionCommentLegacyParams(args map[string]string, r *http.Request) (ReactionsCreateForTeamDiscussionCommentLegacyParams, error) {
-	var params ReactionsCreateForTeamDiscussionCommentLegacyParams
+	var (
+		params ReactionsCreateForTeamDiscussionCommentLegacyParams
+	)
 	// Decode path: team_id.
 	{
 		param := args["team_id"]
@@ -41062,7 +42034,9 @@ func decodeReactionsCreateForTeamDiscussionCommentLegacyParams(args map[string]s
 }
 
 func decodeReactionsCreateForTeamDiscussionInOrgParams(args map[string]string, r *http.Request) (ReactionsCreateForTeamDiscussionInOrgParams, error) {
-	var params ReactionsCreateForTeamDiscussionInOrgParams
+	var (
+		params ReactionsCreateForTeamDiscussionInOrgParams
+	)
 	// Decode path: org.
 	{
 		param := args["org"]
@@ -41160,7 +42134,9 @@ func decodeReactionsCreateForTeamDiscussionInOrgParams(args map[string]string, r
 }
 
 func decodeReactionsCreateForTeamDiscussionLegacyParams(args map[string]string, r *http.Request) (ReactionsCreateForTeamDiscussionLegacyParams, error) {
-	var params ReactionsCreateForTeamDiscussionLegacyParams
+	var (
+		params ReactionsCreateForTeamDiscussionLegacyParams
+	)
 	// Decode path: team_id.
 	{
 		param := args["team_id"]
@@ -41227,7 +42203,9 @@ func decodeReactionsCreateForTeamDiscussionLegacyParams(args map[string]string, 
 }
 
 func decodeReactionsDeleteForCommitCommentParams(args map[string]string, r *http.Request) (ReactionsDeleteForCommitCommentParams, error) {
-	var params ReactionsDeleteForCommitCommentParams
+	var (
+		params ReactionsDeleteForCommitCommentParams
+	)
 	// Decode path: owner.
 	{
 		param := args["owner"]
@@ -41356,7 +42334,9 @@ func decodeReactionsDeleteForCommitCommentParams(args map[string]string, r *http
 }
 
 func decodeReactionsDeleteForIssueParams(args map[string]string, r *http.Request) (ReactionsDeleteForIssueParams, error) {
-	var params ReactionsDeleteForIssueParams
+	var (
+		params ReactionsDeleteForIssueParams
+	)
 	// Decode path: owner.
 	{
 		param := args["owner"]
@@ -41485,7 +42465,9 @@ func decodeReactionsDeleteForIssueParams(args map[string]string, r *http.Request
 }
 
 func decodeReactionsDeleteForIssueCommentParams(args map[string]string, r *http.Request) (ReactionsDeleteForIssueCommentParams, error) {
-	var params ReactionsDeleteForIssueCommentParams
+	var (
+		params ReactionsDeleteForIssueCommentParams
+	)
 	// Decode path: owner.
 	{
 		param := args["owner"]
@@ -41614,7 +42596,9 @@ func decodeReactionsDeleteForIssueCommentParams(args map[string]string, r *http.
 }
 
 func decodeReactionsDeleteForPullRequestCommentParams(args map[string]string, r *http.Request) (ReactionsDeleteForPullRequestCommentParams, error) {
-	var params ReactionsDeleteForPullRequestCommentParams
+	var (
+		params ReactionsDeleteForPullRequestCommentParams
+	)
 	// Decode path: owner.
 	{
 		param := args["owner"]
@@ -41743,7 +42727,9 @@ func decodeReactionsDeleteForPullRequestCommentParams(args map[string]string, r 
 }
 
 func decodeReactionsDeleteForTeamDiscussionParams(args map[string]string, r *http.Request) (ReactionsDeleteForTeamDiscussionParams, error) {
-	var params ReactionsDeleteForTeamDiscussionParams
+	var (
+		params ReactionsDeleteForTeamDiscussionParams
+	)
 	// Decode path: org.
 	{
 		param := args["org"]
@@ -41872,7 +42858,9 @@ func decodeReactionsDeleteForTeamDiscussionParams(args map[string]string, r *htt
 }
 
 func decodeReactionsDeleteForTeamDiscussionCommentParams(args map[string]string, r *http.Request) (ReactionsDeleteForTeamDiscussionCommentParams, error) {
-	var params ReactionsDeleteForTeamDiscussionCommentParams
+	var (
+		params ReactionsDeleteForTeamDiscussionCommentParams
+	)
 	// Decode path: org.
 	{
 		param := args["org"]
@@ -42032,7 +43020,9 @@ func decodeReactionsDeleteForTeamDiscussionCommentParams(args map[string]string,
 }
 
 func decodeReactionsDeleteLegacyParams(args map[string]string, r *http.Request) (ReactionsDeleteLegacyParams, error) {
-	var params ReactionsDeleteLegacyParams
+	var (
+		params ReactionsDeleteLegacyParams
+	)
 	// Decode path: reaction_id.
 	{
 		param := args["reaction_id"]
@@ -42068,7 +43058,10 @@ func decodeReactionsDeleteLegacyParams(args map[string]string, r *http.Request) 
 }
 
 func decodeReactionsListForCommitCommentParams(args map[string]string, r *http.Request) (ReactionsListForCommitCommentParams, error) {
-	var params ReactionsListForCommitCommentParams
+	var (
+		params    ReactionsListForCommitCommentParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode path: owner.
 	{
 		param := args["owner"]
@@ -42164,7 +43157,7 @@ func decodeReactionsListForCommitCommentParams(args map[string]string, r *http.R
 	}
 	// Decode query: content.
 	{
-		values, ok := r.URL.Query()["content"]
+		values, ok := queryArgs["content"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -42215,7 +43208,7 @@ func decodeReactionsListForCommitCommentParams(args map[string]string, r *http.R
 	}
 	// Decode query: per_page.
 	{
-		values, ok := r.URL.Query()["per_page"]
+		values, ok := queryArgs["per_page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -42250,7 +43243,7 @@ func decodeReactionsListForCommitCommentParams(args map[string]string, r *http.R
 	}
 	// Decode query: page.
 	{
-		values, ok := r.URL.Query()["page"]
+		values, ok := queryArgs["page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -42287,7 +43280,10 @@ func decodeReactionsListForCommitCommentParams(args map[string]string, r *http.R
 }
 
 func decodeReactionsListForIssueParams(args map[string]string, r *http.Request) (ReactionsListForIssueParams, error) {
-	var params ReactionsListForIssueParams
+	var (
+		params    ReactionsListForIssueParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode path: owner.
 	{
 		param := args["owner"]
@@ -42383,7 +43379,7 @@ func decodeReactionsListForIssueParams(args map[string]string, r *http.Request) 
 	}
 	// Decode query: content.
 	{
-		values, ok := r.URL.Query()["content"]
+		values, ok := queryArgs["content"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -42434,7 +43430,7 @@ func decodeReactionsListForIssueParams(args map[string]string, r *http.Request) 
 	}
 	// Decode query: per_page.
 	{
-		values, ok := r.URL.Query()["per_page"]
+		values, ok := queryArgs["per_page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -42469,7 +43465,7 @@ func decodeReactionsListForIssueParams(args map[string]string, r *http.Request) 
 	}
 	// Decode query: page.
 	{
-		values, ok := r.URL.Query()["page"]
+		values, ok := queryArgs["page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -42506,7 +43502,10 @@ func decodeReactionsListForIssueParams(args map[string]string, r *http.Request) 
 }
 
 func decodeReactionsListForIssueCommentParams(args map[string]string, r *http.Request) (ReactionsListForIssueCommentParams, error) {
-	var params ReactionsListForIssueCommentParams
+	var (
+		params    ReactionsListForIssueCommentParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode path: owner.
 	{
 		param := args["owner"]
@@ -42602,7 +43601,7 @@ func decodeReactionsListForIssueCommentParams(args map[string]string, r *http.Re
 	}
 	// Decode query: content.
 	{
-		values, ok := r.URL.Query()["content"]
+		values, ok := queryArgs["content"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -42653,7 +43652,7 @@ func decodeReactionsListForIssueCommentParams(args map[string]string, r *http.Re
 	}
 	// Decode query: per_page.
 	{
-		values, ok := r.URL.Query()["per_page"]
+		values, ok := queryArgs["per_page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -42688,7 +43687,7 @@ func decodeReactionsListForIssueCommentParams(args map[string]string, r *http.Re
 	}
 	// Decode query: page.
 	{
-		values, ok := r.URL.Query()["page"]
+		values, ok := queryArgs["page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -42725,7 +43724,10 @@ func decodeReactionsListForIssueCommentParams(args map[string]string, r *http.Re
 }
 
 func decodeReactionsListForPullRequestReviewCommentParams(args map[string]string, r *http.Request) (ReactionsListForPullRequestReviewCommentParams, error) {
-	var params ReactionsListForPullRequestReviewCommentParams
+	var (
+		params    ReactionsListForPullRequestReviewCommentParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode path: owner.
 	{
 		param := args["owner"]
@@ -42821,7 +43823,7 @@ func decodeReactionsListForPullRequestReviewCommentParams(args map[string]string
 	}
 	// Decode query: content.
 	{
-		values, ok := r.URL.Query()["content"]
+		values, ok := queryArgs["content"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -42872,7 +43874,7 @@ func decodeReactionsListForPullRequestReviewCommentParams(args map[string]string
 	}
 	// Decode query: per_page.
 	{
-		values, ok := r.URL.Query()["per_page"]
+		values, ok := queryArgs["per_page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -42907,7 +43909,7 @@ func decodeReactionsListForPullRequestReviewCommentParams(args map[string]string
 	}
 	// Decode query: page.
 	{
-		values, ok := r.URL.Query()["page"]
+		values, ok := queryArgs["page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -42944,7 +43946,10 @@ func decodeReactionsListForPullRequestReviewCommentParams(args map[string]string
 }
 
 func decodeReactionsListForTeamDiscussionCommentInOrgParams(args map[string]string, r *http.Request) (ReactionsListForTeamDiscussionCommentInOrgParams, error) {
-	var params ReactionsListForTeamDiscussionCommentInOrgParams
+	var (
+		params    ReactionsListForTeamDiscussionCommentInOrgParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode path: org.
 	{
 		param := args["org"]
@@ -43071,7 +44076,7 @@ func decodeReactionsListForTeamDiscussionCommentInOrgParams(args map[string]stri
 	}
 	// Decode query: content.
 	{
-		values, ok := r.URL.Query()["content"]
+		values, ok := queryArgs["content"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -43122,7 +44127,7 @@ func decodeReactionsListForTeamDiscussionCommentInOrgParams(args map[string]stri
 	}
 	// Decode query: per_page.
 	{
-		values, ok := r.URL.Query()["per_page"]
+		values, ok := queryArgs["per_page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -43157,7 +44162,7 @@ func decodeReactionsListForTeamDiscussionCommentInOrgParams(args map[string]stri
 	}
 	// Decode query: page.
 	{
-		values, ok := r.URL.Query()["page"]
+		values, ok := queryArgs["page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -43194,7 +44199,10 @@ func decodeReactionsListForTeamDiscussionCommentInOrgParams(args map[string]stri
 }
 
 func decodeReactionsListForTeamDiscussionCommentLegacyParams(args map[string]string, r *http.Request) (ReactionsListForTeamDiscussionCommentLegacyParams, error) {
-	var params ReactionsListForTeamDiscussionCommentLegacyParams
+	var (
+		params    ReactionsListForTeamDiscussionCommentLegacyParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode path: team_id.
 	{
 		param := args["team_id"]
@@ -43290,7 +44298,7 @@ func decodeReactionsListForTeamDiscussionCommentLegacyParams(args map[string]str
 	}
 	// Decode query: content.
 	{
-		values, ok := r.URL.Query()["content"]
+		values, ok := queryArgs["content"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -43341,7 +44349,7 @@ func decodeReactionsListForTeamDiscussionCommentLegacyParams(args map[string]str
 	}
 	// Decode query: per_page.
 	{
-		values, ok := r.URL.Query()["per_page"]
+		values, ok := queryArgs["per_page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -43376,7 +44384,7 @@ func decodeReactionsListForTeamDiscussionCommentLegacyParams(args map[string]str
 	}
 	// Decode query: page.
 	{
-		values, ok := r.URL.Query()["page"]
+		values, ok := queryArgs["page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -43413,7 +44421,10 @@ func decodeReactionsListForTeamDiscussionCommentLegacyParams(args map[string]str
 }
 
 func decodeReactionsListForTeamDiscussionInOrgParams(args map[string]string, r *http.Request) (ReactionsListForTeamDiscussionInOrgParams, error) {
-	var params ReactionsListForTeamDiscussionInOrgParams
+	var (
+		params    ReactionsListForTeamDiscussionInOrgParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode path: org.
 	{
 		param := args["org"]
@@ -43509,7 +44520,7 @@ func decodeReactionsListForTeamDiscussionInOrgParams(args map[string]string, r *
 	}
 	// Decode query: content.
 	{
-		values, ok := r.URL.Query()["content"]
+		values, ok := queryArgs["content"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -43560,7 +44571,7 @@ func decodeReactionsListForTeamDiscussionInOrgParams(args map[string]string, r *
 	}
 	// Decode query: per_page.
 	{
-		values, ok := r.URL.Query()["per_page"]
+		values, ok := queryArgs["per_page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -43595,7 +44606,7 @@ func decodeReactionsListForTeamDiscussionInOrgParams(args map[string]string, r *
 	}
 	// Decode query: page.
 	{
-		values, ok := r.URL.Query()["page"]
+		values, ok := queryArgs["page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -43632,7 +44643,10 @@ func decodeReactionsListForTeamDiscussionInOrgParams(args map[string]string, r *
 }
 
 func decodeReactionsListForTeamDiscussionLegacyParams(args map[string]string, r *http.Request) (ReactionsListForTeamDiscussionLegacyParams, error) {
-	var params ReactionsListForTeamDiscussionLegacyParams
+	var (
+		params    ReactionsListForTeamDiscussionLegacyParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode path: team_id.
 	{
 		param := args["team_id"]
@@ -43697,7 +44711,7 @@ func decodeReactionsListForTeamDiscussionLegacyParams(args map[string]string, r 
 	}
 	// Decode query: content.
 	{
-		values, ok := r.URL.Query()["content"]
+		values, ok := queryArgs["content"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -43748,7 +44762,7 @@ func decodeReactionsListForTeamDiscussionLegacyParams(args map[string]string, r 
 	}
 	// Decode query: per_page.
 	{
-		values, ok := r.URL.Query()["per_page"]
+		values, ok := queryArgs["per_page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -43783,7 +44797,7 @@ func decodeReactionsListForTeamDiscussionLegacyParams(args map[string]string, r 
 	}
 	// Decode query: page.
 	{
-		values, ok := r.URL.Query()["page"]
+		values, ok := queryArgs["page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -43820,7 +44834,9 @@ func decodeReactionsListForTeamDiscussionLegacyParams(args map[string]string, r 
 }
 
 func decodeReposAcceptInvitationParams(args map[string]string, r *http.Request) (ReposAcceptInvitationParams, error) {
-	var params ReposAcceptInvitationParams
+	var (
+		params ReposAcceptInvitationParams
+	)
 	// Decode path: invitation_id.
 	{
 		param := args["invitation_id"]
@@ -43856,7 +44872,9 @@ func decodeReposAcceptInvitationParams(args map[string]string, r *http.Request) 
 }
 
 func decodeReposAddAppAccessRestrictionsParams(args map[string]string, r *http.Request) (ReposAddAppAccessRestrictionsParams, error) {
-	var params ReposAddAppAccessRestrictionsParams
+	var (
+		params ReposAddAppAccessRestrictionsParams
+	)
 	// Decode path: owner.
 	{
 		param := args["owner"]
@@ -43954,7 +44972,9 @@ func decodeReposAddAppAccessRestrictionsParams(args map[string]string, r *http.R
 }
 
 func decodeReposAddCollaboratorParams(args map[string]string, r *http.Request) (ReposAddCollaboratorParams, error) {
-	var params ReposAddCollaboratorParams
+	var (
+		params ReposAddCollaboratorParams
+	)
 	// Decode path: owner.
 	{
 		param := args["owner"]
@@ -44052,7 +45072,9 @@ func decodeReposAddCollaboratorParams(args map[string]string, r *http.Request) (
 }
 
 func decodeReposAddStatusCheckContextsParams(args map[string]string, r *http.Request) (ReposAddStatusCheckContextsParams, error) {
-	var params ReposAddStatusCheckContextsParams
+	var (
+		params ReposAddStatusCheckContextsParams
+	)
 	// Decode path: owner.
 	{
 		param := args["owner"]
@@ -44150,7 +45172,9 @@ func decodeReposAddStatusCheckContextsParams(args map[string]string, r *http.Req
 }
 
 func decodeReposAddTeamAccessRestrictionsParams(args map[string]string, r *http.Request) (ReposAddTeamAccessRestrictionsParams, error) {
-	var params ReposAddTeamAccessRestrictionsParams
+	var (
+		params ReposAddTeamAccessRestrictionsParams
+	)
 	// Decode path: owner.
 	{
 		param := args["owner"]
@@ -44248,7 +45272,9 @@ func decodeReposAddTeamAccessRestrictionsParams(args map[string]string, r *http.
 }
 
 func decodeReposAddUserAccessRestrictionsParams(args map[string]string, r *http.Request) (ReposAddUserAccessRestrictionsParams, error) {
-	var params ReposAddUserAccessRestrictionsParams
+	var (
+		params ReposAddUserAccessRestrictionsParams
+	)
 	// Decode path: owner.
 	{
 		param := args["owner"]
@@ -44346,7 +45372,9 @@ func decodeReposAddUserAccessRestrictionsParams(args map[string]string, r *http.
 }
 
 func decodeReposCheckCollaboratorParams(args map[string]string, r *http.Request) (ReposCheckCollaboratorParams, error) {
-	var params ReposCheckCollaboratorParams
+	var (
+		params ReposCheckCollaboratorParams
+	)
 	// Decode path: owner.
 	{
 		param := args["owner"]
@@ -44444,7 +45472,9 @@ func decodeReposCheckCollaboratorParams(args map[string]string, r *http.Request)
 }
 
 func decodeReposCheckVulnerabilityAlertsParams(args map[string]string, r *http.Request) (ReposCheckVulnerabilityAlertsParams, error) {
-	var params ReposCheckVulnerabilityAlertsParams
+	var (
+		params ReposCheckVulnerabilityAlertsParams
+	)
 	// Decode path: owner.
 	{
 		param := args["owner"]
@@ -44511,7 +45541,10 @@ func decodeReposCheckVulnerabilityAlertsParams(args map[string]string, r *http.R
 }
 
 func decodeReposCompareCommitsParams(args map[string]string, r *http.Request) (ReposCompareCommitsParams, error) {
-	var params ReposCompareCommitsParams
+	var (
+		params    ReposCompareCommitsParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode path: owner.
 	{
 		param := args["owner"]
@@ -44576,7 +45609,7 @@ func decodeReposCompareCommitsParams(args map[string]string, r *http.Request) (R
 	}
 	// Decode query: page.
 	{
-		values, ok := r.URL.Query()["page"]
+		values, ok := queryArgs["page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -44611,7 +45644,7 @@ func decodeReposCompareCommitsParams(args map[string]string, r *http.Request) (R
 	}
 	// Decode query: per_page.
 	{
-		values, ok := r.URL.Query()["per_page"]
+		values, ok := queryArgs["per_page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -44679,7 +45712,9 @@ func decodeReposCompareCommitsParams(args map[string]string, r *http.Request) (R
 }
 
 func decodeReposCreateAutolinkParams(args map[string]string, r *http.Request) (ReposCreateAutolinkParams, error) {
-	var params ReposCreateAutolinkParams
+	var (
+		params ReposCreateAutolinkParams
+	)
 	// Decode path: owner.
 	{
 		param := args["owner"]
@@ -44746,7 +45781,9 @@ func decodeReposCreateAutolinkParams(args map[string]string, r *http.Request) (R
 }
 
 func decodeReposCreateCommitCommentParams(args map[string]string, r *http.Request) (ReposCreateCommitCommentParams, error) {
-	var params ReposCreateCommitCommentParams
+	var (
+		params ReposCreateCommitCommentParams
+	)
 	// Decode path: owner.
 	{
 		param := args["owner"]
@@ -44844,7 +45881,9 @@ func decodeReposCreateCommitCommentParams(args map[string]string, r *http.Reques
 }
 
 func decodeReposCreateCommitSignatureProtectionParams(args map[string]string, r *http.Request) (ReposCreateCommitSignatureProtectionParams, error) {
-	var params ReposCreateCommitSignatureProtectionParams
+	var (
+		params ReposCreateCommitSignatureProtectionParams
+	)
 	// Decode path: owner.
 	{
 		param := args["owner"]
@@ -44942,7 +45981,9 @@ func decodeReposCreateCommitSignatureProtectionParams(args map[string]string, r 
 }
 
 func decodeReposCreateCommitStatusParams(args map[string]string, r *http.Request) (ReposCreateCommitStatusParams, error) {
-	var params ReposCreateCommitStatusParams
+	var (
+		params ReposCreateCommitStatusParams
+	)
 	// Decode path: owner.
 	{
 		param := args["owner"]
@@ -45040,7 +46081,9 @@ func decodeReposCreateCommitStatusParams(args map[string]string, r *http.Request
 }
 
 func decodeReposCreateDeployKeyParams(args map[string]string, r *http.Request) (ReposCreateDeployKeyParams, error) {
-	var params ReposCreateDeployKeyParams
+	var (
+		params ReposCreateDeployKeyParams
+	)
 	// Decode path: owner.
 	{
 		param := args["owner"]
@@ -45107,7 +46150,9 @@ func decodeReposCreateDeployKeyParams(args map[string]string, r *http.Request) (
 }
 
 func decodeReposCreateDeploymentParams(args map[string]string, r *http.Request) (ReposCreateDeploymentParams, error) {
-	var params ReposCreateDeploymentParams
+	var (
+		params ReposCreateDeploymentParams
+	)
 	// Decode path: owner.
 	{
 		param := args["owner"]
@@ -45174,7 +46219,9 @@ func decodeReposCreateDeploymentParams(args map[string]string, r *http.Request) 
 }
 
 func decodeReposCreateDeploymentStatusParams(args map[string]string, r *http.Request) (ReposCreateDeploymentStatusParams, error) {
-	var params ReposCreateDeploymentStatusParams
+	var (
+		params ReposCreateDeploymentStatusParams
+	)
 	// Decode path: owner.
 	{
 		param := args["owner"]
@@ -45272,7 +46319,9 @@ func decodeReposCreateDeploymentStatusParams(args map[string]string, r *http.Req
 }
 
 func decodeReposCreateDispatchEventParams(args map[string]string, r *http.Request) (ReposCreateDispatchEventParams, error) {
-	var params ReposCreateDispatchEventParams
+	var (
+		params ReposCreateDispatchEventParams
+	)
 	// Decode path: owner.
 	{
 		param := args["owner"]
@@ -45339,7 +46388,9 @@ func decodeReposCreateDispatchEventParams(args map[string]string, r *http.Reques
 }
 
 func decodeReposCreateForkParams(args map[string]string, r *http.Request) (ReposCreateForkParams, error) {
-	var params ReposCreateForkParams
+	var (
+		params ReposCreateForkParams
+	)
 	// Decode path: owner.
 	{
 		param := args["owner"]
@@ -45406,7 +46457,9 @@ func decodeReposCreateForkParams(args map[string]string, r *http.Request) (Repos
 }
 
 func decodeReposCreateInOrgParams(args map[string]string, r *http.Request) (ReposCreateInOrgParams, error) {
-	var params ReposCreateInOrgParams
+	var (
+		params ReposCreateInOrgParams
+	)
 	// Decode path: org.
 	{
 		param := args["org"]
@@ -45442,7 +46495,9 @@ func decodeReposCreateInOrgParams(args map[string]string, r *http.Request) (Repo
 }
 
 func decodeReposCreateOrUpdateFileContentsParams(args map[string]string, r *http.Request) (ReposCreateOrUpdateFileContentsParams, error) {
-	var params ReposCreateOrUpdateFileContentsParams
+	var (
+		params ReposCreateOrUpdateFileContentsParams
+	)
 	// Decode path: owner.
 	{
 		param := args["owner"]
@@ -45540,7 +46595,9 @@ func decodeReposCreateOrUpdateFileContentsParams(args map[string]string, r *http
 }
 
 func decodeReposCreatePagesSiteParams(args map[string]string, r *http.Request) (ReposCreatePagesSiteParams, error) {
-	var params ReposCreatePagesSiteParams
+	var (
+		params ReposCreatePagesSiteParams
+	)
 	// Decode path: owner.
 	{
 		param := args["owner"]
@@ -45607,7 +46664,9 @@ func decodeReposCreatePagesSiteParams(args map[string]string, r *http.Request) (
 }
 
 func decodeReposCreateReleaseParams(args map[string]string, r *http.Request) (ReposCreateReleaseParams, error) {
-	var params ReposCreateReleaseParams
+	var (
+		params ReposCreateReleaseParams
+	)
 	// Decode path: owner.
 	{
 		param := args["owner"]
@@ -45674,7 +46733,9 @@ func decodeReposCreateReleaseParams(args map[string]string, r *http.Request) (Re
 }
 
 func decodeReposCreateUsingTemplateParams(args map[string]string, r *http.Request) (ReposCreateUsingTemplateParams, error) {
-	var params ReposCreateUsingTemplateParams
+	var (
+		params ReposCreateUsingTemplateParams
+	)
 	// Decode path: template_owner.
 	{
 		param := args["template_owner"]
@@ -45741,7 +46802,9 @@ func decodeReposCreateUsingTemplateParams(args map[string]string, r *http.Reques
 }
 
 func decodeReposCreateWebhookParams(args map[string]string, r *http.Request) (ReposCreateWebhookParams, error) {
-	var params ReposCreateWebhookParams
+	var (
+		params ReposCreateWebhookParams
+	)
 	// Decode path: owner.
 	{
 		param := args["owner"]
@@ -45808,7 +46871,9 @@ func decodeReposCreateWebhookParams(args map[string]string, r *http.Request) (Re
 }
 
 func decodeReposDeclineInvitationParams(args map[string]string, r *http.Request) (ReposDeclineInvitationParams, error) {
-	var params ReposDeclineInvitationParams
+	var (
+		params ReposDeclineInvitationParams
+	)
 	// Decode path: invitation_id.
 	{
 		param := args["invitation_id"]
@@ -45844,7 +46909,9 @@ func decodeReposDeclineInvitationParams(args map[string]string, r *http.Request)
 }
 
 func decodeReposDeleteParams(args map[string]string, r *http.Request) (ReposDeleteParams, error) {
-	var params ReposDeleteParams
+	var (
+		params ReposDeleteParams
+	)
 	// Decode path: owner.
 	{
 		param := args["owner"]
@@ -45911,7 +46978,9 @@ func decodeReposDeleteParams(args map[string]string, r *http.Request) (ReposDele
 }
 
 func decodeReposDeleteAccessRestrictionsParams(args map[string]string, r *http.Request) (ReposDeleteAccessRestrictionsParams, error) {
-	var params ReposDeleteAccessRestrictionsParams
+	var (
+		params ReposDeleteAccessRestrictionsParams
+	)
 	// Decode path: owner.
 	{
 		param := args["owner"]
@@ -46009,7 +47078,9 @@ func decodeReposDeleteAccessRestrictionsParams(args map[string]string, r *http.R
 }
 
 func decodeReposDeleteAdminBranchProtectionParams(args map[string]string, r *http.Request) (ReposDeleteAdminBranchProtectionParams, error) {
-	var params ReposDeleteAdminBranchProtectionParams
+	var (
+		params ReposDeleteAdminBranchProtectionParams
+	)
 	// Decode path: owner.
 	{
 		param := args["owner"]
@@ -46107,7 +47178,9 @@ func decodeReposDeleteAdminBranchProtectionParams(args map[string]string, r *htt
 }
 
 func decodeReposDeleteAnEnvironmentParams(args map[string]string, r *http.Request) (ReposDeleteAnEnvironmentParams, error) {
-	var params ReposDeleteAnEnvironmentParams
+	var (
+		params ReposDeleteAnEnvironmentParams
+	)
 	// Decode path: owner.
 	{
 		param := args["owner"]
@@ -46205,7 +47278,9 @@ func decodeReposDeleteAnEnvironmentParams(args map[string]string, r *http.Reques
 }
 
 func decodeReposDeleteAutolinkParams(args map[string]string, r *http.Request) (ReposDeleteAutolinkParams, error) {
-	var params ReposDeleteAutolinkParams
+	var (
+		params ReposDeleteAutolinkParams
+	)
 	// Decode path: owner.
 	{
 		param := args["owner"]
@@ -46303,7 +47378,9 @@ func decodeReposDeleteAutolinkParams(args map[string]string, r *http.Request) (R
 }
 
 func decodeReposDeleteBranchProtectionParams(args map[string]string, r *http.Request) (ReposDeleteBranchProtectionParams, error) {
-	var params ReposDeleteBranchProtectionParams
+	var (
+		params ReposDeleteBranchProtectionParams
+	)
 	// Decode path: owner.
 	{
 		param := args["owner"]
@@ -46401,7 +47478,9 @@ func decodeReposDeleteBranchProtectionParams(args map[string]string, r *http.Req
 }
 
 func decodeReposDeleteCommitCommentParams(args map[string]string, r *http.Request) (ReposDeleteCommitCommentParams, error) {
-	var params ReposDeleteCommitCommentParams
+	var (
+		params ReposDeleteCommitCommentParams
+	)
 	// Decode path: owner.
 	{
 		param := args["owner"]
@@ -46499,7 +47578,9 @@ func decodeReposDeleteCommitCommentParams(args map[string]string, r *http.Reques
 }
 
 func decodeReposDeleteCommitSignatureProtectionParams(args map[string]string, r *http.Request) (ReposDeleteCommitSignatureProtectionParams, error) {
-	var params ReposDeleteCommitSignatureProtectionParams
+	var (
+		params ReposDeleteCommitSignatureProtectionParams
+	)
 	// Decode path: owner.
 	{
 		param := args["owner"]
@@ -46597,7 +47678,9 @@ func decodeReposDeleteCommitSignatureProtectionParams(args map[string]string, r 
 }
 
 func decodeReposDeleteDeployKeyParams(args map[string]string, r *http.Request) (ReposDeleteDeployKeyParams, error) {
-	var params ReposDeleteDeployKeyParams
+	var (
+		params ReposDeleteDeployKeyParams
+	)
 	// Decode path: owner.
 	{
 		param := args["owner"]
@@ -46695,7 +47778,9 @@ func decodeReposDeleteDeployKeyParams(args map[string]string, r *http.Request) (
 }
 
 func decodeReposDeleteDeploymentParams(args map[string]string, r *http.Request) (ReposDeleteDeploymentParams, error) {
-	var params ReposDeleteDeploymentParams
+	var (
+		params ReposDeleteDeploymentParams
+	)
 	// Decode path: owner.
 	{
 		param := args["owner"]
@@ -46793,7 +47878,9 @@ func decodeReposDeleteDeploymentParams(args map[string]string, r *http.Request) 
 }
 
 func decodeReposDeleteFileParams(args map[string]string, r *http.Request) (ReposDeleteFileParams, error) {
-	var params ReposDeleteFileParams
+	var (
+		params ReposDeleteFileParams
+	)
 	// Decode path: owner.
 	{
 		param := args["owner"]
@@ -46891,7 +47978,9 @@ func decodeReposDeleteFileParams(args map[string]string, r *http.Request) (Repos
 }
 
 func decodeReposDeleteInvitationParams(args map[string]string, r *http.Request) (ReposDeleteInvitationParams, error) {
-	var params ReposDeleteInvitationParams
+	var (
+		params ReposDeleteInvitationParams
+	)
 	// Decode path: owner.
 	{
 		param := args["owner"]
@@ -46989,7 +48078,9 @@ func decodeReposDeleteInvitationParams(args map[string]string, r *http.Request) 
 }
 
 func decodeReposDeletePagesSiteParams(args map[string]string, r *http.Request) (ReposDeletePagesSiteParams, error) {
-	var params ReposDeletePagesSiteParams
+	var (
+		params ReposDeletePagesSiteParams
+	)
 	// Decode path: owner.
 	{
 		param := args["owner"]
@@ -47056,7 +48147,9 @@ func decodeReposDeletePagesSiteParams(args map[string]string, r *http.Request) (
 }
 
 func decodeReposDeletePullRequestReviewProtectionParams(args map[string]string, r *http.Request) (ReposDeletePullRequestReviewProtectionParams, error) {
-	var params ReposDeletePullRequestReviewProtectionParams
+	var (
+		params ReposDeletePullRequestReviewProtectionParams
+	)
 	// Decode path: owner.
 	{
 		param := args["owner"]
@@ -47154,7 +48247,9 @@ func decodeReposDeletePullRequestReviewProtectionParams(args map[string]string, 
 }
 
 func decodeReposDeleteReleaseParams(args map[string]string, r *http.Request) (ReposDeleteReleaseParams, error) {
-	var params ReposDeleteReleaseParams
+	var (
+		params ReposDeleteReleaseParams
+	)
 	// Decode path: owner.
 	{
 		param := args["owner"]
@@ -47252,7 +48347,9 @@ func decodeReposDeleteReleaseParams(args map[string]string, r *http.Request) (Re
 }
 
 func decodeReposDeleteReleaseAssetParams(args map[string]string, r *http.Request) (ReposDeleteReleaseAssetParams, error) {
-	var params ReposDeleteReleaseAssetParams
+	var (
+		params ReposDeleteReleaseAssetParams
+	)
 	// Decode path: owner.
 	{
 		param := args["owner"]
@@ -47350,7 +48447,9 @@ func decodeReposDeleteReleaseAssetParams(args map[string]string, r *http.Request
 }
 
 func decodeReposDeleteWebhookParams(args map[string]string, r *http.Request) (ReposDeleteWebhookParams, error) {
-	var params ReposDeleteWebhookParams
+	var (
+		params ReposDeleteWebhookParams
+	)
 	// Decode path: owner.
 	{
 		param := args["owner"]
@@ -47448,7 +48547,9 @@ func decodeReposDeleteWebhookParams(args map[string]string, r *http.Request) (Re
 }
 
 func decodeReposDisableAutomatedSecurityFixesParams(args map[string]string, r *http.Request) (ReposDisableAutomatedSecurityFixesParams, error) {
-	var params ReposDisableAutomatedSecurityFixesParams
+	var (
+		params ReposDisableAutomatedSecurityFixesParams
+	)
 	// Decode path: owner.
 	{
 		param := args["owner"]
@@ -47515,7 +48616,9 @@ func decodeReposDisableAutomatedSecurityFixesParams(args map[string]string, r *h
 }
 
 func decodeReposDisableLfsForRepoParams(args map[string]string, r *http.Request) (ReposDisableLfsForRepoParams, error) {
-	var params ReposDisableLfsForRepoParams
+	var (
+		params ReposDisableLfsForRepoParams
+	)
 	// Decode path: owner.
 	{
 		param := args["owner"]
@@ -47582,7 +48685,9 @@ func decodeReposDisableLfsForRepoParams(args map[string]string, r *http.Request)
 }
 
 func decodeReposDisableVulnerabilityAlertsParams(args map[string]string, r *http.Request) (ReposDisableVulnerabilityAlertsParams, error) {
-	var params ReposDisableVulnerabilityAlertsParams
+	var (
+		params ReposDisableVulnerabilityAlertsParams
+	)
 	// Decode path: owner.
 	{
 		param := args["owner"]
@@ -47649,7 +48754,9 @@ func decodeReposDisableVulnerabilityAlertsParams(args map[string]string, r *http
 }
 
 func decodeReposDownloadTarballArchiveParams(args map[string]string, r *http.Request) (ReposDownloadTarballArchiveParams, error) {
-	var params ReposDownloadTarballArchiveParams
+	var (
+		params ReposDownloadTarballArchiveParams
+	)
 	// Decode path: owner.
 	{
 		param := args["owner"]
@@ -47747,7 +48854,9 @@ func decodeReposDownloadTarballArchiveParams(args map[string]string, r *http.Req
 }
 
 func decodeReposDownloadZipballArchiveParams(args map[string]string, r *http.Request) (ReposDownloadZipballArchiveParams, error) {
-	var params ReposDownloadZipballArchiveParams
+	var (
+		params ReposDownloadZipballArchiveParams
+	)
 	// Decode path: owner.
 	{
 		param := args["owner"]
@@ -47845,7 +48954,9 @@ func decodeReposDownloadZipballArchiveParams(args map[string]string, r *http.Req
 }
 
 func decodeReposEnableAutomatedSecurityFixesParams(args map[string]string, r *http.Request) (ReposEnableAutomatedSecurityFixesParams, error) {
-	var params ReposEnableAutomatedSecurityFixesParams
+	var (
+		params ReposEnableAutomatedSecurityFixesParams
+	)
 	// Decode path: owner.
 	{
 		param := args["owner"]
@@ -47912,7 +49023,9 @@ func decodeReposEnableAutomatedSecurityFixesParams(args map[string]string, r *ht
 }
 
 func decodeReposEnableLfsForRepoParams(args map[string]string, r *http.Request) (ReposEnableLfsForRepoParams, error) {
-	var params ReposEnableLfsForRepoParams
+	var (
+		params ReposEnableLfsForRepoParams
+	)
 	// Decode path: owner.
 	{
 		param := args["owner"]
@@ -47979,7 +49092,9 @@ func decodeReposEnableLfsForRepoParams(args map[string]string, r *http.Request) 
 }
 
 func decodeReposEnableVulnerabilityAlertsParams(args map[string]string, r *http.Request) (ReposEnableVulnerabilityAlertsParams, error) {
-	var params ReposEnableVulnerabilityAlertsParams
+	var (
+		params ReposEnableVulnerabilityAlertsParams
+	)
 	// Decode path: owner.
 	{
 		param := args["owner"]
@@ -48046,7 +49161,9 @@ func decodeReposEnableVulnerabilityAlertsParams(args map[string]string, r *http.
 }
 
 func decodeReposGetParams(args map[string]string, r *http.Request) (ReposGetParams, error) {
-	var params ReposGetParams
+	var (
+		params ReposGetParams
+	)
 	// Decode path: owner.
 	{
 		param := args["owner"]
@@ -48113,7 +49230,9 @@ func decodeReposGetParams(args map[string]string, r *http.Request) (ReposGetPara
 }
 
 func decodeReposGetAccessRestrictionsParams(args map[string]string, r *http.Request) (ReposGetAccessRestrictionsParams, error) {
-	var params ReposGetAccessRestrictionsParams
+	var (
+		params ReposGetAccessRestrictionsParams
+	)
 	// Decode path: owner.
 	{
 		param := args["owner"]
@@ -48211,7 +49330,9 @@ func decodeReposGetAccessRestrictionsParams(args map[string]string, r *http.Requ
 }
 
 func decodeReposGetAdminBranchProtectionParams(args map[string]string, r *http.Request) (ReposGetAdminBranchProtectionParams, error) {
-	var params ReposGetAdminBranchProtectionParams
+	var (
+		params ReposGetAdminBranchProtectionParams
+	)
 	// Decode path: owner.
 	{
 		param := args["owner"]
@@ -48309,7 +49430,9 @@ func decodeReposGetAdminBranchProtectionParams(args map[string]string, r *http.R
 }
 
 func decodeReposGetAllStatusCheckContextsParams(args map[string]string, r *http.Request) (ReposGetAllStatusCheckContextsParams, error) {
-	var params ReposGetAllStatusCheckContextsParams
+	var (
+		params ReposGetAllStatusCheckContextsParams
+	)
 	// Decode path: owner.
 	{
 		param := args["owner"]
@@ -48407,7 +49530,10 @@ func decodeReposGetAllStatusCheckContextsParams(args map[string]string, r *http.
 }
 
 func decodeReposGetAllTopicsParams(args map[string]string, r *http.Request) (ReposGetAllTopicsParams, error) {
-	var params ReposGetAllTopicsParams
+	var (
+		params    ReposGetAllTopicsParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode path: owner.
 	{
 		param := args["owner"]
@@ -48472,7 +49598,7 @@ func decodeReposGetAllTopicsParams(args map[string]string, r *http.Request) (Rep
 	}
 	// Decode query: page.
 	{
-		values, ok := r.URL.Query()["page"]
+		values, ok := queryArgs["page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -48507,7 +49633,7 @@ func decodeReposGetAllTopicsParams(args map[string]string, r *http.Request) (Rep
 	}
 	// Decode query: per_page.
 	{
-		values, ok := r.URL.Query()["per_page"]
+		values, ok := queryArgs["per_page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -48544,7 +49670,9 @@ func decodeReposGetAllTopicsParams(args map[string]string, r *http.Request) (Rep
 }
 
 func decodeReposGetAppsWithAccessToProtectedBranchParams(args map[string]string, r *http.Request) (ReposGetAppsWithAccessToProtectedBranchParams, error) {
-	var params ReposGetAppsWithAccessToProtectedBranchParams
+	var (
+		params ReposGetAppsWithAccessToProtectedBranchParams
+	)
 	// Decode path: owner.
 	{
 		param := args["owner"]
@@ -48642,7 +49770,9 @@ func decodeReposGetAppsWithAccessToProtectedBranchParams(args map[string]string,
 }
 
 func decodeReposGetAutolinkParams(args map[string]string, r *http.Request) (ReposGetAutolinkParams, error) {
-	var params ReposGetAutolinkParams
+	var (
+		params ReposGetAutolinkParams
+	)
 	// Decode path: owner.
 	{
 		param := args["owner"]
@@ -48740,7 +49870,9 @@ func decodeReposGetAutolinkParams(args map[string]string, r *http.Request) (Repo
 }
 
 func decodeReposGetBranchParams(args map[string]string, r *http.Request) (ReposGetBranchParams, error) {
-	var params ReposGetBranchParams
+	var (
+		params ReposGetBranchParams
+	)
 	// Decode path: owner.
 	{
 		param := args["owner"]
@@ -48838,7 +49970,9 @@ func decodeReposGetBranchParams(args map[string]string, r *http.Request) (ReposG
 }
 
 func decodeReposGetBranchProtectionParams(args map[string]string, r *http.Request) (ReposGetBranchProtectionParams, error) {
-	var params ReposGetBranchProtectionParams
+	var (
+		params ReposGetBranchProtectionParams
+	)
 	// Decode path: owner.
 	{
 		param := args["owner"]
@@ -48936,7 +50070,10 @@ func decodeReposGetBranchProtectionParams(args map[string]string, r *http.Reques
 }
 
 func decodeReposGetClonesParams(args map[string]string, r *http.Request) (ReposGetClonesParams, error) {
-	var params ReposGetClonesParams
+	var (
+		params    ReposGetClonesParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode path: owner.
 	{
 		param := args["owner"]
@@ -49001,7 +50138,7 @@ func decodeReposGetClonesParams(args map[string]string, r *http.Request) (ReposG
 	}
 	// Decode query: per.
 	{
-		values, ok := r.URL.Query()["per"]
+		values, ok := queryArgs["per"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -49054,7 +50191,9 @@ func decodeReposGetClonesParams(args map[string]string, r *http.Request) (ReposG
 }
 
 func decodeReposGetCodeFrequencyStatsParams(args map[string]string, r *http.Request) (ReposGetCodeFrequencyStatsParams, error) {
-	var params ReposGetCodeFrequencyStatsParams
+	var (
+		params ReposGetCodeFrequencyStatsParams
+	)
 	// Decode path: owner.
 	{
 		param := args["owner"]
@@ -49121,7 +50260,9 @@ func decodeReposGetCodeFrequencyStatsParams(args map[string]string, r *http.Requ
 }
 
 func decodeReposGetCollaboratorPermissionLevelParams(args map[string]string, r *http.Request) (ReposGetCollaboratorPermissionLevelParams, error) {
-	var params ReposGetCollaboratorPermissionLevelParams
+	var (
+		params ReposGetCollaboratorPermissionLevelParams
+	)
 	// Decode path: owner.
 	{
 		param := args["owner"]
@@ -49219,7 +50360,10 @@ func decodeReposGetCollaboratorPermissionLevelParams(args map[string]string, r *
 }
 
 func decodeReposGetCombinedStatusForRefParams(args map[string]string, r *http.Request) (ReposGetCombinedStatusForRefParams, error) {
-	var params ReposGetCombinedStatusForRefParams
+	var (
+		params    ReposGetCombinedStatusForRefParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode path: owner.
 	{
 		param := args["owner"]
@@ -49315,7 +50459,7 @@ func decodeReposGetCombinedStatusForRefParams(args map[string]string, r *http.Re
 	}
 	// Decode query: per_page.
 	{
-		values, ok := r.URL.Query()["per_page"]
+		values, ok := queryArgs["per_page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -49350,7 +50494,7 @@ func decodeReposGetCombinedStatusForRefParams(args map[string]string, r *http.Re
 	}
 	// Decode query: page.
 	{
-		values, ok := r.URL.Query()["page"]
+		values, ok := queryArgs["page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -49387,7 +50531,10 @@ func decodeReposGetCombinedStatusForRefParams(args map[string]string, r *http.Re
 }
 
 func decodeReposGetCommitParams(args map[string]string, r *http.Request) (ReposGetCommitParams, error) {
-	var params ReposGetCommitParams
+	var (
+		params    ReposGetCommitParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode path: owner.
 	{
 		param := args["owner"]
@@ -49452,7 +50599,7 @@ func decodeReposGetCommitParams(args map[string]string, r *http.Request) (ReposG
 	}
 	// Decode query: page.
 	{
-		values, ok := r.URL.Query()["page"]
+		values, ok := queryArgs["page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -49487,7 +50634,7 @@ func decodeReposGetCommitParams(args map[string]string, r *http.Request) (ReposG
 	}
 	// Decode query: per_page.
 	{
-		values, ok := r.URL.Query()["per_page"]
+		values, ok := queryArgs["per_page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -49555,7 +50702,9 @@ func decodeReposGetCommitParams(args map[string]string, r *http.Request) (ReposG
 }
 
 func decodeReposGetCommitActivityStatsParams(args map[string]string, r *http.Request) (ReposGetCommitActivityStatsParams, error) {
-	var params ReposGetCommitActivityStatsParams
+	var (
+		params ReposGetCommitActivityStatsParams
+	)
 	// Decode path: owner.
 	{
 		param := args["owner"]
@@ -49622,7 +50771,9 @@ func decodeReposGetCommitActivityStatsParams(args map[string]string, r *http.Req
 }
 
 func decodeReposGetCommitCommentParams(args map[string]string, r *http.Request) (ReposGetCommitCommentParams, error) {
-	var params ReposGetCommitCommentParams
+	var (
+		params ReposGetCommitCommentParams
+	)
 	// Decode path: owner.
 	{
 		param := args["owner"]
@@ -49720,7 +50871,9 @@ func decodeReposGetCommitCommentParams(args map[string]string, r *http.Request) 
 }
 
 func decodeReposGetCommitSignatureProtectionParams(args map[string]string, r *http.Request) (ReposGetCommitSignatureProtectionParams, error) {
-	var params ReposGetCommitSignatureProtectionParams
+	var (
+		params ReposGetCommitSignatureProtectionParams
+	)
 	// Decode path: owner.
 	{
 		param := args["owner"]
@@ -49818,7 +50971,9 @@ func decodeReposGetCommitSignatureProtectionParams(args map[string]string, r *ht
 }
 
 func decodeReposGetCommunityProfileMetricsParams(args map[string]string, r *http.Request) (ReposGetCommunityProfileMetricsParams, error) {
-	var params ReposGetCommunityProfileMetricsParams
+	var (
+		params ReposGetCommunityProfileMetricsParams
+	)
 	// Decode path: owner.
 	{
 		param := args["owner"]
@@ -49885,7 +51040,9 @@ func decodeReposGetCommunityProfileMetricsParams(args map[string]string, r *http
 }
 
 func decodeReposGetContributorsStatsParams(args map[string]string, r *http.Request) (ReposGetContributorsStatsParams, error) {
-	var params ReposGetContributorsStatsParams
+	var (
+		params ReposGetContributorsStatsParams
+	)
 	// Decode path: owner.
 	{
 		param := args["owner"]
@@ -49952,7 +51109,9 @@ func decodeReposGetContributorsStatsParams(args map[string]string, r *http.Reque
 }
 
 func decodeReposGetDeployKeyParams(args map[string]string, r *http.Request) (ReposGetDeployKeyParams, error) {
-	var params ReposGetDeployKeyParams
+	var (
+		params ReposGetDeployKeyParams
+	)
 	// Decode path: owner.
 	{
 		param := args["owner"]
@@ -50050,7 +51209,9 @@ func decodeReposGetDeployKeyParams(args map[string]string, r *http.Request) (Rep
 }
 
 func decodeReposGetDeploymentParams(args map[string]string, r *http.Request) (ReposGetDeploymentParams, error) {
-	var params ReposGetDeploymentParams
+	var (
+		params ReposGetDeploymentParams
+	)
 	// Decode path: owner.
 	{
 		param := args["owner"]
@@ -50148,7 +51309,9 @@ func decodeReposGetDeploymentParams(args map[string]string, r *http.Request) (Re
 }
 
 func decodeReposGetDeploymentStatusParams(args map[string]string, r *http.Request) (ReposGetDeploymentStatusParams, error) {
-	var params ReposGetDeploymentStatusParams
+	var (
+		params ReposGetDeploymentStatusParams
+	)
 	// Decode path: owner.
 	{
 		param := args["owner"]
@@ -50277,7 +51440,9 @@ func decodeReposGetDeploymentStatusParams(args map[string]string, r *http.Reques
 }
 
 func decodeReposGetLatestPagesBuildParams(args map[string]string, r *http.Request) (ReposGetLatestPagesBuildParams, error) {
-	var params ReposGetLatestPagesBuildParams
+	var (
+		params ReposGetLatestPagesBuildParams
+	)
 	// Decode path: owner.
 	{
 		param := args["owner"]
@@ -50344,7 +51509,9 @@ func decodeReposGetLatestPagesBuildParams(args map[string]string, r *http.Reques
 }
 
 func decodeReposGetLatestReleaseParams(args map[string]string, r *http.Request) (ReposGetLatestReleaseParams, error) {
-	var params ReposGetLatestReleaseParams
+	var (
+		params ReposGetLatestReleaseParams
+	)
 	// Decode path: owner.
 	{
 		param := args["owner"]
@@ -50411,7 +51578,9 @@ func decodeReposGetLatestReleaseParams(args map[string]string, r *http.Request) 
 }
 
 func decodeReposGetPagesParams(args map[string]string, r *http.Request) (ReposGetPagesParams, error) {
-	var params ReposGetPagesParams
+	var (
+		params ReposGetPagesParams
+	)
 	// Decode path: owner.
 	{
 		param := args["owner"]
@@ -50478,7 +51647,9 @@ func decodeReposGetPagesParams(args map[string]string, r *http.Request) (ReposGe
 }
 
 func decodeReposGetPagesBuildParams(args map[string]string, r *http.Request) (ReposGetPagesBuildParams, error) {
-	var params ReposGetPagesBuildParams
+	var (
+		params ReposGetPagesBuildParams
+	)
 	// Decode path: owner.
 	{
 		param := args["owner"]
@@ -50576,7 +51747,9 @@ func decodeReposGetPagesBuildParams(args map[string]string, r *http.Request) (Re
 }
 
 func decodeReposGetPagesHealthCheckParams(args map[string]string, r *http.Request) (ReposGetPagesHealthCheckParams, error) {
-	var params ReposGetPagesHealthCheckParams
+	var (
+		params ReposGetPagesHealthCheckParams
+	)
 	// Decode path: owner.
 	{
 		param := args["owner"]
@@ -50643,7 +51816,9 @@ func decodeReposGetPagesHealthCheckParams(args map[string]string, r *http.Reques
 }
 
 func decodeReposGetParticipationStatsParams(args map[string]string, r *http.Request) (ReposGetParticipationStatsParams, error) {
-	var params ReposGetParticipationStatsParams
+	var (
+		params ReposGetParticipationStatsParams
+	)
 	// Decode path: owner.
 	{
 		param := args["owner"]
@@ -50710,7 +51885,9 @@ func decodeReposGetParticipationStatsParams(args map[string]string, r *http.Requ
 }
 
 func decodeReposGetPullRequestReviewProtectionParams(args map[string]string, r *http.Request) (ReposGetPullRequestReviewProtectionParams, error) {
-	var params ReposGetPullRequestReviewProtectionParams
+	var (
+		params ReposGetPullRequestReviewProtectionParams
+	)
 	// Decode path: owner.
 	{
 		param := args["owner"]
@@ -50808,7 +51985,9 @@ func decodeReposGetPullRequestReviewProtectionParams(args map[string]string, r *
 }
 
 func decodeReposGetPunchCardStatsParams(args map[string]string, r *http.Request) (ReposGetPunchCardStatsParams, error) {
-	var params ReposGetPunchCardStatsParams
+	var (
+		params ReposGetPunchCardStatsParams
+	)
 	// Decode path: owner.
 	{
 		param := args["owner"]
@@ -50875,7 +52054,10 @@ func decodeReposGetPunchCardStatsParams(args map[string]string, r *http.Request)
 }
 
 func decodeReposGetReadmeParams(args map[string]string, r *http.Request) (ReposGetReadmeParams, error) {
-	var params ReposGetReadmeParams
+	var (
+		params    ReposGetReadmeParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode path: owner.
 	{
 		param := args["owner"]
@@ -50940,7 +52122,7 @@ func decodeReposGetReadmeParams(args map[string]string, r *http.Request) (ReposG
 	}
 	// Decode query: ref.
 	{
-		values, ok := r.URL.Query()["ref"]
+		values, ok := queryArgs["ref"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -50977,7 +52159,10 @@ func decodeReposGetReadmeParams(args map[string]string, r *http.Request) (ReposG
 }
 
 func decodeReposGetReadmeInDirectoryParams(args map[string]string, r *http.Request) (ReposGetReadmeInDirectoryParams, error) {
-	var params ReposGetReadmeInDirectoryParams
+	var (
+		params    ReposGetReadmeInDirectoryParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode path: owner.
 	{
 		param := args["owner"]
@@ -51073,7 +52258,7 @@ func decodeReposGetReadmeInDirectoryParams(args map[string]string, r *http.Reque
 	}
 	// Decode query: ref.
 	{
-		values, ok := r.URL.Query()["ref"]
+		values, ok := queryArgs["ref"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -51110,7 +52295,9 @@ func decodeReposGetReadmeInDirectoryParams(args map[string]string, r *http.Reque
 }
 
 func decodeReposGetReleaseParams(args map[string]string, r *http.Request) (ReposGetReleaseParams, error) {
-	var params ReposGetReleaseParams
+	var (
+		params ReposGetReleaseParams
+	)
 	// Decode path: owner.
 	{
 		param := args["owner"]
@@ -51208,7 +52395,9 @@ func decodeReposGetReleaseParams(args map[string]string, r *http.Request) (Repos
 }
 
 func decodeReposGetReleaseAssetParams(args map[string]string, r *http.Request) (ReposGetReleaseAssetParams, error) {
-	var params ReposGetReleaseAssetParams
+	var (
+		params ReposGetReleaseAssetParams
+	)
 	// Decode path: owner.
 	{
 		param := args["owner"]
@@ -51306,7 +52495,9 @@ func decodeReposGetReleaseAssetParams(args map[string]string, r *http.Request) (
 }
 
 func decodeReposGetReleaseByTagParams(args map[string]string, r *http.Request) (ReposGetReleaseByTagParams, error) {
-	var params ReposGetReleaseByTagParams
+	var (
+		params ReposGetReleaseByTagParams
+	)
 	// Decode path: owner.
 	{
 		param := args["owner"]
@@ -51404,7 +52595,9 @@ func decodeReposGetReleaseByTagParams(args map[string]string, r *http.Request) (
 }
 
 func decodeReposGetStatusChecksProtectionParams(args map[string]string, r *http.Request) (ReposGetStatusChecksProtectionParams, error) {
-	var params ReposGetStatusChecksProtectionParams
+	var (
+		params ReposGetStatusChecksProtectionParams
+	)
 	// Decode path: owner.
 	{
 		param := args["owner"]
@@ -51502,7 +52695,9 @@ func decodeReposGetStatusChecksProtectionParams(args map[string]string, r *http.
 }
 
 func decodeReposGetTeamsWithAccessToProtectedBranchParams(args map[string]string, r *http.Request) (ReposGetTeamsWithAccessToProtectedBranchParams, error) {
-	var params ReposGetTeamsWithAccessToProtectedBranchParams
+	var (
+		params ReposGetTeamsWithAccessToProtectedBranchParams
+	)
 	// Decode path: owner.
 	{
 		param := args["owner"]
@@ -51600,7 +52795,9 @@ func decodeReposGetTeamsWithAccessToProtectedBranchParams(args map[string]string
 }
 
 func decodeReposGetTopPathsParams(args map[string]string, r *http.Request) (ReposGetTopPathsParams, error) {
-	var params ReposGetTopPathsParams
+	var (
+		params ReposGetTopPathsParams
+	)
 	// Decode path: owner.
 	{
 		param := args["owner"]
@@ -51667,7 +52864,9 @@ func decodeReposGetTopPathsParams(args map[string]string, r *http.Request) (Repo
 }
 
 func decodeReposGetTopReferrersParams(args map[string]string, r *http.Request) (ReposGetTopReferrersParams, error) {
-	var params ReposGetTopReferrersParams
+	var (
+		params ReposGetTopReferrersParams
+	)
 	// Decode path: owner.
 	{
 		param := args["owner"]
@@ -51734,7 +52933,9 @@ func decodeReposGetTopReferrersParams(args map[string]string, r *http.Request) (
 }
 
 func decodeReposGetUsersWithAccessToProtectedBranchParams(args map[string]string, r *http.Request) (ReposGetUsersWithAccessToProtectedBranchParams, error) {
-	var params ReposGetUsersWithAccessToProtectedBranchParams
+	var (
+		params ReposGetUsersWithAccessToProtectedBranchParams
+	)
 	// Decode path: owner.
 	{
 		param := args["owner"]
@@ -51832,7 +53033,10 @@ func decodeReposGetUsersWithAccessToProtectedBranchParams(args map[string]string
 }
 
 func decodeReposGetViewsParams(args map[string]string, r *http.Request) (ReposGetViewsParams, error) {
-	var params ReposGetViewsParams
+	var (
+		params    ReposGetViewsParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode path: owner.
 	{
 		param := args["owner"]
@@ -51897,7 +53101,7 @@ func decodeReposGetViewsParams(args map[string]string, r *http.Request) (ReposGe
 	}
 	// Decode query: per.
 	{
-		values, ok := r.URL.Query()["per"]
+		values, ok := queryArgs["per"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -51950,7 +53154,9 @@ func decodeReposGetViewsParams(args map[string]string, r *http.Request) (ReposGe
 }
 
 func decodeReposGetWebhookParams(args map[string]string, r *http.Request) (ReposGetWebhookParams, error) {
-	var params ReposGetWebhookParams
+	var (
+		params ReposGetWebhookParams
+	)
 	// Decode path: owner.
 	{
 		param := args["owner"]
@@ -52048,7 +53254,9 @@ func decodeReposGetWebhookParams(args map[string]string, r *http.Request) (Repos
 }
 
 func decodeReposGetWebhookConfigForRepoParams(args map[string]string, r *http.Request) (ReposGetWebhookConfigForRepoParams, error) {
-	var params ReposGetWebhookConfigForRepoParams
+	var (
+		params ReposGetWebhookConfigForRepoParams
+	)
 	// Decode path: owner.
 	{
 		param := args["owner"]
@@ -52146,7 +53354,9 @@ func decodeReposGetWebhookConfigForRepoParams(args map[string]string, r *http.Re
 }
 
 func decodeReposGetWebhookDeliveryParams(args map[string]string, r *http.Request) (ReposGetWebhookDeliveryParams, error) {
-	var params ReposGetWebhookDeliveryParams
+	var (
+		params ReposGetWebhookDeliveryParams
+	)
 	// Decode path: owner.
 	{
 		param := args["owner"]
@@ -52275,7 +53485,10 @@ func decodeReposGetWebhookDeliveryParams(args map[string]string, r *http.Request
 }
 
 func decodeReposListAutolinksParams(args map[string]string, r *http.Request) (ReposListAutolinksParams, error) {
-	var params ReposListAutolinksParams
+	var (
+		params    ReposListAutolinksParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode path: owner.
 	{
 		param := args["owner"]
@@ -52340,7 +53553,7 @@ func decodeReposListAutolinksParams(args map[string]string, r *http.Request) (Re
 	}
 	// Decode query: page.
 	{
-		values, ok := r.URL.Query()["page"]
+		values, ok := queryArgs["page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -52377,7 +53590,10 @@ func decodeReposListAutolinksParams(args map[string]string, r *http.Request) (Re
 }
 
 func decodeReposListBranchesParams(args map[string]string, r *http.Request) (ReposListBranchesParams, error) {
-	var params ReposListBranchesParams
+	var (
+		params    ReposListBranchesParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode path: owner.
 	{
 		param := args["owner"]
@@ -52442,7 +53658,7 @@ func decodeReposListBranchesParams(args map[string]string, r *http.Request) (Rep
 	}
 	// Decode query: protected.
 	{
-		values, ok := r.URL.Query()["protected"]
+		values, ok := queryArgs["protected"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -52477,7 +53693,7 @@ func decodeReposListBranchesParams(args map[string]string, r *http.Request) (Rep
 	}
 	// Decode query: per_page.
 	{
-		values, ok := r.URL.Query()["per_page"]
+		values, ok := queryArgs["per_page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -52512,7 +53728,7 @@ func decodeReposListBranchesParams(args map[string]string, r *http.Request) (Rep
 	}
 	// Decode query: page.
 	{
-		values, ok := r.URL.Query()["page"]
+		values, ok := queryArgs["page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -52549,7 +53765,9 @@ func decodeReposListBranchesParams(args map[string]string, r *http.Request) (Rep
 }
 
 func decodeReposListBranchesForHeadCommitParams(args map[string]string, r *http.Request) (ReposListBranchesForHeadCommitParams, error) {
-	var params ReposListBranchesForHeadCommitParams
+	var (
+		params ReposListBranchesForHeadCommitParams
+	)
 	// Decode path: owner.
 	{
 		param := args["owner"]
@@ -52647,7 +53865,10 @@ func decodeReposListBranchesForHeadCommitParams(args map[string]string, r *http.
 }
 
 func decodeReposListCollaboratorsParams(args map[string]string, r *http.Request) (ReposListCollaboratorsParams, error) {
-	var params ReposListCollaboratorsParams
+	var (
+		params    ReposListCollaboratorsParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode path: owner.
 	{
 		param := args["owner"]
@@ -52712,7 +53933,7 @@ func decodeReposListCollaboratorsParams(args map[string]string, r *http.Request)
 	}
 	// Decode query: affiliation.
 	{
-		values, ok := r.URL.Query()["affiliation"]
+		values, ok := queryArgs["affiliation"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -52763,7 +53984,7 @@ func decodeReposListCollaboratorsParams(args map[string]string, r *http.Request)
 	}
 	// Decode query: per_page.
 	{
-		values, ok := r.URL.Query()["per_page"]
+		values, ok := queryArgs["per_page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -52798,7 +54019,7 @@ func decodeReposListCollaboratorsParams(args map[string]string, r *http.Request)
 	}
 	// Decode query: page.
 	{
-		values, ok := r.URL.Query()["page"]
+		values, ok := queryArgs["page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -52835,7 +54056,10 @@ func decodeReposListCollaboratorsParams(args map[string]string, r *http.Request)
 }
 
 func decodeReposListCommentsForCommitParams(args map[string]string, r *http.Request) (ReposListCommentsForCommitParams, error) {
-	var params ReposListCommentsForCommitParams
+	var (
+		params    ReposListCommentsForCommitParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode path: owner.
 	{
 		param := args["owner"]
@@ -52931,7 +54155,7 @@ func decodeReposListCommentsForCommitParams(args map[string]string, r *http.Requ
 	}
 	// Decode query: per_page.
 	{
-		values, ok := r.URL.Query()["per_page"]
+		values, ok := queryArgs["per_page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -52966,7 +54190,7 @@ func decodeReposListCommentsForCommitParams(args map[string]string, r *http.Requ
 	}
 	// Decode query: page.
 	{
-		values, ok := r.URL.Query()["page"]
+		values, ok := queryArgs["page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -53003,7 +54227,10 @@ func decodeReposListCommentsForCommitParams(args map[string]string, r *http.Requ
 }
 
 func decodeReposListCommitCommentsForRepoParams(args map[string]string, r *http.Request) (ReposListCommitCommentsForRepoParams, error) {
-	var params ReposListCommitCommentsForRepoParams
+	var (
+		params    ReposListCommitCommentsForRepoParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode path: owner.
 	{
 		param := args["owner"]
@@ -53068,7 +54295,7 @@ func decodeReposListCommitCommentsForRepoParams(args map[string]string, r *http.
 	}
 	// Decode query: per_page.
 	{
-		values, ok := r.URL.Query()["per_page"]
+		values, ok := queryArgs["per_page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -53103,7 +54330,7 @@ func decodeReposListCommitCommentsForRepoParams(args map[string]string, r *http.
 	}
 	// Decode query: page.
 	{
-		values, ok := r.URL.Query()["page"]
+		values, ok := queryArgs["page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -53140,7 +54367,10 @@ func decodeReposListCommitCommentsForRepoParams(args map[string]string, r *http.
 }
 
 func decodeReposListCommitStatusesForRefParams(args map[string]string, r *http.Request) (ReposListCommitStatusesForRefParams, error) {
-	var params ReposListCommitStatusesForRefParams
+	var (
+		params    ReposListCommitStatusesForRefParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode path: owner.
 	{
 		param := args["owner"]
@@ -53236,7 +54466,7 @@ func decodeReposListCommitStatusesForRefParams(args map[string]string, r *http.R
 	}
 	// Decode query: per_page.
 	{
-		values, ok := r.URL.Query()["per_page"]
+		values, ok := queryArgs["per_page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -53271,7 +54501,7 @@ func decodeReposListCommitStatusesForRefParams(args map[string]string, r *http.R
 	}
 	// Decode query: page.
 	{
-		values, ok := r.URL.Query()["page"]
+		values, ok := queryArgs["page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -53308,7 +54538,10 @@ func decodeReposListCommitStatusesForRefParams(args map[string]string, r *http.R
 }
 
 func decodeReposListCommitsParams(args map[string]string, r *http.Request) (ReposListCommitsParams, error) {
-	var params ReposListCommitsParams
+	var (
+		params    ReposListCommitsParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode path: owner.
 	{
 		param := args["owner"]
@@ -53373,7 +54606,7 @@ func decodeReposListCommitsParams(args map[string]string, r *http.Request) (Repo
 	}
 	// Decode query: sha.
 	{
-		values, ok := r.URL.Query()["sha"]
+		values, ok := queryArgs["sha"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -53408,7 +54641,7 @@ func decodeReposListCommitsParams(args map[string]string, r *http.Request) (Repo
 	}
 	// Decode query: path.
 	{
-		values, ok := r.URL.Query()["path"]
+		values, ok := queryArgs["path"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -53443,7 +54676,7 @@ func decodeReposListCommitsParams(args map[string]string, r *http.Request) (Repo
 	}
 	// Decode query: author.
 	{
-		values, ok := r.URL.Query()["author"]
+		values, ok := queryArgs["author"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -53478,7 +54711,7 @@ func decodeReposListCommitsParams(args map[string]string, r *http.Request) (Repo
 	}
 	// Decode query: since.
 	{
-		values, ok := r.URL.Query()["since"]
+		values, ok := queryArgs["since"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -53513,7 +54746,7 @@ func decodeReposListCommitsParams(args map[string]string, r *http.Request) (Repo
 	}
 	// Decode query: until.
 	{
-		values, ok := r.URL.Query()["until"]
+		values, ok := queryArgs["until"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -53548,7 +54781,7 @@ func decodeReposListCommitsParams(args map[string]string, r *http.Request) (Repo
 	}
 	// Decode query: per_page.
 	{
-		values, ok := r.URL.Query()["per_page"]
+		values, ok := queryArgs["per_page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -53583,7 +54816,7 @@ func decodeReposListCommitsParams(args map[string]string, r *http.Request) (Repo
 	}
 	// Decode query: page.
 	{
-		values, ok := r.URL.Query()["page"]
+		values, ok := queryArgs["page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -53620,7 +54853,10 @@ func decodeReposListCommitsParams(args map[string]string, r *http.Request) (Repo
 }
 
 func decodeReposListContributorsParams(args map[string]string, r *http.Request) (ReposListContributorsParams, error) {
-	var params ReposListContributorsParams
+	var (
+		params    ReposListContributorsParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode path: owner.
 	{
 		param := args["owner"]
@@ -53685,7 +54921,7 @@ func decodeReposListContributorsParams(args map[string]string, r *http.Request) 
 	}
 	// Decode query: anon.
 	{
-		values, ok := r.URL.Query()["anon"]
+		values, ok := queryArgs["anon"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -53720,7 +54956,7 @@ func decodeReposListContributorsParams(args map[string]string, r *http.Request) 
 	}
 	// Decode query: per_page.
 	{
-		values, ok := r.URL.Query()["per_page"]
+		values, ok := queryArgs["per_page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -53755,7 +54991,7 @@ func decodeReposListContributorsParams(args map[string]string, r *http.Request) 
 	}
 	// Decode query: page.
 	{
-		values, ok := r.URL.Query()["page"]
+		values, ok := queryArgs["page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -53792,7 +55028,10 @@ func decodeReposListContributorsParams(args map[string]string, r *http.Request) 
 }
 
 func decodeReposListDeployKeysParams(args map[string]string, r *http.Request) (ReposListDeployKeysParams, error) {
-	var params ReposListDeployKeysParams
+	var (
+		params    ReposListDeployKeysParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode path: owner.
 	{
 		param := args["owner"]
@@ -53857,7 +55096,7 @@ func decodeReposListDeployKeysParams(args map[string]string, r *http.Request) (R
 	}
 	// Decode query: per_page.
 	{
-		values, ok := r.URL.Query()["per_page"]
+		values, ok := queryArgs["per_page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -53892,7 +55131,7 @@ func decodeReposListDeployKeysParams(args map[string]string, r *http.Request) (R
 	}
 	// Decode query: page.
 	{
-		values, ok := r.URL.Query()["page"]
+		values, ok := queryArgs["page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -53929,7 +55168,10 @@ func decodeReposListDeployKeysParams(args map[string]string, r *http.Request) (R
 }
 
 func decodeReposListDeploymentStatusesParams(args map[string]string, r *http.Request) (ReposListDeploymentStatusesParams, error) {
-	var params ReposListDeploymentStatusesParams
+	var (
+		params    ReposListDeploymentStatusesParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode path: owner.
 	{
 		param := args["owner"]
@@ -54025,7 +55267,7 @@ func decodeReposListDeploymentStatusesParams(args map[string]string, r *http.Req
 	}
 	// Decode query: per_page.
 	{
-		values, ok := r.URL.Query()["per_page"]
+		values, ok := queryArgs["per_page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -54060,7 +55302,7 @@ func decodeReposListDeploymentStatusesParams(args map[string]string, r *http.Req
 	}
 	// Decode query: page.
 	{
-		values, ok := r.URL.Query()["page"]
+		values, ok := queryArgs["page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -54097,7 +55339,10 @@ func decodeReposListDeploymentStatusesParams(args map[string]string, r *http.Req
 }
 
 func decodeReposListDeploymentsParams(args map[string]string, r *http.Request) (ReposListDeploymentsParams, error) {
-	var params ReposListDeploymentsParams
+	var (
+		params    ReposListDeploymentsParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode path: owner.
 	{
 		param := args["owner"]
@@ -54162,7 +55407,7 @@ func decodeReposListDeploymentsParams(args map[string]string, r *http.Request) (
 	}
 	// Decode query: sha.
 	{
-		values, ok := r.URL.Query()["sha"]
+		values, ok := queryArgs["sha"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -54197,7 +55442,7 @@ func decodeReposListDeploymentsParams(args map[string]string, r *http.Request) (
 	}
 	// Decode query: ref.
 	{
-		values, ok := r.URL.Query()["ref"]
+		values, ok := queryArgs["ref"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -54232,7 +55477,7 @@ func decodeReposListDeploymentsParams(args map[string]string, r *http.Request) (
 	}
 	// Decode query: task.
 	{
-		values, ok := r.URL.Query()["task"]
+		values, ok := queryArgs["task"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -54267,7 +55512,7 @@ func decodeReposListDeploymentsParams(args map[string]string, r *http.Request) (
 	}
 	// Decode query: environment.
 	{
-		values, ok := r.URL.Query()["environment"]
+		values, ok := queryArgs["environment"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -54302,7 +55547,7 @@ func decodeReposListDeploymentsParams(args map[string]string, r *http.Request) (
 	}
 	// Decode query: per_page.
 	{
-		values, ok := r.URL.Query()["per_page"]
+		values, ok := queryArgs["per_page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -54337,7 +55582,7 @@ func decodeReposListDeploymentsParams(args map[string]string, r *http.Request) (
 	}
 	// Decode query: page.
 	{
-		values, ok := r.URL.Query()["page"]
+		values, ok := queryArgs["page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -54374,10 +55619,13 @@ func decodeReposListDeploymentsParams(args map[string]string, r *http.Request) (
 }
 
 func decodeReposListForAuthenticatedUserParams(args map[string]string, r *http.Request) (ReposListForAuthenticatedUserParams, error) {
-	var params ReposListForAuthenticatedUserParams
+	var (
+		params    ReposListForAuthenticatedUserParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode query: visibility.
 	{
-		values, ok := r.URL.Query()["visibility"]
+		values, ok := queryArgs["visibility"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -54428,7 +55676,7 @@ func decodeReposListForAuthenticatedUserParams(args map[string]string, r *http.R
 	}
 	// Decode query: affiliation.
 	{
-		values, ok := r.URL.Query()["affiliation"]
+		values, ok := queryArgs["affiliation"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -54463,7 +55711,7 @@ func decodeReposListForAuthenticatedUserParams(args map[string]string, r *http.R
 	}
 	// Decode query: type.
 	{
-		values, ok := r.URL.Query()["type"]
+		values, ok := queryArgs["type"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -54514,7 +55762,7 @@ func decodeReposListForAuthenticatedUserParams(args map[string]string, r *http.R
 	}
 	// Decode query: sort.
 	{
-		values, ok := r.URL.Query()["sort"]
+		values, ok := queryArgs["sort"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -54565,7 +55813,7 @@ func decodeReposListForAuthenticatedUserParams(args map[string]string, r *http.R
 	}
 	// Decode query: direction.
 	{
-		values, ok := r.URL.Query()["direction"]
+		values, ok := queryArgs["direction"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -54616,7 +55864,7 @@ func decodeReposListForAuthenticatedUserParams(args map[string]string, r *http.R
 	}
 	// Decode query: per_page.
 	{
-		values, ok := r.URL.Query()["per_page"]
+		values, ok := queryArgs["per_page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -54651,7 +55899,7 @@ func decodeReposListForAuthenticatedUserParams(args map[string]string, r *http.R
 	}
 	// Decode query: page.
 	{
-		values, ok := r.URL.Query()["page"]
+		values, ok := queryArgs["page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -54686,7 +55934,7 @@ func decodeReposListForAuthenticatedUserParams(args map[string]string, r *http.R
 	}
 	// Decode query: since.
 	{
-		values, ok := r.URL.Query()["since"]
+		values, ok := queryArgs["since"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -54721,7 +55969,7 @@ func decodeReposListForAuthenticatedUserParams(args map[string]string, r *http.R
 	}
 	// Decode query: before.
 	{
-		values, ok := r.URL.Query()["before"]
+		values, ok := queryArgs["before"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -54758,7 +56006,10 @@ func decodeReposListForAuthenticatedUserParams(args map[string]string, r *http.R
 }
 
 func decodeReposListForOrgParams(args map[string]string, r *http.Request) (ReposListForOrgParams, error) {
-	var params ReposListForOrgParams
+	var (
+		params    ReposListForOrgParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode path: org.
 	{
 		param := args["org"]
@@ -54792,7 +56043,7 @@ func decodeReposListForOrgParams(args map[string]string, r *http.Request) (Repos
 	}
 	// Decode query: type.
 	{
-		values, ok := r.URL.Query()["type"]
+		values, ok := queryArgs["type"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -54843,7 +56094,7 @@ func decodeReposListForOrgParams(args map[string]string, r *http.Request) (Repos
 	}
 	// Decode query: sort.
 	{
-		values, ok := r.URL.Query()["sort"]
+		values, ok := queryArgs["sort"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -54894,7 +56145,7 @@ func decodeReposListForOrgParams(args map[string]string, r *http.Request) (Repos
 	}
 	// Decode query: direction.
 	{
-		values, ok := r.URL.Query()["direction"]
+		values, ok := queryArgs["direction"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -54945,7 +56196,7 @@ func decodeReposListForOrgParams(args map[string]string, r *http.Request) (Repos
 	}
 	// Decode query: per_page.
 	{
-		values, ok := r.URL.Query()["per_page"]
+		values, ok := queryArgs["per_page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -54980,7 +56231,7 @@ func decodeReposListForOrgParams(args map[string]string, r *http.Request) (Repos
 	}
 	// Decode query: page.
 	{
-		values, ok := r.URL.Query()["page"]
+		values, ok := queryArgs["page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -55017,7 +56268,10 @@ func decodeReposListForOrgParams(args map[string]string, r *http.Request) (Repos
 }
 
 func decodeReposListForUserParams(args map[string]string, r *http.Request) (ReposListForUserParams, error) {
-	var params ReposListForUserParams
+	var (
+		params    ReposListForUserParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode path: username.
 	{
 		param := args["username"]
@@ -55051,7 +56305,7 @@ func decodeReposListForUserParams(args map[string]string, r *http.Request) (Repo
 	}
 	// Decode query: type.
 	{
-		values, ok := r.URL.Query()["type"]
+		values, ok := queryArgs["type"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -55102,7 +56356,7 @@ func decodeReposListForUserParams(args map[string]string, r *http.Request) (Repo
 	}
 	// Decode query: sort.
 	{
-		values, ok := r.URL.Query()["sort"]
+		values, ok := queryArgs["sort"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -55153,7 +56407,7 @@ func decodeReposListForUserParams(args map[string]string, r *http.Request) (Repo
 	}
 	// Decode query: direction.
 	{
-		values, ok := r.URL.Query()["direction"]
+		values, ok := queryArgs["direction"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -55204,7 +56458,7 @@ func decodeReposListForUserParams(args map[string]string, r *http.Request) (Repo
 	}
 	// Decode query: per_page.
 	{
-		values, ok := r.URL.Query()["per_page"]
+		values, ok := queryArgs["per_page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -55239,7 +56493,7 @@ func decodeReposListForUserParams(args map[string]string, r *http.Request) (Repo
 	}
 	// Decode query: page.
 	{
-		values, ok := r.URL.Query()["page"]
+		values, ok := queryArgs["page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -55276,7 +56530,10 @@ func decodeReposListForUserParams(args map[string]string, r *http.Request) (Repo
 }
 
 func decodeReposListForksParams(args map[string]string, r *http.Request) (ReposListForksParams, error) {
-	var params ReposListForksParams
+	var (
+		params    ReposListForksParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode path: owner.
 	{
 		param := args["owner"]
@@ -55341,7 +56598,7 @@ func decodeReposListForksParams(args map[string]string, r *http.Request) (ReposL
 	}
 	// Decode query: sort.
 	{
-		values, ok := r.URL.Query()["sort"]
+		values, ok := queryArgs["sort"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -55392,7 +56649,7 @@ func decodeReposListForksParams(args map[string]string, r *http.Request) (ReposL
 	}
 	// Decode query: per_page.
 	{
-		values, ok := r.URL.Query()["per_page"]
+		values, ok := queryArgs["per_page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -55427,7 +56684,7 @@ func decodeReposListForksParams(args map[string]string, r *http.Request) (ReposL
 	}
 	// Decode query: page.
 	{
-		values, ok := r.URL.Query()["page"]
+		values, ok := queryArgs["page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -55464,7 +56721,10 @@ func decodeReposListForksParams(args map[string]string, r *http.Request) (ReposL
 }
 
 func decodeReposListInvitationsParams(args map[string]string, r *http.Request) (ReposListInvitationsParams, error) {
-	var params ReposListInvitationsParams
+	var (
+		params    ReposListInvitationsParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode path: owner.
 	{
 		param := args["owner"]
@@ -55529,7 +56789,7 @@ func decodeReposListInvitationsParams(args map[string]string, r *http.Request) (
 	}
 	// Decode query: per_page.
 	{
-		values, ok := r.URL.Query()["per_page"]
+		values, ok := queryArgs["per_page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -55564,7 +56824,7 @@ func decodeReposListInvitationsParams(args map[string]string, r *http.Request) (
 	}
 	// Decode query: page.
 	{
-		values, ok := r.URL.Query()["page"]
+		values, ok := queryArgs["page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -55601,10 +56861,13 @@ func decodeReposListInvitationsParams(args map[string]string, r *http.Request) (
 }
 
 func decodeReposListInvitationsForAuthenticatedUserParams(args map[string]string, r *http.Request) (ReposListInvitationsForAuthenticatedUserParams, error) {
-	var params ReposListInvitationsForAuthenticatedUserParams
+	var (
+		params    ReposListInvitationsForAuthenticatedUserParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode query: per_page.
 	{
-		values, ok := r.URL.Query()["per_page"]
+		values, ok := queryArgs["per_page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -55639,7 +56902,7 @@ func decodeReposListInvitationsForAuthenticatedUserParams(args map[string]string
 	}
 	// Decode query: page.
 	{
-		values, ok := r.URL.Query()["page"]
+		values, ok := queryArgs["page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -55676,7 +56939,9 @@ func decodeReposListInvitationsForAuthenticatedUserParams(args map[string]string
 }
 
 func decodeReposListLanguagesParams(args map[string]string, r *http.Request) (ReposListLanguagesParams, error) {
-	var params ReposListLanguagesParams
+	var (
+		params ReposListLanguagesParams
+	)
 	// Decode path: owner.
 	{
 		param := args["owner"]
@@ -55743,7 +57008,10 @@ func decodeReposListLanguagesParams(args map[string]string, r *http.Request) (Re
 }
 
 func decodeReposListPagesBuildsParams(args map[string]string, r *http.Request) (ReposListPagesBuildsParams, error) {
-	var params ReposListPagesBuildsParams
+	var (
+		params    ReposListPagesBuildsParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode path: owner.
 	{
 		param := args["owner"]
@@ -55808,7 +57076,7 @@ func decodeReposListPagesBuildsParams(args map[string]string, r *http.Request) (
 	}
 	// Decode query: per_page.
 	{
-		values, ok := r.URL.Query()["per_page"]
+		values, ok := queryArgs["per_page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -55843,7 +57111,7 @@ func decodeReposListPagesBuildsParams(args map[string]string, r *http.Request) (
 	}
 	// Decode query: page.
 	{
-		values, ok := r.URL.Query()["page"]
+		values, ok := queryArgs["page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -55880,10 +57148,13 @@ func decodeReposListPagesBuildsParams(args map[string]string, r *http.Request) (
 }
 
 func decodeReposListPublicParams(args map[string]string, r *http.Request) (ReposListPublicParams, error) {
-	var params ReposListPublicParams
+	var (
+		params    ReposListPublicParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode query: since.
 	{
-		values, ok := r.URL.Query()["since"]
+		values, ok := queryArgs["since"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -55920,7 +57191,10 @@ func decodeReposListPublicParams(args map[string]string, r *http.Request) (Repos
 }
 
 func decodeReposListPullRequestsAssociatedWithCommitParams(args map[string]string, r *http.Request) (ReposListPullRequestsAssociatedWithCommitParams, error) {
-	var params ReposListPullRequestsAssociatedWithCommitParams
+	var (
+		params    ReposListPullRequestsAssociatedWithCommitParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode path: owner.
 	{
 		param := args["owner"]
@@ -56016,7 +57290,7 @@ func decodeReposListPullRequestsAssociatedWithCommitParams(args map[string]strin
 	}
 	// Decode query: per_page.
 	{
-		values, ok := r.URL.Query()["per_page"]
+		values, ok := queryArgs["per_page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -56051,7 +57325,7 @@ func decodeReposListPullRequestsAssociatedWithCommitParams(args map[string]strin
 	}
 	// Decode query: page.
 	{
-		values, ok := r.URL.Query()["page"]
+		values, ok := queryArgs["page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -56088,7 +57362,10 @@ func decodeReposListPullRequestsAssociatedWithCommitParams(args map[string]strin
 }
 
 func decodeReposListReleaseAssetsParams(args map[string]string, r *http.Request) (ReposListReleaseAssetsParams, error) {
-	var params ReposListReleaseAssetsParams
+	var (
+		params    ReposListReleaseAssetsParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode path: owner.
 	{
 		param := args["owner"]
@@ -56184,7 +57461,7 @@ func decodeReposListReleaseAssetsParams(args map[string]string, r *http.Request)
 	}
 	// Decode query: per_page.
 	{
-		values, ok := r.URL.Query()["per_page"]
+		values, ok := queryArgs["per_page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -56219,7 +57496,7 @@ func decodeReposListReleaseAssetsParams(args map[string]string, r *http.Request)
 	}
 	// Decode query: page.
 	{
-		values, ok := r.URL.Query()["page"]
+		values, ok := queryArgs["page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -56256,7 +57533,10 @@ func decodeReposListReleaseAssetsParams(args map[string]string, r *http.Request)
 }
 
 func decodeReposListReleasesParams(args map[string]string, r *http.Request) (ReposListReleasesParams, error) {
-	var params ReposListReleasesParams
+	var (
+		params    ReposListReleasesParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode path: owner.
 	{
 		param := args["owner"]
@@ -56321,7 +57601,7 @@ func decodeReposListReleasesParams(args map[string]string, r *http.Request) (Rep
 	}
 	// Decode query: per_page.
 	{
-		values, ok := r.URL.Query()["per_page"]
+		values, ok := queryArgs["per_page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -56356,7 +57636,7 @@ func decodeReposListReleasesParams(args map[string]string, r *http.Request) (Rep
 	}
 	// Decode query: page.
 	{
-		values, ok := r.URL.Query()["page"]
+		values, ok := queryArgs["page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -56393,7 +57673,10 @@ func decodeReposListReleasesParams(args map[string]string, r *http.Request) (Rep
 }
 
 func decodeReposListTagsParams(args map[string]string, r *http.Request) (ReposListTagsParams, error) {
-	var params ReposListTagsParams
+	var (
+		params    ReposListTagsParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode path: owner.
 	{
 		param := args["owner"]
@@ -56458,7 +57741,7 @@ func decodeReposListTagsParams(args map[string]string, r *http.Request) (ReposLi
 	}
 	// Decode query: per_page.
 	{
-		values, ok := r.URL.Query()["per_page"]
+		values, ok := queryArgs["per_page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -56493,7 +57776,7 @@ func decodeReposListTagsParams(args map[string]string, r *http.Request) (ReposLi
 	}
 	// Decode query: page.
 	{
-		values, ok := r.URL.Query()["page"]
+		values, ok := queryArgs["page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -56530,7 +57813,10 @@ func decodeReposListTagsParams(args map[string]string, r *http.Request) (ReposLi
 }
 
 func decodeReposListTeamsParams(args map[string]string, r *http.Request) (ReposListTeamsParams, error) {
-	var params ReposListTeamsParams
+	var (
+		params    ReposListTeamsParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode path: owner.
 	{
 		param := args["owner"]
@@ -56595,7 +57881,7 @@ func decodeReposListTeamsParams(args map[string]string, r *http.Request) (ReposL
 	}
 	// Decode query: per_page.
 	{
-		values, ok := r.URL.Query()["per_page"]
+		values, ok := queryArgs["per_page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -56630,7 +57916,7 @@ func decodeReposListTeamsParams(args map[string]string, r *http.Request) (ReposL
 	}
 	// Decode query: page.
 	{
-		values, ok := r.URL.Query()["page"]
+		values, ok := queryArgs["page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -56667,7 +57953,10 @@ func decodeReposListTeamsParams(args map[string]string, r *http.Request) (ReposL
 }
 
 func decodeReposListWebhookDeliveriesParams(args map[string]string, r *http.Request) (ReposListWebhookDeliveriesParams, error) {
-	var params ReposListWebhookDeliveriesParams
+	var (
+		params    ReposListWebhookDeliveriesParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode path: owner.
 	{
 		param := args["owner"]
@@ -56763,7 +58052,7 @@ func decodeReposListWebhookDeliveriesParams(args map[string]string, r *http.Requ
 	}
 	// Decode query: per_page.
 	{
-		values, ok := r.URL.Query()["per_page"]
+		values, ok := queryArgs["per_page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -56798,7 +58087,7 @@ func decodeReposListWebhookDeliveriesParams(args map[string]string, r *http.Requ
 	}
 	// Decode query: cursor.
 	{
-		values, ok := r.URL.Query()["cursor"]
+		values, ok := queryArgs["cursor"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -56835,7 +58124,10 @@ func decodeReposListWebhookDeliveriesParams(args map[string]string, r *http.Requ
 }
 
 func decodeReposListWebhooksParams(args map[string]string, r *http.Request) (ReposListWebhooksParams, error) {
-	var params ReposListWebhooksParams
+	var (
+		params    ReposListWebhooksParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode path: owner.
 	{
 		param := args["owner"]
@@ -56900,7 +58192,7 @@ func decodeReposListWebhooksParams(args map[string]string, r *http.Request) (Rep
 	}
 	// Decode query: per_page.
 	{
-		values, ok := r.URL.Query()["per_page"]
+		values, ok := queryArgs["per_page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -56935,7 +58227,7 @@ func decodeReposListWebhooksParams(args map[string]string, r *http.Request) (Rep
 	}
 	// Decode query: page.
 	{
-		values, ok := r.URL.Query()["page"]
+		values, ok := queryArgs["page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -56972,7 +58264,9 @@ func decodeReposListWebhooksParams(args map[string]string, r *http.Request) (Rep
 }
 
 func decodeReposMergeParams(args map[string]string, r *http.Request) (ReposMergeParams, error) {
-	var params ReposMergeParams
+	var (
+		params ReposMergeParams
+	)
 	// Decode path: owner.
 	{
 		param := args["owner"]
@@ -57039,7 +58333,9 @@ func decodeReposMergeParams(args map[string]string, r *http.Request) (ReposMerge
 }
 
 func decodeReposMergeUpstreamParams(args map[string]string, r *http.Request) (ReposMergeUpstreamParams, error) {
-	var params ReposMergeUpstreamParams
+	var (
+		params ReposMergeUpstreamParams
+	)
 	// Decode path: owner.
 	{
 		param := args["owner"]
@@ -57106,7 +58402,9 @@ func decodeReposMergeUpstreamParams(args map[string]string, r *http.Request) (Re
 }
 
 func decodeReposPingWebhookParams(args map[string]string, r *http.Request) (ReposPingWebhookParams, error) {
-	var params ReposPingWebhookParams
+	var (
+		params ReposPingWebhookParams
+	)
 	// Decode path: owner.
 	{
 		param := args["owner"]
@@ -57204,7 +58502,9 @@ func decodeReposPingWebhookParams(args map[string]string, r *http.Request) (Repo
 }
 
 func decodeReposRedeliverWebhookDeliveryParams(args map[string]string, r *http.Request) (ReposRedeliverWebhookDeliveryParams, error) {
-	var params ReposRedeliverWebhookDeliveryParams
+	var (
+		params ReposRedeliverWebhookDeliveryParams
+	)
 	// Decode path: owner.
 	{
 		param := args["owner"]
@@ -57333,7 +58633,9 @@ func decodeReposRedeliverWebhookDeliveryParams(args map[string]string, r *http.R
 }
 
 func decodeReposRemoveAppAccessRestrictionsParams(args map[string]string, r *http.Request) (ReposRemoveAppAccessRestrictionsParams, error) {
-	var params ReposRemoveAppAccessRestrictionsParams
+	var (
+		params ReposRemoveAppAccessRestrictionsParams
+	)
 	// Decode path: owner.
 	{
 		param := args["owner"]
@@ -57431,7 +58733,9 @@ func decodeReposRemoveAppAccessRestrictionsParams(args map[string]string, r *htt
 }
 
 func decodeReposRemoveCollaboratorParams(args map[string]string, r *http.Request) (ReposRemoveCollaboratorParams, error) {
-	var params ReposRemoveCollaboratorParams
+	var (
+		params ReposRemoveCollaboratorParams
+	)
 	// Decode path: owner.
 	{
 		param := args["owner"]
@@ -57529,7 +58833,9 @@ func decodeReposRemoveCollaboratorParams(args map[string]string, r *http.Request
 }
 
 func decodeReposRemoveStatusCheckContextsParams(args map[string]string, r *http.Request) (ReposRemoveStatusCheckContextsParams, error) {
-	var params ReposRemoveStatusCheckContextsParams
+	var (
+		params ReposRemoveStatusCheckContextsParams
+	)
 	// Decode path: owner.
 	{
 		param := args["owner"]
@@ -57627,7 +58933,9 @@ func decodeReposRemoveStatusCheckContextsParams(args map[string]string, r *http.
 }
 
 func decodeReposRemoveStatusCheckProtectionParams(args map[string]string, r *http.Request) (ReposRemoveStatusCheckProtectionParams, error) {
-	var params ReposRemoveStatusCheckProtectionParams
+	var (
+		params ReposRemoveStatusCheckProtectionParams
+	)
 	// Decode path: owner.
 	{
 		param := args["owner"]
@@ -57725,7 +59033,9 @@ func decodeReposRemoveStatusCheckProtectionParams(args map[string]string, r *htt
 }
 
 func decodeReposRemoveTeamAccessRestrictionsParams(args map[string]string, r *http.Request) (ReposRemoveTeamAccessRestrictionsParams, error) {
-	var params ReposRemoveTeamAccessRestrictionsParams
+	var (
+		params ReposRemoveTeamAccessRestrictionsParams
+	)
 	// Decode path: owner.
 	{
 		param := args["owner"]
@@ -57823,7 +59133,9 @@ func decodeReposRemoveTeamAccessRestrictionsParams(args map[string]string, r *ht
 }
 
 func decodeReposRemoveUserAccessRestrictionsParams(args map[string]string, r *http.Request) (ReposRemoveUserAccessRestrictionsParams, error) {
-	var params ReposRemoveUserAccessRestrictionsParams
+	var (
+		params ReposRemoveUserAccessRestrictionsParams
+	)
 	// Decode path: owner.
 	{
 		param := args["owner"]
@@ -57921,7 +59233,9 @@ func decodeReposRemoveUserAccessRestrictionsParams(args map[string]string, r *ht
 }
 
 func decodeReposRenameBranchParams(args map[string]string, r *http.Request) (ReposRenameBranchParams, error) {
-	var params ReposRenameBranchParams
+	var (
+		params ReposRenameBranchParams
+	)
 	// Decode path: owner.
 	{
 		param := args["owner"]
@@ -58019,7 +59333,9 @@ func decodeReposRenameBranchParams(args map[string]string, r *http.Request) (Rep
 }
 
 func decodeReposReplaceAllTopicsParams(args map[string]string, r *http.Request) (ReposReplaceAllTopicsParams, error) {
-	var params ReposReplaceAllTopicsParams
+	var (
+		params ReposReplaceAllTopicsParams
+	)
 	// Decode path: owner.
 	{
 		param := args["owner"]
@@ -58086,7 +59402,9 @@ func decodeReposReplaceAllTopicsParams(args map[string]string, r *http.Request) 
 }
 
 func decodeReposRequestPagesBuildParams(args map[string]string, r *http.Request) (ReposRequestPagesBuildParams, error) {
-	var params ReposRequestPagesBuildParams
+	var (
+		params ReposRequestPagesBuildParams
+	)
 	// Decode path: owner.
 	{
 		param := args["owner"]
@@ -58153,7 +59471,9 @@ func decodeReposRequestPagesBuildParams(args map[string]string, r *http.Request)
 }
 
 func decodeReposSetAdminBranchProtectionParams(args map[string]string, r *http.Request) (ReposSetAdminBranchProtectionParams, error) {
-	var params ReposSetAdminBranchProtectionParams
+	var (
+		params ReposSetAdminBranchProtectionParams
+	)
 	// Decode path: owner.
 	{
 		param := args["owner"]
@@ -58251,7 +59571,9 @@ func decodeReposSetAdminBranchProtectionParams(args map[string]string, r *http.R
 }
 
 func decodeReposSetAppAccessRestrictionsParams(args map[string]string, r *http.Request) (ReposSetAppAccessRestrictionsParams, error) {
-	var params ReposSetAppAccessRestrictionsParams
+	var (
+		params ReposSetAppAccessRestrictionsParams
+	)
 	// Decode path: owner.
 	{
 		param := args["owner"]
@@ -58349,7 +59671,9 @@ func decodeReposSetAppAccessRestrictionsParams(args map[string]string, r *http.R
 }
 
 func decodeReposSetStatusCheckContextsParams(args map[string]string, r *http.Request) (ReposSetStatusCheckContextsParams, error) {
-	var params ReposSetStatusCheckContextsParams
+	var (
+		params ReposSetStatusCheckContextsParams
+	)
 	// Decode path: owner.
 	{
 		param := args["owner"]
@@ -58447,7 +59771,9 @@ func decodeReposSetStatusCheckContextsParams(args map[string]string, r *http.Req
 }
 
 func decodeReposSetTeamAccessRestrictionsParams(args map[string]string, r *http.Request) (ReposSetTeamAccessRestrictionsParams, error) {
-	var params ReposSetTeamAccessRestrictionsParams
+	var (
+		params ReposSetTeamAccessRestrictionsParams
+	)
 	// Decode path: owner.
 	{
 		param := args["owner"]
@@ -58545,7 +59871,9 @@ func decodeReposSetTeamAccessRestrictionsParams(args map[string]string, r *http.
 }
 
 func decodeReposSetUserAccessRestrictionsParams(args map[string]string, r *http.Request) (ReposSetUserAccessRestrictionsParams, error) {
-	var params ReposSetUserAccessRestrictionsParams
+	var (
+		params ReposSetUserAccessRestrictionsParams
+	)
 	// Decode path: owner.
 	{
 		param := args["owner"]
@@ -58643,7 +59971,9 @@ func decodeReposSetUserAccessRestrictionsParams(args map[string]string, r *http.
 }
 
 func decodeReposTestPushWebhookParams(args map[string]string, r *http.Request) (ReposTestPushWebhookParams, error) {
-	var params ReposTestPushWebhookParams
+	var (
+		params ReposTestPushWebhookParams
+	)
 	// Decode path: owner.
 	{
 		param := args["owner"]
@@ -58741,7 +60071,9 @@ func decodeReposTestPushWebhookParams(args map[string]string, r *http.Request) (
 }
 
 func decodeReposTransferParams(args map[string]string, r *http.Request) (ReposTransferParams, error) {
-	var params ReposTransferParams
+	var (
+		params ReposTransferParams
+	)
 	// Decode path: owner.
 	{
 		param := args["owner"]
@@ -58808,7 +60140,9 @@ func decodeReposTransferParams(args map[string]string, r *http.Request) (ReposTr
 }
 
 func decodeReposUpdateParams(args map[string]string, r *http.Request) (ReposUpdateParams, error) {
-	var params ReposUpdateParams
+	var (
+		params ReposUpdateParams
+	)
 	// Decode path: owner.
 	{
 		param := args["owner"]
@@ -58875,7 +60209,9 @@ func decodeReposUpdateParams(args map[string]string, r *http.Request) (ReposUpda
 }
 
 func decodeReposUpdateBranchProtectionParams(args map[string]string, r *http.Request) (ReposUpdateBranchProtectionParams, error) {
-	var params ReposUpdateBranchProtectionParams
+	var (
+		params ReposUpdateBranchProtectionParams
+	)
 	// Decode path: owner.
 	{
 		param := args["owner"]
@@ -58973,7 +60309,9 @@ func decodeReposUpdateBranchProtectionParams(args map[string]string, r *http.Req
 }
 
 func decodeReposUpdateCommitCommentParams(args map[string]string, r *http.Request) (ReposUpdateCommitCommentParams, error) {
-	var params ReposUpdateCommitCommentParams
+	var (
+		params ReposUpdateCommitCommentParams
+	)
 	// Decode path: owner.
 	{
 		param := args["owner"]
@@ -59071,7 +60409,9 @@ func decodeReposUpdateCommitCommentParams(args map[string]string, r *http.Reques
 }
 
 func decodeReposUpdateInvitationParams(args map[string]string, r *http.Request) (ReposUpdateInvitationParams, error) {
-	var params ReposUpdateInvitationParams
+	var (
+		params ReposUpdateInvitationParams
+	)
 	// Decode path: owner.
 	{
 		param := args["owner"]
@@ -59169,7 +60509,9 @@ func decodeReposUpdateInvitationParams(args map[string]string, r *http.Request) 
 }
 
 func decodeReposUpdatePullRequestReviewProtectionParams(args map[string]string, r *http.Request) (ReposUpdatePullRequestReviewProtectionParams, error) {
-	var params ReposUpdatePullRequestReviewProtectionParams
+	var (
+		params ReposUpdatePullRequestReviewProtectionParams
+	)
 	// Decode path: owner.
 	{
 		param := args["owner"]
@@ -59267,7 +60609,9 @@ func decodeReposUpdatePullRequestReviewProtectionParams(args map[string]string, 
 }
 
 func decodeReposUpdateReleaseParams(args map[string]string, r *http.Request) (ReposUpdateReleaseParams, error) {
-	var params ReposUpdateReleaseParams
+	var (
+		params ReposUpdateReleaseParams
+	)
 	// Decode path: owner.
 	{
 		param := args["owner"]
@@ -59365,7 +60709,9 @@ func decodeReposUpdateReleaseParams(args map[string]string, r *http.Request) (Re
 }
 
 func decodeReposUpdateReleaseAssetParams(args map[string]string, r *http.Request) (ReposUpdateReleaseAssetParams, error) {
-	var params ReposUpdateReleaseAssetParams
+	var (
+		params ReposUpdateReleaseAssetParams
+	)
 	// Decode path: owner.
 	{
 		param := args["owner"]
@@ -59463,7 +60809,9 @@ func decodeReposUpdateReleaseAssetParams(args map[string]string, r *http.Request
 }
 
 func decodeReposUpdateStatusCheckProtectionParams(args map[string]string, r *http.Request) (ReposUpdateStatusCheckProtectionParams, error) {
-	var params ReposUpdateStatusCheckProtectionParams
+	var (
+		params ReposUpdateStatusCheckProtectionParams
+	)
 	// Decode path: owner.
 	{
 		param := args["owner"]
@@ -59561,7 +60909,9 @@ func decodeReposUpdateStatusCheckProtectionParams(args map[string]string, r *htt
 }
 
 func decodeReposUpdateWebhookParams(args map[string]string, r *http.Request) (ReposUpdateWebhookParams, error) {
-	var params ReposUpdateWebhookParams
+	var (
+		params ReposUpdateWebhookParams
+	)
 	// Decode path: owner.
 	{
 		param := args["owner"]
@@ -59659,7 +61009,9 @@ func decodeReposUpdateWebhookParams(args map[string]string, r *http.Request) (Re
 }
 
 func decodeReposUpdateWebhookConfigForRepoParams(args map[string]string, r *http.Request) (ReposUpdateWebhookConfigForRepoParams, error) {
-	var params ReposUpdateWebhookConfigForRepoParams
+	var (
+		params ReposUpdateWebhookConfigForRepoParams
+	)
 	// Decode path: owner.
 	{
 		param := args["owner"]
@@ -59757,7 +61109,9 @@ func decodeReposUpdateWebhookConfigForRepoParams(args map[string]string, r *http
 }
 
 func decodeScimDeleteUserFromOrgParams(args map[string]string, r *http.Request) (ScimDeleteUserFromOrgParams, error) {
-	var params ScimDeleteUserFromOrgParams
+	var (
+		params ScimDeleteUserFromOrgParams
+	)
 	// Decode path: org.
 	{
 		param := args["org"]
@@ -59824,10 +61178,13 @@ func decodeScimDeleteUserFromOrgParams(args map[string]string, r *http.Request) 
 }
 
 func decodeSearchCodeParams(args map[string]string, r *http.Request) (SearchCodeParams, error) {
-	var params SearchCodeParams
+	var (
+		params    SearchCodeParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode query: q.
 	{
-		values, ok := r.URL.Query()["q"]
+		values, ok := queryArgs["q"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -59857,7 +61214,7 @@ func decodeSearchCodeParams(args map[string]string, r *http.Request) (SearchCode
 	}
 	// Decode query: sort.
 	{
-		values, ok := r.URL.Query()["sort"]
+		values, ok := queryArgs["sort"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -59908,7 +61265,7 @@ func decodeSearchCodeParams(args map[string]string, r *http.Request) (SearchCode
 	}
 	// Decode query: order.
 	{
-		values, ok := r.URL.Query()["order"]
+		values, ok := queryArgs["order"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -59959,7 +61316,7 @@ func decodeSearchCodeParams(args map[string]string, r *http.Request) (SearchCode
 	}
 	// Decode query: per_page.
 	{
-		values, ok := r.URL.Query()["per_page"]
+		values, ok := queryArgs["per_page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -59994,7 +61351,7 @@ func decodeSearchCodeParams(args map[string]string, r *http.Request) (SearchCode
 	}
 	// Decode query: page.
 	{
-		values, ok := r.URL.Query()["page"]
+		values, ok := queryArgs["page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -60031,10 +61388,13 @@ func decodeSearchCodeParams(args map[string]string, r *http.Request) (SearchCode
 }
 
 func decodeSearchCommitsParams(args map[string]string, r *http.Request) (SearchCommitsParams, error) {
-	var params SearchCommitsParams
+	var (
+		params    SearchCommitsParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode query: q.
 	{
-		values, ok := r.URL.Query()["q"]
+		values, ok := queryArgs["q"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -60064,7 +61424,7 @@ func decodeSearchCommitsParams(args map[string]string, r *http.Request) (SearchC
 	}
 	// Decode query: sort.
 	{
-		values, ok := r.URL.Query()["sort"]
+		values, ok := queryArgs["sort"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -60115,7 +61475,7 @@ func decodeSearchCommitsParams(args map[string]string, r *http.Request) (SearchC
 	}
 	// Decode query: order.
 	{
-		values, ok := r.URL.Query()["order"]
+		values, ok := queryArgs["order"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -60166,7 +61526,7 @@ func decodeSearchCommitsParams(args map[string]string, r *http.Request) (SearchC
 	}
 	// Decode query: per_page.
 	{
-		values, ok := r.URL.Query()["per_page"]
+		values, ok := queryArgs["per_page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -60201,7 +61561,7 @@ func decodeSearchCommitsParams(args map[string]string, r *http.Request) (SearchC
 	}
 	// Decode query: page.
 	{
-		values, ok := r.URL.Query()["page"]
+		values, ok := queryArgs["page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -60238,10 +61598,13 @@ func decodeSearchCommitsParams(args map[string]string, r *http.Request) (SearchC
 }
 
 func decodeSearchIssuesAndPullRequestsParams(args map[string]string, r *http.Request) (SearchIssuesAndPullRequestsParams, error) {
-	var params SearchIssuesAndPullRequestsParams
+	var (
+		params    SearchIssuesAndPullRequestsParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode query: q.
 	{
-		values, ok := r.URL.Query()["q"]
+		values, ok := queryArgs["q"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -60271,7 +61634,7 @@ func decodeSearchIssuesAndPullRequestsParams(args map[string]string, r *http.Req
 	}
 	// Decode query: sort.
 	{
-		values, ok := r.URL.Query()["sort"]
+		values, ok := queryArgs["sort"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -60322,7 +61685,7 @@ func decodeSearchIssuesAndPullRequestsParams(args map[string]string, r *http.Req
 	}
 	// Decode query: order.
 	{
-		values, ok := r.URL.Query()["order"]
+		values, ok := queryArgs["order"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -60373,7 +61736,7 @@ func decodeSearchIssuesAndPullRequestsParams(args map[string]string, r *http.Req
 	}
 	// Decode query: per_page.
 	{
-		values, ok := r.URL.Query()["per_page"]
+		values, ok := queryArgs["per_page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -60408,7 +61771,7 @@ func decodeSearchIssuesAndPullRequestsParams(args map[string]string, r *http.Req
 	}
 	// Decode query: page.
 	{
-		values, ok := r.URL.Query()["page"]
+		values, ok := queryArgs["page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -60445,10 +61808,13 @@ func decodeSearchIssuesAndPullRequestsParams(args map[string]string, r *http.Req
 }
 
 func decodeSearchLabelsParams(args map[string]string, r *http.Request) (SearchLabelsParams, error) {
-	var params SearchLabelsParams
+	var (
+		params    SearchLabelsParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode query: repository_id.
 	{
-		values, ok := r.URL.Query()["repository_id"]
+		values, ok := queryArgs["repository_id"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -60478,7 +61844,7 @@ func decodeSearchLabelsParams(args map[string]string, r *http.Request) (SearchLa
 	}
 	// Decode query: q.
 	{
-		values, ok := r.URL.Query()["q"]
+		values, ok := queryArgs["q"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -60508,7 +61874,7 @@ func decodeSearchLabelsParams(args map[string]string, r *http.Request) (SearchLa
 	}
 	// Decode query: sort.
 	{
-		values, ok := r.URL.Query()["sort"]
+		values, ok := queryArgs["sort"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -60559,7 +61925,7 @@ func decodeSearchLabelsParams(args map[string]string, r *http.Request) (SearchLa
 	}
 	// Decode query: order.
 	{
-		values, ok := r.URL.Query()["order"]
+		values, ok := queryArgs["order"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -60610,7 +61976,7 @@ func decodeSearchLabelsParams(args map[string]string, r *http.Request) (SearchLa
 	}
 	// Decode query: per_page.
 	{
-		values, ok := r.URL.Query()["per_page"]
+		values, ok := queryArgs["per_page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -60645,7 +62011,7 @@ func decodeSearchLabelsParams(args map[string]string, r *http.Request) (SearchLa
 	}
 	// Decode query: page.
 	{
-		values, ok := r.URL.Query()["page"]
+		values, ok := queryArgs["page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -60682,10 +62048,13 @@ func decodeSearchLabelsParams(args map[string]string, r *http.Request) (SearchLa
 }
 
 func decodeSearchReposParams(args map[string]string, r *http.Request) (SearchReposParams, error) {
-	var params SearchReposParams
+	var (
+		params    SearchReposParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode query: q.
 	{
-		values, ok := r.URL.Query()["q"]
+		values, ok := queryArgs["q"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -60715,7 +62084,7 @@ func decodeSearchReposParams(args map[string]string, r *http.Request) (SearchRep
 	}
 	// Decode query: sort.
 	{
-		values, ok := r.URL.Query()["sort"]
+		values, ok := queryArgs["sort"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -60766,7 +62135,7 @@ func decodeSearchReposParams(args map[string]string, r *http.Request) (SearchRep
 	}
 	// Decode query: order.
 	{
-		values, ok := r.URL.Query()["order"]
+		values, ok := queryArgs["order"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -60817,7 +62186,7 @@ func decodeSearchReposParams(args map[string]string, r *http.Request) (SearchRep
 	}
 	// Decode query: per_page.
 	{
-		values, ok := r.URL.Query()["per_page"]
+		values, ok := queryArgs["per_page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -60852,7 +62221,7 @@ func decodeSearchReposParams(args map[string]string, r *http.Request) (SearchRep
 	}
 	// Decode query: page.
 	{
-		values, ok := r.URL.Query()["page"]
+		values, ok := queryArgs["page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -60889,10 +62258,13 @@ func decodeSearchReposParams(args map[string]string, r *http.Request) (SearchRep
 }
 
 func decodeSearchTopicsParams(args map[string]string, r *http.Request) (SearchTopicsParams, error) {
-	var params SearchTopicsParams
+	var (
+		params    SearchTopicsParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode query: q.
 	{
-		values, ok := r.URL.Query()["q"]
+		values, ok := queryArgs["q"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -60922,7 +62294,7 @@ func decodeSearchTopicsParams(args map[string]string, r *http.Request) (SearchTo
 	}
 	// Decode query: per_page.
 	{
-		values, ok := r.URL.Query()["per_page"]
+		values, ok := queryArgs["per_page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -60957,7 +62329,7 @@ func decodeSearchTopicsParams(args map[string]string, r *http.Request) (SearchTo
 	}
 	// Decode query: page.
 	{
-		values, ok := r.URL.Query()["page"]
+		values, ok := queryArgs["page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -60994,10 +62366,13 @@ func decodeSearchTopicsParams(args map[string]string, r *http.Request) (SearchTo
 }
 
 func decodeSearchUsersParams(args map[string]string, r *http.Request) (SearchUsersParams, error) {
-	var params SearchUsersParams
+	var (
+		params    SearchUsersParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode query: q.
 	{
-		values, ok := r.URL.Query()["q"]
+		values, ok := queryArgs["q"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -61027,7 +62402,7 @@ func decodeSearchUsersParams(args map[string]string, r *http.Request) (SearchUse
 	}
 	// Decode query: sort.
 	{
-		values, ok := r.URL.Query()["sort"]
+		values, ok := queryArgs["sort"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -61078,7 +62453,7 @@ func decodeSearchUsersParams(args map[string]string, r *http.Request) (SearchUse
 	}
 	// Decode query: order.
 	{
-		values, ok := r.URL.Query()["order"]
+		values, ok := queryArgs["order"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -61129,7 +62504,7 @@ func decodeSearchUsersParams(args map[string]string, r *http.Request) (SearchUse
 	}
 	// Decode query: per_page.
 	{
-		values, ok := r.URL.Query()["per_page"]
+		values, ok := queryArgs["per_page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -61164,7 +62539,7 @@ func decodeSearchUsersParams(args map[string]string, r *http.Request) (SearchUse
 	}
 	// Decode query: page.
 	{
-		values, ok := r.URL.Query()["page"]
+		values, ok := queryArgs["page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -61201,7 +62576,9 @@ func decodeSearchUsersParams(args map[string]string, r *http.Request) (SearchUse
 }
 
 func decodeSecretScanningGetAlertParams(args map[string]string, r *http.Request) (SecretScanningGetAlertParams, error) {
-	var params SecretScanningGetAlertParams
+	var (
+		params SecretScanningGetAlertParams
+	)
 	// Decode path: owner.
 	{
 		param := args["owner"]
@@ -61306,7 +62683,10 @@ func decodeSecretScanningGetAlertParams(args map[string]string, r *http.Request)
 }
 
 func decodeSecretScanningListAlertsForOrgParams(args map[string]string, r *http.Request) (SecretScanningListAlertsForOrgParams, error) {
-	var params SecretScanningListAlertsForOrgParams
+	var (
+		params    SecretScanningListAlertsForOrgParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode path: org.
 	{
 		param := args["org"]
@@ -61340,7 +62720,7 @@ func decodeSecretScanningListAlertsForOrgParams(args map[string]string, r *http.
 	}
 	// Decode query: state.
 	{
-		values, ok := r.URL.Query()["state"]
+		values, ok := queryArgs["state"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -61391,7 +62771,7 @@ func decodeSecretScanningListAlertsForOrgParams(args map[string]string, r *http.
 	}
 	// Decode query: secret_type.
 	{
-		values, ok := r.URL.Query()["secret_type"]
+		values, ok := queryArgs["secret_type"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -61426,7 +62806,7 @@ func decodeSecretScanningListAlertsForOrgParams(args map[string]string, r *http.
 	}
 	// Decode query: page.
 	{
-		values, ok := r.URL.Query()["page"]
+		values, ok := queryArgs["page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -61461,7 +62841,7 @@ func decodeSecretScanningListAlertsForOrgParams(args map[string]string, r *http.
 	}
 	// Decode query: per_page.
 	{
-		values, ok := r.URL.Query()["per_page"]
+		values, ok := queryArgs["per_page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -61498,7 +62878,10 @@ func decodeSecretScanningListAlertsForOrgParams(args map[string]string, r *http.
 }
 
 func decodeSecretScanningListAlertsForRepoParams(args map[string]string, r *http.Request) (SecretScanningListAlertsForRepoParams, error) {
-	var params SecretScanningListAlertsForRepoParams
+	var (
+		params    SecretScanningListAlertsForRepoParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode path: owner.
 	{
 		param := args["owner"]
@@ -61563,7 +62946,7 @@ func decodeSecretScanningListAlertsForRepoParams(args map[string]string, r *http
 	}
 	// Decode query: state.
 	{
-		values, ok := r.URL.Query()["state"]
+		values, ok := queryArgs["state"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -61614,7 +62997,7 @@ func decodeSecretScanningListAlertsForRepoParams(args map[string]string, r *http
 	}
 	// Decode query: secret_type.
 	{
-		values, ok := r.URL.Query()["secret_type"]
+		values, ok := queryArgs["secret_type"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -61649,7 +63032,7 @@ func decodeSecretScanningListAlertsForRepoParams(args map[string]string, r *http
 	}
 	// Decode query: page.
 	{
-		values, ok := r.URL.Query()["page"]
+		values, ok := queryArgs["page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -61684,7 +63067,7 @@ func decodeSecretScanningListAlertsForRepoParams(args map[string]string, r *http
 	}
 	// Decode query: per_page.
 	{
-		values, ok := r.URL.Query()["per_page"]
+		values, ok := queryArgs["per_page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -61721,7 +63104,9 @@ func decodeSecretScanningListAlertsForRepoParams(args map[string]string, r *http
 }
 
 func decodeSecretScanningUpdateAlertParams(args map[string]string, r *http.Request) (SecretScanningUpdateAlertParams, error) {
-	var params SecretScanningUpdateAlertParams
+	var (
+		params SecretScanningUpdateAlertParams
+	)
 	// Decode path: owner.
 	{
 		param := args["owner"]
@@ -61826,7 +63211,9 @@ func decodeSecretScanningUpdateAlertParams(args map[string]string, r *http.Reque
 }
 
 func decodeTeamsAddMemberLegacyParams(args map[string]string, r *http.Request) (TeamsAddMemberLegacyParams, error) {
-	var params TeamsAddMemberLegacyParams
+	var (
+		params TeamsAddMemberLegacyParams
+	)
 	// Decode path: team_id.
 	{
 		param := args["team_id"]
@@ -61893,7 +63280,9 @@ func decodeTeamsAddMemberLegacyParams(args map[string]string, r *http.Request) (
 }
 
 func decodeTeamsAddOrUpdateMembershipForUserInOrgParams(args map[string]string, r *http.Request) (TeamsAddOrUpdateMembershipForUserInOrgParams, error) {
-	var params TeamsAddOrUpdateMembershipForUserInOrgParams
+	var (
+		params TeamsAddOrUpdateMembershipForUserInOrgParams
+	)
 	// Decode path: org.
 	{
 		param := args["org"]
@@ -61991,7 +63380,9 @@ func decodeTeamsAddOrUpdateMembershipForUserInOrgParams(args map[string]string, 
 }
 
 func decodeTeamsAddOrUpdateMembershipForUserLegacyParams(args map[string]string, r *http.Request) (TeamsAddOrUpdateMembershipForUserLegacyParams, error) {
-	var params TeamsAddOrUpdateMembershipForUserLegacyParams
+	var (
+		params TeamsAddOrUpdateMembershipForUserLegacyParams
+	)
 	// Decode path: team_id.
 	{
 		param := args["team_id"]
@@ -62058,7 +63449,9 @@ func decodeTeamsAddOrUpdateMembershipForUserLegacyParams(args map[string]string,
 }
 
 func decodeTeamsAddOrUpdateProjectPermissionsInOrgParams(args map[string]string, r *http.Request) (TeamsAddOrUpdateProjectPermissionsInOrgParams, error) {
-	var params TeamsAddOrUpdateProjectPermissionsInOrgParams
+	var (
+		params TeamsAddOrUpdateProjectPermissionsInOrgParams
+	)
 	// Decode path: org.
 	{
 		param := args["org"]
@@ -62156,7 +63549,9 @@ func decodeTeamsAddOrUpdateProjectPermissionsInOrgParams(args map[string]string,
 }
 
 func decodeTeamsAddOrUpdateProjectPermissionsLegacyParams(args map[string]string, r *http.Request) (TeamsAddOrUpdateProjectPermissionsLegacyParams, error) {
-	var params TeamsAddOrUpdateProjectPermissionsLegacyParams
+	var (
+		params TeamsAddOrUpdateProjectPermissionsLegacyParams
+	)
 	// Decode path: team_id.
 	{
 		param := args["team_id"]
@@ -62223,7 +63618,9 @@ func decodeTeamsAddOrUpdateProjectPermissionsLegacyParams(args map[string]string
 }
 
 func decodeTeamsAddOrUpdateRepoPermissionsInOrgParams(args map[string]string, r *http.Request) (TeamsAddOrUpdateRepoPermissionsInOrgParams, error) {
-	var params TeamsAddOrUpdateRepoPermissionsInOrgParams
+	var (
+		params TeamsAddOrUpdateRepoPermissionsInOrgParams
+	)
 	// Decode path: org.
 	{
 		param := args["org"]
@@ -62352,7 +63749,9 @@ func decodeTeamsAddOrUpdateRepoPermissionsInOrgParams(args map[string]string, r 
 }
 
 func decodeTeamsAddOrUpdateRepoPermissionsLegacyParams(args map[string]string, r *http.Request) (TeamsAddOrUpdateRepoPermissionsLegacyParams, error) {
-	var params TeamsAddOrUpdateRepoPermissionsLegacyParams
+	var (
+		params TeamsAddOrUpdateRepoPermissionsLegacyParams
+	)
 	// Decode path: team_id.
 	{
 		param := args["team_id"]
@@ -62450,7 +63849,9 @@ func decodeTeamsAddOrUpdateRepoPermissionsLegacyParams(args map[string]string, r
 }
 
 func decodeTeamsCheckPermissionsForProjectInOrgParams(args map[string]string, r *http.Request) (TeamsCheckPermissionsForProjectInOrgParams, error) {
-	var params TeamsCheckPermissionsForProjectInOrgParams
+	var (
+		params TeamsCheckPermissionsForProjectInOrgParams
+	)
 	// Decode path: org.
 	{
 		param := args["org"]
@@ -62548,7 +63949,9 @@ func decodeTeamsCheckPermissionsForProjectInOrgParams(args map[string]string, r 
 }
 
 func decodeTeamsCheckPermissionsForProjectLegacyParams(args map[string]string, r *http.Request) (TeamsCheckPermissionsForProjectLegacyParams, error) {
-	var params TeamsCheckPermissionsForProjectLegacyParams
+	var (
+		params TeamsCheckPermissionsForProjectLegacyParams
+	)
 	// Decode path: team_id.
 	{
 		param := args["team_id"]
@@ -62615,7 +64018,9 @@ func decodeTeamsCheckPermissionsForProjectLegacyParams(args map[string]string, r
 }
 
 func decodeTeamsCheckPermissionsForRepoInOrgParams(args map[string]string, r *http.Request) (TeamsCheckPermissionsForRepoInOrgParams, error) {
-	var params TeamsCheckPermissionsForRepoInOrgParams
+	var (
+		params TeamsCheckPermissionsForRepoInOrgParams
+	)
 	// Decode path: org.
 	{
 		param := args["org"]
@@ -62744,7 +64149,9 @@ func decodeTeamsCheckPermissionsForRepoInOrgParams(args map[string]string, r *ht
 }
 
 func decodeTeamsCheckPermissionsForRepoLegacyParams(args map[string]string, r *http.Request) (TeamsCheckPermissionsForRepoLegacyParams, error) {
-	var params TeamsCheckPermissionsForRepoLegacyParams
+	var (
+		params TeamsCheckPermissionsForRepoLegacyParams
+	)
 	// Decode path: team_id.
 	{
 		param := args["team_id"]
@@ -62842,7 +64249,9 @@ func decodeTeamsCheckPermissionsForRepoLegacyParams(args map[string]string, r *h
 }
 
 func decodeTeamsCreateParams(args map[string]string, r *http.Request) (TeamsCreateParams, error) {
-	var params TeamsCreateParams
+	var (
+		params TeamsCreateParams
+	)
 	// Decode path: org.
 	{
 		param := args["org"]
@@ -62878,7 +64287,9 @@ func decodeTeamsCreateParams(args map[string]string, r *http.Request) (TeamsCrea
 }
 
 func decodeTeamsCreateDiscussionCommentInOrgParams(args map[string]string, r *http.Request) (TeamsCreateDiscussionCommentInOrgParams, error) {
-	var params TeamsCreateDiscussionCommentInOrgParams
+	var (
+		params TeamsCreateDiscussionCommentInOrgParams
+	)
 	// Decode path: org.
 	{
 		param := args["org"]
@@ -62976,7 +64387,9 @@ func decodeTeamsCreateDiscussionCommentInOrgParams(args map[string]string, r *ht
 }
 
 func decodeTeamsCreateDiscussionCommentLegacyParams(args map[string]string, r *http.Request) (TeamsCreateDiscussionCommentLegacyParams, error) {
-	var params TeamsCreateDiscussionCommentLegacyParams
+	var (
+		params TeamsCreateDiscussionCommentLegacyParams
+	)
 	// Decode path: team_id.
 	{
 		param := args["team_id"]
@@ -63043,7 +64456,9 @@ func decodeTeamsCreateDiscussionCommentLegacyParams(args map[string]string, r *h
 }
 
 func decodeTeamsCreateDiscussionInOrgParams(args map[string]string, r *http.Request) (TeamsCreateDiscussionInOrgParams, error) {
-	var params TeamsCreateDiscussionInOrgParams
+	var (
+		params TeamsCreateDiscussionInOrgParams
+	)
 	// Decode path: org.
 	{
 		param := args["org"]
@@ -63110,7 +64525,9 @@ func decodeTeamsCreateDiscussionInOrgParams(args map[string]string, r *http.Requ
 }
 
 func decodeTeamsCreateDiscussionLegacyParams(args map[string]string, r *http.Request) (TeamsCreateDiscussionLegacyParams, error) {
-	var params TeamsCreateDiscussionLegacyParams
+	var (
+		params TeamsCreateDiscussionLegacyParams
+	)
 	// Decode path: team_id.
 	{
 		param := args["team_id"]
@@ -63146,7 +64563,9 @@ func decodeTeamsCreateDiscussionLegacyParams(args map[string]string, r *http.Req
 }
 
 func decodeTeamsCreateOrUpdateIdpGroupConnectionsInOrgParams(args map[string]string, r *http.Request) (TeamsCreateOrUpdateIdpGroupConnectionsInOrgParams, error) {
-	var params TeamsCreateOrUpdateIdpGroupConnectionsInOrgParams
+	var (
+		params TeamsCreateOrUpdateIdpGroupConnectionsInOrgParams
+	)
 	// Decode path: org.
 	{
 		param := args["org"]
@@ -63213,7 +64632,9 @@ func decodeTeamsCreateOrUpdateIdpGroupConnectionsInOrgParams(args map[string]str
 }
 
 func decodeTeamsCreateOrUpdateIdpGroupConnectionsLegacyParams(args map[string]string, r *http.Request) (TeamsCreateOrUpdateIdpGroupConnectionsLegacyParams, error) {
-	var params TeamsCreateOrUpdateIdpGroupConnectionsLegacyParams
+	var (
+		params TeamsCreateOrUpdateIdpGroupConnectionsLegacyParams
+	)
 	// Decode path: team_id.
 	{
 		param := args["team_id"]
@@ -63249,7 +64670,9 @@ func decodeTeamsCreateOrUpdateIdpGroupConnectionsLegacyParams(args map[string]st
 }
 
 func decodeTeamsDeleteDiscussionCommentInOrgParams(args map[string]string, r *http.Request) (TeamsDeleteDiscussionCommentInOrgParams, error) {
-	var params TeamsDeleteDiscussionCommentInOrgParams
+	var (
+		params TeamsDeleteDiscussionCommentInOrgParams
+	)
 	// Decode path: org.
 	{
 		param := args["org"]
@@ -63378,7 +64801,9 @@ func decodeTeamsDeleteDiscussionCommentInOrgParams(args map[string]string, r *ht
 }
 
 func decodeTeamsDeleteDiscussionCommentLegacyParams(args map[string]string, r *http.Request) (TeamsDeleteDiscussionCommentLegacyParams, error) {
-	var params TeamsDeleteDiscussionCommentLegacyParams
+	var (
+		params TeamsDeleteDiscussionCommentLegacyParams
+	)
 	// Decode path: team_id.
 	{
 		param := args["team_id"]
@@ -63476,7 +64901,9 @@ func decodeTeamsDeleteDiscussionCommentLegacyParams(args map[string]string, r *h
 }
 
 func decodeTeamsDeleteDiscussionInOrgParams(args map[string]string, r *http.Request) (TeamsDeleteDiscussionInOrgParams, error) {
-	var params TeamsDeleteDiscussionInOrgParams
+	var (
+		params TeamsDeleteDiscussionInOrgParams
+	)
 	// Decode path: org.
 	{
 		param := args["org"]
@@ -63574,7 +65001,9 @@ func decodeTeamsDeleteDiscussionInOrgParams(args map[string]string, r *http.Requ
 }
 
 func decodeTeamsDeleteDiscussionLegacyParams(args map[string]string, r *http.Request) (TeamsDeleteDiscussionLegacyParams, error) {
-	var params TeamsDeleteDiscussionLegacyParams
+	var (
+		params TeamsDeleteDiscussionLegacyParams
+	)
 	// Decode path: team_id.
 	{
 		param := args["team_id"]
@@ -63641,7 +65070,9 @@ func decodeTeamsDeleteDiscussionLegacyParams(args map[string]string, r *http.Req
 }
 
 func decodeTeamsDeleteInOrgParams(args map[string]string, r *http.Request) (TeamsDeleteInOrgParams, error) {
-	var params TeamsDeleteInOrgParams
+	var (
+		params TeamsDeleteInOrgParams
+	)
 	// Decode path: org.
 	{
 		param := args["org"]
@@ -63708,7 +65139,9 @@ func decodeTeamsDeleteInOrgParams(args map[string]string, r *http.Request) (Team
 }
 
 func decodeTeamsDeleteLegacyParams(args map[string]string, r *http.Request) (TeamsDeleteLegacyParams, error) {
-	var params TeamsDeleteLegacyParams
+	var (
+		params TeamsDeleteLegacyParams
+	)
 	// Decode path: team_id.
 	{
 		param := args["team_id"]
@@ -63744,7 +65177,9 @@ func decodeTeamsDeleteLegacyParams(args map[string]string, r *http.Request) (Tea
 }
 
 func decodeTeamsGetByNameParams(args map[string]string, r *http.Request) (TeamsGetByNameParams, error) {
-	var params TeamsGetByNameParams
+	var (
+		params TeamsGetByNameParams
+	)
 	// Decode path: org.
 	{
 		param := args["org"]
@@ -63811,7 +65246,9 @@ func decodeTeamsGetByNameParams(args map[string]string, r *http.Request) (TeamsG
 }
 
 func decodeTeamsGetDiscussionCommentInOrgParams(args map[string]string, r *http.Request) (TeamsGetDiscussionCommentInOrgParams, error) {
-	var params TeamsGetDiscussionCommentInOrgParams
+	var (
+		params TeamsGetDiscussionCommentInOrgParams
+	)
 	// Decode path: org.
 	{
 		param := args["org"]
@@ -63940,7 +65377,9 @@ func decodeTeamsGetDiscussionCommentInOrgParams(args map[string]string, r *http.
 }
 
 func decodeTeamsGetDiscussionCommentLegacyParams(args map[string]string, r *http.Request) (TeamsGetDiscussionCommentLegacyParams, error) {
-	var params TeamsGetDiscussionCommentLegacyParams
+	var (
+		params TeamsGetDiscussionCommentLegacyParams
+	)
 	// Decode path: team_id.
 	{
 		param := args["team_id"]
@@ -64038,7 +65477,9 @@ func decodeTeamsGetDiscussionCommentLegacyParams(args map[string]string, r *http
 }
 
 func decodeTeamsGetDiscussionInOrgParams(args map[string]string, r *http.Request) (TeamsGetDiscussionInOrgParams, error) {
-	var params TeamsGetDiscussionInOrgParams
+	var (
+		params TeamsGetDiscussionInOrgParams
+	)
 	// Decode path: org.
 	{
 		param := args["org"]
@@ -64136,7 +65577,9 @@ func decodeTeamsGetDiscussionInOrgParams(args map[string]string, r *http.Request
 }
 
 func decodeTeamsGetDiscussionLegacyParams(args map[string]string, r *http.Request) (TeamsGetDiscussionLegacyParams, error) {
-	var params TeamsGetDiscussionLegacyParams
+	var (
+		params TeamsGetDiscussionLegacyParams
+	)
 	// Decode path: team_id.
 	{
 		param := args["team_id"]
@@ -64203,7 +65646,9 @@ func decodeTeamsGetDiscussionLegacyParams(args map[string]string, r *http.Reques
 }
 
 func decodeTeamsGetLegacyParams(args map[string]string, r *http.Request) (TeamsGetLegacyParams, error) {
-	var params TeamsGetLegacyParams
+	var (
+		params TeamsGetLegacyParams
+	)
 	// Decode path: team_id.
 	{
 		param := args["team_id"]
@@ -64239,7 +65684,9 @@ func decodeTeamsGetLegacyParams(args map[string]string, r *http.Request) (TeamsG
 }
 
 func decodeTeamsGetMemberLegacyParams(args map[string]string, r *http.Request) (TeamsGetMemberLegacyParams, error) {
-	var params TeamsGetMemberLegacyParams
+	var (
+		params TeamsGetMemberLegacyParams
+	)
 	// Decode path: team_id.
 	{
 		param := args["team_id"]
@@ -64306,7 +65753,9 @@ func decodeTeamsGetMemberLegacyParams(args map[string]string, r *http.Request) (
 }
 
 func decodeTeamsGetMembershipForUserInOrgParams(args map[string]string, r *http.Request) (TeamsGetMembershipForUserInOrgParams, error) {
-	var params TeamsGetMembershipForUserInOrgParams
+	var (
+		params TeamsGetMembershipForUserInOrgParams
+	)
 	// Decode path: org.
 	{
 		param := args["org"]
@@ -64404,7 +65853,9 @@ func decodeTeamsGetMembershipForUserInOrgParams(args map[string]string, r *http.
 }
 
 func decodeTeamsGetMembershipForUserLegacyParams(args map[string]string, r *http.Request) (TeamsGetMembershipForUserLegacyParams, error) {
-	var params TeamsGetMembershipForUserLegacyParams
+	var (
+		params TeamsGetMembershipForUserLegacyParams
+	)
 	// Decode path: team_id.
 	{
 		param := args["team_id"]
@@ -64471,7 +65922,10 @@ func decodeTeamsGetMembershipForUserLegacyParams(args map[string]string, r *http
 }
 
 func decodeTeamsListParams(args map[string]string, r *http.Request) (TeamsListParams, error) {
-	var params TeamsListParams
+	var (
+		params    TeamsListParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode path: org.
 	{
 		param := args["org"]
@@ -64505,7 +65959,7 @@ func decodeTeamsListParams(args map[string]string, r *http.Request) (TeamsListPa
 	}
 	// Decode query: per_page.
 	{
-		values, ok := r.URL.Query()["per_page"]
+		values, ok := queryArgs["per_page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -64540,7 +65994,7 @@ func decodeTeamsListParams(args map[string]string, r *http.Request) (TeamsListPa
 	}
 	// Decode query: page.
 	{
-		values, ok := r.URL.Query()["page"]
+		values, ok := queryArgs["page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -64577,7 +66031,10 @@ func decodeTeamsListParams(args map[string]string, r *http.Request) (TeamsListPa
 }
 
 func decodeTeamsListChildInOrgParams(args map[string]string, r *http.Request) (TeamsListChildInOrgParams, error) {
-	var params TeamsListChildInOrgParams
+	var (
+		params    TeamsListChildInOrgParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode path: org.
 	{
 		param := args["org"]
@@ -64642,7 +66099,7 @@ func decodeTeamsListChildInOrgParams(args map[string]string, r *http.Request) (T
 	}
 	// Decode query: per_page.
 	{
-		values, ok := r.URL.Query()["per_page"]
+		values, ok := queryArgs["per_page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -64677,7 +66134,7 @@ func decodeTeamsListChildInOrgParams(args map[string]string, r *http.Request) (T
 	}
 	// Decode query: page.
 	{
-		values, ok := r.URL.Query()["page"]
+		values, ok := queryArgs["page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -64714,7 +66171,10 @@ func decodeTeamsListChildInOrgParams(args map[string]string, r *http.Request) (T
 }
 
 func decodeTeamsListChildLegacyParams(args map[string]string, r *http.Request) (TeamsListChildLegacyParams, error) {
-	var params TeamsListChildLegacyParams
+	var (
+		params    TeamsListChildLegacyParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode path: team_id.
 	{
 		param := args["team_id"]
@@ -64748,7 +66208,7 @@ func decodeTeamsListChildLegacyParams(args map[string]string, r *http.Request) (
 	}
 	// Decode query: per_page.
 	{
-		values, ok := r.URL.Query()["per_page"]
+		values, ok := queryArgs["per_page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -64783,7 +66243,7 @@ func decodeTeamsListChildLegacyParams(args map[string]string, r *http.Request) (
 	}
 	// Decode query: page.
 	{
-		values, ok := r.URL.Query()["page"]
+		values, ok := queryArgs["page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -64820,7 +66280,10 @@ func decodeTeamsListChildLegacyParams(args map[string]string, r *http.Request) (
 }
 
 func decodeTeamsListDiscussionCommentsInOrgParams(args map[string]string, r *http.Request) (TeamsListDiscussionCommentsInOrgParams, error) {
-	var params TeamsListDiscussionCommentsInOrgParams
+	var (
+		params    TeamsListDiscussionCommentsInOrgParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode path: org.
 	{
 		param := args["org"]
@@ -64916,7 +66379,7 @@ func decodeTeamsListDiscussionCommentsInOrgParams(args map[string]string, r *htt
 	}
 	// Decode query: direction.
 	{
-		values, ok := r.URL.Query()["direction"]
+		values, ok := queryArgs["direction"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -64967,7 +66430,7 @@ func decodeTeamsListDiscussionCommentsInOrgParams(args map[string]string, r *htt
 	}
 	// Decode query: per_page.
 	{
-		values, ok := r.URL.Query()["per_page"]
+		values, ok := queryArgs["per_page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -65002,7 +66465,7 @@ func decodeTeamsListDiscussionCommentsInOrgParams(args map[string]string, r *htt
 	}
 	// Decode query: page.
 	{
-		values, ok := r.URL.Query()["page"]
+		values, ok := queryArgs["page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -65039,7 +66502,10 @@ func decodeTeamsListDiscussionCommentsInOrgParams(args map[string]string, r *htt
 }
 
 func decodeTeamsListDiscussionCommentsLegacyParams(args map[string]string, r *http.Request) (TeamsListDiscussionCommentsLegacyParams, error) {
-	var params TeamsListDiscussionCommentsLegacyParams
+	var (
+		params    TeamsListDiscussionCommentsLegacyParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode path: team_id.
 	{
 		param := args["team_id"]
@@ -65104,7 +66570,7 @@ func decodeTeamsListDiscussionCommentsLegacyParams(args map[string]string, r *ht
 	}
 	// Decode query: direction.
 	{
-		values, ok := r.URL.Query()["direction"]
+		values, ok := queryArgs["direction"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -65155,7 +66621,7 @@ func decodeTeamsListDiscussionCommentsLegacyParams(args map[string]string, r *ht
 	}
 	// Decode query: per_page.
 	{
-		values, ok := r.URL.Query()["per_page"]
+		values, ok := queryArgs["per_page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -65190,7 +66656,7 @@ func decodeTeamsListDiscussionCommentsLegacyParams(args map[string]string, r *ht
 	}
 	// Decode query: page.
 	{
-		values, ok := r.URL.Query()["page"]
+		values, ok := queryArgs["page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -65227,7 +66693,10 @@ func decodeTeamsListDiscussionCommentsLegacyParams(args map[string]string, r *ht
 }
 
 func decodeTeamsListDiscussionsInOrgParams(args map[string]string, r *http.Request) (TeamsListDiscussionsInOrgParams, error) {
-	var params TeamsListDiscussionsInOrgParams
+	var (
+		params    TeamsListDiscussionsInOrgParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode path: org.
 	{
 		param := args["org"]
@@ -65292,7 +66761,7 @@ func decodeTeamsListDiscussionsInOrgParams(args map[string]string, r *http.Reque
 	}
 	// Decode query: direction.
 	{
-		values, ok := r.URL.Query()["direction"]
+		values, ok := queryArgs["direction"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -65343,7 +66812,7 @@ func decodeTeamsListDiscussionsInOrgParams(args map[string]string, r *http.Reque
 	}
 	// Decode query: per_page.
 	{
-		values, ok := r.URL.Query()["per_page"]
+		values, ok := queryArgs["per_page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -65378,7 +66847,7 @@ func decodeTeamsListDiscussionsInOrgParams(args map[string]string, r *http.Reque
 	}
 	// Decode query: page.
 	{
-		values, ok := r.URL.Query()["page"]
+		values, ok := queryArgs["page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -65413,7 +66882,7 @@ func decodeTeamsListDiscussionsInOrgParams(args map[string]string, r *http.Reque
 	}
 	// Decode query: pinned.
 	{
-		values, ok := r.URL.Query()["pinned"]
+		values, ok := queryArgs["pinned"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -65450,7 +66919,10 @@ func decodeTeamsListDiscussionsInOrgParams(args map[string]string, r *http.Reque
 }
 
 func decodeTeamsListDiscussionsLegacyParams(args map[string]string, r *http.Request) (TeamsListDiscussionsLegacyParams, error) {
-	var params TeamsListDiscussionsLegacyParams
+	var (
+		params    TeamsListDiscussionsLegacyParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode path: team_id.
 	{
 		param := args["team_id"]
@@ -65484,7 +66956,7 @@ func decodeTeamsListDiscussionsLegacyParams(args map[string]string, r *http.Requ
 	}
 	// Decode query: direction.
 	{
-		values, ok := r.URL.Query()["direction"]
+		values, ok := queryArgs["direction"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -65535,7 +67007,7 @@ func decodeTeamsListDiscussionsLegacyParams(args map[string]string, r *http.Requ
 	}
 	// Decode query: per_page.
 	{
-		values, ok := r.URL.Query()["per_page"]
+		values, ok := queryArgs["per_page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -65570,7 +67042,7 @@ func decodeTeamsListDiscussionsLegacyParams(args map[string]string, r *http.Requ
 	}
 	// Decode query: page.
 	{
-		values, ok := r.URL.Query()["page"]
+		values, ok := queryArgs["page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -65607,10 +67079,13 @@ func decodeTeamsListDiscussionsLegacyParams(args map[string]string, r *http.Requ
 }
 
 func decodeTeamsListForAuthenticatedUserParams(args map[string]string, r *http.Request) (TeamsListForAuthenticatedUserParams, error) {
-	var params TeamsListForAuthenticatedUserParams
+	var (
+		params    TeamsListForAuthenticatedUserParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode query: per_page.
 	{
-		values, ok := r.URL.Query()["per_page"]
+		values, ok := queryArgs["per_page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -65645,7 +67120,7 @@ func decodeTeamsListForAuthenticatedUserParams(args map[string]string, r *http.R
 	}
 	// Decode query: page.
 	{
-		values, ok := r.URL.Query()["page"]
+		values, ok := queryArgs["page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -65682,7 +67157,9 @@ func decodeTeamsListForAuthenticatedUserParams(args map[string]string, r *http.R
 }
 
 func decodeTeamsListIdpGroupsForLegacyParams(args map[string]string, r *http.Request) (TeamsListIdpGroupsForLegacyParams, error) {
-	var params TeamsListIdpGroupsForLegacyParams
+	var (
+		params TeamsListIdpGroupsForLegacyParams
+	)
 	// Decode path: team_id.
 	{
 		param := args["team_id"]
@@ -65718,7 +67195,10 @@ func decodeTeamsListIdpGroupsForLegacyParams(args map[string]string, r *http.Req
 }
 
 func decodeTeamsListIdpGroupsForOrgParams(args map[string]string, r *http.Request) (TeamsListIdpGroupsForOrgParams, error) {
-	var params TeamsListIdpGroupsForOrgParams
+	var (
+		params    TeamsListIdpGroupsForOrgParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode path: org.
 	{
 		param := args["org"]
@@ -65752,7 +67232,7 @@ func decodeTeamsListIdpGroupsForOrgParams(args map[string]string, r *http.Reques
 	}
 	// Decode query: per_page.
 	{
-		values, ok := r.URL.Query()["per_page"]
+		values, ok := queryArgs["per_page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -65787,7 +67267,7 @@ func decodeTeamsListIdpGroupsForOrgParams(args map[string]string, r *http.Reques
 	}
 	// Decode query: page.
 	{
-		values, ok := r.URL.Query()["page"]
+		values, ok := queryArgs["page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -65824,7 +67304,9 @@ func decodeTeamsListIdpGroupsForOrgParams(args map[string]string, r *http.Reques
 }
 
 func decodeTeamsListIdpGroupsInOrgParams(args map[string]string, r *http.Request) (TeamsListIdpGroupsInOrgParams, error) {
-	var params TeamsListIdpGroupsInOrgParams
+	var (
+		params TeamsListIdpGroupsInOrgParams
+	)
 	// Decode path: org.
 	{
 		param := args["org"]
@@ -65891,7 +67373,10 @@ func decodeTeamsListIdpGroupsInOrgParams(args map[string]string, r *http.Request
 }
 
 func decodeTeamsListMembersInOrgParams(args map[string]string, r *http.Request) (TeamsListMembersInOrgParams, error) {
-	var params TeamsListMembersInOrgParams
+	var (
+		params    TeamsListMembersInOrgParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode path: org.
 	{
 		param := args["org"]
@@ -65956,7 +67441,7 @@ func decodeTeamsListMembersInOrgParams(args map[string]string, r *http.Request) 
 	}
 	// Decode query: role.
 	{
-		values, ok := r.URL.Query()["role"]
+		values, ok := queryArgs["role"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -66007,7 +67492,7 @@ func decodeTeamsListMembersInOrgParams(args map[string]string, r *http.Request) 
 	}
 	// Decode query: per_page.
 	{
-		values, ok := r.URL.Query()["per_page"]
+		values, ok := queryArgs["per_page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -66042,7 +67527,7 @@ func decodeTeamsListMembersInOrgParams(args map[string]string, r *http.Request) 
 	}
 	// Decode query: page.
 	{
-		values, ok := r.URL.Query()["page"]
+		values, ok := queryArgs["page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -66079,7 +67564,10 @@ func decodeTeamsListMembersInOrgParams(args map[string]string, r *http.Request) 
 }
 
 func decodeTeamsListMembersLegacyParams(args map[string]string, r *http.Request) (TeamsListMembersLegacyParams, error) {
-	var params TeamsListMembersLegacyParams
+	var (
+		params    TeamsListMembersLegacyParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode path: team_id.
 	{
 		param := args["team_id"]
@@ -66113,7 +67601,7 @@ func decodeTeamsListMembersLegacyParams(args map[string]string, r *http.Request)
 	}
 	// Decode query: role.
 	{
-		values, ok := r.URL.Query()["role"]
+		values, ok := queryArgs["role"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -66164,7 +67652,7 @@ func decodeTeamsListMembersLegacyParams(args map[string]string, r *http.Request)
 	}
 	// Decode query: per_page.
 	{
-		values, ok := r.URL.Query()["per_page"]
+		values, ok := queryArgs["per_page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -66199,7 +67687,7 @@ func decodeTeamsListMembersLegacyParams(args map[string]string, r *http.Request)
 	}
 	// Decode query: page.
 	{
-		values, ok := r.URL.Query()["page"]
+		values, ok := queryArgs["page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -66236,7 +67724,10 @@ func decodeTeamsListMembersLegacyParams(args map[string]string, r *http.Request)
 }
 
 func decodeTeamsListPendingInvitationsInOrgParams(args map[string]string, r *http.Request) (TeamsListPendingInvitationsInOrgParams, error) {
-	var params TeamsListPendingInvitationsInOrgParams
+	var (
+		params    TeamsListPendingInvitationsInOrgParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode path: org.
 	{
 		param := args["org"]
@@ -66301,7 +67792,7 @@ func decodeTeamsListPendingInvitationsInOrgParams(args map[string]string, r *htt
 	}
 	// Decode query: per_page.
 	{
-		values, ok := r.URL.Query()["per_page"]
+		values, ok := queryArgs["per_page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -66336,7 +67827,7 @@ func decodeTeamsListPendingInvitationsInOrgParams(args map[string]string, r *htt
 	}
 	// Decode query: page.
 	{
-		values, ok := r.URL.Query()["page"]
+		values, ok := queryArgs["page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -66373,7 +67864,10 @@ func decodeTeamsListPendingInvitationsInOrgParams(args map[string]string, r *htt
 }
 
 func decodeTeamsListPendingInvitationsLegacyParams(args map[string]string, r *http.Request) (TeamsListPendingInvitationsLegacyParams, error) {
-	var params TeamsListPendingInvitationsLegacyParams
+	var (
+		params    TeamsListPendingInvitationsLegacyParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode path: team_id.
 	{
 		param := args["team_id"]
@@ -66407,7 +67901,7 @@ func decodeTeamsListPendingInvitationsLegacyParams(args map[string]string, r *ht
 	}
 	// Decode query: per_page.
 	{
-		values, ok := r.URL.Query()["per_page"]
+		values, ok := queryArgs["per_page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -66442,7 +67936,7 @@ func decodeTeamsListPendingInvitationsLegacyParams(args map[string]string, r *ht
 	}
 	// Decode query: page.
 	{
-		values, ok := r.URL.Query()["page"]
+		values, ok := queryArgs["page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -66479,7 +67973,10 @@ func decodeTeamsListPendingInvitationsLegacyParams(args map[string]string, r *ht
 }
 
 func decodeTeamsListProjectsInOrgParams(args map[string]string, r *http.Request) (TeamsListProjectsInOrgParams, error) {
-	var params TeamsListProjectsInOrgParams
+	var (
+		params    TeamsListProjectsInOrgParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode path: org.
 	{
 		param := args["org"]
@@ -66544,7 +68041,7 @@ func decodeTeamsListProjectsInOrgParams(args map[string]string, r *http.Request)
 	}
 	// Decode query: per_page.
 	{
-		values, ok := r.URL.Query()["per_page"]
+		values, ok := queryArgs["per_page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -66579,7 +68076,7 @@ func decodeTeamsListProjectsInOrgParams(args map[string]string, r *http.Request)
 	}
 	// Decode query: page.
 	{
-		values, ok := r.URL.Query()["page"]
+		values, ok := queryArgs["page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -66616,7 +68113,10 @@ func decodeTeamsListProjectsInOrgParams(args map[string]string, r *http.Request)
 }
 
 func decodeTeamsListProjectsLegacyParams(args map[string]string, r *http.Request) (TeamsListProjectsLegacyParams, error) {
-	var params TeamsListProjectsLegacyParams
+	var (
+		params    TeamsListProjectsLegacyParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode path: team_id.
 	{
 		param := args["team_id"]
@@ -66650,7 +68150,7 @@ func decodeTeamsListProjectsLegacyParams(args map[string]string, r *http.Request
 	}
 	// Decode query: per_page.
 	{
-		values, ok := r.URL.Query()["per_page"]
+		values, ok := queryArgs["per_page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -66685,7 +68185,7 @@ func decodeTeamsListProjectsLegacyParams(args map[string]string, r *http.Request
 	}
 	// Decode query: page.
 	{
-		values, ok := r.URL.Query()["page"]
+		values, ok := queryArgs["page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -66722,7 +68222,10 @@ func decodeTeamsListProjectsLegacyParams(args map[string]string, r *http.Request
 }
 
 func decodeTeamsListReposInOrgParams(args map[string]string, r *http.Request) (TeamsListReposInOrgParams, error) {
-	var params TeamsListReposInOrgParams
+	var (
+		params    TeamsListReposInOrgParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode path: org.
 	{
 		param := args["org"]
@@ -66787,7 +68290,7 @@ func decodeTeamsListReposInOrgParams(args map[string]string, r *http.Request) (T
 	}
 	// Decode query: per_page.
 	{
-		values, ok := r.URL.Query()["per_page"]
+		values, ok := queryArgs["per_page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -66822,7 +68325,7 @@ func decodeTeamsListReposInOrgParams(args map[string]string, r *http.Request) (T
 	}
 	// Decode query: page.
 	{
-		values, ok := r.URL.Query()["page"]
+		values, ok := queryArgs["page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -66859,7 +68362,10 @@ func decodeTeamsListReposInOrgParams(args map[string]string, r *http.Request) (T
 }
 
 func decodeTeamsListReposLegacyParams(args map[string]string, r *http.Request) (TeamsListReposLegacyParams, error) {
-	var params TeamsListReposLegacyParams
+	var (
+		params    TeamsListReposLegacyParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode path: team_id.
 	{
 		param := args["team_id"]
@@ -66893,7 +68399,7 @@ func decodeTeamsListReposLegacyParams(args map[string]string, r *http.Request) (
 	}
 	// Decode query: per_page.
 	{
-		values, ok := r.URL.Query()["per_page"]
+		values, ok := queryArgs["per_page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -66928,7 +68434,7 @@ func decodeTeamsListReposLegacyParams(args map[string]string, r *http.Request) (
 	}
 	// Decode query: page.
 	{
-		values, ok := r.URL.Query()["page"]
+		values, ok := queryArgs["page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -66965,7 +68471,9 @@ func decodeTeamsListReposLegacyParams(args map[string]string, r *http.Request) (
 }
 
 func decodeTeamsRemoveMemberLegacyParams(args map[string]string, r *http.Request) (TeamsRemoveMemberLegacyParams, error) {
-	var params TeamsRemoveMemberLegacyParams
+	var (
+		params TeamsRemoveMemberLegacyParams
+	)
 	// Decode path: team_id.
 	{
 		param := args["team_id"]
@@ -67032,7 +68540,9 @@ func decodeTeamsRemoveMemberLegacyParams(args map[string]string, r *http.Request
 }
 
 func decodeTeamsRemoveMembershipForUserInOrgParams(args map[string]string, r *http.Request) (TeamsRemoveMembershipForUserInOrgParams, error) {
-	var params TeamsRemoveMembershipForUserInOrgParams
+	var (
+		params TeamsRemoveMembershipForUserInOrgParams
+	)
 	// Decode path: org.
 	{
 		param := args["org"]
@@ -67130,7 +68640,9 @@ func decodeTeamsRemoveMembershipForUserInOrgParams(args map[string]string, r *ht
 }
 
 func decodeTeamsRemoveMembershipForUserLegacyParams(args map[string]string, r *http.Request) (TeamsRemoveMembershipForUserLegacyParams, error) {
-	var params TeamsRemoveMembershipForUserLegacyParams
+	var (
+		params TeamsRemoveMembershipForUserLegacyParams
+	)
 	// Decode path: team_id.
 	{
 		param := args["team_id"]
@@ -67197,7 +68709,9 @@ func decodeTeamsRemoveMembershipForUserLegacyParams(args map[string]string, r *h
 }
 
 func decodeTeamsRemoveProjectInOrgParams(args map[string]string, r *http.Request) (TeamsRemoveProjectInOrgParams, error) {
-	var params TeamsRemoveProjectInOrgParams
+	var (
+		params TeamsRemoveProjectInOrgParams
+	)
 	// Decode path: org.
 	{
 		param := args["org"]
@@ -67295,7 +68809,9 @@ func decodeTeamsRemoveProjectInOrgParams(args map[string]string, r *http.Request
 }
 
 func decodeTeamsRemoveProjectLegacyParams(args map[string]string, r *http.Request) (TeamsRemoveProjectLegacyParams, error) {
-	var params TeamsRemoveProjectLegacyParams
+	var (
+		params TeamsRemoveProjectLegacyParams
+	)
 	// Decode path: team_id.
 	{
 		param := args["team_id"]
@@ -67362,7 +68878,9 @@ func decodeTeamsRemoveProjectLegacyParams(args map[string]string, r *http.Reques
 }
 
 func decodeTeamsRemoveRepoInOrgParams(args map[string]string, r *http.Request) (TeamsRemoveRepoInOrgParams, error) {
-	var params TeamsRemoveRepoInOrgParams
+	var (
+		params TeamsRemoveRepoInOrgParams
+	)
 	// Decode path: org.
 	{
 		param := args["org"]
@@ -67491,7 +69009,9 @@ func decodeTeamsRemoveRepoInOrgParams(args map[string]string, r *http.Request) (
 }
 
 func decodeTeamsRemoveRepoLegacyParams(args map[string]string, r *http.Request) (TeamsRemoveRepoLegacyParams, error) {
-	var params TeamsRemoveRepoLegacyParams
+	var (
+		params TeamsRemoveRepoLegacyParams
+	)
 	// Decode path: team_id.
 	{
 		param := args["team_id"]
@@ -67589,7 +69109,9 @@ func decodeTeamsRemoveRepoLegacyParams(args map[string]string, r *http.Request) 
 }
 
 func decodeTeamsUpdateDiscussionCommentInOrgParams(args map[string]string, r *http.Request) (TeamsUpdateDiscussionCommentInOrgParams, error) {
-	var params TeamsUpdateDiscussionCommentInOrgParams
+	var (
+		params TeamsUpdateDiscussionCommentInOrgParams
+	)
 	// Decode path: org.
 	{
 		param := args["org"]
@@ -67718,7 +69240,9 @@ func decodeTeamsUpdateDiscussionCommentInOrgParams(args map[string]string, r *ht
 }
 
 func decodeTeamsUpdateDiscussionCommentLegacyParams(args map[string]string, r *http.Request) (TeamsUpdateDiscussionCommentLegacyParams, error) {
-	var params TeamsUpdateDiscussionCommentLegacyParams
+	var (
+		params TeamsUpdateDiscussionCommentLegacyParams
+	)
 	// Decode path: team_id.
 	{
 		param := args["team_id"]
@@ -67816,7 +69340,9 @@ func decodeTeamsUpdateDiscussionCommentLegacyParams(args map[string]string, r *h
 }
 
 func decodeTeamsUpdateDiscussionInOrgParams(args map[string]string, r *http.Request) (TeamsUpdateDiscussionInOrgParams, error) {
-	var params TeamsUpdateDiscussionInOrgParams
+	var (
+		params TeamsUpdateDiscussionInOrgParams
+	)
 	// Decode path: org.
 	{
 		param := args["org"]
@@ -67914,7 +69440,9 @@ func decodeTeamsUpdateDiscussionInOrgParams(args map[string]string, r *http.Requ
 }
 
 func decodeTeamsUpdateDiscussionLegacyParams(args map[string]string, r *http.Request) (TeamsUpdateDiscussionLegacyParams, error) {
-	var params TeamsUpdateDiscussionLegacyParams
+	var (
+		params TeamsUpdateDiscussionLegacyParams
+	)
 	// Decode path: team_id.
 	{
 		param := args["team_id"]
@@ -67981,7 +69509,9 @@ func decodeTeamsUpdateDiscussionLegacyParams(args map[string]string, r *http.Req
 }
 
 func decodeTeamsUpdateInOrgParams(args map[string]string, r *http.Request) (TeamsUpdateInOrgParams, error) {
-	var params TeamsUpdateInOrgParams
+	var (
+		params TeamsUpdateInOrgParams
+	)
 	// Decode path: org.
 	{
 		param := args["org"]
@@ -68048,7 +69578,9 @@ func decodeTeamsUpdateInOrgParams(args map[string]string, r *http.Request) (Team
 }
 
 func decodeTeamsUpdateLegacyParams(args map[string]string, r *http.Request) (TeamsUpdateLegacyParams, error) {
-	var params TeamsUpdateLegacyParams
+	var (
+		params TeamsUpdateLegacyParams
+	)
 	// Decode path: team_id.
 	{
 		param := args["team_id"]
@@ -68084,7 +69616,9 @@ func decodeTeamsUpdateLegacyParams(args map[string]string, r *http.Request) (Tea
 }
 
 func decodeUsersBlockParams(args map[string]string, r *http.Request) (UsersBlockParams, error) {
-	var params UsersBlockParams
+	var (
+		params UsersBlockParams
+	)
 	// Decode path: username.
 	{
 		param := args["username"]
@@ -68120,7 +69654,9 @@ func decodeUsersBlockParams(args map[string]string, r *http.Request) (UsersBlock
 }
 
 func decodeUsersCheckBlockedParams(args map[string]string, r *http.Request) (UsersCheckBlockedParams, error) {
-	var params UsersCheckBlockedParams
+	var (
+		params UsersCheckBlockedParams
+	)
 	// Decode path: username.
 	{
 		param := args["username"]
@@ -68156,7 +69692,9 @@ func decodeUsersCheckBlockedParams(args map[string]string, r *http.Request) (Use
 }
 
 func decodeUsersCheckFollowingForUserParams(args map[string]string, r *http.Request) (UsersCheckFollowingForUserParams, error) {
-	var params UsersCheckFollowingForUserParams
+	var (
+		params UsersCheckFollowingForUserParams
+	)
 	// Decode path: username.
 	{
 		param := args["username"]
@@ -68223,7 +69761,9 @@ func decodeUsersCheckFollowingForUserParams(args map[string]string, r *http.Requ
 }
 
 func decodeUsersCheckPersonIsFollowedByAuthenticatedParams(args map[string]string, r *http.Request) (UsersCheckPersonIsFollowedByAuthenticatedParams, error) {
-	var params UsersCheckPersonIsFollowedByAuthenticatedParams
+	var (
+		params UsersCheckPersonIsFollowedByAuthenticatedParams
+	)
 	// Decode path: username.
 	{
 		param := args["username"]
@@ -68259,7 +69799,9 @@ func decodeUsersCheckPersonIsFollowedByAuthenticatedParams(args map[string]strin
 }
 
 func decodeUsersDeleteGpgKeyForAuthenticatedParams(args map[string]string, r *http.Request) (UsersDeleteGpgKeyForAuthenticatedParams, error) {
-	var params UsersDeleteGpgKeyForAuthenticatedParams
+	var (
+		params UsersDeleteGpgKeyForAuthenticatedParams
+	)
 	// Decode path: gpg_key_id.
 	{
 		param := args["gpg_key_id"]
@@ -68295,7 +69837,9 @@ func decodeUsersDeleteGpgKeyForAuthenticatedParams(args map[string]string, r *ht
 }
 
 func decodeUsersDeletePublicSSHKeyForAuthenticatedParams(args map[string]string, r *http.Request) (UsersDeletePublicSSHKeyForAuthenticatedParams, error) {
-	var params UsersDeletePublicSSHKeyForAuthenticatedParams
+	var (
+		params UsersDeletePublicSSHKeyForAuthenticatedParams
+	)
 	// Decode path: key_id.
 	{
 		param := args["key_id"]
@@ -68331,7 +69875,9 @@ func decodeUsersDeletePublicSSHKeyForAuthenticatedParams(args map[string]string,
 }
 
 func decodeUsersFollowParams(args map[string]string, r *http.Request) (UsersFollowParams, error) {
-	var params UsersFollowParams
+	var (
+		params UsersFollowParams
+	)
 	// Decode path: username.
 	{
 		param := args["username"]
@@ -68367,7 +69913,9 @@ func decodeUsersFollowParams(args map[string]string, r *http.Request) (UsersFoll
 }
 
 func decodeUsersGetByUsernameParams(args map[string]string, r *http.Request) (UsersGetByUsernameParams, error) {
-	var params UsersGetByUsernameParams
+	var (
+		params UsersGetByUsernameParams
+	)
 	// Decode path: username.
 	{
 		param := args["username"]
@@ -68403,7 +69951,10 @@ func decodeUsersGetByUsernameParams(args map[string]string, r *http.Request) (Us
 }
 
 func decodeUsersGetContextForUserParams(args map[string]string, r *http.Request) (UsersGetContextForUserParams, error) {
-	var params UsersGetContextForUserParams
+	var (
+		params    UsersGetContextForUserParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode path: username.
 	{
 		param := args["username"]
@@ -68437,7 +69988,7 @@ func decodeUsersGetContextForUserParams(args map[string]string, r *http.Request)
 	}
 	// Decode query: subject_type.
 	{
-		values, ok := r.URL.Query()["subject_type"]
+		values, ok := queryArgs["subject_type"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -68488,7 +70039,7 @@ func decodeUsersGetContextForUserParams(args map[string]string, r *http.Request)
 	}
 	// Decode query: subject_id.
 	{
-		values, ok := r.URL.Query()["subject_id"]
+		values, ok := queryArgs["subject_id"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -68525,7 +70076,9 @@ func decodeUsersGetContextForUserParams(args map[string]string, r *http.Request)
 }
 
 func decodeUsersGetGpgKeyForAuthenticatedParams(args map[string]string, r *http.Request) (UsersGetGpgKeyForAuthenticatedParams, error) {
-	var params UsersGetGpgKeyForAuthenticatedParams
+	var (
+		params UsersGetGpgKeyForAuthenticatedParams
+	)
 	// Decode path: gpg_key_id.
 	{
 		param := args["gpg_key_id"]
@@ -68561,7 +70114,9 @@ func decodeUsersGetGpgKeyForAuthenticatedParams(args map[string]string, r *http.
 }
 
 func decodeUsersGetPublicSSHKeyForAuthenticatedParams(args map[string]string, r *http.Request) (UsersGetPublicSSHKeyForAuthenticatedParams, error) {
-	var params UsersGetPublicSSHKeyForAuthenticatedParams
+	var (
+		params UsersGetPublicSSHKeyForAuthenticatedParams
+	)
 	// Decode path: key_id.
 	{
 		param := args["key_id"]
@@ -68597,10 +70152,13 @@ func decodeUsersGetPublicSSHKeyForAuthenticatedParams(args map[string]string, r 
 }
 
 func decodeUsersListParams(args map[string]string, r *http.Request) (UsersListParams, error) {
-	var params UsersListParams
+	var (
+		params    UsersListParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode query: since.
 	{
-		values, ok := r.URL.Query()["since"]
+		values, ok := queryArgs["since"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -68635,7 +70193,7 @@ func decodeUsersListParams(args map[string]string, r *http.Request) (UsersListPa
 	}
 	// Decode query: per_page.
 	{
-		values, ok := r.URL.Query()["per_page"]
+		values, ok := queryArgs["per_page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -68672,10 +70230,13 @@ func decodeUsersListParams(args map[string]string, r *http.Request) (UsersListPa
 }
 
 func decodeUsersListEmailsForAuthenticatedParams(args map[string]string, r *http.Request) (UsersListEmailsForAuthenticatedParams, error) {
-	var params UsersListEmailsForAuthenticatedParams
+	var (
+		params    UsersListEmailsForAuthenticatedParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode query: per_page.
 	{
-		values, ok := r.URL.Query()["per_page"]
+		values, ok := queryArgs["per_page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -68710,7 +70271,7 @@ func decodeUsersListEmailsForAuthenticatedParams(args map[string]string, r *http
 	}
 	// Decode query: page.
 	{
-		values, ok := r.URL.Query()["page"]
+		values, ok := queryArgs["page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -68747,10 +70308,13 @@ func decodeUsersListEmailsForAuthenticatedParams(args map[string]string, r *http
 }
 
 func decodeUsersListFollowedByAuthenticatedParams(args map[string]string, r *http.Request) (UsersListFollowedByAuthenticatedParams, error) {
-	var params UsersListFollowedByAuthenticatedParams
+	var (
+		params    UsersListFollowedByAuthenticatedParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode query: per_page.
 	{
-		values, ok := r.URL.Query()["per_page"]
+		values, ok := queryArgs["per_page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -68785,7 +70349,7 @@ func decodeUsersListFollowedByAuthenticatedParams(args map[string]string, r *htt
 	}
 	// Decode query: page.
 	{
-		values, ok := r.URL.Query()["page"]
+		values, ok := queryArgs["page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -68822,10 +70386,13 @@ func decodeUsersListFollowedByAuthenticatedParams(args map[string]string, r *htt
 }
 
 func decodeUsersListFollowersForAuthenticatedUserParams(args map[string]string, r *http.Request) (UsersListFollowersForAuthenticatedUserParams, error) {
-	var params UsersListFollowersForAuthenticatedUserParams
+	var (
+		params    UsersListFollowersForAuthenticatedUserParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode query: per_page.
 	{
-		values, ok := r.URL.Query()["per_page"]
+		values, ok := queryArgs["per_page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -68860,7 +70427,7 @@ func decodeUsersListFollowersForAuthenticatedUserParams(args map[string]string, 
 	}
 	// Decode query: page.
 	{
-		values, ok := r.URL.Query()["page"]
+		values, ok := queryArgs["page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -68897,7 +70464,10 @@ func decodeUsersListFollowersForAuthenticatedUserParams(args map[string]string, 
 }
 
 func decodeUsersListFollowersForUserParams(args map[string]string, r *http.Request) (UsersListFollowersForUserParams, error) {
-	var params UsersListFollowersForUserParams
+	var (
+		params    UsersListFollowersForUserParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode path: username.
 	{
 		param := args["username"]
@@ -68931,7 +70501,7 @@ func decodeUsersListFollowersForUserParams(args map[string]string, r *http.Reque
 	}
 	// Decode query: per_page.
 	{
-		values, ok := r.URL.Query()["per_page"]
+		values, ok := queryArgs["per_page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -68966,7 +70536,7 @@ func decodeUsersListFollowersForUserParams(args map[string]string, r *http.Reque
 	}
 	// Decode query: page.
 	{
-		values, ok := r.URL.Query()["page"]
+		values, ok := queryArgs["page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -69003,7 +70573,10 @@ func decodeUsersListFollowersForUserParams(args map[string]string, r *http.Reque
 }
 
 func decodeUsersListFollowingForUserParams(args map[string]string, r *http.Request) (UsersListFollowingForUserParams, error) {
-	var params UsersListFollowingForUserParams
+	var (
+		params    UsersListFollowingForUserParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode path: username.
 	{
 		param := args["username"]
@@ -69037,7 +70610,7 @@ func decodeUsersListFollowingForUserParams(args map[string]string, r *http.Reque
 	}
 	// Decode query: per_page.
 	{
-		values, ok := r.URL.Query()["per_page"]
+		values, ok := queryArgs["per_page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -69072,7 +70645,7 @@ func decodeUsersListFollowingForUserParams(args map[string]string, r *http.Reque
 	}
 	// Decode query: page.
 	{
-		values, ok := r.URL.Query()["page"]
+		values, ok := queryArgs["page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -69109,10 +70682,13 @@ func decodeUsersListFollowingForUserParams(args map[string]string, r *http.Reque
 }
 
 func decodeUsersListGpgKeysForAuthenticatedParams(args map[string]string, r *http.Request) (UsersListGpgKeysForAuthenticatedParams, error) {
-	var params UsersListGpgKeysForAuthenticatedParams
+	var (
+		params    UsersListGpgKeysForAuthenticatedParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode query: per_page.
 	{
-		values, ok := r.URL.Query()["per_page"]
+		values, ok := queryArgs["per_page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -69147,7 +70723,7 @@ func decodeUsersListGpgKeysForAuthenticatedParams(args map[string]string, r *htt
 	}
 	// Decode query: page.
 	{
-		values, ok := r.URL.Query()["page"]
+		values, ok := queryArgs["page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -69184,7 +70760,10 @@ func decodeUsersListGpgKeysForAuthenticatedParams(args map[string]string, r *htt
 }
 
 func decodeUsersListGpgKeysForUserParams(args map[string]string, r *http.Request) (UsersListGpgKeysForUserParams, error) {
-	var params UsersListGpgKeysForUserParams
+	var (
+		params    UsersListGpgKeysForUserParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode path: username.
 	{
 		param := args["username"]
@@ -69218,7 +70797,7 @@ func decodeUsersListGpgKeysForUserParams(args map[string]string, r *http.Request
 	}
 	// Decode query: per_page.
 	{
-		values, ok := r.URL.Query()["per_page"]
+		values, ok := queryArgs["per_page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -69253,7 +70832,7 @@ func decodeUsersListGpgKeysForUserParams(args map[string]string, r *http.Request
 	}
 	// Decode query: page.
 	{
-		values, ok := r.URL.Query()["page"]
+		values, ok := queryArgs["page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -69290,10 +70869,13 @@ func decodeUsersListGpgKeysForUserParams(args map[string]string, r *http.Request
 }
 
 func decodeUsersListPublicEmailsForAuthenticatedParams(args map[string]string, r *http.Request) (UsersListPublicEmailsForAuthenticatedParams, error) {
-	var params UsersListPublicEmailsForAuthenticatedParams
+	var (
+		params    UsersListPublicEmailsForAuthenticatedParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode query: per_page.
 	{
-		values, ok := r.URL.Query()["per_page"]
+		values, ok := queryArgs["per_page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -69328,7 +70910,7 @@ func decodeUsersListPublicEmailsForAuthenticatedParams(args map[string]string, r
 	}
 	// Decode query: page.
 	{
-		values, ok := r.URL.Query()["page"]
+		values, ok := queryArgs["page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -69365,7 +70947,10 @@ func decodeUsersListPublicEmailsForAuthenticatedParams(args map[string]string, r
 }
 
 func decodeUsersListPublicKeysForUserParams(args map[string]string, r *http.Request) (UsersListPublicKeysForUserParams, error) {
-	var params UsersListPublicKeysForUserParams
+	var (
+		params    UsersListPublicKeysForUserParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode path: username.
 	{
 		param := args["username"]
@@ -69399,7 +70984,7 @@ func decodeUsersListPublicKeysForUserParams(args map[string]string, r *http.Requ
 	}
 	// Decode query: per_page.
 	{
-		values, ok := r.URL.Query()["per_page"]
+		values, ok := queryArgs["per_page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -69434,7 +71019,7 @@ func decodeUsersListPublicKeysForUserParams(args map[string]string, r *http.Requ
 	}
 	// Decode query: page.
 	{
-		values, ok := r.URL.Query()["page"]
+		values, ok := queryArgs["page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -69471,10 +71056,13 @@ func decodeUsersListPublicKeysForUserParams(args map[string]string, r *http.Requ
 }
 
 func decodeUsersListPublicSSHKeysForAuthenticatedParams(args map[string]string, r *http.Request) (UsersListPublicSSHKeysForAuthenticatedParams, error) {
-	var params UsersListPublicSSHKeysForAuthenticatedParams
+	var (
+		params    UsersListPublicSSHKeysForAuthenticatedParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode query: per_page.
 	{
-		values, ok := r.URL.Query()["per_page"]
+		values, ok := queryArgs["per_page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -69509,7 +71097,7 @@ func decodeUsersListPublicSSHKeysForAuthenticatedParams(args map[string]string, 
 	}
 	// Decode query: page.
 	{
-		values, ok := r.URL.Query()["page"]
+		values, ok := queryArgs["page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -69546,7 +71134,9 @@ func decodeUsersListPublicSSHKeysForAuthenticatedParams(args map[string]string, 
 }
 
 func decodeUsersUnblockParams(args map[string]string, r *http.Request) (UsersUnblockParams, error) {
-	var params UsersUnblockParams
+	var (
+		params UsersUnblockParams
+	)
 	// Decode path: username.
 	{
 		param := args["username"]
@@ -69582,7 +71172,9 @@ func decodeUsersUnblockParams(args map[string]string, r *http.Request) (UsersUnb
 }
 
 func decodeUsersUnfollowParams(args map[string]string, r *http.Request) (UsersUnfollowParams, error) {
-	var params UsersUnfollowParams
+	var (
+		params UsersUnfollowParams
+	)
 	// Decode path: username.
 	{
 		param := args["username"]

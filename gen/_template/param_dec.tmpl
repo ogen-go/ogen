@@ -8,7 +8,12 @@
 {{ if $op.Params }}{{/* Check parameters existence */}}
 
 func decode{{ $op.Name }}Params(args map[string]string, r *http.Request) ({{ $op.Name }}Params, error) {
-	var params {{ $op.Name }}Params
+	var (
+		params {{ $op.Name }}Params
+		{{- if $op.HasQueryParams }}
+		queryArgs = r.URL.Query()
+		{{- end }}
+	)
 	{{- range $p := $op.Params }}{{/* Range params */}}
     {{- $loc             := printf "%s: %s" $p.Spec.In $p.Spec.Name }}
     {{- $errParse        := printf "%s: parse"         $loc }}
@@ -18,7 +23,7 @@ func decode{{ $op.Name }}Params(args map[string]string, r *http.Request) ({{ $op
 	// Decode {{ $loc }}.
 	{{- if $p.Spec.In.Query }}{{/* Switch location */}}
 	{
-		values, ok := r.URL.Query()["{{ $p.Spec.Name }}"]
+		values, ok := queryArgs[{{ printf "%q" $p.Spec.Name }}]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values: values,

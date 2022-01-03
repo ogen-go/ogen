@@ -63,7 +63,9 @@ var (
 )
 
 func decodeGetBookParams(args map[string]string, r *http.Request) (GetBookParams, error) {
-	var params GetBookParams
+	var (
+		params GetBookParams
+	)
 	// Decode path: book_id.
 	{
 		param := args["book_id"]
@@ -99,7 +101,9 @@ func decodeGetBookParams(args map[string]string, r *http.Request) (GetBookParams
 }
 
 func decodeGetPageCoverImageParams(args map[string]string, r *http.Request) (GetPageCoverImageParams, error) {
-	var params GetPageCoverImageParams
+	var (
+		params GetPageCoverImageParams
+	)
 	// Decode path: media_id.
 	{
 		param := args["media_id"]
@@ -166,7 +170,9 @@ func decodeGetPageCoverImageParams(args map[string]string, r *http.Request) (Get
 }
 
 func decodeGetPageImageParams(args map[string]string, r *http.Request) (GetPageImageParams, error) {
-	var params GetPageImageParams
+	var (
+		params GetPageImageParams
+	)
 	// Decode path: media_id.
 	{
 		param := args["media_id"]
@@ -264,7 +270,9 @@ func decodeGetPageImageParams(args map[string]string, r *http.Request) (GetPageI
 }
 
 func decodeGetPageThumbnailImageParams(args map[string]string, r *http.Request) (GetPageThumbnailImageParams, error) {
-	var params GetPageThumbnailImageParams
+	var (
+		params GetPageThumbnailImageParams
+	)
 	// Decode path: media_id.
 	{
 		param := args["media_id"]
@@ -362,10 +370,13 @@ func decodeGetPageThumbnailImageParams(args map[string]string, r *http.Request) 
 }
 
 func decodeSearchParams(args map[string]string, r *http.Request) (SearchParams, error) {
-	var params SearchParams
+	var (
+		params    SearchParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode query: query.
 	{
-		values, ok := r.URL.Query()["query"]
+		values, ok := queryArgs["query"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -395,7 +406,7 @@ func decodeSearchParams(args map[string]string, r *http.Request) (SearchParams, 
 	}
 	// Decode query: page.
 	{
-		values, ok := r.URL.Query()["page"]
+		values, ok := queryArgs["page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -432,10 +443,13 @@ func decodeSearchParams(args map[string]string, r *http.Request) (SearchParams, 
 }
 
 func decodeSearchByTagIDParams(args map[string]string, r *http.Request) (SearchByTagIDParams, error) {
-	var params SearchByTagIDParams
+	var (
+		params    SearchByTagIDParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode query: tag_id.
 	{
-		values, ok := r.URL.Query()["tag_id"]
+		values, ok := queryArgs["tag_id"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -465,7 +479,7 @@ func decodeSearchByTagIDParams(args map[string]string, r *http.Request) (SearchB
 	}
 	// Decode query: page.
 	{
-		values, ok := r.URL.Query()["page"]
+		values, ok := queryArgs["page"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,

@@ -63,10 +63,13 @@ var (
 )
 
 func decodeListPetsParams(args map[string]string, r *http.Request) (ListPetsParams, error) {
-	var params ListPetsParams
+	var (
+		params    ListPetsParams
+		queryArgs = r.URL.Query()
+	)
 	// Decode query: limit.
 	{
-		values, ok := r.URL.Query()["limit"]
+		values, ok := queryArgs["limit"]
 		if ok {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
 				Values:  values,
@@ -103,7 +106,9 @@ func decodeListPetsParams(args map[string]string, r *http.Request) (ListPetsPara
 }
 
 func decodeShowPetByIdParams(args map[string]string, r *http.Request) (ShowPetByIdParams, error) {
-	var params ShowPetByIdParams
+	var (
+		params ShowPetByIdParams
+	)
 	// Decode path: petId.
 	{
 		param := args["petId"]

@@ -63,7 +63,9 @@ var (
 )
 
 func decodeDeletePetParams(args map[string]string, r *http.Request) (DeletePetParams, error) {
-	var params DeletePetParams
+	var (
+		params DeletePetParams
+	)
 	// Decode path: id.
 	{
 		param := args["id"]

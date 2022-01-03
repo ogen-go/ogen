@@ -63,7 +63,9 @@ var (
 )
 
 func decodeDataGetParams(args map[string]string, r *http.Request) (DataGetParams, error) {
-	var params DataGetParams
+	var (
+		params DataGetParams
+	)
 	// Decode path: id.
 	{
 		param := args["id"]
@@ -130,7 +132,9 @@ func decodeDataGetParams(args map[string]string, r *http.Request) (DataGetParams
 }
 
 func decodeDataGetIDParams(args map[string]string, r *http.Request) (DataGetIDParams, error) {
-	var params DataGetIDParams
+	var (
+		params DataGetIDParams
+	)
 	// Decode path: id.
 	{
 		param := args["id"]
