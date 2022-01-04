@@ -206,7 +206,7 @@ func (o {{ $.Name }}) Or(d {{ $g.Go }}) {{ $g.Go }} {
 
 {{/* Define methods */}}
 {{- range $method := $.Methods }}
-func (*{{ $.Name }}) {{ $method }}() {}
+func ({{ $.ReceiverType }}) {{ $method }}() {}
 {{- end }}
 {{/* end define methods */}}
 {{- end }}

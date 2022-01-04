@@ -186,4 +186,4 @@ func (*Pet) showPetByIdRes() {}
 
 type Pets []Pet
 
-func (*Pets) listPetsRes() {}
+func (Pets) listPetsRes() {}

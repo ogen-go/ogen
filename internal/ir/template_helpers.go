@@ -84,6 +84,24 @@ func (t *Type) IsSum() bool       { return t.Is(KindSum) }
 func (t *Type) IsStream() bool    { return t.Is(KindStream) }
 func (t *Type) IsNumeric() bool   { return t.IsInteger() || t.IsFloat() }
 
+func (t *Type) ReceiverType() string {
+	if t.needsPointerReceiverType() {
+		return "*" + t.Name
+	}
+	return t.Name
+}
+
+func (t *Type) needsPointerReceiverType() bool {
+	switch t.Kind {
+	case KindPointer, KindArray:
+		return false
+	case KindAlias:
+		return t.AliasTo.needsPointerReceiverType()
+	default:
+		return true
+	}
+}
+
 func (t *Type) MustField(name string) *Field {
 	if !t.Is(KindStruct) {
 		panic("unreachable")
