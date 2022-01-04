@@ -1,0 +1,30 @@
+{{- /*gotype: github.com/ogen-go/ogen/internal/ir.Type*/ -}}
+{{- define "json/encoders_struct" }}
+// Encode implements json.Marshaler.
+func (s {{ $.Name }}) Encode(e *jx.Encoder) {
+	e.ObjStart()
+	{{- range $f := $.JSON.Fields }}
+		{{ template "json/enc" field_elem $f -}}
+	{{- end }}
+	e.ObjEnd()
+}
+
+// Decode decodes {{ $.Name }} from json.
+func (s *{{ $.Name }}) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode {{ $.Name }} to nil`)
+	}
+	return d.ObjBytes(func(d *jx.Decoder, k []byte) error {
+		switch string(k) {
+	{{- range $f := $.JSON.Fields }}
+	case "{{ $f.Tag.JSON }}":
+		{{- template "json/dec" field_elem $f }}
+	{{- end }}
+		default:
+			return d.Skip()
+		}
+		return nil
+	})
+}
+
+{{ end }}

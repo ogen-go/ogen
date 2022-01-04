@@ -1,0 +1,21 @@
+{{- /*gotype: github.com/ogen-go/ogen/internal/ir.Type*/ -}}
+{{- define "json/encoders_enum" }}
+// Encode encodes {{ $.Name }} as json.
+func (s {{ $.Name }}) Encode(e *jx.Encoder) {
+	e.{{ $.JSON.Fn }}({{ $.Primitive }}(s))
+}
+
+// Decode decodes {{ $.Name }} from json.
+func (s *{{ $.Name }}) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode {{ $.Name }} to nil`)
+	}
+	v, err := d.{{ $.JSON.Fn }}()
+	if err != nil {
+		return err
+	}
+	*s = {{ $.Name }}(v)
+	return nil
+}
+
+{{ end }}

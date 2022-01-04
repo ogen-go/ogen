@@ -1,0 +1,79 @@
+{{- /*gotype: github.com/ogen-go/ogen/internal/ir.Type*/ -}}
+{{- define "json/encoders_generic" }}
+{{ $g := $.GenericOf }}
+{{ $v := $.GenericVariant }}
+// Encode encodes {{ $g.Go }} as json.
+func (o {{ $.Name }}) Encode(e *jx.Encoder{{ if $g.Format }}, format func(*jx.Encoder, {{ $g.Go }}){{ end }}) {
+{{- if $v.Nullable }}
+	if o.Null {
+		e.Null()
+		return
+	}
+{{- end }}
+{{- if $g.Format }}
+	format(e, o.Value)
+{{- else if $g.JSON.Format }}
+	json.Encode{{ $g.JSON.Format }}(e, o.Value)
+{{- else if $g.JSON.Fn }}
+	e.{{ $g.JSON.Fn }}({{ $g.Primitive }}(o.Value))
+{{- else if $g.IsStruct }}
+	o.Value.Encode(e)
+{{- end }}
+}
+
+// Decode decodes {{ $g.Go }} from json.
+func (o *{{ $.Name }}) Decode(d *jx.Decoder{{ if $g.Format }}, format func(*jx.Decoder) ({{ $g.Go }}, error){{ end }}) error {
+	if o == nil {
+		return errors.New(`invalid: unable to decode {{ $.Name }} to nil`)
+	}
+	switch d.Next() {
+	case jx.{{ $g.JSON.Type }}:
+	{{- if $v.Optional }}
+		o.Set = true
+	{{- end }}
+	{{- if $v.Nullable }}
+		o.Null = false
+	{{- end }}
+	{{- if $g.Format }}
+		v, err := format(d)
+		if err != nil {
+			return err
+		}
+		o.Value = v
+	{{- else if $g.JSON.Format }}
+		v, err := json.Decode{{ $g.JSON.Format }}(d)
+		if err != nil {
+			return err
+		}
+		o.Value = v
+	{{- else if $g.JSON.Fn }}
+		v, err := d.{{ $g.JSON.Fn }}()
+		if err != nil {
+			return err
+		}
+		o.Value = {{ $g.Go }}(v)
+	{{- else if $g.IsStruct }}
+		if err := o.Value.Decode(d); err != nil {
+			return err
+		}
+	{{- end }}
+		return nil
+	{{- if $v.Nullable }}
+	case jx.Null:
+		if err := d.Null(); err != nil {
+			return err
+		}
+		var v {{ $g.Go }}
+		o.Value = v
+		{{- if $v.Optional }}
+		o.Set = true
+		{{- end }}
+		o.Null = true
+		return nil
+	{{- end }}
+	default:
+		return errors.Errorf(`unexpected type %q while reading {{ $.Name }}`, d.Next())
+	}
+}
+
+{{ end }}
