@@ -1,0 +1,13 @@
+{{- /*gotype: github.com/ogen-go/ogen/internal/ir.Type*/ -}}
+{{- define "schema/struct" }}
+{{- if eq (len $.Fields) 0 }}{{/* Blank struct */}}
+	type {{ $.Name }} struct{}
+{{- else }}
+	type {{ $.Name }} struct {
+	{{- range $f := $.Fields }}
+		{{ $f.Name }} {{ $f.Type.Go }} {{ if $f.Tag.JSON }}`json:"{{ $f.Tag.JSON }}"`{{ end }}
+	{{- end }}
+	}
+{{- end }}
+
+{{ end }}

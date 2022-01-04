@@ -1,0 +1,49 @@
+{{- /*gotype: github.com/ogen-go/ogen/internal/ir.Type*/ -}}
+{{- define "schema/sum" }}
+// {{ $.Name }} represents sum type.
+type {{ $.Name }} struct {
+	Type {{ $.Name }}Type // switch on this field
+	{{- range $s := $.SumOf }}
+		{{ $s.Name }} {{ $s.Go }}
+	{{- end }}
+}
+
+// {{ $.Name }}Type is oneOf type of {{ $.Name }}.
+type {{ $.Name }}Type string
+
+// Possible values for {{ $.Name }}Type.
+const (
+	{{- range $s := $.SumOf }}
+		{{ $s.Name }}{{ $.Name }} {{ $.Name }}Type = "{{ $s.Go }}"
+	{{- end }}
+)
+
+{{- range $s := $.SumOf }}
+// Is{{ $s.Name }} reports whether {{ $.Name }} is {{ $s.Go }}.
+func (s {{ $.Go }}) Is{{ $s.Name }}() bool { return s.Type == {{ $s.Name }}{{ $.Name }} }
+{{- end }}
+
+{{- range $s := $.SumOf }}
+// Set{{ $s.Name }} sets {{ $.Name }} to {{ $s.Go }}.
+func (s *{{ $.Go }}) Set{{ $s.Name }}(v {{ $s.Go }}) {
+	s.Type = {{ $s.Name }}{{ $.Name }}
+	s.{{ $s.Name }} = v
+}
+
+// Get{{ $s.Name }} returns {{ $s.Go }} and true boolean if {{ $.Go }} is {{ $s.Go }}.
+func (s {{ $.Go }}) Get{{ $s.Name }}()(v {{ $s.Go }}, ok bool) {
+	if !s.Is{{ $s.Name }}() {
+		return v, false
+	}
+	return s.{{ $s.Name }}, true
+}
+
+// New{{ $s.Name }}{{ $.Name }} returns new {{ $.Go }} from {{ $s.Go }}.
+func New{{ $s.Name }}{{ $.Name }}(v {{ $s.Go }}) {{ $.Go }} {
+	var s {{ $.Name }}
+	s.Set{{ $s.Name }}(v)
+	return s
+}
+{{- end }}
+
+{{ end }}

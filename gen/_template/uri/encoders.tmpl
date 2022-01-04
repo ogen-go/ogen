@@ -1,0 +1,35 @@
+{{- /*gotype: github.com/ogen-go/ogen/internal/ir.Type*/ -}}
+{{- define "uri/encoders" }}
+
+func (v {{ $.Go }}) encodeURI(e uri.Encoder) error {
+	{{- range $f := $.Fields }}
+	{{- if $f.Spec }}
+		if err := e.EncodeField("{{ $f.Spec.Name }}", func(e uri.Encoder) error {
+			{{- template "uri/encode" elem $f.Type (printf "v.%s" $f.Name) }}
+		}); err != nil {
+			return errors.Wrap(err, `field {{ $f.Spec.Name }}`)
+		}
+	{{- end }}
+	{{- end }}
+	return nil
+}
+
+func (v *{{ $.Go }}) decodeURI(d uri.Decoder) error {
+	if v == nil {
+		return errors.New(`unable to decode {{ $.Go }} to nil`)
+	}
+	return d.DecodeFields(func(name string, d uri.Decoder) error {
+		switch name {
+		{{- range $f := $.Fields }}
+		{{- if $f.Spec }}
+		case "{{ $f.Spec.Name }}":
+			{{- template "uri/decode" elem $f.Type (printf "v.%s" $f.Name) }}
+		{{- end }}
+		{{- end }}
+		default:
+			return errors.Errorf(`unexpected field %q`, name)
+		}
+	})
+}
+
+{{ end }}

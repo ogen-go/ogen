@@ -1,0 +1,25 @@
+{{- /*gotype: github.com/ogen-go/ogen/internal/ir.Type*/ -}}
+{{- define "json/encoders_alias" }}
+// Encode encodes {{ $.Name }} as json.
+func (s {{ $.Name }}) Encode(e *jx.Encoder) {
+	unwrapped := {{ $.AliasTo.Go }}(s)
+	{{- template "json/enc" elem $.AliasTo "unwrapped" -}}
+}
+
+// Decode decodes {{ $.Name }} from json.
+func (s *{{ $.Name }}) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode {{ $.Name }} to nil`)
+	}
+	var unwrapped {{ $.AliasTo.Go }}
+	if err := func() error {
+		{{- template "json/dec" elem $.AliasTo "unwrapped" }}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = {{ $.Go }}(unwrapped)
+	return nil
+}
+
+{{ end }}

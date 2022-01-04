@@ -1,0 +1,16 @@
+{{- /*gotype: github.com/ogen-go/ogen/internal/ir.Type*/ -}}
+{{- define "json/encoders" }}
+
+{{- if $.IsStruct }}
+	{{- template "json/encoders_struct" $ }}
+{{- else if $.IsGeneric }}
+	{{- template "json/encoders_generic" $ }}
+{{- else if $.IsEnum }}
+	{{- template "json/encoders_enum" $ }}
+{{- else if $.IsSum }}
+	{{- template "json/encoders_sum" $ }}
+{{- else if $.IsAlias }}
+	{{- template "json/encoders_alias" $ }}
+{{- end }}
+
+{{ end }}

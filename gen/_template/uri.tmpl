@@ -1,0 +1,11 @@
+{{- /*gotype: github.com/ogen-go/ogen/gen.TemplateConfig*/ -}}
+{{- define "uri" }}
+{{- template "header" $ }}
+
+{{- range $t, $_ := $.URITypes }}
+	{{- if $t.IsStruct }}
+	{{- template "uri/encoders" $t }}
+	{{- end }}
+{{- end }}
+
+{{ end }}

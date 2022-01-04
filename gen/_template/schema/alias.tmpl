@@ -1,0 +1,4 @@
+{{- /*gotype: github.com/ogen-go/ogen/internal/ir.Type*/ -}}
+{{- define "schema/alias" }}
+type {{ $.Name }} {{ $.AliasTo.Go }}
+{{ end }}

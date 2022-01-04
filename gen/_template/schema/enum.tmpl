@@ -1,0 +1,11 @@
+{{- /*gotype: github.com/ogen-go/ogen/internal/ir.Type*/ -}}
+{{- define "schema/enum" }}
+type {{ $.Name }} {{ $.Primitive }}
+
+const (
+	{{- range $variant := $.EnumVariants }}
+	{{ $variant.Name }} {{ $.Name }} = {{ $variant.ValueGo }}
+	{{- end }}
+)
+
+{{ end }}

@@ -1,0 +1,34 @@
+{{- /*gotype: github.com/ogen-go/ogen/internal/ir.Type*/ -}}
+{{- define "schema/schema" }}
+
+{{- if $.Doc -}}
+// {{ $.Doc }}
+{{- end }}
+{{- if $.Schema }}
+	{{- if $.Schema.Ref }}
+	// Ref: {{ $.Schema.Ref }}
+	{{- end }}
+{{- end }}
+
+{{- if $.IsStruct }}
+	{{- template "schema/struct" $ }}
+{{- else if $.IsStream }}
+	{{- template "schema/stream" $ }}
+{{- else if $.IsAlias }}
+	{{- template "schema/alias" $ }}
+{{- else if $.IsEnum }}
+	{{- template "schema/enum" $ }}
+{{- else if $.IsSum }}
+	{{- template "schema/sum" $ }}
+{{- else if $.IsGeneric }}
+	{{- template "schema/generic" $ }}
+{{- else }}
+	{{ errorf "unexpected kind %s of %s" $.Kind $.Name }}
+{{- end }}
+
+{{/* Define methods */}}
+{{- range $method := $.Methods }}
+func ({{ $.ReceiverType }}) {{ $method }}() {}
+{{- end }}
+
+{{ end }}
