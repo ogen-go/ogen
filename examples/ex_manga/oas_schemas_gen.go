@@ -424,7 +424,7 @@ func (*SearchByTagIDForbidden) searchByTagIDRes() {}
 
 type SearchByTagIDOKApplicationJSON []SearchResponse
 
-func (*SearchByTagIDOKApplicationJSON) searchByTagIDRes() {}
+func (SearchByTagIDOKApplicationJSON) searchByTagIDRes() {}
 
 // SearchForbidden is response for Search operation.
 type SearchForbidden struct{}
@@ -433,7 +433,7 @@ func (*SearchForbidden) searchRes() {}
 
 type SearchOKApplicationJSON []SearchResponse
 
-func (*SearchOKApplicationJSON) searchRes() {}
+func (SearchOKApplicationJSON) searchRes() {}
 
 // Ref: #/components/schemas/SearchResponse
 type SearchResponse struct {

@@ -103,15 +103,15 @@ func (*DeletePetOwnerNoContent) deletePetOwnerRes() {}
 
 type ListPetCategoriesOKApplicationJSON []PetCategoriesList
 
-func (*ListPetCategoriesOKApplicationJSON) listPetCategoriesRes() {}
+func (ListPetCategoriesOKApplicationJSON) listPetCategoriesRes() {}
 
 type ListPetFriendsOKApplicationJSON []PetFriendsList
 
-func (*ListPetFriendsOKApplicationJSON) listPetFriendsRes() {}
+func (ListPetFriendsOKApplicationJSON) listPetFriendsRes() {}
 
 type ListPetOKApplicationJSON []PetList
 
-func (*ListPetOKApplicationJSON) listPetRes() {}
+func (ListPetOKApplicationJSON) listPetRes() {}
 
 // NewOptInt returns new OptInt with value set to v.
 func NewOptInt(v int) OptInt {
