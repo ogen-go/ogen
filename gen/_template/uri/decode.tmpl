@@ -1,34 +1,5 @@
-{{- /*gotype: github.com/ogen-go/ogen/gen.TemplateConfig*/ -}}
-{{- define "uri_dec" }}
-{{- template "header" $ }}
-
-{{- range $t, $_ := $.URITypes }}
-{{- if $t.IsStruct }}
-func (v *{{ $t.Go }}) decodeURI(d uri.Decoder) error {
-	if v == nil {
-		return errors.New(`unable to decode {{ $t.Go }} to nil`)
-	}
-	return d.DecodeFields(func(name string, d uri.Decoder) error {
-		switch name {
-		{{- range $f := $t.Fields }}
-		{{- if $f.Spec }}
-		case "{{ $f.Spec.Name }}":
-			{{- template "dec_uri" elem $f.Type (printf "v.%s" $f.Name) }}
-		{{- end }}
-		{{- end }}
-		default:
-			return errors.Errorf(`unexpected field %q`, name)
-		}
-	})
-}
-
-{{- end }}
-{{- end }}
-
-{{- end }}
-
-{{- define "dec_uri" }}
 {{- /*gotype: github.com/ogen-go/ogen/gen.Elem*/ -}}
+{{- define "uri/decode" }}
 {{- $t := $.Type }}
 {{- $var := $.Var }}
 {{- $tmpVar := camelSpecial (printf "%sVal" $var) }}
@@ -62,7 +33,7 @@ func (v *{{ $t.Go }}) decodeURI(d uri.Decoder) error {
 	return d.DecodeArray(func(d uri.Decoder) error {
 		var {{ $tmpVar }} {{ $t.Item.Go }}
 		if err := func() error {
-			{{- template "dec_uri" elem $t.Item $tmpVar }}
+			{{- template "uri/decode" elem $t.Item $tmpVar }}
 		}(); err != nil {
 			return err
 		}
@@ -72,7 +43,7 @@ func (v *{{ $t.Go }}) decodeURI(d uri.Decoder) error {
 {{- else if $t.IsAlias }}
 	var {{ $tmpVar }} {{ $t.AliasTo.Go }}
 	if err := func() error {
-		{{- template "dec_uri" elem $t.AliasTo $tmpVar }}
+		{{- template "uri/decode" elem $t.AliasTo $tmpVar }}
 	}(); err != nil {
 		return err
 	}
@@ -81,7 +52,7 @@ func (v *{{ $t.Go }}) decodeURI(d uri.Decoder) error {
 {{- else if $t.IsGeneric }}
 	var {{ $tmpVar }} {{ $t.GenericOf.Go }}
 	if err := func() error {
-		{{- template "dec_uri" elem $t.GenericOf $tmpVar }}
+		{{- template "uri/decode" elem $t.GenericOf $tmpVar }}
 	}(); err != nil {
 		return err
 	}
@@ -90,7 +61,7 @@ func (v *{{ $t.Go }}) decodeURI(d uri.Decoder) error {
 {{- else if $t.IsPointer }}
 	var {{ $tmpVar }} {{ $t.PointerTo.Go }}
 	if err := func() error {
-		{{- template "dec_uri" elem $t.PointerTo $tmpVar }}
+		{{- template "uri/decode" elem $t.PointerTo $tmpVar }}
 	}(); err != nil {
 		return err
 	}

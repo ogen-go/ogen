@@ -32,7 +32,7 @@ func decode{{ $op.Name }}Params(args map[string]string, r *http.Request) ({{ $op
 			})
 
 			if err := func() error {
-				{{- template "dec_uri" $el }}
+				{{- template "uri/decode" $el }}
 			}(); err != nil {
 				return params, errors.Wrap(err, `{{ $errParse }}`)
 			}
@@ -60,7 +60,7 @@ func decode{{ $op.Name }}Params(args map[string]string, r *http.Request) ({{ $op
 			})
 
 			if err := func() error {
-				{{- template "dec_uri" $el }}
+				{{- template "uri/decode" $el }}
 			}(); err != nil {
 				return params, err
 			}
@@ -77,7 +77,7 @@ func decode{{ $op.Name }}Params(args map[string]string, r *http.Request) ({{ $op
 				Explode: {{ if $p.Spec.Explode }}true{{ else }}false{{ end }},
 			})
 			if err := func() error {
-				{{- template "dec_uri" $el }}
+				{{- template "uri/decode" $el }}
 			}(); err != nil {
 				return params, errors.Wrap(err, `{{ $errParse }}`)
 			}

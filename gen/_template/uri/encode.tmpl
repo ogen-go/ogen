@@ -1,28 +1,5 @@
-{{- /*gotype: github.com/ogen-go/ogen/gen.TemplateConfig*/ -}}
-{{- define "uri_enc" }}
-{{- template "header" $ }}
-
-{{- range $t, $_ := $.URITypes }}
-{{- if $t.IsStruct }}
-func (v {{ $t.Go }}) encodeURI(e uri.Encoder) error {
-	{{- range $f := $t.Fields }}
-	{{- if $f.Spec }}
-		if err := e.EncodeField("{{ $f.Spec.Name }}", func(e uri.Encoder) error {
-			{{- template "enc_uri" elem $f.Type (printf "v.%s" $f.Name) }}
-		}); err != nil {
-			return errors.Wrap(err, `field {{ $f.Spec.Name }}`)
-		}
-	{{- end }}
-	{{- end }}
-	return nil
-}
-
-{{- end }}
-{{- end }}
-{{- end }}
-
-{{- define "enc_uri" }}
-{{- /*gotype: github.com/ogen-go/ogen/gen.Elem*/ -}}
+{{- /*gotype: github.com/ogen-go/ogen/internal/ir.Type*/ -}}
+{{- define "uri/encode" }}
 {{- $t := $.Type }}
 {{- $var := $.Var }}
 {{- if $t.IsPrimitive }}
@@ -33,7 +10,7 @@ func (v {{ $t.Go }}) encodeURI(e uri.Encoder) error {
 	return e.EncodeArray(func(e uri.Encoder) error {
 		for i, item := range {{ $var }} {
 			if err := func() error {
-				{{- template "enc_uri" elem $t.Item "item" }}
+				{{- template "uri/encode" elem $t.Item "item" }}
 			}(); err != nil {
 				return errors.Wrapf(err, "[%d]", i)
 			}
@@ -42,17 +19,17 @@ func (v {{ $t.Go }}) encodeURI(e uri.Encoder) error {
 	})
 {{- else if $t.IsAlias }}
 	if unwrapped := {{ $t.AliasTo.Go }}({{ $var }}); true {
-		{{- template "enc_uri" elem $t.AliasTo "unwrapped" }}
+		{{- template "uri/encode" elem $t.AliasTo "unwrapped" }}
 	}
 	return nil
 {{- else if $t.IsGeneric }}
 	if val, ok := {{ $var }}.Get(); ok {
-		{{- template "enc_uri" elem $t.GenericOf "val" }}
+		{{- template "uri/encode" elem $t.GenericOf "val" }}
 	}
 	return nil
 {{- else if $t.IsPointer }}
 	if v := {{ $var }}; v != nil {
-		{{- template "enc_uri" elem $t.PointerTo "(*v)" }}
+		{{- template "uri/encode" elem $t.PointerTo "(*v)" }}
 	}
 	return nil
 {{- else if $t.IsStruct }}
@@ -61,7 +38,7 @@ func (v {{ $t.Go }}) encodeURI(e uri.Encoder) error {
 	switch t := {{ $var }}.Type; t {
 	{{- range $of := $t.SumOf }}
 	case {{ $of.Name }}{{ $t.Name }}:
-		{{- template "enc_uri" elem $of (printf "%s.%s" $var $of.Name) }}
+		{{- template "uri/encode" elem $of (printf "%s.%s" $var $of.Name) }}
 	{{- end }}
 	default:
 		panic(fmt.Sprintf("unexpected type: %T", t))

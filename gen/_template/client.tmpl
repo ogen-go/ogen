@@ -184,7 +184,7 @@ r.AddCookie(&http.Cookie{
 		Explode: {{ if $p.Spec.Explode }}true{{ else }}false{{ end }},
 	})
 	if err := func() error {
-		{{- template "enc_uri" elem $p.Type (printf "params.%s" $p.Name) }}
+		{{- template "uri/encode" elem $p.Type (printf "params.%s" $p.Name) }}
 	}(); err != nil {
 		return res, errors.Wrap(err, `encode header param {{ $p.Spec.Name }}`)
 	}
