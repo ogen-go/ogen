@@ -1,0 +1,82 @@
+{{- /*gotype: github.com/ogen-go/ogen/internal/ir.Type*/ -}}
+{{- define "schema/generic" }}
+
+{{- $g := $.GenericOf }}
+{{- $v := $.GenericVariant }}
+
+// New{{ $.Name }} returns new {{ $.Name }} with value set to v.
+func New{{ $.Name }}(v {{ $g.Go }}) {{ $.Name }} {
+	return {{ $.Name }} {
+		Value: v,
+	{{- if $v.Optional }}
+		Set: true,
+	{{- end }}
+	}
+}
+
+// {{ $.Name }} is{{ if $v.Optional }} optional{{ end }}{{ if $v.Nullable }} nullable{{ end }} {{ $g.Go }}.
+type {{ $.Name }} struct {
+	Value {{ $g.Go }}
+	{{- if $v.Optional }}
+	Set bool
+	{{- end }}
+	{{- if $v.Nullable }}
+	Null bool
+	{{- end }}
+}
+
+{{- if $v.Optional }}
+// IsSet returns true if {{ $.Go }} was set.
+func (o {{ $.Name }}) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *{{ $.Name }}) Reset() {
+	var v {{ $g.Go }}
+	o.Value = v
+	o.Set = false
+	{{- if $v.Nullable }}
+	o.Null = false
+	{{- end }}
+}
+{{- end }}
+
+// SetTo sets value to v.
+func (o *{{ $.Name }}) SetTo(v {{ $g.Go }}) {
+	{{- if $v.Optional }}
+	o.Set = true
+	{{- end }}
+	{{- if $v.Nullable }}
+	o.Null = false
+	{{- end }}
+	o.Value = v
+}
+
+{{- if $v.Nullable  }}
+// IsSet returns true if value is Null.
+func (o {{ $.Name }}) IsNull() bool { return o.Null }
+{{ end }}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o {{ $.Name }}) Get() (v {{ $g.Go }}, ok bool) {
+	{{- if $v.Nullable }}
+	if o.Null {
+		return v, false
+	}
+	{{- end }}
+	{{- if $v.Optional }}
+	if !o.Set {
+		return v, false
+	}
+	{{- end }}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o {{ $.Name }}) Or(d {{ $g.Go }}) {{ $g.Go }} {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
+{{ end }}

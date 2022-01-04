@@ -109,12 +109,13 @@ func templateFunctions() template.FuncMap {
 	}
 }
 
-//go:embed _template/*.tmpl
+//go:embed _template/*
 var templates embed.FS
 
 // vendoredTemplates parses and returns vendored code generation templates.
 func vendoredTemplates() *template.Template {
 	tmpl := template.New("templates").Funcs(templateFunctions())
 	tmpl = template.Must(tmpl.ParseFS(templates, "_template/*.tmpl"))
+	tmpl = template.Must(tmpl.ParseFS(templates, "_template/*/*.tmpl"))
 	return tmpl
 }
