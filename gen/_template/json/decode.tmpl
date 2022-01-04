@@ -1,18 +1,18 @@
 {{- /*gotype: github.com/ogen-go/ogen/gen.Elem*/ -}}
 
-{{- define "dec_json_pointer" }}
+{{- define "json/dec_pointer" }}
 {{ $.Var }} = nil
 var {{ $.NextVar }} {{ $.Type.PointerTo.Go }}
-{{- template "dec_json" pointer_elem $ }}
+{{- template "json/dec" pointer_elem $ }}
 {{ $.Var }} = &{{ $.NextVar }}
 {{- end -}}
 
-{{- define "dec_json_array" }}
+{{- define "json/dec_array" }}
 {{- $t := $.Type -}}
 {{ $.Var }} = nil
 if err := d.Arr(func(d *jx.Decoder) error {
 	var {{ $.NextVar }} {{ $t.Item.Go }}
-	{{- template "dec_json" sub_array_elem $ $t.Item }}
+	{{- template "json/dec" sub_array_elem $ $t.Item }}
 	{{ $.Var }} = append({{ $.Var }}, {{ $.NextVar }})
 	return nil
 }); err != nil {
@@ -20,7 +20,7 @@ if err := d.Arr(func(d *jx.Decoder) error {
 }
 {{- end -}}
 
-{{- define "dec_json_generic" }}
+{{- define "json/dec_generic" }}
 {{- $t := $.Type -}}
 {{- $g := $t.GenericOf }}
 {{- if $t.GenericVariant.Optional }}
@@ -38,21 +38,21 @@ if err := d.Arr(func(d *jx.Decoder) error {
 {{- end -}}
 
 
-{{- define "dec_json" -}}
+{{- define "json/dec" -}}
 	{{- $t := $.Type -}}
 	{{- $j := $t.JSON -}}
 	{{- if $t.IsPointer }}
-		{{- template "dec_json_pointer" $ }}
+		{{- template "json/dec_pointer" $ }}
 	{{- else if $t.IsAlias }}
 		{
 			var unwrapped {{ $t.AliasTo.Go }}
-        	{{- template "dec_json" elem $t.AliasTo "unwrapped" }}
+        	{{- template "json/dec" elem $t.AliasTo "unwrapped" }}
 			{{ $.Var }} = {{ $t.Go }}(unwrapped)
 		}
 	{{- else if $t.IsArray }}
-		{{ template "dec_json_array" $ }}
+		{{ template "json/dec_array" $ }}
 	{{- else if $t.GenericOf }}
-		{{- template "dec_json_generic" $ }}
+		{{- template "json/dec_generic" $ }}
 	{{- else if or ($t.IsStruct) ($t.IsEnum) ($t.IsSum) ($t.IsAlias) }}
 		if err := {{ $.Var }}.Decode(d); err != nil {
 			return err

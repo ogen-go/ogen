@@ -34,7 +34,7 @@ func decode{{ $op.Name }}Request(r *http.Request, span trace.Span) (req {{ $op.R
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			{{- template "dec_json" req_dec_elem $t }}
+			{{- template "json/dec" req_dec_elem $t }}
 			return nil
 		}(); err != nil {
 			return req, err

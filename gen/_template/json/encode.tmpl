@@ -1,54 +1,54 @@
 {{- /*gotype: github.com/ogen-go/ogen/gen.Elem*/ -}}
 
 {{/* Encode field */}}
-{{- define "enc_json_field" -}}
+{{- define "json/enc_field" -}}
 {{- if $.Tag.JSON  }}
 e.FieldStart("{{ $.Tag.JSON }}")
 {{- end }}
 {{- end -}}
 
 {{/* Encode generic with respect of nullable/optional and special format */}}
-{{- define "enc_json_generic" -}}
+{{- define "json/enc_generic" -}}
 {{- $g := $.Type.GenericOf -}}
 {{- $v := $.Type.GenericVariant -}}
 {{- if $v.Optional -}}
 	if {{ $.Var }}.Set {
-		{{- template "enc_json_field" $ }}
+		{{- template "json/enc_field" $ }}
 		{{ $.Var }}.Encode(e{{ if $g.Format }}, json.Encode{{ $g.JSON.Format }}{{ end }})
 	}
 {{- else -}}
-	{{- template "enc_json_field" $ }}
+	{{- template "json/enc_field" $ }}
 	{{ $.Var }}.Encode(e{{ if $g.Format }}, json.Encode{{ $g.JSON.Format }}{{ end }})
 {{- end -}}
 {{- end }}
 
 
 {{/* Encode array with all elements */}}
-{{- define "enc_json_array_elems" }}
+{{- define "json/enc_array_elems" }}
 	e.ArrStart()
 	for _, elem := range {{ $.Var }} {
-		{{- template "enc_json" array_elem $.Type.Item }}
+		{{- template "json/enc" array_elem $.Type.Item }}
 	}
 	e.ArrEnd()
 {{- end }}
 
 {{/* Encode array with respect for nil semantic */}}
-{{- define "enc_json_array" -}}
+{{- define "json/enc_array" -}}
 {{- $t := $.Type }}
 {{- if $t.NilSemantic.Invalid -}}
-	{{- template "enc_json_field" $ -}}
-	{{- template "enc_json_array_elems" $ -}}
+	{{- template "json/enc_field" $ -}}
+	{{- template "json/enc_array_elems" $ -}}
 {{- else if $t.NilSemantic.Optional -}}
 	if {{ $.Var }} != nil {
-		{{- template "enc_json_field" $ -}}
-		{{- template "enc_json_array_elems" $ -}}
+		{{- template "json/enc_field" $ -}}
+		{{- template "json/enc_array_elems" $ -}}
 	}
 {{- else if $t.NilSemantic.Null -}}
-	{{- template "enc_json_field" $ }}
+	{{- template "json/enc_field" $ }}
 	if {{ $.Var }} == nil {
 		e.Null()
 	} else {
-		{{- template "enc_json_array_elems" $ -}}
+		{{- template "json/enc_array_elems" $ -}}
 	}
 {{- else -}}
 {{ errorf "unexpected nil semantic %s" $t.NilSemantic }}
@@ -56,41 +56,41 @@ e.FieldStart("{{ $.Tag.JSON }}")
 {{- end }}
 
 {{/* Encode value that implements jx.Encoder with respect to nil semantic */}}
-{{- define "enc_json_value" -}}
+{{- define "json/enc_value" -}}
 {{- $t := $.Type -}}
 {{- if or ($t.NilSemantic.Invalid) ($t.NilSemantic.Optional) -}}
 	if {{ $.Var }} != nil {
-		{{- template "enc_json_field" $ }}
+		{{- template "json/enc_field" $ }}
 		{{ $.Var }}.Encode(e)
 	}
 {{- else if $t.NilSemantic.Null -}}
-	{{- template "enc_json_field" $ }}
+	{{- template "json/enc_field" $ }}
 	if {{ $.Var }} == nil {
 		e.Null()
 	} else {
 		{{ $.Var }}.Encode(e)
 	}
 {{- else -}}
-	{{- template "enc_json_field" $ }}
+	{{- template "json/enc_field" $ }}
 	{{ $.Var }}.Encode(e)
 {{- end -}}
 {{- end }}
 
 {{/* Encode any Elem as json */}}
-{{- define "enc_json" -}}
+{{- define "json/enc" -}}
 	{{- $t := $.Type }}
 	{{- $j := $t.JSON }}
 	{{- if or ($t.IsStruct) ($t.IsEnum) ($t.IsPointer) ($t.IsSum) ($t.IsAlias) -}}
-		{{- template "enc_json_value" $ }}
+		{{- template "json/enc_value" $ }}
 	{{- else if $t.IsGeneric -}}
-		{{- template "enc_json_generic" $ }}
+		{{- template "json/enc_generic" $ }}
 	{{- else if $t.IsArray -}}
-		{{- template "enc_json_array" $ }}
+		{{- template "json/enc_array" $ }}
 	{{- else if $j.Format -}}
-		{{- template "enc_json_field" $ }}
+		{{- template "json/enc_field" $ }}
 		json.Encode{{ $j.Format }}(e, {{ $.Var }})
 	{{- else if $j.Fn -}}
-		{{- template "enc_json_field" $ }}
+		{{- template "json/enc_field" $ }}
 		e.{{ $j.Fn }}({{ $.Var }})
 	{{- else -}}
 		{{ errorf "unsupported: %s" $t }}
