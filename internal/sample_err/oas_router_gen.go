@@ -78,22 +78,6 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 	args := map[string]string{}
 	// Static code generated router with unwrapped path search.
 	switch r.Method {
-	case "POST":
-		if len(elem) == 0 {
-			break
-		}
-		switch elem[0] {
-		case '/': // Prefix: "/data"
-			if prefix := "/data"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-				elem = elem[len(prefix):]
-			} else {
-				break
-			}
-
-			// Leaf: DataCreate
-			s.handleDataCreateRequest(args, w, r)
-			return
-		}
 	case "GET":
 		if len(elem) == 0 {
 			break
@@ -108,6 +92,22 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 			// Leaf: DataGet
 			s.handleDataGetRequest(args, w, r)
+			return
+		}
+	case "POST":
+		if len(elem) == 0 {
+			break
+		}
+		switch elem[0] {
+		case '/': // Prefix: "/data"
+			if prefix := "/data"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+				elem = elem[len(prefix):]
+			} else {
+				break
+			}
+
+			// Leaf: DataCreate
+			s.handleDataCreateRequest(args, w, r)
 			return
 		}
 	}

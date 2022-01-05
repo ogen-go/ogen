@@ -78,6 +78,13113 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 	args := map[string]string{}
 	// Static code generated router with unwrapped path search.
 	switch r.Method {
+	case "DELETE":
+		if len(elem) == 0 {
+			break
+		}
+		switch elem[0] {
+		case '/': // Prefix: "/"
+			if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+				elem = elem[len(prefix):]
+			} else {
+				break
+			}
+
+			if len(elem) == 0 {
+				s.handleActionsDeleteOrgSecretRequest(args, w, r)
+				return
+			}
+			switch elem[0] {
+			case 'a': // Prefix: "a"
+				if prefix := "a"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+					elem = elem[len(prefix):]
+				} else {
+					break
+				}
+
+				if len(elem) == 0 {
+					s.handleOAuthAuthorizationsDeleteAuthorizationRequest(args, w, r)
+					return
+				}
+				switch elem[0] {
+				case 'p': // Prefix: "pp"
+					if prefix := "pp"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+						elem = elem[len(prefix):]
+					} else {
+						break
+					}
+
+					if len(elem) == 0 {
+						s.handleAppsDeleteInstallationRequest(args, w, r)
+						return
+					}
+					switch elem[0] {
+					case '/': // Prefix: "/installations/"
+						if prefix := "/installations/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+							elem = elem[len(prefix):]
+						} else {
+							break
+						}
+
+						// Param: "installation_id"
+						// Match until one of "/"
+						idx := strings.IndexAny(elem, "/")
+						if idx > 0 {
+							args["installation_id"] = elem[:idx]
+							elem = elem[idx:]
+
+							if len(elem) == 0 {
+								s.handleAppsDeleteInstallationRequest(args, w, r)
+								return
+							}
+							switch elem[0] {
+							case '/': // Prefix: "/suspended"
+								if prefix := "/suspended"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+									elem = elem[len(prefix):]
+								} else {
+									break
+								}
+
+								// Leaf: AppsUnsuspendInstallation
+								s.handleAppsUnsuspendInstallationRequest(args, w, r)
+								return
+							}
+						}
+					case 'l': // Prefix: "lications/"
+						if prefix := "lications/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+							elem = elem[len(prefix):]
+						} else {
+							break
+						}
+
+						if len(elem) == 0 {
+							break
+						}
+						switch elem[0] {
+						case 'g': // Prefix: "grants/"
+							if prefix := "grants/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+								elem = elem[len(prefix):]
+							} else {
+								break
+							}
+
+							// Param: "grant_id"
+							// Leaf parameter
+							args["grant_id"] = elem
+
+							// Leaf: OAuthAuthorizationsDeleteGrant
+							s.handleOAuthAuthorizationsDeleteGrantRequest(args, w, r)
+							return
+						}
+						// Param: "client_id"
+						// Match until one of "/"
+						idx := strings.IndexAny(elem, "/")
+						if idx > 0 {
+							args["client_id"] = elem[:idx]
+							elem = elem[idx:]
+
+							if len(elem) == 0 {
+								break
+							}
+							switch elem[0] {
+							case '/': // Prefix: "/"
+								if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+									elem = elem[len(prefix):]
+								} else {
+									break
+								}
+
+								if len(elem) == 0 {
+									s.handleAppsDeleteTokenRequest(args, w, r)
+									return
+								}
+								switch elem[0] {
+								case 'g': // Prefix: "grant"
+									if prefix := "grant"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+										elem = elem[len(prefix):]
+									} else {
+										break
+									}
+
+									// Leaf: AppsDeleteAuthorization
+									s.handleAppsDeleteAuthorizationRequest(args, w, r)
+									return
+								case 't': // Prefix: "token"
+									if prefix := "token"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+										elem = elem[len(prefix):]
+									} else {
+										break
+									}
+
+									// Leaf: AppsDeleteToken
+									s.handleAppsDeleteTokenRequest(args, w, r)
+									return
+								}
+							}
+						}
+					}
+				case 'u': // Prefix: "uthorizations/"
+					if prefix := "uthorizations/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+						elem = elem[len(prefix):]
+					} else {
+						break
+					}
+
+					// Param: "authorization_id"
+					// Leaf parameter
+					args["authorization_id"] = elem
+
+					// Leaf: OAuthAuthorizationsDeleteAuthorization
+					s.handleOAuthAuthorizationsDeleteAuthorizationRequest(args, w, r)
+					return
+				}
+			case 'e': // Prefix: "enterprises/"
+				if prefix := "enterprises/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+					elem = elem[len(prefix):]
+				} else {
+					break
+				}
+
+				// Param: "enterprise"
+				// Match until one of "/"
+				idx := strings.IndexAny(elem, "/")
+				if idx > 0 {
+					args["enterprise"] = elem[:idx]
+					elem = elem[idx:]
+
+					if len(elem) == 0 {
+						break
+					}
+					switch elem[0] {
+					case '/': // Prefix: "/actions/"
+						if prefix := "/actions/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+							elem = elem[len(prefix):]
+						} else {
+							break
+						}
+
+						if len(elem) == 0 {
+							s.handleEnterpriseAdminDisableSelectedOrganizationGithubActionsEnterpriseRequest(args, w, r)
+							return
+						}
+						switch elem[0] {
+						case 'p': // Prefix: "permissions/organizations/"
+							if prefix := "permissions/organizations/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+								elem = elem[len(prefix):]
+							} else {
+								break
+							}
+
+							// Param: "org_id"
+							// Leaf parameter
+							args["org_id"] = elem
+
+							// Leaf: EnterpriseAdminDisableSelectedOrganizationGithubActionsEnterprise
+							s.handleEnterpriseAdminDisableSelectedOrganizationGithubActionsEnterpriseRequest(args, w, r)
+							return
+						case 'r': // Prefix: "runner"
+							if prefix := "runner"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+								elem = elem[len(prefix):]
+							} else {
+								break
+							}
+
+							if len(elem) == 0 {
+								s.handleEnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterpriseRequest(args, w, r)
+								return
+							}
+							switch elem[0] {
+							case '-': // Prefix: "-groups/"
+								if prefix := "-groups/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+									elem = elem[len(prefix):]
+								} else {
+									break
+								}
+
+								// Param: "runner_group_id"
+								// Match until one of "/"
+								idx := strings.IndexAny(elem, "/")
+								if idx > 0 {
+									args["runner_group_id"] = elem[:idx]
+									elem = elem[idx:]
+
+									if len(elem) == 0 {
+										s.handleEnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterpriseRequest(args, w, r)
+										return
+									}
+									switch elem[0] {
+									case '/': // Prefix: "/"
+										if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+											elem = elem[len(prefix):]
+										} else {
+											break
+										}
+
+										if len(elem) == 0 {
+											s.handleEnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterpriseRequest(args, w, r)
+											return
+										}
+										switch elem[0] {
+										case 'o': // Prefix: "organizations/"
+											if prefix := "organizations/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+												elem = elem[len(prefix):]
+											} else {
+												break
+											}
+
+											// Param: "org_id"
+											// Leaf parameter
+											args["org_id"] = elem
+
+											// Leaf: EnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterprise
+											s.handleEnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterpriseRequest(args, w, r)
+											return
+										case 'r': // Prefix: "runners/"
+											if prefix := "runners/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+												elem = elem[len(prefix):]
+											} else {
+												break
+											}
+
+											// Param: "runner_id"
+											// Leaf parameter
+											args["runner_id"] = elem
+
+											// Leaf: EnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterprise
+											s.handleEnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterpriseRequest(args, w, r)
+											return
+										}
+									}
+								}
+							case 's': // Prefix: "s/"
+								if prefix := "s/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+									elem = elem[len(prefix):]
+								} else {
+									break
+								}
+
+								// Param: "runner_id"
+								// Leaf parameter
+								args["runner_id"] = elem
+
+								// Leaf: EnterpriseAdminDeleteSelfHostedRunnerFromEnterprise
+								s.handleEnterpriseAdminDeleteSelfHostedRunnerFromEnterpriseRequest(args, w, r)
+								return
+							}
+						}
+					}
+				}
+			case 'g': // Prefix: "gists/"
+				if prefix := "gists/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+					elem = elem[len(prefix):]
+				} else {
+					break
+				}
+
+				// Param: "gist_id"
+				// Match until one of "/"
+				idx := strings.IndexAny(elem, "/")
+				if idx > 0 {
+					args["gist_id"] = elem[:idx]
+					elem = elem[idx:]
+
+					if len(elem) == 0 {
+						s.handleGistsDeleteRequest(args, w, r)
+						return
+					}
+					switch elem[0] {
+					case '/': // Prefix: "/"
+						if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+							elem = elem[len(prefix):]
+						} else {
+							break
+						}
+
+						if len(elem) == 0 {
+							s.handleGistsUnstarRequest(args, w, r)
+							return
+						}
+						switch elem[0] {
+						case 'c': // Prefix: "comments/"
+							if prefix := "comments/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+								elem = elem[len(prefix):]
+							} else {
+								break
+							}
+
+							// Param: "comment_id"
+							// Leaf parameter
+							args["comment_id"] = elem
+
+							// Leaf: GistsDeleteComment
+							s.handleGistsDeleteCommentRequest(args, w, r)
+							return
+						case 's': // Prefix: "star"
+							if prefix := "star"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+								elem = elem[len(prefix):]
+							} else {
+								break
+							}
+
+							// Leaf: GistsUnstar
+							s.handleGistsUnstarRequest(args, w, r)
+							return
+						}
+					}
+				}
+			case 'i': // Prefix: "installation/token"
+				if prefix := "installation/token"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+					elem = elem[len(prefix):]
+				} else {
+					break
+				}
+
+				// Leaf: AppsRevokeInstallationAccessToken
+				s.handleAppsRevokeInstallationAccessTokenRequest(args, w, r)
+				return
+			case 'n': // Prefix: "notifications/threads/"
+				if prefix := "notifications/threads/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+					elem = elem[len(prefix):]
+				} else {
+					break
+				}
+
+				// Param: "thread_id"
+				// Match until one of "/"
+				idx := strings.IndexAny(elem, "/")
+				if idx > 0 {
+					args["thread_id"] = elem[:idx]
+					elem = elem[idx:]
+
+					if len(elem) == 0 {
+						break
+					}
+					switch elem[0] {
+					case '/': // Prefix: "/subscription"
+						if prefix := "/subscription"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+							elem = elem[len(prefix):]
+						} else {
+							break
+						}
+
+						// Leaf: ActivityDeleteThreadSubscription
+						s.handleActivityDeleteThreadSubscriptionRequest(args, w, r)
+						return
+					}
+				}
+			case 'o': // Prefix: "orgs/"
+				if prefix := "orgs/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+					elem = elem[len(prefix):]
+				} else {
+					break
+				}
+
+				// Param: "org"
+				// Match until one of "/"
+				idx := strings.IndexAny(elem, "/")
+				if idx > 0 {
+					args["org"] = elem[:idx]
+					elem = elem[idx:]
+
+					if len(elem) == 0 {
+						break
+					}
+					switch elem[0] {
+					case '/': // Prefix: "/"
+						if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+							elem = elem[len(prefix):]
+						} else {
+							break
+						}
+
+						if len(elem) == 0 {
+							s.handleInteractionsRemoveRestrictionsForOrgRequest(args, w, r)
+							return
+						}
+						switch elem[0] {
+						case 'a': // Prefix: "actions/"
+							if prefix := "actions/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+								elem = elem[len(prefix):]
+							} else {
+								break
+							}
+
+							if len(elem) == 0 {
+								s.handleActionsDeleteSelfHostedRunnerFromOrgRequest(args, w, r)
+								return
+							}
+							switch elem[0] {
+							case 'p': // Prefix: "permissions/repositories/"
+								if prefix := "permissions/repositories/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+									elem = elem[len(prefix):]
+								} else {
+									break
+								}
+
+								// Param: "repository_id"
+								// Leaf parameter
+								args["repository_id"] = elem
+
+								// Leaf: ActionsDisableSelectedRepositoryGithubActionsOrganization
+								s.handleActionsDisableSelectedRepositoryGithubActionsOrganizationRequest(args, w, r)
+								return
+							case 'r': // Prefix: "runner"
+								if prefix := "runner"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+									elem = elem[len(prefix):]
+								} else {
+									break
+								}
+
+								if len(elem) == 0 {
+									s.handleActionsDeleteSelfHostedRunnerGroupFromOrgRequest(args, w, r)
+									return
+								}
+								switch elem[0] {
+								case '-': // Prefix: "-groups/"
+									if prefix := "-groups/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+										elem = elem[len(prefix):]
+									} else {
+										break
+									}
+
+									// Param: "runner_group_id"
+									// Match until one of "/"
+									idx := strings.IndexAny(elem, "/")
+									if idx > 0 {
+										args["runner_group_id"] = elem[:idx]
+										elem = elem[idx:]
+
+										if len(elem) == 0 {
+											s.handleActionsDeleteSelfHostedRunnerGroupFromOrgRequest(args, w, r)
+											return
+										}
+										switch elem[0] {
+										case '/': // Prefix: "/r"
+											if prefix := "/r"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+												elem = elem[len(prefix):]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												s.handleActionsRemoveSelfHostedRunnerFromGroupForOrgRequest(args, w, r)
+												return
+											}
+											switch elem[0] {
+											case 'e': // Prefix: "epositories/"
+												if prefix := "epositories/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+													elem = elem[len(prefix):]
+												} else {
+													break
+												}
+
+												// Param: "repository_id"
+												// Leaf parameter
+												args["repository_id"] = elem
+
+												// Leaf: ActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrg
+												s.handleActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrgRequest(args, w, r)
+												return
+											case 'u': // Prefix: "unners/"
+												if prefix := "unners/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+													elem = elem[len(prefix):]
+												} else {
+													break
+												}
+
+												// Param: "runner_id"
+												// Leaf parameter
+												args["runner_id"] = elem
+
+												// Leaf: ActionsRemoveSelfHostedRunnerFromGroupForOrg
+												s.handleActionsRemoveSelfHostedRunnerFromGroupForOrgRequest(args, w, r)
+												return
+											}
+										}
+									}
+								case 's': // Prefix: "s/"
+									if prefix := "s/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+										elem = elem[len(prefix):]
+									} else {
+										break
+									}
+
+									// Param: "runner_id"
+									// Leaf parameter
+									args["runner_id"] = elem
+
+									// Leaf: ActionsDeleteSelfHostedRunnerFromOrg
+									s.handleActionsDeleteSelfHostedRunnerFromOrgRequest(args, w, r)
+									return
+								}
+							case 's': // Prefix: "secrets/"
+								if prefix := "secrets/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+									elem = elem[len(prefix):]
+								} else {
+									break
+								}
+
+								// Param: "secret_name"
+								// Match until one of "/"
+								idx := strings.IndexAny(elem, "/")
+								if idx > 0 {
+									args["secret_name"] = elem[:idx]
+									elem = elem[idx:]
+
+									if len(elem) == 0 {
+										s.handleActionsDeleteOrgSecretRequest(args, w, r)
+										return
+									}
+									switch elem[0] {
+									case '/': // Prefix: "/repositories/"
+										if prefix := "/repositories/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+											elem = elem[len(prefix):]
+										} else {
+											break
+										}
+
+										// Param: "repository_id"
+										// Leaf parameter
+										args["repository_id"] = elem
+
+										// Leaf: ActionsRemoveSelectedRepoFromOrgSecret
+										s.handleActionsRemoveSelectedRepoFromOrgSecretRequest(args, w, r)
+										return
+									}
+								}
+							}
+						case 'b': // Prefix: "blocks/"
+							if prefix := "blocks/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+								elem = elem[len(prefix):]
+							} else {
+								break
+							}
+
+							// Param: "username"
+							// Leaf parameter
+							args["username"] = elem
+
+							// Leaf: OrgsUnblockUser
+							s.handleOrgsUnblockUserRequest(args, w, r)
+							return
+						case 'c': // Prefix: "credential-authorizations/"
+							if prefix := "credential-authorizations/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+								elem = elem[len(prefix):]
+							} else {
+								break
+							}
+
+							// Param: "credential_id"
+							// Leaf parameter
+							args["credential_id"] = elem
+
+							// Leaf: OrgsRemoveSamlSSOAuthorization
+							s.handleOrgsRemoveSamlSSOAuthorizationRequest(args, w, r)
+							return
+						case 'h': // Prefix: "hooks/"
+							if prefix := "hooks/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+								elem = elem[len(prefix):]
+							} else {
+								break
+							}
+
+							// Param: "hook_id"
+							// Leaf parameter
+							args["hook_id"] = elem
+
+							// Leaf: OrgsDeleteWebhook
+							s.handleOrgsDeleteWebhookRequest(args, w, r)
+							return
+						case 'i': // Prefix: "in"
+							if prefix := "in"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+								elem = elem[len(prefix):]
+							} else {
+								break
+							}
+
+							if len(elem) == 0 {
+								s.handleOrgsCancelInvitationRequest(args, w, r)
+								return
+							}
+							switch elem[0] {
+							case 't': // Prefix: "teraction-limits"
+								if prefix := "teraction-limits"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+									elem = elem[len(prefix):]
+								} else {
+									break
+								}
+
+								// Leaf: InteractionsRemoveRestrictionsForOrg
+								s.handleInteractionsRemoveRestrictionsForOrgRequest(args, w, r)
+								return
+							case 'v': // Prefix: "vitations/"
+								if prefix := "vitations/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+									elem = elem[len(prefix):]
+								} else {
+									break
+								}
+
+								// Param: "invitation_id"
+								// Leaf parameter
+								args["invitation_id"] = elem
+
+								// Leaf: OrgsCancelInvitation
+								s.handleOrgsCancelInvitationRequest(args, w, r)
+								return
+							}
+						case 'm': // Prefix: "m"
+							if prefix := "m"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+								elem = elem[len(prefix):]
+							} else {
+								break
+							}
+
+							if len(elem) == 0 {
+								s.handleOrgsRemoveMemberRequest(args, w, r)
+								return
+							}
+							switch elem[0] {
+							case 'e': // Prefix: "embers"
+								if prefix := "embers"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+									elem = elem[len(prefix):]
+								} else {
+									break
+								}
+
+								if len(elem) == 0 {
+									s.handleOrgsRemoveMembershipForUserRequest(args, w, r)
+									return
+								}
+								switch elem[0] {
+								case '/': // Prefix: "/"
+									if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+										elem = elem[len(prefix):]
+									} else {
+										break
+									}
+
+									// Param: "username"
+									// Leaf parameter
+									args["username"] = elem
+
+									// Leaf: OrgsRemoveMember
+									s.handleOrgsRemoveMemberRequest(args, w, r)
+									return
+								case 'h': // Prefix: "hips/"
+									if prefix := "hips/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+										elem = elem[len(prefix):]
+									} else {
+										break
+									}
+
+									// Param: "username"
+									// Leaf parameter
+									args["username"] = elem
+
+									// Leaf: OrgsRemoveMembershipForUser
+									s.handleOrgsRemoveMembershipForUserRequest(args, w, r)
+									return
+								}
+							case 'i': // Prefix: "igrations/"
+								if prefix := "igrations/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+									elem = elem[len(prefix):]
+								} else {
+									break
+								}
+
+								// Param: "migration_id"
+								// Match until one of "/"
+								idx := strings.IndexAny(elem, "/")
+								if idx > 0 {
+									args["migration_id"] = elem[:idx]
+									elem = elem[idx:]
+
+									if len(elem) == 0 {
+										break
+									}
+									switch elem[0] {
+									case '/': // Prefix: "/"
+										if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+											elem = elem[len(prefix):]
+										} else {
+											break
+										}
+
+										if len(elem) == 0 {
+											s.handleMigrationsUnlockRepoForOrgRequest(args, w, r)
+											return
+										}
+										switch elem[0] {
+										case 'a': // Prefix: "archive"
+											if prefix := "archive"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+												elem = elem[len(prefix):]
+											} else {
+												break
+											}
+
+											// Leaf: MigrationsDeleteArchiveForOrg
+											s.handleMigrationsDeleteArchiveForOrgRequest(args, w, r)
+											return
+										case 'r': // Prefix: "repos/"
+											if prefix := "repos/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+												elem = elem[len(prefix):]
+											} else {
+												break
+											}
+
+											// Param: "repo_name"
+											// Match until one of "/"
+											idx := strings.IndexAny(elem, "/")
+											if idx > 0 {
+												args["repo_name"] = elem[:idx]
+												elem = elem[idx:]
+
+												if len(elem) == 0 {
+													break
+												}
+												switch elem[0] {
+												case '/': // Prefix: "/lock"
+													if prefix := "/lock"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+														elem = elem[len(prefix):]
+													} else {
+														break
+													}
+
+													// Leaf: MigrationsUnlockRepoForOrg
+													s.handleMigrationsUnlockRepoForOrgRequest(args, w, r)
+													return
+												}
+											}
+										}
+									}
+								}
+							}
+						case 'o': // Prefix: "outside_collaborators/"
+							if prefix := "outside_collaborators/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+								elem = elem[len(prefix):]
+							} else {
+								break
+							}
+
+							// Param: "username"
+							// Leaf parameter
+							args["username"] = elem
+
+							// Leaf: OrgsRemoveOutsideCollaborator
+							s.handleOrgsRemoveOutsideCollaboratorRequest(args, w, r)
+							return
+						case 'p': // Prefix: "p"
+							if prefix := "p"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+								elem = elem[len(prefix):]
+							} else {
+								break
+							}
+
+							if len(elem) == 0 {
+								s.handlePackagesDeletePackageForOrgRequest(args, w, r)
+								return
+							}
+							switch elem[0] {
+							case 'a': // Prefix: "ackages/"
+								if prefix := "ackages/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+									elem = elem[len(prefix):]
+								} else {
+									break
+								}
+
+								// Param: "package_type"
+								// Match until one of "/"
+								idx := strings.IndexAny(elem, "/")
+								if idx > 0 {
+									args["package_type"] = elem[:idx]
+									elem = elem[idx:]
+
+									if len(elem) == 0 {
+										break
+									}
+									switch elem[0] {
+									case '/': // Prefix: "/"
+										if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+											elem = elem[len(prefix):]
+										} else {
+											break
+										}
+
+										// Param: "package_name"
+										// Match until one of "/"
+										idx := strings.IndexAny(elem, "/")
+										if idx > 0 {
+											args["package_name"] = elem[:idx]
+											elem = elem[idx:]
+
+											if len(elem) == 0 {
+												s.handlePackagesDeletePackageForOrgRequest(args, w, r)
+												return
+											}
+											switch elem[0] {
+											case '/': // Prefix: "/versions/"
+												if prefix := "/versions/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+													elem = elem[len(prefix):]
+												} else {
+													break
+												}
+
+												// Param: "package_version_id"
+												// Leaf parameter
+												args["package_version_id"] = elem
+
+												// Leaf: PackagesDeletePackageVersionForOrg
+												s.handlePackagesDeletePackageVersionForOrgRequest(args, w, r)
+												return
+											}
+										}
+									}
+								}
+							case 'u': // Prefix: "ublic_members/"
+								if prefix := "ublic_members/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+									elem = elem[len(prefix):]
+								} else {
+									break
+								}
+
+								// Param: "username"
+								// Leaf parameter
+								args["username"] = elem
+
+								// Leaf: OrgsRemovePublicMembershipForAuthenticatedUser
+								s.handleOrgsRemovePublicMembershipForAuthenticatedUserRequest(args, w, r)
+								return
+							}
+						case 't': // Prefix: "teams/"
+							if prefix := "teams/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+								elem = elem[len(prefix):]
+							} else {
+								break
+							}
+
+							// Param: "team_slug"
+							// Match until one of "/"
+							idx := strings.IndexAny(elem, "/")
+							if idx > 0 {
+								args["team_slug"] = elem[:idx]
+								elem = elem[idx:]
+
+								if len(elem) == 0 {
+									s.handleTeamsDeleteInOrgRequest(args, w, r)
+									return
+								}
+								switch elem[0] {
+								case '/': // Prefix: "/"
+									if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+										elem = elem[len(prefix):]
+									} else {
+										break
+									}
+
+									if len(elem) == 0 {
+										s.handleTeamsRemoveMembershipForUserInOrgRequest(args, w, r)
+										return
+									}
+									switch elem[0] {
+									case 'd': // Prefix: "discussions/"
+										if prefix := "discussions/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+											elem = elem[len(prefix):]
+										} else {
+											break
+										}
+
+										// Param: "discussion_number"
+										// Match until one of "/"
+										idx := strings.IndexAny(elem, "/")
+										if idx > 0 {
+											args["discussion_number"] = elem[:idx]
+											elem = elem[idx:]
+
+											if len(elem) == 0 {
+												s.handleTeamsDeleteDiscussionInOrgRequest(args, w, r)
+												return
+											}
+											switch elem[0] {
+											case '/': // Prefix: "/"
+												if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+													elem = elem[len(prefix):]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													s.handleReactionsDeleteForTeamDiscussionCommentRequest(args, w, r)
+													return
+												}
+												switch elem[0] {
+												case 'c': // Prefix: "comments/"
+													if prefix := "comments/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+														elem = elem[len(prefix):]
+													} else {
+														break
+													}
+
+													// Param: "comment_number"
+													// Match until one of "/"
+													idx := strings.IndexAny(elem, "/")
+													if idx > 0 {
+														args["comment_number"] = elem[:idx]
+														elem = elem[idx:]
+
+														if len(elem) == 0 {
+															s.handleTeamsDeleteDiscussionCommentInOrgRequest(args, w, r)
+															return
+														}
+														switch elem[0] {
+														case '/': // Prefix: "/reactions/"
+															if prefix := "/reactions/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																elem = elem[len(prefix):]
+															} else {
+																break
+															}
+
+															// Param: "reaction_id"
+															// Leaf parameter
+															args["reaction_id"] = elem
+
+															// Leaf: ReactionsDeleteForTeamDiscussionComment
+															s.handleReactionsDeleteForTeamDiscussionCommentRequest(args, w, r)
+															return
+														}
+													}
+												case 'r': // Prefix: "reactions/"
+													if prefix := "reactions/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+														elem = elem[len(prefix):]
+													} else {
+														break
+													}
+
+													// Param: "reaction_id"
+													// Leaf parameter
+													args["reaction_id"] = elem
+
+													// Leaf: ReactionsDeleteForTeamDiscussion
+													s.handleReactionsDeleteForTeamDiscussionRequest(args, w, r)
+													return
+												}
+											}
+										}
+									case 'm': // Prefix: "memberships/"
+										if prefix := "memberships/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+											elem = elem[len(prefix):]
+										} else {
+											break
+										}
+
+										// Param: "username"
+										// Leaf parameter
+										args["username"] = elem
+
+										// Leaf: TeamsRemoveMembershipForUserInOrg
+										s.handleTeamsRemoveMembershipForUserInOrgRequest(args, w, r)
+										return
+									case 'p': // Prefix: "projects/"
+										if prefix := "projects/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+											elem = elem[len(prefix):]
+										} else {
+											break
+										}
+
+										// Param: "project_id"
+										// Leaf parameter
+										args["project_id"] = elem
+
+										// Leaf: TeamsRemoveProjectInOrg
+										s.handleTeamsRemoveProjectInOrgRequest(args, w, r)
+										return
+									case 'r': // Prefix: "repos/"
+										if prefix := "repos/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+											elem = elem[len(prefix):]
+										} else {
+											break
+										}
+
+										// Param: "owner"
+										// Match until one of "/"
+										idx := strings.IndexAny(elem, "/")
+										if idx > 0 {
+											args["owner"] = elem[:idx]
+											elem = elem[idx:]
+
+											if len(elem) == 0 {
+												break
+											}
+											switch elem[0] {
+											case '/': // Prefix: "/"
+												if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+													elem = elem[len(prefix):]
+												} else {
+													break
+												}
+
+												// Param: "repo"
+												// Leaf parameter
+												args["repo"] = elem
+
+												// Leaf: TeamsRemoveRepoInOrg
+												s.handleTeamsRemoveRepoInOrgRequest(args, w, r)
+												return
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			case 'p': // Prefix: "projects/"
+				if prefix := "projects/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+					elem = elem[len(prefix):]
+				} else {
+					break
+				}
+
+				if len(elem) == 0 {
+					break
+				}
+				switch elem[0] {
+				case 'c': // Prefix: "columns/"
+					if prefix := "columns/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+						elem = elem[len(prefix):]
+					} else {
+						break
+					}
+
+					if len(elem) == 0 {
+						s.handleProjectsDeleteColumnRequest(args, w, r)
+						return
+					}
+					switch elem[0] {
+					case 'c': // Prefix: "cards/"
+						if prefix := "cards/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+							elem = elem[len(prefix):]
+						} else {
+							break
+						}
+
+						// Param: "card_id"
+						// Leaf parameter
+						args["card_id"] = elem
+
+						// Leaf: ProjectsDeleteCard
+						s.handleProjectsDeleteCardRequest(args, w, r)
+						return
+					}
+					// Param: "column_id"
+					// Leaf parameter
+					args["column_id"] = elem
+
+					// Leaf: ProjectsDeleteColumn
+					s.handleProjectsDeleteColumnRequest(args, w, r)
+					return
+				}
+				// Param: "project_id"
+				// Match until one of "/"
+				idx := strings.IndexAny(elem, "/")
+				if idx > 0 {
+					args["project_id"] = elem[:idx]
+					elem = elem[idx:]
+
+					if len(elem) == 0 {
+						s.handleProjectsDeleteRequest(args, w, r)
+						return
+					}
+					switch elem[0] {
+					case '/': // Prefix: "/collaborators/"
+						if prefix := "/collaborators/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+							elem = elem[len(prefix):]
+						} else {
+							break
+						}
+
+						// Param: "username"
+						// Leaf parameter
+						args["username"] = elem
+
+						// Leaf: ProjectsRemoveCollaborator
+						s.handleProjectsRemoveCollaboratorRequest(args, w, r)
+						return
+					}
+				}
+			case 'r': // Prefix: "re"
+				if prefix := "re"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+					elem = elem[len(prefix):]
+				} else {
+					break
+				}
+
+				if len(elem) == 0 {
+					s.handleReactionsDeleteLegacyRequest(args, w, r)
+					return
+				}
+				switch elem[0] {
+				case 'a': // Prefix: "actions/"
+					if prefix := "actions/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+						elem = elem[len(prefix):]
+					} else {
+						break
+					}
+
+					// Param: "reaction_id"
+					// Leaf parameter
+					args["reaction_id"] = elem
+
+					// Leaf: ReactionsDeleteLegacy
+					s.handleReactionsDeleteLegacyRequest(args, w, r)
+					return
+				case 'p': // Prefix: "pos"
+					if prefix := "pos"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+						elem = elem[len(prefix):]
+					} else {
+						break
+					}
+
+					if len(elem) == 0 {
+						s.handleActionsDeleteEnvironmentSecretRequest(args, w, r)
+						return
+					}
+					switch elem[0] {
+					case '/': // Prefix: "/"
+						if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+							elem = elem[len(prefix):]
+						} else {
+							break
+						}
+
+						// Param: "owner"
+						// Match until one of "/"
+						idx := strings.IndexAny(elem, "/")
+						if idx > 0 {
+							args["owner"] = elem[:idx]
+							elem = elem[idx:]
+
+							if len(elem) == 0 {
+								break
+							}
+							switch elem[0] {
+							case '/': // Prefix: "/"
+								if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+									elem = elem[len(prefix):]
+								} else {
+									break
+								}
+
+								// Param: "repo"
+								// Match until one of "/"
+								idx := strings.IndexAny(elem, "/")
+								if idx > 0 {
+									args["repo"] = elem[:idx]
+									elem = elem[idx:]
+
+									if len(elem) == 0 {
+										s.handleReposDeleteRequest(args, w, r)
+										return
+									}
+									switch elem[0] {
+									case '/': // Prefix: "/"
+										if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+											elem = elem[len(prefix):]
+										} else {
+											break
+										}
+
+										if len(elem) == 0 {
+											s.handleActivityDeleteRepoSubscriptionRequest(args, w, r)
+											return
+										}
+										switch elem[0] {
+										case 'a': // Prefix: "a"
+											if prefix := "a"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+												elem = elem[len(prefix):]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												s.handleReposDeleteAutolinkRequest(args, w, r)
+												return
+											}
+											switch elem[0] {
+											case 'c': // Prefix: "ctions/"
+												if prefix := "ctions/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+													elem = elem[len(prefix):]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													s.handleActionsDeleteRepoSecretRequest(args, w, r)
+													return
+												}
+												switch elem[0] {
+												case 'a': // Prefix: "artifacts/"
+													if prefix := "artifacts/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+														elem = elem[len(prefix):]
+													} else {
+														break
+													}
+
+													// Param: "artifact_id"
+													// Leaf parameter
+													args["artifact_id"] = elem
+
+													// Leaf: ActionsDeleteArtifact
+													s.handleActionsDeleteArtifactRequest(args, w, r)
+													return
+												case 'r': // Prefix: "run"
+													if prefix := "run"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+														elem = elem[len(prefix):]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														s.handleActionsDeleteWorkflowRunRequest(args, w, r)
+														return
+													}
+													switch elem[0] {
+													case 'n': // Prefix: "ners/"
+														if prefix := "ners/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+															elem = elem[len(prefix):]
+														} else {
+															break
+														}
+
+														// Param: "runner_id"
+														// Leaf parameter
+														args["runner_id"] = elem
+
+														// Leaf: ActionsDeleteSelfHostedRunnerFromRepo
+														s.handleActionsDeleteSelfHostedRunnerFromRepoRequest(args, w, r)
+														return
+													case 's': // Prefix: "s/"
+														if prefix := "s/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+															elem = elem[len(prefix):]
+														} else {
+															break
+														}
+
+														// Param: "run_id"
+														// Match until one of "/"
+														idx := strings.IndexAny(elem, "/")
+														if idx > 0 {
+															args["run_id"] = elem[:idx]
+															elem = elem[idx:]
+
+															if len(elem) == 0 {
+																s.handleActionsDeleteWorkflowRunRequest(args, w, r)
+																return
+															}
+															switch elem[0] {
+															case '/': // Prefix: "/logs"
+																if prefix := "/logs"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																	elem = elem[len(prefix):]
+																} else {
+																	break
+																}
+
+																// Leaf: ActionsDeleteWorkflowRunLogs
+																s.handleActionsDeleteWorkflowRunLogsRequest(args, w, r)
+																return
+															}
+														}
+													}
+												case 's': // Prefix: "secrets/"
+													if prefix := "secrets/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+														elem = elem[len(prefix):]
+													} else {
+														break
+													}
+
+													// Param: "secret_name"
+													// Leaf parameter
+													args["secret_name"] = elem
+
+													// Leaf: ActionsDeleteRepoSecret
+													s.handleActionsDeleteRepoSecretRequest(args, w, r)
+													return
+												}
+											case 'u': // Prefix: "uto"
+												if prefix := "uto"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+													elem = elem[len(prefix):]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													s.handleReposDisableAutomatedSecurityFixesRequest(args, w, r)
+													return
+												}
+												switch elem[0] {
+												case 'l': // Prefix: "links/"
+													if prefix := "links/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+														elem = elem[len(prefix):]
+													} else {
+														break
+													}
+
+													// Param: "autolink_id"
+													// Leaf parameter
+													args["autolink_id"] = elem
+
+													// Leaf: ReposDeleteAutolink
+													s.handleReposDeleteAutolinkRequest(args, w, r)
+													return
+												case 'm': // Prefix: "mated-security-fixes"
+													if prefix := "mated-security-fixes"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+														elem = elem[len(prefix):]
+													} else {
+														break
+													}
+
+													// Leaf: ReposDisableAutomatedSecurityFixes
+													s.handleReposDisableAutomatedSecurityFixesRequest(args, w, r)
+													return
+												}
+											}
+										case 'b': // Prefix: "branches/"
+											if prefix := "branches/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+												elem = elem[len(prefix):]
+											} else {
+												break
+											}
+
+											// Param: "branch"
+											// Match until one of "/"
+											idx := strings.IndexAny(elem, "/")
+											if idx > 0 {
+												args["branch"] = elem[:idx]
+												elem = elem[idx:]
+
+												if len(elem) == 0 {
+													break
+												}
+												switch elem[0] {
+												case '/': // Prefix: "/protection"
+													if prefix := "/protection"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+														elem = elem[len(prefix):]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														s.handleReposDeleteBranchProtectionRequest(args, w, r)
+														return
+													}
+													switch elem[0] {
+													case '/': // Prefix: "/"
+														if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+															elem = elem[len(prefix):]
+														} else {
+															break
+														}
+
+														if len(elem) == 0 {
+															s.handleReposDeleteAdminBranchProtectionRequest(args, w, r)
+															return
+														}
+														switch elem[0] {
+														case 'e': // Prefix: "enforce_admins"
+															if prefix := "enforce_admins"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																elem = elem[len(prefix):]
+															} else {
+																break
+															}
+
+															// Leaf: ReposDeleteAdminBranchProtection
+															s.handleReposDeleteAdminBranchProtectionRequest(args, w, r)
+															return
+														case 'r': // Prefix: "re"
+															if prefix := "re"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																elem = elem[len(prefix):]
+															} else {
+																break
+															}
+
+															if len(elem) == 0 {
+																s.handleReposDeleteCommitSignatureProtectionRequest(args, w, r)
+																return
+															}
+															switch elem[0] {
+															case 'q': // Prefix: "quired_"
+																if prefix := "quired_"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																	elem = elem[len(prefix):]
+																} else {
+																	break
+																}
+
+																if len(elem) == 0 {
+																	s.handleReposDeletePullRequestReviewProtectionRequest(args, w, r)
+																	return
+																}
+																switch elem[0] {
+																case 'p': // Prefix: "pull_request_reviews"
+																	if prefix := "pull_request_reviews"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																		elem = elem[len(prefix):]
+																	} else {
+																		break
+																	}
+
+																	// Leaf: ReposDeletePullRequestReviewProtection
+																	s.handleReposDeletePullRequestReviewProtectionRequest(args, w, r)
+																	return
+																case 's': // Prefix: "s"
+																	if prefix := "s"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																		elem = elem[len(prefix):]
+																	} else {
+																		break
+																	}
+
+																	if len(elem) == 0 {
+																		s.handleReposRemoveStatusCheckContextsRequest(args, w, r)
+																		return
+																	}
+																	switch elem[0] {
+																	case 'i': // Prefix: "ignatures"
+																		if prefix := "ignatures"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																			elem = elem[len(prefix):]
+																		} else {
+																			break
+																		}
+
+																		// Leaf: ReposDeleteCommitSignatureProtection
+																		s.handleReposDeleteCommitSignatureProtectionRequest(args, w, r)
+																		return
+																	case 't': // Prefix: "tatus_checks"
+																		if prefix := "tatus_checks"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																			elem = elem[len(prefix):]
+																		} else {
+																			break
+																		}
+
+																		if len(elem) == 0 {
+																			s.handleReposRemoveStatusCheckProtectionRequest(args, w, r)
+																			return
+																		}
+																		switch elem[0] {
+																		case '/': // Prefix: "/contexts"
+																			if prefix := "/contexts"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																				elem = elem[len(prefix):]
+																			} else {
+																				break
+																			}
+
+																			// Leaf: ReposRemoveStatusCheckContexts
+																			s.handleReposRemoveStatusCheckContextsRequest(args, w, r)
+																			return
+																		}
+																	}
+																}
+															case 's': // Prefix: "strictions"
+																if prefix := "strictions"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																	elem = elem[len(prefix):]
+																} else {
+																	break
+																}
+
+																if len(elem) == 0 {
+																	s.handleReposDeleteAccessRestrictionsRequest(args, w, r)
+																	return
+																}
+																switch elem[0] {
+																case '/': // Prefix: "/"
+																	if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																		elem = elem[len(prefix):]
+																	} else {
+																		break
+																	}
+
+																	if len(elem) == 0 {
+																		s.handleReposRemoveTeamAccessRestrictionsRequest(args, w, r)
+																		return
+																	}
+																	switch elem[0] {
+																	case 'a': // Prefix: "apps"
+																		if prefix := "apps"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																			elem = elem[len(prefix):]
+																		} else {
+																			break
+																		}
+
+																		// Leaf: ReposRemoveAppAccessRestrictions
+																		s.handleReposRemoveAppAccessRestrictionsRequest(args, w, r)
+																		return
+																	case 't': // Prefix: "teams"
+																		if prefix := "teams"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																			elem = elem[len(prefix):]
+																		} else {
+																			break
+																		}
+
+																		// Leaf: ReposRemoveTeamAccessRestrictions
+																		s.handleReposRemoveTeamAccessRestrictionsRequest(args, w, r)
+																		return
+																	case 'u': // Prefix: "users"
+																		if prefix := "users"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																			elem = elem[len(prefix):]
+																		} else {
+																			break
+																		}
+
+																		// Leaf: ReposRemoveUserAccessRestrictions
+																		s.handleReposRemoveUserAccessRestrictionsRequest(args, w, r)
+																		return
+																	}
+																}
+															}
+														}
+													}
+												}
+											}
+										case 'c': // Prefix: "co"
+											if prefix := "co"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+												elem = elem[len(prefix):]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												s.handleReactionsDeleteForCommitCommentRequest(args, w, r)
+												return
+											}
+											switch elem[0] {
+											case 'd': // Prefix: "de-scanning/analyses/"
+												if prefix := "de-scanning/analyses/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+													elem = elem[len(prefix):]
+												} else {
+													break
+												}
+
+												// Param: "analysis_id"
+												// Leaf parameter
+												args["analysis_id"] = elem
+
+												// Leaf: CodeScanningDeleteAnalysis
+												s.handleCodeScanningDeleteAnalysisRequest(args, w, r)
+												return
+											case 'l': // Prefix: "llaborators/"
+												if prefix := "llaborators/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+													elem = elem[len(prefix):]
+												} else {
+													break
+												}
+
+												// Param: "username"
+												// Leaf parameter
+												args["username"] = elem
+
+												// Leaf: ReposRemoveCollaborator
+												s.handleReposRemoveCollaboratorRequest(args, w, r)
+												return
+											case 'm': // Prefix: "mments/"
+												if prefix := "mments/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+													elem = elem[len(prefix):]
+												} else {
+													break
+												}
+
+												// Param: "comment_id"
+												// Match until one of "/"
+												idx := strings.IndexAny(elem, "/")
+												if idx > 0 {
+													args["comment_id"] = elem[:idx]
+													elem = elem[idx:]
+
+													if len(elem) == 0 {
+														s.handleReposDeleteCommitCommentRequest(args, w, r)
+														return
+													}
+													switch elem[0] {
+													case '/': // Prefix: "/reactions/"
+														if prefix := "/reactions/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+															elem = elem[len(prefix):]
+														} else {
+															break
+														}
+
+														// Param: "reaction_id"
+														// Leaf parameter
+														args["reaction_id"] = elem
+
+														// Leaf: ReactionsDeleteForCommitComment
+														s.handleReactionsDeleteForCommitCommentRequest(args, w, r)
+														return
+													}
+												}
+											case 'n': // Prefix: "ntents/"
+												if prefix := "ntents/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+													elem = elem[len(prefix):]
+												} else {
+													break
+												}
+
+												// Param: "path"
+												// Leaf parameter
+												args["path"] = elem
+
+												// Leaf: ReposDeleteFile
+												s.handleReposDeleteFileRequest(args, w, r)
+												return
+											}
+										case 'd': // Prefix: "deployments/"
+											if prefix := "deployments/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+												elem = elem[len(prefix):]
+											} else {
+												break
+											}
+
+											// Param: "deployment_id"
+											// Leaf parameter
+											args["deployment_id"] = elem
+
+											// Leaf: ReposDeleteDeployment
+											s.handleReposDeleteDeploymentRequest(args, w, r)
+											return
+										case 'e': // Prefix: "environments/"
+											if prefix := "environments/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+												elem = elem[len(prefix):]
+											} else {
+												break
+											}
+
+											// Param: "environment_name"
+											// Leaf parameter
+											args["environment_name"] = elem
+
+											// Leaf: ReposDeleteAnEnvironment
+											s.handleReposDeleteAnEnvironmentRequest(args, w, r)
+											return
+										case 'g': // Prefix: "git/refs/"
+											if prefix := "git/refs/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+												elem = elem[len(prefix):]
+											} else {
+												break
+											}
+
+											// Param: "ref"
+											// Leaf parameter
+											args["ref"] = elem
+
+											// Leaf: GitDeleteRef
+											s.handleGitDeleteRefRequest(args, w, r)
+											return
+										case 'h': // Prefix: "hooks/"
+											if prefix := "hooks/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+												elem = elem[len(prefix):]
+											} else {
+												break
+											}
+
+											// Param: "hook_id"
+											// Leaf parameter
+											args["hook_id"] = elem
+
+											// Leaf: ReposDeleteWebhook
+											s.handleReposDeleteWebhookRequest(args, w, r)
+											return
+										case 'i': // Prefix: "i"
+											if prefix := "i"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+												elem = elem[len(prefix):]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												s.handleIssuesDeleteCommentRequest(args, w, r)
+												return
+											}
+											switch elem[0] {
+											case 'm': // Prefix: "mport"
+												if prefix := "mport"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+													elem = elem[len(prefix):]
+												} else {
+													break
+												}
+
+												// Leaf: MigrationsCancelImport
+												s.handleMigrationsCancelImportRequest(args, w, r)
+												return
+											case 'n': // Prefix: "n"
+												if prefix := "n"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+													elem = elem[len(prefix):]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													s.handleReposDeleteInvitationRequest(args, w, r)
+													return
+												}
+												switch elem[0] {
+												case 't': // Prefix: "teraction-limits"
+													if prefix := "teraction-limits"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+														elem = elem[len(prefix):]
+													} else {
+														break
+													}
+
+													// Leaf: InteractionsRemoveRestrictionsForRepo
+													s.handleInteractionsRemoveRestrictionsForRepoRequest(args, w, r)
+													return
+												case 'v': // Prefix: "vitations/"
+													if prefix := "vitations/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+														elem = elem[len(prefix):]
+													} else {
+														break
+													}
+
+													// Param: "invitation_id"
+													// Leaf parameter
+													args["invitation_id"] = elem
+
+													// Leaf: ReposDeleteInvitation
+													s.handleReposDeleteInvitationRequest(args, w, r)
+													return
+												}
+											case 's': // Prefix: "ssues/"
+												if prefix := "ssues/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+													elem = elem[len(prefix):]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													s.handleIssuesRemoveAllLabelsRequest(args, w, r)
+													return
+												}
+												switch elem[0] {
+												case 'c': // Prefix: "comments/"
+													if prefix := "comments/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+														elem = elem[len(prefix):]
+													} else {
+														break
+													}
+
+													// Param: "comment_id"
+													// Match until one of "/"
+													idx := strings.IndexAny(elem, "/")
+													if idx > 0 {
+														args["comment_id"] = elem[:idx]
+														elem = elem[idx:]
+
+														if len(elem) == 0 {
+															s.handleIssuesDeleteCommentRequest(args, w, r)
+															return
+														}
+														switch elem[0] {
+														case '/': // Prefix: "/reactions/"
+															if prefix := "/reactions/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																elem = elem[len(prefix):]
+															} else {
+																break
+															}
+
+															// Param: "reaction_id"
+															// Leaf parameter
+															args["reaction_id"] = elem
+
+															// Leaf: ReactionsDeleteForIssueComment
+															s.handleReactionsDeleteForIssueCommentRequest(args, w, r)
+															return
+														}
+													}
+												}
+												// Param: "issue_number"
+												// Match until one of "/"
+												idx := strings.IndexAny(elem, "/")
+												if idx > 0 {
+													args["issue_number"] = elem[:idx]
+													elem = elem[idx:]
+
+													if len(elem) == 0 {
+														break
+													}
+													switch elem[0] {
+													case '/': // Prefix: "/"
+														if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+															elem = elem[len(prefix):]
+														} else {
+															break
+														}
+
+														if len(elem) == 0 {
+															s.handleIssuesRemoveAssigneesRequest(args, w, r)
+															return
+														}
+														switch elem[0] {
+														case 'a': // Prefix: "assignees"
+															if prefix := "assignees"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																elem = elem[len(prefix):]
+															} else {
+																break
+															}
+
+															// Leaf: IssuesRemoveAssignees
+															s.handleIssuesRemoveAssigneesRequest(args, w, r)
+															return
+														case 'l': // Prefix: "l"
+															if prefix := "l"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																elem = elem[len(prefix):]
+															} else {
+																break
+															}
+
+															if len(elem) == 0 {
+																s.handleIssuesUnlockRequest(args, w, r)
+																return
+															}
+															switch elem[0] {
+															case 'a': // Prefix: "abels"
+																if prefix := "abels"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																	elem = elem[len(prefix):]
+																} else {
+																	break
+																}
+
+																if len(elem) == 0 {
+																	s.handleIssuesRemoveAllLabelsRequest(args, w, r)
+																	return
+																}
+																switch elem[0] {
+																case '/': // Prefix: "/"
+																	if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																		elem = elem[len(prefix):]
+																	} else {
+																		break
+																	}
+
+																	// Param: "name"
+																	// Leaf parameter
+																	args["name"] = elem
+
+																	// Leaf: IssuesRemoveLabel
+																	s.handleIssuesRemoveLabelRequest(args, w, r)
+																	return
+																}
+															case 'o': // Prefix: "ock"
+																if prefix := "ock"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																	elem = elem[len(prefix):]
+																} else {
+																	break
+																}
+
+																// Leaf: IssuesUnlock
+																s.handleIssuesUnlockRequest(args, w, r)
+																return
+															}
+														case 'r': // Prefix: "reactions/"
+															if prefix := "reactions/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																elem = elem[len(prefix):]
+															} else {
+																break
+															}
+
+															// Param: "reaction_id"
+															// Leaf parameter
+															args["reaction_id"] = elem
+
+															// Leaf: ReactionsDeleteForIssue
+															s.handleReactionsDeleteForIssueRequest(args, w, r)
+															return
+														}
+													}
+												}
+											}
+										case 'k': // Prefix: "keys/"
+											if prefix := "keys/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+												elem = elem[len(prefix):]
+											} else {
+												break
+											}
+
+											// Param: "key_id"
+											// Leaf parameter
+											args["key_id"] = elem
+
+											// Leaf: ReposDeleteDeployKey
+											s.handleReposDeleteDeployKeyRequest(args, w, r)
+											return
+										case 'l': // Prefix: "l"
+											if prefix := "l"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+												elem = elem[len(prefix):]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												s.handleReposDisableLfsForRepoRequest(args, w, r)
+												return
+											}
+											switch elem[0] {
+											case 'a': // Prefix: "abels/"
+												if prefix := "abels/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+													elem = elem[len(prefix):]
+												} else {
+													break
+												}
+
+												// Param: "name"
+												// Leaf parameter
+												args["name"] = elem
+
+												// Leaf: IssuesDeleteLabel
+												s.handleIssuesDeleteLabelRequest(args, w, r)
+												return
+											case 'f': // Prefix: "fs"
+												if prefix := "fs"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+													elem = elem[len(prefix):]
+												} else {
+													break
+												}
+
+												// Leaf: ReposDisableLfsForRepo
+												s.handleReposDisableLfsForRepoRequest(args, w, r)
+												return
+											}
+										case 'm': // Prefix: "milestones/"
+											if prefix := "milestones/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+												elem = elem[len(prefix):]
+											} else {
+												break
+											}
+
+											// Param: "milestone_number"
+											// Leaf parameter
+											args["milestone_number"] = elem
+
+											// Leaf: IssuesDeleteMilestone
+											s.handleIssuesDeleteMilestoneRequest(args, w, r)
+											return
+										case 'p': // Prefix: "p"
+											if prefix := "p"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+												elem = elem[len(prefix):]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												s.handleReposDeletePagesSiteRequest(args, w, r)
+												return
+											}
+											switch elem[0] {
+											case 'a': // Prefix: "ages"
+												if prefix := "ages"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+													elem = elem[len(prefix):]
+												} else {
+													break
+												}
+
+												// Leaf: ReposDeletePagesSite
+												s.handleReposDeletePagesSiteRequest(args, w, r)
+												return
+											case 'u': // Prefix: "ulls/"
+												if prefix := "ulls/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+													elem = elem[len(prefix):]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													break
+												}
+												switch elem[0] {
+												case 'c': // Prefix: "comments/"
+													if prefix := "comments/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+														elem = elem[len(prefix):]
+													} else {
+														break
+													}
+
+													// Param: "comment_id"
+													// Match until one of "/"
+													idx := strings.IndexAny(elem, "/")
+													if idx > 0 {
+														args["comment_id"] = elem[:idx]
+														elem = elem[idx:]
+
+														if len(elem) == 0 {
+															s.handlePullsDeleteReviewCommentRequest(args, w, r)
+															return
+														}
+														switch elem[0] {
+														case '/': // Prefix: "/reactions/"
+															if prefix := "/reactions/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																elem = elem[len(prefix):]
+															} else {
+																break
+															}
+
+															// Param: "reaction_id"
+															// Leaf parameter
+															args["reaction_id"] = elem
+
+															// Leaf: ReactionsDeleteForPullRequestComment
+															s.handleReactionsDeleteForPullRequestCommentRequest(args, w, r)
+															return
+														}
+													}
+												}
+												// Param: "pull_number"
+												// Match until one of "/"
+												idx := strings.IndexAny(elem, "/")
+												if idx > 0 {
+													args["pull_number"] = elem[:idx]
+													elem = elem[idx:]
+
+													if len(elem) == 0 {
+														break
+													}
+													switch elem[0] {
+													case '/': // Prefix: "/re"
+														if prefix := "/re"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+															elem = elem[len(prefix):]
+														} else {
+															break
+														}
+
+														if len(elem) == 0 {
+															s.handlePullsRemoveRequestedReviewersRequest(args, w, r)
+															return
+														}
+														switch elem[0] {
+														case 'q': // Prefix: "quested_reviewers"
+															if prefix := "quested_reviewers"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																elem = elem[len(prefix):]
+															} else {
+																break
+															}
+
+															// Leaf: PullsRemoveRequestedReviewers
+															s.handlePullsRemoveRequestedReviewersRequest(args, w, r)
+															return
+														case 'v': // Prefix: "views/"
+															if prefix := "views/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																elem = elem[len(prefix):]
+															} else {
+																break
+															}
+
+															// Param: "review_id"
+															// Leaf parameter
+															args["review_id"] = elem
+
+															// Leaf: PullsDeletePendingReview
+															s.handlePullsDeletePendingReviewRequest(args, w, r)
+															return
+														}
+													}
+												}
+											}
+										case 'r': // Prefix: "releases/"
+											if prefix := "releases/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+												elem = elem[len(prefix):]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												break
+											}
+											switch elem[0] {
+											case 'a': // Prefix: "assets/"
+												if prefix := "assets/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+													elem = elem[len(prefix):]
+												} else {
+													break
+												}
+
+												// Param: "asset_id"
+												// Leaf parameter
+												args["asset_id"] = elem
+
+												// Leaf: ReposDeleteReleaseAsset
+												s.handleReposDeleteReleaseAssetRequest(args, w, r)
+												return
+											}
+											// Param: "release_id"
+											// Leaf parameter
+											args["release_id"] = elem
+
+											// Leaf: ReposDeleteRelease
+											s.handleReposDeleteReleaseRequest(args, w, r)
+											return
+										case 's': // Prefix: "subscription"
+											if prefix := "subscription"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+												elem = elem[len(prefix):]
+											} else {
+												break
+											}
+
+											// Leaf: ActivityDeleteRepoSubscription
+											s.handleActivityDeleteRepoSubscriptionRequest(args, w, r)
+											return
+										case 'v': // Prefix: "vulnerability-alerts"
+											if prefix := "vulnerability-alerts"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+												elem = elem[len(prefix):]
+											} else {
+												break
+											}
+
+											// Leaf: ReposDisableVulnerabilityAlerts
+											s.handleReposDisableVulnerabilityAlertsRequest(args, w, r)
+											return
+										}
+									}
+								}
+							}
+						}
+					case 'i': // Prefix: "itories/"
+						if prefix := "itories/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+							elem = elem[len(prefix):]
+						} else {
+							break
+						}
+
+						// Param: "repository_id"
+						// Match until one of "/"
+						idx := strings.IndexAny(elem, "/")
+						if idx > 0 {
+							args["repository_id"] = elem[:idx]
+							elem = elem[idx:]
+
+							if len(elem) == 0 {
+								break
+							}
+							switch elem[0] {
+							case '/': // Prefix: "/environments/"
+								if prefix := "/environments/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+									elem = elem[len(prefix):]
+								} else {
+									break
+								}
+
+								// Param: "environment_name"
+								// Match until one of "/"
+								idx := strings.IndexAny(elem, "/")
+								if idx > 0 {
+									args["environment_name"] = elem[:idx]
+									elem = elem[idx:]
+
+									if len(elem) == 0 {
+										break
+									}
+									switch elem[0] {
+									case '/': // Prefix: "/secrets/"
+										if prefix := "/secrets/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+											elem = elem[len(prefix):]
+										} else {
+											break
+										}
+
+										// Param: "secret_name"
+										// Leaf parameter
+										args["secret_name"] = elem
+
+										// Leaf: ActionsDeleteEnvironmentSecret
+										s.handleActionsDeleteEnvironmentSecretRequest(args, w, r)
+										return
+									}
+								}
+							}
+						}
+					}
+				}
+			case 's': // Prefix: "scim/v2/"
+				if prefix := "scim/v2/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+					elem = elem[len(prefix):]
+				} else {
+					break
+				}
+
+				if len(elem) == 0 {
+					s.handleScimDeleteUserFromOrgRequest(args, w, r)
+					return
+				}
+				switch elem[0] {
+				case 'e': // Prefix: "enterprises/"
+					if prefix := "enterprises/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+						elem = elem[len(prefix):]
+					} else {
+						break
+					}
+
+					// Param: "enterprise"
+					// Match until one of "/"
+					idx := strings.IndexAny(elem, "/")
+					if idx > 0 {
+						args["enterprise"] = elem[:idx]
+						elem = elem[idx:]
+
+						if len(elem) == 0 {
+							break
+						}
+						switch elem[0] {
+						case '/': // Prefix: "/"
+							if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+								elem = elem[len(prefix):]
+							} else {
+								break
+							}
+
+							if len(elem) == 0 {
+								s.handleEnterpriseAdminDeleteUserFromEnterpriseRequest(args, w, r)
+								return
+							}
+							switch elem[0] {
+							case 'G': // Prefix: "Groups/"
+								if prefix := "Groups/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+									elem = elem[len(prefix):]
+								} else {
+									break
+								}
+
+								// Param: "scim_group_id"
+								// Leaf parameter
+								args["scim_group_id"] = elem
+
+								// Leaf: EnterpriseAdminDeleteScimGroupFromEnterprise
+								s.handleEnterpriseAdminDeleteScimGroupFromEnterpriseRequest(args, w, r)
+								return
+							case 'U': // Prefix: "Users/"
+								if prefix := "Users/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+									elem = elem[len(prefix):]
+								} else {
+									break
+								}
+
+								// Param: "scim_user_id"
+								// Leaf parameter
+								args["scim_user_id"] = elem
+
+								// Leaf: EnterpriseAdminDeleteUserFromEnterprise
+								s.handleEnterpriseAdminDeleteUserFromEnterpriseRequest(args, w, r)
+								return
+							}
+						}
+					}
+				case 'o': // Prefix: "organizations/"
+					if prefix := "organizations/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+						elem = elem[len(prefix):]
+					} else {
+						break
+					}
+
+					// Param: "org"
+					// Match until one of "/"
+					idx := strings.IndexAny(elem, "/")
+					if idx > 0 {
+						args["org"] = elem[:idx]
+						elem = elem[idx:]
+
+						if len(elem) == 0 {
+							break
+						}
+						switch elem[0] {
+						case '/': // Prefix: "/Users/"
+							if prefix := "/Users/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+								elem = elem[len(prefix):]
+							} else {
+								break
+							}
+
+							// Param: "scim_user_id"
+							// Leaf parameter
+							args["scim_user_id"] = elem
+
+							// Leaf: ScimDeleteUserFromOrg
+							s.handleScimDeleteUserFromOrgRequest(args, w, r)
+							return
+						}
+					}
+				}
+			case 't': // Prefix: "teams/"
+				if prefix := "teams/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+					elem = elem[len(prefix):]
+				} else {
+					break
+				}
+
+				// Param: "team_id"
+				// Match until one of "/"
+				idx := strings.IndexAny(elem, "/")
+				if idx > 0 {
+					args["team_id"] = elem[:idx]
+					elem = elem[idx:]
+
+					if len(elem) == 0 {
+						s.handleTeamsDeleteLegacyRequest(args, w, r)
+						return
+					}
+					switch elem[0] {
+					case '/': // Prefix: "/"
+						if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+							elem = elem[len(prefix):]
+						} else {
+							break
+						}
+
+						if len(elem) == 0 {
+							s.handleTeamsRemoveMemberLegacyRequest(args, w, r)
+							return
+						}
+						switch elem[0] {
+						case 'd': // Prefix: "discussions/"
+							if prefix := "discussions/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+								elem = elem[len(prefix):]
+							} else {
+								break
+							}
+
+							// Param: "discussion_number"
+							// Match until one of "/"
+							idx := strings.IndexAny(elem, "/")
+							if idx > 0 {
+								args["discussion_number"] = elem[:idx]
+								elem = elem[idx:]
+
+								if len(elem) == 0 {
+									s.handleTeamsDeleteDiscussionLegacyRequest(args, w, r)
+									return
+								}
+								switch elem[0] {
+								case '/': // Prefix: "/comments/"
+									if prefix := "/comments/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+										elem = elem[len(prefix):]
+									} else {
+										break
+									}
+
+									// Param: "comment_number"
+									// Leaf parameter
+									args["comment_number"] = elem
+
+									// Leaf: TeamsDeleteDiscussionCommentLegacy
+									s.handleTeamsDeleteDiscussionCommentLegacyRequest(args, w, r)
+									return
+								}
+							}
+						case 'm': // Prefix: "members"
+							if prefix := "members"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+								elem = elem[len(prefix):]
+							} else {
+								break
+							}
+
+							if len(elem) == 0 {
+								s.handleTeamsRemoveMembershipForUserLegacyRequest(args, w, r)
+								return
+							}
+							switch elem[0] {
+							case '/': // Prefix: "/"
+								if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+									elem = elem[len(prefix):]
+								} else {
+									break
+								}
+
+								// Param: "username"
+								// Leaf parameter
+								args["username"] = elem
+
+								// Leaf: TeamsRemoveMemberLegacy
+								s.handleTeamsRemoveMemberLegacyRequest(args, w, r)
+								return
+							case 'h': // Prefix: "hips/"
+								if prefix := "hips/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+									elem = elem[len(prefix):]
+								} else {
+									break
+								}
+
+								// Param: "username"
+								// Leaf parameter
+								args["username"] = elem
+
+								// Leaf: TeamsRemoveMembershipForUserLegacy
+								s.handleTeamsRemoveMembershipForUserLegacyRequest(args, w, r)
+								return
+							}
+						case 'p': // Prefix: "projects/"
+							if prefix := "projects/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+								elem = elem[len(prefix):]
+							} else {
+								break
+							}
+
+							// Param: "project_id"
+							// Leaf parameter
+							args["project_id"] = elem
+
+							// Leaf: TeamsRemoveProjectLegacy
+							s.handleTeamsRemoveProjectLegacyRequest(args, w, r)
+							return
+						case 'r': // Prefix: "repos/"
+							if prefix := "repos/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+								elem = elem[len(prefix):]
+							} else {
+								break
+							}
+
+							// Param: "owner"
+							// Match until one of "/"
+							idx := strings.IndexAny(elem, "/")
+							if idx > 0 {
+								args["owner"] = elem[:idx]
+								elem = elem[idx:]
+
+								if len(elem) == 0 {
+									break
+								}
+								switch elem[0] {
+								case '/': // Prefix: "/"
+									if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+										elem = elem[len(prefix):]
+									} else {
+										break
+									}
+
+									// Param: "repo"
+									// Leaf parameter
+									args["repo"] = elem
+
+									// Leaf: TeamsRemoveRepoLegacy
+									s.handleTeamsRemoveRepoLegacyRequest(args, w, r)
+									return
+								}
+							}
+						}
+					}
+				}
+			case 'u': // Prefix: "user"
+				if prefix := "user"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+					elem = elem[len(prefix):]
+				} else {
+					break
+				}
+
+				if len(elem) == 0 {
+					s.handlePackagesDeletePackageForUserRequest(args, w, r)
+					return
+				}
+				switch elem[0] {
+				case '/': // Prefix: "/"
+					if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+						elem = elem[len(prefix):]
+					} else {
+						break
+					}
+
+					if len(elem) == 0 {
+						s.handleAppsRemoveRepoFromInstallationRequest(args, w, r)
+						return
+					}
+					switch elem[0] {
+					case 'b': // Prefix: "blocks/"
+						if prefix := "blocks/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+							elem = elem[len(prefix):]
+						} else {
+							break
+						}
+
+						// Param: "username"
+						// Leaf parameter
+						args["username"] = elem
+
+						// Leaf: UsersUnblock
+						s.handleUsersUnblockRequest(args, w, r)
+						return
+					case 'e': // Prefix: "emails"
+						if prefix := "emails"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+							elem = elem[len(prefix):]
+						} else {
+							break
+						}
+
+						// Leaf: UsersDeleteEmailForAuthenticated
+						s.handleUsersDeleteEmailForAuthenticatedRequest(args, w, r)
+						return
+					case 'f': // Prefix: "following/"
+						if prefix := "following/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+							elem = elem[len(prefix):]
+						} else {
+							break
+						}
+
+						// Param: "username"
+						// Leaf parameter
+						args["username"] = elem
+
+						// Leaf: UsersUnfollow
+						s.handleUsersUnfollowRequest(args, w, r)
+						return
+					case 'g': // Prefix: "gpg_keys/"
+						if prefix := "gpg_keys/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+							elem = elem[len(prefix):]
+						} else {
+							break
+						}
+
+						// Param: "gpg_key_id"
+						// Leaf parameter
+						args["gpg_key_id"] = elem
+
+						// Leaf: UsersDeleteGpgKeyForAuthenticated
+						s.handleUsersDeleteGpgKeyForAuthenticatedRequest(args, w, r)
+						return
+					case 'i': // Prefix: "in"
+						if prefix := "in"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+							elem = elem[len(prefix):]
+						} else {
+							break
+						}
+
+						if len(elem) == 0 {
+							s.handleInteractionsRemoveRestrictionsForAuthenticatedUserRequest(args, w, r)
+							return
+						}
+						switch elem[0] {
+						case 's': // Prefix: "stallations/"
+							if prefix := "stallations/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+								elem = elem[len(prefix):]
+							} else {
+								break
+							}
+
+							// Param: "installation_id"
+							// Match until one of "/"
+							idx := strings.IndexAny(elem, "/")
+							if idx > 0 {
+								args["installation_id"] = elem[:idx]
+								elem = elem[idx:]
+
+								if len(elem) == 0 {
+									break
+								}
+								switch elem[0] {
+								case '/': // Prefix: "/repositories/"
+									if prefix := "/repositories/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+										elem = elem[len(prefix):]
+									} else {
+										break
+									}
+
+									// Param: "repository_id"
+									// Leaf parameter
+									args["repository_id"] = elem
+
+									// Leaf: AppsRemoveRepoFromInstallation
+									s.handleAppsRemoveRepoFromInstallationRequest(args, w, r)
+									return
+								}
+							}
+						case 't': // Prefix: "teraction-limits"
+							if prefix := "teraction-limits"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+								elem = elem[len(prefix):]
+							} else {
+								break
+							}
+
+							// Leaf: InteractionsRemoveRestrictionsForAuthenticatedUser
+							s.handleInteractionsRemoveRestrictionsForAuthenticatedUserRequest(args, w, r)
+							return
+						}
+					case 'k': // Prefix: "keys/"
+						if prefix := "keys/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+							elem = elem[len(prefix):]
+						} else {
+							break
+						}
+
+						// Param: "key_id"
+						// Leaf parameter
+						args["key_id"] = elem
+
+						// Leaf: UsersDeletePublicSSHKeyForAuthenticated
+						s.handleUsersDeletePublicSSHKeyForAuthenticatedRequest(args, w, r)
+						return
+					case 'm': // Prefix: "migrations/"
+						if prefix := "migrations/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+							elem = elem[len(prefix):]
+						} else {
+							break
+						}
+
+						// Param: "migration_id"
+						// Match until one of "/"
+						idx := strings.IndexAny(elem, "/")
+						if idx > 0 {
+							args["migration_id"] = elem[:idx]
+							elem = elem[idx:]
+
+							if len(elem) == 0 {
+								break
+							}
+							switch elem[0] {
+							case '/': // Prefix: "/"
+								if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+									elem = elem[len(prefix):]
+								} else {
+									break
+								}
+
+								if len(elem) == 0 {
+									s.handleMigrationsUnlockRepoForAuthenticatedUserRequest(args, w, r)
+									return
+								}
+								switch elem[0] {
+								case 'a': // Prefix: "archive"
+									if prefix := "archive"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+										elem = elem[len(prefix):]
+									} else {
+										break
+									}
+
+									// Leaf: MigrationsDeleteArchiveForAuthenticatedUser
+									s.handleMigrationsDeleteArchiveForAuthenticatedUserRequest(args, w, r)
+									return
+								case 'r': // Prefix: "repos/"
+									if prefix := "repos/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+										elem = elem[len(prefix):]
+									} else {
+										break
+									}
+
+									// Param: "repo_name"
+									// Match until one of "/"
+									idx := strings.IndexAny(elem, "/")
+									if idx > 0 {
+										args["repo_name"] = elem[:idx]
+										elem = elem[idx:]
+
+										if len(elem) == 0 {
+											break
+										}
+										switch elem[0] {
+										case '/': // Prefix: "/lock"
+											if prefix := "/lock"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+												elem = elem[len(prefix):]
+											} else {
+												break
+											}
+
+											// Leaf: MigrationsUnlockRepoForAuthenticatedUser
+											s.handleMigrationsUnlockRepoForAuthenticatedUserRequest(args, w, r)
+											return
+										}
+									}
+								}
+							}
+						}
+					case 'p': // Prefix: "packages/"
+						if prefix := "packages/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+							elem = elem[len(prefix):]
+						} else {
+							break
+						}
+
+						// Param: "package_type"
+						// Match until one of "/"
+						idx := strings.IndexAny(elem, "/")
+						if idx > 0 {
+							args["package_type"] = elem[:idx]
+							elem = elem[idx:]
+
+							if len(elem) == 0 {
+								break
+							}
+							switch elem[0] {
+							case '/': // Prefix: "/"
+								if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+									elem = elem[len(prefix):]
+								} else {
+									break
+								}
+
+								// Param: "package_name"
+								// Match until one of "/"
+								idx := strings.IndexAny(elem, "/")
+								if idx > 0 {
+									args["package_name"] = elem[:idx]
+									elem = elem[idx:]
+
+									if len(elem) == 0 {
+										s.handlePackagesDeletePackageForAuthenticatedUserRequest(args, w, r)
+										return
+									}
+									switch elem[0] {
+									case '/': // Prefix: "/versions/"
+										if prefix := "/versions/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+											elem = elem[len(prefix):]
+										} else {
+											break
+										}
+
+										// Param: "package_version_id"
+										// Leaf parameter
+										args["package_version_id"] = elem
+
+										// Leaf: PackagesDeletePackageVersionForAuthenticatedUser
+										s.handlePackagesDeletePackageVersionForAuthenticatedUserRequest(args, w, r)
+										return
+									}
+								}
+							}
+						}
+					case 'r': // Prefix: "repository_invitations/"
+						if prefix := "repository_invitations/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+							elem = elem[len(prefix):]
+						} else {
+							break
+						}
+
+						// Param: "invitation_id"
+						// Leaf parameter
+						args["invitation_id"] = elem
+
+						// Leaf: ReposDeclineInvitation
+						s.handleReposDeclineInvitationRequest(args, w, r)
+						return
+					case 's': // Prefix: "starred/"
+						if prefix := "starred/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+							elem = elem[len(prefix):]
+						} else {
+							break
+						}
+
+						// Param: "owner"
+						// Match until one of "/"
+						idx := strings.IndexAny(elem, "/")
+						if idx > 0 {
+							args["owner"] = elem[:idx]
+							elem = elem[idx:]
+
+							if len(elem) == 0 {
+								break
+							}
+							switch elem[0] {
+							case '/': // Prefix: "/"
+								if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+									elem = elem[len(prefix):]
+								} else {
+									break
+								}
+
+								// Param: "repo"
+								// Leaf parameter
+								args["repo"] = elem
+
+								// Leaf: ActivityUnstarRepoForAuthenticatedUser
+								s.handleActivityUnstarRepoForAuthenticatedUserRequest(args, w, r)
+								return
+							}
+						}
+					}
+				case 's': // Prefix: "s/"
+					if prefix := "s/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+						elem = elem[len(prefix):]
+					} else {
+						break
+					}
+
+					// Param: "username"
+					// Match until one of "/"
+					idx := strings.IndexAny(elem, "/")
+					if idx > 0 {
+						args["username"] = elem[:idx]
+						elem = elem[idx:]
+
+						if len(elem) == 0 {
+							break
+						}
+						switch elem[0] {
+						case '/': // Prefix: "/packages/"
+							if prefix := "/packages/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+								elem = elem[len(prefix):]
+							} else {
+								break
+							}
+
+							// Param: "package_type"
+							// Match until one of "/"
+							idx := strings.IndexAny(elem, "/")
+							if idx > 0 {
+								args["package_type"] = elem[:idx]
+								elem = elem[idx:]
+
+								if len(elem) == 0 {
+									break
+								}
+								switch elem[0] {
+								case '/': // Prefix: "/"
+									if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+										elem = elem[len(prefix):]
+									} else {
+										break
+									}
+
+									// Param: "package_name"
+									// Match until one of "/"
+									idx := strings.IndexAny(elem, "/")
+									if idx > 0 {
+										args["package_name"] = elem[:idx]
+										elem = elem[idx:]
+
+										if len(elem) == 0 {
+											s.handlePackagesDeletePackageForUserRequest(args, w, r)
+											return
+										}
+										switch elem[0] {
+										case '/': // Prefix: "/versions/"
+											if prefix := "/versions/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+												elem = elem[len(prefix):]
+											} else {
+												break
+											}
+
+											// Param: "package_version_id"
+											// Leaf parameter
+											args["package_version_id"] = elem
+
+											// Leaf: PackagesDeletePackageVersionForUser
+											s.handlePackagesDeletePackageVersionForUserRequest(args, w, r)
+											return
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	case "GET":
+		if len(elem) == 0 {
+			break
+		}
+		switch elem[0] {
+		case '/': // Prefix: "/"
+			if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+				elem = elem[len(prefix):]
+			} else {
+				break
+			}
+
+			if len(elem) == 0 {
+				s.handleMetaRootRequest(args, w, r)
+				return
+			}
+			switch elem[0] {
+			case 'a': // Prefix: "a"
+				if prefix := "a"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+					elem = elem[len(prefix):]
+				} else {
+					break
+				}
+
+				if len(elem) == 0 {
+					s.handleOAuthAuthorizationsGetAuthorizationRequest(args, w, r)
+					return
+				}
+				switch elem[0] {
+				case 'p': // Prefix: "pp"
+					if prefix := "pp"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+						elem = elem[len(prefix):]
+					} else {
+						break
+					}
+
+					if len(elem) == 0 {
+						s.handleAppsGetAuthenticatedRequest(args, w, r)
+						return
+					}
+					switch elem[0] {
+					case '/': // Prefix: "/hook/"
+						if prefix := "/hook/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+							elem = elem[len(prefix):]
+						} else {
+							break
+						}
+
+						if len(elem) == 0 {
+							s.handleAppsGetWebhookDeliveryRequest(args, w, r)
+							return
+						}
+						switch elem[0] {
+						case 'c': // Prefix: "config"
+							if prefix := "config"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+								elem = elem[len(prefix):]
+							} else {
+								break
+							}
+
+							// Leaf: AppsGetWebhookConfigForApp
+							s.handleAppsGetWebhookConfigForAppRequest(args, w, r)
+							return
+						case 'd': // Prefix: "deliveries"
+							if prefix := "deliveries"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+								elem = elem[len(prefix):]
+							} else {
+								break
+							}
+
+							if len(elem) == 0 {
+								s.handleAppsListWebhookDeliveriesRequest(args, w, r)
+								return
+							}
+							switch elem[0] {
+							case '/': // Prefix: "/"
+								if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+									elem = elem[len(prefix):]
+								} else {
+									break
+								}
+
+								// Param: "delivery_id"
+								// Leaf parameter
+								args["delivery_id"] = elem
+
+								// Leaf: AppsGetWebhookDelivery
+								s.handleAppsGetWebhookDeliveryRequest(args, w, r)
+								return
+							}
+						}
+					case 'l': // Prefix: "lications/grants"
+						if prefix := "lications/grants"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+							elem = elem[len(prefix):]
+						} else {
+							break
+						}
+
+						if len(elem) == 0 {
+							s.handleOAuthAuthorizationsListGrantsRequest(args, w, r)
+							return
+						}
+						switch elem[0] {
+						case '/': // Prefix: "/"
+							if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+								elem = elem[len(prefix):]
+							} else {
+								break
+							}
+
+							// Param: "grant_id"
+							// Leaf parameter
+							args["grant_id"] = elem
+
+							// Leaf: OAuthAuthorizationsGetGrant
+							s.handleOAuthAuthorizationsGetGrantRequest(args, w, r)
+							return
+						}
+					case 's': // Prefix: "s/"
+						if prefix := "s/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+							elem = elem[len(prefix):]
+						} else {
+							break
+						}
+
+						// Param: "app_slug"
+						// Leaf parameter
+						args["app_slug"] = elem
+
+						// Leaf: AppsGetBySlug
+						s.handleAppsGetBySlugRequest(args, w, r)
+						return
+					}
+				case 'u': // Prefix: "uthorizations"
+					if prefix := "uthorizations"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+						elem = elem[len(prefix):]
+					} else {
+						break
+					}
+
+					if len(elem) == 0 {
+						s.handleOAuthAuthorizationsListAuthorizationsRequest(args, w, r)
+						return
+					}
+					switch elem[0] {
+					case '/': // Prefix: "/"
+						if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+							elem = elem[len(prefix):]
+						} else {
+							break
+						}
+
+						// Param: "authorization_id"
+						// Leaf parameter
+						args["authorization_id"] = elem
+
+						// Leaf: OAuthAuthorizationsGetAuthorization
+						s.handleOAuthAuthorizationsGetAuthorizationRequest(args, w, r)
+						return
+					}
+				}
+			case 'c': // Prefix: "codes_of_conduct"
+				if prefix := "codes_of_conduct"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+					elem = elem[len(prefix):]
+				} else {
+					break
+				}
+
+				if len(elem) == 0 {
+					s.handleCodesOfConductGetAllCodesOfConductRequest(args, w, r)
+					return
+				}
+				switch elem[0] {
+				case '/': // Prefix: "/"
+					if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+						elem = elem[len(prefix):]
+					} else {
+						break
+					}
+
+					// Param: "key"
+					// Leaf parameter
+					args["key"] = elem
+
+					// Leaf: CodesOfConductGetConductCode
+					s.handleCodesOfConductGetConductCodeRequest(args, w, r)
+					return
+				}
+			case 'e': // Prefix: "e"
+				if prefix := "e"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+					elem = elem[len(prefix):]
+				} else {
+					break
+				}
+
+				if len(elem) == 0 {
+					s.handleBillingGetGithubActionsBillingGheRequest(args, w, r)
+					return
+				}
+				switch elem[0] {
+				case 'm': // Prefix: "mojis"
+					if prefix := "mojis"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+						elem = elem[len(prefix):]
+					} else {
+						break
+					}
+
+					// Leaf: EmojisGet
+					s.handleEmojisGetRequest(args, w, r)
+					return
+				case 'n': // Prefix: "nterprises/"
+					if prefix := "nterprises/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+						elem = elem[len(prefix):]
+					} else {
+						break
+					}
+
+					// Param: "enterprise"
+					// Match until one of "/"
+					idx := strings.IndexAny(elem, "/")
+					if idx > 0 {
+						args["enterprise"] = elem[:idx]
+						elem = elem[idx:]
+
+						if len(elem) == 0 {
+							break
+						}
+						switch elem[0] {
+						case '/': // Prefix: "/"
+							if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+								elem = elem[len(prefix):]
+							} else {
+								break
+							}
+
+							if len(elem) == 0 {
+								s.handleEnterpriseAdminGetAllowedActionsEnterpriseRequest(args, w, r)
+								return
+							}
+							switch elem[0] {
+							case 'a': // Prefix: "a"
+								if prefix := "a"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+									elem = elem[len(prefix):]
+								} else {
+									break
+								}
+
+								if len(elem) == 0 {
+									s.handleEnterpriseAdminGetAuditLogRequest(args, w, r)
+									return
+								}
+								switch elem[0] {
+								case 'c': // Prefix: "ctions/"
+									if prefix := "ctions/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+										elem = elem[len(prefix):]
+									} else {
+										break
+									}
+
+									if len(elem) == 0 {
+										s.handleEnterpriseAdminGetSelfHostedRunnerForEnterpriseRequest(args, w, r)
+										return
+									}
+									switch elem[0] {
+									case 'p': // Prefix: "permissions"
+										if prefix := "permissions"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+											elem = elem[len(prefix):]
+										} else {
+											break
+										}
+
+										if len(elem) == 0 {
+											s.handleEnterpriseAdminGetGithubActionsPermissionsEnterpriseRequest(args, w, r)
+											return
+										}
+										switch elem[0] {
+										case '/': // Prefix: "/"
+											if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+												elem = elem[len(prefix):]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												s.handleEnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterpriseRequest(args, w, r)
+												return
+											}
+											switch elem[0] {
+											case 'o': // Prefix: "organizations"
+												if prefix := "organizations"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+													elem = elem[len(prefix):]
+												} else {
+													break
+												}
+
+												// Leaf: EnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterprise
+												s.handleEnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterpriseRequest(args, w, r)
+												return
+											case 's': // Prefix: "selected-actions"
+												if prefix := "selected-actions"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+													elem = elem[len(prefix):]
+												} else {
+													break
+												}
+
+												// Leaf: EnterpriseAdminGetAllowedActionsEnterprise
+												s.handleEnterpriseAdminGetAllowedActionsEnterpriseRequest(args, w, r)
+												return
+											}
+										}
+									case 'r': // Prefix: "runner"
+										if prefix := "runner"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+											elem = elem[len(prefix):]
+										} else {
+											break
+										}
+
+										if len(elem) == 0 {
+											s.handleEnterpriseAdminGetSelfHostedRunnerGroupForEnterpriseRequest(args, w, r)
+											return
+										}
+										switch elem[0] {
+										case '-': // Prefix: "-groups"
+											if prefix := "-groups"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+												elem = elem[len(prefix):]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												s.handleEnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseRequest(args, w, r)
+												return
+											}
+											switch elem[0] {
+											case '/': // Prefix: "/"
+												if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+													elem = elem[len(prefix):]
+												} else {
+													break
+												}
+
+												// Param: "runner_group_id"
+												// Match until one of "/"
+												idx := strings.IndexAny(elem, "/")
+												if idx > 0 {
+													args["runner_group_id"] = elem[:idx]
+													elem = elem[idx:]
+
+													if len(elem) == 0 {
+														s.handleEnterpriseAdminGetSelfHostedRunnerGroupForEnterpriseRequest(args, w, r)
+														return
+													}
+													switch elem[0] {
+													case '/': // Prefix: "/"
+														if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+															elem = elem[len(prefix):]
+														} else {
+															break
+														}
+
+														if len(elem) == 0 {
+															s.handleEnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseRequest(args, w, r)
+															return
+														}
+														switch elem[0] {
+														case 'o': // Prefix: "organizations"
+															if prefix := "organizations"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																elem = elem[len(prefix):]
+															} else {
+																break
+															}
+
+															// Leaf: EnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterprise
+															s.handleEnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseRequest(args, w, r)
+															return
+														case 'r': // Prefix: "runners"
+															if prefix := "runners"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																elem = elem[len(prefix):]
+															} else {
+																break
+															}
+
+															// Leaf: EnterpriseAdminListSelfHostedRunnersInGroupForEnterprise
+															s.handleEnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseRequest(args, w, r)
+															return
+														}
+													}
+												}
+											}
+										case 's': // Prefix: "s"
+											if prefix := "s"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+												elem = elem[len(prefix):]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												s.handleEnterpriseAdminListSelfHostedRunnersForEnterpriseRequest(args, w, r)
+												return
+											}
+											switch elem[0] {
+											case '/': // Prefix: "/"
+												if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+													elem = elem[len(prefix):]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													break
+												}
+												switch elem[0] {
+												case 'd': // Prefix: "downloads"
+													if prefix := "downloads"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+														elem = elem[len(prefix):]
+													} else {
+														break
+													}
+
+													// Leaf: EnterpriseAdminListRunnerApplicationsForEnterprise
+													s.handleEnterpriseAdminListRunnerApplicationsForEnterpriseRequest(args, w, r)
+													return
+												}
+												// Param: "runner_id"
+												// Leaf parameter
+												args["runner_id"] = elem
+
+												// Leaf: EnterpriseAdminGetSelfHostedRunnerForEnterprise
+												s.handleEnterpriseAdminGetSelfHostedRunnerForEnterpriseRequest(args, w, r)
+												return
+											}
+										}
+									}
+								case 'u': // Prefix: "udit-log"
+									if prefix := "udit-log"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+										elem = elem[len(prefix):]
+									} else {
+										break
+									}
+
+									// Leaf: EnterpriseAdminGetAuditLog
+									s.handleEnterpriseAdminGetAuditLogRequest(args, w, r)
+									return
+								}
+							case 's': // Prefix: "settings/billing/"
+								if prefix := "settings/billing/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+									elem = elem[len(prefix):]
+								} else {
+									break
+								}
+
+								if len(elem) == 0 {
+									s.handleBillingGetGithubPackagesBillingGheRequest(args, w, r)
+									return
+								}
+								switch elem[0] {
+								case 'a': // Prefix: "actions"
+									if prefix := "actions"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+										elem = elem[len(prefix):]
+									} else {
+										break
+									}
+
+									// Leaf: BillingGetGithubActionsBillingGhe
+									s.handleBillingGetGithubActionsBillingGheRequest(args, w, r)
+									return
+								case 'p': // Prefix: "packages"
+									if prefix := "packages"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+										elem = elem[len(prefix):]
+									} else {
+										break
+									}
+
+									// Leaf: BillingGetGithubPackagesBillingGhe
+									s.handleBillingGetGithubPackagesBillingGheRequest(args, w, r)
+									return
+								case 's': // Prefix: "shared-storage"
+									if prefix := "shared-storage"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+										elem = elem[len(prefix):]
+									} else {
+										break
+									}
+
+									// Leaf: BillingGetSharedStorageBillingGhe
+									s.handleBillingGetSharedStorageBillingGheRequest(args, w, r)
+									return
+								}
+							}
+						}
+					}
+				case 'v': // Prefix: "vents"
+					if prefix := "vents"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+						elem = elem[len(prefix):]
+					} else {
+						break
+					}
+
+					// Leaf: ActivityListPublicEvents
+					s.handleActivityListPublicEventsRequest(args, w, r)
+					return
+				}
+			case 'f': // Prefix: "feeds"
+				if prefix := "feeds"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+					elem = elem[len(prefix):]
+				} else {
+					break
+				}
+
+				// Leaf: ActivityGetFeeds
+				s.handleActivityGetFeedsRequest(args, w, r)
+				return
+			case 'g': // Prefix: "gi"
+				if prefix := "gi"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+					elem = elem[len(prefix):]
+				} else {
+					break
+				}
+
+				if len(elem) == 0 {
+					s.handleGitignoreGetAllTemplatesRequest(args, w, r)
+					return
+				}
+				switch elem[0] {
+				case 's': // Prefix: "sts"
+					if prefix := "sts"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+						elem = elem[len(prefix):]
+					} else {
+						break
+					}
+
+					if len(elem) == 0 {
+						s.handleGistsListRequest(args, w, r)
+						return
+					}
+					switch elem[0] {
+					case '/': // Prefix: "/"
+						if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+							elem = elem[len(prefix):]
+						} else {
+							break
+						}
+
+						if len(elem) == 0 {
+							break
+						}
+						switch elem[0] {
+						case 'p': // Prefix: "public"
+							if prefix := "public"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+								elem = elem[len(prefix):]
+							} else {
+								break
+							}
+
+							// Leaf: GistsListPublic
+							s.handleGistsListPublicRequest(args, w, r)
+							return
+						case 's': // Prefix: "starred"
+							if prefix := "starred"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+								elem = elem[len(prefix):]
+							} else {
+								break
+							}
+
+							// Leaf: GistsListStarred
+							s.handleGistsListStarredRequest(args, w, r)
+							return
+						}
+						// Param: "gist_id"
+						// Match until one of "/"
+						idx := strings.IndexAny(elem, "/")
+						if idx > 0 {
+							args["gist_id"] = elem[:idx]
+							elem = elem[idx:]
+
+							if len(elem) == 0 {
+								s.handleGistsGetRequest(args, w, r)
+								return
+							}
+							switch elem[0] {
+							case '/': // Prefix: "/"
+								if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+									elem = elem[len(prefix):]
+								} else {
+									break
+								}
+
+								if len(elem) == 0 {
+									s.handleGistsGetCommentRequest(args, w, r)
+									return
+								}
+								switch elem[0] {
+								case 'c': // Prefix: "comm"
+									if prefix := "comm"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+										elem = elem[len(prefix):]
+									} else {
+										break
+									}
+
+									if len(elem) == 0 {
+										s.handleGistsListCommitsRequest(args, w, r)
+										return
+									}
+									switch elem[0] {
+									case 'e': // Prefix: "ents"
+										if prefix := "ents"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+											elem = elem[len(prefix):]
+										} else {
+											break
+										}
+
+										if len(elem) == 0 {
+											s.handleGistsListCommentsRequest(args, w, r)
+											return
+										}
+										switch elem[0] {
+										case '/': // Prefix: "/"
+											if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+												elem = elem[len(prefix):]
+											} else {
+												break
+											}
+
+											// Param: "comment_id"
+											// Leaf parameter
+											args["comment_id"] = elem
+
+											// Leaf: GistsGetComment
+											s.handleGistsGetCommentRequest(args, w, r)
+											return
+										}
+									case 'i': // Prefix: "its"
+										if prefix := "its"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+											elem = elem[len(prefix):]
+										} else {
+											break
+										}
+
+										// Leaf: GistsListCommits
+										s.handleGistsListCommitsRequest(args, w, r)
+										return
+									}
+								case 'f': // Prefix: "forks"
+									if prefix := "forks"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+										elem = elem[len(prefix):]
+									} else {
+										break
+									}
+
+									// Leaf: GistsListForks
+									s.handleGistsListForksRequest(args, w, r)
+									return
+								case 's': // Prefix: "star"
+									if prefix := "star"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+										elem = elem[len(prefix):]
+									} else {
+										break
+									}
+
+									// Leaf: GistsCheckIsStarred
+									s.handleGistsCheckIsStarredRequest(args, w, r)
+									return
+								}
+								// Param: "sha"
+								// Leaf parameter
+								args["sha"] = elem
+
+								// Leaf: GistsGetRevision
+								s.handleGistsGetRevisionRequest(args, w, r)
+								return
+							}
+						}
+					}
+				case 't': // Prefix: "tignore/templates"
+					if prefix := "tignore/templates"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+						elem = elem[len(prefix):]
+					} else {
+						break
+					}
+
+					if len(elem) == 0 {
+						s.handleGitignoreGetAllTemplatesRequest(args, w, r)
+						return
+					}
+					switch elem[0] {
+					case '/': // Prefix: "/"
+						if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+							elem = elem[len(prefix):]
+						} else {
+							break
+						}
+
+						// Param: "name"
+						// Leaf parameter
+						args["name"] = elem
+
+						// Leaf: GitignoreGetTemplate
+						s.handleGitignoreGetTemplateRequest(args, w, r)
+						return
+					}
+				}
+			case 'i': // Prefix: "i"
+				if prefix := "i"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+					elem = elem[len(prefix):]
+				} else {
+					break
+				}
+
+				if len(elem) == 0 {
+					s.handleIssuesListRequest(args, w, r)
+					return
+				}
+				switch elem[0] {
+				case 'n': // Prefix: "nstallation/repositories"
+					if prefix := "nstallation/repositories"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+						elem = elem[len(prefix):]
+					} else {
+						break
+					}
+
+					// Leaf: AppsListReposAccessibleToInstallation
+					s.handleAppsListReposAccessibleToInstallationRequest(args, w, r)
+					return
+				case 's': // Prefix: "ssues"
+					if prefix := "ssues"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+						elem = elem[len(prefix):]
+					} else {
+						break
+					}
+
+					// Leaf: IssuesList
+					s.handleIssuesListRequest(args, w, r)
+					return
+				}
+			case 'l': // Prefix: "licenses"
+				if prefix := "licenses"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+					elem = elem[len(prefix):]
+				} else {
+					break
+				}
+
+				if len(elem) == 0 {
+					s.handleLicensesGetAllCommonlyUsedRequest(args, w, r)
+					return
+				}
+				switch elem[0] {
+				case '/': // Prefix: "/"
+					if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+						elem = elem[len(prefix):]
+					} else {
+						break
+					}
+
+					// Param: "license"
+					// Leaf parameter
+					args["license"] = elem
+
+					// Leaf: LicensesGet
+					s.handleLicensesGetRequest(args, w, r)
+					return
+				}
+			case 'm': // Prefix: "m"
+				if prefix := "m"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+					elem = elem[len(prefix):]
+				} else {
+					break
+				}
+
+				if len(elem) == 0 {
+					s.handleMetaGetRequest(args, w, r)
+					return
+				}
+				switch elem[0] {
+				case 'a': // Prefix: "arketplace_listing/"
+					if prefix := "arketplace_listing/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+						elem = elem[len(prefix):]
+					} else {
+						break
+					}
+
+					if len(elem) == 0 {
+						s.handleAppsGetSubscriptionPlanForAccountStubbedRequest(args, w, r)
+						return
+					}
+					switch elem[0] {
+					case 'a': // Prefix: "accounts/"
+						if prefix := "accounts/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+							elem = elem[len(prefix):]
+						} else {
+							break
+						}
+
+						// Param: "account_id"
+						// Leaf parameter
+						args["account_id"] = elem
+
+						// Leaf: AppsGetSubscriptionPlanForAccount
+						s.handleAppsGetSubscriptionPlanForAccountRequest(args, w, r)
+						return
+					case 'p': // Prefix: "plans"
+						if prefix := "plans"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+							elem = elem[len(prefix):]
+						} else {
+							break
+						}
+
+						if len(elem) == 0 {
+							s.handleAppsListPlansRequest(args, w, r)
+							return
+						}
+						switch elem[0] {
+						case '/': // Prefix: "/"
+							if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+								elem = elem[len(prefix):]
+							} else {
+								break
+							}
+
+							// Param: "plan_id"
+							// Match until one of "/"
+							idx := strings.IndexAny(elem, "/")
+							if idx > 0 {
+								args["plan_id"] = elem[:idx]
+								elem = elem[idx:]
+
+								if len(elem) == 0 {
+									break
+								}
+								switch elem[0] {
+								case '/': // Prefix: "/accounts"
+									if prefix := "/accounts"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+										elem = elem[len(prefix):]
+									} else {
+										break
+									}
+
+									// Leaf: AppsListAccountsForPlan
+									s.handleAppsListAccountsForPlanRequest(args, w, r)
+									return
+								}
+							}
+						}
+					case 's': // Prefix: "stubbed/"
+						if prefix := "stubbed/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+							elem = elem[len(prefix):]
+						} else {
+							break
+						}
+
+						if len(elem) == 0 {
+							s.handleAppsListAccountsForPlanStubbedRequest(args, w, r)
+							return
+						}
+						switch elem[0] {
+						case 'a': // Prefix: "accounts/"
+							if prefix := "accounts/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+								elem = elem[len(prefix):]
+							} else {
+								break
+							}
+
+							// Param: "account_id"
+							// Leaf parameter
+							args["account_id"] = elem
+
+							// Leaf: AppsGetSubscriptionPlanForAccountStubbed
+							s.handleAppsGetSubscriptionPlanForAccountStubbedRequest(args, w, r)
+							return
+						case 'p': // Prefix: "plans"
+							if prefix := "plans"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+								elem = elem[len(prefix):]
+							} else {
+								break
+							}
+
+							if len(elem) == 0 {
+								s.handleAppsListPlansStubbedRequest(args, w, r)
+								return
+							}
+							switch elem[0] {
+							case '/': // Prefix: "/"
+								if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+									elem = elem[len(prefix):]
+								} else {
+									break
+								}
+
+								// Param: "plan_id"
+								// Match until one of "/"
+								idx := strings.IndexAny(elem, "/")
+								if idx > 0 {
+									args["plan_id"] = elem[:idx]
+									elem = elem[idx:]
+
+									if len(elem) == 0 {
+										break
+									}
+									switch elem[0] {
+									case '/': // Prefix: "/accounts"
+										if prefix := "/accounts"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+											elem = elem[len(prefix):]
+										} else {
+											break
+										}
+
+										// Leaf: AppsListAccountsForPlanStubbed
+										s.handleAppsListAccountsForPlanStubbedRequest(args, w, r)
+										return
+									}
+								}
+							}
+						}
+					}
+				case 'e': // Prefix: "eta"
+					if prefix := "eta"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+						elem = elem[len(prefix):]
+					} else {
+						break
+					}
+
+					// Leaf: MetaGet
+					s.handleMetaGetRequest(args, w, r)
+					return
+				}
+			case 'n': // Prefix: "n"
+				if prefix := "n"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+					elem = elem[len(prefix):]
+				} else {
+					break
+				}
+
+				if len(elem) == 0 {
+					s.handleActivityListPublicEventsForRepoNetworkRequest(args, w, r)
+					return
+				}
+				switch elem[0] {
+				case 'e': // Prefix: "etworks/"
+					if prefix := "etworks/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+						elem = elem[len(prefix):]
+					} else {
+						break
+					}
+
+					// Param: "owner"
+					// Match until one of "/"
+					idx := strings.IndexAny(elem, "/")
+					if idx > 0 {
+						args["owner"] = elem[:idx]
+						elem = elem[idx:]
+
+						if len(elem) == 0 {
+							break
+						}
+						switch elem[0] {
+						case '/': // Prefix: "/"
+							if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+								elem = elem[len(prefix):]
+							} else {
+								break
+							}
+
+							// Param: "repo"
+							// Match until one of "/"
+							idx := strings.IndexAny(elem, "/")
+							if idx > 0 {
+								args["repo"] = elem[:idx]
+								elem = elem[idx:]
+
+								if len(elem) == 0 {
+									break
+								}
+								switch elem[0] {
+								case '/': // Prefix: "/events"
+									if prefix := "/events"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+										elem = elem[len(prefix):]
+									} else {
+										break
+									}
+
+									// Leaf: ActivityListPublicEventsForRepoNetwork
+									s.handleActivityListPublicEventsForRepoNetworkRequest(args, w, r)
+									return
+								}
+							}
+						}
+					}
+				case 'o': // Prefix: "otifications"
+					if prefix := "otifications"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+						elem = elem[len(prefix):]
+					} else {
+						break
+					}
+
+					if len(elem) == 0 {
+						s.handleActivityListNotificationsForAuthenticatedUserRequest(args, w, r)
+						return
+					}
+					switch elem[0] {
+					case '/': // Prefix: "/threads/"
+						if prefix := "/threads/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+							elem = elem[len(prefix):]
+						} else {
+							break
+						}
+
+						// Param: "thread_id"
+						// Match until one of "/"
+						idx := strings.IndexAny(elem, "/")
+						if idx > 0 {
+							args["thread_id"] = elem[:idx]
+							elem = elem[idx:]
+
+							if len(elem) == 0 {
+								s.handleActivityGetThreadRequest(args, w, r)
+								return
+							}
+							switch elem[0] {
+							case '/': // Prefix: "/subscription"
+								if prefix := "/subscription"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+									elem = elem[len(prefix):]
+								} else {
+									break
+								}
+
+								// Leaf: ActivityGetThreadSubscriptionForAuthenticatedUser
+								s.handleActivityGetThreadSubscriptionForAuthenticatedUserRequest(args, w, r)
+								return
+							}
+						}
+					}
+				}
+			case 'o': // Prefix: "org"
+				if prefix := "org"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+					elem = elem[len(prefix):]
+				} else {
+					break
+				}
+
+				if len(elem) == 0 {
+					s.handleOrgsListRequest(args, w, r)
+					return
+				}
+				switch elem[0] {
+				case 'a': // Prefix: "anizations"
+					if prefix := "anizations"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+						elem = elem[len(prefix):]
+					} else {
+						break
+					}
+
+					// Leaf: OrgsList
+					s.handleOrgsListRequest(args, w, r)
+					return
+				case 's': // Prefix: "s/"
+					if prefix := "s/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+						elem = elem[len(prefix):]
+					} else {
+						break
+					}
+
+					// Param: "org"
+					// Match until one of "/"
+					idx := strings.IndexAny(elem, "/")
+					if idx > 0 {
+						args["org"] = elem[:idx]
+						elem = elem[idx:]
+
+						if len(elem) == 0 {
+							s.handleOrgsGetRequest(args, w, r)
+							return
+						}
+						switch elem[0] {
+						case '/': // Prefix: "/"
+							if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+								elem = elem[len(prefix):]
+							} else {
+								break
+							}
+
+							if len(elem) == 0 {
+								s.handleActivityListPublicOrgEventsRequest(args, w, r)
+								return
+							}
+							switch elem[0] {
+							case 'a': // Prefix: "a"
+								if prefix := "a"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+									elem = elem[len(prefix):]
+								} else {
+									break
+								}
+
+								if len(elem) == 0 {
+									s.handleOrgsGetAuditLogRequest(args, w, r)
+									return
+								}
+								switch elem[0] {
+								case 'c': // Prefix: "ctions/"
+									if prefix := "ctions/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+										elem = elem[len(prefix):]
+									} else {
+										break
+									}
+
+									if len(elem) == 0 {
+										s.handleActionsGetOrgPublicKeyRequest(args, w, r)
+										return
+									}
+									switch elem[0] {
+									case 'p': // Prefix: "permissions"
+										if prefix := "permissions"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+											elem = elem[len(prefix):]
+										} else {
+											break
+										}
+
+										if len(elem) == 0 {
+											s.handleActionsGetGithubActionsPermissionsOrganizationRequest(args, w, r)
+											return
+										}
+										switch elem[0] {
+										case '/': // Prefix: "/"
+											if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+												elem = elem[len(prefix):]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												s.handleActionsListSelectedRepositoriesEnabledGithubActionsOrganizationRequest(args, w, r)
+												return
+											}
+											switch elem[0] {
+											case 'r': // Prefix: "repositories"
+												if prefix := "repositories"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+													elem = elem[len(prefix):]
+												} else {
+													break
+												}
+
+												// Leaf: ActionsListSelectedRepositoriesEnabledGithubActionsOrganization
+												s.handleActionsListSelectedRepositoriesEnabledGithubActionsOrganizationRequest(args, w, r)
+												return
+											case 's': // Prefix: "selected-actions"
+												if prefix := "selected-actions"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+													elem = elem[len(prefix):]
+												} else {
+													break
+												}
+
+												// Leaf: ActionsGetAllowedActionsOrganization
+												s.handleActionsGetAllowedActionsOrganizationRequest(args, w, r)
+												return
+											}
+										}
+									case 'r': // Prefix: "runner"
+										if prefix := "runner"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+											elem = elem[len(prefix):]
+										} else {
+											break
+										}
+
+										if len(elem) == 0 {
+											s.handleActionsGetSelfHostedRunnerGroupForOrgRequest(args, w, r)
+											return
+										}
+										switch elem[0] {
+										case '-': // Prefix: "-groups"
+											if prefix := "-groups"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+												elem = elem[len(prefix):]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												s.handleActionsListSelfHostedRunnerGroupsForOrgRequest(args, w, r)
+												return
+											}
+											switch elem[0] {
+											case '/': // Prefix: "/"
+												if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+													elem = elem[len(prefix):]
+												} else {
+													break
+												}
+
+												// Param: "runner_group_id"
+												// Match until one of "/"
+												idx := strings.IndexAny(elem, "/")
+												if idx > 0 {
+													args["runner_group_id"] = elem[:idx]
+													elem = elem[idx:]
+
+													if len(elem) == 0 {
+														s.handleActionsGetSelfHostedRunnerGroupForOrgRequest(args, w, r)
+														return
+													}
+													switch elem[0] {
+													case '/': // Prefix: "/r"
+														if prefix := "/r"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+															elem = elem[len(prefix):]
+														} else {
+															break
+														}
+
+														if len(elem) == 0 {
+															s.handleActionsListSelfHostedRunnersInGroupForOrgRequest(args, w, r)
+															return
+														}
+														switch elem[0] {
+														case 'e': // Prefix: "epositories"
+															if prefix := "epositories"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																elem = elem[len(prefix):]
+															} else {
+																break
+															}
+
+															// Leaf: ActionsListRepoAccessToSelfHostedRunnerGroupInOrg
+															s.handleActionsListRepoAccessToSelfHostedRunnerGroupInOrgRequest(args, w, r)
+															return
+														case 'u': // Prefix: "unners"
+															if prefix := "unners"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																elem = elem[len(prefix):]
+															} else {
+																break
+															}
+
+															// Leaf: ActionsListSelfHostedRunnersInGroupForOrg
+															s.handleActionsListSelfHostedRunnersInGroupForOrgRequest(args, w, r)
+															return
+														}
+													}
+												}
+											}
+										case 's': // Prefix: "s"
+											if prefix := "s"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+												elem = elem[len(prefix):]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												s.handleActionsListSelfHostedRunnersForOrgRequest(args, w, r)
+												return
+											}
+											switch elem[0] {
+											case '/': // Prefix: "/"
+												if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+													elem = elem[len(prefix):]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													break
+												}
+												switch elem[0] {
+												case 'd': // Prefix: "downloads"
+													if prefix := "downloads"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+														elem = elem[len(prefix):]
+													} else {
+														break
+													}
+
+													// Leaf: ActionsListRunnerApplicationsForOrg
+													s.handleActionsListRunnerApplicationsForOrgRequest(args, w, r)
+													return
+												}
+												// Param: "runner_id"
+												// Leaf parameter
+												args["runner_id"] = elem
+
+												// Leaf: ActionsGetSelfHostedRunnerForOrg
+												s.handleActionsGetSelfHostedRunnerForOrgRequest(args, w, r)
+												return
+											}
+										}
+									case 's': // Prefix: "secrets"
+										if prefix := "secrets"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+											elem = elem[len(prefix):]
+										} else {
+											break
+										}
+
+										if len(elem) == 0 {
+											s.handleActionsListOrgSecretsRequest(args, w, r)
+											return
+										}
+										switch elem[0] {
+										case '/': // Prefix: "/"
+											if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+												elem = elem[len(prefix):]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												s.handleActionsGetOrgSecretRequest(args, w, r)
+												return
+											}
+											switch elem[0] {
+											case 'p': // Prefix: "public-key"
+												if prefix := "public-key"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+													elem = elem[len(prefix):]
+												} else {
+													break
+												}
+
+												// Leaf: ActionsGetOrgPublicKey
+												s.handleActionsGetOrgPublicKeyRequest(args, w, r)
+												return
+											}
+											// Param: "secret_name"
+											// Match until one of "/"
+											idx := strings.IndexAny(elem, "/")
+											if idx > 0 {
+												args["secret_name"] = elem[:idx]
+												elem = elem[idx:]
+
+												if len(elem) == 0 {
+													s.handleActionsGetOrgSecretRequest(args, w, r)
+													return
+												}
+												switch elem[0] {
+												case '/': // Prefix: "/repositories"
+													if prefix := "/repositories"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+														elem = elem[len(prefix):]
+													} else {
+														break
+													}
+
+													// Leaf: ActionsListSelectedReposForOrgSecret
+													s.handleActionsListSelectedReposForOrgSecretRequest(args, w, r)
+													return
+												}
+											}
+										}
+									}
+								case 'u': // Prefix: "udit-log"
+									if prefix := "udit-log"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+										elem = elem[len(prefix):]
+									} else {
+										break
+									}
+
+									// Leaf: OrgsGetAuditLog
+									s.handleOrgsGetAuditLogRequest(args, w, r)
+									return
+								}
+							case 'b': // Prefix: "blocks"
+								if prefix := "blocks"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+									elem = elem[len(prefix):]
+								} else {
+									break
+								}
+
+								if len(elem) == 0 {
+									s.handleOrgsListBlockedUsersRequest(args, w, r)
+									return
+								}
+								switch elem[0] {
+								case '/': // Prefix: "/"
+									if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+										elem = elem[len(prefix):]
+									} else {
+										break
+									}
+
+									// Param: "username"
+									// Leaf parameter
+									args["username"] = elem
+
+									// Leaf: OrgsCheckBlockedUser
+									s.handleOrgsCheckBlockedUserRequest(args, w, r)
+									return
+								}
+							case 'c': // Prefix: "credential-authorizations"
+								if prefix := "credential-authorizations"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+									elem = elem[len(prefix):]
+								} else {
+									break
+								}
+
+								// Leaf: OrgsListSamlSSOAuthorizations
+								s.handleOrgsListSamlSSOAuthorizationsRequest(args, w, r)
+								return
+							case 'e': // Prefix: "events"
+								if prefix := "events"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+									elem = elem[len(prefix):]
+								} else {
+									break
+								}
+
+								// Leaf: ActivityListPublicOrgEvents
+								s.handleActivityListPublicOrgEventsRequest(args, w, r)
+								return
+							case 'f': // Prefix: "failed_invitations"
+								if prefix := "failed_invitations"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+									elem = elem[len(prefix):]
+								} else {
+									break
+								}
+
+								// Leaf: OrgsListFailedInvitations
+								s.handleOrgsListFailedInvitationsRequest(args, w, r)
+								return
+							case 'h': // Prefix: "hooks"
+								if prefix := "hooks"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+									elem = elem[len(prefix):]
+								} else {
+									break
+								}
+
+								if len(elem) == 0 {
+									s.handleOrgsListWebhooksRequest(args, w, r)
+									return
+								}
+								switch elem[0] {
+								case '/': // Prefix: "/"
+									if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+										elem = elem[len(prefix):]
+									} else {
+										break
+									}
+
+									// Param: "hook_id"
+									// Match until one of "/"
+									idx := strings.IndexAny(elem, "/")
+									if idx > 0 {
+										args["hook_id"] = elem[:idx]
+										elem = elem[idx:]
+
+										if len(elem) == 0 {
+											s.handleOrgsGetWebhookRequest(args, w, r)
+											return
+										}
+										switch elem[0] {
+										case '/': // Prefix: "/"
+											if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+												elem = elem[len(prefix):]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												s.handleOrgsGetWebhookDeliveryRequest(args, w, r)
+												return
+											}
+											switch elem[0] {
+											case 'c': // Prefix: "config"
+												if prefix := "config"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+													elem = elem[len(prefix):]
+												} else {
+													break
+												}
+
+												// Leaf: OrgsGetWebhookConfigForOrg
+												s.handleOrgsGetWebhookConfigForOrgRequest(args, w, r)
+												return
+											case 'd': // Prefix: "deliveries"
+												if prefix := "deliveries"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+													elem = elem[len(prefix):]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													s.handleOrgsListWebhookDeliveriesRequest(args, w, r)
+													return
+												}
+												switch elem[0] {
+												case '/': // Prefix: "/"
+													if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+														elem = elem[len(prefix):]
+													} else {
+														break
+													}
+
+													// Param: "delivery_id"
+													// Leaf parameter
+													args["delivery_id"] = elem
+
+													// Leaf: OrgsGetWebhookDelivery
+													s.handleOrgsGetWebhookDeliveryRequest(args, w, r)
+													return
+												}
+											}
+										}
+									}
+								}
+							case 'i': // Prefix: "i"
+								if prefix := "i"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+									elem = elem[len(prefix):]
+								} else {
+									break
+								}
+
+								if len(elem) == 0 {
+									s.handleOrgsListInvitationTeamsRequest(args, w, r)
+									return
+								}
+								switch elem[0] {
+								case 'n': // Prefix: "nvitations"
+									if prefix := "nvitations"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+										elem = elem[len(prefix):]
+									} else {
+										break
+									}
+
+									if len(elem) == 0 {
+										s.handleOrgsListPendingInvitationsRequest(args, w, r)
+										return
+									}
+									switch elem[0] {
+									case '/': // Prefix: "/"
+										if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+											elem = elem[len(prefix):]
+										} else {
+											break
+										}
+
+										// Param: "invitation_id"
+										// Match until one of "/"
+										idx := strings.IndexAny(elem, "/")
+										if idx > 0 {
+											args["invitation_id"] = elem[:idx]
+											elem = elem[idx:]
+
+											if len(elem) == 0 {
+												break
+											}
+											switch elem[0] {
+											case '/': // Prefix: "/teams"
+												if prefix := "/teams"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+													elem = elem[len(prefix):]
+												} else {
+													break
+												}
+
+												// Leaf: OrgsListInvitationTeams
+												s.handleOrgsListInvitationTeamsRequest(args, w, r)
+												return
+											}
+										}
+									}
+								case 's': // Prefix: "ssues"
+									if prefix := "ssues"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+										elem = elem[len(prefix):]
+									} else {
+										break
+									}
+
+									// Leaf: IssuesListForOrg
+									s.handleIssuesListForOrgRequest(args, w, r)
+									return
+								}
+							case 'm': // Prefix: "m"
+								if prefix := "m"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+									elem = elem[len(prefix):]
+								} else {
+									break
+								}
+
+								if len(elem) == 0 {
+									s.handleOrgsCheckMembershipForUserRequest(args, w, r)
+									return
+								}
+								switch elem[0] {
+								case 'e': // Prefix: "embers"
+									if prefix := "embers"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+										elem = elem[len(prefix):]
+									} else {
+										break
+									}
+
+									if len(elem) == 0 {
+										s.handleOrgsListMembersRequest(args, w, r)
+										return
+									}
+									switch elem[0] {
+									case '/': // Prefix: "/"
+										if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+											elem = elem[len(prefix):]
+										} else {
+											break
+										}
+
+										// Param: "username"
+										// Leaf parameter
+										args["username"] = elem
+
+										// Leaf: OrgsCheckMembershipForUser
+										s.handleOrgsCheckMembershipForUserRequest(args, w, r)
+										return
+									case 'h': // Prefix: "hips/"
+										if prefix := "hips/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+											elem = elem[len(prefix):]
+										} else {
+											break
+										}
+
+										// Param: "username"
+										// Leaf parameter
+										args["username"] = elem
+
+										// Leaf: OrgsGetMembershipForUser
+										s.handleOrgsGetMembershipForUserRequest(args, w, r)
+										return
+									}
+								case 'i': // Prefix: "igrations"
+									if prefix := "igrations"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+										elem = elem[len(prefix):]
+									} else {
+										break
+									}
+
+									if len(elem) == 0 {
+										s.handleMigrationsListForOrgRequest(args, w, r)
+										return
+									}
+									switch elem[0] {
+									case '/': // Prefix: "/"
+										if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+											elem = elem[len(prefix):]
+										} else {
+											break
+										}
+
+										// Param: "migration_id"
+										// Match until one of "/"
+										idx := strings.IndexAny(elem, "/")
+										if idx > 0 {
+											args["migration_id"] = elem[:idx]
+											elem = elem[idx:]
+
+											if len(elem) == 0 {
+												s.handleMigrationsGetStatusForOrgRequest(args, w, r)
+												return
+											}
+											switch elem[0] {
+											case '/': // Prefix: "/"
+												if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+													elem = elem[len(prefix):]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													s.handleMigrationsListReposForOrgRequest(args, w, r)
+													return
+												}
+												switch elem[0] {
+												case 'a': // Prefix: "archive"
+													if prefix := "archive"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+														elem = elem[len(prefix):]
+													} else {
+														break
+													}
+
+													// Leaf: MigrationsDownloadArchiveForOrg
+													s.handleMigrationsDownloadArchiveForOrgRequest(args, w, r)
+													return
+												case 'r': // Prefix: "repositories"
+													if prefix := "repositories"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+														elem = elem[len(prefix):]
+													} else {
+														break
+													}
+
+													// Leaf: MigrationsListReposForOrg
+													s.handleMigrationsListReposForOrgRequest(args, w, r)
+													return
+												}
+											}
+										}
+									}
+								}
+							case 'o': // Prefix: "outside_collaborators"
+								if prefix := "outside_collaborators"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+									elem = elem[len(prefix):]
+								} else {
+									break
+								}
+
+								// Leaf: OrgsListOutsideCollaborators
+								s.handleOrgsListOutsideCollaboratorsRequest(args, w, r)
+								return
+							case 'p': // Prefix: "p"
+								if prefix := "p"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+									elem = elem[len(prefix):]
+								} else {
+									break
+								}
+
+								if len(elem) == 0 {
+									s.handlePackagesGetAllPackageVersionsForPackageOwnedByOrgRequest(args, w, r)
+									return
+								}
+								switch elem[0] {
+								case 'a': // Prefix: "ackages"
+									if prefix := "ackages"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+										elem = elem[len(prefix):]
+									} else {
+										break
+									}
+
+									if len(elem) == 0 {
+										s.handlePackagesListPackagesForOrganizationRequest(args, w, r)
+										return
+									}
+									switch elem[0] {
+									case '/': // Prefix: "/"
+										if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+											elem = elem[len(prefix):]
+										} else {
+											break
+										}
+
+										// Param: "package_type"
+										// Match until one of "/"
+										idx := strings.IndexAny(elem, "/")
+										if idx > 0 {
+											args["package_type"] = elem[:idx]
+											elem = elem[idx:]
+
+											if len(elem) == 0 {
+												break
+											}
+											switch elem[0] {
+											case '/': // Prefix: "/"
+												if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+													elem = elem[len(prefix):]
+												} else {
+													break
+												}
+
+												// Param: "package_name"
+												// Match until one of "/"
+												idx := strings.IndexAny(elem, "/")
+												if idx > 0 {
+													args["package_name"] = elem[:idx]
+													elem = elem[idx:]
+
+													if len(elem) == 0 {
+														s.handlePackagesGetPackageForOrganizationRequest(args, w, r)
+														return
+													}
+													switch elem[0] {
+													case '/': // Prefix: "/versions"
+														if prefix := "/versions"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+															elem = elem[len(prefix):]
+														} else {
+															break
+														}
+
+														if len(elem) == 0 {
+															s.handlePackagesGetAllPackageVersionsForPackageOwnedByOrgRequest(args, w, r)
+															return
+														}
+														switch elem[0] {
+														case '/': // Prefix: "/"
+															if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																elem = elem[len(prefix):]
+															} else {
+																break
+															}
+
+															// Param: "package_version_id"
+															// Leaf parameter
+															args["package_version_id"] = elem
+
+															// Leaf: PackagesGetPackageVersionForOrganization
+															s.handlePackagesGetPackageVersionForOrganizationRequest(args, w, r)
+															return
+														}
+													}
+												}
+											}
+										}
+									}
+								case 'r': // Prefix: "rojects"
+									if prefix := "rojects"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+										elem = elem[len(prefix):]
+									} else {
+										break
+									}
+
+									// Leaf: ProjectsListForOrg
+									s.handleProjectsListForOrgRequest(args, w, r)
+									return
+								case 'u': // Prefix: "ublic_members"
+									if prefix := "ublic_members"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+										elem = elem[len(prefix):]
+									} else {
+										break
+									}
+
+									if len(elem) == 0 {
+										s.handleOrgsListPublicMembersRequest(args, w, r)
+										return
+									}
+									switch elem[0] {
+									case '/': // Prefix: "/"
+										if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+											elem = elem[len(prefix):]
+										} else {
+											break
+										}
+
+										// Param: "username"
+										// Leaf parameter
+										args["username"] = elem
+
+										// Leaf: OrgsCheckPublicMembershipForUser
+										s.handleOrgsCheckPublicMembershipForUserRequest(args, w, r)
+										return
+									}
+								}
+							case 'r': // Prefix: "repos"
+								if prefix := "repos"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+									elem = elem[len(prefix):]
+								} else {
+									break
+								}
+
+								// Leaf: ReposListForOrg
+								s.handleReposListForOrgRequest(args, w, r)
+								return
+							case 's': // Prefix: "se"
+								if prefix := "se"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+									elem = elem[len(prefix):]
+								} else {
+									break
+								}
+
+								if len(elem) == 0 {
+									s.handleSecretScanningListAlertsForOrgRequest(args, w, r)
+									return
+								}
+								switch elem[0] {
+								case 'c': // Prefix: "cret-scanning/alerts"
+									if prefix := "cret-scanning/alerts"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+										elem = elem[len(prefix):]
+									} else {
+										break
+									}
+
+									// Leaf: SecretScanningListAlertsForOrg
+									s.handleSecretScanningListAlertsForOrgRequest(args, w, r)
+									return
+								case 't': // Prefix: "ttings/billing/"
+									if prefix := "ttings/billing/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+										elem = elem[len(prefix):]
+									} else {
+										break
+									}
+
+									if len(elem) == 0 {
+										s.handleBillingGetGithubPackagesBillingOrgRequest(args, w, r)
+										return
+									}
+									switch elem[0] {
+									case 'a': // Prefix: "actions"
+										if prefix := "actions"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+											elem = elem[len(prefix):]
+										} else {
+											break
+										}
+
+										// Leaf: BillingGetGithubActionsBillingOrg
+										s.handleBillingGetGithubActionsBillingOrgRequest(args, w, r)
+										return
+									case 'p': // Prefix: "packages"
+										if prefix := "packages"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+											elem = elem[len(prefix):]
+										} else {
+											break
+										}
+
+										// Leaf: BillingGetGithubPackagesBillingOrg
+										s.handleBillingGetGithubPackagesBillingOrgRequest(args, w, r)
+										return
+									case 's': // Prefix: "shared-storage"
+										if prefix := "shared-storage"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+											elem = elem[len(prefix):]
+										} else {
+											break
+										}
+
+										// Leaf: BillingGetSharedStorageBillingOrg
+										s.handleBillingGetSharedStorageBillingOrgRequest(args, w, r)
+										return
+									}
+								}
+							case 't': // Prefix: "team"
+								if prefix := "team"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+									elem = elem[len(prefix):]
+								} else {
+									break
+								}
+
+								if len(elem) == 0 {
+									s.handleTeamsListIdpGroupsForOrgRequest(args, w, r)
+									return
+								}
+								switch elem[0] {
+								case '-': // Prefix: "-sync/groups"
+									if prefix := "-sync/groups"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+										elem = elem[len(prefix):]
+									} else {
+										break
+									}
+
+									// Leaf: TeamsListIdpGroupsForOrg
+									s.handleTeamsListIdpGroupsForOrgRequest(args, w, r)
+									return
+								case 's': // Prefix: "s"
+									if prefix := "s"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+										elem = elem[len(prefix):]
+									} else {
+										break
+									}
+
+									if len(elem) == 0 {
+										s.handleTeamsListRequest(args, w, r)
+										return
+									}
+									switch elem[0] {
+									case '/': // Prefix: "/"
+										if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+											elem = elem[len(prefix):]
+										} else {
+											break
+										}
+
+										// Param: "team_slug"
+										// Match until one of "/"
+										idx := strings.IndexAny(elem, "/")
+										if idx > 0 {
+											args["team_slug"] = elem[:idx]
+											elem = elem[idx:]
+
+											if len(elem) == 0 {
+												s.handleTeamsGetByNameRequest(args, w, r)
+												return
+											}
+											switch elem[0] {
+											case '/': // Prefix: "/"
+												if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+													elem = elem[len(prefix):]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													s.handleTeamsCheckPermissionsForProjectInOrgRequest(args, w, r)
+													return
+												}
+												switch elem[0] {
+												case 'd': // Prefix: "discussions"
+													if prefix := "discussions"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+														elem = elem[len(prefix):]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														s.handleTeamsListDiscussionsInOrgRequest(args, w, r)
+														return
+													}
+													switch elem[0] {
+													case '/': // Prefix: "/"
+														if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+															elem = elem[len(prefix):]
+														} else {
+															break
+														}
+
+														// Param: "discussion_number"
+														// Match until one of "/"
+														idx := strings.IndexAny(elem, "/")
+														if idx > 0 {
+															args["discussion_number"] = elem[:idx]
+															elem = elem[idx:]
+
+															if len(elem) == 0 {
+																s.handleTeamsGetDiscussionInOrgRequest(args, w, r)
+																return
+															}
+															switch elem[0] {
+															case '/': // Prefix: "/"
+																if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																	elem = elem[len(prefix):]
+																} else {
+																	break
+																}
+
+																if len(elem) == 0 {
+																	s.handleReactionsListForTeamDiscussionInOrgRequest(args, w, r)
+																	return
+																}
+																switch elem[0] {
+																case 'c': // Prefix: "comments"
+																	if prefix := "comments"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																		elem = elem[len(prefix):]
+																	} else {
+																		break
+																	}
+
+																	if len(elem) == 0 {
+																		s.handleTeamsListDiscussionCommentsInOrgRequest(args, w, r)
+																		return
+																	}
+																	switch elem[0] {
+																	case '/': // Prefix: "/"
+																		if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																			elem = elem[len(prefix):]
+																		} else {
+																			break
+																		}
+
+																		// Param: "comment_number"
+																		// Match until one of "/"
+																		idx := strings.IndexAny(elem, "/")
+																		if idx > 0 {
+																			args["comment_number"] = elem[:idx]
+																			elem = elem[idx:]
+
+																			if len(elem) == 0 {
+																				s.handleTeamsGetDiscussionCommentInOrgRequest(args, w, r)
+																				return
+																			}
+																			switch elem[0] {
+																			case '/': // Prefix: "/reactions"
+																				if prefix := "/reactions"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																					elem = elem[len(prefix):]
+																				} else {
+																					break
+																				}
+
+																				// Leaf: ReactionsListForTeamDiscussionCommentInOrg
+																				s.handleReactionsListForTeamDiscussionCommentInOrgRequest(args, w, r)
+																				return
+																			}
+																		}
+																	}
+																case 'r': // Prefix: "reactions"
+																	if prefix := "reactions"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																		elem = elem[len(prefix):]
+																	} else {
+																		break
+																	}
+
+																	// Leaf: ReactionsListForTeamDiscussionInOrg
+																	s.handleReactionsListForTeamDiscussionInOrgRequest(args, w, r)
+																	return
+																}
+															}
+														}
+													}
+												case 'i': // Prefix: "invitations"
+													if prefix := "invitations"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+														elem = elem[len(prefix):]
+													} else {
+														break
+													}
+
+													// Leaf: TeamsListPendingInvitationsInOrg
+													s.handleTeamsListPendingInvitationsInOrgRequest(args, w, r)
+													return
+												case 'm': // Prefix: "members"
+													if prefix := "members"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+														elem = elem[len(prefix):]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														s.handleTeamsListMembersInOrgRequest(args, w, r)
+														return
+													}
+													switch elem[0] {
+													case 'h': // Prefix: "hips/"
+														if prefix := "hips/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+															elem = elem[len(prefix):]
+														} else {
+															break
+														}
+
+														// Param: "username"
+														// Leaf parameter
+														args["username"] = elem
+
+														// Leaf: TeamsGetMembershipForUserInOrg
+														s.handleTeamsGetMembershipForUserInOrgRequest(args, w, r)
+														return
+													}
+												case 'p': // Prefix: "projects"
+													if prefix := "projects"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+														elem = elem[len(prefix):]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														s.handleTeamsListProjectsInOrgRequest(args, w, r)
+														return
+													}
+													switch elem[0] {
+													case '/': // Prefix: "/"
+														if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+															elem = elem[len(prefix):]
+														} else {
+															break
+														}
+
+														// Param: "project_id"
+														// Leaf parameter
+														args["project_id"] = elem
+
+														// Leaf: TeamsCheckPermissionsForProjectInOrg
+														s.handleTeamsCheckPermissionsForProjectInOrgRequest(args, w, r)
+														return
+													}
+												case 'r': // Prefix: "repos"
+													if prefix := "repos"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+														elem = elem[len(prefix):]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														s.handleTeamsListReposInOrgRequest(args, w, r)
+														return
+													}
+													switch elem[0] {
+													case '/': // Prefix: "/"
+														if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+															elem = elem[len(prefix):]
+														} else {
+															break
+														}
+
+														// Param: "owner"
+														// Match until one of "/"
+														idx := strings.IndexAny(elem, "/")
+														if idx > 0 {
+															args["owner"] = elem[:idx]
+															elem = elem[idx:]
+
+															if len(elem) == 0 {
+																break
+															}
+															switch elem[0] {
+															case '/': // Prefix: "/"
+																if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																	elem = elem[len(prefix):]
+																} else {
+																	break
+																}
+
+																// Param: "repo"
+																// Leaf parameter
+																args["repo"] = elem
+
+																// Leaf: TeamsCheckPermissionsForRepoInOrg
+																s.handleTeamsCheckPermissionsForRepoInOrgRequest(args, w, r)
+																return
+															}
+														}
+													}
+												case 't': // Prefix: "team"
+													if prefix := "team"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+														elem = elem[len(prefix):]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														s.handleTeamsListIdpGroupsInOrgRequest(args, w, r)
+														return
+													}
+													switch elem[0] {
+													case '-': // Prefix: "-sync/group-mappings"
+														if prefix := "-sync/group-mappings"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+															elem = elem[len(prefix):]
+														} else {
+															break
+														}
+
+														// Leaf: TeamsListIdpGroupsInOrg
+														s.handleTeamsListIdpGroupsInOrgRequest(args, w, r)
+														return
+													case 's': // Prefix: "s"
+														if prefix := "s"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+															elem = elem[len(prefix):]
+														} else {
+															break
+														}
+
+														// Leaf: TeamsListChildInOrg
+														s.handleTeamsListChildInOrgRequest(args, w, r)
+														return
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			case 'p': // Prefix: "projects/"
+				if prefix := "projects/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+					elem = elem[len(prefix):]
+				} else {
+					break
+				}
+
+				if len(elem) == 0 {
+					break
+				}
+				switch elem[0] {
+				case 'c': // Prefix: "columns/"
+					if prefix := "columns/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+						elem = elem[len(prefix):]
+					} else {
+						break
+					}
+
+					if len(elem) == 0 {
+						s.handleProjectsGetColumnRequest(args, w, r)
+						return
+					}
+					switch elem[0] {
+					case 'c': // Prefix: "cards/"
+						if prefix := "cards/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+							elem = elem[len(prefix):]
+						} else {
+							break
+						}
+
+						// Param: "card_id"
+						// Leaf parameter
+						args["card_id"] = elem
+
+						// Leaf: ProjectsGetCard
+						s.handleProjectsGetCardRequest(args, w, r)
+						return
+					}
+					// Param: "column_id"
+					// Match until one of "/"
+					idx := strings.IndexAny(elem, "/")
+					if idx > 0 {
+						args["column_id"] = elem[:idx]
+						elem = elem[idx:]
+
+						if len(elem) == 0 {
+							s.handleProjectsGetColumnRequest(args, w, r)
+							return
+						}
+						switch elem[0] {
+						case '/': // Prefix: "/cards"
+							if prefix := "/cards"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+								elem = elem[len(prefix):]
+							} else {
+								break
+							}
+
+							// Leaf: ProjectsListCards
+							s.handleProjectsListCardsRequest(args, w, r)
+							return
+						}
+					}
+				}
+				// Param: "project_id"
+				// Match until one of "/"
+				idx := strings.IndexAny(elem, "/")
+				if idx > 0 {
+					args["project_id"] = elem[:idx]
+					elem = elem[idx:]
+
+					if len(elem) == 0 {
+						s.handleProjectsGetRequest(args, w, r)
+						return
+					}
+					switch elem[0] {
+					case '/': // Prefix: "/col"
+						if prefix := "/col"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+							elem = elem[len(prefix):]
+						} else {
+							break
+						}
+
+						if len(elem) == 0 {
+							s.handleProjectsListColumnsRequest(args, w, r)
+							return
+						}
+						switch elem[0] {
+						case 'l': // Prefix: "laborators"
+							if prefix := "laborators"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+								elem = elem[len(prefix):]
+							} else {
+								break
+							}
+
+							if len(elem) == 0 {
+								s.handleProjectsListCollaboratorsRequest(args, w, r)
+								return
+							}
+							switch elem[0] {
+							case '/': // Prefix: "/"
+								if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+									elem = elem[len(prefix):]
+								} else {
+									break
+								}
+
+								// Param: "username"
+								// Match until one of "/"
+								idx := strings.IndexAny(elem, "/")
+								if idx > 0 {
+									args["username"] = elem[:idx]
+									elem = elem[idx:]
+
+									if len(elem) == 0 {
+										break
+									}
+									switch elem[0] {
+									case '/': // Prefix: "/permission"
+										if prefix := "/permission"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+											elem = elem[len(prefix):]
+										} else {
+											break
+										}
+
+										// Leaf: ProjectsGetPermissionForUser
+										s.handleProjectsGetPermissionForUserRequest(args, w, r)
+										return
+									}
+								}
+							}
+						case 'u': // Prefix: "umns"
+							if prefix := "umns"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+								elem = elem[len(prefix):]
+							} else {
+								break
+							}
+
+							// Leaf: ProjectsListColumns
+							s.handleProjectsListColumnsRequest(args, w, r)
+							return
+						}
+					}
+				}
+			case 'r': // Prefix: "r"
+				if prefix := "r"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+					elem = elem[len(prefix):]
+				} else {
+					break
+				}
+
+				if len(elem) == 0 {
+					s.handleRateLimitGetRequest(args, w, r)
+					return
+				}
+				switch elem[0] {
+				case 'a': // Prefix: "ate_limit"
+					if prefix := "ate_limit"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+						elem = elem[len(prefix):]
+					} else {
+						break
+					}
+
+					// Leaf: RateLimitGet
+					s.handleRateLimitGetRequest(args, w, r)
+					return
+				case 'e': // Prefix: "epos"
+					if prefix := "epos"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+						elem = elem[len(prefix):]
+					} else {
+						break
+					}
+
+					if len(elem) == 0 {
+						s.handleActionsGetEnvironmentPublicKeyRequest(args, w, r)
+						return
+					}
+					switch elem[0] {
+					case '/': // Prefix: "/"
+						if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+							elem = elem[len(prefix):]
+						} else {
+							break
+						}
+
+						// Param: "owner"
+						// Match until one of "/"
+						idx := strings.IndexAny(elem, "/")
+						if idx > 0 {
+							args["owner"] = elem[:idx]
+							elem = elem[idx:]
+
+							if len(elem) == 0 {
+								break
+							}
+							switch elem[0] {
+							case '/': // Prefix: "/"
+								if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+									elem = elem[len(prefix):]
+								} else {
+									break
+								}
+
+								// Param: "repo"
+								// Match until one of "/"
+								idx := strings.IndexAny(elem, "/")
+								if idx > 0 {
+									args["repo"] = elem[:idx]
+									elem = elem[idx:]
+
+									if len(elem) == 0 {
+										s.handleReposGetRequest(args, w, r)
+										return
+									}
+									switch elem[0] {
+									case '/': // Prefix: "/"
+										if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+											elem = elem[len(prefix):]
+										} else {
+											break
+										}
+
+										if len(elem) == 0 {
+											s.handleActivityGetRepoSubscriptionRequest(args, w, r)
+											return
+										}
+										switch elem[0] {
+										case 'a': // Prefix: "a"
+											if prefix := "a"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+												elem = elem[len(prefix):]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												s.handleIssuesCheckUserCanBeAssignedRequest(args, w, r)
+												return
+											}
+											switch elem[0] {
+											case 'c': // Prefix: "ctions/"
+												if prefix := "ctions/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+													elem = elem[len(prefix):]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													s.handleActionsDownloadJobLogsForWorkflowRunRequest(args, w, r)
+													return
+												}
+												switch elem[0] {
+												case 'a': // Prefix: "artifacts"
+													if prefix := "artifacts"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+														elem = elem[len(prefix):]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														s.handleActionsListArtifactsForRepoRequest(args, w, r)
+														return
+													}
+													switch elem[0] {
+													case '/': // Prefix: "/"
+														if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+															elem = elem[len(prefix):]
+														} else {
+															break
+														}
+
+														// Param: "artifact_id"
+														// Match until one of "/"
+														idx := strings.IndexAny(elem, "/")
+														if idx > 0 {
+															args["artifact_id"] = elem[:idx]
+															elem = elem[idx:]
+
+															if len(elem) == 0 {
+																s.handleActionsGetArtifactRequest(args, w, r)
+																return
+															}
+															switch elem[0] {
+															case '/': // Prefix: "/"
+																if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																	elem = elem[len(prefix):]
+																} else {
+																	break
+																}
+
+																// Param: "archive_format"
+																// Leaf parameter
+																args["archive_format"] = elem
+
+																// Leaf: ActionsDownloadArtifact
+																s.handleActionsDownloadArtifactRequest(args, w, r)
+																return
+															}
+														}
+													}
+												case 'j': // Prefix: "jobs/"
+													if prefix := "jobs/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+														elem = elem[len(prefix):]
+													} else {
+														break
+													}
+
+													// Param: "job_id"
+													// Match until one of "/"
+													idx := strings.IndexAny(elem, "/")
+													if idx > 0 {
+														args["job_id"] = elem[:idx]
+														elem = elem[idx:]
+
+														if len(elem) == 0 {
+															s.handleActionsGetJobForWorkflowRunRequest(args, w, r)
+															return
+														}
+														switch elem[0] {
+														case '/': // Prefix: "/logs"
+															if prefix := "/logs"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																elem = elem[len(prefix):]
+															} else {
+																break
+															}
+
+															// Leaf: ActionsDownloadJobLogsForWorkflowRun
+															s.handleActionsDownloadJobLogsForWorkflowRunRequest(args, w, r)
+															return
+														}
+													}
+												case 'p': // Prefix: "permissions"
+													if prefix := "permissions"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+														elem = elem[len(prefix):]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														s.handleActionsGetGithubActionsPermissionsRepositoryRequest(args, w, r)
+														return
+													}
+													switch elem[0] {
+													case '/': // Prefix: "/selected-actions"
+														if prefix := "/selected-actions"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+															elem = elem[len(prefix):]
+														} else {
+															break
+														}
+
+														// Leaf: ActionsGetAllowedActionsRepository
+														s.handleActionsGetAllowedActionsRepositoryRequest(args, w, r)
+														return
+													}
+												case 'r': // Prefix: "run"
+													if prefix := "run"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+														elem = elem[len(prefix):]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														s.handleActionsGetSelfHostedRunnerForRepoRequest(args, w, r)
+														return
+													}
+													switch elem[0] {
+													case 'n': // Prefix: "ners"
+														if prefix := "ners"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+															elem = elem[len(prefix):]
+														} else {
+															break
+														}
+
+														if len(elem) == 0 {
+															s.handleActionsListSelfHostedRunnersForRepoRequest(args, w, r)
+															return
+														}
+														switch elem[0] {
+														case '/': // Prefix: "/"
+															if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																elem = elem[len(prefix):]
+															} else {
+																break
+															}
+
+															if len(elem) == 0 {
+																break
+															}
+															switch elem[0] {
+															case 'd': // Prefix: "downloads"
+																if prefix := "downloads"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																	elem = elem[len(prefix):]
+																} else {
+																	break
+																}
+
+																// Leaf: ActionsListRunnerApplicationsForRepo
+																s.handleActionsListRunnerApplicationsForRepoRequest(args, w, r)
+																return
+															}
+															// Param: "runner_id"
+															// Leaf parameter
+															args["runner_id"] = elem
+
+															// Leaf: ActionsGetSelfHostedRunnerForRepo
+															s.handleActionsGetSelfHostedRunnerForRepoRequest(args, w, r)
+															return
+														}
+													case 's': // Prefix: "s"
+														if prefix := "s"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+															elem = elem[len(prefix):]
+														} else {
+															break
+														}
+
+														if len(elem) == 0 {
+															s.handleActionsListWorkflowRunsForRepoRequest(args, w, r)
+															return
+														}
+														switch elem[0] {
+														case '/': // Prefix: "/"
+															if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																elem = elem[len(prefix):]
+															} else {
+																break
+															}
+
+															// Param: "run_id"
+															// Match until one of "/"
+															idx := strings.IndexAny(elem, "/")
+															if idx > 0 {
+																args["run_id"] = elem[:idx]
+																elem = elem[idx:]
+
+																if len(elem) == 0 {
+																	s.handleActionsGetWorkflowRunRequest(args, w, r)
+																	return
+																}
+																switch elem[0] {
+																case '/': // Prefix: "/"
+																	if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																		elem = elem[len(prefix):]
+																	} else {
+																		break
+																	}
+
+																	if len(elem) == 0 {
+																		s.handleActionsGetReviewsForRunRequest(args, w, r)
+																		return
+																	}
+																	switch elem[0] {
+																	case 'a': // Prefix: "a"
+																		if prefix := "a"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																			elem = elem[len(prefix):]
+																		} else {
+																			break
+																		}
+
+																		if len(elem) == 0 {
+																			s.handleActionsListWorkflowRunArtifactsRequest(args, w, r)
+																			return
+																		}
+																		switch elem[0] {
+																		case 'p': // Prefix: "pprovals"
+																			if prefix := "pprovals"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																				elem = elem[len(prefix):]
+																			} else {
+																				break
+																			}
+
+																			// Leaf: ActionsGetReviewsForRun
+																			s.handleActionsGetReviewsForRunRequest(args, w, r)
+																			return
+																		case 'r': // Prefix: "rtifacts"
+																			if prefix := "rtifacts"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																				elem = elem[len(prefix):]
+																			} else {
+																				break
+																			}
+
+																			// Leaf: ActionsListWorkflowRunArtifacts
+																			s.handleActionsListWorkflowRunArtifactsRequest(args, w, r)
+																			return
+																		}
+																	case 'j': // Prefix: "jobs"
+																		if prefix := "jobs"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																			elem = elem[len(prefix):]
+																		} else {
+																			break
+																		}
+
+																		// Leaf: ActionsListJobsForWorkflowRun
+																		s.handleActionsListJobsForWorkflowRunRequest(args, w, r)
+																		return
+																	case 'l': // Prefix: "logs"
+																		if prefix := "logs"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																			elem = elem[len(prefix):]
+																		} else {
+																			break
+																		}
+
+																		// Leaf: ActionsDownloadWorkflowRunLogs
+																		s.handleActionsDownloadWorkflowRunLogsRequest(args, w, r)
+																		return
+																	case 't': // Prefix: "timing"
+																		if prefix := "timing"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																			elem = elem[len(prefix):]
+																		} else {
+																			break
+																		}
+
+																		// Leaf: ActionsGetWorkflowRunUsage
+																		s.handleActionsGetWorkflowRunUsageRequest(args, w, r)
+																		return
+																	}
+																}
+															}
+														}
+													}
+												case 's': // Prefix: "secrets"
+													if prefix := "secrets"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+														elem = elem[len(prefix):]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														s.handleActionsListRepoSecretsRequest(args, w, r)
+														return
+													}
+													switch elem[0] {
+													case '/': // Prefix: "/"
+														if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+															elem = elem[len(prefix):]
+														} else {
+															break
+														}
+
+														if len(elem) == 0 {
+															s.handleActionsGetRepoSecretRequest(args, w, r)
+															return
+														}
+														switch elem[0] {
+														case 'p': // Prefix: "public-key"
+															if prefix := "public-key"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																elem = elem[len(prefix):]
+															} else {
+																break
+															}
+
+															// Leaf: ActionsGetRepoPublicKey
+															s.handleActionsGetRepoPublicKeyRequest(args, w, r)
+															return
+														}
+														// Param: "secret_name"
+														// Leaf parameter
+														args["secret_name"] = elem
+
+														// Leaf: ActionsGetRepoSecret
+														s.handleActionsGetRepoSecretRequest(args, w, r)
+														return
+													}
+												case 'w': // Prefix: "workflows"
+													if prefix := "workflows"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+														elem = elem[len(prefix):]
+													} else {
+														break
+													}
+
+													// Leaf: ActionsListRepoWorkflows
+													s.handleActionsListRepoWorkflowsRequest(args, w, r)
+													return
+												}
+											case 's': // Prefix: "ssignees"
+												if prefix := "ssignees"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+													elem = elem[len(prefix):]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													s.handleIssuesListAssigneesRequest(args, w, r)
+													return
+												}
+												switch elem[0] {
+												case '/': // Prefix: "/"
+													if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+														elem = elem[len(prefix):]
+													} else {
+														break
+													}
+
+													// Param: "assignee"
+													// Leaf parameter
+													args["assignee"] = elem
+
+													// Leaf: IssuesCheckUserCanBeAssigned
+													s.handleIssuesCheckUserCanBeAssignedRequest(args, w, r)
+													return
+												}
+											case 'u': // Prefix: "utolinks"
+												if prefix := "utolinks"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+													elem = elem[len(prefix):]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													s.handleReposListAutolinksRequest(args, w, r)
+													return
+												}
+												switch elem[0] {
+												case '/': // Prefix: "/"
+													if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+														elem = elem[len(prefix):]
+													} else {
+														break
+													}
+
+													// Param: "autolink_id"
+													// Leaf parameter
+													args["autolink_id"] = elem
+
+													// Leaf: ReposGetAutolink
+													s.handleReposGetAutolinkRequest(args, w, r)
+													return
+												}
+											}
+										case 'b': // Prefix: "branches"
+											if prefix := "branches"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+												elem = elem[len(prefix):]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												s.handleReposListBranchesRequest(args, w, r)
+												return
+											}
+											switch elem[0] {
+											case '/': // Prefix: "/"
+												if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+													elem = elem[len(prefix):]
+												} else {
+													break
+												}
+
+												// Param: "branch"
+												// Match until one of "/"
+												idx := strings.IndexAny(elem, "/")
+												if idx > 0 {
+													args["branch"] = elem[:idx]
+													elem = elem[idx:]
+
+													if len(elem) == 0 {
+														s.handleReposGetBranchRequest(args, w, r)
+														return
+													}
+													switch elem[0] {
+													case '/': // Prefix: "/protection"
+														if prefix := "/protection"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+															elem = elem[len(prefix):]
+														} else {
+															break
+														}
+
+														if len(elem) == 0 {
+															s.handleReposGetBranchProtectionRequest(args, w, r)
+															return
+														}
+														switch elem[0] {
+														case '/': // Prefix: "/"
+															if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																elem = elem[len(prefix):]
+															} else {
+																break
+															}
+
+															if len(elem) == 0 {
+																s.handleReposGetAdminBranchProtectionRequest(args, w, r)
+																return
+															}
+															switch elem[0] {
+															case 'e': // Prefix: "enforce_admins"
+																if prefix := "enforce_admins"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																	elem = elem[len(prefix):]
+																} else {
+																	break
+																}
+
+																// Leaf: ReposGetAdminBranchProtection
+																s.handleReposGetAdminBranchProtectionRequest(args, w, r)
+																return
+															case 'r': // Prefix: "re"
+																if prefix := "re"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																	elem = elem[len(prefix):]
+																} else {
+																	break
+																}
+
+																if len(elem) == 0 {
+																	s.handleReposGetAllStatusCheckContextsRequest(args, w, r)
+																	return
+																}
+																switch elem[0] {
+																case 'q': // Prefix: "quired_"
+																	if prefix := "quired_"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																		elem = elem[len(prefix):]
+																	} else {
+																		break
+																	}
+
+																	if len(elem) == 0 {
+																		s.handleReposGetPullRequestReviewProtectionRequest(args, w, r)
+																		return
+																	}
+																	switch elem[0] {
+																	case 'p': // Prefix: "pull_request_reviews"
+																		if prefix := "pull_request_reviews"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																			elem = elem[len(prefix):]
+																		} else {
+																			break
+																		}
+
+																		// Leaf: ReposGetPullRequestReviewProtection
+																		s.handleReposGetPullRequestReviewProtectionRequest(args, w, r)
+																		return
+																	case 's': // Prefix: "s"
+																		if prefix := "s"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																			elem = elem[len(prefix):]
+																		} else {
+																			break
+																		}
+
+																		if len(elem) == 0 {
+																			s.handleReposGetCommitSignatureProtectionRequest(args, w, r)
+																			return
+																		}
+																		switch elem[0] {
+																		case 'i': // Prefix: "ignatures"
+																			if prefix := "ignatures"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																				elem = elem[len(prefix):]
+																			} else {
+																				break
+																			}
+
+																			// Leaf: ReposGetCommitSignatureProtection
+																			s.handleReposGetCommitSignatureProtectionRequest(args, w, r)
+																			return
+																		case 't': // Prefix: "tatus_checks"
+																			if prefix := "tatus_checks"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																				elem = elem[len(prefix):]
+																			} else {
+																				break
+																			}
+
+																			if len(elem) == 0 {
+																				s.handleReposGetStatusChecksProtectionRequest(args, w, r)
+																				return
+																			}
+																			switch elem[0] {
+																			case '/': // Prefix: "/contexts"
+																				if prefix := "/contexts"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																					elem = elem[len(prefix):]
+																				} else {
+																					break
+																				}
+
+																				// Leaf: ReposGetAllStatusCheckContexts
+																				s.handleReposGetAllStatusCheckContextsRequest(args, w, r)
+																				return
+																			}
+																		}
+																	}
+																case 's': // Prefix: "strictions"
+																	if prefix := "strictions"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																		elem = elem[len(prefix):]
+																	} else {
+																		break
+																	}
+
+																	if len(elem) == 0 {
+																		s.handleReposGetAccessRestrictionsRequest(args, w, r)
+																		return
+																	}
+																	switch elem[0] {
+																	case '/': // Prefix: "/"
+																		if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																			elem = elem[len(prefix):]
+																		} else {
+																			break
+																		}
+
+																		if len(elem) == 0 {
+																			s.handleReposGetTeamsWithAccessToProtectedBranchRequest(args, w, r)
+																			return
+																		}
+																		switch elem[0] {
+																		case 'a': // Prefix: "apps"
+																			if prefix := "apps"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																				elem = elem[len(prefix):]
+																			} else {
+																				break
+																			}
+
+																			// Leaf: ReposGetAppsWithAccessToProtectedBranch
+																			s.handleReposGetAppsWithAccessToProtectedBranchRequest(args, w, r)
+																			return
+																		case 't': // Prefix: "teams"
+																			if prefix := "teams"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																				elem = elem[len(prefix):]
+																			} else {
+																				break
+																			}
+
+																			// Leaf: ReposGetTeamsWithAccessToProtectedBranch
+																			s.handleReposGetTeamsWithAccessToProtectedBranchRequest(args, w, r)
+																			return
+																		case 'u': // Prefix: "users"
+																			if prefix := "users"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																				elem = elem[len(prefix):]
+																			} else {
+																				break
+																			}
+
+																			// Leaf: ReposGetUsersWithAccessToProtectedBranch
+																			s.handleReposGetUsersWithAccessToProtectedBranchRequest(args, w, r)
+																			return
+																		}
+																	}
+																}
+															}
+														}
+													}
+												}
+											}
+										case 'c': // Prefix: "c"
+											if prefix := "c"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+												elem = elem[len(prefix):]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												s.handleChecksListForRefRequest(args, w, r)
+												return
+											}
+											switch elem[0] {
+											case 'h': // Prefix: "heck-"
+												if prefix := "heck-"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+													elem = elem[len(prefix):]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													s.handleChecksGetSuiteRequest(args, w, r)
+													return
+												}
+												switch elem[0] {
+												case 'r': // Prefix: "runs/"
+													if prefix := "runs/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+														elem = elem[len(prefix):]
+													} else {
+														break
+													}
+
+													// Param: "check_run_id"
+													// Match until one of "/"
+													idx := strings.IndexAny(elem, "/")
+													if idx > 0 {
+														args["check_run_id"] = elem[:idx]
+														elem = elem[idx:]
+
+														if len(elem) == 0 {
+															s.handleChecksGetRequest(args, w, r)
+															return
+														}
+														switch elem[0] {
+														case '/': // Prefix: "/annotations"
+															if prefix := "/annotations"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																elem = elem[len(prefix):]
+															} else {
+																break
+															}
+
+															// Leaf: ChecksListAnnotations
+															s.handleChecksListAnnotationsRequest(args, w, r)
+															return
+														}
+													}
+												case 's': // Prefix: "suites/"
+													if prefix := "suites/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+														elem = elem[len(prefix):]
+													} else {
+														break
+													}
+
+													// Param: "check_suite_id"
+													// Match until one of "/"
+													idx := strings.IndexAny(elem, "/")
+													if idx > 0 {
+														args["check_suite_id"] = elem[:idx]
+														elem = elem[idx:]
+
+														if len(elem) == 0 {
+															s.handleChecksGetSuiteRequest(args, w, r)
+															return
+														}
+														switch elem[0] {
+														case '/': // Prefix: "/check-runs"
+															if prefix := "/check-runs"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																elem = elem[len(prefix):]
+															} else {
+																break
+															}
+
+															// Leaf: ChecksListForSuite
+															s.handleChecksListForSuiteRequest(args, w, r)
+															return
+														}
+													}
+												}
+											case 'o': // Prefix: "o"
+												if prefix := "o"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+													elem = elem[len(prefix):]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													s.handleCodeScanningGetAlertRequest(args, w, r)
+													return
+												}
+												switch elem[0] {
+												case 'd': // Prefix: "de-scanning/"
+													if prefix := "de-scanning/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+														elem = elem[len(prefix):]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														s.handleCodeScanningGetSarifRequest(args, w, r)
+														return
+													}
+													switch elem[0] {
+													case 'a': // Prefix: "a"
+														if prefix := "a"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+															elem = elem[len(prefix):]
+														} else {
+															break
+														}
+
+														if len(elem) == 0 {
+															s.handleCodeScanningGetAnalysisRequest(args, w, r)
+															return
+														}
+														switch elem[0] {
+														case 'l': // Prefix: "lerts"
+															if prefix := "lerts"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																elem = elem[len(prefix):]
+															} else {
+																break
+															}
+
+															if len(elem) == 0 {
+																s.handleCodeScanningListAlertsForRepoRequest(args, w, r)
+																return
+															}
+															switch elem[0] {
+															case '/': // Prefix: "/"
+																if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																	elem = elem[len(prefix):]
+																} else {
+																	break
+																}
+
+																// Param: "alert_number"
+																// Match until one of "/"
+																idx := strings.IndexAny(elem, "/")
+																if idx > 0 {
+																	args["alert_number"] = elem[:idx]
+																	elem = elem[idx:]
+
+																	if len(elem) == 0 {
+																		s.handleCodeScanningGetAlertRequest(args, w, r)
+																		return
+																	}
+																	switch elem[0] {
+																	case '/': // Prefix: "/instances"
+																		if prefix := "/instances"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																			elem = elem[len(prefix):]
+																		} else {
+																			break
+																		}
+
+																		// Leaf: CodeScanningListAlertInstances
+																		s.handleCodeScanningListAlertInstancesRequest(args, w, r)
+																		return
+																	}
+																}
+															}
+														case 'n': // Prefix: "nalyses"
+															if prefix := "nalyses"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																elem = elem[len(prefix):]
+															} else {
+																break
+															}
+
+															if len(elem) == 0 {
+																s.handleCodeScanningListRecentAnalysesRequest(args, w, r)
+																return
+															}
+															switch elem[0] {
+															case '/': // Prefix: "/"
+																if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																	elem = elem[len(prefix):]
+																} else {
+																	break
+																}
+
+																// Param: "analysis_id"
+																// Leaf parameter
+																args["analysis_id"] = elem
+
+																// Leaf: CodeScanningGetAnalysis
+																s.handleCodeScanningGetAnalysisRequest(args, w, r)
+																return
+															}
+														}
+													case 's': // Prefix: "sarifs/"
+														if prefix := "sarifs/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+															elem = elem[len(prefix):]
+														} else {
+															break
+														}
+
+														// Param: "sarif_id"
+														// Leaf parameter
+														args["sarif_id"] = elem
+
+														// Leaf: CodeScanningGetSarif
+														s.handleCodeScanningGetSarifRequest(args, w, r)
+														return
+													}
+												case 'l': // Prefix: "llaborators"
+													if prefix := "llaborators"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+														elem = elem[len(prefix):]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														s.handleReposListCollaboratorsRequest(args, w, r)
+														return
+													}
+													switch elem[0] {
+													case '/': // Prefix: "/"
+														if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+															elem = elem[len(prefix):]
+														} else {
+															break
+														}
+
+														// Param: "username"
+														// Match until one of "/"
+														idx := strings.IndexAny(elem, "/")
+														if idx > 0 {
+															args["username"] = elem[:idx]
+															elem = elem[idx:]
+
+															if len(elem) == 0 {
+																s.handleReposCheckCollaboratorRequest(args, w, r)
+																return
+															}
+															switch elem[0] {
+															case '/': // Prefix: "/permission"
+																if prefix := "/permission"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																	elem = elem[len(prefix):]
+																} else {
+																	break
+																}
+
+																// Leaf: ReposGetCollaboratorPermissionLevel
+																s.handleReposGetCollaboratorPermissionLevelRequest(args, w, r)
+																return
+															}
+														}
+													}
+												case 'm': // Prefix: "m"
+													if prefix := "m"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+														elem = elem[len(prefix):]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														s.handleReposCompareCommitsRequest(args, w, r)
+														return
+													}
+													switch elem[0] {
+													case 'm': // Prefix: "m"
+														if prefix := "m"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+															elem = elem[len(prefix):]
+														} else {
+															break
+														}
+
+														if len(elem) == 0 {
+															s.handleReactionsListForCommitCommentRequest(args, w, r)
+															return
+														}
+														switch elem[0] {
+														case 'e': // Prefix: "ents"
+															if prefix := "ents"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																elem = elem[len(prefix):]
+															} else {
+																break
+															}
+
+															if len(elem) == 0 {
+																s.handleReposListCommitCommentsForRepoRequest(args, w, r)
+																return
+															}
+															switch elem[0] {
+															case '/': // Prefix: "/"
+																if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																	elem = elem[len(prefix):]
+																} else {
+																	break
+																}
+
+																// Param: "comment_id"
+																// Match until one of "/"
+																idx := strings.IndexAny(elem, "/")
+																if idx > 0 {
+																	args["comment_id"] = elem[:idx]
+																	elem = elem[idx:]
+
+																	if len(elem) == 0 {
+																		s.handleReposGetCommitCommentRequest(args, w, r)
+																		return
+																	}
+																	switch elem[0] {
+																	case '/': // Prefix: "/reactions"
+																		if prefix := "/reactions"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																			elem = elem[len(prefix):]
+																		} else {
+																			break
+																		}
+
+																		// Leaf: ReactionsListForCommitComment
+																		s.handleReactionsListForCommitCommentRequest(args, w, r)
+																		return
+																	}
+																}
+															}
+														case 'i': // Prefix: "its"
+															if prefix := "its"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																elem = elem[len(prefix):]
+															} else {
+																break
+															}
+
+															if len(elem) == 0 {
+																s.handleReposListCommitsRequest(args, w, r)
+																return
+															}
+															switch elem[0] {
+															case '/': // Prefix: "/"
+																if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																	elem = elem[len(prefix):]
+																} else {
+																	break
+																}
+
+																// Param: "ref"
+																// Match until one of "/"
+																idx := strings.IndexAny(elem, "/")
+																if idx > 0 {
+																	args["ref"] = elem[:idx]
+																	elem = elem[idx:]
+
+																	if len(elem) == 0 {
+																		s.handleReposGetCommitRequest(args, w, r)
+																		return
+																	}
+																	switch elem[0] {
+																	case '/': // Prefix: "/"
+																		if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																			elem = elem[len(prefix):]
+																		} else {
+																			break
+																		}
+
+																		if len(elem) == 0 {
+																			s.handleReposGetCombinedStatusForRefRequest(args, w, r)
+																			return
+																		}
+																		switch elem[0] {
+																		case 'b': // Prefix: "branches-where-head"
+																			if prefix := "branches-where-head"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																				elem = elem[len(prefix):]
+																			} else {
+																				break
+																			}
+
+																			// Leaf: ReposListBranchesForHeadCommit
+																			s.handleReposListBranchesForHeadCommitRequest(args, w, r)
+																			return
+																		case 'c': // Prefix: "c"
+																			if prefix := "c"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																				elem = elem[len(prefix):]
+																			} else {
+																				break
+																			}
+
+																			if len(elem) == 0 {
+																				s.handleReposListCommentsForCommitRequest(args, w, r)
+																				return
+																			}
+																			switch elem[0] {
+																			case 'h': // Prefix: "heck-"
+																				if prefix := "heck-"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																					elem = elem[len(prefix):]
+																				} else {
+																					break
+																				}
+
+																				if len(elem) == 0 {
+																					s.handleChecksListSuitesForRefRequest(args, w, r)
+																					return
+																				}
+																				switch elem[0] {
+																				case 'r': // Prefix: "runs"
+																					if prefix := "runs"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																						elem = elem[len(prefix):]
+																					} else {
+																						break
+																					}
+
+																					// Leaf: ChecksListForRef
+																					s.handleChecksListForRefRequest(args, w, r)
+																					return
+																				case 's': // Prefix: "suites"
+																					if prefix := "suites"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																						elem = elem[len(prefix):]
+																					} else {
+																						break
+																					}
+
+																					// Leaf: ChecksListSuitesForRef
+																					s.handleChecksListSuitesForRefRequest(args, w, r)
+																					return
+																				}
+																			case 'o': // Prefix: "omments"
+																				if prefix := "omments"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																					elem = elem[len(prefix):]
+																				} else {
+																					break
+																				}
+
+																				// Leaf: ReposListCommentsForCommit
+																				s.handleReposListCommentsForCommitRequest(args, w, r)
+																				return
+																			}
+																		case 'p': // Prefix: "pulls"
+																			if prefix := "pulls"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																				elem = elem[len(prefix):]
+																			} else {
+																				break
+																			}
+
+																			// Leaf: ReposListPullRequestsAssociatedWithCommit
+																			s.handleReposListPullRequestsAssociatedWithCommitRequest(args, w, r)
+																			return
+																		case 's': // Prefix: "status"
+																			if prefix := "status"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																				elem = elem[len(prefix):]
+																			} else {
+																				break
+																			}
+
+																			if len(elem) == 0 {
+																				s.handleReposGetCombinedStatusForRefRequest(args, w, r)
+																				return
+																			}
+																			switch elem[0] {
+																			case 'e': // Prefix: "es"
+																				if prefix := "es"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																					elem = elem[len(prefix):]
+																				} else {
+																					break
+																				}
+
+																				// Leaf: ReposListCommitStatusesForRef
+																				s.handleReposListCommitStatusesForRefRequest(args, w, r)
+																				return
+																			}
+																		}
+																	}
+																}
+															}
+														case 'u': // Prefix: "unity/profile"
+															if prefix := "unity/profile"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																elem = elem[len(prefix):]
+															} else {
+																break
+															}
+
+															// Leaf: ReposGetCommunityProfileMetrics
+															s.handleReposGetCommunityProfileMetricsRequest(args, w, r)
+															return
+														}
+													case 'p': // Prefix: "pare/"
+														if prefix := "pare/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+															elem = elem[len(prefix):]
+														} else {
+															break
+														}
+
+														// Param: "basehead"
+														// Leaf parameter
+														args["basehead"] = elem
+
+														// Leaf: ReposCompareCommits
+														s.handleReposCompareCommitsRequest(args, w, r)
+														return
+													}
+												case 'n': // Prefix: "ntributors"
+													if prefix := "ntributors"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+														elem = elem[len(prefix):]
+													} else {
+														break
+													}
+
+													// Leaf: ReposListContributors
+													s.handleReposListContributorsRequest(args, w, r)
+													return
+												}
+											}
+										case 'd': // Prefix: "deployments"
+											if prefix := "deployments"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+												elem = elem[len(prefix):]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												s.handleReposListDeploymentsRequest(args, w, r)
+												return
+											}
+											switch elem[0] {
+											case '/': // Prefix: "/"
+												if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+													elem = elem[len(prefix):]
+												} else {
+													break
+												}
+
+												// Param: "deployment_id"
+												// Match until one of "/"
+												idx := strings.IndexAny(elem, "/")
+												if idx > 0 {
+													args["deployment_id"] = elem[:idx]
+													elem = elem[idx:]
+
+													if len(elem) == 0 {
+														s.handleReposGetDeploymentRequest(args, w, r)
+														return
+													}
+													switch elem[0] {
+													case '/': // Prefix: "/statuses"
+														if prefix := "/statuses"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+															elem = elem[len(prefix):]
+														} else {
+															break
+														}
+
+														if len(elem) == 0 {
+															s.handleReposListDeploymentStatusesRequest(args, w, r)
+															return
+														}
+														switch elem[0] {
+														case '/': // Prefix: "/"
+															if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																elem = elem[len(prefix):]
+															} else {
+																break
+															}
+
+															// Param: "status_id"
+															// Leaf parameter
+															args["status_id"] = elem
+
+															// Leaf: ReposGetDeploymentStatus
+															s.handleReposGetDeploymentStatusRequest(args, w, r)
+															return
+														}
+													}
+												}
+											}
+										case 'e': // Prefix: "events"
+											if prefix := "events"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+												elem = elem[len(prefix):]
+											} else {
+												break
+											}
+
+											// Leaf: ActivityListRepoEvents
+											s.handleActivityListRepoEventsRequest(args, w, r)
+											return
+										case 'f': // Prefix: "forks"
+											if prefix := "forks"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+												elem = elem[len(prefix):]
+											} else {
+												break
+											}
+
+											// Leaf: ReposListForks
+											s.handleReposListForksRequest(args, w, r)
+											return
+										case 'g': // Prefix: "git/"
+											if prefix := "git/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+												elem = elem[len(prefix):]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												s.handleGitGetCommitRequest(args, w, r)
+												return
+											}
+											switch elem[0] {
+											case 'b': // Prefix: "blobs/"
+												if prefix := "blobs/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+													elem = elem[len(prefix):]
+												} else {
+													break
+												}
+
+												// Param: "file_sha"
+												// Leaf parameter
+												args["file_sha"] = elem
+
+												// Leaf: GitGetBlob
+												s.handleGitGetBlobRequest(args, w, r)
+												return
+											case 'c': // Prefix: "commits/"
+												if prefix := "commits/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+													elem = elem[len(prefix):]
+												} else {
+													break
+												}
+
+												// Param: "commit_sha"
+												// Leaf parameter
+												args["commit_sha"] = elem
+
+												// Leaf: GitGetCommit
+												s.handleGitGetCommitRequest(args, w, r)
+												return
+											case 'm': // Prefix: "matching-refs/"
+												if prefix := "matching-refs/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+													elem = elem[len(prefix):]
+												} else {
+													break
+												}
+
+												// Param: "ref"
+												// Leaf parameter
+												args["ref"] = elem
+
+												// Leaf: GitListMatchingRefs
+												s.handleGitListMatchingRefsRequest(args, w, r)
+												return
+											case 'r': // Prefix: "ref/"
+												if prefix := "ref/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+													elem = elem[len(prefix):]
+												} else {
+													break
+												}
+
+												// Param: "ref"
+												// Leaf parameter
+												args["ref"] = elem
+
+												// Leaf: GitGetRef
+												s.handleGitGetRefRequest(args, w, r)
+												return
+											case 't': // Prefix: "t"
+												if prefix := "t"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+													elem = elem[len(prefix):]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													s.handleGitGetTreeRequest(args, w, r)
+													return
+												}
+												switch elem[0] {
+												case 'a': // Prefix: "ags/"
+													if prefix := "ags/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+														elem = elem[len(prefix):]
+													} else {
+														break
+													}
+
+													// Param: "tag_sha"
+													// Leaf parameter
+													args["tag_sha"] = elem
+
+													// Leaf: GitGetTag
+													s.handleGitGetTagRequest(args, w, r)
+													return
+												case 'r': // Prefix: "rees/"
+													if prefix := "rees/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+														elem = elem[len(prefix):]
+													} else {
+														break
+													}
+
+													// Param: "tree_sha"
+													// Leaf parameter
+													args["tree_sha"] = elem
+
+													// Leaf: GitGetTree
+													s.handleGitGetTreeRequest(args, w, r)
+													return
+												}
+											}
+										case 'h': // Prefix: "hooks"
+											if prefix := "hooks"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+												elem = elem[len(prefix):]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												s.handleReposListWebhooksRequest(args, w, r)
+												return
+											}
+											switch elem[0] {
+											case '/': // Prefix: "/"
+												if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+													elem = elem[len(prefix):]
+												} else {
+													break
+												}
+
+												// Param: "hook_id"
+												// Match until one of "/"
+												idx := strings.IndexAny(elem, "/")
+												if idx > 0 {
+													args["hook_id"] = elem[:idx]
+													elem = elem[idx:]
+
+													if len(elem) == 0 {
+														s.handleReposGetWebhookRequest(args, w, r)
+														return
+													}
+													switch elem[0] {
+													case '/': // Prefix: "/"
+														if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+															elem = elem[len(prefix):]
+														} else {
+															break
+														}
+
+														if len(elem) == 0 {
+															s.handleReposGetWebhookDeliveryRequest(args, w, r)
+															return
+														}
+														switch elem[0] {
+														case 'c': // Prefix: "config"
+															if prefix := "config"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																elem = elem[len(prefix):]
+															} else {
+																break
+															}
+
+															// Leaf: ReposGetWebhookConfigForRepo
+															s.handleReposGetWebhookConfigForRepoRequest(args, w, r)
+															return
+														case 'd': // Prefix: "deliveries"
+															if prefix := "deliveries"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																elem = elem[len(prefix):]
+															} else {
+																break
+															}
+
+															if len(elem) == 0 {
+																s.handleReposListWebhookDeliveriesRequest(args, w, r)
+																return
+															}
+															switch elem[0] {
+															case '/': // Prefix: "/"
+																if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																	elem = elem[len(prefix):]
+																} else {
+																	break
+																}
+
+																// Param: "delivery_id"
+																// Leaf parameter
+																args["delivery_id"] = elem
+
+																// Leaf: ReposGetWebhookDelivery
+																s.handleReposGetWebhookDeliveryRequest(args, w, r)
+																return
+															}
+														}
+													}
+												}
+											}
+										case 'i': // Prefix: "i"
+											if prefix := "i"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+												elem = elem[len(prefix):]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												s.handleMigrationsGetCommitAuthorsRequest(args, w, r)
+												return
+											}
+											switch elem[0] {
+											case 'm': // Prefix: "mport"
+												if prefix := "mport"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+													elem = elem[len(prefix):]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													s.handleMigrationsGetImportStatusRequest(args, w, r)
+													return
+												}
+												switch elem[0] {
+												case '/': // Prefix: "/"
+													if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+														elem = elem[len(prefix):]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														s.handleMigrationsGetLargeFilesRequest(args, w, r)
+														return
+													}
+													switch elem[0] {
+													case 'a': // Prefix: "authors"
+														if prefix := "authors"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+															elem = elem[len(prefix):]
+														} else {
+															break
+														}
+
+														// Leaf: MigrationsGetCommitAuthors
+														s.handleMigrationsGetCommitAuthorsRequest(args, w, r)
+														return
+													case 'l': // Prefix: "large_files"
+														if prefix := "large_files"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+															elem = elem[len(prefix):]
+														} else {
+															break
+														}
+
+														// Leaf: MigrationsGetLargeFiles
+														s.handleMigrationsGetLargeFilesRequest(args, w, r)
+														return
+													}
+												}
+											case 'n': // Prefix: "nvitations"
+												if prefix := "nvitations"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+													elem = elem[len(prefix):]
+												} else {
+													break
+												}
+
+												// Leaf: ReposListInvitations
+												s.handleReposListInvitationsRequest(args, w, r)
+												return
+											case 's': // Prefix: "ssues"
+												if prefix := "ssues"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+													elem = elem[len(prefix):]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													s.handleIssuesListForRepoRequest(args, w, r)
+													return
+												}
+												switch elem[0] {
+												case '/': // Prefix: "/"
+													if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+														elem = elem[len(prefix):]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														break
+													}
+													switch elem[0] {
+													case 'c': // Prefix: "comments"
+														if prefix := "comments"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+															elem = elem[len(prefix):]
+														} else {
+															break
+														}
+
+														if len(elem) == 0 {
+															s.handleIssuesListCommentsForRepoRequest(args, w, r)
+															return
+														}
+														switch elem[0] {
+														case '/': // Prefix: "/"
+															if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																elem = elem[len(prefix):]
+															} else {
+																break
+															}
+
+															// Param: "comment_id"
+															// Match until one of "/"
+															idx := strings.IndexAny(elem, "/")
+															if idx > 0 {
+																args["comment_id"] = elem[:idx]
+																elem = elem[idx:]
+
+																if len(elem) == 0 {
+																	s.handleIssuesGetCommentRequest(args, w, r)
+																	return
+																}
+																switch elem[0] {
+																case '/': // Prefix: "/reactions"
+																	if prefix := "/reactions"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																		elem = elem[len(prefix):]
+																	} else {
+																		break
+																	}
+
+																	// Leaf: ReactionsListForIssueComment
+																	s.handleReactionsListForIssueCommentRequest(args, w, r)
+																	return
+																}
+															}
+														}
+													case 'e': // Prefix: "events"
+														if prefix := "events"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+															elem = elem[len(prefix):]
+														} else {
+															break
+														}
+
+														if len(elem) == 0 {
+															s.handleIssuesListEventsForRepoRequest(args, w, r)
+															return
+														}
+														switch elem[0] {
+														case '/': // Prefix: "/"
+															if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																elem = elem[len(prefix):]
+															} else {
+																break
+															}
+
+															// Param: "event_id"
+															// Leaf parameter
+															args["event_id"] = elem
+
+															// Leaf: IssuesGetEvent
+															s.handleIssuesGetEventRequest(args, w, r)
+															return
+														}
+													}
+													// Param: "issue_number"
+													// Match until one of "/"
+													idx := strings.IndexAny(elem, "/")
+													if idx > 0 {
+														args["issue_number"] = elem[:idx]
+														elem = elem[idx:]
+
+														if len(elem) == 0 {
+															s.handleIssuesGetRequest(args, w, r)
+															return
+														}
+														switch elem[0] {
+														case '/': // Prefix: "/"
+															if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																elem = elem[len(prefix):]
+															} else {
+																break
+															}
+
+															if len(elem) == 0 {
+																s.handleIssuesListLabelsOnIssueRequest(args, w, r)
+																return
+															}
+															switch elem[0] {
+															case 'c': // Prefix: "comments"
+																if prefix := "comments"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																	elem = elem[len(prefix):]
+																} else {
+																	break
+																}
+
+																// Leaf: IssuesListComments
+																s.handleIssuesListCommentsRequest(args, w, r)
+																return
+															case 'l': // Prefix: "labels"
+																if prefix := "labels"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																	elem = elem[len(prefix):]
+																} else {
+																	break
+																}
+
+																// Leaf: IssuesListLabelsOnIssue
+																s.handleIssuesListLabelsOnIssueRequest(args, w, r)
+																return
+															case 'r': // Prefix: "reactions"
+																if prefix := "reactions"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																	elem = elem[len(prefix):]
+																} else {
+																	break
+																}
+
+																// Leaf: ReactionsListForIssue
+																s.handleReactionsListForIssueRequest(args, w, r)
+																return
+															}
+														}
+													}
+												}
+											}
+										case 'k': // Prefix: "keys"
+											if prefix := "keys"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+												elem = elem[len(prefix):]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												s.handleReposListDeployKeysRequest(args, w, r)
+												return
+											}
+											switch elem[0] {
+											case '/': // Prefix: "/"
+												if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+													elem = elem[len(prefix):]
+												} else {
+													break
+												}
+
+												// Param: "key_id"
+												// Leaf parameter
+												args["key_id"] = elem
+
+												// Leaf: ReposGetDeployKey
+												s.handleReposGetDeployKeyRequest(args, w, r)
+												return
+											}
+										case 'l': // Prefix: "l"
+											if prefix := "l"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+												elem = elem[len(prefix):]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												s.handleLicensesGetForRepoRequest(args, w, r)
+												return
+											}
+											switch elem[0] {
+											case 'a': // Prefix: "a"
+												if prefix := "a"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+													elem = elem[len(prefix):]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													s.handleReposListLanguagesRequest(args, w, r)
+													return
+												}
+												switch elem[0] {
+												case 'b': // Prefix: "bels"
+													if prefix := "bels"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+														elem = elem[len(prefix):]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														s.handleIssuesListLabelsForRepoRequest(args, w, r)
+														return
+													}
+													switch elem[0] {
+													case '/': // Prefix: "/"
+														if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+															elem = elem[len(prefix):]
+														} else {
+															break
+														}
+
+														// Param: "name"
+														// Leaf parameter
+														args["name"] = elem
+
+														// Leaf: IssuesGetLabel
+														s.handleIssuesGetLabelRequest(args, w, r)
+														return
+													}
+												case 'n': // Prefix: "nguages"
+													if prefix := "nguages"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+														elem = elem[len(prefix):]
+													} else {
+														break
+													}
+
+													// Leaf: ReposListLanguages
+													s.handleReposListLanguagesRequest(args, w, r)
+													return
+												}
+											case 'i': // Prefix: "icense"
+												if prefix := "icense"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+													elem = elem[len(prefix):]
+												} else {
+													break
+												}
+
+												// Leaf: LicensesGetForRepo
+												s.handleLicensesGetForRepoRequest(args, w, r)
+												return
+											}
+										case 'm': // Prefix: "milestones"
+											if prefix := "milestones"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+												elem = elem[len(prefix):]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												s.handleIssuesListMilestonesRequest(args, w, r)
+												return
+											}
+											switch elem[0] {
+											case '/': // Prefix: "/"
+												if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+													elem = elem[len(prefix):]
+												} else {
+													break
+												}
+
+												// Param: "milestone_number"
+												// Match until one of "/"
+												idx := strings.IndexAny(elem, "/")
+												if idx > 0 {
+													args["milestone_number"] = elem[:idx]
+													elem = elem[idx:]
+
+													if len(elem) == 0 {
+														s.handleIssuesGetMilestoneRequest(args, w, r)
+														return
+													}
+													switch elem[0] {
+													case '/': // Prefix: "/labels"
+														if prefix := "/labels"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+															elem = elem[len(prefix):]
+														} else {
+															break
+														}
+
+														// Leaf: IssuesListLabelsForMilestone
+														s.handleIssuesListLabelsForMilestoneRequest(args, w, r)
+														return
+													}
+												}
+											}
+										case 'n': // Prefix: "notifications"
+											if prefix := "notifications"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+												elem = elem[len(prefix):]
+											} else {
+												break
+											}
+
+											// Leaf: ActivityListRepoNotificationsForAuthenticatedUser
+											s.handleActivityListRepoNotificationsForAuthenticatedUserRequest(args, w, r)
+											return
+										case 'p': // Prefix: "p"
+											if prefix := "p"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+												elem = elem[len(prefix):]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												s.handlePullsCheckIfMergedRequest(args, w, r)
+												return
+											}
+											switch elem[0] {
+											case 'a': // Prefix: "ages"
+												if prefix := "ages"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+													elem = elem[len(prefix):]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													s.handleReposGetPagesRequest(args, w, r)
+													return
+												}
+												switch elem[0] {
+												case '/': // Prefix: "/"
+													if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+														elem = elem[len(prefix):]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														s.handleReposGetPagesHealthCheckRequest(args, w, r)
+														return
+													}
+													switch elem[0] {
+													case 'b': // Prefix: "builds"
+														if prefix := "builds"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+															elem = elem[len(prefix):]
+														} else {
+															break
+														}
+
+														if len(elem) == 0 {
+															s.handleReposListPagesBuildsRequest(args, w, r)
+															return
+														}
+														switch elem[0] {
+														case '/': // Prefix: "/"
+															if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																elem = elem[len(prefix):]
+															} else {
+																break
+															}
+
+															if len(elem) == 0 {
+																s.handleReposGetPagesBuildRequest(args, w, r)
+																return
+															}
+															switch elem[0] {
+															case 'l': // Prefix: "latest"
+																if prefix := "latest"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																	elem = elem[len(prefix):]
+																} else {
+																	break
+																}
+
+																// Leaf: ReposGetLatestPagesBuild
+																s.handleReposGetLatestPagesBuildRequest(args, w, r)
+																return
+															}
+															// Param: "build_id"
+															// Leaf parameter
+															args["build_id"] = elem
+
+															// Leaf: ReposGetPagesBuild
+															s.handleReposGetPagesBuildRequest(args, w, r)
+															return
+														}
+													case 'h': // Prefix: "health"
+														if prefix := "health"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+															elem = elem[len(prefix):]
+														} else {
+															break
+														}
+
+														// Leaf: ReposGetPagesHealthCheck
+														s.handleReposGetPagesHealthCheckRequest(args, w, r)
+														return
+													}
+												}
+											case 'r': // Prefix: "rojects"
+												if prefix := "rojects"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+													elem = elem[len(prefix):]
+												} else {
+													break
+												}
+
+												// Leaf: ProjectsListForRepo
+												s.handleProjectsListForRepoRequest(args, w, r)
+												return
+											case 'u': // Prefix: "ulls"
+												if prefix := "ulls"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+													elem = elem[len(prefix):]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													s.handlePullsListRequest(args, w, r)
+													return
+												}
+												switch elem[0] {
+												case '/': // Prefix: "/"
+													if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+														elem = elem[len(prefix):]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														break
+													}
+													switch elem[0] {
+													case 'c': // Prefix: "comments"
+														if prefix := "comments"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+															elem = elem[len(prefix):]
+														} else {
+															break
+														}
+
+														if len(elem) == 0 {
+															s.handlePullsListReviewCommentsForRepoRequest(args, w, r)
+															return
+														}
+														switch elem[0] {
+														case '/': // Prefix: "/"
+															if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																elem = elem[len(prefix):]
+															} else {
+																break
+															}
+
+															// Param: "comment_id"
+															// Match until one of "/"
+															idx := strings.IndexAny(elem, "/")
+															if idx > 0 {
+																args["comment_id"] = elem[:idx]
+																elem = elem[idx:]
+
+																if len(elem) == 0 {
+																	s.handlePullsGetReviewCommentRequest(args, w, r)
+																	return
+																}
+																switch elem[0] {
+																case '/': // Prefix: "/reactions"
+																	if prefix := "/reactions"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																		elem = elem[len(prefix):]
+																	} else {
+																		break
+																	}
+
+																	// Leaf: ReactionsListForPullRequestReviewComment
+																	s.handleReactionsListForPullRequestReviewCommentRequest(args, w, r)
+																	return
+																}
+															}
+														}
+													}
+													// Param: "pull_number"
+													// Match until one of "/"
+													idx := strings.IndexAny(elem, "/")
+													if idx > 0 {
+														args["pull_number"] = elem[:idx]
+														elem = elem[idx:]
+
+														if len(elem) == 0 {
+															s.handlePullsGetRequest(args, w, r)
+															return
+														}
+														switch elem[0] {
+														case '/': // Prefix: "/"
+															if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																elem = elem[len(prefix):]
+															} else {
+																break
+															}
+
+															if len(elem) == 0 {
+																s.handlePullsGetReviewRequest(args, w, r)
+																return
+															}
+															switch elem[0] {
+															case 'c': // Prefix: "comm"
+																if prefix := "comm"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																	elem = elem[len(prefix):]
+																} else {
+																	break
+																}
+
+																if len(elem) == 0 {
+																	s.handlePullsListReviewCommentsRequest(args, w, r)
+																	return
+																}
+																switch elem[0] {
+																case 'e': // Prefix: "ents"
+																	if prefix := "ents"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																		elem = elem[len(prefix):]
+																	} else {
+																		break
+																	}
+
+																	// Leaf: PullsListReviewComments
+																	s.handlePullsListReviewCommentsRequest(args, w, r)
+																	return
+																case 'i': // Prefix: "its"
+																	if prefix := "its"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																		elem = elem[len(prefix):]
+																	} else {
+																		break
+																	}
+
+																	// Leaf: PullsListCommits
+																	s.handlePullsListCommitsRequest(args, w, r)
+																	return
+																}
+															case 'f': // Prefix: "files"
+																if prefix := "files"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																	elem = elem[len(prefix):]
+																} else {
+																	break
+																}
+
+																// Leaf: PullsListFiles
+																s.handlePullsListFilesRequest(args, w, r)
+																return
+															case 'm': // Prefix: "merge"
+																if prefix := "merge"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																	elem = elem[len(prefix):]
+																} else {
+																	break
+																}
+
+																// Leaf: PullsCheckIfMerged
+																s.handlePullsCheckIfMergedRequest(args, w, r)
+																return
+															case 'r': // Prefix: "re"
+																if prefix := "re"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																	elem = elem[len(prefix):]
+																} else {
+																	break
+																}
+
+																if len(elem) == 0 {
+																	s.handlePullsListRequestedReviewersRequest(args, w, r)
+																	return
+																}
+																switch elem[0] {
+																case 'q': // Prefix: "quested_reviewers"
+																	if prefix := "quested_reviewers"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																		elem = elem[len(prefix):]
+																	} else {
+																		break
+																	}
+
+																	// Leaf: PullsListRequestedReviewers
+																	s.handlePullsListRequestedReviewersRequest(args, w, r)
+																	return
+																case 'v': // Prefix: "views"
+																	if prefix := "views"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																		elem = elem[len(prefix):]
+																	} else {
+																		break
+																	}
+
+																	if len(elem) == 0 {
+																		s.handlePullsListReviewsRequest(args, w, r)
+																		return
+																	}
+																	switch elem[0] {
+																	case '/': // Prefix: "/"
+																		if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																			elem = elem[len(prefix):]
+																		} else {
+																			break
+																		}
+
+																		// Param: "review_id"
+																		// Match until one of "/"
+																		idx := strings.IndexAny(elem, "/")
+																		if idx > 0 {
+																			args["review_id"] = elem[:idx]
+																			elem = elem[idx:]
+
+																			if len(elem) == 0 {
+																				s.handlePullsGetReviewRequest(args, w, r)
+																				return
+																			}
+																			switch elem[0] {
+																			case '/': // Prefix: "/comments"
+																				if prefix := "/comments"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																					elem = elem[len(prefix):]
+																				} else {
+																					break
+																				}
+
+																				// Leaf: PullsListCommentsForReview
+																				s.handlePullsListCommentsForReviewRequest(args, w, r)
+																				return
+																			}
+																		}
+																	}
+																}
+															}
+														}
+													}
+												}
+											}
+										case 'r': // Prefix: "re"
+											if prefix := "re"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+												elem = elem[len(prefix):]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												s.handleReposGetReadmeRequest(args, w, r)
+												return
+											}
+											switch elem[0] {
+											case 'a': // Prefix: "adme"
+												if prefix := "adme"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+													elem = elem[len(prefix):]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													s.handleReposGetReadmeRequest(args, w, r)
+													return
+												}
+												switch elem[0] {
+												case '/': // Prefix: "/"
+													if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+														elem = elem[len(prefix):]
+													} else {
+														break
+													}
+
+													// Param: "dir"
+													// Leaf parameter
+													args["dir"] = elem
+
+													// Leaf: ReposGetReadmeInDirectory
+													s.handleReposGetReadmeInDirectoryRequest(args, w, r)
+													return
+												}
+											case 'l': // Prefix: "leases"
+												if prefix := "leases"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+													elem = elem[len(prefix):]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													s.handleReposListReleasesRequest(args, w, r)
+													return
+												}
+												switch elem[0] {
+												case '/': // Prefix: "/"
+													if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+														elem = elem[len(prefix):]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														s.handleReposGetReleaseRequest(args, w, r)
+														return
+													}
+													switch elem[0] {
+													case 'a': // Prefix: "assets/"
+														if prefix := "assets/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+															elem = elem[len(prefix):]
+														} else {
+															break
+														}
+
+														// Param: "asset_id"
+														// Leaf parameter
+														args["asset_id"] = elem
+
+														// Leaf: ReposGetReleaseAsset
+														s.handleReposGetReleaseAssetRequest(args, w, r)
+														return
+													case 'l': // Prefix: "latest"
+														if prefix := "latest"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+															elem = elem[len(prefix):]
+														} else {
+															break
+														}
+
+														// Leaf: ReposGetLatestRelease
+														s.handleReposGetLatestReleaseRequest(args, w, r)
+														return
+													case 't': // Prefix: "tags/"
+														if prefix := "tags/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+															elem = elem[len(prefix):]
+														} else {
+															break
+														}
+
+														// Param: "tag"
+														// Leaf parameter
+														args["tag"] = elem
+
+														// Leaf: ReposGetReleaseByTag
+														s.handleReposGetReleaseByTagRequest(args, w, r)
+														return
+													}
+													// Param: "release_id"
+													// Match until one of "/"
+													idx := strings.IndexAny(elem, "/")
+													if idx > 0 {
+														args["release_id"] = elem[:idx]
+														elem = elem[idx:]
+
+														if len(elem) == 0 {
+															s.handleReposGetReleaseRequest(args, w, r)
+															return
+														}
+														switch elem[0] {
+														case '/': // Prefix: "/assets"
+															if prefix := "/assets"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																elem = elem[len(prefix):]
+															} else {
+																break
+															}
+
+															// Leaf: ReposListReleaseAssets
+															s.handleReposListReleaseAssetsRequest(args, w, r)
+															return
+														}
+													}
+												}
+											}
+										case 's': // Prefix: "s"
+											if prefix := "s"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+												elem = elem[len(prefix):]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												s.handleReposGetCodeFrequencyStatsRequest(args, w, r)
+												return
+											}
+											switch elem[0] {
+											case 'e': // Prefix: "ecret-scanning/alerts"
+												if prefix := "ecret-scanning/alerts"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+													elem = elem[len(prefix):]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													s.handleSecretScanningListAlertsForRepoRequest(args, w, r)
+													return
+												}
+												switch elem[0] {
+												case '/': // Prefix: "/"
+													if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+														elem = elem[len(prefix):]
+													} else {
+														break
+													}
+
+													// Param: "alert_number"
+													// Leaf parameter
+													args["alert_number"] = elem
+
+													// Leaf: SecretScanningGetAlert
+													s.handleSecretScanningGetAlertRequest(args, w, r)
+													return
+												}
+											case 't': // Prefix: "tats/"
+												if prefix := "tats/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+													elem = elem[len(prefix):]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													s.handleReposGetParticipationStatsRequest(args, w, r)
+													return
+												}
+												switch elem[0] {
+												case 'c': // Prefix: "co"
+													if prefix := "co"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+														elem = elem[len(prefix):]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														s.handleReposGetCommitActivityStatsRequest(args, w, r)
+														return
+													}
+													switch elem[0] {
+													case 'd': // Prefix: "de_frequency"
+														if prefix := "de_frequency"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+															elem = elem[len(prefix):]
+														} else {
+															break
+														}
+
+														// Leaf: ReposGetCodeFrequencyStats
+														s.handleReposGetCodeFrequencyStatsRequest(args, w, r)
+														return
+													case 'm': // Prefix: "mmit_activity"
+														if prefix := "mmit_activity"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+															elem = elem[len(prefix):]
+														} else {
+															break
+														}
+
+														// Leaf: ReposGetCommitActivityStats
+														s.handleReposGetCommitActivityStatsRequest(args, w, r)
+														return
+													case 'n': // Prefix: "ntributors"
+														if prefix := "ntributors"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+															elem = elem[len(prefix):]
+														} else {
+															break
+														}
+
+														// Leaf: ReposGetContributorsStats
+														s.handleReposGetContributorsStatsRequest(args, w, r)
+														return
+													}
+												case 'p': // Prefix: "p"
+													if prefix := "p"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+														elem = elem[len(prefix):]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														s.handleReposGetPunchCardStatsRequest(args, w, r)
+														return
+													}
+													switch elem[0] {
+													case 'a': // Prefix: "articipation"
+														if prefix := "articipation"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+															elem = elem[len(prefix):]
+														} else {
+															break
+														}
+
+														// Leaf: ReposGetParticipationStats
+														s.handleReposGetParticipationStatsRequest(args, w, r)
+														return
+													case 'u': // Prefix: "unch_card"
+														if prefix := "unch_card"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+															elem = elem[len(prefix):]
+														} else {
+															break
+														}
+
+														// Leaf: ReposGetPunchCardStats
+														s.handleReposGetPunchCardStatsRequest(args, w, r)
+														return
+													}
+												}
+											case 'u': // Prefix: "ubscri"
+												if prefix := "ubscri"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+													elem = elem[len(prefix):]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													s.handleActivityListWatchersForRepoRequest(args, w, r)
+													return
+												}
+												switch elem[0] {
+												case 'b': // Prefix: "bers"
+													if prefix := "bers"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+														elem = elem[len(prefix):]
+													} else {
+														break
+													}
+
+													// Leaf: ActivityListWatchersForRepo
+													s.handleActivityListWatchersForRepoRequest(args, w, r)
+													return
+												case 'p': // Prefix: "ption"
+													if prefix := "ption"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+														elem = elem[len(prefix):]
+													} else {
+														break
+													}
+
+													// Leaf: ActivityGetRepoSubscription
+													s.handleActivityGetRepoSubscriptionRequest(args, w, r)
+													return
+												}
+											}
+										case 't': // Prefix: "t"
+											if prefix := "t"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+												elem = elem[len(prefix):]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												s.handleReposGetAllTopicsRequest(args, w, r)
+												return
+											}
+											switch elem[0] {
+											case 'a': // Prefix: "a"
+												if prefix := "a"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+													elem = elem[len(prefix):]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													s.handleReposListTagsRequest(args, w, r)
+													return
+												}
+												switch elem[0] {
+												case 'g': // Prefix: "gs"
+													if prefix := "gs"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+														elem = elem[len(prefix):]
+													} else {
+														break
+													}
+
+													// Leaf: ReposListTags
+													s.handleReposListTagsRequest(args, w, r)
+													return
+												case 'r': // Prefix: "rball/"
+													if prefix := "rball/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+														elem = elem[len(prefix):]
+													} else {
+														break
+													}
+
+													// Param: "ref"
+													// Leaf parameter
+													args["ref"] = elem
+
+													// Leaf: ReposDownloadTarballArchive
+													s.handleReposDownloadTarballArchiveRequest(args, w, r)
+													return
+												}
+											case 'e': // Prefix: "eams"
+												if prefix := "eams"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+													elem = elem[len(prefix):]
+												} else {
+													break
+												}
+
+												// Leaf: ReposListTeams
+												s.handleReposListTeamsRequest(args, w, r)
+												return
+											case 'o': // Prefix: "opics"
+												if prefix := "opics"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+													elem = elem[len(prefix):]
+												} else {
+													break
+												}
+
+												// Leaf: ReposGetAllTopics
+												s.handleReposGetAllTopicsRequest(args, w, r)
+												return
+											case 'r': // Prefix: "raffic/"
+												if prefix := "raffic/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+													elem = elem[len(prefix):]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													s.handleReposGetTopPathsRequest(args, w, r)
+													return
+												}
+												switch elem[0] {
+												case 'c': // Prefix: "clones"
+													if prefix := "clones"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+														elem = elem[len(prefix):]
+													} else {
+														break
+													}
+
+													// Leaf: ReposGetClones
+													s.handleReposGetClonesRequest(args, w, r)
+													return
+												case 'p': // Prefix: "popular/"
+													if prefix := "popular/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+														elem = elem[len(prefix):]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														s.handleReposGetTopReferrersRequest(args, w, r)
+														return
+													}
+													switch elem[0] {
+													case 'p': // Prefix: "paths"
+														if prefix := "paths"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+															elem = elem[len(prefix):]
+														} else {
+															break
+														}
+
+														// Leaf: ReposGetTopPaths
+														s.handleReposGetTopPathsRequest(args, w, r)
+														return
+													case 'r': // Prefix: "referrers"
+														if prefix := "referrers"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+															elem = elem[len(prefix):]
+														} else {
+															break
+														}
+
+														// Leaf: ReposGetTopReferrers
+														s.handleReposGetTopReferrersRequest(args, w, r)
+														return
+													}
+												case 'v': // Prefix: "views"
+													if prefix := "views"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+														elem = elem[len(prefix):]
+													} else {
+														break
+													}
+
+													// Leaf: ReposGetViews
+													s.handleReposGetViewsRequest(args, w, r)
+													return
+												}
+											}
+										case 'v': // Prefix: "vulnerability-alerts"
+											if prefix := "vulnerability-alerts"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+												elem = elem[len(prefix):]
+											} else {
+												break
+											}
+
+											// Leaf: ReposCheckVulnerabilityAlerts
+											s.handleReposCheckVulnerabilityAlertsRequest(args, w, r)
+											return
+										case 'z': // Prefix: "zipball/"
+											if prefix := "zipball/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+												elem = elem[len(prefix):]
+											} else {
+												break
+											}
+
+											// Param: "ref"
+											// Leaf parameter
+											args["ref"] = elem
+
+											// Leaf: ReposDownloadZipballArchive
+											s.handleReposDownloadZipballArchiveRequest(args, w, r)
+											return
+										}
+									}
+								}
+							}
+						}
+					case 'i': // Prefix: "itories"
+						if prefix := "itories"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+							elem = elem[len(prefix):]
+						} else {
+							break
+						}
+
+						if len(elem) == 0 {
+							s.handleReposListPublicRequest(args, w, r)
+							return
+						}
+						switch elem[0] {
+						case '/': // Prefix: "/"
+							if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+								elem = elem[len(prefix):]
+							} else {
+								break
+							}
+
+							// Param: "repository_id"
+							// Match until one of "/"
+							idx := strings.IndexAny(elem, "/")
+							if idx > 0 {
+								args["repository_id"] = elem[:idx]
+								elem = elem[idx:]
+
+								if len(elem) == 0 {
+									break
+								}
+								switch elem[0] {
+								case '/': // Prefix: "/environments/"
+									if prefix := "/environments/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+										elem = elem[len(prefix):]
+									} else {
+										break
+									}
+
+									// Param: "environment_name"
+									// Match until one of "/"
+									idx := strings.IndexAny(elem, "/")
+									if idx > 0 {
+										args["environment_name"] = elem[:idx]
+										elem = elem[idx:]
+
+										if len(elem) == 0 {
+											break
+										}
+										switch elem[0] {
+										case '/': // Prefix: "/secrets"
+											if prefix := "/secrets"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+												elem = elem[len(prefix):]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												s.handleActionsListEnvironmentSecretsRequest(args, w, r)
+												return
+											}
+											switch elem[0] {
+											case '/': // Prefix: "/"
+												if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+													elem = elem[len(prefix):]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													s.handleActionsGetEnvironmentSecretRequest(args, w, r)
+													return
+												}
+												switch elem[0] {
+												case 'p': // Prefix: "public-key"
+													if prefix := "public-key"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+														elem = elem[len(prefix):]
+													} else {
+														break
+													}
+
+													// Leaf: ActionsGetEnvironmentPublicKey
+													s.handleActionsGetEnvironmentPublicKeyRequest(args, w, r)
+													return
+												}
+												// Param: "secret_name"
+												// Leaf parameter
+												args["secret_name"] = elem
+
+												// Leaf: ActionsGetEnvironmentSecret
+												s.handleActionsGetEnvironmentSecretRequest(args, w, r)
+												return
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			case 's': // Prefix: "s"
+				if prefix := "s"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+					elem = elem[len(prefix):]
+				} else {
+					break
+				}
+
+				if len(elem) == 0 {
+					s.handleSearchCodeRequest(args, w, r)
+					return
+				}
+				switch elem[0] {
+				case 'c': // Prefix: "cim/v2/enterprises/"
+					if prefix := "cim/v2/enterprises/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+						elem = elem[len(prefix):]
+					} else {
+						break
+					}
+
+					// Param: "enterprise"
+					// Match until one of "/"
+					idx := strings.IndexAny(elem, "/")
+					if idx > 0 {
+						args["enterprise"] = elem[:idx]
+						elem = elem[idx:]
+
+						if len(elem) == 0 {
+							break
+						}
+						switch elem[0] {
+						case '/': // Prefix: "/"
+							if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+								elem = elem[len(prefix):]
+							} else {
+								break
+							}
+
+							if len(elem) == 0 {
+								s.handleEnterpriseAdminGetProvisioningInformationForEnterpriseUserRequest(args, w, r)
+								return
+							}
+							switch elem[0] {
+							case 'G': // Prefix: "Groups"
+								if prefix := "Groups"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+									elem = elem[len(prefix):]
+								} else {
+									break
+								}
+
+								if len(elem) == 0 {
+									s.handleEnterpriseAdminListProvisionedGroupsEnterpriseRequest(args, w, r)
+									return
+								}
+								switch elem[0] {
+								case '/': // Prefix: "/"
+									if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+										elem = elem[len(prefix):]
+									} else {
+										break
+									}
+
+									// Param: "scim_group_id"
+									// Leaf parameter
+									args["scim_group_id"] = elem
+
+									// Leaf: EnterpriseAdminGetProvisioningInformationForEnterpriseGroup
+									s.handleEnterpriseAdminGetProvisioningInformationForEnterpriseGroupRequest(args, w, r)
+									return
+								}
+							case 'U': // Prefix: "Users"
+								if prefix := "Users"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+									elem = elem[len(prefix):]
+								} else {
+									break
+								}
+
+								if len(elem) == 0 {
+									s.handleEnterpriseAdminListProvisionedIdentitiesEnterpriseRequest(args, w, r)
+									return
+								}
+								switch elem[0] {
+								case '/': // Prefix: "/"
+									if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+										elem = elem[len(prefix):]
+									} else {
+										break
+									}
+
+									// Param: "scim_user_id"
+									// Leaf parameter
+									args["scim_user_id"] = elem
+
+									// Leaf: EnterpriseAdminGetProvisioningInformationForEnterpriseUser
+									s.handleEnterpriseAdminGetProvisioningInformationForEnterpriseUserRequest(args, w, r)
+									return
+								}
+							}
+						}
+					}
+				case 'e': // Prefix: "earch/"
+					if prefix := "earch/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+						elem = elem[len(prefix):]
+					} else {
+						break
+					}
+
+					if len(elem) == 0 {
+						s.handleSearchIssuesAndPullRequestsRequest(args, w, r)
+						return
+					}
+					switch elem[0] {
+					case 'c': // Prefix: "co"
+						if prefix := "co"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+							elem = elem[len(prefix):]
+						} else {
+							break
+						}
+
+						if len(elem) == 0 {
+							s.handleSearchCommitsRequest(args, w, r)
+							return
+						}
+						switch elem[0] {
+						case 'd': // Prefix: "de"
+							if prefix := "de"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+								elem = elem[len(prefix):]
+							} else {
+								break
+							}
+
+							// Leaf: SearchCode
+							s.handleSearchCodeRequest(args, w, r)
+							return
+						case 'm': // Prefix: "mmits"
+							if prefix := "mmits"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+								elem = elem[len(prefix):]
+							} else {
+								break
+							}
+
+							// Leaf: SearchCommits
+							s.handleSearchCommitsRequest(args, w, r)
+							return
+						}
+					case 'i': // Prefix: "issues"
+						if prefix := "issues"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+							elem = elem[len(prefix):]
+						} else {
+							break
+						}
+
+						// Leaf: SearchIssuesAndPullRequests
+						s.handleSearchIssuesAndPullRequestsRequest(args, w, r)
+						return
+					case 'l': // Prefix: "labels"
+						if prefix := "labels"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+							elem = elem[len(prefix):]
+						} else {
+							break
+						}
+
+						// Leaf: SearchLabels
+						s.handleSearchLabelsRequest(args, w, r)
+						return
+					case 'r': // Prefix: "repositories"
+						if prefix := "repositories"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+							elem = elem[len(prefix):]
+						} else {
+							break
+						}
+
+						// Leaf: SearchRepos
+						s.handleSearchReposRequest(args, w, r)
+						return
+					case 't': // Prefix: "topics"
+						if prefix := "topics"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+							elem = elem[len(prefix):]
+						} else {
+							break
+						}
+
+						// Leaf: SearchTopics
+						s.handleSearchTopicsRequest(args, w, r)
+						return
+					case 'u': // Prefix: "users"
+						if prefix := "users"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+							elem = elem[len(prefix):]
+						} else {
+							break
+						}
+
+						// Leaf: SearchUsers
+						s.handleSearchUsersRequest(args, w, r)
+						return
+					}
+				}
+			case 't': // Prefix: "teams/"
+				if prefix := "teams/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+					elem = elem[len(prefix):]
+				} else {
+					break
+				}
+
+				// Param: "team_id"
+				// Match until one of "/"
+				idx := strings.IndexAny(elem, "/")
+				if idx > 0 {
+					args["team_id"] = elem[:idx]
+					elem = elem[idx:]
+
+					if len(elem) == 0 {
+						s.handleTeamsGetLegacyRequest(args, w, r)
+						return
+					}
+					switch elem[0] {
+					case '/': // Prefix: "/"
+						if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+							elem = elem[len(prefix):]
+						} else {
+							break
+						}
+
+						if len(elem) == 0 {
+							s.handleTeamsCheckPermissionsForProjectLegacyRequest(args, w, r)
+							return
+						}
+						switch elem[0] {
+						case 'd': // Prefix: "discussions"
+							if prefix := "discussions"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+								elem = elem[len(prefix):]
+							} else {
+								break
+							}
+
+							if len(elem) == 0 {
+								s.handleTeamsListDiscussionsLegacyRequest(args, w, r)
+								return
+							}
+							switch elem[0] {
+							case '/': // Prefix: "/"
+								if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+									elem = elem[len(prefix):]
+								} else {
+									break
+								}
+
+								// Param: "discussion_number"
+								// Match until one of "/"
+								idx := strings.IndexAny(elem, "/")
+								if idx > 0 {
+									args["discussion_number"] = elem[:idx]
+									elem = elem[idx:]
+
+									if len(elem) == 0 {
+										s.handleTeamsGetDiscussionLegacyRequest(args, w, r)
+										return
+									}
+									switch elem[0] {
+									case '/': // Prefix: "/"
+										if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+											elem = elem[len(prefix):]
+										} else {
+											break
+										}
+
+										if len(elem) == 0 {
+											s.handleReactionsListForTeamDiscussionLegacyRequest(args, w, r)
+											return
+										}
+										switch elem[0] {
+										case 'c': // Prefix: "comments"
+											if prefix := "comments"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+												elem = elem[len(prefix):]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												s.handleTeamsListDiscussionCommentsLegacyRequest(args, w, r)
+												return
+											}
+											switch elem[0] {
+											case '/': // Prefix: "/"
+												if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+													elem = elem[len(prefix):]
+												} else {
+													break
+												}
+
+												// Param: "comment_number"
+												// Match until one of "/"
+												idx := strings.IndexAny(elem, "/")
+												if idx > 0 {
+													args["comment_number"] = elem[:idx]
+													elem = elem[idx:]
+
+													if len(elem) == 0 {
+														s.handleTeamsGetDiscussionCommentLegacyRequest(args, w, r)
+														return
+													}
+													switch elem[0] {
+													case '/': // Prefix: "/reactions"
+														if prefix := "/reactions"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+															elem = elem[len(prefix):]
+														} else {
+															break
+														}
+
+														// Leaf: ReactionsListForTeamDiscussionCommentLegacy
+														s.handleReactionsListForTeamDiscussionCommentLegacyRequest(args, w, r)
+														return
+													}
+												}
+											}
+										case 'r': // Prefix: "reactions"
+											if prefix := "reactions"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+												elem = elem[len(prefix):]
+											} else {
+												break
+											}
+
+											// Leaf: ReactionsListForTeamDiscussionLegacy
+											s.handleReactionsListForTeamDiscussionLegacyRequest(args, w, r)
+											return
+										}
+									}
+								}
+							}
+						case 'i': // Prefix: "invitations"
+							if prefix := "invitations"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+								elem = elem[len(prefix):]
+							} else {
+								break
+							}
+
+							// Leaf: TeamsListPendingInvitationsLegacy
+							s.handleTeamsListPendingInvitationsLegacyRequest(args, w, r)
+							return
+						case 'm': // Prefix: "members"
+							if prefix := "members"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+								elem = elem[len(prefix):]
+							} else {
+								break
+							}
+
+							if len(elem) == 0 {
+								s.handleTeamsListMembersLegacyRequest(args, w, r)
+								return
+							}
+							switch elem[0] {
+							case '/': // Prefix: "/"
+								if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+									elem = elem[len(prefix):]
+								} else {
+									break
+								}
+
+								// Param: "username"
+								// Leaf parameter
+								args["username"] = elem
+
+								// Leaf: TeamsGetMemberLegacy
+								s.handleTeamsGetMemberLegacyRequest(args, w, r)
+								return
+							case 'h': // Prefix: "hips/"
+								if prefix := "hips/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+									elem = elem[len(prefix):]
+								} else {
+									break
+								}
+
+								// Param: "username"
+								// Leaf parameter
+								args["username"] = elem
+
+								// Leaf: TeamsGetMembershipForUserLegacy
+								s.handleTeamsGetMembershipForUserLegacyRequest(args, w, r)
+								return
+							}
+						case 'p': // Prefix: "projects"
+							if prefix := "projects"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+								elem = elem[len(prefix):]
+							} else {
+								break
+							}
+
+							if len(elem) == 0 {
+								s.handleTeamsListProjectsLegacyRequest(args, w, r)
+								return
+							}
+							switch elem[0] {
+							case '/': // Prefix: "/"
+								if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+									elem = elem[len(prefix):]
+								} else {
+									break
+								}
+
+								// Param: "project_id"
+								// Leaf parameter
+								args["project_id"] = elem
+
+								// Leaf: TeamsCheckPermissionsForProjectLegacy
+								s.handleTeamsCheckPermissionsForProjectLegacyRequest(args, w, r)
+								return
+							}
+						case 'r': // Prefix: "repos"
+							if prefix := "repos"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+								elem = elem[len(prefix):]
+							} else {
+								break
+							}
+
+							if len(elem) == 0 {
+								s.handleTeamsListReposLegacyRequest(args, w, r)
+								return
+							}
+							switch elem[0] {
+							case '/': // Prefix: "/"
+								if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+									elem = elem[len(prefix):]
+								} else {
+									break
+								}
+
+								// Param: "owner"
+								// Match until one of "/"
+								idx := strings.IndexAny(elem, "/")
+								if idx > 0 {
+									args["owner"] = elem[:idx]
+									elem = elem[idx:]
+
+									if len(elem) == 0 {
+										break
+									}
+									switch elem[0] {
+									case '/': // Prefix: "/"
+										if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+											elem = elem[len(prefix):]
+										} else {
+											break
+										}
+
+										// Param: "repo"
+										// Leaf parameter
+										args["repo"] = elem
+
+										// Leaf: TeamsCheckPermissionsForRepoLegacy
+										s.handleTeamsCheckPermissionsForRepoLegacyRequest(args, w, r)
+										return
+									}
+								}
+							}
+						case 't': // Prefix: "team"
+							if prefix := "team"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+								elem = elem[len(prefix):]
+							} else {
+								break
+							}
+
+							if len(elem) == 0 {
+								s.handleTeamsListIdpGroupsForLegacyRequest(args, w, r)
+								return
+							}
+							switch elem[0] {
+							case '-': // Prefix: "-sync/group-mappings"
+								if prefix := "-sync/group-mappings"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+									elem = elem[len(prefix):]
+								} else {
+									break
+								}
+
+								// Leaf: TeamsListIdpGroupsForLegacy
+								s.handleTeamsListIdpGroupsForLegacyRequest(args, w, r)
+								return
+							case 's': // Prefix: "s"
+								if prefix := "s"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+									elem = elem[len(prefix):]
+								} else {
+									break
+								}
+
+								// Leaf: TeamsListChildLegacy
+								s.handleTeamsListChildLegacyRequest(args, w, r)
+								return
+							}
+						}
+					}
+				}
+			case 'u': // Prefix: "user"
+				if prefix := "user"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+					elem = elem[len(prefix):]
+				} else {
+					break
+				}
+
+				if len(elem) == 0 {
+					s.handleUsersGetAuthenticatedRequest(args, w, r)
+					return
+				}
+				switch elem[0] {
+				case '/': // Prefix: "/"
+					if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+						elem = elem[len(prefix):]
+					} else {
+						break
+					}
+
+					if len(elem) == 0 {
+						s.handleAppsListInstallationReposForAuthenticatedUserRequest(args, w, r)
+						return
+					}
+					switch elem[0] {
+					case 'b': // Prefix: "blocks"
+						if prefix := "blocks"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+							elem = elem[len(prefix):]
+						} else {
+							break
+						}
+
+						if len(elem) == 0 {
+							s.handleUsersListBlockedByAuthenticatedRequest(args, w, r)
+							return
+						}
+						switch elem[0] {
+						case '/': // Prefix: "/"
+							if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+								elem = elem[len(prefix):]
+							} else {
+								break
+							}
+
+							// Param: "username"
+							// Leaf parameter
+							args["username"] = elem
+
+							// Leaf: UsersCheckBlocked
+							s.handleUsersCheckBlockedRequest(args, w, r)
+							return
+						}
+					case 'e': // Prefix: "emails"
+						if prefix := "emails"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+							elem = elem[len(prefix):]
+						} else {
+							break
+						}
+
+						// Leaf: UsersListEmailsForAuthenticated
+						s.handleUsersListEmailsForAuthenticatedRequest(args, w, r)
+						return
+					case 'f': // Prefix: "follow"
+						if prefix := "follow"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+							elem = elem[len(prefix):]
+						} else {
+							break
+						}
+
+						if len(elem) == 0 {
+							s.handleUsersListFollowersForAuthenticatedUserRequest(args, w, r)
+							return
+						}
+						switch elem[0] {
+						case 'e': // Prefix: "ers"
+							if prefix := "ers"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+								elem = elem[len(prefix):]
+							} else {
+								break
+							}
+
+							// Leaf: UsersListFollowersForAuthenticatedUser
+							s.handleUsersListFollowersForAuthenticatedUserRequest(args, w, r)
+							return
+						case 'i': // Prefix: "ing"
+							if prefix := "ing"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+								elem = elem[len(prefix):]
+							} else {
+								break
+							}
+
+							if len(elem) == 0 {
+								s.handleUsersListFollowedByAuthenticatedRequest(args, w, r)
+								return
+							}
+							switch elem[0] {
+							case '/': // Prefix: "/"
+								if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+									elem = elem[len(prefix):]
+								} else {
+									break
+								}
+
+								// Param: "username"
+								// Leaf parameter
+								args["username"] = elem
+
+								// Leaf: UsersCheckPersonIsFollowedByAuthenticated
+								s.handleUsersCheckPersonIsFollowedByAuthenticatedRequest(args, w, r)
+								return
+							}
+						}
+					case 'g': // Prefix: "gpg_keys"
+						if prefix := "gpg_keys"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+							elem = elem[len(prefix):]
+						} else {
+							break
+						}
+
+						if len(elem) == 0 {
+							s.handleUsersListGpgKeysForAuthenticatedRequest(args, w, r)
+							return
+						}
+						switch elem[0] {
+						case '/': // Prefix: "/"
+							if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+								elem = elem[len(prefix):]
+							} else {
+								break
+							}
+
+							// Param: "gpg_key_id"
+							// Leaf parameter
+							args["gpg_key_id"] = elem
+
+							// Leaf: UsersGetGpgKeyForAuthenticated
+							s.handleUsersGetGpgKeyForAuthenticatedRequest(args, w, r)
+							return
+						}
+					case 'i': // Prefix: "i"
+						if prefix := "i"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+							elem = elem[len(prefix):]
+						} else {
+							break
+						}
+
+						if len(elem) == 0 {
+							s.handleIssuesListForAuthenticatedUserRequest(args, w, r)
+							return
+						}
+						switch elem[0] {
+						case 'n': // Prefix: "nstallations/"
+							if prefix := "nstallations/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+								elem = elem[len(prefix):]
+							} else {
+								break
+							}
+
+							// Param: "installation_id"
+							// Match until one of "/"
+							idx := strings.IndexAny(elem, "/")
+							if idx > 0 {
+								args["installation_id"] = elem[:idx]
+								elem = elem[idx:]
+
+								if len(elem) == 0 {
+									break
+								}
+								switch elem[0] {
+								case '/': // Prefix: "/repositories"
+									if prefix := "/repositories"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+										elem = elem[len(prefix):]
+									} else {
+										break
+									}
+
+									// Leaf: AppsListInstallationReposForAuthenticatedUser
+									s.handleAppsListInstallationReposForAuthenticatedUserRequest(args, w, r)
+									return
+								}
+							}
+						case 's': // Prefix: "ssues"
+							if prefix := "ssues"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+								elem = elem[len(prefix):]
+							} else {
+								break
+							}
+
+							// Leaf: IssuesListForAuthenticatedUser
+							s.handleIssuesListForAuthenticatedUserRequest(args, w, r)
+							return
+						}
+					case 'k': // Prefix: "keys"
+						if prefix := "keys"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+							elem = elem[len(prefix):]
+						} else {
+							break
+						}
+
+						if len(elem) == 0 {
+							s.handleUsersListPublicSSHKeysForAuthenticatedRequest(args, w, r)
+							return
+						}
+						switch elem[0] {
+						case '/': // Prefix: "/"
+							if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+								elem = elem[len(prefix):]
+							} else {
+								break
+							}
+
+							// Param: "key_id"
+							// Leaf parameter
+							args["key_id"] = elem
+
+							// Leaf: UsersGetPublicSSHKeyForAuthenticated
+							s.handleUsersGetPublicSSHKeyForAuthenticatedRequest(args, w, r)
+							return
+						}
+					case 'm': // Prefix: "m"
+						if prefix := "m"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+							elem = elem[len(prefix):]
+						} else {
+							break
+						}
+
+						if len(elem) == 0 {
+							s.handleMigrationsGetArchiveForAuthenticatedUserRequest(args, w, r)
+							return
+						}
+						switch elem[0] {
+						case 'a': // Prefix: "arketplace_purchases"
+							if prefix := "arketplace_purchases"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+								elem = elem[len(prefix):]
+							} else {
+								break
+							}
+
+							if len(elem) == 0 {
+								s.handleAppsListSubscriptionsForAuthenticatedUserRequest(args, w, r)
+								return
+							}
+							switch elem[0] {
+							case '/': // Prefix: "/stubbed"
+								if prefix := "/stubbed"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+									elem = elem[len(prefix):]
+								} else {
+									break
+								}
+
+								// Leaf: AppsListSubscriptionsForAuthenticatedUserStubbed
+								s.handleAppsListSubscriptionsForAuthenticatedUserStubbedRequest(args, w, r)
+								return
+							}
+						case 'e': // Prefix: "emberships/orgs"
+							if prefix := "emberships/orgs"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+								elem = elem[len(prefix):]
+							} else {
+								break
+							}
+
+							if len(elem) == 0 {
+								s.handleOrgsListMembershipsForAuthenticatedUserRequest(args, w, r)
+								return
+							}
+							switch elem[0] {
+							case '/': // Prefix: "/"
+								if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+									elem = elem[len(prefix):]
+								} else {
+									break
+								}
+
+								// Param: "org"
+								// Leaf parameter
+								args["org"] = elem
+
+								// Leaf: OrgsGetMembershipForAuthenticatedUser
+								s.handleOrgsGetMembershipForAuthenticatedUserRequest(args, w, r)
+								return
+							}
+						case 'i': // Prefix: "igrations"
+							if prefix := "igrations"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+								elem = elem[len(prefix):]
+							} else {
+								break
+							}
+
+							if len(elem) == 0 {
+								s.handleMigrationsListForAuthenticatedUserRequest(args, w, r)
+								return
+							}
+							switch elem[0] {
+							case '/': // Prefix: "/"
+								if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+									elem = elem[len(prefix):]
+								} else {
+									break
+								}
+
+								// Param: "migration_id"
+								// Match until one of "/"
+								idx := strings.IndexAny(elem, "/")
+								if idx > 0 {
+									args["migration_id"] = elem[:idx]
+									elem = elem[idx:]
+
+									if len(elem) == 0 {
+										s.handleMigrationsGetStatusForAuthenticatedUserRequest(args, w, r)
+										return
+									}
+									switch elem[0] {
+									case '/': // Prefix: "/"
+										if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+											elem = elem[len(prefix):]
+										} else {
+											break
+										}
+
+										if len(elem) == 0 {
+											s.handleMigrationsListReposForUserRequest(args, w, r)
+											return
+										}
+										switch elem[0] {
+										case 'a': // Prefix: "archive"
+											if prefix := "archive"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+												elem = elem[len(prefix):]
+											} else {
+												break
+											}
+
+											// Leaf: MigrationsGetArchiveForAuthenticatedUser
+											s.handleMigrationsGetArchiveForAuthenticatedUserRequest(args, w, r)
+											return
+										case 'r': // Prefix: "repositories"
+											if prefix := "repositories"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+												elem = elem[len(prefix):]
+											} else {
+												break
+											}
+
+											// Leaf: MigrationsListReposForUser
+											s.handleMigrationsListReposForUserRequest(args, w, r)
+											return
+										}
+									}
+								}
+							}
+						}
+					case 'o': // Prefix: "orgs"
+						if prefix := "orgs"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+							elem = elem[len(prefix):]
+						} else {
+							break
+						}
+
+						// Leaf: OrgsListForAuthenticatedUser
+						s.handleOrgsListForAuthenticatedUserRequest(args, w, r)
+						return
+					case 'p': // Prefix: "p"
+						if prefix := "p"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+							elem = elem[len(prefix):]
+						} else {
+							break
+						}
+
+						if len(elem) == 0 {
+							s.handleUsersListPublicEmailsForAuthenticatedRequest(args, w, r)
+							return
+						}
+						switch elem[0] {
+						case 'a': // Prefix: "ackages"
+							if prefix := "ackages"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+								elem = elem[len(prefix):]
+							} else {
+								break
+							}
+
+							if len(elem) == 0 {
+								s.handlePackagesListPackagesForAuthenticatedUserRequest(args, w, r)
+								return
+							}
+							switch elem[0] {
+							case '/': // Prefix: "/"
+								if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+									elem = elem[len(prefix):]
+								} else {
+									break
+								}
+
+								// Param: "package_type"
+								// Match until one of "/"
+								idx := strings.IndexAny(elem, "/")
+								if idx > 0 {
+									args["package_type"] = elem[:idx]
+									elem = elem[idx:]
+
+									if len(elem) == 0 {
+										break
+									}
+									switch elem[0] {
+									case '/': // Prefix: "/"
+										if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+											elem = elem[len(prefix):]
+										} else {
+											break
+										}
+
+										// Param: "package_name"
+										// Match until one of "/"
+										idx := strings.IndexAny(elem, "/")
+										if idx > 0 {
+											args["package_name"] = elem[:idx]
+											elem = elem[idx:]
+
+											if len(elem) == 0 {
+												s.handlePackagesGetPackageForAuthenticatedUserRequest(args, w, r)
+												return
+											}
+											switch elem[0] {
+											case '/': // Prefix: "/versions"
+												if prefix := "/versions"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+													elem = elem[len(prefix):]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													s.handlePackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserRequest(args, w, r)
+													return
+												}
+												switch elem[0] {
+												case '/': // Prefix: "/"
+													if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+														elem = elem[len(prefix):]
+													} else {
+														break
+													}
+
+													// Param: "package_version_id"
+													// Leaf parameter
+													args["package_version_id"] = elem
+
+													// Leaf: PackagesGetPackageVersionForAuthenticatedUser
+													s.handlePackagesGetPackageVersionForAuthenticatedUserRequest(args, w, r)
+													return
+												}
+											}
+										}
+									}
+								}
+							}
+						case 'u': // Prefix: "ublic_emails"
+							if prefix := "ublic_emails"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+								elem = elem[len(prefix):]
+							} else {
+								break
+							}
+
+							// Leaf: UsersListPublicEmailsForAuthenticated
+							s.handleUsersListPublicEmailsForAuthenticatedRequest(args, w, r)
+							return
+						}
+					case 'r': // Prefix: "repos"
+						if prefix := "repos"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+							elem = elem[len(prefix):]
+						} else {
+							break
+						}
+
+						if len(elem) == 0 {
+							s.handleReposListForAuthenticatedUserRequest(args, w, r)
+							return
+						}
+						switch elem[0] {
+						case 'i': // Prefix: "itory_invitations"
+							if prefix := "itory_invitations"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+								elem = elem[len(prefix):]
+							} else {
+								break
+							}
+
+							// Leaf: ReposListInvitationsForAuthenticatedUser
+							s.handleReposListInvitationsForAuthenticatedUserRequest(args, w, r)
+							return
+						}
+					case 's': // Prefix: "s"
+						if prefix := "s"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+							elem = elem[len(prefix):]
+						} else {
+							break
+						}
+
+						if len(elem) == 0 {
+							s.handleActivityListWatchedReposForAuthenticatedUserRequest(args, w, r)
+							return
+						}
+						switch elem[0] {
+						case 't': // Prefix: "tarred"
+							if prefix := "tarred"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+								elem = elem[len(prefix):]
+							} else {
+								break
+							}
+
+							if len(elem) == 0 {
+								s.handleActivityListReposStarredByAuthenticatedUserRequest(args, w, r)
+								return
+							}
+							switch elem[0] {
+							case '/': // Prefix: "/"
+								if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+									elem = elem[len(prefix):]
+								} else {
+									break
+								}
+
+								// Param: "owner"
+								// Match until one of "/"
+								idx := strings.IndexAny(elem, "/")
+								if idx > 0 {
+									args["owner"] = elem[:idx]
+									elem = elem[idx:]
+
+									if len(elem) == 0 {
+										break
+									}
+									switch elem[0] {
+									case '/': // Prefix: "/"
+										if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+											elem = elem[len(prefix):]
+										} else {
+											break
+										}
+
+										// Param: "repo"
+										// Leaf parameter
+										args["repo"] = elem
+
+										// Leaf: ActivityCheckRepoIsStarredByAuthenticatedUser
+										s.handleActivityCheckRepoIsStarredByAuthenticatedUserRequest(args, w, r)
+										return
+									}
+								}
+							}
+						case 'u': // Prefix: "ubscriptions"
+							if prefix := "ubscriptions"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+								elem = elem[len(prefix):]
+							} else {
+								break
+							}
+
+							// Leaf: ActivityListWatchedReposForAuthenticatedUser
+							s.handleActivityListWatchedReposForAuthenticatedUserRequest(args, w, r)
+							return
+						}
+					case 't': // Prefix: "teams"
+						if prefix := "teams"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+							elem = elem[len(prefix):]
+						} else {
+							break
+						}
+
+						// Leaf: TeamsListForAuthenticatedUser
+						s.handleTeamsListForAuthenticatedUserRequest(args, w, r)
+						return
+					}
+				case 's': // Prefix: "s"
+					if prefix := "s"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+						elem = elem[len(prefix):]
+					} else {
+						break
+					}
+
+					if len(elem) == 0 {
+						s.handleUsersListRequest(args, w, r)
+						return
+					}
+					switch elem[0] {
+					case '/': // Prefix: "/"
+						if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+							elem = elem[len(prefix):]
+						} else {
+							break
+						}
+
+						// Param: "username"
+						// Match until one of "/"
+						idx := strings.IndexAny(elem, "/")
+						if idx > 0 {
+							args["username"] = elem[:idx]
+							elem = elem[idx:]
+
+							if len(elem) == 0 {
+								s.handleUsersGetByUsernameRequest(args, w, r)
+								return
+							}
+							switch elem[0] {
+							case '/': // Prefix: "/"
+								if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+									elem = elem[len(prefix):]
+								} else {
+									break
+								}
+
+								if len(elem) == 0 {
+									s.handleActivityListReceivedEventsForUserRequest(args, w, r)
+									return
+								}
+								switch elem[0] {
+								case 'e': // Prefix: "events"
+									if prefix := "events"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+										elem = elem[len(prefix):]
+									} else {
+										break
+									}
+
+									if len(elem) == 0 {
+										s.handleActivityListEventsForAuthenticatedUserRequest(args, w, r)
+										return
+									}
+									switch elem[0] {
+									case '/': // Prefix: "/"
+										if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+											elem = elem[len(prefix):]
+										} else {
+											break
+										}
+
+										if len(elem) == 0 {
+											s.handleActivityListPublicEventsForUserRequest(args, w, r)
+											return
+										}
+										switch elem[0] {
+										case 'o': // Prefix: "orgs/"
+											if prefix := "orgs/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+												elem = elem[len(prefix):]
+											} else {
+												break
+											}
+
+											// Param: "org"
+											// Leaf parameter
+											args["org"] = elem
+
+											// Leaf: ActivityListOrgEventsForAuthenticatedUser
+											s.handleActivityListOrgEventsForAuthenticatedUserRequest(args, w, r)
+											return
+										case 'p': // Prefix: "public"
+											if prefix := "public"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+												elem = elem[len(prefix):]
+											} else {
+												break
+											}
+
+											// Leaf: ActivityListPublicEventsForUser
+											s.handleActivityListPublicEventsForUserRequest(args, w, r)
+											return
+										}
+									}
+								case 'f': // Prefix: "follow"
+									if prefix := "follow"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+										elem = elem[len(prefix):]
+									} else {
+										break
+									}
+
+									if len(elem) == 0 {
+										s.handleUsersListFollowersForUserRequest(args, w, r)
+										return
+									}
+									switch elem[0] {
+									case 'e': // Prefix: "ers"
+										if prefix := "ers"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+											elem = elem[len(prefix):]
+										} else {
+											break
+										}
+
+										// Leaf: UsersListFollowersForUser
+										s.handleUsersListFollowersForUserRequest(args, w, r)
+										return
+									case 'i': // Prefix: "ing"
+										if prefix := "ing"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+											elem = elem[len(prefix):]
+										} else {
+											break
+										}
+
+										if len(elem) == 0 {
+											s.handleUsersListFollowingForUserRequest(args, w, r)
+											return
+										}
+										switch elem[0] {
+										case '/': // Prefix: "/"
+											if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+												elem = elem[len(prefix):]
+											} else {
+												break
+											}
+
+											// Param: "target_user"
+											// Leaf parameter
+											args["target_user"] = elem
+
+											// Leaf: UsersCheckFollowingForUser
+											s.handleUsersCheckFollowingForUserRequest(args, w, r)
+											return
+										}
+									}
+								case 'g': // Prefix: "g"
+									if prefix := "g"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+										elem = elem[len(prefix):]
+									} else {
+										break
+									}
+
+									if len(elem) == 0 {
+										s.handleUsersListGpgKeysForUserRequest(args, w, r)
+										return
+									}
+									switch elem[0] {
+									case 'i': // Prefix: "ists"
+										if prefix := "ists"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+											elem = elem[len(prefix):]
+										} else {
+											break
+										}
+
+										// Leaf: GistsListForUser
+										s.handleGistsListForUserRequest(args, w, r)
+										return
+									case 'p': // Prefix: "pg_keys"
+										if prefix := "pg_keys"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+											elem = elem[len(prefix):]
+										} else {
+											break
+										}
+
+										// Leaf: UsersListGpgKeysForUser
+										s.handleUsersListGpgKeysForUserRequest(args, w, r)
+										return
+									}
+								case 'h': // Prefix: "hovercard"
+									if prefix := "hovercard"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+										elem = elem[len(prefix):]
+									} else {
+										break
+									}
+
+									// Leaf: UsersGetContextForUser
+									s.handleUsersGetContextForUserRequest(args, w, r)
+									return
+								case 'k': // Prefix: "keys"
+									if prefix := "keys"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+										elem = elem[len(prefix):]
+									} else {
+										break
+									}
+
+									// Leaf: UsersListPublicKeysForUser
+									s.handleUsersListPublicKeysForUserRequest(args, w, r)
+									return
+								case 'o': // Prefix: "orgs"
+									if prefix := "orgs"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+										elem = elem[len(prefix):]
+									} else {
+										break
+									}
+
+									// Leaf: OrgsListForUser
+									s.handleOrgsListForUserRequest(args, w, r)
+									return
+								case 'p': // Prefix: "p"
+									if prefix := "p"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+										elem = elem[len(prefix):]
+									} else {
+										break
+									}
+
+									if len(elem) == 0 {
+										s.handleProjectsListForUserRequest(args, w, r)
+										return
+									}
+									switch elem[0] {
+									case 'a': // Prefix: "ackages"
+										if prefix := "ackages"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+											elem = elem[len(prefix):]
+										} else {
+											break
+										}
+
+										if len(elem) == 0 {
+											s.handlePackagesListPackagesForUserRequest(args, w, r)
+											return
+										}
+										switch elem[0] {
+										case '/': // Prefix: "/"
+											if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+												elem = elem[len(prefix):]
+											} else {
+												break
+											}
+
+											// Param: "package_type"
+											// Match until one of "/"
+											idx := strings.IndexAny(elem, "/")
+											if idx > 0 {
+												args["package_type"] = elem[:idx]
+												elem = elem[idx:]
+
+												if len(elem) == 0 {
+													break
+												}
+												switch elem[0] {
+												case '/': // Prefix: "/"
+													if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+														elem = elem[len(prefix):]
+													} else {
+														break
+													}
+
+													// Param: "package_name"
+													// Match until one of "/"
+													idx := strings.IndexAny(elem, "/")
+													if idx > 0 {
+														args["package_name"] = elem[:idx]
+														elem = elem[idx:]
+
+														if len(elem) == 0 {
+															s.handlePackagesGetPackageForUserRequest(args, w, r)
+															return
+														}
+														switch elem[0] {
+														case '/': // Prefix: "/versions"
+															if prefix := "/versions"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																elem = elem[len(prefix):]
+															} else {
+																break
+															}
+
+															if len(elem) == 0 {
+																s.handlePackagesGetAllPackageVersionsForPackageOwnedByUserRequest(args, w, r)
+																return
+															}
+															switch elem[0] {
+															case '/': // Prefix: "/"
+																if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																	elem = elem[len(prefix):]
+																} else {
+																	break
+																}
+
+																// Param: "package_version_id"
+																// Leaf parameter
+																args["package_version_id"] = elem
+
+																// Leaf: PackagesGetPackageVersionForUser
+																s.handlePackagesGetPackageVersionForUserRequest(args, w, r)
+																return
+															}
+														}
+													}
+												}
+											}
+										}
+									case 'r': // Prefix: "rojects"
+										if prefix := "rojects"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+											elem = elem[len(prefix):]
+										} else {
+											break
+										}
+
+										// Leaf: ProjectsListForUser
+										s.handleProjectsListForUserRequest(args, w, r)
+										return
+									}
+								case 'r': // Prefix: "re"
+									if prefix := "re"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+										elem = elem[len(prefix):]
+									} else {
+										break
+									}
+
+									if len(elem) == 0 {
+										s.handleReposListForUserRequest(args, w, r)
+										return
+									}
+									switch elem[0] {
+									case 'c': // Prefix: "ceived_events"
+										if prefix := "ceived_events"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+											elem = elem[len(prefix):]
+										} else {
+											break
+										}
+
+										if len(elem) == 0 {
+											s.handleActivityListReceivedEventsForUserRequest(args, w, r)
+											return
+										}
+										switch elem[0] {
+										case '/': // Prefix: "/public"
+											if prefix := "/public"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+												elem = elem[len(prefix):]
+											} else {
+												break
+											}
+
+											// Leaf: ActivityListReceivedPublicEventsForUser
+											s.handleActivityListReceivedPublicEventsForUserRequest(args, w, r)
+											return
+										}
+									case 'p': // Prefix: "pos"
+										if prefix := "pos"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+											elem = elem[len(prefix):]
+										} else {
+											break
+										}
+
+										// Leaf: ReposListForUser
+										s.handleReposListForUserRequest(args, w, r)
+										return
+									}
+								case 's': // Prefix: "s"
+									if prefix := "s"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+										elem = elem[len(prefix):]
+									} else {
+										break
+									}
+
+									if len(elem) == 0 {
+										s.handleBillingGetGithubActionsBillingUserRequest(args, w, r)
+										return
+									}
+									switch elem[0] {
+									case 'e': // Prefix: "ettings/billing/"
+										if prefix := "ettings/billing/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+											elem = elem[len(prefix):]
+										} else {
+											break
+										}
+
+										if len(elem) == 0 {
+											s.handleBillingGetGithubPackagesBillingUserRequest(args, w, r)
+											return
+										}
+										switch elem[0] {
+										case 'a': // Prefix: "actions"
+											if prefix := "actions"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+												elem = elem[len(prefix):]
+											} else {
+												break
+											}
+
+											// Leaf: BillingGetGithubActionsBillingUser
+											s.handleBillingGetGithubActionsBillingUserRequest(args, w, r)
+											return
+										case 'p': // Prefix: "packages"
+											if prefix := "packages"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+												elem = elem[len(prefix):]
+											} else {
+												break
+											}
+
+											// Leaf: BillingGetGithubPackagesBillingUser
+											s.handleBillingGetGithubPackagesBillingUserRequest(args, w, r)
+											return
+										case 's': // Prefix: "shared-storage"
+											if prefix := "shared-storage"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+												elem = elem[len(prefix):]
+											} else {
+												break
+											}
+
+											// Leaf: BillingGetSharedStorageBillingUser
+											s.handleBillingGetSharedStorageBillingUserRequest(args, w, r)
+											return
+										}
+									case 'u': // Prefix: "ubscriptions"
+										if prefix := "ubscriptions"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+											elem = elem[len(prefix):]
+										} else {
+											break
+										}
+
+										// Leaf: ActivityListReposWatchedByUser
+										s.handleActivityListReposWatchedByUserRequest(args, w, r)
+										return
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	case "PATCH":
+		if len(elem) == 0 {
+			break
+		}
+		switch elem[0] {
+		case '/': // Prefix: "/"
+			if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+				elem = elem[len(prefix):]
+			} else {
+				break
+			}
+
+			if len(elem) == 0 {
+				s.handleActivityMarkThreadAsReadRequest(args, w, r)
+				return
+			}
+			switch elem[0] {
+			case 'a': // Prefix: "a"
+				if prefix := "a"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+					elem = elem[len(prefix):]
+				} else {
+					break
+				}
+
+				if len(elem) == 0 {
+					s.handleOAuthAuthorizationsUpdateAuthorizationRequest(args, w, r)
+					return
+				}
+				switch elem[0] {
+				case 'p': // Prefix: "pp"
+					if prefix := "pp"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+						elem = elem[len(prefix):]
+					} else {
+						break
+					}
+
+					if len(elem) == 0 {
+						s.handleAppsUpdateWebhookConfigForAppRequest(args, w, r)
+						return
+					}
+					switch elem[0] {
+					case '/': // Prefix: "/hook/config"
+						if prefix := "/hook/config"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+							elem = elem[len(prefix):]
+						} else {
+							break
+						}
+
+						// Leaf: AppsUpdateWebhookConfigForApp
+						s.handleAppsUpdateWebhookConfigForAppRequest(args, w, r)
+						return
+					case 'l': // Prefix: "lications/"
+						if prefix := "lications/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+							elem = elem[len(prefix):]
+						} else {
+							break
+						}
+
+						// Param: "client_id"
+						// Match until one of "/"
+						idx := strings.IndexAny(elem, "/")
+						if idx > 0 {
+							args["client_id"] = elem[:idx]
+							elem = elem[idx:]
+
+							if len(elem) == 0 {
+								break
+							}
+							switch elem[0] {
+							case '/': // Prefix: "/token"
+								if prefix := "/token"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+									elem = elem[len(prefix):]
+								} else {
+									break
+								}
+
+								// Leaf: AppsResetToken
+								s.handleAppsResetTokenRequest(args, w, r)
+								return
+							}
+						}
+					}
+				case 'u': // Prefix: "uthorizations/"
+					if prefix := "uthorizations/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+						elem = elem[len(prefix):]
+					} else {
+						break
+					}
+
+					// Param: "authorization_id"
+					// Leaf parameter
+					args["authorization_id"] = elem
+
+					// Leaf: OAuthAuthorizationsUpdateAuthorization
+					s.handleOAuthAuthorizationsUpdateAuthorizationRequest(args, w, r)
+					return
+				}
+			case 'e': // Prefix: "enterprises/"
+				if prefix := "enterprises/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+					elem = elem[len(prefix):]
+				} else {
+					break
+				}
+
+				// Param: "enterprise"
+				// Match until one of "/"
+				idx := strings.IndexAny(elem, "/")
+				if idx > 0 {
+					args["enterprise"] = elem[:idx]
+					elem = elem[idx:]
+
+					if len(elem) == 0 {
+						break
+					}
+					switch elem[0] {
+					case '/': // Prefix: "/actions/runner-groups/"
+						if prefix := "/actions/runner-groups/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+							elem = elem[len(prefix):]
+						} else {
+							break
+						}
+
+						// Param: "runner_group_id"
+						// Leaf parameter
+						args["runner_group_id"] = elem
+
+						// Leaf: EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterprise
+						s.handleEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseRequest(args, w, r)
+						return
+					}
+				}
+			case 'g': // Prefix: "gists/"
+				if prefix := "gists/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+					elem = elem[len(prefix):]
+				} else {
+					break
+				}
+
+				// Param: "gist_id"
+				// Match until one of "/"
+				idx := strings.IndexAny(elem, "/")
+				if idx > 0 {
+					args["gist_id"] = elem[:idx]
+					elem = elem[idx:]
+
+					if len(elem) == 0 {
+						break
+					}
+					switch elem[0] {
+					case '/': // Prefix: "/comments/"
+						if prefix := "/comments/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+							elem = elem[len(prefix):]
+						} else {
+							break
+						}
+
+						// Param: "comment_id"
+						// Leaf parameter
+						args["comment_id"] = elem
+
+						// Leaf: GistsUpdateComment
+						s.handleGistsUpdateCommentRequest(args, w, r)
+						return
+					}
+				}
+			case 'n': // Prefix: "notifications/threads/"
+				if prefix := "notifications/threads/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+					elem = elem[len(prefix):]
+				} else {
+					break
+				}
+
+				// Param: "thread_id"
+				// Leaf parameter
+				args["thread_id"] = elem
+
+				// Leaf: ActivityMarkThreadAsRead
+				s.handleActivityMarkThreadAsReadRequest(args, w, r)
+				return
+			case 'o': // Prefix: "orgs/"
+				if prefix := "orgs/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+					elem = elem[len(prefix):]
+				} else {
+					break
+				}
+
+				// Param: "org"
+				// Match until one of "/"
+				idx := strings.IndexAny(elem, "/")
+				if idx > 0 {
+					args["org"] = elem[:idx]
+					elem = elem[idx:]
+
+					if len(elem) == 0 {
+						break
+					}
+					switch elem[0] {
+					case '/': // Prefix: "/"
+						if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+							elem = elem[len(prefix):]
+						} else {
+							break
+						}
+
+						if len(elem) == 0 {
+							s.handleOrgsUpdateWebhookRequest(args, w, r)
+							return
+						}
+						switch elem[0] {
+						case 'a': // Prefix: "actions/runner-groups/"
+							if prefix := "actions/runner-groups/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+								elem = elem[len(prefix):]
+							} else {
+								break
+							}
+
+							// Param: "runner_group_id"
+							// Leaf parameter
+							args["runner_group_id"] = elem
+
+							// Leaf: ActionsUpdateSelfHostedRunnerGroupForOrg
+							s.handleActionsUpdateSelfHostedRunnerGroupForOrgRequest(args, w, r)
+							return
+						case 'h': // Prefix: "hooks/"
+							if prefix := "hooks/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+								elem = elem[len(prefix):]
+							} else {
+								break
+							}
+
+							// Param: "hook_id"
+							// Match until one of "/"
+							idx := strings.IndexAny(elem, "/")
+							if idx > 0 {
+								args["hook_id"] = elem[:idx]
+								elem = elem[idx:]
+
+								if len(elem) == 0 {
+									s.handleOrgsUpdateWebhookRequest(args, w, r)
+									return
+								}
+								switch elem[0] {
+								case '/': // Prefix: "/config"
+									if prefix := "/config"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+										elem = elem[len(prefix):]
+									} else {
+										break
+									}
+
+									// Leaf: OrgsUpdateWebhookConfigForOrg
+									s.handleOrgsUpdateWebhookConfigForOrgRequest(args, w, r)
+									return
+								}
+							}
+						case 't': // Prefix: "teams/"
+							if prefix := "teams/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+								elem = elem[len(prefix):]
+							} else {
+								break
+							}
+
+							// Param: "team_slug"
+							// Match until one of "/"
+							idx := strings.IndexAny(elem, "/")
+							if idx > 0 {
+								args["team_slug"] = elem[:idx]
+								elem = elem[idx:]
+
+								if len(elem) == 0 {
+									s.handleTeamsUpdateInOrgRequest(args, w, r)
+									return
+								}
+								switch elem[0] {
+								case '/': // Prefix: "/"
+									if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+										elem = elem[len(prefix):]
+									} else {
+										break
+									}
+
+									if len(elem) == 0 {
+										s.handleTeamsUpdateDiscussionCommentInOrgRequest(args, w, r)
+										return
+									}
+									switch elem[0] {
+									case 'd': // Prefix: "discussions/"
+										if prefix := "discussions/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+											elem = elem[len(prefix):]
+										} else {
+											break
+										}
+
+										// Param: "discussion_number"
+										// Match until one of "/"
+										idx := strings.IndexAny(elem, "/")
+										if idx > 0 {
+											args["discussion_number"] = elem[:idx]
+											elem = elem[idx:]
+
+											if len(elem) == 0 {
+												s.handleTeamsUpdateDiscussionInOrgRequest(args, w, r)
+												return
+											}
+											switch elem[0] {
+											case '/': // Prefix: "/comments/"
+												if prefix := "/comments/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+													elem = elem[len(prefix):]
+												} else {
+													break
+												}
+
+												// Param: "comment_number"
+												// Leaf parameter
+												args["comment_number"] = elem
+
+												// Leaf: TeamsUpdateDiscussionCommentInOrg
+												s.handleTeamsUpdateDiscussionCommentInOrgRequest(args, w, r)
+												return
+											}
+										}
+									case 't': // Prefix: "team-sync/group-mappings"
+										if prefix := "team-sync/group-mappings"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+											elem = elem[len(prefix):]
+										} else {
+											break
+										}
+
+										// Leaf: TeamsCreateOrUpdateIdpGroupConnectionsInOrg
+										s.handleTeamsCreateOrUpdateIdpGroupConnectionsInOrgRequest(args, w, r)
+										return
+									}
+								}
+							}
+						}
+					}
+				}
+			case 'p': // Prefix: "projects/"
+				if prefix := "projects/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+					elem = elem[len(prefix):]
+				} else {
+					break
+				}
+
+				if len(elem) == 0 {
+					break
+				}
+				switch elem[0] {
+				case 'c': // Prefix: "columns/"
+					if prefix := "columns/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+						elem = elem[len(prefix):]
+					} else {
+						break
+					}
+
+					if len(elem) == 0 {
+						s.handleProjectsUpdateColumnRequest(args, w, r)
+						return
+					}
+					switch elem[0] {
+					case 'c': // Prefix: "cards/"
+						if prefix := "cards/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+							elem = elem[len(prefix):]
+						} else {
+							break
+						}
+
+						// Param: "card_id"
+						// Leaf parameter
+						args["card_id"] = elem
+
+						// Leaf: ProjectsUpdateCard
+						s.handleProjectsUpdateCardRequest(args, w, r)
+						return
+					}
+					// Param: "column_id"
+					// Leaf parameter
+					args["column_id"] = elem
+
+					// Leaf: ProjectsUpdateColumn
+					s.handleProjectsUpdateColumnRequest(args, w, r)
+					return
+				}
+				// Param: "project_id"
+				// Leaf parameter
+				args["project_id"] = elem
+
+				// Leaf: ProjectsUpdate
+				s.handleProjectsUpdateRequest(args, w, r)
+				return
+			case 'r': // Prefix: "repos/"
+				if prefix := "repos/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+					elem = elem[len(prefix):]
+				} else {
+					break
+				}
+
+				// Param: "owner"
+				// Match until one of "/"
+				idx := strings.IndexAny(elem, "/")
+				if idx > 0 {
+					args["owner"] = elem[:idx]
+					elem = elem[idx:]
+
+					if len(elem) == 0 {
+						break
+					}
+					switch elem[0] {
+					case '/': // Prefix: "/"
+						if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+							elem = elem[len(prefix):]
+						} else {
+							break
+						}
+
+						// Param: "repo"
+						// Match until one of "/"
+						idx := strings.IndexAny(elem, "/")
+						if idx > 0 {
+							args["repo"] = elem[:idx]
+							elem = elem[idx:]
+
+							if len(elem) == 0 {
+								s.handleReposUpdateRequest(args, w, r)
+								return
+							}
+							switch elem[0] {
+							case '/': // Prefix: "/"
+								if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+									elem = elem[len(prefix):]
+								} else {
+									break
+								}
+
+								if len(elem) == 0 {
+									s.handleGitUpdateRefRequest(args, w, r)
+									return
+								}
+								switch elem[0] {
+								case 'b': // Prefix: "branches/"
+									if prefix := "branches/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+										elem = elem[len(prefix):]
+									} else {
+										break
+									}
+
+									// Param: "branch"
+									// Match until one of "/"
+									idx := strings.IndexAny(elem, "/")
+									if idx > 0 {
+										args["branch"] = elem[:idx]
+										elem = elem[idx:]
+
+										if len(elem) == 0 {
+											break
+										}
+										switch elem[0] {
+										case '/': // Prefix: "/protection/required_"
+											if prefix := "/protection/required_"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+												elem = elem[len(prefix):]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												s.handleReposUpdateStatusCheckProtectionRequest(args, w, r)
+												return
+											}
+											switch elem[0] {
+											case 'p': // Prefix: "pull_request_reviews"
+												if prefix := "pull_request_reviews"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+													elem = elem[len(prefix):]
+												} else {
+													break
+												}
+
+												// Leaf: ReposUpdatePullRequestReviewProtection
+												s.handleReposUpdatePullRequestReviewProtectionRequest(args, w, r)
+												return
+											case 's': // Prefix: "status_checks"
+												if prefix := "status_checks"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+													elem = elem[len(prefix):]
+												} else {
+													break
+												}
+
+												// Leaf: ReposUpdateStatusCheckProtection
+												s.handleReposUpdateStatusCheckProtectionRequest(args, w, r)
+												return
+											}
+										}
+									}
+								case 'c': // Prefix: "c"
+									if prefix := "c"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+										elem = elem[len(prefix):]
+									} else {
+										break
+									}
+
+									if len(elem) == 0 {
+										s.handleCodeScanningUpdateAlertRequest(args, w, r)
+										return
+									}
+									switch elem[0] {
+									case 'h': // Prefix: "heck-suites/preferences"
+										if prefix := "heck-suites/preferences"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+											elem = elem[len(prefix):]
+										} else {
+											break
+										}
+
+										// Leaf: ChecksSetSuitesPreferences
+										s.handleChecksSetSuitesPreferencesRequest(args, w, r)
+										return
+									case 'o': // Prefix: "o"
+										if prefix := "o"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+											elem = elem[len(prefix):]
+										} else {
+											break
+										}
+
+										if len(elem) == 0 {
+											s.handleReposUpdateCommitCommentRequest(args, w, r)
+											return
+										}
+										switch elem[0] {
+										case 'd': // Prefix: "de-scanning/alerts/"
+											if prefix := "de-scanning/alerts/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+												elem = elem[len(prefix):]
+											} else {
+												break
+											}
+
+											// Param: "alert_number"
+											// Leaf parameter
+											args["alert_number"] = elem
+
+											// Leaf: CodeScanningUpdateAlert
+											s.handleCodeScanningUpdateAlertRequest(args, w, r)
+											return
+										case 'm': // Prefix: "mments/"
+											if prefix := "mments/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+												elem = elem[len(prefix):]
+											} else {
+												break
+											}
+
+											// Param: "comment_id"
+											// Leaf parameter
+											args["comment_id"] = elem
+
+											// Leaf: ReposUpdateCommitComment
+											s.handleReposUpdateCommitCommentRequest(args, w, r)
+											return
+										}
+									}
+								case 'g': // Prefix: "git/refs/"
+									if prefix := "git/refs/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+										elem = elem[len(prefix):]
+									} else {
+										break
+									}
+
+									// Param: "ref"
+									// Leaf parameter
+									args["ref"] = elem
+
+									// Leaf: GitUpdateRef
+									s.handleGitUpdateRefRequest(args, w, r)
+									return
+								case 'h': // Prefix: "hooks/"
+									if prefix := "hooks/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+										elem = elem[len(prefix):]
+									} else {
+										break
+									}
+
+									// Param: "hook_id"
+									// Match until one of "/"
+									idx := strings.IndexAny(elem, "/")
+									if idx > 0 {
+										args["hook_id"] = elem[:idx]
+										elem = elem[idx:]
+
+										if len(elem) == 0 {
+											s.handleReposUpdateWebhookRequest(args, w, r)
+											return
+										}
+										switch elem[0] {
+										case '/': // Prefix: "/config"
+											if prefix := "/config"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+												elem = elem[len(prefix):]
+											} else {
+												break
+											}
+
+											// Leaf: ReposUpdateWebhookConfigForRepo
+											s.handleReposUpdateWebhookConfigForRepoRequest(args, w, r)
+											return
+										}
+									}
+								case 'i': // Prefix: "i"
+									if prefix := "i"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+										elem = elem[len(prefix):]
+									} else {
+										break
+									}
+
+									if len(elem) == 0 {
+										s.handleMigrationsMapCommitAuthorRequest(args, w, r)
+										return
+									}
+									switch elem[0] {
+									case 'm': // Prefix: "mport"
+										if prefix := "mport"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+											elem = elem[len(prefix):]
+										} else {
+											break
+										}
+
+										if len(elem) == 0 {
+											s.handleMigrationsUpdateImportRequest(args, w, r)
+											return
+										}
+										switch elem[0] {
+										case '/': // Prefix: "/"
+											if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+												elem = elem[len(prefix):]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												s.handleMigrationsSetLfsPreferenceRequest(args, w, r)
+												return
+											}
+											switch elem[0] {
+											case 'a': // Prefix: "authors/"
+												if prefix := "authors/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+													elem = elem[len(prefix):]
+												} else {
+													break
+												}
+
+												// Param: "author_id"
+												// Leaf parameter
+												args["author_id"] = elem
+
+												// Leaf: MigrationsMapCommitAuthor
+												s.handleMigrationsMapCommitAuthorRequest(args, w, r)
+												return
+											case 'l': // Prefix: "lfs"
+												if prefix := "lfs"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+													elem = elem[len(prefix):]
+												} else {
+													break
+												}
+
+												// Leaf: MigrationsSetLfsPreference
+												s.handleMigrationsSetLfsPreferenceRequest(args, w, r)
+												return
+											}
+										}
+									case 'n': // Prefix: "nvitations/"
+										if prefix := "nvitations/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+											elem = elem[len(prefix):]
+										} else {
+											break
+										}
+
+										// Param: "invitation_id"
+										// Leaf parameter
+										args["invitation_id"] = elem
+
+										// Leaf: ReposUpdateInvitation
+										s.handleReposUpdateInvitationRequest(args, w, r)
+										return
+									case 's': // Prefix: "ssues/"
+										if prefix := "ssues/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+											elem = elem[len(prefix):]
+										} else {
+											break
+										}
+
+										if len(elem) == 0 {
+											break
+										}
+										switch elem[0] {
+										case 'c': // Prefix: "comments/"
+											if prefix := "comments/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+												elem = elem[len(prefix):]
+											} else {
+												break
+											}
+
+											// Param: "comment_id"
+											// Leaf parameter
+											args["comment_id"] = elem
+
+											// Leaf: IssuesUpdateComment
+											s.handleIssuesUpdateCommentRequest(args, w, r)
+											return
+										}
+										// Param: "issue_number"
+										// Leaf parameter
+										args["issue_number"] = elem
+
+										// Leaf: IssuesUpdate
+										s.handleIssuesUpdateRequest(args, w, r)
+										return
+									}
+								case 'l': // Prefix: "labels/"
+									if prefix := "labels/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+										elem = elem[len(prefix):]
+									} else {
+										break
+									}
+
+									// Param: "name"
+									// Leaf parameter
+									args["name"] = elem
+
+									// Leaf: IssuesUpdateLabel
+									s.handleIssuesUpdateLabelRequest(args, w, r)
+									return
+								case 'm': // Prefix: "milestones/"
+									if prefix := "milestones/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+										elem = elem[len(prefix):]
+									} else {
+										break
+									}
+
+									// Param: "milestone_number"
+									// Leaf parameter
+									args["milestone_number"] = elem
+
+									// Leaf: IssuesUpdateMilestone
+									s.handleIssuesUpdateMilestoneRequest(args, w, r)
+									return
+								case 'p': // Prefix: "pulls/"
+									if prefix := "pulls/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+										elem = elem[len(prefix):]
+									} else {
+										break
+									}
+
+									if len(elem) == 0 {
+										break
+									}
+									switch elem[0] {
+									case 'c': // Prefix: "comments/"
+										if prefix := "comments/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+											elem = elem[len(prefix):]
+										} else {
+											break
+										}
+
+										// Param: "comment_id"
+										// Leaf parameter
+										args["comment_id"] = elem
+
+										// Leaf: PullsUpdateReviewComment
+										s.handlePullsUpdateReviewCommentRequest(args, w, r)
+										return
+									}
+									// Param: "pull_number"
+									// Leaf parameter
+									args["pull_number"] = elem
+
+									// Leaf: PullsUpdate
+									s.handlePullsUpdateRequest(args, w, r)
+									return
+								case 'r': // Prefix: "releases/"
+									if prefix := "releases/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+										elem = elem[len(prefix):]
+									} else {
+										break
+									}
+
+									if len(elem) == 0 {
+										break
+									}
+									switch elem[0] {
+									case 'a': // Prefix: "assets/"
+										if prefix := "assets/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+											elem = elem[len(prefix):]
+										} else {
+											break
+										}
+
+										// Param: "asset_id"
+										// Leaf parameter
+										args["asset_id"] = elem
+
+										// Leaf: ReposUpdateReleaseAsset
+										s.handleReposUpdateReleaseAssetRequest(args, w, r)
+										return
+									}
+									// Param: "release_id"
+									// Leaf parameter
+									args["release_id"] = elem
+
+									// Leaf: ReposUpdateRelease
+									s.handleReposUpdateReleaseRequest(args, w, r)
+									return
+								case 's': // Prefix: "secret-scanning/alerts/"
+									if prefix := "secret-scanning/alerts/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+										elem = elem[len(prefix):]
+									} else {
+										break
+									}
+
+									// Param: "alert_number"
+									// Leaf parameter
+									args["alert_number"] = elem
+
+									// Leaf: SecretScanningUpdateAlert
+									s.handleSecretScanningUpdateAlertRequest(args, w, r)
+									return
+								}
+							}
+						}
+					}
+				}
+			case 's': // Prefix: "scim/v2/enterprises/"
+				if prefix := "scim/v2/enterprises/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+					elem = elem[len(prefix):]
+				} else {
+					break
+				}
+
+				// Param: "enterprise"
+				// Match until one of "/"
+				idx := strings.IndexAny(elem, "/")
+				if idx > 0 {
+					args["enterprise"] = elem[:idx]
+					elem = elem[idx:]
+
+					if len(elem) == 0 {
+						break
+					}
+					switch elem[0] {
+					case '/': // Prefix: "/"
+						if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+							elem = elem[len(prefix):]
+						} else {
+							break
+						}
+
+						if len(elem) == 0 {
+							s.handleEnterpriseAdminUpdateAttributeForEnterpriseUserRequest(args, w, r)
+							return
+						}
+						switch elem[0] {
+						case 'G': // Prefix: "Groups/"
+							if prefix := "Groups/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+								elem = elem[len(prefix):]
+							} else {
+								break
+							}
+
+							// Param: "scim_group_id"
+							// Leaf parameter
+							args["scim_group_id"] = elem
+
+							// Leaf: EnterpriseAdminUpdateAttributeForEnterpriseGroup
+							s.handleEnterpriseAdminUpdateAttributeForEnterpriseGroupRequest(args, w, r)
+							return
+						case 'U': // Prefix: "Users/"
+							if prefix := "Users/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+								elem = elem[len(prefix):]
+							} else {
+								break
+							}
+
+							// Param: "scim_user_id"
+							// Leaf parameter
+							args["scim_user_id"] = elem
+
+							// Leaf: EnterpriseAdminUpdateAttributeForEnterpriseUser
+							s.handleEnterpriseAdminUpdateAttributeForEnterpriseUserRequest(args, w, r)
+							return
+						}
+					}
+				}
+			case 't': // Prefix: "teams/"
+				if prefix := "teams/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+					elem = elem[len(prefix):]
+				} else {
+					break
+				}
+
+				// Param: "team_id"
+				// Match until one of "/"
+				idx := strings.IndexAny(elem, "/")
+				if idx > 0 {
+					args["team_id"] = elem[:idx]
+					elem = elem[idx:]
+
+					if len(elem) == 0 {
+						s.handleTeamsUpdateLegacyRequest(args, w, r)
+						return
+					}
+					switch elem[0] {
+					case '/': // Prefix: "/"
+						if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+							elem = elem[len(prefix):]
+						} else {
+							break
+						}
+
+						if len(elem) == 0 {
+							s.handleTeamsUpdateDiscussionCommentLegacyRequest(args, w, r)
+							return
+						}
+						switch elem[0] {
+						case 'd': // Prefix: "discussions/"
+							if prefix := "discussions/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+								elem = elem[len(prefix):]
+							} else {
+								break
+							}
+
+							// Param: "discussion_number"
+							// Match until one of "/"
+							idx := strings.IndexAny(elem, "/")
+							if idx > 0 {
+								args["discussion_number"] = elem[:idx]
+								elem = elem[idx:]
+
+								if len(elem) == 0 {
+									s.handleTeamsUpdateDiscussionLegacyRequest(args, w, r)
+									return
+								}
+								switch elem[0] {
+								case '/': // Prefix: "/comments/"
+									if prefix := "/comments/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+										elem = elem[len(prefix):]
+									} else {
+										break
+									}
+
+									// Param: "comment_number"
+									// Leaf parameter
+									args["comment_number"] = elem
+
+									// Leaf: TeamsUpdateDiscussionCommentLegacy
+									s.handleTeamsUpdateDiscussionCommentLegacyRequest(args, w, r)
+									return
+								}
+							}
+						case 't': // Prefix: "team-sync/group-mappings"
+							if prefix := "team-sync/group-mappings"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+								elem = elem[len(prefix):]
+							} else {
+								break
+							}
+
+							// Leaf: TeamsCreateOrUpdateIdpGroupConnectionsLegacy
+							s.handleTeamsCreateOrUpdateIdpGroupConnectionsLegacyRequest(args, w, r)
+							return
+						}
+					}
+				}
+			case 'u': // Prefix: "user"
+				if prefix := "user"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+					elem = elem[len(prefix):]
+				} else {
+					break
+				}
+
+				if len(elem) == 0 {
+					s.handleUsersUpdateAuthenticatedRequest(args, w, r)
+					return
+				}
+				switch elem[0] {
+				case '/': // Prefix: "/"
+					if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+						elem = elem[len(prefix):]
+					} else {
+						break
+					}
+
+					if len(elem) == 0 {
+						s.handleReposAcceptInvitationRequest(args, w, r)
+						return
+					}
+					switch elem[0] {
+					case 'e': // Prefix: "email/visibility"
+						if prefix := "email/visibility"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+							elem = elem[len(prefix):]
+						} else {
+							break
+						}
+
+						// Leaf: UsersSetPrimaryEmailVisibilityForAuthenticated
+						s.handleUsersSetPrimaryEmailVisibilityForAuthenticatedRequest(args, w, r)
+						return
+					case 'm': // Prefix: "memberships/orgs/"
+						if prefix := "memberships/orgs/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+							elem = elem[len(prefix):]
+						} else {
+							break
+						}
+
+						// Param: "org"
+						// Leaf parameter
+						args["org"] = elem
+
+						// Leaf: OrgsUpdateMembershipForAuthenticatedUser
+						s.handleOrgsUpdateMembershipForAuthenticatedUserRequest(args, w, r)
+						return
+					case 'r': // Prefix: "repository_invitations/"
+						if prefix := "repository_invitations/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+							elem = elem[len(prefix):]
+						} else {
+							break
+						}
+
+						// Param: "invitation_id"
+						// Leaf parameter
+						args["invitation_id"] = elem
+
+						// Leaf: ReposAcceptInvitation
+						s.handleReposAcceptInvitationRequest(args, w, r)
+						return
+					}
+				}
+			}
+		}
+	case "POST":
+		if len(elem) == 0 {
+			break
+		}
+		switch elem[0] {
+		case '/': // Prefix: "/"
+			if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+				elem = elem[len(prefix):]
+			} else {
+				break
+			}
+
+			if len(elem) == 0 {
+				s.handleActionsCreateRegistrationTokenForOrgRequest(args, w, r)
+				return
+			}
+			switch elem[0] {
+			case 'a': // Prefix: "a"
+				if prefix := "a"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+					elem = elem[len(prefix):]
+				} else {
+					break
+				}
+
+				if len(elem) == 0 {
+					s.handleOAuthAuthorizationsCreateAuthorizationRequest(args, w, r)
+					return
+				}
+				switch elem[0] {
+				case 'p': // Prefix: "pp"
+					if prefix := "pp"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+						elem = elem[len(prefix):]
+					} else {
+						break
+					}
+
+					if len(elem) == 0 {
+						s.handleAppsCreateInstallationAccessTokenRequest(args, w, r)
+						return
+					}
+					switch elem[0] {
+					case '/': // Prefix: "/"
+						if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+							elem = elem[len(prefix):]
+						} else {
+							break
+						}
+
+						if len(elem) == 0 {
+							s.handleAppsRedeliverWebhookDeliveryRequest(args, w, r)
+							return
+						}
+						switch elem[0] {
+						case 'h': // Prefix: "hook/deliveries/"
+							if prefix := "hook/deliveries/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+								elem = elem[len(prefix):]
+							} else {
+								break
+							}
+
+							// Param: "delivery_id"
+							// Match until one of "/"
+							idx := strings.IndexAny(elem, "/")
+							if idx > 0 {
+								args["delivery_id"] = elem[:idx]
+								elem = elem[idx:]
+
+								if len(elem) == 0 {
+									break
+								}
+								switch elem[0] {
+								case '/': // Prefix: "/attempts"
+									if prefix := "/attempts"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+										elem = elem[len(prefix):]
+									} else {
+										break
+									}
+
+									// Leaf: AppsRedeliverWebhookDelivery
+									s.handleAppsRedeliverWebhookDeliveryRequest(args, w, r)
+									return
+								}
+							}
+						case 'i': // Prefix: "installations/"
+							if prefix := "installations/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+								elem = elem[len(prefix):]
+							} else {
+								break
+							}
+
+							// Param: "installation_id"
+							// Match until one of "/"
+							idx := strings.IndexAny(elem, "/")
+							if idx > 0 {
+								args["installation_id"] = elem[:idx]
+								elem = elem[idx:]
+
+								if len(elem) == 0 {
+									break
+								}
+								switch elem[0] {
+								case '/': // Prefix: "/access_tokens"
+									if prefix := "/access_tokens"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+										elem = elem[len(prefix):]
+									} else {
+										break
+									}
+
+									// Leaf: AppsCreateInstallationAccessToken
+									s.handleAppsCreateInstallationAccessTokenRequest(args, w, r)
+									return
+								}
+							}
+						}
+					case 'l': // Prefix: "lications/"
+						if prefix := "lications/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+							elem = elem[len(prefix):]
+						} else {
+							break
+						}
+
+						// Param: "client_id"
+						// Match until one of "/"
+						idx := strings.IndexAny(elem, "/")
+						if idx > 0 {
+							args["client_id"] = elem[:idx]
+							elem = elem[idx:]
+
+							if len(elem) == 0 {
+								break
+							}
+							switch elem[0] {
+							case '/': // Prefix: "/token"
+								if prefix := "/token"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+									elem = elem[len(prefix):]
+								} else {
+									break
+								}
+
+								if len(elem) == 0 {
+									s.handleAppsCheckTokenRequest(args, w, r)
+									return
+								}
+								switch elem[0] {
+								case '/': // Prefix: "/scoped"
+									if prefix := "/scoped"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+										elem = elem[len(prefix):]
+									} else {
+										break
+									}
+
+									// Leaf: AppsScopeToken
+									s.handleAppsScopeTokenRequest(args, w, r)
+									return
+								}
+							}
+						}
+					}
+				case 'u': // Prefix: "uthorizations"
+					if prefix := "uthorizations"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+						elem = elem[len(prefix):]
+					} else {
+						break
+					}
+
+					// Leaf: OAuthAuthorizationsCreateAuthorization
+					s.handleOAuthAuthorizationsCreateAuthorizationRequest(args, w, r)
+					return
+				}
+			case 'e': // Prefix: "enterprises/"
+				if prefix := "enterprises/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+					elem = elem[len(prefix):]
+				} else {
+					break
+				}
+
+				// Param: "enterprise"
+				// Match until one of "/"
+				idx := strings.IndexAny(elem, "/")
+				if idx > 0 {
+					args["enterprise"] = elem[:idx]
+					elem = elem[idx:]
+
+					if len(elem) == 0 {
+						break
+					}
+					switch elem[0] {
+					case '/': // Prefix: "/actions/runner"
+						if prefix := "/actions/runner"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+							elem = elem[len(prefix):]
+						} else {
+							break
+						}
+
+						if len(elem) == 0 {
+							s.handleEnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseRequest(args, w, r)
+							return
+						}
+						switch elem[0] {
+						case '-': // Prefix: "-groups"
+							if prefix := "-groups"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+								elem = elem[len(prefix):]
+							} else {
+								break
+							}
+
+							// Leaf: EnterpriseAdminCreateSelfHostedRunnerGroupForEnterprise
+							s.handleEnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseRequest(args, w, r)
+							return
+						case 's': // Prefix: "s/re"
+							if prefix := "s/re"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+								elem = elem[len(prefix):]
+							} else {
+								break
+							}
+
+							if len(elem) == 0 {
+								s.handleEnterpriseAdminCreateRemoveTokenForEnterpriseRequest(args, w, r)
+								return
+							}
+							switch elem[0] {
+							case 'g': // Prefix: "gistration-token"
+								if prefix := "gistration-token"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+									elem = elem[len(prefix):]
+								} else {
+									break
+								}
+
+								// Leaf: EnterpriseAdminCreateRegistrationTokenForEnterprise
+								s.handleEnterpriseAdminCreateRegistrationTokenForEnterpriseRequest(args, w, r)
+								return
+							case 'm': // Prefix: "move-token"
+								if prefix := "move-token"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+									elem = elem[len(prefix):]
+								} else {
+									break
+								}
+
+								// Leaf: EnterpriseAdminCreateRemoveTokenForEnterprise
+								s.handleEnterpriseAdminCreateRemoveTokenForEnterpriseRequest(args, w, r)
+								return
+							}
+						}
+					}
+				}
+			case 'g': // Prefix: "gists"
+				if prefix := "gists"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+					elem = elem[len(prefix):]
+				} else {
+					break
+				}
+
+				if len(elem) == 0 {
+					s.handleGistsCreateRequest(args, w, r)
+					return
+				}
+				switch elem[0] {
+				case '/': // Prefix: "/"
+					if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+						elem = elem[len(prefix):]
+					} else {
+						break
+					}
+
+					// Param: "gist_id"
+					// Match until one of "/"
+					idx := strings.IndexAny(elem, "/")
+					if idx > 0 {
+						args["gist_id"] = elem[:idx]
+						elem = elem[idx:]
+
+						if len(elem) == 0 {
+							break
+						}
+						switch elem[0] {
+						case '/': // Prefix: "/"
+							if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+								elem = elem[len(prefix):]
+							} else {
+								break
+							}
+
+							if len(elem) == 0 {
+								s.handleGistsForkRequest(args, w, r)
+								return
+							}
+							switch elem[0] {
+							case 'c': // Prefix: "comments"
+								if prefix := "comments"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+									elem = elem[len(prefix):]
+								} else {
+									break
+								}
+
+								// Leaf: GistsCreateComment
+								s.handleGistsCreateCommentRequest(args, w, r)
+								return
+							case 'f': // Prefix: "forks"
+								if prefix := "forks"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+									elem = elem[len(prefix):]
+								} else {
+									break
+								}
+
+								// Leaf: GistsFork
+								s.handleGistsForkRequest(args, w, r)
+								return
+							}
+						}
+					}
+				}
+			case 'o': // Prefix: "orgs/"
+				if prefix := "orgs/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+					elem = elem[len(prefix):]
+				} else {
+					break
+				}
+
+				// Param: "org"
+				// Match until one of "/"
+				idx := strings.IndexAny(elem, "/")
+				if idx > 0 {
+					args["org"] = elem[:idx]
+					elem = elem[idx:]
+
+					if len(elem) == 0 {
+						break
+					}
+					switch elem[0] {
+					case '/': // Prefix: "/"
+						if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+							elem = elem[len(prefix):]
+						} else {
+							break
+						}
+
+						if len(elem) == 0 {
+							s.handleMigrationsStartForOrgRequest(args, w, r)
+							return
+						}
+						switch elem[0] {
+						case 'a': // Prefix: "actions/runner"
+							if prefix := "actions/runner"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+								elem = elem[len(prefix):]
+							} else {
+								break
+							}
+
+							if len(elem) == 0 {
+								s.handleActionsCreateSelfHostedRunnerGroupForOrgRequest(args, w, r)
+								return
+							}
+							switch elem[0] {
+							case '-': // Prefix: "-groups"
+								if prefix := "-groups"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+									elem = elem[len(prefix):]
+								} else {
+									break
+								}
+
+								// Leaf: ActionsCreateSelfHostedRunnerGroupForOrg
+								s.handleActionsCreateSelfHostedRunnerGroupForOrgRequest(args, w, r)
+								return
+							case 's': // Prefix: "s/re"
+								if prefix := "s/re"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+									elem = elem[len(prefix):]
+								} else {
+									break
+								}
+
+								if len(elem) == 0 {
+									s.handleActionsCreateRemoveTokenForOrgRequest(args, w, r)
+									return
+								}
+								switch elem[0] {
+								case 'g': // Prefix: "gistration-token"
+									if prefix := "gistration-token"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+										elem = elem[len(prefix):]
+									} else {
+										break
+									}
+
+									// Leaf: ActionsCreateRegistrationTokenForOrg
+									s.handleActionsCreateRegistrationTokenForOrgRequest(args, w, r)
+									return
+								case 'm': // Prefix: "move-token"
+									if prefix := "move-token"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+										elem = elem[len(prefix):]
+									} else {
+										break
+									}
+
+									// Leaf: ActionsCreateRemoveTokenForOrg
+									s.handleActionsCreateRemoveTokenForOrgRequest(args, w, r)
+									return
+								}
+							}
+						case 'h': // Prefix: "hooks"
+							if prefix := "hooks"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+								elem = elem[len(prefix):]
+							} else {
+								break
+							}
+
+							if len(elem) == 0 {
+								s.handleOrgsCreateWebhookRequest(args, w, r)
+								return
+							}
+							switch elem[0] {
+							case '/': // Prefix: "/"
+								if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+									elem = elem[len(prefix):]
+								} else {
+									break
+								}
+
+								// Param: "hook_id"
+								// Match until one of "/"
+								idx := strings.IndexAny(elem, "/")
+								if idx > 0 {
+									args["hook_id"] = elem[:idx]
+									elem = elem[idx:]
+
+									if len(elem) == 0 {
+										break
+									}
+									switch elem[0] {
+									case '/': // Prefix: "/"
+										if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+											elem = elem[len(prefix):]
+										} else {
+											break
+										}
+
+										if len(elem) == 0 {
+											s.handleOrgsRedeliverWebhookDeliveryRequest(args, w, r)
+											return
+										}
+										switch elem[0] {
+										case 'd': // Prefix: "deliveries/"
+											if prefix := "deliveries/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+												elem = elem[len(prefix):]
+											} else {
+												break
+											}
+
+											// Param: "delivery_id"
+											// Match until one of "/"
+											idx := strings.IndexAny(elem, "/")
+											if idx > 0 {
+												args["delivery_id"] = elem[:idx]
+												elem = elem[idx:]
+
+												if len(elem) == 0 {
+													break
+												}
+												switch elem[0] {
+												case '/': // Prefix: "/attempts"
+													if prefix := "/attempts"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+														elem = elem[len(prefix):]
+													} else {
+														break
+													}
+
+													// Leaf: OrgsRedeliverWebhookDelivery
+													s.handleOrgsRedeliverWebhookDeliveryRequest(args, w, r)
+													return
+												}
+											}
+										case 'p': // Prefix: "pings"
+											if prefix := "pings"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+												elem = elem[len(prefix):]
+											} else {
+												break
+											}
+
+											// Leaf: OrgsPingWebhook
+											s.handleOrgsPingWebhookRequest(args, w, r)
+											return
+										}
+									}
+								}
+							}
+						case 'i': // Prefix: "invitations"
+							if prefix := "invitations"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+								elem = elem[len(prefix):]
+							} else {
+								break
+							}
+
+							// Leaf: OrgsCreateInvitation
+							s.handleOrgsCreateInvitationRequest(args, w, r)
+							return
+						case 'm': // Prefix: "migrations"
+							if prefix := "migrations"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+								elem = elem[len(prefix):]
+							} else {
+								break
+							}
+
+							// Leaf: MigrationsStartForOrg
+							s.handleMigrationsStartForOrgRequest(args, w, r)
+							return
+						case 'p': // Prefix: "p"
+							if prefix := "p"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+								elem = elem[len(prefix):]
+							} else {
+								break
+							}
+
+							if len(elem) == 0 {
+								s.handleProjectsCreateForOrgRequest(args, w, r)
+								return
+							}
+							switch elem[0] {
+							case 'a': // Prefix: "ackages/"
+								if prefix := "ackages/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+									elem = elem[len(prefix):]
+								} else {
+									break
+								}
+
+								// Param: "package_type"
+								// Match until one of "/"
+								idx := strings.IndexAny(elem, "/")
+								if idx > 0 {
+									args["package_type"] = elem[:idx]
+									elem = elem[idx:]
+
+									if len(elem) == 0 {
+										break
+									}
+									switch elem[0] {
+									case '/': // Prefix: "/"
+										if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+											elem = elem[len(prefix):]
+										} else {
+											break
+										}
+
+										// Param: "package_name"
+										// Match until one of "/"
+										idx := strings.IndexAny(elem, "/")
+										if idx > 0 {
+											args["package_name"] = elem[:idx]
+											elem = elem[idx:]
+
+											if len(elem) == 0 {
+												break
+											}
+											switch elem[0] {
+											case '/': // Prefix: "/"
+												if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+													elem = elem[len(prefix):]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													s.handlePackagesRestorePackageVersionForOrgRequest(args, w, r)
+													return
+												}
+												switch elem[0] {
+												case 'r': // Prefix: "restore"
+													if prefix := "restore"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+														elem = elem[len(prefix):]
+													} else {
+														break
+													}
+
+													// Leaf: PackagesRestorePackageForOrg
+													s.handlePackagesRestorePackageForOrgRequest(args, w, r)
+													return
+												case 'v': // Prefix: "versions/"
+													if prefix := "versions/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+														elem = elem[len(prefix):]
+													} else {
+														break
+													}
+
+													// Param: "package_version_id"
+													// Match until one of "/"
+													idx := strings.IndexAny(elem, "/")
+													if idx > 0 {
+														args["package_version_id"] = elem[:idx]
+														elem = elem[idx:]
+
+														if len(elem) == 0 {
+															break
+														}
+														switch elem[0] {
+														case '/': // Prefix: "/restore"
+															if prefix := "/restore"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																elem = elem[len(prefix):]
+															} else {
+																break
+															}
+
+															// Leaf: PackagesRestorePackageVersionForOrg
+															s.handlePackagesRestorePackageVersionForOrgRequest(args, w, r)
+															return
+														}
+													}
+												}
+											}
+										}
+									}
+								}
+							case 'r': // Prefix: "rojects"
+								if prefix := "rojects"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+									elem = elem[len(prefix):]
+								} else {
+									break
+								}
+
+								// Leaf: ProjectsCreateForOrg
+								s.handleProjectsCreateForOrgRequest(args, w, r)
+								return
+							}
+						case 'r': // Prefix: "repos"
+							if prefix := "repos"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+								elem = elem[len(prefix):]
+							} else {
+								break
+							}
+
+							// Leaf: ReposCreateInOrg
+							s.handleReposCreateInOrgRequest(args, w, r)
+							return
+						case 't': // Prefix: "teams"
+							if prefix := "teams"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+								elem = elem[len(prefix):]
+							} else {
+								break
+							}
+
+							if len(elem) == 0 {
+								s.handleTeamsCreateRequest(args, w, r)
+								return
+							}
+							switch elem[0] {
+							case '/': // Prefix: "/"
+								if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+									elem = elem[len(prefix):]
+								} else {
+									break
+								}
+
+								// Param: "team_slug"
+								// Match until one of "/"
+								idx := strings.IndexAny(elem, "/")
+								if idx > 0 {
+									args["team_slug"] = elem[:idx]
+									elem = elem[idx:]
+
+									if len(elem) == 0 {
+										break
+									}
+									switch elem[0] {
+									case '/': // Prefix: "/discussions"
+										if prefix := "/discussions"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+											elem = elem[len(prefix):]
+										} else {
+											break
+										}
+
+										if len(elem) == 0 {
+											s.handleTeamsCreateDiscussionInOrgRequest(args, w, r)
+											return
+										}
+										switch elem[0] {
+										case '/': // Prefix: "/"
+											if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+												elem = elem[len(prefix):]
+											} else {
+												break
+											}
+
+											// Param: "discussion_number"
+											// Match until one of "/"
+											idx := strings.IndexAny(elem, "/")
+											if idx > 0 {
+												args["discussion_number"] = elem[:idx]
+												elem = elem[idx:]
+
+												if len(elem) == 0 {
+													break
+												}
+												switch elem[0] {
+												case '/': // Prefix: "/"
+													if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+														elem = elem[len(prefix):]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														s.handleReactionsCreateForTeamDiscussionInOrgRequest(args, w, r)
+														return
+													}
+													switch elem[0] {
+													case 'c': // Prefix: "comments"
+														if prefix := "comments"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+															elem = elem[len(prefix):]
+														} else {
+															break
+														}
+
+														if len(elem) == 0 {
+															s.handleTeamsCreateDiscussionCommentInOrgRequest(args, w, r)
+															return
+														}
+														switch elem[0] {
+														case '/': // Prefix: "/"
+															if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																elem = elem[len(prefix):]
+															} else {
+																break
+															}
+
+															// Param: "comment_number"
+															// Match until one of "/"
+															idx := strings.IndexAny(elem, "/")
+															if idx > 0 {
+																args["comment_number"] = elem[:idx]
+																elem = elem[idx:]
+
+																if len(elem) == 0 {
+																	break
+																}
+																switch elem[0] {
+																case '/': // Prefix: "/reactions"
+																	if prefix := "/reactions"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																		elem = elem[len(prefix):]
+																	} else {
+																		break
+																	}
+
+																	// Leaf: ReactionsCreateForTeamDiscussionCommentInOrg
+																	s.handleReactionsCreateForTeamDiscussionCommentInOrgRequest(args, w, r)
+																	return
+																}
+															}
+														}
+													case 'r': // Prefix: "reactions"
+														if prefix := "reactions"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+															elem = elem[len(prefix):]
+														} else {
+															break
+														}
+
+														// Leaf: ReactionsCreateForTeamDiscussionInOrg
+														s.handleReactionsCreateForTeamDiscussionInOrgRequest(args, w, r)
+														return
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			case 'p': // Prefix: "projects/"
+				if prefix := "projects/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+					elem = elem[len(prefix):]
+				} else {
+					break
+				}
+
+				if len(elem) == 0 {
+					break
+				}
+				switch elem[0] {
+				case 'c': // Prefix: "columns/"
+					if prefix := "columns/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+						elem = elem[len(prefix):]
+					} else {
+						break
+					}
+
+					if len(elem) == 0 {
+						s.handleProjectsMoveColumnRequest(args, w, r)
+						return
+					}
+					switch elem[0] {
+					case 'c': // Prefix: "cards/"
+						if prefix := "cards/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+							elem = elem[len(prefix):]
+						} else {
+							break
+						}
+
+						// Param: "card_id"
+						// Match until one of "/"
+						idx := strings.IndexAny(elem, "/")
+						if idx > 0 {
+							args["card_id"] = elem[:idx]
+							elem = elem[idx:]
+
+							if len(elem) == 0 {
+								break
+							}
+							switch elem[0] {
+							case '/': // Prefix: "/moves"
+								if prefix := "/moves"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+									elem = elem[len(prefix):]
+								} else {
+									break
+								}
+
+								// Leaf: ProjectsMoveCard
+								s.handleProjectsMoveCardRequest(args, w, r)
+								return
+							}
+						}
+					}
+					// Param: "column_id"
+					// Match until one of "/"
+					idx := strings.IndexAny(elem, "/")
+					if idx > 0 {
+						args["column_id"] = elem[:idx]
+						elem = elem[idx:]
+
+						if len(elem) == 0 {
+							break
+						}
+						switch elem[0] {
+						case '/': // Prefix: "/moves"
+							if prefix := "/moves"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+								elem = elem[len(prefix):]
+							} else {
+								break
+							}
+
+							// Leaf: ProjectsMoveColumn
+							s.handleProjectsMoveColumnRequest(args, w, r)
+							return
+						}
+					}
+				}
+				// Param: "project_id"
+				// Match until one of "/"
+				idx := strings.IndexAny(elem, "/")
+				if idx > 0 {
+					args["project_id"] = elem[:idx]
+					elem = elem[idx:]
+
+					if len(elem) == 0 {
+						break
+					}
+					switch elem[0] {
+					case '/': // Prefix: "/columns"
+						if prefix := "/columns"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+							elem = elem[len(prefix):]
+						} else {
+							break
+						}
+
+						// Leaf: ProjectsCreateColumn
+						s.handleProjectsCreateColumnRequest(args, w, r)
+						return
+					}
+				}
+			case 'r': // Prefix: "repos/"
+				if prefix := "repos/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+					elem = elem[len(prefix):]
+				} else {
+					break
+				}
+
+				// Param: "owner"
+				// Match until one of "/"
+				idx := strings.IndexAny(elem, "/")
+				if idx > 0 {
+					args["owner"] = elem[:idx]
+					elem = elem[idx:]
+
+					if len(elem) == 0 {
+						break
+					}
+					switch elem[0] {
+					case '/': // Prefix: "/"
+						if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+							elem = elem[len(prefix):]
+						} else {
+							break
+						}
+
+						// Param: "repo"
+						// Match until one of "/"
+						idx := strings.IndexAny(elem, "/")
+						if idx > 0 {
+							args["repo"] = elem[:idx]
+							elem = elem[idx:]
+
+							if len(elem) == 0 {
+								break
+							}
+							switch elem[0] {
+							case '/': // Prefix: "/"
+								if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+									elem = elem[len(prefix):]
+								} else {
+									break
+								}
+
+								if len(elem) == 0 {
+									s.handleAppsCreateContentAttachmentRequest(args, w, r)
+									return
+								}
+								switch elem[0] {
+								case 'a': // Prefix: "a"
+									if prefix := "a"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+										elem = elem[len(prefix):]
+									} else {
+										break
+									}
+
+									if len(elem) == 0 {
+										s.handleReposCreateAutolinkRequest(args, w, r)
+										return
+									}
+									switch elem[0] {
+									case 'c': // Prefix: "ctions/run"
+										if prefix := "ctions/run"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+											elem = elem[len(prefix):]
+										} else {
+											break
+										}
+
+										if len(elem) == 0 {
+											s.handleActionsCreateRegistrationTokenForRepoRequest(args, w, r)
+											return
+										}
+										switch elem[0] {
+										case 'n': // Prefix: "ners/re"
+											if prefix := "ners/re"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+												elem = elem[len(prefix):]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												s.handleActionsCreateRemoveTokenForRepoRequest(args, w, r)
+												return
+											}
+											switch elem[0] {
+											case 'g': // Prefix: "gistration-token"
+												if prefix := "gistration-token"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+													elem = elem[len(prefix):]
+												} else {
+													break
+												}
+
+												// Leaf: ActionsCreateRegistrationTokenForRepo
+												s.handleActionsCreateRegistrationTokenForRepoRequest(args, w, r)
+												return
+											case 'm': // Prefix: "move-token"
+												if prefix := "move-token"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+													elem = elem[len(prefix):]
+												} else {
+													break
+												}
+
+												// Leaf: ActionsCreateRemoveTokenForRepo
+												s.handleActionsCreateRemoveTokenForRepoRequest(args, w, r)
+												return
+											}
+										case 's': // Prefix: "s/"
+											if prefix := "s/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+												elem = elem[len(prefix):]
+											} else {
+												break
+											}
+
+											// Param: "run_id"
+											// Match until one of "/"
+											idx := strings.IndexAny(elem, "/")
+											if idx > 0 {
+												args["run_id"] = elem[:idx]
+												elem = elem[idx:]
+
+												if len(elem) == 0 {
+													break
+												}
+												switch elem[0] {
+												case '/': // Prefix: "/"
+													if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+														elem = elem[len(prefix):]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														s.handleActionsCancelWorkflowRunRequest(args, w, r)
+														return
+													}
+													switch elem[0] {
+													case 'a': // Prefix: "approve"
+														if prefix := "approve"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+															elem = elem[len(prefix):]
+														} else {
+															break
+														}
+
+														// Leaf: ActionsApproveWorkflowRun
+														s.handleActionsApproveWorkflowRunRequest(args, w, r)
+														return
+													case 'c': // Prefix: "cancel"
+														if prefix := "cancel"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+															elem = elem[len(prefix):]
+														} else {
+															break
+														}
+
+														// Leaf: ActionsCancelWorkflowRun
+														s.handleActionsCancelWorkflowRunRequest(args, w, r)
+														return
+													case 'p': // Prefix: "pending_deployments"
+														if prefix := "pending_deployments"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+															elem = elem[len(prefix):]
+														} else {
+															break
+														}
+
+														// Leaf: ActionsReviewPendingDeploymentsForRun
+														s.handleActionsReviewPendingDeploymentsForRunRequest(args, w, r)
+														return
+													case 'r': // Prefix: "re"
+														if prefix := "re"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+															elem = elem[len(prefix):]
+														} else {
+															break
+														}
+
+														if len(elem) == 0 {
+															s.handleActionsRetryWorkflowRequest(args, w, r)
+															return
+														}
+														switch elem[0] {
+														case 'r': // Prefix: "run"
+															if prefix := "run"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																elem = elem[len(prefix):]
+															} else {
+																break
+															}
+
+															// Leaf: ActionsReRunWorkflow
+															s.handleActionsReRunWorkflowRequest(args, w, r)
+															return
+														case 't': // Prefix: "try"
+															if prefix := "try"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																elem = elem[len(prefix):]
+															} else {
+																break
+															}
+
+															// Leaf: ActionsRetryWorkflow
+															s.handleActionsRetryWorkflowRequest(args, w, r)
+															return
+														}
+													}
+												}
+											}
+										}
+									case 'u': // Prefix: "utolinks"
+										if prefix := "utolinks"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+											elem = elem[len(prefix):]
+										} else {
+											break
+										}
+
+										// Leaf: ReposCreateAutolink
+										s.handleReposCreateAutolinkRequest(args, w, r)
+										return
+									}
+								case 'b': // Prefix: "branches/"
+									if prefix := "branches/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+										elem = elem[len(prefix):]
+									} else {
+										break
+									}
+
+									// Param: "branch"
+									// Match until one of "/"
+									idx := strings.IndexAny(elem, "/")
+									if idx > 0 {
+										args["branch"] = elem[:idx]
+										elem = elem[idx:]
+
+										if len(elem) == 0 {
+											break
+										}
+										switch elem[0] {
+										case '/': // Prefix: "/"
+											if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+												elem = elem[len(prefix):]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												s.handleReposRenameBranchRequest(args, w, r)
+												return
+											}
+											switch elem[0] {
+											case 'p': // Prefix: "protection/"
+												if prefix := "protection/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+													elem = elem[len(prefix):]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													s.handleReposSetAdminBranchProtectionRequest(args, w, r)
+													return
+												}
+												switch elem[0] {
+												case 'e': // Prefix: "enforce_admins"
+													if prefix := "enforce_admins"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+														elem = elem[len(prefix):]
+													} else {
+														break
+													}
+
+													// Leaf: ReposSetAdminBranchProtection
+													s.handleReposSetAdminBranchProtectionRequest(args, w, r)
+													return
+												case 'r': // Prefix: "re"
+													if prefix := "re"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+														elem = elem[len(prefix):]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														s.handleReposAddStatusCheckContextsRequest(args, w, r)
+														return
+													}
+													switch elem[0] {
+													case 'q': // Prefix: "quired_s"
+														if prefix := "quired_s"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+															elem = elem[len(prefix):]
+														} else {
+															break
+														}
+
+														if len(elem) == 0 {
+															s.handleReposCreateCommitSignatureProtectionRequest(args, w, r)
+															return
+														}
+														switch elem[0] {
+														case 'i': // Prefix: "ignatures"
+															if prefix := "ignatures"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																elem = elem[len(prefix):]
+															} else {
+																break
+															}
+
+															// Leaf: ReposCreateCommitSignatureProtection
+															s.handleReposCreateCommitSignatureProtectionRequest(args, w, r)
+															return
+														case 't': // Prefix: "tatus_checks/contexts"
+															if prefix := "tatus_checks/contexts"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																elem = elem[len(prefix):]
+															} else {
+																break
+															}
+
+															// Leaf: ReposAddStatusCheckContexts
+															s.handleReposAddStatusCheckContextsRequest(args, w, r)
+															return
+														}
+													case 's': // Prefix: "strictions/"
+														if prefix := "strictions/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+															elem = elem[len(prefix):]
+														} else {
+															break
+														}
+
+														if len(elem) == 0 {
+															s.handleReposAddTeamAccessRestrictionsRequest(args, w, r)
+															return
+														}
+														switch elem[0] {
+														case 'a': // Prefix: "apps"
+															if prefix := "apps"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																elem = elem[len(prefix):]
+															} else {
+																break
+															}
+
+															// Leaf: ReposAddAppAccessRestrictions
+															s.handleReposAddAppAccessRestrictionsRequest(args, w, r)
+															return
+														case 't': // Prefix: "teams"
+															if prefix := "teams"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																elem = elem[len(prefix):]
+															} else {
+																break
+															}
+
+															// Leaf: ReposAddTeamAccessRestrictions
+															s.handleReposAddTeamAccessRestrictionsRequest(args, w, r)
+															return
+														case 'u': // Prefix: "users"
+															if prefix := "users"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																elem = elem[len(prefix):]
+															} else {
+																break
+															}
+
+															// Leaf: ReposAddUserAccessRestrictions
+															s.handleReposAddUserAccessRestrictionsRequest(args, w, r)
+															return
+														}
+													}
+												}
+											case 'r': // Prefix: "rename"
+												if prefix := "rename"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+													elem = elem[len(prefix):]
+												} else {
+													break
+												}
+
+												// Leaf: ReposRenameBranch
+												s.handleReposRenameBranchRequest(args, w, r)
+												return
+											}
+										}
+									}
+								case 'c': // Prefix: "c"
+									if prefix := "c"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+										elem = elem[len(prefix):]
+									} else {
+										break
+									}
+
+									if len(elem) == 0 {
+										s.handleChecksCreateSuiteRequest(args, w, r)
+										return
+									}
+									switch elem[0] {
+									case 'h': // Prefix: "heck-suites"
+										if prefix := "heck-suites"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+											elem = elem[len(prefix):]
+										} else {
+											break
+										}
+
+										if len(elem) == 0 {
+											s.handleChecksCreateSuiteRequest(args, w, r)
+											return
+										}
+										switch elem[0] {
+										case '/': // Prefix: "/"
+											if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+												elem = elem[len(prefix):]
+											} else {
+												break
+											}
+
+											// Param: "check_suite_id"
+											// Match until one of "/"
+											idx := strings.IndexAny(elem, "/")
+											if idx > 0 {
+												args["check_suite_id"] = elem[:idx]
+												elem = elem[idx:]
+
+												if len(elem) == 0 {
+													break
+												}
+												switch elem[0] {
+												case '/': // Prefix: "/rerequest"
+													if prefix := "/rerequest"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+														elem = elem[len(prefix):]
+													} else {
+														break
+													}
+
+													// Leaf: ChecksRerequestSuite
+													s.handleChecksRerequestSuiteRequest(args, w, r)
+													return
+												}
+											}
+										}
+									case 'o': // Prefix: "o"
+										if prefix := "o"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+											elem = elem[len(prefix):]
+										} else {
+											break
+										}
+
+										if len(elem) == 0 {
+											s.handleCodeScanningUploadSarifRequest(args, w, r)
+											return
+										}
+										switch elem[0] {
+										case 'd': // Prefix: "de-scanning/sarifs"
+											if prefix := "de-scanning/sarifs"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+												elem = elem[len(prefix):]
+											} else {
+												break
+											}
+
+											// Leaf: CodeScanningUploadSarif
+											s.handleCodeScanningUploadSarifRequest(args, w, r)
+											return
+										case 'm': // Prefix: "mm"
+											if prefix := "mm"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+												elem = elem[len(prefix):]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												s.handleReposCreateCommitCommentRequest(args, w, r)
+												return
+											}
+											switch elem[0] {
+											case 'e': // Prefix: "ents/"
+												if prefix := "ents/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+													elem = elem[len(prefix):]
+												} else {
+													break
+												}
+
+												// Param: "comment_id"
+												// Match until one of "/"
+												idx := strings.IndexAny(elem, "/")
+												if idx > 0 {
+													args["comment_id"] = elem[:idx]
+													elem = elem[idx:]
+
+													if len(elem) == 0 {
+														break
+													}
+													switch elem[0] {
+													case '/': // Prefix: "/reactions"
+														if prefix := "/reactions"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+															elem = elem[len(prefix):]
+														} else {
+															break
+														}
+
+														// Leaf: ReactionsCreateForCommitComment
+														s.handleReactionsCreateForCommitCommentRequest(args, w, r)
+														return
+													}
+												}
+											case 'i': // Prefix: "its/"
+												if prefix := "its/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+													elem = elem[len(prefix):]
+												} else {
+													break
+												}
+
+												// Param: "commit_sha"
+												// Match until one of "/"
+												idx := strings.IndexAny(elem, "/")
+												if idx > 0 {
+													args["commit_sha"] = elem[:idx]
+													elem = elem[idx:]
+
+													if len(elem) == 0 {
+														break
+													}
+													switch elem[0] {
+													case '/': // Prefix: "/comments"
+														if prefix := "/comments"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+															elem = elem[len(prefix):]
+														} else {
+															break
+														}
+
+														// Leaf: ReposCreateCommitComment
+														s.handleReposCreateCommitCommentRequest(args, w, r)
+														return
+													}
+												}
+											}
+										case 'n': // Prefix: "ntent_references/"
+											if prefix := "ntent_references/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+												elem = elem[len(prefix):]
+											} else {
+												break
+											}
+
+											// Param: "content_reference_id"
+											// Match until one of "/"
+											idx := strings.IndexAny(elem, "/")
+											if idx > 0 {
+												args["content_reference_id"] = elem[:idx]
+												elem = elem[idx:]
+
+												if len(elem) == 0 {
+													break
+												}
+												switch elem[0] {
+												case '/': // Prefix: "/attachments"
+													if prefix := "/attachments"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+														elem = elem[len(prefix):]
+													} else {
+														break
+													}
+
+													// Leaf: AppsCreateContentAttachment
+													s.handleAppsCreateContentAttachmentRequest(args, w, r)
+													return
+												}
+											}
+										}
+									}
+								case 'd': // Prefix: "d"
+									if prefix := "d"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+										elem = elem[len(prefix):]
+									} else {
+										break
+									}
+
+									if len(elem) == 0 {
+										s.handleReposCreateDispatchEventRequest(args, w, r)
+										return
+									}
+									switch elem[0] {
+									case 'e': // Prefix: "eployments"
+										if prefix := "eployments"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+											elem = elem[len(prefix):]
+										} else {
+											break
+										}
+
+										if len(elem) == 0 {
+											s.handleReposCreateDeploymentRequest(args, w, r)
+											return
+										}
+										switch elem[0] {
+										case '/': // Prefix: "/"
+											if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+												elem = elem[len(prefix):]
+											} else {
+												break
+											}
+
+											// Param: "deployment_id"
+											// Match until one of "/"
+											idx := strings.IndexAny(elem, "/")
+											if idx > 0 {
+												args["deployment_id"] = elem[:idx]
+												elem = elem[idx:]
+
+												if len(elem) == 0 {
+													break
+												}
+												switch elem[0] {
+												case '/': // Prefix: "/statuses"
+													if prefix := "/statuses"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+														elem = elem[len(prefix):]
+													} else {
+														break
+													}
+
+													// Leaf: ReposCreateDeploymentStatus
+													s.handleReposCreateDeploymentStatusRequest(args, w, r)
+													return
+												}
+											}
+										}
+									case 'i': // Prefix: "ispatches"
+										if prefix := "ispatches"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+											elem = elem[len(prefix):]
+										} else {
+											break
+										}
+
+										// Leaf: ReposCreateDispatchEvent
+										s.handleReposCreateDispatchEventRequest(args, w, r)
+										return
+									}
+								case 'f': // Prefix: "forks"
+									if prefix := "forks"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+										elem = elem[len(prefix):]
+									} else {
+										break
+									}
+
+									// Leaf: ReposCreateFork
+									s.handleReposCreateForkRequest(args, w, r)
+									return
+								case 'g': // Prefix: "g"
+									if prefix := "g"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+										elem = elem[len(prefix):]
+									} else {
+										break
+									}
+
+									if len(elem) == 0 {
+										s.handleReposCreateUsingTemplateRequest(args, w, r)
+										return
+									}
+									switch elem[0] {
+									case 'e': // Prefix: "enerate"
+										if prefix := "enerate"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+											elem = elem[len(prefix):]
+										} else {
+											break
+										}
+
+										// Leaf: ReposCreateUsingTemplate
+										s.handleReposCreateUsingTemplateRequest(args, w, r)
+										return
+									case 'i': // Prefix: "it/"
+										if prefix := "it/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+											elem = elem[len(prefix):]
+										} else {
+											break
+										}
+
+										if len(elem) == 0 {
+											s.handleGitCreateCommitRequest(args, w, r)
+											return
+										}
+										switch elem[0] {
+										case 'b': // Prefix: "blobs"
+											if prefix := "blobs"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+												elem = elem[len(prefix):]
+											} else {
+												break
+											}
+
+											// Leaf: GitCreateBlob
+											s.handleGitCreateBlobRequest(args, w, r)
+											return
+										case 'c': // Prefix: "commits"
+											if prefix := "commits"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+												elem = elem[len(prefix):]
+											} else {
+												break
+											}
+
+											// Leaf: GitCreateCommit
+											s.handleGitCreateCommitRequest(args, w, r)
+											return
+										case 'r': // Prefix: "refs"
+											if prefix := "refs"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+												elem = elem[len(prefix):]
+											} else {
+												break
+											}
+
+											// Leaf: GitCreateRef
+											s.handleGitCreateRefRequest(args, w, r)
+											return
+										case 't': // Prefix: "t"
+											if prefix := "t"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+												elem = elem[len(prefix):]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												s.handleGitCreateTreeRequest(args, w, r)
+												return
+											}
+											switch elem[0] {
+											case 'a': // Prefix: "ags"
+												if prefix := "ags"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+													elem = elem[len(prefix):]
+												} else {
+													break
+												}
+
+												// Leaf: GitCreateTag
+												s.handleGitCreateTagRequest(args, w, r)
+												return
+											case 'r': // Prefix: "rees"
+												if prefix := "rees"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+													elem = elem[len(prefix):]
+												} else {
+													break
+												}
+
+												// Leaf: GitCreateTree
+												s.handleGitCreateTreeRequest(args, w, r)
+												return
+											}
+										}
+									}
+								case 'h': // Prefix: "hooks"
+									if prefix := "hooks"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+										elem = elem[len(prefix):]
+									} else {
+										break
+									}
+
+									if len(elem) == 0 {
+										s.handleReposCreateWebhookRequest(args, w, r)
+										return
+									}
+									switch elem[0] {
+									case '/': // Prefix: "/"
+										if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+											elem = elem[len(prefix):]
+										} else {
+											break
+										}
+
+										// Param: "hook_id"
+										// Match until one of "/"
+										idx := strings.IndexAny(elem, "/")
+										if idx > 0 {
+											args["hook_id"] = elem[:idx]
+											elem = elem[idx:]
+
+											if len(elem) == 0 {
+												break
+											}
+											switch elem[0] {
+											case '/': // Prefix: "/"
+												if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+													elem = elem[len(prefix):]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													s.handleReposRedeliverWebhookDeliveryRequest(args, w, r)
+													return
+												}
+												switch elem[0] {
+												case 'd': // Prefix: "deliveries/"
+													if prefix := "deliveries/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+														elem = elem[len(prefix):]
+													} else {
+														break
+													}
+
+													// Param: "delivery_id"
+													// Match until one of "/"
+													idx := strings.IndexAny(elem, "/")
+													if idx > 0 {
+														args["delivery_id"] = elem[:idx]
+														elem = elem[idx:]
+
+														if len(elem) == 0 {
+															break
+														}
+														switch elem[0] {
+														case '/': // Prefix: "/attempts"
+															if prefix := "/attempts"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																elem = elem[len(prefix):]
+															} else {
+																break
+															}
+
+															// Leaf: ReposRedeliverWebhookDelivery
+															s.handleReposRedeliverWebhookDeliveryRequest(args, w, r)
+															return
+														}
+													}
+												case 'p': // Prefix: "pings"
+													if prefix := "pings"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+														elem = elem[len(prefix):]
+													} else {
+														break
+													}
+
+													// Leaf: ReposPingWebhook
+													s.handleReposPingWebhookRequest(args, w, r)
+													return
+												case 't': // Prefix: "tests"
+													if prefix := "tests"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+														elem = elem[len(prefix):]
+													} else {
+														break
+													}
+
+													// Leaf: ReposTestPushWebhook
+													s.handleReposTestPushWebhookRequest(args, w, r)
+													return
+												}
+											}
+										}
+									}
+								case 'i': // Prefix: "issues"
+									if prefix := "issues"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+										elem = elem[len(prefix):]
+									} else {
+										break
+									}
+
+									if len(elem) == 0 {
+										s.handleIssuesCreateRequest(args, w, r)
+										return
+									}
+									switch elem[0] {
+									case '/': // Prefix: "/"
+										if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+											elem = elem[len(prefix):]
+										} else {
+											break
+										}
+
+										if len(elem) == 0 {
+											break
+										}
+										switch elem[0] {
+										case 'c': // Prefix: "comments/"
+											if prefix := "comments/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+												elem = elem[len(prefix):]
+											} else {
+												break
+											}
+
+											// Param: "comment_id"
+											// Match until one of "/"
+											idx := strings.IndexAny(elem, "/")
+											if idx > 0 {
+												args["comment_id"] = elem[:idx]
+												elem = elem[idx:]
+
+												if len(elem) == 0 {
+													break
+												}
+												switch elem[0] {
+												case '/': // Prefix: "/reactions"
+													if prefix := "/reactions"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+														elem = elem[len(prefix):]
+													} else {
+														break
+													}
+
+													// Leaf: ReactionsCreateForIssueComment
+													s.handleReactionsCreateForIssueCommentRequest(args, w, r)
+													return
+												}
+											}
+										}
+										// Param: "issue_number"
+										// Match until one of "/"
+										idx := strings.IndexAny(elem, "/")
+										if idx > 0 {
+											args["issue_number"] = elem[:idx]
+											elem = elem[idx:]
+
+											if len(elem) == 0 {
+												break
+											}
+											switch elem[0] {
+											case '/': // Prefix: "/"
+												if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+													elem = elem[len(prefix):]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													s.handleIssuesCreateCommentRequest(args, w, r)
+													return
+												}
+												switch elem[0] {
+												case 'a': // Prefix: "assignees"
+													if prefix := "assignees"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+														elem = elem[len(prefix):]
+													} else {
+														break
+													}
+
+													// Leaf: IssuesAddAssignees
+													s.handleIssuesAddAssigneesRequest(args, w, r)
+													return
+												case 'c': // Prefix: "comments"
+													if prefix := "comments"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+														elem = elem[len(prefix):]
+													} else {
+														break
+													}
+
+													// Leaf: IssuesCreateComment
+													s.handleIssuesCreateCommentRequest(args, w, r)
+													return
+												case 'r': // Prefix: "reactions"
+													if prefix := "reactions"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+														elem = elem[len(prefix):]
+													} else {
+														break
+													}
+
+													// Leaf: ReactionsCreateForIssue
+													s.handleReactionsCreateForIssueRequest(args, w, r)
+													return
+												}
+											}
+										}
+									}
+								case 'k': // Prefix: "keys"
+									if prefix := "keys"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+										elem = elem[len(prefix):]
+									} else {
+										break
+									}
+
+									// Leaf: ReposCreateDeployKey
+									s.handleReposCreateDeployKeyRequest(args, w, r)
+									return
+								case 'l': // Prefix: "labels"
+									if prefix := "labels"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+										elem = elem[len(prefix):]
+									} else {
+										break
+									}
+
+									// Leaf: IssuesCreateLabel
+									s.handleIssuesCreateLabelRequest(args, w, r)
+									return
+								case 'm': // Prefix: "m"
+									if prefix := "m"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+										elem = elem[len(prefix):]
+									} else {
+										break
+									}
+
+									if len(elem) == 0 {
+										s.handleReposMergeRequest(args, w, r)
+										return
+									}
+									switch elem[0] {
+									case 'e': // Prefix: "erge"
+										if prefix := "erge"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+											elem = elem[len(prefix):]
+										} else {
+											break
+										}
+
+										if len(elem) == 0 {
+											s.handleReposMergeUpstreamRequest(args, w, r)
+											return
+										}
+										switch elem[0] {
+										case '-': // Prefix: "-upstream"
+											if prefix := "-upstream"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+												elem = elem[len(prefix):]
+											} else {
+												break
+											}
+
+											// Leaf: ReposMergeUpstream
+											s.handleReposMergeUpstreamRequest(args, w, r)
+											return
+										case 's': // Prefix: "s"
+											if prefix := "s"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+												elem = elem[len(prefix):]
+											} else {
+												break
+											}
+
+											// Leaf: ReposMerge
+											s.handleReposMergeRequest(args, w, r)
+											return
+										}
+									case 'i': // Prefix: "ilestones"
+										if prefix := "ilestones"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+											elem = elem[len(prefix):]
+										} else {
+											break
+										}
+
+										// Leaf: IssuesCreateMilestone
+										s.handleIssuesCreateMilestoneRequest(args, w, r)
+										return
+									}
+								case 'p': // Prefix: "p"
+									if prefix := "p"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+										elem = elem[len(prefix):]
+									} else {
+										break
+									}
+
+									if len(elem) == 0 {
+										s.handlePullsCreateRequest(args, w, r)
+										return
+									}
+									switch elem[0] {
+									case 'a': // Prefix: "ages"
+										if prefix := "ages"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+											elem = elem[len(prefix):]
+										} else {
+											break
+										}
+
+										if len(elem) == 0 {
+											s.handleReposCreatePagesSiteRequest(args, w, r)
+											return
+										}
+										switch elem[0] {
+										case '/': // Prefix: "/builds"
+											if prefix := "/builds"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+												elem = elem[len(prefix):]
+											} else {
+												break
+											}
+
+											// Leaf: ReposRequestPagesBuild
+											s.handleReposRequestPagesBuildRequest(args, w, r)
+											return
+										}
+									case 'r': // Prefix: "rojects"
+										if prefix := "rojects"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+											elem = elem[len(prefix):]
+										} else {
+											break
+										}
+
+										// Leaf: ProjectsCreateForRepo
+										s.handleProjectsCreateForRepoRequest(args, w, r)
+										return
+									case 'u': // Prefix: "ulls"
+										if prefix := "ulls"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+											elem = elem[len(prefix):]
+										} else {
+											break
+										}
+
+										if len(elem) == 0 {
+											s.handlePullsCreateRequest(args, w, r)
+											return
+										}
+										switch elem[0] {
+										case '/': // Prefix: "/"
+											if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+												elem = elem[len(prefix):]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												break
+											}
+											switch elem[0] {
+											case 'c': // Prefix: "comments/"
+												if prefix := "comments/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+													elem = elem[len(prefix):]
+												} else {
+													break
+												}
+
+												// Param: "comment_id"
+												// Match until one of "/"
+												idx := strings.IndexAny(elem, "/")
+												if idx > 0 {
+													args["comment_id"] = elem[:idx]
+													elem = elem[idx:]
+
+													if len(elem) == 0 {
+														break
+													}
+													switch elem[0] {
+													case '/': // Prefix: "/reactions"
+														if prefix := "/reactions"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+															elem = elem[len(prefix):]
+														} else {
+															break
+														}
+
+														// Leaf: ReactionsCreateForPullRequestReviewComment
+														s.handleReactionsCreateForPullRequestReviewCommentRequest(args, w, r)
+														return
+													}
+												}
+											}
+											// Param: "pull_number"
+											// Match until one of "/"
+											idx := strings.IndexAny(elem, "/")
+											if idx > 0 {
+												args["pull_number"] = elem[:idx]
+												elem = elem[idx:]
+
+												if len(elem) == 0 {
+													break
+												}
+												switch elem[0] {
+												case '/': // Prefix: "/"
+													if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+														elem = elem[len(prefix):]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														s.handlePullsCreateReviewRequest(args, w, r)
+														return
+													}
+													switch elem[0] {
+													case 'c': // Prefix: "comments"
+														if prefix := "comments"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+															elem = elem[len(prefix):]
+														} else {
+															break
+														}
+
+														if len(elem) == 0 {
+															s.handlePullsCreateReviewCommentRequest(args, w, r)
+															return
+														}
+														switch elem[0] {
+														case '/': // Prefix: "/"
+															if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																elem = elem[len(prefix):]
+															} else {
+																break
+															}
+
+															// Param: "comment_id"
+															// Match until one of "/"
+															idx := strings.IndexAny(elem, "/")
+															if idx > 0 {
+																args["comment_id"] = elem[:idx]
+																elem = elem[idx:]
+
+																if len(elem) == 0 {
+																	break
+																}
+																switch elem[0] {
+																case '/': // Prefix: "/replies"
+																	if prefix := "/replies"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																		elem = elem[len(prefix):]
+																	} else {
+																		break
+																	}
+
+																	// Leaf: PullsCreateReplyForReviewComment
+																	s.handlePullsCreateReplyForReviewCommentRequest(args, w, r)
+																	return
+																}
+															}
+														}
+													case 'r': // Prefix: "reviews"
+														if prefix := "reviews"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+															elem = elem[len(prefix):]
+														} else {
+															break
+														}
+
+														if len(elem) == 0 {
+															s.handlePullsCreateReviewRequest(args, w, r)
+															return
+														}
+														switch elem[0] {
+														case '/': // Prefix: "/"
+															if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																elem = elem[len(prefix):]
+															} else {
+																break
+															}
+
+															// Param: "review_id"
+															// Match until one of "/"
+															idx := strings.IndexAny(elem, "/")
+															if idx > 0 {
+																args["review_id"] = elem[:idx]
+																elem = elem[idx:]
+
+																if len(elem) == 0 {
+																	break
+																}
+																switch elem[0] {
+																case '/': // Prefix: "/events"
+																	if prefix := "/events"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																		elem = elem[len(prefix):]
+																	} else {
+																		break
+																	}
+
+																	// Leaf: PullsSubmitReview
+																	s.handlePullsSubmitReviewRequest(args, w, r)
+																	return
+																}
+															}
+														}
+													}
+												}
+											}
+										}
+									}
+								case 'r': // Prefix: "releases"
+									if prefix := "releases"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+										elem = elem[len(prefix):]
+									} else {
+										break
+									}
+
+									if len(elem) == 0 {
+										s.handleReposCreateReleaseRequest(args, w, r)
+										return
+									}
+									switch elem[0] {
+									case '/': // Prefix: "/"
+										if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+											elem = elem[len(prefix):]
+										} else {
+											break
+										}
+
+										// Param: "release_id"
+										// Match until one of "/"
+										idx := strings.IndexAny(elem, "/")
+										if idx > 0 {
+											args["release_id"] = elem[:idx]
+											elem = elem[idx:]
+
+											if len(elem) == 0 {
+												break
+											}
+											switch elem[0] {
+											case '/': // Prefix: "/reactions"
+												if prefix := "/reactions"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+													elem = elem[len(prefix):]
+												} else {
+													break
+												}
+
+												// Leaf: ReactionsCreateForRelease
+												s.handleReactionsCreateForReleaseRequest(args, w, r)
+												return
+											}
+										}
+									}
+								case 's': // Prefix: "statuses/"
+									if prefix := "statuses/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+										elem = elem[len(prefix):]
+									} else {
+										break
+									}
+
+									// Param: "sha"
+									// Leaf parameter
+									args["sha"] = elem
+
+									// Leaf: ReposCreateCommitStatus
+									s.handleReposCreateCommitStatusRequest(args, w, r)
+									return
+								case 't': // Prefix: "transfer"
+									if prefix := "transfer"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+										elem = elem[len(prefix):]
+									} else {
+										break
+									}
+
+									// Leaf: ReposTransfer
+									s.handleReposTransferRequest(args, w, r)
+									return
+								}
+							}
+						}
+					}
+				}
+			case 's': // Prefix: "scim/v2/enterprises/"
+				if prefix := "scim/v2/enterprises/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+					elem = elem[len(prefix):]
+				} else {
+					break
+				}
+
+				// Param: "enterprise"
+				// Match until one of "/"
+				idx := strings.IndexAny(elem, "/")
+				if idx > 0 {
+					args["enterprise"] = elem[:idx]
+					elem = elem[idx:]
+
+					if len(elem) == 0 {
+						break
+					}
+					switch elem[0] {
+					case '/': // Prefix: "/"
+						if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+							elem = elem[len(prefix):]
+						} else {
+							break
+						}
+
+						if len(elem) == 0 {
+							s.handleEnterpriseAdminProvisionAndInviteEnterpriseUserRequest(args, w, r)
+							return
+						}
+						switch elem[0] {
+						case 'G': // Prefix: "Groups"
+							if prefix := "Groups"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+								elem = elem[len(prefix):]
+							} else {
+								break
+							}
+
+							// Leaf: EnterpriseAdminProvisionAndInviteEnterpriseGroup
+							s.handleEnterpriseAdminProvisionAndInviteEnterpriseGroupRequest(args, w, r)
+							return
+						case 'U': // Prefix: "Users"
+							if prefix := "Users"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+								elem = elem[len(prefix):]
+							} else {
+								break
+							}
+
+							// Leaf: EnterpriseAdminProvisionAndInviteEnterpriseUser
+							s.handleEnterpriseAdminProvisionAndInviteEnterpriseUserRequest(args, w, r)
+							return
+						}
+					}
+				}
+			case 't': // Prefix: "teams/"
+				if prefix := "teams/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+					elem = elem[len(prefix):]
+				} else {
+					break
+				}
+
+				// Param: "team_id"
+				// Match until one of "/"
+				idx := strings.IndexAny(elem, "/")
+				if idx > 0 {
+					args["team_id"] = elem[:idx]
+					elem = elem[idx:]
+
+					if len(elem) == 0 {
+						break
+					}
+					switch elem[0] {
+					case '/': // Prefix: "/discussions"
+						if prefix := "/discussions"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+							elem = elem[len(prefix):]
+						} else {
+							break
+						}
+
+						if len(elem) == 0 {
+							s.handleTeamsCreateDiscussionLegacyRequest(args, w, r)
+							return
+						}
+						switch elem[0] {
+						case '/': // Prefix: "/"
+							if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+								elem = elem[len(prefix):]
+							} else {
+								break
+							}
+
+							// Param: "discussion_number"
+							// Match until one of "/"
+							idx := strings.IndexAny(elem, "/")
+							if idx > 0 {
+								args["discussion_number"] = elem[:idx]
+								elem = elem[idx:]
+
+								if len(elem) == 0 {
+									break
+								}
+								switch elem[0] {
+								case '/': // Prefix: "/"
+									if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+										elem = elem[len(prefix):]
+									} else {
+										break
+									}
+
+									if len(elem) == 0 {
+										s.handleReactionsCreateForTeamDiscussionLegacyRequest(args, w, r)
+										return
+									}
+									switch elem[0] {
+									case 'c': // Prefix: "comments"
+										if prefix := "comments"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+											elem = elem[len(prefix):]
+										} else {
+											break
+										}
+
+										if len(elem) == 0 {
+											s.handleTeamsCreateDiscussionCommentLegacyRequest(args, w, r)
+											return
+										}
+										switch elem[0] {
+										case '/': // Prefix: "/"
+											if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+												elem = elem[len(prefix):]
+											} else {
+												break
+											}
+
+											// Param: "comment_number"
+											// Match until one of "/"
+											idx := strings.IndexAny(elem, "/")
+											if idx > 0 {
+												args["comment_number"] = elem[:idx]
+												elem = elem[idx:]
+
+												if len(elem) == 0 {
+													break
+												}
+												switch elem[0] {
+												case '/': // Prefix: "/reactions"
+													if prefix := "/reactions"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+														elem = elem[len(prefix):]
+													} else {
+														break
+													}
+
+													// Leaf: ReactionsCreateForTeamDiscussionCommentLegacy
+													s.handleReactionsCreateForTeamDiscussionCommentLegacyRequest(args, w, r)
+													return
+												}
+											}
+										}
+									case 'r': // Prefix: "reactions"
+										if prefix := "reactions"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+											elem = elem[len(prefix):]
+										} else {
+											break
+										}
+
+										// Leaf: ReactionsCreateForTeamDiscussionLegacy
+										s.handleReactionsCreateForTeamDiscussionLegacyRequest(args, w, r)
+										return
+									}
+								}
+							}
+						}
+					}
+				}
+			case 'u': // Prefix: "user"
+				if prefix := "user"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+					elem = elem[len(prefix):]
+				} else {
+					break
+				}
+
+				if len(elem) == 0 {
+					s.handlePackagesRestorePackageForUserRequest(args, w, r)
+					return
+				}
+				switch elem[0] {
+				case '/': // Prefix: "/"
+					if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+						elem = elem[len(prefix):]
+					} else {
+						break
+					}
+
+					if len(elem) == 0 {
+						s.handlePackagesRestorePackageForAuthenticatedUserRequest(args, w, r)
+						return
+					}
+					switch elem[0] {
+					case 'e': // Prefix: "emails"
+						if prefix := "emails"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+							elem = elem[len(prefix):]
+						} else {
+							break
+						}
+
+						// Leaf: UsersAddEmailForAuthenticated
+						s.handleUsersAddEmailForAuthenticatedRequest(args, w, r)
+						return
+					case 'g': // Prefix: "gpg_keys"
+						if prefix := "gpg_keys"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+							elem = elem[len(prefix):]
+						} else {
+							break
+						}
+
+						// Leaf: UsersCreateGpgKeyForAuthenticated
+						s.handleUsersCreateGpgKeyForAuthenticatedRequest(args, w, r)
+						return
+					case 'k': // Prefix: "keys"
+						if prefix := "keys"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+							elem = elem[len(prefix):]
+						} else {
+							break
+						}
+
+						// Leaf: UsersCreatePublicSSHKeyForAuthenticated
+						s.handleUsersCreatePublicSSHKeyForAuthenticatedRequest(args, w, r)
+						return
+					case 'm': // Prefix: "migrations"
+						if prefix := "migrations"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+							elem = elem[len(prefix):]
+						} else {
+							break
+						}
+
+						// Leaf: MigrationsStartForAuthenticatedUser
+						s.handleMigrationsStartForAuthenticatedUserRequest(args, w, r)
+						return
+					case 'p': // Prefix: "p"
+						if prefix := "p"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+							elem = elem[len(prefix):]
+						} else {
+							break
+						}
+
+						if len(elem) == 0 {
+							s.handleProjectsCreateForAuthenticatedUserRequest(args, w, r)
+							return
+						}
+						switch elem[0] {
+						case 'a': // Prefix: "ackages/"
+							if prefix := "ackages/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+								elem = elem[len(prefix):]
+							} else {
+								break
+							}
+
+							// Param: "package_type"
+							// Match until one of "/"
+							idx := strings.IndexAny(elem, "/")
+							if idx > 0 {
+								args["package_type"] = elem[:idx]
+								elem = elem[idx:]
+
+								if len(elem) == 0 {
+									break
+								}
+								switch elem[0] {
+								case '/': // Prefix: "/"
+									if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+										elem = elem[len(prefix):]
+									} else {
+										break
+									}
+
+									// Param: "package_name"
+									// Match until one of "/"
+									idx := strings.IndexAny(elem, "/")
+									if idx > 0 {
+										args["package_name"] = elem[:idx]
+										elem = elem[idx:]
+
+										if len(elem) == 0 {
+											break
+										}
+										switch elem[0] {
+										case '/': // Prefix: "/"
+											if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+												elem = elem[len(prefix):]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												s.handlePackagesRestorePackageVersionForAuthenticatedUserRequest(args, w, r)
+												return
+											}
+											switch elem[0] {
+											case 'r': // Prefix: "restore"
+												if prefix := "restore"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+													elem = elem[len(prefix):]
+												} else {
+													break
+												}
+
+												// Leaf: PackagesRestorePackageForAuthenticatedUser
+												s.handlePackagesRestorePackageForAuthenticatedUserRequest(args, w, r)
+												return
+											case 'v': // Prefix: "versions/"
+												if prefix := "versions/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+													elem = elem[len(prefix):]
+												} else {
+													break
+												}
+
+												// Param: "package_version_id"
+												// Match until one of "/"
+												idx := strings.IndexAny(elem, "/")
+												if idx > 0 {
+													args["package_version_id"] = elem[:idx]
+													elem = elem[idx:]
+
+													if len(elem) == 0 {
+														break
+													}
+													switch elem[0] {
+													case '/': // Prefix: "/restore"
+														if prefix := "/restore"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+															elem = elem[len(prefix):]
+														} else {
+															break
+														}
+
+														// Leaf: PackagesRestorePackageVersionForAuthenticatedUser
+														s.handlePackagesRestorePackageVersionForAuthenticatedUserRequest(args, w, r)
+														return
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+						case 'r': // Prefix: "rojects"
+							if prefix := "rojects"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+								elem = elem[len(prefix):]
+							} else {
+								break
+							}
+
+							// Leaf: ProjectsCreateForAuthenticatedUser
+							s.handleProjectsCreateForAuthenticatedUserRequest(args, w, r)
+							return
+						}
+					case 'r': // Prefix: "repos"
+						if prefix := "repos"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+							elem = elem[len(prefix):]
+						} else {
+							break
+						}
+
+						// Leaf: ReposCreateForAuthenticatedUser
+						s.handleReposCreateForAuthenticatedUserRequest(args, w, r)
+						return
+					}
+				case 's': // Prefix: "s/"
+					if prefix := "s/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+						elem = elem[len(prefix):]
+					} else {
+						break
+					}
+
+					// Param: "username"
+					// Match until one of "/"
+					idx := strings.IndexAny(elem, "/")
+					if idx > 0 {
+						args["username"] = elem[:idx]
+						elem = elem[idx:]
+
+						if len(elem) == 0 {
+							break
+						}
+						switch elem[0] {
+						case '/': // Prefix: "/packages/"
+							if prefix := "/packages/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+								elem = elem[len(prefix):]
+							} else {
+								break
+							}
+
+							// Param: "package_type"
+							// Match until one of "/"
+							idx := strings.IndexAny(elem, "/")
+							if idx > 0 {
+								args["package_type"] = elem[:idx]
+								elem = elem[idx:]
+
+								if len(elem) == 0 {
+									break
+								}
+								switch elem[0] {
+								case '/': // Prefix: "/"
+									if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+										elem = elem[len(prefix):]
+									} else {
+										break
+									}
+
+									// Param: "package_name"
+									// Match until one of "/"
+									idx := strings.IndexAny(elem, "/")
+									if idx > 0 {
+										args["package_name"] = elem[:idx]
+										elem = elem[idx:]
+
+										if len(elem) == 0 {
+											break
+										}
+										switch elem[0] {
+										case '/': // Prefix: "/"
+											if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+												elem = elem[len(prefix):]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												s.handlePackagesRestorePackageVersionForUserRequest(args, w, r)
+												return
+											}
+											switch elem[0] {
+											case 'r': // Prefix: "restore"
+												if prefix := "restore"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+													elem = elem[len(prefix):]
+												} else {
+													break
+												}
+
+												// Leaf: PackagesRestorePackageForUser
+												s.handlePackagesRestorePackageForUserRequest(args, w, r)
+												return
+											case 'v': // Prefix: "versions/"
+												if prefix := "versions/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+													elem = elem[len(prefix):]
+												} else {
+													break
+												}
+
+												// Param: "package_version_id"
+												// Match until one of "/"
+												idx := strings.IndexAny(elem, "/")
+												if idx > 0 {
+													args["package_version_id"] = elem[:idx]
+													elem = elem[idx:]
+
+													if len(elem) == 0 {
+														break
+													}
+													switch elem[0] {
+													case '/': // Prefix: "/restore"
+														if prefix := "/restore"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+															elem = elem[len(prefix):]
+														} else {
+															break
+														}
+
+														// Leaf: PackagesRestorePackageVersionForUser
+														s.handlePackagesRestorePackageVersionForUserRequest(args, w, r)
+														return
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
 	case "PUT":
 		if len(elem) == 0 {
 			break
@@ -114,25 +13221,6 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						break
 					}
 
-					if len(elem) == 0 {
-						break
-					}
-					switch elem[0] {
-					case 'u': // Prefix: "uthorizations/clients/"
-						if prefix := "uthorizations/clients/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-							elem = elem[len(prefix):]
-						} else {
-							break
-						}
-
-						// Param: "client_id"
-						// Leaf parameter
-						args["client_id"] = elem
-
-						// Leaf: OAuthAuthorizationsGetOrCreateAuthorizationForApp
-						s.handleOAuthAuthorizationsGetOrCreateAuthorizationForAppRequest(args, w, r)
-						return
-					}
 					// Param: "installation_id"
 					// Match until one of "/"
 					idx := strings.IndexAny(elem, "/")
@@ -265,21 +13353,6 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											break
 										}
 
-										if len(elem) == 0 {
-											break
-										}
-										switch elem[0] {
-										case 's': // Prefix: "selected-actions"
-											if prefix := "selected-actions"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-												elem = elem[len(prefix):]
-											} else {
-												break
-											}
-
-											// Leaf: EnterpriseAdminSetAllowedActionsEnterprise
-											s.handleEnterpriseAdminSetAllowedActionsEnterpriseRequest(args, w, r)
-											return
-										}
 										// Param: "org_id"
 										// Leaf parameter
 										args["org_id"] = elem
@@ -307,25 +13380,6 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								break
 							}
 
-							if len(elem) == 0 {
-								break
-							}
-							switch elem[0] {
-							case 'p': // Prefix: "permissions/organizations/"
-								if prefix := "permissions/organizations/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-									elem = elem[len(prefix):]
-								} else {
-									break
-								}
-
-								// Param: "org_id"
-								// Leaf parameter
-								args["org_id"] = elem
-
-								// Leaf: EnterpriseAdminEnableSelectedOrganizationGithubActionsEnterprise
-								s.handleEnterpriseAdminEnableSelectedOrganizationGithubActionsEnterpriseRequest(args, w, r)
-								return
-							}
 							// Param: "runner_group_id"
 							// Match until one of "/"
 							idx := strings.IndexAny(elem, "/")
@@ -368,25 +13422,6 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												break
 											}
 
-											if len(elem) == 0 {
-												break
-											}
-											switch elem[0] {
-											case 'r': // Prefix: "runners/"
-												if prefix := "runners/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-													elem = elem[len(prefix):]
-												} else {
-													break
-												}
-
-												// Param: "runner_id"
-												// Leaf parameter
-												args["runner_id"] = elem
-
-												// Leaf: EnterpriseAdminAddSelfHostedRunnerToGroupForEnterprise
-												s.handleEnterpriseAdminAddSelfHostedRunnerToGroupForEnterpriseRequest(args, w, r)
-												return
-											}
 											// Param: "org_id"
 											// Leaf parameter
 											args["org_id"] = elem
@@ -508,65 +13543,6 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					break
 				}
 
-				if len(elem) == 0 {
-					break
-				}
-				switch elem[0] {
-				case 'r': // Prefix: "repositories/"
-					if prefix := "repositories/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-						elem = elem[len(prefix):]
-					} else {
-						break
-					}
-
-					// Param: "repository_id"
-					// Match until one of "/"
-					idx := strings.IndexAny(elem, "/")
-					if idx > 0 {
-						args["repository_id"] = elem[:idx]
-						elem = elem[idx:]
-
-						if len(elem) == 0 {
-							break
-						}
-						switch elem[0] {
-						case '/': // Prefix: "/environments/"
-							if prefix := "/environments/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-								elem = elem[len(prefix):]
-							} else {
-								break
-							}
-
-							// Param: "environment_name"
-							// Match until one of "/"
-							idx := strings.IndexAny(elem, "/")
-							if idx > 0 {
-								args["environment_name"] = elem[:idx]
-								elem = elem[idx:]
-
-								if len(elem) == 0 {
-									break
-								}
-								switch elem[0] {
-								case '/': // Prefix: "/secrets/"
-									if prefix := "/secrets/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-										elem = elem[len(prefix):]
-									} else {
-										break
-									}
-
-									// Param: "secret_name"
-									// Leaf parameter
-									args["secret_name"] = elem
-
-									// Leaf: ActionsCreateOrUpdateEnvironmentSecret
-									s.handleActionsCreateOrUpdateEnvironmentSecretRequest(args, w, r)
-									return
-								}
-							}
-						}
-					}
-				}
 				// Param: "org"
 				// Match until one of "/"
 				idx := strings.IndexAny(elem, "/")
@@ -602,16 +13578,6 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								return
 							}
 							switch elem[0] {
-							case 'i': // Prefix: "interaction-limits"
-								if prefix := "interaction-limits"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-									elem = elem[len(prefix):]
-								} else {
-									break
-								}
-
-								// Leaf: InteractionsSetRestrictionsForOrg
-								s.handleInteractionsSetRestrictionsForOrgRequest(args, w, r)
-								return
 							case 'p': // Prefix: "permissions"
 								if prefix := "permissions"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
 									elem = elem[len(prefix):]
@@ -655,21 +13621,6 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												break
 											}
 
-											if len(elem) == 0 {
-												break
-											}
-											switch elem[0] {
-											case 's': // Prefix: "selected-actions"
-												if prefix := "selected-actions"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-													elem = elem[len(prefix):]
-												} else {
-													break
-												}
-
-												// Leaf: ActionsSetAllowedActionsOrganization
-												s.handleActionsSetAllowedActionsOrganizationRequest(args, w, r)
-												return
-											}
 											// Param: "repository_id"
 											// Leaf parameter
 											args["repository_id"] = elem
@@ -697,45 +13648,6 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									break
 								}
 
-								if len(elem) == 0 {
-									break
-								}
-								switch elem[0] {
-								case 's': // Prefix: "secrets/"
-									if prefix := "secrets/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-										elem = elem[len(prefix):]
-									} else {
-										break
-									}
-
-									// Param: "secret_name"
-									// Match until one of "/"
-									idx := strings.IndexAny(elem, "/")
-									if idx > 0 {
-										args["secret_name"] = elem[:idx]
-										elem = elem[idx:]
-
-										if len(elem) == 0 {
-											break
-										}
-										switch elem[0] {
-										case '/': // Prefix: "/repositories/"
-											if prefix := "/repositories/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-												elem = elem[len(prefix):]
-											} else {
-												break
-											}
-
-											// Param: "repository_id"
-											// Leaf parameter
-											args["repository_id"] = elem
-
-											// Leaf: ActionsAddSelectedRepoToOrgSecret
-											s.handleActionsAddSelectedRepoToOrgSecretRequest(args, w, r)
-											return
-										}
-									}
-								}
 								// Param: "runner_group_id"
 								// Match until one of "/"
 								idx := strings.IndexAny(elem, "/")
@@ -778,25 +13690,6 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													break
 												}
 
-												if len(elem) == 0 {
-													break
-												}
-												switch elem[0] {
-												case 'u': // Prefix: "unners/"
-													if prefix := "unners/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-														elem = elem[len(prefix):]
-													} else {
-														break
-													}
-
-													// Param: "runner_id"
-													// Leaf parameter
-													args["runner_id"] = elem
-
-													// Leaf: ActionsAddSelfHostedRunnerToGroupForOrg
-													s.handleActionsAddSelfHostedRunnerToGroupForOrgRequest(args, w, r)
-													return
-												}
 												// Param: "repository_id"
 												// Leaf parameter
 												args["repository_id"] = elem
@@ -987,25 +13880,6 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											break
 										}
 
-										if len(elem) == 0 {
-											break
-										}
-										switch elem[0] {
-										case 'p': // Prefix: "projects/"
-											if prefix := "projects/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-												elem = elem[len(prefix):]
-											} else {
-												break
-											}
-
-											// Param: "project_id"
-											// Leaf parameter
-											args["project_id"] = elem
-
-											// Leaf: TeamsAddOrUpdateProjectPermissionsInOrg
-											s.handleTeamsAddOrUpdateProjectPermissionsInOrgRequest(args, w, r)
-											return
-										}
 										// Param: "username"
 										// Leaf parameter
 										args["username"] = elem
@@ -1185,16 +14059,6 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												return
 											}
 											switch elem[0] {
-											case 'n': // Prefix: "notifications"
-												if prefix := "notifications"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-													elem = elem[len(prefix):]
-												} else {
-													break
-												}
-
-												// Leaf: ActivityMarkRepoNotificationsAsRead
-												s.handleActivityMarkRepoNotificationsAsReadRequest(args, w, r)
-												return
 											case 'p': // Prefix: "permissions"
 												if prefix := "permissions"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
 													elem = elem[len(prefix):]
@@ -1225,37 +14089,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													break
 												}
 
-												if len(elem) == 0 {
-													break
-												}
-												switch elem[0] {
-												case 'p': // Prefix: "permissions/selected-actions"
-													if prefix := "permissions/selected-actions"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-														elem = elem[len(prefix):]
-													} else {
-														break
-													}
-
-													// Leaf: ActionsSetAllowedActionsRepository
-													s.handleActionsSetAllowedActionsRepositoryRequest(args, w, r)
-													return
-												}
 												// Param: "secret_name"
 												// Leaf parameter
 												args["secret_name"] = elem
 
 												// Leaf: ActionsCreateOrUpdateRepoSecret
 												s.handleActionsCreateOrUpdateRepoSecretRequest(args, w, r)
-												return
-											case 'u': // Prefix: "utomated-security-fixes"
-												if prefix := "utomated-security-fixes"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-													elem = elem[len(prefix):]
-												} else {
-													break
-												}
-
-												// Leaf: ReposEnableAutomatedSecurityFixes
-												s.handleReposEnableAutomatedSecurityFixesRequest(args, w, r)
 												return
 											}
 										case 'u': // Prefix: "utomated-security-fixes"
@@ -1340,32 +14179,9 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																break
 															}
 
-															if len(elem) == 0 {
-																s.handleReposSetAppAccessRestrictionsRequest(args, w, r)
-																return
-															}
-															switch elem[0] {
-															case 'q': // Prefix: "quired_status_checks/contexts"
-																if prefix := "quired_status_checks/contexts"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																	elem = elem[len(prefix):]
-																} else {
-																	break
-																}
-
-																// Leaf: ReposSetStatusCheckContexts
-																s.handleReposSetStatusCheckContextsRequest(args, w, r)
-																return
-															case 't': // Prefix: "teams"
-																if prefix := "teams"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																	elem = elem[len(prefix):]
-																} else {
-																	break
-																}
-
-																// Leaf: ReposSetTeamAccessRestrictions
-																s.handleReposSetTeamAccessRestrictionsRequest(args, w, r)
-																return
-															}
+															// Leaf: ReposSetAppAccessRestrictions
+															s.handleReposSetAppAccessRestrictionsRequest(args, w, r)
+															return
 														case 't': // Prefix: "teams"
 															if prefix := "teams"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
 																elem = elem[len(prefix):]
@@ -1410,25 +14226,6 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												break
 											}
 
-											if len(elem) == 0 {
-												break
-											}
-											switch elem[0] {
-											case 'n': // Prefix: "ntents/"
-												if prefix := "ntents/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-													elem = elem[len(prefix):]
-												} else {
-													break
-												}
-
-												// Param: "path"
-												// Leaf parameter
-												args["path"] = elem
-
-												// Leaf: ReposCreateOrUpdateFileContents
-												s.handleReposCreateOrUpdateFileContentsRequest(args, w, r)
-												return
-											}
 											// Param: "username"
 											// Leaf parameter
 											args["username"] = elem
@@ -1480,42 +14277,9 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												break
 											}
 
-											if len(elem) == 0 {
-												s.handleInteractionsSetRestrictionsForRepoRequest(args, w, r)
-												return
-											}
-											switch elem[0] {
-											case 's': // Prefix: "ssues/"
-												if prefix := "ssues/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-													elem = elem[len(prefix):]
-												} else {
-													break
-												}
-
-												// Param: "issue_number"
-												// Match until one of "/"
-												idx := strings.IndexAny(elem, "/")
-												if idx > 0 {
-													args["issue_number"] = elem[:idx]
-													elem = elem[idx:]
-
-													if len(elem) == 0 {
-														break
-													}
-													switch elem[0] {
-													case '/': // Prefix: "/lock"
-														if prefix := "/lock"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-															elem = elem[len(prefix):]
-														} else {
-															break
-														}
-
-														// Leaf: IssuesLock
-														s.handleIssuesLockRequest(args, w, r)
-														return
-													}
-												}
-											}
+											// Leaf: InteractionsSetRestrictionsForRepo
+											s.handleInteractionsSetRestrictionsForRepoRequest(args, w, r)
+											return
 										case 's': // Prefix: "ssues/"
 											if prefix := "ssues/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
 												elem = elem[len(prefix):]
@@ -1614,21 +14378,6 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														break
 													}
 
-													if len(elem) == 0 {
-														break
-													}
-													switch elem[0] {
-													case 'm': // Prefix: "merge"
-														if prefix := "merge"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-															elem = elem[len(prefix):]
-														} else {
-															break
-														}
-
-														// Leaf: PullsMerge
-														s.handlePullsMergeRequest(args, w, r)
-														return
-													}
 													// Param: "review_id"
 													// Match until one of "/"
 													idx := strings.IndexAny(elem, "/")
@@ -1708,65 +14457,6 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						break
 					}
 
-					if len(elem) == 0 {
-						break
-					}
-					switch elem[0] {
-					case '/': // Prefix: "/"
-						if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-							elem = elem[len(prefix):]
-						} else {
-							break
-						}
-
-						// Param: "owner"
-						// Match until one of "/"
-						idx := strings.IndexAny(elem, "/")
-						if idx > 0 {
-							args["owner"] = elem[:idx]
-							elem = elem[idx:]
-
-							if len(elem) == 0 {
-								break
-							}
-							switch elem[0] {
-							case '/': // Prefix: "/"
-								if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-									elem = elem[len(prefix):]
-								} else {
-									break
-								}
-
-								// Param: "repo"
-								// Match until one of "/"
-								idx := strings.IndexAny(elem, "/")
-								if idx > 0 {
-									args["repo"] = elem[:idx]
-									elem = elem[idx:]
-
-									if len(elem) == 0 {
-										break
-									}
-									switch elem[0] {
-									case '/': // Prefix: "/actions/secrets/"
-										if prefix := "/actions/secrets/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-											elem = elem[len(prefix):]
-										} else {
-											break
-										}
-
-										// Param: "secret_name"
-										// Leaf parameter
-										args["secret_name"] = elem
-
-										// Leaf: ActionsCreateOrUpdateRepoSecret
-										s.handleActionsCreateOrUpdateRepoSecretRequest(args, w, r)
-										return
-									}
-								}
-							}
-						}
-					}
 					// Param: "repository_id"
 					// Match until one of "/"
 					idx := strings.IndexAny(elem, "/")
@@ -1852,25 +14542,6 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								break
 							}
 
-							if len(elem) == 0 {
-								break
-							}
-							switch elem[0] {
-							case 'U': // Prefix: "Users/"
-								if prefix := "Users/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-									elem = elem[len(prefix):]
-								} else {
-									break
-								}
-
-								// Param: "scim_user_id"
-								// Leaf parameter
-								args["scim_user_id"] = elem
-
-								// Leaf: EnterpriseAdminSetInformationForProvisionedEnterpriseUser
-								s.handleEnterpriseAdminSetInformationForProvisionedEnterpriseUserRequest(args, w, r)
-								return
-							}
 							// Param: "scim_group_id"
 							// Leaf parameter
 							args["scim_group_id"] = elem
@@ -1944,25 +14615,6 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									break
 								}
 
-								if len(elem) == 0 {
-									break
-								}
-								switch elem[0] {
-								case 'h': // Prefix: "hips/"
-									if prefix := "hips/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-										elem = elem[len(prefix):]
-									} else {
-										break
-									}
-
-									// Param: "username"
-									// Leaf parameter
-									args["username"] = elem
-
-									// Leaf: TeamsAddOrUpdateMembershipForUserLegacy
-									s.handleTeamsAddOrUpdateMembershipForUserLegacyRequest(args, w, r)
-									return
-								}
 								// Param: "username"
 								// Leaf parameter
 								args["username"] = elem
@@ -1983,20 +14635,6 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 								// Leaf: TeamsAddOrUpdateMembershipForUserLegacy
 								s.handleTeamsAddOrUpdateMembershipForUserLegacyRequest(args, w, r)
-								return
-							case 'p': // Prefix: "projects/"
-								if prefix := "projects/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-									elem = elem[len(prefix):]
-								} else {
-									break
-								}
-
-								// Param: "project_id"
-								// Leaf parameter
-								args["project_id"] = elem
-
-								// Leaf: TeamsAddOrUpdateProjectPermissionsLegacy
-								s.handleTeamsAddOrUpdateProjectPermissionsLegacyRequest(args, w, r)
 								return
 							}
 						case 'p': // Prefix: "projects/"
@@ -2109,21 +14747,6 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							break
 						}
 
-						if len(elem) == 0 {
-							break
-						}
-						switch elem[0] {
-						case 't': // Prefix: "teraction-limits"
-							if prefix := "teraction-limits"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-								elem = elem[len(prefix):]
-							} else {
-								break
-							}
-
-							// Leaf: InteractionsSetRestrictionsForAuthenticatedUser
-							s.handleInteractionsSetRestrictionsForAuthenticatedUserRequest(args, w, r)
-							return
-						}
 						// Param: "installation_id"
 						// Match until one of "/"
 						idx := strings.IndexAny(elem, "/")
@@ -2169,45 +14792,6 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						break
 					}
 
-					if len(elem) == 0 {
-						break
-					}
-					switch elem[0] {
-					case 'i': // Prefix: "installations/"
-						if prefix := "installations/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-							elem = elem[len(prefix):]
-						} else {
-							break
-						}
-
-						// Param: "installation_id"
-						// Match until one of "/"
-						idx := strings.IndexAny(elem, "/")
-						if idx > 0 {
-							args["installation_id"] = elem[:idx]
-							elem = elem[idx:]
-
-							if len(elem) == 0 {
-								break
-							}
-							switch elem[0] {
-							case '/': // Prefix: "/repositories/"
-								if prefix := "/repositories/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-									elem = elem[len(prefix):]
-								} else {
-									break
-								}
-
-								// Param: "repository_id"
-								// Leaf parameter
-								args["repository_id"] = elem
-
-								// Leaf: AppsAddRepoToInstallation
-								s.handleAppsAddRepoToInstallationRequest(args, w, r)
-								return
-							}
-						}
-					}
 					// Param: "owner"
 					// Match until one of "/"
 					idx := strings.IndexAny(elem, "/")
@@ -2234,17192 +14818,6 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							s.handleActivityStarRepoForAuthenticatedUserRequest(args, w, r)
 							return
 						}
-					}
-				}
-			}
-		}
-	case "POST":
-		if len(elem) == 0 {
-			break
-		}
-		switch elem[0] {
-		case '/': // Prefix: "/"
-			if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-				elem = elem[len(prefix):]
-			} else {
-				break
-			}
-
-			if len(elem) == 0 {
-				s.handleActionsCreateRegistrationTokenForOrgRequest(args, w, r)
-				return
-			}
-			switch elem[0] {
-			case 'a': // Prefix: "a"
-				if prefix := "a"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-					elem = elem[len(prefix):]
-				} else {
-					break
-				}
-
-				if len(elem) == 0 {
-					s.handleOAuthAuthorizationsCreateAuthorizationRequest(args, w, r)
-					return
-				}
-				switch elem[0] {
-				case 'p': // Prefix: "pp"
-					if prefix := "pp"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-						elem = elem[len(prefix):]
-					} else {
-						break
-					}
-
-					if len(elem) == 0 {
-						s.handleAppsCreateInstallationAccessTokenRequest(args, w, r)
-						return
-					}
-					switch elem[0] {
-					case '/': // Prefix: "/"
-						if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-							elem = elem[len(prefix):]
-						} else {
-							break
-						}
-
-						if len(elem) == 0 {
-							s.handleAppsRedeliverWebhookDeliveryRequest(args, w, r)
-							return
-						}
-						switch elem[0] {
-						case 'h': // Prefix: "hook/deliveries/"
-							if prefix := "hook/deliveries/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-								elem = elem[len(prefix):]
-							} else {
-								break
-							}
-
-							// Param: "delivery_id"
-							// Match until one of "/"
-							idx := strings.IndexAny(elem, "/")
-							if idx > 0 {
-								args["delivery_id"] = elem[:idx]
-								elem = elem[idx:]
-
-								if len(elem) == 0 {
-									break
-								}
-								switch elem[0] {
-								case '/': // Prefix: "/attempts"
-									if prefix := "/attempts"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-										elem = elem[len(prefix):]
-									} else {
-										break
-									}
-
-									// Leaf: AppsRedeliverWebhookDelivery
-									s.handleAppsRedeliverWebhookDeliveryRequest(args, w, r)
-									return
-								}
-							}
-						case 'i': // Prefix: "installations/"
-							if prefix := "installations/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-								elem = elem[len(prefix):]
-							} else {
-								break
-							}
-
-							if len(elem) == 0 {
-								break
-							}
-							switch elem[0] {
-							case 'h': // Prefix: "hook/deliveries/"
-								if prefix := "hook/deliveries/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-									elem = elem[len(prefix):]
-								} else {
-									break
-								}
-
-								// Param: "delivery_id"
-								// Match until one of "/"
-								idx := strings.IndexAny(elem, "/")
-								if idx > 0 {
-									args["delivery_id"] = elem[:idx]
-									elem = elem[idx:]
-
-									if len(elem) == 0 {
-										break
-									}
-									switch elem[0] {
-									case '/': // Prefix: "/attempts"
-										if prefix := "/attempts"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-											elem = elem[len(prefix):]
-										} else {
-											break
-										}
-
-										// Leaf: AppsRedeliverWebhookDelivery
-										s.handleAppsRedeliverWebhookDeliveryRequest(args, w, r)
-										return
-									}
-								}
-							}
-							// Param: "installation_id"
-							// Match until one of "/"
-							idx := strings.IndexAny(elem, "/")
-							if idx > 0 {
-								args["installation_id"] = elem[:idx]
-								elem = elem[idx:]
-
-								if len(elem) == 0 {
-									break
-								}
-								switch elem[0] {
-								case '/': // Prefix: "/access_tokens"
-									if prefix := "/access_tokens"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-										elem = elem[len(prefix):]
-									} else {
-										break
-									}
-
-									// Leaf: AppsCreateInstallationAccessToken
-									s.handleAppsCreateInstallationAccessTokenRequest(args, w, r)
-									return
-								}
-							}
-						}
-					case 'l': // Prefix: "lications/"
-						if prefix := "lications/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-							elem = elem[len(prefix):]
-						} else {
-							break
-						}
-
-						if len(elem) == 0 {
-							break
-						}
-						switch elem[0] {
-						case '/': // Prefix: "/installations/"
-							if prefix := "/installations/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-								elem = elem[len(prefix):]
-							} else {
-								break
-							}
-
-							// Param: "installation_id"
-							// Match until one of "/"
-							idx := strings.IndexAny(elem, "/")
-							if idx > 0 {
-								args["installation_id"] = elem[:idx]
-								elem = elem[idx:]
-
-								if len(elem) == 0 {
-									break
-								}
-								switch elem[0] {
-								case '/': // Prefix: "/access_tokens"
-									if prefix := "/access_tokens"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-										elem = elem[len(prefix):]
-									} else {
-										break
-									}
-
-									// Leaf: AppsCreateInstallationAccessToken
-									s.handleAppsCreateInstallationAccessTokenRequest(args, w, r)
-									return
-								}
-							}
-						}
-						// Param: "client_id"
-						// Match until one of "/"
-						idx := strings.IndexAny(elem, "/")
-						if idx > 0 {
-							args["client_id"] = elem[:idx]
-							elem = elem[idx:]
-
-							if len(elem) == 0 {
-								break
-							}
-							switch elem[0] {
-							case '/': // Prefix: "/token"
-								if prefix := "/token"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-									elem = elem[len(prefix):]
-								} else {
-									break
-								}
-
-								if len(elem) == 0 {
-									s.handleAppsCheckTokenRequest(args, w, r)
-									return
-								}
-								switch elem[0] {
-								case '/': // Prefix: "/scoped"
-									if prefix := "/scoped"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-										elem = elem[len(prefix):]
-									} else {
-										break
-									}
-
-									// Leaf: AppsScopeToken
-									s.handleAppsScopeTokenRequest(args, w, r)
-									return
-								}
-							}
-						}
-					case 'u': // Prefix: "uthorizations"
-						if prefix := "uthorizations"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-							elem = elem[len(prefix):]
-						} else {
-							break
-						}
-
-						// Leaf: OAuthAuthorizationsCreateAuthorization
-						s.handleOAuthAuthorizationsCreateAuthorizationRequest(args, w, r)
-						return
-					}
-				case 'u': // Prefix: "uthorizations"
-					if prefix := "uthorizations"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-						elem = elem[len(prefix):]
-					} else {
-						break
-					}
-
-					// Leaf: OAuthAuthorizationsCreateAuthorization
-					s.handleOAuthAuthorizationsCreateAuthorizationRequest(args, w, r)
-					return
-				}
-			case 'e': // Prefix: "enterprises/"
-				if prefix := "enterprises/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-					elem = elem[len(prefix):]
-				} else {
-					break
-				}
-
-				// Param: "enterprise"
-				// Match until one of "/"
-				idx := strings.IndexAny(elem, "/")
-				if idx > 0 {
-					args["enterprise"] = elem[:idx]
-					elem = elem[idx:]
-
-					if len(elem) == 0 {
-						break
-					}
-					switch elem[0] {
-					case '/': // Prefix: "/actions/runner"
-						if prefix := "/actions/runner"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-							elem = elem[len(prefix):]
-						} else {
-							break
-						}
-
-						if len(elem) == 0 {
-							s.handleEnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseRequest(args, w, r)
-							return
-						}
-						switch elem[0] {
-						case '-': // Prefix: "-groups"
-							if prefix := "-groups"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-								elem = elem[len(prefix):]
-							} else {
-								break
-							}
-
-							// Leaf: EnterpriseAdminCreateSelfHostedRunnerGroupForEnterprise
-							s.handleEnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseRequest(args, w, r)
-							return
-						case 's': // Prefix: "s/re"
-							if prefix := "s/re"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-								elem = elem[len(prefix):]
-							} else {
-								break
-							}
-
-							if len(elem) == 0 {
-								s.handleEnterpriseAdminCreateRemoveTokenForEnterpriseRequest(args, w, r)
-								return
-							}
-							switch elem[0] {
-							case '-': // Prefix: "-groups"
-								if prefix := "-groups"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-									elem = elem[len(prefix):]
-								} else {
-									break
-								}
-
-								// Leaf: EnterpriseAdminCreateSelfHostedRunnerGroupForEnterprise
-								s.handleEnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseRequest(args, w, r)
-								return
-							case 'g': // Prefix: "gistration-token"
-								if prefix := "gistration-token"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-									elem = elem[len(prefix):]
-								} else {
-									break
-								}
-
-								if len(elem) == 0 {
-									s.handleEnterpriseAdminCreateRegistrationTokenForEnterpriseRequest(args, w, r)
-									return
-								}
-								switch elem[0] {
-								case 'm': // Prefix: "move-token"
-									if prefix := "move-token"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-										elem = elem[len(prefix):]
-									} else {
-										break
-									}
-
-									// Leaf: EnterpriseAdminCreateRemoveTokenForEnterprise
-									s.handleEnterpriseAdminCreateRemoveTokenForEnterpriseRequest(args, w, r)
-									return
-								}
-							case 'm': // Prefix: "move-token"
-								if prefix := "move-token"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-									elem = elem[len(prefix):]
-								} else {
-									break
-								}
-
-								// Leaf: EnterpriseAdminCreateRemoveTokenForEnterprise
-								s.handleEnterpriseAdminCreateRemoveTokenForEnterpriseRequest(args, w, r)
-								return
-							}
-						}
-					}
-				}
-			case 'g': // Prefix: "gists"
-				if prefix := "gists"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-					elem = elem[len(prefix):]
-				} else {
-					break
-				}
-
-				if len(elem) == 0 {
-					s.handleGistsCreateRequest(args, w, r)
-					return
-				}
-				switch elem[0] {
-				case '/': // Prefix: "/"
-					if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-						elem = elem[len(prefix):]
-					} else {
-						break
-					}
-
-					// Param: "gist_id"
-					// Match until one of "/"
-					idx := strings.IndexAny(elem, "/")
-					if idx > 0 {
-						args["gist_id"] = elem[:idx]
-						elem = elem[idx:]
-
-						if len(elem) == 0 {
-							break
-						}
-						switch elem[0] {
-						case '/': // Prefix: "/"
-							if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-								elem = elem[len(prefix):]
-							} else {
-								break
-							}
-
-							if len(elem) == 0 {
-								s.handleGistsForkRequest(args, w, r)
-								return
-							}
-							switch elem[0] {
-							case 'c': // Prefix: "comments"
-								if prefix := "comments"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-									elem = elem[len(prefix):]
-								} else {
-									break
-								}
-
-								if len(elem) == 0 {
-									s.handleGistsCreateCommentRequest(args, w, r)
-									return
-								}
-								switch elem[0] {
-								case 'f': // Prefix: "forks"
-									if prefix := "forks"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-										elem = elem[len(prefix):]
-									} else {
-										break
-									}
-
-									// Leaf: GistsFork
-									s.handleGistsForkRequest(args, w, r)
-									return
-								}
-							case 'f': // Prefix: "forks"
-								if prefix := "forks"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-									elem = elem[len(prefix):]
-								} else {
-									break
-								}
-
-								// Leaf: GistsFork
-								s.handleGistsForkRequest(args, w, r)
-								return
-							}
-						}
-					}
-				}
-			case 'o': // Prefix: "orgs/"
-				if prefix := "orgs/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-					elem = elem[len(prefix):]
-				} else {
-					break
-				}
-
-				// Param: "org"
-				// Match until one of "/"
-				idx := strings.IndexAny(elem, "/")
-				if idx > 0 {
-					args["org"] = elem[:idx]
-					elem = elem[idx:]
-
-					if len(elem) == 0 {
-						break
-					}
-					switch elem[0] {
-					case '/': // Prefix: "/"
-						if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-							elem = elem[len(prefix):]
-						} else {
-							break
-						}
-
-						if len(elem) == 0 {
-							s.handleMigrationsStartForOrgRequest(args, w, r)
-							return
-						}
-						switch elem[0] {
-						case 'a': // Prefix: "actions/runner"
-							if prefix := "actions/runner"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-								elem = elem[len(prefix):]
-							} else {
-								break
-							}
-
-							if len(elem) == 0 {
-								s.handleActionsCreateSelfHostedRunnerGroupForOrgRequest(args, w, r)
-								return
-							}
-							switch elem[0] {
-							case '-': // Prefix: "-groups"
-								if prefix := "-groups"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-									elem = elem[len(prefix):]
-								} else {
-									break
-								}
-
-								// Leaf: ActionsCreateSelfHostedRunnerGroupForOrg
-								s.handleActionsCreateSelfHostedRunnerGroupForOrgRequest(args, w, r)
-								return
-							case 'm': // Prefix: "migrations"
-								if prefix := "migrations"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-									elem = elem[len(prefix):]
-								} else {
-									break
-								}
-
-								// Leaf: MigrationsStartForOrg
-								s.handleMigrationsStartForOrgRequest(args, w, r)
-								return
-							case 's': // Prefix: "s/re"
-								if prefix := "s/re"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-									elem = elem[len(prefix):]
-								} else {
-									break
-								}
-
-								if len(elem) == 0 {
-									s.handleActionsCreateRemoveTokenForOrgRequest(args, w, r)
-									return
-								}
-								switch elem[0] {
-								case '-': // Prefix: "-groups"
-									if prefix := "-groups"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-										elem = elem[len(prefix):]
-									} else {
-										break
-									}
-
-									// Leaf: ActionsCreateSelfHostedRunnerGroupForOrg
-									s.handleActionsCreateSelfHostedRunnerGroupForOrgRequest(args, w, r)
-									return
-								case 'g': // Prefix: "gistration-token"
-									if prefix := "gistration-token"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-										elem = elem[len(prefix):]
-									} else {
-										break
-									}
-
-									if len(elem) == 0 {
-										s.handleActionsCreateRegistrationTokenForOrgRequest(args, w, r)
-										return
-									}
-									switch elem[0] {
-									case 'm': // Prefix: "move-token"
-										if prefix := "move-token"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-											elem = elem[len(prefix):]
-										} else {
-											break
-										}
-
-										// Leaf: ActionsCreateRemoveTokenForOrg
-										s.handleActionsCreateRemoveTokenForOrgRequest(args, w, r)
-										return
-									}
-								case 'm': // Prefix: "move-token"
-									if prefix := "move-token"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-										elem = elem[len(prefix):]
-									} else {
-										break
-									}
-
-									// Leaf: ActionsCreateRemoveTokenForOrg
-									s.handleActionsCreateRemoveTokenForOrgRequest(args, w, r)
-									return
-								}
-							}
-						case 'h': // Prefix: "hooks"
-							if prefix := "hooks"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-								elem = elem[len(prefix):]
-							} else {
-								break
-							}
-
-							if len(elem) == 0 {
-								s.handleOrgsCreateWebhookRequest(args, w, r)
-								return
-							}
-							switch elem[0] {
-							case '/': // Prefix: "/"
-								if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-									elem = elem[len(prefix):]
-								} else {
-									break
-								}
-
-								// Param: "hook_id"
-								// Match until one of "/"
-								idx := strings.IndexAny(elem, "/")
-								if idx > 0 {
-									args["hook_id"] = elem[:idx]
-									elem = elem[idx:]
-
-									if len(elem) == 0 {
-										break
-									}
-									switch elem[0] {
-									case '/': // Prefix: "/"
-										if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-											elem = elem[len(prefix):]
-										} else {
-											break
-										}
-
-										if len(elem) == 0 {
-											s.handleOrgsRedeliverWebhookDeliveryRequest(args, w, r)
-											return
-										}
-										switch elem[0] {
-										case 'd': // Prefix: "deliveries/"
-											if prefix := "deliveries/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-												elem = elem[len(prefix):]
-											} else {
-												break
-											}
-
-											// Param: "delivery_id"
-											// Match until one of "/"
-											idx := strings.IndexAny(elem, "/")
-											if idx > 0 {
-												args["delivery_id"] = elem[:idx]
-												elem = elem[idx:]
-
-												if len(elem) == 0 {
-													break
-												}
-												switch elem[0] {
-												case '/': // Prefix: "/attempts"
-													if prefix := "/attempts"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-														elem = elem[len(prefix):]
-													} else {
-														break
-													}
-
-													// Leaf: OrgsRedeliverWebhookDelivery
-													s.handleOrgsRedeliverWebhookDeliveryRequest(args, w, r)
-													return
-												}
-											}
-										case 'p': // Prefix: "pings"
-											if prefix := "pings"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-												elem = elem[len(prefix):]
-											} else {
-												break
-											}
-
-											if len(elem) == 0 {
-												s.handleOrgsPingWebhookRequest(args, w, r)
-												return
-											}
-											switch elem[0] {
-											case 'd': // Prefix: "deliveries/"
-												if prefix := "deliveries/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-													elem = elem[len(prefix):]
-												} else {
-													break
-												}
-
-												// Param: "delivery_id"
-												// Match until one of "/"
-												idx := strings.IndexAny(elem, "/")
-												if idx > 0 {
-													args["delivery_id"] = elem[:idx]
-													elem = elem[idx:]
-
-													if len(elem) == 0 {
-														break
-													}
-													switch elem[0] {
-													case '/': // Prefix: "/attempts"
-														if prefix := "/attempts"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-															elem = elem[len(prefix):]
-														} else {
-															break
-														}
-
-														// Leaf: OrgsRedeliverWebhookDelivery
-														s.handleOrgsRedeliverWebhookDeliveryRequest(args, w, r)
-														return
-													}
-												}
-											}
-										}
-									}
-								}
-							}
-						case 'i': // Prefix: "invitations"
-							if prefix := "invitations"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-								elem = elem[len(prefix):]
-							} else {
-								break
-							}
-
-							// Leaf: OrgsCreateInvitation
-							s.handleOrgsCreateInvitationRequest(args, w, r)
-							return
-						case 'm': // Prefix: "migrations"
-							if prefix := "migrations"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-								elem = elem[len(prefix):]
-							} else {
-								break
-							}
-
-							// Leaf: MigrationsStartForOrg
-							s.handleMigrationsStartForOrgRequest(args, w, r)
-							return
-						case 'p': // Prefix: "p"
-							if prefix := "p"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-								elem = elem[len(prefix):]
-							} else {
-								break
-							}
-
-							if len(elem) == 0 {
-								s.handleProjectsCreateForOrgRequest(args, w, r)
-								return
-							}
-							switch elem[0] {
-							case 'a': // Prefix: "ackages/"
-								if prefix := "ackages/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-									elem = elem[len(prefix):]
-								} else {
-									break
-								}
-
-								if len(elem) == 0 {
-									break
-								}
-								switch elem[0] {
-								case 'r': // Prefix: "rojects"
-									if prefix := "rojects"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-										elem = elem[len(prefix):]
-									} else {
-										break
-									}
-
-									// Leaf: ProjectsCreateForOrg
-									s.handleProjectsCreateForOrgRequest(args, w, r)
-									return
-								}
-								// Param: "package_type"
-								// Match until one of "/"
-								idx := strings.IndexAny(elem, "/")
-								if idx > 0 {
-									args["package_type"] = elem[:idx]
-									elem = elem[idx:]
-
-									if len(elem) == 0 {
-										break
-									}
-									switch elem[0] {
-									case '/': // Prefix: "/"
-										if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-											elem = elem[len(prefix):]
-										} else {
-											break
-										}
-
-										// Param: "package_name"
-										// Match until one of "/"
-										idx := strings.IndexAny(elem, "/")
-										if idx > 0 {
-											args["package_name"] = elem[:idx]
-											elem = elem[idx:]
-
-											if len(elem) == 0 {
-												break
-											}
-											switch elem[0] {
-											case '/': // Prefix: "/"
-												if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-													elem = elem[len(prefix):]
-												} else {
-													break
-												}
-
-												if len(elem) == 0 {
-													s.handlePackagesRestorePackageVersionForOrgRequest(args, w, r)
-													return
-												}
-												switch elem[0] {
-												case 'r': // Prefix: "restore"
-													if prefix := "restore"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-														elem = elem[len(prefix):]
-													} else {
-														break
-													}
-
-													if len(elem) == 0 {
-														s.handlePackagesRestorePackageForOrgRequest(args, w, r)
-														return
-													}
-													switch elem[0] {
-													case 'v': // Prefix: "versions/"
-														if prefix := "versions/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-															elem = elem[len(prefix):]
-														} else {
-															break
-														}
-
-														// Param: "package_version_id"
-														// Match until one of "/"
-														idx := strings.IndexAny(elem, "/")
-														if idx > 0 {
-															args["package_version_id"] = elem[:idx]
-															elem = elem[idx:]
-
-															if len(elem) == 0 {
-																break
-															}
-															switch elem[0] {
-															case '/': // Prefix: "/restore"
-																if prefix := "/restore"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																	elem = elem[len(prefix):]
-																} else {
-																	break
-																}
-
-																// Leaf: PackagesRestorePackageVersionForOrg
-																s.handlePackagesRestorePackageVersionForOrgRequest(args, w, r)
-																return
-															}
-														}
-													}
-												case 'v': // Prefix: "versions/"
-													if prefix := "versions/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-														elem = elem[len(prefix):]
-													} else {
-														break
-													}
-
-													// Param: "package_version_id"
-													// Match until one of "/"
-													idx := strings.IndexAny(elem, "/")
-													if idx > 0 {
-														args["package_version_id"] = elem[:idx]
-														elem = elem[idx:]
-
-														if len(elem) == 0 {
-															break
-														}
-														switch elem[0] {
-														case '/': // Prefix: "/restore"
-															if prefix := "/restore"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																elem = elem[len(prefix):]
-															} else {
-																break
-															}
-
-															// Leaf: PackagesRestorePackageVersionForOrg
-															s.handlePackagesRestorePackageVersionForOrgRequest(args, w, r)
-															return
-														}
-													}
-												}
-											}
-										}
-									}
-								}
-							case 'r': // Prefix: "rojects"
-								if prefix := "rojects"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-									elem = elem[len(prefix):]
-								} else {
-									break
-								}
-
-								// Leaf: ProjectsCreateForOrg
-								s.handleProjectsCreateForOrgRequest(args, w, r)
-								return
-							}
-						case 'r': // Prefix: "repos"
-							if prefix := "repos"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-								elem = elem[len(prefix):]
-							} else {
-								break
-							}
-
-							// Leaf: ReposCreateInOrg
-							s.handleReposCreateInOrgRequest(args, w, r)
-							return
-						case 't': // Prefix: "teams"
-							if prefix := "teams"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-								elem = elem[len(prefix):]
-							} else {
-								break
-							}
-
-							if len(elem) == 0 {
-								s.handleTeamsCreateRequest(args, w, r)
-								return
-							}
-							switch elem[0] {
-							case '/': // Prefix: "/"
-								if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-									elem = elem[len(prefix):]
-								} else {
-									break
-								}
-
-								// Param: "team_slug"
-								// Match until one of "/"
-								idx := strings.IndexAny(elem, "/")
-								if idx > 0 {
-									args["team_slug"] = elem[:idx]
-									elem = elem[idx:]
-
-									if len(elem) == 0 {
-										break
-									}
-									switch elem[0] {
-									case '/': // Prefix: "/discussions"
-										if prefix := "/discussions"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-											elem = elem[len(prefix):]
-										} else {
-											break
-										}
-
-										if len(elem) == 0 {
-											s.handleTeamsCreateDiscussionInOrgRequest(args, w, r)
-											return
-										}
-										switch elem[0] {
-										case '/': // Prefix: "/"
-											if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-												elem = elem[len(prefix):]
-											} else {
-												break
-											}
-
-											// Param: "discussion_number"
-											// Match until one of "/"
-											idx := strings.IndexAny(elem, "/")
-											if idx > 0 {
-												args["discussion_number"] = elem[:idx]
-												elem = elem[idx:]
-
-												if len(elem) == 0 {
-													break
-												}
-												switch elem[0] {
-												case '/': // Prefix: "/"
-													if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-														elem = elem[len(prefix):]
-													} else {
-														break
-													}
-
-													if len(elem) == 0 {
-														s.handleReactionsCreateForTeamDiscussionInOrgRequest(args, w, r)
-														return
-													}
-													switch elem[0] {
-													case 'c': // Prefix: "comments"
-														if prefix := "comments"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-															elem = elem[len(prefix):]
-														} else {
-															break
-														}
-
-														if len(elem) == 0 {
-															s.handleTeamsCreateDiscussionCommentInOrgRequest(args, w, r)
-															return
-														}
-														switch elem[0] {
-														case '/': // Prefix: "/"
-															if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																elem = elem[len(prefix):]
-															} else {
-																break
-															}
-
-															if len(elem) == 0 {
-																break
-															}
-															switch elem[0] {
-															case 'r': // Prefix: "reactions"
-																if prefix := "reactions"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																	elem = elem[len(prefix):]
-																} else {
-																	break
-																}
-
-																// Leaf: ReactionsCreateForTeamDiscussionInOrg
-																s.handleReactionsCreateForTeamDiscussionInOrgRequest(args, w, r)
-																return
-															}
-															// Param: "comment_number"
-															// Match until one of "/"
-															idx := strings.IndexAny(elem, "/")
-															if idx > 0 {
-																args["comment_number"] = elem[:idx]
-																elem = elem[idx:]
-
-																if len(elem) == 0 {
-																	break
-																}
-																switch elem[0] {
-																case '/': // Prefix: "/reactions"
-																	if prefix := "/reactions"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																		elem = elem[len(prefix):]
-																	} else {
-																		break
-																	}
-
-																	// Leaf: ReactionsCreateForTeamDiscussionCommentInOrg
-																	s.handleReactionsCreateForTeamDiscussionCommentInOrgRequest(args, w, r)
-																	return
-																}
-															}
-														}
-													case 'r': // Prefix: "reactions"
-														if prefix := "reactions"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-															elem = elem[len(prefix):]
-														} else {
-															break
-														}
-
-														// Leaf: ReactionsCreateForTeamDiscussionInOrg
-														s.handleReactionsCreateForTeamDiscussionInOrgRequest(args, w, r)
-														return
-													}
-												}
-											}
-										}
-									}
-								}
-							}
-						}
-					}
-				}
-			case 'p': // Prefix: "projects/"
-				if prefix := "projects/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-					elem = elem[len(prefix):]
-				} else {
-					break
-				}
-
-				if len(elem) == 0 {
-					break
-				}
-				switch elem[0] {
-				case 'c': // Prefix: "columns/"
-					if prefix := "columns/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-						elem = elem[len(prefix):]
-					} else {
-						break
-					}
-
-					if len(elem) == 0 {
-						s.handleProjectsMoveColumnRequest(args, w, r)
-						return
-					}
-					switch elem[0] {
-					case 'c': // Prefix: "cards/"
-						if prefix := "cards/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-							elem = elem[len(prefix):]
-						} else {
-							break
-						}
-
-						// Param: "card_id"
-						// Match until one of "/"
-						idx := strings.IndexAny(elem, "/")
-						if idx > 0 {
-							args["card_id"] = elem[:idx]
-							elem = elem[idx:]
-
-							if len(elem) == 0 {
-								break
-							}
-							switch elem[0] {
-							case '/': // Prefix: "/moves"
-								if prefix := "/moves"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-									elem = elem[len(prefix):]
-								} else {
-									break
-								}
-
-								// Leaf: ProjectsMoveColumn
-								s.handleProjectsMoveColumnRequest(args, w, r)
-								return
-							}
-						}
-					}
-					// Param: "column_id"
-					// Match until one of "/"
-					idx := strings.IndexAny(elem, "/")
-					if idx > 0 {
-						args["column_id"] = elem[:idx]
-						elem = elem[idx:]
-
-						if len(elem) == 0 {
-							break
-						}
-						switch elem[0] {
-						case '/': // Prefix: "/moves"
-							if prefix := "/moves"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-								elem = elem[len(prefix):]
-							} else {
-								break
-							}
-
-							// Leaf: ProjectsMoveColumn
-							s.handleProjectsMoveColumnRequest(args, w, r)
-							return
-						}
-					}
-				}
-				// Param: "project_id"
-				// Match until one of "/"
-				idx := strings.IndexAny(elem, "/")
-				if idx > 0 {
-					args["project_id"] = elem[:idx]
-					elem = elem[idx:]
-
-					if len(elem) == 0 {
-						break
-					}
-					switch elem[0] {
-					case '/': // Prefix: "/columns"
-						if prefix := "/columns"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-							elem = elem[len(prefix):]
-						} else {
-							break
-						}
-
-						// Leaf: ProjectsCreateColumn
-						s.handleProjectsCreateColumnRequest(args, w, r)
-						return
-					}
-				}
-			case 'r': // Prefix: "repos/"
-				if prefix := "repos/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-					elem = elem[len(prefix):]
-				} else {
-					break
-				}
-
-				if len(elem) == 0 {
-					break
-				}
-				switch elem[0] {
-				case 'o': // Prefix: "orgs/"
-					if prefix := "orgs/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-						elem = elem[len(prefix):]
-					} else {
-						break
-					}
-
-					// Param: "org"
-					// Match until one of "/"
-					idx := strings.IndexAny(elem, "/")
-					if idx > 0 {
-						args["org"] = elem[:idx]
-						elem = elem[idx:]
-
-						if len(elem) == 0 {
-							break
-						}
-						switch elem[0] {
-						case '/': // Prefix: "/actions/runners/registration-token"
-							if prefix := "/actions/runners/registration-token"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-								elem = elem[len(prefix):]
-							} else {
-								break
-							}
-
-							// Leaf: ActionsCreateRegistrationTokenForOrg
-							s.handleActionsCreateRegistrationTokenForOrgRequest(args, w, r)
-							return
-						}
-					}
-				}
-				// Param: "owner"
-				// Match until one of "/"
-				idx := strings.IndexAny(elem, "/")
-				if idx > 0 {
-					args["owner"] = elem[:idx]
-					elem = elem[idx:]
-
-					if len(elem) == 0 {
-						break
-					}
-					switch elem[0] {
-					case '/': // Prefix: "/"
-						if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-							elem = elem[len(prefix):]
-						} else {
-							break
-						}
-
-						// Param: "repo"
-						// Match until one of "/"
-						idx := strings.IndexAny(elem, "/")
-						if idx > 0 {
-							args["repo"] = elem[:idx]
-							elem = elem[idx:]
-
-							if len(elem) == 0 {
-								break
-							}
-							switch elem[0] {
-							case '/': // Prefix: "/"
-								if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-									elem = elem[len(prefix):]
-								} else {
-									break
-								}
-
-								if len(elem) == 0 {
-									s.handleAppsCreateContentAttachmentRequest(args, w, r)
-									return
-								}
-								switch elem[0] {
-								case 'a': // Prefix: "a"
-									if prefix := "a"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-										elem = elem[len(prefix):]
-									} else {
-										break
-									}
-
-									if len(elem) == 0 {
-										s.handleReposCreateAutolinkRequest(args, w, r)
-										return
-									}
-									switch elem[0] {
-									case 'c': // Prefix: "ctions/run"
-										if prefix := "ctions/run"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-											elem = elem[len(prefix):]
-										} else {
-											break
-										}
-
-										if len(elem) == 0 {
-											s.handleActionsCreateRegistrationTokenForRepoRequest(args, w, r)
-											return
-										}
-										switch elem[0] {
-										case 'c': // Prefix: "content_references/"
-											if prefix := "content_references/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-												elem = elem[len(prefix):]
-											} else {
-												break
-											}
-
-											// Param: "content_reference_id"
-											// Match until one of "/"
-											idx := strings.IndexAny(elem, "/")
-											if idx > 0 {
-												args["content_reference_id"] = elem[:idx]
-												elem = elem[idx:]
-
-												if len(elem) == 0 {
-													break
-												}
-												switch elem[0] {
-												case '/': // Prefix: "/attachments"
-													if prefix := "/attachments"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-														elem = elem[len(prefix):]
-													} else {
-														break
-													}
-
-													// Leaf: AppsCreateContentAttachment
-													s.handleAppsCreateContentAttachmentRequest(args, w, r)
-													return
-												}
-											}
-										case 'n': // Prefix: "ners/re"
-											if prefix := "ners/re"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-												elem = elem[len(prefix):]
-											} else {
-												break
-											}
-
-											if len(elem) == 0 {
-												s.handleActionsCreateRemoveTokenForRepoRequest(args, w, r)
-												return
-											}
-											switch elem[0] {
-											case 'g': // Prefix: "gistration-token"
-												if prefix := "gistration-token"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-													elem = elem[len(prefix):]
-												} else {
-													break
-												}
-
-												if len(elem) == 0 {
-													s.handleActionsCreateRegistrationTokenForRepoRequest(args, w, r)
-													return
-												}
-												switch elem[0] {
-												case 'm': // Prefix: "move-token"
-													if prefix := "move-token"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-														elem = elem[len(prefix):]
-													} else {
-														break
-													}
-
-													// Leaf: ActionsCreateRemoveTokenForRepo
-													s.handleActionsCreateRemoveTokenForRepoRequest(args, w, r)
-													return
-												}
-											case 'm': // Prefix: "move-token"
-												if prefix := "move-token"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-													elem = elem[len(prefix):]
-												} else {
-													break
-												}
-
-												// Leaf: ActionsCreateRemoveTokenForRepo
-												s.handleActionsCreateRemoveTokenForRepoRequest(args, w, r)
-												return
-											}
-										case 's': // Prefix: "s/"
-											if prefix := "s/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-												elem = elem[len(prefix):]
-											} else {
-												break
-											}
-
-											if len(elem) == 0 {
-												break
-											}
-											switch elem[0] {
-											case 'n': // Prefix: "ners/registration-token"
-												if prefix := "ners/registration-token"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-													elem = elem[len(prefix):]
-												} else {
-													break
-												}
-
-												// Leaf: ActionsCreateRegistrationTokenForRepo
-												s.handleActionsCreateRegistrationTokenForRepoRequest(args, w, r)
-												return
-											}
-											// Param: "run_id"
-											// Match until one of "/"
-											idx := strings.IndexAny(elem, "/")
-											if idx > 0 {
-												args["run_id"] = elem[:idx]
-												elem = elem[idx:]
-
-												if len(elem) == 0 {
-													break
-												}
-												switch elem[0] {
-												case '/': // Prefix: "/"
-													if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-														elem = elem[len(prefix):]
-													} else {
-														break
-													}
-
-													if len(elem) == 0 {
-														s.handleActionsCancelWorkflowRunRequest(args, w, r)
-														return
-													}
-													switch elem[0] {
-													case 'a': // Prefix: "approve"
-														if prefix := "approve"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-															elem = elem[len(prefix):]
-														} else {
-															break
-														}
-
-														if len(elem) == 0 {
-															s.handleActionsApproveWorkflowRunRequest(args, w, r)
-															return
-														}
-														switch elem[0] {
-														case 'c': // Prefix: "cancel"
-															if prefix := "cancel"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																elem = elem[len(prefix):]
-															} else {
-																break
-															}
-
-															// Leaf: ActionsCancelWorkflowRun
-															s.handleActionsCancelWorkflowRunRequest(args, w, r)
-															return
-														}
-													case 'c': // Prefix: "cancel"
-														if prefix := "cancel"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-															elem = elem[len(prefix):]
-														} else {
-															break
-														}
-
-														// Leaf: ActionsCancelWorkflowRun
-														s.handleActionsCancelWorkflowRunRequest(args, w, r)
-														return
-													case 'p': // Prefix: "pending_deployments"
-														if prefix := "pending_deployments"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-															elem = elem[len(prefix):]
-														} else {
-															break
-														}
-
-														// Leaf: ActionsReviewPendingDeploymentsForRun
-														s.handleActionsReviewPendingDeploymentsForRunRequest(args, w, r)
-														return
-													case 'r': // Prefix: "re"
-														if prefix := "re"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-															elem = elem[len(prefix):]
-														} else {
-															break
-														}
-
-														if len(elem) == 0 {
-															s.handleActionsRetryWorkflowRequest(args, w, r)
-															return
-														}
-														switch elem[0] {
-														case 'r': // Prefix: "run"
-															if prefix := "run"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																elem = elem[len(prefix):]
-															} else {
-																break
-															}
-
-															if len(elem) == 0 {
-																s.handleActionsReRunWorkflowRequest(args, w, r)
-																return
-															}
-															switch elem[0] {
-															case 't': // Prefix: "try"
-																if prefix := "try"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																	elem = elem[len(prefix):]
-																} else {
-																	break
-																}
-
-																// Leaf: ActionsRetryWorkflow
-																s.handleActionsRetryWorkflowRequest(args, w, r)
-																return
-															}
-														case 't': // Prefix: "try"
-															if prefix := "try"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																elem = elem[len(prefix):]
-															} else {
-																break
-															}
-
-															// Leaf: ActionsRetryWorkflow
-															s.handleActionsRetryWorkflowRequest(args, w, r)
-															return
-														}
-													}
-												}
-											}
-										case 'u': // Prefix: "utolinks"
-											if prefix := "utolinks"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-												elem = elem[len(prefix):]
-											} else {
-												break
-											}
-
-											// Leaf: ReposCreateAutolink
-											s.handleReposCreateAutolinkRequest(args, w, r)
-											return
-										}
-									case 'u': // Prefix: "utolinks"
-										if prefix := "utolinks"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-											elem = elem[len(prefix):]
-										} else {
-											break
-										}
-
-										// Leaf: ReposCreateAutolink
-										s.handleReposCreateAutolinkRequest(args, w, r)
-										return
-									}
-								case 'b': // Prefix: "branches/"
-									if prefix := "branches/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-										elem = elem[len(prefix):]
-									} else {
-										break
-									}
-
-									// Param: "branch"
-									// Match until one of "/"
-									idx := strings.IndexAny(elem, "/")
-									if idx > 0 {
-										args["branch"] = elem[:idx]
-										elem = elem[idx:]
-
-										if len(elem) == 0 {
-											break
-										}
-										switch elem[0] {
-										case '/': // Prefix: "/"
-											if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-												elem = elem[len(prefix):]
-											} else {
-												break
-											}
-
-											if len(elem) == 0 {
-												s.handleReposRenameBranchRequest(args, w, r)
-												return
-											}
-											switch elem[0] {
-											case 'p': // Prefix: "protection/"
-												if prefix := "protection/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-													elem = elem[len(prefix):]
-												} else {
-													break
-												}
-
-												if len(elem) == 0 {
-													s.handleReposSetAdminBranchProtectionRequest(args, w, r)
-													return
-												}
-												switch elem[0] {
-												case 'e': // Prefix: "enforce_admins"
-													if prefix := "enforce_admins"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-														elem = elem[len(prefix):]
-													} else {
-														break
-													}
-
-													// Leaf: ReposSetAdminBranchProtection
-													s.handleReposSetAdminBranchProtectionRequest(args, w, r)
-													return
-												case 'r': // Prefix: "re"
-													if prefix := "re"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-														elem = elem[len(prefix):]
-													} else {
-														break
-													}
-
-													if len(elem) == 0 {
-														s.handleReposAddStatusCheckContextsRequest(args, w, r)
-														return
-													}
-													switch elem[0] {
-													case 'e': // Prefix: "enforce_admins"
-														if prefix := "enforce_admins"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-															elem = elem[len(prefix):]
-														} else {
-															break
-														}
-
-														// Leaf: ReposSetAdminBranchProtection
-														s.handleReposSetAdminBranchProtectionRequest(args, w, r)
-														return
-													case 'q': // Prefix: "quired_s"
-														if prefix := "quired_s"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-															elem = elem[len(prefix):]
-														} else {
-															break
-														}
-
-														if len(elem) == 0 {
-															s.handleReposCreateCommitSignatureProtectionRequest(args, w, r)
-															return
-														}
-														switch elem[0] {
-														case 'i': // Prefix: "ignatures"
-															if prefix := "ignatures"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																elem = elem[len(prefix):]
-															} else {
-																break
-															}
-
-															// Leaf: ReposCreateCommitSignatureProtection
-															s.handleReposCreateCommitSignatureProtectionRequest(args, w, r)
-															return
-														case 't': // Prefix: "tatus_checks/contexts"
-															if prefix := "tatus_checks/contexts"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																elem = elem[len(prefix):]
-															} else {
-																break
-															}
-
-															if len(elem) == 0 {
-																s.handleReposAddStatusCheckContextsRequest(args, w, r)
-																return
-															}
-															switch elem[0] {
-															case 'i': // Prefix: "ignatures"
-																if prefix := "ignatures"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																	elem = elem[len(prefix):]
-																} else {
-																	break
-																}
-
-																// Leaf: ReposCreateCommitSignatureProtection
-																s.handleReposCreateCommitSignatureProtectionRequest(args, w, r)
-																return
-															}
-														}
-													case 'r': // Prefix: "rename"
-														if prefix := "rename"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-															elem = elem[len(prefix):]
-														} else {
-															break
-														}
-
-														// Leaf: ReposRenameBranch
-														s.handleReposRenameBranchRequest(args, w, r)
-														return
-													case 's': // Prefix: "strictions/"
-														if prefix := "strictions/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-															elem = elem[len(prefix):]
-														} else {
-															break
-														}
-
-														if len(elem) == 0 {
-															s.handleReposAddTeamAccessRestrictionsRequest(args, w, r)
-															return
-														}
-														switch elem[0] {
-														case 'a': // Prefix: "apps"
-															if prefix := "apps"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																elem = elem[len(prefix):]
-															} else {
-																break
-															}
-
-															if len(elem) == 0 {
-																s.handleReposAddAppAccessRestrictionsRequest(args, w, r)
-																return
-															}
-															switch elem[0] {
-															case 'q': // Prefix: "quired_status_checks/contexts"
-																if prefix := "quired_status_checks/contexts"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																	elem = elem[len(prefix):]
-																} else {
-																	break
-																}
-
-																// Leaf: ReposAddStatusCheckContexts
-																s.handleReposAddStatusCheckContextsRequest(args, w, r)
-																return
-															case 't': // Prefix: "teams"
-																if prefix := "teams"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																	elem = elem[len(prefix):]
-																} else {
-																	break
-																}
-
-																// Leaf: ReposAddTeamAccessRestrictions
-																s.handleReposAddTeamAccessRestrictionsRequest(args, w, r)
-																return
-															}
-														case 't': // Prefix: "teams"
-															if prefix := "teams"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																elem = elem[len(prefix):]
-															} else {
-																break
-															}
-
-															// Leaf: ReposAddTeamAccessRestrictions
-															s.handleReposAddTeamAccessRestrictionsRequest(args, w, r)
-															return
-														case 'u': // Prefix: "users"
-															if prefix := "users"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																elem = elem[len(prefix):]
-															} else {
-																break
-															}
-
-															// Leaf: ReposAddUserAccessRestrictions
-															s.handleReposAddUserAccessRestrictionsRequest(args, w, r)
-															return
-														}
-													}
-												}
-											case 'r': // Prefix: "rename"
-												if prefix := "rename"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-													elem = elem[len(prefix):]
-												} else {
-													break
-												}
-
-												// Leaf: ReposRenameBranch
-												s.handleReposRenameBranchRequest(args, w, r)
-												return
-											}
-										}
-									}
-								case 'c': // Prefix: "c"
-									if prefix := "c"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-										elem = elem[len(prefix):]
-									} else {
-										break
-									}
-
-									if len(elem) == 0 {
-										s.handleChecksCreateSuiteRequest(args, w, r)
-										return
-									}
-									switch elem[0] {
-									case 'h': // Prefix: "heck-suites"
-										if prefix := "heck-suites"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-											elem = elem[len(prefix):]
-										} else {
-											break
-										}
-
-										if len(elem) == 0 {
-											s.handleChecksCreateSuiteRequest(args, w, r)
-											return
-										}
-										switch elem[0] {
-										case '/': // Prefix: "/"
-											if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-												elem = elem[len(prefix):]
-											} else {
-												break
-											}
-
-											// Param: "check_suite_id"
-											// Match until one of "/"
-											idx := strings.IndexAny(elem, "/")
-											if idx > 0 {
-												args["check_suite_id"] = elem[:idx]
-												elem = elem[idx:]
-
-												if len(elem) == 0 {
-													break
-												}
-												switch elem[0] {
-												case '/': // Prefix: "/rerequest"
-													if prefix := "/rerequest"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-														elem = elem[len(prefix):]
-													} else {
-														break
-													}
-
-													// Leaf: ChecksRerequestSuite
-													s.handleChecksRerequestSuiteRequest(args, w, r)
-													return
-												}
-											}
-										}
-									case 'o': // Prefix: "o"
-										if prefix := "o"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-											elem = elem[len(prefix):]
-										} else {
-											break
-										}
-
-										if len(elem) == 0 {
-											s.handleCodeScanningUploadSarifRequest(args, w, r)
-											return
-										}
-										switch elem[0] {
-										case 'd': // Prefix: "de-scanning/sarifs"
-											if prefix := "de-scanning/sarifs"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-												elem = elem[len(prefix):]
-											} else {
-												break
-											}
-
-											// Leaf: CodeScanningUploadSarif
-											s.handleCodeScanningUploadSarifRequest(args, w, r)
-											return
-										case 'm': // Prefix: "mm"
-											if prefix := "mm"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-												elem = elem[len(prefix):]
-											} else {
-												break
-											}
-
-											if len(elem) == 0 {
-												s.handleReposCreateCommitCommentRequest(args, w, r)
-												return
-											}
-											switch elem[0] {
-											case 'e': // Prefix: "ents/"
-												if prefix := "ents/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-													elem = elem[len(prefix):]
-												} else {
-													break
-												}
-
-												if len(elem) == 0 {
-													break
-												}
-												switch elem[0] {
-												case 'i': // Prefix: "its/"
-													if prefix := "its/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-														elem = elem[len(prefix):]
-													} else {
-														break
-													}
-
-													// Param: "commit_sha"
-													// Match until one of "/"
-													idx := strings.IndexAny(elem, "/")
-													if idx > 0 {
-														args["commit_sha"] = elem[:idx]
-														elem = elem[idx:]
-
-														if len(elem) == 0 {
-															break
-														}
-														switch elem[0] {
-														case '/': // Prefix: "/comments"
-															if prefix := "/comments"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																elem = elem[len(prefix):]
-															} else {
-																break
-															}
-
-															// Leaf: ReposCreateCommitComment
-															s.handleReposCreateCommitCommentRequest(args, w, r)
-															return
-														}
-													}
-												}
-												// Param: "comment_id"
-												// Match until one of "/"
-												idx := strings.IndexAny(elem, "/")
-												if idx > 0 {
-													args["comment_id"] = elem[:idx]
-													elem = elem[idx:]
-
-													if len(elem) == 0 {
-														break
-													}
-													switch elem[0] {
-													case '/': // Prefix: "/reactions"
-														if prefix := "/reactions"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-															elem = elem[len(prefix):]
-														} else {
-															break
-														}
-
-														// Leaf: ReactionsCreateForCommitComment
-														s.handleReactionsCreateForCommitCommentRequest(args, w, r)
-														return
-													}
-												}
-											case 'i': // Prefix: "its/"
-												if prefix := "its/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-													elem = elem[len(prefix):]
-												} else {
-													break
-												}
-
-												// Param: "commit_sha"
-												// Match until one of "/"
-												idx := strings.IndexAny(elem, "/")
-												if idx > 0 {
-													args["commit_sha"] = elem[:idx]
-													elem = elem[idx:]
-
-													if len(elem) == 0 {
-														break
-													}
-													switch elem[0] {
-													case '/': // Prefix: "/comments"
-														if prefix := "/comments"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-															elem = elem[len(prefix):]
-														} else {
-															break
-														}
-
-														// Leaf: ReposCreateCommitComment
-														s.handleReposCreateCommitCommentRequest(args, w, r)
-														return
-													}
-												}
-											}
-										case 'n': // Prefix: "ntent_references/"
-											if prefix := "ntent_references/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-												elem = elem[len(prefix):]
-											} else {
-												break
-											}
-
-											if len(elem) == 0 {
-												break
-											}
-											switch elem[0] {
-											case 'd': // Prefix: "de-scanning/sarifs"
-												if prefix := "de-scanning/sarifs"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-													elem = elem[len(prefix):]
-												} else {
-													break
-												}
-
-												// Leaf: CodeScanningUploadSarif
-												s.handleCodeScanningUploadSarifRequest(args, w, r)
-												return
-											case 'h': // Prefix: "heck-suites"
-												if prefix := "heck-suites"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-													elem = elem[len(prefix):]
-												} else {
-													break
-												}
-
-												// Leaf: ChecksCreateSuite
-												s.handleChecksCreateSuiteRequest(args, w, r)
-												return
-											}
-											// Param: "content_reference_id"
-											// Match until one of "/"
-											idx := strings.IndexAny(elem, "/")
-											if idx > 0 {
-												args["content_reference_id"] = elem[:idx]
-												elem = elem[idx:]
-
-												if len(elem) == 0 {
-													break
-												}
-												switch elem[0] {
-												case '/': // Prefix: "/attachments"
-													if prefix := "/attachments"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-														elem = elem[len(prefix):]
-													} else {
-														break
-													}
-
-													// Leaf: AppsCreateContentAttachment
-													s.handleAppsCreateContentAttachmentRequest(args, w, r)
-													return
-												}
-											}
-										}
-									}
-								case 'd': // Prefix: "d"
-									if prefix := "d"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-										elem = elem[len(prefix):]
-									} else {
-										break
-									}
-
-									if len(elem) == 0 {
-										s.handleReposCreateDispatchEventRequest(args, w, r)
-										return
-									}
-									switch elem[0] {
-									case 'e': // Prefix: "eployments"
-										if prefix := "eployments"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-											elem = elem[len(prefix):]
-										} else {
-											break
-										}
-
-										if len(elem) == 0 {
-											s.handleReposCreateDeploymentRequest(args, w, r)
-											return
-										}
-										switch elem[0] {
-										case '/': // Prefix: "/"
-											if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-												elem = elem[len(prefix):]
-											} else {
-												break
-											}
-
-											// Param: "deployment_id"
-											// Match until one of "/"
-											idx := strings.IndexAny(elem, "/")
-											if idx > 0 {
-												args["deployment_id"] = elem[:idx]
-												elem = elem[idx:]
-
-												if len(elem) == 0 {
-													break
-												}
-												switch elem[0] {
-												case '/': // Prefix: "/statuses"
-													if prefix := "/statuses"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-														elem = elem[len(prefix):]
-													} else {
-														break
-													}
-
-													// Leaf: ReposCreateDeploymentStatus
-													s.handleReposCreateDeploymentStatusRequest(args, w, r)
-													return
-												}
-											}
-										case 'i': // Prefix: "ispatches"
-											if prefix := "ispatches"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-												elem = elem[len(prefix):]
-											} else {
-												break
-											}
-
-											// Leaf: ReposCreateDispatchEvent
-											s.handleReposCreateDispatchEventRequest(args, w, r)
-											return
-										}
-									case 'i': // Prefix: "ispatches"
-										if prefix := "ispatches"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-											elem = elem[len(prefix):]
-										} else {
-											break
-										}
-
-										// Leaf: ReposCreateDispatchEvent
-										s.handleReposCreateDispatchEventRequest(args, w, r)
-										return
-									}
-								case 'f': // Prefix: "forks"
-									if prefix := "forks"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-										elem = elem[len(prefix):]
-									} else {
-										break
-									}
-
-									// Leaf: ReposCreateFork
-									s.handleReposCreateForkRequest(args, w, r)
-									return
-								case 'g': // Prefix: "g"
-									if prefix := "g"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-										elem = elem[len(prefix):]
-									} else {
-										break
-									}
-
-									if len(elem) == 0 {
-										s.handleReposCreateUsingTemplateRequest(args, w, r)
-										return
-									}
-									switch elem[0] {
-									case 'e': // Prefix: "enerate"
-										if prefix := "enerate"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-											elem = elem[len(prefix):]
-										} else {
-											break
-										}
-
-										// Leaf: ReposCreateUsingTemplate
-										s.handleReposCreateUsingTemplateRequest(args, w, r)
-										return
-									case 'i': // Prefix: "it/"
-										if prefix := "it/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-											elem = elem[len(prefix):]
-										} else {
-											break
-										}
-
-										if len(elem) == 0 {
-											s.handleGitCreateCommitRequest(args, w, r)
-											return
-										}
-										switch elem[0] {
-										case 'b': // Prefix: "blobs"
-											if prefix := "blobs"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-												elem = elem[len(prefix):]
-											} else {
-												break
-											}
-
-											if len(elem) == 0 {
-												s.handleGitCreateBlobRequest(args, w, r)
-												return
-											}
-											switch elem[0] {
-											case 'c': // Prefix: "commits"
-												if prefix := "commits"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-													elem = elem[len(prefix):]
-												} else {
-													break
-												}
-
-												// Leaf: GitCreateCommit
-												s.handleGitCreateCommitRequest(args, w, r)
-												return
-											}
-										case 'c': // Prefix: "commits"
-											if prefix := "commits"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-												elem = elem[len(prefix):]
-											} else {
-												break
-											}
-
-											// Leaf: GitCreateCommit
-											s.handleGitCreateCommitRequest(args, w, r)
-											return
-										case 'e': // Prefix: "enerate"
-											if prefix := "enerate"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-												elem = elem[len(prefix):]
-											} else {
-												break
-											}
-
-											// Leaf: ReposCreateUsingTemplate
-											s.handleReposCreateUsingTemplateRequest(args, w, r)
-											return
-										case 'r': // Prefix: "refs"
-											if prefix := "refs"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-												elem = elem[len(prefix):]
-											} else {
-												break
-											}
-
-											// Leaf: GitCreateRef
-											s.handleGitCreateRefRequest(args, w, r)
-											return
-										case 't': // Prefix: "t"
-											if prefix := "t"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-												elem = elem[len(prefix):]
-											} else {
-												break
-											}
-
-											if len(elem) == 0 {
-												s.handleGitCreateTreeRequest(args, w, r)
-												return
-											}
-											switch elem[0] {
-											case 'a': // Prefix: "ags"
-												if prefix := "ags"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-													elem = elem[len(prefix):]
-												} else {
-													break
-												}
-
-												if len(elem) == 0 {
-													s.handleGitCreateTagRequest(args, w, r)
-													return
-												}
-												switch elem[0] {
-												case 'r': // Prefix: "rees"
-													if prefix := "rees"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-														elem = elem[len(prefix):]
-													} else {
-														break
-													}
-
-													// Leaf: GitCreateTree
-													s.handleGitCreateTreeRequest(args, w, r)
-													return
-												}
-											case 'r': // Prefix: "rees"
-												if prefix := "rees"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-													elem = elem[len(prefix):]
-												} else {
-													break
-												}
-
-												// Leaf: GitCreateTree
-												s.handleGitCreateTreeRequest(args, w, r)
-												return
-											}
-										}
-									}
-								case 'h': // Prefix: "hooks"
-									if prefix := "hooks"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-										elem = elem[len(prefix):]
-									} else {
-										break
-									}
-
-									if len(elem) == 0 {
-										s.handleReposCreateWebhookRequest(args, w, r)
-										return
-									}
-									switch elem[0] {
-									case '/': // Prefix: "/"
-										if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-											elem = elem[len(prefix):]
-										} else {
-											break
-										}
-
-										// Param: "hook_id"
-										// Match until one of "/"
-										idx := strings.IndexAny(elem, "/")
-										if idx > 0 {
-											args["hook_id"] = elem[:idx]
-											elem = elem[idx:]
-
-											if len(elem) == 0 {
-												break
-											}
-											switch elem[0] {
-											case '/': // Prefix: "/"
-												if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-													elem = elem[len(prefix):]
-												} else {
-													break
-												}
-
-												if len(elem) == 0 {
-													s.handleReposRedeliverWebhookDeliveryRequest(args, w, r)
-													return
-												}
-												switch elem[0] {
-												case 'd': // Prefix: "deliveries/"
-													if prefix := "deliveries/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-														elem = elem[len(prefix):]
-													} else {
-														break
-													}
-
-													// Param: "delivery_id"
-													// Match until one of "/"
-													idx := strings.IndexAny(elem, "/")
-													if idx > 0 {
-														args["delivery_id"] = elem[:idx]
-														elem = elem[idx:]
-
-														if len(elem) == 0 {
-															break
-														}
-														switch elem[0] {
-														case '/': // Prefix: "/attempts"
-															if prefix := "/attempts"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																elem = elem[len(prefix):]
-															} else {
-																break
-															}
-
-															// Leaf: ReposRedeliverWebhookDelivery
-															s.handleReposRedeliverWebhookDeliveryRequest(args, w, r)
-															return
-														}
-													}
-												case 'p': // Prefix: "pings"
-													if prefix := "pings"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-														elem = elem[len(prefix):]
-													} else {
-														break
-													}
-
-													if len(elem) == 0 {
-														s.handleReposPingWebhookRequest(args, w, r)
-														return
-													}
-													switch elem[0] {
-													case 'd': // Prefix: "deliveries/"
-														if prefix := "deliveries/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-															elem = elem[len(prefix):]
-														} else {
-															break
-														}
-
-														// Param: "delivery_id"
-														// Match until one of "/"
-														idx := strings.IndexAny(elem, "/")
-														if idx > 0 {
-															args["delivery_id"] = elem[:idx]
-															elem = elem[idx:]
-
-															if len(elem) == 0 {
-																break
-															}
-															switch elem[0] {
-															case '/': // Prefix: "/attempts"
-																if prefix := "/attempts"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																	elem = elem[len(prefix):]
-																} else {
-																	break
-																}
-
-																// Leaf: ReposRedeliverWebhookDelivery
-																s.handleReposRedeliverWebhookDeliveryRequest(args, w, r)
-																return
-															}
-														}
-													}
-												case 't': // Prefix: "tests"
-													if prefix := "tests"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-														elem = elem[len(prefix):]
-													} else {
-														break
-													}
-
-													// Leaf: ReposTestPushWebhook
-													s.handleReposTestPushWebhookRequest(args, w, r)
-													return
-												}
-											}
-										}
-									}
-								case 'i': // Prefix: "issues"
-									if prefix := "issues"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-										elem = elem[len(prefix):]
-									} else {
-										break
-									}
-
-									if len(elem) == 0 {
-										s.handleIssuesCreateRequest(args, w, r)
-										return
-									}
-									switch elem[0] {
-									case '/': // Prefix: "/"
-										if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-											elem = elem[len(prefix):]
-										} else {
-											break
-										}
-
-										if len(elem) == 0 {
-											break
-										}
-										switch elem[0] {
-										case 'c': // Prefix: "comments/"
-											if prefix := "comments/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-												elem = elem[len(prefix):]
-											} else {
-												break
-											}
-
-											// Param: "comment_id"
-											// Match until one of "/"
-											idx := strings.IndexAny(elem, "/")
-											if idx > 0 {
-												args["comment_id"] = elem[:idx]
-												elem = elem[idx:]
-
-												if len(elem) == 0 {
-													break
-												}
-												switch elem[0] {
-												case '/': // Prefix: "/reactions"
-													if prefix := "/reactions"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-														elem = elem[len(prefix):]
-													} else {
-														break
-													}
-
-													// Leaf: ReactionsCreateForIssueComment
-													s.handleReactionsCreateForIssueCommentRequest(args, w, r)
-													return
-												}
-											}
-										}
-										// Param: "issue_number"
-										// Match until one of "/"
-										idx := strings.IndexAny(elem, "/")
-										if idx > 0 {
-											args["issue_number"] = elem[:idx]
-											elem = elem[idx:]
-
-											if len(elem) == 0 {
-												break
-											}
-											switch elem[0] {
-											case '/': // Prefix: "/"
-												if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-													elem = elem[len(prefix):]
-												} else {
-													break
-												}
-
-												if len(elem) == 0 {
-													s.handleIssuesCreateCommentRequest(args, w, r)
-													return
-												}
-												switch elem[0] {
-												case 'a': // Prefix: "assignees"
-													if prefix := "assignees"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-														elem = elem[len(prefix):]
-													} else {
-														break
-													}
-
-													if len(elem) == 0 {
-														s.handleIssuesAddAssigneesRequest(args, w, r)
-														return
-													}
-													switch elem[0] {
-													case 'c': // Prefix: "comments"
-														if prefix := "comments"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-															elem = elem[len(prefix):]
-														} else {
-															break
-														}
-
-														// Leaf: IssuesCreateComment
-														s.handleIssuesCreateCommentRequest(args, w, r)
-														return
-													}
-												case 'c': // Prefix: "comments"
-													if prefix := "comments"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-														elem = elem[len(prefix):]
-													} else {
-														break
-													}
-
-													// Leaf: IssuesCreateComment
-													s.handleIssuesCreateCommentRequest(args, w, r)
-													return
-												case 'r': // Prefix: "reactions"
-													if prefix := "reactions"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-														elem = elem[len(prefix):]
-													} else {
-														break
-													}
-
-													// Leaf: ReactionsCreateForIssue
-													s.handleReactionsCreateForIssueRequest(args, w, r)
-													return
-												}
-											}
-										}
-									}
-								case 'k': // Prefix: "keys"
-									if prefix := "keys"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-										elem = elem[len(prefix):]
-									} else {
-										break
-									}
-
-									// Leaf: ReposCreateDeployKey
-									s.handleReposCreateDeployKeyRequest(args, w, r)
-									return
-								case 'l': // Prefix: "labels"
-									if prefix := "labels"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-										elem = elem[len(prefix):]
-									} else {
-										break
-									}
-
-									// Leaf: IssuesCreateLabel
-									s.handleIssuesCreateLabelRequest(args, w, r)
-									return
-								case 'm': // Prefix: "m"
-									if prefix := "m"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-										elem = elem[len(prefix):]
-									} else {
-										break
-									}
-
-									if len(elem) == 0 {
-										s.handleReposMergeRequest(args, w, r)
-										return
-									}
-									switch elem[0] {
-									case 'e': // Prefix: "erge"
-										if prefix := "erge"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-											elem = elem[len(prefix):]
-										} else {
-											break
-										}
-
-										if len(elem) == 0 {
-											s.handleReposMergeUpstreamRequest(args, w, r)
-											return
-										}
-										switch elem[0] {
-										case '-': // Prefix: "-upstream"
-											if prefix := "-upstream"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-												elem = elem[len(prefix):]
-											} else {
-												break
-											}
-
-											// Leaf: ReposMergeUpstream
-											s.handleReposMergeUpstreamRequest(args, w, r)
-											return
-										case 's': // Prefix: "s"
-											if prefix := "s"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-												elem = elem[len(prefix):]
-											} else {
-												break
-											}
-
-											if len(elem) == 0 {
-												s.handleReposMergeRequest(args, w, r)
-												return
-											}
-											switch elem[0] {
-											case '-': // Prefix: "-upstream"
-												if prefix := "-upstream"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-													elem = elem[len(prefix):]
-												} else {
-													break
-												}
-
-												// Leaf: ReposMergeUpstream
-												s.handleReposMergeUpstreamRequest(args, w, r)
-												return
-											}
-										}
-									case 'i': // Prefix: "ilestones"
-										if prefix := "ilestones"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-											elem = elem[len(prefix):]
-										} else {
-											break
-										}
-
-										if len(elem) == 0 {
-											s.handleIssuesCreateMilestoneRequest(args, w, r)
-											return
-										}
-										switch elem[0] {
-										case 'e': // Prefix: "erges"
-											if prefix := "erges"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-												elem = elem[len(prefix):]
-											} else {
-												break
-											}
-
-											// Leaf: ReposMerge
-											s.handleReposMergeRequest(args, w, r)
-											return
-										}
-									}
-								case 'p': // Prefix: "p"
-									if prefix := "p"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-										elem = elem[len(prefix):]
-									} else {
-										break
-									}
-
-									if len(elem) == 0 {
-										s.handlePullsCreateRequest(args, w, r)
-										return
-									}
-									switch elem[0] {
-									case 'a': // Prefix: "ages"
-										if prefix := "ages"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-											elem = elem[len(prefix):]
-										} else {
-											break
-										}
-
-										if len(elem) == 0 {
-											s.handleReposCreatePagesSiteRequest(args, w, r)
-											return
-										}
-										switch elem[0] {
-										case '/': // Prefix: "/builds"
-											if prefix := "/builds"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-												elem = elem[len(prefix):]
-											} else {
-												break
-											}
-
-											// Leaf: ReposRequestPagesBuild
-											s.handleReposRequestPagesBuildRequest(args, w, r)
-											return
-										}
-									case 'r': // Prefix: "rojects"
-										if prefix := "rojects"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-											elem = elem[len(prefix):]
-										} else {
-											break
-										}
-
-										if len(elem) == 0 {
-											s.handleProjectsCreateForRepoRequest(args, w, r)
-											return
-										}
-										switch elem[0] {
-										case 'u': // Prefix: "ulls"
-											if prefix := "ulls"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-												elem = elem[len(prefix):]
-											} else {
-												break
-											}
-
-											// Leaf: PullsCreate
-											s.handlePullsCreateRequest(args, w, r)
-											return
-										}
-									case 'u': // Prefix: "ulls"
-										if prefix := "ulls"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-											elem = elem[len(prefix):]
-										} else {
-											break
-										}
-
-										if len(elem) == 0 {
-											s.handlePullsCreateRequest(args, w, r)
-											return
-										}
-										switch elem[0] {
-										case '/': // Prefix: "/"
-											if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-												elem = elem[len(prefix):]
-											} else {
-												break
-											}
-
-											if len(elem) == 0 {
-												break
-											}
-											switch elem[0] {
-											case 'c': // Prefix: "comments/"
-												if prefix := "comments/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-													elem = elem[len(prefix):]
-												} else {
-													break
-												}
-
-												// Param: "comment_id"
-												// Match until one of "/"
-												idx := strings.IndexAny(elem, "/")
-												if idx > 0 {
-													args["comment_id"] = elem[:idx]
-													elem = elem[idx:]
-
-													if len(elem) == 0 {
-														break
-													}
-													switch elem[0] {
-													case '/': // Prefix: "/reactions"
-														if prefix := "/reactions"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-															elem = elem[len(prefix):]
-														} else {
-															break
-														}
-
-														// Leaf: ReactionsCreateForPullRequestReviewComment
-														s.handleReactionsCreateForPullRequestReviewCommentRequest(args, w, r)
-														return
-													}
-												}
-											}
-											// Param: "pull_number"
-											// Match until one of "/"
-											idx := strings.IndexAny(elem, "/")
-											if idx > 0 {
-												args["pull_number"] = elem[:idx]
-												elem = elem[idx:]
-
-												if len(elem) == 0 {
-													break
-												}
-												switch elem[0] {
-												case '/': // Prefix: "/"
-													if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-														elem = elem[len(prefix):]
-													} else {
-														break
-													}
-
-													if len(elem) == 0 {
-														s.handlePullsCreateReviewRequest(args, w, r)
-														return
-													}
-													switch elem[0] {
-													case 'c': // Prefix: "comments"
-														if prefix := "comments"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-															elem = elem[len(prefix):]
-														} else {
-															break
-														}
-
-														if len(elem) == 0 {
-															s.handlePullsCreateReviewCommentRequest(args, w, r)
-															return
-														}
-														switch elem[0] {
-														case '/': // Prefix: "/"
-															if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																elem = elem[len(prefix):]
-															} else {
-																break
-															}
-
-															if len(elem) == 0 {
-																break
-															}
-															switch elem[0] {
-															case 'r': // Prefix: "reviews"
-																if prefix := "reviews"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																	elem = elem[len(prefix):]
-																} else {
-																	break
-																}
-
-																// Leaf: PullsCreateReview
-																s.handlePullsCreateReviewRequest(args, w, r)
-																return
-															}
-															// Param: "comment_id"
-															// Match until one of "/"
-															idx := strings.IndexAny(elem, "/")
-															if idx > 0 {
-																args["comment_id"] = elem[:idx]
-																elem = elem[idx:]
-
-																if len(elem) == 0 {
-																	break
-																}
-																switch elem[0] {
-																case '/': // Prefix: "/replies"
-																	if prefix := "/replies"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																		elem = elem[len(prefix):]
-																	} else {
-																		break
-																	}
-
-																	// Leaf: PullsCreateReplyForReviewComment
-																	s.handlePullsCreateReplyForReviewCommentRequest(args, w, r)
-																	return
-																}
-															}
-														}
-													case 'r': // Prefix: "reviews"
-														if prefix := "reviews"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-															elem = elem[len(prefix):]
-														} else {
-															break
-														}
-
-														if len(elem) == 0 {
-															s.handlePullsCreateReviewRequest(args, w, r)
-															return
-														}
-														switch elem[0] {
-														case '/': // Prefix: "/"
-															if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																elem = elem[len(prefix):]
-															} else {
-																break
-															}
-
-															// Param: "review_id"
-															// Match until one of "/"
-															idx := strings.IndexAny(elem, "/")
-															if idx > 0 {
-																args["review_id"] = elem[:idx]
-																elem = elem[idx:]
-
-																if len(elem) == 0 {
-																	break
-																}
-																switch elem[0] {
-																case '/': // Prefix: "/events"
-																	if prefix := "/events"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																		elem = elem[len(prefix):]
-																	} else {
-																		break
-																	}
-
-																	// Leaf: PullsSubmitReview
-																	s.handlePullsSubmitReviewRequest(args, w, r)
-																	return
-																}
-															}
-														}
-													}
-												}
-											}
-										}
-									}
-								case 'r': // Prefix: "releases"
-									if prefix := "releases"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-										elem = elem[len(prefix):]
-									} else {
-										break
-									}
-
-									if len(elem) == 0 {
-										s.handleReposCreateReleaseRequest(args, w, r)
-										return
-									}
-									switch elem[0] {
-									case '/': // Prefix: "/"
-										if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-											elem = elem[len(prefix):]
-										} else {
-											break
-										}
-
-										// Param: "release_id"
-										// Match until one of "/"
-										idx := strings.IndexAny(elem, "/")
-										if idx > 0 {
-											args["release_id"] = elem[:idx]
-											elem = elem[idx:]
-
-											if len(elem) == 0 {
-												break
-											}
-											switch elem[0] {
-											case '/': // Prefix: "/reactions"
-												if prefix := "/reactions"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-													elem = elem[len(prefix):]
-												} else {
-													break
-												}
-
-												// Leaf: ReactionsCreateForRelease
-												s.handleReactionsCreateForReleaseRequest(args, w, r)
-												return
-											}
-										}
-									}
-								case 's': // Prefix: "statuses/"
-									if prefix := "statuses/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-										elem = elem[len(prefix):]
-									} else {
-										break
-									}
-
-									// Param: "sha"
-									// Leaf parameter
-									args["sha"] = elem
-
-									// Leaf: ReposCreateCommitStatus
-									s.handleReposCreateCommitStatusRequest(args, w, r)
-									return
-								case 't': // Prefix: "transfer"
-									if prefix := "transfer"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-										elem = elem[len(prefix):]
-									} else {
-										break
-									}
-
-									// Leaf: ReposTransfer
-									s.handleReposTransferRequest(args, w, r)
-									return
-								}
-							}
-						}
-					}
-				}
-			case 's': // Prefix: "scim/v2/enterprises/"
-				if prefix := "scim/v2/enterprises/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-					elem = elem[len(prefix):]
-				} else {
-					break
-				}
-
-				// Param: "enterprise"
-				// Match until one of "/"
-				idx := strings.IndexAny(elem, "/")
-				if idx > 0 {
-					args["enterprise"] = elem[:idx]
-					elem = elem[idx:]
-
-					if len(elem) == 0 {
-						break
-					}
-					switch elem[0] {
-					case '/': // Prefix: "/"
-						if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-							elem = elem[len(prefix):]
-						} else {
-							break
-						}
-
-						if len(elem) == 0 {
-							s.handleEnterpriseAdminProvisionAndInviteEnterpriseUserRequest(args, w, r)
-							return
-						}
-						switch elem[0] {
-						case 'G': // Prefix: "Groups"
-							if prefix := "Groups"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-								elem = elem[len(prefix):]
-							} else {
-								break
-							}
-
-							if len(elem) == 0 {
-								s.handleEnterpriseAdminProvisionAndInviteEnterpriseGroupRequest(args, w, r)
-								return
-							}
-							switch elem[0] {
-							case 'U': // Prefix: "Users"
-								if prefix := "Users"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-									elem = elem[len(prefix):]
-								} else {
-									break
-								}
-
-								// Leaf: EnterpriseAdminProvisionAndInviteEnterpriseUser
-								s.handleEnterpriseAdminProvisionAndInviteEnterpriseUserRequest(args, w, r)
-								return
-							}
-						case 'U': // Prefix: "Users"
-							if prefix := "Users"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-								elem = elem[len(prefix):]
-							} else {
-								break
-							}
-
-							// Leaf: EnterpriseAdminProvisionAndInviteEnterpriseUser
-							s.handleEnterpriseAdminProvisionAndInviteEnterpriseUserRequest(args, w, r)
-							return
-						}
-					}
-				}
-			case 't': // Prefix: "teams/"
-				if prefix := "teams/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-					elem = elem[len(prefix):]
-				} else {
-					break
-				}
-
-				// Param: "team_id"
-				// Match until one of "/"
-				idx := strings.IndexAny(elem, "/")
-				if idx > 0 {
-					args["team_id"] = elem[:idx]
-					elem = elem[idx:]
-
-					if len(elem) == 0 {
-						break
-					}
-					switch elem[0] {
-					case '/': // Prefix: "/discussions"
-						if prefix := "/discussions"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-							elem = elem[len(prefix):]
-						} else {
-							break
-						}
-
-						if len(elem) == 0 {
-							s.handleTeamsCreateDiscussionLegacyRequest(args, w, r)
-							return
-						}
-						switch elem[0] {
-						case '/': // Prefix: "/"
-							if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-								elem = elem[len(prefix):]
-							} else {
-								break
-							}
-
-							// Param: "discussion_number"
-							// Match until one of "/"
-							idx := strings.IndexAny(elem, "/")
-							if idx > 0 {
-								args["discussion_number"] = elem[:idx]
-								elem = elem[idx:]
-
-								if len(elem) == 0 {
-									break
-								}
-								switch elem[0] {
-								case '/': // Prefix: "/"
-									if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-										elem = elem[len(prefix):]
-									} else {
-										break
-									}
-
-									if len(elem) == 0 {
-										s.handleReactionsCreateForTeamDiscussionLegacyRequest(args, w, r)
-										return
-									}
-									switch elem[0] {
-									case 'c': // Prefix: "comments"
-										if prefix := "comments"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-											elem = elem[len(prefix):]
-										} else {
-											break
-										}
-
-										if len(elem) == 0 {
-											s.handleTeamsCreateDiscussionCommentLegacyRequest(args, w, r)
-											return
-										}
-										switch elem[0] {
-										case '/': // Prefix: "/"
-											if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-												elem = elem[len(prefix):]
-											} else {
-												break
-											}
-
-											if len(elem) == 0 {
-												break
-											}
-											switch elem[0] {
-											case 'r': // Prefix: "reactions"
-												if prefix := "reactions"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-													elem = elem[len(prefix):]
-												} else {
-													break
-												}
-
-												// Leaf: ReactionsCreateForTeamDiscussionLegacy
-												s.handleReactionsCreateForTeamDiscussionLegacyRequest(args, w, r)
-												return
-											}
-											// Param: "comment_number"
-											// Match until one of "/"
-											idx := strings.IndexAny(elem, "/")
-											if idx > 0 {
-												args["comment_number"] = elem[:idx]
-												elem = elem[idx:]
-
-												if len(elem) == 0 {
-													break
-												}
-												switch elem[0] {
-												case '/': // Prefix: "/reactions"
-													if prefix := "/reactions"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-														elem = elem[len(prefix):]
-													} else {
-														break
-													}
-
-													// Leaf: ReactionsCreateForTeamDiscussionCommentLegacy
-													s.handleReactionsCreateForTeamDiscussionCommentLegacyRequest(args, w, r)
-													return
-												}
-											}
-										}
-									case 'r': // Prefix: "reactions"
-										if prefix := "reactions"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-											elem = elem[len(prefix):]
-										} else {
-											break
-										}
-
-										// Leaf: ReactionsCreateForTeamDiscussionLegacy
-										s.handleReactionsCreateForTeamDiscussionLegacyRequest(args, w, r)
-										return
-									}
-								}
-							}
-						}
-					}
-				}
-			case 'u': // Prefix: "user"
-				if prefix := "user"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-					elem = elem[len(prefix):]
-				} else {
-					break
-				}
-
-				if len(elem) == 0 {
-					s.handlePackagesRestorePackageForUserRequest(args, w, r)
-					return
-				}
-				switch elem[0] {
-				case '/': // Prefix: "/"
-					if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-						elem = elem[len(prefix):]
-					} else {
-						break
-					}
-
-					if len(elem) == 0 {
-						s.handlePackagesRestorePackageForAuthenticatedUserRequest(args, w, r)
-						return
-					}
-					switch elem[0] {
-					case 'e': // Prefix: "emails"
-						if prefix := "emails"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-							elem = elem[len(prefix):]
-						} else {
-							break
-						}
-
-						// Leaf: UsersAddEmailForAuthenticated
-						s.handleUsersAddEmailForAuthenticatedRequest(args, w, r)
-						return
-					case 'g': // Prefix: "gpg_keys"
-						if prefix := "gpg_keys"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-							elem = elem[len(prefix):]
-						} else {
-							break
-						}
-
-						// Leaf: UsersCreateGpgKeyForAuthenticated
-						s.handleUsersCreateGpgKeyForAuthenticatedRequest(args, w, r)
-						return
-					case 'k': // Prefix: "keys"
-						if prefix := "keys"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-							elem = elem[len(prefix):]
-						} else {
-							break
-						}
-
-						// Leaf: UsersCreatePublicSSHKeyForAuthenticated
-						s.handleUsersCreatePublicSSHKeyForAuthenticatedRequest(args, w, r)
-						return
-					case 'm': // Prefix: "migrations"
-						if prefix := "migrations"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-							elem = elem[len(prefix):]
-						} else {
-							break
-						}
-
-						if len(elem) == 0 {
-							s.handleMigrationsStartForAuthenticatedUserRequest(args, w, r)
-							return
-						}
-						switch elem[0] {
-						case 'p': // Prefix: "packages/"
-							if prefix := "packages/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-								elem = elem[len(prefix):]
-							} else {
-								break
-							}
-
-							// Param: "package_type"
-							// Match until one of "/"
-							idx := strings.IndexAny(elem, "/")
-							if idx > 0 {
-								args["package_type"] = elem[:idx]
-								elem = elem[idx:]
-
-								if len(elem) == 0 {
-									break
-								}
-								switch elem[0] {
-								case '/': // Prefix: "/"
-									if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-										elem = elem[len(prefix):]
-									} else {
-										break
-									}
-
-									// Param: "package_name"
-									// Match until one of "/"
-									idx := strings.IndexAny(elem, "/")
-									if idx > 0 {
-										args["package_name"] = elem[:idx]
-										elem = elem[idx:]
-
-										if len(elem) == 0 {
-											break
-										}
-										switch elem[0] {
-										case '/': // Prefix: "/restore"
-											if prefix := "/restore"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-												elem = elem[len(prefix):]
-											} else {
-												break
-											}
-
-											// Leaf: PackagesRestorePackageForAuthenticatedUser
-											s.handlePackagesRestorePackageForAuthenticatedUserRequest(args, w, r)
-											return
-										}
-									}
-								}
-							}
-						}
-					case 'p': // Prefix: "p"
-						if prefix := "p"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-							elem = elem[len(prefix):]
-						} else {
-							break
-						}
-
-						if len(elem) == 0 {
-							s.handleProjectsCreateForAuthenticatedUserRequest(args, w, r)
-							return
-						}
-						switch elem[0] {
-						case 'a': // Prefix: "ackages/"
-							if prefix := "ackages/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-								elem = elem[len(prefix):]
-							} else {
-								break
-							}
-
-							if len(elem) == 0 {
-								break
-							}
-							switch elem[0] {
-							case 'r': // Prefix: "rojects"
-								if prefix := "rojects"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-									elem = elem[len(prefix):]
-								} else {
-									break
-								}
-
-								// Leaf: ProjectsCreateForAuthenticatedUser
-								s.handleProjectsCreateForAuthenticatedUserRequest(args, w, r)
-								return
-							}
-							// Param: "package_type"
-							// Match until one of "/"
-							idx := strings.IndexAny(elem, "/")
-							if idx > 0 {
-								args["package_type"] = elem[:idx]
-								elem = elem[idx:]
-
-								if len(elem) == 0 {
-									break
-								}
-								switch elem[0] {
-								case '/': // Prefix: "/"
-									if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-										elem = elem[len(prefix):]
-									} else {
-										break
-									}
-
-									// Param: "package_name"
-									// Match until one of "/"
-									idx := strings.IndexAny(elem, "/")
-									if idx > 0 {
-										args["package_name"] = elem[:idx]
-										elem = elem[idx:]
-
-										if len(elem) == 0 {
-											break
-										}
-										switch elem[0] {
-										case '/': // Prefix: "/"
-											if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-												elem = elem[len(prefix):]
-											} else {
-												break
-											}
-
-											if len(elem) == 0 {
-												s.handlePackagesRestorePackageVersionForAuthenticatedUserRequest(args, w, r)
-												return
-											}
-											switch elem[0] {
-											case 'r': // Prefix: "restore"
-												if prefix := "restore"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-													elem = elem[len(prefix):]
-												} else {
-													break
-												}
-
-												if len(elem) == 0 {
-													s.handlePackagesRestorePackageForAuthenticatedUserRequest(args, w, r)
-													return
-												}
-												switch elem[0] {
-												case 'v': // Prefix: "versions/"
-													if prefix := "versions/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-														elem = elem[len(prefix):]
-													} else {
-														break
-													}
-
-													// Param: "package_version_id"
-													// Match until one of "/"
-													idx := strings.IndexAny(elem, "/")
-													if idx > 0 {
-														args["package_version_id"] = elem[:idx]
-														elem = elem[idx:]
-
-														if len(elem) == 0 {
-															break
-														}
-														switch elem[0] {
-														case '/': // Prefix: "/restore"
-															if prefix := "/restore"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																elem = elem[len(prefix):]
-															} else {
-																break
-															}
-
-															// Leaf: PackagesRestorePackageVersionForAuthenticatedUser
-															s.handlePackagesRestorePackageVersionForAuthenticatedUserRequest(args, w, r)
-															return
-														}
-													}
-												}
-											case 'v': // Prefix: "versions/"
-												if prefix := "versions/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-													elem = elem[len(prefix):]
-												} else {
-													break
-												}
-
-												// Param: "package_version_id"
-												// Match until one of "/"
-												idx := strings.IndexAny(elem, "/")
-												if idx > 0 {
-													args["package_version_id"] = elem[:idx]
-													elem = elem[idx:]
-
-													if len(elem) == 0 {
-														break
-													}
-													switch elem[0] {
-													case '/': // Prefix: "/restore"
-														if prefix := "/restore"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-															elem = elem[len(prefix):]
-														} else {
-															break
-														}
-
-														// Leaf: PackagesRestorePackageVersionForAuthenticatedUser
-														s.handlePackagesRestorePackageVersionForAuthenticatedUserRequest(args, w, r)
-														return
-													}
-												}
-											}
-										}
-									}
-								}
-							}
-						case 'r': // Prefix: "rojects"
-							if prefix := "rojects"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-								elem = elem[len(prefix):]
-							} else {
-								break
-							}
-
-							// Leaf: ProjectsCreateForAuthenticatedUser
-							s.handleProjectsCreateForAuthenticatedUserRequest(args, w, r)
-							return
-						}
-					case 'r': // Prefix: "repos"
-						if prefix := "repos"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-							elem = elem[len(prefix):]
-						} else {
-							break
-						}
-
-						// Leaf: ReposCreateForAuthenticatedUser
-						s.handleReposCreateForAuthenticatedUserRequest(args, w, r)
-						return
-					case 's': // Prefix: "s/"
-						if prefix := "s/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-							elem = elem[len(prefix):]
-						} else {
-							break
-						}
-
-						// Param: "username"
-						// Match until one of "/"
-						idx := strings.IndexAny(elem, "/")
-						if idx > 0 {
-							args["username"] = elem[:idx]
-							elem = elem[idx:]
-
-							if len(elem) == 0 {
-								break
-							}
-							switch elem[0] {
-							case '/': // Prefix: "/packages/"
-								if prefix := "/packages/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-									elem = elem[len(prefix):]
-								} else {
-									break
-								}
-
-								// Param: "package_type"
-								// Match until one of "/"
-								idx := strings.IndexAny(elem, "/")
-								if idx > 0 {
-									args["package_type"] = elem[:idx]
-									elem = elem[idx:]
-
-									if len(elem) == 0 {
-										break
-									}
-									switch elem[0] {
-									case '/': // Prefix: "/"
-										if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-											elem = elem[len(prefix):]
-										} else {
-											break
-										}
-
-										// Param: "package_name"
-										// Match until one of "/"
-										idx := strings.IndexAny(elem, "/")
-										if idx > 0 {
-											args["package_name"] = elem[:idx]
-											elem = elem[idx:]
-
-											if len(elem) == 0 {
-												break
-											}
-											switch elem[0] {
-											case '/': // Prefix: "/restore"
-												if prefix := "/restore"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-													elem = elem[len(prefix):]
-												} else {
-													break
-												}
-
-												// Leaf: PackagesRestorePackageForUser
-												s.handlePackagesRestorePackageForUserRequest(args, w, r)
-												return
-											}
-										}
-									}
-								}
-							}
-						}
-					}
-				case 's': // Prefix: "s/"
-					if prefix := "s/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-						elem = elem[len(prefix):]
-					} else {
-						break
-					}
-
-					// Param: "username"
-					// Match until one of "/"
-					idx := strings.IndexAny(elem, "/")
-					if idx > 0 {
-						args["username"] = elem[:idx]
-						elem = elem[idx:]
-
-						if len(elem) == 0 {
-							break
-						}
-						switch elem[0] {
-						case '/': // Prefix: "/packages/"
-							if prefix := "/packages/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-								elem = elem[len(prefix):]
-							} else {
-								break
-							}
-
-							// Param: "package_type"
-							// Match until one of "/"
-							idx := strings.IndexAny(elem, "/")
-							if idx > 0 {
-								args["package_type"] = elem[:idx]
-								elem = elem[idx:]
-
-								if len(elem) == 0 {
-									break
-								}
-								switch elem[0] {
-								case '/': // Prefix: "/"
-									if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-										elem = elem[len(prefix):]
-									} else {
-										break
-									}
-
-									// Param: "package_name"
-									// Match until one of "/"
-									idx := strings.IndexAny(elem, "/")
-									if idx > 0 {
-										args["package_name"] = elem[:idx]
-										elem = elem[idx:]
-
-										if len(elem) == 0 {
-											break
-										}
-										switch elem[0] {
-										case '/': // Prefix: "/"
-											if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-												elem = elem[len(prefix):]
-											} else {
-												break
-											}
-
-											if len(elem) == 0 {
-												s.handlePackagesRestorePackageVersionForUserRequest(args, w, r)
-												return
-											}
-											switch elem[0] {
-											case 'r': // Prefix: "restore"
-												if prefix := "restore"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-													elem = elem[len(prefix):]
-												} else {
-													break
-												}
-
-												if len(elem) == 0 {
-													s.handlePackagesRestorePackageForUserRequest(args, w, r)
-													return
-												}
-												switch elem[0] {
-												case 'v': // Prefix: "versions/"
-													if prefix := "versions/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-														elem = elem[len(prefix):]
-													} else {
-														break
-													}
-
-													// Param: "package_version_id"
-													// Match until one of "/"
-													idx := strings.IndexAny(elem, "/")
-													if idx > 0 {
-														args["package_version_id"] = elem[:idx]
-														elem = elem[idx:]
-
-														if len(elem) == 0 {
-															break
-														}
-														switch elem[0] {
-														case '/': // Prefix: "/restore"
-															if prefix := "/restore"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																elem = elem[len(prefix):]
-															} else {
-																break
-															}
-
-															// Leaf: PackagesRestorePackageVersionForUser
-															s.handlePackagesRestorePackageVersionForUserRequest(args, w, r)
-															return
-														}
-													}
-												}
-											case 'v': // Prefix: "versions/"
-												if prefix := "versions/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-													elem = elem[len(prefix):]
-												} else {
-													break
-												}
-
-												// Param: "package_version_id"
-												// Match until one of "/"
-												idx := strings.IndexAny(elem, "/")
-												if idx > 0 {
-													args["package_version_id"] = elem[:idx]
-													elem = elem[idx:]
-
-													if len(elem) == 0 {
-														break
-													}
-													switch elem[0] {
-													case '/': // Prefix: "/restore"
-														if prefix := "/restore"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-															elem = elem[len(prefix):]
-														} else {
-															break
-														}
-
-														// Leaf: PackagesRestorePackageVersionForUser
-														s.handlePackagesRestorePackageVersionForUserRequest(args, w, r)
-														return
-													}
-												}
-											}
-										}
-									}
-								}
-							}
-						}
-					}
-				}
-			}
-		}
-	case "DELETE":
-		if len(elem) == 0 {
-			break
-		}
-		switch elem[0] {
-		case '/': // Prefix: "/"
-			if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-				elem = elem[len(prefix):]
-			} else {
-				break
-			}
-
-			if len(elem) == 0 {
-				s.handleActionsDeleteOrgSecretRequest(args, w, r)
-				return
-			}
-			switch elem[0] {
-			case 'a': // Prefix: "a"
-				if prefix := "a"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-					elem = elem[len(prefix):]
-				} else {
-					break
-				}
-
-				if len(elem) == 0 {
-					s.handleOAuthAuthorizationsDeleteAuthorizationRequest(args, w, r)
-					return
-				}
-				switch elem[0] {
-				case 'p': // Prefix: "pp"
-					if prefix := "pp"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-						elem = elem[len(prefix):]
-					} else {
-						break
-					}
-
-					if len(elem) == 0 {
-						s.handleAppsDeleteInstallationRequest(args, w, r)
-						return
-					}
-					switch elem[0] {
-					case '/': // Prefix: "/installations/"
-						if prefix := "/installations/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-							elem = elem[len(prefix):]
-						} else {
-							break
-						}
-
-						// Param: "installation_id"
-						// Match until one of "/"
-						idx := strings.IndexAny(elem, "/")
-						if idx > 0 {
-							args["installation_id"] = elem[:idx]
-							elem = elem[idx:]
-
-							if len(elem) == 0 {
-								s.handleAppsDeleteInstallationRequest(args, w, r)
-								return
-							}
-							switch elem[0] {
-							case '/': // Prefix: "/suspended"
-								if prefix := "/suspended"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-									elem = elem[len(prefix):]
-								} else {
-									break
-								}
-
-								// Leaf: AppsUnsuspendInstallation
-								s.handleAppsUnsuspendInstallationRequest(args, w, r)
-								return
-							}
-						}
-					case 'l': // Prefix: "lications/"
-						if prefix := "lications/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-							elem = elem[len(prefix):]
-						} else {
-							break
-						}
-
-						if len(elem) == 0 {
-							break
-						}
-						switch elem[0] {
-						case '/': // Prefix: "/installations/"
-							if prefix := "/installations/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-								elem = elem[len(prefix):]
-							} else {
-								break
-							}
-
-							// Param: "installation_id"
-							// Leaf parameter
-							args["installation_id"] = elem
-
-							// Leaf: AppsDeleteInstallation
-							s.handleAppsDeleteInstallationRequest(args, w, r)
-							return
-						case 'g': // Prefix: "grants/"
-							if prefix := "grants/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-								elem = elem[len(prefix):]
-							} else {
-								break
-							}
-
-							// Param: "grant_id"
-							// Leaf parameter
-							args["grant_id"] = elem
-
-							// Leaf: OAuthAuthorizationsDeleteGrant
-							s.handleOAuthAuthorizationsDeleteGrantRequest(args, w, r)
-							return
-						}
-						// Param: "client_id"
-						// Match until one of "/"
-						idx := strings.IndexAny(elem, "/")
-						if idx > 0 {
-							args["client_id"] = elem[:idx]
-							elem = elem[idx:]
-
-							if len(elem) == 0 {
-								break
-							}
-							switch elem[0] {
-							case '/': // Prefix: "/"
-								if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-									elem = elem[len(prefix):]
-								} else {
-									break
-								}
-
-								if len(elem) == 0 {
-									s.handleAppsDeleteTokenRequest(args, w, r)
-									return
-								}
-								switch elem[0] {
-								case 'g': // Prefix: "grant"
-									if prefix := "grant"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-										elem = elem[len(prefix):]
-									} else {
-										break
-									}
-
-									if len(elem) == 0 {
-										s.handleAppsDeleteAuthorizationRequest(args, w, r)
-										return
-									}
-									switch elem[0] {
-									case 't': // Prefix: "token"
-										if prefix := "token"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-											elem = elem[len(prefix):]
-										} else {
-											break
-										}
-
-										// Leaf: AppsDeleteToken
-										s.handleAppsDeleteTokenRequest(args, w, r)
-										return
-									}
-								case 't': // Prefix: "token"
-									if prefix := "token"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-										elem = elem[len(prefix):]
-									} else {
-										break
-									}
-
-									// Leaf: AppsDeleteToken
-									s.handleAppsDeleteTokenRequest(args, w, r)
-									return
-								}
-							}
-						}
-					case 'u': // Prefix: "uthorizations/"
-						if prefix := "uthorizations/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-							elem = elem[len(prefix):]
-						} else {
-							break
-						}
-
-						// Param: "authorization_id"
-						// Leaf parameter
-						args["authorization_id"] = elem
-
-						// Leaf: OAuthAuthorizationsDeleteAuthorization
-						s.handleOAuthAuthorizationsDeleteAuthorizationRequest(args, w, r)
-						return
-					}
-				case 'u': // Prefix: "uthorizations/"
-					if prefix := "uthorizations/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-						elem = elem[len(prefix):]
-					} else {
-						break
-					}
-
-					// Param: "authorization_id"
-					// Leaf parameter
-					args["authorization_id"] = elem
-
-					// Leaf: OAuthAuthorizationsDeleteAuthorization
-					s.handleOAuthAuthorizationsDeleteAuthorizationRequest(args, w, r)
-					return
-				}
-			case 'e': // Prefix: "enterprises/"
-				if prefix := "enterprises/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-					elem = elem[len(prefix):]
-				} else {
-					break
-				}
-
-				// Param: "enterprise"
-				// Match until one of "/"
-				idx := strings.IndexAny(elem, "/")
-				if idx > 0 {
-					args["enterprise"] = elem[:idx]
-					elem = elem[idx:]
-
-					if len(elem) == 0 {
-						break
-					}
-					switch elem[0] {
-					case '/': // Prefix: "/actions/"
-						if prefix := "/actions/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-							elem = elem[len(prefix):]
-						} else {
-							break
-						}
-
-						if len(elem) == 0 {
-							s.handleEnterpriseAdminDisableSelectedOrganizationGithubActionsEnterpriseRequest(args, w, r)
-							return
-						}
-						switch elem[0] {
-						case 'p': // Prefix: "permissions/organizations/"
-							if prefix := "permissions/organizations/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-								elem = elem[len(prefix):]
-							} else {
-								break
-							}
-
-							// Param: "org_id"
-							// Leaf parameter
-							args["org_id"] = elem
-
-							// Leaf: EnterpriseAdminDisableSelectedOrganizationGithubActionsEnterprise
-							s.handleEnterpriseAdminDisableSelectedOrganizationGithubActionsEnterpriseRequest(args, w, r)
-							return
-						case 'r': // Prefix: "runner"
-							if prefix := "runner"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-								elem = elem[len(prefix):]
-							} else {
-								break
-							}
-
-							if len(elem) == 0 {
-								s.handleEnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterpriseRequest(args, w, r)
-								return
-							}
-							switch elem[0] {
-							case '-': // Prefix: "-groups/"
-								if prefix := "-groups/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-									elem = elem[len(prefix):]
-								} else {
-									break
-								}
-
-								// Param: "runner_group_id"
-								// Match until one of "/"
-								idx := strings.IndexAny(elem, "/")
-								if idx > 0 {
-									args["runner_group_id"] = elem[:idx]
-									elem = elem[idx:]
-
-									if len(elem) == 0 {
-										s.handleEnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterpriseRequest(args, w, r)
-										return
-									}
-									switch elem[0] {
-									case '/': // Prefix: "/"
-										if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-											elem = elem[len(prefix):]
-										} else {
-											break
-										}
-
-										if len(elem) == 0 {
-											s.handleEnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterpriseRequest(args, w, r)
-											return
-										}
-										switch elem[0] {
-										case 'o': // Prefix: "organizations/"
-											if prefix := "organizations/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-												elem = elem[len(prefix):]
-											} else {
-												break
-											}
-
-											if len(elem) == 0 {
-												break
-											}
-											switch elem[0] {
-											case 'r': // Prefix: "runners/"
-												if prefix := "runners/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-													elem = elem[len(prefix):]
-												} else {
-													break
-												}
-
-												// Param: "runner_id"
-												// Leaf parameter
-												args["runner_id"] = elem
-
-												// Leaf: EnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterprise
-												s.handleEnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterpriseRequest(args, w, r)
-												return
-											}
-											// Param: "org_id"
-											// Leaf parameter
-											args["org_id"] = elem
-
-											// Leaf: EnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterprise
-											s.handleEnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterpriseRequest(args, w, r)
-											return
-										case 'r': // Prefix: "runners/"
-											if prefix := "runners/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-												elem = elem[len(prefix):]
-											} else {
-												break
-											}
-
-											// Param: "runner_id"
-											// Leaf parameter
-											args["runner_id"] = elem
-
-											// Leaf: EnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterprise
-											s.handleEnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterpriseRequest(args, w, r)
-											return
-										}
-									}
-								}
-							case 'p': // Prefix: "permissions/organizations/"
-								if prefix := "permissions/organizations/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-									elem = elem[len(prefix):]
-								} else {
-									break
-								}
-
-								// Param: "org_id"
-								// Leaf parameter
-								args["org_id"] = elem
-
-								// Leaf: EnterpriseAdminDisableSelectedOrganizationGithubActionsEnterprise
-								s.handleEnterpriseAdminDisableSelectedOrganizationGithubActionsEnterpriseRequest(args, w, r)
-								return
-							case 's': // Prefix: "s/"
-								if prefix := "s/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-									elem = elem[len(prefix):]
-								} else {
-									break
-								}
-
-								if len(elem) == 0 {
-									break
-								}
-								switch elem[0] {
-								case '-': // Prefix: "-groups/"
-									if prefix := "-groups/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-										elem = elem[len(prefix):]
-									} else {
-										break
-									}
-
-									// Param: "runner_group_id"
-									// Leaf parameter
-									args["runner_group_id"] = elem
-
-									// Leaf: EnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterprise
-									s.handleEnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterpriseRequest(args, w, r)
-									return
-								}
-								// Param: "runner_id"
-								// Leaf parameter
-								args["runner_id"] = elem
-
-								// Leaf: EnterpriseAdminDeleteSelfHostedRunnerFromEnterprise
-								s.handleEnterpriseAdminDeleteSelfHostedRunnerFromEnterpriseRequest(args, w, r)
-								return
-							}
-						}
-					}
-				}
-			case 'g': // Prefix: "gists/"
-				if prefix := "gists/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-					elem = elem[len(prefix):]
-				} else {
-					break
-				}
-
-				// Param: "gist_id"
-				// Match until one of "/"
-				idx := strings.IndexAny(elem, "/")
-				if idx > 0 {
-					args["gist_id"] = elem[:idx]
-					elem = elem[idx:]
-
-					if len(elem) == 0 {
-						s.handleGistsDeleteRequest(args, w, r)
-						return
-					}
-					switch elem[0] {
-					case '/': // Prefix: "/"
-						if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-							elem = elem[len(prefix):]
-						} else {
-							break
-						}
-
-						if len(elem) == 0 {
-							s.handleGistsUnstarRequest(args, w, r)
-							return
-						}
-						switch elem[0] {
-						case 'c': // Prefix: "comments/"
-							if prefix := "comments/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-								elem = elem[len(prefix):]
-							} else {
-								break
-							}
-
-							if len(elem) == 0 {
-								break
-							}
-							switch elem[0] {
-							case 's': // Prefix: "star"
-								if prefix := "star"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-									elem = elem[len(prefix):]
-								} else {
-									break
-								}
-
-								// Leaf: GistsUnstar
-								s.handleGistsUnstarRequest(args, w, r)
-								return
-							}
-							// Param: "comment_id"
-							// Leaf parameter
-							args["comment_id"] = elem
-
-							// Leaf: GistsDeleteComment
-							s.handleGistsDeleteCommentRequest(args, w, r)
-							return
-						case 's': // Prefix: "star"
-							if prefix := "star"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-								elem = elem[len(prefix):]
-							} else {
-								break
-							}
-
-							// Leaf: GistsUnstar
-							s.handleGistsUnstarRequest(args, w, r)
-							return
-						}
-					}
-				}
-			case 'i': // Prefix: "installation/token"
-				if prefix := "installation/token"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-					elem = elem[len(prefix):]
-				} else {
-					break
-				}
-
-				// Leaf: AppsRevokeInstallationAccessToken
-				s.handleAppsRevokeInstallationAccessTokenRequest(args, w, r)
-				return
-			case 'n': // Prefix: "notifications/threads/"
-				if prefix := "notifications/threads/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-					elem = elem[len(prefix):]
-				} else {
-					break
-				}
-
-				// Param: "thread_id"
-				// Match until one of "/"
-				idx := strings.IndexAny(elem, "/")
-				if idx > 0 {
-					args["thread_id"] = elem[:idx]
-					elem = elem[idx:]
-
-					if len(elem) == 0 {
-						break
-					}
-					switch elem[0] {
-					case '/': // Prefix: "/subscription"
-						if prefix := "/subscription"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-							elem = elem[len(prefix):]
-						} else {
-							break
-						}
-
-						// Leaf: ActivityDeleteThreadSubscription
-						s.handleActivityDeleteThreadSubscriptionRequest(args, w, r)
-						return
-					}
-				}
-			case 'o': // Prefix: "orgs/"
-				if prefix := "orgs/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-					elem = elem[len(prefix):]
-				} else {
-					break
-				}
-
-				// Param: "org"
-				// Match until one of "/"
-				idx := strings.IndexAny(elem, "/")
-				if idx > 0 {
-					args["org"] = elem[:idx]
-					elem = elem[idx:]
-
-					if len(elem) == 0 {
-						break
-					}
-					switch elem[0] {
-					case '/': // Prefix: "/"
-						if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-							elem = elem[len(prefix):]
-						} else {
-							break
-						}
-
-						if len(elem) == 0 {
-							s.handleInteractionsRemoveRestrictionsForOrgRequest(args, w, r)
-							return
-						}
-						switch elem[0] {
-						case 'a': // Prefix: "actions/"
-							if prefix := "actions/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-								elem = elem[len(prefix):]
-							} else {
-								break
-							}
-
-							if len(elem) == 0 {
-								s.handleActionsDeleteSelfHostedRunnerFromOrgRequest(args, w, r)
-								return
-							}
-							switch elem[0] {
-							case 'i': // Prefix: "interaction-limits"
-								if prefix := "interaction-limits"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-									elem = elem[len(prefix):]
-								} else {
-									break
-								}
-
-								// Leaf: InteractionsRemoveRestrictionsForOrg
-								s.handleInteractionsRemoveRestrictionsForOrgRequest(args, w, r)
-								return
-							case 'p': // Prefix: "permissions/repositories/"
-								if prefix := "permissions/repositories/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-									elem = elem[len(prefix):]
-								} else {
-									break
-								}
-
-								// Param: "repository_id"
-								// Leaf parameter
-								args["repository_id"] = elem
-
-								// Leaf: ActionsDisableSelectedRepositoryGithubActionsOrganization
-								s.handleActionsDisableSelectedRepositoryGithubActionsOrganizationRequest(args, w, r)
-								return
-							case 'r': // Prefix: "runner"
-								if prefix := "runner"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-									elem = elem[len(prefix):]
-								} else {
-									break
-								}
-
-								if len(elem) == 0 {
-									s.handleActionsDeleteSelfHostedRunnerGroupFromOrgRequest(args, w, r)
-									return
-								}
-								switch elem[0] {
-								case '-': // Prefix: "-groups/"
-									if prefix := "-groups/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-										elem = elem[len(prefix):]
-									} else {
-										break
-									}
-
-									// Param: "runner_group_id"
-									// Match until one of "/"
-									idx := strings.IndexAny(elem, "/")
-									if idx > 0 {
-										args["runner_group_id"] = elem[:idx]
-										elem = elem[idx:]
-
-										if len(elem) == 0 {
-											s.handleActionsDeleteSelfHostedRunnerGroupFromOrgRequest(args, w, r)
-											return
-										}
-										switch elem[0] {
-										case '/': // Prefix: "/r"
-											if prefix := "/r"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-												elem = elem[len(prefix):]
-											} else {
-												break
-											}
-
-											if len(elem) == 0 {
-												s.handleActionsRemoveSelfHostedRunnerFromGroupForOrgRequest(args, w, r)
-												return
-											}
-											switch elem[0] {
-											case 'e': // Prefix: "epositories/"
-												if prefix := "epositories/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-													elem = elem[len(prefix):]
-												} else {
-													break
-												}
-
-												if len(elem) == 0 {
-													break
-												}
-												switch elem[0] {
-												case 'u': // Prefix: "unners/"
-													if prefix := "unners/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-														elem = elem[len(prefix):]
-													} else {
-														break
-													}
-
-													// Param: "runner_id"
-													// Leaf parameter
-													args["runner_id"] = elem
-
-													// Leaf: ActionsRemoveSelfHostedRunnerFromGroupForOrg
-													s.handleActionsRemoveSelfHostedRunnerFromGroupForOrgRequest(args, w, r)
-													return
-												}
-												// Param: "repository_id"
-												// Leaf parameter
-												args["repository_id"] = elem
-
-												// Leaf: ActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrg
-												s.handleActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrgRequest(args, w, r)
-												return
-											case 'u': // Prefix: "unners/"
-												if prefix := "unners/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-													elem = elem[len(prefix):]
-												} else {
-													break
-												}
-
-												// Param: "runner_id"
-												// Leaf parameter
-												args["runner_id"] = elem
-
-												// Leaf: ActionsRemoveSelfHostedRunnerFromGroupForOrg
-												s.handleActionsRemoveSelfHostedRunnerFromGroupForOrgRequest(args, w, r)
-												return
-											}
-										}
-									}
-								case 's': // Prefix: "s/"
-									if prefix := "s/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-										elem = elem[len(prefix):]
-									} else {
-										break
-									}
-
-									if len(elem) == 0 {
-										break
-									}
-									switch elem[0] {
-									case '-': // Prefix: "-groups/"
-										if prefix := "-groups/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-											elem = elem[len(prefix):]
-										} else {
-											break
-										}
-
-										// Param: "runner_group_id"
-										// Leaf parameter
-										args["runner_group_id"] = elem
-
-										// Leaf: ActionsDeleteSelfHostedRunnerGroupFromOrg
-										s.handleActionsDeleteSelfHostedRunnerGroupFromOrgRequest(args, w, r)
-										return
-									}
-									// Param: "runner_id"
-									// Leaf parameter
-									args["runner_id"] = elem
-
-									// Leaf: ActionsDeleteSelfHostedRunnerFromOrg
-									s.handleActionsDeleteSelfHostedRunnerFromOrgRequest(args, w, r)
-									return
-								}
-							case 's': // Prefix: "secrets/"
-								if prefix := "secrets/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-									elem = elem[len(prefix):]
-								} else {
-									break
-								}
-
-								if len(elem) == 0 {
-									break
-								}
-								switch elem[0] {
-								case 'r': // Prefix: "runners/"
-									if prefix := "runners/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-										elem = elem[len(prefix):]
-									} else {
-										break
-									}
-
-									// Param: "runner_id"
-									// Leaf parameter
-									args["runner_id"] = elem
-
-									// Leaf: ActionsDeleteSelfHostedRunnerFromOrg
-									s.handleActionsDeleteSelfHostedRunnerFromOrgRequest(args, w, r)
-									return
-								}
-								// Param: "secret_name"
-								// Match until one of "/"
-								idx := strings.IndexAny(elem, "/")
-								if idx > 0 {
-									args["secret_name"] = elem[:idx]
-									elem = elem[idx:]
-
-									if len(elem) == 0 {
-										s.handleActionsDeleteOrgSecretRequest(args, w, r)
-										return
-									}
-									switch elem[0] {
-									case '/': // Prefix: "/repositories/"
-										if prefix := "/repositories/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-											elem = elem[len(prefix):]
-										} else {
-											break
-										}
-
-										// Param: "repository_id"
-										// Leaf parameter
-										args["repository_id"] = elem
-
-										// Leaf: ActionsRemoveSelectedRepoFromOrgSecret
-										s.handleActionsRemoveSelectedRepoFromOrgSecretRequest(args, w, r)
-										return
-									}
-								}
-							}
-						case 'b': // Prefix: "blocks/"
-							if prefix := "blocks/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-								elem = elem[len(prefix):]
-							} else {
-								break
-							}
-
-							// Param: "username"
-							// Leaf parameter
-							args["username"] = elem
-
-							// Leaf: OrgsUnblockUser
-							s.handleOrgsUnblockUserRequest(args, w, r)
-							return
-						case 'c': // Prefix: "credential-authorizations/"
-							if prefix := "credential-authorizations/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-								elem = elem[len(prefix):]
-							} else {
-								break
-							}
-
-							// Param: "credential_id"
-							// Leaf parameter
-							args["credential_id"] = elem
-
-							// Leaf: OrgsRemoveSamlSSOAuthorization
-							s.handleOrgsRemoveSamlSSOAuthorizationRequest(args, w, r)
-							return
-						case 'h': // Prefix: "hooks/"
-							if prefix := "hooks/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-								elem = elem[len(prefix):]
-							} else {
-								break
-							}
-
-							// Param: "hook_id"
-							// Leaf parameter
-							args["hook_id"] = elem
-
-							// Leaf: OrgsDeleteWebhook
-							s.handleOrgsDeleteWebhookRequest(args, w, r)
-							return
-						case 'i': // Prefix: "in"
-							if prefix := "in"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-								elem = elem[len(prefix):]
-							} else {
-								break
-							}
-
-							if len(elem) == 0 {
-								s.handleOrgsCancelInvitationRequest(args, w, r)
-								return
-							}
-							switch elem[0] {
-							case 't': // Prefix: "teraction-limits"
-								if prefix := "teraction-limits"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-									elem = elem[len(prefix):]
-								} else {
-									break
-								}
-
-								if len(elem) == 0 {
-									s.handleInteractionsRemoveRestrictionsForOrgRequest(args, w, r)
-									return
-								}
-								switch elem[0] {
-								case 'v': // Prefix: "vitations/"
-									if prefix := "vitations/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-										elem = elem[len(prefix):]
-									} else {
-										break
-									}
-
-									// Param: "invitation_id"
-									// Leaf parameter
-									args["invitation_id"] = elem
-
-									// Leaf: OrgsCancelInvitation
-									s.handleOrgsCancelInvitationRequest(args, w, r)
-									return
-								}
-							case 'v': // Prefix: "vitations/"
-								if prefix := "vitations/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-									elem = elem[len(prefix):]
-								} else {
-									break
-								}
-
-								// Param: "invitation_id"
-								// Leaf parameter
-								args["invitation_id"] = elem
-
-								// Leaf: OrgsCancelInvitation
-								s.handleOrgsCancelInvitationRequest(args, w, r)
-								return
-							}
-						case 'm': // Prefix: "m"
-							if prefix := "m"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-								elem = elem[len(prefix):]
-							} else {
-								break
-							}
-
-							if len(elem) == 0 {
-								s.handleOrgsRemoveMemberRequest(args, w, r)
-								return
-							}
-							switch elem[0] {
-							case 'e': // Prefix: "embers"
-								if prefix := "embers"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-									elem = elem[len(prefix):]
-								} else {
-									break
-								}
-
-								if len(elem) == 0 {
-									s.handleOrgsRemoveMembershipForUserRequest(args, w, r)
-									return
-								}
-								switch elem[0] {
-								case '/': // Prefix: "/"
-									if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-										elem = elem[len(prefix):]
-									} else {
-										break
-									}
-
-									if len(elem) == 0 {
-										break
-									}
-									switch elem[0] {
-									case 'h': // Prefix: "hips/"
-										if prefix := "hips/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-											elem = elem[len(prefix):]
-										} else {
-											break
-										}
-
-										// Param: "username"
-										// Leaf parameter
-										args["username"] = elem
-
-										// Leaf: OrgsRemoveMembershipForUser
-										s.handleOrgsRemoveMembershipForUserRequest(args, w, r)
-										return
-									}
-									// Param: "username"
-									// Leaf parameter
-									args["username"] = elem
-
-									// Leaf: OrgsRemoveMember
-									s.handleOrgsRemoveMemberRequest(args, w, r)
-									return
-								case 'h': // Prefix: "hips/"
-									if prefix := "hips/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-										elem = elem[len(prefix):]
-									} else {
-										break
-									}
-
-									// Param: "username"
-									// Leaf parameter
-									args["username"] = elem
-
-									// Leaf: OrgsRemoveMembershipForUser
-									s.handleOrgsRemoveMembershipForUserRequest(args, w, r)
-									return
-								}
-							case 'i': // Prefix: "igrations/"
-								if prefix := "igrations/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-									elem = elem[len(prefix):]
-								} else {
-									break
-								}
-
-								if len(elem) == 0 {
-									break
-								}
-								switch elem[0] {
-								case 'e': // Prefix: "embers/"
-									if prefix := "embers/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-										elem = elem[len(prefix):]
-									} else {
-										break
-									}
-
-									// Param: "username"
-									// Leaf parameter
-									args["username"] = elem
-
-									// Leaf: OrgsRemoveMember
-									s.handleOrgsRemoveMemberRequest(args, w, r)
-									return
-								}
-								// Param: "migration_id"
-								// Match until one of "/"
-								idx := strings.IndexAny(elem, "/")
-								if idx > 0 {
-									args["migration_id"] = elem[:idx]
-									elem = elem[idx:]
-
-									if len(elem) == 0 {
-										break
-									}
-									switch elem[0] {
-									case '/': // Prefix: "/"
-										if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-											elem = elem[len(prefix):]
-										} else {
-											break
-										}
-
-										if len(elem) == 0 {
-											s.handleMigrationsUnlockRepoForOrgRequest(args, w, r)
-											return
-										}
-										switch elem[0] {
-										case 'a': // Prefix: "archive"
-											if prefix := "archive"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-												elem = elem[len(prefix):]
-											} else {
-												break
-											}
-
-											if len(elem) == 0 {
-												s.handleMigrationsDeleteArchiveForOrgRequest(args, w, r)
-												return
-											}
-											switch elem[0] {
-											case 'r': // Prefix: "repos/"
-												if prefix := "repos/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-													elem = elem[len(prefix):]
-												} else {
-													break
-												}
-
-												// Param: "repo_name"
-												// Match until one of "/"
-												idx := strings.IndexAny(elem, "/")
-												if idx > 0 {
-													args["repo_name"] = elem[:idx]
-													elem = elem[idx:]
-
-													if len(elem) == 0 {
-														break
-													}
-													switch elem[0] {
-													case '/': // Prefix: "/lock"
-														if prefix := "/lock"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-															elem = elem[len(prefix):]
-														} else {
-															break
-														}
-
-														// Leaf: MigrationsUnlockRepoForOrg
-														s.handleMigrationsUnlockRepoForOrgRequest(args, w, r)
-														return
-													}
-												}
-											}
-										case 'r': // Prefix: "repos/"
-											if prefix := "repos/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-												elem = elem[len(prefix):]
-											} else {
-												break
-											}
-
-											// Param: "repo_name"
-											// Match until one of "/"
-											idx := strings.IndexAny(elem, "/")
-											if idx > 0 {
-												args["repo_name"] = elem[:idx]
-												elem = elem[idx:]
-
-												if len(elem) == 0 {
-													break
-												}
-												switch elem[0] {
-												case '/': // Prefix: "/lock"
-													if prefix := "/lock"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-														elem = elem[len(prefix):]
-													} else {
-														break
-													}
-
-													// Leaf: MigrationsUnlockRepoForOrg
-													s.handleMigrationsUnlockRepoForOrgRequest(args, w, r)
-													return
-												}
-											}
-										}
-									}
-								}
-							}
-						case 'o': // Prefix: "outside_collaborators/"
-							if prefix := "outside_collaborators/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-								elem = elem[len(prefix):]
-							} else {
-								break
-							}
-
-							// Param: "username"
-							// Leaf parameter
-							args["username"] = elem
-
-							// Leaf: OrgsRemoveOutsideCollaborator
-							s.handleOrgsRemoveOutsideCollaboratorRequest(args, w, r)
-							return
-						case 'p': // Prefix: "p"
-							if prefix := "p"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-								elem = elem[len(prefix):]
-							} else {
-								break
-							}
-
-							if len(elem) == 0 {
-								s.handlePackagesDeletePackageForOrgRequest(args, w, r)
-								return
-							}
-							switch elem[0] {
-							case 'a': // Prefix: "ackages/"
-								if prefix := "ackages/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-									elem = elem[len(prefix):]
-								} else {
-									break
-								}
-
-								// Param: "package_type"
-								// Match until one of "/"
-								idx := strings.IndexAny(elem, "/")
-								if idx > 0 {
-									args["package_type"] = elem[:idx]
-									elem = elem[idx:]
-
-									if len(elem) == 0 {
-										break
-									}
-									switch elem[0] {
-									case '/': // Prefix: "/"
-										if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-											elem = elem[len(prefix):]
-										} else {
-											break
-										}
-
-										// Param: "package_name"
-										// Match until one of "/"
-										idx := strings.IndexAny(elem, "/")
-										if idx > 0 {
-											args["package_name"] = elem[:idx]
-											elem = elem[idx:]
-
-											if len(elem) == 0 {
-												s.handlePackagesDeletePackageForOrgRequest(args, w, r)
-												return
-											}
-											switch elem[0] {
-											case '/': // Prefix: "/versions/"
-												if prefix := "/versions/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-													elem = elem[len(prefix):]
-												} else {
-													break
-												}
-
-												// Param: "package_version_id"
-												// Leaf parameter
-												args["package_version_id"] = elem
-
-												// Leaf: PackagesDeletePackageVersionForOrg
-												s.handlePackagesDeletePackageVersionForOrgRequest(args, w, r)
-												return
-											}
-										}
-									}
-								}
-							case 'u': // Prefix: "ublic_members/"
-								if prefix := "ublic_members/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-									elem = elem[len(prefix):]
-								} else {
-									break
-								}
-
-								if len(elem) == 0 {
-									break
-								}
-								switch elem[0] {
-								case 'a': // Prefix: "ackages/"
-									if prefix := "ackages/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-										elem = elem[len(prefix):]
-									} else {
-										break
-									}
-
-									// Param: "package_type"
-									// Match until one of "/"
-									idx := strings.IndexAny(elem, "/")
-									if idx > 0 {
-										args["package_type"] = elem[:idx]
-										elem = elem[idx:]
-
-										if len(elem) == 0 {
-											break
-										}
-										switch elem[0] {
-										case '/': // Prefix: "/"
-											if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-												elem = elem[len(prefix):]
-											} else {
-												break
-											}
-
-											// Param: "package_name"
-											// Leaf parameter
-											args["package_name"] = elem
-
-											// Leaf: PackagesDeletePackageForOrg
-											s.handlePackagesDeletePackageForOrgRequest(args, w, r)
-											return
-										}
-									}
-								}
-								// Param: "username"
-								// Leaf parameter
-								args["username"] = elem
-
-								// Leaf: OrgsRemovePublicMembershipForAuthenticatedUser
-								s.handleOrgsRemovePublicMembershipForAuthenticatedUserRequest(args, w, r)
-								return
-							}
-						case 't': // Prefix: "teams/"
-							if prefix := "teams/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-								elem = elem[len(prefix):]
-							} else {
-								break
-							}
-
-							// Param: "team_slug"
-							// Match until one of "/"
-							idx := strings.IndexAny(elem, "/")
-							if idx > 0 {
-								args["team_slug"] = elem[:idx]
-								elem = elem[idx:]
-
-								if len(elem) == 0 {
-									s.handleTeamsDeleteInOrgRequest(args, w, r)
-									return
-								}
-								switch elem[0] {
-								case '/': // Prefix: "/"
-									if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-										elem = elem[len(prefix):]
-									} else {
-										break
-									}
-
-									if len(elem) == 0 {
-										s.handleTeamsRemoveMembershipForUserInOrgRequest(args, w, r)
-										return
-									}
-									switch elem[0] {
-									case 'd': // Prefix: "discussions/"
-										if prefix := "discussions/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-											elem = elem[len(prefix):]
-										} else {
-											break
-										}
-
-										if len(elem) == 0 {
-											break
-										}
-										switch elem[0] {
-										case 'm': // Prefix: "memberships/"
-											if prefix := "memberships/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-												elem = elem[len(prefix):]
-											} else {
-												break
-											}
-
-											// Param: "username"
-											// Leaf parameter
-											args["username"] = elem
-
-											// Leaf: TeamsRemoveMembershipForUserInOrg
-											s.handleTeamsRemoveMembershipForUserInOrgRequest(args, w, r)
-											return
-										}
-										// Param: "discussion_number"
-										// Match until one of "/"
-										idx := strings.IndexAny(elem, "/")
-										if idx > 0 {
-											args["discussion_number"] = elem[:idx]
-											elem = elem[idx:]
-
-											if len(elem) == 0 {
-												s.handleTeamsDeleteDiscussionInOrgRequest(args, w, r)
-												return
-											}
-											switch elem[0] {
-											case '/': // Prefix: "/"
-												if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-													elem = elem[len(prefix):]
-												} else {
-													break
-												}
-
-												if len(elem) == 0 {
-													s.handleReactionsDeleteForTeamDiscussionCommentRequest(args, w, r)
-													return
-												}
-												switch elem[0] {
-												case 'c': // Prefix: "comments/"
-													if prefix := "comments/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-														elem = elem[len(prefix):]
-													} else {
-														break
-													}
-
-													// Param: "comment_number"
-													// Match until one of "/"
-													idx := strings.IndexAny(elem, "/")
-													if idx > 0 {
-														args["comment_number"] = elem[:idx]
-														elem = elem[idx:]
-
-														if len(elem) == 0 {
-															s.handleTeamsDeleteDiscussionCommentInOrgRequest(args, w, r)
-															return
-														}
-														switch elem[0] {
-														case '/': // Prefix: "/reactions/"
-															if prefix := "/reactions/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																elem = elem[len(prefix):]
-															} else {
-																break
-															}
-
-															// Param: "reaction_id"
-															// Leaf parameter
-															args["reaction_id"] = elem
-
-															// Leaf: ReactionsDeleteForTeamDiscussionComment
-															s.handleReactionsDeleteForTeamDiscussionCommentRequest(args, w, r)
-															return
-														}
-													}
-												case 'r': // Prefix: "reactions/"
-													if prefix := "reactions/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-														elem = elem[len(prefix):]
-													} else {
-														break
-													}
-
-													if len(elem) == 0 {
-														break
-													}
-													switch elem[0] {
-													case 'c': // Prefix: "comments/"
-														if prefix := "comments/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-															elem = elem[len(prefix):]
-														} else {
-															break
-														}
-
-														// Param: "comment_number"
-														// Match until one of "/"
-														idx := strings.IndexAny(elem, "/")
-														if idx > 0 {
-															args["comment_number"] = elem[:idx]
-															elem = elem[idx:]
-
-															if len(elem) == 0 {
-																break
-															}
-															switch elem[0] {
-															case '/': // Prefix: "/reactions/"
-																if prefix := "/reactions/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																	elem = elem[len(prefix):]
-																} else {
-																	break
-																}
-
-																// Param: "reaction_id"
-																// Leaf parameter
-																args["reaction_id"] = elem
-
-																// Leaf: ReactionsDeleteForTeamDiscussionComment
-																s.handleReactionsDeleteForTeamDiscussionCommentRequest(args, w, r)
-																return
-															}
-														}
-													}
-													// Param: "reaction_id"
-													// Leaf parameter
-													args["reaction_id"] = elem
-
-													// Leaf: ReactionsDeleteForTeamDiscussion
-													s.handleReactionsDeleteForTeamDiscussionRequest(args, w, r)
-													return
-												}
-											}
-										}
-									case 'm': // Prefix: "memberships/"
-										if prefix := "memberships/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-											elem = elem[len(prefix):]
-										} else {
-											break
-										}
-
-										// Param: "username"
-										// Leaf parameter
-										args["username"] = elem
-
-										// Leaf: TeamsRemoveMembershipForUserInOrg
-										s.handleTeamsRemoveMembershipForUserInOrgRequest(args, w, r)
-										return
-									case 'p': // Prefix: "projects/"
-										if prefix := "projects/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-											elem = elem[len(prefix):]
-										} else {
-											break
-										}
-
-										// Param: "project_id"
-										// Leaf parameter
-										args["project_id"] = elem
-
-										// Leaf: TeamsRemoveProjectInOrg
-										s.handleTeamsRemoveProjectInOrgRequest(args, w, r)
-										return
-									case 'r': // Prefix: "repos/"
-										if prefix := "repos/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-											elem = elem[len(prefix):]
-										} else {
-											break
-										}
-
-										// Param: "owner"
-										// Match until one of "/"
-										idx := strings.IndexAny(elem, "/")
-										if idx > 0 {
-											args["owner"] = elem[:idx]
-											elem = elem[idx:]
-
-											if len(elem) == 0 {
-												break
-											}
-											switch elem[0] {
-											case '/': // Prefix: "/"
-												if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-													elem = elem[len(prefix):]
-												} else {
-													break
-												}
-
-												// Param: "repo"
-												// Leaf parameter
-												args["repo"] = elem
-
-												// Leaf: TeamsRemoveRepoInOrg
-												s.handleTeamsRemoveRepoInOrgRequest(args, w, r)
-												return
-											}
-										}
-									}
-								}
-							}
-						}
-					}
-				}
-			case 'p': // Prefix: "projects/"
-				if prefix := "projects/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-					elem = elem[len(prefix):]
-				} else {
-					break
-				}
-
-				if len(elem) == 0 {
-					break
-				}
-				switch elem[0] {
-				case 'c': // Prefix: "columns/"
-					if prefix := "columns/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-						elem = elem[len(prefix):]
-					} else {
-						break
-					}
-
-					if len(elem) == 0 {
-						s.handleProjectsDeleteColumnRequest(args, w, r)
-						return
-					}
-					switch elem[0] {
-					case 'c': // Prefix: "cards/"
-						if prefix := "cards/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-							elem = elem[len(prefix):]
-						} else {
-							break
-						}
-
-						// Param: "card_id"
-						// Leaf parameter
-						args["card_id"] = elem
-
-						// Leaf: ProjectsDeleteColumn
-						s.handleProjectsDeleteColumnRequest(args, w, r)
-						return
-					}
-					// Param: "column_id"
-					// Leaf parameter
-					args["column_id"] = elem
-
-					// Leaf: ProjectsDeleteColumn
-					s.handleProjectsDeleteColumnRequest(args, w, r)
-					return
-				}
-				// Param: "project_id"
-				// Match until one of "/"
-				idx := strings.IndexAny(elem, "/")
-				if idx > 0 {
-					args["project_id"] = elem[:idx]
-					elem = elem[idx:]
-
-					if len(elem) == 0 {
-						s.handleProjectsDeleteRequest(args, w, r)
-						return
-					}
-					switch elem[0] {
-					case '/': // Prefix: "/collaborators/"
-						if prefix := "/collaborators/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-							elem = elem[len(prefix):]
-						} else {
-							break
-						}
-
-						// Param: "username"
-						// Leaf parameter
-						args["username"] = elem
-
-						// Leaf: ProjectsRemoveCollaborator
-						s.handleProjectsRemoveCollaboratorRequest(args, w, r)
-						return
-					}
-				}
-			case 'r': // Prefix: "re"
-				if prefix := "re"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-					elem = elem[len(prefix):]
-				} else {
-					break
-				}
-
-				if len(elem) == 0 {
-					s.handleReactionsDeleteLegacyRequest(args, w, r)
-					return
-				}
-				switch elem[0] {
-				case 'a': // Prefix: "actions/"
-					if prefix := "actions/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-						elem = elem[len(prefix):]
-					} else {
-						break
-					}
-
-					// Param: "reaction_id"
-					// Leaf parameter
-					args["reaction_id"] = elem
-
-					// Leaf: ReactionsDeleteLegacy
-					s.handleReactionsDeleteLegacyRequest(args, w, r)
-					return
-				case 'p': // Prefix: "pos"
-					if prefix := "pos"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-						elem = elem[len(prefix):]
-					} else {
-						break
-					}
-
-					if len(elem) == 0 {
-						s.handleActionsDeleteEnvironmentSecretRequest(args, w, r)
-						return
-					}
-					switch elem[0] {
-					case '/': // Prefix: "/"
-						if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-							elem = elem[len(prefix):]
-						} else {
-							break
-						}
-
-						if len(elem) == 0 {
-							break
-						}
-						switch elem[0] {
-						case 'i': // Prefix: "itories/"
-							if prefix := "itories/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-								elem = elem[len(prefix):]
-							} else {
-								break
-							}
-
-							// Param: "repository_id"
-							// Match until one of "/"
-							idx := strings.IndexAny(elem, "/")
-							if idx > 0 {
-								args["repository_id"] = elem[:idx]
-								elem = elem[idx:]
-
-								if len(elem) == 0 {
-									break
-								}
-								switch elem[0] {
-								case '/': // Prefix: "/environments/"
-									if prefix := "/environments/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-										elem = elem[len(prefix):]
-									} else {
-										break
-									}
-
-									// Param: "environment_name"
-									// Match until one of "/"
-									idx := strings.IndexAny(elem, "/")
-									if idx > 0 {
-										args["environment_name"] = elem[:idx]
-										elem = elem[idx:]
-
-										if len(elem) == 0 {
-											break
-										}
-										switch elem[0] {
-										case '/': // Prefix: "/secrets/"
-											if prefix := "/secrets/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-												elem = elem[len(prefix):]
-											} else {
-												break
-											}
-
-											// Param: "secret_name"
-											// Leaf parameter
-											args["secret_name"] = elem
-
-											// Leaf: ActionsDeleteEnvironmentSecret
-											s.handleActionsDeleteEnvironmentSecretRequest(args, w, r)
-											return
-										}
-									}
-								}
-							}
-						}
-						// Param: "owner"
-						// Match until one of "/"
-						idx := strings.IndexAny(elem, "/")
-						if idx > 0 {
-							args["owner"] = elem[:idx]
-							elem = elem[idx:]
-
-							if len(elem) == 0 {
-								break
-							}
-							switch elem[0] {
-							case '/': // Prefix: "/"
-								if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-									elem = elem[len(prefix):]
-								} else {
-									break
-								}
-
-								// Param: "repo"
-								// Match until one of "/"
-								idx := strings.IndexAny(elem, "/")
-								if idx > 0 {
-									args["repo"] = elem[:idx]
-									elem = elem[idx:]
-
-									if len(elem) == 0 {
-										s.handleReposDeleteRequest(args, w, r)
-										return
-									}
-									switch elem[0] {
-									case '/': // Prefix: "/"
-										if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-											elem = elem[len(prefix):]
-										} else {
-											break
-										}
-
-										if len(elem) == 0 {
-											s.handleActivityDeleteRepoSubscriptionRequest(args, w, r)
-											return
-										}
-										switch elem[0] {
-										case 'a': // Prefix: "a"
-											if prefix := "a"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-												elem = elem[len(prefix):]
-											} else {
-												break
-											}
-
-											if len(elem) == 0 {
-												s.handleReposDeleteAutolinkRequest(args, w, r)
-												return
-											}
-											switch elem[0] {
-											case 'c': // Prefix: "ctions/"
-												if prefix := "ctions/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-													elem = elem[len(prefix):]
-												} else {
-													break
-												}
-
-												if len(elem) == 0 {
-													s.handleActionsDeleteRepoSecretRequest(args, w, r)
-													return
-												}
-												switch elem[0] {
-												case 'a': // Prefix: "artifacts/"
-													if prefix := "artifacts/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-														elem = elem[len(prefix):]
-													} else {
-														break
-													}
-
-													if len(elem) == 0 {
-														break
-													}
-													switch elem[0] {
-													case 's': // Prefix: "secrets/"
-														if prefix := "secrets/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-															elem = elem[len(prefix):]
-														} else {
-															break
-														}
-
-														// Param: "secret_name"
-														// Leaf parameter
-														args["secret_name"] = elem
-
-														// Leaf: ActionsDeleteRepoSecret
-														s.handleActionsDeleteRepoSecretRequest(args, w, r)
-														return
-													}
-													// Param: "artifact_id"
-													// Leaf parameter
-													args["artifact_id"] = elem
-
-													// Leaf: ActionsDeleteArtifact
-													s.handleActionsDeleteArtifactRequest(args, w, r)
-													return
-												case 'r': // Prefix: "run"
-													if prefix := "run"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-														elem = elem[len(prefix):]
-													} else {
-														break
-													}
-
-													if len(elem) == 0 {
-														s.handleActionsDeleteWorkflowRunRequest(args, w, r)
-														return
-													}
-													switch elem[0] {
-													case 'n': // Prefix: "ners/"
-														if prefix := "ners/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-															elem = elem[len(prefix):]
-														} else {
-															break
-														}
-
-														if len(elem) == 0 {
-															break
-														}
-														switch elem[0] {
-														case 's': // Prefix: "s/"
-															if prefix := "s/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																elem = elem[len(prefix):]
-															} else {
-																break
-															}
-
-															// Param: "run_id"
-															// Leaf parameter
-															args["run_id"] = elem
-
-															// Leaf: ActionsDeleteWorkflowRun
-															s.handleActionsDeleteWorkflowRunRequest(args, w, r)
-															return
-														}
-														// Param: "runner_id"
-														// Leaf parameter
-														args["runner_id"] = elem
-
-														// Leaf: ActionsDeleteSelfHostedRunnerFromRepo
-														s.handleActionsDeleteSelfHostedRunnerFromRepoRequest(args, w, r)
-														return
-													case 's': // Prefix: "s/"
-														if prefix := "s/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-															elem = elem[len(prefix):]
-														} else {
-															break
-														}
-
-														// Param: "run_id"
-														// Match until one of "/"
-														idx := strings.IndexAny(elem, "/")
-														if idx > 0 {
-															args["run_id"] = elem[:idx]
-															elem = elem[idx:]
-
-															if len(elem) == 0 {
-																s.handleActionsDeleteWorkflowRunRequest(args, w, r)
-																return
-															}
-															switch elem[0] {
-															case '/': // Prefix: "/logs"
-																if prefix := "/logs"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																	elem = elem[len(prefix):]
-																} else {
-																	break
-																}
-
-																// Leaf: ActionsDeleteWorkflowRunLogs
-																s.handleActionsDeleteWorkflowRunLogsRequest(args, w, r)
-																return
-															}
-														}
-													}
-												case 's': // Prefix: "s"
-													if prefix := "s"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-														elem = elem[len(prefix):]
-													} else {
-														break
-													}
-
-													if len(elem) == 0 {
-														s.handleActivityDeleteRepoSubscriptionRequest(args, w, r)
-														return
-													}
-													switch elem[0] {
-													case 'e': // Prefix: "ecrets/"
-														if prefix := "ecrets/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-															elem = elem[len(prefix):]
-														} else {
-															break
-														}
-
-														if len(elem) == 0 {
-															break
-														}
-														switch elem[0] {
-														case 'u': // Prefix: "ubscription"
-															if prefix := "ubscription"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																elem = elem[len(prefix):]
-															} else {
-																break
-															}
-
-															// Leaf: ActivityDeleteRepoSubscription
-															s.handleActivityDeleteRepoSubscriptionRequest(args, w, r)
-															return
-														}
-														// Param: "secret_name"
-														// Leaf parameter
-														args["secret_name"] = elem
-
-														// Leaf: ActionsDeleteRepoSecret
-														s.handleActionsDeleteRepoSecretRequest(args, w, r)
-														return
-													case 'u': // Prefix: "ubscription"
-														if prefix := "ubscription"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-															elem = elem[len(prefix):]
-														} else {
-															break
-														}
-
-														// Leaf: ActivityDeleteRepoSubscription
-														s.handleActivityDeleteRepoSubscriptionRequest(args, w, r)
-														return
-													}
-												case 'u': // Prefix: "utolinks/"
-													if prefix := "utolinks/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-														elem = elem[len(prefix):]
-													} else {
-														break
-													}
-
-													// Param: "autolink_id"
-													// Leaf parameter
-													args["autolink_id"] = elem
-
-													// Leaf: ReposDeleteAutolink
-													s.handleReposDeleteAutolinkRequest(args, w, r)
-													return
-												}
-											case 'u': // Prefix: "uto"
-												if prefix := "uto"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-													elem = elem[len(prefix):]
-												} else {
-													break
-												}
-
-												if len(elem) == 0 {
-													s.handleReposDisableAutomatedSecurityFixesRequest(args, w, r)
-													return
-												}
-												switch elem[0] {
-												case 'l': // Prefix: "links/"
-													if prefix := "links/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-														elem = elem[len(prefix):]
-													} else {
-														break
-													}
-
-													if len(elem) == 0 {
-														break
-													}
-													switch elem[0] {
-													case 'm': // Prefix: "mated-security-fixes"
-														if prefix := "mated-security-fixes"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-															elem = elem[len(prefix):]
-														} else {
-															break
-														}
-
-														// Leaf: ReposDisableAutomatedSecurityFixes
-														s.handleReposDisableAutomatedSecurityFixesRequest(args, w, r)
-														return
-													}
-													// Param: "autolink_id"
-													// Leaf parameter
-													args["autolink_id"] = elem
-
-													// Leaf: ReposDeleteAutolink
-													s.handleReposDeleteAutolinkRequest(args, w, r)
-													return
-												case 'm': // Prefix: "mated-security-fixes"
-													if prefix := "mated-security-fixes"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-														elem = elem[len(prefix):]
-													} else {
-														break
-													}
-
-													// Leaf: ReposDisableAutomatedSecurityFixes
-													s.handleReposDisableAutomatedSecurityFixesRequest(args, w, r)
-													return
-												}
-											}
-										case 'b': // Prefix: "branches/"
-											if prefix := "branches/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-												elem = elem[len(prefix):]
-											} else {
-												break
-											}
-
-											// Param: "branch"
-											// Match until one of "/"
-											idx := strings.IndexAny(elem, "/")
-											if idx > 0 {
-												args["branch"] = elem[:idx]
-												elem = elem[idx:]
-
-												if len(elem) == 0 {
-													break
-												}
-												switch elem[0] {
-												case '/': // Prefix: "/protection"
-													if prefix := "/protection"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-														elem = elem[len(prefix):]
-													} else {
-														break
-													}
-
-													if len(elem) == 0 {
-														s.handleReposDeleteBranchProtectionRequest(args, w, r)
-														return
-													}
-													switch elem[0] {
-													case '/': // Prefix: "/"
-														if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-															elem = elem[len(prefix):]
-														} else {
-															break
-														}
-
-														if len(elem) == 0 {
-															s.handleReposDeleteAdminBranchProtectionRequest(args, w, r)
-															return
-														}
-														switch elem[0] {
-														case 'e': // Prefix: "enforce_admins"
-															if prefix := "enforce_admins"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																elem = elem[len(prefix):]
-															} else {
-																break
-															}
-
-															// Leaf: ReposDeleteAdminBranchProtection
-															s.handleReposDeleteAdminBranchProtectionRequest(args, w, r)
-															return
-														case 'r': // Prefix: "re"
-															if prefix := "re"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																elem = elem[len(prefix):]
-															} else {
-																break
-															}
-
-															if len(elem) == 0 {
-																s.handleReposDeleteCommitSignatureProtectionRequest(args, w, r)
-																return
-															}
-															switch elem[0] {
-															case 'q': // Prefix: "quired_"
-																if prefix := "quired_"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																	elem = elem[len(prefix):]
-																} else {
-																	break
-																}
-
-																if len(elem) == 0 {
-																	s.handleReposDeletePullRequestReviewProtectionRequest(args, w, r)
-																	return
-																}
-																switch elem[0] {
-																case 'p': // Prefix: "pull_request_reviews"
-																	if prefix := "pull_request_reviews"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																		elem = elem[len(prefix):]
-																	} else {
-																		break
-																	}
-
-																	// Leaf: ReposDeletePullRequestReviewProtection
-																	s.handleReposDeletePullRequestReviewProtectionRequest(args, w, r)
-																	return
-																case 's': // Prefix: "s"
-																	if prefix := "s"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																		elem = elem[len(prefix):]
-																	} else {
-																		break
-																	}
-
-																	if len(elem) == 0 {
-																		s.handleReposRemoveStatusCheckContextsRequest(args, w, r)
-																		return
-																	}
-																	switch elem[0] {
-																	case 'i': // Prefix: "ignatures"
-																		if prefix := "ignatures"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																			elem = elem[len(prefix):]
-																		} else {
-																			break
-																		}
-
-																		if len(elem) == 0 {
-																			s.handleReposDeleteCommitSignatureProtectionRequest(args, w, r)
-																			return
-																		}
-																		switch elem[0] {
-																		case 'p': // Prefix: "pull_request_reviews"
-																			if prefix := "pull_request_reviews"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																				elem = elem[len(prefix):]
-																			} else {
-																				break
-																			}
-
-																			// Leaf: ReposDeletePullRequestReviewProtection
-																			s.handleReposDeletePullRequestReviewProtectionRequest(args, w, r)
-																			return
-																		case 't': // Prefix: "tatus_checks/contexts"
-																			if prefix := "tatus_checks/contexts"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																				elem = elem[len(prefix):]
-																			} else {
-																				break
-																			}
-
-																			// Leaf: ReposRemoveStatusCheckContexts
-																			s.handleReposRemoveStatusCheckContextsRequest(args, w, r)
-																			return
-																		}
-																	case 't': // Prefix: "tatus_checks"
-																		if prefix := "tatus_checks"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																			elem = elem[len(prefix):]
-																		} else {
-																			break
-																		}
-
-																		if len(elem) == 0 {
-																			s.handleReposRemoveStatusCheckProtectionRequest(args, w, r)
-																			return
-																		}
-																		switch elem[0] {
-																		case '/': // Prefix: "/contexts"
-																			if prefix := "/contexts"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																				elem = elem[len(prefix):]
-																			} else {
-																				break
-																			}
-
-																			// Leaf: ReposRemoveStatusCheckContexts
-																			s.handleReposRemoveStatusCheckContextsRequest(args, w, r)
-																			return
-																		}
-																	}
-																}
-															case 's': // Prefix: "strictions"
-																if prefix := "strictions"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																	elem = elem[len(prefix):]
-																} else {
-																	break
-																}
-
-																if len(elem) == 0 {
-																	s.handleReposDeleteAccessRestrictionsRequest(args, w, r)
-																	return
-																}
-																switch elem[0] {
-																case '/': // Prefix: "/"
-																	if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																		elem = elem[len(prefix):]
-																	} else {
-																		break
-																	}
-
-																	if len(elem) == 0 {
-																		s.handleReposRemoveTeamAccessRestrictionsRequest(args, w, r)
-																		return
-																	}
-																	switch elem[0] {
-																	case 'a': // Prefix: "apps"
-																		if prefix := "apps"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																			elem = elem[len(prefix):]
-																		} else {
-																			break
-																		}
-
-																		if len(elem) == 0 {
-																			s.handleReposRemoveAppAccessRestrictionsRequest(args, w, r)
-																			return
-																		}
-																		switch elem[0] {
-																		case 't': // Prefix: "teams"
-																			if prefix := "teams"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																				elem = elem[len(prefix):]
-																			} else {
-																				break
-																			}
-
-																			// Leaf: ReposRemoveTeamAccessRestrictions
-																			s.handleReposRemoveTeamAccessRestrictionsRequest(args, w, r)
-																			return
-																		}
-																	case 't': // Prefix: "teams"
-																		if prefix := "teams"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																			elem = elem[len(prefix):]
-																		} else {
-																			break
-																		}
-
-																		// Leaf: ReposRemoveTeamAccessRestrictions
-																		s.handleReposRemoveTeamAccessRestrictionsRequest(args, w, r)
-																		return
-																	case 'u': // Prefix: "users"
-																		if prefix := "users"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																			elem = elem[len(prefix):]
-																		} else {
-																			break
-																		}
-
-																		// Leaf: ReposRemoveUserAccessRestrictions
-																		s.handleReposRemoveUserAccessRestrictionsRequest(args, w, r)
-																		return
-																	}
-																case 'e': // Prefix: "enforce_admins"
-																	if prefix := "enforce_admins"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																		elem = elem[len(prefix):]
-																	} else {
-																		break
-																	}
-
-																	// Leaf: ReposDeleteAdminBranchProtection
-																	s.handleReposDeleteAdminBranchProtectionRequest(args, w, r)
-																	return
-																case 'q': // Prefix: "quired_signatures"
-																	if prefix := "quired_signatures"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																		elem = elem[len(prefix):]
-																	} else {
-																		break
-																	}
-
-																	// Leaf: ReposDeleteCommitSignatureProtection
-																	s.handleReposDeleteCommitSignatureProtectionRequest(args, w, r)
-																	return
-																}
-															}
-														}
-													}
-												}
-											}
-										case 'c': // Prefix: "co"
-											if prefix := "co"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-												elem = elem[len(prefix):]
-											} else {
-												break
-											}
-
-											if len(elem) == 0 {
-												s.handleReactionsDeleteForCommitCommentRequest(args, w, r)
-												return
-											}
-											switch elem[0] {
-											case 'd': // Prefix: "de-scanning/analyses/"
-												if prefix := "de-scanning/analyses/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-													elem = elem[len(prefix):]
-												} else {
-													break
-												}
-
-												if len(elem) == 0 {
-													break
-												}
-												switch elem[0] {
-												case 'm': // Prefix: "mments/"
-													if prefix := "mments/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-														elem = elem[len(prefix):]
-													} else {
-														break
-													}
-
-													// Param: "comment_id"
-													// Match until one of "/"
-													idx := strings.IndexAny(elem, "/")
-													if idx > 0 {
-														args["comment_id"] = elem[:idx]
-														elem = elem[idx:]
-
-														if len(elem) == 0 {
-															break
-														}
-														switch elem[0] {
-														case '/': // Prefix: "/reactions/"
-															if prefix := "/reactions/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																elem = elem[len(prefix):]
-															} else {
-																break
-															}
-
-															// Param: "reaction_id"
-															// Leaf parameter
-															args["reaction_id"] = elem
-
-															// Leaf: ReactionsDeleteForCommitComment
-															s.handleReactionsDeleteForCommitCommentRequest(args, w, r)
-															return
-														}
-													}
-												}
-												// Param: "analysis_id"
-												// Leaf parameter
-												args["analysis_id"] = elem
-
-												// Leaf: CodeScanningDeleteAnalysis
-												s.handleCodeScanningDeleteAnalysisRequest(args, w, r)
-												return
-											case 'l': // Prefix: "llaborators/"
-												if prefix := "llaborators/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-													elem = elem[len(prefix):]
-												} else {
-													break
-												}
-
-												// Param: "username"
-												// Leaf parameter
-												args["username"] = elem
-
-												// Leaf: ReposRemoveCollaborator
-												s.handleReposRemoveCollaboratorRequest(args, w, r)
-												return
-											case 'm': // Prefix: "mments/"
-												if prefix := "mments/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-													elem = elem[len(prefix):]
-												} else {
-													break
-												}
-
-												// Param: "comment_id"
-												// Match until one of "/"
-												idx := strings.IndexAny(elem, "/")
-												if idx > 0 {
-													args["comment_id"] = elem[:idx]
-													elem = elem[idx:]
-
-													if len(elem) == 0 {
-														s.handleReposDeleteCommitCommentRequest(args, w, r)
-														return
-													}
-													switch elem[0] {
-													case '/': // Prefix: "/reactions/"
-														if prefix := "/reactions/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-															elem = elem[len(prefix):]
-														} else {
-															break
-														}
-
-														// Param: "reaction_id"
-														// Leaf parameter
-														args["reaction_id"] = elem
-
-														// Leaf: ReactionsDeleteForCommitComment
-														s.handleReactionsDeleteForCommitCommentRequest(args, w, r)
-														return
-													}
-												}
-											case 'n': // Prefix: "ntents/"
-												if prefix := "ntents/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-													elem = elem[len(prefix):]
-												} else {
-													break
-												}
-
-												// Param: "path"
-												// Leaf parameter
-												args["path"] = elem
-
-												// Leaf: ReposDeleteFile
-												s.handleReposDeleteFileRequest(args, w, r)
-												return
-											}
-										case 'd': // Prefix: "deployments/"
-											if prefix := "deployments/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-												elem = elem[len(prefix):]
-											} else {
-												break
-											}
-
-											// Param: "deployment_id"
-											// Leaf parameter
-											args["deployment_id"] = elem
-
-											// Leaf: ReposDeleteDeployment
-											s.handleReposDeleteDeploymentRequest(args, w, r)
-											return
-										case 'e': // Prefix: "environments/"
-											if prefix := "environments/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-												elem = elem[len(prefix):]
-											} else {
-												break
-											}
-
-											// Param: "environment_name"
-											// Leaf parameter
-											args["environment_name"] = elem
-
-											// Leaf: ReposDeleteAnEnvironment
-											s.handleReposDeleteAnEnvironmentRequest(args, w, r)
-											return
-										case 'g': // Prefix: "git/refs/"
-											if prefix := "git/refs/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-												elem = elem[len(prefix):]
-											} else {
-												break
-											}
-
-											// Param: "ref"
-											// Leaf parameter
-											args["ref"] = elem
-
-											// Leaf: GitDeleteRef
-											s.handleGitDeleteRefRequest(args, w, r)
-											return
-										case 'h': // Prefix: "hooks/"
-											if prefix := "hooks/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-												elem = elem[len(prefix):]
-											} else {
-												break
-											}
-
-											// Param: "hook_id"
-											// Leaf parameter
-											args["hook_id"] = elem
-
-											// Leaf: ReposDeleteWebhook
-											s.handleReposDeleteWebhookRequest(args, w, r)
-											return
-										case 'i': // Prefix: "i"
-											if prefix := "i"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-												elem = elem[len(prefix):]
-											} else {
-												break
-											}
-
-											if len(elem) == 0 {
-												s.handleIssuesDeleteCommentRequest(args, w, r)
-												return
-											}
-											switch elem[0] {
-											case 'm': // Prefix: "mport"
-												if prefix := "mport"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-													elem = elem[len(prefix):]
-												} else {
-													break
-												}
-
-												// Leaf: MigrationsCancelImport
-												s.handleMigrationsCancelImportRequest(args, w, r)
-												return
-											case 'n': // Prefix: "n"
-												if prefix := "n"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-													elem = elem[len(prefix):]
-												} else {
-													break
-												}
-
-												if len(elem) == 0 {
-													s.handleReposDeleteInvitationRequest(args, w, r)
-													return
-												}
-												switch elem[0] {
-												case 't': // Prefix: "teraction-limits"
-													if prefix := "teraction-limits"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-														elem = elem[len(prefix):]
-													} else {
-														break
-													}
-
-													if len(elem) == 0 {
-														s.handleInteractionsRemoveRestrictionsForRepoRequest(args, w, r)
-														return
-													}
-													switch elem[0] {
-													case 's': // Prefix: "ssues/comments/"
-														if prefix := "ssues/comments/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-															elem = elem[len(prefix):]
-														} else {
-															break
-														}
-
-														// Param: "comment_id"
-														// Leaf parameter
-														args["comment_id"] = elem
-
-														// Leaf: IssuesDeleteComment
-														s.handleIssuesDeleteCommentRequest(args, w, r)
-														return
-													case 'v': // Prefix: "vitations/"
-														if prefix := "vitations/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-															elem = elem[len(prefix):]
-														} else {
-															break
-														}
-
-														// Param: "invitation_id"
-														// Leaf parameter
-														args["invitation_id"] = elem
-
-														// Leaf: ReposDeleteInvitation
-														s.handleReposDeleteInvitationRequest(args, w, r)
-														return
-													}
-												case 'v': // Prefix: "vitations/"
-													if prefix := "vitations/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-														elem = elem[len(prefix):]
-													} else {
-														break
-													}
-
-													// Param: "invitation_id"
-													// Leaf parameter
-													args["invitation_id"] = elem
-
-													// Leaf: ReposDeleteInvitation
-													s.handleReposDeleteInvitationRequest(args, w, r)
-													return
-												}
-											case 's': // Prefix: "ssues/"
-												if prefix := "ssues/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-													elem = elem[len(prefix):]
-												} else {
-													break
-												}
-
-												if len(elem) == 0 {
-													s.handleIssuesRemoveAllLabelsRequest(args, w, r)
-													return
-												}
-												switch elem[0] {
-												case 'c': // Prefix: "comments/"
-													if prefix := "comments/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-														elem = elem[len(prefix):]
-													} else {
-														break
-													}
-
-													// Param: "comment_id"
-													// Match until one of "/"
-													idx := strings.IndexAny(elem, "/")
-													if idx > 0 {
-														args["comment_id"] = elem[:idx]
-														elem = elem[idx:]
-
-														if len(elem) == 0 {
-															s.handleIssuesDeleteCommentRequest(args, w, r)
-															return
-														}
-														switch elem[0] {
-														case '/': // Prefix: "/"
-															if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																elem = elem[len(prefix):]
-															} else {
-																break
-															}
-
-															if len(elem) == 0 {
-																s.handleReactionsDeleteForIssueCommentRequest(args, w, r)
-																return
-															}
-															switch elem[0] {
-															case 'l': // Prefix: "labels"
-																if prefix := "labels"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																	elem = elem[len(prefix):]
-																} else {
-																	break
-																}
-
-																if len(elem) == 0 {
-																	s.handleIssuesRemoveAllLabelsRequest(args, w, r)
-																	return
-																}
-																switch elem[0] {
-																case 'r': // Prefix: "reactions/"
-																	if prefix := "reactions/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																		elem = elem[len(prefix):]
-																	} else {
-																		break
-																	}
-
-																	// Param: "reaction_id"
-																	// Leaf parameter
-																	args["reaction_id"] = elem
-
-																	// Leaf: ReactionsDeleteForIssueComment
-																	s.handleReactionsDeleteForIssueCommentRequest(args, w, r)
-																	return
-																}
-															case 'r': // Prefix: "reactions/"
-																if prefix := "reactions/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																	elem = elem[len(prefix):]
-																} else {
-																	break
-																}
-
-																// Param: "reaction_id"
-																// Leaf parameter
-																args["reaction_id"] = elem
-
-																// Leaf: ReactionsDeleteForIssueComment
-																s.handleReactionsDeleteForIssueCommentRequest(args, w, r)
-																return
-															}
-														}
-													}
-												}
-												// Param: "issue_number"
-												// Match until one of "/"
-												idx := strings.IndexAny(elem, "/")
-												if idx > 0 {
-													args["issue_number"] = elem[:idx]
-													elem = elem[idx:]
-
-													if len(elem) == 0 {
-														break
-													}
-													switch elem[0] {
-													case '/': // Prefix: "/"
-														if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-															elem = elem[len(prefix):]
-														} else {
-															break
-														}
-
-														if len(elem) == 0 {
-															s.handleIssuesRemoveAssigneesRequest(args, w, r)
-															return
-														}
-														switch elem[0] {
-														case 'a': // Prefix: "assignees"
-															if prefix := "assignees"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																elem = elem[len(prefix):]
-															} else {
-																break
-															}
-
-															// Leaf: IssuesRemoveAssignees
-															s.handleIssuesRemoveAssigneesRequest(args, w, r)
-															return
-														case 'l': // Prefix: "l"
-															if prefix := "l"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																elem = elem[len(prefix):]
-															} else {
-																break
-															}
-
-															if len(elem) == 0 {
-																s.handleIssuesUnlockRequest(args, w, r)
-																return
-															}
-															switch elem[0] {
-															case 'a': // Prefix: "abels"
-																if prefix := "abels"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																	elem = elem[len(prefix):]
-																} else {
-																	break
-																}
-
-																if len(elem) == 0 {
-																	s.handleIssuesRemoveAllLabelsRequest(args, w, r)
-																	return
-																}
-																switch elem[0] {
-																case '/': // Prefix: "/"
-																	if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																		elem = elem[len(prefix):]
-																	} else {
-																		break
-																	}
-
-																	// Param: "name"
-																	// Leaf parameter
-																	args["name"] = elem
-
-																	// Leaf: IssuesRemoveLabel
-																	s.handleIssuesRemoveLabelRequest(args, w, r)
-																	return
-																case 'a': // Prefix: "assignees"
-																	if prefix := "assignees"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																		elem = elem[len(prefix):]
-																	} else {
-																		break
-																	}
-
-																	// Leaf: IssuesRemoveAssignees
-																	s.handleIssuesRemoveAssigneesRequest(args, w, r)
-																	return
-																case 'o': // Prefix: "ock"
-																	if prefix := "ock"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																		elem = elem[len(prefix):]
-																	} else {
-																		break
-																	}
-
-																	// Leaf: IssuesUnlock
-																	s.handleIssuesUnlockRequest(args, w, r)
-																	return
-																}
-															case 'o': // Prefix: "ock"
-																if prefix := "ock"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																	elem = elem[len(prefix):]
-																} else {
-																	break
-																}
-
-																// Leaf: IssuesUnlock
-																s.handleIssuesUnlockRequest(args, w, r)
-																return
-															}
-														case 'r': // Prefix: "reactions/"
-															if prefix := "reactions/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																elem = elem[len(prefix):]
-															} else {
-																break
-															}
-
-															// Param: "reaction_id"
-															// Leaf parameter
-															args["reaction_id"] = elem
-
-															// Leaf: ReactionsDeleteForIssue
-															s.handleReactionsDeleteForIssueRequest(args, w, r)
-															return
-														}
-													}
-												}
-											}
-										case 'k': // Prefix: "keys/"
-											if prefix := "keys/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-												elem = elem[len(prefix):]
-											} else {
-												break
-											}
-
-											// Param: "key_id"
-											// Leaf parameter
-											args["key_id"] = elem
-
-											// Leaf: ReposDeleteDeployKey
-											s.handleReposDeleteDeployKeyRequest(args, w, r)
-											return
-										case 'l': // Prefix: "l"
-											if prefix := "l"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-												elem = elem[len(prefix):]
-											} else {
-												break
-											}
-
-											if len(elem) == 0 {
-												s.handleReposDisableLfsForRepoRequest(args, w, r)
-												return
-											}
-											switch elem[0] {
-											case 'a': // Prefix: "abels/"
-												if prefix := "abels/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-													elem = elem[len(prefix):]
-												} else {
-													break
-												}
-
-												if len(elem) == 0 {
-													break
-												}
-												switch elem[0] {
-												case 'f': // Prefix: "fs"
-													if prefix := "fs"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-														elem = elem[len(prefix):]
-													} else {
-														break
-													}
-
-													// Leaf: ReposDisableLfsForRepo
-													s.handleReposDisableLfsForRepoRequest(args, w, r)
-													return
-												}
-												// Param: "name"
-												// Leaf parameter
-												args["name"] = elem
-
-												// Leaf: IssuesDeleteLabel
-												s.handleIssuesDeleteLabelRequest(args, w, r)
-												return
-											case 'f': // Prefix: "fs"
-												if prefix := "fs"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-													elem = elem[len(prefix):]
-												} else {
-													break
-												}
-
-												// Leaf: ReposDisableLfsForRepo
-												s.handleReposDisableLfsForRepoRequest(args, w, r)
-												return
-											}
-										case 'm': // Prefix: "milestones/"
-											if prefix := "milestones/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-												elem = elem[len(prefix):]
-											} else {
-												break
-											}
-
-											// Param: "milestone_number"
-											// Leaf parameter
-											args["milestone_number"] = elem
-
-											// Leaf: IssuesDeleteMilestone
-											s.handleIssuesDeleteMilestoneRequest(args, w, r)
-											return
-										case 'p': // Prefix: "p"
-											if prefix := "p"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-												elem = elem[len(prefix):]
-											} else {
-												break
-											}
-
-											if len(elem) == 0 {
-												s.handleReposDeletePagesSiteRequest(args, w, r)
-												return
-											}
-											switch elem[0] {
-											case 'a': // Prefix: "ages"
-												if prefix := "ages"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-													elem = elem[len(prefix):]
-												} else {
-													break
-												}
-
-												// Leaf: ReposDeletePagesSite
-												s.handleReposDeletePagesSiteRequest(args, w, r)
-												return
-											case 'u': // Prefix: "ulls/"
-												if prefix := "ulls/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-													elem = elem[len(prefix):]
-												} else {
-													break
-												}
-
-												if len(elem) == 0 {
-													break
-												}
-												switch elem[0] {
-												case 'a': // Prefix: "ages"
-													if prefix := "ages"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-														elem = elem[len(prefix):]
-													} else {
-														break
-													}
-
-													// Leaf: ReposDeletePagesSite
-													s.handleReposDeletePagesSiteRequest(args, w, r)
-													return
-												case 'c': // Prefix: "comments/"
-													if prefix := "comments/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-														elem = elem[len(prefix):]
-													} else {
-														break
-													}
-
-													// Param: "comment_id"
-													// Match until one of "/"
-													idx := strings.IndexAny(elem, "/")
-													if idx > 0 {
-														args["comment_id"] = elem[:idx]
-														elem = elem[idx:]
-
-														if len(elem) == 0 {
-															s.handlePullsDeleteReviewCommentRequest(args, w, r)
-															return
-														}
-														switch elem[0] {
-														case '/': // Prefix: "/reactions/"
-															if prefix := "/reactions/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																elem = elem[len(prefix):]
-															} else {
-																break
-															}
-
-															// Param: "reaction_id"
-															// Leaf parameter
-															args["reaction_id"] = elem
-
-															// Leaf: ReactionsDeleteForPullRequestComment
-															s.handleReactionsDeleteForPullRequestCommentRequest(args, w, r)
-															return
-														}
-													}
-												}
-												// Param: "pull_number"
-												// Match until one of "/"
-												idx := strings.IndexAny(elem, "/")
-												if idx > 0 {
-													args["pull_number"] = elem[:idx]
-													elem = elem[idx:]
-
-													if len(elem) == 0 {
-														break
-													}
-													switch elem[0] {
-													case '/': // Prefix: "/re"
-														if prefix := "/re"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-															elem = elem[len(prefix):]
-														} else {
-															break
-														}
-
-														if len(elem) == 0 {
-															s.handlePullsRemoveRequestedReviewersRequest(args, w, r)
-															return
-														}
-														switch elem[0] {
-														case 'q': // Prefix: "quested_reviewers"
-															if prefix := "quested_reviewers"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																elem = elem[len(prefix):]
-															} else {
-																break
-															}
-
-															// Leaf: PullsRemoveRequestedReviewers
-															s.handlePullsRemoveRequestedReviewersRequest(args, w, r)
-															return
-														case 'v': // Prefix: "views/"
-															if prefix := "views/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																elem = elem[len(prefix):]
-															} else {
-																break
-															}
-
-															if len(elem) == 0 {
-																break
-															}
-															switch elem[0] {
-															case 'q': // Prefix: "quested_reviewers"
-																if prefix := "quested_reviewers"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																	elem = elem[len(prefix):]
-																} else {
-																	break
-																}
-
-																// Leaf: PullsRemoveRequestedReviewers
-																s.handlePullsRemoveRequestedReviewersRequest(args, w, r)
-																return
-															}
-															// Param: "review_id"
-															// Leaf parameter
-															args["review_id"] = elem
-
-															// Leaf: PullsDeletePendingReview
-															s.handlePullsDeletePendingReviewRequest(args, w, r)
-															return
-														}
-													}
-												}
-											}
-										case 'r': // Prefix: "releases/"
-											if prefix := "releases/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-												elem = elem[len(prefix):]
-											} else {
-												break
-											}
-
-											if len(elem) == 0 {
-												break
-											}
-											switch elem[0] {
-											case 'a': // Prefix: "assets/"
-												if prefix := "assets/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-													elem = elem[len(prefix):]
-												} else {
-													break
-												}
-
-												// Param: "asset_id"
-												// Leaf parameter
-												args["asset_id"] = elem
-
-												// Leaf: ReposDeleteReleaseAsset
-												s.handleReposDeleteReleaseAssetRequest(args, w, r)
-												return
-											}
-											// Param: "release_id"
-											// Leaf parameter
-											args["release_id"] = elem
-
-											// Leaf: ReposDeleteRelease
-											s.handleReposDeleteReleaseRequest(args, w, r)
-											return
-										case 's': // Prefix: "subscription"
-											if prefix := "subscription"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-												elem = elem[len(prefix):]
-											} else {
-												break
-											}
-
-											// Leaf: ActivityDeleteRepoSubscription
-											s.handleActivityDeleteRepoSubscriptionRequest(args, w, r)
-											return
-										case 'v': // Prefix: "vulnerability-alerts"
-											if prefix := "vulnerability-alerts"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-												elem = elem[len(prefix):]
-											} else {
-												break
-											}
-
-											// Leaf: ReposDisableVulnerabilityAlerts
-											s.handleReposDisableVulnerabilityAlertsRequest(args, w, r)
-											return
-										}
-									}
-								}
-							}
-						}
-					case 'a': // Prefix: "actions/"
-						if prefix := "actions/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-							elem = elem[len(prefix):]
-						} else {
-							break
-						}
-
-						// Param: "reaction_id"
-						// Leaf parameter
-						args["reaction_id"] = elem
-
-						// Leaf: ReactionsDeleteLegacy
-						s.handleReactionsDeleteLegacyRequest(args, w, r)
-						return
-					case 'i': // Prefix: "itories/"
-						if prefix := "itories/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-							elem = elem[len(prefix):]
-						} else {
-							break
-						}
-
-						// Param: "repository_id"
-						// Match until one of "/"
-						idx := strings.IndexAny(elem, "/")
-						if idx > 0 {
-							args["repository_id"] = elem[:idx]
-							elem = elem[idx:]
-
-							if len(elem) == 0 {
-								break
-							}
-							switch elem[0] {
-							case '/': // Prefix: "/environments/"
-								if prefix := "/environments/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-									elem = elem[len(prefix):]
-								} else {
-									break
-								}
-
-								// Param: "environment_name"
-								// Match until one of "/"
-								idx := strings.IndexAny(elem, "/")
-								if idx > 0 {
-									args["environment_name"] = elem[:idx]
-									elem = elem[idx:]
-
-									if len(elem) == 0 {
-										break
-									}
-									switch elem[0] {
-									case '/': // Prefix: "/secrets/"
-										if prefix := "/secrets/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-											elem = elem[len(prefix):]
-										} else {
-											break
-										}
-
-										// Param: "secret_name"
-										// Leaf parameter
-										args["secret_name"] = elem
-
-										// Leaf: ActionsDeleteEnvironmentSecret
-										s.handleActionsDeleteEnvironmentSecretRequest(args, w, r)
-										return
-									}
-								}
-							}
-						}
-					case 'o': // Prefix: "orgs/"
-						if prefix := "orgs/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-							elem = elem[len(prefix):]
-						} else {
-							break
-						}
-
-						// Param: "org"
-						// Match until one of "/"
-						idx := strings.IndexAny(elem, "/")
-						if idx > 0 {
-							args["org"] = elem[:idx]
-							elem = elem[idx:]
-
-							if len(elem) == 0 {
-								break
-							}
-							switch elem[0] {
-							case '/': // Prefix: "/actions/secrets/"
-								if prefix := "/actions/secrets/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-									elem = elem[len(prefix):]
-								} else {
-									break
-								}
-
-								// Param: "secret_name"
-								// Leaf parameter
-								args["secret_name"] = elem
-
-								// Leaf: ActionsDeleteOrgSecret
-								s.handleActionsDeleteOrgSecretRequest(args, w, r)
-								return
-							}
-						}
-					}
-				}
-			case 's': // Prefix: "scim/v2/"
-				if prefix := "scim/v2/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-					elem = elem[len(prefix):]
-				} else {
-					break
-				}
-
-				if len(elem) == 0 {
-					s.handleScimDeleteUserFromOrgRequest(args, w, r)
-					return
-				}
-				switch elem[0] {
-				case 'e': // Prefix: "enterprises/"
-					if prefix := "enterprises/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-						elem = elem[len(prefix):]
-					} else {
-						break
-					}
-
-					if len(elem) == 0 {
-						break
-					}
-					switch elem[0] {
-					case 'o': // Prefix: "organizations/"
-						if prefix := "organizations/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-							elem = elem[len(prefix):]
-						} else {
-							break
-						}
-
-						// Param: "org"
-						// Match until one of "/"
-						idx := strings.IndexAny(elem, "/")
-						if idx > 0 {
-							args["org"] = elem[:idx]
-							elem = elem[idx:]
-
-							if len(elem) == 0 {
-								break
-							}
-							switch elem[0] {
-							case '/': // Prefix: "/Users/"
-								if prefix := "/Users/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-									elem = elem[len(prefix):]
-								} else {
-									break
-								}
-
-								// Param: "scim_user_id"
-								// Leaf parameter
-								args["scim_user_id"] = elem
-
-								// Leaf: ScimDeleteUserFromOrg
-								s.handleScimDeleteUserFromOrgRequest(args, w, r)
-								return
-							}
-						}
-					}
-					// Param: "enterprise"
-					// Match until one of "/"
-					idx := strings.IndexAny(elem, "/")
-					if idx > 0 {
-						args["enterprise"] = elem[:idx]
-						elem = elem[idx:]
-
-						if len(elem) == 0 {
-							break
-						}
-						switch elem[0] {
-						case '/': // Prefix: "/"
-							if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-								elem = elem[len(prefix):]
-							} else {
-								break
-							}
-
-							if len(elem) == 0 {
-								s.handleEnterpriseAdminDeleteUserFromEnterpriseRequest(args, w, r)
-								return
-							}
-							switch elem[0] {
-							case 'G': // Prefix: "Groups/"
-								if prefix := "Groups/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-									elem = elem[len(prefix):]
-								} else {
-									break
-								}
-
-								if len(elem) == 0 {
-									break
-								}
-								switch elem[0] {
-								case 'U': // Prefix: "Users/"
-									if prefix := "Users/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-										elem = elem[len(prefix):]
-									} else {
-										break
-									}
-
-									// Param: "scim_user_id"
-									// Leaf parameter
-									args["scim_user_id"] = elem
-
-									// Leaf: EnterpriseAdminDeleteUserFromEnterprise
-									s.handleEnterpriseAdminDeleteUserFromEnterpriseRequest(args, w, r)
-									return
-								}
-								// Param: "scim_group_id"
-								// Leaf parameter
-								args["scim_group_id"] = elem
-
-								// Leaf: EnterpriseAdminDeleteScimGroupFromEnterprise
-								s.handleEnterpriseAdminDeleteScimGroupFromEnterpriseRequest(args, w, r)
-								return
-							case 'U': // Prefix: "Users/"
-								if prefix := "Users/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-									elem = elem[len(prefix):]
-								} else {
-									break
-								}
-
-								// Param: "scim_user_id"
-								// Leaf parameter
-								args["scim_user_id"] = elem
-
-								// Leaf: EnterpriseAdminDeleteUserFromEnterprise
-								s.handleEnterpriseAdminDeleteUserFromEnterpriseRequest(args, w, r)
-								return
-							}
-						}
-					}
-				case 'o': // Prefix: "organizations/"
-					if prefix := "organizations/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-						elem = elem[len(prefix):]
-					} else {
-						break
-					}
-
-					// Param: "org"
-					// Match until one of "/"
-					idx := strings.IndexAny(elem, "/")
-					if idx > 0 {
-						args["org"] = elem[:idx]
-						elem = elem[idx:]
-
-						if len(elem) == 0 {
-							break
-						}
-						switch elem[0] {
-						case '/': // Prefix: "/Users/"
-							if prefix := "/Users/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-								elem = elem[len(prefix):]
-							} else {
-								break
-							}
-
-							// Param: "scim_user_id"
-							// Leaf parameter
-							args["scim_user_id"] = elem
-
-							// Leaf: ScimDeleteUserFromOrg
-							s.handleScimDeleteUserFromOrgRequest(args, w, r)
-							return
-						}
-					}
-				}
-			case 't': // Prefix: "teams/"
-				if prefix := "teams/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-					elem = elem[len(prefix):]
-				} else {
-					break
-				}
-
-				// Param: "team_id"
-				// Match until one of "/"
-				idx := strings.IndexAny(elem, "/")
-				if idx > 0 {
-					args["team_id"] = elem[:idx]
-					elem = elem[idx:]
-
-					if len(elem) == 0 {
-						s.handleTeamsDeleteLegacyRequest(args, w, r)
-						return
-					}
-					switch elem[0] {
-					case '/': // Prefix: "/"
-						if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-							elem = elem[len(prefix):]
-						} else {
-							break
-						}
-
-						if len(elem) == 0 {
-							s.handleTeamsRemoveMemberLegacyRequest(args, w, r)
-							return
-						}
-						switch elem[0] {
-						case 'd': // Prefix: "discussions/"
-							if prefix := "discussions/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-								elem = elem[len(prefix):]
-							} else {
-								break
-							}
-
-							if len(elem) == 0 {
-								break
-							}
-							switch elem[0] {
-							case 'm': // Prefix: "members/"
-								if prefix := "members/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-									elem = elem[len(prefix):]
-								} else {
-									break
-								}
-
-								// Param: "username"
-								// Leaf parameter
-								args["username"] = elem
-
-								// Leaf: TeamsRemoveMemberLegacy
-								s.handleTeamsRemoveMemberLegacyRequest(args, w, r)
-								return
-							}
-							// Param: "discussion_number"
-							// Match until one of "/"
-							idx := strings.IndexAny(elem, "/")
-							if idx > 0 {
-								args["discussion_number"] = elem[:idx]
-								elem = elem[idx:]
-
-								if len(elem) == 0 {
-									s.handleTeamsDeleteDiscussionLegacyRequest(args, w, r)
-									return
-								}
-								switch elem[0] {
-								case '/': // Prefix: "/comments/"
-									if prefix := "/comments/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-										elem = elem[len(prefix):]
-									} else {
-										break
-									}
-
-									// Param: "comment_number"
-									// Leaf parameter
-									args["comment_number"] = elem
-
-									// Leaf: TeamsDeleteDiscussionCommentLegacy
-									s.handleTeamsDeleteDiscussionCommentLegacyRequest(args, w, r)
-									return
-								}
-							}
-						case 'm': // Prefix: "members"
-							if prefix := "members"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-								elem = elem[len(prefix):]
-							} else {
-								break
-							}
-
-							if len(elem) == 0 {
-								s.handleTeamsRemoveMembershipForUserLegacyRequest(args, w, r)
-								return
-							}
-							switch elem[0] {
-							case '/': // Prefix: "/"
-								if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-									elem = elem[len(prefix):]
-								} else {
-									break
-								}
-
-								if len(elem) == 0 {
-									break
-								}
-								switch elem[0] {
-								case 'h': // Prefix: "hips/"
-									if prefix := "hips/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-										elem = elem[len(prefix):]
-									} else {
-										break
-									}
-
-									// Param: "username"
-									// Leaf parameter
-									args["username"] = elem
-
-									// Leaf: TeamsRemoveMembershipForUserLegacy
-									s.handleTeamsRemoveMembershipForUserLegacyRequest(args, w, r)
-									return
-								}
-								// Param: "username"
-								// Leaf parameter
-								args["username"] = elem
-
-								// Leaf: TeamsRemoveMemberLegacy
-								s.handleTeamsRemoveMemberLegacyRequest(args, w, r)
-								return
-							case 'h': // Prefix: "hips/"
-								if prefix := "hips/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-									elem = elem[len(prefix):]
-								} else {
-									break
-								}
-
-								// Param: "username"
-								// Leaf parameter
-								args["username"] = elem
-
-								// Leaf: TeamsRemoveMembershipForUserLegacy
-								s.handleTeamsRemoveMembershipForUserLegacyRequest(args, w, r)
-								return
-							}
-						case 'p': // Prefix: "projects/"
-							if prefix := "projects/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-								elem = elem[len(prefix):]
-							} else {
-								break
-							}
-
-							// Param: "project_id"
-							// Leaf parameter
-							args["project_id"] = elem
-
-							// Leaf: TeamsRemoveProjectLegacy
-							s.handleTeamsRemoveProjectLegacyRequest(args, w, r)
-							return
-						case 'r': // Prefix: "repos/"
-							if prefix := "repos/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-								elem = elem[len(prefix):]
-							} else {
-								break
-							}
-
-							// Param: "owner"
-							// Match until one of "/"
-							idx := strings.IndexAny(elem, "/")
-							if idx > 0 {
-								args["owner"] = elem[:idx]
-								elem = elem[idx:]
-
-								if len(elem) == 0 {
-									break
-								}
-								switch elem[0] {
-								case '/': // Prefix: "/"
-									if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-										elem = elem[len(prefix):]
-									} else {
-										break
-									}
-
-									// Param: "repo"
-									// Leaf parameter
-									args["repo"] = elem
-
-									// Leaf: TeamsRemoveRepoLegacy
-									s.handleTeamsRemoveRepoLegacyRequest(args, w, r)
-									return
-								}
-							}
-						}
-					}
-				}
-			case 'u': // Prefix: "user"
-				if prefix := "user"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-					elem = elem[len(prefix):]
-				} else {
-					break
-				}
-
-				if len(elem) == 0 {
-					s.handlePackagesDeletePackageForUserRequest(args, w, r)
-					return
-				}
-				switch elem[0] {
-				case '/': // Prefix: "/"
-					if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-						elem = elem[len(prefix):]
-					} else {
-						break
-					}
-
-					if len(elem) == 0 {
-						s.handleAppsRemoveRepoFromInstallationRequest(args, w, r)
-						return
-					}
-					switch elem[0] {
-					case 'b': // Prefix: "blocks/"
-						if prefix := "blocks/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-							elem = elem[len(prefix):]
-						} else {
-							break
-						}
-
-						// Param: "username"
-						// Leaf parameter
-						args["username"] = elem
-
-						// Leaf: UsersUnblock
-						s.handleUsersUnblockRequest(args, w, r)
-						return
-					case 'e': // Prefix: "emails"
-						if prefix := "emails"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-							elem = elem[len(prefix):]
-						} else {
-							break
-						}
-
-						// Leaf: UsersDeleteEmailForAuthenticated
-						s.handleUsersDeleteEmailForAuthenticatedRequest(args, w, r)
-						return
-					case 'f': // Prefix: "following/"
-						if prefix := "following/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-							elem = elem[len(prefix):]
-						} else {
-							break
-						}
-
-						// Param: "username"
-						// Leaf parameter
-						args["username"] = elem
-
-						// Leaf: UsersUnfollow
-						s.handleUsersUnfollowRequest(args, w, r)
-						return
-					case 'g': // Prefix: "gpg_keys/"
-						if prefix := "gpg_keys/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-							elem = elem[len(prefix):]
-						} else {
-							break
-						}
-
-						// Param: "gpg_key_id"
-						// Leaf parameter
-						args["gpg_key_id"] = elem
-
-						// Leaf: UsersDeleteGpgKeyForAuthenticated
-						s.handleUsersDeleteGpgKeyForAuthenticatedRequest(args, w, r)
-						return
-					case 'i': // Prefix: "in"
-						if prefix := "in"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-							elem = elem[len(prefix):]
-						} else {
-							break
-						}
-
-						if len(elem) == 0 {
-							s.handleInteractionsRemoveRestrictionsForAuthenticatedUserRequest(args, w, r)
-							return
-						}
-						switch elem[0] {
-						case 's': // Prefix: "stallations/"
-							if prefix := "stallations/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-								elem = elem[len(prefix):]
-							} else {
-								break
-							}
-
-							if len(elem) == 0 {
-								break
-							}
-							switch elem[0] {
-							case 't': // Prefix: "teraction-limits"
-								if prefix := "teraction-limits"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-									elem = elem[len(prefix):]
-								} else {
-									break
-								}
-
-								// Leaf: InteractionsRemoveRestrictionsForAuthenticatedUser
-								s.handleInteractionsRemoveRestrictionsForAuthenticatedUserRequest(args, w, r)
-								return
-							}
-							// Param: "installation_id"
-							// Match until one of "/"
-							idx := strings.IndexAny(elem, "/")
-							if idx > 0 {
-								args["installation_id"] = elem[:idx]
-								elem = elem[idx:]
-
-								if len(elem) == 0 {
-									break
-								}
-								switch elem[0] {
-								case '/': // Prefix: "/repositories/"
-									if prefix := "/repositories/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-										elem = elem[len(prefix):]
-									} else {
-										break
-									}
-
-									// Param: "repository_id"
-									// Leaf parameter
-									args["repository_id"] = elem
-
-									// Leaf: AppsRemoveRepoFromInstallation
-									s.handleAppsRemoveRepoFromInstallationRequest(args, w, r)
-									return
-								}
-							}
-						case 't': // Prefix: "teraction-limits"
-							if prefix := "teraction-limits"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-								elem = elem[len(prefix):]
-							} else {
-								break
-							}
-
-							// Leaf: InteractionsRemoveRestrictionsForAuthenticatedUser
-							s.handleInteractionsRemoveRestrictionsForAuthenticatedUserRequest(args, w, r)
-							return
-						}
-					case 'k': // Prefix: "keys/"
-						if prefix := "keys/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-							elem = elem[len(prefix):]
-						} else {
-							break
-						}
-
-						// Param: "key_id"
-						// Leaf parameter
-						args["key_id"] = elem
-
-						// Leaf: UsersDeletePublicSSHKeyForAuthenticated
-						s.handleUsersDeletePublicSSHKeyForAuthenticatedRequest(args, w, r)
-						return
-					case 'm': // Prefix: "migrations/"
-						if prefix := "migrations/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-							elem = elem[len(prefix):]
-						} else {
-							break
-						}
-
-						// Param: "migration_id"
-						// Match until one of "/"
-						idx := strings.IndexAny(elem, "/")
-						if idx > 0 {
-							args["migration_id"] = elem[:idx]
-							elem = elem[idx:]
-
-							if len(elem) == 0 {
-								break
-							}
-							switch elem[0] {
-							case '/': // Prefix: "/"
-								if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-									elem = elem[len(prefix):]
-								} else {
-									break
-								}
-
-								if len(elem) == 0 {
-									s.handleMigrationsUnlockRepoForAuthenticatedUserRequest(args, w, r)
-									return
-								}
-								switch elem[0] {
-								case 'a': // Prefix: "archive"
-									if prefix := "archive"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-										elem = elem[len(prefix):]
-									} else {
-										break
-									}
-
-									if len(elem) == 0 {
-										s.handleMigrationsDeleteArchiveForAuthenticatedUserRequest(args, w, r)
-										return
-									}
-									switch elem[0] {
-									case 'r': // Prefix: "repos/"
-										if prefix := "repos/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-											elem = elem[len(prefix):]
-										} else {
-											break
-										}
-
-										// Param: "repo_name"
-										// Match until one of "/"
-										idx := strings.IndexAny(elem, "/")
-										if idx > 0 {
-											args["repo_name"] = elem[:idx]
-											elem = elem[idx:]
-
-											if len(elem) == 0 {
-												break
-											}
-											switch elem[0] {
-											case '/': // Prefix: "/lock"
-												if prefix := "/lock"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-													elem = elem[len(prefix):]
-												} else {
-													break
-												}
-
-												// Leaf: MigrationsUnlockRepoForAuthenticatedUser
-												s.handleMigrationsUnlockRepoForAuthenticatedUserRequest(args, w, r)
-												return
-											}
-										}
-									}
-								case 'r': // Prefix: "repos/"
-									if prefix := "repos/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-										elem = elem[len(prefix):]
-									} else {
-										break
-									}
-
-									// Param: "repo_name"
-									// Match until one of "/"
-									idx := strings.IndexAny(elem, "/")
-									if idx > 0 {
-										args["repo_name"] = elem[:idx]
-										elem = elem[idx:]
-
-										if len(elem) == 0 {
-											break
-										}
-										switch elem[0] {
-										case '/': // Prefix: "/lock"
-											if prefix := "/lock"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-												elem = elem[len(prefix):]
-											} else {
-												break
-											}
-
-											// Leaf: MigrationsUnlockRepoForAuthenticatedUser
-											s.handleMigrationsUnlockRepoForAuthenticatedUserRequest(args, w, r)
-											return
-										}
-									}
-								}
-							}
-						}
-					case 'p': // Prefix: "packages/"
-						if prefix := "packages/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-							elem = elem[len(prefix):]
-						} else {
-							break
-						}
-
-						// Param: "package_type"
-						// Match until one of "/"
-						idx := strings.IndexAny(elem, "/")
-						if idx > 0 {
-							args["package_type"] = elem[:idx]
-							elem = elem[idx:]
-
-							if len(elem) == 0 {
-								break
-							}
-							switch elem[0] {
-							case '/': // Prefix: "/"
-								if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-									elem = elem[len(prefix):]
-								} else {
-									break
-								}
-
-								// Param: "package_name"
-								// Match until one of "/"
-								idx := strings.IndexAny(elem, "/")
-								if idx > 0 {
-									args["package_name"] = elem[:idx]
-									elem = elem[idx:]
-
-									if len(elem) == 0 {
-										s.handlePackagesDeletePackageForAuthenticatedUserRequest(args, w, r)
-										return
-									}
-									switch elem[0] {
-									case '/': // Prefix: "/versions/"
-										if prefix := "/versions/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-											elem = elem[len(prefix):]
-										} else {
-											break
-										}
-
-										// Param: "package_version_id"
-										// Leaf parameter
-										args["package_version_id"] = elem
-
-										// Leaf: PackagesDeletePackageVersionForAuthenticatedUser
-										s.handlePackagesDeletePackageVersionForAuthenticatedUserRequest(args, w, r)
-										return
-									}
-								}
-							}
-						}
-					case 'r': // Prefix: "repository_invitations/"
-						if prefix := "repository_invitations/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-							elem = elem[len(prefix):]
-						} else {
-							break
-						}
-
-						// Param: "invitation_id"
-						// Leaf parameter
-						args["invitation_id"] = elem
-
-						// Leaf: ReposDeclineInvitation
-						s.handleReposDeclineInvitationRequest(args, w, r)
-						return
-					case 's': // Prefix: "s"
-						if prefix := "s"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-							elem = elem[len(prefix):]
-						} else {
-							break
-						}
-
-						if len(elem) == 0 {
-							s.handlePackagesDeletePackageForUserRequest(args, w, r)
-							return
-						}
-						switch elem[0] {
-						case '/': // Prefix: "/"
-							if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-								elem = elem[len(prefix):]
-							} else {
-								break
-							}
-
-							// Param: "username"
-							// Match until one of "/"
-							idx := strings.IndexAny(elem, "/")
-							if idx > 0 {
-								args["username"] = elem[:idx]
-								elem = elem[idx:]
-
-								if len(elem) == 0 {
-									break
-								}
-								switch elem[0] {
-								case '/': // Prefix: "/packages/"
-									if prefix := "/packages/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-										elem = elem[len(prefix):]
-									} else {
-										break
-									}
-
-									// Param: "package_type"
-									// Match until one of "/"
-									idx := strings.IndexAny(elem, "/")
-									if idx > 0 {
-										args["package_type"] = elem[:idx]
-										elem = elem[idx:]
-
-										if len(elem) == 0 {
-											break
-										}
-										switch elem[0] {
-										case '/': // Prefix: "/"
-											if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-												elem = elem[len(prefix):]
-											} else {
-												break
-											}
-
-											// Param: "package_name"
-											// Leaf parameter
-											args["package_name"] = elem
-
-											// Leaf: PackagesDeletePackageForUser
-											s.handlePackagesDeletePackageForUserRequest(args, w, r)
-											return
-										}
-									}
-								}
-							}
-						case 't': // Prefix: "tarred/"
-							if prefix := "tarred/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-								elem = elem[len(prefix):]
-							} else {
-								break
-							}
-
-							if len(elem) == 0 {
-								break
-							}
-							switch elem[0] {
-							case '/': // Prefix: "/"
-								if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-									elem = elem[len(prefix):]
-								} else {
-									break
-								}
-
-								// Param: "username"
-								// Match until one of "/"
-								idx := strings.IndexAny(elem, "/")
-								if idx > 0 {
-									args["username"] = elem[:idx]
-									elem = elem[idx:]
-
-									if len(elem) == 0 {
-										break
-									}
-									switch elem[0] {
-									case '/': // Prefix: "/packages/"
-										if prefix := "/packages/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-											elem = elem[len(prefix):]
-										} else {
-											break
-										}
-
-										// Param: "package_type"
-										// Match until one of "/"
-										idx := strings.IndexAny(elem, "/")
-										if idx > 0 {
-											args["package_type"] = elem[:idx]
-											elem = elem[idx:]
-
-											if len(elem) == 0 {
-												break
-											}
-											switch elem[0] {
-											case '/': // Prefix: "/"
-												if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-													elem = elem[len(prefix):]
-												} else {
-													break
-												}
-
-												// Param: "package_name"
-												// Leaf parameter
-												args["package_name"] = elem
-
-												// Leaf: PackagesDeletePackageForUser
-												s.handlePackagesDeletePackageForUserRequest(args, w, r)
-												return
-											}
-										}
-									}
-								}
-							case 'i': // Prefix: "installations/"
-								if prefix := "installations/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-									elem = elem[len(prefix):]
-								} else {
-									break
-								}
-
-								// Param: "installation_id"
-								// Match until one of "/"
-								idx := strings.IndexAny(elem, "/")
-								if idx > 0 {
-									args["installation_id"] = elem[:idx]
-									elem = elem[idx:]
-
-									if len(elem) == 0 {
-										break
-									}
-									switch elem[0] {
-									case '/': // Prefix: "/repositories/"
-										if prefix := "/repositories/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-											elem = elem[len(prefix):]
-										} else {
-											break
-										}
-
-										// Param: "repository_id"
-										// Leaf parameter
-										args["repository_id"] = elem
-
-										// Leaf: AppsRemoveRepoFromInstallation
-										s.handleAppsRemoveRepoFromInstallationRequest(args, w, r)
-										return
-									}
-								}
-							}
-							// Param: "owner"
-							// Match until one of "/"
-							idx := strings.IndexAny(elem, "/")
-							if idx > 0 {
-								args["owner"] = elem[:idx]
-								elem = elem[idx:]
-
-								if len(elem) == 0 {
-									break
-								}
-								switch elem[0] {
-								case '/': // Prefix: "/"
-									if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-										elem = elem[len(prefix):]
-									} else {
-										break
-									}
-
-									// Param: "repo"
-									// Leaf parameter
-									args["repo"] = elem
-
-									// Leaf: ActivityUnstarRepoForAuthenticatedUser
-									s.handleActivityUnstarRepoForAuthenticatedUserRequest(args, w, r)
-									return
-								}
-							}
-						}
-					}
-				case 's': // Prefix: "s/"
-					if prefix := "s/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-						elem = elem[len(prefix):]
-					} else {
-						break
-					}
-
-					// Param: "username"
-					// Match until one of "/"
-					idx := strings.IndexAny(elem, "/")
-					if idx > 0 {
-						args["username"] = elem[:idx]
-						elem = elem[idx:]
-
-						if len(elem) == 0 {
-							break
-						}
-						switch elem[0] {
-						case '/': // Prefix: "/packages/"
-							if prefix := "/packages/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-								elem = elem[len(prefix):]
-							} else {
-								break
-							}
-
-							// Param: "package_type"
-							// Match until one of "/"
-							idx := strings.IndexAny(elem, "/")
-							if idx > 0 {
-								args["package_type"] = elem[:idx]
-								elem = elem[idx:]
-
-								if len(elem) == 0 {
-									break
-								}
-								switch elem[0] {
-								case '/': // Prefix: "/"
-									if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-										elem = elem[len(prefix):]
-									} else {
-										break
-									}
-
-									// Param: "package_name"
-									// Match until one of "/"
-									idx := strings.IndexAny(elem, "/")
-									if idx > 0 {
-										args["package_name"] = elem[:idx]
-										elem = elem[idx:]
-
-										if len(elem) == 0 {
-											s.handlePackagesDeletePackageForUserRequest(args, w, r)
-											return
-										}
-										switch elem[0] {
-										case '/': // Prefix: "/versions/"
-											if prefix := "/versions/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-												elem = elem[len(prefix):]
-											} else {
-												break
-											}
-
-											// Param: "package_version_id"
-											// Leaf parameter
-											args["package_version_id"] = elem
-
-											// Leaf: PackagesDeletePackageVersionForUser
-											s.handlePackagesDeletePackageVersionForUserRequest(args, w, r)
-											return
-										}
-									}
-								}
-							}
-						}
-					}
-				}
-			}
-		}
-	case "GET":
-		if len(elem) == 0 {
-			break
-		}
-		switch elem[0] {
-		case '/': // Prefix: "/"
-			if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-				elem = elem[len(prefix):]
-			} else {
-				break
-			}
-
-			if len(elem) == 0 {
-				s.handleMetaRootRequest(args, w, r)
-				return
-			}
-			switch elem[0] {
-			case 'a': // Prefix: "a"
-				if prefix := "a"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-					elem = elem[len(prefix):]
-				} else {
-					break
-				}
-
-				if len(elem) == 0 {
-					s.handleOAuthAuthorizationsGetAuthorizationRequest(args, w, r)
-					return
-				}
-				switch elem[0] {
-				case 'p': // Prefix: "pp"
-					if prefix := "pp"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-						elem = elem[len(prefix):]
-					} else {
-						break
-					}
-
-					if len(elem) == 0 {
-						s.handleAppsGetAuthenticatedRequest(args, w, r)
-						return
-					}
-					switch elem[0] {
-					case '/': // Prefix: "/hook/"
-						if prefix := "/hook/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-							elem = elem[len(prefix):]
-						} else {
-							break
-						}
-
-						if len(elem) == 0 {
-							s.handleAppsGetWebhookDeliveryRequest(args, w, r)
-							return
-						}
-						switch elem[0] {
-						case 'c': // Prefix: "config"
-							if prefix := "config"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-								elem = elem[len(prefix):]
-							} else {
-								break
-							}
-
-							if len(elem) == 0 {
-								s.handleAppsGetWebhookConfigForAppRequest(args, w, r)
-								return
-							}
-							switch elem[0] {
-							case 'd': // Prefix: "deliveries/"
-								if prefix := "deliveries/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-									elem = elem[len(prefix):]
-								} else {
-									break
-								}
-
-								// Param: "delivery_id"
-								// Leaf parameter
-								args["delivery_id"] = elem
-
-								// Leaf: AppsGetWebhookDelivery
-								s.handleAppsGetWebhookDeliveryRequest(args, w, r)
-								return
-							}
-						case 'd': // Prefix: "deliveries"
-							if prefix := "deliveries"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-								elem = elem[len(prefix):]
-							} else {
-								break
-							}
-
-							if len(elem) == 0 {
-								s.handleAppsListWebhookDeliveriesRequest(args, w, r)
-								return
-							}
-							switch elem[0] {
-							case '/': // Prefix: "/"
-								if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-									elem = elem[len(prefix):]
-								} else {
-									break
-								}
-
-								// Param: "delivery_id"
-								// Leaf parameter
-								args["delivery_id"] = elem
-
-								// Leaf: AppsGetWebhookDelivery
-								s.handleAppsGetWebhookDeliveryRequest(args, w, r)
-								return
-							}
-						}
-					case 'l': // Prefix: "lications/grants"
-						if prefix := "lications/grants"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-							elem = elem[len(prefix):]
-						} else {
-							break
-						}
-
-						if len(elem) == 0 {
-							s.handleOAuthAuthorizationsListGrantsRequest(args, w, r)
-							return
-						}
-						switch elem[0] {
-						case '/': // Prefix: "/"
-							if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-								elem = elem[len(prefix):]
-							} else {
-								break
-							}
-
-							// Param: "grant_id"
-							// Leaf parameter
-							args["grant_id"] = elem
-
-							// Leaf: OAuthAuthorizationsGetGrant
-							s.handleOAuthAuthorizationsGetGrantRequest(args, w, r)
-							return
-						}
-					case 's': // Prefix: "s/"
-						if prefix := "s/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-							elem = elem[len(prefix):]
-						} else {
-							break
-						}
-
-						// Param: "app_slug"
-						// Leaf parameter
-						args["app_slug"] = elem
-
-						// Leaf: AppsGetBySlug
-						s.handleAppsGetBySlugRequest(args, w, r)
-						return
-					case 'u': // Prefix: "uthorizations/"
-						if prefix := "uthorizations/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-							elem = elem[len(prefix):]
-						} else {
-							break
-						}
-
-						// Param: "authorization_id"
-						// Leaf parameter
-						args["authorization_id"] = elem
-
-						// Leaf: OAuthAuthorizationsGetAuthorization
-						s.handleOAuthAuthorizationsGetAuthorizationRequest(args, w, r)
-						return
-					}
-				case 'u': // Prefix: "uthorizations"
-					if prefix := "uthorizations"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-						elem = elem[len(prefix):]
-					} else {
-						break
-					}
-
-					if len(elem) == 0 {
-						s.handleOAuthAuthorizationsListAuthorizationsRequest(args, w, r)
-						return
-					}
-					switch elem[0] {
-					case '/': // Prefix: "/"
-						if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-							elem = elem[len(prefix):]
-						} else {
-							break
-						}
-
-						// Param: "authorization_id"
-						// Leaf parameter
-						args["authorization_id"] = elem
-
-						// Leaf: OAuthAuthorizationsGetAuthorization
-						s.handleOAuthAuthorizationsGetAuthorizationRequest(args, w, r)
-						return
-					}
-				}
-			case 'c': // Prefix: "codes_of_conduct"
-				if prefix := "codes_of_conduct"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-					elem = elem[len(prefix):]
-				} else {
-					break
-				}
-
-				if len(elem) == 0 {
-					s.handleCodesOfConductGetAllCodesOfConductRequest(args, w, r)
-					return
-				}
-				switch elem[0] {
-				case '/': // Prefix: "/"
-					if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-						elem = elem[len(prefix):]
-					} else {
-						break
-					}
-
-					// Param: "key"
-					// Leaf parameter
-					args["key"] = elem
-
-					// Leaf: CodesOfConductGetConductCode
-					s.handleCodesOfConductGetConductCodeRequest(args, w, r)
-					return
-				}
-			case 'e': // Prefix: "e"
-				if prefix := "e"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-					elem = elem[len(prefix):]
-				} else {
-					break
-				}
-
-				if len(elem) == 0 {
-					s.handleBillingGetGithubActionsBillingGheRequest(args, w, r)
-					return
-				}
-				switch elem[0] {
-				case 'm': // Prefix: "mojis"
-					if prefix := "mojis"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-						elem = elem[len(prefix):]
-					} else {
-						break
-					}
-
-					// Leaf: EmojisGet
-					s.handleEmojisGetRequest(args, w, r)
-					return
-				case 'n': // Prefix: "nterprises/"
-					if prefix := "nterprises/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-						elem = elem[len(prefix):]
-					} else {
-						break
-					}
-
-					// Param: "enterprise"
-					// Match until one of "/"
-					idx := strings.IndexAny(elem, "/")
-					if idx > 0 {
-						args["enterprise"] = elem[:idx]
-						elem = elem[idx:]
-
-						if len(elem) == 0 {
-							break
-						}
-						switch elem[0] {
-						case '/': // Prefix: "/"
-							if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-								elem = elem[len(prefix):]
-							} else {
-								break
-							}
-
-							if len(elem) == 0 {
-								s.handleEnterpriseAdminGetAllowedActionsEnterpriseRequest(args, w, r)
-								return
-							}
-							switch elem[0] {
-							case 'a': // Prefix: "a"
-								if prefix := "a"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-									elem = elem[len(prefix):]
-								} else {
-									break
-								}
-
-								if len(elem) == 0 {
-									s.handleEnterpriseAdminGetAuditLogRequest(args, w, r)
-									return
-								}
-								switch elem[0] {
-								case 'c': // Prefix: "ctions/"
-									if prefix := "ctions/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-										elem = elem[len(prefix):]
-									} else {
-										break
-									}
-
-									if len(elem) == 0 {
-										s.handleEnterpriseAdminGetSelfHostedRunnerForEnterpriseRequest(args, w, r)
-										return
-									}
-									switch elem[0] {
-									case 'p': // Prefix: "permissions"
-										if prefix := "permissions"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-											elem = elem[len(prefix):]
-										} else {
-											break
-										}
-
-										if len(elem) == 0 {
-											s.handleEnterpriseAdminGetGithubActionsPermissionsEnterpriseRequest(args, w, r)
-											return
-										}
-										switch elem[0] {
-										case '/': // Prefix: "/"
-											if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-												elem = elem[len(prefix):]
-											} else {
-												break
-											}
-
-											if len(elem) == 0 {
-												s.handleEnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterpriseRequest(args, w, r)
-												return
-											}
-											switch elem[0] {
-											case 'o': // Prefix: "organizations"
-												if prefix := "organizations"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-													elem = elem[len(prefix):]
-												} else {
-													break
-												}
-
-												// Leaf: EnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterprise
-												s.handleEnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterpriseRequest(args, w, r)
-												return
-											case 's': // Prefix: "selected-actions"
-												if prefix := "selected-actions"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-													elem = elem[len(prefix):]
-												} else {
-													break
-												}
-
-												if len(elem) == 0 {
-													s.handleEnterpriseAdminGetAllowedActionsEnterpriseRequest(args, w, r)
-													return
-												}
-												switch elem[0] {
-												case 'o': // Prefix: "organizations"
-													if prefix := "organizations"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-														elem = elem[len(prefix):]
-													} else {
-														break
-													}
-
-													// Leaf: EnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterprise
-													s.handleEnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterpriseRequest(args, w, r)
-													return
-												case 'u': // Prefix: "udit-log"
-													if prefix := "udit-log"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-														elem = elem[len(prefix):]
-													} else {
-														break
-													}
-
-													// Leaf: EnterpriseAdminGetAuditLog
-													s.handleEnterpriseAdminGetAuditLogRequest(args, w, r)
-													return
-												}
-											}
-										case 'r': // Prefix: "runners/"
-											if prefix := "runners/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-												elem = elem[len(prefix):]
-											} else {
-												break
-											}
-
-											// Param: "runner_id"
-											// Leaf parameter
-											args["runner_id"] = elem
-
-											// Leaf: EnterpriseAdminGetSelfHostedRunnerForEnterprise
-											s.handleEnterpriseAdminGetSelfHostedRunnerForEnterpriseRequest(args, w, r)
-											return
-										}
-									case 'r': // Prefix: "runner"
-										if prefix := "runner"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-											elem = elem[len(prefix):]
-										} else {
-											break
-										}
-
-										if len(elem) == 0 {
-											s.handleEnterpriseAdminGetSelfHostedRunnerGroupForEnterpriseRequest(args, w, r)
-											return
-										}
-										switch elem[0] {
-										case '-': // Prefix: "-groups"
-											if prefix := "-groups"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-												elem = elem[len(prefix):]
-											} else {
-												break
-											}
-
-											if len(elem) == 0 {
-												s.handleEnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseRequest(args, w, r)
-												return
-											}
-											switch elem[0] {
-											case '/': // Prefix: "/"
-												if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-													elem = elem[len(prefix):]
-												} else {
-													break
-												}
-
-												// Param: "runner_group_id"
-												// Match until one of "/"
-												idx := strings.IndexAny(elem, "/")
-												if idx > 0 {
-													args["runner_group_id"] = elem[:idx]
-													elem = elem[idx:]
-
-													if len(elem) == 0 {
-														s.handleEnterpriseAdminGetSelfHostedRunnerGroupForEnterpriseRequest(args, w, r)
-														return
-													}
-													switch elem[0] {
-													case '/': // Prefix: "/"
-														if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-															elem = elem[len(prefix):]
-														} else {
-															break
-														}
-
-														if len(elem) == 0 {
-															s.handleEnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseRequest(args, w, r)
-															return
-														}
-														switch elem[0] {
-														case 'o': // Prefix: "organizations"
-															if prefix := "organizations"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																elem = elem[len(prefix):]
-															} else {
-																break
-															}
-
-															if len(elem) == 0 {
-																s.handleEnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseRequest(args, w, r)
-																return
-															}
-															switch elem[0] {
-															case 'r': // Prefix: "runners"
-																if prefix := "runners"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																	elem = elem[len(prefix):]
-																} else {
-																	break
-																}
-
-																// Leaf: EnterpriseAdminListSelfHostedRunnersInGroupForEnterprise
-																s.handleEnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseRequest(args, w, r)
-																return
-															}
-														case 'r': // Prefix: "runners"
-															if prefix := "runners"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																elem = elem[len(prefix):]
-															} else {
-																break
-															}
-
-															// Leaf: EnterpriseAdminListSelfHostedRunnersInGroupForEnterprise
-															s.handleEnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseRequest(args, w, r)
-															return
-														}
-													}
-												}
-											}
-										case 's': // Prefix: "s"
-											if prefix := "s"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-												elem = elem[len(prefix):]
-											} else {
-												break
-											}
-
-											if len(elem) == 0 {
-												s.handleEnterpriseAdminListSelfHostedRunnersForEnterpriseRequest(args, w, r)
-												return
-											}
-											switch elem[0] {
-											case '/': // Prefix: "/"
-												if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-													elem = elem[len(prefix):]
-												} else {
-													break
-												}
-
-												if len(elem) == 0 {
-													break
-												}
-												switch elem[0] {
-												case '-': // Prefix: "-groups/"
-													if prefix := "-groups/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-														elem = elem[len(prefix):]
-													} else {
-														break
-													}
-
-													// Param: "runner_group_id"
-													// Leaf parameter
-													args["runner_group_id"] = elem
-
-													// Leaf: EnterpriseAdminGetSelfHostedRunnerGroupForEnterprise
-													s.handleEnterpriseAdminGetSelfHostedRunnerGroupForEnterpriseRequest(args, w, r)
-													return
-												case 'd': // Prefix: "downloads"
-													if prefix := "downloads"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-														elem = elem[len(prefix):]
-													} else {
-														break
-													}
-
-													// Leaf: EnterpriseAdminListRunnerApplicationsForEnterprise
-													s.handleEnterpriseAdminListRunnerApplicationsForEnterpriseRequest(args, w, r)
-													return
-												}
-												// Param: "runner_id"
-												// Leaf parameter
-												args["runner_id"] = elem
-
-												// Leaf: EnterpriseAdminGetSelfHostedRunnerForEnterprise
-												s.handleEnterpriseAdminGetSelfHostedRunnerForEnterpriseRequest(args, w, r)
-												return
-											}
-										}
-									}
-								case 'u': // Prefix: "udit-log"
-									if prefix := "udit-log"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-										elem = elem[len(prefix):]
-									} else {
-										break
-									}
-
-									// Leaf: EnterpriseAdminGetAuditLog
-									s.handleEnterpriseAdminGetAuditLogRequest(args, w, r)
-									return
-								}
-							case 's': // Prefix: "settings/billing/"
-								if prefix := "settings/billing/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-									elem = elem[len(prefix):]
-								} else {
-									break
-								}
-
-								if len(elem) == 0 {
-									s.handleBillingGetGithubPackagesBillingGheRequest(args, w, r)
-									return
-								}
-								switch elem[0] {
-								case 'a': // Prefix: "actions"
-									if prefix := "actions"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-										elem = elem[len(prefix):]
-									} else {
-										break
-									}
-
-									if len(elem) == 0 {
-										s.handleBillingGetGithubActionsBillingGheRequest(args, w, r)
-										return
-									}
-									switch elem[0] {
-									case '/': // Prefix: "/permissions/selected-actions"
-										if prefix := "/permissions/selected-actions"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-											elem = elem[len(prefix):]
-										} else {
-											break
-										}
-
-										// Leaf: EnterpriseAdminGetAllowedActionsEnterprise
-										s.handleEnterpriseAdminGetAllowedActionsEnterpriseRequest(args, w, r)
-										return
-									case 'p': // Prefix: "packages"
-										if prefix := "packages"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-											elem = elem[len(prefix):]
-										} else {
-											break
-										}
-
-										// Leaf: BillingGetGithubPackagesBillingGhe
-										s.handleBillingGetGithubPackagesBillingGheRequest(args, w, r)
-										return
-									}
-								case 'p': // Prefix: "packages"
-									if prefix := "packages"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-										elem = elem[len(prefix):]
-									} else {
-										break
-									}
-
-									// Leaf: BillingGetGithubPackagesBillingGhe
-									s.handleBillingGetGithubPackagesBillingGheRequest(args, w, r)
-									return
-								case 's': // Prefix: "shared-storage"
-									if prefix := "shared-storage"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-										elem = elem[len(prefix):]
-									} else {
-										break
-									}
-
-									// Leaf: BillingGetSharedStorageBillingGhe
-									s.handleBillingGetSharedStorageBillingGheRequest(args, w, r)
-									return
-								}
-							}
-						}
-					}
-				case 'v': // Prefix: "vents"
-					if prefix := "vents"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-						elem = elem[len(prefix):]
-					} else {
-						break
-					}
-
-					if len(elem) == 0 {
-						s.handleActivityListPublicEventsRequest(args, w, r)
-						return
-					}
-					switch elem[0] {
-					case 'n': // Prefix: "nterprises/"
-						if prefix := "nterprises/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-							elem = elem[len(prefix):]
-						} else {
-							break
-						}
-
-						// Param: "enterprise"
-						// Match until one of "/"
-						idx := strings.IndexAny(elem, "/")
-						if idx > 0 {
-							args["enterprise"] = elem[:idx]
-							elem = elem[idx:]
-
-							if len(elem) == 0 {
-								break
-							}
-							switch elem[0] {
-							case '/': // Prefix: "/settings/billing/actions"
-								if prefix := "/settings/billing/actions"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-									elem = elem[len(prefix):]
-								} else {
-									break
-								}
-
-								// Leaf: BillingGetGithubActionsBillingGhe
-								s.handleBillingGetGithubActionsBillingGheRequest(args, w, r)
-								return
-							}
-						}
-					}
-				}
-			case 'f': // Prefix: "feeds"
-				if prefix := "feeds"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-					elem = elem[len(prefix):]
-				} else {
-					break
-				}
-
-				// Leaf: ActivityGetFeeds
-				s.handleActivityGetFeedsRequest(args, w, r)
-				return
-			case 'g': // Prefix: "gi"
-				if prefix := "gi"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-					elem = elem[len(prefix):]
-				} else {
-					break
-				}
-
-				if len(elem) == 0 {
-					s.handleGitignoreGetAllTemplatesRequest(args, w, r)
-					return
-				}
-				switch elem[0] {
-				case 's': // Prefix: "sts"
-					if prefix := "sts"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-						elem = elem[len(prefix):]
-					} else {
-						break
-					}
-
-					if len(elem) == 0 {
-						s.handleGistsListRequest(args, w, r)
-						return
-					}
-					switch elem[0] {
-					case '/': // Prefix: "/"
-						if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-							elem = elem[len(prefix):]
-						} else {
-							break
-						}
-
-						if len(elem) == 0 {
-							break
-						}
-						switch elem[0] {
-						case 'p': // Prefix: "public"
-							if prefix := "public"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-								elem = elem[len(prefix):]
-							} else {
-								break
-							}
-
-							// Leaf: GistsListPublic
-							s.handleGistsListPublicRequest(args, w, r)
-							return
-						case 's': // Prefix: "starred"
-							if prefix := "starred"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-								elem = elem[len(prefix):]
-							} else {
-								break
-							}
-
-							// Leaf: GistsListStarred
-							s.handleGistsListStarredRequest(args, w, r)
-							return
-						}
-						// Param: "gist_id"
-						// Match until one of "/"
-						idx := strings.IndexAny(elem, "/")
-						if idx > 0 {
-							args["gist_id"] = elem[:idx]
-							elem = elem[idx:]
-
-							if len(elem) == 0 {
-								s.handleGistsGetRequest(args, w, r)
-								return
-							}
-							switch elem[0] {
-							case '/': // Prefix: "/"
-								if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-									elem = elem[len(prefix):]
-								} else {
-									break
-								}
-
-								if len(elem) == 0 {
-									s.handleGistsGetCommentRequest(args, w, r)
-									return
-								}
-								switch elem[0] {
-								case 'c': // Prefix: "comm"
-									if prefix := "comm"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-										elem = elem[len(prefix):]
-									} else {
-										break
-									}
-
-									if len(elem) == 0 {
-										s.handleGistsListCommitsRequest(args, w, r)
-										return
-									}
-									switch elem[0] {
-									case 'e': // Prefix: "ents"
-										if prefix := "ents"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-											elem = elem[len(prefix):]
-										} else {
-											break
-										}
-
-										if len(elem) == 0 {
-											s.handleGistsListCommentsRequest(args, w, r)
-											return
-										}
-										switch elem[0] {
-										case '/': // Prefix: "/"
-											if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-												elem = elem[len(prefix):]
-											} else {
-												break
-											}
-
-											// Param: "comment_id"
-											// Leaf parameter
-											args["comment_id"] = elem
-
-											// Leaf: GistsGetComment
-											s.handleGistsGetCommentRequest(args, w, r)
-											return
-										case 'i': // Prefix: "its"
-											if prefix := "its"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-												elem = elem[len(prefix):]
-											} else {
-												break
-											}
-
-											// Leaf: GistsListCommits
-											s.handleGistsListCommitsRequest(args, w, r)
-											return
-										}
-									case 'i': // Prefix: "its"
-										if prefix := "its"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-											elem = elem[len(prefix):]
-										} else {
-											break
-										}
-
-										// Leaf: GistsListCommits
-										s.handleGistsListCommitsRequest(args, w, r)
-										return
-									}
-								case 'f': // Prefix: "forks"
-									if prefix := "forks"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-										elem = elem[len(prefix):]
-									} else {
-										break
-									}
-
-									// Leaf: GistsListForks
-									s.handleGistsListForksRequest(args, w, r)
-									return
-								case 's': // Prefix: "star"
-									if prefix := "star"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-										elem = elem[len(prefix):]
-									} else {
-										break
-									}
-
-									if len(elem) == 0 {
-										s.handleGistsCheckIsStarredRequest(args, w, r)
-										return
-									}
-									switch elem[0] {
-									case 'c': // Prefix: "comments/"
-										if prefix := "comments/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-											elem = elem[len(prefix):]
-										} else {
-											break
-										}
-
-										// Param: "comment_id"
-										// Leaf parameter
-										args["comment_id"] = elem
-
-										// Leaf: GistsGetComment
-										s.handleGistsGetCommentRequest(args, w, r)
-										return
-									}
-								}
-								// Param: "sha"
-								// Leaf parameter
-								args["sha"] = elem
-
-								// Leaf: GistsGetRevision
-								s.handleGistsGetRevisionRequest(args, w, r)
-								return
-							}
-						}
-					case 't': // Prefix: "tignore/templates"
-						if prefix := "tignore/templates"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-							elem = elem[len(prefix):]
-						} else {
-							break
-						}
-
-						// Leaf: GitignoreGetAllTemplates
-						s.handleGitignoreGetAllTemplatesRequest(args, w, r)
-						return
-					}
-				case 't': // Prefix: "tignore/templates"
-					if prefix := "tignore/templates"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-						elem = elem[len(prefix):]
-					} else {
-						break
-					}
-
-					if len(elem) == 0 {
-						s.handleGitignoreGetAllTemplatesRequest(args, w, r)
-						return
-					}
-					switch elem[0] {
-					case '/': // Prefix: "/"
-						if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-							elem = elem[len(prefix):]
-						} else {
-							break
-						}
-
-						// Param: "name"
-						// Leaf parameter
-						args["name"] = elem
-
-						// Leaf: GitignoreGetTemplate
-						s.handleGitignoreGetTemplateRequest(args, w, r)
-						return
-					}
-				}
-			case 'i': // Prefix: "i"
-				if prefix := "i"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-					elem = elem[len(prefix):]
-				} else {
-					break
-				}
-
-				if len(elem) == 0 {
-					s.handleIssuesListRequest(args, w, r)
-					return
-				}
-				switch elem[0] {
-				case 'n': // Prefix: "nstallation/repositories"
-					if prefix := "nstallation/repositories"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-						elem = elem[len(prefix):]
-					} else {
-						break
-					}
-
-					if len(elem) == 0 {
-						s.handleAppsListReposAccessibleToInstallationRequest(args, w, r)
-						return
-					}
-					switch elem[0] {
-					case 's': // Prefix: "ssues"
-						if prefix := "ssues"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-							elem = elem[len(prefix):]
-						} else {
-							break
-						}
-
-						// Leaf: IssuesList
-						s.handleIssuesListRequest(args, w, r)
-						return
-					}
-				case 's': // Prefix: "ssues"
-					if prefix := "ssues"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-						elem = elem[len(prefix):]
-					} else {
-						break
-					}
-
-					// Leaf: IssuesList
-					s.handleIssuesListRequest(args, w, r)
-					return
-				}
-			case 'l': // Prefix: "licenses"
-				if prefix := "licenses"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-					elem = elem[len(prefix):]
-				} else {
-					break
-				}
-
-				if len(elem) == 0 {
-					s.handleLicensesGetAllCommonlyUsedRequest(args, w, r)
-					return
-				}
-				switch elem[0] {
-				case '/': // Prefix: "/"
-					if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-						elem = elem[len(prefix):]
-					} else {
-						break
-					}
-
-					// Param: "license"
-					// Leaf parameter
-					args["license"] = elem
-
-					// Leaf: LicensesGet
-					s.handleLicensesGetRequest(args, w, r)
-					return
-				}
-			case 'm': // Prefix: "m"
-				if prefix := "m"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-					elem = elem[len(prefix):]
-				} else {
-					break
-				}
-
-				if len(elem) == 0 {
-					s.handleMetaGetRequest(args, w, r)
-					return
-				}
-				switch elem[0] {
-				case 'a': // Prefix: "arketplace_listing/"
-					if prefix := "arketplace_listing/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-						elem = elem[len(prefix):]
-					} else {
-						break
-					}
-
-					if len(elem) == 0 {
-						s.handleAppsGetSubscriptionPlanForAccountStubbedRequest(args, w, r)
-						return
-					}
-					switch elem[0] {
-					case 'a': // Prefix: "accounts/"
-						if prefix := "accounts/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-							elem = elem[len(prefix):]
-						} else {
-							break
-						}
-
-						if len(elem) == 0 {
-							break
-						}
-						switch elem[0] {
-						case 's': // Prefix: "stubbed/accounts/"
-							if prefix := "stubbed/accounts/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-								elem = elem[len(prefix):]
-							} else {
-								break
-							}
-
-							// Param: "account_id"
-							// Leaf parameter
-							args["account_id"] = elem
-
-							// Leaf: AppsGetSubscriptionPlanForAccountStubbed
-							s.handleAppsGetSubscriptionPlanForAccountStubbedRequest(args, w, r)
-							return
-						}
-						// Param: "account_id"
-						// Leaf parameter
-						args["account_id"] = elem
-
-						// Leaf: AppsGetSubscriptionPlanForAccount
-						s.handleAppsGetSubscriptionPlanForAccountRequest(args, w, r)
-						return
-					case 'e': // Prefix: "eta"
-						if prefix := "eta"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-							elem = elem[len(prefix):]
-						} else {
-							break
-						}
-
-						// Leaf: MetaGet
-						s.handleMetaGetRequest(args, w, r)
-						return
-					case 'p': // Prefix: "plans"
-						if prefix := "plans"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-							elem = elem[len(prefix):]
-						} else {
-							break
-						}
-
-						if len(elem) == 0 {
-							s.handleAppsListPlansRequest(args, w, r)
-							return
-						}
-						switch elem[0] {
-						case '/': // Prefix: "/"
-							if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-								elem = elem[len(prefix):]
-							} else {
-								break
-							}
-
-							// Param: "plan_id"
-							// Match until one of "/"
-							idx := strings.IndexAny(elem, "/")
-							if idx > 0 {
-								args["plan_id"] = elem[:idx]
-								elem = elem[idx:]
-
-								if len(elem) == 0 {
-									break
-								}
-								switch elem[0] {
-								case '/': // Prefix: "/accounts"
-									if prefix := "/accounts"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-										elem = elem[len(prefix):]
-									} else {
-										break
-									}
-
-									// Leaf: AppsListAccountsForPlan
-									s.handleAppsListAccountsForPlanRequest(args, w, r)
-									return
-								}
-							}
-						}
-					case 's': // Prefix: "stubbed/"
-						if prefix := "stubbed/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-							elem = elem[len(prefix):]
-						} else {
-							break
-						}
-
-						if len(elem) == 0 {
-							s.handleAppsListAccountsForPlanStubbedRequest(args, w, r)
-							return
-						}
-						switch elem[0] {
-						case 'a': // Prefix: "accounts/"
-							if prefix := "accounts/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-								elem = elem[len(prefix):]
-							} else {
-								break
-							}
-
-							if len(elem) == 0 {
-								break
-							}
-							switch elem[0] {
-							case 'p': // Prefix: "plans/"
-								if prefix := "plans/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-									elem = elem[len(prefix):]
-								} else {
-									break
-								}
-
-								// Param: "plan_id"
-								// Match until one of "/"
-								idx := strings.IndexAny(elem, "/")
-								if idx > 0 {
-									args["plan_id"] = elem[:idx]
-									elem = elem[idx:]
-
-									if len(elem) == 0 {
-										break
-									}
-									switch elem[0] {
-									case '/': // Prefix: "/accounts"
-										if prefix := "/accounts"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-											elem = elem[len(prefix):]
-										} else {
-											break
-										}
-
-										// Leaf: AppsListAccountsForPlanStubbed
-										s.handleAppsListAccountsForPlanStubbedRequest(args, w, r)
-										return
-									}
-								}
-							}
-							// Param: "account_id"
-							// Leaf parameter
-							args["account_id"] = elem
-
-							// Leaf: AppsGetSubscriptionPlanForAccountStubbed
-							s.handleAppsGetSubscriptionPlanForAccountStubbedRequest(args, w, r)
-							return
-						case 'p': // Prefix: "plans"
-							if prefix := "plans"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-								elem = elem[len(prefix):]
-							} else {
-								break
-							}
-
-							if len(elem) == 0 {
-								s.handleAppsListPlansStubbedRequest(args, w, r)
-								return
-							}
-							switch elem[0] {
-							case '/': // Prefix: "/"
-								if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-									elem = elem[len(prefix):]
-								} else {
-									break
-								}
-
-								// Param: "plan_id"
-								// Match until one of "/"
-								idx := strings.IndexAny(elem, "/")
-								if idx > 0 {
-									args["plan_id"] = elem[:idx]
-									elem = elem[idx:]
-
-									if len(elem) == 0 {
-										break
-									}
-									switch elem[0] {
-									case '/': // Prefix: "/accounts"
-										if prefix := "/accounts"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-											elem = elem[len(prefix):]
-										} else {
-											break
-										}
-
-										// Leaf: AppsListAccountsForPlanStubbed
-										s.handleAppsListAccountsForPlanStubbedRequest(args, w, r)
-										return
-									}
-								}
-							}
-						}
-					}
-				case 'e': // Prefix: "eta"
-					if prefix := "eta"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-						elem = elem[len(prefix):]
-					} else {
-						break
-					}
-
-					// Leaf: MetaGet
-					s.handleMetaGetRequest(args, w, r)
-					return
-				}
-			case 'n': // Prefix: "n"
-				if prefix := "n"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-					elem = elem[len(prefix):]
-				} else {
-					break
-				}
-
-				if len(elem) == 0 {
-					s.handleActivityListPublicEventsForRepoNetworkRequest(args, w, r)
-					return
-				}
-				switch elem[0] {
-				case 'e': // Prefix: "etworks/"
-					if prefix := "etworks/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-						elem = elem[len(prefix):]
-					} else {
-						break
-					}
-
-					// Param: "owner"
-					// Match until one of "/"
-					idx := strings.IndexAny(elem, "/")
-					if idx > 0 {
-						args["owner"] = elem[:idx]
-						elem = elem[idx:]
-
-						if len(elem) == 0 {
-							break
-						}
-						switch elem[0] {
-						case '/': // Prefix: "/"
-							if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-								elem = elem[len(prefix):]
-							} else {
-								break
-							}
-
-							// Param: "repo"
-							// Match until one of "/"
-							idx := strings.IndexAny(elem, "/")
-							if idx > 0 {
-								args["repo"] = elem[:idx]
-								elem = elem[idx:]
-
-								if len(elem) == 0 {
-									break
-								}
-								switch elem[0] {
-								case '/': // Prefix: "/events"
-									if prefix := "/events"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-										elem = elem[len(prefix):]
-									} else {
-										break
-									}
-
-									// Leaf: ActivityListPublicEventsForRepoNetwork
-									s.handleActivityListPublicEventsForRepoNetworkRequest(args, w, r)
-									return
-								}
-							}
-						}
-					}
-				case 'o': // Prefix: "otifications"
-					if prefix := "otifications"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-						elem = elem[len(prefix):]
-					} else {
-						break
-					}
-
-					if len(elem) == 0 {
-						s.handleActivityListNotificationsForAuthenticatedUserRequest(args, w, r)
-						return
-					}
-					switch elem[0] {
-					case '/': // Prefix: "/threads/"
-						if prefix := "/threads/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-							elem = elem[len(prefix):]
-						} else {
-							break
-						}
-
-						// Param: "thread_id"
-						// Match until one of "/"
-						idx := strings.IndexAny(elem, "/")
-						if idx > 0 {
-							args["thread_id"] = elem[:idx]
-							elem = elem[idx:]
-
-							if len(elem) == 0 {
-								s.handleActivityGetThreadRequest(args, w, r)
-								return
-							}
-							switch elem[0] {
-							case '/': // Prefix: "/subscription"
-								if prefix := "/subscription"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-									elem = elem[len(prefix):]
-								} else {
-									break
-								}
-
-								// Leaf: ActivityGetThreadSubscriptionForAuthenticatedUser
-								s.handleActivityGetThreadSubscriptionForAuthenticatedUserRequest(args, w, r)
-								return
-							}
-						}
-					case 'e': // Prefix: "etworks/"
-						if prefix := "etworks/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-							elem = elem[len(prefix):]
-						} else {
-							break
-						}
-
-						// Param: "owner"
-						// Match until one of "/"
-						idx := strings.IndexAny(elem, "/")
-						if idx > 0 {
-							args["owner"] = elem[:idx]
-							elem = elem[idx:]
-
-							if len(elem) == 0 {
-								break
-							}
-							switch elem[0] {
-							case '/': // Prefix: "/"
-								if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-									elem = elem[len(prefix):]
-								} else {
-									break
-								}
-
-								// Param: "repo"
-								// Match until one of "/"
-								idx := strings.IndexAny(elem, "/")
-								if idx > 0 {
-									args["repo"] = elem[:idx]
-									elem = elem[idx:]
-
-									if len(elem) == 0 {
-										break
-									}
-									switch elem[0] {
-									case '/': // Prefix: "/events"
-										if prefix := "/events"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-											elem = elem[len(prefix):]
-										} else {
-											break
-										}
-
-										// Leaf: ActivityListPublicEventsForRepoNetwork
-										s.handleActivityListPublicEventsForRepoNetworkRequest(args, w, r)
-										return
-									}
-								}
-							}
-						}
-					}
-				}
-			case 'o': // Prefix: "org"
-				if prefix := "org"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-					elem = elem[len(prefix):]
-				} else {
-					break
-				}
-
-				if len(elem) == 0 {
-					s.handleOrgsListRequest(args, w, r)
-					return
-				}
-				switch elem[0] {
-				case 'a': // Prefix: "anizations"
-					if prefix := "anizations"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-						elem = elem[len(prefix):]
-					} else {
-						break
-					}
-
-					// Leaf: OrgsList
-					s.handleOrgsListRequest(args, w, r)
-					return
-				case 's': // Prefix: "s/"
-					if prefix := "s/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-						elem = elem[len(prefix):]
-					} else {
-						break
-					}
-
-					if len(elem) == 0 {
-						break
-					}
-					switch elem[0] {
-					case 'a': // Prefix: "anizations"
-						if prefix := "anizations"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-							elem = elem[len(prefix):]
-						} else {
-							break
-						}
-
-						// Leaf: OrgsList
-						s.handleOrgsListRequest(args, w, r)
-						return
-					}
-					// Param: "org"
-					// Match until one of "/"
-					idx := strings.IndexAny(elem, "/")
-					if idx > 0 {
-						args["org"] = elem[:idx]
-						elem = elem[idx:]
-
-						if len(elem) == 0 {
-							s.handleOrgsGetRequest(args, w, r)
-							return
-						}
-						switch elem[0] {
-						case '/': // Prefix: "/"
-							if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-								elem = elem[len(prefix):]
-							} else {
-								break
-							}
-
-							if len(elem) == 0 {
-								s.handleActivityListPublicOrgEventsRequest(args, w, r)
-								return
-							}
-							switch elem[0] {
-							case 'a': // Prefix: "a"
-								if prefix := "a"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-									elem = elem[len(prefix):]
-								} else {
-									break
-								}
-
-								if len(elem) == 0 {
-									s.handleOrgsGetAuditLogRequest(args, w, r)
-									return
-								}
-								switch elem[0] {
-								case 'c': // Prefix: "ctions/"
-									if prefix := "ctions/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-										elem = elem[len(prefix):]
-									} else {
-										break
-									}
-
-									if len(elem) == 0 {
-										s.handleActionsGetOrgPublicKeyRequest(args, w, r)
-										return
-									}
-									switch elem[0] {
-									case 'e': // Prefix: "events"
-										if prefix := "events"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-											elem = elem[len(prefix):]
-										} else {
-											break
-										}
-
-										// Leaf: ActivityListPublicOrgEvents
-										s.handleActivityListPublicOrgEventsRequest(args, w, r)
-										return
-									case 'p': // Prefix: "permissions"
-										if prefix := "permissions"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-											elem = elem[len(prefix):]
-										} else {
-											break
-										}
-
-										if len(elem) == 0 {
-											s.handleActionsGetGithubActionsPermissionsOrganizationRequest(args, w, r)
-											return
-										}
-										switch elem[0] {
-										case '/': // Prefix: "/"
-											if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-												elem = elem[len(prefix):]
-											} else {
-												break
-											}
-
-											if len(elem) == 0 {
-												s.handleActionsListSelectedRepositoriesEnabledGithubActionsOrganizationRequest(args, w, r)
-												return
-											}
-											switch elem[0] {
-											case 'r': // Prefix: "repositories"
-												if prefix := "repositories"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-													elem = elem[len(prefix):]
-												} else {
-													break
-												}
-
-												// Leaf: ActionsListSelectedRepositoriesEnabledGithubActionsOrganization
-												s.handleActionsListSelectedRepositoriesEnabledGithubActionsOrganizationRequest(args, w, r)
-												return
-											case 's': // Prefix: "selected-actions"
-												if prefix := "selected-actions"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-													elem = elem[len(prefix):]
-												} else {
-													break
-												}
-
-												if len(elem) == 0 {
-													s.handleActionsGetAllowedActionsOrganizationRequest(args, w, r)
-													return
-												}
-												switch elem[0] {
-												case 'r': // Prefix: "repositories"
-													if prefix := "repositories"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-														elem = elem[len(prefix):]
-													} else {
-														break
-													}
-
-													// Leaf: ActionsListSelectedRepositoriesEnabledGithubActionsOrganization
-													s.handleActionsListSelectedRepositoriesEnabledGithubActionsOrganizationRequest(args, w, r)
-													return
-												}
-											}
-										case 's': // Prefix: "secrets/public-key"
-											if prefix := "secrets/public-key"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-												elem = elem[len(prefix):]
-											} else {
-												break
-											}
-
-											// Leaf: ActionsGetOrgPublicKey
-											s.handleActionsGetOrgPublicKeyRequest(args, w, r)
-											return
-										}
-									case 'r': // Prefix: "runner"
-										if prefix := "runner"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-											elem = elem[len(prefix):]
-										} else {
-											break
-										}
-
-										if len(elem) == 0 {
-											s.handleActionsGetSelfHostedRunnerGroupForOrgRequest(args, w, r)
-											return
-										}
-										switch elem[0] {
-										case '-': // Prefix: "-groups"
-											if prefix := "-groups"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-												elem = elem[len(prefix):]
-											} else {
-												break
-											}
-
-											if len(elem) == 0 {
-												s.handleActionsListSelfHostedRunnerGroupsForOrgRequest(args, w, r)
-												return
-											}
-											switch elem[0] {
-											case '/': // Prefix: "/"
-												if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-													elem = elem[len(prefix):]
-												} else {
-													break
-												}
-
-												// Param: "runner_group_id"
-												// Match until one of "/"
-												idx := strings.IndexAny(elem, "/")
-												if idx > 0 {
-													args["runner_group_id"] = elem[:idx]
-													elem = elem[idx:]
-
-													if len(elem) == 0 {
-														s.handleActionsGetSelfHostedRunnerGroupForOrgRequest(args, w, r)
-														return
-													}
-													switch elem[0] {
-													case '/': // Prefix: "/r"
-														if prefix := "/r"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-															elem = elem[len(prefix):]
-														} else {
-															break
-														}
-
-														if len(elem) == 0 {
-															s.handleActionsListSelfHostedRunnersInGroupForOrgRequest(args, w, r)
-															return
-														}
-														switch elem[0] {
-														case 'e': // Prefix: "epositories"
-															if prefix := "epositories"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																elem = elem[len(prefix):]
-															} else {
-																break
-															}
-
-															if len(elem) == 0 {
-																s.handleActionsListRepoAccessToSelfHostedRunnerGroupInOrgRequest(args, w, r)
-																return
-															}
-															switch elem[0] {
-															case 'u': // Prefix: "unners"
-																if prefix := "unners"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																	elem = elem[len(prefix):]
-																} else {
-																	break
-																}
-
-																// Leaf: ActionsListSelfHostedRunnersInGroupForOrg
-																s.handleActionsListSelfHostedRunnersInGroupForOrgRequest(args, w, r)
-																return
-															}
-														case 'u': // Prefix: "unners"
-															if prefix := "unners"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																elem = elem[len(prefix):]
-															} else {
-																break
-															}
-
-															// Leaf: ActionsListSelfHostedRunnersInGroupForOrg
-															s.handleActionsListSelfHostedRunnersInGroupForOrgRequest(args, w, r)
-															return
-														}
-													}
-												}
-											}
-										case 's': // Prefix: "s"
-											if prefix := "s"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-												elem = elem[len(prefix):]
-											} else {
-												break
-											}
-
-											if len(elem) == 0 {
-												s.handleActionsListSelfHostedRunnersForOrgRequest(args, w, r)
-												return
-											}
-											switch elem[0] {
-											case '/': // Prefix: "/"
-												if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-													elem = elem[len(prefix):]
-												} else {
-													break
-												}
-
-												if len(elem) == 0 {
-													break
-												}
-												switch elem[0] {
-												case '-': // Prefix: "-groups/"
-													if prefix := "-groups/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-														elem = elem[len(prefix):]
-													} else {
-														break
-													}
-
-													// Param: "runner_group_id"
-													// Leaf parameter
-													args["runner_group_id"] = elem
-
-													// Leaf: ActionsGetSelfHostedRunnerGroupForOrg
-													s.handleActionsGetSelfHostedRunnerGroupForOrgRequest(args, w, r)
-													return
-												case 'd': // Prefix: "downloads"
-													if prefix := "downloads"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-														elem = elem[len(prefix):]
-													} else {
-														break
-													}
-
-													// Leaf: ActionsListRunnerApplicationsForOrg
-													s.handleActionsListRunnerApplicationsForOrgRequest(args, w, r)
-													return
-												}
-												// Param: "runner_id"
-												// Leaf parameter
-												args["runner_id"] = elem
-
-												// Leaf: ActionsGetSelfHostedRunnerForOrg
-												s.handleActionsGetSelfHostedRunnerForOrgRequest(args, w, r)
-												return
-											}
-										}
-									case 's': // Prefix: "secrets"
-										if prefix := "secrets"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-											elem = elem[len(prefix):]
-										} else {
-											break
-										}
-
-										if len(elem) == 0 {
-											s.handleActionsListOrgSecretsRequest(args, w, r)
-											return
-										}
-										switch elem[0] {
-										case '/': // Prefix: "/"
-											if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-												elem = elem[len(prefix):]
-											} else {
-												break
-											}
-
-											if len(elem) == 0 {
-												s.handleActionsGetOrgSecretRequest(args, w, r)
-												return
-											}
-											switch elem[0] {
-											case 'p': // Prefix: "public-key"
-												if prefix := "public-key"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-													elem = elem[len(prefix):]
-												} else {
-													break
-												}
-
-												// Param: "secret_name"
-												// Leaf parameter
-												args["secret_name"] = elem
-
-												// Leaf: ActionsGetOrgSecret
-												s.handleActionsGetOrgSecretRequest(args, w, r)
-												return
-											}
-											// Param: "secret_name"
-											// Match until one of "/"
-											idx := strings.IndexAny(elem, "/")
-											if idx > 0 {
-												args["secret_name"] = elem[:idx]
-												elem = elem[idx:]
-
-												if len(elem) == 0 {
-													s.handleActionsGetOrgSecretRequest(args, w, r)
-													return
-												}
-												switch elem[0] {
-												case '/': // Prefix: "/repositories"
-													if prefix := "/repositories"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-														elem = elem[len(prefix):]
-													} else {
-														break
-													}
-
-													// Leaf: ActionsListSelectedReposForOrgSecret
-													s.handleActionsListSelectedReposForOrgSecretRequest(args, w, r)
-													return
-												}
-											}
-										}
-									case 'u': // Prefix: "udit-log"
-										if prefix := "udit-log"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-											elem = elem[len(prefix):]
-										} else {
-											break
-										}
-
-										// Leaf: OrgsGetAuditLog
-										s.handleOrgsGetAuditLogRequest(args, w, r)
-										return
-									}
-								case 'u': // Prefix: "udit-log"
-									if prefix := "udit-log"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-										elem = elem[len(prefix):]
-									} else {
-										break
-									}
-
-									// Leaf: OrgsGetAuditLog
-									s.handleOrgsGetAuditLogRequest(args, w, r)
-									return
-								}
-							case 'b': // Prefix: "blocks"
-								if prefix := "blocks"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-									elem = elem[len(prefix):]
-								} else {
-									break
-								}
-
-								if len(elem) == 0 {
-									s.handleOrgsListBlockedUsersRequest(args, w, r)
-									return
-								}
-								switch elem[0] {
-								case '/': // Prefix: "/"
-									if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-										elem = elem[len(prefix):]
-									} else {
-										break
-									}
-
-									// Param: "username"
-									// Leaf parameter
-									args["username"] = elem
-
-									// Leaf: OrgsCheckBlockedUser
-									s.handleOrgsCheckBlockedUserRequest(args, w, r)
-									return
-								}
-							case 'c': // Prefix: "credential-authorizations"
-								if prefix := "credential-authorizations"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-									elem = elem[len(prefix):]
-								} else {
-									break
-								}
-
-								// Leaf: OrgsListSamlSSOAuthorizations
-								s.handleOrgsListSamlSSOAuthorizationsRequest(args, w, r)
-								return
-							case 'e': // Prefix: "events"
-								if prefix := "events"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-									elem = elem[len(prefix):]
-								} else {
-									break
-								}
-
-								// Leaf: ActivityListPublicOrgEvents
-								s.handleActivityListPublicOrgEventsRequest(args, w, r)
-								return
-							case 'f': // Prefix: "failed_invitations"
-								if prefix := "failed_invitations"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-									elem = elem[len(prefix):]
-								} else {
-									break
-								}
-
-								// Leaf: OrgsListFailedInvitations
-								s.handleOrgsListFailedInvitationsRequest(args, w, r)
-								return
-							case 'h': // Prefix: "hooks"
-								if prefix := "hooks"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-									elem = elem[len(prefix):]
-								} else {
-									break
-								}
-
-								if len(elem) == 0 {
-									s.handleOrgsListWebhooksRequest(args, w, r)
-									return
-								}
-								switch elem[0] {
-								case '/': // Prefix: "/"
-									if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-										elem = elem[len(prefix):]
-									} else {
-										break
-									}
-
-									// Param: "hook_id"
-									// Match until one of "/"
-									idx := strings.IndexAny(elem, "/")
-									if idx > 0 {
-										args["hook_id"] = elem[:idx]
-										elem = elem[idx:]
-
-										if len(elem) == 0 {
-											s.handleOrgsGetWebhookRequest(args, w, r)
-											return
-										}
-										switch elem[0] {
-										case '/': // Prefix: "/"
-											if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-												elem = elem[len(prefix):]
-											} else {
-												break
-											}
-
-											if len(elem) == 0 {
-												s.handleOrgsGetWebhookDeliveryRequest(args, w, r)
-												return
-											}
-											switch elem[0] {
-											case 'c': // Prefix: "config"
-												if prefix := "config"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-													elem = elem[len(prefix):]
-												} else {
-													break
-												}
-
-												if len(elem) == 0 {
-													s.handleOrgsGetWebhookConfigForOrgRequest(args, w, r)
-													return
-												}
-												switch elem[0] {
-												case 'd': // Prefix: "deliveries/"
-													if prefix := "deliveries/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-														elem = elem[len(prefix):]
-													} else {
-														break
-													}
-
-													// Param: "delivery_id"
-													// Leaf parameter
-													args["delivery_id"] = elem
-
-													// Leaf: OrgsGetWebhookDelivery
-													s.handleOrgsGetWebhookDeliveryRequest(args, w, r)
-													return
-												}
-											case 'd': // Prefix: "deliveries"
-												if prefix := "deliveries"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-													elem = elem[len(prefix):]
-												} else {
-													break
-												}
-
-												if len(elem) == 0 {
-													s.handleOrgsListWebhookDeliveriesRequest(args, w, r)
-													return
-												}
-												switch elem[0] {
-												case '/': // Prefix: "/"
-													if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-														elem = elem[len(prefix):]
-													} else {
-														break
-													}
-
-													// Param: "delivery_id"
-													// Leaf parameter
-													args["delivery_id"] = elem
-
-													// Leaf: OrgsGetWebhookDelivery
-													s.handleOrgsGetWebhookDeliveryRequest(args, w, r)
-													return
-												}
-											}
-										}
-									}
-								}
-							case 'i': // Prefix: "i"
-								if prefix := "i"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-									elem = elem[len(prefix):]
-								} else {
-									break
-								}
-
-								if len(elem) == 0 {
-									s.handleOrgsListInvitationTeamsRequest(args, w, r)
-									return
-								}
-								switch elem[0] {
-								case 'n': // Prefix: "nvitations"
-									if prefix := "nvitations"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-										elem = elem[len(prefix):]
-									} else {
-										break
-									}
-
-									if len(elem) == 0 {
-										s.handleOrgsListPendingInvitationsRequest(args, w, r)
-										return
-									}
-									switch elem[0] {
-									case '/': // Prefix: "/"
-										if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-											elem = elem[len(prefix):]
-										} else {
-											break
-										}
-
-										// Param: "invitation_id"
-										// Match until one of "/"
-										idx := strings.IndexAny(elem, "/")
-										if idx > 0 {
-											args["invitation_id"] = elem[:idx]
-											elem = elem[idx:]
-
-											if len(elem) == 0 {
-												break
-											}
-											switch elem[0] {
-											case '/': // Prefix: "/teams"
-												if prefix := "/teams"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-													elem = elem[len(prefix):]
-												} else {
-													break
-												}
-
-												// Leaf: OrgsListInvitationTeams
-												s.handleOrgsListInvitationTeamsRequest(args, w, r)
-												return
-											}
-										}
-									}
-								case 's': // Prefix: "ssues"
-									if prefix := "ssues"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-										elem = elem[len(prefix):]
-									} else {
-										break
-									}
-
-									if len(elem) == 0 {
-										s.handleIssuesListForOrgRequest(args, w, r)
-										return
-									}
-									switch elem[0] {
-									case 'n': // Prefix: "nvitations/"
-										if prefix := "nvitations/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-											elem = elem[len(prefix):]
-										} else {
-											break
-										}
-
-										// Param: "invitation_id"
-										// Match until one of "/"
-										idx := strings.IndexAny(elem, "/")
-										if idx > 0 {
-											args["invitation_id"] = elem[:idx]
-											elem = elem[idx:]
-
-											if len(elem) == 0 {
-												break
-											}
-											switch elem[0] {
-											case '/': // Prefix: "/teams"
-												if prefix := "/teams"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-													elem = elem[len(prefix):]
-												} else {
-													break
-												}
-
-												// Leaf: OrgsListInvitationTeams
-												s.handleOrgsListInvitationTeamsRequest(args, w, r)
-												return
-											}
-										}
-									}
-								}
-							case 'm': // Prefix: "m"
-								if prefix := "m"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-									elem = elem[len(prefix):]
-								} else {
-									break
-								}
-
-								if len(elem) == 0 {
-									s.handleOrgsCheckMembershipForUserRequest(args, w, r)
-									return
-								}
-								switch elem[0] {
-								case 'e': // Prefix: "embers"
-									if prefix := "embers"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-										elem = elem[len(prefix):]
-									} else {
-										break
-									}
-
-									if len(elem) == 0 {
-										s.handleOrgsListMembersRequest(args, w, r)
-										return
-									}
-									switch elem[0] {
-									case '/': // Prefix: "/"
-										if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-											elem = elem[len(prefix):]
-										} else {
-											break
-										}
-
-										if len(elem) == 0 {
-											break
-										}
-										switch elem[0] {
-										case 'h': // Prefix: "hips/"
-											if prefix := "hips/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-												elem = elem[len(prefix):]
-											} else {
-												break
-											}
-
-											// Param: "username"
-											// Leaf parameter
-											args["username"] = elem
-
-											// Leaf: OrgsGetMembershipForUser
-											s.handleOrgsGetMembershipForUserRequest(args, w, r)
-											return
-										}
-										// Param: "username"
-										// Leaf parameter
-										args["username"] = elem
-
-										// Leaf: OrgsCheckMembershipForUser
-										s.handleOrgsCheckMembershipForUserRequest(args, w, r)
-										return
-									case 'h': // Prefix: "hips/"
-										if prefix := "hips/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-											elem = elem[len(prefix):]
-										} else {
-											break
-										}
-
-										// Param: "username"
-										// Leaf parameter
-										args["username"] = elem
-
-										// Leaf: OrgsGetMembershipForUser
-										s.handleOrgsGetMembershipForUserRequest(args, w, r)
-										return
-									}
-								case 'i': // Prefix: "igrations"
-									if prefix := "igrations"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-										elem = elem[len(prefix):]
-									} else {
-										break
-									}
-
-									if len(elem) == 0 {
-										s.handleMigrationsListForOrgRequest(args, w, r)
-										return
-									}
-									switch elem[0] {
-									case '/': // Prefix: "/"
-										if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-											elem = elem[len(prefix):]
-										} else {
-											break
-										}
-
-										// Param: "migration_id"
-										// Match until one of "/"
-										idx := strings.IndexAny(elem, "/")
-										if idx > 0 {
-											args["migration_id"] = elem[:idx]
-											elem = elem[idx:]
-
-											if len(elem) == 0 {
-												s.handleMigrationsGetStatusForOrgRequest(args, w, r)
-												return
-											}
-											switch elem[0] {
-											case '/': // Prefix: "/"
-												if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-													elem = elem[len(prefix):]
-												} else {
-													break
-												}
-
-												if len(elem) == 0 {
-													s.handleMigrationsListReposForOrgRequest(args, w, r)
-													return
-												}
-												switch elem[0] {
-												case 'a': // Prefix: "archive"
-													if prefix := "archive"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-														elem = elem[len(prefix):]
-													} else {
-														break
-													}
-
-													if len(elem) == 0 {
-														s.handleMigrationsDownloadArchiveForOrgRequest(args, w, r)
-														return
-													}
-													switch elem[0] {
-													case 'r': // Prefix: "repositories"
-														if prefix := "repositories"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-															elem = elem[len(prefix):]
-														} else {
-															break
-														}
-
-														// Leaf: MigrationsListReposForOrg
-														s.handleMigrationsListReposForOrgRequest(args, w, r)
-														return
-													}
-												case 'r': // Prefix: "repositories"
-													if prefix := "repositories"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-														elem = elem[len(prefix):]
-													} else {
-														break
-													}
-
-													// Leaf: MigrationsListReposForOrg
-													s.handleMigrationsListReposForOrgRequest(args, w, r)
-													return
-												}
-											}
-										}
-									case 'e': // Prefix: "embers/"
-										if prefix := "embers/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-											elem = elem[len(prefix):]
-										} else {
-											break
-										}
-
-										// Param: "username"
-										// Leaf parameter
-										args["username"] = elem
-
-										// Leaf: OrgsCheckMembershipForUser
-										s.handleOrgsCheckMembershipForUserRequest(args, w, r)
-										return
-									}
-								}
-							case 'o': // Prefix: "outside_collaborators"
-								if prefix := "outside_collaborators"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-									elem = elem[len(prefix):]
-								} else {
-									break
-								}
-
-								// Leaf: OrgsListOutsideCollaborators
-								s.handleOrgsListOutsideCollaboratorsRequest(args, w, r)
-								return
-							case 'p': // Prefix: "p"
-								if prefix := "p"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-									elem = elem[len(prefix):]
-								} else {
-									break
-								}
-
-								if len(elem) == 0 {
-									s.handlePackagesGetAllPackageVersionsForPackageOwnedByOrgRequest(args, w, r)
-									return
-								}
-								switch elem[0] {
-								case 'a': // Prefix: "ackages"
-									if prefix := "ackages"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-										elem = elem[len(prefix):]
-									} else {
-										break
-									}
-
-									if len(elem) == 0 {
-										s.handlePackagesListPackagesForOrganizationRequest(args, w, r)
-										return
-									}
-									switch elem[0] {
-									case '/': // Prefix: "/"
-										if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-											elem = elem[len(prefix):]
-										} else {
-											break
-										}
-
-										// Param: "package_type"
-										// Match until one of "/"
-										idx := strings.IndexAny(elem, "/")
-										if idx > 0 {
-											args["package_type"] = elem[:idx]
-											elem = elem[idx:]
-
-											if len(elem) == 0 {
-												break
-											}
-											switch elem[0] {
-											case '/': // Prefix: "/"
-												if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-													elem = elem[len(prefix):]
-												} else {
-													break
-												}
-
-												// Param: "package_name"
-												// Match until one of "/"
-												idx := strings.IndexAny(elem, "/")
-												if idx > 0 {
-													args["package_name"] = elem[:idx]
-													elem = elem[idx:]
-
-													if len(elem) == 0 {
-														s.handlePackagesGetPackageForOrganizationRequest(args, w, r)
-														return
-													}
-													switch elem[0] {
-													case '/': // Prefix: "/versions"
-														if prefix := "/versions"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-															elem = elem[len(prefix):]
-														} else {
-															break
-														}
-
-														if len(elem) == 0 {
-															s.handlePackagesGetAllPackageVersionsForPackageOwnedByOrgRequest(args, w, r)
-															return
-														}
-														switch elem[0] {
-														case '/': // Prefix: "/"
-															if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																elem = elem[len(prefix):]
-															} else {
-																break
-															}
-
-															// Param: "package_version_id"
-															// Leaf parameter
-															args["package_version_id"] = elem
-
-															// Leaf: PackagesGetPackageVersionForOrganization
-															s.handlePackagesGetPackageVersionForOrganizationRequest(args, w, r)
-															return
-														}
-													}
-												}
-											}
-										}
-									}
-								case 'r': // Prefix: "rojects"
-									if prefix := "rojects"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-										elem = elem[len(prefix):]
-									} else {
-										break
-									}
-
-									// Leaf: ProjectsListForOrg
-									s.handleProjectsListForOrgRequest(args, w, r)
-									return
-								case 'u': // Prefix: "ublic_members"
-									if prefix := "ublic_members"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-										elem = elem[len(prefix):]
-									} else {
-										break
-									}
-
-									if len(elem) == 0 {
-										s.handleOrgsListPublicMembersRequest(args, w, r)
-										return
-									}
-									switch elem[0] {
-									case '/': // Prefix: "/"
-										if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-											elem = elem[len(prefix):]
-										} else {
-											break
-										}
-
-										// Param: "username"
-										// Leaf parameter
-										args["username"] = elem
-
-										// Leaf: OrgsCheckPublicMembershipForUser
-										s.handleOrgsCheckPublicMembershipForUserRequest(args, w, r)
-										return
-									case 'a': // Prefix: "ackages/"
-										if prefix := "ackages/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-											elem = elem[len(prefix):]
-										} else {
-											break
-										}
-
-										// Param: "package_type"
-										// Match until one of "/"
-										idx := strings.IndexAny(elem, "/")
-										if idx > 0 {
-											args["package_type"] = elem[:idx]
-											elem = elem[idx:]
-
-											if len(elem) == 0 {
-												break
-											}
-											switch elem[0] {
-											case '/': // Prefix: "/"
-												if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-													elem = elem[len(prefix):]
-												} else {
-													break
-												}
-
-												// Param: "package_name"
-												// Match until one of "/"
-												idx := strings.IndexAny(elem, "/")
-												if idx > 0 {
-													args["package_name"] = elem[:idx]
-													elem = elem[idx:]
-
-													if len(elem) == 0 {
-														break
-													}
-													switch elem[0] {
-													case '/': // Prefix: "/versions"
-														if prefix := "/versions"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-															elem = elem[len(prefix):]
-														} else {
-															break
-														}
-
-														// Leaf: PackagesGetAllPackageVersionsForPackageOwnedByOrg
-														s.handlePackagesGetAllPackageVersionsForPackageOwnedByOrgRequest(args, w, r)
-														return
-													}
-												}
-											}
-										}
-									}
-								}
-							case 'r': // Prefix: "repos"
-								if prefix := "repos"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-									elem = elem[len(prefix):]
-								} else {
-									break
-								}
-
-								// Leaf: ReposListForOrg
-								s.handleReposListForOrgRequest(args, w, r)
-								return
-							case 's': // Prefix: "se"
-								if prefix := "se"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-									elem = elem[len(prefix):]
-								} else {
-									break
-								}
-
-								if len(elem) == 0 {
-									s.handleSecretScanningListAlertsForOrgRequest(args, w, r)
-									return
-								}
-								switch elem[0] {
-								case 'c': // Prefix: "cret-scanning/alerts"
-									if prefix := "cret-scanning/alerts"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-										elem = elem[len(prefix):]
-									} else {
-										break
-									}
-
-									// Leaf: SecretScanningListAlertsForOrg
-									s.handleSecretScanningListAlertsForOrgRequest(args, w, r)
-									return
-								case 't': // Prefix: "ttings/billing/"
-									if prefix := "ttings/billing/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-										elem = elem[len(prefix):]
-									} else {
-										break
-									}
-
-									if len(elem) == 0 {
-										s.handleBillingGetGithubPackagesBillingOrgRequest(args, w, r)
-										return
-									}
-									switch elem[0] {
-									case 'a': // Prefix: "actions"
-										if prefix := "actions"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-											elem = elem[len(prefix):]
-										} else {
-											break
-										}
-
-										if len(elem) == 0 {
-											s.handleBillingGetGithubActionsBillingOrgRequest(args, w, r)
-											return
-										}
-										switch elem[0] {
-										case 'p': // Prefix: "packages"
-											if prefix := "packages"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-												elem = elem[len(prefix):]
-											} else {
-												break
-											}
-
-											// Leaf: BillingGetGithubPackagesBillingOrg
-											s.handleBillingGetGithubPackagesBillingOrgRequest(args, w, r)
-											return
-										}
-									case 'c': // Prefix: "cret-scanning/alerts"
-										if prefix := "cret-scanning/alerts"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-											elem = elem[len(prefix):]
-										} else {
-											break
-										}
-
-										// Leaf: SecretScanningListAlertsForOrg
-										s.handleSecretScanningListAlertsForOrgRequest(args, w, r)
-										return
-									case 'p': // Prefix: "packages"
-										if prefix := "packages"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-											elem = elem[len(prefix):]
-										} else {
-											break
-										}
-
-										// Leaf: BillingGetGithubPackagesBillingOrg
-										s.handleBillingGetGithubPackagesBillingOrgRequest(args, w, r)
-										return
-									case 's': // Prefix: "shared-storage"
-										if prefix := "shared-storage"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-											elem = elem[len(prefix):]
-										} else {
-											break
-										}
-
-										// Leaf: BillingGetSharedStorageBillingOrg
-										s.handleBillingGetSharedStorageBillingOrgRequest(args, w, r)
-										return
-									}
-								}
-							case 't': // Prefix: "team"
-								if prefix := "team"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-									elem = elem[len(prefix):]
-								} else {
-									break
-								}
-
-								if len(elem) == 0 {
-									s.handleTeamsListIdpGroupsForOrgRequest(args, w, r)
-									return
-								}
-								switch elem[0] {
-								case '-': // Prefix: "-sync/groups"
-									if prefix := "-sync/groups"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-										elem = elem[len(prefix):]
-									} else {
-										break
-									}
-
-									// Leaf: TeamsListIdpGroupsForOrg
-									s.handleTeamsListIdpGroupsForOrgRequest(args, w, r)
-									return
-								case 's': // Prefix: "s"
-									if prefix := "s"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-										elem = elem[len(prefix):]
-									} else {
-										break
-									}
-
-									if len(elem) == 0 {
-										s.handleTeamsListRequest(args, w, r)
-										return
-									}
-									switch elem[0] {
-									case '-': // Prefix: "-sync/groups"
-										if prefix := "-sync/groups"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-											elem = elem[len(prefix):]
-										} else {
-											break
-										}
-
-										// Leaf: TeamsListIdpGroupsForOrg
-										s.handleTeamsListIdpGroupsForOrgRequest(args, w, r)
-										return
-									case '/': // Prefix: "/"
-										if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-											elem = elem[len(prefix):]
-										} else {
-											break
-										}
-
-										// Param: "team_slug"
-										// Match until one of "/"
-										idx := strings.IndexAny(elem, "/")
-										if idx > 0 {
-											args["team_slug"] = elem[:idx]
-											elem = elem[idx:]
-
-											if len(elem) == 0 {
-												s.handleTeamsGetByNameRequest(args, w, r)
-												return
-											}
-											switch elem[0] {
-											case '/': // Prefix: "/"
-												if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-													elem = elem[len(prefix):]
-												} else {
-													break
-												}
-
-												if len(elem) == 0 {
-													s.handleTeamsCheckPermissionsForProjectInOrgRequest(args, w, r)
-													return
-												}
-												switch elem[0] {
-												case 'd': // Prefix: "discussions"
-													if prefix := "discussions"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-														elem = elem[len(prefix):]
-													} else {
-														break
-													}
-
-													if len(elem) == 0 {
-														s.handleTeamsListDiscussionsInOrgRequest(args, w, r)
-														return
-													}
-													switch elem[0] {
-													case '/': // Prefix: "/"
-														if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-															elem = elem[len(prefix):]
-														} else {
-															break
-														}
-
-														if len(elem) == 0 {
-															break
-														}
-														switch elem[0] {
-														case 'p': // Prefix: "projects/"
-															if prefix := "projects/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																elem = elem[len(prefix):]
-															} else {
-																break
-															}
-
-															// Param: "project_id"
-															// Leaf parameter
-															args["project_id"] = elem
-
-															// Leaf: TeamsCheckPermissionsForProjectInOrg
-															s.handleTeamsCheckPermissionsForProjectInOrgRequest(args, w, r)
-															return
-														}
-														// Param: "discussion_number"
-														// Match until one of "/"
-														idx := strings.IndexAny(elem, "/")
-														if idx > 0 {
-															args["discussion_number"] = elem[:idx]
-															elem = elem[idx:]
-
-															if len(elem) == 0 {
-																s.handleTeamsGetDiscussionInOrgRequest(args, w, r)
-																return
-															}
-															switch elem[0] {
-															case '/': // Prefix: "/"
-																if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																	elem = elem[len(prefix):]
-																} else {
-																	break
-																}
-
-																if len(elem) == 0 {
-																	s.handleReactionsListForTeamDiscussionInOrgRequest(args, w, r)
-																	return
-																}
-																switch elem[0] {
-																case 'c': // Prefix: "comments"
-																	if prefix := "comments"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																		elem = elem[len(prefix):]
-																	} else {
-																		break
-																	}
-
-																	if len(elem) == 0 {
-																		s.handleTeamsListDiscussionCommentsInOrgRequest(args, w, r)
-																		return
-																	}
-																	switch elem[0] {
-																	case '/': // Prefix: "/"
-																		if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																			elem = elem[len(prefix):]
-																		} else {
-																			break
-																		}
-
-																		if len(elem) == 0 {
-																			break
-																		}
-																		switch elem[0] {
-																		case 'r': // Prefix: "reactions"
-																			if prefix := "reactions"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																				elem = elem[len(prefix):]
-																			} else {
-																				break
-																			}
-
-																			// Leaf: ReactionsListForTeamDiscussionInOrg
-																			s.handleReactionsListForTeamDiscussionInOrgRequest(args, w, r)
-																			return
-																		}
-																		// Param: "comment_number"
-																		// Match until one of "/"
-																		idx := strings.IndexAny(elem, "/")
-																		if idx > 0 {
-																			args["comment_number"] = elem[:idx]
-																			elem = elem[idx:]
-
-																			if len(elem) == 0 {
-																				s.handleTeamsGetDiscussionCommentInOrgRequest(args, w, r)
-																				return
-																			}
-																			switch elem[0] {
-																			case '/': // Prefix: "/reactions"
-																				if prefix := "/reactions"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																					elem = elem[len(prefix):]
-																				} else {
-																					break
-																				}
-
-																				// Leaf: ReactionsListForTeamDiscussionCommentInOrg
-																				s.handleReactionsListForTeamDiscussionCommentInOrgRequest(args, w, r)
-																				return
-																			}
-																		}
-																	}
-																case 'r': // Prefix: "reactions"
-																	if prefix := "reactions"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																		elem = elem[len(prefix):]
-																	} else {
-																		break
-																	}
-
-																	// Leaf: ReactionsListForTeamDiscussionInOrg
-																	s.handleReactionsListForTeamDiscussionInOrgRequest(args, w, r)
-																	return
-																}
-															}
-														}
-													}
-												case 'i': // Prefix: "invitations"
-													if prefix := "invitations"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-														elem = elem[len(prefix):]
-													} else {
-														break
-													}
-
-													// Leaf: TeamsListPendingInvitationsInOrg
-													s.handleTeamsListPendingInvitationsInOrgRequest(args, w, r)
-													return
-												case 'm': // Prefix: "members"
-													if prefix := "members"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-														elem = elem[len(prefix):]
-													} else {
-														break
-													}
-
-													if len(elem) == 0 {
-														s.handleTeamsListMembersInOrgRequest(args, w, r)
-														return
-													}
-													switch elem[0] {
-													case 'h': // Prefix: "hips/"
-														if prefix := "hips/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-															elem = elem[len(prefix):]
-														} else {
-															break
-														}
-
-														// Param: "username"
-														// Leaf parameter
-														args["username"] = elem
-
-														// Leaf: TeamsGetMembershipForUserInOrg
-														s.handleTeamsGetMembershipForUserInOrgRequest(args, w, r)
-														return
-													}
-												case 'p': // Prefix: "projects"
-													if prefix := "projects"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-														elem = elem[len(prefix):]
-													} else {
-														break
-													}
-
-													if len(elem) == 0 {
-														s.handleTeamsListProjectsInOrgRequest(args, w, r)
-														return
-													}
-													switch elem[0] {
-													case '/': // Prefix: "/"
-														if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-															elem = elem[len(prefix):]
-														} else {
-															break
-														}
-
-														// Param: "project_id"
-														// Leaf parameter
-														args["project_id"] = elem
-
-														// Leaf: TeamsCheckPermissionsForProjectInOrg
-														s.handleTeamsCheckPermissionsForProjectInOrgRequest(args, w, r)
-														return
-													}
-												case 'r': // Prefix: "repos"
-													if prefix := "repos"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-														elem = elem[len(prefix):]
-													} else {
-														break
-													}
-
-													if len(elem) == 0 {
-														s.handleTeamsListReposInOrgRequest(args, w, r)
-														return
-													}
-													switch elem[0] {
-													case '/': // Prefix: "/"
-														if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-															elem = elem[len(prefix):]
-														} else {
-															break
-														}
-
-														// Param: "owner"
-														// Match until one of "/"
-														idx := strings.IndexAny(elem, "/")
-														if idx > 0 {
-															args["owner"] = elem[:idx]
-															elem = elem[idx:]
-
-															if len(elem) == 0 {
-																break
-															}
-															switch elem[0] {
-															case '/': // Prefix: "/"
-																if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																	elem = elem[len(prefix):]
-																} else {
-																	break
-																}
-
-																// Param: "repo"
-																// Leaf parameter
-																args["repo"] = elem
-
-																// Leaf: TeamsCheckPermissionsForRepoInOrg
-																s.handleTeamsCheckPermissionsForRepoInOrgRequest(args, w, r)
-																return
-															}
-														}
-													}
-												case 't': // Prefix: "team"
-													if prefix := "team"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-														elem = elem[len(prefix):]
-													} else {
-														break
-													}
-
-													if len(elem) == 0 {
-														s.handleTeamsListIdpGroupsInOrgRequest(args, w, r)
-														return
-													}
-													switch elem[0] {
-													case '-': // Prefix: "-sync/group-mappings"
-														if prefix := "-sync/group-mappings"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-															elem = elem[len(prefix):]
-														} else {
-															break
-														}
-
-														// Leaf: TeamsListIdpGroupsInOrg
-														s.handleTeamsListIdpGroupsInOrgRequest(args, w, r)
-														return
-													case 's': // Prefix: "s"
-														if prefix := "s"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-															elem = elem[len(prefix):]
-														} else {
-															break
-														}
-
-														if len(elem) == 0 {
-															s.handleTeamsListChildInOrgRequest(args, w, r)
-															return
-														}
-														switch elem[0] {
-														case '-': // Prefix: "-sync/group-mappings"
-															if prefix := "-sync/group-mappings"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																elem = elem[len(prefix):]
-															} else {
-																break
-															}
-
-															// Leaf: TeamsListIdpGroupsInOrg
-															s.handleTeamsListIdpGroupsInOrgRequest(args, w, r)
-															return
-														}
-													}
-												}
-											}
-										}
-									}
-								}
-							}
-						}
-					}
-				}
-			case 'p': // Prefix: "projects/"
-				if prefix := "projects/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-					elem = elem[len(prefix):]
-				} else {
-					break
-				}
-
-				if len(elem) == 0 {
-					break
-				}
-				switch elem[0] {
-				case 'c': // Prefix: "columns/"
-					if prefix := "columns/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-						elem = elem[len(prefix):]
-					} else {
-						break
-					}
-
-					if len(elem) == 0 {
-						s.handleProjectsGetColumnRequest(args, w, r)
-						return
-					}
-					switch elem[0] {
-					case 'c': // Prefix: "cards/"
-						if prefix := "cards/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-							elem = elem[len(prefix):]
-						} else {
-							break
-						}
-
-						// Param: "card_id"
-						// Leaf parameter
-						args["card_id"] = elem
-
-						// Leaf: ProjectsGetColumn
-						s.handleProjectsGetColumnRequest(args, w, r)
-						return
-					}
-					// Param: "column_id"
-					// Match until one of "/"
-					idx := strings.IndexAny(elem, "/")
-					if idx > 0 {
-						args["column_id"] = elem[:idx]
-						elem = elem[idx:]
-
-						if len(elem) == 0 {
-							s.handleProjectsGetColumnRequest(args, w, r)
-							return
-						}
-						switch elem[0] {
-						case '/': // Prefix: "/cards"
-							if prefix := "/cards"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-								elem = elem[len(prefix):]
-							} else {
-								break
-							}
-
-							// Leaf: ProjectsListCards
-							s.handleProjectsListCardsRequest(args, w, r)
-							return
-						}
-					}
-				}
-				// Param: "project_id"
-				// Match until one of "/"
-				idx := strings.IndexAny(elem, "/")
-				if idx > 0 {
-					args["project_id"] = elem[:idx]
-					elem = elem[idx:]
-
-					if len(elem) == 0 {
-						s.handleProjectsGetRequest(args, w, r)
-						return
-					}
-					switch elem[0] {
-					case '/': // Prefix: "/col"
-						if prefix := "/col"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-							elem = elem[len(prefix):]
-						} else {
-							break
-						}
-
-						if len(elem) == 0 {
-							s.handleProjectsListColumnsRequest(args, w, r)
-							return
-						}
-						switch elem[0] {
-						case 'l': // Prefix: "laborators"
-							if prefix := "laborators"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-								elem = elem[len(prefix):]
-							} else {
-								break
-							}
-
-							if len(elem) == 0 {
-								s.handleProjectsListCollaboratorsRequest(args, w, r)
-								return
-							}
-							switch elem[0] {
-							case '/': // Prefix: "/"
-								if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-									elem = elem[len(prefix):]
-								} else {
-									break
-								}
-
-								// Param: "username"
-								// Match until one of "/"
-								idx := strings.IndexAny(elem, "/")
-								if idx > 0 {
-									args["username"] = elem[:idx]
-									elem = elem[idx:]
-
-									if len(elem) == 0 {
-										break
-									}
-									switch elem[0] {
-									case '/': // Prefix: "/permission"
-										if prefix := "/permission"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-											elem = elem[len(prefix):]
-										} else {
-											break
-										}
-
-										// Leaf: ProjectsGetPermissionForUser
-										s.handleProjectsGetPermissionForUserRequest(args, w, r)
-										return
-									}
-								}
-							case 'u': // Prefix: "umns"
-								if prefix := "umns"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-									elem = elem[len(prefix):]
-								} else {
-									break
-								}
-
-								// Leaf: ProjectsListColumns
-								s.handleProjectsListColumnsRequest(args, w, r)
-								return
-							}
-						case 'u': // Prefix: "umns"
-							if prefix := "umns"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-								elem = elem[len(prefix):]
-							} else {
-								break
-							}
-
-							// Leaf: ProjectsListColumns
-							s.handleProjectsListColumnsRequest(args, w, r)
-							return
-						}
-					}
-				}
-			case 'r': // Prefix: "r"
-				if prefix := "r"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-					elem = elem[len(prefix):]
-				} else {
-					break
-				}
-
-				if len(elem) == 0 {
-					s.handleRateLimitGetRequest(args, w, r)
-					return
-				}
-				switch elem[0] {
-				case 'a': // Prefix: "ate_limit"
-					if prefix := "ate_limit"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-						elem = elem[len(prefix):]
-					} else {
-						break
-					}
-
-					// Leaf: RateLimitGet
-					s.handleRateLimitGetRequest(args, w, r)
-					return
-				case 'e': // Prefix: "epos"
-					if prefix := "epos"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-						elem = elem[len(prefix):]
-					} else {
-						break
-					}
-
-					if len(elem) == 0 {
-						s.handleActionsGetEnvironmentPublicKeyRequest(args, w, r)
-						return
-					}
-					switch elem[0] {
-					case '/': // Prefix: "/"
-						if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-							elem = elem[len(prefix):]
-						} else {
-							break
-						}
-
-						if len(elem) == 0 {
-							break
-						}
-						switch elem[0] {
-						case 'i': // Prefix: "itories/"
-							if prefix := "itories/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-								elem = elem[len(prefix):]
-							} else {
-								break
-							}
-
-							// Param: "repository_id"
-							// Match until one of "/"
-							idx := strings.IndexAny(elem, "/")
-							if idx > 0 {
-								args["repository_id"] = elem[:idx]
-								elem = elem[idx:]
-
-								if len(elem) == 0 {
-									break
-								}
-								switch elem[0] {
-								case '/': // Prefix: "/environments/"
-									if prefix := "/environments/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-										elem = elem[len(prefix):]
-									} else {
-										break
-									}
-
-									// Param: "environment_name"
-									// Match until one of "/"
-									idx := strings.IndexAny(elem, "/")
-									if idx > 0 {
-										args["environment_name"] = elem[:idx]
-										elem = elem[idx:]
-
-										if len(elem) == 0 {
-											break
-										}
-										switch elem[0] {
-										case '/': // Prefix: "/secrets/public-key"
-											if prefix := "/secrets/public-key"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-												elem = elem[len(prefix):]
-											} else {
-												break
-											}
-
-											// Leaf: ActionsGetEnvironmentPublicKey
-											s.handleActionsGetEnvironmentPublicKeyRequest(args, w, r)
-											return
-										}
-									}
-								}
-							}
-						case 'o': // Prefix: "orgs/"
-							if prefix := "orgs/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-								elem = elem[len(prefix):]
-							} else {
-								break
-							}
-
-							// Param: "org"
-							// Match until one of "/"
-							idx := strings.IndexAny(elem, "/")
-							if idx > 0 {
-								args["org"] = elem[:idx]
-								elem = elem[idx:]
-
-								if len(elem) == 0 {
-									break
-								}
-								switch elem[0] {
-								case '/': // Prefix: "/actions/permissions/selected-actions"
-									if prefix := "/actions/permissions/selected-actions"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-										elem = elem[len(prefix):]
-									} else {
-										break
-									}
-
-									// Leaf: ActionsGetAllowedActionsOrganization
-									s.handleActionsGetAllowedActionsOrganizationRequest(args, w, r)
-									return
-								}
-							}
-						}
-						// Param: "owner"
-						// Match until one of "/"
-						idx := strings.IndexAny(elem, "/")
-						if idx > 0 {
-							args["owner"] = elem[:idx]
-							elem = elem[idx:]
-
-							if len(elem) == 0 {
-								break
-							}
-							switch elem[0] {
-							case '/': // Prefix: "/"
-								if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-									elem = elem[len(prefix):]
-								} else {
-									break
-								}
-
-								// Param: "repo"
-								// Match until one of "/"
-								idx := strings.IndexAny(elem, "/")
-								if idx > 0 {
-									args["repo"] = elem[:idx]
-									elem = elem[idx:]
-
-									if len(elem) == 0 {
-										s.handleReposGetRequest(args, w, r)
-										return
-									}
-									switch elem[0] {
-									case '/': // Prefix: "/"
-										if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-											elem = elem[len(prefix):]
-										} else {
-											break
-										}
-
-										if len(elem) == 0 {
-											s.handleActivityGetRepoSubscriptionRequest(args, w, r)
-											return
-										}
-										switch elem[0] {
-										case 'a': // Prefix: "a"
-											if prefix := "a"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-												elem = elem[len(prefix):]
-											} else {
-												break
-											}
-
-											if len(elem) == 0 {
-												s.handleIssuesCheckUserCanBeAssignedRequest(args, w, r)
-												return
-											}
-											switch elem[0] {
-											case 'c': // Prefix: "ctions/"
-												if prefix := "ctions/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-													elem = elem[len(prefix):]
-												} else {
-													break
-												}
-
-												if len(elem) == 0 {
-													s.handleActionsDownloadJobLogsForWorkflowRunRequest(args, w, r)
-													return
-												}
-												switch elem[0] {
-												case 'a': // Prefix: "artifacts"
-													if prefix := "artifacts"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-														elem = elem[len(prefix):]
-													} else {
-														break
-													}
-
-													if len(elem) == 0 {
-														s.handleActionsListArtifactsForRepoRequest(args, w, r)
-														return
-													}
-													switch elem[0] {
-													case '/': // Prefix: "/"
-														if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-															elem = elem[len(prefix):]
-														} else {
-															break
-														}
-
-														if len(elem) == 0 {
-															break
-														}
-														switch elem[0] {
-														case 'j': // Prefix: "jobs/"
-															if prefix := "jobs/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																elem = elem[len(prefix):]
-															} else {
-																break
-															}
-
-															// Param: "job_id"
-															// Match until one of "/"
-															idx := strings.IndexAny(elem, "/")
-															if idx > 0 {
-																args["job_id"] = elem[:idx]
-																elem = elem[idx:]
-
-																if len(elem) == 0 {
-																	break
-																}
-																switch elem[0] {
-																case '/': // Prefix: "/logs"
-																	if prefix := "/logs"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																		elem = elem[len(prefix):]
-																	} else {
-																		break
-																	}
-
-																	// Leaf: ActionsDownloadJobLogsForWorkflowRun
-																	s.handleActionsDownloadJobLogsForWorkflowRunRequest(args, w, r)
-																	return
-																}
-															}
-														}
-														// Param: "artifact_id"
-														// Match until one of "/"
-														idx := strings.IndexAny(elem, "/")
-														if idx > 0 {
-															args["artifact_id"] = elem[:idx]
-															elem = elem[idx:]
-
-															if len(elem) == 0 {
-																s.handleActionsGetArtifactRequest(args, w, r)
-																return
-															}
-															switch elem[0] {
-															case '/': // Prefix: "/"
-																if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																	elem = elem[len(prefix):]
-																} else {
-																	break
-																}
-
-																// Param: "archive_format"
-																// Leaf parameter
-																args["archive_format"] = elem
-
-																// Leaf: ActionsDownloadArtifact
-																s.handleActionsDownloadArtifactRequest(args, w, r)
-																return
-															}
-														}
-													}
-												case 'j': // Prefix: "jobs/"
-													if prefix := "jobs/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-														elem = elem[len(prefix):]
-													} else {
-														break
-													}
-
-													// Param: "job_id"
-													// Match until one of "/"
-													idx := strings.IndexAny(elem, "/")
-													if idx > 0 {
-														args["job_id"] = elem[:idx]
-														elem = elem[idx:]
-
-														if len(elem) == 0 {
-															s.handleActionsGetJobForWorkflowRunRequest(args, w, r)
-															return
-														}
-														switch elem[0] {
-														case '/': // Prefix: "/logs"
-															if prefix := "/logs"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																elem = elem[len(prefix):]
-															} else {
-																break
-															}
-
-															// Leaf: ActionsDownloadJobLogsForWorkflowRun
-															s.handleActionsDownloadJobLogsForWorkflowRunRequest(args, w, r)
-															return
-														}
-													}
-												case 'p': // Prefix: "permissions"
-													if prefix := "permissions"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-														elem = elem[len(prefix):]
-													} else {
-														break
-													}
-
-													if len(elem) == 0 {
-														s.handleActionsGetGithubActionsPermissionsRepositoryRequest(args, w, r)
-														return
-													}
-													switch elem[0] {
-													case '/': // Prefix: "/selected-actions"
-														if prefix := "/selected-actions"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-															elem = elem[len(prefix):]
-														} else {
-															break
-														}
-
-														// Leaf: ActionsGetAllowedActionsRepository
-														s.handleActionsGetAllowedActionsRepositoryRequest(args, w, r)
-														return
-													}
-												case 'r': // Prefix: "run"
-													if prefix := "run"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-														elem = elem[len(prefix):]
-													} else {
-														break
-													}
-
-													if len(elem) == 0 {
-														s.handleActionsGetSelfHostedRunnerForRepoRequest(args, w, r)
-														return
-													}
-													switch elem[0] {
-													case 'n': // Prefix: "ners"
-														if prefix := "ners"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-															elem = elem[len(prefix):]
-														} else {
-															break
-														}
-
-														if len(elem) == 0 {
-															s.handleActionsListSelfHostedRunnersForRepoRequest(args, w, r)
-															return
-														}
-														switch elem[0] {
-														case '/': // Prefix: "/"
-															if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																elem = elem[len(prefix):]
-															} else {
-																break
-															}
-
-															if len(elem) == 0 {
-																break
-															}
-															switch elem[0] {
-															case 'd': // Prefix: "downloads"
-																if prefix := "downloads"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																	elem = elem[len(prefix):]
-																} else {
-																	break
-																}
-
-																// Leaf: ActionsListRunnerApplicationsForRepo
-																s.handleActionsListRunnerApplicationsForRepoRequest(args, w, r)
-																return
-															}
-															// Param: "runner_id"
-															// Leaf parameter
-															args["runner_id"] = elem
-
-															// Leaf: ActionsGetSelfHostedRunnerForRepo
-															s.handleActionsGetSelfHostedRunnerForRepoRequest(args, w, r)
-															return
-														}
-													case 's': // Prefix: "s"
-														if prefix := "s"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-															elem = elem[len(prefix):]
-														} else {
-															break
-														}
-
-														if len(elem) == 0 {
-															s.handleActionsListWorkflowRunsForRepoRequest(args, w, r)
-															return
-														}
-														switch elem[0] {
-														case '/': // Prefix: "/"
-															if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																elem = elem[len(prefix):]
-															} else {
-																break
-															}
-
-															if len(elem) == 0 {
-																break
-															}
-															switch elem[0] {
-															case 'n': // Prefix: "ners/"
-																if prefix := "ners/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																	elem = elem[len(prefix):]
-																} else {
-																	break
-																}
-
-																// Param: "runner_id"
-																// Leaf parameter
-																args["runner_id"] = elem
-
-																// Leaf: ActionsGetSelfHostedRunnerForRepo
-																s.handleActionsGetSelfHostedRunnerForRepoRequest(args, w, r)
-																return
-															}
-															// Param: "run_id"
-															// Match until one of "/"
-															idx := strings.IndexAny(elem, "/")
-															if idx > 0 {
-																args["run_id"] = elem[:idx]
-																elem = elem[idx:]
-
-																if len(elem) == 0 {
-																	s.handleActionsGetWorkflowRunRequest(args, w, r)
-																	return
-																}
-																switch elem[0] {
-																case '/': // Prefix: "/"
-																	if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																		elem = elem[len(prefix):]
-																	} else {
-																		break
-																	}
-
-																	if len(elem) == 0 {
-																		s.handleActionsGetReviewsForRunRequest(args, w, r)
-																		return
-																	}
-																	switch elem[0] {
-																	case 'a': // Prefix: "a"
-																		if prefix := "a"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																			elem = elem[len(prefix):]
-																		} else {
-																			break
-																		}
-
-																		if len(elem) == 0 {
-																			s.handleActionsListWorkflowRunArtifactsRequest(args, w, r)
-																			return
-																		}
-																		switch elem[0] {
-																		case 'p': // Prefix: "pprovals"
-																			if prefix := "pprovals"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																				elem = elem[len(prefix):]
-																			} else {
-																				break
-																			}
-
-																			if len(elem) == 0 {
-																				s.handleActionsGetReviewsForRunRequest(args, w, r)
-																				return
-																			}
-																			switch elem[0] {
-																			case 'r': // Prefix: "rtifacts"
-																				if prefix := "rtifacts"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																					elem = elem[len(prefix):]
-																				} else {
-																					break
-																				}
-
-																				// Leaf: ActionsListWorkflowRunArtifacts
-																				s.handleActionsListWorkflowRunArtifactsRequest(args, w, r)
-																				return
-																			}
-																		case 'r': // Prefix: "rtifacts"
-																			if prefix := "rtifacts"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																				elem = elem[len(prefix):]
-																			} else {
-																				break
-																			}
-
-																			// Leaf: ActionsListWorkflowRunArtifacts
-																			s.handleActionsListWorkflowRunArtifactsRequest(args, w, r)
-																			return
-																		}
-																	case 'j': // Prefix: "jobs"
-																		if prefix := "jobs"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																			elem = elem[len(prefix):]
-																		} else {
-																			break
-																		}
-
-																		// Leaf: ActionsListJobsForWorkflowRun
-																		s.handleActionsListJobsForWorkflowRunRequest(args, w, r)
-																		return
-																	case 'l': // Prefix: "logs"
-																		if prefix := "logs"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																			elem = elem[len(prefix):]
-																		} else {
-																			break
-																		}
-
-																		if len(elem) == 0 {
-																			s.handleActionsDownloadWorkflowRunLogsRequest(args, w, r)
-																			return
-																		}
-																		switch elem[0] {
-																		case 'a': // Prefix: "approvals"
-																			if prefix := "approvals"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																				elem = elem[len(prefix):]
-																			} else {
-																				break
-																			}
-
-																			// Leaf: ActionsGetReviewsForRun
-																			s.handleActionsGetReviewsForRunRequest(args, w, r)
-																			return
-																		}
-																	case 't': // Prefix: "timing"
-																		if prefix := "timing"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																			elem = elem[len(prefix):]
-																		} else {
-																			break
-																		}
-
-																		// Leaf: ActionsGetWorkflowRunUsage
-																		s.handleActionsGetWorkflowRunUsageRequest(args, w, r)
-																		return
-																	}
-																}
-															}
-														}
-													}
-												case 's': // Prefix: "s"
-													if prefix := "s"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-														elem = elem[len(prefix):]
-													} else {
-														break
-													}
-
-													if len(elem) == 0 {
-														s.handleActivityGetRepoSubscriptionRequest(args, w, r)
-														return
-													}
-													switch elem[0] {
-													case 'e': // Prefix: "ecrets"
-														if prefix := "ecrets"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-															elem = elem[len(prefix):]
-														} else {
-															break
-														}
-
-														if len(elem) == 0 {
-															s.handleActionsListRepoSecretsRequest(args, w, r)
-															return
-														}
-														switch elem[0] {
-														case '/': // Prefix: "/"
-															if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																elem = elem[len(prefix):]
-															} else {
-																break
-															}
-
-															if len(elem) == 0 {
-																s.handleActionsGetRepoSecretRequest(args, w, r)
-																return
-															}
-															switch elem[0] {
-															case 'p': // Prefix: "public-key"
-																if prefix := "public-key"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																	elem = elem[len(prefix):]
-																} else {
-																	break
-																}
-
-																// Param: "secret_name"
-																// Leaf parameter
-																args["secret_name"] = elem
-
-																// Leaf: ActionsGetRepoSecret
-																s.handleActionsGetRepoSecretRequest(args, w, r)
-																return
-															}
-															// Param: "secret_name"
-															// Leaf parameter
-															args["secret_name"] = elem
-
-															// Leaf: ActionsGetRepoSecret
-															s.handleActionsGetRepoSecretRequest(args, w, r)
-															return
-														case 'u': // Prefix: "ubscription"
-															if prefix := "ubscription"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																elem = elem[len(prefix):]
-															} else {
-																break
-															}
-
-															// Leaf: ActivityGetRepoSubscription
-															s.handleActivityGetRepoSubscriptionRequest(args, w, r)
-															return
-														}
-													case 's': // Prefix: "signees/"
-														if prefix := "signees/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-															elem = elem[len(prefix):]
-														} else {
-															break
-														}
-
-														// Param: "assignee"
-														// Leaf parameter
-														args["assignee"] = elem
-
-														// Leaf: IssuesCheckUserCanBeAssigned
-														s.handleIssuesCheckUserCanBeAssignedRequest(args, w, r)
-														return
-													case 'u': // Prefix: "ubscription"
-														if prefix := "ubscription"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-															elem = elem[len(prefix):]
-														} else {
-															break
-														}
-
-														// Leaf: ActivityGetRepoSubscription
-														s.handleActivityGetRepoSubscriptionRequest(args, w, r)
-														return
-													}
-												case 'w': // Prefix: "workflows"
-													if prefix := "workflows"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-														elem = elem[len(prefix):]
-													} else {
-														break
-													}
-
-													// Leaf: ActionsListRepoWorkflows
-													s.handleActionsListRepoWorkflowsRequest(args, w, r)
-													return
-												}
-											case 's': // Prefix: "ssignees"
-												if prefix := "ssignees"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-													elem = elem[len(prefix):]
-												} else {
-													break
-												}
-
-												if len(elem) == 0 {
-													s.handleIssuesListAssigneesRequest(args, w, r)
-													return
-												}
-												switch elem[0] {
-												case '/': // Prefix: "/"
-													if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-														elem = elem[len(prefix):]
-													} else {
-														break
-													}
-
-													// Param: "assignee"
-													// Leaf parameter
-													args["assignee"] = elem
-
-													// Leaf: IssuesCheckUserCanBeAssigned
-													s.handleIssuesCheckUserCanBeAssignedRequest(args, w, r)
-													return
-												}
-											case 'u': // Prefix: "utolinks"
-												if prefix := "utolinks"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-													elem = elem[len(prefix):]
-												} else {
-													break
-												}
-
-												if len(elem) == 0 {
-													s.handleReposListAutolinksRequest(args, w, r)
-													return
-												}
-												switch elem[0] {
-												case '/': // Prefix: "/"
-													if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-														elem = elem[len(prefix):]
-													} else {
-														break
-													}
-
-													// Param: "autolink_id"
-													// Leaf parameter
-													args["autolink_id"] = elem
-
-													// Leaf: ReposGetAutolink
-													s.handleReposGetAutolinkRequest(args, w, r)
-													return
-												}
-											}
-										case 'b': // Prefix: "branches"
-											if prefix := "branches"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-												elem = elem[len(prefix):]
-											} else {
-												break
-											}
-
-											if len(elem) == 0 {
-												s.handleReposListBranchesRequest(args, w, r)
-												return
-											}
-											switch elem[0] {
-											case '/': // Prefix: "/"
-												if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-													elem = elem[len(prefix):]
-												} else {
-													break
-												}
-
-												// Param: "branch"
-												// Match until one of "/"
-												idx := strings.IndexAny(elem, "/")
-												if idx > 0 {
-													args["branch"] = elem[:idx]
-													elem = elem[idx:]
-
-													if len(elem) == 0 {
-														s.handleReposGetBranchRequest(args, w, r)
-														return
-													}
-													switch elem[0] {
-													case '/': // Prefix: "/protection"
-														if prefix := "/protection"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-															elem = elem[len(prefix):]
-														} else {
-															break
-														}
-
-														if len(elem) == 0 {
-															s.handleReposGetBranchProtectionRequest(args, w, r)
-															return
-														}
-														switch elem[0] {
-														case '/': // Prefix: "/"
-															if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																elem = elem[len(prefix):]
-															} else {
-																break
-															}
-
-															if len(elem) == 0 {
-																s.handleReposGetAdminBranchProtectionRequest(args, w, r)
-																return
-															}
-															switch elem[0] {
-															case 'e': // Prefix: "enforce_admins"
-																if prefix := "enforce_admins"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																	elem = elem[len(prefix):]
-																} else {
-																	break
-																}
-
-																// Leaf: ReposGetAdminBranchProtection
-																s.handleReposGetAdminBranchProtectionRequest(args, w, r)
-																return
-															case 'r': // Prefix: "re"
-																if prefix := "re"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																	elem = elem[len(prefix):]
-																} else {
-																	break
-																}
-
-																if len(elem) == 0 {
-																	s.handleReposGetAllStatusCheckContextsRequest(args, w, r)
-																	return
-																}
-																switch elem[0] {
-																case 'q': // Prefix: "quired_"
-																	if prefix := "quired_"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																		elem = elem[len(prefix):]
-																	} else {
-																		break
-																	}
-
-																	if len(elem) == 0 {
-																		s.handleReposGetPullRequestReviewProtectionRequest(args, w, r)
-																		return
-																	}
-																	switch elem[0] {
-																	case 'p': // Prefix: "pull_request_reviews"
-																		if prefix := "pull_request_reviews"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																			elem = elem[len(prefix):]
-																		} else {
-																			break
-																		}
-
-																		// Leaf: ReposGetPullRequestReviewProtection
-																		s.handleReposGetPullRequestReviewProtectionRequest(args, w, r)
-																		return
-																	case 's': // Prefix: "s"
-																		if prefix := "s"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																			elem = elem[len(prefix):]
-																		} else {
-																			break
-																		}
-
-																		if len(elem) == 0 {
-																			s.handleReposGetCommitSignatureProtectionRequest(args, w, r)
-																			return
-																		}
-																		switch elem[0] {
-																		case 'i': // Prefix: "ignatures"
-																			if prefix := "ignatures"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																				elem = elem[len(prefix):]
-																			} else {
-																				break
-																			}
-
-																			// Leaf: ReposGetCommitSignatureProtection
-																			s.handleReposGetCommitSignatureProtectionRequest(args, w, r)
-																			return
-																		case 'p': // Prefix: "pull_request_reviews"
-																			if prefix := "pull_request_reviews"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																				elem = elem[len(prefix):]
-																			} else {
-																				break
-																			}
-
-																			// Leaf: ReposGetPullRequestReviewProtection
-																			s.handleReposGetPullRequestReviewProtectionRequest(args, w, r)
-																			return
-																		case 't': // Prefix: "tatus_checks"
-																			if prefix := "tatus_checks"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																				elem = elem[len(prefix):]
-																			} else {
-																				break
-																			}
-
-																			if len(elem) == 0 {
-																				s.handleReposGetStatusChecksProtectionRequest(args, w, r)
-																				return
-																			}
-																			switch elem[0] {
-																			case '/': // Prefix: "/contexts"
-																				if prefix := "/contexts"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																					elem = elem[len(prefix):]
-																				} else {
-																					break
-																				}
-
-																				if len(elem) == 0 {
-																					s.handleReposGetAllStatusCheckContextsRequest(args, w, r)
-																					return
-																				}
-																				switch elem[0] {
-																				case 'i': // Prefix: "ignatures"
-																					if prefix := "ignatures"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																						elem = elem[len(prefix):]
-																					} else {
-																						break
-																					}
-
-																					// Leaf: ReposGetCommitSignatureProtection
-																					s.handleReposGetCommitSignatureProtectionRequest(args, w, r)
-																					return
-																				}
-																			}
-																		}
-																	}
-																case 's': // Prefix: "strictions"
-																	if prefix := "strictions"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																		elem = elem[len(prefix):]
-																	} else {
-																		break
-																	}
-
-																	if len(elem) == 0 {
-																		s.handleReposGetAccessRestrictionsRequest(args, w, r)
-																		return
-																	}
-																	switch elem[0] {
-																	case '/': // Prefix: "/"
-																		if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																			elem = elem[len(prefix):]
-																		} else {
-																			break
-																		}
-
-																		if len(elem) == 0 {
-																			s.handleReposGetTeamsWithAccessToProtectedBranchRequest(args, w, r)
-																			return
-																		}
-																		switch elem[0] {
-																		case 'a': // Prefix: "apps"
-																			if prefix := "apps"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																				elem = elem[len(prefix):]
-																			} else {
-																				break
-																			}
-
-																			if len(elem) == 0 {
-																				s.handleReposGetAppsWithAccessToProtectedBranchRequest(args, w, r)
-																				return
-																			}
-																			switch elem[0] {
-																			case 't': // Prefix: "teams"
-																				if prefix := "teams"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																					elem = elem[len(prefix):]
-																				} else {
-																					break
-																				}
-
-																				// Leaf: ReposGetTeamsWithAccessToProtectedBranch
-																				s.handleReposGetTeamsWithAccessToProtectedBranchRequest(args, w, r)
-																				return
-																			}
-																		case 't': // Prefix: "teams"
-																			if prefix := "teams"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																				elem = elem[len(prefix):]
-																			} else {
-																				break
-																			}
-
-																			// Leaf: ReposGetTeamsWithAccessToProtectedBranch
-																			s.handleReposGetTeamsWithAccessToProtectedBranchRequest(args, w, r)
-																			return
-																		case 'u': // Prefix: "users"
-																			if prefix := "users"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																				elem = elem[len(prefix):]
-																			} else {
-																				break
-																			}
-
-																			// Leaf: ReposGetUsersWithAccessToProtectedBranch
-																			s.handleReposGetUsersWithAccessToProtectedBranchRequest(args, w, r)
-																			return
-																		}
-																	case 'e': // Prefix: "enforce_admins"
-																		if prefix := "enforce_admins"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																			elem = elem[len(prefix):]
-																		} else {
-																			break
-																		}
-
-																		// Leaf: ReposGetAdminBranchProtection
-																		s.handleReposGetAdminBranchProtectionRequest(args, w, r)
-																		return
-																	case 'q': // Prefix: "quired_status_checks/contexts"
-																		if prefix := "quired_status_checks/contexts"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																			elem = elem[len(prefix):]
-																		} else {
-																			break
-																		}
-
-																		// Leaf: ReposGetAllStatusCheckContexts
-																		s.handleReposGetAllStatusCheckContextsRequest(args, w, r)
-																		return
-																	}
-																}
-															}
-														}
-													}
-												}
-											}
-										case 'c': // Prefix: "c"
-											if prefix := "c"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-												elem = elem[len(prefix):]
-											} else {
-												break
-											}
-
-											if len(elem) == 0 {
-												s.handleChecksListForRefRequest(args, w, r)
-												return
-											}
-											switch elem[0] {
-											case 'h': // Prefix: "heck-"
-												if prefix := "heck-"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-													elem = elem[len(prefix):]
-												} else {
-													break
-												}
-
-												if len(elem) == 0 {
-													s.handleChecksGetSuiteRequest(args, w, r)
-													return
-												}
-												switch elem[0] {
-												case 'o': // Prefix: "ommits/"
-													if prefix := "ommits/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-														elem = elem[len(prefix):]
-													} else {
-														break
-													}
-
-													// Param: "ref"
-													// Match until one of "/"
-													idx := strings.IndexAny(elem, "/")
-													if idx > 0 {
-														args["ref"] = elem[:idx]
-														elem = elem[idx:]
-
-														if len(elem) == 0 {
-															break
-														}
-														switch elem[0] {
-														case '/': // Prefix: "/check-runs"
-															if prefix := "/check-runs"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																elem = elem[len(prefix):]
-															} else {
-																break
-															}
-
-															// Leaf: ChecksListForRef
-															s.handleChecksListForRefRequest(args, w, r)
-															return
-														}
-													}
-												case 'r': // Prefix: "runs/"
-													if prefix := "runs/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-														elem = elem[len(prefix):]
-													} else {
-														break
-													}
-
-													if len(elem) == 0 {
-														break
-													}
-													switch elem[0] {
-													case 's': // Prefix: "suites/"
-														if prefix := "suites/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-															elem = elem[len(prefix):]
-														} else {
-															break
-														}
-
-														// Param: "check_suite_id"
-														// Leaf parameter
-														args["check_suite_id"] = elem
-
-														// Leaf: ChecksGetSuite
-														s.handleChecksGetSuiteRequest(args, w, r)
-														return
-													}
-													// Param: "check_run_id"
-													// Match until one of "/"
-													idx := strings.IndexAny(elem, "/")
-													if idx > 0 {
-														args["check_run_id"] = elem[:idx]
-														elem = elem[idx:]
-
-														if len(elem) == 0 {
-															s.handleChecksGetRequest(args, w, r)
-															return
-														}
-														switch elem[0] {
-														case '/': // Prefix: "/annotations"
-															if prefix := "/annotations"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																elem = elem[len(prefix):]
-															} else {
-																break
-															}
-
-															// Leaf: ChecksListAnnotations
-															s.handleChecksListAnnotationsRequest(args, w, r)
-															return
-														}
-													}
-												case 's': // Prefix: "suites/"
-													if prefix := "suites/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-														elem = elem[len(prefix):]
-													} else {
-														break
-													}
-
-													// Param: "check_suite_id"
-													// Match until one of "/"
-													idx := strings.IndexAny(elem, "/")
-													if idx > 0 {
-														args["check_suite_id"] = elem[:idx]
-														elem = elem[idx:]
-
-														if len(elem) == 0 {
-															s.handleChecksGetSuiteRequest(args, w, r)
-															return
-														}
-														switch elem[0] {
-														case '/': // Prefix: "/check-runs"
-															if prefix := "/check-runs"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																elem = elem[len(prefix):]
-															} else {
-																break
-															}
-
-															// Leaf: ChecksListForSuite
-															s.handleChecksListForSuiteRequest(args, w, r)
-															return
-														}
-													}
-												}
-											case 'o': // Prefix: "o"
-												if prefix := "o"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-													elem = elem[len(prefix):]
-												} else {
-													break
-												}
-
-												if len(elem) == 0 {
-													s.handleCodeScanningGetAlertRequest(args, w, r)
-													return
-												}
-												switch elem[0] {
-												case 'd': // Prefix: "de-scanning/"
-													if prefix := "de-scanning/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-														elem = elem[len(prefix):]
-													} else {
-														break
-													}
-
-													if len(elem) == 0 {
-														s.handleCodeScanningGetSarifRequest(args, w, r)
-														return
-													}
-													switch elem[0] {
-													case 'a': // Prefix: "a"
-														if prefix := "a"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-															elem = elem[len(prefix):]
-														} else {
-															break
-														}
-
-														if len(elem) == 0 {
-															s.handleCodeScanningGetAnalysisRequest(args, w, r)
-															return
-														}
-														switch elem[0] {
-														case 'l': // Prefix: "lerts"
-															if prefix := "lerts"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																elem = elem[len(prefix):]
-															} else {
-																break
-															}
-
-															if len(elem) == 0 {
-																s.handleCodeScanningListAlertsForRepoRequest(args, w, r)
-																return
-															}
-															switch elem[0] {
-															case '/': // Prefix: "/"
-																if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																	elem = elem[len(prefix):]
-																} else {
-																	break
-																}
-
-																if len(elem) == 0 {
-																	break
-																}
-																switch elem[0] {
-																case 'n': // Prefix: "nalyses/"
-																	if prefix := "nalyses/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																		elem = elem[len(prefix):]
-																	} else {
-																		break
-																	}
-
-																	// Param: "analysis_id"
-																	// Leaf parameter
-																	args["analysis_id"] = elem
-
-																	// Leaf: CodeScanningGetAnalysis
-																	s.handleCodeScanningGetAnalysisRequest(args, w, r)
-																	return
-																}
-																// Param: "alert_number"
-																// Match until one of "/"
-																idx := strings.IndexAny(elem, "/")
-																if idx > 0 {
-																	args["alert_number"] = elem[:idx]
-																	elem = elem[idx:]
-
-																	if len(elem) == 0 {
-																		s.handleCodeScanningGetAlertRequest(args, w, r)
-																		return
-																	}
-																	switch elem[0] {
-																	case '/': // Prefix: "/instances"
-																		if prefix := "/instances"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																			elem = elem[len(prefix):]
-																		} else {
-																			break
-																		}
-
-																		// Leaf: CodeScanningListAlertInstances
-																		s.handleCodeScanningListAlertInstancesRequest(args, w, r)
-																		return
-																	}
-																}
-															}
-														case 'n': // Prefix: "nalyses"
-															if prefix := "nalyses"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																elem = elem[len(prefix):]
-															} else {
-																break
-															}
-
-															if len(elem) == 0 {
-																s.handleCodeScanningListRecentAnalysesRequest(args, w, r)
-																return
-															}
-															switch elem[0] {
-															case '/': // Prefix: "/"
-																if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																	elem = elem[len(prefix):]
-																} else {
-																	break
-																}
-
-																// Param: "analysis_id"
-																// Leaf parameter
-																args["analysis_id"] = elem
-
-																// Leaf: CodeScanningGetAnalysis
-																s.handleCodeScanningGetAnalysisRequest(args, w, r)
-																return
-															}
-														case 's': // Prefix: "sarifs/"
-															if prefix := "sarifs/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																elem = elem[len(prefix):]
-															} else {
-																break
-															}
-
-															// Param: "sarif_id"
-															// Leaf parameter
-															args["sarif_id"] = elem
-
-															// Leaf: CodeScanningGetSarif
-															s.handleCodeScanningGetSarifRequest(args, w, r)
-															return
-														}
-													case 's': // Prefix: "sarifs/"
-														if prefix := "sarifs/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-															elem = elem[len(prefix):]
-														} else {
-															break
-														}
-
-														// Param: "sarif_id"
-														// Leaf parameter
-														args["sarif_id"] = elem
-
-														// Leaf: CodeScanningGetSarif
-														s.handleCodeScanningGetSarifRequest(args, w, r)
-														return
-													}
-												case 'l': // Prefix: "llaborators"
-													if prefix := "llaborators"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-														elem = elem[len(prefix):]
-													} else {
-														break
-													}
-
-													if len(elem) == 0 {
-														s.handleReposListCollaboratorsRequest(args, w, r)
-														return
-													}
-													switch elem[0] {
-													case '/': // Prefix: "/"
-														if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-															elem = elem[len(prefix):]
-														} else {
-															break
-														}
-
-														// Param: "username"
-														// Match until one of "/"
-														idx := strings.IndexAny(elem, "/")
-														if idx > 0 {
-															args["username"] = elem[:idx]
-															elem = elem[idx:]
-
-															if len(elem) == 0 {
-																s.handleReposCheckCollaboratorRequest(args, w, r)
-																return
-															}
-															switch elem[0] {
-															case '/': // Prefix: "/permission"
-																if prefix := "/permission"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																	elem = elem[len(prefix):]
-																} else {
-																	break
-																}
-
-																// Leaf: ReposGetCollaboratorPermissionLevel
-																s.handleReposGetCollaboratorPermissionLevelRequest(args, w, r)
-																return
-															}
-														}
-													}
-												case 'm': // Prefix: "m"
-													if prefix := "m"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-														elem = elem[len(prefix):]
-													} else {
-														break
-													}
-
-													if len(elem) == 0 {
-														s.handleReposCompareCommitsRequest(args, w, r)
-														return
-													}
-													switch elem[0] {
-													case 'm': // Prefix: "m"
-														if prefix := "m"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-															elem = elem[len(prefix):]
-														} else {
-															break
-														}
-
-														if len(elem) == 0 {
-															s.handleReactionsListForCommitCommentRequest(args, w, r)
-															return
-														}
-														switch elem[0] {
-														case 'e': // Prefix: "ents"
-															if prefix := "ents"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																elem = elem[len(prefix):]
-															} else {
-																break
-															}
-
-															if len(elem) == 0 {
-																s.handleReposListCommitCommentsForRepoRequest(args, w, r)
-																return
-															}
-															switch elem[0] {
-															case '/': // Prefix: "/"
-																if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																	elem = elem[len(prefix):]
-																} else {
-																	break
-																}
-
-																// Param: "comment_id"
-																// Match until one of "/"
-																idx := strings.IndexAny(elem, "/")
-																if idx > 0 {
-																	args["comment_id"] = elem[:idx]
-																	elem = elem[idx:]
-
-																	if len(elem) == 0 {
-																		s.handleReposGetCommitCommentRequest(args, w, r)
-																		return
-																	}
-																	switch elem[0] {
-																	case '/': // Prefix: "/reactions"
-																		if prefix := "/reactions"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																			elem = elem[len(prefix):]
-																		} else {
-																			break
-																		}
-
-																		// Leaf: ReactionsListForCommitComment
-																		s.handleReactionsListForCommitCommentRequest(args, w, r)
-																		return
-																	}
-																}
-															}
-														case 'i': // Prefix: "its"
-															if prefix := "its"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																elem = elem[len(prefix):]
-															} else {
-																break
-															}
-
-															if len(elem) == 0 {
-																s.handleReposListCommitsRequest(args, w, r)
-																return
-															}
-															switch elem[0] {
-															case '/': // Prefix: "/"
-																if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																	elem = elem[len(prefix):]
-																} else {
-																	break
-																}
-
-																if len(elem) == 0 {
-																	break
-																}
-																switch elem[0] {
-																case 'd': // Prefix: "de-scanning/alerts/"
-																	if prefix := "de-scanning/alerts/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																		elem = elem[len(prefix):]
-																	} else {
-																		break
-																	}
-
-																	// Param: "alert_number"
-																	// Leaf parameter
-																	args["alert_number"] = elem
-
-																	// Leaf: CodeScanningGetAlert
-																	s.handleCodeScanningGetAlertRequest(args, w, r)
-																	return
-																case 'e': // Prefix: "ents/"
-																	if prefix := "ents/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																		elem = elem[len(prefix):]
-																	} else {
-																		break
-																	}
-
-																	// Param: "comment_id"
-																	// Match until one of "/"
-																	idx := strings.IndexAny(elem, "/")
-																	if idx > 0 {
-																		args["comment_id"] = elem[:idx]
-																		elem = elem[idx:]
-
-																		if len(elem) == 0 {
-																			break
-																		}
-																		switch elem[0] {
-																		case '/': // Prefix: "/reactions"
-																			if prefix := "/reactions"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																				elem = elem[len(prefix):]
-																			} else {
-																				break
-																			}
-
-																			// Leaf: ReactionsListForCommitComment
-																			s.handleReactionsListForCommitCommentRequest(args, w, r)
-																			return
-																		}
-																	}
-																}
-																// Param: "ref"
-																// Match until one of "/"
-																idx := strings.IndexAny(elem, "/")
-																if idx > 0 {
-																	args["ref"] = elem[:idx]
-																	elem = elem[idx:]
-
-																	if len(elem) == 0 {
-																		s.handleReposGetCommitRequest(args, w, r)
-																		return
-																	}
-																	switch elem[0] {
-																	case '/': // Prefix: "/"
-																		if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																			elem = elem[len(prefix):]
-																		} else {
-																			break
-																		}
-
-																		if len(elem) == 0 {
-																			s.handleReposGetCombinedStatusForRefRequest(args, w, r)
-																			return
-																		}
-																		switch elem[0] {
-																		case 'b': // Prefix: "branches-where-head"
-																			if prefix := "branches-where-head"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																				elem = elem[len(prefix):]
-																			} else {
-																				break
-																			}
-
-																			// Leaf: ReposListBranchesForHeadCommit
-																			s.handleReposListBranchesForHeadCommitRequest(args, w, r)
-																			return
-																		case 'c': // Prefix: "c"
-																			if prefix := "c"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																				elem = elem[len(prefix):]
-																			} else {
-																				break
-																			}
-
-																			if len(elem) == 0 {
-																				s.handleReposListCommentsForCommitRequest(args, w, r)
-																				return
-																			}
-																			switch elem[0] {
-																			case 'h': // Prefix: "heck-"
-																				if prefix := "heck-"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																					elem = elem[len(prefix):]
-																				} else {
-																					break
-																				}
-
-																				if len(elem) == 0 {
-																					s.handleChecksListSuitesForRefRequest(args, w, r)
-																					return
-																				}
-																				switch elem[0] {
-																				case 'o': // Prefix: "omments"
-																					if prefix := "omments"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																						elem = elem[len(prefix):]
-																					} else {
-																						break
-																					}
-
-																					// Leaf: ReposListCommentsForCommit
-																					s.handleReposListCommentsForCommitRequest(args, w, r)
-																					return
-																				case 'r': // Prefix: "runs"
-																					if prefix := "runs"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																						elem = elem[len(prefix):]
-																					} else {
-																						break
-																					}
-
-																					if len(elem) == 0 {
-																						s.handleChecksListForRefRequest(args, w, r)
-																						return
-																					}
-																					switch elem[0] {
-																					case 's': // Prefix: "suites"
-																						if prefix := "suites"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																							elem = elem[len(prefix):]
-																						} else {
-																							break
-																						}
-
-																						// Leaf: ChecksListSuitesForRef
-																						s.handleChecksListSuitesForRefRequest(args, w, r)
-																						return
-																					}
-																				case 's': // Prefix: "s"
-																					if prefix := "s"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																						elem = elem[len(prefix):]
-																					} else {
-																						break
-																					}
-
-																					if len(elem) == 0 {
-																						s.handleReposGetCombinedStatusForRefRequest(args, w, r)
-																						return
-																					}
-																					switch elem[0] {
-																					case 't': // Prefix: "tatus"
-																						if prefix := "tatus"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																							elem = elem[len(prefix):]
-																						} else {
-																							break
-																						}
-
-																						// Leaf: ReposGetCombinedStatusForRef
-																						s.handleReposGetCombinedStatusForRefRequest(args, w, r)
-																						return
-																					case 'u': // Prefix: "uites"
-																						if prefix := "uites"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																							elem = elem[len(prefix):]
-																						} else {
-																							break
-																						}
-
-																						if len(elem) == 0 {
-																							s.handleChecksListSuitesForRefRequest(args, w, r)
-																							return
-																						}
-																						switch elem[0] {
-																						case 't': // Prefix: "tatus"
-																							if prefix := "tatus"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																								elem = elem[len(prefix):]
-																							} else {
-																								break
-																							}
-
-																							// Leaf: ReposGetCombinedStatusForRef
-																							s.handleReposGetCombinedStatusForRefRequest(args, w, r)
-																							return
-																						}
-																					}
-																				}
-																			case 'o': // Prefix: "omments"
-																				if prefix := "omments"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																					elem = elem[len(prefix):]
-																				} else {
-																					break
-																				}
-
-																				// Leaf: ReposListCommentsForCommit
-																				s.handleReposListCommentsForCommitRequest(args, w, r)
-																				return
-																			}
-																		case 'p': // Prefix: "pulls"
-																			if prefix := "pulls"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																				elem = elem[len(prefix):]
-																			} else {
-																				break
-																			}
-
-																			// Leaf: ReposListPullRequestsAssociatedWithCommit
-																			s.handleReposListPullRequestsAssociatedWithCommitRequest(args, w, r)
-																			return
-																		case 's': // Prefix: "status"
-																			if prefix := "status"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																				elem = elem[len(prefix):]
-																			} else {
-																				break
-																			}
-
-																			if len(elem) == 0 {
-																				s.handleReposGetCombinedStatusForRefRequest(args, w, r)
-																				return
-																			}
-																			switch elem[0] {
-																			case 'e': // Prefix: "es"
-																				if prefix := "es"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																					elem = elem[len(prefix):]
-																				} else {
-																					break
-																				}
-
-																				// Leaf: ReposListCommitStatusesForRef
-																				s.handleReposListCommitStatusesForRefRequest(args, w, r)
-																				return
-																			}
-																		}
-																	}
-																}
-															}
-														case 'p': // Prefix: "pare/"
-															if prefix := "pare/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																elem = elem[len(prefix):]
-															} else {
-																break
-															}
-
-															// Param: "basehead"
-															// Leaf parameter
-															args["basehead"] = elem
-
-															// Leaf: ReposCompareCommits
-															s.handleReposCompareCommitsRequest(args, w, r)
-															return
-														case 'u': // Prefix: "unity/profile"
-															if prefix := "unity/profile"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																elem = elem[len(prefix):]
-															} else {
-																break
-															}
-
-															// Leaf: ReposGetCommunityProfileMetrics
-															s.handleReposGetCommunityProfileMetricsRequest(args, w, r)
-															return
-														}
-													case 'p': // Prefix: "pare/"
-														if prefix := "pare/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-															elem = elem[len(prefix):]
-														} else {
-															break
-														}
-
-														// Param: "basehead"
-														// Leaf parameter
-														args["basehead"] = elem
-
-														// Leaf: ReposCompareCommits
-														s.handleReposCompareCommitsRequest(args, w, r)
-														return
-													}
-												case 'n': // Prefix: "ntributors"
-													if prefix := "ntributors"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-														elem = elem[len(prefix):]
-													} else {
-														break
-													}
-
-													// Leaf: ReposListContributors
-													s.handleReposListContributorsRequest(args, w, r)
-													return
-												}
-											}
-										case 'd': // Prefix: "deployments"
-											if prefix := "deployments"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-												elem = elem[len(prefix):]
-											} else {
-												break
-											}
-
-											if len(elem) == 0 {
-												s.handleReposListDeploymentsRequest(args, w, r)
-												return
-											}
-											switch elem[0] {
-											case '/': // Prefix: "/"
-												if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-													elem = elem[len(prefix):]
-												} else {
-													break
-												}
-
-												// Param: "deployment_id"
-												// Match until one of "/"
-												idx := strings.IndexAny(elem, "/")
-												if idx > 0 {
-													args["deployment_id"] = elem[:idx]
-													elem = elem[idx:]
-
-													if len(elem) == 0 {
-														s.handleReposGetDeploymentRequest(args, w, r)
-														return
-													}
-													switch elem[0] {
-													case '/': // Prefix: "/statuses"
-														if prefix := "/statuses"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-															elem = elem[len(prefix):]
-														} else {
-															break
-														}
-
-														if len(elem) == 0 {
-															s.handleReposListDeploymentStatusesRequest(args, w, r)
-															return
-														}
-														switch elem[0] {
-														case '/': // Prefix: "/"
-															if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																elem = elem[len(prefix):]
-															} else {
-																break
-															}
-
-															// Param: "status_id"
-															// Leaf parameter
-															args["status_id"] = elem
-
-															// Leaf: ReposGetDeploymentStatus
-															s.handleReposGetDeploymentStatusRequest(args, w, r)
-															return
-														}
-													}
-												}
-											}
-										case 'e': // Prefix: "events"
-											if prefix := "events"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-												elem = elem[len(prefix):]
-											} else {
-												break
-											}
-
-											// Leaf: ActivityListRepoEvents
-											s.handleActivityListRepoEventsRequest(args, w, r)
-											return
-										case 'f': // Prefix: "forks"
-											if prefix := "forks"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-												elem = elem[len(prefix):]
-											} else {
-												break
-											}
-
-											// Leaf: ReposListForks
-											s.handleReposListForksRequest(args, w, r)
-											return
-										case 'g': // Prefix: "git/"
-											if prefix := "git/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-												elem = elem[len(prefix):]
-											} else {
-												break
-											}
-
-											if len(elem) == 0 {
-												s.handleGitGetCommitRequest(args, w, r)
-												return
-											}
-											switch elem[0] {
-											case 'b': // Prefix: "blobs/"
-												if prefix := "blobs/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-													elem = elem[len(prefix):]
-												} else {
-													break
-												}
-
-												if len(elem) == 0 {
-													break
-												}
-												switch elem[0] {
-												case 'c': // Prefix: "commits/"
-													if prefix := "commits/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-														elem = elem[len(prefix):]
-													} else {
-														break
-													}
-
-													// Param: "commit_sha"
-													// Leaf parameter
-													args["commit_sha"] = elem
-
-													// Leaf: GitGetCommit
-													s.handleGitGetCommitRequest(args, w, r)
-													return
-												}
-												// Param: "file_sha"
-												// Leaf parameter
-												args["file_sha"] = elem
-
-												// Leaf: GitGetBlob
-												s.handleGitGetBlobRequest(args, w, r)
-												return
-											case 'c': // Prefix: "commits/"
-												if prefix := "commits/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-													elem = elem[len(prefix):]
-												} else {
-													break
-												}
-
-												// Param: "commit_sha"
-												// Leaf parameter
-												args["commit_sha"] = elem
-
-												// Leaf: GitGetCommit
-												s.handleGitGetCommitRequest(args, w, r)
-												return
-											case 'm': // Prefix: "matching-refs/"
-												if prefix := "matching-refs/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-													elem = elem[len(prefix):]
-												} else {
-													break
-												}
-
-												// Param: "ref"
-												// Leaf parameter
-												args["ref"] = elem
-
-												// Leaf: GitListMatchingRefs
-												s.handleGitListMatchingRefsRequest(args, w, r)
-												return
-											case 'r': // Prefix: "ref/"
-												if prefix := "ref/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-													elem = elem[len(prefix):]
-												} else {
-													break
-												}
-
-												// Param: "ref"
-												// Leaf parameter
-												args["ref"] = elem
-
-												// Leaf: GitGetRef
-												s.handleGitGetRefRequest(args, w, r)
-												return
-											case 't': // Prefix: "t"
-												if prefix := "t"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-													elem = elem[len(prefix):]
-												} else {
-													break
-												}
-
-												if len(elem) == 0 {
-													s.handleGitGetTreeRequest(args, w, r)
-													return
-												}
-												switch elem[0] {
-												case 'a': // Prefix: "ags/"
-													if prefix := "ags/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-														elem = elem[len(prefix):]
-													} else {
-														break
-													}
-
-													if len(elem) == 0 {
-														break
-													}
-													switch elem[0] {
-													case 'r': // Prefix: "rees/"
-														if prefix := "rees/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-															elem = elem[len(prefix):]
-														} else {
-															break
-														}
-
-														// Param: "tree_sha"
-														// Leaf parameter
-														args["tree_sha"] = elem
-
-														// Leaf: GitGetTree
-														s.handleGitGetTreeRequest(args, w, r)
-														return
-													}
-													// Param: "tag_sha"
-													// Leaf parameter
-													args["tag_sha"] = elem
-
-													// Leaf: GitGetTag
-													s.handleGitGetTagRequest(args, w, r)
-													return
-												case 'r': // Prefix: "rees/"
-													if prefix := "rees/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-														elem = elem[len(prefix):]
-													} else {
-														break
-													}
-
-													// Param: "tree_sha"
-													// Leaf parameter
-													args["tree_sha"] = elem
-
-													// Leaf: GitGetTree
-													s.handleGitGetTreeRequest(args, w, r)
-													return
-												}
-											}
-										case 'h': // Prefix: "hooks"
-											if prefix := "hooks"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-												elem = elem[len(prefix):]
-											} else {
-												break
-											}
-
-											if len(elem) == 0 {
-												s.handleReposListWebhooksRequest(args, w, r)
-												return
-											}
-											switch elem[0] {
-											case '/': // Prefix: "/"
-												if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-													elem = elem[len(prefix):]
-												} else {
-													break
-												}
-
-												// Param: "hook_id"
-												// Match until one of "/"
-												idx := strings.IndexAny(elem, "/")
-												if idx > 0 {
-													args["hook_id"] = elem[:idx]
-													elem = elem[idx:]
-
-													if len(elem) == 0 {
-														s.handleReposGetWebhookRequest(args, w, r)
-														return
-													}
-													switch elem[0] {
-													case '/': // Prefix: "/"
-														if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-															elem = elem[len(prefix):]
-														} else {
-															break
-														}
-
-														if len(elem) == 0 {
-															s.handleReposGetWebhookDeliveryRequest(args, w, r)
-															return
-														}
-														switch elem[0] {
-														case 'c': // Prefix: "config"
-															if prefix := "config"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																elem = elem[len(prefix):]
-															} else {
-																break
-															}
-
-															if len(elem) == 0 {
-																s.handleReposGetWebhookConfigForRepoRequest(args, w, r)
-																return
-															}
-															switch elem[0] {
-															case 'd': // Prefix: "deliveries/"
-																if prefix := "deliveries/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																	elem = elem[len(prefix):]
-																} else {
-																	break
-																}
-
-																// Param: "delivery_id"
-																// Leaf parameter
-																args["delivery_id"] = elem
-
-																// Leaf: ReposGetWebhookDelivery
-																s.handleReposGetWebhookDeliveryRequest(args, w, r)
-																return
-															}
-														case 'd': // Prefix: "deliveries"
-															if prefix := "deliveries"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																elem = elem[len(prefix):]
-															} else {
-																break
-															}
-
-															if len(elem) == 0 {
-																s.handleReposListWebhookDeliveriesRequest(args, w, r)
-																return
-															}
-															switch elem[0] {
-															case '/': // Prefix: "/"
-																if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																	elem = elem[len(prefix):]
-																} else {
-																	break
-																}
-
-																// Param: "delivery_id"
-																// Leaf parameter
-																args["delivery_id"] = elem
-
-																// Leaf: ReposGetWebhookDelivery
-																s.handleReposGetWebhookDeliveryRequest(args, w, r)
-																return
-															}
-														}
-													}
-												}
-											}
-										case 'i': // Prefix: "i"
-											if prefix := "i"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-												elem = elem[len(prefix):]
-											} else {
-												break
-											}
-
-											if len(elem) == 0 {
-												s.handleMigrationsGetCommitAuthorsRequest(args, w, r)
-												return
-											}
-											switch elem[0] {
-											case 'm': // Prefix: "mport"
-												if prefix := "mport"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-													elem = elem[len(prefix):]
-												} else {
-													break
-												}
-
-												if len(elem) == 0 {
-													s.handleMigrationsGetImportStatusRequest(args, w, r)
-													return
-												}
-												switch elem[0] {
-												case '/': // Prefix: "/"
-													if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-														elem = elem[len(prefix):]
-													} else {
-														break
-													}
-
-													if len(elem) == 0 {
-														s.handleMigrationsGetLargeFilesRequest(args, w, r)
-														return
-													}
-													switch elem[0] {
-													case 'a': // Prefix: "authors"
-														if prefix := "authors"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-															elem = elem[len(prefix):]
-														} else {
-															break
-														}
-
-														if len(elem) == 0 {
-															s.handleMigrationsGetCommitAuthorsRequest(args, w, r)
-															return
-														}
-														switch elem[0] {
-														case 'l': // Prefix: "large_files"
-															if prefix := "large_files"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																elem = elem[len(prefix):]
-															} else {
-																break
-															}
-
-															// Leaf: MigrationsGetLargeFiles
-															s.handleMigrationsGetLargeFilesRequest(args, w, r)
-															return
-														}
-													case 'l': // Prefix: "large_files"
-														if prefix := "large_files"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-															elem = elem[len(prefix):]
-														} else {
-															break
-														}
-
-														// Leaf: MigrationsGetLargeFiles
-														s.handleMigrationsGetLargeFilesRequest(args, w, r)
-														return
-													}
-												}
-											case 'n': // Prefix: "nvitations"
-												if prefix := "nvitations"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-													elem = elem[len(prefix):]
-												} else {
-													break
-												}
-
-												// Leaf: ReposListInvitations
-												s.handleReposListInvitationsRequest(args, w, r)
-												return
-											case 's': // Prefix: "ssues"
-												if prefix := "ssues"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-													elem = elem[len(prefix):]
-												} else {
-													break
-												}
-
-												if len(elem) == 0 {
-													s.handleIssuesListForRepoRequest(args, w, r)
-													return
-												}
-												switch elem[0] {
-												case '/': // Prefix: "/"
-													if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-														elem = elem[len(prefix):]
-													} else {
-														break
-													}
-
-													if len(elem) == 0 {
-														break
-													}
-													switch elem[0] {
-													case 'c': // Prefix: "comments"
-														if prefix := "comments"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-															elem = elem[len(prefix):]
-														} else {
-															break
-														}
-
-														if len(elem) == 0 {
-															s.handleIssuesListCommentsForRepoRequest(args, w, r)
-															return
-														}
-														switch elem[0] {
-														case '/': // Prefix: "/"
-															if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																elem = elem[len(prefix):]
-															} else {
-																break
-															}
-
-															// Param: "comment_id"
-															// Match until one of "/"
-															idx := strings.IndexAny(elem, "/")
-															if idx > 0 {
-																args["comment_id"] = elem[:idx]
-																elem = elem[idx:]
-
-																if len(elem) == 0 {
-																	s.handleIssuesGetCommentRequest(args, w, r)
-																	return
-																}
-																switch elem[0] {
-																case '/': // Prefix: "/reactions"
-																	if prefix := "/reactions"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																		elem = elem[len(prefix):]
-																	} else {
-																		break
-																	}
-
-																	// Leaf: ReactionsListForIssueComment
-																	s.handleReactionsListForIssueCommentRequest(args, w, r)
-																	return
-																}
-															}
-														}
-													case 'e': // Prefix: "events"
-														if prefix := "events"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-															elem = elem[len(prefix):]
-														} else {
-															break
-														}
-
-														if len(elem) == 0 {
-															s.handleIssuesListEventsForRepoRequest(args, w, r)
-															return
-														}
-														switch elem[0] {
-														case '/': // Prefix: "/"
-															if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																elem = elem[len(prefix):]
-															} else {
-																break
-															}
-
-															// Param: "event_id"
-															// Leaf parameter
-															args["event_id"] = elem
-
-															// Leaf: IssuesGetEvent
-															s.handleIssuesGetEventRequest(args, w, r)
-															return
-														}
-													}
-													// Param: "issue_number"
-													// Match until one of "/"
-													idx := strings.IndexAny(elem, "/")
-													if idx > 0 {
-														args["issue_number"] = elem[:idx]
-														elem = elem[idx:]
-
-														if len(elem) == 0 {
-															s.handleIssuesGetRequest(args, w, r)
-															return
-														}
-														switch elem[0] {
-														case '/': // Prefix: "/"
-															if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																elem = elem[len(prefix):]
-															} else {
-																break
-															}
-
-															if len(elem) == 0 {
-																s.handleIssuesListLabelsOnIssueRequest(args, w, r)
-																return
-															}
-															switch elem[0] {
-															case 'c': // Prefix: "comments"
-																if prefix := "comments"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																	elem = elem[len(prefix):]
-																} else {
-																	break
-																}
-
-																if len(elem) == 0 {
-																	s.handleIssuesListCommentsRequest(args, w, r)
-																	return
-																}
-																switch elem[0] {
-																case 'l': // Prefix: "labels"
-																	if prefix := "labels"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																		elem = elem[len(prefix):]
-																	} else {
-																		break
-																	}
-
-																	// Leaf: IssuesListLabelsOnIssue
-																	s.handleIssuesListLabelsOnIssueRequest(args, w, r)
-																	return
-																}
-															case 'l': // Prefix: "labels"
-																if prefix := "labels"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																	elem = elem[len(prefix):]
-																} else {
-																	break
-																}
-
-																// Leaf: IssuesListLabelsOnIssue
-																s.handleIssuesListLabelsOnIssueRequest(args, w, r)
-																return
-															case 'r': // Prefix: "reactions"
-																if prefix := "reactions"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																	elem = elem[len(prefix):]
-																} else {
-																	break
-																}
-
-																// Leaf: ReactionsListForIssue
-																s.handleReactionsListForIssueRequest(args, w, r)
-																return
-															}
-														}
-													}
-												case 'm': // Prefix: "mport/authors"
-													if prefix := "mport/authors"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-														elem = elem[len(prefix):]
-													} else {
-														break
-													}
-
-													// Leaf: MigrationsGetCommitAuthors
-													s.handleMigrationsGetCommitAuthorsRequest(args, w, r)
-													return
-												}
-											}
-										case 'k': // Prefix: "keys"
-											if prefix := "keys"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-												elem = elem[len(prefix):]
-											} else {
-												break
-											}
-
-											if len(elem) == 0 {
-												s.handleReposListDeployKeysRequest(args, w, r)
-												return
-											}
-											switch elem[0] {
-											case '/': // Prefix: "/"
-												if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-													elem = elem[len(prefix):]
-												} else {
-													break
-												}
-
-												// Param: "key_id"
-												// Leaf parameter
-												args["key_id"] = elem
-
-												// Leaf: ReposGetDeployKey
-												s.handleReposGetDeployKeyRequest(args, w, r)
-												return
-											}
-										case 'l': // Prefix: "l"
-											if prefix := "l"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-												elem = elem[len(prefix):]
-											} else {
-												break
-											}
-
-											if len(elem) == 0 {
-												s.handleLicensesGetForRepoRequest(args, w, r)
-												return
-											}
-											switch elem[0] {
-											case 'a': // Prefix: "a"
-												if prefix := "a"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-													elem = elem[len(prefix):]
-												} else {
-													break
-												}
-
-												if len(elem) == 0 {
-													s.handleReposListLanguagesRequest(args, w, r)
-													return
-												}
-												switch elem[0] {
-												case 'b': // Prefix: "bels"
-													if prefix := "bels"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-														elem = elem[len(prefix):]
-													} else {
-														break
-													}
-
-													if len(elem) == 0 {
-														s.handleIssuesListLabelsForRepoRequest(args, w, r)
-														return
-													}
-													switch elem[0] {
-													case '/': // Prefix: "/"
-														if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-															elem = elem[len(prefix):]
-														} else {
-															break
-														}
-
-														// Param: "name"
-														// Leaf parameter
-														args["name"] = elem
-
-														// Leaf: IssuesGetLabel
-														s.handleIssuesGetLabelRequest(args, w, r)
-														return
-													case 'i': // Prefix: "icense"
-														if prefix := "icense"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-															elem = elem[len(prefix):]
-														} else {
-															break
-														}
-
-														// Leaf: LicensesGetForRepo
-														s.handleLicensesGetForRepoRequest(args, w, r)
-														return
-													case 'n': // Prefix: "nguages"
-														if prefix := "nguages"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-															elem = elem[len(prefix):]
-														} else {
-															break
-														}
-
-														// Leaf: ReposListLanguages
-														s.handleReposListLanguagesRequest(args, w, r)
-														return
-													}
-												case 'n': // Prefix: "nguages"
-													if prefix := "nguages"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-														elem = elem[len(prefix):]
-													} else {
-														break
-													}
-
-													// Leaf: ReposListLanguages
-													s.handleReposListLanguagesRequest(args, w, r)
-													return
-												}
-											case 'i': // Prefix: "icense"
-												if prefix := "icense"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-													elem = elem[len(prefix):]
-												} else {
-													break
-												}
-
-												// Leaf: LicensesGetForRepo
-												s.handleLicensesGetForRepoRequest(args, w, r)
-												return
-											}
-										case 'm': // Prefix: "milestones"
-											if prefix := "milestones"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-												elem = elem[len(prefix):]
-											} else {
-												break
-											}
-
-											if len(elem) == 0 {
-												s.handleIssuesListMilestonesRequest(args, w, r)
-												return
-											}
-											switch elem[0] {
-											case '/': // Prefix: "/"
-												if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-													elem = elem[len(prefix):]
-												} else {
-													break
-												}
-
-												// Param: "milestone_number"
-												// Match until one of "/"
-												idx := strings.IndexAny(elem, "/")
-												if idx > 0 {
-													args["milestone_number"] = elem[:idx]
-													elem = elem[idx:]
-
-													if len(elem) == 0 {
-														s.handleIssuesGetMilestoneRequest(args, w, r)
-														return
-													}
-													switch elem[0] {
-													case '/': // Prefix: "/labels"
-														if prefix := "/labels"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-															elem = elem[len(prefix):]
-														} else {
-															break
-														}
-
-														// Leaf: IssuesListLabelsForMilestone
-														s.handleIssuesListLabelsForMilestoneRequest(args, w, r)
-														return
-													}
-												}
-											}
-										case 'n': // Prefix: "notifications"
-											if prefix := "notifications"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-												elem = elem[len(prefix):]
-											} else {
-												break
-											}
-
-											// Leaf: ActivityListRepoNotificationsForAuthenticatedUser
-											s.handleActivityListRepoNotificationsForAuthenticatedUserRequest(args, w, r)
-											return
-										case 'p': // Prefix: "p"
-											if prefix := "p"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-												elem = elem[len(prefix):]
-											} else {
-												break
-											}
-
-											if len(elem) == 0 {
-												s.handlePullsCheckIfMergedRequest(args, w, r)
-												return
-											}
-											switch elem[0] {
-											case 'a': // Prefix: "ages"
-												if prefix := "ages"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-													elem = elem[len(prefix):]
-												} else {
-													break
-												}
-
-												if len(elem) == 0 {
-													s.handleReposGetPagesRequest(args, w, r)
-													return
-												}
-												switch elem[0] {
-												case '/': // Prefix: "/"
-													if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-														elem = elem[len(prefix):]
-													} else {
-														break
-													}
-
-													if len(elem) == 0 {
-														s.handleReposGetPagesHealthCheckRequest(args, w, r)
-														return
-													}
-													switch elem[0] {
-													case 'b': // Prefix: "builds"
-														if prefix := "builds"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-															elem = elem[len(prefix):]
-														} else {
-															break
-														}
-
-														if len(elem) == 0 {
-															s.handleReposListPagesBuildsRequest(args, w, r)
-															return
-														}
-														switch elem[0] {
-														case '/': // Prefix: "/"
-															if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																elem = elem[len(prefix):]
-															} else {
-																break
-															}
-
-															if len(elem) == 0 {
-																s.handleReposGetPagesBuildRequest(args, w, r)
-																return
-															}
-															switch elem[0] {
-															case 'h': // Prefix: "health"
-																if prefix := "health"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																	elem = elem[len(prefix):]
-																} else {
-																	break
-																}
-
-																// Leaf: ReposGetPagesHealthCheck
-																s.handleReposGetPagesHealthCheckRequest(args, w, r)
-																return
-															case 'l': // Prefix: "latest"
-																if prefix := "latest"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																	elem = elem[len(prefix):]
-																} else {
-																	break
-																}
-
-																// Param: "build_id"
-																// Leaf parameter
-																args["build_id"] = elem
-
-																// Leaf: ReposGetPagesBuild
-																s.handleReposGetPagesBuildRequest(args, w, r)
-																return
-															}
-															// Param: "build_id"
-															// Leaf parameter
-															args["build_id"] = elem
-
-															// Leaf: ReposGetPagesBuild
-															s.handleReposGetPagesBuildRequest(args, w, r)
-															return
-														}
-													case 'h': // Prefix: "health"
-														if prefix := "health"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-															elem = elem[len(prefix):]
-														} else {
-															break
-														}
-
-														// Leaf: ReposGetPagesHealthCheck
-														s.handleReposGetPagesHealthCheckRequest(args, w, r)
-														return
-													}
-												}
-											case 'r': // Prefix: "rojects"
-												if prefix := "rojects"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-													elem = elem[len(prefix):]
-												} else {
-													break
-												}
-
-												if len(elem) == 0 {
-													s.handleProjectsListForRepoRequest(args, w, r)
-													return
-												}
-												switch elem[0] {
-												case 'u': // Prefix: "ulls/"
-													if prefix := "ulls/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-														elem = elem[len(prefix):]
-													} else {
-														break
-													}
-
-													// Param: "pull_number"
-													// Match until one of "/"
-													idx := strings.IndexAny(elem, "/")
-													if idx > 0 {
-														args["pull_number"] = elem[:idx]
-														elem = elem[idx:]
-
-														if len(elem) == 0 {
-															break
-														}
-														switch elem[0] {
-														case '/': // Prefix: "/merge"
-															if prefix := "/merge"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																elem = elem[len(prefix):]
-															} else {
-																break
-															}
-
-															// Leaf: PullsCheckIfMerged
-															s.handlePullsCheckIfMergedRequest(args, w, r)
-															return
-														}
-													}
-												}
-											case 'u': // Prefix: "ulls"
-												if prefix := "ulls"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-													elem = elem[len(prefix):]
-												} else {
-													break
-												}
-
-												if len(elem) == 0 {
-													s.handlePullsListRequest(args, w, r)
-													return
-												}
-												switch elem[0] {
-												case '/': // Prefix: "/"
-													if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-														elem = elem[len(prefix):]
-													} else {
-														break
-													}
-
-													if len(elem) == 0 {
-														break
-													}
-													switch elem[0] {
-													case 'c': // Prefix: "comments"
-														if prefix := "comments"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-															elem = elem[len(prefix):]
-														} else {
-															break
-														}
-
-														if len(elem) == 0 {
-															s.handlePullsListReviewCommentsForRepoRequest(args, w, r)
-															return
-														}
-														switch elem[0] {
-														case '/': // Prefix: "/"
-															if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																elem = elem[len(prefix):]
-															} else {
-																break
-															}
-
-															// Param: "comment_id"
-															// Match until one of "/"
-															idx := strings.IndexAny(elem, "/")
-															if idx > 0 {
-																args["comment_id"] = elem[:idx]
-																elem = elem[idx:]
-
-																if len(elem) == 0 {
-																	s.handlePullsGetReviewCommentRequest(args, w, r)
-																	return
-																}
-																switch elem[0] {
-																case '/': // Prefix: "/reactions"
-																	if prefix := "/reactions"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																		elem = elem[len(prefix):]
-																	} else {
-																		break
-																	}
-
-																	// Leaf: ReactionsListForPullRequestReviewComment
-																	s.handleReactionsListForPullRequestReviewCommentRequest(args, w, r)
-																	return
-																}
-															}
-														}
-													}
-													// Param: "pull_number"
-													// Match until one of "/"
-													idx := strings.IndexAny(elem, "/")
-													if idx > 0 {
-														args["pull_number"] = elem[:idx]
-														elem = elem[idx:]
-
-														if len(elem) == 0 {
-															s.handlePullsGetRequest(args, w, r)
-															return
-														}
-														switch elem[0] {
-														case '/': // Prefix: "/"
-															if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																elem = elem[len(prefix):]
-															} else {
-																break
-															}
-
-															if len(elem) == 0 {
-																s.handlePullsGetReviewRequest(args, w, r)
-																return
-															}
-															switch elem[0] {
-															case 'c': // Prefix: "comm"
-																if prefix := "comm"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																	elem = elem[len(prefix):]
-																} else {
-																	break
-																}
-
-																if len(elem) == 0 {
-																	s.handlePullsListReviewCommentsRequest(args, w, r)
-																	return
-																}
-																switch elem[0] {
-																case 'e': // Prefix: "ents"
-																	if prefix := "ents"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																		elem = elem[len(prefix):]
-																	} else {
-																		break
-																	}
-
-																	// Leaf: PullsListReviewComments
-																	s.handlePullsListReviewCommentsRequest(args, w, r)
-																	return
-																case 'i': // Prefix: "its"
-																	if prefix := "its"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																		elem = elem[len(prefix):]
-																	} else {
-																		break
-																	}
-
-																	if len(elem) == 0 {
-																		s.handlePullsListCommitsRequest(args, w, r)
-																		return
-																	}
-																	switch elem[0] {
-																	case 'e': // Prefix: "ents"
-																		if prefix := "ents"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																			elem = elem[len(prefix):]
-																		} else {
-																			break
-																		}
-
-																		// Leaf: PullsListReviewComments
-																		s.handlePullsListReviewCommentsRequest(args, w, r)
-																		return
-																	}
-																}
-															case 'f': // Prefix: "files"
-																if prefix := "files"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																	elem = elem[len(prefix):]
-																} else {
-																	break
-																}
-
-																// Leaf: PullsListFiles
-																s.handlePullsListFilesRequest(args, w, r)
-																return
-															case 'm': // Prefix: "merge"
-																if prefix := "merge"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																	elem = elem[len(prefix):]
-																} else {
-																	break
-																}
-
-																if len(elem) == 0 {
-																	s.handlePullsCheckIfMergedRequest(args, w, r)
-																	return
-																}
-																switch elem[0] {
-																case 'r': // Prefix: "reviews/"
-																	if prefix := "reviews/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																		elem = elem[len(prefix):]
-																	} else {
-																		break
-																	}
-
-																	// Param: "review_id"
-																	// Leaf parameter
-																	args["review_id"] = elem
-
-																	// Leaf: PullsGetReview
-																	s.handlePullsGetReviewRequest(args, w, r)
-																	return
-																}
-															case 'r': // Prefix: "re"
-																if prefix := "re"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																	elem = elem[len(prefix):]
-																} else {
-																	break
-																}
-
-																if len(elem) == 0 {
-																	s.handlePullsListRequestedReviewersRequest(args, w, r)
-																	return
-																}
-																switch elem[0] {
-																case 'q': // Prefix: "quested_reviewers"
-																	if prefix := "quested_reviewers"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																		elem = elem[len(prefix):]
-																	} else {
-																		break
-																	}
-
-																	// Leaf: PullsListRequestedReviewers
-																	s.handlePullsListRequestedReviewersRequest(args, w, r)
-																	return
-																case 'v': // Prefix: "views"
-																	if prefix := "views"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																		elem = elem[len(prefix):]
-																	} else {
-																		break
-																	}
-
-																	if len(elem) == 0 {
-																		s.handlePullsListReviewsRequest(args, w, r)
-																		return
-																	}
-																	switch elem[0] {
-																	case '/': // Prefix: "/"
-																		if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																			elem = elem[len(prefix):]
-																		} else {
-																			break
-																		}
-
-																		if len(elem) == 0 {
-																			break
-																		}
-																		switch elem[0] {
-																		case 'q': // Prefix: "quested_reviewers"
-																			if prefix := "quested_reviewers"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																				elem = elem[len(prefix):]
-																			} else {
-																				break
-																			}
-
-																			// Leaf: PullsListRequestedReviewers
-																			s.handlePullsListRequestedReviewersRequest(args, w, r)
-																			return
-																		}
-																		// Param: "review_id"
-																		// Match until one of "/"
-																		idx := strings.IndexAny(elem, "/")
-																		if idx > 0 {
-																			args["review_id"] = elem[:idx]
-																			elem = elem[idx:]
-
-																			if len(elem) == 0 {
-																				s.handlePullsGetReviewRequest(args, w, r)
-																				return
-																			}
-																			switch elem[0] {
-																			case '/': // Prefix: "/comments"
-																				if prefix := "/comments"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																					elem = elem[len(prefix):]
-																				} else {
-																					break
-																				}
-
-																				// Leaf: PullsListCommentsForReview
-																				s.handlePullsListCommentsForReviewRequest(args, w, r)
-																				return
-																			}
-																		}
-																	}
-																}
-															}
-														}
-													}
-												}
-											}
-										case 'r': // Prefix: "re"
-											if prefix := "re"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-												elem = elem[len(prefix):]
-											} else {
-												break
-											}
-
-											if len(elem) == 0 {
-												s.handleReposGetReadmeRequest(args, w, r)
-												return
-											}
-											switch elem[0] {
-											case 'a': // Prefix: "adme"
-												if prefix := "adme"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-													elem = elem[len(prefix):]
-												} else {
-													break
-												}
-
-												if len(elem) == 0 {
-													s.handleReposGetReadmeRequest(args, w, r)
-													return
-												}
-												switch elem[0] {
-												case '/': // Prefix: "/"
-													if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-														elem = elem[len(prefix):]
-													} else {
-														break
-													}
-
-													// Param: "dir"
-													// Leaf parameter
-													args["dir"] = elem
-
-													// Leaf: ReposGetReadmeInDirectory
-													s.handleReposGetReadmeInDirectoryRequest(args, w, r)
-													return
-												}
-											case 'l': // Prefix: "leases"
-												if prefix := "leases"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-													elem = elem[len(prefix):]
-												} else {
-													break
-												}
-
-												if len(elem) == 0 {
-													s.handleReposListReleasesRequest(args, w, r)
-													return
-												}
-												switch elem[0] {
-												case '/': // Prefix: "/"
-													if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-														elem = elem[len(prefix):]
-													} else {
-														break
-													}
-
-													if len(elem) == 0 {
-														s.handleReposGetReleaseRequest(args, w, r)
-														return
-													}
-													switch elem[0] {
-													case 'a': // Prefix: "assets/"
-														if prefix := "assets/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-															elem = elem[len(prefix):]
-														} else {
-															break
-														}
-
-														// Param: "asset_id"
-														// Leaf parameter
-														args["asset_id"] = elem
-
-														// Leaf: ReposGetReleaseAsset
-														s.handleReposGetReleaseAssetRequest(args, w, r)
-														return
-													case 'l': // Prefix: "latest"
-														if prefix := "latest"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-															elem = elem[len(prefix):]
-														} else {
-															break
-														}
-
-														if len(elem) == 0 {
-															s.handleReposGetLatestReleaseRequest(args, w, r)
-															return
-														}
-														switch elem[0] {
-														case 'a': // Prefix: "adme"
-															if prefix := "adme"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																elem = elem[len(prefix):]
-															} else {
-																break
-															}
-
-															// Leaf: ReposGetReadme
-															s.handleReposGetReadmeRequest(args, w, r)
-															return
-														}
-														// Param: "release_id"
-														// Leaf parameter
-														args["release_id"] = elem
-
-														// Leaf: ReposGetRelease
-														s.handleReposGetReleaseRequest(args, w, r)
-														return
-													case 't': // Prefix: "tags/"
-														if prefix := "tags/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-															elem = elem[len(prefix):]
-														} else {
-															break
-														}
-
-														// Param: "tag"
-														// Leaf parameter
-														args["tag"] = elem
-
-														// Leaf: ReposGetReleaseByTag
-														s.handleReposGetReleaseByTagRequest(args, w, r)
-														return
-													}
-													// Param: "release_id"
-													// Match until one of "/"
-													idx := strings.IndexAny(elem, "/")
-													if idx > 0 {
-														args["release_id"] = elem[:idx]
-														elem = elem[idx:]
-
-														if len(elem) == 0 {
-															s.handleReposGetReleaseRequest(args, w, r)
-															return
-														}
-														switch elem[0] {
-														case '/': // Prefix: "/assets"
-															if prefix := "/assets"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																elem = elem[len(prefix):]
-															} else {
-																break
-															}
-
-															// Leaf: ReposListReleaseAssets
-															s.handleReposListReleaseAssetsRequest(args, w, r)
-															return
-														}
-													}
-												}
-											}
-										case 's': // Prefix: "s"
-											if prefix := "s"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-												elem = elem[len(prefix):]
-											} else {
-												break
-											}
-
-											if len(elem) == 0 {
-												s.handleReposGetCodeFrequencyStatsRequest(args, w, r)
-												return
-											}
-											switch elem[0] {
-											case 'e': // Prefix: "ecret-scanning/alerts"
-												if prefix := "ecret-scanning/alerts"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-													elem = elem[len(prefix):]
-												} else {
-													break
-												}
-
-												if len(elem) == 0 {
-													s.handleSecretScanningListAlertsForRepoRequest(args, w, r)
-													return
-												}
-												switch elem[0] {
-												case '/': // Prefix: "/"
-													if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-														elem = elem[len(prefix):]
-													} else {
-														break
-													}
-
-													// Param: "alert_number"
-													// Leaf parameter
-													args["alert_number"] = elem
-
-													// Leaf: SecretScanningGetAlert
-													s.handleSecretScanningGetAlertRequest(args, w, r)
-													return
-												}
-											case 't': // Prefix: "tats/"
-												if prefix := "tats/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-													elem = elem[len(prefix):]
-												} else {
-													break
-												}
-
-												if len(elem) == 0 {
-													s.handleReposGetParticipationStatsRequest(args, w, r)
-													return
-												}
-												switch elem[0] {
-												case 'c': // Prefix: "co"
-													if prefix := "co"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-														elem = elem[len(prefix):]
-													} else {
-														break
-													}
-
-													if len(elem) == 0 {
-														s.handleReposGetCommitActivityStatsRequest(args, w, r)
-														return
-													}
-													switch elem[0] {
-													case 'd': // Prefix: "de_frequency"
-														if prefix := "de_frequency"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-															elem = elem[len(prefix):]
-														} else {
-															break
-														}
-
-														if len(elem) == 0 {
-															s.handleReposGetCodeFrequencyStatsRequest(args, w, r)
-															return
-														}
-														switch elem[0] {
-														case 'm': // Prefix: "mmit_activity"
-															if prefix := "mmit_activity"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																elem = elem[len(prefix):]
-															} else {
-																break
-															}
-
-															// Leaf: ReposGetCommitActivityStats
-															s.handleReposGetCommitActivityStatsRequest(args, w, r)
-															return
-														}
-													case 'm': // Prefix: "mmit_activity"
-														if prefix := "mmit_activity"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-															elem = elem[len(prefix):]
-														} else {
-															break
-														}
-
-														// Leaf: ReposGetCommitActivityStats
-														s.handleReposGetCommitActivityStatsRequest(args, w, r)
-														return
-													case 'n': // Prefix: "ntributors"
-														if prefix := "ntributors"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-															elem = elem[len(prefix):]
-														} else {
-															break
-														}
-
-														// Leaf: ReposGetContributorsStats
-														s.handleReposGetContributorsStatsRequest(args, w, r)
-														return
-													case 'p': // Prefix: "participation"
-														if prefix := "participation"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-															elem = elem[len(prefix):]
-														} else {
-															break
-														}
-
-														// Leaf: ReposGetParticipationStats
-														s.handleReposGetParticipationStatsRequest(args, w, r)
-														return
-													}
-												case 'p': // Prefix: "p"
-													if prefix := "p"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-														elem = elem[len(prefix):]
-													} else {
-														break
-													}
-
-													if len(elem) == 0 {
-														s.handleReposGetPunchCardStatsRequest(args, w, r)
-														return
-													}
-													switch elem[0] {
-													case 'a': // Prefix: "articipation"
-														if prefix := "articipation"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-															elem = elem[len(prefix):]
-														} else {
-															break
-														}
-
-														if len(elem) == 0 {
-															s.handleReposGetParticipationStatsRequest(args, w, r)
-															return
-														}
-														switch elem[0] {
-														case 'u': // Prefix: "unch_card"
-															if prefix := "unch_card"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																elem = elem[len(prefix):]
-															} else {
-																break
-															}
-
-															// Leaf: ReposGetPunchCardStats
-															s.handleReposGetPunchCardStatsRequest(args, w, r)
-															return
-														}
-													case 'u': // Prefix: "unch_card"
-														if prefix := "unch_card"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-															elem = elem[len(prefix):]
-														} else {
-															break
-														}
-
-														// Leaf: ReposGetPunchCardStats
-														s.handleReposGetPunchCardStatsRequest(args, w, r)
-														return
-													}
-												}
-											case 'u': // Prefix: "ubscri"
-												if prefix := "ubscri"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-													elem = elem[len(prefix):]
-												} else {
-													break
-												}
-
-												if len(elem) == 0 {
-													s.handleActivityListWatchersForRepoRequest(args, w, r)
-													return
-												}
-												switch elem[0] {
-												case 'b': // Prefix: "bers"
-													if prefix := "bers"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-														elem = elem[len(prefix):]
-													} else {
-														break
-													}
-
-													// Leaf: ActivityListWatchersForRepo
-													s.handleActivityListWatchersForRepoRequest(args, w, r)
-													return
-												case 'p': // Prefix: "ption"
-													if prefix := "ption"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-														elem = elem[len(prefix):]
-													} else {
-														break
-													}
-
-													if len(elem) == 0 {
-														s.handleActivityGetRepoSubscriptionRequest(args, w, r)
-														return
-													}
-													switch elem[0] {
-													case 'b': // Prefix: "bers"
-														if prefix := "bers"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-															elem = elem[len(prefix):]
-														} else {
-															break
-														}
-
-														// Leaf: ActivityListWatchersForRepo
-														s.handleActivityListWatchersForRepoRequest(args, w, r)
-														return
-													}
-												case 't': // Prefix: "tats/code_frequency"
-													if prefix := "tats/code_frequency"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-														elem = elem[len(prefix):]
-													} else {
-														break
-													}
-
-													// Leaf: ReposGetCodeFrequencyStats
-													s.handleReposGetCodeFrequencyStatsRequest(args, w, r)
-													return
-												}
-											}
-										case 't': // Prefix: "t"
-											if prefix := "t"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-												elem = elem[len(prefix):]
-											} else {
-												break
-											}
-
-											if len(elem) == 0 {
-												s.handleReposGetAllTopicsRequest(args, w, r)
-												return
-											}
-											switch elem[0] {
-											case 'a': // Prefix: "a"
-												if prefix := "a"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-													elem = elem[len(prefix):]
-												} else {
-													break
-												}
-
-												if len(elem) == 0 {
-													s.handleReposListTagsRequest(args, w, r)
-													return
-												}
-												switch elem[0] {
-												case 'g': // Prefix: "gs"
-													if prefix := "gs"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-														elem = elem[len(prefix):]
-													} else {
-														break
-													}
-
-													// Leaf: ReposListTags
-													s.handleReposListTagsRequest(args, w, r)
-													return
-												case 'r': // Prefix: "rball/"
-													if prefix := "rball/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-														elem = elem[len(prefix):]
-													} else {
-														break
-													}
-
-													if len(elem) == 0 {
-														break
-													}
-													switch elem[0] {
-													case 'g': // Prefix: "gs"
-														if prefix := "gs"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-															elem = elem[len(prefix):]
-														} else {
-															break
-														}
-
-														// Leaf: ReposListTags
-														s.handleReposListTagsRequest(args, w, r)
-														return
-													case 'o': // Prefix: "opics"
-														if prefix := "opics"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-															elem = elem[len(prefix):]
-														} else {
-															break
-														}
-
-														// Leaf: ReposGetAllTopics
-														s.handleReposGetAllTopicsRequest(args, w, r)
-														return
-													}
-													// Param: "ref"
-													// Leaf parameter
-													args["ref"] = elem
-
-													// Leaf: ReposDownloadTarballArchive
-													s.handleReposDownloadTarballArchiveRequest(args, w, r)
-													return
-												}
-											case 'e': // Prefix: "eams"
-												if prefix := "eams"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-													elem = elem[len(prefix):]
-												} else {
-													break
-												}
-
-												// Leaf: ReposListTeams
-												s.handleReposListTeamsRequest(args, w, r)
-												return
-											case 'o': // Prefix: "opics"
-												if prefix := "opics"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-													elem = elem[len(prefix):]
-												} else {
-													break
-												}
-
-												// Leaf: ReposGetAllTopics
-												s.handleReposGetAllTopicsRequest(args, w, r)
-												return
-											case 'r': // Prefix: "raffic/"
-												if prefix := "raffic/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-													elem = elem[len(prefix):]
-												} else {
-													break
-												}
-
-												if len(elem) == 0 {
-													s.handleReposGetTopPathsRequest(args, w, r)
-													return
-												}
-												switch elem[0] {
-												case 'c': // Prefix: "clones"
-													if prefix := "clones"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-														elem = elem[len(prefix):]
-													} else {
-														break
-													}
-
-													if len(elem) == 0 {
-														s.handleReposGetClonesRequest(args, w, r)
-														return
-													}
-													switch elem[0] {
-													case 'p': // Prefix: "popular/paths"
-														if prefix := "popular/paths"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-															elem = elem[len(prefix):]
-														} else {
-															break
-														}
-
-														// Leaf: ReposGetTopPaths
-														s.handleReposGetTopPathsRequest(args, w, r)
-														return
-													}
-												case 'p': // Prefix: "popular/"
-													if prefix := "popular/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-														elem = elem[len(prefix):]
-													} else {
-														break
-													}
-
-													if len(elem) == 0 {
-														s.handleReposGetTopReferrersRequest(args, w, r)
-														return
-													}
-													switch elem[0] {
-													case 'p': // Prefix: "paths"
-														if prefix := "paths"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-															elem = elem[len(prefix):]
-														} else {
-															break
-														}
-
-														if len(elem) == 0 {
-															s.handleReposGetTopPathsRequest(args, w, r)
-															return
-														}
-														switch elem[0] {
-														case 'r': // Prefix: "referrers"
-															if prefix := "referrers"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																elem = elem[len(prefix):]
-															} else {
-																break
-															}
-
-															// Leaf: ReposGetTopReferrers
-															s.handleReposGetTopReferrersRequest(args, w, r)
-															return
-														}
-													case 'r': // Prefix: "referrers"
-														if prefix := "referrers"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-															elem = elem[len(prefix):]
-														} else {
-															break
-														}
-
-														// Leaf: ReposGetTopReferrers
-														s.handleReposGetTopReferrersRequest(args, w, r)
-														return
-													}
-												case 'v': // Prefix: "views"
-													if prefix := "views"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-														elem = elem[len(prefix):]
-													} else {
-														break
-													}
-
-													// Leaf: ReposGetViews
-													s.handleReposGetViewsRequest(args, w, r)
-													return
-												}
-											}
-										case 'v': // Prefix: "vulnerability-alerts"
-											if prefix := "vulnerability-alerts"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-												elem = elem[len(prefix):]
-											} else {
-												break
-											}
-
-											// Leaf: ReposCheckVulnerabilityAlerts
-											s.handleReposCheckVulnerabilityAlertsRequest(args, w, r)
-											return
-										case 'z': // Prefix: "zipball/"
-											if prefix := "zipball/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-												elem = elem[len(prefix):]
-											} else {
-												break
-											}
-
-											// Param: "ref"
-											// Leaf parameter
-											args["ref"] = elem
-
-											// Leaf: ReposDownloadZipballArchive
-											s.handleReposDownloadZipballArchiveRequest(args, w, r)
-											return
-										}
-									}
-								}
-							}
-						}
-					case 'a': // Prefix: "ate_limit"
-						if prefix := "ate_limit"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-							elem = elem[len(prefix):]
-						} else {
-							break
-						}
-
-						// Leaf: RateLimitGet
-						s.handleRateLimitGetRequest(args, w, r)
-						return
-					case 'i': // Prefix: "itories"
-						if prefix := "itories"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-							elem = elem[len(prefix):]
-						} else {
-							break
-						}
-
-						if len(elem) == 0 {
-							s.handleReposListPublicRequest(args, w, r)
-							return
-						}
-						switch elem[0] {
-						case '/': // Prefix: "/"
-							if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-								elem = elem[len(prefix):]
-							} else {
-								break
-							}
-
-							// Param: "repository_id"
-							// Match until one of "/"
-							idx := strings.IndexAny(elem, "/")
-							if idx > 0 {
-								args["repository_id"] = elem[:idx]
-								elem = elem[idx:]
-
-								if len(elem) == 0 {
-									break
-								}
-								switch elem[0] {
-								case '/': // Prefix: "/environments/"
-									if prefix := "/environments/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-										elem = elem[len(prefix):]
-									} else {
-										break
-									}
-
-									// Param: "environment_name"
-									// Match until one of "/"
-									idx := strings.IndexAny(elem, "/")
-									if idx > 0 {
-										args["environment_name"] = elem[:idx]
-										elem = elem[idx:]
-
-										if len(elem) == 0 {
-											break
-										}
-										switch elem[0] {
-										case '/': // Prefix: "/secrets"
-											if prefix := "/secrets"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-												elem = elem[len(prefix):]
-											} else {
-												break
-											}
-
-											if len(elem) == 0 {
-												s.handleActionsListEnvironmentSecretsRequest(args, w, r)
-												return
-											}
-											switch elem[0] {
-											case '/': // Prefix: "/"
-												if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-													elem = elem[len(prefix):]
-												} else {
-													break
-												}
-
-												if len(elem) == 0 {
-													s.handleActionsGetEnvironmentSecretRequest(args, w, r)
-													return
-												}
-												switch elem[0] {
-												case 'p': // Prefix: "public-key"
-													if prefix := "public-key"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-														elem = elem[len(prefix):]
-													} else {
-														break
-													}
-
-													// Param: "secret_name"
-													// Leaf parameter
-													args["secret_name"] = elem
-
-													// Leaf: ActionsGetEnvironmentSecret
-													s.handleActionsGetEnvironmentSecretRequest(args, w, r)
-													return
-												}
-												// Param: "secret_name"
-												// Leaf parameter
-												args["secret_name"] = elem
-
-												// Leaf: ActionsGetEnvironmentSecret
-												s.handleActionsGetEnvironmentSecretRequest(args, w, r)
-												return
-											}
-										}
-									}
-								}
-							}
-						}
-					}
-				}
-			case 's': // Prefix: "s"
-				if prefix := "s"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-					elem = elem[len(prefix):]
-				} else {
-					break
-				}
-
-				if len(elem) == 0 {
-					s.handleSearchCodeRequest(args, w, r)
-					return
-				}
-				switch elem[0] {
-				case 'c': // Prefix: "cim/v2/enterprises/"
-					if prefix := "cim/v2/enterprises/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-						elem = elem[len(prefix):]
-					} else {
-						break
-					}
-
-					if len(elem) == 0 {
-						break
-					}
-					switch elem[0] {
-					case 'e': // Prefix: "earch/code"
-						if prefix := "earch/code"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-							elem = elem[len(prefix):]
-						} else {
-							break
-						}
-
-						// Leaf: SearchCode
-						s.handleSearchCodeRequest(args, w, r)
-						return
-					}
-					// Param: "enterprise"
-					// Match until one of "/"
-					idx := strings.IndexAny(elem, "/")
-					if idx > 0 {
-						args["enterprise"] = elem[:idx]
-						elem = elem[idx:]
-
-						if len(elem) == 0 {
-							break
-						}
-						switch elem[0] {
-						case '/': // Prefix: "/"
-							if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-								elem = elem[len(prefix):]
-							} else {
-								break
-							}
-
-							if len(elem) == 0 {
-								s.handleEnterpriseAdminGetProvisioningInformationForEnterpriseUserRequest(args, w, r)
-								return
-							}
-							switch elem[0] {
-							case 'G': // Prefix: "Groups"
-								if prefix := "Groups"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-									elem = elem[len(prefix):]
-								} else {
-									break
-								}
-
-								if len(elem) == 0 {
-									s.handleEnterpriseAdminListProvisionedGroupsEnterpriseRequest(args, w, r)
-									return
-								}
-								switch elem[0] {
-								case '/': // Prefix: "/"
-									if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-										elem = elem[len(prefix):]
-									} else {
-										break
-									}
-
-									if len(elem) == 0 {
-										break
-									}
-									switch elem[0] {
-									case 'U': // Prefix: "Users/"
-										if prefix := "Users/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-											elem = elem[len(prefix):]
-										} else {
-											break
-										}
-
-										// Param: "scim_user_id"
-										// Leaf parameter
-										args["scim_user_id"] = elem
-
-										// Leaf: EnterpriseAdminGetProvisioningInformationForEnterpriseUser
-										s.handleEnterpriseAdminGetProvisioningInformationForEnterpriseUserRequest(args, w, r)
-										return
-									}
-									// Param: "scim_group_id"
-									// Leaf parameter
-									args["scim_group_id"] = elem
-
-									// Leaf: EnterpriseAdminGetProvisioningInformationForEnterpriseGroup
-									s.handleEnterpriseAdminGetProvisioningInformationForEnterpriseGroupRequest(args, w, r)
-									return
-								}
-							case 'U': // Prefix: "Users"
-								if prefix := "Users"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-									elem = elem[len(prefix):]
-								} else {
-									break
-								}
-
-								if len(elem) == 0 {
-									s.handleEnterpriseAdminListProvisionedIdentitiesEnterpriseRequest(args, w, r)
-									return
-								}
-								switch elem[0] {
-								case '/': // Prefix: "/"
-									if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-										elem = elem[len(prefix):]
-									} else {
-										break
-									}
-
-									// Param: "scim_user_id"
-									// Leaf parameter
-									args["scim_user_id"] = elem
-
-									// Leaf: EnterpriseAdminGetProvisioningInformationForEnterpriseUser
-									s.handleEnterpriseAdminGetProvisioningInformationForEnterpriseUserRequest(args, w, r)
-									return
-								}
-							}
-						}
-					}
-				case 'e': // Prefix: "earch/"
-					if prefix := "earch/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-						elem = elem[len(prefix):]
-					} else {
-						break
-					}
-
-					if len(elem) == 0 {
-						s.handleSearchIssuesAndPullRequestsRequest(args, w, r)
-						return
-					}
-					switch elem[0] {
-					case 'c': // Prefix: "co"
-						if prefix := "co"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-							elem = elem[len(prefix):]
-						} else {
-							break
-						}
-
-						if len(elem) == 0 {
-							s.handleSearchCommitsRequest(args, w, r)
-							return
-						}
-						switch elem[0] {
-						case 'd': // Prefix: "de"
-							if prefix := "de"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-								elem = elem[len(prefix):]
-							} else {
-								break
-							}
-
-							if len(elem) == 0 {
-								s.handleSearchCodeRequest(args, w, r)
-								return
-							}
-							switch elem[0] {
-							case 'm': // Prefix: "mmits"
-								if prefix := "mmits"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-									elem = elem[len(prefix):]
-								} else {
-									break
-								}
-
-								// Leaf: SearchCommits
-								s.handleSearchCommitsRequest(args, w, r)
-								return
-							}
-						case 'i': // Prefix: "issues"
-							if prefix := "issues"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-								elem = elem[len(prefix):]
-							} else {
-								break
-							}
-
-							// Leaf: SearchIssuesAndPullRequests
-							s.handleSearchIssuesAndPullRequestsRequest(args, w, r)
-							return
-						case 'm': // Prefix: "mmits"
-							if prefix := "mmits"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-								elem = elem[len(prefix):]
-							} else {
-								break
-							}
-
-							// Leaf: SearchCommits
-							s.handleSearchCommitsRequest(args, w, r)
-							return
-						}
-					case 'i': // Prefix: "issues"
-						if prefix := "issues"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-							elem = elem[len(prefix):]
-						} else {
-							break
-						}
-
-						// Leaf: SearchIssuesAndPullRequests
-						s.handleSearchIssuesAndPullRequestsRequest(args, w, r)
-						return
-					case 'l': // Prefix: "labels"
-						if prefix := "labels"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-							elem = elem[len(prefix):]
-						} else {
-							break
-						}
-
-						// Leaf: SearchLabels
-						s.handleSearchLabelsRequest(args, w, r)
-						return
-					case 'r': // Prefix: "repositories"
-						if prefix := "repositories"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-							elem = elem[len(prefix):]
-						} else {
-							break
-						}
-
-						// Leaf: SearchRepos
-						s.handleSearchReposRequest(args, w, r)
-						return
-					case 't': // Prefix: "topics"
-						if prefix := "topics"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-							elem = elem[len(prefix):]
-						} else {
-							break
-						}
-
-						// Leaf: SearchTopics
-						s.handleSearchTopicsRequest(args, w, r)
-						return
-					case 'u': // Prefix: "users"
-						if prefix := "users"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-							elem = elem[len(prefix):]
-						} else {
-							break
-						}
-
-						// Leaf: SearchUsers
-						s.handleSearchUsersRequest(args, w, r)
-						return
-					}
-				}
-			case 't': // Prefix: "teams/"
-				if prefix := "teams/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-					elem = elem[len(prefix):]
-				} else {
-					break
-				}
-
-				// Param: "team_id"
-				// Match until one of "/"
-				idx := strings.IndexAny(elem, "/")
-				if idx > 0 {
-					args["team_id"] = elem[:idx]
-					elem = elem[idx:]
-
-					if len(elem) == 0 {
-						s.handleTeamsGetLegacyRequest(args, w, r)
-						return
-					}
-					switch elem[0] {
-					case '/': // Prefix: "/"
-						if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-							elem = elem[len(prefix):]
-						} else {
-							break
-						}
-
-						if len(elem) == 0 {
-							s.handleTeamsCheckPermissionsForProjectLegacyRequest(args, w, r)
-							return
-						}
-						switch elem[0] {
-						case 'd': // Prefix: "discussions"
-							if prefix := "discussions"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-								elem = elem[len(prefix):]
-							} else {
-								break
-							}
-
-							if len(elem) == 0 {
-								s.handleTeamsListDiscussionsLegacyRequest(args, w, r)
-								return
-							}
-							switch elem[0] {
-							case '/': // Prefix: "/"
-								if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-									elem = elem[len(prefix):]
-								} else {
-									break
-								}
-
-								if len(elem) == 0 {
-									break
-								}
-								switch elem[0] {
-								case 'p': // Prefix: "projects/"
-									if prefix := "projects/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-										elem = elem[len(prefix):]
-									} else {
-										break
-									}
-
-									// Param: "project_id"
-									// Leaf parameter
-									args["project_id"] = elem
-
-									// Leaf: TeamsCheckPermissionsForProjectLegacy
-									s.handleTeamsCheckPermissionsForProjectLegacyRequest(args, w, r)
-									return
-								}
-								// Param: "discussion_number"
-								// Match until one of "/"
-								idx := strings.IndexAny(elem, "/")
-								if idx > 0 {
-									args["discussion_number"] = elem[:idx]
-									elem = elem[idx:]
-
-									if len(elem) == 0 {
-										s.handleTeamsGetDiscussionLegacyRequest(args, w, r)
-										return
-									}
-									switch elem[0] {
-									case '/': // Prefix: "/"
-										if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-											elem = elem[len(prefix):]
-										} else {
-											break
-										}
-
-										if len(elem) == 0 {
-											s.handleReactionsListForTeamDiscussionLegacyRequest(args, w, r)
-											return
-										}
-										switch elem[0] {
-										case 'c': // Prefix: "comments"
-											if prefix := "comments"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-												elem = elem[len(prefix):]
-											} else {
-												break
-											}
-
-											if len(elem) == 0 {
-												s.handleTeamsListDiscussionCommentsLegacyRequest(args, w, r)
-												return
-											}
-											switch elem[0] {
-											case '/': // Prefix: "/"
-												if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-													elem = elem[len(prefix):]
-												} else {
-													break
-												}
-
-												if len(elem) == 0 {
-													break
-												}
-												switch elem[0] {
-												case 'r': // Prefix: "reactions"
-													if prefix := "reactions"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-														elem = elem[len(prefix):]
-													} else {
-														break
-													}
-
-													// Leaf: ReactionsListForTeamDiscussionLegacy
-													s.handleReactionsListForTeamDiscussionLegacyRequest(args, w, r)
-													return
-												}
-												// Param: "comment_number"
-												// Match until one of "/"
-												idx := strings.IndexAny(elem, "/")
-												if idx > 0 {
-													args["comment_number"] = elem[:idx]
-													elem = elem[idx:]
-
-													if len(elem) == 0 {
-														s.handleTeamsGetDiscussionCommentLegacyRequest(args, w, r)
-														return
-													}
-													switch elem[0] {
-													case '/': // Prefix: "/reactions"
-														if prefix := "/reactions"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-															elem = elem[len(prefix):]
-														} else {
-															break
-														}
-
-														// Leaf: ReactionsListForTeamDiscussionCommentLegacy
-														s.handleReactionsListForTeamDiscussionCommentLegacyRequest(args, w, r)
-														return
-													}
-												}
-											}
-										case 'r': // Prefix: "reactions"
-											if prefix := "reactions"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-												elem = elem[len(prefix):]
-											} else {
-												break
-											}
-
-											// Leaf: ReactionsListForTeamDiscussionLegacy
-											s.handleReactionsListForTeamDiscussionLegacyRequest(args, w, r)
-											return
-										}
-									}
-								}
-							}
-						case 'i': // Prefix: "invitations"
-							if prefix := "invitations"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-								elem = elem[len(prefix):]
-							} else {
-								break
-							}
-
-							// Leaf: TeamsListPendingInvitationsLegacy
-							s.handleTeamsListPendingInvitationsLegacyRequest(args, w, r)
-							return
-						case 'm': // Prefix: "members"
-							if prefix := "members"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-								elem = elem[len(prefix):]
-							} else {
-								break
-							}
-
-							if len(elem) == 0 {
-								s.handleTeamsListMembersLegacyRequest(args, w, r)
-								return
-							}
-							switch elem[0] {
-							case '/': // Prefix: "/"
-								if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-									elem = elem[len(prefix):]
-								} else {
-									break
-								}
-
-								if len(elem) == 0 {
-									break
-								}
-								switch elem[0] {
-								case 'h': // Prefix: "hips/"
-									if prefix := "hips/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-										elem = elem[len(prefix):]
-									} else {
-										break
-									}
-
-									// Param: "username"
-									// Leaf parameter
-									args["username"] = elem
-
-									// Leaf: TeamsGetMembershipForUserLegacy
-									s.handleTeamsGetMembershipForUserLegacyRequest(args, w, r)
-									return
-								}
-								// Param: "username"
-								// Leaf parameter
-								args["username"] = elem
-
-								// Leaf: TeamsGetMemberLegacy
-								s.handleTeamsGetMemberLegacyRequest(args, w, r)
-								return
-							case 'h': // Prefix: "hips/"
-								if prefix := "hips/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-									elem = elem[len(prefix):]
-								} else {
-									break
-								}
-
-								// Param: "username"
-								// Leaf parameter
-								args["username"] = elem
-
-								// Leaf: TeamsGetMembershipForUserLegacy
-								s.handleTeamsGetMembershipForUserLegacyRequest(args, w, r)
-								return
-							}
-						case 'p': // Prefix: "projects"
-							if prefix := "projects"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-								elem = elem[len(prefix):]
-							} else {
-								break
-							}
-
-							if len(elem) == 0 {
-								s.handleTeamsListProjectsLegacyRequest(args, w, r)
-								return
-							}
-							switch elem[0] {
-							case '/': // Prefix: "/"
-								if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-									elem = elem[len(prefix):]
-								} else {
-									break
-								}
-
-								// Param: "project_id"
-								// Leaf parameter
-								args["project_id"] = elem
-
-								// Leaf: TeamsCheckPermissionsForProjectLegacy
-								s.handleTeamsCheckPermissionsForProjectLegacyRequest(args, w, r)
-								return
-							}
-						case 'r': // Prefix: "repos"
-							if prefix := "repos"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-								elem = elem[len(prefix):]
-							} else {
-								break
-							}
-
-							if len(elem) == 0 {
-								s.handleTeamsListReposLegacyRequest(args, w, r)
-								return
-							}
-							switch elem[0] {
-							case '/': // Prefix: "/"
-								if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-									elem = elem[len(prefix):]
-								} else {
-									break
-								}
-
-								// Param: "owner"
-								// Match until one of "/"
-								idx := strings.IndexAny(elem, "/")
-								if idx > 0 {
-									args["owner"] = elem[:idx]
-									elem = elem[idx:]
-
-									if len(elem) == 0 {
-										break
-									}
-									switch elem[0] {
-									case '/': // Prefix: "/"
-										if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-											elem = elem[len(prefix):]
-										} else {
-											break
-										}
-
-										// Param: "repo"
-										// Leaf parameter
-										args["repo"] = elem
-
-										// Leaf: TeamsCheckPermissionsForRepoLegacy
-										s.handleTeamsCheckPermissionsForRepoLegacyRequest(args, w, r)
-										return
-									}
-								}
-							}
-						case 't': // Prefix: "team"
-							if prefix := "team"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-								elem = elem[len(prefix):]
-							} else {
-								break
-							}
-
-							if len(elem) == 0 {
-								s.handleTeamsListIdpGroupsForLegacyRequest(args, w, r)
-								return
-							}
-							switch elem[0] {
-							case '-': // Prefix: "-sync/group-mappings"
-								if prefix := "-sync/group-mappings"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-									elem = elem[len(prefix):]
-								} else {
-									break
-								}
-
-								// Leaf: TeamsListIdpGroupsForLegacy
-								s.handleTeamsListIdpGroupsForLegacyRequest(args, w, r)
-								return
-							case 's': // Prefix: "s"
-								if prefix := "s"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-									elem = elem[len(prefix):]
-								} else {
-									break
-								}
-
-								if len(elem) == 0 {
-									s.handleTeamsListChildLegacyRequest(args, w, r)
-									return
-								}
-								switch elem[0] {
-								case '-': // Prefix: "-sync/group-mappings"
-									if prefix := "-sync/group-mappings"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-										elem = elem[len(prefix):]
-									} else {
-										break
-									}
-
-									// Leaf: TeamsListIdpGroupsForLegacy
-									s.handleTeamsListIdpGroupsForLegacyRequest(args, w, r)
-									return
-								}
-							}
-						}
-					}
-				}
-			case 'u': // Prefix: "user"
-				if prefix := "user"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-					elem = elem[len(prefix):]
-				} else {
-					break
-				}
-
-				if len(elem) == 0 {
-					s.handleUsersGetAuthenticatedRequest(args, w, r)
-					return
-				}
-				switch elem[0] {
-				case '/': // Prefix: "/"
-					if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-						elem = elem[len(prefix):]
-					} else {
-						break
-					}
-
-					if len(elem) == 0 {
-						s.handleAppsListInstallationReposForAuthenticatedUserRequest(args, w, r)
-						return
-					}
-					switch elem[0] {
-					case 'b': // Prefix: "blocks"
-						if prefix := "blocks"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-							elem = elem[len(prefix):]
-						} else {
-							break
-						}
-
-						if len(elem) == 0 {
-							s.handleUsersListBlockedByAuthenticatedRequest(args, w, r)
-							return
-						}
-						switch elem[0] {
-						case '/': // Prefix: "/"
-							if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-								elem = elem[len(prefix):]
-							} else {
-								break
-							}
-
-							// Param: "username"
-							// Leaf parameter
-							args["username"] = elem
-
-							// Leaf: UsersCheckBlocked
-							s.handleUsersCheckBlockedRequest(args, w, r)
-							return
-						}
-					case 'e': // Prefix: "emails"
-						if prefix := "emails"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-							elem = elem[len(prefix):]
-						} else {
-							break
-						}
-
-						// Leaf: UsersListEmailsForAuthenticated
-						s.handleUsersListEmailsForAuthenticatedRequest(args, w, r)
-						return
-					case 'f': // Prefix: "follow"
-						if prefix := "follow"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-							elem = elem[len(prefix):]
-						} else {
-							break
-						}
-
-						if len(elem) == 0 {
-							s.handleUsersListFollowersForAuthenticatedUserRequest(args, w, r)
-							return
-						}
-						switch elem[0] {
-						case 'e': // Prefix: "ers"
-							if prefix := "ers"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-								elem = elem[len(prefix):]
-							} else {
-								break
-							}
-
-							// Leaf: UsersListFollowersForAuthenticatedUser
-							s.handleUsersListFollowersForAuthenticatedUserRequest(args, w, r)
-							return
-						case 'i': // Prefix: "ing"
-							if prefix := "ing"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-								elem = elem[len(prefix):]
-							} else {
-								break
-							}
-
-							if len(elem) == 0 {
-								s.handleUsersListFollowedByAuthenticatedRequest(args, w, r)
-								return
-							}
-							switch elem[0] {
-							case '/': // Prefix: "/"
-								if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-									elem = elem[len(prefix):]
-								} else {
-									break
-								}
-
-								// Param: "username"
-								// Leaf parameter
-								args["username"] = elem
-
-								// Leaf: UsersCheckPersonIsFollowedByAuthenticated
-								s.handleUsersCheckPersonIsFollowedByAuthenticatedRequest(args, w, r)
-								return
-							case 'e': // Prefix: "ers"
-								if prefix := "ers"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-									elem = elem[len(prefix):]
-								} else {
-									break
-								}
-
-								// Leaf: UsersListFollowersForAuthenticatedUser
-								s.handleUsersListFollowersForAuthenticatedUserRequest(args, w, r)
-								return
-							}
-						}
-					case 'g': // Prefix: "gpg_keys"
-						if prefix := "gpg_keys"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-							elem = elem[len(prefix):]
-						} else {
-							break
-						}
-
-						if len(elem) == 0 {
-							s.handleUsersListGpgKeysForAuthenticatedRequest(args, w, r)
-							return
-						}
-						switch elem[0] {
-						case '/': // Prefix: "/"
-							if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-								elem = elem[len(prefix):]
-							} else {
-								break
-							}
-
-							// Param: "gpg_key_id"
-							// Leaf parameter
-							args["gpg_key_id"] = elem
-
-							// Leaf: UsersGetGpgKeyForAuthenticated
-							s.handleUsersGetGpgKeyForAuthenticatedRequest(args, w, r)
-							return
-						}
-					case 'i': // Prefix: "i"
-						if prefix := "i"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-							elem = elem[len(prefix):]
-						} else {
-							break
-						}
-
-						if len(elem) == 0 {
-							s.handleIssuesListForAuthenticatedUserRequest(args, w, r)
-							return
-						}
-						switch elem[0] {
-						case 'n': // Prefix: "nstallations/"
-							if prefix := "nstallations/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-								elem = elem[len(prefix):]
-							} else {
-								break
-							}
-
-							if len(elem) == 0 {
-								break
-							}
-							switch elem[0] {
-							case 's': // Prefix: "ssues"
-								if prefix := "ssues"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-									elem = elem[len(prefix):]
-								} else {
-									break
-								}
-
-								// Leaf: IssuesListForAuthenticatedUser
-								s.handleIssuesListForAuthenticatedUserRequest(args, w, r)
-								return
-							}
-							// Param: "installation_id"
-							// Match until one of "/"
-							idx := strings.IndexAny(elem, "/")
-							if idx > 0 {
-								args["installation_id"] = elem[:idx]
-								elem = elem[idx:]
-
-								if len(elem) == 0 {
-									break
-								}
-								switch elem[0] {
-								case '/': // Prefix: "/repositories"
-									if prefix := "/repositories"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-										elem = elem[len(prefix):]
-									} else {
-										break
-									}
-
-									// Leaf: AppsListInstallationReposForAuthenticatedUser
-									s.handleAppsListInstallationReposForAuthenticatedUserRequest(args, w, r)
-									return
-								}
-							}
-						case 's': // Prefix: "ssues"
-							if prefix := "ssues"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-								elem = elem[len(prefix):]
-							} else {
-								break
-							}
-
-							// Leaf: IssuesListForAuthenticatedUser
-							s.handleIssuesListForAuthenticatedUserRequest(args, w, r)
-							return
-						}
-					case 'k': // Prefix: "keys"
-						if prefix := "keys"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-							elem = elem[len(prefix):]
-						} else {
-							break
-						}
-
-						if len(elem) == 0 {
-							s.handleUsersListPublicSSHKeysForAuthenticatedRequest(args, w, r)
-							return
-						}
-						switch elem[0] {
-						case '/': // Prefix: "/"
-							if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-								elem = elem[len(prefix):]
-							} else {
-								break
-							}
-
-							// Param: "key_id"
-							// Leaf parameter
-							args["key_id"] = elem
-
-							// Leaf: UsersGetPublicSSHKeyForAuthenticated
-							s.handleUsersGetPublicSSHKeyForAuthenticatedRequest(args, w, r)
-							return
-						}
-					case 'm': // Prefix: "m"
-						if prefix := "m"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-							elem = elem[len(prefix):]
-						} else {
-							break
-						}
-
-						if len(elem) == 0 {
-							s.handleMigrationsGetArchiveForAuthenticatedUserRequest(args, w, r)
-							return
-						}
-						switch elem[0] {
-						case 'a': // Prefix: "arketplace_purchases"
-							if prefix := "arketplace_purchases"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-								elem = elem[len(prefix):]
-							} else {
-								break
-							}
-
-							if len(elem) == 0 {
-								s.handleAppsListSubscriptionsForAuthenticatedUserRequest(args, w, r)
-								return
-							}
-							switch elem[0] {
-							case '/': // Prefix: "/stubbed"
-								if prefix := "/stubbed"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-									elem = elem[len(prefix):]
-								} else {
-									break
-								}
-
-								// Leaf: AppsListSubscriptionsForAuthenticatedUserStubbed
-								s.handleAppsListSubscriptionsForAuthenticatedUserStubbedRequest(args, w, r)
-								return
-							case 'i': // Prefix: "igrations/"
-								if prefix := "igrations/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-									elem = elem[len(prefix):]
-								} else {
-									break
-								}
-
-								// Param: "migration_id"
-								// Match until one of "/"
-								idx := strings.IndexAny(elem, "/")
-								if idx > 0 {
-									args["migration_id"] = elem[:idx]
-									elem = elem[idx:]
-
-									if len(elem) == 0 {
-										break
-									}
-									switch elem[0] {
-									case '/': // Prefix: "/archive"
-										if prefix := "/archive"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-											elem = elem[len(prefix):]
-										} else {
-											break
-										}
-
-										// Leaf: MigrationsGetArchiveForAuthenticatedUser
-										s.handleMigrationsGetArchiveForAuthenticatedUserRequest(args, w, r)
-										return
-									}
-								}
-							}
-						case 'e': // Prefix: "emberships/orgs"
-							if prefix := "emberships/orgs"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-								elem = elem[len(prefix):]
-							} else {
-								break
-							}
-
-							if len(elem) == 0 {
-								s.handleOrgsListMembershipsForAuthenticatedUserRequest(args, w, r)
-								return
-							}
-							switch elem[0] {
-							case '/': // Prefix: "/"
-								if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-									elem = elem[len(prefix):]
-								} else {
-									break
-								}
-
-								// Param: "org"
-								// Leaf parameter
-								args["org"] = elem
-
-								// Leaf: OrgsGetMembershipForAuthenticatedUser
-								s.handleOrgsGetMembershipForAuthenticatedUserRequest(args, w, r)
-								return
-							}
-						case 'i': // Prefix: "igrations"
-							if prefix := "igrations"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-								elem = elem[len(prefix):]
-							} else {
-								break
-							}
-
-							if len(elem) == 0 {
-								s.handleMigrationsListForAuthenticatedUserRequest(args, w, r)
-								return
-							}
-							switch elem[0] {
-							case '/': // Prefix: "/"
-								if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-									elem = elem[len(prefix):]
-								} else {
-									break
-								}
-
-								// Param: "migration_id"
-								// Match until one of "/"
-								idx := strings.IndexAny(elem, "/")
-								if idx > 0 {
-									args["migration_id"] = elem[:idx]
-									elem = elem[idx:]
-
-									if len(elem) == 0 {
-										s.handleMigrationsGetStatusForAuthenticatedUserRequest(args, w, r)
-										return
-									}
-									switch elem[0] {
-									case '/': // Prefix: "/"
-										if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-											elem = elem[len(prefix):]
-										} else {
-											break
-										}
-
-										if len(elem) == 0 {
-											s.handleMigrationsListReposForUserRequest(args, w, r)
-											return
-										}
-										switch elem[0] {
-										case 'a': // Prefix: "archive"
-											if prefix := "archive"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-												elem = elem[len(prefix):]
-											} else {
-												break
-											}
-
-											if len(elem) == 0 {
-												s.handleMigrationsGetArchiveForAuthenticatedUserRequest(args, w, r)
-												return
-											}
-											switch elem[0] {
-											case 'r': // Prefix: "repositories"
-												if prefix := "repositories"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-													elem = elem[len(prefix):]
-												} else {
-													break
-												}
-
-												// Leaf: MigrationsListReposForUser
-												s.handleMigrationsListReposForUserRequest(args, w, r)
-												return
-											}
-										case 'r': // Prefix: "repositories"
-											if prefix := "repositories"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-												elem = elem[len(prefix):]
-											} else {
-												break
-											}
-
-											// Leaf: MigrationsListReposForUser
-											s.handleMigrationsListReposForUserRequest(args, w, r)
-											return
-										}
-									}
-								}
-							}
-						}
-					case 'o': // Prefix: "orgs"
-						if prefix := "orgs"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-							elem = elem[len(prefix):]
-						} else {
-							break
-						}
-
-						// Leaf: OrgsListForAuthenticatedUser
-						s.handleOrgsListForAuthenticatedUserRequest(args, w, r)
-						return
-					case 'p': // Prefix: "p"
-						if prefix := "p"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-							elem = elem[len(prefix):]
-						} else {
-							break
-						}
-
-						if len(elem) == 0 {
-							s.handleUsersListPublicEmailsForAuthenticatedRequest(args, w, r)
-							return
-						}
-						switch elem[0] {
-						case 'a': // Prefix: "ackages"
-							if prefix := "ackages"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-								elem = elem[len(prefix):]
-							} else {
-								break
-							}
-
-							if len(elem) == 0 {
-								s.handlePackagesListPackagesForAuthenticatedUserRequest(args, w, r)
-								return
-							}
-							switch elem[0] {
-							case '/': // Prefix: "/"
-								if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-									elem = elem[len(prefix):]
-								} else {
-									break
-								}
-
-								// Param: "package_type"
-								// Match until one of "/"
-								idx := strings.IndexAny(elem, "/")
-								if idx > 0 {
-									args["package_type"] = elem[:idx]
-									elem = elem[idx:]
-
-									if len(elem) == 0 {
-										break
-									}
-									switch elem[0] {
-									case '/': // Prefix: "/"
-										if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-											elem = elem[len(prefix):]
-										} else {
-											break
-										}
-
-										// Param: "package_name"
-										// Match until one of "/"
-										idx := strings.IndexAny(elem, "/")
-										if idx > 0 {
-											args["package_name"] = elem[:idx]
-											elem = elem[idx:]
-
-											if len(elem) == 0 {
-												s.handlePackagesGetPackageForAuthenticatedUserRequest(args, w, r)
-												return
-											}
-											switch elem[0] {
-											case '/': // Prefix: "/versions"
-												if prefix := "/versions"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-													elem = elem[len(prefix):]
-												} else {
-													break
-												}
-
-												if len(elem) == 0 {
-													s.handlePackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserRequest(args, w, r)
-													return
-												}
-												switch elem[0] {
-												case '/': // Prefix: "/"
-													if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-														elem = elem[len(prefix):]
-													} else {
-														break
-													}
-
-													// Param: "package_version_id"
-													// Leaf parameter
-													args["package_version_id"] = elem
-
-													// Leaf: PackagesGetPackageVersionForAuthenticatedUser
-													s.handlePackagesGetPackageVersionForAuthenticatedUserRequest(args, w, r)
-													return
-												}
-											}
-										}
-									}
-								}
-							case 'u': // Prefix: "ublic_emails"
-								if prefix := "ublic_emails"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-									elem = elem[len(prefix):]
-								} else {
-									break
-								}
-
-								// Leaf: UsersListPublicEmailsForAuthenticated
-								s.handleUsersListPublicEmailsForAuthenticatedRequest(args, w, r)
-								return
-							}
-						case 'u': // Prefix: "ublic_emails"
-							if prefix := "ublic_emails"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-								elem = elem[len(prefix):]
-							} else {
-								break
-							}
-
-							// Leaf: UsersListPublicEmailsForAuthenticated
-							s.handleUsersListPublicEmailsForAuthenticatedRequest(args, w, r)
-							return
-						}
-					case 'r': // Prefix: "repos"
-						if prefix := "repos"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-							elem = elem[len(prefix):]
-						} else {
-							break
-						}
-
-						if len(elem) == 0 {
-							s.handleReposListForAuthenticatedUserRequest(args, w, r)
-							return
-						}
-						switch elem[0] {
-						case 'i': // Prefix: "itory_invitations"
-							if prefix := "itory_invitations"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-								elem = elem[len(prefix):]
-							} else {
-								break
-							}
-
-							// Leaf: ReposListInvitationsForAuthenticatedUser
-							s.handleReposListInvitationsForAuthenticatedUserRequest(args, w, r)
-							return
-						}
-					case 's': // Prefix: "s"
-						if prefix := "s"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-							elem = elem[len(prefix):]
-						} else {
-							break
-						}
-
-						if len(elem) == 0 {
-							s.handleActivityListWatchedReposForAuthenticatedUserRequest(args, w, r)
-							return
-						}
-						switch elem[0] {
-						case 'i': // Prefix: "installations/"
-							if prefix := "installations/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-								elem = elem[len(prefix):]
-							} else {
-								break
-							}
-
-							// Param: "installation_id"
-							// Match until one of "/"
-							idx := strings.IndexAny(elem, "/")
-							if idx > 0 {
-								args["installation_id"] = elem[:idx]
-								elem = elem[idx:]
-
-								if len(elem) == 0 {
-									break
-								}
-								switch elem[0] {
-								case '/': // Prefix: "/repositories"
-									if prefix := "/repositories"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-										elem = elem[len(prefix):]
-									} else {
-										break
-									}
-
-									// Leaf: AppsListInstallationReposForAuthenticatedUser
-									s.handleAppsListInstallationReposForAuthenticatedUserRequest(args, w, r)
-									return
-								}
-							}
-						case 't': // Prefix: "tarred"
-							if prefix := "tarred"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-								elem = elem[len(prefix):]
-							} else {
-								break
-							}
-
-							if len(elem) == 0 {
-								s.handleActivityListReposStarredByAuthenticatedUserRequest(args, w, r)
-								return
-							}
-							switch elem[0] {
-							case '/': // Prefix: "/"
-								if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-									elem = elem[len(prefix):]
-								} else {
-									break
-								}
-
-								if len(elem) == 0 {
-									break
-								}
-								switch elem[0] {
-								case 's': // Prefix: "s/"
-									if prefix := "s/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-										elem = elem[len(prefix):]
-									} else {
-										break
-									}
-
-									// Param: "username"
-									// Match until one of "/"
-									idx := strings.IndexAny(elem, "/")
-									if idx > 0 {
-										args["username"] = elem[:idx]
-										elem = elem[idx:]
-
-										if len(elem) == 0 {
-											break
-										}
-										switch elem[0] {
-										case '/': // Prefix: "/events"
-											if prefix := "/events"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-												elem = elem[len(prefix):]
-											} else {
-												break
-											}
-
-											// Leaf: ActivityListEventsForAuthenticatedUser
-											s.handleActivityListEventsForAuthenticatedUserRequest(args, w, r)
-											return
-										}
-									}
-								}
-								// Param: "owner"
-								// Match until one of "/"
-								idx := strings.IndexAny(elem, "/")
-								if idx > 0 {
-									args["owner"] = elem[:idx]
-									elem = elem[idx:]
-
-									if len(elem) == 0 {
-										break
-									}
-									switch elem[0] {
-									case '/': // Prefix: "/"
-										if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-											elem = elem[len(prefix):]
-										} else {
-											break
-										}
-
-										// Param: "repo"
-										// Leaf parameter
-										args["repo"] = elem
-
-										// Leaf: ActivityCheckRepoIsStarredByAuthenticatedUser
-										s.handleActivityCheckRepoIsStarredByAuthenticatedUserRequest(args, w, r)
-										return
-									}
-								}
-							case 'u': // Prefix: "ubscriptions"
-								if prefix := "ubscriptions"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-									elem = elem[len(prefix):]
-								} else {
-									break
-								}
-
-								// Leaf: ActivityListWatchedReposForAuthenticatedUser
-								s.handleActivityListWatchedReposForAuthenticatedUserRequest(args, w, r)
-								return
-							}
-						case 'u': // Prefix: "ubscriptions"
-							if prefix := "ubscriptions"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-								elem = elem[len(prefix):]
-							} else {
-								break
-							}
-
-							// Leaf: ActivityListWatchedReposForAuthenticatedUser
-							s.handleActivityListWatchedReposForAuthenticatedUserRequest(args, w, r)
-							return
-						}
-					case 't': // Prefix: "teams"
-						if prefix := "teams"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-							elem = elem[len(prefix):]
-						} else {
-							break
-						}
-
-						// Leaf: TeamsListForAuthenticatedUser
-						s.handleTeamsListForAuthenticatedUserRequest(args, w, r)
-						return
-					}
-				case 's': // Prefix: "s"
-					if prefix := "s"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-						elem = elem[len(prefix):]
-					} else {
-						break
-					}
-
-					if len(elem) == 0 {
-						s.handleUsersListRequest(args, w, r)
-						return
-					}
-					switch elem[0] {
-					case '/': // Prefix: "/"
-						if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-							elem = elem[len(prefix):]
-						} else {
-							break
-						}
-
-						// Param: "username"
-						// Match until one of "/"
-						idx := strings.IndexAny(elem, "/")
-						if idx > 0 {
-							args["username"] = elem[:idx]
-							elem = elem[idx:]
-
-							if len(elem) == 0 {
-								s.handleUsersGetByUsernameRequest(args, w, r)
-								return
-							}
-							switch elem[0] {
-							case '/': // Prefix: "/"
-								if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-									elem = elem[len(prefix):]
-								} else {
-									break
-								}
-
-								if len(elem) == 0 {
-									s.handleActivityListReceivedEventsForUserRequest(args, w, r)
-									return
-								}
-								switch elem[0] {
-								case 'e': // Prefix: "events"
-									if prefix := "events"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-										elem = elem[len(prefix):]
-									} else {
-										break
-									}
-
-									if len(elem) == 0 {
-										s.handleActivityListEventsForAuthenticatedUserRequest(args, w, r)
-										return
-									}
-									switch elem[0] {
-									case '/': // Prefix: "/"
-										if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-											elem = elem[len(prefix):]
-										} else {
-											break
-										}
-
-										if len(elem) == 0 {
-											s.handleActivityListPublicEventsForUserRequest(args, w, r)
-											return
-										}
-										switch elem[0] {
-										case 'o': // Prefix: "orgs/"
-											if prefix := "orgs/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-												elem = elem[len(prefix):]
-											} else {
-												break
-											}
-
-											if len(elem) == 0 {
-												break
-											}
-											switch elem[0] {
-											case 'p': // Prefix: "public"
-												if prefix := "public"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-													elem = elem[len(prefix):]
-												} else {
-													break
-												}
-
-												// Leaf: ActivityListPublicEventsForUser
-												s.handleActivityListPublicEventsForUserRequest(args, w, r)
-												return
-											}
-											// Param: "org"
-											// Leaf parameter
-											args["org"] = elem
-
-											// Leaf: ActivityListOrgEventsForAuthenticatedUser
-											s.handleActivityListOrgEventsForAuthenticatedUserRequest(args, w, r)
-											return
-										case 'p': // Prefix: "public"
-											if prefix := "public"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-												elem = elem[len(prefix):]
-											} else {
-												break
-											}
-
-											// Leaf: ActivityListPublicEventsForUser
-											s.handleActivityListPublicEventsForUserRequest(args, w, r)
-											return
-										}
-									case 'r': // Prefix: "received_events"
-										if prefix := "received_events"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-											elem = elem[len(prefix):]
-										} else {
-											break
-										}
-
-										// Leaf: ActivityListReceivedEventsForUser
-										s.handleActivityListReceivedEventsForUserRequest(args, w, r)
-										return
-									}
-								case 'f': // Prefix: "follow"
-									if prefix := "follow"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-										elem = elem[len(prefix):]
-									} else {
-										break
-									}
-
-									if len(elem) == 0 {
-										s.handleUsersListFollowersForUserRequest(args, w, r)
-										return
-									}
-									switch elem[0] {
-									case 'e': // Prefix: "ers"
-										if prefix := "ers"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-											elem = elem[len(prefix):]
-										} else {
-											break
-										}
-
-										// Leaf: UsersListFollowersForUser
-										s.handleUsersListFollowersForUserRequest(args, w, r)
-										return
-									case 'i': // Prefix: "ing"
-										if prefix := "ing"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-											elem = elem[len(prefix):]
-										} else {
-											break
-										}
-
-										if len(elem) == 0 {
-											s.handleUsersListFollowingForUserRequest(args, w, r)
-											return
-										}
-										switch elem[0] {
-										case '/': // Prefix: "/"
-											if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-												elem = elem[len(prefix):]
-											} else {
-												break
-											}
-
-											if len(elem) == 0 {
-												break
-											}
-											switch elem[0] {
-											case 'e': // Prefix: "ers"
-												if prefix := "ers"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-													elem = elem[len(prefix):]
-												} else {
-													break
-												}
-
-												// Leaf: UsersListFollowersForUser
-												s.handleUsersListFollowersForUserRequest(args, w, r)
-												return
-											}
-											// Param: "target_user"
-											// Leaf parameter
-											args["target_user"] = elem
-
-											// Leaf: UsersCheckFollowingForUser
-											s.handleUsersCheckFollowingForUserRequest(args, w, r)
-											return
-										}
-									}
-								case 'g': // Prefix: "g"
-									if prefix := "g"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-										elem = elem[len(prefix):]
-									} else {
-										break
-									}
-
-									if len(elem) == 0 {
-										s.handleUsersListGpgKeysForUserRequest(args, w, r)
-										return
-									}
-									switch elem[0] {
-									case 'i': // Prefix: "ists"
-										if prefix := "ists"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-											elem = elem[len(prefix):]
-										} else {
-											break
-										}
-
-										if len(elem) == 0 {
-											s.handleGistsListForUserRequest(args, w, r)
-											return
-										}
-										switch elem[0] {
-										case 'p': // Prefix: "pg_keys"
-											if prefix := "pg_keys"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-												elem = elem[len(prefix):]
-											} else {
-												break
-											}
-
-											// Leaf: UsersListGpgKeysForUser
-											s.handleUsersListGpgKeysForUserRequest(args, w, r)
-											return
-										}
-									case 'p': // Prefix: "pg_keys"
-										if prefix := "pg_keys"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-											elem = elem[len(prefix):]
-										} else {
-											break
-										}
-
-										// Leaf: UsersListGpgKeysForUser
-										s.handleUsersListGpgKeysForUserRequest(args, w, r)
-										return
-									}
-								case 'h': // Prefix: "hovercard"
-									if prefix := "hovercard"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-										elem = elem[len(prefix):]
-									} else {
-										break
-									}
-
-									// Leaf: UsersGetContextForUser
-									s.handleUsersGetContextForUserRequest(args, w, r)
-									return
-								case 'k': // Prefix: "keys"
-									if prefix := "keys"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-										elem = elem[len(prefix):]
-									} else {
-										break
-									}
-
-									// Leaf: UsersListPublicKeysForUser
-									s.handleUsersListPublicKeysForUserRequest(args, w, r)
-									return
-								case 'o': // Prefix: "orgs"
-									if prefix := "orgs"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-										elem = elem[len(prefix):]
-									} else {
-										break
-									}
-
-									// Leaf: OrgsListForUser
-									s.handleOrgsListForUserRequest(args, w, r)
-									return
-								case 'p': // Prefix: "p"
-									if prefix := "p"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-										elem = elem[len(prefix):]
-									} else {
-										break
-									}
-
-									if len(elem) == 0 {
-										s.handleProjectsListForUserRequest(args, w, r)
-										return
-									}
-									switch elem[0] {
-									case 'a': // Prefix: "ackages"
-										if prefix := "ackages"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-											elem = elem[len(prefix):]
-										} else {
-											break
-										}
-
-										if len(elem) == 0 {
-											s.handlePackagesListPackagesForUserRequest(args, w, r)
-											return
-										}
-										switch elem[0] {
-										case '/': // Prefix: "/"
-											if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-												elem = elem[len(prefix):]
-											} else {
-												break
-											}
-
-											// Param: "package_type"
-											// Match until one of "/"
-											idx := strings.IndexAny(elem, "/")
-											if idx > 0 {
-												args["package_type"] = elem[:idx]
-												elem = elem[idx:]
-
-												if len(elem) == 0 {
-													break
-												}
-												switch elem[0] {
-												case '/': // Prefix: "/"
-													if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-														elem = elem[len(prefix):]
-													} else {
-														break
-													}
-
-													// Param: "package_name"
-													// Match until one of "/"
-													idx := strings.IndexAny(elem, "/")
-													if idx > 0 {
-														args["package_name"] = elem[:idx]
-														elem = elem[idx:]
-
-														if len(elem) == 0 {
-															s.handlePackagesGetPackageForUserRequest(args, w, r)
-															return
-														}
-														switch elem[0] {
-														case '/': // Prefix: "/versions"
-															if prefix := "/versions"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																elem = elem[len(prefix):]
-															} else {
-																break
-															}
-
-															if len(elem) == 0 {
-																s.handlePackagesGetAllPackageVersionsForPackageOwnedByUserRequest(args, w, r)
-																return
-															}
-															switch elem[0] {
-															case '/': // Prefix: "/"
-																if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																	elem = elem[len(prefix):]
-																} else {
-																	break
-																}
-
-																// Param: "package_version_id"
-																// Leaf parameter
-																args["package_version_id"] = elem
-
-																// Leaf: PackagesGetPackageVersionForUser
-																s.handlePackagesGetPackageVersionForUserRequest(args, w, r)
-																return
-															}
-														}
-													}
-												}
-											}
-										case 'r': // Prefix: "rojects"
-											if prefix := "rojects"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-												elem = elem[len(prefix):]
-											} else {
-												break
-											}
-
-											// Leaf: ProjectsListForUser
-											s.handleProjectsListForUserRequest(args, w, r)
-											return
-										}
-									case 'r': // Prefix: "rojects"
-										if prefix := "rojects"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-											elem = elem[len(prefix):]
-										} else {
-											break
-										}
-
-										// Leaf: ProjectsListForUser
-										s.handleProjectsListForUserRequest(args, w, r)
-										return
-									}
-								case 'r': // Prefix: "re"
-									if prefix := "re"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-										elem = elem[len(prefix):]
-									} else {
-										break
-									}
-
-									if len(elem) == 0 {
-										s.handleReposListForUserRequest(args, w, r)
-										return
-									}
-									switch elem[0] {
-									case 'c': // Prefix: "ceived_events"
-										if prefix := "ceived_events"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-											elem = elem[len(prefix):]
-										} else {
-											break
-										}
-
-										if len(elem) == 0 {
-											s.handleActivityListReceivedEventsForUserRequest(args, w, r)
-											return
-										}
-										switch elem[0] {
-										case '/': // Prefix: "/public"
-											if prefix := "/public"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-												elem = elem[len(prefix):]
-											} else {
-												break
-											}
-
-											// Leaf: ActivityListReceivedPublicEventsForUser
-											s.handleActivityListReceivedPublicEventsForUserRequest(args, w, r)
-											return
-										case 'p': // Prefix: "pos"
-											if prefix := "pos"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-												elem = elem[len(prefix):]
-											} else {
-												break
-											}
-
-											// Leaf: ReposListForUser
-											s.handleReposListForUserRequest(args, w, r)
-											return
-										}
-									case 'p': // Prefix: "pos"
-										if prefix := "pos"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-											elem = elem[len(prefix):]
-										} else {
-											break
-										}
-
-										// Leaf: ReposListForUser
-										s.handleReposListForUserRequest(args, w, r)
-										return
-									}
-								case 's': // Prefix: "s"
-									if prefix := "s"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-										elem = elem[len(prefix):]
-									} else {
-										break
-									}
-
-									if len(elem) == 0 {
-										s.handleBillingGetGithubActionsBillingUserRequest(args, w, r)
-										return
-									}
-									switch elem[0] {
-									case 'e': // Prefix: "ettings/billing/"
-										if prefix := "ettings/billing/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-											elem = elem[len(prefix):]
-										} else {
-											break
-										}
-
-										if len(elem) == 0 {
-											s.handleBillingGetGithubPackagesBillingUserRequest(args, w, r)
-											return
-										}
-										switch elem[0] {
-										case 'a': // Prefix: "actions"
-											if prefix := "actions"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-												elem = elem[len(prefix):]
-											} else {
-												break
-											}
-
-											if len(elem) == 0 {
-												s.handleBillingGetGithubActionsBillingUserRequest(args, w, r)
-												return
-											}
-											switch elem[0] {
-											case 'p': // Prefix: "packages"
-												if prefix := "packages"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-													elem = elem[len(prefix):]
-												} else {
-													break
-												}
-
-												// Leaf: BillingGetGithubPackagesBillingUser
-												s.handleBillingGetGithubPackagesBillingUserRequest(args, w, r)
-												return
-											}
-										case 'p': // Prefix: "packages"
-											if prefix := "packages"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-												elem = elem[len(prefix):]
-											} else {
-												break
-											}
-
-											// Leaf: BillingGetGithubPackagesBillingUser
-											s.handleBillingGetGithubPackagesBillingUserRequest(args, w, r)
-											return
-										case 's': // Prefix: "shared-storage"
-											if prefix := "shared-storage"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-												elem = elem[len(prefix):]
-											} else {
-												break
-											}
-
-											// Leaf: BillingGetSharedStorageBillingUser
-											s.handleBillingGetSharedStorageBillingUserRequest(args, w, r)
-											return
-										}
-									case 'u': // Prefix: "ubscriptions"
-										if prefix := "ubscriptions"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-											elem = elem[len(prefix):]
-										} else {
-											break
-										}
-
-										if len(elem) == 0 {
-											s.handleActivityListReposWatchedByUserRequest(args, w, r)
-											return
-										}
-										switch elem[0] {
-										case 'e': // Prefix: "ettings/billing/actions"
-											if prefix := "ettings/billing/actions"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-												elem = elem[len(prefix):]
-											} else {
-												break
-											}
-
-											// Leaf: BillingGetGithubActionsBillingUser
-											s.handleBillingGetGithubActionsBillingUserRequest(args, w, r)
-											return
-										}
-									}
-								}
-							}
-						}
-					}
-				}
-			}
-		}
-	case "PATCH":
-		if len(elem) == 0 {
-			break
-		}
-		switch elem[0] {
-		case '/': // Prefix: "/"
-			if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-				elem = elem[len(prefix):]
-			} else {
-				break
-			}
-
-			if len(elem) == 0 {
-				s.handleActivityMarkThreadAsReadRequest(args, w, r)
-				return
-			}
-			switch elem[0] {
-			case 'a': // Prefix: "a"
-				if prefix := "a"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-					elem = elem[len(prefix):]
-				} else {
-					break
-				}
-
-				if len(elem) == 0 {
-					s.handleOAuthAuthorizationsUpdateAuthorizationRequest(args, w, r)
-					return
-				}
-				switch elem[0] {
-				case 'p': // Prefix: "pp"
-					if prefix := "pp"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-						elem = elem[len(prefix):]
-					} else {
-						break
-					}
-
-					if len(elem) == 0 {
-						s.handleAppsUpdateWebhookConfigForAppRequest(args, w, r)
-						return
-					}
-					switch elem[0] {
-					case '/': // Prefix: "/hook/config"
-						if prefix := "/hook/config"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-							elem = elem[len(prefix):]
-						} else {
-							break
-						}
-
-						// Leaf: AppsUpdateWebhookConfigForApp
-						s.handleAppsUpdateWebhookConfigForAppRequest(args, w, r)
-						return
-					case 'l': // Prefix: "lications/"
-						if prefix := "lications/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-							elem = elem[len(prefix):]
-						} else {
-							break
-						}
-
-						if len(elem) == 0 {
-							break
-						}
-						switch elem[0] {
-						case '/': // Prefix: "/hook/config"
-							if prefix := "/hook/config"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-								elem = elem[len(prefix):]
-							} else {
-								break
-							}
-
-							// Leaf: AppsUpdateWebhookConfigForApp
-							s.handleAppsUpdateWebhookConfigForAppRequest(args, w, r)
-							return
-						}
-						// Param: "client_id"
-						// Match until one of "/"
-						idx := strings.IndexAny(elem, "/")
-						if idx > 0 {
-							args["client_id"] = elem[:idx]
-							elem = elem[idx:]
-
-							if len(elem) == 0 {
-								break
-							}
-							switch elem[0] {
-							case '/': // Prefix: "/token"
-								if prefix := "/token"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-									elem = elem[len(prefix):]
-								} else {
-									break
-								}
-
-								// Leaf: AppsResetToken
-								s.handleAppsResetTokenRequest(args, w, r)
-								return
-							}
-						}
-					case 'u': // Prefix: "uthorizations/"
-						if prefix := "uthorizations/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-							elem = elem[len(prefix):]
-						} else {
-							break
-						}
-
-						// Param: "authorization_id"
-						// Leaf parameter
-						args["authorization_id"] = elem
-
-						// Leaf: OAuthAuthorizationsUpdateAuthorization
-						s.handleOAuthAuthorizationsUpdateAuthorizationRequest(args, w, r)
-						return
-					}
-				case 'u': // Prefix: "uthorizations/"
-					if prefix := "uthorizations/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-						elem = elem[len(prefix):]
-					} else {
-						break
-					}
-
-					// Param: "authorization_id"
-					// Leaf parameter
-					args["authorization_id"] = elem
-
-					// Leaf: OAuthAuthorizationsUpdateAuthorization
-					s.handleOAuthAuthorizationsUpdateAuthorizationRequest(args, w, r)
-					return
-				}
-			case 'e': // Prefix: "enterprises/"
-				if prefix := "enterprises/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-					elem = elem[len(prefix):]
-				} else {
-					break
-				}
-
-				// Param: "enterprise"
-				// Match until one of "/"
-				idx := strings.IndexAny(elem, "/")
-				if idx > 0 {
-					args["enterprise"] = elem[:idx]
-					elem = elem[idx:]
-
-					if len(elem) == 0 {
-						break
-					}
-					switch elem[0] {
-					case '/': // Prefix: "/actions/runner-groups/"
-						if prefix := "/actions/runner-groups/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-							elem = elem[len(prefix):]
-						} else {
-							break
-						}
-
-						// Param: "runner_group_id"
-						// Leaf parameter
-						args["runner_group_id"] = elem
-
-						// Leaf: EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterprise
-						s.handleEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseRequest(args, w, r)
-						return
-					}
-				}
-			case 'g': // Prefix: "gists/"
-				if prefix := "gists/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-					elem = elem[len(prefix):]
-				} else {
-					break
-				}
-
-				// Param: "gist_id"
-				// Match until one of "/"
-				idx := strings.IndexAny(elem, "/")
-				if idx > 0 {
-					args["gist_id"] = elem[:idx]
-					elem = elem[idx:]
-
-					if len(elem) == 0 {
-						break
-					}
-					switch elem[0] {
-					case '/': // Prefix: "/comments/"
-						if prefix := "/comments/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-							elem = elem[len(prefix):]
-						} else {
-							break
-						}
-
-						// Param: "comment_id"
-						// Leaf parameter
-						args["comment_id"] = elem
-
-						// Leaf: GistsUpdateComment
-						s.handleGistsUpdateCommentRequest(args, w, r)
-						return
-					}
-				}
-			case 'n': // Prefix: "notifications/threads/"
-				if prefix := "notifications/threads/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-					elem = elem[len(prefix):]
-				} else {
-					break
-				}
-
-				// Param: "thread_id"
-				// Leaf parameter
-				args["thread_id"] = elem
-
-				// Leaf: ActivityMarkThreadAsRead
-				s.handleActivityMarkThreadAsReadRequest(args, w, r)
-				return
-			case 'o': // Prefix: "orgs/"
-				if prefix := "orgs/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-					elem = elem[len(prefix):]
-				} else {
-					break
-				}
-
-				if len(elem) == 0 {
-					break
-				}
-				switch elem[0] {
-				case 'n': // Prefix: "notifications/threads/"
-					if prefix := "notifications/threads/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-						elem = elem[len(prefix):]
-					} else {
-						break
-					}
-
-					// Param: "thread_id"
-					// Leaf parameter
-					args["thread_id"] = elem
-
-					// Leaf: ActivityMarkThreadAsRead
-					s.handleActivityMarkThreadAsReadRequest(args, w, r)
-					return
-				}
-				// Param: "org"
-				// Match until one of "/"
-				idx := strings.IndexAny(elem, "/")
-				if idx > 0 {
-					args["org"] = elem[:idx]
-					elem = elem[idx:]
-
-					if len(elem) == 0 {
-						break
-					}
-					switch elem[0] {
-					case '/': // Prefix: "/"
-						if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-							elem = elem[len(prefix):]
-						} else {
-							break
-						}
-
-						if len(elem) == 0 {
-							s.handleOrgsUpdateWebhookRequest(args, w, r)
-							return
-						}
-						switch elem[0] {
-						case 'a': // Prefix: "actions/runner-groups/"
-							if prefix := "actions/runner-groups/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-								elem = elem[len(prefix):]
-							} else {
-								break
-							}
-
-							if len(elem) == 0 {
-								break
-							}
-							switch elem[0] {
-							case 'h': // Prefix: "hooks/"
-								if prefix := "hooks/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-									elem = elem[len(prefix):]
-								} else {
-									break
-								}
-
-								// Param: "hook_id"
-								// Leaf parameter
-								args["hook_id"] = elem
-
-								// Leaf: OrgsUpdateWebhook
-								s.handleOrgsUpdateWebhookRequest(args, w, r)
-								return
-							}
-							// Param: "runner_group_id"
-							// Leaf parameter
-							args["runner_group_id"] = elem
-
-							// Leaf: ActionsUpdateSelfHostedRunnerGroupForOrg
-							s.handleActionsUpdateSelfHostedRunnerGroupForOrgRequest(args, w, r)
-							return
-						case 'h': // Prefix: "hooks/"
-							if prefix := "hooks/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-								elem = elem[len(prefix):]
-							} else {
-								break
-							}
-
-							// Param: "hook_id"
-							// Match until one of "/"
-							idx := strings.IndexAny(elem, "/")
-							if idx > 0 {
-								args["hook_id"] = elem[:idx]
-								elem = elem[idx:]
-
-								if len(elem) == 0 {
-									s.handleOrgsUpdateWebhookRequest(args, w, r)
-									return
-								}
-								switch elem[0] {
-								case '/': // Prefix: "/config"
-									if prefix := "/config"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-										elem = elem[len(prefix):]
-									} else {
-										break
-									}
-
-									// Leaf: OrgsUpdateWebhookConfigForOrg
-									s.handleOrgsUpdateWebhookConfigForOrgRequest(args, w, r)
-									return
-								}
-							}
-						case 't': // Prefix: "teams/"
-							if prefix := "teams/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-								elem = elem[len(prefix):]
-							} else {
-								break
-							}
-
-							// Param: "team_slug"
-							// Match until one of "/"
-							idx := strings.IndexAny(elem, "/")
-							if idx > 0 {
-								args["team_slug"] = elem[:idx]
-								elem = elem[idx:]
-
-								if len(elem) == 0 {
-									s.handleTeamsUpdateInOrgRequest(args, w, r)
-									return
-								}
-								switch elem[0] {
-								case '/': // Prefix: "/"
-									if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-										elem = elem[len(prefix):]
-									} else {
-										break
-									}
-
-									if len(elem) == 0 {
-										s.handleTeamsUpdateDiscussionCommentInOrgRequest(args, w, r)
-										return
-									}
-									switch elem[0] {
-									case 'd': // Prefix: "discussions/"
-										if prefix := "discussions/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-											elem = elem[len(prefix):]
-										} else {
-											break
-										}
-
-										// Param: "discussion_number"
-										// Match until one of "/"
-										idx := strings.IndexAny(elem, "/")
-										if idx > 0 {
-											args["discussion_number"] = elem[:idx]
-											elem = elem[idx:]
-
-											if len(elem) == 0 {
-												s.handleTeamsUpdateDiscussionInOrgRequest(args, w, r)
-												return
-											}
-											switch elem[0] {
-											case '/': // Prefix: "/comments/"
-												if prefix := "/comments/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-													elem = elem[len(prefix):]
-												} else {
-													break
-												}
-
-												// Param: "comment_number"
-												// Leaf parameter
-												args["comment_number"] = elem
-
-												// Leaf: TeamsUpdateDiscussionCommentInOrg
-												s.handleTeamsUpdateDiscussionCommentInOrgRequest(args, w, r)
-												return
-											}
-										}
-									case 't': // Prefix: "team-sync/group-mappings"
-										if prefix := "team-sync/group-mappings"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-											elem = elem[len(prefix):]
-										} else {
-											break
-										}
-
-										if len(elem) == 0 {
-											s.handleTeamsCreateOrUpdateIdpGroupConnectionsInOrgRequest(args, w, r)
-											return
-										}
-										switch elem[0] {
-										case 'd': // Prefix: "discussions/"
-											if prefix := "discussions/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-												elem = elem[len(prefix):]
-											} else {
-												break
-											}
-
-											// Param: "discussion_number"
-											// Match until one of "/"
-											idx := strings.IndexAny(elem, "/")
-											if idx > 0 {
-												args["discussion_number"] = elem[:idx]
-												elem = elem[idx:]
-
-												if len(elem) == 0 {
-													break
-												}
-												switch elem[0] {
-												case '/': // Prefix: "/comments/"
-													if prefix := "/comments/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-														elem = elem[len(prefix):]
-													} else {
-														break
-													}
-
-													// Param: "comment_number"
-													// Leaf parameter
-													args["comment_number"] = elem
-
-													// Leaf: TeamsUpdateDiscussionCommentInOrg
-													s.handleTeamsUpdateDiscussionCommentInOrgRequest(args, w, r)
-													return
-												}
-											}
-										}
-									}
-								}
-							}
-						}
-					}
-				}
-			case 'p': // Prefix: "projects/"
-				if prefix := "projects/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-					elem = elem[len(prefix):]
-				} else {
-					break
-				}
-
-				if len(elem) == 0 {
-					break
-				}
-				switch elem[0] {
-				case 'c': // Prefix: "columns/"
-					if prefix := "columns/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-						elem = elem[len(prefix):]
-					} else {
-						break
-					}
-
-					if len(elem) == 0 {
-						s.handleProjectsUpdateColumnRequest(args, w, r)
-						return
-					}
-					switch elem[0] {
-					case 'c': // Prefix: "cards/"
-						if prefix := "cards/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-							elem = elem[len(prefix):]
-						} else {
-							break
-						}
-
-						// Param: "card_id"
-						// Leaf parameter
-						args["card_id"] = elem
-
-						// Leaf: ProjectsUpdateColumn
-						s.handleProjectsUpdateColumnRequest(args, w, r)
-						return
-					}
-					// Param: "column_id"
-					// Leaf parameter
-					args["column_id"] = elem
-
-					// Leaf: ProjectsUpdateColumn
-					s.handleProjectsUpdateColumnRequest(args, w, r)
-					return
-				}
-				// Param: "project_id"
-				// Leaf parameter
-				args["project_id"] = elem
-
-				// Leaf: ProjectsUpdate
-				s.handleProjectsUpdateRequest(args, w, r)
-				return
-			case 'r': // Prefix: "repos/"
-				if prefix := "repos/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-					elem = elem[len(prefix):]
-				} else {
-					break
-				}
-
-				// Param: "owner"
-				// Match until one of "/"
-				idx := strings.IndexAny(elem, "/")
-				if idx > 0 {
-					args["owner"] = elem[:idx]
-					elem = elem[idx:]
-
-					if len(elem) == 0 {
-						break
-					}
-					switch elem[0] {
-					case '/': // Prefix: "/"
-						if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-							elem = elem[len(prefix):]
-						} else {
-							break
-						}
-
-						// Param: "repo"
-						// Match until one of "/"
-						idx := strings.IndexAny(elem, "/")
-						if idx > 0 {
-							args["repo"] = elem[:idx]
-							elem = elem[idx:]
-
-							if len(elem) == 0 {
-								s.handleReposUpdateRequest(args, w, r)
-								return
-							}
-							switch elem[0] {
-							case '/': // Prefix: "/"
-								if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-									elem = elem[len(prefix):]
-								} else {
-									break
-								}
-
-								if len(elem) == 0 {
-									s.handleGitUpdateRefRequest(args, w, r)
-									return
-								}
-								switch elem[0] {
-								case 'b': // Prefix: "branches/"
-									if prefix := "branches/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-										elem = elem[len(prefix):]
-									} else {
-										break
-									}
-
-									// Param: "branch"
-									// Match until one of "/"
-									idx := strings.IndexAny(elem, "/")
-									if idx > 0 {
-										args["branch"] = elem[:idx]
-										elem = elem[idx:]
-
-										if len(elem) == 0 {
-											break
-										}
-										switch elem[0] {
-										case '/': // Prefix: "/protection/required_"
-											if prefix := "/protection/required_"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-												elem = elem[len(prefix):]
-											} else {
-												break
-											}
-
-											if len(elem) == 0 {
-												s.handleReposUpdateStatusCheckProtectionRequest(args, w, r)
-												return
-											}
-											switch elem[0] {
-											case 'p': // Prefix: "pull_request_reviews"
-												if prefix := "pull_request_reviews"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-													elem = elem[len(prefix):]
-												} else {
-													break
-												}
-
-												if len(elem) == 0 {
-													s.handleReposUpdatePullRequestReviewProtectionRequest(args, w, r)
-													return
-												}
-												switch elem[0] {
-												case 's': // Prefix: "status_checks"
-													if prefix := "status_checks"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-														elem = elem[len(prefix):]
-													} else {
-														break
-													}
-
-													// Leaf: ReposUpdateStatusCheckProtection
-													s.handleReposUpdateStatusCheckProtectionRequest(args, w, r)
-													return
-												}
-											case 's': // Prefix: "status_checks"
-												if prefix := "status_checks"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-													elem = elem[len(prefix):]
-												} else {
-													break
-												}
-
-												// Leaf: ReposUpdateStatusCheckProtection
-												s.handleReposUpdateStatusCheckProtectionRequest(args, w, r)
-												return
-											}
-										}
-									}
-								case 'c': // Prefix: "c"
-									if prefix := "c"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-										elem = elem[len(prefix):]
-									} else {
-										break
-									}
-
-									if len(elem) == 0 {
-										s.handleCodeScanningUpdateAlertRequest(args, w, r)
-										return
-									}
-									switch elem[0] {
-									case 'g': // Prefix: "git/refs/"
-										if prefix := "git/refs/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-											elem = elem[len(prefix):]
-										} else {
-											break
-										}
-
-										// Param: "ref"
-										// Leaf parameter
-										args["ref"] = elem
-
-										// Leaf: GitUpdateRef
-										s.handleGitUpdateRefRequest(args, w, r)
-										return
-									case 'h': // Prefix: "heck-suites/preferences"
-										if prefix := "heck-suites/preferences"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-											elem = elem[len(prefix):]
-										} else {
-											break
-										}
-
-										if len(elem) == 0 {
-											s.handleChecksSetSuitesPreferencesRequest(args, w, r)
-											return
-										}
-										switch elem[0] {
-										case 'o': // Prefix: "ode-scanning/alerts/"
-											if prefix := "ode-scanning/alerts/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-												elem = elem[len(prefix):]
-											} else {
-												break
-											}
-
-											// Param: "alert_number"
-											// Leaf parameter
-											args["alert_number"] = elem
-
-											// Leaf: CodeScanningUpdateAlert
-											s.handleCodeScanningUpdateAlertRequest(args, w, r)
-											return
-										}
-									case 'o': // Prefix: "o"
-										if prefix := "o"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-											elem = elem[len(prefix):]
-										} else {
-											break
-										}
-
-										if len(elem) == 0 {
-											s.handleReposUpdateCommitCommentRequest(args, w, r)
-											return
-										}
-										switch elem[0] {
-										case 'd': // Prefix: "de-scanning/alerts/"
-											if prefix := "de-scanning/alerts/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-												elem = elem[len(prefix):]
-											} else {
-												break
-											}
-
-											if len(elem) == 0 {
-												break
-											}
-											switch elem[0] {
-											case 'm': // Prefix: "mments/"
-												if prefix := "mments/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-													elem = elem[len(prefix):]
-												} else {
-													break
-												}
-
-												// Param: "comment_id"
-												// Leaf parameter
-												args["comment_id"] = elem
-
-												// Leaf: ReposUpdateCommitComment
-												s.handleReposUpdateCommitCommentRequest(args, w, r)
-												return
-											}
-											// Param: "alert_number"
-											// Leaf parameter
-											args["alert_number"] = elem
-
-											// Leaf: CodeScanningUpdateAlert
-											s.handleCodeScanningUpdateAlertRequest(args, w, r)
-											return
-										case 'm': // Prefix: "mments/"
-											if prefix := "mments/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-												elem = elem[len(prefix):]
-											} else {
-												break
-											}
-
-											// Param: "comment_id"
-											// Leaf parameter
-											args["comment_id"] = elem
-
-											// Leaf: ReposUpdateCommitComment
-											s.handleReposUpdateCommitCommentRequest(args, w, r)
-											return
-										}
-									}
-								case 'g': // Prefix: "git/refs/"
-									if prefix := "git/refs/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-										elem = elem[len(prefix):]
-									} else {
-										break
-									}
-
-									// Param: "ref"
-									// Leaf parameter
-									args["ref"] = elem
-
-									// Leaf: GitUpdateRef
-									s.handleGitUpdateRefRequest(args, w, r)
-									return
-								case 'h': // Prefix: "hooks/"
-									if prefix := "hooks/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-										elem = elem[len(prefix):]
-									} else {
-										break
-									}
-
-									// Param: "hook_id"
-									// Match until one of "/"
-									idx := strings.IndexAny(elem, "/")
-									if idx > 0 {
-										args["hook_id"] = elem[:idx]
-										elem = elem[idx:]
-
-										if len(elem) == 0 {
-											s.handleReposUpdateWebhookRequest(args, w, r)
-											return
-										}
-										switch elem[0] {
-										case '/': // Prefix: "/config"
-											if prefix := "/config"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-												elem = elem[len(prefix):]
-											} else {
-												break
-											}
-
-											// Leaf: ReposUpdateWebhookConfigForRepo
-											s.handleReposUpdateWebhookConfigForRepoRequest(args, w, r)
-											return
-										}
-									}
-								case 'i': // Prefix: "i"
-									if prefix := "i"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-										elem = elem[len(prefix):]
-									} else {
-										break
-									}
-
-									if len(elem) == 0 {
-										s.handleMigrationsMapCommitAuthorRequest(args, w, r)
-										return
-									}
-									switch elem[0] {
-									case 'm': // Prefix: "mport"
-										if prefix := "mport"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-											elem = elem[len(prefix):]
-										} else {
-											break
-										}
-
-										if len(elem) == 0 {
-											s.handleMigrationsUpdateImportRequest(args, w, r)
-											return
-										}
-										switch elem[0] {
-										case '/': // Prefix: "/"
-											if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-												elem = elem[len(prefix):]
-											} else {
-												break
-											}
-
-											if len(elem) == 0 {
-												s.handleMigrationsSetLfsPreferenceRequest(args, w, r)
-												return
-											}
-											switch elem[0] {
-											case 'a': // Prefix: "authors/"
-												if prefix := "authors/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-													elem = elem[len(prefix):]
-												} else {
-													break
-												}
-
-												if len(elem) == 0 {
-													break
-												}
-												switch elem[0] {
-												case 'l': // Prefix: "lfs"
-													if prefix := "lfs"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-														elem = elem[len(prefix):]
-													} else {
-														break
-													}
-
-													// Leaf: MigrationsSetLfsPreference
-													s.handleMigrationsSetLfsPreferenceRequest(args, w, r)
-													return
-												}
-												// Param: "author_id"
-												// Leaf parameter
-												args["author_id"] = elem
-
-												// Leaf: MigrationsMapCommitAuthor
-												s.handleMigrationsMapCommitAuthorRequest(args, w, r)
-												return
-											case 'l': // Prefix: "lfs"
-												if prefix := "lfs"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-													elem = elem[len(prefix):]
-												} else {
-													break
-												}
-
-												// Leaf: MigrationsSetLfsPreference
-												s.handleMigrationsSetLfsPreferenceRequest(args, w, r)
-												return
-											}
-										}
-									case 'n': // Prefix: "nvitations/"
-										if prefix := "nvitations/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-											elem = elem[len(prefix):]
-										} else {
-											break
-										}
-
-										// Param: "invitation_id"
-										// Leaf parameter
-										args["invitation_id"] = elem
-
-										// Leaf: ReposUpdateInvitation
-										s.handleReposUpdateInvitationRequest(args, w, r)
-										return
-									case 's': // Prefix: "ssues/"
-										if prefix := "ssues/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-											elem = elem[len(prefix):]
-										} else {
-											break
-										}
-
-										if len(elem) == 0 {
-											break
-										}
-										switch elem[0] {
-										case 'c': // Prefix: "comments/"
-											if prefix := "comments/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-												elem = elem[len(prefix):]
-											} else {
-												break
-											}
-
-											// Param: "comment_id"
-											// Leaf parameter
-											args["comment_id"] = elem
-
-											// Leaf: IssuesUpdateComment
-											s.handleIssuesUpdateCommentRequest(args, w, r)
-											return
-										case 'm': // Prefix: "mport/authors/"
-											if prefix := "mport/authors/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-												elem = elem[len(prefix):]
-											} else {
-												break
-											}
-
-											// Param: "author_id"
-											// Leaf parameter
-											args["author_id"] = elem
-
-											// Leaf: MigrationsMapCommitAuthor
-											s.handleMigrationsMapCommitAuthorRequest(args, w, r)
-											return
-										}
-										// Param: "issue_number"
-										// Leaf parameter
-										args["issue_number"] = elem
-
-										// Leaf: IssuesUpdate
-										s.handleIssuesUpdateRequest(args, w, r)
-										return
-									}
-								case 'l': // Prefix: "labels/"
-									if prefix := "labels/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-										elem = elem[len(prefix):]
-									} else {
-										break
-									}
-
-									// Param: "name"
-									// Leaf parameter
-									args["name"] = elem
-
-									// Leaf: IssuesUpdateLabel
-									s.handleIssuesUpdateLabelRequest(args, w, r)
-									return
-								case 'm': // Prefix: "milestones/"
-									if prefix := "milestones/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-										elem = elem[len(prefix):]
-									} else {
-										break
-									}
-
-									// Param: "milestone_number"
-									// Leaf parameter
-									args["milestone_number"] = elem
-
-									// Leaf: IssuesUpdateMilestone
-									s.handleIssuesUpdateMilestoneRequest(args, w, r)
-									return
-								case 'p': // Prefix: "pulls/"
-									if prefix := "pulls/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-										elem = elem[len(prefix):]
-									} else {
-										break
-									}
-
-									if len(elem) == 0 {
-										break
-									}
-									switch elem[0] {
-									case 'c': // Prefix: "comments/"
-										if prefix := "comments/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-											elem = elem[len(prefix):]
-										} else {
-											break
-										}
-
-										// Param: "comment_id"
-										// Leaf parameter
-										args["comment_id"] = elem
-
-										// Leaf: PullsUpdateReviewComment
-										s.handlePullsUpdateReviewCommentRequest(args, w, r)
-										return
-									}
-									// Param: "pull_number"
-									// Leaf parameter
-									args["pull_number"] = elem
-
-									// Leaf: PullsUpdate
-									s.handlePullsUpdateRequest(args, w, r)
-									return
-								case 'r': // Prefix: "releases/"
-									if prefix := "releases/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-										elem = elem[len(prefix):]
-									} else {
-										break
-									}
-
-									if len(elem) == 0 {
-										break
-									}
-									switch elem[0] {
-									case 'a': // Prefix: "assets/"
-										if prefix := "assets/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-											elem = elem[len(prefix):]
-										} else {
-											break
-										}
-
-										// Param: "asset_id"
-										// Leaf parameter
-										args["asset_id"] = elem
-
-										// Leaf: ReposUpdateReleaseAsset
-										s.handleReposUpdateReleaseAssetRequest(args, w, r)
-										return
-									}
-									// Param: "release_id"
-									// Leaf parameter
-									args["release_id"] = elem
-
-									// Leaf: ReposUpdateRelease
-									s.handleReposUpdateReleaseRequest(args, w, r)
-									return
-								case 's': // Prefix: "secret-scanning/alerts/"
-									if prefix := "secret-scanning/alerts/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-										elem = elem[len(prefix):]
-									} else {
-										break
-									}
-
-									// Param: "alert_number"
-									// Leaf parameter
-									args["alert_number"] = elem
-
-									// Leaf: SecretScanningUpdateAlert
-									s.handleSecretScanningUpdateAlertRequest(args, w, r)
-									return
-								}
-							}
-						}
-					}
-				}
-			case 's': // Prefix: "scim/v2/enterprises/"
-				if prefix := "scim/v2/enterprises/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-					elem = elem[len(prefix):]
-				} else {
-					break
-				}
-
-				// Param: "enterprise"
-				// Match until one of "/"
-				idx := strings.IndexAny(elem, "/")
-				if idx > 0 {
-					args["enterprise"] = elem[:idx]
-					elem = elem[idx:]
-
-					if len(elem) == 0 {
-						break
-					}
-					switch elem[0] {
-					case '/': // Prefix: "/"
-						if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-							elem = elem[len(prefix):]
-						} else {
-							break
-						}
-
-						if len(elem) == 0 {
-							s.handleEnterpriseAdminUpdateAttributeForEnterpriseUserRequest(args, w, r)
-							return
-						}
-						switch elem[0] {
-						case 'G': // Prefix: "Groups/"
-							if prefix := "Groups/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-								elem = elem[len(prefix):]
-							} else {
-								break
-							}
-
-							if len(elem) == 0 {
-								break
-							}
-							switch elem[0] {
-							case 'U': // Prefix: "Users/"
-								if prefix := "Users/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-									elem = elem[len(prefix):]
-								} else {
-									break
-								}
-
-								// Param: "scim_user_id"
-								// Leaf parameter
-								args["scim_user_id"] = elem
-
-								// Leaf: EnterpriseAdminUpdateAttributeForEnterpriseUser
-								s.handleEnterpriseAdminUpdateAttributeForEnterpriseUserRequest(args, w, r)
-								return
-							}
-							// Param: "scim_group_id"
-							// Leaf parameter
-							args["scim_group_id"] = elem
-
-							// Leaf: EnterpriseAdminUpdateAttributeForEnterpriseGroup
-							s.handleEnterpriseAdminUpdateAttributeForEnterpriseGroupRequest(args, w, r)
-							return
-						case 'U': // Prefix: "Users/"
-							if prefix := "Users/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-								elem = elem[len(prefix):]
-							} else {
-								break
-							}
-
-							// Param: "scim_user_id"
-							// Leaf parameter
-							args["scim_user_id"] = elem
-
-							// Leaf: EnterpriseAdminUpdateAttributeForEnterpriseUser
-							s.handleEnterpriseAdminUpdateAttributeForEnterpriseUserRequest(args, w, r)
-							return
-						}
-					}
-				}
-			case 't': // Prefix: "teams/"
-				if prefix := "teams/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-					elem = elem[len(prefix):]
-				} else {
-					break
-				}
-
-				// Param: "team_id"
-				// Match until one of "/"
-				idx := strings.IndexAny(elem, "/")
-				if idx > 0 {
-					args["team_id"] = elem[:idx]
-					elem = elem[idx:]
-
-					if len(elem) == 0 {
-						s.handleTeamsUpdateLegacyRequest(args, w, r)
-						return
-					}
-					switch elem[0] {
-					case '/': // Prefix: "/"
-						if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-							elem = elem[len(prefix):]
-						} else {
-							break
-						}
-
-						if len(elem) == 0 {
-							s.handleTeamsUpdateDiscussionCommentLegacyRequest(args, w, r)
-							return
-						}
-						switch elem[0] {
-						case 'd': // Prefix: "discussions/"
-							if prefix := "discussions/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-								elem = elem[len(prefix):]
-							} else {
-								break
-							}
-
-							// Param: "discussion_number"
-							// Match until one of "/"
-							idx := strings.IndexAny(elem, "/")
-							if idx > 0 {
-								args["discussion_number"] = elem[:idx]
-								elem = elem[idx:]
-
-								if len(elem) == 0 {
-									s.handleTeamsUpdateDiscussionLegacyRequest(args, w, r)
-									return
-								}
-								switch elem[0] {
-								case '/': // Prefix: "/comments/"
-									if prefix := "/comments/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-										elem = elem[len(prefix):]
-									} else {
-										break
-									}
-
-									// Param: "comment_number"
-									// Leaf parameter
-									args["comment_number"] = elem
-
-									// Leaf: TeamsUpdateDiscussionCommentLegacy
-									s.handleTeamsUpdateDiscussionCommentLegacyRequest(args, w, r)
-									return
-								}
-							}
-						case 't': // Prefix: "team-sync/group-mappings"
-							if prefix := "team-sync/group-mappings"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-								elem = elem[len(prefix):]
-							} else {
-								break
-							}
-
-							if len(elem) == 0 {
-								s.handleTeamsCreateOrUpdateIdpGroupConnectionsLegacyRequest(args, w, r)
-								return
-							}
-							switch elem[0] {
-							case 'd': // Prefix: "discussions/"
-								if prefix := "discussions/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-									elem = elem[len(prefix):]
-								} else {
-									break
-								}
-
-								// Param: "discussion_number"
-								// Match until one of "/"
-								idx := strings.IndexAny(elem, "/")
-								if idx > 0 {
-									args["discussion_number"] = elem[:idx]
-									elem = elem[idx:]
-
-									if len(elem) == 0 {
-										break
-									}
-									switch elem[0] {
-									case '/': // Prefix: "/comments/"
-										if prefix := "/comments/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-											elem = elem[len(prefix):]
-										} else {
-											break
-										}
-
-										// Param: "comment_number"
-										// Leaf parameter
-										args["comment_number"] = elem
-
-										// Leaf: TeamsUpdateDiscussionCommentLegacy
-										s.handleTeamsUpdateDiscussionCommentLegacyRequest(args, w, r)
-										return
-									}
-								}
-							}
-						}
-					}
-				}
-			case 'u': // Prefix: "user"
-				if prefix := "user"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-					elem = elem[len(prefix):]
-				} else {
-					break
-				}
-
-				if len(elem) == 0 {
-					s.handleUsersUpdateAuthenticatedRequest(args, w, r)
-					return
-				}
-				switch elem[0] {
-				case '/': // Prefix: "/"
-					if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-						elem = elem[len(prefix):]
-					} else {
-						break
-					}
-
-					if len(elem) == 0 {
-						s.handleReposAcceptInvitationRequest(args, w, r)
-						return
-					}
-					switch elem[0] {
-					case 'e': // Prefix: "email/visibility"
-						if prefix := "email/visibility"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-							elem = elem[len(prefix):]
-						} else {
-							break
-						}
-
-						// Leaf: UsersSetPrimaryEmailVisibilityForAuthenticated
-						s.handleUsersSetPrimaryEmailVisibilityForAuthenticatedRequest(args, w, r)
-						return
-					case 'm': // Prefix: "memberships/orgs/"
-						if prefix := "memberships/orgs/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-							elem = elem[len(prefix):]
-						} else {
-							break
-						}
-
-						if len(elem) == 0 {
-							break
-						}
-						switch elem[0] {
-						case 'r': // Prefix: "repository_invitations/"
-							if prefix := "repository_invitations/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-								elem = elem[len(prefix):]
-							} else {
-								break
-							}
-
-							// Param: "invitation_id"
-							// Leaf parameter
-							args["invitation_id"] = elem
-
-							// Leaf: ReposAcceptInvitation
-							s.handleReposAcceptInvitationRequest(args, w, r)
-							return
-						}
-						// Param: "org"
-						// Leaf parameter
-						args["org"] = elem
-
-						// Leaf: OrgsUpdateMembershipForAuthenticatedUser
-						s.handleOrgsUpdateMembershipForAuthenticatedUserRequest(args, w, r)
-						return
-					case 'r': // Prefix: "repository_invitations/"
-						if prefix := "repository_invitations/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-							elem = elem[len(prefix):]
-						} else {
-							break
-						}
-
-						// Param: "invitation_id"
-						// Leaf parameter
-						args["invitation_id"] = elem
-
-						// Leaf: ReposAcceptInvitation
-						s.handleReposAcceptInvitationRequest(args, w, r)
-						return
 					}
 				}
 			}

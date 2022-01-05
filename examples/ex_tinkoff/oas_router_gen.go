@@ -114,22 +114,9 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						break
 					}
 
-					if len(elem) == 0 {
-						s.handleMarketBondsGetRequest(args, w, r)
-						return
-					}
-					switch elem[0] {
-					case 'c': // Prefix: "candles"
-						if prefix := "candles"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-							elem = elem[len(prefix):]
-						} else {
-							break
-						}
-
-						// Leaf: MarketCandlesGet
-						s.handleMarketCandlesGetRequest(args, w, r)
-						return
-					}
+					// Leaf: MarketBondsGet
+					s.handleMarketBondsGetRequest(args, w, r)
+					return
 				case 'c': // Prefix: "c"
 					if prefix := "c"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
 						elem = elem[len(prefix):]
@@ -149,22 +136,9 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							break
 						}
 
-						if len(elem) == 0 {
-							s.handleMarketCandlesGetRequest(args, w, r)
-							return
-						}
-						switch elem[0] {
-						case 'u': // Prefix: "urrencies"
-							if prefix := "urrencies"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-								elem = elem[len(prefix):]
-							} else {
-								break
-							}
-
-							// Leaf: MarketCurrenciesGet
-							s.handleMarketCurrenciesGetRequest(args, w, r)
-							return
-						}
+						// Leaf: MarketCandlesGet
+						s.handleMarketCandlesGetRequest(args, w, r)
+						return
 					case 'u': // Prefix: "urrencies"
 						if prefix := "urrencies"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
 							elem = elem[len(prefix):]
@@ -186,52 +160,16 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					// Leaf: MarketEtfsGet
 					s.handleMarketEtfsGetRequest(args, w, r)
 					return
-				case 'o': // Prefix: "o"
-					if prefix := "o"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+				case 'o': // Prefix: "orderbook"
+					if prefix := "orderbook"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
 						elem = elem[len(prefix):]
 					} else {
 						break
 					}
 
-					if len(elem) == 0 {
-						s.handleOperationsGetRequest(args, w, r)
-						return
-					}
-					switch elem[0] {
-					case 'p': // Prefix: "perations"
-						if prefix := "perations"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-							elem = elem[len(prefix):]
-						} else {
-							break
-						}
-
-						// Leaf: OperationsGet
-						s.handleOperationsGetRequest(args, w, r)
-						return
-					case 'r': // Prefix: "rderbook"
-						if prefix := "rderbook"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-							elem = elem[len(prefix):]
-						} else {
-							break
-						}
-
-						if len(elem) == 0 {
-							s.handleMarketOrderbookGetRequest(args, w, r)
-							return
-						}
-						switch elem[0] {
-						case 'p': // Prefix: "perations"
-							if prefix := "perations"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-								elem = elem[len(prefix):]
-							} else {
-								break
-							}
-
-							// Leaf: OperationsGet
-							s.handleOperationsGetRequest(args, w, r)
-							return
-						}
-					}
+					// Leaf: MarketOrderbookGet
+					s.handleMarketOrderbookGetRequest(args, w, r)
+					return
 				case 's': // Prefix: "s"
 					if prefix := "s"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
 						elem = elem[len(prefix):]
@@ -263,68 +201,19 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								break
 							}
 
-							if len(elem) == 0 {
-								s.handleMarketSearchByFigiGetRequest(args, w, r)
-								return
-							}
-							switch elem[0] {
-							case 't': // Prefix: "ticker"
-								if prefix := "ticker"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-									elem = elem[len(prefix):]
-								} else {
-									break
-								}
-
-								// Leaf: MarketSearchByTickerGet
-								s.handleMarketSearchByTickerGetRequest(args, w, r)
-								return
-							}
-						case 't': // Prefix: "t"
-							if prefix := "t"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+							// Leaf: MarketSearchByFigiGet
+							s.handleMarketSearchByFigiGetRequest(args, w, r)
+							return
+						case 't': // Prefix: "ticker"
+							if prefix := "ticker"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
 								elem = elem[len(prefix):]
 							} else {
 								break
 							}
 
-							if len(elem) == 0 {
-								s.handleMarketStocksGetRequest(args, w, r)
-								return
-							}
-							switch elem[0] {
-							case 'i': // Prefix: "icker"
-								if prefix := "icker"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-									elem = elem[len(prefix):]
-								} else {
-									break
-								}
-
-								if len(elem) == 0 {
-									s.handleMarketSearchByTickerGetRequest(args, w, r)
-									return
-								}
-								switch elem[0] {
-								case 'o': // Prefix: "ocks"
-									if prefix := "ocks"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-										elem = elem[len(prefix):]
-									} else {
-										break
-									}
-
-									// Leaf: MarketStocksGet
-									s.handleMarketStocksGetRequest(args, w, r)
-									return
-								}
-							case 'o': // Prefix: "ocks"
-								if prefix := "ocks"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-									elem = elem[len(prefix):]
-								} else {
-									break
-								}
-
-								// Leaf: MarketStocksGet
-								s.handleMarketStocksGetRequest(args, w, r)
-								return
-							}
+							// Leaf: MarketSearchByTickerGet
+							s.handleMarketSearchByTickerGetRequest(args, w, r)
+							return
 						}
 					case 't': // Prefix: "tocks"
 						if prefix := "tocks"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
@@ -357,22 +246,9 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						break
 					}
 
-					if len(elem) == 0 {
-						s.handleOperationsGetRequest(args, w, r)
-						return
-					}
-					switch elem[0] {
-					case 'r': // Prefix: "rders"
-						if prefix := "rders"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-							elem = elem[len(prefix):]
-						} else {
-							break
-						}
-
-						// Leaf: OrdersGet
-						s.handleOrdersGetRequest(args, w, r)
-						return
-					}
+					// Leaf: OperationsGet
+					s.handleOperationsGetRequest(args, w, r)
+					return
 				case 'r': // Prefix: "rders"
 					if prefix := "rders"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
 						elem = elem[len(prefix):]
@@ -455,22 +331,9 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						break
 					}
 
-					if len(elem) == 0 {
-						s.handleOrdersCancelPostRequest(args, w, r)
-						return
-					}
-					switch elem[0] {
-					case 'l': // Prefix: "limit-order"
-						if prefix := "limit-order"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-							elem = elem[len(prefix):]
-						} else {
-							break
-						}
-
-						// Leaf: OrdersLimitOrderPost
-						s.handleOrdersLimitOrderPostRequest(args, w, r)
-						return
-					}
+					// Leaf: OrdersCancelPost
+					s.handleOrdersCancelPostRequest(args, w, r)
+					return
 				case 'l': // Prefix: "limit-order"
 					if prefix := "limit-order"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
 						elem = elem[len(prefix):]
@@ -490,16 +353,6 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 					// Leaf: OrdersMarketOrderPost
 					s.handleOrdersMarketOrderPostRequest(args, w, r)
-					return
-				case 's': // Prefix: "sandbox/clear"
-					if prefix := "sandbox/clear"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-						elem = elem[len(prefix):]
-					} else {
-						break
-					}
-
-					// Leaf: SandboxClearPost
-					s.handleSandboxClearPostRequest(args, w, r)
 					return
 				}
 			case 's': // Prefix: "sandbox/"
@@ -533,31 +386,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							break
 						}
 
-						if len(elem) == 0 {
-							s.handleSandboxClearPostRequest(args, w, r)
-							return
-						}
-						switch elem[0] {
-						case 'u': // Prefix: "urrencies/balance"
-							if prefix := "urrencies/balance"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-								elem = elem[len(prefix):]
-							} else {
-								break
-							}
-
-							// Leaf: SandboxCurrenciesBalancePost
-							s.handleSandboxCurrenciesBalancePostRequest(args, w, r)
-							return
-						}
-					case 'p': // Prefix: "positions/balance"
-						if prefix := "positions/balance"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-							elem = elem[len(prefix):]
-						} else {
-							break
-						}
-
-						// Leaf: SandboxPositionsBalancePost
-						s.handleSandboxPositionsBalancePostRequest(args, w, r)
+						// Leaf: SandboxClearPost
+						s.handleSandboxClearPostRequest(args, w, r)
 						return
 					case 'u': // Prefix: "urrencies/balance"
 						if prefix := "urrencies/balance"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
@@ -599,22 +429,9 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							break
 						}
 
-						if len(elem) == 0 {
-							s.handleSandboxRegisterPostRequest(args, w, r)
-							return
-						}
-						switch elem[0] {
-						case 'm': // Prefix: "move"
-							if prefix := "move"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-								elem = elem[len(prefix):]
-							} else {
-								break
-							}
-
-							// Leaf: SandboxRemovePost
-							s.handleSandboxRemovePostRequest(args, w, r)
-							return
-						}
+						// Leaf: SandboxRegisterPost
+						s.handleSandboxRegisterPostRequest(args, w, r)
+						return
 					case 'm': // Prefix: "move"
 						if prefix := "move"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
 							elem = elem[len(prefix):]

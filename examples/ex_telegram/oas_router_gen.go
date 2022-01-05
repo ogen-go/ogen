@@ -107,16 +107,6 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					return
 				}
 				switch elem[0] {
-				case 'b': // Prefix: "banChatMember"
-					if prefix := "banChatMember"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-						elem = elem[len(prefix):]
-					} else {
-						break
-					}
-
-					// Leaf: BanChatMember
-					s.handleBanChatMemberRequest(args, w, r)
-					return
 				case 'd': // Prefix: "ddStickerToSet"
 					if prefix := "ddStickerToSet"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
 						elem = elem[len(prefix):]
@@ -124,22 +114,9 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						break
 					}
 
-					if len(elem) == 0 {
-						s.handleAddStickerToSetRequest(args, w, r)
-						return
-					}
-					switch elem[0] {
-					case 'n': // Prefix: "nswerCallbackQuery"
-						if prefix := "nswerCallbackQuery"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-							elem = elem[len(prefix):]
-						} else {
-							break
-						}
-
-						// Leaf: AnswerCallbackQuery
-						s.handleAnswerCallbackQueryRequest(args, w, r)
-						return
-					}
+					// Leaf: AddStickerToSet
+					s.handleAddStickerToSetRequest(args, w, r)
+					return
 				case 'n': // Prefix: "nswer"
 					if prefix := "nswer"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
 						elem = elem[len(prefix):]
@@ -159,22 +136,9 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							break
 						}
 
-						if len(elem) == 0 {
-							s.handleAnswerCallbackQueryRequest(args, w, r)
-							return
-						}
-						switch elem[0] {
-						case 'I': // Prefix: "InlineQuery"
-							if prefix := "InlineQuery"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-								elem = elem[len(prefix):]
-							} else {
-								break
-							}
-
-							// Leaf: AnswerInlineQuery
-							s.handleAnswerInlineQueryRequest(args, w, r)
-							return
-						}
+						// Leaf: AnswerCallbackQuery
+						s.handleAnswerCallbackQueryRequest(args, w, r)
+						return
 					case 'I': // Prefix: "InlineQuery"
 						if prefix := "InlineQuery"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
 							elem = elem[len(prefix):]
@@ -236,22 +200,9 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						break
 					}
 
-					if len(elem) == 0 {
-						s.handleBanChatMemberRequest(args, w, r)
-						return
-					}
-					switch elem[0] {
-					case 'S': // Prefix: "SenderChat"
-						if prefix := "SenderChat"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-							elem = elem[len(prefix):]
-						} else {
-							break
-						}
-
-						// Leaf: BanChatSenderChat
-						s.handleBanChatSenderChatRequest(args, w, r)
-						return
-					}
+					// Leaf: BanChatMember
+					s.handleBanChatMemberRequest(args, w, r)
+					return
 				case 'S': // Prefix: "SenderChat"
 					if prefix := "SenderChat"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
 						elem = elem[len(prefix):]
@@ -282,22 +233,9 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						break
 					}
 
-					if len(elem) == 0 {
-						s.handleCloseRequest(args, w, r)
-						return
-					}
-					switch elem[0] {
-					case 'o': // Prefix: "opyMessage"
-						if prefix := "opyMessage"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-							elem = elem[len(prefix):]
-						} else {
-							break
-						}
-
-						// Leaf: CopyMessage
-						s.handleCopyMessageRequest(args, w, r)
-						return
-					}
+					// Leaf: Close
+					s.handleCloseRequest(args, w, r)
+					return
 				case 'o': // Prefix: "opyMessage"
 					if prefix := "opyMessage"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
 						elem = elem[len(prefix):]
@@ -327,22 +265,9 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							break
 						}
 
-						if len(elem) == 0 {
-							s.handleCreateChatInviteLinkRequest(args, w, r)
-							return
-						}
-						switch elem[0] {
-						case 'N': // Prefix: "NewStickerSet"
-							if prefix := "NewStickerSet"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-								elem = elem[len(prefix):]
-							} else {
-								break
-							}
-
-							// Leaf: CreateNewStickerSet
-							s.handleCreateNewStickerSetRequest(args, w, r)
-							return
-						}
+						// Leaf: CreateChatInviteLink
+						s.handleCreateChatInviteLinkRequest(args, w, r)
+						return
 					case 'N': // Prefix: "NewStickerSet"
 						if prefix := "NewStickerSet"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
 							elem = elem[len(prefix):]
@@ -374,22 +299,9 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						break
 					}
 
-					if len(elem) == 0 {
-						s.handleDeclineChatJoinRequestRequest(args, w, r)
-						return
-					}
-					switch elem[0] {
-					case 'l': // Prefix: "leteChatPhoto"
-						if prefix := "leteChatPhoto"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-							elem = elem[len(prefix):]
-						} else {
-							break
-						}
-
-						// Leaf: DeleteChatPhoto
-						s.handleDeleteChatPhotoRequest(args, w, r)
-						return
-					}
+					// Leaf: DeclineChatJoinRequest
+					s.handleDeclineChatJoinRequestRequest(args, w, r)
+					return
 				case 'l': // Prefix: "lete"
 					if prefix := "lete"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
 						elem = elem[len(prefix):]
@@ -414,16 +326,6 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							return
 						}
 						switch elem[0] {
-						case 'M': // Prefix: "Message"
-							if prefix := "Message"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-								elem = elem[len(prefix):]
-							} else {
-								break
-							}
-
-							// Leaf: DeleteMessage
-							s.handleDeleteMessageRequest(args, w, r)
-							return
 						case 'P': // Prefix: "Photo"
 							if prefix := "Photo"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
 								elem = elem[len(prefix):]
@@ -431,22 +333,9 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								break
 							}
 
-							if len(elem) == 0 {
-								s.handleDeleteChatPhotoRequest(args, w, r)
-								return
-							}
-							switch elem[0] {
-							case 'S': // Prefix: "StickerSet"
-								if prefix := "StickerSet"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-									elem = elem[len(prefix):]
-								} else {
-									break
-								}
-
-								// Leaf: DeleteChatStickerSet
-								s.handleDeleteChatStickerSetRequest(args, w, r)
-								return
-							}
+							// Leaf: DeleteChatPhoto
+							s.handleDeleteChatPhotoRequest(args, w, r)
+							return
 						case 'S': // Prefix: "StickerSet"
 							if prefix := "StickerSet"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
 								elem = elem[len(prefix):]
@@ -477,22 +366,9 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								break
 							}
 
-							if len(elem) == 0 {
-								s.handleDeleteMessageRequest(args, w, r)
-								return
-							}
-							switch elem[0] {
-							case 'y': // Prefix: "yCommands"
-								if prefix := "yCommands"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-									elem = elem[len(prefix):]
-								} else {
-									break
-								}
-
-								// Leaf: DeleteMyCommands
-								s.handleDeleteMyCommandsRequest(args, w, r)
-								return
-							}
+							// Leaf: DeleteMessage
+							s.handleDeleteMessageRequest(args, w, r)
+							return
 						case 'y': // Prefix: "yCommands"
 							if prefix := "yCommands"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
 								elem = elem[len(prefix):]
@@ -557,22 +433,9 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							break
 						}
 
-						if len(elem) == 0 {
-							s.handleEditChatInviteLinkRequest(args, w, r)
-							return
-						}
-						switch elem[0] {
-						case 'M': // Prefix: "MessageCaption"
-							if prefix := "MessageCaption"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-								elem = elem[len(prefix):]
-							} else {
-								break
-							}
-
-							// Leaf: EditMessageCaption
-							s.handleEditMessageCaptionRequest(args, w, r)
-							return
-						}
+						// Leaf: EditChatInviteLink
+						s.handleEditChatInviteLinkRequest(args, w, r)
+						return
 					case 'M': // Prefix: "Message"
 						if prefix := "Message"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
 							elem = elem[len(prefix):]
@@ -592,22 +455,9 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								break
 							}
 
-							if len(elem) == 0 {
-								s.handleEditMessageCaptionRequest(args, w, r)
-								return
-							}
-							switch elem[0] {
-							case 'L': // Prefix: "LiveLocation"
-								if prefix := "LiveLocation"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-									elem = elem[len(prefix):]
-								} else {
-									break
-								}
-
-								// Leaf: EditMessageLiveLocation
-								s.handleEditMessageLiveLocationRequest(args, w, r)
-								return
-							}
+							// Leaf: EditMessageCaption
+							s.handleEditMessageCaptionRequest(args, w, r)
+							return
 						case 'L': // Prefix: "LiveLocation"
 							if prefix := "LiveLocation"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
 								elem = elem[len(prefix):]
@@ -649,16 +499,6 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							s.handleEditMessageTextRequest(args, w, r)
 							return
 						}
-					case 'x': // Prefix: "xportChatInviteLink"
-						if prefix := "xportChatInviteLink"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-							elem = elem[len(prefix):]
-						} else {
-							break
-						}
-
-						// Leaf: ExportChatInviteLink
-						s.handleExportChatInviteLinkRequest(args, w, r)
-						return
 					}
 				case 'x': // Prefix: "xportChatInviteLink"
 					if prefix := "xportChatInviteLink"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
@@ -714,16 +554,6 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 						// Leaf: GetChatAdministrators
 						s.handleGetChatAdministratorsRequest(args, w, r)
-						return
-					case 'F': // Prefix: "File"
-						if prefix := "File"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-							elem = elem[len(prefix):]
-						} else {
-							break
-						}
-
-						// Leaf: GetFile
-						s.handleGetFileRequest(args, w, r)
 						return
 					case 'M': // Prefix: "Member"
 						if prefix := "Member"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
@@ -788,22 +618,9 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							break
 						}
 
-						if len(elem) == 0 {
-							s.handleGetMeRequest(args, w, r)
-							return
-						}
-						switch elem[0] {
-						case 'y': // Prefix: "yCommands"
-							if prefix := "yCommands"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-								elem = elem[len(prefix):]
-							} else {
-								break
-							}
-
-							// Leaf: GetMyCommands
-							s.handleGetMyCommandsRequest(args, w, r)
-							return
-						}
+						// Leaf: GetMe
+						s.handleGetMeRequest(args, w, r)
+						return
 					case 'y': // Prefix: "yCommands"
 						if prefix := "yCommands"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
 							elem = elem[len(prefix):]
@@ -844,22 +661,9 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							break
 						}
 
-						if len(elem) == 0 {
-							s.handleGetUpdatesRequest(args, w, r)
-							return
-						}
-						switch elem[0] {
-						case 's': // Prefix: "serProfilePhotos"
-							if prefix := "serProfilePhotos"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-								elem = elem[len(prefix):]
-							} else {
-								break
-							}
-
-							// Leaf: GetUserProfilePhotos
-							s.handleGetUserProfilePhotosRequest(args, w, r)
-							return
-						}
+						// Leaf: GetUpdates
+						s.handleGetUpdatesRequest(args, w, r)
+						return
 					case 's': // Prefix: "serProfilePhotos"
 						if prefix := "serProfilePhotos"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
 							elem = elem[len(prefix):]
@@ -901,22 +705,9 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						break
 					}
 
-					if len(elem) == 0 {
-						s.handleLeaveChatRequest(args, w, r)
-						return
-					}
-					switch elem[0] {
-					case 'o': // Prefix: "ogOut"
-						if prefix := "ogOut"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-							elem = elem[len(prefix):]
-						} else {
-							break
-						}
-
-						// Leaf: LogOut
-						s.handleLogOutRequest(args, w, r)
-						return
-					}
+					// Leaf: LeaveChat
+					s.handleLeaveChatRequest(args, w, r)
+					return
 				case 'o': // Prefix: "ogOut"
 					if prefix := "ogOut"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
 						elem = elem[len(prefix):]
@@ -947,22 +738,9 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						break
 					}
 
-					if len(elem) == 0 {
-						s.handlePinChatMessageRequest(args, w, r)
-						return
-					}
-					switch elem[0] {
-					case 'r': // Prefix: "romoteChatMember"
-						if prefix := "romoteChatMember"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-							elem = elem[len(prefix):]
-						} else {
-							break
-						}
-
-						// Leaf: PromoteChatMember
-						s.handlePromoteChatMemberRequest(args, w, r)
-						return
-					}
+					// Leaf: PinChatMessage
+					s.handlePinChatMessageRequest(args, w, r)
+					return
 				case 'r': // Prefix: "romoteChatMember"
 					if prefix := "romoteChatMember"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
 						elem = elem[len(prefix):]
@@ -993,22 +771,9 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						break
 					}
 
-					if len(elem) == 0 {
-						s.handleRestrictChatMemberRequest(args, w, r)
-						return
-					}
-					switch elem[0] {
-					case 'v': // Prefix: "vokeChatInviteLink"
-						if prefix := "vokeChatInviteLink"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-							elem = elem[len(prefix):]
-						} else {
-							break
-						}
-
-						// Leaf: RevokeChatInviteLink
-						s.handleRevokeChatInviteLinkRequest(args, w, r)
-						return
-					}
+					// Leaf: RestrictChatMember
+					s.handleRestrictChatMemberRequest(args, w, r)
+					return
 				case 'v': // Prefix: "vokeChatInviteLink"
 					if prefix := "vokeChatInviteLink"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
 						elem = elem[len(prefix):]
@@ -1068,16 +833,6 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								return
 							}
 							switch elem[0] {
-							case 'C': // Prefix: "ChatAction"
-								if prefix := "ChatAction"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-									elem = elem[len(prefix):]
-								} else {
-									break
-								}
-
-								// Leaf: SendChatAction
-								s.handleSendChatActionRequest(args, w, r)
-								return
 							case 'n': // Prefix: "nimation"
 								if prefix := "nimation"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
 									elem = elem[len(prefix):]
@@ -1085,22 +840,9 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									break
 								}
 
-								if len(elem) == 0 {
-									s.handleSendAnimationRequest(args, w, r)
-									return
-								}
-								switch elem[0] {
-								case 'u': // Prefix: "udio"
-									if prefix := "udio"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-										elem = elem[len(prefix):]
-									} else {
-										break
-									}
-
-									// Leaf: SendAudio
-									s.handleSendAudioRequest(args, w, r)
-									return
-								}
+								// Leaf: SendAnimation
+								s.handleSendAnimationRequest(args, w, r)
+								return
 							case 'u': // Prefix: "udio"
 								if prefix := "udio"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
 									elem = elem[len(prefix):]
@@ -1131,22 +873,9 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									break
 								}
 
-								if len(elem) == 0 {
-									s.handleSendChatActionRequest(args, w, r)
-									return
-								}
-								switch elem[0] {
-								case 'o': // Prefix: "ontact"
-									if prefix := "ontact"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-										elem = elem[len(prefix):]
-									} else {
-										break
-									}
-
-									// Leaf: SendContact
-									s.handleSendContactRequest(args, w, r)
-									return
-								}
+								// Leaf: SendChatAction
+								s.handleSendChatActionRequest(args, w, r)
+								return
 							case 'o': // Prefix: "ontact"
 								if prefix := "ontact"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
 									elem = elem[len(prefix):]
@@ -1177,22 +906,9 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									break
 								}
 
-								if len(elem) == 0 {
-									s.handleSendDiceRequest(args, w, r)
-									return
-								}
-								switch elem[0] {
-								case 'o': // Prefix: "ocument"
-									if prefix := "ocument"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-										elem = elem[len(prefix):]
-									} else {
-										break
-									}
-
-									// Leaf: SendDocument
-									s.handleSendDocumentRequest(args, w, r)
-									return
-								}
+								// Leaf: SendDice
+								s.handleSendDiceRequest(args, w, r)
+								return
 							case 'o': // Prefix: "ocument"
 								if prefix := "ocument"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
 									elem = elem[len(prefix):]
@@ -1253,22 +969,9 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									break
 								}
 
-								if len(elem) == 0 {
-									s.handleSendMediaGroupRequest(args, w, r)
-									return
-								}
-								switch elem[0] {
-								case 's': // Prefix: "ssage"
-									if prefix := "ssage"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-										elem = elem[len(prefix):]
-									} else {
-										break
-									}
-
-									// Leaf: SendMessage
-									s.handleSendMessageRequest(args, w, r)
-									return
-								}
+								// Leaf: SendMediaGroup
+								s.handleSendMediaGroupRequest(args, w, r)
+								return
 							case 's': // Prefix: "ssage"
 								if prefix := "ssage"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
 									elem = elem[len(prefix):]
@@ -1299,22 +1002,9 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									break
 								}
 
-								if len(elem) == 0 {
-									s.handleSendPhotoRequest(args, w, r)
-									return
-								}
-								switch elem[0] {
-								case 'o': // Prefix: "oll"
-									if prefix := "oll"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-										elem = elem[len(prefix):]
-									} else {
-										break
-									}
-
-									// Leaf: SendPoll
-									s.handleSendPollRequest(args, w, r)
-									return
-								}
+								// Leaf: SendPhoto
+								s.handleSendPhotoRequest(args, w, r)
+								return
 							case 'o': // Prefix: "oll"
 								if prefix := "oll"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
 									elem = elem[len(prefix):]
@@ -1355,22 +1045,9 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									break
 								}
 
-								if len(elem) == 0 {
-									s.handleSendVenueRequest(args, w, r)
-									return
-								}
-								switch elem[0] {
-								case 'i': // Prefix: "ideo"
-									if prefix := "ideo"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-										elem = elem[len(prefix):]
-									} else {
-										break
-									}
-
-									// Leaf: SendVideo
-									s.handleSendVideoRequest(args, w, r)
-									return
-								}
+								// Leaf: SendVenue
+								s.handleSendVenueRequest(args, w, r)
+								return
 							case 'i': // Prefix: "ideo"
 								if prefix := "ideo"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
 									elem = elem[len(prefix):]
@@ -1405,16 +1082,6 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								s.handleSendVoiceRequest(args, w, r)
 								return
 							}
-						case 't': // Prefix: "tChatAdministratorCustomTitle"
-							if prefix := "tChatAdministratorCustomTitle"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-								elem = elem[len(prefix):]
-							} else {
-								break
-							}
-
-							// Leaf: SetChatAdministratorCustomTitle
-							s.handleSetChatAdministratorCustomTitleRequest(args, w, r)
-							return
 						}
 					case 't': // Prefix: "t"
 						if prefix := "t"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
@@ -1447,22 +1114,9 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									break
 								}
 
-								if len(elem) == 0 {
-									s.handleSetChatAdministratorCustomTitleRequest(args, w, r)
-									return
-								}
-								switch elem[0] {
-								case 'D': // Prefix: "Description"
-									if prefix := "Description"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-										elem = elem[len(prefix):]
-									} else {
-										break
-									}
-
-									// Leaf: SetChatDescription
-									s.handleSetChatDescriptionRequest(args, w, r)
-									return
-								}
+								// Leaf: SetChatAdministratorCustomTitle
+								s.handleSetChatAdministratorCustomTitleRequest(args, w, r)
+								return
 							case 'D': // Prefix: "Description"
 								if prefix := "Description"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
 									elem = elem[len(prefix):]
@@ -1472,16 +1126,6 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 								// Leaf: SetChatDescription
 								s.handleSetChatDescriptionRequest(args, w, r)
-								return
-							case 'G': // Prefix: "GameScore"
-								if prefix := "GameScore"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-									elem = elem[len(prefix):]
-								} else {
-									break
-								}
-
-								// Leaf: SetGameScore
-								s.handleSetGameScoreRequest(args, w, r)
 								return
 							case 'P': // Prefix: "P"
 								if prefix := "P"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
@@ -1502,22 +1146,9 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										break
 									}
 
-									if len(elem) == 0 {
-										s.handleSetChatPermissionsRequest(args, w, r)
-										return
-									}
-									switch elem[0] {
-									case 'h': // Prefix: "hoto"
-										if prefix := "hoto"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-											elem = elem[len(prefix):]
-										} else {
-											break
-										}
-
-										// Leaf: SetChatPhoto
-										s.handleSetChatPhotoRequest(args, w, r)
-										return
-									}
+									// Leaf: SetChatPermissions
+									s.handleSetChatPermissionsRequest(args, w, r)
+									return
 								case 'h': // Prefix: "hoto"
 									if prefix := "hoto"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
 										elem = elem[len(prefix):]
@@ -1599,22 +1230,9 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									break
 								}
 
-								if len(elem) == 0 {
-									s.handleSetStickerPositionInSetRequest(args, w, r)
-									return
-								}
-								switch elem[0] {
-								case 'S': // Prefix: "SetThumb"
-									if prefix := "SetThumb"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-										elem = elem[len(prefix):]
-									} else {
-										break
-									}
-
-									// Leaf: SetStickerSetThumb
-									s.handleSetStickerSetThumbRequest(args, w, r)
-									return
-								}
+								// Leaf: SetStickerPositionInSet
+								s.handleSetStickerPositionInSetRequest(args, w, r)
+								return
 							case 'S': // Prefix: "SetThumb"
 								if prefix := "SetThumb"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
 									elem = elem[len(prefix):]
@@ -1635,16 +1253,6 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 							// Leaf: SetWebhook
 							s.handleSetWebhookRequest(args, w, r)
-							return
-						case 'o': // Prefix: "opMessageLiveLocation"
-							if prefix := "opMessageLiveLocation"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-								elem = elem[len(prefix):]
-							} else {
-								break
-							}
-
-							// Leaf: StopMessageLiveLocation
-							s.handleStopMessageLiveLocationRequest(args, w, r)
 							return
 						}
 					}
@@ -1667,22 +1275,9 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							break
 						}
 
-						if len(elem) == 0 {
-							s.handleStopMessageLiveLocationRequest(args, w, r)
-							return
-						}
-						switch elem[0] {
-						case 'P': // Prefix: "Poll"
-							if prefix := "Poll"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-								elem = elem[len(prefix):]
-							} else {
-								break
-							}
-
-							// Leaf: StopPoll
-							s.handleStopPollRequest(args, w, r)
-							return
-						}
+						// Leaf: StopMessageLiveLocation
+						s.handleStopMessageLiveLocationRequest(args, w, r)
+						return
 					case 'P': // Prefix: "Poll"
 						if prefix := "Poll"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
 							elem = elem[len(prefix):]
@@ -1738,22 +1333,9 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								break
 							}
 
-							if len(elem) == 0 {
-								s.handleUnbanChatMemberRequest(args, w, r)
-								return
-							}
-							switch elem[0] {
-							case 'S': // Prefix: "SenderChat"
-								if prefix := "SenderChat"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-									elem = elem[len(prefix):]
-								} else {
-									break
-								}
-
-								// Leaf: UnbanChatSenderChat
-								s.handleUnbanChatSenderChatRequest(args, w, r)
-								return
-							}
+							// Leaf: UnbanChatMember
+							s.handleUnbanChatMemberRequest(args, w, r)
+							return
 						case 'S': // Prefix: "SenderChat"
 							if prefix := "SenderChat"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
 								elem = elem[len(prefix):]
@@ -1764,8 +1346,21 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							// Leaf: UnbanChatSenderChat
 							s.handleUnbanChatSenderChatRequest(args, w, r)
 							return
-						case 'p': // Prefix: "pinAllChatMessages"
-							if prefix := "pinAllChatMessages"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+						}
+					case 'p': // Prefix: "pin"
+						if prefix := "pin"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+							elem = elem[len(prefix):]
+						} else {
+							break
+						}
+
+						if len(elem) == 0 {
+							s.handleUnpinChatMessageRequest(args, w, r)
+							return
+						}
+						switch elem[0] {
+						case 'A': // Prefix: "AllChatMessages"
+							if prefix := "AllChatMessages"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
 								elem = elem[len(prefix):]
 							} else {
 								break
@@ -1774,84 +1369,15 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							// Leaf: UnpinAllChatMessages
 							s.handleUnpinAllChatMessagesRequest(args, w, r)
 							return
-						}
-					case 'p': // Prefix: "p"
-						if prefix := "p"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-							elem = elem[len(prefix):]
-						} else {
-							break
-						}
-
-						if len(elem) == 0 {
-							s.handleUploadStickerFileRequest(args, w, r)
-							return
-						}
-						switch elem[0] {
-						case 'i': // Prefix: "in"
-							if prefix := "in"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+						case 'C': // Prefix: "ChatMessage"
+							if prefix := "ChatMessage"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
 								elem = elem[len(prefix):]
 							} else {
 								break
 							}
 
-							if len(elem) == 0 {
-								s.handleUnpinChatMessageRequest(args, w, r)
-								return
-							}
-							switch elem[0] {
-							case 'A': // Prefix: "AllChatMessages"
-								if prefix := "AllChatMessages"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-									elem = elem[len(prefix):]
-								} else {
-									break
-								}
-
-								if len(elem) == 0 {
-									s.handleUnpinAllChatMessagesRequest(args, w, r)
-									return
-								}
-								switch elem[0] {
-								case 'C': // Prefix: "ChatMessage"
-									if prefix := "ChatMessage"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-										elem = elem[len(prefix):]
-									} else {
-										break
-									}
-
-									// Leaf: UnpinChatMessage
-									s.handleUnpinChatMessageRequest(args, w, r)
-									return
-								}
-							case 'C': // Prefix: "ChatMessage"
-								if prefix := "ChatMessage"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-									elem = elem[len(prefix):]
-								} else {
-									break
-								}
-
-								// Leaf: UnpinChatMessage
-								s.handleUnpinChatMessageRequest(args, w, r)
-								return
-							case 'l': // Prefix: "loadStickerFile"
-								if prefix := "loadStickerFile"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-									elem = elem[len(prefix):]
-								} else {
-									break
-								}
-
-								// Leaf: UploadStickerFile
-								s.handleUploadStickerFileRequest(args, w, r)
-								return
-							}
-						case 'l': // Prefix: "loadStickerFile"
-							if prefix := "loadStickerFile"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-								elem = elem[len(prefix):]
-							} else {
-								break
-							}
-
-							// Leaf: UploadStickerFile
-							s.handleUploadStickerFileRequest(args, w, r)
+							// Leaf: UnpinChatMessage
+							s.handleUnpinChatMessageRequest(args, w, r)
 							return
 						}
 					}

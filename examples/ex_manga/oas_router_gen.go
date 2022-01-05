@@ -126,22 +126,9 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							break
 						}
 
-						if len(elem) == 0 {
-							s.handleSearchRequest(args, w, r)
-							return
-						}
-						switch elem[0] {
-						case 't': // Prefix: "tagged"
-							if prefix := "tagged"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-								elem = elem[len(prefix):]
-							} else {
-								break
-							}
-
-							// Leaf: SearchByTagID
-							s.handleSearchByTagIDRequest(args, w, r)
-							return
-						}
+						// Leaf: Search
+						s.handleSearchRequest(args, w, r)
+						return
 					case 't': // Prefix: "tagged"
 						if prefix := "tagged"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
 							elem = elem[len(prefix):]
@@ -160,55 +147,6 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						break
 					}
 
-					if len(elem) == 0 {
-						break
-					}
-					switch elem[0] {
-					case 'g': // Prefix: "galleries/"
-						if prefix := "galleries/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-							elem = elem[len(prefix):]
-						} else {
-							break
-						}
-
-						// Param: "media_id"
-						// Match until one of "/"
-						idx := strings.IndexAny(elem, "/")
-						if idx > 0 {
-							args["media_id"] = elem[:idx]
-							elem = elem[idx:]
-
-							if len(elem) == 0 {
-								break
-							}
-							switch elem[0] {
-							case '/': // Prefix: "/cover."
-								if prefix := "/cover."; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-									elem = elem[len(prefix):]
-								} else {
-									break
-								}
-
-								// Param: "format"
-								// Leaf parameter
-								args["format"] = elem
-
-								// Leaf: GetPageCoverImage
-								s.handleGetPageCoverImageRequest(args, w, r)
-								return
-							}
-						}
-					case 'i': // Prefix: "ies/search"
-						if prefix := "ies/search"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-							elem = elem[len(prefix):]
-						} else {
-							break
-						}
-
-						// Leaf: Search
-						s.handleSearchRequest(args, w, r)
-						return
-					}
 					// Param: "book_id"
 					// Leaf parameter
 					args["book_id"] = elem
@@ -255,33 +193,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							}
 
 							// Param: "format"
-							// Match until one of "."
-							idx := strings.IndexAny(elem, ".")
-							if idx > 0 {
-								args["format"] = elem[:idx]
-								elem = elem[idx:]
+							// Leaf parameter
+							args["format"] = elem
 
-								if len(elem) == 0 {
-									s.handleGetPageCoverImageRequest(args, w, r)
-									return
-								}
-								switch elem[0] {
-								case '.': // Prefix: "."
-									if prefix := "."; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-										elem = elem[len(prefix):]
-									} else {
-										break
-									}
-
-									// Param: "format"
-									// Leaf parameter
-									args["format"] = elem
-
-									// Leaf: GetPageImage
-									s.handleGetPageImageRequest(args, w, r)
-									return
-								}
-							}
+							// Leaf: GetPageCoverImage
+							s.handleGetPageCoverImageRequest(args, w, r)
+							return
 						}
 						// Param: "page"
 						// Match until one of ".t"

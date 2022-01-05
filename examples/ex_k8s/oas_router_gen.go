@@ -179,16 +179,6 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									// Leaf: ReadCoreV1ComponentStatus
 									s.handleReadCoreV1ComponentStatusRequest(args, w, r)
 									return
-								case 'n': // Prefix: "nfigmaps"
-									if prefix := "nfigmaps"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-										elem = elem[len(prefix):]
-									} else {
-										break
-									}
-
-									// Leaf: ListCoreV1ConfigMapForAllNamespaces
-									s.handleListCoreV1ConfigMapForAllNamespacesRequest(args, w, r)
-									return
 								}
 							case 'n': // Prefix: "nfigmaps"
 								if prefix := "nfigmaps"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
@@ -220,22 +210,9 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									break
 								}
 
-								if len(elem) == 0 {
-									s.handleListCoreV1EndpointsForAllNamespacesRequest(args, w, r)
-									return
-								}
-								switch elem[0] {
-								case 'v': // Prefix: "vents"
-									if prefix := "vents"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-										elem = elem[len(prefix):]
-									} else {
-										break
-									}
-
-									// Leaf: ListCoreV1EventForAllNamespaces
-									s.handleListCoreV1EventForAllNamespacesRequest(args, w, r)
-									return
-								}
+								// Leaf: ListCoreV1EndpointsForAllNamespaces
+								s.handleListCoreV1EndpointsForAllNamespacesRequest(args, w, r)
+								return
 							case 'v': // Prefix: "vents"
 								if prefix := "vents"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
 									elem = elem[len(prefix):]
@@ -338,16 +315,6 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													// Leaf: ReadCoreV1NamespacedConfigMap
 													s.handleReadCoreV1NamespacedConfigMapRequest(args, w, r)
 													return
-												case 'e': // Prefix: "endpoints"
-													if prefix := "endpoints"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-														elem = elem[len(prefix):]
-													} else {
-														break
-													}
-
-													// Leaf: ListCoreV1NamespacedEndpoints
-													s.handleListCoreV1NamespacedEndpointsRequest(args, w, r)
-													return
 												}
 											case 'e': // Prefix: "e"
 												if prefix := "e"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
@@ -386,16 +353,6 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 														// Leaf: ReadCoreV1NamespacedEndpoints
 														s.handleReadCoreV1NamespacedEndpointsRequest(args, w, r)
-														return
-													case 'v': // Prefix: "vents"
-														if prefix := "vents"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-															elem = elem[len(prefix):]
-														} else {
-															break
-														}
-
-														// Leaf: ListCoreV1NamespacedEvent
-														s.handleListCoreV1NamespacedEventRequest(args, w, r)
 														return
 													}
 												case 'v': // Prefix: "vents"
@@ -508,16 +465,6 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																return
 															}
 														}
-													case 'o': // Prefix: "ods"
-														if prefix := "ods"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-															elem = elem[len(prefix):]
-														} else {
-															break
-														}
-
-														// Leaf: ListCoreV1NamespacedPod
-														s.handleListCoreV1NamespacedPodRequest(args, w, r)
-														return
 													}
 												case 'o': // Prefix: "od"
 													if prefix := "od"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
@@ -581,22 +528,9 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																			break
 																		}
 
-																		if len(elem) == 0 {
-																			s.handleReadCoreV1NamespacedPodEphemeralcontainersRequest(args, w, r)
-																			return
-																		}
-																		switch elem[0] {
-																		case 'l': // Prefix: "log"
-																			if prefix := "log"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																				elem = elem[len(prefix):]
-																			} else {
-																				break
-																			}
-
-																			// Leaf: ReadCoreV1NamespacedPodLog
-																			s.handleReadCoreV1NamespacedPodLogRequest(args, w, r)
-																			return
-																		}
+																		// Leaf: ReadCoreV1NamespacedPodEphemeralcontainers
+																		s.handleReadCoreV1NamespacedPodEphemeralcontainersRequest(args, w, r)
+																		return
 																	case 'l': // Prefix: "log"
 																		if prefix := "log"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
 																			elem = elem[len(prefix):]
@@ -620,16 +554,6 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																	}
 																}
 															}
-														case 't': // Prefix: "templates"
-															if prefix := "templates"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																elem = elem[len(prefix):]
-															} else {
-																break
-															}
-
-															// Leaf: ListCoreV1NamespacedPodTemplate
-															s.handleListCoreV1NamespacedPodTemplateRequest(args, w, r)
-															return
 														}
 													case 't': // Prefix: "templates"
 														if prefix := "templates"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
@@ -722,22 +646,9 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																		break
 																	}
 
-																	if len(elem) == 0 {
-																		s.handleReadCoreV1NamespacedReplicationControllerScaleRequest(args, w, r)
-																		return
-																	}
-																	switch elem[0] {
-																	case 't': // Prefix: "tatus"
-																		if prefix := "tatus"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																			elem = elem[len(prefix):]
-																		} else {
-																			break
-																		}
-
-																		// Leaf: ReadCoreV1NamespacedReplicationControllerStatus
-																		s.handleReadCoreV1NamespacedReplicationControllerStatusRequest(args, w, r)
-																		return
-																	}
+																	// Leaf: ReadCoreV1NamespacedReplicationControllerScale
+																	s.handleReadCoreV1NamespacedReplicationControllerScaleRequest(args, w, r)
+																	return
 																case 't': // Prefix: "tatus"
 																	if prefix := "tatus"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
 																		elem = elem[len(prefix):]
@@ -751,16 +662,6 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																}
 															}
 														}
-													case 's': // Prefix: "sourcequotas"
-														if prefix := "sourcequotas"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-															elem = elem[len(prefix):]
-														} else {
-															break
-														}
-
-														// Leaf: ListCoreV1NamespacedResourceQuota
-														s.handleListCoreV1NamespacedResourceQuotaRequest(args, w, r)
-														return
 													}
 												case 's': // Prefix: "sourcequotas"
 													if prefix := "sourcequotas"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
@@ -857,16 +758,6 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															// Leaf: ReadCoreV1NamespacedSecret
 															s.handleReadCoreV1NamespacedSecretRequest(args, w, r)
 															return
-														case 'r': // Prefix: "rvices"
-															if prefix := "rvices"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																elem = elem[len(prefix):]
-															} else {
-																break
-															}
-
-															// Leaf: ListCoreV1NamespacedService
-															s.handleListCoreV1NamespacedServiceRequest(args, w, r)
-															return
 														}
 													case 'r': // Prefix: "rvice"
 														if prefix := "rvice"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
@@ -950,28 +841,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																		return
 																	}
 																}
-															case 'a': // Prefix: "accounts"
-																if prefix := "accounts"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																	elem = elem[len(prefix):]
-																} else {
-																	break
-																}
-
-																// Leaf: ListCoreV1NamespacedServiceAccount
-																s.handleListCoreV1NamespacedServiceAccountRequest(args, w, r)
-																return
 															}
 														}
-													case 't': // Prefix: "tatus"
-														if prefix := "tatus"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-															elem = elem[len(prefix):]
-														} else {
-															break
-														}
-
-														// Leaf: ReadCoreV1NamespaceStatus
-														s.handleReadCoreV1NamespaceStatusRequest(args, w, r)
-														return
 													}
 												case 't': // Prefix: "tatus"
 													if prefix := "tatus"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
@@ -987,16 +858,6 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											}
 										}
 									}
-								case 'o': // Prefix: "odes"
-									if prefix := "odes"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-										elem = elem[len(prefix):]
-									} else {
-										break
-									}
-
-									// Leaf: ListCoreV1Node
-									s.handleListCoreV1NodeRequest(args, w, r)
-									return
 								}
 							case 'o': // Prefix: "odes"
 								if prefix := "odes"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
@@ -1077,16 +938,6 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									// Leaf: ListCoreV1PersistentVolumeClaimForAllNamespaces
 									s.handleListCoreV1PersistentVolumeClaimForAllNamespacesRequest(args, w, r)
 									return
-								case 'o': // Prefix: "ods"
-									if prefix := "ods"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-										elem = elem[len(prefix):]
-									} else {
-										break
-									}
-
-									// Leaf: ListCoreV1PodForAllNamespaces
-									s.handleListCoreV1PodForAllNamespacesRequest(args, w, r)
-									return
 								case 's': // Prefix: "s"
 									if prefix := "s"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
 										elem = elem[len(prefix):]
@@ -1130,16 +981,6 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												return
 											}
 										}
-									case 'c': // Prefix: "claims"
-										if prefix := "claims"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-											elem = elem[len(prefix):]
-										} else {
-											break
-										}
-
-										// Leaf: ListCoreV1PersistentVolumeClaimForAllNamespaces
-										s.handleListCoreV1PersistentVolumeClaimForAllNamespacesRequest(args, w, r)
-										return
 									}
 								}
 							case 'o': // Prefix: "od"
@@ -1161,22 +1002,9 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										break
 									}
 
-									if len(elem) == 0 {
-										s.handleListCoreV1PodForAllNamespacesRequest(args, w, r)
-										return
-									}
-									switch elem[0] {
-									case 't': // Prefix: "templates"
-										if prefix := "templates"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-											elem = elem[len(prefix):]
-										} else {
-											break
-										}
-
-										// Leaf: ListCoreV1PodTemplateForAllNamespaces
-										s.handleListCoreV1PodTemplateForAllNamespacesRequest(args, w, r)
-										return
-									}
+									// Leaf: ListCoreV1PodForAllNamespaces
+									s.handleListCoreV1PodForAllNamespacesRequest(args, w, r)
+									return
 								case 't': // Prefix: "templates"
 									if prefix := "templates"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
 										elem = elem[len(prefix):]
@@ -1208,22 +1036,9 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									break
 								}
 
-								if len(elem) == 0 {
-									s.handleListCoreV1ReplicationControllerForAllNamespacesRequest(args, w, r)
-									return
-								}
-								switch elem[0] {
-								case 's': // Prefix: "sourcequotas"
-									if prefix := "sourcequotas"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-										elem = elem[len(prefix):]
-									} else {
-										break
-									}
-
-									// Leaf: ListCoreV1ResourceQuotaForAllNamespaces
-									s.handleListCoreV1ResourceQuotaForAllNamespacesRequest(args, w, r)
-									return
-								}
+								// Leaf: ListCoreV1ReplicationControllerForAllNamespaces
+								s.handleListCoreV1ReplicationControllerForAllNamespacesRequest(args, w, r)
+								return
 							case 's': // Prefix: "sourcequotas"
 								if prefix := "sourcequotas"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
 									elem = elem[len(prefix):]
@@ -1254,22 +1069,9 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									break
 								}
 
-								if len(elem) == 0 {
-									s.handleListCoreV1SecretForAllNamespacesRequest(args, w, r)
-									return
-								}
-								switch elem[0] {
-								case 'r': // Prefix: "rviceaccounts"
-									if prefix := "rviceaccounts"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-										elem = elem[len(prefix):]
-									} else {
-										break
-									}
-
-									// Leaf: ListCoreV1ServiceAccountForAllNamespaces
-									s.handleListCoreV1ServiceAccountForAllNamespacesRequest(args, w, r)
-									return
-								}
+								// Leaf: ListCoreV1SecretForAllNamespaces
+								s.handleListCoreV1SecretForAllNamespacesRequest(args, w, r)
+								return
 							case 'r': // Prefix: "rvice"
 								if prefix := "rvice"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
 									elem = elem[len(prefix):]
@@ -1289,22 +1091,9 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										break
 									}
 
-									if len(elem) == 0 {
-										s.handleListCoreV1ServiceAccountForAllNamespacesRequest(args, w, r)
-										return
-									}
-									switch elem[0] {
-									case 's': // Prefix: "s"
-										if prefix := "s"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-											elem = elem[len(prefix):]
-										} else {
-											break
-										}
-
-										// Leaf: ListCoreV1ServiceForAllNamespaces
-										s.handleListCoreV1ServiceForAllNamespacesRequest(args, w, r)
-										return
-									}
+									// Leaf: ListCoreV1ServiceAccountForAllNamespaces
+									s.handleListCoreV1ServiceAccountForAllNamespacesRequest(args, w, r)
+									return
 								case 's': // Prefix: "s"
 									if prefix := "s"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
 										elem = elem[len(prefix):]
@@ -1336,22 +1125,9 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									break
 								}
 
-								if len(elem) == 0 {
-									s.handleWatchCoreV1ConfigMapListForAllNamespacesRequest(args, w, r)
-									return
-								}
-								switch elem[0] {
-								case 'e': // Prefix: "endpoints"
-									if prefix := "endpoints"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-										elem = elem[len(prefix):]
-									} else {
-										break
-									}
-
-									// Leaf: WatchCoreV1EndpointsListForAllNamespaces
-									s.handleWatchCoreV1EndpointsListForAllNamespacesRequest(args, w, r)
-									return
-								}
+								// Leaf: WatchCoreV1ConfigMapListForAllNamespaces
+								s.handleWatchCoreV1ConfigMapListForAllNamespacesRequest(args, w, r)
+								return
 							case 'e': // Prefix: "e"
 								if prefix := "e"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
 									elem = elem[len(prefix):]
@@ -1371,22 +1147,9 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										break
 									}
 
-									if len(elem) == 0 {
-										s.handleWatchCoreV1EndpointsListForAllNamespacesRequest(args, w, r)
-										return
-									}
-									switch elem[0] {
-									case 'v': // Prefix: "vents"
-										if prefix := "vents"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-											elem = elem[len(prefix):]
-										} else {
-											break
-										}
-
-										// Leaf: WatchCoreV1EventListForAllNamespaces
-										s.handleWatchCoreV1EventListForAllNamespacesRequest(args, w, r)
-										return
-									}
+									// Leaf: WatchCoreV1EndpointsListForAllNamespaces
+									s.handleWatchCoreV1EndpointsListForAllNamespacesRequest(args, w, r)
+									return
 								case 'v': // Prefix: "vents"
 									if prefix := "vents"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
 										elem = elem[len(prefix):]
@@ -1489,20 +1252,6 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														// Leaf: WatchCoreV1NamespacedConfigMap
 														s.handleWatchCoreV1NamespacedConfigMapRequest(args, w, r)
 														return
-													case 'e': // Prefix: "endpoints/"
-														if prefix := "endpoints/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-															elem = elem[len(prefix):]
-														} else {
-															break
-														}
-
-														// Param: "name"
-														// Leaf parameter
-														args["name"] = elem
-
-														// Leaf: WatchCoreV1NamespacedEndpoints
-														s.handleWatchCoreV1NamespacedEndpointsRequest(args, w, r)
-														return
 													}
 												case 'e': // Prefix: "e"
 													if prefix := "e"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
@@ -1541,20 +1290,6 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 															// Leaf: WatchCoreV1NamespacedEndpoints
 															s.handleWatchCoreV1NamespacedEndpointsRequest(args, w, r)
-															return
-														case 'v': // Prefix: "vents/"
-															if prefix := "vents/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																elem = elem[len(prefix):]
-															} else {
-																break
-															}
-
-															// Param: "name"
-															// Leaf parameter
-															args["name"] = elem
-
-															// Leaf: WatchCoreV1NamespacedEvent
-															s.handleWatchCoreV1NamespacedEventRequest(args, w, r)
 															return
 														}
 													case 'v': // Prefix: "vents"
@@ -1650,20 +1385,6 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															// Leaf: WatchCoreV1NamespacedPersistentVolumeClaim
 															s.handleWatchCoreV1NamespacedPersistentVolumeClaimRequest(args, w, r)
 															return
-														case 'o': // Prefix: "ods/"
-															if prefix := "ods/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																elem = elem[len(prefix):]
-															} else {
-																break
-															}
-
-															// Param: "name"
-															// Leaf parameter
-															args["name"] = elem
-
-															// Leaf: WatchCoreV1NamespacedPod
-															s.handleWatchCoreV1NamespacedPodRequest(args, w, r)
-															return
 														}
 													case 'o': // Prefix: "od"
 														if prefix := "od"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
@@ -1702,20 +1423,6 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 																// Leaf: WatchCoreV1NamespacedPod
 																s.handleWatchCoreV1NamespacedPodRequest(args, w, r)
-																return
-															case 't': // Prefix: "templates/"
-																if prefix := "templates/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																	elem = elem[len(prefix):]
-																} else {
-																	break
-																}
-
-																// Param: "name"
-																// Leaf parameter
-																args["name"] = elem
-
-																// Leaf: WatchCoreV1NamespacedPodTemplate
-																s.handleWatchCoreV1NamespacedPodTemplateRequest(args, w, r)
 																return
 															}
 														case 't': // Prefix: "templates"
@@ -1785,20 +1492,6 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															// Leaf: WatchCoreV1NamespacedReplicationController
 															s.handleWatchCoreV1NamespacedReplicationControllerRequest(args, w, r)
 															return
-														case 's': // Prefix: "sourcequotas/"
-															if prefix := "sourcequotas/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																elem = elem[len(prefix):]
-															} else {
-																break
-															}
-
-															// Param: "name"
-															// Leaf parameter
-															args["name"] = elem
-
-															// Leaf: WatchCoreV1NamespacedResourceQuota
-															s.handleWatchCoreV1NamespacedResourceQuotaRequest(args, w, r)
-															return
 														}
 													case 's': // Prefix: "sourcequotas"
 														if prefix := "sourcequotas"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
@@ -1866,20 +1559,6 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															// Leaf: WatchCoreV1NamespacedSecret
 															s.handleWatchCoreV1NamespacedSecretRequest(args, w, r)
 															return
-														case 'r': // Prefix: "rvices/"
-															if prefix := "rvices/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																elem = elem[len(prefix):]
-															} else {
-																break
-															}
-
-															// Param: "name"
-															// Leaf parameter
-															args["name"] = elem
-
-															// Leaf: WatchCoreV1NamespacedService
-															s.handleWatchCoreV1NamespacedServiceRequest(args, w, r)
-															return
 														}
 													case 'r': // Prefix: "rvice"
 														if prefix := "rvice"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
@@ -1939,25 +1618,6 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																	break
 																}
 
-																if len(elem) == 0 {
-																	break
-																}
-																switch elem[0] {
-																case 'a': // Prefix: "accounts/"
-																	if prefix := "accounts/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																		elem = elem[len(prefix):]
-																	} else {
-																		break
-																	}
-
-																	// Param: "name"
-																	// Leaf parameter
-																	args["name"] = elem
-
-																	// Leaf: WatchCoreV1NamespacedServiceAccount
-																	s.handleWatchCoreV1NamespacedServiceAccountRequest(args, w, r)
-																	return
-																}
 																// Param: "name"
 																// Leaf parameter
 																args["name"] = elem
@@ -1971,20 +1631,6 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												}
 											}
 										}
-									case 'o': // Prefix: "odes/"
-										if prefix := "odes/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-											elem = elem[len(prefix):]
-										} else {
-											break
-										}
-
-										// Param: "name"
-										// Leaf parameter
-										args["name"] = elem
-
-										// Leaf: WatchCoreV1Node
-										s.handleWatchCoreV1NodeRequest(args, w, r)
-										return
 									}
 								case 'o': // Prefix: "odes"
 									if prefix := "odes"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
@@ -2048,16 +1694,6 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										// Leaf: WatchCoreV1PersistentVolumeClaimListForAllNamespaces
 										s.handleWatchCoreV1PersistentVolumeClaimListForAllNamespacesRequest(args, w, r)
 										return
-									case 'o': // Prefix: "ods"
-										if prefix := "ods"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-											elem = elem[len(prefix):]
-										} else {
-											break
-										}
-
-										// Leaf: WatchCoreV1PodListForAllNamespaces
-										s.handleWatchCoreV1PodListForAllNamespacesRequest(args, w, r)
-										return
 									case 's': // Prefix: "s"
 										if prefix := "s"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
 											elem = elem[len(prefix):]
@@ -2077,21 +1713,6 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												break
 											}
 
-											if len(elem) == 0 {
-												break
-											}
-											switch elem[0] {
-											case 'c': // Prefix: "claims"
-												if prefix := "claims"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-													elem = elem[len(prefix):]
-												} else {
-													break
-												}
-
-												// Leaf: WatchCoreV1PersistentVolumeClaimListForAllNamespaces
-												s.handleWatchCoreV1PersistentVolumeClaimListForAllNamespacesRequest(args, w, r)
-												return
-											}
 											// Param: "name"
 											// Leaf parameter
 											args["name"] = elem
@@ -2120,22 +1741,9 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											break
 										}
 
-										if len(elem) == 0 {
-											s.handleWatchCoreV1PodListForAllNamespacesRequest(args, w, r)
-											return
-										}
-										switch elem[0] {
-										case 't': // Prefix: "templates"
-											if prefix := "templates"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-												elem = elem[len(prefix):]
-											} else {
-												break
-											}
-
-											// Leaf: WatchCoreV1PodTemplateListForAllNamespaces
-											s.handleWatchCoreV1PodTemplateListForAllNamespacesRequest(args, w, r)
-											return
-										}
+										// Leaf: WatchCoreV1PodListForAllNamespaces
+										s.handleWatchCoreV1PodListForAllNamespacesRequest(args, w, r)
+										return
 									case 't': // Prefix: "templates"
 										if prefix := "templates"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
 											elem = elem[len(prefix):]
@@ -2167,22 +1775,9 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										break
 									}
 
-									if len(elem) == 0 {
-										s.handleWatchCoreV1ReplicationControllerListForAllNamespacesRequest(args, w, r)
-										return
-									}
-									switch elem[0] {
-									case 's': // Prefix: "sourcequotas"
-										if prefix := "sourcequotas"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-											elem = elem[len(prefix):]
-										} else {
-											break
-										}
-
-										// Leaf: WatchCoreV1ResourceQuotaListForAllNamespaces
-										s.handleWatchCoreV1ResourceQuotaListForAllNamespacesRequest(args, w, r)
-										return
-									}
+									// Leaf: WatchCoreV1ReplicationControllerListForAllNamespaces
+									s.handleWatchCoreV1ReplicationControllerListForAllNamespacesRequest(args, w, r)
+									return
 								case 's': // Prefix: "sourcequotas"
 									if prefix := "sourcequotas"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
 										elem = elem[len(prefix):]
@@ -2213,22 +1808,9 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										break
 									}
 
-									if len(elem) == 0 {
-										s.handleWatchCoreV1SecretListForAllNamespacesRequest(args, w, r)
-										return
-									}
-									switch elem[0] {
-									case 'r': // Prefix: "rviceaccounts"
-										if prefix := "rviceaccounts"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-											elem = elem[len(prefix):]
-										} else {
-											break
-										}
-
-										// Leaf: WatchCoreV1ServiceAccountListForAllNamespaces
-										s.handleWatchCoreV1ServiceAccountListForAllNamespacesRequest(args, w, r)
-										return
-									}
+									// Leaf: WatchCoreV1SecretListForAllNamespaces
+									s.handleWatchCoreV1SecretListForAllNamespacesRequest(args, w, r)
+									return
 								case 'r': // Prefix: "rvice"
 									if prefix := "rvice"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
 										elem = elem[len(prefix):]
@@ -2248,22 +1830,9 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											break
 										}
 
-										if len(elem) == 0 {
-											s.handleWatchCoreV1ServiceAccountListForAllNamespacesRequest(args, w, r)
-											return
-										}
-										switch elem[0] {
-										case 's': // Prefix: "s"
-											if prefix := "s"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-												elem = elem[len(prefix):]
-											} else {
-												break
-											}
-
-											// Leaf: WatchCoreV1ServiceListForAllNamespaces
-											s.handleWatchCoreV1ServiceListForAllNamespacesRequest(args, w, r)
-											return
-										}
+										// Leaf: WatchCoreV1ServiceAccountListForAllNamespaces
+										s.handleWatchCoreV1ServiceAccountListForAllNamespacesRequest(args, w, r)
+										return
 									case 's': // Prefix: "s"
 										if prefix := "s"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
 											elem = elem[len(prefix):]
@@ -2291,16 +1860,6 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						return
 					}
 					switch elem[0] {
-					case '/': // Prefix: "/"
-						if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-							elem = elem[len(prefix):]
-						} else {
-							break
-						}
-
-						// Leaf: GetCoreAPIVersions
-						s.handleGetCoreAPIVersionsRequest(args, w, r)
-						return
 					case 'a': // Prefix: "a"
 						if prefix := "a"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
 							elem = elem[len(prefix):]
@@ -2325,16 +1884,6 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								return
 							}
 							switch elem[0] {
-							case 'p': // Prefix: "piextensions.k8s.io/"
-								if prefix := "piextensions.k8s.io/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-									elem = elem[len(prefix):]
-								} else {
-									break
-								}
-
-								// Leaf: GetApiextensionsAPIGroup
-								s.handleGetApiextensionsAPIGroupRequest(args, w, r)
-								return
 							case 'v': // Prefix: "v1/"
 								if prefix := "v1/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
 									elem = elem[len(prefix):]
@@ -2439,20 +1988,6 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											// Leaf: WatchAdmissionregistrationV1MutatingWebhookConfiguration
 											s.handleWatchAdmissionregistrationV1MutatingWebhookConfigurationRequest(args, w, r)
 											return
-										case 'v': // Prefix: "validatingwebhookconfigurations/"
-											if prefix := "validatingwebhookconfigurations/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-												elem = elem[len(prefix):]
-											} else {
-												break
-											}
-
-											// Param: "name"
-											// Leaf parameter
-											args["name"] = elem
-
-											// Leaf: WatchAdmissionregistrationV1ValidatingWebhookConfiguration
-											s.handleWatchAdmissionregistrationV1ValidatingWebhookConfigurationRequest(args, w, r)
-											return
 										}
 									case 'v': // Prefix: "validatingwebhookconfigurations"
 										if prefix := "validatingwebhookconfigurations"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
@@ -2520,16 +2055,6 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										return
 									}
 									switch elem[0] {
-									case 'r': // Prefix: "registration.k8s.io/"
-										if prefix := "registration.k8s.io/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-											elem = elem[len(prefix):]
-										} else {
-											break
-										}
-
-										// Leaf: GetApiregistrationAPIGroup
-										s.handleGetApiregistrationAPIGroupRequest(args, w, r)
-										return
 									case 'v': // Prefix: "v1/"
 										if prefix := "v1/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
 											elem = elem[len(prefix):]
@@ -2615,16 +2140,6 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											}
 										}
 									}
-								case 'p': // Prefix: "ps/"
-									if prefix := "ps/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-										elem = elem[len(prefix):]
-									} else {
-										break
-									}
-
-									// Leaf: GetAppsAPIGroup
-									s.handleGetAppsAPIGroupRequest(args, w, r)
-									return
 								case 'r': // Prefix: "registration.k8s.io/"
 									if prefix := "registration.k8s.io/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
 										elem = elem[len(prefix):]
@@ -2776,22 +2291,9 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												break
 											}
 
-											if len(elem) == 0 {
-												s.handleListAppsV1DaemonSetForAllNamespacesRequest(args, w, r)
-												return
-											}
-											switch elem[0] {
-											case 'e': // Prefix: "eployments"
-												if prefix := "eployments"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-													elem = elem[len(prefix):]
-												} else {
-													break
-												}
-
-												// Leaf: ListAppsV1DeploymentForAllNamespaces
-												s.handleListAppsV1DeploymentForAllNamespacesRequest(args, w, r)
-												return
-											}
+											// Leaf: ListAppsV1DaemonSetForAllNamespaces
+											s.handleListAppsV1DaemonSetForAllNamespacesRequest(args, w, r)
+											return
 										case 'e': // Prefix: "eployments"
 											if prefix := "eployments"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
 												elem = elem[len(prefix):]
@@ -2859,16 +2361,6 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														// Leaf: ReadAppsV1NamespacedControllerRevision
 														s.handleReadAppsV1NamespacedControllerRevisionRequest(args, w, r)
 														return
-													case 'd': // Prefix: "daemonsets"
-														if prefix := "daemonsets"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-															elem = elem[len(prefix):]
-														} else {
-															break
-														}
-
-														// Leaf: ListAppsV1NamespacedDaemonSet
-														s.handleListAppsV1NamespacedDaemonSetRequest(args, w, r)
-														return
 													}
 												case 'd': // Prefix: "d"
 													if prefix := "d"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
@@ -2925,16 +2417,6 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																	return
 																}
 															}
-														case 'e': // Prefix: "eployments"
-															if prefix := "eployments"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																elem = elem[len(prefix):]
-															} else {
-																break
-															}
-
-															// Leaf: ListAppsV1NamespacedDeployment
-															s.handleListAppsV1NamespacedDeploymentRequest(args, w, r)
-															return
 														}
 													case 'e': // Prefix: "eployments"
 														if prefix := "eployments"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
@@ -2986,22 +2468,9 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																			break
 																		}
 
-																		if len(elem) == 0 {
-																			s.handleReadAppsV1NamespacedDeploymentScaleRequest(args, w, r)
-																			return
-																		}
-																		switch elem[0] {
-																		case 't': // Prefix: "tatus"
-																			if prefix := "tatus"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																				elem = elem[len(prefix):]
-																			} else {
-																				break
-																			}
-
-																			// Leaf: ReadAppsV1NamespacedDeploymentStatus
-																			s.handleReadAppsV1NamespacedDeploymentStatusRequest(args, w, r)
-																			return
-																		}
+																		// Leaf: ReadAppsV1NamespacedDeploymentScale
+																		s.handleReadAppsV1NamespacedDeploymentScaleRequest(args, w, r)
+																		return
 																	case 't': // Prefix: "tatus"
 																		if prefix := "tatus"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
 																			elem = elem[len(prefix):]
@@ -3067,22 +2536,9 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																		break
 																	}
 
-																	if len(elem) == 0 {
-																		s.handleReadAppsV1NamespacedReplicaSetScaleRequest(args, w, r)
-																		return
-																	}
-																	switch elem[0] {
-																	case 't': // Prefix: "tatus"
-																		if prefix := "tatus"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																			elem = elem[len(prefix):]
-																		} else {
-																			break
-																		}
-
-																		// Leaf: ReadAppsV1NamespacedReplicaSetStatus
-																		s.handleReadAppsV1NamespacedReplicaSetStatusRequest(args, w, r)
-																		return
-																	}
+																	// Leaf: ReadAppsV1NamespacedReplicaSetScale
+																	s.handleReadAppsV1NamespacedReplicaSetScaleRequest(args, w, r)
+																	return
 																case 't': // Prefix: "tatus"
 																	if prefix := "tatus"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
 																		elem = elem[len(prefix):]
@@ -3147,22 +2603,9 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																		break
 																	}
 
-																	if len(elem) == 0 {
-																		s.handleReadAppsV1NamespacedStatefulSetScaleRequest(args, w, r)
-																		return
-																	}
-																	switch elem[0] {
-																	case 't': // Prefix: "tatus"
-																		if prefix := "tatus"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																			elem = elem[len(prefix):]
-																		} else {
-																			break
-																		}
-
-																		// Leaf: ReadAppsV1NamespacedStatefulSetStatus
-																		s.handleReadAppsV1NamespacedStatefulSetStatusRequest(args, w, r)
-																		return
-																	}
+																	// Leaf: ReadAppsV1NamespacedStatefulSetScale
+																	s.handleReadAppsV1NamespacedStatefulSetScaleRequest(args, w, r)
+																	return
 																case 't': // Prefix: "tatus"
 																	if prefix := "tatus"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
 																		elem = elem[len(prefix):]
@@ -3219,22 +2662,9 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												break
 											}
 
-											if len(elem) == 0 {
-												s.handleWatchAppsV1ControllerRevisionListForAllNamespacesRequest(args, w, r)
-												return
-											}
-											switch elem[0] {
-											case 'd': // Prefix: "daemonsets"
-												if prefix := "daemonsets"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-													elem = elem[len(prefix):]
-												} else {
-													break
-												}
-
-												// Leaf: WatchAppsV1DaemonSetListForAllNamespaces
-												s.handleWatchAppsV1DaemonSetListForAllNamespacesRequest(args, w, r)
-												return
-											}
+											// Leaf: WatchAppsV1ControllerRevisionListForAllNamespaces
+											s.handleWatchAppsV1ControllerRevisionListForAllNamespacesRequest(args, w, r)
+											return
 										case 'd': // Prefix: "d"
 											if prefix := "d"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
 												elem = elem[len(prefix):]
@@ -3254,22 +2684,9 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													break
 												}
 
-												if len(elem) == 0 {
-													s.handleWatchAppsV1DaemonSetListForAllNamespacesRequest(args, w, r)
-													return
-												}
-												switch elem[0] {
-												case 'e': // Prefix: "eployments"
-													if prefix := "eployments"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-														elem = elem[len(prefix):]
-													} else {
-														break
-													}
-
-													// Leaf: WatchAppsV1DeploymentListForAllNamespaces
-													s.handleWatchAppsV1DeploymentListForAllNamespacesRequest(args, w, r)
-													return
-												}
+												// Leaf: WatchAppsV1DaemonSetListForAllNamespaces
+												s.handleWatchAppsV1DaemonSetListForAllNamespacesRequest(args, w, r)
+												return
 											case 'e': // Prefix: "eployments"
 												if prefix := "eployments"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
 													elem = elem[len(prefix):]
@@ -3337,20 +2754,6 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															// Leaf: WatchAppsV1NamespacedControllerRevision
 															s.handleWatchAppsV1NamespacedControllerRevisionRequest(args, w, r)
 															return
-														case 'd': // Prefix: "daemonsets/"
-															if prefix := "daemonsets/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																elem = elem[len(prefix):]
-															} else {
-																break
-															}
-
-															// Param: "name"
-															// Leaf parameter
-															args["name"] = elem
-
-															// Leaf: WatchAppsV1NamespacedDaemonSet
-															s.handleWatchAppsV1NamespacedDaemonSetRequest(args, w, r)
-															return
 														}
 													case 'd': // Prefix: "d"
 														if prefix := "d"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
@@ -3389,20 +2792,6 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 																// Leaf: WatchAppsV1NamespacedDaemonSet
 																s.handleWatchAppsV1NamespacedDaemonSetRequest(args, w, r)
-																return
-															case 'e': // Prefix: "eployments/"
-																if prefix := "eployments/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																	elem = elem[len(prefix):]
-																} else {
-																	break
-																}
-
-																// Param: "name"
-																// Leaf parameter
-																args["name"] = elem
-
-																// Leaf: WatchAppsV1NamespacedDeployment
-																s.handleWatchAppsV1NamespacedDeploymentRequest(args, w, r)
 																return
 															}
 														case 'e': // Prefix: "eployments"
@@ -3550,16 +2939,6 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										return
 									}
 									switch elem[0] {
-									case 'o': // Prefix: "orization.k8s.io/"
-										if prefix := "orization.k8s.io/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-											elem = elem[len(prefix):]
-										} else {
-											break
-										}
-
-										// Leaf: GetAuthorizationAPIGroup
-										s.handleGetAuthorizationAPIGroupRequest(args, w, r)
-										return
 									case 'v': // Prefix: "v1/"
 										if prefix := "v1/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
 											elem = elem[len(prefix):]
@@ -3571,60 +2950,27 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										s.handleGetAuthenticationV1APIResourcesRequest(args, w, r)
 										return
 									}
-								case 'o': // Prefix: "o"
-									if prefix := "o"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+								case 'o': // Prefix: "orization.k8s.io/"
+									if prefix := "orization.k8s.io/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
 										elem = elem[len(prefix):]
 									} else {
 										break
 									}
 
 									if len(elem) == 0 {
-										s.handleGetAutoscalingAPIGroupRequest(args, w, r)
+										s.handleGetAuthorizationAPIGroupRequest(args, w, r)
 										return
 									}
 									switch elem[0] {
-									case 'r': // Prefix: "rization.k8s.io/"
-										if prefix := "rization.k8s.io/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+									case 'v': // Prefix: "v1/"
+										if prefix := "v1/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
 											elem = elem[len(prefix):]
 										} else {
 											break
 										}
 
-										if len(elem) == 0 {
-											s.handleGetAuthorizationAPIGroupRequest(args, w, r)
-											return
-										}
-										switch elem[0] {
-										case 's': // Prefix: "scaling/"
-											if prefix := "scaling/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-												elem = elem[len(prefix):]
-											} else {
-												break
-											}
-
-											// Leaf: GetAutoscalingAPIGroup
-											s.handleGetAutoscalingAPIGroupRequest(args, w, r)
-											return
-										case 'v': // Prefix: "v1/"
-											if prefix := "v1/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-												elem = elem[len(prefix):]
-											} else {
-												break
-											}
-
-											// Leaf: GetAuthorizationV1APIResources
-											s.handleGetAuthorizationV1APIResourcesRequest(args, w, r)
-											return
-										}
-									case 's': // Prefix: "scaling/"
-										if prefix := "scaling/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-											elem = elem[len(prefix):]
-										} else {
-											break
-										}
-
-										// Leaf: GetAutoscalingAPIGroup
-										s.handleGetAutoscalingAPIGroupRequest(args, w, r)
+										// Leaf: GetAuthorizationV1APIResources
+										s.handleGetAuthorizationV1APIResourcesRequest(args, w, r)
 										return
 									}
 								}
@@ -3664,16 +3010,6 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											return
 										}
 										switch elem[0] {
-										case '2': // Prefix: "2beta1/"
-											if prefix := "2beta1/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-												elem = elem[len(prefix):]
-											} else {
-												break
-											}
-
-											// Leaf: GetAutoscalingV2beta1APIResources
-											s.handleGetAutoscalingV2beta1APIResourcesRequest(args, w, r)
-											return
 										case 'h': // Prefix: "horizontalpodautoscalers"
 											if prefix := "horizontalpodautoscalers"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
 												elem = elem[len(prefix):]
@@ -3767,46 +3103,9 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													break
 												}
 
-												if len(elem) == 0 {
-													s.handleWatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespacesRequest(args, w, r)
-													return
-												}
-												switch elem[0] {
-												case 'n': // Prefix: "namespaces/"
-													if prefix := "namespaces/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-														elem = elem[len(prefix):]
-													} else {
-														break
-													}
-
-													// Param: "namespace"
-													// Match until one of "/"
-													idx := strings.IndexAny(elem, "/")
-													if idx > 0 {
-														args["namespace"] = elem[:idx]
-														elem = elem[idx:]
-
-														if len(elem) == 0 {
-															break
-														}
-														switch elem[0] {
-														case '/': // Prefix: "/horizontalpodautoscalers/"
-															if prefix := "/horizontalpodautoscalers/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																elem = elem[len(prefix):]
-															} else {
-																break
-															}
-
-															// Param: "name"
-															// Leaf parameter
-															args["name"] = elem
-
-															// Leaf: WatchAutoscalingV1NamespacedHorizontalPodAutoscaler
-															s.handleWatchAutoscalingV1NamespacedHorizontalPodAutoscalerRequest(args, w, r)
-															return
-														}
-													}
-												}
+												// Leaf: WatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespaces
+												s.handleWatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespacesRequest(args, w, r)
+												return
 											case 'n': // Prefix: "namespaces/"
 												if prefix := "namespaces/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
 													elem = elem[len(prefix):]
@@ -3880,16 +3179,6 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												return
 											}
 											switch elem[0] {
-											case '2': // Prefix: "2/"
-												if prefix := "2/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-													elem = elem[len(prefix):]
-												} else {
-													break
-												}
-
-												// Leaf: GetAutoscalingV2beta2APIResources
-												s.handleGetAutoscalingV2beta2APIResourcesRequest(args, w, r)
-												return
 											case 'h': // Prefix: "horizontalpodautoscalers"
 												if prefix := "horizontalpodautoscalers"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
 													elem = elem[len(prefix):]
@@ -3983,46 +3272,9 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														break
 													}
 
-													if len(elem) == 0 {
-														s.handleWatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespacesRequest(args, w, r)
-														return
-													}
-													switch elem[0] {
-													case 'n': // Prefix: "namespaces/"
-														if prefix := "namespaces/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-															elem = elem[len(prefix):]
-														} else {
-															break
-														}
-
-														// Param: "namespace"
-														// Match until one of "/"
-														idx := strings.IndexAny(elem, "/")
-														if idx > 0 {
-															args["namespace"] = elem[:idx]
-															elem = elem[idx:]
-
-															if len(elem) == 0 {
-																break
-															}
-															switch elem[0] {
-															case '/': // Prefix: "/horizontalpodautoscalers/"
-																if prefix := "/horizontalpodautoscalers/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																	elem = elem[len(prefix):]
-																} else {
-																	break
-																}
-
-																// Param: "name"
-																// Leaf parameter
-																args["name"] = elem
-
-																// Leaf: WatchAutoscalingV2beta1NamespacedHorizontalPodAutoscaler
-																s.handleWatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerRequest(args, w, r)
-																return
-															}
-														}
-													}
+													// Leaf: WatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespaces
+													s.handleWatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespacesRequest(args, w, r)
+													return
 												case 'n': // Prefix: "namespaces/"
 													if prefix := "namespaces/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
 														elem = elem[len(prefix):]
@@ -4177,46 +3429,9 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														break
 													}
 
-													if len(elem) == 0 {
-														s.handleWatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespacesRequest(args, w, r)
-														return
-													}
-													switch elem[0] {
-													case 'n': // Prefix: "namespaces/"
-														if prefix := "namespaces/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-															elem = elem[len(prefix):]
-														} else {
-															break
-														}
-
-														// Param: "namespace"
-														// Match until one of "/"
-														idx := strings.IndexAny(elem, "/")
-														if idx > 0 {
-															args["namespace"] = elem[:idx]
-															elem = elem[idx:]
-
-															if len(elem) == 0 {
-																break
-															}
-															switch elem[0] {
-															case '/': // Prefix: "/horizontalpodautoscalers/"
-																if prefix := "/horizontalpodautoscalers/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																	elem = elem[len(prefix):]
-																} else {
-																	break
-																}
-
-																// Param: "name"
-																// Leaf parameter
-																args["name"] = elem
-
-																// Leaf: WatchAutoscalingV2beta2NamespacedHorizontalPodAutoscaler
-																s.handleWatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerRequest(args, w, r)
-																return
-															}
-														}
-													}
+													// Leaf: WatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespaces
+													s.handleWatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespacesRequest(args, w, r)
+													return
 												case 'n': // Prefix: "namespaces/"
 													if prefix := "namespaces/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
 														elem = elem[len(prefix):]
@@ -4307,16 +3522,6 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									return
 								}
 								switch elem[0] {
-								case 'b': // Prefix: "beta1/"
-									if prefix := "beta1/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-										elem = elem[len(prefix):]
-									} else {
-										break
-									}
-
-									// Leaf: GetBatchV1beta1APIResources
-									s.handleGetBatchV1beta1APIResourcesRequest(args, w, r)
-									return
 								case 'c': // Prefix: "cronjobs"
 									if prefix := "cronjobs"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
 										elem = elem[len(prefix):]
@@ -4410,16 +3615,6 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															return
 														}
 													}
-												case 'j': // Prefix: "jobs"
-													if prefix := "jobs"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-														elem = elem[len(prefix):]
-													} else {
-														break
-													}
-
-													// Leaf: ListBatchV1NamespacedJob
-													s.handleListBatchV1NamespacedJobRequest(args, w, r)
-													return
 												}
 											case 'j': // Prefix: "jobs"
 												if prefix := "jobs"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
@@ -4487,22 +3682,9 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											break
 										}
 
-										if len(elem) == 0 {
-											s.handleWatchBatchV1CronJobListForAllNamespacesRequest(args, w, r)
-											return
-										}
-										switch elem[0] {
-										case 'j': // Prefix: "jobs"
-											if prefix := "jobs"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-												elem = elem[len(prefix):]
-											} else {
-												break
-											}
-
-											// Leaf: WatchBatchV1JobListForAllNamespaces
-											s.handleWatchBatchV1JobListForAllNamespacesRequest(args, w, r)
-											return
-										}
+										// Leaf: WatchBatchV1CronJobListForAllNamespaces
+										s.handleWatchBatchV1CronJobListForAllNamespacesRequest(args, w, r)
+										return
 									case 'j': // Prefix: "jobs"
 										if prefix := "jobs"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
 											elem = elem[len(prefix):]
@@ -4568,20 +3750,6 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 														// Leaf: WatchBatchV1NamespacedCronJob
 														s.handleWatchBatchV1NamespacedCronJobRequest(args, w, r)
-														return
-													case 'j': // Prefix: "jobs/"
-														if prefix := "jobs/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-															elem = elem[len(prefix):]
-														} else {
-															break
-														}
-
-														// Param: "name"
-														// Leaf parameter
-														args["name"] = elem
-
-														// Leaf: WatchBatchV1NamespacedJob
-														s.handleWatchBatchV1NamespacedJobRequest(args, w, r)
 														return
 													}
 												case 'j': // Prefix: "jobs"
@@ -4721,46 +3889,9 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											break
 										}
 
-										if len(elem) == 0 {
-											s.handleWatchBatchV1beta1CronJobListForAllNamespacesRequest(args, w, r)
-											return
-										}
-										switch elem[0] {
-										case 'n': // Prefix: "namespaces/"
-											if prefix := "namespaces/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-												elem = elem[len(prefix):]
-											} else {
-												break
-											}
-
-											// Param: "namespace"
-											// Match until one of "/"
-											idx := strings.IndexAny(elem, "/")
-											if idx > 0 {
-												args["namespace"] = elem[:idx]
-												elem = elem[idx:]
-
-												if len(elem) == 0 {
-													break
-												}
-												switch elem[0] {
-												case '/': // Prefix: "/cronjobs/"
-													if prefix := "/cronjobs/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-														elem = elem[len(prefix):]
-													} else {
-														break
-													}
-
-													// Param: "name"
-													// Leaf parameter
-													args["name"] = elem
-
-													// Leaf: WatchBatchV1beta1NamespacedCronJob
-													s.handleWatchBatchV1beta1NamespacedCronJobRequest(args, w, r)
-													return
-												}
-											}
-										}
+										// Leaf: WatchBatchV1beta1CronJobListForAllNamespaces
+										s.handleWatchBatchV1beta1CronJobListForAllNamespacesRequest(args, w, r)
+										return
 									case 'n': // Prefix: "namespaces/"
 										if prefix := "namespaces/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
 											elem = elem[len(prefix):]
@@ -4836,16 +3967,6 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								return
 							}
 							switch elem[0] {
-							case 'o': // Prefix: "oordination.k8s.io/"
-								if prefix := "oordination.k8s.io/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-									elem = elem[len(prefix):]
-								} else {
-									break
-								}
-
-								// Leaf: GetCoordinationAPIGroup
-								s.handleGetCoordinationAPIGroupRequest(args, w, r)
-								return
 							case 'v': // Prefix: "v1/"
 								if prefix := "v1/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
 									elem = elem[len(prefix):]
@@ -4908,22 +4029,9 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														break
 													}
 
-													if len(elem) == 0 {
-														s.handleReadCertificatesV1CertificateSigningRequestApprovalRequest(args, w, r)
-														return
-													}
-													switch elem[0] {
-													case 's': // Prefix: "status"
-														if prefix := "status"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-															elem = elem[len(prefix):]
-														} else {
-															break
-														}
-
-														// Leaf: ReadCertificatesV1CertificateSigningRequestStatus
-														s.handleReadCertificatesV1CertificateSigningRequestStatusRequest(args, w, r)
-														return
-													}
+													// Leaf: ReadCertificatesV1CertificateSigningRequestApproval
+													s.handleReadCertificatesV1CertificateSigningRequestApprovalRequest(args, w, r)
+													return
 												case 's': // Prefix: "status"
 													if prefix := "status"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
 														elem = elem[len(prefix):]
@@ -5067,46 +4175,9 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											break
 										}
 
-										if len(elem) == 0 {
-											s.handleWatchCoordinationV1LeaseListForAllNamespacesRequest(args, w, r)
-											return
-										}
-										switch elem[0] {
-										case 'n': // Prefix: "namespaces/"
-											if prefix := "namespaces/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-												elem = elem[len(prefix):]
-											} else {
-												break
-											}
-
-											// Param: "namespace"
-											// Match until one of "/"
-											idx := strings.IndexAny(elem, "/")
-											if idx > 0 {
-												args["namespace"] = elem[:idx]
-												elem = elem[idx:]
-
-												if len(elem) == 0 {
-													break
-												}
-												switch elem[0] {
-												case '/': // Prefix: "/leases/"
-													if prefix := "/leases/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-														elem = elem[len(prefix):]
-													} else {
-														break
-													}
-
-													// Param: "name"
-													// Leaf parameter
-													args["name"] = elem
-
-													// Leaf: WatchCoordinationV1NamespacedLease
-													s.handleWatchCoordinationV1NamespacedLeaseRequest(args, w, r)
-													return
-												}
-											}
-										}
+										// Leaf: WatchCoordinationV1LeaseListForAllNamespaces
+										s.handleWatchCoordinationV1LeaseListForAllNamespacesRequest(args, w, r)
+										return
 									case 'n': // Prefix: "namespaces/"
 										if prefix := "namespaces/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
 											elem = elem[len(prefix):]
@@ -5194,16 +4265,6 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									return
 								}
 								switch elem[0] {
-								case 'b': // Prefix: "beta1/"
-									if prefix := "beta1/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-										elem = elem[len(prefix):]
-									} else {
-										break
-									}
-
-									// Leaf: GetDiscoveryV1beta1APIResources
-									s.handleGetDiscoveryV1beta1APIResourcesRequest(args, w, r)
-									return
 								case 'e': // Prefix: "endpointslices"
 									if prefix := "endpointslices"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
 										elem = elem[len(prefix):]
@@ -5280,46 +4341,9 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											break
 										}
 
-										if len(elem) == 0 {
-											s.handleWatchDiscoveryV1EndpointSliceListForAllNamespacesRequest(args, w, r)
-											return
-										}
-										switch elem[0] {
-										case 'n': // Prefix: "namespaces/"
-											if prefix := "namespaces/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-												elem = elem[len(prefix):]
-											} else {
-												break
-											}
-
-											// Param: "namespace"
-											// Match until one of "/"
-											idx := strings.IndexAny(elem, "/")
-											if idx > 0 {
-												args["namespace"] = elem[:idx]
-												elem = elem[idx:]
-
-												if len(elem) == 0 {
-													break
-												}
-												switch elem[0] {
-												case '/': // Prefix: "/endpointslices/"
-													if prefix := "/endpointslices/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-														elem = elem[len(prefix):]
-													} else {
-														break
-													}
-
-													// Param: "name"
-													// Leaf parameter
-													args["name"] = elem
-
-													// Leaf: WatchDiscoveryV1NamespacedEndpointSlice
-													s.handleWatchDiscoveryV1NamespacedEndpointSliceRequest(args, w, r)
-													return
-												}
-											}
-										}
+										// Leaf: WatchDiscoveryV1EndpointSliceListForAllNamespaces
+										s.handleWatchDiscoveryV1EndpointSliceListForAllNamespacesRequest(args, w, r)
+										return
 									case 'n': // Prefix: "namespaces/"
 										if prefix := "namespaces/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
 											elem = elem[len(prefix):]
@@ -5457,46 +4481,9 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											break
 										}
 
-										if len(elem) == 0 {
-											s.handleWatchDiscoveryV1beta1EndpointSliceListForAllNamespacesRequest(args, w, r)
-											return
-										}
-										switch elem[0] {
-										case 'n': // Prefix: "namespaces/"
-											if prefix := "namespaces/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-												elem = elem[len(prefix):]
-											} else {
-												break
-											}
-
-											// Param: "namespace"
-											// Match until one of "/"
-											idx := strings.IndexAny(elem, "/")
-											if idx > 0 {
-												args["namespace"] = elem[:idx]
-												elem = elem[idx:]
-
-												if len(elem) == 0 {
-													break
-												}
-												switch elem[0] {
-												case '/': // Prefix: "/endpointslices/"
-													if prefix := "/endpointslices/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-														elem = elem[len(prefix):]
-													} else {
-														break
-													}
-
-													// Param: "name"
-													// Leaf parameter
-													args["name"] = elem
-
-													// Leaf: WatchDiscoveryV1beta1NamespacedEndpointSlice
-													s.handleWatchDiscoveryV1beta1NamespacedEndpointSliceRequest(args, w, r)
-													return
-												}
-											}
-										}
+										// Leaf: WatchDiscoveryV1beta1EndpointSliceListForAllNamespaces
+										s.handleWatchDiscoveryV1beta1EndpointSliceListForAllNamespacesRequest(args, w, r)
+										return
 									case 'n': // Prefix: "namespaces/"
 										if prefix := "namespaces/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
 											elem = elem[len(prefix):]
@@ -5584,16 +4571,6 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									return
 								}
 								switch elem[0] {
-								case 'b': // Prefix: "beta1/"
-									if prefix := "beta1/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-										elem = elem[len(prefix):]
-									} else {
-										break
-									}
-
-									// Leaf: GetEventsV1beta1APIResources
-									s.handleGetEventsV1beta1APIResourcesRequest(args, w, r)
-									return
 								case 'e': // Prefix: "events"
 									if prefix := "events"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
 										elem = elem[len(prefix):]
@@ -5670,46 +4647,9 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											break
 										}
 
-										if len(elem) == 0 {
-											s.handleWatchEventsV1EventListForAllNamespacesRequest(args, w, r)
-											return
-										}
-										switch elem[0] {
-										case 'n': // Prefix: "namespaces/"
-											if prefix := "namespaces/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-												elem = elem[len(prefix):]
-											} else {
-												break
-											}
-
-											// Param: "namespace"
-											// Match until one of "/"
-											idx := strings.IndexAny(elem, "/")
-											if idx > 0 {
-												args["namespace"] = elem[:idx]
-												elem = elem[idx:]
-
-												if len(elem) == 0 {
-													break
-												}
-												switch elem[0] {
-												case '/': // Prefix: "/events/"
-													if prefix := "/events/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-														elem = elem[len(prefix):]
-													} else {
-														break
-													}
-
-													// Param: "name"
-													// Leaf parameter
-													args["name"] = elem
-
-													// Leaf: WatchEventsV1NamespacedEvent
-													s.handleWatchEventsV1NamespacedEventRequest(args, w, r)
-													return
-												}
-											}
-										}
+										// Leaf: WatchEventsV1EventListForAllNamespaces
+										s.handleWatchEventsV1EventListForAllNamespacesRequest(args, w, r)
+										return
 									case 'n': // Prefix: "namespaces/"
 										if prefix := "namespaces/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
 											elem = elem[len(prefix):]
@@ -5847,46 +4787,9 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											break
 										}
 
-										if len(elem) == 0 {
-											s.handleWatchEventsV1beta1EventListForAllNamespacesRequest(args, w, r)
-											return
-										}
-										switch elem[0] {
-										case 'n': // Prefix: "namespaces/"
-											if prefix := "namespaces/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-												elem = elem[len(prefix):]
-											} else {
-												break
-											}
-
-											// Param: "namespace"
-											// Match until one of "/"
-											idx := strings.IndexAny(elem, "/")
-											if idx > 0 {
-												args["namespace"] = elem[:idx]
-												elem = elem[idx:]
-
-												if len(elem) == 0 {
-													break
-												}
-												switch elem[0] {
-												case '/': // Prefix: "/events/"
-													if prefix := "/events/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-														elem = elem[len(prefix):]
-													} else {
-														break
-													}
-
-													// Param: "name"
-													// Leaf parameter
-													args["name"] = elem
-
-													// Leaf: WatchEventsV1beta1NamespacedEvent
-													s.handleWatchEventsV1beta1NamespacedEventRequest(args, w, r)
-													return
-												}
-											}
-										}
+										// Leaf: WatchEventsV1beta1EventListForAllNamespaces
+										s.handleWatchEventsV1beta1EventListForAllNamespacesRequest(args, w, r)
+										return
 									case 'n': // Prefix: "namespaces/"
 										if prefix := "namespaces/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
 											elem = elem[len(prefix):]
@@ -5974,16 +4877,6 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									return
 								}
 								switch elem[0] {
-								case '2': // Prefix: "2/"
-									if prefix := "2/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-										elem = elem[len(prefix):]
-									} else {
-										break
-									}
-
-									// Leaf: GetFlowcontrolApiserverV1beta2APIResources
-									s.handleGetFlowcontrolApiserverV1beta2APIResourcesRequest(args, w, r)
-									return
 								case 'f': // Prefix: "flowschemas"
 									if prefix := "flowschemas"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
 										elem = elem[len(prefix):]
@@ -6109,20 +5002,6 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 											// Leaf: WatchFlowcontrolApiserverV1beta1FlowSchema
 											s.handleWatchFlowcontrolApiserverV1beta1FlowSchemaRequest(args, w, r)
-											return
-										case 'p': // Prefix: "prioritylevelconfigurations/"
-											if prefix := "prioritylevelconfigurations/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-												elem = elem[len(prefix):]
-											} else {
-												break
-											}
-
-											// Param: "name"
-											// Leaf parameter
-											args["name"] = elem
-
-											// Leaf: WatchFlowcontrolApiserverV1beta1PriorityLevelConfiguration
-											s.handleWatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationRequest(args, w, r)
 											return
 										}
 									case 'p': // Prefix: "prioritylevelconfigurations"
@@ -6292,20 +5171,6 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											// Leaf: WatchFlowcontrolApiserverV1beta2FlowSchema
 											s.handleWatchFlowcontrolApiserverV1beta2FlowSchemaRequest(args, w, r)
 											return
-										case 'p': // Prefix: "prioritylevelconfigurations/"
-											if prefix := "prioritylevelconfigurations/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-												elem = elem[len(prefix):]
-											} else {
-												break
-											}
-
-											// Param: "name"
-											// Leaf parameter
-											args["name"] = elem
-
-											// Leaf: WatchFlowcontrolApiserverV1beta2PriorityLevelConfiguration
-											s.handleWatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationRequest(args, w, r)
-											return
 										}
 									case 'p': // Prefix: "prioritylevelconfigurations"
 										if prefix := "prioritylevelconfigurations"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
@@ -6459,16 +5324,6 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								return
 							}
 							switch elem[0] {
-							case 'o': // Prefix: "ode.k8s.io/"
-								if prefix := "ode.k8s.io/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-									elem = elem[len(prefix):]
-								} else {
-									break
-								}
-
-								// Leaf: GetNodeAPIGroup
-								s.handleGetNodeAPIGroupRequest(args, w, r)
-								return
 							case 'v': // Prefix: "v1/"
 								if prefix := "v1/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
 									elem = elem[len(prefix):]
@@ -6519,16 +5374,6 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											// Leaf: ReadNetworkingV1IngressClass
 											s.handleReadNetworkingV1IngressClassRequest(args, w, r)
 											return
-										case 'e': // Prefix: "es"
-											if prefix := "es"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-												elem = elem[len(prefix):]
-											} else {
-												break
-											}
-
-											// Leaf: ListNetworkingV1IngressForAllNamespaces
-											s.handleListNetworkingV1IngressForAllNamespacesRequest(args, w, r)
-											return
 										}
 									case 'e': // Prefix: "es"
 										if prefix := "es"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
@@ -6560,21 +5405,6 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											break
 										}
 
-										if len(elem) == 0 {
-											break
-										}
-										switch elem[0] {
-										case 'e': // Prefix: "etworkpolicies"
-											if prefix := "etworkpolicies"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-												elem = elem[len(prefix):]
-											} else {
-												break
-											}
-
-											// Leaf: ListNetworkingV1NetworkPolicyForAllNamespaces
-											s.handleListNetworkingV1NetworkPolicyForAllNamespacesRequest(args, w, r)
-											return
-										}
 										// Param: "namespace"
 										// Match until one of "/"
 										idx := strings.IndexAny(elem, "/")
@@ -6641,16 +5471,6 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																return
 															}
 														}
-													case 'n': // Prefix: "networkpolicies"
-														if prefix := "networkpolicies"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-															elem = elem[len(prefix):]
-														} else {
-															break
-														}
-
-														// Leaf: ListNetworkingV1NamespacedNetworkPolicy
-														s.handleListNetworkingV1NamespacedNetworkPolicyRequest(args, w, r)
-														return
 													}
 												case 'n': // Prefix: "networkpolicies"
 													if prefix := "networkpolicies"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
@@ -6743,16 +5563,6 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												// Leaf: WatchNetworkingV1IngressClass
 												s.handleWatchNetworkingV1IngressClassRequest(args, w, r)
 												return
-											case 'e': // Prefix: "es"
-												if prefix := "es"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-													elem = elem[len(prefix):]
-												} else {
-													break
-												}
-
-												// Leaf: WatchNetworkingV1IngressListForAllNamespaces
-												s.handleWatchNetworkingV1IngressListForAllNamespacesRequest(args, w, r)
-												return
 											}
 										case 'e': // Prefix: "es"
 											if prefix := "es"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
@@ -6764,40 +5574,6 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											// Leaf: WatchNetworkingV1IngressListForAllNamespaces
 											s.handleWatchNetworkingV1IngressListForAllNamespacesRequest(args, w, r)
 											return
-										case 'n': // Prefix: "namespaces/"
-											if prefix := "namespaces/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-												elem = elem[len(prefix):]
-											} else {
-												break
-											}
-
-											// Param: "namespace"
-											// Match until one of "/"
-											idx := strings.IndexAny(elem, "/")
-											if idx > 0 {
-												args["namespace"] = elem[:idx]
-												elem = elem[idx:]
-
-												if len(elem) == 0 {
-													break
-												}
-												switch elem[0] {
-												case '/': // Prefix: "/ingresses/"
-													if prefix := "/ingresses/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-														elem = elem[len(prefix):]
-													} else {
-														break
-													}
-
-													// Param: "name"
-													// Leaf parameter
-													args["name"] = elem
-
-													// Leaf: WatchNetworkingV1NamespacedIngress
-													s.handleWatchNetworkingV1NamespacedIngressRequest(args, w, r)
-													return
-												}
-											}
 										}
 									case 'n': // Prefix: "n"
 										if prefix := "n"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
@@ -6818,21 +5594,6 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												break
 											}
 
-											if len(elem) == 0 {
-												break
-											}
-											switch elem[0] {
-											case 'e': // Prefix: "etworkpolicies"
-												if prefix := "etworkpolicies"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-													elem = elem[len(prefix):]
-												} else {
-													break
-												}
-
-												// Leaf: WatchNetworkingV1NetworkPolicyListForAllNamespaces
-												s.handleWatchNetworkingV1NetworkPolicyListForAllNamespacesRequest(args, w, r)
-												return
-											}
 											// Param: "namespace"
 											// Match until one of "/"
 											idx := strings.IndexAny(elem, "/")
@@ -6881,20 +5642,6 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 															// Leaf: WatchNetworkingV1NamespacedIngress
 															s.handleWatchNetworkingV1NamespacedIngressRequest(args, w, r)
-															return
-														case 'n': // Prefix: "networkpolicies/"
-															if prefix := "networkpolicies/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																elem = elem[len(prefix):]
-															} else {
-																break
-															}
-
-															// Param: "name"
-															// Leaf parameter
-															args["name"] = elem
-
-															// Leaf: WatchNetworkingV1NamespacedNetworkPolicy
-															s.handleWatchNetworkingV1NamespacedNetworkPolicyRequest(args, w, r)
 															return
 														}
 													case 'n': // Prefix: "networkpolicies"
@@ -6977,16 +5724,6 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										return
 									}
 									switch elem[0] {
-									case 'a': // Prefix: "alpha1/"
-										if prefix := "alpha1/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-											elem = elem[len(prefix):]
-										} else {
-											break
-										}
-
-										// Leaf: GetNodeV1alpha1APIResources
-										s.handleGetNodeV1alpha1APIResourcesRequest(args, w, r)
-										return
 									case 'r': // Prefix: "runtimeclasses"
 										if prefix := "runtimeclasses"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
 											elem = elem[len(prefix):]
@@ -7215,16 +5952,6 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									return
 								}
 								switch elem[0] {
-								case 'b': // Prefix: "beta1/"
-									if prefix := "beta1/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-										elem = elem[len(prefix):]
-									} else {
-										break
-									}
-
-									// Leaf: GetPolicyV1beta1APIResources
-									s.handleGetPolicyV1beta1APIResourcesRequest(args, w, r)
-									return
 								case 'n': // Prefix: "namespaces/"
 									if prefix := "namespaces/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
 										elem = elem[len(prefix):]
@@ -7318,21 +6045,6 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											break
 										}
 
-										if len(elem) == 0 {
-											break
-										}
-										switch elem[0] {
-										case 'p': // Prefix: "poddisruptionbudgets"
-											if prefix := "poddisruptionbudgets"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-												elem = elem[len(prefix):]
-											} else {
-												break
-											}
-
-											// Leaf: WatchPolicyV1PodDisruptionBudgetListForAllNamespaces
-											s.handleWatchPolicyV1PodDisruptionBudgetListForAllNamespacesRequest(args, w, r)
-											return
-										}
 										// Param: "namespace"
 										// Match until one of "/"
 										idx := strings.IndexAny(elem, "/")
@@ -7480,22 +6192,9 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											break
 										}
 
-										if len(elem) == 0 {
-											s.handleListPolicyV1beta1PodDisruptionBudgetForAllNamespacesRequest(args, w, r)
-											return
-										}
-										switch elem[0] {
-										case 's': // Prefix: "securitypolicies"
-											if prefix := "securitypolicies"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-												elem = elem[len(prefix):]
-											} else {
-												break
-											}
-
-											// Leaf: ListPolicyV1beta1PodSecurityPolicy
-											s.handleListPolicyV1beta1PodSecurityPolicyRequest(args, w, r)
-											return
-										}
+										// Leaf: ListPolicyV1beta1PodDisruptionBudgetForAllNamespaces
+										s.handleListPolicyV1beta1PodDisruptionBudgetForAllNamespacesRequest(args, w, r)
+										return
 									case 's': // Prefix: "securitypolicies"
 										if prefix := "securitypolicies"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
 											elem = elem[len(prefix):]
@@ -7543,21 +6242,6 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											break
 										}
 
-										if len(elem) == 0 {
-											break
-										}
-										switch elem[0] {
-										case 'p': // Prefix: "poddisruptionbudgets"
-											if prefix := "poddisruptionbudgets"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-												elem = elem[len(prefix):]
-											} else {
-												break
-											}
-
-											// Leaf: WatchPolicyV1beta1PodDisruptionBudgetListForAllNamespaces
-											s.handleWatchPolicyV1beta1PodDisruptionBudgetListForAllNamespacesRequest(args, w, r)
-											return
-										}
 										// Param: "namespace"
 										// Match until one of "/"
 										idx := strings.IndexAny(elem, "/")
@@ -7617,26 +6301,9 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												break
 											}
 
-											if len(elem) == 0 {
-												s.handleWatchPolicyV1beta1PodDisruptionBudgetListForAllNamespacesRequest(args, w, r)
-												return
-											}
-											switch elem[0] {
-											case 's': // Prefix: "securitypolicies/"
-												if prefix := "securitypolicies/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-													elem = elem[len(prefix):]
-												} else {
-													break
-												}
-
-												// Param: "name"
-												// Leaf parameter
-												args["name"] = elem
-
-												// Leaf: WatchPolicyV1beta1PodSecurityPolicy
-												s.handleWatchPolicyV1beta1PodSecurityPolicyRequest(args, w, r)
-												return
-											}
+											// Leaf: WatchPolicyV1beta1PodDisruptionBudgetListForAllNamespaces
+											s.handleWatchPolicyV1beta1PodDisruptionBudgetListForAllNamespacesRequest(args, w, r)
+											return
 										case 's': // Prefix: "securitypolicies"
 											if prefix := "securitypolicies"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
 												elem = elem[len(prefix):]
@@ -7758,16 +6425,6 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										// Leaf: ReadRbacAuthorizationV1ClusterRole
 										s.handleReadRbacAuthorizationV1ClusterRoleRequest(args, w, r)
 										return
-									case 'b': // Prefix: "bindings"
-										if prefix := "bindings"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-											elem = elem[len(prefix):]
-										} else {
-											break
-										}
-
-										// Leaf: ListRbacAuthorizationV1ClusterRoleBinding
-										s.handleListRbacAuthorizationV1ClusterRoleBindingRequest(args, w, r)
-										return
 									}
 								}
 							case 'n': // Prefix: "namespaces/"
@@ -7853,16 +6510,6 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												// Leaf: ReadRbacAuthorizationV1NamespacedRole
 												s.handleReadRbacAuthorizationV1NamespacedRoleRequest(args, w, r)
 												return
-											case 'b': // Prefix: "bindings"
-												if prefix := "bindings"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-													elem = elem[len(prefix):]
-												} else {
-													break
-												}
-
-												// Leaf: ListRbacAuthorizationV1NamespacedRoleBinding
-												s.handleListRbacAuthorizationV1NamespacedRoleBindingRequest(args, w, r)
-												return
 											}
 										}
 									}
@@ -7886,22 +6533,9 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										break
 									}
 
-									if len(elem) == 0 {
-										s.handleListRbacAuthorizationV1RoleBindingForAllNamespacesRequest(args, w, r)
-										return
-									}
-									switch elem[0] {
-									case 's': // Prefix: "s"
-										if prefix := "s"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-											elem = elem[len(prefix):]
-										} else {
-											break
-										}
-
-										// Leaf: ListRbacAuthorizationV1RoleForAllNamespaces
-										s.handleListRbacAuthorizationV1RoleForAllNamespacesRequest(args, w, r)
-										return
-									}
+									// Leaf: ListRbacAuthorizationV1RoleBindingForAllNamespaces
+									s.handleListRbacAuthorizationV1RoleBindingForAllNamespacesRequest(args, w, r)
+									return
 								case 's': // Prefix: "s"
 									if prefix := "s"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
 										elem = elem[len(prefix):]
@@ -7964,40 +6598,6 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											s.handleWatchRbacAuthorizationV1ClusterRoleBindingRequest(args, w, r)
 											return
 										}
-									case 'n': // Prefix: "namespaces/"
-										if prefix := "namespaces/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-											elem = elem[len(prefix):]
-										} else {
-											break
-										}
-
-										// Param: "namespace"
-										// Match until one of "/"
-										idx := strings.IndexAny(elem, "/")
-										if idx > 0 {
-											args["namespace"] = elem[:idx]
-											elem = elem[idx:]
-
-											if len(elem) == 0 {
-												break
-											}
-											switch elem[0] {
-											case '/': // Prefix: "/roles/"
-												if prefix := "/roles/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-													elem = elem[len(prefix):]
-												} else {
-													break
-												}
-
-												// Param: "name"
-												// Leaf parameter
-												args["name"] = elem
-
-												// Leaf: WatchRbacAuthorizationV1NamespacedRole
-												s.handleWatchRbacAuthorizationV1NamespacedRoleRequest(args, w, r)
-												return
-											}
-										}
 									case 's': // Prefix: "s"
 										if prefix := "s"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
 											elem = elem[len(prefix):]
@@ -8017,25 +6617,6 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												break
 											}
 
-											if len(elem) == 0 {
-												break
-											}
-											switch elem[0] {
-											case 'b': // Prefix: "bindings/"
-												if prefix := "bindings/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-													elem = elem[len(prefix):]
-												} else {
-													break
-												}
-
-												// Param: "name"
-												// Leaf parameter
-												args["name"] = elem
-
-												// Leaf: WatchRbacAuthorizationV1ClusterRoleBinding
-												s.handleWatchRbacAuthorizationV1ClusterRoleBindingRequest(args, w, r)
-												return
-											}
 											// Param: "name"
 											// Leaf parameter
 											args["name"] = elem
@@ -8121,25 +6702,6 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														break
 													}
 
-													if len(elem) == 0 {
-														break
-													}
-													switch elem[0] {
-													case 'b': // Prefix: "bindings/"
-														if prefix := "bindings/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-															elem = elem[len(prefix):]
-														} else {
-															break
-														}
-
-														// Param: "name"
-														// Leaf parameter
-														args["name"] = elem
-
-														// Leaf: WatchRbacAuthorizationV1NamespacedRoleBinding
-														s.handleWatchRbacAuthorizationV1NamespacedRoleBindingRequest(args, w, r)
-														return
-													}
 													// Param: "name"
 													// Leaf parameter
 													args["name"] = elem
@@ -8170,22 +6732,9 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											break
 										}
 
-										if len(elem) == 0 {
-											s.handleWatchRbacAuthorizationV1RoleBindingListForAllNamespacesRequest(args, w, r)
-											return
-										}
-										switch elem[0] {
-										case 's': // Prefix: "s"
-											if prefix := "s"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-												elem = elem[len(prefix):]
-											} else {
-												break
-											}
-
-											// Leaf: WatchRbacAuthorizationV1RoleListForAllNamespaces
-											s.handleWatchRbacAuthorizationV1RoleListForAllNamespacesRequest(args, w, r)
-											return
-										}
+										// Leaf: WatchRbacAuthorizationV1RoleBindingListForAllNamespaces
+										s.handleWatchRbacAuthorizationV1RoleBindingListForAllNamespacesRequest(args, w, r)
+										return
 									case 's': // Prefix: "s"
 										if prefix := "s"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
 											elem = elem[len(prefix):]
@@ -8224,16 +6773,6 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								return
 							}
 							switch elem[0] {
-							case 't': // Prefix: "torage.k8s.io/"
-								if prefix := "torage.k8s.io/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-									elem = elem[len(prefix):]
-								} else {
-									break
-								}
-
-								// Leaf: GetStorageAPIGroup
-								s.handleGetStorageAPIGroupRequest(args, w, r)
-								return
 							case 'v': // Prefix: "v1/"
 								if prefix := "v1/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
 									elem = elem[len(prefix):]
@@ -8338,16 +6877,6 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										return
 									}
 									switch elem[0] {
-									case 'a': // Prefix: "alpha1/"
-										if prefix := "alpha1/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-											elem = elem[len(prefix):]
-										} else {
-											break
-										}
-
-										// Leaf: GetStorageV1alpha1APIResources
-										s.handleGetStorageV1alpha1APIResourcesRequest(args, w, r)
-										return
 									case 'c': // Prefix: "csi"
 										if prefix := "csi"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
 											elem = elem[len(prefix):]
@@ -8385,16 +6914,6 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 												// Leaf: ReadStorageV1CSIDriver
 												s.handleReadStorageV1CSIDriverRequest(args, w, r)
-												return
-											case 'n': // Prefix: "nodes"
-												if prefix := "nodes"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-													elem = elem[len(prefix):]
-												} else {
-													break
-												}
-
-												// Leaf: ListStorageV1CSINode
-												s.handleListStorageV1CSINodeRequest(args, w, r)
 												return
 											}
 										case 'n': // Prefix: "nodes"
@@ -8546,20 +7065,6 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													// Leaf: WatchStorageV1CSIDriver
 													s.handleWatchStorageV1CSIDriverRequest(args, w, r)
 													return
-												case 'n': // Prefix: "nodes/"
-													if prefix := "nodes/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-														elem = elem[len(prefix):]
-													} else {
-														break
-													}
-
-													// Param: "name"
-													// Leaf parameter
-													args["name"] = elem
-
-													// Leaf: WatchStorageV1CSINode
-													s.handleWatchStorageV1CSINodeRequest(args, w, r)
-													return
 												}
 											case 'n': // Prefix: "nodes"
 												if prefix := "nodes"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
@@ -8588,20 +7093,6 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													s.handleWatchStorageV1CSINodeRequest(args, w, r)
 													return
 												}
-											case 's': // Prefix: "storageclasses/"
-												if prefix := "storageclasses/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-													elem = elem[len(prefix):]
-												} else {
-													break
-												}
-
-												// Param: "name"
-												// Leaf parameter
-												args["name"] = elem
-
-												// Leaf: WatchStorageV1StorageClass
-												s.handleWatchStorageV1StorageClassRequest(args, w, r)
-												return
 											}
 										case 's': // Prefix: "storageclasses"
 											if prefix := "storageclasses"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
@@ -8747,46 +7238,9 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												break
 											}
 
-											if len(elem) == 0 {
-												s.handleWatchStorageV1alpha1CSIStorageCapacityListForAllNamespacesRequest(args, w, r)
-												return
-											}
-											switch elem[0] {
-											case 'n': // Prefix: "namespaces/"
-												if prefix := "namespaces/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-													elem = elem[len(prefix):]
-												} else {
-													break
-												}
-
-												// Param: "namespace"
-												// Match until one of "/"
-												idx := strings.IndexAny(elem, "/")
-												if idx > 0 {
-													args["namespace"] = elem[:idx]
-													elem = elem[idx:]
-
-													if len(elem) == 0 {
-														break
-													}
-													switch elem[0] {
-													case '/': // Prefix: "/csistoragecapacities/"
-														if prefix := "/csistoragecapacities/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-															elem = elem[len(prefix):]
-														} else {
-															break
-														}
-
-														// Param: "name"
-														// Leaf parameter
-														args["name"] = elem
-
-														// Leaf: WatchStorageV1alpha1NamespacedCSIStorageCapacity
-														s.handleWatchStorageV1alpha1NamespacedCSIStorageCapacityRequest(args, w, r)
-														return
-													}
-												}
-											}
+											// Leaf: WatchStorageV1alpha1CSIStorageCapacityListForAllNamespaces
+											s.handleWatchStorageV1alpha1CSIStorageCapacityListForAllNamespacesRequest(args, w, r)
+											return
 										case 'n': // Prefix: "namespaces/"
 											if prefix := "namespaces/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
 												elem = elem[len(prefix):]
@@ -8924,46 +7378,9 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												break
 											}
 
-											if len(elem) == 0 {
-												s.handleWatchStorageV1beta1CSIStorageCapacityListForAllNamespacesRequest(args, w, r)
-												return
-											}
-											switch elem[0] {
-											case 'n': // Prefix: "namespaces/"
-												if prefix := "namespaces/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-													elem = elem[len(prefix):]
-												} else {
-													break
-												}
-
-												// Param: "namespace"
-												// Match until one of "/"
-												idx := strings.IndexAny(elem, "/")
-												if idx > 0 {
-													args["namespace"] = elem[:idx]
-													elem = elem[idx:]
-
-													if len(elem) == 0 {
-														break
-													}
-													switch elem[0] {
-													case '/': // Prefix: "/csistoragecapacities/"
-														if prefix := "/csistoragecapacities/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-															elem = elem[len(prefix):]
-														} else {
-															break
-														}
-
-														// Param: "name"
-														// Leaf parameter
-														args["name"] = elem
-
-														// Leaf: WatchStorageV1beta1NamespacedCSIStorageCapacity
-														s.handleWatchStorageV1beta1NamespacedCSIStorageCapacityRequest(args, w, r)
-														return
-													}
-												}
-											}
+											// Leaf: WatchStorageV1beta1CSIStorageCapacityListForAllNamespaces
+											s.handleWatchStorageV1beta1CSIStorageCapacityListForAllNamespacesRequest(args, w, r)
+											return
 										case 'n': // Prefix: "namespaces/"
 											if prefix := "namespaces/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
 												elem = elem[len(prefix):]
@@ -9016,16 +7433,6 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								}
 							}
 						}
-					case 'v': // Prefix: "version/"
-						if prefix := "version/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-							elem = elem[len(prefix):]
-						} else {
-							break
-						}
-
-						// Leaf: GetCodeVersion
-						s.handleGetCodeVersionRequest(args, w, r)
-						return
 					}
 				}
 			case 'l': // Prefix: "logs/"

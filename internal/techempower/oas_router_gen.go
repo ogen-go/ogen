@@ -102,22 +102,9 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					break
 				}
 
-				if len(elem) == 0 {
-					s.handleCachingRequest(args, w, r)
-					return
-				}
-				switch elem[0] {
-				case 'd': // Prefix: "db"
-					if prefix := "db"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-						elem = elem[len(prefix):]
-					} else {
-						break
-					}
-
-					// Leaf: DB
-					s.handleDBRequest(args, w, r)
-					return
-				}
+				// Leaf: Caching
+				s.handleCachingRequest(args, w, r)
+				return
 			case 'd': // Prefix: "db"
 				if prefix := "db"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
 					elem = elem[len(prefix):]

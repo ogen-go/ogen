@@ -78,101 +78,6 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 	args := map[string]string{}
 	// Static code generated router with unwrapped path search.
 	switch r.Method {
-	case "POST":
-		if len(elem) == 0 {
-			break
-		}
-		switch elem[0] {
-		case '/': // Prefix: "/pets"
-			if prefix := "/pets"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-				elem = elem[len(prefix):]
-			} else {
-				break
-			}
-
-			if len(elem) == 0 {
-				s.handleCreatePetRequest(args, w, r)
-				return
-			}
-			switch elem[0] {
-			case '/': // Prefix: "/"
-				if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-					elem = elem[len(prefix):]
-				} else {
-					break
-				}
-
-				// Param: "id"
-				// Match until one of "/"
-				idx := strings.IndexAny(elem, "/")
-				if idx > 0 {
-					args["id"] = elem[:idx]
-					elem = elem[idx:]
-
-					if len(elem) == 0 {
-						break
-					}
-					switch elem[0] {
-					case '/': // Prefix: "/"
-						if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-							elem = elem[len(prefix):]
-						} else {
-							break
-						}
-
-						if len(elem) == 0 {
-							s.handleCreatePetFriendsRequest(args, w, r)
-							return
-						}
-						switch elem[0] {
-						case 'c': // Prefix: "categories"
-							if prefix := "categories"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-								elem = elem[len(prefix):]
-							} else {
-								break
-							}
-
-							if len(elem) == 0 {
-								s.handleCreatePetCategoriesRequest(args, w, r)
-								return
-							}
-							switch elem[0] {
-							case 'f': // Prefix: "friends"
-								if prefix := "friends"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-									elem = elem[len(prefix):]
-								} else {
-									break
-								}
-
-								// Leaf: CreatePetFriends
-								s.handleCreatePetFriendsRequest(args, w, r)
-								return
-							}
-						case 'f': // Prefix: "friends"
-							if prefix := "friends"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-								elem = elem[len(prefix):]
-							} else {
-								break
-							}
-
-							// Leaf: CreatePetFriends
-							s.handleCreatePetFriendsRequest(args, w, r)
-							return
-						case 'o': // Prefix: "owner"
-							if prefix := "owner"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-								elem = elem[len(prefix):]
-							} else {
-								break
-							}
-
-							// Leaf: CreatePetOwner
-							s.handleCreatePetOwnerRequest(args, w, r)
-							return
-						}
-					}
-				}
-			}
-		}
 	case "DELETE":
 		if len(elem) == 0 {
 			break
@@ -265,22 +170,9 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								break
 							}
 
-							if len(elem) == 0 {
-								s.handleListPetCategoriesRequest(args, w, r)
-								return
-							}
-							switch elem[0] {
-							case 'f': // Prefix: "friends"
-								if prefix := "friends"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-									elem = elem[len(prefix):]
-								} else {
-									break
-								}
-
-								// Leaf: ListPetFriends
-								s.handleListPetFriendsRequest(args, w, r)
-								return
-							}
+							// Leaf: ListPetCategories
+							s.handleListPetCategoriesRequest(args, w, r)
+							return
 						case 'f': // Prefix: "friends"
 							if prefix := "friends"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
 								elem = elem[len(prefix):]
@@ -325,6 +217,88 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 			// Leaf: UpdatePet
 			s.handleUpdatePetRequest(args, w, r)
 			return
+		}
+	case "POST":
+		if len(elem) == 0 {
+			break
+		}
+		switch elem[0] {
+		case '/': // Prefix: "/pets"
+			if prefix := "/pets"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+				elem = elem[len(prefix):]
+			} else {
+				break
+			}
+
+			if len(elem) == 0 {
+				s.handleCreatePetRequest(args, w, r)
+				return
+			}
+			switch elem[0] {
+			case '/': // Prefix: "/"
+				if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+					elem = elem[len(prefix):]
+				} else {
+					break
+				}
+
+				// Param: "id"
+				// Match until one of "/"
+				idx := strings.IndexAny(elem, "/")
+				if idx > 0 {
+					args["id"] = elem[:idx]
+					elem = elem[idx:]
+
+					if len(elem) == 0 {
+						break
+					}
+					switch elem[0] {
+					case '/': // Prefix: "/"
+						if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+							elem = elem[len(prefix):]
+						} else {
+							break
+						}
+
+						if len(elem) == 0 {
+							s.handleCreatePetFriendsRequest(args, w, r)
+							return
+						}
+						switch elem[0] {
+						case 'c': // Prefix: "categories"
+							if prefix := "categories"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+								elem = elem[len(prefix):]
+							} else {
+								break
+							}
+
+							// Leaf: CreatePetCategories
+							s.handleCreatePetCategoriesRequest(args, w, r)
+							return
+						case 'f': // Prefix: "friends"
+							if prefix := "friends"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+								elem = elem[len(prefix):]
+							} else {
+								break
+							}
+
+							// Leaf: CreatePetFriends
+							s.handleCreatePetFriendsRequest(args, w, r)
+							return
+						case 'o': // Prefix: "owner"
+							if prefix := "owner"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+								elem = elem[len(prefix):]
+							} else {
+								break
+							}
+
+							// Leaf: CreatePetOwner
+							s.handleCreatePetOwnerRequest(args, w, r)
+							return
+						}
+					}
+				}
+			}
 		}
 	}
 	s.notFound(w, r)

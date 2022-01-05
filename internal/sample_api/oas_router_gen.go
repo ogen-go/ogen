@@ -102,22 +102,9 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					break
 				}
 
-				if len(elem) == 0 {
-					s.handleErrorGetRequest(args, w, r)
-					return
-				}
-				switch elem[0] {
-				case 'f': // Prefix: "foobar"
-					if prefix := "foobar"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-						elem = elem[len(prefix):]
-					} else {
-						break
-					}
-
-					// Leaf: FoobarGet
-					s.handleFoobarGetRequest(args, w, r)
-					return
-				}
+				// Leaf: ErrorGet
+				s.handleErrorGetRequest(args, w, r)
+				return
 			case 'f': // Prefix: "foobar"
 				if prefix := "foobar"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
 					elem = elem[len(prefix):]
@@ -169,21 +156,6 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							break
 						}
 
-						if len(elem) == 0 {
-							break
-						}
-						switch elem[0] {
-						case 'a': // Prefix: "avatar"
-							if prefix := "avatar"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-								elem = elem[len(prefix):]
-							} else {
-								break
-							}
-
-							// Leaf: PetGetAvatarByID
-							s.handlePetGetAvatarByIDRequest(args, w, r)
-							return
-						}
 						// Param: "id"
 						// Leaf parameter
 						args["id"] = elem
@@ -250,22 +222,9 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					break
 				}
 
-				if len(elem) == 0 {
-					s.handleFoobarPostRequest(args, w, r)
-					return
-				}
-				switch elem[0] {
-				case 'p': // Prefix: "pet"
-					if prefix := "pet"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-						elem = elem[len(prefix):]
-					} else {
-						break
-					}
-
-					// Leaf: PetCreate
-					s.handlePetCreateRequest(args, w, r)
-					return
-				}
+				// Leaf: FoobarPost
+				s.handleFoobarPostRequest(args, w, r)
+				return
 			case 'p': // Prefix: "pet"
 				if prefix := "pet"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
 					elem = elem[len(prefix):]
@@ -321,16 +280,6 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 							// Leaf: PetUpdateNameAliasPost
 							s.handlePetUpdateNameAliasPostRequest(args, w, r)
-							return
-						case 'a': // Prefix: "avatar"
-							if prefix := "avatar"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-								elem = elem[len(prefix):]
-							} else {
-								break
-							}
-
-							// Leaf: PetUploadAvatarByID
-							s.handlePetUploadAvatarByIDRequest(args, w, r)
 							return
 						}
 					}
