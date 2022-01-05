@@ -2,6 +2,7 @@ package gen
 
 import (
 	"fmt"
+	"sort"
 	"strings"
 
 	"github.com/go-faster/errors"
@@ -84,6 +85,12 @@ func (g *Generator) route() error {
 		}); err != nil {
 			return errors.Wrapf(err, "add route %q", op.Name)
 		}
+	}
+	{
+		m := g.router.Methods
+		sort.SliceStable(m, func(i, j int) bool {
+			return m[i].Method < m[j].Method
+		})
 	}
 
 	if g.opt.VerboseRoute {
