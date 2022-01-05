@@ -60,7 +60,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 			// Param: {{ printf "%q" $c.ParamName }}
 			{{- with $tails := $c.Tails }}
 			// Match until one of {{ printf "%q" $tails }}
+			{{- if eq (len $tails) 1 }}
+			idx := strings.IndexByte(elem, {{ printf "%q" (index $tails 0) }})
+			{{- else }}
 			idx := strings.IndexAny(elem, {{ printf "%q" $tails }})
+			{{- end }}
 			if idx > 0 {
 				args[{{ printf "%q" $c.ParamName }}] = elem[:idx]
 				elem = elem[idx:]
