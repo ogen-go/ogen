@@ -66,159 +66,268 @@ func (s *Server) notFound(w http.ResponseWriter, r *http.Request) {
 	http.NotFound(w, r)
 }
 
-func skipSlash(p string) string {
-	if len(p) > 0 && p[0] == '/' {
-		return p[1:]
-	}
-	return p
-}
-
-// nextElem return next path element from p and forwarded p.
-func nextElem(p string) (elem, next string) {
-	p = skipSlash(p)
-	idx := strings.IndexByte(p, '/')
-	if idx < 0 {
-		idx = len(p)
-	}
-	return p[:idx], p[idx:]
-}
-
 // ServeHTTP serves http request as defined by OpenAPI v3 specification,
 // calling handler that matches the path or returning not found error.
 func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
-	p := r.URL.Path
-	if len(p) == 0 {
+	elem := r.URL.Path
+	if len(elem) == 0 {
 		s.notFound(w, r)
 		return
 	}
 
-	var (
-		elem string            // current element, without slashes
-		args map[string]string // lazily initialized
-	)
-
+	args := map[string]string{}
 	// Static code generated router with unwrapped path search.
 	switch r.Method {
 	case "GET":
-		// Root edge.
-		elem, p = nextElem(p)
-		switch elem {
-		case "api": // -> 1
-			// Edge: 1, path: "api".
-			elem, p = nextElem(p)
-			switch elem {
-			case "gallery": // -> 2
-				// Edge: 2, path: "gallery".
-				elem, p = nextElem(p)
-				switch elem {
-				default:
-					if args == nil {
-						args = make(map[string]string)
+		if len(elem) == 0 {
+			break
+		}
+		switch elem[0] {
+		case '/': // Prefix: "/"
+			if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+				elem = elem[len(prefix):]
+			} else {
+				break
+			}
+
+			if len(elem) == 0 {
+				s.handleGetPageCoverImageRequest(args, w, r)
+				return
+			}
+			switch elem[0] {
+			case 'a': // Prefix: "api/galler"
+				if prefix := "api/galler"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+					elem = elem[len(prefix):]
+				} else {
+					break
+				}
+
+				if len(elem) == 0 {
+					s.handleSearchRequest(args, w, r)
+					return
+				}
+				switch elem[0] {
+				case 'i': // Prefix: "ies/"
+					if prefix := "ies/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+						elem = elem[len(prefix):]
+					} else {
+						break
 					}
+
+					if len(elem) == 0 {
+						s.handleSearchByTagIDRequest(args, w, r)
+						return
+					}
+					switch elem[0] {
+					case 's': // Prefix: "search"
+						if prefix := "search"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+							elem = elem[len(prefix):]
+						} else {
+							break
+						}
+
+						if len(elem) == 0 {
+							s.handleSearchRequest(args, w, r)
+							return
+						}
+						switch elem[0] {
+						case 't': // Prefix: "tagged"
+							if prefix := "tagged"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+								elem = elem[len(prefix):]
+							} else {
+								break
+							}
+
+							// Leaf: SearchByTagID
+							s.handleSearchByTagIDRequest(args, w, r)
+							return
+						}
+					case 't': // Prefix: "tagged"
+						if prefix := "tagged"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+							elem = elem[len(prefix):]
+						} else {
+							break
+						}
+
+						// Leaf: SearchByTagID
+						s.handleSearchByTagIDRequest(args, w, r)
+						return
+					}
+				case 'y': // Prefix: "y/"
+					if prefix := "y/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+						elem = elem[len(prefix):]
+					} else {
+						break
+					}
+
+					if len(elem) == 0 {
+						break
+					}
+					switch elem[0] {
+					case 'g': // Prefix: "galleries/"
+						if prefix := "galleries/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+							elem = elem[len(prefix):]
+						} else {
+							break
+						}
+
+						// Param: "media_id"
+						// Match until one of "/"
+						idx := strings.IndexAny(elem, "/")
+						if idx > 0 {
+							args["media_id"] = elem[:idx]
+							elem = elem[idx:]
+
+							if len(elem) == 0 {
+								break
+							}
+							switch elem[0] {
+							case '/': // Prefix: "/cover."
+								if prefix := "/cover."; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+									elem = elem[len(prefix):]
+								} else {
+									break
+								}
+
+								// Param: "format"
+								// Leaf parameter
+								args["format"] = elem
+
+								// Leaf: GetPageCoverImage
+								s.handleGetPageCoverImageRequest(args, w, r)
+								return
+							}
+						}
+					case 'i': // Prefix: "ies/search"
+						if prefix := "ies/search"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+							elem = elem[len(prefix):]
+						} else {
+							break
+						}
+
+						// Leaf: Search
+						s.handleSearchRequest(args, w, r)
+						return
+					}
+					// Param: "book_id"
+					// Leaf parameter
 					args["book_id"] = elem
-					// GET /api/gallery/{book_id}
+
+					// Leaf: GetBook
 					s.handleGetBookRequest(args, w, r)
 					return
 				}
-			case "galleries": // -> 14
-				// Edge: 14, path: "galleries".
-				elem, p = nextElem(p)
-				switch elem {
-				case "search": // -> 15
-					// GET /api/galleries/search
-					s.handleSearchRequest(args, w, r)
-					return
-				case "tagged": // -> 16
-					// GET /api/galleries/tagged
-					s.handleSearchByTagIDRequest(args, w, r)
-					return
-				default:
-					s.notFound(w, r)
-					return
+			case 'g': // Prefix: "galleries/"
+				if prefix := "galleries/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+					elem = elem[len(prefix):]
+				} else {
+					break
 				}
-			default:
-				s.notFound(w, r)
-				return
-			}
-		case "galleries": // -> 4
-			// Edge: 4, path: "galleries".
-			elem, p = nextElem(p)
-			switch elem {
-			default:
-				if args == nil {
-					args = make(map[string]string)
-				}
-				args["media_id"] = elem
-				// Edge: 5, path: "".
-				elem, p = nextElem(p)
-				switch elem {
-				case "cover.": // -> 6
-					// Edge: 6, path: "cover.".
-					elem, p = nextElem(p)
-					switch elem {
-					default:
-						if args == nil {
-							args = make(map[string]string)
-						}
-						args["format"] = elem
-						// GET /galleries/{media_id}/cover.{format}
-						s.handleGetPageCoverImageRequest(args, w, r)
-						return
+
+				// Param: "media_id"
+				// Match until one of "/"
+				idx := strings.IndexAny(elem, "/")
+				if idx > 0 {
+					args["media_id"] = elem[:idx]
+					elem = elem[idx:]
+
+					if len(elem) == 0 {
+						break
 					}
-				case "": // -> 8
-					// Edge: 8, path: "".
-					elem, p = nextElem(p)
-					switch elem {
-					default:
-						if args == nil {
-							args = make(map[string]string)
+					switch elem[0] {
+					case '/': // Prefix: "/"
+						if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+							elem = elem[len(prefix):]
+						} else {
+							break
 						}
-						args["page"] = elem
-						// Edge: 9, path: "".
-						elem, p = nextElem(p)
-						switch elem {
-						case ".": // -> 10
-							// Edge: 10, path: ".".
-							elem, p = nextElem(p)
-							switch elem {
-							default:
-								if args == nil {
-									args = make(map[string]string)
+
+						if len(elem) == 0 {
+							s.handleGetPageImageRequest(args, w, r)
+							return
+						}
+						switch elem[0] {
+						case 'c': // Prefix: "cover."
+							if prefix := "cover."; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+								elem = elem[len(prefix):]
+							} else {
+								break
+							}
+
+							// Param: "format"
+							// Match until one of "."
+							idx := strings.IndexAny(elem, ".")
+							if idx > 0 {
+								args["format"] = elem[:idx]
+								elem = elem[idx:]
+
+								if len(elem) == 0 {
+									s.handleGetPageCoverImageRequest(args, w, r)
+									return
 								}
+								switch elem[0] {
+								case '.': // Prefix: "."
+									if prefix := "."; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+										elem = elem[len(prefix):]
+									} else {
+										break
+									}
+
+									// Param: "format"
+									// Leaf parameter
+									args["format"] = elem
+
+									// Leaf: GetPageImage
+									s.handleGetPageImageRequest(args, w, r)
+									return
+								}
+							}
+						}
+						// Param: "page"
+						// Match until one of ".t"
+						idx := strings.IndexAny(elem, ".t")
+						if idx > 0 {
+							args["page"] = elem[:idx]
+							elem = elem[idx:]
+
+							if len(elem) == 0 {
+								break
+							}
+							switch elem[0] {
+							case '.': // Prefix: "."
+								if prefix := "."; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+									elem = elem[len(prefix):]
+								} else {
+									break
+								}
+
+								// Param: "format"
+								// Leaf parameter
 								args["format"] = elem
-								// GET /galleries/{media_id}/{page}.{format}
+
+								// Leaf: GetPageImage
 								s.handleGetPageImageRequest(args, w, r)
 								return
-							}
-						case "t.": // -> 12
-							// Edge: 12, path: "t.".
-							elem, p = nextElem(p)
-							switch elem {
-							default:
-								if args == nil {
-									args = make(map[string]string)
+							case 't': // Prefix: "t."
+								if prefix := "t."; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+									elem = elem[len(prefix):]
+								} else {
+									break
 								}
+
+								// Param: "format"
+								// Leaf parameter
 								args["format"] = elem
-								// GET /galleries/{media_id}/{page}t.{format}
+
+								// Leaf: GetPageThumbnailImage
 								s.handleGetPageThumbnailImageRequest(args, w, r)
 								return
 							}
-						default:
-							s.notFound(w, r)
-							return
 						}
 					}
-				default:
-					s.notFound(w, r)
-					return
 				}
 			}
-		default:
-			s.notFound(w, r)
-			return
 		}
-	default:
-		s.notFound(w, r)
-		return
 	}
+	s.notFound(w, r)
 }

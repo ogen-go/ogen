@@ -66,4597 +66,8994 @@ func (s *Server) notFound(w http.ResponseWriter, r *http.Request) {
 	http.NotFound(w, r)
 }
 
-func skipSlash(p string) string {
-	if len(p) > 0 && p[0] == '/' {
-		return p[1:]
-	}
-	return p
-}
-
-// nextElem return next path element from p and forwarded p.
-func nextElem(p string) (elem, next string) {
-	p = skipSlash(p)
-	idx := strings.IndexByte(p, '/')
-	if idx < 0 {
-		idx = len(p)
-	}
-	return p[:idx], p[idx:]
-}
-
 // ServeHTTP serves http request as defined by OpenAPI v3 specification,
 // calling handler that matches the path or returning not found error.
 func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
-	p := r.URL.Path
-	if len(p) == 0 {
+	elem := r.URL.Path
+	if len(elem) == 0 {
 		s.notFound(w, r)
 		return
 	}
 
-	var (
-		elem string            // current element, without slashes
-		args map[string]string // lazily initialized
-	)
-
+	args := map[string]string{}
 	// Static code generated router with unwrapped path search.
 	switch r.Method {
 	case "GET":
-		// Root edge.
-		elem, p = nextElem(p)
-		switch elem {
-		case "apis": // -> 1
-			// Edge: 1, path: "apis".
-			elem, p = nextElem(p)
+		if len(elem) == 0 {
+			break
+		}
+		switch elem[0] {
+		case '/': // Prefix: "/"
+			if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+				elem = elem[len(prefix):]
+			} else {
+				break
+			}
+
 			if len(elem) == 0 {
-				// GET /apis/.
-				s.handleGetAPIVersionsRequest(args, w, r)
+				s.handleGetCodeVersionRequest(args, w, r)
 				return
 			}
-			switch elem {
-			case "admissionregistration.k8s.io": // -> 2
-				// Edge: 2, path: "admissionregistration.k8s.io".
-				elem, p = nextElem(p)
+			switch elem[0] {
+			case '.': // Prefix: ".well-known/openid-configuration/"
+				if prefix := ".well-known/openid-configuration/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+					elem = elem[len(prefix):]
+				} else {
+					break
+				}
+
+				// Leaf: GetServiceAccountIssuerOpenIDConfiguration
+				s.handleGetServiceAccountIssuerOpenIDConfigurationRequest(args, w, r)
+				return
+			case 'a': // Prefix: "api"
+				if prefix := "api"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+					elem = elem[len(prefix):]
+				} else {
+					break
+				}
+
 				if len(elem) == 0 {
-					// GET /apis/admissionregistration.k8s.io/.
-					s.handleGetAdmissionregistrationAPIGroupRequest(args, w, r)
+					s.handleGetCoreAPIVersionsRequest(args, w, r)
 					return
 				}
-				switch elem {
-				case "v1": // -> 3
-					// Edge: 3, path: "v1".
-					elem, p = nextElem(p)
+				switch elem[0] {
+				case '/': // Prefix: "/"
+					if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+						elem = elem[len(prefix):]
+					} else {
+						break
+					}
+
 					if len(elem) == 0 {
-						// GET /apis/admissionregistration.k8s.io/v1/.
-						s.handleGetAdmissionregistrationV1APIResourcesRequest(args, w, r)
+						s.handleGetCoreAPIVersionsRequest(args, w, r)
 						return
 					}
-					switch elem {
-					case "mutatingwebhookconfigurations": // -> 58
-						// Edge: 58, path: "mutatingwebhookconfigurations".
-						elem, p = nextElem(p)
+					switch elem[0] {
+					case 'v': // Prefix: "v1/"
+						if prefix := "v1/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+							elem = elem[len(prefix):]
+						} else {
+							break
+						}
+
 						if len(elem) == 0 {
-							// GET /apis/admissionregistration.k8s.io/v1/mutatingwebhookconfigurations.
-							s.handleListAdmissionregistrationV1MutatingWebhookConfigurationRequest(args, w, r)
+							s.handleGetCoreV1APIResourcesRequest(args, w, r)
 							return
 						}
-						switch elem {
-						default:
-							if args == nil {
-								args = make(map[string]string)
+						switch elem[0] {
+						case 'c': // Prefix: "co"
+							if prefix := "co"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+								elem = elem[len(prefix):]
+							} else {
+								break
 							}
-							args["name"] = elem
-							// GET /apis/admissionregistration.k8s.io/v1/mutatingwebhookconfigurations/{name}
-							s.handleReadAdmissionregistrationV1MutatingWebhookConfigurationRequest(args, w, r)
+
+							if len(elem) == 0 {
+								s.handleListCoreV1ConfigMapForAllNamespacesRequest(args, w, r)
+								return
+							}
+							switch elem[0] {
+							case 'm': // Prefix: "mponentstatuses"
+								if prefix := "mponentstatuses"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+									elem = elem[len(prefix):]
+								} else {
+									break
+								}
+
+								if len(elem) == 0 {
+									s.handleListCoreV1ComponentStatusRequest(args, w, r)
+									return
+								}
+								switch elem[0] {
+								case '/': // Prefix: "/"
+									if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+										elem = elem[len(prefix):]
+									} else {
+										break
+									}
+
+									// Param: "name"
+									// Leaf parameter
+									args["name"] = elem
+
+									// Leaf: ReadCoreV1ComponentStatus
+									s.handleReadCoreV1ComponentStatusRequest(args, w, r)
+									return
+								case 'n': // Prefix: "nfigmaps"
+									if prefix := "nfigmaps"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+										elem = elem[len(prefix):]
+									} else {
+										break
+									}
+
+									// Leaf: ListCoreV1ConfigMapForAllNamespaces
+									s.handleListCoreV1ConfigMapForAllNamespacesRequest(args, w, r)
+									return
+								}
+							case 'n': // Prefix: "nfigmaps"
+								if prefix := "nfigmaps"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+									elem = elem[len(prefix):]
+								} else {
+									break
+								}
+
+								// Leaf: ListCoreV1ConfigMapForAllNamespaces
+								s.handleListCoreV1ConfigMapForAllNamespacesRequest(args, w, r)
+								return
+							}
+						case 'e': // Prefix: "e"
+							if prefix := "e"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+								elem = elem[len(prefix):]
+							} else {
+								break
+							}
+
+							if len(elem) == 0 {
+								s.handleListCoreV1EventForAllNamespacesRequest(args, w, r)
+								return
+							}
+							switch elem[0] {
+							case 'n': // Prefix: "ndpoints"
+								if prefix := "ndpoints"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+									elem = elem[len(prefix):]
+								} else {
+									break
+								}
+
+								if len(elem) == 0 {
+									s.handleListCoreV1EndpointsForAllNamespacesRequest(args, w, r)
+									return
+								}
+								switch elem[0] {
+								case 'v': // Prefix: "vents"
+									if prefix := "vents"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+										elem = elem[len(prefix):]
+									} else {
+										break
+									}
+
+									// Leaf: ListCoreV1EventForAllNamespaces
+									s.handleListCoreV1EventForAllNamespacesRequest(args, w, r)
+									return
+								}
+							case 'v': // Prefix: "vents"
+								if prefix := "vents"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+									elem = elem[len(prefix):]
+								} else {
+									break
+								}
+
+								// Leaf: ListCoreV1EventForAllNamespaces
+								s.handleListCoreV1EventForAllNamespacesRequest(args, w, r)
+								return
+							}
+						case 'l': // Prefix: "limitranges"
+							if prefix := "limitranges"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+								elem = elem[len(prefix):]
+							} else {
+								break
+							}
+
+							// Leaf: ListCoreV1LimitRangeForAllNamespaces
+							s.handleListCoreV1LimitRangeForAllNamespacesRequest(args, w, r)
 							return
+						case 'n': // Prefix: "n"
+							if prefix := "n"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+								elem = elem[len(prefix):]
+							} else {
+								break
+							}
+
+							if len(elem) == 0 {
+								s.handleListCoreV1NodeRequest(args, w, r)
+								return
+							}
+							switch elem[0] {
+							case 'a': // Prefix: "amespaces"
+								if prefix := "amespaces"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+									elem = elem[len(prefix):]
+								} else {
+									break
+								}
+
+								if len(elem) == 0 {
+									s.handleListCoreV1NamespaceRequest(args, w, r)
+									return
+								}
+								switch elem[0] {
+								case '/': // Prefix: "/"
+									if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+										elem = elem[len(prefix):]
+									} else {
+										break
+									}
+
+									// Param: "namespace"
+									// Match until one of "/"
+									idx := strings.IndexAny(elem, "/")
+									if idx > 0 {
+										args["namespace"] = elem[:idx]
+										elem = elem[idx:]
+
+										if len(elem) == 0 {
+											s.handleReadCoreV1NamespaceRequest(args, w, r)
+											return
+										}
+										switch elem[0] {
+										case '/': // Prefix: "/"
+											if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+												elem = elem[len(prefix):]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												s.handleListCoreV1NamespacedEndpointsRequest(args, w, r)
+												return
+											}
+											switch elem[0] {
+											case 'c': // Prefix: "configmaps"
+												if prefix := "configmaps"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+													elem = elem[len(prefix):]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													s.handleListCoreV1NamespacedConfigMapRequest(args, w, r)
+													return
+												}
+												switch elem[0] {
+												case '/': // Prefix: "/"
+													if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+														elem = elem[len(prefix):]
+													} else {
+														break
+													}
+
+													// Param: "name"
+													// Leaf parameter
+													args["name"] = elem
+
+													// Leaf: ReadCoreV1NamespacedConfigMap
+													s.handleReadCoreV1NamespacedConfigMapRequest(args, w, r)
+													return
+												case 'e': // Prefix: "endpoints"
+													if prefix := "endpoints"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+														elem = elem[len(prefix):]
+													} else {
+														break
+													}
+
+													// Leaf: ListCoreV1NamespacedEndpoints
+													s.handleListCoreV1NamespacedEndpointsRequest(args, w, r)
+													return
+												}
+											case 'e': // Prefix: "e"
+												if prefix := "e"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+													elem = elem[len(prefix):]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													s.handleListCoreV1NamespacedEventRequest(args, w, r)
+													return
+												}
+												switch elem[0] {
+												case 'n': // Prefix: "ndpoints"
+													if prefix := "ndpoints"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+														elem = elem[len(prefix):]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														s.handleListCoreV1NamespacedEndpointsRequest(args, w, r)
+														return
+													}
+													switch elem[0] {
+													case '/': // Prefix: "/"
+														if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+															elem = elem[len(prefix):]
+														} else {
+															break
+														}
+
+														// Param: "name"
+														// Leaf parameter
+														args["name"] = elem
+
+														// Leaf: ReadCoreV1NamespacedEndpoints
+														s.handleReadCoreV1NamespacedEndpointsRequest(args, w, r)
+														return
+													case 'v': // Prefix: "vents"
+														if prefix := "vents"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+															elem = elem[len(prefix):]
+														} else {
+															break
+														}
+
+														// Leaf: ListCoreV1NamespacedEvent
+														s.handleListCoreV1NamespacedEventRequest(args, w, r)
+														return
+													}
+												case 'v': // Prefix: "vents"
+													if prefix := "vents"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+														elem = elem[len(prefix):]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														s.handleListCoreV1NamespacedEventRequest(args, w, r)
+														return
+													}
+													switch elem[0] {
+													case '/': // Prefix: "/"
+														if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+															elem = elem[len(prefix):]
+														} else {
+															break
+														}
+
+														// Param: "name"
+														// Leaf parameter
+														args["name"] = elem
+
+														// Leaf: ReadCoreV1NamespacedEvent
+														s.handleReadCoreV1NamespacedEventRequest(args, w, r)
+														return
+													}
+												}
+											case 'l': // Prefix: "limitranges"
+												if prefix := "limitranges"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+													elem = elem[len(prefix):]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													s.handleListCoreV1NamespacedLimitRangeRequest(args, w, r)
+													return
+												}
+												switch elem[0] {
+												case '/': // Prefix: "/"
+													if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+														elem = elem[len(prefix):]
+													} else {
+														break
+													}
+
+													// Param: "name"
+													// Leaf parameter
+													args["name"] = elem
+
+													// Leaf: ReadCoreV1NamespacedLimitRange
+													s.handleReadCoreV1NamespacedLimitRangeRequest(args, w, r)
+													return
+												}
+											case 'p': // Prefix: "p"
+												if prefix := "p"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+													elem = elem[len(prefix):]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													s.handleListCoreV1NamespacedPodRequest(args, w, r)
+													return
+												}
+												switch elem[0] {
+												case 'e': // Prefix: "ersistentvolumeclaims"
+													if prefix := "ersistentvolumeclaims"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+														elem = elem[len(prefix):]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														s.handleListCoreV1NamespacedPersistentVolumeClaimRequest(args, w, r)
+														return
+													}
+													switch elem[0] {
+													case '/': // Prefix: "/"
+														if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+															elem = elem[len(prefix):]
+														} else {
+															break
+														}
+
+														// Param: "name"
+														// Match until one of "/"
+														idx := strings.IndexAny(elem, "/")
+														if idx > 0 {
+															args["name"] = elem[:idx]
+															elem = elem[idx:]
+
+															if len(elem) == 0 {
+																s.handleReadCoreV1NamespacedPersistentVolumeClaimRequest(args, w, r)
+																return
+															}
+															switch elem[0] {
+															case '/': // Prefix: "/status"
+																if prefix := "/status"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																	elem = elem[len(prefix):]
+																} else {
+																	break
+																}
+
+																// Leaf: ReadCoreV1NamespacedPersistentVolumeClaimStatus
+																s.handleReadCoreV1NamespacedPersistentVolumeClaimStatusRequest(args, w, r)
+																return
+															}
+														}
+													case 'o': // Prefix: "ods"
+														if prefix := "ods"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+															elem = elem[len(prefix):]
+														} else {
+															break
+														}
+
+														// Leaf: ListCoreV1NamespacedPod
+														s.handleListCoreV1NamespacedPodRequest(args, w, r)
+														return
+													}
+												case 'o': // Prefix: "od"
+													if prefix := "od"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+														elem = elem[len(prefix):]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														s.handleListCoreV1NamespacedPodTemplateRequest(args, w, r)
+														return
+													}
+													switch elem[0] {
+													case 's': // Prefix: "s"
+														if prefix := "s"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+															elem = elem[len(prefix):]
+														} else {
+															break
+														}
+
+														if len(elem) == 0 {
+															s.handleListCoreV1NamespacedPodRequest(args, w, r)
+															return
+														}
+														switch elem[0] {
+														case '/': // Prefix: "/"
+															if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																elem = elem[len(prefix):]
+															} else {
+																break
+															}
+
+															// Param: "name"
+															// Match until one of "/"
+															idx := strings.IndexAny(elem, "/")
+															if idx > 0 {
+																args["name"] = elem[:idx]
+																elem = elem[idx:]
+
+																if len(elem) == 0 {
+																	s.handleReadCoreV1NamespacedPodRequest(args, w, r)
+																	return
+																}
+																switch elem[0] {
+																case '/': // Prefix: "/"
+																	if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																		elem = elem[len(prefix):]
+																	} else {
+																		break
+																	}
+
+																	if len(elem) == 0 {
+																		s.handleReadCoreV1NamespacedPodLogRequest(args, w, r)
+																		return
+																	}
+																	switch elem[0] {
+																	case 'e': // Prefix: "ephemeralcontainers"
+																		if prefix := "ephemeralcontainers"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																			elem = elem[len(prefix):]
+																		} else {
+																			break
+																		}
+
+																		if len(elem) == 0 {
+																			s.handleReadCoreV1NamespacedPodEphemeralcontainersRequest(args, w, r)
+																			return
+																		}
+																		switch elem[0] {
+																		case 'l': // Prefix: "log"
+																			if prefix := "log"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																				elem = elem[len(prefix):]
+																			} else {
+																				break
+																			}
+
+																			// Leaf: ReadCoreV1NamespacedPodLog
+																			s.handleReadCoreV1NamespacedPodLogRequest(args, w, r)
+																			return
+																		}
+																	case 'l': // Prefix: "log"
+																		if prefix := "log"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																			elem = elem[len(prefix):]
+																		} else {
+																			break
+																		}
+
+																		// Leaf: ReadCoreV1NamespacedPodLog
+																		s.handleReadCoreV1NamespacedPodLogRequest(args, w, r)
+																		return
+																	case 's': // Prefix: "status"
+																		if prefix := "status"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																			elem = elem[len(prefix):]
+																		} else {
+																			break
+																		}
+
+																		// Leaf: ReadCoreV1NamespacedPodStatus
+																		s.handleReadCoreV1NamespacedPodStatusRequest(args, w, r)
+																		return
+																	}
+																}
+															}
+														case 't': // Prefix: "templates"
+															if prefix := "templates"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																elem = elem[len(prefix):]
+															} else {
+																break
+															}
+
+															// Leaf: ListCoreV1NamespacedPodTemplate
+															s.handleListCoreV1NamespacedPodTemplateRequest(args, w, r)
+															return
+														}
+													case 't': // Prefix: "templates"
+														if prefix := "templates"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+															elem = elem[len(prefix):]
+														} else {
+															break
+														}
+
+														if len(elem) == 0 {
+															s.handleListCoreV1NamespacedPodTemplateRequest(args, w, r)
+															return
+														}
+														switch elem[0] {
+														case '/': // Prefix: "/"
+															if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																elem = elem[len(prefix):]
+															} else {
+																break
+															}
+
+															// Param: "name"
+															// Leaf parameter
+															args["name"] = elem
+
+															// Leaf: ReadCoreV1NamespacedPodTemplate
+															s.handleReadCoreV1NamespacedPodTemplateRequest(args, w, r)
+															return
+														}
+													}
+												}
+											case 'r': // Prefix: "re"
+												if prefix := "re"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+													elem = elem[len(prefix):]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													s.handleListCoreV1NamespacedResourceQuotaRequest(args, w, r)
+													return
+												}
+												switch elem[0] {
+												case 'p': // Prefix: "plicationcontrollers"
+													if prefix := "plicationcontrollers"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+														elem = elem[len(prefix):]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														s.handleListCoreV1NamespacedReplicationControllerRequest(args, w, r)
+														return
+													}
+													switch elem[0] {
+													case '/': // Prefix: "/"
+														if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+															elem = elem[len(prefix):]
+														} else {
+															break
+														}
+
+														// Param: "name"
+														// Match until one of "/"
+														idx := strings.IndexAny(elem, "/")
+														if idx > 0 {
+															args["name"] = elem[:idx]
+															elem = elem[idx:]
+
+															if len(elem) == 0 {
+																s.handleReadCoreV1NamespacedReplicationControllerRequest(args, w, r)
+																return
+															}
+															switch elem[0] {
+															case '/': // Prefix: "/s"
+																if prefix := "/s"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																	elem = elem[len(prefix):]
+																} else {
+																	break
+																}
+
+																if len(elem) == 0 {
+																	s.handleReadCoreV1NamespacedReplicationControllerStatusRequest(args, w, r)
+																	return
+																}
+																switch elem[0] {
+																case 'c': // Prefix: "cale"
+																	if prefix := "cale"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																		elem = elem[len(prefix):]
+																	} else {
+																		break
+																	}
+
+																	if len(elem) == 0 {
+																		s.handleReadCoreV1NamespacedReplicationControllerScaleRequest(args, w, r)
+																		return
+																	}
+																	switch elem[0] {
+																	case 't': // Prefix: "tatus"
+																		if prefix := "tatus"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																			elem = elem[len(prefix):]
+																		} else {
+																			break
+																		}
+
+																		// Leaf: ReadCoreV1NamespacedReplicationControllerStatus
+																		s.handleReadCoreV1NamespacedReplicationControllerStatusRequest(args, w, r)
+																		return
+																	}
+																case 't': // Prefix: "tatus"
+																	if prefix := "tatus"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																		elem = elem[len(prefix):]
+																	} else {
+																		break
+																	}
+
+																	// Leaf: ReadCoreV1NamespacedReplicationControllerStatus
+																	s.handleReadCoreV1NamespacedReplicationControllerStatusRequest(args, w, r)
+																	return
+																}
+															}
+														}
+													case 's': // Prefix: "sourcequotas"
+														if prefix := "sourcequotas"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+															elem = elem[len(prefix):]
+														} else {
+															break
+														}
+
+														// Leaf: ListCoreV1NamespacedResourceQuota
+														s.handleListCoreV1NamespacedResourceQuotaRequest(args, w, r)
+														return
+													}
+												case 's': // Prefix: "sourcequotas"
+													if prefix := "sourcequotas"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+														elem = elem[len(prefix):]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														s.handleListCoreV1NamespacedResourceQuotaRequest(args, w, r)
+														return
+													}
+													switch elem[0] {
+													case '/': // Prefix: "/"
+														if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+															elem = elem[len(prefix):]
+														} else {
+															break
+														}
+
+														// Param: "name"
+														// Match until one of "/"
+														idx := strings.IndexAny(elem, "/")
+														if idx > 0 {
+															args["name"] = elem[:idx]
+															elem = elem[idx:]
+
+															if len(elem) == 0 {
+																s.handleReadCoreV1NamespacedResourceQuotaRequest(args, w, r)
+																return
+															}
+															switch elem[0] {
+															case '/': // Prefix: "/status"
+																if prefix := "/status"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																	elem = elem[len(prefix):]
+																} else {
+																	break
+																}
+
+																// Leaf: ReadCoreV1NamespacedResourceQuotaStatus
+																s.handleReadCoreV1NamespacedResourceQuotaStatusRequest(args, w, r)
+																return
+															}
+														}
+													}
+												}
+											case 's': // Prefix: "s"
+												if prefix := "s"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+													elem = elem[len(prefix):]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													s.handleReadCoreV1NamespaceStatusRequest(args, w, r)
+													return
+												}
+												switch elem[0] {
+												case 'e': // Prefix: "e"
+													if prefix := "e"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+														elem = elem[len(prefix):]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														s.handleListCoreV1NamespacedServiceRequest(args, w, r)
+														return
+													}
+													switch elem[0] {
+													case 'c': // Prefix: "crets"
+														if prefix := "crets"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+															elem = elem[len(prefix):]
+														} else {
+															break
+														}
+
+														if len(elem) == 0 {
+															s.handleListCoreV1NamespacedSecretRequest(args, w, r)
+															return
+														}
+														switch elem[0] {
+														case '/': // Prefix: "/"
+															if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																elem = elem[len(prefix):]
+															} else {
+																break
+															}
+
+															// Param: "name"
+															// Leaf parameter
+															args["name"] = elem
+
+															// Leaf: ReadCoreV1NamespacedSecret
+															s.handleReadCoreV1NamespacedSecretRequest(args, w, r)
+															return
+														case 'r': // Prefix: "rvices"
+															if prefix := "rvices"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																elem = elem[len(prefix):]
+															} else {
+																break
+															}
+
+															// Leaf: ListCoreV1NamespacedService
+															s.handleListCoreV1NamespacedServiceRequest(args, w, r)
+															return
+														}
+													case 'r': // Prefix: "rvice"
+														if prefix := "rvice"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+															elem = elem[len(prefix):]
+														} else {
+															break
+														}
+
+														if len(elem) == 0 {
+															s.handleListCoreV1NamespacedServiceAccountRequest(args, w, r)
+															return
+														}
+														switch elem[0] {
+														case 'a': // Prefix: "accounts"
+															if prefix := "accounts"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																elem = elem[len(prefix):]
+															} else {
+																break
+															}
+
+															if len(elem) == 0 {
+																s.handleListCoreV1NamespacedServiceAccountRequest(args, w, r)
+																return
+															}
+															switch elem[0] {
+															case '/': // Prefix: "/"
+																if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																	elem = elem[len(prefix):]
+																} else {
+																	break
+																}
+
+																// Param: "name"
+																// Leaf parameter
+																args["name"] = elem
+
+																// Leaf: ReadCoreV1NamespacedServiceAccount
+																s.handleReadCoreV1NamespacedServiceAccountRequest(args, w, r)
+																return
+															}
+														case 's': // Prefix: "s"
+															if prefix := "s"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																elem = elem[len(prefix):]
+															} else {
+																break
+															}
+
+															if len(elem) == 0 {
+																s.handleListCoreV1NamespacedServiceRequest(args, w, r)
+																return
+															}
+															switch elem[0] {
+															case '/': // Prefix: "/"
+																if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																	elem = elem[len(prefix):]
+																} else {
+																	break
+																}
+
+																// Param: "name"
+																// Match until one of "/"
+																idx := strings.IndexAny(elem, "/")
+																if idx > 0 {
+																	args["name"] = elem[:idx]
+																	elem = elem[idx:]
+
+																	if len(elem) == 0 {
+																		s.handleReadCoreV1NamespacedServiceRequest(args, w, r)
+																		return
+																	}
+																	switch elem[0] {
+																	case '/': // Prefix: "/status"
+																		if prefix := "/status"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																			elem = elem[len(prefix):]
+																		} else {
+																			break
+																		}
+
+																		// Leaf: ReadCoreV1NamespacedServiceStatus
+																		s.handleReadCoreV1NamespacedServiceStatusRequest(args, w, r)
+																		return
+																	}
+																}
+															case 'a': // Prefix: "accounts"
+																if prefix := "accounts"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																	elem = elem[len(prefix):]
+																} else {
+																	break
+																}
+
+																// Leaf: ListCoreV1NamespacedServiceAccount
+																s.handleListCoreV1NamespacedServiceAccountRequest(args, w, r)
+																return
+															}
+														}
+													case 't': // Prefix: "tatus"
+														if prefix := "tatus"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+															elem = elem[len(prefix):]
+														} else {
+															break
+														}
+
+														// Leaf: ReadCoreV1NamespaceStatus
+														s.handleReadCoreV1NamespaceStatusRequest(args, w, r)
+														return
+													}
+												case 't': // Prefix: "tatus"
+													if prefix := "tatus"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+														elem = elem[len(prefix):]
+													} else {
+														break
+													}
+
+													// Leaf: ReadCoreV1NamespaceStatus
+													s.handleReadCoreV1NamespaceStatusRequest(args, w, r)
+													return
+												}
+											}
+										}
+									}
+								case 'o': // Prefix: "odes"
+									if prefix := "odes"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+										elem = elem[len(prefix):]
+									} else {
+										break
+									}
+
+									// Leaf: ListCoreV1Node
+									s.handleListCoreV1NodeRequest(args, w, r)
+									return
+								}
+							case 'o': // Prefix: "odes"
+								if prefix := "odes"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+									elem = elem[len(prefix):]
+								} else {
+									break
+								}
+
+								if len(elem) == 0 {
+									s.handleListCoreV1NodeRequest(args, w, r)
+									return
+								}
+								switch elem[0] {
+								case '/': // Prefix: "/"
+									if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+										elem = elem[len(prefix):]
+									} else {
+										break
+									}
+
+									// Param: "name"
+									// Match until one of "/"
+									idx := strings.IndexAny(elem, "/")
+									if idx > 0 {
+										args["name"] = elem[:idx]
+										elem = elem[idx:]
+
+										if len(elem) == 0 {
+											s.handleReadCoreV1NodeRequest(args, w, r)
+											return
+										}
+										switch elem[0] {
+										case '/': // Prefix: "/status"
+											if prefix := "/status"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+												elem = elem[len(prefix):]
+											} else {
+												break
+											}
+
+											// Leaf: ReadCoreV1NodeStatus
+											s.handleReadCoreV1NodeStatusRequest(args, w, r)
+											return
+										}
+									}
+								}
+							}
+						case 'p': // Prefix: "p"
+							if prefix := "p"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+								elem = elem[len(prefix):]
+							} else {
+								break
+							}
+
+							if len(elem) == 0 {
+								s.handleListCoreV1PodForAllNamespacesRequest(args, w, r)
+								return
+							}
+							switch elem[0] {
+							case 'e': // Prefix: "ersistentvolume"
+								if prefix := "ersistentvolume"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+									elem = elem[len(prefix):]
+								} else {
+									break
+								}
+
+								if len(elem) == 0 {
+									s.handleListCoreV1PersistentVolumeClaimForAllNamespacesRequest(args, w, r)
+									return
+								}
+								switch elem[0] {
+								case 'c': // Prefix: "claims"
+									if prefix := "claims"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+										elem = elem[len(prefix):]
+									} else {
+										break
+									}
+
+									// Leaf: ListCoreV1PersistentVolumeClaimForAllNamespaces
+									s.handleListCoreV1PersistentVolumeClaimForAllNamespacesRequest(args, w, r)
+									return
+								case 'o': // Prefix: "ods"
+									if prefix := "ods"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+										elem = elem[len(prefix):]
+									} else {
+										break
+									}
+
+									// Leaf: ListCoreV1PodForAllNamespaces
+									s.handleListCoreV1PodForAllNamespacesRequest(args, w, r)
+									return
+								case 's': // Prefix: "s"
+									if prefix := "s"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+										elem = elem[len(prefix):]
+									} else {
+										break
+									}
+
+									if len(elem) == 0 {
+										s.handleListCoreV1PersistentVolumeRequest(args, w, r)
+										return
+									}
+									switch elem[0] {
+									case '/': // Prefix: "/"
+										if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+											elem = elem[len(prefix):]
+										} else {
+											break
+										}
+
+										// Param: "name"
+										// Match until one of "/"
+										idx := strings.IndexAny(elem, "/")
+										if idx > 0 {
+											args["name"] = elem[:idx]
+											elem = elem[idx:]
+
+											if len(elem) == 0 {
+												s.handleReadCoreV1PersistentVolumeRequest(args, w, r)
+												return
+											}
+											switch elem[0] {
+											case '/': // Prefix: "/status"
+												if prefix := "/status"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+													elem = elem[len(prefix):]
+												} else {
+													break
+												}
+
+												// Leaf: ReadCoreV1PersistentVolumeStatus
+												s.handleReadCoreV1PersistentVolumeStatusRequest(args, w, r)
+												return
+											}
+										}
+									case 'c': // Prefix: "claims"
+										if prefix := "claims"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+											elem = elem[len(prefix):]
+										} else {
+											break
+										}
+
+										// Leaf: ListCoreV1PersistentVolumeClaimForAllNamespaces
+										s.handleListCoreV1PersistentVolumeClaimForAllNamespacesRequest(args, w, r)
+										return
+									}
+								}
+							case 'o': // Prefix: "od"
+								if prefix := "od"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+									elem = elem[len(prefix):]
+								} else {
+									break
+								}
+
+								if len(elem) == 0 {
+									s.handleListCoreV1PodTemplateForAllNamespacesRequest(args, w, r)
+									return
+								}
+								switch elem[0] {
+								case 's': // Prefix: "s"
+									if prefix := "s"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+										elem = elem[len(prefix):]
+									} else {
+										break
+									}
+
+									if len(elem) == 0 {
+										s.handleListCoreV1PodForAllNamespacesRequest(args, w, r)
+										return
+									}
+									switch elem[0] {
+									case 't': // Prefix: "templates"
+										if prefix := "templates"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+											elem = elem[len(prefix):]
+										} else {
+											break
+										}
+
+										// Leaf: ListCoreV1PodTemplateForAllNamespaces
+										s.handleListCoreV1PodTemplateForAllNamespacesRequest(args, w, r)
+										return
+									}
+								case 't': // Prefix: "templates"
+									if prefix := "templates"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+										elem = elem[len(prefix):]
+									} else {
+										break
+									}
+
+									// Leaf: ListCoreV1PodTemplateForAllNamespaces
+									s.handleListCoreV1PodTemplateForAllNamespacesRequest(args, w, r)
+									return
+								}
+							}
+						case 'r': // Prefix: "re"
+							if prefix := "re"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+								elem = elem[len(prefix):]
+							} else {
+								break
+							}
+
+							if len(elem) == 0 {
+								s.handleListCoreV1ResourceQuotaForAllNamespacesRequest(args, w, r)
+								return
+							}
+							switch elem[0] {
+							case 'p': // Prefix: "plicationcontrollers"
+								if prefix := "plicationcontrollers"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+									elem = elem[len(prefix):]
+								} else {
+									break
+								}
+
+								if len(elem) == 0 {
+									s.handleListCoreV1ReplicationControllerForAllNamespacesRequest(args, w, r)
+									return
+								}
+								switch elem[0] {
+								case 's': // Prefix: "sourcequotas"
+									if prefix := "sourcequotas"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+										elem = elem[len(prefix):]
+									} else {
+										break
+									}
+
+									// Leaf: ListCoreV1ResourceQuotaForAllNamespaces
+									s.handleListCoreV1ResourceQuotaForAllNamespacesRequest(args, w, r)
+									return
+								}
+							case 's': // Prefix: "sourcequotas"
+								if prefix := "sourcequotas"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+									elem = elem[len(prefix):]
+								} else {
+									break
+								}
+
+								// Leaf: ListCoreV1ResourceQuotaForAllNamespaces
+								s.handleListCoreV1ResourceQuotaForAllNamespacesRequest(args, w, r)
+								return
+							}
+						case 's': // Prefix: "se"
+							if prefix := "se"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+								elem = elem[len(prefix):]
+							} else {
+								break
+							}
+
+							if len(elem) == 0 {
+								s.handleListCoreV1ServiceAccountForAllNamespacesRequest(args, w, r)
+								return
+							}
+							switch elem[0] {
+							case 'c': // Prefix: "crets"
+								if prefix := "crets"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+									elem = elem[len(prefix):]
+								} else {
+									break
+								}
+
+								if len(elem) == 0 {
+									s.handleListCoreV1SecretForAllNamespacesRequest(args, w, r)
+									return
+								}
+								switch elem[0] {
+								case 'r': // Prefix: "rviceaccounts"
+									if prefix := "rviceaccounts"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+										elem = elem[len(prefix):]
+									} else {
+										break
+									}
+
+									// Leaf: ListCoreV1ServiceAccountForAllNamespaces
+									s.handleListCoreV1ServiceAccountForAllNamespacesRequest(args, w, r)
+									return
+								}
+							case 'r': // Prefix: "rvice"
+								if prefix := "rvice"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+									elem = elem[len(prefix):]
+								} else {
+									break
+								}
+
+								if len(elem) == 0 {
+									s.handleListCoreV1ServiceForAllNamespacesRequest(args, w, r)
+									return
+								}
+								switch elem[0] {
+								case 'a': // Prefix: "accounts"
+									if prefix := "accounts"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+										elem = elem[len(prefix):]
+									} else {
+										break
+									}
+
+									if len(elem) == 0 {
+										s.handleListCoreV1ServiceAccountForAllNamespacesRequest(args, w, r)
+										return
+									}
+									switch elem[0] {
+									case 's': // Prefix: "s"
+										if prefix := "s"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+											elem = elem[len(prefix):]
+										} else {
+											break
+										}
+
+										// Leaf: ListCoreV1ServiceForAllNamespaces
+										s.handleListCoreV1ServiceForAllNamespacesRequest(args, w, r)
+										return
+									}
+								case 's': // Prefix: "s"
+									if prefix := "s"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+										elem = elem[len(prefix):]
+									} else {
+										break
+									}
+
+									// Leaf: ListCoreV1ServiceForAllNamespaces
+									s.handleListCoreV1ServiceForAllNamespacesRequest(args, w, r)
+									return
+								}
+							}
+						case 'w': // Prefix: "watch/"
+							if prefix := "watch/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+								elem = elem[len(prefix):]
+							} else {
+								break
+							}
+
+							if len(elem) == 0 {
+								s.handleWatchCoreV1EndpointsListForAllNamespacesRequest(args, w, r)
+								return
+							}
+							switch elem[0] {
+							case 'c': // Prefix: "configmaps"
+								if prefix := "configmaps"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+									elem = elem[len(prefix):]
+								} else {
+									break
+								}
+
+								if len(elem) == 0 {
+									s.handleWatchCoreV1ConfigMapListForAllNamespacesRequest(args, w, r)
+									return
+								}
+								switch elem[0] {
+								case 'e': // Prefix: "endpoints"
+									if prefix := "endpoints"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+										elem = elem[len(prefix):]
+									} else {
+										break
+									}
+
+									// Leaf: WatchCoreV1EndpointsListForAllNamespaces
+									s.handleWatchCoreV1EndpointsListForAllNamespacesRequest(args, w, r)
+									return
+								}
+							case 'e': // Prefix: "e"
+								if prefix := "e"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+									elem = elem[len(prefix):]
+								} else {
+									break
+								}
+
+								if len(elem) == 0 {
+									s.handleWatchCoreV1EventListForAllNamespacesRequest(args, w, r)
+									return
+								}
+								switch elem[0] {
+								case 'n': // Prefix: "ndpoints"
+									if prefix := "ndpoints"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+										elem = elem[len(prefix):]
+									} else {
+										break
+									}
+
+									if len(elem) == 0 {
+										s.handleWatchCoreV1EndpointsListForAllNamespacesRequest(args, w, r)
+										return
+									}
+									switch elem[0] {
+									case 'v': // Prefix: "vents"
+										if prefix := "vents"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+											elem = elem[len(prefix):]
+										} else {
+											break
+										}
+
+										// Leaf: WatchCoreV1EventListForAllNamespaces
+										s.handleWatchCoreV1EventListForAllNamespacesRequest(args, w, r)
+										return
+									}
+								case 'v': // Prefix: "vents"
+									if prefix := "vents"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+										elem = elem[len(prefix):]
+									} else {
+										break
+									}
+
+									// Leaf: WatchCoreV1EventListForAllNamespaces
+									s.handleWatchCoreV1EventListForAllNamespacesRequest(args, w, r)
+									return
+								}
+							case 'l': // Prefix: "limitranges"
+								if prefix := "limitranges"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+									elem = elem[len(prefix):]
+								} else {
+									break
+								}
+
+								// Leaf: WatchCoreV1LimitRangeListForAllNamespaces
+								s.handleWatchCoreV1LimitRangeListForAllNamespacesRequest(args, w, r)
+								return
+							case 'n': // Prefix: "n"
+								if prefix := "n"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+									elem = elem[len(prefix):]
+								} else {
+									break
+								}
+
+								if len(elem) == 0 {
+									s.handleWatchCoreV1NodeRequest(args, w, r)
+									return
+								}
+								switch elem[0] {
+								case 'a': // Prefix: "amespaces"
+									if prefix := "amespaces"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+										elem = elem[len(prefix):]
+									} else {
+										break
+									}
+
+									if len(elem) == 0 {
+										s.handleWatchCoreV1NamespaceListRequest(args, w, r)
+										return
+									}
+									switch elem[0] {
+									case '/': // Prefix: "/"
+										if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+											elem = elem[len(prefix):]
+										} else {
+											break
+										}
+
+										// Param: "name"
+										// Match until one of "/"
+										idx := strings.IndexAny(elem, "/")
+										if idx > 0 {
+											args["name"] = elem[:idx]
+											elem = elem[idx:]
+
+											if len(elem) == 0 {
+												s.handleWatchCoreV1NamespaceRequest(args, w, r)
+												return
+											}
+											switch elem[0] {
+											case '/': // Prefix: "/"
+												if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+													elem = elem[len(prefix):]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													s.handleWatchCoreV1NamespacedEndpointsRequest(args, w, r)
+													return
+												}
+												switch elem[0] {
+												case 'c': // Prefix: "configmaps"
+													if prefix := "configmaps"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+														elem = elem[len(prefix):]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														s.handleWatchCoreV1NamespacedConfigMapListRequest(args, w, r)
+														return
+													}
+													switch elem[0] {
+													case '/': // Prefix: "/"
+														if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+															elem = elem[len(prefix):]
+														} else {
+															break
+														}
+
+														// Param: "name"
+														// Leaf parameter
+														args["name"] = elem
+
+														// Leaf: WatchCoreV1NamespacedConfigMap
+														s.handleWatchCoreV1NamespacedConfigMapRequest(args, w, r)
+														return
+													case 'e': // Prefix: "endpoints/"
+														if prefix := "endpoints/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+															elem = elem[len(prefix):]
+														} else {
+															break
+														}
+
+														// Param: "name"
+														// Leaf parameter
+														args["name"] = elem
+
+														// Leaf: WatchCoreV1NamespacedEndpoints
+														s.handleWatchCoreV1NamespacedEndpointsRequest(args, w, r)
+														return
+													}
+												case 'e': // Prefix: "e"
+													if prefix := "e"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+														elem = elem[len(prefix):]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														s.handleWatchCoreV1NamespacedEventRequest(args, w, r)
+														return
+													}
+													switch elem[0] {
+													case 'n': // Prefix: "ndpoints"
+														if prefix := "ndpoints"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+															elem = elem[len(prefix):]
+														} else {
+															break
+														}
+
+														if len(elem) == 0 {
+															s.handleWatchCoreV1NamespacedEndpointsListRequest(args, w, r)
+															return
+														}
+														switch elem[0] {
+														case '/': // Prefix: "/"
+															if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																elem = elem[len(prefix):]
+															} else {
+																break
+															}
+
+															// Param: "name"
+															// Leaf parameter
+															args["name"] = elem
+
+															// Leaf: WatchCoreV1NamespacedEndpoints
+															s.handleWatchCoreV1NamespacedEndpointsRequest(args, w, r)
+															return
+														case 'v': // Prefix: "vents/"
+															if prefix := "vents/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																elem = elem[len(prefix):]
+															} else {
+																break
+															}
+
+															// Param: "name"
+															// Leaf parameter
+															args["name"] = elem
+
+															// Leaf: WatchCoreV1NamespacedEvent
+															s.handleWatchCoreV1NamespacedEventRequest(args, w, r)
+															return
+														}
+													case 'v': // Prefix: "vents"
+														if prefix := "vents"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+															elem = elem[len(prefix):]
+														} else {
+															break
+														}
+
+														if len(elem) == 0 {
+															s.handleWatchCoreV1NamespacedEventListRequest(args, w, r)
+															return
+														}
+														switch elem[0] {
+														case '/': // Prefix: "/"
+															if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																elem = elem[len(prefix):]
+															} else {
+																break
+															}
+
+															// Param: "name"
+															// Leaf parameter
+															args["name"] = elem
+
+															// Leaf: WatchCoreV1NamespacedEvent
+															s.handleWatchCoreV1NamespacedEventRequest(args, w, r)
+															return
+														}
+													}
+												case 'l': // Prefix: "limitranges"
+													if prefix := "limitranges"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+														elem = elem[len(prefix):]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														s.handleWatchCoreV1NamespacedLimitRangeListRequest(args, w, r)
+														return
+													}
+													switch elem[0] {
+													case '/': // Prefix: "/"
+														if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+															elem = elem[len(prefix):]
+														} else {
+															break
+														}
+
+														// Param: "name"
+														// Leaf parameter
+														args["name"] = elem
+
+														// Leaf: WatchCoreV1NamespacedLimitRange
+														s.handleWatchCoreV1NamespacedLimitRangeRequest(args, w, r)
+														return
+													}
+												case 'p': // Prefix: "p"
+													if prefix := "p"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+														elem = elem[len(prefix):]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														s.handleWatchCoreV1NamespacedPodRequest(args, w, r)
+														return
+													}
+													switch elem[0] {
+													case 'e': // Prefix: "ersistentvolumeclaims"
+														if prefix := "ersistentvolumeclaims"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+															elem = elem[len(prefix):]
+														} else {
+															break
+														}
+
+														if len(elem) == 0 {
+															s.handleWatchCoreV1NamespacedPersistentVolumeClaimListRequest(args, w, r)
+															return
+														}
+														switch elem[0] {
+														case '/': // Prefix: "/"
+															if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																elem = elem[len(prefix):]
+															} else {
+																break
+															}
+
+															// Param: "name"
+															// Leaf parameter
+															args["name"] = elem
+
+															// Leaf: WatchCoreV1NamespacedPersistentVolumeClaim
+															s.handleWatchCoreV1NamespacedPersistentVolumeClaimRequest(args, w, r)
+															return
+														case 'o': // Prefix: "ods/"
+															if prefix := "ods/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																elem = elem[len(prefix):]
+															} else {
+																break
+															}
+
+															// Param: "name"
+															// Leaf parameter
+															args["name"] = elem
+
+															// Leaf: WatchCoreV1NamespacedPod
+															s.handleWatchCoreV1NamespacedPodRequest(args, w, r)
+															return
+														}
+													case 'o': // Prefix: "od"
+														if prefix := "od"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+															elem = elem[len(prefix):]
+														} else {
+															break
+														}
+
+														if len(elem) == 0 {
+															s.handleWatchCoreV1NamespacedPodTemplateRequest(args, w, r)
+															return
+														}
+														switch elem[0] {
+														case 's': // Prefix: "s"
+															if prefix := "s"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																elem = elem[len(prefix):]
+															} else {
+																break
+															}
+
+															if len(elem) == 0 {
+																s.handleWatchCoreV1NamespacedPodListRequest(args, w, r)
+																return
+															}
+															switch elem[0] {
+															case '/': // Prefix: "/"
+																if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																	elem = elem[len(prefix):]
+																} else {
+																	break
+																}
+
+																// Param: "name"
+																// Leaf parameter
+																args["name"] = elem
+
+																// Leaf: WatchCoreV1NamespacedPod
+																s.handleWatchCoreV1NamespacedPodRequest(args, w, r)
+																return
+															case 't': // Prefix: "templates/"
+																if prefix := "templates/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																	elem = elem[len(prefix):]
+																} else {
+																	break
+																}
+
+																// Param: "name"
+																// Leaf parameter
+																args["name"] = elem
+
+																// Leaf: WatchCoreV1NamespacedPodTemplate
+																s.handleWatchCoreV1NamespacedPodTemplateRequest(args, w, r)
+																return
+															}
+														case 't': // Prefix: "templates"
+															if prefix := "templates"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																elem = elem[len(prefix):]
+															} else {
+																break
+															}
+
+															if len(elem) == 0 {
+																s.handleWatchCoreV1NamespacedPodTemplateListRequest(args, w, r)
+																return
+															}
+															switch elem[0] {
+															case '/': // Prefix: "/"
+																if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																	elem = elem[len(prefix):]
+																} else {
+																	break
+																}
+
+																// Param: "name"
+																// Leaf parameter
+																args["name"] = elem
+
+																// Leaf: WatchCoreV1NamespacedPodTemplate
+																s.handleWatchCoreV1NamespacedPodTemplateRequest(args, w, r)
+																return
+															}
+														}
+													}
+												case 'r': // Prefix: "re"
+													if prefix := "re"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+														elem = elem[len(prefix):]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														s.handleWatchCoreV1NamespacedResourceQuotaRequest(args, w, r)
+														return
+													}
+													switch elem[0] {
+													case 'p': // Prefix: "plicationcontrollers"
+														if prefix := "plicationcontrollers"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+															elem = elem[len(prefix):]
+														} else {
+															break
+														}
+
+														if len(elem) == 0 {
+															s.handleWatchCoreV1NamespacedReplicationControllerListRequest(args, w, r)
+															return
+														}
+														switch elem[0] {
+														case '/': // Prefix: "/"
+															if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																elem = elem[len(prefix):]
+															} else {
+																break
+															}
+
+															// Param: "name"
+															// Leaf parameter
+															args["name"] = elem
+
+															// Leaf: WatchCoreV1NamespacedReplicationController
+															s.handleWatchCoreV1NamespacedReplicationControllerRequest(args, w, r)
+															return
+														case 's': // Prefix: "sourcequotas/"
+															if prefix := "sourcequotas/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																elem = elem[len(prefix):]
+															} else {
+																break
+															}
+
+															// Param: "name"
+															// Leaf parameter
+															args["name"] = elem
+
+															// Leaf: WatchCoreV1NamespacedResourceQuota
+															s.handleWatchCoreV1NamespacedResourceQuotaRequest(args, w, r)
+															return
+														}
+													case 's': // Prefix: "sourcequotas"
+														if prefix := "sourcequotas"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+															elem = elem[len(prefix):]
+														} else {
+															break
+														}
+
+														if len(elem) == 0 {
+															s.handleWatchCoreV1NamespacedResourceQuotaListRequest(args, w, r)
+															return
+														}
+														switch elem[0] {
+														case '/': // Prefix: "/"
+															if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																elem = elem[len(prefix):]
+															} else {
+																break
+															}
+
+															// Param: "name"
+															// Leaf parameter
+															args["name"] = elem
+
+															// Leaf: WatchCoreV1NamespacedResourceQuota
+															s.handleWatchCoreV1NamespacedResourceQuotaRequest(args, w, r)
+															return
+														}
+													}
+												case 's': // Prefix: "se"
+													if prefix := "se"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+														elem = elem[len(prefix):]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														s.handleWatchCoreV1NamespacedServiceRequest(args, w, r)
+														return
+													}
+													switch elem[0] {
+													case 'c': // Prefix: "crets"
+														if prefix := "crets"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+															elem = elem[len(prefix):]
+														} else {
+															break
+														}
+
+														if len(elem) == 0 {
+															s.handleWatchCoreV1NamespacedSecretListRequest(args, w, r)
+															return
+														}
+														switch elem[0] {
+														case '/': // Prefix: "/"
+															if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																elem = elem[len(prefix):]
+															} else {
+																break
+															}
+
+															// Param: "name"
+															// Leaf parameter
+															args["name"] = elem
+
+															// Leaf: WatchCoreV1NamespacedSecret
+															s.handleWatchCoreV1NamespacedSecretRequest(args, w, r)
+															return
+														case 'r': // Prefix: "rvices/"
+															if prefix := "rvices/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																elem = elem[len(prefix):]
+															} else {
+																break
+															}
+
+															// Param: "name"
+															// Leaf parameter
+															args["name"] = elem
+
+															// Leaf: WatchCoreV1NamespacedService
+															s.handleWatchCoreV1NamespacedServiceRequest(args, w, r)
+															return
+														}
+													case 'r': // Prefix: "rvice"
+														if prefix := "rvice"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+															elem = elem[len(prefix):]
+														} else {
+															break
+														}
+
+														if len(elem) == 0 {
+															s.handleWatchCoreV1NamespacedServiceAccountRequest(args, w, r)
+															return
+														}
+														switch elem[0] {
+														case 'a': // Prefix: "accounts"
+															if prefix := "accounts"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																elem = elem[len(prefix):]
+															} else {
+																break
+															}
+
+															if len(elem) == 0 {
+																s.handleWatchCoreV1NamespacedServiceAccountListRequest(args, w, r)
+																return
+															}
+															switch elem[0] {
+															case '/': // Prefix: "/"
+																if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																	elem = elem[len(prefix):]
+																} else {
+																	break
+																}
+
+																// Param: "name"
+																// Leaf parameter
+																args["name"] = elem
+
+																// Leaf: WatchCoreV1NamespacedServiceAccount
+																s.handleWatchCoreV1NamespacedServiceAccountRequest(args, w, r)
+																return
+															}
+														case 's': // Prefix: "s"
+															if prefix := "s"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																elem = elem[len(prefix):]
+															} else {
+																break
+															}
+
+															if len(elem) == 0 {
+																s.handleWatchCoreV1NamespacedServiceListRequest(args, w, r)
+																return
+															}
+															switch elem[0] {
+															case '/': // Prefix: "/"
+																if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																	elem = elem[len(prefix):]
+																} else {
+																	break
+																}
+
+																if len(elem) == 0 {
+																	break
+																}
+																switch elem[0] {
+																case 'a': // Prefix: "accounts/"
+																	if prefix := "accounts/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																		elem = elem[len(prefix):]
+																	} else {
+																		break
+																	}
+
+																	// Param: "name"
+																	// Leaf parameter
+																	args["name"] = elem
+
+																	// Leaf: WatchCoreV1NamespacedServiceAccount
+																	s.handleWatchCoreV1NamespacedServiceAccountRequest(args, w, r)
+																	return
+																}
+																// Param: "name"
+																// Leaf parameter
+																args["name"] = elem
+
+																// Leaf: WatchCoreV1NamespacedService
+																s.handleWatchCoreV1NamespacedServiceRequest(args, w, r)
+																return
+															}
+														}
+													}
+												}
+											}
+										}
+									case 'o': // Prefix: "odes/"
+										if prefix := "odes/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+											elem = elem[len(prefix):]
+										} else {
+											break
+										}
+
+										// Param: "name"
+										// Leaf parameter
+										args["name"] = elem
+
+										// Leaf: WatchCoreV1Node
+										s.handleWatchCoreV1NodeRequest(args, w, r)
+										return
+									}
+								case 'o': // Prefix: "odes"
+									if prefix := "odes"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+										elem = elem[len(prefix):]
+									} else {
+										break
+									}
+
+									if len(elem) == 0 {
+										s.handleWatchCoreV1NodeListRequest(args, w, r)
+										return
+									}
+									switch elem[0] {
+									case '/': // Prefix: "/"
+										if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+											elem = elem[len(prefix):]
+										} else {
+											break
+										}
+
+										// Param: "name"
+										// Leaf parameter
+										args["name"] = elem
+
+										// Leaf: WatchCoreV1Node
+										s.handleWatchCoreV1NodeRequest(args, w, r)
+										return
+									}
+								}
+							case 'p': // Prefix: "p"
+								if prefix := "p"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+									elem = elem[len(prefix):]
+								} else {
+									break
+								}
+
+								if len(elem) == 0 {
+									s.handleWatchCoreV1PodListForAllNamespacesRequest(args, w, r)
+									return
+								}
+								switch elem[0] {
+								case 'e': // Prefix: "ersistentvolume"
+									if prefix := "ersistentvolume"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+										elem = elem[len(prefix):]
+									} else {
+										break
+									}
+
+									if len(elem) == 0 {
+										s.handleWatchCoreV1PersistentVolumeClaimListForAllNamespacesRequest(args, w, r)
+										return
+									}
+									switch elem[0] {
+									case 'c': // Prefix: "claims"
+										if prefix := "claims"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+											elem = elem[len(prefix):]
+										} else {
+											break
+										}
+
+										// Leaf: WatchCoreV1PersistentVolumeClaimListForAllNamespaces
+										s.handleWatchCoreV1PersistentVolumeClaimListForAllNamespacesRequest(args, w, r)
+										return
+									case 'o': // Prefix: "ods"
+										if prefix := "ods"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+											elem = elem[len(prefix):]
+										} else {
+											break
+										}
+
+										// Leaf: WatchCoreV1PodListForAllNamespaces
+										s.handleWatchCoreV1PodListForAllNamespacesRequest(args, w, r)
+										return
+									case 's': // Prefix: "s"
+										if prefix := "s"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+											elem = elem[len(prefix):]
+										} else {
+											break
+										}
+
+										if len(elem) == 0 {
+											s.handleWatchCoreV1PersistentVolumeListRequest(args, w, r)
+											return
+										}
+										switch elem[0] {
+										case '/': // Prefix: "/"
+											if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+												elem = elem[len(prefix):]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												break
+											}
+											switch elem[0] {
+											case 'c': // Prefix: "claims"
+												if prefix := "claims"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+													elem = elem[len(prefix):]
+												} else {
+													break
+												}
+
+												// Leaf: WatchCoreV1PersistentVolumeClaimListForAllNamespaces
+												s.handleWatchCoreV1PersistentVolumeClaimListForAllNamespacesRequest(args, w, r)
+												return
+											}
+											// Param: "name"
+											// Leaf parameter
+											args["name"] = elem
+
+											// Leaf: WatchCoreV1PersistentVolume
+											s.handleWatchCoreV1PersistentVolumeRequest(args, w, r)
+											return
+										}
+									}
+								case 'o': // Prefix: "od"
+									if prefix := "od"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+										elem = elem[len(prefix):]
+									} else {
+										break
+									}
+
+									if len(elem) == 0 {
+										s.handleWatchCoreV1PodTemplateListForAllNamespacesRequest(args, w, r)
+										return
+									}
+									switch elem[0] {
+									case 's': // Prefix: "s"
+										if prefix := "s"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+											elem = elem[len(prefix):]
+										} else {
+											break
+										}
+
+										if len(elem) == 0 {
+											s.handleWatchCoreV1PodListForAllNamespacesRequest(args, w, r)
+											return
+										}
+										switch elem[0] {
+										case 't': // Prefix: "templates"
+											if prefix := "templates"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+												elem = elem[len(prefix):]
+											} else {
+												break
+											}
+
+											// Leaf: WatchCoreV1PodTemplateListForAllNamespaces
+											s.handleWatchCoreV1PodTemplateListForAllNamespacesRequest(args, w, r)
+											return
+										}
+									case 't': // Prefix: "templates"
+										if prefix := "templates"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+											elem = elem[len(prefix):]
+										} else {
+											break
+										}
+
+										// Leaf: WatchCoreV1PodTemplateListForAllNamespaces
+										s.handleWatchCoreV1PodTemplateListForAllNamespacesRequest(args, w, r)
+										return
+									}
+								}
+							case 'r': // Prefix: "re"
+								if prefix := "re"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+									elem = elem[len(prefix):]
+								} else {
+									break
+								}
+
+								if len(elem) == 0 {
+									s.handleWatchCoreV1ResourceQuotaListForAllNamespacesRequest(args, w, r)
+									return
+								}
+								switch elem[0] {
+								case 'p': // Prefix: "plicationcontrollers"
+									if prefix := "plicationcontrollers"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+										elem = elem[len(prefix):]
+									} else {
+										break
+									}
+
+									if len(elem) == 0 {
+										s.handleWatchCoreV1ReplicationControllerListForAllNamespacesRequest(args, w, r)
+										return
+									}
+									switch elem[0] {
+									case 's': // Prefix: "sourcequotas"
+										if prefix := "sourcequotas"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+											elem = elem[len(prefix):]
+										} else {
+											break
+										}
+
+										// Leaf: WatchCoreV1ResourceQuotaListForAllNamespaces
+										s.handleWatchCoreV1ResourceQuotaListForAllNamespacesRequest(args, w, r)
+										return
+									}
+								case 's': // Prefix: "sourcequotas"
+									if prefix := "sourcequotas"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+										elem = elem[len(prefix):]
+									} else {
+										break
+									}
+
+									// Leaf: WatchCoreV1ResourceQuotaListForAllNamespaces
+									s.handleWatchCoreV1ResourceQuotaListForAllNamespacesRequest(args, w, r)
+									return
+								}
+							case 's': // Prefix: "se"
+								if prefix := "se"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+									elem = elem[len(prefix):]
+								} else {
+									break
+								}
+
+								if len(elem) == 0 {
+									s.handleWatchCoreV1ServiceAccountListForAllNamespacesRequest(args, w, r)
+									return
+								}
+								switch elem[0] {
+								case 'c': // Prefix: "crets"
+									if prefix := "crets"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+										elem = elem[len(prefix):]
+									} else {
+										break
+									}
+
+									if len(elem) == 0 {
+										s.handleWatchCoreV1SecretListForAllNamespacesRequest(args, w, r)
+										return
+									}
+									switch elem[0] {
+									case 'r': // Prefix: "rviceaccounts"
+										if prefix := "rviceaccounts"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+											elem = elem[len(prefix):]
+										} else {
+											break
+										}
+
+										// Leaf: WatchCoreV1ServiceAccountListForAllNamespaces
+										s.handleWatchCoreV1ServiceAccountListForAllNamespacesRequest(args, w, r)
+										return
+									}
+								case 'r': // Prefix: "rvice"
+									if prefix := "rvice"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+										elem = elem[len(prefix):]
+									} else {
+										break
+									}
+
+									if len(elem) == 0 {
+										s.handleWatchCoreV1ServiceListForAllNamespacesRequest(args, w, r)
+										return
+									}
+									switch elem[0] {
+									case 'a': // Prefix: "accounts"
+										if prefix := "accounts"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+											elem = elem[len(prefix):]
+										} else {
+											break
+										}
+
+										if len(elem) == 0 {
+											s.handleWatchCoreV1ServiceAccountListForAllNamespacesRequest(args, w, r)
+											return
+										}
+										switch elem[0] {
+										case 's': // Prefix: "s"
+											if prefix := "s"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+												elem = elem[len(prefix):]
+											} else {
+												break
+											}
+
+											// Leaf: WatchCoreV1ServiceListForAllNamespaces
+											s.handleWatchCoreV1ServiceListForAllNamespacesRequest(args, w, r)
+											return
+										}
+									case 's': // Prefix: "s"
+										if prefix := "s"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+											elem = elem[len(prefix):]
+										} else {
+											break
+										}
+
+										// Leaf: WatchCoreV1ServiceListForAllNamespaces
+										s.handleWatchCoreV1ServiceListForAllNamespacesRequest(args, w, r)
+										return
+									}
+								}
+							}
 						}
-					case "validatingwebhookconfigurations": // -> 59
-						// Edge: 59, path: "validatingwebhookconfigurations".
-						elem, p = nextElem(p)
+					}
+				case 's': // Prefix: "s/"
+					if prefix := "s/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+						elem = elem[len(prefix):]
+					} else {
+						break
+					}
+
+					if len(elem) == 0 {
+						s.handleGetAPIVersionsRequest(args, w, r)
+						return
+					}
+					switch elem[0] {
+					case '/': // Prefix: "/"
+						if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+							elem = elem[len(prefix):]
+						} else {
+							break
+						}
+
+						// Leaf: GetCoreAPIVersions
+						s.handleGetCoreAPIVersionsRequest(args, w, r)
+						return
+					case 'a': // Prefix: "a"
+						if prefix := "a"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+							elem = elem[len(prefix):]
+						} else {
+							break
+						}
+
 						if len(elem) == 0 {
-							// GET /apis/admissionregistration.k8s.io/v1/validatingwebhookconfigurations.
-							s.handleListAdmissionregistrationV1ValidatingWebhookConfigurationRequest(args, w, r)
+							s.handleGetApiextensionsAPIGroupRequest(args, w, r)
 							return
 						}
-						switch elem {
-						default:
-							if args == nil {
-								args = make(map[string]string)
+						switch elem[0] {
+						case 'd': // Prefix: "dmissionregistration.k8s.io/"
+							if prefix := "dmissionregistration.k8s.io/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+								elem = elem[len(prefix):]
+							} else {
+								break
 							}
-							args["name"] = elem
-							// GET /apis/admissionregistration.k8s.io/v1/validatingwebhookconfigurations/{name}
-							s.handleReadAdmissionregistrationV1ValidatingWebhookConfigurationRequest(args, w, r)
-							return
-						}
-					case "watch": // -> 291
-						// Edge: 291, path: "watch".
-						elem, p = nextElem(p)
-						switch elem {
-						case "mutatingwebhookconfigurations": // -> 292
-							// Edge: 292, path: "mutatingwebhookconfigurations".
-							elem, p = nextElem(p)
+
 							if len(elem) == 0 {
-								// GET /apis/admissionregistration.k8s.io/v1/watch/mutatingwebhookconfigurations.
-								s.handleWatchAdmissionregistrationV1MutatingWebhookConfigurationListRequest(args, w, r)
+								s.handleGetAdmissionregistrationAPIGroupRequest(args, w, r)
 								return
 							}
-							switch elem {
-							default:
-								if args == nil {
-									args = make(map[string]string)
+							switch elem[0] {
+							case 'p': // Prefix: "piextensions.k8s.io/"
+								if prefix := "piextensions.k8s.io/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+									elem = elem[len(prefix):]
+								} else {
+									break
 								}
-								args["name"] = elem
-								// GET /apis/admissionregistration.k8s.io/v1/watch/mutatingwebhookconfigurations/{name}
-								s.handleWatchAdmissionregistrationV1MutatingWebhookConfigurationRequest(args, w, r)
+
+								// Leaf: GetApiextensionsAPIGroup
+								s.handleGetApiextensionsAPIGroupRequest(args, w, r)
 								return
+							case 'v': // Prefix: "v1/"
+								if prefix := "v1/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+									elem = elem[len(prefix):]
+								} else {
+									break
+								}
+
+								if len(elem) == 0 {
+									s.handleGetAdmissionregistrationV1APIResourcesRequest(args, w, r)
+									return
+								}
+								switch elem[0] {
+								case 'm': // Prefix: "mutatingwebhookconfigurations"
+									if prefix := "mutatingwebhookconfigurations"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+										elem = elem[len(prefix):]
+									} else {
+										break
+									}
+
+									if len(elem) == 0 {
+										s.handleListAdmissionregistrationV1MutatingWebhookConfigurationRequest(args, w, r)
+										return
+									}
+									switch elem[0] {
+									case '/': // Prefix: "/"
+										if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+											elem = elem[len(prefix):]
+										} else {
+											break
+										}
+
+										// Param: "name"
+										// Leaf parameter
+										args["name"] = elem
+
+										// Leaf: ReadAdmissionregistrationV1MutatingWebhookConfiguration
+										s.handleReadAdmissionregistrationV1MutatingWebhookConfigurationRequest(args, w, r)
+										return
+									}
+								case 'v': // Prefix: "validatingwebhookconfigurations"
+									if prefix := "validatingwebhookconfigurations"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+										elem = elem[len(prefix):]
+									} else {
+										break
+									}
+
+									if len(elem) == 0 {
+										s.handleListAdmissionregistrationV1ValidatingWebhookConfigurationRequest(args, w, r)
+										return
+									}
+									switch elem[0] {
+									case '/': // Prefix: "/"
+										if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+											elem = elem[len(prefix):]
+										} else {
+											break
+										}
+
+										// Param: "name"
+										// Leaf parameter
+										args["name"] = elem
+
+										// Leaf: ReadAdmissionregistrationV1ValidatingWebhookConfiguration
+										s.handleReadAdmissionregistrationV1ValidatingWebhookConfigurationRequest(args, w, r)
+										return
+									}
+								case 'w': // Prefix: "watch/"
+									if prefix := "watch/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+										elem = elem[len(prefix):]
+									} else {
+										break
+									}
+
+									if len(elem) == 0 {
+										s.handleWatchAdmissionregistrationV1ValidatingWebhookConfigurationRequest(args, w, r)
+										return
+									}
+									switch elem[0] {
+									case 'm': // Prefix: "mutatingwebhookconfigurations"
+										if prefix := "mutatingwebhookconfigurations"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+											elem = elem[len(prefix):]
+										} else {
+											break
+										}
+
+										if len(elem) == 0 {
+											s.handleWatchAdmissionregistrationV1MutatingWebhookConfigurationListRequest(args, w, r)
+											return
+										}
+										switch elem[0] {
+										case '/': // Prefix: "/"
+											if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+												elem = elem[len(prefix):]
+											} else {
+												break
+											}
+
+											// Param: "name"
+											// Leaf parameter
+											args["name"] = elem
+
+											// Leaf: WatchAdmissionregistrationV1MutatingWebhookConfiguration
+											s.handleWatchAdmissionregistrationV1MutatingWebhookConfigurationRequest(args, w, r)
+											return
+										case 'v': // Prefix: "validatingwebhookconfigurations/"
+											if prefix := "validatingwebhookconfigurations/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+												elem = elem[len(prefix):]
+											} else {
+												break
+											}
+
+											// Param: "name"
+											// Leaf parameter
+											args["name"] = elem
+
+											// Leaf: WatchAdmissionregistrationV1ValidatingWebhookConfiguration
+											s.handleWatchAdmissionregistrationV1ValidatingWebhookConfigurationRequest(args, w, r)
+											return
+										}
+									case 'v': // Prefix: "validatingwebhookconfigurations"
+										if prefix := "validatingwebhookconfigurations"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+											elem = elem[len(prefix):]
+										} else {
+											break
+										}
+
+										if len(elem) == 0 {
+											s.handleWatchAdmissionregistrationV1ValidatingWebhookConfigurationListRequest(args, w, r)
+											return
+										}
+										switch elem[0] {
+										case '/': // Prefix: "/"
+											if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+												elem = elem[len(prefix):]
+											} else {
+												break
+											}
+
+											// Param: "name"
+											// Leaf parameter
+											args["name"] = elem
+
+											// Leaf: WatchAdmissionregistrationV1ValidatingWebhookConfiguration
+											s.handleWatchAdmissionregistrationV1ValidatingWebhookConfigurationRequest(args, w, r)
+											return
+										}
+									}
+								}
 							}
-						case "validatingwebhookconfigurations": // -> 294
-							// Edge: 294, path: "validatingwebhookconfigurations".
-							elem, p = nextElem(p)
+						case 'p': // Prefix: "p"
+							if prefix := "p"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+								elem = elem[len(prefix):]
+							} else {
+								break
+							}
+
 							if len(elem) == 0 {
-								// GET /apis/admissionregistration.k8s.io/v1/watch/validatingwebhookconfigurations.
-								s.handleWatchAdmissionregistrationV1ValidatingWebhookConfigurationListRequest(args, w, r)
+								s.handleGetAppsAPIGroupRequest(args, w, r)
 								return
 							}
-							switch elem {
-							default:
-								if args == nil {
-									args = make(map[string]string)
+							switch elem[0] {
+							case 'i': // Prefix: "i"
+								if prefix := "i"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+									elem = elem[len(prefix):]
+								} else {
+									break
 								}
-								args["name"] = elem
-								// GET /apis/admissionregistration.k8s.io/v1/watch/validatingwebhookconfigurations/{name}
-								s.handleWatchAdmissionregistrationV1ValidatingWebhookConfigurationRequest(args, w, r)
+
+								if len(elem) == 0 {
+									s.handleGetApiregistrationAPIGroupRequest(args, w, r)
+									return
+								}
+								switch elem[0] {
+								case 'e': // Prefix: "extensions.k8s.io/"
+									if prefix := "extensions.k8s.io/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+										elem = elem[len(prefix):]
+									} else {
+										break
+									}
+
+									if len(elem) == 0 {
+										s.handleGetApiextensionsAPIGroupRequest(args, w, r)
+										return
+									}
+									switch elem[0] {
+									case 'r': // Prefix: "registration.k8s.io/"
+										if prefix := "registration.k8s.io/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+											elem = elem[len(prefix):]
+										} else {
+											break
+										}
+
+										// Leaf: GetApiregistrationAPIGroup
+										s.handleGetApiregistrationAPIGroupRequest(args, w, r)
+										return
+									case 'v': // Prefix: "v1/"
+										if prefix := "v1/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+											elem = elem[len(prefix):]
+										} else {
+											break
+										}
+
+										if len(elem) == 0 {
+											s.handleGetApiextensionsV1APIResourcesRequest(args, w, r)
+											return
+										}
+										switch elem[0] {
+										case 'c': // Prefix: "customresourcedefinitions"
+											if prefix := "customresourcedefinitions"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+												elem = elem[len(prefix):]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												s.handleListApiextensionsV1CustomResourceDefinitionRequest(args, w, r)
+												return
+											}
+											switch elem[0] {
+											case '/': // Prefix: "/"
+												if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+													elem = elem[len(prefix):]
+												} else {
+													break
+												}
+
+												// Param: "name"
+												// Match until one of "/"
+												idx := strings.IndexAny(elem, "/")
+												if idx > 0 {
+													args["name"] = elem[:idx]
+													elem = elem[idx:]
+
+													if len(elem) == 0 {
+														s.handleReadApiextensionsV1CustomResourceDefinitionRequest(args, w, r)
+														return
+													}
+													switch elem[0] {
+													case '/': // Prefix: "/status"
+														if prefix := "/status"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+															elem = elem[len(prefix):]
+														} else {
+															break
+														}
+
+														// Leaf: ReadApiextensionsV1CustomResourceDefinitionStatus
+														s.handleReadApiextensionsV1CustomResourceDefinitionStatusRequest(args, w, r)
+														return
+													}
+												}
+											}
+										case 'w': // Prefix: "watch/customresourcedefinitions"
+											if prefix := "watch/customresourcedefinitions"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+												elem = elem[len(prefix):]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												s.handleWatchApiextensionsV1CustomResourceDefinitionListRequest(args, w, r)
+												return
+											}
+											switch elem[0] {
+											case '/': // Prefix: "/"
+												if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+													elem = elem[len(prefix):]
+												} else {
+													break
+												}
+
+												// Param: "name"
+												// Leaf parameter
+												args["name"] = elem
+
+												// Leaf: WatchApiextensionsV1CustomResourceDefinition
+												s.handleWatchApiextensionsV1CustomResourceDefinitionRequest(args, w, r)
+												return
+											}
+										}
+									}
+								case 'p': // Prefix: "ps/"
+									if prefix := "ps/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+										elem = elem[len(prefix):]
+									} else {
+										break
+									}
+
+									// Leaf: GetAppsAPIGroup
+									s.handleGetAppsAPIGroupRequest(args, w, r)
+									return
+								case 'r': // Prefix: "registration.k8s.io/"
+									if prefix := "registration.k8s.io/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+										elem = elem[len(prefix):]
+									} else {
+										break
+									}
+
+									if len(elem) == 0 {
+										s.handleGetApiregistrationAPIGroupRequest(args, w, r)
+										return
+									}
+									switch elem[0] {
+									case 'v': // Prefix: "v1/"
+										if prefix := "v1/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+											elem = elem[len(prefix):]
+										} else {
+											break
+										}
+
+										if len(elem) == 0 {
+											s.handleGetApiregistrationV1APIResourcesRequest(args, w, r)
+											return
+										}
+										switch elem[0] {
+										case 'a': // Prefix: "apiservices"
+											if prefix := "apiservices"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+												elem = elem[len(prefix):]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												s.handleListApiregistrationV1APIServiceRequest(args, w, r)
+												return
+											}
+											switch elem[0] {
+											case '/': // Prefix: "/"
+												if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+													elem = elem[len(prefix):]
+												} else {
+													break
+												}
+
+												// Param: "name"
+												// Match until one of "/"
+												idx := strings.IndexAny(elem, "/")
+												if idx > 0 {
+													args["name"] = elem[:idx]
+													elem = elem[idx:]
+
+													if len(elem) == 0 {
+														s.handleReadApiregistrationV1APIServiceRequest(args, w, r)
+														return
+													}
+													switch elem[0] {
+													case '/': // Prefix: "/status"
+														if prefix := "/status"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+															elem = elem[len(prefix):]
+														} else {
+															break
+														}
+
+														// Leaf: ReadApiregistrationV1APIServiceStatus
+														s.handleReadApiregistrationV1APIServiceStatusRequest(args, w, r)
+														return
+													}
+												}
+											}
+										case 'w': // Prefix: "watch/apiservices"
+											if prefix := "watch/apiservices"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+												elem = elem[len(prefix):]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												s.handleWatchApiregistrationV1APIServiceListRequest(args, w, r)
+												return
+											}
+											switch elem[0] {
+											case '/': // Prefix: "/"
+												if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+													elem = elem[len(prefix):]
+												} else {
+													break
+												}
+
+												// Param: "name"
+												// Leaf parameter
+												args["name"] = elem
+
+												// Leaf: WatchApiregistrationV1APIService
+												s.handleWatchApiregistrationV1APIServiceRequest(args, w, r)
+												return
+											}
+										}
+									}
+								}
+							case 'p': // Prefix: "ps/"
+								if prefix := "ps/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+									elem = elem[len(prefix):]
+								} else {
+									break
+								}
+
+								if len(elem) == 0 {
+									s.handleGetAppsAPIGroupRequest(args, w, r)
+									return
+								}
+								switch elem[0] {
+								case 'v': // Prefix: "v1/"
+									if prefix := "v1/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+										elem = elem[len(prefix):]
+									} else {
+										break
+									}
+
+									if len(elem) == 0 {
+										s.handleGetAppsV1APIResourcesRequest(args, w, r)
+										return
+									}
+									switch elem[0] {
+									case 'c': // Prefix: "controllerrevisions"
+										if prefix := "controllerrevisions"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+											elem = elem[len(prefix):]
+										} else {
+											break
+										}
+
+										// Leaf: ListAppsV1ControllerRevisionForAllNamespaces
+										s.handleListAppsV1ControllerRevisionForAllNamespacesRequest(args, w, r)
+										return
+									case 'd': // Prefix: "d"
+										if prefix := "d"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+											elem = elem[len(prefix):]
+										} else {
+											break
+										}
+
+										if len(elem) == 0 {
+											s.handleListAppsV1DeploymentForAllNamespacesRequest(args, w, r)
+											return
+										}
+										switch elem[0] {
+										case 'a': // Prefix: "aemonsets"
+											if prefix := "aemonsets"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+												elem = elem[len(prefix):]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												s.handleListAppsV1DaemonSetForAllNamespacesRequest(args, w, r)
+												return
+											}
+											switch elem[0] {
+											case 'e': // Prefix: "eployments"
+												if prefix := "eployments"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+													elem = elem[len(prefix):]
+												} else {
+													break
+												}
+
+												// Leaf: ListAppsV1DeploymentForAllNamespaces
+												s.handleListAppsV1DeploymentForAllNamespacesRequest(args, w, r)
+												return
+											}
+										case 'e': // Prefix: "eployments"
+											if prefix := "eployments"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+												elem = elem[len(prefix):]
+											} else {
+												break
+											}
+
+											// Leaf: ListAppsV1DeploymentForAllNamespaces
+											s.handleListAppsV1DeploymentForAllNamespacesRequest(args, w, r)
+											return
+										}
+									case 'n': // Prefix: "namespaces/"
+										if prefix := "namespaces/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+											elem = elem[len(prefix):]
+										} else {
+											break
+										}
+
+										// Param: "namespace"
+										// Match until one of "/"
+										idx := strings.IndexAny(elem, "/")
+										if idx > 0 {
+											args["namespace"] = elem[:idx]
+											elem = elem[idx:]
+
+											if len(elem) == 0 {
+												break
+											}
+											switch elem[0] {
+											case '/': // Prefix: "/"
+												if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+													elem = elem[len(prefix):]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													s.handleListAppsV1NamespacedDaemonSetRequest(args, w, r)
+													return
+												}
+												switch elem[0] {
+												case 'c': // Prefix: "controllerrevisions"
+													if prefix := "controllerrevisions"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+														elem = elem[len(prefix):]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														s.handleListAppsV1NamespacedControllerRevisionRequest(args, w, r)
+														return
+													}
+													switch elem[0] {
+													case '/': // Prefix: "/"
+														if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+															elem = elem[len(prefix):]
+														} else {
+															break
+														}
+
+														// Param: "name"
+														// Leaf parameter
+														args["name"] = elem
+
+														// Leaf: ReadAppsV1NamespacedControllerRevision
+														s.handleReadAppsV1NamespacedControllerRevisionRequest(args, w, r)
+														return
+													case 'd': // Prefix: "daemonsets"
+														if prefix := "daemonsets"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+															elem = elem[len(prefix):]
+														} else {
+															break
+														}
+
+														// Leaf: ListAppsV1NamespacedDaemonSet
+														s.handleListAppsV1NamespacedDaemonSetRequest(args, w, r)
+														return
+													}
+												case 'd': // Prefix: "d"
+													if prefix := "d"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+														elem = elem[len(prefix):]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														s.handleListAppsV1NamespacedDeploymentRequest(args, w, r)
+														return
+													}
+													switch elem[0] {
+													case 'a': // Prefix: "aemonsets"
+														if prefix := "aemonsets"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+															elem = elem[len(prefix):]
+														} else {
+															break
+														}
+
+														if len(elem) == 0 {
+															s.handleListAppsV1NamespacedDaemonSetRequest(args, w, r)
+															return
+														}
+														switch elem[0] {
+														case '/': // Prefix: "/"
+															if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																elem = elem[len(prefix):]
+															} else {
+																break
+															}
+
+															// Param: "name"
+															// Match until one of "/"
+															idx := strings.IndexAny(elem, "/")
+															if idx > 0 {
+																args["name"] = elem[:idx]
+																elem = elem[idx:]
+
+																if len(elem) == 0 {
+																	s.handleReadAppsV1NamespacedDaemonSetRequest(args, w, r)
+																	return
+																}
+																switch elem[0] {
+																case '/': // Prefix: "/status"
+																	if prefix := "/status"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																		elem = elem[len(prefix):]
+																	} else {
+																		break
+																	}
+
+																	// Leaf: ReadAppsV1NamespacedDaemonSetStatus
+																	s.handleReadAppsV1NamespacedDaemonSetStatusRequest(args, w, r)
+																	return
+																}
+															}
+														case 'e': // Prefix: "eployments"
+															if prefix := "eployments"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																elem = elem[len(prefix):]
+															} else {
+																break
+															}
+
+															// Leaf: ListAppsV1NamespacedDeployment
+															s.handleListAppsV1NamespacedDeploymentRequest(args, w, r)
+															return
+														}
+													case 'e': // Prefix: "eployments"
+														if prefix := "eployments"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+															elem = elem[len(prefix):]
+														} else {
+															break
+														}
+
+														if len(elem) == 0 {
+															s.handleListAppsV1NamespacedDeploymentRequest(args, w, r)
+															return
+														}
+														switch elem[0] {
+														case '/': // Prefix: "/"
+															if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																elem = elem[len(prefix):]
+															} else {
+																break
+															}
+
+															// Param: "name"
+															// Match until one of "/"
+															idx := strings.IndexAny(elem, "/")
+															if idx > 0 {
+																args["name"] = elem[:idx]
+																elem = elem[idx:]
+
+																if len(elem) == 0 {
+																	s.handleReadAppsV1NamespacedDeploymentRequest(args, w, r)
+																	return
+																}
+																switch elem[0] {
+																case '/': // Prefix: "/s"
+																	if prefix := "/s"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																		elem = elem[len(prefix):]
+																	} else {
+																		break
+																	}
+
+																	if len(elem) == 0 {
+																		s.handleReadAppsV1NamespacedDeploymentStatusRequest(args, w, r)
+																		return
+																	}
+																	switch elem[0] {
+																	case 'c': // Prefix: "cale"
+																		if prefix := "cale"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																			elem = elem[len(prefix):]
+																		} else {
+																			break
+																		}
+
+																		if len(elem) == 0 {
+																			s.handleReadAppsV1NamespacedDeploymentScaleRequest(args, w, r)
+																			return
+																		}
+																		switch elem[0] {
+																		case 't': // Prefix: "tatus"
+																			if prefix := "tatus"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																				elem = elem[len(prefix):]
+																			} else {
+																				break
+																			}
+
+																			// Leaf: ReadAppsV1NamespacedDeploymentStatus
+																			s.handleReadAppsV1NamespacedDeploymentStatusRequest(args, w, r)
+																			return
+																		}
+																	case 't': // Prefix: "tatus"
+																		if prefix := "tatus"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																			elem = elem[len(prefix):]
+																		} else {
+																			break
+																		}
+
+																		// Leaf: ReadAppsV1NamespacedDeploymentStatus
+																		s.handleReadAppsV1NamespacedDeploymentStatusRequest(args, w, r)
+																		return
+																	}
+																}
+															}
+														}
+													}
+												case 'r': // Prefix: "replicasets"
+													if prefix := "replicasets"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+														elem = elem[len(prefix):]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														s.handleListAppsV1NamespacedReplicaSetRequest(args, w, r)
+														return
+													}
+													switch elem[0] {
+													case '/': // Prefix: "/"
+														if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+															elem = elem[len(prefix):]
+														} else {
+															break
+														}
+
+														// Param: "name"
+														// Match until one of "/"
+														idx := strings.IndexAny(elem, "/")
+														if idx > 0 {
+															args["name"] = elem[:idx]
+															elem = elem[idx:]
+
+															if len(elem) == 0 {
+																s.handleReadAppsV1NamespacedReplicaSetRequest(args, w, r)
+																return
+															}
+															switch elem[0] {
+															case '/': // Prefix: "/s"
+																if prefix := "/s"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																	elem = elem[len(prefix):]
+																} else {
+																	break
+																}
+
+																if len(elem) == 0 {
+																	s.handleReadAppsV1NamespacedReplicaSetStatusRequest(args, w, r)
+																	return
+																}
+																switch elem[0] {
+																case 'c': // Prefix: "cale"
+																	if prefix := "cale"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																		elem = elem[len(prefix):]
+																	} else {
+																		break
+																	}
+
+																	if len(elem) == 0 {
+																		s.handleReadAppsV1NamespacedReplicaSetScaleRequest(args, w, r)
+																		return
+																	}
+																	switch elem[0] {
+																	case 't': // Prefix: "tatus"
+																		if prefix := "tatus"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																			elem = elem[len(prefix):]
+																		} else {
+																			break
+																		}
+
+																		// Leaf: ReadAppsV1NamespacedReplicaSetStatus
+																		s.handleReadAppsV1NamespacedReplicaSetStatusRequest(args, w, r)
+																		return
+																	}
+																case 't': // Prefix: "tatus"
+																	if prefix := "tatus"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																		elem = elem[len(prefix):]
+																	} else {
+																		break
+																	}
+
+																	// Leaf: ReadAppsV1NamespacedReplicaSetStatus
+																	s.handleReadAppsV1NamespacedReplicaSetStatusRequest(args, w, r)
+																	return
+																}
+															}
+														}
+													}
+												case 's': // Prefix: "statefulsets"
+													if prefix := "statefulsets"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+														elem = elem[len(prefix):]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														s.handleListAppsV1NamespacedStatefulSetRequest(args, w, r)
+														return
+													}
+													switch elem[0] {
+													case '/': // Prefix: "/"
+														if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+															elem = elem[len(prefix):]
+														} else {
+															break
+														}
+
+														// Param: "name"
+														// Match until one of "/"
+														idx := strings.IndexAny(elem, "/")
+														if idx > 0 {
+															args["name"] = elem[:idx]
+															elem = elem[idx:]
+
+															if len(elem) == 0 {
+																s.handleReadAppsV1NamespacedStatefulSetRequest(args, w, r)
+																return
+															}
+															switch elem[0] {
+															case '/': // Prefix: "/s"
+																if prefix := "/s"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																	elem = elem[len(prefix):]
+																} else {
+																	break
+																}
+
+																if len(elem) == 0 {
+																	s.handleReadAppsV1NamespacedStatefulSetStatusRequest(args, w, r)
+																	return
+																}
+																switch elem[0] {
+																case 'c': // Prefix: "cale"
+																	if prefix := "cale"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																		elem = elem[len(prefix):]
+																	} else {
+																		break
+																	}
+
+																	if len(elem) == 0 {
+																		s.handleReadAppsV1NamespacedStatefulSetScaleRequest(args, w, r)
+																		return
+																	}
+																	switch elem[0] {
+																	case 't': // Prefix: "tatus"
+																		if prefix := "tatus"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																			elem = elem[len(prefix):]
+																		} else {
+																			break
+																		}
+
+																		// Leaf: ReadAppsV1NamespacedStatefulSetStatus
+																		s.handleReadAppsV1NamespacedStatefulSetStatusRequest(args, w, r)
+																		return
+																	}
+																case 't': // Prefix: "tatus"
+																	if prefix := "tatus"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																		elem = elem[len(prefix):]
+																	} else {
+																		break
+																	}
+
+																	// Leaf: ReadAppsV1NamespacedStatefulSetStatus
+																	s.handleReadAppsV1NamespacedStatefulSetStatusRequest(args, w, r)
+																	return
+																}
+															}
+														}
+													}
+												}
+											}
+										}
+									case 'r': // Prefix: "replicasets"
+										if prefix := "replicasets"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+											elem = elem[len(prefix):]
+										} else {
+											break
+										}
+
+										// Leaf: ListAppsV1ReplicaSetForAllNamespaces
+										s.handleListAppsV1ReplicaSetForAllNamespacesRequest(args, w, r)
+										return
+									case 's': // Prefix: "statefulsets"
+										if prefix := "statefulsets"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+											elem = elem[len(prefix):]
+										} else {
+											break
+										}
+
+										// Leaf: ListAppsV1StatefulSetForAllNamespaces
+										s.handleListAppsV1StatefulSetForAllNamespacesRequest(args, w, r)
+										return
+									case 'w': // Prefix: "watch/"
+										if prefix := "watch/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+											elem = elem[len(prefix):]
+										} else {
+											break
+										}
+
+										if len(elem) == 0 {
+											s.handleWatchAppsV1DaemonSetListForAllNamespacesRequest(args, w, r)
+											return
+										}
+										switch elem[0] {
+										case 'c': // Prefix: "controllerrevisions"
+											if prefix := "controllerrevisions"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+												elem = elem[len(prefix):]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												s.handleWatchAppsV1ControllerRevisionListForAllNamespacesRequest(args, w, r)
+												return
+											}
+											switch elem[0] {
+											case 'd': // Prefix: "daemonsets"
+												if prefix := "daemonsets"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+													elem = elem[len(prefix):]
+												} else {
+													break
+												}
+
+												// Leaf: WatchAppsV1DaemonSetListForAllNamespaces
+												s.handleWatchAppsV1DaemonSetListForAllNamespacesRequest(args, w, r)
+												return
+											}
+										case 'd': // Prefix: "d"
+											if prefix := "d"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+												elem = elem[len(prefix):]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												s.handleWatchAppsV1DeploymentListForAllNamespacesRequest(args, w, r)
+												return
+											}
+											switch elem[0] {
+											case 'a': // Prefix: "aemonsets"
+												if prefix := "aemonsets"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+													elem = elem[len(prefix):]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													s.handleWatchAppsV1DaemonSetListForAllNamespacesRequest(args, w, r)
+													return
+												}
+												switch elem[0] {
+												case 'e': // Prefix: "eployments"
+													if prefix := "eployments"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+														elem = elem[len(prefix):]
+													} else {
+														break
+													}
+
+													// Leaf: WatchAppsV1DeploymentListForAllNamespaces
+													s.handleWatchAppsV1DeploymentListForAllNamespacesRequest(args, w, r)
+													return
+												}
+											case 'e': // Prefix: "eployments"
+												if prefix := "eployments"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+													elem = elem[len(prefix):]
+												} else {
+													break
+												}
+
+												// Leaf: WatchAppsV1DeploymentListForAllNamespaces
+												s.handleWatchAppsV1DeploymentListForAllNamespacesRequest(args, w, r)
+												return
+											}
+										case 'n': // Prefix: "namespaces/"
+											if prefix := "namespaces/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+												elem = elem[len(prefix):]
+											} else {
+												break
+											}
+
+											// Param: "namespace"
+											// Match until one of "/"
+											idx := strings.IndexAny(elem, "/")
+											if idx > 0 {
+												args["namespace"] = elem[:idx]
+												elem = elem[idx:]
+
+												if len(elem) == 0 {
+													break
+												}
+												switch elem[0] {
+												case '/': // Prefix: "/"
+													if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+														elem = elem[len(prefix):]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														s.handleWatchAppsV1NamespacedDaemonSetRequest(args, w, r)
+														return
+													}
+													switch elem[0] {
+													case 'c': // Prefix: "controllerrevisions"
+														if prefix := "controllerrevisions"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+															elem = elem[len(prefix):]
+														} else {
+															break
+														}
+
+														if len(elem) == 0 {
+															s.handleWatchAppsV1NamespacedControllerRevisionListRequest(args, w, r)
+															return
+														}
+														switch elem[0] {
+														case '/': // Prefix: "/"
+															if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																elem = elem[len(prefix):]
+															} else {
+																break
+															}
+
+															// Param: "name"
+															// Leaf parameter
+															args["name"] = elem
+
+															// Leaf: WatchAppsV1NamespacedControllerRevision
+															s.handleWatchAppsV1NamespacedControllerRevisionRequest(args, w, r)
+															return
+														case 'd': // Prefix: "daemonsets/"
+															if prefix := "daemonsets/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																elem = elem[len(prefix):]
+															} else {
+																break
+															}
+
+															// Param: "name"
+															// Leaf parameter
+															args["name"] = elem
+
+															// Leaf: WatchAppsV1NamespacedDaemonSet
+															s.handleWatchAppsV1NamespacedDaemonSetRequest(args, w, r)
+															return
+														}
+													case 'd': // Prefix: "d"
+														if prefix := "d"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+															elem = elem[len(prefix):]
+														} else {
+															break
+														}
+
+														if len(elem) == 0 {
+															s.handleWatchAppsV1NamespacedDeploymentRequest(args, w, r)
+															return
+														}
+														switch elem[0] {
+														case 'a': // Prefix: "aemonsets"
+															if prefix := "aemonsets"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																elem = elem[len(prefix):]
+															} else {
+																break
+															}
+
+															if len(elem) == 0 {
+																s.handleWatchAppsV1NamespacedDaemonSetListRequest(args, w, r)
+																return
+															}
+															switch elem[0] {
+															case '/': // Prefix: "/"
+																if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																	elem = elem[len(prefix):]
+																} else {
+																	break
+																}
+
+																// Param: "name"
+																// Leaf parameter
+																args["name"] = elem
+
+																// Leaf: WatchAppsV1NamespacedDaemonSet
+																s.handleWatchAppsV1NamespacedDaemonSetRequest(args, w, r)
+																return
+															case 'e': // Prefix: "eployments/"
+																if prefix := "eployments/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																	elem = elem[len(prefix):]
+																} else {
+																	break
+																}
+
+																// Param: "name"
+																// Leaf parameter
+																args["name"] = elem
+
+																// Leaf: WatchAppsV1NamespacedDeployment
+																s.handleWatchAppsV1NamespacedDeploymentRequest(args, w, r)
+																return
+															}
+														case 'e': // Prefix: "eployments"
+															if prefix := "eployments"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																elem = elem[len(prefix):]
+															} else {
+																break
+															}
+
+															if len(elem) == 0 {
+																s.handleWatchAppsV1NamespacedDeploymentListRequest(args, w, r)
+																return
+															}
+															switch elem[0] {
+															case '/': // Prefix: "/"
+																if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																	elem = elem[len(prefix):]
+																} else {
+																	break
+																}
+
+																// Param: "name"
+																// Leaf parameter
+																args["name"] = elem
+
+																// Leaf: WatchAppsV1NamespacedDeployment
+																s.handleWatchAppsV1NamespacedDeploymentRequest(args, w, r)
+																return
+															}
+														}
+													case 'r': // Prefix: "replicasets"
+														if prefix := "replicasets"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+															elem = elem[len(prefix):]
+														} else {
+															break
+														}
+
+														if len(elem) == 0 {
+															s.handleWatchAppsV1NamespacedReplicaSetListRequest(args, w, r)
+															return
+														}
+														switch elem[0] {
+														case '/': // Prefix: "/"
+															if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																elem = elem[len(prefix):]
+															} else {
+																break
+															}
+
+															// Param: "name"
+															// Leaf parameter
+															args["name"] = elem
+
+															// Leaf: WatchAppsV1NamespacedReplicaSet
+															s.handleWatchAppsV1NamespacedReplicaSetRequest(args, w, r)
+															return
+														}
+													case 's': // Prefix: "statefulsets"
+														if prefix := "statefulsets"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+															elem = elem[len(prefix):]
+														} else {
+															break
+														}
+
+														if len(elem) == 0 {
+															s.handleWatchAppsV1NamespacedStatefulSetListRequest(args, w, r)
+															return
+														}
+														switch elem[0] {
+														case '/': // Prefix: "/"
+															if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																elem = elem[len(prefix):]
+															} else {
+																break
+															}
+
+															// Param: "name"
+															// Leaf parameter
+															args["name"] = elem
+
+															// Leaf: WatchAppsV1NamespacedStatefulSet
+															s.handleWatchAppsV1NamespacedStatefulSetRequest(args, w, r)
+															return
+														}
+													}
+												}
+											}
+										case 'r': // Prefix: "replicasets"
+											if prefix := "replicasets"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+												elem = elem[len(prefix):]
+											} else {
+												break
+											}
+
+											// Leaf: WatchAppsV1ReplicaSetListForAllNamespaces
+											s.handleWatchAppsV1ReplicaSetListForAllNamespacesRequest(args, w, r)
+											return
+										case 's': // Prefix: "statefulsets"
+											if prefix := "statefulsets"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+												elem = elem[len(prefix):]
+											} else {
+												break
+											}
+
+											// Leaf: WatchAppsV1StatefulSetListForAllNamespaces
+											s.handleWatchAppsV1StatefulSetListForAllNamespacesRequest(args, w, r)
+											return
+										}
+									}
+								}
+							}
+						case 'u': // Prefix: "ut"
+							if prefix := "ut"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+								elem = elem[len(prefix):]
+							} else {
+								break
+							}
+
+							if len(elem) == 0 {
+								s.handleGetAutoscalingAPIGroupRequest(args, w, r)
 								return
 							}
-						default:
-							s.notFound(w, r)
-							return
+							switch elem[0] {
+							case 'h': // Prefix: "h"
+								if prefix := "h"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+									elem = elem[len(prefix):]
+								} else {
+									break
+								}
+
+								if len(elem) == 0 {
+									s.handleGetAuthorizationAPIGroupRequest(args, w, r)
+									return
+								}
+								switch elem[0] {
+								case 'e': // Prefix: "entication.k8s.io/"
+									if prefix := "entication.k8s.io/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+										elem = elem[len(prefix):]
+									} else {
+										break
+									}
+
+									if len(elem) == 0 {
+										s.handleGetAuthenticationAPIGroupRequest(args, w, r)
+										return
+									}
+									switch elem[0] {
+									case 'o': // Prefix: "orization.k8s.io/"
+										if prefix := "orization.k8s.io/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+											elem = elem[len(prefix):]
+										} else {
+											break
+										}
+
+										// Leaf: GetAuthorizationAPIGroup
+										s.handleGetAuthorizationAPIGroupRequest(args, w, r)
+										return
+									case 'v': // Prefix: "v1/"
+										if prefix := "v1/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+											elem = elem[len(prefix):]
+										} else {
+											break
+										}
+
+										// Leaf: GetAuthenticationV1APIResources
+										s.handleGetAuthenticationV1APIResourcesRequest(args, w, r)
+										return
+									}
+								case 'o': // Prefix: "o"
+									if prefix := "o"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+										elem = elem[len(prefix):]
+									} else {
+										break
+									}
+
+									if len(elem) == 0 {
+										s.handleGetAutoscalingAPIGroupRequest(args, w, r)
+										return
+									}
+									switch elem[0] {
+									case 'r': // Prefix: "rization.k8s.io/"
+										if prefix := "rization.k8s.io/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+											elem = elem[len(prefix):]
+										} else {
+											break
+										}
+
+										if len(elem) == 0 {
+											s.handleGetAuthorizationAPIGroupRequest(args, w, r)
+											return
+										}
+										switch elem[0] {
+										case 's': // Prefix: "scaling/"
+											if prefix := "scaling/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+												elem = elem[len(prefix):]
+											} else {
+												break
+											}
+
+											// Leaf: GetAutoscalingAPIGroup
+											s.handleGetAutoscalingAPIGroupRequest(args, w, r)
+											return
+										case 'v': // Prefix: "v1/"
+											if prefix := "v1/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+												elem = elem[len(prefix):]
+											} else {
+												break
+											}
+
+											// Leaf: GetAuthorizationV1APIResources
+											s.handleGetAuthorizationV1APIResourcesRequest(args, w, r)
+											return
+										}
+									case 's': // Prefix: "scaling/"
+										if prefix := "scaling/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+											elem = elem[len(prefix):]
+										} else {
+											break
+										}
+
+										// Leaf: GetAutoscalingAPIGroup
+										s.handleGetAutoscalingAPIGroupRequest(args, w, r)
+										return
+									}
+								}
+							case 'o': // Prefix: "oscaling/"
+								if prefix := "oscaling/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+									elem = elem[len(prefix):]
+								} else {
+									break
+								}
+
+								if len(elem) == 0 {
+									s.handleGetAutoscalingAPIGroupRequest(args, w, r)
+									return
+								}
+								switch elem[0] {
+								case 'v': // Prefix: "v"
+									if prefix := "v"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+										elem = elem[len(prefix):]
+									} else {
+										break
+									}
+
+									if len(elem) == 0 {
+										s.handleGetAutoscalingV2beta1APIResourcesRequest(args, w, r)
+										return
+									}
+									switch elem[0] {
+									case '1': // Prefix: "1/"
+										if prefix := "1/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+											elem = elem[len(prefix):]
+										} else {
+											break
+										}
+
+										if len(elem) == 0 {
+											s.handleGetAutoscalingV1APIResourcesRequest(args, w, r)
+											return
+										}
+										switch elem[0] {
+										case '2': // Prefix: "2beta1/"
+											if prefix := "2beta1/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+												elem = elem[len(prefix):]
+											} else {
+												break
+											}
+
+											// Leaf: GetAutoscalingV2beta1APIResources
+											s.handleGetAutoscalingV2beta1APIResourcesRequest(args, w, r)
+											return
+										case 'h': // Prefix: "horizontalpodautoscalers"
+											if prefix := "horizontalpodautoscalers"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+												elem = elem[len(prefix):]
+											} else {
+												break
+											}
+
+											// Leaf: ListAutoscalingV1HorizontalPodAutoscalerForAllNamespaces
+											s.handleListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesRequest(args, w, r)
+											return
+										case 'n': // Prefix: "namespaces/"
+											if prefix := "namespaces/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+												elem = elem[len(prefix):]
+											} else {
+												break
+											}
+
+											// Param: "namespace"
+											// Match until one of "/"
+											idx := strings.IndexAny(elem, "/")
+											if idx > 0 {
+												args["namespace"] = elem[:idx]
+												elem = elem[idx:]
+
+												if len(elem) == 0 {
+													break
+												}
+												switch elem[0] {
+												case '/': // Prefix: "/horizontalpodautoscalers"
+													if prefix := "/horizontalpodautoscalers"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+														elem = elem[len(prefix):]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														s.handleListAutoscalingV1NamespacedHorizontalPodAutoscalerRequest(args, w, r)
+														return
+													}
+													switch elem[0] {
+													case '/': // Prefix: "/"
+														if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+															elem = elem[len(prefix):]
+														} else {
+															break
+														}
+
+														// Param: "name"
+														// Match until one of "/"
+														idx := strings.IndexAny(elem, "/")
+														if idx > 0 {
+															args["name"] = elem[:idx]
+															elem = elem[idx:]
+
+															if len(elem) == 0 {
+																s.handleReadAutoscalingV1NamespacedHorizontalPodAutoscalerRequest(args, w, r)
+																return
+															}
+															switch elem[0] {
+															case '/': // Prefix: "/status"
+																if prefix := "/status"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																	elem = elem[len(prefix):]
+																} else {
+																	break
+																}
+
+																// Leaf: ReadAutoscalingV1NamespacedHorizontalPodAutoscalerStatus
+																s.handleReadAutoscalingV1NamespacedHorizontalPodAutoscalerStatusRequest(args, w, r)
+																return
+															}
+														}
+													}
+												}
+											}
+										case 'w': // Prefix: "watch/"
+											if prefix := "watch/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+												elem = elem[len(prefix):]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												s.handleWatchAutoscalingV1NamespacedHorizontalPodAutoscalerRequest(args, w, r)
+												return
+											}
+											switch elem[0] {
+											case 'h': // Prefix: "horizontalpodautoscalers"
+												if prefix := "horizontalpodautoscalers"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+													elem = elem[len(prefix):]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													s.handleWatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespacesRequest(args, w, r)
+													return
+												}
+												switch elem[0] {
+												case 'n': // Prefix: "namespaces/"
+													if prefix := "namespaces/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+														elem = elem[len(prefix):]
+													} else {
+														break
+													}
+
+													// Param: "namespace"
+													// Match until one of "/"
+													idx := strings.IndexAny(elem, "/")
+													if idx > 0 {
+														args["namespace"] = elem[:idx]
+														elem = elem[idx:]
+
+														if len(elem) == 0 {
+															break
+														}
+														switch elem[0] {
+														case '/': // Prefix: "/horizontalpodautoscalers/"
+															if prefix := "/horizontalpodautoscalers/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																elem = elem[len(prefix):]
+															} else {
+																break
+															}
+
+															// Param: "name"
+															// Leaf parameter
+															args["name"] = elem
+
+															// Leaf: WatchAutoscalingV1NamespacedHorizontalPodAutoscaler
+															s.handleWatchAutoscalingV1NamespacedHorizontalPodAutoscalerRequest(args, w, r)
+															return
+														}
+													}
+												}
+											case 'n': // Prefix: "namespaces/"
+												if prefix := "namespaces/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+													elem = elem[len(prefix):]
+												} else {
+													break
+												}
+
+												// Param: "namespace"
+												// Match until one of "/"
+												idx := strings.IndexAny(elem, "/")
+												if idx > 0 {
+													args["namespace"] = elem[:idx]
+													elem = elem[idx:]
+
+													if len(elem) == 0 {
+														break
+													}
+													switch elem[0] {
+													case '/': // Prefix: "/horizontalpodautoscalers"
+														if prefix := "/horizontalpodautoscalers"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+															elem = elem[len(prefix):]
+														} else {
+															break
+														}
+
+														if len(elem) == 0 {
+															s.handleWatchAutoscalingV1NamespacedHorizontalPodAutoscalerListRequest(args, w, r)
+															return
+														}
+														switch elem[0] {
+														case '/': // Prefix: "/"
+															if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																elem = elem[len(prefix):]
+															} else {
+																break
+															}
+
+															// Param: "name"
+															// Leaf parameter
+															args["name"] = elem
+
+															// Leaf: WatchAutoscalingV1NamespacedHorizontalPodAutoscaler
+															s.handleWatchAutoscalingV1NamespacedHorizontalPodAutoscalerRequest(args, w, r)
+															return
+														}
+													}
+												}
+											}
+										}
+									case '2': // Prefix: "2beta"
+										if prefix := "2beta"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+											elem = elem[len(prefix):]
+										} else {
+											break
+										}
+
+										if len(elem) == 0 {
+											s.handleGetAutoscalingV2beta2APIResourcesRequest(args, w, r)
+											return
+										}
+										switch elem[0] {
+										case '1': // Prefix: "1/"
+											if prefix := "1/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+												elem = elem[len(prefix):]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												s.handleGetAutoscalingV2beta1APIResourcesRequest(args, w, r)
+												return
+											}
+											switch elem[0] {
+											case '2': // Prefix: "2/"
+												if prefix := "2/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+													elem = elem[len(prefix):]
+												} else {
+													break
+												}
+
+												// Leaf: GetAutoscalingV2beta2APIResources
+												s.handleGetAutoscalingV2beta2APIResourcesRequest(args, w, r)
+												return
+											case 'h': // Prefix: "horizontalpodautoscalers"
+												if prefix := "horizontalpodautoscalers"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+													elem = elem[len(prefix):]
+												} else {
+													break
+												}
+
+												// Leaf: ListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespaces
+												s.handleListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespacesRequest(args, w, r)
+												return
+											case 'n': // Prefix: "namespaces/"
+												if prefix := "namespaces/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+													elem = elem[len(prefix):]
+												} else {
+													break
+												}
+
+												// Param: "namespace"
+												// Match until one of "/"
+												idx := strings.IndexAny(elem, "/")
+												if idx > 0 {
+													args["namespace"] = elem[:idx]
+													elem = elem[idx:]
+
+													if len(elem) == 0 {
+														break
+													}
+													switch elem[0] {
+													case '/': // Prefix: "/horizontalpodautoscalers"
+														if prefix := "/horizontalpodautoscalers"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+															elem = elem[len(prefix):]
+														} else {
+															break
+														}
+
+														if len(elem) == 0 {
+															s.handleListAutoscalingV2beta1NamespacedHorizontalPodAutoscalerRequest(args, w, r)
+															return
+														}
+														switch elem[0] {
+														case '/': // Prefix: "/"
+															if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																elem = elem[len(prefix):]
+															} else {
+																break
+															}
+
+															// Param: "name"
+															// Match until one of "/"
+															idx := strings.IndexAny(elem, "/")
+															if idx > 0 {
+																args["name"] = elem[:idx]
+																elem = elem[idx:]
+
+																if len(elem) == 0 {
+																	s.handleReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerRequest(args, w, r)
+																	return
+																}
+																switch elem[0] {
+																case '/': // Prefix: "/status"
+																	if prefix := "/status"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																		elem = elem[len(prefix):]
+																	} else {
+																		break
+																	}
+
+																	// Leaf: ReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatus
+																	s.handleReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatusRequest(args, w, r)
+																	return
+																}
+															}
+														}
+													}
+												}
+											case 'w': // Prefix: "watch/"
+												if prefix := "watch/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+													elem = elem[len(prefix):]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													s.handleWatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerRequest(args, w, r)
+													return
+												}
+												switch elem[0] {
+												case 'h': // Prefix: "horizontalpodautoscalers"
+													if prefix := "horizontalpodautoscalers"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+														elem = elem[len(prefix):]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														s.handleWatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespacesRequest(args, w, r)
+														return
+													}
+													switch elem[0] {
+													case 'n': // Prefix: "namespaces/"
+														if prefix := "namespaces/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+															elem = elem[len(prefix):]
+														} else {
+															break
+														}
+
+														// Param: "namespace"
+														// Match until one of "/"
+														idx := strings.IndexAny(elem, "/")
+														if idx > 0 {
+															args["namespace"] = elem[:idx]
+															elem = elem[idx:]
+
+															if len(elem) == 0 {
+																break
+															}
+															switch elem[0] {
+															case '/': // Prefix: "/horizontalpodautoscalers/"
+																if prefix := "/horizontalpodautoscalers/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																	elem = elem[len(prefix):]
+																} else {
+																	break
+																}
+
+																// Param: "name"
+																// Leaf parameter
+																args["name"] = elem
+
+																// Leaf: WatchAutoscalingV2beta1NamespacedHorizontalPodAutoscaler
+																s.handleWatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerRequest(args, w, r)
+																return
+															}
+														}
+													}
+												case 'n': // Prefix: "namespaces/"
+													if prefix := "namespaces/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+														elem = elem[len(prefix):]
+													} else {
+														break
+													}
+
+													// Param: "namespace"
+													// Match until one of "/"
+													idx := strings.IndexAny(elem, "/")
+													if idx > 0 {
+														args["namespace"] = elem[:idx]
+														elem = elem[idx:]
+
+														if len(elem) == 0 {
+															break
+														}
+														switch elem[0] {
+														case '/': // Prefix: "/horizontalpodautoscalers"
+															if prefix := "/horizontalpodautoscalers"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																elem = elem[len(prefix):]
+															} else {
+																break
+															}
+
+															if len(elem) == 0 {
+																s.handleWatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerListRequest(args, w, r)
+																return
+															}
+															switch elem[0] {
+															case '/': // Prefix: "/"
+																if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																	elem = elem[len(prefix):]
+																} else {
+																	break
+																}
+
+																// Param: "name"
+																// Leaf parameter
+																args["name"] = elem
+
+																// Leaf: WatchAutoscalingV2beta1NamespacedHorizontalPodAutoscaler
+																s.handleWatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerRequest(args, w, r)
+																return
+															}
+														}
+													}
+												}
+											}
+										case '2': // Prefix: "2/"
+											if prefix := "2/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+												elem = elem[len(prefix):]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												s.handleGetAutoscalingV2beta2APIResourcesRequest(args, w, r)
+												return
+											}
+											switch elem[0] {
+											case 'h': // Prefix: "horizontalpodautoscalers"
+												if prefix := "horizontalpodautoscalers"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+													elem = elem[len(prefix):]
+												} else {
+													break
+												}
+
+												// Leaf: ListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespaces
+												s.handleListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespacesRequest(args, w, r)
+												return
+											case 'n': // Prefix: "namespaces/"
+												if prefix := "namespaces/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+													elem = elem[len(prefix):]
+												} else {
+													break
+												}
+
+												// Param: "namespace"
+												// Match until one of "/"
+												idx := strings.IndexAny(elem, "/")
+												if idx > 0 {
+													args["namespace"] = elem[:idx]
+													elem = elem[idx:]
+
+													if len(elem) == 0 {
+														break
+													}
+													switch elem[0] {
+													case '/': // Prefix: "/horizontalpodautoscalers"
+														if prefix := "/horizontalpodautoscalers"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+															elem = elem[len(prefix):]
+														} else {
+															break
+														}
+
+														if len(elem) == 0 {
+															s.handleListAutoscalingV2beta2NamespacedHorizontalPodAutoscalerRequest(args, w, r)
+															return
+														}
+														switch elem[0] {
+														case '/': // Prefix: "/"
+															if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																elem = elem[len(prefix):]
+															} else {
+																break
+															}
+
+															// Param: "name"
+															// Match until one of "/"
+															idx := strings.IndexAny(elem, "/")
+															if idx > 0 {
+																args["name"] = elem[:idx]
+																elem = elem[idx:]
+
+																if len(elem) == 0 {
+																	s.handleReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerRequest(args, w, r)
+																	return
+																}
+																switch elem[0] {
+																case '/': // Prefix: "/status"
+																	if prefix := "/status"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																		elem = elem[len(prefix):]
+																	} else {
+																		break
+																	}
+
+																	// Leaf: ReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatus
+																	s.handleReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatusRequest(args, w, r)
+																	return
+																}
+															}
+														}
+													}
+												}
+											case 'w': // Prefix: "watch/"
+												if prefix := "watch/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+													elem = elem[len(prefix):]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													s.handleWatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerRequest(args, w, r)
+													return
+												}
+												switch elem[0] {
+												case 'h': // Prefix: "horizontalpodautoscalers"
+													if prefix := "horizontalpodautoscalers"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+														elem = elem[len(prefix):]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														s.handleWatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespacesRequest(args, w, r)
+														return
+													}
+													switch elem[0] {
+													case 'n': // Prefix: "namespaces/"
+														if prefix := "namespaces/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+															elem = elem[len(prefix):]
+														} else {
+															break
+														}
+
+														// Param: "namespace"
+														// Match until one of "/"
+														idx := strings.IndexAny(elem, "/")
+														if idx > 0 {
+															args["namespace"] = elem[:idx]
+															elem = elem[idx:]
+
+															if len(elem) == 0 {
+																break
+															}
+															switch elem[0] {
+															case '/': // Prefix: "/horizontalpodautoscalers/"
+																if prefix := "/horizontalpodautoscalers/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																	elem = elem[len(prefix):]
+																} else {
+																	break
+																}
+
+																// Param: "name"
+																// Leaf parameter
+																args["name"] = elem
+
+																// Leaf: WatchAutoscalingV2beta2NamespacedHorizontalPodAutoscaler
+																s.handleWatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerRequest(args, w, r)
+																return
+															}
+														}
+													}
+												case 'n': // Prefix: "namespaces/"
+													if prefix := "namespaces/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+														elem = elem[len(prefix):]
+													} else {
+														break
+													}
+
+													// Param: "namespace"
+													// Match until one of "/"
+													idx := strings.IndexAny(elem, "/")
+													if idx > 0 {
+														args["namespace"] = elem[:idx]
+														elem = elem[idx:]
+
+														if len(elem) == 0 {
+															break
+														}
+														switch elem[0] {
+														case '/': // Prefix: "/horizontalpodautoscalers"
+															if prefix := "/horizontalpodautoscalers"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																elem = elem[len(prefix):]
+															} else {
+																break
+															}
+
+															if len(elem) == 0 {
+																s.handleWatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerListRequest(args, w, r)
+																return
+															}
+															switch elem[0] {
+															case '/': // Prefix: "/"
+																if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																	elem = elem[len(prefix):]
+																} else {
+																	break
+																}
+
+																// Param: "name"
+																// Leaf parameter
+																args["name"] = elem
+
+																// Leaf: WatchAutoscalingV2beta2NamespacedHorizontalPodAutoscaler
+																s.handleWatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerRequest(args, w, r)
+																return
+															}
+														}
+													}
+												}
+											}
+										}
+									}
+								}
+							}
 						}
-					default:
-						// GET /apis/admissionregistration.k8s.io/v1/.
-						s.handleGetAdmissionregistrationV1APIResourcesRequest(args, w, r)
-						return
-					}
-				default:
-					// GET /apis/admissionregistration.k8s.io/.
-					s.handleGetAdmissionregistrationAPIGroupRequest(args, w, r)
-					return
-				}
-			case "apiextensions.k8s.io": // -> 4
-				// Edge: 4, path: "apiextensions.k8s.io".
-				elem, p = nextElem(p)
-				if len(elem) == 0 {
-					// GET /apis/apiextensions.k8s.io/.
-					s.handleGetApiextensionsAPIGroupRequest(args, w, r)
-					return
-				}
-				switch elem {
-				case "v1": // -> 5
-					// Edge: 5, path: "v1".
-					elem, p = nextElem(p)
-					if len(elem) == 0 {
-						// GET /apis/apiextensions.k8s.io/v1/.
-						s.handleGetApiextensionsV1APIResourcesRequest(args, w, r)
-						return
-					}
-					switch elem {
-					case "customresourcedefinitions": // -> 60
-						// Edge: 60, path: "customresourcedefinitions".
-						elem, p = nextElem(p)
+					case 'b': // Prefix: "batch/"
+						if prefix := "batch/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+							elem = elem[len(prefix):]
+						} else {
+							break
+						}
+
 						if len(elem) == 0 {
-							// GET /apis/apiextensions.k8s.io/v1/customresourcedefinitions.
-							s.handleListApiextensionsV1CustomResourceDefinitionRequest(args, w, r)
+							s.handleGetBatchAPIGroupRequest(args, w, r)
 							return
 						}
-						switch elem {
-						default:
-							if args == nil {
-								args = make(map[string]string)
+						switch elem[0] {
+						case 'v': // Prefix: "v1"
+							if prefix := "v1"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+								elem = elem[len(prefix):]
+							} else {
+								break
 							}
-							args["name"] = elem
-							// Edge: 195, path: "".
-							elem, p = nextElem(p)
+
 							if len(elem) == 0 {
-								// GET /apis/apiextensions.k8s.io/v1/customresourcedefinitions/{name}.
-								s.handleReadApiextensionsV1CustomResourceDefinitionRequest(args, w, r)
+								s.handleGetBatchV1beta1APIResourcesRequest(args, w, r)
 								return
 							}
-							switch elem {
-							case "status": // -> 196
-								// GET /apis/apiextensions.k8s.io/v1/customresourcedefinitions/{name}/status
-								s.handleReadApiextensionsV1CustomResourceDefinitionStatusRequest(args, w, r)
-								return
-							default:
-								// GET /apis/apiextensions.k8s.io/v1/customresourcedefinitions/{name}.
-								s.handleReadApiextensionsV1CustomResourceDefinitionRequest(args, w, r)
-								return
-							}
-						}
-					case "watch": // -> 296
-						// Edge: 296, path: "watch".
-						elem, p = nextElem(p)
-						switch elem {
-						case "customresourcedefinitions": // -> 297
-							// Edge: 297, path: "customresourcedefinitions".
-							elem, p = nextElem(p)
-							if len(elem) == 0 {
-								// GET /apis/apiextensions.k8s.io/v1/watch/customresourcedefinitions.
-								s.handleWatchApiextensionsV1CustomResourceDefinitionListRequest(args, w, r)
-								return
-							}
-							switch elem {
-							default:
-								if args == nil {
-									args = make(map[string]string)
+							switch elem[0] {
+							case '/': // Prefix: "/"
+								if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+									elem = elem[len(prefix):]
+								} else {
+									break
 								}
-								args["name"] = elem
-								// GET /apis/apiextensions.k8s.io/v1/watch/customresourcedefinitions/{name}
-								s.handleWatchApiextensionsV1CustomResourceDefinitionRequest(args, w, r)
-								return
-							}
-						default:
-							s.notFound(w, r)
-							return
-						}
-					default:
-						// GET /apis/apiextensions.k8s.io/v1/.
-						s.handleGetApiextensionsV1APIResourcesRequest(args, w, r)
-						return
-					}
-				default:
-					// GET /apis/apiextensions.k8s.io/.
-					s.handleGetApiextensionsAPIGroupRequest(args, w, r)
-					return
-				}
-			case "apiregistration.k8s.io": // -> 6
-				// Edge: 6, path: "apiregistration.k8s.io".
-				elem, p = nextElem(p)
-				if len(elem) == 0 {
-					// GET /apis/apiregistration.k8s.io/.
-					s.handleGetApiregistrationAPIGroupRequest(args, w, r)
-					return
-				}
-				switch elem {
-				case "v1": // -> 7
-					// Edge: 7, path: "v1".
-					elem, p = nextElem(p)
-					if len(elem) == 0 {
-						// GET /apis/apiregistration.k8s.io/v1/.
-						s.handleGetApiregistrationV1APIResourcesRequest(args, w, r)
-						return
-					}
-					switch elem {
-					case "apiservices": // -> 61
-						// Edge: 61, path: "apiservices".
-						elem, p = nextElem(p)
-						if len(elem) == 0 {
-							// GET /apis/apiregistration.k8s.io/v1/apiservices.
-							s.handleListApiregistrationV1APIServiceRequest(args, w, r)
-							return
-						}
-						switch elem {
-						default:
-							if args == nil {
-								args = make(map[string]string)
-							}
-							args["name"] = elem
-							// Edge: 197, path: "".
-							elem, p = nextElem(p)
-							if len(elem) == 0 {
-								// GET /apis/apiregistration.k8s.io/v1/apiservices/{name}.
-								s.handleReadApiregistrationV1APIServiceRequest(args, w, r)
-								return
-							}
-							switch elem {
-							case "status": // -> 198
-								// GET /apis/apiregistration.k8s.io/v1/apiservices/{name}/status
-								s.handleReadApiregistrationV1APIServiceStatusRequest(args, w, r)
-								return
-							default:
-								// GET /apis/apiregistration.k8s.io/v1/apiservices/{name}.
-								s.handleReadApiregistrationV1APIServiceRequest(args, w, r)
-								return
-							}
-						}
-					case "watch": // -> 299
-						// Edge: 299, path: "watch".
-						elem, p = nextElem(p)
-						switch elem {
-						case "apiservices": // -> 300
-							// Edge: 300, path: "apiservices".
-							elem, p = nextElem(p)
-							if len(elem) == 0 {
-								// GET /apis/apiregistration.k8s.io/v1/watch/apiservices.
-								s.handleWatchApiregistrationV1APIServiceListRequest(args, w, r)
-								return
-							}
-							switch elem {
-							default:
-								if args == nil {
-									args = make(map[string]string)
-								}
-								args["name"] = elem
-								// GET /apis/apiregistration.k8s.io/v1/watch/apiservices/{name}
-								s.handleWatchApiregistrationV1APIServiceRequest(args, w, r)
-								return
-							}
-						default:
-							s.notFound(w, r)
-							return
-						}
-					default:
-						// GET /apis/apiregistration.k8s.io/v1/.
-						s.handleGetApiregistrationV1APIResourcesRequest(args, w, r)
-						return
-					}
-				default:
-					// GET /apis/apiregistration.k8s.io/.
-					s.handleGetApiregistrationAPIGroupRequest(args, w, r)
-					return
-				}
-			case "apps": // -> 8
-				// Edge: 8, path: "apps".
-				elem, p = nextElem(p)
-				if len(elem) == 0 {
-					// GET /apis/apps/.
-					s.handleGetAppsAPIGroupRequest(args, w, r)
-					return
-				}
-				switch elem {
-				case "v1": // -> 9
-					// Edge: 9, path: "v1".
-					elem, p = nextElem(p)
-					if len(elem) == 0 {
-						// GET /apis/apps/v1/.
-						s.handleGetAppsV1APIResourcesRequest(args, w, r)
-						return
-					}
-					switch elem {
-					case "controllerrevisions": // -> 62
-						// GET /apis/apps/v1/controllerrevisions
-						s.handleListAppsV1ControllerRevisionForAllNamespacesRequest(args, w, r)
-						return
-					case "daemonsets": // -> 63
-						// GET /apis/apps/v1/daemonsets
-						s.handleListAppsV1DaemonSetForAllNamespacesRequest(args, w, r)
-						return
-					case "deployments": // -> 64
-						// GET /apis/apps/v1/deployments
-						s.handleListAppsV1DeploymentForAllNamespacesRequest(args, w, r)
-						return
-					case "namespaces": // -> 65
-						// Edge: 65, path: "namespaces".
-						elem, p = nextElem(p)
-						switch elem {
-						default:
-							if args == nil {
-								args = make(map[string]string)
-							}
-							args["namespace"] = elem
-							// Edge: 66, path: "".
-							elem, p = nextElem(p)
-							switch elem {
-							case "controllerrevisions": // -> 67
-								// Edge: 67, path: "controllerrevisions".
-								elem, p = nextElem(p)
+
 								if len(elem) == 0 {
-									// GET /apis/apps/v1/namespaces/{namespace}/controllerrevisions.
-									s.handleListAppsV1NamespacedControllerRevisionRequest(args, w, r)
+									s.handleGetBatchV1APIResourcesRequest(args, w, r)
 									return
 								}
-								switch elem {
-								default:
-									if args == nil {
-										args = make(map[string]string)
+								switch elem[0] {
+								case 'b': // Prefix: "beta1/"
+									if prefix := "beta1/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+										elem = elem[len(prefix):]
+									} else {
+										break
 									}
-									args["name"] = elem
-									// GET /apis/apps/v1/namespaces/{namespace}/controllerrevisions/{name}
-									s.handleReadAppsV1NamespacedControllerRevisionRequest(args, w, r)
+
+									// Leaf: GetBatchV1beta1APIResources
+									s.handleGetBatchV1beta1APIResourcesRequest(args, w, r)
 									return
+								case 'c': // Prefix: "cronjobs"
+									if prefix := "cronjobs"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+										elem = elem[len(prefix):]
+									} else {
+										break
+									}
+
+									// Leaf: ListBatchV1CronJobForAllNamespaces
+									s.handleListBatchV1CronJobForAllNamespacesRequest(args, w, r)
+									return
+								case 'j': // Prefix: "jobs"
+									if prefix := "jobs"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+										elem = elem[len(prefix):]
+									} else {
+										break
+									}
+
+									// Leaf: ListBatchV1JobForAllNamespaces
+									s.handleListBatchV1JobForAllNamespacesRequest(args, w, r)
+									return
+								case 'n': // Prefix: "namespaces/"
+									if prefix := "namespaces/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+										elem = elem[len(prefix):]
+									} else {
+										break
+									}
+
+									// Param: "namespace"
+									// Match until one of "/"
+									idx := strings.IndexAny(elem, "/")
+									if idx > 0 {
+										args["namespace"] = elem[:idx]
+										elem = elem[idx:]
+
+										if len(elem) == 0 {
+											break
+										}
+										switch elem[0] {
+										case '/': // Prefix: "/"
+											if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+												elem = elem[len(prefix):]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												s.handleListBatchV1NamespacedJobRequest(args, w, r)
+												return
+											}
+											switch elem[0] {
+											case 'c': // Prefix: "cronjobs"
+												if prefix := "cronjobs"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+													elem = elem[len(prefix):]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													s.handleListBatchV1NamespacedCronJobRequest(args, w, r)
+													return
+												}
+												switch elem[0] {
+												case '/': // Prefix: "/"
+													if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+														elem = elem[len(prefix):]
+													} else {
+														break
+													}
+
+													// Param: "name"
+													// Match until one of "/"
+													idx := strings.IndexAny(elem, "/")
+													if idx > 0 {
+														args["name"] = elem[:idx]
+														elem = elem[idx:]
+
+														if len(elem) == 0 {
+															s.handleReadBatchV1NamespacedCronJobRequest(args, w, r)
+															return
+														}
+														switch elem[0] {
+														case '/': // Prefix: "/status"
+															if prefix := "/status"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																elem = elem[len(prefix):]
+															} else {
+																break
+															}
+
+															// Leaf: ReadBatchV1NamespacedCronJobStatus
+															s.handleReadBatchV1NamespacedCronJobStatusRequest(args, w, r)
+															return
+														}
+													}
+												case 'j': // Prefix: "jobs"
+													if prefix := "jobs"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+														elem = elem[len(prefix):]
+													} else {
+														break
+													}
+
+													// Leaf: ListBatchV1NamespacedJob
+													s.handleListBatchV1NamespacedJobRequest(args, w, r)
+													return
+												}
+											case 'j': // Prefix: "jobs"
+												if prefix := "jobs"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+													elem = elem[len(prefix):]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													s.handleListBatchV1NamespacedJobRequest(args, w, r)
+													return
+												}
+												switch elem[0] {
+												case '/': // Prefix: "/"
+													if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+														elem = elem[len(prefix):]
+													} else {
+														break
+													}
+
+													// Param: "name"
+													// Match until one of "/"
+													idx := strings.IndexAny(elem, "/")
+													if idx > 0 {
+														args["name"] = elem[:idx]
+														elem = elem[idx:]
+
+														if len(elem) == 0 {
+															s.handleReadBatchV1NamespacedJobRequest(args, w, r)
+															return
+														}
+														switch elem[0] {
+														case '/': // Prefix: "/status"
+															if prefix := "/status"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																elem = elem[len(prefix):]
+															} else {
+																break
+															}
+
+															// Leaf: ReadBatchV1NamespacedJobStatus
+															s.handleReadBatchV1NamespacedJobStatusRequest(args, w, r)
+															return
+														}
+													}
+												}
+											}
+										}
+									}
+								case 'w': // Prefix: "watch/"
+									if prefix := "watch/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+										elem = elem[len(prefix):]
+									} else {
+										break
+									}
+
+									if len(elem) == 0 {
+										s.handleWatchBatchV1JobListForAllNamespacesRequest(args, w, r)
+										return
+									}
+									switch elem[0] {
+									case 'c': // Prefix: "cronjobs"
+										if prefix := "cronjobs"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+											elem = elem[len(prefix):]
+										} else {
+											break
+										}
+
+										if len(elem) == 0 {
+											s.handleWatchBatchV1CronJobListForAllNamespacesRequest(args, w, r)
+											return
+										}
+										switch elem[0] {
+										case 'j': // Prefix: "jobs"
+											if prefix := "jobs"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+												elem = elem[len(prefix):]
+											} else {
+												break
+											}
+
+											// Leaf: WatchBatchV1JobListForAllNamespaces
+											s.handleWatchBatchV1JobListForAllNamespacesRequest(args, w, r)
+											return
+										}
+									case 'j': // Prefix: "jobs"
+										if prefix := "jobs"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+											elem = elem[len(prefix):]
+										} else {
+											break
+										}
+
+										// Leaf: WatchBatchV1JobListForAllNamespaces
+										s.handleWatchBatchV1JobListForAllNamespacesRequest(args, w, r)
+										return
+									case 'n': // Prefix: "namespaces/"
+										if prefix := "namespaces/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+											elem = elem[len(prefix):]
+										} else {
+											break
+										}
+
+										// Param: "namespace"
+										// Match until one of "/"
+										idx := strings.IndexAny(elem, "/")
+										if idx > 0 {
+											args["namespace"] = elem[:idx]
+											elem = elem[idx:]
+
+											if len(elem) == 0 {
+												break
+											}
+											switch elem[0] {
+											case '/': // Prefix: "/"
+												if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+													elem = elem[len(prefix):]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													s.handleWatchBatchV1NamespacedJobRequest(args, w, r)
+													return
+												}
+												switch elem[0] {
+												case 'c': // Prefix: "cronjobs"
+													if prefix := "cronjobs"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+														elem = elem[len(prefix):]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														s.handleWatchBatchV1NamespacedCronJobListRequest(args, w, r)
+														return
+													}
+													switch elem[0] {
+													case '/': // Prefix: "/"
+														if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+															elem = elem[len(prefix):]
+														} else {
+															break
+														}
+
+														// Param: "name"
+														// Leaf parameter
+														args["name"] = elem
+
+														// Leaf: WatchBatchV1NamespacedCronJob
+														s.handleWatchBatchV1NamespacedCronJobRequest(args, w, r)
+														return
+													case 'j': // Prefix: "jobs/"
+														if prefix := "jobs/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+															elem = elem[len(prefix):]
+														} else {
+															break
+														}
+
+														// Param: "name"
+														// Leaf parameter
+														args["name"] = elem
+
+														// Leaf: WatchBatchV1NamespacedJob
+														s.handleWatchBatchV1NamespacedJobRequest(args, w, r)
+														return
+													}
+												case 'j': // Prefix: "jobs"
+													if prefix := "jobs"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+														elem = elem[len(prefix):]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														s.handleWatchBatchV1NamespacedJobListRequest(args, w, r)
+														return
+													}
+													switch elem[0] {
+													case '/': // Prefix: "/"
+														if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+															elem = elem[len(prefix):]
+														} else {
+															break
+														}
+
+														// Param: "name"
+														// Leaf parameter
+														args["name"] = elem
+
+														// Leaf: WatchBatchV1NamespacedJob
+														s.handleWatchBatchV1NamespacedJobRequest(args, w, r)
+														return
+													}
+												}
+											}
+										}
+									}
 								}
-							case "daemonsets": // -> 68
-								// Edge: 68, path: "daemonsets".
-								elem, p = nextElem(p)
+							case 'b': // Prefix: "beta1/"
+								if prefix := "beta1/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+									elem = elem[len(prefix):]
+								} else {
+									break
+								}
+
 								if len(elem) == 0 {
-									// GET /apis/apps/v1/namespaces/{namespace}/daemonsets.
-									s.handleListAppsV1NamespacedDaemonSetRequest(args, w, r)
+									s.handleGetBatchV1beta1APIResourcesRequest(args, w, r)
 									return
 								}
-								switch elem {
-								default:
-									if args == nil {
-										args = make(map[string]string)
+								switch elem[0] {
+								case 'c': // Prefix: "cronjobs"
+									if prefix := "cronjobs"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+										elem = elem[len(prefix):]
+									} else {
+										break
 									}
-									args["name"] = elem
-									// Edge: 200, path: "".
-									elem, p = nextElem(p)
-									if len(elem) == 0 {
-										// GET /apis/apps/v1/namespaces/{namespace}/daemonsets/{name}.
-										s.handleReadAppsV1NamespacedDaemonSetRequest(args, w, r)
-										return
-									}
-									switch elem {
-									case "status": // -> 201
-										// GET /apis/apps/v1/namespaces/{namespace}/daemonsets/{name}/status
-										s.handleReadAppsV1NamespacedDaemonSetStatusRequest(args, w, r)
-										return
-									default:
-										// GET /apis/apps/v1/namespaces/{namespace}/daemonsets/{name}.
-										s.handleReadAppsV1NamespacedDaemonSetRequest(args, w, r)
-										return
-									}
-								}
-							case "deployments": // -> 69
-								// Edge: 69, path: "deployments".
-								elem, p = nextElem(p)
-								if len(elem) == 0 {
-									// GET /apis/apps/v1/namespaces/{namespace}/deployments.
-									s.handleListAppsV1NamespacedDeploymentRequest(args, w, r)
+
+									// Leaf: ListBatchV1beta1CronJobForAllNamespaces
+									s.handleListBatchV1beta1CronJobForAllNamespacesRequest(args, w, r)
 									return
-								}
-								switch elem {
-								default:
-									if args == nil {
-										args = make(map[string]string)
+								case 'n': // Prefix: "namespaces/"
+									if prefix := "namespaces/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+										elem = elem[len(prefix):]
+									} else {
+										break
 									}
-									args["name"] = elem
-									// Edge: 202, path: "".
-									elem, p = nextElem(p)
-									if len(elem) == 0 {
-										// GET /apis/apps/v1/namespaces/{namespace}/deployments/{name}.
-										s.handleReadAppsV1NamespacedDeploymentRequest(args, w, r)
-										return
-									}
-									switch elem {
-									case "scale": // -> 203
-										// GET /apis/apps/v1/namespaces/{namespace}/deployments/{name}/scale
-										s.handleReadAppsV1NamespacedDeploymentScaleRequest(args, w, r)
-										return
-									case "status": // -> 204
-										// GET /apis/apps/v1/namespaces/{namespace}/deployments/{name}/status
-										s.handleReadAppsV1NamespacedDeploymentStatusRequest(args, w, r)
-										return
-									default:
-										// GET /apis/apps/v1/namespaces/{namespace}/deployments/{name}.
-										s.handleReadAppsV1NamespacedDeploymentRequest(args, w, r)
-										return
-									}
-								}
-							case "replicasets": // -> 70
-								// Edge: 70, path: "replicasets".
-								elem, p = nextElem(p)
-								if len(elem) == 0 {
-									// GET /apis/apps/v1/namespaces/{namespace}/replicasets.
-									s.handleListAppsV1NamespacedReplicaSetRequest(args, w, r)
-									return
-								}
-								switch elem {
-								default:
-									if args == nil {
-										args = make(map[string]string)
-									}
-									args["name"] = elem
-									// Edge: 205, path: "".
-									elem, p = nextElem(p)
-									if len(elem) == 0 {
-										// GET /apis/apps/v1/namespaces/{namespace}/replicasets/{name}.
-										s.handleReadAppsV1NamespacedReplicaSetRequest(args, w, r)
-										return
-									}
-									switch elem {
-									case "scale": // -> 206
-										// GET /apis/apps/v1/namespaces/{namespace}/replicasets/{name}/scale
-										s.handleReadAppsV1NamespacedReplicaSetScaleRequest(args, w, r)
-										return
-									case "status": // -> 207
-										// GET /apis/apps/v1/namespaces/{namespace}/replicasets/{name}/status
-										s.handleReadAppsV1NamespacedReplicaSetStatusRequest(args, w, r)
-										return
-									default:
-										// GET /apis/apps/v1/namespaces/{namespace}/replicasets/{name}.
-										s.handleReadAppsV1NamespacedReplicaSetRequest(args, w, r)
-										return
-									}
-								}
-							case "statefulsets": // -> 71
-								// Edge: 71, path: "statefulsets".
-								elem, p = nextElem(p)
-								if len(elem) == 0 {
-									// GET /apis/apps/v1/namespaces/{namespace}/statefulsets.
-									s.handleListAppsV1NamespacedStatefulSetRequest(args, w, r)
-									return
-								}
-								switch elem {
-								default:
-									if args == nil {
-										args = make(map[string]string)
-									}
-									args["name"] = elem
-									// Edge: 208, path: "".
-									elem, p = nextElem(p)
-									if len(elem) == 0 {
-										// GET /apis/apps/v1/namespaces/{namespace}/statefulsets/{name}.
-										s.handleReadAppsV1NamespacedStatefulSetRequest(args, w, r)
-										return
-									}
-									switch elem {
-									case "scale": // -> 209
-										// GET /apis/apps/v1/namespaces/{namespace}/statefulsets/{name}/scale
-										s.handleReadAppsV1NamespacedStatefulSetScaleRequest(args, w, r)
-										return
-									case "status": // -> 210
-										// GET /apis/apps/v1/namespaces/{namespace}/statefulsets/{name}/status
-										s.handleReadAppsV1NamespacedStatefulSetStatusRequest(args, w, r)
-										return
-									default:
-										// GET /apis/apps/v1/namespaces/{namespace}/statefulsets/{name}.
-										s.handleReadAppsV1NamespacedStatefulSetRequest(args, w, r)
-										return
-									}
-								}
-							default:
-								s.notFound(w, r)
-								return
-							}
-						}
-					case "replicasets": // -> 72
-						// GET /apis/apps/v1/replicasets
-						s.handleListAppsV1ReplicaSetForAllNamespacesRequest(args, w, r)
-						return
-					case "statefulsets": // -> 73
-						// GET /apis/apps/v1/statefulsets
-						s.handleListAppsV1StatefulSetForAllNamespacesRequest(args, w, r)
-						return
-					case "watch": // -> 302
-						// Edge: 302, path: "watch".
-						elem, p = nextElem(p)
-						switch elem {
-						case "controllerrevisions": // -> 303
-							// GET /apis/apps/v1/watch/controllerrevisions
-							s.handleWatchAppsV1ControllerRevisionListForAllNamespacesRequest(args, w, r)
-							return
-						case "daemonsets": // -> 304
-							// GET /apis/apps/v1/watch/daemonsets
-							s.handleWatchAppsV1DaemonSetListForAllNamespacesRequest(args, w, r)
-							return
-						case "deployments": // -> 305
-							// GET /apis/apps/v1/watch/deployments
-							s.handleWatchAppsV1DeploymentListForAllNamespacesRequest(args, w, r)
-							return
-						case "namespaces": // -> 306
-							// Edge: 306, path: "namespaces".
-							elem, p = nextElem(p)
-							switch elem {
-							default:
-								if args == nil {
-									args = make(map[string]string)
-								}
-								args["namespace"] = elem
-								// Edge: 307, path: "".
-								elem, p = nextElem(p)
-								switch elem {
-								case "controllerrevisions": // -> 308
-									// Edge: 308, path: "controllerrevisions".
-									elem, p = nextElem(p)
-									if len(elem) == 0 {
-										// GET /apis/apps/v1/watch/namespaces/{namespace}/controllerrevisions.
-										s.handleWatchAppsV1NamespacedControllerRevisionListRequest(args, w, r)
-										return
-									}
-									switch elem {
-									default:
-										if args == nil {
-											args = make(map[string]string)
+
+									// Param: "namespace"
+									// Match until one of "/"
+									idx := strings.IndexAny(elem, "/")
+									if idx > 0 {
+										args["namespace"] = elem[:idx]
+										elem = elem[idx:]
+
+										if len(elem) == 0 {
+											break
 										}
-										args["name"] = elem
-										// GET /apis/apps/v1/watch/namespaces/{namespace}/controllerrevisions/{name}
-										s.handleWatchAppsV1NamespacedControllerRevisionRequest(args, w, r)
-										return
-									}
-								case "daemonsets": // -> 310
-									// Edge: 310, path: "daemonsets".
-									elem, p = nextElem(p)
-									if len(elem) == 0 {
-										// GET /apis/apps/v1/watch/namespaces/{namespace}/daemonsets.
-										s.handleWatchAppsV1NamespacedDaemonSetListRequest(args, w, r)
-										return
-									}
-									switch elem {
-									default:
-										if args == nil {
-											args = make(map[string]string)
+										switch elem[0] {
+										case '/': // Prefix: "/cronjobs"
+											if prefix := "/cronjobs"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+												elem = elem[len(prefix):]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												s.handleListBatchV1beta1NamespacedCronJobRequest(args, w, r)
+												return
+											}
+											switch elem[0] {
+											case '/': // Prefix: "/"
+												if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+													elem = elem[len(prefix):]
+												} else {
+													break
+												}
+
+												// Param: "name"
+												// Match until one of "/"
+												idx := strings.IndexAny(elem, "/")
+												if idx > 0 {
+													args["name"] = elem[:idx]
+													elem = elem[idx:]
+
+													if len(elem) == 0 {
+														s.handleReadBatchV1beta1NamespacedCronJobRequest(args, w, r)
+														return
+													}
+													switch elem[0] {
+													case '/': // Prefix: "/status"
+														if prefix := "/status"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+															elem = elem[len(prefix):]
+														} else {
+															break
+														}
+
+														// Leaf: ReadBatchV1beta1NamespacedCronJobStatus
+														s.handleReadBatchV1beta1NamespacedCronJobStatusRequest(args, w, r)
+														return
+													}
+												}
+											}
 										}
-										args["name"] = elem
-										// GET /apis/apps/v1/watch/namespaces/{namespace}/daemonsets/{name}
-										s.handleWatchAppsV1NamespacedDaemonSetRequest(args, w, r)
-										return
 									}
-								case "deployments": // -> 312
-									// Edge: 312, path: "deployments".
-									elem, p = nextElem(p)
+								case 'w': // Prefix: "watch/"
+									if prefix := "watch/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+										elem = elem[len(prefix):]
+									} else {
+										break
+									}
+
 									if len(elem) == 0 {
-										// GET /apis/apps/v1/watch/namespaces/{namespace}/deployments.
-										s.handleWatchAppsV1NamespacedDeploymentListRequest(args, w, r)
-										return
-									}
-									switch elem {
-									default:
-										if args == nil {
-											args = make(map[string]string)
-										}
-										args["name"] = elem
-										// GET /apis/apps/v1/watch/namespaces/{namespace}/deployments/{name}
-										s.handleWatchAppsV1NamespacedDeploymentRequest(args, w, r)
-										return
-									}
-								case "replicasets": // -> 314
-									// Edge: 314, path: "replicasets".
-									elem, p = nextElem(p)
-									if len(elem) == 0 {
-										// GET /apis/apps/v1/watch/namespaces/{namespace}/replicasets.
-										s.handleWatchAppsV1NamespacedReplicaSetListRequest(args, w, r)
-										return
-									}
-									switch elem {
-									default:
-										if args == nil {
-											args = make(map[string]string)
-										}
-										args["name"] = elem
-										// GET /apis/apps/v1/watch/namespaces/{namespace}/replicasets/{name}
-										s.handleWatchAppsV1NamespacedReplicaSetRequest(args, w, r)
-										return
-									}
-								case "statefulsets": // -> 316
-									// Edge: 316, path: "statefulsets".
-									elem, p = nextElem(p)
-									if len(elem) == 0 {
-										// GET /apis/apps/v1/watch/namespaces/{namespace}/statefulsets.
-										s.handleWatchAppsV1NamespacedStatefulSetListRequest(args, w, r)
-										return
-									}
-									switch elem {
-									default:
-										if args == nil {
-											args = make(map[string]string)
-										}
-										args["name"] = elem
-										// GET /apis/apps/v1/watch/namespaces/{namespace}/statefulsets/{name}
-										s.handleWatchAppsV1NamespacedStatefulSetRequest(args, w, r)
-										return
-									}
-								default:
-									s.notFound(w, r)
-									return
-								}
-							}
-						case "replicasets": // -> 318
-							// GET /apis/apps/v1/watch/replicasets
-							s.handleWatchAppsV1ReplicaSetListForAllNamespacesRequest(args, w, r)
-							return
-						case "statefulsets": // -> 319
-							// GET /apis/apps/v1/watch/statefulsets
-							s.handleWatchAppsV1StatefulSetListForAllNamespacesRequest(args, w, r)
-							return
-						default:
-							s.notFound(w, r)
-							return
-						}
-					default:
-						// GET /apis/apps/v1/.
-						s.handleGetAppsV1APIResourcesRequest(args, w, r)
-						return
-					}
-				default:
-					// GET /apis/apps/.
-					s.handleGetAppsAPIGroupRequest(args, w, r)
-					return
-				}
-			case "authentication.k8s.io": // -> 10
-				// Edge: 10, path: "authentication.k8s.io".
-				elem, p = nextElem(p)
-				if len(elem) == 0 {
-					// GET /apis/authentication.k8s.io/.
-					s.handleGetAuthenticationAPIGroupRequest(args, w, r)
-					return
-				}
-				switch elem {
-				case "v1": // -> 11
-					// GET /apis/authentication.k8s.io/v1/
-					s.handleGetAuthenticationV1APIResourcesRequest(args, w, r)
-					return
-				default:
-					// GET /apis/authentication.k8s.io/.
-					s.handleGetAuthenticationAPIGroupRequest(args, w, r)
-					return
-				}
-			case "authorization.k8s.io": // -> 12
-				// Edge: 12, path: "authorization.k8s.io".
-				elem, p = nextElem(p)
-				if len(elem) == 0 {
-					// GET /apis/authorization.k8s.io/.
-					s.handleGetAuthorizationAPIGroupRequest(args, w, r)
-					return
-				}
-				switch elem {
-				case "v1": // -> 13
-					// GET /apis/authorization.k8s.io/v1/
-					s.handleGetAuthorizationV1APIResourcesRequest(args, w, r)
-					return
-				default:
-					// GET /apis/authorization.k8s.io/.
-					s.handleGetAuthorizationAPIGroupRequest(args, w, r)
-					return
-				}
-			case "autoscaling": // -> 14
-				// Edge: 14, path: "autoscaling".
-				elem, p = nextElem(p)
-				if len(elem) == 0 {
-					// GET /apis/autoscaling/.
-					s.handleGetAutoscalingAPIGroupRequest(args, w, r)
-					return
-				}
-				switch elem {
-				case "v1": // -> 15
-					// Edge: 15, path: "v1".
-					elem, p = nextElem(p)
-					if len(elem) == 0 {
-						// GET /apis/autoscaling/v1/.
-						s.handleGetAutoscalingV1APIResourcesRequest(args, w, r)
-						return
-					}
-					switch elem {
-					case "horizontalpodautoscalers": // -> 74
-						// GET /apis/autoscaling/v1/horizontalpodautoscalers
-						s.handleListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesRequest(args, w, r)
-						return
-					case "namespaces": // -> 75
-						// Edge: 75, path: "namespaces".
-						elem, p = nextElem(p)
-						switch elem {
-						default:
-							if args == nil {
-								args = make(map[string]string)
-							}
-							args["namespace"] = elem
-							// Edge: 76, path: "".
-							elem, p = nextElem(p)
-							switch elem {
-							case "horizontalpodautoscalers": // -> 77
-								// Edge: 77, path: "horizontalpodautoscalers".
-								elem, p = nextElem(p)
-								if len(elem) == 0 {
-									// GET /apis/autoscaling/v1/namespaces/{namespace}/horizontalpodautoscalers.
-									s.handleListAutoscalingV1NamespacedHorizontalPodAutoscalerRequest(args, w, r)
-									return
-								}
-								switch elem {
-								default:
-									if args == nil {
-										args = make(map[string]string)
-									}
-									args["name"] = elem
-									// Edge: 211, path: "".
-									elem, p = nextElem(p)
-									if len(elem) == 0 {
-										// GET /apis/autoscaling/v1/namespaces/{namespace}/horizontalpodautoscalers/{name}.
-										s.handleReadAutoscalingV1NamespacedHorizontalPodAutoscalerRequest(args, w, r)
-										return
-									}
-									switch elem {
-									case "status": // -> 212
-										// GET /apis/autoscaling/v1/namespaces/{namespace}/horizontalpodautoscalers/{name}/status
-										s.handleReadAutoscalingV1NamespacedHorizontalPodAutoscalerStatusRequest(args, w, r)
-										return
-									default:
-										// GET /apis/autoscaling/v1/namespaces/{namespace}/horizontalpodautoscalers/{name}.
-										s.handleReadAutoscalingV1NamespacedHorizontalPodAutoscalerRequest(args, w, r)
-										return
-									}
-								}
-							default:
-								s.notFound(w, r)
-								return
-							}
-						}
-					case "watch": // -> 320
-						// Edge: 320, path: "watch".
-						elem, p = nextElem(p)
-						switch elem {
-						case "horizontalpodautoscalers": // -> 321
-							// GET /apis/autoscaling/v1/watch/horizontalpodautoscalers
-							s.handleWatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespacesRequest(args, w, r)
-							return
-						case "namespaces": // -> 322
-							// Edge: 322, path: "namespaces".
-							elem, p = nextElem(p)
-							switch elem {
-							default:
-								if args == nil {
-									args = make(map[string]string)
-								}
-								args["namespace"] = elem
-								// Edge: 323, path: "".
-								elem, p = nextElem(p)
-								switch elem {
-								case "horizontalpodautoscalers": // -> 324
-									// Edge: 324, path: "horizontalpodautoscalers".
-									elem, p = nextElem(p)
-									if len(elem) == 0 {
-										// GET /apis/autoscaling/v1/watch/namespaces/{namespace}/horizontalpodautoscalers.
-										s.handleWatchAutoscalingV1NamespacedHorizontalPodAutoscalerListRequest(args, w, r)
-										return
-									}
-									switch elem {
-									default:
-										if args == nil {
-											args = make(map[string]string)
-										}
-										args["name"] = elem
-										// GET /apis/autoscaling/v1/watch/namespaces/{namespace}/horizontalpodautoscalers/{name}
-										s.handleWatchAutoscalingV1NamespacedHorizontalPodAutoscalerRequest(args, w, r)
-										return
-									}
-								default:
-									s.notFound(w, r)
-									return
-								}
-							}
-						default:
-							s.notFound(w, r)
-							return
-						}
-					default:
-						// GET /apis/autoscaling/v1/.
-						s.handleGetAutoscalingV1APIResourcesRequest(args, w, r)
-						return
-					}
-				case "v2beta1": // -> 16
-					// Edge: 16, path: "v2beta1".
-					elem, p = nextElem(p)
-					if len(elem) == 0 {
-						// GET /apis/autoscaling/v2beta1/.
-						s.handleGetAutoscalingV2beta1APIResourcesRequest(args, w, r)
-						return
-					}
-					switch elem {
-					case "horizontalpodautoscalers": // -> 78
-						// GET /apis/autoscaling/v2beta1/horizontalpodautoscalers
-						s.handleListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespacesRequest(args, w, r)
-						return
-					case "namespaces": // -> 79
-						// Edge: 79, path: "namespaces".
-						elem, p = nextElem(p)
-						switch elem {
-						default:
-							if args == nil {
-								args = make(map[string]string)
-							}
-							args["namespace"] = elem
-							// Edge: 80, path: "".
-							elem, p = nextElem(p)
-							switch elem {
-							case "horizontalpodautoscalers": // -> 81
-								// Edge: 81, path: "horizontalpodautoscalers".
-								elem, p = nextElem(p)
-								if len(elem) == 0 {
-									// GET /apis/autoscaling/v2beta1/namespaces/{namespace}/horizontalpodautoscalers.
-									s.handleListAutoscalingV2beta1NamespacedHorizontalPodAutoscalerRequest(args, w, r)
-									return
-								}
-								switch elem {
-								default:
-									if args == nil {
-										args = make(map[string]string)
-									}
-									args["name"] = elem
-									// Edge: 213, path: "".
-									elem, p = nextElem(p)
-									if len(elem) == 0 {
-										// GET /apis/autoscaling/v2beta1/namespaces/{namespace}/horizontalpodautoscalers/{name}.
-										s.handleReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerRequest(args, w, r)
-										return
-									}
-									switch elem {
-									case "status": // -> 214
-										// GET /apis/autoscaling/v2beta1/namespaces/{namespace}/horizontalpodautoscalers/{name}/status
-										s.handleReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatusRequest(args, w, r)
-										return
-									default:
-										// GET /apis/autoscaling/v2beta1/namespaces/{namespace}/horizontalpodautoscalers/{name}.
-										s.handleReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerRequest(args, w, r)
-										return
-									}
-								}
-							default:
-								s.notFound(w, r)
-								return
-							}
-						}
-					case "watch": // -> 326
-						// Edge: 326, path: "watch".
-						elem, p = nextElem(p)
-						switch elem {
-						case "horizontalpodautoscalers": // -> 327
-							// GET /apis/autoscaling/v2beta1/watch/horizontalpodautoscalers
-							s.handleWatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespacesRequest(args, w, r)
-							return
-						case "namespaces": // -> 328
-							// Edge: 328, path: "namespaces".
-							elem, p = nextElem(p)
-							switch elem {
-							default:
-								if args == nil {
-									args = make(map[string]string)
-								}
-								args["namespace"] = elem
-								// Edge: 329, path: "".
-								elem, p = nextElem(p)
-								switch elem {
-								case "horizontalpodautoscalers": // -> 330
-									// Edge: 330, path: "horizontalpodautoscalers".
-									elem, p = nextElem(p)
-									if len(elem) == 0 {
-										// GET /apis/autoscaling/v2beta1/watch/namespaces/{namespace}/horizontalpodautoscalers.
-										s.handleWatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerListRequest(args, w, r)
-										return
-									}
-									switch elem {
-									default:
-										if args == nil {
-											args = make(map[string]string)
-										}
-										args["name"] = elem
-										// GET /apis/autoscaling/v2beta1/watch/namespaces/{namespace}/horizontalpodautoscalers/{name}
-										s.handleWatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerRequest(args, w, r)
-										return
-									}
-								default:
-									s.notFound(w, r)
-									return
-								}
-							}
-						default:
-							s.notFound(w, r)
-							return
-						}
-					default:
-						// GET /apis/autoscaling/v2beta1/.
-						s.handleGetAutoscalingV2beta1APIResourcesRequest(args, w, r)
-						return
-					}
-				case "v2beta2": // -> 17
-					// Edge: 17, path: "v2beta2".
-					elem, p = nextElem(p)
-					if len(elem) == 0 {
-						// GET /apis/autoscaling/v2beta2/.
-						s.handleGetAutoscalingV2beta2APIResourcesRequest(args, w, r)
-						return
-					}
-					switch elem {
-					case "horizontalpodautoscalers": // -> 82
-						// GET /apis/autoscaling/v2beta2/horizontalpodautoscalers
-						s.handleListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespacesRequest(args, w, r)
-						return
-					case "namespaces": // -> 83
-						// Edge: 83, path: "namespaces".
-						elem, p = nextElem(p)
-						switch elem {
-						default:
-							if args == nil {
-								args = make(map[string]string)
-							}
-							args["namespace"] = elem
-							// Edge: 84, path: "".
-							elem, p = nextElem(p)
-							switch elem {
-							case "horizontalpodautoscalers": // -> 85
-								// Edge: 85, path: "horizontalpodautoscalers".
-								elem, p = nextElem(p)
-								if len(elem) == 0 {
-									// GET /apis/autoscaling/v2beta2/namespaces/{namespace}/horizontalpodautoscalers.
-									s.handleListAutoscalingV2beta2NamespacedHorizontalPodAutoscalerRequest(args, w, r)
-									return
-								}
-								switch elem {
-								default:
-									if args == nil {
-										args = make(map[string]string)
-									}
-									args["name"] = elem
-									// Edge: 215, path: "".
-									elem, p = nextElem(p)
-									if len(elem) == 0 {
-										// GET /apis/autoscaling/v2beta2/namespaces/{namespace}/horizontalpodautoscalers/{name}.
-										s.handleReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerRequest(args, w, r)
-										return
-									}
-									switch elem {
-									case "status": // -> 216
-										// GET /apis/autoscaling/v2beta2/namespaces/{namespace}/horizontalpodautoscalers/{name}/status
-										s.handleReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatusRequest(args, w, r)
-										return
-									default:
-										// GET /apis/autoscaling/v2beta2/namespaces/{namespace}/horizontalpodautoscalers/{name}.
-										s.handleReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerRequest(args, w, r)
-										return
-									}
-								}
-							default:
-								s.notFound(w, r)
-								return
-							}
-						}
-					case "watch": // -> 332
-						// Edge: 332, path: "watch".
-						elem, p = nextElem(p)
-						switch elem {
-						case "horizontalpodautoscalers": // -> 333
-							// GET /apis/autoscaling/v2beta2/watch/horizontalpodautoscalers
-							s.handleWatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespacesRequest(args, w, r)
-							return
-						case "namespaces": // -> 334
-							// Edge: 334, path: "namespaces".
-							elem, p = nextElem(p)
-							switch elem {
-							default:
-								if args == nil {
-									args = make(map[string]string)
-								}
-								args["namespace"] = elem
-								// Edge: 335, path: "".
-								elem, p = nextElem(p)
-								switch elem {
-								case "horizontalpodautoscalers": // -> 336
-									// Edge: 336, path: "horizontalpodautoscalers".
-									elem, p = nextElem(p)
-									if len(elem) == 0 {
-										// GET /apis/autoscaling/v2beta2/watch/namespaces/{namespace}/horizontalpodautoscalers.
-										s.handleWatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerListRequest(args, w, r)
-										return
-									}
-									switch elem {
-									default:
-										if args == nil {
-											args = make(map[string]string)
-										}
-										args["name"] = elem
-										// GET /apis/autoscaling/v2beta2/watch/namespaces/{namespace}/horizontalpodautoscalers/{name}
-										s.handleWatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerRequest(args, w, r)
-										return
-									}
-								default:
-									s.notFound(w, r)
-									return
-								}
-							}
-						default:
-							s.notFound(w, r)
-							return
-						}
-					default:
-						// GET /apis/autoscaling/v2beta2/.
-						s.handleGetAutoscalingV2beta2APIResourcesRequest(args, w, r)
-						return
-					}
-				default:
-					// GET /apis/autoscaling/.
-					s.handleGetAutoscalingAPIGroupRequest(args, w, r)
-					return
-				}
-			case "batch": // -> 18
-				// Edge: 18, path: "batch".
-				elem, p = nextElem(p)
-				if len(elem) == 0 {
-					// GET /apis/batch/.
-					s.handleGetBatchAPIGroupRequest(args, w, r)
-					return
-				}
-				switch elem {
-				case "v1": // -> 19
-					// Edge: 19, path: "v1".
-					elem, p = nextElem(p)
-					if len(elem) == 0 {
-						// GET /apis/batch/v1/.
-						s.handleGetBatchV1APIResourcesRequest(args, w, r)
-						return
-					}
-					switch elem {
-					case "cronjobs": // -> 86
-						// GET /apis/batch/v1/cronjobs
-						s.handleListBatchV1CronJobForAllNamespacesRequest(args, w, r)
-						return
-					case "jobs": // -> 87
-						// GET /apis/batch/v1/jobs
-						s.handleListBatchV1JobForAllNamespacesRequest(args, w, r)
-						return
-					case "namespaces": // -> 88
-						// Edge: 88, path: "namespaces".
-						elem, p = nextElem(p)
-						switch elem {
-						default:
-							if args == nil {
-								args = make(map[string]string)
-							}
-							args["namespace"] = elem
-							// Edge: 89, path: "".
-							elem, p = nextElem(p)
-							switch elem {
-							case "cronjobs": // -> 90
-								// Edge: 90, path: "cronjobs".
-								elem, p = nextElem(p)
-								if len(elem) == 0 {
-									// GET /apis/batch/v1/namespaces/{namespace}/cronjobs.
-									s.handleListBatchV1NamespacedCronJobRequest(args, w, r)
-									return
-								}
-								switch elem {
-								default:
-									if args == nil {
-										args = make(map[string]string)
-									}
-									args["name"] = elem
-									// Edge: 217, path: "".
-									elem, p = nextElem(p)
-									if len(elem) == 0 {
-										// GET /apis/batch/v1/namespaces/{namespace}/cronjobs/{name}.
-										s.handleReadBatchV1NamespacedCronJobRequest(args, w, r)
-										return
-									}
-									switch elem {
-									case "status": // -> 218
-										// GET /apis/batch/v1/namespaces/{namespace}/cronjobs/{name}/status
-										s.handleReadBatchV1NamespacedCronJobStatusRequest(args, w, r)
-										return
-									default:
-										// GET /apis/batch/v1/namespaces/{namespace}/cronjobs/{name}.
-										s.handleReadBatchV1NamespacedCronJobRequest(args, w, r)
-										return
-									}
-								}
-							case "jobs": // -> 91
-								// Edge: 91, path: "jobs".
-								elem, p = nextElem(p)
-								if len(elem) == 0 {
-									// GET /apis/batch/v1/namespaces/{namespace}/jobs.
-									s.handleListBatchV1NamespacedJobRequest(args, w, r)
-									return
-								}
-								switch elem {
-								default:
-									if args == nil {
-										args = make(map[string]string)
-									}
-									args["name"] = elem
-									// Edge: 219, path: "".
-									elem, p = nextElem(p)
-									if len(elem) == 0 {
-										// GET /apis/batch/v1/namespaces/{namespace}/jobs/{name}.
-										s.handleReadBatchV1NamespacedJobRequest(args, w, r)
-										return
-									}
-									switch elem {
-									case "status": // -> 220
-										// GET /apis/batch/v1/namespaces/{namespace}/jobs/{name}/status
-										s.handleReadBatchV1NamespacedJobStatusRequest(args, w, r)
-										return
-									default:
-										// GET /apis/batch/v1/namespaces/{namespace}/jobs/{name}.
-										s.handleReadBatchV1NamespacedJobRequest(args, w, r)
-										return
-									}
-								}
-							default:
-								s.notFound(w, r)
-								return
-							}
-						}
-					case "watch": // -> 338
-						// Edge: 338, path: "watch".
-						elem, p = nextElem(p)
-						switch elem {
-						case "cronjobs": // -> 339
-							// GET /apis/batch/v1/watch/cronjobs
-							s.handleWatchBatchV1CronJobListForAllNamespacesRequest(args, w, r)
-							return
-						case "jobs": // -> 340
-							// GET /apis/batch/v1/watch/jobs
-							s.handleWatchBatchV1JobListForAllNamespacesRequest(args, w, r)
-							return
-						case "namespaces": // -> 341
-							// Edge: 341, path: "namespaces".
-							elem, p = nextElem(p)
-							switch elem {
-							default:
-								if args == nil {
-									args = make(map[string]string)
-								}
-								args["namespace"] = elem
-								// Edge: 342, path: "".
-								elem, p = nextElem(p)
-								switch elem {
-								case "cronjobs": // -> 343
-									// Edge: 343, path: "cronjobs".
-									elem, p = nextElem(p)
-									if len(elem) == 0 {
-										// GET /apis/batch/v1/watch/namespaces/{namespace}/cronjobs.
-										s.handleWatchBatchV1NamespacedCronJobListRequest(args, w, r)
-										return
-									}
-									switch elem {
-									default:
-										if args == nil {
-											args = make(map[string]string)
-										}
-										args["name"] = elem
-										// GET /apis/batch/v1/watch/namespaces/{namespace}/cronjobs/{name}
-										s.handleWatchBatchV1NamespacedCronJobRequest(args, w, r)
-										return
-									}
-								case "jobs": // -> 345
-									// Edge: 345, path: "jobs".
-									elem, p = nextElem(p)
-									if len(elem) == 0 {
-										// GET /apis/batch/v1/watch/namespaces/{namespace}/jobs.
-										s.handleWatchBatchV1NamespacedJobListRequest(args, w, r)
-										return
-									}
-									switch elem {
-									default:
-										if args == nil {
-											args = make(map[string]string)
-										}
-										args["name"] = elem
-										// GET /apis/batch/v1/watch/namespaces/{namespace}/jobs/{name}
-										s.handleWatchBatchV1NamespacedJobRequest(args, w, r)
-										return
-									}
-								default:
-									s.notFound(w, r)
-									return
-								}
-							}
-						default:
-							s.notFound(w, r)
-							return
-						}
-					default:
-						// GET /apis/batch/v1/.
-						s.handleGetBatchV1APIResourcesRequest(args, w, r)
-						return
-					}
-				case "v1beta1": // -> 20
-					// Edge: 20, path: "v1beta1".
-					elem, p = nextElem(p)
-					if len(elem) == 0 {
-						// GET /apis/batch/v1beta1/.
-						s.handleGetBatchV1beta1APIResourcesRequest(args, w, r)
-						return
-					}
-					switch elem {
-					case "cronjobs": // -> 92
-						// GET /apis/batch/v1beta1/cronjobs
-						s.handleListBatchV1beta1CronJobForAllNamespacesRequest(args, w, r)
-						return
-					case "namespaces": // -> 93
-						// Edge: 93, path: "namespaces".
-						elem, p = nextElem(p)
-						switch elem {
-						default:
-							if args == nil {
-								args = make(map[string]string)
-							}
-							args["namespace"] = elem
-							// Edge: 94, path: "".
-							elem, p = nextElem(p)
-							switch elem {
-							case "cronjobs": // -> 95
-								// Edge: 95, path: "cronjobs".
-								elem, p = nextElem(p)
-								if len(elem) == 0 {
-									// GET /apis/batch/v1beta1/namespaces/{namespace}/cronjobs.
-									s.handleListBatchV1beta1NamespacedCronJobRequest(args, w, r)
-									return
-								}
-								switch elem {
-								default:
-									if args == nil {
-										args = make(map[string]string)
-									}
-									args["name"] = elem
-									// Edge: 221, path: "".
-									elem, p = nextElem(p)
-									if len(elem) == 0 {
-										// GET /apis/batch/v1beta1/namespaces/{namespace}/cronjobs/{name}.
-										s.handleReadBatchV1beta1NamespacedCronJobRequest(args, w, r)
-										return
-									}
-									switch elem {
-									case "status": // -> 222
-										// GET /apis/batch/v1beta1/namespaces/{namespace}/cronjobs/{name}/status
-										s.handleReadBatchV1beta1NamespacedCronJobStatusRequest(args, w, r)
-										return
-									default:
-										// GET /apis/batch/v1beta1/namespaces/{namespace}/cronjobs/{name}.
-										s.handleReadBatchV1beta1NamespacedCronJobRequest(args, w, r)
-										return
-									}
-								}
-							default:
-								s.notFound(w, r)
-								return
-							}
-						}
-					case "watch": // -> 347
-						// Edge: 347, path: "watch".
-						elem, p = nextElem(p)
-						switch elem {
-						case "cronjobs": // -> 348
-							// GET /apis/batch/v1beta1/watch/cronjobs
-							s.handleWatchBatchV1beta1CronJobListForAllNamespacesRequest(args, w, r)
-							return
-						case "namespaces": // -> 349
-							// Edge: 349, path: "namespaces".
-							elem, p = nextElem(p)
-							switch elem {
-							default:
-								if args == nil {
-									args = make(map[string]string)
-								}
-								args["namespace"] = elem
-								// Edge: 350, path: "".
-								elem, p = nextElem(p)
-								switch elem {
-								case "cronjobs": // -> 351
-									// Edge: 351, path: "cronjobs".
-									elem, p = nextElem(p)
-									if len(elem) == 0 {
-										// GET /apis/batch/v1beta1/watch/namespaces/{namespace}/cronjobs.
-										s.handleWatchBatchV1beta1NamespacedCronJobListRequest(args, w, r)
-										return
-									}
-									switch elem {
-									default:
-										if args == nil {
-											args = make(map[string]string)
-										}
-										args["name"] = elem
-										// GET /apis/batch/v1beta1/watch/namespaces/{namespace}/cronjobs/{name}
 										s.handleWatchBatchV1beta1NamespacedCronJobRequest(args, w, r)
 										return
 									}
-								default:
-									s.notFound(w, r)
-									return
-								}
-							}
-						default:
-							s.notFound(w, r)
-							return
-						}
-					default:
-						// GET /apis/batch/v1beta1/.
-						s.handleGetBatchV1beta1APIResourcesRequest(args, w, r)
-						return
-					}
-				default:
-					// GET /apis/batch/.
-					s.handleGetBatchAPIGroupRequest(args, w, r)
-					return
-				}
-			case "certificates.k8s.io": // -> 21
-				// Edge: 21, path: "certificates.k8s.io".
-				elem, p = nextElem(p)
-				if len(elem) == 0 {
-					// GET /apis/certificates.k8s.io/.
-					s.handleGetCertificatesAPIGroupRequest(args, w, r)
-					return
-				}
-				switch elem {
-				case "v1": // -> 22
-					// Edge: 22, path: "v1".
-					elem, p = nextElem(p)
-					if len(elem) == 0 {
-						// GET /apis/certificates.k8s.io/v1/.
-						s.handleGetCertificatesV1APIResourcesRequest(args, w, r)
-						return
-					}
-					switch elem {
-					case "certificatesigningrequests": // -> 96
-						// Edge: 96, path: "certificatesigningrequests".
-						elem, p = nextElem(p)
-						if len(elem) == 0 {
-							// GET /apis/certificates.k8s.io/v1/certificatesigningrequests.
-							s.handleListCertificatesV1CertificateSigningRequestRequest(args, w, r)
-							return
-						}
-						switch elem {
-						default:
-							if args == nil {
-								args = make(map[string]string)
-							}
-							args["name"] = elem
-							// Edge: 223, path: "".
-							elem, p = nextElem(p)
-							if len(elem) == 0 {
-								// GET /apis/certificates.k8s.io/v1/certificatesigningrequests/{name}.
-								s.handleReadCertificatesV1CertificateSigningRequestRequest(args, w, r)
-								return
-							}
-							switch elem {
-							case "approval": // -> 224
-								// GET /apis/certificates.k8s.io/v1/certificatesigningrequests/{name}/approval
-								s.handleReadCertificatesV1CertificateSigningRequestApprovalRequest(args, w, r)
-								return
-							case "status": // -> 225
-								// GET /apis/certificates.k8s.io/v1/certificatesigningrequests/{name}/status
-								s.handleReadCertificatesV1CertificateSigningRequestStatusRequest(args, w, r)
-								return
-							default:
-								// GET /apis/certificates.k8s.io/v1/certificatesigningrequests/{name}.
-								s.handleReadCertificatesV1CertificateSigningRequestRequest(args, w, r)
-								return
-							}
-						}
-					case "watch": // -> 353
-						// Edge: 353, path: "watch".
-						elem, p = nextElem(p)
-						switch elem {
-						case "certificatesigningrequests": // -> 354
-							// Edge: 354, path: "certificatesigningrequests".
-							elem, p = nextElem(p)
-							if len(elem) == 0 {
-								// GET /apis/certificates.k8s.io/v1/watch/certificatesigningrequests.
-								s.handleWatchCertificatesV1CertificateSigningRequestListRequest(args, w, r)
-								return
-							}
-							switch elem {
-							default:
-								if args == nil {
-									args = make(map[string]string)
-								}
-								args["name"] = elem
-								// GET /apis/certificates.k8s.io/v1/watch/certificatesigningrequests/{name}
-								s.handleWatchCertificatesV1CertificateSigningRequestRequest(args, w, r)
-								return
-							}
-						default:
-							s.notFound(w, r)
-							return
-						}
-					default:
-						// GET /apis/certificates.k8s.io/v1/.
-						s.handleGetCertificatesV1APIResourcesRequest(args, w, r)
-						return
-					}
-				default:
-					// GET /apis/certificates.k8s.io/.
-					s.handleGetCertificatesAPIGroupRequest(args, w, r)
-					return
-				}
-			case "coordination.k8s.io": // -> 24
-				// Edge: 24, path: "coordination.k8s.io".
-				elem, p = nextElem(p)
-				if len(elem) == 0 {
-					// GET /apis/coordination.k8s.io/.
-					s.handleGetCoordinationAPIGroupRequest(args, w, r)
-					return
-				}
-				switch elem {
-				case "v1": // -> 25
-					// Edge: 25, path: "v1".
-					elem, p = nextElem(p)
-					if len(elem) == 0 {
-						// GET /apis/coordination.k8s.io/v1/.
-						s.handleGetCoordinationV1APIResourcesRequest(args, w, r)
-						return
-					}
-					switch elem {
-					case "leases": // -> 97
-						// GET /apis/coordination.k8s.io/v1/leases
-						s.handleListCoordinationV1LeaseForAllNamespacesRequest(args, w, r)
-						return
-					case "namespaces": // -> 98
-						// Edge: 98, path: "namespaces".
-						elem, p = nextElem(p)
-						switch elem {
-						default:
-							if args == nil {
-								args = make(map[string]string)
-							}
-							args["namespace"] = elem
-							// Edge: 99, path: "".
-							elem, p = nextElem(p)
-							switch elem {
-							case "leases": // -> 100
-								// Edge: 100, path: "leases".
-								elem, p = nextElem(p)
-								if len(elem) == 0 {
-									// GET /apis/coordination.k8s.io/v1/namespaces/{namespace}/leases.
-									s.handleListCoordinationV1NamespacedLeaseRequest(args, w, r)
-									return
-								}
-								switch elem {
-								default:
-									if args == nil {
-										args = make(map[string]string)
+									switch elem[0] {
+									case 'c': // Prefix: "cronjobs"
+										if prefix := "cronjobs"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+											elem = elem[len(prefix):]
+										} else {
+											break
+										}
+
+										if len(elem) == 0 {
+											s.handleWatchBatchV1beta1CronJobListForAllNamespacesRequest(args, w, r)
+											return
+										}
+										switch elem[0] {
+										case 'n': // Prefix: "namespaces/"
+											if prefix := "namespaces/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+												elem = elem[len(prefix):]
+											} else {
+												break
+											}
+
+											// Param: "namespace"
+											// Match until one of "/"
+											idx := strings.IndexAny(elem, "/")
+											if idx > 0 {
+												args["namespace"] = elem[:idx]
+												elem = elem[idx:]
+
+												if len(elem) == 0 {
+													break
+												}
+												switch elem[0] {
+												case '/': // Prefix: "/cronjobs/"
+													if prefix := "/cronjobs/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+														elem = elem[len(prefix):]
+													} else {
+														break
+													}
+
+													// Param: "name"
+													// Leaf parameter
+													args["name"] = elem
+
+													// Leaf: WatchBatchV1beta1NamespacedCronJob
+													s.handleWatchBatchV1beta1NamespacedCronJobRequest(args, w, r)
+													return
+												}
+											}
+										}
+									case 'n': // Prefix: "namespaces/"
+										if prefix := "namespaces/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+											elem = elem[len(prefix):]
+										} else {
+											break
+										}
+
+										// Param: "namespace"
+										// Match until one of "/"
+										idx := strings.IndexAny(elem, "/")
+										if idx > 0 {
+											args["namespace"] = elem[:idx]
+											elem = elem[idx:]
+
+											if len(elem) == 0 {
+												break
+											}
+											switch elem[0] {
+											case '/': // Prefix: "/cronjobs"
+												if prefix := "/cronjobs"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+													elem = elem[len(prefix):]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													s.handleWatchBatchV1beta1NamespacedCronJobListRequest(args, w, r)
+													return
+												}
+												switch elem[0] {
+												case '/': // Prefix: "/"
+													if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+														elem = elem[len(prefix):]
+													} else {
+														break
+													}
+
+													// Param: "name"
+													// Leaf parameter
+													args["name"] = elem
+
+													// Leaf: WatchBatchV1beta1NamespacedCronJob
+													s.handleWatchBatchV1beta1NamespacedCronJobRequest(args, w, r)
+													return
+												}
+											}
+										}
 									}
-									args["name"] = elem
-									// GET /apis/coordination.k8s.io/v1/namespaces/{namespace}/leases/{name}
-									s.handleReadCoordinationV1NamespacedLeaseRequest(args, w, r)
-									return
 								}
-							default:
-								s.notFound(w, r)
-								return
 							}
 						}
-					case "watch": // -> 356
-						// Edge: 356, path: "watch".
-						elem, p = nextElem(p)
-						switch elem {
-						case "leases": // -> 357
-							// GET /apis/coordination.k8s.io/v1/watch/leases
-							s.handleWatchCoordinationV1LeaseListForAllNamespacesRequest(args, w, r)
+					case 'c': // Prefix: "c"
+						if prefix := "c"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+							elem = elem[len(prefix):]
+						} else {
+							break
+						}
+
+						if len(elem) == 0 {
+							s.handleGetCoordinationAPIGroupRequest(args, w, r)
 							return
-						case "namespaces": // -> 358
-							// Edge: 358, path: "namespaces".
-							elem, p = nextElem(p)
-							switch elem {
-							default:
-								if args == nil {
-									args = make(map[string]string)
+						}
+						switch elem[0] {
+						case 'e': // Prefix: "ertificates.k8s.io/"
+							if prefix := "ertificates.k8s.io/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+								elem = elem[len(prefix):]
+							} else {
+								break
+							}
+
+							if len(elem) == 0 {
+								s.handleGetCertificatesAPIGroupRequest(args, w, r)
+								return
+							}
+							switch elem[0] {
+							case 'o': // Prefix: "oordination.k8s.io/"
+								if prefix := "oordination.k8s.io/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+									elem = elem[len(prefix):]
+								} else {
+									break
 								}
-								args["namespace"] = elem
-								// Edge: 359, path: "".
-								elem, p = nextElem(p)
-								switch elem {
-								case "leases": // -> 360
-									// Edge: 360, path: "leases".
-									elem, p = nextElem(p)
+
+								// Leaf: GetCoordinationAPIGroup
+								s.handleGetCoordinationAPIGroupRequest(args, w, r)
+								return
+							case 'v': // Prefix: "v1/"
+								if prefix := "v1/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+									elem = elem[len(prefix):]
+								} else {
+									break
+								}
+
+								if len(elem) == 0 {
+									s.handleGetCertificatesV1APIResourcesRequest(args, w, r)
+									return
+								}
+								switch elem[0] {
+								case 'c': // Prefix: "certificatesigningrequests"
+									if prefix := "certificatesigningrequests"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+										elem = elem[len(prefix):]
+									} else {
+										break
+									}
+
 									if len(elem) == 0 {
-										// GET /apis/coordination.k8s.io/v1/watch/namespaces/{namespace}/leases.
-										s.handleWatchCoordinationV1NamespacedLeaseListRequest(args, w, r)
+										s.handleListCertificatesV1CertificateSigningRequestRequest(args, w, r)
 										return
 									}
-									switch elem {
-									default:
-										if args == nil {
-											args = make(map[string]string)
+									switch elem[0] {
+									case '/': // Prefix: "/"
+										if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+											elem = elem[len(prefix):]
+										} else {
+											break
 										}
+
+										// Param: "name"
+										// Match until one of "/"
+										idx := strings.IndexAny(elem, "/")
+										if idx > 0 {
+											args["name"] = elem[:idx]
+											elem = elem[idx:]
+
+											if len(elem) == 0 {
+												s.handleReadCertificatesV1CertificateSigningRequestRequest(args, w, r)
+												return
+											}
+											switch elem[0] {
+											case '/': // Prefix: "/"
+												if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+													elem = elem[len(prefix):]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													s.handleReadCertificatesV1CertificateSigningRequestStatusRequest(args, w, r)
+													return
+												}
+												switch elem[0] {
+												case 'a': // Prefix: "approval"
+													if prefix := "approval"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+														elem = elem[len(prefix):]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														s.handleReadCertificatesV1CertificateSigningRequestApprovalRequest(args, w, r)
+														return
+													}
+													switch elem[0] {
+													case 's': // Prefix: "status"
+														if prefix := "status"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+															elem = elem[len(prefix):]
+														} else {
+															break
+														}
+
+														// Leaf: ReadCertificatesV1CertificateSigningRequestStatus
+														s.handleReadCertificatesV1CertificateSigningRequestStatusRequest(args, w, r)
+														return
+													}
+												case 's': // Prefix: "status"
+													if prefix := "status"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+														elem = elem[len(prefix):]
+													} else {
+														break
+													}
+
+													// Leaf: ReadCertificatesV1CertificateSigningRequestStatus
+													s.handleReadCertificatesV1CertificateSigningRequestStatusRequest(args, w, r)
+													return
+												}
+											}
+										}
+									}
+								case 'w': // Prefix: "watch/certificatesigningrequests"
+									if prefix := "watch/certificatesigningrequests"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+										elem = elem[len(prefix):]
+									} else {
+										break
+									}
+
+									if len(elem) == 0 {
+										s.handleWatchCertificatesV1CertificateSigningRequestListRequest(args, w, r)
+										return
+									}
+									switch elem[0] {
+									case '/': // Prefix: "/"
+										if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+											elem = elem[len(prefix):]
+										} else {
+											break
+										}
+
+										// Param: "name"
+										// Leaf parameter
 										args["name"] = elem
-										// GET /apis/coordination.k8s.io/v1/watch/namespaces/{namespace}/leases/{name}
+
+										// Leaf: WatchCertificatesV1CertificateSigningRequest
+										s.handleWatchCertificatesV1CertificateSigningRequestRequest(args, w, r)
+										return
+									}
+								}
+							}
+						case 'o': // Prefix: "oordination.k8s.io/"
+							if prefix := "oordination.k8s.io/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+								elem = elem[len(prefix):]
+							} else {
+								break
+							}
+
+							if len(elem) == 0 {
+								s.handleGetCoordinationAPIGroupRequest(args, w, r)
+								return
+							}
+							switch elem[0] {
+							case 'v': // Prefix: "v1/"
+								if prefix := "v1/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+									elem = elem[len(prefix):]
+								} else {
+									break
+								}
+
+								if len(elem) == 0 {
+									s.handleGetCoordinationV1APIResourcesRequest(args, w, r)
+									return
+								}
+								switch elem[0] {
+								case 'l': // Prefix: "leases"
+									if prefix := "leases"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+										elem = elem[len(prefix):]
+									} else {
+										break
+									}
+
+									// Leaf: ListCoordinationV1LeaseForAllNamespaces
+									s.handleListCoordinationV1LeaseForAllNamespacesRequest(args, w, r)
+									return
+								case 'n': // Prefix: "namespaces/"
+									if prefix := "namespaces/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+										elem = elem[len(prefix):]
+									} else {
+										break
+									}
+
+									// Param: "namespace"
+									// Match until one of "/"
+									idx := strings.IndexAny(elem, "/")
+									if idx > 0 {
+										args["namespace"] = elem[:idx]
+										elem = elem[idx:]
+
+										if len(elem) == 0 {
+											break
+										}
+										switch elem[0] {
+										case '/': // Prefix: "/leases"
+											if prefix := "/leases"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+												elem = elem[len(prefix):]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												s.handleListCoordinationV1NamespacedLeaseRequest(args, w, r)
+												return
+											}
+											switch elem[0] {
+											case '/': // Prefix: "/"
+												if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+													elem = elem[len(prefix):]
+												} else {
+													break
+												}
+
+												// Param: "name"
+												// Leaf parameter
+												args["name"] = elem
+
+												// Leaf: ReadCoordinationV1NamespacedLease
+												s.handleReadCoordinationV1NamespacedLeaseRequest(args, w, r)
+												return
+											}
+										}
+									}
+								case 'w': // Prefix: "watch/"
+									if prefix := "watch/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+										elem = elem[len(prefix):]
+									} else {
+										break
+									}
+
+									if len(elem) == 0 {
 										s.handleWatchCoordinationV1NamespacedLeaseRequest(args, w, r)
 										return
 									}
-								default:
-									s.notFound(w, r)
-									return
+									switch elem[0] {
+									case 'l': // Prefix: "leases"
+										if prefix := "leases"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+											elem = elem[len(prefix):]
+										} else {
+											break
+										}
+
+										if len(elem) == 0 {
+											s.handleWatchCoordinationV1LeaseListForAllNamespacesRequest(args, w, r)
+											return
+										}
+										switch elem[0] {
+										case 'n': // Prefix: "namespaces/"
+											if prefix := "namespaces/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+												elem = elem[len(prefix):]
+											} else {
+												break
+											}
+
+											// Param: "namespace"
+											// Match until one of "/"
+											idx := strings.IndexAny(elem, "/")
+											if idx > 0 {
+												args["namespace"] = elem[:idx]
+												elem = elem[idx:]
+
+												if len(elem) == 0 {
+													break
+												}
+												switch elem[0] {
+												case '/': // Prefix: "/leases/"
+													if prefix := "/leases/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+														elem = elem[len(prefix):]
+													} else {
+														break
+													}
+
+													// Param: "name"
+													// Leaf parameter
+													args["name"] = elem
+
+													// Leaf: WatchCoordinationV1NamespacedLease
+													s.handleWatchCoordinationV1NamespacedLeaseRequest(args, w, r)
+													return
+												}
+											}
+										}
+									case 'n': // Prefix: "namespaces/"
+										if prefix := "namespaces/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+											elem = elem[len(prefix):]
+										} else {
+											break
+										}
+
+										// Param: "namespace"
+										// Match until one of "/"
+										idx := strings.IndexAny(elem, "/")
+										if idx > 0 {
+											args["namespace"] = elem[:idx]
+											elem = elem[idx:]
+
+											if len(elem) == 0 {
+												break
+											}
+											switch elem[0] {
+											case '/': // Prefix: "/leases"
+												if prefix := "/leases"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+													elem = elem[len(prefix):]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													s.handleWatchCoordinationV1NamespacedLeaseListRequest(args, w, r)
+													return
+												}
+												switch elem[0] {
+												case '/': // Prefix: "/"
+													if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+														elem = elem[len(prefix):]
+													} else {
+														break
+													}
+
+													// Param: "name"
+													// Leaf parameter
+													args["name"] = elem
+
+													// Leaf: WatchCoordinationV1NamespacedLease
+													s.handleWatchCoordinationV1NamespacedLeaseRequest(args, w, r)
+													return
+												}
+											}
+										}
+									}
 								}
 							}
-						default:
-							s.notFound(w, r)
+						}
+					case 'd': // Prefix: "discovery.k8s.io/"
+						if prefix := "discovery.k8s.io/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+							elem = elem[len(prefix):]
+						} else {
+							break
+						}
+
+						if len(elem) == 0 {
+							s.handleGetDiscoveryAPIGroupRequest(args, w, r)
 							return
 						}
-					default:
-						// GET /apis/coordination.k8s.io/v1/.
-						s.handleGetCoordinationV1APIResourcesRequest(args, w, r)
-						return
-					}
-				default:
-					// GET /apis/coordination.k8s.io/.
-					s.handleGetCoordinationAPIGroupRequest(args, w, r)
-					return
-				}
-			case "discovery.k8s.io": // -> 28
-				// Edge: 28, path: "discovery.k8s.io".
-				elem, p = nextElem(p)
-				if len(elem) == 0 {
-					// GET /apis/discovery.k8s.io/.
-					s.handleGetDiscoveryAPIGroupRequest(args, w, r)
-					return
-				}
-				switch elem {
-				case "v1": // -> 29
-					// Edge: 29, path: "v1".
-					elem, p = nextElem(p)
-					if len(elem) == 0 {
-						// GET /apis/discovery.k8s.io/v1/.
-						s.handleGetDiscoveryV1APIResourcesRequest(args, w, r)
-						return
-					}
-					switch elem {
-					case "endpointslices": // -> 130
-						// GET /apis/discovery.k8s.io/v1/endpointslices
-						s.handleListDiscoveryV1EndpointSliceForAllNamespacesRequest(args, w, r)
-						return
-					case "namespaces": // -> 131
-						// Edge: 131, path: "namespaces".
-						elem, p = nextElem(p)
-						switch elem {
-						default:
-							if args == nil {
-								args = make(map[string]string)
+						switch elem[0] {
+						case 'v': // Prefix: "v1"
+							if prefix := "v1"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+								elem = elem[len(prefix):]
+							} else {
+								break
 							}
-							args["namespace"] = elem
-							// Edge: 132, path: "".
-							elem, p = nextElem(p)
-							switch elem {
-							case "endpointslices": // -> 133
-								// Edge: 133, path: "endpointslices".
-								elem, p = nextElem(p)
-								if len(elem) == 0 {
-									// GET /apis/discovery.k8s.io/v1/namespaces/{namespace}/endpointslices.
-									s.handleListDiscoveryV1NamespacedEndpointSliceRequest(args, w, r)
-									return
-								}
-								switch elem {
-								default:
-									if args == nil {
-										args = make(map[string]string)
-									}
-									args["name"] = elem
-									// GET /apis/discovery.k8s.io/v1/namespaces/{namespace}/endpointslices/{name}
-									s.handleReadDiscoveryV1NamespacedEndpointSliceRequest(args, w, r)
-									return
-								}
-							default:
-								s.notFound(w, r)
+
+							if len(elem) == 0 {
+								s.handleGetDiscoveryV1beta1APIResourcesRequest(args, w, r)
 								return
 							}
-						}
-					case "watch": // -> 405
-						// Edge: 405, path: "watch".
-						elem, p = nextElem(p)
-						switch elem {
-						case "endpointslices": // -> 406
-							// GET /apis/discovery.k8s.io/v1/watch/endpointslices
-							s.handleWatchDiscoveryV1EndpointSliceListForAllNamespacesRequest(args, w, r)
-							return
-						case "namespaces": // -> 407
-							// Edge: 407, path: "namespaces".
-							elem, p = nextElem(p)
-							switch elem {
-							default:
-								if args == nil {
-									args = make(map[string]string)
+							switch elem[0] {
+							case '/': // Prefix: "/"
+								if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+									elem = elem[len(prefix):]
+								} else {
+									break
 								}
-								args["namespace"] = elem
-								// Edge: 408, path: "".
-								elem, p = nextElem(p)
-								switch elem {
-								case "endpointslices": // -> 409
-									// Edge: 409, path: "endpointslices".
-									elem, p = nextElem(p)
-									if len(elem) == 0 {
-										// GET /apis/discovery.k8s.io/v1/watch/namespaces/{namespace}/endpointslices.
-										s.handleWatchDiscoveryV1NamespacedEndpointSliceListRequest(args, w, r)
-										return
+
+								if len(elem) == 0 {
+									s.handleGetDiscoveryV1APIResourcesRequest(args, w, r)
+									return
+								}
+								switch elem[0] {
+								case 'b': // Prefix: "beta1/"
+									if prefix := "beta1/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+										elem = elem[len(prefix):]
+									} else {
+										break
 									}
-									switch elem {
-									default:
-										if args == nil {
-											args = make(map[string]string)
+
+									// Leaf: GetDiscoveryV1beta1APIResources
+									s.handleGetDiscoveryV1beta1APIResourcesRequest(args, w, r)
+									return
+								case 'e': // Prefix: "endpointslices"
+									if prefix := "endpointslices"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+										elem = elem[len(prefix):]
+									} else {
+										break
+									}
+
+									// Leaf: ListDiscoveryV1EndpointSliceForAllNamespaces
+									s.handleListDiscoveryV1EndpointSliceForAllNamespacesRequest(args, w, r)
+									return
+								case 'n': // Prefix: "namespaces/"
+									if prefix := "namespaces/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+										elem = elem[len(prefix):]
+									} else {
+										break
+									}
+
+									// Param: "namespace"
+									// Match until one of "/"
+									idx := strings.IndexAny(elem, "/")
+									if idx > 0 {
+										args["namespace"] = elem[:idx]
+										elem = elem[idx:]
+
+										if len(elem) == 0 {
+											break
 										}
-										args["name"] = elem
-										// GET /apis/discovery.k8s.io/v1/watch/namespaces/{namespace}/endpointslices/{name}
+										switch elem[0] {
+										case '/': // Prefix: "/endpointslices"
+											if prefix := "/endpointslices"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+												elem = elem[len(prefix):]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												s.handleListDiscoveryV1NamespacedEndpointSliceRequest(args, w, r)
+												return
+											}
+											switch elem[0] {
+											case '/': // Prefix: "/"
+												if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+													elem = elem[len(prefix):]
+												} else {
+													break
+												}
+
+												// Param: "name"
+												// Leaf parameter
+												args["name"] = elem
+
+												// Leaf: ReadDiscoveryV1NamespacedEndpointSlice
+												s.handleReadDiscoveryV1NamespacedEndpointSliceRequest(args, w, r)
+												return
+											}
+										}
+									}
+								case 'w': // Prefix: "watch/"
+									if prefix := "watch/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+										elem = elem[len(prefix):]
+									} else {
+										break
+									}
+
+									if len(elem) == 0 {
 										s.handleWatchDiscoveryV1NamespacedEndpointSliceRequest(args, w, r)
 										return
 									}
-								default:
-									s.notFound(w, r)
-									return
-								}
-							}
-						default:
-							s.notFound(w, r)
-							return
-						}
-					default:
-						// GET /apis/discovery.k8s.io/v1/.
-						s.handleGetDiscoveryV1APIResourcesRequest(args, w, r)
-						return
-					}
-				case "v1beta1": // -> 30
-					// Edge: 30, path: "v1beta1".
-					elem, p = nextElem(p)
-					if len(elem) == 0 {
-						// GET /apis/discovery.k8s.io/v1beta1/.
-						s.handleGetDiscoveryV1beta1APIResourcesRequest(args, w, r)
-						return
-					}
-					switch elem {
-					case "endpointslices": // -> 134
-						// GET /apis/discovery.k8s.io/v1beta1/endpointslices
-						s.handleListDiscoveryV1beta1EndpointSliceForAllNamespacesRequest(args, w, r)
-						return
-					case "namespaces": // -> 135
-						// Edge: 135, path: "namespaces".
-						elem, p = nextElem(p)
-						switch elem {
-						default:
-							if args == nil {
-								args = make(map[string]string)
-							}
-							args["namespace"] = elem
-							// Edge: 136, path: "".
-							elem, p = nextElem(p)
-							switch elem {
-							case "endpointslices": // -> 137
-								// Edge: 137, path: "endpointslices".
-								elem, p = nextElem(p)
-								if len(elem) == 0 {
-									// GET /apis/discovery.k8s.io/v1beta1/namespaces/{namespace}/endpointslices.
-									s.handleListDiscoveryV1beta1NamespacedEndpointSliceRequest(args, w, r)
-									return
-								}
-								switch elem {
-								default:
-									if args == nil {
-										args = make(map[string]string)
-									}
-									args["name"] = elem
-									// GET /apis/discovery.k8s.io/v1beta1/namespaces/{namespace}/endpointslices/{name}
-									s.handleReadDiscoveryV1beta1NamespacedEndpointSliceRequest(args, w, r)
-									return
-								}
-							default:
-								s.notFound(w, r)
-								return
-							}
-						}
-					case "watch": // -> 411
-						// Edge: 411, path: "watch".
-						elem, p = nextElem(p)
-						switch elem {
-						case "endpointslices": // -> 412
-							// GET /apis/discovery.k8s.io/v1beta1/watch/endpointslices
-							s.handleWatchDiscoveryV1beta1EndpointSliceListForAllNamespacesRequest(args, w, r)
-							return
-						case "namespaces": // -> 413
-							// Edge: 413, path: "namespaces".
-							elem, p = nextElem(p)
-							switch elem {
-							default:
-								if args == nil {
-									args = make(map[string]string)
-								}
-								args["namespace"] = elem
-								// Edge: 414, path: "".
-								elem, p = nextElem(p)
-								switch elem {
-								case "endpointslices": // -> 415
-									// Edge: 415, path: "endpointslices".
-									elem, p = nextElem(p)
-									if len(elem) == 0 {
-										// GET /apis/discovery.k8s.io/v1beta1/watch/namespaces/{namespace}/endpointslices.
-										s.handleWatchDiscoveryV1beta1NamespacedEndpointSliceListRequest(args, w, r)
-										return
-									}
-									switch elem {
-									default:
-										if args == nil {
-											args = make(map[string]string)
+									switch elem[0] {
+									case 'e': // Prefix: "endpointslices"
+										if prefix := "endpointslices"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+											elem = elem[len(prefix):]
+										} else {
+											break
 										}
-										args["name"] = elem
-										// GET /apis/discovery.k8s.io/v1beta1/watch/namespaces/{namespace}/endpointslices/{name}
+
+										if len(elem) == 0 {
+											s.handleWatchDiscoveryV1EndpointSliceListForAllNamespacesRequest(args, w, r)
+											return
+										}
+										switch elem[0] {
+										case 'n': // Prefix: "namespaces/"
+											if prefix := "namespaces/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+												elem = elem[len(prefix):]
+											} else {
+												break
+											}
+
+											// Param: "namespace"
+											// Match until one of "/"
+											idx := strings.IndexAny(elem, "/")
+											if idx > 0 {
+												args["namespace"] = elem[:idx]
+												elem = elem[idx:]
+
+												if len(elem) == 0 {
+													break
+												}
+												switch elem[0] {
+												case '/': // Prefix: "/endpointslices/"
+													if prefix := "/endpointslices/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+														elem = elem[len(prefix):]
+													} else {
+														break
+													}
+
+													// Param: "name"
+													// Leaf parameter
+													args["name"] = elem
+
+													// Leaf: WatchDiscoveryV1NamespacedEndpointSlice
+													s.handleWatchDiscoveryV1NamespacedEndpointSliceRequest(args, w, r)
+													return
+												}
+											}
+										}
+									case 'n': // Prefix: "namespaces/"
+										if prefix := "namespaces/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+											elem = elem[len(prefix):]
+										} else {
+											break
+										}
+
+										// Param: "namespace"
+										// Match until one of "/"
+										idx := strings.IndexAny(elem, "/")
+										if idx > 0 {
+											args["namespace"] = elem[:idx]
+											elem = elem[idx:]
+
+											if len(elem) == 0 {
+												break
+											}
+											switch elem[0] {
+											case '/': // Prefix: "/endpointslices"
+												if prefix := "/endpointslices"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+													elem = elem[len(prefix):]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													s.handleWatchDiscoveryV1NamespacedEndpointSliceListRequest(args, w, r)
+													return
+												}
+												switch elem[0] {
+												case '/': // Prefix: "/"
+													if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+														elem = elem[len(prefix):]
+													} else {
+														break
+													}
+
+													// Param: "name"
+													// Leaf parameter
+													args["name"] = elem
+
+													// Leaf: WatchDiscoveryV1NamespacedEndpointSlice
+													s.handleWatchDiscoveryV1NamespacedEndpointSliceRequest(args, w, r)
+													return
+												}
+											}
+										}
+									}
+								}
+							case 'b': // Prefix: "beta1/"
+								if prefix := "beta1/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+									elem = elem[len(prefix):]
+								} else {
+									break
+								}
+
+								if len(elem) == 0 {
+									s.handleGetDiscoveryV1beta1APIResourcesRequest(args, w, r)
+									return
+								}
+								switch elem[0] {
+								case 'e': // Prefix: "endpointslices"
+									if prefix := "endpointslices"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+										elem = elem[len(prefix):]
+									} else {
+										break
+									}
+
+									// Leaf: ListDiscoveryV1beta1EndpointSliceForAllNamespaces
+									s.handleListDiscoveryV1beta1EndpointSliceForAllNamespacesRequest(args, w, r)
+									return
+								case 'n': // Prefix: "namespaces/"
+									if prefix := "namespaces/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+										elem = elem[len(prefix):]
+									} else {
+										break
+									}
+
+									// Param: "namespace"
+									// Match until one of "/"
+									idx := strings.IndexAny(elem, "/")
+									if idx > 0 {
+										args["namespace"] = elem[:idx]
+										elem = elem[idx:]
+
+										if len(elem) == 0 {
+											break
+										}
+										switch elem[0] {
+										case '/': // Prefix: "/endpointslices"
+											if prefix := "/endpointslices"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+												elem = elem[len(prefix):]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												s.handleListDiscoveryV1beta1NamespacedEndpointSliceRequest(args, w, r)
+												return
+											}
+											switch elem[0] {
+											case '/': // Prefix: "/"
+												if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+													elem = elem[len(prefix):]
+												} else {
+													break
+												}
+
+												// Param: "name"
+												// Leaf parameter
+												args["name"] = elem
+
+												// Leaf: ReadDiscoveryV1beta1NamespacedEndpointSlice
+												s.handleReadDiscoveryV1beta1NamespacedEndpointSliceRequest(args, w, r)
+												return
+											}
+										}
+									}
+								case 'w': // Prefix: "watch/"
+									if prefix := "watch/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+										elem = elem[len(prefix):]
+									} else {
+										break
+									}
+
+									if len(elem) == 0 {
 										s.handleWatchDiscoveryV1beta1NamespacedEndpointSliceRequest(args, w, r)
 										return
 									}
-								default:
-									s.notFound(w, r)
-									return
+									switch elem[0] {
+									case 'e': // Prefix: "endpointslices"
+										if prefix := "endpointslices"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+											elem = elem[len(prefix):]
+										} else {
+											break
+										}
+
+										if len(elem) == 0 {
+											s.handleWatchDiscoveryV1beta1EndpointSliceListForAllNamespacesRequest(args, w, r)
+											return
+										}
+										switch elem[0] {
+										case 'n': // Prefix: "namespaces/"
+											if prefix := "namespaces/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+												elem = elem[len(prefix):]
+											} else {
+												break
+											}
+
+											// Param: "namespace"
+											// Match until one of "/"
+											idx := strings.IndexAny(elem, "/")
+											if idx > 0 {
+												args["namespace"] = elem[:idx]
+												elem = elem[idx:]
+
+												if len(elem) == 0 {
+													break
+												}
+												switch elem[0] {
+												case '/': // Prefix: "/endpointslices/"
+													if prefix := "/endpointslices/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+														elem = elem[len(prefix):]
+													} else {
+														break
+													}
+
+													// Param: "name"
+													// Leaf parameter
+													args["name"] = elem
+
+													// Leaf: WatchDiscoveryV1beta1NamespacedEndpointSlice
+													s.handleWatchDiscoveryV1beta1NamespacedEndpointSliceRequest(args, w, r)
+													return
+												}
+											}
+										}
+									case 'n': // Prefix: "namespaces/"
+										if prefix := "namespaces/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+											elem = elem[len(prefix):]
+										} else {
+											break
+										}
+
+										// Param: "namespace"
+										// Match until one of "/"
+										idx := strings.IndexAny(elem, "/")
+										if idx > 0 {
+											args["namespace"] = elem[:idx]
+											elem = elem[idx:]
+
+											if len(elem) == 0 {
+												break
+											}
+											switch elem[0] {
+											case '/': // Prefix: "/endpointslices"
+												if prefix := "/endpointslices"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+													elem = elem[len(prefix):]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													s.handleWatchDiscoveryV1beta1NamespacedEndpointSliceListRequest(args, w, r)
+													return
+												}
+												switch elem[0] {
+												case '/': // Prefix: "/"
+													if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+														elem = elem[len(prefix):]
+													} else {
+														break
+													}
+
+													// Param: "name"
+													// Leaf parameter
+													args["name"] = elem
+
+													// Leaf: WatchDiscoveryV1beta1NamespacedEndpointSlice
+													s.handleWatchDiscoveryV1beta1NamespacedEndpointSliceRequest(args, w, r)
+													return
+												}
+											}
+										}
+									}
 								}
 							}
-						default:
-							s.notFound(w, r)
+						}
+					case 'e': // Prefix: "events.k8s.io/"
+						if prefix := "events.k8s.io/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+							elem = elem[len(prefix):]
+						} else {
+							break
+						}
+
+						if len(elem) == 0 {
+							s.handleGetEventsAPIGroupRequest(args, w, r)
 							return
 						}
-					default:
-						// GET /apis/discovery.k8s.io/v1beta1/.
-						s.handleGetDiscoveryV1beta1APIResourcesRequest(args, w, r)
-						return
-					}
-				default:
-					// GET /apis/discovery.k8s.io/.
-					s.handleGetDiscoveryAPIGroupRequest(args, w, r)
-					return
-				}
-			case "events.k8s.io": // -> 31
-				// Edge: 31, path: "events.k8s.io".
-				elem, p = nextElem(p)
-				if len(elem) == 0 {
-					// GET /apis/events.k8s.io/.
-					s.handleGetEventsAPIGroupRequest(args, w, r)
-					return
-				}
-				switch elem {
-				case "v1": // -> 32
-					// Edge: 32, path: "v1".
-					elem, p = nextElem(p)
-					if len(elem) == 0 {
-						// GET /apis/events.k8s.io/v1/.
-						s.handleGetEventsV1APIResourcesRequest(args, w, r)
-						return
-					}
-					switch elem {
-					case "events": // -> 138
-						// GET /apis/events.k8s.io/v1/events
-						s.handleListEventsV1EventForAllNamespacesRequest(args, w, r)
-						return
-					case "namespaces": // -> 139
-						// Edge: 139, path: "namespaces".
-						elem, p = nextElem(p)
-						switch elem {
-						default:
-							if args == nil {
-								args = make(map[string]string)
+						switch elem[0] {
+						case 'v': // Prefix: "v1"
+							if prefix := "v1"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+								elem = elem[len(prefix):]
+							} else {
+								break
 							}
-							args["namespace"] = elem
-							// Edge: 140, path: "".
-							elem, p = nextElem(p)
-							switch elem {
-							case "events": // -> 141
-								// Edge: 141, path: "events".
-								elem, p = nextElem(p)
-								if len(elem) == 0 {
-									// GET /apis/events.k8s.io/v1/namespaces/{namespace}/events.
-									s.handleListEventsV1NamespacedEventRequest(args, w, r)
-									return
-								}
-								switch elem {
-								default:
-									if args == nil {
-										args = make(map[string]string)
-									}
-									args["name"] = elem
-									// GET /apis/events.k8s.io/v1/namespaces/{namespace}/events/{name}
-									s.handleReadEventsV1NamespacedEventRequest(args, w, r)
-									return
-								}
-							default:
-								s.notFound(w, r)
+
+							if len(elem) == 0 {
+								s.handleGetEventsV1beta1APIResourcesRequest(args, w, r)
 								return
 							}
-						}
-					case "watch": // -> 417
-						// Edge: 417, path: "watch".
-						elem, p = nextElem(p)
-						switch elem {
-						case "events": // -> 418
-							// GET /apis/events.k8s.io/v1/watch/events
-							s.handleWatchEventsV1EventListForAllNamespacesRequest(args, w, r)
-							return
-						case "namespaces": // -> 419
-							// Edge: 419, path: "namespaces".
-							elem, p = nextElem(p)
-							switch elem {
-							default:
-								if args == nil {
-									args = make(map[string]string)
+							switch elem[0] {
+							case '/': // Prefix: "/"
+								if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+									elem = elem[len(prefix):]
+								} else {
+									break
 								}
-								args["namespace"] = elem
-								// Edge: 420, path: "".
-								elem, p = nextElem(p)
-								switch elem {
-								case "events": // -> 421
-									// Edge: 421, path: "events".
-									elem, p = nextElem(p)
-									if len(elem) == 0 {
-										// GET /apis/events.k8s.io/v1/watch/namespaces/{namespace}/events.
-										s.handleWatchEventsV1NamespacedEventListRequest(args, w, r)
-										return
+
+								if len(elem) == 0 {
+									s.handleGetEventsV1APIResourcesRequest(args, w, r)
+									return
+								}
+								switch elem[0] {
+								case 'b': // Prefix: "beta1/"
+									if prefix := "beta1/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+										elem = elem[len(prefix):]
+									} else {
+										break
 									}
-									switch elem {
-									default:
-										if args == nil {
-											args = make(map[string]string)
+
+									// Leaf: GetEventsV1beta1APIResources
+									s.handleGetEventsV1beta1APIResourcesRequest(args, w, r)
+									return
+								case 'e': // Prefix: "events"
+									if prefix := "events"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+										elem = elem[len(prefix):]
+									} else {
+										break
+									}
+
+									// Leaf: ListEventsV1EventForAllNamespaces
+									s.handleListEventsV1EventForAllNamespacesRequest(args, w, r)
+									return
+								case 'n': // Prefix: "namespaces/"
+									if prefix := "namespaces/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+										elem = elem[len(prefix):]
+									} else {
+										break
+									}
+
+									// Param: "namespace"
+									// Match until one of "/"
+									idx := strings.IndexAny(elem, "/")
+									if idx > 0 {
+										args["namespace"] = elem[:idx]
+										elem = elem[idx:]
+
+										if len(elem) == 0 {
+											break
 										}
-										args["name"] = elem
-										// GET /apis/events.k8s.io/v1/watch/namespaces/{namespace}/events/{name}
+										switch elem[0] {
+										case '/': // Prefix: "/events"
+											if prefix := "/events"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+												elem = elem[len(prefix):]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												s.handleListEventsV1NamespacedEventRequest(args, w, r)
+												return
+											}
+											switch elem[0] {
+											case '/': // Prefix: "/"
+												if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+													elem = elem[len(prefix):]
+												} else {
+													break
+												}
+
+												// Param: "name"
+												// Leaf parameter
+												args["name"] = elem
+
+												// Leaf: ReadEventsV1NamespacedEvent
+												s.handleReadEventsV1NamespacedEventRequest(args, w, r)
+												return
+											}
+										}
+									}
+								case 'w': // Prefix: "watch/"
+									if prefix := "watch/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+										elem = elem[len(prefix):]
+									} else {
+										break
+									}
+
+									if len(elem) == 0 {
 										s.handleWatchEventsV1NamespacedEventRequest(args, w, r)
 										return
 									}
-								default:
-									s.notFound(w, r)
-									return
-								}
-							}
-						default:
-							s.notFound(w, r)
-							return
-						}
-					default:
-						// GET /apis/events.k8s.io/v1/.
-						s.handleGetEventsV1APIResourcesRequest(args, w, r)
-						return
-					}
-				case "v1beta1": // -> 33
-					// Edge: 33, path: "v1beta1".
-					elem, p = nextElem(p)
-					if len(elem) == 0 {
-						// GET /apis/events.k8s.io/v1beta1/.
-						s.handleGetEventsV1beta1APIResourcesRequest(args, w, r)
-						return
-					}
-					switch elem {
-					case "events": // -> 142
-						// GET /apis/events.k8s.io/v1beta1/events
-						s.handleListEventsV1beta1EventForAllNamespacesRequest(args, w, r)
-						return
-					case "namespaces": // -> 143
-						// Edge: 143, path: "namespaces".
-						elem, p = nextElem(p)
-						switch elem {
-						default:
-							if args == nil {
-								args = make(map[string]string)
-							}
-							args["namespace"] = elem
-							// Edge: 144, path: "".
-							elem, p = nextElem(p)
-							switch elem {
-							case "events": // -> 145
-								// Edge: 145, path: "events".
-								elem, p = nextElem(p)
-								if len(elem) == 0 {
-									// GET /apis/events.k8s.io/v1beta1/namespaces/{namespace}/events.
-									s.handleListEventsV1beta1NamespacedEventRequest(args, w, r)
-									return
-								}
-								switch elem {
-								default:
-									if args == nil {
-										args = make(map[string]string)
-									}
-									args["name"] = elem
-									// GET /apis/events.k8s.io/v1beta1/namespaces/{namespace}/events/{name}
-									s.handleReadEventsV1beta1NamespacedEventRequest(args, w, r)
-									return
-								}
-							default:
-								s.notFound(w, r)
-								return
-							}
-						}
-					case "watch": // -> 423
-						// Edge: 423, path: "watch".
-						elem, p = nextElem(p)
-						switch elem {
-						case "events": // -> 424
-							// GET /apis/events.k8s.io/v1beta1/watch/events
-							s.handleWatchEventsV1beta1EventListForAllNamespacesRequest(args, w, r)
-							return
-						case "namespaces": // -> 425
-							// Edge: 425, path: "namespaces".
-							elem, p = nextElem(p)
-							switch elem {
-							default:
-								if args == nil {
-									args = make(map[string]string)
-								}
-								args["namespace"] = elem
-								// Edge: 426, path: "".
-								elem, p = nextElem(p)
-								switch elem {
-								case "events": // -> 427
-									// Edge: 427, path: "events".
-									elem, p = nextElem(p)
-									if len(elem) == 0 {
-										// GET /apis/events.k8s.io/v1beta1/watch/namespaces/{namespace}/events.
-										s.handleWatchEventsV1beta1NamespacedEventListRequest(args, w, r)
-										return
-									}
-									switch elem {
-									default:
-										if args == nil {
-											args = make(map[string]string)
+									switch elem[0] {
+									case 'e': // Prefix: "events"
+										if prefix := "events"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+											elem = elem[len(prefix):]
+										} else {
+											break
 										}
-										args["name"] = elem
-										// GET /apis/events.k8s.io/v1beta1/watch/namespaces/{namespace}/events/{name}
+
+										if len(elem) == 0 {
+											s.handleWatchEventsV1EventListForAllNamespacesRequest(args, w, r)
+											return
+										}
+										switch elem[0] {
+										case 'n': // Prefix: "namespaces/"
+											if prefix := "namespaces/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+												elem = elem[len(prefix):]
+											} else {
+												break
+											}
+
+											// Param: "namespace"
+											// Match until one of "/"
+											idx := strings.IndexAny(elem, "/")
+											if idx > 0 {
+												args["namespace"] = elem[:idx]
+												elem = elem[idx:]
+
+												if len(elem) == 0 {
+													break
+												}
+												switch elem[0] {
+												case '/': // Prefix: "/events/"
+													if prefix := "/events/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+														elem = elem[len(prefix):]
+													} else {
+														break
+													}
+
+													// Param: "name"
+													// Leaf parameter
+													args["name"] = elem
+
+													// Leaf: WatchEventsV1NamespacedEvent
+													s.handleWatchEventsV1NamespacedEventRequest(args, w, r)
+													return
+												}
+											}
+										}
+									case 'n': // Prefix: "namespaces/"
+										if prefix := "namespaces/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+											elem = elem[len(prefix):]
+										} else {
+											break
+										}
+
+										// Param: "namespace"
+										// Match until one of "/"
+										idx := strings.IndexAny(elem, "/")
+										if idx > 0 {
+											args["namespace"] = elem[:idx]
+											elem = elem[idx:]
+
+											if len(elem) == 0 {
+												break
+											}
+											switch elem[0] {
+											case '/': // Prefix: "/events"
+												if prefix := "/events"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+													elem = elem[len(prefix):]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													s.handleWatchEventsV1NamespacedEventListRequest(args, w, r)
+													return
+												}
+												switch elem[0] {
+												case '/': // Prefix: "/"
+													if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+														elem = elem[len(prefix):]
+													} else {
+														break
+													}
+
+													// Param: "name"
+													// Leaf parameter
+													args["name"] = elem
+
+													// Leaf: WatchEventsV1NamespacedEvent
+													s.handleWatchEventsV1NamespacedEventRequest(args, w, r)
+													return
+												}
+											}
+										}
+									}
+								}
+							case 'b': // Prefix: "beta1/"
+								if prefix := "beta1/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+									elem = elem[len(prefix):]
+								} else {
+									break
+								}
+
+								if len(elem) == 0 {
+									s.handleGetEventsV1beta1APIResourcesRequest(args, w, r)
+									return
+								}
+								switch elem[0] {
+								case 'e': // Prefix: "events"
+									if prefix := "events"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+										elem = elem[len(prefix):]
+									} else {
+										break
+									}
+
+									// Leaf: ListEventsV1beta1EventForAllNamespaces
+									s.handleListEventsV1beta1EventForAllNamespacesRequest(args, w, r)
+									return
+								case 'n': // Prefix: "namespaces/"
+									if prefix := "namespaces/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+										elem = elem[len(prefix):]
+									} else {
+										break
+									}
+
+									// Param: "namespace"
+									// Match until one of "/"
+									idx := strings.IndexAny(elem, "/")
+									if idx > 0 {
+										args["namespace"] = elem[:idx]
+										elem = elem[idx:]
+
+										if len(elem) == 0 {
+											break
+										}
+										switch elem[0] {
+										case '/': // Prefix: "/events"
+											if prefix := "/events"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+												elem = elem[len(prefix):]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												s.handleListEventsV1beta1NamespacedEventRequest(args, w, r)
+												return
+											}
+											switch elem[0] {
+											case '/': // Prefix: "/"
+												if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+													elem = elem[len(prefix):]
+												} else {
+													break
+												}
+
+												// Param: "name"
+												// Leaf parameter
+												args["name"] = elem
+
+												// Leaf: ReadEventsV1beta1NamespacedEvent
+												s.handleReadEventsV1beta1NamespacedEventRequest(args, w, r)
+												return
+											}
+										}
+									}
+								case 'w': // Prefix: "watch/"
+									if prefix := "watch/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+										elem = elem[len(prefix):]
+									} else {
+										break
+									}
+
+									if len(elem) == 0 {
 										s.handleWatchEventsV1beta1NamespacedEventRequest(args, w, r)
 										return
 									}
-								default:
-									s.notFound(w, r)
-									return
-								}
-							}
-						default:
-							s.notFound(w, r)
-							return
-						}
-					default:
-						// GET /apis/events.k8s.io/v1beta1/.
-						s.handleGetEventsV1beta1APIResourcesRequest(args, w, r)
-						return
-					}
-				default:
-					// GET /apis/events.k8s.io/.
-					s.handleGetEventsAPIGroupRequest(args, w, r)
-					return
-				}
-			case "flowcontrol.apiserver.k8s.io": // -> 34
-				// Edge: 34, path: "flowcontrol.apiserver.k8s.io".
-				elem, p = nextElem(p)
-				if len(elem) == 0 {
-					// GET /apis/flowcontrol.apiserver.k8s.io/.
-					s.handleGetFlowcontrolApiserverAPIGroupRequest(args, w, r)
-					return
-				}
-				switch elem {
-				case "v1beta1": // -> 35
-					// Edge: 35, path: "v1beta1".
-					elem, p = nextElem(p)
-					if len(elem) == 0 {
-						// GET /apis/flowcontrol.apiserver.k8s.io/v1beta1/.
-						s.handleGetFlowcontrolApiserverV1beta1APIResourcesRequest(args, w, r)
-						return
-					}
-					switch elem {
-					case "flowschemas": // -> 146
-						// Edge: 146, path: "flowschemas".
-						elem, p = nextElem(p)
-						if len(elem) == 0 {
-							// GET /apis/flowcontrol.apiserver.k8s.io/v1beta1/flowschemas.
-							s.handleListFlowcontrolApiserverV1beta1FlowSchemaRequest(args, w, r)
-							return
-						}
-						switch elem {
-						default:
-							if args == nil {
-								args = make(map[string]string)
-							}
-							args["name"] = elem
-							// Edge: 257, path: "".
-							elem, p = nextElem(p)
-							if len(elem) == 0 {
-								// GET /apis/flowcontrol.apiserver.k8s.io/v1beta1/flowschemas/{name}.
-								s.handleReadFlowcontrolApiserverV1beta1FlowSchemaRequest(args, w, r)
-								return
-							}
-							switch elem {
-							case "status": // -> 258
-								// GET /apis/flowcontrol.apiserver.k8s.io/v1beta1/flowschemas/{name}/status
-								s.handleReadFlowcontrolApiserverV1beta1FlowSchemaStatusRequest(args, w, r)
-								return
-							default:
-								// GET /apis/flowcontrol.apiserver.k8s.io/v1beta1/flowschemas/{name}.
-								s.handleReadFlowcontrolApiserverV1beta1FlowSchemaRequest(args, w, r)
-								return
-							}
-						}
-					case "prioritylevelconfigurations": // -> 147
-						// Edge: 147, path: "prioritylevelconfigurations".
-						elem, p = nextElem(p)
-						if len(elem) == 0 {
-							// GET /apis/flowcontrol.apiserver.k8s.io/v1beta1/prioritylevelconfigurations.
-							s.handleListFlowcontrolApiserverV1beta1PriorityLevelConfigurationRequest(args, w, r)
-							return
-						}
-						switch elem {
-						default:
-							if args == nil {
-								args = make(map[string]string)
-							}
-							args["name"] = elem
-							// Edge: 259, path: "".
-							elem, p = nextElem(p)
-							if len(elem) == 0 {
-								// GET /apis/flowcontrol.apiserver.k8s.io/v1beta1/prioritylevelconfigurations/{name}.
-								s.handleReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationRequest(args, w, r)
-								return
-							}
-							switch elem {
-							case "status": // -> 260
-								// GET /apis/flowcontrol.apiserver.k8s.io/v1beta1/prioritylevelconfigurations/{name}/status
-								s.handleReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationStatusRequest(args, w, r)
-								return
-							default:
-								// GET /apis/flowcontrol.apiserver.k8s.io/v1beta1/prioritylevelconfigurations/{name}.
-								s.handleReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationRequest(args, w, r)
-								return
-							}
-						}
-					case "watch": // -> 429
-						// Edge: 429, path: "watch".
-						elem, p = nextElem(p)
-						switch elem {
-						case "flowschemas": // -> 430
-							// Edge: 430, path: "flowschemas".
-							elem, p = nextElem(p)
-							if len(elem) == 0 {
-								// GET /apis/flowcontrol.apiserver.k8s.io/v1beta1/watch/flowschemas.
-								s.handleWatchFlowcontrolApiserverV1beta1FlowSchemaListRequest(args, w, r)
-								return
-							}
-							switch elem {
-							default:
-								if args == nil {
-									args = make(map[string]string)
-								}
-								args["name"] = elem
-								// GET /apis/flowcontrol.apiserver.k8s.io/v1beta1/watch/flowschemas/{name}
-								s.handleWatchFlowcontrolApiserverV1beta1FlowSchemaRequest(args, w, r)
-								return
-							}
-						case "prioritylevelconfigurations": // -> 432
-							// Edge: 432, path: "prioritylevelconfigurations".
-							elem, p = nextElem(p)
-							if len(elem) == 0 {
-								// GET /apis/flowcontrol.apiserver.k8s.io/v1beta1/watch/prioritylevelconfigurations.
-								s.handleWatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationListRequest(args, w, r)
-								return
-							}
-							switch elem {
-							default:
-								if args == nil {
-									args = make(map[string]string)
-								}
-								args["name"] = elem
-								// GET /apis/flowcontrol.apiserver.k8s.io/v1beta1/watch/prioritylevelconfigurations/{name}
-								s.handleWatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationRequest(args, w, r)
-								return
-							}
-						default:
-							s.notFound(w, r)
-							return
-						}
-					default:
-						// GET /apis/flowcontrol.apiserver.k8s.io/v1beta1/.
-						s.handleGetFlowcontrolApiserverV1beta1APIResourcesRequest(args, w, r)
-						return
-					}
-				case "v1beta2": // -> 36
-					// Edge: 36, path: "v1beta2".
-					elem, p = nextElem(p)
-					if len(elem) == 0 {
-						// GET /apis/flowcontrol.apiserver.k8s.io/v1beta2/.
-						s.handleGetFlowcontrolApiserverV1beta2APIResourcesRequest(args, w, r)
-						return
-					}
-					switch elem {
-					case "flowschemas": // -> 148
-						// Edge: 148, path: "flowschemas".
-						elem, p = nextElem(p)
-						if len(elem) == 0 {
-							// GET /apis/flowcontrol.apiserver.k8s.io/v1beta2/flowschemas.
-							s.handleListFlowcontrolApiserverV1beta2FlowSchemaRequest(args, w, r)
-							return
-						}
-						switch elem {
-						default:
-							if args == nil {
-								args = make(map[string]string)
-							}
-							args["name"] = elem
-							// Edge: 261, path: "".
-							elem, p = nextElem(p)
-							if len(elem) == 0 {
-								// GET /apis/flowcontrol.apiserver.k8s.io/v1beta2/flowschemas/{name}.
-								s.handleReadFlowcontrolApiserverV1beta2FlowSchemaRequest(args, w, r)
-								return
-							}
-							switch elem {
-							case "status": // -> 262
-								// GET /apis/flowcontrol.apiserver.k8s.io/v1beta2/flowschemas/{name}/status
-								s.handleReadFlowcontrolApiserverV1beta2FlowSchemaStatusRequest(args, w, r)
-								return
-							default:
-								// GET /apis/flowcontrol.apiserver.k8s.io/v1beta2/flowschemas/{name}.
-								s.handleReadFlowcontrolApiserverV1beta2FlowSchemaRequest(args, w, r)
-								return
-							}
-						}
-					case "prioritylevelconfigurations": // -> 149
-						// Edge: 149, path: "prioritylevelconfigurations".
-						elem, p = nextElem(p)
-						if len(elem) == 0 {
-							// GET /apis/flowcontrol.apiserver.k8s.io/v1beta2/prioritylevelconfigurations.
-							s.handleListFlowcontrolApiserverV1beta2PriorityLevelConfigurationRequest(args, w, r)
-							return
-						}
-						switch elem {
-						default:
-							if args == nil {
-								args = make(map[string]string)
-							}
-							args["name"] = elem
-							// Edge: 263, path: "".
-							elem, p = nextElem(p)
-							if len(elem) == 0 {
-								// GET /apis/flowcontrol.apiserver.k8s.io/v1beta2/prioritylevelconfigurations/{name}.
-								s.handleReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationRequest(args, w, r)
-								return
-							}
-							switch elem {
-							case "status": // -> 264
-								// GET /apis/flowcontrol.apiserver.k8s.io/v1beta2/prioritylevelconfigurations/{name}/status
-								s.handleReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationStatusRequest(args, w, r)
-								return
-							default:
-								// GET /apis/flowcontrol.apiserver.k8s.io/v1beta2/prioritylevelconfigurations/{name}.
-								s.handleReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationRequest(args, w, r)
-								return
-							}
-						}
-					case "watch": // -> 434
-						// Edge: 434, path: "watch".
-						elem, p = nextElem(p)
-						switch elem {
-						case "flowschemas": // -> 435
-							// Edge: 435, path: "flowschemas".
-							elem, p = nextElem(p)
-							if len(elem) == 0 {
-								// GET /apis/flowcontrol.apiserver.k8s.io/v1beta2/watch/flowschemas.
-								s.handleWatchFlowcontrolApiserverV1beta2FlowSchemaListRequest(args, w, r)
-								return
-							}
-							switch elem {
-							default:
-								if args == nil {
-									args = make(map[string]string)
-								}
-								args["name"] = elem
-								// GET /apis/flowcontrol.apiserver.k8s.io/v1beta2/watch/flowschemas/{name}
-								s.handleWatchFlowcontrolApiserverV1beta2FlowSchemaRequest(args, w, r)
-								return
-							}
-						case "prioritylevelconfigurations": // -> 437
-							// Edge: 437, path: "prioritylevelconfigurations".
-							elem, p = nextElem(p)
-							if len(elem) == 0 {
-								// GET /apis/flowcontrol.apiserver.k8s.io/v1beta2/watch/prioritylevelconfigurations.
-								s.handleWatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationListRequest(args, w, r)
-								return
-							}
-							switch elem {
-							default:
-								if args == nil {
-									args = make(map[string]string)
-								}
-								args["name"] = elem
-								// GET /apis/flowcontrol.apiserver.k8s.io/v1beta2/watch/prioritylevelconfigurations/{name}
-								s.handleWatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationRequest(args, w, r)
-								return
-							}
-						default:
-							s.notFound(w, r)
-							return
-						}
-					default:
-						// GET /apis/flowcontrol.apiserver.k8s.io/v1beta2/.
-						s.handleGetFlowcontrolApiserverV1beta2APIResourcesRequest(args, w, r)
-						return
-					}
-				default:
-					// GET /apis/flowcontrol.apiserver.k8s.io/.
-					s.handleGetFlowcontrolApiserverAPIGroupRequest(args, w, r)
-					return
-				}
-			case "internal.apiserver.k8s.io": // -> 37
-				// Edge: 37, path: "internal.apiserver.k8s.io".
-				elem, p = nextElem(p)
-				if len(elem) == 0 {
-					// GET /apis/internal.apiserver.k8s.io/.
-					s.handleGetInternalApiserverAPIGroupRequest(args, w, r)
-					return
-				}
-				switch elem {
-				case "v1alpha1": // -> 38
-					// Edge: 38, path: "v1alpha1".
-					elem, p = nextElem(p)
-					if len(elem) == 0 {
-						// GET /apis/internal.apiserver.k8s.io/v1alpha1/.
-						s.handleGetInternalApiserverV1alpha1APIResourcesRequest(args, w, r)
-						return
-					}
-					switch elem {
-					case "storageversions": // -> 150
-						// Edge: 150, path: "storageversions".
-						elem, p = nextElem(p)
-						if len(elem) == 0 {
-							// GET /apis/internal.apiserver.k8s.io/v1alpha1/storageversions.
-							s.handleListInternalApiserverV1alpha1StorageVersionRequest(args, w, r)
-							return
-						}
-						switch elem {
-						default:
-							if args == nil {
-								args = make(map[string]string)
-							}
-							args["name"] = elem
-							// Edge: 265, path: "".
-							elem, p = nextElem(p)
-							if len(elem) == 0 {
-								// GET /apis/internal.apiserver.k8s.io/v1alpha1/storageversions/{name}.
-								s.handleReadInternalApiserverV1alpha1StorageVersionRequest(args, w, r)
-								return
-							}
-							switch elem {
-							case "status": // -> 266
-								// GET /apis/internal.apiserver.k8s.io/v1alpha1/storageversions/{name}/status
-								s.handleReadInternalApiserverV1alpha1StorageVersionStatusRequest(args, w, r)
-								return
-							default:
-								// GET /apis/internal.apiserver.k8s.io/v1alpha1/storageversions/{name}.
-								s.handleReadInternalApiserverV1alpha1StorageVersionRequest(args, w, r)
-								return
-							}
-						}
-					case "watch": // -> 439
-						// Edge: 439, path: "watch".
-						elem, p = nextElem(p)
-						switch elem {
-						case "storageversions": // -> 440
-							// Edge: 440, path: "storageversions".
-							elem, p = nextElem(p)
-							if len(elem) == 0 {
-								// GET /apis/internal.apiserver.k8s.io/v1alpha1/watch/storageversions.
-								s.handleWatchInternalApiserverV1alpha1StorageVersionListRequest(args, w, r)
-								return
-							}
-							switch elem {
-							default:
-								if args == nil {
-									args = make(map[string]string)
-								}
-								args["name"] = elem
-								// GET /apis/internal.apiserver.k8s.io/v1alpha1/watch/storageversions/{name}
-								s.handleWatchInternalApiserverV1alpha1StorageVersionRequest(args, w, r)
-								return
-							}
-						default:
-							s.notFound(w, r)
-							return
-						}
-					default:
-						// GET /apis/internal.apiserver.k8s.io/v1alpha1/.
-						s.handleGetInternalApiserverV1alpha1APIResourcesRequest(args, w, r)
-						return
-					}
-				default:
-					// GET /apis/internal.apiserver.k8s.io/.
-					s.handleGetInternalApiserverAPIGroupRequest(args, w, r)
-					return
-				}
-			case "networking.k8s.io": // -> 39
-				// Edge: 39, path: "networking.k8s.io".
-				elem, p = nextElem(p)
-				if len(elem) == 0 {
-					// GET /apis/networking.k8s.io/.
-					s.handleGetNetworkingAPIGroupRequest(args, w, r)
-					return
-				}
-				switch elem {
-				case "v1": // -> 40
-					// Edge: 40, path: "v1".
-					elem, p = nextElem(p)
-					if len(elem) == 0 {
-						// GET /apis/networking.k8s.io/v1/.
-						s.handleGetNetworkingV1APIResourcesRequest(args, w, r)
-						return
-					}
-					switch elem {
-					case "ingressclasses": // -> 151
-						// Edge: 151, path: "ingressclasses".
-						elem, p = nextElem(p)
-						if len(elem) == 0 {
-							// GET /apis/networking.k8s.io/v1/ingressclasses.
-							s.handleListNetworkingV1IngressClassRequest(args, w, r)
-							return
-						}
-						switch elem {
-						default:
-							if args == nil {
-								args = make(map[string]string)
-							}
-							args["name"] = elem
-							// GET /apis/networking.k8s.io/v1/ingressclasses/{name}
-							s.handleReadNetworkingV1IngressClassRequest(args, w, r)
-							return
-						}
-					case "ingresses": // -> 152
-						// GET /apis/networking.k8s.io/v1/ingresses
-						s.handleListNetworkingV1IngressForAllNamespacesRequest(args, w, r)
-						return
-					case "namespaces": // -> 153
-						// Edge: 153, path: "namespaces".
-						elem, p = nextElem(p)
-						switch elem {
-						default:
-							if args == nil {
-								args = make(map[string]string)
-							}
-							args["namespace"] = elem
-							// Edge: 154, path: "".
-							elem, p = nextElem(p)
-							switch elem {
-							case "ingresses": // -> 155
-								// Edge: 155, path: "ingresses".
-								elem, p = nextElem(p)
-								if len(elem) == 0 {
-									// GET /apis/networking.k8s.io/v1/namespaces/{namespace}/ingresses.
-									s.handleListNetworkingV1NamespacedIngressRequest(args, w, r)
-									return
-								}
-								switch elem {
-								default:
-									if args == nil {
-										args = make(map[string]string)
-									}
-									args["name"] = elem
-									// Edge: 268, path: "".
-									elem, p = nextElem(p)
-									if len(elem) == 0 {
-										// GET /apis/networking.k8s.io/v1/namespaces/{namespace}/ingresses/{name}.
-										s.handleReadNetworkingV1NamespacedIngressRequest(args, w, r)
-										return
-									}
-									switch elem {
-									case "status": // -> 269
-										// GET /apis/networking.k8s.io/v1/namespaces/{namespace}/ingresses/{name}/status
-										s.handleReadNetworkingV1NamespacedIngressStatusRequest(args, w, r)
-										return
-									default:
-										// GET /apis/networking.k8s.io/v1/namespaces/{namespace}/ingresses/{name}.
-										s.handleReadNetworkingV1NamespacedIngressRequest(args, w, r)
-										return
-									}
-								}
-							case "networkpolicies": // -> 156
-								// Edge: 156, path: "networkpolicies".
-								elem, p = nextElem(p)
-								if len(elem) == 0 {
-									// GET /apis/networking.k8s.io/v1/namespaces/{namespace}/networkpolicies.
-									s.handleListNetworkingV1NamespacedNetworkPolicyRequest(args, w, r)
-									return
-								}
-								switch elem {
-								default:
-									if args == nil {
-										args = make(map[string]string)
-									}
-									args["name"] = elem
-									// GET /apis/networking.k8s.io/v1/namespaces/{namespace}/networkpolicies/{name}
-									s.handleReadNetworkingV1NamespacedNetworkPolicyRequest(args, w, r)
-									return
-								}
-							default:
-								s.notFound(w, r)
-								return
-							}
-						}
-					case "networkpolicies": // -> 157
-						// GET /apis/networking.k8s.io/v1/networkpolicies
-						s.handleListNetworkingV1NetworkPolicyForAllNamespacesRequest(args, w, r)
-						return
-					case "watch": // -> 442
-						// Edge: 442, path: "watch".
-						elem, p = nextElem(p)
-						switch elem {
-						case "ingressclasses": // -> 443
-							// Edge: 443, path: "ingressclasses".
-							elem, p = nextElem(p)
-							if len(elem) == 0 {
-								// GET /apis/networking.k8s.io/v1/watch/ingressclasses.
-								s.handleWatchNetworkingV1IngressClassListRequest(args, w, r)
-								return
-							}
-							switch elem {
-							default:
-								if args == nil {
-									args = make(map[string]string)
-								}
-								args["name"] = elem
-								// GET /apis/networking.k8s.io/v1/watch/ingressclasses/{name}
-								s.handleWatchNetworkingV1IngressClassRequest(args, w, r)
-								return
-							}
-						case "ingresses": // -> 445
-							// GET /apis/networking.k8s.io/v1/watch/ingresses
-							s.handleWatchNetworkingV1IngressListForAllNamespacesRequest(args, w, r)
-							return
-						case "namespaces": // -> 446
-							// Edge: 446, path: "namespaces".
-							elem, p = nextElem(p)
-							switch elem {
-							default:
-								if args == nil {
-									args = make(map[string]string)
-								}
-								args["namespace"] = elem
-								// Edge: 447, path: "".
-								elem, p = nextElem(p)
-								switch elem {
-								case "ingresses": // -> 448
-									// Edge: 448, path: "ingresses".
-									elem, p = nextElem(p)
-									if len(elem) == 0 {
-										// GET /apis/networking.k8s.io/v1/watch/namespaces/{namespace}/ingresses.
-										s.handleWatchNetworkingV1NamespacedIngressListRequest(args, w, r)
-										return
-									}
-									switch elem {
-									default:
-										if args == nil {
-											args = make(map[string]string)
+									switch elem[0] {
+									case 'e': // Prefix: "events"
+										if prefix := "events"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+											elem = elem[len(prefix):]
+										} else {
+											break
 										}
-										args["name"] = elem
-										// GET /apis/networking.k8s.io/v1/watch/namespaces/{namespace}/ingresses/{name}
+
+										if len(elem) == 0 {
+											s.handleWatchEventsV1beta1EventListForAllNamespacesRequest(args, w, r)
+											return
+										}
+										switch elem[0] {
+										case 'n': // Prefix: "namespaces/"
+											if prefix := "namespaces/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+												elem = elem[len(prefix):]
+											} else {
+												break
+											}
+
+											// Param: "namespace"
+											// Match until one of "/"
+											idx := strings.IndexAny(elem, "/")
+											if idx > 0 {
+												args["namespace"] = elem[:idx]
+												elem = elem[idx:]
+
+												if len(elem) == 0 {
+													break
+												}
+												switch elem[0] {
+												case '/': // Prefix: "/events/"
+													if prefix := "/events/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+														elem = elem[len(prefix):]
+													} else {
+														break
+													}
+
+													// Param: "name"
+													// Leaf parameter
+													args["name"] = elem
+
+													// Leaf: WatchEventsV1beta1NamespacedEvent
+													s.handleWatchEventsV1beta1NamespacedEventRequest(args, w, r)
+													return
+												}
+											}
+										}
+									case 'n': // Prefix: "namespaces/"
+										if prefix := "namespaces/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+											elem = elem[len(prefix):]
+										} else {
+											break
+										}
+
+										// Param: "namespace"
+										// Match until one of "/"
+										idx := strings.IndexAny(elem, "/")
+										if idx > 0 {
+											args["namespace"] = elem[:idx]
+											elem = elem[idx:]
+
+											if len(elem) == 0 {
+												break
+											}
+											switch elem[0] {
+											case '/': // Prefix: "/events"
+												if prefix := "/events"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+													elem = elem[len(prefix):]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													s.handleWatchEventsV1beta1NamespacedEventListRequest(args, w, r)
+													return
+												}
+												switch elem[0] {
+												case '/': // Prefix: "/"
+													if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+														elem = elem[len(prefix):]
+													} else {
+														break
+													}
+
+													// Param: "name"
+													// Leaf parameter
+													args["name"] = elem
+
+													// Leaf: WatchEventsV1beta1NamespacedEvent
+													s.handleWatchEventsV1beta1NamespacedEventRequest(args, w, r)
+													return
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					case 'f': // Prefix: "flowcontrol.apiserver.k8s.io/"
+						if prefix := "flowcontrol.apiserver.k8s.io/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+							elem = elem[len(prefix):]
+						} else {
+							break
+						}
+
+						if len(elem) == 0 {
+							s.handleGetFlowcontrolApiserverAPIGroupRequest(args, w, r)
+							return
+						}
+						switch elem[0] {
+						case 'v': // Prefix: "v1beta"
+							if prefix := "v1beta"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+								elem = elem[len(prefix):]
+							} else {
+								break
+							}
+
+							if len(elem) == 0 {
+								s.handleGetFlowcontrolApiserverV1beta2APIResourcesRequest(args, w, r)
+								return
+							}
+							switch elem[0] {
+							case '1': // Prefix: "1/"
+								if prefix := "1/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+									elem = elem[len(prefix):]
+								} else {
+									break
+								}
+
+								if len(elem) == 0 {
+									s.handleGetFlowcontrolApiserverV1beta1APIResourcesRequest(args, w, r)
+									return
+								}
+								switch elem[0] {
+								case '2': // Prefix: "2/"
+									if prefix := "2/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+										elem = elem[len(prefix):]
+									} else {
+										break
+									}
+
+									// Leaf: GetFlowcontrolApiserverV1beta2APIResources
+									s.handleGetFlowcontrolApiserverV1beta2APIResourcesRequest(args, w, r)
+									return
+								case 'f': // Prefix: "flowschemas"
+									if prefix := "flowschemas"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+										elem = elem[len(prefix):]
+									} else {
+										break
+									}
+
+									if len(elem) == 0 {
+										s.handleListFlowcontrolApiserverV1beta1FlowSchemaRequest(args, w, r)
+										return
+									}
+									switch elem[0] {
+									case '/': // Prefix: "/"
+										if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+											elem = elem[len(prefix):]
+										} else {
+											break
+										}
+
+										// Param: "name"
+										// Match until one of "/"
+										idx := strings.IndexAny(elem, "/")
+										if idx > 0 {
+											args["name"] = elem[:idx]
+											elem = elem[idx:]
+
+											if len(elem) == 0 {
+												s.handleReadFlowcontrolApiserverV1beta1FlowSchemaRequest(args, w, r)
+												return
+											}
+											switch elem[0] {
+											case '/': // Prefix: "/status"
+												if prefix := "/status"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+													elem = elem[len(prefix):]
+												} else {
+													break
+												}
+
+												// Leaf: ReadFlowcontrolApiserverV1beta1FlowSchemaStatus
+												s.handleReadFlowcontrolApiserverV1beta1FlowSchemaStatusRequest(args, w, r)
+												return
+											}
+										}
+									}
+								case 'p': // Prefix: "prioritylevelconfigurations"
+									if prefix := "prioritylevelconfigurations"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+										elem = elem[len(prefix):]
+									} else {
+										break
+									}
+
+									if len(elem) == 0 {
+										s.handleListFlowcontrolApiserverV1beta1PriorityLevelConfigurationRequest(args, w, r)
+										return
+									}
+									switch elem[0] {
+									case '/': // Prefix: "/"
+										if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+											elem = elem[len(prefix):]
+										} else {
+											break
+										}
+
+										// Param: "name"
+										// Match until one of "/"
+										idx := strings.IndexAny(elem, "/")
+										if idx > 0 {
+											args["name"] = elem[:idx]
+											elem = elem[idx:]
+
+											if len(elem) == 0 {
+												s.handleReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationRequest(args, w, r)
+												return
+											}
+											switch elem[0] {
+											case '/': // Prefix: "/status"
+												if prefix := "/status"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+													elem = elem[len(prefix):]
+												} else {
+													break
+												}
+
+												// Leaf: ReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationStatus
+												s.handleReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationStatusRequest(args, w, r)
+												return
+											}
+										}
+									}
+								case 'w': // Prefix: "watch/"
+									if prefix := "watch/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+										elem = elem[len(prefix):]
+									} else {
+										break
+									}
+
+									if len(elem) == 0 {
+										s.handleWatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationRequest(args, w, r)
+										return
+									}
+									switch elem[0] {
+									case 'f': // Prefix: "flowschemas"
+										if prefix := "flowschemas"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+											elem = elem[len(prefix):]
+										} else {
+											break
+										}
+
+										if len(elem) == 0 {
+											s.handleWatchFlowcontrolApiserverV1beta1FlowSchemaListRequest(args, w, r)
+											return
+										}
+										switch elem[0] {
+										case '/': // Prefix: "/"
+											if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+												elem = elem[len(prefix):]
+											} else {
+												break
+											}
+
+											// Param: "name"
+											// Leaf parameter
+											args["name"] = elem
+
+											// Leaf: WatchFlowcontrolApiserverV1beta1FlowSchema
+											s.handleWatchFlowcontrolApiserverV1beta1FlowSchemaRequest(args, w, r)
+											return
+										case 'p': // Prefix: "prioritylevelconfigurations/"
+											if prefix := "prioritylevelconfigurations/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+												elem = elem[len(prefix):]
+											} else {
+												break
+											}
+
+											// Param: "name"
+											// Leaf parameter
+											args["name"] = elem
+
+											// Leaf: WatchFlowcontrolApiserverV1beta1PriorityLevelConfiguration
+											s.handleWatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationRequest(args, w, r)
+											return
+										}
+									case 'p': // Prefix: "prioritylevelconfigurations"
+										if prefix := "prioritylevelconfigurations"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+											elem = elem[len(prefix):]
+										} else {
+											break
+										}
+
+										if len(elem) == 0 {
+											s.handleWatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationListRequest(args, w, r)
+											return
+										}
+										switch elem[0] {
+										case '/': // Prefix: "/"
+											if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+												elem = elem[len(prefix):]
+											} else {
+												break
+											}
+
+											// Param: "name"
+											// Leaf parameter
+											args["name"] = elem
+
+											// Leaf: WatchFlowcontrolApiserverV1beta1PriorityLevelConfiguration
+											s.handleWatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationRequest(args, w, r)
+											return
+										}
+									}
+								}
+							case '2': // Prefix: "2/"
+								if prefix := "2/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+									elem = elem[len(prefix):]
+								} else {
+									break
+								}
+
+								if len(elem) == 0 {
+									s.handleGetFlowcontrolApiserverV1beta2APIResourcesRequest(args, w, r)
+									return
+								}
+								switch elem[0] {
+								case 'f': // Prefix: "flowschemas"
+									if prefix := "flowschemas"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+										elem = elem[len(prefix):]
+									} else {
+										break
+									}
+
+									if len(elem) == 0 {
+										s.handleListFlowcontrolApiserverV1beta2FlowSchemaRequest(args, w, r)
+										return
+									}
+									switch elem[0] {
+									case '/': // Prefix: "/"
+										if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+											elem = elem[len(prefix):]
+										} else {
+											break
+										}
+
+										// Param: "name"
+										// Match until one of "/"
+										idx := strings.IndexAny(elem, "/")
+										if idx > 0 {
+											args["name"] = elem[:idx]
+											elem = elem[idx:]
+
+											if len(elem) == 0 {
+												s.handleReadFlowcontrolApiserverV1beta2FlowSchemaRequest(args, w, r)
+												return
+											}
+											switch elem[0] {
+											case '/': // Prefix: "/status"
+												if prefix := "/status"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+													elem = elem[len(prefix):]
+												} else {
+													break
+												}
+
+												// Leaf: ReadFlowcontrolApiserverV1beta2FlowSchemaStatus
+												s.handleReadFlowcontrolApiserverV1beta2FlowSchemaStatusRequest(args, w, r)
+												return
+											}
+										}
+									}
+								case 'p': // Prefix: "prioritylevelconfigurations"
+									if prefix := "prioritylevelconfigurations"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+										elem = elem[len(prefix):]
+									} else {
+										break
+									}
+
+									if len(elem) == 0 {
+										s.handleListFlowcontrolApiserverV1beta2PriorityLevelConfigurationRequest(args, w, r)
+										return
+									}
+									switch elem[0] {
+									case '/': // Prefix: "/"
+										if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+											elem = elem[len(prefix):]
+										} else {
+											break
+										}
+
+										// Param: "name"
+										// Match until one of "/"
+										idx := strings.IndexAny(elem, "/")
+										if idx > 0 {
+											args["name"] = elem[:idx]
+											elem = elem[idx:]
+
+											if len(elem) == 0 {
+												s.handleReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationRequest(args, w, r)
+												return
+											}
+											switch elem[0] {
+											case '/': // Prefix: "/status"
+												if prefix := "/status"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+													elem = elem[len(prefix):]
+												} else {
+													break
+												}
+
+												// Leaf: ReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationStatus
+												s.handleReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationStatusRequest(args, w, r)
+												return
+											}
+										}
+									}
+								case 'w': // Prefix: "watch/"
+									if prefix := "watch/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+										elem = elem[len(prefix):]
+									} else {
+										break
+									}
+
+									if len(elem) == 0 {
+										s.handleWatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationRequest(args, w, r)
+										return
+									}
+									switch elem[0] {
+									case 'f': // Prefix: "flowschemas"
+										if prefix := "flowschemas"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+											elem = elem[len(prefix):]
+										} else {
+											break
+										}
+
+										if len(elem) == 0 {
+											s.handleWatchFlowcontrolApiserverV1beta2FlowSchemaListRequest(args, w, r)
+											return
+										}
+										switch elem[0] {
+										case '/': // Prefix: "/"
+											if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+												elem = elem[len(prefix):]
+											} else {
+												break
+											}
+
+											// Param: "name"
+											// Leaf parameter
+											args["name"] = elem
+
+											// Leaf: WatchFlowcontrolApiserverV1beta2FlowSchema
+											s.handleWatchFlowcontrolApiserverV1beta2FlowSchemaRequest(args, w, r)
+											return
+										case 'p': // Prefix: "prioritylevelconfigurations/"
+											if prefix := "prioritylevelconfigurations/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+												elem = elem[len(prefix):]
+											} else {
+												break
+											}
+
+											// Param: "name"
+											// Leaf parameter
+											args["name"] = elem
+
+											// Leaf: WatchFlowcontrolApiserverV1beta2PriorityLevelConfiguration
+											s.handleWatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationRequest(args, w, r)
+											return
+										}
+									case 'p': // Prefix: "prioritylevelconfigurations"
+										if prefix := "prioritylevelconfigurations"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+											elem = elem[len(prefix):]
+										} else {
+											break
+										}
+
+										if len(elem) == 0 {
+											s.handleWatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationListRequest(args, w, r)
+											return
+										}
+										switch elem[0] {
+										case '/': // Prefix: "/"
+											if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+												elem = elem[len(prefix):]
+											} else {
+												break
+											}
+
+											// Param: "name"
+											// Leaf parameter
+											args["name"] = elem
+
+											// Leaf: WatchFlowcontrolApiserverV1beta2PriorityLevelConfiguration
+											s.handleWatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationRequest(args, w, r)
+											return
+										}
+									}
+								}
+							}
+						}
+					case 'i': // Prefix: "internal.apiserver.k8s.io/"
+						if prefix := "internal.apiserver.k8s.io/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+							elem = elem[len(prefix):]
+						} else {
+							break
+						}
+
+						if len(elem) == 0 {
+							s.handleGetInternalApiserverAPIGroupRequest(args, w, r)
+							return
+						}
+						switch elem[0] {
+						case 'v': // Prefix: "v1alpha1/"
+							if prefix := "v1alpha1/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+								elem = elem[len(prefix):]
+							} else {
+								break
+							}
+
+							if len(elem) == 0 {
+								s.handleGetInternalApiserverV1alpha1APIResourcesRequest(args, w, r)
+								return
+							}
+							switch elem[0] {
+							case 's': // Prefix: "storageversions"
+								if prefix := "storageversions"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+									elem = elem[len(prefix):]
+								} else {
+									break
+								}
+
+								if len(elem) == 0 {
+									s.handleListInternalApiserverV1alpha1StorageVersionRequest(args, w, r)
+									return
+								}
+								switch elem[0] {
+								case '/': // Prefix: "/"
+									if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+										elem = elem[len(prefix):]
+									} else {
+										break
+									}
+
+									// Param: "name"
+									// Match until one of "/"
+									idx := strings.IndexAny(elem, "/")
+									if idx > 0 {
+										args["name"] = elem[:idx]
+										elem = elem[idx:]
+
+										if len(elem) == 0 {
+											s.handleReadInternalApiserverV1alpha1StorageVersionRequest(args, w, r)
+											return
+										}
+										switch elem[0] {
+										case '/': // Prefix: "/status"
+											if prefix := "/status"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+												elem = elem[len(prefix):]
+											} else {
+												break
+											}
+
+											// Leaf: ReadInternalApiserverV1alpha1StorageVersionStatus
+											s.handleReadInternalApiserverV1alpha1StorageVersionStatusRequest(args, w, r)
+											return
+										}
+									}
+								}
+							case 'w': // Prefix: "watch/storageversions"
+								if prefix := "watch/storageversions"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+									elem = elem[len(prefix):]
+								} else {
+									break
+								}
+
+								if len(elem) == 0 {
+									s.handleWatchInternalApiserverV1alpha1StorageVersionListRequest(args, w, r)
+									return
+								}
+								switch elem[0] {
+								case '/': // Prefix: "/"
+									if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+										elem = elem[len(prefix):]
+									} else {
+										break
+									}
+
+									// Param: "name"
+									// Leaf parameter
+									args["name"] = elem
+
+									// Leaf: WatchInternalApiserverV1alpha1StorageVersion
+									s.handleWatchInternalApiserverV1alpha1StorageVersionRequest(args, w, r)
+									return
+								}
+							}
+						}
+					case 'n': // Prefix: "n"
+						if prefix := "n"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+							elem = elem[len(prefix):]
+						} else {
+							break
+						}
+
+						if len(elem) == 0 {
+							s.handleGetNodeAPIGroupRequest(args, w, r)
+							return
+						}
+						switch elem[0] {
+						case 'e': // Prefix: "etworking.k8s.io/"
+							if prefix := "etworking.k8s.io/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+								elem = elem[len(prefix):]
+							} else {
+								break
+							}
+
+							if len(elem) == 0 {
+								s.handleGetNetworkingAPIGroupRequest(args, w, r)
+								return
+							}
+							switch elem[0] {
+							case 'o': // Prefix: "ode.k8s.io/"
+								if prefix := "ode.k8s.io/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+									elem = elem[len(prefix):]
+								} else {
+									break
+								}
+
+								// Leaf: GetNodeAPIGroup
+								s.handleGetNodeAPIGroupRequest(args, w, r)
+								return
+							case 'v': // Prefix: "v1/"
+								if prefix := "v1/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+									elem = elem[len(prefix):]
+								} else {
+									break
+								}
+
+								if len(elem) == 0 {
+									s.handleGetNetworkingV1APIResourcesRequest(args, w, r)
+									return
+								}
+								switch elem[0] {
+								case 'i': // Prefix: "ingress"
+									if prefix := "ingress"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+										elem = elem[len(prefix):]
+									} else {
+										break
+									}
+
+									if len(elem) == 0 {
+										s.handleListNetworkingV1IngressForAllNamespacesRequest(args, w, r)
+										return
+									}
+									switch elem[0] {
+									case 'c': // Prefix: "classes"
+										if prefix := "classes"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+											elem = elem[len(prefix):]
+										} else {
+											break
+										}
+
+										if len(elem) == 0 {
+											s.handleListNetworkingV1IngressClassRequest(args, w, r)
+											return
+										}
+										switch elem[0] {
+										case '/': // Prefix: "/"
+											if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+												elem = elem[len(prefix):]
+											} else {
+												break
+											}
+
+											// Param: "name"
+											// Leaf parameter
+											args["name"] = elem
+
+											// Leaf: ReadNetworkingV1IngressClass
+											s.handleReadNetworkingV1IngressClassRequest(args, w, r)
+											return
+										case 'e': // Prefix: "es"
+											if prefix := "es"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+												elem = elem[len(prefix):]
+											} else {
+												break
+											}
+
+											// Leaf: ListNetworkingV1IngressForAllNamespaces
+											s.handleListNetworkingV1IngressForAllNamespacesRequest(args, w, r)
+											return
+										}
+									case 'e': // Prefix: "es"
+										if prefix := "es"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+											elem = elem[len(prefix):]
+										} else {
+											break
+										}
+
+										// Leaf: ListNetworkingV1IngressForAllNamespaces
+										s.handleListNetworkingV1IngressForAllNamespacesRequest(args, w, r)
+										return
+									}
+								case 'n': // Prefix: "n"
+									if prefix := "n"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+										elem = elem[len(prefix):]
+									} else {
+										break
+									}
+
+									if len(elem) == 0 {
+										s.handleListNetworkingV1NetworkPolicyForAllNamespacesRequest(args, w, r)
+										return
+									}
+									switch elem[0] {
+									case 'a': // Prefix: "amespaces/"
+										if prefix := "amespaces/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+											elem = elem[len(prefix):]
+										} else {
+											break
+										}
+
+										if len(elem) == 0 {
+											break
+										}
+										switch elem[0] {
+										case 'e': // Prefix: "etworkpolicies"
+											if prefix := "etworkpolicies"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+												elem = elem[len(prefix):]
+											} else {
+												break
+											}
+
+											// Leaf: ListNetworkingV1NetworkPolicyForAllNamespaces
+											s.handleListNetworkingV1NetworkPolicyForAllNamespacesRequest(args, w, r)
+											return
+										}
+										// Param: "namespace"
+										// Match until one of "/"
+										idx := strings.IndexAny(elem, "/")
+										if idx > 0 {
+											args["namespace"] = elem[:idx]
+											elem = elem[idx:]
+
+											if len(elem) == 0 {
+												break
+											}
+											switch elem[0] {
+											case '/': // Prefix: "/"
+												if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+													elem = elem[len(prefix):]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													s.handleListNetworkingV1NamespacedNetworkPolicyRequest(args, w, r)
+													return
+												}
+												switch elem[0] {
+												case 'i': // Prefix: "ingresses"
+													if prefix := "ingresses"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+														elem = elem[len(prefix):]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														s.handleListNetworkingV1NamespacedIngressRequest(args, w, r)
+														return
+													}
+													switch elem[0] {
+													case '/': // Prefix: "/"
+														if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+															elem = elem[len(prefix):]
+														} else {
+															break
+														}
+
+														// Param: "name"
+														// Match until one of "/"
+														idx := strings.IndexAny(elem, "/")
+														if idx > 0 {
+															args["name"] = elem[:idx]
+															elem = elem[idx:]
+
+															if len(elem) == 0 {
+																s.handleReadNetworkingV1NamespacedIngressRequest(args, w, r)
+																return
+															}
+															switch elem[0] {
+															case '/': // Prefix: "/status"
+																if prefix := "/status"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																	elem = elem[len(prefix):]
+																} else {
+																	break
+																}
+
+																// Leaf: ReadNetworkingV1NamespacedIngressStatus
+																s.handleReadNetworkingV1NamespacedIngressStatusRequest(args, w, r)
+																return
+															}
+														}
+													case 'n': // Prefix: "networkpolicies"
+														if prefix := "networkpolicies"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+															elem = elem[len(prefix):]
+														} else {
+															break
+														}
+
+														// Leaf: ListNetworkingV1NamespacedNetworkPolicy
+														s.handleListNetworkingV1NamespacedNetworkPolicyRequest(args, w, r)
+														return
+													}
+												case 'n': // Prefix: "networkpolicies"
+													if prefix := "networkpolicies"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+														elem = elem[len(prefix):]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														s.handleListNetworkingV1NamespacedNetworkPolicyRequest(args, w, r)
+														return
+													}
+													switch elem[0] {
+													case '/': // Prefix: "/"
+														if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+															elem = elem[len(prefix):]
+														} else {
+															break
+														}
+
+														// Param: "name"
+														// Leaf parameter
+														args["name"] = elem
+
+														// Leaf: ReadNetworkingV1NamespacedNetworkPolicy
+														s.handleReadNetworkingV1NamespacedNetworkPolicyRequest(args, w, r)
+														return
+													}
+												}
+											}
+										}
+									case 'e': // Prefix: "etworkpolicies"
+										if prefix := "etworkpolicies"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+											elem = elem[len(prefix):]
+										} else {
+											break
+										}
+
+										// Leaf: ListNetworkingV1NetworkPolicyForAllNamespaces
+										s.handleListNetworkingV1NetworkPolicyForAllNamespacesRequest(args, w, r)
+										return
+									}
+								case 'w': // Prefix: "watch/"
+									if prefix := "watch/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+										elem = elem[len(prefix):]
+									} else {
+										break
+									}
+
+									if len(elem) == 0 {
 										s.handleWatchNetworkingV1NamespacedIngressRequest(args, w, r)
 										return
 									}
-								case "networkpolicies": // -> 450
-									// Edge: 450, path: "networkpolicies".
-									elem, p = nextElem(p)
-									if len(elem) == 0 {
-										// GET /apis/networking.k8s.io/v1/watch/namespaces/{namespace}/networkpolicies.
-										s.handleWatchNetworkingV1NamespacedNetworkPolicyListRequest(args, w, r)
-										return
-									}
-									switch elem {
-									default:
-										if args == nil {
-											args = make(map[string]string)
+									switch elem[0] {
+									case 'i': // Prefix: "ingress"
+										if prefix := "ingress"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+											elem = elem[len(prefix):]
+										} else {
+											break
 										}
-										args["name"] = elem
-										// GET /apis/networking.k8s.io/v1/watch/namespaces/{namespace}/networkpolicies/{name}
-										s.handleWatchNetworkingV1NamespacedNetworkPolicyRequest(args, w, r)
-										return
-									}
-								default:
-									s.notFound(w, r)
-									return
-								}
-							}
-						case "networkpolicies": // -> 452
-							// GET /apis/networking.k8s.io/v1/watch/networkpolicies
-							s.handleWatchNetworkingV1NetworkPolicyListForAllNamespacesRequest(args, w, r)
-							return
-						default:
-							s.notFound(w, r)
-							return
-						}
-					default:
-						// GET /apis/networking.k8s.io/v1/.
-						s.handleGetNetworkingV1APIResourcesRequest(args, w, r)
-						return
-					}
-				default:
-					// GET /apis/networking.k8s.io/.
-					s.handleGetNetworkingAPIGroupRequest(args, w, r)
-					return
-				}
-			case "node.k8s.io": // -> 41
-				// Edge: 41, path: "node.k8s.io".
-				elem, p = nextElem(p)
-				if len(elem) == 0 {
-					// GET /apis/node.k8s.io/.
-					s.handleGetNodeAPIGroupRequest(args, w, r)
-					return
-				}
-				switch elem {
-				case "v1": // -> 42
-					// Edge: 42, path: "v1".
-					elem, p = nextElem(p)
-					if len(elem) == 0 {
-						// GET /apis/node.k8s.io/v1/.
-						s.handleGetNodeV1APIResourcesRequest(args, w, r)
-						return
-					}
-					switch elem {
-					case "runtimeclasses": // -> 158
-						// Edge: 158, path: "runtimeclasses".
-						elem, p = nextElem(p)
-						if len(elem) == 0 {
-							// GET /apis/node.k8s.io/v1/runtimeclasses.
-							s.handleListNodeV1RuntimeClassRequest(args, w, r)
-							return
-						}
-						switch elem {
-						default:
-							if args == nil {
-								args = make(map[string]string)
-							}
-							args["name"] = elem
-							// GET /apis/node.k8s.io/v1/runtimeclasses/{name}
-							s.handleReadNodeV1RuntimeClassRequest(args, w, r)
-							return
-						}
-					case "watch": // -> 453
-						// Edge: 453, path: "watch".
-						elem, p = nextElem(p)
-						switch elem {
-						case "runtimeclasses": // -> 454
-							// Edge: 454, path: "runtimeclasses".
-							elem, p = nextElem(p)
-							if len(elem) == 0 {
-								// GET /apis/node.k8s.io/v1/watch/runtimeclasses.
-								s.handleWatchNodeV1RuntimeClassListRequest(args, w, r)
-								return
-							}
-							switch elem {
-							default:
-								if args == nil {
-									args = make(map[string]string)
-								}
-								args["name"] = elem
-								// GET /apis/node.k8s.io/v1/watch/runtimeclasses/{name}
-								s.handleWatchNodeV1RuntimeClassRequest(args, w, r)
-								return
-							}
-						default:
-							s.notFound(w, r)
-							return
-						}
-					default:
-						// GET /apis/node.k8s.io/v1/.
-						s.handleGetNodeV1APIResourcesRequest(args, w, r)
-						return
-					}
-				case "v1alpha1": // -> 43
-					// Edge: 43, path: "v1alpha1".
-					elem, p = nextElem(p)
-					if len(elem) == 0 {
-						// GET /apis/node.k8s.io/v1alpha1/.
-						s.handleGetNodeV1alpha1APIResourcesRequest(args, w, r)
-						return
-					}
-					switch elem {
-					case "runtimeclasses": // -> 159
-						// Edge: 159, path: "runtimeclasses".
-						elem, p = nextElem(p)
-						if len(elem) == 0 {
-							// GET /apis/node.k8s.io/v1alpha1/runtimeclasses.
-							s.handleListNodeV1alpha1RuntimeClassRequest(args, w, r)
-							return
-						}
-						switch elem {
-						default:
-							if args == nil {
-								args = make(map[string]string)
-							}
-							args["name"] = elem
-							// GET /apis/node.k8s.io/v1alpha1/runtimeclasses/{name}
-							s.handleReadNodeV1alpha1RuntimeClassRequest(args, w, r)
-							return
-						}
-					case "watch": // -> 456
-						// Edge: 456, path: "watch".
-						elem, p = nextElem(p)
-						switch elem {
-						case "runtimeclasses": // -> 457
-							// Edge: 457, path: "runtimeclasses".
-							elem, p = nextElem(p)
-							if len(elem) == 0 {
-								// GET /apis/node.k8s.io/v1alpha1/watch/runtimeclasses.
-								s.handleWatchNodeV1alpha1RuntimeClassListRequest(args, w, r)
-								return
-							}
-							switch elem {
-							default:
-								if args == nil {
-									args = make(map[string]string)
-								}
-								args["name"] = elem
-								// GET /apis/node.k8s.io/v1alpha1/watch/runtimeclasses/{name}
-								s.handleWatchNodeV1alpha1RuntimeClassRequest(args, w, r)
-								return
-							}
-						default:
-							s.notFound(w, r)
-							return
-						}
-					default:
-						// GET /apis/node.k8s.io/v1alpha1/.
-						s.handleGetNodeV1alpha1APIResourcesRequest(args, w, r)
-						return
-					}
-				case "v1beta1": // -> 44
-					// Edge: 44, path: "v1beta1".
-					elem, p = nextElem(p)
-					if len(elem) == 0 {
-						// GET /apis/node.k8s.io/v1beta1/.
-						s.handleGetNodeV1beta1APIResourcesRequest(args, w, r)
-						return
-					}
-					switch elem {
-					case "runtimeclasses": // -> 160
-						// Edge: 160, path: "runtimeclasses".
-						elem, p = nextElem(p)
-						if len(elem) == 0 {
-							// GET /apis/node.k8s.io/v1beta1/runtimeclasses.
-							s.handleListNodeV1beta1RuntimeClassRequest(args, w, r)
-							return
-						}
-						switch elem {
-						default:
-							if args == nil {
-								args = make(map[string]string)
-							}
-							args["name"] = elem
-							// GET /apis/node.k8s.io/v1beta1/runtimeclasses/{name}
-							s.handleReadNodeV1beta1RuntimeClassRequest(args, w, r)
-							return
-						}
-					case "watch": // -> 459
-						// Edge: 459, path: "watch".
-						elem, p = nextElem(p)
-						switch elem {
-						case "runtimeclasses": // -> 460
-							// Edge: 460, path: "runtimeclasses".
-							elem, p = nextElem(p)
-							if len(elem) == 0 {
-								// GET /apis/node.k8s.io/v1beta1/watch/runtimeclasses.
-								s.handleWatchNodeV1beta1RuntimeClassListRequest(args, w, r)
-								return
-							}
-							switch elem {
-							default:
-								if args == nil {
-									args = make(map[string]string)
-								}
-								args["name"] = elem
-								// GET /apis/node.k8s.io/v1beta1/watch/runtimeclasses/{name}
-								s.handleWatchNodeV1beta1RuntimeClassRequest(args, w, r)
-								return
-							}
-						default:
-							s.notFound(w, r)
-							return
-						}
-					default:
-						// GET /apis/node.k8s.io/v1beta1/.
-						s.handleGetNodeV1beta1APIResourcesRequest(args, w, r)
-						return
-					}
-				default:
-					// GET /apis/node.k8s.io/.
-					s.handleGetNodeAPIGroupRequest(args, w, r)
-					return
-				}
-			case "policy": // -> 45
-				// Edge: 45, path: "policy".
-				elem, p = nextElem(p)
-				if len(elem) == 0 {
-					// GET /apis/policy/.
-					s.handleGetPolicyAPIGroupRequest(args, w, r)
-					return
-				}
-				switch elem {
-				case "v1": // -> 46
-					// Edge: 46, path: "v1".
-					elem, p = nextElem(p)
-					if len(elem) == 0 {
-						// GET /apis/policy/v1/.
-						s.handleGetPolicyV1APIResourcesRequest(args, w, r)
-						return
-					}
-					switch elem {
-					case "namespaces": // -> 161
-						// Edge: 161, path: "namespaces".
-						elem, p = nextElem(p)
-						switch elem {
-						default:
-							if args == nil {
-								args = make(map[string]string)
-							}
-							args["namespace"] = elem
-							// Edge: 162, path: "".
-							elem, p = nextElem(p)
-							switch elem {
-							case "poddisruptionbudgets": // -> 163
-								// Edge: 163, path: "poddisruptionbudgets".
-								elem, p = nextElem(p)
-								if len(elem) == 0 {
-									// GET /apis/policy/v1/namespaces/{namespace}/poddisruptionbudgets.
-									s.handleListPolicyV1NamespacedPodDisruptionBudgetRequest(args, w, r)
-									return
-								}
-								switch elem {
-								default:
-									if args == nil {
-										args = make(map[string]string)
-									}
-									args["name"] = elem
-									// Edge: 274, path: "".
-									elem, p = nextElem(p)
-									if len(elem) == 0 {
-										// GET /apis/policy/v1/namespaces/{namespace}/poddisruptionbudgets/{name}.
-										s.handleReadPolicyV1NamespacedPodDisruptionBudgetRequest(args, w, r)
-										return
-									}
-									switch elem {
-									case "status": // -> 275
-										// GET /apis/policy/v1/namespaces/{namespace}/poddisruptionbudgets/{name}/status
-										s.handleReadPolicyV1NamespacedPodDisruptionBudgetStatusRequest(args, w, r)
-										return
-									default:
-										// GET /apis/policy/v1/namespaces/{namespace}/poddisruptionbudgets/{name}.
-										s.handleReadPolicyV1NamespacedPodDisruptionBudgetRequest(args, w, r)
-										return
-									}
-								}
-							default:
-								s.notFound(w, r)
-								return
-							}
-						}
-					case "poddisruptionbudgets": // -> 164
-						// GET /apis/policy/v1/poddisruptionbudgets
-						s.handleListPolicyV1PodDisruptionBudgetForAllNamespacesRequest(args, w, r)
-						return
-					case "watch": // -> 462
-						// Edge: 462, path: "watch".
-						elem, p = nextElem(p)
-						switch elem {
-						case "namespaces": // -> 463
-							// Edge: 463, path: "namespaces".
-							elem, p = nextElem(p)
-							switch elem {
-							default:
-								if args == nil {
-									args = make(map[string]string)
-								}
-								args["namespace"] = elem
-								// Edge: 464, path: "".
-								elem, p = nextElem(p)
-								switch elem {
-								case "poddisruptionbudgets": // -> 465
-									// Edge: 465, path: "poddisruptionbudgets".
-									elem, p = nextElem(p)
-									if len(elem) == 0 {
-										// GET /apis/policy/v1/watch/namespaces/{namespace}/poddisruptionbudgets.
-										s.handleWatchPolicyV1NamespacedPodDisruptionBudgetListRequest(args, w, r)
-										return
-									}
-									switch elem {
-									default:
-										if args == nil {
-											args = make(map[string]string)
+
+										if len(elem) == 0 {
+											s.handleWatchNetworkingV1IngressListForAllNamespacesRequest(args, w, r)
+											return
 										}
-										args["name"] = elem
-										// GET /apis/policy/v1/watch/namespaces/{namespace}/poddisruptionbudgets/{name}
-										s.handleWatchPolicyV1NamespacedPodDisruptionBudgetRequest(args, w, r)
-										return
-									}
-								default:
-									s.notFound(w, r)
-									return
-								}
-							}
-						case "poddisruptionbudgets": // -> 467
-							// GET /apis/policy/v1/watch/poddisruptionbudgets
-							s.handleWatchPolicyV1PodDisruptionBudgetListForAllNamespacesRequest(args, w, r)
-							return
-						default:
-							s.notFound(w, r)
-							return
-						}
-					default:
-						// GET /apis/policy/v1/.
-						s.handleGetPolicyV1APIResourcesRequest(args, w, r)
-						return
-					}
-				case "v1beta1": // -> 47
-					// Edge: 47, path: "v1beta1".
-					elem, p = nextElem(p)
-					if len(elem) == 0 {
-						// GET /apis/policy/v1beta1/.
-						s.handleGetPolicyV1beta1APIResourcesRequest(args, w, r)
-						return
-					}
-					switch elem {
-					case "namespaces": // -> 165
-						// Edge: 165, path: "namespaces".
-						elem, p = nextElem(p)
-						switch elem {
-						default:
-							if args == nil {
-								args = make(map[string]string)
-							}
-							args["namespace"] = elem
-							// Edge: 166, path: "".
-							elem, p = nextElem(p)
-							switch elem {
-							case "poddisruptionbudgets": // -> 167
-								// Edge: 167, path: "poddisruptionbudgets".
-								elem, p = nextElem(p)
-								if len(elem) == 0 {
-									// GET /apis/policy/v1beta1/namespaces/{namespace}/poddisruptionbudgets.
-									s.handleListPolicyV1beta1NamespacedPodDisruptionBudgetRequest(args, w, r)
-									return
-								}
-								switch elem {
-								default:
-									if args == nil {
-										args = make(map[string]string)
-									}
-									args["name"] = elem
-									// Edge: 276, path: "".
-									elem, p = nextElem(p)
-									if len(elem) == 0 {
-										// GET /apis/policy/v1beta1/namespaces/{namespace}/poddisruptionbudgets/{name}.
-										s.handleReadPolicyV1beta1NamespacedPodDisruptionBudgetRequest(args, w, r)
-										return
-									}
-									switch elem {
-									case "status": // -> 277
-										// GET /apis/policy/v1beta1/namespaces/{namespace}/poddisruptionbudgets/{name}/status
-										s.handleReadPolicyV1beta1NamespacedPodDisruptionBudgetStatusRequest(args, w, r)
-										return
-									default:
-										// GET /apis/policy/v1beta1/namespaces/{namespace}/poddisruptionbudgets/{name}.
-										s.handleReadPolicyV1beta1NamespacedPodDisruptionBudgetRequest(args, w, r)
-										return
-									}
-								}
-							default:
-								s.notFound(w, r)
-								return
-							}
-						}
-					case "poddisruptionbudgets": // -> 168
-						// GET /apis/policy/v1beta1/poddisruptionbudgets
-						s.handleListPolicyV1beta1PodDisruptionBudgetForAllNamespacesRequest(args, w, r)
-						return
-					case "podsecuritypolicies": // -> 169
-						// Edge: 169, path: "podsecuritypolicies".
-						elem, p = nextElem(p)
-						if len(elem) == 0 {
-							// GET /apis/policy/v1beta1/podsecuritypolicies.
-							s.handleListPolicyV1beta1PodSecurityPolicyRequest(args, w, r)
-							return
-						}
-						switch elem {
-						default:
-							if args == nil {
-								args = make(map[string]string)
-							}
-							args["name"] = elem
-							// GET /apis/policy/v1beta1/podsecuritypolicies/{name}
-							s.handleReadPolicyV1beta1PodSecurityPolicyRequest(args, w, r)
-							return
-						}
-					case "watch": // -> 468
-						// Edge: 468, path: "watch".
-						elem, p = nextElem(p)
-						switch elem {
-						case "namespaces": // -> 469
-							// Edge: 469, path: "namespaces".
-							elem, p = nextElem(p)
-							switch elem {
-							default:
-								if args == nil {
-									args = make(map[string]string)
-								}
-								args["namespace"] = elem
-								// Edge: 470, path: "".
-								elem, p = nextElem(p)
-								switch elem {
-								case "poddisruptionbudgets": // -> 471
-									// Edge: 471, path: "poddisruptionbudgets".
-									elem, p = nextElem(p)
-									if len(elem) == 0 {
-										// GET /apis/policy/v1beta1/watch/namespaces/{namespace}/poddisruptionbudgets.
-										s.handleWatchPolicyV1beta1NamespacedPodDisruptionBudgetListRequest(args, w, r)
-										return
-									}
-									switch elem {
-									default:
-										if args == nil {
-											args = make(map[string]string)
+										switch elem[0] {
+										case 'c': // Prefix: "classes"
+											if prefix := "classes"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+												elem = elem[len(prefix):]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												s.handleWatchNetworkingV1IngressClassListRequest(args, w, r)
+												return
+											}
+											switch elem[0] {
+											case '/': // Prefix: "/"
+												if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+													elem = elem[len(prefix):]
+												} else {
+													break
+												}
+
+												// Param: "name"
+												// Leaf parameter
+												args["name"] = elem
+
+												// Leaf: WatchNetworkingV1IngressClass
+												s.handleWatchNetworkingV1IngressClassRequest(args, w, r)
+												return
+											case 'e': // Prefix: "es"
+												if prefix := "es"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+													elem = elem[len(prefix):]
+												} else {
+													break
+												}
+
+												// Leaf: WatchNetworkingV1IngressListForAllNamespaces
+												s.handleWatchNetworkingV1IngressListForAllNamespacesRequest(args, w, r)
+												return
+											}
+										case 'e': // Prefix: "es"
+											if prefix := "es"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+												elem = elem[len(prefix):]
+											} else {
+												break
+											}
+
+											// Leaf: WatchNetworkingV1IngressListForAllNamespaces
+											s.handleWatchNetworkingV1IngressListForAllNamespacesRequest(args, w, r)
+											return
+										case 'n': // Prefix: "namespaces/"
+											if prefix := "namespaces/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+												elem = elem[len(prefix):]
+											} else {
+												break
+											}
+
+											// Param: "namespace"
+											// Match until one of "/"
+											idx := strings.IndexAny(elem, "/")
+											if idx > 0 {
+												args["namespace"] = elem[:idx]
+												elem = elem[idx:]
+
+												if len(elem) == 0 {
+													break
+												}
+												switch elem[0] {
+												case '/': // Prefix: "/ingresses/"
+													if prefix := "/ingresses/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+														elem = elem[len(prefix):]
+													} else {
+														break
+													}
+
+													// Param: "name"
+													// Leaf parameter
+													args["name"] = elem
+
+													// Leaf: WatchNetworkingV1NamespacedIngress
+													s.handleWatchNetworkingV1NamespacedIngressRequest(args, w, r)
+													return
+												}
+											}
 										}
-										args["name"] = elem
-										// GET /apis/policy/v1beta1/watch/namespaces/{namespace}/poddisruptionbudgets/{name}
-										s.handleWatchPolicyV1beta1NamespacedPodDisruptionBudgetRequest(args, w, r)
-										return
-									}
-								default:
-									s.notFound(w, r)
-									return
-								}
-							}
-						case "poddisruptionbudgets": // -> 473
-							// GET /apis/policy/v1beta1/watch/poddisruptionbudgets
-							s.handleWatchPolicyV1beta1PodDisruptionBudgetListForAllNamespacesRequest(args, w, r)
-							return
-						case "podsecuritypolicies": // -> 474
-							// Edge: 474, path: "podsecuritypolicies".
-							elem, p = nextElem(p)
-							if len(elem) == 0 {
-								// GET /apis/policy/v1beta1/watch/podsecuritypolicies.
-								s.handleWatchPolicyV1beta1PodSecurityPolicyListRequest(args, w, r)
-								return
-							}
-							switch elem {
-							default:
-								if args == nil {
-									args = make(map[string]string)
-								}
-								args["name"] = elem
-								// GET /apis/policy/v1beta1/watch/podsecuritypolicies/{name}
-								s.handleWatchPolicyV1beta1PodSecurityPolicyRequest(args, w, r)
-								return
-							}
-						default:
-							s.notFound(w, r)
-							return
-						}
-					default:
-						// GET /apis/policy/v1beta1/.
-						s.handleGetPolicyV1beta1APIResourcesRequest(args, w, r)
-						return
-					}
-				default:
-					// GET /apis/policy/.
-					s.handleGetPolicyAPIGroupRequest(args, w, r)
-					return
-				}
-			case "rbac.authorization.k8s.io": // -> 48
-				// Edge: 48, path: "rbac.authorization.k8s.io".
-				elem, p = nextElem(p)
-				if len(elem) == 0 {
-					// GET /apis/rbac.authorization.k8s.io/.
-					s.handleGetRbacAuthorizationAPIGroupRequest(args, w, r)
-					return
-				}
-				switch elem {
-				case "v1": // -> 49
-					// Edge: 49, path: "v1".
-					elem, p = nextElem(p)
-					if len(elem) == 0 {
-						// GET /apis/rbac.authorization.k8s.io/v1/.
-						s.handleGetRbacAuthorizationV1APIResourcesRequest(args, w, r)
-						return
-					}
-					switch elem {
-					case "clusterroles": // -> 170
-						// Edge: 170, path: "clusterroles".
-						elem, p = nextElem(p)
-						if len(elem) == 0 {
-							// GET /apis/rbac.authorization.k8s.io/v1/clusterroles.
-							s.handleListRbacAuthorizationV1ClusterRoleRequest(args, w, r)
-							return
-						}
-						switch elem {
-						default:
-							if args == nil {
-								args = make(map[string]string)
-							}
-							args["name"] = elem
-							// GET /apis/rbac.authorization.k8s.io/v1/clusterroles/{name}
-							s.handleReadRbacAuthorizationV1ClusterRoleRequest(args, w, r)
-							return
-						}
-					case "clusterrolebindings": // -> 171
-						// Edge: 171, path: "clusterrolebindings".
-						elem, p = nextElem(p)
-						if len(elem) == 0 {
-							// GET /apis/rbac.authorization.k8s.io/v1/clusterrolebindings.
-							s.handleListRbacAuthorizationV1ClusterRoleBindingRequest(args, w, r)
-							return
-						}
-						switch elem {
-						default:
-							if args == nil {
-								args = make(map[string]string)
-							}
-							args["name"] = elem
-							// GET /apis/rbac.authorization.k8s.io/v1/clusterrolebindings/{name}
-							s.handleReadRbacAuthorizationV1ClusterRoleBindingRequest(args, w, r)
-							return
-						}
-					case "namespaces": // -> 172
-						// Edge: 172, path: "namespaces".
-						elem, p = nextElem(p)
-						switch elem {
-						default:
-							if args == nil {
-								args = make(map[string]string)
-							}
-							args["namespace"] = elem
-							// Edge: 173, path: "".
-							elem, p = nextElem(p)
-							switch elem {
-							case "roles": // -> 174
-								// Edge: 174, path: "roles".
-								elem, p = nextElem(p)
-								if len(elem) == 0 {
-									// GET /apis/rbac.authorization.k8s.io/v1/namespaces/{namespace}/roles.
-									s.handleListRbacAuthorizationV1NamespacedRoleRequest(args, w, r)
-									return
-								}
-								switch elem {
-								default:
-									if args == nil {
-										args = make(map[string]string)
-									}
-									args["name"] = elem
-									// GET /apis/rbac.authorization.k8s.io/v1/namespaces/{namespace}/roles/{name}
-									s.handleReadRbacAuthorizationV1NamespacedRoleRequest(args, w, r)
-									return
-								}
-							case "rolebindings": // -> 175
-								// Edge: 175, path: "rolebindings".
-								elem, p = nextElem(p)
-								if len(elem) == 0 {
-									// GET /apis/rbac.authorization.k8s.io/v1/namespaces/{namespace}/rolebindings.
-									s.handleListRbacAuthorizationV1NamespacedRoleBindingRequest(args, w, r)
-									return
-								}
-								switch elem {
-								default:
-									if args == nil {
-										args = make(map[string]string)
-									}
-									args["name"] = elem
-									// GET /apis/rbac.authorization.k8s.io/v1/namespaces/{namespace}/rolebindings/{name}
-									s.handleReadRbacAuthorizationV1NamespacedRoleBindingRequest(args, w, r)
-									return
-								}
-							default:
-								s.notFound(w, r)
-								return
-							}
-						}
-					case "rolebindings": // -> 176
-						// GET /apis/rbac.authorization.k8s.io/v1/rolebindings
-						s.handleListRbacAuthorizationV1RoleBindingForAllNamespacesRequest(args, w, r)
-						return
-					case "roles": // -> 177
-						// GET /apis/rbac.authorization.k8s.io/v1/roles
-						s.handleListRbacAuthorizationV1RoleForAllNamespacesRequest(args, w, r)
-						return
-					case "watch": // -> 476
-						// Edge: 476, path: "watch".
-						elem, p = nextElem(p)
-						switch elem {
-						case "clusterroles": // -> 477
-							// Edge: 477, path: "clusterroles".
-							elem, p = nextElem(p)
-							if len(elem) == 0 {
-								// GET /apis/rbac.authorization.k8s.io/v1/watch/clusterroles.
-								s.handleWatchRbacAuthorizationV1ClusterRoleListRequest(args, w, r)
-								return
-							}
-							switch elem {
-							default:
-								if args == nil {
-									args = make(map[string]string)
-								}
-								args["name"] = elem
-								// GET /apis/rbac.authorization.k8s.io/v1/watch/clusterroles/{name}
-								s.handleWatchRbacAuthorizationV1ClusterRoleRequest(args, w, r)
-								return
-							}
-						case "clusterrolebindings": // -> 479
-							// Edge: 479, path: "clusterrolebindings".
-							elem, p = nextElem(p)
-							if len(elem) == 0 {
-								// GET /apis/rbac.authorization.k8s.io/v1/watch/clusterrolebindings.
-								s.handleWatchRbacAuthorizationV1ClusterRoleBindingListRequest(args, w, r)
-								return
-							}
-							switch elem {
-							default:
-								if args == nil {
-									args = make(map[string]string)
-								}
-								args["name"] = elem
-								// GET /apis/rbac.authorization.k8s.io/v1/watch/clusterrolebindings/{name}
-								s.handleWatchRbacAuthorizationV1ClusterRoleBindingRequest(args, w, r)
-								return
-							}
-						case "namespaces": // -> 481
-							// Edge: 481, path: "namespaces".
-							elem, p = nextElem(p)
-							switch elem {
-							default:
-								if args == nil {
-									args = make(map[string]string)
-								}
-								args["namespace"] = elem
-								// Edge: 482, path: "".
-								elem, p = nextElem(p)
-								switch elem {
-								case "roles": // -> 483
-									// Edge: 483, path: "roles".
-									elem, p = nextElem(p)
-									if len(elem) == 0 {
-										// GET /apis/rbac.authorization.k8s.io/v1/watch/namespaces/{namespace}/roles.
-										s.handleWatchRbacAuthorizationV1NamespacedRoleListRequest(args, w, r)
-										return
-									}
-									switch elem {
-									default:
-										if args == nil {
-											args = make(map[string]string)
+									case 'n': // Prefix: "n"
+										if prefix := "n"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+											elem = elem[len(prefix):]
+										} else {
+											break
 										}
-										args["name"] = elem
-										// GET /apis/rbac.authorization.k8s.io/v1/watch/namespaces/{namespace}/roles/{name}
-										s.handleWatchRbacAuthorizationV1NamespacedRoleRequest(args, w, r)
-										return
-									}
-								case "rolebindings": // -> 485
-									// Edge: 485, path: "rolebindings".
-									elem, p = nextElem(p)
-									if len(elem) == 0 {
-										// GET /apis/rbac.authorization.k8s.io/v1/watch/namespaces/{namespace}/rolebindings.
-										s.handleWatchRbacAuthorizationV1NamespacedRoleBindingListRequest(args, w, r)
-										return
-									}
-									switch elem {
-									default:
-										if args == nil {
-											args = make(map[string]string)
+
+										if len(elem) == 0 {
+											s.handleWatchNetworkingV1NetworkPolicyListForAllNamespacesRequest(args, w, r)
+											return
 										}
-										args["name"] = elem
-										// GET /apis/rbac.authorization.k8s.io/v1/watch/namespaces/{namespace}/rolebindings/{name}
-										s.handleWatchRbacAuthorizationV1NamespacedRoleBindingRequest(args, w, r)
-										return
-									}
-								default:
-									s.notFound(w, r)
-									return
-								}
-							}
-						case "rolebindings": // -> 487
-							// GET /apis/rbac.authorization.k8s.io/v1/watch/rolebindings
-							s.handleWatchRbacAuthorizationV1RoleBindingListForAllNamespacesRequest(args, w, r)
-							return
-						case "roles": // -> 488
-							// GET /apis/rbac.authorization.k8s.io/v1/watch/roles
-							s.handleWatchRbacAuthorizationV1RoleListForAllNamespacesRequest(args, w, r)
-							return
-						default:
-							s.notFound(w, r)
-							return
-						}
-					default:
-						// GET /apis/rbac.authorization.k8s.io/v1/.
-						s.handleGetRbacAuthorizationV1APIResourcesRequest(args, w, r)
-						return
-					}
-				default:
-					// GET /apis/rbac.authorization.k8s.io/.
-					s.handleGetRbacAuthorizationAPIGroupRequest(args, w, r)
-					return
-				}
-			case "scheduling.k8s.io": // -> 50
-				// Edge: 50, path: "scheduling.k8s.io".
-				elem, p = nextElem(p)
-				if len(elem) == 0 {
-					// GET /apis/scheduling.k8s.io/.
-					s.handleGetSchedulingAPIGroupRequest(args, w, r)
-					return
-				}
-				switch elem {
-				case "v1": // -> 51
-					// Edge: 51, path: "v1".
-					elem, p = nextElem(p)
-					if len(elem) == 0 {
-						// GET /apis/scheduling.k8s.io/v1/.
-						s.handleGetSchedulingV1APIResourcesRequest(args, w, r)
-						return
-					}
-					switch elem {
-					case "priorityclasses": // -> 178
-						// Edge: 178, path: "priorityclasses".
-						elem, p = nextElem(p)
-						if len(elem) == 0 {
-							// GET /apis/scheduling.k8s.io/v1/priorityclasses.
-							s.handleListSchedulingV1PriorityClassRequest(args, w, r)
-							return
-						}
-						switch elem {
-						default:
-							if args == nil {
-								args = make(map[string]string)
-							}
-							args["name"] = elem
-							// GET /apis/scheduling.k8s.io/v1/priorityclasses/{name}
-							s.handleReadSchedulingV1PriorityClassRequest(args, w, r)
-							return
-						}
-					case "watch": // -> 489
-						// Edge: 489, path: "watch".
-						elem, p = nextElem(p)
-						switch elem {
-						case "priorityclasses": // -> 490
-							// Edge: 490, path: "priorityclasses".
-							elem, p = nextElem(p)
-							if len(elem) == 0 {
-								// GET /apis/scheduling.k8s.io/v1/watch/priorityclasses.
-								s.handleWatchSchedulingV1PriorityClassListRequest(args, w, r)
-								return
-							}
-							switch elem {
-							default:
-								if args == nil {
-									args = make(map[string]string)
-								}
-								args["name"] = elem
-								// GET /apis/scheduling.k8s.io/v1/watch/priorityclasses/{name}
-								s.handleWatchSchedulingV1PriorityClassRequest(args, w, r)
-								return
-							}
-						default:
-							s.notFound(w, r)
-							return
-						}
-					default:
-						// GET /apis/scheduling.k8s.io/v1/.
-						s.handleGetSchedulingV1APIResourcesRequest(args, w, r)
-						return
-					}
-				default:
-					// GET /apis/scheduling.k8s.io/.
-					s.handleGetSchedulingAPIGroupRequest(args, w, r)
-					return
-				}
-			case "storage.k8s.io": // -> 54
-				// Edge: 54, path: "storage.k8s.io".
-				elem, p = nextElem(p)
-				if len(elem) == 0 {
-					// GET /apis/storage.k8s.io/.
-					s.handleGetStorageAPIGroupRequest(args, w, r)
-					return
-				}
-				switch elem {
-				case "v1": // -> 55
-					// Edge: 55, path: "v1".
-					elem, p = nextElem(p)
-					if len(elem) == 0 {
-						// GET /apis/storage.k8s.io/v1/.
-						s.handleGetStorageV1APIResourcesRequest(args, w, r)
-						return
-					}
-					switch elem {
-					case "csidrivers": // -> 179
-						// Edge: 179, path: "csidrivers".
-						elem, p = nextElem(p)
-						if len(elem) == 0 {
-							// GET /apis/storage.k8s.io/v1/csidrivers.
-							s.handleListStorageV1CSIDriverRequest(args, w, r)
-							return
-						}
-						switch elem {
-						default:
-							if args == nil {
-								args = make(map[string]string)
-							}
-							args["name"] = elem
-							// GET /apis/storage.k8s.io/v1/csidrivers/{name}
-							s.handleReadStorageV1CSIDriverRequest(args, w, r)
-							return
-						}
-					case "csinodes": // -> 180
-						// Edge: 180, path: "csinodes".
-						elem, p = nextElem(p)
-						if len(elem) == 0 {
-							// GET /apis/storage.k8s.io/v1/csinodes.
-							s.handleListStorageV1CSINodeRequest(args, w, r)
-							return
-						}
-						switch elem {
-						default:
-							if args == nil {
-								args = make(map[string]string)
-							}
-							args["name"] = elem
-							// GET /apis/storage.k8s.io/v1/csinodes/{name}
-							s.handleReadStorageV1CSINodeRequest(args, w, r)
-							return
-						}
-					case "storageclasses": // -> 181
-						// Edge: 181, path: "storageclasses".
-						elem, p = nextElem(p)
-						if len(elem) == 0 {
-							// GET /apis/storage.k8s.io/v1/storageclasses.
-							s.handleListStorageV1StorageClassRequest(args, w, r)
-							return
-						}
-						switch elem {
-						default:
-							if args == nil {
-								args = make(map[string]string)
-							}
-							args["name"] = elem
-							// GET /apis/storage.k8s.io/v1/storageclasses/{name}
-							s.handleReadStorageV1StorageClassRequest(args, w, r)
-							return
-						}
-					case "volumeattachments": // -> 182
-						// Edge: 182, path: "volumeattachments".
-						elem, p = nextElem(p)
-						if len(elem) == 0 {
-							// GET /apis/storage.k8s.io/v1/volumeattachments.
-							s.handleListStorageV1VolumeAttachmentRequest(args, w, r)
-							return
-						}
-						switch elem {
-						default:
-							if args == nil {
-								args = make(map[string]string)
-							}
-							args["name"] = elem
-							// Edge: 287, path: "".
-							elem, p = nextElem(p)
-							if len(elem) == 0 {
-								// GET /apis/storage.k8s.io/v1/volumeattachments/{name}.
-								s.handleReadStorageV1VolumeAttachmentRequest(args, w, r)
-								return
-							}
-							switch elem {
-							case "status": // -> 288
-								// GET /apis/storage.k8s.io/v1/volumeattachments/{name}/status
-								s.handleReadStorageV1VolumeAttachmentStatusRequest(args, w, r)
-								return
-							default:
-								// GET /apis/storage.k8s.io/v1/volumeattachments/{name}.
-								s.handleReadStorageV1VolumeAttachmentRequest(args, w, r)
-								return
-							}
-						}
-					case "watch": // -> 492
-						// Edge: 492, path: "watch".
-						elem, p = nextElem(p)
-						switch elem {
-						case "csidrivers": // -> 493
-							// Edge: 493, path: "csidrivers".
-							elem, p = nextElem(p)
-							if len(elem) == 0 {
-								// GET /apis/storage.k8s.io/v1/watch/csidrivers.
-								s.handleWatchStorageV1CSIDriverListRequest(args, w, r)
-								return
-							}
-							switch elem {
-							default:
-								if args == nil {
-									args = make(map[string]string)
-								}
-								args["name"] = elem
-								// GET /apis/storage.k8s.io/v1/watch/csidrivers/{name}
-								s.handleWatchStorageV1CSIDriverRequest(args, w, r)
-								return
-							}
-						case "csinodes": // -> 495
-							// Edge: 495, path: "csinodes".
-							elem, p = nextElem(p)
-							if len(elem) == 0 {
-								// GET /apis/storage.k8s.io/v1/watch/csinodes.
-								s.handleWatchStorageV1CSINodeListRequest(args, w, r)
-								return
-							}
-							switch elem {
-							default:
-								if args == nil {
-									args = make(map[string]string)
-								}
-								args["name"] = elem
-								// GET /apis/storage.k8s.io/v1/watch/csinodes/{name}
-								s.handleWatchStorageV1CSINodeRequest(args, w, r)
-								return
-							}
-						case "storageclasses": // -> 497
-							// Edge: 497, path: "storageclasses".
-							elem, p = nextElem(p)
-							if len(elem) == 0 {
-								// GET /apis/storage.k8s.io/v1/watch/storageclasses.
-								s.handleWatchStorageV1StorageClassListRequest(args, w, r)
-								return
-							}
-							switch elem {
-							default:
-								if args == nil {
-									args = make(map[string]string)
-								}
-								args["name"] = elem
-								// GET /apis/storage.k8s.io/v1/watch/storageclasses/{name}
-								s.handleWatchStorageV1StorageClassRequest(args, w, r)
-								return
-							}
-						case "volumeattachments": // -> 499
-							// Edge: 499, path: "volumeattachments".
-							elem, p = nextElem(p)
-							if len(elem) == 0 {
-								// GET /apis/storage.k8s.io/v1/watch/volumeattachments.
-								s.handleWatchStorageV1VolumeAttachmentListRequest(args, w, r)
-								return
-							}
-							switch elem {
-							default:
-								if args == nil {
-									args = make(map[string]string)
-								}
-								args["name"] = elem
-								// GET /apis/storage.k8s.io/v1/watch/volumeattachments/{name}
-								s.handleWatchStorageV1VolumeAttachmentRequest(args, w, r)
-								return
-							}
-						default:
-							s.notFound(w, r)
-							return
-						}
-					default:
-						// GET /apis/storage.k8s.io/v1/.
-						s.handleGetStorageV1APIResourcesRequest(args, w, r)
-						return
-					}
-				case "v1alpha1": // -> 56
-					// Edge: 56, path: "v1alpha1".
-					elem, p = nextElem(p)
-					if len(elem) == 0 {
-						// GET /apis/storage.k8s.io/v1alpha1/.
-						s.handleGetStorageV1alpha1APIResourcesRequest(args, w, r)
-						return
-					}
-					switch elem {
-					case "csistoragecapacities": // -> 183
-						// GET /apis/storage.k8s.io/v1alpha1/csistoragecapacities
-						s.handleListStorageV1alpha1CSIStorageCapacityForAllNamespacesRequest(args, w, r)
-						return
-					case "namespaces": // -> 184
-						// Edge: 184, path: "namespaces".
-						elem, p = nextElem(p)
-						switch elem {
-						default:
-							if args == nil {
-								args = make(map[string]string)
-							}
-							args["namespace"] = elem
-							// Edge: 185, path: "".
-							elem, p = nextElem(p)
-							switch elem {
-							case "csistoragecapacities": // -> 186
-								// Edge: 186, path: "csistoragecapacities".
-								elem, p = nextElem(p)
-								if len(elem) == 0 {
-									// GET /apis/storage.k8s.io/v1alpha1/namespaces/{namespace}/csistoragecapacities.
-									s.handleListStorageV1alpha1NamespacedCSIStorageCapacityRequest(args, w, r)
-									return
-								}
-								switch elem {
-								default:
-									if args == nil {
-										args = make(map[string]string)
-									}
-									args["name"] = elem
-									// GET /apis/storage.k8s.io/v1alpha1/namespaces/{namespace}/csistoragecapacities/{name}
-									s.handleReadStorageV1alpha1NamespacedCSIStorageCapacityRequest(args, w, r)
-									return
-								}
-							default:
-								s.notFound(w, r)
-								return
-							}
-						}
-					case "watch": // -> 501
-						// Edge: 501, path: "watch".
-						elem, p = nextElem(p)
-						switch elem {
-						case "csistoragecapacities": // -> 502
-							// GET /apis/storage.k8s.io/v1alpha1/watch/csistoragecapacities
-							s.handleWatchStorageV1alpha1CSIStorageCapacityListForAllNamespacesRequest(args, w, r)
-							return
-						case "namespaces": // -> 503
-							// Edge: 503, path: "namespaces".
-							elem, p = nextElem(p)
-							switch elem {
-							default:
-								if args == nil {
-									args = make(map[string]string)
-								}
-								args["namespace"] = elem
-								// Edge: 504, path: "".
-								elem, p = nextElem(p)
-								switch elem {
-								case "csistoragecapacities": // -> 505
-									// Edge: 505, path: "csistoragecapacities".
-									elem, p = nextElem(p)
-									if len(elem) == 0 {
-										// GET /apis/storage.k8s.io/v1alpha1/watch/namespaces/{namespace}/csistoragecapacities.
-										s.handleWatchStorageV1alpha1NamespacedCSIStorageCapacityListRequest(args, w, r)
-										return
-									}
-									switch elem {
-									default:
-										if args == nil {
-											args = make(map[string]string)
+										switch elem[0] {
+										case 'a': // Prefix: "amespaces/"
+											if prefix := "amespaces/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+												elem = elem[len(prefix):]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												break
+											}
+											switch elem[0] {
+											case 'e': // Prefix: "etworkpolicies"
+												if prefix := "etworkpolicies"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+													elem = elem[len(prefix):]
+												} else {
+													break
+												}
+
+												// Leaf: WatchNetworkingV1NetworkPolicyListForAllNamespaces
+												s.handleWatchNetworkingV1NetworkPolicyListForAllNamespacesRequest(args, w, r)
+												return
+											}
+											// Param: "namespace"
+											// Match until one of "/"
+											idx := strings.IndexAny(elem, "/")
+											if idx > 0 {
+												args["namespace"] = elem[:idx]
+												elem = elem[idx:]
+
+												if len(elem) == 0 {
+													break
+												}
+												switch elem[0] {
+												case '/': // Prefix: "/"
+													if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+														elem = elem[len(prefix):]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														s.handleWatchNetworkingV1NamespacedNetworkPolicyRequest(args, w, r)
+														return
+													}
+													switch elem[0] {
+													case 'i': // Prefix: "ingresses"
+														if prefix := "ingresses"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+															elem = elem[len(prefix):]
+														} else {
+															break
+														}
+
+														if len(elem) == 0 {
+															s.handleWatchNetworkingV1NamespacedIngressListRequest(args, w, r)
+															return
+														}
+														switch elem[0] {
+														case '/': // Prefix: "/"
+															if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																elem = elem[len(prefix):]
+															} else {
+																break
+															}
+
+															// Param: "name"
+															// Leaf parameter
+															args["name"] = elem
+
+															// Leaf: WatchNetworkingV1NamespacedIngress
+															s.handleWatchNetworkingV1NamespacedIngressRequest(args, w, r)
+															return
+														case 'n': // Prefix: "networkpolicies/"
+															if prefix := "networkpolicies/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																elem = elem[len(prefix):]
+															} else {
+																break
+															}
+
+															// Param: "name"
+															// Leaf parameter
+															args["name"] = elem
+
+															// Leaf: WatchNetworkingV1NamespacedNetworkPolicy
+															s.handleWatchNetworkingV1NamespacedNetworkPolicyRequest(args, w, r)
+															return
+														}
+													case 'n': // Prefix: "networkpolicies"
+														if prefix := "networkpolicies"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+															elem = elem[len(prefix):]
+														} else {
+															break
+														}
+
+														if len(elem) == 0 {
+															s.handleWatchNetworkingV1NamespacedNetworkPolicyListRequest(args, w, r)
+															return
+														}
+														switch elem[0] {
+														case '/': // Prefix: "/"
+															if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																elem = elem[len(prefix):]
+															} else {
+																break
+															}
+
+															// Param: "name"
+															// Leaf parameter
+															args["name"] = elem
+
+															// Leaf: WatchNetworkingV1NamespacedNetworkPolicy
+															s.handleWatchNetworkingV1NamespacedNetworkPolicyRequest(args, w, r)
+															return
+														}
+													}
+												}
+											}
+										case 'e': // Prefix: "etworkpolicies"
+											if prefix := "etworkpolicies"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+												elem = elem[len(prefix):]
+											} else {
+												break
+											}
+
+											// Leaf: WatchNetworkingV1NetworkPolicyListForAllNamespaces
+											s.handleWatchNetworkingV1NetworkPolicyListForAllNamespacesRequest(args, w, r)
+											return
 										}
-										args["name"] = elem
-										// GET /apis/storage.k8s.io/v1alpha1/watch/namespaces/{namespace}/csistoragecapacities/{name}
-										s.handleWatchStorageV1alpha1NamespacedCSIStorageCapacityRequest(args, w, r)
-										return
 									}
-								default:
-									s.notFound(w, r)
-									return
 								}
 							}
-						default:
-							s.notFound(w, r)
-							return
-						}
-					default:
-						// GET /apis/storage.k8s.io/v1alpha1/.
-						s.handleGetStorageV1alpha1APIResourcesRequest(args, w, r)
-						return
-					}
-				case "v1beta1": // -> 57
-					// Edge: 57, path: "v1beta1".
-					elem, p = nextElem(p)
-					if len(elem) == 0 {
-						// GET /apis/storage.k8s.io/v1beta1/.
-						s.handleGetStorageV1beta1APIResourcesRequest(args, w, r)
-						return
-					}
-					switch elem {
-					case "csistoragecapacities": // -> 187
-						// GET /apis/storage.k8s.io/v1beta1/csistoragecapacities
-						s.handleListStorageV1beta1CSIStorageCapacityForAllNamespacesRequest(args, w, r)
-						return
-					case "namespaces": // -> 188
-						// Edge: 188, path: "namespaces".
-						elem, p = nextElem(p)
-						switch elem {
-						default:
-							if args == nil {
-								args = make(map[string]string)
+						case 'o': // Prefix: "ode.k8s.io/"
+							if prefix := "ode.k8s.io/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+								elem = elem[len(prefix):]
+							} else {
+								break
 							}
-							args["namespace"] = elem
-							// Edge: 189, path: "".
-							elem, p = nextElem(p)
-							switch elem {
-							case "csistoragecapacities": // -> 190
-								// Edge: 190, path: "csistoragecapacities".
-								elem, p = nextElem(p)
-								if len(elem) == 0 {
-									// GET /apis/storage.k8s.io/v1beta1/namespaces/{namespace}/csistoragecapacities.
-									s.handleListStorageV1beta1NamespacedCSIStorageCapacityRequest(args, w, r)
-									return
-								}
-								switch elem {
-								default:
-									if args == nil {
-										args = make(map[string]string)
-									}
-									args["name"] = elem
-									// GET /apis/storage.k8s.io/v1beta1/namespaces/{namespace}/csistoragecapacities/{name}
-									s.handleReadStorageV1beta1NamespacedCSIStorageCapacityRequest(args, w, r)
-									return
-								}
-							default:
-								s.notFound(w, r)
+
+							if len(elem) == 0 {
+								s.handleGetNodeAPIGroupRequest(args, w, r)
 								return
 							}
-						}
-					case "watch": // -> 507
-						// Edge: 507, path: "watch".
-						elem, p = nextElem(p)
-						switch elem {
-						case "csistoragecapacities": // -> 508
-							// GET /apis/storage.k8s.io/v1beta1/watch/csistoragecapacities
-							s.handleWatchStorageV1beta1CSIStorageCapacityListForAllNamespacesRequest(args, w, r)
-							return
-						case "namespaces": // -> 509
-							// Edge: 509, path: "namespaces".
-							elem, p = nextElem(p)
-							switch elem {
-							default:
-								if args == nil {
-									args = make(map[string]string)
+							switch elem[0] {
+							case 'v': // Prefix: "v1"
+								if prefix := "v1"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+									elem = elem[len(prefix):]
+								} else {
+									break
 								}
-								args["namespace"] = elem
-								// Edge: 510, path: "".
-								elem, p = nextElem(p)
-								switch elem {
-								case "csistoragecapacities": // -> 511
-									// Edge: 511, path: "csistoragecapacities".
-									elem, p = nextElem(p)
+
+								if len(elem) == 0 {
+									s.handleGetNodeV1alpha1APIResourcesRequest(args, w, r)
+									return
+								}
+								switch elem[0] {
+								case '/': // Prefix: "/"
+									if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+										elem = elem[len(prefix):]
+									} else {
+										break
+									}
+
 									if len(elem) == 0 {
-										// GET /apis/storage.k8s.io/v1beta1/watch/namespaces/{namespace}/csistoragecapacities.
-										s.handleWatchStorageV1beta1NamespacedCSIStorageCapacityListRequest(args, w, r)
+										s.handleGetNodeV1APIResourcesRequest(args, w, r)
 										return
 									}
-									switch elem {
-									default:
-										if args == nil {
-											args = make(map[string]string)
+									switch elem[0] {
+									case 'a': // Prefix: "alpha1/"
+										if prefix := "alpha1/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+											elem = elem[len(prefix):]
+										} else {
+											break
 										}
-										args["name"] = elem
-										// GET /apis/storage.k8s.io/v1beta1/watch/namespaces/{namespace}/csistoragecapacities/{name}
-										s.handleWatchStorageV1beta1NamespacedCSIStorageCapacityRequest(args, w, r)
+
+										// Leaf: GetNodeV1alpha1APIResources
+										s.handleGetNodeV1alpha1APIResourcesRequest(args, w, r)
+										return
+									case 'r': // Prefix: "runtimeclasses"
+										if prefix := "runtimeclasses"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+											elem = elem[len(prefix):]
+										} else {
+											break
+										}
+
+										if len(elem) == 0 {
+											s.handleListNodeV1RuntimeClassRequest(args, w, r)
+											return
+										}
+										switch elem[0] {
+										case '/': // Prefix: "/"
+											if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+												elem = elem[len(prefix):]
+											} else {
+												break
+											}
+
+											// Param: "name"
+											// Leaf parameter
+											args["name"] = elem
+
+											// Leaf: ReadNodeV1RuntimeClass
+											s.handleReadNodeV1RuntimeClassRequest(args, w, r)
+											return
+										}
+									case 'w': // Prefix: "watch/runtimeclasses"
+										if prefix := "watch/runtimeclasses"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+											elem = elem[len(prefix):]
+										} else {
+											break
+										}
+
+										if len(elem) == 0 {
+											s.handleWatchNodeV1RuntimeClassListRequest(args, w, r)
+											return
+										}
+										switch elem[0] {
+										case '/': // Prefix: "/"
+											if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+												elem = elem[len(prefix):]
+											} else {
+												break
+											}
+
+											// Param: "name"
+											// Leaf parameter
+											args["name"] = elem
+
+											// Leaf: WatchNodeV1RuntimeClass
+											s.handleWatchNodeV1RuntimeClassRequest(args, w, r)
+											return
+										}
+									}
+								case 'a': // Prefix: "alpha1/"
+									if prefix := "alpha1/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+										elem = elem[len(prefix):]
+									} else {
+										break
+									}
+
+									if len(elem) == 0 {
+										s.handleGetNodeV1alpha1APIResourcesRequest(args, w, r)
 										return
 									}
-								default:
-									s.notFound(w, r)
-									return
+									switch elem[0] {
+									case 'r': // Prefix: "runtimeclasses"
+										if prefix := "runtimeclasses"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+											elem = elem[len(prefix):]
+										} else {
+											break
+										}
+
+										if len(elem) == 0 {
+											s.handleListNodeV1alpha1RuntimeClassRequest(args, w, r)
+											return
+										}
+										switch elem[0] {
+										case '/': // Prefix: "/"
+											if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+												elem = elem[len(prefix):]
+											} else {
+												break
+											}
+
+											// Param: "name"
+											// Leaf parameter
+											args["name"] = elem
+
+											// Leaf: ReadNodeV1alpha1RuntimeClass
+											s.handleReadNodeV1alpha1RuntimeClassRequest(args, w, r)
+											return
+										}
+									case 'w': // Prefix: "watch/runtimeclasses"
+										if prefix := "watch/runtimeclasses"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+											elem = elem[len(prefix):]
+										} else {
+											break
+										}
+
+										if len(elem) == 0 {
+											s.handleWatchNodeV1alpha1RuntimeClassListRequest(args, w, r)
+											return
+										}
+										switch elem[0] {
+										case '/': // Prefix: "/"
+											if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+												elem = elem[len(prefix):]
+											} else {
+												break
+											}
+
+											// Param: "name"
+											// Leaf parameter
+											args["name"] = elem
+
+											// Leaf: WatchNodeV1alpha1RuntimeClass
+											s.handleWatchNodeV1alpha1RuntimeClassRequest(args, w, r)
+											return
+										}
+									}
+								case 'b': // Prefix: "beta1/"
+									if prefix := "beta1/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+										elem = elem[len(prefix):]
+									} else {
+										break
+									}
+
+									if len(elem) == 0 {
+										s.handleGetNodeV1beta1APIResourcesRequest(args, w, r)
+										return
+									}
+									switch elem[0] {
+									case 'r': // Prefix: "runtimeclasses"
+										if prefix := "runtimeclasses"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+											elem = elem[len(prefix):]
+										} else {
+											break
+										}
+
+										if len(elem) == 0 {
+											s.handleListNodeV1beta1RuntimeClassRequest(args, w, r)
+											return
+										}
+										switch elem[0] {
+										case '/': // Prefix: "/"
+											if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+												elem = elem[len(prefix):]
+											} else {
+												break
+											}
+
+											// Param: "name"
+											// Leaf parameter
+											args["name"] = elem
+
+											// Leaf: ReadNodeV1beta1RuntimeClass
+											s.handleReadNodeV1beta1RuntimeClassRequest(args, w, r)
+											return
+										}
+									case 'w': // Prefix: "watch/runtimeclasses"
+										if prefix := "watch/runtimeclasses"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+											elem = elem[len(prefix):]
+										} else {
+											break
+										}
+
+										if len(elem) == 0 {
+											s.handleWatchNodeV1beta1RuntimeClassListRequest(args, w, r)
+											return
+										}
+										switch elem[0] {
+										case '/': // Prefix: "/"
+											if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+												elem = elem[len(prefix):]
+											} else {
+												break
+											}
+
+											// Param: "name"
+											// Leaf parameter
+											args["name"] = elem
+
+											// Leaf: WatchNodeV1beta1RuntimeClass
+											s.handleWatchNodeV1beta1RuntimeClassRequest(args, w, r)
+											return
+										}
+									}
 								}
 							}
-						default:
-							s.notFound(w, r)
+						}
+					case 'p': // Prefix: "policy/"
+						if prefix := "policy/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+							elem = elem[len(prefix):]
+						} else {
+							break
+						}
+
+						if len(elem) == 0 {
+							s.handleGetPolicyAPIGroupRequest(args, w, r)
 							return
 						}
-					default:
-						// GET /apis/storage.k8s.io/v1beta1/.
-						s.handleGetStorageV1beta1APIResourcesRequest(args, w, r)
+						switch elem[0] {
+						case 'v': // Prefix: "v1"
+							if prefix := "v1"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+								elem = elem[len(prefix):]
+							} else {
+								break
+							}
+
+							if len(elem) == 0 {
+								s.handleGetPolicyV1beta1APIResourcesRequest(args, w, r)
+								return
+							}
+							switch elem[0] {
+							case '/': // Prefix: "/"
+								if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+									elem = elem[len(prefix):]
+								} else {
+									break
+								}
+
+								if len(elem) == 0 {
+									s.handleGetPolicyV1APIResourcesRequest(args, w, r)
+									return
+								}
+								switch elem[0] {
+								case 'b': // Prefix: "beta1/"
+									if prefix := "beta1/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+										elem = elem[len(prefix):]
+									} else {
+										break
+									}
+
+									// Leaf: GetPolicyV1beta1APIResources
+									s.handleGetPolicyV1beta1APIResourcesRequest(args, w, r)
+									return
+								case 'n': // Prefix: "namespaces/"
+									if prefix := "namespaces/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+										elem = elem[len(prefix):]
+									} else {
+										break
+									}
+
+									// Param: "namespace"
+									// Match until one of "/"
+									idx := strings.IndexAny(elem, "/")
+									if idx > 0 {
+										args["namespace"] = elem[:idx]
+										elem = elem[idx:]
+
+										if len(elem) == 0 {
+											break
+										}
+										switch elem[0] {
+										case '/': // Prefix: "/poddisruptionbudgets"
+											if prefix := "/poddisruptionbudgets"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+												elem = elem[len(prefix):]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												s.handleListPolicyV1NamespacedPodDisruptionBudgetRequest(args, w, r)
+												return
+											}
+											switch elem[0] {
+											case '/': // Prefix: "/"
+												if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+													elem = elem[len(prefix):]
+												} else {
+													break
+												}
+
+												// Param: "name"
+												// Match until one of "/"
+												idx := strings.IndexAny(elem, "/")
+												if idx > 0 {
+													args["name"] = elem[:idx]
+													elem = elem[idx:]
+
+													if len(elem) == 0 {
+														s.handleReadPolicyV1NamespacedPodDisruptionBudgetRequest(args, w, r)
+														return
+													}
+													switch elem[0] {
+													case '/': // Prefix: "/status"
+														if prefix := "/status"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+															elem = elem[len(prefix):]
+														} else {
+															break
+														}
+
+														// Leaf: ReadPolicyV1NamespacedPodDisruptionBudgetStatus
+														s.handleReadPolicyV1NamespacedPodDisruptionBudgetStatusRequest(args, w, r)
+														return
+													}
+												}
+											}
+										}
+									}
+								case 'p': // Prefix: "poddisruptionbudgets"
+									if prefix := "poddisruptionbudgets"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+										elem = elem[len(prefix):]
+									} else {
+										break
+									}
+
+									// Leaf: ListPolicyV1PodDisruptionBudgetForAllNamespaces
+									s.handleListPolicyV1PodDisruptionBudgetForAllNamespacesRequest(args, w, r)
+									return
+								case 'w': // Prefix: "watch/"
+									if prefix := "watch/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+										elem = elem[len(prefix):]
+									} else {
+										break
+									}
+
+									if len(elem) == 0 {
+										s.handleWatchPolicyV1PodDisruptionBudgetListForAllNamespacesRequest(args, w, r)
+										return
+									}
+									switch elem[0] {
+									case 'n': // Prefix: "namespaces/"
+										if prefix := "namespaces/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+											elem = elem[len(prefix):]
+										} else {
+											break
+										}
+
+										if len(elem) == 0 {
+											break
+										}
+										switch elem[0] {
+										case 'p': // Prefix: "poddisruptionbudgets"
+											if prefix := "poddisruptionbudgets"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+												elem = elem[len(prefix):]
+											} else {
+												break
+											}
+
+											// Leaf: WatchPolicyV1PodDisruptionBudgetListForAllNamespaces
+											s.handleWatchPolicyV1PodDisruptionBudgetListForAllNamespacesRequest(args, w, r)
+											return
+										}
+										// Param: "namespace"
+										// Match until one of "/"
+										idx := strings.IndexAny(elem, "/")
+										if idx > 0 {
+											args["namespace"] = elem[:idx]
+											elem = elem[idx:]
+
+											if len(elem) == 0 {
+												break
+											}
+											switch elem[0] {
+											case '/': // Prefix: "/poddisruptionbudgets"
+												if prefix := "/poddisruptionbudgets"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+													elem = elem[len(prefix):]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													s.handleWatchPolicyV1NamespacedPodDisruptionBudgetListRequest(args, w, r)
+													return
+												}
+												switch elem[0] {
+												case '/': // Prefix: "/"
+													if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+														elem = elem[len(prefix):]
+													} else {
+														break
+													}
+
+													// Param: "name"
+													// Leaf parameter
+													args["name"] = elem
+
+													// Leaf: WatchPolicyV1NamespacedPodDisruptionBudget
+													s.handleWatchPolicyV1NamespacedPodDisruptionBudgetRequest(args, w, r)
+													return
+												}
+											}
+										}
+									case 'p': // Prefix: "poddisruptionbudgets"
+										if prefix := "poddisruptionbudgets"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+											elem = elem[len(prefix):]
+										} else {
+											break
+										}
+
+										// Leaf: WatchPolicyV1PodDisruptionBudgetListForAllNamespaces
+										s.handleWatchPolicyV1PodDisruptionBudgetListForAllNamespacesRequest(args, w, r)
+										return
+									}
+								}
+							case 'b': // Prefix: "beta1/"
+								if prefix := "beta1/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+									elem = elem[len(prefix):]
+								} else {
+									break
+								}
+
+								if len(elem) == 0 {
+									s.handleGetPolicyV1beta1APIResourcesRequest(args, w, r)
+									return
+								}
+								switch elem[0] {
+								case 'n': // Prefix: "namespaces/"
+									if prefix := "namespaces/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+										elem = elem[len(prefix):]
+									} else {
+										break
+									}
+
+									// Param: "namespace"
+									// Match until one of "/"
+									idx := strings.IndexAny(elem, "/")
+									if idx > 0 {
+										args["namespace"] = elem[:idx]
+										elem = elem[idx:]
+
+										if len(elem) == 0 {
+											break
+										}
+										switch elem[0] {
+										case '/': // Prefix: "/poddisruptionbudgets"
+											if prefix := "/poddisruptionbudgets"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+												elem = elem[len(prefix):]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												s.handleListPolicyV1beta1NamespacedPodDisruptionBudgetRequest(args, w, r)
+												return
+											}
+											switch elem[0] {
+											case '/': // Prefix: "/"
+												if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+													elem = elem[len(prefix):]
+												} else {
+													break
+												}
+
+												// Param: "name"
+												// Match until one of "/"
+												idx := strings.IndexAny(elem, "/")
+												if idx > 0 {
+													args["name"] = elem[:idx]
+													elem = elem[idx:]
+
+													if len(elem) == 0 {
+														s.handleReadPolicyV1beta1NamespacedPodDisruptionBudgetRequest(args, w, r)
+														return
+													}
+													switch elem[0] {
+													case '/': // Prefix: "/status"
+														if prefix := "/status"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+															elem = elem[len(prefix):]
+														} else {
+															break
+														}
+
+														// Leaf: ReadPolicyV1beta1NamespacedPodDisruptionBudgetStatus
+														s.handleReadPolicyV1beta1NamespacedPodDisruptionBudgetStatusRequest(args, w, r)
+														return
+													}
+												}
+											}
+										}
+									}
+								case 'p': // Prefix: "pod"
+									if prefix := "pod"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+										elem = elem[len(prefix):]
+									} else {
+										break
+									}
+
+									if len(elem) == 0 {
+										s.handleListPolicyV1beta1PodSecurityPolicyRequest(args, w, r)
+										return
+									}
+									switch elem[0] {
+									case 'd': // Prefix: "disruptionbudgets"
+										if prefix := "disruptionbudgets"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+											elem = elem[len(prefix):]
+										} else {
+											break
+										}
+
+										if len(elem) == 0 {
+											s.handleListPolicyV1beta1PodDisruptionBudgetForAllNamespacesRequest(args, w, r)
+											return
+										}
+										switch elem[0] {
+										case 's': // Prefix: "securitypolicies"
+											if prefix := "securitypolicies"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+												elem = elem[len(prefix):]
+											} else {
+												break
+											}
+
+											// Leaf: ListPolicyV1beta1PodSecurityPolicy
+											s.handleListPolicyV1beta1PodSecurityPolicyRequest(args, w, r)
+											return
+										}
+									case 's': // Prefix: "securitypolicies"
+										if prefix := "securitypolicies"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+											elem = elem[len(prefix):]
+										} else {
+											break
+										}
+
+										if len(elem) == 0 {
+											s.handleListPolicyV1beta1PodSecurityPolicyRequest(args, w, r)
+											return
+										}
+										switch elem[0] {
+										case '/': // Prefix: "/"
+											if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+												elem = elem[len(prefix):]
+											} else {
+												break
+											}
+
+											// Param: "name"
+											// Leaf parameter
+											args["name"] = elem
+
+											// Leaf: ReadPolicyV1beta1PodSecurityPolicy
+											s.handleReadPolicyV1beta1PodSecurityPolicyRequest(args, w, r)
+											return
+										}
+									}
+								case 'w': // Prefix: "watch/"
+									if prefix := "watch/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+										elem = elem[len(prefix):]
+									} else {
+										break
+									}
+
+									if len(elem) == 0 {
+										s.handleWatchPolicyV1beta1PodDisruptionBudgetListForAllNamespacesRequest(args, w, r)
+										return
+									}
+									switch elem[0] {
+									case 'n': // Prefix: "namespaces/"
+										if prefix := "namespaces/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+											elem = elem[len(prefix):]
+										} else {
+											break
+										}
+
+										if len(elem) == 0 {
+											break
+										}
+										switch elem[0] {
+										case 'p': // Prefix: "poddisruptionbudgets"
+											if prefix := "poddisruptionbudgets"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+												elem = elem[len(prefix):]
+											} else {
+												break
+											}
+
+											// Leaf: WatchPolicyV1beta1PodDisruptionBudgetListForAllNamespaces
+											s.handleWatchPolicyV1beta1PodDisruptionBudgetListForAllNamespacesRequest(args, w, r)
+											return
+										}
+										// Param: "namespace"
+										// Match until one of "/"
+										idx := strings.IndexAny(elem, "/")
+										if idx > 0 {
+											args["namespace"] = elem[:idx]
+											elem = elem[idx:]
+
+											if len(elem) == 0 {
+												break
+											}
+											switch elem[0] {
+											case '/': // Prefix: "/poddisruptionbudgets"
+												if prefix := "/poddisruptionbudgets"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+													elem = elem[len(prefix):]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													s.handleWatchPolicyV1beta1NamespacedPodDisruptionBudgetListRequest(args, w, r)
+													return
+												}
+												switch elem[0] {
+												case '/': // Prefix: "/"
+													if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+														elem = elem[len(prefix):]
+													} else {
+														break
+													}
+
+													// Param: "name"
+													// Leaf parameter
+													args["name"] = elem
+
+													// Leaf: WatchPolicyV1beta1NamespacedPodDisruptionBudget
+													s.handleWatchPolicyV1beta1NamespacedPodDisruptionBudgetRequest(args, w, r)
+													return
+												}
+											}
+										}
+									case 'p': // Prefix: "pod"
+										if prefix := "pod"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+											elem = elem[len(prefix):]
+										} else {
+											break
+										}
+
+										if len(elem) == 0 {
+											s.handleWatchPolicyV1beta1PodSecurityPolicyRequest(args, w, r)
+											return
+										}
+										switch elem[0] {
+										case 'd': // Prefix: "disruptionbudgets"
+											if prefix := "disruptionbudgets"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+												elem = elem[len(prefix):]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												s.handleWatchPolicyV1beta1PodDisruptionBudgetListForAllNamespacesRequest(args, w, r)
+												return
+											}
+											switch elem[0] {
+											case 's': // Prefix: "securitypolicies/"
+												if prefix := "securitypolicies/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+													elem = elem[len(prefix):]
+												} else {
+													break
+												}
+
+												// Param: "name"
+												// Leaf parameter
+												args["name"] = elem
+
+												// Leaf: WatchPolicyV1beta1PodSecurityPolicy
+												s.handleWatchPolicyV1beta1PodSecurityPolicyRequest(args, w, r)
+												return
+											}
+										case 's': // Prefix: "securitypolicies"
+											if prefix := "securitypolicies"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+												elem = elem[len(prefix):]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												s.handleWatchPolicyV1beta1PodSecurityPolicyListRequest(args, w, r)
+												return
+											}
+											switch elem[0] {
+											case '/': // Prefix: "/"
+												if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+													elem = elem[len(prefix):]
+												} else {
+													break
+												}
+
+												// Param: "name"
+												// Leaf parameter
+												args["name"] = elem
+
+												// Leaf: WatchPolicyV1beta1PodSecurityPolicy
+												s.handleWatchPolicyV1beta1PodSecurityPolicyRequest(args, w, r)
+												return
+											}
+										}
+									}
+								}
+							}
+						}
+					case 'r': // Prefix: "rbac.authorization.k8s.io/"
+						if prefix := "rbac.authorization.k8s.io/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+							elem = elem[len(prefix):]
+						} else {
+							break
+						}
+
+						if len(elem) == 0 {
+							s.handleGetRbacAuthorizationAPIGroupRequest(args, w, r)
+							return
+						}
+						switch elem[0] {
+						case 'v': // Prefix: "v1/"
+							if prefix := "v1/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+								elem = elem[len(prefix):]
+							} else {
+								break
+							}
+
+							if len(elem) == 0 {
+								s.handleGetRbacAuthorizationV1APIResourcesRequest(args, w, r)
+								return
+							}
+							switch elem[0] {
+							case 'c': // Prefix: "clusterrole"
+								if prefix := "clusterrole"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+									elem = elem[len(prefix):]
+								} else {
+									break
+								}
+
+								if len(elem) == 0 {
+									s.handleListRbacAuthorizationV1ClusterRoleBindingRequest(args, w, r)
+									return
+								}
+								switch elem[0] {
+								case 'b': // Prefix: "bindings"
+									if prefix := "bindings"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+										elem = elem[len(prefix):]
+									} else {
+										break
+									}
+
+									if len(elem) == 0 {
+										s.handleListRbacAuthorizationV1ClusterRoleBindingRequest(args, w, r)
+										return
+									}
+									switch elem[0] {
+									case '/': // Prefix: "/"
+										if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+											elem = elem[len(prefix):]
+										} else {
+											break
+										}
+
+										// Param: "name"
+										// Leaf parameter
+										args["name"] = elem
+
+										// Leaf: ReadRbacAuthorizationV1ClusterRoleBinding
+										s.handleReadRbacAuthorizationV1ClusterRoleBindingRequest(args, w, r)
+										return
+									}
+								case 's': // Prefix: "s"
+									if prefix := "s"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+										elem = elem[len(prefix):]
+									} else {
+										break
+									}
+
+									if len(elem) == 0 {
+										s.handleListRbacAuthorizationV1ClusterRoleRequest(args, w, r)
+										return
+									}
+									switch elem[0] {
+									case '/': // Prefix: "/"
+										if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+											elem = elem[len(prefix):]
+										} else {
+											break
+										}
+
+										// Param: "name"
+										// Leaf parameter
+										args["name"] = elem
+
+										// Leaf: ReadRbacAuthorizationV1ClusterRole
+										s.handleReadRbacAuthorizationV1ClusterRoleRequest(args, w, r)
+										return
+									case 'b': // Prefix: "bindings"
+										if prefix := "bindings"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+											elem = elem[len(prefix):]
+										} else {
+											break
+										}
+
+										// Leaf: ListRbacAuthorizationV1ClusterRoleBinding
+										s.handleListRbacAuthorizationV1ClusterRoleBindingRequest(args, w, r)
+										return
+									}
+								}
+							case 'n': // Prefix: "namespaces/"
+								if prefix := "namespaces/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+									elem = elem[len(prefix):]
+								} else {
+									break
+								}
+
+								// Param: "namespace"
+								// Match until one of "/"
+								idx := strings.IndexAny(elem, "/")
+								if idx > 0 {
+									args["namespace"] = elem[:idx]
+									elem = elem[idx:]
+
+									if len(elem) == 0 {
+										break
+									}
+									switch elem[0] {
+									case '/': // Prefix: "/role"
+										if prefix := "/role"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+											elem = elem[len(prefix):]
+										} else {
+											break
+										}
+
+										if len(elem) == 0 {
+											s.handleListRbacAuthorizationV1NamespacedRoleBindingRequest(args, w, r)
+											return
+										}
+										switch elem[0] {
+										case 'b': // Prefix: "bindings"
+											if prefix := "bindings"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+												elem = elem[len(prefix):]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												s.handleListRbacAuthorizationV1NamespacedRoleBindingRequest(args, w, r)
+												return
+											}
+											switch elem[0] {
+											case '/': // Prefix: "/"
+												if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+													elem = elem[len(prefix):]
+												} else {
+													break
+												}
+
+												// Param: "name"
+												// Leaf parameter
+												args["name"] = elem
+
+												// Leaf: ReadRbacAuthorizationV1NamespacedRoleBinding
+												s.handleReadRbacAuthorizationV1NamespacedRoleBindingRequest(args, w, r)
+												return
+											}
+										case 's': // Prefix: "s"
+											if prefix := "s"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+												elem = elem[len(prefix):]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												s.handleListRbacAuthorizationV1NamespacedRoleRequest(args, w, r)
+												return
+											}
+											switch elem[0] {
+											case '/': // Prefix: "/"
+												if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+													elem = elem[len(prefix):]
+												} else {
+													break
+												}
+
+												// Param: "name"
+												// Leaf parameter
+												args["name"] = elem
+
+												// Leaf: ReadRbacAuthorizationV1NamespacedRole
+												s.handleReadRbacAuthorizationV1NamespacedRoleRequest(args, w, r)
+												return
+											case 'b': // Prefix: "bindings"
+												if prefix := "bindings"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+													elem = elem[len(prefix):]
+												} else {
+													break
+												}
+
+												// Leaf: ListRbacAuthorizationV1NamespacedRoleBinding
+												s.handleListRbacAuthorizationV1NamespacedRoleBindingRequest(args, w, r)
+												return
+											}
+										}
+									}
+								}
+							case 'r': // Prefix: "role"
+								if prefix := "role"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+									elem = elem[len(prefix):]
+								} else {
+									break
+								}
+
+								if len(elem) == 0 {
+									s.handleListRbacAuthorizationV1RoleForAllNamespacesRequest(args, w, r)
+									return
+								}
+								switch elem[0] {
+								case 'b': // Prefix: "bindings"
+									if prefix := "bindings"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+										elem = elem[len(prefix):]
+									} else {
+										break
+									}
+
+									if len(elem) == 0 {
+										s.handleListRbacAuthorizationV1RoleBindingForAllNamespacesRequest(args, w, r)
+										return
+									}
+									switch elem[0] {
+									case 's': // Prefix: "s"
+										if prefix := "s"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+											elem = elem[len(prefix):]
+										} else {
+											break
+										}
+
+										// Leaf: ListRbacAuthorizationV1RoleForAllNamespaces
+										s.handleListRbacAuthorizationV1RoleForAllNamespacesRequest(args, w, r)
+										return
+									}
+								case 's': // Prefix: "s"
+									if prefix := "s"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+										elem = elem[len(prefix):]
+									} else {
+										break
+									}
+
+									// Leaf: ListRbacAuthorizationV1RoleForAllNamespaces
+									s.handleListRbacAuthorizationV1RoleForAllNamespacesRequest(args, w, r)
+									return
+								}
+							case 'w': // Prefix: "watch/"
+								if prefix := "watch/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+									elem = elem[len(prefix):]
+								} else {
+									break
+								}
+
+								if len(elem) == 0 {
+									s.handleWatchRbacAuthorizationV1NamespacedRoleRequest(args, w, r)
+									return
+								}
+								switch elem[0] {
+								case 'c': // Prefix: "clusterrole"
+									if prefix := "clusterrole"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+										elem = elem[len(prefix):]
+									} else {
+										break
+									}
+
+									if len(elem) == 0 {
+										s.handleWatchRbacAuthorizationV1ClusterRoleBindingRequest(args, w, r)
+										return
+									}
+									switch elem[0] {
+									case 'b': // Prefix: "bindings"
+										if prefix := "bindings"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+											elem = elem[len(prefix):]
+										} else {
+											break
+										}
+
+										if len(elem) == 0 {
+											s.handleWatchRbacAuthorizationV1ClusterRoleBindingListRequest(args, w, r)
+											return
+										}
+										switch elem[0] {
+										case '/': // Prefix: "/"
+											if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+												elem = elem[len(prefix):]
+											} else {
+												break
+											}
+
+											// Param: "name"
+											// Leaf parameter
+											args["name"] = elem
+
+											// Leaf: WatchRbacAuthorizationV1ClusterRoleBinding
+											s.handleWatchRbacAuthorizationV1ClusterRoleBindingRequest(args, w, r)
+											return
+										}
+									case 'n': // Prefix: "namespaces/"
+										if prefix := "namespaces/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+											elem = elem[len(prefix):]
+										} else {
+											break
+										}
+
+										// Param: "namespace"
+										// Match until one of "/"
+										idx := strings.IndexAny(elem, "/")
+										if idx > 0 {
+											args["namespace"] = elem[:idx]
+											elem = elem[idx:]
+
+											if len(elem) == 0 {
+												break
+											}
+											switch elem[0] {
+											case '/': // Prefix: "/roles/"
+												if prefix := "/roles/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+													elem = elem[len(prefix):]
+												} else {
+													break
+												}
+
+												// Param: "name"
+												// Leaf parameter
+												args["name"] = elem
+
+												// Leaf: WatchRbacAuthorizationV1NamespacedRole
+												s.handleWatchRbacAuthorizationV1NamespacedRoleRequest(args, w, r)
+												return
+											}
+										}
+									case 's': // Prefix: "s"
+										if prefix := "s"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+											elem = elem[len(prefix):]
+										} else {
+											break
+										}
+
+										if len(elem) == 0 {
+											s.handleWatchRbacAuthorizationV1ClusterRoleListRequest(args, w, r)
+											return
+										}
+										switch elem[0] {
+										case '/': // Prefix: "/"
+											if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+												elem = elem[len(prefix):]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												break
+											}
+											switch elem[0] {
+											case 'b': // Prefix: "bindings/"
+												if prefix := "bindings/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+													elem = elem[len(prefix):]
+												} else {
+													break
+												}
+
+												// Param: "name"
+												// Leaf parameter
+												args["name"] = elem
+
+												// Leaf: WatchRbacAuthorizationV1ClusterRoleBinding
+												s.handleWatchRbacAuthorizationV1ClusterRoleBindingRequest(args, w, r)
+												return
+											}
+											// Param: "name"
+											// Leaf parameter
+											args["name"] = elem
+
+											// Leaf: WatchRbacAuthorizationV1ClusterRole
+											s.handleWatchRbacAuthorizationV1ClusterRoleRequest(args, w, r)
+											return
+										}
+									}
+								case 'n': // Prefix: "namespaces/"
+									if prefix := "namespaces/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+										elem = elem[len(prefix):]
+									} else {
+										break
+									}
+
+									// Param: "namespace"
+									// Match until one of "/"
+									idx := strings.IndexAny(elem, "/")
+									if idx > 0 {
+										args["namespace"] = elem[:idx]
+										elem = elem[idx:]
+
+										if len(elem) == 0 {
+											break
+										}
+										switch elem[0] {
+										case '/': // Prefix: "/role"
+											if prefix := "/role"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+												elem = elem[len(prefix):]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												s.handleWatchRbacAuthorizationV1NamespacedRoleBindingRequest(args, w, r)
+												return
+											}
+											switch elem[0] {
+											case 'b': // Prefix: "bindings"
+												if prefix := "bindings"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+													elem = elem[len(prefix):]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													s.handleWatchRbacAuthorizationV1NamespacedRoleBindingListRequest(args, w, r)
+													return
+												}
+												switch elem[0] {
+												case '/': // Prefix: "/"
+													if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+														elem = elem[len(prefix):]
+													} else {
+														break
+													}
+
+													// Param: "name"
+													// Leaf parameter
+													args["name"] = elem
+
+													// Leaf: WatchRbacAuthorizationV1NamespacedRoleBinding
+													s.handleWatchRbacAuthorizationV1NamespacedRoleBindingRequest(args, w, r)
+													return
+												}
+											case 's': // Prefix: "s"
+												if prefix := "s"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+													elem = elem[len(prefix):]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													s.handleWatchRbacAuthorizationV1NamespacedRoleListRequest(args, w, r)
+													return
+												}
+												switch elem[0] {
+												case '/': // Prefix: "/"
+													if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+														elem = elem[len(prefix):]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														break
+													}
+													switch elem[0] {
+													case 'b': // Prefix: "bindings/"
+														if prefix := "bindings/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+															elem = elem[len(prefix):]
+														} else {
+															break
+														}
+
+														// Param: "name"
+														// Leaf parameter
+														args["name"] = elem
+
+														// Leaf: WatchRbacAuthorizationV1NamespacedRoleBinding
+														s.handleWatchRbacAuthorizationV1NamespacedRoleBindingRequest(args, w, r)
+														return
+													}
+													// Param: "name"
+													// Leaf parameter
+													args["name"] = elem
+
+													// Leaf: WatchRbacAuthorizationV1NamespacedRole
+													s.handleWatchRbacAuthorizationV1NamespacedRoleRequest(args, w, r)
+													return
+												}
+											}
+										}
+									}
+								case 'r': // Prefix: "role"
+									if prefix := "role"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+										elem = elem[len(prefix):]
+									} else {
+										break
+									}
+
+									if len(elem) == 0 {
+										s.handleWatchRbacAuthorizationV1RoleListForAllNamespacesRequest(args, w, r)
+										return
+									}
+									switch elem[0] {
+									case 'b': // Prefix: "bindings"
+										if prefix := "bindings"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+											elem = elem[len(prefix):]
+										} else {
+											break
+										}
+
+										if len(elem) == 0 {
+											s.handleWatchRbacAuthorizationV1RoleBindingListForAllNamespacesRequest(args, w, r)
+											return
+										}
+										switch elem[0] {
+										case 's': // Prefix: "s"
+											if prefix := "s"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+												elem = elem[len(prefix):]
+											} else {
+												break
+											}
+
+											// Leaf: WatchRbacAuthorizationV1RoleListForAllNamespaces
+											s.handleWatchRbacAuthorizationV1RoleListForAllNamespacesRequest(args, w, r)
+											return
+										}
+									case 's': // Prefix: "s"
+										if prefix := "s"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+											elem = elem[len(prefix):]
+										} else {
+											break
+										}
+
+										// Leaf: WatchRbacAuthorizationV1RoleListForAllNamespaces
+										s.handleWatchRbacAuthorizationV1RoleListForAllNamespacesRequest(args, w, r)
+										return
+									}
+								}
+							}
+						}
+					case 's': // Prefix: "s"
+						if prefix := "s"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+							elem = elem[len(prefix):]
+						} else {
+							break
+						}
+
+						if len(elem) == 0 {
+							s.handleGetStorageAPIGroupRequest(args, w, r)
+							return
+						}
+						switch elem[0] {
+						case 'c': // Prefix: "cheduling.k8s.io/"
+							if prefix := "cheduling.k8s.io/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+								elem = elem[len(prefix):]
+							} else {
+								break
+							}
+
+							if len(elem) == 0 {
+								s.handleGetSchedulingAPIGroupRequest(args, w, r)
+								return
+							}
+							switch elem[0] {
+							case 't': // Prefix: "torage.k8s.io/"
+								if prefix := "torage.k8s.io/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+									elem = elem[len(prefix):]
+								} else {
+									break
+								}
+
+								// Leaf: GetStorageAPIGroup
+								s.handleGetStorageAPIGroupRequest(args, w, r)
+								return
+							case 'v': // Prefix: "v1/"
+								if prefix := "v1/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+									elem = elem[len(prefix):]
+								} else {
+									break
+								}
+
+								if len(elem) == 0 {
+									s.handleGetSchedulingV1APIResourcesRequest(args, w, r)
+									return
+								}
+								switch elem[0] {
+								case 'p': // Prefix: "priorityclasses"
+									if prefix := "priorityclasses"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+										elem = elem[len(prefix):]
+									} else {
+										break
+									}
+
+									if len(elem) == 0 {
+										s.handleListSchedulingV1PriorityClassRequest(args, w, r)
+										return
+									}
+									switch elem[0] {
+									case '/': // Prefix: "/"
+										if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+											elem = elem[len(prefix):]
+										} else {
+											break
+										}
+
+										// Param: "name"
+										// Leaf parameter
+										args["name"] = elem
+
+										// Leaf: ReadSchedulingV1PriorityClass
+										s.handleReadSchedulingV1PriorityClassRequest(args, w, r)
+										return
+									}
+								case 'w': // Prefix: "watch/priorityclasses"
+									if prefix := "watch/priorityclasses"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+										elem = elem[len(prefix):]
+									} else {
+										break
+									}
+
+									if len(elem) == 0 {
+										s.handleWatchSchedulingV1PriorityClassListRequest(args, w, r)
+										return
+									}
+									switch elem[0] {
+									case '/': // Prefix: "/"
+										if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+											elem = elem[len(prefix):]
+										} else {
+											break
+										}
+
+										// Param: "name"
+										// Leaf parameter
+										args["name"] = elem
+
+										// Leaf: WatchSchedulingV1PriorityClass
+										s.handleWatchSchedulingV1PriorityClassRequest(args, w, r)
+										return
+									}
+								}
+							}
+						case 't': // Prefix: "torage.k8s.io/"
+							if prefix := "torage.k8s.io/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+								elem = elem[len(prefix):]
+							} else {
+								break
+							}
+
+							if len(elem) == 0 {
+								s.handleGetStorageAPIGroupRequest(args, w, r)
+								return
+							}
+							switch elem[0] {
+							case 'v': // Prefix: "v1"
+								if prefix := "v1"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+									elem = elem[len(prefix):]
+								} else {
+									break
+								}
+
+								if len(elem) == 0 {
+									s.handleGetStorageV1alpha1APIResourcesRequest(args, w, r)
+									return
+								}
+								switch elem[0] {
+								case '/': // Prefix: "/"
+									if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+										elem = elem[len(prefix):]
+									} else {
+										break
+									}
+
+									if len(elem) == 0 {
+										s.handleGetStorageV1APIResourcesRequest(args, w, r)
+										return
+									}
+									switch elem[0] {
+									case 'a': // Prefix: "alpha1/"
+										if prefix := "alpha1/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+											elem = elem[len(prefix):]
+										} else {
+											break
+										}
+
+										// Leaf: GetStorageV1alpha1APIResources
+										s.handleGetStorageV1alpha1APIResourcesRequest(args, w, r)
+										return
+									case 'c': // Prefix: "csi"
+										if prefix := "csi"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+											elem = elem[len(prefix):]
+										} else {
+											break
+										}
+
+										if len(elem) == 0 {
+											s.handleListStorageV1CSINodeRequest(args, w, r)
+											return
+										}
+										switch elem[0] {
+										case 'd': // Prefix: "drivers"
+											if prefix := "drivers"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+												elem = elem[len(prefix):]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												s.handleListStorageV1CSIDriverRequest(args, w, r)
+												return
+											}
+											switch elem[0] {
+											case '/': // Prefix: "/"
+												if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+													elem = elem[len(prefix):]
+												} else {
+													break
+												}
+
+												// Param: "name"
+												// Leaf parameter
+												args["name"] = elem
+
+												// Leaf: ReadStorageV1CSIDriver
+												s.handleReadStorageV1CSIDriverRequest(args, w, r)
+												return
+											case 'n': // Prefix: "nodes"
+												if prefix := "nodes"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+													elem = elem[len(prefix):]
+												} else {
+													break
+												}
+
+												// Leaf: ListStorageV1CSINode
+												s.handleListStorageV1CSINodeRequest(args, w, r)
+												return
+											}
+										case 'n': // Prefix: "nodes"
+											if prefix := "nodes"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+												elem = elem[len(prefix):]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												s.handleListStorageV1CSINodeRequest(args, w, r)
+												return
+											}
+											switch elem[0] {
+											case '/': // Prefix: "/"
+												if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+													elem = elem[len(prefix):]
+												} else {
+													break
+												}
+
+												// Param: "name"
+												// Leaf parameter
+												args["name"] = elem
+
+												// Leaf: ReadStorageV1CSINode
+												s.handleReadStorageV1CSINodeRequest(args, w, r)
+												return
+											}
+										}
+									case 's': // Prefix: "storageclasses"
+										if prefix := "storageclasses"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+											elem = elem[len(prefix):]
+										} else {
+											break
+										}
+
+										if len(elem) == 0 {
+											s.handleListStorageV1StorageClassRequest(args, w, r)
+											return
+										}
+										switch elem[0] {
+										case '/': // Prefix: "/"
+											if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+												elem = elem[len(prefix):]
+											} else {
+												break
+											}
+
+											// Param: "name"
+											// Leaf parameter
+											args["name"] = elem
+
+											// Leaf: ReadStorageV1StorageClass
+											s.handleReadStorageV1StorageClassRequest(args, w, r)
+											return
+										}
+									case 'v': // Prefix: "volumeattachments"
+										if prefix := "volumeattachments"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+											elem = elem[len(prefix):]
+										} else {
+											break
+										}
+
+										if len(elem) == 0 {
+											s.handleListStorageV1VolumeAttachmentRequest(args, w, r)
+											return
+										}
+										switch elem[0] {
+										case '/': // Prefix: "/"
+											if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+												elem = elem[len(prefix):]
+											} else {
+												break
+											}
+
+											// Param: "name"
+											// Match until one of "/"
+											idx := strings.IndexAny(elem, "/")
+											if idx > 0 {
+												args["name"] = elem[:idx]
+												elem = elem[idx:]
+
+												if len(elem) == 0 {
+													s.handleReadStorageV1VolumeAttachmentRequest(args, w, r)
+													return
+												}
+												switch elem[0] {
+												case '/': // Prefix: "/status"
+													if prefix := "/status"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+														elem = elem[len(prefix):]
+													} else {
+														break
+													}
+
+													// Leaf: ReadStorageV1VolumeAttachmentStatus
+													s.handleReadStorageV1VolumeAttachmentStatusRequest(args, w, r)
+													return
+												}
+											}
+										}
+									case 'w': // Prefix: "watch/"
+										if prefix := "watch/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+											elem = elem[len(prefix):]
+										} else {
+											break
+										}
+
+										if len(elem) == 0 {
+											s.handleWatchStorageV1StorageClassRequest(args, w, r)
+											return
+										}
+										switch elem[0] {
+										case 'c': // Prefix: "csi"
+											if prefix := "csi"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+												elem = elem[len(prefix):]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												s.handleWatchStorageV1CSINodeRequest(args, w, r)
+												return
+											}
+											switch elem[0] {
+											case 'd': // Prefix: "drivers"
+												if prefix := "drivers"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+													elem = elem[len(prefix):]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													s.handleWatchStorageV1CSIDriverListRequest(args, w, r)
+													return
+												}
+												switch elem[0] {
+												case '/': // Prefix: "/"
+													if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+														elem = elem[len(prefix):]
+													} else {
+														break
+													}
+
+													// Param: "name"
+													// Leaf parameter
+													args["name"] = elem
+
+													// Leaf: WatchStorageV1CSIDriver
+													s.handleWatchStorageV1CSIDriverRequest(args, w, r)
+													return
+												case 'n': // Prefix: "nodes/"
+													if prefix := "nodes/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+														elem = elem[len(prefix):]
+													} else {
+														break
+													}
+
+													// Param: "name"
+													// Leaf parameter
+													args["name"] = elem
+
+													// Leaf: WatchStorageV1CSINode
+													s.handleWatchStorageV1CSINodeRequest(args, w, r)
+													return
+												}
+											case 'n': // Prefix: "nodes"
+												if prefix := "nodes"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+													elem = elem[len(prefix):]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													s.handleWatchStorageV1CSINodeListRequest(args, w, r)
+													return
+												}
+												switch elem[0] {
+												case '/': // Prefix: "/"
+													if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+														elem = elem[len(prefix):]
+													} else {
+														break
+													}
+
+													// Param: "name"
+													// Leaf parameter
+													args["name"] = elem
+
+													// Leaf: WatchStorageV1CSINode
+													s.handleWatchStorageV1CSINodeRequest(args, w, r)
+													return
+												}
+											case 's': // Prefix: "storageclasses/"
+												if prefix := "storageclasses/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+													elem = elem[len(prefix):]
+												} else {
+													break
+												}
+
+												// Param: "name"
+												// Leaf parameter
+												args["name"] = elem
+
+												// Leaf: WatchStorageV1StorageClass
+												s.handleWatchStorageV1StorageClassRequest(args, w, r)
+												return
+											}
+										case 's': // Prefix: "storageclasses"
+											if prefix := "storageclasses"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+												elem = elem[len(prefix):]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												s.handleWatchStorageV1StorageClassListRequest(args, w, r)
+												return
+											}
+											switch elem[0] {
+											case '/': // Prefix: "/"
+												if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+													elem = elem[len(prefix):]
+												} else {
+													break
+												}
+
+												// Param: "name"
+												// Leaf parameter
+												args["name"] = elem
+
+												// Leaf: WatchStorageV1StorageClass
+												s.handleWatchStorageV1StorageClassRequest(args, w, r)
+												return
+											}
+										case 'v': // Prefix: "volumeattachments"
+											if prefix := "volumeattachments"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+												elem = elem[len(prefix):]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												s.handleWatchStorageV1VolumeAttachmentListRequest(args, w, r)
+												return
+											}
+											switch elem[0] {
+											case '/': // Prefix: "/"
+												if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+													elem = elem[len(prefix):]
+												} else {
+													break
+												}
+
+												// Param: "name"
+												// Leaf parameter
+												args["name"] = elem
+
+												// Leaf: WatchStorageV1VolumeAttachment
+												s.handleWatchStorageV1VolumeAttachmentRequest(args, w, r)
+												return
+											}
+										}
+									}
+								case 'a': // Prefix: "alpha1/"
+									if prefix := "alpha1/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+										elem = elem[len(prefix):]
+									} else {
+										break
+									}
+
+									if len(elem) == 0 {
+										s.handleGetStorageV1alpha1APIResourcesRequest(args, w, r)
+										return
+									}
+									switch elem[0] {
+									case 'c': // Prefix: "csistoragecapacities"
+										if prefix := "csistoragecapacities"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+											elem = elem[len(prefix):]
+										} else {
+											break
+										}
+
+										// Leaf: ListStorageV1alpha1CSIStorageCapacityForAllNamespaces
+										s.handleListStorageV1alpha1CSIStorageCapacityForAllNamespacesRequest(args, w, r)
+										return
+									case 'n': // Prefix: "namespaces/"
+										if prefix := "namespaces/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+											elem = elem[len(prefix):]
+										} else {
+											break
+										}
+
+										// Param: "namespace"
+										// Match until one of "/"
+										idx := strings.IndexAny(elem, "/")
+										if idx > 0 {
+											args["namespace"] = elem[:idx]
+											elem = elem[idx:]
+
+											if len(elem) == 0 {
+												break
+											}
+											switch elem[0] {
+											case '/': // Prefix: "/csistoragecapacities"
+												if prefix := "/csistoragecapacities"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+													elem = elem[len(prefix):]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													s.handleListStorageV1alpha1NamespacedCSIStorageCapacityRequest(args, w, r)
+													return
+												}
+												switch elem[0] {
+												case '/': // Prefix: "/"
+													if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+														elem = elem[len(prefix):]
+													} else {
+														break
+													}
+
+													// Param: "name"
+													// Leaf parameter
+													args["name"] = elem
+
+													// Leaf: ReadStorageV1alpha1NamespacedCSIStorageCapacity
+													s.handleReadStorageV1alpha1NamespacedCSIStorageCapacityRequest(args, w, r)
+													return
+												}
+											}
+										}
+									case 'w': // Prefix: "watch/"
+										if prefix := "watch/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+											elem = elem[len(prefix):]
+										} else {
+											break
+										}
+
+										if len(elem) == 0 {
+											s.handleWatchStorageV1alpha1NamespacedCSIStorageCapacityRequest(args, w, r)
+											return
+										}
+										switch elem[0] {
+										case 'c': // Prefix: "csistoragecapacities"
+											if prefix := "csistoragecapacities"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+												elem = elem[len(prefix):]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												s.handleWatchStorageV1alpha1CSIStorageCapacityListForAllNamespacesRequest(args, w, r)
+												return
+											}
+											switch elem[0] {
+											case 'n': // Prefix: "namespaces/"
+												if prefix := "namespaces/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+													elem = elem[len(prefix):]
+												} else {
+													break
+												}
+
+												// Param: "namespace"
+												// Match until one of "/"
+												idx := strings.IndexAny(elem, "/")
+												if idx > 0 {
+													args["namespace"] = elem[:idx]
+													elem = elem[idx:]
+
+													if len(elem) == 0 {
+														break
+													}
+													switch elem[0] {
+													case '/': // Prefix: "/csistoragecapacities/"
+														if prefix := "/csistoragecapacities/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+															elem = elem[len(prefix):]
+														} else {
+															break
+														}
+
+														// Param: "name"
+														// Leaf parameter
+														args["name"] = elem
+
+														// Leaf: WatchStorageV1alpha1NamespacedCSIStorageCapacity
+														s.handleWatchStorageV1alpha1NamespacedCSIStorageCapacityRequest(args, w, r)
+														return
+													}
+												}
+											}
+										case 'n': // Prefix: "namespaces/"
+											if prefix := "namespaces/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+												elem = elem[len(prefix):]
+											} else {
+												break
+											}
+
+											// Param: "namespace"
+											// Match until one of "/"
+											idx := strings.IndexAny(elem, "/")
+											if idx > 0 {
+												args["namespace"] = elem[:idx]
+												elem = elem[idx:]
+
+												if len(elem) == 0 {
+													break
+												}
+												switch elem[0] {
+												case '/': // Prefix: "/csistoragecapacities"
+													if prefix := "/csistoragecapacities"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+														elem = elem[len(prefix):]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														s.handleWatchStorageV1alpha1NamespacedCSIStorageCapacityListRequest(args, w, r)
+														return
+													}
+													switch elem[0] {
+													case '/': // Prefix: "/"
+														if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+															elem = elem[len(prefix):]
+														} else {
+															break
+														}
+
+														// Param: "name"
+														// Leaf parameter
+														args["name"] = elem
+
+														// Leaf: WatchStorageV1alpha1NamespacedCSIStorageCapacity
+														s.handleWatchStorageV1alpha1NamespacedCSIStorageCapacityRequest(args, w, r)
+														return
+													}
+												}
+											}
+										}
+									}
+								case 'b': // Prefix: "beta1/"
+									if prefix := "beta1/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+										elem = elem[len(prefix):]
+									} else {
+										break
+									}
+
+									if len(elem) == 0 {
+										s.handleGetStorageV1beta1APIResourcesRequest(args, w, r)
+										return
+									}
+									switch elem[0] {
+									case 'c': // Prefix: "csistoragecapacities"
+										if prefix := "csistoragecapacities"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+											elem = elem[len(prefix):]
+										} else {
+											break
+										}
+
+										// Leaf: ListStorageV1beta1CSIStorageCapacityForAllNamespaces
+										s.handleListStorageV1beta1CSIStorageCapacityForAllNamespacesRequest(args, w, r)
+										return
+									case 'n': // Prefix: "namespaces/"
+										if prefix := "namespaces/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+											elem = elem[len(prefix):]
+										} else {
+											break
+										}
+
+										// Param: "namespace"
+										// Match until one of "/"
+										idx := strings.IndexAny(elem, "/")
+										if idx > 0 {
+											args["namespace"] = elem[:idx]
+											elem = elem[idx:]
+
+											if len(elem) == 0 {
+												break
+											}
+											switch elem[0] {
+											case '/': // Prefix: "/csistoragecapacities"
+												if prefix := "/csistoragecapacities"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+													elem = elem[len(prefix):]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													s.handleListStorageV1beta1NamespacedCSIStorageCapacityRequest(args, w, r)
+													return
+												}
+												switch elem[0] {
+												case '/': // Prefix: "/"
+													if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+														elem = elem[len(prefix):]
+													} else {
+														break
+													}
+
+													// Param: "name"
+													// Leaf parameter
+													args["name"] = elem
+
+													// Leaf: ReadStorageV1beta1NamespacedCSIStorageCapacity
+													s.handleReadStorageV1beta1NamespacedCSIStorageCapacityRequest(args, w, r)
+													return
+												}
+											}
+										}
+									case 'w': // Prefix: "watch/"
+										if prefix := "watch/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+											elem = elem[len(prefix):]
+										} else {
+											break
+										}
+
+										if len(elem) == 0 {
+											s.handleWatchStorageV1beta1NamespacedCSIStorageCapacityRequest(args, w, r)
+											return
+										}
+										switch elem[0] {
+										case 'c': // Prefix: "csistoragecapacities"
+											if prefix := "csistoragecapacities"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+												elem = elem[len(prefix):]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												s.handleWatchStorageV1beta1CSIStorageCapacityListForAllNamespacesRequest(args, w, r)
+												return
+											}
+											switch elem[0] {
+											case 'n': // Prefix: "namespaces/"
+												if prefix := "namespaces/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+													elem = elem[len(prefix):]
+												} else {
+													break
+												}
+
+												// Param: "namespace"
+												// Match until one of "/"
+												idx := strings.IndexAny(elem, "/")
+												if idx > 0 {
+													args["namespace"] = elem[:idx]
+													elem = elem[idx:]
+
+													if len(elem) == 0 {
+														break
+													}
+													switch elem[0] {
+													case '/': // Prefix: "/csistoragecapacities/"
+														if prefix := "/csistoragecapacities/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+															elem = elem[len(prefix):]
+														} else {
+															break
+														}
+
+														// Param: "name"
+														// Leaf parameter
+														args["name"] = elem
+
+														// Leaf: WatchStorageV1beta1NamespacedCSIStorageCapacity
+														s.handleWatchStorageV1beta1NamespacedCSIStorageCapacityRequest(args, w, r)
+														return
+													}
+												}
+											}
+										case 'n': // Prefix: "namespaces/"
+											if prefix := "namespaces/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+												elem = elem[len(prefix):]
+											} else {
+												break
+											}
+
+											// Param: "namespace"
+											// Match until one of "/"
+											idx := strings.IndexAny(elem, "/")
+											if idx > 0 {
+												args["namespace"] = elem[:idx]
+												elem = elem[idx:]
+
+												if len(elem) == 0 {
+													break
+												}
+												switch elem[0] {
+												case '/': // Prefix: "/csistoragecapacities"
+													if prefix := "/csistoragecapacities"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+														elem = elem[len(prefix):]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														s.handleWatchStorageV1beta1NamespacedCSIStorageCapacityListRequest(args, w, r)
+														return
+													}
+													switch elem[0] {
+													case '/': // Prefix: "/"
+														if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+															elem = elem[len(prefix):]
+														} else {
+															break
+														}
+
+														// Param: "name"
+														// Leaf parameter
+														args["name"] = elem
+
+														// Leaf: WatchStorageV1beta1NamespacedCSIStorageCapacity
+														s.handleWatchStorageV1beta1NamespacedCSIStorageCapacityRequest(args, w, r)
+														return
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					case 'v': // Prefix: "version/"
+						if prefix := "version/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+							elem = elem[len(prefix):]
+						} else {
+							break
+						}
+
+						// Leaf: GetCodeVersion
+						s.handleGetCodeVersionRequest(args, w, r)
 						return
 					}
-				default:
-					// GET /apis/storage.k8s.io/.
-					s.handleGetStorageAPIGroupRequest(args, w, r)
-					return
 				}
-			default:
-				// GET /apis/.
-				s.handleGetAPIVersionsRequest(args, w, r)
-				return
-			}
-		case "version": // -> 23
-			// GET /version/
-			s.handleGetCodeVersionRequest(args, w, r)
-			return
-		case "api": // -> 26
-			// Edge: 26, path: "api".
-			elem, p = nextElem(p)
-			if len(elem) == 0 {
-				// GET /api/.
-				s.handleGetCoreAPIVersionsRequest(args, w, r)
-				return
-			}
-			switch elem {
-			case "v1": // -> 27
-				// Edge: 27, path: "v1".
-				elem, p = nextElem(p)
-				if len(elem) == 0 {
-					// GET /api/v1/.
-					s.handleGetCoreV1APIResourcesRequest(args, w, r)
-					return
+			case 'l': // Prefix: "logs/"
+				if prefix := "logs/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+					elem = elem[len(prefix):]
+				} else {
+					break
 				}
-				switch elem {
-				case "componentstatuses": // -> 101
-					// Edge: 101, path: "componentstatuses".
-					elem, p = nextElem(p)
-					if len(elem) == 0 {
-						// GET /api/v1/componentstatuses.
-						s.handleListCoreV1ComponentStatusRequest(args, w, r)
-						return
-					}
-					switch elem {
-					default:
-						if args == nil {
-							args = make(map[string]string)
-						}
-						args["name"] = elem
-						// GET /api/v1/componentstatuses/{name}
-						s.handleReadCoreV1ComponentStatusRequest(args, w, r)
-						return
-					}
-				case "configmaps": // -> 102
-					// GET /api/v1/configmaps
-					s.handleListCoreV1ConfigMapForAllNamespacesRequest(args, w, r)
-					return
-				case "endpoints": // -> 103
-					// GET /api/v1/endpoints
-					s.handleListCoreV1EndpointsForAllNamespacesRequest(args, w, r)
-					return
-				case "events": // -> 104
-					// GET /api/v1/events
-					s.handleListCoreV1EventForAllNamespacesRequest(args, w, r)
-					return
-				case "limitranges": // -> 105
-					// GET /api/v1/limitranges
-					s.handleListCoreV1LimitRangeForAllNamespacesRequest(args, w, r)
-					return
-				case "namespaces": // -> 106
-					// Edge: 106, path: "namespaces".
-					elem, p = nextElem(p)
-					if len(elem) == 0 {
-						// GET /api/v1/namespaces.
-						s.handleListCoreV1NamespaceRequest(args, w, r)
-						return
-					}
-					switch elem {
-					default:
-						if args == nil {
-							args = make(map[string]string)
-						}
-						args["namespace"] = elem
-						// Edge: 107, path: "".
-						elem, p = nextElem(p)
-						if len(elem) == 0 {
-							// GET /api/v1/namespaces/{name}.
-							s.handleReadCoreV1NamespaceRequest(args, w, r)
-							return
-						}
-						switch elem {
-						case "configmaps": // -> 108
-							// Edge: 108, path: "configmaps".
-							elem, p = nextElem(p)
-							if len(elem) == 0 {
-								// GET /api/v1/namespaces/{namespace}/configmaps.
-								s.handleListCoreV1NamespacedConfigMapRequest(args, w, r)
-								return
-							}
-							switch elem {
-							default:
-								if args == nil {
-									args = make(map[string]string)
-								}
-								args["name"] = elem
-								// GET /api/v1/namespaces/{namespace}/configmaps/{name}
-								s.handleReadCoreV1NamespacedConfigMapRequest(args, w, r)
-								return
-							}
-						case "endpoints": // -> 109
-							// Edge: 109, path: "endpoints".
-							elem, p = nextElem(p)
-							if len(elem) == 0 {
-								// GET /api/v1/namespaces/{namespace}/endpoints.
-								s.handleListCoreV1NamespacedEndpointsRequest(args, w, r)
-								return
-							}
-							switch elem {
-							default:
-								if args == nil {
-									args = make(map[string]string)
-								}
-								args["name"] = elem
-								// GET /api/v1/namespaces/{namespace}/endpoints/{name}
-								s.handleReadCoreV1NamespacedEndpointsRequest(args, w, r)
-								return
-							}
-						case "events": // -> 110
-							// Edge: 110, path: "events".
-							elem, p = nextElem(p)
-							if len(elem) == 0 {
-								// GET /api/v1/namespaces/{namespace}/events.
-								s.handleListCoreV1NamespacedEventRequest(args, w, r)
-								return
-							}
-							switch elem {
-							default:
-								if args == nil {
-									args = make(map[string]string)
-								}
-								args["name"] = elem
-								// GET /api/v1/namespaces/{namespace}/events/{name}
-								s.handleReadCoreV1NamespacedEventRequest(args, w, r)
-								return
-							}
-						case "limitranges": // -> 111
-							// Edge: 111, path: "limitranges".
-							elem, p = nextElem(p)
-							if len(elem) == 0 {
-								// GET /api/v1/namespaces/{namespace}/limitranges.
-								s.handleListCoreV1NamespacedLimitRangeRequest(args, w, r)
-								return
-							}
-							switch elem {
-							default:
-								if args == nil {
-									args = make(map[string]string)
-								}
-								args["name"] = elem
-								// GET /api/v1/namespaces/{namespace}/limitranges/{name}
-								s.handleReadCoreV1NamespacedLimitRangeRequest(args, w, r)
-								return
-							}
-						case "persistentvolumeclaims": // -> 112
-							// Edge: 112, path: "persistentvolumeclaims".
-							elem, p = nextElem(p)
-							if len(elem) == 0 {
-								// GET /api/v1/namespaces/{namespace}/persistentvolumeclaims.
-								s.handleListCoreV1NamespacedPersistentVolumeClaimRequest(args, w, r)
-								return
-							}
-							switch elem {
-							default:
-								if args == nil {
-									args = make(map[string]string)
-								}
-								args["name"] = elem
-								// Edge: 233, path: "".
-								elem, p = nextElem(p)
-								if len(elem) == 0 {
-									// GET /api/v1/namespaces/{namespace}/persistentvolumeclaims/{name}.
-									s.handleReadCoreV1NamespacedPersistentVolumeClaimRequest(args, w, r)
-									return
-								}
-								switch elem {
-								case "status": // -> 234
-									// GET /api/v1/namespaces/{namespace}/persistentvolumeclaims/{name}/status
-									s.handleReadCoreV1NamespacedPersistentVolumeClaimStatusRequest(args, w, r)
-									return
-								default:
-									// GET /api/v1/namespaces/{namespace}/persistentvolumeclaims/{name}.
-									s.handleReadCoreV1NamespacedPersistentVolumeClaimRequest(args, w, r)
-									return
-								}
-							}
-						case "pods": // -> 113
-							// Edge: 113, path: "pods".
-							elem, p = nextElem(p)
-							if len(elem) == 0 {
-								// GET /api/v1/namespaces/{namespace}/pods.
-								s.handleListCoreV1NamespacedPodRequest(args, w, r)
-								return
-							}
-							switch elem {
-							default:
-								if args == nil {
-									args = make(map[string]string)
-								}
-								args["name"] = elem
-								// Edge: 235, path: "".
-								elem, p = nextElem(p)
-								if len(elem) == 0 {
-									// GET /api/v1/namespaces/{namespace}/pods/{name}.
-									s.handleReadCoreV1NamespacedPodRequest(args, w, r)
-									return
-								}
-								switch elem {
-								case "ephemeralcontainers": // -> 236
-									// GET /api/v1/namespaces/{namespace}/pods/{name}/ephemeralcontainers
-									s.handleReadCoreV1NamespacedPodEphemeralcontainersRequest(args, w, r)
-									return
-								case "log": // -> 237
-									// GET /api/v1/namespaces/{namespace}/pods/{name}/log
-									s.handleReadCoreV1NamespacedPodLogRequest(args, w, r)
-									return
-								case "status": // -> 238
-									// GET /api/v1/namespaces/{namespace}/pods/{name}/status
-									s.handleReadCoreV1NamespacedPodStatusRequest(args, w, r)
-									return
-								default:
-									// GET /api/v1/namespaces/{namespace}/pods/{name}.
-									s.handleReadCoreV1NamespacedPodRequest(args, w, r)
-									return
-								}
-							}
-						case "podtemplates": // -> 114
-							// Edge: 114, path: "podtemplates".
-							elem, p = nextElem(p)
-							if len(elem) == 0 {
-								// GET /api/v1/namespaces/{namespace}/podtemplates.
-								s.handleListCoreV1NamespacedPodTemplateRequest(args, w, r)
-								return
-							}
-							switch elem {
-							default:
-								if args == nil {
-									args = make(map[string]string)
-								}
-								args["name"] = elem
-								// GET /api/v1/namespaces/{namespace}/podtemplates/{name}
-								s.handleReadCoreV1NamespacedPodTemplateRequest(args, w, r)
-								return
-							}
-						case "replicationcontrollers": // -> 115
-							// Edge: 115, path: "replicationcontrollers".
-							elem, p = nextElem(p)
-							if len(elem) == 0 {
-								// GET /api/v1/namespaces/{namespace}/replicationcontrollers.
-								s.handleListCoreV1NamespacedReplicationControllerRequest(args, w, r)
-								return
-							}
-							switch elem {
-							default:
-								if args == nil {
-									args = make(map[string]string)
-								}
-								args["name"] = elem
-								// Edge: 240, path: "".
-								elem, p = nextElem(p)
-								if len(elem) == 0 {
-									// GET /api/v1/namespaces/{namespace}/replicationcontrollers/{name}.
-									s.handleReadCoreV1NamespacedReplicationControllerRequest(args, w, r)
-									return
-								}
-								switch elem {
-								case "scale": // -> 241
-									// GET /api/v1/namespaces/{namespace}/replicationcontrollers/{name}/scale
-									s.handleReadCoreV1NamespacedReplicationControllerScaleRequest(args, w, r)
-									return
-								case "status": // -> 242
-									// GET /api/v1/namespaces/{namespace}/replicationcontrollers/{name}/status
-									s.handleReadCoreV1NamespacedReplicationControllerStatusRequest(args, w, r)
-									return
-								default:
-									// GET /api/v1/namespaces/{namespace}/replicationcontrollers/{name}.
-									s.handleReadCoreV1NamespacedReplicationControllerRequest(args, w, r)
-									return
-								}
-							}
-						case "resourcequotas": // -> 116
-							// Edge: 116, path: "resourcequotas".
-							elem, p = nextElem(p)
-							if len(elem) == 0 {
-								// GET /api/v1/namespaces/{namespace}/resourcequotas.
-								s.handleListCoreV1NamespacedResourceQuotaRequest(args, w, r)
-								return
-							}
-							switch elem {
-							default:
-								if args == nil {
-									args = make(map[string]string)
-								}
-								args["name"] = elem
-								// Edge: 243, path: "".
-								elem, p = nextElem(p)
-								if len(elem) == 0 {
-									// GET /api/v1/namespaces/{namespace}/resourcequotas/{name}.
-									s.handleReadCoreV1NamespacedResourceQuotaRequest(args, w, r)
-									return
-								}
-								switch elem {
-								case "status": // -> 244
-									// GET /api/v1/namespaces/{namespace}/resourcequotas/{name}/status
-									s.handleReadCoreV1NamespacedResourceQuotaStatusRequest(args, w, r)
-									return
-								default:
-									// GET /api/v1/namespaces/{namespace}/resourcequotas/{name}.
-									s.handleReadCoreV1NamespacedResourceQuotaRequest(args, w, r)
-									return
-								}
-							}
-						case "secrets": // -> 117
-							// Edge: 117, path: "secrets".
-							elem, p = nextElem(p)
-							if len(elem) == 0 {
-								// GET /api/v1/namespaces/{namespace}/secrets.
-								s.handleListCoreV1NamespacedSecretRequest(args, w, r)
-								return
-							}
-							switch elem {
-							default:
-								if args == nil {
-									args = make(map[string]string)
-								}
-								args["name"] = elem
-								// GET /api/v1/namespaces/{namespace}/secrets/{name}
-								s.handleReadCoreV1NamespacedSecretRequest(args, w, r)
-								return
-							}
-						case "services": // -> 118
-							// Edge: 118, path: "services".
-							elem, p = nextElem(p)
-							if len(elem) == 0 {
-								// GET /api/v1/namespaces/{namespace}/services.
-								s.handleListCoreV1NamespacedServiceRequest(args, w, r)
-								return
-							}
-							switch elem {
-							default:
-								if args == nil {
-									args = make(map[string]string)
-								}
-								args["name"] = elem
-								// Edge: 246, path: "".
-								elem, p = nextElem(p)
-								if len(elem) == 0 {
-									// GET /api/v1/namespaces/{namespace}/services/{name}.
-									s.handleReadCoreV1NamespacedServiceRequest(args, w, r)
-									return
-								}
-								switch elem {
-								case "status": // -> 248
-									// GET /api/v1/namespaces/{namespace}/services/{name}/status
-									s.handleReadCoreV1NamespacedServiceStatusRequest(args, w, r)
-									return
-								default:
-									// GET /api/v1/namespaces/{namespace}/services/{name}.
-									s.handleReadCoreV1NamespacedServiceRequest(args, w, r)
-									return
-								}
-							}
-						case "serviceaccounts": // -> 119
-							// Edge: 119, path: "serviceaccounts".
-							elem, p = nextElem(p)
-							if len(elem) == 0 {
-								// GET /api/v1/namespaces/{namespace}/serviceaccounts.
-								s.handleListCoreV1NamespacedServiceAccountRequest(args, w, r)
-								return
-							}
-							switch elem {
-							default:
-								if args == nil {
-									args = make(map[string]string)
-								}
-								args["name"] = elem
-								// GET /api/v1/namespaces/{namespace}/serviceaccounts/{name}
-								s.handleReadCoreV1NamespacedServiceAccountRequest(args, w, r)
-								return
-							}
-						case "status": // -> 228
-							// GET /api/v1/namespaces/{name}/status
-							s.handleReadCoreV1NamespaceStatusRequest(args, w, r)
-							return
-						default:
-							// GET /api/v1/namespaces/{name}.
-							s.handleReadCoreV1NamespaceRequest(args, w, r)
-							return
-						}
-					}
-				case "nodes": // -> 120
-					// Edge: 120, path: "nodes".
-					elem, p = nextElem(p)
-					if len(elem) == 0 {
-						// GET /api/v1/nodes.
-						s.handleListCoreV1NodeRequest(args, w, r)
-						return
-					}
-					switch elem {
-					default:
-						if args == nil {
-							args = make(map[string]string)
-						}
-						args["name"] = elem
-						// Edge: 249, path: "".
-						elem, p = nextElem(p)
-						if len(elem) == 0 {
-							// GET /api/v1/nodes/{name}.
-							s.handleReadCoreV1NodeRequest(args, w, r)
-							return
-						}
-						switch elem {
-						case "status": // -> 250
-							// GET /api/v1/nodes/{name}/status
-							s.handleReadCoreV1NodeStatusRequest(args, w, r)
-							return
-						default:
-							// GET /api/v1/nodes/{name}.
-							s.handleReadCoreV1NodeRequest(args, w, r)
-							return
-						}
-					}
-				case "persistentvolumes": // -> 121
-					// Edge: 121, path: "persistentvolumes".
-					elem, p = nextElem(p)
-					if len(elem) == 0 {
-						// GET /api/v1/persistentvolumes.
-						s.handleListCoreV1PersistentVolumeRequest(args, w, r)
-						return
-					}
-					switch elem {
-					default:
-						if args == nil {
-							args = make(map[string]string)
-						}
-						args["name"] = elem
-						// Edge: 251, path: "".
-						elem, p = nextElem(p)
-						if len(elem) == 0 {
-							// GET /api/v1/persistentvolumes/{name}.
-							s.handleReadCoreV1PersistentVolumeRequest(args, w, r)
-							return
-						}
-						switch elem {
-						case "status": // -> 252
-							// GET /api/v1/persistentvolumes/{name}/status
-							s.handleReadCoreV1PersistentVolumeStatusRequest(args, w, r)
-							return
-						default:
-							// GET /api/v1/persistentvolumes/{name}.
-							s.handleReadCoreV1PersistentVolumeRequest(args, w, r)
-							return
-						}
-					}
-				case "persistentvolumeclaims": // -> 122
-					// GET /api/v1/persistentvolumeclaims
-					s.handleListCoreV1PersistentVolumeClaimForAllNamespacesRequest(args, w, r)
-					return
-				case "pods": // -> 123
-					// GET /api/v1/pods
-					s.handleListCoreV1PodForAllNamespacesRequest(args, w, r)
-					return
-				case "podtemplates": // -> 124
-					// GET /api/v1/podtemplates
-					s.handleListCoreV1PodTemplateForAllNamespacesRequest(args, w, r)
-					return
-				case "replicationcontrollers": // -> 125
-					// GET /api/v1/replicationcontrollers
-					s.handleListCoreV1ReplicationControllerForAllNamespacesRequest(args, w, r)
-					return
-				case "resourcequotas": // -> 126
-					// GET /api/v1/resourcequotas
-					s.handleListCoreV1ResourceQuotaForAllNamespacesRequest(args, w, r)
-					return
-				case "secrets": // -> 127
-					// GET /api/v1/secrets
-					s.handleListCoreV1SecretForAllNamespacesRequest(args, w, r)
-					return
-				case "serviceaccounts": // -> 128
-					// GET /api/v1/serviceaccounts
-					s.handleListCoreV1ServiceAccountForAllNamespacesRequest(args, w, r)
-					return
-				case "services": // -> 129
-					// GET /api/v1/services
-					s.handleListCoreV1ServiceForAllNamespacesRequest(args, w, r)
-					return
-				case "watch": // -> 362
-					// Edge: 362, path: "watch".
-					elem, p = nextElem(p)
-					switch elem {
-					case "configmaps": // -> 363
-						// GET /api/v1/watch/configmaps
-						s.handleWatchCoreV1ConfigMapListForAllNamespacesRequest(args, w, r)
-						return
-					case "endpoints": // -> 364
-						// GET /api/v1/watch/endpoints
-						s.handleWatchCoreV1EndpointsListForAllNamespacesRequest(args, w, r)
-						return
-					case "events": // -> 365
-						// GET /api/v1/watch/events
-						s.handleWatchCoreV1EventListForAllNamespacesRequest(args, w, r)
-						return
-					case "limitranges": // -> 366
-						// GET /api/v1/watch/limitranges
-						s.handleWatchCoreV1LimitRangeListForAllNamespacesRequest(args, w, r)
-						return
-					case "namespaces": // -> 367
-						// Edge: 367, path: "namespaces".
-						elem, p = nextElem(p)
-						if len(elem) == 0 {
-							// GET /api/v1/watch/namespaces.
-							s.handleWatchCoreV1NamespaceListRequest(args, w, r)
-							return
-						}
-						switch elem {
-						default:
-							if args == nil {
-								args = make(map[string]string)
-							}
-							args["name"] = elem
-							// Edge: 368, path: "".
-							elem, p = nextElem(p)
-							if len(elem) == 0 {
-								// GET /api/v1/watch/namespaces/{name}.
-								s.handleWatchCoreV1NamespaceRequest(args, w, r)
-								return
-							}
-							switch elem {
-							case "configmaps": // -> 369
-								// Edge: 369, path: "configmaps".
-								elem, p = nextElem(p)
-								if len(elem) == 0 {
-									// GET /api/v1/watch/namespaces/{namespace}/configmaps.
-									s.handleWatchCoreV1NamespacedConfigMapListRequest(args, w, r)
-									return
-								}
-								switch elem {
-								default:
-									if args == nil {
-										args = make(map[string]string)
-									}
-									args["name"] = elem
-									// GET /api/v1/watch/namespaces/{namespace}/configmaps/{name}
-									s.handleWatchCoreV1NamespacedConfigMapRequest(args, w, r)
-									return
-								}
-							case "endpoints": // -> 371
-								// Edge: 371, path: "endpoints".
-								elem, p = nextElem(p)
-								if len(elem) == 0 {
-									// GET /api/v1/watch/namespaces/{namespace}/endpoints.
-									s.handleWatchCoreV1NamespacedEndpointsListRequest(args, w, r)
-									return
-								}
-								switch elem {
-								default:
-									if args == nil {
-										args = make(map[string]string)
-									}
-									args["name"] = elem
-									// GET /api/v1/watch/namespaces/{namespace}/endpoints/{name}
-									s.handleWatchCoreV1NamespacedEndpointsRequest(args, w, r)
-									return
-								}
-							case "events": // -> 373
-								// Edge: 373, path: "events".
-								elem, p = nextElem(p)
-								if len(elem) == 0 {
-									// GET /api/v1/watch/namespaces/{namespace}/events.
-									s.handleWatchCoreV1NamespacedEventListRequest(args, w, r)
-									return
-								}
-								switch elem {
-								default:
-									if args == nil {
-										args = make(map[string]string)
-									}
-									args["name"] = elem
-									// GET /api/v1/watch/namespaces/{namespace}/events/{name}
-									s.handleWatchCoreV1NamespacedEventRequest(args, w, r)
-									return
-								}
-							case "limitranges": // -> 375
-								// Edge: 375, path: "limitranges".
-								elem, p = nextElem(p)
-								if len(elem) == 0 {
-									// GET /api/v1/watch/namespaces/{namespace}/limitranges.
-									s.handleWatchCoreV1NamespacedLimitRangeListRequest(args, w, r)
-									return
-								}
-								switch elem {
-								default:
-									if args == nil {
-										args = make(map[string]string)
-									}
-									args["name"] = elem
-									// GET /api/v1/watch/namespaces/{namespace}/limitranges/{name}
-									s.handleWatchCoreV1NamespacedLimitRangeRequest(args, w, r)
-									return
-								}
-							case "persistentvolumeclaims": // -> 377
-								// Edge: 377, path: "persistentvolumeclaims".
-								elem, p = nextElem(p)
-								if len(elem) == 0 {
-									// GET /api/v1/watch/namespaces/{namespace}/persistentvolumeclaims.
-									s.handleWatchCoreV1NamespacedPersistentVolumeClaimListRequest(args, w, r)
-									return
-								}
-								switch elem {
-								default:
-									if args == nil {
-										args = make(map[string]string)
-									}
-									args["name"] = elem
-									// GET /api/v1/watch/namespaces/{namespace}/persistentvolumeclaims/{name}
-									s.handleWatchCoreV1NamespacedPersistentVolumeClaimRequest(args, w, r)
-									return
-								}
-							case "pods": // -> 379
-								// Edge: 379, path: "pods".
-								elem, p = nextElem(p)
-								if len(elem) == 0 {
-									// GET /api/v1/watch/namespaces/{namespace}/pods.
-									s.handleWatchCoreV1NamespacedPodListRequest(args, w, r)
-									return
-								}
-								switch elem {
-								default:
-									if args == nil {
-										args = make(map[string]string)
-									}
-									args["name"] = elem
-									// GET /api/v1/watch/namespaces/{namespace}/pods/{name}
-									s.handleWatchCoreV1NamespacedPodRequest(args, w, r)
-									return
-								}
-							case "podtemplates": // -> 381
-								// Edge: 381, path: "podtemplates".
-								elem, p = nextElem(p)
-								if len(elem) == 0 {
-									// GET /api/v1/watch/namespaces/{namespace}/podtemplates.
-									s.handleWatchCoreV1NamespacedPodTemplateListRequest(args, w, r)
-									return
-								}
-								switch elem {
-								default:
-									if args == nil {
-										args = make(map[string]string)
-									}
-									args["name"] = elem
-									// GET /api/v1/watch/namespaces/{namespace}/podtemplates/{name}
-									s.handleWatchCoreV1NamespacedPodTemplateRequest(args, w, r)
-									return
-								}
-							case "replicationcontrollers": // -> 383
-								// Edge: 383, path: "replicationcontrollers".
-								elem, p = nextElem(p)
-								if len(elem) == 0 {
-									// GET /api/v1/watch/namespaces/{namespace}/replicationcontrollers.
-									s.handleWatchCoreV1NamespacedReplicationControllerListRequest(args, w, r)
-									return
-								}
-								switch elem {
-								default:
-									if args == nil {
-										args = make(map[string]string)
-									}
-									args["name"] = elem
-									// GET /api/v1/watch/namespaces/{namespace}/replicationcontrollers/{name}
-									s.handleWatchCoreV1NamespacedReplicationControllerRequest(args, w, r)
-									return
-								}
-							case "resourcequotas": // -> 385
-								// Edge: 385, path: "resourcequotas".
-								elem, p = nextElem(p)
-								if len(elem) == 0 {
-									// GET /api/v1/watch/namespaces/{namespace}/resourcequotas.
-									s.handleWatchCoreV1NamespacedResourceQuotaListRequest(args, w, r)
-									return
-								}
-								switch elem {
-								default:
-									if args == nil {
-										args = make(map[string]string)
-									}
-									args["name"] = elem
-									// GET /api/v1/watch/namespaces/{namespace}/resourcequotas/{name}
-									s.handleWatchCoreV1NamespacedResourceQuotaRequest(args, w, r)
-									return
-								}
-							case "secrets": // -> 387
-								// Edge: 387, path: "secrets".
-								elem, p = nextElem(p)
-								if len(elem) == 0 {
-									// GET /api/v1/watch/namespaces/{namespace}/secrets.
-									s.handleWatchCoreV1NamespacedSecretListRequest(args, w, r)
-									return
-								}
-								switch elem {
-								default:
-									if args == nil {
-										args = make(map[string]string)
-									}
-									args["name"] = elem
-									// GET /api/v1/watch/namespaces/{namespace}/secrets/{name}
-									s.handleWatchCoreV1NamespacedSecretRequest(args, w, r)
-									return
-								}
-							case "services": // -> 389
-								// Edge: 389, path: "services".
-								elem, p = nextElem(p)
-								if len(elem) == 0 {
-									// GET /api/v1/watch/namespaces/{namespace}/services.
-									s.handleWatchCoreV1NamespacedServiceListRequest(args, w, r)
-									return
-								}
-								switch elem {
-								default:
-									if args == nil {
-										args = make(map[string]string)
-									}
-									args["name"] = elem
-									// GET /api/v1/watch/namespaces/{namespace}/services/{name}
-									s.handleWatchCoreV1NamespacedServiceRequest(args, w, r)
-									return
-								}
-							case "serviceaccounts": // -> 391
-								// Edge: 391, path: "serviceaccounts".
-								elem, p = nextElem(p)
-								if len(elem) == 0 {
-									// GET /api/v1/watch/namespaces/{namespace}/serviceaccounts.
-									s.handleWatchCoreV1NamespacedServiceAccountListRequest(args, w, r)
-									return
-								}
-								switch elem {
-								default:
-									if args == nil {
-										args = make(map[string]string)
-									}
-									args["name"] = elem
-									// GET /api/v1/watch/namespaces/{namespace}/serviceaccounts/{name}
-									s.handleWatchCoreV1NamespacedServiceAccountRequest(args, w, r)
-									return
-								}
-							default:
-								// GET /api/v1/watch/namespaces/{name}.
-								s.handleWatchCoreV1NamespaceRequest(args, w, r)
-								return
-							}
-						}
-					case "nodes": // -> 393
-						// Edge: 393, path: "nodes".
-						elem, p = nextElem(p)
-						if len(elem) == 0 {
-							// GET /api/v1/watch/nodes.
-							s.handleWatchCoreV1NodeListRequest(args, w, r)
-							return
-						}
-						switch elem {
-						default:
-							if args == nil {
-								args = make(map[string]string)
-							}
-							args["name"] = elem
-							// GET /api/v1/watch/nodes/{name}
-							s.handleWatchCoreV1NodeRequest(args, w, r)
-							return
-						}
-					case "persistentvolumes": // -> 395
-						// Edge: 395, path: "persistentvolumes".
-						elem, p = nextElem(p)
-						if len(elem) == 0 {
-							// GET /api/v1/watch/persistentvolumes.
-							s.handleWatchCoreV1PersistentVolumeListRequest(args, w, r)
-							return
-						}
-						switch elem {
-						default:
-							if args == nil {
-								args = make(map[string]string)
-							}
-							args["name"] = elem
-							// GET /api/v1/watch/persistentvolumes/{name}
-							s.handleWatchCoreV1PersistentVolumeRequest(args, w, r)
-							return
-						}
-					case "persistentvolumeclaims": // -> 397
-						// GET /api/v1/watch/persistentvolumeclaims
-						s.handleWatchCoreV1PersistentVolumeClaimListForAllNamespacesRequest(args, w, r)
-						return
-					case "pods": // -> 398
-						// GET /api/v1/watch/pods
-						s.handleWatchCoreV1PodListForAllNamespacesRequest(args, w, r)
-						return
-					case "podtemplates": // -> 399
-						// GET /api/v1/watch/podtemplates
-						s.handleWatchCoreV1PodTemplateListForAllNamespacesRequest(args, w, r)
-						return
-					case "replicationcontrollers": // -> 400
-						// GET /api/v1/watch/replicationcontrollers
-						s.handleWatchCoreV1ReplicationControllerListForAllNamespacesRequest(args, w, r)
-						return
-					case "resourcequotas": // -> 401
-						// GET /api/v1/watch/resourcequotas
-						s.handleWatchCoreV1ResourceQuotaListForAllNamespacesRequest(args, w, r)
-						return
-					case "secrets": // -> 402
-						// GET /api/v1/watch/secrets
-						s.handleWatchCoreV1SecretListForAllNamespacesRequest(args, w, r)
-						return
-					case "serviceaccounts": // -> 403
-						// GET /api/v1/watch/serviceaccounts
-						s.handleWatchCoreV1ServiceAccountListForAllNamespacesRequest(args, w, r)
-						return
-					case "services": // -> 404
-						// GET /api/v1/watch/services
-						s.handleWatchCoreV1ServiceListForAllNamespacesRequest(args, w, r)
-						return
-					default:
-						s.notFound(w, r)
-						return
-					}
-				default:
-					// GET /api/v1/.
-					s.handleGetCoreV1APIResourcesRequest(args, w, r)
-					return
-				}
-			default:
-				// GET /api/.
-				s.handleGetCoreAPIVersionsRequest(args, w, r)
-				return
-			}
-		case ".well-known": // -> 52
-			// Edge: 52, path: ".well-known".
-			elem, p = nextElem(p)
-			switch elem {
-			case "openid-configuration": // -> 53
-				// GET /.well-known/openid-configuration/
-				s.handleGetServiceAccountIssuerOpenIDConfigurationRequest(args, w, r)
-				return
-			default:
-				s.notFound(w, r)
-				return
-			}
-		case "logs": // -> 191
-			// Edge: 191, path: "logs".
-			elem, p = nextElem(p)
-			if len(elem) == 0 {
-				// GET /logs/.
-				s.handleLogFileListHandlerRequest(args, w, r)
-				return
-			}
-			switch elem {
-			default:
-				if args == nil {
-					args = make(map[string]string)
-				}
+
+				// Param: "logpath"
+				// Leaf parameter
 				args["logpath"] = elem
-				// GET /logs/{logpath}
+
+				// Leaf: LogFileHandler
 				s.handleLogFileHandlerRequest(args, w, r)
 				return
+			case 'v': // Prefix: "version/"
+				if prefix := "version/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+					elem = elem[len(prefix):]
+				} else {
+					break
+				}
+
+				// Leaf: GetCodeVersion
+				s.handleGetCodeVersionRequest(args, w, r)
+				return
 			}
-		default:
-			s.notFound(w, r)
-			return
 		}
-	default:
-		s.notFound(w, r)
-		return
 	}
+	s.notFound(w, r)
 }

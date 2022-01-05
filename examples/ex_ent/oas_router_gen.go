@@ -66,187 +66,266 @@ func (s *Server) notFound(w http.ResponseWriter, r *http.Request) {
 	http.NotFound(w, r)
 }
 
-func skipSlash(p string) string {
-	if len(p) > 0 && p[0] == '/' {
-		return p[1:]
-	}
-	return p
-}
-
-// nextElem return next path element from p and forwarded p.
-func nextElem(p string) (elem, next string) {
-	p = skipSlash(p)
-	idx := strings.IndexByte(p, '/')
-	if idx < 0 {
-		idx = len(p)
-	}
-	return p[:idx], p[idx:]
-}
-
 // ServeHTTP serves http request as defined by OpenAPI v3 specification,
 // calling handler that matches the path or returning not found error.
 func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
-	p := r.URL.Path
-	if len(p) == 0 {
+	elem := r.URL.Path
+	if len(elem) == 0 {
 		s.notFound(w, r)
 		return
 	}
 
-	var (
-		elem string            // current element, without slashes
-		args map[string]string // lazily initialized
-	)
-
+	args := map[string]string{}
 	// Static code generated router with unwrapped path search.
 	switch r.Method {
-	case "DELETE":
-		// Root edge.
-		elem, p = nextElem(p)
-		switch elem {
-		case "pets": // -> 1
-			// Edge: 1, path: "pets".
-			elem, p = nextElem(p)
-			switch elem {
-			default:
-				if args == nil {
-					args = make(map[string]string)
-				}
-				args["id"] = elem
-				// Edge: 2, path: "".
-				elem, p = nextElem(p)
-				if len(elem) == 0 {
-					// DELETE /pets/{id}.
-					s.handleDeletePetRequest(args, w, r)
-					return
-				}
-				switch elem {
-				case "owner": // -> 3
-					// DELETE /pets/{id}/owner
-					s.handleDeletePetOwnerRequest(args, w, r)
-					return
-				default:
-					// DELETE /pets/{id}.
-					s.handleDeletePetRequest(args, w, r)
-					return
-				}
-			}
-		default:
-			s.notFound(w, r)
-			return
-		}
-	case "GET":
-		// Root edge.
-		elem, p = nextElem(p)
-		switch elem {
-		case "pets": // -> 1
-			// Edge: 1, path: "pets".
-			elem, p = nextElem(p)
-			if len(elem) == 0 {
-				// GET /pets.
-				s.handleListPetRequest(args, w, r)
-				return
-			}
-			switch elem {
-			default:
-				if args == nil {
-					args = make(map[string]string)
-				}
-				args["id"] = elem
-				// Edge: 2, path: "".
-				elem, p = nextElem(p)
-				if len(elem) == 0 {
-					// GET /pets/{id}.
-					s.handleReadPetRequest(args, w, r)
-					return
-				}
-				switch elem {
-				case "categories": // -> 3
-					// GET /pets/{id}/categories
-					s.handleListPetCategoriesRequest(args, w, r)
-					return
-				case "friends": // -> 4
-					// GET /pets/{id}/friends
-					s.handleListPetFriendsRequest(args, w, r)
-					return
-				case "owner": // -> 5
-					// GET /pets/{id}/owner
-					s.handleReadPetOwnerRequest(args, w, r)
-					return
-				default:
-					// GET /pets/{id}.
-					s.handleReadPetRequest(args, w, r)
-					return
-				}
-			}
-		default:
-			s.notFound(w, r)
-			return
-		}
-	case "PATCH":
-		// Root edge.
-		elem, p = nextElem(p)
-		switch elem {
-		case "pets": // -> 1
-			// Edge: 1, path: "pets".
-			elem, p = nextElem(p)
-			switch elem {
-			default:
-				if args == nil {
-					args = make(map[string]string)
-				}
-				args["id"] = elem
-				// PATCH /pets/{id}
-				s.handleUpdatePetRequest(args, w, r)
-				return
-			}
-		default:
-			s.notFound(w, r)
-			return
-		}
 	case "POST":
-		// Root edge.
-		elem, p = nextElem(p)
-		switch elem {
-		case "pets": // -> 1
-			// Edge: 1, path: "pets".
-			elem, p = nextElem(p)
+		if len(elem) == 0 {
+			break
+		}
+		switch elem[0] {
+		case '/': // Prefix: "/pets"
+			if prefix := "/pets"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+				elem = elem[len(prefix):]
+			} else {
+				break
+			}
+
 			if len(elem) == 0 {
-				// POST /pets.
 				s.handleCreatePetRequest(args, w, r)
 				return
 			}
-			switch elem {
-			default:
-				if args == nil {
-					args = make(map[string]string)
+			switch elem[0] {
+			case '/': // Prefix: "/"
+				if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+					elem = elem[len(prefix):]
+				} else {
+					break
 				}
-				args["id"] = elem
-				// Edge: 2, path: "".
-				elem, p = nextElem(p)
-				switch elem {
-				case "categories": // -> 3
-					// POST /pets/{id}/categories
-					s.handleCreatePetCategoriesRequest(args, w, r)
+
+				// Param: "id"
+				// Match until one of "/"
+				idx := strings.IndexAny(elem, "/")
+				if idx > 0 {
+					args["id"] = elem[:idx]
+					elem = elem[idx:]
+
+					if len(elem) == 0 {
+						break
+					}
+					switch elem[0] {
+					case '/': // Prefix: "/"
+						if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+							elem = elem[len(prefix):]
+						} else {
+							break
+						}
+
+						if len(elem) == 0 {
+							s.handleCreatePetFriendsRequest(args, w, r)
+							return
+						}
+						switch elem[0] {
+						case 'c': // Prefix: "categories"
+							if prefix := "categories"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+								elem = elem[len(prefix):]
+							} else {
+								break
+							}
+
+							if len(elem) == 0 {
+								s.handleCreatePetCategoriesRequest(args, w, r)
+								return
+							}
+							switch elem[0] {
+							case 'f': // Prefix: "friends"
+								if prefix := "friends"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+									elem = elem[len(prefix):]
+								} else {
+									break
+								}
+
+								// Leaf: CreatePetFriends
+								s.handleCreatePetFriendsRequest(args, w, r)
+								return
+							}
+						case 'f': // Prefix: "friends"
+							if prefix := "friends"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+								elem = elem[len(prefix):]
+							} else {
+								break
+							}
+
+							// Leaf: CreatePetFriends
+							s.handleCreatePetFriendsRequest(args, w, r)
+							return
+						case 'o': // Prefix: "owner"
+							if prefix := "owner"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+								elem = elem[len(prefix):]
+							} else {
+								break
+							}
+
+							// Leaf: CreatePetOwner
+							s.handleCreatePetOwnerRequest(args, w, r)
+							return
+						}
+					}
+				}
+			}
+		}
+	case "DELETE":
+		if len(elem) == 0 {
+			break
+		}
+		switch elem[0] {
+		case '/': // Prefix: "/pets/"
+			if prefix := "/pets/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+				elem = elem[len(prefix):]
+			} else {
+				break
+			}
+
+			// Param: "id"
+			// Match until one of "/"
+			idx := strings.IndexAny(elem, "/")
+			if idx > 0 {
+				args["id"] = elem[:idx]
+				elem = elem[idx:]
+
+				if len(elem) == 0 {
+					s.handleDeletePetRequest(args, w, r)
 					return
-				case "friends": // -> 4
-					// POST /pets/{id}/friends
-					s.handleCreatePetFriendsRequest(args, w, r)
-					return
-				case "owner": // -> 5
-					// POST /pets/{id}/owner
-					s.handleCreatePetOwnerRequest(args, w, r)
-					return
-				default:
-					s.notFound(w, r)
+				}
+				switch elem[0] {
+				case '/': // Prefix: "/owner"
+					if prefix := "/owner"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+						elem = elem[len(prefix):]
+					} else {
+						break
+					}
+
+					// Leaf: DeletePetOwner
+					s.handleDeletePetOwnerRequest(args, w, r)
 					return
 				}
 			}
-		default:
-			s.notFound(w, r)
+		}
+	case "GET":
+		if len(elem) == 0 {
+			break
+		}
+		switch elem[0] {
+		case '/': // Prefix: "/pets"
+			if prefix := "/pets"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+				elem = elem[len(prefix):]
+			} else {
+				break
+			}
+
+			if len(elem) == 0 {
+				s.handleListPetRequest(args, w, r)
+				return
+			}
+			switch elem[0] {
+			case '/': // Prefix: "/"
+				if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+					elem = elem[len(prefix):]
+				} else {
+					break
+				}
+
+				// Param: "id"
+				// Match until one of "/"
+				idx := strings.IndexAny(elem, "/")
+				if idx > 0 {
+					args["id"] = elem[:idx]
+					elem = elem[idx:]
+
+					if len(elem) == 0 {
+						s.handleReadPetRequest(args, w, r)
+						return
+					}
+					switch elem[0] {
+					case '/': // Prefix: "/"
+						if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+							elem = elem[len(prefix):]
+						} else {
+							break
+						}
+
+						if len(elem) == 0 {
+							s.handleListPetFriendsRequest(args, w, r)
+							return
+						}
+						switch elem[0] {
+						case 'c': // Prefix: "categories"
+							if prefix := "categories"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+								elem = elem[len(prefix):]
+							} else {
+								break
+							}
+
+							if len(elem) == 0 {
+								s.handleListPetCategoriesRequest(args, w, r)
+								return
+							}
+							switch elem[0] {
+							case 'f': // Prefix: "friends"
+								if prefix := "friends"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+									elem = elem[len(prefix):]
+								} else {
+									break
+								}
+
+								// Leaf: ListPetFriends
+								s.handleListPetFriendsRequest(args, w, r)
+								return
+							}
+						case 'f': // Prefix: "friends"
+							if prefix := "friends"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+								elem = elem[len(prefix):]
+							} else {
+								break
+							}
+
+							// Leaf: ListPetFriends
+							s.handleListPetFriendsRequest(args, w, r)
+							return
+						case 'o': // Prefix: "owner"
+							if prefix := "owner"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+								elem = elem[len(prefix):]
+							} else {
+								break
+							}
+
+							// Leaf: ReadPetOwner
+							s.handleReadPetOwnerRequest(args, w, r)
+							return
+						}
+					}
+				}
+			}
+		}
+	case "PATCH":
+		if len(elem) == 0 {
+			break
+		}
+		switch elem[0] {
+		case '/': // Prefix: "/pets/"
+			if prefix := "/pets/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+				elem = elem[len(prefix):]
+			} else {
+				break
+			}
+
+			// Param: "id"
+			// Leaf parameter
+			args["id"] = elem
+
+			// Leaf: UpdatePet
+			s.handleUpdatePetRequest(args, w, r)
 			return
 		}
-	default:
-		s.notFound(w, r)
-		return
 	}
+	s.notFound(w, r)
 }

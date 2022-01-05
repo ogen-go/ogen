@@ -66,377 +66,1808 @@ func (s *Server) notFound(w http.ResponseWriter, r *http.Request) {
 	http.NotFound(w, r)
 }
 
-func skipSlash(p string) string {
-	if len(p) > 0 && p[0] == '/' {
-		return p[1:]
-	}
-	return p
-}
-
-// nextElem return next path element from p and forwarded p.
-func nextElem(p string) (elem, next string) {
-	p = skipSlash(p)
-	idx := strings.IndexByte(p, '/')
-	if idx < 0 {
-		idx = len(p)
-	}
-	return p[:idx], p[idx:]
-}
-
 // ServeHTTP serves http request as defined by OpenAPI v3 specification,
 // calling handler that matches the path or returning not found error.
 func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
-	p := r.URL.Path
-	if len(p) == 0 {
+	elem := r.URL.Path
+	if len(elem) == 0 {
 		s.notFound(w, r)
 		return
 	}
 
-	var (
-		elem string            // current element, without slashes
-		args map[string]string // lazily initialized
-	)
-
+	args := map[string]string{}
 	// Static code generated router with unwrapped path search.
 	switch r.Method {
 	case "POST":
-		// Root edge.
-		elem, p = nextElem(p)
-		switch elem {
-		case "addStickerToSet": // -> 1
-			// POST /addStickerToSet
-			s.handleAddStickerToSetRequest(args, w, r)
-			return
-		case "answerCallbackQuery": // -> 2
-			// POST /answerCallbackQuery
-			s.handleAnswerCallbackQueryRequest(args, w, r)
-			return
-		case "answerInlineQuery": // -> 3
-			// POST /answerInlineQuery
-			s.handleAnswerInlineQueryRequest(args, w, r)
-			return
-		case "answerPreCheckoutQuery": // -> 4
-			// POST /answerPreCheckoutQuery
-			s.handleAnswerPreCheckoutQueryRequest(args, w, r)
-			return
-		case "answerShippingQuery": // -> 5
-			// POST /answerShippingQuery
-			s.handleAnswerShippingQueryRequest(args, w, r)
-			return
-		case "approveChatJoinRequest": // -> 6
-			// POST /approveChatJoinRequest
-			s.handleApproveChatJoinRequestRequest(args, w, r)
-			return
-		case "banChatMember": // -> 7
-			// POST /banChatMember
-			s.handleBanChatMemberRequest(args, w, r)
-			return
-		case "banChatSenderChat": // -> 8
-			// POST /banChatSenderChat
-			s.handleBanChatSenderChatRequest(args, w, r)
-			return
-		case "close": // -> 9
-			// POST /close
-			s.handleCloseRequest(args, w, r)
-			return
-		case "copyMessage": // -> 10
-			// POST /copyMessage
-			s.handleCopyMessageRequest(args, w, r)
-			return
-		case "createChatInviteLink": // -> 11
-			// POST /createChatInviteLink
-			s.handleCreateChatInviteLinkRequest(args, w, r)
-			return
-		case "createNewStickerSet": // -> 12
-			// POST /createNewStickerSet
-			s.handleCreateNewStickerSetRequest(args, w, r)
-			return
-		case "declineChatJoinRequest": // -> 13
-			// POST /declineChatJoinRequest
-			s.handleDeclineChatJoinRequestRequest(args, w, r)
-			return
-		case "deleteChatPhoto": // -> 14
-			// POST /deleteChatPhoto
-			s.handleDeleteChatPhotoRequest(args, w, r)
-			return
-		case "deleteChatStickerSet": // -> 15
-			// POST /deleteChatStickerSet
-			s.handleDeleteChatStickerSetRequest(args, w, r)
-			return
-		case "deleteMessage": // -> 16
-			// POST /deleteMessage
-			s.handleDeleteMessageRequest(args, w, r)
-			return
-		case "deleteMyCommands": // -> 17
-			// POST /deleteMyCommands
-			s.handleDeleteMyCommandsRequest(args, w, r)
-			return
-		case "deleteStickerFromSet": // -> 18
-			// POST /deleteStickerFromSet
-			s.handleDeleteStickerFromSetRequest(args, w, r)
-			return
-		case "deleteWebhook": // -> 19
-			// POST /deleteWebhook
-			s.handleDeleteWebhookRequest(args, w, r)
-			return
-		case "editChatInviteLink": // -> 20
-			// POST /editChatInviteLink
-			s.handleEditChatInviteLinkRequest(args, w, r)
-			return
-		case "editMessageCaption": // -> 21
-			// POST /editMessageCaption
-			s.handleEditMessageCaptionRequest(args, w, r)
-			return
-		case "editMessageLiveLocation": // -> 22
-			// POST /editMessageLiveLocation
-			s.handleEditMessageLiveLocationRequest(args, w, r)
-			return
-		case "editMessageMedia": // -> 23
-			// POST /editMessageMedia
-			s.handleEditMessageMediaRequest(args, w, r)
-			return
-		case "editMessageReplyMarkup": // -> 24
-			// POST /editMessageReplyMarkup
-			s.handleEditMessageReplyMarkupRequest(args, w, r)
-			return
-		case "editMessageText": // -> 25
-			// POST /editMessageText
-			s.handleEditMessageTextRequest(args, w, r)
-			return
-		case "exportChatInviteLink": // -> 26
-			// POST /exportChatInviteLink
-			s.handleExportChatInviteLinkRequest(args, w, r)
-			return
-		case "forwardMessage": // -> 27
-			// POST /forwardMessage
-			s.handleForwardMessageRequest(args, w, r)
-			return
-		case "getChat": // -> 28
-			// POST /getChat
-			s.handleGetChatRequest(args, w, r)
-			return
-		case "getChatAdministrators": // -> 29
-			// POST /getChatAdministrators
-			s.handleGetChatAdministratorsRequest(args, w, r)
-			return
-		case "getChatMember": // -> 30
-			// POST /getChatMember
-			s.handleGetChatMemberRequest(args, w, r)
-			return
-		case "getChatMemberCount": // -> 31
-			// POST /getChatMemberCount
-			s.handleGetChatMemberCountRequest(args, w, r)
-			return
-		case "getFile": // -> 32
-			// POST /getFile
-			s.handleGetFileRequest(args, w, r)
-			return
-		case "getGameHighScores": // -> 33
-			// POST /getGameHighScores
-			s.handleGetGameHighScoresRequest(args, w, r)
-			return
-		case "getMe": // -> 34
-			// POST /getMe
-			s.handleGetMeRequest(args, w, r)
-			return
-		case "getMyCommands": // -> 35
-			// POST /getMyCommands
-			s.handleGetMyCommandsRequest(args, w, r)
-			return
-		case "getStickerSet": // -> 36
-			// POST /getStickerSet
-			s.handleGetStickerSetRequest(args, w, r)
-			return
-		case "getUpdates": // -> 37
-			// POST /getUpdates
-			s.handleGetUpdatesRequest(args, w, r)
-			return
-		case "getUserProfilePhotos": // -> 38
-			// POST /getUserProfilePhotos
-			s.handleGetUserProfilePhotosRequest(args, w, r)
-			return
-		case "getWebhookInfo": // -> 39
-			// POST /getWebhookInfo
-			s.handleGetWebhookInfoRequest(args, w, r)
-			return
-		case "leaveChat": // -> 40
-			// POST /leaveChat
-			s.handleLeaveChatRequest(args, w, r)
-			return
-		case "logOut": // -> 41
-			// POST /logOut
-			s.handleLogOutRequest(args, w, r)
-			return
-		case "pinChatMessage": // -> 42
-			// POST /pinChatMessage
-			s.handlePinChatMessageRequest(args, w, r)
-			return
-		case "promoteChatMember": // -> 43
-			// POST /promoteChatMember
-			s.handlePromoteChatMemberRequest(args, w, r)
-			return
-		case "restrictChatMember": // -> 44
-			// POST /restrictChatMember
-			s.handleRestrictChatMemberRequest(args, w, r)
-			return
-		case "revokeChatInviteLink": // -> 45
-			// POST /revokeChatInviteLink
-			s.handleRevokeChatInviteLinkRequest(args, w, r)
-			return
-		case "sendAnimation": // -> 46
-			// POST /sendAnimation
-			s.handleSendAnimationRequest(args, w, r)
-			return
-		case "sendAudio": // -> 47
-			// POST /sendAudio
-			s.handleSendAudioRequest(args, w, r)
-			return
-		case "sendChatAction": // -> 48
-			// POST /sendChatAction
-			s.handleSendChatActionRequest(args, w, r)
-			return
-		case "sendContact": // -> 49
-			// POST /sendContact
-			s.handleSendContactRequest(args, w, r)
-			return
-		case "sendDice": // -> 50
-			// POST /sendDice
-			s.handleSendDiceRequest(args, w, r)
-			return
-		case "sendDocument": // -> 51
-			// POST /sendDocument
-			s.handleSendDocumentRequest(args, w, r)
-			return
-		case "sendGame": // -> 52
-			// POST /sendGame
-			s.handleSendGameRequest(args, w, r)
-			return
-		case "sendInvoice": // -> 53
-			// POST /sendInvoice
-			s.handleSendInvoiceRequest(args, w, r)
-			return
-		case "sendLocation": // -> 54
-			// POST /sendLocation
-			s.handleSendLocationRequest(args, w, r)
-			return
-		case "sendMediaGroup": // -> 55
-			// POST /sendMediaGroup
-			s.handleSendMediaGroupRequest(args, w, r)
-			return
-		case "sendMessage": // -> 56
-			// POST /sendMessage
-			s.handleSendMessageRequest(args, w, r)
-			return
-		case "sendPhoto": // -> 57
-			// POST /sendPhoto
-			s.handleSendPhotoRequest(args, w, r)
-			return
-		case "sendPoll": // -> 58
-			// POST /sendPoll
-			s.handleSendPollRequest(args, w, r)
-			return
-		case "sendSticker": // -> 59
-			// POST /sendSticker
-			s.handleSendStickerRequest(args, w, r)
-			return
-		case "sendVenue": // -> 60
-			// POST /sendVenue
-			s.handleSendVenueRequest(args, w, r)
-			return
-		case "sendVideo": // -> 61
-			// POST /sendVideo
-			s.handleSendVideoRequest(args, w, r)
-			return
-		case "sendVideoNote": // -> 62
-			// POST /sendVideoNote
-			s.handleSendVideoNoteRequest(args, w, r)
-			return
-		case "sendVoice": // -> 63
-			// POST /sendVoice
-			s.handleSendVoiceRequest(args, w, r)
-			return
-		case "setChatAdministratorCustomTitle": // -> 64
-			// POST /setChatAdministratorCustomTitle
-			s.handleSetChatAdministratorCustomTitleRequest(args, w, r)
-			return
-		case "setChatDescription": // -> 65
-			// POST /setChatDescription
-			s.handleSetChatDescriptionRequest(args, w, r)
-			return
-		case "setChatPermissions": // -> 66
-			// POST /setChatPermissions
-			s.handleSetChatPermissionsRequest(args, w, r)
-			return
-		case "setChatPhoto": // -> 67
-			// POST /setChatPhoto
-			s.handleSetChatPhotoRequest(args, w, r)
-			return
-		case "setChatStickerSet": // -> 68
-			// POST /setChatStickerSet
-			s.handleSetChatStickerSetRequest(args, w, r)
-			return
-		case "setChatTitle": // -> 69
-			// POST /setChatTitle
-			s.handleSetChatTitleRequest(args, w, r)
-			return
-		case "setGameScore": // -> 70
-			// POST /setGameScore
-			s.handleSetGameScoreRequest(args, w, r)
-			return
-		case "setMyCommands": // -> 71
-			// POST /setMyCommands
-			s.handleSetMyCommandsRequest(args, w, r)
-			return
-		case "setPassportDataErrors": // -> 72
-			// POST /setPassportDataErrors
-			s.handleSetPassportDataErrorsRequest(args, w, r)
-			return
-		case "setStickerPositionInSet": // -> 73
-			// POST /setStickerPositionInSet
-			s.handleSetStickerPositionInSetRequest(args, w, r)
-			return
-		case "setStickerSetThumb": // -> 74
-			// POST /setStickerSetThumb
-			s.handleSetStickerSetThumbRequest(args, w, r)
-			return
-		case "setWebhook": // -> 75
-			// POST /setWebhook
-			s.handleSetWebhookRequest(args, w, r)
-			return
-		case "stopMessageLiveLocation": // -> 76
-			// POST /stopMessageLiveLocation
-			s.handleStopMessageLiveLocationRequest(args, w, r)
-			return
-		case "stopPoll": // -> 77
-			// POST /stopPoll
-			s.handleStopPollRequest(args, w, r)
-			return
-		case "unbanChatMember": // -> 78
-			// POST /unbanChatMember
-			s.handleUnbanChatMemberRequest(args, w, r)
-			return
-		case "unbanChatSenderChat": // -> 79
-			// POST /unbanChatSenderChat
-			s.handleUnbanChatSenderChatRequest(args, w, r)
-			return
-		case "unpinAllChatMessages": // -> 80
-			// POST /unpinAllChatMessages
-			s.handleUnpinAllChatMessagesRequest(args, w, r)
-			return
-		case "unpinChatMessage": // -> 81
-			// POST /unpinChatMessage
-			s.handleUnpinChatMessageRequest(args, w, r)
-			return
-		case "uploadStickerFile": // -> 82
-			// POST /uploadStickerFile
-			s.handleUploadStickerFileRequest(args, w, r)
-			return
-		default:
-			s.notFound(w, r)
-			return
+		if len(elem) == 0 {
+			break
 		}
-	default:
-		s.notFound(w, r)
-		return
+		switch elem[0] {
+		case '/': // Prefix: "/"
+			if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+				elem = elem[len(prefix):]
+			} else {
+				break
+			}
+
+			if len(elem) == 0 {
+				s.handleBanChatMemberRequest(args, w, r)
+				return
+			}
+			switch elem[0] {
+			case 'a': // Prefix: "a"
+				if prefix := "a"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+					elem = elem[len(prefix):]
+				} else {
+					break
+				}
+
+				if len(elem) == 0 {
+					s.handleAnswerCallbackQueryRequest(args, w, r)
+					return
+				}
+				switch elem[0] {
+				case 'b': // Prefix: "banChatMember"
+					if prefix := "banChatMember"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+						elem = elem[len(prefix):]
+					} else {
+						break
+					}
+
+					// Leaf: BanChatMember
+					s.handleBanChatMemberRequest(args, w, r)
+					return
+				case 'd': // Prefix: "ddStickerToSet"
+					if prefix := "ddStickerToSet"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+						elem = elem[len(prefix):]
+					} else {
+						break
+					}
+
+					if len(elem) == 0 {
+						s.handleAddStickerToSetRequest(args, w, r)
+						return
+					}
+					switch elem[0] {
+					case 'n': // Prefix: "nswerCallbackQuery"
+						if prefix := "nswerCallbackQuery"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+							elem = elem[len(prefix):]
+						} else {
+							break
+						}
+
+						// Leaf: AnswerCallbackQuery
+						s.handleAnswerCallbackQueryRequest(args, w, r)
+						return
+					}
+				case 'n': // Prefix: "nswer"
+					if prefix := "nswer"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+						elem = elem[len(prefix):]
+					} else {
+						break
+					}
+
+					if len(elem) == 0 {
+						s.handleAnswerInlineQueryRequest(args, w, r)
+						return
+					}
+					switch elem[0] {
+					case 'C': // Prefix: "CallbackQuery"
+						if prefix := "CallbackQuery"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+							elem = elem[len(prefix):]
+						} else {
+							break
+						}
+
+						if len(elem) == 0 {
+							s.handleAnswerCallbackQueryRequest(args, w, r)
+							return
+						}
+						switch elem[0] {
+						case 'I': // Prefix: "InlineQuery"
+							if prefix := "InlineQuery"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+								elem = elem[len(prefix):]
+							} else {
+								break
+							}
+
+							// Leaf: AnswerInlineQuery
+							s.handleAnswerInlineQueryRequest(args, w, r)
+							return
+						}
+					case 'I': // Prefix: "InlineQuery"
+						if prefix := "InlineQuery"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+							elem = elem[len(prefix):]
+						} else {
+							break
+						}
+
+						// Leaf: AnswerInlineQuery
+						s.handleAnswerInlineQueryRequest(args, w, r)
+						return
+					case 'P': // Prefix: "PreCheckoutQuery"
+						if prefix := "PreCheckoutQuery"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+							elem = elem[len(prefix):]
+						} else {
+							break
+						}
+
+						// Leaf: AnswerPreCheckoutQuery
+						s.handleAnswerPreCheckoutQueryRequest(args, w, r)
+						return
+					case 'S': // Prefix: "ShippingQuery"
+						if prefix := "ShippingQuery"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+							elem = elem[len(prefix):]
+						} else {
+							break
+						}
+
+						// Leaf: AnswerShippingQuery
+						s.handleAnswerShippingQueryRequest(args, w, r)
+						return
+					}
+				case 'p': // Prefix: "pproveChatJoinRequest"
+					if prefix := "pproveChatJoinRequest"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+						elem = elem[len(prefix):]
+					} else {
+						break
+					}
+
+					// Leaf: ApproveChatJoinRequest
+					s.handleApproveChatJoinRequestRequest(args, w, r)
+					return
+				}
+			case 'b': // Prefix: "banChat"
+				if prefix := "banChat"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+					elem = elem[len(prefix):]
+				} else {
+					break
+				}
+
+				if len(elem) == 0 {
+					s.handleBanChatSenderChatRequest(args, w, r)
+					return
+				}
+				switch elem[0] {
+				case 'M': // Prefix: "Member"
+					if prefix := "Member"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+						elem = elem[len(prefix):]
+					} else {
+						break
+					}
+
+					if len(elem) == 0 {
+						s.handleBanChatMemberRequest(args, w, r)
+						return
+					}
+					switch elem[0] {
+					case 'S': // Prefix: "SenderChat"
+						if prefix := "SenderChat"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+							elem = elem[len(prefix):]
+						} else {
+							break
+						}
+
+						// Leaf: BanChatSenderChat
+						s.handleBanChatSenderChatRequest(args, w, r)
+						return
+					}
+				case 'S': // Prefix: "SenderChat"
+					if prefix := "SenderChat"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+						elem = elem[len(prefix):]
+					} else {
+						break
+					}
+
+					// Leaf: BanChatSenderChat
+					s.handleBanChatSenderChatRequest(args, w, r)
+					return
+				}
+			case 'c': // Prefix: "c"
+				if prefix := "c"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+					elem = elem[len(prefix):]
+				} else {
+					break
+				}
+
+				if len(elem) == 0 {
+					s.handleCopyMessageRequest(args, w, r)
+					return
+				}
+				switch elem[0] {
+				case 'l': // Prefix: "lose"
+					if prefix := "lose"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+						elem = elem[len(prefix):]
+					} else {
+						break
+					}
+
+					if len(elem) == 0 {
+						s.handleCloseRequest(args, w, r)
+						return
+					}
+					switch elem[0] {
+					case 'o': // Prefix: "opyMessage"
+						if prefix := "opyMessage"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+							elem = elem[len(prefix):]
+						} else {
+							break
+						}
+
+						// Leaf: CopyMessage
+						s.handleCopyMessageRequest(args, w, r)
+						return
+					}
+				case 'o': // Prefix: "opyMessage"
+					if prefix := "opyMessage"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+						elem = elem[len(prefix):]
+					} else {
+						break
+					}
+
+					// Leaf: CopyMessage
+					s.handleCopyMessageRequest(args, w, r)
+					return
+				case 'r': // Prefix: "reate"
+					if prefix := "reate"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+						elem = elem[len(prefix):]
+					} else {
+						break
+					}
+
+					if len(elem) == 0 {
+						s.handleCreateNewStickerSetRequest(args, w, r)
+						return
+					}
+					switch elem[0] {
+					case 'C': // Prefix: "ChatInviteLink"
+						if prefix := "ChatInviteLink"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+							elem = elem[len(prefix):]
+						} else {
+							break
+						}
+
+						if len(elem) == 0 {
+							s.handleCreateChatInviteLinkRequest(args, w, r)
+							return
+						}
+						switch elem[0] {
+						case 'N': // Prefix: "NewStickerSet"
+							if prefix := "NewStickerSet"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+								elem = elem[len(prefix):]
+							} else {
+								break
+							}
+
+							// Leaf: CreateNewStickerSet
+							s.handleCreateNewStickerSetRequest(args, w, r)
+							return
+						}
+					case 'N': // Prefix: "NewStickerSet"
+						if prefix := "NewStickerSet"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+							elem = elem[len(prefix):]
+						} else {
+							break
+						}
+
+						// Leaf: CreateNewStickerSet
+						s.handleCreateNewStickerSetRequest(args, w, r)
+						return
+					}
+				}
+			case 'd': // Prefix: "de"
+				if prefix := "de"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+					elem = elem[len(prefix):]
+				} else {
+					break
+				}
+
+				if len(elem) == 0 {
+					s.handleDeleteChatPhotoRequest(args, w, r)
+					return
+				}
+				switch elem[0] {
+				case 'c': // Prefix: "clineChatJoinRequest"
+					if prefix := "clineChatJoinRequest"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+						elem = elem[len(prefix):]
+					} else {
+						break
+					}
+
+					if len(elem) == 0 {
+						s.handleDeclineChatJoinRequestRequest(args, w, r)
+						return
+					}
+					switch elem[0] {
+					case 'l': // Prefix: "leteChatPhoto"
+						if prefix := "leteChatPhoto"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+							elem = elem[len(prefix):]
+						} else {
+							break
+						}
+
+						// Leaf: DeleteChatPhoto
+						s.handleDeleteChatPhotoRequest(args, w, r)
+						return
+					}
+				case 'l': // Prefix: "lete"
+					if prefix := "lete"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+						elem = elem[len(prefix):]
+					} else {
+						break
+					}
+
+					if len(elem) == 0 {
+						s.handleDeleteMessageRequest(args, w, r)
+						return
+					}
+					switch elem[0] {
+					case 'C': // Prefix: "Chat"
+						if prefix := "Chat"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+							elem = elem[len(prefix):]
+						} else {
+							break
+						}
+
+						if len(elem) == 0 {
+							s.handleDeleteChatStickerSetRequest(args, w, r)
+							return
+						}
+						switch elem[0] {
+						case 'M': // Prefix: "Message"
+							if prefix := "Message"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+								elem = elem[len(prefix):]
+							} else {
+								break
+							}
+
+							// Leaf: DeleteMessage
+							s.handleDeleteMessageRequest(args, w, r)
+							return
+						case 'P': // Prefix: "Photo"
+							if prefix := "Photo"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+								elem = elem[len(prefix):]
+							} else {
+								break
+							}
+
+							if len(elem) == 0 {
+								s.handleDeleteChatPhotoRequest(args, w, r)
+								return
+							}
+							switch elem[0] {
+							case 'S': // Prefix: "StickerSet"
+								if prefix := "StickerSet"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+									elem = elem[len(prefix):]
+								} else {
+									break
+								}
+
+								// Leaf: DeleteChatStickerSet
+								s.handleDeleteChatStickerSetRequest(args, w, r)
+								return
+							}
+						case 'S': // Prefix: "StickerSet"
+							if prefix := "StickerSet"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+								elem = elem[len(prefix):]
+							} else {
+								break
+							}
+
+							// Leaf: DeleteChatStickerSet
+							s.handleDeleteChatStickerSetRequest(args, w, r)
+							return
+						}
+					case 'M': // Prefix: "M"
+						if prefix := "M"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+							elem = elem[len(prefix):]
+						} else {
+							break
+						}
+
+						if len(elem) == 0 {
+							s.handleDeleteMyCommandsRequest(args, w, r)
+							return
+						}
+						switch elem[0] {
+						case 'e': // Prefix: "essage"
+							if prefix := "essage"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+								elem = elem[len(prefix):]
+							} else {
+								break
+							}
+
+							if len(elem) == 0 {
+								s.handleDeleteMessageRequest(args, w, r)
+								return
+							}
+							switch elem[0] {
+							case 'y': // Prefix: "yCommands"
+								if prefix := "yCommands"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+									elem = elem[len(prefix):]
+								} else {
+									break
+								}
+
+								// Leaf: DeleteMyCommands
+								s.handleDeleteMyCommandsRequest(args, w, r)
+								return
+							}
+						case 'y': // Prefix: "yCommands"
+							if prefix := "yCommands"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+								elem = elem[len(prefix):]
+							} else {
+								break
+							}
+
+							// Leaf: DeleteMyCommands
+							s.handleDeleteMyCommandsRequest(args, w, r)
+							return
+						}
+					case 'S': // Prefix: "StickerFromSet"
+						if prefix := "StickerFromSet"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+							elem = elem[len(prefix):]
+						} else {
+							break
+						}
+
+						// Leaf: DeleteStickerFromSet
+						s.handleDeleteStickerFromSetRequest(args, w, r)
+						return
+					case 'W': // Prefix: "Webhook"
+						if prefix := "Webhook"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+							elem = elem[len(prefix):]
+						} else {
+							break
+						}
+
+						// Leaf: DeleteWebhook
+						s.handleDeleteWebhookRequest(args, w, r)
+						return
+					}
+				}
+			case 'e': // Prefix: "e"
+				if prefix := "e"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+					elem = elem[len(prefix):]
+				} else {
+					break
+				}
+
+				if len(elem) == 0 {
+					s.handleExportChatInviteLinkRequest(args, w, r)
+					return
+				}
+				switch elem[0] {
+				case 'd': // Prefix: "dit"
+					if prefix := "dit"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+						elem = elem[len(prefix):]
+					} else {
+						break
+					}
+
+					if len(elem) == 0 {
+						s.handleEditMessageCaptionRequest(args, w, r)
+						return
+					}
+					switch elem[0] {
+					case 'C': // Prefix: "ChatInviteLink"
+						if prefix := "ChatInviteLink"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+							elem = elem[len(prefix):]
+						} else {
+							break
+						}
+
+						if len(elem) == 0 {
+							s.handleEditChatInviteLinkRequest(args, w, r)
+							return
+						}
+						switch elem[0] {
+						case 'M': // Prefix: "MessageCaption"
+							if prefix := "MessageCaption"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+								elem = elem[len(prefix):]
+							} else {
+								break
+							}
+
+							// Leaf: EditMessageCaption
+							s.handleEditMessageCaptionRequest(args, w, r)
+							return
+						}
+					case 'M': // Prefix: "Message"
+						if prefix := "Message"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+							elem = elem[len(prefix):]
+						} else {
+							break
+						}
+
+						if len(elem) == 0 {
+							s.handleEditMessageLiveLocationRequest(args, w, r)
+							return
+						}
+						switch elem[0] {
+						case 'C': // Prefix: "Caption"
+							if prefix := "Caption"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+								elem = elem[len(prefix):]
+							} else {
+								break
+							}
+
+							if len(elem) == 0 {
+								s.handleEditMessageCaptionRequest(args, w, r)
+								return
+							}
+							switch elem[0] {
+							case 'L': // Prefix: "LiveLocation"
+								if prefix := "LiveLocation"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+									elem = elem[len(prefix):]
+								} else {
+									break
+								}
+
+								// Leaf: EditMessageLiveLocation
+								s.handleEditMessageLiveLocationRequest(args, w, r)
+								return
+							}
+						case 'L': // Prefix: "LiveLocation"
+							if prefix := "LiveLocation"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+								elem = elem[len(prefix):]
+							} else {
+								break
+							}
+
+							// Leaf: EditMessageLiveLocation
+							s.handleEditMessageLiveLocationRequest(args, w, r)
+							return
+						case 'M': // Prefix: "Media"
+							if prefix := "Media"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+								elem = elem[len(prefix):]
+							} else {
+								break
+							}
+
+							// Leaf: EditMessageMedia
+							s.handleEditMessageMediaRequest(args, w, r)
+							return
+						case 'R': // Prefix: "ReplyMarkup"
+							if prefix := "ReplyMarkup"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+								elem = elem[len(prefix):]
+							} else {
+								break
+							}
+
+							// Leaf: EditMessageReplyMarkup
+							s.handleEditMessageReplyMarkupRequest(args, w, r)
+							return
+						case 'T': // Prefix: "Text"
+							if prefix := "Text"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+								elem = elem[len(prefix):]
+							} else {
+								break
+							}
+
+							// Leaf: EditMessageText
+							s.handleEditMessageTextRequest(args, w, r)
+							return
+						}
+					case 'x': // Prefix: "xportChatInviteLink"
+						if prefix := "xportChatInviteLink"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+							elem = elem[len(prefix):]
+						} else {
+							break
+						}
+
+						// Leaf: ExportChatInviteLink
+						s.handleExportChatInviteLinkRequest(args, w, r)
+						return
+					}
+				case 'x': // Prefix: "xportChatInviteLink"
+					if prefix := "xportChatInviteLink"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+						elem = elem[len(prefix):]
+					} else {
+						break
+					}
+
+					// Leaf: ExportChatInviteLink
+					s.handleExportChatInviteLinkRequest(args, w, r)
+					return
+				}
+			case 'f': // Prefix: "forwardMessage"
+				if prefix := "forwardMessage"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+					elem = elem[len(prefix):]
+				} else {
+					break
+				}
+
+				// Leaf: ForwardMessage
+				s.handleForwardMessageRequest(args, w, r)
+				return
+			case 'g': // Prefix: "get"
+				if prefix := "get"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+					elem = elem[len(prefix):]
+				} else {
+					break
+				}
+
+				if len(elem) == 0 {
+					s.handleGetFileRequest(args, w, r)
+					return
+				}
+				switch elem[0] {
+				case 'C': // Prefix: "Chat"
+					if prefix := "Chat"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+						elem = elem[len(prefix):]
+					} else {
+						break
+					}
+
+					if len(elem) == 0 {
+						s.handleGetChatRequest(args, w, r)
+						return
+					}
+					switch elem[0] {
+					case 'A': // Prefix: "Administrators"
+						if prefix := "Administrators"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+							elem = elem[len(prefix):]
+						} else {
+							break
+						}
+
+						// Leaf: GetChatAdministrators
+						s.handleGetChatAdministratorsRequest(args, w, r)
+						return
+					case 'F': // Prefix: "File"
+						if prefix := "File"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+							elem = elem[len(prefix):]
+						} else {
+							break
+						}
+
+						// Leaf: GetFile
+						s.handleGetFileRequest(args, w, r)
+						return
+					case 'M': // Prefix: "Member"
+						if prefix := "Member"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+							elem = elem[len(prefix):]
+						} else {
+							break
+						}
+
+						if len(elem) == 0 {
+							s.handleGetChatMemberRequest(args, w, r)
+							return
+						}
+						switch elem[0] {
+						case 'C': // Prefix: "Count"
+							if prefix := "Count"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+								elem = elem[len(prefix):]
+							} else {
+								break
+							}
+
+							// Leaf: GetChatMemberCount
+							s.handleGetChatMemberCountRequest(args, w, r)
+							return
+						}
+					}
+				case 'F': // Prefix: "File"
+					if prefix := "File"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+						elem = elem[len(prefix):]
+					} else {
+						break
+					}
+
+					// Leaf: GetFile
+					s.handleGetFileRequest(args, w, r)
+					return
+				case 'G': // Prefix: "GameHighScores"
+					if prefix := "GameHighScores"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+						elem = elem[len(prefix):]
+					} else {
+						break
+					}
+
+					// Leaf: GetGameHighScores
+					s.handleGetGameHighScoresRequest(args, w, r)
+					return
+				case 'M': // Prefix: "M"
+					if prefix := "M"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+						elem = elem[len(prefix):]
+					} else {
+						break
+					}
+
+					if len(elem) == 0 {
+						s.handleGetMyCommandsRequest(args, w, r)
+						return
+					}
+					switch elem[0] {
+					case 'e': // Prefix: "e"
+						if prefix := "e"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+							elem = elem[len(prefix):]
+						} else {
+							break
+						}
+
+						if len(elem) == 0 {
+							s.handleGetMeRequest(args, w, r)
+							return
+						}
+						switch elem[0] {
+						case 'y': // Prefix: "yCommands"
+							if prefix := "yCommands"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+								elem = elem[len(prefix):]
+							} else {
+								break
+							}
+
+							// Leaf: GetMyCommands
+							s.handleGetMyCommandsRequest(args, w, r)
+							return
+						}
+					case 'y': // Prefix: "yCommands"
+						if prefix := "yCommands"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+							elem = elem[len(prefix):]
+						} else {
+							break
+						}
+
+						// Leaf: GetMyCommands
+						s.handleGetMyCommandsRequest(args, w, r)
+						return
+					}
+				case 'S': // Prefix: "StickerSet"
+					if prefix := "StickerSet"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+						elem = elem[len(prefix):]
+					} else {
+						break
+					}
+
+					// Leaf: GetStickerSet
+					s.handleGetStickerSetRequest(args, w, r)
+					return
+				case 'U': // Prefix: "U"
+					if prefix := "U"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+						elem = elem[len(prefix):]
+					} else {
+						break
+					}
+
+					if len(elem) == 0 {
+						s.handleGetUserProfilePhotosRequest(args, w, r)
+						return
+					}
+					switch elem[0] {
+					case 'p': // Prefix: "pdates"
+						if prefix := "pdates"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+							elem = elem[len(prefix):]
+						} else {
+							break
+						}
+
+						if len(elem) == 0 {
+							s.handleGetUpdatesRequest(args, w, r)
+							return
+						}
+						switch elem[0] {
+						case 's': // Prefix: "serProfilePhotos"
+							if prefix := "serProfilePhotos"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+								elem = elem[len(prefix):]
+							} else {
+								break
+							}
+
+							// Leaf: GetUserProfilePhotos
+							s.handleGetUserProfilePhotosRequest(args, w, r)
+							return
+						}
+					case 's': // Prefix: "serProfilePhotos"
+						if prefix := "serProfilePhotos"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+							elem = elem[len(prefix):]
+						} else {
+							break
+						}
+
+						// Leaf: GetUserProfilePhotos
+						s.handleGetUserProfilePhotosRequest(args, w, r)
+						return
+					}
+				case 'W': // Prefix: "WebhookInfo"
+					if prefix := "WebhookInfo"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+						elem = elem[len(prefix):]
+					} else {
+						break
+					}
+
+					// Leaf: GetWebhookInfo
+					s.handleGetWebhookInfoRequest(args, w, r)
+					return
+				}
+			case 'l': // Prefix: "l"
+				if prefix := "l"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+					elem = elem[len(prefix):]
+				} else {
+					break
+				}
+
+				if len(elem) == 0 {
+					s.handleLogOutRequest(args, w, r)
+					return
+				}
+				switch elem[0] {
+				case 'e': // Prefix: "eaveChat"
+					if prefix := "eaveChat"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+						elem = elem[len(prefix):]
+					} else {
+						break
+					}
+
+					if len(elem) == 0 {
+						s.handleLeaveChatRequest(args, w, r)
+						return
+					}
+					switch elem[0] {
+					case 'o': // Prefix: "ogOut"
+						if prefix := "ogOut"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+							elem = elem[len(prefix):]
+						} else {
+							break
+						}
+
+						// Leaf: LogOut
+						s.handleLogOutRequest(args, w, r)
+						return
+					}
+				case 'o': // Prefix: "ogOut"
+					if prefix := "ogOut"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+						elem = elem[len(prefix):]
+					} else {
+						break
+					}
+
+					// Leaf: LogOut
+					s.handleLogOutRequest(args, w, r)
+					return
+				}
+			case 'p': // Prefix: "p"
+				if prefix := "p"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+					elem = elem[len(prefix):]
+				} else {
+					break
+				}
+
+				if len(elem) == 0 {
+					s.handlePromoteChatMemberRequest(args, w, r)
+					return
+				}
+				switch elem[0] {
+				case 'i': // Prefix: "inChatMessage"
+					if prefix := "inChatMessage"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+						elem = elem[len(prefix):]
+					} else {
+						break
+					}
+
+					if len(elem) == 0 {
+						s.handlePinChatMessageRequest(args, w, r)
+						return
+					}
+					switch elem[0] {
+					case 'r': // Prefix: "romoteChatMember"
+						if prefix := "romoteChatMember"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+							elem = elem[len(prefix):]
+						} else {
+							break
+						}
+
+						// Leaf: PromoteChatMember
+						s.handlePromoteChatMemberRequest(args, w, r)
+						return
+					}
+				case 'r': // Prefix: "romoteChatMember"
+					if prefix := "romoteChatMember"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+						elem = elem[len(prefix):]
+					} else {
+						break
+					}
+
+					// Leaf: PromoteChatMember
+					s.handlePromoteChatMemberRequest(args, w, r)
+					return
+				}
+			case 'r': // Prefix: "re"
+				if prefix := "re"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+					elem = elem[len(prefix):]
+				} else {
+					break
+				}
+
+				if len(elem) == 0 {
+					s.handleRevokeChatInviteLinkRequest(args, w, r)
+					return
+				}
+				switch elem[0] {
+				case 's': // Prefix: "strictChatMember"
+					if prefix := "strictChatMember"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+						elem = elem[len(prefix):]
+					} else {
+						break
+					}
+
+					if len(elem) == 0 {
+						s.handleRestrictChatMemberRequest(args, w, r)
+						return
+					}
+					switch elem[0] {
+					case 'v': // Prefix: "vokeChatInviteLink"
+						if prefix := "vokeChatInviteLink"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+							elem = elem[len(prefix):]
+						} else {
+							break
+						}
+
+						// Leaf: RevokeChatInviteLink
+						s.handleRevokeChatInviteLinkRequest(args, w, r)
+						return
+					}
+				case 'v': // Prefix: "vokeChatInviteLink"
+					if prefix := "vokeChatInviteLink"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+						elem = elem[len(prefix):]
+					} else {
+						break
+					}
+
+					// Leaf: RevokeChatInviteLink
+					s.handleRevokeChatInviteLinkRequest(args, w, r)
+					return
+				}
+			case 's': // Prefix: "s"
+				if prefix := "s"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+					elem = elem[len(prefix):]
+				} else {
+					break
+				}
+
+				if len(elem) == 0 {
+					s.handleStopMessageLiveLocationRequest(args, w, r)
+					return
+				}
+				switch elem[0] {
+				case 'e': // Prefix: "e"
+					if prefix := "e"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+						elem = elem[len(prefix):]
+					} else {
+						break
+					}
+
+					if len(elem) == 0 {
+						s.handleSetChatAdministratorCustomTitleRequest(args, w, r)
+						return
+					}
+					switch elem[0] {
+					case 'n': // Prefix: "nd"
+						if prefix := "nd"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+							elem = elem[len(prefix):]
+						} else {
+							break
+						}
+
+						if len(elem) == 0 {
+							s.handleSendChatActionRequest(args, w, r)
+							return
+						}
+						switch elem[0] {
+						case 'A': // Prefix: "A"
+							if prefix := "A"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+								elem = elem[len(prefix):]
+							} else {
+								break
+							}
+
+							if len(elem) == 0 {
+								s.handleSendAudioRequest(args, w, r)
+								return
+							}
+							switch elem[0] {
+							case 'C': // Prefix: "ChatAction"
+								if prefix := "ChatAction"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+									elem = elem[len(prefix):]
+								} else {
+									break
+								}
+
+								// Leaf: SendChatAction
+								s.handleSendChatActionRequest(args, w, r)
+								return
+							case 'n': // Prefix: "nimation"
+								if prefix := "nimation"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+									elem = elem[len(prefix):]
+								} else {
+									break
+								}
+
+								if len(elem) == 0 {
+									s.handleSendAnimationRequest(args, w, r)
+									return
+								}
+								switch elem[0] {
+								case 'u': // Prefix: "udio"
+									if prefix := "udio"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+										elem = elem[len(prefix):]
+									} else {
+										break
+									}
+
+									// Leaf: SendAudio
+									s.handleSendAudioRequest(args, w, r)
+									return
+								}
+							case 'u': // Prefix: "udio"
+								if prefix := "udio"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+									elem = elem[len(prefix):]
+								} else {
+									break
+								}
+
+								// Leaf: SendAudio
+								s.handleSendAudioRequest(args, w, r)
+								return
+							}
+						case 'C': // Prefix: "C"
+							if prefix := "C"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+								elem = elem[len(prefix):]
+							} else {
+								break
+							}
+
+							if len(elem) == 0 {
+								s.handleSendContactRequest(args, w, r)
+								return
+							}
+							switch elem[0] {
+							case 'h': // Prefix: "hatAction"
+								if prefix := "hatAction"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+									elem = elem[len(prefix):]
+								} else {
+									break
+								}
+
+								if len(elem) == 0 {
+									s.handleSendChatActionRequest(args, w, r)
+									return
+								}
+								switch elem[0] {
+								case 'o': // Prefix: "ontact"
+									if prefix := "ontact"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+										elem = elem[len(prefix):]
+									} else {
+										break
+									}
+
+									// Leaf: SendContact
+									s.handleSendContactRequest(args, w, r)
+									return
+								}
+							case 'o': // Prefix: "ontact"
+								if prefix := "ontact"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+									elem = elem[len(prefix):]
+								} else {
+									break
+								}
+
+								// Leaf: SendContact
+								s.handleSendContactRequest(args, w, r)
+								return
+							}
+						case 'D': // Prefix: "D"
+							if prefix := "D"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+								elem = elem[len(prefix):]
+							} else {
+								break
+							}
+
+							if len(elem) == 0 {
+								s.handleSendDocumentRequest(args, w, r)
+								return
+							}
+							switch elem[0] {
+							case 'i': // Prefix: "ice"
+								if prefix := "ice"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+									elem = elem[len(prefix):]
+								} else {
+									break
+								}
+
+								if len(elem) == 0 {
+									s.handleSendDiceRequest(args, w, r)
+									return
+								}
+								switch elem[0] {
+								case 'o': // Prefix: "ocument"
+									if prefix := "ocument"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+										elem = elem[len(prefix):]
+									} else {
+										break
+									}
+
+									// Leaf: SendDocument
+									s.handleSendDocumentRequest(args, w, r)
+									return
+								}
+							case 'o': // Prefix: "ocument"
+								if prefix := "ocument"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+									elem = elem[len(prefix):]
+								} else {
+									break
+								}
+
+								// Leaf: SendDocument
+								s.handleSendDocumentRequest(args, w, r)
+								return
+							}
+						case 'G': // Prefix: "Game"
+							if prefix := "Game"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+								elem = elem[len(prefix):]
+							} else {
+								break
+							}
+
+							// Leaf: SendGame
+							s.handleSendGameRequest(args, w, r)
+							return
+						case 'I': // Prefix: "Invoice"
+							if prefix := "Invoice"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+								elem = elem[len(prefix):]
+							} else {
+								break
+							}
+
+							// Leaf: SendInvoice
+							s.handleSendInvoiceRequest(args, w, r)
+							return
+						case 'L': // Prefix: "Location"
+							if prefix := "Location"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+								elem = elem[len(prefix):]
+							} else {
+								break
+							}
+
+							// Leaf: SendLocation
+							s.handleSendLocationRequest(args, w, r)
+							return
+						case 'M': // Prefix: "Me"
+							if prefix := "Me"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+								elem = elem[len(prefix):]
+							} else {
+								break
+							}
+
+							if len(elem) == 0 {
+								s.handleSendMessageRequest(args, w, r)
+								return
+							}
+							switch elem[0] {
+							case 'd': // Prefix: "diaGroup"
+								if prefix := "diaGroup"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+									elem = elem[len(prefix):]
+								} else {
+									break
+								}
+
+								if len(elem) == 0 {
+									s.handleSendMediaGroupRequest(args, w, r)
+									return
+								}
+								switch elem[0] {
+								case 's': // Prefix: "ssage"
+									if prefix := "ssage"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+										elem = elem[len(prefix):]
+									} else {
+										break
+									}
+
+									// Leaf: SendMessage
+									s.handleSendMessageRequest(args, w, r)
+									return
+								}
+							case 's': // Prefix: "ssage"
+								if prefix := "ssage"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+									elem = elem[len(prefix):]
+								} else {
+									break
+								}
+
+								// Leaf: SendMessage
+								s.handleSendMessageRequest(args, w, r)
+								return
+							}
+						case 'P': // Prefix: "P"
+							if prefix := "P"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+								elem = elem[len(prefix):]
+							} else {
+								break
+							}
+
+							if len(elem) == 0 {
+								s.handleSendPollRequest(args, w, r)
+								return
+							}
+							switch elem[0] {
+							case 'h': // Prefix: "hoto"
+								if prefix := "hoto"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+									elem = elem[len(prefix):]
+								} else {
+									break
+								}
+
+								if len(elem) == 0 {
+									s.handleSendPhotoRequest(args, w, r)
+									return
+								}
+								switch elem[0] {
+								case 'o': // Prefix: "oll"
+									if prefix := "oll"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+										elem = elem[len(prefix):]
+									} else {
+										break
+									}
+
+									// Leaf: SendPoll
+									s.handleSendPollRequest(args, w, r)
+									return
+								}
+							case 'o': // Prefix: "oll"
+								if prefix := "oll"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+									elem = elem[len(prefix):]
+								} else {
+									break
+								}
+
+								// Leaf: SendPoll
+								s.handleSendPollRequest(args, w, r)
+								return
+							}
+						case 'S': // Prefix: "Sticker"
+							if prefix := "Sticker"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+								elem = elem[len(prefix):]
+							} else {
+								break
+							}
+
+							// Leaf: SendSticker
+							s.handleSendStickerRequest(args, w, r)
+							return
+						case 'V': // Prefix: "V"
+							if prefix := "V"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+								elem = elem[len(prefix):]
+							} else {
+								break
+							}
+
+							if len(elem) == 0 {
+								s.handleSendVideoRequest(args, w, r)
+								return
+							}
+							switch elem[0] {
+							case 'e': // Prefix: "enue"
+								if prefix := "enue"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+									elem = elem[len(prefix):]
+								} else {
+									break
+								}
+
+								if len(elem) == 0 {
+									s.handleSendVenueRequest(args, w, r)
+									return
+								}
+								switch elem[0] {
+								case 'i': // Prefix: "ideo"
+									if prefix := "ideo"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+										elem = elem[len(prefix):]
+									} else {
+										break
+									}
+
+									// Leaf: SendVideo
+									s.handleSendVideoRequest(args, w, r)
+									return
+								}
+							case 'i': // Prefix: "ideo"
+								if prefix := "ideo"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+									elem = elem[len(prefix):]
+								} else {
+									break
+								}
+
+								if len(elem) == 0 {
+									s.handleSendVideoRequest(args, w, r)
+									return
+								}
+								switch elem[0] {
+								case 'N': // Prefix: "Note"
+									if prefix := "Note"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+										elem = elem[len(prefix):]
+									} else {
+										break
+									}
+
+									// Leaf: SendVideoNote
+									s.handleSendVideoNoteRequest(args, w, r)
+									return
+								}
+							case 'o': // Prefix: "oice"
+								if prefix := "oice"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+									elem = elem[len(prefix):]
+								} else {
+									break
+								}
+
+								// Leaf: SendVoice
+								s.handleSendVoiceRequest(args, w, r)
+								return
+							}
+						case 't': // Prefix: "tChatAdministratorCustomTitle"
+							if prefix := "tChatAdministratorCustomTitle"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+								elem = elem[len(prefix):]
+							} else {
+								break
+							}
+
+							// Leaf: SetChatAdministratorCustomTitle
+							s.handleSetChatAdministratorCustomTitleRequest(args, w, r)
+							return
+						}
+					case 't': // Prefix: "t"
+						if prefix := "t"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+							elem = elem[len(prefix):]
+						} else {
+							break
+						}
+
+						if len(elem) == 0 {
+							s.handleSetGameScoreRequest(args, w, r)
+							return
+						}
+						switch elem[0] {
+						case 'C': // Prefix: "Chat"
+							if prefix := "Chat"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+								elem = elem[len(prefix):]
+							} else {
+								break
+							}
+
+							if len(elem) == 0 {
+								s.handleSetChatDescriptionRequest(args, w, r)
+								return
+							}
+							switch elem[0] {
+							case 'A': // Prefix: "AdministratorCustomTitle"
+								if prefix := "AdministratorCustomTitle"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+									elem = elem[len(prefix):]
+								} else {
+									break
+								}
+
+								if len(elem) == 0 {
+									s.handleSetChatAdministratorCustomTitleRequest(args, w, r)
+									return
+								}
+								switch elem[0] {
+								case 'D': // Prefix: "Description"
+									if prefix := "Description"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+										elem = elem[len(prefix):]
+									} else {
+										break
+									}
+
+									// Leaf: SetChatDescription
+									s.handleSetChatDescriptionRequest(args, w, r)
+									return
+								}
+							case 'D': // Prefix: "Description"
+								if prefix := "Description"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+									elem = elem[len(prefix):]
+								} else {
+									break
+								}
+
+								// Leaf: SetChatDescription
+								s.handleSetChatDescriptionRequest(args, w, r)
+								return
+							case 'G': // Prefix: "GameScore"
+								if prefix := "GameScore"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+									elem = elem[len(prefix):]
+								} else {
+									break
+								}
+
+								// Leaf: SetGameScore
+								s.handleSetGameScoreRequest(args, w, r)
+								return
+							case 'P': // Prefix: "P"
+								if prefix := "P"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+									elem = elem[len(prefix):]
+								} else {
+									break
+								}
+
+								if len(elem) == 0 {
+									s.handleSetChatPhotoRequest(args, w, r)
+									return
+								}
+								switch elem[0] {
+								case 'e': // Prefix: "ermissions"
+									if prefix := "ermissions"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+										elem = elem[len(prefix):]
+									} else {
+										break
+									}
+
+									if len(elem) == 0 {
+										s.handleSetChatPermissionsRequest(args, w, r)
+										return
+									}
+									switch elem[0] {
+									case 'h': // Prefix: "hoto"
+										if prefix := "hoto"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+											elem = elem[len(prefix):]
+										} else {
+											break
+										}
+
+										// Leaf: SetChatPhoto
+										s.handleSetChatPhotoRequest(args, w, r)
+										return
+									}
+								case 'h': // Prefix: "hoto"
+									if prefix := "hoto"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+										elem = elem[len(prefix):]
+									} else {
+										break
+									}
+
+									// Leaf: SetChatPhoto
+									s.handleSetChatPhotoRequest(args, w, r)
+									return
+								}
+							case 'S': // Prefix: "StickerSet"
+								if prefix := "StickerSet"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+									elem = elem[len(prefix):]
+								} else {
+									break
+								}
+
+								// Leaf: SetChatStickerSet
+								s.handleSetChatStickerSetRequest(args, w, r)
+								return
+							case 'T': // Prefix: "Title"
+								if prefix := "Title"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+									elem = elem[len(prefix):]
+								} else {
+									break
+								}
+
+								// Leaf: SetChatTitle
+								s.handleSetChatTitleRequest(args, w, r)
+								return
+							}
+						case 'G': // Prefix: "GameScore"
+							if prefix := "GameScore"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+								elem = elem[len(prefix):]
+							} else {
+								break
+							}
+
+							// Leaf: SetGameScore
+							s.handleSetGameScoreRequest(args, w, r)
+							return
+						case 'M': // Prefix: "MyCommands"
+							if prefix := "MyCommands"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+								elem = elem[len(prefix):]
+							} else {
+								break
+							}
+
+							// Leaf: SetMyCommands
+							s.handleSetMyCommandsRequest(args, w, r)
+							return
+						case 'P': // Prefix: "PassportDataErrors"
+							if prefix := "PassportDataErrors"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+								elem = elem[len(prefix):]
+							} else {
+								break
+							}
+
+							// Leaf: SetPassportDataErrors
+							s.handleSetPassportDataErrorsRequest(args, w, r)
+							return
+						case 'S': // Prefix: "Sticker"
+							if prefix := "Sticker"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+								elem = elem[len(prefix):]
+							} else {
+								break
+							}
+
+							if len(elem) == 0 {
+								s.handleSetStickerSetThumbRequest(args, w, r)
+								return
+							}
+							switch elem[0] {
+							case 'P': // Prefix: "PositionInSet"
+								if prefix := "PositionInSet"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+									elem = elem[len(prefix):]
+								} else {
+									break
+								}
+
+								if len(elem) == 0 {
+									s.handleSetStickerPositionInSetRequest(args, w, r)
+									return
+								}
+								switch elem[0] {
+								case 'S': // Prefix: "SetThumb"
+									if prefix := "SetThumb"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+										elem = elem[len(prefix):]
+									} else {
+										break
+									}
+
+									// Leaf: SetStickerSetThumb
+									s.handleSetStickerSetThumbRequest(args, w, r)
+									return
+								}
+							case 'S': // Prefix: "SetThumb"
+								if prefix := "SetThumb"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+									elem = elem[len(prefix):]
+								} else {
+									break
+								}
+
+								// Leaf: SetStickerSetThumb
+								s.handleSetStickerSetThumbRequest(args, w, r)
+								return
+							}
+						case 'W': // Prefix: "Webhook"
+							if prefix := "Webhook"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+								elem = elem[len(prefix):]
+							} else {
+								break
+							}
+
+							// Leaf: SetWebhook
+							s.handleSetWebhookRequest(args, w, r)
+							return
+						case 'o': // Prefix: "opMessageLiveLocation"
+							if prefix := "opMessageLiveLocation"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+								elem = elem[len(prefix):]
+							} else {
+								break
+							}
+
+							// Leaf: StopMessageLiveLocation
+							s.handleStopMessageLiveLocationRequest(args, w, r)
+							return
+						}
+					}
+				case 't': // Prefix: "top"
+					if prefix := "top"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+						elem = elem[len(prefix):]
+					} else {
+						break
+					}
+
+					if len(elem) == 0 {
+						s.handleStopPollRequest(args, w, r)
+						return
+					}
+					switch elem[0] {
+					case 'M': // Prefix: "MessageLiveLocation"
+						if prefix := "MessageLiveLocation"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+							elem = elem[len(prefix):]
+						} else {
+							break
+						}
+
+						if len(elem) == 0 {
+							s.handleStopMessageLiveLocationRequest(args, w, r)
+							return
+						}
+						switch elem[0] {
+						case 'P': // Prefix: "Poll"
+							if prefix := "Poll"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+								elem = elem[len(prefix):]
+							} else {
+								break
+							}
+
+							// Leaf: StopPoll
+							s.handleStopPollRequest(args, w, r)
+							return
+						}
+					case 'P': // Prefix: "Poll"
+						if prefix := "Poll"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+							elem = elem[len(prefix):]
+						} else {
+							break
+						}
+
+						// Leaf: StopPoll
+						s.handleStopPollRequest(args, w, r)
+						return
+					}
+				}
+			case 'u': // Prefix: "u"
+				if prefix := "u"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+					elem = elem[len(prefix):]
+				} else {
+					break
+				}
+
+				if len(elem) == 0 {
+					s.handleUploadStickerFileRequest(args, w, r)
+					return
+				}
+				switch elem[0] {
+				case 'n': // Prefix: "n"
+					if prefix := "n"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+						elem = elem[len(prefix):]
+					} else {
+						break
+					}
+
+					if len(elem) == 0 {
+						s.handleUnpinAllChatMessagesRequest(args, w, r)
+						return
+					}
+					switch elem[0] {
+					case 'b': // Prefix: "banChat"
+						if prefix := "banChat"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+							elem = elem[len(prefix):]
+						} else {
+							break
+						}
+
+						if len(elem) == 0 {
+							s.handleUnbanChatSenderChatRequest(args, w, r)
+							return
+						}
+						switch elem[0] {
+						case 'M': // Prefix: "Member"
+							if prefix := "Member"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+								elem = elem[len(prefix):]
+							} else {
+								break
+							}
+
+							if len(elem) == 0 {
+								s.handleUnbanChatMemberRequest(args, w, r)
+								return
+							}
+							switch elem[0] {
+							case 'S': // Prefix: "SenderChat"
+								if prefix := "SenderChat"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+									elem = elem[len(prefix):]
+								} else {
+									break
+								}
+
+								// Leaf: UnbanChatSenderChat
+								s.handleUnbanChatSenderChatRequest(args, w, r)
+								return
+							}
+						case 'S': // Prefix: "SenderChat"
+							if prefix := "SenderChat"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+								elem = elem[len(prefix):]
+							} else {
+								break
+							}
+
+							// Leaf: UnbanChatSenderChat
+							s.handleUnbanChatSenderChatRequest(args, w, r)
+							return
+						case 'p': // Prefix: "pinAllChatMessages"
+							if prefix := "pinAllChatMessages"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+								elem = elem[len(prefix):]
+							} else {
+								break
+							}
+
+							// Leaf: UnpinAllChatMessages
+							s.handleUnpinAllChatMessagesRequest(args, w, r)
+							return
+						}
+					case 'p': // Prefix: "p"
+						if prefix := "p"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+							elem = elem[len(prefix):]
+						} else {
+							break
+						}
+
+						if len(elem) == 0 {
+							s.handleUploadStickerFileRequest(args, w, r)
+							return
+						}
+						switch elem[0] {
+						case 'i': // Prefix: "in"
+							if prefix := "in"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+								elem = elem[len(prefix):]
+							} else {
+								break
+							}
+
+							if len(elem) == 0 {
+								s.handleUnpinChatMessageRequest(args, w, r)
+								return
+							}
+							switch elem[0] {
+							case 'A': // Prefix: "AllChatMessages"
+								if prefix := "AllChatMessages"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+									elem = elem[len(prefix):]
+								} else {
+									break
+								}
+
+								if len(elem) == 0 {
+									s.handleUnpinAllChatMessagesRequest(args, w, r)
+									return
+								}
+								switch elem[0] {
+								case 'C': // Prefix: "ChatMessage"
+									if prefix := "ChatMessage"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+										elem = elem[len(prefix):]
+									} else {
+										break
+									}
+
+									// Leaf: UnpinChatMessage
+									s.handleUnpinChatMessageRequest(args, w, r)
+									return
+								}
+							case 'C': // Prefix: "ChatMessage"
+								if prefix := "ChatMessage"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+									elem = elem[len(prefix):]
+								} else {
+									break
+								}
+
+								// Leaf: UnpinChatMessage
+								s.handleUnpinChatMessageRequest(args, w, r)
+								return
+							case 'l': // Prefix: "loadStickerFile"
+								if prefix := "loadStickerFile"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+									elem = elem[len(prefix):]
+								} else {
+									break
+								}
+
+								// Leaf: UploadStickerFile
+								s.handleUploadStickerFileRequest(args, w, r)
+								return
+							}
+						case 'l': // Prefix: "loadStickerFile"
+							if prefix := "loadStickerFile"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+								elem = elem[len(prefix):]
+							} else {
+								break
+							}
+
+							// Leaf: UploadStickerFile
+							s.handleUploadStickerFileRequest(args, w, r)
+							return
+						}
+					}
+				case 'p': // Prefix: "ploadStickerFile"
+					if prefix := "ploadStickerFile"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+						elem = elem[len(prefix):]
+					} else {
+						break
+					}
+
+					// Leaf: UploadStickerFile
+					s.handleUploadStickerFileRequest(args, w, r)
+					return
+				}
+			}
+		}
 	}
+	s.notFound(w, r)
 }

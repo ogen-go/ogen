@@ -66,251 +66,497 @@ func (s *Server) notFound(w http.ResponseWriter, r *http.Request) {
 	http.NotFound(w, r)
 }
 
-func skipSlash(p string) string {
-	if len(p) > 0 && p[0] == '/' {
-		return p[1:]
-	}
-	return p
-}
-
-// nextElem return next path element from p and forwarded p.
-func nextElem(p string) (elem, next string) {
-	p = skipSlash(p)
-	idx := strings.IndexByte(p, '/')
-	if idx < 0 {
-		idx = len(p)
-	}
-	return p[:idx], p[idx:]
-}
-
 // ServeHTTP serves http request as defined by OpenAPI v3 specification,
 // calling handler that matches the path or returning not found error.
 func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
-	p := r.URL.Path
-	if len(p) == 0 {
+	elem := r.URL.Path
+	if len(elem) == 0 {
 		s.notFound(w, r)
 		return
 	}
 
-	var (
-		elem string            // current element, without slashes
-		args map[string]string // lazily initialized
-	)
-
+	args := map[string]string{}
 	// Static code generated router with unwrapped path search.
 	switch r.Method {
-	case "GET":
-		// Root edge.
-		elem, p = nextElem(p)
-		switch elem {
-		case "balloon": // -> 1
-			// Edge: 1, path: "balloon".
-			elem, p = nextElem(p)
-			if len(elem) == 0 {
-				// GET /balloon.
-				s.handleDescribeBalloonConfigRequest(args, w, r)
-				return
-			}
-			switch elem {
-			case "statistics": // -> 2
-				// GET /balloon/statistics
-				s.handleDescribeBalloonStatsRequest(args, w, r)
-				return
-			default:
-				// GET /balloon.
-				s.handleDescribeBalloonConfigRequest(args, w, r)
-				return
-			}
-		case "": // -> 3
-			// GET /
-			s.handleDescribeInstanceRequest(args, w, r)
-			return
-		case "vm": // -> 4
-			// Edge: 4, path: "vm".
-			elem, p = nextElem(p)
-			switch elem {
-			case "config": // -> 5
-				// GET /vm/config
-				s.handleGetExportVmConfigRequest(args, w, r)
-				return
-			default:
-				s.notFound(w, r)
-				return
-			}
-		case "machine-config": // -> 6
-			// GET /machine-config
-			s.handleGetMachineConfigurationRequest(args, w, r)
-			return
-		case "mmds": // -> 7
-			// GET /mmds
-			s.handleMmdsGetRequest(args, w, r)
-			return
-		default:
-			s.notFound(w, r)
-			return
-		}
-	case "PATCH":
-		// Root edge.
-		elem, p = nextElem(p)
-		switch elem {
-		case "mmds": // -> 1
-			// PATCH /mmds
-			s.handleMmdsPatchRequest(args, w, r)
-			return
-		case "balloon": // -> 2
-			// Edge: 2, path: "balloon".
-			elem, p = nextElem(p)
-			if len(elem) == 0 {
-				// PATCH /balloon.
-				s.handlePatchBalloonRequest(args, w, r)
-				return
-			}
-			switch elem {
-			case "statistics": // -> 3
-				// PATCH /balloon/statistics
-				s.handlePatchBalloonStatsIntervalRequest(args, w, r)
-				return
-			default:
-				// PATCH /balloon.
-				s.handlePatchBalloonRequest(args, w, r)
-				return
-			}
-		case "drives": // -> 4
-			// Edge: 4, path: "drives".
-			elem, p = nextElem(p)
-			switch elem {
-			default:
-				if args == nil {
-					args = make(map[string]string)
-				}
-				args["drive_id"] = elem
-				// PATCH /drives/{drive_id}
-				s.handlePatchGuestDriveByIDRequest(args, w, r)
-				return
-			}
-		case "network-interfaces": // -> 6
-			// Edge: 6, path: "network-interfaces".
-			elem, p = nextElem(p)
-			switch elem {
-			default:
-				if args == nil {
-					args = make(map[string]string)
-				}
-				args["iface_id"] = elem
-				// PATCH /network-interfaces/{iface_id}
-				s.handlePatchGuestNetworkInterfaceByIDRequest(args, w, r)
-				return
-			}
-		case "machine-config": // -> 8
-			// PATCH /machine-config
-			s.handlePatchMachineConfigurationRequest(args, w, r)
-			return
-		case "vm": // -> 9
-			// PATCH /vm
-			s.handlePatchVmRequest(args, w, r)
-			return
-		default:
-			s.notFound(w, r)
-			return
-		}
 	case "PUT":
-		// Root edge.
-		elem, p = nextElem(p)
-		switch elem {
-		case "snapshot": // -> 1
-			// Edge: 1, path: "snapshot".
-			elem, p = nextElem(p)
-			switch elem {
-			case "create": // -> 2
-				// PUT /snapshot/create
-				s.handleCreateSnapshotRequest(args, w, r)
-				return
-			case "load": // -> 4
-				// PUT /snapshot/load
-				s.handleLoadSnapshotRequest(args, w, r)
-				return
-			default:
-				s.notFound(w, r)
-				return
+		if len(elem) == 0 {
+			break
+		}
+		switch elem[0] {
+		case '/': // Prefix: "/"
+			if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+				elem = elem[len(prefix):]
+			} else {
+				break
 			}
-		case "actions": // -> 3
-			// PUT /actions
-			s.handleCreateSyncActionRequest(args, w, r)
-			return
-		case "mmds": // -> 5
-			// Edge: 5, path: "mmds".
-			elem, p = nextElem(p)
+
 			if len(elem) == 0 {
-				// PUT /mmds.
-				s.handleMmdsPutRequest(args, w, r)
+				s.handleCreateSyncActionRequest(args, w, r)
 				return
 			}
-			switch elem {
-			case "config": // -> 6
-				// PUT /mmds/config
-				s.handleMmdsConfigPutRequest(args, w, r)
-				return
-			default:
-				// PUT /mmds.
-				s.handleMmdsPutRequest(args, w, r)
-				return
-			}
-		case "balloon": // -> 7
-			// PUT /balloon
-			s.handlePutBalloonRequest(args, w, r)
-			return
-		case "boot-source": // -> 8
-			// PUT /boot-source
-			s.handlePutGuestBootSourceRequest(args, w, r)
-			return
-		case "drives": // -> 9
-			// Edge: 9, path: "drives".
-			elem, p = nextElem(p)
-			switch elem {
-			default:
-				if args == nil {
-					args = make(map[string]string)
+			switch elem[0] {
+			case 'a': // Prefix: "actions"
+				if prefix := "actions"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+					elem = elem[len(prefix):]
+				} else {
+					break
 				}
+
+				// Leaf: CreateSyncAction
+				s.handleCreateSyncActionRequest(args, w, r)
+				return
+			case 'b': // Prefix: "b"
+				if prefix := "b"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+					elem = elem[len(prefix):]
+				} else {
+					break
+				}
+
+				if len(elem) == 0 {
+					s.handlePutGuestBootSourceRequest(args, w, r)
+					return
+				}
+				switch elem[0] {
+				case 'a': // Prefix: "alloon"
+					if prefix := "alloon"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+						elem = elem[len(prefix):]
+					} else {
+						break
+					}
+
+					if len(elem) == 0 {
+						s.handlePutBalloonRequest(args, w, r)
+						return
+					}
+					switch elem[0] {
+					case 'o': // Prefix: "oot-source"
+						if prefix := "oot-source"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+							elem = elem[len(prefix):]
+						} else {
+							break
+						}
+
+						// Leaf: PutGuestBootSource
+						s.handlePutGuestBootSourceRequest(args, w, r)
+						return
+					}
+				case 'o': // Prefix: "oot-source"
+					if prefix := "oot-source"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+						elem = elem[len(prefix):]
+					} else {
+						break
+					}
+
+					// Leaf: PutGuestBootSource
+					s.handlePutGuestBootSourceRequest(args, w, r)
+					return
+				}
+			case 'd': // Prefix: "drives/"
+				if prefix := "drives/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+					elem = elem[len(prefix):]
+				} else {
+					break
+				}
+
+				// Param: "drive_id"
+				// Leaf parameter
 				args["drive_id"] = elem
-				// PUT /drives/{drive_id}
+
+				// Leaf: PutGuestDriveByID
 				s.handlePutGuestDriveByIDRequest(args, w, r)
 				return
-			}
-		case "network-interfaces": // -> 11
-			// Edge: 11, path: "network-interfaces".
-			elem, p = nextElem(p)
-			switch elem {
-			default:
-				if args == nil {
-					args = make(map[string]string)
+			case 'l': // Prefix: "logger"
+				if prefix := "logger"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+					elem = elem[len(prefix):]
+				} else {
+					break
 				}
+
+				// Leaf: PutLogger
+				s.handlePutLoggerRequest(args, w, r)
+				return
+			case 'm': // Prefix: "m"
+				if prefix := "m"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+					elem = elem[len(prefix):]
+				} else {
+					break
+				}
+
+				if len(elem) == 0 {
+					s.handlePutMachineConfigurationRequest(args, w, r)
+					return
+				}
+				switch elem[0] {
+				case 'a': // Prefix: "achine-config"
+					if prefix := "achine-config"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+						elem = elem[len(prefix):]
+					} else {
+						break
+					}
+
+					// Leaf: PutMachineConfiguration
+					s.handlePutMachineConfigurationRequest(args, w, r)
+					return
+				case 'e': // Prefix: "etrics"
+					if prefix := "etrics"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+						elem = elem[len(prefix):]
+					} else {
+						break
+					}
+
+					// Leaf: PutMetrics
+					s.handlePutMetricsRequest(args, w, r)
+					return
+				case 'm': // Prefix: "mds"
+					if prefix := "mds"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+						elem = elem[len(prefix):]
+					} else {
+						break
+					}
+
+					if len(elem) == 0 {
+						s.handleMmdsPutRequest(args, w, r)
+						return
+					}
+					switch elem[0] {
+					case '/': // Prefix: "/config"
+						if prefix := "/config"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+							elem = elem[len(prefix):]
+						} else {
+							break
+						}
+
+						// Leaf: MmdsConfigPut
+						s.handleMmdsConfigPutRequest(args, w, r)
+						return
+					case 'a': // Prefix: "achine-config"
+						if prefix := "achine-config"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+							elem = elem[len(prefix):]
+						} else {
+							break
+						}
+
+						// Leaf: PutMachineConfiguration
+						s.handlePutMachineConfigurationRequest(args, w, r)
+						return
+					}
+				}
+			case 'n': // Prefix: "network-interfaces/"
+				if prefix := "network-interfaces/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+					elem = elem[len(prefix):]
+				} else {
+					break
+				}
+
+				// Param: "iface_id"
+				// Leaf parameter
 				args["iface_id"] = elem
-				// PUT /network-interfaces/{iface_id}
+
+				// Leaf: PutGuestNetworkInterfaceByID
 				s.handlePutGuestNetworkInterfaceByIDRequest(args, w, r)
 				return
+			case 's': // Prefix: "snapshot/"
+				if prefix := "snapshot/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+					elem = elem[len(prefix):]
+				} else {
+					break
+				}
+
+				if len(elem) == 0 {
+					s.handleLoadSnapshotRequest(args, w, r)
+					return
+				}
+				switch elem[0] {
+				case 'c': // Prefix: "create"
+					if prefix := "create"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+						elem = elem[len(prefix):]
+					} else {
+						break
+					}
+
+					if len(elem) == 0 {
+						s.handleCreateSnapshotRequest(args, w, r)
+						return
+					}
+					switch elem[0] {
+					case 'a': // Prefix: "actions"
+						if prefix := "actions"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+							elem = elem[len(prefix):]
+						} else {
+							break
+						}
+
+						// Leaf: CreateSyncAction
+						s.handleCreateSyncActionRequest(args, w, r)
+						return
+					case 'l': // Prefix: "load"
+						if prefix := "load"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+							elem = elem[len(prefix):]
+						} else {
+							break
+						}
+
+						// Leaf: LoadSnapshot
+						s.handleLoadSnapshotRequest(args, w, r)
+						return
+					}
+				case 'l': // Prefix: "load"
+					if prefix := "load"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+						elem = elem[len(prefix):]
+					} else {
+						break
+					}
+
+					// Leaf: LoadSnapshot
+					s.handleLoadSnapshotRequest(args, w, r)
+					return
+				}
+			case 'v': // Prefix: "vsock"
+				if prefix := "vsock"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+					elem = elem[len(prefix):]
+				} else {
+					break
+				}
+
+				// Leaf: PutGuestVsock
+				s.handlePutGuestVsockRequest(args, w, r)
+				return
 			}
-		case "vsock": // -> 13
-			// PUT /vsock
-			s.handlePutGuestVsockRequest(args, w, r)
-			return
-		case "logger": // -> 14
-			// PUT /logger
-			s.handlePutLoggerRequest(args, w, r)
-			return
-		case "machine-config": // -> 15
-			// PUT /machine-config
-			s.handlePutMachineConfigurationRequest(args, w, r)
-			return
-		case "metrics": // -> 16
-			// PUT /metrics
-			s.handlePutMetricsRequest(args, w, r)
-			return
-		default:
-			s.notFound(w, r)
-			return
 		}
-	default:
-		s.notFound(w, r)
-		return
+	case "GET":
+		if len(elem) == 0 {
+			break
+		}
+		switch elem[0] {
+		case '/': // Prefix: "/"
+			if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+				elem = elem[len(prefix):]
+			} else {
+				break
+			}
+
+			if len(elem) == 0 {
+				s.handleDescribeInstanceRequest(args, w, r)
+				return
+			}
+			switch elem[0] {
+			case 'b': // Prefix: "balloon"
+				if prefix := "balloon"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+					elem = elem[len(prefix):]
+				} else {
+					break
+				}
+
+				if len(elem) == 0 {
+					s.handleDescribeBalloonConfigRequest(args, w, r)
+					return
+				}
+				switch elem[0] {
+				case '/': // Prefix: "/statistics"
+					if prefix := "/statistics"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+						elem = elem[len(prefix):]
+					} else {
+						break
+					}
+
+					// Leaf: DescribeBalloonStats
+					s.handleDescribeBalloonStatsRequest(args, w, r)
+					return
+				}
+			case 'm': // Prefix: "m"
+				if prefix := "m"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+					elem = elem[len(prefix):]
+				} else {
+					break
+				}
+
+				if len(elem) == 0 {
+					s.handleMmdsGetRequest(args, w, r)
+					return
+				}
+				switch elem[0] {
+				case 'a': // Prefix: "achine-config"
+					if prefix := "achine-config"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+						elem = elem[len(prefix):]
+					} else {
+						break
+					}
+
+					if len(elem) == 0 {
+						s.handleGetMachineConfigurationRequest(args, w, r)
+						return
+					}
+					switch elem[0] {
+					case 'm': // Prefix: "mds"
+						if prefix := "mds"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+							elem = elem[len(prefix):]
+						} else {
+							break
+						}
+
+						// Leaf: MmdsGet
+						s.handleMmdsGetRequest(args, w, r)
+						return
+					}
+				case 'm': // Prefix: "mds"
+					if prefix := "mds"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+						elem = elem[len(prefix):]
+					} else {
+						break
+					}
+
+					// Leaf: MmdsGet
+					s.handleMmdsGetRequest(args, w, r)
+					return
+				}
+			case 'v': // Prefix: "vm/config"
+				if prefix := "vm/config"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+					elem = elem[len(prefix):]
+				} else {
+					break
+				}
+
+				// Leaf: GetExportVmConfig
+				s.handleGetExportVmConfigRequest(args, w, r)
+				return
+			}
+		}
+	case "PATCH":
+		if len(elem) == 0 {
+			break
+		}
+		switch elem[0] {
+		case '/': // Prefix: "/"
+			if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+				elem = elem[len(prefix):]
+			} else {
+				break
+			}
+
+			if len(elem) == 0 {
+				s.handlePatchBalloonRequest(args, w, r)
+				return
+			}
+			switch elem[0] {
+			case 'b': // Prefix: "balloon"
+				if prefix := "balloon"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+					elem = elem[len(prefix):]
+				} else {
+					break
+				}
+
+				if len(elem) == 0 {
+					s.handlePatchBalloonRequest(args, w, r)
+					return
+				}
+				switch elem[0] {
+				case '/': // Prefix: "/statistics"
+					if prefix := "/statistics"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+						elem = elem[len(prefix):]
+					} else {
+						break
+					}
+
+					// Leaf: PatchBalloonStatsInterval
+					s.handlePatchBalloonStatsIntervalRequest(args, w, r)
+					return
+				}
+			case 'd': // Prefix: "drives/"
+				if prefix := "drives/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+					elem = elem[len(prefix):]
+				} else {
+					break
+				}
+
+				// Param: "drive_id"
+				// Leaf parameter
+				args["drive_id"] = elem
+
+				// Leaf: PatchGuestDriveByID
+				s.handlePatchGuestDriveByIDRequest(args, w, r)
+				return
+			case 'm': // Prefix: "m"
+				if prefix := "m"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+					elem = elem[len(prefix):]
+				} else {
+					break
+				}
+
+				if len(elem) == 0 {
+					s.handlePatchMachineConfigurationRequest(args, w, r)
+					return
+				}
+				switch elem[0] {
+				case 'a': // Prefix: "achine-config"
+					if prefix := "achine-config"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+						elem = elem[len(prefix):]
+					} else {
+						break
+					}
+
+					// Leaf: PatchMachineConfiguration
+					s.handlePatchMachineConfigurationRequest(args, w, r)
+					return
+				case 'm': // Prefix: "mds"
+					if prefix := "mds"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+						elem = elem[len(prefix):]
+					} else {
+						break
+					}
+
+					if len(elem) == 0 {
+						s.handleMmdsPatchRequest(args, w, r)
+						return
+					}
+					switch elem[0] {
+					case 'a': // Prefix: "achine-config"
+						if prefix := "achine-config"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+							elem = elem[len(prefix):]
+						} else {
+							break
+						}
+
+						// Leaf: PatchMachineConfiguration
+						s.handlePatchMachineConfigurationRequest(args, w, r)
+						return
+					case 'b': // Prefix: "balloon"
+						if prefix := "balloon"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+							elem = elem[len(prefix):]
+						} else {
+							break
+						}
+
+						// Leaf: PatchBalloon
+						s.handlePatchBalloonRequest(args, w, r)
+						return
+					}
+				}
+			case 'n': // Prefix: "network-interfaces/"
+				if prefix := "network-interfaces/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+					elem = elem[len(prefix):]
+				} else {
+					break
+				}
+
+				// Param: "iface_id"
+				// Leaf parameter
+				args["iface_id"] = elem
+
+				// Leaf: PatchGuestNetworkInterfaceByID
+				s.handlePatchGuestNetworkInterfaceByIDRequest(args, w, r)
+				return
+			case 'v': // Prefix: "vm"
+				if prefix := "vm"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+					elem = elem[len(prefix):]
+				} else {
+					break
+				}
+
+				// Leaf: PatchVm
+				s.handlePatchVmRequest(args, w, r)
+				return
+			}
+		}
 	}
+	s.notFound(w, r)
 }

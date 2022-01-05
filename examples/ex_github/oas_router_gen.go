@@ -66,9096 +66,19364 @@ func (s *Server) notFound(w http.ResponseWriter, r *http.Request) {
 	http.NotFound(w, r)
 }
 
-func skipSlash(p string) string {
-	if len(p) > 0 && p[0] == '/' {
-		return p[1:]
-	}
-	return p
-}
-
-// nextElem return next path element from p and forwarded p.
-func nextElem(p string) (elem, next string) {
-	p = skipSlash(p)
-	idx := strings.IndexByte(p, '/')
-	if idx < 0 {
-		idx = len(p)
-	}
-	return p[:idx], p[idx:]
-}
-
 // ServeHTTP serves http request as defined by OpenAPI v3 specification,
 // calling handler that matches the path or returning not found error.
 func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
-	p := r.URL.Path
-	if len(p) == 0 {
+	elem := r.URL.Path
+	if len(elem) == 0 {
 		s.notFound(w, r)
 		return
 	}
 
-	var (
-		elem string            // current element, without slashes
-		args map[string]string // lazily initialized
-	)
-
+	args := map[string]string{}
 	// Static code generated router with unwrapped path search.
 	switch r.Method {
-	case "DELETE":
-		// Root edge.
-		elem, p = nextElem(p)
-		switch elem {
-		case "repos": // -> 1
-			// Edge: 1, path: "repos".
-			elem, p = nextElem(p)
-			switch elem {
-			default:
-				if args == nil {
-					args = make(map[string]string)
-				}
-				args["owner"] = elem
-				// Edge: 2, path: "".
-				elem, p = nextElem(p)
-				switch elem {
-				case "": // -> 3
-					// Edge: 3, path: "".
-					elem, p = nextElem(p)
-					switch elem {
-					default:
-						if args == nil {
-							args = make(map[string]string)
-						}
-						args["repo"] = elem
-						// Edge: 4, path: "".
-						elem, p = nextElem(p)
-						if len(elem) == 0 {
-							// DELETE /repos/{owner}/{repo}.
-							s.handleReposDeleteRequest(args, w, r)
-							return
-						}
-						switch elem {
-						case "actions": // -> 5
-							// Edge: 5, path: "actions".
-							elem, p = nextElem(p)
-							switch elem {
-							case "artifacts": // -> 6
-								// Edge: 6, path: "artifacts".
-								elem, p = nextElem(p)
-								switch elem {
-								default:
-									if args == nil {
-										args = make(map[string]string)
-									}
-									args["artifact_id"] = elem
-									// DELETE /repos/{owner}/{repo}/actions/artifacts/{artifact_id}
-									s.handleActionsDeleteArtifactRequest(args, w, r)
-									return
-								}
-							case "secrets": // -> 19
-								// Edge: 19, path: "secrets".
-								elem, p = nextElem(p)
-								switch elem {
-								default:
-									if args == nil {
-										args = make(map[string]string)
-									}
-									args["secret_name"] = elem
-									// DELETE /repos/{owner}/{repo}/actions/secrets/{secret_name}
-									s.handleActionsDeleteRepoSecretRequest(args, w, r)
-									return
-								}
-							case "runners": // -> 23
-								// Edge: 23, path: "runners".
-								elem, p = nextElem(p)
-								switch elem {
-								default:
-									if args == nil {
-										args = make(map[string]string)
-									}
-									args["runner_id"] = elem
-									// DELETE /repos/{owner}/{repo}/actions/runners/{runner_id}
-									s.handleActionsDeleteSelfHostedRunnerFromRepoRequest(args, w, r)
-									return
-								}
-							case "runs": // -> 27
-								// Edge: 27, path: "runs".
-								elem, p = nextElem(p)
-								switch elem {
-								default:
-									if args == nil {
-										args = make(map[string]string)
-									}
-									args["run_id"] = elem
-									// Edge: 28, path: "".
-									elem, p = nextElem(p)
-									if len(elem) == 0 {
-										// DELETE /repos/{owner}/{repo}/actions/runs/{run_id}.
-										s.handleActionsDeleteWorkflowRunRequest(args, w, r)
-										return
-									}
-									switch elem {
-									case "logs": // -> 29
-										// DELETE /repos/{owner}/{repo}/actions/runs/{run_id}/logs
-										s.handleActionsDeleteWorkflowRunLogsRequest(args, w, r)
-										return
-									default:
-										// DELETE /repos/{owner}/{repo}/actions/runs/{run_id}.
-										s.handleActionsDeleteWorkflowRunRequest(args, w, r)
-										return
-									}
-								}
-							default:
-								s.notFound(w, r)
-								return
-							}
-						case "subscription": // -> 39
-							// DELETE /repos/{owner}/{repo}/subscription
-							s.handleActivityDeleteRepoSubscriptionRequest(args, w, r)
-							return
-						case "code-scanning": // -> 63
-							// Edge: 63, path: "code-scanning".
-							elem, p = nextElem(p)
-							switch elem {
-							case "analyses": // -> 64
-								// Edge: 64, path: "analyses".
-								elem, p = nextElem(p)
-								switch elem {
-								default:
-									if args == nil {
-										args = make(map[string]string)
-									}
-									args["analysis_id"] = elem
-									// DELETE /repos/{owner}/{repo}/code-scanning/analyses/{analysis_id}
-									s.handleCodeScanningDeleteAnalysisRequest(args, w, r)
-									return
-								}
-							default:
-								s.notFound(w, r)
-								return
-							}
-						case "git": // -> 93
-							// Edge: 93, path: "git".
-							elem, p = nextElem(p)
-							switch elem {
-							case "refs": // -> 94
-								// Edge: 94, path: "refs".
-								elem, p = nextElem(p)
-								switch elem {
-								default:
-									if args == nil {
-										args = make(map[string]string)
-									}
-									args["ref"] = elem
-									// DELETE /repos/{owner}/{repo}/git/refs/{ref}
-									s.handleGitDeleteRefRequest(args, w, r)
-									return
-								}
-							default:
-								s.notFound(w, r)
-								return
-							}
-						case "interaction-limits": // -> 98
-							// DELETE /repos/{owner}/{repo}/interaction-limits
-							s.handleInteractionsRemoveRestrictionsForRepoRequest(args, w, r)
-							return
-						case "issues": // -> 99
-							// Edge: 99, path: "issues".
-							elem, p = nextElem(p)
-							switch elem {
-							case "comments": // -> 100
-								// Edge: 100, path: "comments".
-								elem, p = nextElem(p)
-								switch elem {
-								default:
-									if args == nil {
-										args = make(map[string]string)
-									}
-									args["comment_id"] = elem
-									// Edge: 101, path: "".
-									elem, p = nextElem(p)
-									if len(elem) == 0 {
-										// DELETE /repos/{owner}/{repo}/issues/comments/{comment_id}.
-										s.handleIssuesDeleteCommentRequest(args, w, r)
-										return
-									}
-									switch elem {
-									case "reactions": // -> 185
-										// Edge: 185, path: "reactions".
-										elem, p = nextElem(p)
-										switch elem {
-										default:
-											if args == nil {
-												args = make(map[string]string)
-											}
-											args["reaction_id"] = elem
-											// DELETE /repos/{owner}/{repo}/issues/comments/{comment_id}/reactions/{reaction_id}
-											s.handleReactionsDeleteForIssueCommentRequest(args, w, r)
-											return
-										}
-									default:
-										// DELETE /repos/{owner}/{repo}/issues/comments/{comment_id}.
-										s.handleIssuesDeleteCommentRequest(args, w, r)
-										return
-									}
-								}
-							default:
-								if args == nil {
-									args = make(map[string]string)
-								}
-								args["issue_number"] = elem
-								// Edge: 106, path: "".
-								elem, p = nextElem(p)
-								switch elem {
-								case "labels": // -> 107
-									// Edge: 107, path: "labels".
-									elem, p = nextElem(p)
-									if len(elem) == 0 {
-										// DELETE /repos/{owner}/{repo}/issues/{issue_number}/labels.
-										s.handleIssuesRemoveAllLabelsRequest(args, w, r)
-										return
-									}
-									switch elem {
-									default:
-										if args == nil {
-											args = make(map[string]string)
-										}
-										args["name"] = elem
-										// DELETE /repos/{owner}/{repo}/issues/{issue_number}/labels/{name}
-										s.handleIssuesRemoveLabelRequest(args, w, r)
-										return
-									}
-								case "assignees": // -> 108
-									// DELETE /repos/{owner}/{repo}/issues/{issue_number}/assignees
-									s.handleIssuesRemoveAssigneesRequest(args, w, r)
-									return
-								case "lock": // -> 110
-									// DELETE /repos/{owner}/{repo}/issues/{issue_number}/lock
-									s.handleIssuesUnlockRequest(args, w, r)
-									return
-								case "reactions": // -> 183
-									// Edge: 183, path: "reactions".
-									elem, p = nextElem(p)
-									switch elem {
-									default:
-										if args == nil {
-											args = make(map[string]string)
-										}
-										args["reaction_id"] = elem
-										// DELETE /repos/{owner}/{repo}/issues/{issue_number}/reactions/{reaction_id}
-										s.handleReactionsDeleteForIssueRequest(args, w, r)
-										return
-									}
-								default:
-									s.notFound(w, r)
-									return
-								}
-							}
-						case "labels": // -> 102
-							// Edge: 102, path: "labels".
-							elem, p = nextElem(p)
-							switch elem {
-							default:
-								if args == nil {
-									args = make(map[string]string)
-								}
-								args["name"] = elem
-								// DELETE /repos/{owner}/{repo}/labels/{name}
-								s.handleIssuesDeleteLabelRequest(args, w, r)
-								return
-							}
-						case "milestones": // -> 104
-							// Edge: 104, path: "milestones".
-							elem, p = nextElem(p)
-							switch elem {
-							default:
-								if args == nil {
-									args = make(map[string]string)
-								}
-								args["milestone_number"] = elem
-								// DELETE /repos/{owner}/{repo}/milestones/{milestone_number}
-								s.handleIssuesDeleteMilestoneRequest(args, w, r)
-								return
-							}
-						case "import": // -> 111
-							// DELETE /repos/{owner}/{repo}/import
-							s.handleMigrationsCancelImportRequest(args, w, r)
-							return
-						case "pulls": // -> 172
-							// Edge: 172, path: "pulls".
-							elem, p = nextElem(p)
-							switch elem {
-							case "comments": // -> 176
-								// Edge: 176, path: "comments".
-								elem, p = nextElem(p)
-								switch elem {
-								default:
-									if args == nil {
-										args = make(map[string]string)
-									}
-									args["comment_id"] = elem
-									// Edge: 177, path: "".
-									elem, p = nextElem(p)
-									if len(elem) == 0 {
-										// DELETE /repos/{owner}/{repo}/pulls/comments/{comment_id}.
-										s.handlePullsDeleteReviewCommentRequest(args, w, r)
-										return
-									}
-									switch elem {
-									case "reactions": // -> 187
-										// Edge: 187, path: "reactions".
-										elem, p = nextElem(p)
-										switch elem {
-										default:
-											if args == nil {
-												args = make(map[string]string)
-											}
-											args["reaction_id"] = elem
-											// DELETE /repos/{owner}/{repo}/pulls/comments/{comment_id}/reactions/{reaction_id}
-											s.handleReactionsDeleteForPullRequestCommentRequest(args, w, r)
-											return
-										}
-									default:
-										// DELETE /repos/{owner}/{repo}/pulls/comments/{comment_id}.
-										s.handlePullsDeleteReviewCommentRequest(args, w, r)
-										return
-									}
-								}
-							default:
-								if args == nil {
-									args = make(map[string]string)
-								}
-								args["pull_number"] = elem
-								// Edge: 173, path: "".
-								elem, p = nextElem(p)
-								switch elem {
-								case "reviews": // -> 174
-									// Edge: 174, path: "reviews".
-									elem, p = nextElem(p)
-									switch elem {
-									default:
-										if args == nil {
-											args = make(map[string]string)
-										}
-										args["review_id"] = elem
-										// DELETE /repos/{owner}/{repo}/pulls/{pull_number}/reviews/{review_id}
-										s.handlePullsDeletePendingReviewRequest(args, w, r)
-										return
-									}
-								case "requested_reviewers": // -> 178
-									// DELETE /repos/{owner}/{repo}/pulls/{pull_number}/requested_reviewers
-									s.handlePullsRemoveRequestedReviewersRequest(args, w, r)
-									return
-								default:
-									s.notFound(w, r)
-									return
-								}
-							}
-						case "comments": // -> 179
-							// Edge: 179, path: "comments".
-							elem, p = nextElem(p)
-							switch elem {
-							default:
-								if args == nil {
-									args = make(map[string]string)
-								}
-								args["comment_id"] = elem
-								// Edge: 180, path: "".
-								elem, p = nextElem(p)
-								if len(elem) == 0 {
-									// DELETE /repos/{owner}/{repo}/comments/{comment_id}.
-									s.handleReposDeleteCommitCommentRequest(args, w, r)
-									return
-								}
-								switch elem {
-								case "reactions": // -> 181
-									// Edge: 181, path: "reactions".
-									elem, p = nextElem(p)
-									switch elem {
-									default:
-										if args == nil {
-											args = make(map[string]string)
-										}
-										args["reaction_id"] = elem
-										// DELETE /repos/{owner}/{repo}/comments/{comment_id}/reactions/{reaction_id}
-										s.handleReactionsDeleteForCommitCommentRequest(args, w, r)
-										return
-									}
-								default:
-									// DELETE /repos/{owner}/{repo}/comments/{comment_id}.
-									s.handleReposDeleteCommitCommentRequest(args, w, r)
-									return
-								}
-							}
-						case "branches": // -> 203
-							// Edge: 203, path: "branches".
-							elem, p = nextElem(p)
-							switch elem {
-							default:
-								if args == nil {
-									args = make(map[string]string)
-								}
-								args["branch"] = elem
-								// Edge: 204, path: "".
-								elem, p = nextElem(p)
-								switch elem {
-								case "protection": // -> 205
-									// Edge: 205, path: "protection".
-									elem, p = nextElem(p)
-									if len(elem) == 0 {
-										// DELETE /repos/{owner}/{repo}/branches/{branch}/protection.
-										s.handleReposDeleteBranchProtectionRequest(args, w, r)
-										return
-									}
-									switch elem {
-									case "restrictions": // -> 206
-										// Edge: 206, path: "restrictions".
-										elem, p = nextElem(p)
-										if len(elem) == 0 {
-											// DELETE /repos/{owner}/{repo}/branches/{branch}/protection/restrictions.
-											s.handleReposDeleteAccessRestrictionsRequest(args, w, r)
-											return
-										}
-										switch elem {
-										case "apps": // -> 232
-											// DELETE /repos/{owner}/{repo}/branches/{branch}/protection/restrictions/apps
-											s.handleReposRemoveAppAccessRestrictionsRequest(args, w, r)
-											return
-										case "teams": // -> 237
-											// DELETE /repos/{owner}/{repo}/branches/{branch}/protection/restrictions/teams
-											s.handleReposRemoveTeamAccessRestrictionsRequest(args, w, r)
-											return
-										case "users": // -> 238
-											// DELETE /repos/{owner}/{repo}/branches/{branch}/protection/restrictions/users
-											s.handleReposRemoveUserAccessRestrictionsRequest(args, w, r)
-											return
-										default:
-											// DELETE /repos/{owner}/{repo}/branches/{branch}/protection/restrictions.
-											s.handleReposDeleteAccessRestrictionsRequest(args, w, r)
-											return
-										}
-									case "enforce_admins": // -> 207
-										// DELETE /repos/{owner}/{repo}/branches/{branch}/protection/enforce_admins
-										s.handleReposDeleteAdminBranchProtectionRequest(args, w, r)
-										return
-									case "required_signatures": // -> 212
-										// DELETE /repos/{owner}/{repo}/branches/{branch}/protection/required_signatures
-										s.handleReposDeleteCommitSignatureProtectionRequest(args, w, r)
-										return
-									case "required_pull_request_reviews": // -> 222
-										// DELETE /repos/{owner}/{repo}/branches/{branch}/protection/required_pull_request_reviews
-										s.handleReposDeletePullRequestReviewProtectionRequest(args, w, r)
-										return
-									case "required_status_checks": // -> 235
-										// Edge: 235, path: "required_status_checks".
-										elem, p = nextElem(p)
-										if len(elem) == 0 {
-											// DELETE /repos/{owner}/{repo}/branches/{branch}/protection/required_status_checks.
-											s.handleReposRemoveStatusCheckProtectionRequest(args, w, r)
-											return
-										}
-										switch elem {
-										case "contexts": // -> 236
-											// DELETE /repos/{owner}/{repo}/branches/{branch}/protection/required_status_checks/contexts
-											s.handleReposRemoveStatusCheckContextsRequest(args, w, r)
-											return
-										default:
-											// DELETE /repos/{owner}/{repo}/branches/{branch}/protection/required_status_checks.
-											s.handleReposRemoveStatusCheckProtectionRequest(args, w, r)
-											return
-										}
-									default:
-										// DELETE /repos/{owner}/{repo}/branches/{branch}/protection.
-										s.handleReposDeleteBranchProtectionRequest(args, w, r)
-										return
-									}
-								default:
-									s.notFound(w, r)
-									return
-								}
-							}
-						case "environments": // -> 208
-							// Edge: 208, path: "environments".
-							elem, p = nextElem(p)
-							switch elem {
-							default:
-								if args == nil {
-									args = make(map[string]string)
-								}
-								args["environment_name"] = elem
-								// DELETE /repos/{owner}/{repo}/environments/{environment_name}
-								s.handleReposDeleteAnEnvironmentRequest(args, w, r)
-								return
-							}
-						case "autolinks": // -> 210
-							// Edge: 210, path: "autolinks".
-							elem, p = nextElem(p)
-							switch elem {
-							default:
-								if args == nil {
-									args = make(map[string]string)
-								}
-								args["autolink_id"] = elem
-								// DELETE /repos/{owner}/{repo}/autolinks/{autolink_id}
-								s.handleReposDeleteAutolinkRequest(args, w, r)
-								return
-							}
-						case "keys": // -> 213
-							// Edge: 213, path: "keys".
-							elem, p = nextElem(p)
-							switch elem {
-							default:
-								if args == nil {
-									args = make(map[string]string)
-								}
-								args["key_id"] = elem
-								// DELETE /repos/{owner}/{repo}/keys/{key_id}
-								s.handleReposDeleteDeployKeyRequest(args, w, r)
-								return
-							}
-						case "deployments": // -> 215
-							// Edge: 215, path: "deployments".
-							elem, p = nextElem(p)
-							switch elem {
-							default:
-								if args == nil {
-									args = make(map[string]string)
-								}
-								args["deployment_id"] = elem
-								// DELETE /repos/{owner}/{repo}/deployments/{deployment_id}
-								s.handleReposDeleteDeploymentRequest(args, w, r)
-								return
-							}
-						case "contents": // -> 217
-							// Edge: 217, path: "contents".
-							elem, p = nextElem(p)
-							switch elem {
-							default:
-								if args == nil {
-									args = make(map[string]string)
-								}
-								args["path"] = elem
-								// DELETE /repos/{owner}/{repo}/contents/{path}
-								s.handleReposDeleteFileRequest(args, w, r)
-								return
-							}
-						case "invitations": // -> 219
-							// Edge: 219, path: "invitations".
-							elem, p = nextElem(p)
-							switch elem {
-							default:
-								if args == nil {
-									args = make(map[string]string)
-								}
-								args["invitation_id"] = elem
-								// DELETE /repos/{owner}/{repo}/invitations/{invitation_id}
-								s.handleReposDeleteInvitationRequest(args, w, r)
-								return
-							}
-						case "pages": // -> 221
-							// DELETE /repos/{owner}/{repo}/pages
-							s.handleReposDeletePagesSiteRequest(args, w, r)
-							return
-						case "releases": // -> 223
-							// Edge: 223, path: "releases".
-							elem, p = nextElem(p)
-							switch elem {
-							case "assets": // -> 225
-								// Edge: 225, path: "assets".
-								elem, p = nextElem(p)
-								switch elem {
-								default:
-									if args == nil {
-										args = make(map[string]string)
-									}
-									args["asset_id"] = elem
-									// DELETE /repos/{owner}/{repo}/releases/assets/{asset_id}
-									s.handleReposDeleteReleaseAssetRequest(args, w, r)
-									return
-								}
-							default:
-								if args == nil {
-									args = make(map[string]string)
-								}
-								args["release_id"] = elem
-								// DELETE /repos/{owner}/{repo}/releases/{release_id}
-								s.handleReposDeleteReleaseRequest(args, w, r)
-								return
-							}
-						case "hooks": // -> 227
-							// Edge: 227, path: "hooks".
-							elem, p = nextElem(p)
-							switch elem {
-							default:
-								if args == nil {
-									args = make(map[string]string)
-								}
-								args["hook_id"] = elem
-								// DELETE /repos/{owner}/{repo}/hooks/{hook_id}
-								s.handleReposDeleteWebhookRequest(args, w, r)
-								return
-							}
-						case "automated-security-fixes": // -> 229
-							// DELETE /repos/{owner}/{repo}/automated-security-fixes
-							s.handleReposDisableAutomatedSecurityFixesRequest(args, w, r)
-							return
-						case "lfs": // -> 230
-							// DELETE /repos/{owner}/{repo}/lfs
-							s.handleReposDisableLfsForRepoRequest(args, w, r)
-							return
-						case "vulnerability-alerts": // -> 231
-							// DELETE /repos/{owner}/{repo}/vulnerability-alerts
-							s.handleReposDisableVulnerabilityAlertsRequest(args, w, r)
-							return
-						case "collaborators": // -> 233
-							// Edge: 233, path: "collaborators".
-							elem, p = nextElem(p)
-							switch elem {
-							default:
-								if args == nil {
-									args = make(map[string]string)
-								}
-								args["username"] = elem
-								// DELETE /repos/{owner}/{repo}/collaborators/{username}
-								s.handleReposRemoveCollaboratorRequest(args, w, r)
-								return
-							}
-						default:
-							// DELETE /repos/{owner}/{repo}.
-							s.handleReposDeleteRequest(args, w, r)
-							return
-						}
-					}
-				default:
-					s.notFound(w, r)
-					return
-				}
-			}
-		case "repositories": // -> 8
-			// Edge: 8, path: "repositories".
-			elem, p = nextElem(p)
-			switch elem {
-			default:
-				if args == nil {
-					args = make(map[string]string)
-				}
-				args["repository_id"] = elem
-				// Edge: 9, path: "".
-				elem, p = nextElem(p)
-				switch elem {
-				case "environments": // -> 10
-					// Edge: 10, path: "environments".
-					elem, p = nextElem(p)
-					switch elem {
-					default:
-						if args == nil {
-							args = make(map[string]string)
-						}
-						args["environment_name"] = elem
-						// Edge: 11, path: "".
-						elem, p = nextElem(p)
-						switch elem {
-						case "secrets": // -> 12
-							// Edge: 12, path: "secrets".
-							elem, p = nextElem(p)
-							switch elem {
-							default:
-								if args == nil {
-									args = make(map[string]string)
-								}
-								args["secret_name"] = elem
-								// DELETE /repositories/{repository_id}/environments/{environment_name}/secrets/{secret_name}
-								s.handleActionsDeleteEnvironmentSecretRequest(args, w, r)
-								return
-							}
-						default:
-							s.notFound(w, r)
-							return
-						}
-					}
-				default:
-					s.notFound(w, r)
-					return
-				}
-			}
-		case "orgs": // -> 14
-			// Edge: 14, path: "orgs".
-			elem, p = nextElem(p)
-			switch elem {
-			default:
-				if args == nil {
-					args = make(map[string]string)
-				}
-				args["org"] = elem
-				// Edge: 15, path: "".
-				elem, p = nextElem(p)
-				switch elem {
-				case "actions": // -> 16
-					// Edge: 16, path: "actions".
-					elem, p = nextElem(p)
-					switch elem {
-					case "secrets": // -> 17
-						// Edge: 17, path: "secrets".
-						elem, p = nextElem(p)
-						switch elem {
-						default:
-							if args == nil {
-								args = make(map[string]string)
-							}
-							args["secret_name"] = elem
-							// Edge: 18, path: "".
-							elem, p = nextElem(p)
-							if len(elem) == 0 {
-								// DELETE /orgs/{org}/actions/secrets/{secret_name}.
-								s.handleActionsDeleteOrgSecretRequest(args, w, r)
-								return
-							}
-							switch elem {
-							case "repositories": // -> 35
-								// Edge: 35, path: "repositories".
-								elem, p = nextElem(p)
-								switch elem {
-								default:
-									if args == nil {
-										args = make(map[string]string)
-									}
-									args["repository_id"] = elem
-									// DELETE /orgs/{org}/actions/secrets/{secret_name}/repositories/{repository_id}
-									s.handleActionsRemoveSelectedRepoFromOrgSecretRequest(args, w, r)
-									return
-								}
-							default:
-								// DELETE /orgs/{org}/actions/secrets/{secret_name}.
-								s.handleActionsDeleteOrgSecretRequest(args, w, r)
-								return
-							}
-						}
-					case "runners": // -> 21
-						// Edge: 21, path: "runners".
-						elem, p = nextElem(p)
-						switch elem {
-						default:
-							if args == nil {
-								args = make(map[string]string)
-							}
-							args["runner_id"] = elem
-							// DELETE /orgs/{org}/actions/runners/{runner_id}
-							s.handleActionsDeleteSelfHostedRunnerFromOrgRequest(args, w, r)
-							return
-						}
-					case "runner-groups": // -> 25
-						// Edge: 25, path: "runner-groups".
-						elem, p = nextElem(p)
-						switch elem {
-						default:
-							if args == nil {
-								args = make(map[string]string)
-							}
-							args["runner_group_id"] = elem
-							// Edge: 26, path: "".
-							elem, p = nextElem(p)
-							if len(elem) == 0 {
-								// DELETE /orgs/{org}/actions/runner-groups/{runner_group_id}.
-								s.handleActionsDeleteSelfHostedRunnerGroupFromOrgRequest(args, w, r)
-								return
-							}
-							switch elem {
-							case "repositories": // -> 33
-								// Edge: 33, path: "repositories".
-								elem, p = nextElem(p)
-								switch elem {
-								default:
-									if args == nil {
-										args = make(map[string]string)
-									}
-									args["repository_id"] = elem
-									// DELETE /orgs/{org}/actions/runner-groups/{runner_group_id}/repositories/{repository_id}
-									s.handleActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrgRequest(args, w, r)
-									return
-								}
-							case "runners": // -> 37
-								// Edge: 37, path: "runners".
-								elem, p = nextElem(p)
-								switch elem {
-								default:
-									if args == nil {
-										args = make(map[string]string)
-									}
-									args["runner_id"] = elem
-									// DELETE /orgs/{org}/actions/runner-groups/{runner_group_id}/runners/{runner_id}
-									s.handleActionsRemoveSelfHostedRunnerFromGroupForOrgRequest(args, w, r)
-									return
-								}
-							default:
-								// DELETE /orgs/{org}/actions/runner-groups/{runner_group_id}.
-								s.handleActionsDeleteSelfHostedRunnerGroupFromOrgRequest(args, w, r)
-								return
-							}
-						}
-					case "permissions": // -> 30
-						// Edge: 30, path: "permissions".
-						elem, p = nextElem(p)
-						switch elem {
-						case "repositories": // -> 31
-							// Edge: 31, path: "repositories".
-							elem, p = nextElem(p)
-							switch elem {
-							default:
-								if args == nil {
-									args = make(map[string]string)
-								}
-								args["repository_id"] = elem
-								// DELETE /orgs/{org}/actions/permissions/repositories/{repository_id}
-								s.handleActionsDisableSelectedRepositoryGithubActionsOrganizationRequest(args, w, r)
-								return
-							}
-						default:
-							s.notFound(w, r)
-							return
-						}
-					default:
-						s.notFound(w, r)
-						return
-					}
-				case "interaction-limits": // -> 97
-					// DELETE /orgs/{org}/interaction-limits
-					s.handleInteractionsRemoveRestrictionsForOrgRequest(args, w, r)
-					return
-				case "migrations": // -> 115
-					// Edge: 115, path: "migrations".
-					elem, p = nextElem(p)
-					switch elem {
-					default:
-						if args == nil {
-							args = make(map[string]string)
-						}
-						args["migration_id"] = elem
-						// Edge: 116, path: "".
-						elem, p = nextElem(p)
-						switch elem {
-						case "archive": // -> 117
-							// DELETE /orgs/{org}/migrations/{migration_id}/archive
-							s.handleMigrationsDeleteArchiveForOrgRequest(args, w, r)
-							return
-						case "repos": // -> 121
-							// Edge: 121, path: "repos".
-							elem, p = nextElem(p)
-							switch elem {
-							default:
-								if args == nil {
-									args = make(map[string]string)
-								}
-								args["repo_name"] = elem
-								// Edge: 122, path: "".
-								elem, p = nextElem(p)
-								switch elem {
-								case "lock": // -> 123
-									// DELETE /orgs/{org}/migrations/{migration_id}/repos/{repo_name}/lock
-									s.handleMigrationsUnlockRepoForOrgRequest(args, w, r)
-									return
-								default:
-									s.notFound(w, r)
-									return
-								}
-							}
-						default:
-							s.notFound(w, r)
-							return
-						}
-					}
-				case "invitations": // -> 128
-					// Edge: 128, path: "invitations".
-					elem, p = nextElem(p)
-					switch elem {
-					default:
-						if args == nil {
-							args = make(map[string]string)
-						}
-						args["invitation_id"] = elem
-						// DELETE /orgs/{org}/invitations/{invitation_id}
-						s.handleOrgsCancelInvitationRequest(args, w, r)
-						return
-					}
-				case "hooks": // -> 130
-					// Edge: 130, path: "hooks".
-					elem, p = nextElem(p)
-					switch elem {
-					default:
-						if args == nil {
-							args = make(map[string]string)
-						}
-						args["hook_id"] = elem
-						// DELETE /orgs/{org}/hooks/{hook_id}
-						s.handleOrgsDeleteWebhookRequest(args, w, r)
-						return
-					}
-				case "members": // -> 132
-					// Edge: 132, path: "members".
-					elem, p = nextElem(p)
-					switch elem {
-					default:
-						if args == nil {
-							args = make(map[string]string)
-						}
-						args["username"] = elem
-						// DELETE /orgs/{org}/members/{username}
-						s.handleOrgsRemoveMemberRequest(args, w, r)
-						return
-					}
-				case "memberships": // -> 134
-					// Edge: 134, path: "memberships".
-					elem, p = nextElem(p)
-					switch elem {
-					default:
-						if args == nil {
-							args = make(map[string]string)
-						}
-						args["username"] = elem
-						// DELETE /orgs/{org}/memberships/{username}
-						s.handleOrgsRemoveMembershipForUserRequest(args, w, r)
-						return
-					}
-				case "outside_collaborators": // -> 136
-					// Edge: 136, path: "outside_collaborators".
-					elem, p = nextElem(p)
-					switch elem {
-					default:
-						if args == nil {
-							args = make(map[string]string)
-						}
-						args["username"] = elem
-						// DELETE /orgs/{org}/outside_collaborators/{username}
-						s.handleOrgsRemoveOutsideCollaboratorRequest(args, w, r)
-						return
-					}
-				case "public_members": // -> 138
-					// Edge: 138, path: "public_members".
-					elem, p = nextElem(p)
-					switch elem {
-					default:
-						if args == nil {
-							args = make(map[string]string)
-						}
-						args["username"] = elem
-						// DELETE /orgs/{org}/public_members/{username}
-						s.handleOrgsRemovePublicMembershipForAuthenticatedUserRequest(args, w, r)
-						return
-					}
-				case "credential-authorizations": // -> 140
-					// Edge: 140, path: "credential-authorizations".
-					elem, p = nextElem(p)
-					switch elem {
-					default:
-						if args == nil {
-							args = make(map[string]string)
-						}
-						args["credential_id"] = elem
-						// DELETE /orgs/{org}/credential-authorizations/{credential_id}
-						s.handleOrgsRemoveSamlSSOAuthorizationRequest(args, w, r)
-						return
-					}
-				case "blocks": // -> 142
-					// Edge: 142, path: "blocks".
-					elem, p = nextElem(p)
-					switch elem {
-					default:
-						if args == nil {
-							args = make(map[string]string)
-						}
-						args["username"] = elem
-						// DELETE /orgs/{org}/blocks/{username}
-						s.handleOrgsUnblockUserRequest(args, w, r)
-						return
-					}
-				case "packages": // -> 148
-					// Edge: 148, path: "packages".
-					elem, p = nextElem(p)
-					switch elem {
-					default:
-						if args == nil {
-							args = make(map[string]string)
-						}
-						args["package_type"] = elem
-						// Edge: 149, path: "".
-						elem, p = nextElem(p)
-						switch elem {
-						case "": // -> 150
-							// Edge: 150, path: "".
-							elem, p = nextElem(p)
-							switch elem {
-							default:
-								if args == nil {
-									args = make(map[string]string)
-								}
-								args["package_name"] = elem
-								// Edge: 151, path: "".
-								elem, p = nextElem(p)
-								if len(elem) == 0 {
-									// DELETE /orgs/{org}/packages/{package_type}/{package_name}.
-									s.handlePackagesDeletePackageForOrgRequest(args, w, r)
-									return
-								}
-								switch elem {
-								case "versions": // -> 160
-									// Edge: 160, path: "versions".
-									elem, p = nextElem(p)
-									switch elem {
-									default:
-										if args == nil {
-											args = make(map[string]string)
-										}
-										args["package_version_id"] = elem
-										// DELETE /orgs/{org}/packages/{package_type}/{package_name}/versions/{package_version_id}
-										s.handlePackagesDeletePackageVersionForOrgRequest(args, w, r)
-										return
-									}
-								default:
-									// DELETE /orgs/{org}/packages/{package_type}/{package_name}.
-									s.handlePackagesDeletePackageForOrgRequest(args, w, r)
-									return
-								}
-							}
-						default:
-							s.notFound(w, r)
-							return
-						}
-					}
-				case "teams": // -> 189
-					// Edge: 189, path: "teams".
-					elem, p = nextElem(p)
-					switch elem {
-					default:
-						if args == nil {
-							args = make(map[string]string)
-						}
-						args["team_slug"] = elem
-						// Edge: 190, path: "".
-						elem, p = nextElem(p)
-						if len(elem) == 0 {
-							// DELETE /orgs/{org}/teams/{team_slug}.
-							s.handleTeamsDeleteInOrgRequest(args, w, r)
-							return
-						}
-						switch elem {
-						case "discussions": // -> 191
-							// Edge: 191, path: "discussions".
-							elem, p = nextElem(p)
-							switch elem {
-							default:
-								if args == nil {
-									args = make(map[string]string)
-								}
-								args["discussion_number"] = elem
-								// Edge: 192, path: "".
-								elem, p = nextElem(p)
-								if len(elem) == 0 {
-									// DELETE /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}.
-									s.handleTeamsDeleteDiscussionInOrgRequest(args, w, r)
-									return
-								}
-								switch elem {
-								case "reactions": // -> 193
-									// Edge: 193, path: "reactions".
-									elem, p = nextElem(p)
-									switch elem {
-									default:
-										if args == nil {
-											args = make(map[string]string)
-										}
-										args["reaction_id"] = elem
-										// DELETE /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/reactions/{reaction_id}
-										s.handleReactionsDeleteForTeamDiscussionRequest(args, w, r)
-										return
-									}
-								case "comments": // -> 195
-									// Edge: 195, path: "comments".
-									elem, p = nextElem(p)
-									switch elem {
-									default:
-										if args == nil {
-											args = make(map[string]string)
-										}
-										args["comment_number"] = elem
-										// Edge: 196, path: "".
-										elem, p = nextElem(p)
-										if len(elem) == 0 {
-											// DELETE /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments/{comment_number}.
-											s.handleTeamsDeleteDiscussionCommentInOrgRequest(args, w, r)
-											return
-										}
-										switch elem {
-										case "reactions": // -> 197
-											// Edge: 197, path: "reactions".
-											elem, p = nextElem(p)
-											switch elem {
-											default:
-												if args == nil {
-													args = make(map[string]string)
-												}
-												args["reaction_id"] = elem
-												// DELETE /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments/{comment_number}/reactions/{reaction_id}
-												s.handleReactionsDeleteForTeamDiscussionCommentRequest(args, w, r)
-												return
-											}
-										default:
-											// DELETE /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments/{comment_number}.
-											s.handleTeamsDeleteDiscussionCommentInOrgRequest(args, w, r)
-											return
-										}
-									}
-								default:
-									// DELETE /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}.
-									s.handleTeamsDeleteDiscussionInOrgRequest(args, w, r)
-									return
-								}
-							}
-						case "memberships": // -> 251
-							// Edge: 251, path: "memberships".
-							elem, p = nextElem(p)
-							switch elem {
-							default:
-								if args == nil {
-									args = make(map[string]string)
-								}
-								args["username"] = elem
-								// DELETE /orgs/{org}/teams/{team_slug}/memberships/{username}
-								s.handleTeamsRemoveMembershipForUserInOrgRequest(args, w, r)
-								return
-							}
-						case "projects": // -> 255
-							// Edge: 255, path: "projects".
-							elem, p = nextElem(p)
-							switch elem {
-							default:
-								if args == nil {
-									args = make(map[string]string)
-								}
-								args["project_id"] = elem
-								// DELETE /orgs/{org}/teams/{team_slug}/projects/{project_id}
-								s.handleTeamsRemoveProjectInOrgRequest(args, w, r)
-								return
-							}
-						case "repos": // -> 259
-							// Edge: 259, path: "repos".
-							elem, p = nextElem(p)
-							switch elem {
-							default:
-								if args == nil {
-									args = make(map[string]string)
-								}
-								args["owner"] = elem
-								// Edge: 260, path: "".
-								elem, p = nextElem(p)
-								switch elem {
-								case "": // -> 261
-									// Edge: 261, path: "".
-									elem, p = nextElem(p)
-									switch elem {
-									default:
-										if args == nil {
-											args = make(map[string]string)
-										}
-										args["repo"] = elem
-										// DELETE /orgs/{org}/teams/{team_slug}/repos/{owner}/{repo}
-										s.handleTeamsRemoveRepoInOrgRequest(args, w, r)
-										return
-									}
-								default:
-									s.notFound(w, r)
-									return
-								}
-							}
-						default:
-							// DELETE /orgs/{org}/teams/{team_slug}.
-							s.handleTeamsDeleteInOrgRequest(args, w, r)
-							return
-						}
-					}
-				default:
-					s.notFound(w, r)
-					return
-				}
-			}
-		case "notifications": // -> 40
-			// Edge: 40, path: "notifications".
-			elem, p = nextElem(p)
-			switch elem {
-			case "threads": // -> 41
-				// Edge: 41, path: "threads".
-				elem, p = nextElem(p)
-				switch elem {
-				default:
-					if args == nil {
-						args = make(map[string]string)
-					}
-					args["thread_id"] = elem
-					// Edge: 42, path: "".
-					elem, p = nextElem(p)
-					switch elem {
-					case "subscription": // -> 43
-						// DELETE /notifications/threads/{thread_id}/subscription
-						s.handleActivityDeleteThreadSubscriptionRequest(args, w, r)
-						return
-					default:
-						s.notFound(w, r)
-						return
-					}
-				}
-			default:
-				s.notFound(w, r)
-				return
-			}
-		case "user": // -> 44
-			// Edge: 44, path: "user".
-			elem, p = nextElem(p)
-			switch elem {
-			case "starred": // -> 45
-				// Edge: 45, path: "starred".
-				elem, p = nextElem(p)
-				switch elem {
-				default:
-					if args == nil {
-						args = make(map[string]string)
-					}
-					args["owner"] = elem
-					// Edge: 46, path: "".
-					elem, p = nextElem(p)
-					switch elem {
-					case "": // -> 47
-						// Edge: 47, path: "".
-						elem, p = nextElem(p)
-						switch elem {
-						default:
-							if args == nil {
-								args = make(map[string]string)
-							}
-							args["repo"] = elem
-							// DELETE /user/starred/{owner}/{repo}
-							s.handleActivityUnstarRepoForAuthenticatedUserRequest(args, w, r)
-							return
-						}
-					default:
-						s.notFound(w, r)
-						return
-					}
-				}
-			case "installations": // -> 56
-				// Edge: 56, path: "installations".
-				elem, p = nextElem(p)
-				switch elem {
-				default:
-					if args == nil {
-						args = make(map[string]string)
-					}
-					args["installation_id"] = elem
-					// Edge: 57, path: "".
-					elem, p = nextElem(p)
-					switch elem {
-					case "repositories": // -> 58
-						// Edge: 58, path: "repositories".
-						elem, p = nextElem(p)
-						switch elem {
-						default:
-							if args == nil {
-								args = make(map[string]string)
-							}
-							args["repository_id"] = elem
-							// DELETE /user/installations/{installation_id}/repositories/{repository_id}
-							s.handleAppsRemoveRepoFromInstallationRequest(args, w, r)
-							return
-						}
-					default:
-						s.notFound(w, r)
-						return
-					}
-				}
-			case "interaction-limits": // -> 96
-				// DELETE /user/interaction-limits
-				s.handleInteractionsRemoveRestrictionsForAuthenticatedUserRequest(args, w, r)
-				return
-			case "migrations": // -> 112
-				// Edge: 112, path: "migrations".
-				elem, p = nextElem(p)
-				switch elem {
-				default:
-					if args == nil {
-						args = make(map[string]string)
-					}
-					args["migration_id"] = elem
-					// Edge: 113, path: "".
-					elem, p = nextElem(p)
-					switch elem {
-					case "archive": // -> 114
-						// DELETE /user/migrations/{migration_id}/archive
-						s.handleMigrationsDeleteArchiveForAuthenticatedUserRequest(args, w, r)
-						return
-					case "repos": // -> 118
-						// Edge: 118, path: "repos".
-						elem, p = nextElem(p)
-						switch elem {
-						default:
-							if args == nil {
-								args = make(map[string]string)
-							}
-							args["repo_name"] = elem
-							// Edge: 119, path: "".
-							elem, p = nextElem(p)
-							switch elem {
-							case "lock": // -> 120
-								// DELETE /user/migrations/{migration_id}/repos/{repo_name}/lock
-								s.handleMigrationsUnlockRepoForAuthenticatedUserRequest(args, w, r)
-								return
-							default:
-								s.notFound(w, r)
-								return
-							}
-						}
-					default:
-						s.notFound(w, r)
-						return
-					}
-				}
-			case "packages": // -> 144
-				// Edge: 144, path: "packages".
-				elem, p = nextElem(p)
-				switch elem {
-				default:
-					if args == nil {
-						args = make(map[string]string)
-					}
-					args["package_type"] = elem
-					// Edge: 145, path: "".
-					elem, p = nextElem(p)
-					switch elem {
-					case "": // -> 146
-						// Edge: 146, path: "".
-						elem, p = nextElem(p)
-						switch elem {
-						default:
-							if args == nil {
-								args = make(map[string]string)
-							}
-							args["package_name"] = elem
-							// Edge: 147, path: "".
-							elem, p = nextElem(p)
-							if len(elem) == 0 {
-								// DELETE /user/packages/{package_type}/{package_name}.
-								s.handlePackagesDeletePackageForAuthenticatedUserRequest(args, w, r)
-								return
-							}
-							switch elem {
-							case "versions": // -> 158
-								// Edge: 158, path: "versions".
-								elem, p = nextElem(p)
-								switch elem {
-								default:
-									if args == nil {
-										args = make(map[string]string)
-									}
-									args["package_version_id"] = elem
-									// DELETE /user/packages/{package_type}/{package_name}/versions/{package_version_id}
-									s.handlePackagesDeletePackageVersionForAuthenticatedUserRequest(args, w, r)
-									return
-								}
-							default:
-								// DELETE /user/packages/{package_type}/{package_name}.
-								s.handlePackagesDeletePackageForAuthenticatedUserRequest(args, w, r)
-								return
-							}
-						}
-					default:
-						s.notFound(w, r)
-						return
-					}
-				}
-			case "repository_invitations": // -> 201
-				// Edge: 201, path: "repository_invitations".
-				elem, p = nextElem(p)
-				switch elem {
-				default:
-					if args == nil {
-						args = make(map[string]string)
-					}
-					args["invitation_id"] = elem
-					// DELETE /user/repository_invitations/{invitation_id}
-					s.handleReposDeclineInvitationRequest(args, w, r)
-					return
-				}
-			case "emails": // -> 267
-				// DELETE /user/emails
-				s.handleUsersDeleteEmailForAuthenticatedRequest(args, w, r)
-				return
-			case "gpg_keys": // -> 268
-				// Edge: 268, path: "gpg_keys".
-				elem, p = nextElem(p)
-				switch elem {
-				default:
-					if args == nil {
-						args = make(map[string]string)
-					}
-					args["gpg_key_id"] = elem
-					// DELETE /user/gpg_keys/{gpg_key_id}
-					s.handleUsersDeleteGpgKeyForAuthenticatedRequest(args, w, r)
-					return
-				}
-			case "keys": // -> 270
-				// Edge: 270, path: "keys".
-				elem, p = nextElem(p)
-				switch elem {
-				default:
-					if args == nil {
-						args = make(map[string]string)
-					}
-					args["key_id"] = elem
-					// DELETE /user/keys/{key_id}
-					s.handleUsersDeletePublicSSHKeyForAuthenticatedRequest(args, w, r)
-					return
-				}
-			case "blocks": // -> 272
-				// Edge: 272, path: "blocks".
-				elem, p = nextElem(p)
-				switch elem {
-				default:
-					if args == nil {
-						args = make(map[string]string)
-					}
-					args["username"] = elem
-					// DELETE /user/blocks/{username}
-					s.handleUsersUnblockRequest(args, w, r)
-					return
-				}
-			case "following": // -> 274
-				// Edge: 274, path: "following".
-				elem, p = nextElem(p)
-				switch elem {
-				default:
-					if args == nil {
-						args = make(map[string]string)
-					}
-					args["username"] = elem
-					// DELETE /user/following/{username}
-					s.handleUsersUnfollowRequest(args, w, r)
-					return
-				}
-			default:
-				s.notFound(w, r)
-				return
-			}
-		case "applications": // -> 49
-			// Edge: 49, path: "applications".
-			elem, p = nextElem(p)
-			switch elem {
-			case "grants": // -> 126
-				// Edge: 126, path: "grants".
-				elem, p = nextElem(p)
-				switch elem {
-				default:
-					if args == nil {
-						args = make(map[string]string)
-					}
-					args["grant_id"] = elem
-					// DELETE /applications/grants/{grant_id}
-					s.handleOAuthAuthorizationsDeleteGrantRequest(args, w, r)
-					return
-				}
-			default:
-				if args == nil {
-					args = make(map[string]string)
-				}
-				args["client_id"] = elem
-				// Edge: 50, path: "".
-				elem, p = nextElem(p)
-				switch elem {
-				case "grant": // -> 51
-					// DELETE /applications/{client_id}/grant
-					s.handleAppsDeleteAuthorizationRequest(args, w, r)
-					return
-				case "token": // -> 55
-					// DELETE /applications/{client_id}/token
-					s.handleAppsDeleteTokenRequest(args, w, r)
-					return
-				default:
-					s.notFound(w, r)
-					return
-				}
-			}
-		case "app": // -> 52
-			// Edge: 52, path: "app".
-			elem, p = nextElem(p)
-			switch elem {
-			case "installations": // -> 53
-				// Edge: 53, path: "installations".
-				elem, p = nextElem(p)
-				switch elem {
-				default:
-					if args == nil {
-						args = make(map[string]string)
-					}
-					args["installation_id"] = elem
-					// Edge: 54, path: "".
-					elem, p = nextElem(p)
-					if len(elem) == 0 {
-						// DELETE /app/installations/{installation_id}.
-						s.handleAppsDeleteInstallationRequest(args, w, r)
-						return
-					}
-					switch elem {
-					case "suspended": // -> 62
-						// DELETE /app/installations/{installation_id}/suspended
-						s.handleAppsUnsuspendInstallationRequest(args, w, r)
-						return
-					default:
-						// DELETE /app/installations/{installation_id}.
-						s.handleAppsDeleteInstallationRequest(args, w, r)
-						return
-					}
-				}
-			default:
-				s.notFound(w, r)
-				return
-			}
-		case "installation": // -> 60
-			// Edge: 60, path: "installation".
-			elem, p = nextElem(p)
-			switch elem {
-			case "token": // -> 61
-				// DELETE /installation/token
-				s.handleAppsRevokeInstallationAccessTokenRequest(args, w, r)
-				return
-			default:
-				s.notFound(w, r)
-				return
-			}
-		case "scim": // -> 66
-			// Edge: 66, path: "scim".
-			elem, p = nextElem(p)
-			switch elem {
-			case "v2": // -> 67
-				// Edge: 67, path: "v2".
-				elem, p = nextElem(p)
-				switch elem {
-				case "enterprises": // -> 68
-					// Edge: 68, path: "enterprises".
-					elem, p = nextElem(p)
-					switch elem {
-					default:
-						if args == nil {
-							args = make(map[string]string)
-						}
-						args["enterprise"] = elem
-						// Edge: 69, path: "".
-						elem, p = nextElem(p)
-						switch elem {
-						case "Groups": // -> 70
-							// Edge: 70, path: "Groups".
-							elem, p = nextElem(p)
-							switch elem {
-							default:
-								if args == nil {
-									args = make(map[string]string)
-								}
-								args["scim_group_id"] = elem
-								// DELETE /scim/v2/enterprises/{enterprise}/Groups/{scim_group_id}
-								s.handleEnterpriseAdminDeleteScimGroupFromEnterpriseRequest(args, w, r)
-								return
-							}
-						case "Users": // -> 79
-							// Edge: 79, path: "Users".
-							elem, p = nextElem(p)
-							switch elem {
-							default:
-								if args == nil {
-									args = make(map[string]string)
-								}
-								args["scim_user_id"] = elem
-								// DELETE /scim/v2/enterprises/{enterprise}/Users/{scim_user_id}
-								s.handleEnterpriseAdminDeleteUserFromEnterpriseRequest(args, w, r)
-								return
-							}
-						default:
-							s.notFound(w, r)
-							return
-						}
-					}
-				case "organizations": // -> 239
-					// Edge: 239, path: "organizations".
-					elem, p = nextElem(p)
-					switch elem {
-					default:
-						if args == nil {
-							args = make(map[string]string)
-						}
-						args["org"] = elem
-						// Edge: 240, path: "".
-						elem, p = nextElem(p)
-						switch elem {
-						case "Users": // -> 241
-							// Edge: 241, path: "Users".
-							elem, p = nextElem(p)
-							switch elem {
-							default:
-								if args == nil {
-									args = make(map[string]string)
-								}
-								args["scim_user_id"] = elem
-								// DELETE /scim/v2/organizations/{org}/Users/{scim_user_id}
-								s.handleScimDeleteUserFromOrgRequest(args, w, r)
-								return
-							}
-						default:
-							s.notFound(w, r)
-							return
-						}
-					}
-				default:
-					s.notFound(w, r)
-					return
-				}
-			default:
-				s.notFound(w, r)
-				return
-			}
-		case "enterprises": // -> 72
-			// Edge: 72, path: "enterprises".
-			elem, p = nextElem(p)
-			switch elem {
-			default:
-				if args == nil {
-					args = make(map[string]string)
-				}
-				args["enterprise"] = elem
-				// Edge: 73, path: "".
-				elem, p = nextElem(p)
-				switch elem {
-				case "actions": // -> 74
-					// Edge: 74, path: "actions".
-					elem, p = nextElem(p)
-					switch elem {
-					case "runners": // -> 75
-						// Edge: 75, path: "runners".
-						elem, p = nextElem(p)
-						switch elem {
-						default:
-							if args == nil {
-								args = make(map[string]string)
-							}
-							args["runner_id"] = elem
-							// DELETE /enterprises/{enterprise}/actions/runners/{runner_id}
-							s.handleEnterpriseAdminDeleteSelfHostedRunnerFromEnterpriseRequest(args, w, r)
-							return
-						}
-					case "runner-groups": // -> 77
-						// Edge: 77, path: "runner-groups".
-						elem, p = nextElem(p)
-						switch elem {
-						default:
-							if args == nil {
-								args = make(map[string]string)
-							}
-							args["runner_group_id"] = elem
-							// Edge: 78, path: "".
-							elem, p = nextElem(p)
-							if len(elem) == 0 {
-								// DELETE /enterprises/{enterprise}/actions/runner-groups/{runner_group_id}.
-								s.handleEnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterpriseRequest(args, w, r)
-								return
-							}
-							switch elem {
-							case "organizations": // -> 84
-								// Edge: 84, path: "organizations".
-								elem, p = nextElem(p)
-								switch elem {
-								default:
-									if args == nil {
-										args = make(map[string]string)
-									}
-									args["org_id"] = elem
-									// DELETE /enterprises/{enterprise}/actions/runner-groups/{runner_group_id}/organizations/{org_id}
-									s.handleEnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterpriseRequest(args, w, r)
-									return
-								}
-							case "runners": // -> 86
-								// Edge: 86, path: "runners".
-								elem, p = nextElem(p)
-								switch elem {
-								default:
-									if args == nil {
-										args = make(map[string]string)
-									}
-									args["runner_id"] = elem
-									// DELETE /enterprises/{enterprise}/actions/runner-groups/{runner_group_id}/runners/{runner_id}
-									s.handleEnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterpriseRequest(args, w, r)
-									return
-								}
-							default:
-								// DELETE /enterprises/{enterprise}/actions/runner-groups/{runner_group_id}.
-								s.handleEnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterpriseRequest(args, w, r)
-								return
-							}
-						}
-					case "permissions": // -> 81
-						// Edge: 81, path: "permissions".
-						elem, p = nextElem(p)
-						switch elem {
-						case "organizations": // -> 82
-							// Edge: 82, path: "organizations".
-							elem, p = nextElem(p)
-							switch elem {
-							default:
-								if args == nil {
-									args = make(map[string]string)
-								}
-								args["org_id"] = elem
-								// DELETE /enterprises/{enterprise}/actions/permissions/organizations/{org_id}
-								s.handleEnterpriseAdminDisableSelectedOrganizationGithubActionsEnterpriseRequest(args, w, r)
-								return
-							}
-						default:
-							s.notFound(w, r)
-							return
-						}
-					default:
-						s.notFound(w, r)
-						return
-					}
-				default:
-					s.notFound(w, r)
-					return
-				}
-			}
-		case "gists": // -> 88
-			// Edge: 88, path: "gists".
-			elem, p = nextElem(p)
-			switch elem {
-			default:
-				if args == nil {
-					args = make(map[string]string)
-				}
-				args["gist_id"] = elem
-				// Edge: 89, path: "".
-				elem, p = nextElem(p)
-				if len(elem) == 0 {
-					// DELETE /gists/{gist_id}.
-					s.handleGistsDeleteRequest(args, w, r)
-					return
-				}
-				switch elem {
-				case "comments": // -> 90
-					// Edge: 90, path: "comments".
-					elem, p = nextElem(p)
-					switch elem {
-					default:
-						if args == nil {
-							args = make(map[string]string)
-						}
-						args["comment_id"] = elem
-						// DELETE /gists/{gist_id}/comments/{comment_id}
-						s.handleGistsDeleteCommentRequest(args, w, r)
-						return
-					}
-				case "star": // -> 92
-					// DELETE /gists/{gist_id}/star
-					s.handleGistsUnstarRequest(args, w, r)
-					return
-				default:
-					// DELETE /gists/{gist_id}.
-					s.handleGistsDeleteRequest(args, w, r)
-					return
-				}
-			}
-		case "authorizations": // -> 124
-			// Edge: 124, path: "authorizations".
-			elem, p = nextElem(p)
-			switch elem {
-			default:
-				if args == nil {
-					args = make(map[string]string)
-				}
-				args["authorization_id"] = elem
-				// DELETE /authorizations/{authorization_id}
-				s.handleOAuthAuthorizationsDeleteAuthorizationRequest(args, w, r)
-				return
-			}
-		case "users": // -> 152
-			// Edge: 152, path: "users".
-			elem, p = nextElem(p)
-			switch elem {
-			default:
-				if args == nil {
-					args = make(map[string]string)
-				}
-				args["username"] = elem
-				// Edge: 153, path: "".
-				elem, p = nextElem(p)
-				switch elem {
-				case "packages": // -> 154
-					// Edge: 154, path: "packages".
-					elem, p = nextElem(p)
-					switch elem {
-					default:
-						if args == nil {
-							args = make(map[string]string)
-						}
-						args["package_type"] = elem
-						// Edge: 155, path: "".
-						elem, p = nextElem(p)
-						switch elem {
-						case "": // -> 156
-							// Edge: 156, path: "".
-							elem, p = nextElem(p)
-							switch elem {
-							default:
-								if args == nil {
-									args = make(map[string]string)
-								}
-								args["package_name"] = elem
-								// Edge: 157, path: "".
-								elem, p = nextElem(p)
-								if len(elem) == 0 {
-									// DELETE /users/{username}/packages/{package_type}/{package_name}.
-									s.handlePackagesDeletePackageForUserRequest(args, w, r)
-									return
-								}
-								switch elem {
-								case "versions": // -> 162
-									// Edge: 162, path: "versions".
-									elem, p = nextElem(p)
-									switch elem {
-									default:
-										if args == nil {
-											args = make(map[string]string)
-										}
-										args["package_version_id"] = elem
-										// DELETE /users/{username}/packages/{package_type}/{package_name}/versions/{package_version_id}
-										s.handlePackagesDeletePackageVersionForUserRequest(args, w, r)
-										return
-									}
-								default:
-									// DELETE /users/{username}/packages/{package_type}/{package_name}.
-									s.handlePackagesDeletePackageForUserRequest(args, w, r)
-									return
-								}
-							}
-						default:
-							s.notFound(w, r)
-							return
-						}
-					}
-				default:
-					s.notFound(w, r)
-					return
-				}
-			}
-		case "projects": // -> 164
-			// Edge: 164, path: "projects".
-			elem, p = nextElem(p)
-			switch elem {
-			case "columns": // -> 166
-				// Edge: 166, path: "columns".
-				elem, p = nextElem(p)
-				switch elem {
-				case "cards": // -> 167
-					// Edge: 167, path: "cards".
-					elem, p = nextElem(p)
-					switch elem {
-					default:
-						if args == nil {
-							args = make(map[string]string)
-						}
-						args["card_id"] = elem
-						// DELETE /projects/columns/cards/{card_id}
-						s.handleProjectsDeleteCardRequest(args, w, r)
-						return
-					}
-				default:
-					if args == nil {
-						args = make(map[string]string)
-					}
-					args["column_id"] = elem
-					// DELETE /projects/columns/{column_id}
-					s.handleProjectsDeleteColumnRequest(args, w, r)
-					return
-				}
-			default:
-				if args == nil {
-					args = make(map[string]string)
-				}
-				args["project_id"] = elem
-				// Edge: 165, path: "".
-				elem, p = nextElem(p)
-				if len(elem) == 0 {
-					// DELETE /projects/{project_id}.
-					s.handleProjectsDeleteRequest(args, w, r)
-					return
-				}
-				switch elem {
-				case "collaborators": // -> 170
-					// Edge: 170, path: "collaborators".
-					elem, p = nextElem(p)
-					switch elem {
-					default:
-						if args == nil {
-							args = make(map[string]string)
-						}
-						args["username"] = elem
-						// DELETE /projects/{project_id}/collaborators/{username}
-						s.handleProjectsRemoveCollaboratorRequest(args, w, r)
-						return
-					}
-				default:
-					// DELETE /projects/{project_id}.
-					s.handleProjectsDeleteRequest(args, w, r)
-					return
-				}
-			}
-		case "reactions": // -> 199
-			// Edge: 199, path: "reactions".
-			elem, p = nextElem(p)
-			switch elem {
-			default:
-				if args == nil {
-					args = make(map[string]string)
-				}
-				args["reaction_id"] = elem
-				// DELETE /reactions/{reaction_id}
-				s.handleReactionsDeleteLegacyRequest(args, w, r)
-				return
-			}
-		case "teams": // -> 243
-			// Edge: 243, path: "teams".
-			elem, p = nextElem(p)
-			switch elem {
-			default:
-				if args == nil {
-					args = make(map[string]string)
-				}
-				args["team_id"] = elem
-				// Edge: 244, path: "".
-				elem, p = nextElem(p)
-				if len(elem) == 0 {
-					// DELETE /teams/{team_id}.
-					s.handleTeamsDeleteLegacyRequest(args, w, r)
-					return
-				}
-				switch elem {
-				case "discussions": // -> 245
-					// Edge: 245, path: "discussions".
-					elem, p = nextElem(p)
-					switch elem {
-					default:
-						if args == nil {
-							args = make(map[string]string)
-						}
-						args["discussion_number"] = elem
-						// Edge: 246, path: "".
-						elem, p = nextElem(p)
-						if len(elem) == 0 {
-							// DELETE /teams/{team_id}/discussions/{discussion_number}.
-							s.handleTeamsDeleteDiscussionLegacyRequest(args, w, r)
-							return
-						}
-						switch elem {
-						case "comments": // -> 247
-							// Edge: 247, path: "comments".
-							elem, p = nextElem(p)
-							switch elem {
-							default:
-								if args == nil {
-									args = make(map[string]string)
-								}
-								args["comment_number"] = elem
-								// DELETE /teams/{team_id}/discussions/{discussion_number}/comments/{comment_number}
-								s.handleTeamsDeleteDiscussionCommentLegacyRequest(args, w, r)
-								return
-							}
-						default:
-							// DELETE /teams/{team_id}/discussions/{discussion_number}.
-							s.handleTeamsDeleteDiscussionLegacyRequest(args, w, r)
-							return
-						}
-					}
-				case "members": // -> 249
-					// Edge: 249, path: "members".
-					elem, p = nextElem(p)
-					switch elem {
-					default:
-						if args == nil {
-							args = make(map[string]string)
-						}
-						args["username"] = elem
-						// DELETE /teams/{team_id}/members/{username}
-						s.handleTeamsRemoveMemberLegacyRequest(args, w, r)
-						return
-					}
-				case "memberships": // -> 253
-					// Edge: 253, path: "memberships".
-					elem, p = nextElem(p)
-					switch elem {
-					default:
-						if args == nil {
-							args = make(map[string]string)
-						}
-						args["username"] = elem
-						// DELETE /teams/{team_id}/memberships/{username}
-						s.handleTeamsRemoveMembershipForUserLegacyRequest(args, w, r)
-						return
-					}
-				case "projects": // -> 257
-					// Edge: 257, path: "projects".
-					elem, p = nextElem(p)
-					switch elem {
-					default:
-						if args == nil {
-							args = make(map[string]string)
-						}
-						args["project_id"] = elem
-						// DELETE /teams/{team_id}/projects/{project_id}
-						s.handleTeamsRemoveProjectLegacyRequest(args, w, r)
-						return
-					}
-				case "repos": // -> 263
-					// Edge: 263, path: "repos".
-					elem, p = nextElem(p)
-					switch elem {
-					default:
-						if args == nil {
-							args = make(map[string]string)
-						}
-						args["owner"] = elem
-						// Edge: 264, path: "".
-						elem, p = nextElem(p)
-						switch elem {
-						case "": // -> 265
-							// Edge: 265, path: "".
-							elem, p = nextElem(p)
-							switch elem {
-							default:
-								if args == nil {
-									args = make(map[string]string)
-								}
-								args["repo"] = elem
-								// DELETE /teams/{team_id}/repos/{owner}/{repo}
-								s.handleTeamsRemoveRepoLegacyRequest(args, w, r)
-								return
-							}
-						default:
-							s.notFound(w, r)
-							return
-						}
-					}
-				default:
-					// DELETE /teams/{team_id}.
-					s.handleTeamsDeleteLegacyRequest(args, w, r)
-					return
-				}
-			}
-		default:
-			s.notFound(w, r)
-			return
-		}
-	case "GET":
-		// Root edge.
-		elem, p = nextElem(p)
-		switch elem {
-		case "repos": // -> 1
-			// Edge: 1, path: "repos".
-			elem, p = nextElem(p)
-			switch elem {
-			default:
-				if args == nil {
-					args = make(map[string]string)
-				}
-				args["owner"] = elem
-				// Edge: 2, path: "".
-				elem, p = nextElem(p)
-				switch elem {
-				case "": // -> 3
-					// Edge: 3, path: "".
-					elem, p = nextElem(p)
-					switch elem {
-					default:
-						if args == nil {
-							args = make(map[string]string)
-						}
-						args["repo"] = elem
-						// Edge: 4, path: "".
-						elem, p = nextElem(p)
-						if len(elem) == 0 {
-							// GET /repos/{owner}/{repo}.
-							s.handleReposGetRequest(args, w, r)
-							return
-						}
-						switch elem {
-						case "actions": // -> 5
-							// Edge: 5, path: "actions".
-							elem, p = nextElem(p)
-							switch elem {
-							case "artifacts": // -> 6
-								// Edge: 6, path: "artifacts".
-								elem, p = nextElem(p)
-								if len(elem) == 0 {
-									// GET /repos/{owner}/{repo}/actions/artifacts.
-									s.handleActionsListArtifactsForRepoRequest(args, w, r)
-									return
-								}
-								switch elem {
-								default:
-									if args == nil {
-										args = make(map[string]string)
-									}
-									args["artifact_id"] = elem
-									// Edge: 7, path: "".
-									elem, p = nextElem(p)
-									if len(elem) == 0 {
-										// GET /repos/{owner}/{repo}/actions/artifacts/{artifact_id}.
-										s.handleActionsGetArtifactRequest(args, w, r)
-										return
-									}
-									switch elem {
-									case "": // -> 8
-										// Edge: 8, path: "".
-										elem, p = nextElem(p)
-										switch elem {
-										default:
-											if args == nil {
-												args = make(map[string]string)
-											}
-											args["archive_format"] = elem
-											// GET /repos/{owner}/{repo}/actions/artifacts/{artifact_id}/{archive_format}
-											s.handleActionsDownloadArtifactRequest(args, w, r)
-											return
-										}
-									default:
-										// GET /repos/{owner}/{repo}/actions/artifacts/{artifact_id}.
-										s.handleActionsGetArtifactRequest(args, w, r)
-										return
-									}
-								}
-							case "jobs": // -> 10
-								// Edge: 10, path: "jobs".
-								elem, p = nextElem(p)
-								switch elem {
-								default:
-									if args == nil {
-										args = make(map[string]string)
-									}
-									args["job_id"] = elem
-									// Edge: 11, path: "".
-									elem, p = nextElem(p)
-									if len(elem) == 0 {
-										// GET /repos/{owner}/{repo}/actions/jobs/{job_id}.
-										s.handleActionsGetJobForWorkflowRunRequest(args, w, r)
-										return
-									}
-									switch elem {
-									case "logs": // -> 12
-										// GET /repos/{owner}/{repo}/actions/jobs/{job_id}/logs
-										s.handleActionsDownloadJobLogsForWorkflowRunRequest(args, w, r)
-										return
-									default:
-										// GET /repos/{owner}/{repo}/actions/jobs/{job_id}.
-										s.handleActionsGetJobForWorkflowRunRequest(args, w, r)
-										return
-									}
-								}
-							case "runs": // -> 13
-								// Edge: 13, path: "runs".
-								elem, p = nextElem(p)
-								if len(elem) == 0 {
-									// GET /repos/{owner}/{repo}/actions/runs.
-									s.handleActionsListWorkflowRunsForRepoRequest(args, w, r)
-									return
-								}
-								switch elem {
-								default:
-									if args == nil {
-										args = make(map[string]string)
-									}
-									args["run_id"] = elem
-									// Edge: 14, path: "".
-									elem, p = nextElem(p)
-									if len(elem) == 0 {
-										// GET /repos/{owner}/{repo}/actions/runs/{run_id}.
-										s.handleActionsGetWorkflowRunRequest(args, w, r)
-										return
-									}
-									switch elem {
-									case "logs": // -> 15
-										// GET /repos/{owner}/{repo}/actions/runs/{run_id}/logs
-										s.handleActionsDownloadWorkflowRunLogsRequest(args, w, r)
-										return
-									case "approvals": // -> 36
-										// GET /repos/{owner}/{repo}/actions/runs/{run_id}/approvals
-										s.handleActionsGetReviewsForRunRequest(args, w, r)
-										return
-									case "timing": // -> 43
-										// GET /repos/{owner}/{repo}/actions/runs/{run_id}/timing
-										s.handleActionsGetWorkflowRunUsageRequest(args, w, r)
-										return
-									case "jobs": // -> 44
-										// GET /repos/{owner}/{repo}/actions/runs/{run_id}/jobs
-										s.handleActionsListJobsForWorkflowRunRequest(args, w, r)
-										return
-									case "artifacts": // -> 52
-										// GET /repos/{owner}/{repo}/actions/runs/{run_id}/artifacts
-										s.handleActionsListWorkflowRunArtifactsRequest(args, w, r)
-										return
-									default:
-										// GET /repos/{owner}/{repo}/actions/runs/{run_id}.
-										s.handleActionsGetWorkflowRunRequest(args, w, r)
-										return
-									}
-								}
-							case "permissions": // -> 21
-								// Edge: 21, path: "permissions".
-								elem, p = nextElem(p)
-								if len(elem) == 0 {
-									// GET /repos/{owner}/{repo}/actions/permissions.
-									s.handleActionsGetGithubActionsPermissionsRepositoryRequest(args, w, r)
-									return
-								}
-								switch elem {
-								case "selected-actions": // -> 22
-									// GET /repos/{owner}/{repo}/actions/permissions/selected-actions
-									s.handleActionsGetAllowedActionsRepositoryRequest(args, w, r)
-									return
-								default:
-									// GET /repos/{owner}/{repo}/actions/permissions.
-									s.handleActionsGetGithubActionsPermissionsRepositoryRequest(args, w, r)
-									return
-								}
-							case "secrets": // -> 33
-								// Edge: 33, path: "secrets".
-								elem, p = nextElem(p)
-								if len(elem) == 0 {
-									// GET /repos/{owner}/{repo}/actions/secrets.
-									s.handleActionsListRepoSecretsRequest(args, w, r)
-									return
-								}
-								switch elem {
-								case "public-key": // -> 34
-									// GET /repos/{owner}/{repo}/actions/secrets/public-key
-									s.handleActionsGetRepoPublicKeyRequest(args, w, r)
-									return
-								default:
-									if args == nil {
-										args = make(map[string]string)
-									}
-									args["secret_name"] = elem
-									// GET /repos/{owner}/{repo}/actions/secrets/{secret_name}
-									s.handleActionsGetRepoSecretRequest(args, w, r)
-									return
-								}
-							case "runners": // -> 39
-								// Edge: 39, path: "runners".
-								elem, p = nextElem(p)
-								if len(elem) == 0 {
-									// GET /repos/{owner}/{repo}/actions/runners.
-									s.handleActionsListSelfHostedRunnersForRepoRequest(args, w, r)
-									return
-								}
-								switch elem {
-								case "downloads": // -> 48
-									// GET /repos/{owner}/{repo}/actions/runners/downloads
-									s.handleActionsListRunnerApplicationsForRepoRequest(args, w, r)
-									return
-								default:
-									if args == nil {
-										args = make(map[string]string)
-									}
-									args["runner_id"] = elem
-									// GET /repos/{owner}/{repo}/actions/runners/{runner_id}
-									s.handleActionsGetSelfHostedRunnerForRepoRequest(args, w, r)
-									return
-								}
-							case "workflows": // -> 46
-								// GET /repos/{owner}/{repo}/actions/workflows
-								s.handleActionsListRepoWorkflowsRequest(args, w, r)
-								return
-							default:
-								s.notFound(w, r)
-								return
-							}
-						case "subscription": // -> 59
-							// GET /repos/{owner}/{repo}/subscription
-							s.handleActivityGetRepoSubscriptionRequest(args, w, r)
-							return
-						case "events": // -> 79
-							// GET /repos/{owner}/{repo}/events
-							s.handleActivityListRepoEventsRequest(args, w, r)
-							return
-						case "notifications": // -> 80
-							// GET /repos/{owner}/{repo}/notifications
-							s.handleActivityListRepoNotificationsForAuthenticatedUserRequest(args, w, r)
-							return
-						case "subscribers": // -> 83
-							// GET /repos/{owner}/{repo}/subscribers
-							s.handleActivityListWatchersForRepoRequest(args, w, r)
-							return
-						case "check-runs": // -> 127
-							// Edge: 127, path: "check-runs".
-							elem, p = nextElem(p)
-							switch elem {
-							default:
-								if args == nil {
-									args = make(map[string]string)
-								}
-								args["check_run_id"] = elem
-								// Edge: 128, path: "".
-								elem, p = nextElem(p)
-								if len(elem) == 0 {
-									// GET /repos/{owner}/{repo}/check-runs/{check_run_id}.
-									s.handleChecksGetRequest(args, w, r)
-									return
-								}
-								switch elem {
-								case "annotations": // -> 131
-									// GET /repos/{owner}/{repo}/check-runs/{check_run_id}/annotations
-									s.handleChecksListAnnotationsRequest(args, w, r)
-									return
-								default:
-									// GET /repos/{owner}/{repo}/check-runs/{check_run_id}.
-									s.handleChecksGetRequest(args, w, r)
-									return
-								}
-							}
-						case "check-suites": // -> 129
-							// Edge: 129, path: "check-suites".
-							elem, p = nextElem(p)
-							switch elem {
-							default:
-								if args == nil {
-									args = make(map[string]string)
-								}
-								args["check_suite_id"] = elem
-								// Edge: 130, path: "".
-								elem, p = nextElem(p)
-								if len(elem) == 0 {
-									// GET /repos/{owner}/{repo}/check-suites/{check_suite_id}.
-									s.handleChecksGetSuiteRequest(args, w, r)
-									return
-								}
-								switch elem {
-								case "check-runs": // -> 135
-									// GET /repos/{owner}/{repo}/check-suites/{check_suite_id}/check-runs
-									s.handleChecksListForSuiteRequest(args, w, r)
-									return
-								default:
-									// GET /repos/{owner}/{repo}/check-suites/{check_suite_id}.
-									s.handleChecksGetSuiteRequest(args, w, r)
-									return
-								}
-							}
-						case "commits": // -> 132
-							// Edge: 132, path: "commits".
-							elem, p = nextElem(p)
-							if len(elem) == 0 {
-								// GET /repos/{owner}/{repo}/commits.
-								s.handleReposListCommitsRequest(args, w, r)
-								return
-							}
-							switch elem {
-							default:
-								if args == nil {
-									args = make(map[string]string)
-								}
-								args["ref"] = elem
-								// Edge: 133, path: "".
-								elem, p = nextElem(p)
-								if len(elem) == 0 {
-									// GET /repos/{owner}/{repo}/commits/{ref}.
-									s.handleReposGetCommitRequest(args, w, r)
-									return
-								}
-								switch elem {
-								case "check-runs": // -> 134
-									// GET /repos/{owner}/{repo}/commits/{ref}/check-runs
-									s.handleChecksListForRefRequest(args, w, r)
-									return
-								case "check-suites": // -> 136
-									// GET /repos/{owner}/{repo}/commits/{ref}/check-suites
-									s.handleChecksListSuitesForRefRequest(args, w, r)
-									return
-								case "status": // -> 353
-									// GET /repos/{owner}/{repo}/commits/{ref}/status
-									s.handleReposGetCombinedStatusForRefRequest(args, w, r)
-									return
-								case "branches-where-head": // -> 393
-									// GET /repos/{owner}/{repo}/commits/{commit_sha}/branches-where-head
-									s.handleReposListBranchesForHeadCommitRequest(args, w, r)
-									return
-								case "comments": // -> 394
-									// GET /repos/{owner}/{repo}/commits/{commit_sha}/comments
-									s.handleReposListCommentsForCommitRequest(args, w, r)
-									return
-								case "statuses": // -> 395
-									// GET /repos/{owner}/{repo}/commits/{ref}/statuses
-									s.handleReposListCommitStatusesForRefRequest(args, w, r)
-									return
-								case "pulls": // -> 404
-									// GET /repos/{owner}/{repo}/commits/{commit_sha}/pulls
-									s.handleReposListPullRequestsAssociatedWithCommitRequest(args, w, r)
-									return
-								default:
-									// GET /repos/{owner}/{repo}/commits/{ref}.
-									s.handleReposGetCommitRequest(args, w, r)
-									return
-								}
-							}
-						case "code-scanning": // -> 137
-							// Edge: 137, path: "code-scanning".
-							elem, p = nextElem(p)
-							switch elem {
-							case "alerts": // -> 138
-								// Edge: 138, path: "alerts".
-								elem, p = nextElem(p)
-								if len(elem) == 0 {
-									// GET /repos/{owner}/{repo}/code-scanning/alerts.
-									s.handleCodeScanningListAlertsForRepoRequest(args, w, r)
-									return
-								}
-								switch elem {
-								default:
-									if args == nil {
-										args = make(map[string]string)
-									}
-									args["alert_number"] = elem
-									// Edge: 139, path: "".
-									elem, p = nextElem(p)
-									if len(elem) == 0 {
-										// GET /repos/{owner}/{repo}/code-scanning/alerts/{alert_number}.
-										s.handleCodeScanningGetAlertRequest(args, w, r)
-										return
-									}
-									switch elem {
-									case "instances": // -> 144
-										// GET /repos/{owner}/{repo}/code-scanning/alerts/{alert_number}/instances
-										s.handleCodeScanningListAlertInstancesRequest(args, w, r)
-										return
-									default:
-										// GET /repos/{owner}/{repo}/code-scanning/alerts/{alert_number}.
-										s.handleCodeScanningGetAlertRequest(args, w, r)
-										return
-									}
-								}
-							case "analyses": // -> 140
-								// Edge: 140, path: "analyses".
-								elem, p = nextElem(p)
-								if len(elem) == 0 {
-									// GET /repos/{owner}/{repo}/code-scanning/analyses.
-									s.handleCodeScanningListRecentAnalysesRequest(args, w, r)
-									return
-								}
-								switch elem {
-								default:
-									if args == nil {
-										args = make(map[string]string)
-									}
-									args["analysis_id"] = elem
-									// GET /repos/{owner}/{repo}/code-scanning/analyses/{analysis_id}
-									s.handleCodeScanningGetAnalysisRequest(args, w, r)
-									return
-								}
-							case "sarifs": // -> 142
-								// Edge: 142, path: "sarifs".
-								elem, p = nextElem(p)
-								switch elem {
-								default:
-									if args == nil {
-										args = make(map[string]string)
-									}
-									args["sarif_id"] = elem
-									// GET /repos/{owner}/{repo}/code-scanning/sarifs/{sarif_id}
-									s.handleCodeScanningGetSarifRequest(args, w, r)
-									return
-								}
-							default:
-								s.notFound(w, r)
-								return
-							}
-						case "git": // -> 180
-							// Edge: 180, path: "git".
-							elem, p = nextElem(p)
-							switch elem {
-							case "blobs": // -> 181
-								// Edge: 181, path: "blobs".
-								elem, p = nextElem(p)
-								switch elem {
-								default:
-									if args == nil {
-										args = make(map[string]string)
-									}
-									args["file_sha"] = elem
-									// GET /repos/{owner}/{repo}/git/blobs/{file_sha}
-									s.handleGitGetBlobRequest(args, w, r)
-									return
-								}
-							case "commits": // -> 183
-								// Edge: 183, path: "commits".
-								elem, p = nextElem(p)
-								switch elem {
-								default:
-									if args == nil {
-										args = make(map[string]string)
-									}
-									args["commit_sha"] = elem
-									// GET /repos/{owner}/{repo}/git/commits/{commit_sha}
-									s.handleGitGetCommitRequest(args, w, r)
-									return
-								}
-							case "ref": // -> 185
-								// Edge: 185, path: "ref".
-								elem, p = nextElem(p)
-								switch elem {
-								default:
-									if args == nil {
-										args = make(map[string]string)
-									}
-									args["ref"] = elem
-									// GET /repos/{owner}/{repo}/git/ref/{ref}
-									s.handleGitGetRefRequest(args, w, r)
-									return
-								}
-							case "tags": // -> 187
-								// Edge: 187, path: "tags".
-								elem, p = nextElem(p)
-								switch elem {
-								default:
-									if args == nil {
-										args = make(map[string]string)
-									}
-									args["tag_sha"] = elem
-									// GET /repos/{owner}/{repo}/git/tags/{tag_sha}
-									s.handleGitGetTagRequest(args, w, r)
-									return
-								}
-							case "trees": // -> 189
-								// Edge: 189, path: "trees".
-								elem, p = nextElem(p)
-								switch elem {
-								default:
-									if args == nil {
-										args = make(map[string]string)
-									}
-									args["tree_sha"] = elem
-									// GET /repos/{owner}/{repo}/git/trees/{tree_sha}
-									s.handleGitGetTreeRequest(args, w, r)
-									return
-								}
-							case "matching-refs": // -> 191
-								// Edge: 191, path: "matching-refs".
-								elem, p = nextElem(p)
-								switch elem {
-								default:
-									if args == nil {
-										args = make(map[string]string)
-									}
-									args["ref"] = elem
-									// GET /repos/{owner}/{repo}/git/matching-refs/{ref}
-									s.handleGitListMatchingRefsRequest(args, w, r)
-									return
-								}
-							default:
-								s.notFound(w, r)
-								return
-							}
-						case "assignees": // -> 196
-							// Edge: 196, path: "assignees".
-							elem, p = nextElem(p)
-							if len(elem) == 0 {
-								// GET /repos/{owner}/{repo}/assignees.
-								s.handleIssuesListAssigneesRequest(args, w, r)
-								return
-							}
-							switch elem {
-							default:
-								if args == nil {
-									args = make(map[string]string)
-								}
-								args["assignee"] = elem
-								// GET /repos/{owner}/{repo}/assignees/{assignee}
-								s.handleIssuesCheckUserCanBeAssignedRequest(args, w, r)
-								return
-							}
-						case "issues": // -> 198
-							// Edge: 198, path: "issues".
-							elem, p = nextElem(p)
-							if len(elem) == 0 {
-								// GET /repos/{owner}/{repo}/issues.
-								s.handleIssuesListForRepoRequest(args, w, r)
-								return
-							}
-							switch elem {
-							case "comments": // -> 200
-								// Edge: 200, path: "comments".
-								elem, p = nextElem(p)
-								if len(elem) == 0 {
-									// GET /repos/{owner}/{repo}/issues/comments.
-									s.handleIssuesListCommentsForRepoRequest(args, w, r)
-									return
-								}
-								switch elem {
-								default:
-									if args == nil {
-										args = make(map[string]string)
-									}
-									args["comment_id"] = elem
-									// Edge: 201, path: "".
-									elem, p = nextElem(p)
-									if len(elem) == 0 {
-										// GET /repos/{owner}/{repo}/issues/comments/{comment_id}.
-										s.handleIssuesGetCommentRequest(args, w, r)
-										return
-									}
-									switch elem {
-									case "reactions": // -> 310
-										// GET /repos/{owner}/{repo}/issues/comments/{comment_id}/reactions
-										s.handleReactionsListForIssueCommentRequest(args, w, r)
-										return
-									default:
-										// GET /repos/{owner}/{repo}/issues/comments/{comment_id}.
-										s.handleIssuesGetCommentRequest(args, w, r)
-										return
-									}
-								}
-							case "events": // -> 202
-								// Edge: 202, path: "events".
-								elem, p = nextElem(p)
-								if len(elem) == 0 {
-									// GET /repos/{owner}/{repo}/issues/events.
-									s.handleIssuesListEventsForRepoRequest(args, w, r)
-									return
-								}
-								switch elem {
-								default:
-									if args == nil {
-										args = make(map[string]string)
-									}
-									args["event_id"] = elem
-									// GET /repos/{owner}/{repo}/issues/events/{event_id}
-									s.handleIssuesGetEventRequest(args, w, r)
-									return
-								}
-							default:
-								if args == nil {
-									args = make(map[string]string)
-								}
-								args["issue_number"] = elem
-								// Edge: 199, path: "".
-								elem, p = nextElem(p)
-								if len(elem) == 0 {
-									// GET /repos/{owner}/{repo}/issues/{issue_number}.
-									s.handleIssuesGetRequest(args, w, r)
-									return
-								}
-								switch elem {
-								case "comments": // -> 209
-									// GET /repos/{owner}/{repo}/issues/{issue_number}/comments
-									s.handleIssuesListCommentsRequest(args, w, r)
-									return
-								case "labels": // -> 213
-									// GET /repos/{owner}/{repo}/issues/{issue_number}/labels
-									s.handleIssuesListLabelsOnIssueRequest(args, w, r)
-									return
-								case "reactions": // -> 309
-									// GET /repos/{owner}/{repo}/issues/{issue_number}/reactions
-									s.handleReactionsListForIssueRequest(args, w, r)
-									return
-								default:
-									// GET /repos/{owner}/{repo}/issues/{issue_number}.
-									s.handleIssuesGetRequest(args, w, r)
-									return
-								}
-							}
-						case "labels": // -> 204
-							// Edge: 204, path: "labels".
-							elem, p = nextElem(p)
-							if len(elem) == 0 {
-								// GET /repos/{owner}/{repo}/labels.
-								s.handleIssuesListLabelsForRepoRequest(args, w, r)
-								return
-							}
-							switch elem {
-							default:
-								if args == nil {
-									args = make(map[string]string)
-								}
-								args["name"] = elem
-								// GET /repos/{owner}/{repo}/labels/{name}
-								s.handleIssuesGetLabelRequest(args, w, r)
-								return
-							}
-						case "milestones": // -> 206
-							// Edge: 206, path: "milestones".
-							elem, p = nextElem(p)
-							if len(elem) == 0 {
-								// GET /repos/{owner}/{repo}/milestones.
-								s.handleIssuesListMilestonesRequest(args, w, r)
-								return
-							}
-							switch elem {
-							default:
-								if args == nil {
-									args = make(map[string]string)
-								}
-								args["milestone_number"] = elem
-								// Edge: 207, path: "".
-								elem, p = nextElem(p)
-								if len(elem) == 0 {
-									// GET /repos/{owner}/{repo}/milestones/{milestone_number}.
-									s.handleIssuesGetMilestoneRequest(args, w, r)
-									return
-								}
-								switch elem {
-								case "labels": // -> 212
-									// GET /repos/{owner}/{repo}/milestones/{milestone_number}/labels
-									s.handleIssuesListLabelsForMilestoneRequest(args, w, r)
-									return
-								default:
-									// GET /repos/{owner}/{repo}/milestones/{milestone_number}.
-									s.handleIssuesGetMilestoneRequest(args, w, r)
-									return
-								}
-							}
-						case "license": // -> 216
-							// GET /repos/{owner}/{repo}/license
-							s.handleLicensesGetForRepoRequest(args, w, r)
-							return
-						case "import": // -> 225
-							// Edge: 225, path: "import".
-							elem, p = nextElem(p)
-							if len(elem) == 0 {
-								// GET /repos/{owner}/{repo}/import.
-								s.handleMigrationsGetImportStatusRequest(args, w, r)
-								return
-							}
-							switch elem {
-							case "authors": // -> 226
-								// GET /repos/{owner}/{repo}/import/authors
-								s.handleMigrationsGetCommitAuthorsRequest(args, w, r)
-								return
-							case "large_files": // -> 227
-								// GET /repos/{owner}/{repo}/import/large_files
-								s.handleMigrationsGetLargeFilesRequest(args, w, r)
-								return
-							default:
-								// GET /repos/{owner}/{repo}/import.
-								s.handleMigrationsGetImportStatusRequest(args, w, r)
-								return
-							}
-						case "projects": // -> 291
-							// GET /repos/{owner}/{repo}/projects
-							s.handleProjectsListForRepoRequest(args, w, r)
-							return
-						case "pulls": // -> 293
-							// Edge: 293, path: "pulls".
-							elem, p = nextElem(p)
-							if len(elem) == 0 {
-								// GET /repos/{owner}/{repo}/pulls.
-								s.handlePullsListRequest(args, w, r)
-								return
-							}
-							switch elem {
-							case "comments": // -> 298
-								// Edge: 298, path: "comments".
-								elem, p = nextElem(p)
-								if len(elem) == 0 {
-									// GET /repos/{owner}/{repo}/pulls/comments.
-									s.handlePullsListReviewCommentsForRepoRequest(args, w, r)
-									return
-								}
-								switch elem {
-								default:
-									if args == nil {
-										args = make(map[string]string)
-									}
-									args["comment_id"] = elem
-									// Edge: 299, path: "".
-									elem, p = nextElem(p)
-									if len(elem) == 0 {
-										// GET /repos/{owner}/{repo}/pulls/comments/{comment_id}.
-										s.handlePullsGetReviewCommentRequest(args, w, r)
-										return
-									}
-									switch elem {
-									case "reactions": // -> 311
-										// GET /repos/{owner}/{repo}/pulls/comments/{comment_id}/reactions
-										s.handleReactionsListForPullRequestReviewCommentRequest(args, w, r)
-										return
-									default:
-										// GET /repos/{owner}/{repo}/pulls/comments/{comment_id}.
-										s.handlePullsGetReviewCommentRequest(args, w, r)
-										return
-									}
-								}
-							default:
-								if args == nil {
-									args = make(map[string]string)
-								}
-								args["pull_number"] = elem
-								// Edge: 294, path: "".
-								elem, p = nextElem(p)
-								if len(elem) == 0 {
-									// GET /repos/{owner}/{repo}/pulls/{pull_number}.
-									s.handlePullsGetRequest(args, w, r)
-									return
-								}
-								switch elem {
-								case "merge": // -> 295
-									// GET /repos/{owner}/{repo}/pulls/{pull_number}/merge
-									s.handlePullsCheckIfMergedRequest(args, w, r)
-									return
-								case "reviews": // -> 296
-									// Edge: 296, path: "reviews".
-									elem, p = nextElem(p)
-									if len(elem) == 0 {
-										// GET /repos/{owner}/{repo}/pulls/{pull_number}/reviews.
-										s.handlePullsListReviewsRequest(args, w, r)
-										return
-									}
-									switch elem {
-									default:
-										if args == nil {
-											args = make(map[string]string)
-										}
-										args["review_id"] = elem
-										// Edge: 297, path: "".
-										elem, p = nextElem(p)
-										if len(elem) == 0 {
-											// GET /repos/{owner}/{repo}/pulls/{pull_number}/reviews/{review_id}.
-											s.handlePullsGetReviewRequest(args, w, r)
-											return
-										}
-										switch elem {
-										case "comments": // -> 300
-											// GET /repos/{owner}/{repo}/pulls/{pull_number}/reviews/{review_id}/comments
-											s.handlePullsListCommentsForReviewRequest(args, w, r)
-											return
-										default:
-											// GET /repos/{owner}/{repo}/pulls/{pull_number}/reviews/{review_id}.
-											s.handlePullsGetReviewRequest(args, w, r)
-											return
-										}
-									}
-								case "commits": // -> 301
-									// GET /repos/{owner}/{repo}/pulls/{pull_number}/commits
-									s.handlePullsListCommitsRequest(args, w, r)
-									return
-								case "files": // -> 302
-									// GET /repos/{owner}/{repo}/pulls/{pull_number}/files
-									s.handlePullsListFilesRequest(args, w, r)
-									return
-								case "requested_reviewers": // -> 303
-									// GET /repos/{owner}/{repo}/pulls/{pull_number}/requested_reviewers
-									s.handlePullsListRequestedReviewersRequest(args, w, r)
-									return
-								case "comments": // -> 304
-									// GET /repos/{owner}/{repo}/pulls/{pull_number}/comments
-									s.handlePullsListReviewCommentsRequest(args, w, r)
-									return
-								default:
-									// GET /repos/{owner}/{repo}/pulls/{pull_number}.
-									s.handlePullsGetRequest(args, w, r)
-									return
-								}
-							}
-						case "comments": // -> 306
-							// Edge: 306, path: "comments".
-							elem, p = nextElem(p)
-							if len(elem) == 0 {
-								// GET /repos/{owner}/{repo}/comments.
-								s.handleReposListCommitCommentsForRepoRequest(args, w, r)
-								return
-							}
-							switch elem {
-							default:
-								if args == nil {
-									args = make(map[string]string)
-								}
-								args["comment_id"] = elem
-								// Edge: 307, path: "".
-								elem, p = nextElem(p)
-								if len(elem) == 0 {
-									// GET /repos/{owner}/{repo}/comments/{comment_id}.
-									s.handleReposGetCommitCommentRequest(args, w, r)
-									return
-								}
-								switch elem {
-								case "reactions": // -> 308
-									// GET /repos/{owner}/{repo}/comments/{comment_id}/reactions
-									s.handleReactionsListForCommitCommentRequest(args, w, r)
-									return
-								default:
-									// GET /repos/{owner}/{repo}/comments/{comment_id}.
-									s.handleReposGetCommitCommentRequest(args, w, r)
-									return
-								}
-							}
-						case "collaborators": // -> 328
-							// Edge: 328, path: "collaborators".
-							elem, p = nextElem(p)
-							if len(elem) == 0 {
-								// GET /repos/{owner}/{repo}/collaborators.
-								s.handleReposListCollaboratorsRequest(args, w, r)
-								return
-							}
-							switch elem {
-							default:
-								if args == nil {
-									args = make(map[string]string)
-								}
-								args["username"] = elem
-								// Edge: 329, path: "".
-								elem, p = nextElem(p)
-								if len(elem) == 0 {
-									// GET /repos/{owner}/{repo}/collaborators/{username}.
-									s.handleReposCheckCollaboratorRequest(args, w, r)
-									return
-								}
-								switch elem {
-								case "permission": // -> 352
-									// GET /repos/{owner}/{repo}/collaborators/{username}/permission
-									s.handleReposGetCollaboratorPermissionLevelRequest(args, w, r)
-									return
-								default:
-									// GET /repos/{owner}/{repo}/collaborators/{username}.
-									s.handleReposCheckCollaboratorRequest(args, w, r)
-									return
-								}
-							}
-						case "vulnerability-alerts": // -> 330
-							// GET /repos/{owner}/{repo}/vulnerability-alerts
-							s.handleReposCheckVulnerabilityAlertsRequest(args, w, r)
-							return
-						case "compare": // -> 331
-							// Edge: 331, path: "compare".
-							elem, p = nextElem(p)
-							switch elem {
-							default:
-								if args == nil {
-									args = make(map[string]string)
-								}
-								args["basehead"] = elem
-								// GET /repos/{owner}/{repo}/compare/{basehead}
-								s.handleReposCompareCommitsRequest(args, w, r)
-								return
-							}
-						case "tarball": // -> 333
-							// Edge: 333, path: "tarball".
-							elem, p = nextElem(p)
-							switch elem {
-							default:
-								if args == nil {
-									args = make(map[string]string)
-								}
-								args["ref"] = elem
-								// GET /repos/{owner}/{repo}/tarball/{ref}
-								s.handleReposDownloadTarballArchiveRequest(args, w, r)
-								return
-							}
-						case "zipball": // -> 335
-							// Edge: 335, path: "zipball".
-							elem, p = nextElem(p)
-							switch elem {
-							default:
-								if args == nil {
-									args = make(map[string]string)
-								}
-								args["ref"] = elem
-								// GET /repos/{owner}/{repo}/zipball/{ref}
-								s.handleReposDownloadZipballArchiveRequest(args, w, r)
-								return
-							}
-						case "branches": // -> 337
-							// Edge: 337, path: "branches".
-							elem, p = nextElem(p)
-							if len(elem) == 0 {
-								// GET /repos/{owner}/{repo}/branches.
-								s.handleReposListBranchesRequest(args, w, r)
-								return
-							}
-							switch elem {
-							default:
-								if args == nil {
-									args = make(map[string]string)
-								}
-								args["branch"] = elem
-								// Edge: 338, path: "".
-								elem, p = nextElem(p)
-								if len(elem) == 0 {
-									// GET /repos/{owner}/{repo}/branches/{branch}.
-									s.handleReposGetBranchRequest(args, w, r)
-									return
-								}
-								switch elem {
-								case "protection": // -> 339
-									// Edge: 339, path: "protection".
-									elem, p = nextElem(p)
-									if len(elem) == 0 {
-										// GET /repos/{owner}/{repo}/branches/{branch}/protection.
-										s.handleReposGetBranchProtectionRequest(args, w, r)
-										return
-									}
-									switch elem {
-									case "restrictions": // -> 340
-										// Edge: 340, path: "restrictions".
-										elem, p = nextElem(p)
-										if len(elem) == 0 {
-											// GET /repos/{owner}/{repo}/branches/{branch}/protection/restrictions.
-											s.handleReposGetAccessRestrictionsRequest(args, w, r)
-											return
-										}
-										switch elem {
-										case "apps": // -> 345
-											// GET /repos/{owner}/{repo}/branches/{branch}/protection/restrictions/apps
-											s.handleReposGetAppsWithAccessToProtectedBranchRequest(args, w, r)
-											return
-										case "teams": // -> 382
-											// GET /repos/{owner}/{repo}/branches/{branch}/protection/restrictions/teams
-											s.handleReposGetTeamsWithAccessToProtectedBranchRequest(args, w, r)
-											return
-										case "users": // -> 386
-											// GET /repos/{owner}/{repo}/branches/{branch}/protection/restrictions/users
-											s.handleReposGetUsersWithAccessToProtectedBranchRequest(args, w, r)
-											return
-										default:
-											// GET /repos/{owner}/{repo}/branches/{branch}/protection/restrictions.
-											s.handleReposGetAccessRestrictionsRequest(args, w, r)
-											return
-										}
-									case "enforce_admins": // -> 341
-										// GET /repos/{owner}/{repo}/branches/{branch}/protection/enforce_admins
-										s.handleReposGetAdminBranchProtectionRequest(args, w, r)
-										return
-									case "required_status_checks": // -> 342
-										// Edge: 342, path: "required_status_checks".
-										elem, p = nextElem(p)
-										if len(elem) == 0 {
-											// GET /repos/{owner}/{repo}/branches/{branch}/protection/required_status_checks.
-											s.handleReposGetStatusChecksProtectionRequest(args, w, r)
-											return
-										}
-										switch elem {
-										case "contexts": // -> 343
-											// GET /repos/{owner}/{repo}/branches/{branch}/protection/required_status_checks/contexts
-											s.handleReposGetAllStatusCheckContextsRequest(args, w, r)
-											return
-										default:
-											// GET /repos/{owner}/{repo}/branches/{branch}/protection/required_status_checks.
-											s.handleReposGetStatusChecksProtectionRequest(args, w, r)
-											return
-										}
-									case "required_signatures": // -> 355
-										// GET /repos/{owner}/{repo}/branches/{branch}/protection/required_signatures
-										s.handleReposGetCommitSignatureProtectionRequest(args, w, r)
-										return
-									case "required_pull_request_reviews": // -> 373
-										// GET /repos/{owner}/{repo}/branches/{branch}/protection/required_pull_request_reviews
-										s.handleReposGetPullRequestReviewProtectionRequest(args, w, r)
-										return
-									default:
-										// GET /repos/{owner}/{repo}/branches/{branch}/protection.
-										s.handleReposGetBranchProtectionRequest(args, w, r)
-										return
-									}
-								default:
-									// GET /repos/{owner}/{repo}/branches/{branch}.
-									s.handleReposGetBranchRequest(args, w, r)
-									return
-								}
-							}
-						case "topics": // -> 344
-							// GET /repos/{owner}/{repo}/topics
-							s.handleReposGetAllTopicsRequest(args, w, r)
-							return
-						case "autolinks": // -> 346
-							// Edge: 346, path: "autolinks".
-							elem, p = nextElem(p)
-							if len(elem) == 0 {
-								// GET /repos/{owner}/{repo}/autolinks.
-								s.handleReposListAutolinksRequest(args, w, r)
-								return
-							}
-							switch elem {
-							default:
-								if args == nil {
-									args = make(map[string]string)
-								}
-								args["autolink_id"] = elem
-								// GET /repos/{owner}/{repo}/autolinks/{autolink_id}
-								s.handleReposGetAutolinkRequest(args, w, r)
-								return
-							}
-						case "traffic": // -> 348
-							// Edge: 348, path: "traffic".
-							elem, p = nextElem(p)
-							switch elem {
-							case "clones": // -> 349
-								// GET /repos/{owner}/{repo}/traffic/clones
-								s.handleReposGetClonesRequest(args, w, r)
-								return
-							case "popular": // -> 383
-								// Edge: 383, path: "popular".
-								elem, p = nextElem(p)
-								switch elem {
-								case "paths": // -> 384
-									// GET /repos/{owner}/{repo}/traffic/popular/paths
-									s.handleReposGetTopPathsRequest(args, w, r)
-									return
-								case "referrers": // -> 385
-									// GET /repos/{owner}/{repo}/traffic/popular/referrers
-									s.handleReposGetTopReferrersRequest(args, w, r)
-									return
-								default:
-									s.notFound(w, r)
-									return
-								}
-							case "views": // -> 387
-								// GET /repos/{owner}/{repo}/traffic/views
-								s.handleReposGetViewsRequest(args, w, r)
-								return
-							default:
-								s.notFound(w, r)
-								return
-							}
-						case "stats": // -> 350
-							// Edge: 350, path: "stats".
-							elem, p = nextElem(p)
-							switch elem {
-							case "code_frequency": // -> 351
-								// GET /repos/{owner}/{repo}/stats/code_frequency
-								s.handleReposGetCodeFrequencyStatsRequest(args, w, r)
-								return
-							case "commit_activity": // -> 354
-								// GET /repos/{owner}/{repo}/stats/commit_activity
-								s.handleReposGetCommitActivityStatsRequest(args, w, r)
-								return
-							case "contributors": // -> 358
-								// GET /repos/{owner}/{repo}/stats/contributors
-								s.handleReposGetContributorsStatsRequest(args, w, r)
-								return
-							case "participation": // -> 372
-								// GET /repos/{owner}/{repo}/stats/participation
-								s.handleReposGetParticipationStatsRequest(args, w, r)
-								return
-							case "punch_card": // -> 374
-								// GET /repos/{owner}/{repo}/stats/punch_card
-								s.handleReposGetPunchCardStatsRequest(args, w, r)
-								return
-							default:
-								s.notFound(w, r)
-								return
-							}
-						case "community": // -> 356
-							// Edge: 356, path: "community".
-							elem, p = nextElem(p)
-							switch elem {
-							case "profile": // -> 357
-								// GET /repos/{owner}/{repo}/community/profile
-								s.handleReposGetCommunityProfileMetricsRequest(args, w, r)
-								return
-							default:
-								s.notFound(w, r)
-								return
-							}
-						case "keys": // -> 359
-							// Edge: 359, path: "keys".
-							elem, p = nextElem(p)
-							if len(elem) == 0 {
-								// GET /repos/{owner}/{repo}/keys.
-								s.handleReposListDeployKeysRequest(args, w, r)
-								return
-							}
-							switch elem {
-							default:
-								if args == nil {
-									args = make(map[string]string)
-								}
-								args["key_id"] = elem
-								// GET /repos/{owner}/{repo}/keys/{key_id}
-								s.handleReposGetDeployKeyRequest(args, w, r)
-								return
-							}
-						case "deployments": // -> 361
-							// Edge: 361, path: "deployments".
-							elem, p = nextElem(p)
-							if len(elem) == 0 {
-								// GET /repos/{owner}/{repo}/deployments.
-								s.handleReposListDeploymentsRequest(args, w, r)
-								return
-							}
-							switch elem {
-							default:
-								if args == nil {
-									args = make(map[string]string)
-								}
-								args["deployment_id"] = elem
-								// Edge: 362, path: "".
-								elem, p = nextElem(p)
-								if len(elem) == 0 {
-									// GET /repos/{owner}/{repo}/deployments/{deployment_id}.
-									s.handleReposGetDeploymentRequest(args, w, r)
-									return
-								}
-								switch elem {
-								case "statuses": // -> 363
-									// Edge: 363, path: "statuses".
-									elem, p = nextElem(p)
-									if len(elem) == 0 {
-										// GET /repos/{owner}/{repo}/deployments/{deployment_id}/statuses.
-										s.handleReposListDeploymentStatusesRequest(args, w, r)
-										return
-									}
-									switch elem {
-									default:
-										if args == nil {
-											args = make(map[string]string)
-										}
-										args["status_id"] = elem
-										// GET /repos/{owner}/{repo}/deployments/{deployment_id}/statuses/{status_id}
-										s.handleReposGetDeploymentStatusRequest(args, w, r)
-										return
-									}
-								default:
-									// GET /repos/{owner}/{repo}/deployments/{deployment_id}.
-									s.handleReposGetDeploymentRequest(args, w, r)
-									return
-								}
-							}
-						case "pages": // -> 365
-							// Edge: 365, path: "pages".
-							elem, p = nextElem(p)
-							if len(elem) == 0 {
-								// GET /repos/{owner}/{repo}/pages.
-								s.handleReposGetPagesRequest(args, w, r)
-								return
-							}
-							switch elem {
-							case "builds": // -> 366
-								// Edge: 366, path: "builds".
-								elem, p = nextElem(p)
-								if len(elem) == 0 {
-									// GET /repos/{owner}/{repo}/pages/builds.
-									s.handleReposListPagesBuildsRequest(args, w, r)
-									return
-								}
-								switch elem {
-								case "latest": // -> 367
-									// GET /repos/{owner}/{repo}/pages/builds/latest
-									s.handleReposGetLatestPagesBuildRequest(args, w, r)
-									return
-								default:
-									if args == nil {
-										args = make(map[string]string)
-									}
-									args["build_id"] = elem
-									// GET /repos/{owner}/{repo}/pages/builds/{build_id}
-									s.handleReposGetPagesBuildRequest(args, w, r)
-									return
-								}
-							case "health": // -> 371
-								// GET /repos/{owner}/{repo}/pages/health
-								s.handleReposGetPagesHealthCheckRequest(args, w, r)
-								return
-							default:
-								// GET /repos/{owner}/{repo}/pages.
-								s.handleReposGetPagesRequest(args, w, r)
-								return
-							}
-						case "releases": // -> 368
-							// Edge: 368, path: "releases".
-							elem, p = nextElem(p)
-							if len(elem) == 0 {
-								// GET /repos/{owner}/{repo}/releases.
-								s.handleReposListReleasesRequest(args, w, r)
-								return
-							}
-							switch elem {
-							case "latest": // -> 369
-								// GET /repos/{owner}/{repo}/releases/latest
-								s.handleReposGetLatestReleaseRequest(args, w, r)
-								return
-							case "assets": // -> 378
-								// Edge: 378, path: "assets".
-								elem, p = nextElem(p)
-								switch elem {
-								default:
-									if args == nil {
-										args = make(map[string]string)
-									}
-									args["asset_id"] = elem
-									// GET /repos/{owner}/{repo}/releases/assets/{asset_id}
-									s.handleReposGetReleaseAssetRequest(args, w, r)
-									return
-								}
-							case "tags": // -> 380
-								// Edge: 380, path: "tags".
-								elem, p = nextElem(p)
-								switch elem {
-								default:
-									if args == nil {
-										args = make(map[string]string)
-									}
-									args["tag"] = elem
-									// GET /repos/{owner}/{repo}/releases/tags/{tag}
-									s.handleReposGetReleaseByTagRequest(args, w, r)
-									return
-								}
-							default:
-								if args == nil {
-									args = make(map[string]string)
-								}
-								args["release_id"] = elem
-								// Edge: 377, path: "".
-								elem, p = nextElem(p)
-								if len(elem) == 0 {
-									// GET /repos/{owner}/{repo}/releases/{release_id}.
-									s.handleReposGetReleaseRequest(args, w, r)
-									return
-								}
-								switch elem {
-								case "assets": // -> 405
-									// GET /repos/{owner}/{repo}/releases/{release_id}/assets
-									s.handleReposListReleaseAssetsRequest(args, w, r)
-									return
-								default:
-									// GET /repos/{owner}/{repo}/releases/{release_id}.
-									s.handleReposGetReleaseRequest(args, w, r)
-									return
-								}
-							}
-						case "readme": // -> 375
-							// Edge: 375, path: "readme".
-							elem, p = nextElem(p)
-							if len(elem) == 0 {
-								// GET /repos/{owner}/{repo}/readme.
-								s.handleReposGetReadmeRequest(args, w, r)
-								return
-							}
-							switch elem {
-							default:
-								if args == nil {
-									args = make(map[string]string)
-								}
-								args["dir"] = elem
-								// GET /repos/{owner}/{repo}/readme/{dir}
-								s.handleReposGetReadmeInDirectoryRequest(args, w, r)
-								return
-							}
-						case "hooks": // -> 388
-							// Edge: 388, path: "hooks".
-							elem, p = nextElem(p)
-							if len(elem) == 0 {
-								// GET /repos/{owner}/{repo}/hooks.
-								s.handleReposListWebhooksRequest(args, w, r)
-								return
-							}
-							switch elem {
-							default:
-								if args == nil {
-									args = make(map[string]string)
-								}
-								args["hook_id"] = elem
-								// Edge: 389, path: "".
-								elem, p = nextElem(p)
-								if len(elem) == 0 {
-									// GET /repos/{owner}/{repo}/hooks/{hook_id}.
-									s.handleReposGetWebhookRequest(args, w, r)
-									return
-								}
-								switch elem {
-								case "config": // -> 390
-									// GET /repos/{owner}/{repo}/hooks/{hook_id}/config
-									s.handleReposGetWebhookConfigForRepoRequest(args, w, r)
-									return
-								case "deliveries": // -> 391
-									// Edge: 391, path: "deliveries".
-									elem, p = nextElem(p)
-									if len(elem) == 0 {
-										// GET /repos/{owner}/{repo}/hooks/{hook_id}/deliveries.
-										s.handleReposListWebhookDeliveriesRequest(args, w, r)
-										return
-									}
-									switch elem {
-									default:
-										if args == nil {
-											args = make(map[string]string)
-										}
-										args["delivery_id"] = elem
-										// GET /repos/{owner}/{repo}/hooks/{hook_id}/deliveries/{delivery_id}
-										s.handleReposGetWebhookDeliveryRequest(args, w, r)
-										return
-									}
-								default:
-									// GET /repos/{owner}/{repo}/hooks/{hook_id}.
-									s.handleReposGetWebhookRequest(args, w, r)
-									return
-								}
-							}
-						case "contributors": // -> 396
-							// GET /repos/{owner}/{repo}/contributors
-							s.handleReposListContributorsRequest(args, w, r)
-							return
-						case "forks": // -> 400
-							// GET /repos/{owner}/{repo}/forks
-							s.handleReposListForksRequest(args, w, r)
-							return
-						case "invitations": // -> 401
-							// GET /repos/{owner}/{repo}/invitations
-							s.handleReposListInvitationsRequest(args, w, r)
-							return
-						case "languages": // -> 403
-							// GET /repos/{owner}/{repo}/languages
-							s.handleReposListLanguagesRequest(args, w, r)
-							return
-						case "tags": // -> 406
-							// GET /repos/{owner}/{repo}/tags
-							s.handleReposListTagsRequest(args, w, r)
-							return
-						case "teams": // -> 407
-							// GET /repos/{owner}/{repo}/teams
-							s.handleReposListTeamsRequest(args, w, r)
-							return
-						case "secret-scanning": // -> 416
-							// Edge: 416, path: "secret-scanning".
-							elem, p = nextElem(p)
-							switch elem {
-							case "alerts": // -> 417
-								// Edge: 417, path: "alerts".
-								elem, p = nextElem(p)
-								if len(elem) == 0 {
-									// GET /repos/{owner}/{repo}/secret-scanning/alerts.
-									s.handleSecretScanningListAlertsForRepoRequest(args, w, r)
-									return
-								}
-								switch elem {
-								default:
-									if args == nil {
-										args = make(map[string]string)
-									}
-									args["alert_number"] = elem
-									// GET /repos/{owner}/{repo}/secret-scanning/alerts/{alert_number}
-									s.handleSecretScanningGetAlertRequest(args, w, r)
-									return
-								}
-							default:
-								s.notFound(w, r)
-								return
-							}
-						default:
-							// GET /repos/{owner}/{repo}.
-							s.handleReposGetRequest(args, w, r)
-							return
-						}
-					}
-				default:
-					s.notFound(w, r)
-					return
-				}
-			}
-		case "orgs": // -> 16
-			// Edge: 16, path: "orgs".
-			elem, p = nextElem(p)
-			switch elem {
-			default:
-				if args == nil {
-					args = make(map[string]string)
-				}
-				args["org"] = elem
-				// Edge: 17, path: "".
-				elem, p = nextElem(p)
-				if len(elem) == 0 {
-					// GET /orgs/{org}.
-					s.handleOrgsGetRequest(args, w, r)
-					return
-				}
-				switch elem {
-				case "actions": // -> 18
-					// Edge: 18, path: "actions".
-					elem, p = nextElem(p)
-					switch elem {
-					case "permissions": // -> 19
-						// Edge: 19, path: "permissions".
-						elem, p = nextElem(p)
-						if len(elem) == 0 {
-							// GET /orgs/{org}/actions/permissions.
-							s.handleActionsGetGithubActionsPermissionsOrganizationRequest(args, w, r)
-							return
-						}
-						switch elem {
-						case "selected-actions": // -> 20
-							// GET /orgs/{org}/actions/permissions/selected-actions
-							s.handleActionsGetAllowedActionsOrganizationRequest(args, w, r)
-							return
-						case "repositories": // -> 50
-							// GET /orgs/{org}/actions/permissions/repositories
-							s.handleActionsListSelectedRepositoriesEnabledGithubActionsOrganizationRequest(args, w, r)
-							return
-						default:
-							// GET /orgs/{org}/actions/permissions.
-							s.handleActionsGetGithubActionsPermissionsOrganizationRequest(args, w, r)
-							return
-						}
-					case "secrets": // -> 30
-						// Edge: 30, path: "secrets".
-						elem, p = nextElem(p)
-						if len(elem) == 0 {
-							// GET /orgs/{org}/actions/secrets.
-							s.handleActionsListOrgSecretsRequest(args, w, r)
-							return
-						}
-						switch elem {
-						case "public-key": // -> 31
-							// GET /orgs/{org}/actions/secrets/public-key
-							s.handleActionsGetOrgPublicKeyRequest(args, w, r)
-							return
-						default:
-							if args == nil {
-								args = make(map[string]string)
-							}
-							args["secret_name"] = elem
-							// Edge: 32, path: "".
-							elem, p = nextElem(p)
-							if len(elem) == 0 {
-								// GET /orgs/{org}/actions/secrets/{secret_name}.
-								s.handleActionsGetOrgSecretRequest(args, w, r)
-								return
-							}
-							switch elem {
-							case "repositories": // -> 49
-								// GET /orgs/{org}/actions/secrets/{secret_name}/repositories
-								s.handleActionsListSelectedReposForOrgSecretRequest(args, w, r)
-								return
-							default:
-								// GET /orgs/{org}/actions/secrets/{secret_name}.
-								s.handleActionsGetOrgSecretRequest(args, w, r)
-								return
-							}
-						}
-					case "runners": // -> 37
-						// Edge: 37, path: "runners".
-						elem, p = nextElem(p)
-						if len(elem) == 0 {
-							// GET /orgs/{org}/actions/runners.
-							s.handleActionsListSelfHostedRunnersForOrgRequest(args, w, r)
-							return
-						}
-						switch elem {
-						case "downloads": // -> 47
-							// GET /orgs/{org}/actions/runners/downloads
-							s.handleActionsListRunnerApplicationsForOrgRequest(args, w, r)
-							return
-						default:
-							if args == nil {
-								args = make(map[string]string)
-							}
-							args["runner_id"] = elem
-							// GET /orgs/{org}/actions/runners/{runner_id}
-							s.handleActionsGetSelfHostedRunnerForOrgRequest(args, w, r)
-							return
-						}
-					case "runner-groups": // -> 41
-						// Edge: 41, path: "runner-groups".
-						elem, p = nextElem(p)
-						if len(elem) == 0 {
-							// GET /orgs/{org}/actions/runner-groups.
-							s.handleActionsListSelfHostedRunnerGroupsForOrgRequest(args, w, r)
-							return
-						}
-						switch elem {
-						default:
-							if args == nil {
-								args = make(map[string]string)
-							}
-							args["runner_group_id"] = elem
-							// Edge: 42, path: "".
-							elem, p = nextElem(p)
-							if len(elem) == 0 {
-								// GET /orgs/{org}/actions/runner-groups/{runner_group_id}.
-								s.handleActionsGetSelfHostedRunnerGroupForOrgRequest(args, w, r)
-								return
-							}
-							switch elem {
-							case "repositories": // -> 45
-								// GET /orgs/{org}/actions/runner-groups/{runner_group_id}/repositories
-								s.handleActionsListRepoAccessToSelfHostedRunnerGroupInOrgRequest(args, w, r)
-								return
-							case "runners": // -> 51
-								// GET /orgs/{org}/actions/runner-groups/{runner_group_id}/runners
-								s.handleActionsListSelfHostedRunnersInGroupForOrgRequest(args, w, r)
-								return
-							default:
-								// GET /orgs/{org}/actions/runner-groups/{runner_group_id}.
-								s.handleActionsGetSelfHostedRunnerGroupForOrgRequest(args, w, r)
-								return
-							}
-						}
-					default:
-						s.notFound(w, r)
-						return
-					}
-				case "events": // -> 76
-					// GET /orgs/{org}/events
-					s.handleActivityListPublicOrgEventsRequest(args, w, r)
-					return
-				case "settings": // -> 115
-					// Edge: 115, path: "settings".
-					elem, p = nextElem(p)
-					switch elem {
-					case "billing": // -> 116
-						// Edge: 116, path: "billing".
-						elem, p = nextElem(p)
-						switch elem {
-						case "actions": // -> 117
-							// GET /orgs/{org}/settings/billing/actions
-							s.handleBillingGetGithubActionsBillingOrgRequest(args, w, r)
-							return
-						case "packages": // -> 122
-							// GET /orgs/{org}/settings/billing/packages
-							s.handleBillingGetGithubPackagesBillingOrgRequest(args, w, r)
-							return
-						case "shared-storage": // -> 125
-							// GET /orgs/{org}/settings/billing/shared-storage
-							s.handleBillingGetSharedStorageBillingOrgRequest(args, w, r)
-							return
-						default:
-							s.notFound(w, r)
-							return
-						}
-					default:
-						s.notFound(w, r)
-						return
-					}
-				case "issues": // -> 211
-					// GET /orgs/{org}/issues
-					s.handleIssuesListForOrgRequest(args, w, r)
-					return
-				case "migrations": // -> 219
-					// Edge: 219, path: "migrations".
-					elem, p = nextElem(p)
-					if len(elem) == 0 {
-						// GET /orgs/{org}/migrations.
-						s.handleMigrationsListForOrgRequest(args, w, r)
-						return
-					}
-					switch elem {
-					default:
-						if args == nil {
-							args = make(map[string]string)
-						}
-						args["migration_id"] = elem
-						// Edge: 220, path: "".
-						elem, p = nextElem(p)
-						if len(elem) == 0 {
-							// GET /orgs/{org}/migrations/{migration_id}.
-							s.handleMigrationsGetStatusForOrgRequest(args, w, r)
-							return
-						}
-						switch elem {
-						case "archive": // -> 221
-							// GET /orgs/{org}/migrations/{migration_id}/archive
-							s.handleMigrationsDownloadArchiveForOrgRequest(args, w, r)
-							return
-						case "repositories": // -> 228
-							// GET /orgs/{org}/migrations/{migration_id}/repositories
-							s.handleMigrationsListReposForOrgRequest(args, w, r)
-							return
-						default:
-							// GET /orgs/{org}/migrations/{migration_id}.
-							s.handleMigrationsGetStatusForOrgRequest(args, w, r)
-							return
-						}
-					}
-				case "blocks": // -> 235
-					// Edge: 235, path: "blocks".
-					elem, p = nextElem(p)
-					if len(elem) == 0 {
-						// GET /orgs/{org}/blocks.
-						s.handleOrgsListBlockedUsersRequest(args, w, r)
-						return
-					}
-					switch elem {
-					default:
-						if args == nil {
-							args = make(map[string]string)
-						}
-						args["username"] = elem
-						// GET /orgs/{org}/blocks/{username}
-						s.handleOrgsCheckBlockedUserRequest(args, w, r)
-						return
-					}
-				case "members": // -> 237
-					// Edge: 237, path: "members".
-					elem, p = nextElem(p)
-					if len(elem) == 0 {
-						// GET /orgs/{org}/members.
-						s.handleOrgsListMembersRequest(args, w, r)
-						return
-					}
-					switch elem {
-					default:
-						if args == nil {
-							args = make(map[string]string)
-						}
-						args["username"] = elem
-						// GET /orgs/{org}/members/{username}
-						s.handleOrgsCheckMembershipForUserRequest(args, w, r)
-						return
-					}
-				case "public_members": // -> 239
-					// Edge: 239, path: "public_members".
-					elem, p = nextElem(p)
-					if len(elem) == 0 {
-						// GET /orgs/{org}/public_members.
-						s.handleOrgsListPublicMembersRequest(args, w, r)
-						return
-					}
-					switch elem {
-					default:
-						if args == nil {
-							args = make(map[string]string)
-						}
-						args["username"] = elem
-						// GET /orgs/{org}/public_members/{username}
-						s.handleOrgsCheckPublicMembershipForUserRequest(args, w, r)
-						return
-					}
-				case "audit-log": // -> 241
-					// GET /orgs/{org}/audit-log
-					s.handleOrgsGetAuditLogRequest(args, w, r)
-					return
-				case "memberships": // -> 245
-					// Edge: 245, path: "memberships".
-					elem, p = nextElem(p)
-					switch elem {
-					default:
-						if args == nil {
-							args = make(map[string]string)
-						}
-						args["username"] = elem
-						// GET /orgs/{org}/memberships/{username}
-						s.handleOrgsGetMembershipForUserRequest(args, w, r)
-						return
-					}
-				case "hooks": // -> 247
-					// Edge: 247, path: "hooks".
-					elem, p = nextElem(p)
-					if len(elem) == 0 {
-						// GET /orgs/{org}/hooks.
-						s.handleOrgsListWebhooksRequest(args, w, r)
-						return
-					}
-					switch elem {
-					default:
-						if args == nil {
-							args = make(map[string]string)
-						}
-						args["hook_id"] = elem
-						// Edge: 248, path: "".
-						elem, p = nextElem(p)
-						if len(elem) == 0 {
-							// GET /orgs/{org}/hooks/{hook_id}.
-							s.handleOrgsGetWebhookRequest(args, w, r)
-							return
-						}
-						switch elem {
-						case "config": // -> 249
-							// GET /orgs/{org}/hooks/{hook_id}/config
-							s.handleOrgsGetWebhookConfigForOrgRequest(args, w, r)
-							return
-						case "deliveries": // -> 250
-							// Edge: 250, path: "deliveries".
-							elem, p = nextElem(p)
-							if len(elem) == 0 {
-								// GET /orgs/{org}/hooks/{hook_id}/deliveries.
-								s.handleOrgsListWebhookDeliveriesRequest(args, w, r)
-								return
-							}
-							switch elem {
-							default:
-								if args == nil {
-									args = make(map[string]string)
-								}
-								args["delivery_id"] = elem
-								// GET /orgs/{org}/hooks/{hook_id}/deliveries/{delivery_id}
-								s.handleOrgsGetWebhookDeliveryRequest(args, w, r)
-								return
-							}
-						default:
-							// GET /orgs/{org}/hooks/{hook_id}.
-							s.handleOrgsGetWebhookRequest(args, w, r)
-							return
-						}
-					}
-				case "failed_invitations": // -> 253
-					// GET /orgs/{org}/failed_invitations
-					s.handleOrgsListFailedInvitationsRequest(args, w, r)
-					return
-				case "invitations": // -> 256
-					// Edge: 256, path: "invitations".
-					elem, p = nextElem(p)
-					if len(elem) == 0 {
-						// GET /orgs/{org}/invitations.
-						s.handleOrgsListPendingInvitationsRequest(args, w, r)
-						return
-					}
-					switch elem {
-					default:
-						if args == nil {
-							args = make(map[string]string)
-						}
-						args["invitation_id"] = elem
-						// Edge: 257, path: "".
-						elem, p = nextElem(p)
-						switch elem {
-						case "teams": // -> 258
-							// GET /orgs/{org}/invitations/{invitation_id}/teams
-							s.handleOrgsListInvitationTeamsRequest(args, w, r)
-							return
-						default:
-							s.notFound(w, r)
-							return
-						}
-					}
-				case "outside_collaborators": // -> 259
-					// GET /orgs/{org}/outside_collaborators
-					s.handleOrgsListOutsideCollaboratorsRequest(args, w, r)
-					return
-				case "credential-authorizations": // -> 260
-					// GET /orgs/{org}/credential-authorizations
-					s.handleOrgsListSamlSSOAuthorizationsRequest(args, w, r)
-					return
-				case "packages": // -> 266
-					// Edge: 266, path: "packages".
-					elem, p = nextElem(p)
-					if len(elem) == 0 {
-						// GET /orgs/{org}/packages.
-						s.handlePackagesListPackagesForOrganizationRequest(args, w, r)
-						return
-					}
-					switch elem {
-					default:
-						if args == nil {
-							args = make(map[string]string)
-						}
-						args["package_type"] = elem
-						// Edge: 267, path: "".
-						elem, p = nextElem(p)
-						switch elem {
-						case "": // -> 268
-							// Edge: 268, path: "".
-							elem, p = nextElem(p)
-							switch elem {
-							default:
-								if args == nil {
-									args = make(map[string]string)
-								}
-								args["package_name"] = elem
-								// Edge: 269, path: "".
-								elem, p = nextElem(p)
-								if len(elem) == 0 {
-									// GET /orgs/{org}/packages/{package_type}/{package_name}.
-									s.handlePackagesGetPackageForOrganizationRequest(args, w, r)
-									return
-								}
-								switch elem {
-								case "versions": // -> 270
-									// Edge: 270, path: "versions".
-									elem, p = nextElem(p)
-									if len(elem) == 0 {
-										// GET /orgs/{org}/packages/{package_type}/{package_name}/versions.
-										s.handlePackagesGetAllPackageVersionsForPackageOwnedByOrgRequest(args, w, r)
-										return
-									}
-									switch elem {
-									default:
-										if args == nil {
-											args = make(map[string]string)
-										}
-										args["package_version_id"] = elem
-										// GET /orgs/{org}/packages/{package_type}/{package_name}/versions/{package_version_id}
-										s.handlePackagesGetPackageVersionForOrganizationRequest(args, w, r)
-										return
-									}
-								default:
-									// GET /orgs/{org}/packages/{package_type}/{package_name}.
-									s.handlePackagesGetPackageForOrganizationRequest(args, w, r)
-									return
-								}
-							}
-						default:
-							s.notFound(w, r)
-							return
-						}
-					}
-				case "projects": // -> 290
-					// GET /orgs/{org}/projects
-					s.handleProjectsListForOrgRequest(args, w, r)
-					return
-				case "teams": // -> 312
-					// Edge: 312, path: "teams".
-					elem, p = nextElem(p)
-					if len(elem) == 0 {
-						// GET /orgs/{org}/teams.
-						s.handleTeamsListRequest(args, w, r)
-						return
-					}
-					switch elem {
-					default:
-						if args == nil {
-							args = make(map[string]string)
-						}
-						args["team_slug"] = elem
-						// Edge: 313, path: "".
-						elem, p = nextElem(p)
-						if len(elem) == 0 {
-							// GET /orgs/{org}/teams/{team_slug}.
-							s.handleTeamsGetByNameRequest(args, w, r)
-							return
-						}
-						switch elem {
-						case "discussions": // -> 314
-							// Edge: 314, path: "discussions".
-							elem, p = nextElem(p)
-							if len(elem) == 0 {
-								// GET /orgs/{org}/teams/{team_slug}/discussions.
-								s.handleTeamsListDiscussionsInOrgRequest(args, w, r)
-								return
-							}
-							switch elem {
-							default:
-								if args == nil {
-									args = make(map[string]string)
-								}
-								args["discussion_number"] = elem
-								// Edge: 315, path: "".
-								elem, p = nextElem(p)
-								if len(elem) == 0 {
-									// GET /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}.
-									s.handleTeamsGetDiscussionInOrgRequest(args, w, r)
-									return
-								}
-								switch elem {
-								case "comments": // -> 316
-									// Edge: 316, path: "comments".
-									elem, p = nextElem(p)
-									if len(elem) == 0 {
-										// GET /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments.
-										s.handleTeamsListDiscussionCommentsInOrgRequest(args, w, r)
-										return
-									}
-									switch elem {
-									default:
-										if args == nil {
-											args = make(map[string]string)
-										}
-										args["comment_number"] = elem
-										// Edge: 317, path: "".
-										elem, p = nextElem(p)
-										if len(elem) == 0 {
-											// GET /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments/{comment_number}.
-											s.handleTeamsGetDiscussionCommentInOrgRequest(args, w, r)
-											return
-										}
-										switch elem {
-										case "reactions": // -> 318
-											// GET /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments/{comment_number}/reactions
-											s.handleReactionsListForTeamDiscussionCommentInOrgRequest(args, w, r)
-											return
-										default:
-											// GET /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments/{comment_number}.
-											s.handleTeamsGetDiscussionCommentInOrgRequest(args, w, r)
-											return
-										}
-									}
-								case "reactions": // -> 326
-									// GET /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/reactions
-									s.handleReactionsListForTeamDiscussionInOrgRequest(args, w, r)
-									return
-								default:
-									// GET /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}.
-									s.handleTeamsGetDiscussionInOrgRequest(args, w, r)
-									return
-								}
-							}
-						case "projects": // -> 421
-							// Edge: 421, path: "projects".
-							elem, p = nextElem(p)
-							if len(elem) == 0 {
-								// GET /orgs/{org}/teams/{team_slug}/projects.
-								s.handleTeamsListProjectsInOrgRequest(args, w, r)
-								return
-							}
-							switch elem {
-							default:
-								if args == nil {
-									args = make(map[string]string)
-								}
-								args["project_id"] = elem
-								// GET /orgs/{org}/teams/{team_slug}/projects/{project_id}
-								s.handleTeamsCheckPermissionsForProjectInOrgRequest(args, w, r)
-								return
-							}
-						case "repos": // -> 425
-							// Edge: 425, path: "repos".
-							elem, p = nextElem(p)
-							if len(elem) == 0 {
-								// GET /orgs/{org}/teams/{team_slug}/repos.
-								s.handleTeamsListReposInOrgRequest(args, w, r)
-								return
-							}
-							switch elem {
-							default:
-								if args == nil {
-									args = make(map[string]string)
-								}
-								args["owner"] = elem
-								// Edge: 426, path: "".
-								elem, p = nextElem(p)
-								switch elem {
-								case "": // -> 427
-									// Edge: 427, path: "".
-									elem, p = nextElem(p)
-									switch elem {
-									default:
-										if args == nil {
-											args = make(map[string]string)
-										}
-										args["repo"] = elem
-										// GET /orgs/{org}/teams/{team_slug}/repos/{owner}/{repo}
-										s.handleTeamsCheckPermissionsForRepoInOrgRequest(args, w, r)
-										return
-									}
-								default:
-									s.notFound(w, r)
-									return
-								}
-							}
-						case "memberships": // -> 435
-							// Edge: 435, path: "memberships".
-							elem, p = nextElem(p)
-							switch elem {
-							default:
-								if args == nil {
-									args = make(map[string]string)
-								}
-								args["username"] = elem
-								// GET /orgs/{org}/teams/{team_slug}/memberships/{username}
-								s.handleTeamsGetMembershipForUserInOrgRequest(args, w, r)
-								return
-							}
-						case "teams": // -> 439
-							// GET /orgs/{org}/teams/{team_slug}/teams
-							s.handleTeamsListChildInOrgRequest(args, w, r)
-							return
-						case "team-sync": // -> 446
-							// Edge: 446, path: "team-sync".
-							elem, p = nextElem(p)
-							switch elem {
-							case "group-mappings": // -> 447
-								// GET /orgs/{org}/teams/{team_slug}/team-sync/group-mappings
-								s.handleTeamsListIdpGroupsInOrgRequest(args, w, r)
-								return
-							default:
-								s.notFound(w, r)
-								return
-							}
-						case "members": // -> 448
-							// GET /orgs/{org}/teams/{team_slug}/members
-							s.handleTeamsListMembersInOrgRequest(args, w, r)
-							return
-						case "invitations": // -> 449
-							// GET /orgs/{org}/teams/{team_slug}/invitations
-							s.handleTeamsListPendingInvitationsInOrgRequest(args, w, r)
-							return
-						default:
-							// GET /orgs/{org}/teams/{team_slug}.
-							s.handleTeamsGetByNameRequest(args, w, r)
-							return
-						}
-					}
-				case "repos": // -> 398
-					// GET /orgs/{org}/repos
-					s.handleReposListForOrgRequest(args, w, r)
-					return
-				case "secret-scanning": // -> 419
-					// Edge: 419, path: "secret-scanning".
-					elem, p = nextElem(p)
-					switch elem {
-					case "alerts": // -> 420
-						// GET /orgs/{org}/secret-scanning/alerts
-						s.handleSecretScanningListAlertsForOrgRequest(args, w, r)
-						return
-					default:
-						s.notFound(w, r)
-						return
-					}
-				case "team-sync": // -> 444
-					// Edge: 444, path: "team-sync".
-					elem, p = nextElem(p)
-					switch elem {
-					case "groups": // -> 445
-						// GET /orgs/{org}/team-sync/groups
-						s.handleTeamsListIdpGroupsForOrgRequest(args, w, r)
-						return
-					default:
-						s.notFound(w, r)
-						return
-					}
-				default:
-					// GET /orgs/{org}.
-					s.handleOrgsGetRequest(args, w, r)
-					return
-				}
-			}
-		case "repositories": // -> 23
-			// Edge: 23, path: "repositories".
-			elem, p = nextElem(p)
-			if len(elem) == 0 {
-				// GET /repositories.
-				s.handleReposListPublicRequest(args, w, r)
-				return
-			}
-			switch elem {
-			default:
-				if args == nil {
-					args = make(map[string]string)
-				}
-				args["repository_id"] = elem
-				// Edge: 24, path: "".
-				elem, p = nextElem(p)
-				switch elem {
-				case "environments": // -> 25
-					// Edge: 25, path: "environments".
-					elem, p = nextElem(p)
-					switch elem {
-					default:
-						if args == nil {
-							args = make(map[string]string)
-						}
-						args["environment_name"] = elem
-						// Edge: 26, path: "".
-						elem, p = nextElem(p)
-						switch elem {
-						case "secrets": // -> 27
-							// Edge: 27, path: "secrets".
-							elem, p = nextElem(p)
-							if len(elem) == 0 {
-								// GET /repositories/{repository_id}/environments/{environment_name}/secrets.
-								s.handleActionsListEnvironmentSecretsRequest(args, w, r)
-								return
-							}
-							switch elem {
-							case "public-key": // -> 28
-								// GET /repositories/{repository_id}/environments/{environment_name}/secrets/public-key
-								s.handleActionsGetEnvironmentPublicKeyRequest(args, w, r)
-								return
-							default:
-								if args == nil {
-									args = make(map[string]string)
-								}
-								args["secret_name"] = elem
-								// GET /repositories/{repository_id}/environments/{environment_name}/secrets/{secret_name}
-								s.handleActionsGetEnvironmentSecretRequest(args, w, r)
-								return
-							}
-						default:
-							s.notFound(w, r)
-							return
-						}
-					}
-				default:
-					s.notFound(w, r)
-					return
-				}
-			}
-		case "user": // -> 53
-			// Edge: 53, path: "user".
-			elem, p = nextElem(p)
-			if len(elem) == 0 {
-				// GET /user.
-				s.handleUsersGetAuthenticatedRequest(args, w, r)
-				return
-			}
-			switch elem {
-			case "starred": // -> 54
-				// Edge: 54, path: "starred".
-				elem, p = nextElem(p)
-				if len(elem) == 0 {
-					// GET /user/starred.
-					s.handleActivityListReposStarredByAuthenticatedUserRequest(args, w, r)
-					return
-				}
-				switch elem {
-				default:
-					if args == nil {
-						args = make(map[string]string)
-					}
-					args["owner"] = elem
-					// Edge: 55, path: "".
-					elem, p = nextElem(p)
-					switch elem {
-					case "": // -> 56
-						// Edge: 56, path: "".
-						elem, p = nextElem(p)
-						switch elem {
-						default:
-							if args == nil {
-								args = make(map[string]string)
-							}
-							args["repo"] = elem
-							// GET /user/starred/{owner}/{repo}
-							s.handleActivityCheckRepoIsStarredByAuthenticatedUserRequest(args, w, r)
-							return
-						}
-					default:
-						s.notFound(w, r)
-						return
-					}
-				}
-			case "subscriptions": // -> 82
-				// GET /user/subscriptions
-				s.handleActivityListWatchedReposForAuthenticatedUserRequest(args, w, r)
-				return
-			case "installations": // -> 103
-				// Edge: 103, path: "installations".
-				elem, p = nextElem(p)
-				switch elem {
-				default:
-					if args == nil {
-						args = make(map[string]string)
-					}
-					args["installation_id"] = elem
-					// Edge: 104, path: "".
-					elem, p = nextElem(p)
-					switch elem {
-					case "repositories": // -> 105
-						// GET /user/installations/{installation_id}/repositories
-						s.handleAppsListInstallationReposForAuthenticatedUserRequest(args, w, r)
-						return
-					default:
-						s.notFound(w, r)
-						return
-					}
-				}
-			case "marketplace_purchases": // -> 108
-				// Edge: 108, path: "marketplace_purchases".
-				elem, p = nextElem(p)
-				if len(elem) == 0 {
-					// GET /user/marketplace_purchases.
-					s.handleAppsListSubscriptionsForAuthenticatedUserRequest(args, w, r)
-					return
-				}
-				switch elem {
-				case "stubbed": // -> 109
-					// GET /user/marketplace_purchases/stubbed
-					s.handleAppsListSubscriptionsForAuthenticatedUserStubbedRequest(args, w, r)
-					return
-				default:
-					// GET /user/marketplace_purchases.
-					s.handleAppsListSubscriptionsForAuthenticatedUserRequest(args, w, r)
-					return
-				}
-			case "issues": // -> 210
-				// GET /user/issues
-				s.handleIssuesListForAuthenticatedUserRequest(args, w, r)
-				return
-			case "migrations": // -> 222
-				// Edge: 222, path: "migrations".
-				elem, p = nextElem(p)
-				if len(elem) == 0 {
-					// GET /user/migrations.
-					s.handleMigrationsListForAuthenticatedUserRequest(args, w, r)
-					return
-				}
-				switch elem {
-				default:
-					if args == nil {
-						args = make(map[string]string)
-					}
-					args["migration_id"] = elem
-					// Edge: 223, path: "".
-					elem, p = nextElem(p)
-					if len(elem) == 0 {
-						// GET /user/migrations/{migration_id}.
-						s.handleMigrationsGetStatusForAuthenticatedUserRequest(args, w, r)
-						return
-					}
-					switch elem {
-					case "archive": // -> 224
-						// GET /user/migrations/{migration_id}/archive
-						s.handleMigrationsGetArchiveForAuthenticatedUserRequest(args, w, r)
-						return
-					case "repositories": // -> 229
-						// GET /user/migrations/{migration_id}/repositories
-						s.handleMigrationsListReposForUserRequest(args, w, r)
-						return
-					default:
-						// GET /user/migrations/{migration_id}.
-						s.handleMigrationsGetStatusForAuthenticatedUserRequest(args, w, r)
-						return
-					}
-				}
-			case "memberships": // -> 242
-				// Edge: 242, path: "memberships".
-				elem, p = nextElem(p)
-				switch elem {
-				case "orgs": // -> 243
-					// Edge: 243, path: "orgs".
-					elem, p = nextElem(p)
-					if len(elem) == 0 {
-						// GET /user/memberships/orgs.
-						s.handleOrgsListMembershipsForAuthenticatedUserRequest(args, w, r)
-						return
-					}
-					switch elem {
-					default:
-						if args == nil {
-							args = make(map[string]string)
-						}
-						args["org"] = elem
-						// GET /user/memberships/orgs/{org}
-						s.handleOrgsGetMembershipForAuthenticatedUserRequest(args, w, r)
-						return
-					}
-				default:
-					s.notFound(w, r)
-					return
-				}
-			case "orgs": // -> 254
-				// GET /user/orgs
-				s.handleOrgsListForAuthenticatedUserRequest(args, w, r)
-				return
-			case "packages": // -> 261
-				// Edge: 261, path: "packages".
-				elem, p = nextElem(p)
-				if len(elem) == 0 {
-					// GET /user/packages.
-					s.handlePackagesListPackagesForAuthenticatedUserRequest(args, w, r)
-					return
-				}
-				switch elem {
-				default:
-					if args == nil {
-						args = make(map[string]string)
-					}
-					args["package_type"] = elem
-					// Edge: 262, path: "".
-					elem, p = nextElem(p)
-					switch elem {
-					case "": // -> 263
-						// Edge: 263, path: "".
-						elem, p = nextElem(p)
-						switch elem {
-						default:
-							if args == nil {
-								args = make(map[string]string)
-							}
-							args["package_name"] = elem
-							// Edge: 264, path: "".
-							elem, p = nextElem(p)
-							if len(elem) == 0 {
-								// GET /user/packages/{package_type}/{package_name}.
-								s.handlePackagesGetPackageForAuthenticatedUserRequest(args, w, r)
-								return
-							}
-							switch elem {
-							case "versions": // -> 265
-								// Edge: 265, path: "versions".
-								elem, p = nextElem(p)
-								if len(elem) == 0 {
-									// GET /user/packages/{package_type}/{package_name}/versions.
-									s.handlePackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserRequest(args, w, r)
-									return
-								}
-								switch elem {
-								default:
-									if args == nil {
-										args = make(map[string]string)
-									}
-									args["package_version_id"] = elem
-									// GET /user/packages/{package_type}/{package_name}/versions/{package_version_id}
-									s.handlePackagesGetPackageVersionForAuthenticatedUserRequest(args, w, r)
-									return
-								}
-							default:
-								// GET /user/packages/{package_type}/{package_name}.
-								s.handlePackagesGetPackageForAuthenticatedUserRequest(args, w, r)
-								return
-							}
-						}
-					default:
-						s.notFound(w, r)
-						return
-					}
-				}
-			case "repos": // -> 397
-				// GET /user/repos
-				s.handleReposListForAuthenticatedUserRequest(args, w, r)
-				return
-			case "repository_invitations": // -> 402
-				// GET /user/repository_invitations
-				s.handleReposListInvitationsForAuthenticatedUserRequest(args, w, r)
-				return
-			case "teams": // -> 441
-				// GET /user/teams
-				s.handleTeamsListForAuthenticatedUserRequest(args, w, r)
-				return
-			case "blocks": // -> 451
-				// Edge: 451, path: "blocks".
-				elem, p = nextElem(p)
-				if len(elem) == 0 {
-					// GET /user/blocks.
-					s.handleUsersListBlockedByAuthenticatedRequest(args, w, r)
-					return
-				}
-				switch elem {
-				default:
-					if args == nil {
-						args = make(map[string]string)
-					}
-					args["username"] = elem
-					// GET /user/blocks/{username}
-					s.handleUsersCheckBlockedRequest(args, w, r)
-					return
-				}
-			case "following": // -> 455
-				// Edge: 455, path: "following".
-				elem, p = nextElem(p)
-				if len(elem) == 0 {
-					// GET /user/following.
-					s.handleUsersListFollowedByAuthenticatedRequest(args, w, r)
-					return
-				}
-				switch elem {
-				default:
-					if args == nil {
-						args = make(map[string]string)
-					}
-					args["username"] = elem
-					// GET /user/following/{username}
-					s.handleUsersCheckPersonIsFollowedByAuthenticatedRequest(args, w, r)
-					return
-				}
-			case "gpg_keys": // -> 458
-				// Edge: 458, path: "gpg_keys".
-				elem, p = nextElem(p)
-				if len(elem) == 0 {
-					// GET /user/gpg_keys.
-					s.handleUsersListGpgKeysForAuthenticatedRequest(args, w, r)
-					return
-				}
-				switch elem {
-				default:
-					if args == nil {
-						args = make(map[string]string)
-					}
-					args["gpg_key_id"] = elem
-					// GET /user/gpg_keys/{gpg_key_id}
-					s.handleUsersGetGpgKeyForAuthenticatedRequest(args, w, r)
-					return
-				}
-			case "keys": // -> 460
-				// Edge: 460, path: "keys".
-				elem, p = nextElem(p)
-				if len(elem) == 0 {
-					// GET /user/keys.
-					s.handleUsersListPublicSSHKeysForAuthenticatedRequest(args, w, r)
-					return
-				}
-				switch elem {
-				default:
-					if args == nil {
-						args = make(map[string]string)
-					}
-					args["key_id"] = elem
-					// GET /user/keys/{key_id}
-					s.handleUsersGetPublicSSHKeyForAuthenticatedRequest(args, w, r)
-					return
-				}
-			case "emails": // -> 462
-				// GET /user/emails
-				s.handleUsersListEmailsForAuthenticatedRequest(args, w, r)
-				return
-			case "followers": // -> 463
-				// GET /user/followers
-				s.handleUsersListFollowersForAuthenticatedUserRequest(args, w, r)
-				return
-			case "public_emails": // -> 466
-				// GET /user/public_emails
-				s.handleUsersListPublicEmailsForAuthenticatedRequest(args, w, r)
-				return
-			default:
-				// GET /user.
-				s.handleUsersGetAuthenticatedRequest(args, w, r)
-				return
-			}
-		case "feeds": // -> 58
-			// GET /feeds
-			s.handleActivityGetFeedsRequest(args, w, r)
-			return
-		case "notifications": // -> 60
-			// Edge: 60, path: "notifications".
-			elem, p = nextElem(p)
-			if len(elem) == 0 {
-				// GET /notifications.
-				s.handleActivityListNotificationsForAuthenticatedUserRequest(args, w, r)
-				return
-			}
-			switch elem {
-			case "threads": // -> 61
-				// Edge: 61, path: "threads".
-				elem, p = nextElem(p)
-				switch elem {
-				default:
-					if args == nil {
-						args = make(map[string]string)
-					}
-					args["thread_id"] = elem
-					// Edge: 62, path: "".
-					elem, p = nextElem(p)
-					if len(elem) == 0 {
-						// GET /notifications/threads/{thread_id}.
-						s.handleActivityGetThreadRequest(args, w, r)
-						return
-					}
-					switch elem {
-					case "subscription": // -> 63
-						// GET /notifications/threads/{thread_id}/subscription
-						s.handleActivityGetThreadSubscriptionForAuthenticatedUserRequest(args, w, r)
-						return
-					default:
-						// GET /notifications/threads/{thread_id}.
-						s.handleActivityGetThreadRequest(args, w, r)
-						return
-					}
-				}
-			default:
-				// GET /notifications.
-				s.handleActivityListNotificationsForAuthenticatedUserRequest(args, w, r)
-				return
-			}
-		case "users": // -> 64
-			// Edge: 64, path: "users".
-			elem, p = nextElem(p)
-			if len(elem) == 0 {
-				// GET /users.
-				s.handleUsersListRequest(args, w, r)
-				return
-			}
-			switch elem {
-			default:
-				if args == nil {
-					args = make(map[string]string)
-				}
-				args["username"] = elem
-				// Edge: 65, path: "".
-				elem, p = nextElem(p)
-				if len(elem) == 0 {
-					// GET /users/{username}.
-					s.handleUsersGetByUsernameRequest(args, w, r)
-					return
-				}
-				switch elem {
-				case "events": // -> 66
-					// Edge: 66, path: "events".
-					elem, p = nextElem(p)
-					if len(elem) == 0 {
-						// GET /users/{username}/events.
-						s.handleActivityListEventsForAuthenticatedUserRequest(args, w, r)
-						return
-					}
-					switch elem {
-					case "orgs": // -> 67
-						// Edge: 67, path: "orgs".
-						elem, p = nextElem(p)
-						switch elem {
-						default:
-							if args == nil {
-								args = make(map[string]string)
-							}
-							args["org"] = elem
-							// GET /users/{username}/events/orgs/{org}
-							s.handleActivityListOrgEventsForAuthenticatedUserRequest(args, w, r)
-							return
-						}
-					case "public": // -> 75
-						// GET /users/{username}/events/public
-						s.handleActivityListPublicEventsForUserRequest(args, w, r)
-						return
-					default:
-						// GET /users/{username}/events.
-						s.handleActivityListEventsForAuthenticatedUserRequest(args, w, r)
-						return
-					}
-				case "received_events": // -> 77
-					// Edge: 77, path: "received_events".
-					elem, p = nextElem(p)
-					if len(elem) == 0 {
-						// GET /users/{username}/received_events.
-						s.handleActivityListReceivedEventsForUserRequest(args, w, r)
-						return
-					}
-					switch elem {
-					case "public": // -> 78
-						// GET /users/{username}/received_events/public
-						s.handleActivityListReceivedPublicEventsForUserRequest(args, w, r)
-						return
-					default:
-						// GET /users/{username}/received_events.
-						s.handleActivityListReceivedEventsForUserRequest(args, w, r)
-						return
-					}
-				case "subscriptions": // -> 81
-					// GET /users/{username}/subscriptions
-					s.handleActivityListReposWatchedByUserRequest(args, w, r)
-					return
-				case "settings": // -> 118
-					// Edge: 118, path: "settings".
-					elem, p = nextElem(p)
-					switch elem {
-					case "billing": // -> 119
-						// Edge: 119, path: "billing".
-						elem, p = nextElem(p)
-						switch elem {
-						case "actions": // -> 120
-							// GET /users/{username}/settings/billing/actions
-							s.handleBillingGetGithubActionsBillingUserRequest(args, w, r)
-							return
-						case "packages": // -> 123
-							// GET /users/{username}/settings/billing/packages
-							s.handleBillingGetGithubPackagesBillingUserRequest(args, w, r)
-							return
-						case "shared-storage": // -> 126
-							// GET /users/{username}/settings/billing/shared-storage
-							s.handleBillingGetSharedStorageBillingUserRequest(args, w, r)
-							return
-						default:
-							s.notFound(w, r)
-							return
-						}
-					default:
-						s.notFound(w, r)
-						return
-					}
-				case "gists": // -> 176
-					// GET /users/{username}/gists
-					s.handleGistsListForUserRequest(args, w, r)
-					return
-				case "orgs": // -> 255
-					// GET /users/{username}/orgs
-					s.handleOrgsListForUserRequest(args, w, r)
-					return
-				case "packages": // -> 271
-					// Edge: 271, path: "packages".
-					elem, p = nextElem(p)
-					if len(elem) == 0 {
-						// GET /users/{username}/packages.
-						s.handlePackagesListPackagesForUserRequest(args, w, r)
-						return
-					}
-					switch elem {
-					default:
-						if args == nil {
-							args = make(map[string]string)
-						}
-						args["package_type"] = elem
-						// Edge: 272, path: "".
-						elem, p = nextElem(p)
-						switch elem {
-						case "": // -> 273
-							// Edge: 273, path: "".
-							elem, p = nextElem(p)
-							switch elem {
-							default:
-								if args == nil {
-									args = make(map[string]string)
-								}
-								args["package_name"] = elem
-								// Edge: 274, path: "".
-								elem, p = nextElem(p)
-								if len(elem) == 0 {
-									// GET /users/{username}/packages/{package_type}/{package_name}.
-									s.handlePackagesGetPackageForUserRequest(args, w, r)
-									return
-								}
-								switch elem {
-								case "versions": // -> 275
-									// Edge: 275, path: "versions".
-									elem, p = nextElem(p)
-									if len(elem) == 0 {
-										// GET /users/{username}/packages/{package_type}/{package_name}/versions.
-										s.handlePackagesGetAllPackageVersionsForPackageOwnedByUserRequest(args, w, r)
-										return
-									}
-									switch elem {
-									default:
-										if args == nil {
-											args = make(map[string]string)
-										}
-										args["package_version_id"] = elem
-										// GET /users/{username}/packages/{package_type}/{package_name}/versions/{package_version_id}
-										s.handlePackagesGetPackageVersionForUserRequest(args, w, r)
-										return
-									}
-								default:
-									// GET /users/{username}/packages/{package_type}/{package_name}.
-									s.handlePackagesGetPackageForUserRequest(args, w, r)
-									return
-								}
-							}
-						default:
-							s.notFound(w, r)
-							return
-						}
-					}
-				case "projects": // -> 292
-					// GET /users/{username}/projects
-					s.handleProjectsListForUserRequest(args, w, r)
-					return
-				case "repos": // -> 399
-					// GET /users/{username}/repos
-					s.handleReposListForUserRequest(args, w, r)
-					return
-				case "following": // -> 453
-					// Edge: 453, path: "following".
-					elem, p = nextElem(p)
-					if len(elem) == 0 {
-						// GET /users/{username}/following.
-						s.handleUsersListFollowingForUserRequest(args, w, r)
-						return
-					}
-					switch elem {
-					default:
-						if args == nil {
-							args = make(map[string]string)
-						}
-						args["target_user"] = elem
-						// GET /users/{username}/following/{target_user}
-						s.handleUsersCheckFollowingForUserRequest(args, w, r)
-						return
-					}
-				case "hovercard": // -> 457
-					// GET /users/{username}/hovercard
-					s.handleUsersGetContextForUserRequest(args, w, r)
-					return
-				case "followers": // -> 464
-					// GET /users/{username}/followers
-					s.handleUsersListFollowersForUserRequest(args, w, r)
-					return
-				case "gpg_keys": // -> 465
-					// GET /users/{username}/gpg_keys
-					s.handleUsersListGpgKeysForUserRequest(args, w, r)
-					return
-				case "keys": // -> 467
-					// GET /users/{username}/keys
-					s.handleUsersListPublicKeysForUserRequest(args, w, r)
-					return
-				default:
-					// GET /users/{username}.
-					s.handleUsersGetByUsernameRequest(args, w, r)
-					return
-				}
-			}
-		case "events": // -> 69
-			// GET /events
-			s.handleActivityListPublicEventsRequest(args, w, r)
-			return
-		case "networks": // -> 70
-			// Edge: 70, path: "networks".
-			elem, p = nextElem(p)
-			switch elem {
-			default:
-				if args == nil {
-					args = make(map[string]string)
-				}
-				args["owner"] = elem
-				// Edge: 71, path: "".
-				elem, p = nextElem(p)
-				switch elem {
-				case "": // -> 72
-					// Edge: 72, path: "".
-					elem, p = nextElem(p)
-					switch elem {
-					default:
-						if args == nil {
-							args = make(map[string]string)
-						}
-						args["repo"] = elem
-						// Edge: 73, path: "".
-						elem, p = nextElem(p)
-						switch elem {
-						case "events": // -> 74
-							// GET /networks/{owner}/{repo}/events
-							s.handleActivityListPublicEventsForRepoNetworkRequest(args, w, r)
-							return
-						default:
-							s.notFound(w, r)
-							return
-						}
-					}
-				default:
-					s.notFound(w, r)
-					return
-				}
-			}
-		case "app": // -> 84
-			// Edge: 84, path: "app".
-			elem, p = nextElem(p)
-			if len(elem) == 0 {
-				// GET /app.
-				s.handleAppsGetAuthenticatedRequest(args, w, r)
-				return
-			}
-			switch elem {
-			case "hook": // -> 93
-				// Edge: 93, path: "hook".
-				elem, p = nextElem(p)
-				switch elem {
-				case "config": // -> 94
-					// GET /app/hook/config
-					s.handleAppsGetWebhookConfigForAppRequest(args, w, r)
-					return
-				case "deliveries": // -> 95
-					// Edge: 95, path: "deliveries".
-					elem, p = nextElem(p)
-					if len(elem) == 0 {
-						// GET /app/hook/deliveries.
-						s.handleAppsListWebhookDeliveriesRequest(args, w, r)
-						return
-					}
-					switch elem {
-					default:
-						if args == nil {
-							args = make(map[string]string)
-						}
-						args["delivery_id"] = elem
-						// GET /app/hook/deliveries/{delivery_id}
-						s.handleAppsGetWebhookDeliveryRequest(args, w, r)
-						return
-					}
-				default:
-					s.notFound(w, r)
-					return
-				}
-			default:
-				// GET /app.
-				s.handleAppsGetAuthenticatedRequest(args, w, r)
-				return
-			}
-		case "apps": // -> 85
-			// Edge: 85, path: "apps".
-			elem, p = nextElem(p)
-			switch elem {
-			default:
-				if args == nil {
-					args = make(map[string]string)
-				}
-				args["app_slug"] = elem
-				// GET /apps/{app_slug}
-				s.handleAppsGetBySlugRequest(args, w, r)
-				return
-			}
-		case "marketplace_listing": // -> 87
-			// Edge: 87, path: "marketplace_listing".
-			elem, p = nextElem(p)
-			switch elem {
-			case "accounts": // -> 88
-				// Edge: 88, path: "accounts".
-				elem, p = nextElem(p)
-				switch elem {
-				default:
-					if args == nil {
-						args = make(map[string]string)
-					}
-					args["account_id"] = elem
-					// GET /marketplace_listing/accounts/{account_id}
-					s.handleAppsGetSubscriptionPlanForAccountRequest(args, w, r)
-					return
-				}
-			case "stubbed": // -> 90
-				// Edge: 90, path: "stubbed".
-				elem, p = nextElem(p)
-				switch elem {
-				case "accounts": // -> 91
-					// Edge: 91, path: "accounts".
-					elem, p = nextElem(p)
-					switch elem {
-					default:
-						if args == nil {
-							args = make(map[string]string)
-						}
-						args["account_id"] = elem
-						// GET /marketplace_listing/stubbed/accounts/{account_id}
-						s.handleAppsGetSubscriptionPlanForAccountStubbedRequest(args, w, r)
-						return
-					}
-				case "plans": // -> 100
-					// Edge: 100, path: "plans".
-					elem, p = nextElem(p)
-					if len(elem) == 0 {
-						// GET /marketplace_listing/stubbed/plans.
-						s.handleAppsListPlansStubbedRequest(args, w, r)
-						return
-					}
-					switch elem {
-					default:
-						if args == nil {
-							args = make(map[string]string)
-						}
-						args["plan_id"] = elem
-						// Edge: 101, path: "".
-						elem, p = nextElem(p)
-						switch elem {
-						case "accounts": // -> 102
-							// GET /marketplace_listing/stubbed/plans/{plan_id}/accounts
-							s.handleAppsListAccountsForPlanStubbedRequest(args, w, r)
-							return
-						default:
-							s.notFound(w, r)
-							return
-						}
-					}
-				default:
-					s.notFound(w, r)
-					return
-				}
-			case "plans": // -> 97
-				// Edge: 97, path: "plans".
-				elem, p = nextElem(p)
-				if len(elem) == 0 {
-					// GET /marketplace_listing/plans.
-					s.handleAppsListPlansRequest(args, w, r)
-					return
-				}
-				switch elem {
-				default:
-					if args == nil {
-						args = make(map[string]string)
-					}
-					args["plan_id"] = elem
-					// Edge: 98, path: "".
-					elem, p = nextElem(p)
-					switch elem {
-					case "accounts": // -> 99
-						// GET /marketplace_listing/plans/{plan_id}/accounts
-						s.handleAppsListAccountsForPlanRequest(args, w, r)
-						return
-					default:
-						s.notFound(w, r)
-						return
-					}
-				}
-			default:
-				s.notFound(w, r)
-				return
-			}
-		case "installation": // -> 106
-			// Edge: 106, path: "installation".
-			elem, p = nextElem(p)
-			switch elem {
-			case "repositories": // -> 107
-				// GET /installation/repositories
-				s.handleAppsListReposAccessibleToInstallationRequest(args, w, r)
-				return
-			default:
-				s.notFound(w, r)
-				return
-			}
-		case "enterprises": // -> 110
-			// Edge: 110, path: "enterprises".
-			elem, p = nextElem(p)
-			switch elem {
-			default:
-				if args == nil {
-					args = make(map[string]string)
-				}
-				args["enterprise"] = elem
-				// Edge: 111, path: "".
-				elem, p = nextElem(p)
-				switch elem {
-				case "settings": // -> 112
-					// Edge: 112, path: "settings".
-					elem, p = nextElem(p)
-					switch elem {
-					case "billing": // -> 113
-						// Edge: 113, path: "billing".
-						elem, p = nextElem(p)
-						switch elem {
-						case "actions": // -> 114
-							// GET /enterprises/{enterprise}/settings/billing/actions
-							s.handleBillingGetGithubActionsBillingGheRequest(args, w, r)
-							return
-						case "packages": // -> 121
-							// GET /enterprises/{enterprise}/settings/billing/packages
-							s.handleBillingGetGithubPackagesBillingGheRequest(args, w, r)
-							return
-						case "shared-storage": // -> 124
-							// GET /enterprises/{enterprise}/settings/billing/shared-storage
-							s.handleBillingGetSharedStorageBillingGheRequest(args, w, r)
-							return
-						default:
-							s.notFound(w, r)
-							return
-						}
-					default:
-						s.notFound(w, r)
-						return
-					}
-				case "actions": // -> 148
-					// Edge: 148, path: "actions".
-					elem, p = nextElem(p)
-					switch elem {
-					case "permissions": // -> 149
-						// Edge: 149, path: "permissions".
-						elem, p = nextElem(p)
-						if len(elem) == 0 {
-							// GET /enterprises/{enterprise}/actions/permissions.
-							s.handleEnterpriseAdminGetGithubActionsPermissionsEnterpriseRequest(args, w, r)
-							return
-						}
-						switch elem {
-						case "selected-actions": // -> 150
-							// GET /enterprises/{enterprise}/actions/permissions/selected-actions
-							s.handleEnterpriseAdminGetAllowedActionsEnterpriseRequest(args, w, r)
-							return
-						case "organizations": // -> 166
-							// GET /enterprises/{enterprise}/actions/permissions/organizations
-							s.handleEnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterpriseRequest(args, w, r)
-							return
-						default:
-							// GET /enterprises/{enterprise}/actions/permissions.
-							s.handleEnterpriseAdminGetGithubActionsPermissionsEnterpriseRequest(args, w, r)
-							return
-						}
-					case "runners": // -> 160
-						// Edge: 160, path: "runners".
-						elem, p = nextElem(p)
-						if len(elem) == 0 {
-							// GET /enterprises/{enterprise}/actions/runners.
-							s.handleEnterpriseAdminListSelfHostedRunnersForEnterpriseRequest(args, w, r)
-							return
-						}
-						switch elem {
-						case "downloads": // -> 165
-							// GET /enterprises/{enterprise}/actions/runners/downloads
-							s.handleEnterpriseAdminListRunnerApplicationsForEnterpriseRequest(args, w, r)
-							return
-						default:
-							if args == nil {
-								args = make(map[string]string)
-							}
-							args["runner_id"] = elem
-							// GET /enterprises/{enterprise}/actions/runners/{runner_id}
-							s.handleEnterpriseAdminGetSelfHostedRunnerForEnterpriseRequest(args, w, r)
-							return
-						}
-					case "runner-groups": // -> 162
-						// Edge: 162, path: "runner-groups".
-						elem, p = nextElem(p)
-						if len(elem) == 0 {
-							// GET /enterprises/{enterprise}/actions/runner-groups.
-							s.handleEnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseRequest(args, w, r)
-							return
-						}
-						switch elem {
-						default:
-							if args == nil {
-								args = make(map[string]string)
-							}
-							args["runner_group_id"] = elem
-							// Edge: 163, path: "".
-							elem, p = nextElem(p)
-							if len(elem) == 0 {
-								// GET /enterprises/{enterprise}/actions/runner-groups/{runner_group_id}.
-								s.handleEnterpriseAdminGetSelfHostedRunnerGroupForEnterpriseRequest(args, w, r)
-								return
-							}
-							switch elem {
-							case "organizations": // -> 164
-								// GET /enterprises/{enterprise}/actions/runner-groups/{runner_group_id}/organizations
-								s.handleEnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseRequest(args, w, r)
-								return
-							case "runners": // -> 167
-								// GET /enterprises/{enterprise}/actions/runner-groups/{runner_group_id}/runners
-								s.handleEnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseRequest(args, w, r)
-								return
-							default:
-								// GET /enterprises/{enterprise}/actions/runner-groups/{runner_group_id}.
-								s.handleEnterpriseAdminGetSelfHostedRunnerGroupForEnterpriseRequest(args, w, r)
-								return
-							}
-						}
-					default:
-						s.notFound(w, r)
-						return
-					}
-				case "audit-log": // -> 151
-					// GET /enterprises/{enterprise}/audit-log
-					s.handleEnterpriseAdminGetAuditLogRequest(args, w, r)
-					return
-				default:
-					s.notFound(w, r)
-					return
-				}
-			}
-		case "codes_of_conduct": // -> 145
-			// Edge: 145, path: "codes_of_conduct".
-			elem, p = nextElem(p)
-			if len(elem) == 0 {
-				// GET /codes_of_conduct.
-				s.handleCodesOfConductGetAllCodesOfConductRequest(args, w, r)
-				return
-			}
-			switch elem {
-			default:
-				if args == nil {
-					args = make(map[string]string)
-				}
-				args["key"] = elem
-				// GET /codes_of_conduct/{key}
-				s.handleCodesOfConductGetConductCodeRequest(args, w, r)
-				return
-			}
-		case "emojis": // -> 147
-			// GET /emojis
-			s.handleEmojisGetRequest(args, w, r)
-			return
-		case "scim": // -> 152
-			// Edge: 152, path: "scim".
-			elem, p = nextElem(p)
-			switch elem {
-			case "v2": // -> 153
-				// Edge: 153, path: "v2".
-				elem, p = nextElem(p)
-				switch elem {
-				case "enterprises": // -> 154
-					// Edge: 154, path: "enterprises".
-					elem, p = nextElem(p)
-					switch elem {
-					default:
-						if args == nil {
-							args = make(map[string]string)
-						}
-						args["enterprise"] = elem
-						// Edge: 155, path: "".
-						elem, p = nextElem(p)
-						switch elem {
-						case "Groups": // -> 156
-							// Edge: 156, path: "Groups".
-							elem, p = nextElem(p)
-							if len(elem) == 0 {
-								// GET /scim/v2/enterprises/{enterprise}/Groups.
-								s.handleEnterpriseAdminListProvisionedGroupsEnterpriseRequest(args, w, r)
-								return
-							}
-							switch elem {
-							default:
-								if args == nil {
-									args = make(map[string]string)
-								}
-								args["scim_group_id"] = elem
-								// GET /scim/v2/enterprises/{enterprise}/Groups/{scim_group_id}
-								s.handleEnterpriseAdminGetProvisioningInformationForEnterpriseGroupRequest(args, w, r)
-								return
-							}
-						case "Users": // -> 158
-							// Edge: 158, path: "Users".
-							elem, p = nextElem(p)
-							if len(elem) == 0 {
-								// GET /scim/v2/enterprises/{enterprise}/Users.
-								s.handleEnterpriseAdminListProvisionedIdentitiesEnterpriseRequest(args, w, r)
-								return
-							}
-							switch elem {
-							default:
-								if args == nil {
-									args = make(map[string]string)
-								}
-								args["scim_user_id"] = elem
-								// GET /scim/v2/enterprises/{enterprise}/Users/{scim_user_id}
-								s.handleEnterpriseAdminGetProvisioningInformationForEnterpriseUserRequest(args, w, r)
-								return
-							}
-						default:
-							s.notFound(w, r)
-							return
-						}
-					}
-				default:
-					s.notFound(w, r)
-					return
-				}
-			default:
-				s.notFound(w, r)
-				return
-			}
-		case "gists": // -> 168
-			// Edge: 168, path: "gists".
-			elem, p = nextElem(p)
-			if len(elem) == 0 {
-				// GET /gists.
-				s.handleGistsListRequest(args, w, r)
-				return
-			}
-			switch elem {
-			case "public": // -> 178
-				// GET /gists/public
-				s.handleGistsListPublicRequest(args, w, r)
-				return
-			case "starred": // -> 179
-				// GET /gists/starred
-				s.handleGistsListStarredRequest(args, w, r)
-				return
-			default:
-				if args == nil {
-					args = make(map[string]string)
-				}
-				args["gist_id"] = elem
-				// Edge: 169, path: "".
-				elem, p = nextElem(p)
-				if len(elem) == 0 {
-					// GET /gists/{gist_id}.
-					s.handleGistsGetRequest(args, w, r)
-					return
-				}
-				switch elem {
-				case "star": // -> 170
-					// GET /gists/{gist_id}/star
-					s.handleGistsCheckIsStarredRequest(args, w, r)
-					return
-				case "comments": // -> 171
-					// Edge: 171, path: "comments".
-					elem, p = nextElem(p)
-					if len(elem) == 0 {
-						// GET /gists/{gist_id}/comments.
-						s.handleGistsListCommentsRequest(args, w, r)
-						return
-					}
-					switch elem {
-					default:
-						if args == nil {
-							args = make(map[string]string)
-						}
-						args["comment_id"] = elem
-						// GET /gists/{gist_id}/comments/{comment_id}
-						s.handleGistsGetCommentRequest(args, w, r)
-						return
-					}
-				case "": // -> 173
-					// Edge: 173, path: "".
-					elem, p = nextElem(p)
-					switch elem {
-					default:
-						if args == nil {
-							args = make(map[string]string)
-						}
-						args["sha"] = elem
-						// GET /gists/{gist_id}/{sha}
-						s.handleGistsGetRevisionRequest(args, w, r)
-						return
-					}
-				case "commits": // -> 175
-					// GET /gists/{gist_id}/commits
-					s.handleGistsListCommitsRequest(args, w, r)
-					return
-				case "forks": // -> 177
-					// GET /gists/{gist_id}/forks
-					s.handleGistsListForksRequest(args, w, r)
-					return
-				default:
-					// GET /gists/{gist_id}.
-					s.handleGistsGetRequest(args, w, r)
-					return
-				}
-			}
-		case "gitignore": // -> 193
-			// Edge: 193, path: "gitignore".
-			elem, p = nextElem(p)
-			switch elem {
-			case "templates": // -> 194
-				// Edge: 194, path: "templates".
-				elem, p = nextElem(p)
-				if len(elem) == 0 {
-					// GET /gitignore/templates.
-					s.handleGitignoreGetAllTemplatesRequest(args, w, r)
-					return
-				}
-				switch elem {
-				default:
-					if args == nil {
-						args = make(map[string]string)
-					}
-					args["name"] = elem
-					// GET /gitignore/templates/{name}
-					s.handleGitignoreGetTemplateRequest(args, w, r)
-					return
-				}
-			default:
-				s.notFound(w, r)
-				return
-			}
-		case "issues": // -> 208
-			// GET /issues
-			s.handleIssuesListRequest(args, w, r)
-			return
-		case "licenses": // -> 214
-			// Edge: 214, path: "licenses".
-			elem, p = nextElem(p)
-			if len(elem) == 0 {
-				// GET /licenses.
-				s.handleLicensesGetAllCommonlyUsedRequest(args, w, r)
-				return
-			}
-			switch elem {
-			default:
-				if args == nil {
-					args = make(map[string]string)
-				}
-				args["license"] = elem
-				// GET /licenses/{license}
-				s.handleLicensesGetRequest(args, w, r)
-				return
-			}
-		case "meta": // -> 217
-			// GET /meta
-			s.handleMetaGetRequest(args, w, r)
-			return
-		case "": // -> 218
-			// GET /
-			s.handleMetaRootRequest(args, w, r)
-			return
-		case "authorizations": // -> 230
-			// Edge: 230, path: "authorizations".
-			elem, p = nextElem(p)
-			if len(elem) == 0 {
-				// GET /authorizations.
-				s.handleOAuthAuthorizationsListAuthorizationsRequest(args, w, r)
-				return
-			}
-			switch elem {
-			default:
-				if args == nil {
-					args = make(map[string]string)
-				}
-				args["authorization_id"] = elem
-				// GET /authorizations/{authorization_id}
-				s.handleOAuthAuthorizationsGetAuthorizationRequest(args, w, r)
-				return
-			}
-		case "applications": // -> 232
-			// Edge: 232, path: "applications".
-			elem, p = nextElem(p)
-			switch elem {
-			case "grants": // -> 233
-				// Edge: 233, path: "grants".
-				elem, p = nextElem(p)
-				if len(elem) == 0 {
-					// GET /applications/grants.
-					s.handleOAuthAuthorizationsListGrantsRequest(args, w, r)
-					return
-				}
-				switch elem {
-				default:
-					if args == nil {
-						args = make(map[string]string)
-					}
-					args["grant_id"] = elem
-					// GET /applications/grants/{grant_id}
-					s.handleOAuthAuthorizationsGetGrantRequest(args, w, r)
-					return
-				}
-			default:
-				s.notFound(w, r)
-				return
-			}
-		case "organizations": // -> 252
-			// GET /organizations
-			s.handleOrgsListRequest(args, w, r)
-			return
-		case "projects": // -> 279
-			// Edge: 279, path: "projects".
-			elem, p = nextElem(p)
-			switch elem {
-			case "columns": // -> 281
-				// Edge: 281, path: "columns".
-				elem, p = nextElem(p)
-				switch elem {
-				case "cards": // -> 282
-					// Edge: 282, path: "cards".
-					elem, p = nextElem(p)
-					switch elem {
-					default:
-						if args == nil {
-							args = make(map[string]string)
-						}
-						args["card_id"] = elem
-						// GET /projects/columns/cards/{card_id}
-						s.handleProjectsGetCardRequest(args, w, r)
-						return
-					}
-				default:
-					if args == nil {
-						args = make(map[string]string)
-					}
-					args["column_id"] = elem
-					// Edge: 284, path: "".
-					elem, p = nextElem(p)
-					if len(elem) == 0 {
-						// GET /projects/columns/{column_id}.
-						s.handleProjectsGetColumnRequest(args, w, r)
-						return
-					}
-					switch elem {
-					case "cards": // -> 288
-						// GET /projects/columns/{column_id}/cards
-						s.handleProjectsListCardsRequest(args, w, r)
-						return
-					default:
-						// GET /projects/columns/{column_id}.
-						s.handleProjectsGetColumnRequest(args, w, r)
-						return
-					}
-				}
-			default:
-				if args == nil {
-					args = make(map[string]string)
-				}
-				args["project_id"] = elem
-				// Edge: 280, path: "".
-				elem, p = nextElem(p)
-				if len(elem) == 0 {
-					// GET /projects/{project_id}.
-					s.handleProjectsGetRequest(args, w, r)
-					return
-				}
-				switch elem {
-				case "collaborators": // -> 285
-					// Edge: 285, path: "collaborators".
-					elem, p = nextElem(p)
-					if len(elem) == 0 {
-						// GET /projects/{project_id}/collaborators.
-						s.handleProjectsListCollaboratorsRequest(args, w, r)
-						return
-					}
-					switch elem {
-					default:
-						if args == nil {
-							args = make(map[string]string)
-						}
-						args["username"] = elem
-						// Edge: 286, path: "".
-						elem, p = nextElem(p)
-						switch elem {
-						case "permission": // -> 287
-							// GET /projects/{project_id}/collaborators/{username}/permission
-							s.handleProjectsGetPermissionForUserRequest(args, w, r)
-							return
-						default:
-							s.notFound(w, r)
-							return
-						}
-					}
-				case "columns": // -> 289
-					// GET /projects/{project_id}/columns
-					s.handleProjectsListColumnsRequest(args, w, r)
-					return
-				default:
-					// GET /projects/{project_id}.
-					s.handleProjectsGetRequest(args, w, r)
-					return
-				}
-			}
-		case "rate_limit": // -> 305
-			// GET /rate_limit
-			s.handleRateLimitGetRequest(args, w, r)
-			return
-		case "teams": // -> 319
-			// Edge: 319, path: "teams".
-			elem, p = nextElem(p)
-			switch elem {
-			default:
-				if args == nil {
-					args = make(map[string]string)
-				}
-				args["team_id"] = elem
-				// Edge: 320, path: "".
-				elem, p = nextElem(p)
-				if len(elem) == 0 {
-					// GET /teams/{team_id}.
-					s.handleTeamsGetLegacyRequest(args, w, r)
-					return
-				}
-				switch elem {
-				case "discussions": // -> 321
-					// Edge: 321, path: "discussions".
-					elem, p = nextElem(p)
-					if len(elem) == 0 {
-						// GET /teams/{team_id}/discussions.
-						s.handleTeamsListDiscussionsLegacyRequest(args, w, r)
-						return
-					}
-					switch elem {
-					default:
-						if args == nil {
-							args = make(map[string]string)
-						}
-						args["discussion_number"] = elem
-						// Edge: 322, path: "".
-						elem, p = nextElem(p)
-						if len(elem) == 0 {
-							// GET /teams/{team_id}/discussions/{discussion_number}.
-							s.handleTeamsGetDiscussionLegacyRequest(args, w, r)
-							return
-						}
-						switch elem {
-						case "comments": // -> 323
-							// Edge: 323, path: "comments".
-							elem, p = nextElem(p)
-							if len(elem) == 0 {
-								// GET /teams/{team_id}/discussions/{discussion_number}/comments.
-								s.handleTeamsListDiscussionCommentsLegacyRequest(args, w, r)
-								return
-							}
-							switch elem {
-							default:
-								if args == nil {
-									args = make(map[string]string)
-								}
-								args["comment_number"] = elem
-								// Edge: 324, path: "".
-								elem, p = nextElem(p)
-								if len(elem) == 0 {
-									// GET /teams/{team_id}/discussions/{discussion_number}/comments/{comment_number}.
-									s.handleTeamsGetDiscussionCommentLegacyRequest(args, w, r)
-									return
-								}
-								switch elem {
-								case "reactions": // -> 325
-									// GET /teams/{team_id}/discussions/{discussion_number}/comments/{comment_number}/reactions
-									s.handleReactionsListForTeamDiscussionCommentLegacyRequest(args, w, r)
-									return
-								default:
-									// GET /teams/{team_id}/discussions/{discussion_number}/comments/{comment_number}.
-									s.handleTeamsGetDiscussionCommentLegacyRequest(args, w, r)
-									return
-								}
-							}
-						case "reactions": // -> 327
-							// GET /teams/{team_id}/discussions/{discussion_number}/reactions
-							s.handleReactionsListForTeamDiscussionLegacyRequest(args, w, r)
-							return
-						default:
-							// GET /teams/{team_id}/discussions/{discussion_number}.
-							s.handleTeamsGetDiscussionLegacyRequest(args, w, r)
-							return
-						}
-					}
-				case "projects": // -> 423
-					// Edge: 423, path: "projects".
-					elem, p = nextElem(p)
-					if len(elem) == 0 {
-						// GET /teams/{team_id}/projects.
-						s.handleTeamsListProjectsLegacyRequest(args, w, r)
-						return
-					}
-					switch elem {
-					default:
-						if args == nil {
-							args = make(map[string]string)
-						}
-						args["project_id"] = elem
-						// GET /teams/{team_id}/projects/{project_id}
-						s.handleTeamsCheckPermissionsForProjectLegacyRequest(args, w, r)
-						return
-					}
-				case "repos": // -> 429
-					// Edge: 429, path: "repos".
-					elem, p = nextElem(p)
-					if len(elem) == 0 {
-						// GET /teams/{team_id}/repos.
-						s.handleTeamsListReposLegacyRequest(args, w, r)
-						return
-					}
-					switch elem {
-					default:
-						if args == nil {
-							args = make(map[string]string)
-						}
-						args["owner"] = elem
-						// Edge: 430, path: "".
-						elem, p = nextElem(p)
-						switch elem {
-						case "": // -> 431
-							// Edge: 431, path: "".
-							elem, p = nextElem(p)
-							switch elem {
-							default:
-								if args == nil {
-									args = make(map[string]string)
-								}
-								args["repo"] = elem
-								// GET /teams/{team_id}/repos/{owner}/{repo}
-								s.handleTeamsCheckPermissionsForRepoLegacyRequest(args, w, r)
-								return
-							}
-						default:
-							s.notFound(w, r)
-							return
-						}
-					}
-				case "members": // -> 433
-					// Edge: 433, path: "members".
-					elem, p = nextElem(p)
-					if len(elem) == 0 {
-						// GET /teams/{team_id}/members.
-						s.handleTeamsListMembersLegacyRequest(args, w, r)
-						return
-					}
-					switch elem {
-					default:
-						if args == nil {
-							args = make(map[string]string)
-						}
-						args["username"] = elem
-						// GET /teams/{team_id}/members/{username}
-						s.handleTeamsGetMemberLegacyRequest(args, w, r)
-						return
-					}
-				case "memberships": // -> 437
-					// Edge: 437, path: "memberships".
-					elem, p = nextElem(p)
-					switch elem {
-					default:
-						if args == nil {
-							args = make(map[string]string)
-						}
-						args["username"] = elem
-						// GET /teams/{team_id}/memberships/{username}
-						s.handleTeamsGetMembershipForUserLegacyRequest(args, w, r)
-						return
-					}
-				case "teams": // -> 440
-					// GET /teams/{team_id}/teams
-					s.handleTeamsListChildLegacyRequest(args, w, r)
-					return
-				case "team-sync": // -> 442
-					// Edge: 442, path: "team-sync".
-					elem, p = nextElem(p)
-					switch elem {
-					case "group-mappings": // -> 443
-						// GET /teams/{team_id}/team-sync/group-mappings
-						s.handleTeamsListIdpGroupsForLegacyRequest(args, w, r)
-						return
-					default:
-						s.notFound(w, r)
-						return
-					}
-				case "invitations": // -> 450
-					// GET /teams/{team_id}/invitations
-					s.handleTeamsListPendingInvitationsLegacyRequest(args, w, r)
-					return
-				default:
-					// GET /teams/{team_id}.
-					s.handleTeamsGetLegacyRequest(args, w, r)
-					return
-				}
-			}
-		case "search": // -> 408
-			// Edge: 408, path: "search".
-			elem, p = nextElem(p)
-			switch elem {
-			case "code": // -> 409
-				// GET /search/code
-				s.handleSearchCodeRequest(args, w, r)
-				return
-			case "commits": // -> 410
-				// GET /search/commits
-				s.handleSearchCommitsRequest(args, w, r)
-				return
-			case "issues": // -> 411
-				// GET /search/issues
-				s.handleSearchIssuesAndPullRequestsRequest(args, w, r)
-				return
-			case "labels": // -> 412
-				// GET /search/labels
-				s.handleSearchLabelsRequest(args, w, r)
-				return
-			case "repositories": // -> 413
-				// GET /search/repositories
-				s.handleSearchReposRequest(args, w, r)
-				return
-			case "topics": // -> 414
-				// GET /search/topics
-				s.handleSearchTopicsRequest(args, w, r)
-				return
-			case "users": // -> 415
-				// GET /search/users
-				s.handleSearchUsersRequest(args, w, r)
-				return
-			default:
-				s.notFound(w, r)
-				return
-			}
-		default:
-			s.notFound(w, r)
-			return
-		}
-	case "PATCH":
-		// Root edge.
-		elem, p = nextElem(p)
-		switch elem {
-		case "orgs": // -> 1
-			// Edge: 1, path: "orgs".
-			elem, p = nextElem(p)
-			switch elem {
-			default:
-				if args == nil {
-					args = make(map[string]string)
-				}
-				args["org"] = elem
-				// Edge: 2, path: "".
-				elem, p = nextElem(p)
-				switch elem {
-				case "actions": // -> 3
-					// Edge: 3, path: "actions".
-					elem, p = nextElem(p)
-					switch elem {
-					case "runner-groups": // -> 4
-						// Edge: 4, path: "runner-groups".
-						elem, p = nextElem(p)
-						switch elem {
-						default:
-							if args == nil {
-								args = make(map[string]string)
-							}
-							args["runner_group_id"] = elem
-							// PATCH /orgs/{org}/actions/runner-groups/{runner_group_id}
-							s.handleActionsUpdateSelfHostedRunnerGroupForOrgRequest(args, w, r)
-							return
-						}
-					default:
-						s.notFound(w, r)
-						return
-					}
-				case "hooks": // -> 62
-					// Edge: 62, path: "hooks".
-					elem, p = nextElem(p)
-					switch elem {
-					default:
-						if args == nil {
-							args = make(map[string]string)
-						}
-						args["hook_id"] = elem
-						// Edge: 63, path: "".
-						elem, p = nextElem(p)
-						if len(elem) == 0 {
-							// PATCH /orgs/{org}/hooks/{hook_id}.
-							s.handleOrgsUpdateWebhookRequest(args, w, r)
-							return
-						}
-						switch elem {
-						case "config": // -> 64
-							// PATCH /orgs/{org}/hooks/{hook_id}/config
-							s.handleOrgsUpdateWebhookConfigForOrgRequest(args, w, r)
-							return
-						default:
-							// PATCH /orgs/{org}/hooks/{hook_id}.
-							s.handleOrgsUpdateWebhookRequest(args, w, r)
-							return
-						}
-					}
-				case "teams": // -> 96
-					// Edge: 96, path: "teams".
-					elem, p = nextElem(p)
-					switch elem {
-					default:
-						if args == nil {
-							args = make(map[string]string)
-						}
-						args["team_slug"] = elem
-						// Edge: 97, path: "".
-						elem, p = nextElem(p)
-						if len(elem) == 0 {
-							// PATCH /orgs/{org}/teams/{team_slug}.
-							s.handleTeamsUpdateInOrgRequest(args, w, r)
-							return
-						}
-						switch elem {
-						case "team-sync": // -> 98
-							// Edge: 98, path: "team-sync".
-							elem, p = nextElem(p)
-							switch elem {
-							case "group-mappings": // -> 99
-								// PATCH /orgs/{org}/teams/{team_slug}/team-sync/group-mappings
-								s.handleTeamsCreateOrUpdateIdpGroupConnectionsInOrgRequest(args, w, r)
-								return
-							default:
-								s.notFound(w, r)
-								return
-							}
-						case "discussions": // -> 104
-							// Edge: 104, path: "discussions".
-							elem, p = nextElem(p)
-							switch elem {
-							default:
-								if args == nil {
-									args = make(map[string]string)
-								}
-								args["discussion_number"] = elem
-								// Edge: 105, path: "".
-								elem, p = nextElem(p)
-								if len(elem) == 0 {
-									// PATCH /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}.
-									s.handleTeamsUpdateDiscussionInOrgRequest(args, w, r)
-									return
-								}
-								switch elem {
-								case "comments": // -> 106
-									// Edge: 106, path: "comments".
-									elem, p = nextElem(p)
-									switch elem {
-									default:
-										if args == nil {
-											args = make(map[string]string)
-										}
-										args["comment_number"] = elem
-										// PATCH /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments/{comment_number}
-										s.handleTeamsUpdateDiscussionCommentInOrgRequest(args, w, r)
-										return
-									}
-								default:
-									// PATCH /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}.
-									s.handleTeamsUpdateDiscussionInOrgRequest(args, w, r)
-									return
-								}
-							}
-						default:
-							// PATCH /orgs/{org}/teams/{team_slug}.
-							s.handleTeamsUpdateInOrgRequest(args, w, r)
-							return
-						}
-					}
-				default:
-					s.notFound(w, r)
-					return
-				}
-			}
-		case "notifications": // -> 6
-			// Edge: 6, path: "notifications".
-			elem, p = nextElem(p)
-			switch elem {
-			case "threads": // -> 7
-				// Edge: 7, path: "threads".
-				elem, p = nextElem(p)
-				switch elem {
-				default:
-					if args == nil {
-						args = make(map[string]string)
-					}
-					args["thread_id"] = elem
-					// PATCH /notifications/threads/{thread_id}
-					s.handleActivityMarkThreadAsReadRequest(args, w, r)
-					return
-				}
-			default:
-				s.notFound(w, r)
-				return
-			}
-		case "applications": // -> 9
-			// Edge: 9, path: "applications".
-			elem, p = nextElem(p)
-			switch elem {
-			default:
-				if args == nil {
-					args = make(map[string]string)
-				}
-				args["client_id"] = elem
-				// Edge: 10, path: "".
-				elem, p = nextElem(p)
-				switch elem {
-				case "token": // -> 11
-					// PATCH /applications/{client_id}/token
-					s.handleAppsResetTokenRequest(args, w, r)
-					return
-				default:
-					s.notFound(w, r)
-					return
-				}
-			}
-		case "app": // -> 12
-			// Edge: 12, path: "app".
-			elem, p = nextElem(p)
-			switch elem {
-			case "hook": // -> 13
-				// Edge: 13, path: "hook".
-				elem, p = nextElem(p)
-				switch elem {
-				case "config": // -> 14
-					// PATCH /app/hook/config
-					s.handleAppsUpdateWebhookConfigForAppRequest(args, w, r)
-					return
-				default:
-					s.notFound(w, r)
-					return
-				}
-			default:
-				s.notFound(w, r)
-				return
-			}
-		case "repos": // -> 15
-			// Edge: 15, path: "repos".
-			elem, p = nextElem(p)
-			switch elem {
-			default:
-				if args == nil {
-					args = make(map[string]string)
-				}
-				args["owner"] = elem
-				// Edge: 16, path: "".
-				elem, p = nextElem(p)
-				switch elem {
-				case "": // -> 17
-					// Edge: 17, path: "".
-					elem, p = nextElem(p)
-					switch elem {
-					default:
-						if args == nil {
-							args = make(map[string]string)
-						}
-						args["repo"] = elem
-						// Edge: 18, path: "".
-						elem, p = nextElem(p)
-						if len(elem) == 0 {
-							// PATCH /repos/{owner}/{repo}.
-							s.handleReposUpdateRequest(args, w, r)
-							return
-						}
-						switch elem {
-						case "check-suites": // -> 19
-							// Edge: 19, path: "check-suites".
-							elem, p = nextElem(p)
-							switch elem {
-							case "preferences": // -> 20
-								// PATCH /repos/{owner}/{repo}/check-suites/preferences
-								s.handleChecksSetSuitesPreferencesRequest(args, w, r)
-								return
-							default:
-								s.notFound(w, r)
-								return
-							}
-						case "code-scanning": // -> 21
-							// Edge: 21, path: "code-scanning".
-							elem, p = nextElem(p)
-							switch elem {
-							case "alerts": // -> 22
-								// Edge: 22, path: "alerts".
-								elem, p = nextElem(p)
-								switch elem {
-								default:
-									if args == nil {
-										args = make(map[string]string)
-									}
-									args["alert_number"] = elem
-									// PATCH /repos/{owner}/{repo}/code-scanning/alerts/{alert_number}
-									s.handleCodeScanningUpdateAlertRequest(args, w, r)
-									return
-								}
-							default:
-								s.notFound(w, r)
-								return
-							}
-						case "git": // -> 41
-							// Edge: 41, path: "git".
-							elem, p = nextElem(p)
-							switch elem {
-							case "refs": // -> 42
-								// Edge: 42, path: "refs".
-								elem, p = nextElem(p)
-								switch elem {
-								default:
-									if args == nil {
-										args = make(map[string]string)
-									}
-									args["ref"] = elem
-									// PATCH /repos/{owner}/{repo}/git/refs/{ref}
-									s.handleGitUpdateRefRequest(args, w, r)
-									return
-								}
-							default:
-								s.notFound(w, r)
-								return
-							}
-						case "issues": // -> 44
-							// Edge: 44, path: "issues".
-							elem, p = nextElem(p)
-							switch elem {
-							case "comments": // -> 46
-								// Edge: 46, path: "comments".
-								elem, p = nextElem(p)
-								switch elem {
-								default:
-									if args == nil {
-										args = make(map[string]string)
-									}
-									args["comment_id"] = elem
-									// PATCH /repos/{owner}/{repo}/issues/comments/{comment_id}
-									s.handleIssuesUpdateCommentRequest(args, w, r)
-									return
-								}
-							default:
-								if args == nil {
-									args = make(map[string]string)
-								}
-								args["issue_number"] = elem
-								// PATCH /repos/{owner}/{repo}/issues/{issue_number}
-								s.handleIssuesUpdateRequest(args, w, r)
-								return
-							}
-						case "labels": // -> 48
-							// Edge: 48, path: "labels".
-							elem, p = nextElem(p)
-							switch elem {
-							default:
-								if args == nil {
-									args = make(map[string]string)
-								}
-								args["name"] = elem
-								// PATCH /repos/{owner}/{repo}/labels/{name}
-								s.handleIssuesUpdateLabelRequest(args, w, r)
-								return
-							}
-						case "milestones": // -> 50
-							// Edge: 50, path: "milestones".
-							elem, p = nextElem(p)
-							switch elem {
-							default:
-								if args == nil {
-									args = make(map[string]string)
-								}
-								args["milestone_number"] = elem
-								// PATCH /repos/{owner}/{repo}/milestones/{milestone_number}
-								s.handleIssuesUpdateMilestoneRequest(args, w, r)
-								return
-							}
-						case "import": // -> 52
-							// Edge: 52, path: "import".
-							elem, p = nextElem(p)
-							if len(elem) == 0 {
-								// PATCH /repos/{owner}/{repo}/import.
-								s.handleMigrationsUpdateImportRequest(args, w, r)
-								return
-							}
-							switch elem {
-							case "authors": // -> 53
-								// Edge: 53, path: "authors".
-								elem, p = nextElem(p)
-								switch elem {
-								default:
-									if args == nil {
-										args = make(map[string]string)
-									}
-									args["author_id"] = elem
-									// PATCH /repos/{owner}/{repo}/import/authors/{author_id}
-									s.handleMigrationsMapCommitAuthorRequest(args, w, r)
-									return
-								}
-							case "lfs": // -> 55
-								// PATCH /repos/{owner}/{repo}/import/lfs
-								s.handleMigrationsSetLfsPreferenceRequest(args, w, r)
-								return
-							default:
-								// PATCH /repos/{owner}/{repo}/import.
-								s.handleMigrationsUpdateImportRequest(args, w, r)
-								return
-							}
-						case "pulls": // -> 71
-							// Edge: 71, path: "pulls".
-							elem, p = nextElem(p)
-							switch elem {
-							case "comments": // -> 73
-								// Edge: 73, path: "comments".
-								elem, p = nextElem(p)
-								switch elem {
-								default:
-									if args == nil {
-										args = make(map[string]string)
-									}
-									args["comment_id"] = elem
-									// PATCH /repos/{owner}/{repo}/pulls/comments/{comment_id}
-									s.handlePullsUpdateReviewCommentRequest(args, w, r)
-									return
-								}
-							default:
-								if args == nil {
-									args = make(map[string]string)
-								}
-								args["pull_number"] = elem
-								// PATCH /repos/{owner}/{repo}/pulls/{pull_number}
-								s.handlePullsUpdateRequest(args, w, r)
-								return
-							}
-						case "comments": // -> 77
-							// Edge: 77, path: "comments".
-							elem, p = nextElem(p)
-							switch elem {
-							default:
-								if args == nil {
-									args = make(map[string]string)
-								}
-								args["comment_id"] = elem
-								// PATCH /repos/{owner}/{repo}/comments/{comment_id}
-								s.handleReposUpdateCommitCommentRequest(args, w, r)
-								return
-							}
-						case "invitations": // -> 79
-							// Edge: 79, path: "invitations".
-							elem, p = nextElem(p)
-							switch elem {
-							default:
-								if args == nil {
-									args = make(map[string]string)
-								}
-								args["invitation_id"] = elem
-								// PATCH /repos/{owner}/{repo}/invitations/{invitation_id}
-								s.handleReposUpdateInvitationRequest(args, w, r)
-								return
-							}
-						case "branches": // -> 81
-							// Edge: 81, path: "branches".
-							elem, p = nextElem(p)
-							switch elem {
-							default:
-								if args == nil {
-									args = make(map[string]string)
-								}
-								args["branch"] = elem
-								// Edge: 82, path: "".
-								elem, p = nextElem(p)
-								switch elem {
-								case "protection": // -> 83
-									// Edge: 83, path: "protection".
-									elem, p = nextElem(p)
-									switch elem {
-									case "required_pull_request_reviews": // -> 84
-										// PATCH /repos/{owner}/{repo}/branches/{branch}/protection/required_pull_request_reviews
-										s.handleReposUpdatePullRequestReviewProtectionRequest(args, w, r)
-										return
-									case "required_status_checks": // -> 89
-										// PATCH /repos/{owner}/{repo}/branches/{branch}/protection/required_status_checks
-										s.handleReposUpdateStatusCheckProtectionRequest(args, w, r)
-										return
-									default:
-										s.notFound(w, r)
-										return
-									}
-								default:
-									s.notFound(w, r)
-									return
-								}
-							}
-						case "releases": // -> 85
-							// Edge: 85, path: "releases".
-							elem, p = nextElem(p)
-							switch elem {
-							case "assets": // -> 87
-								// Edge: 87, path: "assets".
-								elem, p = nextElem(p)
-								switch elem {
-								default:
-									if args == nil {
-										args = make(map[string]string)
-									}
-									args["asset_id"] = elem
-									// PATCH /repos/{owner}/{repo}/releases/assets/{asset_id}
-									s.handleReposUpdateReleaseAssetRequest(args, w, r)
-									return
-								}
-							default:
-								if args == nil {
-									args = make(map[string]string)
-								}
-								args["release_id"] = elem
-								// PATCH /repos/{owner}/{repo}/releases/{release_id}
-								s.handleReposUpdateReleaseRequest(args, w, r)
-								return
-							}
-						case "hooks": // -> 90
-							// Edge: 90, path: "hooks".
-							elem, p = nextElem(p)
-							switch elem {
-							default:
-								if args == nil {
-									args = make(map[string]string)
-								}
-								args["hook_id"] = elem
-								// Edge: 91, path: "".
-								elem, p = nextElem(p)
-								if len(elem) == 0 {
-									// PATCH /repos/{owner}/{repo}/hooks/{hook_id}.
-									s.handleReposUpdateWebhookRequest(args, w, r)
-									return
-								}
-								switch elem {
-								case "config": // -> 92
-									// PATCH /repos/{owner}/{repo}/hooks/{hook_id}/config
-									s.handleReposUpdateWebhookConfigForRepoRequest(args, w, r)
-									return
-								default:
-									// PATCH /repos/{owner}/{repo}/hooks/{hook_id}.
-									s.handleReposUpdateWebhookRequest(args, w, r)
-									return
-								}
-							}
-						case "secret-scanning": // -> 93
-							// Edge: 93, path: "secret-scanning".
-							elem, p = nextElem(p)
-							switch elem {
-							case "alerts": // -> 94
-								// Edge: 94, path: "alerts".
-								elem, p = nextElem(p)
-								switch elem {
-								default:
-									if args == nil {
-										args = make(map[string]string)
-									}
-									args["alert_number"] = elem
-									// PATCH /repos/{owner}/{repo}/secret-scanning/alerts/{alert_number}
-									s.handleSecretScanningUpdateAlertRequest(args, w, r)
-									return
-								}
-							default:
-								s.notFound(w, r)
-								return
-							}
-						default:
-							// PATCH /repos/{owner}/{repo}.
-							s.handleReposUpdateRequest(args, w, r)
-							return
-						}
-					}
-				default:
-					s.notFound(w, r)
-					return
-				}
-			}
-		case "scim": // -> 24
-			// Edge: 24, path: "scim".
-			elem, p = nextElem(p)
-			switch elem {
-			case "v2": // -> 25
-				// Edge: 25, path: "v2".
-				elem, p = nextElem(p)
-				switch elem {
-				case "enterprises": // -> 26
-					// Edge: 26, path: "enterprises".
-					elem, p = nextElem(p)
-					switch elem {
-					default:
-						if args == nil {
-							args = make(map[string]string)
-						}
-						args["enterprise"] = elem
-						// Edge: 27, path: "".
-						elem, p = nextElem(p)
-						switch elem {
-						case "Groups": // -> 28
-							// Edge: 28, path: "Groups".
-							elem, p = nextElem(p)
-							switch elem {
-							default:
-								if args == nil {
-									args = make(map[string]string)
-								}
-								args["scim_group_id"] = elem
-								// PATCH /scim/v2/enterprises/{enterprise}/Groups/{scim_group_id}
-								s.handleEnterpriseAdminUpdateAttributeForEnterpriseGroupRequest(args, w, r)
-								return
-							}
-						case "Users": // -> 30
-							// Edge: 30, path: "Users".
-							elem, p = nextElem(p)
-							switch elem {
-							default:
-								if args == nil {
-									args = make(map[string]string)
-								}
-								args["scim_user_id"] = elem
-								// PATCH /scim/v2/enterprises/{enterprise}/Users/{scim_user_id}
-								s.handleEnterpriseAdminUpdateAttributeForEnterpriseUserRequest(args, w, r)
-								return
-							}
-						default:
-							s.notFound(w, r)
-							return
-						}
-					}
-				default:
-					s.notFound(w, r)
-					return
-				}
-			default:
-				s.notFound(w, r)
-				return
-			}
-		case "enterprises": // -> 32
-			// Edge: 32, path: "enterprises".
-			elem, p = nextElem(p)
-			switch elem {
-			default:
-				if args == nil {
-					args = make(map[string]string)
-				}
-				args["enterprise"] = elem
-				// Edge: 33, path: "".
-				elem, p = nextElem(p)
-				switch elem {
-				case "actions": // -> 34
-					// Edge: 34, path: "actions".
-					elem, p = nextElem(p)
-					switch elem {
-					case "runner-groups": // -> 35
-						// Edge: 35, path: "runner-groups".
-						elem, p = nextElem(p)
-						switch elem {
-						default:
-							if args == nil {
-								args = make(map[string]string)
-							}
-							args["runner_group_id"] = elem
-							// PATCH /enterprises/{enterprise}/actions/runner-groups/{runner_group_id}
-							s.handleEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseRequest(args, w, r)
-							return
-						}
-					default:
-						s.notFound(w, r)
-						return
-					}
-				default:
-					s.notFound(w, r)
-					return
-				}
-			}
-		case "gists": // -> 37
-			// Edge: 37, path: "gists".
-			elem, p = nextElem(p)
-			switch elem {
-			default:
-				if args == nil {
-					args = make(map[string]string)
-				}
-				args["gist_id"] = elem
-				// Edge: 38, path: "".
-				elem, p = nextElem(p)
-				switch elem {
-				case "comments": // -> 39
-					// Edge: 39, path: "comments".
-					elem, p = nextElem(p)
-					switch elem {
-					default:
-						if args == nil {
-							args = make(map[string]string)
-						}
-						args["comment_id"] = elem
-						// PATCH /gists/{gist_id}/comments/{comment_id}
-						s.handleGistsUpdateCommentRequest(args, w, r)
-						return
-					}
-				default:
-					s.notFound(w, r)
-					return
-				}
-			}
-		case "authorizations": // -> 56
-			// Edge: 56, path: "authorizations".
-			elem, p = nextElem(p)
-			switch elem {
-			default:
-				if args == nil {
-					args = make(map[string]string)
-				}
-				args["authorization_id"] = elem
-				// PATCH /authorizations/{authorization_id}
-				s.handleOAuthAuthorizationsUpdateAuthorizationRequest(args, w, r)
-				return
-			}
-		case "user": // -> 58
-			// Edge: 58, path: "user".
-			elem, p = nextElem(p)
-			if len(elem) == 0 {
-				// PATCH /user.
-				s.handleUsersUpdateAuthenticatedRequest(args, w, r)
-				return
-			}
-			switch elem {
-			case "memberships": // -> 59
-				// Edge: 59, path: "memberships".
-				elem, p = nextElem(p)
-				switch elem {
-				case "orgs": // -> 60
-					// Edge: 60, path: "orgs".
-					elem, p = nextElem(p)
-					switch elem {
-					default:
-						if args == nil {
-							args = make(map[string]string)
-						}
-						args["org"] = elem
-						// PATCH /user/memberships/orgs/{org}
-						s.handleOrgsUpdateMembershipForAuthenticatedUserRequest(args, w, r)
-						return
-					}
-				default:
-					s.notFound(w, r)
-					return
-				}
-			case "repository_invitations": // -> 75
-				// Edge: 75, path: "repository_invitations".
-				elem, p = nextElem(p)
-				switch elem {
-				default:
-					if args == nil {
-						args = make(map[string]string)
-					}
-					args["invitation_id"] = elem
-					// PATCH /user/repository_invitations/{invitation_id}
-					s.handleReposAcceptInvitationRequest(args, w, r)
-					return
-				}
-			case "email": // -> 112
-				// Edge: 112, path: "email".
-				elem, p = nextElem(p)
-				switch elem {
-				case "visibility": // -> 113
-					// PATCH /user/email/visibility
-					s.handleUsersSetPrimaryEmailVisibilityForAuthenticatedRequest(args, w, r)
-					return
-				default:
-					s.notFound(w, r)
-					return
-				}
-			default:
-				// PATCH /user.
-				s.handleUsersUpdateAuthenticatedRequest(args, w, r)
-				return
-			}
-		case "projects": // -> 65
-			// Edge: 65, path: "projects".
-			elem, p = nextElem(p)
-			switch elem {
-			case "columns": // -> 67
-				// Edge: 67, path: "columns".
-				elem, p = nextElem(p)
-				switch elem {
-				case "cards": // -> 68
-					// Edge: 68, path: "cards".
-					elem, p = nextElem(p)
-					switch elem {
-					default:
-						if args == nil {
-							args = make(map[string]string)
-						}
-						args["card_id"] = elem
-						// PATCH /projects/columns/cards/{card_id}
-						s.handleProjectsUpdateCardRequest(args, w, r)
-						return
-					}
-				default:
-					if args == nil {
-						args = make(map[string]string)
-					}
-					args["column_id"] = elem
-					// PATCH /projects/columns/{column_id}
-					s.handleProjectsUpdateColumnRequest(args, w, r)
-					return
-				}
-			default:
-				if args == nil {
-					args = make(map[string]string)
-				}
-				args["project_id"] = elem
-				// PATCH /projects/{project_id}
-				s.handleProjectsUpdateRequest(args, w, r)
-				return
-			}
-		case "teams": // -> 100
-			// Edge: 100, path: "teams".
-			elem, p = nextElem(p)
-			switch elem {
-			default:
-				if args == nil {
-					args = make(map[string]string)
-				}
-				args["team_id"] = elem
-				// Edge: 101, path: "".
-				elem, p = nextElem(p)
-				if len(elem) == 0 {
-					// PATCH /teams/{team_id}.
-					s.handleTeamsUpdateLegacyRequest(args, w, r)
-					return
-				}
-				switch elem {
-				case "team-sync": // -> 102
-					// Edge: 102, path: "team-sync".
-					elem, p = nextElem(p)
-					switch elem {
-					case "group-mappings": // -> 103
-						// PATCH /teams/{team_id}/team-sync/group-mappings
-						s.handleTeamsCreateOrUpdateIdpGroupConnectionsLegacyRequest(args, w, r)
-						return
-					default:
-						s.notFound(w, r)
-						return
-					}
-				case "discussions": // -> 108
-					// Edge: 108, path: "discussions".
-					elem, p = nextElem(p)
-					switch elem {
-					default:
-						if args == nil {
-							args = make(map[string]string)
-						}
-						args["discussion_number"] = elem
-						// Edge: 109, path: "".
-						elem, p = nextElem(p)
-						if len(elem) == 0 {
-							// PATCH /teams/{team_id}/discussions/{discussion_number}.
-							s.handleTeamsUpdateDiscussionLegacyRequest(args, w, r)
-							return
-						}
-						switch elem {
-						case "comments": // -> 110
-							// Edge: 110, path: "comments".
-							elem, p = nextElem(p)
-							switch elem {
-							default:
-								if args == nil {
-									args = make(map[string]string)
-								}
-								args["comment_number"] = elem
-								// PATCH /teams/{team_id}/discussions/{discussion_number}/comments/{comment_number}
-								s.handleTeamsUpdateDiscussionCommentLegacyRequest(args, w, r)
-								return
-							}
-						default:
-							// PATCH /teams/{team_id}/discussions/{discussion_number}.
-							s.handleTeamsUpdateDiscussionLegacyRequest(args, w, r)
-							return
-						}
-					}
-				default:
-					// PATCH /teams/{team_id}.
-					s.handleTeamsUpdateLegacyRequest(args, w, r)
-					return
-				}
-			}
-		default:
-			s.notFound(w, r)
-			return
-		}
-	case "POST":
-		// Root edge.
-		elem, p = nextElem(p)
-		switch elem {
-		case "repos": // -> 1
-			// Edge: 1, path: "repos".
-			elem, p = nextElem(p)
-			switch elem {
-			default:
-				if args == nil {
-					args = make(map[string]string)
-				}
-				args["owner"] = elem
-				// Edge: 2, path: "".
-				elem, p = nextElem(p)
-				switch elem {
-				case "": // -> 3
-					// Edge: 3, path: "".
-					elem, p = nextElem(p)
-					switch elem {
-					default:
-						if args == nil {
-							args = make(map[string]string)
-						}
-						args["repo"] = elem
-						// Edge: 4, path: "".
-						elem, p = nextElem(p)
-						switch elem {
-						case "actions": // -> 5
-							// Edge: 5, path: "actions".
-							elem, p = nextElem(p)
-							switch elem {
-							case "runs": // -> 6
-								// Edge: 6, path: "runs".
-								elem, p = nextElem(p)
-								switch elem {
-								default:
-									if args == nil {
-										args = make(map[string]string)
-									}
-									args["run_id"] = elem
-									// Edge: 7, path: "".
-									elem, p = nextElem(p)
-									switch elem {
-									case "approve": // -> 8
-										// POST /repos/{owner}/{repo}/actions/runs/{run_id}/approve
-										s.handleActionsApproveWorkflowRunRequest(args, w, r)
-										return
-									case "cancel": // -> 9
-										// POST /repos/{owner}/{repo}/actions/runs/{run_id}/cancel
-										s.handleActionsCancelWorkflowRunRequest(args, w, r)
-										return
-									case "rerun": // -> 20
-										// POST /repos/{owner}/{repo}/actions/runs/{run_id}/rerun
-										s.handleActionsReRunWorkflowRequest(args, w, r)
-										return
-									case "retry": // -> 21
-										// POST /repos/{owner}/{repo}/actions/runs/{run_id}/retry
-										s.handleActionsRetryWorkflowRequest(args, w, r)
-										return
-									case "pending_deployments": // -> 22
-										// POST /repos/{owner}/{repo}/actions/runs/{run_id}/pending_deployments
-										s.handleActionsReviewPendingDeploymentsForRunRequest(args, w, r)
-										return
-									default:
-										s.notFound(w, r)
-										return
-									}
-								}
-							case "runners": // -> 15
-								// Edge: 15, path: "runners".
-								elem, p = nextElem(p)
-								switch elem {
-								case "registration-token": // -> 16
-									// POST /repos/{owner}/{repo}/actions/runners/registration-token
-									s.handleActionsCreateRegistrationTokenForRepoRequest(args, w, r)
-									return
-								case "remove-token": // -> 18
-									// POST /repos/{owner}/{repo}/actions/runners/remove-token
-									s.handleActionsCreateRemoveTokenForRepoRequest(args, w, r)
-									return
-								default:
-									s.notFound(w, r)
-									return
-								}
-							default:
-								s.notFound(w, r)
-								return
-							}
-						case "content_references": // -> 26
-							// Edge: 26, path: "content_references".
-							elem, p = nextElem(p)
-							switch elem {
-							default:
-								if args == nil {
-									args = make(map[string]string)
-								}
-								args["content_reference_id"] = elem
-								// Edge: 27, path: "".
-								elem, p = nextElem(p)
-								switch elem {
-								case "attachments": // -> 28
-									// POST /repos/{owner}/{repo}/content_references/{content_reference_id}/attachments
-									s.handleAppsCreateContentAttachmentRequest(args, w, r)
-									return
-								default:
-									s.notFound(w, r)
-									return
-								}
-							}
-						case "check-suites": // -> 38
-							// Edge: 38, path: "check-suites".
-							elem, p = nextElem(p)
-							if len(elem) == 0 {
-								// POST /repos/{owner}/{repo}/check-suites.
-								s.handleChecksCreateSuiteRequest(args, w, r)
-								return
-							}
-							switch elem {
-							default:
-								if args == nil {
-									args = make(map[string]string)
-								}
-								args["check_suite_id"] = elem
-								// Edge: 39, path: "".
-								elem, p = nextElem(p)
-								switch elem {
-								case "rerequest": // -> 40
-									// POST /repos/{owner}/{repo}/check-suites/{check_suite_id}/rerequest
-									s.handleChecksRerequestSuiteRequest(args, w, r)
-									return
-								default:
-									s.notFound(w, r)
-									return
-								}
-							}
-						case "code-scanning": // -> 41
-							// Edge: 41, path: "code-scanning".
-							elem, p = nextElem(p)
-							switch elem {
-							case "sarifs": // -> 42
-								// POST /repos/{owner}/{repo}/code-scanning/sarifs
-								s.handleCodeScanningUploadSarifRequest(args, w, r)
-								return
-							default:
-								s.notFound(w, r)
-								return
-							}
-						case "git": // -> 60
-							// Edge: 60, path: "git".
-							elem, p = nextElem(p)
-							switch elem {
-							case "blobs": // -> 61
-								// POST /repos/{owner}/{repo}/git/blobs
-								s.handleGitCreateBlobRequest(args, w, r)
-								return
-							case "commits": // -> 62
-								// POST /repos/{owner}/{repo}/git/commits
-								s.handleGitCreateCommitRequest(args, w, r)
-								return
-							case "refs": // -> 63
-								// POST /repos/{owner}/{repo}/git/refs
-								s.handleGitCreateRefRequest(args, w, r)
-								return
-							case "tags": // -> 64
-								// POST /repos/{owner}/{repo}/git/tags
-								s.handleGitCreateTagRequest(args, w, r)
-								return
-							case "trees": // -> 65
-								// POST /repos/{owner}/{repo}/git/trees
-								s.handleGitCreateTreeRequest(args, w, r)
-								return
-							default:
-								s.notFound(w, r)
-								return
-							}
-						case "issues": // -> 66
-							// Edge: 66, path: "issues".
-							elem, p = nextElem(p)
-							if len(elem) == 0 {
-								// POST /repos/{owner}/{repo}/issues.
-								s.handleIssuesCreateRequest(args, w, r)
-								return
-							}
-							switch elem {
-							case "comments": // -> 133
-								// Edge: 133, path: "comments".
-								elem, p = nextElem(p)
-								switch elem {
-								default:
-									if args == nil {
-										args = make(map[string]string)
-									}
-									args["comment_id"] = elem
-									// Edge: 134, path: "".
-									elem, p = nextElem(p)
-									switch elem {
-									case "reactions": // -> 135
-										// POST /repos/{owner}/{repo}/issues/comments/{comment_id}/reactions
-										s.handleReactionsCreateForIssueCommentRequest(args, w, r)
-										return
-									default:
-										s.notFound(w, r)
-										return
-									}
-								}
-							default:
-								if args == nil {
-									args = make(map[string]string)
-								}
-								args["issue_number"] = elem
-								// Edge: 67, path: "".
-								elem, p = nextElem(p)
-								switch elem {
-								case "assignees": // -> 68
-									// POST /repos/{owner}/{repo}/issues/{issue_number}/assignees
-									s.handleIssuesAddAssigneesRequest(args, w, r)
-									return
-								case "comments": // -> 69
-									// POST /repos/{owner}/{repo}/issues/{issue_number}/comments
-									s.handleIssuesCreateCommentRequest(args, w, r)
-									return
-								case "reactions": // -> 132
-									// POST /repos/{owner}/{repo}/issues/{issue_number}/reactions
-									s.handleReactionsCreateForIssueRequest(args, w, r)
-									return
-								default:
-									s.notFound(w, r)
-									return
-								}
-							}
-						case "labels": // -> 70
-							// POST /repos/{owner}/{repo}/labels
-							s.handleIssuesCreateLabelRequest(args, w, r)
-							return
-						case "milestones": // -> 71
-							// POST /repos/{owner}/{repo}/milestones
-							s.handleIssuesCreateMilestoneRequest(args, w, r)
-							return
-						case "projects": // -> 114
-							// POST /repos/{owner}/{repo}/projects
-							s.handleProjectsCreateForRepoRequest(args, w, r)
-							return
-						case "pulls": // -> 121
-							// Edge: 121, path: "pulls".
-							elem, p = nextElem(p)
-							if len(elem) == 0 {
-								// POST /repos/{owner}/{repo}/pulls.
-								s.handlePullsCreateRequest(args, w, r)
-								return
-							}
-							switch elem {
-							case "comments": // -> 136
-								// Edge: 136, path: "comments".
-								elem, p = nextElem(p)
-								switch elem {
-								default:
-									if args == nil {
-										args = make(map[string]string)
-									}
-									args["comment_id"] = elem
-									// Edge: 137, path: "".
-									elem, p = nextElem(p)
-									switch elem {
-									case "reactions": // -> 138
-										// POST /repos/{owner}/{repo}/pulls/comments/{comment_id}/reactions
-										s.handleReactionsCreateForPullRequestReviewCommentRequest(args, w, r)
-										return
-									default:
-										s.notFound(w, r)
-										return
-									}
-								}
-							default:
-								if args == nil {
-									args = make(map[string]string)
-								}
-								args["pull_number"] = elem
-								// Edge: 122, path: "".
-								elem, p = nextElem(p)
-								switch elem {
-								case "comments": // -> 123
-									// Edge: 123, path: "comments".
-									elem, p = nextElem(p)
-									if len(elem) == 0 {
-										// POST /repos/{owner}/{repo}/pulls/{pull_number}/comments.
-										s.handlePullsCreateReviewCommentRequest(args, w, r)
-										return
-									}
-									switch elem {
-									default:
-										if args == nil {
-											args = make(map[string]string)
-										}
-										args["comment_id"] = elem
-										// Edge: 124, path: "".
-										elem, p = nextElem(p)
-										switch elem {
-										case "replies": // -> 125
-											// POST /repos/{owner}/{repo}/pulls/{pull_number}/comments/{comment_id}/replies
-											s.handlePullsCreateReplyForReviewCommentRequest(args, w, r)
-											return
-										default:
-											s.notFound(w, r)
-											return
-										}
-									}
-								case "reviews": // -> 126
-									// Edge: 126, path: "reviews".
-									elem, p = nextElem(p)
-									if len(elem) == 0 {
-										// POST /repos/{owner}/{repo}/pulls/{pull_number}/reviews.
-										s.handlePullsCreateReviewRequest(args, w, r)
-										return
-									}
-									switch elem {
-									default:
-										if args == nil {
-											args = make(map[string]string)
-										}
-										args["review_id"] = elem
-										// Edge: 127, path: "".
-										elem, p = nextElem(p)
-										switch elem {
-										case "events": // -> 128
-											// POST /repos/{owner}/{repo}/pulls/{pull_number}/reviews/{review_id}/events
-											s.handlePullsSubmitReviewRequest(args, w, r)
-											return
-										default:
-											s.notFound(w, r)
-											return
-										}
-									}
-								default:
-									s.notFound(w, r)
-									return
-								}
-							}
-						case "comments": // -> 129
-							// Edge: 129, path: "comments".
-							elem, p = nextElem(p)
-							switch elem {
-							default:
-								if args == nil {
-									args = make(map[string]string)
-								}
-								args["comment_id"] = elem
-								// Edge: 130, path: "".
-								elem, p = nextElem(p)
-								switch elem {
-								case "reactions": // -> 131
-									// POST /repos/{owner}/{repo}/comments/{comment_id}/reactions
-									s.handleReactionsCreateForCommitCommentRequest(args, w, r)
-									return
-								default:
-									s.notFound(w, r)
-									return
-								}
-							}
-						case "releases": // -> 139
-							// Edge: 139, path: "releases".
-							elem, p = nextElem(p)
-							if len(elem) == 0 {
-								// POST /repos/{owner}/{repo}/releases.
-								s.handleReposCreateReleaseRequest(args, w, r)
-								return
-							}
-							switch elem {
-							default:
-								if args == nil {
-									args = make(map[string]string)
-								}
-								args["release_id"] = elem
-								// Edge: 140, path: "".
-								elem, p = nextElem(p)
-								switch elem {
-								case "reactions": // -> 141
-									// POST /repos/{owner}/{repo}/releases/{release_id}/reactions
-									s.handleReactionsCreateForReleaseRequest(args, w, r)
-									return
-								default:
-									s.notFound(w, r)
-									return
-								}
-							}
-						case "branches": // -> 158
-							// Edge: 158, path: "branches".
-							elem, p = nextElem(p)
-							switch elem {
-							default:
-								if args == nil {
-									args = make(map[string]string)
-								}
-								args["branch"] = elem
-								// Edge: 159, path: "".
-								elem, p = nextElem(p)
-								switch elem {
-								case "protection": // -> 160
-									// Edge: 160, path: "protection".
-									elem, p = nextElem(p)
-									switch elem {
-									case "restrictions": // -> 161
-										// Edge: 161, path: "restrictions".
-										elem, p = nextElem(p)
-										switch elem {
-										case "apps": // -> 162
-											// POST /repos/{owner}/{repo}/branches/{branch}/protection/restrictions/apps
-											s.handleReposAddAppAccessRestrictionsRequest(args, w, r)
-											return
-										case "teams": // -> 165
-											// POST /repos/{owner}/{repo}/branches/{branch}/protection/restrictions/teams
-											s.handleReposAddTeamAccessRestrictionsRequest(args, w, r)
-											return
-										case "users": // -> 166
-											// POST /repos/{owner}/{repo}/branches/{branch}/protection/restrictions/users
-											s.handleReposAddUserAccessRestrictionsRequest(args, w, r)
-											return
-										default:
-											s.notFound(w, r)
-											return
-										}
-									case "required_status_checks": // -> 163
-										// Edge: 163, path: "required_status_checks".
-										elem, p = nextElem(p)
-										switch elem {
-										case "contexts": // -> 164
-											// POST /repos/{owner}/{repo}/branches/{branch}/protection/required_status_checks/contexts
-											s.handleReposAddStatusCheckContextsRequest(args, w, r)
-											return
-										default:
-											s.notFound(w, r)
-											return
-										}
-									case "required_signatures": // -> 171
-										// POST /repos/{owner}/{repo}/branches/{branch}/protection/required_signatures
-										s.handleReposCreateCommitSignatureProtectionRequest(args, w, r)
-										return
-									case "enforce_admins": // -> 194
-										// POST /repos/{owner}/{repo}/branches/{branch}/protection/enforce_admins
-										s.handleReposSetAdminBranchProtectionRequest(args, w, r)
-										return
-									default:
-										s.notFound(w, r)
-										return
-									}
-								case "rename": // -> 192
-									// POST /repos/{owner}/{repo}/branches/{branch}/rename
-									s.handleReposRenameBranchRequest(args, w, r)
-									return
-								default:
-									s.notFound(w, r)
-									return
-								}
-							}
-						case "autolinks": // -> 167
-							// POST /repos/{owner}/{repo}/autolinks
-							s.handleReposCreateAutolinkRequest(args, w, r)
-							return
-						case "commits": // -> 168
-							// Edge: 168, path: "commits".
-							elem, p = nextElem(p)
-							switch elem {
-							default:
-								if args == nil {
-									args = make(map[string]string)
-								}
-								args["commit_sha"] = elem
-								// Edge: 169, path: "".
-								elem, p = nextElem(p)
-								switch elem {
-								case "comments": // -> 170
-									// POST /repos/{owner}/{repo}/commits/{commit_sha}/comments
-									s.handleReposCreateCommitCommentRequest(args, w, r)
-									return
-								default:
-									s.notFound(w, r)
-									return
-								}
-							}
-						case "statuses": // -> 172
-							// Edge: 172, path: "statuses".
-							elem, p = nextElem(p)
-							switch elem {
-							default:
-								if args == nil {
-									args = make(map[string]string)
-								}
-								args["sha"] = elem
-								// POST /repos/{owner}/{repo}/statuses/{sha}
-								s.handleReposCreateCommitStatusRequest(args, w, r)
-								return
-							}
-						case "keys": // -> 174
-							// POST /repos/{owner}/{repo}/keys
-							s.handleReposCreateDeployKeyRequest(args, w, r)
-							return
-						case "deployments": // -> 175
-							// Edge: 175, path: "deployments".
-							elem, p = nextElem(p)
-							if len(elem) == 0 {
-								// POST /repos/{owner}/{repo}/deployments.
-								s.handleReposCreateDeploymentRequest(args, w, r)
-								return
-							}
-							switch elem {
-							default:
-								if args == nil {
-									args = make(map[string]string)
-								}
-								args["deployment_id"] = elem
-								// Edge: 176, path: "".
-								elem, p = nextElem(p)
-								switch elem {
-								case "statuses": // -> 177
-									// POST /repos/{owner}/{repo}/deployments/{deployment_id}/statuses
-									s.handleReposCreateDeploymentStatusRequest(args, w, r)
-									return
-								default:
-									s.notFound(w, r)
-									return
-								}
-							}
-						case "dispatches": // -> 178
-							// POST /repos/{owner}/{repo}/dispatches
-							s.handleReposCreateDispatchEventRequest(args, w, r)
-							return
-						case "forks": // -> 180
-							// POST /repos/{owner}/{repo}/forks
-							s.handleReposCreateForkRequest(args, w, r)
-							return
-						case "pages": // -> 182
-							// Edge: 182, path: "pages".
-							elem, p = nextElem(p)
-							if len(elem) == 0 {
-								// POST /repos/{owner}/{repo}/pages.
-								s.handleReposCreatePagesSiteRequest(args, w, r)
-								return
-							}
-							switch elem {
-							case "builds": // -> 193
-								// POST /repos/{owner}/{repo}/pages/builds
-								s.handleReposRequestPagesBuildRequest(args, w, r)
-								return
-							default:
-								// POST /repos/{owner}/{repo}/pages.
-								s.handleReposCreatePagesSiteRequest(args, w, r)
-								return
-							}
-						case "generate": // -> 183
-							// POST /repos/{template_owner}/{template_repo}/generate
-							s.handleReposCreateUsingTemplateRequest(args, w, r)
-							return
-						case "hooks": // -> 184
-							// Edge: 184, path: "hooks".
-							elem, p = nextElem(p)
-							if len(elem) == 0 {
-								// POST /repos/{owner}/{repo}/hooks.
-								s.handleReposCreateWebhookRequest(args, w, r)
-								return
-							}
-							switch elem {
-							default:
-								if args == nil {
-									args = make(map[string]string)
-								}
-								args["hook_id"] = elem
-								// Edge: 187, path: "".
-								elem, p = nextElem(p)
-								switch elem {
-								case "pings": // -> 188
-									// POST /repos/{owner}/{repo}/hooks/{hook_id}/pings
-									s.handleReposPingWebhookRequest(args, w, r)
-									return
-								case "deliveries": // -> 189
-									// Edge: 189, path: "deliveries".
-									elem, p = nextElem(p)
-									switch elem {
-									default:
-										if args == nil {
-											args = make(map[string]string)
-										}
-										args["delivery_id"] = elem
-										// Edge: 190, path: "".
-										elem, p = nextElem(p)
-										switch elem {
-										case "attempts": // -> 191
-											// POST /repos/{owner}/{repo}/hooks/{hook_id}/deliveries/{delivery_id}/attempts
-											s.handleReposRedeliverWebhookDeliveryRequest(args, w, r)
-											return
-										default:
-											s.notFound(w, r)
-											return
-										}
-									}
-								case "tests": // -> 195
-									// POST /repos/{owner}/{repo}/hooks/{hook_id}/tests
-									s.handleReposTestPushWebhookRequest(args, w, r)
-									return
-								default:
-									s.notFound(w, r)
-									return
-								}
-							}
-						case "merges": // -> 185
-							// POST /repos/{owner}/{repo}/merges
-							s.handleReposMergeRequest(args, w, r)
-							return
-						case "merge-upstream": // -> 186
-							// POST /repos/{owner}/{repo}/merge-upstream
-							s.handleReposMergeUpstreamRequest(args, w, r)
-							return
-						case "transfer": // -> 196
-							// POST /repos/{owner}/{repo}/transfer
-							s.handleReposTransferRequest(args, w, r)
-							return
-						default:
-							s.notFound(w, r)
-							return
-						}
-					}
-				default:
-					s.notFound(w, r)
-					return
-				}
-			}
-		case "orgs": // -> 10
-			// Edge: 10, path: "orgs".
-			elem, p = nextElem(p)
-			switch elem {
-			default:
-				if args == nil {
-					args = make(map[string]string)
-				}
-				args["org"] = elem
-				// Edge: 11, path: "".
-				elem, p = nextElem(p)
-				switch elem {
-				case "actions": // -> 12
-					// Edge: 12, path: "actions".
-					elem, p = nextElem(p)
-					switch elem {
-					case "runners": // -> 13
-						// Edge: 13, path: "runners".
-						elem, p = nextElem(p)
-						switch elem {
-						case "registration-token": // -> 14
-							// POST /orgs/{org}/actions/runners/registration-token
-							s.handleActionsCreateRegistrationTokenForOrgRequest(args, w, r)
-							return
-						case "remove-token": // -> 17
-							// POST /orgs/{org}/actions/runners/remove-token
-							s.handleActionsCreateRemoveTokenForOrgRequest(args, w, r)
-							return
-						default:
-							s.notFound(w, r)
-							return
-						}
-					case "runner-groups": // -> 19
-						// POST /orgs/{org}/actions/runner-groups
-						s.handleActionsCreateSelfHostedRunnerGroupForOrgRequest(args, w, r)
-						return
-					default:
-						s.notFound(w, r)
-						return
-					}
-				case "migrations": // -> 74
-					// POST /orgs/{org}/migrations
-					s.handleMigrationsStartForOrgRequest(args, w, r)
-					return
-				case "invitations": // -> 76
-					// POST /orgs/{org}/invitations
-					s.handleOrgsCreateInvitationRequest(args, w, r)
-					return
-				case "hooks": // -> 77
-					// Edge: 77, path: "hooks".
-					elem, p = nextElem(p)
-					if len(elem) == 0 {
-						// POST /orgs/{org}/hooks.
-						s.handleOrgsCreateWebhookRequest(args, w, r)
-						return
-					}
-					switch elem {
-					default:
-						if args == nil {
-							args = make(map[string]string)
-						}
-						args["hook_id"] = elem
-						// Edge: 78, path: "".
-						elem, p = nextElem(p)
-						switch elem {
-						case "pings": // -> 79
-							// POST /orgs/{org}/hooks/{hook_id}/pings
-							s.handleOrgsPingWebhookRequest(args, w, r)
-							return
-						case "deliveries": // -> 80
-							// Edge: 80, path: "deliveries".
-							elem, p = nextElem(p)
-							switch elem {
-							default:
-								if args == nil {
-									args = make(map[string]string)
-								}
-								args["delivery_id"] = elem
-								// Edge: 81, path: "".
-								elem, p = nextElem(p)
-								switch elem {
-								case "attempts": // -> 82
-									// POST /orgs/{org}/hooks/{hook_id}/deliveries/{delivery_id}/attempts
-									s.handleOrgsRedeliverWebhookDeliveryRequest(args, w, r)
-									return
-								default:
-									s.notFound(w, r)
-									return
-								}
-							}
-						default:
-							s.notFound(w, r)
-							return
-						}
-					}
-				case "packages": // -> 88
-					// Edge: 88, path: "packages".
-					elem, p = nextElem(p)
-					switch elem {
-					default:
-						if args == nil {
-							args = make(map[string]string)
-						}
-						args["package_type"] = elem
-						// Edge: 89, path: "".
-						elem, p = nextElem(p)
-						switch elem {
-						case "": // -> 90
-							// Edge: 90, path: "".
-							elem, p = nextElem(p)
-							switch elem {
-							default:
-								if args == nil {
-									args = make(map[string]string)
-								}
-								args["package_name"] = elem
-								// Edge: 91, path: "".
-								elem, p = nextElem(p)
-								switch elem {
-								case "restore": // -> 92
-									// POST /orgs/{org}/packages/{package_type}/{package_name}/restore
-									s.handlePackagesRestorePackageForOrgRequest(args, w, r)
-									return
-								case "versions": // -> 103
-									// Edge: 103, path: "versions".
-									elem, p = nextElem(p)
-									switch elem {
-									default:
-										if args == nil {
-											args = make(map[string]string)
-										}
-										args["package_version_id"] = elem
-										// Edge: 104, path: "".
-										elem, p = nextElem(p)
-										switch elem {
-										case "restore": // -> 105
-											// POST /orgs/{org}/packages/{package_type}/{package_name}/versions/{package_version_id}/restore
-											s.handlePackagesRestorePackageVersionForOrgRequest(args, w, r)
-											return
-										default:
-											s.notFound(w, r)
-											return
-										}
-									}
-								default:
-									s.notFound(w, r)
-									return
-								}
-							}
-						default:
-							s.notFound(w, r)
-							return
-						}
-					}
-				case "projects": // -> 113
-					// POST /orgs/{org}/projects
-					s.handleProjectsCreateForOrgRequest(args, w, r)
-					return
-				case "teams": // -> 142
-					// Edge: 142, path: "teams".
-					elem, p = nextElem(p)
-					if len(elem) == 0 {
-						// POST /orgs/{org}/teams.
-						s.handleTeamsCreateRequest(args, w, r)
-						return
-					}
-					switch elem {
-					default:
-						if args == nil {
-							args = make(map[string]string)
-						}
-						args["team_slug"] = elem
-						// Edge: 143, path: "".
-						elem, p = nextElem(p)
-						switch elem {
-						case "discussions": // -> 144
-							// Edge: 144, path: "discussions".
-							elem, p = nextElem(p)
-							if len(elem) == 0 {
-								// POST /orgs/{org}/teams/{team_slug}/discussions.
-								s.handleTeamsCreateDiscussionInOrgRequest(args, w, r)
-								return
-							}
-							switch elem {
-							default:
-								if args == nil {
-									args = make(map[string]string)
-								}
-								args["discussion_number"] = elem
-								// Edge: 145, path: "".
-								elem, p = nextElem(p)
-								switch elem {
-								case "comments": // -> 146
-									// Edge: 146, path: "comments".
-									elem, p = nextElem(p)
-									if len(elem) == 0 {
-										// POST /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments.
-										s.handleTeamsCreateDiscussionCommentInOrgRequest(args, w, r)
-										return
-									}
-									switch elem {
-									default:
-										if args == nil {
-											args = make(map[string]string)
-										}
-										args["comment_number"] = elem
-										// Edge: 147, path: "".
-										elem, p = nextElem(p)
-										switch elem {
-										case "reactions": // -> 148
-											// POST /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments/{comment_number}/reactions
-											s.handleReactionsCreateForTeamDiscussionCommentInOrgRequest(args, w, r)
-											return
-										default:
-											s.notFound(w, r)
-											return
-										}
-									}
-								case "reactions": // -> 156
-									// POST /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/reactions
-									s.handleReactionsCreateForTeamDiscussionInOrgRequest(args, w, r)
-									return
-								default:
-									s.notFound(w, r)
-									return
-								}
-							}
-						default:
-							s.notFound(w, r)
-							return
-						}
-					}
-				case "repos": // -> 181
-					// POST /orgs/{org}/repos
-					s.handleReposCreateInOrgRequest(args, w, r)
-					return
-				default:
-					s.notFound(w, r)
-					return
-				}
-			}
-		case "applications": // -> 23
-			// Edge: 23, path: "applications".
-			elem, p = nextElem(p)
-			switch elem {
-			default:
-				if args == nil {
-					args = make(map[string]string)
-				}
-				args["client_id"] = elem
-				// Edge: 24, path: "".
-				elem, p = nextElem(p)
-				switch elem {
-				case "token": // -> 25
-					// Edge: 25, path: "token".
-					elem, p = nextElem(p)
-					if len(elem) == 0 {
-						// POST /applications/{client_id}/token.
-						s.handleAppsCheckTokenRequest(args, w, r)
-						return
-					}
-					switch elem {
-					case "scoped": // -> 37
-						// POST /applications/{client_id}/token/scoped
-						s.handleAppsScopeTokenRequest(args, w, r)
-						return
-					default:
-						// POST /applications/{client_id}/token.
-						s.handleAppsCheckTokenRequest(args, w, r)
-						return
-					}
-				default:
-					s.notFound(w, r)
-					return
-				}
-			}
-		case "app": // -> 29
-			// Edge: 29, path: "app".
-			elem, p = nextElem(p)
-			switch elem {
-			case "installations": // -> 30
-				// Edge: 30, path: "installations".
-				elem, p = nextElem(p)
-				switch elem {
-				default:
-					if args == nil {
-						args = make(map[string]string)
-					}
-					args["installation_id"] = elem
-					// Edge: 31, path: "".
-					elem, p = nextElem(p)
-					switch elem {
-					case "access_tokens": // -> 32
-						// POST /app/installations/{installation_id}/access_tokens
-						s.handleAppsCreateInstallationAccessTokenRequest(args, w, r)
-						return
-					default:
-						s.notFound(w, r)
-						return
-					}
-				}
-			case "hook": // -> 33
-				// Edge: 33, path: "hook".
-				elem, p = nextElem(p)
-				switch elem {
-				case "deliveries": // -> 34
-					// Edge: 34, path: "deliveries".
-					elem, p = nextElem(p)
-					switch elem {
-					default:
-						if args == nil {
-							args = make(map[string]string)
-						}
-						args["delivery_id"] = elem
-						// Edge: 35, path: "".
-						elem, p = nextElem(p)
-						switch elem {
-						case "attempts": // -> 36
-							// POST /app/hook/deliveries/{delivery_id}/attempts
-							s.handleAppsRedeliverWebhookDeliveryRequest(args, w, r)
-							return
-						default:
-							s.notFound(w, r)
-							return
-						}
-					}
-				default:
-					s.notFound(w, r)
-					return
-				}
-			default:
-				s.notFound(w, r)
-				return
-			}
-		case "enterprises": // -> 43
-			// Edge: 43, path: "enterprises".
-			elem, p = nextElem(p)
-			switch elem {
-			default:
-				if args == nil {
-					args = make(map[string]string)
-				}
-				args["enterprise"] = elem
-				// Edge: 44, path: "".
-				elem, p = nextElem(p)
-				switch elem {
-				case "actions": // -> 45
-					// Edge: 45, path: "actions".
-					elem, p = nextElem(p)
-					switch elem {
-					case "runners": // -> 46
-						// Edge: 46, path: "runners".
-						elem, p = nextElem(p)
-						switch elem {
-						case "registration-token": // -> 47
-							// POST /enterprises/{enterprise}/actions/runners/registration-token
-							s.handleEnterpriseAdminCreateRegistrationTokenForEnterpriseRequest(args, w, r)
-							return
-						case "remove-token": // -> 48
-							// POST /enterprises/{enterprise}/actions/runners/remove-token
-							s.handleEnterpriseAdminCreateRemoveTokenForEnterpriseRequest(args, w, r)
-							return
-						default:
-							s.notFound(w, r)
-							return
-						}
-					case "runner-groups": // -> 49
-						// POST /enterprises/{enterprise}/actions/runner-groups
-						s.handleEnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseRequest(args, w, r)
-						return
-					default:
-						s.notFound(w, r)
-						return
-					}
-				default:
-					s.notFound(w, r)
-					return
-				}
-			}
-		case "scim": // -> 50
-			// Edge: 50, path: "scim".
-			elem, p = nextElem(p)
-			switch elem {
-			case "v2": // -> 51
-				// Edge: 51, path: "v2".
-				elem, p = nextElem(p)
-				switch elem {
-				case "enterprises": // -> 52
-					// Edge: 52, path: "enterprises".
-					elem, p = nextElem(p)
-					switch elem {
-					default:
-						if args == nil {
-							args = make(map[string]string)
-						}
-						args["enterprise"] = elem
-						// Edge: 53, path: "".
-						elem, p = nextElem(p)
-						switch elem {
-						case "Groups": // -> 54
-							// POST /scim/v2/enterprises/{enterprise}/Groups
-							s.handleEnterpriseAdminProvisionAndInviteEnterpriseGroupRequest(args, w, r)
-							return
-						case "Users": // -> 55
-							// POST /scim/v2/enterprises/{enterprise}/Users
-							s.handleEnterpriseAdminProvisionAndInviteEnterpriseUserRequest(args, w, r)
-							return
-						default:
-							s.notFound(w, r)
-							return
-						}
-					}
-				default:
-					s.notFound(w, r)
-					return
-				}
-			default:
-				s.notFound(w, r)
-				return
-			}
-		case "gists": // -> 56
-			// Edge: 56, path: "gists".
-			elem, p = nextElem(p)
-			if len(elem) == 0 {
-				// POST /gists.
-				s.handleGistsCreateRequest(args, w, r)
-				return
-			}
-			switch elem {
-			default:
-				if args == nil {
-					args = make(map[string]string)
-				}
-				args["gist_id"] = elem
-				// Edge: 57, path: "".
-				elem, p = nextElem(p)
-				switch elem {
-				case "comments": // -> 58
-					// POST /gists/{gist_id}/comments
-					s.handleGistsCreateCommentRequest(args, w, r)
-					return
-				case "forks": // -> 59
-					// POST /gists/{gist_id}/forks
-					s.handleGistsForkRequest(args, w, r)
-					return
-				default:
-					s.notFound(w, r)
-					return
-				}
-			}
-		case "user": // -> 72
-			// Edge: 72, path: "user".
-			elem, p = nextElem(p)
-			switch elem {
-			case "migrations": // -> 73
-				// POST /user/migrations
-				s.handleMigrationsStartForAuthenticatedUserRequest(args, w, r)
-				return
-			case "packages": // -> 83
-				// Edge: 83, path: "packages".
-				elem, p = nextElem(p)
-				switch elem {
-				default:
-					if args == nil {
-						args = make(map[string]string)
-					}
-					args["package_type"] = elem
-					// Edge: 84, path: "".
-					elem, p = nextElem(p)
-					switch elem {
-					case "": // -> 85
-						// Edge: 85, path: "".
-						elem, p = nextElem(p)
-						switch elem {
-						default:
-							if args == nil {
-								args = make(map[string]string)
-							}
-							args["package_name"] = elem
-							// Edge: 86, path: "".
-							elem, p = nextElem(p)
-							switch elem {
-							case "restore": // -> 87
-								// POST /user/packages/{package_type}/{package_name}/restore
-								s.handlePackagesRestorePackageForAuthenticatedUserRequest(args, w, r)
-								return
-							case "versions": // -> 100
-								// Edge: 100, path: "versions".
-								elem, p = nextElem(p)
-								switch elem {
-								default:
-									if args == nil {
-										args = make(map[string]string)
-									}
-									args["package_version_id"] = elem
-									// Edge: 101, path: "".
-									elem, p = nextElem(p)
-									switch elem {
-									case "restore": // -> 102
-										// POST /user/packages/{package_type}/{package_name}/versions/{package_version_id}/restore
-										s.handlePackagesRestorePackageVersionForAuthenticatedUserRequest(args, w, r)
-										return
-									default:
-										s.notFound(w, r)
-										return
-									}
-								}
-							default:
-								s.notFound(w, r)
-								return
-							}
-						}
-					default:
-						s.notFound(w, r)
-						return
-					}
-				}
-			case "projects": // -> 112
-				// POST /user/projects
-				s.handleProjectsCreateForAuthenticatedUserRequest(args, w, r)
-				return
-			case "repos": // -> 179
-				// POST /user/repos
-				s.handleReposCreateForAuthenticatedUserRequest(args, w, r)
-				return
-			case "emails": // -> 197
-				// POST /user/emails
-				s.handleUsersAddEmailForAuthenticatedRequest(args, w, r)
-				return
-			case "gpg_keys": // -> 198
-				// POST /user/gpg_keys
-				s.handleUsersCreateGpgKeyForAuthenticatedRequest(args, w, r)
-				return
-			case "keys": // -> 199
-				// POST /user/keys
-				s.handleUsersCreatePublicSSHKeyForAuthenticatedRequest(args, w, r)
-				return
-			default:
-				s.notFound(w, r)
-				return
-			}
-		case "authorizations": // -> 75
-			// POST /authorizations
-			s.handleOAuthAuthorizationsCreateAuthorizationRequest(args, w, r)
-			return
-		case "users": // -> 93
-			// Edge: 93, path: "users".
-			elem, p = nextElem(p)
-			switch elem {
-			default:
-				if args == nil {
-					args = make(map[string]string)
-				}
-				args["username"] = elem
-				// Edge: 94, path: "".
-				elem, p = nextElem(p)
-				switch elem {
-				case "packages": // -> 95
-					// Edge: 95, path: "packages".
-					elem, p = nextElem(p)
-					switch elem {
-					default:
-						if args == nil {
-							args = make(map[string]string)
-						}
-						args["package_type"] = elem
-						// Edge: 96, path: "".
-						elem, p = nextElem(p)
-						switch elem {
-						case "": // -> 97
-							// Edge: 97, path: "".
-							elem, p = nextElem(p)
-							switch elem {
-							default:
-								if args == nil {
-									args = make(map[string]string)
-								}
-								args["package_name"] = elem
-								// Edge: 98, path: "".
-								elem, p = nextElem(p)
-								switch elem {
-								case "restore": // -> 99
-									// POST /users/{username}/packages/{package_type}/{package_name}/restore
-									s.handlePackagesRestorePackageForUserRequest(args, w, r)
-									return
-								case "versions": // -> 106
-									// Edge: 106, path: "versions".
-									elem, p = nextElem(p)
-									switch elem {
-									default:
-										if args == nil {
-											args = make(map[string]string)
-										}
-										args["package_version_id"] = elem
-										// Edge: 107, path: "".
-										elem, p = nextElem(p)
-										switch elem {
-										case "restore": // -> 108
-											// POST /users/{username}/packages/{package_type}/{package_name}/versions/{package_version_id}/restore
-											s.handlePackagesRestorePackageVersionForUserRequest(args, w, r)
-											return
-										default:
-											s.notFound(w, r)
-											return
-										}
-									}
-								default:
-									s.notFound(w, r)
-									return
-								}
-							}
-						default:
-							s.notFound(w, r)
-							return
-						}
-					}
-				default:
-					s.notFound(w, r)
-					return
-				}
-			}
-		case "projects": // -> 109
-			// Edge: 109, path: "projects".
-			elem, p = nextElem(p)
-			switch elem {
-			case "columns": // -> 115
-				// Edge: 115, path: "columns".
-				elem, p = nextElem(p)
-				switch elem {
-				case "cards": // -> 116
-					// Edge: 116, path: "cards".
-					elem, p = nextElem(p)
-					switch elem {
-					default:
-						if args == nil {
-							args = make(map[string]string)
-						}
-						args["card_id"] = elem
-						// Edge: 117, path: "".
-						elem, p = nextElem(p)
-						switch elem {
-						case "moves": // -> 118
-							// POST /projects/columns/cards/{card_id}/moves
-							s.handleProjectsMoveCardRequest(args, w, r)
-							return
-						default:
-							s.notFound(w, r)
-							return
-						}
-					}
-				default:
-					if args == nil {
-						args = make(map[string]string)
-					}
-					args["column_id"] = elem
-					// Edge: 119, path: "".
-					elem, p = nextElem(p)
-					switch elem {
-					case "moves": // -> 120
-						// POST /projects/columns/{column_id}/moves
-						s.handleProjectsMoveColumnRequest(args, w, r)
-						return
-					default:
-						s.notFound(w, r)
-						return
-					}
-				}
-			default:
-				if args == nil {
-					args = make(map[string]string)
-				}
-				args["project_id"] = elem
-				// Edge: 110, path: "".
-				elem, p = nextElem(p)
-				switch elem {
-				case "columns": // -> 111
-					// POST /projects/{project_id}/columns
-					s.handleProjectsCreateColumnRequest(args, w, r)
-					return
-				default:
-					s.notFound(w, r)
-					return
-				}
-			}
-		case "teams": // -> 149
-			// Edge: 149, path: "teams".
-			elem, p = nextElem(p)
-			switch elem {
-			default:
-				if args == nil {
-					args = make(map[string]string)
-				}
-				args["team_id"] = elem
-				// Edge: 150, path: "".
-				elem, p = nextElem(p)
-				switch elem {
-				case "discussions": // -> 151
-					// Edge: 151, path: "discussions".
-					elem, p = nextElem(p)
-					if len(elem) == 0 {
-						// POST /teams/{team_id}/discussions.
-						s.handleTeamsCreateDiscussionLegacyRequest(args, w, r)
-						return
-					}
-					switch elem {
-					default:
-						if args == nil {
-							args = make(map[string]string)
-						}
-						args["discussion_number"] = elem
-						// Edge: 152, path: "".
-						elem, p = nextElem(p)
-						switch elem {
-						case "comments": // -> 153
-							// Edge: 153, path: "comments".
-							elem, p = nextElem(p)
-							if len(elem) == 0 {
-								// POST /teams/{team_id}/discussions/{discussion_number}/comments.
-								s.handleTeamsCreateDiscussionCommentLegacyRequest(args, w, r)
-								return
-							}
-							switch elem {
-							default:
-								if args == nil {
-									args = make(map[string]string)
-								}
-								args["comment_number"] = elem
-								// Edge: 154, path: "".
-								elem, p = nextElem(p)
-								switch elem {
-								case "reactions": // -> 155
-									// POST /teams/{team_id}/discussions/{discussion_number}/comments/{comment_number}/reactions
-									s.handleReactionsCreateForTeamDiscussionCommentLegacyRequest(args, w, r)
-									return
-								default:
-									s.notFound(w, r)
-									return
-								}
-							}
-						case "reactions": // -> 157
-							// POST /teams/{team_id}/discussions/{discussion_number}/reactions
-							s.handleReactionsCreateForTeamDiscussionLegacyRequest(args, w, r)
-							return
-						default:
-							s.notFound(w, r)
-							return
-						}
-					}
-				default:
-					s.notFound(w, r)
-					return
-				}
-			}
-		default:
-			s.notFound(w, r)
-			return
-		}
 	case "PUT":
-		// Root edge.
-		elem, p = nextElem(p)
-		switch elem {
-		case "orgs": // -> 1
-			// Edge: 1, path: "orgs".
-			elem, p = nextElem(p)
-			switch elem {
-			default:
-				if args == nil {
-					args = make(map[string]string)
-				}
-				args["org"] = elem
-				// Edge: 2, path: "".
-				elem, p = nextElem(p)
-				switch elem {
-				case "actions": // -> 3
-					// Edge: 3, path: "actions".
-					elem, p = nextElem(p)
-					switch elem {
-					case "runner-groups": // -> 4
-						// Edge: 4, path: "runner-groups".
-						elem, p = nextElem(p)
-						switch elem {
-						default:
-							if args == nil {
-								args = make(map[string]string)
-							}
-							args["runner_group_id"] = elem
-							// Edge: 5, path: "".
-							elem, p = nextElem(p)
-							switch elem {
-							case "repositories": // -> 6
-								// Edge: 6, path: "repositories".
-								elem, p = nextElem(p)
-								if len(elem) == 0 {
-									// PUT /orgs/{org}/actions/runner-groups/{runner_group_id}/repositories.
-									s.handleActionsSetRepoAccessToSelfHostedRunnerGroupInOrgRequest(args, w, r)
-									return
-								}
-								switch elem {
-								default:
-									if args == nil {
-										args = make(map[string]string)
-									}
-									args["repository_id"] = elem
-									// PUT /orgs/{org}/actions/runner-groups/{runner_group_id}/repositories/{repository_id}
-									s.handleActionsAddRepoAccessToSelfHostedRunnerGroupInOrgRequest(args, w, r)
-									return
-								}
-							case "runners": // -> 12
-								// Edge: 12, path: "runners".
-								elem, p = nextElem(p)
-								if len(elem) == 0 {
-									// PUT /orgs/{org}/actions/runner-groups/{runner_group_id}/runners.
-									s.handleActionsSetSelfHostedRunnersInGroupForOrgRequest(args, w, r)
-									return
-								}
-								switch elem {
-								default:
-									if args == nil {
-										args = make(map[string]string)
-									}
-									args["runner_id"] = elem
-									// PUT /orgs/{org}/actions/runner-groups/{runner_group_id}/runners/{runner_id}
-									s.handleActionsAddSelfHostedRunnerToGroupForOrgRequest(args, w, r)
-									return
-								}
-							default:
-								s.notFound(w, r)
-								return
-							}
-						}
-					case "secrets": // -> 8
-						// Edge: 8, path: "secrets".
-						elem, p = nextElem(p)
-						switch elem {
-						default:
-							if args == nil {
-								args = make(map[string]string)
-							}
-							args["secret_name"] = elem
-							// Edge: 9, path: "".
-							elem, p = nextElem(p)
-							if len(elem) == 0 {
-								// PUT /orgs/{org}/actions/secrets/{secret_name}.
-								s.handleActionsCreateOrUpdateOrgSecretRequest(args, w, r)
-								return
-							}
-							switch elem {
-							case "repositories": // -> 10
-								// Edge: 10, path: "repositories".
-								elem, p = nextElem(p)
-								if len(elem) == 0 {
-									// PUT /orgs/{org}/actions/secrets/{secret_name}/repositories.
-									s.handleActionsSetSelectedReposForOrgSecretRequest(args, w, r)
-									return
-								}
-								switch elem {
-								default:
-									if args == nil {
-										args = make(map[string]string)
-									}
-									args["repository_id"] = elem
-									// PUT /orgs/{org}/actions/secrets/{secret_name}/repositories/{repository_id}
-									s.handleActionsAddSelectedRepoToOrgSecretRequest(args, w, r)
-									return
-								}
-							default:
-								// PUT /orgs/{org}/actions/secrets/{secret_name}.
-								s.handleActionsCreateOrUpdateOrgSecretRequest(args, w, r)
-								return
-							}
-						}
-					case "permissions": // -> 27
-						// Edge: 27, path: "permissions".
-						elem, p = nextElem(p)
-						if len(elem) == 0 {
-							// PUT /orgs/{org}/actions/permissions.
-							s.handleActionsSetGithubActionsPermissionsOrganizationRequest(args, w, r)
-							return
-						}
-						switch elem {
-						case "repositories": // -> 28
-							// Edge: 28, path: "repositories".
-							elem, p = nextElem(p)
-							if len(elem) == 0 {
-								// PUT /orgs/{org}/actions/permissions/repositories.
-								s.handleActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationRequest(args, w, r)
-								return
-							}
-							switch elem {
-							default:
-								if args == nil {
-									args = make(map[string]string)
-								}
-								args["repository_id"] = elem
-								// PUT /orgs/{org}/actions/permissions/repositories/{repository_id}
-								s.handleActionsEnableSelectedRepositoryGithubActionsOrganizationRequest(args, w, r)
-								return
-							}
-						case "selected-actions": // -> 30
-							// PUT /orgs/{org}/actions/permissions/selected-actions
-							s.handleActionsSetAllowedActionsOrganizationRequest(args, w, r)
-							return
-						default:
-							// PUT /orgs/{org}/actions/permissions.
-							s.handleActionsSetGithubActionsPermissionsOrganizationRequest(args, w, r)
-							return
-						}
-					default:
-						s.notFound(w, r)
-						return
-					}
-				case "interaction-limits": // -> 77
-					// PUT /orgs/{org}/interaction-limits
-					s.handleInteractionsSetRestrictionsForOrgRequest(args, w, r)
-					return
-				case "blocks": // -> 88
-					// Edge: 88, path: "blocks".
-					elem, p = nextElem(p)
-					switch elem {
-					default:
-						if args == nil {
-							args = make(map[string]string)
-						}
-						args["username"] = elem
-						// PUT /orgs/{org}/blocks/{username}
-						s.handleOrgsBlockUserRequest(args, w, r)
-						return
-					}
-				case "outside_collaborators": // -> 90
-					// Edge: 90, path: "outside_collaborators".
-					elem, p = nextElem(p)
-					switch elem {
-					default:
-						if args == nil {
-							args = make(map[string]string)
-						}
-						args["username"] = elem
-						// PUT /orgs/{org}/outside_collaborators/{username}
-						s.handleOrgsConvertMemberToOutsideCollaboratorRequest(args, w, r)
-						return
-					}
-				case "memberships": // -> 92
-					// Edge: 92, path: "memberships".
-					elem, p = nextElem(p)
-					switch elem {
-					default:
-						if args == nil {
-							args = make(map[string]string)
-						}
-						args["username"] = elem
-						// PUT /orgs/{org}/memberships/{username}
-						s.handleOrgsSetMembershipForUserRequest(args, w, r)
-						return
-					}
-				case "public_members": // -> 94
-					// Edge: 94, path: "public_members".
-					elem, p = nextElem(p)
-					switch elem {
-					default:
-						if args == nil {
-							args = make(map[string]string)
-						}
-						args["username"] = elem
-						// PUT /orgs/{org}/public_members/{username}
-						s.handleOrgsSetPublicMembershipForAuthenticatedUserRequest(args, w, r)
-						return
-					}
-				case "teams": // -> 128
-					// Edge: 128, path: "teams".
-					elem, p = nextElem(p)
-					switch elem {
-					default:
-						if args == nil {
-							args = make(map[string]string)
-						}
-						args["team_slug"] = elem
-						// Edge: 129, path: "".
-						elem, p = nextElem(p)
-						switch elem {
-						case "memberships": // -> 130
-							// Edge: 130, path: "memberships".
-							elem, p = nextElem(p)
-							switch elem {
-							default:
-								if args == nil {
-									args = make(map[string]string)
-								}
-								args["username"] = elem
-								// PUT /orgs/{org}/teams/{team_slug}/memberships/{username}
-								s.handleTeamsAddOrUpdateMembershipForUserInOrgRequest(args, w, r)
-								return
-							}
-						case "projects": // -> 134
-							// Edge: 134, path: "projects".
-							elem, p = nextElem(p)
-							switch elem {
-							default:
-								if args == nil {
-									args = make(map[string]string)
-								}
-								args["project_id"] = elem
-								// PUT /orgs/{org}/teams/{team_slug}/projects/{project_id}
-								s.handleTeamsAddOrUpdateProjectPermissionsInOrgRequest(args, w, r)
-								return
-							}
-						case "repos": // -> 138
-							// Edge: 138, path: "repos".
-							elem, p = nextElem(p)
-							switch elem {
-							default:
-								if args == nil {
-									args = make(map[string]string)
-								}
-								args["owner"] = elem
-								// Edge: 139, path: "".
-								elem, p = nextElem(p)
-								switch elem {
-								case "": // -> 140
-									// Edge: 140, path: "".
-									elem, p = nextElem(p)
-									switch elem {
-									default:
-										if args == nil {
-											args = make(map[string]string)
-										}
-										args["repo"] = elem
-										// PUT /orgs/{org}/teams/{team_slug}/repos/{owner}/{repo}
-										s.handleTeamsAddOrUpdateRepoPermissionsInOrgRequest(args, w, r)
-										return
-									}
-								default:
-									s.notFound(w, r)
-									return
-								}
-							}
-						default:
-							s.notFound(w, r)
-							return
-						}
-					}
-				default:
-					s.notFound(w, r)
-					return
-				}
+		if len(elem) == 0 {
+			break
+		}
+		switch elem[0] {
+		case '/': // Prefix: "/"
+			if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+				elem = elem[len(prefix):]
+			} else {
+				break
 			}
-		case "repositories": // -> 14
-			// Edge: 14, path: "repositories".
-			elem, p = nextElem(p)
-			switch elem {
-			default:
-				if args == nil {
-					args = make(map[string]string)
-				}
-				args["repository_id"] = elem
-				// Edge: 15, path: "".
-				elem, p = nextElem(p)
-				switch elem {
-				case "environments": // -> 16
-					// Edge: 16, path: "environments".
-					elem, p = nextElem(p)
-					switch elem {
-					default:
-						if args == nil {
-							args = make(map[string]string)
-						}
-						args["environment_name"] = elem
-						// Edge: 17, path: "".
-						elem, p = nextElem(p)
-						switch elem {
-						case "secrets": // -> 18
-							// Edge: 18, path: "secrets".
-							elem, p = nextElem(p)
-							switch elem {
-							default:
-								if args == nil {
-									args = make(map[string]string)
-								}
-								args["secret_name"] = elem
-								// PUT /repositories/{repository_id}/environments/{environment_name}/secrets/{secret_name}
-								s.handleActionsCreateOrUpdateEnvironmentSecretRequest(args, w, r)
-								return
-							}
-						default:
-							s.notFound(w, r)
-							return
-						}
-					}
-				default:
-					s.notFound(w, r)
-					return
-				}
-			}
-		case "repos": // -> 20
-			// Edge: 20, path: "repos".
-			elem, p = nextElem(p)
-			switch elem {
-			default:
-				if args == nil {
-					args = make(map[string]string)
-				}
-				args["owner"] = elem
-				// Edge: 21, path: "".
-				elem, p = nextElem(p)
-				switch elem {
-				case "": // -> 22
-					// Edge: 22, path: "".
-					elem, p = nextElem(p)
-					switch elem {
-					default:
-						if args == nil {
-							args = make(map[string]string)
-						}
-						args["repo"] = elem
-						// Edge: 23, path: "".
-						elem, p = nextElem(p)
-						switch elem {
-						case "actions": // -> 24
-							// Edge: 24, path: "actions".
-							elem, p = nextElem(p)
-							switch elem {
-							case "secrets": // -> 25
-								// Edge: 25, path: "secrets".
-								elem, p = nextElem(p)
-								switch elem {
-								default:
-									if args == nil {
-										args = make(map[string]string)
-									}
-									args["secret_name"] = elem
-									// PUT /repos/{owner}/{repo}/actions/secrets/{secret_name}
-									s.handleActionsCreateOrUpdateRepoSecretRequest(args, w, r)
-									return
-								}
-							case "permissions": // -> 31
-								// Edge: 31, path: "permissions".
-								elem, p = nextElem(p)
-								if len(elem) == 0 {
-									// PUT /repos/{owner}/{repo}/actions/permissions.
-									s.handleActionsSetGithubActionsPermissionsRepositoryRequest(args, w, r)
-									return
-								}
-								switch elem {
-								case "selected-actions": // -> 32
-									// PUT /repos/{owner}/{repo}/actions/permissions/selected-actions
-									s.handleActionsSetAllowedActionsRepositoryRequest(args, w, r)
-									return
-								default:
-									// PUT /repos/{owner}/{repo}/actions/permissions.
-									s.handleActionsSetGithubActionsPermissionsRepositoryRequest(args, w, r)
-									return
-								}
-							default:
-								s.notFound(w, r)
-								return
-							}
-						case "notifications": // -> 34
-							// PUT /repos/{owner}/{repo}/notifications
-							s.handleActivityMarkRepoNotificationsAsReadRequest(args, w, r)
-							return
-						case "subscription": // -> 35
-							// PUT /repos/{owner}/{repo}/subscription
-							s.handleActivitySetRepoSubscriptionRequest(args, w, r)
-							return
-						case "interaction-limits": // -> 78
-							// PUT /repos/{owner}/{repo}/interaction-limits
-							s.handleInteractionsSetRestrictionsForRepoRequest(args, w, r)
-							return
-						case "issues": // -> 79
-							// Edge: 79, path: "issues".
-							elem, p = nextElem(p)
-							switch elem {
-							default:
-								if args == nil {
-									args = make(map[string]string)
-								}
-								args["issue_number"] = elem
-								// Edge: 80, path: "".
-								elem, p = nextElem(p)
-								switch elem {
-								case "lock": // -> 81
-									// PUT /repos/{owner}/{repo}/issues/{issue_number}/lock
-									s.handleIssuesLockRequest(args, w, r)
-									return
-								default:
-									s.notFound(w, r)
-									return
-								}
-							}
-						case "import": // -> 82
-							// PUT /repos/{owner}/{repo}/import
-							s.handleMigrationsStartImportRequest(args, w, r)
-							return
-						case "pulls": // -> 100
-							// Edge: 100, path: "pulls".
-							elem, p = nextElem(p)
-							switch elem {
-							default:
-								if args == nil {
-									args = make(map[string]string)
-								}
-								args["pull_number"] = elem
-								// Edge: 101, path: "".
-								elem, p = nextElem(p)
-								switch elem {
-								case "reviews": // -> 102
-									// Edge: 102, path: "reviews".
-									elem, p = nextElem(p)
-									switch elem {
-									default:
-										if args == nil {
-											args = make(map[string]string)
-										}
-										args["review_id"] = elem
-										// Edge: 103, path: "".
-										elem, p = nextElem(p)
-										if len(elem) == 0 {
-											// PUT /repos/{owner}/{repo}/pulls/{pull_number}/reviews/{review_id}.
-											s.handlePullsUpdateReviewRequest(args, w, r)
-											return
-										}
-										switch elem {
-										case "dismissals": // -> 104
-											// PUT /repos/{owner}/{repo}/pulls/{pull_number}/reviews/{review_id}/dismissals
-											s.handlePullsDismissReviewRequest(args, w, r)
-											return
-										default:
-											// PUT /repos/{owner}/{repo}/pulls/{pull_number}/reviews/{review_id}.
-											s.handlePullsUpdateReviewRequest(args, w, r)
-											return
-										}
-									}
-								case "merge": // -> 105
-									// PUT /repos/{owner}/{repo}/pulls/{pull_number}/merge
-									s.handlePullsMergeRequest(args, w, r)
-									return
-								case "update-branch": // -> 106
-									// PUT /repos/{owner}/{repo}/pulls/{pull_number}/update-branch
-									s.handlePullsUpdateBranchRequest(args, w, r)
-									return
-								default:
-									s.notFound(w, r)
-									return
-								}
-							}
-						case "collaborators": // -> 107
-							// Edge: 107, path: "collaborators".
-							elem, p = nextElem(p)
-							switch elem {
-							default:
-								if args == nil {
-									args = make(map[string]string)
-								}
-								args["username"] = elem
-								// PUT /repos/{owner}/{repo}/collaborators/{username}
-								s.handleReposAddCollaboratorRequest(args, w, r)
-								return
-							}
-						case "contents": // -> 109
-							// Edge: 109, path: "contents".
-							elem, p = nextElem(p)
-							switch elem {
-							default:
-								if args == nil {
-									args = make(map[string]string)
-								}
-								args["path"] = elem
-								// PUT /repos/{owner}/{repo}/contents/{path}
-								s.handleReposCreateOrUpdateFileContentsRequest(args, w, r)
-								return
-							}
-						case "automated-security-fixes": // -> 111
-							// PUT /repos/{owner}/{repo}/automated-security-fixes
-							s.handleReposEnableAutomatedSecurityFixesRequest(args, w, r)
-							return
-						case "lfs": // -> 112
-							// PUT /repos/{owner}/{repo}/lfs
-							s.handleReposEnableLfsForRepoRequest(args, w, r)
-							return
-						case "vulnerability-alerts": // -> 113
-							// PUT /repos/{owner}/{repo}/vulnerability-alerts
-							s.handleReposEnableVulnerabilityAlertsRequest(args, w, r)
-							return
-						case "topics": // -> 114
-							// PUT /repos/{owner}/{repo}/topics
-							s.handleReposReplaceAllTopicsRequest(args, w, r)
-							return
-						case "branches": // -> 115
-							// Edge: 115, path: "branches".
-							elem, p = nextElem(p)
-							switch elem {
-							default:
-								if args == nil {
-									args = make(map[string]string)
-								}
-								args["branch"] = elem
-								// Edge: 116, path: "".
-								elem, p = nextElem(p)
-								switch elem {
-								case "protection": // -> 117
-									// Edge: 117, path: "protection".
-									elem, p = nextElem(p)
-									if len(elem) == 0 {
-										// PUT /repos/{owner}/{repo}/branches/{branch}/protection.
-										s.handleReposUpdateBranchProtectionRequest(args, w, r)
-										return
-									}
-									switch elem {
-									case "restrictions": // -> 118
-										// Edge: 118, path: "restrictions".
-										elem, p = nextElem(p)
-										switch elem {
-										case "apps": // -> 119
-											// PUT /repos/{owner}/{repo}/branches/{branch}/protection/restrictions/apps
-											s.handleReposSetAppAccessRestrictionsRequest(args, w, r)
-											return
-										case "teams": // -> 122
-											// PUT /repos/{owner}/{repo}/branches/{branch}/protection/restrictions/teams
-											s.handleReposSetTeamAccessRestrictionsRequest(args, w, r)
-											return
-										case "users": // -> 123
-											// PUT /repos/{owner}/{repo}/branches/{branch}/protection/restrictions/users
-											s.handleReposSetUserAccessRestrictionsRequest(args, w, r)
-											return
-										default:
-											s.notFound(w, r)
-											return
-										}
-									case "required_status_checks": // -> 120
-										// Edge: 120, path: "required_status_checks".
-										elem, p = nextElem(p)
-										switch elem {
-										case "contexts": // -> 121
-											// PUT /repos/{owner}/{repo}/branches/{branch}/protection/required_status_checks/contexts
-											s.handleReposSetStatusCheckContextsRequest(args, w, r)
-											return
-										default:
-											s.notFound(w, r)
-											return
-										}
-									default:
-										// PUT /repos/{owner}/{repo}/branches/{branch}/protection.
-										s.handleReposUpdateBranchProtectionRequest(args, w, r)
-										return
-									}
-								default:
-									s.notFound(w, r)
-									return
-								}
-							}
-						default:
-							s.notFound(w, r)
-							return
-						}
-					}
-				default:
-					s.notFound(w, r)
-					return
-				}
-			}
-		case "notifications": // -> 33
-			// Edge: 33, path: "notifications".
-			elem, p = nextElem(p)
+
 			if len(elem) == 0 {
-				// PUT /notifications.
-				s.handleActivityMarkNotificationsAsReadRequest(args, w, r)
+				s.handleActionsCreateOrUpdateEnvironmentSecretRequest(args, w, r)
 				return
 			}
-			switch elem {
-			case "threads": // -> 36
-				// Edge: 36, path: "threads".
-				elem, p = nextElem(p)
-				switch elem {
-				default:
-					if args == nil {
-						args = make(map[string]string)
-					}
-					args["thread_id"] = elem
-					// Edge: 37, path: "".
-					elem, p = nextElem(p)
-					switch elem {
-					case "subscription": // -> 38
-						// PUT /notifications/threads/{thread_id}/subscription
-						s.handleActivitySetThreadSubscriptionRequest(args, w, r)
-						return
-					default:
-						s.notFound(w, r)
-						return
-					}
+			switch elem[0] {
+			case 'a': // Prefix: "a"
+				if prefix := "a"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+					elem = elem[len(prefix):]
+				} else {
+					break
 				}
-			default:
-				// PUT /notifications.
-				s.handleActivityMarkNotificationsAsReadRequest(args, w, r)
-				return
-			}
-		case "user": // -> 39
-			// Edge: 39, path: "user".
-			elem, p = nextElem(p)
-			switch elem {
-			case "starred": // -> 40
-				// Edge: 40, path: "starred".
-				elem, p = nextElem(p)
-				switch elem {
-				default:
-					if args == nil {
-						args = make(map[string]string)
-					}
-					args["owner"] = elem
-					// Edge: 41, path: "".
-					elem, p = nextElem(p)
-					switch elem {
-					case "": // -> 42
-						// Edge: 42, path: "".
-						elem, p = nextElem(p)
-						switch elem {
-						default:
-							if args == nil {
-								args = make(map[string]string)
-							}
-							args["repo"] = elem
-							// PUT /user/starred/{owner}/{repo}
-							s.handleActivityStarRepoForAuthenticatedUserRequest(args, w, r)
-							return
-						}
-					default:
-						s.notFound(w, r)
-						return
-					}
-				}
-			case "installations": // -> 44
-				// Edge: 44, path: "installations".
-				elem, p = nextElem(p)
-				switch elem {
-				default:
-					if args == nil {
-						args = make(map[string]string)
-					}
-					args["installation_id"] = elem
-					// Edge: 45, path: "".
-					elem, p = nextElem(p)
-					switch elem {
-					case "repositories": // -> 46
-						// Edge: 46, path: "repositories".
-						elem, p = nextElem(p)
-						switch elem {
-						default:
-							if args == nil {
-								args = make(map[string]string)
-							}
-							args["repository_id"] = elem
-							// PUT /user/installations/{installation_id}/repositories/{repository_id}
-							s.handleAppsAddRepoToInstallationRequest(args, w, r)
-							return
-						}
-					default:
-						s.notFound(w, r)
-						return
-					}
-				}
-			case "interaction-limits": // -> 76
-				// PUT /user/interaction-limits
-				s.handleInteractionsSetRestrictionsForAuthenticatedUserRequest(args, w, r)
-				return
-			case "blocks": // -> 146
-				// Edge: 146, path: "blocks".
-				elem, p = nextElem(p)
-				switch elem {
-				default:
-					if args == nil {
-						args = make(map[string]string)
-					}
-					args["username"] = elem
-					// PUT /user/blocks/{username}
-					s.handleUsersBlockRequest(args, w, r)
+
+				if len(elem) == 0 {
+					s.handleOAuthAuthorizationsGetOrCreateAuthorizationForAppRequest(args, w, r)
 					return
 				}
-			case "following": // -> 148
-				// Edge: 148, path: "following".
-				elem, p = nextElem(p)
-				switch elem {
-				default:
-					if args == nil {
-						args = make(map[string]string)
+				switch elem[0] {
+				case 'p': // Prefix: "pp/installations/"
+					if prefix := "pp/installations/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+						elem = elem[len(prefix):]
+					} else {
+						break
 					}
-					args["username"] = elem
-					// PUT /user/following/{username}
-					s.handleUsersFollowRequest(args, w, r)
-					return
-				}
-			default:
-				s.notFound(w, r)
-				return
-			}
-		case "app": // -> 48
-			// Edge: 48, path: "app".
-			elem, p = nextElem(p)
-			switch elem {
-			case "installations": // -> 49
-				// Edge: 49, path: "installations".
-				elem, p = nextElem(p)
-				switch elem {
-				default:
-					if args == nil {
-						args = make(map[string]string)
-					}
-					args["installation_id"] = elem
-					// Edge: 50, path: "".
-					elem, p = nextElem(p)
-					switch elem {
-					case "suspended": // -> 51
-						// PUT /app/installations/{installation_id}/suspended
-						s.handleAppsSuspendInstallationRequest(args, w, r)
-						return
-					default:
-						s.notFound(w, r)
-						return
-					}
-				}
-			default:
-				s.notFound(w, r)
-				return
-			}
-		case "enterprises": // -> 52
-			// Edge: 52, path: "enterprises".
-			elem, p = nextElem(p)
-			switch elem {
-			default:
-				if args == nil {
-					args = make(map[string]string)
-				}
-				args["enterprise"] = elem
-				// Edge: 53, path: "".
-				elem, p = nextElem(p)
-				switch elem {
-				case "actions": // -> 54
-					// Edge: 54, path: "actions".
-					elem, p = nextElem(p)
-					switch elem {
-					case "runner-groups": // -> 55
-						// Edge: 55, path: "runner-groups".
-						elem, p = nextElem(p)
-						switch elem {
-						default:
-							if args == nil {
-								args = make(map[string]string)
-							}
-							args["runner_group_id"] = elem
-							// Edge: 56, path: "".
-							elem, p = nextElem(p)
-							switch elem {
-							case "organizations": // -> 57
-								// Edge: 57, path: "organizations".
-								elem, p = nextElem(p)
-								if len(elem) == 0 {
-									// PUT /enterprises/{enterprise}/actions/runner-groups/{runner_group_id}/organizations.
-									s.handleEnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseRequest(args, w, r)
-									return
-								}
-								switch elem {
-								default:
-									if args == nil {
-										args = make(map[string]string)
-									}
-									args["org_id"] = elem
-									// PUT /enterprises/{enterprise}/actions/runner-groups/{runner_group_id}/organizations/{org_id}
-									s.handleEnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterpriseRequest(args, w, r)
-									return
-								}
-							case "runners": // -> 59
-								// Edge: 59, path: "runners".
-								elem, p = nextElem(p)
-								if len(elem) == 0 {
-									// PUT /enterprises/{enterprise}/actions/runner-groups/{runner_group_id}/runners.
-									s.handleEnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseRequest(args, w, r)
-									return
-								}
-								switch elem {
-								default:
-									if args == nil {
-										args = make(map[string]string)
-									}
-									args["runner_id"] = elem
-									// PUT /enterprises/{enterprise}/actions/runner-groups/{runner_group_id}/runners/{runner_id}
-									s.handleEnterpriseAdminAddSelfHostedRunnerToGroupForEnterpriseRequest(args, w, r)
-									return
-								}
-							default:
-								s.notFound(w, r)
-								return
-							}
-						}
-					case "permissions": // -> 61
-						// Edge: 61, path: "permissions".
-						elem, p = nextElem(p)
-						if len(elem) == 0 {
-							// PUT /enterprises/{enterprise}/actions/permissions.
-							s.handleEnterpriseAdminSetGithubActionsPermissionsEnterpriseRequest(args, w, r)
-							return
-						}
-						switch elem {
-						case "organizations": // -> 62
-							// Edge: 62, path: "organizations".
-							elem, p = nextElem(p)
-							if len(elem) == 0 {
-								// PUT /enterprises/{enterprise}/actions/permissions/organizations.
-								s.handleEnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseRequest(args, w, r)
-								return
-							}
-							switch elem {
-							default:
-								if args == nil {
-									args = make(map[string]string)
-								}
-								args["org_id"] = elem
-								// PUT /enterprises/{enterprise}/actions/permissions/organizations/{org_id}
-								s.handleEnterpriseAdminEnableSelectedOrganizationGithubActionsEnterpriseRequest(args, w, r)
-								return
-							}
-						case "selected-actions": // -> 64
-							// PUT /enterprises/{enterprise}/actions/permissions/selected-actions
-							s.handleEnterpriseAdminSetAllowedActionsEnterpriseRequest(args, w, r)
-							return
-						default:
-							// PUT /enterprises/{enterprise}/actions/permissions.
-							s.handleEnterpriseAdminSetGithubActionsPermissionsEnterpriseRequest(args, w, r)
-							return
-						}
-					default:
-						s.notFound(w, r)
-						return
-					}
-				default:
-					s.notFound(w, r)
-					return
-				}
-			}
-		case "scim": // -> 65
-			// Edge: 65, path: "scim".
-			elem, p = nextElem(p)
-			switch elem {
-			case "v2": // -> 66
-				// Edge: 66, path: "v2".
-				elem, p = nextElem(p)
-				switch elem {
-				case "enterprises": // -> 67
-					// Edge: 67, path: "enterprises".
-					elem, p = nextElem(p)
-					switch elem {
-					default:
-						if args == nil {
-							args = make(map[string]string)
-						}
-						args["enterprise"] = elem
-						// Edge: 68, path: "".
-						elem, p = nextElem(p)
-						switch elem {
-						case "Groups": // -> 69
-							// Edge: 69, path: "Groups".
-							elem, p = nextElem(p)
-							switch elem {
-							default:
-								if args == nil {
-									args = make(map[string]string)
-								}
-								args["scim_group_id"] = elem
-								// PUT /scim/v2/enterprises/{enterprise}/Groups/{scim_group_id}
-								s.handleEnterpriseAdminSetInformationForProvisionedEnterpriseGroupRequest(args, w, r)
-								return
-							}
-						case "Users": // -> 71
-							// Edge: 71, path: "Users".
-							elem, p = nextElem(p)
-							switch elem {
-							default:
-								if args == nil {
-									args = make(map[string]string)
-								}
-								args["scim_user_id"] = elem
-								// PUT /scim/v2/enterprises/{enterprise}/Users/{scim_user_id}
-								s.handleEnterpriseAdminSetInformationForProvisionedEnterpriseUserRequest(args, w, r)
-								return
-							}
-						default:
-							s.notFound(w, r)
-							return
-						}
-					}
-				default:
-					s.notFound(w, r)
-					return
-				}
-			default:
-				s.notFound(w, r)
-				return
-			}
-		case "gists": // -> 73
-			// Edge: 73, path: "gists".
-			elem, p = nextElem(p)
-			switch elem {
-			default:
-				if args == nil {
-					args = make(map[string]string)
-				}
-				args["gist_id"] = elem
-				// Edge: 74, path: "".
-				elem, p = nextElem(p)
-				switch elem {
-				case "star": // -> 75
-					// PUT /gists/{gist_id}/star
-					s.handleGistsStarRequest(args, w, r)
-					return
-				default:
-					s.notFound(w, r)
-					return
-				}
-			}
-		case "authorizations": // -> 83
-			// Edge: 83, path: "authorizations".
-			elem, p = nextElem(p)
-			switch elem {
-			case "clients": // -> 84
-				// Edge: 84, path: "clients".
-				elem, p = nextElem(p)
-				switch elem {
-				default:
-					if args == nil {
-						args = make(map[string]string)
-					}
-					args["client_id"] = elem
-					// Edge: 85, path: "".
-					elem, p = nextElem(p)
+
 					if len(elem) == 0 {
-						// PUT /authorizations/clients/{client_id}.
+						break
+					}
+					switch elem[0] {
+					case 'u': // Prefix: "uthorizations/clients/"
+						if prefix := "uthorizations/clients/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+							elem = elem[len(prefix):]
+						} else {
+							break
+						}
+
+						// Param: "client_id"
+						// Leaf parameter
+						args["client_id"] = elem
+
+						// Leaf: OAuthAuthorizationsGetOrCreateAuthorizationForApp
 						s.handleOAuthAuthorizationsGetOrCreateAuthorizationForAppRequest(args, w, r)
 						return
 					}
-					switch elem {
-					case "": // -> 86
-						// Edge: 86, path: "".
-						elem, p = nextElem(p)
-						switch elem {
-						default:
-							if args == nil {
-								args = make(map[string]string)
+					// Param: "installation_id"
+					// Match until one of "/"
+					idx := strings.IndexAny(elem, "/")
+					if idx > 0 {
+						args["installation_id"] = elem[:idx]
+						elem = elem[idx:]
+
+						if len(elem) == 0 {
+							break
+						}
+						switch elem[0] {
+						case '/': // Prefix: "/suspended"
+							if prefix := "/suspended"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+								elem = elem[len(prefix):]
+							} else {
+								break
 							}
+
+							// Leaf: AppsSuspendInstallation
+							s.handleAppsSuspendInstallationRequest(args, w, r)
+							return
+						}
+					}
+				case 'u': // Prefix: "uthorizations/clients/"
+					if prefix := "uthorizations/clients/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+						elem = elem[len(prefix):]
+					} else {
+						break
+					}
+
+					// Param: "client_id"
+					// Match until one of "/"
+					idx := strings.IndexAny(elem, "/")
+					if idx > 0 {
+						args["client_id"] = elem[:idx]
+						elem = elem[idx:]
+
+						if len(elem) == 0 {
+							s.handleOAuthAuthorizationsGetOrCreateAuthorizationForAppRequest(args, w, r)
+							return
+						}
+						switch elem[0] {
+						case '/': // Prefix: "/"
+							if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+								elem = elem[len(prefix):]
+							} else {
+								break
+							}
+
+							// Param: "fingerprint"
+							// Leaf parameter
 							args["fingerprint"] = elem
-							// PUT /authorizations/clients/{client_id}/{fingerprint}
+
+							// Leaf: OAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprint
 							s.handleOAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintRequest(args, w, r)
 							return
 						}
-					default:
-						// PUT /authorizations/clients/{client_id}.
-						s.handleOAuthAuthorizationsGetOrCreateAuthorizationForAppRequest(args, w, r)
-						return
 					}
 				}
-			default:
-				s.notFound(w, r)
-				return
-			}
-		case "projects": // -> 96
-			// Edge: 96, path: "projects".
-			elem, p = nextElem(p)
-			switch elem {
-			default:
-				if args == nil {
-					args = make(map[string]string)
+			case 'e': // Prefix: "enterprises/"
+				if prefix := "enterprises/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+					elem = elem[len(prefix):]
+				} else {
+					break
 				}
-				args["project_id"] = elem
-				// Edge: 97, path: "".
-				elem, p = nextElem(p)
-				switch elem {
-				case "collaborators": // -> 98
-					// Edge: 98, path: "collaborators".
-					elem, p = nextElem(p)
-					switch elem {
-					default:
-						if args == nil {
-							args = make(map[string]string)
-						}
-						args["username"] = elem
-						// PUT /projects/{project_id}/collaborators/{username}
-						s.handleProjectsAddCollaboratorRequest(args, w, r)
-						return
+
+				// Param: "enterprise"
+				// Match until one of "/"
+				idx := strings.IndexAny(elem, "/")
+				if idx > 0 {
+					args["enterprise"] = elem[:idx]
+					elem = elem[idx:]
+
+					if len(elem) == 0 {
+						break
 					}
-				default:
-					s.notFound(w, r)
-					return
-				}
-			}
-		case "teams": // -> 124
-			// Edge: 124, path: "teams".
-			elem, p = nextElem(p)
-			switch elem {
-			default:
-				if args == nil {
-					args = make(map[string]string)
-				}
-				args["team_id"] = elem
-				// Edge: 125, path: "".
-				elem, p = nextElem(p)
-				switch elem {
-				case "members": // -> 126
-					// Edge: 126, path: "members".
-					elem, p = nextElem(p)
-					switch elem {
-					default:
-						if args == nil {
-							args = make(map[string]string)
+					switch elem[0] {
+					case '/': // Prefix: "/actions/"
+						if prefix := "/actions/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+							elem = elem[len(prefix):]
+						} else {
+							break
 						}
-						args["username"] = elem
-						// PUT /teams/{team_id}/members/{username}
-						s.handleTeamsAddMemberLegacyRequest(args, w, r)
-						return
-					}
-				case "memberships": // -> 132
-					// Edge: 132, path: "memberships".
-					elem, p = nextElem(p)
-					switch elem {
-					default:
-						if args == nil {
-							args = make(map[string]string)
+
+						if len(elem) == 0 {
+							s.handleEnterpriseAdminEnableSelectedOrganizationGithubActionsEnterpriseRequest(args, w, r)
+							return
 						}
-						args["username"] = elem
-						// PUT /teams/{team_id}/memberships/{username}
-						s.handleTeamsAddOrUpdateMembershipForUserLegacyRequest(args, w, r)
-						return
-					}
-				case "projects": // -> 136
-					// Edge: 136, path: "projects".
-					elem, p = nextElem(p)
-					switch elem {
-					default:
-						if args == nil {
-							args = make(map[string]string)
-						}
-						args["project_id"] = elem
-						// PUT /teams/{team_id}/projects/{project_id}
-						s.handleTeamsAddOrUpdateProjectPermissionsLegacyRequest(args, w, r)
-						return
-					}
-				case "repos": // -> 142
-					// Edge: 142, path: "repos".
-					elem, p = nextElem(p)
-					switch elem {
-					default:
-						if args == nil {
-							args = make(map[string]string)
-						}
-						args["owner"] = elem
-						// Edge: 143, path: "".
-						elem, p = nextElem(p)
-						switch elem {
-						case "": // -> 144
-							// Edge: 144, path: "".
-							elem, p = nextElem(p)
-							switch elem {
-							default:
-								if args == nil {
-									args = make(map[string]string)
-								}
-								args["repo"] = elem
-								// PUT /teams/{team_id}/repos/{owner}/{repo}
-								s.handleTeamsAddOrUpdateRepoPermissionsLegacyRequest(args, w, r)
+						switch elem[0] {
+						case 'p': // Prefix: "permissions"
+							if prefix := "permissions"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+								elem = elem[len(prefix):]
+							} else {
+								break
+							}
+
+							if len(elem) == 0 {
+								s.handleEnterpriseAdminSetGithubActionsPermissionsEnterpriseRequest(args, w, r)
 								return
 							}
-						default:
-							s.notFound(w, r)
+							switch elem[0] {
+							case '/': // Prefix: "/"
+								if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+									elem = elem[len(prefix):]
+								} else {
+									break
+								}
+
+								if len(elem) == 0 {
+									s.handleEnterpriseAdminSetAllowedActionsEnterpriseRequest(args, w, r)
+									return
+								}
+								switch elem[0] {
+								case 'o': // Prefix: "organizations"
+									if prefix := "organizations"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+										elem = elem[len(prefix):]
+									} else {
+										break
+									}
+
+									if len(elem) == 0 {
+										s.handleEnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseRequest(args, w, r)
+										return
+									}
+									switch elem[0] {
+									case '/': // Prefix: "/"
+										if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+											elem = elem[len(prefix):]
+										} else {
+											break
+										}
+
+										if len(elem) == 0 {
+											break
+										}
+										switch elem[0] {
+										case 's': // Prefix: "selected-actions"
+											if prefix := "selected-actions"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+												elem = elem[len(prefix):]
+											} else {
+												break
+											}
+
+											// Leaf: EnterpriseAdminSetAllowedActionsEnterprise
+											s.handleEnterpriseAdminSetAllowedActionsEnterpriseRequest(args, w, r)
+											return
+										}
+										// Param: "org_id"
+										// Leaf parameter
+										args["org_id"] = elem
+
+										// Leaf: EnterpriseAdminEnableSelectedOrganizationGithubActionsEnterprise
+										s.handleEnterpriseAdminEnableSelectedOrganizationGithubActionsEnterpriseRequest(args, w, r)
+										return
+									}
+								case 's': // Prefix: "selected-actions"
+									if prefix := "selected-actions"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+										elem = elem[len(prefix):]
+									} else {
+										break
+									}
+
+									// Leaf: EnterpriseAdminSetAllowedActionsEnterprise
+									s.handleEnterpriseAdminSetAllowedActionsEnterpriseRequest(args, w, r)
+									return
+								}
+							}
+						case 'r': // Prefix: "runner-groups/"
+							if prefix := "runner-groups/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+								elem = elem[len(prefix):]
+							} else {
+								break
+							}
+
+							if len(elem) == 0 {
+								break
+							}
+							switch elem[0] {
+							case 'p': // Prefix: "permissions/organizations/"
+								if prefix := "permissions/organizations/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+									elem = elem[len(prefix):]
+								} else {
+									break
+								}
+
+								// Param: "org_id"
+								// Leaf parameter
+								args["org_id"] = elem
+
+								// Leaf: EnterpriseAdminEnableSelectedOrganizationGithubActionsEnterprise
+								s.handleEnterpriseAdminEnableSelectedOrganizationGithubActionsEnterpriseRequest(args, w, r)
+								return
+							}
+							// Param: "runner_group_id"
+							// Match until one of "/"
+							idx := strings.IndexAny(elem, "/")
+							if idx > 0 {
+								args["runner_group_id"] = elem[:idx]
+								elem = elem[idx:]
+
+								if len(elem) == 0 {
+									break
+								}
+								switch elem[0] {
+								case '/': // Prefix: "/"
+									if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+										elem = elem[len(prefix):]
+									} else {
+										break
+									}
+
+									if len(elem) == 0 {
+										s.handleEnterpriseAdminAddSelfHostedRunnerToGroupForEnterpriseRequest(args, w, r)
+										return
+									}
+									switch elem[0] {
+									case 'o': // Prefix: "organizations"
+										if prefix := "organizations"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+											elem = elem[len(prefix):]
+										} else {
+											break
+										}
+
+										if len(elem) == 0 {
+											s.handleEnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseRequest(args, w, r)
+											return
+										}
+										switch elem[0] {
+										case '/': // Prefix: "/"
+											if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+												elem = elem[len(prefix):]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												break
+											}
+											switch elem[0] {
+											case 'r': // Prefix: "runners/"
+												if prefix := "runners/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+													elem = elem[len(prefix):]
+												} else {
+													break
+												}
+
+												// Param: "runner_id"
+												// Leaf parameter
+												args["runner_id"] = elem
+
+												// Leaf: EnterpriseAdminAddSelfHostedRunnerToGroupForEnterprise
+												s.handleEnterpriseAdminAddSelfHostedRunnerToGroupForEnterpriseRequest(args, w, r)
+												return
+											}
+											// Param: "org_id"
+											// Leaf parameter
+											args["org_id"] = elem
+
+											// Leaf: EnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterprise
+											s.handleEnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterpriseRequest(args, w, r)
+											return
+										}
+									case 'r': // Prefix: "runners"
+										if prefix := "runners"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+											elem = elem[len(prefix):]
+										} else {
+											break
+										}
+
+										if len(elem) == 0 {
+											s.handleEnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseRequest(args, w, r)
+											return
+										}
+										switch elem[0] {
+										case '/': // Prefix: "/"
+											if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+												elem = elem[len(prefix):]
+											} else {
+												break
+											}
+
+											// Param: "runner_id"
+											// Leaf parameter
+											args["runner_id"] = elem
+
+											// Leaf: EnterpriseAdminAddSelfHostedRunnerToGroupForEnterprise
+											s.handleEnterpriseAdminAddSelfHostedRunnerToGroupForEnterpriseRequest(args, w, r)
+											return
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			case 'g': // Prefix: "gists/"
+				if prefix := "gists/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+					elem = elem[len(prefix):]
+				} else {
+					break
+				}
+
+				// Param: "gist_id"
+				// Match until one of "/"
+				idx := strings.IndexAny(elem, "/")
+				if idx > 0 {
+					args["gist_id"] = elem[:idx]
+					elem = elem[idx:]
+
+					if len(elem) == 0 {
+						break
+					}
+					switch elem[0] {
+					case '/': // Prefix: "/star"
+						if prefix := "/star"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+							elem = elem[len(prefix):]
+						} else {
+							break
+						}
+
+						// Leaf: GistsStar
+						s.handleGistsStarRequest(args, w, r)
+						return
+					}
+				}
+			case 'n': // Prefix: "notifications"
+				if prefix := "notifications"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+					elem = elem[len(prefix):]
+				} else {
+					break
+				}
+
+				if len(elem) == 0 {
+					s.handleActivityMarkNotificationsAsReadRequest(args, w, r)
+					return
+				}
+				switch elem[0] {
+				case '/': // Prefix: "/threads/"
+					if prefix := "/threads/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+						elem = elem[len(prefix):]
+					} else {
+						break
+					}
+
+					// Param: "thread_id"
+					// Match until one of "/"
+					idx := strings.IndexAny(elem, "/")
+					if idx > 0 {
+						args["thread_id"] = elem[:idx]
+						elem = elem[idx:]
+
+						if len(elem) == 0 {
+							break
+						}
+						switch elem[0] {
+						case '/': // Prefix: "/subscription"
+							if prefix := "/subscription"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+								elem = elem[len(prefix):]
+							} else {
+								break
+							}
+
+							// Leaf: ActivitySetThreadSubscription
+							s.handleActivitySetThreadSubscriptionRequest(args, w, r)
 							return
 						}
 					}
-				default:
-					s.notFound(w, r)
+				}
+			case 'o': // Prefix: "orgs/"
+				if prefix := "orgs/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+					elem = elem[len(prefix):]
+				} else {
+					break
+				}
+
+				if len(elem) == 0 {
+					break
+				}
+				switch elem[0] {
+				case 'r': // Prefix: "repositories/"
+					if prefix := "repositories/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+						elem = elem[len(prefix):]
+					} else {
+						break
+					}
+
+					// Param: "repository_id"
+					// Match until one of "/"
+					idx := strings.IndexAny(elem, "/")
+					if idx > 0 {
+						args["repository_id"] = elem[:idx]
+						elem = elem[idx:]
+
+						if len(elem) == 0 {
+							break
+						}
+						switch elem[0] {
+						case '/': // Prefix: "/environments/"
+							if prefix := "/environments/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+								elem = elem[len(prefix):]
+							} else {
+								break
+							}
+
+							// Param: "environment_name"
+							// Match until one of "/"
+							idx := strings.IndexAny(elem, "/")
+							if idx > 0 {
+								args["environment_name"] = elem[:idx]
+								elem = elem[idx:]
+
+								if len(elem) == 0 {
+									break
+								}
+								switch elem[0] {
+								case '/': // Prefix: "/secrets/"
+									if prefix := "/secrets/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+										elem = elem[len(prefix):]
+									} else {
+										break
+									}
+
+									// Param: "secret_name"
+									// Leaf parameter
+									args["secret_name"] = elem
+
+									// Leaf: ActionsCreateOrUpdateEnvironmentSecret
+									s.handleActionsCreateOrUpdateEnvironmentSecretRequest(args, w, r)
+									return
+								}
+							}
+						}
+					}
+				}
+				// Param: "org"
+				// Match until one of "/"
+				idx := strings.IndexAny(elem, "/")
+				if idx > 0 {
+					args["org"] = elem[:idx]
+					elem = elem[idx:]
+
+					if len(elem) == 0 {
+						break
+					}
+					switch elem[0] {
+					case '/': // Prefix: "/"
+						if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+							elem = elem[len(prefix):]
+						} else {
+							break
+						}
+
+						if len(elem) == 0 {
+							s.handleInteractionsSetRestrictionsForOrgRequest(args, w, r)
+							return
+						}
+						switch elem[0] {
+						case 'a': // Prefix: "actions/"
+							if prefix := "actions/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+								elem = elem[len(prefix):]
+							} else {
+								break
+							}
+
+							if len(elem) == 0 {
+								s.handleActionsAddSelectedRepoToOrgSecretRequest(args, w, r)
+								return
+							}
+							switch elem[0] {
+							case 'i': // Prefix: "interaction-limits"
+								if prefix := "interaction-limits"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+									elem = elem[len(prefix):]
+								} else {
+									break
+								}
+
+								// Leaf: InteractionsSetRestrictionsForOrg
+								s.handleInteractionsSetRestrictionsForOrgRequest(args, w, r)
+								return
+							case 'p': // Prefix: "permissions"
+								if prefix := "permissions"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+									elem = elem[len(prefix):]
+								} else {
+									break
+								}
+
+								if len(elem) == 0 {
+									s.handleActionsSetGithubActionsPermissionsOrganizationRequest(args, w, r)
+									return
+								}
+								switch elem[0] {
+								case '/': // Prefix: "/"
+									if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+										elem = elem[len(prefix):]
+									} else {
+										break
+									}
+
+									if len(elem) == 0 {
+										s.handleActionsSetAllowedActionsOrganizationRequest(args, w, r)
+										return
+									}
+									switch elem[0] {
+									case 'r': // Prefix: "repositories"
+										if prefix := "repositories"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+											elem = elem[len(prefix):]
+										} else {
+											break
+										}
+
+										if len(elem) == 0 {
+											s.handleActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationRequest(args, w, r)
+											return
+										}
+										switch elem[0] {
+										case '/': // Prefix: "/"
+											if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+												elem = elem[len(prefix):]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												break
+											}
+											switch elem[0] {
+											case 's': // Prefix: "selected-actions"
+												if prefix := "selected-actions"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+													elem = elem[len(prefix):]
+												} else {
+													break
+												}
+
+												// Leaf: ActionsSetAllowedActionsOrganization
+												s.handleActionsSetAllowedActionsOrganizationRequest(args, w, r)
+												return
+											}
+											// Param: "repository_id"
+											// Leaf parameter
+											args["repository_id"] = elem
+
+											// Leaf: ActionsEnableSelectedRepositoryGithubActionsOrganization
+											s.handleActionsEnableSelectedRepositoryGithubActionsOrganizationRequest(args, w, r)
+											return
+										}
+									case 's': // Prefix: "selected-actions"
+										if prefix := "selected-actions"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+											elem = elem[len(prefix):]
+										} else {
+											break
+										}
+
+										// Leaf: ActionsSetAllowedActionsOrganization
+										s.handleActionsSetAllowedActionsOrganizationRequest(args, w, r)
+										return
+									}
+								}
+							case 'r': // Prefix: "runner-groups/"
+								if prefix := "runner-groups/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+									elem = elem[len(prefix):]
+								} else {
+									break
+								}
+
+								if len(elem) == 0 {
+									break
+								}
+								switch elem[0] {
+								case 's': // Prefix: "secrets/"
+									if prefix := "secrets/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+										elem = elem[len(prefix):]
+									} else {
+										break
+									}
+
+									// Param: "secret_name"
+									// Match until one of "/"
+									idx := strings.IndexAny(elem, "/")
+									if idx > 0 {
+										args["secret_name"] = elem[:idx]
+										elem = elem[idx:]
+
+										if len(elem) == 0 {
+											break
+										}
+										switch elem[0] {
+										case '/': // Prefix: "/repositories/"
+											if prefix := "/repositories/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+												elem = elem[len(prefix):]
+											} else {
+												break
+											}
+
+											// Param: "repository_id"
+											// Leaf parameter
+											args["repository_id"] = elem
+
+											// Leaf: ActionsAddSelectedRepoToOrgSecret
+											s.handleActionsAddSelectedRepoToOrgSecretRequest(args, w, r)
+											return
+										}
+									}
+								}
+								// Param: "runner_group_id"
+								// Match until one of "/"
+								idx := strings.IndexAny(elem, "/")
+								if idx > 0 {
+									args["runner_group_id"] = elem[:idx]
+									elem = elem[idx:]
+
+									if len(elem) == 0 {
+										break
+									}
+									switch elem[0] {
+									case '/': // Prefix: "/r"
+										if prefix := "/r"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+											elem = elem[len(prefix):]
+										} else {
+											break
+										}
+
+										if len(elem) == 0 {
+											s.handleActionsAddSelfHostedRunnerToGroupForOrgRequest(args, w, r)
+											return
+										}
+										switch elem[0] {
+										case 'e': // Prefix: "epositories"
+											if prefix := "epositories"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+												elem = elem[len(prefix):]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												s.handleActionsSetRepoAccessToSelfHostedRunnerGroupInOrgRequest(args, w, r)
+												return
+											}
+											switch elem[0] {
+											case '/': // Prefix: "/"
+												if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+													elem = elem[len(prefix):]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													break
+												}
+												switch elem[0] {
+												case 'u': // Prefix: "unners/"
+													if prefix := "unners/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+														elem = elem[len(prefix):]
+													} else {
+														break
+													}
+
+													// Param: "runner_id"
+													// Leaf parameter
+													args["runner_id"] = elem
+
+													// Leaf: ActionsAddSelfHostedRunnerToGroupForOrg
+													s.handleActionsAddSelfHostedRunnerToGroupForOrgRequest(args, w, r)
+													return
+												}
+												// Param: "repository_id"
+												// Leaf parameter
+												args["repository_id"] = elem
+
+												// Leaf: ActionsAddRepoAccessToSelfHostedRunnerGroupInOrg
+												s.handleActionsAddRepoAccessToSelfHostedRunnerGroupInOrgRequest(args, w, r)
+												return
+											}
+										case 'u': // Prefix: "unners"
+											if prefix := "unners"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+												elem = elem[len(prefix):]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												s.handleActionsSetSelfHostedRunnersInGroupForOrgRequest(args, w, r)
+												return
+											}
+											switch elem[0] {
+											case '/': // Prefix: "/"
+												if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+													elem = elem[len(prefix):]
+												} else {
+													break
+												}
+
+												// Param: "runner_id"
+												// Leaf parameter
+												args["runner_id"] = elem
+
+												// Leaf: ActionsAddSelfHostedRunnerToGroupForOrg
+												s.handleActionsAddSelfHostedRunnerToGroupForOrgRequest(args, w, r)
+												return
+											}
+										}
+									}
+								}
+							case 's': // Prefix: "secrets/"
+								if prefix := "secrets/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+									elem = elem[len(prefix):]
+								} else {
+									break
+								}
+
+								// Param: "secret_name"
+								// Match until one of "/"
+								idx := strings.IndexAny(elem, "/")
+								if idx > 0 {
+									args["secret_name"] = elem[:idx]
+									elem = elem[idx:]
+
+									if len(elem) == 0 {
+										s.handleActionsCreateOrUpdateOrgSecretRequest(args, w, r)
+										return
+									}
+									switch elem[0] {
+									case '/': // Prefix: "/repositories"
+										if prefix := "/repositories"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+											elem = elem[len(prefix):]
+										} else {
+											break
+										}
+
+										if len(elem) == 0 {
+											s.handleActionsSetSelectedReposForOrgSecretRequest(args, w, r)
+											return
+										}
+										switch elem[0] {
+										case '/': // Prefix: "/"
+											if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+												elem = elem[len(prefix):]
+											} else {
+												break
+											}
+
+											// Param: "repository_id"
+											// Leaf parameter
+											args["repository_id"] = elem
+
+											// Leaf: ActionsAddSelectedRepoToOrgSecret
+											s.handleActionsAddSelectedRepoToOrgSecretRequest(args, w, r)
+											return
+										}
+									}
+								}
+							}
+						case 'b': // Prefix: "blocks/"
+							if prefix := "blocks/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+								elem = elem[len(prefix):]
+							} else {
+								break
+							}
+
+							// Param: "username"
+							// Leaf parameter
+							args["username"] = elem
+
+							// Leaf: OrgsBlockUser
+							s.handleOrgsBlockUserRequest(args, w, r)
+							return
+						case 'i': // Prefix: "interaction-limits"
+							if prefix := "interaction-limits"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+								elem = elem[len(prefix):]
+							} else {
+								break
+							}
+
+							// Leaf: InteractionsSetRestrictionsForOrg
+							s.handleInteractionsSetRestrictionsForOrgRequest(args, w, r)
+							return
+						case 'm': // Prefix: "memberships/"
+							if prefix := "memberships/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+								elem = elem[len(prefix):]
+							} else {
+								break
+							}
+
+							// Param: "username"
+							// Leaf parameter
+							args["username"] = elem
+
+							// Leaf: OrgsSetMembershipForUser
+							s.handleOrgsSetMembershipForUserRequest(args, w, r)
+							return
+						case 'o': // Prefix: "outside_collaborators/"
+							if prefix := "outside_collaborators/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+								elem = elem[len(prefix):]
+							} else {
+								break
+							}
+
+							// Param: "username"
+							// Leaf parameter
+							args["username"] = elem
+
+							// Leaf: OrgsConvertMemberToOutsideCollaborator
+							s.handleOrgsConvertMemberToOutsideCollaboratorRequest(args, w, r)
+							return
+						case 'p': // Prefix: "public_members/"
+							if prefix := "public_members/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+								elem = elem[len(prefix):]
+							} else {
+								break
+							}
+
+							// Param: "username"
+							// Leaf parameter
+							args["username"] = elem
+
+							// Leaf: OrgsSetPublicMembershipForAuthenticatedUser
+							s.handleOrgsSetPublicMembershipForAuthenticatedUserRequest(args, w, r)
+							return
+						case 't': // Prefix: "teams/"
+							if prefix := "teams/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+								elem = elem[len(prefix):]
+							} else {
+								break
+							}
+
+							// Param: "team_slug"
+							// Match until one of "/"
+							idx := strings.IndexAny(elem, "/")
+							if idx > 0 {
+								args["team_slug"] = elem[:idx]
+								elem = elem[idx:]
+
+								if len(elem) == 0 {
+									break
+								}
+								switch elem[0] {
+								case '/': // Prefix: "/"
+									if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+										elem = elem[len(prefix):]
+									} else {
+										break
+									}
+
+									if len(elem) == 0 {
+										s.handleTeamsAddOrUpdateProjectPermissionsInOrgRequest(args, w, r)
+										return
+									}
+									switch elem[0] {
+									case 'm': // Prefix: "memberships/"
+										if prefix := "memberships/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+											elem = elem[len(prefix):]
+										} else {
+											break
+										}
+
+										if len(elem) == 0 {
+											break
+										}
+										switch elem[0] {
+										case 'p': // Prefix: "projects/"
+											if prefix := "projects/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+												elem = elem[len(prefix):]
+											} else {
+												break
+											}
+
+											// Param: "project_id"
+											// Leaf parameter
+											args["project_id"] = elem
+
+											// Leaf: TeamsAddOrUpdateProjectPermissionsInOrg
+											s.handleTeamsAddOrUpdateProjectPermissionsInOrgRequest(args, w, r)
+											return
+										}
+										// Param: "username"
+										// Leaf parameter
+										args["username"] = elem
+
+										// Leaf: TeamsAddOrUpdateMembershipForUserInOrg
+										s.handleTeamsAddOrUpdateMembershipForUserInOrgRequest(args, w, r)
+										return
+									case 'p': // Prefix: "projects/"
+										if prefix := "projects/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+											elem = elem[len(prefix):]
+										} else {
+											break
+										}
+
+										// Param: "project_id"
+										// Leaf parameter
+										args["project_id"] = elem
+
+										// Leaf: TeamsAddOrUpdateProjectPermissionsInOrg
+										s.handleTeamsAddOrUpdateProjectPermissionsInOrgRequest(args, w, r)
+										return
+									case 'r': // Prefix: "repos/"
+										if prefix := "repos/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+											elem = elem[len(prefix):]
+										} else {
+											break
+										}
+
+										// Param: "owner"
+										// Match until one of "/"
+										idx := strings.IndexAny(elem, "/")
+										if idx > 0 {
+											args["owner"] = elem[:idx]
+											elem = elem[idx:]
+
+											if len(elem) == 0 {
+												break
+											}
+											switch elem[0] {
+											case '/': // Prefix: "/"
+												if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+													elem = elem[len(prefix):]
+												} else {
+													break
+												}
+
+												// Param: "repo"
+												// Leaf parameter
+												args["repo"] = elem
+
+												// Leaf: TeamsAddOrUpdateRepoPermissionsInOrg
+												s.handleTeamsAddOrUpdateRepoPermissionsInOrgRequest(args, w, r)
+												return
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			case 'p': // Prefix: "projects/"
+				if prefix := "projects/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+					elem = elem[len(prefix):]
+				} else {
+					break
+				}
+
+				// Param: "project_id"
+				// Match until one of "/"
+				idx := strings.IndexAny(elem, "/")
+				if idx > 0 {
+					args["project_id"] = elem[:idx]
+					elem = elem[idx:]
+
+					if len(elem) == 0 {
+						break
+					}
+					switch elem[0] {
+					case '/': // Prefix: "/collaborators/"
+						if prefix := "/collaborators/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+							elem = elem[len(prefix):]
+						} else {
+							break
+						}
+
+						// Param: "username"
+						// Leaf parameter
+						args["username"] = elem
+
+						// Leaf: ProjectsAddCollaborator
+						s.handleProjectsAddCollaboratorRequest(args, w, r)
+						return
+					}
+				}
+			case 'r': // Prefix: "repos"
+				if prefix := "repos"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+					elem = elem[len(prefix):]
+				} else {
+					break
+				}
+
+				if len(elem) == 0 {
+					s.handleActionsCreateOrUpdateRepoSecretRequest(args, w, r)
 					return
 				}
+				switch elem[0] {
+				case '/': // Prefix: "/"
+					if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+						elem = elem[len(prefix):]
+					} else {
+						break
+					}
+
+					// Param: "owner"
+					// Match until one of "/"
+					idx := strings.IndexAny(elem, "/")
+					if idx > 0 {
+						args["owner"] = elem[:idx]
+						elem = elem[idx:]
+
+						if len(elem) == 0 {
+							break
+						}
+						switch elem[0] {
+						case '/': // Prefix: "/"
+							if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+								elem = elem[len(prefix):]
+							} else {
+								break
+							}
+
+							// Param: "repo"
+							// Match until one of "/"
+							idx := strings.IndexAny(elem, "/")
+							if idx > 0 {
+								args["repo"] = elem[:idx]
+								elem = elem[idx:]
+
+								if len(elem) == 0 {
+									break
+								}
+								switch elem[0] {
+								case '/': // Prefix: "/"
+									if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+										elem = elem[len(prefix):]
+									} else {
+										break
+									}
+
+									if len(elem) == 0 {
+										s.handleActivityMarkRepoNotificationsAsReadRequest(args, w, r)
+										return
+									}
+									switch elem[0] {
+									case 'a': // Prefix: "a"
+										if prefix := "a"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+											elem = elem[len(prefix):]
+										} else {
+											break
+										}
+
+										if len(elem) == 0 {
+											s.handleReposEnableAutomatedSecurityFixesRequest(args, w, r)
+											return
+										}
+										switch elem[0] {
+										case 'c': // Prefix: "ctions/"
+											if prefix := "ctions/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+												elem = elem[len(prefix):]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												s.handleActionsSetAllowedActionsRepositoryRequest(args, w, r)
+												return
+											}
+											switch elem[0] {
+											case 'n': // Prefix: "notifications"
+												if prefix := "notifications"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+													elem = elem[len(prefix):]
+												} else {
+													break
+												}
+
+												// Leaf: ActivityMarkRepoNotificationsAsRead
+												s.handleActivityMarkRepoNotificationsAsReadRequest(args, w, r)
+												return
+											case 'p': // Prefix: "permissions"
+												if prefix := "permissions"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+													elem = elem[len(prefix):]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													s.handleActionsSetGithubActionsPermissionsRepositoryRequest(args, w, r)
+													return
+												}
+												switch elem[0] {
+												case '/': // Prefix: "/selected-actions"
+													if prefix := "/selected-actions"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+														elem = elem[len(prefix):]
+													} else {
+														break
+													}
+
+													// Leaf: ActionsSetAllowedActionsRepository
+													s.handleActionsSetAllowedActionsRepositoryRequest(args, w, r)
+													return
+												}
+											case 's': // Prefix: "secrets/"
+												if prefix := "secrets/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+													elem = elem[len(prefix):]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													break
+												}
+												switch elem[0] {
+												case 'p': // Prefix: "permissions/selected-actions"
+													if prefix := "permissions/selected-actions"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+														elem = elem[len(prefix):]
+													} else {
+														break
+													}
+
+													// Leaf: ActionsSetAllowedActionsRepository
+													s.handleActionsSetAllowedActionsRepositoryRequest(args, w, r)
+													return
+												}
+												// Param: "secret_name"
+												// Leaf parameter
+												args["secret_name"] = elem
+
+												// Leaf: ActionsCreateOrUpdateRepoSecret
+												s.handleActionsCreateOrUpdateRepoSecretRequest(args, w, r)
+												return
+											case 'u': // Prefix: "utomated-security-fixes"
+												if prefix := "utomated-security-fixes"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+													elem = elem[len(prefix):]
+												} else {
+													break
+												}
+
+												// Leaf: ReposEnableAutomatedSecurityFixes
+												s.handleReposEnableAutomatedSecurityFixesRequest(args, w, r)
+												return
+											}
+										case 'u': // Prefix: "utomated-security-fixes"
+											if prefix := "utomated-security-fixes"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+												elem = elem[len(prefix):]
+											} else {
+												break
+											}
+
+											// Leaf: ReposEnableAutomatedSecurityFixes
+											s.handleReposEnableAutomatedSecurityFixesRequest(args, w, r)
+											return
+										}
+									case 'b': // Prefix: "branches/"
+										if prefix := "branches/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+											elem = elem[len(prefix):]
+										} else {
+											break
+										}
+
+										// Param: "branch"
+										// Match until one of "/"
+										idx := strings.IndexAny(elem, "/")
+										if idx > 0 {
+											args["branch"] = elem[:idx]
+											elem = elem[idx:]
+
+											if len(elem) == 0 {
+												break
+											}
+											switch elem[0] {
+											case '/': // Prefix: "/protection"
+												if prefix := "/protection"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+													elem = elem[len(prefix):]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													s.handleReposUpdateBranchProtectionRequest(args, w, r)
+													return
+												}
+												switch elem[0] {
+												case '/': // Prefix: "/re"
+													if prefix := "/re"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+														elem = elem[len(prefix):]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														s.handleReposSetStatusCheckContextsRequest(args, w, r)
+														return
+													}
+													switch elem[0] {
+													case 'q': // Prefix: "quired_status_checks/contexts"
+														if prefix := "quired_status_checks/contexts"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+															elem = elem[len(prefix):]
+														} else {
+															break
+														}
+
+														// Leaf: ReposSetStatusCheckContexts
+														s.handleReposSetStatusCheckContextsRequest(args, w, r)
+														return
+													case 's': // Prefix: "strictions/"
+														if prefix := "strictions/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+															elem = elem[len(prefix):]
+														} else {
+															break
+														}
+
+														if len(elem) == 0 {
+															s.handleReposSetTeamAccessRestrictionsRequest(args, w, r)
+															return
+														}
+														switch elem[0] {
+														case 'a': // Prefix: "apps"
+															if prefix := "apps"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																elem = elem[len(prefix):]
+															} else {
+																break
+															}
+
+															if len(elem) == 0 {
+																s.handleReposSetAppAccessRestrictionsRequest(args, w, r)
+																return
+															}
+															switch elem[0] {
+															case 'q': // Prefix: "quired_status_checks/contexts"
+																if prefix := "quired_status_checks/contexts"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																	elem = elem[len(prefix):]
+																} else {
+																	break
+																}
+
+																// Leaf: ReposSetStatusCheckContexts
+																s.handleReposSetStatusCheckContextsRequest(args, w, r)
+																return
+															case 't': // Prefix: "teams"
+																if prefix := "teams"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																	elem = elem[len(prefix):]
+																} else {
+																	break
+																}
+
+																// Leaf: ReposSetTeamAccessRestrictions
+																s.handleReposSetTeamAccessRestrictionsRequest(args, w, r)
+																return
+															}
+														case 't': // Prefix: "teams"
+															if prefix := "teams"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																elem = elem[len(prefix):]
+															} else {
+																break
+															}
+
+															// Leaf: ReposSetTeamAccessRestrictions
+															s.handleReposSetTeamAccessRestrictionsRequest(args, w, r)
+															return
+														case 'u': // Prefix: "users"
+															if prefix := "users"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																elem = elem[len(prefix):]
+															} else {
+																break
+															}
+
+															// Leaf: ReposSetUserAccessRestrictions
+															s.handleReposSetUserAccessRestrictionsRequest(args, w, r)
+															return
+														}
+													}
+												}
+											}
+										}
+									case 'c': // Prefix: "co"
+										if prefix := "co"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+											elem = elem[len(prefix):]
+										} else {
+											break
+										}
+
+										if len(elem) == 0 {
+											s.handleReposCreateOrUpdateFileContentsRequest(args, w, r)
+											return
+										}
+										switch elem[0] {
+										case 'l': // Prefix: "llaborators/"
+											if prefix := "llaborators/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+												elem = elem[len(prefix):]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												break
+											}
+											switch elem[0] {
+											case 'n': // Prefix: "ntents/"
+												if prefix := "ntents/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+													elem = elem[len(prefix):]
+												} else {
+													break
+												}
+
+												// Param: "path"
+												// Leaf parameter
+												args["path"] = elem
+
+												// Leaf: ReposCreateOrUpdateFileContents
+												s.handleReposCreateOrUpdateFileContentsRequest(args, w, r)
+												return
+											}
+											// Param: "username"
+											// Leaf parameter
+											args["username"] = elem
+
+											// Leaf: ReposAddCollaborator
+											s.handleReposAddCollaboratorRequest(args, w, r)
+											return
+										case 'n': // Prefix: "ntents/"
+											if prefix := "ntents/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+												elem = elem[len(prefix):]
+											} else {
+												break
+											}
+
+											// Param: "path"
+											// Leaf parameter
+											args["path"] = elem
+
+											// Leaf: ReposCreateOrUpdateFileContents
+											s.handleReposCreateOrUpdateFileContentsRequest(args, w, r)
+											return
+										}
+									case 'i': // Prefix: "i"
+										if prefix := "i"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+											elem = elem[len(prefix):]
+										} else {
+											break
+										}
+
+										if len(elem) == 0 {
+											s.handleIssuesLockRequest(args, w, r)
+											return
+										}
+										switch elem[0] {
+										case 'm': // Prefix: "mport"
+											if prefix := "mport"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+												elem = elem[len(prefix):]
+											} else {
+												break
+											}
+
+											// Leaf: MigrationsStartImport
+											s.handleMigrationsStartImportRequest(args, w, r)
+											return
+										case 'n': // Prefix: "nteraction-limits"
+											if prefix := "nteraction-limits"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+												elem = elem[len(prefix):]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												s.handleInteractionsSetRestrictionsForRepoRequest(args, w, r)
+												return
+											}
+											switch elem[0] {
+											case 's': // Prefix: "ssues/"
+												if prefix := "ssues/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+													elem = elem[len(prefix):]
+												} else {
+													break
+												}
+
+												// Param: "issue_number"
+												// Match until one of "/"
+												idx := strings.IndexAny(elem, "/")
+												if idx > 0 {
+													args["issue_number"] = elem[:idx]
+													elem = elem[idx:]
+
+													if len(elem) == 0 {
+														break
+													}
+													switch elem[0] {
+													case '/': // Prefix: "/lock"
+														if prefix := "/lock"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+															elem = elem[len(prefix):]
+														} else {
+															break
+														}
+
+														// Leaf: IssuesLock
+														s.handleIssuesLockRequest(args, w, r)
+														return
+													}
+												}
+											}
+										case 's': // Prefix: "ssues/"
+											if prefix := "ssues/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+												elem = elem[len(prefix):]
+											} else {
+												break
+											}
+
+											// Param: "issue_number"
+											// Match until one of "/"
+											idx := strings.IndexAny(elem, "/")
+											if idx > 0 {
+												args["issue_number"] = elem[:idx]
+												elem = elem[idx:]
+
+												if len(elem) == 0 {
+													break
+												}
+												switch elem[0] {
+												case '/': // Prefix: "/lock"
+													if prefix := "/lock"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+														elem = elem[len(prefix):]
+													} else {
+														break
+													}
+
+													// Leaf: IssuesLock
+													s.handleIssuesLockRequest(args, w, r)
+													return
+												}
+											}
+										}
+									case 'l': // Prefix: "lfs"
+										if prefix := "lfs"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+											elem = elem[len(prefix):]
+										} else {
+											break
+										}
+
+										// Leaf: ReposEnableLfsForRepo
+										s.handleReposEnableLfsForRepoRequest(args, w, r)
+										return
+									case 'n': // Prefix: "notifications"
+										if prefix := "notifications"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+											elem = elem[len(prefix):]
+										} else {
+											break
+										}
+
+										// Leaf: ActivityMarkRepoNotificationsAsRead
+										s.handleActivityMarkRepoNotificationsAsReadRequest(args, w, r)
+										return
+									case 'p': // Prefix: "pulls/"
+										if prefix := "pulls/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+											elem = elem[len(prefix):]
+										} else {
+											break
+										}
+
+										// Param: "pull_number"
+										// Match until one of "/"
+										idx := strings.IndexAny(elem, "/")
+										if idx > 0 {
+											args["pull_number"] = elem[:idx]
+											elem = elem[idx:]
+
+											if len(elem) == 0 {
+												break
+											}
+											switch elem[0] {
+											case '/': // Prefix: "/"
+												if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+													elem = elem[len(prefix):]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													s.handlePullsMergeRequest(args, w, r)
+													return
+												}
+												switch elem[0] {
+												case 'm': // Prefix: "merge"
+													if prefix := "merge"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+														elem = elem[len(prefix):]
+													} else {
+														break
+													}
+
+													// Leaf: PullsMerge
+													s.handlePullsMergeRequest(args, w, r)
+													return
+												case 'r': // Prefix: "reviews/"
+													if prefix := "reviews/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+														elem = elem[len(prefix):]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														break
+													}
+													switch elem[0] {
+													case 'm': // Prefix: "merge"
+														if prefix := "merge"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+															elem = elem[len(prefix):]
+														} else {
+															break
+														}
+
+														// Leaf: PullsMerge
+														s.handlePullsMergeRequest(args, w, r)
+														return
+													}
+													// Param: "review_id"
+													// Match until one of "/"
+													idx := strings.IndexAny(elem, "/")
+													if idx > 0 {
+														args["review_id"] = elem[:idx]
+														elem = elem[idx:]
+
+														if len(elem) == 0 {
+															s.handlePullsUpdateReviewRequest(args, w, r)
+															return
+														}
+														switch elem[0] {
+														case '/': // Prefix: "/dismissals"
+															if prefix := "/dismissals"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																elem = elem[len(prefix):]
+															} else {
+																break
+															}
+
+															// Leaf: PullsDismissReview
+															s.handlePullsDismissReviewRequest(args, w, r)
+															return
+														}
+													}
+												case 'u': // Prefix: "update-branch"
+													if prefix := "update-branch"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+														elem = elem[len(prefix):]
+													} else {
+														break
+													}
+
+													// Leaf: PullsUpdateBranch
+													s.handlePullsUpdateBranchRequest(args, w, r)
+													return
+												}
+											}
+										}
+									case 's': // Prefix: "subscription"
+										if prefix := "subscription"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+											elem = elem[len(prefix):]
+										} else {
+											break
+										}
+
+										// Leaf: ActivitySetRepoSubscription
+										s.handleActivitySetRepoSubscriptionRequest(args, w, r)
+										return
+									case 't': // Prefix: "topics"
+										if prefix := "topics"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+											elem = elem[len(prefix):]
+										} else {
+											break
+										}
+
+										// Leaf: ReposReplaceAllTopics
+										s.handleReposReplaceAllTopicsRequest(args, w, r)
+										return
+									case 'v': // Prefix: "vulnerability-alerts"
+										if prefix := "vulnerability-alerts"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+											elem = elem[len(prefix):]
+										} else {
+											break
+										}
+
+										// Leaf: ReposEnableVulnerabilityAlerts
+										s.handleReposEnableVulnerabilityAlertsRequest(args, w, r)
+										return
+									}
+								}
+							}
+						}
+					}
+				case 'i': // Prefix: "itories/"
+					if prefix := "itories/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+						elem = elem[len(prefix):]
+					} else {
+						break
+					}
+
+					if len(elem) == 0 {
+						break
+					}
+					switch elem[0] {
+					case '/': // Prefix: "/"
+						if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+							elem = elem[len(prefix):]
+						} else {
+							break
+						}
+
+						// Param: "owner"
+						// Match until one of "/"
+						idx := strings.IndexAny(elem, "/")
+						if idx > 0 {
+							args["owner"] = elem[:idx]
+							elem = elem[idx:]
+
+							if len(elem) == 0 {
+								break
+							}
+							switch elem[0] {
+							case '/': // Prefix: "/"
+								if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+									elem = elem[len(prefix):]
+								} else {
+									break
+								}
+
+								// Param: "repo"
+								// Match until one of "/"
+								idx := strings.IndexAny(elem, "/")
+								if idx > 0 {
+									args["repo"] = elem[:idx]
+									elem = elem[idx:]
+
+									if len(elem) == 0 {
+										break
+									}
+									switch elem[0] {
+									case '/': // Prefix: "/actions/secrets/"
+										if prefix := "/actions/secrets/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+											elem = elem[len(prefix):]
+										} else {
+											break
+										}
+
+										// Param: "secret_name"
+										// Leaf parameter
+										args["secret_name"] = elem
+
+										// Leaf: ActionsCreateOrUpdateRepoSecret
+										s.handleActionsCreateOrUpdateRepoSecretRequest(args, w, r)
+										return
+									}
+								}
+							}
+						}
+					}
+					// Param: "repository_id"
+					// Match until one of "/"
+					idx := strings.IndexAny(elem, "/")
+					if idx > 0 {
+						args["repository_id"] = elem[:idx]
+						elem = elem[idx:]
+
+						if len(elem) == 0 {
+							break
+						}
+						switch elem[0] {
+						case '/': // Prefix: "/environments/"
+							if prefix := "/environments/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+								elem = elem[len(prefix):]
+							} else {
+								break
+							}
+
+							// Param: "environment_name"
+							// Match until one of "/"
+							idx := strings.IndexAny(elem, "/")
+							if idx > 0 {
+								args["environment_name"] = elem[:idx]
+								elem = elem[idx:]
+
+								if len(elem) == 0 {
+									break
+								}
+								switch elem[0] {
+								case '/': // Prefix: "/secrets/"
+									if prefix := "/secrets/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+										elem = elem[len(prefix):]
+									} else {
+										break
+									}
+
+									// Param: "secret_name"
+									// Leaf parameter
+									args["secret_name"] = elem
+
+									// Leaf: ActionsCreateOrUpdateEnvironmentSecret
+									s.handleActionsCreateOrUpdateEnvironmentSecretRequest(args, w, r)
+									return
+								}
+							}
+						}
+					}
+				}
+			case 's': // Prefix: "scim/v2/enterprises/"
+				if prefix := "scim/v2/enterprises/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+					elem = elem[len(prefix):]
+				} else {
+					break
+				}
+
+				// Param: "enterprise"
+				// Match until one of "/"
+				idx := strings.IndexAny(elem, "/")
+				if idx > 0 {
+					args["enterprise"] = elem[:idx]
+					elem = elem[idx:]
+
+					if len(elem) == 0 {
+						break
+					}
+					switch elem[0] {
+					case '/': // Prefix: "/"
+						if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+							elem = elem[len(prefix):]
+						} else {
+							break
+						}
+
+						if len(elem) == 0 {
+							s.handleEnterpriseAdminSetInformationForProvisionedEnterpriseUserRequest(args, w, r)
+							return
+						}
+						switch elem[0] {
+						case 'G': // Prefix: "Groups/"
+							if prefix := "Groups/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+								elem = elem[len(prefix):]
+							} else {
+								break
+							}
+
+							if len(elem) == 0 {
+								break
+							}
+							switch elem[0] {
+							case 'U': // Prefix: "Users/"
+								if prefix := "Users/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+									elem = elem[len(prefix):]
+								} else {
+									break
+								}
+
+								// Param: "scim_user_id"
+								// Leaf parameter
+								args["scim_user_id"] = elem
+
+								// Leaf: EnterpriseAdminSetInformationForProvisionedEnterpriseUser
+								s.handleEnterpriseAdminSetInformationForProvisionedEnterpriseUserRequest(args, w, r)
+								return
+							}
+							// Param: "scim_group_id"
+							// Leaf parameter
+							args["scim_group_id"] = elem
+
+							// Leaf: EnterpriseAdminSetInformationForProvisionedEnterpriseGroup
+							s.handleEnterpriseAdminSetInformationForProvisionedEnterpriseGroupRequest(args, w, r)
+							return
+						case 'U': // Prefix: "Users/"
+							if prefix := "Users/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+								elem = elem[len(prefix):]
+							} else {
+								break
+							}
+
+							// Param: "scim_user_id"
+							// Leaf parameter
+							args["scim_user_id"] = elem
+
+							// Leaf: EnterpriseAdminSetInformationForProvisionedEnterpriseUser
+							s.handleEnterpriseAdminSetInformationForProvisionedEnterpriseUserRequest(args, w, r)
+							return
+						}
+					}
+				}
+			case 't': // Prefix: "teams/"
+				if prefix := "teams/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+					elem = elem[len(prefix):]
+				} else {
+					break
+				}
+
+				// Param: "team_id"
+				// Match until one of "/"
+				idx := strings.IndexAny(elem, "/")
+				if idx > 0 {
+					args["team_id"] = elem[:idx]
+					elem = elem[idx:]
+
+					if len(elem) == 0 {
+						break
+					}
+					switch elem[0] {
+					case '/': // Prefix: "/"
+						if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+							elem = elem[len(prefix):]
+						} else {
+							break
+						}
+
+						if len(elem) == 0 {
+							s.handleTeamsAddOrUpdateProjectPermissionsLegacyRequest(args, w, r)
+							return
+						}
+						switch elem[0] {
+						case 'm': // Prefix: "members"
+							if prefix := "members"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+								elem = elem[len(prefix):]
+							} else {
+								break
+							}
+
+							if len(elem) == 0 {
+								s.handleTeamsAddOrUpdateMembershipForUserLegacyRequest(args, w, r)
+								return
+							}
+							switch elem[0] {
+							case '/': // Prefix: "/"
+								if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+									elem = elem[len(prefix):]
+								} else {
+									break
+								}
+
+								if len(elem) == 0 {
+									break
+								}
+								switch elem[0] {
+								case 'h': // Prefix: "hips/"
+									if prefix := "hips/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+										elem = elem[len(prefix):]
+									} else {
+										break
+									}
+
+									// Param: "username"
+									// Leaf parameter
+									args["username"] = elem
+
+									// Leaf: TeamsAddOrUpdateMembershipForUserLegacy
+									s.handleTeamsAddOrUpdateMembershipForUserLegacyRequest(args, w, r)
+									return
+								}
+								// Param: "username"
+								// Leaf parameter
+								args["username"] = elem
+
+								// Leaf: TeamsAddMemberLegacy
+								s.handleTeamsAddMemberLegacyRequest(args, w, r)
+								return
+							case 'h': // Prefix: "hips/"
+								if prefix := "hips/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+									elem = elem[len(prefix):]
+								} else {
+									break
+								}
+
+								// Param: "username"
+								// Leaf parameter
+								args["username"] = elem
+
+								// Leaf: TeamsAddOrUpdateMembershipForUserLegacy
+								s.handleTeamsAddOrUpdateMembershipForUserLegacyRequest(args, w, r)
+								return
+							case 'p': // Prefix: "projects/"
+								if prefix := "projects/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+									elem = elem[len(prefix):]
+								} else {
+									break
+								}
+
+								// Param: "project_id"
+								// Leaf parameter
+								args["project_id"] = elem
+
+								// Leaf: TeamsAddOrUpdateProjectPermissionsLegacy
+								s.handleTeamsAddOrUpdateProjectPermissionsLegacyRequest(args, w, r)
+								return
+							}
+						case 'p': // Prefix: "projects/"
+							if prefix := "projects/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+								elem = elem[len(prefix):]
+							} else {
+								break
+							}
+
+							// Param: "project_id"
+							// Leaf parameter
+							args["project_id"] = elem
+
+							// Leaf: TeamsAddOrUpdateProjectPermissionsLegacy
+							s.handleTeamsAddOrUpdateProjectPermissionsLegacyRequest(args, w, r)
+							return
+						case 'r': // Prefix: "repos/"
+							if prefix := "repos/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+								elem = elem[len(prefix):]
+							} else {
+								break
+							}
+
+							// Param: "owner"
+							// Match until one of "/"
+							idx := strings.IndexAny(elem, "/")
+							if idx > 0 {
+								args["owner"] = elem[:idx]
+								elem = elem[idx:]
+
+								if len(elem) == 0 {
+									break
+								}
+								switch elem[0] {
+								case '/': // Prefix: "/"
+									if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+										elem = elem[len(prefix):]
+									} else {
+										break
+									}
+
+									// Param: "repo"
+									// Leaf parameter
+									args["repo"] = elem
+
+									// Leaf: TeamsAddOrUpdateRepoPermissionsLegacy
+									s.handleTeamsAddOrUpdateRepoPermissionsLegacyRequest(args, w, r)
+									return
+								}
+							}
+						}
+					}
+				}
+			case 'u': // Prefix: "user/"
+				if prefix := "user/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+					elem = elem[len(prefix):]
+				} else {
+					break
+				}
+
+				if len(elem) == 0 {
+					s.handleAppsAddRepoToInstallationRequest(args, w, r)
+					return
+				}
+				switch elem[0] {
+				case 'b': // Prefix: "blocks/"
+					if prefix := "blocks/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+						elem = elem[len(prefix):]
+					} else {
+						break
+					}
+
+					// Param: "username"
+					// Leaf parameter
+					args["username"] = elem
+
+					// Leaf: UsersBlock
+					s.handleUsersBlockRequest(args, w, r)
+					return
+				case 'f': // Prefix: "following/"
+					if prefix := "following/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+						elem = elem[len(prefix):]
+					} else {
+						break
+					}
+
+					// Param: "username"
+					// Leaf parameter
+					args["username"] = elem
+
+					// Leaf: UsersFollow
+					s.handleUsersFollowRequest(args, w, r)
+					return
+				case 'i': // Prefix: "in"
+					if prefix := "in"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+						elem = elem[len(prefix):]
+					} else {
+						break
+					}
+
+					if len(elem) == 0 {
+						s.handleInteractionsSetRestrictionsForAuthenticatedUserRequest(args, w, r)
+						return
+					}
+					switch elem[0] {
+					case 's': // Prefix: "stallations/"
+						if prefix := "stallations/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+							elem = elem[len(prefix):]
+						} else {
+							break
+						}
+
+						if len(elem) == 0 {
+							break
+						}
+						switch elem[0] {
+						case 't': // Prefix: "teraction-limits"
+							if prefix := "teraction-limits"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+								elem = elem[len(prefix):]
+							} else {
+								break
+							}
+
+							// Leaf: InteractionsSetRestrictionsForAuthenticatedUser
+							s.handleInteractionsSetRestrictionsForAuthenticatedUserRequest(args, w, r)
+							return
+						}
+						// Param: "installation_id"
+						// Match until one of "/"
+						idx := strings.IndexAny(elem, "/")
+						if idx > 0 {
+							args["installation_id"] = elem[:idx]
+							elem = elem[idx:]
+
+							if len(elem) == 0 {
+								break
+							}
+							switch elem[0] {
+							case '/': // Prefix: "/repositories/"
+								if prefix := "/repositories/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+									elem = elem[len(prefix):]
+								} else {
+									break
+								}
+
+								// Param: "repository_id"
+								// Leaf parameter
+								args["repository_id"] = elem
+
+								// Leaf: AppsAddRepoToInstallation
+								s.handleAppsAddRepoToInstallationRequest(args, w, r)
+								return
+							}
+						}
+					case 't': // Prefix: "teraction-limits"
+						if prefix := "teraction-limits"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+							elem = elem[len(prefix):]
+						} else {
+							break
+						}
+
+						// Leaf: InteractionsSetRestrictionsForAuthenticatedUser
+						s.handleInteractionsSetRestrictionsForAuthenticatedUserRequest(args, w, r)
+						return
+					}
+				case 's': // Prefix: "starred/"
+					if prefix := "starred/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+						elem = elem[len(prefix):]
+					} else {
+						break
+					}
+
+					if len(elem) == 0 {
+						break
+					}
+					switch elem[0] {
+					case 'i': // Prefix: "installations/"
+						if prefix := "installations/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+							elem = elem[len(prefix):]
+						} else {
+							break
+						}
+
+						// Param: "installation_id"
+						// Match until one of "/"
+						idx := strings.IndexAny(elem, "/")
+						if idx > 0 {
+							args["installation_id"] = elem[:idx]
+							elem = elem[idx:]
+
+							if len(elem) == 0 {
+								break
+							}
+							switch elem[0] {
+							case '/': // Prefix: "/repositories/"
+								if prefix := "/repositories/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+									elem = elem[len(prefix):]
+								} else {
+									break
+								}
+
+								// Param: "repository_id"
+								// Leaf parameter
+								args["repository_id"] = elem
+
+								// Leaf: AppsAddRepoToInstallation
+								s.handleAppsAddRepoToInstallationRequest(args, w, r)
+								return
+							}
+						}
+					}
+					// Param: "owner"
+					// Match until one of "/"
+					idx := strings.IndexAny(elem, "/")
+					if idx > 0 {
+						args["owner"] = elem[:idx]
+						elem = elem[idx:]
+
+						if len(elem) == 0 {
+							break
+						}
+						switch elem[0] {
+						case '/': // Prefix: "/"
+							if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+								elem = elem[len(prefix):]
+							} else {
+								break
+							}
+
+							// Param: "repo"
+							// Leaf parameter
+							args["repo"] = elem
+
+							// Leaf: ActivityStarRepoForAuthenticatedUser
+							s.handleActivityStarRepoForAuthenticatedUserRequest(args, w, r)
+							return
+						}
+					}
+				}
 			}
-		default:
-			s.notFound(w, r)
-			return
 		}
-	default:
-		s.notFound(w, r)
-		return
+	case "POST":
+		if len(elem) == 0 {
+			break
+		}
+		switch elem[0] {
+		case '/': // Prefix: "/"
+			if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+				elem = elem[len(prefix):]
+			} else {
+				break
+			}
+
+			if len(elem) == 0 {
+				s.handleActionsCreateRegistrationTokenForOrgRequest(args, w, r)
+				return
+			}
+			switch elem[0] {
+			case 'a': // Prefix: "a"
+				if prefix := "a"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+					elem = elem[len(prefix):]
+				} else {
+					break
+				}
+
+				if len(elem) == 0 {
+					s.handleOAuthAuthorizationsCreateAuthorizationRequest(args, w, r)
+					return
+				}
+				switch elem[0] {
+				case 'p': // Prefix: "pp"
+					if prefix := "pp"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+						elem = elem[len(prefix):]
+					} else {
+						break
+					}
+
+					if len(elem) == 0 {
+						s.handleAppsCreateInstallationAccessTokenRequest(args, w, r)
+						return
+					}
+					switch elem[0] {
+					case '/': // Prefix: "/"
+						if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+							elem = elem[len(prefix):]
+						} else {
+							break
+						}
+
+						if len(elem) == 0 {
+							s.handleAppsRedeliverWebhookDeliveryRequest(args, w, r)
+							return
+						}
+						switch elem[0] {
+						case 'h': // Prefix: "hook/deliveries/"
+							if prefix := "hook/deliveries/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+								elem = elem[len(prefix):]
+							} else {
+								break
+							}
+
+							// Param: "delivery_id"
+							// Match until one of "/"
+							idx := strings.IndexAny(elem, "/")
+							if idx > 0 {
+								args["delivery_id"] = elem[:idx]
+								elem = elem[idx:]
+
+								if len(elem) == 0 {
+									break
+								}
+								switch elem[0] {
+								case '/': // Prefix: "/attempts"
+									if prefix := "/attempts"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+										elem = elem[len(prefix):]
+									} else {
+										break
+									}
+
+									// Leaf: AppsRedeliverWebhookDelivery
+									s.handleAppsRedeliverWebhookDeliveryRequest(args, w, r)
+									return
+								}
+							}
+						case 'i': // Prefix: "installations/"
+							if prefix := "installations/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+								elem = elem[len(prefix):]
+							} else {
+								break
+							}
+
+							if len(elem) == 0 {
+								break
+							}
+							switch elem[0] {
+							case 'h': // Prefix: "hook/deliveries/"
+								if prefix := "hook/deliveries/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+									elem = elem[len(prefix):]
+								} else {
+									break
+								}
+
+								// Param: "delivery_id"
+								// Match until one of "/"
+								idx := strings.IndexAny(elem, "/")
+								if idx > 0 {
+									args["delivery_id"] = elem[:idx]
+									elem = elem[idx:]
+
+									if len(elem) == 0 {
+										break
+									}
+									switch elem[0] {
+									case '/': // Prefix: "/attempts"
+										if prefix := "/attempts"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+											elem = elem[len(prefix):]
+										} else {
+											break
+										}
+
+										// Leaf: AppsRedeliverWebhookDelivery
+										s.handleAppsRedeliverWebhookDeliveryRequest(args, w, r)
+										return
+									}
+								}
+							}
+							// Param: "installation_id"
+							// Match until one of "/"
+							idx := strings.IndexAny(elem, "/")
+							if idx > 0 {
+								args["installation_id"] = elem[:idx]
+								elem = elem[idx:]
+
+								if len(elem) == 0 {
+									break
+								}
+								switch elem[0] {
+								case '/': // Prefix: "/access_tokens"
+									if prefix := "/access_tokens"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+										elem = elem[len(prefix):]
+									} else {
+										break
+									}
+
+									// Leaf: AppsCreateInstallationAccessToken
+									s.handleAppsCreateInstallationAccessTokenRequest(args, w, r)
+									return
+								}
+							}
+						}
+					case 'l': // Prefix: "lications/"
+						if prefix := "lications/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+							elem = elem[len(prefix):]
+						} else {
+							break
+						}
+
+						if len(elem) == 0 {
+							break
+						}
+						switch elem[0] {
+						case '/': // Prefix: "/installations/"
+							if prefix := "/installations/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+								elem = elem[len(prefix):]
+							} else {
+								break
+							}
+
+							// Param: "installation_id"
+							// Match until one of "/"
+							idx := strings.IndexAny(elem, "/")
+							if idx > 0 {
+								args["installation_id"] = elem[:idx]
+								elem = elem[idx:]
+
+								if len(elem) == 0 {
+									break
+								}
+								switch elem[0] {
+								case '/': // Prefix: "/access_tokens"
+									if prefix := "/access_tokens"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+										elem = elem[len(prefix):]
+									} else {
+										break
+									}
+
+									// Leaf: AppsCreateInstallationAccessToken
+									s.handleAppsCreateInstallationAccessTokenRequest(args, w, r)
+									return
+								}
+							}
+						}
+						// Param: "client_id"
+						// Match until one of "/"
+						idx := strings.IndexAny(elem, "/")
+						if idx > 0 {
+							args["client_id"] = elem[:idx]
+							elem = elem[idx:]
+
+							if len(elem) == 0 {
+								break
+							}
+							switch elem[0] {
+							case '/': // Prefix: "/token"
+								if prefix := "/token"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+									elem = elem[len(prefix):]
+								} else {
+									break
+								}
+
+								if len(elem) == 0 {
+									s.handleAppsCheckTokenRequest(args, w, r)
+									return
+								}
+								switch elem[0] {
+								case '/': // Prefix: "/scoped"
+									if prefix := "/scoped"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+										elem = elem[len(prefix):]
+									} else {
+										break
+									}
+
+									// Leaf: AppsScopeToken
+									s.handleAppsScopeTokenRequest(args, w, r)
+									return
+								}
+							}
+						}
+					case 'u': // Prefix: "uthorizations"
+						if prefix := "uthorizations"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+							elem = elem[len(prefix):]
+						} else {
+							break
+						}
+
+						// Leaf: OAuthAuthorizationsCreateAuthorization
+						s.handleOAuthAuthorizationsCreateAuthorizationRequest(args, w, r)
+						return
+					}
+				case 'u': // Prefix: "uthorizations"
+					if prefix := "uthorizations"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+						elem = elem[len(prefix):]
+					} else {
+						break
+					}
+
+					// Leaf: OAuthAuthorizationsCreateAuthorization
+					s.handleOAuthAuthorizationsCreateAuthorizationRequest(args, w, r)
+					return
+				}
+			case 'e': // Prefix: "enterprises/"
+				if prefix := "enterprises/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+					elem = elem[len(prefix):]
+				} else {
+					break
+				}
+
+				// Param: "enterprise"
+				// Match until one of "/"
+				idx := strings.IndexAny(elem, "/")
+				if idx > 0 {
+					args["enterprise"] = elem[:idx]
+					elem = elem[idx:]
+
+					if len(elem) == 0 {
+						break
+					}
+					switch elem[0] {
+					case '/': // Prefix: "/actions/runner"
+						if prefix := "/actions/runner"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+							elem = elem[len(prefix):]
+						} else {
+							break
+						}
+
+						if len(elem) == 0 {
+							s.handleEnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseRequest(args, w, r)
+							return
+						}
+						switch elem[0] {
+						case '-': // Prefix: "-groups"
+							if prefix := "-groups"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+								elem = elem[len(prefix):]
+							} else {
+								break
+							}
+
+							// Leaf: EnterpriseAdminCreateSelfHostedRunnerGroupForEnterprise
+							s.handleEnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseRequest(args, w, r)
+							return
+						case 's': // Prefix: "s/re"
+							if prefix := "s/re"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+								elem = elem[len(prefix):]
+							} else {
+								break
+							}
+
+							if len(elem) == 0 {
+								s.handleEnterpriseAdminCreateRemoveTokenForEnterpriseRequest(args, w, r)
+								return
+							}
+							switch elem[0] {
+							case '-': // Prefix: "-groups"
+								if prefix := "-groups"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+									elem = elem[len(prefix):]
+								} else {
+									break
+								}
+
+								// Leaf: EnterpriseAdminCreateSelfHostedRunnerGroupForEnterprise
+								s.handleEnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseRequest(args, w, r)
+								return
+							case 'g': // Prefix: "gistration-token"
+								if prefix := "gistration-token"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+									elem = elem[len(prefix):]
+								} else {
+									break
+								}
+
+								if len(elem) == 0 {
+									s.handleEnterpriseAdminCreateRegistrationTokenForEnterpriseRequest(args, w, r)
+									return
+								}
+								switch elem[0] {
+								case 'm': // Prefix: "move-token"
+									if prefix := "move-token"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+										elem = elem[len(prefix):]
+									} else {
+										break
+									}
+
+									// Leaf: EnterpriseAdminCreateRemoveTokenForEnterprise
+									s.handleEnterpriseAdminCreateRemoveTokenForEnterpriseRequest(args, w, r)
+									return
+								}
+							case 'm': // Prefix: "move-token"
+								if prefix := "move-token"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+									elem = elem[len(prefix):]
+								} else {
+									break
+								}
+
+								// Leaf: EnterpriseAdminCreateRemoveTokenForEnterprise
+								s.handleEnterpriseAdminCreateRemoveTokenForEnterpriseRequest(args, w, r)
+								return
+							}
+						}
+					}
+				}
+			case 'g': // Prefix: "gists"
+				if prefix := "gists"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+					elem = elem[len(prefix):]
+				} else {
+					break
+				}
+
+				if len(elem) == 0 {
+					s.handleGistsCreateRequest(args, w, r)
+					return
+				}
+				switch elem[0] {
+				case '/': // Prefix: "/"
+					if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+						elem = elem[len(prefix):]
+					} else {
+						break
+					}
+
+					// Param: "gist_id"
+					// Match until one of "/"
+					idx := strings.IndexAny(elem, "/")
+					if idx > 0 {
+						args["gist_id"] = elem[:idx]
+						elem = elem[idx:]
+
+						if len(elem) == 0 {
+							break
+						}
+						switch elem[0] {
+						case '/': // Prefix: "/"
+							if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+								elem = elem[len(prefix):]
+							} else {
+								break
+							}
+
+							if len(elem) == 0 {
+								s.handleGistsForkRequest(args, w, r)
+								return
+							}
+							switch elem[0] {
+							case 'c': // Prefix: "comments"
+								if prefix := "comments"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+									elem = elem[len(prefix):]
+								} else {
+									break
+								}
+
+								if len(elem) == 0 {
+									s.handleGistsCreateCommentRequest(args, w, r)
+									return
+								}
+								switch elem[0] {
+								case 'f': // Prefix: "forks"
+									if prefix := "forks"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+										elem = elem[len(prefix):]
+									} else {
+										break
+									}
+
+									// Leaf: GistsFork
+									s.handleGistsForkRequest(args, w, r)
+									return
+								}
+							case 'f': // Prefix: "forks"
+								if prefix := "forks"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+									elem = elem[len(prefix):]
+								} else {
+									break
+								}
+
+								// Leaf: GistsFork
+								s.handleGistsForkRequest(args, w, r)
+								return
+							}
+						}
+					}
+				}
+			case 'o': // Prefix: "orgs/"
+				if prefix := "orgs/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+					elem = elem[len(prefix):]
+				} else {
+					break
+				}
+
+				// Param: "org"
+				// Match until one of "/"
+				idx := strings.IndexAny(elem, "/")
+				if idx > 0 {
+					args["org"] = elem[:idx]
+					elem = elem[idx:]
+
+					if len(elem) == 0 {
+						break
+					}
+					switch elem[0] {
+					case '/': // Prefix: "/"
+						if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+							elem = elem[len(prefix):]
+						} else {
+							break
+						}
+
+						if len(elem) == 0 {
+							s.handleMigrationsStartForOrgRequest(args, w, r)
+							return
+						}
+						switch elem[0] {
+						case 'a': // Prefix: "actions/runner"
+							if prefix := "actions/runner"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+								elem = elem[len(prefix):]
+							} else {
+								break
+							}
+
+							if len(elem) == 0 {
+								s.handleActionsCreateSelfHostedRunnerGroupForOrgRequest(args, w, r)
+								return
+							}
+							switch elem[0] {
+							case '-': // Prefix: "-groups"
+								if prefix := "-groups"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+									elem = elem[len(prefix):]
+								} else {
+									break
+								}
+
+								// Leaf: ActionsCreateSelfHostedRunnerGroupForOrg
+								s.handleActionsCreateSelfHostedRunnerGroupForOrgRequest(args, w, r)
+								return
+							case 'm': // Prefix: "migrations"
+								if prefix := "migrations"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+									elem = elem[len(prefix):]
+								} else {
+									break
+								}
+
+								// Leaf: MigrationsStartForOrg
+								s.handleMigrationsStartForOrgRequest(args, w, r)
+								return
+							case 's': // Prefix: "s/re"
+								if prefix := "s/re"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+									elem = elem[len(prefix):]
+								} else {
+									break
+								}
+
+								if len(elem) == 0 {
+									s.handleActionsCreateRemoveTokenForOrgRequest(args, w, r)
+									return
+								}
+								switch elem[0] {
+								case '-': // Prefix: "-groups"
+									if prefix := "-groups"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+										elem = elem[len(prefix):]
+									} else {
+										break
+									}
+
+									// Leaf: ActionsCreateSelfHostedRunnerGroupForOrg
+									s.handleActionsCreateSelfHostedRunnerGroupForOrgRequest(args, w, r)
+									return
+								case 'g': // Prefix: "gistration-token"
+									if prefix := "gistration-token"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+										elem = elem[len(prefix):]
+									} else {
+										break
+									}
+
+									if len(elem) == 0 {
+										s.handleActionsCreateRegistrationTokenForOrgRequest(args, w, r)
+										return
+									}
+									switch elem[0] {
+									case 'm': // Prefix: "move-token"
+										if prefix := "move-token"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+											elem = elem[len(prefix):]
+										} else {
+											break
+										}
+
+										// Leaf: ActionsCreateRemoveTokenForOrg
+										s.handleActionsCreateRemoveTokenForOrgRequest(args, w, r)
+										return
+									}
+								case 'm': // Prefix: "move-token"
+									if prefix := "move-token"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+										elem = elem[len(prefix):]
+									} else {
+										break
+									}
+
+									// Leaf: ActionsCreateRemoveTokenForOrg
+									s.handleActionsCreateRemoveTokenForOrgRequest(args, w, r)
+									return
+								}
+							}
+						case 'h': // Prefix: "hooks"
+							if prefix := "hooks"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+								elem = elem[len(prefix):]
+							} else {
+								break
+							}
+
+							if len(elem) == 0 {
+								s.handleOrgsCreateWebhookRequest(args, w, r)
+								return
+							}
+							switch elem[0] {
+							case '/': // Prefix: "/"
+								if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+									elem = elem[len(prefix):]
+								} else {
+									break
+								}
+
+								// Param: "hook_id"
+								// Match until one of "/"
+								idx := strings.IndexAny(elem, "/")
+								if idx > 0 {
+									args["hook_id"] = elem[:idx]
+									elem = elem[idx:]
+
+									if len(elem) == 0 {
+										break
+									}
+									switch elem[0] {
+									case '/': // Prefix: "/"
+										if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+											elem = elem[len(prefix):]
+										} else {
+											break
+										}
+
+										if len(elem) == 0 {
+											s.handleOrgsRedeliverWebhookDeliveryRequest(args, w, r)
+											return
+										}
+										switch elem[0] {
+										case 'd': // Prefix: "deliveries/"
+											if prefix := "deliveries/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+												elem = elem[len(prefix):]
+											} else {
+												break
+											}
+
+											// Param: "delivery_id"
+											// Match until one of "/"
+											idx := strings.IndexAny(elem, "/")
+											if idx > 0 {
+												args["delivery_id"] = elem[:idx]
+												elem = elem[idx:]
+
+												if len(elem) == 0 {
+													break
+												}
+												switch elem[0] {
+												case '/': // Prefix: "/attempts"
+													if prefix := "/attempts"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+														elem = elem[len(prefix):]
+													} else {
+														break
+													}
+
+													// Leaf: OrgsRedeliverWebhookDelivery
+													s.handleOrgsRedeliverWebhookDeliveryRequest(args, w, r)
+													return
+												}
+											}
+										case 'p': // Prefix: "pings"
+											if prefix := "pings"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+												elem = elem[len(prefix):]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												s.handleOrgsPingWebhookRequest(args, w, r)
+												return
+											}
+											switch elem[0] {
+											case 'd': // Prefix: "deliveries/"
+												if prefix := "deliveries/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+													elem = elem[len(prefix):]
+												} else {
+													break
+												}
+
+												// Param: "delivery_id"
+												// Match until one of "/"
+												idx := strings.IndexAny(elem, "/")
+												if idx > 0 {
+													args["delivery_id"] = elem[:idx]
+													elem = elem[idx:]
+
+													if len(elem) == 0 {
+														break
+													}
+													switch elem[0] {
+													case '/': // Prefix: "/attempts"
+														if prefix := "/attempts"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+															elem = elem[len(prefix):]
+														} else {
+															break
+														}
+
+														// Leaf: OrgsRedeliverWebhookDelivery
+														s.handleOrgsRedeliverWebhookDeliveryRequest(args, w, r)
+														return
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+						case 'i': // Prefix: "invitations"
+							if prefix := "invitations"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+								elem = elem[len(prefix):]
+							} else {
+								break
+							}
+
+							// Leaf: OrgsCreateInvitation
+							s.handleOrgsCreateInvitationRequest(args, w, r)
+							return
+						case 'm': // Prefix: "migrations"
+							if prefix := "migrations"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+								elem = elem[len(prefix):]
+							} else {
+								break
+							}
+
+							// Leaf: MigrationsStartForOrg
+							s.handleMigrationsStartForOrgRequest(args, w, r)
+							return
+						case 'p': // Prefix: "p"
+							if prefix := "p"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+								elem = elem[len(prefix):]
+							} else {
+								break
+							}
+
+							if len(elem) == 0 {
+								s.handleProjectsCreateForOrgRequest(args, w, r)
+								return
+							}
+							switch elem[0] {
+							case 'a': // Prefix: "ackages/"
+								if prefix := "ackages/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+									elem = elem[len(prefix):]
+								} else {
+									break
+								}
+
+								if len(elem) == 0 {
+									break
+								}
+								switch elem[0] {
+								case 'r': // Prefix: "rojects"
+									if prefix := "rojects"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+										elem = elem[len(prefix):]
+									} else {
+										break
+									}
+
+									// Leaf: ProjectsCreateForOrg
+									s.handleProjectsCreateForOrgRequest(args, w, r)
+									return
+								}
+								// Param: "package_type"
+								// Match until one of "/"
+								idx := strings.IndexAny(elem, "/")
+								if idx > 0 {
+									args["package_type"] = elem[:idx]
+									elem = elem[idx:]
+
+									if len(elem) == 0 {
+										break
+									}
+									switch elem[0] {
+									case '/': // Prefix: "/"
+										if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+											elem = elem[len(prefix):]
+										} else {
+											break
+										}
+
+										// Param: "package_name"
+										// Match until one of "/"
+										idx := strings.IndexAny(elem, "/")
+										if idx > 0 {
+											args["package_name"] = elem[:idx]
+											elem = elem[idx:]
+
+											if len(elem) == 0 {
+												break
+											}
+											switch elem[0] {
+											case '/': // Prefix: "/"
+												if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+													elem = elem[len(prefix):]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													s.handlePackagesRestorePackageVersionForOrgRequest(args, w, r)
+													return
+												}
+												switch elem[0] {
+												case 'r': // Prefix: "restore"
+													if prefix := "restore"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+														elem = elem[len(prefix):]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														s.handlePackagesRestorePackageForOrgRequest(args, w, r)
+														return
+													}
+													switch elem[0] {
+													case 'v': // Prefix: "versions/"
+														if prefix := "versions/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+															elem = elem[len(prefix):]
+														} else {
+															break
+														}
+
+														// Param: "package_version_id"
+														// Match until one of "/"
+														idx := strings.IndexAny(elem, "/")
+														if idx > 0 {
+															args["package_version_id"] = elem[:idx]
+															elem = elem[idx:]
+
+															if len(elem) == 0 {
+																break
+															}
+															switch elem[0] {
+															case '/': // Prefix: "/restore"
+																if prefix := "/restore"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																	elem = elem[len(prefix):]
+																} else {
+																	break
+																}
+
+																// Leaf: PackagesRestorePackageVersionForOrg
+																s.handlePackagesRestorePackageVersionForOrgRequest(args, w, r)
+																return
+															}
+														}
+													}
+												case 'v': // Prefix: "versions/"
+													if prefix := "versions/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+														elem = elem[len(prefix):]
+													} else {
+														break
+													}
+
+													// Param: "package_version_id"
+													// Match until one of "/"
+													idx := strings.IndexAny(elem, "/")
+													if idx > 0 {
+														args["package_version_id"] = elem[:idx]
+														elem = elem[idx:]
+
+														if len(elem) == 0 {
+															break
+														}
+														switch elem[0] {
+														case '/': // Prefix: "/restore"
+															if prefix := "/restore"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																elem = elem[len(prefix):]
+															} else {
+																break
+															}
+
+															// Leaf: PackagesRestorePackageVersionForOrg
+															s.handlePackagesRestorePackageVersionForOrgRequest(args, w, r)
+															return
+														}
+													}
+												}
+											}
+										}
+									}
+								}
+							case 'r': // Prefix: "rojects"
+								if prefix := "rojects"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+									elem = elem[len(prefix):]
+								} else {
+									break
+								}
+
+								// Leaf: ProjectsCreateForOrg
+								s.handleProjectsCreateForOrgRequest(args, w, r)
+								return
+							}
+						case 'r': // Prefix: "repos"
+							if prefix := "repos"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+								elem = elem[len(prefix):]
+							} else {
+								break
+							}
+
+							// Leaf: ReposCreateInOrg
+							s.handleReposCreateInOrgRequest(args, w, r)
+							return
+						case 't': // Prefix: "teams"
+							if prefix := "teams"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+								elem = elem[len(prefix):]
+							} else {
+								break
+							}
+
+							if len(elem) == 0 {
+								s.handleTeamsCreateRequest(args, w, r)
+								return
+							}
+							switch elem[0] {
+							case '/': // Prefix: "/"
+								if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+									elem = elem[len(prefix):]
+								} else {
+									break
+								}
+
+								// Param: "team_slug"
+								// Match until one of "/"
+								idx := strings.IndexAny(elem, "/")
+								if idx > 0 {
+									args["team_slug"] = elem[:idx]
+									elem = elem[idx:]
+
+									if len(elem) == 0 {
+										break
+									}
+									switch elem[0] {
+									case '/': // Prefix: "/discussions"
+										if prefix := "/discussions"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+											elem = elem[len(prefix):]
+										} else {
+											break
+										}
+
+										if len(elem) == 0 {
+											s.handleTeamsCreateDiscussionInOrgRequest(args, w, r)
+											return
+										}
+										switch elem[0] {
+										case '/': // Prefix: "/"
+											if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+												elem = elem[len(prefix):]
+											} else {
+												break
+											}
+
+											// Param: "discussion_number"
+											// Match until one of "/"
+											idx := strings.IndexAny(elem, "/")
+											if idx > 0 {
+												args["discussion_number"] = elem[:idx]
+												elem = elem[idx:]
+
+												if len(elem) == 0 {
+													break
+												}
+												switch elem[0] {
+												case '/': // Prefix: "/"
+													if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+														elem = elem[len(prefix):]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														s.handleReactionsCreateForTeamDiscussionInOrgRequest(args, w, r)
+														return
+													}
+													switch elem[0] {
+													case 'c': // Prefix: "comments"
+														if prefix := "comments"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+															elem = elem[len(prefix):]
+														} else {
+															break
+														}
+
+														if len(elem) == 0 {
+															s.handleTeamsCreateDiscussionCommentInOrgRequest(args, w, r)
+															return
+														}
+														switch elem[0] {
+														case '/': // Prefix: "/"
+															if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																elem = elem[len(prefix):]
+															} else {
+																break
+															}
+
+															if len(elem) == 0 {
+																break
+															}
+															switch elem[0] {
+															case 'r': // Prefix: "reactions"
+																if prefix := "reactions"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																	elem = elem[len(prefix):]
+																} else {
+																	break
+																}
+
+																// Leaf: ReactionsCreateForTeamDiscussionInOrg
+																s.handleReactionsCreateForTeamDiscussionInOrgRequest(args, w, r)
+																return
+															}
+															// Param: "comment_number"
+															// Match until one of "/"
+															idx := strings.IndexAny(elem, "/")
+															if idx > 0 {
+																args["comment_number"] = elem[:idx]
+																elem = elem[idx:]
+
+																if len(elem) == 0 {
+																	break
+																}
+																switch elem[0] {
+																case '/': // Prefix: "/reactions"
+																	if prefix := "/reactions"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																		elem = elem[len(prefix):]
+																	} else {
+																		break
+																	}
+
+																	// Leaf: ReactionsCreateForTeamDiscussionCommentInOrg
+																	s.handleReactionsCreateForTeamDiscussionCommentInOrgRequest(args, w, r)
+																	return
+																}
+															}
+														}
+													case 'r': // Prefix: "reactions"
+														if prefix := "reactions"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+															elem = elem[len(prefix):]
+														} else {
+															break
+														}
+
+														// Leaf: ReactionsCreateForTeamDiscussionInOrg
+														s.handleReactionsCreateForTeamDiscussionInOrgRequest(args, w, r)
+														return
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			case 'p': // Prefix: "projects/"
+				if prefix := "projects/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+					elem = elem[len(prefix):]
+				} else {
+					break
+				}
+
+				if len(elem) == 0 {
+					break
+				}
+				switch elem[0] {
+				case 'c': // Prefix: "columns/"
+					if prefix := "columns/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+						elem = elem[len(prefix):]
+					} else {
+						break
+					}
+
+					if len(elem) == 0 {
+						s.handleProjectsMoveColumnRequest(args, w, r)
+						return
+					}
+					switch elem[0] {
+					case 'c': // Prefix: "cards/"
+						if prefix := "cards/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+							elem = elem[len(prefix):]
+						} else {
+							break
+						}
+
+						// Param: "card_id"
+						// Match until one of "/"
+						idx := strings.IndexAny(elem, "/")
+						if idx > 0 {
+							args["card_id"] = elem[:idx]
+							elem = elem[idx:]
+
+							if len(elem) == 0 {
+								break
+							}
+							switch elem[0] {
+							case '/': // Prefix: "/moves"
+								if prefix := "/moves"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+									elem = elem[len(prefix):]
+								} else {
+									break
+								}
+
+								// Leaf: ProjectsMoveColumn
+								s.handleProjectsMoveColumnRequest(args, w, r)
+								return
+							}
+						}
+					}
+					// Param: "column_id"
+					// Match until one of "/"
+					idx := strings.IndexAny(elem, "/")
+					if idx > 0 {
+						args["column_id"] = elem[:idx]
+						elem = elem[idx:]
+
+						if len(elem) == 0 {
+							break
+						}
+						switch elem[0] {
+						case '/': // Prefix: "/moves"
+							if prefix := "/moves"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+								elem = elem[len(prefix):]
+							} else {
+								break
+							}
+
+							// Leaf: ProjectsMoveColumn
+							s.handleProjectsMoveColumnRequest(args, w, r)
+							return
+						}
+					}
+				}
+				// Param: "project_id"
+				// Match until one of "/"
+				idx := strings.IndexAny(elem, "/")
+				if idx > 0 {
+					args["project_id"] = elem[:idx]
+					elem = elem[idx:]
+
+					if len(elem) == 0 {
+						break
+					}
+					switch elem[0] {
+					case '/': // Prefix: "/columns"
+						if prefix := "/columns"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+							elem = elem[len(prefix):]
+						} else {
+							break
+						}
+
+						// Leaf: ProjectsCreateColumn
+						s.handleProjectsCreateColumnRequest(args, w, r)
+						return
+					}
+				}
+			case 'r': // Prefix: "repos/"
+				if prefix := "repos/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+					elem = elem[len(prefix):]
+				} else {
+					break
+				}
+
+				if len(elem) == 0 {
+					break
+				}
+				switch elem[0] {
+				case 'o': // Prefix: "orgs/"
+					if prefix := "orgs/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+						elem = elem[len(prefix):]
+					} else {
+						break
+					}
+
+					// Param: "org"
+					// Match until one of "/"
+					idx := strings.IndexAny(elem, "/")
+					if idx > 0 {
+						args["org"] = elem[:idx]
+						elem = elem[idx:]
+
+						if len(elem) == 0 {
+							break
+						}
+						switch elem[0] {
+						case '/': // Prefix: "/actions/runners/registration-token"
+							if prefix := "/actions/runners/registration-token"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+								elem = elem[len(prefix):]
+							} else {
+								break
+							}
+
+							// Leaf: ActionsCreateRegistrationTokenForOrg
+							s.handleActionsCreateRegistrationTokenForOrgRequest(args, w, r)
+							return
+						}
+					}
+				}
+				// Param: "owner"
+				// Match until one of "/"
+				idx := strings.IndexAny(elem, "/")
+				if idx > 0 {
+					args["owner"] = elem[:idx]
+					elem = elem[idx:]
+
+					if len(elem) == 0 {
+						break
+					}
+					switch elem[0] {
+					case '/': // Prefix: "/"
+						if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+							elem = elem[len(prefix):]
+						} else {
+							break
+						}
+
+						// Param: "repo"
+						// Match until one of "/"
+						idx := strings.IndexAny(elem, "/")
+						if idx > 0 {
+							args["repo"] = elem[:idx]
+							elem = elem[idx:]
+
+							if len(elem) == 0 {
+								break
+							}
+							switch elem[0] {
+							case '/': // Prefix: "/"
+								if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+									elem = elem[len(prefix):]
+								} else {
+									break
+								}
+
+								if len(elem) == 0 {
+									s.handleAppsCreateContentAttachmentRequest(args, w, r)
+									return
+								}
+								switch elem[0] {
+								case 'a': // Prefix: "a"
+									if prefix := "a"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+										elem = elem[len(prefix):]
+									} else {
+										break
+									}
+
+									if len(elem) == 0 {
+										s.handleReposCreateAutolinkRequest(args, w, r)
+										return
+									}
+									switch elem[0] {
+									case 'c': // Prefix: "ctions/run"
+										if prefix := "ctions/run"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+											elem = elem[len(prefix):]
+										} else {
+											break
+										}
+
+										if len(elem) == 0 {
+											s.handleActionsCreateRegistrationTokenForRepoRequest(args, w, r)
+											return
+										}
+										switch elem[0] {
+										case 'c': // Prefix: "content_references/"
+											if prefix := "content_references/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+												elem = elem[len(prefix):]
+											} else {
+												break
+											}
+
+											// Param: "content_reference_id"
+											// Match until one of "/"
+											idx := strings.IndexAny(elem, "/")
+											if idx > 0 {
+												args["content_reference_id"] = elem[:idx]
+												elem = elem[idx:]
+
+												if len(elem) == 0 {
+													break
+												}
+												switch elem[0] {
+												case '/': // Prefix: "/attachments"
+													if prefix := "/attachments"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+														elem = elem[len(prefix):]
+													} else {
+														break
+													}
+
+													// Leaf: AppsCreateContentAttachment
+													s.handleAppsCreateContentAttachmentRequest(args, w, r)
+													return
+												}
+											}
+										case 'n': // Prefix: "ners/re"
+											if prefix := "ners/re"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+												elem = elem[len(prefix):]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												s.handleActionsCreateRemoveTokenForRepoRequest(args, w, r)
+												return
+											}
+											switch elem[0] {
+											case 'g': // Prefix: "gistration-token"
+												if prefix := "gistration-token"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+													elem = elem[len(prefix):]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													s.handleActionsCreateRegistrationTokenForRepoRequest(args, w, r)
+													return
+												}
+												switch elem[0] {
+												case 'm': // Prefix: "move-token"
+													if prefix := "move-token"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+														elem = elem[len(prefix):]
+													} else {
+														break
+													}
+
+													// Leaf: ActionsCreateRemoveTokenForRepo
+													s.handleActionsCreateRemoveTokenForRepoRequest(args, w, r)
+													return
+												}
+											case 'm': // Prefix: "move-token"
+												if prefix := "move-token"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+													elem = elem[len(prefix):]
+												} else {
+													break
+												}
+
+												// Leaf: ActionsCreateRemoveTokenForRepo
+												s.handleActionsCreateRemoveTokenForRepoRequest(args, w, r)
+												return
+											}
+										case 's': // Prefix: "s/"
+											if prefix := "s/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+												elem = elem[len(prefix):]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												break
+											}
+											switch elem[0] {
+											case 'n': // Prefix: "ners/registration-token"
+												if prefix := "ners/registration-token"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+													elem = elem[len(prefix):]
+												} else {
+													break
+												}
+
+												// Leaf: ActionsCreateRegistrationTokenForRepo
+												s.handleActionsCreateRegistrationTokenForRepoRequest(args, w, r)
+												return
+											}
+											// Param: "run_id"
+											// Match until one of "/"
+											idx := strings.IndexAny(elem, "/")
+											if idx > 0 {
+												args["run_id"] = elem[:idx]
+												elem = elem[idx:]
+
+												if len(elem) == 0 {
+													break
+												}
+												switch elem[0] {
+												case '/': // Prefix: "/"
+													if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+														elem = elem[len(prefix):]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														s.handleActionsCancelWorkflowRunRequest(args, w, r)
+														return
+													}
+													switch elem[0] {
+													case 'a': // Prefix: "approve"
+														if prefix := "approve"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+															elem = elem[len(prefix):]
+														} else {
+															break
+														}
+
+														if len(elem) == 0 {
+															s.handleActionsApproveWorkflowRunRequest(args, w, r)
+															return
+														}
+														switch elem[0] {
+														case 'c': // Prefix: "cancel"
+															if prefix := "cancel"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																elem = elem[len(prefix):]
+															} else {
+																break
+															}
+
+															// Leaf: ActionsCancelWorkflowRun
+															s.handleActionsCancelWorkflowRunRequest(args, w, r)
+															return
+														}
+													case 'c': // Prefix: "cancel"
+														if prefix := "cancel"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+															elem = elem[len(prefix):]
+														} else {
+															break
+														}
+
+														// Leaf: ActionsCancelWorkflowRun
+														s.handleActionsCancelWorkflowRunRequest(args, w, r)
+														return
+													case 'p': // Prefix: "pending_deployments"
+														if prefix := "pending_deployments"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+															elem = elem[len(prefix):]
+														} else {
+															break
+														}
+
+														// Leaf: ActionsReviewPendingDeploymentsForRun
+														s.handleActionsReviewPendingDeploymentsForRunRequest(args, w, r)
+														return
+													case 'r': // Prefix: "re"
+														if prefix := "re"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+															elem = elem[len(prefix):]
+														} else {
+															break
+														}
+
+														if len(elem) == 0 {
+															s.handleActionsRetryWorkflowRequest(args, w, r)
+															return
+														}
+														switch elem[0] {
+														case 'r': // Prefix: "run"
+															if prefix := "run"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																elem = elem[len(prefix):]
+															} else {
+																break
+															}
+
+															if len(elem) == 0 {
+																s.handleActionsReRunWorkflowRequest(args, w, r)
+																return
+															}
+															switch elem[0] {
+															case 't': // Prefix: "try"
+																if prefix := "try"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																	elem = elem[len(prefix):]
+																} else {
+																	break
+																}
+
+																// Leaf: ActionsRetryWorkflow
+																s.handleActionsRetryWorkflowRequest(args, w, r)
+																return
+															}
+														case 't': // Prefix: "try"
+															if prefix := "try"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																elem = elem[len(prefix):]
+															} else {
+																break
+															}
+
+															// Leaf: ActionsRetryWorkflow
+															s.handleActionsRetryWorkflowRequest(args, w, r)
+															return
+														}
+													}
+												}
+											}
+										case 'u': // Prefix: "utolinks"
+											if prefix := "utolinks"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+												elem = elem[len(prefix):]
+											} else {
+												break
+											}
+
+											// Leaf: ReposCreateAutolink
+											s.handleReposCreateAutolinkRequest(args, w, r)
+											return
+										}
+									case 'u': // Prefix: "utolinks"
+										if prefix := "utolinks"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+											elem = elem[len(prefix):]
+										} else {
+											break
+										}
+
+										// Leaf: ReposCreateAutolink
+										s.handleReposCreateAutolinkRequest(args, w, r)
+										return
+									}
+								case 'b': // Prefix: "branches/"
+									if prefix := "branches/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+										elem = elem[len(prefix):]
+									} else {
+										break
+									}
+
+									// Param: "branch"
+									// Match until one of "/"
+									idx := strings.IndexAny(elem, "/")
+									if idx > 0 {
+										args["branch"] = elem[:idx]
+										elem = elem[idx:]
+
+										if len(elem) == 0 {
+											break
+										}
+										switch elem[0] {
+										case '/': // Prefix: "/"
+											if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+												elem = elem[len(prefix):]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												s.handleReposRenameBranchRequest(args, w, r)
+												return
+											}
+											switch elem[0] {
+											case 'p': // Prefix: "protection/"
+												if prefix := "protection/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+													elem = elem[len(prefix):]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													s.handleReposSetAdminBranchProtectionRequest(args, w, r)
+													return
+												}
+												switch elem[0] {
+												case 'e': // Prefix: "enforce_admins"
+													if prefix := "enforce_admins"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+														elem = elem[len(prefix):]
+													} else {
+														break
+													}
+
+													// Leaf: ReposSetAdminBranchProtection
+													s.handleReposSetAdminBranchProtectionRequest(args, w, r)
+													return
+												case 'r': // Prefix: "re"
+													if prefix := "re"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+														elem = elem[len(prefix):]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														s.handleReposAddStatusCheckContextsRequest(args, w, r)
+														return
+													}
+													switch elem[0] {
+													case 'e': // Prefix: "enforce_admins"
+														if prefix := "enforce_admins"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+															elem = elem[len(prefix):]
+														} else {
+															break
+														}
+
+														// Leaf: ReposSetAdminBranchProtection
+														s.handleReposSetAdminBranchProtectionRequest(args, w, r)
+														return
+													case 'q': // Prefix: "quired_s"
+														if prefix := "quired_s"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+															elem = elem[len(prefix):]
+														} else {
+															break
+														}
+
+														if len(elem) == 0 {
+															s.handleReposCreateCommitSignatureProtectionRequest(args, w, r)
+															return
+														}
+														switch elem[0] {
+														case 'i': // Prefix: "ignatures"
+															if prefix := "ignatures"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																elem = elem[len(prefix):]
+															} else {
+																break
+															}
+
+															// Leaf: ReposCreateCommitSignatureProtection
+															s.handleReposCreateCommitSignatureProtectionRequest(args, w, r)
+															return
+														case 't': // Prefix: "tatus_checks/contexts"
+															if prefix := "tatus_checks/contexts"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																elem = elem[len(prefix):]
+															} else {
+																break
+															}
+
+															if len(elem) == 0 {
+																s.handleReposAddStatusCheckContextsRequest(args, w, r)
+																return
+															}
+															switch elem[0] {
+															case 'i': // Prefix: "ignatures"
+																if prefix := "ignatures"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																	elem = elem[len(prefix):]
+																} else {
+																	break
+																}
+
+																// Leaf: ReposCreateCommitSignatureProtection
+																s.handleReposCreateCommitSignatureProtectionRequest(args, w, r)
+																return
+															}
+														}
+													case 'r': // Prefix: "rename"
+														if prefix := "rename"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+															elem = elem[len(prefix):]
+														} else {
+															break
+														}
+
+														// Leaf: ReposRenameBranch
+														s.handleReposRenameBranchRequest(args, w, r)
+														return
+													case 's': // Prefix: "strictions/"
+														if prefix := "strictions/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+															elem = elem[len(prefix):]
+														} else {
+															break
+														}
+
+														if len(elem) == 0 {
+															s.handleReposAddTeamAccessRestrictionsRequest(args, w, r)
+															return
+														}
+														switch elem[0] {
+														case 'a': // Prefix: "apps"
+															if prefix := "apps"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																elem = elem[len(prefix):]
+															} else {
+																break
+															}
+
+															if len(elem) == 0 {
+																s.handleReposAddAppAccessRestrictionsRequest(args, w, r)
+																return
+															}
+															switch elem[0] {
+															case 'q': // Prefix: "quired_status_checks/contexts"
+																if prefix := "quired_status_checks/contexts"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																	elem = elem[len(prefix):]
+																} else {
+																	break
+																}
+
+																// Leaf: ReposAddStatusCheckContexts
+																s.handleReposAddStatusCheckContextsRequest(args, w, r)
+																return
+															case 't': // Prefix: "teams"
+																if prefix := "teams"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																	elem = elem[len(prefix):]
+																} else {
+																	break
+																}
+
+																// Leaf: ReposAddTeamAccessRestrictions
+																s.handleReposAddTeamAccessRestrictionsRequest(args, w, r)
+																return
+															}
+														case 't': // Prefix: "teams"
+															if prefix := "teams"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																elem = elem[len(prefix):]
+															} else {
+																break
+															}
+
+															// Leaf: ReposAddTeamAccessRestrictions
+															s.handleReposAddTeamAccessRestrictionsRequest(args, w, r)
+															return
+														case 'u': // Prefix: "users"
+															if prefix := "users"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																elem = elem[len(prefix):]
+															} else {
+																break
+															}
+
+															// Leaf: ReposAddUserAccessRestrictions
+															s.handleReposAddUserAccessRestrictionsRequest(args, w, r)
+															return
+														}
+													}
+												}
+											case 'r': // Prefix: "rename"
+												if prefix := "rename"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+													elem = elem[len(prefix):]
+												} else {
+													break
+												}
+
+												// Leaf: ReposRenameBranch
+												s.handleReposRenameBranchRequest(args, w, r)
+												return
+											}
+										}
+									}
+								case 'c': // Prefix: "c"
+									if prefix := "c"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+										elem = elem[len(prefix):]
+									} else {
+										break
+									}
+
+									if len(elem) == 0 {
+										s.handleChecksCreateSuiteRequest(args, w, r)
+										return
+									}
+									switch elem[0] {
+									case 'h': // Prefix: "heck-suites"
+										if prefix := "heck-suites"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+											elem = elem[len(prefix):]
+										} else {
+											break
+										}
+
+										if len(elem) == 0 {
+											s.handleChecksCreateSuiteRequest(args, w, r)
+											return
+										}
+										switch elem[0] {
+										case '/': // Prefix: "/"
+											if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+												elem = elem[len(prefix):]
+											} else {
+												break
+											}
+
+											// Param: "check_suite_id"
+											// Match until one of "/"
+											idx := strings.IndexAny(elem, "/")
+											if idx > 0 {
+												args["check_suite_id"] = elem[:idx]
+												elem = elem[idx:]
+
+												if len(elem) == 0 {
+													break
+												}
+												switch elem[0] {
+												case '/': // Prefix: "/rerequest"
+													if prefix := "/rerequest"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+														elem = elem[len(prefix):]
+													} else {
+														break
+													}
+
+													// Leaf: ChecksRerequestSuite
+													s.handleChecksRerequestSuiteRequest(args, w, r)
+													return
+												}
+											}
+										}
+									case 'o': // Prefix: "o"
+										if prefix := "o"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+											elem = elem[len(prefix):]
+										} else {
+											break
+										}
+
+										if len(elem) == 0 {
+											s.handleCodeScanningUploadSarifRequest(args, w, r)
+											return
+										}
+										switch elem[0] {
+										case 'd': // Prefix: "de-scanning/sarifs"
+											if prefix := "de-scanning/sarifs"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+												elem = elem[len(prefix):]
+											} else {
+												break
+											}
+
+											// Leaf: CodeScanningUploadSarif
+											s.handleCodeScanningUploadSarifRequest(args, w, r)
+											return
+										case 'm': // Prefix: "mm"
+											if prefix := "mm"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+												elem = elem[len(prefix):]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												s.handleReposCreateCommitCommentRequest(args, w, r)
+												return
+											}
+											switch elem[0] {
+											case 'e': // Prefix: "ents/"
+												if prefix := "ents/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+													elem = elem[len(prefix):]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													break
+												}
+												switch elem[0] {
+												case 'i': // Prefix: "its/"
+													if prefix := "its/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+														elem = elem[len(prefix):]
+													} else {
+														break
+													}
+
+													// Param: "commit_sha"
+													// Match until one of "/"
+													idx := strings.IndexAny(elem, "/")
+													if idx > 0 {
+														args["commit_sha"] = elem[:idx]
+														elem = elem[idx:]
+
+														if len(elem) == 0 {
+															break
+														}
+														switch elem[0] {
+														case '/': // Prefix: "/comments"
+															if prefix := "/comments"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																elem = elem[len(prefix):]
+															} else {
+																break
+															}
+
+															// Leaf: ReposCreateCommitComment
+															s.handleReposCreateCommitCommentRequest(args, w, r)
+															return
+														}
+													}
+												}
+												// Param: "comment_id"
+												// Match until one of "/"
+												idx := strings.IndexAny(elem, "/")
+												if idx > 0 {
+													args["comment_id"] = elem[:idx]
+													elem = elem[idx:]
+
+													if len(elem) == 0 {
+														break
+													}
+													switch elem[0] {
+													case '/': // Prefix: "/reactions"
+														if prefix := "/reactions"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+															elem = elem[len(prefix):]
+														} else {
+															break
+														}
+
+														// Leaf: ReactionsCreateForCommitComment
+														s.handleReactionsCreateForCommitCommentRequest(args, w, r)
+														return
+													}
+												}
+											case 'i': // Prefix: "its/"
+												if prefix := "its/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+													elem = elem[len(prefix):]
+												} else {
+													break
+												}
+
+												// Param: "commit_sha"
+												// Match until one of "/"
+												idx := strings.IndexAny(elem, "/")
+												if idx > 0 {
+													args["commit_sha"] = elem[:idx]
+													elem = elem[idx:]
+
+													if len(elem) == 0 {
+														break
+													}
+													switch elem[0] {
+													case '/': // Prefix: "/comments"
+														if prefix := "/comments"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+															elem = elem[len(prefix):]
+														} else {
+															break
+														}
+
+														// Leaf: ReposCreateCommitComment
+														s.handleReposCreateCommitCommentRequest(args, w, r)
+														return
+													}
+												}
+											}
+										case 'n': // Prefix: "ntent_references/"
+											if prefix := "ntent_references/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+												elem = elem[len(prefix):]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												break
+											}
+											switch elem[0] {
+											case 'd': // Prefix: "de-scanning/sarifs"
+												if prefix := "de-scanning/sarifs"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+													elem = elem[len(prefix):]
+												} else {
+													break
+												}
+
+												// Leaf: CodeScanningUploadSarif
+												s.handleCodeScanningUploadSarifRequest(args, w, r)
+												return
+											case 'h': // Prefix: "heck-suites"
+												if prefix := "heck-suites"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+													elem = elem[len(prefix):]
+												} else {
+													break
+												}
+
+												// Leaf: ChecksCreateSuite
+												s.handleChecksCreateSuiteRequest(args, w, r)
+												return
+											}
+											// Param: "content_reference_id"
+											// Match until one of "/"
+											idx := strings.IndexAny(elem, "/")
+											if idx > 0 {
+												args["content_reference_id"] = elem[:idx]
+												elem = elem[idx:]
+
+												if len(elem) == 0 {
+													break
+												}
+												switch elem[0] {
+												case '/': // Prefix: "/attachments"
+													if prefix := "/attachments"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+														elem = elem[len(prefix):]
+													} else {
+														break
+													}
+
+													// Leaf: AppsCreateContentAttachment
+													s.handleAppsCreateContentAttachmentRequest(args, w, r)
+													return
+												}
+											}
+										}
+									}
+								case 'd': // Prefix: "d"
+									if prefix := "d"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+										elem = elem[len(prefix):]
+									} else {
+										break
+									}
+
+									if len(elem) == 0 {
+										s.handleReposCreateDispatchEventRequest(args, w, r)
+										return
+									}
+									switch elem[0] {
+									case 'e': // Prefix: "eployments"
+										if prefix := "eployments"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+											elem = elem[len(prefix):]
+										} else {
+											break
+										}
+
+										if len(elem) == 0 {
+											s.handleReposCreateDeploymentRequest(args, w, r)
+											return
+										}
+										switch elem[0] {
+										case '/': // Prefix: "/"
+											if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+												elem = elem[len(prefix):]
+											} else {
+												break
+											}
+
+											// Param: "deployment_id"
+											// Match until one of "/"
+											idx := strings.IndexAny(elem, "/")
+											if idx > 0 {
+												args["deployment_id"] = elem[:idx]
+												elem = elem[idx:]
+
+												if len(elem) == 0 {
+													break
+												}
+												switch elem[0] {
+												case '/': // Prefix: "/statuses"
+													if prefix := "/statuses"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+														elem = elem[len(prefix):]
+													} else {
+														break
+													}
+
+													// Leaf: ReposCreateDeploymentStatus
+													s.handleReposCreateDeploymentStatusRequest(args, w, r)
+													return
+												}
+											}
+										case 'i': // Prefix: "ispatches"
+											if prefix := "ispatches"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+												elem = elem[len(prefix):]
+											} else {
+												break
+											}
+
+											// Leaf: ReposCreateDispatchEvent
+											s.handleReposCreateDispatchEventRequest(args, w, r)
+											return
+										}
+									case 'i': // Prefix: "ispatches"
+										if prefix := "ispatches"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+											elem = elem[len(prefix):]
+										} else {
+											break
+										}
+
+										// Leaf: ReposCreateDispatchEvent
+										s.handleReposCreateDispatchEventRequest(args, w, r)
+										return
+									}
+								case 'f': // Prefix: "forks"
+									if prefix := "forks"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+										elem = elem[len(prefix):]
+									} else {
+										break
+									}
+
+									// Leaf: ReposCreateFork
+									s.handleReposCreateForkRequest(args, w, r)
+									return
+								case 'g': // Prefix: "g"
+									if prefix := "g"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+										elem = elem[len(prefix):]
+									} else {
+										break
+									}
+
+									if len(elem) == 0 {
+										s.handleReposCreateUsingTemplateRequest(args, w, r)
+										return
+									}
+									switch elem[0] {
+									case 'e': // Prefix: "enerate"
+										if prefix := "enerate"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+											elem = elem[len(prefix):]
+										} else {
+											break
+										}
+
+										// Leaf: ReposCreateUsingTemplate
+										s.handleReposCreateUsingTemplateRequest(args, w, r)
+										return
+									case 'i': // Prefix: "it/"
+										if prefix := "it/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+											elem = elem[len(prefix):]
+										} else {
+											break
+										}
+
+										if len(elem) == 0 {
+											s.handleGitCreateCommitRequest(args, w, r)
+											return
+										}
+										switch elem[0] {
+										case 'b': // Prefix: "blobs"
+											if prefix := "blobs"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+												elem = elem[len(prefix):]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												s.handleGitCreateBlobRequest(args, w, r)
+												return
+											}
+											switch elem[0] {
+											case 'c': // Prefix: "commits"
+												if prefix := "commits"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+													elem = elem[len(prefix):]
+												} else {
+													break
+												}
+
+												// Leaf: GitCreateCommit
+												s.handleGitCreateCommitRequest(args, w, r)
+												return
+											}
+										case 'c': // Prefix: "commits"
+											if prefix := "commits"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+												elem = elem[len(prefix):]
+											} else {
+												break
+											}
+
+											// Leaf: GitCreateCommit
+											s.handleGitCreateCommitRequest(args, w, r)
+											return
+										case 'e': // Prefix: "enerate"
+											if prefix := "enerate"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+												elem = elem[len(prefix):]
+											} else {
+												break
+											}
+
+											// Leaf: ReposCreateUsingTemplate
+											s.handleReposCreateUsingTemplateRequest(args, w, r)
+											return
+										case 'r': // Prefix: "refs"
+											if prefix := "refs"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+												elem = elem[len(prefix):]
+											} else {
+												break
+											}
+
+											// Leaf: GitCreateRef
+											s.handleGitCreateRefRequest(args, w, r)
+											return
+										case 't': // Prefix: "t"
+											if prefix := "t"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+												elem = elem[len(prefix):]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												s.handleGitCreateTreeRequest(args, w, r)
+												return
+											}
+											switch elem[0] {
+											case 'a': // Prefix: "ags"
+												if prefix := "ags"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+													elem = elem[len(prefix):]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													s.handleGitCreateTagRequest(args, w, r)
+													return
+												}
+												switch elem[0] {
+												case 'r': // Prefix: "rees"
+													if prefix := "rees"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+														elem = elem[len(prefix):]
+													} else {
+														break
+													}
+
+													// Leaf: GitCreateTree
+													s.handleGitCreateTreeRequest(args, w, r)
+													return
+												}
+											case 'r': // Prefix: "rees"
+												if prefix := "rees"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+													elem = elem[len(prefix):]
+												} else {
+													break
+												}
+
+												// Leaf: GitCreateTree
+												s.handleGitCreateTreeRequest(args, w, r)
+												return
+											}
+										}
+									}
+								case 'h': // Prefix: "hooks"
+									if prefix := "hooks"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+										elem = elem[len(prefix):]
+									} else {
+										break
+									}
+
+									if len(elem) == 0 {
+										s.handleReposCreateWebhookRequest(args, w, r)
+										return
+									}
+									switch elem[0] {
+									case '/': // Prefix: "/"
+										if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+											elem = elem[len(prefix):]
+										} else {
+											break
+										}
+
+										// Param: "hook_id"
+										// Match until one of "/"
+										idx := strings.IndexAny(elem, "/")
+										if idx > 0 {
+											args["hook_id"] = elem[:idx]
+											elem = elem[idx:]
+
+											if len(elem) == 0 {
+												break
+											}
+											switch elem[0] {
+											case '/': // Prefix: "/"
+												if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+													elem = elem[len(prefix):]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													s.handleReposRedeliverWebhookDeliveryRequest(args, w, r)
+													return
+												}
+												switch elem[0] {
+												case 'd': // Prefix: "deliveries/"
+													if prefix := "deliveries/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+														elem = elem[len(prefix):]
+													} else {
+														break
+													}
+
+													// Param: "delivery_id"
+													// Match until one of "/"
+													idx := strings.IndexAny(elem, "/")
+													if idx > 0 {
+														args["delivery_id"] = elem[:idx]
+														elem = elem[idx:]
+
+														if len(elem) == 0 {
+															break
+														}
+														switch elem[0] {
+														case '/': // Prefix: "/attempts"
+															if prefix := "/attempts"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																elem = elem[len(prefix):]
+															} else {
+																break
+															}
+
+															// Leaf: ReposRedeliverWebhookDelivery
+															s.handleReposRedeliverWebhookDeliveryRequest(args, w, r)
+															return
+														}
+													}
+												case 'p': // Prefix: "pings"
+													if prefix := "pings"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+														elem = elem[len(prefix):]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														s.handleReposPingWebhookRequest(args, w, r)
+														return
+													}
+													switch elem[0] {
+													case 'd': // Prefix: "deliveries/"
+														if prefix := "deliveries/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+															elem = elem[len(prefix):]
+														} else {
+															break
+														}
+
+														// Param: "delivery_id"
+														// Match until one of "/"
+														idx := strings.IndexAny(elem, "/")
+														if idx > 0 {
+															args["delivery_id"] = elem[:idx]
+															elem = elem[idx:]
+
+															if len(elem) == 0 {
+																break
+															}
+															switch elem[0] {
+															case '/': // Prefix: "/attempts"
+																if prefix := "/attempts"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																	elem = elem[len(prefix):]
+																} else {
+																	break
+																}
+
+																// Leaf: ReposRedeliverWebhookDelivery
+																s.handleReposRedeliverWebhookDeliveryRequest(args, w, r)
+																return
+															}
+														}
+													}
+												case 't': // Prefix: "tests"
+													if prefix := "tests"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+														elem = elem[len(prefix):]
+													} else {
+														break
+													}
+
+													// Leaf: ReposTestPushWebhook
+													s.handleReposTestPushWebhookRequest(args, w, r)
+													return
+												}
+											}
+										}
+									}
+								case 'i': // Prefix: "issues"
+									if prefix := "issues"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+										elem = elem[len(prefix):]
+									} else {
+										break
+									}
+
+									if len(elem) == 0 {
+										s.handleIssuesCreateRequest(args, w, r)
+										return
+									}
+									switch elem[0] {
+									case '/': // Prefix: "/"
+										if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+											elem = elem[len(prefix):]
+										} else {
+											break
+										}
+
+										if len(elem) == 0 {
+											break
+										}
+										switch elem[0] {
+										case 'c': // Prefix: "comments/"
+											if prefix := "comments/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+												elem = elem[len(prefix):]
+											} else {
+												break
+											}
+
+											// Param: "comment_id"
+											// Match until one of "/"
+											idx := strings.IndexAny(elem, "/")
+											if idx > 0 {
+												args["comment_id"] = elem[:idx]
+												elem = elem[idx:]
+
+												if len(elem) == 0 {
+													break
+												}
+												switch elem[0] {
+												case '/': // Prefix: "/reactions"
+													if prefix := "/reactions"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+														elem = elem[len(prefix):]
+													} else {
+														break
+													}
+
+													// Leaf: ReactionsCreateForIssueComment
+													s.handleReactionsCreateForIssueCommentRequest(args, w, r)
+													return
+												}
+											}
+										}
+										// Param: "issue_number"
+										// Match until one of "/"
+										idx := strings.IndexAny(elem, "/")
+										if idx > 0 {
+											args["issue_number"] = elem[:idx]
+											elem = elem[idx:]
+
+											if len(elem) == 0 {
+												break
+											}
+											switch elem[0] {
+											case '/': // Prefix: "/"
+												if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+													elem = elem[len(prefix):]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													s.handleIssuesCreateCommentRequest(args, w, r)
+													return
+												}
+												switch elem[0] {
+												case 'a': // Prefix: "assignees"
+													if prefix := "assignees"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+														elem = elem[len(prefix):]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														s.handleIssuesAddAssigneesRequest(args, w, r)
+														return
+													}
+													switch elem[0] {
+													case 'c': // Prefix: "comments"
+														if prefix := "comments"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+															elem = elem[len(prefix):]
+														} else {
+															break
+														}
+
+														// Leaf: IssuesCreateComment
+														s.handleIssuesCreateCommentRequest(args, w, r)
+														return
+													}
+												case 'c': // Prefix: "comments"
+													if prefix := "comments"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+														elem = elem[len(prefix):]
+													} else {
+														break
+													}
+
+													// Leaf: IssuesCreateComment
+													s.handleIssuesCreateCommentRequest(args, w, r)
+													return
+												case 'r': // Prefix: "reactions"
+													if prefix := "reactions"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+														elem = elem[len(prefix):]
+													} else {
+														break
+													}
+
+													// Leaf: ReactionsCreateForIssue
+													s.handleReactionsCreateForIssueRequest(args, w, r)
+													return
+												}
+											}
+										}
+									}
+								case 'k': // Prefix: "keys"
+									if prefix := "keys"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+										elem = elem[len(prefix):]
+									} else {
+										break
+									}
+
+									// Leaf: ReposCreateDeployKey
+									s.handleReposCreateDeployKeyRequest(args, w, r)
+									return
+								case 'l': // Prefix: "labels"
+									if prefix := "labels"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+										elem = elem[len(prefix):]
+									} else {
+										break
+									}
+
+									// Leaf: IssuesCreateLabel
+									s.handleIssuesCreateLabelRequest(args, w, r)
+									return
+								case 'm': // Prefix: "m"
+									if prefix := "m"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+										elem = elem[len(prefix):]
+									} else {
+										break
+									}
+
+									if len(elem) == 0 {
+										s.handleReposMergeRequest(args, w, r)
+										return
+									}
+									switch elem[0] {
+									case 'e': // Prefix: "erge"
+										if prefix := "erge"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+											elem = elem[len(prefix):]
+										} else {
+											break
+										}
+
+										if len(elem) == 0 {
+											s.handleReposMergeUpstreamRequest(args, w, r)
+											return
+										}
+										switch elem[0] {
+										case '-': // Prefix: "-upstream"
+											if prefix := "-upstream"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+												elem = elem[len(prefix):]
+											} else {
+												break
+											}
+
+											// Leaf: ReposMergeUpstream
+											s.handleReposMergeUpstreamRequest(args, w, r)
+											return
+										case 's': // Prefix: "s"
+											if prefix := "s"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+												elem = elem[len(prefix):]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												s.handleReposMergeRequest(args, w, r)
+												return
+											}
+											switch elem[0] {
+											case '-': // Prefix: "-upstream"
+												if prefix := "-upstream"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+													elem = elem[len(prefix):]
+												} else {
+													break
+												}
+
+												// Leaf: ReposMergeUpstream
+												s.handleReposMergeUpstreamRequest(args, w, r)
+												return
+											}
+										}
+									case 'i': // Prefix: "ilestones"
+										if prefix := "ilestones"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+											elem = elem[len(prefix):]
+										} else {
+											break
+										}
+
+										if len(elem) == 0 {
+											s.handleIssuesCreateMilestoneRequest(args, w, r)
+											return
+										}
+										switch elem[0] {
+										case 'e': // Prefix: "erges"
+											if prefix := "erges"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+												elem = elem[len(prefix):]
+											} else {
+												break
+											}
+
+											// Leaf: ReposMerge
+											s.handleReposMergeRequest(args, w, r)
+											return
+										}
+									}
+								case 'p': // Prefix: "p"
+									if prefix := "p"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+										elem = elem[len(prefix):]
+									} else {
+										break
+									}
+
+									if len(elem) == 0 {
+										s.handlePullsCreateRequest(args, w, r)
+										return
+									}
+									switch elem[0] {
+									case 'a': // Prefix: "ages"
+										if prefix := "ages"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+											elem = elem[len(prefix):]
+										} else {
+											break
+										}
+
+										if len(elem) == 0 {
+											s.handleReposCreatePagesSiteRequest(args, w, r)
+											return
+										}
+										switch elem[0] {
+										case '/': // Prefix: "/builds"
+											if prefix := "/builds"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+												elem = elem[len(prefix):]
+											} else {
+												break
+											}
+
+											// Leaf: ReposRequestPagesBuild
+											s.handleReposRequestPagesBuildRequest(args, w, r)
+											return
+										}
+									case 'r': // Prefix: "rojects"
+										if prefix := "rojects"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+											elem = elem[len(prefix):]
+										} else {
+											break
+										}
+
+										if len(elem) == 0 {
+											s.handleProjectsCreateForRepoRequest(args, w, r)
+											return
+										}
+										switch elem[0] {
+										case 'u': // Prefix: "ulls"
+											if prefix := "ulls"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+												elem = elem[len(prefix):]
+											} else {
+												break
+											}
+
+											// Leaf: PullsCreate
+											s.handlePullsCreateRequest(args, w, r)
+											return
+										}
+									case 'u': // Prefix: "ulls"
+										if prefix := "ulls"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+											elem = elem[len(prefix):]
+										} else {
+											break
+										}
+
+										if len(elem) == 0 {
+											s.handlePullsCreateRequest(args, w, r)
+											return
+										}
+										switch elem[0] {
+										case '/': // Prefix: "/"
+											if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+												elem = elem[len(prefix):]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												break
+											}
+											switch elem[0] {
+											case 'c': // Prefix: "comments/"
+												if prefix := "comments/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+													elem = elem[len(prefix):]
+												} else {
+													break
+												}
+
+												// Param: "comment_id"
+												// Match until one of "/"
+												idx := strings.IndexAny(elem, "/")
+												if idx > 0 {
+													args["comment_id"] = elem[:idx]
+													elem = elem[idx:]
+
+													if len(elem) == 0 {
+														break
+													}
+													switch elem[0] {
+													case '/': // Prefix: "/reactions"
+														if prefix := "/reactions"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+															elem = elem[len(prefix):]
+														} else {
+															break
+														}
+
+														// Leaf: ReactionsCreateForPullRequestReviewComment
+														s.handleReactionsCreateForPullRequestReviewCommentRequest(args, w, r)
+														return
+													}
+												}
+											}
+											// Param: "pull_number"
+											// Match until one of "/"
+											idx := strings.IndexAny(elem, "/")
+											if idx > 0 {
+												args["pull_number"] = elem[:idx]
+												elem = elem[idx:]
+
+												if len(elem) == 0 {
+													break
+												}
+												switch elem[0] {
+												case '/': // Prefix: "/"
+													if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+														elem = elem[len(prefix):]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														s.handlePullsCreateReviewRequest(args, w, r)
+														return
+													}
+													switch elem[0] {
+													case 'c': // Prefix: "comments"
+														if prefix := "comments"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+															elem = elem[len(prefix):]
+														} else {
+															break
+														}
+
+														if len(elem) == 0 {
+															s.handlePullsCreateReviewCommentRequest(args, w, r)
+															return
+														}
+														switch elem[0] {
+														case '/': // Prefix: "/"
+															if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																elem = elem[len(prefix):]
+															} else {
+																break
+															}
+
+															if len(elem) == 0 {
+																break
+															}
+															switch elem[0] {
+															case 'r': // Prefix: "reviews"
+																if prefix := "reviews"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																	elem = elem[len(prefix):]
+																} else {
+																	break
+																}
+
+																// Leaf: PullsCreateReview
+																s.handlePullsCreateReviewRequest(args, w, r)
+																return
+															}
+															// Param: "comment_id"
+															// Match until one of "/"
+															idx := strings.IndexAny(elem, "/")
+															if idx > 0 {
+																args["comment_id"] = elem[:idx]
+																elem = elem[idx:]
+
+																if len(elem) == 0 {
+																	break
+																}
+																switch elem[0] {
+																case '/': // Prefix: "/replies"
+																	if prefix := "/replies"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																		elem = elem[len(prefix):]
+																	} else {
+																		break
+																	}
+
+																	// Leaf: PullsCreateReplyForReviewComment
+																	s.handlePullsCreateReplyForReviewCommentRequest(args, w, r)
+																	return
+																}
+															}
+														}
+													case 'r': // Prefix: "reviews"
+														if prefix := "reviews"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+															elem = elem[len(prefix):]
+														} else {
+															break
+														}
+
+														if len(elem) == 0 {
+															s.handlePullsCreateReviewRequest(args, w, r)
+															return
+														}
+														switch elem[0] {
+														case '/': // Prefix: "/"
+															if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																elem = elem[len(prefix):]
+															} else {
+																break
+															}
+
+															// Param: "review_id"
+															// Match until one of "/"
+															idx := strings.IndexAny(elem, "/")
+															if idx > 0 {
+																args["review_id"] = elem[:idx]
+																elem = elem[idx:]
+
+																if len(elem) == 0 {
+																	break
+																}
+																switch elem[0] {
+																case '/': // Prefix: "/events"
+																	if prefix := "/events"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																		elem = elem[len(prefix):]
+																	} else {
+																		break
+																	}
+
+																	// Leaf: PullsSubmitReview
+																	s.handlePullsSubmitReviewRequest(args, w, r)
+																	return
+																}
+															}
+														}
+													}
+												}
+											}
+										}
+									}
+								case 'r': // Prefix: "releases"
+									if prefix := "releases"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+										elem = elem[len(prefix):]
+									} else {
+										break
+									}
+
+									if len(elem) == 0 {
+										s.handleReposCreateReleaseRequest(args, w, r)
+										return
+									}
+									switch elem[0] {
+									case '/': // Prefix: "/"
+										if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+											elem = elem[len(prefix):]
+										} else {
+											break
+										}
+
+										// Param: "release_id"
+										// Match until one of "/"
+										idx := strings.IndexAny(elem, "/")
+										if idx > 0 {
+											args["release_id"] = elem[:idx]
+											elem = elem[idx:]
+
+											if len(elem) == 0 {
+												break
+											}
+											switch elem[0] {
+											case '/': // Prefix: "/reactions"
+												if prefix := "/reactions"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+													elem = elem[len(prefix):]
+												} else {
+													break
+												}
+
+												// Leaf: ReactionsCreateForRelease
+												s.handleReactionsCreateForReleaseRequest(args, w, r)
+												return
+											}
+										}
+									}
+								case 's': // Prefix: "statuses/"
+									if prefix := "statuses/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+										elem = elem[len(prefix):]
+									} else {
+										break
+									}
+
+									// Param: "sha"
+									// Leaf parameter
+									args["sha"] = elem
+
+									// Leaf: ReposCreateCommitStatus
+									s.handleReposCreateCommitStatusRequest(args, w, r)
+									return
+								case 't': // Prefix: "transfer"
+									if prefix := "transfer"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+										elem = elem[len(prefix):]
+									} else {
+										break
+									}
+
+									// Leaf: ReposTransfer
+									s.handleReposTransferRequest(args, w, r)
+									return
+								}
+							}
+						}
+					}
+				}
+			case 's': // Prefix: "scim/v2/enterprises/"
+				if prefix := "scim/v2/enterprises/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+					elem = elem[len(prefix):]
+				} else {
+					break
+				}
+
+				// Param: "enterprise"
+				// Match until one of "/"
+				idx := strings.IndexAny(elem, "/")
+				if idx > 0 {
+					args["enterprise"] = elem[:idx]
+					elem = elem[idx:]
+
+					if len(elem) == 0 {
+						break
+					}
+					switch elem[0] {
+					case '/': // Prefix: "/"
+						if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+							elem = elem[len(prefix):]
+						} else {
+							break
+						}
+
+						if len(elem) == 0 {
+							s.handleEnterpriseAdminProvisionAndInviteEnterpriseUserRequest(args, w, r)
+							return
+						}
+						switch elem[0] {
+						case 'G': // Prefix: "Groups"
+							if prefix := "Groups"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+								elem = elem[len(prefix):]
+							} else {
+								break
+							}
+
+							if len(elem) == 0 {
+								s.handleEnterpriseAdminProvisionAndInviteEnterpriseGroupRequest(args, w, r)
+								return
+							}
+							switch elem[0] {
+							case 'U': // Prefix: "Users"
+								if prefix := "Users"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+									elem = elem[len(prefix):]
+								} else {
+									break
+								}
+
+								// Leaf: EnterpriseAdminProvisionAndInviteEnterpriseUser
+								s.handleEnterpriseAdminProvisionAndInviteEnterpriseUserRequest(args, w, r)
+								return
+							}
+						case 'U': // Prefix: "Users"
+							if prefix := "Users"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+								elem = elem[len(prefix):]
+							} else {
+								break
+							}
+
+							// Leaf: EnterpriseAdminProvisionAndInviteEnterpriseUser
+							s.handleEnterpriseAdminProvisionAndInviteEnterpriseUserRequest(args, w, r)
+							return
+						}
+					}
+				}
+			case 't': // Prefix: "teams/"
+				if prefix := "teams/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+					elem = elem[len(prefix):]
+				} else {
+					break
+				}
+
+				// Param: "team_id"
+				// Match until one of "/"
+				idx := strings.IndexAny(elem, "/")
+				if idx > 0 {
+					args["team_id"] = elem[:idx]
+					elem = elem[idx:]
+
+					if len(elem) == 0 {
+						break
+					}
+					switch elem[0] {
+					case '/': // Prefix: "/discussions"
+						if prefix := "/discussions"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+							elem = elem[len(prefix):]
+						} else {
+							break
+						}
+
+						if len(elem) == 0 {
+							s.handleTeamsCreateDiscussionLegacyRequest(args, w, r)
+							return
+						}
+						switch elem[0] {
+						case '/': // Prefix: "/"
+							if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+								elem = elem[len(prefix):]
+							} else {
+								break
+							}
+
+							// Param: "discussion_number"
+							// Match until one of "/"
+							idx := strings.IndexAny(elem, "/")
+							if idx > 0 {
+								args["discussion_number"] = elem[:idx]
+								elem = elem[idx:]
+
+								if len(elem) == 0 {
+									break
+								}
+								switch elem[0] {
+								case '/': // Prefix: "/"
+									if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+										elem = elem[len(prefix):]
+									} else {
+										break
+									}
+
+									if len(elem) == 0 {
+										s.handleReactionsCreateForTeamDiscussionLegacyRequest(args, w, r)
+										return
+									}
+									switch elem[0] {
+									case 'c': // Prefix: "comments"
+										if prefix := "comments"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+											elem = elem[len(prefix):]
+										} else {
+											break
+										}
+
+										if len(elem) == 0 {
+											s.handleTeamsCreateDiscussionCommentLegacyRequest(args, w, r)
+											return
+										}
+										switch elem[0] {
+										case '/': // Prefix: "/"
+											if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+												elem = elem[len(prefix):]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												break
+											}
+											switch elem[0] {
+											case 'r': // Prefix: "reactions"
+												if prefix := "reactions"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+													elem = elem[len(prefix):]
+												} else {
+													break
+												}
+
+												// Leaf: ReactionsCreateForTeamDiscussionLegacy
+												s.handleReactionsCreateForTeamDiscussionLegacyRequest(args, w, r)
+												return
+											}
+											// Param: "comment_number"
+											// Match until one of "/"
+											idx := strings.IndexAny(elem, "/")
+											if idx > 0 {
+												args["comment_number"] = elem[:idx]
+												elem = elem[idx:]
+
+												if len(elem) == 0 {
+													break
+												}
+												switch elem[0] {
+												case '/': // Prefix: "/reactions"
+													if prefix := "/reactions"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+														elem = elem[len(prefix):]
+													} else {
+														break
+													}
+
+													// Leaf: ReactionsCreateForTeamDiscussionCommentLegacy
+													s.handleReactionsCreateForTeamDiscussionCommentLegacyRequest(args, w, r)
+													return
+												}
+											}
+										}
+									case 'r': // Prefix: "reactions"
+										if prefix := "reactions"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+											elem = elem[len(prefix):]
+										} else {
+											break
+										}
+
+										// Leaf: ReactionsCreateForTeamDiscussionLegacy
+										s.handleReactionsCreateForTeamDiscussionLegacyRequest(args, w, r)
+										return
+									}
+								}
+							}
+						}
+					}
+				}
+			case 'u': // Prefix: "user"
+				if prefix := "user"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+					elem = elem[len(prefix):]
+				} else {
+					break
+				}
+
+				if len(elem) == 0 {
+					s.handlePackagesRestorePackageForUserRequest(args, w, r)
+					return
+				}
+				switch elem[0] {
+				case '/': // Prefix: "/"
+					if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+						elem = elem[len(prefix):]
+					} else {
+						break
+					}
+
+					if len(elem) == 0 {
+						s.handlePackagesRestorePackageForAuthenticatedUserRequest(args, w, r)
+						return
+					}
+					switch elem[0] {
+					case 'e': // Prefix: "emails"
+						if prefix := "emails"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+							elem = elem[len(prefix):]
+						} else {
+							break
+						}
+
+						// Leaf: UsersAddEmailForAuthenticated
+						s.handleUsersAddEmailForAuthenticatedRequest(args, w, r)
+						return
+					case 'g': // Prefix: "gpg_keys"
+						if prefix := "gpg_keys"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+							elem = elem[len(prefix):]
+						} else {
+							break
+						}
+
+						// Leaf: UsersCreateGpgKeyForAuthenticated
+						s.handleUsersCreateGpgKeyForAuthenticatedRequest(args, w, r)
+						return
+					case 'k': // Prefix: "keys"
+						if prefix := "keys"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+							elem = elem[len(prefix):]
+						} else {
+							break
+						}
+
+						// Leaf: UsersCreatePublicSSHKeyForAuthenticated
+						s.handleUsersCreatePublicSSHKeyForAuthenticatedRequest(args, w, r)
+						return
+					case 'm': // Prefix: "migrations"
+						if prefix := "migrations"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+							elem = elem[len(prefix):]
+						} else {
+							break
+						}
+
+						if len(elem) == 0 {
+							s.handleMigrationsStartForAuthenticatedUserRequest(args, w, r)
+							return
+						}
+						switch elem[0] {
+						case 'p': // Prefix: "packages/"
+							if prefix := "packages/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+								elem = elem[len(prefix):]
+							} else {
+								break
+							}
+
+							// Param: "package_type"
+							// Match until one of "/"
+							idx := strings.IndexAny(elem, "/")
+							if idx > 0 {
+								args["package_type"] = elem[:idx]
+								elem = elem[idx:]
+
+								if len(elem) == 0 {
+									break
+								}
+								switch elem[0] {
+								case '/': // Prefix: "/"
+									if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+										elem = elem[len(prefix):]
+									} else {
+										break
+									}
+
+									// Param: "package_name"
+									// Match until one of "/"
+									idx := strings.IndexAny(elem, "/")
+									if idx > 0 {
+										args["package_name"] = elem[:idx]
+										elem = elem[idx:]
+
+										if len(elem) == 0 {
+											break
+										}
+										switch elem[0] {
+										case '/': // Prefix: "/restore"
+											if prefix := "/restore"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+												elem = elem[len(prefix):]
+											} else {
+												break
+											}
+
+											// Leaf: PackagesRestorePackageForAuthenticatedUser
+											s.handlePackagesRestorePackageForAuthenticatedUserRequest(args, w, r)
+											return
+										}
+									}
+								}
+							}
+						}
+					case 'p': // Prefix: "p"
+						if prefix := "p"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+							elem = elem[len(prefix):]
+						} else {
+							break
+						}
+
+						if len(elem) == 0 {
+							s.handleProjectsCreateForAuthenticatedUserRequest(args, w, r)
+							return
+						}
+						switch elem[0] {
+						case 'a': // Prefix: "ackages/"
+							if prefix := "ackages/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+								elem = elem[len(prefix):]
+							} else {
+								break
+							}
+
+							if len(elem) == 0 {
+								break
+							}
+							switch elem[0] {
+							case 'r': // Prefix: "rojects"
+								if prefix := "rojects"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+									elem = elem[len(prefix):]
+								} else {
+									break
+								}
+
+								// Leaf: ProjectsCreateForAuthenticatedUser
+								s.handleProjectsCreateForAuthenticatedUserRequest(args, w, r)
+								return
+							}
+							// Param: "package_type"
+							// Match until one of "/"
+							idx := strings.IndexAny(elem, "/")
+							if idx > 0 {
+								args["package_type"] = elem[:idx]
+								elem = elem[idx:]
+
+								if len(elem) == 0 {
+									break
+								}
+								switch elem[0] {
+								case '/': // Prefix: "/"
+									if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+										elem = elem[len(prefix):]
+									} else {
+										break
+									}
+
+									// Param: "package_name"
+									// Match until one of "/"
+									idx := strings.IndexAny(elem, "/")
+									if idx > 0 {
+										args["package_name"] = elem[:idx]
+										elem = elem[idx:]
+
+										if len(elem) == 0 {
+											break
+										}
+										switch elem[0] {
+										case '/': // Prefix: "/"
+											if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+												elem = elem[len(prefix):]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												s.handlePackagesRestorePackageVersionForAuthenticatedUserRequest(args, w, r)
+												return
+											}
+											switch elem[0] {
+											case 'r': // Prefix: "restore"
+												if prefix := "restore"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+													elem = elem[len(prefix):]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													s.handlePackagesRestorePackageForAuthenticatedUserRequest(args, w, r)
+													return
+												}
+												switch elem[0] {
+												case 'v': // Prefix: "versions/"
+													if prefix := "versions/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+														elem = elem[len(prefix):]
+													} else {
+														break
+													}
+
+													// Param: "package_version_id"
+													// Match until one of "/"
+													idx := strings.IndexAny(elem, "/")
+													if idx > 0 {
+														args["package_version_id"] = elem[:idx]
+														elem = elem[idx:]
+
+														if len(elem) == 0 {
+															break
+														}
+														switch elem[0] {
+														case '/': // Prefix: "/restore"
+															if prefix := "/restore"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																elem = elem[len(prefix):]
+															} else {
+																break
+															}
+
+															// Leaf: PackagesRestorePackageVersionForAuthenticatedUser
+															s.handlePackagesRestorePackageVersionForAuthenticatedUserRequest(args, w, r)
+															return
+														}
+													}
+												}
+											case 'v': // Prefix: "versions/"
+												if prefix := "versions/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+													elem = elem[len(prefix):]
+												} else {
+													break
+												}
+
+												// Param: "package_version_id"
+												// Match until one of "/"
+												idx := strings.IndexAny(elem, "/")
+												if idx > 0 {
+													args["package_version_id"] = elem[:idx]
+													elem = elem[idx:]
+
+													if len(elem) == 0 {
+														break
+													}
+													switch elem[0] {
+													case '/': // Prefix: "/restore"
+														if prefix := "/restore"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+															elem = elem[len(prefix):]
+														} else {
+															break
+														}
+
+														// Leaf: PackagesRestorePackageVersionForAuthenticatedUser
+														s.handlePackagesRestorePackageVersionForAuthenticatedUserRequest(args, w, r)
+														return
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+						case 'r': // Prefix: "rojects"
+							if prefix := "rojects"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+								elem = elem[len(prefix):]
+							} else {
+								break
+							}
+
+							// Leaf: ProjectsCreateForAuthenticatedUser
+							s.handleProjectsCreateForAuthenticatedUserRequest(args, w, r)
+							return
+						}
+					case 'r': // Prefix: "repos"
+						if prefix := "repos"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+							elem = elem[len(prefix):]
+						} else {
+							break
+						}
+
+						// Leaf: ReposCreateForAuthenticatedUser
+						s.handleReposCreateForAuthenticatedUserRequest(args, w, r)
+						return
+					case 's': // Prefix: "s/"
+						if prefix := "s/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+							elem = elem[len(prefix):]
+						} else {
+							break
+						}
+
+						// Param: "username"
+						// Match until one of "/"
+						idx := strings.IndexAny(elem, "/")
+						if idx > 0 {
+							args["username"] = elem[:idx]
+							elem = elem[idx:]
+
+							if len(elem) == 0 {
+								break
+							}
+							switch elem[0] {
+							case '/': // Prefix: "/packages/"
+								if prefix := "/packages/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+									elem = elem[len(prefix):]
+								} else {
+									break
+								}
+
+								// Param: "package_type"
+								// Match until one of "/"
+								idx := strings.IndexAny(elem, "/")
+								if idx > 0 {
+									args["package_type"] = elem[:idx]
+									elem = elem[idx:]
+
+									if len(elem) == 0 {
+										break
+									}
+									switch elem[0] {
+									case '/': // Prefix: "/"
+										if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+											elem = elem[len(prefix):]
+										} else {
+											break
+										}
+
+										// Param: "package_name"
+										// Match until one of "/"
+										idx := strings.IndexAny(elem, "/")
+										if idx > 0 {
+											args["package_name"] = elem[:idx]
+											elem = elem[idx:]
+
+											if len(elem) == 0 {
+												break
+											}
+											switch elem[0] {
+											case '/': // Prefix: "/restore"
+												if prefix := "/restore"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+													elem = elem[len(prefix):]
+												} else {
+													break
+												}
+
+												// Leaf: PackagesRestorePackageForUser
+												s.handlePackagesRestorePackageForUserRequest(args, w, r)
+												return
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				case 's': // Prefix: "s/"
+					if prefix := "s/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+						elem = elem[len(prefix):]
+					} else {
+						break
+					}
+
+					// Param: "username"
+					// Match until one of "/"
+					idx := strings.IndexAny(elem, "/")
+					if idx > 0 {
+						args["username"] = elem[:idx]
+						elem = elem[idx:]
+
+						if len(elem) == 0 {
+							break
+						}
+						switch elem[0] {
+						case '/': // Prefix: "/packages/"
+							if prefix := "/packages/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+								elem = elem[len(prefix):]
+							} else {
+								break
+							}
+
+							// Param: "package_type"
+							// Match until one of "/"
+							idx := strings.IndexAny(elem, "/")
+							if idx > 0 {
+								args["package_type"] = elem[:idx]
+								elem = elem[idx:]
+
+								if len(elem) == 0 {
+									break
+								}
+								switch elem[0] {
+								case '/': // Prefix: "/"
+									if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+										elem = elem[len(prefix):]
+									} else {
+										break
+									}
+
+									// Param: "package_name"
+									// Match until one of "/"
+									idx := strings.IndexAny(elem, "/")
+									if idx > 0 {
+										args["package_name"] = elem[:idx]
+										elem = elem[idx:]
+
+										if len(elem) == 0 {
+											break
+										}
+										switch elem[0] {
+										case '/': // Prefix: "/"
+											if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+												elem = elem[len(prefix):]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												s.handlePackagesRestorePackageVersionForUserRequest(args, w, r)
+												return
+											}
+											switch elem[0] {
+											case 'r': // Prefix: "restore"
+												if prefix := "restore"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+													elem = elem[len(prefix):]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													s.handlePackagesRestorePackageForUserRequest(args, w, r)
+													return
+												}
+												switch elem[0] {
+												case 'v': // Prefix: "versions/"
+													if prefix := "versions/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+														elem = elem[len(prefix):]
+													} else {
+														break
+													}
+
+													// Param: "package_version_id"
+													// Match until one of "/"
+													idx := strings.IndexAny(elem, "/")
+													if idx > 0 {
+														args["package_version_id"] = elem[:idx]
+														elem = elem[idx:]
+
+														if len(elem) == 0 {
+															break
+														}
+														switch elem[0] {
+														case '/': // Prefix: "/restore"
+															if prefix := "/restore"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																elem = elem[len(prefix):]
+															} else {
+																break
+															}
+
+															// Leaf: PackagesRestorePackageVersionForUser
+															s.handlePackagesRestorePackageVersionForUserRequest(args, w, r)
+															return
+														}
+													}
+												}
+											case 'v': // Prefix: "versions/"
+												if prefix := "versions/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+													elem = elem[len(prefix):]
+												} else {
+													break
+												}
+
+												// Param: "package_version_id"
+												// Match until one of "/"
+												idx := strings.IndexAny(elem, "/")
+												if idx > 0 {
+													args["package_version_id"] = elem[:idx]
+													elem = elem[idx:]
+
+													if len(elem) == 0 {
+														break
+													}
+													switch elem[0] {
+													case '/': // Prefix: "/restore"
+														if prefix := "/restore"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+															elem = elem[len(prefix):]
+														} else {
+															break
+														}
+
+														// Leaf: PackagesRestorePackageVersionForUser
+														s.handlePackagesRestorePackageVersionForUserRequest(args, w, r)
+														return
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	case "DELETE":
+		if len(elem) == 0 {
+			break
+		}
+		switch elem[0] {
+		case '/': // Prefix: "/"
+			if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+				elem = elem[len(prefix):]
+			} else {
+				break
+			}
+
+			if len(elem) == 0 {
+				s.handleActionsDeleteOrgSecretRequest(args, w, r)
+				return
+			}
+			switch elem[0] {
+			case 'a': // Prefix: "a"
+				if prefix := "a"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+					elem = elem[len(prefix):]
+				} else {
+					break
+				}
+
+				if len(elem) == 0 {
+					s.handleOAuthAuthorizationsDeleteAuthorizationRequest(args, w, r)
+					return
+				}
+				switch elem[0] {
+				case 'p': // Prefix: "pp"
+					if prefix := "pp"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+						elem = elem[len(prefix):]
+					} else {
+						break
+					}
+
+					if len(elem) == 0 {
+						s.handleAppsDeleteInstallationRequest(args, w, r)
+						return
+					}
+					switch elem[0] {
+					case '/': // Prefix: "/installations/"
+						if prefix := "/installations/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+							elem = elem[len(prefix):]
+						} else {
+							break
+						}
+
+						// Param: "installation_id"
+						// Match until one of "/"
+						idx := strings.IndexAny(elem, "/")
+						if idx > 0 {
+							args["installation_id"] = elem[:idx]
+							elem = elem[idx:]
+
+							if len(elem) == 0 {
+								s.handleAppsDeleteInstallationRequest(args, w, r)
+								return
+							}
+							switch elem[0] {
+							case '/': // Prefix: "/suspended"
+								if prefix := "/suspended"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+									elem = elem[len(prefix):]
+								} else {
+									break
+								}
+
+								// Leaf: AppsUnsuspendInstallation
+								s.handleAppsUnsuspendInstallationRequest(args, w, r)
+								return
+							}
+						}
+					case 'l': // Prefix: "lications/"
+						if prefix := "lications/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+							elem = elem[len(prefix):]
+						} else {
+							break
+						}
+
+						if len(elem) == 0 {
+							break
+						}
+						switch elem[0] {
+						case '/': // Prefix: "/installations/"
+							if prefix := "/installations/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+								elem = elem[len(prefix):]
+							} else {
+								break
+							}
+
+							// Param: "installation_id"
+							// Leaf parameter
+							args["installation_id"] = elem
+
+							// Leaf: AppsDeleteInstallation
+							s.handleAppsDeleteInstallationRequest(args, w, r)
+							return
+						case 'g': // Prefix: "grants/"
+							if prefix := "grants/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+								elem = elem[len(prefix):]
+							} else {
+								break
+							}
+
+							// Param: "grant_id"
+							// Leaf parameter
+							args["grant_id"] = elem
+
+							// Leaf: OAuthAuthorizationsDeleteGrant
+							s.handleOAuthAuthorizationsDeleteGrantRequest(args, w, r)
+							return
+						}
+						// Param: "client_id"
+						// Match until one of "/"
+						idx := strings.IndexAny(elem, "/")
+						if idx > 0 {
+							args["client_id"] = elem[:idx]
+							elem = elem[idx:]
+
+							if len(elem) == 0 {
+								break
+							}
+							switch elem[0] {
+							case '/': // Prefix: "/"
+								if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+									elem = elem[len(prefix):]
+								} else {
+									break
+								}
+
+								if len(elem) == 0 {
+									s.handleAppsDeleteTokenRequest(args, w, r)
+									return
+								}
+								switch elem[0] {
+								case 'g': // Prefix: "grant"
+									if prefix := "grant"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+										elem = elem[len(prefix):]
+									} else {
+										break
+									}
+
+									if len(elem) == 0 {
+										s.handleAppsDeleteAuthorizationRequest(args, w, r)
+										return
+									}
+									switch elem[0] {
+									case 't': // Prefix: "token"
+										if prefix := "token"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+											elem = elem[len(prefix):]
+										} else {
+											break
+										}
+
+										// Leaf: AppsDeleteToken
+										s.handleAppsDeleteTokenRequest(args, w, r)
+										return
+									}
+								case 't': // Prefix: "token"
+									if prefix := "token"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+										elem = elem[len(prefix):]
+									} else {
+										break
+									}
+
+									// Leaf: AppsDeleteToken
+									s.handleAppsDeleteTokenRequest(args, w, r)
+									return
+								}
+							}
+						}
+					case 'u': // Prefix: "uthorizations/"
+						if prefix := "uthorizations/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+							elem = elem[len(prefix):]
+						} else {
+							break
+						}
+
+						// Param: "authorization_id"
+						// Leaf parameter
+						args["authorization_id"] = elem
+
+						// Leaf: OAuthAuthorizationsDeleteAuthorization
+						s.handleOAuthAuthorizationsDeleteAuthorizationRequest(args, w, r)
+						return
+					}
+				case 'u': // Prefix: "uthorizations/"
+					if prefix := "uthorizations/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+						elem = elem[len(prefix):]
+					} else {
+						break
+					}
+
+					// Param: "authorization_id"
+					// Leaf parameter
+					args["authorization_id"] = elem
+
+					// Leaf: OAuthAuthorizationsDeleteAuthorization
+					s.handleOAuthAuthorizationsDeleteAuthorizationRequest(args, w, r)
+					return
+				}
+			case 'e': // Prefix: "enterprises/"
+				if prefix := "enterprises/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+					elem = elem[len(prefix):]
+				} else {
+					break
+				}
+
+				// Param: "enterprise"
+				// Match until one of "/"
+				idx := strings.IndexAny(elem, "/")
+				if idx > 0 {
+					args["enterprise"] = elem[:idx]
+					elem = elem[idx:]
+
+					if len(elem) == 0 {
+						break
+					}
+					switch elem[0] {
+					case '/': // Prefix: "/actions/"
+						if prefix := "/actions/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+							elem = elem[len(prefix):]
+						} else {
+							break
+						}
+
+						if len(elem) == 0 {
+							s.handleEnterpriseAdminDisableSelectedOrganizationGithubActionsEnterpriseRequest(args, w, r)
+							return
+						}
+						switch elem[0] {
+						case 'p': // Prefix: "permissions/organizations/"
+							if prefix := "permissions/organizations/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+								elem = elem[len(prefix):]
+							} else {
+								break
+							}
+
+							// Param: "org_id"
+							// Leaf parameter
+							args["org_id"] = elem
+
+							// Leaf: EnterpriseAdminDisableSelectedOrganizationGithubActionsEnterprise
+							s.handleEnterpriseAdminDisableSelectedOrganizationGithubActionsEnterpriseRequest(args, w, r)
+							return
+						case 'r': // Prefix: "runner"
+							if prefix := "runner"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+								elem = elem[len(prefix):]
+							} else {
+								break
+							}
+
+							if len(elem) == 0 {
+								s.handleEnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterpriseRequest(args, w, r)
+								return
+							}
+							switch elem[0] {
+							case '-': // Prefix: "-groups/"
+								if prefix := "-groups/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+									elem = elem[len(prefix):]
+								} else {
+									break
+								}
+
+								// Param: "runner_group_id"
+								// Match until one of "/"
+								idx := strings.IndexAny(elem, "/")
+								if idx > 0 {
+									args["runner_group_id"] = elem[:idx]
+									elem = elem[idx:]
+
+									if len(elem) == 0 {
+										s.handleEnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterpriseRequest(args, w, r)
+										return
+									}
+									switch elem[0] {
+									case '/': // Prefix: "/"
+										if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+											elem = elem[len(prefix):]
+										} else {
+											break
+										}
+
+										if len(elem) == 0 {
+											s.handleEnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterpriseRequest(args, w, r)
+											return
+										}
+										switch elem[0] {
+										case 'o': // Prefix: "organizations/"
+											if prefix := "organizations/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+												elem = elem[len(prefix):]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												break
+											}
+											switch elem[0] {
+											case 'r': // Prefix: "runners/"
+												if prefix := "runners/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+													elem = elem[len(prefix):]
+												} else {
+													break
+												}
+
+												// Param: "runner_id"
+												// Leaf parameter
+												args["runner_id"] = elem
+
+												// Leaf: EnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterprise
+												s.handleEnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterpriseRequest(args, w, r)
+												return
+											}
+											// Param: "org_id"
+											// Leaf parameter
+											args["org_id"] = elem
+
+											// Leaf: EnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterprise
+											s.handleEnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterpriseRequest(args, w, r)
+											return
+										case 'r': // Prefix: "runners/"
+											if prefix := "runners/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+												elem = elem[len(prefix):]
+											} else {
+												break
+											}
+
+											// Param: "runner_id"
+											// Leaf parameter
+											args["runner_id"] = elem
+
+											// Leaf: EnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterprise
+											s.handleEnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterpriseRequest(args, w, r)
+											return
+										}
+									}
+								}
+							case 'p': // Prefix: "permissions/organizations/"
+								if prefix := "permissions/organizations/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+									elem = elem[len(prefix):]
+								} else {
+									break
+								}
+
+								// Param: "org_id"
+								// Leaf parameter
+								args["org_id"] = elem
+
+								// Leaf: EnterpriseAdminDisableSelectedOrganizationGithubActionsEnterprise
+								s.handleEnterpriseAdminDisableSelectedOrganizationGithubActionsEnterpriseRequest(args, w, r)
+								return
+							case 's': // Prefix: "s/"
+								if prefix := "s/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+									elem = elem[len(prefix):]
+								} else {
+									break
+								}
+
+								if len(elem) == 0 {
+									break
+								}
+								switch elem[0] {
+								case '-': // Prefix: "-groups/"
+									if prefix := "-groups/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+										elem = elem[len(prefix):]
+									} else {
+										break
+									}
+
+									// Param: "runner_group_id"
+									// Leaf parameter
+									args["runner_group_id"] = elem
+
+									// Leaf: EnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterprise
+									s.handleEnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterpriseRequest(args, w, r)
+									return
+								}
+								// Param: "runner_id"
+								// Leaf parameter
+								args["runner_id"] = elem
+
+								// Leaf: EnterpriseAdminDeleteSelfHostedRunnerFromEnterprise
+								s.handleEnterpriseAdminDeleteSelfHostedRunnerFromEnterpriseRequest(args, w, r)
+								return
+							}
+						}
+					}
+				}
+			case 'g': // Prefix: "gists/"
+				if prefix := "gists/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+					elem = elem[len(prefix):]
+				} else {
+					break
+				}
+
+				// Param: "gist_id"
+				// Match until one of "/"
+				idx := strings.IndexAny(elem, "/")
+				if idx > 0 {
+					args["gist_id"] = elem[:idx]
+					elem = elem[idx:]
+
+					if len(elem) == 0 {
+						s.handleGistsDeleteRequest(args, w, r)
+						return
+					}
+					switch elem[0] {
+					case '/': // Prefix: "/"
+						if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+							elem = elem[len(prefix):]
+						} else {
+							break
+						}
+
+						if len(elem) == 0 {
+							s.handleGistsUnstarRequest(args, w, r)
+							return
+						}
+						switch elem[0] {
+						case 'c': // Prefix: "comments/"
+							if prefix := "comments/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+								elem = elem[len(prefix):]
+							} else {
+								break
+							}
+
+							if len(elem) == 0 {
+								break
+							}
+							switch elem[0] {
+							case 's': // Prefix: "star"
+								if prefix := "star"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+									elem = elem[len(prefix):]
+								} else {
+									break
+								}
+
+								// Leaf: GistsUnstar
+								s.handleGistsUnstarRequest(args, w, r)
+								return
+							}
+							// Param: "comment_id"
+							// Leaf parameter
+							args["comment_id"] = elem
+
+							// Leaf: GistsDeleteComment
+							s.handleGistsDeleteCommentRequest(args, w, r)
+							return
+						case 's': // Prefix: "star"
+							if prefix := "star"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+								elem = elem[len(prefix):]
+							} else {
+								break
+							}
+
+							// Leaf: GistsUnstar
+							s.handleGistsUnstarRequest(args, w, r)
+							return
+						}
+					}
+				}
+			case 'i': // Prefix: "installation/token"
+				if prefix := "installation/token"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+					elem = elem[len(prefix):]
+				} else {
+					break
+				}
+
+				// Leaf: AppsRevokeInstallationAccessToken
+				s.handleAppsRevokeInstallationAccessTokenRequest(args, w, r)
+				return
+			case 'n': // Prefix: "notifications/threads/"
+				if prefix := "notifications/threads/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+					elem = elem[len(prefix):]
+				} else {
+					break
+				}
+
+				// Param: "thread_id"
+				// Match until one of "/"
+				idx := strings.IndexAny(elem, "/")
+				if idx > 0 {
+					args["thread_id"] = elem[:idx]
+					elem = elem[idx:]
+
+					if len(elem) == 0 {
+						break
+					}
+					switch elem[0] {
+					case '/': // Prefix: "/subscription"
+						if prefix := "/subscription"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+							elem = elem[len(prefix):]
+						} else {
+							break
+						}
+
+						// Leaf: ActivityDeleteThreadSubscription
+						s.handleActivityDeleteThreadSubscriptionRequest(args, w, r)
+						return
+					}
+				}
+			case 'o': // Prefix: "orgs/"
+				if prefix := "orgs/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+					elem = elem[len(prefix):]
+				} else {
+					break
+				}
+
+				// Param: "org"
+				// Match until one of "/"
+				idx := strings.IndexAny(elem, "/")
+				if idx > 0 {
+					args["org"] = elem[:idx]
+					elem = elem[idx:]
+
+					if len(elem) == 0 {
+						break
+					}
+					switch elem[0] {
+					case '/': // Prefix: "/"
+						if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+							elem = elem[len(prefix):]
+						} else {
+							break
+						}
+
+						if len(elem) == 0 {
+							s.handleInteractionsRemoveRestrictionsForOrgRequest(args, w, r)
+							return
+						}
+						switch elem[0] {
+						case 'a': // Prefix: "actions/"
+							if prefix := "actions/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+								elem = elem[len(prefix):]
+							} else {
+								break
+							}
+
+							if len(elem) == 0 {
+								s.handleActionsDeleteSelfHostedRunnerFromOrgRequest(args, w, r)
+								return
+							}
+							switch elem[0] {
+							case 'i': // Prefix: "interaction-limits"
+								if prefix := "interaction-limits"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+									elem = elem[len(prefix):]
+								} else {
+									break
+								}
+
+								// Leaf: InteractionsRemoveRestrictionsForOrg
+								s.handleInteractionsRemoveRestrictionsForOrgRequest(args, w, r)
+								return
+							case 'p': // Prefix: "permissions/repositories/"
+								if prefix := "permissions/repositories/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+									elem = elem[len(prefix):]
+								} else {
+									break
+								}
+
+								// Param: "repository_id"
+								// Leaf parameter
+								args["repository_id"] = elem
+
+								// Leaf: ActionsDisableSelectedRepositoryGithubActionsOrganization
+								s.handleActionsDisableSelectedRepositoryGithubActionsOrganizationRequest(args, w, r)
+								return
+							case 'r': // Prefix: "runner"
+								if prefix := "runner"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+									elem = elem[len(prefix):]
+								} else {
+									break
+								}
+
+								if len(elem) == 0 {
+									s.handleActionsDeleteSelfHostedRunnerGroupFromOrgRequest(args, w, r)
+									return
+								}
+								switch elem[0] {
+								case '-': // Prefix: "-groups/"
+									if prefix := "-groups/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+										elem = elem[len(prefix):]
+									} else {
+										break
+									}
+
+									// Param: "runner_group_id"
+									// Match until one of "/"
+									idx := strings.IndexAny(elem, "/")
+									if idx > 0 {
+										args["runner_group_id"] = elem[:idx]
+										elem = elem[idx:]
+
+										if len(elem) == 0 {
+											s.handleActionsDeleteSelfHostedRunnerGroupFromOrgRequest(args, w, r)
+											return
+										}
+										switch elem[0] {
+										case '/': // Prefix: "/r"
+											if prefix := "/r"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+												elem = elem[len(prefix):]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												s.handleActionsRemoveSelfHostedRunnerFromGroupForOrgRequest(args, w, r)
+												return
+											}
+											switch elem[0] {
+											case 'e': // Prefix: "epositories/"
+												if prefix := "epositories/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+													elem = elem[len(prefix):]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													break
+												}
+												switch elem[0] {
+												case 'u': // Prefix: "unners/"
+													if prefix := "unners/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+														elem = elem[len(prefix):]
+													} else {
+														break
+													}
+
+													// Param: "runner_id"
+													// Leaf parameter
+													args["runner_id"] = elem
+
+													// Leaf: ActionsRemoveSelfHostedRunnerFromGroupForOrg
+													s.handleActionsRemoveSelfHostedRunnerFromGroupForOrgRequest(args, w, r)
+													return
+												}
+												// Param: "repository_id"
+												// Leaf parameter
+												args["repository_id"] = elem
+
+												// Leaf: ActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrg
+												s.handleActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrgRequest(args, w, r)
+												return
+											case 'u': // Prefix: "unners/"
+												if prefix := "unners/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+													elem = elem[len(prefix):]
+												} else {
+													break
+												}
+
+												// Param: "runner_id"
+												// Leaf parameter
+												args["runner_id"] = elem
+
+												// Leaf: ActionsRemoveSelfHostedRunnerFromGroupForOrg
+												s.handleActionsRemoveSelfHostedRunnerFromGroupForOrgRequest(args, w, r)
+												return
+											}
+										}
+									}
+								case 's': // Prefix: "s/"
+									if prefix := "s/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+										elem = elem[len(prefix):]
+									} else {
+										break
+									}
+
+									if len(elem) == 0 {
+										break
+									}
+									switch elem[0] {
+									case '-': // Prefix: "-groups/"
+										if prefix := "-groups/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+											elem = elem[len(prefix):]
+										} else {
+											break
+										}
+
+										// Param: "runner_group_id"
+										// Leaf parameter
+										args["runner_group_id"] = elem
+
+										// Leaf: ActionsDeleteSelfHostedRunnerGroupFromOrg
+										s.handleActionsDeleteSelfHostedRunnerGroupFromOrgRequest(args, w, r)
+										return
+									}
+									// Param: "runner_id"
+									// Leaf parameter
+									args["runner_id"] = elem
+
+									// Leaf: ActionsDeleteSelfHostedRunnerFromOrg
+									s.handleActionsDeleteSelfHostedRunnerFromOrgRequest(args, w, r)
+									return
+								}
+							case 's': // Prefix: "secrets/"
+								if prefix := "secrets/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+									elem = elem[len(prefix):]
+								} else {
+									break
+								}
+
+								if len(elem) == 0 {
+									break
+								}
+								switch elem[0] {
+								case 'r': // Prefix: "runners/"
+									if prefix := "runners/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+										elem = elem[len(prefix):]
+									} else {
+										break
+									}
+
+									// Param: "runner_id"
+									// Leaf parameter
+									args["runner_id"] = elem
+
+									// Leaf: ActionsDeleteSelfHostedRunnerFromOrg
+									s.handleActionsDeleteSelfHostedRunnerFromOrgRequest(args, w, r)
+									return
+								}
+								// Param: "secret_name"
+								// Match until one of "/"
+								idx := strings.IndexAny(elem, "/")
+								if idx > 0 {
+									args["secret_name"] = elem[:idx]
+									elem = elem[idx:]
+
+									if len(elem) == 0 {
+										s.handleActionsDeleteOrgSecretRequest(args, w, r)
+										return
+									}
+									switch elem[0] {
+									case '/': // Prefix: "/repositories/"
+										if prefix := "/repositories/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+											elem = elem[len(prefix):]
+										} else {
+											break
+										}
+
+										// Param: "repository_id"
+										// Leaf parameter
+										args["repository_id"] = elem
+
+										// Leaf: ActionsRemoveSelectedRepoFromOrgSecret
+										s.handleActionsRemoveSelectedRepoFromOrgSecretRequest(args, w, r)
+										return
+									}
+								}
+							}
+						case 'b': // Prefix: "blocks/"
+							if prefix := "blocks/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+								elem = elem[len(prefix):]
+							} else {
+								break
+							}
+
+							// Param: "username"
+							// Leaf parameter
+							args["username"] = elem
+
+							// Leaf: OrgsUnblockUser
+							s.handleOrgsUnblockUserRequest(args, w, r)
+							return
+						case 'c': // Prefix: "credential-authorizations/"
+							if prefix := "credential-authorizations/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+								elem = elem[len(prefix):]
+							} else {
+								break
+							}
+
+							// Param: "credential_id"
+							// Leaf parameter
+							args["credential_id"] = elem
+
+							// Leaf: OrgsRemoveSamlSSOAuthorization
+							s.handleOrgsRemoveSamlSSOAuthorizationRequest(args, w, r)
+							return
+						case 'h': // Prefix: "hooks/"
+							if prefix := "hooks/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+								elem = elem[len(prefix):]
+							} else {
+								break
+							}
+
+							// Param: "hook_id"
+							// Leaf parameter
+							args["hook_id"] = elem
+
+							// Leaf: OrgsDeleteWebhook
+							s.handleOrgsDeleteWebhookRequest(args, w, r)
+							return
+						case 'i': // Prefix: "in"
+							if prefix := "in"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+								elem = elem[len(prefix):]
+							} else {
+								break
+							}
+
+							if len(elem) == 0 {
+								s.handleOrgsCancelInvitationRequest(args, w, r)
+								return
+							}
+							switch elem[0] {
+							case 't': // Prefix: "teraction-limits"
+								if prefix := "teraction-limits"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+									elem = elem[len(prefix):]
+								} else {
+									break
+								}
+
+								if len(elem) == 0 {
+									s.handleInteractionsRemoveRestrictionsForOrgRequest(args, w, r)
+									return
+								}
+								switch elem[0] {
+								case 'v': // Prefix: "vitations/"
+									if prefix := "vitations/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+										elem = elem[len(prefix):]
+									} else {
+										break
+									}
+
+									// Param: "invitation_id"
+									// Leaf parameter
+									args["invitation_id"] = elem
+
+									// Leaf: OrgsCancelInvitation
+									s.handleOrgsCancelInvitationRequest(args, w, r)
+									return
+								}
+							case 'v': // Prefix: "vitations/"
+								if prefix := "vitations/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+									elem = elem[len(prefix):]
+								} else {
+									break
+								}
+
+								// Param: "invitation_id"
+								// Leaf parameter
+								args["invitation_id"] = elem
+
+								// Leaf: OrgsCancelInvitation
+								s.handleOrgsCancelInvitationRequest(args, w, r)
+								return
+							}
+						case 'm': // Prefix: "m"
+							if prefix := "m"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+								elem = elem[len(prefix):]
+							} else {
+								break
+							}
+
+							if len(elem) == 0 {
+								s.handleOrgsRemoveMemberRequest(args, w, r)
+								return
+							}
+							switch elem[0] {
+							case 'e': // Prefix: "embers"
+								if prefix := "embers"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+									elem = elem[len(prefix):]
+								} else {
+									break
+								}
+
+								if len(elem) == 0 {
+									s.handleOrgsRemoveMembershipForUserRequest(args, w, r)
+									return
+								}
+								switch elem[0] {
+								case '/': // Prefix: "/"
+									if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+										elem = elem[len(prefix):]
+									} else {
+										break
+									}
+
+									if len(elem) == 0 {
+										break
+									}
+									switch elem[0] {
+									case 'h': // Prefix: "hips/"
+										if prefix := "hips/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+											elem = elem[len(prefix):]
+										} else {
+											break
+										}
+
+										// Param: "username"
+										// Leaf parameter
+										args["username"] = elem
+
+										// Leaf: OrgsRemoveMembershipForUser
+										s.handleOrgsRemoveMembershipForUserRequest(args, w, r)
+										return
+									}
+									// Param: "username"
+									// Leaf parameter
+									args["username"] = elem
+
+									// Leaf: OrgsRemoveMember
+									s.handleOrgsRemoveMemberRequest(args, w, r)
+									return
+								case 'h': // Prefix: "hips/"
+									if prefix := "hips/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+										elem = elem[len(prefix):]
+									} else {
+										break
+									}
+
+									// Param: "username"
+									// Leaf parameter
+									args["username"] = elem
+
+									// Leaf: OrgsRemoveMembershipForUser
+									s.handleOrgsRemoveMembershipForUserRequest(args, w, r)
+									return
+								}
+							case 'i': // Prefix: "igrations/"
+								if prefix := "igrations/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+									elem = elem[len(prefix):]
+								} else {
+									break
+								}
+
+								if len(elem) == 0 {
+									break
+								}
+								switch elem[0] {
+								case 'e': // Prefix: "embers/"
+									if prefix := "embers/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+										elem = elem[len(prefix):]
+									} else {
+										break
+									}
+
+									// Param: "username"
+									// Leaf parameter
+									args["username"] = elem
+
+									// Leaf: OrgsRemoveMember
+									s.handleOrgsRemoveMemberRequest(args, w, r)
+									return
+								}
+								// Param: "migration_id"
+								// Match until one of "/"
+								idx := strings.IndexAny(elem, "/")
+								if idx > 0 {
+									args["migration_id"] = elem[:idx]
+									elem = elem[idx:]
+
+									if len(elem) == 0 {
+										break
+									}
+									switch elem[0] {
+									case '/': // Prefix: "/"
+										if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+											elem = elem[len(prefix):]
+										} else {
+											break
+										}
+
+										if len(elem) == 0 {
+											s.handleMigrationsUnlockRepoForOrgRequest(args, w, r)
+											return
+										}
+										switch elem[0] {
+										case 'a': // Prefix: "archive"
+											if prefix := "archive"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+												elem = elem[len(prefix):]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												s.handleMigrationsDeleteArchiveForOrgRequest(args, w, r)
+												return
+											}
+											switch elem[0] {
+											case 'r': // Prefix: "repos/"
+												if prefix := "repos/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+													elem = elem[len(prefix):]
+												} else {
+													break
+												}
+
+												// Param: "repo_name"
+												// Match until one of "/"
+												idx := strings.IndexAny(elem, "/")
+												if idx > 0 {
+													args["repo_name"] = elem[:idx]
+													elem = elem[idx:]
+
+													if len(elem) == 0 {
+														break
+													}
+													switch elem[0] {
+													case '/': // Prefix: "/lock"
+														if prefix := "/lock"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+															elem = elem[len(prefix):]
+														} else {
+															break
+														}
+
+														// Leaf: MigrationsUnlockRepoForOrg
+														s.handleMigrationsUnlockRepoForOrgRequest(args, w, r)
+														return
+													}
+												}
+											}
+										case 'r': // Prefix: "repos/"
+											if prefix := "repos/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+												elem = elem[len(prefix):]
+											} else {
+												break
+											}
+
+											// Param: "repo_name"
+											// Match until one of "/"
+											idx := strings.IndexAny(elem, "/")
+											if idx > 0 {
+												args["repo_name"] = elem[:idx]
+												elem = elem[idx:]
+
+												if len(elem) == 0 {
+													break
+												}
+												switch elem[0] {
+												case '/': // Prefix: "/lock"
+													if prefix := "/lock"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+														elem = elem[len(prefix):]
+													} else {
+														break
+													}
+
+													// Leaf: MigrationsUnlockRepoForOrg
+													s.handleMigrationsUnlockRepoForOrgRequest(args, w, r)
+													return
+												}
+											}
+										}
+									}
+								}
+							}
+						case 'o': // Prefix: "outside_collaborators/"
+							if prefix := "outside_collaborators/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+								elem = elem[len(prefix):]
+							} else {
+								break
+							}
+
+							// Param: "username"
+							// Leaf parameter
+							args["username"] = elem
+
+							// Leaf: OrgsRemoveOutsideCollaborator
+							s.handleOrgsRemoveOutsideCollaboratorRequest(args, w, r)
+							return
+						case 'p': // Prefix: "p"
+							if prefix := "p"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+								elem = elem[len(prefix):]
+							} else {
+								break
+							}
+
+							if len(elem) == 0 {
+								s.handlePackagesDeletePackageForOrgRequest(args, w, r)
+								return
+							}
+							switch elem[0] {
+							case 'a': // Prefix: "ackages/"
+								if prefix := "ackages/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+									elem = elem[len(prefix):]
+								} else {
+									break
+								}
+
+								// Param: "package_type"
+								// Match until one of "/"
+								idx := strings.IndexAny(elem, "/")
+								if idx > 0 {
+									args["package_type"] = elem[:idx]
+									elem = elem[idx:]
+
+									if len(elem) == 0 {
+										break
+									}
+									switch elem[0] {
+									case '/': // Prefix: "/"
+										if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+											elem = elem[len(prefix):]
+										} else {
+											break
+										}
+
+										// Param: "package_name"
+										// Match until one of "/"
+										idx := strings.IndexAny(elem, "/")
+										if idx > 0 {
+											args["package_name"] = elem[:idx]
+											elem = elem[idx:]
+
+											if len(elem) == 0 {
+												s.handlePackagesDeletePackageForOrgRequest(args, w, r)
+												return
+											}
+											switch elem[0] {
+											case '/': // Prefix: "/versions/"
+												if prefix := "/versions/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+													elem = elem[len(prefix):]
+												} else {
+													break
+												}
+
+												// Param: "package_version_id"
+												// Leaf parameter
+												args["package_version_id"] = elem
+
+												// Leaf: PackagesDeletePackageVersionForOrg
+												s.handlePackagesDeletePackageVersionForOrgRequest(args, w, r)
+												return
+											}
+										}
+									}
+								}
+							case 'u': // Prefix: "ublic_members/"
+								if prefix := "ublic_members/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+									elem = elem[len(prefix):]
+								} else {
+									break
+								}
+
+								if len(elem) == 0 {
+									break
+								}
+								switch elem[0] {
+								case 'a': // Prefix: "ackages/"
+									if prefix := "ackages/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+										elem = elem[len(prefix):]
+									} else {
+										break
+									}
+
+									// Param: "package_type"
+									// Match until one of "/"
+									idx := strings.IndexAny(elem, "/")
+									if idx > 0 {
+										args["package_type"] = elem[:idx]
+										elem = elem[idx:]
+
+										if len(elem) == 0 {
+											break
+										}
+										switch elem[0] {
+										case '/': // Prefix: "/"
+											if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+												elem = elem[len(prefix):]
+											} else {
+												break
+											}
+
+											// Param: "package_name"
+											// Leaf parameter
+											args["package_name"] = elem
+
+											// Leaf: PackagesDeletePackageForOrg
+											s.handlePackagesDeletePackageForOrgRequest(args, w, r)
+											return
+										}
+									}
+								}
+								// Param: "username"
+								// Leaf parameter
+								args["username"] = elem
+
+								// Leaf: OrgsRemovePublicMembershipForAuthenticatedUser
+								s.handleOrgsRemovePublicMembershipForAuthenticatedUserRequest(args, w, r)
+								return
+							}
+						case 't': // Prefix: "teams/"
+							if prefix := "teams/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+								elem = elem[len(prefix):]
+							} else {
+								break
+							}
+
+							// Param: "team_slug"
+							// Match until one of "/"
+							idx := strings.IndexAny(elem, "/")
+							if idx > 0 {
+								args["team_slug"] = elem[:idx]
+								elem = elem[idx:]
+
+								if len(elem) == 0 {
+									s.handleTeamsDeleteInOrgRequest(args, w, r)
+									return
+								}
+								switch elem[0] {
+								case '/': // Prefix: "/"
+									if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+										elem = elem[len(prefix):]
+									} else {
+										break
+									}
+
+									if len(elem) == 0 {
+										s.handleTeamsRemoveMembershipForUserInOrgRequest(args, w, r)
+										return
+									}
+									switch elem[0] {
+									case 'd': // Prefix: "discussions/"
+										if prefix := "discussions/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+											elem = elem[len(prefix):]
+										} else {
+											break
+										}
+
+										if len(elem) == 0 {
+											break
+										}
+										switch elem[0] {
+										case 'm': // Prefix: "memberships/"
+											if prefix := "memberships/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+												elem = elem[len(prefix):]
+											} else {
+												break
+											}
+
+											// Param: "username"
+											// Leaf parameter
+											args["username"] = elem
+
+											// Leaf: TeamsRemoveMembershipForUserInOrg
+											s.handleTeamsRemoveMembershipForUserInOrgRequest(args, w, r)
+											return
+										}
+										// Param: "discussion_number"
+										// Match until one of "/"
+										idx := strings.IndexAny(elem, "/")
+										if idx > 0 {
+											args["discussion_number"] = elem[:idx]
+											elem = elem[idx:]
+
+											if len(elem) == 0 {
+												s.handleTeamsDeleteDiscussionInOrgRequest(args, w, r)
+												return
+											}
+											switch elem[0] {
+											case '/': // Prefix: "/"
+												if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+													elem = elem[len(prefix):]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													s.handleReactionsDeleteForTeamDiscussionCommentRequest(args, w, r)
+													return
+												}
+												switch elem[0] {
+												case 'c': // Prefix: "comments/"
+													if prefix := "comments/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+														elem = elem[len(prefix):]
+													} else {
+														break
+													}
+
+													// Param: "comment_number"
+													// Match until one of "/"
+													idx := strings.IndexAny(elem, "/")
+													if idx > 0 {
+														args["comment_number"] = elem[:idx]
+														elem = elem[idx:]
+
+														if len(elem) == 0 {
+															s.handleTeamsDeleteDiscussionCommentInOrgRequest(args, w, r)
+															return
+														}
+														switch elem[0] {
+														case '/': // Prefix: "/reactions/"
+															if prefix := "/reactions/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																elem = elem[len(prefix):]
+															} else {
+																break
+															}
+
+															// Param: "reaction_id"
+															// Leaf parameter
+															args["reaction_id"] = elem
+
+															// Leaf: ReactionsDeleteForTeamDiscussionComment
+															s.handleReactionsDeleteForTeamDiscussionCommentRequest(args, w, r)
+															return
+														}
+													}
+												case 'r': // Prefix: "reactions/"
+													if prefix := "reactions/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+														elem = elem[len(prefix):]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														break
+													}
+													switch elem[0] {
+													case 'c': // Prefix: "comments/"
+														if prefix := "comments/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+															elem = elem[len(prefix):]
+														} else {
+															break
+														}
+
+														// Param: "comment_number"
+														// Match until one of "/"
+														idx := strings.IndexAny(elem, "/")
+														if idx > 0 {
+															args["comment_number"] = elem[:idx]
+															elem = elem[idx:]
+
+															if len(elem) == 0 {
+																break
+															}
+															switch elem[0] {
+															case '/': // Prefix: "/reactions/"
+																if prefix := "/reactions/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																	elem = elem[len(prefix):]
+																} else {
+																	break
+																}
+
+																// Param: "reaction_id"
+																// Leaf parameter
+																args["reaction_id"] = elem
+
+																// Leaf: ReactionsDeleteForTeamDiscussionComment
+																s.handleReactionsDeleteForTeamDiscussionCommentRequest(args, w, r)
+																return
+															}
+														}
+													}
+													// Param: "reaction_id"
+													// Leaf parameter
+													args["reaction_id"] = elem
+
+													// Leaf: ReactionsDeleteForTeamDiscussion
+													s.handleReactionsDeleteForTeamDiscussionRequest(args, w, r)
+													return
+												}
+											}
+										}
+									case 'm': // Prefix: "memberships/"
+										if prefix := "memberships/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+											elem = elem[len(prefix):]
+										} else {
+											break
+										}
+
+										// Param: "username"
+										// Leaf parameter
+										args["username"] = elem
+
+										// Leaf: TeamsRemoveMembershipForUserInOrg
+										s.handleTeamsRemoveMembershipForUserInOrgRequest(args, w, r)
+										return
+									case 'p': // Prefix: "projects/"
+										if prefix := "projects/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+											elem = elem[len(prefix):]
+										} else {
+											break
+										}
+
+										// Param: "project_id"
+										// Leaf parameter
+										args["project_id"] = elem
+
+										// Leaf: TeamsRemoveProjectInOrg
+										s.handleTeamsRemoveProjectInOrgRequest(args, w, r)
+										return
+									case 'r': // Prefix: "repos/"
+										if prefix := "repos/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+											elem = elem[len(prefix):]
+										} else {
+											break
+										}
+
+										// Param: "owner"
+										// Match until one of "/"
+										idx := strings.IndexAny(elem, "/")
+										if idx > 0 {
+											args["owner"] = elem[:idx]
+											elem = elem[idx:]
+
+											if len(elem) == 0 {
+												break
+											}
+											switch elem[0] {
+											case '/': // Prefix: "/"
+												if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+													elem = elem[len(prefix):]
+												} else {
+													break
+												}
+
+												// Param: "repo"
+												// Leaf parameter
+												args["repo"] = elem
+
+												// Leaf: TeamsRemoveRepoInOrg
+												s.handleTeamsRemoveRepoInOrgRequest(args, w, r)
+												return
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			case 'p': // Prefix: "projects/"
+				if prefix := "projects/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+					elem = elem[len(prefix):]
+				} else {
+					break
+				}
+
+				if len(elem) == 0 {
+					break
+				}
+				switch elem[0] {
+				case 'c': // Prefix: "columns/"
+					if prefix := "columns/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+						elem = elem[len(prefix):]
+					} else {
+						break
+					}
+
+					if len(elem) == 0 {
+						s.handleProjectsDeleteColumnRequest(args, w, r)
+						return
+					}
+					switch elem[0] {
+					case 'c': // Prefix: "cards/"
+						if prefix := "cards/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+							elem = elem[len(prefix):]
+						} else {
+							break
+						}
+
+						// Param: "card_id"
+						// Leaf parameter
+						args["card_id"] = elem
+
+						// Leaf: ProjectsDeleteColumn
+						s.handleProjectsDeleteColumnRequest(args, w, r)
+						return
+					}
+					// Param: "column_id"
+					// Leaf parameter
+					args["column_id"] = elem
+
+					// Leaf: ProjectsDeleteColumn
+					s.handleProjectsDeleteColumnRequest(args, w, r)
+					return
+				}
+				// Param: "project_id"
+				// Match until one of "/"
+				idx := strings.IndexAny(elem, "/")
+				if idx > 0 {
+					args["project_id"] = elem[:idx]
+					elem = elem[idx:]
+
+					if len(elem) == 0 {
+						s.handleProjectsDeleteRequest(args, w, r)
+						return
+					}
+					switch elem[0] {
+					case '/': // Prefix: "/collaborators/"
+						if prefix := "/collaborators/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+							elem = elem[len(prefix):]
+						} else {
+							break
+						}
+
+						// Param: "username"
+						// Leaf parameter
+						args["username"] = elem
+
+						// Leaf: ProjectsRemoveCollaborator
+						s.handleProjectsRemoveCollaboratorRequest(args, w, r)
+						return
+					}
+				}
+			case 'r': // Prefix: "re"
+				if prefix := "re"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+					elem = elem[len(prefix):]
+				} else {
+					break
+				}
+
+				if len(elem) == 0 {
+					s.handleReactionsDeleteLegacyRequest(args, w, r)
+					return
+				}
+				switch elem[0] {
+				case 'a': // Prefix: "actions/"
+					if prefix := "actions/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+						elem = elem[len(prefix):]
+					} else {
+						break
+					}
+
+					// Param: "reaction_id"
+					// Leaf parameter
+					args["reaction_id"] = elem
+
+					// Leaf: ReactionsDeleteLegacy
+					s.handleReactionsDeleteLegacyRequest(args, w, r)
+					return
+				case 'p': // Prefix: "pos"
+					if prefix := "pos"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+						elem = elem[len(prefix):]
+					} else {
+						break
+					}
+
+					if len(elem) == 0 {
+						s.handleActionsDeleteEnvironmentSecretRequest(args, w, r)
+						return
+					}
+					switch elem[0] {
+					case '/': // Prefix: "/"
+						if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+							elem = elem[len(prefix):]
+						} else {
+							break
+						}
+
+						if len(elem) == 0 {
+							break
+						}
+						switch elem[0] {
+						case 'i': // Prefix: "itories/"
+							if prefix := "itories/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+								elem = elem[len(prefix):]
+							} else {
+								break
+							}
+
+							// Param: "repository_id"
+							// Match until one of "/"
+							idx := strings.IndexAny(elem, "/")
+							if idx > 0 {
+								args["repository_id"] = elem[:idx]
+								elem = elem[idx:]
+
+								if len(elem) == 0 {
+									break
+								}
+								switch elem[0] {
+								case '/': // Prefix: "/environments/"
+									if prefix := "/environments/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+										elem = elem[len(prefix):]
+									} else {
+										break
+									}
+
+									// Param: "environment_name"
+									// Match until one of "/"
+									idx := strings.IndexAny(elem, "/")
+									if idx > 0 {
+										args["environment_name"] = elem[:idx]
+										elem = elem[idx:]
+
+										if len(elem) == 0 {
+											break
+										}
+										switch elem[0] {
+										case '/': // Prefix: "/secrets/"
+											if prefix := "/secrets/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+												elem = elem[len(prefix):]
+											} else {
+												break
+											}
+
+											// Param: "secret_name"
+											// Leaf parameter
+											args["secret_name"] = elem
+
+											// Leaf: ActionsDeleteEnvironmentSecret
+											s.handleActionsDeleteEnvironmentSecretRequest(args, w, r)
+											return
+										}
+									}
+								}
+							}
+						}
+						// Param: "owner"
+						// Match until one of "/"
+						idx := strings.IndexAny(elem, "/")
+						if idx > 0 {
+							args["owner"] = elem[:idx]
+							elem = elem[idx:]
+
+							if len(elem) == 0 {
+								break
+							}
+							switch elem[0] {
+							case '/': // Prefix: "/"
+								if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+									elem = elem[len(prefix):]
+								} else {
+									break
+								}
+
+								// Param: "repo"
+								// Match until one of "/"
+								idx := strings.IndexAny(elem, "/")
+								if idx > 0 {
+									args["repo"] = elem[:idx]
+									elem = elem[idx:]
+
+									if len(elem) == 0 {
+										s.handleReposDeleteRequest(args, w, r)
+										return
+									}
+									switch elem[0] {
+									case '/': // Prefix: "/"
+										if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+											elem = elem[len(prefix):]
+										} else {
+											break
+										}
+
+										if len(elem) == 0 {
+											s.handleActivityDeleteRepoSubscriptionRequest(args, w, r)
+											return
+										}
+										switch elem[0] {
+										case 'a': // Prefix: "a"
+											if prefix := "a"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+												elem = elem[len(prefix):]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												s.handleReposDeleteAutolinkRequest(args, w, r)
+												return
+											}
+											switch elem[0] {
+											case 'c': // Prefix: "ctions/"
+												if prefix := "ctions/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+													elem = elem[len(prefix):]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													s.handleActionsDeleteRepoSecretRequest(args, w, r)
+													return
+												}
+												switch elem[0] {
+												case 'a': // Prefix: "artifacts/"
+													if prefix := "artifacts/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+														elem = elem[len(prefix):]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														break
+													}
+													switch elem[0] {
+													case 's': // Prefix: "secrets/"
+														if prefix := "secrets/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+															elem = elem[len(prefix):]
+														} else {
+															break
+														}
+
+														// Param: "secret_name"
+														// Leaf parameter
+														args["secret_name"] = elem
+
+														// Leaf: ActionsDeleteRepoSecret
+														s.handleActionsDeleteRepoSecretRequest(args, w, r)
+														return
+													}
+													// Param: "artifact_id"
+													// Leaf parameter
+													args["artifact_id"] = elem
+
+													// Leaf: ActionsDeleteArtifact
+													s.handleActionsDeleteArtifactRequest(args, w, r)
+													return
+												case 'r': // Prefix: "run"
+													if prefix := "run"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+														elem = elem[len(prefix):]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														s.handleActionsDeleteWorkflowRunRequest(args, w, r)
+														return
+													}
+													switch elem[0] {
+													case 'n': // Prefix: "ners/"
+														if prefix := "ners/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+															elem = elem[len(prefix):]
+														} else {
+															break
+														}
+
+														if len(elem) == 0 {
+															break
+														}
+														switch elem[0] {
+														case 's': // Prefix: "s/"
+															if prefix := "s/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																elem = elem[len(prefix):]
+															} else {
+																break
+															}
+
+															// Param: "run_id"
+															// Leaf parameter
+															args["run_id"] = elem
+
+															// Leaf: ActionsDeleteWorkflowRun
+															s.handleActionsDeleteWorkflowRunRequest(args, w, r)
+															return
+														}
+														// Param: "runner_id"
+														// Leaf parameter
+														args["runner_id"] = elem
+
+														// Leaf: ActionsDeleteSelfHostedRunnerFromRepo
+														s.handleActionsDeleteSelfHostedRunnerFromRepoRequest(args, w, r)
+														return
+													case 's': // Prefix: "s/"
+														if prefix := "s/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+															elem = elem[len(prefix):]
+														} else {
+															break
+														}
+
+														// Param: "run_id"
+														// Match until one of "/"
+														idx := strings.IndexAny(elem, "/")
+														if idx > 0 {
+															args["run_id"] = elem[:idx]
+															elem = elem[idx:]
+
+															if len(elem) == 0 {
+																s.handleActionsDeleteWorkflowRunRequest(args, w, r)
+																return
+															}
+															switch elem[0] {
+															case '/': // Prefix: "/logs"
+																if prefix := "/logs"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																	elem = elem[len(prefix):]
+																} else {
+																	break
+																}
+
+																// Leaf: ActionsDeleteWorkflowRunLogs
+																s.handleActionsDeleteWorkflowRunLogsRequest(args, w, r)
+																return
+															}
+														}
+													}
+												case 's': // Prefix: "s"
+													if prefix := "s"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+														elem = elem[len(prefix):]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														s.handleActivityDeleteRepoSubscriptionRequest(args, w, r)
+														return
+													}
+													switch elem[0] {
+													case 'e': // Prefix: "ecrets/"
+														if prefix := "ecrets/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+															elem = elem[len(prefix):]
+														} else {
+															break
+														}
+
+														if len(elem) == 0 {
+															break
+														}
+														switch elem[0] {
+														case 'u': // Prefix: "ubscription"
+															if prefix := "ubscription"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																elem = elem[len(prefix):]
+															} else {
+																break
+															}
+
+															// Leaf: ActivityDeleteRepoSubscription
+															s.handleActivityDeleteRepoSubscriptionRequest(args, w, r)
+															return
+														}
+														// Param: "secret_name"
+														// Leaf parameter
+														args["secret_name"] = elem
+
+														// Leaf: ActionsDeleteRepoSecret
+														s.handleActionsDeleteRepoSecretRequest(args, w, r)
+														return
+													case 'u': // Prefix: "ubscription"
+														if prefix := "ubscription"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+															elem = elem[len(prefix):]
+														} else {
+															break
+														}
+
+														// Leaf: ActivityDeleteRepoSubscription
+														s.handleActivityDeleteRepoSubscriptionRequest(args, w, r)
+														return
+													}
+												case 'u': // Prefix: "utolinks/"
+													if prefix := "utolinks/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+														elem = elem[len(prefix):]
+													} else {
+														break
+													}
+
+													// Param: "autolink_id"
+													// Leaf parameter
+													args["autolink_id"] = elem
+
+													// Leaf: ReposDeleteAutolink
+													s.handleReposDeleteAutolinkRequest(args, w, r)
+													return
+												}
+											case 'u': // Prefix: "uto"
+												if prefix := "uto"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+													elem = elem[len(prefix):]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													s.handleReposDisableAutomatedSecurityFixesRequest(args, w, r)
+													return
+												}
+												switch elem[0] {
+												case 'l': // Prefix: "links/"
+													if prefix := "links/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+														elem = elem[len(prefix):]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														break
+													}
+													switch elem[0] {
+													case 'm': // Prefix: "mated-security-fixes"
+														if prefix := "mated-security-fixes"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+															elem = elem[len(prefix):]
+														} else {
+															break
+														}
+
+														// Leaf: ReposDisableAutomatedSecurityFixes
+														s.handleReposDisableAutomatedSecurityFixesRequest(args, w, r)
+														return
+													}
+													// Param: "autolink_id"
+													// Leaf parameter
+													args["autolink_id"] = elem
+
+													// Leaf: ReposDeleteAutolink
+													s.handleReposDeleteAutolinkRequest(args, w, r)
+													return
+												case 'm': // Prefix: "mated-security-fixes"
+													if prefix := "mated-security-fixes"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+														elem = elem[len(prefix):]
+													} else {
+														break
+													}
+
+													// Leaf: ReposDisableAutomatedSecurityFixes
+													s.handleReposDisableAutomatedSecurityFixesRequest(args, w, r)
+													return
+												}
+											}
+										case 'b': // Prefix: "branches/"
+											if prefix := "branches/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+												elem = elem[len(prefix):]
+											} else {
+												break
+											}
+
+											// Param: "branch"
+											// Match until one of "/"
+											idx := strings.IndexAny(elem, "/")
+											if idx > 0 {
+												args["branch"] = elem[:idx]
+												elem = elem[idx:]
+
+												if len(elem) == 0 {
+													break
+												}
+												switch elem[0] {
+												case '/': // Prefix: "/protection"
+													if prefix := "/protection"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+														elem = elem[len(prefix):]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														s.handleReposDeleteBranchProtectionRequest(args, w, r)
+														return
+													}
+													switch elem[0] {
+													case '/': // Prefix: "/"
+														if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+															elem = elem[len(prefix):]
+														} else {
+															break
+														}
+
+														if len(elem) == 0 {
+															s.handleReposDeleteAdminBranchProtectionRequest(args, w, r)
+															return
+														}
+														switch elem[0] {
+														case 'e': // Prefix: "enforce_admins"
+															if prefix := "enforce_admins"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																elem = elem[len(prefix):]
+															} else {
+																break
+															}
+
+															// Leaf: ReposDeleteAdminBranchProtection
+															s.handleReposDeleteAdminBranchProtectionRequest(args, w, r)
+															return
+														case 'r': // Prefix: "re"
+															if prefix := "re"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																elem = elem[len(prefix):]
+															} else {
+																break
+															}
+
+															if len(elem) == 0 {
+																s.handleReposDeleteCommitSignatureProtectionRequest(args, w, r)
+																return
+															}
+															switch elem[0] {
+															case 'q': // Prefix: "quired_"
+																if prefix := "quired_"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																	elem = elem[len(prefix):]
+																} else {
+																	break
+																}
+
+																if len(elem) == 0 {
+																	s.handleReposDeletePullRequestReviewProtectionRequest(args, w, r)
+																	return
+																}
+																switch elem[0] {
+																case 'p': // Prefix: "pull_request_reviews"
+																	if prefix := "pull_request_reviews"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																		elem = elem[len(prefix):]
+																	} else {
+																		break
+																	}
+
+																	// Leaf: ReposDeletePullRequestReviewProtection
+																	s.handleReposDeletePullRequestReviewProtectionRequest(args, w, r)
+																	return
+																case 's': // Prefix: "s"
+																	if prefix := "s"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																		elem = elem[len(prefix):]
+																	} else {
+																		break
+																	}
+
+																	if len(elem) == 0 {
+																		s.handleReposRemoveStatusCheckContextsRequest(args, w, r)
+																		return
+																	}
+																	switch elem[0] {
+																	case 'i': // Prefix: "ignatures"
+																		if prefix := "ignatures"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																			elem = elem[len(prefix):]
+																		} else {
+																			break
+																		}
+
+																		if len(elem) == 0 {
+																			s.handleReposDeleteCommitSignatureProtectionRequest(args, w, r)
+																			return
+																		}
+																		switch elem[0] {
+																		case 'p': // Prefix: "pull_request_reviews"
+																			if prefix := "pull_request_reviews"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																				elem = elem[len(prefix):]
+																			} else {
+																				break
+																			}
+
+																			// Leaf: ReposDeletePullRequestReviewProtection
+																			s.handleReposDeletePullRequestReviewProtectionRequest(args, w, r)
+																			return
+																		case 't': // Prefix: "tatus_checks/contexts"
+																			if prefix := "tatus_checks/contexts"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																				elem = elem[len(prefix):]
+																			} else {
+																				break
+																			}
+
+																			// Leaf: ReposRemoveStatusCheckContexts
+																			s.handleReposRemoveStatusCheckContextsRequest(args, w, r)
+																			return
+																		}
+																	case 't': // Prefix: "tatus_checks"
+																		if prefix := "tatus_checks"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																			elem = elem[len(prefix):]
+																		} else {
+																			break
+																		}
+
+																		if len(elem) == 0 {
+																			s.handleReposRemoveStatusCheckProtectionRequest(args, w, r)
+																			return
+																		}
+																		switch elem[0] {
+																		case '/': // Prefix: "/contexts"
+																			if prefix := "/contexts"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																				elem = elem[len(prefix):]
+																			} else {
+																				break
+																			}
+
+																			// Leaf: ReposRemoveStatusCheckContexts
+																			s.handleReposRemoveStatusCheckContextsRequest(args, w, r)
+																			return
+																		}
+																	}
+																}
+															case 's': // Prefix: "strictions"
+																if prefix := "strictions"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																	elem = elem[len(prefix):]
+																} else {
+																	break
+																}
+
+																if len(elem) == 0 {
+																	s.handleReposDeleteAccessRestrictionsRequest(args, w, r)
+																	return
+																}
+																switch elem[0] {
+																case '/': // Prefix: "/"
+																	if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																		elem = elem[len(prefix):]
+																	} else {
+																		break
+																	}
+
+																	if len(elem) == 0 {
+																		s.handleReposRemoveTeamAccessRestrictionsRequest(args, w, r)
+																		return
+																	}
+																	switch elem[0] {
+																	case 'a': // Prefix: "apps"
+																		if prefix := "apps"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																			elem = elem[len(prefix):]
+																		} else {
+																			break
+																		}
+
+																		if len(elem) == 0 {
+																			s.handleReposRemoveAppAccessRestrictionsRequest(args, w, r)
+																			return
+																		}
+																		switch elem[0] {
+																		case 't': // Prefix: "teams"
+																			if prefix := "teams"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																				elem = elem[len(prefix):]
+																			} else {
+																				break
+																			}
+
+																			// Leaf: ReposRemoveTeamAccessRestrictions
+																			s.handleReposRemoveTeamAccessRestrictionsRequest(args, w, r)
+																			return
+																		}
+																	case 't': // Prefix: "teams"
+																		if prefix := "teams"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																			elem = elem[len(prefix):]
+																		} else {
+																			break
+																		}
+
+																		// Leaf: ReposRemoveTeamAccessRestrictions
+																		s.handleReposRemoveTeamAccessRestrictionsRequest(args, w, r)
+																		return
+																	case 'u': // Prefix: "users"
+																		if prefix := "users"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																			elem = elem[len(prefix):]
+																		} else {
+																			break
+																		}
+
+																		// Leaf: ReposRemoveUserAccessRestrictions
+																		s.handleReposRemoveUserAccessRestrictionsRequest(args, w, r)
+																		return
+																	}
+																case 'e': // Prefix: "enforce_admins"
+																	if prefix := "enforce_admins"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																		elem = elem[len(prefix):]
+																	} else {
+																		break
+																	}
+
+																	// Leaf: ReposDeleteAdminBranchProtection
+																	s.handleReposDeleteAdminBranchProtectionRequest(args, w, r)
+																	return
+																case 'q': // Prefix: "quired_signatures"
+																	if prefix := "quired_signatures"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																		elem = elem[len(prefix):]
+																	} else {
+																		break
+																	}
+
+																	// Leaf: ReposDeleteCommitSignatureProtection
+																	s.handleReposDeleteCommitSignatureProtectionRequest(args, w, r)
+																	return
+																}
+															}
+														}
+													}
+												}
+											}
+										case 'c': // Prefix: "co"
+											if prefix := "co"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+												elem = elem[len(prefix):]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												s.handleReactionsDeleteForCommitCommentRequest(args, w, r)
+												return
+											}
+											switch elem[0] {
+											case 'd': // Prefix: "de-scanning/analyses/"
+												if prefix := "de-scanning/analyses/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+													elem = elem[len(prefix):]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													break
+												}
+												switch elem[0] {
+												case 'm': // Prefix: "mments/"
+													if prefix := "mments/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+														elem = elem[len(prefix):]
+													} else {
+														break
+													}
+
+													// Param: "comment_id"
+													// Match until one of "/"
+													idx := strings.IndexAny(elem, "/")
+													if idx > 0 {
+														args["comment_id"] = elem[:idx]
+														elem = elem[idx:]
+
+														if len(elem) == 0 {
+															break
+														}
+														switch elem[0] {
+														case '/': // Prefix: "/reactions/"
+															if prefix := "/reactions/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																elem = elem[len(prefix):]
+															} else {
+																break
+															}
+
+															// Param: "reaction_id"
+															// Leaf parameter
+															args["reaction_id"] = elem
+
+															// Leaf: ReactionsDeleteForCommitComment
+															s.handleReactionsDeleteForCommitCommentRequest(args, w, r)
+															return
+														}
+													}
+												}
+												// Param: "analysis_id"
+												// Leaf parameter
+												args["analysis_id"] = elem
+
+												// Leaf: CodeScanningDeleteAnalysis
+												s.handleCodeScanningDeleteAnalysisRequest(args, w, r)
+												return
+											case 'l': // Prefix: "llaborators/"
+												if prefix := "llaborators/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+													elem = elem[len(prefix):]
+												} else {
+													break
+												}
+
+												// Param: "username"
+												// Leaf parameter
+												args["username"] = elem
+
+												// Leaf: ReposRemoveCollaborator
+												s.handleReposRemoveCollaboratorRequest(args, w, r)
+												return
+											case 'm': // Prefix: "mments/"
+												if prefix := "mments/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+													elem = elem[len(prefix):]
+												} else {
+													break
+												}
+
+												// Param: "comment_id"
+												// Match until one of "/"
+												idx := strings.IndexAny(elem, "/")
+												if idx > 0 {
+													args["comment_id"] = elem[:idx]
+													elem = elem[idx:]
+
+													if len(elem) == 0 {
+														s.handleReposDeleteCommitCommentRequest(args, w, r)
+														return
+													}
+													switch elem[0] {
+													case '/': // Prefix: "/reactions/"
+														if prefix := "/reactions/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+															elem = elem[len(prefix):]
+														} else {
+															break
+														}
+
+														// Param: "reaction_id"
+														// Leaf parameter
+														args["reaction_id"] = elem
+
+														// Leaf: ReactionsDeleteForCommitComment
+														s.handleReactionsDeleteForCommitCommentRequest(args, w, r)
+														return
+													}
+												}
+											case 'n': // Prefix: "ntents/"
+												if prefix := "ntents/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+													elem = elem[len(prefix):]
+												} else {
+													break
+												}
+
+												// Param: "path"
+												// Leaf parameter
+												args["path"] = elem
+
+												// Leaf: ReposDeleteFile
+												s.handleReposDeleteFileRequest(args, w, r)
+												return
+											}
+										case 'd': // Prefix: "deployments/"
+											if prefix := "deployments/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+												elem = elem[len(prefix):]
+											} else {
+												break
+											}
+
+											// Param: "deployment_id"
+											// Leaf parameter
+											args["deployment_id"] = elem
+
+											// Leaf: ReposDeleteDeployment
+											s.handleReposDeleteDeploymentRequest(args, w, r)
+											return
+										case 'e': // Prefix: "environments/"
+											if prefix := "environments/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+												elem = elem[len(prefix):]
+											} else {
+												break
+											}
+
+											// Param: "environment_name"
+											// Leaf parameter
+											args["environment_name"] = elem
+
+											// Leaf: ReposDeleteAnEnvironment
+											s.handleReposDeleteAnEnvironmentRequest(args, w, r)
+											return
+										case 'g': // Prefix: "git/refs/"
+											if prefix := "git/refs/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+												elem = elem[len(prefix):]
+											} else {
+												break
+											}
+
+											// Param: "ref"
+											// Leaf parameter
+											args["ref"] = elem
+
+											// Leaf: GitDeleteRef
+											s.handleGitDeleteRefRequest(args, w, r)
+											return
+										case 'h': // Prefix: "hooks/"
+											if prefix := "hooks/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+												elem = elem[len(prefix):]
+											} else {
+												break
+											}
+
+											// Param: "hook_id"
+											// Leaf parameter
+											args["hook_id"] = elem
+
+											// Leaf: ReposDeleteWebhook
+											s.handleReposDeleteWebhookRequest(args, w, r)
+											return
+										case 'i': // Prefix: "i"
+											if prefix := "i"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+												elem = elem[len(prefix):]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												s.handleIssuesDeleteCommentRequest(args, w, r)
+												return
+											}
+											switch elem[0] {
+											case 'm': // Prefix: "mport"
+												if prefix := "mport"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+													elem = elem[len(prefix):]
+												} else {
+													break
+												}
+
+												// Leaf: MigrationsCancelImport
+												s.handleMigrationsCancelImportRequest(args, w, r)
+												return
+											case 'n': // Prefix: "n"
+												if prefix := "n"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+													elem = elem[len(prefix):]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													s.handleReposDeleteInvitationRequest(args, w, r)
+													return
+												}
+												switch elem[0] {
+												case 't': // Prefix: "teraction-limits"
+													if prefix := "teraction-limits"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+														elem = elem[len(prefix):]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														s.handleInteractionsRemoveRestrictionsForRepoRequest(args, w, r)
+														return
+													}
+													switch elem[0] {
+													case 's': // Prefix: "ssues/comments/"
+														if prefix := "ssues/comments/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+															elem = elem[len(prefix):]
+														} else {
+															break
+														}
+
+														// Param: "comment_id"
+														// Leaf parameter
+														args["comment_id"] = elem
+
+														// Leaf: IssuesDeleteComment
+														s.handleIssuesDeleteCommentRequest(args, w, r)
+														return
+													case 'v': // Prefix: "vitations/"
+														if prefix := "vitations/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+															elem = elem[len(prefix):]
+														} else {
+															break
+														}
+
+														// Param: "invitation_id"
+														// Leaf parameter
+														args["invitation_id"] = elem
+
+														// Leaf: ReposDeleteInvitation
+														s.handleReposDeleteInvitationRequest(args, w, r)
+														return
+													}
+												case 'v': // Prefix: "vitations/"
+													if prefix := "vitations/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+														elem = elem[len(prefix):]
+													} else {
+														break
+													}
+
+													// Param: "invitation_id"
+													// Leaf parameter
+													args["invitation_id"] = elem
+
+													// Leaf: ReposDeleteInvitation
+													s.handleReposDeleteInvitationRequest(args, w, r)
+													return
+												}
+											case 's': // Prefix: "ssues/"
+												if prefix := "ssues/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+													elem = elem[len(prefix):]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													s.handleIssuesRemoveAllLabelsRequest(args, w, r)
+													return
+												}
+												switch elem[0] {
+												case 'c': // Prefix: "comments/"
+													if prefix := "comments/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+														elem = elem[len(prefix):]
+													} else {
+														break
+													}
+
+													// Param: "comment_id"
+													// Match until one of "/"
+													idx := strings.IndexAny(elem, "/")
+													if idx > 0 {
+														args["comment_id"] = elem[:idx]
+														elem = elem[idx:]
+
+														if len(elem) == 0 {
+															s.handleIssuesDeleteCommentRequest(args, w, r)
+															return
+														}
+														switch elem[0] {
+														case '/': // Prefix: "/"
+															if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																elem = elem[len(prefix):]
+															} else {
+																break
+															}
+
+															if len(elem) == 0 {
+																s.handleReactionsDeleteForIssueCommentRequest(args, w, r)
+																return
+															}
+															switch elem[0] {
+															case 'l': // Prefix: "labels"
+																if prefix := "labels"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																	elem = elem[len(prefix):]
+																} else {
+																	break
+																}
+
+																if len(elem) == 0 {
+																	s.handleIssuesRemoveAllLabelsRequest(args, w, r)
+																	return
+																}
+																switch elem[0] {
+																case 'r': // Prefix: "reactions/"
+																	if prefix := "reactions/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																		elem = elem[len(prefix):]
+																	} else {
+																		break
+																	}
+
+																	// Param: "reaction_id"
+																	// Leaf parameter
+																	args["reaction_id"] = elem
+
+																	// Leaf: ReactionsDeleteForIssueComment
+																	s.handleReactionsDeleteForIssueCommentRequest(args, w, r)
+																	return
+																}
+															case 'r': // Prefix: "reactions/"
+																if prefix := "reactions/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																	elem = elem[len(prefix):]
+																} else {
+																	break
+																}
+
+																// Param: "reaction_id"
+																// Leaf parameter
+																args["reaction_id"] = elem
+
+																// Leaf: ReactionsDeleteForIssueComment
+																s.handleReactionsDeleteForIssueCommentRequest(args, w, r)
+																return
+															}
+														}
+													}
+												}
+												// Param: "issue_number"
+												// Match until one of "/"
+												idx := strings.IndexAny(elem, "/")
+												if idx > 0 {
+													args["issue_number"] = elem[:idx]
+													elem = elem[idx:]
+
+													if len(elem) == 0 {
+														break
+													}
+													switch elem[0] {
+													case '/': // Prefix: "/"
+														if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+															elem = elem[len(prefix):]
+														} else {
+															break
+														}
+
+														if len(elem) == 0 {
+															s.handleIssuesRemoveAssigneesRequest(args, w, r)
+															return
+														}
+														switch elem[0] {
+														case 'a': // Prefix: "assignees"
+															if prefix := "assignees"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																elem = elem[len(prefix):]
+															} else {
+																break
+															}
+
+															// Leaf: IssuesRemoveAssignees
+															s.handleIssuesRemoveAssigneesRequest(args, w, r)
+															return
+														case 'l': // Prefix: "l"
+															if prefix := "l"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																elem = elem[len(prefix):]
+															} else {
+																break
+															}
+
+															if len(elem) == 0 {
+																s.handleIssuesUnlockRequest(args, w, r)
+																return
+															}
+															switch elem[0] {
+															case 'a': // Prefix: "abels"
+																if prefix := "abels"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																	elem = elem[len(prefix):]
+																} else {
+																	break
+																}
+
+																if len(elem) == 0 {
+																	s.handleIssuesRemoveAllLabelsRequest(args, w, r)
+																	return
+																}
+																switch elem[0] {
+																case '/': // Prefix: "/"
+																	if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																		elem = elem[len(prefix):]
+																	} else {
+																		break
+																	}
+
+																	// Param: "name"
+																	// Leaf parameter
+																	args["name"] = elem
+
+																	// Leaf: IssuesRemoveLabel
+																	s.handleIssuesRemoveLabelRequest(args, w, r)
+																	return
+																case 'a': // Prefix: "assignees"
+																	if prefix := "assignees"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																		elem = elem[len(prefix):]
+																	} else {
+																		break
+																	}
+
+																	// Leaf: IssuesRemoveAssignees
+																	s.handleIssuesRemoveAssigneesRequest(args, w, r)
+																	return
+																case 'o': // Prefix: "ock"
+																	if prefix := "ock"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																		elem = elem[len(prefix):]
+																	} else {
+																		break
+																	}
+
+																	// Leaf: IssuesUnlock
+																	s.handleIssuesUnlockRequest(args, w, r)
+																	return
+																}
+															case 'o': // Prefix: "ock"
+																if prefix := "ock"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																	elem = elem[len(prefix):]
+																} else {
+																	break
+																}
+
+																// Leaf: IssuesUnlock
+																s.handleIssuesUnlockRequest(args, w, r)
+																return
+															}
+														case 'r': // Prefix: "reactions/"
+															if prefix := "reactions/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																elem = elem[len(prefix):]
+															} else {
+																break
+															}
+
+															// Param: "reaction_id"
+															// Leaf parameter
+															args["reaction_id"] = elem
+
+															// Leaf: ReactionsDeleteForIssue
+															s.handleReactionsDeleteForIssueRequest(args, w, r)
+															return
+														}
+													}
+												}
+											}
+										case 'k': // Prefix: "keys/"
+											if prefix := "keys/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+												elem = elem[len(prefix):]
+											} else {
+												break
+											}
+
+											// Param: "key_id"
+											// Leaf parameter
+											args["key_id"] = elem
+
+											// Leaf: ReposDeleteDeployKey
+											s.handleReposDeleteDeployKeyRequest(args, w, r)
+											return
+										case 'l': // Prefix: "l"
+											if prefix := "l"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+												elem = elem[len(prefix):]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												s.handleReposDisableLfsForRepoRequest(args, w, r)
+												return
+											}
+											switch elem[0] {
+											case 'a': // Prefix: "abels/"
+												if prefix := "abels/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+													elem = elem[len(prefix):]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													break
+												}
+												switch elem[0] {
+												case 'f': // Prefix: "fs"
+													if prefix := "fs"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+														elem = elem[len(prefix):]
+													} else {
+														break
+													}
+
+													// Leaf: ReposDisableLfsForRepo
+													s.handleReposDisableLfsForRepoRequest(args, w, r)
+													return
+												}
+												// Param: "name"
+												// Leaf parameter
+												args["name"] = elem
+
+												// Leaf: IssuesDeleteLabel
+												s.handleIssuesDeleteLabelRequest(args, w, r)
+												return
+											case 'f': // Prefix: "fs"
+												if prefix := "fs"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+													elem = elem[len(prefix):]
+												} else {
+													break
+												}
+
+												// Leaf: ReposDisableLfsForRepo
+												s.handleReposDisableLfsForRepoRequest(args, w, r)
+												return
+											}
+										case 'm': // Prefix: "milestones/"
+											if prefix := "milestones/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+												elem = elem[len(prefix):]
+											} else {
+												break
+											}
+
+											// Param: "milestone_number"
+											// Leaf parameter
+											args["milestone_number"] = elem
+
+											// Leaf: IssuesDeleteMilestone
+											s.handleIssuesDeleteMilestoneRequest(args, w, r)
+											return
+										case 'p': // Prefix: "p"
+											if prefix := "p"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+												elem = elem[len(prefix):]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												s.handleReposDeletePagesSiteRequest(args, w, r)
+												return
+											}
+											switch elem[0] {
+											case 'a': // Prefix: "ages"
+												if prefix := "ages"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+													elem = elem[len(prefix):]
+												} else {
+													break
+												}
+
+												// Leaf: ReposDeletePagesSite
+												s.handleReposDeletePagesSiteRequest(args, w, r)
+												return
+											case 'u': // Prefix: "ulls/"
+												if prefix := "ulls/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+													elem = elem[len(prefix):]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													break
+												}
+												switch elem[0] {
+												case 'a': // Prefix: "ages"
+													if prefix := "ages"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+														elem = elem[len(prefix):]
+													} else {
+														break
+													}
+
+													// Leaf: ReposDeletePagesSite
+													s.handleReposDeletePagesSiteRequest(args, w, r)
+													return
+												case 'c': // Prefix: "comments/"
+													if prefix := "comments/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+														elem = elem[len(prefix):]
+													} else {
+														break
+													}
+
+													// Param: "comment_id"
+													// Match until one of "/"
+													idx := strings.IndexAny(elem, "/")
+													if idx > 0 {
+														args["comment_id"] = elem[:idx]
+														elem = elem[idx:]
+
+														if len(elem) == 0 {
+															s.handlePullsDeleteReviewCommentRequest(args, w, r)
+															return
+														}
+														switch elem[0] {
+														case '/': // Prefix: "/reactions/"
+															if prefix := "/reactions/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																elem = elem[len(prefix):]
+															} else {
+																break
+															}
+
+															// Param: "reaction_id"
+															// Leaf parameter
+															args["reaction_id"] = elem
+
+															// Leaf: ReactionsDeleteForPullRequestComment
+															s.handleReactionsDeleteForPullRequestCommentRequest(args, w, r)
+															return
+														}
+													}
+												}
+												// Param: "pull_number"
+												// Match until one of "/"
+												idx := strings.IndexAny(elem, "/")
+												if idx > 0 {
+													args["pull_number"] = elem[:idx]
+													elem = elem[idx:]
+
+													if len(elem) == 0 {
+														break
+													}
+													switch elem[0] {
+													case '/': // Prefix: "/re"
+														if prefix := "/re"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+															elem = elem[len(prefix):]
+														} else {
+															break
+														}
+
+														if len(elem) == 0 {
+															s.handlePullsRemoveRequestedReviewersRequest(args, w, r)
+															return
+														}
+														switch elem[0] {
+														case 'q': // Prefix: "quested_reviewers"
+															if prefix := "quested_reviewers"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																elem = elem[len(prefix):]
+															} else {
+																break
+															}
+
+															// Leaf: PullsRemoveRequestedReviewers
+															s.handlePullsRemoveRequestedReviewersRequest(args, w, r)
+															return
+														case 'v': // Prefix: "views/"
+															if prefix := "views/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																elem = elem[len(prefix):]
+															} else {
+																break
+															}
+
+															if len(elem) == 0 {
+																break
+															}
+															switch elem[0] {
+															case 'q': // Prefix: "quested_reviewers"
+																if prefix := "quested_reviewers"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																	elem = elem[len(prefix):]
+																} else {
+																	break
+																}
+
+																// Leaf: PullsRemoveRequestedReviewers
+																s.handlePullsRemoveRequestedReviewersRequest(args, w, r)
+																return
+															}
+															// Param: "review_id"
+															// Leaf parameter
+															args["review_id"] = elem
+
+															// Leaf: PullsDeletePendingReview
+															s.handlePullsDeletePendingReviewRequest(args, w, r)
+															return
+														}
+													}
+												}
+											}
+										case 'r': // Prefix: "releases/"
+											if prefix := "releases/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+												elem = elem[len(prefix):]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												break
+											}
+											switch elem[0] {
+											case 'a': // Prefix: "assets/"
+												if prefix := "assets/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+													elem = elem[len(prefix):]
+												} else {
+													break
+												}
+
+												// Param: "asset_id"
+												// Leaf parameter
+												args["asset_id"] = elem
+
+												// Leaf: ReposDeleteReleaseAsset
+												s.handleReposDeleteReleaseAssetRequest(args, w, r)
+												return
+											}
+											// Param: "release_id"
+											// Leaf parameter
+											args["release_id"] = elem
+
+											// Leaf: ReposDeleteRelease
+											s.handleReposDeleteReleaseRequest(args, w, r)
+											return
+										case 's': // Prefix: "subscription"
+											if prefix := "subscription"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+												elem = elem[len(prefix):]
+											} else {
+												break
+											}
+
+											// Leaf: ActivityDeleteRepoSubscription
+											s.handleActivityDeleteRepoSubscriptionRequest(args, w, r)
+											return
+										case 'v': // Prefix: "vulnerability-alerts"
+											if prefix := "vulnerability-alerts"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+												elem = elem[len(prefix):]
+											} else {
+												break
+											}
+
+											// Leaf: ReposDisableVulnerabilityAlerts
+											s.handleReposDisableVulnerabilityAlertsRequest(args, w, r)
+											return
+										}
+									}
+								}
+							}
+						}
+					case 'a': // Prefix: "actions/"
+						if prefix := "actions/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+							elem = elem[len(prefix):]
+						} else {
+							break
+						}
+
+						// Param: "reaction_id"
+						// Leaf parameter
+						args["reaction_id"] = elem
+
+						// Leaf: ReactionsDeleteLegacy
+						s.handleReactionsDeleteLegacyRequest(args, w, r)
+						return
+					case 'i': // Prefix: "itories/"
+						if prefix := "itories/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+							elem = elem[len(prefix):]
+						} else {
+							break
+						}
+
+						// Param: "repository_id"
+						// Match until one of "/"
+						idx := strings.IndexAny(elem, "/")
+						if idx > 0 {
+							args["repository_id"] = elem[:idx]
+							elem = elem[idx:]
+
+							if len(elem) == 0 {
+								break
+							}
+							switch elem[0] {
+							case '/': // Prefix: "/environments/"
+								if prefix := "/environments/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+									elem = elem[len(prefix):]
+								} else {
+									break
+								}
+
+								// Param: "environment_name"
+								// Match until one of "/"
+								idx := strings.IndexAny(elem, "/")
+								if idx > 0 {
+									args["environment_name"] = elem[:idx]
+									elem = elem[idx:]
+
+									if len(elem) == 0 {
+										break
+									}
+									switch elem[0] {
+									case '/': // Prefix: "/secrets/"
+										if prefix := "/secrets/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+											elem = elem[len(prefix):]
+										} else {
+											break
+										}
+
+										// Param: "secret_name"
+										// Leaf parameter
+										args["secret_name"] = elem
+
+										// Leaf: ActionsDeleteEnvironmentSecret
+										s.handleActionsDeleteEnvironmentSecretRequest(args, w, r)
+										return
+									}
+								}
+							}
+						}
+					case 'o': // Prefix: "orgs/"
+						if prefix := "orgs/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+							elem = elem[len(prefix):]
+						} else {
+							break
+						}
+
+						// Param: "org"
+						// Match until one of "/"
+						idx := strings.IndexAny(elem, "/")
+						if idx > 0 {
+							args["org"] = elem[:idx]
+							elem = elem[idx:]
+
+							if len(elem) == 0 {
+								break
+							}
+							switch elem[0] {
+							case '/': // Prefix: "/actions/secrets/"
+								if prefix := "/actions/secrets/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+									elem = elem[len(prefix):]
+								} else {
+									break
+								}
+
+								// Param: "secret_name"
+								// Leaf parameter
+								args["secret_name"] = elem
+
+								// Leaf: ActionsDeleteOrgSecret
+								s.handleActionsDeleteOrgSecretRequest(args, w, r)
+								return
+							}
+						}
+					}
+				}
+			case 's': // Prefix: "scim/v2/"
+				if prefix := "scim/v2/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+					elem = elem[len(prefix):]
+				} else {
+					break
+				}
+
+				if len(elem) == 0 {
+					s.handleScimDeleteUserFromOrgRequest(args, w, r)
+					return
+				}
+				switch elem[0] {
+				case 'e': // Prefix: "enterprises/"
+					if prefix := "enterprises/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+						elem = elem[len(prefix):]
+					} else {
+						break
+					}
+
+					if len(elem) == 0 {
+						break
+					}
+					switch elem[0] {
+					case 'o': // Prefix: "organizations/"
+						if prefix := "organizations/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+							elem = elem[len(prefix):]
+						} else {
+							break
+						}
+
+						// Param: "org"
+						// Match until one of "/"
+						idx := strings.IndexAny(elem, "/")
+						if idx > 0 {
+							args["org"] = elem[:idx]
+							elem = elem[idx:]
+
+							if len(elem) == 0 {
+								break
+							}
+							switch elem[0] {
+							case '/': // Prefix: "/Users/"
+								if prefix := "/Users/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+									elem = elem[len(prefix):]
+								} else {
+									break
+								}
+
+								// Param: "scim_user_id"
+								// Leaf parameter
+								args["scim_user_id"] = elem
+
+								// Leaf: ScimDeleteUserFromOrg
+								s.handleScimDeleteUserFromOrgRequest(args, w, r)
+								return
+							}
+						}
+					}
+					// Param: "enterprise"
+					// Match until one of "/"
+					idx := strings.IndexAny(elem, "/")
+					if idx > 0 {
+						args["enterprise"] = elem[:idx]
+						elem = elem[idx:]
+
+						if len(elem) == 0 {
+							break
+						}
+						switch elem[0] {
+						case '/': // Prefix: "/"
+							if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+								elem = elem[len(prefix):]
+							} else {
+								break
+							}
+
+							if len(elem) == 0 {
+								s.handleEnterpriseAdminDeleteUserFromEnterpriseRequest(args, w, r)
+								return
+							}
+							switch elem[0] {
+							case 'G': // Prefix: "Groups/"
+								if prefix := "Groups/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+									elem = elem[len(prefix):]
+								} else {
+									break
+								}
+
+								if len(elem) == 0 {
+									break
+								}
+								switch elem[0] {
+								case 'U': // Prefix: "Users/"
+									if prefix := "Users/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+										elem = elem[len(prefix):]
+									} else {
+										break
+									}
+
+									// Param: "scim_user_id"
+									// Leaf parameter
+									args["scim_user_id"] = elem
+
+									// Leaf: EnterpriseAdminDeleteUserFromEnterprise
+									s.handleEnterpriseAdminDeleteUserFromEnterpriseRequest(args, w, r)
+									return
+								}
+								// Param: "scim_group_id"
+								// Leaf parameter
+								args["scim_group_id"] = elem
+
+								// Leaf: EnterpriseAdminDeleteScimGroupFromEnterprise
+								s.handleEnterpriseAdminDeleteScimGroupFromEnterpriseRequest(args, w, r)
+								return
+							case 'U': // Prefix: "Users/"
+								if prefix := "Users/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+									elem = elem[len(prefix):]
+								} else {
+									break
+								}
+
+								// Param: "scim_user_id"
+								// Leaf parameter
+								args["scim_user_id"] = elem
+
+								// Leaf: EnterpriseAdminDeleteUserFromEnterprise
+								s.handleEnterpriseAdminDeleteUserFromEnterpriseRequest(args, w, r)
+								return
+							}
+						}
+					}
+				case 'o': // Prefix: "organizations/"
+					if prefix := "organizations/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+						elem = elem[len(prefix):]
+					} else {
+						break
+					}
+
+					// Param: "org"
+					// Match until one of "/"
+					idx := strings.IndexAny(elem, "/")
+					if idx > 0 {
+						args["org"] = elem[:idx]
+						elem = elem[idx:]
+
+						if len(elem) == 0 {
+							break
+						}
+						switch elem[0] {
+						case '/': // Prefix: "/Users/"
+							if prefix := "/Users/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+								elem = elem[len(prefix):]
+							} else {
+								break
+							}
+
+							// Param: "scim_user_id"
+							// Leaf parameter
+							args["scim_user_id"] = elem
+
+							// Leaf: ScimDeleteUserFromOrg
+							s.handleScimDeleteUserFromOrgRequest(args, w, r)
+							return
+						}
+					}
+				}
+			case 't': // Prefix: "teams/"
+				if prefix := "teams/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+					elem = elem[len(prefix):]
+				} else {
+					break
+				}
+
+				// Param: "team_id"
+				// Match until one of "/"
+				idx := strings.IndexAny(elem, "/")
+				if idx > 0 {
+					args["team_id"] = elem[:idx]
+					elem = elem[idx:]
+
+					if len(elem) == 0 {
+						s.handleTeamsDeleteLegacyRequest(args, w, r)
+						return
+					}
+					switch elem[0] {
+					case '/': // Prefix: "/"
+						if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+							elem = elem[len(prefix):]
+						} else {
+							break
+						}
+
+						if len(elem) == 0 {
+							s.handleTeamsRemoveMemberLegacyRequest(args, w, r)
+							return
+						}
+						switch elem[0] {
+						case 'd': // Prefix: "discussions/"
+							if prefix := "discussions/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+								elem = elem[len(prefix):]
+							} else {
+								break
+							}
+
+							if len(elem) == 0 {
+								break
+							}
+							switch elem[0] {
+							case 'm': // Prefix: "members/"
+								if prefix := "members/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+									elem = elem[len(prefix):]
+								} else {
+									break
+								}
+
+								// Param: "username"
+								// Leaf parameter
+								args["username"] = elem
+
+								// Leaf: TeamsRemoveMemberLegacy
+								s.handleTeamsRemoveMemberLegacyRequest(args, w, r)
+								return
+							}
+							// Param: "discussion_number"
+							// Match until one of "/"
+							idx := strings.IndexAny(elem, "/")
+							if idx > 0 {
+								args["discussion_number"] = elem[:idx]
+								elem = elem[idx:]
+
+								if len(elem) == 0 {
+									s.handleTeamsDeleteDiscussionLegacyRequest(args, w, r)
+									return
+								}
+								switch elem[0] {
+								case '/': // Prefix: "/comments/"
+									if prefix := "/comments/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+										elem = elem[len(prefix):]
+									} else {
+										break
+									}
+
+									// Param: "comment_number"
+									// Leaf parameter
+									args["comment_number"] = elem
+
+									// Leaf: TeamsDeleteDiscussionCommentLegacy
+									s.handleTeamsDeleteDiscussionCommentLegacyRequest(args, w, r)
+									return
+								}
+							}
+						case 'm': // Prefix: "members"
+							if prefix := "members"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+								elem = elem[len(prefix):]
+							} else {
+								break
+							}
+
+							if len(elem) == 0 {
+								s.handleTeamsRemoveMembershipForUserLegacyRequest(args, w, r)
+								return
+							}
+							switch elem[0] {
+							case '/': // Prefix: "/"
+								if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+									elem = elem[len(prefix):]
+								} else {
+									break
+								}
+
+								if len(elem) == 0 {
+									break
+								}
+								switch elem[0] {
+								case 'h': // Prefix: "hips/"
+									if prefix := "hips/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+										elem = elem[len(prefix):]
+									} else {
+										break
+									}
+
+									// Param: "username"
+									// Leaf parameter
+									args["username"] = elem
+
+									// Leaf: TeamsRemoveMembershipForUserLegacy
+									s.handleTeamsRemoveMembershipForUserLegacyRequest(args, w, r)
+									return
+								}
+								// Param: "username"
+								// Leaf parameter
+								args["username"] = elem
+
+								// Leaf: TeamsRemoveMemberLegacy
+								s.handleTeamsRemoveMemberLegacyRequest(args, w, r)
+								return
+							case 'h': // Prefix: "hips/"
+								if prefix := "hips/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+									elem = elem[len(prefix):]
+								} else {
+									break
+								}
+
+								// Param: "username"
+								// Leaf parameter
+								args["username"] = elem
+
+								// Leaf: TeamsRemoveMembershipForUserLegacy
+								s.handleTeamsRemoveMembershipForUserLegacyRequest(args, w, r)
+								return
+							}
+						case 'p': // Prefix: "projects/"
+							if prefix := "projects/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+								elem = elem[len(prefix):]
+							} else {
+								break
+							}
+
+							// Param: "project_id"
+							// Leaf parameter
+							args["project_id"] = elem
+
+							// Leaf: TeamsRemoveProjectLegacy
+							s.handleTeamsRemoveProjectLegacyRequest(args, w, r)
+							return
+						case 'r': // Prefix: "repos/"
+							if prefix := "repos/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+								elem = elem[len(prefix):]
+							} else {
+								break
+							}
+
+							// Param: "owner"
+							// Match until one of "/"
+							idx := strings.IndexAny(elem, "/")
+							if idx > 0 {
+								args["owner"] = elem[:idx]
+								elem = elem[idx:]
+
+								if len(elem) == 0 {
+									break
+								}
+								switch elem[0] {
+								case '/': // Prefix: "/"
+									if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+										elem = elem[len(prefix):]
+									} else {
+										break
+									}
+
+									// Param: "repo"
+									// Leaf parameter
+									args["repo"] = elem
+
+									// Leaf: TeamsRemoveRepoLegacy
+									s.handleTeamsRemoveRepoLegacyRequest(args, w, r)
+									return
+								}
+							}
+						}
+					}
+				}
+			case 'u': // Prefix: "user"
+				if prefix := "user"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+					elem = elem[len(prefix):]
+				} else {
+					break
+				}
+
+				if len(elem) == 0 {
+					s.handlePackagesDeletePackageForUserRequest(args, w, r)
+					return
+				}
+				switch elem[0] {
+				case '/': // Prefix: "/"
+					if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+						elem = elem[len(prefix):]
+					} else {
+						break
+					}
+
+					if len(elem) == 0 {
+						s.handleAppsRemoveRepoFromInstallationRequest(args, w, r)
+						return
+					}
+					switch elem[0] {
+					case 'b': // Prefix: "blocks/"
+						if prefix := "blocks/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+							elem = elem[len(prefix):]
+						} else {
+							break
+						}
+
+						// Param: "username"
+						// Leaf parameter
+						args["username"] = elem
+
+						// Leaf: UsersUnblock
+						s.handleUsersUnblockRequest(args, w, r)
+						return
+					case 'e': // Prefix: "emails"
+						if prefix := "emails"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+							elem = elem[len(prefix):]
+						} else {
+							break
+						}
+
+						// Leaf: UsersDeleteEmailForAuthenticated
+						s.handleUsersDeleteEmailForAuthenticatedRequest(args, w, r)
+						return
+					case 'f': // Prefix: "following/"
+						if prefix := "following/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+							elem = elem[len(prefix):]
+						} else {
+							break
+						}
+
+						// Param: "username"
+						// Leaf parameter
+						args["username"] = elem
+
+						// Leaf: UsersUnfollow
+						s.handleUsersUnfollowRequest(args, w, r)
+						return
+					case 'g': // Prefix: "gpg_keys/"
+						if prefix := "gpg_keys/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+							elem = elem[len(prefix):]
+						} else {
+							break
+						}
+
+						// Param: "gpg_key_id"
+						// Leaf parameter
+						args["gpg_key_id"] = elem
+
+						// Leaf: UsersDeleteGpgKeyForAuthenticated
+						s.handleUsersDeleteGpgKeyForAuthenticatedRequest(args, w, r)
+						return
+					case 'i': // Prefix: "in"
+						if prefix := "in"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+							elem = elem[len(prefix):]
+						} else {
+							break
+						}
+
+						if len(elem) == 0 {
+							s.handleInteractionsRemoveRestrictionsForAuthenticatedUserRequest(args, w, r)
+							return
+						}
+						switch elem[0] {
+						case 's': // Prefix: "stallations/"
+							if prefix := "stallations/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+								elem = elem[len(prefix):]
+							} else {
+								break
+							}
+
+							if len(elem) == 0 {
+								break
+							}
+							switch elem[0] {
+							case 't': // Prefix: "teraction-limits"
+								if prefix := "teraction-limits"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+									elem = elem[len(prefix):]
+								} else {
+									break
+								}
+
+								// Leaf: InteractionsRemoveRestrictionsForAuthenticatedUser
+								s.handleInteractionsRemoveRestrictionsForAuthenticatedUserRequest(args, w, r)
+								return
+							}
+							// Param: "installation_id"
+							// Match until one of "/"
+							idx := strings.IndexAny(elem, "/")
+							if idx > 0 {
+								args["installation_id"] = elem[:idx]
+								elem = elem[idx:]
+
+								if len(elem) == 0 {
+									break
+								}
+								switch elem[0] {
+								case '/': // Prefix: "/repositories/"
+									if prefix := "/repositories/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+										elem = elem[len(prefix):]
+									} else {
+										break
+									}
+
+									// Param: "repository_id"
+									// Leaf parameter
+									args["repository_id"] = elem
+
+									// Leaf: AppsRemoveRepoFromInstallation
+									s.handleAppsRemoveRepoFromInstallationRequest(args, w, r)
+									return
+								}
+							}
+						case 't': // Prefix: "teraction-limits"
+							if prefix := "teraction-limits"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+								elem = elem[len(prefix):]
+							} else {
+								break
+							}
+
+							// Leaf: InteractionsRemoveRestrictionsForAuthenticatedUser
+							s.handleInteractionsRemoveRestrictionsForAuthenticatedUserRequest(args, w, r)
+							return
+						}
+					case 'k': // Prefix: "keys/"
+						if prefix := "keys/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+							elem = elem[len(prefix):]
+						} else {
+							break
+						}
+
+						// Param: "key_id"
+						// Leaf parameter
+						args["key_id"] = elem
+
+						// Leaf: UsersDeletePublicSSHKeyForAuthenticated
+						s.handleUsersDeletePublicSSHKeyForAuthenticatedRequest(args, w, r)
+						return
+					case 'm': // Prefix: "migrations/"
+						if prefix := "migrations/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+							elem = elem[len(prefix):]
+						} else {
+							break
+						}
+
+						// Param: "migration_id"
+						// Match until one of "/"
+						idx := strings.IndexAny(elem, "/")
+						if idx > 0 {
+							args["migration_id"] = elem[:idx]
+							elem = elem[idx:]
+
+							if len(elem) == 0 {
+								break
+							}
+							switch elem[0] {
+							case '/': // Prefix: "/"
+								if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+									elem = elem[len(prefix):]
+								} else {
+									break
+								}
+
+								if len(elem) == 0 {
+									s.handleMigrationsUnlockRepoForAuthenticatedUserRequest(args, w, r)
+									return
+								}
+								switch elem[0] {
+								case 'a': // Prefix: "archive"
+									if prefix := "archive"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+										elem = elem[len(prefix):]
+									} else {
+										break
+									}
+
+									if len(elem) == 0 {
+										s.handleMigrationsDeleteArchiveForAuthenticatedUserRequest(args, w, r)
+										return
+									}
+									switch elem[0] {
+									case 'r': // Prefix: "repos/"
+										if prefix := "repos/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+											elem = elem[len(prefix):]
+										} else {
+											break
+										}
+
+										// Param: "repo_name"
+										// Match until one of "/"
+										idx := strings.IndexAny(elem, "/")
+										if idx > 0 {
+											args["repo_name"] = elem[:idx]
+											elem = elem[idx:]
+
+											if len(elem) == 0 {
+												break
+											}
+											switch elem[0] {
+											case '/': // Prefix: "/lock"
+												if prefix := "/lock"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+													elem = elem[len(prefix):]
+												} else {
+													break
+												}
+
+												// Leaf: MigrationsUnlockRepoForAuthenticatedUser
+												s.handleMigrationsUnlockRepoForAuthenticatedUserRequest(args, w, r)
+												return
+											}
+										}
+									}
+								case 'r': // Prefix: "repos/"
+									if prefix := "repos/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+										elem = elem[len(prefix):]
+									} else {
+										break
+									}
+
+									// Param: "repo_name"
+									// Match until one of "/"
+									idx := strings.IndexAny(elem, "/")
+									if idx > 0 {
+										args["repo_name"] = elem[:idx]
+										elem = elem[idx:]
+
+										if len(elem) == 0 {
+											break
+										}
+										switch elem[0] {
+										case '/': // Prefix: "/lock"
+											if prefix := "/lock"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+												elem = elem[len(prefix):]
+											} else {
+												break
+											}
+
+											// Leaf: MigrationsUnlockRepoForAuthenticatedUser
+											s.handleMigrationsUnlockRepoForAuthenticatedUserRequest(args, w, r)
+											return
+										}
+									}
+								}
+							}
+						}
+					case 'p': // Prefix: "packages/"
+						if prefix := "packages/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+							elem = elem[len(prefix):]
+						} else {
+							break
+						}
+
+						// Param: "package_type"
+						// Match until one of "/"
+						idx := strings.IndexAny(elem, "/")
+						if idx > 0 {
+							args["package_type"] = elem[:idx]
+							elem = elem[idx:]
+
+							if len(elem) == 0 {
+								break
+							}
+							switch elem[0] {
+							case '/': // Prefix: "/"
+								if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+									elem = elem[len(prefix):]
+								} else {
+									break
+								}
+
+								// Param: "package_name"
+								// Match until one of "/"
+								idx := strings.IndexAny(elem, "/")
+								if idx > 0 {
+									args["package_name"] = elem[:idx]
+									elem = elem[idx:]
+
+									if len(elem) == 0 {
+										s.handlePackagesDeletePackageForAuthenticatedUserRequest(args, w, r)
+										return
+									}
+									switch elem[0] {
+									case '/': // Prefix: "/versions/"
+										if prefix := "/versions/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+											elem = elem[len(prefix):]
+										} else {
+											break
+										}
+
+										// Param: "package_version_id"
+										// Leaf parameter
+										args["package_version_id"] = elem
+
+										// Leaf: PackagesDeletePackageVersionForAuthenticatedUser
+										s.handlePackagesDeletePackageVersionForAuthenticatedUserRequest(args, w, r)
+										return
+									}
+								}
+							}
+						}
+					case 'r': // Prefix: "repository_invitations/"
+						if prefix := "repository_invitations/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+							elem = elem[len(prefix):]
+						} else {
+							break
+						}
+
+						// Param: "invitation_id"
+						// Leaf parameter
+						args["invitation_id"] = elem
+
+						// Leaf: ReposDeclineInvitation
+						s.handleReposDeclineInvitationRequest(args, w, r)
+						return
+					case 's': // Prefix: "s"
+						if prefix := "s"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+							elem = elem[len(prefix):]
+						} else {
+							break
+						}
+
+						if len(elem) == 0 {
+							s.handlePackagesDeletePackageForUserRequest(args, w, r)
+							return
+						}
+						switch elem[0] {
+						case '/': // Prefix: "/"
+							if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+								elem = elem[len(prefix):]
+							} else {
+								break
+							}
+
+							// Param: "username"
+							// Match until one of "/"
+							idx := strings.IndexAny(elem, "/")
+							if idx > 0 {
+								args["username"] = elem[:idx]
+								elem = elem[idx:]
+
+								if len(elem) == 0 {
+									break
+								}
+								switch elem[0] {
+								case '/': // Prefix: "/packages/"
+									if prefix := "/packages/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+										elem = elem[len(prefix):]
+									} else {
+										break
+									}
+
+									// Param: "package_type"
+									// Match until one of "/"
+									idx := strings.IndexAny(elem, "/")
+									if idx > 0 {
+										args["package_type"] = elem[:idx]
+										elem = elem[idx:]
+
+										if len(elem) == 0 {
+											break
+										}
+										switch elem[0] {
+										case '/': // Prefix: "/"
+											if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+												elem = elem[len(prefix):]
+											} else {
+												break
+											}
+
+											// Param: "package_name"
+											// Leaf parameter
+											args["package_name"] = elem
+
+											// Leaf: PackagesDeletePackageForUser
+											s.handlePackagesDeletePackageForUserRequest(args, w, r)
+											return
+										}
+									}
+								}
+							}
+						case 't': // Prefix: "tarred/"
+							if prefix := "tarred/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+								elem = elem[len(prefix):]
+							} else {
+								break
+							}
+
+							if len(elem) == 0 {
+								break
+							}
+							switch elem[0] {
+							case '/': // Prefix: "/"
+								if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+									elem = elem[len(prefix):]
+								} else {
+									break
+								}
+
+								// Param: "username"
+								// Match until one of "/"
+								idx := strings.IndexAny(elem, "/")
+								if idx > 0 {
+									args["username"] = elem[:idx]
+									elem = elem[idx:]
+
+									if len(elem) == 0 {
+										break
+									}
+									switch elem[0] {
+									case '/': // Prefix: "/packages/"
+										if prefix := "/packages/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+											elem = elem[len(prefix):]
+										} else {
+											break
+										}
+
+										// Param: "package_type"
+										// Match until one of "/"
+										idx := strings.IndexAny(elem, "/")
+										if idx > 0 {
+											args["package_type"] = elem[:idx]
+											elem = elem[idx:]
+
+											if len(elem) == 0 {
+												break
+											}
+											switch elem[0] {
+											case '/': // Prefix: "/"
+												if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+													elem = elem[len(prefix):]
+												} else {
+													break
+												}
+
+												// Param: "package_name"
+												// Leaf parameter
+												args["package_name"] = elem
+
+												// Leaf: PackagesDeletePackageForUser
+												s.handlePackagesDeletePackageForUserRequest(args, w, r)
+												return
+											}
+										}
+									}
+								}
+							case 'i': // Prefix: "installations/"
+								if prefix := "installations/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+									elem = elem[len(prefix):]
+								} else {
+									break
+								}
+
+								// Param: "installation_id"
+								// Match until one of "/"
+								idx := strings.IndexAny(elem, "/")
+								if idx > 0 {
+									args["installation_id"] = elem[:idx]
+									elem = elem[idx:]
+
+									if len(elem) == 0 {
+										break
+									}
+									switch elem[0] {
+									case '/': // Prefix: "/repositories/"
+										if prefix := "/repositories/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+											elem = elem[len(prefix):]
+										} else {
+											break
+										}
+
+										// Param: "repository_id"
+										// Leaf parameter
+										args["repository_id"] = elem
+
+										// Leaf: AppsRemoveRepoFromInstallation
+										s.handleAppsRemoveRepoFromInstallationRequest(args, w, r)
+										return
+									}
+								}
+							}
+							// Param: "owner"
+							// Match until one of "/"
+							idx := strings.IndexAny(elem, "/")
+							if idx > 0 {
+								args["owner"] = elem[:idx]
+								elem = elem[idx:]
+
+								if len(elem) == 0 {
+									break
+								}
+								switch elem[0] {
+								case '/': // Prefix: "/"
+									if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+										elem = elem[len(prefix):]
+									} else {
+										break
+									}
+
+									// Param: "repo"
+									// Leaf parameter
+									args["repo"] = elem
+
+									// Leaf: ActivityUnstarRepoForAuthenticatedUser
+									s.handleActivityUnstarRepoForAuthenticatedUserRequest(args, w, r)
+									return
+								}
+							}
+						}
+					}
+				case 's': // Prefix: "s/"
+					if prefix := "s/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+						elem = elem[len(prefix):]
+					} else {
+						break
+					}
+
+					// Param: "username"
+					// Match until one of "/"
+					idx := strings.IndexAny(elem, "/")
+					if idx > 0 {
+						args["username"] = elem[:idx]
+						elem = elem[idx:]
+
+						if len(elem) == 0 {
+							break
+						}
+						switch elem[0] {
+						case '/': // Prefix: "/packages/"
+							if prefix := "/packages/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+								elem = elem[len(prefix):]
+							} else {
+								break
+							}
+
+							// Param: "package_type"
+							// Match until one of "/"
+							idx := strings.IndexAny(elem, "/")
+							if idx > 0 {
+								args["package_type"] = elem[:idx]
+								elem = elem[idx:]
+
+								if len(elem) == 0 {
+									break
+								}
+								switch elem[0] {
+								case '/': // Prefix: "/"
+									if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+										elem = elem[len(prefix):]
+									} else {
+										break
+									}
+
+									// Param: "package_name"
+									// Match until one of "/"
+									idx := strings.IndexAny(elem, "/")
+									if idx > 0 {
+										args["package_name"] = elem[:idx]
+										elem = elem[idx:]
+
+										if len(elem) == 0 {
+											s.handlePackagesDeletePackageForUserRequest(args, w, r)
+											return
+										}
+										switch elem[0] {
+										case '/': // Prefix: "/versions/"
+											if prefix := "/versions/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+												elem = elem[len(prefix):]
+											} else {
+												break
+											}
+
+											// Param: "package_version_id"
+											// Leaf parameter
+											args["package_version_id"] = elem
+
+											// Leaf: PackagesDeletePackageVersionForUser
+											s.handlePackagesDeletePackageVersionForUserRequest(args, w, r)
+											return
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	case "GET":
+		if len(elem) == 0 {
+			break
+		}
+		switch elem[0] {
+		case '/': // Prefix: "/"
+			if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+				elem = elem[len(prefix):]
+			} else {
+				break
+			}
+
+			if len(elem) == 0 {
+				s.handleMetaRootRequest(args, w, r)
+				return
+			}
+			switch elem[0] {
+			case 'a': // Prefix: "a"
+				if prefix := "a"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+					elem = elem[len(prefix):]
+				} else {
+					break
+				}
+
+				if len(elem) == 0 {
+					s.handleOAuthAuthorizationsGetAuthorizationRequest(args, w, r)
+					return
+				}
+				switch elem[0] {
+				case 'p': // Prefix: "pp"
+					if prefix := "pp"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+						elem = elem[len(prefix):]
+					} else {
+						break
+					}
+
+					if len(elem) == 0 {
+						s.handleAppsGetAuthenticatedRequest(args, w, r)
+						return
+					}
+					switch elem[0] {
+					case '/': // Prefix: "/hook/"
+						if prefix := "/hook/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+							elem = elem[len(prefix):]
+						} else {
+							break
+						}
+
+						if len(elem) == 0 {
+							s.handleAppsGetWebhookDeliveryRequest(args, w, r)
+							return
+						}
+						switch elem[0] {
+						case 'c': // Prefix: "config"
+							if prefix := "config"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+								elem = elem[len(prefix):]
+							} else {
+								break
+							}
+
+							if len(elem) == 0 {
+								s.handleAppsGetWebhookConfigForAppRequest(args, w, r)
+								return
+							}
+							switch elem[0] {
+							case 'd': // Prefix: "deliveries/"
+								if prefix := "deliveries/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+									elem = elem[len(prefix):]
+								} else {
+									break
+								}
+
+								// Param: "delivery_id"
+								// Leaf parameter
+								args["delivery_id"] = elem
+
+								// Leaf: AppsGetWebhookDelivery
+								s.handleAppsGetWebhookDeliveryRequest(args, w, r)
+								return
+							}
+						case 'd': // Prefix: "deliveries"
+							if prefix := "deliveries"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+								elem = elem[len(prefix):]
+							} else {
+								break
+							}
+
+							if len(elem) == 0 {
+								s.handleAppsListWebhookDeliveriesRequest(args, w, r)
+								return
+							}
+							switch elem[0] {
+							case '/': // Prefix: "/"
+								if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+									elem = elem[len(prefix):]
+								} else {
+									break
+								}
+
+								// Param: "delivery_id"
+								// Leaf parameter
+								args["delivery_id"] = elem
+
+								// Leaf: AppsGetWebhookDelivery
+								s.handleAppsGetWebhookDeliveryRequest(args, w, r)
+								return
+							}
+						}
+					case 'l': // Prefix: "lications/grants"
+						if prefix := "lications/grants"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+							elem = elem[len(prefix):]
+						} else {
+							break
+						}
+
+						if len(elem) == 0 {
+							s.handleOAuthAuthorizationsListGrantsRequest(args, w, r)
+							return
+						}
+						switch elem[0] {
+						case '/': // Prefix: "/"
+							if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+								elem = elem[len(prefix):]
+							} else {
+								break
+							}
+
+							// Param: "grant_id"
+							// Leaf parameter
+							args["grant_id"] = elem
+
+							// Leaf: OAuthAuthorizationsGetGrant
+							s.handleOAuthAuthorizationsGetGrantRequest(args, w, r)
+							return
+						}
+					case 's': // Prefix: "s/"
+						if prefix := "s/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+							elem = elem[len(prefix):]
+						} else {
+							break
+						}
+
+						// Param: "app_slug"
+						// Leaf parameter
+						args["app_slug"] = elem
+
+						// Leaf: AppsGetBySlug
+						s.handleAppsGetBySlugRequest(args, w, r)
+						return
+					case 'u': // Prefix: "uthorizations/"
+						if prefix := "uthorizations/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+							elem = elem[len(prefix):]
+						} else {
+							break
+						}
+
+						// Param: "authorization_id"
+						// Leaf parameter
+						args["authorization_id"] = elem
+
+						// Leaf: OAuthAuthorizationsGetAuthorization
+						s.handleOAuthAuthorizationsGetAuthorizationRequest(args, w, r)
+						return
+					}
+				case 'u': // Prefix: "uthorizations"
+					if prefix := "uthorizations"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+						elem = elem[len(prefix):]
+					} else {
+						break
+					}
+
+					if len(elem) == 0 {
+						s.handleOAuthAuthorizationsListAuthorizationsRequest(args, w, r)
+						return
+					}
+					switch elem[0] {
+					case '/': // Prefix: "/"
+						if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+							elem = elem[len(prefix):]
+						} else {
+							break
+						}
+
+						// Param: "authorization_id"
+						// Leaf parameter
+						args["authorization_id"] = elem
+
+						// Leaf: OAuthAuthorizationsGetAuthorization
+						s.handleOAuthAuthorizationsGetAuthorizationRequest(args, w, r)
+						return
+					}
+				}
+			case 'c': // Prefix: "codes_of_conduct"
+				if prefix := "codes_of_conduct"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+					elem = elem[len(prefix):]
+				} else {
+					break
+				}
+
+				if len(elem) == 0 {
+					s.handleCodesOfConductGetAllCodesOfConductRequest(args, w, r)
+					return
+				}
+				switch elem[0] {
+				case '/': // Prefix: "/"
+					if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+						elem = elem[len(prefix):]
+					} else {
+						break
+					}
+
+					// Param: "key"
+					// Leaf parameter
+					args["key"] = elem
+
+					// Leaf: CodesOfConductGetConductCode
+					s.handleCodesOfConductGetConductCodeRequest(args, w, r)
+					return
+				}
+			case 'e': // Prefix: "e"
+				if prefix := "e"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+					elem = elem[len(prefix):]
+				} else {
+					break
+				}
+
+				if len(elem) == 0 {
+					s.handleBillingGetGithubActionsBillingGheRequest(args, w, r)
+					return
+				}
+				switch elem[0] {
+				case 'm': // Prefix: "mojis"
+					if prefix := "mojis"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+						elem = elem[len(prefix):]
+					} else {
+						break
+					}
+
+					// Leaf: EmojisGet
+					s.handleEmojisGetRequest(args, w, r)
+					return
+				case 'n': // Prefix: "nterprises/"
+					if prefix := "nterprises/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+						elem = elem[len(prefix):]
+					} else {
+						break
+					}
+
+					// Param: "enterprise"
+					// Match until one of "/"
+					idx := strings.IndexAny(elem, "/")
+					if idx > 0 {
+						args["enterprise"] = elem[:idx]
+						elem = elem[idx:]
+
+						if len(elem) == 0 {
+							break
+						}
+						switch elem[0] {
+						case '/': // Prefix: "/"
+							if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+								elem = elem[len(prefix):]
+							} else {
+								break
+							}
+
+							if len(elem) == 0 {
+								s.handleEnterpriseAdminGetAllowedActionsEnterpriseRequest(args, w, r)
+								return
+							}
+							switch elem[0] {
+							case 'a': // Prefix: "a"
+								if prefix := "a"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+									elem = elem[len(prefix):]
+								} else {
+									break
+								}
+
+								if len(elem) == 0 {
+									s.handleEnterpriseAdminGetAuditLogRequest(args, w, r)
+									return
+								}
+								switch elem[0] {
+								case 'c': // Prefix: "ctions/"
+									if prefix := "ctions/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+										elem = elem[len(prefix):]
+									} else {
+										break
+									}
+
+									if len(elem) == 0 {
+										s.handleEnterpriseAdminGetSelfHostedRunnerForEnterpriseRequest(args, w, r)
+										return
+									}
+									switch elem[0] {
+									case 'p': // Prefix: "permissions"
+										if prefix := "permissions"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+											elem = elem[len(prefix):]
+										} else {
+											break
+										}
+
+										if len(elem) == 0 {
+											s.handleEnterpriseAdminGetGithubActionsPermissionsEnterpriseRequest(args, w, r)
+											return
+										}
+										switch elem[0] {
+										case '/': // Prefix: "/"
+											if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+												elem = elem[len(prefix):]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												s.handleEnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterpriseRequest(args, w, r)
+												return
+											}
+											switch elem[0] {
+											case 'o': // Prefix: "organizations"
+												if prefix := "organizations"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+													elem = elem[len(prefix):]
+												} else {
+													break
+												}
+
+												// Leaf: EnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterprise
+												s.handleEnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterpriseRequest(args, w, r)
+												return
+											case 's': // Prefix: "selected-actions"
+												if prefix := "selected-actions"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+													elem = elem[len(prefix):]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													s.handleEnterpriseAdminGetAllowedActionsEnterpriseRequest(args, w, r)
+													return
+												}
+												switch elem[0] {
+												case 'o': // Prefix: "organizations"
+													if prefix := "organizations"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+														elem = elem[len(prefix):]
+													} else {
+														break
+													}
+
+													// Leaf: EnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterprise
+													s.handleEnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterpriseRequest(args, w, r)
+													return
+												case 'u': // Prefix: "udit-log"
+													if prefix := "udit-log"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+														elem = elem[len(prefix):]
+													} else {
+														break
+													}
+
+													// Leaf: EnterpriseAdminGetAuditLog
+													s.handleEnterpriseAdminGetAuditLogRequest(args, w, r)
+													return
+												}
+											}
+										case 'r': // Prefix: "runners/"
+											if prefix := "runners/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+												elem = elem[len(prefix):]
+											} else {
+												break
+											}
+
+											// Param: "runner_id"
+											// Leaf parameter
+											args["runner_id"] = elem
+
+											// Leaf: EnterpriseAdminGetSelfHostedRunnerForEnterprise
+											s.handleEnterpriseAdminGetSelfHostedRunnerForEnterpriseRequest(args, w, r)
+											return
+										}
+									case 'r': // Prefix: "runner"
+										if prefix := "runner"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+											elem = elem[len(prefix):]
+										} else {
+											break
+										}
+
+										if len(elem) == 0 {
+											s.handleEnterpriseAdminGetSelfHostedRunnerGroupForEnterpriseRequest(args, w, r)
+											return
+										}
+										switch elem[0] {
+										case '-': // Prefix: "-groups"
+											if prefix := "-groups"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+												elem = elem[len(prefix):]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												s.handleEnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseRequest(args, w, r)
+												return
+											}
+											switch elem[0] {
+											case '/': // Prefix: "/"
+												if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+													elem = elem[len(prefix):]
+												} else {
+													break
+												}
+
+												// Param: "runner_group_id"
+												// Match until one of "/"
+												idx := strings.IndexAny(elem, "/")
+												if idx > 0 {
+													args["runner_group_id"] = elem[:idx]
+													elem = elem[idx:]
+
+													if len(elem) == 0 {
+														s.handleEnterpriseAdminGetSelfHostedRunnerGroupForEnterpriseRequest(args, w, r)
+														return
+													}
+													switch elem[0] {
+													case '/': // Prefix: "/"
+														if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+															elem = elem[len(prefix):]
+														} else {
+															break
+														}
+
+														if len(elem) == 0 {
+															s.handleEnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseRequest(args, w, r)
+															return
+														}
+														switch elem[0] {
+														case 'o': // Prefix: "organizations"
+															if prefix := "organizations"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																elem = elem[len(prefix):]
+															} else {
+																break
+															}
+
+															if len(elem) == 0 {
+																s.handleEnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseRequest(args, w, r)
+																return
+															}
+															switch elem[0] {
+															case 'r': // Prefix: "runners"
+																if prefix := "runners"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																	elem = elem[len(prefix):]
+																} else {
+																	break
+																}
+
+																// Leaf: EnterpriseAdminListSelfHostedRunnersInGroupForEnterprise
+																s.handleEnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseRequest(args, w, r)
+																return
+															}
+														case 'r': // Prefix: "runners"
+															if prefix := "runners"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																elem = elem[len(prefix):]
+															} else {
+																break
+															}
+
+															// Leaf: EnterpriseAdminListSelfHostedRunnersInGroupForEnterprise
+															s.handleEnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseRequest(args, w, r)
+															return
+														}
+													}
+												}
+											}
+										case 's': // Prefix: "s"
+											if prefix := "s"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+												elem = elem[len(prefix):]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												s.handleEnterpriseAdminListSelfHostedRunnersForEnterpriseRequest(args, w, r)
+												return
+											}
+											switch elem[0] {
+											case '/': // Prefix: "/"
+												if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+													elem = elem[len(prefix):]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													break
+												}
+												switch elem[0] {
+												case '-': // Prefix: "-groups/"
+													if prefix := "-groups/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+														elem = elem[len(prefix):]
+													} else {
+														break
+													}
+
+													// Param: "runner_group_id"
+													// Leaf parameter
+													args["runner_group_id"] = elem
+
+													// Leaf: EnterpriseAdminGetSelfHostedRunnerGroupForEnterprise
+													s.handleEnterpriseAdminGetSelfHostedRunnerGroupForEnterpriseRequest(args, w, r)
+													return
+												case 'd': // Prefix: "downloads"
+													if prefix := "downloads"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+														elem = elem[len(prefix):]
+													} else {
+														break
+													}
+
+													// Leaf: EnterpriseAdminListRunnerApplicationsForEnterprise
+													s.handleEnterpriseAdminListRunnerApplicationsForEnterpriseRequest(args, w, r)
+													return
+												}
+												// Param: "runner_id"
+												// Leaf parameter
+												args["runner_id"] = elem
+
+												// Leaf: EnterpriseAdminGetSelfHostedRunnerForEnterprise
+												s.handleEnterpriseAdminGetSelfHostedRunnerForEnterpriseRequest(args, w, r)
+												return
+											}
+										}
+									}
+								case 'u': // Prefix: "udit-log"
+									if prefix := "udit-log"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+										elem = elem[len(prefix):]
+									} else {
+										break
+									}
+
+									// Leaf: EnterpriseAdminGetAuditLog
+									s.handleEnterpriseAdminGetAuditLogRequest(args, w, r)
+									return
+								}
+							case 's': // Prefix: "settings/billing/"
+								if prefix := "settings/billing/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+									elem = elem[len(prefix):]
+								} else {
+									break
+								}
+
+								if len(elem) == 0 {
+									s.handleBillingGetGithubPackagesBillingGheRequest(args, w, r)
+									return
+								}
+								switch elem[0] {
+								case 'a': // Prefix: "actions"
+									if prefix := "actions"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+										elem = elem[len(prefix):]
+									} else {
+										break
+									}
+
+									if len(elem) == 0 {
+										s.handleBillingGetGithubActionsBillingGheRequest(args, w, r)
+										return
+									}
+									switch elem[0] {
+									case '/': // Prefix: "/permissions/selected-actions"
+										if prefix := "/permissions/selected-actions"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+											elem = elem[len(prefix):]
+										} else {
+											break
+										}
+
+										// Leaf: EnterpriseAdminGetAllowedActionsEnterprise
+										s.handleEnterpriseAdminGetAllowedActionsEnterpriseRequest(args, w, r)
+										return
+									case 'p': // Prefix: "packages"
+										if prefix := "packages"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+											elem = elem[len(prefix):]
+										} else {
+											break
+										}
+
+										// Leaf: BillingGetGithubPackagesBillingGhe
+										s.handleBillingGetGithubPackagesBillingGheRequest(args, w, r)
+										return
+									}
+								case 'p': // Prefix: "packages"
+									if prefix := "packages"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+										elem = elem[len(prefix):]
+									} else {
+										break
+									}
+
+									// Leaf: BillingGetGithubPackagesBillingGhe
+									s.handleBillingGetGithubPackagesBillingGheRequest(args, w, r)
+									return
+								case 's': // Prefix: "shared-storage"
+									if prefix := "shared-storage"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+										elem = elem[len(prefix):]
+									} else {
+										break
+									}
+
+									// Leaf: BillingGetSharedStorageBillingGhe
+									s.handleBillingGetSharedStorageBillingGheRequest(args, w, r)
+									return
+								}
+							}
+						}
+					}
+				case 'v': // Prefix: "vents"
+					if prefix := "vents"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+						elem = elem[len(prefix):]
+					} else {
+						break
+					}
+
+					if len(elem) == 0 {
+						s.handleActivityListPublicEventsRequest(args, w, r)
+						return
+					}
+					switch elem[0] {
+					case 'n': // Prefix: "nterprises/"
+						if prefix := "nterprises/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+							elem = elem[len(prefix):]
+						} else {
+							break
+						}
+
+						// Param: "enterprise"
+						// Match until one of "/"
+						idx := strings.IndexAny(elem, "/")
+						if idx > 0 {
+							args["enterprise"] = elem[:idx]
+							elem = elem[idx:]
+
+							if len(elem) == 0 {
+								break
+							}
+							switch elem[0] {
+							case '/': // Prefix: "/settings/billing/actions"
+								if prefix := "/settings/billing/actions"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+									elem = elem[len(prefix):]
+								} else {
+									break
+								}
+
+								// Leaf: BillingGetGithubActionsBillingGhe
+								s.handleBillingGetGithubActionsBillingGheRequest(args, w, r)
+								return
+							}
+						}
+					}
+				}
+			case 'f': // Prefix: "feeds"
+				if prefix := "feeds"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+					elem = elem[len(prefix):]
+				} else {
+					break
+				}
+
+				// Leaf: ActivityGetFeeds
+				s.handleActivityGetFeedsRequest(args, w, r)
+				return
+			case 'g': // Prefix: "gi"
+				if prefix := "gi"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+					elem = elem[len(prefix):]
+				} else {
+					break
+				}
+
+				if len(elem) == 0 {
+					s.handleGitignoreGetAllTemplatesRequest(args, w, r)
+					return
+				}
+				switch elem[0] {
+				case 's': // Prefix: "sts"
+					if prefix := "sts"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+						elem = elem[len(prefix):]
+					} else {
+						break
+					}
+
+					if len(elem) == 0 {
+						s.handleGistsListRequest(args, w, r)
+						return
+					}
+					switch elem[0] {
+					case '/': // Prefix: "/"
+						if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+							elem = elem[len(prefix):]
+						} else {
+							break
+						}
+
+						if len(elem) == 0 {
+							break
+						}
+						switch elem[0] {
+						case 'p': // Prefix: "public"
+							if prefix := "public"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+								elem = elem[len(prefix):]
+							} else {
+								break
+							}
+
+							// Leaf: GistsListPublic
+							s.handleGistsListPublicRequest(args, w, r)
+							return
+						case 's': // Prefix: "starred"
+							if prefix := "starred"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+								elem = elem[len(prefix):]
+							} else {
+								break
+							}
+
+							// Leaf: GistsListStarred
+							s.handleGistsListStarredRequest(args, w, r)
+							return
+						}
+						// Param: "gist_id"
+						// Match until one of "/"
+						idx := strings.IndexAny(elem, "/")
+						if idx > 0 {
+							args["gist_id"] = elem[:idx]
+							elem = elem[idx:]
+
+							if len(elem) == 0 {
+								s.handleGistsGetRequest(args, w, r)
+								return
+							}
+							switch elem[0] {
+							case '/': // Prefix: "/"
+								if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+									elem = elem[len(prefix):]
+								} else {
+									break
+								}
+
+								if len(elem) == 0 {
+									s.handleGistsGetCommentRequest(args, w, r)
+									return
+								}
+								switch elem[0] {
+								case 'c': // Prefix: "comm"
+									if prefix := "comm"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+										elem = elem[len(prefix):]
+									} else {
+										break
+									}
+
+									if len(elem) == 0 {
+										s.handleGistsListCommitsRequest(args, w, r)
+										return
+									}
+									switch elem[0] {
+									case 'e': // Prefix: "ents"
+										if prefix := "ents"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+											elem = elem[len(prefix):]
+										} else {
+											break
+										}
+
+										if len(elem) == 0 {
+											s.handleGistsListCommentsRequest(args, w, r)
+											return
+										}
+										switch elem[0] {
+										case '/': // Prefix: "/"
+											if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+												elem = elem[len(prefix):]
+											} else {
+												break
+											}
+
+											// Param: "comment_id"
+											// Leaf parameter
+											args["comment_id"] = elem
+
+											// Leaf: GistsGetComment
+											s.handleGistsGetCommentRequest(args, w, r)
+											return
+										case 'i': // Prefix: "its"
+											if prefix := "its"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+												elem = elem[len(prefix):]
+											} else {
+												break
+											}
+
+											// Leaf: GistsListCommits
+											s.handleGistsListCommitsRequest(args, w, r)
+											return
+										}
+									case 'i': // Prefix: "its"
+										if prefix := "its"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+											elem = elem[len(prefix):]
+										} else {
+											break
+										}
+
+										// Leaf: GistsListCommits
+										s.handleGistsListCommitsRequest(args, w, r)
+										return
+									}
+								case 'f': // Prefix: "forks"
+									if prefix := "forks"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+										elem = elem[len(prefix):]
+									} else {
+										break
+									}
+
+									// Leaf: GistsListForks
+									s.handleGistsListForksRequest(args, w, r)
+									return
+								case 's': // Prefix: "star"
+									if prefix := "star"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+										elem = elem[len(prefix):]
+									} else {
+										break
+									}
+
+									if len(elem) == 0 {
+										s.handleGistsCheckIsStarredRequest(args, w, r)
+										return
+									}
+									switch elem[0] {
+									case 'c': // Prefix: "comments/"
+										if prefix := "comments/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+											elem = elem[len(prefix):]
+										} else {
+											break
+										}
+
+										// Param: "comment_id"
+										// Leaf parameter
+										args["comment_id"] = elem
+
+										// Leaf: GistsGetComment
+										s.handleGistsGetCommentRequest(args, w, r)
+										return
+									}
+								}
+								// Param: "sha"
+								// Leaf parameter
+								args["sha"] = elem
+
+								// Leaf: GistsGetRevision
+								s.handleGistsGetRevisionRequest(args, w, r)
+								return
+							}
+						}
+					case 't': // Prefix: "tignore/templates"
+						if prefix := "tignore/templates"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+							elem = elem[len(prefix):]
+						} else {
+							break
+						}
+
+						// Leaf: GitignoreGetAllTemplates
+						s.handleGitignoreGetAllTemplatesRequest(args, w, r)
+						return
+					}
+				case 't': // Prefix: "tignore/templates"
+					if prefix := "tignore/templates"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+						elem = elem[len(prefix):]
+					} else {
+						break
+					}
+
+					if len(elem) == 0 {
+						s.handleGitignoreGetAllTemplatesRequest(args, w, r)
+						return
+					}
+					switch elem[0] {
+					case '/': // Prefix: "/"
+						if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+							elem = elem[len(prefix):]
+						} else {
+							break
+						}
+
+						// Param: "name"
+						// Leaf parameter
+						args["name"] = elem
+
+						// Leaf: GitignoreGetTemplate
+						s.handleGitignoreGetTemplateRequest(args, w, r)
+						return
+					}
+				}
+			case 'i': // Prefix: "i"
+				if prefix := "i"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+					elem = elem[len(prefix):]
+				} else {
+					break
+				}
+
+				if len(elem) == 0 {
+					s.handleIssuesListRequest(args, w, r)
+					return
+				}
+				switch elem[0] {
+				case 'n': // Prefix: "nstallation/repositories"
+					if prefix := "nstallation/repositories"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+						elem = elem[len(prefix):]
+					} else {
+						break
+					}
+
+					if len(elem) == 0 {
+						s.handleAppsListReposAccessibleToInstallationRequest(args, w, r)
+						return
+					}
+					switch elem[0] {
+					case 's': // Prefix: "ssues"
+						if prefix := "ssues"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+							elem = elem[len(prefix):]
+						} else {
+							break
+						}
+
+						// Leaf: IssuesList
+						s.handleIssuesListRequest(args, w, r)
+						return
+					}
+				case 's': // Prefix: "ssues"
+					if prefix := "ssues"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+						elem = elem[len(prefix):]
+					} else {
+						break
+					}
+
+					// Leaf: IssuesList
+					s.handleIssuesListRequest(args, w, r)
+					return
+				}
+			case 'l': // Prefix: "licenses"
+				if prefix := "licenses"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+					elem = elem[len(prefix):]
+				} else {
+					break
+				}
+
+				if len(elem) == 0 {
+					s.handleLicensesGetAllCommonlyUsedRequest(args, w, r)
+					return
+				}
+				switch elem[0] {
+				case '/': // Prefix: "/"
+					if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+						elem = elem[len(prefix):]
+					} else {
+						break
+					}
+
+					// Param: "license"
+					// Leaf parameter
+					args["license"] = elem
+
+					// Leaf: LicensesGet
+					s.handleLicensesGetRequest(args, w, r)
+					return
+				}
+			case 'm': // Prefix: "m"
+				if prefix := "m"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+					elem = elem[len(prefix):]
+				} else {
+					break
+				}
+
+				if len(elem) == 0 {
+					s.handleMetaGetRequest(args, w, r)
+					return
+				}
+				switch elem[0] {
+				case 'a': // Prefix: "arketplace_listing/"
+					if prefix := "arketplace_listing/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+						elem = elem[len(prefix):]
+					} else {
+						break
+					}
+
+					if len(elem) == 0 {
+						s.handleAppsGetSubscriptionPlanForAccountStubbedRequest(args, w, r)
+						return
+					}
+					switch elem[0] {
+					case 'a': // Prefix: "accounts/"
+						if prefix := "accounts/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+							elem = elem[len(prefix):]
+						} else {
+							break
+						}
+
+						if len(elem) == 0 {
+							break
+						}
+						switch elem[0] {
+						case 's': // Prefix: "stubbed/accounts/"
+							if prefix := "stubbed/accounts/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+								elem = elem[len(prefix):]
+							} else {
+								break
+							}
+
+							// Param: "account_id"
+							// Leaf parameter
+							args["account_id"] = elem
+
+							// Leaf: AppsGetSubscriptionPlanForAccountStubbed
+							s.handleAppsGetSubscriptionPlanForAccountStubbedRequest(args, w, r)
+							return
+						}
+						// Param: "account_id"
+						// Leaf parameter
+						args["account_id"] = elem
+
+						// Leaf: AppsGetSubscriptionPlanForAccount
+						s.handleAppsGetSubscriptionPlanForAccountRequest(args, w, r)
+						return
+					case 'e': // Prefix: "eta"
+						if prefix := "eta"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+							elem = elem[len(prefix):]
+						} else {
+							break
+						}
+
+						// Leaf: MetaGet
+						s.handleMetaGetRequest(args, w, r)
+						return
+					case 'p': // Prefix: "plans"
+						if prefix := "plans"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+							elem = elem[len(prefix):]
+						} else {
+							break
+						}
+
+						if len(elem) == 0 {
+							s.handleAppsListPlansRequest(args, w, r)
+							return
+						}
+						switch elem[0] {
+						case '/': // Prefix: "/"
+							if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+								elem = elem[len(prefix):]
+							} else {
+								break
+							}
+
+							// Param: "plan_id"
+							// Match until one of "/"
+							idx := strings.IndexAny(elem, "/")
+							if idx > 0 {
+								args["plan_id"] = elem[:idx]
+								elem = elem[idx:]
+
+								if len(elem) == 0 {
+									break
+								}
+								switch elem[0] {
+								case '/': // Prefix: "/accounts"
+									if prefix := "/accounts"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+										elem = elem[len(prefix):]
+									} else {
+										break
+									}
+
+									// Leaf: AppsListAccountsForPlan
+									s.handleAppsListAccountsForPlanRequest(args, w, r)
+									return
+								}
+							}
+						}
+					case 's': // Prefix: "stubbed/"
+						if prefix := "stubbed/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+							elem = elem[len(prefix):]
+						} else {
+							break
+						}
+
+						if len(elem) == 0 {
+							s.handleAppsListAccountsForPlanStubbedRequest(args, w, r)
+							return
+						}
+						switch elem[0] {
+						case 'a': // Prefix: "accounts/"
+							if prefix := "accounts/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+								elem = elem[len(prefix):]
+							} else {
+								break
+							}
+
+							if len(elem) == 0 {
+								break
+							}
+							switch elem[0] {
+							case 'p': // Prefix: "plans/"
+								if prefix := "plans/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+									elem = elem[len(prefix):]
+								} else {
+									break
+								}
+
+								// Param: "plan_id"
+								// Match until one of "/"
+								idx := strings.IndexAny(elem, "/")
+								if idx > 0 {
+									args["plan_id"] = elem[:idx]
+									elem = elem[idx:]
+
+									if len(elem) == 0 {
+										break
+									}
+									switch elem[0] {
+									case '/': // Prefix: "/accounts"
+										if prefix := "/accounts"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+											elem = elem[len(prefix):]
+										} else {
+											break
+										}
+
+										// Leaf: AppsListAccountsForPlanStubbed
+										s.handleAppsListAccountsForPlanStubbedRequest(args, w, r)
+										return
+									}
+								}
+							}
+							// Param: "account_id"
+							// Leaf parameter
+							args["account_id"] = elem
+
+							// Leaf: AppsGetSubscriptionPlanForAccountStubbed
+							s.handleAppsGetSubscriptionPlanForAccountStubbedRequest(args, w, r)
+							return
+						case 'p': // Prefix: "plans"
+							if prefix := "plans"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+								elem = elem[len(prefix):]
+							} else {
+								break
+							}
+
+							if len(elem) == 0 {
+								s.handleAppsListPlansStubbedRequest(args, w, r)
+								return
+							}
+							switch elem[0] {
+							case '/': // Prefix: "/"
+								if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+									elem = elem[len(prefix):]
+								} else {
+									break
+								}
+
+								// Param: "plan_id"
+								// Match until one of "/"
+								idx := strings.IndexAny(elem, "/")
+								if idx > 0 {
+									args["plan_id"] = elem[:idx]
+									elem = elem[idx:]
+
+									if len(elem) == 0 {
+										break
+									}
+									switch elem[0] {
+									case '/': // Prefix: "/accounts"
+										if prefix := "/accounts"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+											elem = elem[len(prefix):]
+										} else {
+											break
+										}
+
+										// Leaf: AppsListAccountsForPlanStubbed
+										s.handleAppsListAccountsForPlanStubbedRequest(args, w, r)
+										return
+									}
+								}
+							}
+						}
+					}
+				case 'e': // Prefix: "eta"
+					if prefix := "eta"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+						elem = elem[len(prefix):]
+					} else {
+						break
+					}
+
+					// Leaf: MetaGet
+					s.handleMetaGetRequest(args, w, r)
+					return
+				}
+			case 'n': // Prefix: "n"
+				if prefix := "n"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+					elem = elem[len(prefix):]
+				} else {
+					break
+				}
+
+				if len(elem) == 0 {
+					s.handleActivityListPublicEventsForRepoNetworkRequest(args, w, r)
+					return
+				}
+				switch elem[0] {
+				case 'e': // Prefix: "etworks/"
+					if prefix := "etworks/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+						elem = elem[len(prefix):]
+					} else {
+						break
+					}
+
+					// Param: "owner"
+					// Match until one of "/"
+					idx := strings.IndexAny(elem, "/")
+					if idx > 0 {
+						args["owner"] = elem[:idx]
+						elem = elem[idx:]
+
+						if len(elem) == 0 {
+							break
+						}
+						switch elem[0] {
+						case '/': // Prefix: "/"
+							if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+								elem = elem[len(prefix):]
+							} else {
+								break
+							}
+
+							// Param: "repo"
+							// Match until one of "/"
+							idx := strings.IndexAny(elem, "/")
+							if idx > 0 {
+								args["repo"] = elem[:idx]
+								elem = elem[idx:]
+
+								if len(elem) == 0 {
+									break
+								}
+								switch elem[0] {
+								case '/': // Prefix: "/events"
+									if prefix := "/events"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+										elem = elem[len(prefix):]
+									} else {
+										break
+									}
+
+									// Leaf: ActivityListPublicEventsForRepoNetwork
+									s.handleActivityListPublicEventsForRepoNetworkRequest(args, w, r)
+									return
+								}
+							}
+						}
+					}
+				case 'o': // Prefix: "otifications"
+					if prefix := "otifications"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+						elem = elem[len(prefix):]
+					} else {
+						break
+					}
+
+					if len(elem) == 0 {
+						s.handleActivityListNotificationsForAuthenticatedUserRequest(args, w, r)
+						return
+					}
+					switch elem[0] {
+					case '/': // Prefix: "/threads/"
+						if prefix := "/threads/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+							elem = elem[len(prefix):]
+						} else {
+							break
+						}
+
+						// Param: "thread_id"
+						// Match until one of "/"
+						idx := strings.IndexAny(elem, "/")
+						if idx > 0 {
+							args["thread_id"] = elem[:idx]
+							elem = elem[idx:]
+
+							if len(elem) == 0 {
+								s.handleActivityGetThreadRequest(args, w, r)
+								return
+							}
+							switch elem[0] {
+							case '/': // Prefix: "/subscription"
+								if prefix := "/subscription"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+									elem = elem[len(prefix):]
+								} else {
+									break
+								}
+
+								// Leaf: ActivityGetThreadSubscriptionForAuthenticatedUser
+								s.handleActivityGetThreadSubscriptionForAuthenticatedUserRequest(args, w, r)
+								return
+							}
+						}
+					case 'e': // Prefix: "etworks/"
+						if prefix := "etworks/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+							elem = elem[len(prefix):]
+						} else {
+							break
+						}
+
+						// Param: "owner"
+						// Match until one of "/"
+						idx := strings.IndexAny(elem, "/")
+						if idx > 0 {
+							args["owner"] = elem[:idx]
+							elem = elem[idx:]
+
+							if len(elem) == 0 {
+								break
+							}
+							switch elem[0] {
+							case '/': // Prefix: "/"
+								if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+									elem = elem[len(prefix):]
+								} else {
+									break
+								}
+
+								// Param: "repo"
+								// Match until one of "/"
+								idx := strings.IndexAny(elem, "/")
+								if idx > 0 {
+									args["repo"] = elem[:idx]
+									elem = elem[idx:]
+
+									if len(elem) == 0 {
+										break
+									}
+									switch elem[0] {
+									case '/': // Prefix: "/events"
+										if prefix := "/events"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+											elem = elem[len(prefix):]
+										} else {
+											break
+										}
+
+										// Leaf: ActivityListPublicEventsForRepoNetwork
+										s.handleActivityListPublicEventsForRepoNetworkRequest(args, w, r)
+										return
+									}
+								}
+							}
+						}
+					}
+				}
+			case 'o': // Prefix: "org"
+				if prefix := "org"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+					elem = elem[len(prefix):]
+				} else {
+					break
+				}
+
+				if len(elem) == 0 {
+					s.handleOrgsListRequest(args, w, r)
+					return
+				}
+				switch elem[0] {
+				case 'a': // Prefix: "anizations"
+					if prefix := "anizations"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+						elem = elem[len(prefix):]
+					} else {
+						break
+					}
+
+					// Leaf: OrgsList
+					s.handleOrgsListRequest(args, w, r)
+					return
+				case 's': // Prefix: "s/"
+					if prefix := "s/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+						elem = elem[len(prefix):]
+					} else {
+						break
+					}
+
+					if len(elem) == 0 {
+						break
+					}
+					switch elem[0] {
+					case 'a': // Prefix: "anizations"
+						if prefix := "anizations"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+							elem = elem[len(prefix):]
+						} else {
+							break
+						}
+
+						// Leaf: OrgsList
+						s.handleOrgsListRequest(args, w, r)
+						return
+					}
+					// Param: "org"
+					// Match until one of "/"
+					idx := strings.IndexAny(elem, "/")
+					if idx > 0 {
+						args["org"] = elem[:idx]
+						elem = elem[idx:]
+
+						if len(elem) == 0 {
+							s.handleOrgsGetRequest(args, w, r)
+							return
+						}
+						switch elem[0] {
+						case '/': // Prefix: "/"
+							if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+								elem = elem[len(prefix):]
+							} else {
+								break
+							}
+
+							if len(elem) == 0 {
+								s.handleActivityListPublicOrgEventsRequest(args, w, r)
+								return
+							}
+							switch elem[0] {
+							case 'a': // Prefix: "a"
+								if prefix := "a"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+									elem = elem[len(prefix):]
+								} else {
+									break
+								}
+
+								if len(elem) == 0 {
+									s.handleOrgsGetAuditLogRequest(args, w, r)
+									return
+								}
+								switch elem[0] {
+								case 'c': // Prefix: "ctions/"
+									if prefix := "ctions/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+										elem = elem[len(prefix):]
+									} else {
+										break
+									}
+
+									if len(elem) == 0 {
+										s.handleActionsGetOrgPublicKeyRequest(args, w, r)
+										return
+									}
+									switch elem[0] {
+									case 'e': // Prefix: "events"
+										if prefix := "events"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+											elem = elem[len(prefix):]
+										} else {
+											break
+										}
+
+										// Leaf: ActivityListPublicOrgEvents
+										s.handleActivityListPublicOrgEventsRequest(args, w, r)
+										return
+									case 'p': // Prefix: "permissions"
+										if prefix := "permissions"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+											elem = elem[len(prefix):]
+										} else {
+											break
+										}
+
+										if len(elem) == 0 {
+											s.handleActionsGetGithubActionsPermissionsOrganizationRequest(args, w, r)
+											return
+										}
+										switch elem[0] {
+										case '/': // Prefix: "/"
+											if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+												elem = elem[len(prefix):]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												s.handleActionsListSelectedRepositoriesEnabledGithubActionsOrganizationRequest(args, w, r)
+												return
+											}
+											switch elem[0] {
+											case 'r': // Prefix: "repositories"
+												if prefix := "repositories"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+													elem = elem[len(prefix):]
+												} else {
+													break
+												}
+
+												// Leaf: ActionsListSelectedRepositoriesEnabledGithubActionsOrganization
+												s.handleActionsListSelectedRepositoriesEnabledGithubActionsOrganizationRequest(args, w, r)
+												return
+											case 's': // Prefix: "selected-actions"
+												if prefix := "selected-actions"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+													elem = elem[len(prefix):]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													s.handleActionsGetAllowedActionsOrganizationRequest(args, w, r)
+													return
+												}
+												switch elem[0] {
+												case 'r': // Prefix: "repositories"
+													if prefix := "repositories"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+														elem = elem[len(prefix):]
+													} else {
+														break
+													}
+
+													// Leaf: ActionsListSelectedRepositoriesEnabledGithubActionsOrganization
+													s.handleActionsListSelectedRepositoriesEnabledGithubActionsOrganizationRequest(args, w, r)
+													return
+												}
+											}
+										case 's': // Prefix: "secrets/public-key"
+											if prefix := "secrets/public-key"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+												elem = elem[len(prefix):]
+											} else {
+												break
+											}
+
+											// Leaf: ActionsGetOrgPublicKey
+											s.handleActionsGetOrgPublicKeyRequest(args, w, r)
+											return
+										}
+									case 'r': // Prefix: "runner"
+										if prefix := "runner"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+											elem = elem[len(prefix):]
+										} else {
+											break
+										}
+
+										if len(elem) == 0 {
+											s.handleActionsGetSelfHostedRunnerGroupForOrgRequest(args, w, r)
+											return
+										}
+										switch elem[0] {
+										case '-': // Prefix: "-groups"
+											if prefix := "-groups"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+												elem = elem[len(prefix):]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												s.handleActionsListSelfHostedRunnerGroupsForOrgRequest(args, w, r)
+												return
+											}
+											switch elem[0] {
+											case '/': // Prefix: "/"
+												if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+													elem = elem[len(prefix):]
+												} else {
+													break
+												}
+
+												// Param: "runner_group_id"
+												// Match until one of "/"
+												idx := strings.IndexAny(elem, "/")
+												if idx > 0 {
+													args["runner_group_id"] = elem[:idx]
+													elem = elem[idx:]
+
+													if len(elem) == 0 {
+														s.handleActionsGetSelfHostedRunnerGroupForOrgRequest(args, w, r)
+														return
+													}
+													switch elem[0] {
+													case '/': // Prefix: "/r"
+														if prefix := "/r"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+															elem = elem[len(prefix):]
+														} else {
+															break
+														}
+
+														if len(elem) == 0 {
+															s.handleActionsListSelfHostedRunnersInGroupForOrgRequest(args, w, r)
+															return
+														}
+														switch elem[0] {
+														case 'e': // Prefix: "epositories"
+															if prefix := "epositories"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																elem = elem[len(prefix):]
+															} else {
+																break
+															}
+
+															if len(elem) == 0 {
+																s.handleActionsListRepoAccessToSelfHostedRunnerGroupInOrgRequest(args, w, r)
+																return
+															}
+															switch elem[0] {
+															case 'u': // Prefix: "unners"
+																if prefix := "unners"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																	elem = elem[len(prefix):]
+																} else {
+																	break
+																}
+
+																// Leaf: ActionsListSelfHostedRunnersInGroupForOrg
+																s.handleActionsListSelfHostedRunnersInGroupForOrgRequest(args, w, r)
+																return
+															}
+														case 'u': // Prefix: "unners"
+															if prefix := "unners"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																elem = elem[len(prefix):]
+															} else {
+																break
+															}
+
+															// Leaf: ActionsListSelfHostedRunnersInGroupForOrg
+															s.handleActionsListSelfHostedRunnersInGroupForOrgRequest(args, w, r)
+															return
+														}
+													}
+												}
+											}
+										case 's': // Prefix: "s"
+											if prefix := "s"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+												elem = elem[len(prefix):]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												s.handleActionsListSelfHostedRunnersForOrgRequest(args, w, r)
+												return
+											}
+											switch elem[0] {
+											case '/': // Prefix: "/"
+												if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+													elem = elem[len(prefix):]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													break
+												}
+												switch elem[0] {
+												case '-': // Prefix: "-groups/"
+													if prefix := "-groups/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+														elem = elem[len(prefix):]
+													} else {
+														break
+													}
+
+													// Param: "runner_group_id"
+													// Leaf parameter
+													args["runner_group_id"] = elem
+
+													// Leaf: ActionsGetSelfHostedRunnerGroupForOrg
+													s.handleActionsGetSelfHostedRunnerGroupForOrgRequest(args, w, r)
+													return
+												case 'd': // Prefix: "downloads"
+													if prefix := "downloads"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+														elem = elem[len(prefix):]
+													} else {
+														break
+													}
+
+													// Leaf: ActionsListRunnerApplicationsForOrg
+													s.handleActionsListRunnerApplicationsForOrgRequest(args, w, r)
+													return
+												}
+												// Param: "runner_id"
+												// Leaf parameter
+												args["runner_id"] = elem
+
+												// Leaf: ActionsGetSelfHostedRunnerForOrg
+												s.handleActionsGetSelfHostedRunnerForOrgRequest(args, w, r)
+												return
+											}
+										}
+									case 's': // Prefix: "secrets"
+										if prefix := "secrets"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+											elem = elem[len(prefix):]
+										} else {
+											break
+										}
+
+										if len(elem) == 0 {
+											s.handleActionsListOrgSecretsRequest(args, w, r)
+											return
+										}
+										switch elem[0] {
+										case '/': // Prefix: "/"
+											if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+												elem = elem[len(prefix):]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												s.handleActionsGetOrgSecretRequest(args, w, r)
+												return
+											}
+											switch elem[0] {
+											case 'p': // Prefix: "public-key"
+												if prefix := "public-key"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+													elem = elem[len(prefix):]
+												} else {
+													break
+												}
+
+												// Param: "secret_name"
+												// Leaf parameter
+												args["secret_name"] = elem
+
+												// Leaf: ActionsGetOrgSecret
+												s.handleActionsGetOrgSecretRequest(args, w, r)
+												return
+											}
+											// Param: "secret_name"
+											// Match until one of "/"
+											idx := strings.IndexAny(elem, "/")
+											if idx > 0 {
+												args["secret_name"] = elem[:idx]
+												elem = elem[idx:]
+
+												if len(elem) == 0 {
+													s.handleActionsGetOrgSecretRequest(args, w, r)
+													return
+												}
+												switch elem[0] {
+												case '/': // Prefix: "/repositories"
+													if prefix := "/repositories"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+														elem = elem[len(prefix):]
+													} else {
+														break
+													}
+
+													// Leaf: ActionsListSelectedReposForOrgSecret
+													s.handleActionsListSelectedReposForOrgSecretRequest(args, w, r)
+													return
+												}
+											}
+										}
+									case 'u': // Prefix: "udit-log"
+										if prefix := "udit-log"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+											elem = elem[len(prefix):]
+										} else {
+											break
+										}
+
+										// Leaf: OrgsGetAuditLog
+										s.handleOrgsGetAuditLogRequest(args, w, r)
+										return
+									}
+								case 'u': // Prefix: "udit-log"
+									if prefix := "udit-log"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+										elem = elem[len(prefix):]
+									} else {
+										break
+									}
+
+									// Leaf: OrgsGetAuditLog
+									s.handleOrgsGetAuditLogRequest(args, w, r)
+									return
+								}
+							case 'b': // Prefix: "blocks"
+								if prefix := "blocks"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+									elem = elem[len(prefix):]
+								} else {
+									break
+								}
+
+								if len(elem) == 0 {
+									s.handleOrgsListBlockedUsersRequest(args, w, r)
+									return
+								}
+								switch elem[0] {
+								case '/': // Prefix: "/"
+									if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+										elem = elem[len(prefix):]
+									} else {
+										break
+									}
+
+									// Param: "username"
+									// Leaf parameter
+									args["username"] = elem
+
+									// Leaf: OrgsCheckBlockedUser
+									s.handleOrgsCheckBlockedUserRequest(args, w, r)
+									return
+								}
+							case 'c': // Prefix: "credential-authorizations"
+								if prefix := "credential-authorizations"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+									elem = elem[len(prefix):]
+								} else {
+									break
+								}
+
+								// Leaf: OrgsListSamlSSOAuthorizations
+								s.handleOrgsListSamlSSOAuthorizationsRequest(args, w, r)
+								return
+							case 'e': // Prefix: "events"
+								if prefix := "events"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+									elem = elem[len(prefix):]
+								} else {
+									break
+								}
+
+								// Leaf: ActivityListPublicOrgEvents
+								s.handleActivityListPublicOrgEventsRequest(args, w, r)
+								return
+							case 'f': // Prefix: "failed_invitations"
+								if prefix := "failed_invitations"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+									elem = elem[len(prefix):]
+								} else {
+									break
+								}
+
+								// Leaf: OrgsListFailedInvitations
+								s.handleOrgsListFailedInvitationsRequest(args, w, r)
+								return
+							case 'h': // Prefix: "hooks"
+								if prefix := "hooks"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+									elem = elem[len(prefix):]
+								} else {
+									break
+								}
+
+								if len(elem) == 0 {
+									s.handleOrgsListWebhooksRequest(args, w, r)
+									return
+								}
+								switch elem[0] {
+								case '/': // Prefix: "/"
+									if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+										elem = elem[len(prefix):]
+									} else {
+										break
+									}
+
+									// Param: "hook_id"
+									// Match until one of "/"
+									idx := strings.IndexAny(elem, "/")
+									if idx > 0 {
+										args["hook_id"] = elem[:idx]
+										elem = elem[idx:]
+
+										if len(elem) == 0 {
+											s.handleOrgsGetWebhookRequest(args, w, r)
+											return
+										}
+										switch elem[0] {
+										case '/': // Prefix: "/"
+											if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+												elem = elem[len(prefix):]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												s.handleOrgsGetWebhookDeliveryRequest(args, w, r)
+												return
+											}
+											switch elem[0] {
+											case 'c': // Prefix: "config"
+												if prefix := "config"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+													elem = elem[len(prefix):]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													s.handleOrgsGetWebhookConfigForOrgRequest(args, w, r)
+													return
+												}
+												switch elem[0] {
+												case 'd': // Prefix: "deliveries/"
+													if prefix := "deliveries/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+														elem = elem[len(prefix):]
+													} else {
+														break
+													}
+
+													// Param: "delivery_id"
+													// Leaf parameter
+													args["delivery_id"] = elem
+
+													// Leaf: OrgsGetWebhookDelivery
+													s.handleOrgsGetWebhookDeliveryRequest(args, w, r)
+													return
+												}
+											case 'd': // Prefix: "deliveries"
+												if prefix := "deliveries"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+													elem = elem[len(prefix):]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													s.handleOrgsListWebhookDeliveriesRequest(args, w, r)
+													return
+												}
+												switch elem[0] {
+												case '/': // Prefix: "/"
+													if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+														elem = elem[len(prefix):]
+													} else {
+														break
+													}
+
+													// Param: "delivery_id"
+													// Leaf parameter
+													args["delivery_id"] = elem
+
+													// Leaf: OrgsGetWebhookDelivery
+													s.handleOrgsGetWebhookDeliveryRequest(args, w, r)
+													return
+												}
+											}
+										}
+									}
+								}
+							case 'i': // Prefix: "i"
+								if prefix := "i"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+									elem = elem[len(prefix):]
+								} else {
+									break
+								}
+
+								if len(elem) == 0 {
+									s.handleOrgsListInvitationTeamsRequest(args, w, r)
+									return
+								}
+								switch elem[0] {
+								case 'n': // Prefix: "nvitations"
+									if prefix := "nvitations"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+										elem = elem[len(prefix):]
+									} else {
+										break
+									}
+
+									if len(elem) == 0 {
+										s.handleOrgsListPendingInvitationsRequest(args, w, r)
+										return
+									}
+									switch elem[0] {
+									case '/': // Prefix: "/"
+										if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+											elem = elem[len(prefix):]
+										} else {
+											break
+										}
+
+										// Param: "invitation_id"
+										// Match until one of "/"
+										idx := strings.IndexAny(elem, "/")
+										if idx > 0 {
+											args["invitation_id"] = elem[:idx]
+											elem = elem[idx:]
+
+											if len(elem) == 0 {
+												break
+											}
+											switch elem[0] {
+											case '/': // Prefix: "/teams"
+												if prefix := "/teams"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+													elem = elem[len(prefix):]
+												} else {
+													break
+												}
+
+												// Leaf: OrgsListInvitationTeams
+												s.handleOrgsListInvitationTeamsRequest(args, w, r)
+												return
+											}
+										}
+									}
+								case 's': // Prefix: "ssues"
+									if prefix := "ssues"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+										elem = elem[len(prefix):]
+									} else {
+										break
+									}
+
+									if len(elem) == 0 {
+										s.handleIssuesListForOrgRequest(args, w, r)
+										return
+									}
+									switch elem[0] {
+									case 'n': // Prefix: "nvitations/"
+										if prefix := "nvitations/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+											elem = elem[len(prefix):]
+										} else {
+											break
+										}
+
+										// Param: "invitation_id"
+										// Match until one of "/"
+										idx := strings.IndexAny(elem, "/")
+										if idx > 0 {
+											args["invitation_id"] = elem[:idx]
+											elem = elem[idx:]
+
+											if len(elem) == 0 {
+												break
+											}
+											switch elem[0] {
+											case '/': // Prefix: "/teams"
+												if prefix := "/teams"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+													elem = elem[len(prefix):]
+												} else {
+													break
+												}
+
+												// Leaf: OrgsListInvitationTeams
+												s.handleOrgsListInvitationTeamsRequest(args, w, r)
+												return
+											}
+										}
+									}
+								}
+							case 'm': // Prefix: "m"
+								if prefix := "m"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+									elem = elem[len(prefix):]
+								} else {
+									break
+								}
+
+								if len(elem) == 0 {
+									s.handleOrgsCheckMembershipForUserRequest(args, w, r)
+									return
+								}
+								switch elem[0] {
+								case 'e': // Prefix: "embers"
+									if prefix := "embers"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+										elem = elem[len(prefix):]
+									} else {
+										break
+									}
+
+									if len(elem) == 0 {
+										s.handleOrgsListMembersRequest(args, w, r)
+										return
+									}
+									switch elem[0] {
+									case '/': // Prefix: "/"
+										if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+											elem = elem[len(prefix):]
+										} else {
+											break
+										}
+
+										if len(elem) == 0 {
+											break
+										}
+										switch elem[0] {
+										case 'h': // Prefix: "hips/"
+											if prefix := "hips/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+												elem = elem[len(prefix):]
+											} else {
+												break
+											}
+
+											// Param: "username"
+											// Leaf parameter
+											args["username"] = elem
+
+											// Leaf: OrgsGetMembershipForUser
+											s.handleOrgsGetMembershipForUserRequest(args, w, r)
+											return
+										}
+										// Param: "username"
+										// Leaf parameter
+										args["username"] = elem
+
+										// Leaf: OrgsCheckMembershipForUser
+										s.handleOrgsCheckMembershipForUserRequest(args, w, r)
+										return
+									case 'h': // Prefix: "hips/"
+										if prefix := "hips/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+											elem = elem[len(prefix):]
+										} else {
+											break
+										}
+
+										// Param: "username"
+										// Leaf parameter
+										args["username"] = elem
+
+										// Leaf: OrgsGetMembershipForUser
+										s.handleOrgsGetMembershipForUserRequest(args, w, r)
+										return
+									}
+								case 'i': // Prefix: "igrations"
+									if prefix := "igrations"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+										elem = elem[len(prefix):]
+									} else {
+										break
+									}
+
+									if len(elem) == 0 {
+										s.handleMigrationsListForOrgRequest(args, w, r)
+										return
+									}
+									switch elem[0] {
+									case '/': // Prefix: "/"
+										if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+											elem = elem[len(prefix):]
+										} else {
+											break
+										}
+
+										// Param: "migration_id"
+										// Match until one of "/"
+										idx := strings.IndexAny(elem, "/")
+										if idx > 0 {
+											args["migration_id"] = elem[:idx]
+											elem = elem[idx:]
+
+											if len(elem) == 0 {
+												s.handleMigrationsGetStatusForOrgRequest(args, w, r)
+												return
+											}
+											switch elem[0] {
+											case '/': // Prefix: "/"
+												if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+													elem = elem[len(prefix):]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													s.handleMigrationsListReposForOrgRequest(args, w, r)
+													return
+												}
+												switch elem[0] {
+												case 'a': // Prefix: "archive"
+													if prefix := "archive"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+														elem = elem[len(prefix):]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														s.handleMigrationsDownloadArchiveForOrgRequest(args, w, r)
+														return
+													}
+													switch elem[0] {
+													case 'r': // Prefix: "repositories"
+														if prefix := "repositories"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+															elem = elem[len(prefix):]
+														} else {
+															break
+														}
+
+														// Leaf: MigrationsListReposForOrg
+														s.handleMigrationsListReposForOrgRequest(args, w, r)
+														return
+													}
+												case 'r': // Prefix: "repositories"
+													if prefix := "repositories"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+														elem = elem[len(prefix):]
+													} else {
+														break
+													}
+
+													// Leaf: MigrationsListReposForOrg
+													s.handleMigrationsListReposForOrgRequest(args, w, r)
+													return
+												}
+											}
+										}
+									case 'e': // Prefix: "embers/"
+										if prefix := "embers/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+											elem = elem[len(prefix):]
+										} else {
+											break
+										}
+
+										// Param: "username"
+										// Leaf parameter
+										args["username"] = elem
+
+										// Leaf: OrgsCheckMembershipForUser
+										s.handleOrgsCheckMembershipForUserRequest(args, w, r)
+										return
+									}
+								}
+							case 'o': // Prefix: "outside_collaborators"
+								if prefix := "outside_collaborators"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+									elem = elem[len(prefix):]
+								} else {
+									break
+								}
+
+								// Leaf: OrgsListOutsideCollaborators
+								s.handleOrgsListOutsideCollaboratorsRequest(args, w, r)
+								return
+							case 'p': // Prefix: "p"
+								if prefix := "p"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+									elem = elem[len(prefix):]
+								} else {
+									break
+								}
+
+								if len(elem) == 0 {
+									s.handlePackagesGetAllPackageVersionsForPackageOwnedByOrgRequest(args, w, r)
+									return
+								}
+								switch elem[0] {
+								case 'a': // Prefix: "ackages"
+									if prefix := "ackages"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+										elem = elem[len(prefix):]
+									} else {
+										break
+									}
+
+									if len(elem) == 0 {
+										s.handlePackagesListPackagesForOrganizationRequest(args, w, r)
+										return
+									}
+									switch elem[0] {
+									case '/': // Prefix: "/"
+										if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+											elem = elem[len(prefix):]
+										} else {
+											break
+										}
+
+										// Param: "package_type"
+										// Match until one of "/"
+										idx := strings.IndexAny(elem, "/")
+										if idx > 0 {
+											args["package_type"] = elem[:idx]
+											elem = elem[idx:]
+
+											if len(elem) == 0 {
+												break
+											}
+											switch elem[0] {
+											case '/': // Prefix: "/"
+												if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+													elem = elem[len(prefix):]
+												} else {
+													break
+												}
+
+												// Param: "package_name"
+												// Match until one of "/"
+												idx := strings.IndexAny(elem, "/")
+												if idx > 0 {
+													args["package_name"] = elem[:idx]
+													elem = elem[idx:]
+
+													if len(elem) == 0 {
+														s.handlePackagesGetPackageForOrganizationRequest(args, w, r)
+														return
+													}
+													switch elem[0] {
+													case '/': // Prefix: "/versions"
+														if prefix := "/versions"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+															elem = elem[len(prefix):]
+														} else {
+															break
+														}
+
+														if len(elem) == 0 {
+															s.handlePackagesGetAllPackageVersionsForPackageOwnedByOrgRequest(args, w, r)
+															return
+														}
+														switch elem[0] {
+														case '/': // Prefix: "/"
+															if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																elem = elem[len(prefix):]
+															} else {
+																break
+															}
+
+															// Param: "package_version_id"
+															// Leaf parameter
+															args["package_version_id"] = elem
+
+															// Leaf: PackagesGetPackageVersionForOrganization
+															s.handlePackagesGetPackageVersionForOrganizationRequest(args, w, r)
+															return
+														}
+													}
+												}
+											}
+										}
+									}
+								case 'r': // Prefix: "rojects"
+									if prefix := "rojects"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+										elem = elem[len(prefix):]
+									} else {
+										break
+									}
+
+									// Leaf: ProjectsListForOrg
+									s.handleProjectsListForOrgRequest(args, w, r)
+									return
+								case 'u': // Prefix: "ublic_members"
+									if prefix := "ublic_members"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+										elem = elem[len(prefix):]
+									} else {
+										break
+									}
+
+									if len(elem) == 0 {
+										s.handleOrgsListPublicMembersRequest(args, w, r)
+										return
+									}
+									switch elem[0] {
+									case '/': // Prefix: "/"
+										if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+											elem = elem[len(prefix):]
+										} else {
+											break
+										}
+
+										// Param: "username"
+										// Leaf parameter
+										args["username"] = elem
+
+										// Leaf: OrgsCheckPublicMembershipForUser
+										s.handleOrgsCheckPublicMembershipForUserRequest(args, w, r)
+										return
+									case 'a': // Prefix: "ackages/"
+										if prefix := "ackages/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+											elem = elem[len(prefix):]
+										} else {
+											break
+										}
+
+										// Param: "package_type"
+										// Match until one of "/"
+										idx := strings.IndexAny(elem, "/")
+										if idx > 0 {
+											args["package_type"] = elem[:idx]
+											elem = elem[idx:]
+
+											if len(elem) == 0 {
+												break
+											}
+											switch elem[0] {
+											case '/': // Prefix: "/"
+												if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+													elem = elem[len(prefix):]
+												} else {
+													break
+												}
+
+												// Param: "package_name"
+												// Match until one of "/"
+												idx := strings.IndexAny(elem, "/")
+												if idx > 0 {
+													args["package_name"] = elem[:idx]
+													elem = elem[idx:]
+
+													if len(elem) == 0 {
+														break
+													}
+													switch elem[0] {
+													case '/': // Prefix: "/versions"
+														if prefix := "/versions"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+															elem = elem[len(prefix):]
+														} else {
+															break
+														}
+
+														// Leaf: PackagesGetAllPackageVersionsForPackageOwnedByOrg
+														s.handlePackagesGetAllPackageVersionsForPackageOwnedByOrgRequest(args, w, r)
+														return
+													}
+												}
+											}
+										}
+									}
+								}
+							case 'r': // Prefix: "repos"
+								if prefix := "repos"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+									elem = elem[len(prefix):]
+								} else {
+									break
+								}
+
+								// Leaf: ReposListForOrg
+								s.handleReposListForOrgRequest(args, w, r)
+								return
+							case 's': // Prefix: "se"
+								if prefix := "se"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+									elem = elem[len(prefix):]
+								} else {
+									break
+								}
+
+								if len(elem) == 0 {
+									s.handleSecretScanningListAlertsForOrgRequest(args, w, r)
+									return
+								}
+								switch elem[0] {
+								case 'c': // Prefix: "cret-scanning/alerts"
+									if prefix := "cret-scanning/alerts"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+										elem = elem[len(prefix):]
+									} else {
+										break
+									}
+
+									// Leaf: SecretScanningListAlertsForOrg
+									s.handleSecretScanningListAlertsForOrgRequest(args, w, r)
+									return
+								case 't': // Prefix: "ttings/billing/"
+									if prefix := "ttings/billing/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+										elem = elem[len(prefix):]
+									} else {
+										break
+									}
+
+									if len(elem) == 0 {
+										s.handleBillingGetGithubPackagesBillingOrgRequest(args, w, r)
+										return
+									}
+									switch elem[0] {
+									case 'a': // Prefix: "actions"
+										if prefix := "actions"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+											elem = elem[len(prefix):]
+										} else {
+											break
+										}
+
+										if len(elem) == 0 {
+											s.handleBillingGetGithubActionsBillingOrgRequest(args, w, r)
+											return
+										}
+										switch elem[0] {
+										case 'p': // Prefix: "packages"
+											if prefix := "packages"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+												elem = elem[len(prefix):]
+											} else {
+												break
+											}
+
+											// Leaf: BillingGetGithubPackagesBillingOrg
+											s.handleBillingGetGithubPackagesBillingOrgRequest(args, w, r)
+											return
+										}
+									case 'c': // Prefix: "cret-scanning/alerts"
+										if prefix := "cret-scanning/alerts"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+											elem = elem[len(prefix):]
+										} else {
+											break
+										}
+
+										// Leaf: SecretScanningListAlertsForOrg
+										s.handleSecretScanningListAlertsForOrgRequest(args, w, r)
+										return
+									case 'p': // Prefix: "packages"
+										if prefix := "packages"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+											elem = elem[len(prefix):]
+										} else {
+											break
+										}
+
+										// Leaf: BillingGetGithubPackagesBillingOrg
+										s.handleBillingGetGithubPackagesBillingOrgRequest(args, w, r)
+										return
+									case 's': // Prefix: "shared-storage"
+										if prefix := "shared-storage"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+											elem = elem[len(prefix):]
+										} else {
+											break
+										}
+
+										// Leaf: BillingGetSharedStorageBillingOrg
+										s.handleBillingGetSharedStorageBillingOrgRequest(args, w, r)
+										return
+									}
+								}
+							case 't': // Prefix: "team"
+								if prefix := "team"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+									elem = elem[len(prefix):]
+								} else {
+									break
+								}
+
+								if len(elem) == 0 {
+									s.handleTeamsListIdpGroupsForOrgRequest(args, w, r)
+									return
+								}
+								switch elem[0] {
+								case '-': // Prefix: "-sync/groups"
+									if prefix := "-sync/groups"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+										elem = elem[len(prefix):]
+									} else {
+										break
+									}
+
+									// Leaf: TeamsListIdpGroupsForOrg
+									s.handleTeamsListIdpGroupsForOrgRequest(args, w, r)
+									return
+								case 's': // Prefix: "s"
+									if prefix := "s"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+										elem = elem[len(prefix):]
+									} else {
+										break
+									}
+
+									if len(elem) == 0 {
+										s.handleTeamsListRequest(args, w, r)
+										return
+									}
+									switch elem[0] {
+									case '-': // Prefix: "-sync/groups"
+										if prefix := "-sync/groups"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+											elem = elem[len(prefix):]
+										} else {
+											break
+										}
+
+										// Leaf: TeamsListIdpGroupsForOrg
+										s.handleTeamsListIdpGroupsForOrgRequest(args, w, r)
+										return
+									case '/': // Prefix: "/"
+										if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+											elem = elem[len(prefix):]
+										} else {
+											break
+										}
+
+										// Param: "team_slug"
+										// Match until one of "/"
+										idx := strings.IndexAny(elem, "/")
+										if idx > 0 {
+											args["team_slug"] = elem[:idx]
+											elem = elem[idx:]
+
+											if len(elem) == 0 {
+												s.handleTeamsGetByNameRequest(args, w, r)
+												return
+											}
+											switch elem[0] {
+											case '/': // Prefix: "/"
+												if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+													elem = elem[len(prefix):]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													s.handleTeamsCheckPermissionsForProjectInOrgRequest(args, w, r)
+													return
+												}
+												switch elem[0] {
+												case 'd': // Prefix: "discussions"
+													if prefix := "discussions"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+														elem = elem[len(prefix):]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														s.handleTeamsListDiscussionsInOrgRequest(args, w, r)
+														return
+													}
+													switch elem[0] {
+													case '/': // Prefix: "/"
+														if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+															elem = elem[len(prefix):]
+														} else {
+															break
+														}
+
+														if len(elem) == 0 {
+															break
+														}
+														switch elem[0] {
+														case 'p': // Prefix: "projects/"
+															if prefix := "projects/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																elem = elem[len(prefix):]
+															} else {
+																break
+															}
+
+															// Param: "project_id"
+															// Leaf parameter
+															args["project_id"] = elem
+
+															// Leaf: TeamsCheckPermissionsForProjectInOrg
+															s.handleTeamsCheckPermissionsForProjectInOrgRequest(args, w, r)
+															return
+														}
+														// Param: "discussion_number"
+														// Match until one of "/"
+														idx := strings.IndexAny(elem, "/")
+														if idx > 0 {
+															args["discussion_number"] = elem[:idx]
+															elem = elem[idx:]
+
+															if len(elem) == 0 {
+																s.handleTeamsGetDiscussionInOrgRequest(args, w, r)
+																return
+															}
+															switch elem[0] {
+															case '/': // Prefix: "/"
+																if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																	elem = elem[len(prefix):]
+																} else {
+																	break
+																}
+
+																if len(elem) == 0 {
+																	s.handleReactionsListForTeamDiscussionInOrgRequest(args, w, r)
+																	return
+																}
+																switch elem[0] {
+																case 'c': // Prefix: "comments"
+																	if prefix := "comments"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																		elem = elem[len(prefix):]
+																	} else {
+																		break
+																	}
+
+																	if len(elem) == 0 {
+																		s.handleTeamsListDiscussionCommentsInOrgRequest(args, w, r)
+																		return
+																	}
+																	switch elem[0] {
+																	case '/': // Prefix: "/"
+																		if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																			elem = elem[len(prefix):]
+																		} else {
+																			break
+																		}
+
+																		if len(elem) == 0 {
+																			break
+																		}
+																		switch elem[0] {
+																		case 'r': // Prefix: "reactions"
+																			if prefix := "reactions"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																				elem = elem[len(prefix):]
+																			} else {
+																				break
+																			}
+
+																			// Leaf: ReactionsListForTeamDiscussionInOrg
+																			s.handleReactionsListForTeamDiscussionInOrgRequest(args, w, r)
+																			return
+																		}
+																		// Param: "comment_number"
+																		// Match until one of "/"
+																		idx := strings.IndexAny(elem, "/")
+																		if idx > 0 {
+																			args["comment_number"] = elem[:idx]
+																			elem = elem[idx:]
+
+																			if len(elem) == 0 {
+																				s.handleTeamsGetDiscussionCommentInOrgRequest(args, w, r)
+																				return
+																			}
+																			switch elem[0] {
+																			case '/': // Prefix: "/reactions"
+																				if prefix := "/reactions"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																					elem = elem[len(prefix):]
+																				} else {
+																					break
+																				}
+
+																				// Leaf: ReactionsListForTeamDiscussionCommentInOrg
+																				s.handleReactionsListForTeamDiscussionCommentInOrgRequest(args, w, r)
+																				return
+																			}
+																		}
+																	}
+																case 'r': // Prefix: "reactions"
+																	if prefix := "reactions"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																		elem = elem[len(prefix):]
+																	} else {
+																		break
+																	}
+
+																	// Leaf: ReactionsListForTeamDiscussionInOrg
+																	s.handleReactionsListForTeamDiscussionInOrgRequest(args, w, r)
+																	return
+																}
+															}
+														}
+													}
+												case 'i': // Prefix: "invitations"
+													if prefix := "invitations"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+														elem = elem[len(prefix):]
+													} else {
+														break
+													}
+
+													// Leaf: TeamsListPendingInvitationsInOrg
+													s.handleTeamsListPendingInvitationsInOrgRequest(args, w, r)
+													return
+												case 'm': // Prefix: "members"
+													if prefix := "members"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+														elem = elem[len(prefix):]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														s.handleTeamsListMembersInOrgRequest(args, w, r)
+														return
+													}
+													switch elem[0] {
+													case 'h': // Prefix: "hips/"
+														if prefix := "hips/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+															elem = elem[len(prefix):]
+														} else {
+															break
+														}
+
+														// Param: "username"
+														// Leaf parameter
+														args["username"] = elem
+
+														// Leaf: TeamsGetMembershipForUserInOrg
+														s.handleTeamsGetMembershipForUserInOrgRequest(args, w, r)
+														return
+													}
+												case 'p': // Prefix: "projects"
+													if prefix := "projects"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+														elem = elem[len(prefix):]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														s.handleTeamsListProjectsInOrgRequest(args, w, r)
+														return
+													}
+													switch elem[0] {
+													case '/': // Prefix: "/"
+														if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+															elem = elem[len(prefix):]
+														} else {
+															break
+														}
+
+														// Param: "project_id"
+														// Leaf parameter
+														args["project_id"] = elem
+
+														// Leaf: TeamsCheckPermissionsForProjectInOrg
+														s.handleTeamsCheckPermissionsForProjectInOrgRequest(args, w, r)
+														return
+													}
+												case 'r': // Prefix: "repos"
+													if prefix := "repos"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+														elem = elem[len(prefix):]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														s.handleTeamsListReposInOrgRequest(args, w, r)
+														return
+													}
+													switch elem[0] {
+													case '/': // Prefix: "/"
+														if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+															elem = elem[len(prefix):]
+														} else {
+															break
+														}
+
+														// Param: "owner"
+														// Match until one of "/"
+														idx := strings.IndexAny(elem, "/")
+														if idx > 0 {
+															args["owner"] = elem[:idx]
+															elem = elem[idx:]
+
+															if len(elem) == 0 {
+																break
+															}
+															switch elem[0] {
+															case '/': // Prefix: "/"
+																if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																	elem = elem[len(prefix):]
+																} else {
+																	break
+																}
+
+																// Param: "repo"
+																// Leaf parameter
+																args["repo"] = elem
+
+																// Leaf: TeamsCheckPermissionsForRepoInOrg
+																s.handleTeamsCheckPermissionsForRepoInOrgRequest(args, w, r)
+																return
+															}
+														}
+													}
+												case 't': // Prefix: "team"
+													if prefix := "team"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+														elem = elem[len(prefix):]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														s.handleTeamsListIdpGroupsInOrgRequest(args, w, r)
+														return
+													}
+													switch elem[0] {
+													case '-': // Prefix: "-sync/group-mappings"
+														if prefix := "-sync/group-mappings"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+															elem = elem[len(prefix):]
+														} else {
+															break
+														}
+
+														// Leaf: TeamsListIdpGroupsInOrg
+														s.handleTeamsListIdpGroupsInOrgRequest(args, w, r)
+														return
+													case 's': // Prefix: "s"
+														if prefix := "s"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+															elem = elem[len(prefix):]
+														} else {
+															break
+														}
+
+														if len(elem) == 0 {
+															s.handleTeamsListChildInOrgRequest(args, w, r)
+															return
+														}
+														switch elem[0] {
+														case '-': // Prefix: "-sync/group-mappings"
+															if prefix := "-sync/group-mappings"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																elem = elem[len(prefix):]
+															} else {
+																break
+															}
+
+															// Leaf: TeamsListIdpGroupsInOrg
+															s.handleTeamsListIdpGroupsInOrgRequest(args, w, r)
+															return
+														}
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			case 'p': // Prefix: "projects/"
+				if prefix := "projects/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+					elem = elem[len(prefix):]
+				} else {
+					break
+				}
+
+				if len(elem) == 0 {
+					break
+				}
+				switch elem[0] {
+				case 'c': // Prefix: "columns/"
+					if prefix := "columns/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+						elem = elem[len(prefix):]
+					} else {
+						break
+					}
+
+					if len(elem) == 0 {
+						s.handleProjectsGetColumnRequest(args, w, r)
+						return
+					}
+					switch elem[0] {
+					case 'c': // Prefix: "cards/"
+						if prefix := "cards/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+							elem = elem[len(prefix):]
+						} else {
+							break
+						}
+
+						// Param: "card_id"
+						// Leaf parameter
+						args["card_id"] = elem
+
+						// Leaf: ProjectsGetColumn
+						s.handleProjectsGetColumnRequest(args, w, r)
+						return
+					}
+					// Param: "column_id"
+					// Match until one of "/"
+					idx := strings.IndexAny(elem, "/")
+					if idx > 0 {
+						args["column_id"] = elem[:idx]
+						elem = elem[idx:]
+
+						if len(elem) == 0 {
+							s.handleProjectsGetColumnRequest(args, w, r)
+							return
+						}
+						switch elem[0] {
+						case '/': // Prefix: "/cards"
+							if prefix := "/cards"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+								elem = elem[len(prefix):]
+							} else {
+								break
+							}
+
+							// Leaf: ProjectsListCards
+							s.handleProjectsListCardsRequest(args, w, r)
+							return
+						}
+					}
+				}
+				// Param: "project_id"
+				// Match until one of "/"
+				idx := strings.IndexAny(elem, "/")
+				if idx > 0 {
+					args["project_id"] = elem[:idx]
+					elem = elem[idx:]
+
+					if len(elem) == 0 {
+						s.handleProjectsGetRequest(args, w, r)
+						return
+					}
+					switch elem[0] {
+					case '/': // Prefix: "/col"
+						if prefix := "/col"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+							elem = elem[len(prefix):]
+						} else {
+							break
+						}
+
+						if len(elem) == 0 {
+							s.handleProjectsListColumnsRequest(args, w, r)
+							return
+						}
+						switch elem[0] {
+						case 'l': // Prefix: "laborators"
+							if prefix := "laborators"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+								elem = elem[len(prefix):]
+							} else {
+								break
+							}
+
+							if len(elem) == 0 {
+								s.handleProjectsListCollaboratorsRequest(args, w, r)
+								return
+							}
+							switch elem[0] {
+							case '/': // Prefix: "/"
+								if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+									elem = elem[len(prefix):]
+								} else {
+									break
+								}
+
+								// Param: "username"
+								// Match until one of "/"
+								idx := strings.IndexAny(elem, "/")
+								if idx > 0 {
+									args["username"] = elem[:idx]
+									elem = elem[idx:]
+
+									if len(elem) == 0 {
+										break
+									}
+									switch elem[0] {
+									case '/': // Prefix: "/permission"
+										if prefix := "/permission"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+											elem = elem[len(prefix):]
+										} else {
+											break
+										}
+
+										// Leaf: ProjectsGetPermissionForUser
+										s.handleProjectsGetPermissionForUserRequest(args, w, r)
+										return
+									}
+								}
+							case 'u': // Prefix: "umns"
+								if prefix := "umns"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+									elem = elem[len(prefix):]
+								} else {
+									break
+								}
+
+								// Leaf: ProjectsListColumns
+								s.handleProjectsListColumnsRequest(args, w, r)
+								return
+							}
+						case 'u': // Prefix: "umns"
+							if prefix := "umns"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+								elem = elem[len(prefix):]
+							} else {
+								break
+							}
+
+							// Leaf: ProjectsListColumns
+							s.handleProjectsListColumnsRequest(args, w, r)
+							return
+						}
+					}
+				}
+			case 'r': // Prefix: "r"
+				if prefix := "r"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+					elem = elem[len(prefix):]
+				} else {
+					break
+				}
+
+				if len(elem) == 0 {
+					s.handleRateLimitGetRequest(args, w, r)
+					return
+				}
+				switch elem[0] {
+				case 'a': // Prefix: "ate_limit"
+					if prefix := "ate_limit"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+						elem = elem[len(prefix):]
+					} else {
+						break
+					}
+
+					// Leaf: RateLimitGet
+					s.handleRateLimitGetRequest(args, w, r)
+					return
+				case 'e': // Prefix: "epos"
+					if prefix := "epos"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+						elem = elem[len(prefix):]
+					} else {
+						break
+					}
+
+					if len(elem) == 0 {
+						s.handleActionsGetEnvironmentPublicKeyRequest(args, w, r)
+						return
+					}
+					switch elem[0] {
+					case '/': // Prefix: "/"
+						if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+							elem = elem[len(prefix):]
+						} else {
+							break
+						}
+
+						if len(elem) == 0 {
+							break
+						}
+						switch elem[0] {
+						case 'i': // Prefix: "itories/"
+							if prefix := "itories/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+								elem = elem[len(prefix):]
+							} else {
+								break
+							}
+
+							// Param: "repository_id"
+							// Match until one of "/"
+							idx := strings.IndexAny(elem, "/")
+							if idx > 0 {
+								args["repository_id"] = elem[:idx]
+								elem = elem[idx:]
+
+								if len(elem) == 0 {
+									break
+								}
+								switch elem[0] {
+								case '/': // Prefix: "/environments/"
+									if prefix := "/environments/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+										elem = elem[len(prefix):]
+									} else {
+										break
+									}
+
+									// Param: "environment_name"
+									// Match until one of "/"
+									idx := strings.IndexAny(elem, "/")
+									if idx > 0 {
+										args["environment_name"] = elem[:idx]
+										elem = elem[idx:]
+
+										if len(elem) == 0 {
+											break
+										}
+										switch elem[0] {
+										case '/': // Prefix: "/secrets/public-key"
+											if prefix := "/secrets/public-key"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+												elem = elem[len(prefix):]
+											} else {
+												break
+											}
+
+											// Leaf: ActionsGetEnvironmentPublicKey
+											s.handleActionsGetEnvironmentPublicKeyRequest(args, w, r)
+											return
+										}
+									}
+								}
+							}
+						case 'o': // Prefix: "orgs/"
+							if prefix := "orgs/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+								elem = elem[len(prefix):]
+							} else {
+								break
+							}
+
+							// Param: "org"
+							// Match until one of "/"
+							idx := strings.IndexAny(elem, "/")
+							if idx > 0 {
+								args["org"] = elem[:idx]
+								elem = elem[idx:]
+
+								if len(elem) == 0 {
+									break
+								}
+								switch elem[0] {
+								case '/': // Prefix: "/actions/permissions/selected-actions"
+									if prefix := "/actions/permissions/selected-actions"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+										elem = elem[len(prefix):]
+									} else {
+										break
+									}
+
+									// Leaf: ActionsGetAllowedActionsOrganization
+									s.handleActionsGetAllowedActionsOrganizationRequest(args, w, r)
+									return
+								}
+							}
+						}
+						// Param: "owner"
+						// Match until one of "/"
+						idx := strings.IndexAny(elem, "/")
+						if idx > 0 {
+							args["owner"] = elem[:idx]
+							elem = elem[idx:]
+
+							if len(elem) == 0 {
+								break
+							}
+							switch elem[0] {
+							case '/': // Prefix: "/"
+								if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+									elem = elem[len(prefix):]
+								} else {
+									break
+								}
+
+								// Param: "repo"
+								// Match until one of "/"
+								idx := strings.IndexAny(elem, "/")
+								if idx > 0 {
+									args["repo"] = elem[:idx]
+									elem = elem[idx:]
+
+									if len(elem) == 0 {
+										s.handleReposGetRequest(args, w, r)
+										return
+									}
+									switch elem[0] {
+									case '/': // Prefix: "/"
+										if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+											elem = elem[len(prefix):]
+										} else {
+											break
+										}
+
+										if len(elem) == 0 {
+											s.handleActivityGetRepoSubscriptionRequest(args, w, r)
+											return
+										}
+										switch elem[0] {
+										case 'a': // Prefix: "a"
+											if prefix := "a"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+												elem = elem[len(prefix):]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												s.handleIssuesCheckUserCanBeAssignedRequest(args, w, r)
+												return
+											}
+											switch elem[0] {
+											case 'c': // Prefix: "ctions/"
+												if prefix := "ctions/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+													elem = elem[len(prefix):]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													s.handleActionsDownloadJobLogsForWorkflowRunRequest(args, w, r)
+													return
+												}
+												switch elem[0] {
+												case 'a': // Prefix: "artifacts"
+													if prefix := "artifacts"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+														elem = elem[len(prefix):]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														s.handleActionsListArtifactsForRepoRequest(args, w, r)
+														return
+													}
+													switch elem[0] {
+													case '/': // Prefix: "/"
+														if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+															elem = elem[len(prefix):]
+														} else {
+															break
+														}
+
+														if len(elem) == 0 {
+															break
+														}
+														switch elem[0] {
+														case 'j': // Prefix: "jobs/"
+															if prefix := "jobs/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																elem = elem[len(prefix):]
+															} else {
+																break
+															}
+
+															// Param: "job_id"
+															// Match until one of "/"
+															idx := strings.IndexAny(elem, "/")
+															if idx > 0 {
+																args["job_id"] = elem[:idx]
+																elem = elem[idx:]
+
+																if len(elem) == 0 {
+																	break
+																}
+																switch elem[0] {
+																case '/': // Prefix: "/logs"
+																	if prefix := "/logs"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																		elem = elem[len(prefix):]
+																	} else {
+																		break
+																	}
+
+																	// Leaf: ActionsDownloadJobLogsForWorkflowRun
+																	s.handleActionsDownloadJobLogsForWorkflowRunRequest(args, w, r)
+																	return
+																}
+															}
+														}
+														// Param: "artifact_id"
+														// Match until one of "/"
+														idx := strings.IndexAny(elem, "/")
+														if idx > 0 {
+															args["artifact_id"] = elem[:idx]
+															elem = elem[idx:]
+
+															if len(elem) == 0 {
+																s.handleActionsGetArtifactRequest(args, w, r)
+																return
+															}
+															switch elem[0] {
+															case '/': // Prefix: "/"
+																if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																	elem = elem[len(prefix):]
+																} else {
+																	break
+																}
+
+																// Param: "archive_format"
+																// Leaf parameter
+																args["archive_format"] = elem
+
+																// Leaf: ActionsDownloadArtifact
+																s.handleActionsDownloadArtifactRequest(args, w, r)
+																return
+															}
+														}
+													}
+												case 'j': // Prefix: "jobs/"
+													if prefix := "jobs/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+														elem = elem[len(prefix):]
+													} else {
+														break
+													}
+
+													// Param: "job_id"
+													// Match until one of "/"
+													idx := strings.IndexAny(elem, "/")
+													if idx > 0 {
+														args["job_id"] = elem[:idx]
+														elem = elem[idx:]
+
+														if len(elem) == 0 {
+															s.handleActionsGetJobForWorkflowRunRequest(args, w, r)
+															return
+														}
+														switch elem[0] {
+														case '/': // Prefix: "/logs"
+															if prefix := "/logs"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																elem = elem[len(prefix):]
+															} else {
+																break
+															}
+
+															// Leaf: ActionsDownloadJobLogsForWorkflowRun
+															s.handleActionsDownloadJobLogsForWorkflowRunRequest(args, w, r)
+															return
+														}
+													}
+												case 'p': // Prefix: "permissions"
+													if prefix := "permissions"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+														elem = elem[len(prefix):]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														s.handleActionsGetGithubActionsPermissionsRepositoryRequest(args, w, r)
+														return
+													}
+													switch elem[0] {
+													case '/': // Prefix: "/selected-actions"
+														if prefix := "/selected-actions"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+															elem = elem[len(prefix):]
+														} else {
+															break
+														}
+
+														// Leaf: ActionsGetAllowedActionsRepository
+														s.handleActionsGetAllowedActionsRepositoryRequest(args, w, r)
+														return
+													}
+												case 'r': // Prefix: "run"
+													if prefix := "run"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+														elem = elem[len(prefix):]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														s.handleActionsGetSelfHostedRunnerForRepoRequest(args, w, r)
+														return
+													}
+													switch elem[0] {
+													case 'n': // Prefix: "ners"
+														if prefix := "ners"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+															elem = elem[len(prefix):]
+														} else {
+															break
+														}
+
+														if len(elem) == 0 {
+															s.handleActionsListSelfHostedRunnersForRepoRequest(args, w, r)
+															return
+														}
+														switch elem[0] {
+														case '/': // Prefix: "/"
+															if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																elem = elem[len(prefix):]
+															} else {
+																break
+															}
+
+															if len(elem) == 0 {
+																break
+															}
+															switch elem[0] {
+															case 'd': // Prefix: "downloads"
+																if prefix := "downloads"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																	elem = elem[len(prefix):]
+																} else {
+																	break
+																}
+
+																// Leaf: ActionsListRunnerApplicationsForRepo
+																s.handleActionsListRunnerApplicationsForRepoRequest(args, w, r)
+																return
+															}
+															// Param: "runner_id"
+															// Leaf parameter
+															args["runner_id"] = elem
+
+															// Leaf: ActionsGetSelfHostedRunnerForRepo
+															s.handleActionsGetSelfHostedRunnerForRepoRequest(args, w, r)
+															return
+														}
+													case 's': // Prefix: "s"
+														if prefix := "s"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+															elem = elem[len(prefix):]
+														} else {
+															break
+														}
+
+														if len(elem) == 0 {
+															s.handleActionsListWorkflowRunsForRepoRequest(args, w, r)
+															return
+														}
+														switch elem[0] {
+														case '/': // Prefix: "/"
+															if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																elem = elem[len(prefix):]
+															} else {
+																break
+															}
+
+															if len(elem) == 0 {
+																break
+															}
+															switch elem[0] {
+															case 'n': // Prefix: "ners/"
+																if prefix := "ners/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																	elem = elem[len(prefix):]
+																} else {
+																	break
+																}
+
+																// Param: "runner_id"
+																// Leaf parameter
+																args["runner_id"] = elem
+
+																// Leaf: ActionsGetSelfHostedRunnerForRepo
+																s.handleActionsGetSelfHostedRunnerForRepoRequest(args, w, r)
+																return
+															}
+															// Param: "run_id"
+															// Match until one of "/"
+															idx := strings.IndexAny(elem, "/")
+															if idx > 0 {
+																args["run_id"] = elem[:idx]
+																elem = elem[idx:]
+
+																if len(elem) == 0 {
+																	s.handleActionsGetWorkflowRunRequest(args, w, r)
+																	return
+																}
+																switch elem[0] {
+																case '/': // Prefix: "/"
+																	if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																		elem = elem[len(prefix):]
+																	} else {
+																		break
+																	}
+
+																	if len(elem) == 0 {
+																		s.handleActionsGetReviewsForRunRequest(args, w, r)
+																		return
+																	}
+																	switch elem[0] {
+																	case 'a': // Prefix: "a"
+																		if prefix := "a"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																			elem = elem[len(prefix):]
+																		} else {
+																			break
+																		}
+
+																		if len(elem) == 0 {
+																			s.handleActionsListWorkflowRunArtifactsRequest(args, w, r)
+																			return
+																		}
+																		switch elem[0] {
+																		case 'p': // Prefix: "pprovals"
+																			if prefix := "pprovals"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																				elem = elem[len(prefix):]
+																			} else {
+																				break
+																			}
+
+																			if len(elem) == 0 {
+																				s.handleActionsGetReviewsForRunRequest(args, w, r)
+																				return
+																			}
+																			switch elem[0] {
+																			case 'r': // Prefix: "rtifacts"
+																				if prefix := "rtifacts"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																					elem = elem[len(prefix):]
+																				} else {
+																					break
+																				}
+
+																				// Leaf: ActionsListWorkflowRunArtifacts
+																				s.handleActionsListWorkflowRunArtifactsRequest(args, w, r)
+																				return
+																			}
+																		case 'r': // Prefix: "rtifacts"
+																			if prefix := "rtifacts"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																				elem = elem[len(prefix):]
+																			} else {
+																				break
+																			}
+
+																			// Leaf: ActionsListWorkflowRunArtifacts
+																			s.handleActionsListWorkflowRunArtifactsRequest(args, w, r)
+																			return
+																		}
+																	case 'j': // Prefix: "jobs"
+																		if prefix := "jobs"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																			elem = elem[len(prefix):]
+																		} else {
+																			break
+																		}
+
+																		// Leaf: ActionsListJobsForWorkflowRun
+																		s.handleActionsListJobsForWorkflowRunRequest(args, w, r)
+																		return
+																	case 'l': // Prefix: "logs"
+																		if prefix := "logs"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																			elem = elem[len(prefix):]
+																		} else {
+																			break
+																		}
+
+																		if len(elem) == 0 {
+																			s.handleActionsDownloadWorkflowRunLogsRequest(args, w, r)
+																			return
+																		}
+																		switch elem[0] {
+																		case 'a': // Prefix: "approvals"
+																			if prefix := "approvals"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																				elem = elem[len(prefix):]
+																			} else {
+																				break
+																			}
+
+																			// Leaf: ActionsGetReviewsForRun
+																			s.handleActionsGetReviewsForRunRequest(args, w, r)
+																			return
+																		}
+																	case 't': // Prefix: "timing"
+																		if prefix := "timing"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																			elem = elem[len(prefix):]
+																		} else {
+																			break
+																		}
+
+																		// Leaf: ActionsGetWorkflowRunUsage
+																		s.handleActionsGetWorkflowRunUsageRequest(args, w, r)
+																		return
+																	}
+																}
+															}
+														}
+													}
+												case 's': // Prefix: "s"
+													if prefix := "s"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+														elem = elem[len(prefix):]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														s.handleActivityGetRepoSubscriptionRequest(args, w, r)
+														return
+													}
+													switch elem[0] {
+													case 'e': // Prefix: "ecrets"
+														if prefix := "ecrets"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+															elem = elem[len(prefix):]
+														} else {
+															break
+														}
+
+														if len(elem) == 0 {
+															s.handleActionsListRepoSecretsRequest(args, w, r)
+															return
+														}
+														switch elem[0] {
+														case '/': // Prefix: "/"
+															if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																elem = elem[len(prefix):]
+															} else {
+																break
+															}
+
+															if len(elem) == 0 {
+																s.handleActionsGetRepoSecretRequest(args, w, r)
+																return
+															}
+															switch elem[0] {
+															case 'p': // Prefix: "public-key"
+																if prefix := "public-key"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																	elem = elem[len(prefix):]
+																} else {
+																	break
+																}
+
+																// Param: "secret_name"
+																// Leaf parameter
+																args["secret_name"] = elem
+
+																// Leaf: ActionsGetRepoSecret
+																s.handleActionsGetRepoSecretRequest(args, w, r)
+																return
+															}
+															// Param: "secret_name"
+															// Leaf parameter
+															args["secret_name"] = elem
+
+															// Leaf: ActionsGetRepoSecret
+															s.handleActionsGetRepoSecretRequest(args, w, r)
+															return
+														case 'u': // Prefix: "ubscription"
+															if prefix := "ubscription"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																elem = elem[len(prefix):]
+															} else {
+																break
+															}
+
+															// Leaf: ActivityGetRepoSubscription
+															s.handleActivityGetRepoSubscriptionRequest(args, w, r)
+															return
+														}
+													case 's': // Prefix: "signees/"
+														if prefix := "signees/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+															elem = elem[len(prefix):]
+														} else {
+															break
+														}
+
+														// Param: "assignee"
+														// Leaf parameter
+														args["assignee"] = elem
+
+														// Leaf: IssuesCheckUserCanBeAssigned
+														s.handleIssuesCheckUserCanBeAssignedRequest(args, w, r)
+														return
+													case 'u': // Prefix: "ubscription"
+														if prefix := "ubscription"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+															elem = elem[len(prefix):]
+														} else {
+															break
+														}
+
+														// Leaf: ActivityGetRepoSubscription
+														s.handleActivityGetRepoSubscriptionRequest(args, w, r)
+														return
+													}
+												case 'w': // Prefix: "workflows"
+													if prefix := "workflows"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+														elem = elem[len(prefix):]
+													} else {
+														break
+													}
+
+													// Leaf: ActionsListRepoWorkflows
+													s.handleActionsListRepoWorkflowsRequest(args, w, r)
+													return
+												}
+											case 's': // Prefix: "ssignees"
+												if prefix := "ssignees"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+													elem = elem[len(prefix):]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													s.handleIssuesListAssigneesRequest(args, w, r)
+													return
+												}
+												switch elem[0] {
+												case '/': // Prefix: "/"
+													if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+														elem = elem[len(prefix):]
+													} else {
+														break
+													}
+
+													// Param: "assignee"
+													// Leaf parameter
+													args["assignee"] = elem
+
+													// Leaf: IssuesCheckUserCanBeAssigned
+													s.handleIssuesCheckUserCanBeAssignedRequest(args, w, r)
+													return
+												}
+											case 'u': // Prefix: "utolinks"
+												if prefix := "utolinks"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+													elem = elem[len(prefix):]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													s.handleReposListAutolinksRequest(args, w, r)
+													return
+												}
+												switch elem[0] {
+												case '/': // Prefix: "/"
+													if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+														elem = elem[len(prefix):]
+													} else {
+														break
+													}
+
+													// Param: "autolink_id"
+													// Leaf parameter
+													args["autolink_id"] = elem
+
+													// Leaf: ReposGetAutolink
+													s.handleReposGetAutolinkRequest(args, w, r)
+													return
+												}
+											}
+										case 'b': // Prefix: "branches"
+											if prefix := "branches"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+												elem = elem[len(prefix):]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												s.handleReposListBranchesRequest(args, w, r)
+												return
+											}
+											switch elem[0] {
+											case '/': // Prefix: "/"
+												if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+													elem = elem[len(prefix):]
+												} else {
+													break
+												}
+
+												// Param: "branch"
+												// Match until one of "/"
+												idx := strings.IndexAny(elem, "/")
+												if idx > 0 {
+													args["branch"] = elem[:idx]
+													elem = elem[idx:]
+
+													if len(elem) == 0 {
+														s.handleReposGetBranchRequest(args, w, r)
+														return
+													}
+													switch elem[0] {
+													case '/': // Prefix: "/protection"
+														if prefix := "/protection"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+															elem = elem[len(prefix):]
+														} else {
+															break
+														}
+
+														if len(elem) == 0 {
+															s.handleReposGetBranchProtectionRequest(args, w, r)
+															return
+														}
+														switch elem[0] {
+														case '/': // Prefix: "/"
+															if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																elem = elem[len(prefix):]
+															} else {
+																break
+															}
+
+															if len(elem) == 0 {
+																s.handleReposGetAdminBranchProtectionRequest(args, w, r)
+																return
+															}
+															switch elem[0] {
+															case 'e': // Prefix: "enforce_admins"
+																if prefix := "enforce_admins"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																	elem = elem[len(prefix):]
+																} else {
+																	break
+																}
+
+																// Leaf: ReposGetAdminBranchProtection
+																s.handleReposGetAdminBranchProtectionRequest(args, w, r)
+																return
+															case 'r': // Prefix: "re"
+																if prefix := "re"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																	elem = elem[len(prefix):]
+																} else {
+																	break
+																}
+
+																if len(elem) == 0 {
+																	s.handleReposGetAllStatusCheckContextsRequest(args, w, r)
+																	return
+																}
+																switch elem[0] {
+																case 'q': // Prefix: "quired_"
+																	if prefix := "quired_"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																		elem = elem[len(prefix):]
+																	} else {
+																		break
+																	}
+
+																	if len(elem) == 0 {
+																		s.handleReposGetPullRequestReviewProtectionRequest(args, w, r)
+																		return
+																	}
+																	switch elem[0] {
+																	case 'p': // Prefix: "pull_request_reviews"
+																		if prefix := "pull_request_reviews"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																			elem = elem[len(prefix):]
+																		} else {
+																			break
+																		}
+
+																		// Leaf: ReposGetPullRequestReviewProtection
+																		s.handleReposGetPullRequestReviewProtectionRequest(args, w, r)
+																		return
+																	case 's': // Prefix: "s"
+																		if prefix := "s"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																			elem = elem[len(prefix):]
+																		} else {
+																			break
+																		}
+
+																		if len(elem) == 0 {
+																			s.handleReposGetCommitSignatureProtectionRequest(args, w, r)
+																			return
+																		}
+																		switch elem[0] {
+																		case 'i': // Prefix: "ignatures"
+																			if prefix := "ignatures"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																				elem = elem[len(prefix):]
+																			} else {
+																				break
+																			}
+
+																			// Leaf: ReposGetCommitSignatureProtection
+																			s.handleReposGetCommitSignatureProtectionRequest(args, w, r)
+																			return
+																		case 'p': // Prefix: "pull_request_reviews"
+																			if prefix := "pull_request_reviews"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																				elem = elem[len(prefix):]
+																			} else {
+																				break
+																			}
+
+																			// Leaf: ReposGetPullRequestReviewProtection
+																			s.handleReposGetPullRequestReviewProtectionRequest(args, w, r)
+																			return
+																		case 't': // Prefix: "tatus_checks"
+																			if prefix := "tatus_checks"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																				elem = elem[len(prefix):]
+																			} else {
+																				break
+																			}
+
+																			if len(elem) == 0 {
+																				s.handleReposGetStatusChecksProtectionRequest(args, w, r)
+																				return
+																			}
+																			switch elem[0] {
+																			case '/': // Prefix: "/contexts"
+																				if prefix := "/contexts"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																					elem = elem[len(prefix):]
+																				} else {
+																					break
+																				}
+
+																				if len(elem) == 0 {
+																					s.handleReposGetAllStatusCheckContextsRequest(args, w, r)
+																					return
+																				}
+																				switch elem[0] {
+																				case 'i': // Prefix: "ignatures"
+																					if prefix := "ignatures"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																						elem = elem[len(prefix):]
+																					} else {
+																						break
+																					}
+
+																					// Leaf: ReposGetCommitSignatureProtection
+																					s.handleReposGetCommitSignatureProtectionRequest(args, w, r)
+																					return
+																				}
+																			}
+																		}
+																	}
+																case 's': // Prefix: "strictions"
+																	if prefix := "strictions"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																		elem = elem[len(prefix):]
+																	} else {
+																		break
+																	}
+
+																	if len(elem) == 0 {
+																		s.handleReposGetAccessRestrictionsRequest(args, w, r)
+																		return
+																	}
+																	switch elem[0] {
+																	case '/': // Prefix: "/"
+																		if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																			elem = elem[len(prefix):]
+																		} else {
+																			break
+																		}
+
+																		if len(elem) == 0 {
+																			s.handleReposGetTeamsWithAccessToProtectedBranchRequest(args, w, r)
+																			return
+																		}
+																		switch elem[0] {
+																		case 'a': // Prefix: "apps"
+																			if prefix := "apps"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																				elem = elem[len(prefix):]
+																			} else {
+																				break
+																			}
+
+																			if len(elem) == 0 {
+																				s.handleReposGetAppsWithAccessToProtectedBranchRequest(args, w, r)
+																				return
+																			}
+																			switch elem[0] {
+																			case 't': // Prefix: "teams"
+																				if prefix := "teams"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																					elem = elem[len(prefix):]
+																				} else {
+																					break
+																				}
+
+																				// Leaf: ReposGetTeamsWithAccessToProtectedBranch
+																				s.handleReposGetTeamsWithAccessToProtectedBranchRequest(args, w, r)
+																				return
+																			}
+																		case 't': // Prefix: "teams"
+																			if prefix := "teams"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																				elem = elem[len(prefix):]
+																			} else {
+																				break
+																			}
+
+																			// Leaf: ReposGetTeamsWithAccessToProtectedBranch
+																			s.handleReposGetTeamsWithAccessToProtectedBranchRequest(args, w, r)
+																			return
+																		case 'u': // Prefix: "users"
+																			if prefix := "users"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																				elem = elem[len(prefix):]
+																			} else {
+																				break
+																			}
+
+																			// Leaf: ReposGetUsersWithAccessToProtectedBranch
+																			s.handleReposGetUsersWithAccessToProtectedBranchRequest(args, w, r)
+																			return
+																		}
+																	case 'e': // Prefix: "enforce_admins"
+																		if prefix := "enforce_admins"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																			elem = elem[len(prefix):]
+																		} else {
+																			break
+																		}
+
+																		// Leaf: ReposGetAdminBranchProtection
+																		s.handleReposGetAdminBranchProtectionRequest(args, w, r)
+																		return
+																	case 'q': // Prefix: "quired_status_checks/contexts"
+																		if prefix := "quired_status_checks/contexts"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																			elem = elem[len(prefix):]
+																		} else {
+																			break
+																		}
+
+																		// Leaf: ReposGetAllStatusCheckContexts
+																		s.handleReposGetAllStatusCheckContextsRequest(args, w, r)
+																		return
+																	}
+																}
+															}
+														}
+													}
+												}
+											}
+										case 'c': // Prefix: "c"
+											if prefix := "c"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+												elem = elem[len(prefix):]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												s.handleChecksListForRefRequest(args, w, r)
+												return
+											}
+											switch elem[0] {
+											case 'h': // Prefix: "heck-"
+												if prefix := "heck-"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+													elem = elem[len(prefix):]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													s.handleChecksGetSuiteRequest(args, w, r)
+													return
+												}
+												switch elem[0] {
+												case 'o': // Prefix: "ommits/"
+													if prefix := "ommits/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+														elem = elem[len(prefix):]
+													} else {
+														break
+													}
+
+													// Param: "ref"
+													// Match until one of "/"
+													idx := strings.IndexAny(elem, "/")
+													if idx > 0 {
+														args["ref"] = elem[:idx]
+														elem = elem[idx:]
+
+														if len(elem) == 0 {
+															break
+														}
+														switch elem[0] {
+														case '/': // Prefix: "/check-runs"
+															if prefix := "/check-runs"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																elem = elem[len(prefix):]
+															} else {
+																break
+															}
+
+															// Leaf: ChecksListForRef
+															s.handleChecksListForRefRequest(args, w, r)
+															return
+														}
+													}
+												case 'r': // Prefix: "runs/"
+													if prefix := "runs/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+														elem = elem[len(prefix):]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														break
+													}
+													switch elem[0] {
+													case 's': // Prefix: "suites/"
+														if prefix := "suites/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+															elem = elem[len(prefix):]
+														} else {
+															break
+														}
+
+														// Param: "check_suite_id"
+														// Leaf parameter
+														args["check_suite_id"] = elem
+
+														// Leaf: ChecksGetSuite
+														s.handleChecksGetSuiteRequest(args, w, r)
+														return
+													}
+													// Param: "check_run_id"
+													// Match until one of "/"
+													idx := strings.IndexAny(elem, "/")
+													if idx > 0 {
+														args["check_run_id"] = elem[:idx]
+														elem = elem[idx:]
+
+														if len(elem) == 0 {
+															s.handleChecksGetRequest(args, w, r)
+															return
+														}
+														switch elem[0] {
+														case '/': // Prefix: "/annotations"
+															if prefix := "/annotations"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																elem = elem[len(prefix):]
+															} else {
+																break
+															}
+
+															// Leaf: ChecksListAnnotations
+															s.handleChecksListAnnotationsRequest(args, w, r)
+															return
+														}
+													}
+												case 's': // Prefix: "suites/"
+													if prefix := "suites/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+														elem = elem[len(prefix):]
+													} else {
+														break
+													}
+
+													// Param: "check_suite_id"
+													// Match until one of "/"
+													idx := strings.IndexAny(elem, "/")
+													if idx > 0 {
+														args["check_suite_id"] = elem[:idx]
+														elem = elem[idx:]
+
+														if len(elem) == 0 {
+															s.handleChecksGetSuiteRequest(args, w, r)
+															return
+														}
+														switch elem[0] {
+														case '/': // Prefix: "/check-runs"
+															if prefix := "/check-runs"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																elem = elem[len(prefix):]
+															} else {
+																break
+															}
+
+															// Leaf: ChecksListForSuite
+															s.handleChecksListForSuiteRequest(args, w, r)
+															return
+														}
+													}
+												}
+											case 'o': // Prefix: "o"
+												if prefix := "o"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+													elem = elem[len(prefix):]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													s.handleCodeScanningGetAlertRequest(args, w, r)
+													return
+												}
+												switch elem[0] {
+												case 'd': // Prefix: "de-scanning/"
+													if prefix := "de-scanning/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+														elem = elem[len(prefix):]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														s.handleCodeScanningGetSarifRequest(args, w, r)
+														return
+													}
+													switch elem[0] {
+													case 'a': // Prefix: "a"
+														if prefix := "a"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+															elem = elem[len(prefix):]
+														} else {
+															break
+														}
+
+														if len(elem) == 0 {
+															s.handleCodeScanningGetAnalysisRequest(args, w, r)
+															return
+														}
+														switch elem[0] {
+														case 'l': // Prefix: "lerts"
+															if prefix := "lerts"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																elem = elem[len(prefix):]
+															} else {
+																break
+															}
+
+															if len(elem) == 0 {
+																s.handleCodeScanningListAlertsForRepoRequest(args, w, r)
+																return
+															}
+															switch elem[0] {
+															case '/': // Prefix: "/"
+																if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																	elem = elem[len(prefix):]
+																} else {
+																	break
+																}
+
+																if len(elem) == 0 {
+																	break
+																}
+																switch elem[0] {
+																case 'n': // Prefix: "nalyses/"
+																	if prefix := "nalyses/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																		elem = elem[len(prefix):]
+																	} else {
+																		break
+																	}
+
+																	// Param: "analysis_id"
+																	// Leaf parameter
+																	args["analysis_id"] = elem
+
+																	// Leaf: CodeScanningGetAnalysis
+																	s.handleCodeScanningGetAnalysisRequest(args, w, r)
+																	return
+																}
+																// Param: "alert_number"
+																// Match until one of "/"
+																idx := strings.IndexAny(elem, "/")
+																if idx > 0 {
+																	args["alert_number"] = elem[:idx]
+																	elem = elem[idx:]
+
+																	if len(elem) == 0 {
+																		s.handleCodeScanningGetAlertRequest(args, w, r)
+																		return
+																	}
+																	switch elem[0] {
+																	case '/': // Prefix: "/instances"
+																		if prefix := "/instances"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																			elem = elem[len(prefix):]
+																		} else {
+																			break
+																		}
+
+																		// Leaf: CodeScanningListAlertInstances
+																		s.handleCodeScanningListAlertInstancesRequest(args, w, r)
+																		return
+																	}
+																}
+															}
+														case 'n': // Prefix: "nalyses"
+															if prefix := "nalyses"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																elem = elem[len(prefix):]
+															} else {
+																break
+															}
+
+															if len(elem) == 0 {
+																s.handleCodeScanningListRecentAnalysesRequest(args, w, r)
+																return
+															}
+															switch elem[0] {
+															case '/': // Prefix: "/"
+																if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																	elem = elem[len(prefix):]
+																} else {
+																	break
+																}
+
+																// Param: "analysis_id"
+																// Leaf parameter
+																args["analysis_id"] = elem
+
+																// Leaf: CodeScanningGetAnalysis
+																s.handleCodeScanningGetAnalysisRequest(args, w, r)
+																return
+															}
+														case 's': // Prefix: "sarifs/"
+															if prefix := "sarifs/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																elem = elem[len(prefix):]
+															} else {
+																break
+															}
+
+															// Param: "sarif_id"
+															// Leaf parameter
+															args["sarif_id"] = elem
+
+															// Leaf: CodeScanningGetSarif
+															s.handleCodeScanningGetSarifRequest(args, w, r)
+															return
+														}
+													case 's': // Prefix: "sarifs/"
+														if prefix := "sarifs/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+															elem = elem[len(prefix):]
+														} else {
+															break
+														}
+
+														// Param: "sarif_id"
+														// Leaf parameter
+														args["sarif_id"] = elem
+
+														// Leaf: CodeScanningGetSarif
+														s.handleCodeScanningGetSarifRequest(args, w, r)
+														return
+													}
+												case 'l': // Prefix: "llaborators"
+													if prefix := "llaborators"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+														elem = elem[len(prefix):]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														s.handleReposListCollaboratorsRequest(args, w, r)
+														return
+													}
+													switch elem[0] {
+													case '/': // Prefix: "/"
+														if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+															elem = elem[len(prefix):]
+														} else {
+															break
+														}
+
+														// Param: "username"
+														// Match until one of "/"
+														idx := strings.IndexAny(elem, "/")
+														if idx > 0 {
+															args["username"] = elem[:idx]
+															elem = elem[idx:]
+
+															if len(elem) == 0 {
+																s.handleReposCheckCollaboratorRequest(args, w, r)
+																return
+															}
+															switch elem[0] {
+															case '/': // Prefix: "/permission"
+																if prefix := "/permission"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																	elem = elem[len(prefix):]
+																} else {
+																	break
+																}
+
+																// Leaf: ReposGetCollaboratorPermissionLevel
+																s.handleReposGetCollaboratorPermissionLevelRequest(args, w, r)
+																return
+															}
+														}
+													}
+												case 'm': // Prefix: "m"
+													if prefix := "m"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+														elem = elem[len(prefix):]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														s.handleReposCompareCommitsRequest(args, w, r)
+														return
+													}
+													switch elem[0] {
+													case 'm': // Prefix: "m"
+														if prefix := "m"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+															elem = elem[len(prefix):]
+														} else {
+															break
+														}
+
+														if len(elem) == 0 {
+															s.handleReactionsListForCommitCommentRequest(args, w, r)
+															return
+														}
+														switch elem[0] {
+														case 'e': // Prefix: "ents"
+															if prefix := "ents"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																elem = elem[len(prefix):]
+															} else {
+																break
+															}
+
+															if len(elem) == 0 {
+																s.handleReposListCommitCommentsForRepoRequest(args, w, r)
+																return
+															}
+															switch elem[0] {
+															case '/': // Prefix: "/"
+																if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																	elem = elem[len(prefix):]
+																} else {
+																	break
+																}
+
+																// Param: "comment_id"
+																// Match until one of "/"
+																idx := strings.IndexAny(elem, "/")
+																if idx > 0 {
+																	args["comment_id"] = elem[:idx]
+																	elem = elem[idx:]
+
+																	if len(elem) == 0 {
+																		s.handleReposGetCommitCommentRequest(args, w, r)
+																		return
+																	}
+																	switch elem[0] {
+																	case '/': // Prefix: "/reactions"
+																		if prefix := "/reactions"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																			elem = elem[len(prefix):]
+																		} else {
+																			break
+																		}
+
+																		// Leaf: ReactionsListForCommitComment
+																		s.handleReactionsListForCommitCommentRequest(args, w, r)
+																		return
+																	}
+																}
+															}
+														case 'i': // Prefix: "its"
+															if prefix := "its"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																elem = elem[len(prefix):]
+															} else {
+																break
+															}
+
+															if len(elem) == 0 {
+																s.handleReposListCommitsRequest(args, w, r)
+																return
+															}
+															switch elem[0] {
+															case '/': // Prefix: "/"
+																if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																	elem = elem[len(prefix):]
+																} else {
+																	break
+																}
+
+																if len(elem) == 0 {
+																	break
+																}
+																switch elem[0] {
+																case 'd': // Prefix: "de-scanning/alerts/"
+																	if prefix := "de-scanning/alerts/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																		elem = elem[len(prefix):]
+																	} else {
+																		break
+																	}
+
+																	// Param: "alert_number"
+																	// Leaf parameter
+																	args["alert_number"] = elem
+
+																	// Leaf: CodeScanningGetAlert
+																	s.handleCodeScanningGetAlertRequest(args, w, r)
+																	return
+																case 'e': // Prefix: "ents/"
+																	if prefix := "ents/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																		elem = elem[len(prefix):]
+																	} else {
+																		break
+																	}
+
+																	// Param: "comment_id"
+																	// Match until one of "/"
+																	idx := strings.IndexAny(elem, "/")
+																	if idx > 0 {
+																		args["comment_id"] = elem[:idx]
+																		elem = elem[idx:]
+
+																		if len(elem) == 0 {
+																			break
+																		}
+																		switch elem[0] {
+																		case '/': // Prefix: "/reactions"
+																			if prefix := "/reactions"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																				elem = elem[len(prefix):]
+																			} else {
+																				break
+																			}
+
+																			// Leaf: ReactionsListForCommitComment
+																			s.handleReactionsListForCommitCommentRequest(args, w, r)
+																			return
+																		}
+																	}
+																}
+																// Param: "ref"
+																// Match until one of "/"
+																idx := strings.IndexAny(elem, "/")
+																if idx > 0 {
+																	args["ref"] = elem[:idx]
+																	elem = elem[idx:]
+
+																	if len(elem) == 0 {
+																		s.handleReposGetCommitRequest(args, w, r)
+																		return
+																	}
+																	switch elem[0] {
+																	case '/': // Prefix: "/"
+																		if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																			elem = elem[len(prefix):]
+																		} else {
+																			break
+																		}
+
+																		if len(elem) == 0 {
+																			s.handleReposGetCombinedStatusForRefRequest(args, w, r)
+																			return
+																		}
+																		switch elem[0] {
+																		case 'b': // Prefix: "branches-where-head"
+																			if prefix := "branches-where-head"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																				elem = elem[len(prefix):]
+																			} else {
+																				break
+																			}
+
+																			// Leaf: ReposListBranchesForHeadCommit
+																			s.handleReposListBranchesForHeadCommitRequest(args, w, r)
+																			return
+																		case 'c': // Prefix: "c"
+																			if prefix := "c"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																				elem = elem[len(prefix):]
+																			} else {
+																				break
+																			}
+
+																			if len(elem) == 0 {
+																				s.handleReposListCommentsForCommitRequest(args, w, r)
+																				return
+																			}
+																			switch elem[0] {
+																			case 'h': // Prefix: "heck-"
+																				if prefix := "heck-"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																					elem = elem[len(prefix):]
+																				} else {
+																					break
+																				}
+
+																				if len(elem) == 0 {
+																					s.handleChecksListSuitesForRefRequest(args, w, r)
+																					return
+																				}
+																				switch elem[0] {
+																				case 'o': // Prefix: "omments"
+																					if prefix := "omments"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																						elem = elem[len(prefix):]
+																					} else {
+																						break
+																					}
+
+																					// Leaf: ReposListCommentsForCommit
+																					s.handleReposListCommentsForCommitRequest(args, w, r)
+																					return
+																				case 'r': // Prefix: "runs"
+																					if prefix := "runs"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																						elem = elem[len(prefix):]
+																					} else {
+																						break
+																					}
+
+																					if len(elem) == 0 {
+																						s.handleChecksListForRefRequest(args, w, r)
+																						return
+																					}
+																					switch elem[0] {
+																					case 's': // Prefix: "suites"
+																						if prefix := "suites"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																							elem = elem[len(prefix):]
+																						} else {
+																							break
+																						}
+
+																						// Leaf: ChecksListSuitesForRef
+																						s.handleChecksListSuitesForRefRequest(args, w, r)
+																						return
+																					}
+																				case 's': // Prefix: "s"
+																					if prefix := "s"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																						elem = elem[len(prefix):]
+																					} else {
+																						break
+																					}
+
+																					if len(elem) == 0 {
+																						s.handleReposGetCombinedStatusForRefRequest(args, w, r)
+																						return
+																					}
+																					switch elem[0] {
+																					case 't': // Prefix: "tatus"
+																						if prefix := "tatus"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																							elem = elem[len(prefix):]
+																						} else {
+																							break
+																						}
+
+																						// Leaf: ReposGetCombinedStatusForRef
+																						s.handleReposGetCombinedStatusForRefRequest(args, w, r)
+																						return
+																					case 'u': // Prefix: "uites"
+																						if prefix := "uites"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																							elem = elem[len(prefix):]
+																						} else {
+																							break
+																						}
+
+																						if len(elem) == 0 {
+																							s.handleChecksListSuitesForRefRequest(args, w, r)
+																							return
+																						}
+																						switch elem[0] {
+																						case 't': // Prefix: "tatus"
+																							if prefix := "tatus"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																								elem = elem[len(prefix):]
+																							} else {
+																								break
+																							}
+
+																							// Leaf: ReposGetCombinedStatusForRef
+																							s.handleReposGetCombinedStatusForRefRequest(args, w, r)
+																							return
+																						}
+																					}
+																				}
+																			case 'o': // Prefix: "omments"
+																				if prefix := "omments"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																					elem = elem[len(prefix):]
+																				} else {
+																					break
+																				}
+
+																				// Leaf: ReposListCommentsForCommit
+																				s.handleReposListCommentsForCommitRequest(args, w, r)
+																				return
+																			}
+																		case 'p': // Prefix: "pulls"
+																			if prefix := "pulls"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																				elem = elem[len(prefix):]
+																			} else {
+																				break
+																			}
+
+																			// Leaf: ReposListPullRequestsAssociatedWithCommit
+																			s.handleReposListPullRequestsAssociatedWithCommitRequest(args, w, r)
+																			return
+																		case 's': // Prefix: "status"
+																			if prefix := "status"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																				elem = elem[len(prefix):]
+																			} else {
+																				break
+																			}
+
+																			if len(elem) == 0 {
+																				s.handleReposGetCombinedStatusForRefRequest(args, w, r)
+																				return
+																			}
+																			switch elem[0] {
+																			case 'e': // Prefix: "es"
+																				if prefix := "es"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																					elem = elem[len(prefix):]
+																				} else {
+																					break
+																				}
+
+																				// Leaf: ReposListCommitStatusesForRef
+																				s.handleReposListCommitStatusesForRefRequest(args, w, r)
+																				return
+																			}
+																		}
+																	}
+																}
+															}
+														case 'p': // Prefix: "pare/"
+															if prefix := "pare/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																elem = elem[len(prefix):]
+															} else {
+																break
+															}
+
+															// Param: "basehead"
+															// Leaf parameter
+															args["basehead"] = elem
+
+															// Leaf: ReposCompareCommits
+															s.handleReposCompareCommitsRequest(args, w, r)
+															return
+														case 'u': // Prefix: "unity/profile"
+															if prefix := "unity/profile"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																elem = elem[len(prefix):]
+															} else {
+																break
+															}
+
+															// Leaf: ReposGetCommunityProfileMetrics
+															s.handleReposGetCommunityProfileMetricsRequest(args, w, r)
+															return
+														}
+													case 'p': // Prefix: "pare/"
+														if prefix := "pare/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+															elem = elem[len(prefix):]
+														} else {
+															break
+														}
+
+														// Param: "basehead"
+														// Leaf parameter
+														args["basehead"] = elem
+
+														// Leaf: ReposCompareCommits
+														s.handleReposCompareCommitsRequest(args, w, r)
+														return
+													}
+												case 'n': // Prefix: "ntributors"
+													if prefix := "ntributors"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+														elem = elem[len(prefix):]
+													} else {
+														break
+													}
+
+													// Leaf: ReposListContributors
+													s.handleReposListContributorsRequest(args, w, r)
+													return
+												}
+											}
+										case 'd': // Prefix: "deployments"
+											if prefix := "deployments"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+												elem = elem[len(prefix):]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												s.handleReposListDeploymentsRequest(args, w, r)
+												return
+											}
+											switch elem[0] {
+											case '/': // Prefix: "/"
+												if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+													elem = elem[len(prefix):]
+												} else {
+													break
+												}
+
+												// Param: "deployment_id"
+												// Match until one of "/"
+												idx := strings.IndexAny(elem, "/")
+												if idx > 0 {
+													args["deployment_id"] = elem[:idx]
+													elem = elem[idx:]
+
+													if len(elem) == 0 {
+														s.handleReposGetDeploymentRequest(args, w, r)
+														return
+													}
+													switch elem[0] {
+													case '/': // Prefix: "/statuses"
+														if prefix := "/statuses"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+															elem = elem[len(prefix):]
+														} else {
+															break
+														}
+
+														if len(elem) == 0 {
+															s.handleReposListDeploymentStatusesRequest(args, w, r)
+															return
+														}
+														switch elem[0] {
+														case '/': // Prefix: "/"
+															if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																elem = elem[len(prefix):]
+															} else {
+																break
+															}
+
+															// Param: "status_id"
+															// Leaf parameter
+															args["status_id"] = elem
+
+															// Leaf: ReposGetDeploymentStatus
+															s.handleReposGetDeploymentStatusRequest(args, w, r)
+															return
+														}
+													}
+												}
+											}
+										case 'e': // Prefix: "events"
+											if prefix := "events"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+												elem = elem[len(prefix):]
+											} else {
+												break
+											}
+
+											// Leaf: ActivityListRepoEvents
+											s.handleActivityListRepoEventsRequest(args, w, r)
+											return
+										case 'f': // Prefix: "forks"
+											if prefix := "forks"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+												elem = elem[len(prefix):]
+											} else {
+												break
+											}
+
+											// Leaf: ReposListForks
+											s.handleReposListForksRequest(args, w, r)
+											return
+										case 'g': // Prefix: "git/"
+											if prefix := "git/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+												elem = elem[len(prefix):]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												s.handleGitGetCommitRequest(args, w, r)
+												return
+											}
+											switch elem[0] {
+											case 'b': // Prefix: "blobs/"
+												if prefix := "blobs/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+													elem = elem[len(prefix):]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													break
+												}
+												switch elem[0] {
+												case 'c': // Prefix: "commits/"
+													if prefix := "commits/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+														elem = elem[len(prefix):]
+													} else {
+														break
+													}
+
+													// Param: "commit_sha"
+													// Leaf parameter
+													args["commit_sha"] = elem
+
+													// Leaf: GitGetCommit
+													s.handleGitGetCommitRequest(args, w, r)
+													return
+												}
+												// Param: "file_sha"
+												// Leaf parameter
+												args["file_sha"] = elem
+
+												// Leaf: GitGetBlob
+												s.handleGitGetBlobRequest(args, w, r)
+												return
+											case 'c': // Prefix: "commits/"
+												if prefix := "commits/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+													elem = elem[len(prefix):]
+												} else {
+													break
+												}
+
+												// Param: "commit_sha"
+												// Leaf parameter
+												args["commit_sha"] = elem
+
+												// Leaf: GitGetCommit
+												s.handleGitGetCommitRequest(args, w, r)
+												return
+											case 'm': // Prefix: "matching-refs/"
+												if prefix := "matching-refs/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+													elem = elem[len(prefix):]
+												} else {
+													break
+												}
+
+												// Param: "ref"
+												// Leaf parameter
+												args["ref"] = elem
+
+												// Leaf: GitListMatchingRefs
+												s.handleGitListMatchingRefsRequest(args, w, r)
+												return
+											case 'r': // Prefix: "ref/"
+												if prefix := "ref/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+													elem = elem[len(prefix):]
+												} else {
+													break
+												}
+
+												// Param: "ref"
+												// Leaf parameter
+												args["ref"] = elem
+
+												// Leaf: GitGetRef
+												s.handleGitGetRefRequest(args, w, r)
+												return
+											case 't': // Prefix: "t"
+												if prefix := "t"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+													elem = elem[len(prefix):]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													s.handleGitGetTreeRequest(args, w, r)
+													return
+												}
+												switch elem[0] {
+												case 'a': // Prefix: "ags/"
+													if prefix := "ags/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+														elem = elem[len(prefix):]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														break
+													}
+													switch elem[0] {
+													case 'r': // Prefix: "rees/"
+														if prefix := "rees/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+															elem = elem[len(prefix):]
+														} else {
+															break
+														}
+
+														// Param: "tree_sha"
+														// Leaf parameter
+														args["tree_sha"] = elem
+
+														// Leaf: GitGetTree
+														s.handleGitGetTreeRequest(args, w, r)
+														return
+													}
+													// Param: "tag_sha"
+													// Leaf parameter
+													args["tag_sha"] = elem
+
+													// Leaf: GitGetTag
+													s.handleGitGetTagRequest(args, w, r)
+													return
+												case 'r': // Prefix: "rees/"
+													if prefix := "rees/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+														elem = elem[len(prefix):]
+													} else {
+														break
+													}
+
+													// Param: "tree_sha"
+													// Leaf parameter
+													args["tree_sha"] = elem
+
+													// Leaf: GitGetTree
+													s.handleGitGetTreeRequest(args, w, r)
+													return
+												}
+											}
+										case 'h': // Prefix: "hooks"
+											if prefix := "hooks"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+												elem = elem[len(prefix):]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												s.handleReposListWebhooksRequest(args, w, r)
+												return
+											}
+											switch elem[0] {
+											case '/': // Prefix: "/"
+												if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+													elem = elem[len(prefix):]
+												} else {
+													break
+												}
+
+												// Param: "hook_id"
+												// Match until one of "/"
+												idx := strings.IndexAny(elem, "/")
+												if idx > 0 {
+													args["hook_id"] = elem[:idx]
+													elem = elem[idx:]
+
+													if len(elem) == 0 {
+														s.handleReposGetWebhookRequest(args, w, r)
+														return
+													}
+													switch elem[0] {
+													case '/': // Prefix: "/"
+														if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+															elem = elem[len(prefix):]
+														} else {
+															break
+														}
+
+														if len(elem) == 0 {
+															s.handleReposGetWebhookDeliveryRequest(args, w, r)
+															return
+														}
+														switch elem[0] {
+														case 'c': // Prefix: "config"
+															if prefix := "config"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																elem = elem[len(prefix):]
+															} else {
+																break
+															}
+
+															if len(elem) == 0 {
+																s.handleReposGetWebhookConfigForRepoRequest(args, w, r)
+																return
+															}
+															switch elem[0] {
+															case 'd': // Prefix: "deliveries/"
+																if prefix := "deliveries/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																	elem = elem[len(prefix):]
+																} else {
+																	break
+																}
+
+																// Param: "delivery_id"
+																// Leaf parameter
+																args["delivery_id"] = elem
+
+																// Leaf: ReposGetWebhookDelivery
+																s.handleReposGetWebhookDeliveryRequest(args, w, r)
+																return
+															}
+														case 'd': // Prefix: "deliveries"
+															if prefix := "deliveries"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																elem = elem[len(prefix):]
+															} else {
+																break
+															}
+
+															if len(elem) == 0 {
+																s.handleReposListWebhookDeliveriesRequest(args, w, r)
+																return
+															}
+															switch elem[0] {
+															case '/': // Prefix: "/"
+																if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																	elem = elem[len(prefix):]
+																} else {
+																	break
+																}
+
+																// Param: "delivery_id"
+																// Leaf parameter
+																args["delivery_id"] = elem
+
+																// Leaf: ReposGetWebhookDelivery
+																s.handleReposGetWebhookDeliveryRequest(args, w, r)
+																return
+															}
+														}
+													}
+												}
+											}
+										case 'i': // Prefix: "i"
+											if prefix := "i"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+												elem = elem[len(prefix):]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												s.handleMigrationsGetCommitAuthorsRequest(args, w, r)
+												return
+											}
+											switch elem[0] {
+											case 'm': // Prefix: "mport"
+												if prefix := "mport"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+													elem = elem[len(prefix):]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													s.handleMigrationsGetImportStatusRequest(args, w, r)
+													return
+												}
+												switch elem[0] {
+												case '/': // Prefix: "/"
+													if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+														elem = elem[len(prefix):]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														s.handleMigrationsGetLargeFilesRequest(args, w, r)
+														return
+													}
+													switch elem[0] {
+													case 'a': // Prefix: "authors"
+														if prefix := "authors"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+															elem = elem[len(prefix):]
+														} else {
+															break
+														}
+
+														if len(elem) == 0 {
+															s.handleMigrationsGetCommitAuthorsRequest(args, w, r)
+															return
+														}
+														switch elem[0] {
+														case 'l': // Prefix: "large_files"
+															if prefix := "large_files"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																elem = elem[len(prefix):]
+															} else {
+																break
+															}
+
+															// Leaf: MigrationsGetLargeFiles
+															s.handleMigrationsGetLargeFilesRequest(args, w, r)
+															return
+														}
+													case 'l': // Prefix: "large_files"
+														if prefix := "large_files"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+															elem = elem[len(prefix):]
+														} else {
+															break
+														}
+
+														// Leaf: MigrationsGetLargeFiles
+														s.handleMigrationsGetLargeFilesRequest(args, w, r)
+														return
+													}
+												}
+											case 'n': // Prefix: "nvitations"
+												if prefix := "nvitations"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+													elem = elem[len(prefix):]
+												} else {
+													break
+												}
+
+												// Leaf: ReposListInvitations
+												s.handleReposListInvitationsRequest(args, w, r)
+												return
+											case 's': // Prefix: "ssues"
+												if prefix := "ssues"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+													elem = elem[len(prefix):]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													s.handleIssuesListForRepoRequest(args, w, r)
+													return
+												}
+												switch elem[0] {
+												case '/': // Prefix: "/"
+													if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+														elem = elem[len(prefix):]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														break
+													}
+													switch elem[0] {
+													case 'c': // Prefix: "comments"
+														if prefix := "comments"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+															elem = elem[len(prefix):]
+														} else {
+															break
+														}
+
+														if len(elem) == 0 {
+															s.handleIssuesListCommentsForRepoRequest(args, w, r)
+															return
+														}
+														switch elem[0] {
+														case '/': // Prefix: "/"
+															if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																elem = elem[len(prefix):]
+															} else {
+																break
+															}
+
+															// Param: "comment_id"
+															// Match until one of "/"
+															idx := strings.IndexAny(elem, "/")
+															if idx > 0 {
+																args["comment_id"] = elem[:idx]
+																elem = elem[idx:]
+
+																if len(elem) == 0 {
+																	s.handleIssuesGetCommentRequest(args, w, r)
+																	return
+																}
+																switch elem[0] {
+																case '/': // Prefix: "/reactions"
+																	if prefix := "/reactions"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																		elem = elem[len(prefix):]
+																	} else {
+																		break
+																	}
+
+																	// Leaf: ReactionsListForIssueComment
+																	s.handleReactionsListForIssueCommentRequest(args, w, r)
+																	return
+																}
+															}
+														}
+													case 'e': // Prefix: "events"
+														if prefix := "events"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+															elem = elem[len(prefix):]
+														} else {
+															break
+														}
+
+														if len(elem) == 0 {
+															s.handleIssuesListEventsForRepoRequest(args, w, r)
+															return
+														}
+														switch elem[0] {
+														case '/': // Prefix: "/"
+															if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																elem = elem[len(prefix):]
+															} else {
+																break
+															}
+
+															// Param: "event_id"
+															// Leaf parameter
+															args["event_id"] = elem
+
+															// Leaf: IssuesGetEvent
+															s.handleIssuesGetEventRequest(args, w, r)
+															return
+														}
+													}
+													// Param: "issue_number"
+													// Match until one of "/"
+													idx := strings.IndexAny(elem, "/")
+													if idx > 0 {
+														args["issue_number"] = elem[:idx]
+														elem = elem[idx:]
+
+														if len(elem) == 0 {
+															s.handleIssuesGetRequest(args, w, r)
+															return
+														}
+														switch elem[0] {
+														case '/': // Prefix: "/"
+															if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																elem = elem[len(prefix):]
+															} else {
+																break
+															}
+
+															if len(elem) == 0 {
+																s.handleIssuesListLabelsOnIssueRequest(args, w, r)
+																return
+															}
+															switch elem[0] {
+															case 'c': // Prefix: "comments"
+																if prefix := "comments"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																	elem = elem[len(prefix):]
+																} else {
+																	break
+																}
+
+																if len(elem) == 0 {
+																	s.handleIssuesListCommentsRequest(args, w, r)
+																	return
+																}
+																switch elem[0] {
+																case 'l': // Prefix: "labels"
+																	if prefix := "labels"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																		elem = elem[len(prefix):]
+																	} else {
+																		break
+																	}
+
+																	// Leaf: IssuesListLabelsOnIssue
+																	s.handleIssuesListLabelsOnIssueRequest(args, w, r)
+																	return
+																}
+															case 'l': // Prefix: "labels"
+																if prefix := "labels"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																	elem = elem[len(prefix):]
+																} else {
+																	break
+																}
+
+																// Leaf: IssuesListLabelsOnIssue
+																s.handleIssuesListLabelsOnIssueRequest(args, w, r)
+																return
+															case 'r': // Prefix: "reactions"
+																if prefix := "reactions"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																	elem = elem[len(prefix):]
+																} else {
+																	break
+																}
+
+																// Leaf: ReactionsListForIssue
+																s.handleReactionsListForIssueRequest(args, w, r)
+																return
+															}
+														}
+													}
+												case 'm': // Prefix: "mport/authors"
+													if prefix := "mport/authors"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+														elem = elem[len(prefix):]
+													} else {
+														break
+													}
+
+													// Leaf: MigrationsGetCommitAuthors
+													s.handleMigrationsGetCommitAuthorsRequest(args, w, r)
+													return
+												}
+											}
+										case 'k': // Prefix: "keys"
+											if prefix := "keys"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+												elem = elem[len(prefix):]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												s.handleReposListDeployKeysRequest(args, w, r)
+												return
+											}
+											switch elem[0] {
+											case '/': // Prefix: "/"
+												if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+													elem = elem[len(prefix):]
+												} else {
+													break
+												}
+
+												// Param: "key_id"
+												// Leaf parameter
+												args["key_id"] = elem
+
+												// Leaf: ReposGetDeployKey
+												s.handleReposGetDeployKeyRequest(args, w, r)
+												return
+											}
+										case 'l': // Prefix: "l"
+											if prefix := "l"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+												elem = elem[len(prefix):]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												s.handleLicensesGetForRepoRequest(args, w, r)
+												return
+											}
+											switch elem[0] {
+											case 'a': // Prefix: "a"
+												if prefix := "a"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+													elem = elem[len(prefix):]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													s.handleReposListLanguagesRequest(args, w, r)
+													return
+												}
+												switch elem[0] {
+												case 'b': // Prefix: "bels"
+													if prefix := "bels"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+														elem = elem[len(prefix):]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														s.handleIssuesListLabelsForRepoRequest(args, w, r)
+														return
+													}
+													switch elem[0] {
+													case '/': // Prefix: "/"
+														if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+															elem = elem[len(prefix):]
+														} else {
+															break
+														}
+
+														// Param: "name"
+														// Leaf parameter
+														args["name"] = elem
+
+														// Leaf: IssuesGetLabel
+														s.handleIssuesGetLabelRequest(args, w, r)
+														return
+													case 'i': // Prefix: "icense"
+														if prefix := "icense"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+															elem = elem[len(prefix):]
+														} else {
+															break
+														}
+
+														// Leaf: LicensesGetForRepo
+														s.handleLicensesGetForRepoRequest(args, w, r)
+														return
+													case 'n': // Prefix: "nguages"
+														if prefix := "nguages"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+															elem = elem[len(prefix):]
+														} else {
+															break
+														}
+
+														// Leaf: ReposListLanguages
+														s.handleReposListLanguagesRequest(args, w, r)
+														return
+													}
+												case 'n': // Prefix: "nguages"
+													if prefix := "nguages"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+														elem = elem[len(prefix):]
+													} else {
+														break
+													}
+
+													// Leaf: ReposListLanguages
+													s.handleReposListLanguagesRequest(args, w, r)
+													return
+												}
+											case 'i': // Prefix: "icense"
+												if prefix := "icense"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+													elem = elem[len(prefix):]
+												} else {
+													break
+												}
+
+												// Leaf: LicensesGetForRepo
+												s.handleLicensesGetForRepoRequest(args, w, r)
+												return
+											}
+										case 'm': // Prefix: "milestones"
+											if prefix := "milestones"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+												elem = elem[len(prefix):]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												s.handleIssuesListMilestonesRequest(args, w, r)
+												return
+											}
+											switch elem[0] {
+											case '/': // Prefix: "/"
+												if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+													elem = elem[len(prefix):]
+												} else {
+													break
+												}
+
+												// Param: "milestone_number"
+												// Match until one of "/"
+												idx := strings.IndexAny(elem, "/")
+												if idx > 0 {
+													args["milestone_number"] = elem[:idx]
+													elem = elem[idx:]
+
+													if len(elem) == 0 {
+														s.handleIssuesGetMilestoneRequest(args, w, r)
+														return
+													}
+													switch elem[0] {
+													case '/': // Prefix: "/labels"
+														if prefix := "/labels"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+															elem = elem[len(prefix):]
+														} else {
+															break
+														}
+
+														// Leaf: IssuesListLabelsForMilestone
+														s.handleIssuesListLabelsForMilestoneRequest(args, w, r)
+														return
+													}
+												}
+											}
+										case 'n': // Prefix: "notifications"
+											if prefix := "notifications"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+												elem = elem[len(prefix):]
+											} else {
+												break
+											}
+
+											// Leaf: ActivityListRepoNotificationsForAuthenticatedUser
+											s.handleActivityListRepoNotificationsForAuthenticatedUserRequest(args, w, r)
+											return
+										case 'p': // Prefix: "p"
+											if prefix := "p"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+												elem = elem[len(prefix):]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												s.handlePullsCheckIfMergedRequest(args, w, r)
+												return
+											}
+											switch elem[0] {
+											case 'a': // Prefix: "ages"
+												if prefix := "ages"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+													elem = elem[len(prefix):]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													s.handleReposGetPagesRequest(args, w, r)
+													return
+												}
+												switch elem[0] {
+												case '/': // Prefix: "/"
+													if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+														elem = elem[len(prefix):]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														s.handleReposGetPagesHealthCheckRequest(args, w, r)
+														return
+													}
+													switch elem[0] {
+													case 'b': // Prefix: "builds"
+														if prefix := "builds"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+															elem = elem[len(prefix):]
+														} else {
+															break
+														}
+
+														if len(elem) == 0 {
+															s.handleReposListPagesBuildsRequest(args, w, r)
+															return
+														}
+														switch elem[0] {
+														case '/': // Prefix: "/"
+															if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																elem = elem[len(prefix):]
+															} else {
+																break
+															}
+
+															if len(elem) == 0 {
+																s.handleReposGetPagesBuildRequest(args, w, r)
+																return
+															}
+															switch elem[0] {
+															case 'h': // Prefix: "health"
+																if prefix := "health"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																	elem = elem[len(prefix):]
+																} else {
+																	break
+																}
+
+																// Leaf: ReposGetPagesHealthCheck
+																s.handleReposGetPagesHealthCheckRequest(args, w, r)
+																return
+															case 'l': // Prefix: "latest"
+																if prefix := "latest"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																	elem = elem[len(prefix):]
+																} else {
+																	break
+																}
+
+																// Param: "build_id"
+																// Leaf parameter
+																args["build_id"] = elem
+
+																// Leaf: ReposGetPagesBuild
+																s.handleReposGetPagesBuildRequest(args, w, r)
+																return
+															}
+															// Param: "build_id"
+															// Leaf parameter
+															args["build_id"] = elem
+
+															// Leaf: ReposGetPagesBuild
+															s.handleReposGetPagesBuildRequest(args, w, r)
+															return
+														}
+													case 'h': // Prefix: "health"
+														if prefix := "health"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+															elem = elem[len(prefix):]
+														} else {
+															break
+														}
+
+														// Leaf: ReposGetPagesHealthCheck
+														s.handleReposGetPagesHealthCheckRequest(args, w, r)
+														return
+													}
+												}
+											case 'r': // Prefix: "rojects"
+												if prefix := "rojects"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+													elem = elem[len(prefix):]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													s.handleProjectsListForRepoRequest(args, w, r)
+													return
+												}
+												switch elem[0] {
+												case 'u': // Prefix: "ulls/"
+													if prefix := "ulls/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+														elem = elem[len(prefix):]
+													} else {
+														break
+													}
+
+													// Param: "pull_number"
+													// Match until one of "/"
+													idx := strings.IndexAny(elem, "/")
+													if idx > 0 {
+														args["pull_number"] = elem[:idx]
+														elem = elem[idx:]
+
+														if len(elem) == 0 {
+															break
+														}
+														switch elem[0] {
+														case '/': // Prefix: "/merge"
+															if prefix := "/merge"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																elem = elem[len(prefix):]
+															} else {
+																break
+															}
+
+															// Leaf: PullsCheckIfMerged
+															s.handlePullsCheckIfMergedRequest(args, w, r)
+															return
+														}
+													}
+												}
+											case 'u': // Prefix: "ulls"
+												if prefix := "ulls"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+													elem = elem[len(prefix):]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													s.handlePullsListRequest(args, w, r)
+													return
+												}
+												switch elem[0] {
+												case '/': // Prefix: "/"
+													if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+														elem = elem[len(prefix):]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														break
+													}
+													switch elem[0] {
+													case 'c': // Prefix: "comments"
+														if prefix := "comments"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+															elem = elem[len(prefix):]
+														} else {
+															break
+														}
+
+														if len(elem) == 0 {
+															s.handlePullsListReviewCommentsForRepoRequest(args, w, r)
+															return
+														}
+														switch elem[0] {
+														case '/': // Prefix: "/"
+															if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																elem = elem[len(prefix):]
+															} else {
+																break
+															}
+
+															// Param: "comment_id"
+															// Match until one of "/"
+															idx := strings.IndexAny(elem, "/")
+															if idx > 0 {
+																args["comment_id"] = elem[:idx]
+																elem = elem[idx:]
+
+																if len(elem) == 0 {
+																	s.handlePullsGetReviewCommentRequest(args, w, r)
+																	return
+																}
+																switch elem[0] {
+																case '/': // Prefix: "/reactions"
+																	if prefix := "/reactions"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																		elem = elem[len(prefix):]
+																	} else {
+																		break
+																	}
+
+																	// Leaf: ReactionsListForPullRequestReviewComment
+																	s.handleReactionsListForPullRequestReviewCommentRequest(args, w, r)
+																	return
+																}
+															}
+														}
+													}
+													// Param: "pull_number"
+													// Match until one of "/"
+													idx := strings.IndexAny(elem, "/")
+													if idx > 0 {
+														args["pull_number"] = elem[:idx]
+														elem = elem[idx:]
+
+														if len(elem) == 0 {
+															s.handlePullsGetRequest(args, w, r)
+															return
+														}
+														switch elem[0] {
+														case '/': // Prefix: "/"
+															if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																elem = elem[len(prefix):]
+															} else {
+																break
+															}
+
+															if len(elem) == 0 {
+																s.handlePullsGetReviewRequest(args, w, r)
+																return
+															}
+															switch elem[0] {
+															case 'c': // Prefix: "comm"
+																if prefix := "comm"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																	elem = elem[len(prefix):]
+																} else {
+																	break
+																}
+
+																if len(elem) == 0 {
+																	s.handlePullsListReviewCommentsRequest(args, w, r)
+																	return
+																}
+																switch elem[0] {
+																case 'e': // Prefix: "ents"
+																	if prefix := "ents"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																		elem = elem[len(prefix):]
+																	} else {
+																		break
+																	}
+
+																	// Leaf: PullsListReviewComments
+																	s.handlePullsListReviewCommentsRequest(args, w, r)
+																	return
+																case 'i': // Prefix: "its"
+																	if prefix := "its"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																		elem = elem[len(prefix):]
+																	} else {
+																		break
+																	}
+
+																	if len(elem) == 0 {
+																		s.handlePullsListCommitsRequest(args, w, r)
+																		return
+																	}
+																	switch elem[0] {
+																	case 'e': // Prefix: "ents"
+																		if prefix := "ents"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																			elem = elem[len(prefix):]
+																		} else {
+																			break
+																		}
+
+																		// Leaf: PullsListReviewComments
+																		s.handlePullsListReviewCommentsRequest(args, w, r)
+																		return
+																	}
+																}
+															case 'f': // Prefix: "files"
+																if prefix := "files"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																	elem = elem[len(prefix):]
+																} else {
+																	break
+																}
+
+																// Leaf: PullsListFiles
+																s.handlePullsListFilesRequest(args, w, r)
+																return
+															case 'm': // Prefix: "merge"
+																if prefix := "merge"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																	elem = elem[len(prefix):]
+																} else {
+																	break
+																}
+
+																if len(elem) == 0 {
+																	s.handlePullsCheckIfMergedRequest(args, w, r)
+																	return
+																}
+																switch elem[0] {
+																case 'r': // Prefix: "reviews/"
+																	if prefix := "reviews/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																		elem = elem[len(prefix):]
+																	} else {
+																		break
+																	}
+
+																	// Param: "review_id"
+																	// Leaf parameter
+																	args["review_id"] = elem
+
+																	// Leaf: PullsGetReview
+																	s.handlePullsGetReviewRequest(args, w, r)
+																	return
+																}
+															case 'r': // Prefix: "re"
+																if prefix := "re"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																	elem = elem[len(prefix):]
+																} else {
+																	break
+																}
+
+																if len(elem) == 0 {
+																	s.handlePullsListRequestedReviewersRequest(args, w, r)
+																	return
+																}
+																switch elem[0] {
+																case 'q': // Prefix: "quested_reviewers"
+																	if prefix := "quested_reviewers"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																		elem = elem[len(prefix):]
+																	} else {
+																		break
+																	}
+
+																	// Leaf: PullsListRequestedReviewers
+																	s.handlePullsListRequestedReviewersRequest(args, w, r)
+																	return
+																case 'v': // Prefix: "views"
+																	if prefix := "views"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																		elem = elem[len(prefix):]
+																	} else {
+																		break
+																	}
+
+																	if len(elem) == 0 {
+																		s.handlePullsListReviewsRequest(args, w, r)
+																		return
+																	}
+																	switch elem[0] {
+																	case '/': // Prefix: "/"
+																		if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																			elem = elem[len(prefix):]
+																		} else {
+																			break
+																		}
+
+																		if len(elem) == 0 {
+																			break
+																		}
+																		switch elem[0] {
+																		case 'q': // Prefix: "quested_reviewers"
+																			if prefix := "quested_reviewers"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																				elem = elem[len(prefix):]
+																			} else {
+																				break
+																			}
+
+																			// Leaf: PullsListRequestedReviewers
+																			s.handlePullsListRequestedReviewersRequest(args, w, r)
+																			return
+																		}
+																		// Param: "review_id"
+																		// Match until one of "/"
+																		idx := strings.IndexAny(elem, "/")
+																		if idx > 0 {
+																			args["review_id"] = elem[:idx]
+																			elem = elem[idx:]
+
+																			if len(elem) == 0 {
+																				s.handlePullsGetReviewRequest(args, w, r)
+																				return
+																			}
+																			switch elem[0] {
+																			case '/': // Prefix: "/comments"
+																				if prefix := "/comments"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																					elem = elem[len(prefix):]
+																				} else {
+																					break
+																				}
+
+																				// Leaf: PullsListCommentsForReview
+																				s.handlePullsListCommentsForReviewRequest(args, w, r)
+																				return
+																			}
+																		}
+																	}
+																}
+															}
+														}
+													}
+												}
+											}
+										case 'r': // Prefix: "re"
+											if prefix := "re"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+												elem = elem[len(prefix):]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												s.handleReposGetReadmeRequest(args, w, r)
+												return
+											}
+											switch elem[0] {
+											case 'a': // Prefix: "adme"
+												if prefix := "adme"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+													elem = elem[len(prefix):]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													s.handleReposGetReadmeRequest(args, w, r)
+													return
+												}
+												switch elem[0] {
+												case '/': // Prefix: "/"
+													if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+														elem = elem[len(prefix):]
+													} else {
+														break
+													}
+
+													// Param: "dir"
+													// Leaf parameter
+													args["dir"] = elem
+
+													// Leaf: ReposGetReadmeInDirectory
+													s.handleReposGetReadmeInDirectoryRequest(args, w, r)
+													return
+												}
+											case 'l': // Prefix: "leases"
+												if prefix := "leases"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+													elem = elem[len(prefix):]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													s.handleReposListReleasesRequest(args, w, r)
+													return
+												}
+												switch elem[0] {
+												case '/': // Prefix: "/"
+													if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+														elem = elem[len(prefix):]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														s.handleReposGetReleaseRequest(args, w, r)
+														return
+													}
+													switch elem[0] {
+													case 'a': // Prefix: "assets/"
+														if prefix := "assets/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+															elem = elem[len(prefix):]
+														} else {
+															break
+														}
+
+														// Param: "asset_id"
+														// Leaf parameter
+														args["asset_id"] = elem
+
+														// Leaf: ReposGetReleaseAsset
+														s.handleReposGetReleaseAssetRequest(args, w, r)
+														return
+													case 'l': // Prefix: "latest"
+														if prefix := "latest"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+															elem = elem[len(prefix):]
+														} else {
+															break
+														}
+
+														if len(elem) == 0 {
+															s.handleReposGetLatestReleaseRequest(args, w, r)
+															return
+														}
+														switch elem[0] {
+														case 'a': // Prefix: "adme"
+															if prefix := "adme"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																elem = elem[len(prefix):]
+															} else {
+																break
+															}
+
+															// Leaf: ReposGetReadme
+															s.handleReposGetReadmeRequest(args, w, r)
+															return
+														}
+														// Param: "release_id"
+														// Leaf parameter
+														args["release_id"] = elem
+
+														// Leaf: ReposGetRelease
+														s.handleReposGetReleaseRequest(args, w, r)
+														return
+													case 't': // Prefix: "tags/"
+														if prefix := "tags/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+															elem = elem[len(prefix):]
+														} else {
+															break
+														}
+
+														// Param: "tag"
+														// Leaf parameter
+														args["tag"] = elem
+
+														// Leaf: ReposGetReleaseByTag
+														s.handleReposGetReleaseByTagRequest(args, w, r)
+														return
+													}
+													// Param: "release_id"
+													// Match until one of "/"
+													idx := strings.IndexAny(elem, "/")
+													if idx > 0 {
+														args["release_id"] = elem[:idx]
+														elem = elem[idx:]
+
+														if len(elem) == 0 {
+															s.handleReposGetReleaseRequest(args, w, r)
+															return
+														}
+														switch elem[0] {
+														case '/': // Prefix: "/assets"
+															if prefix := "/assets"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																elem = elem[len(prefix):]
+															} else {
+																break
+															}
+
+															// Leaf: ReposListReleaseAssets
+															s.handleReposListReleaseAssetsRequest(args, w, r)
+															return
+														}
+													}
+												}
+											}
+										case 's': // Prefix: "s"
+											if prefix := "s"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+												elem = elem[len(prefix):]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												s.handleReposGetCodeFrequencyStatsRequest(args, w, r)
+												return
+											}
+											switch elem[0] {
+											case 'e': // Prefix: "ecret-scanning/alerts"
+												if prefix := "ecret-scanning/alerts"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+													elem = elem[len(prefix):]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													s.handleSecretScanningListAlertsForRepoRequest(args, w, r)
+													return
+												}
+												switch elem[0] {
+												case '/': // Prefix: "/"
+													if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+														elem = elem[len(prefix):]
+													} else {
+														break
+													}
+
+													// Param: "alert_number"
+													// Leaf parameter
+													args["alert_number"] = elem
+
+													// Leaf: SecretScanningGetAlert
+													s.handleSecretScanningGetAlertRequest(args, w, r)
+													return
+												}
+											case 't': // Prefix: "tats/"
+												if prefix := "tats/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+													elem = elem[len(prefix):]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													s.handleReposGetParticipationStatsRequest(args, w, r)
+													return
+												}
+												switch elem[0] {
+												case 'c': // Prefix: "co"
+													if prefix := "co"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+														elem = elem[len(prefix):]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														s.handleReposGetCommitActivityStatsRequest(args, w, r)
+														return
+													}
+													switch elem[0] {
+													case 'd': // Prefix: "de_frequency"
+														if prefix := "de_frequency"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+															elem = elem[len(prefix):]
+														} else {
+															break
+														}
+
+														if len(elem) == 0 {
+															s.handleReposGetCodeFrequencyStatsRequest(args, w, r)
+															return
+														}
+														switch elem[0] {
+														case 'm': // Prefix: "mmit_activity"
+															if prefix := "mmit_activity"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																elem = elem[len(prefix):]
+															} else {
+																break
+															}
+
+															// Leaf: ReposGetCommitActivityStats
+															s.handleReposGetCommitActivityStatsRequest(args, w, r)
+															return
+														}
+													case 'm': // Prefix: "mmit_activity"
+														if prefix := "mmit_activity"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+															elem = elem[len(prefix):]
+														} else {
+															break
+														}
+
+														// Leaf: ReposGetCommitActivityStats
+														s.handleReposGetCommitActivityStatsRequest(args, w, r)
+														return
+													case 'n': // Prefix: "ntributors"
+														if prefix := "ntributors"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+															elem = elem[len(prefix):]
+														} else {
+															break
+														}
+
+														// Leaf: ReposGetContributorsStats
+														s.handleReposGetContributorsStatsRequest(args, w, r)
+														return
+													case 'p': // Prefix: "participation"
+														if prefix := "participation"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+															elem = elem[len(prefix):]
+														} else {
+															break
+														}
+
+														// Leaf: ReposGetParticipationStats
+														s.handleReposGetParticipationStatsRequest(args, w, r)
+														return
+													}
+												case 'p': // Prefix: "p"
+													if prefix := "p"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+														elem = elem[len(prefix):]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														s.handleReposGetPunchCardStatsRequest(args, w, r)
+														return
+													}
+													switch elem[0] {
+													case 'a': // Prefix: "articipation"
+														if prefix := "articipation"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+															elem = elem[len(prefix):]
+														} else {
+															break
+														}
+
+														if len(elem) == 0 {
+															s.handleReposGetParticipationStatsRequest(args, w, r)
+															return
+														}
+														switch elem[0] {
+														case 'u': // Prefix: "unch_card"
+															if prefix := "unch_card"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																elem = elem[len(prefix):]
+															} else {
+																break
+															}
+
+															// Leaf: ReposGetPunchCardStats
+															s.handleReposGetPunchCardStatsRequest(args, w, r)
+															return
+														}
+													case 'u': // Prefix: "unch_card"
+														if prefix := "unch_card"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+															elem = elem[len(prefix):]
+														} else {
+															break
+														}
+
+														// Leaf: ReposGetPunchCardStats
+														s.handleReposGetPunchCardStatsRequest(args, w, r)
+														return
+													}
+												}
+											case 'u': // Prefix: "ubscri"
+												if prefix := "ubscri"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+													elem = elem[len(prefix):]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													s.handleActivityListWatchersForRepoRequest(args, w, r)
+													return
+												}
+												switch elem[0] {
+												case 'b': // Prefix: "bers"
+													if prefix := "bers"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+														elem = elem[len(prefix):]
+													} else {
+														break
+													}
+
+													// Leaf: ActivityListWatchersForRepo
+													s.handleActivityListWatchersForRepoRequest(args, w, r)
+													return
+												case 'p': // Prefix: "ption"
+													if prefix := "ption"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+														elem = elem[len(prefix):]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														s.handleActivityGetRepoSubscriptionRequest(args, w, r)
+														return
+													}
+													switch elem[0] {
+													case 'b': // Prefix: "bers"
+														if prefix := "bers"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+															elem = elem[len(prefix):]
+														} else {
+															break
+														}
+
+														// Leaf: ActivityListWatchersForRepo
+														s.handleActivityListWatchersForRepoRequest(args, w, r)
+														return
+													}
+												case 't': // Prefix: "tats/code_frequency"
+													if prefix := "tats/code_frequency"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+														elem = elem[len(prefix):]
+													} else {
+														break
+													}
+
+													// Leaf: ReposGetCodeFrequencyStats
+													s.handleReposGetCodeFrequencyStatsRequest(args, w, r)
+													return
+												}
+											}
+										case 't': // Prefix: "t"
+											if prefix := "t"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+												elem = elem[len(prefix):]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												s.handleReposGetAllTopicsRequest(args, w, r)
+												return
+											}
+											switch elem[0] {
+											case 'a': // Prefix: "a"
+												if prefix := "a"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+													elem = elem[len(prefix):]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													s.handleReposListTagsRequest(args, w, r)
+													return
+												}
+												switch elem[0] {
+												case 'g': // Prefix: "gs"
+													if prefix := "gs"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+														elem = elem[len(prefix):]
+													} else {
+														break
+													}
+
+													// Leaf: ReposListTags
+													s.handleReposListTagsRequest(args, w, r)
+													return
+												case 'r': // Prefix: "rball/"
+													if prefix := "rball/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+														elem = elem[len(prefix):]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														break
+													}
+													switch elem[0] {
+													case 'g': // Prefix: "gs"
+														if prefix := "gs"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+															elem = elem[len(prefix):]
+														} else {
+															break
+														}
+
+														// Leaf: ReposListTags
+														s.handleReposListTagsRequest(args, w, r)
+														return
+													case 'o': // Prefix: "opics"
+														if prefix := "opics"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+															elem = elem[len(prefix):]
+														} else {
+															break
+														}
+
+														// Leaf: ReposGetAllTopics
+														s.handleReposGetAllTopicsRequest(args, w, r)
+														return
+													}
+													// Param: "ref"
+													// Leaf parameter
+													args["ref"] = elem
+
+													// Leaf: ReposDownloadTarballArchive
+													s.handleReposDownloadTarballArchiveRequest(args, w, r)
+													return
+												}
+											case 'e': // Prefix: "eams"
+												if prefix := "eams"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+													elem = elem[len(prefix):]
+												} else {
+													break
+												}
+
+												// Leaf: ReposListTeams
+												s.handleReposListTeamsRequest(args, w, r)
+												return
+											case 'o': // Prefix: "opics"
+												if prefix := "opics"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+													elem = elem[len(prefix):]
+												} else {
+													break
+												}
+
+												// Leaf: ReposGetAllTopics
+												s.handleReposGetAllTopicsRequest(args, w, r)
+												return
+											case 'r': // Prefix: "raffic/"
+												if prefix := "raffic/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+													elem = elem[len(prefix):]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													s.handleReposGetTopPathsRequest(args, w, r)
+													return
+												}
+												switch elem[0] {
+												case 'c': // Prefix: "clones"
+													if prefix := "clones"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+														elem = elem[len(prefix):]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														s.handleReposGetClonesRequest(args, w, r)
+														return
+													}
+													switch elem[0] {
+													case 'p': // Prefix: "popular/paths"
+														if prefix := "popular/paths"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+															elem = elem[len(prefix):]
+														} else {
+															break
+														}
+
+														// Leaf: ReposGetTopPaths
+														s.handleReposGetTopPathsRequest(args, w, r)
+														return
+													}
+												case 'p': // Prefix: "popular/"
+													if prefix := "popular/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+														elem = elem[len(prefix):]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														s.handleReposGetTopReferrersRequest(args, w, r)
+														return
+													}
+													switch elem[0] {
+													case 'p': // Prefix: "paths"
+														if prefix := "paths"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+															elem = elem[len(prefix):]
+														} else {
+															break
+														}
+
+														if len(elem) == 0 {
+															s.handleReposGetTopPathsRequest(args, w, r)
+															return
+														}
+														switch elem[0] {
+														case 'r': // Prefix: "referrers"
+															if prefix := "referrers"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																elem = elem[len(prefix):]
+															} else {
+																break
+															}
+
+															// Leaf: ReposGetTopReferrers
+															s.handleReposGetTopReferrersRequest(args, w, r)
+															return
+														}
+													case 'r': // Prefix: "referrers"
+														if prefix := "referrers"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+															elem = elem[len(prefix):]
+														} else {
+															break
+														}
+
+														// Leaf: ReposGetTopReferrers
+														s.handleReposGetTopReferrersRequest(args, w, r)
+														return
+													}
+												case 'v': // Prefix: "views"
+													if prefix := "views"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+														elem = elem[len(prefix):]
+													} else {
+														break
+													}
+
+													// Leaf: ReposGetViews
+													s.handleReposGetViewsRequest(args, w, r)
+													return
+												}
+											}
+										case 'v': // Prefix: "vulnerability-alerts"
+											if prefix := "vulnerability-alerts"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+												elem = elem[len(prefix):]
+											} else {
+												break
+											}
+
+											// Leaf: ReposCheckVulnerabilityAlerts
+											s.handleReposCheckVulnerabilityAlertsRequest(args, w, r)
+											return
+										case 'z': // Prefix: "zipball/"
+											if prefix := "zipball/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+												elem = elem[len(prefix):]
+											} else {
+												break
+											}
+
+											// Param: "ref"
+											// Leaf parameter
+											args["ref"] = elem
+
+											// Leaf: ReposDownloadZipballArchive
+											s.handleReposDownloadZipballArchiveRequest(args, w, r)
+											return
+										}
+									}
+								}
+							}
+						}
+					case 'a': // Prefix: "ate_limit"
+						if prefix := "ate_limit"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+							elem = elem[len(prefix):]
+						} else {
+							break
+						}
+
+						// Leaf: RateLimitGet
+						s.handleRateLimitGetRequest(args, w, r)
+						return
+					case 'i': // Prefix: "itories"
+						if prefix := "itories"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+							elem = elem[len(prefix):]
+						} else {
+							break
+						}
+
+						if len(elem) == 0 {
+							s.handleReposListPublicRequest(args, w, r)
+							return
+						}
+						switch elem[0] {
+						case '/': // Prefix: "/"
+							if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+								elem = elem[len(prefix):]
+							} else {
+								break
+							}
+
+							// Param: "repository_id"
+							// Match until one of "/"
+							idx := strings.IndexAny(elem, "/")
+							if idx > 0 {
+								args["repository_id"] = elem[:idx]
+								elem = elem[idx:]
+
+								if len(elem) == 0 {
+									break
+								}
+								switch elem[0] {
+								case '/': // Prefix: "/environments/"
+									if prefix := "/environments/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+										elem = elem[len(prefix):]
+									} else {
+										break
+									}
+
+									// Param: "environment_name"
+									// Match until one of "/"
+									idx := strings.IndexAny(elem, "/")
+									if idx > 0 {
+										args["environment_name"] = elem[:idx]
+										elem = elem[idx:]
+
+										if len(elem) == 0 {
+											break
+										}
+										switch elem[0] {
+										case '/': // Prefix: "/secrets"
+											if prefix := "/secrets"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+												elem = elem[len(prefix):]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												s.handleActionsListEnvironmentSecretsRequest(args, w, r)
+												return
+											}
+											switch elem[0] {
+											case '/': // Prefix: "/"
+												if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+													elem = elem[len(prefix):]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													s.handleActionsGetEnvironmentSecretRequest(args, w, r)
+													return
+												}
+												switch elem[0] {
+												case 'p': // Prefix: "public-key"
+													if prefix := "public-key"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+														elem = elem[len(prefix):]
+													} else {
+														break
+													}
+
+													// Param: "secret_name"
+													// Leaf parameter
+													args["secret_name"] = elem
+
+													// Leaf: ActionsGetEnvironmentSecret
+													s.handleActionsGetEnvironmentSecretRequest(args, w, r)
+													return
+												}
+												// Param: "secret_name"
+												// Leaf parameter
+												args["secret_name"] = elem
+
+												// Leaf: ActionsGetEnvironmentSecret
+												s.handleActionsGetEnvironmentSecretRequest(args, w, r)
+												return
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			case 's': // Prefix: "s"
+				if prefix := "s"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+					elem = elem[len(prefix):]
+				} else {
+					break
+				}
+
+				if len(elem) == 0 {
+					s.handleSearchCodeRequest(args, w, r)
+					return
+				}
+				switch elem[0] {
+				case 'c': // Prefix: "cim/v2/enterprises/"
+					if prefix := "cim/v2/enterprises/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+						elem = elem[len(prefix):]
+					} else {
+						break
+					}
+
+					if len(elem) == 0 {
+						break
+					}
+					switch elem[0] {
+					case 'e': // Prefix: "earch/code"
+						if prefix := "earch/code"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+							elem = elem[len(prefix):]
+						} else {
+							break
+						}
+
+						// Leaf: SearchCode
+						s.handleSearchCodeRequest(args, w, r)
+						return
+					}
+					// Param: "enterprise"
+					// Match until one of "/"
+					idx := strings.IndexAny(elem, "/")
+					if idx > 0 {
+						args["enterprise"] = elem[:idx]
+						elem = elem[idx:]
+
+						if len(elem) == 0 {
+							break
+						}
+						switch elem[0] {
+						case '/': // Prefix: "/"
+							if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+								elem = elem[len(prefix):]
+							} else {
+								break
+							}
+
+							if len(elem) == 0 {
+								s.handleEnterpriseAdminGetProvisioningInformationForEnterpriseUserRequest(args, w, r)
+								return
+							}
+							switch elem[0] {
+							case 'G': // Prefix: "Groups"
+								if prefix := "Groups"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+									elem = elem[len(prefix):]
+								} else {
+									break
+								}
+
+								if len(elem) == 0 {
+									s.handleEnterpriseAdminListProvisionedGroupsEnterpriseRequest(args, w, r)
+									return
+								}
+								switch elem[0] {
+								case '/': // Prefix: "/"
+									if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+										elem = elem[len(prefix):]
+									} else {
+										break
+									}
+
+									if len(elem) == 0 {
+										break
+									}
+									switch elem[0] {
+									case 'U': // Prefix: "Users/"
+										if prefix := "Users/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+											elem = elem[len(prefix):]
+										} else {
+											break
+										}
+
+										// Param: "scim_user_id"
+										// Leaf parameter
+										args["scim_user_id"] = elem
+
+										// Leaf: EnterpriseAdminGetProvisioningInformationForEnterpriseUser
+										s.handleEnterpriseAdminGetProvisioningInformationForEnterpriseUserRequest(args, w, r)
+										return
+									}
+									// Param: "scim_group_id"
+									// Leaf parameter
+									args["scim_group_id"] = elem
+
+									// Leaf: EnterpriseAdminGetProvisioningInformationForEnterpriseGroup
+									s.handleEnterpriseAdminGetProvisioningInformationForEnterpriseGroupRequest(args, w, r)
+									return
+								}
+							case 'U': // Prefix: "Users"
+								if prefix := "Users"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+									elem = elem[len(prefix):]
+								} else {
+									break
+								}
+
+								if len(elem) == 0 {
+									s.handleEnterpriseAdminListProvisionedIdentitiesEnterpriseRequest(args, w, r)
+									return
+								}
+								switch elem[0] {
+								case '/': // Prefix: "/"
+									if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+										elem = elem[len(prefix):]
+									} else {
+										break
+									}
+
+									// Param: "scim_user_id"
+									// Leaf parameter
+									args["scim_user_id"] = elem
+
+									// Leaf: EnterpriseAdminGetProvisioningInformationForEnterpriseUser
+									s.handleEnterpriseAdminGetProvisioningInformationForEnterpriseUserRequest(args, w, r)
+									return
+								}
+							}
+						}
+					}
+				case 'e': // Prefix: "earch/"
+					if prefix := "earch/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+						elem = elem[len(prefix):]
+					} else {
+						break
+					}
+
+					if len(elem) == 0 {
+						s.handleSearchIssuesAndPullRequestsRequest(args, w, r)
+						return
+					}
+					switch elem[0] {
+					case 'c': // Prefix: "co"
+						if prefix := "co"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+							elem = elem[len(prefix):]
+						} else {
+							break
+						}
+
+						if len(elem) == 0 {
+							s.handleSearchCommitsRequest(args, w, r)
+							return
+						}
+						switch elem[0] {
+						case 'd': // Prefix: "de"
+							if prefix := "de"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+								elem = elem[len(prefix):]
+							} else {
+								break
+							}
+
+							if len(elem) == 0 {
+								s.handleSearchCodeRequest(args, w, r)
+								return
+							}
+							switch elem[0] {
+							case 'm': // Prefix: "mmits"
+								if prefix := "mmits"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+									elem = elem[len(prefix):]
+								} else {
+									break
+								}
+
+								// Leaf: SearchCommits
+								s.handleSearchCommitsRequest(args, w, r)
+								return
+							}
+						case 'i': // Prefix: "issues"
+							if prefix := "issues"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+								elem = elem[len(prefix):]
+							} else {
+								break
+							}
+
+							// Leaf: SearchIssuesAndPullRequests
+							s.handleSearchIssuesAndPullRequestsRequest(args, w, r)
+							return
+						case 'm': // Prefix: "mmits"
+							if prefix := "mmits"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+								elem = elem[len(prefix):]
+							} else {
+								break
+							}
+
+							// Leaf: SearchCommits
+							s.handleSearchCommitsRequest(args, w, r)
+							return
+						}
+					case 'i': // Prefix: "issues"
+						if prefix := "issues"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+							elem = elem[len(prefix):]
+						} else {
+							break
+						}
+
+						// Leaf: SearchIssuesAndPullRequests
+						s.handleSearchIssuesAndPullRequestsRequest(args, w, r)
+						return
+					case 'l': // Prefix: "labels"
+						if prefix := "labels"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+							elem = elem[len(prefix):]
+						} else {
+							break
+						}
+
+						// Leaf: SearchLabels
+						s.handleSearchLabelsRequest(args, w, r)
+						return
+					case 'r': // Prefix: "repositories"
+						if prefix := "repositories"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+							elem = elem[len(prefix):]
+						} else {
+							break
+						}
+
+						// Leaf: SearchRepos
+						s.handleSearchReposRequest(args, w, r)
+						return
+					case 't': // Prefix: "topics"
+						if prefix := "topics"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+							elem = elem[len(prefix):]
+						} else {
+							break
+						}
+
+						// Leaf: SearchTopics
+						s.handleSearchTopicsRequest(args, w, r)
+						return
+					case 'u': // Prefix: "users"
+						if prefix := "users"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+							elem = elem[len(prefix):]
+						} else {
+							break
+						}
+
+						// Leaf: SearchUsers
+						s.handleSearchUsersRequest(args, w, r)
+						return
+					}
+				}
+			case 't': // Prefix: "teams/"
+				if prefix := "teams/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+					elem = elem[len(prefix):]
+				} else {
+					break
+				}
+
+				// Param: "team_id"
+				// Match until one of "/"
+				idx := strings.IndexAny(elem, "/")
+				if idx > 0 {
+					args["team_id"] = elem[:idx]
+					elem = elem[idx:]
+
+					if len(elem) == 0 {
+						s.handleTeamsGetLegacyRequest(args, w, r)
+						return
+					}
+					switch elem[0] {
+					case '/': // Prefix: "/"
+						if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+							elem = elem[len(prefix):]
+						} else {
+							break
+						}
+
+						if len(elem) == 0 {
+							s.handleTeamsCheckPermissionsForProjectLegacyRequest(args, w, r)
+							return
+						}
+						switch elem[0] {
+						case 'd': // Prefix: "discussions"
+							if prefix := "discussions"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+								elem = elem[len(prefix):]
+							} else {
+								break
+							}
+
+							if len(elem) == 0 {
+								s.handleTeamsListDiscussionsLegacyRequest(args, w, r)
+								return
+							}
+							switch elem[0] {
+							case '/': // Prefix: "/"
+								if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+									elem = elem[len(prefix):]
+								} else {
+									break
+								}
+
+								if len(elem) == 0 {
+									break
+								}
+								switch elem[0] {
+								case 'p': // Prefix: "projects/"
+									if prefix := "projects/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+										elem = elem[len(prefix):]
+									} else {
+										break
+									}
+
+									// Param: "project_id"
+									// Leaf parameter
+									args["project_id"] = elem
+
+									// Leaf: TeamsCheckPermissionsForProjectLegacy
+									s.handleTeamsCheckPermissionsForProjectLegacyRequest(args, w, r)
+									return
+								}
+								// Param: "discussion_number"
+								// Match until one of "/"
+								idx := strings.IndexAny(elem, "/")
+								if idx > 0 {
+									args["discussion_number"] = elem[:idx]
+									elem = elem[idx:]
+
+									if len(elem) == 0 {
+										s.handleTeamsGetDiscussionLegacyRequest(args, w, r)
+										return
+									}
+									switch elem[0] {
+									case '/': // Prefix: "/"
+										if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+											elem = elem[len(prefix):]
+										} else {
+											break
+										}
+
+										if len(elem) == 0 {
+											s.handleReactionsListForTeamDiscussionLegacyRequest(args, w, r)
+											return
+										}
+										switch elem[0] {
+										case 'c': // Prefix: "comments"
+											if prefix := "comments"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+												elem = elem[len(prefix):]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												s.handleTeamsListDiscussionCommentsLegacyRequest(args, w, r)
+												return
+											}
+											switch elem[0] {
+											case '/': // Prefix: "/"
+												if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+													elem = elem[len(prefix):]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													break
+												}
+												switch elem[0] {
+												case 'r': // Prefix: "reactions"
+													if prefix := "reactions"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+														elem = elem[len(prefix):]
+													} else {
+														break
+													}
+
+													// Leaf: ReactionsListForTeamDiscussionLegacy
+													s.handleReactionsListForTeamDiscussionLegacyRequest(args, w, r)
+													return
+												}
+												// Param: "comment_number"
+												// Match until one of "/"
+												idx := strings.IndexAny(elem, "/")
+												if idx > 0 {
+													args["comment_number"] = elem[:idx]
+													elem = elem[idx:]
+
+													if len(elem) == 0 {
+														s.handleTeamsGetDiscussionCommentLegacyRequest(args, w, r)
+														return
+													}
+													switch elem[0] {
+													case '/': // Prefix: "/reactions"
+														if prefix := "/reactions"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+															elem = elem[len(prefix):]
+														} else {
+															break
+														}
+
+														// Leaf: ReactionsListForTeamDiscussionCommentLegacy
+														s.handleReactionsListForTeamDiscussionCommentLegacyRequest(args, w, r)
+														return
+													}
+												}
+											}
+										case 'r': // Prefix: "reactions"
+											if prefix := "reactions"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+												elem = elem[len(prefix):]
+											} else {
+												break
+											}
+
+											// Leaf: ReactionsListForTeamDiscussionLegacy
+											s.handleReactionsListForTeamDiscussionLegacyRequest(args, w, r)
+											return
+										}
+									}
+								}
+							}
+						case 'i': // Prefix: "invitations"
+							if prefix := "invitations"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+								elem = elem[len(prefix):]
+							} else {
+								break
+							}
+
+							// Leaf: TeamsListPendingInvitationsLegacy
+							s.handleTeamsListPendingInvitationsLegacyRequest(args, w, r)
+							return
+						case 'm': // Prefix: "members"
+							if prefix := "members"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+								elem = elem[len(prefix):]
+							} else {
+								break
+							}
+
+							if len(elem) == 0 {
+								s.handleTeamsListMembersLegacyRequest(args, w, r)
+								return
+							}
+							switch elem[0] {
+							case '/': // Prefix: "/"
+								if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+									elem = elem[len(prefix):]
+								} else {
+									break
+								}
+
+								if len(elem) == 0 {
+									break
+								}
+								switch elem[0] {
+								case 'h': // Prefix: "hips/"
+									if prefix := "hips/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+										elem = elem[len(prefix):]
+									} else {
+										break
+									}
+
+									// Param: "username"
+									// Leaf parameter
+									args["username"] = elem
+
+									// Leaf: TeamsGetMembershipForUserLegacy
+									s.handleTeamsGetMembershipForUserLegacyRequest(args, w, r)
+									return
+								}
+								// Param: "username"
+								// Leaf parameter
+								args["username"] = elem
+
+								// Leaf: TeamsGetMemberLegacy
+								s.handleTeamsGetMemberLegacyRequest(args, w, r)
+								return
+							case 'h': // Prefix: "hips/"
+								if prefix := "hips/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+									elem = elem[len(prefix):]
+								} else {
+									break
+								}
+
+								// Param: "username"
+								// Leaf parameter
+								args["username"] = elem
+
+								// Leaf: TeamsGetMembershipForUserLegacy
+								s.handleTeamsGetMembershipForUserLegacyRequest(args, w, r)
+								return
+							}
+						case 'p': // Prefix: "projects"
+							if prefix := "projects"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+								elem = elem[len(prefix):]
+							} else {
+								break
+							}
+
+							if len(elem) == 0 {
+								s.handleTeamsListProjectsLegacyRequest(args, w, r)
+								return
+							}
+							switch elem[0] {
+							case '/': // Prefix: "/"
+								if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+									elem = elem[len(prefix):]
+								} else {
+									break
+								}
+
+								// Param: "project_id"
+								// Leaf parameter
+								args["project_id"] = elem
+
+								// Leaf: TeamsCheckPermissionsForProjectLegacy
+								s.handleTeamsCheckPermissionsForProjectLegacyRequest(args, w, r)
+								return
+							}
+						case 'r': // Prefix: "repos"
+							if prefix := "repos"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+								elem = elem[len(prefix):]
+							} else {
+								break
+							}
+
+							if len(elem) == 0 {
+								s.handleTeamsListReposLegacyRequest(args, w, r)
+								return
+							}
+							switch elem[0] {
+							case '/': // Prefix: "/"
+								if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+									elem = elem[len(prefix):]
+								} else {
+									break
+								}
+
+								// Param: "owner"
+								// Match until one of "/"
+								idx := strings.IndexAny(elem, "/")
+								if idx > 0 {
+									args["owner"] = elem[:idx]
+									elem = elem[idx:]
+
+									if len(elem) == 0 {
+										break
+									}
+									switch elem[0] {
+									case '/': // Prefix: "/"
+										if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+											elem = elem[len(prefix):]
+										} else {
+											break
+										}
+
+										// Param: "repo"
+										// Leaf parameter
+										args["repo"] = elem
+
+										// Leaf: TeamsCheckPermissionsForRepoLegacy
+										s.handleTeamsCheckPermissionsForRepoLegacyRequest(args, w, r)
+										return
+									}
+								}
+							}
+						case 't': // Prefix: "team"
+							if prefix := "team"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+								elem = elem[len(prefix):]
+							} else {
+								break
+							}
+
+							if len(elem) == 0 {
+								s.handleTeamsListIdpGroupsForLegacyRequest(args, w, r)
+								return
+							}
+							switch elem[0] {
+							case '-': // Prefix: "-sync/group-mappings"
+								if prefix := "-sync/group-mappings"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+									elem = elem[len(prefix):]
+								} else {
+									break
+								}
+
+								// Leaf: TeamsListIdpGroupsForLegacy
+								s.handleTeamsListIdpGroupsForLegacyRequest(args, w, r)
+								return
+							case 's': // Prefix: "s"
+								if prefix := "s"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+									elem = elem[len(prefix):]
+								} else {
+									break
+								}
+
+								if len(elem) == 0 {
+									s.handleTeamsListChildLegacyRequest(args, w, r)
+									return
+								}
+								switch elem[0] {
+								case '-': // Prefix: "-sync/group-mappings"
+									if prefix := "-sync/group-mappings"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+										elem = elem[len(prefix):]
+									} else {
+										break
+									}
+
+									// Leaf: TeamsListIdpGroupsForLegacy
+									s.handleTeamsListIdpGroupsForLegacyRequest(args, w, r)
+									return
+								}
+							}
+						}
+					}
+				}
+			case 'u': // Prefix: "user"
+				if prefix := "user"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+					elem = elem[len(prefix):]
+				} else {
+					break
+				}
+
+				if len(elem) == 0 {
+					s.handleUsersGetAuthenticatedRequest(args, w, r)
+					return
+				}
+				switch elem[0] {
+				case '/': // Prefix: "/"
+					if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+						elem = elem[len(prefix):]
+					} else {
+						break
+					}
+
+					if len(elem) == 0 {
+						s.handleAppsListInstallationReposForAuthenticatedUserRequest(args, w, r)
+						return
+					}
+					switch elem[0] {
+					case 'b': // Prefix: "blocks"
+						if prefix := "blocks"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+							elem = elem[len(prefix):]
+						} else {
+							break
+						}
+
+						if len(elem) == 0 {
+							s.handleUsersListBlockedByAuthenticatedRequest(args, w, r)
+							return
+						}
+						switch elem[0] {
+						case '/': // Prefix: "/"
+							if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+								elem = elem[len(prefix):]
+							} else {
+								break
+							}
+
+							// Param: "username"
+							// Leaf parameter
+							args["username"] = elem
+
+							// Leaf: UsersCheckBlocked
+							s.handleUsersCheckBlockedRequest(args, w, r)
+							return
+						}
+					case 'e': // Prefix: "emails"
+						if prefix := "emails"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+							elem = elem[len(prefix):]
+						} else {
+							break
+						}
+
+						// Leaf: UsersListEmailsForAuthenticated
+						s.handleUsersListEmailsForAuthenticatedRequest(args, w, r)
+						return
+					case 'f': // Prefix: "follow"
+						if prefix := "follow"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+							elem = elem[len(prefix):]
+						} else {
+							break
+						}
+
+						if len(elem) == 0 {
+							s.handleUsersListFollowersForAuthenticatedUserRequest(args, w, r)
+							return
+						}
+						switch elem[0] {
+						case 'e': // Prefix: "ers"
+							if prefix := "ers"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+								elem = elem[len(prefix):]
+							} else {
+								break
+							}
+
+							// Leaf: UsersListFollowersForAuthenticatedUser
+							s.handleUsersListFollowersForAuthenticatedUserRequest(args, w, r)
+							return
+						case 'i': // Prefix: "ing"
+							if prefix := "ing"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+								elem = elem[len(prefix):]
+							} else {
+								break
+							}
+
+							if len(elem) == 0 {
+								s.handleUsersListFollowedByAuthenticatedRequest(args, w, r)
+								return
+							}
+							switch elem[0] {
+							case '/': // Prefix: "/"
+								if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+									elem = elem[len(prefix):]
+								} else {
+									break
+								}
+
+								// Param: "username"
+								// Leaf parameter
+								args["username"] = elem
+
+								// Leaf: UsersCheckPersonIsFollowedByAuthenticated
+								s.handleUsersCheckPersonIsFollowedByAuthenticatedRequest(args, w, r)
+								return
+							case 'e': // Prefix: "ers"
+								if prefix := "ers"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+									elem = elem[len(prefix):]
+								} else {
+									break
+								}
+
+								// Leaf: UsersListFollowersForAuthenticatedUser
+								s.handleUsersListFollowersForAuthenticatedUserRequest(args, w, r)
+								return
+							}
+						}
+					case 'g': // Prefix: "gpg_keys"
+						if prefix := "gpg_keys"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+							elem = elem[len(prefix):]
+						} else {
+							break
+						}
+
+						if len(elem) == 0 {
+							s.handleUsersListGpgKeysForAuthenticatedRequest(args, w, r)
+							return
+						}
+						switch elem[0] {
+						case '/': // Prefix: "/"
+							if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+								elem = elem[len(prefix):]
+							} else {
+								break
+							}
+
+							// Param: "gpg_key_id"
+							// Leaf parameter
+							args["gpg_key_id"] = elem
+
+							// Leaf: UsersGetGpgKeyForAuthenticated
+							s.handleUsersGetGpgKeyForAuthenticatedRequest(args, w, r)
+							return
+						}
+					case 'i': // Prefix: "i"
+						if prefix := "i"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+							elem = elem[len(prefix):]
+						} else {
+							break
+						}
+
+						if len(elem) == 0 {
+							s.handleIssuesListForAuthenticatedUserRequest(args, w, r)
+							return
+						}
+						switch elem[0] {
+						case 'n': // Prefix: "nstallations/"
+							if prefix := "nstallations/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+								elem = elem[len(prefix):]
+							} else {
+								break
+							}
+
+							if len(elem) == 0 {
+								break
+							}
+							switch elem[0] {
+							case 's': // Prefix: "ssues"
+								if prefix := "ssues"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+									elem = elem[len(prefix):]
+								} else {
+									break
+								}
+
+								// Leaf: IssuesListForAuthenticatedUser
+								s.handleIssuesListForAuthenticatedUserRequest(args, w, r)
+								return
+							}
+							// Param: "installation_id"
+							// Match until one of "/"
+							idx := strings.IndexAny(elem, "/")
+							if idx > 0 {
+								args["installation_id"] = elem[:idx]
+								elem = elem[idx:]
+
+								if len(elem) == 0 {
+									break
+								}
+								switch elem[0] {
+								case '/': // Prefix: "/repositories"
+									if prefix := "/repositories"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+										elem = elem[len(prefix):]
+									} else {
+										break
+									}
+
+									// Leaf: AppsListInstallationReposForAuthenticatedUser
+									s.handleAppsListInstallationReposForAuthenticatedUserRequest(args, w, r)
+									return
+								}
+							}
+						case 's': // Prefix: "ssues"
+							if prefix := "ssues"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+								elem = elem[len(prefix):]
+							} else {
+								break
+							}
+
+							// Leaf: IssuesListForAuthenticatedUser
+							s.handleIssuesListForAuthenticatedUserRequest(args, w, r)
+							return
+						}
+					case 'k': // Prefix: "keys"
+						if prefix := "keys"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+							elem = elem[len(prefix):]
+						} else {
+							break
+						}
+
+						if len(elem) == 0 {
+							s.handleUsersListPublicSSHKeysForAuthenticatedRequest(args, w, r)
+							return
+						}
+						switch elem[0] {
+						case '/': // Prefix: "/"
+							if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+								elem = elem[len(prefix):]
+							} else {
+								break
+							}
+
+							// Param: "key_id"
+							// Leaf parameter
+							args["key_id"] = elem
+
+							// Leaf: UsersGetPublicSSHKeyForAuthenticated
+							s.handleUsersGetPublicSSHKeyForAuthenticatedRequest(args, w, r)
+							return
+						}
+					case 'm': // Prefix: "m"
+						if prefix := "m"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+							elem = elem[len(prefix):]
+						} else {
+							break
+						}
+
+						if len(elem) == 0 {
+							s.handleMigrationsGetArchiveForAuthenticatedUserRequest(args, w, r)
+							return
+						}
+						switch elem[0] {
+						case 'a': // Prefix: "arketplace_purchases"
+							if prefix := "arketplace_purchases"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+								elem = elem[len(prefix):]
+							} else {
+								break
+							}
+
+							if len(elem) == 0 {
+								s.handleAppsListSubscriptionsForAuthenticatedUserRequest(args, w, r)
+								return
+							}
+							switch elem[0] {
+							case '/': // Prefix: "/stubbed"
+								if prefix := "/stubbed"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+									elem = elem[len(prefix):]
+								} else {
+									break
+								}
+
+								// Leaf: AppsListSubscriptionsForAuthenticatedUserStubbed
+								s.handleAppsListSubscriptionsForAuthenticatedUserStubbedRequest(args, w, r)
+								return
+							case 'i': // Prefix: "igrations/"
+								if prefix := "igrations/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+									elem = elem[len(prefix):]
+								} else {
+									break
+								}
+
+								// Param: "migration_id"
+								// Match until one of "/"
+								idx := strings.IndexAny(elem, "/")
+								if idx > 0 {
+									args["migration_id"] = elem[:idx]
+									elem = elem[idx:]
+
+									if len(elem) == 0 {
+										break
+									}
+									switch elem[0] {
+									case '/': // Prefix: "/archive"
+										if prefix := "/archive"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+											elem = elem[len(prefix):]
+										} else {
+											break
+										}
+
+										// Leaf: MigrationsGetArchiveForAuthenticatedUser
+										s.handleMigrationsGetArchiveForAuthenticatedUserRequest(args, w, r)
+										return
+									}
+								}
+							}
+						case 'e': // Prefix: "emberships/orgs"
+							if prefix := "emberships/orgs"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+								elem = elem[len(prefix):]
+							} else {
+								break
+							}
+
+							if len(elem) == 0 {
+								s.handleOrgsListMembershipsForAuthenticatedUserRequest(args, w, r)
+								return
+							}
+							switch elem[0] {
+							case '/': // Prefix: "/"
+								if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+									elem = elem[len(prefix):]
+								} else {
+									break
+								}
+
+								// Param: "org"
+								// Leaf parameter
+								args["org"] = elem
+
+								// Leaf: OrgsGetMembershipForAuthenticatedUser
+								s.handleOrgsGetMembershipForAuthenticatedUserRequest(args, w, r)
+								return
+							}
+						case 'i': // Prefix: "igrations"
+							if prefix := "igrations"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+								elem = elem[len(prefix):]
+							} else {
+								break
+							}
+
+							if len(elem) == 0 {
+								s.handleMigrationsListForAuthenticatedUserRequest(args, w, r)
+								return
+							}
+							switch elem[0] {
+							case '/': // Prefix: "/"
+								if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+									elem = elem[len(prefix):]
+								} else {
+									break
+								}
+
+								// Param: "migration_id"
+								// Match until one of "/"
+								idx := strings.IndexAny(elem, "/")
+								if idx > 0 {
+									args["migration_id"] = elem[:idx]
+									elem = elem[idx:]
+
+									if len(elem) == 0 {
+										s.handleMigrationsGetStatusForAuthenticatedUserRequest(args, w, r)
+										return
+									}
+									switch elem[0] {
+									case '/': // Prefix: "/"
+										if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+											elem = elem[len(prefix):]
+										} else {
+											break
+										}
+
+										if len(elem) == 0 {
+											s.handleMigrationsListReposForUserRequest(args, w, r)
+											return
+										}
+										switch elem[0] {
+										case 'a': // Prefix: "archive"
+											if prefix := "archive"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+												elem = elem[len(prefix):]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												s.handleMigrationsGetArchiveForAuthenticatedUserRequest(args, w, r)
+												return
+											}
+											switch elem[0] {
+											case 'r': // Prefix: "repositories"
+												if prefix := "repositories"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+													elem = elem[len(prefix):]
+												} else {
+													break
+												}
+
+												// Leaf: MigrationsListReposForUser
+												s.handleMigrationsListReposForUserRequest(args, w, r)
+												return
+											}
+										case 'r': // Prefix: "repositories"
+											if prefix := "repositories"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+												elem = elem[len(prefix):]
+											} else {
+												break
+											}
+
+											// Leaf: MigrationsListReposForUser
+											s.handleMigrationsListReposForUserRequest(args, w, r)
+											return
+										}
+									}
+								}
+							}
+						}
+					case 'o': // Prefix: "orgs"
+						if prefix := "orgs"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+							elem = elem[len(prefix):]
+						} else {
+							break
+						}
+
+						// Leaf: OrgsListForAuthenticatedUser
+						s.handleOrgsListForAuthenticatedUserRequest(args, w, r)
+						return
+					case 'p': // Prefix: "p"
+						if prefix := "p"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+							elem = elem[len(prefix):]
+						} else {
+							break
+						}
+
+						if len(elem) == 0 {
+							s.handleUsersListPublicEmailsForAuthenticatedRequest(args, w, r)
+							return
+						}
+						switch elem[0] {
+						case 'a': // Prefix: "ackages"
+							if prefix := "ackages"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+								elem = elem[len(prefix):]
+							} else {
+								break
+							}
+
+							if len(elem) == 0 {
+								s.handlePackagesListPackagesForAuthenticatedUserRequest(args, w, r)
+								return
+							}
+							switch elem[0] {
+							case '/': // Prefix: "/"
+								if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+									elem = elem[len(prefix):]
+								} else {
+									break
+								}
+
+								// Param: "package_type"
+								// Match until one of "/"
+								idx := strings.IndexAny(elem, "/")
+								if idx > 0 {
+									args["package_type"] = elem[:idx]
+									elem = elem[idx:]
+
+									if len(elem) == 0 {
+										break
+									}
+									switch elem[0] {
+									case '/': // Prefix: "/"
+										if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+											elem = elem[len(prefix):]
+										} else {
+											break
+										}
+
+										// Param: "package_name"
+										// Match until one of "/"
+										idx := strings.IndexAny(elem, "/")
+										if idx > 0 {
+											args["package_name"] = elem[:idx]
+											elem = elem[idx:]
+
+											if len(elem) == 0 {
+												s.handlePackagesGetPackageForAuthenticatedUserRequest(args, w, r)
+												return
+											}
+											switch elem[0] {
+											case '/': // Prefix: "/versions"
+												if prefix := "/versions"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+													elem = elem[len(prefix):]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													s.handlePackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserRequest(args, w, r)
+													return
+												}
+												switch elem[0] {
+												case '/': // Prefix: "/"
+													if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+														elem = elem[len(prefix):]
+													} else {
+														break
+													}
+
+													// Param: "package_version_id"
+													// Leaf parameter
+													args["package_version_id"] = elem
+
+													// Leaf: PackagesGetPackageVersionForAuthenticatedUser
+													s.handlePackagesGetPackageVersionForAuthenticatedUserRequest(args, w, r)
+													return
+												}
+											}
+										}
+									}
+								}
+							case 'u': // Prefix: "ublic_emails"
+								if prefix := "ublic_emails"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+									elem = elem[len(prefix):]
+								} else {
+									break
+								}
+
+								// Leaf: UsersListPublicEmailsForAuthenticated
+								s.handleUsersListPublicEmailsForAuthenticatedRequest(args, w, r)
+								return
+							}
+						case 'u': // Prefix: "ublic_emails"
+							if prefix := "ublic_emails"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+								elem = elem[len(prefix):]
+							} else {
+								break
+							}
+
+							// Leaf: UsersListPublicEmailsForAuthenticated
+							s.handleUsersListPublicEmailsForAuthenticatedRequest(args, w, r)
+							return
+						}
+					case 'r': // Prefix: "repos"
+						if prefix := "repos"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+							elem = elem[len(prefix):]
+						} else {
+							break
+						}
+
+						if len(elem) == 0 {
+							s.handleReposListForAuthenticatedUserRequest(args, w, r)
+							return
+						}
+						switch elem[0] {
+						case 'i': // Prefix: "itory_invitations"
+							if prefix := "itory_invitations"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+								elem = elem[len(prefix):]
+							} else {
+								break
+							}
+
+							// Leaf: ReposListInvitationsForAuthenticatedUser
+							s.handleReposListInvitationsForAuthenticatedUserRequest(args, w, r)
+							return
+						}
+					case 's': // Prefix: "s"
+						if prefix := "s"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+							elem = elem[len(prefix):]
+						} else {
+							break
+						}
+
+						if len(elem) == 0 {
+							s.handleActivityListWatchedReposForAuthenticatedUserRequest(args, w, r)
+							return
+						}
+						switch elem[0] {
+						case 'i': // Prefix: "installations/"
+							if prefix := "installations/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+								elem = elem[len(prefix):]
+							} else {
+								break
+							}
+
+							// Param: "installation_id"
+							// Match until one of "/"
+							idx := strings.IndexAny(elem, "/")
+							if idx > 0 {
+								args["installation_id"] = elem[:idx]
+								elem = elem[idx:]
+
+								if len(elem) == 0 {
+									break
+								}
+								switch elem[0] {
+								case '/': // Prefix: "/repositories"
+									if prefix := "/repositories"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+										elem = elem[len(prefix):]
+									} else {
+										break
+									}
+
+									// Leaf: AppsListInstallationReposForAuthenticatedUser
+									s.handleAppsListInstallationReposForAuthenticatedUserRequest(args, w, r)
+									return
+								}
+							}
+						case 't': // Prefix: "tarred"
+							if prefix := "tarred"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+								elem = elem[len(prefix):]
+							} else {
+								break
+							}
+
+							if len(elem) == 0 {
+								s.handleActivityListReposStarredByAuthenticatedUserRequest(args, w, r)
+								return
+							}
+							switch elem[0] {
+							case '/': // Prefix: "/"
+								if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+									elem = elem[len(prefix):]
+								} else {
+									break
+								}
+
+								if len(elem) == 0 {
+									break
+								}
+								switch elem[0] {
+								case 's': // Prefix: "s/"
+									if prefix := "s/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+										elem = elem[len(prefix):]
+									} else {
+										break
+									}
+
+									// Param: "username"
+									// Match until one of "/"
+									idx := strings.IndexAny(elem, "/")
+									if idx > 0 {
+										args["username"] = elem[:idx]
+										elem = elem[idx:]
+
+										if len(elem) == 0 {
+											break
+										}
+										switch elem[0] {
+										case '/': // Prefix: "/events"
+											if prefix := "/events"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+												elem = elem[len(prefix):]
+											} else {
+												break
+											}
+
+											// Leaf: ActivityListEventsForAuthenticatedUser
+											s.handleActivityListEventsForAuthenticatedUserRequest(args, w, r)
+											return
+										}
+									}
+								}
+								// Param: "owner"
+								// Match until one of "/"
+								idx := strings.IndexAny(elem, "/")
+								if idx > 0 {
+									args["owner"] = elem[:idx]
+									elem = elem[idx:]
+
+									if len(elem) == 0 {
+										break
+									}
+									switch elem[0] {
+									case '/': // Prefix: "/"
+										if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+											elem = elem[len(prefix):]
+										} else {
+											break
+										}
+
+										// Param: "repo"
+										// Leaf parameter
+										args["repo"] = elem
+
+										// Leaf: ActivityCheckRepoIsStarredByAuthenticatedUser
+										s.handleActivityCheckRepoIsStarredByAuthenticatedUserRequest(args, w, r)
+										return
+									}
+								}
+							case 'u': // Prefix: "ubscriptions"
+								if prefix := "ubscriptions"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+									elem = elem[len(prefix):]
+								} else {
+									break
+								}
+
+								// Leaf: ActivityListWatchedReposForAuthenticatedUser
+								s.handleActivityListWatchedReposForAuthenticatedUserRequest(args, w, r)
+								return
+							}
+						case 'u': // Prefix: "ubscriptions"
+							if prefix := "ubscriptions"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+								elem = elem[len(prefix):]
+							} else {
+								break
+							}
+
+							// Leaf: ActivityListWatchedReposForAuthenticatedUser
+							s.handleActivityListWatchedReposForAuthenticatedUserRequest(args, w, r)
+							return
+						}
+					case 't': // Prefix: "teams"
+						if prefix := "teams"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+							elem = elem[len(prefix):]
+						} else {
+							break
+						}
+
+						// Leaf: TeamsListForAuthenticatedUser
+						s.handleTeamsListForAuthenticatedUserRequest(args, w, r)
+						return
+					}
+				case 's': // Prefix: "s"
+					if prefix := "s"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+						elem = elem[len(prefix):]
+					} else {
+						break
+					}
+
+					if len(elem) == 0 {
+						s.handleUsersListRequest(args, w, r)
+						return
+					}
+					switch elem[0] {
+					case '/': // Prefix: "/"
+						if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+							elem = elem[len(prefix):]
+						} else {
+							break
+						}
+
+						// Param: "username"
+						// Match until one of "/"
+						idx := strings.IndexAny(elem, "/")
+						if idx > 0 {
+							args["username"] = elem[:idx]
+							elem = elem[idx:]
+
+							if len(elem) == 0 {
+								s.handleUsersGetByUsernameRequest(args, w, r)
+								return
+							}
+							switch elem[0] {
+							case '/': // Prefix: "/"
+								if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+									elem = elem[len(prefix):]
+								} else {
+									break
+								}
+
+								if len(elem) == 0 {
+									s.handleActivityListReceivedEventsForUserRequest(args, w, r)
+									return
+								}
+								switch elem[0] {
+								case 'e': // Prefix: "events"
+									if prefix := "events"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+										elem = elem[len(prefix):]
+									} else {
+										break
+									}
+
+									if len(elem) == 0 {
+										s.handleActivityListEventsForAuthenticatedUserRequest(args, w, r)
+										return
+									}
+									switch elem[0] {
+									case '/': // Prefix: "/"
+										if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+											elem = elem[len(prefix):]
+										} else {
+											break
+										}
+
+										if len(elem) == 0 {
+											s.handleActivityListPublicEventsForUserRequest(args, w, r)
+											return
+										}
+										switch elem[0] {
+										case 'o': // Prefix: "orgs/"
+											if prefix := "orgs/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+												elem = elem[len(prefix):]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												break
+											}
+											switch elem[0] {
+											case 'p': // Prefix: "public"
+												if prefix := "public"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+													elem = elem[len(prefix):]
+												} else {
+													break
+												}
+
+												// Leaf: ActivityListPublicEventsForUser
+												s.handleActivityListPublicEventsForUserRequest(args, w, r)
+												return
+											}
+											// Param: "org"
+											// Leaf parameter
+											args["org"] = elem
+
+											// Leaf: ActivityListOrgEventsForAuthenticatedUser
+											s.handleActivityListOrgEventsForAuthenticatedUserRequest(args, w, r)
+											return
+										case 'p': // Prefix: "public"
+											if prefix := "public"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+												elem = elem[len(prefix):]
+											} else {
+												break
+											}
+
+											// Leaf: ActivityListPublicEventsForUser
+											s.handleActivityListPublicEventsForUserRequest(args, w, r)
+											return
+										}
+									case 'r': // Prefix: "received_events"
+										if prefix := "received_events"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+											elem = elem[len(prefix):]
+										} else {
+											break
+										}
+
+										// Leaf: ActivityListReceivedEventsForUser
+										s.handleActivityListReceivedEventsForUserRequest(args, w, r)
+										return
+									}
+								case 'f': // Prefix: "follow"
+									if prefix := "follow"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+										elem = elem[len(prefix):]
+									} else {
+										break
+									}
+
+									if len(elem) == 0 {
+										s.handleUsersListFollowersForUserRequest(args, w, r)
+										return
+									}
+									switch elem[0] {
+									case 'e': // Prefix: "ers"
+										if prefix := "ers"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+											elem = elem[len(prefix):]
+										} else {
+											break
+										}
+
+										// Leaf: UsersListFollowersForUser
+										s.handleUsersListFollowersForUserRequest(args, w, r)
+										return
+									case 'i': // Prefix: "ing"
+										if prefix := "ing"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+											elem = elem[len(prefix):]
+										} else {
+											break
+										}
+
+										if len(elem) == 0 {
+											s.handleUsersListFollowingForUserRequest(args, w, r)
+											return
+										}
+										switch elem[0] {
+										case '/': // Prefix: "/"
+											if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+												elem = elem[len(prefix):]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												break
+											}
+											switch elem[0] {
+											case 'e': // Prefix: "ers"
+												if prefix := "ers"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+													elem = elem[len(prefix):]
+												} else {
+													break
+												}
+
+												// Leaf: UsersListFollowersForUser
+												s.handleUsersListFollowersForUserRequest(args, w, r)
+												return
+											}
+											// Param: "target_user"
+											// Leaf parameter
+											args["target_user"] = elem
+
+											// Leaf: UsersCheckFollowingForUser
+											s.handleUsersCheckFollowingForUserRequest(args, w, r)
+											return
+										}
+									}
+								case 'g': // Prefix: "g"
+									if prefix := "g"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+										elem = elem[len(prefix):]
+									} else {
+										break
+									}
+
+									if len(elem) == 0 {
+										s.handleUsersListGpgKeysForUserRequest(args, w, r)
+										return
+									}
+									switch elem[0] {
+									case 'i': // Prefix: "ists"
+										if prefix := "ists"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+											elem = elem[len(prefix):]
+										} else {
+											break
+										}
+
+										if len(elem) == 0 {
+											s.handleGistsListForUserRequest(args, w, r)
+											return
+										}
+										switch elem[0] {
+										case 'p': // Prefix: "pg_keys"
+											if prefix := "pg_keys"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+												elem = elem[len(prefix):]
+											} else {
+												break
+											}
+
+											// Leaf: UsersListGpgKeysForUser
+											s.handleUsersListGpgKeysForUserRequest(args, w, r)
+											return
+										}
+									case 'p': // Prefix: "pg_keys"
+										if prefix := "pg_keys"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+											elem = elem[len(prefix):]
+										} else {
+											break
+										}
+
+										// Leaf: UsersListGpgKeysForUser
+										s.handleUsersListGpgKeysForUserRequest(args, w, r)
+										return
+									}
+								case 'h': // Prefix: "hovercard"
+									if prefix := "hovercard"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+										elem = elem[len(prefix):]
+									} else {
+										break
+									}
+
+									// Leaf: UsersGetContextForUser
+									s.handleUsersGetContextForUserRequest(args, w, r)
+									return
+								case 'k': // Prefix: "keys"
+									if prefix := "keys"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+										elem = elem[len(prefix):]
+									} else {
+										break
+									}
+
+									// Leaf: UsersListPublicKeysForUser
+									s.handleUsersListPublicKeysForUserRequest(args, w, r)
+									return
+								case 'o': // Prefix: "orgs"
+									if prefix := "orgs"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+										elem = elem[len(prefix):]
+									} else {
+										break
+									}
+
+									// Leaf: OrgsListForUser
+									s.handleOrgsListForUserRequest(args, w, r)
+									return
+								case 'p': // Prefix: "p"
+									if prefix := "p"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+										elem = elem[len(prefix):]
+									} else {
+										break
+									}
+
+									if len(elem) == 0 {
+										s.handleProjectsListForUserRequest(args, w, r)
+										return
+									}
+									switch elem[0] {
+									case 'a': // Prefix: "ackages"
+										if prefix := "ackages"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+											elem = elem[len(prefix):]
+										} else {
+											break
+										}
+
+										if len(elem) == 0 {
+											s.handlePackagesListPackagesForUserRequest(args, w, r)
+											return
+										}
+										switch elem[0] {
+										case '/': // Prefix: "/"
+											if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+												elem = elem[len(prefix):]
+											} else {
+												break
+											}
+
+											// Param: "package_type"
+											// Match until one of "/"
+											idx := strings.IndexAny(elem, "/")
+											if idx > 0 {
+												args["package_type"] = elem[:idx]
+												elem = elem[idx:]
+
+												if len(elem) == 0 {
+													break
+												}
+												switch elem[0] {
+												case '/': // Prefix: "/"
+													if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+														elem = elem[len(prefix):]
+													} else {
+														break
+													}
+
+													// Param: "package_name"
+													// Match until one of "/"
+													idx := strings.IndexAny(elem, "/")
+													if idx > 0 {
+														args["package_name"] = elem[:idx]
+														elem = elem[idx:]
+
+														if len(elem) == 0 {
+															s.handlePackagesGetPackageForUserRequest(args, w, r)
+															return
+														}
+														switch elem[0] {
+														case '/': // Prefix: "/versions"
+															if prefix := "/versions"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																elem = elem[len(prefix):]
+															} else {
+																break
+															}
+
+															if len(elem) == 0 {
+																s.handlePackagesGetAllPackageVersionsForPackageOwnedByUserRequest(args, w, r)
+																return
+															}
+															switch elem[0] {
+															case '/': // Prefix: "/"
+																if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+																	elem = elem[len(prefix):]
+																} else {
+																	break
+																}
+
+																// Param: "package_version_id"
+																// Leaf parameter
+																args["package_version_id"] = elem
+
+																// Leaf: PackagesGetPackageVersionForUser
+																s.handlePackagesGetPackageVersionForUserRequest(args, w, r)
+																return
+															}
+														}
+													}
+												}
+											}
+										case 'r': // Prefix: "rojects"
+											if prefix := "rojects"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+												elem = elem[len(prefix):]
+											} else {
+												break
+											}
+
+											// Leaf: ProjectsListForUser
+											s.handleProjectsListForUserRequest(args, w, r)
+											return
+										}
+									case 'r': // Prefix: "rojects"
+										if prefix := "rojects"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+											elem = elem[len(prefix):]
+										} else {
+											break
+										}
+
+										// Leaf: ProjectsListForUser
+										s.handleProjectsListForUserRequest(args, w, r)
+										return
+									}
+								case 'r': // Prefix: "re"
+									if prefix := "re"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+										elem = elem[len(prefix):]
+									} else {
+										break
+									}
+
+									if len(elem) == 0 {
+										s.handleReposListForUserRequest(args, w, r)
+										return
+									}
+									switch elem[0] {
+									case 'c': // Prefix: "ceived_events"
+										if prefix := "ceived_events"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+											elem = elem[len(prefix):]
+										} else {
+											break
+										}
+
+										if len(elem) == 0 {
+											s.handleActivityListReceivedEventsForUserRequest(args, w, r)
+											return
+										}
+										switch elem[0] {
+										case '/': // Prefix: "/public"
+											if prefix := "/public"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+												elem = elem[len(prefix):]
+											} else {
+												break
+											}
+
+											// Leaf: ActivityListReceivedPublicEventsForUser
+											s.handleActivityListReceivedPublicEventsForUserRequest(args, w, r)
+											return
+										case 'p': // Prefix: "pos"
+											if prefix := "pos"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+												elem = elem[len(prefix):]
+											} else {
+												break
+											}
+
+											// Leaf: ReposListForUser
+											s.handleReposListForUserRequest(args, w, r)
+											return
+										}
+									case 'p': // Prefix: "pos"
+										if prefix := "pos"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+											elem = elem[len(prefix):]
+										} else {
+											break
+										}
+
+										// Leaf: ReposListForUser
+										s.handleReposListForUserRequest(args, w, r)
+										return
+									}
+								case 's': // Prefix: "s"
+									if prefix := "s"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+										elem = elem[len(prefix):]
+									} else {
+										break
+									}
+
+									if len(elem) == 0 {
+										s.handleBillingGetGithubActionsBillingUserRequest(args, w, r)
+										return
+									}
+									switch elem[0] {
+									case 'e': // Prefix: "ettings/billing/"
+										if prefix := "ettings/billing/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+											elem = elem[len(prefix):]
+										} else {
+											break
+										}
+
+										if len(elem) == 0 {
+											s.handleBillingGetGithubPackagesBillingUserRequest(args, w, r)
+											return
+										}
+										switch elem[0] {
+										case 'a': // Prefix: "actions"
+											if prefix := "actions"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+												elem = elem[len(prefix):]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												s.handleBillingGetGithubActionsBillingUserRequest(args, w, r)
+												return
+											}
+											switch elem[0] {
+											case 'p': // Prefix: "packages"
+												if prefix := "packages"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+													elem = elem[len(prefix):]
+												} else {
+													break
+												}
+
+												// Leaf: BillingGetGithubPackagesBillingUser
+												s.handleBillingGetGithubPackagesBillingUserRequest(args, w, r)
+												return
+											}
+										case 'p': // Prefix: "packages"
+											if prefix := "packages"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+												elem = elem[len(prefix):]
+											} else {
+												break
+											}
+
+											// Leaf: BillingGetGithubPackagesBillingUser
+											s.handleBillingGetGithubPackagesBillingUserRequest(args, w, r)
+											return
+										case 's': // Prefix: "shared-storage"
+											if prefix := "shared-storage"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+												elem = elem[len(prefix):]
+											} else {
+												break
+											}
+
+											// Leaf: BillingGetSharedStorageBillingUser
+											s.handleBillingGetSharedStorageBillingUserRequest(args, w, r)
+											return
+										}
+									case 'u': // Prefix: "ubscriptions"
+										if prefix := "ubscriptions"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+											elem = elem[len(prefix):]
+										} else {
+											break
+										}
+
+										if len(elem) == 0 {
+											s.handleActivityListReposWatchedByUserRequest(args, w, r)
+											return
+										}
+										switch elem[0] {
+										case 'e': // Prefix: "ettings/billing/actions"
+											if prefix := "ettings/billing/actions"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+												elem = elem[len(prefix):]
+											} else {
+												break
+											}
+
+											// Leaf: BillingGetGithubActionsBillingUser
+											s.handleBillingGetGithubActionsBillingUserRequest(args, w, r)
+											return
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	case "PATCH":
+		if len(elem) == 0 {
+			break
+		}
+		switch elem[0] {
+		case '/': // Prefix: "/"
+			if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+				elem = elem[len(prefix):]
+			} else {
+				break
+			}
+
+			if len(elem) == 0 {
+				s.handleActivityMarkThreadAsReadRequest(args, w, r)
+				return
+			}
+			switch elem[0] {
+			case 'a': // Prefix: "a"
+				if prefix := "a"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+					elem = elem[len(prefix):]
+				} else {
+					break
+				}
+
+				if len(elem) == 0 {
+					s.handleOAuthAuthorizationsUpdateAuthorizationRequest(args, w, r)
+					return
+				}
+				switch elem[0] {
+				case 'p': // Prefix: "pp"
+					if prefix := "pp"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+						elem = elem[len(prefix):]
+					} else {
+						break
+					}
+
+					if len(elem) == 0 {
+						s.handleAppsUpdateWebhookConfigForAppRequest(args, w, r)
+						return
+					}
+					switch elem[0] {
+					case '/': // Prefix: "/hook/config"
+						if prefix := "/hook/config"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+							elem = elem[len(prefix):]
+						} else {
+							break
+						}
+
+						// Leaf: AppsUpdateWebhookConfigForApp
+						s.handleAppsUpdateWebhookConfigForAppRequest(args, w, r)
+						return
+					case 'l': // Prefix: "lications/"
+						if prefix := "lications/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+							elem = elem[len(prefix):]
+						} else {
+							break
+						}
+
+						if len(elem) == 0 {
+							break
+						}
+						switch elem[0] {
+						case '/': // Prefix: "/hook/config"
+							if prefix := "/hook/config"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+								elem = elem[len(prefix):]
+							} else {
+								break
+							}
+
+							// Leaf: AppsUpdateWebhookConfigForApp
+							s.handleAppsUpdateWebhookConfigForAppRequest(args, w, r)
+							return
+						}
+						// Param: "client_id"
+						// Match until one of "/"
+						idx := strings.IndexAny(elem, "/")
+						if idx > 0 {
+							args["client_id"] = elem[:idx]
+							elem = elem[idx:]
+
+							if len(elem) == 0 {
+								break
+							}
+							switch elem[0] {
+							case '/': // Prefix: "/token"
+								if prefix := "/token"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+									elem = elem[len(prefix):]
+								} else {
+									break
+								}
+
+								// Leaf: AppsResetToken
+								s.handleAppsResetTokenRequest(args, w, r)
+								return
+							}
+						}
+					case 'u': // Prefix: "uthorizations/"
+						if prefix := "uthorizations/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+							elem = elem[len(prefix):]
+						} else {
+							break
+						}
+
+						// Param: "authorization_id"
+						// Leaf parameter
+						args["authorization_id"] = elem
+
+						// Leaf: OAuthAuthorizationsUpdateAuthorization
+						s.handleOAuthAuthorizationsUpdateAuthorizationRequest(args, w, r)
+						return
+					}
+				case 'u': // Prefix: "uthorizations/"
+					if prefix := "uthorizations/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+						elem = elem[len(prefix):]
+					} else {
+						break
+					}
+
+					// Param: "authorization_id"
+					// Leaf parameter
+					args["authorization_id"] = elem
+
+					// Leaf: OAuthAuthorizationsUpdateAuthorization
+					s.handleOAuthAuthorizationsUpdateAuthorizationRequest(args, w, r)
+					return
+				}
+			case 'e': // Prefix: "enterprises/"
+				if prefix := "enterprises/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+					elem = elem[len(prefix):]
+				} else {
+					break
+				}
+
+				// Param: "enterprise"
+				// Match until one of "/"
+				idx := strings.IndexAny(elem, "/")
+				if idx > 0 {
+					args["enterprise"] = elem[:idx]
+					elem = elem[idx:]
+
+					if len(elem) == 0 {
+						break
+					}
+					switch elem[0] {
+					case '/': // Prefix: "/actions/runner-groups/"
+						if prefix := "/actions/runner-groups/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+							elem = elem[len(prefix):]
+						} else {
+							break
+						}
+
+						// Param: "runner_group_id"
+						// Leaf parameter
+						args["runner_group_id"] = elem
+
+						// Leaf: EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterprise
+						s.handleEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseRequest(args, w, r)
+						return
+					}
+				}
+			case 'g': // Prefix: "gists/"
+				if prefix := "gists/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+					elem = elem[len(prefix):]
+				} else {
+					break
+				}
+
+				// Param: "gist_id"
+				// Match until one of "/"
+				idx := strings.IndexAny(elem, "/")
+				if idx > 0 {
+					args["gist_id"] = elem[:idx]
+					elem = elem[idx:]
+
+					if len(elem) == 0 {
+						break
+					}
+					switch elem[0] {
+					case '/': // Prefix: "/comments/"
+						if prefix := "/comments/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+							elem = elem[len(prefix):]
+						} else {
+							break
+						}
+
+						// Param: "comment_id"
+						// Leaf parameter
+						args["comment_id"] = elem
+
+						// Leaf: GistsUpdateComment
+						s.handleGistsUpdateCommentRequest(args, w, r)
+						return
+					}
+				}
+			case 'n': // Prefix: "notifications/threads/"
+				if prefix := "notifications/threads/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+					elem = elem[len(prefix):]
+				} else {
+					break
+				}
+
+				// Param: "thread_id"
+				// Leaf parameter
+				args["thread_id"] = elem
+
+				// Leaf: ActivityMarkThreadAsRead
+				s.handleActivityMarkThreadAsReadRequest(args, w, r)
+				return
+			case 'o': // Prefix: "orgs/"
+				if prefix := "orgs/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+					elem = elem[len(prefix):]
+				} else {
+					break
+				}
+
+				if len(elem) == 0 {
+					break
+				}
+				switch elem[0] {
+				case 'n': // Prefix: "notifications/threads/"
+					if prefix := "notifications/threads/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+						elem = elem[len(prefix):]
+					} else {
+						break
+					}
+
+					// Param: "thread_id"
+					// Leaf parameter
+					args["thread_id"] = elem
+
+					// Leaf: ActivityMarkThreadAsRead
+					s.handleActivityMarkThreadAsReadRequest(args, w, r)
+					return
+				}
+				// Param: "org"
+				// Match until one of "/"
+				idx := strings.IndexAny(elem, "/")
+				if idx > 0 {
+					args["org"] = elem[:idx]
+					elem = elem[idx:]
+
+					if len(elem) == 0 {
+						break
+					}
+					switch elem[0] {
+					case '/': // Prefix: "/"
+						if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+							elem = elem[len(prefix):]
+						} else {
+							break
+						}
+
+						if len(elem) == 0 {
+							s.handleOrgsUpdateWebhookRequest(args, w, r)
+							return
+						}
+						switch elem[0] {
+						case 'a': // Prefix: "actions/runner-groups/"
+							if prefix := "actions/runner-groups/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+								elem = elem[len(prefix):]
+							} else {
+								break
+							}
+
+							if len(elem) == 0 {
+								break
+							}
+							switch elem[0] {
+							case 'h': // Prefix: "hooks/"
+								if prefix := "hooks/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+									elem = elem[len(prefix):]
+								} else {
+									break
+								}
+
+								// Param: "hook_id"
+								// Leaf parameter
+								args["hook_id"] = elem
+
+								// Leaf: OrgsUpdateWebhook
+								s.handleOrgsUpdateWebhookRequest(args, w, r)
+								return
+							}
+							// Param: "runner_group_id"
+							// Leaf parameter
+							args["runner_group_id"] = elem
+
+							// Leaf: ActionsUpdateSelfHostedRunnerGroupForOrg
+							s.handleActionsUpdateSelfHostedRunnerGroupForOrgRequest(args, w, r)
+							return
+						case 'h': // Prefix: "hooks/"
+							if prefix := "hooks/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+								elem = elem[len(prefix):]
+							} else {
+								break
+							}
+
+							// Param: "hook_id"
+							// Match until one of "/"
+							idx := strings.IndexAny(elem, "/")
+							if idx > 0 {
+								args["hook_id"] = elem[:idx]
+								elem = elem[idx:]
+
+								if len(elem) == 0 {
+									s.handleOrgsUpdateWebhookRequest(args, w, r)
+									return
+								}
+								switch elem[0] {
+								case '/': // Prefix: "/config"
+									if prefix := "/config"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+										elem = elem[len(prefix):]
+									} else {
+										break
+									}
+
+									// Leaf: OrgsUpdateWebhookConfigForOrg
+									s.handleOrgsUpdateWebhookConfigForOrgRequest(args, w, r)
+									return
+								}
+							}
+						case 't': // Prefix: "teams/"
+							if prefix := "teams/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+								elem = elem[len(prefix):]
+							} else {
+								break
+							}
+
+							// Param: "team_slug"
+							// Match until one of "/"
+							idx := strings.IndexAny(elem, "/")
+							if idx > 0 {
+								args["team_slug"] = elem[:idx]
+								elem = elem[idx:]
+
+								if len(elem) == 0 {
+									s.handleTeamsUpdateInOrgRequest(args, w, r)
+									return
+								}
+								switch elem[0] {
+								case '/': // Prefix: "/"
+									if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+										elem = elem[len(prefix):]
+									} else {
+										break
+									}
+
+									if len(elem) == 0 {
+										s.handleTeamsUpdateDiscussionCommentInOrgRequest(args, w, r)
+										return
+									}
+									switch elem[0] {
+									case 'd': // Prefix: "discussions/"
+										if prefix := "discussions/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+											elem = elem[len(prefix):]
+										} else {
+											break
+										}
+
+										// Param: "discussion_number"
+										// Match until one of "/"
+										idx := strings.IndexAny(elem, "/")
+										if idx > 0 {
+											args["discussion_number"] = elem[:idx]
+											elem = elem[idx:]
+
+											if len(elem) == 0 {
+												s.handleTeamsUpdateDiscussionInOrgRequest(args, w, r)
+												return
+											}
+											switch elem[0] {
+											case '/': // Prefix: "/comments/"
+												if prefix := "/comments/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+													elem = elem[len(prefix):]
+												} else {
+													break
+												}
+
+												// Param: "comment_number"
+												// Leaf parameter
+												args["comment_number"] = elem
+
+												// Leaf: TeamsUpdateDiscussionCommentInOrg
+												s.handleTeamsUpdateDiscussionCommentInOrgRequest(args, w, r)
+												return
+											}
+										}
+									case 't': // Prefix: "team-sync/group-mappings"
+										if prefix := "team-sync/group-mappings"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+											elem = elem[len(prefix):]
+										} else {
+											break
+										}
+
+										if len(elem) == 0 {
+											s.handleTeamsCreateOrUpdateIdpGroupConnectionsInOrgRequest(args, w, r)
+											return
+										}
+										switch elem[0] {
+										case 'd': // Prefix: "discussions/"
+											if prefix := "discussions/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+												elem = elem[len(prefix):]
+											} else {
+												break
+											}
+
+											// Param: "discussion_number"
+											// Match until one of "/"
+											idx := strings.IndexAny(elem, "/")
+											if idx > 0 {
+												args["discussion_number"] = elem[:idx]
+												elem = elem[idx:]
+
+												if len(elem) == 0 {
+													break
+												}
+												switch elem[0] {
+												case '/': // Prefix: "/comments/"
+													if prefix := "/comments/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+														elem = elem[len(prefix):]
+													} else {
+														break
+													}
+
+													// Param: "comment_number"
+													// Leaf parameter
+													args["comment_number"] = elem
+
+													// Leaf: TeamsUpdateDiscussionCommentInOrg
+													s.handleTeamsUpdateDiscussionCommentInOrgRequest(args, w, r)
+													return
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			case 'p': // Prefix: "projects/"
+				if prefix := "projects/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+					elem = elem[len(prefix):]
+				} else {
+					break
+				}
+
+				if len(elem) == 0 {
+					break
+				}
+				switch elem[0] {
+				case 'c': // Prefix: "columns/"
+					if prefix := "columns/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+						elem = elem[len(prefix):]
+					} else {
+						break
+					}
+
+					if len(elem) == 0 {
+						s.handleProjectsUpdateColumnRequest(args, w, r)
+						return
+					}
+					switch elem[0] {
+					case 'c': // Prefix: "cards/"
+						if prefix := "cards/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+							elem = elem[len(prefix):]
+						} else {
+							break
+						}
+
+						// Param: "card_id"
+						// Leaf parameter
+						args["card_id"] = elem
+
+						// Leaf: ProjectsUpdateColumn
+						s.handleProjectsUpdateColumnRequest(args, w, r)
+						return
+					}
+					// Param: "column_id"
+					// Leaf parameter
+					args["column_id"] = elem
+
+					// Leaf: ProjectsUpdateColumn
+					s.handleProjectsUpdateColumnRequest(args, w, r)
+					return
+				}
+				// Param: "project_id"
+				// Leaf parameter
+				args["project_id"] = elem
+
+				// Leaf: ProjectsUpdate
+				s.handleProjectsUpdateRequest(args, w, r)
+				return
+			case 'r': // Prefix: "repos/"
+				if prefix := "repos/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+					elem = elem[len(prefix):]
+				} else {
+					break
+				}
+
+				// Param: "owner"
+				// Match until one of "/"
+				idx := strings.IndexAny(elem, "/")
+				if idx > 0 {
+					args["owner"] = elem[:idx]
+					elem = elem[idx:]
+
+					if len(elem) == 0 {
+						break
+					}
+					switch elem[0] {
+					case '/': // Prefix: "/"
+						if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+							elem = elem[len(prefix):]
+						} else {
+							break
+						}
+
+						// Param: "repo"
+						// Match until one of "/"
+						idx := strings.IndexAny(elem, "/")
+						if idx > 0 {
+							args["repo"] = elem[:idx]
+							elem = elem[idx:]
+
+							if len(elem) == 0 {
+								s.handleReposUpdateRequest(args, w, r)
+								return
+							}
+							switch elem[0] {
+							case '/': // Prefix: "/"
+								if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+									elem = elem[len(prefix):]
+								} else {
+									break
+								}
+
+								if len(elem) == 0 {
+									s.handleGitUpdateRefRequest(args, w, r)
+									return
+								}
+								switch elem[0] {
+								case 'b': // Prefix: "branches/"
+									if prefix := "branches/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+										elem = elem[len(prefix):]
+									} else {
+										break
+									}
+
+									// Param: "branch"
+									// Match until one of "/"
+									idx := strings.IndexAny(elem, "/")
+									if idx > 0 {
+										args["branch"] = elem[:idx]
+										elem = elem[idx:]
+
+										if len(elem) == 0 {
+											break
+										}
+										switch elem[0] {
+										case '/': // Prefix: "/protection/required_"
+											if prefix := "/protection/required_"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+												elem = elem[len(prefix):]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												s.handleReposUpdateStatusCheckProtectionRequest(args, w, r)
+												return
+											}
+											switch elem[0] {
+											case 'p': // Prefix: "pull_request_reviews"
+												if prefix := "pull_request_reviews"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+													elem = elem[len(prefix):]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													s.handleReposUpdatePullRequestReviewProtectionRequest(args, w, r)
+													return
+												}
+												switch elem[0] {
+												case 's': // Prefix: "status_checks"
+													if prefix := "status_checks"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+														elem = elem[len(prefix):]
+													} else {
+														break
+													}
+
+													// Leaf: ReposUpdateStatusCheckProtection
+													s.handleReposUpdateStatusCheckProtectionRequest(args, w, r)
+													return
+												}
+											case 's': // Prefix: "status_checks"
+												if prefix := "status_checks"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+													elem = elem[len(prefix):]
+												} else {
+													break
+												}
+
+												// Leaf: ReposUpdateStatusCheckProtection
+												s.handleReposUpdateStatusCheckProtectionRequest(args, w, r)
+												return
+											}
+										}
+									}
+								case 'c': // Prefix: "c"
+									if prefix := "c"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+										elem = elem[len(prefix):]
+									} else {
+										break
+									}
+
+									if len(elem) == 0 {
+										s.handleCodeScanningUpdateAlertRequest(args, w, r)
+										return
+									}
+									switch elem[0] {
+									case 'g': // Prefix: "git/refs/"
+										if prefix := "git/refs/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+											elem = elem[len(prefix):]
+										} else {
+											break
+										}
+
+										// Param: "ref"
+										// Leaf parameter
+										args["ref"] = elem
+
+										// Leaf: GitUpdateRef
+										s.handleGitUpdateRefRequest(args, w, r)
+										return
+									case 'h': // Prefix: "heck-suites/preferences"
+										if prefix := "heck-suites/preferences"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+											elem = elem[len(prefix):]
+										} else {
+											break
+										}
+
+										if len(elem) == 0 {
+											s.handleChecksSetSuitesPreferencesRequest(args, w, r)
+											return
+										}
+										switch elem[0] {
+										case 'o': // Prefix: "ode-scanning/alerts/"
+											if prefix := "ode-scanning/alerts/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+												elem = elem[len(prefix):]
+											} else {
+												break
+											}
+
+											// Param: "alert_number"
+											// Leaf parameter
+											args["alert_number"] = elem
+
+											// Leaf: CodeScanningUpdateAlert
+											s.handleCodeScanningUpdateAlertRequest(args, w, r)
+											return
+										}
+									case 'o': // Prefix: "o"
+										if prefix := "o"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+											elem = elem[len(prefix):]
+										} else {
+											break
+										}
+
+										if len(elem) == 0 {
+											s.handleReposUpdateCommitCommentRequest(args, w, r)
+											return
+										}
+										switch elem[0] {
+										case 'd': // Prefix: "de-scanning/alerts/"
+											if prefix := "de-scanning/alerts/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+												elem = elem[len(prefix):]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												break
+											}
+											switch elem[0] {
+											case 'm': // Prefix: "mments/"
+												if prefix := "mments/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+													elem = elem[len(prefix):]
+												} else {
+													break
+												}
+
+												// Param: "comment_id"
+												// Leaf parameter
+												args["comment_id"] = elem
+
+												// Leaf: ReposUpdateCommitComment
+												s.handleReposUpdateCommitCommentRequest(args, w, r)
+												return
+											}
+											// Param: "alert_number"
+											// Leaf parameter
+											args["alert_number"] = elem
+
+											// Leaf: CodeScanningUpdateAlert
+											s.handleCodeScanningUpdateAlertRequest(args, w, r)
+											return
+										case 'm': // Prefix: "mments/"
+											if prefix := "mments/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+												elem = elem[len(prefix):]
+											} else {
+												break
+											}
+
+											// Param: "comment_id"
+											// Leaf parameter
+											args["comment_id"] = elem
+
+											// Leaf: ReposUpdateCommitComment
+											s.handleReposUpdateCommitCommentRequest(args, w, r)
+											return
+										}
+									}
+								case 'g': // Prefix: "git/refs/"
+									if prefix := "git/refs/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+										elem = elem[len(prefix):]
+									} else {
+										break
+									}
+
+									// Param: "ref"
+									// Leaf parameter
+									args["ref"] = elem
+
+									// Leaf: GitUpdateRef
+									s.handleGitUpdateRefRequest(args, w, r)
+									return
+								case 'h': // Prefix: "hooks/"
+									if prefix := "hooks/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+										elem = elem[len(prefix):]
+									} else {
+										break
+									}
+
+									// Param: "hook_id"
+									// Match until one of "/"
+									idx := strings.IndexAny(elem, "/")
+									if idx > 0 {
+										args["hook_id"] = elem[:idx]
+										elem = elem[idx:]
+
+										if len(elem) == 0 {
+											s.handleReposUpdateWebhookRequest(args, w, r)
+											return
+										}
+										switch elem[0] {
+										case '/': // Prefix: "/config"
+											if prefix := "/config"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+												elem = elem[len(prefix):]
+											} else {
+												break
+											}
+
+											// Leaf: ReposUpdateWebhookConfigForRepo
+											s.handleReposUpdateWebhookConfigForRepoRequest(args, w, r)
+											return
+										}
+									}
+								case 'i': // Prefix: "i"
+									if prefix := "i"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+										elem = elem[len(prefix):]
+									} else {
+										break
+									}
+
+									if len(elem) == 0 {
+										s.handleMigrationsMapCommitAuthorRequest(args, w, r)
+										return
+									}
+									switch elem[0] {
+									case 'm': // Prefix: "mport"
+										if prefix := "mport"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+											elem = elem[len(prefix):]
+										} else {
+											break
+										}
+
+										if len(elem) == 0 {
+											s.handleMigrationsUpdateImportRequest(args, w, r)
+											return
+										}
+										switch elem[0] {
+										case '/': // Prefix: "/"
+											if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+												elem = elem[len(prefix):]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												s.handleMigrationsSetLfsPreferenceRequest(args, w, r)
+												return
+											}
+											switch elem[0] {
+											case 'a': // Prefix: "authors/"
+												if prefix := "authors/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+													elem = elem[len(prefix):]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													break
+												}
+												switch elem[0] {
+												case 'l': // Prefix: "lfs"
+													if prefix := "lfs"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+														elem = elem[len(prefix):]
+													} else {
+														break
+													}
+
+													// Leaf: MigrationsSetLfsPreference
+													s.handleMigrationsSetLfsPreferenceRequest(args, w, r)
+													return
+												}
+												// Param: "author_id"
+												// Leaf parameter
+												args["author_id"] = elem
+
+												// Leaf: MigrationsMapCommitAuthor
+												s.handleMigrationsMapCommitAuthorRequest(args, w, r)
+												return
+											case 'l': // Prefix: "lfs"
+												if prefix := "lfs"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+													elem = elem[len(prefix):]
+												} else {
+													break
+												}
+
+												// Leaf: MigrationsSetLfsPreference
+												s.handleMigrationsSetLfsPreferenceRequest(args, w, r)
+												return
+											}
+										}
+									case 'n': // Prefix: "nvitations/"
+										if prefix := "nvitations/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+											elem = elem[len(prefix):]
+										} else {
+											break
+										}
+
+										// Param: "invitation_id"
+										// Leaf parameter
+										args["invitation_id"] = elem
+
+										// Leaf: ReposUpdateInvitation
+										s.handleReposUpdateInvitationRequest(args, w, r)
+										return
+									case 's': // Prefix: "ssues/"
+										if prefix := "ssues/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+											elem = elem[len(prefix):]
+										} else {
+											break
+										}
+
+										if len(elem) == 0 {
+											break
+										}
+										switch elem[0] {
+										case 'c': // Prefix: "comments/"
+											if prefix := "comments/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+												elem = elem[len(prefix):]
+											} else {
+												break
+											}
+
+											// Param: "comment_id"
+											// Leaf parameter
+											args["comment_id"] = elem
+
+											// Leaf: IssuesUpdateComment
+											s.handleIssuesUpdateCommentRequest(args, w, r)
+											return
+										case 'm': // Prefix: "mport/authors/"
+											if prefix := "mport/authors/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+												elem = elem[len(prefix):]
+											} else {
+												break
+											}
+
+											// Param: "author_id"
+											// Leaf parameter
+											args["author_id"] = elem
+
+											// Leaf: MigrationsMapCommitAuthor
+											s.handleMigrationsMapCommitAuthorRequest(args, w, r)
+											return
+										}
+										// Param: "issue_number"
+										// Leaf parameter
+										args["issue_number"] = elem
+
+										// Leaf: IssuesUpdate
+										s.handleIssuesUpdateRequest(args, w, r)
+										return
+									}
+								case 'l': // Prefix: "labels/"
+									if prefix := "labels/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+										elem = elem[len(prefix):]
+									} else {
+										break
+									}
+
+									// Param: "name"
+									// Leaf parameter
+									args["name"] = elem
+
+									// Leaf: IssuesUpdateLabel
+									s.handleIssuesUpdateLabelRequest(args, w, r)
+									return
+								case 'm': // Prefix: "milestones/"
+									if prefix := "milestones/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+										elem = elem[len(prefix):]
+									} else {
+										break
+									}
+
+									// Param: "milestone_number"
+									// Leaf parameter
+									args["milestone_number"] = elem
+
+									// Leaf: IssuesUpdateMilestone
+									s.handleIssuesUpdateMilestoneRequest(args, w, r)
+									return
+								case 'p': // Prefix: "pulls/"
+									if prefix := "pulls/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+										elem = elem[len(prefix):]
+									} else {
+										break
+									}
+
+									if len(elem) == 0 {
+										break
+									}
+									switch elem[0] {
+									case 'c': // Prefix: "comments/"
+										if prefix := "comments/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+											elem = elem[len(prefix):]
+										} else {
+											break
+										}
+
+										// Param: "comment_id"
+										// Leaf parameter
+										args["comment_id"] = elem
+
+										// Leaf: PullsUpdateReviewComment
+										s.handlePullsUpdateReviewCommentRequest(args, w, r)
+										return
+									}
+									// Param: "pull_number"
+									// Leaf parameter
+									args["pull_number"] = elem
+
+									// Leaf: PullsUpdate
+									s.handlePullsUpdateRequest(args, w, r)
+									return
+								case 'r': // Prefix: "releases/"
+									if prefix := "releases/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+										elem = elem[len(prefix):]
+									} else {
+										break
+									}
+
+									if len(elem) == 0 {
+										break
+									}
+									switch elem[0] {
+									case 'a': // Prefix: "assets/"
+										if prefix := "assets/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+											elem = elem[len(prefix):]
+										} else {
+											break
+										}
+
+										// Param: "asset_id"
+										// Leaf parameter
+										args["asset_id"] = elem
+
+										// Leaf: ReposUpdateReleaseAsset
+										s.handleReposUpdateReleaseAssetRequest(args, w, r)
+										return
+									}
+									// Param: "release_id"
+									// Leaf parameter
+									args["release_id"] = elem
+
+									// Leaf: ReposUpdateRelease
+									s.handleReposUpdateReleaseRequest(args, w, r)
+									return
+								case 's': // Prefix: "secret-scanning/alerts/"
+									if prefix := "secret-scanning/alerts/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+										elem = elem[len(prefix):]
+									} else {
+										break
+									}
+
+									// Param: "alert_number"
+									// Leaf parameter
+									args["alert_number"] = elem
+
+									// Leaf: SecretScanningUpdateAlert
+									s.handleSecretScanningUpdateAlertRequest(args, w, r)
+									return
+								}
+							}
+						}
+					}
+				}
+			case 's': // Prefix: "scim/v2/enterprises/"
+				if prefix := "scim/v2/enterprises/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+					elem = elem[len(prefix):]
+				} else {
+					break
+				}
+
+				// Param: "enterprise"
+				// Match until one of "/"
+				idx := strings.IndexAny(elem, "/")
+				if idx > 0 {
+					args["enterprise"] = elem[:idx]
+					elem = elem[idx:]
+
+					if len(elem) == 0 {
+						break
+					}
+					switch elem[0] {
+					case '/': // Prefix: "/"
+						if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+							elem = elem[len(prefix):]
+						} else {
+							break
+						}
+
+						if len(elem) == 0 {
+							s.handleEnterpriseAdminUpdateAttributeForEnterpriseUserRequest(args, w, r)
+							return
+						}
+						switch elem[0] {
+						case 'G': // Prefix: "Groups/"
+							if prefix := "Groups/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+								elem = elem[len(prefix):]
+							} else {
+								break
+							}
+
+							if len(elem) == 0 {
+								break
+							}
+							switch elem[0] {
+							case 'U': // Prefix: "Users/"
+								if prefix := "Users/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+									elem = elem[len(prefix):]
+								} else {
+									break
+								}
+
+								// Param: "scim_user_id"
+								// Leaf parameter
+								args["scim_user_id"] = elem
+
+								// Leaf: EnterpriseAdminUpdateAttributeForEnterpriseUser
+								s.handleEnterpriseAdminUpdateAttributeForEnterpriseUserRequest(args, w, r)
+								return
+							}
+							// Param: "scim_group_id"
+							// Leaf parameter
+							args["scim_group_id"] = elem
+
+							// Leaf: EnterpriseAdminUpdateAttributeForEnterpriseGroup
+							s.handleEnterpriseAdminUpdateAttributeForEnterpriseGroupRequest(args, w, r)
+							return
+						case 'U': // Prefix: "Users/"
+							if prefix := "Users/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+								elem = elem[len(prefix):]
+							} else {
+								break
+							}
+
+							// Param: "scim_user_id"
+							// Leaf parameter
+							args["scim_user_id"] = elem
+
+							// Leaf: EnterpriseAdminUpdateAttributeForEnterpriseUser
+							s.handleEnterpriseAdminUpdateAttributeForEnterpriseUserRequest(args, w, r)
+							return
+						}
+					}
+				}
+			case 't': // Prefix: "teams/"
+				if prefix := "teams/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+					elem = elem[len(prefix):]
+				} else {
+					break
+				}
+
+				// Param: "team_id"
+				// Match until one of "/"
+				idx := strings.IndexAny(elem, "/")
+				if idx > 0 {
+					args["team_id"] = elem[:idx]
+					elem = elem[idx:]
+
+					if len(elem) == 0 {
+						s.handleTeamsUpdateLegacyRequest(args, w, r)
+						return
+					}
+					switch elem[0] {
+					case '/': // Prefix: "/"
+						if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+							elem = elem[len(prefix):]
+						} else {
+							break
+						}
+
+						if len(elem) == 0 {
+							s.handleTeamsUpdateDiscussionCommentLegacyRequest(args, w, r)
+							return
+						}
+						switch elem[0] {
+						case 'd': // Prefix: "discussions/"
+							if prefix := "discussions/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+								elem = elem[len(prefix):]
+							} else {
+								break
+							}
+
+							// Param: "discussion_number"
+							// Match until one of "/"
+							idx := strings.IndexAny(elem, "/")
+							if idx > 0 {
+								args["discussion_number"] = elem[:idx]
+								elem = elem[idx:]
+
+								if len(elem) == 0 {
+									s.handleTeamsUpdateDiscussionLegacyRequest(args, w, r)
+									return
+								}
+								switch elem[0] {
+								case '/': // Prefix: "/comments/"
+									if prefix := "/comments/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+										elem = elem[len(prefix):]
+									} else {
+										break
+									}
+
+									// Param: "comment_number"
+									// Leaf parameter
+									args["comment_number"] = elem
+
+									// Leaf: TeamsUpdateDiscussionCommentLegacy
+									s.handleTeamsUpdateDiscussionCommentLegacyRequest(args, w, r)
+									return
+								}
+							}
+						case 't': // Prefix: "team-sync/group-mappings"
+							if prefix := "team-sync/group-mappings"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+								elem = elem[len(prefix):]
+							} else {
+								break
+							}
+
+							if len(elem) == 0 {
+								s.handleTeamsCreateOrUpdateIdpGroupConnectionsLegacyRequest(args, w, r)
+								return
+							}
+							switch elem[0] {
+							case 'd': // Prefix: "discussions/"
+								if prefix := "discussions/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+									elem = elem[len(prefix):]
+								} else {
+									break
+								}
+
+								// Param: "discussion_number"
+								// Match until one of "/"
+								idx := strings.IndexAny(elem, "/")
+								if idx > 0 {
+									args["discussion_number"] = elem[:idx]
+									elem = elem[idx:]
+
+									if len(elem) == 0 {
+										break
+									}
+									switch elem[0] {
+									case '/': // Prefix: "/comments/"
+										if prefix := "/comments/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+											elem = elem[len(prefix):]
+										} else {
+											break
+										}
+
+										// Param: "comment_number"
+										// Leaf parameter
+										args["comment_number"] = elem
+
+										// Leaf: TeamsUpdateDiscussionCommentLegacy
+										s.handleTeamsUpdateDiscussionCommentLegacyRequest(args, w, r)
+										return
+									}
+								}
+							}
+						}
+					}
+				}
+			case 'u': // Prefix: "user"
+				if prefix := "user"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+					elem = elem[len(prefix):]
+				} else {
+					break
+				}
+
+				if len(elem) == 0 {
+					s.handleUsersUpdateAuthenticatedRequest(args, w, r)
+					return
+				}
+				switch elem[0] {
+				case '/': // Prefix: "/"
+					if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+						elem = elem[len(prefix):]
+					} else {
+						break
+					}
+
+					if len(elem) == 0 {
+						s.handleReposAcceptInvitationRequest(args, w, r)
+						return
+					}
+					switch elem[0] {
+					case 'e': // Prefix: "email/visibility"
+						if prefix := "email/visibility"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+							elem = elem[len(prefix):]
+						} else {
+							break
+						}
+
+						// Leaf: UsersSetPrimaryEmailVisibilityForAuthenticated
+						s.handleUsersSetPrimaryEmailVisibilityForAuthenticatedRequest(args, w, r)
+						return
+					case 'm': // Prefix: "memberships/orgs/"
+						if prefix := "memberships/orgs/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+							elem = elem[len(prefix):]
+						} else {
+							break
+						}
+
+						if len(elem) == 0 {
+							break
+						}
+						switch elem[0] {
+						case 'r': // Prefix: "repository_invitations/"
+							if prefix := "repository_invitations/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+								elem = elem[len(prefix):]
+							} else {
+								break
+							}
+
+							// Param: "invitation_id"
+							// Leaf parameter
+							args["invitation_id"] = elem
+
+							// Leaf: ReposAcceptInvitation
+							s.handleReposAcceptInvitationRequest(args, w, r)
+							return
+						}
+						// Param: "org"
+						// Leaf parameter
+						args["org"] = elem
+
+						// Leaf: OrgsUpdateMembershipForAuthenticatedUser
+						s.handleOrgsUpdateMembershipForAuthenticatedUserRequest(args, w, r)
+						return
+					case 'r': // Prefix: "repository_invitations/"
+						if prefix := "repository_invitations/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+							elem = elem[len(prefix):]
+						} else {
+							break
+						}
+
+						// Param: "invitation_id"
+						// Leaf parameter
+						args["invitation_id"] = elem
+
+						// Leaf: ReposAcceptInvitation
+						s.handleReposAcceptInvitationRequest(args, w, r)
+						return
+					}
+				}
+			}
+		}
 	}
+	s.notFound(w, r)
 }
