@@ -20,7 +20,7 @@ type TemplateConfig struct {
 	Interfaces map[string]*ir.Type
 	Error      *ir.StatusResponse
 	ErrorType  *ir.Type
-	Methods    []RouterMethod
+	Methods    []MethodRoute
 }
 
 // RegexStrings returns slice of all unique regex validators.
