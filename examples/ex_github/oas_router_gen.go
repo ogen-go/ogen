@@ -128,7 +128,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 						// Param: "installation_id"
 						// Match until one of "/"
-						idx := strings.IndexAny(elem, "/")
+						idx := strings.IndexByte(elem, '/')
 						if idx > 0 {
 							args["installation_id"] = elem[:idx]
 							elem = elem[idx:]
@@ -178,7 +178,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						}
 						// Param: "client_id"
 						// Match until one of "/"
-						idx := strings.IndexAny(elem, "/")
+						idx := strings.IndexByte(elem, '/')
 						if idx > 0 {
 							args["client_id"] = elem[:idx]
 							elem = elem[idx:]
@@ -247,7 +247,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 				// Param: "enterprise"
 				// Match until one of "/"
-				idx := strings.IndexAny(elem, "/")
+				idx := strings.IndexByte(elem, '/')
 				if idx > 0 {
 					args["enterprise"] = elem[:idx]
 					elem = elem[idx:]
@@ -303,7 +303,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 								// Param: "runner_group_id"
 								// Match until one of "/"
-								idx := strings.IndexAny(elem, "/")
+								idx := strings.IndexByte(elem, '/')
 								if idx > 0 {
 									args["runner_group_id"] = elem[:idx]
 									elem = elem[idx:]
@@ -383,7 +383,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 				// Param: "gist_id"
 				// Match until one of "/"
-				idx := strings.IndexAny(elem, "/")
+				idx := strings.IndexByte(elem, '/')
 				if idx > 0 {
 					args["gist_id"] = elem[:idx]
 					elem = elem[idx:]
@@ -451,7 +451,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 				// Param: "thread_id"
 				// Match until one of "/"
-				idx := strings.IndexAny(elem, "/")
+				idx := strings.IndexByte(elem, '/')
 				if idx > 0 {
 					args["thread_id"] = elem[:idx]
 					elem = elem[idx:]
@@ -481,7 +481,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 				// Param: "org"
 				// Match until one of "/"
-				idx := strings.IndexAny(elem, "/")
+				idx := strings.IndexByte(elem, '/')
 				if idx > 0 {
 					args["org"] = elem[:idx]
 					elem = elem[idx:]
@@ -549,7 +549,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 									// Param: "runner_group_id"
 									// Match until one of "/"
-									idx := strings.IndexAny(elem, "/")
+									idx := strings.IndexByte(elem, '/')
 									if idx > 0 {
 										args["runner_group_id"] = elem[:idx]
 										elem = elem[idx:]
@@ -626,7 +626,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 								// Param: "secret_name"
 								// Match until one of "/"
-								idx := strings.IndexAny(elem, "/")
+								idx := strings.IndexByte(elem, '/')
 								if idx > 0 {
 									args["secret_name"] = elem[:idx]
 									elem = elem[idx:]
@@ -794,7 +794,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 								// Param: "migration_id"
 								// Match until one of "/"
-								idx := strings.IndexAny(elem, "/")
+								idx := strings.IndexByte(elem, '/')
 								if idx > 0 {
 									args["migration_id"] = elem[:idx]
 									elem = elem[idx:]
@@ -834,7 +834,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 											// Param: "repo_name"
 											// Match until one of "/"
-											idx := strings.IndexAny(elem, "/")
+											idx := strings.IndexByte(elem, '/')
 											if idx > 0 {
 												args["repo_name"] = elem[:idx]
 												elem = elem[idx:]
@@ -894,7 +894,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 								// Param: "package_type"
 								// Match until one of "/"
-								idx := strings.IndexAny(elem, "/")
+								idx := strings.IndexByte(elem, '/')
 								if idx > 0 {
 									args["package_type"] = elem[:idx]
 									elem = elem[idx:]
@@ -912,7 +912,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 										// Param: "package_name"
 										// Match until one of "/"
-										idx := strings.IndexAny(elem, "/")
+										idx := strings.IndexByte(elem, '/')
 										if idx > 0 {
 											args["package_name"] = elem[:idx]
 											elem = elem[idx:]
@@ -964,7 +964,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 							// Param: "team_slug"
 							// Match until one of "/"
-							idx := strings.IndexAny(elem, "/")
+							idx := strings.IndexByte(elem, '/')
 							if idx > 0 {
 								args["team_slug"] = elem[:idx]
 								elem = elem[idx:]
@@ -995,7 +995,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 										// Param: "discussion_number"
 										// Match until one of "/"
-										idx := strings.IndexAny(elem, "/")
+										idx := strings.IndexByte(elem, '/')
 										if idx > 0 {
 											args["discussion_number"] = elem[:idx]
 											elem = elem[idx:]
@@ -1026,7 +1026,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 													// Param: "comment_number"
 													// Match until one of "/"
-													idx := strings.IndexAny(elem, "/")
+													idx := strings.IndexByte(elem, '/')
 													if idx > 0 {
 														args["comment_number"] = elem[:idx]
 														elem = elem[idx:]
@@ -1106,7 +1106,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 										// Param: "owner"
 										// Match until one of "/"
-										idx := strings.IndexAny(elem, "/")
+										idx := strings.IndexByte(elem, '/')
 										if idx > 0 {
 											args["owner"] = elem[:idx]
 											elem = elem[idx:]
@@ -1185,7 +1185,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				}
 				// Param: "project_id"
 				// Match until one of "/"
-				idx := strings.IndexAny(elem, "/")
+				idx := strings.IndexByte(elem, '/')
 				if idx > 0 {
 					args["project_id"] = elem[:idx]
 					elem = elem[idx:]
@@ -1258,7 +1258,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 						// Param: "owner"
 						// Match until one of "/"
-						idx := strings.IndexAny(elem, "/")
+						idx := strings.IndexByte(elem, '/')
 						if idx > 0 {
 							args["owner"] = elem[:idx]
 							elem = elem[idx:]
@@ -1276,7 +1276,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 								// Param: "repo"
 								// Match until one of "/"
-								idx := strings.IndexAny(elem, "/")
+								idx := strings.IndexByte(elem, '/')
 								if idx > 0 {
 									args["repo"] = elem[:idx]
 									elem = elem[idx:]
@@ -1371,7 +1371,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 														// Param: "run_id"
 														// Match until one of "/"
-														idx := strings.IndexAny(elem, "/")
+														idx := strings.IndexByte(elem, '/')
 														if idx > 0 {
 															args["run_id"] = elem[:idx]
 															elem = elem[idx:]
@@ -1456,7 +1456,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 											// Param: "branch"
 											// Match until one of "/"
-											idx := strings.IndexAny(elem, "/")
+											idx := strings.IndexByte(elem, '/')
 											if idx > 0 {
 												args["branch"] = elem[:idx]
 												elem = elem[idx:]
@@ -1690,7 +1690,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 												// Param: "comment_id"
 												// Match until one of "/"
-												idx := strings.IndexAny(elem, "/")
+												idx := strings.IndexByte(elem, '/')
 												if idx > 0 {
 													args["comment_id"] = elem[:idx]
 													elem = elem[idx:]
@@ -1867,7 +1867,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 													// Param: "comment_id"
 													// Match until one of "/"
-													idx := strings.IndexAny(elem, "/")
+													idx := strings.IndexByte(elem, '/')
 													if idx > 0 {
 														args["comment_id"] = elem[:idx]
 														elem = elem[idx:]
@@ -1896,7 +1896,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												}
 												// Param: "issue_number"
 												// Match until one of "/"
-												idx := strings.IndexAny(elem, "/")
+												idx := strings.IndexByte(elem, '/')
 												if idx > 0 {
 													args["issue_number"] = elem[:idx]
 													elem = elem[idx:]
@@ -2102,7 +2102,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 													// Param: "comment_id"
 													// Match until one of "/"
-													idx := strings.IndexAny(elem, "/")
+													idx := strings.IndexByte(elem, '/')
 													if idx > 0 {
 														args["comment_id"] = elem[:idx]
 														elem = elem[idx:]
@@ -2131,7 +2131,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												}
 												// Param: "pull_number"
 												// Match until one of "/"
-												idx := strings.IndexAny(elem, "/")
+												idx := strings.IndexByte(elem, '/')
 												if idx > 0 {
 													args["pull_number"] = elem[:idx]
 													elem = elem[idx:]
@@ -2247,7 +2247,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 						// Param: "repository_id"
 						// Match until one of "/"
-						idx := strings.IndexAny(elem, "/")
+						idx := strings.IndexByte(elem, '/')
 						if idx > 0 {
 							args["repository_id"] = elem[:idx]
 							elem = elem[idx:]
@@ -2265,7 +2265,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 								// Param: "environment_name"
 								// Match until one of "/"
-								idx := strings.IndexAny(elem, "/")
+								idx := strings.IndexByte(elem, '/')
 								if idx > 0 {
 									args["environment_name"] = elem[:idx]
 									elem = elem[idx:]
@@ -2315,7 +2315,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 					// Param: "enterprise"
 					// Match until one of "/"
-					idx := strings.IndexAny(elem, "/")
+					idx := strings.IndexByte(elem, '/')
 					if idx > 0 {
 						args["enterprise"] = elem[:idx]
 						elem = elem[idx:]
@@ -2376,7 +2376,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 					// Param: "org"
 					// Match until one of "/"
-					idx := strings.IndexAny(elem, "/")
+					idx := strings.IndexByte(elem, '/')
 					if idx > 0 {
 						args["org"] = elem[:idx]
 						elem = elem[idx:]
@@ -2411,7 +2411,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 				// Param: "team_id"
 				// Match until one of "/"
-				idx := strings.IndexAny(elem, "/")
+				idx := strings.IndexByte(elem, '/')
 				if idx > 0 {
 					args["team_id"] = elem[:idx]
 					elem = elem[idx:]
@@ -2442,7 +2442,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 							// Param: "discussion_number"
 							// Match until one of "/"
-							idx := strings.IndexAny(elem, "/")
+							idx := strings.IndexByte(elem, '/')
 							if idx > 0 {
 								args["discussion_number"] = elem[:idx]
 								elem = elem[idx:]
@@ -2532,7 +2532,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 							// Param: "owner"
 							// Match until one of "/"
-							idx := strings.IndexAny(elem, "/")
+							idx := strings.IndexByte(elem, '/')
 							if idx > 0 {
 								args["owner"] = elem[:idx]
 								elem = elem[idx:]
@@ -2657,7 +2657,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 							// Param: "installation_id"
 							// Match until one of "/"
-							idx := strings.IndexAny(elem, "/")
+							idx := strings.IndexByte(elem, '/')
 							if idx > 0 {
 								args["installation_id"] = elem[:idx]
 								elem = elem[idx:]
@@ -2716,7 +2716,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 						// Param: "migration_id"
 						// Match until one of "/"
-						idx := strings.IndexAny(elem, "/")
+						idx := strings.IndexByte(elem, '/')
 						if idx > 0 {
 							args["migration_id"] = elem[:idx]
 							elem = elem[idx:]
@@ -2756,7 +2756,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 									// Param: "repo_name"
 									// Match until one of "/"
-									idx := strings.IndexAny(elem, "/")
+									idx := strings.IndexByte(elem, '/')
 									if idx > 0 {
 										args["repo_name"] = elem[:idx]
 										elem = elem[idx:]
@@ -2789,7 +2789,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 						// Param: "package_type"
 						// Match until one of "/"
-						idx := strings.IndexAny(elem, "/")
+						idx := strings.IndexByte(elem, '/')
 						if idx > 0 {
 							args["package_type"] = elem[:idx]
 							elem = elem[idx:]
@@ -2807,7 +2807,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 								// Param: "package_name"
 								// Match until one of "/"
-								idx := strings.IndexAny(elem, "/")
+								idx := strings.IndexByte(elem, '/')
 								if idx > 0 {
 									args["package_name"] = elem[:idx]
 									elem = elem[idx:]
@@ -2858,7 +2858,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 						// Param: "owner"
 						// Match until one of "/"
-						idx := strings.IndexAny(elem, "/")
+						idx := strings.IndexByte(elem, '/')
 						if idx > 0 {
 							args["owner"] = elem[:idx]
 							elem = elem[idx:]
@@ -2893,7 +2893,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 					// Param: "username"
 					// Match until one of "/"
-					idx := strings.IndexAny(elem, "/")
+					idx := strings.IndexByte(elem, '/')
 					if idx > 0 {
 						args["username"] = elem[:idx]
 						elem = elem[idx:]
@@ -2911,7 +2911,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 							// Param: "package_type"
 							// Match until one of "/"
-							idx := strings.IndexAny(elem, "/")
+							idx := strings.IndexByte(elem, '/')
 							if idx > 0 {
 								args["package_type"] = elem[:idx]
 								elem = elem[idx:]
@@ -2929,7 +2929,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 									// Param: "package_name"
 									// Match until one of "/"
-									idx := strings.IndexAny(elem, "/")
+									idx := strings.IndexByte(elem, '/')
 									if idx > 0 {
 										args["package_name"] = elem[:idx]
 										elem = elem[idx:]
@@ -3181,7 +3181,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 					// Param: "enterprise"
 					// Match until one of "/"
-					idx := strings.IndexAny(elem, "/")
+					idx := strings.IndexByte(elem, '/')
 					if idx > 0 {
 						args["enterprise"] = elem[:idx]
 						elem = elem[idx:]
@@ -3305,7 +3305,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 												// Param: "runner_group_id"
 												// Match until one of "/"
-												idx := strings.IndexAny(elem, "/")
+												idx := strings.IndexByte(elem, '/')
 												if idx > 0 {
 													args["runner_group_id"] = elem[:idx]
 													elem = elem[idx:]
@@ -3531,7 +3531,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						}
 						// Param: "gist_id"
 						// Match until one of "/"
-						idx := strings.IndexAny(elem, "/")
+						idx := strings.IndexByte(elem, '/')
 						if idx > 0 {
 							args["gist_id"] = elem[:idx]
 							elem = elem[idx:]
@@ -3781,7 +3781,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 							// Param: "plan_id"
 							// Match until one of "/"
-							idx := strings.IndexAny(elem, "/")
+							idx := strings.IndexByte(elem, '/')
 							if idx > 0 {
 								args["plan_id"] = elem[:idx]
 								elem = elem[idx:]
@@ -3850,7 +3850,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 								// Param: "plan_id"
 								// Match until one of "/"
-								idx := strings.IndexAny(elem, "/")
+								idx := strings.IndexByte(elem, '/')
 								if idx > 0 {
 									args["plan_id"] = elem[:idx]
 									elem = elem[idx:]
@@ -3906,7 +3906,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 					// Param: "owner"
 					// Match until one of "/"
-					idx := strings.IndexAny(elem, "/")
+					idx := strings.IndexByte(elem, '/')
 					if idx > 0 {
 						args["owner"] = elem[:idx]
 						elem = elem[idx:]
@@ -3924,7 +3924,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 							// Param: "repo"
 							// Match until one of "/"
-							idx := strings.IndexAny(elem, "/")
+							idx := strings.IndexByte(elem, '/')
 							if idx > 0 {
 								args["repo"] = elem[:idx]
 								elem = elem[idx:]
@@ -3968,7 +3968,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 						// Param: "thread_id"
 						// Match until one of "/"
-						idx := strings.IndexAny(elem, "/")
+						idx := strings.IndexByte(elem, '/')
 						if idx > 0 {
 							args["thread_id"] = elem[:idx]
 							elem = elem[idx:]
@@ -4023,7 +4023,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 					// Param: "org"
 					// Match until one of "/"
-					idx := strings.IndexAny(elem, "/")
+					idx := strings.IndexByte(elem, '/')
 					if idx > 0 {
 						args["org"] = elem[:idx]
 						elem = elem[idx:]
@@ -4148,7 +4148,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 												// Param: "runner_group_id"
 												// Match until one of "/"
-												idx := strings.IndexAny(elem, "/")
+												idx := strings.IndexByte(elem, '/')
 												if idx > 0 {
 													args["runner_group_id"] = elem[:idx]
 													elem = elem[idx:]
@@ -4274,7 +4274,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											}
 											// Param: "secret_name"
 											// Match until one of "/"
-											idx := strings.IndexAny(elem, "/")
+											idx := strings.IndexByte(elem, '/')
 											if idx > 0 {
 												args["secret_name"] = elem[:idx]
 												elem = elem[idx:]
@@ -4387,7 +4387,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 									// Param: "hook_id"
 									// Match until one of "/"
-									idx := strings.IndexAny(elem, "/")
+									idx := strings.IndexByte(elem, '/')
 									if idx > 0 {
 										args["hook_id"] = elem[:idx]
 										elem = elem[idx:]
@@ -4483,7 +4483,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 										// Param: "invitation_id"
 										// Match until one of "/"
-										idx := strings.IndexAny(elem, "/")
+										idx := strings.IndexByte(elem, '/')
 										if idx > 0 {
 											args["invitation_id"] = elem[:idx]
 											elem = elem[idx:]
@@ -4590,7 +4590,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 										// Param: "migration_id"
 										// Match until one of "/"
-										idx := strings.IndexAny(elem, "/")
+										idx := strings.IndexByte(elem, '/')
 										if idx > 0 {
 											args["migration_id"] = elem[:idx]
 											elem = elem[idx:]
@@ -4680,7 +4680,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 										// Param: "package_type"
 										// Match until one of "/"
-										idx := strings.IndexAny(elem, "/")
+										idx := strings.IndexByte(elem, '/')
 										if idx > 0 {
 											args["package_type"] = elem[:idx]
 											elem = elem[idx:]
@@ -4698,7 +4698,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 												// Param: "package_name"
 												// Match until one of "/"
-												idx := strings.IndexAny(elem, "/")
+												idx := strings.IndexByte(elem, '/')
 												if idx > 0 {
 													args["package_name"] = elem[:idx]
 													elem = elem[idx:]
@@ -4897,7 +4897,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 										// Param: "team_slug"
 										// Match until one of "/"
-										idx := strings.IndexAny(elem, "/")
+										idx := strings.IndexByte(elem, '/')
 										if idx > 0 {
 											args["team_slug"] = elem[:idx]
 											elem = elem[idx:]
@@ -4940,7 +4940,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 														// Param: "discussion_number"
 														// Match until one of "/"
-														idx := strings.IndexAny(elem, "/")
+														idx := strings.IndexByte(elem, '/')
 														if idx > 0 {
 															args["discussion_number"] = elem[:idx]
 															elem = elem[idx:]
@@ -4983,7 +4983,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 																		// Param: "comment_number"
 																		// Match until one of "/"
-																		idx := strings.IndexAny(elem, "/")
+																		idx := strings.IndexByte(elem, '/')
 																		if idx > 0 {
 																			args["comment_number"] = elem[:idx]
 																			elem = elem[idx:]
@@ -5105,7 +5105,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 														// Param: "owner"
 														// Match until one of "/"
-														idx := strings.IndexAny(elem, "/")
+														idx := strings.IndexByte(elem, '/')
 														if idx > 0 {
 															args["owner"] = elem[:idx]
 															elem = elem[idx:]
@@ -5213,7 +5213,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					}
 					// Param: "column_id"
 					// Match until one of "/"
-					idx := strings.IndexAny(elem, "/")
+					idx := strings.IndexByte(elem, '/')
 					if idx > 0 {
 						args["column_id"] = elem[:idx]
 						elem = elem[idx:]
@@ -5238,7 +5238,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				}
 				// Param: "project_id"
 				// Match until one of "/"
-				idx := strings.IndexAny(elem, "/")
+				idx := strings.IndexByte(elem, '/')
 				if idx > 0 {
 					args["project_id"] = elem[:idx]
 					elem = elem[idx:]
@@ -5281,7 +5281,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 								// Param: "username"
 								// Match until one of "/"
-								idx := strings.IndexAny(elem, "/")
+								idx := strings.IndexByte(elem, '/')
 								if idx > 0 {
 									args["username"] = elem[:idx]
 									elem = elem[idx:]
@@ -5359,7 +5359,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 						// Param: "owner"
 						// Match until one of "/"
-						idx := strings.IndexAny(elem, "/")
+						idx := strings.IndexByte(elem, '/')
 						if idx > 0 {
 							args["owner"] = elem[:idx]
 							elem = elem[idx:]
@@ -5377,7 +5377,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 								// Param: "repo"
 								// Match until one of "/"
-								idx := strings.IndexAny(elem, "/")
+								idx := strings.IndexByte(elem, '/')
 								if idx > 0 {
 									args["repo"] = elem[:idx]
 									elem = elem[idx:]
@@ -5444,7 +5444,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 														// Param: "artifact_id"
 														// Match until one of "/"
-														idx := strings.IndexAny(elem, "/")
+														idx := strings.IndexByte(elem, '/')
 														if idx > 0 {
 															args["artifact_id"] = elem[:idx]
 															elem = elem[idx:]
@@ -5480,7 +5480,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 													// Param: "job_id"
 													// Match until one of "/"
-													idx := strings.IndexAny(elem, "/")
+													idx := strings.IndexByte(elem, '/')
 													if idx > 0 {
 														args["job_id"] = elem[:idx]
 														elem = elem[idx:]
@@ -5600,7 +5600,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 															// Param: "run_id"
 															// Match until one of "/"
-															idx := strings.IndexAny(elem, "/")
+															idx := strings.IndexByte(elem, '/')
 															if idx > 0 {
 																args["run_id"] = elem[:idx]
 																elem = elem[idx:]
@@ -5820,7 +5820,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 												// Param: "branch"
 												// Match until one of "/"
-												idx := strings.IndexAny(elem, "/")
+												idx := strings.IndexByte(elem, '/')
 												if idx > 0 {
 													args["branch"] = elem[:idx]
 													elem = elem[idx:]
@@ -6040,7 +6040,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 													// Param: "check_run_id"
 													// Match until one of "/"
-													idx := strings.IndexAny(elem, "/")
+													idx := strings.IndexByte(elem, '/')
 													if idx > 0 {
 														args["check_run_id"] = elem[:idx]
 														elem = elem[idx:]
@@ -6071,7 +6071,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 													// Param: "check_suite_id"
 													// Match until one of "/"
-													idx := strings.IndexAny(elem, "/")
+													idx := strings.IndexByte(elem, '/')
 													if idx > 0 {
 														args["check_suite_id"] = elem[:idx]
 														elem = elem[idx:]
@@ -6151,7 +6151,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 																// Param: "alert_number"
 																// Match until one of "/"
-																idx := strings.IndexAny(elem, "/")
+																idx := strings.IndexByte(elem, '/')
 																if idx > 0 {
 																	args["alert_number"] = elem[:idx]
 																	elem = elem[idx:]
@@ -6238,7 +6238,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 														// Param: "username"
 														// Match until one of "/"
-														idx := strings.IndexAny(elem, "/")
+														idx := strings.IndexByte(elem, '/')
 														if idx > 0 {
 															args["username"] = elem[:idx]
 															elem = elem[idx:]
@@ -6306,7 +6306,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 																// Param: "comment_id"
 																// Match until one of "/"
-																idx := strings.IndexAny(elem, "/")
+																idx := strings.IndexByte(elem, '/')
 																if idx > 0 {
 																	args["comment_id"] = elem[:idx]
 																	elem = elem[idx:]
@@ -6350,7 +6350,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 																// Param: "ref"
 																// Match until one of "/"
-																idx := strings.IndexAny(elem, "/")
+																idx := strings.IndexByte(elem, '/')
 																if idx > 0 {
 																	args["ref"] = elem[:idx]
 																	elem = elem[idx:]
@@ -6534,7 +6534,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 												// Param: "deployment_id"
 												// Match until one of "/"
-												idx := strings.IndexAny(elem, "/")
+												idx := strings.IndexByte(elem, '/')
 												if idx > 0 {
 													args["deployment_id"] = elem[:idx]
 													elem = elem[idx:]
@@ -6725,7 +6725,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 												// Param: "hook_id"
 												// Match until one of "/"
-												idx := strings.IndexAny(elem, "/")
+												idx := strings.IndexByte(elem, '/')
 												if idx > 0 {
 													args["hook_id"] = elem[:idx]
 													elem = elem[idx:]
@@ -6900,7 +6900,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 															// Param: "comment_id"
 															// Match until one of "/"
-															idx := strings.IndexAny(elem, "/")
+															idx := strings.IndexByte(elem, '/')
 															if idx > 0 {
 																args["comment_id"] = elem[:idx]
 																elem = elem[idx:]
@@ -6953,7 +6953,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													}
 													// Param: "issue_number"
 													// Match until one of "/"
-													idx := strings.IndexAny(elem, "/")
+													idx := strings.IndexByte(elem, '/')
 													if idx > 0 {
 														args["issue_number"] = elem[:idx]
 														elem = elem[idx:]
@@ -7131,7 +7131,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 												// Param: "milestone_number"
 												// Match until one of "/"
-												idx := strings.IndexAny(elem, "/")
+												idx := strings.IndexByte(elem, '/')
 												if idx > 0 {
 													args["milestone_number"] = elem[:idx]
 													elem = elem[idx:]
@@ -7309,7 +7309,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 															// Param: "comment_id"
 															// Match until one of "/"
-															idx := strings.IndexAny(elem, "/")
+															idx := strings.IndexByte(elem, '/')
 															if idx > 0 {
 																args["comment_id"] = elem[:idx]
 																elem = elem[idx:]
@@ -7335,7 +7335,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													}
 													// Param: "pull_number"
 													// Match until one of "/"
-													idx := strings.IndexAny(elem, "/")
+													idx := strings.IndexByte(elem, '/')
 													if idx > 0 {
 														args["pull_number"] = elem[:idx]
 														elem = elem[idx:]
@@ -7453,7 +7453,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 																		// Param: "review_id"
 																		// Match until one of "/"
-																		idx := strings.IndexAny(elem, "/")
+																		idx := strings.IndexByte(elem, '/')
 																		if idx > 0 {
 																			args["review_id"] = elem[:idx]
 																			elem = elem[idx:]
@@ -7586,7 +7586,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													}
 													// Param: "release_id"
 													// Match until one of "/"
-													idx := strings.IndexAny(elem, "/")
+													idx := strings.IndexByte(elem, '/')
 													if idx > 0 {
 														args["release_id"] = elem[:idx]
 														elem = elem[idx:]
@@ -7958,7 +7958,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 							// Param: "repository_id"
 							// Match until one of "/"
-							idx := strings.IndexAny(elem, "/")
+							idx := strings.IndexByte(elem, '/')
 							if idx > 0 {
 								args["repository_id"] = elem[:idx]
 								elem = elem[idx:]
@@ -7976,7 +7976,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 									// Param: "environment_name"
 									// Match until one of "/"
-									idx := strings.IndexAny(elem, "/")
+									idx := strings.IndexByte(elem, '/')
 									if idx > 0 {
 										args["environment_name"] = elem[:idx]
 										elem = elem[idx:]
@@ -8056,7 +8056,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 					// Param: "enterprise"
 					// Match until one of "/"
-					idx := strings.IndexAny(elem, "/")
+					idx := strings.IndexByte(elem, '/')
 					if idx > 0 {
 						args["enterprise"] = elem[:idx]
 						elem = elem[idx:]
@@ -8240,7 +8240,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 				// Param: "team_id"
 				// Match until one of "/"
-				idx := strings.IndexAny(elem, "/")
+				idx := strings.IndexByte(elem, '/')
 				if idx > 0 {
 					args["team_id"] = elem[:idx]
 					elem = elem[idx:]
@@ -8283,7 +8283,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 								// Param: "discussion_number"
 								// Match until one of "/"
-								idx := strings.IndexAny(elem, "/")
+								idx := strings.IndexByte(elem, '/')
 								if idx > 0 {
 									args["discussion_number"] = elem[:idx]
 									elem = elem[idx:]
@@ -8326,7 +8326,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 												// Param: "comment_number"
 												// Match until one of "/"
-												idx := strings.IndexAny(elem, "/")
+												idx := strings.IndexByte(elem, '/')
 												if idx > 0 {
 													args["comment_number"] = elem[:idx]
 													elem = elem[idx:]
@@ -8462,7 +8462,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 								// Param: "owner"
 								// Match until one of "/"
-								idx := strings.IndexAny(elem, "/")
+								idx := strings.IndexByte(elem, '/')
 								if idx > 0 {
 									args["owner"] = elem[:idx]
 									elem = elem[idx:]
@@ -8683,7 +8683,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 							// Param: "installation_id"
 							// Match until one of "/"
-							idx := strings.IndexAny(elem, "/")
+							idx := strings.IndexByte(elem, '/')
 							if idx > 0 {
 								args["installation_id"] = elem[:idx]
 								elem = elem[idx:]
@@ -8825,7 +8825,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 								// Param: "migration_id"
 								// Match until one of "/"
-								idx := strings.IndexAny(elem, "/")
+								idx := strings.IndexByte(elem, '/')
 								if idx > 0 {
 									args["migration_id"] = elem[:idx]
 									elem = elem[idx:]
@@ -8915,7 +8915,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 								// Param: "package_type"
 								// Match until one of "/"
-								idx := strings.IndexAny(elem, "/")
+								idx := strings.IndexByte(elem, '/')
 								if idx > 0 {
 									args["package_type"] = elem[:idx]
 									elem = elem[idx:]
@@ -8933,7 +8933,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 										// Param: "package_name"
 										// Match until one of "/"
-										idx := strings.IndexAny(elem, "/")
+										idx := strings.IndexByte(elem, '/')
 										if idx > 0 {
 											args["package_name"] = elem[:idx]
 											elem = elem[idx:]
@@ -9042,7 +9042,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 								// Param: "owner"
 								// Match until one of "/"
-								idx := strings.IndexAny(elem, "/")
+								idx := strings.IndexByte(elem, '/')
 								if idx > 0 {
 									args["owner"] = elem[:idx]
 									elem = elem[idx:]
@@ -9111,7 +9111,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 						// Param: "username"
 						// Match until one of "/"
-						idx := strings.IndexAny(elem, "/")
+						idx := strings.IndexByte(elem, '/')
 						if idx > 0 {
 							args["username"] = elem[:idx]
 							elem = elem[idx:]
@@ -9329,7 +9329,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 											// Param: "package_type"
 											// Match until one of "/"
-											idx := strings.IndexAny(elem, "/")
+											idx := strings.IndexByte(elem, '/')
 											if idx > 0 {
 												args["package_type"] = elem[:idx]
 												elem = elem[idx:]
@@ -9347,7 +9347,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 													// Param: "package_name"
 													// Match until one of "/"
-													idx := strings.IndexAny(elem, "/")
+													idx := strings.IndexByte(elem, '/')
 													if idx > 0 {
 														args["package_name"] = elem[:idx]
 														elem = elem[idx:]
@@ -9579,7 +9579,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 						// Param: "client_id"
 						// Match until one of "/"
-						idx := strings.IndexAny(elem, "/")
+						idx := strings.IndexByte(elem, '/')
 						if idx > 0 {
 							args["client_id"] = elem[:idx]
 							elem = elem[idx:]
@@ -9625,7 +9625,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 				// Param: "enterprise"
 				// Match until one of "/"
-				idx := strings.IndexAny(elem, "/")
+				idx := strings.IndexByte(elem, '/')
 				if idx > 0 {
 					args["enterprise"] = elem[:idx]
 					elem = elem[idx:]
@@ -9659,7 +9659,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 				// Param: "gist_id"
 				// Match until one of "/"
-				idx := strings.IndexAny(elem, "/")
+				idx := strings.IndexByte(elem, '/')
 				if idx > 0 {
 					args["gist_id"] = elem[:idx]
 					elem = elem[idx:]
@@ -9707,7 +9707,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 				// Param: "org"
 				// Match until one of "/"
-				idx := strings.IndexAny(elem, "/")
+				idx := strings.IndexByte(elem, '/')
 				if idx > 0 {
 					args["org"] = elem[:idx]
 					elem = elem[idx:]
@@ -9751,7 +9751,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 							// Param: "hook_id"
 							// Match until one of "/"
-							idx := strings.IndexAny(elem, "/")
+							idx := strings.IndexByte(elem, '/')
 							if idx > 0 {
 								args["hook_id"] = elem[:idx]
 								elem = elem[idx:]
@@ -9782,7 +9782,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 							// Param: "team_slug"
 							// Match until one of "/"
-							idx := strings.IndexAny(elem, "/")
+							idx := strings.IndexByte(elem, '/')
 							if idx > 0 {
 								args["team_slug"] = elem[:idx]
 								elem = elem[idx:]
@@ -9813,7 +9813,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 										// Param: "discussion_number"
 										// Match until one of "/"
-										idx := strings.IndexAny(elem, "/")
+										idx := strings.IndexByte(elem, '/')
 										if idx > 0 {
 											args["discussion_number"] = elem[:idx]
 											elem = elem[idx:]
@@ -9917,7 +9917,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 				// Param: "owner"
 				// Match until one of "/"
-				idx := strings.IndexAny(elem, "/")
+				idx := strings.IndexByte(elem, '/')
 				if idx > 0 {
 					args["owner"] = elem[:idx]
 					elem = elem[idx:]
@@ -9935,7 +9935,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 						// Param: "repo"
 						// Match until one of "/"
-						idx := strings.IndexAny(elem, "/")
+						idx := strings.IndexByte(elem, '/')
 						if idx > 0 {
 							args["repo"] = elem[:idx]
 							elem = elem[idx:]
@@ -9966,7 +9966,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 									// Param: "branch"
 									// Match until one of "/"
-									idx := strings.IndexAny(elem, "/")
+									idx := strings.IndexByte(elem, '/')
 									if idx > 0 {
 										args["branch"] = elem[:idx]
 										elem = elem[idx:]
@@ -10097,7 +10097,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 									// Param: "hook_id"
 									// Match until one of "/"
-									idx := strings.IndexAny(elem, "/")
+									idx := strings.IndexByte(elem, '/')
 									if idx > 0 {
 										args["hook_id"] = elem[:idx]
 										elem = elem[idx:]
@@ -10351,7 +10351,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 				// Param: "enterprise"
 				// Match until one of "/"
-				idx := strings.IndexAny(elem, "/")
+				idx := strings.IndexByte(elem, '/')
 				if idx > 0 {
 					args["enterprise"] = elem[:idx]
 					elem = elem[idx:]
@@ -10412,7 +10412,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 				// Param: "team_id"
 				// Match until one of "/"
-				idx := strings.IndexAny(elem, "/")
+				idx := strings.IndexByte(elem, '/')
 				if idx > 0 {
 					args["team_id"] = elem[:idx]
 					elem = elem[idx:]
@@ -10443,7 +10443,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 							// Param: "discussion_number"
 							// Match until one of "/"
-							idx := strings.IndexAny(elem, "/")
+							idx := strings.IndexByte(elem, '/')
 							if idx > 0 {
 								args["discussion_number"] = elem[:idx]
 								elem = elem[idx:]
@@ -10610,7 +10610,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 							// Param: "delivery_id"
 							// Match until one of "/"
-							idx := strings.IndexAny(elem, "/")
+							idx := strings.IndexByte(elem, '/')
 							if idx > 0 {
 								args["delivery_id"] = elem[:idx]
 								elem = elem[idx:]
@@ -10640,7 +10640,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 							// Param: "installation_id"
 							// Match until one of "/"
-							idx := strings.IndexAny(elem, "/")
+							idx := strings.IndexByte(elem, '/')
 							if idx > 0 {
 								args["installation_id"] = elem[:idx]
 								elem = elem[idx:]
@@ -10671,7 +10671,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 						// Param: "client_id"
 						// Match until one of "/"
-						idx := strings.IndexAny(elem, "/")
+						idx := strings.IndexByte(elem, '/')
 						if idx > 0 {
 							args["client_id"] = elem[:idx]
 							elem = elem[idx:]
@@ -10726,7 +10726,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 				// Param: "enterprise"
 				// Match until one of "/"
-				idx := strings.IndexAny(elem, "/")
+				idx := strings.IndexByte(elem, '/')
 				if idx > 0 {
 					args["enterprise"] = elem[:idx]
 					elem = elem[idx:]
@@ -10814,7 +10814,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 					// Param: "gist_id"
 					// Match until one of "/"
-					idx := strings.IndexAny(elem, "/")
+					idx := strings.IndexByte(elem, '/')
 					if idx > 0 {
 						args["gist_id"] = elem[:idx]
 						elem = elem[idx:]
@@ -10868,7 +10868,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 				// Param: "org"
 				// Match until one of "/"
-				idx := strings.IndexAny(elem, "/")
+				idx := strings.IndexByte(elem, '/')
 				if idx > 0 {
 					args["org"] = elem[:idx]
 					elem = elem[idx:]
@@ -10966,7 +10966,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 								// Param: "hook_id"
 								// Match until one of "/"
-								idx := strings.IndexAny(elem, "/")
+								idx := strings.IndexByte(elem, '/')
 								if idx > 0 {
 									args["hook_id"] = elem[:idx]
 									elem = elem[idx:]
@@ -10996,7 +10996,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 											// Param: "delivery_id"
 											// Match until one of "/"
-											idx := strings.IndexAny(elem, "/")
+											idx := strings.IndexByte(elem, '/')
 											if idx > 0 {
 												args["delivery_id"] = elem[:idx]
 												elem = elem[idx:]
@@ -11072,7 +11072,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 								// Param: "package_type"
 								// Match until one of "/"
-								idx := strings.IndexAny(elem, "/")
+								idx := strings.IndexByte(elem, '/')
 								if idx > 0 {
 									args["package_type"] = elem[:idx]
 									elem = elem[idx:]
@@ -11090,7 +11090,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 										// Param: "package_name"
 										// Match until one of "/"
-										idx := strings.IndexAny(elem, "/")
+										idx := strings.IndexByte(elem, '/')
 										if idx > 0 {
 											args["package_name"] = elem[:idx]
 											elem = elem[idx:]
@@ -11130,7 +11130,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 													// Param: "package_version_id"
 													// Match until one of "/"
-													idx := strings.IndexAny(elem, "/")
+													idx := strings.IndexByte(elem, '/')
 													if idx > 0 {
 														args["package_version_id"] = elem[:idx]
 														elem = elem[idx:]
@@ -11198,7 +11198,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 								// Param: "team_slug"
 								// Match until one of "/"
-								idx := strings.IndexAny(elem, "/")
+								idx := strings.IndexByte(elem, '/')
 								if idx > 0 {
 									args["team_slug"] = elem[:idx]
 									elem = elem[idx:]
@@ -11228,7 +11228,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 											// Param: "discussion_number"
 											// Match until one of "/"
-											idx := strings.IndexAny(elem, "/")
+											idx := strings.IndexByte(elem, '/')
 											if idx > 0 {
 												args["discussion_number"] = elem[:idx]
 												elem = elem[idx:]
@@ -11270,7 +11270,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 															// Param: "comment_number"
 															// Match until one of "/"
-															idx := strings.IndexAny(elem, "/")
+															idx := strings.IndexByte(elem, '/')
 															if idx > 0 {
 																args["comment_number"] = elem[:idx]
 																elem = elem[idx:]
@@ -11344,7 +11344,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 						// Param: "card_id"
 						// Match until one of "/"
-						idx := strings.IndexAny(elem, "/")
+						idx := strings.IndexByte(elem, '/')
 						if idx > 0 {
 							args["card_id"] = elem[:idx]
 							elem = elem[idx:]
@@ -11368,7 +11368,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					}
 					// Param: "column_id"
 					// Match until one of "/"
-					idx := strings.IndexAny(elem, "/")
+					idx := strings.IndexByte(elem, '/')
 					if idx > 0 {
 						args["column_id"] = elem[:idx]
 						elem = elem[idx:]
@@ -11392,7 +11392,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				}
 				// Param: "project_id"
 				// Match until one of "/"
-				idx := strings.IndexAny(elem, "/")
+				idx := strings.IndexByte(elem, '/')
 				if idx > 0 {
 					args["project_id"] = elem[:idx]
 					elem = elem[idx:]
@@ -11422,7 +11422,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 				// Param: "owner"
 				// Match until one of "/"
-				idx := strings.IndexAny(elem, "/")
+				idx := strings.IndexByte(elem, '/')
 				if idx > 0 {
 					args["owner"] = elem[:idx]
 					elem = elem[idx:]
@@ -11440,7 +11440,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 						// Param: "repo"
 						// Match until one of "/"
-						idx := strings.IndexAny(elem, "/")
+						idx := strings.IndexByte(elem, '/')
 						if idx > 0 {
 							args["repo"] = elem[:idx]
 							elem = elem[idx:]
@@ -11527,7 +11527,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 											// Param: "run_id"
 											// Match until one of "/"
-											idx := strings.IndexAny(elem, "/")
+											idx := strings.IndexByte(elem, '/')
 											if idx > 0 {
 												args["run_id"] = elem[:idx]
 												elem = elem[idx:]
@@ -11635,7 +11635,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 									// Param: "branch"
 									// Match until one of "/"
-									idx := strings.IndexAny(elem, "/")
+									idx := strings.IndexByte(elem, '/')
 									if idx > 0 {
 										args["branch"] = elem[:idx]
 										elem = elem[idx:]
@@ -11814,7 +11814,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 											// Param: "check_suite_id"
 											// Match until one of "/"
-											idx := strings.IndexAny(elem, "/")
+											idx := strings.IndexByte(elem, '/')
 											if idx > 0 {
 												args["check_suite_id"] = elem[:idx]
 												elem = elem[idx:]
@@ -11879,7 +11879,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 												// Param: "comment_id"
 												// Match until one of "/"
-												idx := strings.IndexAny(elem, "/")
+												idx := strings.IndexByte(elem, '/')
 												if idx > 0 {
 													args["comment_id"] = elem[:idx]
 													elem = elem[idx:]
@@ -11909,7 +11909,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 												// Param: "commit_sha"
 												// Match until one of "/"
-												idx := strings.IndexAny(elem, "/")
+												idx := strings.IndexByte(elem, '/')
 												if idx > 0 {
 													args["commit_sha"] = elem[:idx]
 													elem = elem[idx:]
@@ -11940,7 +11940,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 											// Param: "content_reference_id"
 											// Match until one of "/"
-											idx := strings.IndexAny(elem, "/")
+											idx := strings.IndexByte(elem, '/')
 											if idx > 0 {
 												args["content_reference_id"] = elem[:idx]
 												elem = elem[idx:]
@@ -11996,7 +11996,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 											// Param: "deployment_id"
 											// Match until one of "/"
-											idx := strings.IndexAny(elem, "/")
+											idx := strings.IndexByte(elem, '/')
 											if idx > 0 {
 												args["deployment_id"] = elem[:idx]
 												elem = elem[idx:]
@@ -12159,7 +12159,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 										// Param: "hook_id"
 										// Match until one of "/"
-										idx := strings.IndexAny(elem, "/")
+										idx := strings.IndexByte(elem, '/')
 										if idx > 0 {
 											args["hook_id"] = elem[:idx]
 											elem = elem[idx:]
@@ -12189,7 +12189,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 													// Param: "delivery_id"
 													// Match until one of "/"
-													idx := strings.IndexAny(elem, "/")
+													idx := strings.IndexByte(elem, '/')
 													if idx > 0 {
 														args["delivery_id"] = elem[:idx]
 														elem = elem[idx:]
@@ -12266,7 +12266,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 											// Param: "comment_id"
 											// Match until one of "/"
-											idx := strings.IndexAny(elem, "/")
+											idx := strings.IndexByte(elem, '/')
 											if idx > 0 {
 												args["comment_id"] = elem[:idx]
 												elem = elem[idx:]
@@ -12290,7 +12290,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										}
 										// Param: "issue_number"
 										// Match until one of "/"
-										idx := strings.IndexAny(elem, "/")
+										idx := strings.IndexByte(elem, '/')
 										if idx > 0 {
 											args["issue_number"] = elem[:idx]
 											elem = elem[idx:]
@@ -12498,7 +12498,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 												// Param: "comment_id"
 												// Match until one of "/"
-												idx := strings.IndexAny(elem, "/")
+												idx := strings.IndexByte(elem, '/')
 												if idx > 0 {
 													args["comment_id"] = elem[:idx]
 													elem = elem[idx:]
@@ -12522,7 +12522,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											}
 											// Param: "pull_number"
 											// Match until one of "/"
-											idx := strings.IndexAny(elem, "/")
+											idx := strings.IndexByte(elem, '/')
 											if idx > 0 {
 												args["pull_number"] = elem[:idx]
 												elem = elem[idx:]
@@ -12564,7 +12564,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 															// Param: "comment_id"
 															// Match until one of "/"
-															idx := strings.IndexAny(elem, "/")
+															idx := strings.IndexByte(elem, '/')
 															if idx > 0 {
 																args["comment_id"] = elem[:idx]
 																elem = elem[idx:]
@@ -12607,7 +12607,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 															// Param: "review_id"
 															// Match until one of "/"
-															idx := strings.IndexAny(elem, "/")
+															idx := strings.IndexByte(elem, '/')
 															if idx > 0 {
 																args["review_id"] = elem[:idx]
 																elem = elem[idx:]
@@ -12655,7 +12655,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 										// Param: "release_id"
 										// Match until one of "/"
-										idx := strings.IndexAny(elem, "/")
+										idx := strings.IndexByte(elem, '/')
 										if idx > 0 {
 											args["release_id"] = elem[:idx]
 											elem = elem[idx:]
@@ -12715,7 +12715,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 				// Param: "enterprise"
 				// Match until one of "/"
-				idx := strings.IndexAny(elem, "/")
+				idx := strings.IndexByte(elem, '/')
 				if idx > 0 {
 					args["enterprise"] = elem[:idx]
 					elem = elem[idx:]
@@ -12768,7 +12768,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 				// Param: "team_id"
 				// Match until one of "/"
-				idx := strings.IndexAny(elem, "/")
+				idx := strings.IndexByte(elem, '/')
 				if idx > 0 {
 					args["team_id"] = elem[:idx]
 					elem = elem[idx:]
@@ -12798,7 +12798,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 							// Param: "discussion_number"
 							// Match until one of "/"
-							idx := strings.IndexAny(elem, "/")
+							idx := strings.IndexByte(elem, '/')
 							if idx > 0 {
 								args["discussion_number"] = elem[:idx]
 								elem = elem[idx:]
@@ -12840,7 +12840,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 											// Param: "comment_number"
 											// Match until one of "/"
-											idx := strings.IndexAny(elem, "/")
+											idx := strings.IndexByte(elem, '/')
 											if idx > 0 {
 												args["comment_number"] = elem[:idx]
 												elem = elem[idx:]
@@ -12963,7 +12963,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 							// Param: "package_type"
 							// Match until one of "/"
-							idx := strings.IndexAny(elem, "/")
+							idx := strings.IndexByte(elem, '/')
 							if idx > 0 {
 								args["package_type"] = elem[:idx]
 								elem = elem[idx:]
@@ -12981,7 +12981,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 									// Param: "package_name"
 									// Match until one of "/"
-									idx := strings.IndexAny(elem, "/")
+									idx := strings.IndexByte(elem, '/')
 									if idx > 0 {
 										args["package_name"] = elem[:idx]
 										elem = elem[idx:]
@@ -13021,7 +13021,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 												// Param: "package_version_id"
 												// Match until one of "/"
-												idx := strings.IndexAny(elem, "/")
+												idx := strings.IndexByte(elem, '/')
 												if idx > 0 {
 													args["package_version_id"] = elem[:idx]
 													elem = elem[idx:]
@@ -13078,7 +13078,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 					// Param: "username"
 					// Match until one of "/"
-					idx := strings.IndexAny(elem, "/")
+					idx := strings.IndexByte(elem, '/')
 					if idx > 0 {
 						args["username"] = elem[:idx]
 						elem = elem[idx:]
@@ -13096,7 +13096,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 							// Param: "package_type"
 							// Match until one of "/"
-							idx := strings.IndexAny(elem, "/")
+							idx := strings.IndexByte(elem, '/')
 							if idx > 0 {
 								args["package_type"] = elem[:idx]
 								elem = elem[idx:]
@@ -13114,7 +13114,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 									// Param: "package_name"
 									// Match until one of "/"
-									idx := strings.IndexAny(elem, "/")
+									idx := strings.IndexByte(elem, '/')
 									if idx > 0 {
 										args["package_name"] = elem[:idx]
 										elem = elem[idx:]
@@ -13154,7 +13154,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 												// Param: "package_version_id"
 												// Match until one of "/"
-												idx := strings.IndexAny(elem, "/")
+												idx := strings.IndexByte(elem, '/')
 												if idx > 0 {
 													args["package_version_id"] = elem[:idx]
 													elem = elem[idx:]
@@ -13223,7 +13223,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 					// Param: "installation_id"
 					// Match until one of "/"
-					idx := strings.IndexAny(elem, "/")
+					idx := strings.IndexByte(elem, '/')
 					if idx > 0 {
 						args["installation_id"] = elem[:idx]
 						elem = elem[idx:]
@@ -13253,7 +13253,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 					// Param: "client_id"
 					// Match until one of "/"
-					idx := strings.IndexAny(elem, "/")
+					idx := strings.IndexByte(elem, '/')
 					if idx > 0 {
 						args["client_id"] = elem[:idx]
 						elem = elem[idx:]
@@ -13289,7 +13289,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 				// Param: "enterprise"
 				// Match until one of "/"
-				idx := strings.IndexAny(elem, "/")
+				idx := strings.IndexByte(elem, '/')
 				if idx > 0 {
 					args["enterprise"] = elem[:idx]
 					elem = elem[idx:]
@@ -13382,7 +13382,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 							// Param: "runner_group_id"
 							// Match until one of "/"
-							idx := strings.IndexAny(elem, "/")
+							idx := strings.IndexByte(elem, '/')
 							if idx > 0 {
 								args["runner_group_id"] = elem[:idx]
 								elem = elem[idx:]
@@ -13472,7 +13472,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 				// Param: "gist_id"
 				// Match until one of "/"
-				idx := strings.IndexAny(elem, "/")
+				idx := strings.IndexByte(elem, '/')
 				if idx > 0 {
 					args["gist_id"] = elem[:idx]
 					elem = elem[idx:]
@@ -13514,7 +13514,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 					// Param: "thread_id"
 					// Match until one of "/"
-					idx := strings.IndexAny(elem, "/")
+					idx := strings.IndexByte(elem, '/')
 					if idx > 0 {
 						args["thread_id"] = elem[:idx]
 						elem = elem[idx:]
@@ -13545,7 +13545,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 				// Param: "org"
 				// Match until one of "/"
-				idx := strings.IndexAny(elem, "/")
+				idx := strings.IndexByte(elem, '/')
 				if idx > 0 {
 					args["org"] = elem[:idx]
 					elem = elem[idx:]
@@ -13650,7 +13650,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 								// Param: "runner_group_id"
 								// Match until one of "/"
-								idx := strings.IndexAny(elem, "/")
+								idx := strings.IndexByte(elem, '/')
 								if idx > 0 {
 									args["runner_group_id"] = elem[:idx]
 									elem = elem[idx:]
@@ -13737,7 +13737,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 								// Param: "secret_name"
 								// Match until one of "/"
-								idx := strings.IndexAny(elem, "/")
+								idx := strings.IndexByte(elem, '/')
 								if idx > 0 {
 									args["secret_name"] = elem[:idx]
 									elem = elem[idx:]
@@ -13852,7 +13852,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 							// Param: "team_slug"
 							// Match until one of "/"
-							idx := strings.IndexAny(elem, "/")
+							idx := strings.IndexByte(elem, '/')
 							if idx > 0 {
 								args["team_slug"] = elem[:idx]
 								elem = elem[idx:]
@@ -13910,7 +13910,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 										// Param: "owner"
 										// Match until one of "/"
-										idx := strings.IndexAny(elem, "/")
+										idx := strings.IndexByte(elem, '/')
 										if idx > 0 {
 											args["owner"] = elem[:idx]
 											elem = elem[idx:]
@@ -13950,7 +13950,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 				// Param: "project_id"
 				// Match until one of "/"
-				idx := strings.IndexAny(elem, "/")
+				idx := strings.IndexByte(elem, '/')
 				if idx > 0 {
 					args["project_id"] = elem[:idx]
 					elem = elem[idx:]
@@ -13996,7 +13996,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 					// Param: "owner"
 					// Match until one of "/"
-					idx := strings.IndexAny(elem, "/")
+					idx := strings.IndexByte(elem, '/')
 					if idx > 0 {
 						args["owner"] = elem[:idx]
 						elem = elem[idx:]
@@ -14014,7 +14014,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 							// Param: "repo"
 							// Match until one of "/"
-							idx := strings.IndexAny(elem, "/")
+							idx := strings.IndexByte(elem, '/')
 							if idx > 0 {
 								args["repo"] = elem[:idx]
 								elem = elem[idx:]
@@ -14117,7 +14117,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 										// Param: "branch"
 										// Match until one of "/"
-										idx := strings.IndexAny(elem, "/")
+										idx := strings.IndexByte(elem, '/')
 										if idx > 0 {
 											args["branch"] = elem[:idx]
 											elem = elem[idx:]
@@ -14289,7 +14289,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 											// Param: "issue_number"
 											// Match until one of "/"
-											idx := strings.IndexAny(elem, "/")
+											idx := strings.IndexByte(elem, '/')
 											if idx > 0 {
 												args["issue_number"] = elem[:idx]
 												elem = elem[idx:]
@@ -14340,7 +14340,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 										// Param: "pull_number"
 										// Match until one of "/"
-										idx := strings.IndexAny(elem, "/")
+										idx := strings.IndexByte(elem, '/')
 										if idx > 0 {
 											args["pull_number"] = elem[:idx]
 											elem = elem[idx:]
@@ -14380,7 +14380,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 													// Param: "review_id"
 													// Match until one of "/"
-													idx := strings.IndexAny(elem, "/")
+													idx := strings.IndexByte(elem, '/')
 													if idx > 0 {
 														args["review_id"] = elem[:idx]
 														elem = elem[idx:]
@@ -14459,7 +14459,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 					// Param: "repository_id"
 					// Match until one of "/"
-					idx := strings.IndexAny(elem, "/")
+					idx := strings.IndexByte(elem, '/')
 					if idx > 0 {
 						args["repository_id"] = elem[:idx]
 						elem = elem[idx:]
@@ -14477,7 +14477,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 							// Param: "environment_name"
 							// Match until one of "/"
-							idx := strings.IndexAny(elem, "/")
+							idx := strings.IndexByte(elem, '/')
 							if idx > 0 {
 								args["environment_name"] = elem[:idx]
 								elem = elem[idx:]
@@ -14514,7 +14514,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 				// Param: "enterprise"
 				// Match until one of "/"
-				idx := strings.IndexAny(elem, "/")
+				idx := strings.IndexByte(elem, '/')
 				if idx > 0 {
 					args["enterprise"] = elem[:idx]
 					elem = elem[idx:]
@@ -14575,7 +14575,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 				// Param: "team_id"
 				// Match until one of "/"
-				idx := strings.IndexAny(elem, "/")
+				idx := strings.IndexByte(elem, '/')
 				if idx > 0 {
 					args["team_id"] = elem[:idx]
 					elem = elem[idx:]
@@ -14660,7 +14660,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 							// Param: "owner"
 							// Match until one of "/"
-							idx := strings.IndexAny(elem, "/")
+							idx := strings.IndexByte(elem, '/')
 							if idx > 0 {
 								args["owner"] = elem[:idx]
 								elem = elem[idx:]
@@ -14749,7 +14749,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 						// Param: "installation_id"
 						// Match until one of "/"
-						idx := strings.IndexAny(elem, "/")
+						idx := strings.IndexByte(elem, '/')
 						if idx > 0 {
 							args["installation_id"] = elem[:idx]
 							elem = elem[idx:]
@@ -14794,7 +14794,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 					// Param: "owner"
 					// Match until one of "/"
-					idx := strings.IndexAny(elem, "/")
+					idx := strings.IndexByte(elem, '/')
 					if idx > 0 {
 						args["owner"] = elem[:idx]
 						elem = elem[idx:]

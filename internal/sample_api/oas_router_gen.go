@@ -91,7 +91,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 			}
 
 			if len(elem) == 0 {
-				s.handleFoobarGetRequest(args, w, r)
+				s.handleErrorGetRequest(args, w, r)
 				return
 			}
 			switch elem[0] {
@@ -115,6 +115,100 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				// Leaf: FoobarGet
 				s.handleFoobarGetRequest(args, w, r)
 				return
+			case 'n': // Prefix: "name/"
+				if prefix := "name/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+					elem = elem[len(prefix):]
+				} else {
+					break
+				}
+
+				// Param: "id"
+				// Match until one of "/"
+				idx := strings.IndexByte(elem, '/')
+				if idx > 0 {
+					args["id"] = elem[:idx]
+					elem = elem[idx:]
+
+					if len(elem) == 0 {
+						break
+					}
+					switch elem[0] {
+					case '/': // Prefix: "/"
+						if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+							elem = elem[len(prefix):]
+						} else {
+							break
+						}
+
+						// Param: "foo"
+						// Match until one of "1"
+						idx := strings.IndexByte(elem, '1')
+						if idx > 0 {
+							args["foo"] = elem[:idx]
+							elem = elem[idx:]
+
+							if len(elem) == 0 {
+								break
+							}
+							switch elem[0] {
+							case '1': // Prefix: "1234"
+								if prefix := "1234"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+									elem = elem[len(prefix):]
+								} else {
+									break
+								}
+
+								// Param: "bar"
+								// Match until one of "-"
+								idx := strings.IndexByte(elem, '-')
+								if idx > 0 {
+									args["bar"] = elem[:idx]
+									elem = elem[idx:]
+
+									if len(elem) == 0 {
+										break
+									}
+									switch elem[0] {
+									case '-': // Prefix: "-"
+										if prefix := "-"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+											elem = elem[len(prefix):]
+										} else {
+											break
+										}
+
+										// Param: "baz"
+										// Match until one of "!"
+										idx := strings.IndexByte(elem, '!')
+										if idx > 0 {
+											args["baz"] = elem[:idx]
+											elem = elem[idx:]
+
+											if len(elem) == 0 {
+												break
+											}
+											switch elem[0] {
+											case '!': // Prefix: "!"
+												if prefix := "!"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+													elem = elem[len(prefix):]
+												} else {
+													break
+												}
+
+												// Param: "kek"
+												// Leaf parameter
+												args["kek"] = elem
+
+												// Leaf: DataGetFormat
+												s.handleDataGetFormatRequest(args, w, r)
+												return
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
 			case 'p': // Prefix: "pet"
 				if prefix := "pet"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
 					elem = elem[len(prefix):]

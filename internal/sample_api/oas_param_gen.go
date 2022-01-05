@@ -62,6 +62,14 @@ var (
 	_ = sync.Pool{}
 )
 
+type DataGetFormatParams struct {
+	ID  int
+	Foo string
+	Bar string
+	Baz string
+	Kek string
+}
+
 type FoobarGetParams struct {
 	InlinedParam int64
 	Skip         int32

@@ -267,7 +267,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 									// Param: "namespace"
 									// Match until one of "/"
-									idx := strings.IndexAny(elem, "/")
+									idx := strings.IndexByte(elem, '/')
 									if idx > 0 {
 										args["namespace"] = elem[:idx]
 										elem = elem[idx:]
@@ -443,7 +443,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 														// Param: "name"
 														// Match until one of "/"
-														idx := strings.IndexAny(elem, "/")
+														idx := strings.IndexByte(elem, '/')
 														if idx > 0 {
 															args["name"] = elem[:idx]
 															elem = elem[idx:]
@@ -499,7 +499,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 															// Param: "name"
 															// Match until one of "/"
-															idx := strings.IndexAny(elem, "/")
+															idx := strings.IndexByte(elem, '/')
 															if idx > 0 {
 																args["name"] = elem[:idx]
 																elem = elem[idx:]
@@ -617,7 +617,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 														// Param: "name"
 														// Match until one of "/"
-														idx := strings.IndexAny(elem, "/")
+														idx := strings.IndexByte(elem, '/')
 														if idx > 0 {
 															args["name"] = elem[:idx]
 															elem = elem[idx:]
@@ -684,7 +684,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 														// Param: "name"
 														// Match until one of "/"
-														idx := strings.IndexAny(elem, "/")
+														idx := strings.IndexByte(elem, '/')
 														if idx > 0 {
 															args["name"] = elem[:idx]
 															elem = elem[idx:]
@@ -819,7 +819,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 																// Param: "name"
 																// Match until one of "/"
-																idx := strings.IndexAny(elem, "/")
+																idx := strings.IndexByte(elem, '/')
 																if idx > 0 {
 																	args["name"] = elem[:idx]
 																	elem = elem[idx:]
@@ -880,7 +880,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 									// Param: "name"
 									// Match until one of "/"
-									idx := strings.IndexAny(elem, "/")
+									idx := strings.IndexByte(elem, '/')
 									if idx > 0 {
 										args["name"] = elem[:idx]
 										elem = elem[idx:]
@@ -959,7 +959,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 										// Param: "name"
 										// Match until one of "/"
-										idx := strings.IndexAny(elem, "/")
+										idx := strings.IndexByte(elem, '/')
 										if idx > 0 {
 											args["name"] = elem[:idx]
 											elem = elem[idx:]
@@ -1204,7 +1204,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 										// Param: "name"
 										// Match until one of "/"
-										idx := strings.IndexAny(elem, "/")
+										idx := strings.IndexByte(elem, '/')
 										if idx > 0 {
 											args["name"] = elem[:idx]
 											elem = elem[idx:]
@@ -2088,7 +2088,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 												// Param: "name"
 												// Match until one of "/"
-												idx := strings.IndexAny(elem, "/")
+												idx := strings.IndexByte(elem, '/')
 												if idx > 0 {
 													args["name"] = elem[:idx]
 													elem = elem[idx:]
@@ -2185,7 +2185,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 												// Param: "name"
 												// Match until one of "/"
-												idx := strings.IndexAny(elem, "/")
+												idx := strings.IndexByte(elem, '/')
 												if idx > 0 {
 													args["name"] = elem[:idx]
 													elem = elem[idx:]
@@ -2314,7 +2314,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 										// Param: "namespace"
 										// Match until one of "/"
-										idx := strings.IndexAny(elem, "/")
+										idx := strings.IndexByte(elem, '/')
 										if idx > 0 {
 											args["namespace"] = elem[:idx]
 											elem = elem[idx:]
@@ -2395,7 +2395,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 															// Param: "name"
 															// Match until one of "/"
-															idx := strings.IndexAny(elem, "/")
+															idx := strings.IndexByte(elem, '/')
 															if idx > 0 {
 																args["name"] = elem[:idx]
 																elem = elem[idx:]
@@ -2439,7 +2439,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 															// Param: "name"
 															// Match until one of "/"
-															idx := strings.IndexAny(elem, "/")
+															idx := strings.IndexByte(elem, '/')
 															if idx > 0 {
 																args["name"] = elem[:idx]
 																elem = elem[idx:]
@@ -2507,7 +2507,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 														// Param: "name"
 														// Match until one of "/"
-														idx := strings.IndexAny(elem, "/")
+														idx := strings.IndexByte(elem, '/')
 														if idx > 0 {
 															args["name"] = elem[:idx]
 															elem = elem[idx:]
@@ -2574,7 +2574,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 														// Param: "name"
 														// Match until one of "/"
-														idx := strings.IndexAny(elem, "/")
+														idx := strings.IndexByte(elem, '/')
 														if idx > 0 {
 															args["name"] = elem[:idx]
 															elem = elem[idx:]
@@ -2707,7 +2707,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 											// Param: "namespace"
 											// Match until one of "/"
-											idx := strings.IndexAny(elem, "/")
+											idx := strings.IndexByte(elem, '/')
 											if idx > 0 {
 												args["namespace"] = elem[:idx]
 												elem = elem[idx:]
@@ -3029,7 +3029,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 											// Param: "namespace"
 											// Match until one of "/"
-											idx := strings.IndexAny(elem, "/")
+											idx := strings.IndexByte(elem, '/')
 											if idx > 0 {
 												args["namespace"] = elem[:idx]
 												elem = elem[idx:]
@@ -3059,7 +3059,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 														// Param: "name"
 														// Match until one of "/"
-														idx := strings.IndexAny(elem, "/")
+														idx := strings.IndexByte(elem, '/')
 														if idx > 0 {
 															args["name"] = elem[:idx]
 															elem = elem[idx:]
@@ -3115,7 +3115,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 												// Param: "namespace"
 												// Match until one of "/"
-												idx := strings.IndexAny(elem, "/")
+												idx := strings.IndexByte(elem, '/')
 												if idx > 0 {
 													args["namespace"] = elem[:idx]
 													elem = elem[idx:]
@@ -3198,7 +3198,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 												// Param: "namespace"
 												// Match until one of "/"
-												idx := strings.IndexAny(elem, "/")
+												idx := strings.IndexByte(elem, '/')
 												if idx > 0 {
 													args["namespace"] = elem[:idx]
 													elem = elem[idx:]
@@ -3228,7 +3228,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 															// Param: "name"
 															// Match until one of "/"
-															idx := strings.IndexAny(elem, "/")
+															idx := strings.IndexByte(elem, '/')
 															if idx > 0 {
 																args["name"] = elem[:idx]
 																elem = elem[idx:]
@@ -3284,7 +3284,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 													// Param: "namespace"
 													// Match until one of "/"
-													idx := strings.IndexAny(elem, "/")
+													idx := strings.IndexByte(elem, '/')
 													if idx > 0 {
 														args["namespace"] = elem[:idx]
 														elem = elem[idx:]
@@ -3355,7 +3355,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 												// Param: "namespace"
 												// Match until one of "/"
-												idx := strings.IndexAny(elem, "/")
+												idx := strings.IndexByte(elem, '/')
 												if idx > 0 {
 													args["namespace"] = elem[:idx]
 													elem = elem[idx:]
@@ -3385,7 +3385,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 															// Param: "name"
 															// Match until one of "/"
-															idx := strings.IndexAny(elem, "/")
+															idx := strings.IndexByte(elem, '/')
 															if idx > 0 {
 																args["name"] = elem[:idx]
 																elem = elem[idx:]
@@ -3441,7 +3441,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 													// Param: "namespace"
 													// Match until one of "/"
-													idx := strings.IndexAny(elem, "/")
+													idx := strings.IndexByte(elem, '/')
 													if idx > 0 {
 														args["namespace"] = elem[:idx]
 														elem = elem[idx:]
@@ -3551,7 +3551,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 									// Param: "namespace"
 									// Match until one of "/"
-									idx := strings.IndexAny(elem, "/")
+									idx := strings.IndexByte(elem, '/')
 									if idx > 0 {
 										args["namespace"] = elem[:idx]
 										elem = elem[idx:]
@@ -3593,7 +3593,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 													// Param: "name"
 													// Match until one of "/"
-													idx := strings.IndexAny(elem, "/")
+													idx := strings.IndexByte(elem, '/')
 													if idx > 0 {
 														args["name"] = elem[:idx]
 														elem = elem[idx:]
@@ -3637,7 +3637,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 													// Param: "name"
 													// Match until one of "/"
-													idx := strings.IndexAny(elem, "/")
+													idx := strings.IndexByte(elem, '/')
 													if idx > 0 {
 														args["name"] = elem[:idx]
 														elem = elem[idx:]
@@ -3704,7 +3704,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 										// Param: "namespace"
 										// Match until one of "/"
-										idx := strings.IndexAny(elem, "/")
+										idx := strings.IndexByte(elem, '/')
 										if idx > 0 {
 											args["namespace"] = elem[:idx]
 											elem = elem[idx:]
@@ -3815,7 +3815,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 									// Param: "namespace"
 									// Match until one of "/"
-									idx := strings.IndexAny(elem, "/")
+									idx := strings.IndexByte(elem, '/')
 									if idx > 0 {
 										args["namespace"] = elem[:idx]
 										elem = elem[idx:]
@@ -3845,7 +3845,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 												// Param: "name"
 												// Match until one of "/"
-												idx := strings.IndexAny(elem, "/")
+												idx := strings.IndexByte(elem, '/')
 												if idx > 0 {
 													args["name"] = elem[:idx]
 													elem = elem[idx:]
@@ -3901,7 +3901,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 										// Param: "namespace"
 										// Match until one of "/"
-										idx := strings.IndexAny(elem, "/")
+										idx := strings.IndexByte(elem, '/')
 										if idx > 0 {
 											args["namespace"] = elem[:idx]
 											elem = elem[idx:]
@@ -4000,7 +4000,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 										// Param: "name"
 										// Match until one of "/"
-										idx := strings.IndexAny(elem, "/")
+										idx := strings.IndexByte(elem, '/')
 										if idx > 0 {
 											args["name"] = elem[:idx]
 											elem = elem[idx:]
@@ -4118,7 +4118,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 									// Param: "namespace"
 									// Match until one of "/"
-									idx := strings.IndexAny(elem, "/")
+									idx := strings.IndexByte(elem, '/')
 									if idx > 0 {
 										args["namespace"] = elem[:idx]
 										elem = elem[idx:]
@@ -4187,7 +4187,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 										// Param: "namespace"
 										// Match until one of "/"
-										idx := strings.IndexAny(elem, "/")
+										idx := strings.IndexByte(elem, '/')
 										if idx > 0 {
 											args["namespace"] = elem[:idx]
 											elem = elem[idx:]
@@ -4284,7 +4284,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 									// Param: "namespace"
 									// Match until one of "/"
-									idx := strings.IndexAny(elem, "/")
+									idx := strings.IndexByte(elem, '/')
 									if idx > 0 {
 										args["namespace"] = elem[:idx]
 										elem = elem[idx:]
@@ -4353,7 +4353,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 										// Param: "namespace"
 										// Match until one of "/"
-										idx := strings.IndexAny(elem, "/")
+										idx := strings.IndexByte(elem, '/')
 										if idx > 0 {
 											args["namespace"] = elem[:idx]
 											elem = elem[idx:]
@@ -4424,7 +4424,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 									// Param: "namespace"
 									// Match until one of "/"
-									idx := strings.IndexAny(elem, "/")
+									idx := strings.IndexByte(elem, '/')
 									if idx > 0 {
 										args["namespace"] = elem[:idx]
 										elem = elem[idx:]
@@ -4493,7 +4493,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 										// Param: "namespace"
 										// Match until one of "/"
-										idx := strings.IndexAny(elem, "/")
+										idx := strings.IndexByte(elem, '/')
 										if idx > 0 {
 											args["namespace"] = elem[:idx]
 											elem = elem[idx:]
@@ -4590,7 +4590,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 									// Param: "namespace"
 									// Match until one of "/"
-									idx := strings.IndexAny(elem, "/")
+									idx := strings.IndexByte(elem, '/')
 									if idx > 0 {
 										args["namespace"] = elem[:idx]
 										elem = elem[idx:]
@@ -4659,7 +4659,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 										// Param: "namespace"
 										// Match until one of "/"
-										idx := strings.IndexAny(elem, "/")
+										idx := strings.IndexByte(elem, '/')
 										if idx > 0 {
 											args["namespace"] = elem[:idx]
 											elem = elem[idx:]
@@ -4730,7 +4730,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 									// Param: "namespace"
 									// Match until one of "/"
-									idx := strings.IndexAny(elem, "/")
+									idx := strings.IndexByte(elem, '/')
 									if idx > 0 {
 										args["namespace"] = elem[:idx]
 										elem = elem[idx:]
@@ -4799,7 +4799,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 										// Param: "namespace"
 										// Match until one of "/"
-										idx := strings.IndexAny(elem, "/")
+										idx := strings.IndexByte(elem, '/')
 										if idx > 0 {
 											args["namespace"] = elem[:idx]
 											elem = elem[idx:]
@@ -4898,7 +4898,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 										// Param: "name"
 										// Match until one of "/"
-										idx := strings.IndexAny(elem, "/")
+										idx := strings.IndexByte(elem, '/')
 										if idx > 0 {
 											args["name"] = elem[:idx]
 											elem = elem[idx:]
@@ -4942,7 +4942,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 										// Param: "name"
 										// Match until one of "/"
-										idx := strings.IndexAny(elem, "/")
+										idx := strings.IndexByte(elem, '/')
 										if idx > 0 {
 											args["name"] = elem[:idx]
 											elem = elem[idx:]
@@ -5066,7 +5066,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 										// Param: "name"
 										// Match until one of "/"
-										idx := strings.IndexAny(elem, "/")
+										idx := strings.IndexByte(elem, '/')
 										if idx > 0 {
 											args["name"] = elem[:idx]
 											elem = elem[idx:]
@@ -5110,7 +5110,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 										// Param: "name"
 										// Match until one of "/"
-										idx := strings.IndexAny(elem, "/")
+										idx := strings.IndexByte(elem, '/')
 										if idx > 0 {
 											args["name"] = elem[:idx]
 											elem = elem[idx:]
@@ -5248,7 +5248,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 									// Param: "name"
 									// Match until one of "/"
-									idx := strings.IndexAny(elem, "/")
+									idx := strings.IndexByte(elem, '/')
 									if idx > 0 {
 										args["name"] = elem[:idx]
 										elem = elem[idx:]
@@ -5407,7 +5407,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 										// Param: "namespace"
 										// Match until one of "/"
-										idx := strings.IndexAny(elem, "/")
+										idx := strings.IndexByte(elem, '/')
 										if idx > 0 {
 											args["namespace"] = elem[:idx]
 											elem = elem[idx:]
@@ -5449,7 +5449,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 														// Param: "name"
 														// Match until one of "/"
-														idx := strings.IndexAny(elem, "/")
+														idx := strings.IndexByte(elem, '/')
 														if idx > 0 {
 															args["name"] = elem[:idx]
 															elem = elem[idx:]
@@ -5596,7 +5596,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 											// Param: "namespace"
 											// Match until one of "/"
-											idx := strings.IndexAny(elem, "/")
+											idx := strings.IndexByte(elem, '/')
 											if idx > 0 {
 												args["namespace"] = elem[:idx]
 												elem = elem[idx:]
@@ -5961,7 +5961,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 									// Param: "namespace"
 									// Match until one of "/"
-									idx := strings.IndexAny(elem, "/")
+									idx := strings.IndexByte(elem, '/')
 									if idx > 0 {
 										args["namespace"] = elem[:idx]
 										elem = elem[idx:]
@@ -5991,7 +5991,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 												// Param: "name"
 												// Match until one of "/"
-												idx := strings.IndexAny(elem, "/")
+												idx := strings.IndexByte(elem, '/')
 												if idx > 0 {
 													args["name"] = elem[:idx]
 													elem = elem[idx:]
@@ -6047,7 +6047,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 										// Param: "namespace"
 										// Match until one of "/"
-										idx := strings.IndexAny(elem, "/")
+										idx := strings.IndexByte(elem, '/')
 										if idx > 0 {
 											args["namespace"] = elem[:idx]
 											elem = elem[idx:]
@@ -6118,7 +6118,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 									// Param: "namespace"
 									// Match until one of "/"
-									idx := strings.IndexAny(elem, "/")
+									idx := strings.IndexByte(elem, '/')
 									if idx > 0 {
 										args["namespace"] = elem[:idx]
 										elem = elem[idx:]
@@ -6148,7 +6148,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 												// Param: "name"
 												// Match until one of "/"
-												idx := strings.IndexAny(elem, "/")
+												idx := strings.IndexByte(elem, '/')
 												if idx > 0 {
 													args["name"] = elem[:idx]
 													elem = elem[idx:]
@@ -6244,7 +6244,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 										// Param: "namespace"
 										// Match until one of "/"
-										idx := strings.IndexAny(elem, "/")
+										idx := strings.IndexByte(elem, '/')
 										if idx > 0 {
 											args["namespace"] = elem[:idx]
 											elem = elem[idx:]
@@ -6436,7 +6436,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 								// Param: "namespace"
 								// Match until one of "/"
-								idx := strings.IndexAny(elem, "/")
+								idx := strings.IndexByte(elem, '/')
 								if idx > 0 {
 									args["namespace"] = elem[:idx]
 									elem = elem[idx:]
@@ -6635,7 +6635,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 									// Param: "namespace"
 									// Match until one of "/"
-									idx := strings.IndexAny(elem, "/")
+									idx := strings.IndexByte(elem, '/')
 									if idx > 0 {
 										args["namespace"] = elem[:idx]
 										elem = elem[idx:]
@@ -6992,7 +6992,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 											// Param: "name"
 											// Match until one of "/"
-											idx := strings.IndexAny(elem, "/")
+											idx := strings.IndexByte(elem, '/')
 											if idx > 0 {
 												args["name"] = elem[:idx]
 												elem = elem[idx:]
@@ -7181,7 +7181,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 										// Param: "namespace"
 										// Match until one of "/"
-										idx := strings.IndexAny(elem, "/")
+										idx := strings.IndexByte(elem, '/')
 										if idx > 0 {
 											args["namespace"] = elem[:idx]
 											elem = elem[idx:]
@@ -7250,7 +7250,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 											// Param: "namespace"
 											// Match until one of "/"
-											idx := strings.IndexAny(elem, "/")
+											idx := strings.IndexByte(elem, '/')
 											if idx > 0 {
 												args["namespace"] = elem[:idx]
 												elem = elem[idx:]
@@ -7321,7 +7321,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 										// Param: "namespace"
 										// Match until one of "/"
-										idx := strings.IndexAny(elem, "/")
+										idx := strings.IndexByte(elem, '/')
 										if idx > 0 {
 											args["namespace"] = elem[:idx]
 											elem = elem[idx:]
@@ -7390,7 +7390,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 											// Param: "namespace"
 											// Match until one of "/"
-											idx := strings.IndexAny(elem, "/")
+											idx := strings.IndexByte(elem, '/')
 											if idx > 0 {
 												args["namespace"] = elem[:idx]
 												elem = elem[idx:]

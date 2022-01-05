@@ -164,7 +164,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 				// Param: "media_id"
 				// Match until one of "/"
-				idx := strings.IndexAny(elem, "/")
+				idx := strings.IndexByte(elem, '/')
 				if idx > 0 {
 					args["media_id"] = elem[:idx]
 					elem = elem[idx:]

@@ -104,7 +104,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 				// Param: "id"
 				// Match until one of "/"
-				idx := strings.IndexAny(elem, "/")
+				idx := strings.IndexByte(elem, '/')
 				if idx > 0 {
 					args["id"] = elem[:idx]
 					elem = elem[idx:]

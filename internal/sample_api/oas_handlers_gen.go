@@ -62,6 +62,35 @@ var (
 	_ = sync.Pool{}
 )
 
+// HandleDataGetFormatRequest handles dataGetFormat operation.
+//
+// GET /name/{id}/{foo}1234{bar}-{baz}!{kek}
+func (s *Server) handleDataGetFormatRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+	ctx, span := s.cfg.Tracer.Start(r.Context(), `DataGetFormat`,
+		trace.WithAttributes(otelogen.OperationID(`dataGetFormat`)),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+	params, err := decodeDataGetFormatParams(args, r)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+
+	response, err := s.h.DataGetFormat(ctx, params)
+	if err != nil {
+		span.RecordError(err)
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeDataGetFormatResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		return
+	}
+}
+
 // HandleErrorGetRequest handles errorGet operation.
 //
 // GET /error
