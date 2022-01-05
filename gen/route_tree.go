@@ -112,6 +112,7 @@ func (t *RouteTree) addRoute(path string, operation *ir.Operation) error {
 			return err
 		}
 		r.op = operation
+		return nil
 	}
 }
 
