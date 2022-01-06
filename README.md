@@ -25,7 +25,7 @@ go get -d github.com/ogen-go/ogen
 * No reflection or `interface{}`
   * The json encoding is code-generated, optimized and uses [jx](https://github.com/go-faster/jx) for speed and overcoming `encoding/json` limitations
   * Validation is code-generated according to spec
-* Code-generated router
+* Code-generated static radix router
 * No more boilerplate
   * Structures are generated from OpenAPI v3 specification
   * Arguments, headers, url queries are parsed according to specification into structures
@@ -170,8 +170,6 @@ func (s *Error) ReadJSON(r *json.Reader) error {
 * Cookie params
 * Default value
 * Tests for `ip` package
-* Support complex parameters in router
-  * `/{name}.{format}` or `foo.{bar}`, now only `/{foo}/{bar}/` is supported
 * Convenient global errors schema (e.g. 500, 404)
   * Add convenience for `Error`, not only `ErrorWithCode`
   * Handle case when `ref` is not used, but responses are equal
@@ -189,20 +187,13 @@ func (s *Error) ReadJSON(r *json.Reader) error {
     * Line and column (optional)
 * Tool for OAS backward compatibility check
 * DSL-based ent-like code-first approach for writing schemas
-* Generics
-  * Target go1.18
-  * Use Optional[T]
-  * Reduce generated code via generics
+* Reduce generated code via generics
 * Extreme optimizations
   * Code generation for [regex](https://github.com/CAFxX/regexp2go)
   * Streaming/iterator API support
     * Enable via x-ogen-streaming extension
     * Iteration over array or map elements of object
     * Also can fit njson
-  * fasthttp
-  * total zero alloc
-    * memory pools for entities with automatic management in generated code
-    * [cloudwego/netpoll](https://github.com/cloudwego/netpoll) support
   * Advanced Code Generation
     * HTTP
       * URI
@@ -213,8 +204,6 @@ func (s *Error) ReadJSON(r *json.Reader) error {
       * MessagePack
       * ProtoBuff
   * String interning
-  * [simd](https://github.com/minio/simdjson-go) for json
-    * Better for streaming multi-megabyte jsons
 * Websocket support via extension?
 * Async support (Websocket, other protocols)
   * [asyncapi](https://github.com/asyncapi/spec/blob/v2.2.0/spec/asyncapi.md)
