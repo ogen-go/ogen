@@ -30,9 +30,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 {{ define "route_edge" }}
 {{- /*gotype: github.com/ogen-go/ogen/gen.RouteNode*/ -}}
 {{- if $.IsLeaf }}
-	// Leaf: {{ $.Operation.Name }}
-	s.handle{{ $.Operation.Name }}Request(args, w, r)
-	return
+	if len(elem) == 0 {
+		// Leaf: {{ $.Operation.Name }}
+		s.handle{{ $.Operation.Name }}Request(args, w, r)
+		return
+	}
 {{- else }}
 	{{- with $child := $.StaticChildren }}
 		if len(elem) == 0 {
@@ -75,6 +77,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 			{{- else }}
 			// Leaf parameter
 			args[{{ printf "%q" $c.ParamName }}] = elem
+			elem = ""
 			{{ template "route_edge" $c }}
 			{{- end }}
 		{{- end }}
