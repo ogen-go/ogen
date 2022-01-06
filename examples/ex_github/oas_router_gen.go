@@ -84,8 +84,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 		}
 		switch elem[0] {
 		case '/': // Prefix: "/"
-			if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-				elem = elem[len(prefix):]
+			if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+				elem = elem[l:]
 			} else {
 				break
 			}
@@ -96,8 +96,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 			}
 			switch elem[0] {
 			case 'a': // Prefix: "a"
-				if prefix := "a"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-					elem = elem[len(prefix):]
+				if l := len("a"); len(elem) >= l && elem[0:l] == "a" {
+					elem = elem[l:]
 				} else {
 					break
 				}
@@ -108,8 +108,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				}
 				switch elem[0] {
 				case 'p': // Prefix: "pp"
-					if prefix := "pp"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-						elem = elem[len(prefix):]
+					if l := len("pp"); len(elem) >= l && elem[0:l] == "pp" {
+						elem = elem[l:]
 					} else {
 						break
 					}
@@ -120,14 +120,14 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					}
 					switch elem[0] {
 					case '/': // Prefix: "/installations/"
-						if prefix := "/installations/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-							elem = elem[len(prefix):]
+						if l := len("/installations/"); len(elem) >= l && elem[0:l] == "/installations/" {
+							elem = elem[l:]
 						} else {
 							break
 						}
 
 						// Param: "installation_id"
-						// Match until one of "/"
+						// Match until "/"
 						idx := strings.IndexByte(elem, '/')
 						if idx > 0 {
 							args["installation_id"] = elem[:idx]
@@ -139,20 +139,22 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							}
 							switch elem[0] {
 							case '/': // Prefix: "/suspended"
-								if prefix := "/suspended"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-									elem = elem[len(prefix):]
+								if l := len("/suspended"); len(elem) >= l && elem[0:l] == "/suspended" {
+									elem = elem[l:]
 								} else {
 									break
 								}
 
-								// Leaf: AppsUnsuspendInstallation
-								s.handleAppsUnsuspendInstallationRequest(args, w, r)
-								return
+								if len(elem) == 0 {
+									// Leaf: AppsUnsuspendInstallation
+									s.handleAppsUnsuspendInstallationRequest(args, w, r)
+									return
+								}
 							}
 						}
 					case 'l': // Prefix: "lications/"
-						if prefix := "lications/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-							elem = elem[len(prefix):]
+						if l := len("lications/"); len(elem) >= l && elem[0:l] == "lications/" {
+							elem = elem[l:]
 						} else {
 							break
 						}
@@ -162,8 +164,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						}
 						switch elem[0] {
 						case 'g': // Prefix: "grants/"
-							if prefix := "grants/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-								elem = elem[len(prefix):]
+							if l := len("grants/"); len(elem) >= l && elem[0:l] == "grants/" {
+								elem = elem[l:]
 							} else {
 								break
 							}
@@ -171,13 +173,16 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							// Param: "grant_id"
 							// Leaf parameter
 							args["grant_id"] = elem
+							elem = ""
 
-							// Leaf: OAuthAuthorizationsDeleteGrant
-							s.handleOAuthAuthorizationsDeleteGrantRequest(args, w, r)
-							return
+							if len(elem) == 0 {
+								// Leaf: OAuthAuthorizationsDeleteGrant
+								s.handleOAuthAuthorizationsDeleteGrantRequest(args, w, r)
+								return
+							}
 						}
 						// Param: "client_id"
-						// Match until one of "/"
+						// Match until "/"
 						idx := strings.IndexByte(elem, '/')
 						if idx > 0 {
 							args["client_id"] = elem[:idx]
@@ -188,8 +193,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							}
 							switch elem[0] {
 							case '/': // Prefix: "/"
-								if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-									elem = elem[len(prefix):]
+								if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+									elem = elem[l:]
 								} else {
 									break
 								}
@@ -200,32 +205,36 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								}
 								switch elem[0] {
 								case 'g': // Prefix: "grant"
-									if prefix := "grant"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-										elem = elem[len(prefix):]
+									if l := len("grant"); len(elem) >= l && elem[0:l] == "grant" {
+										elem = elem[l:]
 									} else {
 										break
 									}
 
-									// Leaf: AppsDeleteAuthorization
-									s.handleAppsDeleteAuthorizationRequest(args, w, r)
-									return
+									if len(elem) == 0 {
+										// Leaf: AppsDeleteAuthorization
+										s.handleAppsDeleteAuthorizationRequest(args, w, r)
+										return
+									}
 								case 't': // Prefix: "token"
-									if prefix := "token"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-										elem = elem[len(prefix):]
+									if l := len("token"); len(elem) >= l && elem[0:l] == "token" {
+										elem = elem[l:]
 									} else {
 										break
 									}
 
-									// Leaf: AppsDeleteToken
-									s.handleAppsDeleteTokenRequest(args, w, r)
-									return
+									if len(elem) == 0 {
+										// Leaf: AppsDeleteToken
+										s.handleAppsDeleteTokenRequest(args, w, r)
+										return
+									}
 								}
 							}
 						}
 					}
 				case 'u': // Prefix: "uthorizations/"
-					if prefix := "uthorizations/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-						elem = elem[len(prefix):]
+					if l := len("uthorizations/"); len(elem) >= l && elem[0:l] == "uthorizations/" {
+						elem = elem[l:]
 					} else {
 						break
 					}
@@ -233,20 +242,23 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					// Param: "authorization_id"
 					// Leaf parameter
 					args["authorization_id"] = elem
+					elem = ""
 
-					// Leaf: OAuthAuthorizationsDeleteAuthorization
-					s.handleOAuthAuthorizationsDeleteAuthorizationRequest(args, w, r)
-					return
+					if len(elem) == 0 {
+						// Leaf: OAuthAuthorizationsDeleteAuthorization
+						s.handleOAuthAuthorizationsDeleteAuthorizationRequest(args, w, r)
+						return
+					}
 				}
 			case 'e': // Prefix: "enterprises/"
-				if prefix := "enterprises/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-					elem = elem[len(prefix):]
+				if l := len("enterprises/"); len(elem) >= l && elem[0:l] == "enterprises/" {
+					elem = elem[l:]
 				} else {
 					break
 				}
 
 				// Param: "enterprise"
-				// Match until one of "/"
+				// Match until "/"
 				idx := strings.IndexByte(elem, '/')
 				if idx > 0 {
 					args["enterprise"] = elem[:idx]
@@ -257,8 +269,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					}
 					switch elem[0] {
 					case '/': // Prefix: "/actions/"
-						if prefix := "/actions/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-							elem = elem[len(prefix):]
+						if l := len("/actions/"); len(elem) >= l && elem[0:l] == "/actions/" {
+							elem = elem[l:]
 						} else {
 							break
 						}
@@ -269,8 +281,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						}
 						switch elem[0] {
 						case 'p': // Prefix: "permissions/organizations/"
-							if prefix := "permissions/organizations/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-								elem = elem[len(prefix):]
+							if l := len("permissions/organizations/"); len(elem) >= l && elem[0:l] == "permissions/organizations/" {
+								elem = elem[l:]
 							} else {
 								break
 							}
@@ -278,13 +290,16 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							// Param: "org_id"
 							// Leaf parameter
 							args["org_id"] = elem
+							elem = ""
 
-							// Leaf: EnterpriseAdminDisableSelectedOrganizationGithubActionsEnterprise
-							s.handleEnterpriseAdminDisableSelectedOrganizationGithubActionsEnterpriseRequest(args, w, r)
-							return
+							if len(elem) == 0 {
+								// Leaf: EnterpriseAdminDisableSelectedOrganizationGithubActionsEnterprise
+								s.handleEnterpriseAdminDisableSelectedOrganizationGithubActionsEnterpriseRequest(args, w, r)
+								return
+							}
 						case 'r': // Prefix: "runner"
-							if prefix := "runner"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-								elem = elem[len(prefix):]
+							if l := len("runner"); len(elem) >= l && elem[0:l] == "runner" {
+								elem = elem[l:]
 							} else {
 								break
 							}
@@ -295,14 +310,14 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							}
 							switch elem[0] {
 							case '-': // Prefix: "-groups/"
-								if prefix := "-groups/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-									elem = elem[len(prefix):]
+								if l := len("-groups/"); len(elem) >= l && elem[0:l] == "-groups/" {
+									elem = elem[l:]
 								} else {
 									break
 								}
 
 								// Param: "runner_group_id"
-								// Match until one of "/"
+								// Match until "/"
 								idx := strings.IndexByte(elem, '/')
 								if idx > 0 {
 									args["runner_group_id"] = elem[:idx]
@@ -314,8 +329,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									}
 									switch elem[0] {
 									case '/': // Prefix: "/"
-										if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-											elem = elem[len(prefix):]
+										if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+											elem = elem[l:]
 										} else {
 											break
 										}
@@ -326,8 +341,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										}
 										switch elem[0] {
 										case 'o': // Prefix: "organizations/"
-											if prefix := "organizations/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-												elem = elem[len(prefix):]
+											if l := len("organizations/"); len(elem) >= l && elem[0:l] == "organizations/" {
+												elem = elem[l:]
 											} else {
 												break
 											}
@@ -335,13 +350,16 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											// Param: "org_id"
 											// Leaf parameter
 											args["org_id"] = elem
+											elem = ""
 
-											// Leaf: EnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterprise
-											s.handleEnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterpriseRequest(args, w, r)
-											return
+											if len(elem) == 0 {
+												// Leaf: EnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterprise
+												s.handleEnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterpriseRequest(args, w, r)
+												return
+											}
 										case 'r': // Prefix: "runners/"
-											if prefix := "runners/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-												elem = elem[len(prefix):]
+											if l := len("runners/"); len(elem) >= l && elem[0:l] == "runners/" {
+												elem = elem[l:]
 											} else {
 												break
 											}
@@ -349,16 +367,19 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											// Param: "runner_id"
 											// Leaf parameter
 											args["runner_id"] = elem
+											elem = ""
 
-											// Leaf: EnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterprise
-											s.handleEnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterpriseRequest(args, w, r)
-											return
+											if len(elem) == 0 {
+												// Leaf: EnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterprise
+												s.handleEnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterpriseRequest(args, w, r)
+												return
+											}
 										}
 									}
 								}
 							case 's': // Prefix: "s/"
-								if prefix := "s/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-									elem = elem[len(prefix):]
+								if l := len("s/"); len(elem) >= l && elem[0:l] == "s/" {
+									elem = elem[l:]
 								} else {
 									break
 								}
@@ -366,23 +387,26 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								// Param: "runner_id"
 								// Leaf parameter
 								args["runner_id"] = elem
+								elem = ""
 
-								// Leaf: EnterpriseAdminDeleteSelfHostedRunnerFromEnterprise
-								s.handleEnterpriseAdminDeleteSelfHostedRunnerFromEnterpriseRequest(args, w, r)
-								return
+								if len(elem) == 0 {
+									// Leaf: EnterpriseAdminDeleteSelfHostedRunnerFromEnterprise
+									s.handleEnterpriseAdminDeleteSelfHostedRunnerFromEnterpriseRequest(args, w, r)
+									return
+								}
 							}
 						}
 					}
 				}
 			case 'g': // Prefix: "gists/"
-				if prefix := "gists/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-					elem = elem[len(prefix):]
+				if l := len("gists/"); len(elem) >= l && elem[0:l] == "gists/" {
+					elem = elem[l:]
 				} else {
 					break
 				}
 
 				// Param: "gist_id"
-				// Match until one of "/"
+				// Match until "/"
 				idx := strings.IndexByte(elem, '/')
 				if idx > 0 {
 					args["gist_id"] = elem[:idx]
@@ -394,8 +418,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					}
 					switch elem[0] {
 					case '/': // Prefix: "/"
-						if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-							elem = elem[len(prefix):]
+						if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+							elem = elem[l:]
 						} else {
 							break
 						}
@@ -406,8 +430,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						}
 						switch elem[0] {
 						case 'c': // Prefix: "comments/"
-							if prefix := "comments/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-								elem = elem[len(prefix):]
+							if l := len("comments/"); len(elem) >= l && elem[0:l] == "comments/" {
+								elem = elem[l:]
 							} else {
 								break
 							}
@@ -415,42 +439,49 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							// Param: "comment_id"
 							// Leaf parameter
 							args["comment_id"] = elem
+							elem = ""
 
-							// Leaf: GistsDeleteComment
-							s.handleGistsDeleteCommentRequest(args, w, r)
-							return
+							if len(elem) == 0 {
+								// Leaf: GistsDeleteComment
+								s.handleGistsDeleteCommentRequest(args, w, r)
+								return
+							}
 						case 's': // Prefix: "star"
-							if prefix := "star"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-								elem = elem[len(prefix):]
+							if l := len("star"); len(elem) >= l && elem[0:l] == "star" {
+								elem = elem[l:]
 							} else {
 								break
 							}
 
-							// Leaf: GistsUnstar
-							s.handleGistsUnstarRequest(args, w, r)
-							return
+							if len(elem) == 0 {
+								// Leaf: GistsUnstar
+								s.handleGistsUnstarRequest(args, w, r)
+								return
+							}
 						}
 					}
 				}
 			case 'i': // Prefix: "installation/token"
-				if prefix := "installation/token"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-					elem = elem[len(prefix):]
+				if l := len("installation/token"); len(elem) >= l && elem[0:l] == "installation/token" {
+					elem = elem[l:]
 				} else {
 					break
 				}
 
-				// Leaf: AppsRevokeInstallationAccessToken
-				s.handleAppsRevokeInstallationAccessTokenRequest(args, w, r)
-				return
+				if len(elem) == 0 {
+					// Leaf: AppsRevokeInstallationAccessToken
+					s.handleAppsRevokeInstallationAccessTokenRequest(args, w, r)
+					return
+				}
 			case 'n': // Prefix: "notifications/threads/"
-				if prefix := "notifications/threads/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-					elem = elem[len(prefix):]
+				if l := len("notifications/threads/"); len(elem) >= l && elem[0:l] == "notifications/threads/" {
+					elem = elem[l:]
 				} else {
 					break
 				}
 
 				// Param: "thread_id"
-				// Match until one of "/"
+				// Match until "/"
 				idx := strings.IndexByte(elem, '/')
 				if idx > 0 {
 					args["thread_id"] = elem[:idx]
@@ -461,26 +492,28 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					}
 					switch elem[0] {
 					case '/': // Prefix: "/subscription"
-						if prefix := "/subscription"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-							elem = elem[len(prefix):]
+						if l := len("/subscription"); len(elem) >= l && elem[0:l] == "/subscription" {
+							elem = elem[l:]
 						} else {
 							break
 						}
 
-						// Leaf: ActivityDeleteThreadSubscription
-						s.handleActivityDeleteThreadSubscriptionRequest(args, w, r)
-						return
+						if len(elem) == 0 {
+							// Leaf: ActivityDeleteThreadSubscription
+							s.handleActivityDeleteThreadSubscriptionRequest(args, w, r)
+							return
+						}
 					}
 				}
 			case 'o': // Prefix: "orgs/"
-				if prefix := "orgs/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-					elem = elem[len(prefix):]
+				if l := len("orgs/"); len(elem) >= l && elem[0:l] == "orgs/" {
+					elem = elem[l:]
 				} else {
 					break
 				}
 
 				// Param: "org"
-				// Match until one of "/"
+				// Match until "/"
 				idx := strings.IndexByte(elem, '/')
 				if idx > 0 {
 					args["org"] = elem[:idx]
@@ -491,8 +524,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					}
 					switch elem[0] {
 					case '/': // Prefix: "/"
-						if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-							elem = elem[len(prefix):]
+						if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+							elem = elem[l:]
 						} else {
 							break
 						}
@@ -503,8 +536,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						}
 						switch elem[0] {
 						case 'a': // Prefix: "actions/"
-							if prefix := "actions/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-								elem = elem[len(prefix):]
+							if l := len("actions/"); len(elem) >= l && elem[0:l] == "actions/" {
+								elem = elem[l:]
 							} else {
 								break
 							}
@@ -515,8 +548,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							}
 							switch elem[0] {
 							case 'p': // Prefix: "permissions/repositories/"
-								if prefix := "permissions/repositories/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-									elem = elem[len(prefix):]
+								if l := len("permissions/repositories/"); len(elem) >= l && elem[0:l] == "permissions/repositories/" {
+									elem = elem[l:]
 								} else {
 									break
 								}
@@ -524,13 +557,16 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								// Param: "repository_id"
 								// Leaf parameter
 								args["repository_id"] = elem
+								elem = ""
 
-								// Leaf: ActionsDisableSelectedRepositoryGithubActionsOrganization
-								s.handleActionsDisableSelectedRepositoryGithubActionsOrganizationRequest(args, w, r)
-								return
+								if len(elem) == 0 {
+									// Leaf: ActionsDisableSelectedRepositoryGithubActionsOrganization
+									s.handleActionsDisableSelectedRepositoryGithubActionsOrganizationRequest(args, w, r)
+									return
+								}
 							case 'r': // Prefix: "runner"
-								if prefix := "runner"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-									elem = elem[len(prefix):]
+								if l := len("runner"); len(elem) >= l && elem[0:l] == "runner" {
+									elem = elem[l:]
 								} else {
 									break
 								}
@@ -541,14 +577,14 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								}
 								switch elem[0] {
 								case '-': // Prefix: "-groups/"
-									if prefix := "-groups/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-										elem = elem[len(prefix):]
+									if l := len("-groups/"); len(elem) >= l && elem[0:l] == "-groups/" {
+										elem = elem[l:]
 									} else {
 										break
 									}
 
 									// Param: "runner_group_id"
-									// Match until one of "/"
+									// Match until "/"
 									idx := strings.IndexByte(elem, '/')
 									if idx > 0 {
 										args["runner_group_id"] = elem[:idx]
@@ -560,8 +596,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										}
 										switch elem[0] {
 										case '/': // Prefix: "/r"
-											if prefix := "/r"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-												elem = elem[len(prefix):]
+											if l := len("/r"); len(elem) >= l && elem[0:l] == "/r" {
+												elem = elem[l:]
 											} else {
 												break
 											}
@@ -572,8 +608,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											}
 											switch elem[0] {
 											case 'e': // Prefix: "epositories/"
-												if prefix := "epositories/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-													elem = elem[len(prefix):]
+												if l := len("epositories/"); len(elem) >= l && elem[0:l] == "epositories/" {
+													elem = elem[l:]
 												} else {
 													break
 												}
@@ -581,13 +617,16 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												// Param: "repository_id"
 												// Leaf parameter
 												args["repository_id"] = elem
+												elem = ""
 
-												// Leaf: ActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrg
-												s.handleActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrgRequest(args, w, r)
-												return
+												if len(elem) == 0 {
+													// Leaf: ActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrg
+													s.handleActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrgRequest(args, w, r)
+													return
+												}
 											case 'u': // Prefix: "unners/"
-												if prefix := "unners/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-													elem = elem[len(prefix):]
+												if l := len("unners/"); len(elem) >= l && elem[0:l] == "unners/" {
+													elem = elem[l:]
 												} else {
 													break
 												}
@@ -595,16 +634,19 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												// Param: "runner_id"
 												// Leaf parameter
 												args["runner_id"] = elem
+												elem = ""
 
-												// Leaf: ActionsRemoveSelfHostedRunnerFromGroupForOrg
-												s.handleActionsRemoveSelfHostedRunnerFromGroupForOrgRequest(args, w, r)
-												return
+												if len(elem) == 0 {
+													// Leaf: ActionsRemoveSelfHostedRunnerFromGroupForOrg
+													s.handleActionsRemoveSelfHostedRunnerFromGroupForOrgRequest(args, w, r)
+													return
+												}
 											}
 										}
 									}
 								case 's': // Prefix: "s/"
-									if prefix := "s/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-										elem = elem[len(prefix):]
+									if l := len("s/"); len(elem) >= l && elem[0:l] == "s/" {
+										elem = elem[l:]
 									} else {
 										break
 									}
@@ -612,20 +654,23 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									// Param: "runner_id"
 									// Leaf parameter
 									args["runner_id"] = elem
+									elem = ""
 
-									// Leaf: ActionsDeleteSelfHostedRunnerFromOrg
-									s.handleActionsDeleteSelfHostedRunnerFromOrgRequest(args, w, r)
-									return
+									if len(elem) == 0 {
+										// Leaf: ActionsDeleteSelfHostedRunnerFromOrg
+										s.handleActionsDeleteSelfHostedRunnerFromOrgRequest(args, w, r)
+										return
+									}
 								}
 							case 's': // Prefix: "secrets/"
-								if prefix := "secrets/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-									elem = elem[len(prefix):]
+								if l := len("secrets/"); len(elem) >= l && elem[0:l] == "secrets/" {
+									elem = elem[l:]
 								} else {
 									break
 								}
 
 								// Param: "secret_name"
-								// Match until one of "/"
+								// Match until "/"
 								idx := strings.IndexByte(elem, '/')
 								if idx > 0 {
 									args["secret_name"] = elem[:idx]
@@ -637,8 +682,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									}
 									switch elem[0] {
 									case '/': // Prefix: "/repositories/"
-										if prefix := "/repositories/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-											elem = elem[len(prefix):]
+										if l := len("/repositories/"); len(elem) >= l && elem[0:l] == "/repositories/" {
+											elem = elem[l:]
 										} else {
 											break
 										}
@@ -646,16 +691,19 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										// Param: "repository_id"
 										// Leaf parameter
 										args["repository_id"] = elem
+										elem = ""
 
-										// Leaf: ActionsRemoveSelectedRepoFromOrgSecret
-										s.handleActionsRemoveSelectedRepoFromOrgSecretRequest(args, w, r)
-										return
+										if len(elem) == 0 {
+											// Leaf: ActionsRemoveSelectedRepoFromOrgSecret
+											s.handleActionsRemoveSelectedRepoFromOrgSecretRequest(args, w, r)
+											return
+										}
 									}
 								}
 							}
 						case 'b': // Prefix: "blocks/"
-							if prefix := "blocks/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-								elem = elem[len(prefix):]
+							if l := len("blocks/"); len(elem) >= l && elem[0:l] == "blocks/" {
+								elem = elem[l:]
 							} else {
 								break
 							}
@@ -663,13 +711,16 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							// Param: "username"
 							// Leaf parameter
 							args["username"] = elem
+							elem = ""
 
-							// Leaf: OrgsUnblockUser
-							s.handleOrgsUnblockUserRequest(args, w, r)
-							return
+							if len(elem) == 0 {
+								// Leaf: OrgsUnblockUser
+								s.handleOrgsUnblockUserRequest(args, w, r)
+								return
+							}
 						case 'c': // Prefix: "credential-authorizations/"
-							if prefix := "credential-authorizations/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-								elem = elem[len(prefix):]
+							if l := len("credential-authorizations/"); len(elem) >= l && elem[0:l] == "credential-authorizations/" {
+								elem = elem[l:]
 							} else {
 								break
 							}
@@ -677,13 +728,16 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							// Param: "credential_id"
 							// Leaf parameter
 							args["credential_id"] = elem
+							elem = ""
 
-							// Leaf: OrgsRemoveSamlSSOAuthorization
-							s.handleOrgsRemoveSamlSSOAuthorizationRequest(args, w, r)
-							return
+							if len(elem) == 0 {
+								// Leaf: OrgsRemoveSamlSSOAuthorization
+								s.handleOrgsRemoveSamlSSOAuthorizationRequest(args, w, r)
+								return
+							}
 						case 'h': // Prefix: "hooks/"
-							if prefix := "hooks/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-								elem = elem[len(prefix):]
+							if l := len("hooks/"); len(elem) >= l && elem[0:l] == "hooks/" {
+								elem = elem[l:]
 							} else {
 								break
 							}
@@ -691,13 +745,16 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							// Param: "hook_id"
 							// Leaf parameter
 							args["hook_id"] = elem
+							elem = ""
 
-							// Leaf: OrgsDeleteWebhook
-							s.handleOrgsDeleteWebhookRequest(args, w, r)
-							return
+							if len(elem) == 0 {
+								// Leaf: OrgsDeleteWebhook
+								s.handleOrgsDeleteWebhookRequest(args, w, r)
+								return
+							}
 						case 'i': // Prefix: "in"
-							if prefix := "in"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-								elem = elem[len(prefix):]
+							if l := len("in"); len(elem) >= l && elem[0:l] == "in" {
+								elem = elem[l:]
 							} else {
 								break
 							}
@@ -708,18 +765,20 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							}
 							switch elem[0] {
 							case 't': // Prefix: "teraction-limits"
-								if prefix := "teraction-limits"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-									elem = elem[len(prefix):]
+								if l := len("teraction-limits"); len(elem) >= l && elem[0:l] == "teraction-limits" {
+									elem = elem[l:]
 								} else {
 									break
 								}
 
-								// Leaf: InteractionsRemoveRestrictionsForOrg
-								s.handleInteractionsRemoveRestrictionsForOrgRequest(args, w, r)
-								return
+								if len(elem) == 0 {
+									// Leaf: InteractionsRemoveRestrictionsForOrg
+									s.handleInteractionsRemoveRestrictionsForOrgRequest(args, w, r)
+									return
+								}
 							case 'v': // Prefix: "vitations/"
-								if prefix := "vitations/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-									elem = elem[len(prefix):]
+								if l := len("vitations/"); len(elem) >= l && elem[0:l] == "vitations/" {
+									elem = elem[l:]
 								} else {
 									break
 								}
@@ -727,14 +786,17 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								// Param: "invitation_id"
 								// Leaf parameter
 								args["invitation_id"] = elem
+								elem = ""
 
-								// Leaf: OrgsCancelInvitation
-								s.handleOrgsCancelInvitationRequest(args, w, r)
-								return
+								if len(elem) == 0 {
+									// Leaf: OrgsCancelInvitation
+									s.handleOrgsCancelInvitationRequest(args, w, r)
+									return
+								}
 							}
 						case 'm': // Prefix: "m"
-							if prefix := "m"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-								elem = elem[len(prefix):]
+							if l := len("m"); len(elem) >= l && elem[0:l] == "m" {
+								elem = elem[l:]
 							} else {
 								break
 							}
@@ -745,8 +807,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							}
 							switch elem[0] {
 							case 'e': // Prefix: "embers"
-								if prefix := "embers"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-									elem = elem[len(prefix):]
+								if l := len("embers"); len(elem) >= l && elem[0:l] == "embers" {
+									elem = elem[l:]
 								} else {
 									break
 								}
@@ -757,8 +819,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								}
 								switch elem[0] {
 								case '/': // Prefix: "/"
-									if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-										elem = elem[len(prefix):]
+									if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+										elem = elem[l:]
 									} else {
 										break
 									}
@@ -766,13 +828,16 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									// Param: "username"
 									// Leaf parameter
 									args["username"] = elem
+									elem = ""
 
-									// Leaf: OrgsRemoveMember
-									s.handleOrgsRemoveMemberRequest(args, w, r)
-									return
+									if len(elem) == 0 {
+										// Leaf: OrgsRemoveMember
+										s.handleOrgsRemoveMemberRequest(args, w, r)
+										return
+									}
 								case 'h': // Prefix: "hips/"
-									if prefix := "hips/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-										elem = elem[len(prefix):]
+									if l := len("hips/"); len(elem) >= l && elem[0:l] == "hips/" {
+										elem = elem[l:]
 									} else {
 										break
 									}
@@ -780,20 +845,23 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									// Param: "username"
 									// Leaf parameter
 									args["username"] = elem
+									elem = ""
 
-									// Leaf: OrgsRemoveMembershipForUser
-									s.handleOrgsRemoveMembershipForUserRequest(args, w, r)
-									return
+									if len(elem) == 0 {
+										// Leaf: OrgsRemoveMembershipForUser
+										s.handleOrgsRemoveMembershipForUserRequest(args, w, r)
+										return
+									}
 								}
 							case 'i': // Prefix: "igrations/"
-								if prefix := "igrations/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-									elem = elem[len(prefix):]
+								if l := len("igrations/"); len(elem) >= l && elem[0:l] == "igrations/" {
+									elem = elem[l:]
 								} else {
 									break
 								}
 
 								// Param: "migration_id"
-								// Match until one of "/"
+								// Match until "/"
 								idx := strings.IndexByte(elem, '/')
 								if idx > 0 {
 									args["migration_id"] = elem[:idx]
@@ -804,8 +872,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									}
 									switch elem[0] {
 									case '/': // Prefix: "/"
-										if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-											elem = elem[len(prefix):]
+										if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+											elem = elem[l:]
 										} else {
 											break
 										}
@@ -816,24 +884,26 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										}
 										switch elem[0] {
 										case 'a': // Prefix: "archive"
-											if prefix := "archive"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-												elem = elem[len(prefix):]
+											if l := len("archive"); len(elem) >= l && elem[0:l] == "archive" {
+												elem = elem[l:]
 											} else {
 												break
 											}
 
-											// Leaf: MigrationsDeleteArchiveForOrg
-											s.handleMigrationsDeleteArchiveForOrgRequest(args, w, r)
-											return
+											if len(elem) == 0 {
+												// Leaf: MigrationsDeleteArchiveForOrg
+												s.handleMigrationsDeleteArchiveForOrgRequest(args, w, r)
+												return
+											}
 										case 'r': // Prefix: "repos/"
-											if prefix := "repos/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-												elem = elem[len(prefix):]
+											if l := len("repos/"); len(elem) >= l && elem[0:l] == "repos/" {
+												elem = elem[l:]
 											} else {
 												break
 											}
 
 											// Param: "repo_name"
-											// Match until one of "/"
+											// Match until "/"
 											idx := strings.IndexByte(elem, '/')
 											if idx > 0 {
 												args["repo_name"] = elem[:idx]
@@ -844,15 +914,17 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												}
 												switch elem[0] {
 												case '/': // Prefix: "/lock"
-													if prefix := "/lock"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-														elem = elem[len(prefix):]
+													if l := len("/lock"); len(elem) >= l && elem[0:l] == "/lock" {
+														elem = elem[l:]
 													} else {
 														break
 													}
 
-													// Leaf: MigrationsUnlockRepoForOrg
-													s.handleMigrationsUnlockRepoForOrgRequest(args, w, r)
-													return
+													if len(elem) == 0 {
+														// Leaf: MigrationsUnlockRepoForOrg
+														s.handleMigrationsUnlockRepoForOrgRequest(args, w, r)
+														return
+													}
 												}
 											}
 										}
@@ -860,8 +932,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								}
 							}
 						case 'o': // Prefix: "outside_collaborators/"
-							if prefix := "outside_collaborators/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-								elem = elem[len(prefix):]
+							if l := len("outside_collaborators/"); len(elem) >= l && elem[0:l] == "outside_collaborators/" {
+								elem = elem[l:]
 							} else {
 								break
 							}
@@ -869,13 +941,16 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							// Param: "username"
 							// Leaf parameter
 							args["username"] = elem
+							elem = ""
 
-							// Leaf: OrgsRemoveOutsideCollaborator
-							s.handleOrgsRemoveOutsideCollaboratorRequest(args, w, r)
-							return
+							if len(elem) == 0 {
+								// Leaf: OrgsRemoveOutsideCollaborator
+								s.handleOrgsRemoveOutsideCollaboratorRequest(args, w, r)
+								return
+							}
 						case 'p': // Prefix: "p"
-							if prefix := "p"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-								elem = elem[len(prefix):]
+							if l := len("p"); len(elem) >= l && elem[0:l] == "p" {
+								elem = elem[l:]
 							} else {
 								break
 							}
@@ -886,14 +961,14 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							}
 							switch elem[0] {
 							case 'a': // Prefix: "ackages/"
-								if prefix := "ackages/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-									elem = elem[len(prefix):]
+								if l := len("ackages/"); len(elem) >= l && elem[0:l] == "ackages/" {
+									elem = elem[l:]
 								} else {
 									break
 								}
 
 								// Param: "package_type"
-								// Match until one of "/"
+								// Match until "/"
 								idx := strings.IndexByte(elem, '/')
 								if idx > 0 {
 									args["package_type"] = elem[:idx]
@@ -904,14 +979,14 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									}
 									switch elem[0] {
 									case '/': // Prefix: "/"
-										if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-											elem = elem[len(prefix):]
+										if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+											elem = elem[l:]
 										} else {
 											break
 										}
 
 										// Param: "package_name"
-										// Match until one of "/"
+										// Match until "/"
 										idx := strings.IndexByte(elem, '/')
 										if idx > 0 {
 											args["package_name"] = elem[:idx]
@@ -923,8 +998,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											}
 											switch elem[0] {
 											case '/': // Prefix: "/versions/"
-												if prefix := "/versions/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-													elem = elem[len(prefix):]
+												if l := len("/versions/"); len(elem) >= l && elem[0:l] == "/versions/" {
+													elem = elem[l:]
 												} else {
 													break
 												}
@@ -932,17 +1007,20 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												// Param: "package_version_id"
 												// Leaf parameter
 												args["package_version_id"] = elem
+												elem = ""
 
-												// Leaf: PackagesDeletePackageVersionForOrg
-												s.handlePackagesDeletePackageVersionForOrgRequest(args, w, r)
-												return
+												if len(elem) == 0 {
+													// Leaf: PackagesDeletePackageVersionForOrg
+													s.handlePackagesDeletePackageVersionForOrgRequest(args, w, r)
+													return
+												}
 											}
 										}
 									}
 								}
 							case 'u': // Prefix: "ublic_members/"
-								if prefix := "ublic_members/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-									elem = elem[len(prefix):]
+								if l := len("ublic_members/"); len(elem) >= l && elem[0:l] == "ublic_members/" {
+									elem = elem[l:]
 								} else {
 									break
 								}
@@ -950,20 +1028,23 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								// Param: "username"
 								// Leaf parameter
 								args["username"] = elem
+								elem = ""
 
-								// Leaf: OrgsRemovePublicMembershipForAuthenticatedUser
-								s.handleOrgsRemovePublicMembershipForAuthenticatedUserRequest(args, w, r)
-								return
+								if len(elem) == 0 {
+									// Leaf: OrgsRemovePublicMembershipForAuthenticatedUser
+									s.handleOrgsRemovePublicMembershipForAuthenticatedUserRequest(args, w, r)
+									return
+								}
 							}
 						case 't': // Prefix: "teams/"
-							if prefix := "teams/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-								elem = elem[len(prefix):]
+							if l := len("teams/"); len(elem) >= l && elem[0:l] == "teams/" {
+								elem = elem[l:]
 							} else {
 								break
 							}
 
 							// Param: "team_slug"
-							// Match until one of "/"
+							// Match until "/"
 							idx := strings.IndexByte(elem, '/')
 							if idx > 0 {
 								args["team_slug"] = elem[:idx]
@@ -975,8 +1056,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								}
 								switch elem[0] {
 								case '/': // Prefix: "/"
-									if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-										elem = elem[len(prefix):]
+									if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+										elem = elem[l:]
 									} else {
 										break
 									}
@@ -987,14 +1068,14 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									}
 									switch elem[0] {
 									case 'd': // Prefix: "discussions/"
-										if prefix := "discussions/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-											elem = elem[len(prefix):]
+										if l := len("discussions/"); len(elem) >= l && elem[0:l] == "discussions/" {
+											elem = elem[l:]
 										} else {
 											break
 										}
 
 										// Param: "discussion_number"
-										// Match until one of "/"
+										// Match until "/"
 										idx := strings.IndexByte(elem, '/')
 										if idx > 0 {
 											args["discussion_number"] = elem[:idx]
@@ -1006,8 +1087,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											}
 											switch elem[0] {
 											case '/': // Prefix: "/"
-												if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-													elem = elem[len(prefix):]
+												if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+													elem = elem[l:]
 												} else {
 													break
 												}
@@ -1018,14 +1099,14 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												}
 												switch elem[0] {
 												case 'c': // Prefix: "comments/"
-													if prefix := "comments/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-														elem = elem[len(prefix):]
+													if l := len("comments/"); len(elem) >= l && elem[0:l] == "comments/" {
+														elem = elem[l:]
 													} else {
 														break
 													}
 
 													// Param: "comment_number"
-													// Match until one of "/"
+													// Match until "/"
 													idx := strings.IndexByte(elem, '/')
 													if idx > 0 {
 														args["comment_number"] = elem[:idx]
@@ -1037,8 +1118,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														}
 														switch elem[0] {
 														case '/': // Prefix: "/reactions/"
-															if prefix := "/reactions/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																elem = elem[len(prefix):]
+															if l := len("/reactions/"); len(elem) >= l && elem[0:l] == "/reactions/" {
+																elem = elem[l:]
 															} else {
 																break
 															}
@@ -1046,15 +1127,18 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															// Param: "reaction_id"
 															// Leaf parameter
 															args["reaction_id"] = elem
+															elem = ""
 
-															// Leaf: ReactionsDeleteForTeamDiscussionComment
-															s.handleReactionsDeleteForTeamDiscussionCommentRequest(args, w, r)
-															return
+															if len(elem) == 0 {
+																// Leaf: ReactionsDeleteForTeamDiscussionComment
+																s.handleReactionsDeleteForTeamDiscussionCommentRequest(args, w, r)
+																return
+															}
 														}
 													}
 												case 'r': // Prefix: "reactions/"
-													if prefix := "reactions/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-														elem = elem[len(prefix):]
+													if l := len("reactions/"); len(elem) >= l && elem[0:l] == "reactions/" {
+														elem = elem[l:]
 													} else {
 														break
 													}
@@ -1062,16 +1146,19 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													// Param: "reaction_id"
 													// Leaf parameter
 													args["reaction_id"] = elem
+													elem = ""
 
-													// Leaf: ReactionsDeleteForTeamDiscussion
-													s.handleReactionsDeleteForTeamDiscussionRequest(args, w, r)
-													return
+													if len(elem) == 0 {
+														// Leaf: ReactionsDeleteForTeamDiscussion
+														s.handleReactionsDeleteForTeamDiscussionRequest(args, w, r)
+														return
+													}
 												}
 											}
 										}
 									case 'm': // Prefix: "memberships/"
-										if prefix := "memberships/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-											elem = elem[len(prefix):]
+										if l := len("memberships/"); len(elem) >= l && elem[0:l] == "memberships/" {
+											elem = elem[l:]
 										} else {
 											break
 										}
@@ -1079,13 +1166,16 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										// Param: "username"
 										// Leaf parameter
 										args["username"] = elem
+										elem = ""
 
-										// Leaf: TeamsRemoveMembershipForUserInOrg
-										s.handleTeamsRemoveMembershipForUserInOrgRequest(args, w, r)
-										return
+										if len(elem) == 0 {
+											// Leaf: TeamsRemoveMembershipForUserInOrg
+											s.handleTeamsRemoveMembershipForUserInOrgRequest(args, w, r)
+											return
+										}
 									case 'p': // Prefix: "projects/"
-										if prefix := "projects/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-											elem = elem[len(prefix):]
+										if l := len("projects/"); len(elem) >= l && elem[0:l] == "projects/" {
+											elem = elem[l:]
 										} else {
 											break
 										}
@@ -1093,19 +1183,22 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										// Param: "project_id"
 										// Leaf parameter
 										args["project_id"] = elem
+										elem = ""
 
-										// Leaf: TeamsRemoveProjectInOrg
-										s.handleTeamsRemoveProjectInOrgRequest(args, w, r)
-										return
+										if len(elem) == 0 {
+											// Leaf: TeamsRemoveProjectInOrg
+											s.handleTeamsRemoveProjectInOrgRequest(args, w, r)
+											return
+										}
 									case 'r': // Prefix: "repos/"
-										if prefix := "repos/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-											elem = elem[len(prefix):]
+										if l := len("repos/"); len(elem) >= l && elem[0:l] == "repos/" {
+											elem = elem[l:]
 										} else {
 											break
 										}
 
 										// Param: "owner"
-										// Match until one of "/"
+										// Match until "/"
 										idx := strings.IndexByte(elem, '/')
 										if idx > 0 {
 											args["owner"] = elem[:idx]
@@ -1116,8 +1209,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											}
 											switch elem[0] {
 											case '/': // Prefix: "/"
-												if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-													elem = elem[len(prefix):]
+												if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+													elem = elem[l:]
 												} else {
 													break
 												}
@@ -1125,10 +1218,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												// Param: "repo"
 												// Leaf parameter
 												args["repo"] = elem
+												elem = ""
 
-												// Leaf: TeamsRemoveRepoInOrg
-												s.handleTeamsRemoveRepoInOrgRequest(args, w, r)
-												return
+												if len(elem) == 0 {
+													// Leaf: TeamsRemoveRepoInOrg
+													s.handleTeamsRemoveRepoInOrgRequest(args, w, r)
+													return
+												}
 											}
 										}
 									}
@@ -1138,8 +1234,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					}
 				}
 			case 'p': // Prefix: "projects/"
-				if prefix := "projects/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-					elem = elem[len(prefix):]
+				if l := len("projects/"); len(elem) >= l && elem[0:l] == "projects/" {
+					elem = elem[l:]
 				} else {
 					break
 				}
@@ -1149,8 +1245,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				}
 				switch elem[0] {
 				case 'c': // Prefix: "columns/"
-					if prefix := "columns/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-						elem = elem[len(prefix):]
+					if l := len("columns/"); len(elem) >= l && elem[0:l] == "columns/" {
+						elem = elem[l:]
 					} else {
 						break
 					}
@@ -1161,8 +1257,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					}
 					switch elem[0] {
 					case 'c': // Prefix: "cards/"
-						if prefix := "cards/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-							elem = elem[len(prefix):]
+						if l := len("cards/"); len(elem) >= l && elem[0:l] == "cards/" {
+							elem = elem[l:]
 						} else {
 							break
 						}
@@ -1170,21 +1266,27 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						// Param: "card_id"
 						// Leaf parameter
 						args["card_id"] = elem
+						elem = ""
 
-						// Leaf: ProjectsDeleteCard
-						s.handleProjectsDeleteCardRequest(args, w, r)
-						return
+						if len(elem) == 0 {
+							// Leaf: ProjectsDeleteCard
+							s.handleProjectsDeleteCardRequest(args, w, r)
+							return
+						}
 					}
 					// Param: "column_id"
 					// Leaf parameter
 					args["column_id"] = elem
+					elem = ""
 
-					// Leaf: ProjectsDeleteColumn
-					s.handleProjectsDeleteColumnRequest(args, w, r)
-					return
+					if len(elem) == 0 {
+						// Leaf: ProjectsDeleteColumn
+						s.handleProjectsDeleteColumnRequest(args, w, r)
+						return
+					}
 				}
 				// Param: "project_id"
-				// Match until one of "/"
+				// Match until "/"
 				idx := strings.IndexByte(elem, '/')
 				if idx > 0 {
 					args["project_id"] = elem[:idx]
@@ -1196,8 +1298,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					}
 					switch elem[0] {
 					case '/': // Prefix: "/collaborators/"
-						if prefix := "/collaborators/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-							elem = elem[len(prefix):]
+						if l := len("/collaborators/"); len(elem) >= l && elem[0:l] == "/collaborators/" {
+							elem = elem[l:]
 						} else {
 							break
 						}
@@ -1205,15 +1307,18 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						// Param: "username"
 						// Leaf parameter
 						args["username"] = elem
+						elem = ""
 
-						// Leaf: ProjectsRemoveCollaborator
-						s.handleProjectsRemoveCollaboratorRequest(args, w, r)
-						return
+						if len(elem) == 0 {
+							// Leaf: ProjectsRemoveCollaborator
+							s.handleProjectsRemoveCollaboratorRequest(args, w, r)
+							return
+						}
 					}
 				}
 			case 'r': // Prefix: "re"
-				if prefix := "re"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-					elem = elem[len(prefix):]
+				if l := len("re"); len(elem) >= l && elem[0:l] == "re" {
+					elem = elem[l:]
 				} else {
 					break
 				}
@@ -1224,8 +1329,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				}
 				switch elem[0] {
 				case 'a': // Prefix: "actions/"
-					if prefix := "actions/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-						elem = elem[len(prefix):]
+					if l := len("actions/"); len(elem) >= l && elem[0:l] == "actions/" {
+						elem = elem[l:]
 					} else {
 						break
 					}
@@ -1233,13 +1338,16 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					// Param: "reaction_id"
 					// Leaf parameter
 					args["reaction_id"] = elem
+					elem = ""
 
-					// Leaf: ReactionsDeleteLegacy
-					s.handleReactionsDeleteLegacyRequest(args, w, r)
-					return
+					if len(elem) == 0 {
+						// Leaf: ReactionsDeleteLegacy
+						s.handleReactionsDeleteLegacyRequest(args, w, r)
+						return
+					}
 				case 'p': // Prefix: "pos"
-					if prefix := "pos"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-						elem = elem[len(prefix):]
+					if l := len("pos"); len(elem) >= l && elem[0:l] == "pos" {
+						elem = elem[l:]
 					} else {
 						break
 					}
@@ -1250,14 +1358,14 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					}
 					switch elem[0] {
 					case '/': // Prefix: "/"
-						if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-							elem = elem[len(prefix):]
+						if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+							elem = elem[l:]
 						} else {
 							break
 						}
 
 						// Param: "owner"
-						// Match until one of "/"
+						// Match until "/"
 						idx := strings.IndexByte(elem, '/')
 						if idx > 0 {
 							args["owner"] = elem[:idx]
@@ -1268,14 +1376,14 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							}
 							switch elem[0] {
 							case '/': // Prefix: "/"
-								if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-									elem = elem[len(prefix):]
+								if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+									elem = elem[l:]
 								} else {
 									break
 								}
 
 								// Param: "repo"
-								// Match until one of "/"
+								// Match until "/"
 								idx := strings.IndexByte(elem, '/')
 								if idx > 0 {
 									args["repo"] = elem[:idx]
@@ -1287,8 +1395,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									}
 									switch elem[0] {
 									case '/': // Prefix: "/"
-										if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-											elem = elem[len(prefix):]
+										if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+											elem = elem[l:]
 										} else {
 											break
 										}
@@ -1299,8 +1407,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										}
 										switch elem[0] {
 										case 'a': // Prefix: "a"
-											if prefix := "a"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-												elem = elem[len(prefix):]
+											if l := len("a"); len(elem) >= l && elem[0:l] == "a" {
+												elem = elem[l:]
 											} else {
 												break
 											}
@@ -1311,8 +1419,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											}
 											switch elem[0] {
 											case 'c': // Prefix: "ctions/"
-												if prefix := "ctions/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-													elem = elem[len(prefix):]
+												if l := len("ctions/"); len(elem) >= l && elem[0:l] == "ctions/" {
+													elem = elem[l:]
 												} else {
 													break
 												}
@@ -1323,8 +1431,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												}
 												switch elem[0] {
 												case 'a': // Prefix: "artifacts/"
-													if prefix := "artifacts/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-														elem = elem[len(prefix):]
+													if l := len("artifacts/"); len(elem) >= l && elem[0:l] == "artifacts/" {
+														elem = elem[l:]
 													} else {
 														break
 													}
@@ -1332,13 +1440,16 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													// Param: "artifact_id"
 													// Leaf parameter
 													args["artifact_id"] = elem
+													elem = ""
 
-													// Leaf: ActionsDeleteArtifact
-													s.handleActionsDeleteArtifactRequest(args, w, r)
-													return
+													if len(elem) == 0 {
+														// Leaf: ActionsDeleteArtifact
+														s.handleActionsDeleteArtifactRequest(args, w, r)
+														return
+													}
 												case 'r': // Prefix: "run"
-													if prefix := "run"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-														elem = elem[len(prefix):]
+													if l := len("run"); len(elem) >= l && elem[0:l] == "run" {
+														elem = elem[l:]
 													} else {
 														break
 													}
@@ -1349,8 +1460,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													}
 													switch elem[0] {
 													case 'n': // Prefix: "ners/"
-														if prefix := "ners/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-															elem = elem[len(prefix):]
+														if l := len("ners/"); len(elem) >= l && elem[0:l] == "ners/" {
+															elem = elem[l:]
 														} else {
 															break
 														}
@@ -1358,19 +1469,22 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														// Param: "runner_id"
 														// Leaf parameter
 														args["runner_id"] = elem
+														elem = ""
 
-														// Leaf: ActionsDeleteSelfHostedRunnerFromRepo
-														s.handleActionsDeleteSelfHostedRunnerFromRepoRequest(args, w, r)
-														return
+														if len(elem) == 0 {
+															// Leaf: ActionsDeleteSelfHostedRunnerFromRepo
+															s.handleActionsDeleteSelfHostedRunnerFromRepoRequest(args, w, r)
+															return
+														}
 													case 's': // Prefix: "s/"
-														if prefix := "s/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-															elem = elem[len(prefix):]
+														if l := len("s/"); len(elem) >= l && elem[0:l] == "s/" {
+															elem = elem[l:]
 														} else {
 															break
 														}
 
 														// Param: "run_id"
-														// Match until one of "/"
+														// Match until "/"
 														idx := strings.IndexByte(elem, '/')
 														if idx > 0 {
 															args["run_id"] = elem[:idx]
@@ -1382,21 +1496,23 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															}
 															switch elem[0] {
 															case '/': // Prefix: "/logs"
-																if prefix := "/logs"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																	elem = elem[len(prefix):]
+																if l := len("/logs"); len(elem) >= l && elem[0:l] == "/logs" {
+																	elem = elem[l:]
 																} else {
 																	break
 																}
 
-																// Leaf: ActionsDeleteWorkflowRunLogs
-																s.handleActionsDeleteWorkflowRunLogsRequest(args, w, r)
-																return
+																if len(elem) == 0 {
+																	// Leaf: ActionsDeleteWorkflowRunLogs
+																	s.handleActionsDeleteWorkflowRunLogsRequest(args, w, r)
+																	return
+																}
 															}
 														}
 													}
 												case 's': // Prefix: "secrets/"
-													if prefix := "secrets/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-														elem = elem[len(prefix):]
+													if l := len("secrets/"); len(elem) >= l && elem[0:l] == "secrets/" {
+														elem = elem[l:]
 													} else {
 														break
 													}
@@ -1404,14 +1520,17 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													// Param: "secret_name"
 													// Leaf parameter
 													args["secret_name"] = elem
+													elem = ""
 
-													// Leaf: ActionsDeleteRepoSecret
-													s.handleActionsDeleteRepoSecretRequest(args, w, r)
-													return
+													if len(elem) == 0 {
+														// Leaf: ActionsDeleteRepoSecret
+														s.handleActionsDeleteRepoSecretRequest(args, w, r)
+														return
+													}
 												}
 											case 'u': // Prefix: "uto"
-												if prefix := "uto"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-													elem = elem[len(prefix):]
+												if l := len("uto"); len(elem) >= l && elem[0:l] == "uto" {
+													elem = elem[l:]
 												} else {
 													break
 												}
@@ -1422,8 +1541,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												}
 												switch elem[0] {
 												case 'l': // Prefix: "links/"
-													if prefix := "links/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-														elem = elem[len(prefix):]
+													if l := len("links/"); len(elem) >= l && elem[0:l] == "links/" {
+														elem = elem[l:]
 													} else {
 														break
 													}
@@ -1431,31 +1550,36 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													// Param: "autolink_id"
 													// Leaf parameter
 													args["autolink_id"] = elem
+													elem = ""
 
-													// Leaf: ReposDeleteAutolink
-													s.handleReposDeleteAutolinkRequest(args, w, r)
-													return
+													if len(elem) == 0 {
+														// Leaf: ReposDeleteAutolink
+														s.handleReposDeleteAutolinkRequest(args, w, r)
+														return
+													}
 												case 'm': // Prefix: "mated-security-fixes"
-													if prefix := "mated-security-fixes"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-														elem = elem[len(prefix):]
+													if l := len("mated-security-fixes"); len(elem) >= l && elem[0:l] == "mated-security-fixes" {
+														elem = elem[l:]
 													} else {
 														break
 													}
 
-													// Leaf: ReposDisableAutomatedSecurityFixes
-													s.handleReposDisableAutomatedSecurityFixesRequest(args, w, r)
-													return
+													if len(elem) == 0 {
+														// Leaf: ReposDisableAutomatedSecurityFixes
+														s.handleReposDisableAutomatedSecurityFixesRequest(args, w, r)
+														return
+													}
 												}
 											}
 										case 'b': // Prefix: "branches/"
-											if prefix := "branches/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-												elem = elem[len(prefix):]
+											if l := len("branches/"); len(elem) >= l && elem[0:l] == "branches/" {
+												elem = elem[l:]
 											} else {
 												break
 											}
 
 											// Param: "branch"
-											// Match until one of "/"
+											// Match until "/"
 											idx := strings.IndexByte(elem, '/')
 											if idx > 0 {
 												args["branch"] = elem[:idx]
@@ -1466,8 +1590,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												}
 												switch elem[0] {
 												case '/': // Prefix: "/protection"
-													if prefix := "/protection"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-														elem = elem[len(prefix):]
+													if l := len("/protection"); len(elem) >= l && elem[0:l] == "/protection" {
+														elem = elem[l:]
 													} else {
 														break
 													}
@@ -1478,8 +1602,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													}
 													switch elem[0] {
 													case '/': // Prefix: "/"
-														if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-															elem = elem[len(prefix):]
+														if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+															elem = elem[l:]
 														} else {
 															break
 														}
@@ -1490,18 +1614,20 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														}
 														switch elem[0] {
 														case 'e': // Prefix: "enforce_admins"
-															if prefix := "enforce_admins"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																elem = elem[len(prefix):]
+															if l := len("enforce_admins"); len(elem) >= l && elem[0:l] == "enforce_admins" {
+																elem = elem[l:]
 															} else {
 																break
 															}
 
-															// Leaf: ReposDeleteAdminBranchProtection
-															s.handleReposDeleteAdminBranchProtectionRequest(args, w, r)
-															return
+															if len(elem) == 0 {
+																// Leaf: ReposDeleteAdminBranchProtection
+																s.handleReposDeleteAdminBranchProtectionRequest(args, w, r)
+																return
+															}
 														case 'r': // Prefix: "re"
-															if prefix := "re"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																elem = elem[len(prefix):]
+															if l := len("re"); len(elem) >= l && elem[0:l] == "re" {
+																elem = elem[l:]
 															} else {
 																break
 															}
@@ -1512,8 +1638,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															}
 															switch elem[0] {
 															case 'q': // Prefix: "quired_"
-																if prefix := "quired_"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																	elem = elem[len(prefix):]
+																if l := len("quired_"); len(elem) >= l && elem[0:l] == "quired_" {
+																	elem = elem[l:]
 																} else {
 																	break
 																}
@@ -1524,18 +1650,20 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																}
 																switch elem[0] {
 																case 'p': // Prefix: "pull_request_reviews"
-																	if prefix := "pull_request_reviews"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																		elem = elem[len(prefix):]
+																	if l := len("pull_request_reviews"); len(elem) >= l && elem[0:l] == "pull_request_reviews" {
+																		elem = elem[l:]
 																	} else {
 																		break
 																	}
 
-																	// Leaf: ReposDeletePullRequestReviewProtection
-																	s.handleReposDeletePullRequestReviewProtectionRequest(args, w, r)
-																	return
+																	if len(elem) == 0 {
+																		// Leaf: ReposDeletePullRequestReviewProtection
+																		s.handleReposDeletePullRequestReviewProtectionRequest(args, w, r)
+																		return
+																	}
 																case 's': // Prefix: "s"
-																	if prefix := "s"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																		elem = elem[len(prefix):]
+																	if l := len("s"); len(elem) >= l && elem[0:l] == "s" {
+																		elem = elem[l:]
 																	} else {
 																		break
 																	}
@@ -1546,18 +1674,20 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																	}
 																	switch elem[0] {
 																	case 'i': // Prefix: "ignatures"
-																		if prefix := "ignatures"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																			elem = elem[len(prefix):]
+																		if l := len("ignatures"); len(elem) >= l && elem[0:l] == "ignatures" {
+																			elem = elem[l:]
 																		} else {
 																			break
 																		}
 
-																		// Leaf: ReposDeleteCommitSignatureProtection
-																		s.handleReposDeleteCommitSignatureProtectionRequest(args, w, r)
-																		return
+																		if len(elem) == 0 {
+																			// Leaf: ReposDeleteCommitSignatureProtection
+																			s.handleReposDeleteCommitSignatureProtectionRequest(args, w, r)
+																			return
+																		}
 																	case 't': // Prefix: "tatus_checks"
-																		if prefix := "tatus_checks"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																			elem = elem[len(prefix):]
+																		if l := len("tatus_checks"); len(elem) >= l && elem[0:l] == "tatus_checks" {
+																			elem = elem[l:]
 																		} else {
 																			break
 																		}
@@ -1568,21 +1698,23 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																		}
 																		switch elem[0] {
 																		case '/': // Prefix: "/contexts"
-																			if prefix := "/contexts"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																				elem = elem[len(prefix):]
+																			if l := len("/contexts"); len(elem) >= l && elem[0:l] == "/contexts" {
+																				elem = elem[l:]
 																			} else {
 																				break
 																			}
 
-																			// Leaf: ReposRemoveStatusCheckContexts
-																			s.handleReposRemoveStatusCheckContextsRequest(args, w, r)
-																			return
+																			if len(elem) == 0 {
+																				// Leaf: ReposRemoveStatusCheckContexts
+																				s.handleReposRemoveStatusCheckContextsRequest(args, w, r)
+																				return
+																			}
 																		}
 																	}
 																}
 															case 's': // Prefix: "strictions"
-																if prefix := "strictions"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																	elem = elem[len(prefix):]
+																if l := len("strictions"); len(elem) >= l && elem[0:l] == "strictions" {
+																	elem = elem[l:]
 																} else {
 																	break
 																}
@@ -1593,8 +1725,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																}
 																switch elem[0] {
 																case '/': // Prefix: "/"
-																	if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																		elem = elem[len(prefix):]
+																	if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+																		elem = elem[l:]
 																	} else {
 																		break
 																	}
@@ -1605,35 +1737,41 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																	}
 																	switch elem[0] {
 																	case 'a': // Prefix: "apps"
-																		if prefix := "apps"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																			elem = elem[len(prefix):]
+																		if l := len("apps"); len(elem) >= l && elem[0:l] == "apps" {
+																			elem = elem[l:]
 																		} else {
 																			break
 																		}
 
-																		// Leaf: ReposRemoveAppAccessRestrictions
-																		s.handleReposRemoveAppAccessRestrictionsRequest(args, w, r)
-																		return
+																		if len(elem) == 0 {
+																			// Leaf: ReposRemoveAppAccessRestrictions
+																			s.handleReposRemoveAppAccessRestrictionsRequest(args, w, r)
+																			return
+																		}
 																	case 't': // Prefix: "teams"
-																		if prefix := "teams"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																			elem = elem[len(prefix):]
+																		if l := len("teams"); len(elem) >= l && elem[0:l] == "teams" {
+																			elem = elem[l:]
 																		} else {
 																			break
 																		}
 
-																		// Leaf: ReposRemoveTeamAccessRestrictions
-																		s.handleReposRemoveTeamAccessRestrictionsRequest(args, w, r)
-																		return
+																		if len(elem) == 0 {
+																			// Leaf: ReposRemoveTeamAccessRestrictions
+																			s.handleReposRemoveTeamAccessRestrictionsRequest(args, w, r)
+																			return
+																		}
 																	case 'u': // Prefix: "users"
-																		if prefix := "users"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																			elem = elem[len(prefix):]
+																		if l := len("users"); len(elem) >= l && elem[0:l] == "users" {
+																			elem = elem[l:]
 																		} else {
 																			break
 																		}
 
-																		// Leaf: ReposRemoveUserAccessRestrictions
-																		s.handleReposRemoveUserAccessRestrictionsRequest(args, w, r)
-																		return
+																		if len(elem) == 0 {
+																			// Leaf: ReposRemoveUserAccessRestrictions
+																			s.handleReposRemoveUserAccessRestrictionsRequest(args, w, r)
+																			return
+																		}
 																	}
 																}
 															}
@@ -1642,8 +1780,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												}
 											}
 										case 'c': // Prefix: "co"
-											if prefix := "co"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-												elem = elem[len(prefix):]
+											if l := len("co"); len(elem) >= l && elem[0:l] == "co" {
+												elem = elem[l:]
 											} else {
 												break
 											}
@@ -1654,8 +1792,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											}
 											switch elem[0] {
 											case 'd': // Prefix: "de-scanning/analyses/"
-												if prefix := "de-scanning/analyses/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-													elem = elem[len(prefix):]
+												if l := len("de-scanning/analyses/"); len(elem) >= l && elem[0:l] == "de-scanning/analyses/" {
+													elem = elem[l:]
 												} else {
 													break
 												}
@@ -1663,13 +1801,16 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												// Param: "analysis_id"
 												// Leaf parameter
 												args["analysis_id"] = elem
+												elem = ""
 
-												// Leaf: CodeScanningDeleteAnalysis
-												s.handleCodeScanningDeleteAnalysisRequest(args, w, r)
-												return
+												if len(elem) == 0 {
+													// Leaf: CodeScanningDeleteAnalysis
+													s.handleCodeScanningDeleteAnalysisRequest(args, w, r)
+													return
+												}
 											case 'l': // Prefix: "llaborators/"
-												if prefix := "llaborators/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-													elem = elem[len(prefix):]
+												if l := len("llaborators/"); len(elem) >= l && elem[0:l] == "llaborators/" {
+													elem = elem[l:]
 												} else {
 													break
 												}
@@ -1677,19 +1818,22 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												// Param: "username"
 												// Leaf parameter
 												args["username"] = elem
+												elem = ""
 
-												// Leaf: ReposRemoveCollaborator
-												s.handleReposRemoveCollaboratorRequest(args, w, r)
-												return
+												if len(elem) == 0 {
+													// Leaf: ReposRemoveCollaborator
+													s.handleReposRemoveCollaboratorRequest(args, w, r)
+													return
+												}
 											case 'm': // Prefix: "mments/"
-												if prefix := "mments/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-													elem = elem[len(prefix):]
+												if l := len("mments/"); len(elem) >= l && elem[0:l] == "mments/" {
+													elem = elem[l:]
 												} else {
 													break
 												}
 
 												// Param: "comment_id"
-												// Match until one of "/"
+												// Match until "/"
 												idx := strings.IndexByte(elem, '/')
 												if idx > 0 {
 													args["comment_id"] = elem[:idx]
@@ -1701,8 +1845,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													}
 													switch elem[0] {
 													case '/': // Prefix: "/reactions/"
-														if prefix := "/reactions/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-															elem = elem[len(prefix):]
+														if l := len("/reactions/"); len(elem) >= l && elem[0:l] == "/reactions/" {
+															elem = elem[l:]
 														} else {
 															break
 														}
@@ -1710,15 +1854,18 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														// Param: "reaction_id"
 														// Leaf parameter
 														args["reaction_id"] = elem
+														elem = ""
 
-														// Leaf: ReactionsDeleteForCommitComment
-														s.handleReactionsDeleteForCommitCommentRequest(args, w, r)
-														return
+														if len(elem) == 0 {
+															// Leaf: ReactionsDeleteForCommitComment
+															s.handleReactionsDeleteForCommitCommentRequest(args, w, r)
+															return
+														}
 													}
 												}
 											case 'n': // Prefix: "ntents/"
-												if prefix := "ntents/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-													elem = elem[len(prefix):]
+												if l := len("ntents/"); len(elem) >= l && elem[0:l] == "ntents/" {
+													elem = elem[l:]
 												} else {
 													break
 												}
@@ -1726,14 +1873,17 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												// Param: "path"
 												// Leaf parameter
 												args["path"] = elem
+												elem = ""
 
-												// Leaf: ReposDeleteFile
-												s.handleReposDeleteFileRequest(args, w, r)
-												return
+												if len(elem) == 0 {
+													// Leaf: ReposDeleteFile
+													s.handleReposDeleteFileRequest(args, w, r)
+													return
+												}
 											}
 										case 'd': // Prefix: "deployments/"
-											if prefix := "deployments/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-												elem = elem[len(prefix):]
+											if l := len("deployments/"); len(elem) >= l && elem[0:l] == "deployments/" {
+												elem = elem[l:]
 											} else {
 												break
 											}
@@ -1741,13 +1891,16 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											// Param: "deployment_id"
 											// Leaf parameter
 											args["deployment_id"] = elem
+											elem = ""
 
-											// Leaf: ReposDeleteDeployment
-											s.handleReposDeleteDeploymentRequest(args, w, r)
-											return
+											if len(elem) == 0 {
+												// Leaf: ReposDeleteDeployment
+												s.handleReposDeleteDeploymentRequest(args, w, r)
+												return
+											}
 										case 'e': // Prefix: "environments/"
-											if prefix := "environments/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-												elem = elem[len(prefix):]
+											if l := len("environments/"); len(elem) >= l && elem[0:l] == "environments/" {
+												elem = elem[l:]
 											} else {
 												break
 											}
@@ -1755,13 +1908,16 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											// Param: "environment_name"
 											// Leaf parameter
 											args["environment_name"] = elem
+											elem = ""
 
-											// Leaf: ReposDeleteAnEnvironment
-											s.handleReposDeleteAnEnvironmentRequest(args, w, r)
-											return
+											if len(elem) == 0 {
+												// Leaf: ReposDeleteAnEnvironment
+												s.handleReposDeleteAnEnvironmentRequest(args, w, r)
+												return
+											}
 										case 'g': // Prefix: "git/refs/"
-											if prefix := "git/refs/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-												elem = elem[len(prefix):]
+											if l := len("git/refs/"); len(elem) >= l && elem[0:l] == "git/refs/" {
+												elem = elem[l:]
 											} else {
 												break
 											}
@@ -1769,13 +1925,16 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											// Param: "ref"
 											// Leaf parameter
 											args["ref"] = elem
+											elem = ""
 
-											// Leaf: GitDeleteRef
-											s.handleGitDeleteRefRequest(args, w, r)
-											return
+											if len(elem) == 0 {
+												// Leaf: GitDeleteRef
+												s.handleGitDeleteRefRequest(args, w, r)
+												return
+											}
 										case 'h': // Prefix: "hooks/"
-											if prefix := "hooks/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-												elem = elem[len(prefix):]
+											if l := len("hooks/"); len(elem) >= l && elem[0:l] == "hooks/" {
+												elem = elem[l:]
 											} else {
 												break
 											}
@@ -1783,13 +1942,16 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											// Param: "hook_id"
 											// Leaf parameter
 											args["hook_id"] = elem
+											elem = ""
 
-											// Leaf: ReposDeleteWebhook
-											s.handleReposDeleteWebhookRequest(args, w, r)
-											return
+											if len(elem) == 0 {
+												// Leaf: ReposDeleteWebhook
+												s.handleReposDeleteWebhookRequest(args, w, r)
+												return
+											}
 										case 'i': // Prefix: "i"
-											if prefix := "i"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-												elem = elem[len(prefix):]
+											if l := len("i"); len(elem) >= l && elem[0:l] == "i" {
+												elem = elem[l:]
 											} else {
 												break
 											}
@@ -1800,18 +1962,20 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											}
 											switch elem[0] {
 											case 'm': // Prefix: "mport"
-												if prefix := "mport"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-													elem = elem[len(prefix):]
+												if l := len("mport"); len(elem) >= l && elem[0:l] == "mport" {
+													elem = elem[l:]
 												} else {
 													break
 												}
 
-												// Leaf: MigrationsCancelImport
-												s.handleMigrationsCancelImportRequest(args, w, r)
-												return
+												if len(elem) == 0 {
+													// Leaf: MigrationsCancelImport
+													s.handleMigrationsCancelImportRequest(args, w, r)
+													return
+												}
 											case 'n': // Prefix: "n"
-												if prefix := "n"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-													elem = elem[len(prefix):]
+												if l := len("n"); len(elem) >= l && elem[0:l] == "n" {
+													elem = elem[l:]
 												} else {
 													break
 												}
@@ -1822,18 +1986,20 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												}
 												switch elem[0] {
 												case 't': // Prefix: "teraction-limits"
-													if prefix := "teraction-limits"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-														elem = elem[len(prefix):]
+													if l := len("teraction-limits"); len(elem) >= l && elem[0:l] == "teraction-limits" {
+														elem = elem[l:]
 													} else {
 														break
 													}
 
-													// Leaf: InteractionsRemoveRestrictionsForRepo
-													s.handleInteractionsRemoveRestrictionsForRepoRequest(args, w, r)
-													return
+													if len(elem) == 0 {
+														// Leaf: InteractionsRemoveRestrictionsForRepo
+														s.handleInteractionsRemoveRestrictionsForRepoRequest(args, w, r)
+														return
+													}
 												case 'v': // Prefix: "vitations/"
-													if prefix := "vitations/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-														elem = elem[len(prefix):]
+													if l := len("vitations/"); len(elem) >= l && elem[0:l] == "vitations/" {
+														elem = elem[l:]
 													} else {
 														break
 													}
@@ -1841,14 +2007,17 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													// Param: "invitation_id"
 													// Leaf parameter
 													args["invitation_id"] = elem
+													elem = ""
 
-													// Leaf: ReposDeleteInvitation
-													s.handleReposDeleteInvitationRequest(args, w, r)
-													return
+													if len(elem) == 0 {
+														// Leaf: ReposDeleteInvitation
+														s.handleReposDeleteInvitationRequest(args, w, r)
+														return
+													}
 												}
 											case 's': // Prefix: "ssues/"
-												if prefix := "ssues/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-													elem = elem[len(prefix):]
+												if l := len("ssues/"); len(elem) >= l && elem[0:l] == "ssues/" {
+													elem = elem[l:]
 												} else {
 													break
 												}
@@ -1859,14 +2028,14 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												}
 												switch elem[0] {
 												case 'c': // Prefix: "comments/"
-													if prefix := "comments/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-														elem = elem[len(prefix):]
+													if l := len("comments/"); len(elem) >= l && elem[0:l] == "comments/" {
+														elem = elem[l:]
 													} else {
 														break
 													}
 
 													// Param: "comment_id"
-													// Match until one of "/"
+													// Match until "/"
 													idx := strings.IndexByte(elem, '/')
 													if idx > 0 {
 														args["comment_id"] = elem[:idx]
@@ -1878,8 +2047,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														}
 														switch elem[0] {
 														case '/': // Prefix: "/reactions/"
-															if prefix := "/reactions/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																elem = elem[len(prefix):]
+															if l := len("/reactions/"); len(elem) >= l && elem[0:l] == "/reactions/" {
+																elem = elem[l:]
 															} else {
 																break
 															}
@@ -1887,15 +2056,18 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															// Param: "reaction_id"
 															// Leaf parameter
 															args["reaction_id"] = elem
+															elem = ""
 
-															// Leaf: ReactionsDeleteForIssueComment
-															s.handleReactionsDeleteForIssueCommentRequest(args, w, r)
-															return
+															if len(elem) == 0 {
+																// Leaf: ReactionsDeleteForIssueComment
+																s.handleReactionsDeleteForIssueCommentRequest(args, w, r)
+																return
+															}
 														}
 													}
 												}
 												// Param: "issue_number"
-												// Match until one of "/"
+												// Match until "/"
 												idx := strings.IndexByte(elem, '/')
 												if idx > 0 {
 													args["issue_number"] = elem[:idx]
@@ -1906,8 +2078,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													}
 													switch elem[0] {
 													case '/': // Prefix: "/"
-														if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-															elem = elem[len(prefix):]
+														if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+															elem = elem[l:]
 														} else {
 															break
 														}
@@ -1918,18 +2090,20 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														}
 														switch elem[0] {
 														case 'a': // Prefix: "assignees"
-															if prefix := "assignees"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																elem = elem[len(prefix):]
+															if l := len("assignees"); len(elem) >= l && elem[0:l] == "assignees" {
+																elem = elem[l:]
 															} else {
 																break
 															}
 
-															// Leaf: IssuesRemoveAssignees
-															s.handleIssuesRemoveAssigneesRequest(args, w, r)
-															return
+															if len(elem) == 0 {
+																// Leaf: IssuesRemoveAssignees
+																s.handleIssuesRemoveAssigneesRequest(args, w, r)
+																return
+															}
 														case 'l': // Prefix: "l"
-															if prefix := "l"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																elem = elem[len(prefix):]
+															if l := len("l"); len(elem) >= l && elem[0:l] == "l" {
+																elem = elem[l:]
 															} else {
 																break
 															}
@@ -1940,8 +2114,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															}
 															switch elem[0] {
 															case 'a': // Prefix: "abels"
-																if prefix := "abels"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																	elem = elem[len(prefix):]
+																if l := len("abels"); len(elem) >= l && elem[0:l] == "abels" {
+																	elem = elem[l:]
 																} else {
 																	break
 																}
@@ -1952,8 +2126,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																}
 																switch elem[0] {
 																case '/': // Prefix: "/"
-																	if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																		elem = elem[len(prefix):]
+																	if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+																		elem = elem[l:]
 																	} else {
 																		break
 																	}
@@ -1961,25 +2135,30 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																	// Param: "name"
 																	// Leaf parameter
 																	args["name"] = elem
+																	elem = ""
 
-																	// Leaf: IssuesRemoveLabel
-																	s.handleIssuesRemoveLabelRequest(args, w, r)
-																	return
+																	if len(elem) == 0 {
+																		// Leaf: IssuesRemoveLabel
+																		s.handleIssuesRemoveLabelRequest(args, w, r)
+																		return
+																	}
 																}
 															case 'o': // Prefix: "ock"
-																if prefix := "ock"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																	elem = elem[len(prefix):]
+																if l := len("ock"); len(elem) >= l && elem[0:l] == "ock" {
+																	elem = elem[l:]
 																} else {
 																	break
 																}
 
-																// Leaf: IssuesUnlock
-																s.handleIssuesUnlockRequest(args, w, r)
-																return
+																if len(elem) == 0 {
+																	// Leaf: IssuesUnlock
+																	s.handleIssuesUnlockRequest(args, w, r)
+																	return
+																}
 															}
 														case 'r': // Prefix: "reactions/"
-															if prefix := "reactions/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																elem = elem[len(prefix):]
+															if l := len("reactions/"); len(elem) >= l && elem[0:l] == "reactions/" {
+																elem = elem[l:]
 															} else {
 																break
 															}
@@ -1987,17 +2166,20 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															// Param: "reaction_id"
 															// Leaf parameter
 															args["reaction_id"] = elem
+															elem = ""
 
-															// Leaf: ReactionsDeleteForIssue
-															s.handleReactionsDeleteForIssueRequest(args, w, r)
-															return
+															if len(elem) == 0 {
+																// Leaf: ReactionsDeleteForIssue
+																s.handleReactionsDeleteForIssueRequest(args, w, r)
+																return
+															}
 														}
 													}
 												}
 											}
 										case 'k': // Prefix: "keys/"
-											if prefix := "keys/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-												elem = elem[len(prefix):]
+											if l := len("keys/"); len(elem) >= l && elem[0:l] == "keys/" {
+												elem = elem[l:]
 											} else {
 												break
 											}
@@ -2005,13 +2187,16 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											// Param: "key_id"
 											// Leaf parameter
 											args["key_id"] = elem
+											elem = ""
 
-											// Leaf: ReposDeleteDeployKey
-											s.handleReposDeleteDeployKeyRequest(args, w, r)
-											return
+											if len(elem) == 0 {
+												// Leaf: ReposDeleteDeployKey
+												s.handleReposDeleteDeployKeyRequest(args, w, r)
+												return
+											}
 										case 'l': // Prefix: "l"
-											if prefix := "l"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-												elem = elem[len(prefix):]
+											if l := len("l"); len(elem) >= l && elem[0:l] == "l" {
+												elem = elem[l:]
 											} else {
 												break
 											}
@@ -2022,8 +2207,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											}
 											switch elem[0] {
 											case 'a': // Prefix: "abels/"
-												if prefix := "abels/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-													elem = elem[len(prefix):]
+												if l := len("abels/"); len(elem) >= l && elem[0:l] == "abels/" {
+													elem = elem[l:]
 												} else {
 													break
 												}
@@ -2031,24 +2216,29 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												// Param: "name"
 												// Leaf parameter
 												args["name"] = elem
+												elem = ""
 
-												// Leaf: IssuesDeleteLabel
-												s.handleIssuesDeleteLabelRequest(args, w, r)
-												return
+												if len(elem) == 0 {
+													// Leaf: IssuesDeleteLabel
+													s.handleIssuesDeleteLabelRequest(args, w, r)
+													return
+												}
 											case 'f': // Prefix: "fs"
-												if prefix := "fs"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-													elem = elem[len(prefix):]
+												if l := len("fs"); len(elem) >= l && elem[0:l] == "fs" {
+													elem = elem[l:]
 												} else {
 													break
 												}
 
-												// Leaf: ReposDisableLfsForRepo
-												s.handleReposDisableLfsForRepoRequest(args, w, r)
-												return
+												if len(elem) == 0 {
+													// Leaf: ReposDisableLfsForRepo
+													s.handleReposDisableLfsForRepoRequest(args, w, r)
+													return
+												}
 											}
 										case 'm': // Prefix: "milestones/"
-											if prefix := "milestones/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-												elem = elem[len(prefix):]
+											if l := len("milestones/"); len(elem) >= l && elem[0:l] == "milestones/" {
+												elem = elem[l:]
 											} else {
 												break
 											}
@@ -2056,13 +2246,16 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											// Param: "milestone_number"
 											// Leaf parameter
 											args["milestone_number"] = elem
+											elem = ""
 
-											// Leaf: IssuesDeleteMilestone
-											s.handleIssuesDeleteMilestoneRequest(args, w, r)
-											return
+											if len(elem) == 0 {
+												// Leaf: IssuesDeleteMilestone
+												s.handleIssuesDeleteMilestoneRequest(args, w, r)
+												return
+											}
 										case 'p': // Prefix: "p"
-											if prefix := "p"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-												elem = elem[len(prefix):]
+											if l := len("p"); len(elem) >= l && elem[0:l] == "p" {
+												elem = elem[l:]
 											} else {
 												break
 											}
@@ -2073,18 +2266,20 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											}
 											switch elem[0] {
 											case 'a': // Prefix: "ages"
-												if prefix := "ages"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-													elem = elem[len(prefix):]
+												if l := len("ages"); len(elem) >= l && elem[0:l] == "ages" {
+													elem = elem[l:]
 												} else {
 													break
 												}
 
-												// Leaf: ReposDeletePagesSite
-												s.handleReposDeletePagesSiteRequest(args, w, r)
-												return
+												if len(elem) == 0 {
+													// Leaf: ReposDeletePagesSite
+													s.handleReposDeletePagesSiteRequest(args, w, r)
+													return
+												}
 											case 'u': // Prefix: "ulls/"
-												if prefix := "ulls/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-													elem = elem[len(prefix):]
+												if l := len("ulls/"); len(elem) >= l && elem[0:l] == "ulls/" {
+													elem = elem[l:]
 												} else {
 													break
 												}
@@ -2094,14 +2289,14 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												}
 												switch elem[0] {
 												case 'c': // Prefix: "comments/"
-													if prefix := "comments/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-														elem = elem[len(prefix):]
+													if l := len("comments/"); len(elem) >= l && elem[0:l] == "comments/" {
+														elem = elem[l:]
 													} else {
 														break
 													}
 
 													// Param: "comment_id"
-													// Match until one of "/"
+													// Match until "/"
 													idx := strings.IndexByte(elem, '/')
 													if idx > 0 {
 														args["comment_id"] = elem[:idx]
@@ -2113,8 +2308,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														}
 														switch elem[0] {
 														case '/': // Prefix: "/reactions/"
-															if prefix := "/reactions/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																elem = elem[len(prefix):]
+															if l := len("/reactions/"); len(elem) >= l && elem[0:l] == "/reactions/" {
+																elem = elem[l:]
 															} else {
 																break
 															}
@@ -2122,15 +2317,18 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															// Param: "reaction_id"
 															// Leaf parameter
 															args["reaction_id"] = elem
+															elem = ""
 
-															// Leaf: ReactionsDeleteForPullRequestComment
-															s.handleReactionsDeleteForPullRequestCommentRequest(args, w, r)
-															return
+															if len(elem) == 0 {
+																// Leaf: ReactionsDeleteForPullRequestComment
+																s.handleReactionsDeleteForPullRequestCommentRequest(args, w, r)
+																return
+															}
 														}
 													}
 												}
 												// Param: "pull_number"
-												// Match until one of "/"
+												// Match until "/"
 												idx := strings.IndexByte(elem, '/')
 												if idx > 0 {
 													args["pull_number"] = elem[:idx]
@@ -2141,8 +2339,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													}
 													switch elem[0] {
 													case '/': // Prefix: "/re"
-														if prefix := "/re"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-															elem = elem[len(prefix):]
+														if l := len("/re"); len(elem) >= l && elem[0:l] == "/re" {
+															elem = elem[l:]
 														} else {
 															break
 														}
@@ -2153,18 +2351,20 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														}
 														switch elem[0] {
 														case 'q': // Prefix: "quested_reviewers"
-															if prefix := "quested_reviewers"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																elem = elem[len(prefix):]
+															if l := len("quested_reviewers"); len(elem) >= l && elem[0:l] == "quested_reviewers" {
+																elem = elem[l:]
 															} else {
 																break
 															}
 
-															// Leaf: PullsRemoveRequestedReviewers
-															s.handlePullsRemoveRequestedReviewersRequest(args, w, r)
-															return
+															if len(elem) == 0 {
+																// Leaf: PullsRemoveRequestedReviewers
+																s.handlePullsRemoveRequestedReviewersRequest(args, w, r)
+																return
+															}
 														case 'v': // Prefix: "views/"
-															if prefix := "views/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																elem = elem[len(prefix):]
+															if l := len("views/"); len(elem) >= l && elem[0:l] == "views/" {
+																elem = elem[l:]
 															} else {
 																break
 															}
@@ -2172,17 +2372,20 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															// Param: "review_id"
 															// Leaf parameter
 															args["review_id"] = elem
+															elem = ""
 
-															// Leaf: PullsDeletePendingReview
-															s.handlePullsDeletePendingReviewRequest(args, w, r)
-															return
+															if len(elem) == 0 {
+																// Leaf: PullsDeletePendingReview
+																s.handlePullsDeletePendingReviewRequest(args, w, r)
+																return
+															}
 														}
 													}
 												}
 											}
 										case 'r': // Prefix: "releases/"
-											if prefix := "releases/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-												elem = elem[len(prefix):]
+											if l := len("releases/"); len(elem) >= l && elem[0:l] == "releases/" {
+												elem = elem[l:]
 											} else {
 												break
 											}
@@ -2192,8 +2395,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											}
 											switch elem[0] {
 											case 'a': // Prefix: "assets/"
-												if prefix := "assets/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-													elem = elem[len(prefix):]
+												if l := len("assets/"); len(elem) >= l && elem[0:l] == "assets/" {
+													elem = elem[l:]
 												} else {
 													break
 												}
@@ -2201,52 +2404,62 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												// Param: "asset_id"
 												// Leaf parameter
 												args["asset_id"] = elem
+												elem = ""
 
-												// Leaf: ReposDeleteReleaseAsset
-												s.handleReposDeleteReleaseAssetRequest(args, w, r)
-												return
+												if len(elem) == 0 {
+													// Leaf: ReposDeleteReleaseAsset
+													s.handleReposDeleteReleaseAssetRequest(args, w, r)
+													return
+												}
 											}
 											// Param: "release_id"
 											// Leaf parameter
 											args["release_id"] = elem
+											elem = ""
 
-											// Leaf: ReposDeleteRelease
-											s.handleReposDeleteReleaseRequest(args, w, r)
-											return
+											if len(elem) == 0 {
+												// Leaf: ReposDeleteRelease
+												s.handleReposDeleteReleaseRequest(args, w, r)
+												return
+											}
 										case 's': // Prefix: "subscription"
-											if prefix := "subscription"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-												elem = elem[len(prefix):]
+											if l := len("subscription"); len(elem) >= l && elem[0:l] == "subscription" {
+												elem = elem[l:]
 											} else {
 												break
 											}
 
-											// Leaf: ActivityDeleteRepoSubscription
-											s.handleActivityDeleteRepoSubscriptionRequest(args, w, r)
-											return
+											if len(elem) == 0 {
+												// Leaf: ActivityDeleteRepoSubscription
+												s.handleActivityDeleteRepoSubscriptionRequest(args, w, r)
+												return
+											}
 										case 'v': // Prefix: "vulnerability-alerts"
-											if prefix := "vulnerability-alerts"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-												elem = elem[len(prefix):]
+											if l := len("vulnerability-alerts"); len(elem) >= l && elem[0:l] == "vulnerability-alerts" {
+												elem = elem[l:]
 											} else {
 												break
 											}
 
-											// Leaf: ReposDisableVulnerabilityAlerts
-											s.handleReposDisableVulnerabilityAlertsRequest(args, w, r)
-											return
+											if len(elem) == 0 {
+												// Leaf: ReposDisableVulnerabilityAlerts
+												s.handleReposDisableVulnerabilityAlertsRequest(args, w, r)
+												return
+											}
 										}
 									}
 								}
 							}
 						}
 					case 'i': // Prefix: "itories/"
-						if prefix := "itories/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-							elem = elem[len(prefix):]
+						if l := len("itories/"); len(elem) >= l && elem[0:l] == "itories/" {
+							elem = elem[l:]
 						} else {
 							break
 						}
 
 						// Param: "repository_id"
-						// Match until one of "/"
+						// Match until "/"
 						idx := strings.IndexByte(elem, '/')
 						if idx > 0 {
 							args["repository_id"] = elem[:idx]
@@ -2257,14 +2470,14 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							}
 							switch elem[0] {
 							case '/': // Prefix: "/environments/"
-								if prefix := "/environments/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-									elem = elem[len(prefix):]
+								if l := len("/environments/"); len(elem) >= l && elem[0:l] == "/environments/" {
+									elem = elem[l:]
 								} else {
 									break
 								}
 
 								// Param: "environment_name"
-								// Match until one of "/"
+								// Match until "/"
 								idx := strings.IndexByte(elem, '/')
 								if idx > 0 {
 									args["environment_name"] = elem[:idx]
@@ -2275,8 +2488,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									}
 									switch elem[0] {
 									case '/': // Prefix: "/secrets/"
-										if prefix := "/secrets/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-											elem = elem[len(prefix):]
+										if l := len("/secrets/"); len(elem) >= l && elem[0:l] == "/secrets/" {
+											elem = elem[l:]
 										} else {
 											break
 										}
@@ -2284,10 +2497,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										// Param: "secret_name"
 										// Leaf parameter
 										args["secret_name"] = elem
+										elem = ""
 
-										// Leaf: ActionsDeleteEnvironmentSecret
-										s.handleActionsDeleteEnvironmentSecretRequest(args, w, r)
-										return
+										if len(elem) == 0 {
+											// Leaf: ActionsDeleteEnvironmentSecret
+											s.handleActionsDeleteEnvironmentSecretRequest(args, w, r)
+											return
+										}
 									}
 								}
 							}
@@ -2295,8 +2511,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					}
 				}
 			case 's': // Prefix: "scim/v2/"
-				if prefix := "scim/v2/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-					elem = elem[len(prefix):]
+				if l := len("scim/v2/"); len(elem) >= l && elem[0:l] == "scim/v2/" {
+					elem = elem[l:]
 				} else {
 					break
 				}
@@ -2307,14 +2523,14 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				}
 				switch elem[0] {
 				case 'e': // Prefix: "enterprises/"
-					if prefix := "enterprises/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-						elem = elem[len(prefix):]
+					if l := len("enterprises/"); len(elem) >= l && elem[0:l] == "enterprises/" {
+						elem = elem[l:]
 					} else {
 						break
 					}
 
 					// Param: "enterprise"
-					// Match until one of "/"
+					// Match until "/"
 					idx := strings.IndexByte(elem, '/')
 					if idx > 0 {
 						args["enterprise"] = elem[:idx]
@@ -2325,8 +2541,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						}
 						switch elem[0] {
 						case '/': // Prefix: "/"
-							if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-								elem = elem[len(prefix):]
+							if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+								elem = elem[l:]
 							} else {
 								break
 							}
@@ -2337,8 +2553,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							}
 							switch elem[0] {
 							case 'G': // Prefix: "Groups/"
-								if prefix := "Groups/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-									elem = elem[len(prefix):]
+								if l := len("Groups/"); len(elem) >= l && elem[0:l] == "Groups/" {
+									elem = elem[l:]
 								} else {
 									break
 								}
@@ -2346,13 +2562,16 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								// Param: "scim_group_id"
 								// Leaf parameter
 								args["scim_group_id"] = elem
+								elem = ""
 
-								// Leaf: EnterpriseAdminDeleteScimGroupFromEnterprise
-								s.handleEnterpriseAdminDeleteScimGroupFromEnterpriseRequest(args, w, r)
-								return
+								if len(elem) == 0 {
+									// Leaf: EnterpriseAdminDeleteScimGroupFromEnterprise
+									s.handleEnterpriseAdminDeleteScimGroupFromEnterpriseRequest(args, w, r)
+									return
+								}
 							case 'U': // Prefix: "Users/"
-								if prefix := "Users/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-									elem = elem[len(prefix):]
+								if l := len("Users/"); len(elem) >= l && elem[0:l] == "Users/" {
+									elem = elem[l:]
 								} else {
 									break
 								}
@@ -2360,22 +2579,25 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								// Param: "scim_user_id"
 								// Leaf parameter
 								args["scim_user_id"] = elem
+								elem = ""
 
-								// Leaf: EnterpriseAdminDeleteUserFromEnterprise
-								s.handleEnterpriseAdminDeleteUserFromEnterpriseRequest(args, w, r)
-								return
+								if len(elem) == 0 {
+									// Leaf: EnterpriseAdminDeleteUserFromEnterprise
+									s.handleEnterpriseAdminDeleteUserFromEnterpriseRequest(args, w, r)
+									return
+								}
 							}
 						}
 					}
 				case 'o': // Prefix: "organizations/"
-					if prefix := "organizations/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-						elem = elem[len(prefix):]
+					if l := len("organizations/"); len(elem) >= l && elem[0:l] == "organizations/" {
+						elem = elem[l:]
 					} else {
 						break
 					}
 
 					// Param: "org"
-					// Match until one of "/"
+					// Match until "/"
 					idx := strings.IndexByte(elem, '/')
 					if idx > 0 {
 						args["org"] = elem[:idx]
@@ -2386,8 +2608,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						}
 						switch elem[0] {
 						case '/': // Prefix: "/Users/"
-							if prefix := "/Users/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-								elem = elem[len(prefix):]
+							if l := len("/Users/"); len(elem) >= l && elem[0:l] == "/Users/" {
+								elem = elem[l:]
 							} else {
 								break
 							}
@@ -2395,22 +2617,25 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							// Param: "scim_user_id"
 							// Leaf parameter
 							args["scim_user_id"] = elem
+							elem = ""
 
-							// Leaf: ScimDeleteUserFromOrg
-							s.handleScimDeleteUserFromOrgRequest(args, w, r)
-							return
+							if len(elem) == 0 {
+								// Leaf: ScimDeleteUserFromOrg
+								s.handleScimDeleteUserFromOrgRequest(args, w, r)
+								return
+							}
 						}
 					}
 				}
 			case 't': // Prefix: "teams/"
-				if prefix := "teams/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-					elem = elem[len(prefix):]
+				if l := len("teams/"); len(elem) >= l && elem[0:l] == "teams/" {
+					elem = elem[l:]
 				} else {
 					break
 				}
 
 				// Param: "team_id"
-				// Match until one of "/"
+				// Match until "/"
 				idx := strings.IndexByte(elem, '/')
 				if idx > 0 {
 					args["team_id"] = elem[:idx]
@@ -2422,8 +2647,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					}
 					switch elem[0] {
 					case '/': // Prefix: "/"
-						if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-							elem = elem[len(prefix):]
+						if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+							elem = elem[l:]
 						} else {
 							break
 						}
@@ -2434,14 +2659,14 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						}
 						switch elem[0] {
 						case 'd': // Prefix: "discussions/"
-							if prefix := "discussions/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-								elem = elem[len(prefix):]
+							if l := len("discussions/"); len(elem) >= l && elem[0:l] == "discussions/" {
+								elem = elem[l:]
 							} else {
 								break
 							}
 
 							// Param: "discussion_number"
-							// Match until one of "/"
+							// Match until "/"
 							idx := strings.IndexByte(elem, '/')
 							if idx > 0 {
 								args["discussion_number"] = elem[:idx]
@@ -2453,8 +2678,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								}
 								switch elem[0] {
 								case '/': // Prefix: "/comments/"
-									if prefix := "/comments/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-										elem = elem[len(prefix):]
+									if l := len("/comments/"); len(elem) >= l && elem[0:l] == "/comments/" {
+										elem = elem[l:]
 									} else {
 										break
 									}
@@ -2462,15 +2687,18 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									// Param: "comment_number"
 									// Leaf parameter
 									args["comment_number"] = elem
+									elem = ""
 
-									// Leaf: TeamsDeleteDiscussionCommentLegacy
-									s.handleTeamsDeleteDiscussionCommentLegacyRequest(args, w, r)
-									return
+									if len(elem) == 0 {
+										// Leaf: TeamsDeleteDiscussionCommentLegacy
+										s.handleTeamsDeleteDiscussionCommentLegacyRequest(args, w, r)
+										return
+									}
 								}
 							}
 						case 'm': // Prefix: "members"
-							if prefix := "members"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-								elem = elem[len(prefix):]
+							if l := len("members"); len(elem) >= l && elem[0:l] == "members" {
+								elem = elem[l:]
 							} else {
 								break
 							}
@@ -2481,8 +2709,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							}
 							switch elem[0] {
 							case '/': // Prefix: "/"
-								if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-									elem = elem[len(prefix):]
+								if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+									elem = elem[l:]
 								} else {
 									break
 								}
@@ -2490,13 +2718,16 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								// Param: "username"
 								// Leaf parameter
 								args["username"] = elem
+								elem = ""
 
-								// Leaf: TeamsRemoveMemberLegacy
-								s.handleTeamsRemoveMemberLegacyRequest(args, w, r)
-								return
+								if len(elem) == 0 {
+									// Leaf: TeamsRemoveMemberLegacy
+									s.handleTeamsRemoveMemberLegacyRequest(args, w, r)
+									return
+								}
 							case 'h': // Prefix: "hips/"
-								if prefix := "hips/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-									elem = elem[len(prefix):]
+								if l := len("hips/"); len(elem) >= l && elem[0:l] == "hips/" {
+									elem = elem[l:]
 								} else {
 									break
 								}
@@ -2504,14 +2735,17 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								// Param: "username"
 								// Leaf parameter
 								args["username"] = elem
+								elem = ""
 
-								// Leaf: TeamsRemoveMembershipForUserLegacy
-								s.handleTeamsRemoveMembershipForUserLegacyRequest(args, w, r)
-								return
+								if len(elem) == 0 {
+									// Leaf: TeamsRemoveMembershipForUserLegacy
+									s.handleTeamsRemoveMembershipForUserLegacyRequest(args, w, r)
+									return
+								}
 							}
 						case 'p': // Prefix: "projects/"
-							if prefix := "projects/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-								elem = elem[len(prefix):]
+							if l := len("projects/"); len(elem) >= l && elem[0:l] == "projects/" {
+								elem = elem[l:]
 							} else {
 								break
 							}
@@ -2519,19 +2753,22 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							// Param: "project_id"
 							// Leaf parameter
 							args["project_id"] = elem
+							elem = ""
 
-							// Leaf: TeamsRemoveProjectLegacy
-							s.handleTeamsRemoveProjectLegacyRequest(args, w, r)
-							return
+							if len(elem) == 0 {
+								// Leaf: TeamsRemoveProjectLegacy
+								s.handleTeamsRemoveProjectLegacyRequest(args, w, r)
+								return
+							}
 						case 'r': // Prefix: "repos/"
-							if prefix := "repos/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-								elem = elem[len(prefix):]
+							if l := len("repos/"); len(elem) >= l && elem[0:l] == "repos/" {
+								elem = elem[l:]
 							} else {
 								break
 							}
 
 							// Param: "owner"
-							// Match until one of "/"
+							// Match until "/"
 							idx := strings.IndexByte(elem, '/')
 							if idx > 0 {
 								args["owner"] = elem[:idx]
@@ -2542,8 +2779,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								}
 								switch elem[0] {
 								case '/': // Prefix: "/"
-									if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-										elem = elem[len(prefix):]
+									if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+										elem = elem[l:]
 									} else {
 										break
 									}
@@ -2551,18 +2788,21 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									// Param: "repo"
 									// Leaf parameter
 									args["repo"] = elem
+									elem = ""
 
-									// Leaf: TeamsRemoveRepoLegacy
-									s.handleTeamsRemoveRepoLegacyRequest(args, w, r)
-									return
+									if len(elem) == 0 {
+										// Leaf: TeamsRemoveRepoLegacy
+										s.handleTeamsRemoveRepoLegacyRequest(args, w, r)
+										return
+									}
 								}
 							}
 						}
 					}
 				}
 			case 'u': // Prefix: "user"
-				if prefix := "user"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-					elem = elem[len(prefix):]
+				if l := len("user"); len(elem) >= l && elem[0:l] == "user" {
+					elem = elem[l:]
 				} else {
 					break
 				}
@@ -2573,8 +2813,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				}
 				switch elem[0] {
 				case '/': // Prefix: "/"
-					if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-						elem = elem[len(prefix):]
+					if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+						elem = elem[l:]
 					} else {
 						break
 					}
@@ -2585,8 +2825,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					}
 					switch elem[0] {
 					case 'b': // Prefix: "blocks/"
-						if prefix := "blocks/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-							elem = elem[len(prefix):]
+						if l := len("blocks/"); len(elem) >= l && elem[0:l] == "blocks/" {
+							elem = elem[l:]
 						} else {
 							break
 						}
@@ -2594,23 +2834,28 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						// Param: "username"
 						// Leaf parameter
 						args["username"] = elem
+						elem = ""
 
-						// Leaf: UsersUnblock
-						s.handleUsersUnblockRequest(args, w, r)
-						return
+						if len(elem) == 0 {
+							// Leaf: UsersUnblock
+							s.handleUsersUnblockRequest(args, w, r)
+							return
+						}
 					case 'e': // Prefix: "emails"
-						if prefix := "emails"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-							elem = elem[len(prefix):]
+						if l := len("emails"); len(elem) >= l && elem[0:l] == "emails" {
+							elem = elem[l:]
 						} else {
 							break
 						}
 
-						// Leaf: UsersDeleteEmailForAuthenticated
-						s.handleUsersDeleteEmailForAuthenticatedRequest(args, w, r)
-						return
+						if len(elem) == 0 {
+							// Leaf: UsersDeleteEmailForAuthenticated
+							s.handleUsersDeleteEmailForAuthenticatedRequest(args, w, r)
+							return
+						}
 					case 'f': // Prefix: "following/"
-						if prefix := "following/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-							elem = elem[len(prefix):]
+						if l := len("following/"); len(elem) >= l && elem[0:l] == "following/" {
+							elem = elem[l:]
 						} else {
 							break
 						}
@@ -2618,13 +2863,16 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						// Param: "username"
 						// Leaf parameter
 						args["username"] = elem
+						elem = ""
 
-						// Leaf: UsersUnfollow
-						s.handleUsersUnfollowRequest(args, w, r)
-						return
+						if len(elem) == 0 {
+							// Leaf: UsersUnfollow
+							s.handleUsersUnfollowRequest(args, w, r)
+							return
+						}
 					case 'g': // Prefix: "gpg_keys/"
-						if prefix := "gpg_keys/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-							elem = elem[len(prefix):]
+						if l := len("gpg_keys/"); len(elem) >= l && elem[0:l] == "gpg_keys/" {
+							elem = elem[l:]
 						} else {
 							break
 						}
@@ -2632,13 +2880,16 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						// Param: "gpg_key_id"
 						// Leaf parameter
 						args["gpg_key_id"] = elem
+						elem = ""
 
-						// Leaf: UsersDeleteGpgKeyForAuthenticated
-						s.handleUsersDeleteGpgKeyForAuthenticatedRequest(args, w, r)
-						return
+						if len(elem) == 0 {
+							// Leaf: UsersDeleteGpgKeyForAuthenticated
+							s.handleUsersDeleteGpgKeyForAuthenticatedRequest(args, w, r)
+							return
+						}
 					case 'i': // Prefix: "in"
-						if prefix := "in"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-							elem = elem[len(prefix):]
+						if l := len("in"); len(elem) >= l && elem[0:l] == "in" {
+							elem = elem[l:]
 						} else {
 							break
 						}
@@ -2649,14 +2900,14 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						}
 						switch elem[0] {
 						case 's': // Prefix: "stallations/"
-							if prefix := "stallations/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-								elem = elem[len(prefix):]
+							if l := len("stallations/"); len(elem) >= l && elem[0:l] == "stallations/" {
+								elem = elem[l:]
 							} else {
 								break
 							}
 
 							// Param: "installation_id"
-							// Match until one of "/"
+							// Match until "/"
 							idx := strings.IndexByte(elem, '/')
 							if idx > 0 {
 								args["installation_id"] = elem[:idx]
@@ -2667,8 +2918,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								}
 								switch elem[0] {
 								case '/': // Prefix: "/repositories/"
-									if prefix := "/repositories/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-										elem = elem[len(prefix):]
+									if l := len("/repositories/"); len(elem) >= l && elem[0:l] == "/repositories/" {
+										elem = elem[l:]
 									} else {
 										break
 									}
@@ -2676,26 +2927,31 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									// Param: "repository_id"
 									// Leaf parameter
 									args["repository_id"] = elem
+									elem = ""
 
-									// Leaf: AppsRemoveRepoFromInstallation
-									s.handleAppsRemoveRepoFromInstallationRequest(args, w, r)
-									return
+									if len(elem) == 0 {
+										// Leaf: AppsRemoveRepoFromInstallation
+										s.handleAppsRemoveRepoFromInstallationRequest(args, w, r)
+										return
+									}
 								}
 							}
 						case 't': // Prefix: "teraction-limits"
-							if prefix := "teraction-limits"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-								elem = elem[len(prefix):]
+							if l := len("teraction-limits"); len(elem) >= l && elem[0:l] == "teraction-limits" {
+								elem = elem[l:]
 							} else {
 								break
 							}
 
-							// Leaf: InteractionsRemoveRestrictionsForAuthenticatedUser
-							s.handleInteractionsRemoveRestrictionsForAuthenticatedUserRequest(args, w, r)
-							return
+							if len(elem) == 0 {
+								// Leaf: InteractionsRemoveRestrictionsForAuthenticatedUser
+								s.handleInteractionsRemoveRestrictionsForAuthenticatedUserRequest(args, w, r)
+								return
+							}
 						}
 					case 'k': // Prefix: "keys/"
-						if prefix := "keys/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-							elem = elem[len(prefix):]
+						if l := len("keys/"); len(elem) >= l && elem[0:l] == "keys/" {
+							elem = elem[l:]
 						} else {
 							break
 						}
@@ -2703,19 +2959,22 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						// Param: "key_id"
 						// Leaf parameter
 						args["key_id"] = elem
+						elem = ""
 
-						// Leaf: UsersDeletePublicSSHKeyForAuthenticated
-						s.handleUsersDeletePublicSSHKeyForAuthenticatedRequest(args, w, r)
-						return
+						if len(elem) == 0 {
+							// Leaf: UsersDeletePublicSSHKeyForAuthenticated
+							s.handleUsersDeletePublicSSHKeyForAuthenticatedRequest(args, w, r)
+							return
+						}
 					case 'm': // Prefix: "migrations/"
-						if prefix := "migrations/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-							elem = elem[len(prefix):]
+						if l := len("migrations/"); len(elem) >= l && elem[0:l] == "migrations/" {
+							elem = elem[l:]
 						} else {
 							break
 						}
 
 						// Param: "migration_id"
-						// Match until one of "/"
+						// Match until "/"
 						idx := strings.IndexByte(elem, '/')
 						if idx > 0 {
 							args["migration_id"] = elem[:idx]
@@ -2726,8 +2985,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							}
 							switch elem[0] {
 							case '/': // Prefix: "/"
-								if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-									elem = elem[len(prefix):]
+								if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+									elem = elem[l:]
 								} else {
 									break
 								}
@@ -2738,24 +2997,26 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								}
 								switch elem[0] {
 								case 'a': // Prefix: "archive"
-									if prefix := "archive"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-										elem = elem[len(prefix):]
+									if l := len("archive"); len(elem) >= l && elem[0:l] == "archive" {
+										elem = elem[l:]
 									} else {
 										break
 									}
 
-									// Leaf: MigrationsDeleteArchiveForAuthenticatedUser
-									s.handleMigrationsDeleteArchiveForAuthenticatedUserRequest(args, w, r)
-									return
+									if len(elem) == 0 {
+										// Leaf: MigrationsDeleteArchiveForAuthenticatedUser
+										s.handleMigrationsDeleteArchiveForAuthenticatedUserRequest(args, w, r)
+										return
+									}
 								case 'r': // Prefix: "repos/"
-									if prefix := "repos/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-										elem = elem[len(prefix):]
+									if l := len("repos/"); len(elem) >= l && elem[0:l] == "repos/" {
+										elem = elem[l:]
 									} else {
 										break
 									}
 
 									// Param: "repo_name"
-									// Match until one of "/"
+									// Match until "/"
 									idx := strings.IndexByte(elem, '/')
 									if idx > 0 {
 										args["repo_name"] = elem[:idx]
@@ -2766,29 +3027,31 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										}
 										switch elem[0] {
 										case '/': // Prefix: "/lock"
-											if prefix := "/lock"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-												elem = elem[len(prefix):]
+											if l := len("/lock"); len(elem) >= l && elem[0:l] == "/lock" {
+												elem = elem[l:]
 											} else {
 												break
 											}
 
-											// Leaf: MigrationsUnlockRepoForAuthenticatedUser
-											s.handleMigrationsUnlockRepoForAuthenticatedUserRequest(args, w, r)
-											return
+											if len(elem) == 0 {
+												// Leaf: MigrationsUnlockRepoForAuthenticatedUser
+												s.handleMigrationsUnlockRepoForAuthenticatedUserRequest(args, w, r)
+												return
+											}
 										}
 									}
 								}
 							}
 						}
 					case 'p': // Prefix: "packages/"
-						if prefix := "packages/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-							elem = elem[len(prefix):]
+						if l := len("packages/"); len(elem) >= l && elem[0:l] == "packages/" {
+							elem = elem[l:]
 						} else {
 							break
 						}
 
 						// Param: "package_type"
-						// Match until one of "/"
+						// Match until "/"
 						idx := strings.IndexByte(elem, '/')
 						if idx > 0 {
 							args["package_type"] = elem[:idx]
@@ -2799,14 +3062,14 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							}
 							switch elem[0] {
 							case '/': // Prefix: "/"
-								if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-									elem = elem[len(prefix):]
+								if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+									elem = elem[l:]
 								} else {
 									break
 								}
 
 								// Param: "package_name"
-								// Match until one of "/"
+								// Match until "/"
 								idx := strings.IndexByte(elem, '/')
 								if idx > 0 {
 									args["package_name"] = elem[:idx]
@@ -2818,8 +3081,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									}
 									switch elem[0] {
 									case '/': // Prefix: "/versions/"
-										if prefix := "/versions/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-											elem = elem[len(prefix):]
+										if l := len("/versions/"); len(elem) >= l && elem[0:l] == "/versions/" {
+											elem = elem[l:]
 										} else {
 											break
 										}
@@ -2827,17 +3090,20 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										// Param: "package_version_id"
 										// Leaf parameter
 										args["package_version_id"] = elem
+										elem = ""
 
-										// Leaf: PackagesDeletePackageVersionForAuthenticatedUser
-										s.handlePackagesDeletePackageVersionForAuthenticatedUserRequest(args, w, r)
-										return
+										if len(elem) == 0 {
+											// Leaf: PackagesDeletePackageVersionForAuthenticatedUser
+											s.handlePackagesDeletePackageVersionForAuthenticatedUserRequest(args, w, r)
+											return
+										}
 									}
 								}
 							}
 						}
 					case 'r': // Prefix: "repository_invitations/"
-						if prefix := "repository_invitations/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-							elem = elem[len(prefix):]
+						if l := len("repository_invitations/"); len(elem) >= l && elem[0:l] == "repository_invitations/" {
+							elem = elem[l:]
 						} else {
 							break
 						}
@@ -2845,19 +3111,22 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						// Param: "invitation_id"
 						// Leaf parameter
 						args["invitation_id"] = elem
+						elem = ""
 
-						// Leaf: ReposDeclineInvitation
-						s.handleReposDeclineInvitationRequest(args, w, r)
-						return
+						if len(elem) == 0 {
+							// Leaf: ReposDeclineInvitation
+							s.handleReposDeclineInvitationRequest(args, w, r)
+							return
+						}
 					case 's': // Prefix: "starred/"
-						if prefix := "starred/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-							elem = elem[len(prefix):]
+						if l := len("starred/"); len(elem) >= l && elem[0:l] == "starred/" {
+							elem = elem[l:]
 						} else {
 							break
 						}
 
 						// Param: "owner"
-						// Match until one of "/"
+						// Match until "/"
 						idx := strings.IndexByte(elem, '/')
 						if idx > 0 {
 							args["owner"] = elem[:idx]
@@ -2868,8 +3137,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							}
 							switch elem[0] {
 							case '/': // Prefix: "/"
-								if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-									elem = elem[len(prefix):]
+								if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+									elem = elem[l:]
 								} else {
 									break
 								}
@@ -2877,22 +3146,25 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								// Param: "repo"
 								// Leaf parameter
 								args["repo"] = elem
+								elem = ""
 
-								// Leaf: ActivityUnstarRepoForAuthenticatedUser
-								s.handleActivityUnstarRepoForAuthenticatedUserRequest(args, w, r)
-								return
+								if len(elem) == 0 {
+									// Leaf: ActivityUnstarRepoForAuthenticatedUser
+									s.handleActivityUnstarRepoForAuthenticatedUserRequest(args, w, r)
+									return
+								}
 							}
 						}
 					}
 				case 's': // Prefix: "s/"
-					if prefix := "s/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-						elem = elem[len(prefix):]
+					if l := len("s/"); len(elem) >= l && elem[0:l] == "s/" {
+						elem = elem[l:]
 					} else {
 						break
 					}
 
 					// Param: "username"
-					// Match until one of "/"
+					// Match until "/"
 					idx := strings.IndexByte(elem, '/')
 					if idx > 0 {
 						args["username"] = elem[:idx]
@@ -2903,14 +3175,14 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						}
 						switch elem[0] {
 						case '/': // Prefix: "/packages/"
-							if prefix := "/packages/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-								elem = elem[len(prefix):]
+							if l := len("/packages/"); len(elem) >= l && elem[0:l] == "/packages/" {
+								elem = elem[l:]
 							} else {
 								break
 							}
 
 							// Param: "package_type"
-							// Match until one of "/"
+							// Match until "/"
 							idx := strings.IndexByte(elem, '/')
 							if idx > 0 {
 								args["package_type"] = elem[:idx]
@@ -2921,14 +3193,14 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								}
 								switch elem[0] {
 								case '/': // Prefix: "/"
-									if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-										elem = elem[len(prefix):]
+									if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+										elem = elem[l:]
 									} else {
 										break
 									}
 
 									// Param: "package_name"
-									// Match until one of "/"
+									// Match until "/"
 									idx := strings.IndexByte(elem, '/')
 									if idx > 0 {
 										args["package_name"] = elem[:idx]
@@ -2940,8 +3212,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										}
 										switch elem[0] {
 										case '/': // Prefix: "/versions/"
-											if prefix := "/versions/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-												elem = elem[len(prefix):]
+											if l := len("/versions/"); len(elem) >= l && elem[0:l] == "/versions/" {
+												elem = elem[l:]
 											} else {
 												break
 											}
@@ -2949,10 +3221,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											// Param: "package_version_id"
 											// Leaf parameter
 											args["package_version_id"] = elem
+											elem = ""
 
-											// Leaf: PackagesDeletePackageVersionForUser
-											s.handlePackagesDeletePackageVersionForUserRequest(args, w, r)
-											return
+											if len(elem) == 0 {
+												// Leaf: PackagesDeletePackageVersionForUser
+												s.handlePackagesDeletePackageVersionForUserRequest(args, w, r)
+												return
+											}
 										}
 									}
 								}
@@ -2968,8 +3243,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 		}
 		switch elem[0] {
 		case '/': // Prefix: "/"
-			if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-				elem = elem[len(prefix):]
+			if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+				elem = elem[l:]
 			} else {
 				break
 			}
@@ -2980,8 +3255,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 			}
 			switch elem[0] {
 			case 'a': // Prefix: "a"
-				if prefix := "a"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-					elem = elem[len(prefix):]
+				if l := len("a"); len(elem) >= l && elem[0:l] == "a" {
+					elem = elem[l:]
 				} else {
 					break
 				}
@@ -2992,8 +3267,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				}
 				switch elem[0] {
 				case 'p': // Prefix: "pp"
-					if prefix := "pp"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-						elem = elem[len(prefix):]
+					if l := len("pp"); len(elem) >= l && elem[0:l] == "pp" {
+						elem = elem[l:]
 					} else {
 						break
 					}
@@ -3004,8 +3279,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					}
 					switch elem[0] {
 					case '/': // Prefix: "/hook/"
-						if prefix := "/hook/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-							elem = elem[len(prefix):]
+						if l := len("/hook/"); len(elem) >= l && elem[0:l] == "/hook/" {
+							elem = elem[l:]
 						} else {
 							break
 						}
@@ -3016,18 +3291,20 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						}
 						switch elem[0] {
 						case 'c': // Prefix: "config"
-							if prefix := "config"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-								elem = elem[len(prefix):]
+							if l := len("config"); len(elem) >= l && elem[0:l] == "config" {
+								elem = elem[l:]
 							} else {
 								break
 							}
 
-							// Leaf: AppsGetWebhookConfigForApp
-							s.handleAppsGetWebhookConfigForAppRequest(args, w, r)
-							return
+							if len(elem) == 0 {
+								// Leaf: AppsGetWebhookConfigForApp
+								s.handleAppsGetWebhookConfigForAppRequest(args, w, r)
+								return
+							}
 						case 'd': // Prefix: "deliveries"
-							if prefix := "deliveries"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-								elem = elem[len(prefix):]
+							if l := len("deliveries"); len(elem) >= l && elem[0:l] == "deliveries" {
+								elem = elem[l:]
 							} else {
 								break
 							}
@@ -3038,8 +3315,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							}
 							switch elem[0] {
 							case '/': // Prefix: "/"
-								if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-									elem = elem[len(prefix):]
+								if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+									elem = elem[l:]
 								} else {
 									break
 								}
@@ -3047,15 +3324,18 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								// Param: "delivery_id"
 								// Leaf parameter
 								args["delivery_id"] = elem
+								elem = ""
 
-								// Leaf: AppsGetWebhookDelivery
-								s.handleAppsGetWebhookDeliveryRequest(args, w, r)
-								return
+								if len(elem) == 0 {
+									// Leaf: AppsGetWebhookDelivery
+									s.handleAppsGetWebhookDeliveryRequest(args, w, r)
+									return
+								}
 							}
 						}
 					case 'l': // Prefix: "lications/grants"
-						if prefix := "lications/grants"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-							elem = elem[len(prefix):]
+						if l := len("lications/grants"); len(elem) >= l && elem[0:l] == "lications/grants" {
+							elem = elem[l:]
 						} else {
 							break
 						}
@@ -3066,8 +3346,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						}
 						switch elem[0] {
 						case '/': // Prefix: "/"
-							if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-								elem = elem[len(prefix):]
+							if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+								elem = elem[l:]
 							} else {
 								break
 							}
@@ -3075,14 +3355,17 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							// Param: "grant_id"
 							// Leaf parameter
 							args["grant_id"] = elem
+							elem = ""
 
-							// Leaf: OAuthAuthorizationsGetGrant
-							s.handleOAuthAuthorizationsGetGrantRequest(args, w, r)
-							return
+							if len(elem) == 0 {
+								// Leaf: OAuthAuthorizationsGetGrant
+								s.handleOAuthAuthorizationsGetGrantRequest(args, w, r)
+								return
+							}
 						}
 					case 's': // Prefix: "s/"
-						if prefix := "s/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-							elem = elem[len(prefix):]
+						if l := len("s/"); len(elem) >= l && elem[0:l] == "s/" {
+							elem = elem[l:]
 						} else {
 							break
 						}
@@ -3090,14 +3373,17 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						// Param: "app_slug"
 						// Leaf parameter
 						args["app_slug"] = elem
+						elem = ""
 
-						// Leaf: AppsGetBySlug
-						s.handleAppsGetBySlugRequest(args, w, r)
-						return
+						if len(elem) == 0 {
+							// Leaf: AppsGetBySlug
+							s.handleAppsGetBySlugRequest(args, w, r)
+							return
+						}
 					}
 				case 'u': // Prefix: "uthorizations"
-					if prefix := "uthorizations"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-						elem = elem[len(prefix):]
+					if l := len("uthorizations"); len(elem) >= l && elem[0:l] == "uthorizations" {
+						elem = elem[l:]
 					} else {
 						break
 					}
@@ -3108,8 +3394,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					}
 					switch elem[0] {
 					case '/': // Prefix: "/"
-						if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-							elem = elem[len(prefix):]
+						if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+							elem = elem[l:]
 						} else {
 							break
 						}
@@ -3117,15 +3403,18 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						// Param: "authorization_id"
 						// Leaf parameter
 						args["authorization_id"] = elem
+						elem = ""
 
-						// Leaf: OAuthAuthorizationsGetAuthorization
-						s.handleOAuthAuthorizationsGetAuthorizationRequest(args, w, r)
-						return
+						if len(elem) == 0 {
+							// Leaf: OAuthAuthorizationsGetAuthorization
+							s.handleOAuthAuthorizationsGetAuthorizationRequest(args, w, r)
+							return
+						}
 					}
 				}
 			case 'c': // Prefix: "codes_of_conduct"
-				if prefix := "codes_of_conduct"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-					elem = elem[len(prefix):]
+				if l := len("codes_of_conduct"); len(elem) >= l && elem[0:l] == "codes_of_conduct" {
+					elem = elem[l:]
 				} else {
 					break
 				}
@@ -3136,8 +3425,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				}
 				switch elem[0] {
 				case '/': // Prefix: "/"
-					if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-						elem = elem[len(prefix):]
+					if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+						elem = elem[l:]
 					} else {
 						break
 					}
@@ -3145,14 +3434,17 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					// Param: "key"
 					// Leaf parameter
 					args["key"] = elem
+					elem = ""
 
-					// Leaf: CodesOfConductGetConductCode
-					s.handleCodesOfConductGetConductCodeRequest(args, w, r)
-					return
+					if len(elem) == 0 {
+						// Leaf: CodesOfConductGetConductCode
+						s.handleCodesOfConductGetConductCodeRequest(args, w, r)
+						return
+					}
 				}
 			case 'e': // Prefix: "e"
-				if prefix := "e"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-					elem = elem[len(prefix):]
+				if l := len("e"); len(elem) >= l && elem[0:l] == "e" {
+					elem = elem[l:]
 				} else {
 					break
 				}
@@ -3163,24 +3455,26 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				}
 				switch elem[0] {
 				case 'm': // Prefix: "mojis"
-					if prefix := "mojis"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-						elem = elem[len(prefix):]
+					if l := len("mojis"); len(elem) >= l && elem[0:l] == "mojis" {
+						elem = elem[l:]
 					} else {
 						break
 					}
 
-					// Leaf: EmojisGet
-					s.handleEmojisGetRequest(args, w, r)
-					return
+					if len(elem) == 0 {
+						// Leaf: EmojisGet
+						s.handleEmojisGetRequest(args, w, r)
+						return
+					}
 				case 'n': // Prefix: "nterprises/"
-					if prefix := "nterprises/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-						elem = elem[len(prefix):]
+					if l := len("nterprises/"); len(elem) >= l && elem[0:l] == "nterprises/" {
+						elem = elem[l:]
 					} else {
 						break
 					}
 
 					// Param: "enterprise"
-					// Match until one of "/"
+					// Match until "/"
 					idx := strings.IndexByte(elem, '/')
 					if idx > 0 {
 						args["enterprise"] = elem[:idx]
@@ -3191,8 +3485,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						}
 						switch elem[0] {
 						case '/': // Prefix: "/"
-							if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-								elem = elem[len(prefix):]
+							if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+								elem = elem[l:]
 							} else {
 								break
 							}
@@ -3203,8 +3497,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							}
 							switch elem[0] {
 							case 'a': // Prefix: "a"
-								if prefix := "a"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-									elem = elem[len(prefix):]
+								if l := len("a"); len(elem) >= l && elem[0:l] == "a" {
+									elem = elem[l:]
 								} else {
 									break
 								}
@@ -3215,8 +3509,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								}
 								switch elem[0] {
 								case 'c': // Prefix: "ctions/"
-									if prefix := "ctions/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-										elem = elem[len(prefix):]
+									if l := len("ctions/"); len(elem) >= l && elem[0:l] == "ctions/" {
+										elem = elem[l:]
 									} else {
 										break
 									}
@@ -3227,8 +3521,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									}
 									switch elem[0] {
 									case 'p': // Prefix: "permissions"
-										if prefix := "permissions"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-											elem = elem[len(prefix):]
+										if l := len("permissions"); len(elem) >= l && elem[0:l] == "permissions" {
+											elem = elem[l:]
 										} else {
 											break
 										}
@@ -3239,8 +3533,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										}
 										switch elem[0] {
 										case '/': // Prefix: "/"
-											if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-												elem = elem[len(prefix):]
+											if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+												elem = elem[l:]
 											} else {
 												break
 											}
@@ -3251,30 +3545,34 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											}
 											switch elem[0] {
 											case 'o': // Prefix: "organizations"
-												if prefix := "organizations"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-													elem = elem[len(prefix):]
+												if l := len("organizations"); len(elem) >= l && elem[0:l] == "organizations" {
+													elem = elem[l:]
 												} else {
 													break
 												}
 
-												// Leaf: EnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterprise
-												s.handleEnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterpriseRequest(args, w, r)
-												return
+												if len(elem) == 0 {
+													// Leaf: EnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterprise
+													s.handleEnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterpriseRequest(args, w, r)
+													return
+												}
 											case 's': // Prefix: "selected-actions"
-												if prefix := "selected-actions"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-													elem = elem[len(prefix):]
+												if l := len("selected-actions"); len(elem) >= l && elem[0:l] == "selected-actions" {
+													elem = elem[l:]
 												} else {
 													break
 												}
 
-												// Leaf: EnterpriseAdminGetAllowedActionsEnterprise
-												s.handleEnterpriseAdminGetAllowedActionsEnterpriseRequest(args, w, r)
-												return
+												if len(elem) == 0 {
+													// Leaf: EnterpriseAdminGetAllowedActionsEnterprise
+													s.handleEnterpriseAdminGetAllowedActionsEnterpriseRequest(args, w, r)
+													return
+												}
 											}
 										}
 									case 'r': // Prefix: "runner"
-										if prefix := "runner"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-											elem = elem[len(prefix):]
+										if l := len("runner"); len(elem) >= l && elem[0:l] == "runner" {
+											elem = elem[l:]
 										} else {
 											break
 										}
@@ -3285,8 +3583,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										}
 										switch elem[0] {
 										case '-': // Prefix: "-groups"
-											if prefix := "-groups"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-												elem = elem[len(prefix):]
+											if l := len("-groups"); len(elem) >= l && elem[0:l] == "-groups" {
+												elem = elem[l:]
 											} else {
 												break
 											}
@@ -3297,14 +3595,14 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											}
 											switch elem[0] {
 											case '/': // Prefix: "/"
-												if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-													elem = elem[len(prefix):]
+												if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+													elem = elem[l:]
 												} else {
 													break
 												}
 
 												// Param: "runner_group_id"
-												// Match until one of "/"
+												// Match until "/"
 												idx := strings.IndexByte(elem, '/')
 												if idx > 0 {
 													args["runner_group_id"] = elem[:idx]
@@ -3316,8 +3614,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													}
 													switch elem[0] {
 													case '/': // Prefix: "/"
-														if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-															elem = elem[len(prefix):]
+														if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+															elem = elem[l:]
 														} else {
 															break
 														}
@@ -3328,32 +3626,36 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														}
 														switch elem[0] {
 														case 'o': // Prefix: "organizations"
-															if prefix := "organizations"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																elem = elem[len(prefix):]
+															if l := len("organizations"); len(elem) >= l && elem[0:l] == "organizations" {
+																elem = elem[l:]
 															} else {
 																break
 															}
 
-															// Leaf: EnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterprise
-															s.handleEnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseRequest(args, w, r)
-															return
+															if len(elem) == 0 {
+																// Leaf: EnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterprise
+																s.handleEnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseRequest(args, w, r)
+																return
+															}
 														case 'r': // Prefix: "runners"
-															if prefix := "runners"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																elem = elem[len(prefix):]
+															if l := len("runners"); len(elem) >= l && elem[0:l] == "runners" {
+																elem = elem[l:]
 															} else {
 																break
 															}
 
-															// Leaf: EnterpriseAdminListSelfHostedRunnersInGroupForEnterprise
-															s.handleEnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseRequest(args, w, r)
-															return
+															if len(elem) == 0 {
+																// Leaf: EnterpriseAdminListSelfHostedRunnersInGroupForEnterprise
+																s.handleEnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseRequest(args, w, r)
+																return
+															}
 														}
 													}
 												}
 											}
 										case 's': // Prefix: "s"
-											if prefix := "s"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-												elem = elem[len(prefix):]
+											if l := len("s"); len(elem) >= l && elem[0:l] == "s" {
+												elem = elem[l:]
 											} else {
 												break
 											}
@@ -3364,8 +3666,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											}
 											switch elem[0] {
 											case '/': // Prefix: "/"
-												if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-													elem = elem[len(prefix):]
+												if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+													elem = elem[l:]
 												} else {
 													break
 												}
@@ -3375,40 +3677,47 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												}
 												switch elem[0] {
 												case 'd': // Prefix: "downloads"
-													if prefix := "downloads"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-														elem = elem[len(prefix):]
+													if l := len("downloads"); len(elem) >= l && elem[0:l] == "downloads" {
+														elem = elem[l:]
 													} else {
 														break
 													}
 
-													// Leaf: EnterpriseAdminListRunnerApplicationsForEnterprise
-													s.handleEnterpriseAdminListRunnerApplicationsForEnterpriseRequest(args, w, r)
-													return
+													if len(elem) == 0 {
+														// Leaf: EnterpriseAdminListRunnerApplicationsForEnterprise
+														s.handleEnterpriseAdminListRunnerApplicationsForEnterpriseRequest(args, w, r)
+														return
+													}
 												}
 												// Param: "runner_id"
 												// Leaf parameter
 												args["runner_id"] = elem
+												elem = ""
 
-												// Leaf: EnterpriseAdminGetSelfHostedRunnerForEnterprise
-												s.handleEnterpriseAdminGetSelfHostedRunnerForEnterpriseRequest(args, w, r)
-												return
+												if len(elem) == 0 {
+													// Leaf: EnterpriseAdminGetSelfHostedRunnerForEnterprise
+													s.handleEnterpriseAdminGetSelfHostedRunnerForEnterpriseRequest(args, w, r)
+													return
+												}
 											}
 										}
 									}
 								case 'u': // Prefix: "udit-log"
-									if prefix := "udit-log"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-										elem = elem[len(prefix):]
+									if l := len("udit-log"); len(elem) >= l && elem[0:l] == "udit-log" {
+										elem = elem[l:]
 									} else {
 										break
 									}
 
-									// Leaf: EnterpriseAdminGetAuditLog
-									s.handleEnterpriseAdminGetAuditLogRequest(args, w, r)
-									return
+									if len(elem) == 0 {
+										// Leaf: EnterpriseAdminGetAuditLog
+										s.handleEnterpriseAdminGetAuditLogRequest(args, w, r)
+										return
+									}
 								}
 							case 's': // Prefix: "settings/billing/"
-								if prefix := "settings/billing/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-									elem = elem[len(prefix):]
+								if l := len("settings/billing/"); len(elem) >= l && elem[0:l] == "settings/billing/" {
+									elem = elem[l:]
 								} else {
 									break
 								}
@@ -3419,63 +3728,73 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								}
 								switch elem[0] {
 								case 'a': // Prefix: "actions"
-									if prefix := "actions"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-										elem = elem[len(prefix):]
+									if l := len("actions"); len(elem) >= l && elem[0:l] == "actions" {
+										elem = elem[l:]
 									} else {
 										break
 									}
 
-									// Leaf: BillingGetGithubActionsBillingGhe
-									s.handleBillingGetGithubActionsBillingGheRequest(args, w, r)
-									return
+									if len(elem) == 0 {
+										// Leaf: BillingGetGithubActionsBillingGhe
+										s.handleBillingGetGithubActionsBillingGheRequest(args, w, r)
+										return
+									}
 								case 'p': // Prefix: "packages"
-									if prefix := "packages"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-										elem = elem[len(prefix):]
+									if l := len("packages"); len(elem) >= l && elem[0:l] == "packages" {
+										elem = elem[l:]
 									} else {
 										break
 									}
 
-									// Leaf: BillingGetGithubPackagesBillingGhe
-									s.handleBillingGetGithubPackagesBillingGheRequest(args, w, r)
-									return
+									if len(elem) == 0 {
+										// Leaf: BillingGetGithubPackagesBillingGhe
+										s.handleBillingGetGithubPackagesBillingGheRequest(args, w, r)
+										return
+									}
 								case 's': // Prefix: "shared-storage"
-									if prefix := "shared-storage"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-										elem = elem[len(prefix):]
+									if l := len("shared-storage"); len(elem) >= l && elem[0:l] == "shared-storage" {
+										elem = elem[l:]
 									} else {
 										break
 									}
 
-									// Leaf: BillingGetSharedStorageBillingGhe
-									s.handleBillingGetSharedStorageBillingGheRequest(args, w, r)
-									return
+									if len(elem) == 0 {
+										// Leaf: BillingGetSharedStorageBillingGhe
+										s.handleBillingGetSharedStorageBillingGheRequest(args, w, r)
+										return
+									}
 								}
 							}
 						}
 					}
 				case 'v': // Prefix: "vents"
-					if prefix := "vents"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-						elem = elem[len(prefix):]
+					if l := len("vents"); len(elem) >= l && elem[0:l] == "vents" {
+						elem = elem[l:]
 					} else {
 						break
 					}
 
-					// Leaf: ActivityListPublicEvents
-					s.handleActivityListPublicEventsRequest(args, w, r)
-					return
+					if len(elem) == 0 {
+						// Leaf: ActivityListPublicEvents
+						s.handleActivityListPublicEventsRequest(args, w, r)
+						return
+					}
 				}
 			case 'f': // Prefix: "feeds"
-				if prefix := "feeds"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-					elem = elem[len(prefix):]
+				if l := len("feeds"); len(elem) >= l && elem[0:l] == "feeds" {
+					elem = elem[l:]
 				} else {
 					break
 				}
 
-				// Leaf: ActivityGetFeeds
-				s.handleActivityGetFeedsRequest(args, w, r)
-				return
+				if len(elem) == 0 {
+					// Leaf: ActivityGetFeeds
+					s.handleActivityGetFeedsRequest(args, w, r)
+					return
+				}
 			case 'g': // Prefix: "gi"
-				if prefix := "gi"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-					elem = elem[len(prefix):]
+				if l := len("gi"); len(elem) >= l && elem[0:l] == "gi" {
+					elem = elem[l:]
 				} else {
 					break
 				}
@@ -3486,8 +3805,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				}
 				switch elem[0] {
 				case 's': // Prefix: "sts"
-					if prefix := "sts"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-						elem = elem[len(prefix):]
+					if l := len("sts"); len(elem) >= l && elem[0:l] == "sts" {
+						elem = elem[l:]
 					} else {
 						break
 					}
@@ -3498,8 +3817,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					}
 					switch elem[0] {
 					case '/': // Prefix: "/"
-						if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-							elem = elem[len(prefix):]
+						if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+							elem = elem[l:]
 						} else {
 							break
 						}
@@ -3509,28 +3828,32 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						}
 						switch elem[0] {
 						case 'p': // Prefix: "public"
-							if prefix := "public"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-								elem = elem[len(prefix):]
+							if l := len("public"); len(elem) >= l && elem[0:l] == "public" {
+								elem = elem[l:]
 							} else {
 								break
 							}
 
-							// Leaf: GistsListPublic
-							s.handleGistsListPublicRequest(args, w, r)
-							return
+							if len(elem) == 0 {
+								// Leaf: GistsListPublic
+								s.handleGistsListPublicRequest(args, w, r)
+								return
+							}
 						case 's': // Prefix: "starred"
-							if prefix := "starred"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-								elem = elem[len(prefix):]
+							if l := len("starred"); len(elem) >= l && elem[0:l] == "starred" {
+								elem = elem[l:]
 							} else {
 								break
 							}
 
-							// Leaf: GistsListStarred
-							s.handleGistsListStarredRequest(args, w, r)
-							return
+							if len(elem) == 0 {
+								// Leaf: GistsListStarred
+								s.handleGistsListStarredRequest(args, w, r)
+								return
+							}
 						}
 						// Param: "gist_id"
-						// Match until one of "/"
+						// Match until "/"
 						idx := strings.IndexByte(elem, '/')
 						if idx > 0 {
 							args["gist_id"] = elem[:idx]
@@ -3542,8 +3865,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							}
 							switch elem[0] {
 							case '/': // Prefix: "/"
-								if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-									elem = elem[len(prefix):]
+								if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+									elem = elem[l:]
 								} else {
 									break
 								}
@@ -3554,8 +3877,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								}
 								switch elem[0] {
 								case 'c': // Prefix: "comm"
-									if prefix := "comm"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-										elem = elem[len(prefix):]
+									if l := len("comm"); len(elem) >= l && elem[0:l] == "comm" {
+										elem = elem[l:]
 									} else {
 										break
 									}
@@ -3566,8 +3889,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									}
 									switch elem[0] {
 									case 'e': // Prefix: "ents"
-										if prefix := "ents"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-											elem = elem[len(prefix):]
+										if l := len("ents"); len(elem) >= l && elem[0:l] == "ents" {
+											elem = elem[l:]
 										} else {
 											break
 										}
@@ -3578,8 +3901,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										}
 										switch elem[0] {
 										case '/': // Prefix: "/"
-											if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-												elem = elem[len(prefix):]
+											if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+												elem = elem[l:]
 											} else {
 												break
 											}
@@ -3587,56 +3910,68 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											// Param: "comment_id"
 											// Leaf parameter
 											args["comment_id"] = elem
+											elem = ""
 
-											// Leaf: GistsGetComment
-											s.handleGistsGetCommentRequest(args, w, r)
-											return
+											if len(elem) == 0 {
+												// Leaf: GistsGetComment
+												s.handleGistsGetCommentRequest(args, w, r)
+												return
+											}
 										}
 									case 'i': // Prefix: "its"
-										if prefix := "its"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-											elem = elem[len(prefix):]
+										if l := len("its"); len(elem) >= l && elem[0:l] == "its" {
+											elem = elem[l:]
 										} else {
 											break
 										}
 
-										// Leaf: GistsListCommits
-										s.handleGistsListCommitsRequest(args, w, r)
-										return
+										if len(elem) == 0 {
+											// Leaf: GistsListCommits
+											s.handleGistsListCommitsRequest(args, w, r)
+											return
+										}
 									}
 								case 'f': // Prefix: "forks"
-									if prefix := "forks"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-										elem = elem[len(prefix):]
+									if l := len("forks"); len(elem) >= l && elem[0:l] == "forks" {
+										elem = elem[l:]
 									} else {
 										break
 									}
 
-									// Leaf: GistsListForks
-									s.handleGistsListForksRequest(args, w, r)
-									return
+									if len(elem) == 0 {
+										// Leaf: GistsListForks
+										s.handleGistsListForksRequest(args, w, r)
+										return
+									}
 								case 's': // Prefix: "star"
-									if prefix := "star"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-										elem = elem[len(prefix):]
+									if l := len("star"); len(elem) >= l && elem[0:l] == "star" {
+										elem = elem[l:]
 									} else {
 										break
 									}
 
-									// Leaf: GistsCheckIsStarred
-									s.handleGistsCheckIsStarredRequest(args, w, r)
-									return
+									if len(elem) == 0 {
+										// Leaf: GistsCheckIsStarred
+										s.handleGistsCheckIsStarredRequest(args, w, r)
+										return
+									}
 								}
 								// Param: "sha"
 								// Leaf parameter
 								args["sha"] = elem
+								elem = ""
 
-								// Leaf: GistsGetRevision
-								s.handleGistsGetRevisionRequest(args, w, r)
-								return
+								if len(elem) == 0 {
+									// Leaf: GistsGetRevision
+									s.handleGistsGetRevisionRequest(args, w, r)
+									return
+								}
 							}
 						}
 					}
 				case 't': // Prefix: "tignore/templates"
-					if prefix := "tignore/templates"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-						elem = elem[len(prefix):]
+					if l := len("tignore/templates"); len(elem) >= l && elem[0:l] == "tignore/templates" {
+						elem = elem[l:]
 					} else {
 						break
 					}
@@ -3647,8 +3982,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					}
 					switch elem[0] {
 					case '/': // Prefix: "/"
-						if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-							elem = elem[len(prefix):]
+						if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+							elem = elem[l:]
 						} else {
 							break
 						}
@@ -3656,15 +3991,18 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						// Param: "name"
 						// Leaf parameter
 						args["name"] = elem
+						elem = ""
 
-						// Leaf: GitignoreGetTemplate
-						s.handleGitignoreGetTemplateRequest(args, w, r)
-						return
+						if len(elem) == 0 {
+							// Leaf: GitignoreGetTemplate
+							s.handleGitignoreGetTemplateRequest(args, w, r)
+							return
+						}
 					}
 				}
 			case 'i': // Prefix: "i"
-				if prefix := "i"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-					elem = elem[len(prefix):]
+				if l := len("i"); len(elem) >= l && elem[0:l] == "i" {
+					elem = elem[l:]
 				} else {
 					break
 				}
@@ -3675,29 +4013,33 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				}
 				switch elem[0] {
 				case 'n': // Prefix: "nstallation/repositories"
-					if prefix := "nstallation/repositories"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-						elem = elem[len(prefix):]
+					if l := len("nstallation/repositories"); len(elem) >= l && elem[0:l] == "nstallation/repositories" {
+						elem = elem[l:]
 					} else {
 						break
 					}
 
-					// Leaf: AppsListReposAccessibleToInstallation
-					s.handleAppsListReposAccessibleToInstallationRequest(args, w, r)
-					return
+					if len(elem) == 0 {
+						// Leaf: AppsListReposAccessibleToInstallation
+						s.handleAppsListReposAccessibleToInstallationRequest(args, w, r)
+						return
+					}
 				case 's': // Prefix: "ssues"
-					if prefix := "ssues"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-						elem = elem[len(prefix):]
+					if l := len("ssues"); len(elem) >= l && elem[0:l] == "ssues" {
+						elem = elem[l:]
 					} else {
 						break
 					}
 
-					// Leaf: IssuesList
-					s.handleIssuesListRequest(args, w, r)
-					return
+					if len(elem) == 0 {
+						// Leaf: IssuesList
+						s.handleIssuesListRequest(args, w, r)
+						return
+					}
 				}
 			case 'l': // Prefix: "licenses"
-				if prefix := "licenses"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-					elem = elem[len(prefix):]
+				if l := len("licenses"); len(elem) >= l && elem[0:l] == "licenses" {
+					elem = elem[l:]
 				} else {
 					break
 				}
@@ -3708,8 +4050,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				}
 				switch elem[0] {
 				case '/': // Prefix: "/"
-					if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-						elem = elem[len(prefix):]
+					if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+						elem = elem[l:]
 					} else {
 						break
 					}
@@ -3717,14 +4059,17 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					// Param: "license"
 					// Leaf parameter
 					args["license"] = elem
+					elem = ""
 
-					// Leaf: LicensesGet
-					s.handleLicensesGetRequest(args, w, r)
-					return
+					if len(elem) == 0 {
+						// Leaf: LicensesGet
+						s.handleLicensesGetRequest(args, w, r)
+						return
+					}
 				}
 			case 'm': // Prefix: "m"
-				if prefix := "m"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-					elem = elem[len(prefix):]
+				if l := len("m"); len(elem) >= l && elem[0:l] == "m" {
+					elem = elem[l:]
 				} else {
 					break
 				}
@@ -3735,8 +4080,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				}
 				switch elem[0] {
 				case 'a': // Prefix: "arketplace_listing/"
-					if prefix := "arketplace_listing/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-						elem = elem[len(prefix):]
+					if l := len("arketplace_listing/"); len(elem) >= l && elem[0:l] == "arketplace_listing/" {
+						elem = elem[l:]
 					} else {
 						break
 					}
@@ -3747,8 +4092,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					}
 					switch elem[0] {
 					case 'a': // Prefix: "accounts/"
-						if prefix := "accounts/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-							elem = elem[len(prefix):]
+						if l := len("accounts/"); len(elem) >= l && elem[0:l] == "accounts/" {
+							elem = elem[l:]
 						} else {
 							break
 						}
@@ -3756,13 +4101,16 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						// Param: "account_id"
 						// Leaf parameter
 						args["account_id"] = elem
+						elem = ""
 
-						// Leaf: AppsGetSubscriptionPlanForAccount
-						s.handleAppsGetSubscriptionPlanForAccountRequest(args, w, r)
-						return
+						if len(elem) == 0 {
+							// Leaf: AppsGetSubscriptionPlanForAccount
+							s.handleAppsGetSubscriptionPlanForAccountRequest(args, w, r)
+							return
+						}
 					case 'p': // Prefix: "plans"
-						if prefix := "plans"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-							elem = elem[len(prefix):]
+						if l := len("plans"); len(elem) >= l && elem[0:l] == "plans" {
+							elem = elem[l:]
 						} else {
 							break
 						}
@@ -3773,14 +4121,14 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						}
 						switch elem[0] {
 						case '/': // Prefix: "/"
-							if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-								elem = elem[len(prefix):]
+							if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+								elem = elem[l:]
 							} else {
 								break
 							}
 
 							// Param: "plan_id"
-							// Match until one of "/"
+							// Match until "/"
 							idx := strings.IndexByte(elem, '/')
 							if idx > 0 {
 								args["plan_id"] = elem[:idx]
@@ -3791,21 +4139,23 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								}
 								switch elem[0] {
 								case '/': // Prefix: "/accounts"
-									if prefix := "/accounts"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-										elem = elem[len(prefix):]
+									if l := len("/accounts"); len(elem) >= l && elem[0:l] == "/accounts" {
+										elem = elem[l:]
 									} else {
 										break
 									}
 
-									// Leaf: AppsListAccountsForPlan
-									s.handleAppsListAccountsForPlanRequest(args, w, r)
-									return
+									if len(elem) == 0 {
+										// Leaf: AppsListAccountsForPlan
+										s.handleAppsListAccountsForPlanRequest(args, w, r)
+										return
+									}
 								}
 							}
 						}
 					case 's': // Prefix: "stubbed/"
-						if prefix := "stubbed/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-							elem = elem[len(prefix):]
+						if l := len("stubbed/"); len(elem) >= l && elem[0:l] == "stubbed/" {
+							elem = elem[l:]
 						} else {
 							break
 						}
@@ -3816,8 +4166,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						}
 						switch elem[0] {
 						case 'a': // Prefix: "accounts/"
-							if prefix := "accounts/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-								elem = elem[len(prefix):]
+							if l := len("accounts/"); len(elem) >= l && elem[0:l] == "accounts/" {
+								elem = elem[l:]
 							} else {
 								break
 							}
@@ -3825,13 +4175,16 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							// Param: "account_id"
 							// Leaf parameter
 							args["account_id"] = elem
+							elem = ""
 
-							// Leaf: AppsGetSubscriptionPlanForAccountStubbed
-							s.handleAppsGetSubscriptionPlanForAccountStubbedRequest(args, w, r)
-							return
+							if len(elem) == 0 {
+								// Leaf: AppsGetSubscriptionPlanForAccountStubbed
+								s.handleAppsGetSubscriptionPlanForAccountStubbedRequest(args, w, r)
+								return
+							}
 						case 'p': // Prefix: "plans"
-							if prefix := "plans"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-								elem = elem[len(prefix):]
+							if l := len("plans"); len(elem) >= l && elem[0:l] == "plans" {
+								elem = elem[l:]
 							} else {
 								break
 							}
@@ -3842,14 +4195,14 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							}
 							switch elem[0] {
 							case '/': // Prefix: "/"
-								if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-									elem = elem[len(prefix):]
+								if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+									elem = elem[l:]
 								} else {
 									break
 								}
 
 								// Param: "plan_id"
-								// Match until one of "/"
+								// Match until "/"
 								idx := strings.IndexByte(elem, '/')
 								if idx > 0 {
 									args["plan_id"] = elem[:idx]
@@ -3860,34 +4213,38 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									}
 									switch elem[0] {
 									case '/': // Prefix: "/accounts"
-										if prefix := "/accounts"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-											elem = elem[len(prefix):]
+										if l := len("/accounts"); len(elem) >= l && elem[0:l] == "/accounts" {
+											elem = elem[l:]
 										} else {
 											break
 										}
 
-										// Leaf: AppsListAccountsForPlanStubbed
-										s.handleAppsListAccountsForPlanStubbedRequest(args, w, r)
-										return
+										if len(elem) == 0 {
+											// Leaf: AppsListAccountsForPlanStubbed
+											s.handleAppsListAccountsForPlanStubbedRequest(args, w, r)
+											return
+										}
 									}
 								}
 							}
 						}
 					}
 				case 'e': // Prefix: "eta"
-					if prefix := "eta"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-						elem = elem[len(prefix):]
+					if l := len("eta"); len(elem) >= l && elem[0:l] == "eta" {
+						elem = elem[l:]
 					} else {
 						break
 					}
 
-					// Leaf: MetaGet
-					s.handleMetaGetRequest(args, w, r)
-					return
+					if len(elem) == 0 {
+						// Leaf: MetaGet
+						s.handleMetaGetRequest(args, w, r)
+						return
+					}
 				}
 			case 'n': // Prefix: "n"
-				if prefix := "n"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-					elem = elem[len(prefix):]
+				if l := len("n"); len(elem) >= l && elem[0:l] == "n" {
+					elem = elem[l:]
 				} else {
 					break
 				}
@@ -3898,14 +4255,14 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				}
 				switch elem[0] {
 				case 'e': // Prefix: "etworks/"
-					if prefix := "etworks/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-						elem = elem[len(prefix):]
+					if l := len("etworks/"); len(elem) >= l && elem[0:l] == "etworks/" {
+						elem = elem[l:]
 					} else {
 						break
 					}
 
 					// Param: "owner"
-					// Match until one of "/"
+					// Match until "/"
 					idx := strings.IndexByte(elem, '/')
 					if idx > 0 {
 						args["owner"] = elem[:idx]
@@ -3916,14 +4273,14 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						}
 						switch elem[0] {
 						case '/': // Prefix: "/"
-							if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-								elem = elem[len(prefix):]
+							if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+								elem = elem[l:]
 							} else {
 								break
 							}
 
 							// Param: "repo"
-							// Match until one of "/"
+							// Match until "/"
 							idx := strings.IndexByte(elem, '/')
 							if idx > 0 {
 								args["repo"] = elem[:idx]
@@ -3934,22 +4291,24 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								}
 								switch elem[0] {
 								case '/': // Prefix: "/events"
-									if prefix := "/events"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-										elem = elem[len(prefix):]
+									if l := len("/events"); len(elem) >= l && elem[0:l] == "/events" {
+										elem = elem[l:]
 									} else {
 										break
 									}
 
-									// Leaf: ActivityListPublicEventsForRepoNetwork
-									s.handleActivityListPublicEventsForRepoNetworkRequest(args, w, r)
-									return
+									if len(elem) == 0 {
+										// Leaf: ActivityListPublicEventsForRepoNetwork
+										s.handleActivityListPublicEventsForRepoNetworkRequest(args, w, r)
+										return
+									}
 								}
 							}
 						}
 					}
 				case 'o': // Prefix: "otifications"
-					if prefix := "otifications"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-						elem = elem[len(prefix):]
+					if l := len("otifications"); len(elem) >= l && elem[0:l] == "otifications" {
+						elem = elem[l:]
 					} else {
 						break
 					}
@@ -3960,14 +4319,14 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					}
 					switch elem[0] {
 					case '/': // Prefix: "/threads/"
-						if prefix := "/threads/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-							elem = elem[len(prefix):]
+						if l := len("/threads/"); len(elem) >= l && elem[0:l] == "/threads/" {
+							elem = elem[l:]
 						} else {
 							break
 						}
 
 						// Param: "thread_id"
-						// Match until one of "/"
+						// Match until "/"
 						idx := strings.IndexByte(elem, '/')
 						if idx > 0 {
 							args["thread_id"] = elem[:idx]
@@ -3979,22 +4338,24 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							}
 							switch elem[0] {
 							case '/': // Prefix: "/subscription"
-								if prefix := "/subscription"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-									elem = elem[len(prefix):]
+								if l := len("/subscription"); len(elem) >= l && elem[0:l] == "/subscription" {
+									elem = elem[l:]
 								} else {
 									break
 								}
 
-								// Leaf: ActivityGetThreadSubscriptionForAuthenticatedUser
-								s.handleActivityGetThreadSubscriptionForAuthenticatedUserRequest(args, w, r)
-								return
+								if len(elem) == 0 {
+									// Leaf: ActivityGetThreadSubscriptionForAuthenticatedUser
+									s.handleActivityGetThreadSubscriptionForAuthenticatedUserRequest(args, w, r)
+									return
+								}
 							}
 						}
 					}
 				}
 			case 'o': // Prefix: "org"
-				if prefix := "org"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-					elem = elem[len(prefix):]
+				if l := len("org"); len(elem) >= l && elem[0:l] == "org" {
+					elem = elem[l:]
 				} else {
 					break
 				}
@@ -4005,24 +4366,26 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				}
 				switch elem[0] {
 				case 'a': // Prefix: "anizations"
-					if prefix := "anizations"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-						elem = elem[len(prefix):]
+					if l := len("anizations"); len(elem) >= l && elem[0:l] == "anizations" {
+						elem = elem[l:]
 					} else {
 						break
 					}
 
-					// Leaf: OrgsList
-					s.handleOrgsListRequest(args, w, r)
-					return
+					if len(elem) == 0 {
+						// Leaf: OrgsList
+						s.handleOrgsListRequest(args, w, r)
+						return
+					}
 				case 's': // Prefix: "s/"
-					if prefix := "s/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-						elem = elem[len(prefix):]
+					if l := len("s/"); len(elem) >= l && elem[0:l] == "s/" {
+						elem = elem[l:]
 					} else {
 						break
 					}
 
 					// Param: "org"
-					// Match until one of "/"
+					// Match until "/"
 					idx := strings.IndexByte(elem, '/')
 					if idx > 0 {
 						args["org"] = elem[:idx]
@@ -4034,8 +4397,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						}
 						switch elem[0] {
 						case '/': // Prefix: "/"
-							if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-								elem = elem[len(prefix):]
+							if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+								elem = elem[l:]
 							} else {
 								break
 							}
@@ -4046,8 +4409,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							}
 							switch elem[0] {
 							case 'a': // Prefix: "a"
-								if prefix := "a"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-									elem = elem[len(prefix):]
+								if l := len("a"); len(elem) >= l && elem[0:l] == "a" {
+									elem = elem[l:]
 								} else {
 									break
 								}
@@ -4058,8 +4421,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								}
 								switch elem[0] {
 								case 'c': // Prefix: "ctions/"
-									if prefix := "ctions/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-										elem = elem[len(prefix):]
+									if l := len("ctions/"); len(elem) >= l && elem[0:l] == "ctions/" {
+										elem = elem[l:]
 									} else {
 										break
 									}
@@ -4070,8 +4433,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									}
 									switch elem[0] {
 									case 'p': // Prefix: "permissions"
-										if prefix := "permissions"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-											elem = elem[len(prefix):]
+										if l := len("permissions"); len(elem) >= l && elem[0:l] == "permissions" {
+											elem = elem[l:]
 										} else {
 											break
 										}
@@ -4082,8 +4445,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										}
 										switch elem[0] {
 										case '/': // Prefix: "/"
-											if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-												elem = elem[len(prefix):]
+											if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+												elem = elem[l:]
 											} else {
 												break
 											}
@@ -4094,30 +4457,34 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											}
 											switch elem[0] {
 											case 'r': // Prefix: "repositories"
-												if prefix := "repositories"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-													elem = elem[len(prefix):]
+												if l := len("repositories"); len(elem) >= l && elem[0:l] == "repositories" {
+													elem = elem[l:]
 												} else {
 													break
 												}
 
-												// Leaf: ActionsListSelectedRepositoriesEnabledGithubActionsOrganization
-												s.handleActionsListSelectedRepositoriesEnabledGithubActionsOrganizationRequest(args, w, r)
-												return
+												if len(elem) == 0 {
+													// Leaf: ActionsListSelectedRepositoriesEnabledGithubActionsOrganization
+													s.handleActionsListSelectedRepositoriesEnabledGithubActionsOrganizationRequest(args, w, r)
+													return
+												}
 											case 's': // Prefix: "selected-actions"
-												if prefix := "selected-actions"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-													elem = elem[len(prefix):]
+												if l := len("selected-actions"); len(elem) >= l && elem[0:l] == "selected-actions" {
+													elem = elem[l:]
 												} else {
 													break
 												}
 
-												// Leaf: ActionsGetAllowedActionsOrganization
-												s.handleActionsGetAllowedActionsOrganizationRequest(args, w, r)
-												return
+												if len(elem) == 0 {
+													// Leaf: ActionsGetAllowedActionsOrganization
+													s.handleActionsGetAllowedActionsOrganizationRequest(args, w, r)
+													return
+												}
 											}
 										}
 									case 'r': // Prefix: "runner"
-										if prefix := "runner"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-											elem = elem[len(prefix):]
+										if l := len("runner"); len(elem) >= l && elem[0:l] == "runner" {
+											elem = elem[l:]
 										} else {
 											break
 										}
@@ -4128,8 +4495,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										}
 										switch elem[0] {
 										case '-': // Prefix: "-groups"
-											if prefix := "-groups"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-												elem = elem[len(prefix):]
+											if l := len("-groups"); len(elem) >= l && elem[0:l] == "-groups" {
+												elem = elem[l:]
 											} else {
 												break
 											}
@@ -4140,14 +4507,14 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											}
 											switch elem[0] {
 											case '/': // Prefix: "/"
-												if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-													elem = elem[len(prefix):]
+												if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+													elem = elem[l:]
 												} else {
 													break
 												}
 
 												// Param: "runner_group_id"
-												// Match until one of "/"
+												// Match until "/"
 												idx := strings.IndexByte(elem, '/')
 												if idx > 0 {
 													args["runner_group_id"] = elem[:idx]
@@ -4159,8 +4526,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													}
 													switch elem[0] {
 													case '/': // Prefix: "/r"
-														if prefix := "/r"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-															elem = elem[len(prefix):]
+														if l := len("/r"); len(elem) >= l && elem[0:l] == "/r" {
+															elem = elem[l:]
 														} else {
 															break
 														}
@@ -4171,32 +4538,36 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														}
 														switch elem[0] {
 														case 'e': // Prefix: "epositories"
-															if prefix := "epositories"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																elem = elem[len(prefix):]
+															if l := len("epositories"); len(elem) >= l && elem[0:l] == "epositories" {
+																elem = elem[l:]
 															} else {
 																break
 															}
 
-															// Leaf: ActionsListRepoAccessToSelfHostedRunnerGroupInOrg
-															s.handleActionsListRepoAccessToSelfHostedRunnerGroupInOrgRequest(args, w, r)
-															return
+															if len(elem) == 0 {
+																// Leaf: ActionsListRepoAccessToSelfHostedRunnerGroupInOrg
+																s.handleActionsListRepoAccessToSelfHostedRunnerGroupInOrgRequest(args, w, r)
+																return
+															}
 														case 'u': // Prefix: "unners"
-															if prefix := "unners"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																elem = elem[len(prefix):]
+															if l := len("unners"); len(elem) >= l && elem[0:l] == "unners" {
+																elem = elem[l:]
 															} else {
 																break
 															}
 
-															// Leaf: ActionsListSelfHostedRunnersInGroupForOrg
-															s.handleActionsListSelfHostedRunnersInGroupForOrgRequest(args, w, r)
-															return
+															if len(elem) == 0 {
+																// Leaf: ActionsListSelfHostedRunnersInGroupForOrg
+																s.handleActionsListSelfHostedRunnersInGroupForOrgRequest(args, w, r)
+																return
+															}
 														}
 													}
 												}
 											}
 										case 's': // Prefix: "s"
-											if prefix := "s"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-												elem = elem[len(prefix):]
+											if l := len("s"); len(elem) >= l && elem[0:l] == "s" {
+												elem = elem[l:]
 											} else {
 												break
 											}
@@ -4207,8 +4578,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											}
 											switch elem[0] {
 											case '/': // Prefix: "/"
-												if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-													elem = elem[len(prefix):]
+												if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+													elem = elem[l:]
 												} else {
 													break
 												}
@@ -4218,28 +4589,33 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												}
 												switch elem[0] {
 												case 'd': // Prefix: "downloads"
-													if prefix := "downloads"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-														elem = elem[len(prefix):]
+													if l := len("downloads"); len(elem) >= l && elem[0:l] == "downloads" {
+														elem = elem[l:]
 													} else {
 														break
 													}
 
-													// Leaf: ActionsListRunnerApplicationsForOrg
-													s.handleActionsListRunnerApplicationsForOrgRequest(args, w, r)
-													return
+													if len(elem) == 0 {
+														// Leaf: ActionsListRunnerApplicationsForOrg
+														s.handleActionsListRunnerApplicationsForOrgRequest(args, w, r)
+														return
+													}
 												}
 												// Param: "runner_id"
 												// Leaf parameter
 												args["runner_id"] = elem
+												elem = ""
 
-												// Leaf: ActionsGetSelfHostedRunnerForOrg
-												s.handleActionsGetSelfHostedRunnerForOrgRequest(args, w, r)
-												return
+												if len(elem) == 0 {
+													// Leaf: ActionsGetSelfHostedRunnerForOrg
+													s.handleActionsGetSelfHostedRunnerForOrgRequest(args, w, r)
+													return
+												}
 											}
 										}
 									case 's': // Prefix: "secrets"
-										if prefix := "secrets"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-											elem = elem[len(prefix):]
+										if l := len("secrets"); len(elem) >= l && elem[0:l] == "secrets" {
+											elem = elem[l:]
 										} else {
 											break
 										}
@@ -4250,8 +4626,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										}
 										switch elem[0] {
 										case '/': // Prefix: "/"
-											if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-												elem = elem[len(prefix):]
+											if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+												elem = elem[l:]
 											} else {
 												break
 											}
@@ -4262,18 +4638,20 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											}
 											switch elem[0] {
 											case 'p': // Prefix: "public-key"
-												if prefix := "public-key"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-													elem = elem[len(prefix):]
+												if l := len("public-key"); len(elem) >= l && elem[0:l] == "public-key" {
+													elem = elem[l:]
 												} else {
 													break
 												}
 
-												// Leaf: ActionsGetOrgPublicKey
-												s.handleActionsGetOrgPublicKeyRequest(args, w, r)
-												return
+												if len(elem) == 0 {
+													// Leaf: ActionsGetOrgPublicKey
+													s.handleActionsGetOrgPublicKeyRequest(args, w, r)
+													return
+												}
 											}
 											// Param: "secret_name"
-											// Match until one of "/"
+											// Match until "/"
 											idx := strings.IndexByte(elem, '/')
 											if idx > 0 {
 												args["secret_name"] = elem[:idx]
@@ -4285,33 +4663,37 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												}
 												switch elem[0] {
 												case '/': // Prefix: "/repositories"
-													if prefix := "/repositories"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-														elem = elem[len(prefix):]
+													if l := len("/repositories"); len(elem) >= l && elem[0:l] == "/repositories" {
+														elem = elem[l:]
 													} else {
 														break
 													}
 
-													// Leaf: ActionsListSelectedReposForOrgSecret
-													s.handleActionsListSelectedReposForOrgSecretRequest(args, w, r)
-													return
+													if len(elem) == 0 {
+														// Leaf: ActionsListSelectedReposForOrgSecret
+														s.handleActionsListSelectedReposForOrgSecretRequest(args, w, r)
+														return
+													}
 												}
 											}
 										}
 									}
 								case 'u': // Prefix: "udit-log"
-									if prefix := "udit-log"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-										elem = elem[len(prefix):]
+									if l := len("udit-log"); len(elem) >= l && elem[0:l] == "udit-log" {
+										elem = elem[l:]
 									} else {
 										break
 									}
 
-									// Leaf: OrgsGetAuditLog
-									s.handleOrgsGetAuditLogRequest(args, w, r)
-									return
+									if len(elem) == 0 {
+										// Leaf: OrgsGetAuditLog
+										s.handleOrgsGetAuditLogRequest(args, w, r)
+										return
+									}
 								}
 							case 'b': // Prefix: "blocks"
-								if prefix := "blocks"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-									elem = elem[len(prefix):]
+								if l := len("blocks"); len(elem) >= l && elem[0:l] == "blocks" {
+									elem = elem[l:]
 								} else {
 									break
 								}
@@ -4322,8 +4704,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								}
 								switch elem[0] {
 								case '/': // Prefix: "/"
-									if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-										elem = elem[len(prefix):]
+									if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+										elem = elem[l:]
 									} else {
 										break
 									}
@@ -4331,44 +4713,53 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									// Param: "username"
 									// Leaf parameter
 									args["username"] = elem
+									elem = ""
 
-									// Leaf: OrgsCheckBlockedUser
-									s.handleOrgsCheckBlockedUserRequest(args, w, r)
-									return
+									if len(elem) == 0 {
+										// Leaf: OrgsCheckBlockedUser
+										s.handleOrgsCheckBlockedUserRequest(args, w, r)
+										return
+									}
 								}
 							case 'c': // Prefix: "credential-authorizations"
-								if prefix := "credential-authorizations"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-									elem = elem[len(prefix):]
+								if l := len("credential-authorizations"); len(elem) >= l && elem[0:l] == "credential-authorizations" {
+									elem = elem[l:]
 								} else {
 									break
 								}
 
-								// Leaf: OrgsListSamlSSOAuthorizations
-								s.handleOrgsListSamlSSOAuthorizationsRequest(args, w, r)
-								return
+								if len(elem) == 0 {
+									// Leaf: OrgsListSamlSSOAuthorizations
+									s.handleOrgsListSamlSSOAuthorizationsRequest(args, w, r)
+									return
+								}
 							case 'e': // Prefix: "events"
-								if prefix := "events"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-									elem = elem[len(prefix):]
+								if l := len("events"); len(elem) >= l && elem[0:l] == "events" {
+									elem = elem[l:]
 								} else {
 									break
 								}
 
-								// Leaf: ActivityListPublicOrgEvents
-								s.handleActivityListPublicOrgEventsRequest(args, w, r)
-								return
+								if len(elem) == 0 {
+									// Leaf: ActivityListPublicOrgEvents
+									s.handleActivityListPublicOrgEventsRequest(args, w, r)
+									return
+								}
 							case 'f': // Prefix: "failed_invitations"
-								if prefix := "failed_invitations"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-									elem = elem[len(prefix):]
+								if l := len("failed_invitations"); len(elem) >= l && elem[0:l] == "failed_invitations" {
+									elem = elem[l:]
 								} else {
 									break
 								}
 
-								// Leaf: OrgsListFailedInvitations
-								s.handleOrgsListFailedInvitationsRequest(args, w, r)
-								return
+								if len(elem) == 0 {
+									// Leaf: OrgsListFailedInvitations
+									s.handleOrgsListFailedInvitationsRequest(args, w, r)
+									return
+								}
 							case 'h': // Prefix: "hooks"
-								if prefix := "hooks"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-									elem = elem[len(prefix):]
+								if l := len("hooks"); len(elem) >= l && elem[0:l] == "hooks" {
+									elem = elem[l:]
 								} else {
 									break
 								}
@@ -4379,14 +4770,14 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								}
 								switch elem[0] {
 								case '/': // Prefix: "/"
-									if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-										elem = elem[len(prefix):]
+									if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+										elem = elem[l:]
 									} else {
 										break
 									}
 
 									// Param: "hook_id"
-									// Match until one of "/"
+									// Match until "/"
 									idx := strings.IndexByte(elem, '/')
 									if idx > 0 {
 										args["hook_id"] = elem[:idx]
@@ -4398,8 +4789,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										}
 										switch elem[0] {
 										case '/': // Prefix: "/"
-											if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-												elem = elem[len(prefix):]
+											if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+												elem = elem[l:]
 											} else {
 												break
 											}
@@ -4410,18 +4801,20 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											}
 											switch elem[0] {
 											case 'c': // Prefix: "config"
-												if prefix := "config"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-													elem = elem[len(prefix):]
+												if l := len("config"); len(elem) >= l && elem[0:l] == "config" {
+													elem = elem[l:]
 												} else {
 													break
 												}
 
-												// Leaf: OrgsGetWebhookConfigForOrg
-												s.handleOrgsGetWebhookConfigForOrgRequest(args, w, r)
-												return
+												if len(elem) == 0 {
+													// Leaf: OrgsGetWebhookConfigForOrg
+													s.handleOrgsGetWebhookConfigForOrgRequest(args, w, r)
+													return
+												}
 											case 'd': // Prefix: "deliveries"
-												if prefix := "deliveries"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-													elem = elem[len(prefix):]
+												if l := len("deliveries"); len(elem) >= l && elem[0:l] == "deliveries" {
+													elem = elem[l:]
 												} else {
 													break
 												}
@@ -4432,8 +4825,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												}
 												switch elem[0] {
 												case '/': // Prefix: "/"
-													if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-														elem = elem[len(prefix):]
+													if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+														elem = elem[l:]
 													} else {
 														break
 													}
@@ -4441,18 +4834,21 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													// Param: "delivery_id"
 													// Leaf parameter
 													args["delivery_id"] = elem
+													elem = ""
 
-													// Leaf: OrgsGetWebhookDelivery
-													s.handleOrgsGetWebhookDeliveryRequest(args, w, r)
-													return
+													if len(elem) == 0 {
+														// Leaf: OrgsGetWebhookDelivery
+														s.handleOrgsGetWebhookDeliveryRequest(args, w, r)
+														return
+													}
 												}
 											}
 										}
 									}
 								}
 							case 'i': // Prefix: "i"
-								if prefix := "i"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-									elem = elem[len(prefix):]
+								if l := len("i"); len(elem) >= l && elem[0:l] == "i" {
+									elem = elem[l:]
 								} else {
 									break
 								}
@@ -4463,8 +4859,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								}
 								switch elem[0] {
 								case 'n': // Prefix: "nvitations"
-									if prefix := "nvitations"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-										elem = elem[len(prefix):]
+									if l := len("nvitations"); len(elem) >= l && elem[0:l] == "nvitations" {
+										elem = elem[l:]
 									} else {
 										break
 									}
@@ -4475,14 +4871,14 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									}
 									switch elem[0] {
 									case '/': // Prefix: "/"
-										if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-											elem = elem[len(prefix):]
+										if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+											elem = elem[l:]
 										} else {
 											break
 										}
 
 										// Param: "invitation_id"
-										// Match until one of "/"
+										// Match until "/"
 										idx := strings.IndexByte(elem, '/')
 										if idx > 0 {
 											args["invitation_id"] = elem[:idx]
@@ -4493,32 +4889,36 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											}
 											switch elem[0] {
 											case '/': // Prefix: "/teams"
-												if prefix := "/teams"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-													elem = elem[len(prefix):]
+												if l := len("/teams"); len(elem) >= l && elem[0:l] == "/teams" {
+													elem = elem[l:]
 												} else {
 													break
 												}
 
-												// Leaf: OrgsListInvitationTeams
-												s.handleOrgsListInvitationTeamsRequest(args, w, r)
-												return
+												if len(elem) == 0 {
+													// Leaf: OrgsListInvitationTeams
+													s.handleOrgsListInvitationTeamsRequest(args, w, r)
+													return
+												}
 											}
 										}
 									}
 								case 's': // Prefix: "ssues"
-									if prefix := "ssues"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-										elem = elem[len(prefix):]
+									if l := len("ssues"); len(elem) >= l && elem[0:l] == "ssues" {
+										elem = elem[l:]
 									} else {
 										break
 									}
 
-									// Leaf: IssuesListForOrg
-									s.handleIssuesListForOrgRequest(args, w, r)
-									return
+									if len(elem) == 0 {
+										// Leaf: IssuesListForOrg
+										s.handleIssuesListForOrgRequest(args, w, r)
+										return
+									}
 								}
 							case 'm': // Prefix: "m"
-								if prefix := "m"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-									elem = elem[len(prefix):]
+								if l := len("m"); len(elem) >= l && elem[0:l] == "m" {
+									elem = elem[l:]
 								} else {
 									break
 								}
@@ -4529,8 +4929,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								}
 								switch elem[0] {
 								case 'e': // Prefix: "embers"
-									if prefix := "embers"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-										elem = elem[len(prefix):]
+									if l := len("embers"); len(elem) >= l && elem[0:l] == "embers" {
+										elem = elem[l:]
 									} else {
 										break
 									}
@@ -4541,8 +4941,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									}
 									switch elem[0] {
 									case '/': // Prefix: "/"
-										if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-											elem = elem[len(prefix):]
+										if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+											elem = elem[l:]
 										} else {
 											break
 										}
@@ -4550,13 +4950,16 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										// Param: "username"
 										// Leaf parameter
 										args["username"] = elem
+										elem = ""
 
-										// Leaf: OrgsCheckMembershipForUser
-										s.handleOrgsCheckMembershipForUserRequest(args, w, r)
-										return
+										if len(elem) == 0 {
+											// Leaf: OrgsCheckMembershipForUser
+											s.handleOrgsCheckMembershipForUserRequest(args, w, r)
+											return
+										}
 									case 'h': // Prefix: "hips/"
-										if prefix := "hips/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-											elem = elem[len(prefix):]
+										if l := len("hips/"); len(elem) >= l && elem[0:l] == "hips/" {
+											elem = elem[l:]
 										} else {
 											break
 										}
@@ -4564,14 +4967,17 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										// Param: "username"
 										// Leaf parameter
 										args["username"] = elem
+										elem = ""
 
-										// Leaf: OrgsGetMembershipForUser
-										s.handleOrgsGetMembershipForUserRequest(args, w, r)
-										return
+										if len(elem) == 0 {
+											// Leaf: OrgsGetMembershipForUser
+											s.handleOrgsGetMembershipForUserRequest(args, w, r)
+											return
+										}
 									}
 								case 'i': // Prefix: "igrations"
-									if prefix := "igrations"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-										elem = elem[len(prefix):]
+									if l := len("igrations"); len(elem) >= l && elem[0:l] == "igrations" {
+										elem = elem[l:]
 									} else {
 										break
 									}
@@ -4582,14 +4988,14 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									}
 									switch elem[0] {
 									case '/': // Prefix: "/"
-										if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-											elem = elem[len(prefix):]
+										if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+											elem = elem[l:]
 										} else {
 											break
 										}
 
 										// Param: "migration_id"
-										// Match until one of "/"
+										// Match until "/"
 										idx := strings.IndexByte(elem, '/')
 										if idx > 0 {
 											args["migration_id"] = elem[:idx]
@@ -4601,8 +5007,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											}
 											switch elem[0] {
 											case '/': // Prefix: "/"
-												if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-													elem = elem[len(prefix):]
+												if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+													elem = elem[l:]
 												} else {
 													break
 												}
@@ -4613,43 +5019,49 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												}
 												switch elem[0] {
 												case 'a': // Prefix: "archive"
-													if prefix := "archive"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-														elem = elem[len(prefix):]
+													if l := len("archive"); len(elem) >= l && elem[0:l] == "archive" {
+														elem = elem[l:]
 													} else {
 														break
 													}
 
-													// Leaf: MigrationsDownloadArchiveForOrg
-													s.handleMigrationsDownloadArchiveForOrgRequest(args, w, r)
-													return
+													if len(elem) == 0 {
+														// Leaf: MigrationsDownloadArchiveForOrg
+														s.handleMigrationsDownloadArchiveForOrgRequest(args, w, r)
+														return
+													}
 												case 'r': // Prefix: "repositories"
-													if prefix := "repositories"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-														elem = elem[len(prefix):]
+													if l := len("repositories"); len(elem) >= l && elem[0:l] == "repositories" {
+														elem = elem[l:]
 													} else {
 														break
 													}
 
-													// Leaf: MigrationsListReposForOrg
-													s.handleMigrationsListReposForOrgRequest(args, w, r)
-													return
+													if len(elem) == 0 {
+														// Leaf: MigrationsListReposForOrg
+														s.handleMigrationsListReposForOrgRequest(args, w, r)
+														return
+													}
 												}
 											}
 										}
 									}
 								}
 							case 'o': // Prefix: "outside_collaborators"
-								if prefix := "outside_collaborators"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-									elem = elem[len(prefix):]
+								if l := len("outside_collaborators"); len(elem) >= l && elem[0:l] == "outside_collaborators" {
+									elem = elem[l:]
 								} else {
 									break
 								}
 
-								// Leaf: OrgsListOutsideCollaborators
-								s.handleOrgsListOutsideCollaboratorsRequest(args, w, r)
-								return
+								if len(elem) == 0 {
+									// Leaf: OrgsListOutsideCollaborators
+									s.handleOrgsListOutsideCollaboratorsRequest(args, w, r)
+									return
+								}
 							case 'p': // Prefix: "p"
-								if prefix := "p"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-									elem = elem[len(prefix):]
+								if l := len("p"); len(elem) >= l && elem[0:l] == "p" {
+									elem = elem[l:]
 								} else {
 									break
 								}
@@ -4660,8 +5072,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								}
 								switch elem[0] {
 								case 'a': // Prefix: "ackages"
-									if prefix := "ackages"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-										elem = elem[len(prefix):]
+									if l := len("ackages"); len(elem) >= l && elem[0:l] == "ackages" {
+										elem = elem[l:]
 									} else {
 										break
 									}
@@ -4672,14 +5084,14 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									}
 									switch elem[0] {
 									case '/': // Prefix: "/"
-										if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-											elem = elem[len(prefix):]
+										if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+											elem = elem[l:]
 										} else {
 											break
 										}
 
 										// Param: "package_type"
-										// Match until one of "/"
+										// Match until "/"
 										idx := strings.IndexByte(elem, '/')
 										if idx > 0 {
 											args["package_type"] = elem[:idx]
@@ -4690,14 +5102,14 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											}
 											switch elem[0] {
 											case '/': // Prefix: "/"
-												if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-													elem = elem[len(prefix):]
+												if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+													elem = elem[l:]
 												} else {
 													break
 												}
 
 												// Param: "package_name"
-												// Match until one of "/"
+												// Match until "/"
 												idx := strings.IndexByte(elem, '/')
 												if idx > 0 {
 													args["package_name"] = elem[:idx]
@@ -4709,8 +5121,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													}
 													switch elem[0] {
 													case '/': // Prefix: "/versions"
-														if prefix := "/versions"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-															elem = elem[len(prefix):]
+														if l := len("/versions"); len(elem) >= l && elem[0:l] == "/versions" {
+															elem = elem[l:]
 														} else {
 															break
 														}
@@ -4721,8 +5133,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														}
 														switch elem[0] {
 														case '/': // Prefix: "/"
-															if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																elem = elem[len(prefix):]
+															if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+																elem = elem[l:]
 															} else {
 																break
 															}
@@ -4730,10 +5142,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															// Param: "package_version_id"
 															// Leaf parameter
 															args["package_version_id"] = elem
+															elem = ""
 
-															// Leaf: PackagesGetPackageVersionForOrganization
-															s.handlePackagesGetPackageVersionForOrganizationRequest(args, w, r)
-															return
+															if len(elem) == 0 {
+																// Leaf: PackagesGetPackageVersionForOrganization
+																s.handlePackagesGetPackageVersionForOrganizationRequest(args, w, r)
+																return
+															}
 														}
 													}
 												}
@@ -4741,18 +5156,20 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										}
 									}
 								case 'r': // Prefix: "rojects"
-									if prefix := "rojects"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-										elem = elem[len(prefix):]
+									if l := len("rojects"); len(elem) >= l && elem[0:l] == "rojects" {
+										elem = elem[l:]
 									} else {
 										break
 									}
 
-									// Leaf: ProjectsListForOrg
-									s.handleProjectsListForOrgRequest(args, w, r)
-									return
+									if len(elem) == 0 {
+										// Leaf: ProjectsListForOrg
+										s.handleProjectsListForOrgRequest(args, w, r)
+										return
+									}
 								case 'u': // Prefix: "ublic_members"
-									if prefix := "ublic_members"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-										elem = elem[len(prefix):]
+									if l := len("ublic_members"); len(elem) >= l && elem[0:l] == "ublic_members" {
+										elem = elem[l:]
 									} else {
 										break
 									}
@@ -4763,8 +5180,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									}
 									switch elem[0] {
 									case '/': // Prefix: "/"
-										if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-											elem = elem[len(prefix):]
+										if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+											elem = elem[l:]
 										} else {
 											break
 										}
@@ -4772,25 +5189,30 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										// Param: "username"
 										// Leaf parameter
 										args["username"] = elem
+										elem = ""
 
-										// Leaf: OrgsCheckPublicMembershipForUser
-										s.handleOrgsCheckPublicMembershipForUserRequest(args, w, r)
-										return
+										if len(elem) == 0 {
+											// Leaf: OrgsCheckPublicMembershipForUser
+											s.handleOrgsCheckPublicMembershipForUserRequest(args, w, r)
+											return
+										}
 									}
 								}
 							case 'r': // Prefix: "repos"
-								if prefix := "repos"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-									elem = elem[len(prefix):]
+								if l := len("repos"); len(elem) >= l && elem[0:l] == "repos" {
+									elem = elem[l:]
 								} else {
 									break
 								}
 
-								// Leaf: ReposListForOrg
-								s.handleReposListForOrgRequest(args, w, r)
-								return
+								if len(elem) == 0 {
+									// Leaf: ReposListForOrg
+									s.handleReposListForOrgRequest(args, w, r)
+									return
+								}
 							case 's': // Prefix: "se"
-								if prefix := "se"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-									elem = elem[len(prefix):]
+								if l := len("se"); len(elem) >= l && elem[0:l] == "se" {
+									elem = elem[l:]
 								} else {
 									break
 								}
@@ -4801,18 +5223,20 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								}
 								switch elem[0] {
 								case 'c': // Prefix: "cret-scanning/alerts"
-									if prefix := "cret-scanning/alerts"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-										elem = elem[len(prefix):]
+									if l := len("cret-scanning/alerts"); len(elem) >= l && elem[0:l] == "cret-scanning/alerts" {
+										elem = elem[l:]
 									} else {
 										break
 									}
 
-									// Leaf: SecretScanningListAlertsForOrg
-									s.handleSecretScanningListAlertsForOrgRequest(args, w, r)
-									return
+									if len(elem) == 0 {
+										// Leaf: SecretScanningListAlertsForOrg
+										s.handleSecretScanningListAlertsForOrgRequest(args, w, r)
+										return
+									}
 								case 't': // Prefix: "ttings/billing/"
-									if prefix := "ttings/billing/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-										elem = elem[len(prefix):]
+									if l := len("ttings/billing/"); len(elem) >= l && elem[0:l] == "ttings/billing/" {
+										elem = elem[l:]
 									} else {
 										break
 									}
@@ -4823,40 +5247,46 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									}
 									switch elem[0] {
 									case 'a': // Prefix: "actions"
-										if prefix := "actions"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-											elem = elem[len(prefix):]
+										if l := len("actions"); len(elem) >= l && elem[0:l] == "actions" {
+											elem = elem[l:]
 										} else {
 											break
 										}
 
-										// Leaf: BillingGetGithubActionsBillingOrg
-										s.handleBillingGetGithubActionsBillingOrgRequest(args, w, r)
-										return
+										if len(elem) == 0 {
+											// Leaf: BillingGetGithubActionsBillingOrg
+											s.handleBillingGetGithubActionsBillingOrgRequest(args, w, r)
+											return
+										}
 									case 'p': // Prefix: "packages"
-										if prefix := "packages"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-											elem = elem[len(prefix):]
+										if l := len("packages"); len(elem) >= l && elem[0:l] == "packages" {
+											elem = elem[l:]
 										} else {
 											break
 										}
 
-										// Leaf: BillingGetGithubPackagesBillingOrg
-										s.handleBillingGetGithubPackagesBillingOrgRequest(args, w, r)
-										return
+										if len(elem) == 0 {
+											// Leaf: BillingGetGithubPackagesBillingOrg
+											s.handleBillingGetGithubPackagesBillingOrgRequest(args, w, r)
+											return
+										}
 									case 's': // Prefix: "shared-storage"
-										if prefix := "shared-storage"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-											elem = elem[len(prefix):]
+										if l := len("shared-storage"); len(elem) >= l && elem[0:l] == "shared-storage" {
+											elem = elem[l:]
 										} else {
 											break
 										}
 
-										// Leaf: BillingGetSharedStorageBillingOrg
-										s.handleBillingGetSharedStorageBillingOrgRequest(args, w, r)
-										return
+										if len(elem) == 0 {
+											// Leaf: BillingGetSharedStorageBillingOrg
+											s.handleBillingGetSharedStorageBillingOrgRequest(args, w, r)
+											return
+										}
 									}
 								}
 							case 't': // Prefix: "team"
-								if prefix := "team"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-									elem = elem[len(prefix):]
+								if l := len("team"); len(elem) >= l && elem[0:l] == "team" {
+									elem = elem[l:]
 								} else {
 									break
 								}
@@ -4867,18 +5297,20 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								}
 								switch elem[0] {
 								case '-': // Prefix: "-sync/groups"
-									if prefix := "-sync/groups"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-										elem = elem[len(prefix):]
+									if l := len("-sync/groups"); len(elem) >= l && elem[0:l] == "-sync/groups" {
+										elem = elem[l:]
 									} else {
 										break
 									}
 
-									// Leaf: TeamsListIdpGroupsForOrg
-									s.handleTeamsListIdpGroupsForOrgRequest(args, w, r)
-									return
+									if len(elem) == 0 {
+										// Leaf: TeamsListIdpGroupsForOrg
+										s.handleTeamsListIdpGroupsForOrgRequest(args, w, r)
+										return
+									}
 								case 's': // Prefix: "s"
-									if prefix := "s"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-										elem = elem[len(prefix):]
+									if l := len("s"); len(elem) >= l && elem[0:l] == "s" {
+										elem = elem[l:]
 									} else {
 										break
 									}
@@ -4889,14 +5321,14 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									}
 									switch elem[0] {
 									case '/': // Prefix: "/"
-										if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-											elem = elem[len(prefix):]
+										if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+											elem = elem[l:]
 										} else {
 											break
 										}
 
 										// Param: "team_slug"
-										// Match until one of "/"
+										// Match until "/"
 										idx := strings.IndexByte(elem, '/')
 										if idx > 0 {
 											args["team_slug"] = elem[:idx]
@@ -4908,8 +5340,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											}
 											switch elem[0] {
 											case '/': // Prefix: "/"
-												if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-													elem = elem[len(prefix):]
+												if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+													elem = elem[l:]
 												} else {
 													break
 												}
@@ -4920,8 +5352,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												}
 												switch elem[0] {
 												case 'd': // Prefix: "discussions"
-													if prefix := "discussions"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-														elem = elem[len(prefix):]
+													if l := len("discussions"); len(elem) >= l && elem[0:l] == "discussions" {
+														elem = elem[l:]
 													} else {
 														break
 													}
@@ -4932,14 +5364,14 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													}
 													switch elem[0] {
 													case '/': // Prefix: "/"
-														if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-															elem = elem[len(prefix):]
+														if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+															elem = elem[l:]
 														} else {
 															break
 														}
 
 														// Param: "discussion_number"
-														// Match until one of "/"
+														// Match until "/"
 														idx := strings.IndexByte(elem, '/')
 														if idx > 0 {
 															args["discussion_number"] = elem[:idx]
@@ -4951,8 +5383,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															}
 															switch elem[0] {
 															case '/': // Prefix: "/"
-																if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																	elem = elem[len(prefix):]
+																if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+																	elem = elem[l:]
 																} else {
 																	break
 																}
@@ -4963,8 +5395,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																}
 																switch elem[0] {
 																case 'c': // Prefix: "comments"
-																	if prefix := "comments"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																		elem = elem[len(prefix):]
+																	if l := len("comments"); len(elem) >= l && elem[0:l] == "comments" {
+																		elem = elem[l:]
 																	} else {
 																		break
 																	}
@@ -4975,14 +5407,14 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																	}
 																	switch elem[0] {
 																	case '/': // Prefix: "/"
-																		if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																			elem = elem[len(prefix):]
+																		if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+																			elem = elem[l:]
 																		} else {
 																			break
 																		}
 
 																		// Param: "comment_number"
-																		// Match until one of "/"
+																		// Match until "/"
 																		idx := strings.IndexByte(elem, '/')
 																		if idx > 0 {
 																			args["comment_number"] = elem[:idx]
@@ -4994,45 +5426,51 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																			}
 																			switch elem[0] {
 																			case '/': // Prefix: "/reactions"
-																				if prefix := "/reactions"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																					elem = elem[len(prefix):]
+																				if l := len("/reactions"); len(elem) >= l && elem[0:l] == "/reactions" {
+																					elem = elem[l:]
 																				} else {
 																					break
 																				}
 
-																				// Leaf: ReactionsListForTeamDiscussionCommentInOrg
-																				s.handleReactionsListForTeamDiscussionCommentInOrgRequest(args, w, r)
-																				return
+																				if len(elem) == 0 {
+																					// Leaf: ReactionsListForTeamDiscussionCommentInOrg
+																					s.handleReactionsListForTeamDiscussionCommentInOrgRequest(args, w, r)
+																					return
+																				}
 																			}
 																		}
 																	}
 																case 'r': // Prefix: "reactions"
-																	if prefix := "reactions"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																		elem = elem[len(prefix):]
+																	if l := len("reactions"); len(elem) >= l && elem[0:l] == "reactions" {
+																		elem = elem[l:]
 																	} else {
 																		break
 																	}
 
-																	// Leaf: ReactionsListForTeamDiscussionInOrg
-																	s.handleReactionsListForTeamDiscussionInOrgRequest(args, w, r)
-																	return
+																	if len(elem) == 0 {
+																		// Leaf: ReactionsListForTeamDiscussionInOrg
+																		s.handleReactionsListForTeamDiscussionInOrgRequest(args, w, r)
+																		return
+																	}
 																}
 															}
 														}
 													}
 												case 'i': // Prefix: "invitations"
-													if prefix := "invitations"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-														elem = elem[len(prefix):]
+													if l := len("invitations"); len(elem) >= l && elem[0:l] == "invitations" {
+														elem = elem[l:]
 													} else {
 														break
 													}
 
-													// Leaf: TeamsListPendingInvitationsInOrg
-													s.handleTeamsListPendingInvitationsInOrgRequest(args, w, r)
-													return
+													if len(elem) == 0 {
+														// Leaf: TeamsListPendingInvitationsInOrg
+														s.handleTeamsListPendingInvitationsInOrgRequest(args, w, r)
+														return
+													}
 												case 'm': // Prefix: "members"
-													if prefix := "members"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-														elem = elem[len(prefix):]
+													if l := len("members"); len(elem) >= l && elem[0:l] == "members" {
+														elem = elem[l:]
 													} else {
 														break
 													}
@@ -5043,8 +5481,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													}
 													switch elem[0] {
 													case 'h': // Prefix: "hips/"
-														if prefix := "hips/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-															elem = elem[len(prefix):]
+														if l := len("hips/"); len(elem) >= l && elem[0:l] == "hips/" {
+															elem = elem[l:]
 														} else {
 															break
 														}
@@ -5052,14 +5490,17 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														// Param: "username"
 														// Leaf parameter
 														args["username"] = elem
+														elem = ""
 
-														// Leaf: TeamsGetMembershipForUserInOrg
-														s.handleTeamsGetMembershipForUserInOrgRequest(args, w, r)
-														return
+														if len(elem) == 0 {
+															// Leaf: TeamsGetMembershipForUserInOrg
+															s.handleTeamsGetMembershipForUserInOrgRequest(args, w, r)
+															return
+														}
 													}
 												case 'p': // Prefix: "projects"
-													if prefix := "projects"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-														elem = elem[len(prefix):]
+													if l := len("projects"); len(elem) >= l && elem[0:l] == "projects" {
+														elem = elem[l:]
 													} else {
 														break
 													}
@@ -5070,8 +5511,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													}
 													switch elem[0] {
 													case '/': // Prefix: "/"
-														if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-															elem = elem[len(prefix):]
+														if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+															elem = elem[l:]
 														} else {
 															break
 														}
@@ -5079,14 +5520,17 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														// Param: "project_id"
 														// Leaf parameter
 														args["project_id"] = elem
+														elem = ""
 
-														// Leaf: TeamsCheckPermissionsForProjectInOrg
-														s.handleTeamsCheckPermissionsForProjectInOrgRequest(args, w, r)
-														return
+														if len(elem) == 0 {
+															// Leaf: TeamsCheckPermissionsForProjectInOrg
+															s.handleTeamsCheckPermissionsForProjectInOrgRequest(args, w, r)
+															return
+														}
 													}
 												case 'r': // Prefix: "repos"
-													if prefix := "repos"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-														elem = elem[len(prefix):]
+													if l := len("repos"); len(elem) >= l && elem[0:l] == "repos" {
+														elem = elem[l:]
 													} else {
 														break
 													}
@@ -5097,14 +5541,14 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													}
 													switch elem[0] {
 													case '/': // Prefix: "/"
-														if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-															elem = elem[len(prefix):]
+														if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+															elem = elem[l:]
 														} else {
 															break
 														}
 
 														// Param: "owner"
-														// Match until one of "/"
+														// Match until "/"
 														idx := strings.IndexByte(elem, '/')
 														if idx > 0 {
 															args["owner"] = elem[:idx]
@@ -5115,8 +5559,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															}
 															switch elem[0] {
 															case '/': // Prefix: "/"
-																if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																	elem = elem[len(prefix):]
+																if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+																	elem = elem[l:]
 																} else {
 																	break
 																}
@@ -5124,16 +5568,19 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																// Param: "repo"
 																// Leaf parameter
 																args["repo"] = elem
+																elem = ""
 
-																// Leaf: TeamsCheckPermissionsForRepoInOrg
-																s.handleTeamsCheckPermissionsForRepoInOrgRequest(args, w, r)
-																return
+																if len(elem) == 0 {
+																	// Leaf: TeamsCheckPermissionsForRepoInOrg
+																	s.handleTeamsCheckPermissionsForRepoInOrgRequest(args, w, r)
+																	return
+																}
 															}
 														}
 													}
 												case 't': // Prefix: "team"
-													if prefix := "team"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-														elem = elem[len(prefix):]
+													if l := len("team"); len(elem) >= l && elem[0:l] == "team" {
+														elem = elem[l:]
 													} else {
 														break
 													}
@@ -5144,25 +5591,29 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													}
 													switch elem[0] {
 													case '-': // Prefix: "-sync/group-mappings"
-														if prefix := "-sync/group-mappings"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-															elem = elem[len(prefix):]
+														if l := len("-sync/group-mappings"); len(elem) >= l && elem[0:l] == "-sync/group-mappings" {
+															elem = elem[l:]
 														} else {
 															break
 														}
 
-														// Leaf: TeamsListIdpGroupsInOrg
-														s.handleTeamsListIdpGroupsInOrgRequest(args, w, r)
-														return
+														if len(elem) == 0 {
+															// Leaf: TeamsListIdpGroupsInOrg
+															s.handleTeamsListIdpGroupsInOrgRequest(args, w, r)
+															return
+														}
 													case 's': // Prefix: "s"
-														if prefix := "s"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-															elem = elem[len(prefix):]
+														if l := len("s"); len(elem) >= l && elem[0:l] == "s" {
+															elem = elem[l:]
 														} else {
 															break
 														}
 
-														// Leaf: TeamsListChildInOrg
-														s.handleTeamsListChildInOrgRequest(args, w, r)
-														return
+														if len(elem) == 0 {
+															// Leaf: TeamsListChildInOrg
+															s.handleTeamsListChildInOrgRequest(args, w, r)
+															return
+														}
 													}
 												}
 											}
@@ -5174,8 +5625,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					}
 				}
 			case 'p': // Prefix: "projects/"
-				if prefix := "projects/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-					elem = elem[len(prefix):]
+				if l := len("projects/"); len(elem) >= l && elem[0:l] == "projects/" {
+					elem = elem[l:]
 				} else {
 					break
 				}
@@ -5185,8 +5636,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				}
 				switch elem[0] {
 				case 'c': // Prefix: "columns/"
-					if prefix := "columns/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-						elem = elem[len(prefix):]
+					if l := len("columns/"); len(elem) >= l && elem[0:l] == "columns/" {
+						elem = elem[l:]
 					} else {
 						break
 					}
@@ -5197,8 +5648,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					}
 					switch elem[0] {
 					case 'c': // Prefix: "cards/"
-						if prefix := "cards/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-							elem = elem[len(prefix):]
+						if l := len("cards/"); len(elem) >= l && elem[0:l] == "cards/" {
+							elem = elem[l:]
 						} else {
 							break
 						}
@@ -5206,13 +5657,16 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						// Param: "card_id"
 						// Leaf parameter
 						args["card_id"] = elem
+						elem = ""
 
-						// Leaf: ProjectsGetCard
-						s.handleProjectsGetCardRequest(args, w, r)
-						return
+						if len(elem) == 0 {
+							// Leaf: ProjectsGetCard
+							s.handleProjectsGetCardRequest(args, w, r)
+							return
+						}
 					}
 					// Param: "column_id"
-					// Match until one of "/"
+					// Match until "/"
 					idx := strings.IndexByte(elem, '/')
 					if idx > 0 {
 						args["column_id"] = elem[:idx]
@@ -5224,20 +5678,22 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						}
 						switch elem[0] {
 						case '/': // Prefix: "/cards"
-							if prefix := "/cards"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-								elem = elem[len(prefix):]
+							if l := len("/cards"); len(elem) >= l && elem[0:l] == "/cards" {
+								elem = elem[l:]
 							} else {
 								break
 							}
 
-							// Leaf: ProjectsListCards
-							s.handleProjectsListCardsRequest(args, w, r)
-							return
+							if len(elem) == 0 {
+								// Leaf: ProjectsListCards
+								s.handleProjectsListCardsRequest(args, w, r)
+								return
+							}
 						}
 					}
 				}
 				// Param: "project_id"
-				// Match until one of "/"
+				// Match until "/"
 				idx := strings.IndexByte(elem, '/')
 				if idx > 0 {
 					args["project_id"] = elem[:idx]
@@ -5249,8 +5705,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					}
 					switch elem[0] {
 					case '/': // Prefix: "/col"
-						if prefix := "/col"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-							elem = elem[len(prefix):]
+						if l := len("/col"); len(elem) >= l && elem[0:l] == "/col" {
+							elem = elem[l:]
 						} else {
 							break
 						}
@@ -5261,8 +5717,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						}
 						switch elem[0] {
 						case 'l': // Prefix: "laborators"
-							if prefix := "laborators"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-								elem = elem[len(prefix):]
+							if l := len("laborators"); len(elem) >= l && elem[0:l] == "laborators" {
+								elem = elem[l:]
 							} else {
 								break
 							}
@@ -5273,14 +5729,14 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							}
 							switch elem[0] {
 							case '/': // Prefix: "/"
-								if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-									elem = elem[len(prefix):]
+								if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+									elem = elem[l:]
 								} else {
 									break
 								}
 
 								// Param: "username"
-								// Match until one of "/"
+								// Match until "/"
 								idx := strings.IndexByte(elem, '/')
 								if idx > 0 {
 									args["username"] = elem[:idx]
@@ -5291,34 +5747,38 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									}
 									switch elem[0] {
 									case '/': // Prefix: "/permission"
-										if prefix := "/permission"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-											elem = elem[len(prefix):]
+										if l := len("/permission"); len(elem) >= l && elem[0:l] == "/permission" {
+											elem = elem[l:]
 										} else {
 											break
 										}
 
-										// Leaf: ProjectsGetPermissionForUser
-										s.handleProjectsGetPermissionForUserRequest(args, w, r)
-										return
+										if len(elem) == 0 {
+											// Leaf: ProjectsGetPermissionForUser
+											s.handleProjectsGetPermissionForUserRequest(args, w, r)
+											return
+										}
 									}
 								}
 							}
 						case 'u': // Prefix: "umns"
-							if prefix := "umns"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-								elem = elem[len(prefix):]
+							if l := len("umns"); len(elem) >= l && elem[0:l] == "umns" {
+								elem = elem[l:]
 							} else {
 								break
 							}
 
-							// Leaf: ProjectsListColumns
-							s.handleProjectsListColumnsRequest(args, w, r)
-							return
+							if len(elem) == 0 {
+								// Leaf: ProjectsListColumns
+								s.handleProjectsListColumnsRequest(args, w, r)
+								return
+							}
 						}
 					}
 				}
 			case 'r': // Prefix: "r"
-				if prefix := "r"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-					elem = elem[len(prefix):]
+				if l := len("r"); len(elem) >= l && elem[0:l] == "r" {
+					elem = elem[l:]
 				} else {
 					break
 				}
@@ -5329,18 +5789,20 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				}
 				switch elem[0] {
 				case 'a': // Prefix: "ate_limit"
-					if prefix := "ate_limit"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-						elem = elem[len(prefix):]
+					if l := len("ate_limit"); len(elem) >= l && elem[0:l] == "ate_limit" {
+						elem = elem[l:]
 					} else {
 						break
 					}
 
-					// Leaf: RateLimitGet
-					s.handleRateLimitGetRequest(args, w, r)
-					return
+					if len(elem) == 0 {
+						// Leaf: RateLimitGet
+						s.handleRateLimitGetRequest(args, w, r)
+						return
+					}
 				case 'e': // Prefix: "epos"
-					if prefix := "epos"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-						elem = elem[len(prefix):]
+					if l := len("epos"); len(elem) >= l && elem[0:l] == "epos" {
+						elem = elem[l:]
 					} else {
 						break
 					}
@@ -5351,14 +5813,14 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					}
 					switch elem[0] {
 					case '/': // Prefix: "/"
-						if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-							elem = elem[len(prefix):]
+						if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+							elem = elem[l:]
 						} else {
 							break
 						}
 
 						// Param: "owner"
-						// Match until one of "/"
+						// Match until "/"
 						idx := strings.IndexByte(elem, '/')
 						if idx > 0 {
 							args["owner"] = elem[:idx]
@@ -5369,14 +5831,14 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							}
 							switch elem[0] {
 							case '/': // Prefix: "/"
-								if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-									elem = elem[len(prefix):]
+								if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+									elem = elem[l:]
 								} else {
 									break
 								}
 
 								// Param: "repo"
-								// Match until one of "/"
+								// Match until "/"
 								idx := strings.IndexByte(elem, '/')
 								if idx > 0 {
 									args["repo"] = elem[:idx]
@@ -5388,8 +5850,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									}
 									switch elem[0] {
 									case '/': // Prefix: "/"
-										if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-											elem = elem[len(prefix):]
+										if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+											elem = elem[l:]
 										} else {
 											break
 										}
@@ -5400,8 +5862,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										}
 										switch elem[0] {
 										case 'a': // Prefix: "a"
-											if prefix := "a"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-												elem = elem[len(prefix):]
+											if l := len("a"); len(elem) >= l && elem[0:l] == "a" {
+												elem = elem[l:]
 											} else {
 												break
 											}
@@ -5412,8 +5874,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											}
 											switch elem[0] {
 											case 'c': // Prefix: "ctions/"
-												if prefix := "ctions/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-													elem = elem[len(prefix):]
+												if l := len("ctions/"); len(elem) >= l && elem[0:l] == "ctions/" {
+													elem = elem[l:]
 												} else {
 													break
 												}
@@ -5424,8 +5886,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												}
 												switch elem[0] {
 												case 'a': // Prefix: "artifacts"
-													if prefix := "artifacts"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-														elem = elem[len(prefix):]
+													if l := len("artifacts"); len(elem) >= l && elem[0:l] == "artifacts" {
+														elem = elem[l:]
 													} else {
 														break
 													}
@@ -5436,14 +5898,14 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													}
 													switch elem[0] {
 													case '/': // Prefix: "/"
-														if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-															elem = elem[len(prefix):]
+														if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+															elem = elem[l:]
 														} else {
 															break
 														}
 
 														// Param: "artifact_id"
-														// Match until one of "/"
+														// Match until "/"
 														idx := strings.IndexByte(elem, '/')
 														if idx > 0 {
 															args["artifact_id"] = elem[:idx]
@@ -5455,8 +5917,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															}
 															switch elem[0] {
 															case '/': // Prefix: "/"
-																if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																	elem = elem[len(prefix):]
+																if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+																	elem = elem[l:]
 																} else {
 																	break
 																}
@@ -5464,22 +5926,25 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																// Param: "archive_format"
 																// Leaf parameter
 																args["archive_format"] = elem
+																elem = ""
 
-																// Leaf: ActionsDownloadArtifact
-																s.handleActionsDownloadArtifactRequest(args, w, r)
-																return
+																if len(elem) == 0 {
+																	// Leaf: ActionsDownloadArtifact
+																	s.handleActionsDownloadArtifactRequest(args, w, r)
+																	return
+																}
 															}
 														}
 													}
 												case 'j': // Prefix: "jobs/"
-													if prefix := "jobs/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-														elem = elem[len(prefix):]
+													if l := len("jobs/"); len(elem) >= l && elem[0:l] == "jobs/" {
+														elem = elem[l:]
 													} else {
 														break
 													}
 
 													// Param: "job_id"
-													// Match until one of "/"
+													// Match until "/"
 													idx := strings.IndexByte(elem, '/')
 													if idx > 0 {
 														args["job_id"] = elem[:idx]
@@ -5491,20 +5956,22 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														}
 														switch elem[0] {
 														case '/': // Prefix: "/logs"
-															if prefix := "/logs"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																elem = elem[len(prefix):]
+															if l := len("/logs"); len(elem) >= l && elem[0:l] == "/logs" {
+																elem = elem[l:]
 															} else {
 																break
 															}
 
-															// Leaf: ActionsDownloadJobLogsForWorkflowRun
-															s.handleActionsDownloadJobLogsForWorkflowRunRequest(args, w, r)
-															return
+															if len(elem) == 0 {
+																// Leaf: ActionsDownloadJobLogsForWorkflowRun
+																s.handleActionsDownloadJobLogsForWorkflowRunRequest(args, w, r)
+																return
+															}
 														}
 													}
 												case 'p': // Prefix: "permissions"
-													if prefix := "permissions"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-														elem = elem[len(prefix):]
+													if l := len("permissions"); len(elem) >= l && elem[0:l] == "permissions" {
+														elem = elem[l:]
 													} else {
 														break
 													}
@@ -5515,19 +5982,21 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													}
 													switch elem[0] {
 													case '/': // Prefix: "/selected-actions"
-														if prefix := "/selected-actions"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-															elem = elem[len(prefix):]
+														if l := len("/selected-actions"); len(elem) >= l && elem[0:l] == "/selected-actions" {
+															elem = elem[l:]
 														} else {
 															break
 														}
 
-														// Leaf: ActionsGetAllowedActionsRepository
-														s.handleActionsGetAllowedActionsRepositoryRequest(args, w, r)
-														return
+														if len(elem) == 0 {
+															// Leaf: ActionsGetAllowedActionsRepository
+															s.handleActionsGetAllowedActionsRepositoryRequest(args, w, r)
+															return
+														}
 													}
 												case 'r': // Prefix: "run"
-													if prefix := "run"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-														elem = elem[len(prefix):]
+													if l := len("run"); len(elem) >= l && elem[0:l] == "run" {
+														elem = elem[l:]
 													} else {
 														break
 													}
@@ -5538,8 +6007,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													}
 													switch elem[0] {
 													case 'n': // Prefix: "ners"
-														if prefix := "ners"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-															elem = elem[len(prefix):]
+														if l := len("ners"); len(elem) >= l && elem[0:l] == "ners" {
+															elem = elem[l:]
 														} else {
 															break
 														}
@@ -5550,8 +6019,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														}
 														switch elem[0] {
 														case '/': // Prefix: "/"
-															if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																elem = elem[len(prefix):]
+															if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+																elem = elem[l:]
 															} else {
 																break
 															}
@@ -5561,27 +6030,32 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															}
 															switch elem[0] {
 															case 'd': // Prefix: "downloads"
-																if prefix := "downloads"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																	elem = elem[len(prefix):]
+																if l := len("downloads"); len(elem) >= l && elem[0:l] == "downloads" {
+																	elem = elem[l:]
 																} else {
 																	break
 																}
 
-																// Leaf: ActionsListRunnerApplicationsForRepo
-																s.handleActionsListRunnerApplicationsForRepoRequest(args, w, r)
-																return
+																if len(elem) == 0 {
+																	// Leaf: ActionsListRunnerApplicationsForRepo
+																	s.handleActionsListRunnerApplicationsForRepoRequest(args, w, r)
+																	return
+																}
 															}
 															// Param: "runner_id"
 															// Leaf parameter
 															args["runner_id"] = elem
+															elem = ""
 
-															// Leaf: ActionsGetSelfHostedRunnerForRepo
-															s.handleActionsGetSelfHostedRunnerForRepoRequest(args, w, r)
-															return
+															if len(elem) == 0 {
+																// Leaf: ActionsGetSelfHostedRunnerForRepo
+																s.handleActionsGetSelfHostedRunnerForRepoRequest(args, w, r)
+																return
+															}
 														}
 													case 's': // Prefix: "s"
-														if prefix := "s"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-															elem = elem[len(prefix):]
+														if l := len("s"); len(elem) >= l && elem[0:l] == "s" {
+															elem = elem[l:]
 														} else {
 															break
 														}
@@ -5592,14 +6066,14 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														}
 														switch elem[0] {
 														case '/': // Prefix: "/"
-															if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																elem = elem[len(prefix):]
+															if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+																elem = elem[l:]
 															} else {
 																break
 															}
 
 															// Param: "run_id"
-															// Match until one of "/"
+															// Match until "/"
 															idx := strings.IndexByte(elem, '/')
 															if idx > 0 {
 																args["run_id"] = elem[:idx]
@@ -5611,8 +6085,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																}
 																switch elem[0] {
 																case '/': // Prefix: "/"
-																	if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																		elem = elem[len(prefix):]
+																	if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+																		elem = elem[l:]
 																	} else {
 																		break
 																	}
@@ -5623,8 +6097,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																	}
 																	switch elem[0] {
 																	case 'a': // Prefix: "a"
-																		if prefix := "a"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																			elem = elem[len(prefix):]
+																		if l := len("a"); len(elem) >= l && elem[0:l] == "a" {
+																			elem = elem[l:]
 																		} else {
 																			break
 																		}
@@ -5635,64 +6109,74 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																		}
 																		switch elem[0] {
 																		case 'p': // Prefix: "pprovals"
-																			if prefix := "pprovals"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																				elem = elem[len(prefix):]
+																			if l := len("pprovals"); len(elem) >= l && elem[0:l] == "pprovals" {
+																				elem = elem[l:]
 																			} else {
 																				break
 																			}
 
-																			// Leaf: ActionsGetReviewsForRun
-																			s.handleActionsGetReviewsForRunRequest(args, w, r)
-																			return
+																			if len(elem) == 0 {
+																				// Leaf: ActionsGetReviewsForRun
+																				s.handleActionsGetReviewsForRunRequest(args, w, r)
+																				return
+																			}
 																		case 'r': // Prefix: "rtifacts"
-																			if prefix := "rtifacts"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																				elem = elem[len(prefix):]
+																			if l := len("rtifacts"); len(elem) >= l && elem[0:l] == "rtifacts" {
+																				elem = elem[l:]
 																			} else {
 																				break
 																			}
 
-																			// Leaf: ActionsListWorkflowRunArtifacts
-																			s.handleActionsListWorkflowRunArtifactsRequest(args, w, r)
-																			return
+																			if len(elem) == 0 {
+																				// Leaf: ActionsListWorkflowRunArtifacts
+																				s.handleActionsListWorkflowRunArtifactsRequest(args, w, r)
+																				return
+																			}
 																		}
 																	case 'j': // Prefix: "jobs"
-																		if prefix := "jobs"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																			elem = elem[len(prefix):]
+																		if l := len("jobs"); len(elem) >= l && elem[0:l] == "jobs" {
+																			elem = elem[l:]
 																		} else {
 																			break
 																		}
 
-																		// Leaf: ActionsListJobsForWorkflowRun
-																		s.handleActionsListJobsForWorkflowRunRequest(args, w, r)
-																		return
+																		if len(elem) == 0 {
+																			// Leaf: ActionsListJobsForWorkflowRun
+																			s.handleActionsListJobsForWorkflowRunRequest(args, w, r)
+																			return
+																		}
 																	case 'l': // Prefix: "logs"
-																		if prefix := "logs"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																			elem = elem[len(prefix):]
+																		if l := len("logs"); len(elem) >= l && elem[0:l] == "logs" {
+																			elem = elem[l:]
 																		} else {
 																			break
 																		}
 
-																		// Leaf: ActionsDownloadWorkflowRunLogs
-																		s.handleActionsDownloadWorkflowRunLogsRequest(args, w, r)
-																		return
+																		if len(elem) == 0 {
+																			// Leaf: ActionsDownloadWorkflowRunLogs
+																			s.handleActionsDownloadWorkflowRunLogsRequest(args, w, r)
+																			return
+																		}
 																	case 't': // Prefix: "timing"
-																		if prefix := "timing"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																			elem = elem[len(prefix):]
+																		if l := len("timing"); len(elem) >= l && elem[0:l] == "timing" {
+																			elem = elem[l:]
 																		} else {
 																			break
 																		}
 
-																		// Leaf: ActionsGetWorkflowRunUsage
-																		s.handleActionsGetWorkflowRunUsageRequest(args, w, r)
-																		return
+																		if len(elem) == 0 {
+																			// Leaf: ActionsGetWorkflowRunUsage
+																			s.handleActionsGetWorkflowRunUsageRequest(args, w, r)
+																			return
+																		}
 																	}
 																}
 															}
 														}
 													}
 												case 's': // Prefix: "secrets"
-													if prefix := "secrets"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-														elem = elem[len(prefix):]
+													if l := len("secrets"); len(elem) >= l && elem[0:l] == "secrets" {
+														elem = elem[l:]
 													} else {
 														break
 													}
@@ -5703,8 +6187,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													}
 													switch elem[0] {
 													case '/': // Prefix: "/"
-														if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-															elem = elem[len(prefix):]
+														if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+															elem = elem[l:]
 														} else {
 															break
 														}
@@ -5715,38 +6199,45 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														}
 														switch elem[0] {
 														case 'p': // Prefix: "public-key"
-															if prefix := "public-key"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																elem = elem[len(prefix):]
+															if l := len("public-key"); len(elem) >= l && elem[0:l] == "public-key" {
+																elem = elem[l:]
 															} else {
 																break
 															}
 
-															// Leaf: ActionsGetRepoPublicKey
-															s.handleActionsGetRepoPublicKeyRequest(args, w, r)
-															return
+															if len(elem) == 0 {
+																// Leaf: ActionsGetRepoPublicKey
+																s.handleActionsGetRepoPublicKeyRequest(args, w, r)
+																return
+															}
 														}
 														// Param: "secret_name"
 														// Leaf parameter
 														args["secret_name"] = elem
+														elem = ""
 
-														// Leaf: ActionsGetRepoSecret
-														s.handleActionsGetRepoSecretRequest(args, w, r)
-														return
+														if len(elem) == 0 {
+															// Leaf: ActionsGetRepoSecret
+															s.handleActionsGetRepoSecretRequest(args, w, r)
+															return
+														}
 													}
 												case 'w': // Prefix: "workflows"
-													if prefix := "workflows"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-														elem = elem[len(prefix):]
+													if l := len("workflows"); len(elem) >= l && elem[0:l] == "workflows" {
+														elem = elem[l:]
 													} else {
 														break
 													}
 
-													// Leaf: ActionsListRepoWorkflows
-													s.handleActionsListRepoWorkflowsRequest(args, w, r)
-													return
+													if len(elem) == 0 {
+														// Leaf: ActionsListRepoWorkflows
+														s.handleActionsListRepoWorkflowsRequest(args, w, r)
+														return
+													}
 												}
 											case 's': // Prefix: "ssignees"
-												if prefix := "ssignees"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-													elem = elem[len(prefix):]
+												if l := len("ssignees"); len(elem) >= l && elem[0:l] == "ssignees" {
+													elem = elem[l:]
 												} else {
 													break
 												}
@@ -5757,8 +6248,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												}
 												switch elem[0] {
 												case '/': // Prefix: "/"
-													if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-														elem = elem[len(prefix):]
+													if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+														elem = elem[l:]
 													} else {
 														break
 													}
@@ -5766,14 +6257,17 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													// Param: "assignee"
 													// Leaf parameter
 													args["assignee"] = elem
+													elem = ""
 
-													// Leaf: IssuesCheckUserCanBeAssigned
-													s.handleIssuesCheckUserCanBeAssignedRequest(args, w, r)
-													return
+													if len(elem) == 0 {
+														// Leaf: IssuesCheckUserCanBeAssigned
+														s.handleIssuesCheckUserCanBeAssignedRequest(args, w, r)
+														return
+													}
 												}
 											case 'u': // Prefix: "utolinks"
-												if prefix := "utolinks"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-													elem = elem[len(prefix):]
+												if l := len("utolinks"); len(elem) >= l && elem[0:l] == "utolinks" {
+													elem = elem[l:]
 												} else {
 													break
 												}
@@ -5784,8 +6278,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												}
 												switch elem[0] {
 												case '/': // Prefix: "/"
-													if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-														elem = elem[len(prefix):]
+													if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+														elem = elem[l:]
 													} else {
 														break
 													}
@@ -5793,15 +6287,18 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													// Param: "autolink_id"
 													// Leaf parameter
 													args["autolink_id"] = elem
+													elem = ""
 
-													// Leaf: ReposGetAutolink
-													s.handleReposGetAutolinkRequest(args, w, r)
-													return
+													if len(elem) == 0 {
+														// Leaf: ReposGetAutolink
+														s.handleReposGetAutolinkRequest(args, w, r)
+														return
+													}
 												}
 											}
 										case 'b': // Prefix: "branches"
-											if prefix := "branches"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-												elem = elem[len(prefix):]
+											if l := len("branches"); len(elem) >= l && elem[0:l] == "branches" {
+												elem = elem[l:]
 											} else {
 												break
 											}
@@ -5812,14 +6309,14 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											}
 											switch elem[0] {
 											case '/': // Prefix: "/"
-												if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-													elem = elem[len(prefix):]
+												if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+													elem = elem[l:]
 												} else {
 													break
 												}
 
 												// Param: "branch"
-												// Match until one of "/"
+												// Match until "/"
 												idx := strings.IndexByte(elem, '/')
 												if idx > 0 {
 													args["branch"] = elem[:idx]
@@ -5831,8 +6328,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													}
 													switch elem[0] {
 													case '/': // Prefix: "/protection"
-														if prefix := "/protection"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-															elem = elem[len(prefix):]
+														if l := len("/protection"); len(elem) >= l && elem[0:l] == "/protection" {
+															elem = elem[l:]
 														} else {
 															break
 														}
@@ -5843,8 +6340,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														}
 														switch elem[0] {
 														case '/': // Prefix: "/"
-															if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																elem = elem[len(prefix):]
+															if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+																elem = elem[l:]
 															} else {
 																break
 															}
@@ -5855,18 +6352,20 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															}
 															switch elem[0] {
 															case 'e': // Prefix: "enforce_admins"
-																if prefix := "enforce_admins"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																	elem = elem[len(prefix):]
+																if l := len("enforce_admins"); len(elem) >= l && elem[0:l] == "enforce_admins" {
+																	elem = elem[l:]
 																} else {
 																	break
 																}
 
-																// Leaf: ReposGetAdminBranchProtection
-																s.handleReposGetAdminBranchProtectionRequest(args, w, r)
-																return
+																if len(elem) == 0 {
+																	// Leaf: ReposGetAdminBranchProtection
+																	s.handleReposGetAdminBranchProtectionRequest(args, w, r)
+																	return
+																}
 															case 'r': // Prefix: "re"
-																if prefix := "re"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																	elem = elem[len(prefix):]
+																if l := len("re"); len(elem) >= l && elem[0:l] == "re" {
+																	elem = elem[l:]
 																} else {
 																	break
 																}
@@ -5877,8 +6376,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																}
 																switch elem[0] {
 																case 'q': // Prefix: "quired_"
-																	if prefix := "quired_"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																		elem = elem[len(prefix):]
+																	if l := len("quired_"); len(elem) >= l && elem[0:l] == "quired_" {
+																		elem = elem[l:]
 																	} else {
 																		break
 																	}
@@ -5889,18 +6388,20 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																	}
 																	switch elem[0] {
 																	case 'p': // Prefix: "pull_request_reviews"
-																		if prefix := "pull_request_reviews"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																			elem = elem[len(prefix):]
+																		if l := len("pull_request_reviews"); len(elem) >= l && elem[0:l] == "pull_request_reviews" {
+																			elem = elem[l:]
 																		} else {
 																			break
 																		}
 
-																		// Leaf: ReposGetPullRequestReviewProtection
-																		s.handleReposGetPullRequestReviewProtectionRequest(args, w, r)
-																		return
+																		if len(elem) == 0 {
+																			// Leaf: ReposGetPullRequestReviewProtection
+																			s.handleReposGetPullRequestReviewProtectionRequest(args, w, r)
+																			return
+																		}
 																	case 's': // Prefix: "s"
-																		if prefix := "s"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																			elem = elem[len(prefix):]
+																		if l := len("s"); len(elem) >= l && elem[0:l] == "s" {
+																			elem = elem[l:]
 																		} else {
 																			break
 																		}
@@ -5911,18 +6412,20 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																		}
 																		switch elem[0] {
 																		case 'i': // Prefix: "ignatures"
-																			if prefix := "ignatures"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																				elem = elem[len(prefix):]
+																			if l := len("ignatures"); len(elem) >= l && elem[0:l] == "ignatures" {
+																				elem = elem[l:]
 																			} else {
 																				break
 																			}
 
-																			// Leaf: ReposGetCommitSignatureProtection
-																			s.handleReposGetCommitSignatureProtectionRequest(args, w, r)
-																			return
+																			if len(elem) == 0 {
+																				// Leaf: ReposGetCommitSignatureProtection
+																				s.handleReposGetCommitSignatureProtectionRequest(args, w, r)
+																				return
+																			}
 																		case 't': // Prefix: "tatus_checks"
-																			if prefix := "tatus_checks"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																				elem = elem[len(prefix):]
+																			if l := len("tatus_checks"); len(elem) >= l && elem[0:l] == "tatus_checks" {
+																				elem = elem[l:]
 																			} else {
 																				break
 																			}
@@ -5933,21 +6436,23 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																			}
 																			switch elem[0] {
 																			case '/': // Prefix: "/contexts"
-																				if prefix := "/contexts"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																					elem = elem[len(prefix):]
+																				if l := len("/contexts"); len(elem) >= l && elem[0:l] == "/contexts" {
+																					elem = elem[l:]
 																				} else {
 																					break
 																				}
 
-																				// Leaf: ReposGetAllStatusCheckContexts
-																				s.handleReposGetAllStatusCheckContextsRequest(args, w, r)
-																				return
+																				if len(elem) == 0 {
+																					// Leaf: ReposGetAllStatusCheckContexts
+																					s.handleReposGetAllStatusCheckContextsRequest(args, w, r)
+																					return
+																				}
 																			}
 																		}
 																	}
 																case 's': // Prefix: "strictions"
-																	if prefix := "strictions"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																		elem = elem[len(prefix):]
+																	if l := len("strictions"); len(elem) >= l && elem[0:l] == "strictions" {
+																		elem = elem[l:]
 																	} else {
 																		break
 																	}
@@ -5958,8 +6463,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																	}
 																	switch elem[0] {
 																	case '/': // Prefix: "/"
-																		if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																			elem = elem[len(prefix):]
+																		if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+																			elem = elem[l:]
 																		} else {
 																			break
 																		}
@@ -5970,35 +6475,41 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																		}
 																		switch elem[0] {
 																		case 'a': // Prefix: "apps"
-																			if prefix := "apps"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																				elem = elem[len(prefix):]
+																			if l := len("apps"); len(elem) >= l && elem[0:l] == "apps" {
+																				elem = elem[l:]
 																			} else {
 																				break
 																			}
 
-																			// Leaf: ReposGetAppsWithAccessToProtectedBranch
-																			s.handleReposGetAppsWithAccessToProtectedBranchRequest(args, w, r)
-																			return
+																			if len(elem) == 0 {
+																				// Leaf: ReposGetAppsWithAccessToProtectedBranch
+																				s.handleReposGetAppsWithAccessToProtectedBranchRequest(args, w, r)
+																				return
+																			}
 																		case 't': // Prefix: "teams"
-																			if prefix := "teams"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																				elem = elem[len(prefix):]
+																			if l := len("teams"); len(elem) >= l && elem[0:l] == "teams" {
+																				elem = elem[l:]
 																			} else {
 																				break
 																			}
 
-																			// Leaf: ReposGetTeamsWithAccessToProtectedBranch
-																			s.handleReposGetTeamsWithAccessToProtectedBranchRequest(args, w, r)
-																			return
+																			if len(elem) == 0 {
+																				// Leaf: ReposGetTeamsWithAccessToProtectedBranch
+																				s.handleReposGetTeamsWithAccessToProtectedBranchRequest(args, w, r)
+																				return
+																			}
 																		case 'u': // Prefix: "users"
-																			if prefix := "users"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																				elem = elem[len(prefix):]
+																			if l := len("users"); len(elem) >= l && elem[0:l] == "users" {
+																				elem = elem[l:]
 																			} else {
 																				break
 																			}
 
-																			// Leaf: ReposGetUsersWithAccessToProtectedBranch
-																			s.handleReposGetUsersWithAccessToProtectedBranchRequest(args, w, r)
-																			return
+																			if len(elem) == 0 {
+																				// Leaf: ReposGetUsersWithAccessToProtectedBranch
+																				s.handleReposGetUsersWithAccessToProtectedBranchRequest(args, w, r)
+																				return
+																			}
 																		}
 																	}
 																}
@@ -6008,8 +6519,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												}
 											}
 										case 'c': // Prefix: "c"
-											if prefix := "c"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-												elem = elem[len(prefix):]
+											if l := len("c"); len(elem) >= l && elem[0:l] == "c" {
+												elem = elem[l:]
 											} else {
 												break
 											}
@@ -6020,8 +6531,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											}
 											switch elem[0] {
 											case 'h': // Prefix: "heck-"
-												if prefix := "heck-"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-													elem = elem[len(prefix):]
+												if l := len("heck-"); len(elem) >= l && elem[0:l] == "heck-" {
+													elem = elem[l:]
 												} else {
 													break
 												}
@@ -6032,14 +6543,14 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												}
 												switch elem[0] {
 												case 'r': // Prefix: "runs/"
-													if prefix := "runs/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-														elem = elem[len(prefix):]
+													if l := len("runs/"); len(elem) >= l && elem[0:l] == "runs/" {
+														elem = elem[l:]
 													} else {
 														break
 													}
 
 													// Param: "check_run_id"
-													// Match until one of "/"
+													// Match until "/"
 													idx := strings.IndexByte(elem, '/')
 													if idx > 0 {
 														args["check_run_id"] = elem[:idx]
@@ -6051,26 +6562,28 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														}
 														switch elem[0] {
 														case '/': // Prefix: "/annotations"
-															if prefix := "/annotations"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																elem = elem[len(prefix):]
+															if l := len("/annotations"); len(elem) >= l && elem[0:l] == "/annotations" {
+																elem = elem[l:]
 															} else {
 																break
 															}
 
-															// Leaf: ChecksListAnnotations
-															s.handleChecksListAnnotationsRequest(args, w, r)
-															return
+															if len(elem) == 0 {
+																// Leaf: ChecksListAnnotations
+																s.handleChecksListAnnotationsRequest(args, w, r)
+																return
+															}
 														}
 													}
 												case 's': // Prefix: "suites/"
-													if prefix := "suites/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-														elem = elem[len(prefix):]
+													if l := len("suites/"); len(elem) >= l && elem[0:l] == "suites/" {
+														elem = elem[l:]
 													} else {
 														break
 													}
 
 													// Param: "check_suite_id"
-													// Match until one of "/"
+													// Match until "/"
 													idx := strings.IndexByte(elem, '/')
 													if idx > 0 {
 														args["check_suite_id"] = elem[:idx]
@@ -6082,21 +6595,23 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														}
 														switch elem[0] {
 														case '/': // Prefix: "/check-runs"
-															if prefix := "/check-runs"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																elem = elem[len(prefix):]
+															if l := len("/check-runs"); len(elem) >= l && elem[0:l] == "/check-runs" {
+																elem = elem[l:]
 															} else {
 																break
 															}
 
-															// Leaf: ChecksListForSuite
-															s.handleChecksListForSuiteRequest(args, w, r)
-															return
+															if len(elem) == 0 {
+																// Leaf: ChecksListForSuite
+																s.handleChecksListForSuiteRequest(args, w, r)
+																return
+															}
 														}
 													}
 												}
 											case 'o': // Prefix: "o"
-												if prefix := "o"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-													elem = elem[len(prefix):]
+												if l := len("o"); len(elem) >= l && elem[0:l] == "o" {
+													elem = elem[l:]
 												} else {
 													break
 												}
@@ -6107,8 +6622,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												}
 												switch elem[0] {
 												case 'd': // Prefix: "de-scanning/"
-													if prefix := "de-scanning/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-														elem = elem[len(prefix):]
+													if l := len("de-scanning/"); len(elem) >= l && elem[0:l] == "de-scanning/" {
+														elem = elem[l:]
 													} else {
 														break
 													}
@@ -6119,8 +6634,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													}
 													switch elem[0] {
 													case 'a': // Prefix: "a"
-														if prefix := "a"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-															elem = elem[len(prefix):]
+														if l := len("a"); len(elem) >= l && elem[0:l] == "a" {
+															elem = elem[l:]
 														} else {
 															break
 														}
@@ -6131,8 +6646,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														}
 														switch elem[0] {
 														case 'l': // Prefix: "lerts"
-															if prefix := "lerts"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																elem = elem[len(prefix):]
+															if l := len("lerts"); len(elem) >= l && elem[0:l] == "lerts" {
+																elem = elem[l:]
 															} else {
 																break
 															}
@@ -6143,14 +6658,14 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															}
 															switch elem[0] {
 															case '/': // Prefix: "/"
-																if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																	elem = elem[len(prefix):]
+																if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+																	elem = elem[l:]
 																} else {
 																	break
 																}
 
 																// Param: "alert_number"
-																// Match until one of "/"
+																// Match until "/"
 																idx := strings.IndexByte(elem, '/')
 																if idx > 0 {
 																	args["alert_number"] = elem[:idx]
@@ -6162,21 +6677,23 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																	}
 																	switch elem[0] {
 																	case '/': // Prefix: "/instances"
-																		if prefix := "/instances"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																			elem = elem[len(prefix):]
+																		if l := len("/instances"); len(elem) >= l && elem[0:l] == "/instances" {
+																			elem = elem[l:]
 																		} else {
 																			break
 																		}
 
-																		// Leaf: CodeScanningListAlertInstances
-																		s.handleCodeScanningListAlertInstancesRequest(args, w, r)
-																		return
+																		if len(elem) == 0 {
+																			// Leaf: CodeScanningListAlertInstances
+																			s.handleCodeScanningListAlertInstancesRequest(args, w, r)
+																			return
+																		}
 																	}
 																}
 															}
 														case 'n': // Prefix: "nalyses"
-															if prefix := "nalyses"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																elem = elem[len(prefix):]
+															if l := len("nalyses"); len(elem) >= l && elem[0:l] == "nalyses" {
+																elem = elem[l:]
 															} else {
 																break
 															}
@@ -6187,8 +6704,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															}
 															switch elem[0] {
 															case '/': // Prefix: "/"
-																if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																	elem = elem[len(prefix):]
+																if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+																	elem = elem[l:]
 																} else {
 																	break
 																}
@@ -6196,15 +6713,18 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																// Param: "analysis_id"
 																// Leaf parameter
 																args["analysis_id"] = elem
+																elem = ""
 
-																// Leaf: CodeScanningGetAnalysis
-																s.handleCodeScanningGetAnalysisRequest(args, w, r)
-																return
+																if len(elem) == 0 {
+																	// Leaf: CodeScanningGetAnalysis
+																	s.handleCodeScanningGetAnalysisRequest(args, w, r)
+																	return
+																}
 															}
 														}
 													case 's': // Prefix: "sarifs/"
-														if prefix := "sarifs/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-															elem = elem[len(prefix):]
+														if l := len("sarifs/"); len(elem) >= l && elem[0:l] == "sarifs/" {
+															elem = elem[l:]
 														} else {
 															break
 														}
@@ -6212,14 +6732,17 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														// Param: "sarif_id"
 														// Leaf parameter
 														args["sarif_id"] = elem
+														elem = ""
 
-														// Leaf: CodeScanningGetSarif
-														s.handleCodeScanningGetSarifRequest(args, w, r)
-														return
+														if len(elem) == 0 {
+															// Leaf: CodeScanningGetSarif
+															s.handleCodeScanningGetSarifRequest(args, w, r)
+															return
+														}
 													}
 												case 'l': // Prefix: "llaborators"
-													if prefix := "llaborators"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-														elem = elem[len(prefix):]
+													if l := len("llaborators"); len(elem) >= l && elem[0:l] == "llaborators" {
+														elem = elem[l:]
 													} else {
 														break
 													}
@@ -6230,14 +6753,14 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													}
 													switch elem[0] {
 													case '/': // Prefix: "/"
-														if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-															elem = elem[len(prefix):]
+														if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+															elem = elem[l:]
 														} else {
 															break
 														}
 
 														// Param: "username"
-														// Match until one of "/"
+														// Match until "/"
 														idx := strings.IndexByte(elem, '/')
 														if idx > 0 {
 															args["username"] = elem[:idx]
@@ -6249,21 +6772,23 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															}
 															switch elem[0] {
 															case '/': // Prefix: "/permission"
-																if prefix := "/permission"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																	elem = elem[len(prefix):]
+																if l := len("/permission"); len(elem) >= l && elem[0:l] == "/permission" {
+																	elem = elem[l:]
 																} else {
 																	break
 																}
 
-																// Leaf: ReposGetCollaboratorPermissionLevel
-																s.handleReposGetCollaboratorPermissionLevelRequest(args, w, r)
-																return
+																if len(elem) == 0 {
+																	// Leaf: ReposGetCollaboratorPermissionLevel
+																	s.handleReposGetCollaboratorPermissionLevelRequest(args, w, r)
+																	return
+																}
 															}
 														}
 													}
 												case 'm': // Prefix: "m"
-													if prefix := "m"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-														elem = elem[len(prefix):]
+													if l := len("m"); len(elem) >= l && elem[0:l] == "m" {
+														elem = elem[l:]
 													} else {
 														break
 													}
@@ -6274,8 +6799,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													}
 													switch elem[0] {
 													case 'm': // Prefix: "m"
-														if prefix := "m"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-															elem = elem[len(prefix):]
+														if l := len("m"); len(elem) >= l && elem[0:l] == "m" {
+															elem = elem[l:]
 														} else {
 															break
 														}
@@ -6286,8 +6811,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														}
 														switch elem[0] {
 														case 'e': // Prefix: "ents"
-															if prefix := "ents"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																elem = elem[len(prefix):]
+															if l := len("ents"); len(elem) >= l && elem[0:l] == "ents" {
+																elem = elem[l:]
 															} else {
 																break
 															}
@@ -6298,14 +6823,14 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															}
 															switch elem[0] {
 															case '/': // Prefix: "/"
-																if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																	elem = elem[len(prefix):]
+																if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+																	elem = elem[l:]
 																} else {
 																	break
 																}
 
 																// Param: "comment_id"
-																// Match until one of "/"
+																// Match until "/"
 																idx := strings.IndexByte(elem, '/')
 																if idx > 0 {
 																	args["comment_id"] = elem[:idx]
@@ -6317,21 +6842,23 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																	}
 																	switch elem[0] {
 																	case '/': // Prefix: "/reactions"
-																		if prefix := "/reactions"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																			elem = elem[len(prefix):]
+																		if l := len("/reactions"); len(elem) >= l && elem[0:l] == "/reactions" {
+																			elem = elem[l:]
 																		} else {
 																			break
 																		}
 
-																		// Leaf: ReactionsListForCommitComment
-																		s.handleReactionsListForCommitCommentRequest(args, w, r)
-																		return
+																		if len(elem) == 0 {
+																			// Leaf: ReactionsListForCommitComment
+																			s.handleReactionsListForCommitCommentRequest(args, w, r)
+																			return
+																		}
 																	}
 																}
 															}
 														case 'i': // Prefix: "its"
-															if prefix := "its"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																elem = elem[len(prefix):]
+															if l := len("its"); len(elem) >= l && elem[0:l] == "its" {
+																elem = elem[l:]
 															} else {
 																break
 															}
@@ -6342,14 +6869,14 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															}
 															switch elem[0] {
 															case '/': // Prefix: "/"
-																if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																	elem = elem[len(prefix):]
+																if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+																	elem = elem[l:]
 																} else {
 																	break
 																}
 
 																// Param: "ref"
-																// Match until one of "/"
+																// Match until "/"
 																idx := strings.IndexByte(elem, '/')
 																if idx > 0 {
 																	args["ref"] = elem[:idx]
@@ -6361,8 +6888,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																	}
 																	switch elem[0] {
 																	case '/': // Prefix: "/"
-																		if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																			elem = elem[len(prefix):]
+																		if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+																			elem = elem[l:]
 																		} else {
 																			break
 																		}
@@ -6373,18 +6900,20 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																		}
 																		switch elem[0] {
 																		case 'b': // Prefix: "branches-where-head"
-																			if prefix := "branches-where-head"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																				elem = elem[len(prefix):]
+																			if l := len("branches-where-head"); len(elem) >= l && elem[0:l] == "branches-where-head" {
+																				elem = elem[l:]
 																			} else {
 																				break
 																			}
 
-																			// Leaf: ReposListBranchesForHeadCommit
-																			s.handleReposListBranchesForHeadCommitRequest(args, w, r)
-																			return
+																			if len(elem) == 0 {
+																				// Leaf: ReposListBranchesForHeadCommit
+																				s.handleReposListBranchesForHeadCommitRequest(args, w, r)
+																				return
+																			}
 																		case 'c': // Prefix: "c"
-																			if prefix := "c"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																				elem = elem[len(prefix):]
+																			if l := len("c"); len(elem) >= l && elem[0:l] == "c" {
+																				elem = elem[l:]
 																			} else {
 																				break
 																			}
@@ -6395,8 +6924,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																			}
 																			switch elem[0] {
 																			case 'h': // Prefix: "heck-"
-																				if prefix := "heck-"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																					elem = elem[len(prefix):]
+																				if l := len("heck-"); len(elem) >= l && elem[0:l] == "heck-" {
+																					elem = elem[l:]
 																				} else {
 																					break
 																				}
@@ -6407,50 +6936,58 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																				}
 																				switch elem[0] {
 																				case 'r': // Prefix: "runs"
-																					if prefix := "runs"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																						elem = elem[len(prefix):]
+																					if l := len("runs"); len(elem) >= l && elem[0:l] == "runs" {
+																						elem = elem[l:]
 																					} else {
 																						break
 																					}
 
-																					// Leaf: ChecksListForRef
-																					s.handleChecksListForRefRequest(args, w, r)
-																					return
+																					if len(elem) == 0 {
+																						// Leaf: ChecksListForRef
+																						s.handleChecksListForRefRequest(args, w, r)
+																						return
+																					}
 																				case 's': // Prefix: "suites"
-																					if prefix := "suites"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																						elem = elem[len(prefix):]
+																					if l := len("suites"); len(elem) >= l && elem[0:l] == "suites" {
+																						elem = elem[l:]
 																					} else {
 																						break
 																					}
 
-																					// Leaf: ChecksListSuitesForRef
-																					s.handleChecksListSuitesForRefRequest(args, w, r)
-																					return
+																					if len(elem) == 0 {
+																						// Leaf: ChecksListSuitesForRef
+																						s.handleChecksListSuitesForRefRequest(args, w, r)
+																						return
+																					}
 																				}
 																			case 'o': // Prefix: "omments"
-																				if prefix := "omments"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																					elem = elem[len(prefix):]
+																				if l := len("omments"); len(elem) >= l && elem[0:l] == "omments" {
+																					elem = elem[l:]
 																				} else {
 																					break
 																				}
 
-																				// Leaf: ReposListCommentsForCommit
-																				s.handleReposListCommentsForCommitRequest(args, w, r)
-																				return
+																				if len(elem) == 0 {
+																					// Leaf: ReposListCommentsForCommit
+																					s.handleReposListCommentsForCommitRequest(args, w, r)
+																					return
+																				}
 																			}
 																		case 'p': // Prefix: "pulls"
-																			if prefix := "pulls"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																				elem = elem[len(prefix):]
+																			if l := len("pulls"); len(elem) >= l && elem[0:l] == "pulls" {
+																				elem = elem[l:]
 																			} else {
 																				break
 																			}
 
-																			// Leaf: ReposListPullRequestsAssociatedWithCommit
-																			s.handleReposListPullRequestsAssociatedWithCommitRequest(args, w, r)
-																			return
+																			if len(elem) == 0 {
+																				// Leaf: ReposListPullRequestsAssociatedWithCommit
+																				s.handleReposListPullRequestsAssociatedWithCommitRequest(args, w, r)
+																				return
+																			}
 																		case 's': // Prefix: "status"
-																			if prefix := "status"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																				elem = elem[len(prefix):]
+																			if l := len("status"); len(elem) >= l && elem[0:l] == "status" {
+																				elem = elem[l:]
 																			} else {
 																				break
 																			}
@@ -6461,34 +6998,38 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																			}
 																			switch elem[0] {
 																			case 'e': // Prefix: "es"
-																				if prefix := "es"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																					elem = elem[len(prefix):]
+																				if l := len("es"); len(elem) >= l && elem[0:l] == "es" {
+																					elem = elem[l:]
 																				} else {
 																					break
 																				}
 
-																				// Leaf: ReposListCommitStatusesForRef
-																				s.handleReposListCommitStatusesForRefRequest(args, w, r)
-																				return
+																				if len(elem) == 0 {
+																					// Leaf: ReposListCommitStatusesForRef
+																					s.handleReposListCommitStatusesForRefRequest(args, w, r)
+																					return
+																				}
 																			}
 																		}
 																	}
 																}
 															}
 														case 'u': // Prefix: "unity/profile"
-															if prefix := "unity/profile"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																elem = elem[len(prefix):]
+															if l := len("unity/profile"); len(elem) >= l && elem[0:l] == "unity/profile" {
+																elem = elem[l:]
 															} else {
 																break
 															}
 
-															// Leaf: ReposGetCommunityProfileMetrics
-															s.handleReposGetCommunityProfileMetricsRequest(args, w, r)
-															return
+															if len(elem) == 0 {
+																// Leaf: ReposGetCommunityProfileMetrics
+																s.handleReposGetCommunityProfileMetricsRequest(args, w, r)
+																return
+															}
 														}
 													case 'p': // Prefix: "pare/"
-														if prefix := "pare/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-															elem = elem[len(prefix):]
+														if l := len("pare/"); len(elem) >= l && elem[0:l] == "pare/" {
+															elem = elem[l:]
 														} else {
 															break
 														}
@@ -6496,26 +7037,31 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														// Param: "basehead"
 														// Leaf parameter
 														args["basehead"] = elem
+														elem = ""
 
-														// Leaf: ReposCompareCommits
-														s.handleReposCompareCommitsRequest(args, w, r)
-														return
+														if len(elem) == 0 {
+															// Leaf: ReposCompareCommits
+															s.handleReposCompareCommitsRequest(args, w, r)
+															return
+														}
 													}
 												case 'n': // Prefix: "ntributors"
-													if prefix := "ntributors"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-														elem = elem[len(prefix):]
+													if l := len("ntributors"); len(elem) >= l && elem[0:l] == "ntributors" {
+														elem = elem[l:]
 													} else {
 														break
 													}
 
-													// Leaf: ReposListContributors
-													s.handleReposListContributorsRequest(args, w, r)
-													return
+													if len(elem) == 0 {
+														// Leaf: ReposListContributors
+														s.handleReposListContributorsRequest(args, w, r)
+														return
+													}
 												}
 											}
 										case 'd': // Prefix: "deployments"
-											if prefix := "deployments"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-												elem = elem[len(prefix):]
+											if l := len("deployments"); len(elem) >= l && elem[0:l] == "deployments" {
+												elem = elem[l:]
 											} else {
 												break
 											}
@@ -6526,14 +7072,14 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											}
 											switch elem[0] {
 											case '/': // Prefix: "/"
-												if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-													elem = elem[len(prefix):]
+												if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+													elem = elem[l:]
 												} else {
 													break
 												}
 
 												// Param: "deployment_id"
-												// Match until one of "/"
+												// Match until "/"
 												idx := strings.IndexByte(elem, '/')
 												if idx > 0 {
 													args["deployment_id"] = elem[:idx]
@@ -6545,8 +7091,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													}
 													switch elem[0] {
 													case '/': // Prefix: "/statuses"
-														if prefix := "/statuses"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-															elem = elem[len(prefix):]
+														if l := len("/statuses"); len(elem) >= l && elem[0:l] == "/statuses" {
+															elem = elem[l:]
 														} else {
 															break
 														}
@@ -6557,8 +7103,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														}
 														switch elem[0] {
 														case '/': // Prefix: "/"
-															if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																elem = elem[len(prefix):]
+															if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+																elem = elem[l:]
 															} else {
 																break
 															}
@@ -6566,37 +7112,44 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															// Param: "status_id"
 															// Leaf parameter
 															args["status_id"] = elem
+															elem = ""
 
-															// Leaf: ReposGetDeploymentStatus
-															s.handleReposGetDeploymentStatusRequest(args, w, r)
-															return
+															if len(elem) == 0 {
+																// Leaf: ReposGetDeploymentStatus
+																s.handleReposGetDeploymentStatusRequest(args, w, r)
+																return
+															}
 														}
 													}
 												}
 											}
 										case 'e': // Prefix: "events"
-											if prefix := "events"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-												elem = elem[len(prefix):]
+											if l := len("events"); len(elem) >= l && elem[0:l] == "events" {
+												elem = elem[l:]
 											} else {
 												break
 											}
 
-											// Leaf: ActivityListRepoEvents
-											s.handleActivityListRepoEventsRequest(args, w, r)
-											return
+											if len(elem) == 0 {
+												// Leaf: ActivityListRepoEvents
+												s.handleActivityListRepoEventsRequest(args, w, r)
+												return
+											}
 										case 'f': // Prefix: "forks"
-											if prefix := "forks"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-												elem = elem[len(prefix):]
+											if l := len("forks"); len(elem) >= l && elem[0:l] == "forks" {
+												elem = elem[l:]
 											} else {
 												break
 											}
 
-											// Leaf: ReposListForks
-											s.handleReposListForksRequest(args, w, r)
-											return
+											if len(elem) == 0 {
+												// Leaf: ReposListForks
+												s.handleReposListForksRequest(args, w, r)
+												return
+											}
 										case 'g': // Prefix: "git/"
-											if prefix := "git/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-												elem = elem[len(prefix):]
+											if l := len("git/"); len(elem) >= l && elem[0:l] == "git/" {
+												elem = elem[l:]
 											} else {
 												break
 											}
@@ -6607,8 +7160,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											}
 											switch elem[0] {
 											case 'b': // Prefix: "blobs/"
-												if prefix := "blobs/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-													elem = elem[len(prefix):]
+												if l := len("blobs/"); len(elem) >= l && elem[0:l] == "blobs/" {
+													elem = elem[l:]
 												} else {
 													break
 												}
@@ -6616,13 +7169,16 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												// Param: "file_sha"
 												// Leaf parameter
 												args["file_sha"] = elem
+												elem = ""
 
-												// Leaf: GitGetBlob
-												s.handleGitGetBlobRequest(args, w, r)
-												return
+												if len(elem) == 0 {
+													// Leaf: GitGetBlob
+													s.handleGitGetBlobRequest(args, w, r)
+													return
+												}
 											case 'c': // Prefix: "commits/"
-												if prefix := "commits/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-													elem = elem[len(prefix):]
+												if l := len("commits/"); len(elem) >= l && elem[0:l] == "commits/" {
+													elem = elem[l:]
 												} else {
 													break
 												}
@@ -6630,13 +7186,16 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												// Param: "commit_sha"
 												// Leaf parameter
 												args["commit_sha"] = elem
+												elem = ""
 
-												// Leaf: GitGetCommit
-												s.handleGitGetCommitRequest(args, w, r)
-												return
+												if len(elem) == 0 {
+													// Leaf: GitGetCommit
+													s.handleGitGetCommitRequest(args, w, r)
+													return
+												}
 											case 'm': // Prefix: "matching-refs/"
-												if prefix := "matching-refs/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-													elem = elem[len(prefix):]
+												if l := len("matching-refs/"); len(elem) >= l && elem[0:l] == "matching-refs/" {
+													elem = elem[l:]
 												} else {
 													break
 												}
@@ -6644,13 +7203,16 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												// Param: "ref"
 												// Leaf parameter
 												args["ref"] = elem
+												elem = ""
 
-												// Leaf: GitListMatchingRefs
-												s.handleGitListMatchingRefsRequest(args, w, r)
-												return
+												if len(elem) == 0 {
+													// Leaf: GitListMatchingRefs
+													s.handleGitListMatchingRefsRequest(args, w, r)
+													return
+												}
 											case 'r': // Prefix: "ref/"
-												if prefix := "ref/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-													elem = elem[len(prefix):]
+												if l := len("ref/"); len(elem) >= l && elem[0:l] == "ref/" {
+													elem = elem[l:]
 												} else {
 													break
 												}
@@ -6658,13 +7220,16 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												// Param: "ref"
 												// Leaf parameter
 												args["ref"] = elem
+												elem = ""
 
-												// Leaf: GitGetRef
-												s.handleGitGetRefRequest(args, w, r)
-												return
+												if len(elem) == 0 {
+													// Leaf: GitGetRef
+													s.handleGitGetRefRequest(args, w, r)
+													return
+												}
 											case 't': // Prefix: "t"
-												if prefix := "t"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-													elem = elem[len(prefix):]
+												if l := len("t"); len(elem) >= l && elem[0:l] == "t" {
+													elem = elem[l:]
 												} else {
 													break
 												}
@@ -6675,8 +7240,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												}
 												switch elem[0] {
 												case 'a': // Prefix: "ags/"
-													if prefix := "ags/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-														elem = elem[len(prefix):]
+													if l := len("ags/"); len(elem) >= l && elem[0:l] == "ags/" {
+														elem = elem[l:]
 													} else {
 														break
 													}
@@ -6684,13 +7249,16 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													// Param: "tag_sha"
 													// Leaf parameter
 													args["tag_sha"] = elem
+													elem = ""
 
-													// Leaf: GitGetTag
-													s.handleGitGetTagRequest(args, w, r)
-													return
+													if len(elem) == 0 {
+														// Leaf: GitGetTag
+														s.handleGitGetTagRequest(args, w, r)
+														return
+													}
 												case 'r': // Prefix: "rees/"
-													if prefix := "rees/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-														elem = elem[len(prefix):]
+													if l := len("rees/"); len(elem) >= l && elem[0:l] == "rees/" {
+														elem = elem[l:]
 													} else {
 														break
 													}
@@ -6698,15 +7266,18 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													// Param: "tree_sha"
 													// Leaf parameter
 													args["tree_sha"] = elem
+													elem = ""
 
-													// Leaf: GitGetTree
-													s.handleGitGetTreeRequest(args, w, r)
-													return
+													if len(elem) == 0 {
+														// Leaf: GitGetTree
+														s.handleGitGetTreeRequest(args, w, r)
+														return
+													}
 												}
 											}
 										case 'h': // Prefix: "hooks"
-											if prefix := "hooks"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-												elem = elem[len(prefix):]
+											if l := len("hooks"); len(elem) >= l && elem[0:l] == "hooks" {
+												elem = elem[l:]
 											} else {
 												break
 											}
@@ -6717,14 +7288,14 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											}
 											switch elem[0] {
 											case '/': // Prefix: "/"
-												if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-													elem = elem[len(prefix):]
+												if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+													elem = elem[l:]
 												} else {
 													break
 												}
 
 												// Param: "hook_id"
-												// Match until one of "/"
+												// Match until "/"
 												idx := strings.IndexByte(elem, '/')
 												if idx > 0 {
 													args["hook_id"] = elem[:idx]
@@ -6736,8 +7307,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													}
 													switch elem[0] {
 													case '/': // Prefix: "/"
-														if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-															elem = elem[len(prefix):]
+														if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+															elem = elem[l:]
 														} else {
 															break
 														}
@@ -6748,18 +7319,20 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														}
 														switch elem[0] {
 														case 'c': // Prefix: "config"
-															if prefix := "config"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																elem = elem[len(prefix):]
+															if l := len("config"); len(elem) >= l && elem[0:l] == "config" {
+																elem = elem[l:]
 															} else {
 																break
 															}
 
-															// Leaf: ReposGetWebhookConfigForRepo
-															s.handleReposGetWebhookConfigForRepoRequest(args, w, r)
-															return
+															if len(elem) == 0 {
+																// Leaf: ReposGetWebhookConfigForRepo
+																s.handleReposGetWebhookConfigForRepoRequest(args, w, r)
+																return
+															}
 														case 'd': // Prefix: "deliveries"
-															if prefix := "deliveries"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																elem = elem[len(prefix):]
+															if l := len("deliveries"); len(elem) >= l && elem[0:l] == "deliveries" {
+																elem = elem[l:]
 															} else {
 																break
 															}
@@ -6770,8 +7343,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															}
 															switch elem[0] {
 															case '/': // Prefix: "/"
-																if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																	elem = elem[len(prefix):]
+																if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+																	elem = elem[l:]
 																} else {
 																	break
 																}
@@ -6779,18 +7352,21 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																// Param: "delivery_id"
 																// Leaf parameter
 																args["delivery_id"] = elem
+																elem = ""
 
-																// Leaf: ReposGetWebhookDelivery
-																s.handleReposGetWebhookDeliveryRequest(args, w, r)
-																return
+																if len(elem) == 0 {
+																	// Leaf: ReposGetWebhookDelivery
+																	s.handleReposGetWebhookDeliveryRequest(args, w, r)
+																	return
+																}
 															}
 														}
 													}
 												}
 											}
 										case 'i': // Prefix: "i"
-											if prefix := "i"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-												elem = elem[len(prefix):]
+											if l := len("i"); len(elem) >= l && elem[0:l] == "i" {
+												elem = elem[l:]
 											} else {
 												break
 											}
@@ -6801,8 +7377,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											}
 											switch elem[0] {
 											case 'm': // Prefix: "mport"
-												if prefix := "mport"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-													elem = elem[len(prefix):]
+												if l := len("mport"); len(elem) >= l && elem[0:l] == "mport" {
+													elem = elem[l:]
 												} else {
 													break
 												}
@@ -6813,8 +7389,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												}
 												switch elem[0] {
 												case '/': // Prefix: "/"
-													if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-														elem = elem[len(prefix):]
+													if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+														elem = elem[l:]
 													} else {
 														break
 													}
@@ -6825,40 +7401,46 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													}
 													switch elem[0] {
 													case 'a': // Prefix: "authors"
-														if prefix := "authors"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-															elem = elem[len(prefix):]
+														if l := len("authors"); len(elem) >= l && elem[0:l] == "authors" {
+															elem = elem[l:]
 														} else {
 															break
 														}
 
-														// Leaf: MigrationsGetCommitAuthors
-														s.handleMigrationsGetCommitAuthorsRequest(args, w, r)
-														return
+														if len(elem) == 0 {
+															// Leaf: MigrationsGetCommitAuthors
+															s.handleMigrationsGetCommitAuthorsRequest(args, w, r)
+															return
+														}
 													case 'l': // Prefix: "large_files"
-														if prefix := "large_files"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-															elem = elem[len(prefix):]
+														if l := len("large_files"); len(elem) >= l && elem[0:l] == "large_files" {
+															elem = elem[l:]
 														} else {
 															break
 														}
 
-														// Leaf: MigrationsGetLargeFiles
-														s.handleMigrationsGetLargeFilesRequest(args, w, r)
-														return
+														if len(elem) == 0 {
+															// Leaf: MigrationsGetLargeFiles
+															s.handleMigrationsGetLargeFilesRequest(args, w, r)
+															return
+														}
 													}
 												}
 											case 'n': // Prefix: "nvitations"
-												if prefix := "nvitations"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-													elem = elem[len(prefix):]
+												if l := len("nvitations"); len(elem) >= l && elem[0:l] == "nvitations" {
+													elem = elem[l:]
 												} else {
 													break
 												}
 
-												// Leaf: ReposListInvitations
-												s.handleReposListInvitationsRequest(args, w, r)
-												return
+												if len(elem) == 0 {
+													// Leaf: ReposListInvitations
+													s.handleReposListInvitationsRequest(args, w, r)
+													return
+												}
 											case 's': // Prefix: "ssues"
-												if prefix := "ssues"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-													elem = elem[len(prefix):]
+												if l := len("ssues"); len(elem) >= l && elem[0:l] == "ssues" {
+													elem = elem[l:]
 												} else {
 													break
 												}
@@ -6869,8 +7451,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												}
 												switch elem[0] {
 												case '/': // Prefix: "/"
-													if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-														elem = elem[len(prefix):]
+													if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+														elem = elem[l:]
 													} else {
 														break
 													}
@@ -6880,8 +7462,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													}
 													switch elem[0] {
 													case 'c': // Prefix: "comments"
-														if prefix := "comments"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-															elem = elem[len(prefix):]
+														if l := len("comments"); len(elem) >= l && elem[0:l] == "comments" {
+															elem = elem[l:]
 														} else {
 															break
 														}
@@ -6892,14 +7474,14 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														}
 														switch elem[0] {
 														case '/': // Prefix: "/"
-															if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																elem = elem[len(prefix):]
+															if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+																elem = elem[l:]
 															} else {
 																break
 															}
 
 															// Param: "comment_id"
-															// Match until one of "/"
+															// Match until "/"
 															idx := strings.IndexByte(elem, '/')
 															if idx > 0 {
 																args["comment_id"] = elem[:idx]
@@ -6911,21 +7493,23 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																}
 																switch elem[0] {
 																case '/': // Prefix: "/reactions"
-																	if prefix := "/reactions"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																		elem = elem[len(prefix):]
+																	if l := len("/reactions"); len(elem) >= l && elem[0:l] == "/reactions" {
+																		elem = elem[l:]
 																	} else {
 																		break
 																	}
 
-																	// Leaf: ReactionsListForIssueComment
-																	s.handleReactionsListForIssueCommentRequest(args, w, r)
-																	return
+																	if len(elem) == 0 {
+																		// Leaf: ReactionsListForIssueComment
+																		s.handleReactionsListForIssueCommentRequest(args, w, r)
+																		return
+																	}
 																}
 															}
 														}
 													case 'e': // Prefix: "events"
-														if prefix := "events"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-															elem = elem[len(prefix):]
+														if l := len("events"); len(elem) >= l && elem[0:l] == "events" {
+															elem = elem[l:]
 														} else {
 															break
 														}
@@ -6936,8 +7520,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														}
 														switch elem[0] {
 														case '/': // Prefix: "/"
-															if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																elem = elem[len(prefix):]
+															if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+																elem = elem[l:]
 															} else {
 																break
 															}
@@ -6945,14 +7529,17 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															// Param: "event_id"
 															// Leaf parameter
 															args["event_id"] = elem
+															elem = ""
 
-															// Leaf: IssuesGetEvent
-															s.handleIssuesGetEventRequest(args, w, r)
-															return
+															if len(elem) == 0 {
+																// Leaf: IssuesGetEvent
+																s.handleIssuesGetEventRequest(args, w, r)
+																return
+															}
 														}
 													}
 													// Param: "issue_number"
-													// Match until one of "/"
+													// Match until "/"
 													idx := strings.IndexByte(elem, '/')
 													if idx > 0 {
 														args["issue_number"] = elem[:idx]
@@ -6964,8 +7551,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														}
 														switch elem[0] {
 														case '/': // Prefix: "/"
-															if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																elem = elem[len(prefix):]
+															if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+																elem = elem[l:]
 															} else {
 																break
 															}
@@ -6976,43 +7563,49 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															}
 															switch elem[0] {
 															case 'c': // Prefix: "comments"
-																if prefix := "comments"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																	elem = elem[len(prefix):]
+																if l := len("comments"); len(elem) >= l && elem[0:l] == "comments" {
+																	elem = elem[l:]
 																} else {
 																	break
 																}
 
-																// Leaf: IssuesListComments
-																s.handleIssuesListCommentsRequest(args, w, r)
-																return
+																if len(elem) == 0 {
+																	// Leaf: IssuesListComments
+																	s.handleIssuesListCommentsRequest(args, w, r)
+																	return
+																}
 															case 'l': // Prefix: "labels"
-																if prefix := "labels"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																	elem = elem[len(prefix):]
+																if l := len("labels"); len(elem) >= l && elem[0:l] == "labels" {
+																	elem = elem[l:]
 																} else {
 																	break
 																}
 
-																// Leaf: IssuesListLabelsOnIssue
-																s.handleIssuesListLabelsOnIssueRequest(args, w, r)
-																return
+																if len(elem) == 0 {
+																	// Leaf: IssuesListLabelsOnIssue
+																	s.handleIssuesListLabelsOnIssueRequest(args, w, r)
+																	return
+																}
 															case 'r': // Prefix: "reactions"
-																if prefix := "reactions"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																	elem = elem[len(prefix):]
+																if l := len("reactions"); len(elem) >= l && elem[0:l] == "reactions" {
+																	elem = elem[l:]
 																} else {
 																	break
 																}
 
-																// Leaf: ReactionsListForIssue
-																s.handleReactionsListForIssueRequest(args, w, r)
-																return
+																if len(elem) == 0 {
+																	// Leaf: ReactionsListForIssue
+																	s.handleReactionsListForIssueRequest(args, w, r)
+																	return
+																}
 															}
 														}
 													}
 												}
 											}
 										case 'k': // Prefix: "keys"
-											if prefix := "keys"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-												elem = elem[len(prefix):]
+											if l := len("keys"); len(elem) >= l && elem[0:l] == "keys" {
+												elem = elem[l:]
 											} else {
 												break
 											}
@@ -7023,8 +7616,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											}
 											switch elem[0] {
 											case '/': // Prefix: "/"
-												if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-													elem = elem[len(prefix):]
+												if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+													elem = elem[l:]
 												} else {
 													break
 												}
@@ -7032,14 +7625,17 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												// Param: "key_id"
 												// Leaf parameter
 												args["key_id"] = elem
+												elem = ""
 
-												// Leaf: ReposGetDeployKey
-												s.handleReposGetDeployKeyRequest(args, w, r)
-												return
+												if len(elem) == 0 {
+													// Leaf: ReposGetDeployKey
+													s.handleReposGetDeployKeyRequest(args, w, r)
+													return
+												}
 											}
 										case 'l': // Prefix: "l"
-											if prefix := "l"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-												elem = elem[len(prefix):]
+											if l := len("l"); len(elem) >= l && elem[0:l] == "l" {
+												elem = elem[l:]
 											} else {
 												break
 											}
@@ -7050,8 +7646,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											}
 											switch elem[0] {
 											case 'a': // Prefix: "a"
-												if prefix := "a"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-													elem = elem[len(prefix):]
+												if l := len("a"); len(elem) >= l && elem[0:l] == "a" {
+													elem = elem[l:]
 												} else {
 													break
 												}
@@ -7062,8 +7658,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												}
 												switch elem[0] {
 												case 'b': // Prefix: "bels"
-													if prefix := "bels"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-														elem = elem[len(prefix):]
+													if l := len("bels"); len(elem) >= l && elem[0:l] == "bels" {
+														elem = elem[l:]
 													} else {
 														break
 													}
@@ -7074,8 +7670,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													}
 													switch elem[0] {
 													case '/': // Prefix: "/"
-														if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-															elem = elem[len(prefix):]
+														if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+															elem = elem[l:]
 														} else {
 															break
 														}
@@ -7083,36 +7679,43 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														// Param: "name"
 														// Leaf parameter
 														args["name"] = elem
+														elem = ""
 
-														// Leaf: IssuesGetLabel
-														s.handleIssuesGetLabelRequest(args, w, r)
-														return
+														if len(elem) == 0 {
+															// Leaf: IssuesGetLabel
+															s.handleIssuesGetLabelRequest(args, w, r)
+															return
+														}
 													}
 												case 'n': // Prefix: "nguages"
-													if prefix := "nguages"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-														elem = elem[len(prefix):]
+													if l := len("nguages"); len(elem) >= l && elem[0:l] == "nguages" {
+														elem = elem[l:]
 													} else {
 														break
 													}
 
-													// Leaf: ReposListLanguages
-													s.handleReposListLanguagesRequest(args, w, r)
-													return
+													if len(elem) == 0 {
+														// Leaf: ReposListLanguages
+														s.handleReposListLanguagesRequest(args, w, r)
+														return
+													}
 												}
 											case 'i': // Prefix: "icense"
-												if prefix := "icense"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-													elem = elem[len(prefix):]
+												if l := len("icense"); len(elem) >= l && elem[0:l] == "icense" {
+													elem = elem[l:]
 												} else {
 													break
 												}
 
-												// Leaf: LicensesGetForRepo
-												s.handleLicensesGetForRepoRequest(args, w, r)
-												return
+												if len(elem) == 0 {
+													// Leaf: LicensesGetForRepo
+													s.handleLicensesGetForRepoRequest(args, w, r)
+													return
+												}
 											}
 										case 'm': // Prefix: "milestones"
-											if prefix := "milestones"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-												elem = elem[len(prefix):]
+											if l := len("milestones"); len(elem) >= l && elem[0:l] == "milestones" {
+												elem = elem[l:]
 											} else {
 												break
 											}
@@ -7123,14 +7726,14 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											}
 											switch elem[0] {
 											case '/': // Prefix: "/"
-												if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-													elem = elem[len(prefix):]
+												if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+													elem = elem[l:]
 												} else {
 													break
 												}
 
 												// Param: "milestone_number"
-												// Match until one of "/"
+												// Match until "/"
 												idx := strings.IndexByte(elem, '/')
 												if idx > 0 {
 													args["milestone_number"] = elem[:idx]
@@ -7142,31 +7745,35 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													}
 													switch elem[0] {
 													case '/': // Prefix: "/labels"
-														if prefix := "/labels"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-															elem = elem[len(prefix):]
+														if l := len("/labels"); len(elem) >= l && elem[0:l] == "/labels" {
+															elem = elem[l:]
 														} else {
 															break
 														}
 
-														// Leaf: IssuesListLabelsForMilestone
-														s.handleIssuesListLabelsForMilestoneRequest(args, w, r)
-														return
+														if len(elem) == 0 {
+															// Leaf: IssuesListLabelsForMilestone
+															s.handleIssuesListLabelsForMilestoneRequest(args, w, r)
+															return
+														}
 													}
 												}
 											}
 										case 'n': // Prefix: "notifications"
-											if prefix := "notifications"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-												elem = elem[len(prefix):]
+											if l := len("notifications"); len(elem) >= l && elem[0:l] == "notifications" {
+												elem = elem[l:]
 											} else {
 												break
 											}
 
-											// Leaf: ActivityListRepoNotificationsForAuthenticatedUser
-											s.handleActivityListRepoNotificationsForAuthenticatedUserRequest(args, w, r)
-											return
+											if len(elem) == 0 {
+												// Leaf: ActivityListRepoNotificationsForAuthenticatedUser
+												s.handleActivityListRepoNotificationsForAuthenticatedUserRequest(args, w, r)
+												return
+											}
 										case 'p': // Prefix: "p"
-											if prefix := "p"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-												elem = elem[len(prefix):]
+											if l := len("p"); len(elem) >= l && elem[0:l] == "p" {
+												elem = elem[l:]
 											} else {
 												break
 											}
@@ -7177,8 +7784,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											}
 											switch elem[0] {
 											case 'a': // Prefix: "ages"
-												if prefix := "ages"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-													elem = elem[len(prefix):]
+												if l := len("ages"); len(elem) >= l && elem[0:l] == "ages" {
+													elem = elem[l:]
 												} else {
 													break
 												}
@@ -7189,8 +7796,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												}
 												switch elem[0] {
 												case '/': // Prefix: "/"
-													if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-														elem = elem[len(prefix):]
+													if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+														elem = elem[l:]
 													} else {
 														break
 													}
@@ -7201,8 +7808,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													}
 													switch elem[0] {
 													case 'b': // Prefix: "builds"
-														if prefix := "builds"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-															elem = elem[len(prefix):]
+														if l := len("builds"); len(elem) >= l && elem[0:l] == "builds" {
+															elem = elem[l:]
 														} else {
 															break
 														}
@@ -7213,8 +7820,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														}
 														switch elem[0] {
 														case '/': // Prefix: "/"
-															if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																elem = elem[len(prefix):]
+															if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+																elem = elem[l:]
 															} else {
 																break
 															}
@@ -7225,49 +7832,58 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															}
 															switch elem[0] {
 															case 'l': // Prefix: "latest"
-																if prefix := "latest"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																	elem = elem[len(prefix):]
+																if l := len("latest"); len(elem) >= l && elem[0:l] == "latest" {
+																	elem = elem[l:]
 																} else {
 																	break
 																}
 
-																// Leaf: ReposGetLatestPagesBuild
-																s.handleReposGetLatestPagesBuildRequest(args, w, r)
-																return
+																if len(elem) == 0 {
+																	// Leaf: ReposGetLatestPagesBuild
+																	s.handleReposGetLatestPagesBuildRequest(args, w, r)
+																	return
+																}
 															}
 															// Param: "build_id"
 															// Leaf parameter
 															args["build_id"] = elem
+															elem = ""
 
-															// Leaf: ReposGetPagesBuild
-															s.handleReposGetPagesBuildRequest(args, w, r)
-															return
+															if len(elem) == 0 {
+																// Leaf: ReposGetPagesBuild
+																s.handleReposGetPagesBuildRequest(args, w, r)
+																return
+															}
 														}
 													case 'h': // Prefix: "health"
-														if prefix := "health"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-															elem = elem[len(prefix):]
+														if l := len("health"); len(elem) >= l && elem[0:l] == "health" {
+															elem = elem[l:]
 														} else {
 															break
 														}
 
-														// Leaf: ReposGetPagesHealthCheck
-														s.handleReposGetPagesHealthCheckRequest(args, w, r)
-														return
+														if len(elem) == 0 {
+															// Leaf: ReposGetPagesHealthCheck
+															s.handleReposGetPagesHealthCheckRequest(args, w, r)
+															return
+														}
 													}
 												}
 											case 'r': // Prefix: "rojects"
-												if prefix := "rojects"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-													elem = elem[len(prefix):]
+												if l := len("rojects"); len(elem) >= l && elem[0:l] == "rojects" {
+													elem = elem[l:]
 												} else {
 													break
 												}
 
-												// Leaf: ProjectsListForRepo
-												s.handleProjectsListForRepoRequest(args, w, r)
-												return
+												if len(elem) == 0 {
+													// Leaf: ProjectsListForRepo
+													s.handleProjectsListForRepoRequest(args, w, r)
+													return
+												}
 											case 'u': // Prefix: "ulls"
-												if prefix := "ulls"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-													elem = elem[len(prefix):]
+												if l := len("ulls"); len(elem) >= l && elem[0:l] == "ulls" {
+													elem = elem[l:]
 												} else {
 													break
 												}
@@ -7278,8 +7894,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												}
 												switch elem[0] {
 												case '/': // Prefix: "/"
-													if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-														elem = elem[len(prefix):]
+													if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+														elem = elem[l:]
 													} else {
 														break
 													}
@@ -7289,8 +7905,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													}
 													switch elem[0] {
 													case 'c': // Prefix: "comments"
-														if prefix := "comments"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-															elem = elem[len(prefix):]
+														if l := len("comments"); len(elem) >= l && elem[0:l] == "comments" {
+															elem = elem[l:]
 														} else {
 															break
 														}
@@ -7301,14 +7917,14 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														}
 														switch elem[0] {
 														case '/': // Prefix: "/"
-															if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																elem = elem[len(prefix):]
+															if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+																elem = elem[l:]
 															} else {
 																break
 															}
 
 															// Param: "comment_id"
-															// Match until one of "/"
+															// Match until "/"
 															idx := strings.IndexByte(elem, '/')
 															if idx > 0 {
 																args["comment_id"] = elem[:idx]
@@ -7320,21 +7936,23 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																}
 																switch elem[0] {
 																case '/': // Prefix: "/reactions"
-																	if prefix := "/reactions"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																		elem = elem[len(prefix):]
+																	if l := len("/reactions"); len(elem) >= l && elem[0:l] == "/reactions" {
+																		elem = elem[l:]
 																	} else {
 																		break
 																	}
 
-																	// Leaf: ReactionsListForPullRequestReviewComment
-																	s.handleReactionsListForPullRequestReviewCommentRequest(args, w, r)
-																	return
+																	if len(elem) == 0 {
+																		// Leaf: ReactionsListForPullRequestReviewComment
+																		s.handleReactionsListForPullRequestReviewCommentRequest(args, w, r)
+																		return
+																	}
 																}
 															}
 														}
 													}
 													// Param: "pull_number"
-													// Match until one of "/"
+													// Match until "/"
 													idx := strings.IndexByte(elem, '/')
 													if idx > 0 {
 														args["pull_number"] = elem[:idx]
@@ -7346,8 +7964,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														}
 														switch elem[0] {
 														case '/': // Prefix: "/"
-															if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																elem = elem[len(prefix):]
+															if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+																elem = elem[l:]
 															} else {
 																break
 															}
@@ -7358,8 +7976,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															}
 															switch elem[0] {
 															case 'c': // Prefix: "comm"
-																if prefix := "comm"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																	elem = elem[len(prefix):]
+																if l := len("comm"); len(elem) >= l && elem[0:l] == "comm" {
+																	elem = elem[l:]
 																} else {
 																	break
 																}
@@ -7370,49 +7988,57 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																}
 																switch elem[0] {
 																case 'e': // Prefix: "ents"
-																	if prefix := "ents"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																		elem = elem[len(prefix):]
+																	if l := len("ents"); len(elem) >= l && elem[0:l] == "ents" {
+																		elem = elem[l:]
 																	} else {
 																		break
 																	}
 
-																	// Leaf: PullsListReviewComments
-																	s.handlePullsListReviewCommentsRequest(args, w, r)
-																	return
+																	if len(elem) == 0 {
+																		// Leaf: PullsListReviewComments
+																		s.handlePullsListReviewCommentsRequest(args, w, r)
+																		return
+																	}
 																case 'i': // Prefix: "its"
-																	if prefix := "its"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																		elem = elem[len(prefix):]
+																	if l := len("its"); len(elem) >= l && elem[0:l] == "its" {
+																		elem = elem[l:]
 																	} else {
 																		break
 																	}
 
-																	// Leaf: PullsListCommits
-																	s.handlePullsListCommitsRequest(args, w, r)
-																	return
+																	if len(elem) == 0 {
+																		// Leaf: PullsListCommits
+																		s.handlePullsListCommitsRequest(args, w, r)
+																		return
+																	}
 																}
 															case 'f': // Prefix: "files"
-																if prefix := "files"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																	elem = elem[len(prefix):]
+																if l := len("files"); len(elem) >= l && elem[0:l] == "files" {
+																	elem = elem[l:]
 																} else {
 																	break
 																}
 
-																// Leaf: PullsListFiles
-																s.handlePullsListFilesRequest(args, w, r)
-																return
+																if len(elem) == 0 {
+																	// Leaf: PullsListFiles
+																	s.handlePullsListFilesRequest(args, w, r)
+																	return
+																}
 															case 'm': // Prefix: "merge"
-																if prefix := "merge"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																	elem = elem[len(prefix):]
+																if l := len("merge"); len(elem) >= l && elem[0:l] == "merge" {
+																	elem = elem[l:]
 																} else {
 																	break
 																}
 
-																// Leaf: PullsCheckIfMerged
-																s.handlePullsCheckIfMergedRequest(args, w, r)
-																return
+																if len(elem) == 0 {
+																	// Leaf: PullsCheckIfMerged
+																	s.handlePullsCheckIfMergedRequest(args, w, r)
+																	return
+																}
 															case 'r': // Prefix: "re"
-																if prefix := "re"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																	elem = elem[len(prefix):]
+																if l := len("re"); len(elem) >= l && elem[0:l] == "re" {
+																	elem = elem[l:]
 																} else {
 																	break
 																}
@@ -7423,18 +8049,20 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																}
 																switch elem[0] {
 																case 'q': // Prefix: "quested_reviewers"
-																	if prefix := "quested_reviewers"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																		elem = elem[len(prefix):]
+																	if l := len("quested_reviewers"); len(elem) >= l && elem[0:l] == "quested_reviewers" {
+																		elem = elem[l:]
 																	} else {
 																		break
 																	}
 
-																	// Leaf: PullsListRequestedReviewers
-																	s.handlePullsListRequestedReviewersRequest(args, w, r)
-																	return
+																	if len(elem) == 0 {
+																		// Leaf: PullsListRequestedReviewers
+																		s.handlePullsListRequestedReviewersRequest(args, w, r)
+																		return
+																	}
 																case 'v': // Prefix: "views"
-																	if prefix := "views"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																		elem = elem[len(prefix):]
+																	if l := len("views"); len(elem) >= l && elem[0:l] == "views" {
+																		elem = elem[l:]
 																	} else {
 																		break
 																	}
@@ -7445,14 +8073,14 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																	}
 																	switch elem[0] {
 																	case '/': // Prefix: "/"
-																		if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																			elem = elem[len(prefix):]
+																		if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+																			elem = elem[l:]
 																		} else {
 																			break
 																		}
 
 																		// Param: "review_id"
-																		// Match until one of "/"
+																		// Match until "/"
 																		idx := strings.IndexByte(elem, '/')
 																		if idx > 0 {
 																			args["review_id"] = elem[:idx]
@@ -7464,15 +8092,17 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																			}
 																			switch elem[0] {
 																			case '/': // Prefix: "/comments"
-																				if prefix := "/comments"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																					elem = elem[len(prefix):]
+																				if l := len("/comments"); len(elem) >= l && elem[0:l] == "/comments" {
+																					elem = elem[l:]
 																				} else {
 																					break
 																				}
 
-																				// Leaf: PullsListCommentsForReview
-																				s.handlePullsListCommentsForReviewRequest(args, w, r)
-																				return
+																				if len(elem) == 0 {
+																					// Leaf: PullsListCommentsForReview
+																					s.handlePullsListCommentsForReviewRequest(args, w, r)
+																					return
+																				}
 																			}
 																		}
 																	}
@@ -7483,8 +8113,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												}
 											}
 										case 'r': // Prefix: "re"
-											if prefix := "re"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-												elem = elem[len(prefix):]
+											if l := len("re"); len(elem) >= l && elem[0:l] == "re" {
+												elem = elem[l:]
 											} else {
 												break
 											}
@@ -7495,8 +8125,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											}
 											switch elem[0] {
 											case 'a': // Prefix: "adme"
-												if prefix := "adme"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-													elem = elem[len(prefix):]
+												if l := len("adme"); len(elem) >= l && elem[0:l] == "adme" {
+													elem = elem[l:]
 												} else {
 													break
 												}
@@ -7507,8 +8137,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												}
 												switch elem[0] {
 												case '/': // Prefix: "/"
-													if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-														elem = elem[len(prefix):]
+													if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+														elem = elem[l:]
 													} else {
 														break
 													}
@@ -7516,14 +8146,17 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													// Param: "dir"
 													// Leaf parameter
 													args["dir"] = elem
+													elem = ""
 
-													// Leaf: ReposGetReadmeInDirectory
-													s.handleReposGetReadmeInDirectoryRequest(args, w, r)
-													return
+													if len(elem) == 0 {
+														// Leaf: ReposGetReadmeInDirectory
+														s.handleReposGetReadmeInDirectoryRequest(args, w, r)
+														return
+													}
 												}
 											case 'l': // Prefix: "leases"
-												if prefix := "leases"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-													elem = elem[len(prefix):]
+												if l := len("leases"); len(elem) >= l && elem[0:l] == "leases" {
+													elem = elem[l:]
 												} else {
 													break
 												}
@@ -7534,8 +8167,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												}
 												switch elem[0] {
 												case '/': // Prefix: "/"
-													if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-														elem = elem[len(prefix):]
+													if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+														elem = elem[l:]
 													} else {
 														break
 													}
@@ -7546,8 +8179,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													}
 													switch elem[0] {
 													case 'a': // Prefix: "assets/"
-														if prefix := "assets/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-															elem = elem[len(prefix):]
+														if l := len("assets/"); len(elem) >= l && elem[0:l] == "assets/" {
+															elem = elem[l:]
 														} else {
 															break
 														}
@@ -7555,23 +8188,28 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														// Param: "asset_id"
 														// Leaf parameter
 														args["asset_id"] = elem
+														elem = ""
 
-														// Leaf: ReposGetReleaseAsset
-														s.handleReposGetReleaseAssetRequest(args, w, r)
-														return
+														if len(elem) == 0 {
+															// Leaf: ReposGetReleaseAsset
+															s.handleReposGetReleaseAssetRequest(args, w, r)
+															return
+														}
 													case 'l': // Prefix: "latest"
-														if prefix := "latest"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-															elem = elem[len(prefix):]
+														if l := len("latest"); len(elem) >= l && elem[0:l] == "latest" {
+															elem = elem[l:]
 														} else {
 															break
 														}
 
-														// Leaf: ReposGetLatestRelease
-														s.handleReposGetLatestReleaseRequest(args, w, r)
-														return
+														if len(elem) == 0 {
+															// Leaf: ReposGetLatestRelease
+															s.handleReposGetLatestReleaseRequest(args, w, r)
+															return
+														}
 													case 't': // Prefix: "tags/"
-														if prefix := "tags/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-															elem = elem[len(prefix):]
+														if l := len("tags/"); len(elem) >= l && elem[0:l] == "tags/" {
+															elem = elem[l:]
 														} else {
 															break
 														}
@@ -7579,13 +8217,16 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														// Param: "tag"
 														// Leaf parameter
 														args["tag"] = elem
+														elem = ""
 
-														// Leaf: ReposGetReleaseByTag
-														s.handleReposGetReleaseByTagRequest(args, w, r)
-														return
+														if len(elem) == 0 {
+															// Leaf: ReposGetReleaseByTag
+															s.handleReposGetReleaseByTagRequest(args, w, r)
+															return
+														}
 													}
 													// Param: "release_id"
-													// Match until one of "/"
+													// Match until "/"
 													idx := strings.IndexByte(elem, '/')
 													if idx > 0 {
 														args["release_id"] = elem[:idx]
@@ -7597,22 +8238,24 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														}
 														switch elem[0] {
 														case '/': // Prefix: "/assets"
-															if prefix := "/assets"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																elem = elem[len(prefix):]
+															if l := len("/assets"); len(elem) >= l && elem[0:l] == "/assets" {
+																elem = elem[l:]
 															} else {
 																break
 															}
 
-															// Leaf: ReposListReleaseAssets
-															s.handleReposListReleaseAssetsRequest(args, w, r)
-															return
+															if len(elem) == 0 {
+																// Leaf: ReposListReleaseAssets
+																s.handleReposListReleaseAssetsRequest(args, w, r)
+																return
+															}
 														}
 													}
 												}
 											}
 										case 's': // Prefix: "s"
-											if prefix := "s"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-												elem = elem[len(prefix):]
+											if l := len("s"); len(elem) >= l && elem[0:l] == "s" {
+												elem = elem[l:]
 											} else {
 												break
 											}
@@ -7623,8 +8266,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											}
 											switch elem[0] {
 											case 'e': // Prefix: "ecret-scanning/alerts"
-												if prefix := "ecret-scanning/alerts"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-													elem = elem[len(prefix):]
+												if l := len("ecret-scanning/alerts"); len(elem) >= l && elem[0:l] == "ecret-scanning/alerts" {
+													elem = elem[l:]
 												} else {
 													break
 												}
@@ -7635,8 +8278,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												}
 												switch elem[0] {
 												case '/': // Prefix: "/"
-													if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-														elem = elem[len(prefix):]
+													if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+														elem = elem[l:]
 													} else {
 														break
 													}
@@ -7644,14 +8287,17 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													// Param: "alert_number"
 													// Leaf parameter
 													args["alert_number"] = elem
+													elem = ""
 
-													// Leaf: SecretScanningGetAlert
-													s.handleSecretScanningGetAlertRequest(args, w, r)
-													return
+													if len(elem) == 0 {
+														// Leaf: SecretScanningGetAlert
+														s.handleSecretScanningGetAlertRequest(args, w, r)
+														return
+													}
 												}
 											case 't': // Prefix: "tats/"
-												if prefix := "tats/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-													elem = elem[len(prefix):]
+												if l := len("tats/"); len(elem) >= l && elem[0:l] == "tats/" {
+													elem = elem[l:]
 												} else {
 													break
 												}
@@ -7662,8 +8308,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												}
 												switch elem[0] {
 												case 'c': // Prefix: "co"
-													if prefix := "co"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-														elem = elem[len(prefix):]
+													if l := len("co"); len(elem) >= l && elem[0:l] == "co" {
+														elem = elem[l:]
 													} else {
 														break
 													}
@@ -7674,39 +8320,45 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													}
 													switch elem[0] {
 													case 'd': // Prefix: "de_frequency"
-														if prefix := "de_frequency"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-															elem = elem[len(prefix):]
+														if l := len("de_frequency"); len(elem) >= l && elem[0:l] == "de_frequency" {
+															elem = elem[l:]
 														} else {
 															break
 														}
 
-														// Leaf: ReposGetCodeFrequencyStats
-														s.handleReposGetCodeFrequencyStatsRequest(args, w, r)
-														return
+														if len(elem) == 0 {
+															// Leaf: ReposGetCodeFrequencyStats
+															s.handleReposGetCodeFrequencyStatsRequest(args, w, r)
+															return
+														}
 													case 'm': // Prefix: "mmit_activity"
-														if prefix := "mmit_activity"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-															elem = elem[len(prefix):]
+														if l := len("mmit_activity"); len(elem) >= l && elem[0:l] == "mmit_activity" {
+															elem = elem[l:]
 														} else {
 															break
 														}
 
-														// Leaf: ReposGetCommitActivityStats
-														s.handleReposGetCommitActivityStatsRequest(args, w, r)
-														return
+														if len(elem) == 0 {
+															// Leaf: ReposGetCommitActivityStats
+															s.handleReposGetCommitActivityStatsRequest(args, w, r)
+															return
+														}
 													case 'n': // Prefix: "ntributors"
-														if prefix := "ntributors"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-															elem = elem[len(prefix):]
+														if l := len("ntributors"); len(elem) >= l && elem[0:l] == "ntributors" {
+															elem = elem[l:]
 														} else {
 															break
 														}
 
-														// Leaf: ReposGetContributorsStats
-														s.handleReposGetContributorsStatsRequest(args, w, r)
-														return
+														if len(elem) == 0 {
+															// Leaf: ReposGetContributorsStats
+															s.handleReposGetContributorsStatsRequest(args, w, r)
+															return
+														}
 													}
 												case 'p': // Prefix: "p"
-													if prefix := "p"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-														elem = elem[len(prefix):]
+													if l := len("p"); len(elem) >= l && elem[0:l] == "p" {
+														elem = elem[l:]
 													} else {
 														break
 													}
@@ -7717,30 +8369,34 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													}
 													switch elem[0] {
 													case 'a': // Prefix: "articipation"
-														if prefix := "articipation"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-															elem = elem[len(prefix):]
+														if l := len("articipation"); len(elem) >= l && elem[0:l] == "articipation" {
+															elem = elem[l:]
 														} else {
 															break
 														}
 
-														// Leaf: ReposGetParticipationStats
-														s.handleReposGetParticipationStatsRequest(args, w, r)
-														return
+														if len(elem) == 0 {
+															// Leaf: ReposGetParticipationStats
+															s.handleReposGetParticipationStatsRequest(args, w, r)
+															return
+														}
 													case 'u': // Prefix: "unch_card"
-														if prefix := "unch_card"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-															elem = elem[len(prefix):]
+														if l := len("unch_card"); len(elem) >= l && elem[0:l] == "unch_card" {
+															elem = elem[l:]
 														} else {
 															break
 														}
 
-														// Leaf: ReposGetPunchCardStats
-														s.handleReposGetPunchCardStatsRequest(args, w, r)
-														return
+														if len(elem) == 0 {
+															// Leaf: ReposGetPunchCardStats
+															s.handleReposGetPunchCardStatsRequest(args, w, r)
+															return
+														}
 													}
 												}
 											case 'u': // Prefix: "ubscri"
-												if prefix := "ubscri"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-													elem = elem[len(prefix):]
+												if l := len("ubscri"); len(elem) >= l && elem[0:l] == "ubscri" {
+													elem = elem[l:]
 												} else {
 													break
 												}
@@ -7751,30 +8407,34 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												}
 												switch elem[0] {
 												case 'b': // Prefix: "bers"
-													if prefix := "bers"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-														elem = elem[len(prefix):]
+													if l := len("bers"); len(elem) >= l && elem[0:l] == "bers" {
+														elem = elem[l:]
 													} else {
 														break
 													}
 
-													// Leaf: ActivityListWatchersForRepo
-													s.handleActivityListWatchersForRepoRequest(args, w, r)
-													return
+													if len(elem) == 0 {
+														// Leaf: ActivityListWatchersForRepo
+														s.handleActivityListWatchersForRepoRequest(args, w, r)
+														return
+													}
 												case 'p': // Prefix: "ption"
-													if prefix := "ption"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-														elem = elem[len(prefix):]
+													if l := len("ption"); len(elem) >= l && elem[0:l] == "ption" {
+														elem = elem[l:]
 													} else {
 														break
 													}
 
-													// Leaf: ActivityGetRepoSubscription
-													s.handleActivityGetRepoSubscriptionRequest(args, w, r)
-													return
+													if len(elem) == 0 {
+														// Leaf: ActivityGetRepoSubscription
+														s.handleActivityGetRepoSubscriptionRequest(args, w, r)
+														return
+													}
 												}
 											}
 										case 't': // Prefix: "t"
-											if prefix := "t"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-												elem = elem[len(prefix):]
+											if l := len("t"); len(elem) >= l && elem[0:l] == "t" {
+												elem = elem[l:]
 											} else {
 												break
 											}
@@ -7785,8 +8445,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											}
 											switch elem[0] {
 											case 'a': // Prefix: "a"
-												if prefix := "a"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-													elem = elem[len(prefix):]
+												if l := len("a"); len(elem) >= l && elem[0:l] == "a" {
+													elem = elem[l:]
 												} else {
 													break
 												}
@@ -7797,18 +8457,20 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												}
 												switch elem[0] {
 												case 'g': // Prefix: "gs"
-													if prefix := "gs"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-														elem = elem[len(prefix):]
+													if l := len("gs"); len(elem) >= l && elem[0:l] == "gs" {
+														elem = elem[l:]
 													} else {
 														break
 													}
 
-													// Leaf: ReposListTags
-													s.handleReposListTagsRequest(args, w, r)
-													return
+													if len(elem) == 0 {
+														// Leaf: ReposListTags
+														s.handleReposListTagsRequest(args, w, r)
+														return
+													}
 												case 'r': // Prefix: "rball/"
-													if prefix := "rball/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-														elem = elem[len(prefix):]
+													if l := len("rball/"); len(elem) >= l && elem[0:l] == "rball/" {
+														elem = elem[l:]
 													} else {
 														break
 													}
@@ -7816,34 +8478,41 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													// Param: "ref"
 													// Leaf parameter
 													args["ref"] = elem
+													elem = ""
 
-													// Leaf: ReposDownloadTarballArchive
-													s.handleReposDownloadTarballArchiveRequest(args, w, r)
-													return
+													if len(elem) == 0 {
+														// Leaf: ReposDownloadTarballArchive
+														s.handleReposDownloadTarballArchiveRequest(args, w, r)
+														return
+													}
 												}
 											case 'e': // Prefix: "eams"
-												if prefix := "eams"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-													elem = elem[len(prefix):]
+												if l := len("eams"); len(elem) >= l && elem[0:l] == "eams" {
+													elem = elem[l:]
 												} else {
 													break
 												}
 
-												// Leaf: ReposListTeams
-												s.handleReposListTeamsRequest(args, w, r)
-												return
+												if len(elem) == 0 {
+													// Leaf: ReposListTeams
+													s.handleReposListTeamsRequest(args, w, r)
+													return
+												}
 											case 'o': // Prefix: "opics"
-												if prefix := "opics"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-													elem = elem[len(prefix):]
+												if l := len("opics"); len(elem) >= l && elem[0:l] == "opics" {
+													elem = elem[l:]
 												} else {
 													break
 												}
 
-												// Leaf: ReposGetAllTopics
-												s.handleReposGetAllTopicsRequest(args, w, r)
-												return
+												if len(elem) == 0 {
+													// Leaf: ReposGetAllTopics
+													s.handleReposGetAllTopicsRequest(args, w, r)
+													return
+												}
 											case 'r': // Prefix: "raffic/"
-												if prefix := "raffic/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-													elem = elem[len(prefix):]
+												if l := len("raffic/"); len(elem) >= l && elem[0:l] == "raffic/" {
+													elem = elem[l:]
 												} else {
 													break
 												}
@@ -7854,18 +8523,20 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												}
 												switch elem[0] {
 												case 'c': // Prefix: "clones"
-													if prefix := "clones"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-														elem = elem[len(prefix):]
+													if l := len("clones"); len(elem) >= l && elem[0:l] == "clones" {
+														elem = elem[l:]
 													} else {
 														break
 													}
 
-													// Leaf: ReposGetClones
-													s.handleReposGetClonesRequest(args, w, r)
-													return
+													if len(elem) == 0 {
+														// Leaf: ReposGetClones
+														s.handleReposGetClonesRequest(args, w, r)
+														return
+													}
 												case 'p': // Prefix: "popular/"
-													if prefix := "popular/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-														elem = elem[len(prefix):]
+													if l := len("popular/"); len(elem) >= l && elem[0:l] == "popular/" {
+														elem = elem[l:]
 													} else {
 														break
 													}
@@ -7876,51 +8547,59 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													}
 													switch elem[0] {
 													case 'p': // Prefix: "paths"
-														if prefix := "paths"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-															elem = elem[len(prefix):]
+														if l := len("paths"); len(elem) >= l && elem[0:l] == "paths" {
+															elem = elem[l:]
 														} else {
 															break
 														}
 
-														// Leaf: ReposGetTopPaths
-														s.handleReposGetTopPathsRequest(args, w, r)
-														return
+														if len(elem) == 0 {
+															// Leaf: ReposGetTopPaths
+															s.handleReposGetTopPathsRequest(args, w, r)
+															return
+														}
 													case 'r': // Prefix: "referrers"
-														if prefix := "referrers"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-															elem = elem[len(prefix):]
+														if l := len("referrers"); len(elem) >= l && elem[0:l] == "referrers" {
+															elem = elem[l:]
 														} else {
 															break
 														}
 
-														// Leaf: ReposGetTopReferrers
-														s.handleReposGetTopReferrersRequest(args, w, r)
-														return
+														if len(elem) == 0 {
+															// Leaf: ReposGetTopReferrers
+															s.handleReposGetTopReferrersRequest(args, w, r)
+															return
+														}
 													}
 												case 'v': // Prefix: "views"
-													if prefix := "views"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-														elem = elem[len(prefix):]
+													if l := len("views"); len(elem) >= l && elem[0:l] == "views" {
+														elem = elem[l:]
 													} else {
 														break
 													}
 
-													// Leaf: ReposGetViews
-													s.handleReposGetViewsRequest(args, w, r)
-													return
+													if len(elem) == 0 {
+														// Leaf: ReposGetViews
+														s.handleReposGetViewsRequest(args, w, r)
+														return
+													}
 												}
 											}
 										case 'v': // Prefix: "vulnerability-alerts"
-											if prefix := "vulnerability-alerts"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-												elem = elem[len(prefix):]
+											if l := len("vulnerability-alerts"); len(elem) >= l && elem[0:l] == "vulnerability-alerts" {
+												elem = elem[l:]
 											} else {
 												break
 											}
 
-											// Leaf: ReposCheckVulnerabilityAlerts
-											s.handleReposCheckVulnerabilityAlertsRequest(args, w, r)
-											return
+											if len(elem) == 0 {
+												// Leaf: ReposCheckVulnerabilityAlerts
+												s.handleReposCheckVulnerabilityAlertsRequest(args, w, r)
+												return
+											}
 										case 'z': // Prefix: "zipball/"
-											if prefix := "zipball/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-												elem = elem[len(prefix):]
+											if l := len("zipball/"); len(elem) >= l && elem[0:l] == "zipball/" {
+												elem = elem[l:]
 											} else {
 												break
 											}
@@ -7928,18 +8607,21 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											// Param: "ref"
 											// Leaf parameter
 											args["ref"] = elem
+											elem = ""
 
-											// Leaf: ReposDownloadZipballArchive
-											s.handleReposDownloadZipballArchiveRequest(args, w, r)
-											return
+											if len(elem) == 0 {
+												// Leaf: ReposDownloadZipballArchive
+												s.handleReposDownloadZipballArchiveRequest(args, w, r)
+												return
+											}
 										}
 									}
 								}
 							}
 						}
 					case 'i': // Prefix: "itories"
-						if prefix := "itories"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-							elem = elem[len(prefix):]
+						if l := len("itories"); len(elem) >= l && elem[0:l] == "itories" {
+							elem = elem[l:]
 						} else {
 							break
 						}
@@ -7950,14 +8632,14 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						}
 						switch elem[0] {
 						case '/': // Prefix: "/"
-							if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-								elem = elem[len(prefix):]
+							if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+								elem = elem[l:]
 							} else {
 								break
 							}
 
 							// Param: "repository_id"
-							// Match until one of "/"
+							// Match until "/"
 							idx := strings.IndexByte(elem, '/')
 							if idx > 0 {
 								args["repository_id"] = elem[:idx]
@@ -7968,14 +8650,14 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								}
 								switch elem[0] {
 								case '/': // Prefix: "/environments/"
-									if prefix := "/environments/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-										elem = elem[len(prefix):]
+									if l := len("/environments/"); len(elem) >= l && elem[0:l] == "/environments/" {
+										elem = elem[l:]
 									} else {
 										break
 									}
 
 									// Param: "environment_name"
-									// Match until one of "/"
+									// Match until "/"
 									idx := strings.IndexByte(elem, '/')
 									if idx > 0 {
 										args["environment_name"] = elem[:idx]
@@ -7986,8 +8668,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										}
 										switch elem[0] {
 										case '/': // Prefix: "/secrets"
-											if prefix := "/secrets"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-												elem = elem[len(prefix):]
+											if l := len("/secrets"); len(elem) >= l && elem[0:l] == "/secrets" {
+												elem = elem[l:]
 											} else {
 												break
 											}
@@ -7998,8 +8680,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											}
 											switch elem[0] {
 											case '/': // Prefix: "/"
-												if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-													elem = elem[len(prefix):]
+												if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+													elem = elem[l:]
 												} else {
 													break
 												}
@@ -8010,23 +8692,28 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												}
 												switch elem[0] {
 												case 'p': // Prefix: "public-key"
-													if prefix := "public-key"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-														elem = elem[len(prefix):]
+													if l := len("public-key"); len(elem) >= l && elem[0:l] == "public-key" {
+														elem = elem[l:]
 													} else {
 														break
 													}
 
-													// Leaf: ActionsGetEnvironmentPublicKey
-													s.handleActionsGetEnvironmentPublicKeyRequest(args, w, r)
-													return
+													if len(elem) == 0 {
+														// Leaf: ActionsGetEnvironmentPublicKey
+														s.handleActionsGetEnvironmentPublicKeyRequest(args, w, r)
+														return
+													}
 												}
 												// Param: "secret_name"
 												// Leaf parameter
 												args["secret_name"] = elem
+												elem = ""
 
-												// Leaf: ActionsGetEnvironmentSecret
-												s.handleActionsGetEnvironmentSecretRequest(args, w, r)
-												return
+												if len(elem) == 0 {
+													// Leaf: ActionsGetEnvironmentSecret
+													s.handleActionsGetEnvironmentSecretRequest(args, w, r)
+													return
+												}
 											}
 										}
 									}
@@ -8036,8 +8723,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					}
 				}
 			case 's': // Prefix: "s"
-				if prefix := "s"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-					elem = elem[len(prefix):]
+				if l := len("s"); len(elem) >= l && elem[0:l] == "s" {
+					elem = elem[l:]
 				} else {
 					break
 				}
@@ -8048,14 +8735,14 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				}
 				switch elem[0] {
 				case 'c': // Prefix: "cim/v2/enterprises/"
-					if prefix := "cim/v2/enterprises/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-						elem = elem[len(prefix):]
+					if l := len("cim/v2/enterprises/"); len(elem) >= l && elem[0:l] == "cim/v2/enterprises/" {
+						elem = elem[l:]
 					} else {
 						break
 					}
 
 					// Param: "enterprise"
-					// Match until one of "/"
+					// Match until "/"
 					idx := strings.IndexByte(elem, '/')
 					if idx > 0 {
 						args["enterprise"] = elem[:idx]
@@ -8066,8 +8753,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						}
 						switch elem[0] {
 						case '/': // Prefix: "/"
-							if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-								elem = elem[len(prefix):]
+							if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+								elem = elem[l:]
 							} else {
 								break
 							}
@@ -8078,8 +8765,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							}
 							switch elem[0] {
 							case 'G': // Prefix: "Groups"
-								if prefix := "Groups"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-									elem = elem[len(prefix):]
+								if l := len("Groups"); len(elem) >= l && elem[0:l] == "Groups" {
+									elem = elem[l:]
 								} else {
 									break
 								}
@@ -8090,8 +8777,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								}
 								switch elem[0] {
 								case '/': // Prefix: "/"
-									if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-										elem = elem[len(prefix):]
+									if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+										elem = elem[l:]
 									} else {
 										break
 									}
@@ -8099,14 +8786,17 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									// Param: "scim_group_id"
 									// Leaf parameter
 									args["scim_group_id"] = elem
+									elem = ""
 
-									// Leaf: EnterpriseAdminGetProvisioningInformationForEnterpriseGroup
-									s.handleEnterpriseAdminGetProvisioningInformationForEnterpriseGroupRequest(args, w, r)
-									return
+									if len(elem) == 0 {
+										// Leaf: EnterpriseAdminGetProvisioningInformationForEnterpriseGroup
+										s.handleEnterpriseAdminGetProvisioningInformationForEnterpriseGroupRequest(args, w, r)
+										return
+									}
 								}
 							case 'U': // Prefix: "Users"
-								if prefix := "Users"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-									elem = elem[len(prefix):]
+								if l := len("Users"); len(elem) >= l && elem[0:l] == "Users" {
+									elem = elem[l:]
 								} else {
 									break
 								}
@@ -8117,8 +8807,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								}
 								switch elem[0] {
 								case '/': // Prefix: "/"
-									if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-										elem = elem[len(prefix):]
+									if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+										elem = elem[l:]
 									} else {
 										break
 									}
@@ -8126,17 +8816,20 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									// Param: "scim_user_id"
 									// Leaf parameter
 									args["scim_user_id"] = elem
+									elem = ""
 
-									// Leaf: EnterpriseAdminGetProvisioningInformationForEnterpriseUser
-									s.handleEnterpriseAdminGetProvisioningInformationForEnterpriseUserRequest(args, w, r)
-									return
+									if len(elem) == 0 {
+										// Leaf: EnterpriseAdminGetProvisioningInformationForEnterpriseUser
+										s.handleEnterpriseAdminGetProvisioningInformationForEnterpriseUserRequest(args, w, r)
+										return
+									}
 								}
 							}
 						}
 					}
 				case 'e': // Prefix: "earch/"
-					if prefix := "earch/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-						elem = elem[len(prefix):]
+					if l := len("earch/"); len(elem) >= l && elem[0:l] == "earch/" {
+						elem = elem[l:]
 					} else {
 						break
 					}
@@ -8147,8 +8840,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					}
 					switch elem[0] {
 					case 'c': // Prefix: "co"
-						if prefix := "co"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-							elem = elem[len(prefix):]
+						if l := len("co"); len(elem) >= l && elem[0:l] == "co" {
+							elem = elem[l:]
 						} else {
 							break
 						}
@@ -8159,87 +8852,101 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						}
 						switch elem[0] {
 						case 'd': // Prefix: "de"
-							if prefix := "de"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-								elem = elem[len(prefix):]
+							if l := len("de"); len(elem) >= l && elem[0:l] == "de" {
+								elem = elem[l:]
 							} else {
 								break
 							}
 
-							// Leaf: SearchCode
-							s.handleSearchCodeRequest(args, w, r)
-							return
+							if len(elem) == 0 {
+								// Leaf: SearchCode
+								s.handleSearchCodeRequest(args, w, r)
+								return
+							}
 						case 'm': // Prefix: "mmits"
-							if prefix := "mmits"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-								elem = elem[len(prefix):]
+							if l := len("mmits"); len(elem) >= l && elem[0:l] == "mmits" {
+								elem = elem[l:]
 							} else {
 								break
 							}
 
-							// Leaf: SearchCommits
-							s.handleSearchCommitsRequest(args, w, r)
-							return
+							if len(elem) == 0 {
+								// Leaf: SearchCommits
+								s.handleSearchCommitsRequest(args, w, r)
+								return
+							}
 						}
 					case 'i': // Prefix: "issues"
-						if prefix := "issues"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-							elem = elem[len(prefix):]
+						if l := len("issues"); len(elem) >= l && elem[0:l] == "issues" {
+							elem = elem[l:]
 						} else {
 							break
 						}
 
-						// Leaf: SearchIssuesAndPullRequests
-						s.handleSearchIssuesAndPullRequestsRequest(args, w, r)
-						return
+						if len(elem) == 0 {
+							// Leaf: SearchIssuesAndPullRequests
+							s.handleSearchIssuesAndPullRequestsRequest(args, w, r)
+							return
+						}
 					case 'l': // Prefix: "labels"
-						if prefix := "labels"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-							elem = elem[len(prefix):]
+						if l := len("labels"); len(elem) >= l && elem[0:l] == "labels" {
+							elem = elem[l:]
 						} else {
 							break
 						}
 
-						// Leaf: SearchLabels
-						s.handleSearchLabelsRequest(args, w, r)
-						return
+						if len(elem) == 0 {
+							// Leaf: SearchLabels
+							s.handleSearchLabelsRequest(args, w, r)
+							return
+						}
 					case 'r': // Prefix: "repositories"
-						if prefix := "repositories"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-							elem = elem[len(prefix):]
+						if l := len("repositories"); len(elem) >= l && elem[0:l] == "repositories" {
+							elem = elem[l:]
 						} else {
 							break
 						}
 
-						// Leaf: SearchRepos
-						s.handleSearchReposRequest(args, w, r)
-						return
+						if len(elem) == 0 {
+							// Leaf: SearchRepos
+							s.handleSearchReposRequest(args, w, r)
+							return
+						}
 					case 't': // Prefix: "topics"
-						if prefix := "topics"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-							elem = elem[len(prefix):]
+						if l := len("topics"); len(elem) >= l && elem[0:l] == "topics" {
+							elem = elem[l:]
 						} else {
 							break
 						}
 
-						// Leaf: SearchTopics
-						s.handleSearchTopicsRequest(args, w, r)
-						return
+						if len(elem) == 0 {
+							// Leaf: SearchTopics
+							s.handleSearchTopicsRequest(args, w, r)
+							return
+						}
 					case 'u': // Prefix: "users"
-						if prefix := "users"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-							elem = elem[len(prefix):]
+						if l := len("users"); len(elem) >= l && elem[0:l] == "users" {
+							elem = elem[l:]
 						} else {
 							break
 						}
 
-						// Leaf: SearchUsers
-						s.handleSearchUsersRequest(args, w, r)
-						return
+						if len(elem) == 0 {
+							// Leaf: SearchUsers
+							s.handleSearchUsersRequest(args, w, r)
+							return
+						}
 					}
 				}
 			case 't': // Prefix: "teams/"
-				if prefix := "teams/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-					elem = elem[len(prefix):]
+				if l := len("teams/"); len(elem) >= l && elem[0:l] == "teams/" {
+					elem = elem[l:]
 				} else {
 					break
 				}
 
 				// Param: "team_id"
-				// Match until one of "/"
+				// Match until "/"
 				idx := strings.IndexByte(elem, '/')
 				if idx > 0 {
 					args["team_id"] = elem[:idx]
@@ -8251,8 +8958,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					}
 					switch elem[0] {
 					case '/': // Prefix: "/"
-						if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-							elem = elem[len(prefix):]
+						if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+							elem = elem[l:]
 						} else {
 							break
 						}
@@ -8263,8 +8970,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						}
 						switch elem[0] {
 						case 'd': // Prefix: "discussions"
-							if prefix := "discussions"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-								elem = elem[len(prefix):]
+							if l := len("discussions"); len(elem) >= l && elem[0:l] == "discussions" {
+								elem = elem[l:]
 							} else {
 								break
 							}
@@ -8275,14 +8982,14 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							}
 							switch elem[0] {
 							case '/': // Prefix: "/"
-								if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-									elem = elem[len(prefix):]
+								if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+									elem = elem[l:]
 								} else {
 									break
 								}
 
 								// Param: "discussion_number"
-								// Match until one of "/"
+								// Match until "/"
 								idx := strings.IndexByte(elem, '/')
 								if idx > 0 {
 									args["discussion_number"] = elem[:idx]
@@ -8294,8 +9001,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									}
 									switch elem[0] {
 									case '/': // Prefix: "/"
-										if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-											elem = elem[len(prefix):]
+										if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+											elem = elem[l:]
 										} else {
 											break
 										}
@@ -8306,8 +9013,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										}
 										switch elem[0] {
 										case 'c': // Prefix: "comments"
-											if prefix := "comments"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-												elem = elem[len(prefix):]
+											if l := len("comments"); len(elem) >= l && elem[0:l] == "comments" {
+												elem = elem[l:]
 											} else {
 												break
 											}
@@ -8318,14 +9025,14 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											}
 											switch elem[0] {
 											case '/': // Prefix: "/"
-												if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-													elem = elem[len(prefix):]
+												if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+													elem = elem[l:]
 												} else {
 													break
 												}
 
 												// Param: "comment_number"
-												// Match until one of "/"
+												// Match until "/"
 												idx := strings.IndexByte(elem, '/')
 												if idx > 0 {
 													args["comment_number"] = elem[:idx]
@@ -8337,45 +9044,51 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													}
 													switch elem[0] {
 													case '/': // Prefix: "/reactions"
-														if prefix := "/reactions"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-															elem = elem[len(prefix):]
+														if l := len("/reactions"); len(elem) >= l && elem[0:l] == "/reactions" {
+															elem = elem[l:]
 														} else {
 															break
 														}
 
-														// Leaf: ReactionsListForTeamDiscussionCommentLegacy
-														s.handleReactionsListForTeamDiscussionCommentLegacyRequest(args, w, r)
-														return
+														if len(elem) == 0 {
+															// Leaf: ReactionsListForTeamDiscussionCommentLegacy
+															s.handleReactionsListForTeamDiscussionCommentLegacyRequest(args, w, r)
+															return
+														}
 													}
 												}
 											}
 										case 'r': // Prefix: "reactions"
-											if prefix := "reactions"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-												elem = elem[len(prefix):]
+											if l := len("reactions"); len(elem) >= l && elem[0:l] == "reactions" {
+												elem = elem[l:]
 											} else {
 												break
 											}
 
-											// Leaf: ReactionsListForTeamDiscussionLegacy
-											s.handleReactionsListForTeamDiscussionLegacyRequest(args, w, r)
-											return
+											if len(elem) == 0 {
+												// Leaf: ReactionsListForTeamDiscussionLegacy
+												s.handleReactionsListForTeamDiscussionLegacyRequest(args, w, r)
+												return
+											}
 										}
 									}
 								}
 							}
 						case 'i': // Prefix: "invitations"
-							if prefix := "invitations"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-								elem = elem[len(prefix):]
+							if l := len("invitations"); len(elem) >= l && elem[0:l] == "invitations" {
+								elem = elem[l:]
 							} else {
 								break
 							}
 
-							// Leaf: TeamsListPendingInvitationsLegacy
-							s.handleTeamsListPendingInvitationsLegacyRequest(args, w, r)
-							return
+							if len(elem) == 0 {
+								// Leaf: TeamsListPendingInvitationsLegacy
+								s.handleTeamsListPendingInvitationsLegacyRequest(args, w, r)
+								return
+							}
 						case 'm': // Prefix: "members"
-							if prefix := "members"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-								elem = elem[len(prefix):]
+							if l := len("members"); len(elem) >= l && elem[0:l] == "members" {
+								elem = elem[l:]
 							} else {
 								break
 							}
@@ -8386,8 +9099,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							}
 							switch elem[0] {
 							case '/': // Prefix: "/"
-								if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-									elem = elem[len(prefix):]
+								if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+									elem = elem[l:]
 								} else {
 									break
 								}
@@ -8395,13 +9108,16 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								// Param: "username"
 								// Leaf parameter
 								args["username"] = elem
+								elem = ""
 
-								// Leaf: TeamsGetMemberLegacy
-								s.handleTeamsGetMemberLegacyRequest(args, w, r)
-								return
+								if len(elem) == 0 {
+									// Leaf: TeamsGetMemberLegacy
+									s.handleTeamsGetMemberLegacyRequest(args, w, r)
+									return
+								}
 							case 'h': // Prefix: "hips/"
-								if prefix := "hips/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-									elem = elem[len(prefix):]
+								if l := len("hips/"); len(elem) >= l && elem[0:l] == "hips/" {
+									elem = elem[l:]
 								} else {
 									break
 								}
@@ -8409,14 +9125,17 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								// Param: "username"
 								// Leaf parameter
 								args["username"] = elem
+								elem = ""
 
-								// Leaf: TeamsGetMembershipForUserLegacy
-								s.handleTeamsGetMembershipForUserLegacyRequest(args, w, r)
-								return
+								if len(elem) == 0 {
+									// Leaf: TeamsGetMembershipForUserLegacy
+									s.handleTeamsGetMembershipForUserLegacyRequest(args, w, r)
+									return
+								}
 							}
 						case 'p': // Prefix: "projects"
-							if prefix := "projects"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-								elem = elem[len(prefix):]
+							if l := len("projects"); len(elem) >= l && elem[0:l] == "projects" {
+								elem = elem[l:]
 							} else {
 								break
 							}
@@ -8427,8 +9146,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							}
 							switch elem[0] {
 							case '/': // Prefix: "/"
-								if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-									elem = elem[len(prefix):]
+								if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+									elem = elem[l:]
 								} else {
 									break
 								}
@@ -8436,14 +9155,17 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								// Param: "project_id"
 								// Leaf parameter
 								args["project_id"] = elem
+								elem = ""
 
-								// Leaf: TeamsCheckPermissionsForProjectLegacy
-								s.handleTeamsCheckPermissionsForProjectLegacyRequest(args, w, r)
-								return
+								if len(elem) == 0 {
+									// Leaf: TeamsCheckPermissionsForProjectLegacy
+									s.handleTeamsCheckPermissionsForProjectLegacyRequest(args, w, r)
+									return
+								}
 							}
 						case 'r': // Prefix: "repos"
-							if prefix := "repos"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-								elem = elem[len(prefix):]
+							if l := len("repos"); len(elem) >= l && elem[0:l] == "repos" {
+								elem = elem[l:]
 							} else {
 								break
 							}
@@ -8454,14 +9176,14 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							}
 							switch elem[0] {
 							case '/': // Prefix: "/"
-								if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-									elem = elem[len(prefix):]
+								if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+									elem = elem[l:]
 								} else {
 									break
 								}
 
 								// Param: "owner"
-								// Match until one of "/"
+								// Match until "/"
 								idx := strings.IndexByte(elem, '/')
 								if idx > 0 {
 									args["owner"] = elem[:idx]
@@ -8472,8 +9194,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									}
 									switch elem[0] {
 									case '/': // Prefix: "/"
-										if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-											elem = elem[len(prefix):]
+										if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+											elem = elem[l:]
 										} else {
 											break
 										}
@@ -8481,16 +9203,19 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										// Param: "repo"
 										// Leaf parameter
 										args["repo"] = elem
+										elem = ""
 
-										// Leaf: TeamsCheckPermissionsForRepoLegacy
-										s.handleTeamsCheckPermissionsForRepoLegacyRequest(args, w, r)
-										return
+										if len(elem) == 0 {
+											// Leaf: TeamsCheckPermissionsForRepoLegacy
+											s.handleTeamsCheckPermissionsForRepoLegacyRequest(args, w, r)
+											return
+										}
 									}
 								}
 							}
 						case 't': // Prefix: "team"
-							if prefix := "team"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-								elem = elem[len(prefix):]
+							if l := len("team"); len(elem) >= l && elem[0:l] == "team" {
+								elem = elem[l:]
 							} else {
 								break
 							}
@@ -8501,32 +9226,36 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							}
 							switch elem[0] {
 							case '-': // Prefix: "-sync/group-mappings"
-								if prefix := "-sync/group-mappings"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-									elem = elem[len(prefix):]
+								if l := len("-sync/group-mappings"); len(elem) >= l && elem[0:l] == "-sync/group-mappings" {
+									elem = elem[l:]
 								} else {
 									break
 								}
 
-								// Leaf: TeamsListIdpGroupsForLegacy
-								s.handleTeamsListIdpGroupsForLegacyRequest(args, w, r)
-								return
+								if len(elem) == 0 {
+									// Leaf: TeamsListIdpGroupsForLegacy
+									s.handleTeamsListIdpGroupsForLegacyRequest(args, w, r)
+									return
+								}
 							case 's': // Prefix: "s"
-								if prefix := "s"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-									elem = elem[len(prefix):]
+								if l := len("s"); len(elem) >= l && elem[0:l] == "s" {
+									elem = elem[l:]
 								} else {
 									break
 								}
 
-								// Leaf: TeamsListChildLegacy
-								s.handleTeamsListChildLegacyRequest(args, w, r)
-								return
+								if len(elem) == 0 {
+									// Leaf: TeamsListChildLegacy
+									s.handleTeamsListChildLegacyRequest(args, w, r)
+									return
+								}
 							}
 						}
 					}
 				}
 			case 'u': // Prefix: "user"
-				if prefix := "user"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-					elem = elem[len(prefix):]
+				if l := len("user"); len(elem) >= l && elem[0:l] == "user" {
+					elem = elem[l:]
 				} else {
 					break
 				}
@@ -8537,8 +9266,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				}
 				switch elem[0] {
 				case '/': // Prefix: "/"
-					if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-						elem = elem[len(prefix):]
+					if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+						elem = elem[l:]
 					} else {
 						break
 					}
@@ -8549,8 +9278,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					}
 					switch elem[0] {
 					case 'b': // Prefix: "blocks"
-						if prefix := "blocks"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-							elem = elem[len(prefix):]
+						if l := len("blocks"); len(elem) >= l && elem[0:l] == "blocks" {
+							elem = elem[l:]
 						} else {
 							break
 						}
@@ -8561,8 +9290,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						}
 						switch elem[0] {
 						case '/': // Prefix: "/"
-							if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-								elem = elem[len(prefix):]
+							if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+								elem = elem[l:]
 							} else {
 								break
 							}
@@ -8570,24 +9299,29 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							// Param: "username"
 							// Leaf parameter
 							args["username"] = elem
+							elem = ""
 
-							// Leaf: UsersCheckBlocked
-							s.handleUsersCheckBlockedRequest(args, w, r)
-							return
+							if len(elem) == 0 {
+								// Leaf: UsersCheckBlocked
+								s.handleUsersCheckBlockedRequest(args, w, r)
+								return
+							}
 						}
 					case 'e': // Prefix: "emails"
-						if prefix := "emails"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-							elem = elem[len(prefix):]
+						if l := len("emails"); len(elem) >= l && elem[0:l] == "emails" {
+							elem = elem[l:]
 						} else {
 							break
 						}
 
-						// Leaf: UsersListEmailsForAuthenticated
-						s.handleUsersListEmailsForAuthenticatedRequest(args, w, r)
-						return
+						if len(elem) == 0 {
+							// Leaf: UsersListEmailsForAuthenticated
+							s.handleUsersListEmailsForAuthenticatedRequest(args, w, r)
+							return
+						}
 					case 'f': // Prefix: "follow"
-						if prefix := "follow"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-							elem = elem[len(prefix):]
+						if l := len("follow"); len(elem) >= l && elem[0:l] == "follow" {
+							elem = elem[l:]
 						} else {
 							break
 						}
@@ -8598,18 +9332,20 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						}
 						switch elem[0] {
 						case 'e': // Prefix: "ers"
-							if prefix := "ers"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-								elem = elem[len(prefix):]
+							if l := len("ers"); len(elem) >= l && elem[0:l] == "ers" {
+								elem = elem[l:]
 							} else {
 								break
 							}
 
-							// Leaf: UsersListFollowersForAuthenticatedUser
-							s.handleUsersListFollowersForAuthenticatedUserRequest(args, w, r)
-							return
+							if len(elem) == 0 {
+								// Leaf: UsersListFollowersForAuthenticatedUser
+								s.handleUsersListFollowersForAuthenticatedUserRequest(args, w, r)
+								return
+							}
 						case 'i': // Prefix: "ing"
-							if prefix := "ing"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-								elem = elem[len(prefix):]
+							if l := len("ing"); len(elem) >= l && elem[0:l] == "ing" {
+								elem = elem[l:]
 							} else {
 								break
 							}
@@ -8620,8 +9356,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							}
 							switch elem[0] {
 							case '/': // Prefix: "/"
-								if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-									elem = elem[len(prefix):]
+								if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+									elem = elem[l:]
 								} else {
 									break
 								}
@@ -8629,15 +9365,18 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								// Param: "username"
 								// Leaf parameter
 								args["username"] = elem
+								elem = ""
 
-								// Leaf: UsersCheckPersonIsFollowedByAuthenticated
-								s.handleUsersCheckPersonIsFollowedByAuthenticatedRequest(args, w, r)
-								return
+								if len(elem) == 0 {
+									// Leaf: UsersCheckPersonIsFollowedByAuthenticated
+									s.handleUsersCheckPersonIsFollowedByAuthenticatedRequest(args, w, r)
+									return
+								}
 							}
 						}
 					case 'g': // Prefix: "gpg_keys"
-						if prefix := "gpg_keys"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-							elem = elem[len(prefix):]
+						if l := len("gpg_keys"); len(elem) >= l && elem[0:l] == "gpg_keys" {
+							elem = elem[l:]
 						} else {
 							break
 						}
@@ -8648,8 +9387,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						}
 						switch elem[0] {
 						case '/': // Prefix: "/"
-							if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-								elem = elem[len(prefix):]
+							if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+								elem = elem[l:]
 							} else {
 								break
 							}
@@ -8657,14 +9396,17 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							// Param: "gpg_key_id"
 							// Leaf parameter
 							args["gpg_key_id"] = elem
+							elem = ""
 
-							// Leaf: UsersGetGpgKeyForAuthenticated
-							s.handleUsersGetGpgKeyForAuthenticatedRequest(args, w, r)
-							return
+							if len(elem) == 0 {
+								// Leaf: UsersGetGpgKeyForAuthenticated
+								s.handleUsersGetGpgKeyForAuthenticatedRequest(args, w, r)
+								return
+							}
 						}
 					case 'i': // Prefix: "i"
-						if prefix := "i"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-							elem = elem[len(prefix):]
+						if l := len("i"); len(elem) >= l && elem[0:l] == "i" {
+							elem = elem[l:]
 						} else {
 							break
 						}
@@ -8675,14 +9417,14 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						}
 						switch elem[0] {
 						case 'n': // Prefix: "nstallations/"
-							if prefix := "nstallations/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-								elem = elem[len(prefix):]
+							if l := len("nstallations/"); len(elem) >= l && elem[0:l] == "nstallations/" {
+								elem = elem[l:]
 							} else {
 								break
 							}
 
 							// Param: "installation_id"
-							// Match until one of "/"
+							// Match until "/"
 							idx := strings.IndexByte(elem, '/')
 							if idx > 0 {
 								args["installation_id"] = elem[:idx]
@@ -8693,31 +9435,35 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								}
 								switch elem[0] {
 								case '/': // Prefix: "/repositories"
-									if prefix := "/repositories"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-										elem = elem[len(prefix):]
+									if l := len("/repositories"); len(elem) >= l && elem[0:l] == "/repositories" {
+										elem = elem[l:]
 									} else {
 										break
 									}
 
-									// Leaf: AppsListInstallationReposForAuthenticatedUser
-									s.handleAppsListInstallationReposForAuthenticatedUserRequest(args, w, r)
-									return
+									if len(elem) == 0 {
+										// Leaf: AppsListInstallationReposForAuthenticatedUser
+										s.handleAppsListInstallationReposForAuthenticatedUserRequest(args, w, r)
+										return
+									}
 								}
 							}
 						case 's': // Prefix: "ssues"
-							if prefix := "ssues"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-								elem = elem[len(prefix):]
+							if l := len("ssues"); len(elem) >= l && elem[0:l] == "ssues" {
+								elem = elem[l:]
 							} else {
 								break
 							}
 
-							// Leaf: IssuesListForAuthenticatedUser
-							s.handleIssuesListForAuthenticatedUserRequest(args, w, r)
-							return
+							if len(elem) == 0 {
+								// Leaf: IssuesListForAuthenticatedUser
+								s.handleIssuesListForAuthenticatedUserRequest(args, w, r)
+								return
+							}
 						}
 					case 'k': // Prefix: "keys"
-						if prefix := "keys"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-							elem = elem[len(prefix):]
+						if l := len("keys"); len(elem) >= l && elem[0:l] == "keys" {
+							elem = elem[l:]
 						} else {
 							break
 						}
@@ -8728,8 +9474,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						}
 						switch elem[0] {
 						case '/': // Prefix: "/"
-							if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-								elem = elem[len(prefix):]
+							if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+								elem = elem[l:]
 							} else {
 								break
 							}
@@ -8737,14 +9483,17 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							// Param: "key_id"
 							// Leaf parameter
 							args["key_id"] = elem
+							elem = ""
 
-							// Leaf: UsersGetPublicSSHKeyForAuthenticated
-							s.handleUsersGetPublicSSHKeyForAuthenticatedRequest(args, w, r)
-							return
+							if len(elem) == 0 {
+								// Leaf: UsersGetPublicSSHKeyForAuthenticated
+								s.handleUsersGetPublicSSHKeyForAuthenticatedRequest(args, w, r)
+								return
+							}
 						}
 					case 'm': // Prefix: "m"
-						if prefix := "m"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-							elem = elem[len(prefix):]
+						if l := len("m"); len(elem) >= l && elem[0:l] == "m" {
+							elem = elem[l:]
 						} else {
 							break
 						}
@@ -8755,8 +9504,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						}
 						switch elem[0] {
 						case 'a': // Prefix: "arketplace_purchases"
-							if prefix := "arketplace_purchases"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-								elem = elem[len(prefix):]
+							if l := len("arketplace_purchases"); len(elem) >= l && elem[0:l] == "arketplace_purchases" {
+								elem = elem[l:]
 							} else {
 								break
 							}
@@ -8767,19 +9516,21 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							}
 							switch elem[0] {
 							case '/': // Prefix: "/stubbed"
-								if prefix := "/stubbed"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-									elem = elem[len(prefix):]
+								if l := len("/stubbed"); len(elem) >= l && elem[0:l] == "/stubbed" {
+									elem = elem[l:]
 								} else {
 									break
 								}
 
-								// Leaf: AppsListSubscriptionsForAuthenticatedUserStubbed
-								s.handleAppsListSubscriptionsForAuthenticatedUserStubbedRequest(args, w, r)
-								return
+								if len(elem) == 0 {
+									// Leaf: AppsListSubscriptionsForAuthenticatedUserStubbed
+									s.handleAppsListSubscriptionsForAuthenticatedUserStubbedRequest(args, w, r)
+									return
+								}
 							}
 						case 'e': // Prefix: "emberships/orgs"
-							if prefix := "emberships/orgs"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-								elem = elem[len(prefix):]
+							if l := len("emberships/orgs"); len(elem) >= l && elem[0:l] == "emberships/orgs" {
+								elem = elem[l:]
 							} else {
 								break
 							}
@@ -8790,8 +9541,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							}
 							switch elem[0] {
 							case '/': // Prefix: "/"
-								if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-									elem = elem[len(prefix):]
+								if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+									elem = elem[l:]
 								} else {
 									break
 								}
@@ -8799,14 +9550,17 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								// Param: "org"
 								// Leaf parameter
 								args["org"] = elem
+								elem = ""
 
-								// Leaf: OrgsGetMembershipForAuthenticatedUser
-								s.handleOrgsGetMembershipForAuthenticatedUserRequest(args, w, r)
-								return
+								if len(elem) == 0 {
+									// Leaf: OrgsGetMembershipForAuthenticatedUser
+									s.handleOrgsGetMembershipForAuthenticatedUserRequest(args, w, r)
+									return
+								}
 							}
 						case 'i': // Prefix: "igrations"
-							if prefix := "igrations"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-								elem = elem[len(prefix):]
+							if l := len("igrations"); len(elem) >= l && elem[0:l] == "igrations" {
+								elem = elem[l:]
 							} else {
 								break
 							}
@@ -8817,14 +9571,14 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							}
 							switch elem[0] {
 							case '/': // Prefix: "/"
-								if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-									elem = elem[len(prefix):]
+								if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+									elem = elem[l:]
 								} else {
 									break
 								}
 
 								// Param: "migration_id"
-								// Match until one of "/"
+								// Match until "/"
 								idx := strings.IndexByte(elem, '/')
 								if idx > 0 {
 									args["migration_id"] = elem[:idx]
@@ -8836,8 +9590,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									}
 									switch elem[0] {
 									case '/': // Prefix: "/"
-										if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-											elem = elem[len(prefix):]
+										if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+											elem = elem[l:]
 										} else {
 											break
 										}
@@ -8848,43 +9602,49 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										}
 										switch elem[0] {
 										case 'a': // Prefix: "archive"
-											if prefix := "archive"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-												elem = elem[len(prefix):]
+											if l := len("archive"); len(elem) >= l && elem[0:l] == "archive" {
+												elem = elem[l:]
 											} else {
 												break
 											}
 
-											// Leaf: MigrationsGetArchiveForAuthenticatedUser
-											s.handleMigrationsGetArchiveForAuthenticatedUserRequest(args, w, r)
-											return
+											if len(elem) == 0 {
+												// Leaf: MigrationsGetArchiveForAuthenticatedUser
+												s.handleMigrationsGetArchiveForAuthenticatedUserRequest(args, w, r)
+												return
+											}
 										case 'r': // Prefix: "repositories"
-											if prefix := "repositories"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-												elem = elem[len(prefix):]
+											if l := len("repositories"); len(elem) >= l && elem[0:l] == "repositories" {
+												elem = elem[l:]
 											} else {
 												break
 											}
 
-											// Leaf: MigrationsListReposForUser
-											s.handleMigrationsListReposForUserRequest(args, w, r)
-											return
+											if len(elem) == 0 {
+												// Leaf: MigrationsListReposForUser
+												s.handleMigrationsListReposForUserRequest(args, w, r)
+												return
+											}
 										}
 									}
 								}
 							}
 						}
 					case 'o': // Prefix: "orgs"
-						if prefix := "orgs"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-							elem = elem[len(prefix):]
+						if l := len("orgs"); len(elem) >= l && elem[0:l] == "orgs" {
+							elem = elem[l:]
 						} else {
 							break
 						}
 
-						// Leaf: OrgsListForAuthenticatedUser
-						s.handleOrgsListForAuthenticatedUserRequest(args, w, r)
-						return
+						if len(elem) == 0 {
+							// Leaf: OrgsListForAuthenticatedUser
+							s.handleOrgsListForAuthenticatedUserRequest(args, w, r)
+							return
+						}
 					case 'p': // Prefix: "p"
-						if prefix := "p"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-							elem = elem[len(prefix):]
+						if l := len("p"); len(elem) >= l && elem[0:l] == "p" {
+							elem = elem[l:]
 						} else {
 							break
 						}
@@ -8895,8 +9655,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						}
 						switch elem[0] {
 						case 'a': // Prefix: "ackages"
-							if prefix := "ackages"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-								elem = elem[len(prefix):]
+							if l := len("ackages"); len(elem) >= l && elem[0:l] == "ackages" {
+								elem = elem[l:]
 							} else {
 								break
 							}
@@ -8907,14 +9667,14 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							}
 							switch elem[0] {
 							case '/': // Prefix: "/"
-								if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-									elem = elem[len(prefix):]
+								if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+									elem = elem[l:]
 								} else {
 									break
 								}
 
 								// Param: "package_type"
-								// Match until one of "/"
+								// Match until "/"
 								idx := strings.IndexByte(elem, '/')
 								if idx > 0 {
 									args["package_type"] = elem[:idx]
@@ -8925,14 +9685,14 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									}
 									switch elem[0] {
 									case '/': // Prefix: "/"
-										if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-											elem = elem[len(prefix):]
+										if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+											elem = elem[l:]
 										} else {
 											break
 										}
 
 										// Param: "package_name"
-										// Match until one of "/"
+										// Match until "/"
 										idx := strings.IndexByte(elem, '/')
 										if idx > 0 {
 											args["package_name"] = elem[:idx]
@@ -8944,8 +9704,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											}
 											switch elem[0] {
 											case '/': // Prefix: "/versions"
-												if prefix := "/versions"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-													elem = elem[len(prefix):]
+												if l := len("/versions"); len(elem) >= l && elem[0:l] == "/versions" {
+													elem = elem[l:]
 												} else {
 													break
 												}
@@ -8956,8 +9716,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												}
 												switch elem[0] {
 												case '/': // Prefix: "/"
-													if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-														elem = elem[len(prefix):]
+													if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+														elem = elem[l:]
 													} else {
 														break
 													}
@@ -8965,10 +9725,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													// Param: "package_version_id"
 													// Leaf parameter
 													args["package_version_id"] = elem
+													elem = ""
 
-													// Leaf: PackagesGetPackageVersionForAuthenticatedUser
-													s.handlePackagesGetPackageVersionForAuthenticatedUserRequest(args, w, r)
-													return
+													if len(elem) == 0 {
+														// Leaf: PackagesGetPackageVersionForAuthenticatedUser
+														s.handlePackagesGetPackageVersionForAuthenticatedUserRequest(args, w, r)
+														return
+													}
 												}
 											}
 										}
@@ -8976,19 +9739,21 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								}
 							}
 						case 'u': // Prefix: "ublic_emails"
-							if prefix := "ublic_emails"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-								elem = elem[len(prefix):]
+							if l := len("ublic_emails"); len(elem) >= l && elem[0:l] == "ublic_emails" {
+								elem = elem[l:]
 							} else {
 								break
 							}
 
-							// Leaf: UsersListPublicEmailsForAuthenticated
-							s.handleUsersListPublicEmailsForAuthenticatedRequest(args, w, r)
-							return
+							if len(elem) == 0 {
+								// Leaf: UsersListPublicEmailsForAuthenticated
+								s.handleUsersListPublicEmailsForAuthenticatedRequest(args, w, r)
+								return
+							}
 						}
 					case 'r': // Prefix: "repos"
-						if prefix := "repos"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-							elem = elem[len(prefix):]
+						if l := len("repos"); len(elem) >= l && elem[0:l] == "repos" {
+							elem = elem[l:]
 						} else {
 							break
 						}
@@ -8999,19 +9764,21 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						}
 						switch elem[0] {
 						case 'i': // Prefix: "itory_invitations"
-							if prefix := "itory_invitations"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-								elem = elem[len(prefix):]
+							if l := len("itory_invitations"); len(elem) >= l && elem[0:l] == "itory_invitations" {
+								elem = elem[l:]
 							} else {
 								break
 							}
 
-							// Leaf: ReposListInvitationsForAuthenticatedUser
-							s.handleReposListInvitationsForAuthenticatedUserRequest(args, w, r)
-							return
+							if len(elem) == 0 {
+								// Leaf: ReposListInvitationsForAuthenticatedUser
+								s.handleReposListInvitationsForAuthenticatedUserRequest(args, w, r)
+								return
+							}
 						}
 					case 's': // Prefix: "s"
-						if prefix := "s"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-							elem = elem[len(prefix):]
+						if l := len("s"); len(elem) >= l && elem[0:l] == "s" {
+							elem = elem[l:]
 						} else {
 							break
 						}
@@ -9022,8 +9789,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						}
 						switch elem[0] {
 						case 't': // Prefix: "tarred"
-							if prefix := "tarred"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-								elem = elem[len(prefix):]
+							if l := len("tarred"); len(elem) >= l && elem[0:l] == "tarred" {
+								elem = elem[l:]
 							} else {
 								break
 							}
@@ -9034,14 +9801,14 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							}
 							switch elem[0] {
 							case '/': // Prefix: "/"
-								if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-									elem = elem[len(prefix):]
+								if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+									elem = elem[l:]
 								} else {
 									break
 								}
 
 								// Param: "owner"
-								// Match until one of "/"
+								// Match until "/"
 								idx := strings.IndexByte(elem, '/')
 								if idx > 0 {
 									args["owner"] = elem[:idx]
@@ -9052,8 +9819,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									}
 									switch elem[0] {
 									case '/': // Prefix: "/"
-										if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-											elem = elem[len(prefix):]
+										if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+											elem = elem[l:]
 										} else {
 											break
 										}
@@ -9061,38 +9828,45 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										// Param: "repo"
 										// Leaf parameter
 										args["repo"] = elem
+										elem = ""
 
-										// Leaf: ActivityCheckRepoIsStarredByAuthenticatedUser
-										s.handleActivityCheckRepoIsStarredByAuthenticatedUserRequest(args, w, r)
-										return
+										if len(elem) == 0 {
+											// Leaf: ActivityCheckRepoIsStarredByAuthenticatedUser
+											s.handleActivityCheckRepoIsStarredByAuthenticatedUserRequest(args, w, r)
+											return
+										}
 									}
 								}
 							}
 						case 'u': // Prefix: "ubscriptions"
-							if prefix := "ubscriptions"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-								elem = elem[len(prefix):]
+							if l := len("ubscriptions"); len(elem) >= l && elem[0:l] == "ubscriptions" {
+								elem = elem[l:]
 							} else {
 								break
 							}
 
-							// Leaf: ActivityListWatchedReposForAuthenticatedUser
-							s.handleActivityListWatchedReposForAuthenticatedUserRequest(args, w, r)
-							return
+							if len(elem) == 0 {
+								// Leaf: ActivityListWatchedReposForAuthenticatedUser
+								s.handleActivityListWatchedReposForAuthenticatedUserRequest(args, w, r)
+								return
+							}
 						}
 					case 't': // Prefix: "teams"
-						if prefix := "teams"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-							elem = elem[len(prefix):]
+						if l := len("teams"); len(elem) >= l && elem[0:l] == "teams" {
+							elem = elem[l:]
 						} else {
 							break
 						}
 
-						// Leaf: TeamsListForAuthenticatedUser
-						s.handleTeamsListForAuthenticatedUserRequest(args, w, r)
-						return
+						if len(elem) == 0 {
+							// Leaf: TeamsListForAuthenticatedUser
+							s.handleTeamsListForAuthenticatedUserRequest(args, w, r)
+							return
+						}
 					}
 				case 's': // Prefix: "s"
-					if prefix := "s"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-						elem = elem[len(prefix):]
+					if l := len("s"); len(elem) >= l && elem[0:l] == "s" {
+						elem = elem[l:]
 					} else {
 						break
 					}
@@ -9103,14 +9877,14 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					}
 					switch elem[0] {
 					case '/': // Prefix: "/"
-						if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-							elem = elem[len(prefix):]
+						if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+							elem = elem[l:]
 						} else {
 							break
 						}
 
 						// Param: "username"
-						// Match until one of "/"
+						// Match until "/"
 						idx := strings.IndexByte(elem, '/')
 						if idx > 0 {
 							args["username"] = elem[:idx]
@@ -9122,8 +9896,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							}
 							switch elem[0] {
 							case '/': // Prefix: "/"
-								if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-									elem = elem[len(prefix):]
+								if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+									elem = elem[l:]
 								} else {
 									break
 								}
@@ -9134,8 +9908,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								}
 								switch elem[0] {
 								case 'e': // Prefix: "events"
-									if prefix := "events"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-										elem = elem[len(prefix):]
+									if l := len("events"); len(elem) >= l && elem[0:l] == "events" {
+										elem = elem[l:]
 									} else {
 										break
 									}
@@ -9146,8 +9920,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									}
 									switch elem[0] {
 									case '/': // Prefix: "/"
-										if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-											elem = elem[len(prefix):]
+										if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+											elem = elem[l:]
 										} else {
 											break
 										}
@@ -9158,8 +9932,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										}
 										switch elem[0] {
 										case 'o': // Prefix: "orgs/"
-											if prefix := "orgs/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-												elem = elem[len(prefix):]
+											if l := len("orgs/"); len(elem) >= l && elem[0:l] == "orgs/" {
+												elem = elem[l:]
 											} else {
 												break
 											}
@@ -9167,25 +9941,30 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											// Param: "org"
 											// Leaf parameter
 											args["org"] = elem
+											elem = ""
 
-											// Leaf: ActivityListOrgEventsForAuthenticatedUser
-											s.handleActivityListOrgEventsForAuthenticatedUserRequest(args, w, r)
-											return
+											if len(elem) == 0 {
+												// Leaf: ActivityListOrgEventsForAuthenticatedUser
+												s.handleActivityListOrgEventsForAuthenticatedUserRequest(args, w, r)
+												return
+											}
 										case 'p': // Prefix: "public"
-											if prefix := "public"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-												elem = elem[len(prefix):]
+											if l := len("public"); len(elem) >= l && elem[0:l] == "public" {
+												elem = elem[l:]
 											} else {
 												break
 											}
 
-											// Leaf: ActivityListPublicEventsForUser
-											s.handleActivityListPublicEventsForUserRequest(args, w, r)
-											return
+											if len(elem) == 0 {
+												// Leaf: ActivityListPublicEventsForUser
+												s.handleActivityListPublicEventsForUserRequest(args, w, r)
+												return
+											}
 										}
 									}
 								case 'f': // Prefix: "follow"
-									if prefix := "follow"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-										elem = elem[len(prefix):]
+									if l := len("follow"); len(elem) >= l && elem[0:l] == "follow" {
+										elem = elem[l:]
 									} else {
 										break
 									}
@@ -9196,18 +9975,20 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									}
 									switch elem[0] {
 									case 'e': // Prefix: "ers"
-										if prefix := "ers"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-											elem = elem[len(prefix):]
+										if l := len("ers"); len(elem) >= l && elem[0:l] == "ers" {
+											elem = elem[l:]
 										} else {
 											break
 										}
 
-										// Leaf: UsersListFollowersForUser
-										s.handleUsersListFollowersForUserRequest(args, w, r)
-										return
+										if len(elem) == 0 {
+											// Leaf: UsersListFollowersForUser
+											s.handleUsersListFollowersForUserRequest(args, w, r)
+											return
+										}
 									case 'i': // Prefix: "ing"
-										if prefix := "ing"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-											elem = elem[len(prefix):]
+										if l := len("ing"); len(elem) >= l && elem[0:l] == "ing" {
+											elem = elem[l:]
 										} else {
 											break
 										}
@@ -9218,8 +9999,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										}
 										switch elem[0] {
 										case '/': // Prefix: "/"
-											if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-												elem = elem[len(prefix):]
+											if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+												elem = elem[l:]
 											} else {
 												break
 											}
@@ -9227,15 +10008,18 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											// Param: "target_user"
 											// Leaf parameter
 											args["target_user"] = elem
+											elem = ""
 
-											// Leaf: UsersCheckFollowingForUser
-											s.handleUsersCheckFollowingForUserRequest(args, w, r)
-											return
+											if len(elem) == 0 {
+												// Leaf: UsersCheckFollowingForUser
+												s.handleUsersCheckFollowingForUserRequest(args, w, r)
+												return
+											}
 										}
 									}
 								case 'g': // Prefix: "g"
-									if prefix := "g"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-										elem = elem[len(prefix):]
+									if l := len("g"); len(elem) >= l && elem[0:l] == "g" {
+										elem = elem[l:]
 									} else {
 										break
 									}
@@ -9246,59 +10030,69 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									}
 									switch elem[0] {
 									case 'i': // Prefix: "ists"
-										if prefix := "ists"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-											elem = elem[len(prefix):]
+										if l := len("ists"); len(elem) >= l && elem[0:l] == "ists" {
+											elem = elem[l:]
 										} else {
 											break
 										}
 
-										// Leaf: GistsListForUser
-										s.handleGistsListForUserRequest(args, w, r)
-										return
+										if len(elem) == 0 {
+											// Leaf: GistsListForUser
+											s.handleGistsListForUserRequest(args, w, r)
+											return
+										}
 									case 'p': // Prefix: "pg_keys"
-										if prefix := "pg_keys"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-											elem = elem[len(prefix):]
+										if l := len("pg_keys"); len(elem) >= l && elem[0:l] == "pg_keys" {
+											elem = elem[l:]
 										} else {
 											break
 										}
 
-										// Leaf: UsersListGpgKeysForUser
-										s.handleUsersListGpgKeysForUserRequest(args, w, r)
-										return
+										if len(elem) == 0 {
+											// Leaf: UsersListGpgKeysForUser
+											s.handleUsersListGpgKeysForUserRequest(args, w, r)
+											return
+										}
 									}
 								case 'h': // Prefix: "hovercard"
-									if prefix := "hovercard"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-										elem = elem[len(prefix):]
+									if l := len("hovercard"); len(elem) >= l && elem[0:l] == "hovercard" {
+										elem = elem[l:]
 									} else {
 										break
 									}
 
-									// Leaf: UsersGetContextForUser
-									s.handleUsersGetContextForUserRequest(args, w, r)
-									return
+									if len(elem) == 0 {
+										// Leaf: UsersGetContextForUser
+										s.handleUsersGetContextForUserRequest(args, w, r)
+										return
+									}
 								case 'k': // Prefix: "keys"
-									if prefix := "keys"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-										elem = elem[len(prefix):]
+									if l := len("keys"); len(elem) >= l && elem[0:l] == "keys" {
+										elem = elem[l:]
 									} else {
 										break
 									}
 
-									// Leaf: UsersListPublicKeysForUser
-									s.handleUsersListPublicKeysForUserRequest(args, w, r)
-									return
+									if len(elem) == 0 {
+										// Leaf: UsersListPublicKeysForUser
+										s.handleUsersListPublicKeysForUserRequest(args, w, r)
+										return
+									}
 								case 'o': // Prefix: "orgs"
-									if prefix := "orgs"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-										elem = elem[len(prefix):]
+									if l := len("orgs"); len(elem) >= l && elem[0:l] == "orgs" {
+										elem = elem[l:]
 									} else {
 										break
 									}
 
-									// Leaf: OrgsListForUser
-									s.handleOrgsListForUserRequest(args, w, r)
-									return
+									if len(elem) == 0 {
+										// Leaf: OrgsListForUser
+										s.handleOrgsListForUserRequest(args, w, r)
+										return
+									}
 								case 'p': // Prefix: "p"
-									if prefix := "p"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-										elem = elem[len(prefix):]
+									if l := len("p"); len(elem) >= l && elem[0:l] == "p" {
+										elem = elem[l:]
 									} else {
 										break
 									}
@@ -9309,8 +10103,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									}
 									switch elem[0] {
 									case 'a': // Prefix: "ackages"
-										if prefix := "ackages"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-											elem = elem[len(prefix):]
+										if l := len("ackages"); len(elem) >= l && elem[0:l] == "ackages" {
+											elem = elem[l:]
 										} else {
 											break
 										}
@@ -9321,14 +10115,14 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										}
 										switch elem[0] {
 										case '/': // Prefix: "/"
-											if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-												elem = elem[len(prefix):]
+											if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+												elem = elem[l:]
 											} else {
 												break
 											}
 
 											// Param: "package_type"
-											// Match until one of "/"
+											// Match until "/"
 											idx := strings.IndexByte(elem, '/')
 											if idx > 0 {
 												args["package_type"] = elem[:idx]
@@ -9339,14 +10133,14 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												}
 												switch elem[0] {
 												case '/': // Prefix: "/"
-													if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-														elem = elem[len(prefix):]
+													if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+														elem = elem[l:]
 													} else {
 														break
 													}
 
 													// Param: "package_name"
-													// Match until one of "/"
+													// Match until "/"
 													idx := strings.IndexByte(elem, '/')
 													if idx > 0 {
 														args["package_name"] = elem[:idx]
@@ -9358,8 +10152,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														}
 														switch elem[0] {
 														case '/': // Prefix: "/versions"
-															if prefix := "/versions"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																elem = elem[len(prefix):]
+															if l := len("/versions"); len(elem) >= l && elem[0:l] == "/versions" {
+																elem = elem[l:]
 															} else {
 																break
 															}
@@ -9370,8 +10164,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															}
 															switch elem[0] {
 															case '/': // Prefix: "/"
-																if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																	elem = elem[len(prefix):]
+																if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+																	elem = elem[l:]
 																} else {
 																	break
 																}
@@ -9379,10 +10173,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																// Param: "package_version_id"
 																// Leaf parameter
 																args["package_version_id"] = elem
+																elem = ""
 
-																// Leaf: PackagesGetPackageVersionForUser
-																s.handlePackagesGetPackageVersionForUserRequest(args, w, r)
-																return
+																if len(elem) == 0 {
+																	// Leaf: PackagesGetPackageVersionForUser
+																	s.handlePackagesGetPackageVersionForUserRequest(args, w, r)
+																	return
+																}
 															}
 														}
 													}
@@ -9390,19 +10187,21 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											}
 										}
 									case 'r': // Prefix: "rojects"
-										if prefix := "rojects"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-											elem = elem[len(prefix):]
+										if l := len("rojects"); len(elem) >= l && elem[0:l] == "rojects" {
+											elem = elem[l:]
 										} else {
 											break
 										}
 
-										// Leaf: ProjectsListForUser
-										s.handleProjectsListForUserRequest(args, w, r)
-										return
+										if len(elem) == 0 {
+											// Leaf: ProjectsListForUser
+											s.handleProjectsListForUserRequest(args, w, r)
+											return
+										}
 									}
 								case 'r': // Prefix: "re"
-									if prefix := "re"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-										elem = elem[len(prefix):]
+									if l := len("re"); len(elem) >= l && elem[0:l] == "re" {
+										elem = elem[l:]
 									} else {
 										break
 									}
@@ -9413,8 +10212,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									}
 									switch elem[0] {
 									case 'c': // Prefix: "ceived_events"
-										if prefix := "ceived_events"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-											elem = elem[len(prefix):]
+										if l := len("ceived_events"); len(elem) >= l && elem[0:l] == "ceived_events" {
+											elem = elem[l:]
 										} else {
 											break
 										}
@@ -9425,30 +10224,34 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										}
 										switch elem[0] {
 										case '/': // Prefix: "/public"
-											if prefix := "/public"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-												elem = elem[len(prefix):]
+											if l := len("/public"); len(elem) >= l && elem[0:l] == "/public" {
+												elem = elem[l:]
 											} else {
 												break
 											}
 
-											// Leaf: ActivityListReceivedPublicEventsForUser
-											s.handleActivityListReceivedPublicEventsForUserRequest(args, w, r)
-											return
+											if len(elem) == 0 {
+												// Leaf: ActivityListReceivedPublicEventsForUser
+												s.handleActivityListReceivedPublicEventsForUserRequest(args, w, r)
+												return
+											}
 										}
 									case 'p': // Prefix: "pos"
-										if prefix := "pos"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-											elem = elem[len(prefix):]
+										if l := len("pos"); len(elem) >= l && elem[0:l] == "pos" {
+											elem = elem[l:]
 										} else {
 											break
 										}
 
-										// Leaf: ReposListForUser
-										s.handleReposListForUserRequest(args, w, r)
-										return
+										if len(elem) == 0 {
+											// Leaf: ReposListForUser
+											s.handleReposListForUserRequest(args, w, r)
+											return
+										}
 									}
 								case 's': // Prefix: "s"
-									if prefix := "s"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-										elem = elem[len(prefix):]
+									if l := len("s"); len(elem) >= l && elem[0:l] == "s" {
+										elem = elem[l:]
 									} else {
 										break
 									}
@@ -9459,8 +10262,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									}
 									switch elem[0] {
 									case 'e': // Prefix: "ettings/billing/"
-										if prefix := "ettings/billing/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-											elem = elem[len(prefix):]
+										if l := len("ettings/billing/"); len(elem) >= l && elem[0:l] == "ettings/billing/" {
+											elem = elem[l:]
 										} else {
 											break
 										}
@@ -9471,46 +10274,54 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										}
 										switch elem[0] {
 										case 'a': // Prefix: "actions"
-											if prefix := "actions"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-												elem = elem[len(prefix):]
+											if l := len("actions"); len(elem) >= l && elem[0:l] == "actions" {
+												elem = elem[l:]
 											} else {
 												break
 											}
 
-											// Leaf: BillingGetGithubActionsBillingUser
-											s.handleBillingGetGithubActionsBillingUserRequest(args, w, r)
-											return
+											if len(elem) == 0 {
+												// Leaf: BillingGetGithubActionsBillingUser
+												s.handleBillingGetGithubActionsBillingUserRequest(args, w, r)
+												return
+											}
 										case 'p': // Prefix: "packages"
-											if prefix := "packages"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-												elem = elem[len(prefix):]
+											if l := len("packages"); len(elem) >= l && elem[0:l] == "packages" {
+												elem = elem[l:]
 											} else {
 												break
 											}
 
-											// Leaf: BillingGetGithubPackagesBillingUser
-											s.handleBillingGetGithubPackagesBillingUserRequest(args, w, r)
-											return
+											if len(elem) == 0 {
+												// Leaf: BillingGetGithubPackagesBillingUser
+												s.handleBillingGetGithubPackagesBillingUserRequest(args, w, r)
+												return
+											}
 										case 's': // Prefix: "shared-storage"
-											if prefix := "shared-storage"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-												elem = elem[len(prefix):]
+											if l := len("shared-storage"); len(elem) >= l && elem[0:l] == "shared-storage" {
+												elem = elem[l:]
 											} else {
 												break
 											}
 
-											// Leaf: BillingGetSharedStorageBillingUser
-											s.handleBillingGetSharedStorageBillingUserRequest(args, w, r)
-											return
+											if len(elem) == 0 {
+												// Leaf: BillingGetSharedStorageBillingUser
+												s.handleBillingGetSharedStorageBillingUserRequest(args, w, r)
+												return
+											}
 										}
 									case 'u': // Prefix: "ubscriptions"
-										if prefix := "ubscriptions"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-											elem = elem[len(prefix):]
+										if l := len("ubscriptions"); len(elem) >= l && elem[0:l] == "ubscriptions" {
+											elem = elem[l:]
 										} else {
 											break
 										}
 
-										// Leaf: ActivityListReposWatchedByUser
-										s.handleActivityListReposWatchedByUserRequest(args, w, r)
-										return
+										if len(elem) == 0 {
+											// Leaf: ActivityListReposWatchedByUser
+											s.handleActivityListReposWatchedByUserRequest(args, w, r)
+											return
+										}
 									}
 								}
 							}
@@ -9525,8 +10336,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 		}
 		switch elem[0] {
 		case '/': // Prefix: "/"
-			if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-				elem = elem[len(prefix):]
+			if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+				elem = elem[l:]
 			} else {
 				break
 			}
@@ -9537,8 +10348,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 			}
 			switch elem[0] {
 			case 'a': // Prefix: "a"
-				if prefix := "a"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-					elem = elem[len(prefix):]
+				if l := len("a"); len(elem) >= l && elem[0:l] == "a" {
+					elem = elem[l:]
 				} else {
 					break
 				}
@@ -9549,8 +10360,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				}
 				switch elem[0] {
 				case 'p': // Prefix: "pp"
-					if prefix := "pp"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-						elem = elem[len(prefix):]
+					if l := len("pp"); len(elem) >= l && elem[0:l] == "pp" {
+						elem = elem[l:]
 					} else {
 						break
 					}
@@ -9561,24 +10372,26 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					}
 					switch elem[0] {
 					case '/': // Prefix: "/hook/config"
-						if prefix := "/hook/config"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-							elem = elem[len(prefix):]
+						if l := len("/hook/config"); len(elem) >= l && elem[0:l] == "/hook/config" {
+							elem = elem[l:]
 						} else {
 							break
 						}
 
-						// Leaf: AppsUpdateWebhookConfigForApp
-						s.handleAppsUpdateWebhookConfigForAppRequest(args, w, r)
-						return
+						if len(elem) == 0 {
+							// Leaf: AppsUpdateWebhookConfigForApp
+							s.handleAppsUpdateWebhookConfigForAppRequest(args, w, r)
+							return
+						}
 					case 'l': // Prefix: "lications/"
-						if prefix := "lications/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-							elem = elem[len(prefix):]
+						if l := len("lications/"); len(elem) >= l && elem[0:l] == "lications/" {
+							elem = elem[l:]
 						} else {
 							break
 						}
 
 						// Param: "client_id"
-						// Match until one of "/"
+						// Match until "/"
 						idx := strings.IndexByte(elem, '/')
 						if idx > 0 {
 							args["client_id"] = elem[:idx]
@@ -9589,21 +10402,23 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							}
 							switch elem[0] {
 							case '/': // Prefix: "/token"
-								if prefix := "/token"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-									elem = elem[len(prefix):]
+								if l := len("/token"); len(elem) >= l && elem[0:l] == "/token" {
+									elem = elem[l:]
 								} else {
 									break
 								}
 
-								// Leaf: AppsResetToken
-								s.handleAppsResetTokenRequest(args, w, r)
-								return
+								if len(elem) == 0 {
+									// Leaf: AppsResetToken
+									s.handleAppsResetTokenRequest(args, w, r)
+									return
+								}
 							}
 						}
 					}
 				case 'u': // Prefix: "uthorizations/"
-					if prefix := "uthorizations/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-						elem = elem[len(prefix):]
+					if l := len("uthorizations/"); len(elem) >= l && elem[0:l] == "uthorizations/" {
+						elem = elem[l:]
 					} else {
 						break
 					}
@@ -9611,20 +10426,23 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					// Param: "authorization_id"
 					// Leaf parameter
 					args["authorization_id"] = elem
+					elem = ""
 
-					// Leaf: OAuthAuthorizationsUpdateAuthorization
-					s.handleOAuthAuthorizationsUpdateAuthorizationRequest(args, w, r)
-					return
+					if len(elem) == 0 {
+						// Leaf: OAuthAuthorizationsUpdateAuthorization
+						s.handleOAuthAuthorizationsUpdateAuthorizationRequest(args, w, r)
+						return
+					}
 				}
 			case 'e': // Prefix: "enterprises/"
-				if prefix := "enterprises/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-					elem = elem[len(prefix):]
+				if l := len("enterprises/"); len(elem) >= l && elem[0:l] == "enterprises/" {
+					elem = elem[l:]
 				} else {
 					break
 				}
 
 				// Param: "enterprise"
-				// Match until one of "/"
+				// Match until "/"
 				idx := strings.IndexByte(elem, '/')
 				if idx > 0 {
 					args["enterprise"] = elem[:idx]
@@ -9635,8 +10453,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					}
 					switch elem[0] {
 					case '/': // Prefix: "/actions/runner-groups/"
-						if prefix := "/actions/runner-groups/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-							elem = elem[len(prefix):]
+						if l := len("/actions/runner-groups/"); len(elem) >= l && elem[0:l] == "/actions/runner-groups/" {
+							elem = elem[l:]
 						} else {
 							break
 						}
@@ -9644,21 +10462,24 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						// Param: "runner_group_id"
 						// Leaf parameter
 						args["runner_group_id"] = elem
+						elem = ""
 
-						// Leaf: EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterprise
-						s.handleEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseRequest(args, w, r)
-						return
+						if len(elem) == 0 {
+							// Leaf: EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterprise
+							s.handleEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseRequest(args, w, r)
+							return
+						}
 					}
 				}
 			case 'g': // Prefix: "gists/"
-				if prefix := "gists/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-					elem = elem[len(prefix):]
+				if l := len("gists/"); len(elem) >= l && elem[0:l] == "gists/" {
+					elem = elem[l:]
 				} else {
 					break
 				}
 
 				// Param: "gist_id"
-				// Match until one of "/"
+				// Match until "/"
 				idx := strings.IndexByte(elem, '/')
 				if idx > 0 {
 					args["gist_id"] = elem[:idx]
@@ -9669,8 +10490,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					}
 					switch elem[0] {
 					case '/': // Prefix: "/comments/"
-						if prefix := "/comments/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-							elem = elem[len(prefix):]
+						if l := len("/comments/"); len(elem) >= l && elem[0:l] == "/comments/" {
+							elem = elem[l:]
 						} else {
 							break
 						}
@@ -9678,15 +10499,18 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						// Param: "comment_id"
 						// Leaf parameter
 						args["comment_id"] = elem
+						elem = ""
 
-						// Leaf: GistsUpdateComment
-						s.handleGistsUpdateCommentRequest(args, w, r)
-						return
+						if len(elem) == 0 {
+							// Leaf: GistsUpdateComment
+							s.handleGistsUpdateCommentRequest(args, w, r)
+							return
+						}
 					}
 				}
 			case 'n': // Prefix: "notifications/threads/"
-				if prefix := "notifications/threads/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-					elem = elem[len(prefix):]
+				if l := len("notifications/threads/"); len(elem) >= l && elem[0:l] == "notifications/threads/" {
+					elem = elem[l:]
 				} else {
 					break
 				}
@@ -9694,19 +10518,22 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				// Param: "thread_id"
 				// Leaf parameter
 				args["thread_id"] = elem
+				elem = ""
 
-				// Leaf: ActivityMarkThreadAsRead
-				s.handleActivityMarkThreadAsReadRequest(args, w, r)
-				return
+				if len(elem) == 0 {
+					// Leaf: ActivityMarkThreadAsRead
+					s.handleActivityMarkThreadAsReadRequest(args, w, r)
+					return
+				}
 			case 'o': // Prefix: "orgs/"
-				if prefix := "orgs/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-					elem = elem[len(prefix):]
+				if l := len("orgs/"); len(elem) >= l && elem[0:l] == "orgs/" {
+					elem = elem[l:]
 				} else {
 					break
 				}
 
 				// Param: "org"
-				// Match until one of "/"
+				// Match until "/"
 				idx := strings.IndexByte(elem, '/')
 				if idx > 0 {
 					args["org"] = elem[:idx]
@@ -9717,8 +10544,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					}
 					switch elem[0] {
 					case '/': // Prefix: "/"
-						if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-							elem = elem[len(prefix):]
+						if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+							elem = elem[l:]
 						} else {
 							break
 						}
@@ -9729,8 +10556,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						}
 						switch elem[0] {
 						case 'a': // Prefix: "actions/runner-groups/"
-							if prefix := "actions/runner-groups/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-								elem = elem[len(prefix):]
+							if l := len("actions/runner-groups/"); len(elem) >= l && elem[0:l] == "actions/runner-groups/" {
+								elem = elem[l:]
 							} else {
 								break
 							}
@@ -9738,19 +10565,22 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							// Param: "runner_group_id"
 							// Leaf parameter
 							args["runner_group_id"] = elem
+							elem = ""
 
-							// Leaf: ActionsUpdateSelfHostedRunnerGroupForOrg
-							s.handleActionsUpdateSelfHostedRunnerGroupForOrgRequest(args, w, r)
-							return
+							if len(elem) == 0 {
+								// Leaf: ActionsUpdateSelfHostedRunnerGroupForOrg
+								s.handleActionsUpdateSelfHostedRunnerGroupForOrgRequest(args, w, r)
+								return
+							}
 						case 'h': // Prefix: "hooks/"
-							if prefix := "hooks/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-								elem = elem[len(prefix):]
+							if l := len("hooks/"); len(elem) >= l && elem[0:l] == "hooks/" {
+								elem = elem[l:]
 							} else {
 								break
 							}
 
 							// Param: "hook_id"
-							// Match until one of "/"
+							// Match until "/"
 							idx := strings.IndexByte(elem, '/')
 							if idx > 0 {
 								args["hook_id"] = elem[:idx]
@@ -9762,26 +10592,28 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								}
 								switch elem[0] {
 								case '/': // Prefix: "/config"
-									if prefix := "/config"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-										elem = elem[len(prefix):]
+									if l := len("/config"); len(elem) >= l && elem[0:l] == "/config" {
+										elem = elem[l:]
 									} else {
 										break
 									}
 
-									// Leaf: OrgsUpdateWebhookConfigForOrg
-									s.handleOrgsUpdateWebhookConfigForOrgRequest(args, w, r)
-									return
+									if len(elem) == 0 {
+										// Leaf: OrgsUpdateWebhookConfigForOrg
+										s.handleOrgsUpdateWebhookConfigForOrgRequest(args, w, r)
+										return
+									}
 								}
 							}
 						case 't': // Prefix: "teams/"
-							if prefix := "teams/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-								elem = elem[len(prefix):]
+							if l := len("teams/"); len(elem) >= l && elem[0:l] == "teams/" {
+								elem = elem[l:]
 							} else {
 								break
 							}
 
 							// Param: "team_slug"
-							// Match until one of "/"
+							// Match until "/"
 							idx := strings.IndexByte(elem, '/')
 							if idx > 0 {
 								args["team_slug"] = elem[:idx]
@@ -9793,8 +10625,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								}
 								switch elem[0] {
 								case '/': // Prefix: "/"
-									if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-										elem = elem[len(prefix):]
+									if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+										elem = elem[l:]
 									} else {
 										break
 									}
@@ -9805,14 +10637,14 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									}
 									switch elem[0] {
 									case 'd': // Prefix: "discussions/"
-										if prefix := "discussions/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-											elem = elem[len(prefix):]
+										if l := len("discussions/"); len(elem) >= l && elem[0:l] == "discussions/" {
+											elem = elem[l:]
 										} else {
 											break
 										}
 
 										// Param: "discussion_number"
-										// Match until one of "/"
+										// Match until "/"
 										idx := strings.IndexByte(elem, '/')
 										if idx > 0 {
 											args["discussion_number"] = elem[:idx]
@@ -9824,8 +10656,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											}
 											switch elem[0] {
 											case '/': // Prefix: "/comments/"
-												if prefix := "/comments/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-													elem = elem[len(prefix):]
+												if l := len("/comments/"); len(elem) >= l && elem[0:l] == "/comments/" {
+													elem = elem[l:]
 												} else {
 													break
 												}
@@ -9833,22 +10665,27 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												// Param: "comment_number"
 												// Leaf parameter
 												args["comment_number"] = elem
+												elem = ""
 
-												// Leaf: TeamsUpdateDiscussionCommentInOrg
-												s.handleTeamsUpdateDiscussionCommentInOrgRequest(args, w, r)
-												return
+												if len(elem) == 0 {
+													// Leaf: TeamsUpdateDiscussionCommentInOrg
+													s.handleTeamsUpdateDiscussionCommentInOrgRequest(args, w, r)
+													return
+												}
 											}
 										}
 									case 't': // Prefix: "team-sync/group-mappings"
-										if prefix := "team-sync/group-mappings"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-											elem = elem[len(prefix):]
+										if l := len("team-sync/group-mappings"); len(elem) >= l && elem[0:l] == "team-sync/group-mappings" {
+											elem = elem[l:]
 										} else {
 											break
 										}
 
-										// Leaf: TeamsCreateOrUpdateIdpGroupConnectionsInOrg
-										s.handleTeamsCreateOrUpdateIdpGroupConnectionsInOrgRequest(args, w, r)
-										return
+										if len(elem) == 0 {
+											// Leaf: TeamsCreateOrUpdateIdpGroupConnectionsInOrg
+											s.handleTeamsCreateOrUpdateIdpGroupConnectionsInOrgRequest(args, w, r)
+											return
+										}
 									}
 								}
 							}
@@ -9856,8 +10693,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					}
 				}
 			case 'p': // Prefix: "projects/"
-				if prefix := "projects/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-					elem = elem[len(prefix):]
+				if l := len("projects/"); len(elem) >= l && elem[0:l] == "projects/" {
+					elem = elem[l:]
 				} else {
 					break
 				}
@@ -9867,8 +10704,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				}
 				switch elem[0] {
 				case 'c': // Prefix: "columns/"
-					if prefix := "columns/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-						elem = elem[len(prefix):]
+					if l := len("columns/"); len(elem) >= l && elem[0:l] == "columns/" {
+						elem = elem[l:]
 					} else {
 						break
 					}
@@ -9879,8 +10716,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					}
 					switch elem[0] {
 					case 'c': // Prefix: "cards/"
-						if prefix := "cards/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-							elem = elem[len(prefix):]
+						if l := len("cards/"); len(elem) >= l && elem[0:l] == "cards/" {
+							elem = elem[l:]
 						} else {
 							break
 						}
@@ -9888,35 +10725,44 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						// Param: "card_id"
 						// Leaf parameter
 						args["card_id"] = elem
+						elem = ""
 
-						// Leaf: ProjectsUpdateCard
-						s.handleProjectsUpdateCardRequest(args, w, r)
-						return
+						if len(elem) == 0 {
+							// Leaf: ProjectsUpdateCard
+							s.handleProjectsUpdateCardRequest(args, w, r)
+							return
+						}
 					}
 					// Param: "column_id"
 					// Leaf parameter
 					args["column_id"] = elem
+					elem = ""
 
-					// Leaf: ProjectsUpdateColumn
-					s.handleProjectsUpdateColumnRequest(args, w, r)
-					return
+					if len(elem) == 0 {
+						// Leaf: ProjectsUpdateColumn
+						s.handleProjectsUpdateColumnRequest(args, w, r)
+						return
+					}
 				}
 				// Param: "project_id"
 				// Leaf parameter
 				args["project_id"] = elem
+				elem = ""
 
-				// Leaf: ProjectsUpdate
-				s.handleProjectsUpdateRequest(args, w, r)
-				return
+				if len(elem) == 0 {
+					// Leaf: ProjectsUpdate
+					s.handleProjectsUpdateRequest(args, w, r)
+					return
+				}
 			case 'r': // Prefix: "repos/"
-				if prefix := "repos/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-					elem = elem[len(prefix):]
+				if l := len("repos/"); len(elem) >= l && elem[0:l] == "repos/" {
+					elem = elem[l:]
 				} else {
 					break
 				}
 
 				// Param: "owner"
-				// Match until one of "/"
+				// Match until "/"
 				idx := strings.IndexByte(elem, '/')
 				if idx > 0 {
 					args["owner"] = elem[:idx]
@@ -9927,14 +10773,14 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					}
 					switch elem[0] {
 					case '/': // Prefix: "/"
-						if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-							elem = elem[len(prefix):]
+						if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+							elem = elem[l:]
 						} else {
 							break
 						}
 
 						// Param: "repo"
-						// Match until one of "/"
+						// Match until "/"
 						idx := strings.IndexByte(elem, '/')
 						if idx > 0 {
 							args["repo"] = elem[:idx]
@@ -9946,8 +10792,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							}
 							switch elem[0] {
 							case '/': // Prefix: "/"
-								if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-									elem = elem[len(prefix):]
+								if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+									elem = elem[l:]
 								} else {
 									break
 								}
@@ -9958,14 +10804,14 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								}
 								switch elem[0] {
 								case 'b': // Prefix: "branches/"
-									if prefix := "branches/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-										elem = elem[len(prefix):]
+									if l := len("branches/"); len(elem) >= l && elem[0:l] == "branches/" {
+										elem = elem[l:]
 									} else {
 										break
 									}
 
 									// Param: "branch"
-									// Match until one of "/"
+									// Match until "/"
 									idx := strings.IndexByte(elem, '/')
 									if idx > 0 {
 										args["branch"] = elem[:idx]
@@ -9976,8 +10822,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										}
 										switch elem[0] {
 										case '/': // Prefix: "/protection/required_"
-											if prefix := "/protection/required_"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-												elem = elem[len(prefix):]
+											if l := len("/protection/required_"); len(elem) >= l && elem[0:l] == "/protection/required_" {
+												elem = elem[l:]
 											} else {
 												break
 											}
@@ -9988,31 +10834,35 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											}
 											switch elem[0] {
 											case 'p': // Prefix: "pull_request_reviews"
-												if prefix := "pull_request_reviews"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-													elem = elem[len(prefix):]
+												if l := len("pull_request_reviews"); len(elem) >= l && elem[0:l] == "pull_request_reviews" {
+													elem = elem[l:]
 												} else {
 													break
 												}
 
-												// Leaf: ReposUpdatePullRequestReviewProtection
-												s.handleReposUpdatePullRequestReviewProtectionRequest(args, w, r)
-												return
+												if len(elem) == 0 {
+													// Leaf: ReposUpdatePullRequestReviewProtection
+													s.handleReposUpdatePullRequestReviewProtectionRequest(args, w, r)
+													return
+												}
 											case 's': // Prefix: "status_checks"
-												if prefix := "status_checks"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-													elem = elem[len(prefix):]
+												if l := len("status_checks"); len(elem) >= l && elem[0:l] == "status_checks" {
+													elem = elem[l:]
 												} else {
 													break
 												}
 
-												// Leaf: ReposUpdateStatusCheckProtection
-												s.handleReposUpdateStatusCheckProtectionRequest(args, w, r)
-												return
+												if len(elem) == 0 {
+													// Leaf: ReposUpdateStatusCheckProtection
+													s.handleReposUpdateStatusCheckProtectionRequest(args, w, r)
+													return
+												}
 											}
 										}
 									}
 								case 'c': // Prefix: "c"
-									if prefix := "c"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-										elem = elem[len(prefix):]
+									if l := len("c"); len(elem) >= l && elem[0:l] == "c" {
+										elem = elem[l:]
 									} else {
 										break
 									}
@@ -10023,18 +10873,20 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									}
 									switch elem[0] {
 									case 'h': // Prefix: "heck-suites/preferences"
-										if prefix := "heck-suites/preferences"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-											elem = elem[len(prefix):]
+										if l := len("heck-suites/preferences"); len(elem) >= l && elem[0:l] == "heck-suites/preferences" {
+											elem = elem[l:]
 										} else {
 											break
 										}
 
-										// Leaf: ChecksSetSuitesPreferences
-										s.handleChecksSetSuitesPreferencesRequest(args, w, r)
-										return
+										if len(elem) == 0 {
+											// Leaf: ChecksSetSuitesPreferences
+											s.handleChecksSetSuitesPreferencesRequest(args, w, r)
+											return
+										}
 									case 'o': // Prefix: "o"
-										if prefix := "o"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-											elem = elem[len(prefix):]
+										if l := len("o"); len(elem) >= l && elem[0:l] == "o" {
+											elem = elem[l:]
 										} else {
 											break
 										}
@@ -10045,8 +10897,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										}
 										switch elem[0] {
 										case 'd': // Prefix: "de-scanning/alerts/"
-											if prefix := "de-scanning/alerts/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-												elem = elem[len(prefix):]
+											if l := len("de-scanning/alerts/"); len(elem) >= l && elem[0:l] == "de-scanning/alerts/" {
+												elem = elem[l:]
 											} else {
 												break
 											}
@@ -10054,13 +10906,16 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											// Param: "alert_number"
 											// Leaf parameter
 											args["alert_number"] = elem
+											elem = ""
 
-											// Leaf: CodeScanningUpdateAlert
-											s.handleCodeScanningUpdateAlertRequest(args, w, r)
-											return
+											if len(elem) == 0 {
+												// Leaf: CodeScanningUpdateAlert
+												s.handleCodeScanningUpdateAlertRequest(args, w, r)
+												return
+											}
 										case 'm': // Prefix: "mments/"
-											if prefix := "mments/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-												elem = elem[len(prefix):]
+											if l := len("mments/"); len(elem) >= l && elem[0:l] == "mments/" {
+												elem = elem[l:]
 											} else {
 												break
 											}
@@ -10068,15 +10923,18 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											// Param: "comment_id"
 											// Leaf parameter
 											args["comment_id"] = elem
+											elem = ""
 
-											// Leaf: ReposUpdateCommitComment
-											s.handleReposUpdateCommitCommentRequest(args, w, r)
-											return
+											if len(elem) == 0 {
+												// Leaf: ReposUpdateCommitComment
+												s.handleReposUpdateCommitCommentRequest(args, w, r)
+												return
+											}
 										}
 									}
 								case 'g': // Prefix: "git/refs/"
-									if prefix := "git/refs/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-										elem = elem[len(prefix):]
+									if l := len("git/refs/"); len(elem) >= l && elem[0:l] == "git/refs/" {
+										elem = elem[l:]
 									} else {
 										break
 									}
@@ -10084,19 +10942,22 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									// Param: "ref"
 									// Leaf parameter
 									args["ref"] = elem
+									elem = ""
 
-									// Leaf: GitUpdateRef
-									s.handleGitUpdateRefRequest(args, w, r)
-									return
+									if len(elem) == 0 {
+										// Leaf: GitUpdateRef
+										s.handleGitUpdateRefRequest(args, w, r)
+										return
+									}
 								case 'h': // Prefix: "hooks/"
-									if prefix := "hooks/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-										elem = elem[len(prefix):]
+									if l := len("hooks/"); len(elem) >= l && elem[0:l] == "hooks/" {
+										elem = elem[l:]
 									} else {
 										break
 									}
 
 									// Param: "hook_id"
-									// Match until one of "/"
+									// Match until "/"
 									idx := strings.IndexByte(elem, '/')
 									if idx > 0 {
 										args["hook_id"] = elem[:idx]
@@ -10108,20 +10969,22 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										}
 										switch elem[0] {
 										case '/': // Prefix: "/config"
-											if prefix := "/config"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-												elem = elem[len(prefix):]
+											if l := len("/config"); len(elem) >= l && elem[0:l] == "/config" {
+												elem = elem[l:]
 											} else {
 												break
 											}
 
-											// Leaf: ReposUpdateWebhookConfigForRepo
-											s.handleReposUpdateWebhookConfigForRepoRequest(args, w, r)
-											return
+											if len(elem) == 0 {
+												// Leaf: ReposUpdateWebhookConfigForRepo
+												s.handleReposUpdateWebhookConfigForRepoRequest(args, w, r)
+												return
+											}
 										}
 									}
 								case 'i': // Prefix: "i"
-									if prefix := "i"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-										elem = elem[len(prefix):]
+									if l := len("i"); len(elem) >= l && elem[0:l] == "i" {
+										elem = elem[l:]
 									} else {
 										break
 									}
@@ -10132,8 +10995,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									}
 									switch elem[0] {
 									case 'm': // Prefix: "mport"
-										if prefix := "mport"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-											elem = elem[len(prefix):]
+										if l := len("mport"); len(elem) >= l && elem[0:l] == "mport" {
+											elem = elem[l:]
 										} else {
 											break
 										}
@@ -10144,8 +11007,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										}
 										switch elem[0] {
 										case '/': // Prefix: "/"
-											if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-												elem = elem[len(prefix):]
+											if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+												elem = elem[l:]
 											} else {
 												break
 											}
@@ -10156,8 +11019,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											}
 											switch elem[0] {
 											case 'a': // Prefix: "authors/"
-												if prefix := "authors/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-													elem = elem[len(prefix):]
+												if l := len("authors/"); len(elem) >= l && elem[0:l] == "authors/" {
+													elem = elem[l:]
 												} else {
 													break
 												}
@@ -10165,25 +11028,30 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												// Param: "author_id"
 												// Leaf parameter
 												args["author_id"] = elem
+												elem = ""
 
-												// Leaf: MigrationsMapCommitAuthor
-												s.handleMigrationsMapCommitAuthorRequest(args, w, r)
-												return
+												if len(elem) == 0 {
+													// Leaf: MigrationsMapCommitAuthor
+													s.handleMigrationsMapCommitAuthorRequest(args, w, r)
+													return
+												}
 											case 'l': // Prefix: "lfs"
-												if prefix := "lfs"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-													elem = elem[len(prefix):]
+												if l := len("lfs"); len(elem) >= l && elem[0:l] == "lfs" {
+													elem = elem[l:]
 												} else {
 													break
 												}
 
-												// Leaf: MigrationsSetLfsPreference
-												s.handleMigrationsSetLfsPreferenceRequest(args, w, r)
-												return
+												if len(elem) == 0 {
+													// Leaf: MigrationsSetLfsPreference
+													s.handleMigrationsSetLfsPreferenceRequest(args, w, r)
+													return
+												}
 											}
 										}
 									case 'n': // Prefix: "nvitations/"
-										if prefix := "nvitations/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-											elem = elem[len(prefix):]
+										if l := len("nvitations/"); len(elem) >= l && elem[0:l] == "nvitations/" {
+											elem = elem[l:]
 										} else {
 											break
 										}
@@ -10191,13 +11059,16 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										// Param: "invitation_id"
 										// Leaf parameter
 										args["invitation_id"] = elem
+										elem = ""
 
-										// Leaf: ReposUpdateInvitation
-										s.handleReposUpdateInvitationRequest(args, w, r)
-										return
+										if len(elem) == 0 {
+											// Leaf: ReposUpdateInvitation
+											s.handleReposUpdateInvitationRequest(args, w, r)
+											return
+										}
 									case 's': // Prefix: "ssues/"
-										if prefix := "ssues/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-											elem = elem[len(prefix):]
+										if l := len("ssues/"); len(elem) >= l && elem[0:l] == "ssues/" {
+											elem = elem[l:]
 										} else {
 											break
 										}
@@ -10207,8 +11078,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										}
 										switch elem[0] {
 										case 'c': // Prefix: "comments/"
-											if prefix := "comments/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-												elem = elem[len(prefix):]
+											if l := len("comments/"); len(elem) >= l && elem[0:l] == "comments/" {
+												elem = elem[l:]
 											} else {
 												break
 											}
@@ -10216,22 +11087,28 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											// Param: "comment_id"
 											// Leaf parameter
 											args["comment_id"] = elem
+											elem = ""
 
-											// Leaf: IssuesUpdateComment
-											s.handleIssuesUpdateCommentRequest(args, w, r)
-											return
+											if len(elem) == 0 {
+												// Leaf: IssuesUpdateComment
+												s.handleIssuesUpdateCommentRequest(args, w, r)
+												return
+											}
 										}
 										// Param: "issue_number"
 										// Leaf parameter
 										args["issue_number"] = elem
+										elem = ""
 
-										// Leaf: IssuesUpdate
-										s.handleIssuesUpdateRequest(args, w, r)
-										return
+										if len(elem) == 0 {
+											// Leaf: IssuesUpdate
+											s.handleIssuesUpdateRequest(args, w, r)
+											return
+										}
 									}
 								case 'l': // Prefix: "labels/"
-									if prefix := "labels/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-										elem = elem[len(prefix):]
+									if l := len("labels/"); len(elem) >= l && elem[0:l] == "labels/" {
+										elem = elem[l:]
 									} else {
 										break
 									}
@@ -10239,13 +11116,16 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									// Param: "name"
 									// Leaf parameter
 									args["name"] = elem
+									elem = ""
 
-									// Leaf: IssuesUpdateLabel
-									s.handleIssuesUpdateLabelRequest(args, w, r)
-									return
+									if len(elem) == 0 {
+										// Leaf: IssuesUpdateLabel
+										s.handleIssuesUpdateLabelRequest(args, w, r)
+										return
+									}
 								case 'm': // Prefix: "milestones/"
-									if prefix := "milestones/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-										elem = elem[len(prefix):]
+									if l := len("milestones/"); len(elem) >= l && elem[0:l] == "milestones/" {
+										elem = elem[l:]
 									} else {
 										break
 									}
@@ -10253,13 +11133,16 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									// Param: "milestone_number"
 									// Leaf parameter
 									args["milestone_number"] = elem
+									elem = ""
 
-									// Leaf: IssuesUpdateMilestone
-									s.handleIssuesUpdateMilestoneRequest(args, w, r)
-									return
+									if len(elem) == 0 {
+										// Leaf: IssuesUpdateMilestone
+										s.handleIssuesUpdateMilestoneRequest(args, w, r)
+										return
+									}
 								case 'p': // Prefix: "pulls/"
-									if prefix := "pulls/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-										elem = elem[len(prefix):]
+									if l := len("pulls/"); len(elem) >= l && elem[0:l] == "pulls/" {
+										elem = elem[l:]
 									} else {
 										break
 									}
@@ -10269,8 +11152,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									}
 									switch elem[0] {
 									case 'c': // Prefix: "comments/"
-										if prefix := "comments/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-											elem = elem[len(prefix):]
+										if l := len("comments/"); len(elem) >= l && elem[0:l] == "comments/" {
+											elem = elem[l:]
 										} else {
 											break
 										}
@@ -10278,21 +11161,27 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										// Param: "comment_id"
 										// Leaf parameter
 										args["comment_id"] = elem
+										elem = ""
 
-										// Leaf: PullsUpdateReviewComment
-										s.handlePullsUpdateReviewCommentRequest(args, w, r)
-										return
+										if len(elem) == 0 {
+											// Leaf: PullsUpdateReviewComment
+											s.handlePullsUpdateReviewCommentRequest(args, w, r)
+											return
+										}
 									}
 									// Param: "pull_number"
 									// Leaf parameter
 									args["pull_number"] = elem
+									elem = ""
 
-									// Leaf: PullsUpdate
-									s.handlePullsUpdateRequest(args, w, r)
-									return
+									if len(elem) == 0 {
+										// Leaf: PullsUpdate
+										s.handlePullsUpdateRequest(args, w, r)
+										return
+									}
 								case 'r': // Prefix: "releases/"
-									if prefix := "releases/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-										elem = elem[len(prefix):]
+									if l := len("releases/"); len(elem) >= l && elem[0:l] == "releases/" {
+										elem = elem[l:]
 									} else {
 										break
 									}
@@ -10302,8 +11191,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									}
 									switch elem[0] {
 									case 'a': // Prefix: "assets/"
-										if prefix := "assets/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-											elem = elem[len(prefix):]
+										if l := len("assets/"); len(elem) >= l && elem[0:l] == "assets/" {
+											elem = elem[l:]
 										} else {
 											break
 										}
@@ -10311,21 +11200,27 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										// Param: "asset_id"
 										// Leaf parameter
 										args["asset_id"] = elem
+										elem = ""
 
-										// Leaf: ReposUpdateReleaseAsset
-										s.handleReposUpdateReleaseAssetRequest(args, w, r)
-										return
+										if len(elem) == 0 {
+											// Leaf: ReposUpdateReleaseAsset
+											s.handleReposUpdateReleaseAssetRequest(args, w, r)
+											return
+										}
 									}
 									// Param: "release_id"
 									// Leaf parameter
 									args["release_id"] = elem
+									elem = ""
 
-									// Leaf: ReposUpdateRelease
-									s.handleReposUpdateReleaseRequest(args, w, r)
-									return
+									if len(elem) == 0 {
+										// Leaf: ReposUpdateRelease
+										s.handleReposUpdateReleaseRequest(args, w, r)
+										return
+									}
 								case 's': // Prefix: "secret-scanning/alerts/"
-									if prefix := "secret-scanning/alerts/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-										elem = elem[len(prefix):]
+									if l := len("secret-scanning/alerts/"); len(elem) >= l && elem[0:l] == "secret-scanning/alerts/" {
+										elem = elem[l:]
 									} else {
 										break
 									}
@@ -10333,24 +11228,27 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									// Param: "alert_number"
 									// Leaf parameter
 									args["alert_number"] = elem
+									elem = ""
 
-									// Leaf: SecretScanningUpdateAlert
-									s.handleSecretScanningUpdateAlertRequest(args, w, r)
-									return
+									if len(elem) == 0 {
+										// Leaf: SecretScanningUpdateAlert
+										s.handleSecretScanningUpdateAlertRequest(args, w, r)
+										return
+									}
 								}
 							}
 						}
 					}
 				}
 			case 's': // Prefix: "scim/v2/enterprises/"
-				if prefix := "scim/v2/enterprises/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-					elem = elem[len(prefix):]
+				if l := len("scim/v2/enterprises/"); len(elem) >= l && elem[0:l] == "scim/v2/enterprises/" {
+					elem = elem[l:]
 				} else {
 					break
 				}
 
 				// Param: "enterprise"
-				// Match until one of "/"
+				// Match until "/"
 				idx := strings.IndexByte(elem, '/')
 				if idx > 0 {
 					args["enterprise"] = elem[:idx]
@@ -10361,8 +11259,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					}
 					switch elem[0] {
 					case '/': // Prefix: "/"
-						if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-							elem = elem[len(prefix):]
+						if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+							elem = elem[l:]
 						} else {
 							break
 						}
@@ -10373,8 +11271,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						}
 						switch elem[0] {
 						case 'G': // Prefix: "Groups/"
-							if prefix := "Groups/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-								elem = elem[len(prefix):]
+							if l := len("Groups/"); len(elem) >= l && elem[0:l] == "Groups/" {
+								elem = elem[l:]
 							} else {
 								break
 							}
@@ -10382,13 +11280,16 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							// Param: "scim_group_id"
 							// Leaf parameter
 							args["scim_group_id"] = elem
+							elem = ""
 
-							// Leaf: EnterpriseAdminUpdateAttributeForEnterpriseGroup
-							s.handleEnterpriseAdminUpdateAttributeForEnterpriseGroupRequest(args, w, r)
-							return
+							if len(elem) == 0 {
+								// Leaf: EnterpriseAdminUpdateAttributeForEnterpriseGroup
+								s.handleEnterpriseAdminUpdateAttributeForEnterpriseGroupRequest(args, w, r)
+								return
+							}
 						case 'U': // Prefix: "Users/"
-							if prefix := "Users/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-								elem = elem[len(prefix):]
+							if l := len("Users/"); len(elem) >= l && elem[0:l] == "Users/" {
+								elem = elem[l:]
 							} else {
 								break
 							}
@@ -10396,22 +11297,25 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							// Param: "scim_user_id"
 							// Leaf parameter
 							args["scim_user_id"] = elem
+							elem = ""
 
-							// Leaf: EnterpriseAdminUpdateAttributeForEnterpriseUser
-							s.handleEnterpriseAdminUpdateAttributeForEnterpriseUserRequest(args, w, r)
-							return
+							if len(elem) == 0 {
+								// Leaf: EnterpriseAdminUpdateAttributeForEnterpriseUser
+								s.handleEnterpriseAdminUpdateAttributeForEnterpriseUserRequest(args, w, r)
+								return
+							}
 						}
 					}
 				}
 			case 't': // Prefix: "teams/"
-				if prefix := "teams/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-					elem = elem[len(prefix):]
+				if l := len("teams/"); len(elem) >= l && elem[0:l] == "teams/" {
+					elem = elem[l:]
 				} else {
 					break
 				}
 
 				// Param: "team_id"
-				// Match until one of "/"
+				// Match until "/"
 				idx := strings.IndexByte(elem, '/')
 				if idx > 0 {
 					args["team_id"] = elem[:idx]
@@ -10423,8 +11327,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					}
 					switch elem[0] {
 					case '/': // Prefix: "/"
-						if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-							elem = elem[len(prefix):]
+						if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+							elem = elem[l:]
 						} else {
 							break
 						}
@@ -10435,14 +11339,14 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						}
 						switch elem[0] {
 						case 'd': // Prefix: "discussions/"
-							if prefix := "discussions/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-								elem = elem[len(prefix):]
+							if l := len("discussions/"); len(elem) >= l && elem[0:l] == "discussions/" {
+								elem = elem[l:]
 							} else {
 								break
 							}
 
 							// Param: "discussion_number"
-							// Match until one of "/"
+							// Match until "/"
 							idx := strings.IndexByte(elem, '/')
 							if idx > 0 {
 								args["discussion_number"] = elem[:idx]
@@ -10454,8 +11358,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								}
 								switch elem[0] {
 								case '/': // Prefix: "/comments/"
-									if prefix := "/comments/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-										elem = elem[len(prefix):]
+									if l := len("/comments/"); len(elem) >= l && elem[0:l] == "/comments/" {
+										elem = elem[l:]
 									} else {
 										break
 									}
@@ -10463,28 +11367,33 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									// Param: "comment_number"
 									// Leaf parameter
 									args["comment_number"] = elem
+									elem = ""
 
-									// Leaf: TeamsUpdateDiscussionCommentLegacy
-									s.handleTeamsUpdateDiscussionCommentLegacyRequest(args, w, r)
-									return
+									if len(elem) == 0 {
+										// Leaf: TeamsUpdateDiscussionCommentLegacy
+										s.handleTeamsUpdateDiscussionCommentLegacyRequest(args, w, r)
+										return
+									}
 								}
 							}
 						case 't': // Prefix: "team-sync/group-mappings"
-							if prefix := "team-sync/group-mappings"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-								elem = elem[len(prefix):]
+							if l := len("team-sync/group-mappings"); len(elem) >= l && elem[0:l] == "team-sync/group-mappings" {
+								elem = elem[l:]
 							} else {
 								break
 							}
 
-							// Leaf: TeamsCreateOrUpdateIdpGroupConnectionsLegacy
-							s.handleTeamsCreateOrUpdateIdpGroupConnectionsLegacyRequest(args, w, r)
-							return
+							if len(elem) == 0 {
+								// Leaf: TeamsCreateOrUpdateIdpGroupConnectionsLegacy
+								s.handleTeamsCreateOrUpdateIdpGroupConnectionsLegacyRequest(args, w, r)
+								return
+							}
 						}
 					}
 				}
 			case 'u': // Prefix: "user"
-				if prefix := "user"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-					elem = elem[len(prefix):]
+				if l := len("user"); len(elem) >= l && elem[0:l] == "user" {
+					elem = elem[l:]
 				} else {
 					break
 				}
@@ -10495,8 +11404,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				}
 				switch elem[0] {
 				case '/': // Prefix: "/"
-					if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-						elem = elem[len(prefix):]
+					if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+						elem = elem[l:]
 					} else {
 						break
 					}
@@ -10507,18 +11416,20 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					}
 					switch elem[0] {
 					case 'e': // Prefix: "email/visibility"
-						if prefix := "email/visibility"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-							elem = elem[len(prefix):]
+						if l := len("email/visibility"); len(elem) >= l && elem[0:l] == "email/visibility" {
+							elem = elem[l:]
 						} else {
 							break
 						}
 
-						// Leaf: UsersSetPrimaryEmailVisibilityForAuthenticated
-						s.handleUsersSetPrimaryEmailVisibilityForAuthenticatedRequest(args, w, r)
-						return
+						if len(elem) == 0 {
+							// Leaf: UsersSetPrimaryEmailVisibilityForAuthenticated
+							s.handleUsersSetPrimaryEmailVisibilityForAuthenticatedRequest(args, w, r)
+							return
+						}
 					case 'm': // Prefix: "memberships/orgs/"
-						if prefix := "memberships/orgs/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-							elem = elem[len(prefix):]
+						if l := len("memberships/orgs/"); len(elem) >= l && elem[0:l] == "memberships/orgs/" {
+							elem = elem[l:]
 						} else {
 							break
 						}
@@ -10526,13 +11437,16 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						// Param: "org"
 						// Leaf parameter
 						args["org"] = elem
+						elem = ""
 
-						// Leaf: OrgsUpdateMembershipForAuthenticatedUser
-						s.handleOrgsUpdateMembershipForAuthenticatedUserRequest(args, w, r)
-						return
+						if len(elem) == 0 {
+							// Leaf: OrgsUpdateMembershipForAuthenticatedUser
+							s.handleOrgsUpdateMembershipForAuthenticatedUserRequest(args, w, r)
+							return
+						}
 					case 'r': // Prefix: "repository_invitations/"
-						if prefix := "repository_invitations/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-							elem = elem[len(prefix):]
+						if l := len("repository_invitations/"); len(elem) >= l && elem[0:l] == "repository_invitations/" {
+							elem = elem[l:]
 						} else {
 							break
 						}
@@ -10540,10 +11454,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						// Param: "invitation_id"
 						// Leaf parameter
 						args["invitation_id"] = elem
+						elem = ""
 
-						// Leaf: ReposAcceptInvitation
-						s.handleReposAcceptInvitationRequest(args, w, r)
-						return
+						if len(elem) == 0 {
+							// Leaf: ReposAcceptInvitation
+							s.handleReposAcceptInvitationRequest(args, w, r)
+							return
+						}
 					}
 				}
 			}
@@ -10554,8 +11471,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 		}
 		switch elem[0] {
 		case '/': // Prefix: "/"
-			if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-				elem = elem[len(prefix):]
+			if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+				elem = elem[l:]
 			} else {
 				break
 			}
@@ -10566,8 +11483,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 			}
 			switch elem[0] {
 			case 'a': // Prefix: "a"
-				if prefix := "a"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-					elem = elem[len(prefix):]
+				if l := len("a"); len(elem) >= l && elem[0:l] == "a" {
+					elem = elem[l:]
 				} else {
 					break
 				}
@@ -10578,8 +11495,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				}
 				switch elem[0] {
 				case 'p': // Prefix: "pp"
-					if prefix := "pp"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-						elem = elem[len(prefix):]
+					if l := len("pp"); len(elem) >= l && elem[0:l] == "pp" {
+						elem = elem[l:]
 					} else {
 						break
 					}
@@ -10590,8 +11507,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					}
 					switch elem[0] {
 					case '/': // Prefix: "/"
-						if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-							elem = elem[len(prefix):]
+						if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+							elem = elem[l:]
 						} else {
 							break
 						}
@@ -10602,14 +11519,14 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						}
 						switch elem[0] {
 						case 'h': // Prefix: "hook/deliveries/"
-							if prefix := "hook/deliveries/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-								elem = elem[len(prefix):]
+							if l := len("hook/deliveries/"); len(elem) >= l && elem[0:l] == "hook/deliveries/" {
+								elem = elem[l:]
 							} else {
 								break
 							}
 
 							// Param: "delivery_id"
-							// Match until one of "/"
+							// Match until "/"
 							idx := strings.IndexByte(elem, '/')
 							if idx > 0 {
 								args["delivery_id"] = elem[:idx]
@@ -10620,26 +11537,28 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								}
 								switch elem[0] {
 								case '/': // Prefix: "/attempts"
-									if prefix := "/attempts"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-										elem = elem[len(prefix):]
+									if l := len("/attempts"); len(elem) >= l && elem[0:l] == "/attempts" {
+										elem = elem[l:]
 									} else {
 										break
 									}
 
-									// Leaf: AppsRedeliverWebhookDelivery
-									s.handleAppsRedeliverWebhookDeliveryRequest(args, w, r)
-									return
+									if len(elem) == 0 {
+										// Leaf: AppsRedeliverWebhookDelivery
+										s.handleAppsRedeliverWebhookDeliveryRequest(args, w, r)
+										return
+									}
 								}
 							}
 						case 'i': // Prefix: "installations/"
-							if prefix := "installations/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-								elem = elem[len(prefix):]
+							if l := len("installations/"); len(elem) >= l && elem[0:l] == "installations/" {
+								elem = elem[l:]
 							} else {
 								break
 							}
 
 							// Param: "installation_id"
-							// Match until one of "/"
+							// Match until "/"
 							idx := strings.IndexByte(elem, '/')
 							if idx > 0 {
 								args["installation_id"] = elem[:idx]
@@ -10650,27 +11569,29 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								}
 								switch elem[0] {
 								case '/': // Prefix: "/access_tokens"
-									if prefix := "/access_tokens"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-										elem = elem[len(prefix):]
+									if l := len("/access_tokens"); len(elem) >= l && elem[0:l] == "/access_tokens" {
+										elem = elem[l:]
 									} else {
 										break
 									}
 
-									// Leaf: AppsCreateInstallationAccessToken
-									s.handleAppsCreateInstallationAccessTokenRequest(args, w, r)
-									return
+									if len(elem) == 0 {
+										// Leaf: AppsCreateInstallationAccessToken
+										s.handleAppsCreateInstallationAccessTokenRequest(args, w, r)
+										return
+									}
 								}
 							}
 						}
 					case 'l': // Prefix: "lications/"
-						if prefix := "lications/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-							elem = elem[len(prefix):]
+						if l := len("lications/"); len(elem) >= l && elem[0:l] == "lications/" {
+							elem = elem[l:]
 						} else {
 							break
 						}
 
 						// Param: "client_id"
-						// Match until one of "/"
+						// Match until "/"
 						idx := strings.IndexByte(elem, '/')
 						if idx > 0 {
 							args["client_id"] = elem[:idx]
@@ -10681,8 +11602,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							}
 							switch elem[0] {
 							case '/': // Prefix: "/token"
-								if prefix := "/token"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-									elem = elem[len(prefix):]
+								if l := len("/token"); len(elem) >= l && elem[0:l] == "/token" {
+									elem = elem[l:]
 								} else {
 									break
 								}
@@ -10693,39 +11614,43 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								}
 								switch elem[0] {
 								case '/': // Prefix: "/scoped"
-									if prefix := "/scoped"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-										elem = elem[len(prefix):]
+									if l := len("/scoped"); len(elem) >= l && elem[0:l] == "/scoped" {
+										elem = elem[l:]
 									} else {
 										break
 									}
 
-									// Leaf: AppsScopeToken
-									s.handleAppsScopeTokenRequest(args, w, r)
-									return
+									if len(elem) == 0 {
+										// Leaf: AppsScopeToken
+										s.handleAppsScopeTokenRequest(args, w, r)
+										return
+									}
 								}
 							}
 						}
 					}
 				case 'u': // Prefix: "uthorizations"
-					if prefix := "uthorizations"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-						elem = elem[len(prefix):]
+					if l := len("uthorizations"); len(elem) >= l && elem[0:l] == "uthorizations" {
+						elem = elem[l:]
 					} else {
 						break
 					}
 
-					// Leaf: OAuthAuthorizationsCreateAuthorization
-					s.handleOAuthAuthorizationsCreateAuthorizationRequest(args, w, r)
-					return
+					if len(elem) == 0 {
+						// Leaf: OAuthAuthorizationsCreateAuthorization
+						s.handleOAuthAuthorizationsCreateAuthorizationRequest(args, w, r)
+						return
+					}
 				}
 			case 'e': // Prefix: "enterprises/"
-				if prefix := "enterprises/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-					elem = elem[len(prefix):]
+				if l := len("enterprises/"); len(elem) >= l && elem[0:l] == "enterprises/" {
+					elem = elem[l:]
 				} else {
 					break
 				}
 
 				// Param: "enterprise"
-				// Match until one of "/"
+				// Match until "/"
 				idx := strings.IndexByte(elem, '/')
 				if idx > 0 {
 					args["enterprise"] = elem[:idx]
@@ -10736,8 +11661,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					}
 					switch elem[0] {
 					case '/': // Prefix: "/actions/runner"
-						if prefix := "/actions/runner"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-							elem = elem[len(prefix):]
+						if l := len("/actions/runner"); len(elem) >= l && elem[0:l] == "/actions/runner" {
+							elem = elem[l:]
 						} else {
 							break
 						}
@@ -10748,18 +11673,20 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						}
 						switch elem[0] {
 						case '-': // Prefix: "-groups"
-							if prefix := "-groups"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-								elem = elem[len(prefix):]
+							if l := len("-groups"); len(elem) >= l && elem[0:l] == "-groups" {
+								elem = elem[l:]
 							} else {
 								break
 							}
 
-							// Leaf: EnterpriseAdminCreateSelfHostedRunnerGroupForEnterprise
-							s.handleEnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseRequest(args, w, r)
-							return
+							if len(elem) == 0 {
+								// Leaf: EnterpriseAdminCreateSelfHostedRunnerGroupForEnterprise
+								s.handleEnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseRequest(args, w, r)
+								return
+							}
 						case 's': // Prefix: "s/re"
-							if prefix := "s/re"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-								elem = elem[len(prefix):]
+							if l := len("s/re"); len(elem) >= l && elem[0:l] == "s/re" {
+								elem = elem[l:]
 							} else {
 								break
 							}
@@ -10770,32 +11697,36 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							}
 							switch elem[0] {
 							case 'g': // Prefix: "gistration-token"
-								if prefix := "gistration-token"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-									elem = elem[len(prefix):]
+								if l := len("gistration-token"); len(elem) >= l && elem[0:l] == "gistration-token" {
+									elem = elem[l:]
 								} else {
 									break
 								}
 
-								// Leaf: EnterpriseAdminCreateRegistrationTokenForEnterprise
-								s.handleEnterpriseAdminCreateRegistrationTokenForEnterpriseRequest(args, w, r)
-								return
+								if len(elem) == 0 {
+									// Leaf: EnterpriseAdminCreateRegistrationTokenForEnterprise
+									s.handleEnterpriseAdminCreateRegistrationTokenForEnterpriseRequest(args, w, r)
+									return
+								}
 							case 'm': // Prefix: "move-token"
-								if prefix := "move-token"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-									elem = elem[len(prefix):]
+								if l := len("move-token"); len(elem) >= l && elem[0:l] == "move-token" {
+									elem = elem[l:]
 								} else {
 									break
 								}
 
-								// Leaf: EnterpriseAdminCreateRemoveTokenForEnterprise
-								s.handleEnterpriseAdminCreateRemoveTokenForEnterpriseRequest(args, w, r)
-								return
+								if len(elem) == 0 {
+									// Leaf: EnterpriseAdminCreateRemoveTokenForEnterprise
+									s.handleEnterpriseAdminCreateRemoveTokenForEnterpriseRequest(args, w, r)
+									return
+								}
 							}
 						}
 					}
 				}
 			case 'g': // Prefix: "gists"
-				if prefix := "gists"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-					elem = elem[len(prefix):]
+				if l := len("gists"); len(elem) >= l && elem[0:l] == "gists" {
+					elem = elem[l:]
 				} else {
 					break
 				}
@@ -10806,14 +11737,14 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				}
 				switch elem[0] {
 				case '/': // Prefix: "/"
-					if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-						elem = elem[len(prefix):]
+					if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+						elem = elem[l:]
 					} else {
 						break
 					}
 
 					// Param: "gist_id"
-					// Match until one of "/"
+					// Match until "/"
 					idx := strings.IndexByte(elem, '/')
 					if idx > 0 {
 						args["gist_id"] = elem[:idx]
@@ -10824,8 +11755,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						}
 						switch elem[0] {
 						case '/': // Prefix: "/"
-							if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-								elem = elem[len(prefix):]
+							if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+								elem = elem[l:]
 							} else {
 								break
 							}
@@ -10836,38 +11767,42 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							}
 							switch elem[0] {
 							case 'c': // Prefix: "comments"
-								if prefix := "comments"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-									elem = elem[len(prefix):]
+								if l := len("comments"); len(elem) >= l && elem[0:l] == "comments" {
+									elem = elem[l:]
 								} else {
 									break
 								}
 
-								// Leaf: GistsCreateComment
-								s.handleGistsCreateCommentRequest(args, w, r)
-								return
+								if len(elem) == 0 {
+									// Leaf: GistsCreateComment
+									s.handleGistsCreateCommentRequest(args, w, r)
+									return
+								}
 							case 'f': // Prefix: "forks"
-								if prefix := "forks"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-									elem = elem[len(prefix):]
+								if l := len("forks"); len(elem) >= l && elem[0:l] == "forks" {
+									elem = elem[l:]
 								} else {
 									break
 								}
 
-								// Leaf: GistsFork
-								s.handleGistsForkRequest(args, w, r)
-								return
+								if len(elem) == 0 {
+									// Leaf: GistsFork
+									s.handleGistsForkRequest(args, w, r)
+									return
+								}
 							}
 						}
 					}
 				}
 			case 'o': // Prefix: "orgs/"
-				if prefix := "orgs/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-					elem = elem[len(prefix):]
+				if l := len("orgs/"); len(elem) >= l && elem[0:l] == "orgs/" {
+					elem = elem[l:]
 				} else {
 					break
 				}
 
 				// Param: "org"
-				// Match until one of "/"
+				// Match until "/"
 				idx := strings.IndexByte(elem, '/')
 				if idx > 0 {
 					args["org"] = elem[:idx]
@@ -10878,8 +11813,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					}
 					switch elem[0] {
 					case '/': // Prefix: "/"
-						if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-							elem = elem[len(prefix):]
+						if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+							elem = elem[l:]
 						} else {
 							break
 						}
@@ -10890,8 +11825,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						}
 						switch elem[0] {
 						case 'a': // Prefix: "actions/runner"
-							if prefix := "actions/runner"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-								elem = elem[len(prefix):]
+							if l := len("actions/runner"); len(elem) >= l && elem[0:l] == "actions/runner" {
+								elem = elem[l:]
 							} else {
 								break
 							}
@@ -10902,18 +11837,20 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							}
 							switch elem[0] {
 							case '-': // Prefix: "-groups"
-								if prefix := "-groups"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-									elem = elem[len(prefix):]
+								if l := len("-groups"); len(elem) >= l && elem[0:l] == "-groups" {
+									elem = elem[l:]
 								} else {
 									break
 								}
 
-								// Leaf: ActionsCreateSelfHostedRunnerGroupForOrg
-								s.handleActionsCreateSelfHostedRunnerGroupForOrgRequest(args, w, r)
-								return
+								if len(elem) == 0 {
+									// Leaf: ActionsCreateSelfHostedRunnerGroupForOrg
+									s.handleActionsCreateSelfHostedRunnerGroupForOrgRequest(args, w, r)
+									return
+								}
 							case 's': // Prefix: "s/re"
-								if prefix := "s/re"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-									elem = elem[len(prefix):]
+								if l := len("s/re"); len(elem) >= l && elem[0:l] == "s/re" {
+									elem = elem[l:]
 								} else {
 									break
 								}
@@ -10924,30 +11861,34 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								}
 								switch elem[0] {
 								case 'g': // Prefix: "gistration-token"
-									if prefix := "gistration-token"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-										elem = elem[len(prefix):]
+									if l := len("gistration-token"); len(elem) >= l && elem[0:l] == "gistration-token" {
+										elem = elem[l:]
 									} else {
 										break
 									}
 
-									// Leaf: ActionsCreateRegistrationTokenForOrg
-									s.handleActionsCreateRegistrationTokenForOrgRequest(args, w, r)
-									return
+									if len(elem) == 0 {
+										// Leaf: ActionsCreateRegistrationTokenForOrg
+										s.handleActionsCreateRegistrationTokenForOrgRequest(args, w, r)
+										return
+									}
 								case 'm': // Prefix: "move-token"
-									if prefix := "move-token"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-										elem = elem[len(prefix):]
+									if l := len("move-token"); len(elem) >= l && elem[0:l] == "move-token" {
+										elem = elem[l:]
 									} else {
 										break
 									}
 
-									// Leaf: ActionsCreateRemoveTokenForOrg
-									s.handleActionsCreateRemoveTokenForOrgRequest(args, w, r)
-									return
+									if len(elem) == 0 {
+										// Leaf: ActionsCreateRemoveTokenForOrg
+										s.handleActionsCreateRemoveTokenForOrgRequest(args, w, r)
+										return
+									}
 								}
 							}
 						case 'h': // Prefix: "hooks"
-							if prefix := "hooks"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-								elem = elem[len(prefix):]
+							if l := len("hooks"); len(elem) >= l && elem[0:l] == "hooks" {
+								elem = elem[l:]
 							} else {
 								break
 							}
@@ -10958,14 +11899,14 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							}
 							switch elem[0] {
 							case '/': // Prefix: "/"
-								if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-									elem = elem[len(prefix):]
+								if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+									elem = elem[l:]
 								} else {
 									break
 								}
 
 								// Param: "hook_id"
-								// Match until one of "/"
+								// Match until "/"
 								idx := strings.IndexByte(elem, '/')
 								if idx > 0 {
 									args["hook_id"] = elem[:idx]
@@ -10976,8 +11917,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									}
 									switch elem[0] {
 									case '/': // Prefix: "/"
-										if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-											elem = elem[len(prefix):]
+										if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+											elem = elem[l:]
 										} else {
 											break
 										}
@@ -10988,14 +11929,14 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										}
 										switch elem[0] {
 										case 'd': // Prefix: "deliveries/"
-											if prefix := "deliveries/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-												elem = elem[len(prefix):]
+											if l := len("deliveries/"); len(elem) >= l && elem[0:l] == "deliveries/" {
+												elem = elem[l:]
 											} else {
 												break
 											}
 
 											// Param: "delivery_id"
-											// Match until one of "/"
+											// Match until "/"
 											idx := strings.IndexByte(elem, '/')
 											if idx > 0 {
 												args["delivery_id"] = elem[:idx]
@@ -11006,54 +11947,62 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												}
 												switch elem[0] {
 												case '/': // Prefix: "/attempts"
-													if prefix := "/attempts"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-														elem = elem[len(prefix):]
+													if l := len("/attempts"); len(elem) >= l && elem[0:l] == "/attempts" {
+														elem = elem[l:]
 													} else {
 														break
 													}
 
-													// Leaf: OrgsRedeliverWebhookDelivery
-													s.handleOrgsRedeliverWebhookDeliveryRequest(args, w, r)
-													return
+													if len(elem) == 0 {
+														// Leaf: OrgsRedeliverWebhookDelivery
+														s.handleOrgsRedeliverWebhookDeliveryRequest(args, w, r)
+														return
+													}
 												}
 											}
 										case 'p': // Prefix: "pings"
-											if prefix := "pings"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-												elem = elem[len(prefix):]
+											if l := len("pings"); len(elem) >= l && elem[0:l] == "pings" {
+												elem = elem[l:]
 											} else {
 												break
 											}
 
-											// Leaf: OrgsPingWebhook
-											s.handleOrgsPingWebhookRequest(args, w, r)
-											return
+											if len(elem) == 0 {
+												// Leaf: OrgsPingWebhook
+												s.handleOrgsPingWebhookRequest(args, w, r)
+												return
+											}
 										}
 									}
 								}
 							}
 						case 'i': // Prefix: "invitations"
-							if prefix := "invitations"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-								elem = elem[len(prefix):]
+							if l := len("invitations"); len(elem) >= l && elem[0:l] == "invitations" {
+								elem = elem[l:]
 							} else {
 								break
 							}
 
-							// Leaf: OrgsCreateInvitation
-							s.handleOrgsCreateInvitationRequest(args, w, r)
-							return
+							if len(elem) == 0 {
+								// Leaf: OrgsCreateInvitation
+								s.handleOrgsCreateInvitationRequest(args, w, r)
+								return
+							}
 						case 'm': // Prefix: "migrations"
-							if prefix := "migrations"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-								elem = elem[len(prefix):]
+							if l := len("migrations"); len(elem) >= l && elem[0:l] == "migrations" {
+								elem = elem[l:]
 							} else {
 								break
 							}
 
-							// Leaf: MigrationsStartForOrg
-							s.handleMigrationsStartForOrgRequest(args, w, r)
-							return
+							if len(elem) == 0 {
+								// Leaf: MigrationsStartForOrg
+								s.handleMigrationsStartForOrgRequest(args, w, r)
+								return
+							}
 						case 'p': // Prefix: "p"
-							if prefix := "p"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-								elem = elem[len(prefix):]
+							if l := len("p"); len(elem) >= l && elem[0:l] == "p" {
+								elem = elem[l:]
 							} else {
 								break
 							}
@@ -11064,14 +12013,14 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							}
 							switch elem[0] {
 							case 'a': // Prefix: "ackages/"
-								if prefix := "ackages/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-									elem = elem[len(prefix):]
+								if l := len("ackages/"); len(elem) >= l && elem[0:l] == "ackages/" {
+									elem = elem[l:]
 								} else {
 									break
 								}
 
 								// Param: "package_type"
-								// Match until one of "/"
+								// Match until "/"
 								idx := strings.IndexByte(elem, '/')
 								if idx > 0 {
 									args["package_type"] = elem[:idx]
@@ -11082,14 +12031,14 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									}
 									switch elem[0] {
 									case '/': // Prefix: "/"
-										if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-											elem = elem[len(prefix):]
+										if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+											elem = elem[l:]
 										} else {
 											break
 										}
 
 										// Param: "package_name"
-										// Match until one of "/"
+										// Match until "/"
 										idx := strings.IndexByte(elem, '/')
 										if idx > 0 {
 											args["package_name"] = elem[:idx]
@@ -11100,8 +12049,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											}
 											switch elem[0] {
 											case '/': // Prefix: "/"
-												if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-													elem = elem[len(prefix):]
+												if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+													elem = elem[l:]
 												} else {
 													break
 												}
@@ -11112,24 +12061,26 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												}
 												switch elem[0] {
 												case 'r': // Prefix: "restore"
-													if prefix := "restore"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-														elem = elem[len(prefix):]
+													if l := len("restore"); len(elem) >= l && elem[0:l] == "restore" {
+														elem = elem[l:]
 													} else {
 														break
 													}
 
-													// Leaf: PackagesRestorePackageForOrg
-													s.handlePackagesRestorePackageForOrgRequest(args, w, r)
-													return
+													if len(elem) == 0 {
+														// Leaf: PackagesRestorePackageForOrg
+														s.handlePackagesRestorePackageForOrgRequest(args, w, r)
+														return
+													}
 												case 'v': // Prefix: "versions/"
-													if prefix := "versions/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-														elem = elem[len(prefix):]
+													if l := len("versions/"); len(elem) >= l && elem[0:l] == "versions/" {
+														elem = elem[l:]
 													} else {
 														break
 													}
 
 													// Param: "package_version_id"
-													// Match until one of "/"
+													// Match until "/"
 													idx := strings.IndexByte(elem, '/')
 													if idx > 0 {
 														args["package_version_id"] = elem[:idx]
@@ -11140,15 +12091,17 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														}
 														switch elem[0] {
 														case '/': // Prefix: "/restore"
-															if prefix := "/restore"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																elem = elem[len(prefix):]
+															if l := len("/restore"); len(elem) >= l && elem[0:l] == "/restore" {
+																elem = elem[l:]
 															} else {
 																break
 															}
 
-															// Leaf: PackagesRestorePackageVersionForOrg
-															s.handlePackagesRestorePackageVersionForOrgRequest(args, w, r)
-															return
+															if len(elem) == 0 {
+																// Leaf: PackagesRestorePackageVersionForOrg
+																s.handlePackagesRestorePackageVersionForOrgRequest(args, w, r)
+																return
+															}
 														}
 													}
 												}
@@ -11157,29 +12110,33 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									}
 								}
 							case 'r': // Prefix: "rojects"
-								if prefix := "rojects"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-									elem = elem[len(prefix):]
+								if l := len("rojects"); len(elem) >= l && elem[0:l] == "rojects" {
+									elem = elem[l:]
 								} else {
 									break
 								}
 
-								// Leaf: ProjectsCreateForOrg
-								s.handleProjectsCreateForOrgRequest(args, w, r)
-								return
+								if len(elem) == 0 {
+									// Leaf: ProjectsCreateForOrg
+									s.handleProjectsCreateForOrgRequest(args, w, r)
+									return
+								}
 							}
 						case 'r': // Prefix: "repos"
-							if prefix := "repos"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-								elem = elem[len(prefix):]
+							if l := len("repos"); len(elem) >= l && elem[0:l] == "repos" {
+								elem = elem[l:]
 							} else {
 								break
 							}
 
-							// Leaf: ReposCreateInOrg
-							s.handleReposCreateInOrgRequest(args, w, r)
-							return
+							if len(elem) == 0 {
+								// Leaf: ReposCreateInOrg
+								s.handleReposCreateInOrgRequest(args, w, r)
+								return
+							}
 						case 't': // Prefix: "teams"
-							if prefix := "teams"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-								elem = elem[len(prefix):]
+							if l := len("teams"); len(elem) >= l && elem[0:l] == "teams" {
+								elem = elem[l:]
 							} else {
 								break
 							}
@@ -11190,14 +12147,14 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							}
 							switch elem[0] {
 							case '/': // Prefix: "/"
-								if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-									elem = elem[len(prefix):]
+								if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+									elem = elem[l:]
 								} else {
 									break
 								}
 
 								// Param: "team_slug"
-								// Match until one of "/"
+								// Match until "/"
 								idx := strings.IndexByte(elem, '/')
 								if idx > 0 {
 									args["team_slug"] = elem[:idx]
@@ -11208,8 +12165,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									}
 									switch elem[0] {
 									case '/': // Prefix: "/discussions"
-										if prefix := "/discussions"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-											elem = elem[len(prefix):]
+										if l := len("/discussions"); len(elem) >= l && elem[0:l] == "/discussions" {
+											elem = elem[l:]
 										} else {
 											break
 										}
@@ -11220,14 +12177,14 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										}
 										switch elem[0] {
 										case '/': // Prefix: "/"
-											if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-												elem = elem[len(prefix):]
+											if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+												elem = elem[l:]
 											} else {
 												break
 											}
 
 											// Param: "discussion_number"
-											// Match until one of "/"
+											// Match until "/"
 											idx := strings.IndexByte(elem, '/')
 											if idx > 0 {
 												args["discussion_number"] = elem[:idx]
@@ -11238,8 +12195,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												}
 												switch elem[0] {
 												case '/': // Prefix: "/"
-													if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-														elem = elem[len(prefix):]
+													if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+														elem = elem[l:]
 													} else {
 														break
 													}
@@ -11250,8 +12207,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													}
 													switch elem[0] {
 													case 'c': // Prefix: "comments"
-														if prefix := "comments"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-															elem = elem[len(prefix):]
+														if l := len("comments"); len(elem) >= l && elem[0:l] == "comments" {
+															elem = elem[l:]
 														} else {
 															break
 														}
@@ -11262,14 +12219,14 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														}
 														switch elem[0] {
 														case '/': // Prefix: "/"
-															if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																elem = elem[len(prefix):]
+															if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+																elem = elem[l:]
 															} else {
 																break
 															}
 
 															// Param: "comment_number"
-															// Match until one of "/"
+															// Match until "/"
 															idx := strings.IndexByte(elem, '/')
 															if idx > 0 {
 																args["comment_number"] = elem[:idx]
@@ -11280,28 +12237,32 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																}
 																switch elem[0] {
 																case '/': // Prefix: "/reactions"
-																	if prefix := "/reactions"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																		elem = elem[len(prefix):]
+																	if l := len("/reactions"); len(elem) >= l && elem[0:l] == "/reactions" {
+																		elem = elem[l:]
 																	} else {
 																		break
 																	}
 
-																	// Leaf: ReactionsCreateForTeamDiscussionCommentInOrg
-																	s.handleReactionsCreateForTeamDiscussionCommentInOrgRequest(args, w, r)
-																	return
+																	if len(elem) == 0 {
+																		// Leaf: ReactionsCreateForTeamDiscussionCommentInOrg
+																		s.handleReactionsCreateForTeamDiscussionCommentInOrgRequest(args, w, r)
+																		return
+																	}
 																}
 															}
 														}
 													case 'r': // Prefix: "reactions"
-														if prefix := "reactions"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-															elem = elem[len(prefix):]
+														if l := len("reactions"); len(elem) >= l && elem[0:l] == "reactions" {
+															elem = elem[l:]
 														} else {
 															break
 														}
 
-														// Leaf: ReactionsCreateForTeamDiscussionInOrg
-														s.handleReactionsCreateForTeamDiscussionInOrgRequest(args, w, r)
-														return
+														if len(elem) == 0 {
+															// Leaf: ReactionsCreateForTeamDiscussionInOrg
+															s.handleReactionsCreateForTeamDiscussionInOrgRequest(args, w, r)
+															return
+														}
 													}
 												}
 											}
@@ -11313,8 +12274,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					}
 				}
 			case 'p': // Prefix: "projects/"
-				if prefix := "projects/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-					elem = elem[len(prefix):]
+				if l := len("projects/"); len(elem) >= l && elem[0:l] == "projects/" {
+					elem = elem[l:]
 				} else {
 					break
 				}
@@ -11324,8 +12285,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				}
 				switch elem[0] {
 				case 'c': // Prefix: "columns/"
-					if prefix := "columns/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-						elem = elem[len(prefix):]
+					if l := len("columns/"); len(elem) >= l && elem[0:l] == "columns/" {
+						elem = elem[l:]
 					} else {
 						break
 					}
@@ -11336,14 +12297,14 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					}
 					switch elem[0] {
 					case 'c': // Prefix: "cards/"
-						if prefix := "cards/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-							elem = elem[len(prefix):]
+						if l := len("cards/"); len(elem) >= l && elem[0:l] == "cards/" {
+							elem = elem[l:]
 						} else {
 							break
 						}
 
 						// Param: "card_id"
-						// Match until one of "/"
+						// Match until "/"
 						idx := strings.IndexByte(elem, '/')
 						if idx > 0 {
 							args["card_id"] = elem[:idx]
@@ -11354,20 +12315,22 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							}
 							switch elem[0] {
 							case '/': // Prefix: "/moves"
-								if prefix := "/moves"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-									elem = elem[len(prefix):]
+								if l := len("/moves"); len(elem) >= l && elem[0:l] == "/moves" {
+									elem = elem[l:]
 								} else {
 									break
 								}
 
-								// Leaf: ProjectsMoveCard
-								s.handleProjectsMoveCardRequest(args, w, r)
-								return
+								if len(elem) == 0 {
+									// Leaf: ProjectsMoveCard
+									s.handleProjectsMoveCardRequest(args, w, r)
+									return
+								}
 							}
 						}
 					}
 					// Param: "column_id"
-					// Match until one of "/"
+					// Match until "/"
 					idx := strings.IndexByte(elem, '/')
 					if idx > 0 {
 						args["column_id"] = elem[:idx]
@@ -11378,20 +12341,22 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						}
 						switch elem[0] {
 						case '/': // Prefix: "/moves"
-							if prefix := "/moves"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-								elem = elem[len(prefix):]
+							if l := len("/moves"); len(elem) >= l && elem[0:l] == "/moves" {
+								elem = elem[l:]
 							} else {
 								break
 							}
 
-							// Leaf: ProjectsMoveColumn
-							s.handleProjectsMoveColumnRequest(args, w, r)
-							return
+							if len(elem) == 0 {
+								// Leaf: ProjectsMoveColumn
+								s.handleProjectsMoveColumnRequest(args, w, r)
+								return
+							}
 						}
 					}
 				}
 				// Param: "project_id"
-				// Match until one of "/"
+				// Match until "/"
 				idx := strings.IndexByte(elem, '/')
 				if idx > 0 {
 					args["project_id"] = elem[:idx]
@@ -11402,26 +12367,28 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					}
 					switch elem[0] {
 					case '/': // Prefix: "/columns"
-						if prefix := "/columns"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-							elem = elem[len(prefix):]
+						if l := len("/columns"); len(elem) >= l && elem[0:l] == "/columns" {
+							elem = elem[l:]
 						} else {
 							break
 						}
 
-						// Leaf: ProjectsCreateColumn
-						s.handleProjectsCreateColumnRequest(args, w, r)
-						return
+						if len(elem) == 0 {
+							// Leaf: ProjectsCreateColumn
+							s.handleProjectsCreateColumnRequest(args, w, r)
+							return
+						}
 					}
 				}
 			case 'r': // Prefix: "repos/"
-				if prefix := "repos/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-					elem = elem[len(prefix):]
+				if l := len("repos/"); len(elem) >= l && elem[0:l] == "repos/" {
+					elem = elem[l:]
 				} else {
 					break
 				}
 
 				// Param: "owner"
-				// Match until one of "/"
+				// Match until "/"
 				idx := strings.IndexByte(elem, '/')
 				if idx > 0 {
 					args["owner"] = elem[:idx]
@@ -11432,14 +12399,14 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					}
 					switch elem[0] {
 					case '/': // Prefix: "/"
-						if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-							elem = elem[len(prefix):]
+						if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+							elem = elem[l:]
 						} else {
 							break
 						}
 
 						// Param: "repo"
-						// Match until one of "/"
+						// Match until "/"
 						idx := strings.IndexByte(elem, '/')
 						if idx > 0 {
 							args["repo"] = elem[:idx]
@@ -11450,8 +12417,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							}
 							switch elem[0] {
 							case '/': // Prefix: "/"
-								if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-									elem = elem[len(prefix):]
+								if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+									elem = elem[l:]
 								} else {
 									break
 								}
@@ -11462,8 +12429,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								}
 								switch elem[0] {
 								case 'a': // Prefix: "a"
-									if prefix := "a"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-										elem = elem[len(prefix):]
+									if l := len("a"); len(elem) >= l && elem[0:l] == "a" {
+										elem = elem[l:]
 									} else {
 										break
 									}
@@ -11474,8 +12441,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									}
 									switch elem[0] {
 									case 'c': // Prefix: "ctions/run"
-										if prefix := "ctions/run"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-											elem = elem[len(prefix):]
+										if l := len("ctions/run"); len(elem) >= l && elem[0:l] == "ctions/run" {
+											elem = elem[l:]
 										} else {
 											break
 										}
@@ -11486,8 +12453,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										}
 										switch elem[0] {
 										case 'n': // Prefix: "ners/re"
-											if prefix := "ners/re"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-												elem = elem[len(prefix):]
+											if l := len("ners/re"); len(elem) >= l && elem[0:l] == "ners/re" {
+												elem = elem[l:]
 											} else {
 												break
 											}
@@ -11498,35 +12465,39 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											}
 											switch elem[0] {
 											case 'g': // Prefix: "gistration-token"
-												if prefix := "gistration-token"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-													elem = elem[len(prefix):]
+												if l := len("gistration-token"); len(elem) >= l && elem[0:l] == "gistration-token" {
+													elem = elem[l:]
 												} else {
 													break
 												}
 
-												// Leaf: ActionsCreateRegistrationTokenForRepo
-												s.handleActionsCreateRegistrationTokenForRepoRequest(args, w, r)
-												return
+												if len(elem) == 0 {
+													// Leaf: ActionsCreateRegistrationTokenForRepo
+													s.handleActionsCreateRegistrationTokenForRepoRequest(args, w, r)
+													return
+												}
 											case 'm': // Prefix: "move-token"
-												if prefix := "move-token"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-													elem = elem[len(prefix):]
+												if l := len("move-token"); len(elem) >= l && elem[0:l] == "move-token" {
+													elem = elem[l:]
 												} else {
 													break
 												}
 
-												// Leaf: ActionsCreateRemoveTokenForRepo
-												s.handleActionsCreateRemoveTokenForRepoRequest(args, w, r)
-												return
+												if len(elem) == 0 {
+													// Leaf: ActionsCreateRemoveTokenForRepo
+													s.handleActionsCreateRemoveTokenForRepoRequest(args, w, r)
+													return
+												}
 											}
 										case 's': // Prefix: "s/"
-											if prefix := "s/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-												elem = elem[len(prefix):]
+											if l := len("s/"); len(elem) >= l && elem[0:l] == "s/" {
+												elem = elem[l:]
 											} else {
 												break
 											}
 
 											// Param: "run_id"
-											// Match until one of "/"
+											// Match until "/"
 											idx := strings.IndexByte(elem, '/')
 											if idx > 0 {
 												args["run_id"] = elem[:idx]
@@ -11537,8 +12508,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												}
 												switch elem[0] {
 												case '/': // Prefix: "/"
-													if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-														elem = elem[len(prefix):]
+													if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+														elem = elem[l:]
 													} else {
 														break
 													}
@@ -11549,38 +12520,44 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													}
 													switch elem[0] {
 													case 'a': // Prefix: "approve"
-														if prefix := "approve"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-															elem = elem[len(prefix):]
+														if l := len("approve"); len(elem) >= l && elem[0:l] == "approve" {
+															elem = elem[l:]
 														} else {
 															break
 														}
 
-														// Leaf: ActionsApproveWorkflowRun
-														s.handleActionsApproveWorkflowRunRequest(args, w, r)
-														return
+														if len(elem) == 0 {
+															// Leaf: ActionsApproveWorkflowRun
+															s.handleActionsApproveWorkflowRunRequest(args, w, r)
+															return
+														}
 													case 'c': // Prefix: "cancel"
-														if prefix := "cancel"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-															elem = elem[len(prefix):]
+														if l := len("cancel"); len(elem) >= l && elem[0:l] == "cancel" {
+															elem = elem[l:]
 														} else {
 															break
 														}
 
-														// Leaf: ActionsCancelWorkflowRun
-														s.handleActionsCancelWorkflowRunRequest(args, w, r)
-														return
+														if len(elem) == 0 {
+															// Leaf: ActionsCancelWorkflowRun
+															s.handleActionsCancelWorkflowRunRequest(args, w, r)
+															return
+														}
 													case 'p': // Prefix: "pending_deployments"
-														if prefix := "pending_deployments"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-															elem = elem[len(prefix):]
+														if l := len("pending_deployments"); len(elem) >= l && elem[0:l] == "pending_deployments" {
+															elem = elem[l:]
 														} else {
 															break
 														}
 
-														// Leaf: ActionsReviewPendingDeploymentsForRun
-														s.handleActionsReviewPendingDeploymentsForRunRequest(args, w, r)
-														return
+														if len(elem) == 0 {
+															// Leaf: ActionsReviewPendingDeploymentsForRun
+															s.handleActionsReviewPendingDeploymentsForRunRequest(args, w, r)
+															return
+														}
 													case 'r': // Prefix: "re"
-														if prefix := "re"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-															elem = elem[len(prefix):]
+														if l := len("re"); len(elem) >= l && elem[0:l] == "re" {
+															elem = elem[l:]
 														} else {
 															break
 														}
@@ -11591,50 +12568,56 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														}
 														switch elem[0] {
 														case 'r': // Prefix: "run"
-															if prefix := "run"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																elem = elem[len(prefix):]
+															if l := len("run"); len(elem) >= l && elem[0:l] == "run" {
+																elem = elem[l:]
 															} else {
 																break
 															}
 
-															// Leaf: ActionsReRunWorkflow
-															s.handleActionsReRunWorkflowRequest(args, w, r)
-															return
+															if len(elem) == 0 {
+																// Leaf: ActionsReRunWorkflow
+																s.handleActionsReRunWorkflowRequest(args, w, r)
+																return
+															}
 														case 't': // Prefix: "try"
-															if prefix := "try"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																elem = elem[len(prefix):]
+															if l := len("try"); len(elem) >= l && elem[0:l] == "try" {
+																elem = elem[l:]
 															} else {
 																break
 															}
 
-															// Leaf: ActionsRetryWorkflow
-															s.handleActionsRetryWorkflowRequest(args, w, r)
-															return
+															if len(elem) == 0 {
+																// Leaf: ActionsRetryWorkflow
+																s.handleActionsRetryWorkflowRequest(args, w, r)
+																return
+															}
 														}
 													}
 												}
 											}
 										}
 									case 'u': // Prefix: "utolinks"
-										if prefix := "utolinks"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-											elem = elem[len(prefix):]
+										if l := len("utolinks"); len(elem) >= l && elem[0:l] == "utolinks" {
+											elem = elem[l:]
 										} else {
 											break
 										}
 
-										// Leaf: ReposCreateAutolink
-										s.handleReposCreateAutolinkRequest(args, w, r)
-										return
+										if len(elem) == 0 {
+											// Leaf: ReposCreateAutolink
+											s.handleReposCreateAutolinkRequest(args, w, r)
+											return
+										}
 									}
 								case 'b': // Prefix: "branches/"
-									if prefix := "branches/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-										elem = elem[len(prefix):]
+									if l := len("branches/"); len(elem) >= l && elem[0:l] == "branches/" {
+										elem = elem[l:]
 									} else {
 										break
 									}
 
 									// Param: "branch"
-									// Match until one of "/"
+									// Match until "/"
 									idx := strings.IndexByte(elem, '/')
 									if idx > 0 {
 										args["branch"] = elem[:idx]
@@ -11645,8 +12628,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										}
 										switch elem[0] {
 										case '/': // Prefix: "/"
-											if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-												elem = elem[len(prefix):]
+											if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+												elem = elem[l:]
 											} else {
 												break
 											}
@@ -11657,8 +12640,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											}
 											switch elem[0] {
 											case 'p': // Prefix: "protection/"
-												if prefix := "protection/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-													elem = elem[len(prefix):]
+												if l := len("protection/"); len(elem) >= l && elem[0:l] == "protection/" {
+													elem = elem[l:]
 												} else {
 													break
 												}
@@ -11669,18 +12652,20 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												}
 												switch elem[0] {
 												case 'e': // Prefix: "enforce_admins"
-													if prefix := "enforce_admins"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-														elem = elem[len(prefix):]
+													if l := len("enforce_admins"); len(elem) >= l && elem[0:l] == "enforce_admins" {
+														elem = elem[l:]
 													} else {
 														break
 													}
 
-													// Leaf: ReposSetAdminBranchProtection
-													s.handleReposSetAdminBranchProtectionRequest(args, w, r)
-													return
+													if len(elem) == 0 {
+														// Leaf: ReposSetAdminBranchProtection
+														s.handleReposSetAdminBranchProtectionRequest(args, w, r)
+														return
+													}
 												case 'r': // Prefix: "re"
-													if prefix := "re"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-														elem = elem[len(prefix):]
+													if l := len("re"); len(elem) >= l && elem[0:l] == "re" {
+														elem = elem[l:]
 													} else {
 														break
 													}
@@ -11691,8 +12676,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													}
 													switch elem[0] {
 													case 'q': // Prefix: "quired_s"
-														if prefix := "quired_s"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-															elem = elem[len(prefix):]
+														if l := len("quired_s"); len(elem) >= l && elem[0:l] == "quired_s" {
+															elem = elem[l:]
 														} else {
 															break
 														}
@@ -11703,29 +12688,33 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														}
 														switch elem[0] {
 														case 'i': // Prefix: "ignatures"
-															if prefix := "ignatures"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																elem = elem[len(prefix):]
+															if l := len("ignatures"); len(elem) >= l && elem[0:l] == "ignatures" {
+																elem = elem[l:]
 															} else {
 																break
 															}
 
-															// Leaf: ReposCreateCommitSignatureProtection
-															s.handleReposCreateCommitSignatureProtectionRequest(args, w, r)
-															return
+															if len(elem) == 0 {
+																// Leaf: ReposCreateCommitSignatureProtection
+																s.handleReposCreateCommitSignatureProtectionRequest(args, w, r)
+																return
+															}
 														case 't': // Prefix: "tatus_checks/contexts"
-															if prefix := "tatus_checks/contexts"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																elem = elem[len(prefix):]
+															if l := len("tatus_checks/contexts"); len(elem) >= l && elem[0:l] == "tatus_checks/contexts" {
+																elem = elem[l:]
 															} else {
 																break
 															}
 
-															// Leaf: ReposAddStatusCheckContexts
-															s.handleReposAddStatusCheckContextsRequest(args, w, r)
-															return
+															if len(elem) == 0 {
+																// Leaf: ReposAddStatusCheckContexts
+																s.handleReposAddStatusCheckContextsRequest(args, w, r)
+																return
+															}
 														}
 													case 's': // Prefix: "strictions/"
-														if prefix := "strictions/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-															elem = elem[len(prefix):]
+														if l := len("strictions/"); len(elem) >= l && elem[0:l] == "strictions/" {
+															elem = elem[l:]
 														} else {
 															break
 														}
@@ -11736,54 +12725,62 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														}
 														switch elem[0] {
 														case 'a': // Prefix: "apps"
-															if prefix := "apps"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																elem = elem[len(prefix):]
+															if l := len("apps"); len(elem) >= l && elem[0:l] == "apps" {
+																elem = elem[l:]
 															} else {
 																break
 															}
 
-															// Leaf: ReposAddAppAccessRestrictions
-															s.handleReposAddAppAccessRestrictionsRequest(args, w, r)
-															return
+															if len(elem) == 0 {
+																// Leaf: ReposAddAppAccessRestrictions
+																s.handleReposAddAppAccessRestrictionsRequest(args, w, r)
+																return
+															}
 														case 't': // Prefix: "teams"
-															if prefix := "teams"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																elem = elem[len(prefix):]
+															if l := len("teams"); len(elem) >= l && elem[0:l] == "teams" {
+																elem = elem[l:]
 															} else {
 																break
 															}
 
-															// Leaf: ReposAddTeamAccessRestrictions
-															s.handleReposAddTeamAccessRestrictionsRequest(args, w, r)
-															return
+															if len(elem) == 0 {
+																// Leaf: ReposAddTeamAccessRestrictions
+																s.handleReposAddTeamAccessRestrictionsRequest(args, w, r)
+																return
+															}
 														case 'u': // Prefix: "users"
-															if prefix := "users"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																elem = elem[len(prefix):]
+															if l := len("users"); len(elem) >= l && elem[0:l] == "users" {
+																elem = elem[l:]
 															} else {
 																break
 															}
 
-															// Leaf: ReposAddUserAccessRestrictions
-															s.handleReposAddUserAccessRestrictionsRequest(args, w, r)
-															return
+															if len(elem) == 0 {
+																// Leaf: ReposAddUserAccessRestrictions
+																s.handleReposAddUserAccessRestrictionsRequest(args, w, r)
+																return
+															}
 														}
 													}
 												}
 											case 'r': // Prefix: "rename"
-												if prefix := "rename"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-													elem = elem[len(prefix):]
+												if l := len("rename"); len(elem) >= l && elem[0:l] == "rename" {
+													elem = elem[l:]
 												} else {
 													break
 												}
 
-												// Leaf: ReposRenameBranch
-												s.handleReposRenameBranchRequest(args, w, r)
-												return
+												if len(elem) == 0 {
+													// Leaf: ReposRenameBranch
+													s.handleReposRenameBranchRequest(args, w, r)
+													return
+												}
 											}
 										}
 									}
 								case 'c': // Prefix: "c"
-									if prefix := "c"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-										elem = elem[len(prefix):]
+									if l := len("c"); len(elem) >= l && elem[0:l] == "c" {
+										elem = elem[l:]
 									} else {
 										break
 									}
@@ -11794,8 +12791,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									}
 									switch elem[0] {
 									case 'h': // Prefix: "heck-suites"
-										if prefix := "heck-suites"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-											elem = elem[len(prefix):]
+										if l := len("heck-suites"); len(elem) >= l && elem[0:l] == "heck-suites" {
+											elem = elem[l:]
 										} else {
 											break
 										}
@@ -11806,14 +12803,14 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										}
 										switch elem[0] {
 										case '/': // Prefix: "/"
-											if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-												elem = elem[len(prefix):]
+											if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+												elem = elem[l:]
 											} else {
 												break
 											}
 
 											// Param: "check_suite_id"
-											// Match until one of "/"
+											// Match until "/"
 											idx := strings.IndexByte(elem, '/')
 											if idx > 0 {
 												args["check_suite_id"] = elem[:idx]
@@ -11824,21 +12821,23 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												}
 												switch elem[0] {
 												case '/': // Prefix: "/rerequest"
-													if prefix := "/rerequest"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-														elem = elem[len(prefix):]
+													if l := len("/rerequest"); len(elem) >= l && elem[0:l] == "/rerequest" {
+														elem = elem[l:]
 													} else {
 														break
 													}
 
-													// Leaf: ChecksRerequestSuite
-													s.handleChecksRerequestSuiteRequest(args, w, r)
-													return
+													if len(elem) == 0 {
+														// Leaf: ChecksRerequestSuite
+														s.handleChecksRerequestSuiteRequest(args, w, r)
+														return
+													}
 												}
 											}
 										}
 									case 'o': // Prefix: "o"
-										if prefix := "o"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-											elem = elem[len(prefix):]
+										if l := len("o"); len(elem) >= l && elem[0:l] == "o" {
+											elem = elem[l:]
 										} else {
 											break
 										}
@@ -11849,18 +12848,20 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										}
 										switch elem[0] {
 										case 'd': // Prefix: "de-scanning/sarifs"
-											if prefix := "de-scanning/sarifs"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-												elem = elem[len(prefix):]
+											if l := len("de-scanning/sarifs"); len(elem) >= l && elem[0:l] == "de-scanning/sarifs" {
+												elem = elem[l:]
 											} else {
 												break
 											}
 
-											// Leaf: CodeScanningUploadSarif
-											s.handleCodeScanningUploadSarifRequest(args, w, r)
-											return
+											if len(elem) == 0 {
+												// Leaf: CodeScanningUploadSarif
+												s.handleCodeScanningUploadSarifRequest(args, w, r)
+												return
+											}
 										case 'm': // Prefix: "mm"
-											if prefix := "mm"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-												elem = elem[len(prefix):]
+											if l := len("mm"); len(elem) >= l && elem[0:l] == "mm" {
+												elem = elem[l:]
 											} else {
 												break
 											}
@@ -11871,14 +12872,14 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											}
 											switch elem[0] {
 											case 'e': // Prefix: "ents/"
-												if prefix := "ents/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-													elem = elem[len(prefix):]
+												if l := len("ents/"); len(elem) >= l && elem[0:l] == "ents/" {
+													elem = elem[l:]
 												} else {
 													break
 												}
 
 												// Param: "comment_id"
-												// Match until one of "/"
+												// Match until "/"
 												idx := strings.IndexByte(elem, '/')
 												if idx > 0 {
 													args["comment_id"] = elem[:idx]
@@ -11889,26 +12890,28 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													}
 													switch elem[0] {
 													case '/': // Prefix: "/reactions"
-														if prefix := "/reactions"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-															elem = elem[len(prefix):]
+														if l := len("/reactions"); len(elem) >= l && elem[0:l] == "/reactions" {
+															elem = elem[l:]
 														} else {
 															break
 														}
 
-														// Leaf: ReactionsCreateForCommitComment
-														s.handleReactionsCreateForCommitCommentRequest(args, w, r)
-														return
+														if len(elem) == 0 {
+															// Leaf: ReactionsCreateForCommitComment
+															s.handleReactionsCreateForCommitCommentRequest(args, w, r)
+															return
+														}
 													}
 												}
 											case 'i': // Prefix: "its/"
-												if prefix := "its/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-													elem = elem[len(prefix):]
+												if l := len("its/"); len(elem) >= l && elem[0:l] == "its/" {
+													elem = elem[l:]
 												} else {
 													break
 												}
 
 												// Param: "commit_sha"
-												// Match until one of "/"
+												// Match until "/"
 												idx := strings.IndexByte(elem, '/')
 												if idx > 0 {
 													args["commit_sha"] = elem[:idx]
@@ -11919,27 +12922,29 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													}
 													switch elem[0] {
 													case '/': // Prefix: "/comments"
-														if prefix := "/comments"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-															elem = elem[len(prefix):]
+														if l := len("/comments"); len(elem) >= l && elem[0:l] == "/comments" {
+															elem = elem[l:]
 														} else {
 															break
 														}
 
-														// Leaf: ReposCreateCommitComment
-														s.handleReposCreateCommitCommentRequest(args, w, r)
-														return
+														if len(elem) == 0 {
+															// Leaf: ReposCreateCommitComment
+															s.handleReposCreateCommitCommentRequest(args, w, r)
+															return
+														}
 													}
 												}
 											}
 										case 'n': // Prefix: "ntent_references/"
-											if prefix := "ntent_references/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-												elem = elem[len(prefix):]
+											if l := len("ntent_references/"); len(elem) >= l && elem[0:l] == "ntent_references/" {
+												elem = elem[l:]
 											} else {
 												break
 											}
 
 											// Param: "content_reference_id"
-											// Match until one of "/"
+											// Match until "/"
 											idx := strings.IndexByte(elem, '/')
 											if idx > 0 {
 												args["content_reference_id"] = elem[:idx]
@@ -11950,22 +12955,24 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												}
 												switch elem[0] {
 												case '/': // Prefix: "/attachments"
-													if prefix := "/attachments"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-														elem = elem[len(prefix):]
+													if l := len("/attachments"); len(elem) >= l && elem[0:l] == "/attachments" {
+														elem = elem[l:]
 													} else {
 														break
 													}
 
-													// Leaf: AppsCreateContentAttachment
-													s.handleAppsCreateContentAttachmentRequest(args, w, r)
-													return
+													if len(elem) == 0 {
+														// Leaf: AppsCreateContentAttachment
+														s.handleAppsCreateContentAttachmentRequest(args, w, r)
+														return
+													}
 												}
 											}
 										}
 									}
 								case 'd': // Prefix: "d"
-									if prefix := "d"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-										elem = elem[len(prefix):]
+									if l := len("d"); len(elem) >= l && elem[0:l] == "d" {
+										elem = elem[l:]
 									} else {
 										break
 									}
@@ -11976,8 +12983,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									}
 									switch elem[0] {
 									case 'e': // Prefix: "eployments"
-										if prefix := "eployments"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-											elem = elem[len(prefix):]
+										if l := len("eployments"); len(elem) >= l && elem[0:l] == "eployments" {
+											elem = elem[l:]
 										} else {
 											break
 										}
@@ -11988,14 +12995,14 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										}
 										switch elem[0] {
 										case '/': // Prefix: "/"
-											if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-												elem = elem[len(prefix):]
+											if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+												elem = elem[l:]
 											} else {
 												break
 											}
 
 											// Param: "deployment_id"
-											// Match until one of "/"
+											// Match until "/"
 											idx := strings.IndexByte(elem, '/')
 											if idx > 0 {
 												args["deployment_id"] = elem[:idx]
@@ -12006,42 +13013,48 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												}
 												switch elem[0] {
 												case '/': // Prefix: "/statuses"
-													if prefix := "/statuses"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-														elem = elem[len(prefix):]
+													if l := len("/statuses"); len(elem) >= l && elem[0:l] == "/statuses" {
+														elem = elem[l:]
 													} else {
 														break
 													}
 
-													// Leaf: ReposCreateDeploymentStatus
-													s.handleReposCreateDeploymentStatusRequest(args, w, r)
-													return
+													if len(elem) == 0 {
+														// Leaf: ReposCreateDeploymentStatus
+														s.handleReposCreateDeploymentStatusRequest(args, w, r)
+														return
+													}
 												}
 											}
 										}
 									case 'i': // Prefix: "ispatches"
-										if prefix := "ispatches"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-											elem = elem[len(prefix):]
+										if l := len("ispatches"); len(elem) >= l && elem[0:l] == "ispatches" {
+											elem = elem[l:]
 										} else {
 											break
 										}
 
-										// Leaf: ReposCreateDispatchEvent
-										s.handleReposCreateDispatchEventRequest(args, w, r)
-										return
+										if len(elem) == 0 {
+											// Leaf: ReposCreateDispatchEvent
+											s.handleReposCreateDispatchEventRequest(args, w, r)
+											return
+										}
 									}
 								case 'f': // Prefix: "forks"
-									if prefix := "forks"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-										elem = elem[len(prefix):]
+									if l := len("forks"); len(elem) >= l && elem[0:l] == "forks" {
+										elem = elem[l:]
 									} else {
 										break
 									}
 
-									// Leaf: ReposCreateFork
-									s.handleReposCreateForkRequest(args, w, r)
-									return
+									if len(elem) == 0 {
+										// Leaf: ReposCreateFork
+										s.handleReposCreateForkRequest(args, w, r)
+										return
+									}
 								case 'g': // Prefix: "g"
-									if prefix := "g"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-										elem = elem[len(prefix):]
+									if l := len("g"); len(elem) >= l && elem[0:l] == "g" {
+										elem = elem[l:]
 									} else {
 										break
 									}
@@ -12052,18 +13065,20 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									}
 									switch elem[0] {
 									case 'e': // Prefix: "enerate"
-										if prefix := "enerate"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-											elem = elem[len(prefix):]
+										if l := len("enerate"); len(elem) >= l && elem[0:l] == "enerate" {
+											elem = elem[l:]
 										} else {
 											break
 										}
 
-										// Leaf: ReposCreateUsingTemplate
-										s.handleReposCreateUsingTemplateRequest(args, w, r)
-										return
+										if len(elem) == 0 {
+											// Leaf: ReposCreateUsingTemplate
+											s.handleReposCreateUsingTemplateRequest(args, w, r)
+											return
+										}
 									case 'i': // Prefix: "it/"
-										if prefix := "it/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-											elem = elem[len(prefix):]
+										if l := len("it/"); len(elem) >= l && elem[0:l] == "it/" {
+											elem = elem[l:]
 										} else {
 											break
 										}
@@ -12074,38 +13089,44 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										}
 										switch elem[0] {
 										case 'b': // Prefix: "blobs"
-											if prefix := "blobs"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-												elem = elem[len(prefix):]
+											if l := len("blobs"); len(elem) >= l && elem[0:l] == "blobs" {
+												elem = elem[l:]
 											} else {
 												break
 											}
 
-											// Leaf: GitCreateBlob
-											s.handleGitCreateBlobRequest(args, w, r)
-											return
+											if len(elem) == 0 {
+												// Leaf: GitCreateBlob
+												s.handleGitCreateBlobRequest(args, w, r)
+												return
+											}
 										case 'c': // Prefix: "commits"
-											if prefix := "commits"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-												elem = elem[len(prefix):]
+											if l := len("commits"); len(elem) >= l && elem[0:l] == "commits" {
+												elem = elem[l:]
 											} else {
 												break
 											}
 
-											// Leaf: GitCreateCommit
-											s.handleGitCreateCommitRequest(args, w, r)
-											return
+											if len(elem) == 0 {
+												// Leaf: GitCreateCommit
+												s.handleGitCreateCommitRequest(args, w, r)
+												return
+											}
 										case 'r': // Prefix: "refs"
-											if prefix := "refs"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-												elem = elem[len(prefix):]
+											if l := len("refs"); len(elem) >= l && elem[0:l] == "refs" {
+												elem = elem[l:]
 											} else {
 												break
 											}
 
-											// Leaf: GitCreateRef
-											s.handleGitCreateRefRequest(args, w, r)
-											return
+											if len(elem) == 0 {
+												// Leaf: GitCreateRef
+												s.handleGitCreateRefRequest(args, w, r)
+												return
+											}
 										case 't': // Prefix: "t"
-											if prefix := "t"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-												elem = elem[len(prefix):]
+											if l := len("t"); len(elem) >= l && elem[0:l] == "t" {
+												elem = elem[l:]
 											} else {
 												break
 											}
@@ -12116,31 +13137,35 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											}
 											switch elem[0] {
 											case 'a': // Prefix: "ags"
-												if prefix := "ags"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-													elem = elem[len(prefix):]
+												if l := len("ags"); len(elem) >= l && elem[0:l] == "ags" {
+													elem = elem[l:]
 												} else {
 													break
 												}
 
-												// Leaf: GitCreateTag
-												s.handleGitCreateTagRequest(args, w, r)
-												return
+												if len(elem) == 0 {
+													// Leaf: GitCreateTag
+													s.handleGitCreateTagRequest(args, w, r)
+													return
+												}
 											case 'r': // Prefix: "rees"
-												if prefix := "rees"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-													elem = elem[len(prefix):]
+												if l := len("rees"); len(elem) >= l && elem[0:l] == "rees" {
+													elem = elem[l:]
 												} else {
 													break
 												}
 
-												// Leaf: GitCreateTree
-												s.handleGitCreateTreeRequest(args, w, r)
-												return
+												if len(elem) == 0 {
+													// Leaf: GitCreateTree
+													s.handleGitCreateTreeRequest(args, w, r)
+													return
+												}
 											}
 										}
 									}
 								case 'h': // Prefix: "hooks"
-									if prefix := "hooks"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-										elem = elem[len(prefix):]
+									if l := len("hooks"); len(elem) >= l && elem[0:l] == "hooks" {
+										elem = elem[l:]
 									} else {
 										break
 									}
@@ -12151,14 +13176,14 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									}
 									switch elem[0] {
 									case '/': // Prefix: "/"
-										if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-											elem = elem[len(prefix):]
+										if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+											elem = elem[l:]
 										} else {
 											break
 										}
 
 										// Param: "hook_id"
-										// Match until one of "/"
+										// Match until "/"
 										idx := strings.IndexByte(elem, '/')
 										if idx > 0 {
 											args["hook_id"] = elem[:idx]
@@ -12169,8 +13194,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											}
 											switch elem[0] {
 											case '/': // Prefix: "/"
-												if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-													elem = elem[len(prefix):]
+												if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+													elem = elem[l:]
 												} else {
 													break
 												}
@@ -12181,14 +13206,14 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												}
 												switch elem[0] {
 												case 'd': // Prefix: "deliveries/"
-													if prefix := "deliveries/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-														elem = elem[len(prefix):]
+													if l := len("deliveries/"); len(elem) >= l && elem[0:l] == "deliveries/" {
+														elem = elem[l:]
 													} else {
 														break
 													}
 
 													// Param: "delivery_id"
-													// Match until one of "/"
+													// Match until "/"
 													idx := strings.IndexByte(elem, '/')
 													if idx > 0 {
 														args["delivery_id"] = elem[:idx]
@@ -12199,44 +13224,50 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														}
 														switch elem[0] {
 														case '/': // Prefix: "/attempts"
-															if prefix := "/attempts"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																elem = elem[len(prefix):]
+															if l := len("/attempts"); len(elem) >= l && elem[0:l] == "/attempts" {
+																elem = elem[l:]
 															} else {
 																break
 															}
 
-															// Leaf: ReposRedeliverWebhookDelivery
-															s.handleReposRedeliverWebhookDeliveryRequest(args, w, r)
-															return
+															if len(elem) == 0 {
+																// Leaf: ReposRedeliverWebhookDelivery
+																s.handleReposRedeliverWebhookDeliveryRequest(args, w, r)
+																return
+															}
 														}
 													}
 												case 'p': // Prefix: "pings"
-													if prefix := "pings"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-														elem = elem[len(prefix):]
+													if l := len("pings"); len(elem) >= l && elem[0:l] == "pings" {
+														elem = elem[l:]
 													} else {
 														break
 													}
 
-													// Leaf: ReposPingWebhook
-													s.handleReposPingWebhookRequest(args, w, r)
-													return
+													if len(elem) == 0 {
+														// Leaf: ReposPingWebhook
+														s.handleReposPingWebhookRequest(args, w, r)
+														return
+													}
 												case 't': // Prefix: "tests"
-													if prefix := "tests"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-														elem = elem[len(prefix):]
+													if l := len("tests"); len(elem) >= l && elem[0:l] == "tests" {
+														elem = elem[l:]
 													} else {
 														break
 													}
 
-													// Leaf: ReposTestPushWebhook
-													s.handleReposTestPushWebhookRequest(args, w, r)
-													return
+													if len(elem) == 0 {
+														// Leaf: ReposTestPushWebhook
+														s.handleReposTestPushWebhookRequest(args, w, r)
+														return
+													}
 												}
 											}
 										}
 									}
 								case 'i': // Prefix: "issues"
-									if prefix := "issues"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-										elem = elem[len(prefix):]
+									if l := len("issues"); len(elem) >= l && elem[0:l] == "issues" {
+										elem = elem[l:]
 									} else {
 										break
 									}
@@ -12247,8 +13278,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									}
 									switch elem[0] {
 									case '/': // Prefix: "/"
-										if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-											elem = elem[len(prefix):]
+										if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+											elem = elem[l:]
 										} else {
 											break
 										}
@@ -12258,14 +13289,14 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										}
 										switch elem[0] {
 										case 'c': // Prefix: "comments/"
-											if prefix := "comments/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-												elem = elem[len(prefix):]
+											if l := len("comments/"); len(elem) >= l && elem[0:l] == "comments/" {
+												elem = elem[l:]
 											} else {
 												break
 											}
 
 											// Param: "comment_id"
-											// Match until one of "/"
+											// Match until "/"
 											idx := strings.IndexByte(elem, '/')
 											if idx > 0 {
 												args["comment_id"] = elem[:idx]
@@ -12276,20 +13307,22 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												}
 												switch elem[0] {
 												case '/': // Prefix: "/reactions"
-													if prefix := "/reactions"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-														elem = elem[len(prefix):]
+													if l := len("/reactions"); len(elem) >= l && elem[0:l] == "/reactions" {
+														elem = elem[l:]
 													} else {
 														break
 													}
 
-													// Leaf: ReactionsCreateForIssueComment
-													s.handleReactionsCreateForIssueCommentRequest(args, w, r)
-													return
+													if len(elem) == 0 {
+														// Leaf: ReactionsCreateForIssueComment
+														s.handleReactionsCreateForIssueCommentRequest(args, w, r)
+														return
+													}
 												}
 											}
 										}
 										// Param: "issue_number"
-										// Match until one of "/"
+										// Match until "/"
 										idx := strings.IndexByte(elem, '/')
 										if idx > 0 {
 											args["issue_number"] = elem[:idx]
@@ -12300,8 +13333,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											}
 											switch elem[0] {
 											case '/': // Prefix: "/"
-												if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-													elem = elem[len(prefix):]
+												if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+													elem = elem[l:]
 												} else {
 													break
 												}
@@ -12312,62 +13345,72 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												}
 												switch elem[0] {
 												case 'a': // Prefix: "assignees"
-													if prefix := "assignees"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-														elem = elem[len(prefix):]
+													if l := len("assignees"); len(elem) >= l && elem[0:l] == "assignees" {
+														elem = elem[l:]
 													} else {
 														break
 													}
 
-													// Leaf: IssuesAddAssignees
-													s.handleIssuesAddAssigneesRequest(args, w, r)
-													return
+													if len(elem) == 0 {
+														// Leaf: IssuesAddAssignees
+														s.handleIssuesAddAssigneesRequest(args, w, r)
+														return
+													}
 												case 'c': // Prefix: "comments"
-													if prefix := "comments"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-														elem = elem[len(prefix):]
+													if l := len("comments"); len(elem) >= l && elem[0:l] == "comments" {
+														elem = elem[l:]
 													} else {
 														break
 													}
 
-													// Leaf: IssuesCreateComment
-													s.handleIssuesCreateCommentRequest(args, w, r)
-													return
+													if len(elem) == 0 {
+														// Leaf: IssuesCreateComment
+														s.handleIssuesCreateCommentRequest(args, w, r)
+														return
+													}
 												case 'r': // Prefix: "reactions"
-													if prefix := "reactions"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-														elem = elem[len(prefix):]
+													if l := len("reactions"); len(elem) >= l && elem[0:l] == "reactions" {
+														elem = elem[l:]
 													} else {
 														break
 													}
 
-													// Leaf: ReactionsCreateForIssue
-													s.handleReactionsCreateForIssueRequest(args, w, r)
-													return
+													if len(elem) == 0 {
+														// Leaf: ReactionsCreateForIssue
+														s.handleReactionsCreateForIssueRequest(args, w, r)
+														return
+													}
 												}
 											}
 										}
 									}
 								case 'k': // Prefix: "keys"
-									if prefix := "keys"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-										elem = elem[len(prefix):]
+									if l := len("keys"); len(elem) >= l && elem[0:l] == "keys" {
+										elem = elem[l:]
 									} else {
 										break
 									}
 
-									// Leaf: ReposCreateDeployKey
-									s.handleReposCreateDeployKeyRequest(args, w, r)
-									return
+									if len(elem) == 0 {
+										// Leaf: ReposCreateDeployKey
+										s.handleReposCreateDeployKeyRequest(args, w, r)
+										return
+									}
 								case 'l': // Prefix: "labels"
-									if prefix := "labels"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-										elem = elem[len(prefix):]
+									if l := len("labels"); len(elem) >= l && elem[0:l] == "labels" {
+										elem = elem[l:]
 									} else {
 										break
 									}
 
-									// Leaf: IssuesCreateLabel
-									s.handleIssuesCreateLabelRequest(args, w, r)
-									return
+									if len(elem) == 0 {
+										// Leaf: IssuesCreateLabel
+										s.handleIssuesCreateLabelRequest(args, w, r)
+										return
+									}
 								case 'm': // Prefix: "m"
-									if prefix := "m"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-										elem = elem[len(prefix):]
+									if l := len("m"); len(elem) >= l && elem[0:l] == "m" {
+										elem = elem[l:]
 									} else {
 										break
 									}
@@ -12378,8 +13421,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									}
 									switch elem[0] {
 									case 'e': // Prefix: "erge"
-										if prefix := "erge"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-											elem = elem[len(prefix):]
+										if l := len("erge"); len(elem) >= l && elem[0:l] == "erge" {
+											elem = elem[l:]
 										} else {
 											break
 										}
@@ -12390,40 +13433,46 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										}
 										switch elem[0] {
 										case '-': // Prefix: "-upstream"
-											if prefix := "-upstream"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-												elem = elem[len(prefix):]
+											if l := len("-upstream"); len(elem) >= l && elem[0:l] == "-upstream" {
+												elem = elem[l:]
 											} else {
 												break
 											}
 
-											// Leaf: ReposMergeUpstream
-											s.handleReposMergeUpstreamRequest(args, w, r)
-											return
+											if len(elem) == 0 {
+												// Leaf: ReposMergeUpstream
+												s.handleReposMergeUpstreamRequest(args, w, r)
+												return
+											}
 										case 's': // Prefix: "s"
-											if prefix := "s"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-												elem = elem[len(prefix):]
+											if l := len("s"); len(elem) >= l && elem[0:l] == "s" {
+												elem = elem[l:]
 											} else {
 												break
 											}
 
-											// Leaf: ReposMerge
-											s.handleReposMergeRequest(args, w, r)
-											return
+											if len(elem) == 0 {
+												// Leaf: ReposMerge
+												s.handleReposMergeRequest(args, w, r)
+												return
+											}
 										}
 									case 'i': // Prefix: "ilestones"
-										if prefix := "ilestones"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-											elem = elem[len(prefix):]
+										if l := len("ilestones"); len(elem) >= l && elem[0:l] == "ilestones" {
+											elem = elem[l:]
 										} else {
 											break
 										}
 
-										// Leaf: IssuesCreateMilestone
-										s.handleIssuesCreateMilestoneRequest(args, w, r)
-										return
+										if len(elem) == 0 {
+											// Leaf: IssuesCreateMilestone
+											s.handleIssuesCreateMilestoneRequest(args, w, r)
+											return
+										}
 									}
 								case 'p': // Prefix: "p"
-									if prefix := "p"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-										elem = elem[len(prefix):]
+									if l := len("p"); len(elem) >= l && elem[0:l] == "p" {
+										elem = elem[l:]
 									} else {
 										break
 									}
@@ -12434,8 +13483,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									}
 									switch elem[0] {
 									case 'a': // Prefix: "ages"
-										if prefix := "ages"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-											elem = elem[len(prefix):]
+										if l := len("ages"); len(elem) >= l && elem[0:l] == "ages" {
+											elem = elem[l:]
 										} else {
 											break
 										}
@@ -12446,29 +13495,33 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										}
 										switch elem[0] {
 										case '/': // Prefix: "/builds"
-											if prefix := "/builds"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-												elem = elem[len(prefix):]
+											if l := len("/builds"); len(elem) >= l && elem[0:l] == "/builds" {
+												elem = elem[l:]
 											} else {
 												break
 											}
 
-											// Leaf: ReposRequestPagesBuild
-											s.handleReposRequestPagesBuildRequest(args, w, r)
-											return
+											if len(elem) == 0 {
+												// Leaf: ReposRequestPagesBuild
+												s.handleReposRequestPagesBuildRequest(args, w, r)
+												return
+											}
 										}
 									case 'r': // Prefix: "rojects"
-										if prefix := "rojects"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-											elem = elem[len(prefix):]
+										if l := len("rojects"); len(elem) >= l && elem[0:l] == "rojects" {
+											elem = elem[l:]
 										} else {
 											break
 										}
 
-										// Leaf: ProjectsCreateForRepo
-										s.handleProjectsCreateForRepoRequest(args, w, r)
-										return
+										if len(elem) == 0 {
+											// Leaf: ProjectsCreateForRepo
+											s.handleProjectsCreateForRepoRequest(args, w, r)
+											return
+										}
 									case 'u': // Prefix: "ulls"
-										if prefix := "ulls"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-											elem = elem[len(prefix):]
+										if l := len("ulls"); len(elem) >= l && elem[0:l] == "ulls" {
+											elem = elem[l:]
 										} else {
 											break
 										}
@@ -12479,8 +13532,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										}
 										switch elem[0] {
 										case '/': // Prefix: "/"
-											if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-												elem = elem[len(prefix):]
+											if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+												elem = elem[l:]
 											} else {
 												break
 											}
@@ -12490,14 +13543,14 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											}
 											switch elem[0] {
 											case 'c': // Prefix: "comments/"
-												if prefix := "comments/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-													elem = elem[len(prefix):]
+												if l := len("comments/"); len(elem) >= l && elem[0:l] == "comments/" {
+													elem = elem[l:]
 												} else {
 													break
 												}
 
 												// Param: "comment_id"
-												// Match until one of "/"
+												// Match until "/"
 												idx := strings.IndexByte(elem, '/')
 												if idx > 0 {
 													args["comment_id"] = elem[:idx]
@@ -12508,20 +13561,22 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													}
 													switch elem[0] {
 													case '/': // Prefix: "/reactions"
-														if prefix := "/reactions"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-															elem = elem[len(prefix):]
+														if l := len("/reactions"); len(elem) >= l && elem[0:l] == "/reactions" {
+															elem = elem[l:]
 														} else {
 															break
 														}
 
-														// Leaf: ReactionsCreateForPullRequestReviewComment
-														s.handleReactionsCreateForPullRequestReviewCommentRequest(args, w, r)
-														return
+														if len(elem) == 0 {
+															// Leaf: ReactionsCreateForPullRequestReviewComment
+															s.handleReactionsCreateForPullRequestReviewCommentRequest(args, w, r)
+															return
+														}
 													}
 												}
 											}
 											// Param: "pull_number"
-											// Match until one of "/"
+											// Match until "/"
 											idx := strings.IndexByte(elem, '/')
 											if idx > 0 {
 												args["pull_number"] = elem[:idx]
@@ -12532,8 +13587,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												}
 												switch elem[0] {
 												case '/': // Prefix: "/"
-													if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-														elem = elem[len(prefix):]
+													if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+														elem = elem[l:]
 													} else {
 														break
 													}
@@ -12544,8 +13599,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													}
 													switch elem[0] {
 													case 'c': // Prefix: "comments"
-														if prefix := "comments"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-															elem = elem[len(prefix):]
+														if l := len("comments"); len(elem) >= l && elem[0:l] == "comments" {
+															elem = elem[l:]
 														} else {
 															break
 														}
@@ -12556,14 +13611,14 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														}
 														switch elem[0] {
 														case '/': // Prefix: "/"
-															if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																elem = elem[len(prefix):]
+															if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+																elem = elem[l:]
 															} else {
 																break
 															}
 
 															// Param: "comment_id"
-															// Match until one of "/"
+															// Match until "/"
 															idx := strings.IndexByte(elem, '/')
 															if idx > 0 {
 																args["comment_id"] = elem[:idx]
@@ -12574,21 +13629,23 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																}
 																switch elem[0] {
 																case '/': // Prefix: "/replies"
-																	if prefix := "/replies"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																		elem = elem[len(prefix):]
+																	if l := len("/replies"); len(elem) >= l && elem[0:l] == "/replies" {
+																		elem = elem[l:]
 																	} else {
 																		break
 																	}
 
-																	// Leaf: PullsCreateReplyForReviewComment
-																	s.handlePullsCreateReplyForReviewCommentRequest(args, w, r)
-																	return
+																	if len(elem) == 0 {
+																		// Leaf: PullsCreateReplyForReviewComment
+																		s.handlePullsCreateReplyForReviewCommentRequest(args, w, r)
+																		return
+																	}
 																}
 															}
 														}
 													case 'r': // Prefix: "reviews"
-														if prefix := "reviews"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-															elem = elem[len(prefix):]
+														if l := len("reviews"); len(elem) >= l && elem[0:l] == "reviews" {
+															elem = elem[l:]
 														} else {
 															break
 														}
@@ -12599,14 +13656,14 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														}
 														switch elem[0] {
 														case '/': // Prefix: "/"
-															if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																elem = elem[len(prefix):]
+															if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+																elem = elem[l:]
 															} else {
 																break
 															}
 
 															// Param: "review_id"
-															// Match until one of "/"
+															// Match until "/"
 															idx := strings.IndexByte(elem, '/')
 															if idx > 0 {
 																args["review_id"] = elem[:idx]
@@ -12617,15 +13674,17 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																}
 																switch elem[0] {
 																case '/': // Prefix: "/events"
-																	if prefix := "/events"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																		elem = elem[len(prefix):]
+																	if l := len("/events"); len(elem) >= l && elem[0:l] == "/events" {
+																		elem = elem[l:]
 																	} else {
 																		break
 																	}
 
-																	// Leaf: PullsSubmitReview
-																	s.handlePullsSubmitReviewRequest(args, w, r)
-																	return
+																	if len(elem) == 0 {
+																		// Leaf: PullsSubmitReview
+																		s.handlePullsSubmitReviewRequest(args, w, r)
+																		return
+																	}
 																}
 															}
 														}
@@ -12635,8 +13694,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										}
 									}
 								case 'r': // Prefix: "releases"
-									if prefix := "releases"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-										elem = elem[len(prefix):]
+									if l := len("releases"); len(elem) >= l && elem[0:l] == "releases" {
+										elem = elem[l:]
 									} else {
 										break
 									}
@@ -12647,14 +13706,14 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									}
 									switch elem[0] {
 									case '/': // Prefix: "/"
-										if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-											elem = elem[len(prefix):]
+										if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+											elem = elem[l:]
 										} else {
 											break
 										}
 
 										// Param: "release_id"
-										// Match until one of "/"
+										// Match until "/"
 										idx := strings.IndexByte(elem, '/')
 										if idx > 0 {
 											args["release_id"] = elem[:idx]
@@ -12665,21 +13724,23 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											}
 											switch elem[0] {
 											case '/': // Prefix: "/reactions"
-												if prefix := "/reactions"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-													elem = elem[len(prefix):]
+												if l := len("/reactions"); len(elem) >= l && elem[0:l] == "/reactions" {
+													elem = elem[l:]
 												} else {
 													break
 												}
 
-												// Leaf: ReactionsCreateForRelease
-												s.handleReactionsCreateForReleaseRequest(args, w, r)
-												return
+												if len(elem) == 0 {
+													// Leaf: ReactionsCreateForRelease
+													s.handleReactionsCreateForReleaseRequest(args, w, r)
+													return
+												}
 											}
 										}
 									}
 								case 's': // Prefix: "statuses/"
-									if prefix := "statuses/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-										elem = elem[len(prefix):]
+									if l := len("statuses/"); len(elem) >= l && elem[0:l] == "statuses/" {
+										elem = elem[l:]
 									} else {
 										break
 									}
@@ -12687,34 +13748,39 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									// Param: "sha"
 									// Leaf parameter
 									args["sha"] = elem
+									elem = ""
 
-									// Leaf: ReposCreateCommitStatus
-									s.handleReposCreateCommitStatusRequest(args, w, r)
-									return
+									if len(elem) == 0 {
+										// Leaf: ReposCreateCommitStatus
+										s.handleReposCreateCommitStatusRequest(args, w, r)
+										return
+									}
 								case 't': // Prefix: "transfer"
-									if prefix := "transfer"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-										elem = elem[len(prefix):]
+									if l := len("transfer"); len(elem) >= l && elem[0:l] == "transfer" {
+										elem = elem[l:]
 									} else {
 										break
 									}
 
-									// Leaf: ReposTransfer
-									s.handleReposTransferRequest(args, w, r)
-									return
+									if len(elem) == 0 {
+										// Leaf: ReposTransfer
+										s.handleReposTransferRequest(args, w, r)
+										return
+									}
 								}
 							}
 						}
 					}
 				}
 			case 's': // Prefix: "scim/v2/enterprises/"
-				if prefix := "scim/v2/enterprises/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-					elem = elem[len(prefix):]
+				if l := len("scim/v2/enterprises/"); len(elem) >= l && elem[0:l] == "scim/v2/enterprises/" {
+					elem = elem[l:]
 				} else {
 					break
 				}
 
 				// Param: "enterprise"
-				// Match until one of "/"
+				// Match until "/"
 				idx := strings.IndexByte(elem, '/')
 				if idx > 0 {
 					args["enterprise"] = elem[:idx]
@@ -12725,8 +13791,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					}
 					switch elem[0] {
 					case '/': // Prefix: "/"
-						if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-							elem = elem[len(prefix):]
+						if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+							elem = elem[l:]
 						} else {
 							break
 						}
@@ -12737,37 +13803,41 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						}
 						switch elem[0] {
 						case 'G': // Prefix: "Groups"
-							if prefix := "Groups"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-								elem = elem[len(prefix):]
+							if l := len("Groups"); len(elem) >= l && elem[0:l] == "Groups" {
+								elem = elem[l:]
 							} else {
 								break
 							}
 
-							// Leaf: EnterpriseAdminProvisionAndInviteEnterpriseGroup
-							s.handleEnterpriseAdminProvisionAndInviteEnterpriseGroupRequest(args, w, r)
-							return
+							if len(elem) == 0 {
+								// Leaf: EnterpriseAdminProvisionAndInviteEnterpriseGroup
+								s.handleEnterpriseAdminProvisionAndInviteEnterpriseGroupRequest(args, w, r)
+								return
+							}
 						case 'U': // Prefix: "Users"
-							if prefix := "Users"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-								elem = elem[len(prefix):]
+							if l := len("Users"); len(elem) >= l && elem[0:l] == "Users" {
+								elem = elem[l:]
 							} else {
 								break
 							}
 
-							// Leaf: EnterpriseAdminProvisionAndInviteEnterpriseUser
-							s.handleEnterpriseAdminProvisionAndInviteEnterpriseUserRequest(args, w, r)
-							return
+							if len(elem) == 0 {
+								// Leaf: EnterpriseAdminProvisionAndInviteEnterpriseUser
+								s.handleEnterpriseAdminProvisionAndInviteEnterpriseUserRequest(args, w, r)
+								return
+							}
 						}
 					}
 				}
 			case 't': // Prefix: "teams/"
-				if prefix := "teams/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-					elem = elem[len(prefix):]
+				if l := len("teams/"); len(elem) >= l && elem[0:l] == "teams/" {
+					elem = elem[l:]
 				} else {
 					break
 				}
 
 				// Param: "team_id"
-				// Match until one of "/"
+				// Match until "/"
 				idx := strings.IndexByte(elem, '/')
 				if idx > 0 {
 					args["team_id"] = elem[:idx]
@@ -12778,8 +13848,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					}
 					switch elem[0] {
 					case '/': // Prefix: "/discussions"
-						if prefix := "/discussions"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-							elem = elem[len(prefix):]
+						if l := len("/discussions"); len(elem) >= l && elem[0:l] == "/discussions" {
+							elem = elem[l:]
 						} else {
 							break
 						}
@@ -12790,14 +13860,14 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						}
 						switch elem[0] {
 						case '/': // Prefix: "/"
-							if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-								elem = elem[len(prefix):]
+							if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+								elem = elem[l:]
 							} else {
 								break
 							}
 
 							// Param: "discussion_number"
-							// Match until one of "/"
+							// Match until "/"
 							idx := strings.IndexByte(elem, '/')
 							if idx > 0 {
 								args["discussion_number"] = elem[:idx]
@@ -12808,8 +13878,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								}
 								switch elem[0] {
 								case '/': // Prefix: "/"
-									if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-										elem = elem[len(prefix):]
+									if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+										elem = elem[l:]
 									} else {
 										break
 									}
@@ -12820,8 +13890,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									}
 									switch elem[0] {
 									case 'c': // Prefix: "comments"
-										if prefix := "comments"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-											elem = elem[len(prefix):]
+										if l := len("comments"); len(elem) >= l && elem[0:l] == "comments" {
+											elem = elem[l:]
 										} else {
 											break
 										}
@@ -12832,14 +13902,14 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										}
 										switch elem[0] {
 										case '/': // Prefix: "/"
-											if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-												elem = elem[len(prefix):]
+											if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+												elem = elem[l:]
 											} else {
 												break
 											}
 
 											// Param: "comment_number"
-											// Match until one of "/"
+											// Match until "/"
 											idx := strings.IndexByte(elem, '/')
 											if idx > 0 {
 												args["comment_number"] = elem[:idx]
@@ -12850,28 +13920,32 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												}
 												switch elem[0] {
 												case '/': // Prefix: "/reactions"
-													if prefix := "/reactions"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-														elem = elem[len(prefix):]
+													if l := len("/reactions"); len(elem) >= l && elem[0:l] == "/reactions" {
+														elem = elem[l:]
 													} else {
 														break
 													}
 
-													// Leaf: ReactionsCreateForTeamDiscussionCommentLegacy
-													s.handleReactionsCreateForTeamDiscussionCommentLegacyRequest(args, w, r)
-													return
+													if len(elem) == 0 {
+														// Leaf: ReactionsCreateForTeamDiscussionCommentLegacy
+														s.handleReactionsCreateForTeamDiscussionCommentLegacyRequest(args, w, r)
+														return
+													}
 												}
 											}
 										}
 									case 'r': // Prefix: "reactions"
-										if prefix := "reactions"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-											elem = elem[len(prefix):]
+										if l := len("reactions"); len(elem) >= l && elem[0:l] == "reactions" {
+											elem = elem[l:]
 										} else {
 											break
 										}
 
-										// Leaf: ReactionsCreateForTeamDiscussionLegacy
-										s.handleReactionsCreateForTeamDiscussionLegacyRequest(args, w, r)
-										return
+										if len(elem) == 0 {
+											// Leaf: ReactionsCreateForTeamDiscussionLegacy
+											s.handleReactionsCreateForTeamDiscussionLegacyRequest(args, w, r)
+											return
+										}
 									}
 								}
 							}
@@ -12879,8 +13953,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					}
 				}
 			case 'u': // Prefix: "user"
-				if prefix := "user"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-					elem = elem[len(prefix):]
+				if l := len("user"); len(elem) >= l && elem[0:l] == "user" {
+					elem = elem[l:]
 				} else {
 					break
 				}
@@ -12891,8 +13965,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				}
 				switch elem[0] {
 				case '/': // Prefix: "/"
-					if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-						elem = elem[len(prefix):]
+					if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+						elem = elem[l:]
 					} else {
 						break
 					}
@@ -12903,48 +13977,56 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					}
 					switch elem[0] {
 					case 'e': // Prefix: "emails"
-						if prefix := "emails"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-							elem = elem[len(prefix):]
+						if l := len("emails"); len(elem) >= l && elem[0:l] == "emails" {
+							elem = elem[l:]
 						} else {
 							break
 						}
 
-						// Leaf: UsersAddEmailForAuthenticated
-						s.handleUsersAddEmailForAuthenticatedRequest(args, w, r)
-						return
+						if len(elem) == 0 {
+							// Leaf: UsersAddEmailForAuthenticated
+							s.handleUsersAddEmailForAuthenticatedRequest(args, w, r)
+							return
+						}
 					case 'g': // Prefix: "gpg_keys"
-						if prefix := "gpg_keys"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-							elem = elem[len(prefix):]
+						if l := len("gpg_keys"); len(elem) >= l && elem[0:l] == "gpg_keys" {
+							elem = elem[l:]
 						} else {
 							break
 						}
 
-						// Leaf: UsersCreateGpgKeyForAuthenticated
-						s.handleUsersCreateGpgKeyForAuthenticatedRequest(args, w, r)
-						return
+						if len(elem) == 0 {
+							// Leaf: UsersCreateGpgKeyForAuthenticated
+							s.handleUsersCreateGpgKeyForAuthenticatedRequest(args, w, r)
+							return
+						}
 					case 'k': // Prefix: "keys"
-						if prefix := "keys"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-							elem = elem[len(prefix):]
+						if l := len("keys"); len(elem) >= l && elem[0:l] == "keys" {
+							elem = elem[l:]
 						} else {
 							break
 						}
 
-						// Leaf: UsersCreatePublicSSHKeyForAuthenticated
-						s.handleUsersCreatePublicSSHKeyForAuthenticatedRequest(args, w, r)
-						return
+						if len(elem) == 0 {
+							// Leaf: UsersCreatePublicSSHKeyForAuthenticated
+							s.handleUsersCreatePublicSSHKeyForAuthenticatedRequest(args, w, r)
+							return
+						}
 					case 'm': // Prefix: "migrations"
-						if prefix := "migrations"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-							elem = elem[len(prefix):]
+						if l := len("migrations"); len(elem) >= l && elem[0:l] == "migrations" {
+							elem = elem[l:]
 						} else {
 							break
 						}
 
-						// Leaf: MigrationsStartForAuthenticatedUser
-						s.handleMigrationsStartForAuthenticatedUserRequest(args, w, r)
-						return
+						if len(elem) == 0 {
+							// Leaf: MigrationsStartForAuthenticatedUser
+							s.handleMigrationsStartForAuthenticatedUserRequest(args, w, r)
+							return
+						}
 					case 'p': // Prefix: "p"
-						if prefix := "p"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-							elem = elem[len(prefix):]
+						if l := len("p"); len(elem) >= l && elem[0:l] == "p" {
+							elem = elem[l:]
 						} else {
 							break
 						}
@@ -12955,14 +14037,14 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						}
 						switch elem[0] {
 						case 'a': // Prefix: "ackages/"
-							if prefix := "ackages/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-								elem = elem[len(prefix):]
+							if l := len("ackages/"); len(elem) >= l && elem[0:l] == "ackages/" {
+								elem = elem[l:]
 							} else {
 								break
 							}
 
 							// Param: "package_type"
-							// Match until one of "/"
+							// Match until "/"
 							idx := strings.IndexByte(elem, '/')
 							if idx > 0 {
 								args["package_type"] = elem[:idx]
@@ -12973,14 +14055,14 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								}
 								switch elem[0] {
 								case '/': // Prefix: "/"
-									if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-										elem = elem[len(prefix):]
+									if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+										elem = elem[l:]
 									} else {
 										break
 									}
 
 									// Param: "package_name"
-									// Match until one of "/"
+									// Match until "/"
 									idx := strings.IndexByte(elem, '/')
 									if idx > 0 {
 										args["package_name"] = elem[:idx]
@@ -12991,8 +14073,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										}
 										switch elem[0] {
 										case '/': // Prefix: "/"
-											if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-												elem = elem[len(prefix):]
+											if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+												elem = elem[l:]
 											} else {
 												break
 											}
@@ -13003,24 +14085,26 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											}
 											switch elem[0] {
 											case 'r': // Prefix: "restore"
-												if prefix := "restore"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-													elem = elem[len(prefix):]
+												if l := len("restore"); len(elem) >= l && elem[0:l] == "restore" {
+													elem = elem[l:]
 												} else {
 													break
 												}
 
-												// Leaf: PackagesRestorePackageForAuthenticatedUser
-												s.handlePackagesRestorePackageForAuthenticatedUserRequest(args, w, r)
-												return
+												if len(elem) == 0 {
+													// Leaf: PackagesRestorePackageForAuthenticatedUser
+													s.handlePackagesRestorePackageForAuthenticatedUserRequest(args, w, r)
+													return
+												}
 											case 'v': // Prefix: "versions/"
-												if prefix := "versions/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-													elem = elem[len(prefix):]
+												if l := len("versions/"); len(elem) >= l && elem[0:l] == "versions/" {
+													elem = elem[l:]
 												} else {
 													break
 												}
 
 												// Param: "package_version_id"
-												// Match until one of "/"
+												// Match until "/"
 												idx := strings.IndexByte(elem, '/')
 												if idx > 0 {
 													args["package_version_id"] = elem[:idx]
@@ -13031,15 +14115,17 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													}
 													switch elem[0] {
 													case '/': // Prefix: "/restore"
-														if prefix := "/restore"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-															elem = elem[len(prefix):]
+														if l := len("/restore"); len(elem) >= l && elem[0:l] == "/restore" {
+															elem = elem[l:]
 														} else {
 															break
 														}
 
-														// Leaf: PackagesRestorePackageVersionForAuthenticatedUser
-														s.handlePackagesRestorePackageVersionForAuthenticatedUserRequest(args, w, r)
-														return
+														if len(elem) == 0 {
+															// Leaf: PackagesRestorePackageVersionForAuthenticatedUser
+															s.handlePackagesRestorePackageVersionForAuthenticatedUserRequest(args, w, r)
+															return
+														}
 													}
 												}
 											}
@@ -13048,36 +14134,40 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								}
 							}
 						case 'r': // Prefix: "rojects"
-							if prefix := "rojects"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-								elem = elem[len(prefix):]
+							if l := len("rojects"); len(elem) >= l && elem[0:l] == "rojects" {
+								elem = elem[l:]
 							} else {
 								break
 							}
 
-							// Leaf: ProjectsCreateForAuthenticatedUser
-							s.handleProjectsCreateForAuthenticatedUserRequest(args, w, r)
-							return
+							if len(elem) == 0 {
+								// Leaf: ProjectsCreateForAuthenticatedUser
+								s.handleProjectsCreateForAuthenticatedUserRequest(args, w, r)
+								return
+							}
 						}
 					case 'r': // Prefix: "repos"
-						if prefix := "repos"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-							elem = elem[len(prefix):]
+						if l := len("repos"); len(elem) >= l && elem[0:l] == "repos" {
+							elem = elem[l:]
 						} else {
 							break
 						}
 
-						// Leaf: ReposCreateForAuthenticatedUser
-						s.handleReposCreateForAuthenticatedUserRequest(args, w, r)
-						return
+						if len(elem) == 0 {
+							// Leaf: ReposCreateForAuthenticatedUser
+							s.handleReposCreateForAuthenticatedUserRequest(args, w, r)
+							return
+						}
 					}
 				case 's': // Prefix: "s/"
-					if prefix := "s/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-						elem = elem[len(prefix):]
+					if l := len("s/"); len(elem) >= l && elem[0:l] == "s/" {
+						elem = elem[l:]
 					} else {
 						break
 					}
 
 					// Param: "username"
-					// Match until one of "/"
+					// Match until "/"
 					idx := strings.IndexByte(elem, '/')
 					if idx > 0 {
 						args["username"] = elem[:idx]
@@ -13088,14 +14178,14 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						}
 						switch elem[0] {
 						case '/': // Prefix: "/packages/"
-							if prefix := "/packages/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-								elem = elem[len(prefix):]
+							if l := len("/packages/"); len(elem) >= l && elem[0:l] == "/packages/" {
+								elem = elem[l:]
 							} else {
 								break
 							}
 
 							// Param: "package_type"
-							// Match until one of "/"
+							// Match until "/"
 							idx := strings.IndexByte(elem, '/')
 							if idx > 0 {
 								args["package_type"] = elem[:idx]
@@ -13106,14 +14196,14 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								}
 								switch elem[0] {
 								case '/': // Prefix: "/"
-									if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-										elem = elem[len(prefix):]
+									if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+										elem = elem[l:]
 									} else {
 										break
 									}
 
 									// Param: "package_name"
-									// Match until one of "/"
+									// Match until "/"
 									idx := strings.IndexByte(elem, '/')
 									if idx > 0 {
 										args["package_name"] = elem[:idx]
@@ -13124,8 +14214,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										}
 										switch elem[0] {
 										case '/': // Prefix: "/"
-											if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-												elem = elem[len(prefix):]
+											if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+												elem = elem[l:]
 											} else {
 												break
 											}
@@ -13136,24 +14226,26 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											}
 											switch elem[0] {
 											case 'r': // Prefix: "restore"
-												if prefix := "restore"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-													elem = elem[len(prefix):]
+												if l := len("restore"); len(elem) >= l && elem[0:l] == "restore" {
+													elem = elem[l:]
 												} else {
 													break
 												}
 
-												// Leaf: PackagesRestorePackageForUser
-												s.handlePackagesRestorePackageForUserRequest(args, w, r)
-												return
+												if len(elem) == 0 {
+													// Leaf: PackagesRestorePackageForUser
+													s.handlePackagesRestorePackageForUserRequest(args, w, r)
+													return
+												}
 											case 'v': // Prefix: "versions/"
-												if prefix := "versions/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-													elem = elem[len(prefix):]
+												if l := len("versions/"); len(elem) >= l && elem[0:l] == "versions/" {
+													elem = elem[l:]
 												} else {
 													break
 												}
 
 												// Param: "package_version_id"
-												// Match until one of "/"
+												// Match until "/"
 												idx := strings.IndexByte(elem, '/')
 												if idx > 0 {
 													args["package_version_id"] = elem[:idx]
@@ -13164,15 +14256,17 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													}
 													switch elem[0] {
 													case '/': // Prefix: "/restore"
-														if prefix := "/restore"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-															elem = elem[len(prefix):]
+														if l := len("/restore"); len(elem) >= l && elem[0:l] == "/restore" {
+															elem = elem[l:]
 														} else {
 															break
 														}
 
-														// Leaf: PackagesRestorePackageVersionForUser
-														s.handlePackagesRestorePackageVersionForUserRequest(args, w, r)
-														return
+														if len(elem) == 0 {
+															// Leaf: PackagesRestorePackageVersionForUser
+															s.handlePackagesRestorePackageVersionForUserRequest(args, w, r)
+															return
+														}
 													}
 												}
 											}
@@ -13191,8 +14285,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 		}
 		switch elem[0] {
 		case '/': // Prefix: "/"
-			if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-				elem = elem[len(prefix):]
+			if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+				elem = elem[l:]
 			} else {
 				break
 			}
@@ -13203,8 +14297,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 			}
 			switch elem[0] {
 			case 'a': // Prefix: "a"
-				if prefix := "a"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-					elem = elem[len(prefix):]
+				if l := len("a"); len(elem) >= l && elem[0:l] == "a" {
+					elem = elem[l:]
 				} else {
 					break
 				}
@@ -13215,14 +14309,14 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				}
 				switch elem[0] {
 				case 'p': // Prefix: "pp/installations/"
-					if prefix := "pp/installations/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-						elem = elem[len(prefix):]
+					if l := len("pp/installations/"); len(elem) >= l && elem[0:l] == "pp/installations/" {
+						elem = elem[l:]
 					} else {
 						break
 					}
 
 					// Param: "installation_id"
-					// Match until one of "/"
+					// Match until "/"
 					idx := strings.IndexByte(elem, '/')
 					if idx > 0 {
 						args["installation_id"] = elem[:idx]
@@ -13233,26 +14327,28 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						}
 						switch elem[0] {
 						case '/': // Prefix: "/suspended"
-							if prefix := "/suspended"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-								elem = elem[len(prefix):]
+							if l := len("/suspended"); len(elem) >= l && elem[0:l] == "/suspended" {
+								elem = elem[l:]
 							} else {
 								break
 							}
 
-							// Leaf: AppsSuspendInstallation
-							s.handleAppsSuspendInstallationRequest(args, w, r)
-							return
+							if len(elem) == 0 {
+								// Leaf: AppsSuspendInstallation
+								s.handleAppsSuspendInstallationRequest(args, w, r)
+								return
+							}
 						}
 					}
 				case 'u': // Prefix: "uthorizations/clients/"
-					if prefix := "uthorizations/clients/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-						elem = elem[len(prefix):]
+					if l := len("uthorizations/clients/"); len(elem) >= l && elem[0:l] == "uthorizations/clients/" {
+						elem = elem[l:]
 					} else {
 						break
 					}
 
 					// Param: "client_id"
-					// Match until one of "/"
+					// Match until "/"
 					idx := strings.IndexByte(elem, '/')
 					if idx > 0 {
 						args["client_id"] = elem[:idx]
@@ -13264,8 +14360,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						}
 						switch elem[0] {
 						case '/': // Prefix: "/"
-							if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-								elem = elem[len(prefix):]
+							if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+								elem = elem[l:]
 							} else {
 								break
 							}
@@ -13273,22 +14369,25 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							// Param: "fingerprint"
 							// Leaf parameter
 							args["fingerprint"] = elem
+							elem = ""
 
-							// Leaf: OAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprint
-							s.handleOAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintRequest(args, w, r)
-							return
+							if len(elem) == 0 {
+								// Leaf: OAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprint
+								s.handleOAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintRequest(args, w, r)
+								return
+							}
 						}
 					}
 				}
 			case 'e': // Prefix: "enterprises/"
-				if prefix := "enterprises/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-					elem = elem[len(prefix):]
+				if l := len("enterprises/"); len(elem) >= l && elem[0:l] == "enterprises/" {
+					elem = elem[l:]
 				} else {
 					break
 				}
 
 				// Param: "enterprise"
-				// Match until one of "/"
+				// Match until "/"
 				idx := strings.IndexByte(elem, '/')
 				if idx > 0 {
 					args["enterprise"] = elem[:idx]
@@ -13299,8 +14398,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					}
 					switch elem[0] {
 					case '/': // Prefix: "/actions/"
-						if prefix := "/actions/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-							elem = elem[len(prefix):]
+						if l := len("/actions/"); len(elem) >= l && elem[0:l] == "/actions/" {
+							elem = elem[l:]
 						} else {
 							break
 						}
@@ -13311,8 +14410,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						}
 						switch elem[0] {
 						case 'p': // Prefix: "permissions"
-							if prefix := "permissions"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-								elem = elem[len(prefix):]
+							if l := len("permissions"); len(elem) >= l && elem[0:l] == "permissions" {
+								elem = elem[l:]
 							} else {
 								break
 							}
@@ -13323,8 +14422,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							}
 							switch elem[0] {
 							case '/': // Prefix: "/"
-								if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-									elem = elem[len(prefix):]
+								if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+									elem = elem[l:]
 								} else {
 									break
 								}
@@ -13335,8 +14434,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								}
 								switch elem[0] {
 								case 'o': // Prefix: "organizations"
-									if prefix := "organizations"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-										elem = elem[len(prefix):]
+									if l := len("organizations"); len(elem) >= l && elem[0:l] == "organizations" {
+										elem = elem[l:]
 									} else {
 										break
 									}
@@ -13347,8 +14446,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									}
 									switch elem[0] {
 									case '/': // Prefix: "/"
-										if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-											elem = elem[len(prefix):]
+										if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+											elem = elem[l:]
 										} else {
 											break
 										}
@@ -13356,32 +14455,37 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										// Param: "org_id"
 										// Leaf parameter
 										args["org_id"] = elem
+										elem = ""
 
-										// Leaf: EnterpriseAdminEnableSelectedOrganizationGithubActionsEnterprise
-										s.handleEnterpriseAdminEnableSelectedOrganizationGithubActionsEnterpriseRequest(args, w, r)
-										return
+										if len(elem) == 0 {
+											// Leaf: EnterpriseAdminEnableSelectedOrganizationGithubActionsEnterprise
+											s.handleEnterpriseAdminEnableSelectedOrganizationGithubActionsEnterpriseRequest(args, w, r)
+											return
+										}
 									}
 								case 's': // Prefix: "selected-actions"
-									if prefix := "selected-actions"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-										elem = elem[len(prefix):]
+									if l := len("selected-actions"); len(elem) >= l && elem[0:l] == "selected-actions" {
+										elem = elem[l:]
 									} else {
 										break
 									}
 
-									// Leaf: EnterpriseAdminSetAllowedActionsEnterprise
-									s.handleEnterpriseAdminSetAllowedActionsEnterpriseRequest(args, w, r)
-									return
+									if len(elem) == 0 {
+										// Leaf: EnterpriseAdminSetAllowedActionsEnterprise
+										s.handleEnterpriseAdminSetAllowedActionsEnterpriseRequest(args, w, r)
+										return
+									}
 								}
 							}
 						case 'r': // Prefix: "runner-groups/"
-							if prefix := "runner-groups/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-								elem = elem[len(prefix):]
+							if l := len("runner-groups/"); len(elem) >= l && elem[0:l] == "runner-groups/" {
+								elem = elem[l:]
 							} else {
 								break
 							}
 
 							// Param: "runner_group_id"
-							// Match until one of "/"
+							// Match until "/"
 							idx := strings.IndexByte(elem, '/')
 							if idx > 0 {
 								args["runner_group_id"] = elem[:idx]
@@ -13392,8 +14496,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								}
 								switch elem[0] {
 								case '/': // Prefix: "/"
-									if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-										elem = elem[len(prefix):]
+									if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+										elem = elem[l:]
 									} else {
 										break
 									}
@@ -13404,8 +14508,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									}
 									switch elem[0] {
 									case 'o': // Prefix: "organizations"
-										if prefix := "organizations"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-											elem = elem[len(prefix):]
+										if l := len("organizations"); len(elem) >= l && elem[0:l] == "organizations" {
+											elem = elem[l:]
 										} else {
 											break
 										}
@@ -13416,8 +14520,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										}
 										switch elem[0] {
 										case '/': // Prefix: "/"
-											if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-												elem = elem[len(prefix):]
+											if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+												elem = elem[l:]
 											} else {
 												break
 											}
@@ -13425,14 +14529,17 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											// Param: "org_id"
 											// Leaf parameter
 											args["org_id"] = elem
+											elem = ""
 
-											// Leaf: EnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterprise
-											s.handleEnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterpriseRequest(args, w, r)
-											return
+											if len(elem) == 0 {
+												// Leaf: EnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterprise
+												s.handleEnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterpriseRequest(args, w, r)
+												return
+											}
 										}
 									case 'r': // Prefix: "runners"
-										if prefix := "runners"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-											elem = elem[len(prefix):]
+										if l := len("runners"); len(elem) >= l && elem[0:l] == "runners" {
+											elem = elem[l:]
 										} else {
 											break
 										}
@@ -13443,8 +14550,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										}
 										switch elem[0] {
 										case '/': // Prefix: "/"
-											if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-												elem = elem[len(prefix):]
+											if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+												elem = elem[l:]
 											} else {
 												break
 											}
@@ -13452,10 +14559,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											// Param: "runner_id"
 											// Leaf parameter
 											args["runner_id"] = elem
+											elem = ""
 
-											// Leaf: EnterpriseAdminAddSelfHostedRunnerToGroupForEnterprise
-											s.handleEnterpriseAdminAddSelfHostedRunnerToGroupForEnterpriseRequest(args, w, r)
-											return
+											if len(elem) == 0 {
+												// Leaf: EnterpriseAdminAddSelfHostedRunnerToGroupForEnterprise
+												s.handleEnterpriseAdminAddSelfHostedRunnerToGroupForEnterpriseRequest(args, w, r)
+												return
+											}
 										}
 									}
 								}
@@ -13464,14 +14574,14 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					}
 				}
 			case 'g': // Prefix: "gists/"
-				if prefix := "gists/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-					elem = elem[len(prefix):]
+				if l := len("gists/"); len(elem) >= l && elem[0:l] == "gists/" {
+					elem = elem[l:]
 				} else {
 					break
 				}
 
 				// Param: "gist_id"
-				// Match until one of "/"
+				// Match until "/"
 				idx := strings.IndexByte(elem, '/')
 				if idx > 0 {
 					args["gist_id"] = elem[:idx]
@@ -13482,20 +14592,22 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					}
 					switch elem[0] {
 					case '/': // Prefix: "/star"
-						if prefix := "/star"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-							elem = elem[len(prefix):]
+						if l := len("/star"); len(elem) >= l && elem[0:l] == "/star" {
+							elem = elem[l:]
 						} else {
 							break
 						}
 
-						// Leaf: GistsStar
-						s.handleGistsStarRequest(args, w, r)
-						return
+						if len(elem) == 0 {
+							// Leaf: GistsStar
+							s.handleGistsStarRequest(args, w, r)
+							return
+						}
 					}
 				}
 			case 'n': // Prefix: "notifications"
-				if prefix := "notifications"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-					elem = elem[len(prefix):]
+				if l := len("notifications"); len(elem) >= l && elem[0:l] == "notifications" {
+					elem = elem[l:]
 				} else {
 					break
 				}
@@ -13506,14 +14618,14 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				}
 				switch elem[0] {
 				case '/': // Prefix: "/threads/"
-					if prefix := "/threads/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-						elem = elem[len(prefix):]
+					if l := len("/threads/"); len(elem) >= l && elem[0:l] == "/threads/" {
+						elem = elem[l:]
 					} else {
 						break
 					}
 
 					// Param: "thread_id"
-					// Match until one of "/"
+					// Match until "/"
 					idx := strings.IndexByte(elem, '/')
 					if idx > 0 {
 						args["thread_id"] = elem[:idx]
@@ -13524,27 +14636,29 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						}
 						switch elem[0] {
 						case '/': // Prefix: "/subscription"
-							if prefix := "/subscription"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-								elem = elem[len(prefix):]
+							if l := len("/subscription"); len(elem) >= l && elem[0:l] == "/subscription" {
+								elem = elem[l:]
 							} else {
 								break
 							}
 
-							// Leaf: ActivitySetThreadSubscription
-							s.handleActivitySetThreadSubscriptionRequest(args, w, r)
-							return
+							if len(elem) == 0 {
+								// Leaf: ActivitySetThreadSubscription
+								s.handleActivitySetThreadSubscriptionRequest(args, w, r)
+								return
+							}
 						}
 					}
 				}
 			case 'o': // Prefix: "orgs/"
-				if prefix := "orgs/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-					elem = elem[len(prefix):]
+				if l := len("orgs/"); len(elem) >= l && elem[0:l] == "orgs/" {
+					elem = elem[l:]
 				} else {
 					break
 				}
 
 				// Param: "org"
-				// Match until one of "/"
+				// Match until "/"
 				idx := strings.IndexByte(elem, '/')
 				if idx > 0 {
 					args["org"] = elem[:idx]
@@ -13555,8 +14669,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					}
 					switch elem[0] {
 					case '/': // Prefix: "/"
-						if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-							elem = elem[len(prefix):]
+						if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+							elem = elem[l:]
 						} else {
 							break
 						}
@@ -13567,8 +14681,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						}
 						switch elem[0] {
 						case 'a': // Prefix: "actions/"
-							if prefix := "actions/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-								elem = elem[len(prefix):]
+							if l := len("actions/"); len(elem) >= l && elem[0:l] == "actions/" {
+								elem = elem[l:]
 							} else {
 								break
 							}
@@ -13579,8 +14693,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							}
 							switch elem[0] {
 							case 'p': // Prefix: "permissions"
-								if prefix := "permissions"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-									elem = elem[len(prefix):]
+								if l := len("permissions"); len(elem) >= l && elem[0:l] == "permissions" {
+									elem = elem[l:]
 								} else {
 									break
 								}
@@ -13591,8 +14705,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								}
 								switch elem[0] {
 								case '/': // Prefix: "/"
-									if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-										elem = elem[len(prefix):]
+									if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+										elem = elem[l:]
 									} else {
 										break
 									}
@@ -13603,8 +14717,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									}
 									switch elem[0] {
 									case 'r': // Prefix: "repositories"
-										if prefix := "repositories"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-											elem = elem[len(prefix):]
+										if l := len("repositories"); len(elem) >= l && elem[0:l] == "repositories" {
+											elem = elem[l:]
 										} else {
 											break
 										}
@@ -13615,8 +14729,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										}
 										switch elem[0] {
 										case '/': // Prefix: "/"
-											if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-												elem = elem[len(prefix):]
+											if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+												elem = elem[l:]
 											} else {
 												break
 											}
@@ -13624,32 +14738,37 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											// Param: "repository_id"
 											// Leaf parameter
 											args["repository_id"] = elem
+											elem = ""
 
-											// Leaf: ActionsEnableSelectedRepositoryGithubActionsOrganization
-											s.handleActionsEnableSelectedRepositoryGithubActionsOrganizationRequest(args, w, r)
-											return
+											if len(elem) == 0 {
+												// Leaf: ActionsEnableSelectedRepositoryGithubActionsOrganization
+												s.handleActionsEnableSelectedRepositoryGithubActionsOrganizationRequest(args, w, r)
+												return
+											}
 										}
 									case 's': // Prefix: "selected-actions"
-										if prefix := "selected-actions"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-											elem = elem[len(prefix):]
+										if l := len("selected-actions"); len(elem) >= l && elem[0:l] == "selected-actions" {
+											elem = elem[l:]
 										} else {
 											break
 										}
 
-										// Leaf: ActionsSetAllowedActionsOrganization
-										s.handleActionsSetAllowedActionsOrganizationRequest(args, w, r)
-										return
+										if len(elem) == 0 {
+											// Leaf: ActionsSetAllowedActionsOrganization
+											s.handleActionsSetAllowedActionsOrganizationRequest(args, w, r)
+											return
+										}
 									}
 								}
 							case 'r': // Prefix: "runner-groups/"
-								if prefix := "runner-groups/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-									elem = elem[len(prefix):]
+								if l := len("runner-groups/"); len(elem) >= l && elem[0:l] == "runner-groups/" {
+									elem = elem[l:]
 								} else {
 									break
 								}
 
 								// Param: "runner_group_id"
-								// Match until one of "/"
+								// Match until "/"
 								idx := strings.IndexByte(elem, '/')
 								if idx > 0 {
 									args["runner_group_id"] = elem[:idx]
@@ -13660,8 +14779,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									}
 									switch elem[0] {
 									case '/': // Prefix: "/r"
-										if prefix := "/r"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-											elem = elem[len(prefix):]
+										if l := len("/r"); len(elem) >= l && elem[0:l] == "/r" {
+											elem = elem[l:]
 										} else {
 											break
 										}
@@ -13672,8 +14791,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										}
 										switch elem[0] {
 										case 'e': // Prefix: "epositories"
-											if prefix := "epositories"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-												elem = elem[len(prefix):]
+											if l := len("epositories"); len(elem) >= l && elem[0:l] == "epositories" {
+												elem = elem[l:]
 											} else {
 												break
 											}
@@ -13684,8 +14803,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											}
 											switch elem[0] {
 											case '/': // Prefix: "/"
-												if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-													elem = elem[len(prefix):]
+												if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+													elem = elem[l:]
 												} else {
 													break
 												}
@@ -13693,14 +14812,17 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												// Param: "repository_id"
 												// Leaf parameter
 												args["repository_id"] = elem
+												elem = ""
 
-												// Leaf: ActionsAddRepoAccessToSelfHostedRunnerGroupInOrg
-												s.handleActionsAddRepoAccessToSelfHostedRunnerGroupInOrgRequest(args, w, r)
-												return
+												if len(elem) == 0 {
+													// Leaf: ActionsAddRepoAccessToSelfHostedRunnerGroupInOrg
+													s.handleActionsAddRepoAccessToSelfHostedRunnerGroupInOrgRequest(args, w, r)
+													return
+												}
 											}
 										case 'u': // Prefix: "unners"
-											if prefix := "unners"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-												elem = elem[len(prefix):]
+											if l := len("unners"); len(elem) >= l && elem[0:l] == "unners" {
+												elem = elem[l:]
 											} else {
 												break
 											}
@@ -13711,8 +14833,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											}
 											switch elem[0] {
 											case '/': // Prefix: "/"
-												if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-													elem = elem[len(prefix):]
+												if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+													elem = elem[l:]
 												} else {
 													break
 												}
@@ -13720,23 +14842,26 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												// Param: "runner_id"
 												// Leaf parameter
 												args["runner_id"] = elem
+												elem = ""
 
-												// Leaf: ActionsAddSelfHostedRunnerToGroupForOrg
-												s.handleActionsAddSelfHostedRunnerToGroupForOrgRequest(args, w, r)
-												return
+												if len(elem) == 0 {
+													// Leaf: ActionsAddSelfHostedRunnerToGroupForOrg
+													s.handleActionsAddSelfHostedRunnerToGroupForOrgRequest(args, w, r)
+													return
+												}
 											}
 										}
 									}
 								}
 							case 's': // Prefix: "secrets/"
-								if prefix := "secrets/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-									elem = elem[len(prefix):]
+								if l := len("secrets/"); len(elem) >= l && elem[0:l] == "secrets/" {
+									elem = elem[l:]
 								} else {
 									break
 								}
 
 								// Param: "secret_name"
-								// Match until one of "/"
+								// Match until "/"
 								idx := strings.IndexByte(elem, '/')
 								if idx > 0 {
 									args["secret_name"] = elem[:idx]
@@ -13748,8 +14873,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									}
 									switch elem[0] {
 									case '/': // Prefix: "/repositories"
-										if prefix := "/repositories"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-											elem = elem[len(prefix):]
+										if l := len("/repositories"); len(elem) >= l && elem[0:l] == "/repositories" {
+											elem = elem[l:]
 										} else {
 											break
 										}
@@ -13760,8 +14885,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										}
 										switch elem[0] {
 										case '/': // Prefix: "/"
-											if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-												elem = elem[len(prefix):]
+											if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+												elem = elem[l:]
 											} else {
 												break
 											}
@@ -13769,17 +14894,20 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											// Param: "repository_id"
 											// Leaf parameter
 											args["repository_id"] = elem
+											elem = ""
 
-											// Leaf: ActionsAddSelectedRepoToOrgSecret
-											s.handleActionsAddSelectedRepoToOrgSecretRequest(args, w, r)
-											return
+											if len(elem) == 0 {
+												// Leaf: ActionsAddSelectedRepoToOrgSecret
+												s.handleActionsAddSelectedRepoToOrgSecretRequest(args, w, r)
+												return
+											}
 										}
 									}
 								}
 							}
 						case 'b': // Prefix: "blocks/"
-							if prefix := "blocks/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-								elem = elem[len(prefix):]
+							if l := len("blocks/"); len(elem) >= l && elem[0:l] == "blocks/" {
+								elem = elem[l:]
 							} else {
 								break
 							}
@@ -13787,23 +14915,28 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							// Param: "username"
 							// Leaf parameter
 							args["username"] = elem
+							elem = ""
 
-							// Leaf: OrgsBlockUser
-							s.handleOrgsBlockUserRequest(args, w, r)
-							return
+							if len(elem) == 0 {
+								// Leaf: OrgsBlockUser
+								s.handleOrgsBlockUserRequest(args, w, r)
+								return
+							}
 						case 'i': // Prefix: "interaction-limits"
-							if prefix := "interaction-limits"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-								elem = elem[len(prefix):]
+							if l := len("interaction-limits"); len(elem) >= l && elem[0:l] == "interaction-limits" {
+								elem = elem[l:]
 							} else {
 								break
 							}
 
-							// Leaf: InteractionsSetRestrictionsForOrg
-							s.handleInteractionsSetRestrictionsForOrgRequest(args, w, r)
-							return
+							if len(elem) == 0 {
+								// Leaf: InteractionsSetRestrictionsForOrg
+								s.handleInteractionsSetRestrictionsForOrgRequest(args, w, r)
+								return
+							}
 						case 'm': // Prefix: "memberships/"
-							if prefix := "memberships/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-								elem = elem[len(prefix):]
+							if l := len("memberships/"); len(elem) >= l && elem[0:l] == "memberships/" {
+								elem = elem[l:]
 							} else {
 								break
 							}
@@ -13811,13 +14944,16 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							// Param: "username"
 							// Leaf parameter
 							args["username"] = elem
+							elem = ""
 
-							// Leaf: OrgsSetMembershipForUser
-							s.handleOrgsSetMembershipForUserRequest(args, w, r)
-							return
+							if len(elem) == 0 {
+								// Leaf: OrgsSetMembershipForUser
+								s.handleOrgsSetMembershipForUserRequest(args, w, r)
+								return
+							}
 						case 'o': // Prefix: "outside_collaborators/"
-							if prefix := "outside_collaborators/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-								elem = elem[len(prefix):]
+							if l := len("outside_collaborators/"); len(elem) >= l && elem[0:l] == "outside_collaborators/" {
+								elem = elem[l:]
 							} else {
 								break
 							}
@@ -13825,13 +14961,16 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							// Param: "username"
 							// Leaf parameter
 							args["username"] = elem
+							elem = ""
 
-							// Leaf: OrgsConvertMemberToOutsideCollaborator
-							s.handleOrgsConvertMemberToOutsideCollaboratorRequest(args, w, r)
-							return
+							if len(elem) == 0 {
+								// Leaf: OrgsConvertMemberToOutsideCollaborator
+								s.handleOrgsConvertMemberToOutsideCollaboratorRequest(args, w, r)
+								return
+							}
 						case 'p': // Prefix: "public_members/"
-							if prefix := "public_members/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-								elem = elem[len(prefix):]
+							if l := len("public_members/"); len(elem) >= l && elem[0:l] == "public_members/" {
+								elem = elem[l:]
 							} else {
 								break
 							}
@@ -13839,19 +14978,22 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							// Param: "username"
 							// Leaf parameter
 							args["username"] = elem
+							elem = ""
 
-							// Leaf: OrgsSetPublicMembershipForAuthenticatedUser
-							s.handleOrgsSetPublicMembershipForAuthenticatedUserRequest(args, w, r)
-							return
+							if len(elem) == 0 {
+								// Leaf: OrgsSetPublicMembershipForAuthenticatedUser
+								s.handleOrgsSetPublicMembershipForAuthenticatedUserRequest(args, w, r)
+								return
+							}
 						case 't': // Prefix: "teams/"
-							if prefix := "teams/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-								elem = elem[len(prefix):]
+							if l := len("teams/"); len(elem) >= l && elem[0:l] == "teams/" {
+								elem = elem[l:]
 							} else {
 								break
 							}
 
 							// Param: "team_slug"
-							// Match until one of "/"
+							// Match until "/"
 							idx := strings.IndexByte(elem, '/')
 							if idx > 0 {
 								args["team_slug"] = elem[:idx]
@@ -13862,8 +15004,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								}
 								switch elem[0] {
 								case '/': // Prefix: "/"
-									if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-										elem = elem[len(prefix):]
+									if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+										elem = elem[l:]
 									} else {
 										break
 									}
@@ -13874,8 +15016,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									}
 									switch elem[0] {
 									case 'm': // Prefix: "memberships/"
-										if prefix := "memberships/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-											elem = elem[len(prefix):]
+										if l := len("memberships/"); len(elem) >= l && elem[0:l] == "memberships/" {
+											elem = elem[l:]
 										} else {
 											break
 										}
@@ -13883,13 +15025,16 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										// Param: "username"
 										// Leaf parameter
 										args["username"] = elem
+										elem = ""
 
-										// Leaf: TeamsAddOrUpdateMembershipForUserInOrg
-										s.handleTeamsAddOrUpdateMembershipForUserInOrgRequest(args, w, r)
-										return
+										if len(elem) == 0 {
+											// Leaf: TeamsAddOrUpdateMembershipForUserInOrg
+											s.handleTeamsAddOrUpdateMembershipForUserInOrgRequest(args, w, r)
+											return
+										}
 									case 'p': // Prefix: "projects/"
-										if prefix := "projects/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-											elem = elem[len(prefix):]
+										if l := len("projects/"); len(elem) >= l && elem[0:l] == "projects/" {
+											elem = elem[l:]
 										} else {
 											break
 										}
@@ -13897,19 +15042,22 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										// Param: "project_id"
 										// Leaf parameter
 										args["project_id"] = elem
+										elem = ""
 
-										// Leaf: TeamsAddOrUpdateProjectPermissionsInOrg
-										s.handleTeamsAddOrUpdateProjectPermissionsInOrgRequest(args, w, r)
-										return
+										if len(elem) == 0 {
+											// Leaf: TeamsAddOrUpdateProjectPermissionsInOrg
+											s.handleTeamsAddOrUpdateProjectPermissionsInOrgRequest(args, w, r)
+											return
+										}
 									case 'r': // Prefix: "repos/"
-										if prefix := "repos/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-											elem = elem[len(prefix):]
+										if l := len("repos/"); len(elem) >= l && elem[0:l] == "repos/" {
+											elem = elem[l:]
 										} else {
 											break
 										}
 
 										// Param: "owner"
-										// Match until one of "/"
+										// Match until "/"
 										idx := strings.IndexByte(elem, '/')
 										if idx > 0 {
 											args["owner"] = elem[:idx]
@@ -13920,8 +15068,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											}
 											switch elem[0] {
 											case '/': // Prefix: "/"
-												if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-													elem = elem[len(prefix):]
+												if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+													elem = elem[l:]
 												} else {
 													break
 												}
@@ -13929,10 +15077,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												// Param: "repo"
 												// Leaf parameter
 												args["repo"] = elem
+												elem = ""
 
-												// Leaf: TeamsAddOrUpdateRepoPermissionsInOrg
-												s.handleTeamsAddOrUpdateRepoPermissionsInOrgRequest(args, w, r)
-												return
+												if len(elem) == 0 {
+													// Leaf: TeamsAddOrUpdateRepoPermissionsInOrg
+													s.handleTeamsAddOrUpdateRepoPermissionsInOrgRequest(args, w, r)
+													return
+												}
 											}
 										}
 									}
@@ -13942,14 +15093,14 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					}
 				}
 			case 'p': // Prefix: "projects/"
-				if prefix := "projects/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-					elem = elem[len(prefix):]
+				if l := len("projects/"); len(elem) >= l && elem[0:l] == "projects/" {
+					elem = elem[l:]
 				} else {
 					break
 				}
 
 				// Param: "project_id"
-				// Match until one of "/"
+				// Match until "/"
 				idx := strings.IndexByte(elem, '/')
 				if idx > 0 {
 					args["project_id"] = elem[:idx]
@@ -13960,8 +15111,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					}
 					switch elem[0] {
 					case '/': // Prefix: "/collaborators/"
-						if prefix := "/collaborators/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-							elem = elem[len(prefix):]
+						if l := len("/collaborators/"); len(elem) >= l && elem[0:l] == "/collaborators/" {
+							elem = elem[l:]
 						} else {
 							break
 						}
@@ -13969,15 +15120,18 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						// Param: "username"
 						// Leaf parameter
 						args["username"] = elem
+						elem = ""
 
-						// Leaf: ProjectsAddCollaborator
-						s.handleProjectsAddCollaboratorRequest(args, w, r)
-						return
+						if len(elem) == 0 {
+							// Leaf: ProjectsAddCollaborator
+							s.handleProjectsAddCollaboratorRequest(args, w, r)
+							return
+						}
 					}
 				}
 			case 'r': // Prefix: "repos"
-				if prefix := "repos"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-					elem = elem[len(prefix):]
+				if l := len("repos"); len(elem) >= l && elem[0:l] == "repos" {
+					elem = elem[l:]
 				} else {
 					break
 				}
@@ -13988,14 +15142,14 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				}
 				switch elem[0] {
 				case '/': // Prefix: "/"
-					if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-						elem = elem[len(prefix):]
+					if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+						elem = elem[l:]
 					} else {
 						break
 					}
 
 					// Param: "owner"
-					// Match until one of "/"
+					// Match until "/"
 					idx := strings.IndexByte(elem, '/')
 					if idx > 0 {
 						args["owner"] = elem[:idx]
@@ -14006,14 +15160,14 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						}
 						switch elem[0] {
 						case '/': // Prefix: "/"
-							if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-								elem = elem[len(prefix):]
+							if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+								elem = elem[l:]
 							} else {
 								break
 							}
 
 							// Param: "repo"
-							// Match until one of "/"
+							// Match until "/"
 							idx := strings.IndexByte(elem, '/')
 							if idx > 0 {
 								args["repo"] = elem[:idx]
@@ -14024,8 +15178,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								}
 								switch elem[0] {
 								case '/': // Prefix: "/"
-									if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-										elem = elem[len(prefix):]
+									if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+										elem = elem[l:]
 									} else {
 										break
 									}
@@ -14036,8 +15190,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									}
 									switch elem[0] {
 									case 'a': // Prefix: "a"
-										if prefix := "a"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-											elem = elem[len(prefix):]
+										if l := len("a"); len(elem) >= l && elem[0:l] == "a" {
+											elem = elem[l:]
 										} else {
 											break
 										}
@@ -14048,8 +15202,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										}
 										switch elem[0] {
 										case 'c': // Prefix: "ctions/"
-											if prefix := "ctions/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-												elem = elem[len(prefix):]
+											if l := len("ctions/"); len(elem) >= l && elem[0:l] == "ctions/" {
+												elem = elem[l:]
 											} else {
 												break
 											}
@@ -14060,8 +15214,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											}
 											switch elem[0] {
 											case 'p': // Prefix: "permissions"
-												if prefix := "permissions"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-													elem = elem[len(prefix):]
+												if l := len("permissions"); len(elem) >= l && elem[0:l] == "permissions" {
+													elem = elem[l:]
 												} else {
 													break
 												}
@@ -14072,19 +15226,21 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												}
 												switch elem[0] {
 												case '/': // Prefix: "/selected-actions"
-													if prefix := "/selected-actions"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-														elem = elem[len(prefix):]
+													if l := len("/selected-actions"); len(elem) >= l && elem[0:l] == "/selected-actions" {
+														elem = elem[l:]
 													} else {
 														break
 													}
 
-													// Leaf: ActionsSetAllowedActionsRepository
-													s.handleActionsSetAllowedActionsRepositoryRequest(args, w, r)
-													return
+													if len(elem) == 0 {
+														// Leaf: ActionsSetAllowedActionsRepository
+														s.handleActionsSetAllowedActionsRepositoryRequest(args, w, r)
+														return
+													}
 												}
 											case 's': // Prefix: "secrets/"
-												if prefix := "secrets/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-													elem = elem[len(prefix):]
+												if l := len("secrets/"); len(elem) >= l && elem[0:l] == "secrets/" {
+													elem = elem[l:]
 												} else {
 													break
 												}
@@ -14092,31 +15248,36 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												// Param: "secret_name"
 												// Leaf parameter
 												args["secret_name"] = elem
+												elem = ""
 
-												// Leaf: ActionsCreateOrUpdateRepoSecret
-												s.handleActionsCreateOrUpdateRepoSecretRequest(args, w, r)
-												return
+												if len(elem) == 0 {
+													// Leaf: ActionsCreateOrUpdateRepoSecret
+													s.handleActionsCreateOrUpdateRepoSecretRequest(args, w, r)
+													return
+												}
 											}
 										case 'u': // Prefix: "utomated-security-fixes"
-											if prefix := "utomated-security-fixes"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-												elem = elem[len(prefix):]
+											if l := len("utomated-security-fixes"); len(elem) >= l && elem[0:l] == "utomated-security-fixes" {
+												elem = elem[l:]
 											} else {
 												break
 											}
 
-											// Leaf: ReposEnableAutomatedSecurityFixes
-											s.handleReposEnableAutomatedSecurityFixesRequest(args, w, r)
-											return
+											if len(elem) == 0 {
+												// Leaf: ReposEnableAutomatedSecurityFixes
+												s.handleReposEnableAutomatedSecurityFixesRequest(args, w, r)
+												return
+											}
 										}
 									case 'b': // Prefix: "branches/"
-										if prefix := "branches/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-											elem = elem[len(prefix):]
+										if l := len("branches/"); len(elem) >= l && elem[0:l] == "branches/" {
+											elem = elem[l:]
 										} else {
 											break
 										}
 
 										// Param: "branch"
-										// Match until one of "/"
+										// Match until "/"
 										idx := strings.IndexByte(elem, '/')
 										if idx > 0 {
 											args["branch"] = elem[:idx]
@@ -14127,8 +15288,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											}
 											switch elem[0] {
 											case '/': // Prefix: "/protection"
-												if prefix := "/protection"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-													elem = elem[len(prefix):]
+												if l := len("/protection"); len(elem) >= l && elem[0:l] == "/protection" {
+													elem = elem[l:]
 												} else {
 													break
 												}
@@ -14139,8 +15300,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												}
 												switch elem[0] {
 												case '/': // Prefix: "/re"
-													if prefix := "/re"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-														elem = elem[len(prefix):]
+													if l := len("/re"); len(elem) >= l && elem[0:l] == "/re" {
+														elem = elem[l:]
 													} else {
 														break
 													}
@@ -14151,18 +15312,20 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													}
 													switch elem[0] {
 													case 'q': // Prefix: "quired_status_checks/contexts"
-														if prefix := "quired_status_checks/contexts"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-															elem = elem[len(prefix):]
+														if l := len("quired_status_checks/contexts"); len(elem) >= l && elem[0:l] == "quired_status_checks/contexts" {
+															elem = elem[l:]
 														} else {
 															break
 														}
 
-														// Leaf: ReposSetStatusCheckContexts
-														s.handleReposSetStatusCheckContextsRequest(args, w, r)
-														return
+														if len(elem) == 0 {
+															// Leaf: ReposSetStatusCheckContexts
+															s.handleReposSetStatusCheckContextsRequest(args, w, r)
+															return
+														}
 													case 's': // Prefix: "strictions/"
-														if prefix := "strictions/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-															elem = elem[len(prefix):]
+														if l := len("strictions/"); len(elem) >= l && elem[0:l] == "strictions/" {
+															elem = elem[l:]
 														} else {
 															break
 														}
@@ -14173,43 +15336,49 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														}
 														switch elem[0] {
 														case 'a': // Prefix: "apps"
-															if prefix := "apps"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																elem = elem[len(prefix):]
+															if l := len("apps"); len(elem) >= l && elem[0:l] == "apps" {
+																elem = elem[l:]
 															} else {
 																break
 															}
 
-															// Leaf: ReposSetAppAccessRestrictions
-															s.handleReposSetAppAccessRestrictionsRequest(args, w, r)
-															return
+															if len(elem) == 0 {
+																// Leaf: ReposSetAppAccessRestrictions
+																s.handleReposSetAppAccessRestrictionsRequest(args, w, r)
+																return
+															}
 														case 't': // Prefix: "teams"
-															if prefix := "teams"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																elem = elem[len(prefix):]
+															if l := len("teams"); len(elem) >= l && elem[0:l] == "teams" {
+																elem = elem[l:]
 															} else {
 																break
 															}
 
-															// Leaf: ReposSetTeamAccessRestrictions
-															s.handleReposSetTeamAccessRestrictionsRequest(args, w, r)
-															return
+															if len(elem) == 0 {
+																// Leaf: ReposSetTeamAccessRestrictions
+																s.handleReposSetTeamAccessRestrictionsRequest(args, w, r)
+																return
+															}
 														case 'u': // Prefix: "users"
-															if prefix := "users"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																elem = elem[len(prefix):]
+															if l := len("users"); len(elem) >= l && elem[0:l] == "users" {
+																elem = elem[l:]
 															} else {
 																break
 															}
 
-															// Leaf: ReposSetUserAccessRestrictions
-															s.handleReposSetUserAccessRestrictionsRequest(args, w, r)
-															return
+															if len(elem) == 0 {
+																// Leaf: ReposSetUserAccessRestrictions
+																s.handleReposSetUserAccessRestrictionsRequest(args, w, r)
+																return
+															}
 														}
 													}
 												}
 											}
 										}
 									case 'c': // Prefix: "co"
-										if prefix := "co"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-											elem = elem[len(prefix):]
+										if l := len("co"); len(elem) >= l && elem[0:l] == "co" {
+											elem = elem[l:]
 										} else {
 											break
 										}
@@ -14220,8 +15389,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										}
 										switch elem[0] {
 										case 'l': // Prefix: "llaborators/"
-											if prefix := "llaborators/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-												elem = elem[len(prefix):]
+											if l := len("llaborators/"); len(elem) >= l && elem[0:l] == "llaborators/" {
+												elem = elem[l:]
 											} else {
 												break
 											}
@@ -14229,13 +15398,16 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											// Param: "username"
 											// Leaf parameter
 											args["username"] = elem
+											elem = ""
 
-											// Leaf: ReposAddCollaborator
-											s.handleReposAddCollaboratorRequest(args, w, r)
-											return
+											if len(elem) == 0 {
+												// Leaf: ReposAddCollaborator
+												s.handleReposAddCollaboratorRequest(args, w, r)
+												return
+											}
 										case 'n': // Prefix: "ntents/"
-											if prefix := "ntents/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-												elem = elem[len(prefix):]
+											if l := len("ntents/"); len(elem) >= l && elem[0:l] == "ntents/" {
+												elem = elem[l:]
 											} else {
 												break
 											}
@@ -14243,14 +15415,17 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											// Param: "path"
 											// Leaf parameter
 											args["path"] = elem
+											elem = ""
 
-											// Leaf: ReposCreateOrUpdateFileContents
-											s.handleReposCreateOrUpdateFileContentsRequest(args, w, r)
-											return
+											if len(elem) == 0 {
+												// Leaf: ReposCreateOrUpdateFileContents
+												s.handleReposCreateOrUpdateFileContentsRequest(args, w, r)
+												return
+											}
 										}
 									case 'i': // Prefix: "i"
-										if prefix := "i"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-											elem = elem[len(prefix):]
+										if l := len("i"); len(elem) >= l && elem[0:l] == "i" {
+											elem = elem[l:]
 										} else {
 											break
 										}
@@ -14261,34 +15436,38 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										}
 										switch elem[0] {
 										case 'm': // Prefix: "mport"
-											if prefix := "mport"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-												elem = elem[len(prefix):]
+											if l := len("mport"); len(elem) >= l && elem[0:l] == "mport" {
+												elem = elem[l:]
 											} else {
 												break
 											}
 
-											// Leaf: MigrationsStartImport
-											s.handleMigrationsStartImportRequest(args, w, r)
-											return
+											if len(elem) == 0 {
+												// Leaf: MigrationsStartImport
+												s.handleMigrationsStartImportRequest(args, w, r)
+												return
+											}
 										case 'n': // Prefix: "nteraction-limits"
-											if prefix := "nteraction-limits"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-												elem = elem[len(prefix):]
+											if l := len("nteraction-limits"); len(elem) >= l && elem[0:l] == "nteraction-limits" {
+												elem = elem[l:]
 											} else {
 												break
 											}
 
-											// Leaf: InteractionsSetRestrictionsForRepo
-											s.handleInteractionsSetRestrictionsForRepoRequest(args, w, r)
-											return
+											if len(elem) == 0 {
+												// Leaf: InteractionsSetRestrictionsForRepo
+												s.handleInteractionsSetRestrictionsForRepoRequest(args, w, r)
+												return
+											}
 										case 's': // Prefix: "ssues/"
-											if prefix := "ssues/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-												elem = elem[len(prefix):]
+											if l := len("ssues/"); len(elem) >= l && elem[0:l] == "ssues/" {
+												elem = elem[l:]
 											} else {
 												break
 											}
 
 											// Param: "issue_number"
-											// Match until one of "/"
+											// Match until "/"
 											idx := strings.IndexByte(elem, '/')
 											if idx > 0 {
 												args["issue_number"] = elem[:idx]
@@ -14299,47 +15478,53 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												}
 												switch elem[0] {
 												case '/': // Prefix: "/lock"
-													if prefix := "/lock"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-														elem = elem[len(prefix):]
+													if l := len("/lock"); len(elem) >= l && elem[0:l] == "/lock" {
+														elem = elem[l:]
 													} else {
 														break
 													}
 
-													// Leaf: IssuesLock
-													s.handleIssuesLockRequest(args, w, r)
-													return
+													if len(elem) == 0 {
+														// Leaf: IssuesLock
+														s.handleIssuesLockRequest(args, w, r)
+														return
+													}
 												}
 											}
 										}
 									case 'l': // Prefix: "lfs"
-										if prefix := "lfs"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-											elem = elem[len(prefix):]
+										if l := len("lfs"); len(elem) >= l && elem[0:l] == "lfs" {
+											elem = elem[l:]
 										} else {
 											break
 										}
 
-										// Leaf: ReposEnableLfsForRepo
-										s.handleReposEnableLfsForRepoRequest(args, w, r)
-										return
+										if len(elem) == 0 {
+											// Leaf: ReposEnableLfsForRepo
+											s.handleReposEnableLfsForRepoRequest(args, w, r)
+											return
+										}
 									case 'n': // Prefix: "notifications"
-										if prefix := "notifications"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-											elem = elem[len(prefix):]
+										if l := len("notifications"); len(elem) >= l && elem[0:l] == "notifications" {
+											elem = elem[l:]
 										} else {
 											break
 										}
 
-										// Leaf: ActivityMarkRepoNotificationsAsRead
-										s.handleActivityMarkRepoNotificationsAsReadRequest(args, w, r)
-										return
+										if len(elem) == 0 {
+											// Leaf: ActivityMarkRepoNotificationsAsRead
+											s.handleActivityMarkRepoNotificationsAsReadRequest(args, w, r)
+											return
+										}
 									case 'p': // Prefix: "pulls/"
-										if prefix := "pulls/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-											elem = elem[len(prefix):]
+										if l := len("pulls/"); len(elem) >= l && elem[0:l] == "pulls/" {
+											elem = elem[l:]
 										} else {
 											break
 										}
 
 										// Param: "pull_number"
-										// Match until one of "/"
+										// Match until "/"
 										idx := strings.IndexByte(elem, '/')
 										if idx > 0 {
 											args["pull_number"] = elem[:idx]
@@ -14350,8 +15535,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											}
 											switch elem[0] {
 											case '/': // Prefix: "/"
-												if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-													elem = elem[len(prefix):]
+												if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+													elem = elem[l:]
 												} else {
 													break
 												}
@@ -14362,24 +15547,26 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												}
 												switch elem[0] {
 												case 'm': // Prefix: "merge"
-													if prefix := "merge"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-														elem = elem[len(prefix):]
+													if l := len("merge"); len(elem) >= l && elem[0:l] == "merge" {
+														elem = elem[l:]
 													} else {
 														break
 													}
 
-													// Leaf: PullsMerge
-													s.handlePullsMergeRequest(args, w, r)
-													return
+													if len(elem) == 0 {
+														// Leaf: PullsMerge
+														s.handlePullsMergeRequest(args, w, r)
+														return
+													}
 												case 'r': // Prefix: "reviews/"
-													if prefix := "reviews/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-														elem = elem[len(prefix):]
+													if l := len("reviews/"); len(elem) >= l && elem[0:l] == "reviews/" {
+														elem = elem[l:]
 													} else {
 														break
 													}
 
 													// Param: "review_id"
-													// Match until one of "/"
+													// Match until "/"
 													idx := strings.IndexByte(elem, '/')
 													if idx > 0 {
 														args["review_id"] = elem[:idx]
@@ -14391,74 +15578,84 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														}
 														switch elem[0] {
 														case '/': // Prefix: "/dismissals"
-															if prefix := "/dismissals"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-																elem = elem[len(prefix):]
+															if l := len("/dismissals"); len(elem) >= l && elem[0:l] == "/dismissals" {
+																elem = elem[l:]
 															} else {
 																break
 															}
 
-															// Leaf: PullsDismissReview
-															s.handlePullsDismissReviewRequest(args, w, r)
-															return
+															if len(elem) == 0 {
+																// Leaf: PullsDismissReview
+																s.handlePullsDismissReviewRequest(args, w, r)
+																return
+															}
 														}
 													}
 												case 'u': // Prefix: "update-branch"
-													if prefix := "update-branch"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-														elem = elem[len(prefix):]
+													if l := len("update-branch"); len(elem) >= l && elem[0:l] == "update-branch" {
+														elem = elem[l:]
 													} else {
 														break
 													}
 
-													// Leaf: PullsUpdateBranch
-													s.handlePullsUpdateBranchRequest(args, w, r)
-													return
+													if len(elem) == 0 {
+														// Leaf: PullsUpdateBranch
+														s.handlePullsUpdateBranchRequest(args, w, r)
+														return
+													}
 												}
 											}
 										}
 									case 's': // Prefix: "subscription"
-										if prefix := "subscription"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-											elem = elem[len(prefix):]
+										if l := len("subscription"); len(elem) >= l && elem[0:l] == "subscription" {
+											elem = elem[l:]
 										} else {
 											break
 										}
 
-										// Leaf: ActivitySetRepoSubscription
-										s.handleActivitySetRepoSubscriptionRequest(args, w, r)
-										return
+										if len(elem) == 0 {
+											// Leaf: ActivitySetRepoSubscription
+											s.handleActivitySetRepoSubscriptionRequest(args, w, r)
+											return
+										}
 									case 't': // Prefix: "topics"
-										if prefix := "topics"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-											elem = elem[len(prefix):]
+										if l := len("topics"); len(elem) >= l && elem[0:l] == "topics" {
+											elem = elem[l:]
 										} else {
 											break
 										}
 
-										// Leaf: ReposReplaceAllTopics
-										s.handleReposReplaceAllTopicsRequest(args, w, r)
-										return
+										if len(elem) == 0 {
+											// Leaf: ReposReplaceAllTopics
+											s.handleReposReplaceAllTopicsRequest(args, w, r)
+											return
+										}
 									case 'v': // Prefix: "vulnerability-alerts"
-										if prefix := "vulnerability-alerts"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-											elem = elem[len(prefix):]
+										if l := len("vulnerability-alerts"); len(elem) >= l && elem[0:l] == "vulnerability-alerts" {
+											elem = elem[l:]
 										} else {
 											break
 										}
 
-										// Leaf: ReposEnableVulnerabilityAlerts
-										s.handleReposEnableVulnerabilityAlertsRequest(args, w, r)
-										return
+										if len(elem) == 0 {
+											// Leaf: ReposEnableVulnerabilityAlerts
+											s.handleReposEnableVulnerabilityAlertsRequest(args, w, r)
+											return
+										}
 									}
 								}
 							}
 						}
 					}
 				case 'i': // Prefix: "itories/"
-					if prefix := "itories/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-						elem = elem[len(prefix):]
+					if l := len("itories/"); len(elem) >= l && elem[0:l] == "itories/" {
+						elem = elem[l:]
 					} else {
 						break
 					}
 
 					// Param: "repository_id"
-					// Match until one of "/"
+					// Match until "/"
 					idx := strings.IndexByte(elem, '/')
 					if idx > 0 {
 						args["repository_id"] = elem[:idx]
@@ -14469,14 +15666,14 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						}
 						switch elem[0] {
 						case '/': // Prefix: "/environments/"
-							if prefix := "/environments/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-								elem = elem[len(prefix):]
+							if l := len("/environments/"); len(elem) >= l && elem[0:l] == "/environments/" {
+								elem = elem[l:]
 							} else {
 								break
 							}
 
 							// Param: "environment_name"
-							// Match until one of "/"
+							// Match until "/"
 							idx := strings.IndexByte(elem, '/')
 							if idx > 0 {
 								args["environment_name"] = elem[:idx]
@@ -14487,8 +15684,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								}
 								switch elem[0] {
 								case '/': // Prefix: "/secrets/"
-									if prefix := "/secrets/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-										elem = elem[len(prefix):]
+									if l := len("/secrets/"); len(elem) >= l && elem[0:l] == "/secrets/" {
+										elem = elem[l:]
 									} else {
 										break
 									}
@@ -14496,24 +15693,27 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									// Param: "secret_name"
 									// Leaf parameter
 									args["secret_name"] = elem
+									elem = ""
 
-									// Leaf: ActionsCreateOrUpdateEnvironmentSecret
-									s.handleActionsCreateOrUpdateEnvironmentSecretRequest(args, w, r)
-									return
+									if len(elem) == 0 {
+										// Leaf: ActionsCreateOrUpdateEnvironmentSecret
+										s.handleActionsCreateOrUpdateEnvironmentSecretRequest(args, w, r)
+										return
+									}
 								}
 							}
 						}
 					}
 				}
 			case 's': // Prefix: "scim/v2/enterprises/"
-				if prefix := "scim/v2/enterprises/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-					elem = elem[len(prefix):]
+				if l := len("scim/v2/enterprises/"); len(elem) >= l && elem[0:l] == "scim/v2/enterprises/" {
+					elem = elem[l:]
 				} else {
 					break
 				}
 
 				// Param: "enterprise"
-				// Match until one of "/"
+				// Match until "/"
 				idx := strings.IndexByte(elem, '/')
 				if idx > 0 {
 					args["enterprise"] = elem[:idx]
@@ -14524,8 +15724,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					}
 					switch elem[0] {
 					case '/': // Prefix: "/"
-						if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-							elem = elem[len(prefix):]
+						if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+							elem = elem[l:]
 						} else {
 							break
 						}
@@ -14536,8 +15736,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						}
 						switch elem[0] {
 						case 'G': // Prefix: "Groups/"
-							if prefix := "Groups/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-								elem = elem[len(prefix):]
+							if l := len("Groups/"); len(elem) >= l && elem[0:l] == "Groups/" {
+								elem = elem[l:]
 							} else {
 								break
 							}
@@ -14545,13 +15745,16 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							// Param: "scim_group_id"
 							// Leaf parameter
 							args["scim_group_id"] = elem
+							elem = ""
 
-							// Leaf: EnterpriseAdminSetInformationForProvisionedEnterpriseGroup
-							s.handleEnterpriseAdminSetInformationForProvisionedEnterpriseGroupRequest(args, w, r)
-							return
+							if len(elem) == 0 {
+								// Leaf: EnterpriseAdminSetInformationForProvisionedEnterpriseGroup
+								s.handleEnterpriseAdminSetInformationForProvisionedEnterpriseGroupRequest(args, w, r)
+								return
+							}
 						case 'U': // Prefix: "Users/"
-							if prefix := "Users/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-								elem = elem[len(prefix):]
+							if l := len("Users/"); len(elem) >= l && elem[0:l] == "Users/" {
+								elem = elem[l:]
 							} else {
 								break
 							}
@@ -14559,22 +15762,25 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							// Param: "scim_user_id"
 							// Leaf parameter
 							args["scim_user_id"] = elem
+							elem = ""
 
-							// Leaf: EnterpriseAdminSetInformationForProvisionedEnterpriseUser
-							s.handleEnterpriseAdminSetInformationForProvisionedEnterpriseUserRequest(args, w, r)
-							return
+							if len(elem) == 0 {
+								// Leaf: EnterpriseAdminSetInformationForProvisionedEnterpriseUser
+								s.handleEnterpriseAdminSetInformationForProvisionedEnterpriseUserRequest(args, w, r)
+								return
+							}
 						}
 					}
 				}
 			case 't': // Prefix: "teams/"
-				if prefix := "teams/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-					elem = elem[len(prefix):]
+				if l := len("teams/"); len(elem) >= l && elem[0:l] == "teams/" {
+					elem = elem[l:]
 				} else {
 					break
 				}
 
 				// Param: "team_id"
-				// Match until one of "/"
+				// Match until "/"
 				idx := strings.IndexByte(elem, '/')
 				if idx > 0 {
 					args["team_id"] = elem[:idx]
@@ -14585,8 +15791,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					}
 					switch elem[0] {
 					case '/': // Prefix: "/"
-						if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-							elem = elem[len(prefix):]
+						if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+							elem = elem[l:]
 						} else {
 							break
 						}
@@ -14597,8 +15803,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						}
 						switch elem[0] {
 						case 'm': // Prefix: "members"
-							if prefix := "members"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-								elem = elem[len(prefix):]
+							if l := len("members"); len(elem) >= l && elem[0:l] == "members" {
+								elem = elem[l:]
 							} else {
 								break
 							}
@@ -14609,8 +15815,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							}
 							switch elem[0] {
 							case '/': // Prefix: "/"
-								if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-									elem = elem[len(prefix):]
+								if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+									elem = elem[l:]
 								} else {
 									break
 								}
@@ -14618,13 +15824,16 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								// Param: "username"
 								// Leaf parameter
 								args["username"] = elem
+								elem = ""
 
-								// Leaf: TeamsAddMemberLegacy
-								s.handleTeamsAddMemberLegacyRequest(args, w, r)
-								return
+								if len(elem) == 0 {
+									// Leaf: TeamsAddMemberLegacy
+									s.handleTeamsAddMemberLegacyRequest(args, w, r)
+									return
+								}
 							case 'h': // Prefix: "hips/"
-								if prefix := "hips/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-									elem = elem[len(prefix):]
+								if l := len("hips/"); len(elem) >= l && elem[0:l] == "hips/" {
+									elem = elem[l:]
 								} else {
 									break
 								}
@@ -14632,14 +15841,17 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								// Param: "username"
 								// Leaf parameter
 								args["username"] = elem
+								elem = ""
 
-								// Leaf: TeamsAddOrUpdateMembershipForUserLegacy
-								s.handleTeamsAddOrUpdateMembershipForUserLegacyRequest(args, w, r)
-								return
+								if len(elem) == 0 {
+									// Leaf: TeamsAddOrUpdateMembershipForUserLegacy
+									s.handleTeamsAddOrUpdateMembershipForUserLegacyRequest(args, w, r)
+									return
+								}
 							}
 						case 'p': // Prefix: "projects/"
-							if prefix := "projects/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-								elem = elem[len(prefix):]
+							if l := len("projects/"); len(elem) >= l && elem[0:l] == "projects/" {
+								elem = elem[l:]
 							} else {
 								break
 							}
@@ -14647,19 +15859,22 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							// Param: "project_id"
 							// Leaf parameter
 							args["project_id"] = elem
+							elem = ""
 
-							// Leaf: TeamsAddOrUpdateProjectPermissionsLegacy
-							s.handleTeamsAddOrUpdateProjectPermissionsLegacyRequest(args, w, r)
-							return
+							if len(elem) == 0 {
+								// Leaf: TeamsAddOrUpdateProjectPermissionsLegacy
+								s.handleTeamsAddOrUpdateProjectPermissionsLegacyRequest(args, w, r)
+								return
+							}
 						case 'r': // Prefix: "repos/"
-							if prefix := "repos/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-								elem = elem[len(prefix):]
+							if l := len("repos/"); len(elem) >= l && elem[0:l] == "repos/" {
+								elem = elem[l:]
 							} else {
 								break
 							}
 
 							// Param: "owner"
-							// Match until one of "/"
+							// Match until "/"
 							idx := strings.IndexByte(elem, '/')
 							if idx > 0 {
 								args["owner"] = elem[:idx]
@@ -14670,8 +15885,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								}
 								switch elem[0] {
 								case '/': // Prefix: "/"
-									if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-										elem = elem[len(prefix):]
+									if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+										elem = elem[l:]
 									} else {
 										break
 									}
@@ -14679,18 +15894,21 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									// Param: "repo"
 									// Leaf parameter
 									args["repo"] = elem
+									elem = ""
 
-									// Leaf: TeamsAddOrUpdateRepoPermissionsLegacy
-									s.handleTeamsAddOrUpdateRepoPermissionsLegacyRequest(args, w, r)
-									return
+									if len(elem) == 0 {
+										// Leaf: TeamsAddOrUpdateRepoPermissionsLegacy
+										s.handleTeamsAddOrUpdateRepoPermissionsLegacyRequest(args, w, r)
+										return
+									}
 								}
 							}
 						}
 					}
 				}
 			case 'u': // Prefix: "user/"
-				if prefix := "user/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-					elem = elem[len(prefix):]
+				if l := len("user/"); len(elem) >= l && elem[0:l] == "user/" {
+					elem = elem[l:]
 				} else {
 					break
 				}
@@ -14701,8 +15919,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				}
 				switch elem[0] {
 				case 'b': // Prefix: "blocks/"
-					if prefix := "blocks/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-						elem = elem[len(prefix):]
+					if l := len("blocks/"); len(elem) >= l && elem[0:l] == "blocks/" {
+						elem = elem[l:]
 					} else {
 						break
 					}
@@ -14710,13 +15928,16 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					// Param: "username"
 					// Leaf parameter
 					args["username"] = elem
+					elem = ""
 
-					// Leaf: UsersBlock
-					s.handleUsersBlockRequest(args, w, r)
-					return
+					if len(elem) == 0 {
+						// Leaf: UsersBlock
+						s.handleUsersBlockRequest(args, w, r)
+						return
+					}
 				case 'f': // Prefix: "following/"
-					if prefix := "following/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-						elem = elem[len(prefix):]
+					if l := len("following/"); len(elem) >= l && elem[0:l] == "following/" {
+						elem = elem[l:]
 					} else {
 						break
 					}
@@ -14724,13 +15945,16 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					// Param: "username"
 					// Leaf parameter
 					args["username"] = elem
+					elem = ""
 
-					// Leaf: UsersFollow
-					s.handleUsersFollowRequest(args, w, r)
-					return
+					if len(elem) == 0 {
+						// Leaf: UsersFollow
+						s.handleUsersFollowRequest(args, w, r)
+						return
+					}
 				case 'i': // Prefix: "in"
-					if prefix := "in"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-						elem = elem[len(prefix):]
+					if l := len("in"); len(elem) >= l && elem[0:l] == "in" {
+						elem = elem[l:]
 					} else {
 						break
 					}
@@ -14741,14 +15965,14 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					}
 					switch elem[0] {
 					case 's': // Prefix: "stallations/"
-						if prefix := "stallations/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-							elem = elem[len(prefix):]
+						if l := len("stallations/"); len(elem) >= l && elem[0:l] == "stallations/" {
+							elem = elem[l:]
 						} else {
 							break
 						}
 
 						// Param: "installation_id"
-						// Match until one of "/"
+						// Match until "/"
 						idx := strings.IndexByte(elem, '/')
 						if idx > 0 {
 							args["installation_id"] = elem[:idx]
@@ -14759,8 +15983,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							}
 							switch elem[0] {
 							case '/': // Prefix: "/repositories/"
-								if prefix := "/repositories/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-									elem = elem[len(prefix):]
+								if l := len("/repositories/"); len(elem) >= l && elem[0:l] == "/repositories/" {
+									elem = elem[l:]
 								} else {
 									break
 								}
@@ -14768,32 +15992,37 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								// Param: "repository_id"
 								// Leaf parameter
 								args["repository_id"] = elem
+								elem = ""
 
-								// Leaf: AppsAddRepoToInstallation
-								s.handleAppsAddRepoToInstallationRequest(args, w, r)
-								return
+								if len(elem) == 0 {
+									// Leaf: AppsAddRepoToInstallation
+									s.handleAppsAddRepoToInstallationRequest(args, w, r)
+									return
+								}
 							}
 						}
 					case 't': // Prefix: "teraction-limits"
-						if prefix := "teraction-limits"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-							elem = elem[len(prefix):]
+						if l := len("teraction-limits"); len(elem) >= l && elem[0:l] == "teraction-limits" {
+							elem = elem[l:]
 						} else {
 							break
 						}
 
-						// Leaf: InteractionsSetRestrictionsForAuthenticatedUser
-						s.handleInteractionsSetRestrictionsForAuthenticatedUserRequest(args, w, r)
-						return
+						if len(elem) == 0 {
+							// Leaf: InteractionsSetRestrictionsForAuthenticatedUser
+							s.handleInteractionsSetRestrictionsForAuthenticatedUserRequest(args, w, r)
+							return
+						}
 					}
 				case 's': // Prefix: "starred/"
-					if prefix := "starred/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-						elem = elem[len(prefix):]
+					if l := len("starred/"); len(elem) >= l && elem[0:l] == "starred/" {
+						elem = elem[l:]
 					} else {
 						break
 					}
 
 					// Param: "owner"
-					// Match until one of "/"
+					// Match until "/"
 					idx := strings.IndexByte(elem, '/')
 					if idx > 0 {
 						args["owner"] = elem[:idx]
@@ -14804,8 +16033,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						}
 						switch elem[0] {
 						case '/': // Prefix: "/"
-							if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-								elem = elem[len(prefix):]
+							if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+								elem = elem[l:]
 							} else {
 								break
 							}
@@ -14813,10 +16042,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							// Param: "repo"
 							// Leaf parameter
 							args["repo"] = elem
+							elem = ""
 
-							// Leaf: ActivityStarRepoForAuthenticatedUser
-							s.handleActivityStarRepoForAuthenticatedUserRequest(args, w, r)
-							return
+							if len(elem) == 0 {
+								// Leaf: ActivityStarRepoForAuthenticatedUser
+								s.handleActivityStarRepoForAuthenticatedUserRequest(args, w, r)
+								return
+							}
 						}
 					}
 				}

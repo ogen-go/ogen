@@ -30,9 +30,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 {{ define "route_edge" }}
 {{- /*gotype: github.com/ogen-go/ogen/gen.RouteNode*/ -}}
 {{- if $.IsLeaf }}
-	// Leaf: {{ $.Operation.Name }}
-	s.handle{{ $.Operation.Name }}Request(args, w, r)
-	return
+	if len(elem) == 0 {
+		// Leaf: {{ $.Operation.Name }}
+		s.handle{{ $.Operation.Name }}Request(args, w, r)
+		return
+	}
 {{- else }}
 	{{- with $child := $.StaticChildren }}
 		if len(elem) == 0 {
@@ -46,8 +48,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 		switch elem[0] {
 		{{- range $c := $child }}
 		case {{ printf "%q" $c.Head }}: // Prefix: {{ printf "%q" $c.Prefix }}
-			if prefix := {{ printf "%q" $c.Prefix }}; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-				elem = elem[len(prefix):]
+			if l := len({{ printf "%q" $c.Prefix }}); len(elem) >= l && elem[0:l] == {{ printf "%q" $c.Prefix }} {
+				elem = elem[l:]
 			} else {
 				break
 			}
@@ -59,10 +61,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 		{{- range $c := $child }}
 			// Param: {{ printf "%q" $c.ParamName }}
 			{{- with $tails := $c.Tails }}
-			// Match until one of {{ printf "%q" $tails }}
+
 			{{- if eq (len $tails) 1 }}
+			// Match until {{ printf "%q" $tails }}
 			idx := strings.IndexByte(elem, {{ printf "%q" (index $tails 0) }})
 			{{- else }}
+			// Match until one of {{ printf "%q" $tails }}
 			idx := strings.IndexAny(elem, {{ printf "%q" $tails }})
 			{{- end }}
 			if idx > 0 {
@@ -73,6 +77,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 			{{- else }}
 			// Leaf parameter
 			args[{{ printf "%q" $c.ParamName }}] = elem
+			elem = ""
 			{{ template "route_edge" $c }}
 			{{- end }}
 		{{- end }}

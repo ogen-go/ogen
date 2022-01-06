@@ -84,8 +84,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 		}
 		switch elem[0] {
 		case '/': // Prefix: "/pets"
-			if prefix := "/pets"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-				elem = elem[len(prefix):]
+			if l := len("/pets"); len(elem) >= l && elem[0:l] == "/pets" {
+				elem = elem[l:]
 			} else {
 				break
 			}
@@ -96,8 +96,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 			}
 			switch elem[0] {
 			case '/': // Prefix: "/"
-				if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-					elem = elem[len(prefix):]
+				if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+					elem = elem[l:]
 				} else {
 					break
 				}
@@ -105,10 +105,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				// Param: "petId"
 				// Leaf parameter
 				args["petId"] = elem
+				elem = ""
 
-				// Leaf: ShowPetById
-				s.handleShowPetByIdRequest(args, w, r)
-				return
+				if len(elem) == 0 {
+					// Leaf: ShowPetById
+					s.handleShowPetByIdRequest(args, w, r)
+					return
+				}
 			}
 		}
 	case "POST":
@@ -117,15 +120,17 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 		}
 		switch elem[0] {
 		case '/': // Prefix: "/pets"
-			if prefix := "/pets"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-				elem = elem[len(prefix):]
+			if l := len("/pets"); len(elem) >= l && elem[0:l] == "/pets" {
+				elem = elem[l:]
 			} else {
 				break
 			}
 
-			// Leaf: CreatePets
-			s.handleCreatePetsRequest(args, w, r)
-			return
+			if len(elem) == 0 {
+				// Leaf: CreatePets
+				s.handleCreatePetsRequest(args, w, r)
+				return
+			}
 		}
 	}
 	s.notFound(w, r)

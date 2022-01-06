@@ -84,8 +84,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 		}
 		switch elem[0] {
 		case '/': // Prefix: "/"
-			if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-				elem = elem[len(prefix):]
+			if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+				elem = elem[l:]
 			} else {
 				break
 			}
@@ -96,8 +96,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 			}
 			switch elem[0] {
 			case 'a': // Prefix: "api/galler"
-				if prefix := "api/galler"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-					elem = elem[len(prefix):]
+				if l := len("api/galler"); len(elem) >= l && elem[0:l] == "api/galler" {
+					elem = elem[l:]
 				} else {
 					break
 				}
@@ -108,8 +108,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				}
 				switch elem[0] {
 				case 'i': // Prefix: "ies/"
-					if prefix := "ies/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-						elem = elem[len(prefix):]
+					if l := len("ies/"); len(elem) >= l && elem[0:l] == "ies/" {
+						elem = elem[l:]
 					} else {
 						break
 					}
@@ -120,29 +120,33 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					}
 					switch elem[0] {
 					case 's': // Prefix: "search"
-						if prefix := "search"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-							elem = elem[len(prefix):]
+						if l := len("search"); len(elem) >= l && elem[0:l] == "search" {
+							elem = elem[l:]
 						} else {
 							break
 						}
 
-						// Leaf: Search
-						s.handleSearchRequest(args, w, r)
-						return
+						if len(elem) == 0 {
+							// Leaf: Search
+							s.handleSearchRequest(args, w, r)
+							return
+						}
 					case 't': // Prefix: "tagged"
-						if prefix := "tagged"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-							elem = elem[len(prefix):]
+						if l := len("tagged"); len(elem) >= l && elem[0:l] == "tagged" {
+							elem = elem[l:]
 						} else {
 							break
 						}
 
-						// Leaf: SearchByTagID
-						s.handleSearchByTagIDRequest(args, w, r)
-						return
+						if len(elem) == 0 {
+							// Leaf: SearchByTagID
+							s.handleSearchByTagIDRequest(args, w, r)
+							return
+						}
 					}
 				case 'y': // Prefix: "y/"
-					if prefix := "y/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-						elem = elem[len(prefix):]
+					if l := len("y/"); len(elem) >= l && elem[0:l] == "y/" {
+						elem = elem[l:]
 					} else {
 						break
 					}
@@ -150,20 +154,23 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					// Param: "book_id"
 					// Leaf parameter
 					args["book_id"] = elem
+					elem = ""
 
-					// Leaf: GetBook
-					s.handleGetBookRequest(args, w, r)
-					return
+					if len(elem) == 0 {
+						// Leaf: GetBook
+						s.handleGetBookRequest(args, w, r)
+						return
+					}
 				}
 			case 'g': // Prefix: "galleries/"
-				if prefix := "galleries/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-					elem = elem[len(prefix):]
+				if l := len("galleries/"); len(elem) >= l && elem[0:l] == "galleries/" {
+					elem = elem[l:]
 				} else {
 					break
 				}
 
 				// Param: "media_id"
-				// Match until one of "/"
+				// Match until "/"
 				idx := strings.IndexByte(elem, '/')
 				if idx > 0 {
 					args["media_id"] = elem[:idx]
@@ -174,8 +181,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					}
 					switch elem[0] {
 					case '/': // Prefix: "/"
-						if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-							elem = elem[len(prefix):]
+						if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+							elem = elem[l:]
 						} else {
 							break
 						}
@@ -186,8 +193,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						}
 						switch elem[0] {
 						case 'c': // Prefix: "cover."
-							if prefix := "cover."; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-								elem = elem[len(prefix):]
+							if l := len("cover."); len(elem) >= l && elem[0:l] == "cover." {
+								elem = elem[l:]
 							} else {
 								break
 							}
@@ -195,10 +202,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							// Param: "format"
 							// Leaf parameter
 							args["format"] = elem
+							elem = ""
 
-							// Leaf: GetPageCoverImage
-							s.handleGetPageCoverImageRequest(args, w, r)
-							return
+							if len(elem) == 0 {
+								// Leaf: GetPageCoverImage
+								s.handleGetPageCoverImageRequest(args, w, r)
+								return
+							}
 						}
 						// Param: "page"
 						// Match until one of ".t"
@@ -212,8 +222,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							}
 							switch elem[0] {
 							case '.': // Prefix: "."
-								if prefix := "."; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-									elem = elem[len(prefix):]
+								if l := len("."); len(elem) >= l && elem[0:l] == "." {
+									elem = elem[l:]
 								} else {
 									break
 								}
@@ -221,13 +231,16 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								// Param: "format"
 								// Leaf parameter
 								args["format"] = elem
+								elem = ""
 
-								// Leaf: GetPageImage
-								s.handleGetPageImageRequest(args, w, r)
-								return
+								if len(elem) == 0 {
+									// Leaf: GetPageImage
+									s.handleGetPageImageRequest(args, w, r)
+									return
+								}
 							case 't': // Prefix: "t."
-								if prefix := "t."; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-									elem = elem[len(prefix):]
+								if l := len("t."); len(elem) >= l && elem[0:l] == "t." {
+									elem = elem[l:]
 								} else {
 									break
 								}
@@ -235,10 +248,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								// Param: "format"
 								// Leaf parameter
 								args["format"] = elem
+								elem = ""
 
-								// Leaf: GetPageThumbnailImage
-								s.handleGetPageThumbnailImageRequest(args, w, r)
-								return
+								if len(elem) == 0 {
+									// Leaf: GetPageThumbnailImage
+									s.handleGetPageThumbnailImageRequest(args, w, r)
+									return
+								}
 							}
 						}
 					}

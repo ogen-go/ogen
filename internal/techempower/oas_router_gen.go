@@ -84,8 +84,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 		}
 		switch elem[0] {
 		case '/': // Prefix: "/"
-			if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-				elem = elem[len(prefix):]
+			if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+				elem = elem[l:]
 			} else {
 				break
 			}
@@ -96,55 +96,65 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 			}
 			switch elem[0] {
 			case 'c': // Prefix: "cached-worlds"
-				if prefix := "cached-worlds"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-					elem = elem[len(prefix):]
+				if l := len("cached-worlds"); len(elem) >= l && elem[0:l] == "cached-worlds" {
+					elem = elem[l:]
 				} else {
 					break
 				}
 
-				// Leaf: Caching
-				s.handleCachingRequest(args, w, r)
-				return
+				if len(elem) == 0 {
+					// Leaf: Caching
+					s.handleCachingRequest(args, w, r)
+					return
+				}
 			case 'd': // Prefix: "db"
-				if prefix := "db"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-					elem = elem[len(prefix):]
+				if l := len("db"); len(elem) >= l && elem[0:l] == "db" {
+					elem = elem[l:]
 				} else {
 					break
 				}
 
-				// Leaf: DB
-				s.handleDBRequest(args, w, r)
-				return
+				if len(elem) == 0 {
+					// Leaf: DB
+					s.handleDBRequest(args, w, r)
+					return
+				}
 			case 'j': // Prefix: "json"
-				if prefix := "json"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-					elem = elem[len(prefix):]
+				if l := len("json"); len(elem) >= l && elem[0:l] == "json" {
+					elem = elem[l:]
 				} else {
 					break
 				}
 
-				// Leaf: JSON
-				s.handleJSONRequest(args, w, r)
-				return
+				if len(elem) == 0 {
+					// Leaf: JSON
+					s.handleJSONRequest(args, w, r)
+					return
+				}
 			case 'q': // Prefix: "queries"
-				if prefix := "queries"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-					elem = elem[len(prefix):]
+				if l := len("queries"); len(elem) >= l && elem[0:l] == "queries" {
+					elem = elem[l:]
 				} else {
 					break
 				}
 
-				// Leaf: Queries
-				s.handleQueriesRequest(args, w, r)
-				return
+				if len(elem) == 0 {
+					// Leaf: Queries
+					s.handleQueriesRequest(args, w, r)
+					return
+				}
 			case 'u': // Prefix: "updates"
-				if prefix := "updates"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-					elem = elem[len(prefix):]
+				if l := len("updates"); len(elem) >= l && elem[0:l] == "updates" {
+					elem = elem[l:]
 				} else {
 					break
 				}
 
-				// Leaf: Updates
-				s.handleUpdatesRequest(args, w, r)
-				return
+				if len(elem) == 0 {
+					// Leaf: Updates
+					s.handleUpdatesRequest(args, w, r)
+					return
+				}
 			}
 		}
 	}

@@ -84,8 +84,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 		}
 		switch elem[0] {
 		case '/': // Prefix: "/pets/"
-			if prefix := "/pets/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-				elem = elem[len(prefix):]
+			if l := len("/pets/"); len(elem) >= l && elem[0:l] == "/pets/" {
+				elem = elem[l:]
 			} else {
 				break
 			}
@@ -93,10 +93,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 			// Param: "id"
 			// Leaf parameter
 			args["id"] = elem
+			elem = ""
 
-			// Leaf: DeletePet
-			s.handleDeletePetRequest(args, w, r)
-			return
+			if len(elem) == 0 {
+				// Leaf: DeletePet
+				s.handleDeletePetRequest(args, w, r)
+				return
+			}
 		}
 	}
 	s.notFound(w, r)
