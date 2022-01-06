@@ -84,8 +84,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 		}
 		switch elem[0] {
 		case '/': // Prefix: "/name"
-			if prefix := "/name"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-				elem = elem[len(prefix):]
+			if l := len("/name"); len(elem) >= l && elem[0:l] == "/name" {
+				elem = elem[l:]
 			} else {
 				break
 			}
@@ -96,14 +96,14 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 			}
 			switch elem[0] {
 			case '/': // Prefix: "/"
-				if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-					elem = elem[len(prefix):]
+				if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+					elem = elem[l:]
 				} else {
 					break
 				}
 
 				// Param: "id"
-				// Match until one of "/"
+				// Match until "/"
 				idx := strings.IndexByte(elem, '/')
 				if idx > 0 {
 					args["id"] = elem[:idx]
@@ -115,8 +115,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					}
 					switch elem[0] {
 					case '/': // Prefix: "/"
-						if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-							elem = elem[len(prefix):]
+						if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+							elem = elem[l:]
 						} else {
 							break
 						}
@@ -124,10 +124,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						// Param: "key"
 						// Leaf parameter
 						args["key"] = elem
+						elem = ""
 
-						// Leaf: DataGet
-						s.handleDataGetRequest(args, w, r)
-						return
+						if len(elem) == 0 {
+							// Leaf: DataGet
+							s.handleDataGetRequest(args, w, r)
+							return
+						}
 					}
 				}
 			}

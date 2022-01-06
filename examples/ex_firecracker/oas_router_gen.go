@@ -84,8 +84,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 		}
 		switch elem[0] {
 		case '/': // Prefix: "/"
-			if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-				elem = elem[len(prefix):]
+			if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+				elem = elem[l:]
 			} else {
 				break
 			}
@@ -96,8 +96,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 			}
 			switch elem[0] {
 			case 'b': // Prefix: "balloon"
-				if prefix := "balloon"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-					elem = elem[len(prefix):]
+				if l := len("balloon"); len(elem) >= l && elem[0:l] == "balloon" {
+					elem = elem[l:]
 				} else {
 					break
 				}
@@ -108,19 +108,21 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				}
 				switch elem[0] {
 				case '/': // Prefix: "/statistics"
-					if prefix := "/statistics"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-						elem = elem[len(prefix):]
+					if l := len("/statistics"); len(elem) >= l && elem[0:l] == "/statistics" {
+						elem = elem[l:]
 					} else {
 						break
 					}
 
-					// Leaf: DescribeBalloonStats
-					s.handleDescribeBalloonStatsRequest(args, w, r)
-					return
+					if len(elem) == 0 {
+						// Leaf: DescribeBalloonStats
+						s.handleDescribeBalloonStatsRequest(args, w, r)
+						return
+					}
 				}
 			case 'm': // Prefix: "m"
-				if prefix := "m"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-					elem = elem[len(prefix):]
+				if l := len("m"); len(elem) >= l && elem[0:l] == "m" {
+					elem = elem[l:]
 				} else {
 					break
 				}
@@ -131,36 +133,42 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				}
 				switch elem[0] {
 				case 'a': // Prefix: "achine-config"
-					if prefix := "achine-config"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-						elem = elem[len(prefix):]
+					if l := len("achine-config"); len(elem) >= l && elem[0:l] == "achine-config" {
+						elem = elem[l:]
 					} else {
 						break
 					}
 
-					// Leaf: GetMachineConfiguration
-					s.handleGetMachineConfigurationRequest(args, w, r)
-					return
+					if len(elem) == 0 {
+						// Leaf: GetMachineConfiguration
+						s.handleGetMachineConfigurationRequest(args, w, r)
+						return
+					}
 				case 'm': // Prefix: "mds"
-					if prefix := "mds"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-						elem = elem[len(prefix):]
+					if l := len("mds"); len(elem) >= l && elem[0:l] == "mds" {
+						elem = elem[l:]
 					} else {
 						break
 					}
 
-					// Leaf: MmdsGet
-					s.handleMmdsGetRequest(args, w, r)
-					return
+					if len(elem) == 0 {
+						// Leaf: MmdsGet
+						s.handleMmdsGetRequest(args, w, r)
+						return
+					}
 				}
 			case 'v': // Prefix: "vm/config"
-				if prefix := "vm/config"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-					elem = elem[len(prefix):]
+				if l := len("vm/config"); len(elem) >= l && elem[0:l] == "vm/config" {
+					elem = elem[l:]
 				} else {
 					break
 				}
 
-				// Leaf: GetExportVmConfig
-				s.handleGetExportVmConfigRequest(args, w, r)
-				return
+				if len(elem) == 0 {
+					// Leaf: GetExportVmConfig
+					s.handleGetExportVmConfigRequest(args, w, r)
+					return
+				}
 			}
 		}
 	case "PATCH":
@@ -169,8 +177,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 		}
 		switch elem[0] {
 		case '/': // Prefix: "/"
-			if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-				elem = elem[len(prefix):]
+			if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+				elem = elem[l:]
 			} else {
 				break
 			}
@@ -181,8 +189,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 			}
 			switch elem[0] {
 			case 'b': // Prefix: "balloon"
-				if prefix := "balloon"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-					elem = elem[len(prefix):]
+				if l := len("balloon"); len(elem) >= l && elem[0:l] == "balloon" {
+					elem = elem[l:]
 				} else {
 					break
 				}
@@ -193,19 +201,21 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				}
 				switch elem[0] {
 				case '/': // Prefix: "/statistics"
-					if prefix := "/statistics"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-						elem = elem[len(prefix):]
+					if l := len("/statistics"); len(elem) >= l && elem[0:l] == "/statistics" {
+						elem = elem[l:]
 					} else {
 						break
 					}
 
-					// Leaf: PatchBalloonStatsInterval
-					s.handlePatchBalloonStatsIntervalRequest(args, w, r)
-					return
+					if len(elem) == 0 {
+						// Leaf: PatchBalloonStatsInterval
+						s.handlePatchBalloonStatsIntervalRequest(args, w, r)
+						return
+					}
 				}
 			case 'd': // Prefix: "drives/"
-				if prefix := "drives/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-					elem = elem[len(prefix):]
+				if l := len("drives/"); len(elem) >= l && elem[0:l] == "drives/" {
+					elem = elem[l:]
 				} else {
 					break
 				}
@@ -213,13 +223,16 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				// Param: "drive_id"
 				// Leaf parameter
 				args["drive_id"] = elem
+				elem = ""
 
-				// Leaf: PatchGuestDriveByID
-				s.handlePatchGuestDriveByIDRequest(args, w, r)
-				return
+				if len(elem) == 0 {
+					// Leaf: PatchGuestDriveByID
+					s.handlePatchGuestDriveByIDRequest(args, w, r)
+					return
+				}
 			case 'm': // Prefix: "m"
-				if prefix := "m"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-					elem = elem[len(prefix):]
+				if l := len("m"); len(elem) >= l && elem[0:l] == "m" {
+					elem = elem[l:]
 				} else {
 					break
 				}
@@ -230,29 +243,33 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				}
 				switch elem[0] {
 				case 'a': // Prefix: "achine-config"
-					if prefix := "achine-config"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-						elem = elem[len(prefix):]
+					if l := len("achine-config"); len(elem) >= l && elem[0:l] == "achine-config" {
+						elem = elem[l:]
 					} else {
 						break
 					}
 
-					// Leaf: PatchMachineConfiguration
-					s.handlePatchMachineConfigurationRequest(args, w, r)
-					return
+					if len(elem) == 0 {
+						// Leaf: PatchMachineConfiguration
+						s.handlePatchMachineConfigurationRequest(args, w, r)
+						return
+					}
 				case 'm': // Prefix: "mds"
-					if prefix := "mds"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-						elem = elem[len(prefix):]
+					if l := len("mds"); len(elem) >= l && elem[0:l] == "mds" {
+						elem = elem[l:]
 					} else {
 						break
 					}
 
-					// Leaf: MmdsPatch
-					s.handleMmdsPatchRequest(args, w, r)
-					return
+					if len(elem) == 0 {
+						// Leaf: MmdsPatch
+						s.handleMmdsPatchRequest(args, w, r)
+						return
+					}
 				}
 			case 'n': // Prefix: "network-interfaces/"
-				if prefix := "network-interfaces/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-					elem = elem[len(prefix):]
+				if l := len("network-interfaces/"); len(elem) >= l && elem[0:l] == "network-interfaces/" {
+					elem = elem[l:]
 				} else {
 					break
 				}
@@ -260,20 +277,25 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				// Param: "iface_id"
 				// Leaf parameter
 				args["iface_id"] = elem
+				elem = ""
 
-				// Leaf: PatchGuestNetworkInterfaceByID
-				s.handlePatchGuestNetworkInterfaceByIDRequest(args, w, r)
-				return
+				if len(elem) == 0 {
+					// Leaf: PatchGuestNetworkInterfaceByID
+					s.handlePatchGuestNetworkInterfaceByIDRequest(args, w, r)
+					return
+				}
 			case 'v': // Prefix: "vm"
-				if prefix := "vm"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-					elem = elem[len(prefix):]
+				if l := len("vm"); len(elem) >= l && elem[0:l] == "vm" {
+					elem = elem[l:]
 				} else {
 					break
 				}
 
-				// Leaf: PatchVm
-				s.handlePatchVmRequest(args, w, r)
-				return
+				if len(elem) == 0 {
+					// Leaf: PatchVm
+					s.handlePatchVmRequest(args, w, r)
+					return
+				}
 			}
 		}
 	case "PUT":
@@ -282,8 +304,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 		}
 		switch elem[0] {
 		case '/': // Prefix: "/"
-			if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-				elem = elem[len(prefix):]
+			if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+				elem = elem[l:]
 			} else {
 				break
 			}
@@ -294,18 +316,20 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 			}
 			switch elem[0] {
 			case 'a': // Prefix: "actions"
-				if prefix := "actions"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-					elem = elem[len(prefix):]
+				if l := len("actions"); len(elem) >= l && elem[0:l] == "actions" {
+					elem = elem[l:]
 				} else {
 					break
 				}
 
-				// Leaf: CreateSyncAction
-				s.handleCreateSyncActionRequest(args, w, r)
-				return
+				if len(elem) == 0 {
+					// Leaf: CreateSyncAction
+					s.handleCreateSyncActionRequest(args, w, r)
+					return
+				}
 			case 'b': // Prefix: "b"
-				if prefix := "b"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-					elem = elem[len(prefix):]
+				if l := len("b"); len(elem) >= l && elem[0:l] == "b" {
+					elem = elem[l:]
 				} else {
 					break
 				}
@@ -316,29 +340,33 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				}
 				switch elem[0] {
 				case 'a': // Prefix: "alloon"
-					if prefix := "alloon"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-						elem = elem[len(prefix):]
+					if l := len("alloon"); len(elem) >= l && elem[0:l] == "alloon" {
+						elem = elem[l:]
 					} else {
 						break
 					}
 
-					// Leaf: PutBalloon
-					s.handlePutBalloonRequest(args, w, r)
-					return
+					if len(elem) == 0 {
+						// Leaf: PutBalloon
+						s.handlePutBalloonRequest(args, w, r)
+						return
+					}
 				case 'o': // Prefix: "oot-source"
-					if prefix := "oot-source"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-						elem = elem[len(prefix):]
+					if l := len("oot-source"); len(elem) >= l && elem[0:l] == "oot-source" {
+						elem = elem[l:]
 					} else {
 						break
 					}
 
-					// Leaf: PutGuestBootSource
-					s.handlePutGuestBootSourceRequest(args, w, r)
-					return
+					if len(elem) == 0 {
+						// Leaf: PutGuestBootSource
+						s.handlePutGuestBootSourceRequest(args, w, r)
+						return
+					}
 				}
 			case 'd': // Prefix: "drives/"
-				if prefix := "drives/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-					elem = elem[len(prefix):]
+				if l := len("drives/"); len(elem) >= l && elem[0:l] == "drives/" {
+					elem = elem[l:]
 				} else {
 					break
 				}
@@ -346,23 +374,28 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				// Param: "drive_id"
 				// Leaf parameter
 				args["drive_id"] = elem
+				elem = ""
 
-				// Leaf: PutGuestDriveByID
-				s.handlePutGuestDriveByIDRequest(args, w, r)
-				return
+				if len(elem) == 0 {
+					// Leaf: PutGuestDriveByID
+					s.handlePutGuestDriveByIDRequest(args, w, r)
+					return
+				}
 			case 'l': // Prefix: "logger"
-				if prefix := "logger"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-					elem = elem[len(prefix):]
+				if l := len("logger"); len(elem) >= l && elem[0:l] == "logger" {
+					elem = elem[l:]
 				} else {
 					break
 				}
 
-				// Leaf: PutLogger
-				s.handlePutLoggerRequest(args, w, r)
-				return
+				if len(elem) == 0 {
+					// Leaf: PutLogger
+					s.handlePutLoggerRequest(args, w, r)
+					return
+				}
 			case 'm': // Prefix: "m"
-				if prefix := "m"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-					elem = elem[len(prefix):]
+				if l := len("m"); len(elem) >= l && elem[0:l] == "m" {
+					elem = elem[l:]
 				} else {
 					break
 				}
@@ -373,28 +406,32 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				}
 				switch elem[0] {
 				case 'a': // Prefix: "achine-config"
-					if prefix := "achine-config"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-						elem = elem[len(prefix):]
+					if l := len("achine-config"); len(elem) >= l && elem[0:l] == "achine-config" {
+						elem = elem[l:]
 					} else {
 						break
 					}
 
-					// Leaf: PutMachineConfiguration
-					s.handlePutMachineConfigurationRequest(args, w, r)
-					return
+					if len(elem) == 0 {
+						// Leaf: PutMachineConfiguration
+						s.handlePutMachineConfigurationRequest(args, w, r)
+						return
+					}
 				case 'e': // Prefix: "etrics"
-					if prefix := "etrics"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-						elem = elem[len(prefix):]
+					if l := len("etrics"); len(elem) >= l && elem[0:l] == "etrics" {
+						elem = elem[l:]
 					} else {
 						break
 					}
 
-					// Leaf: PutMetrics
-					s.handlePutMetricsRequest(args, w, r)
-					return
+					if len(elem) == 0 {
+						// Leaf: PutMetrics
+						s.handlePutMetricsRequest(args, w, r)
+						return
+					}
 				case 'm': // Prefix: "mds"
-					if prefix := "mds"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-						elem = elem[len(prefix):]
+					if l := len("mds"); len(elem) >= l && elem[0:l] == "mds" {
+						elem = elem[l:]
 					} else {
 						break
 					}
@@ -405,20 +442,22 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					}
 					switch elem[0] {
 					case '/': // Prefix: "/config"
-						if prefix := "/config"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-							elem = elem[len(prefix):]
+						if l := len("/config"); len(elem) >= l && elem[0:l] == "/config" {
+							elem = elem[l:]
 						} else {
 							break
 						}
 
-						// Leaf: MmdsConfigPut
-						s.handleMmdsConfigPutRequest(args, w, r)
-						return
+						if len(elem) == 0 {
+							// Leaf: MmdsConfigPut
+							s.handleMmdsConfigPutRequest(args, w, r)
+							return
+						}
 					}
 				}
 			case 'n': // Prefix: "network-interfaces/"
-				if prefix := "network-interfaces/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-					elem = elem[len(prefix):]
+				if l := len("network-interfaces/"); len(elem) >= l && elem[0:l] == "network-interfaces/" {
+					elem = elem[l:]
 				} else {
 					break
 				}
@@ -426,13 +465,16 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				// Param: "iface_id"
 				// Leaf parameter
 				args["iface_id"] = elem
+				elem = ""
 
-				// Leaf: PutGuestNetworkInterfaceByID
-				s.handlePutGuestNetworkInterfaceByIDRequest(args, w, r)
-				return
+				if len(elem) == 0 {
+					// Leaf: PutGuestNetworkInterfaceByID
+					s.handlePutGuestNetworkInterfaceByIDRequest(args, w, r)
+					return
+				}
 			case 's': // Prefix: "snapshot/"
-				if prefix := "snapshot/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-					elem = elem[len(prefix):]
+				if l := len("snapshot/"); len(elem) >= l && elem[0:l] == "snapshot/" {
+					elem = elem[l:]
 				} else {
 					break
 				}
@@ -443,36 +485,42 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				}
 				switch elem[0] {
 				case 'c': // Prefix: "create"
-					if prefix := "create"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-						elem = elem[len(prefix):]
+					if l := len("create"); len(elem) >= l && elem[0:l] == "create" {
+						elem = elem[l:]
 					} else {
 						break
 					}
 
-					// Leaf: CreateSnapshot
-					s.handleCreateSnapshotRequest(args, w, r)
-					return
+					if len(elem) == 0 {
+						// Leaf: CreateSnapshot
+						s.handleCreateSnapshotRequest(args, w, r)
+						return
+					}
 				case 'l': // Prefix: "load"
-					if prefix := "load"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-						elem = elem[len(prefix):]
+					if l := len("load"); len(elem) >= l && elem[0:l] == "load" {
+						elem = elem[l:]
 					} else {
 						break
 					}
 
-					// Leaf: LoadSnapshot
-					s.handleLoadSnapshotRequest(args, w, r)
-					return
+					if len(elem) == 0 {
+						// Leaf: LoadSnapshot
+						s.handleLoadSnapshotRequest(args, w, r)
+						return
+					}
 				}
 			case 'v': // Prefix: "vsock"
-				if prefix := "vsock"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-					elem = elem[len(prefix):]
+				if l := len("vsock"); len(elem) >= l && elem[0:l] == "vsock" {
+					elem = elem[l:]
 				} else {
 					break
 				}
 
-				// Leaf: PutGuestVsock
-				s.handlePutGuestVsockRequest(args, w, r)
-				return
+				if len(elem) == 0 {
+					// Leaf: PutGuestVsock
+					s.handlePutGuestVsockRequest(args, w, r)
+					return
+				}
 			}
 		}
 	}

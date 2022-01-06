@@ -84,8 +84,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 		}
 		switch elem[0] {
 		case '/': // Prefix: "/"
-			if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-				elem = elem[len(prefix):]
+			if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+				elem = elem[l:]
 			} else {
 				break
 			}
@@ -96,34 +96,38 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 			}
 			switch elem[0] {
 			case 'e': // Prefix: "error"
-				if prefix := "error"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-					elem = elem[len(prefix):]
+				if l := len("error"); len(elem) >= l && elem[0:l] == "error" {
+					elem = elem[l:]
 				} else {
 					break
 				}
 
-				// Leaf: ErrorGet
-				s.handleErrorGetRequest(args, w, r)
-				return
+				if len(elem) == 0 {
+					// Leaf: ErrorGet
+					s.handleErrorGetRequest(args, w, r)
+					return
+				}
 			case 'f': // Prefix: "foobar"
-				if prefix := "foobar"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-					elem = elem[len(prefix):]
+				if l := len("foobar"); len(elem) >= l && elem[0:l] == "foobar" {
+					elem = elem[l:]
 				} else {
 					break
 				}
 
-				// Leaf: FoobarGet
-				s.handleFoobarGetRequest(args, w, r)
-				return
+				if len(elem) == 0 {
+					// Leaf: FoobarGet
+					s.handleFoobarGetRequest(args, w, r)
+					return
+				}
 			case 'n': // Prefix: "name/"
-				if prefix := "name/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-					elem = elem[len(prefix):]
+				if l := len("name/"); len(elem) >= l && elem[0:l] == "name/" {
+					elem = elem[l:]
 				} else {
 					break
 				}
 
 				// Param: "id"
-				// Match until one of "/"
+				// Match until "/"
 				idx := strings.IndexByte(elem, '/')
 				if idx > 0 {
 					args["id"] = elem[:idx]
@@ -134,14 +138,14 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					}
 					switch elem[0] {
 					case '/': // Prefix: "/"
-						if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-							elem = elem[len(prefix):]
+						if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+							elem = elem[l:]
 						} else {
 							break
 						}
 
 						// Param: "foo"
-						// Match until one of "1"
+						// Match until "1"
 						idx := strings.IndexByte(elem, '1')
 						if idx > 0 {
 							args["foo"] = elem[:idx]
@@ -152,14 +156,14 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							}
 							switch elem[0] {
 							case '1': // Prefix: "1234"
-								if prefix := "1234"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-									elem = elem[len(prefix):]
+								if l := len("1234"); len(elem) >= l && elem[0:l] == "1234" {
+									elem = elem[l:]
 								} else {
 									break
 								}
 
 								// Param: "bar"
-								// Match until one of "-"
+								// Match until "-"
 								idx := strings.IndexByte(elem, '-')
 								if idx > 0 {
 									args["bar"] = elem[:idx]
@@ -170,14 +174,14 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									}
 									switch elem[0] {
 									case '-': // Prefix: "-"
-										if prefix := "-"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-											elem = elem[len(prefix):]
+										if l := len("-"); len(elem) >= l && elem[0:l] == "-" {
+											elem = elem[l:]
 										} else {
 											break
 										}
 
 										// Param: "baz"
-										// Match until one of "!"
+										// Match until "!"
 										idx := strings.IndexByte(elem, '!')
 										if idx > 0 {
 											args["baz"] = elem[:idx]
@@ -188,8 +192,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											}
 											switch elem[0] {
 											case '!': // Prefix: "!"
-												if prefix := "!"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-													elem = elem[len(prefix):]
+												if l := len("!"); len(elem) >= l && elem[0:l] == "!" {
+													elem = elem[l:]
 												} else {
 													break
 												}
@@ -197,10 +201,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												// Param: "kek"
 												// Leaf parameter
 												args["kek"] = elem
+												elem = ""
 
-												// Leaf: DataGetFormat
-												s.handleDataGetFormatRequest(args, w, r)
-												return
+												if len(elem) == 0 {
+													// Leaf: DataGetFormat
+													s.handleDataGetFormatRequest(args, w, r)
+													return
+												}
 											}
 										}
 									}
@@ -210,8 +217,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					}
 				}
 			case 'p': // Prefix: "pet"
-				if prefix := "pet"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-					elem = elem[len(prefix):]
+				if l := len("pet"); len(elem) >= l && elem[0:l] == "pet" {
+					elem = elem[l:]
 				} else {
 					break
 				}
@@ -222,8 +229,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				}
 				switch elem[0] {
 				case '/': // Prefix: "/"
-					if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-						elem = elem[len(prefix):]
+					if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+						elem = elem[l:]
 					} else {
 						break
 					}
@@ -234,18 +241,20 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					}
 					switch elem[0] {
 					case 'a': // Prefix: "avatar"
-						if prefix := "avatar"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-							elem = elem[len(prefix):]
+						if l := len("avatar"); len(elem) >= l && elem[0:l] == "avatar" {
+							elem = elem[l:]
 						} else {
 							break
 						}
 
-						// Leaf: PetGetAvatarByID
-						s.handlePetGetAvatarByIDRequest(args, w, r)
-						return
+						if len(elem) == 0 {
+							// Leaf: PetGetAvatarByID
+							s.handlePetGetAvatarByIDRequest(args, w, r)
+							return
+						}
 					case 'f': // Prefix: "friendNames/"
-						if prefix := "friendNames/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-							elem = elem[len(prefix):]
+						if l := len("friendNames/"); len(elem) >= l && elem[0:l] == "friendNames/" {
+							elem = elem[l:]
 						} else {
 							break
 						}
@@ -253,13 +262,16 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						// Param: "id"
 						// Leaf parameter
 						args["id"] = elem
+						elem = ""
 
-						// Leaf: PetFriendsNamesByID
-						s.handlePetFriendsNamesByIDRequest(args, w, r)
-						return
+						if len(elem) == 0 {
+							// Leaf: PetFriendsNamesByID
+							s.handlePetFriendsNamesByIDRequest(args, w, r)
+							return
+						}
 					case 'n': // Prefix: "name/"
-						if prefix := "name/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-							elem = elem[len(prefix):]
+						if l := len("name/"); len(elem) >= l && elem[0:l] == "name/" {
+							elem = elem[l:]
 						} else {
 							break
 						}
@@ -267,29 +279,37 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						// Param: "id"
 						// Leaf parameter
 						args["id"] = elem
+						elem = ""
 
-						// Leaf: PetNameByID
-						s.handlePetNameByIDRequest(args, w, r)
-						return
+						if len(elem) == 0 {
+							// Leaf: PetNameByID
+							s.handlePetNameByIDRequest(args, w, r)
+							return
+						}
 					}
 					// Param: "name"
 					// Leaf parameter
 					args["name"] = elem
+					elem = ""
 
-					// Leaf: PetGetByName
-					s.handlePetGetByNameRequest(args, w, r)
-					return
+					if len(elem) == 0 {
+						// Leaf: PetGetByName
+						s.handlePetGetByNameRequest(args, w, r)
+						return
+					}
 				}
 			case 't': // Prefix: "test/header"
-				if prefix := "test/header"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-					elem = elem[len(prefix):]
+				if l := len("test/header"); len(elem) >= l && elem[0:l] == "test/header" {
+					elem = elem[l:]
 				} else {
 					break
 				}
 
-				// Leaf: GetHeader
-				s.handleGetHeaderRequest(args, w, r)
-				return
+				if len(elem) == 0 {
+					// Leaf: GetHeader
+					s.handleGetHeaderRequest(args, w, r)
+					return
+				}
 			}
 		}
 	case "POST":
@@ -298,8 +318,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 		}
 		switch elem[0] {
 		case '/': // Prefix: "/"
-			if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-				elem = elem[len(prefix):]
+			if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+				elem = elem[l:]
 			} else {
 				break
 			}
@@ -310,18 +330,20 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 			}
 			switch elem[0] {
 			case 'f': // Prefix: "foobar"
-				if prefix := "foobar"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-					elem = elem[len(prefix):]
+				if l := len("foobar"); len(elem) >= l && elem[0:l] == "foobar" {
+					elem = elem[l:]
 				} else {
 					break
 				}
 
-				// Leaf: FoobarPost
-				s.handleFoobarPostRequest(args, w, r)
-				return
+				if len(elem) == 0 {
+					// Leaf: FoobarPost
+					s.handleFoobarPostRequest(args, w, r)
+					return
+				}
 			case 'p': // Prefix: "pet"
-				if prefix := "pet"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-					elem = elem[len(prefix):]
+				if l := len("pet"); len(elem) >= l && elem[0:l] == "pet" {
+					elem = elem[l:]
 				} else {
 					break
 				}
@@ -332,8 +354,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				}
 				switch elem[0] {
 				case '/': // Prefix: "/"
-					if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-						elem = elem[len(prefix):]
+					if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+						elem = elem[l:]
 					} else {
 						break
 					}
@@ -344,18 +366,20 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					}
 					switch elem[0] {
 					case 'a': // Prefix: "avatar"
-						if prefix := "avatar"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-							elem = elem[len(prefix):]
+						if l := len("avatar"); len(elem) >= l && elem[0:l] == "avatar" {
+							elem = elem[l:]
 						} else {
 							break
 						}
 
-						// Leaf: PetUploadAvatarByID
-						s.handlePetUploadAvatarByIDRequest(args, w, r)
-						return
+						if len(elem) == 0 {
+							// Leaf: PetUploadAvatarByID
+							s.handlePetUploadAvatarByIDRequest(args, w, r)
+							return
+						}
 					case 'u': // Prefix: "updateName"
-						if prefix := "updateName"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-							elem = elem[len(prefix):]
+						if l := len("updateName"); len(elem) >= l && elem[0:l] == "updateName" {
+							elem = elem[l:]
 						} else {
 							break
 						}
@@ -366,15 +390,17 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						}
 						switch elem[0] {
 						case 'A': // Prefix: "Alias"
-							if prefix := "Alias"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-								elem = elem[len(prefix):]
+							if l := len("Alias"); len(elem) >= l && elem[0:l] == "Alias" {
+								elem = elem[l:]
 							} else {
 								break
 							}
 
-							// Leaf: PetUpdateNameAliasPost
-							s.handlePetUpdateNameAliasPostRequest(args, w, r)
-							return
+							if len(elem) == 0 {
+								// Leaf: PetUpdateNameAliasPost
+								s.handlePetUpdateNameAliasPostRequest(args, w, r)
+								return
+							}
 						}
 					}
 				}
@@ -386,15 +412,17 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 		}
 		switch elem[0] {
 		case '/': // Prefix: "/foobar"
-			if prefix := "/foobar"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-				elem = elem[len(prefix):]
+			if l := len("/foobar"); len(elem) >= l && elem[0:l] == "/foobar" {
+				elem = elem[l:]
 			} else {
 				break
 			}
 
-			// Leaf: FoobarPut
-			s.handleFoobarPutRequest(args, w, r)
-			return
+			if len(elem) == 0 {
+				// Leaf: FoobarPut
+				s.handleFoobarPutRequest(args, w, r)
+				return
+			}
 		}
 	}
 	s.notFound(w, r)

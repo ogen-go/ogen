@@ -84,15 +84,17 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 		}
 		switch elem[0] {
 		case '/': // Prefix: "/data"
-			if prefix := "/data"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-				elem = elem[len(prefix):]
+			if l := len("/data"); len(elem) >= l && elem[0:l] == "/data" {
+				elem = elem[l:]
 			} else {
 				break
 			}
 
-			// Leaf: DataGet
-			s.handleDataGetRequest(args, w, r)
-			return
+			if len(elem) == 0 {
+				// Leaf: DataGet
+				s.handleDataGetRequest(args, w, r)
+				return
+			}
 		}
 	case "POST":
 		if len(elem) == 0 {
@@ -100,15 +102,17 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 		}
 		switch elem[0] {
 		case '/': // Prefix: "/data"
-			if prefix := "/data"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
-				elem = elem[len(prefix):]
+			if l := len("/data"); len(elem) >= l && elem[0:l] == "/data" {
+				elem = elem[l:]
 			} else {
 				break
 			}
 
-			// Leaf: DataCreate
-			s.handleDataCreateRequest(args, w, r)
-			return
+			if len(elem) == 0 {
+				// Leaf: DataCreate
+				s.handleDataCreateRequest(args, w, r)
+				return
+			}
 		}
 	}
 	s.notFound(w, r)
