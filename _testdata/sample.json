@@ -207,8 +207,8 @@
             "description": "A pet avatar",
             "content": {
               "application/octet-stream": {}
-              }
-            },
+            }
+          },
           "404": {
             "$ref": "#/components/responses/NotFound"
           },
@@ -353,7 +353,7 @@
           }
         },
         "responses": {
-          "default":{
+          "default": {
             "description": "empty"
           }
         }
@@ -371,7 +371,7 @@
           }
         },
         "responses": {
-          "default":{
+          "default": {
             "description": "empty"
           }
         }
@@ -409,6 +409,71 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/Hash"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/name/{id}/{foo}1234{bar}-{baz}!{kek}": {
+      "get": {
+        "description": "Retrieve data",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "minimum": 1,
+              "type": "integer"
+            }
+          },
+          {
+            "name": "foo",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "minimum": 1,
+              "type": "string"
+            }
+          },
+          {
+            "name": "bar",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "minimum": 1,
+              "type": "string"
+            }
+          },
+          {
+            "name": "baz",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "minimum": 1,
+              "type": "string"
+            }
+          },
+          {
+            "name": "kek",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "minimum": 1,
+              "type": "string"
+            }
+          }
+        ],
+        "operationId": "dataGetFormat",
+        "responses": {
+          "200": {
+            "description": "Data",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
                 }
               }
             }
@@ -520,11 +585,17 @@
           },
           "type": {
             "type": "string",
-            "enum": ["fifa", "fofa"]
+            "enum": [
+              "fifa",
+              "fofa"
+            ]
           },
           "kind": {
             "type": "string",
-            "enum": ["big", "smol"]
+            "enum": [
+              "big",
+              "smol"
+            ]
           },
           "tag": {
             "type": "string",

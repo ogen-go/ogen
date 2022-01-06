@@ -66,69 +66,87 @@ func (s *Server) notFound(w http.ResponseWriter, r *http.Request) {
 	http.NotFound(w, r)
 }
 
-func skipSlash(p string) string {
-	if len(p) > 0 && p[0] == '/' {
-		return p[1:]
-	}
-	return p
-}
-
-// nextElem return next path element from p and forwarded p.
-func nextElem(p string) (elem, next string) {
-	p = skipSlash(p)
-	idx := strings.IndexByte(p, '/')
-	if idx < 0 {
-		idx = len(p)
-	}
-	return p[:idx], p[idx:]
-}
-
 // ServeHTTP serves http request as defined by OpenAPI v3 specification,
 // calling handler that matches the path or returning not found error.
 func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
-	p := r.URL.Path
-	if len(p) == 0 {
+	elem := r.URL.Path
+	if len(elem) == 0 {
 		s.notFound(w, r)
 		return
 	}
 
-	var (
-		elem string            // current element, without slashes
-		args map[string]string // lazily initialized
-	)
-
+	args := map[string]string{}
 	// Static code generated router with unwrapped path search.
 	switch r.Method {
 	case "GET":
-		// Root edge.
-		elem, p = nextElem(p)
-		switch elem {
-		case "cached-worlds": // -> 1
-			// GET /cached-worlds
-			s.handleCachingRequest(args, w, r)
-			return
-		case "db": // -> 2
-			// GET /db
-			s.handleDBRequest(args, w, r)
-			return
-		case "json": // -> 3
-			// GET /json
-			s.handleJSONRequest(args, w, r)
-			return
-		case "queries": // -> 4
-			// GET /queries
-			s.handleQueriesRequest(args, w, r)
-			return
-		case "updates": // -> 5
-			// GET /updates
-			s.handleUpdatesRequest(args, w, r)
-			return
-		default:
-			s.notFound(w, r)
-			return
+		if len(elem) == 0 {
+			break
 		}
-	default:
-		s.notFound(w, r)
-		return
+		switch elem[0] {
+		case '/': // Prefix: "/"
+			if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+				elem = elem[len(prefix):]
+			} else {
+				break
+			}
+
+			if len(elem) == 0 {
+				s.handleDBRequest(args, w, r)
+				return
+			}
+			switch elem[0] {
+			case 'c': // Prefix: "cached-worlds"
+				if prefix := "cached-worlds"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+					elem = elem[len(prefix):]
+				} else {
+					break
+				}
+
+				// Leaf: Caching
+				s.handleCachingRequest(args, w, r)
+				return
+			case 'd': // Prefix: "db"
+				if prefix := "db"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+					elem = elem[len(prefix):]
+				} else {
+					break
+				}
+
+				// Leaf: DB
+				s.handleDBRequest(args, w, r)
+				return
+			case 'j': // Prefix: "json"
+				if prefix := "json"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+					elem = elem[len(prefix):]
+				} else {
+					break
+				}
+
+				// Leaf: JSON
+				s.handleJSONRequest(args, w, r)
+				return
+			case 'q': // Prefix: "queries"
+				if prefix := "queries"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+					elem = elem[len(prefix):]
+				} else {
+					break
+				}
+
+				// Leaf: Queries
+				s.handleQueriesRequest(args, w, r)
+				return
+			case 'u': // Prefix: "updates"
+				if prefix := "updates"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+					elem = elem[len(prefix):]
+				} else {
+					break
+				}
+
+				// Leaf: Updates
+				s.handleUpdatesRequest(args, w, r)
+				return
+			}
+		}
 	}
+	s.notFound(w, r)
 }

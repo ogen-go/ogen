@@ -64,6 +64,10 @@ var (
 
 // Handler handles operations described by OpenAPI v3 specification.
 type Handler interface {
+	// DataGetFormat implements dataGetFormat operation.
+	//
+	// GET /name/{id}/{foo}1234{bar}-{baz}!{kek}
+	DataGetFormat(ctx context.Context, params DataGetFormatParams) (string, error)
 	// ErrorGet implements errorGet operation.
 	//
 	// GET /error

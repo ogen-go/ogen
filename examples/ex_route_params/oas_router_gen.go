@@ -66,90 +66,72 @@ func (s *Server) notFound(w http.ResponseWriter, r *http.Request) {
 	http.NotFound(w, r)
 }
 
-func skipSlash(p string) string {
-	if len(p) > 0 && p[0] == '/' {
-		return p[1:]
-	}
-	return p
-}
-
-// nextElem return next path element from p and forwarded p.
-func nextElem(p string) (elem, next string) {
-	p = skipSlash(p)
-	idx := strings.IndexByte(p, '/')
-	if idx < 0 {
-		idx = len(p)
-	}
-	return p[:idx], p[idx:]
-}
-
 // ServeHTTP serves http request as defined by OpenAPI v3 specification,
 // calling handler that matches the path or returning not found error.
 func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
-	p := r.URL.Path
-	if len(p) == 0 {
+	elem := r.URL.Path
+	if len(elem) == 0 {
 		s.notFound(w, r)
 		return
 	}
 
-	var (
-		elem string            // current element, without slashes
-		args map[string]string // lazily initialized
-	)
-
+	args := map[string]string{}
 	// Static code generated router with unwrapped path search.
 	switch r.Method {
 	case "GET":
-		// Root edge.
-		elem, p = nextElem(p)
-		switch elem {
-		case "name": // -> 1
-			// Edge: 1, path: "name".
-			elem, p = nextElem(p)
+		if len(elem) == 0 {
+			break
+		}
+		switch elem[0] {
+		case '/': // Prefix: "/name"
+			if prefix := "/name"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+				elem = elem[len(prefix):]
+			} else {
+				break
+			}
+
 			if len(elem) == 0 {
-				// GET /name.
 				s.handleDataGetAnyRequest(args, w, r)
 				return
 			}
-			switch elem {
-			default:
-				if args == nil {
-					args = make(map[string]string)
+			switch elem[0] {
+			case '/': // Prefix: "/"
+				if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+					elem = elem[len(prefix):]
+				} else {
+					break
 				}
-				args["id"] = elem
-				// Edge: 2, path: "".
-				elem, p = nextElem(p)
-				if len(elem) == 0 {
-					// GET /name/{id}.
-					s.handleDataGetIDRequest(args, w, r)
-					return
-				}
-				switch elem {
-				case "": // -> 3
-					// Edge: 3, path: "".
-					elem, p = nextElem(p)
-					switch elem {
-					default:
-						if args == nil {
-							args = make(map[string]string)
+
+				// Param: "id"
+				// Match until one of "/"
+				idx := strings.IndexByte(elem, '/')
+				if idx > 0 {
+					args["id"] = elem[:idx]
+					elem = elem[idx:]
+
+					if len(elem) == 0 {
+						s.handleDataGetIDRequest(args, w, r)
+						return
+					}
+					switch elem[0] {
+					case '/': // Prefix: "/"
+						if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+							elem = elem[len(prefix):]
+						} else {
+							break
 						}
+
+						// Param: "key"
+						// Leaf parameter
 						args["key"] = elem
-						// GET /name/{id}/{key}
+
+						// Leaf: DataGet
 						s.handleDataGetRequest(args, w, r)
 						return
 					}
-				default:
-					// GET /name/{id}.
-					s.handleDataGetIDRequest(args, w, r)
-					return
 				}
 			}
-		default:
-			s.notFound(w, r)
-			return
 		}
-	default:
-		s.notFound(w, r)
-		return
 	}
+	s.notFound(w, r)
 }

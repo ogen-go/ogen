@@ -25,6 +25,7 @@ func (g *Generator) generateOperation(spec *oas.Operation) (_ *ir.Operation, err
 	}
 
 	// Convert []oas.PathPart to []*ir.PathPart
+	op.RawPath = op.Spec.Path.String()
 	op.PathParts = convertPathParts(op.Spec.Path, op.PathParams())
 
 	if spec.RequestBody != nil {

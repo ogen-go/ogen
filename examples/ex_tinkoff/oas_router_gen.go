@@ -66,207 +66,386 @@ func (s *Server) notFound(w http.ResponseWriter, r *http.Request) {
 	http.NotFound(w, r)
 }
 
-func skipSlash(p string) string {
-	if len(p) > 0 && p[0] == '/' {
-		return p[1:]
-	}
-	return p
-}
-
-// nextElem return next path element from p and forwarded p.
-func nextElem(p string) (elem, next string) {
-	p = skipSlash(p)
-	idx := strings.IndexByte(p, '/')
-	if idx < 0 {
-		idx = len(p)
-	}
-	return p[:idx], p[idx:]
-}
-
 // ServeHTTP serves http request as defined by OpenAPI v3 specification,
 // calling handler that matches the path or returning not found error.
 func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
-	p := r.URL.Path
-	if len(p) == 0 {
+	elem := r.URL.Path
+	if len(elem) == 0 {
 		s.notFound(w, r)
 		return
 	}
 
-	var (
-		elem string            // current element, without slashes
-		args map[string]string // lazily initialized
-	)
-
+	args := map[string]string{}
 	// Static code generated router with unwrapped path search.
 	switch r.Method {
 	case "GET":
-		// Root edge.
-		elem, p = nextElem(p)
-		switch elem {
-		case "market": // -> 1
-			// Edge: 1, path: "market".
-			elem, p = nextElem(p)
-			switch elem {
-			case "bonds": // -> 2
-				// GET /market/bonds
-				s.handleMarketBondsGetRequest(args, w, r)
+		if len(elem) == 0 {
+			break
+		}
+		switch elem[0] {
+		case '/': // Prefix: "/"
+			if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+				elem = elem[len(prefix):]
+			} else {
+				break
+			}
+
+			if len(elem) == 0 {
+				s.handleOperationsGetRequest(args, w, r)
 				return
-			case "candles": // -> 3
-				// GET /market/candles
-				s.handleMarketCandlesGetRequest(args, w, r)
-				return
-			case "currencies": // -> 4
-				// GET /market/currencies
-				s.handleMarketCurrenciesGetRequest(args, w, r)
-				return
-			case "etfs": // -> 5
-				// GET /market/etfs
-				s.handleMarketEtfsGetRequest(args, w, r)
-				return
-			case "orderbook": // -> 6
-				// GET /market/orderbook
-				s.handleMarketOrderbookGetRequest(args, w, r)
-				return
-			case "search": // -> 7
-				// Edge: 7, path: "search".
-				elem, p = nextElem(p)
-				switch elem {
-				case "by-figi": // -> 8
-					// GET /market/search/by-figi
-					s.handleMarketSearchByFigiGetRequest(args, w, r)
-					return
-				case "by-ticker": // -> 9
-					// GET /market/search/by-ticker
-					s.handleMarketSearchByTickerGetRequest(args, w, r)
-					return
-				default:
-					s.notFound(w, r)
+			}
+			switch elem[0] {
+			case 'm': // Prefix: "market/"
+				if prefix := "market/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+					elem = elem[len(prefix):]
+				} else {
+					break
+				}
+
+				if len(elem) == 0 {
+					s.handleMarketCandlesGetRequest(args, w, r)
 					return
 				}
-			case "stocks": // -> 10
-				// GET /market/stocks
-				s.handleMarketStocksGetRequest(args, w, r)
-				return
-			default:
-				s.notFound(w, r)
-				return
-			}
-		case "operations": // -> 11
-			// GET /operations
-			s.handleOperationsGetRequest(args, w, r)
-			return
-		case "orders": // -> 12
-			// GET /orders
-			s.handleOrdersGetRequest(args, w, r)
-			return
-		case "portfolio": // -> 13
-			// Edge: 13, path: "portfolio".
-			elem, p = nextElem(p)
-			if len(elem) == 0 {
-				// GET /portfolio.
-				s.handlePortfolioGetRequest(args, w, r)
-				return
-			}
-			switch elem {
-			case "currencies": // -> 14
-				// GET /portfolio/currencies
-				s.handlePortfolioCurrenciesGetRequest(args, w, r)
-				return
-			default:
-				// GET /portfolio.
-				s.handlePortfolioGetRequest(args, w, r)
-				return
-			}
-		case "user": // -> 15
-			// Edge: 15, path: "user".
-			elem, p = nextElem(p)
-			switch elem {
-			case "accounts": // -> 16
-				// GET /user/accounts
+				switch elem[0] {
+				case 'b': // Prefix: "bonds"
+					if prefix := "bonds"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+						elem = elem[len(prefix):]
+					} else {
+						break
+					}
+
+					// Leaf: MarketBondsGet
+					s.handleMarketBondsGetRequest(args, w, r)
+					return
+				case 'c': // Prefix: "c"
+					if prefix := "c"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+						elem = elem[len(prefix):]
+					} else {
+						break
+					}
+
+					if len(elem) == 0 {
+						s.handleMarketCurrenciesGetRequest(args, w, r)
+						return
+					}
+					switch elem[0] {
+					case 'a': // Prefix: "andles"
+						if prefix := "andles"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+							elem = elem[len(prefix):]
+						} else {
+							break
+						}
+
+						// Leaf: MarketCandlesGet
+						s.handleMarketCandlesGetRequest(args, w, r)
+						return
+					case 'u': // Prefix: "urrencies"
+						if prefix := "urrencies"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+							elem = elem[len(prefix):]
+						} else {
+							break
+						}
+
+						// Leaf: MarketCurrenciesGet
+						s.handleMarketCurrenciesGetRequest(args, w, r)
+						return
+					}
+				case 'e': // Prefix: "etfs"
+					if prefix := "etfs"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+						elem = elem[len(prefix):]
+					} else {
+						break
+					}
+
+					// Leaf: MarketEtfsGet
+					s.handleMarketEtfsGetRequest(args, w, r)
+					return
+				case 'o': // Prefix: "orderbook"
+					if prefix := "orderbook"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+						elem = elem[len(prefix):]
+					} else {
+						break
+					}
+
+					// Leaf: MarketOrderbookGet
+					s.handleMarketOrderbookGetRequest(args, w, r)
+					return
+				case 's': // Prefix: "s"
+					if prefix := "s"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+						elem = elem[len(prefix):]
+					} else {
+						break
+					}
+
+					if len(elem) == 0 {
+						s.handleMarketStocksGetRequest(args, w, r)
+						return
+					}
+					switch elem[0] {
+					case 'e': // Prefix: "earch/by-"
+						if prefix := "earch/by-"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+							elem = elem[len(prefix):]
+						} else {
+							break
+						}
+
+						if len(elem) == 0 {
+							s.handleMarketSearchByTickerGetRequest(args, w, r)
+							return
+						}
+						switch elem[0] {
+						case 'f': // Prefix: "figi"
+							if prefix := "figi"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+								elem = elem[len(prefix):]
+							} else {
+								break
+							}
+
+							// Leaf: MarketSearchByFigiGet
+							s.handleMarketSearchByFigiGetRequest(args, w, r)
+							return
+						case 't': // Prefix: "ticker"
+							if prefix := "ticker"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+								elem = elem[len(prefix):]
+							} else {
+								break
+							}
+
+							// Leaf: MarketSearchByTickerGet
+							s.handleMarketSearchByTickerGetRequest(args, w, r)
+							return
+						}
+					case 't': // Prefix: "tocks"
+						if prefix := "tocks"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+							elem = elem[len(prefix):]
+						} else {
+							break
+						}
+
+						// Leaf: MarketStocksGet
+						s.handleMarketStocksGetRequest(args, w, r)
+						return
+					}
+				}
+			case 'o': // Prefix: "o"
+				if prefix := "o"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+					elem = elem[len(prefix):]
+				} else {
+					break
+				}
+
+				if len(elem) == 0 {
+					s.handleOrdersGetRequest(args, w, r)
+					return
+				}
+				switch elem[0] {
+				case 'p': // Prefix: "perations"
+					if prefix := "perations"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+						elem = elem[len(prefix):]
+					} else {
+						break
+					}
+
+					// Leaf: OperationsGet
+					s.handleOperationsGetRequest(args, w, r)
+					return
+				case 'r': // Prefix: "rders"
+					if prefix := "rders"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+						elem = elem[len(prefix):]
+					} else {
+						break
+					}
+
+					// Leaf: OrdersGet
+					s.handleOrdersGetRequest(args, w, r)
+					return
+				}
+			case 'p': // Prefix: "portfolio"
+				if prefix := "portfolio"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+					elem = elem[len(prefix):]
+				} else {
+					break
+				}
+
+				if len(elem) == 0 {
+					s.handlePortfolioGetRequest(args, w, r)
+					return
+				}
+				switch elem[0] {
+				case '/': // Prefix: "/currencies"
+					if prefix := "/currencies"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+						elem = elem[len(prefix):]
+					} else {
+						break
+					}
+
+					// Leaf: PortfolioCurrenciesGet
+					s.handlePortfolioCurrenciesGetRequest(args, w, r)
+					return
+				}
+			case 'u': // Prefix: "user/accounts"
+				if prefix := "user/accounts"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+					elem = elem[len(prefix):]
+				} else {
+					break
+				}
+
+				// Leaf: UserAccountsGet
 				s.handleUserAccountsGetRequest(args, w, r)
 				return
-			default:
-				s.notFound(w, r)
-				return
 			}
-		default:
-			s.notFound(w, r)
-			return
 		}
 	case "POST":
-		// Root edge.
-		elem, p = nextElem(p)
-		switch elem {
-		case "orders": // -> 1
-			// Edge: 1, path: "orders".
-			elem, p = nextElem(p)
-			switch elem {
-			case "cancel": // -> 2
-				// POST /orders/cancel
-				s.handleOrdersCancelPostRequest(args, w, r)
-				return
-			case "limit-order": // -> 3
-				// POST /orders/limit-order
-				s.handleOrdersLimitOrderPostRequest(args, w, r)
-				return
-			case "market-order": // -> 4
-				// POST /orders/market-order
-				s.handleOrdersMarketOrderPostRequest(args, w, r)
-				return
-			default:
-				s.notFound(w, r)
-				return
+		if len(elem) == 0 {
+			break
+		}
+		switch elem[0] {
+		case '/': // Prefix: "/"
+			if prefix := "/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+				elem = elem[len(prefix):]
+			} else {
+				break
 			}
-		case "sandbox": // -> 5
-			// Edge: 5, path: "sandbox".
-			elem, p = nextElem(p)
-			switch elem {
-			case "clear": // -> 6
-				// POST /sandbox/clear
+
+			if len(elem) == 0 {
 				s.handleSandboxClearPostRequest(args, w, r)
 				return
-			case "currencies": // -> 7
-				// Edge: 7, path: "currencies".
-				elem, p = nextElem(p)
-				switch elem {
-				case "balance": // -> 8
-					// POST /sandbox/currencies/balance
-					s.handleSandboxCurrenciesBalancePostRequest(args, w, r)
-					return
-				default:
-					s.notFound(w, r)
+			}
+			switch elem[0] {
+			case 'o': // Prefix: "orders/"
+				if prefix := "orders/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+					elem = elem[len(prefix):]
+				} else {
+					break
+				}
+
+				if len(elem) == 0 {
+					s.handleOrdersLimitOrderPostRequest(args, w, r)
 					return
 				}
-			case "positions": // -> 9
-				// Edge: 9, path: "positions".
-				elem, p = nextElem(p)
-				switch elem {
-				case "balance": // -> 10
-					// POST /sandbox/positions/balance
+				switch elem[0] {
+				case 'c': // Prefix: "cancel"
+					if prefix := "cancel"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+						elem = elem[len(prefix):]
+					} else {
+						break
+					}
+
+					// Leaf: OrdersCancelPost
+					s.handleOrdersCancelPostRequest(args, w, r)
+					return
+				case 'l': // Prefix: "limit-order"
+					if prefix := "limit-order"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+						elem = elem[len(prefix):]
+					} else {
+						break
+					}
+
+					// Leaf: OrdersLimitOrderPost
+					s.handleOrdersLimitOrderPostRequest(args, w, r)
+					return
+				case 'm': // Prefix: "market-order"
+					if prefix := "market-order"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+						elem = elem[len(prefix):]
+					} else {
+						break
+					}
+
+					// Leaf: OrdersMarketOrderPost
+					s.handleOrdersMarketOrderPostRequest(args, w, r)
+					return
+				}
+			case 's': // Prefix: "sandbox/"
+				if prefix := "sandbox/"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+					elem = elem[len(prefix):]
+				} else {
+					break
+				}
+
+				if len(elem) == 0 {
 					s.handleSandboxPositionsBalancePostRequest(args, w, r)
 					return
-				default:
-					s.notFound(w, r)
-					return
 				}
-			case "register": // -> 11
-				// POST /sandbox/register
-				s.handleSandboxRegisterPostRequest(args, w, r)
-				return
-			case "remove": // -> 12
-				// POST /sandbox/remove
-				s.handleSandboxRemovePostRequest(args, w, r)
-				return
-			default:
-				s.notFound(w, r)
-				return
+				switch elem[0] {
+				case 'c': // Prefix: "c"
+					if prefix := "c"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+						elem = elem[len(prefix):]
+					} else {
+						break
+					}
+
+					if len(elem) == 0 {
+						s.handleSandboxCurrenciesBalancePostRequest(args, w, r)
+						return
+					}
+					switch elem[0] {
+					case 'l': // Prefix: "lear"
+						if prefix := "lear"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+							elem = elem[len(prefix):]
+						} else {
+							break
+						}
+
+						// Leaf: SandboxClearPost
+						s.handleSandboxClearPostRequest(args, w, r)
+						return
+					case 'u': // Prefix: "urrencies/balance"
+						if prefix := "urrencies/balance"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+							elem = elem[len(prefix):]
+						} else {
+							break
+						}
+
+						// Leaf: SandboxCurrenciesBalancePost
+						s.handleSandboxCurrenciesBalancePostRequest(args, w, r)
+						return
+					}
+				case 'p': // Prefix: "positions/balance"
+					if prefix := "positions/balance"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+						elem = elem[len(prefix):]
+					} else {
+						break
+					}
+
+					// Leaf: SandboxPositionsBalancePost
+					s.handleSandboxPositionsBalancePostRequest(args, w, r)
+					return
+				case 'r': // Prefix: "re"
+					if prefix := "re"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+						elem = elem[len(prefix):]
+					} else {
+						break
+					}
+
+					if len(elem) == 0 {
+						s.handleSandboxRemovePostRequest(args, w, r)
+						return
+					}
+					switch elem[0] {
+					case 'g': // Prefix: "gister"
+						if prefix := "gister"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+							elem = elem[len(prefix):]
+						} else {
+							break
+						}
+
+						// Leaf: SandboxRegisterPost
+						s.handleSandboxRegisterPostRequest(args, w, r)
+						return
+					case 'm': // Prefix: "move"
+						if prefix := "move"; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+							elem = elem[len(prefix):]
+						} else {
+							break
+						}
+
+						// Leaf: SandboxRemovePost
+						s.handleSandboxRemovePostRequest(args, w, r)
+						return
+					}
+				}
 			}
-		default:
-			s.notFound(w, r)
-			return
 		}
-	default:
-		s.notFound(w, r)
-		return
 	}
+	s.notFound(w, r)
 }

@@ -67,6 +67,17 @@ type sampleAPIServer struct {
 	pet api.Pet
 }
 
+func (s sampleAPIServer) DataGetFormat(ctx context.Context, params api.DataGetFormatParams) (string, error) {
+	return fmt.Sprintf(
+		"%d %s %s %s %s",
+		params.ID,
+		params.Foo,
+		params.Bar,
+		params.Baz,
+		params.Kek,
+	), nil
+}
+
 func (s sampleAPIServer) GetHeader(ctx context.Context, params api.GetHeaderParams) (api.Hash, error) {
 	h := sha256.Sum256([]byte(params.XAuthToken))
 	return api.Hash{
@@ -205,7 +216,8 @@ func TestIntegration(t *testing.T) {
 		s := httptest.NewServer(api.NewServer(&sampleAPIServer{}))
 		defer s.Close()
 
-		client, err := api.NewClient(s.URL)
+		httpClient := s.Client()
+		client, err := api.NewClient(s.URL, api.WithClient(httpClient))
 		require.NoError(t, err)
 		ctx := context.Background()
 
@@ -412,6 +424,30 @@ func TestIntegration(t *testing.T) {
 			assert.NotEmpty(t, h.Raw)
 			assert.Equal(t, hex.EncodeToString(h.Raw[:]), h.Hex)
 			assert.Equal(t, "09ca7e4eaa6e8ae9c7d261167129184883644d07dfba7cbfbc4c8a2e08360d5b", h.Hex)
+		})
+		t.Run("DataGetFormat", func(t *testing.T) {
+			a := require.New(t)
+			// Path: /name/{id}/{foo}1234{bar}-{baz}!{kek}
+			req, err := http.NewRequestWithContext(ctx,
+				http.MethodGet, s.URL+"/name/1/foo-1234bar+-baz/!kek*", http.NoBody)
+			a.NoError(err)
+
+			resp, err := httpClient.Do(req)
+			a.NoError(err)
+
+			data, err := io.ReadAll(resp.Body)
+			a.NoError(err)
+			a.Equal(`"1 foo- bar+ baz/ kek*"`, string(data))
+
+			h, err := client.DataGetFormat(ctx, api.DataGetFormatParams{
+				ID:  1,
+				Foo: "foo-",
+				Bar: "bar+",
+				Baz: "baz/",
+				Kek: "kek*",
+			})
+			a.NoError(err)
+			assert.Equal(t, "1 foo- bar+ baz/ kek*", h)
 		})
 	})
 

@@ -6,112 +6,77 @@ func (s *Server) notFound(w http.ResponseWriter, r *http.Request) {
 	http.NotFound(w, r)
 }
 
-func skipSlash(p string) string {
-	if len(p) > 0 && p[0] == '/' {
-		return p[1:]
-	}
-	return p
-}
-
-// nextElem return next path element from p and forwarded p.
-func nextElem(p string) (elem, next string) {
-	p = skipSlash(p)
-	idx := strings.IndexByte(p, '/')
-	if idx < 0 {
-		idx = len(p)
-	}
-	return p[:idx], p[idx:]
-}
-
 // ServeHTTP serves http request as defined by OpenAPI v3 specification,
 // calling handler that matches the path or returning not found error.
 func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
-	p := r.URL.Path
-	if len(p) == 0 {
+	elem := r.URL.Path
+	if len(elem) == 0 {
 		s.notFound(w, r)
 		return
 	}
 
-	var (
-		elem   string           // current element, without slashes
-		args   map[string]string // lazily initialized
-	)
-
+	args := map[string]string{}
 	// Static code generated router with unwrapped path search.
 	switch r.Method {
 	{{- range $m := $.Methods }}
 	case "{{ $m.Method }}":
-		{{- template "route_edge" $m.Root }}
+		{{- template "route_edge" $m.Tree.Root }}
 	{{- end }}
-	default:
-		s.notFound(w, r)
-		return
 	}
+	s.notFound(w, r)
 }
-
 {{ end }}
 
 {{ define "route_edge" }}
-	{{- /*gotype: github.com/ogen-go/ogen/gen.RouteEge*/ -}}
-	{{- if $.Param }}
-		if args == nil {
-			args = make(map[string]string)
-		}
-		args["{{ $.Param.Spec.Name }}"] = elem
-	{{- end }}
-	{{- if and ($.Operation) (not $.HasNext) }}
-		// {{ $.Operation.Spec.HTTPMethod }} {{ $.Operation.Spec.Path }}
-		s.handle{{ $.Operation.Name }}Request(args, w, r)
-		return
-	{{- else }}
-		{{- if and (not $.ID) (not $.Path) }}
-		// Root edge.
-        {{- else }}
-		// Edge: {{ $.ID }}, path: {{ printf "%q" $.Path }}.
-		{{- end }}
-		elem, p = nextElem(p)
-		{{- if $.HasNext }}
-			{{- if $.Operation }}
-			if len(elem) == 0 {
-				// {{ $.Operation.Spec.HTTPMethod }} {{ $.Operation.Spec.Path }}.
-				s.handle{{ $.Operation.Name }}Request(args, w, r)
-				return
-			}
-			{{- end }}
-			switch elem {
-			{{- range $next := $.Case.Static }}
-				case "{{ $next.Path }}": // -> {{ $next.ID }}
-					{{- template "route_edge" $next }}
-			{{- end }}
-			{{- if $.Case.Variable }}
-				default:
-                	{{- template "route_edge" $.Case.Variable }}
-				}
-			{{- else }}
-				default:
-					{{- if $.Operation }}
-						// {{ $.Operation.Spec.HTTPMethod }} {{ $.Operation.Spec.Path }}.
-						s.handle{{ $.Operation.Name }}Request(args, w, r)
-						return
-					{{- else }}
-						s.notFound(w, r)
-						return
-					{{- end }}
-				}
-			{{- end }}
-		{{- else }}
-			{{- if not $.Operation }}
-				{{ errorf "leaf without operation: %+v" $ }}
-			{{- end }}
-			{{- if $.Param }}
-				if args == nil {
-					args = make(map[string]string)
-				}
-				args["{{ $.Param.Spec.Name }}"] = elem
-			{{- end }}
-			// {{ $.Operation.Spec.HTTPMethod }} {{ $.Operation.Spec.Path }}.
-			s.handle{{ $.Operation.Name }}Request(args, w, r)
+{{- /*gotype: github.com/ogen-go/ogen/gen.RouteNode*/ -}}
+{{- if $.IsLeaf }}
+	// Leaf: {{ $.Operation.Name }}
+	s.handle{{ $.Operation.Name }}Request(args, w, r)
+	return
+{{- else }}
+	{{- with $child := $.StaticChildren }}
+		if len(elem) == 0 {
+			{{- with $op := $.Operation }}
+			s.handle{{ $op.Name }}Request(args, w, r)
 			return
+			{{- else }}
+			break
+			{{- end }}
+		}
+		switch elem[0] {
+		{{- range $c := $child }}
+		case {{ printf "%q" $c.Head }}: // Prefix: {{ printf "%q" $c.Prefix }}
+			if prefix := {{ printf "%q" $c.Prefix }}; len(elem) >= len(prefix) && elem[0:len(prefix)] == prefix {
+				elem = elem[len(prefix):]
+			} else {
+				break
+			}
+			{{ template "route_edge" $c }}
+		{{- end }}
+		}
+	{{- end }}
+	{{- with $child := $.ParamChildren }}
+		{{- range $c := $child }}
+			// Param: {{ printf "%q" $c.ParamName }}
+			{{- with $tails := $c.Tails }}
+			// Match until one of {{ printf "%q" $tails }}
+			{{- if eq (len $tails) 1 }}
+			idx := strings.IndexByte(elem, {{ printf "%q" (index $tails 0) }})
+			{{- else }}
+			idx := strings.IndexAny(elem, {{ printf "%q" $tails }})
+			{{- end }}
+			if idx > 0 {
+				args[{{ printf "%q" $c.ParamName }}] = elem[:idx]
+				elem = elem[idx:]
+				{{ template "route_edge" $c }}
+			}
+			{{- else }}
+			// Leaf parameter
+			args[{{ printf "%q" $c.ParamName }}] = elem
+			{{ template "route_edge" $c }}
+			{{- end }}
 		{{- end }}
 	{{- end }}
+{{- end }}
+
 {{- end }}

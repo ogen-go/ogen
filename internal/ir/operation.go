@@ -10,6 +10,7 @@ import (
 
 type Operation struct {
 	Name      string
+	RawPath   string
 	PathParts []*PathPart
 	Params    []*Parameter
 	Request   *Request
