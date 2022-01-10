@@ -778,11 +778,22 @@ func (s *ActionsCreateOrUpdateOrgSecretReqVisibility) Decode(d *jx.Decoder) erro
 	if s == nil {
 		return errors.New(`invalid: unable to decode ActionsCreateOrUpdateOrgSecretReqVisibility to nil`)
 	}
-	v, err := d.Str()
+	v, err := d.StrBytes()
 	if err != nil {
 		return err
 	}
-	*s = ActionsCreateOrUpdateOrgSecretReqVisibility(v)
+	// Try to use constant string.
+	switch ActionsCreateOrUpdateOrgSecretReqVisibility(v) {
+	case ActionsCreateOrUpdateOrgSecretReqVisibilityAll:
+		*s = ActionsCreateOrUpdateOrgSecretReqVisibilityAll
+	case ActionsCreateOrUpdateOrgSecretReqVisibilityPrivate:
+		*s = ActionsCreateOrUpdateOrgSecretReqVisibilityPrivate
+	case ActionsCreateOrUpdateOrgSecretReqVisibilitySelected:
+		*s = ActionsCreateOrUpdateOrgSecretReqVisibilitySelected
+	default:
+		*s = ActionsCreateOrUpdateOrgSecretReqVisibility(v)
+	}
+
 	return nil
 }
 
@@ -956,11 +967,22 @@ func (s *ActionsCreateSelfHostedRunnerGroupForOrgReqVisibility) Decode(d *jx.Dec
 	if s == nil {
 		return errors.New(`invalid: unable to decode ActionsCreateSelfHostedRunnerGroupForOrgReqVisibility to nil`)
 	}
-	v, err := d.Str()
+	v, err := d.StrBytes()
 	if err != nil {
 		return err
 	}
-	*s = ActionsCreateSelfHostedRunnerGroupForOrgReqVisibility(v)
+	// Try to use constant string.
+	switch ActionsCreateSelfHostedRunnerGroupForOrgReqVisibility(v) {
+	case ActionsCreateSelfHostedRunnerGroupForOrgReqVisibilitySelected:
+		*s = ActionsCreateSelfHostedRunnerGroupForOrgReqVisibilitySelected
+	case ActionsCreateSelfHostedRunnerGroupForOrgReqVisibilityAll:
+		*s = ActionsCreateSelfHostedRunnerGroupForOrgReqVisibilityAll
+	case ActionsCreateSelfHostedRunnerGroupForOrgReqVisibilityPrivate:
+		*s = ActionsCreateSelfHostedRunnerGroupForOrgReqVisibilityPrivate
+	default:
+		*s = ActionsCreateSelfHostedRunnerGroupForOrgReqVisibility(v)
+	}
+
 	return nil
 }
 
@@ -1615,11 +1637,20 @@ func (s *ActionsListJobsForWorkflowRunFilter) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode ActionsListJobsForWorkflowRunFilter to nil`)
 	}
-	v, err := d.Str()
+	v, err := d.StrBytes()
 	if err != nil {
 		return err
 	}
-	*s = ActionsListJobsForWorkflowRunFilter(v)
+	// Try to use constant string.
+	switch ActionsListJobsForWorkflowRunFilter(v) {
+	case ActionsListJobsForWorkflowRunFilterLatest:
+		*s = ActionsListJobsForWorkflowRunFilterLatest
+	case ActionsListJobsForWorkflowRunFilterAll:
+		*s = ActionsListJobsForWorkflowRunFilterAll
+	default:
+		*s = ActionsListJobsForWorkflowRunFilter(v)
+	}
+
 	return nil
 }
 
@@ -2257,11 +2288,42 @@ func (s *ActionsListWorkflowRunsForRepoStatus) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode ActionsListWorkflowRunsForRepoStatus to nil`)
 	}
-	v, err := d.Str()
+	v, err := d.StrBytes()
 	if err != nil {
 		return err
 	}
-	*s = ActionsListWorkflowRunsForRepoStatus(v)
+	// Try to use constant string.
+	switch ActionsListWorkflowRunsForRepoStatus(v) {
+	case ActionsListWorkflowRunsForRepoStatusCompleted:
+		*s = ActionsListWorkflowRunsForRepoStatusCompleted
+	case ActionsListWorkflowRunsForRepoStatusActionRequired:
+		*s = ActionsListWorkflowRunsForRepoStatusActionRequired
+	case ActionsListWorkflowRunsForRepoStatusCancelled:
+		*s = ActionsListWorkflowRunsForRepoStatusCancelled
+	case ActionsListWorkflowRunsForRepoStatusFailure:
+		*s = ActionsListWorkflowRunsForRepoStatusFailure
+	case ActionsListWorkflowRunsForRepoStatusNeutral:
+		*s = ActionsListWorkflowRunsForRepoStatusNeutral
+	case ActionsListWorkflowRunsForRepoStatusSkipped:
+		*s = ActionsListWorkflowRunsForRepoStatusSkipped
+	case ActionsListWorkflowRunsForRepoStatusStale:
+		*s = ActionsListWorkflowRunsForRepoStatusStale
+	case ActionsListWorkflowRunsForRepoStatusSuccess:
+		*s = ActionsListWorkflowRunsForRepoStatusSuccess
+	case ActionsListWorkflowRunsForRepoStatusTimedOut:
+		*s = ActionsListWorkflowRunsForRepoStatusTimedOut
+	case ActionsListWorkflowRunsForRepoStatusInProgress:
+		*s = ActionsListWorkflowRunsForRepoStatusInProgress
+	case ActionsListWorkflowRunsForRepoStatusQueued:
+		*s = ActionsListWorkflowRunsForRepoStatusQueued
+	case ActionsListWorkflowRunsForRepoStatusRequested:
+		*s = ActionsListWorkflowRunsForRepoStatusRequested
+	case ActionsListWorkflowRunsForRepoStatusWaiting:
+		*s = ActionsListWorkflowRunsForRepoStatusWaiting
+	default:
+		*s = ActionsListWorkflowRunsForRepoStatus(v)
+	}
+
 	return nil
 }
 
@@ -2668,11 +2730,20 @@ func (s *ActionsReviewPendingDeploymentsForRunReqState) Decode(d *jx.Decoder) er
 	if s == nil {
 		return errors.New(`invalid: unable to decode ActionsReviewPendingDeploymentsForRunReqState to nil`)
 	}
-	v, err := d.Str()
+	v, err := d.StrBytes()
 	if err != nil {
 		return err
 	}
-	*s = ActionsReviewPendingDeploymentsForRunReqState(v)
+	// Try to use constant string.
+	switch ActionsReviewPendingDeploymentsForRunReqState(v) {
+	case ActionsReviewPendingDeploymentsForRunReqStateApproved:
+		*s = ActionsReviewPendingDeploymentsForRunReqStateApproved
+	case ActionsReviewPendingDeploymentsForRunReqStateRejected:
+		*s = ActionsReviewPendingDeploymentsForRunReqStateRejected
+	default:
+		*s = ActionsReviewPendingDeploymentsForRunReqState(v)
+	}
+
 	return nil
 }
 
@@ -3173,11 +3244,22 @@ func (s *ActionsUpdateSelfHostedRunnerGroupForOrgReqVisibility) Decode(d *jx.Dec
 	if s == nil {
 		return errors.New(`invalid: unable to decode ActionsUpdateSelfHostedRunnerGroupForOrgReqVisibility to nil`)
 	}
-	v, err := d.Str()
+	v, err := d.StrBytes()
 	if err != nil {
 		return err
 	}
-	*s = ActionsUpdateSelfHostedRunnerGroupForOrgReqVisibility(v)
+	// Try to use constant string.
+	switch ActionsUpdateSelfHostedRunnerGroupForOrgReqVisibility(v) {
+	case ActionsUpdateSelfHostedRunnerGroupForOrgReqVisibilitySelected:
+		*s = ActionsUpdateSelfHostedRunnerGroupForOrgReqVisibilitySelected
+	case ActionsUpdateSelfHostedRunnerGroupForOrgReqVisibilityAll:
+		*s = ActionsUpdateSelfHostedRunnerGroupForOrgReqVisibilityAll
+	case ActionsUpdateSelfHostedRunnerGroupForOrgReqVisibilityPrivate:
+		*s = ActionsUpdateSelfHostedRunnerGroupForOrgReqVisibilityPrivate
+	default:
+		*s = ActionsUpdateSelfHostedRunnerGroupForOrgReqVisibility(v)
+	}
+
 	return nil
 }
 
@@ -3763,11 +3845,20 @@ func (s *ActivityListReposStarredByAuthenticatedUserDirection) Decode(d *jx.Deco
 	if s == nil {
 		return errors.New(`invalid: unable to decode ActivityListReposStarredByAuthenticatedUserDirection to nil`)
 	}
-	v, err := d.Str()
+	v, err := d.StrBytes()
 	if err != nil {
 		return err
 	}
-	*s = ActivityListReposStarredByAuthenticatedUserDirection(v)
+	// Try to use constant string.
+	switch ActivityListReposStarredByAuthenticatedUserDirection(v) {
+	case ActivityListReposStarredByAuthenticatedUserDirectionAsc:
+		*s = ActivityListReposStarredByAuthenticatedUserDirectionAsc
+	case ActivityListReposStarredByAuthenticatedUserDirectionDesc:
+		*s = ActivityListReposStarredByAuthenticatedUserDirectionDesc
+	default:
+		*s = ActivityListReposStarredByAuthenticatedUserDirection(v)
+	}
+
 	return nil
 }
 
@@ -3817,11 +3908,20 @@ func (s *ActivityListReposStarredByAuthenticatedUserSort) Decode(d *jx.Decoder) 
 	if s == nil {
 		return errors.New(`invalid: unable to decode ActivityListReposStarredByAuthenticatedUserSort to nil`)
 	}
-	v, err := d.Str()
+	v, err := d.StrBytes()
 	if err != nil {
 		return err
 	}
-	*s = ActivityListReposStarredByAuthenticatedUserSort(v)
+	// Try to use constant string.
+	switch ActivityListReposStarredByAuthenticatedUserSort(v) {
+	case ActivityListReposStarredByAuthenticatedUserSortCreated:
+		*s = ActivityListReposStarredByAuthenticatedUserSortCreated
+	case ActivityListReposStarredByAuthenticatedUserSortUpdated:
+		*s = ActivityListReposStarredByAuthenticatedUserSortUpdated
+	default:
+		*s = ActivityListReposStarredByAuthenticatedUserSort(v)
+	}
+
 	return nil
 }
 
@@ -3835,11 +3935,20 @@ func (s *ActivityListReposStarredByUserDirection) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode ActivityListReposStarredByUserDirection to nil`)
 	}
-	v, err := d.Str()
+	v, err := d.StrBytes()
 	if err != nil {
 		return err
 	}
-	*s = ActivityListReposStarredByUserDirection(v)
+	// Try to use constant string.
+	switch ActivityListReposStarredByUserDirection(v) {
+	case ActivityListReposStarredByUserDirectionAsc:
+		*s = ActivityListReposStarredByUserDirectionAsc
+	case ActivityListReposStarredByUserDirectionDesc:
+		*s = ActivityListReposStarredByUserDirectionDesc
+	default:
+		*s = ActivityListReposStarredByUserDirection(v)
+	}
+
 	return nil
 }
 
@@ -3853,11 +3962,20 @@ func (s *ActivityListReposStarredByUserSort) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode ActivityListReposStarredByUserSort to nil`)
 	}
-	v, err := d.Str()
+	v, err := d.StrBytes()
 	if err != nil {
 		return err
 	}
-	*s = ActivityListReposStarredByUserSort(v)
+	// Try to use constant string.
+	switch ActivityListReposStarredByUserSort(v) {
+	case ActivityListReposStarredByUserSortCreated:
+		*s = ActivityListReposStarredByUserSortCreated
+	case ActivityListReposStarredByUserSortUpdated:
+		*s = ActivityListReposStarredByUserSortUpdated
+	default:
+		*s = ActivityListReposStarredByUserSort(v)
+	}
+
 	return nil
 }
 
@@ -4698,11 +4816,22 @@ func (s *AllowedActions) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode AllowedActions to nil`)
 	}
-	v, err := d.Str()
+	v, err := d.StrBytes()
 	if err != nil {
 		return err
 	}
-	*s = AllowedActions(v)
+	// Try to use constant string.
+	switch AllowedActions(v) {
+	case AllowedActionsAll:
+		*s = AllowedActionsAll
+	case AllowedActionsLocalOnly:
+		*s = AllowedActionsLocalOnly
+	case AllowedActionsSelected:
+		*s = AllowedActionsSelected
+	default:
+		*s = AllowedActions(v)
+	}
+
 	return nil
 }
 
@@ -5015,11 +5144,20 @@ func (s *AppPermissionsActions) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode AppPermissionsActions to nil`)
 	}
-	v, err := d.Str()
+	v, err := d.StrBytes()
 	if err != nil {
 		return err
 	}
-	*s = AppPermissionsActions(v)
+	// Try to use constant string.
+	switch AppPermissionsActions(v) {
+	case AppPermissionsActionsRead:
+		*s = AppPermissionsActionsRead
+	case AppPermissionsActionsWrite:
+		*s = AppPermissionsActionsWrite
+	default:
+		*s = AppPermissionsActions(v)
+	}
+
 	return nil
 }
 
@@ -5033,11 +5171,20 @@ func (s *AppPermissionsAdministration) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode AppPermissionsAdministration to nil`)
 	}
-	v, err := d.Str()
+	v, err := d.StrBytes()
 	if err != nil {
 		return err
 	}
-	*s = AppPermissionsAdministration(v)
+	// Try to use constant string.
+	switch AppPermissionsAdministration(v) {
+	case AppPermissionsAdministrationRead:
+		*s = AppPermissionsAdministrationRead
+	case AppPermissionsAdministrationWrite:
+		*s = AppPermissionsAdministrationWrite
+	default:
+		*s = AppPermissionsAdministration(v)
+	}
+
 	return nil
 }
 
@@ -5051,11 +5198,20 @@ func (s *AppPermissionsChecks) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode AppPermissionsChecks to nil`)
 	}
-	v, err := d.Str()
+	v, err := d.StrBytes()
 	if err != nil {
 		return err
 	}
-	*s = AppPermissionsChecks(v)
+	// Try to use constant string.
+	switch AppPermissionsChecks(v) {
+	case AppPermissionsChecksRead:
+		*s = AppPermissionsChecksRead
+	case AppPermissionsChecksWrite:
+		*s = AppPermissionsChecksWrite
+	default:
+		*s = AppPermissionsChecks(v)
+	}
+
 	return nil
 }
 
@@ -5069,11 +5225,20 @@ func (s *AppPermissionsContentReferences) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode AppPermissionsContentReferences to nil`)
 	}
-	v, err := d.Str()
+	v, err := d.StrBytes()
 	if err != nil {
 		return err
 	}
-	*s = AppPermissionsContentReferences(v)
+	// Try to use constant string.
+	switch AppPermissionsContentReferences(v) {
+	case AppPermissionsContentReferencesRead:
+		*s = AppPermissionsContentReferencesRead
+	case AppPermissionsContentReferencesWrite:
+		*s = AppPermissionsContentReferencesWrite
+	default:
+		*s = AppPermissionsContentReferences(v)
+	}
+
 	return nil
 }
 
@@ -5087,11 +5252,20 @@ func (s *AppPermissionsContents) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode AppPermissionsContents to nil`)
 	}
-	v, err := d.Str()
+	v, err := d.StrBytes()
 	if err != nil {
 		return err
 	}
-	*s = AppPermissionsContents(v)
+	// Try to use constant string.
+	switch AppPermissionsContents(v) {
+	case AppPermissionsContentsRead:
+		*s = AppPermissionsContentsRead
+	case AppPermissionsContentsWrite:
+		*s = AppPermissionsContentsWrite
+	default:
+		*s = AppPermissionsContents(v)
+	}
+
 	return nil
 }
 
@@ -5105,11 +5279,20 @@ func (s *AppPermissionsDeployments) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode AppPermissionsDeployments to nil`)
 	}
-	v, err := d.Str()
+	v, err := d.StrBytes()
 	if err != nil {
 		return err
 	}
-	*s = AppPermissionsDeployments(v)
+	// Try to use constant string.
+	switch AppPermissionsDeployments(v) {
+	case AppPermissionsDeploymentsRead:
+		*s = AppPermissionsDeploymentsRead
+	case AppPermissionsDeploymentsWrite:
+		*s = AppPermissionsDeploymentsWrite
+	default:
+		*s = AppPermissionsDeployments(v)
+	}
+
 	return nil
 }
 
@@ -5123,11 +5306,20 @@ func (s *AppPermissionsEnvironments) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode AppPermissionsEnvironments to nil`)
 	}
-	v, err := d.Str()
+	v, err := d.StrBytes()
 	if err != nil {
 		return err
 	}
-	*s = AppPermissionsEnvironments(v)
+	// Try to use constant string.
+	switch AppPermissionsEnvironments(v) {
+	case AppPermissionsEnvironmentsRead:
+		*s = AppPermissionsEnvironmentsRead
+	case AppPermissionsEnvironmentsWrite:
+		*s = AppPermissionsEnvironmentsWrite
+	default:
+		*s = AppPermissionsEnvironments(v)
+	}
+
 	return nil
 }
 
@@ -5141,11 +5333,20 @@ func (s *AppPermissionsIssues) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode AppPermissionsIssues to nil`)
 	}
-	v, err := d.Str()
+	v, err := d.StrBytes()
 	if err != nil {
 		return err
 	}
-	*s = AppPermissionsIssues(v)
+	// Try to use constant string.
+	switch AppPermissionsIssues(v) {
+	case AppPermissionsIssuesRead:
+		*s = AppPermissionsIssuesRead
+	case AppPermissionsIssuesWrite:
+		*s = AppPermissionsIssuesWrite
+	default:
+		*s = AppPermissionsIssues(v)
+	}
+
 	return nil
 }
 
@@ -5159,11 +5360,20 @@ func (s *AppPermissionsMembers) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode AppPermissionsMembers to nil`)
 	}
-	v, err := d.Str()
+	v, err := d.StrBytes()
 	if err != nil {
 		return err
 	}
-	*s = AppPermissionsMembers(v)
+	// Try to use constant string.
+	switch AppPermissionsMembers(v) {
+	case AppPermissionsMembersRead:
+		*s = AppPermissionsMembersRead
+	case AppPermissionsMembersWrite:
+		*s = AppPermissionsMembersWrite
+	default:
+		*s = AppPermissionsMembers(v)
+	}
+
 	return nil
 }
 
@@ -5177,11 +5387,20 @@ func (s *AppPermissionsMetadata) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode AppPermissionsMetadata to nil`)
 	}
-	v, err := d.Str()
+	v, err := d.StrBytes()
 	if err != nil {
 		return err
 	}
-	*s = AppPermissionsMetadata(v)
+	// Try to use constant string.
+	switch AppPermissionsMetadata(v) {
+	case AppPermissionsMetadataRead:
+		*s = AppPermissionsMetadataRead
+	case AppPermissionsMetadataWrite:
+		*s = AppPermissionsMetadataWrite
+	default:
+		*s = AppPermissionsMetadata(v)
+	}
+
 	return nil
 }
 
@@ -5195,11 +5414,20 @@ func (s *AppPermissionsOrganizationAdministration) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode AppPermissionsOrganizationAdministration to nil`)
 	}
-	v, err := d.Str()
+	v, err := d.StrBytes()
 	if err != nil {
 		return err
 	}
-	*s = AppPermissionsOrganizationAdministration(v)
+	// Try to use constant string.
+	switch AppPermissionsOrganizationAdministration(v) {
+	case AppPermissionsOrganizationAdministrationRead:
+		*s = AppPermissionsOrganizationAdministrationRead
+	case AppPermissionsOrganizationAdministrationWrite:
+		*s = AppPermissionsOrganizationAdministrationWrite
+	default:
+		*s = AppPermissionsOrganizationAdministration(v)
+	}
+
 	return nil
 }
 
@@ -5213,11 +5441,20 @@ func (s *AppPermissionsOrganizationHooks) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode AppPermissionsOrganizationHooks to nil`)
 	}
-	v, err := d.Str()
+	v, err := d.StrBytes()
 	if err != nil {
 		return err
 	}
-	*s = AppPermissionsOrganizationHooks(v)
+	// Try to use constant string.
+	switch AppPermissionsOrganizationHooks(v) {
+	case AppPermissionsOrganizationHooksRead:
+		*s = AppPermissionsOrganizationHooksRead
+	case AppPermissionsOrganizationHooksWrite:
+		*s = AppPermissionsOrganizationHooksWrite
+	default:
+		*s = AppPermissionsOrganizationHooks(v)
+	}
+
 	return nil
 }
 
@@ -5231,11 +5468,20 @@ func (s *AppPermissionsOrganizationPackages) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode AppPermissionsOrganizationPackages to nil`)
 	}
-	v, err := d.Str()
+	v, err := d.StrBytes()
 	if err != nil {
 		return err
 	}
-	*s = AppPermissionsOrganizationPackages(v)
+	// Try to use constant string.
+	switch AppPermissionsOrganizationPackages(v) {
+	case AppPermissionsOrganizationPackagesRead:
+		*s = AppPermissionsOrganizationPackagesRead
+	case AppPermissionsOrganizationPackagesWrite:
+		*s = AppPermissionsOrganizationPackagesWrite
+	default:
+		*s = AppPermissionsOrganizationPackages(v)
+	}
+
 	return nil
 }
 
@@ -5249,11 +5495,18 @@ func (s *AppPermissionsOrganizationPlan) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode AppPermissionsOrganizationPlan to nil`)
 	}
-	v, err := d.Str()
+	v, err := d.StrBytes()
 	if err != nil {
 		return err
 	}
-	*s = AppPermissionsOrganizationPlan(v)
+	// Try to use constant string.
+	switch AppPermissionsOrganizationPlan(v) {
+	case AppPermissionsOrganizationPlanRead:
+		*s = AppPermissionsOrganizationPlanRead
+	default:
+		*s = AppPermissionsOrganizationPlan(v)
+	}
+
 	return nil
 }
 
@@ -5267,11 +5520,22 @@ func (s *AppPermissionsOrganizationProjects) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode AppPermissionsOrganizationProjects to nil`)
 	}
-	v, err := d.Str()
+	v, err := d.StrBytes()
 	if err != nil {
 		return err
 	}
-	*s = AppPermissionsOrganizationProjects(v)
+	// Try to use constant string.
+	switch AppPermissionsOrganizationProjects(v) {
+	case AppPermissionsOrganizationProjectsRead:
+		*s = AppPermissionsOrganizationProjectsRead
+	case AppPermissionsOrganizationProjectsWrite:
+		*s = AppPermissionsOrganizationProjectsWrite
+	case AppPermissionsOrganizationProjectsAdmin:
+		*s = AppPermissionsOrganizationProjectsAdmin
+	default:
+		*s = AppPermissionsOrganizationProjects(v)
+	}
+
 	return nil
 }
 
@@ -5285,11 +5549,20 @@ func (s *AppPermissionsOrganizationSecrets) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode AppPermissionsOrganizationSecrets to nil`)
 	}
-	v, err := d.Str()
+	v, err := d.StrBytes()
 	if err != nil {
 		return err
 	}
-	*s = AppPermissionsOrganizationSecrets(v)
+	// Try to use constant string.
+	switch AppPermissionsOrganizationSecrets(v) {
+	case AppPermissionsOrganizationSecretsRead:
+		*s = AppPermissionsOrganizationSecretsRead
+	case AppPermissionsOrganizationSecretsWrite:
+		*s = AppPermissionsOrganizationSecretsWrite
+	default:
+		*s = AppPermissionsOrganizationSecrets(v)
+	}
+
 	return nil
 }
 
@@ -5303,11 +5576,20 @@ func (s *AppPermissionsOrganizationSelfHostedRunners) Decode(d *jx.Decoder) erro
 	if s == nil {
 		return errors.New(`invalid: unable to decode AppPermissionsOrganizationSelfHostedRunners to nil`)
 	}
-	v, err := d.Str()
+	v, err := d.StrBytes()
 	if err != nil {
 		return err
 	}
-	*s = AppPermissionsOrganizationSelfHostedRunners(v)
+	// Try to use constant string.
+	switch AppPermissionsOrganizationSelfHostedRunners(v) {
+	case AppPermissionsOrganizationSelfHostedRunnersRead:
+		*s = AppPermissionsOrganizationSelfHostedRunnersRead
+	case AppPermissionsOrganizationSelfHostedRunnersWrite:
+		*s = AppPermissionsOrganizationSelfHostedRunnersWrite
+	default:
+		*s = AppPermissionsOrganizationSelfHostedRunners(v)
+	}
+
 	return nil
 }
 
@@ -5321,11 +5603,20 @@ func (s *AppPermissionsOrganizationUserBlocking) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode AppPermissionsOrganizationUserBlocking to nil`)
 	}
-	v, err := d.Str()
+	v, err := d.StrBytes()
 	if err != nil {
 		return err
 	}
-	*s = AppPermissionsOrganizationUserBlocking(v)
+	// Try to use constant string.
+	switch AppPermissionsOrganizationUserBlocking(v) {
+	case AppPermissionsOrganizationUserBlockingRead:
+		*s = AppPermissionsOrganizationUserBlockingRead
+	case AppPermissionsOrganizationUserBlockingWrite:
+		*s = AppPermissionsOrganizationUserBlockingWrite
+	default:
+		*s = AppPermissionsOrganizationUserBlocking(v)
+	}
+
 	return nil
 }
 
@@ -5339,11 +5630,20 @@ func (s *AppPermissionsPackages) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode AppPermissionsPackages to nil`)
 	}
-	v, err := d.Str()
+	v, err := d.StrBytes()
 	if err != nil {
 		return err
 	}
-	*s = AppPermissionsPackages(v)
+	// Try to use constant string.
+	switch AppPermissionsPackages(v) {
+	case AppPermissionsPackagesRead:
+		*s = AppPermissionsPackagesRead
+	case AppPermissionsPackagesWrite:
+		*s = AppPermissionsPackagesWrite
+	default:
+		*s = AppPermissionsPackages(v)
+	}
+
 	return nil
 }
 
@@ -5357,11 +5657,20 @@ func (s *AppPermissionsPages) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode AppPermissionsPages to nil`)
 	}
-	v, err := d.Str()
+	v, err := d.StrBytes()
 	if err != nil {
 		return err
 	}
-	*s = AppPermissionsPages(v)
+	// Try to use constant string.
+	switch AppPermissionsPages(v) {
+	case AppPermissionsPagesRead:
+		*s = AppPermissionsPagesRead
+	case AppPermissionsPagesWrite:
+		*s = AppPermissionsPagesWrite
+	default:
+		*s = AppPermissionsPages(v)
+	}
+
 	return nil
 }
 
@@ -5375,11 +5684,20 @@ func (s *AppPermissionsPullRequests) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode AppPermissionsPullRequests to nil`)
 	}
-	v, err := d.Str()
+	v, err := d.StrBytes()
 	if err != nil {
 		return err
 	}
-	*s = AppPermissionsPullRequests(v)
+	// Try to use constant string.
+	switch AppPermissionsPullRequests(v) {
+	case AppPermissionsPullRequestsRead:
+		*s = AppPermissionsPullRequestsRead
+	case AppPermissionsPullRequestsWrite:
+		*s = AppPermissionsPullRequestsWrite
+	default:
+		*s = AppPermissionsPullRequests(v)
+	}
+
 	return nil
 }
 
@@ -5393,11 +5711,20 @@ func (s *AppPermissionsRepositoryHooks) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode AppPermissionsRepositoryHooks to nil`)
 	}
-	v, err := d.Str()
+	v, err := d.StrBytes()
 	if err != nil {
 		return err
 	}
-	*s = AppPermissionsRepositoryHooks(v)
+	// Try to use constant string.
+	switch AppPermissionsRepositoryHooks(v) {
+	case AppPermissionsRepositoryHooksRead:
+		*s = AppPermissionsRepositoryHooksRead
+	case AppPermissionsRepositoryHooksWrite:
+		*s = AppPermissionsRepositoryHooksWrite
+	default:
+		*s = AppPermissionsRepositoryHooks(v)
+	}
+
 	return nil
 }
 
@@ -5411,11 +5738,22 @@ func (s *AppPermissionsRepositoryProjects) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode AppPermissionsRepositoryProjects to nil`)
 	}
-	v, err := d.Str()
+	v, err := d.StrBytes()
 	if err != nil {
 		return err
 	}
-	*s = AppPermissionsRepositoryProjects(v)
+	// Try to use constant string.
+	switch AppPermissionsRepositoryProjects(v) {
+	case AppPermissionsRepositoryProjectsRead:
+		*s = AppPermissionsRepositoryProjectsRead
+	case AppPermissionsRepositoryProjectsWrite:
+		*s = AppPermissionsRepositoryProjectsWrite
+	case AppPermissionsRepositoryProjectsAdmin:
+		*s = AppPermissionsRepositoryProjectsAdmin
+	default:
+		*s = AppPermissionsRepositoryProjects(v)
+	}
+
 	return nil
 }
 
@@ -5429,11 +5767,20 @@ func (s *AppPermissionsSecretScanningAlerts) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode AppPermissionsSecretScanningAlerts to nil`)
 	}
-	v, err := d.Str()
+	v, err := d.StrBytes()
 	if err != nil {
 		return err
 	}
-	*s = AppPermissionsSecretScanningAlerts(v)
+	// Try to use constant string.
+	switch AppPermissionsSecretScanningAlerts(v) {
+	case AppPermissionsSecretScanningAlertsRead:
+		*s = AppPermissionsSecretScanningAlertsRead
+	case AppPermissionsSecretScanningAlertsWrite:
+		*s = AppPermissionsSecretScanningAlertsWrite
+	default:
+		*s = AppPermissionsSecretScanningAlerts(v)
+	}
+
 	return nil
 }
 
@@ -5447,11 +5794,20 @@ func (s *AppPermissionsSecrets) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode AppPermissionsSecrets to nil`)
 	}
-	v, err := d.Str()
+	v, err := d.StrBytes()
 	if err != nil {
 		return err
 	}
-	*s = AppPermissionsSecrets(v)
+	// Try to use constant string.
+	switch AppPermissionsSecrets(v) {
+	case AppPermissionsSecretsRead:
+		*s = AppPermissionsSecretsRead
+	case AppPermissionsSecretsWrite:
+		*s = AppPermissionsSecretsWrite
+	default:
+		*s = AppPermissionsSecrets(v)
+	}
+
 	return nil
 }
 
@@ -5465,11 +5821,20 @@ func (s *AppPermissionsSecurityEvents) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode AppPermissionsSecurityEvents to nil`)
 	}
-	v, err := d.Str()
+	v, err := d.StrBytes()
 	if err != nil {
 		return err
 	}
-	*s = AppPermissionsSecurityEvents(v)
+	// Try to use constant string.
+	switch AppPermissionsSecurityEvents(v) {
+	case AppPermissionsSecurityEventsRead:
+		*s = AppPermissionsSecurityEventsRead
+	case AppPermissionsSecurityEventsWrite:
+		*s = AppPermissionsSecurityEventsWrite
+	default:
+		*s = AppPermissionsSecurityEvents(v)
+	}
+
 	return nil
 }
 
@@ -5483,11 +5848,20 @@ func (s *AppPermissionsSingleFile) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode AppPermissionsSingleFile to nil`)
 	}
-	v, err := d.Str()
+	v, err := d.StrBytes()
 	if err != nil {
 		return err
 	}
-	*s = AppPermissionsSingleFile(v)
+	// Try to use constant string.
+	switch AppPermissionsSingleFile(v) {
+	case AppPermissionsSingleFileRead:
+		*s = AppPermissionsSingleFileRead
+	case AppPermissionsSingleFileWrite:
+		*s = AppPermissionsSingleFileWrite
+	default:
+		*s = AppPermissionsSingleFile(v)
+	}
+
 	return nil
 }
 
@@ -5501,11 +5875,20 @@ func (s *AppPermissionsStatuses) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode AppPermissionsStatuses to nil`)
 	}
-	v, err := d.Str()
+	v, err := d.StrBytes()
 	if err != nil {
 		return err
 	}
-	*s = AppPermissionsStatuses(v)
+	// Try to use constant string.
+	switch AppPermissionsStatuses(v) {
+	case AppPermissionsStatusesRead:
+		*s = AppPermissionsStatusesRead
+	case AppPermissionsStatusesWrite:
+		*s = AppPermissionsStatusesWrite
+	default:
+		*s = AppPermissionsStatuses(v)
+	}
+
 	return nil
 }
 
@@ -5519,11 +5902,20 @@ func (s *AppPermissionsTeamDiscussions) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode AppPermissionsTeamDiscussions to nil`)
 	}
-	v, err := d.Str()
+	v, err := d.StrBytes()
 	if err != nil {
 		return err
 	}
-	*s = AppPermissionsTeamDiscussions(v)
+	// Try to use constant string.
+	switch AppPermissionsTeamDiscussions(v) {
+	case AppPermissionsTeamDiscussionsRead:
+		*s = AppPermissionsTeamDiscussionsRead
+	case AppPermissionsTeamDiscussionsWrite:
+		*s = AppPermissionsTeamDiscussionsWrite
+	default:
+		*s = AppPermissionsTeamDiscussions(v)
+	}
+
 	return nil
 }
 
@@ -5537,11 +5929,18 @@ func (s *AppPermissionsVulnerabilityAlerts) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode AppPermissionsVulnerabilityAlerts to nil`)
 	}
-	v, err := d.Str()
+	v, err := d.StrBytes()
 	if err != nil {
 		return err
 	}
-	*s = AppPermissionsVulnerabilityAlerts(v)
+	// Try to use constant string.
+	switch AppPermissionsVulnerabilityAlerts(v) {
+	case AppPermissionsVulnerabilityAlertsRead:
+		*s = AppPermissionsVulnerabilityAlertsRead
+	default:
+		*s = AppPermissionsVulnerabilityAlerts(v)
+	}
+
 	return nil
 }
 
@@ -5555,11 +5954,18 @@ func (s *AppPermissionsWorkflows) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode AppPermissionsWorkflows to nil`)
 	}
-	v, err := d.Str()
+	v, err := d.StrBytes()
 	if err != nil {
 		return err
 	}
-	*s = AppPermissionsWorkflows(v)
+	// Try to use constant string.
+	switch AppPermissionsWorkflows(v) {
+	case AppPermissionsWorkflowsWrite:
+		*s = AppPermissionsWorkflowsWrite
+	default:
+		*s = AppPermissionsWorkflows(v)
+	}
+
 	return nil
 }
 
@@ -6367,11 +6773,20 @@ func (s *AppsListAccountsForPlanDirection) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode AppsListAccountsForPlanDirection to nil`)
 	}
-	v, err := d.Str()
+	v, err := d.StrBytes()
 	if err != nil {
 		return err
 	}
-	*s = AppsListAccountsForPlanDirection(v)
+	// Try to use constant string.
+	switch AppsListAccountsForPlanDirection(v) {
+	case AppsListAccountsForPlanDirectionAsc:
+		*s = AppsListAccountsForPlanDirectionAsc
+	case AppsListAccountsForPlanDirectionDesc:
+		*s = AppsListAccountsForPlanDirectionDesc
+	default:
+		*s = AppsListAccountsForPlanDirection(v)
+	}
+
 	return nil
 }
 
@@ -6421,11 +6836,20 @@ func (s *AppsListAccountsForPlanSort) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode AppsListAccountsForPlanSort to nil`)
 	}
-	v, err := d.Str()
+	v, err := d.StrBytes()
 	if err != nil {
 		return err
 	}
-	*s = AppsListAccountsForPlanSort(v)
+	// Try to use constant string.
+	switch AppsListAccountsForPlanSort(v) {
+	case AppsListAccountsForPlanSortCreated:
+		*s = AppsListAccountsForPlanSortCreated
+	case AppsListAccountsForPlanSortUpdated:
+		*s = AppsListAccountsForPlanSortUpdated
+	default:
+		*s = AppsListAccountsForPlanSort(v)
+	}
+
 	return nil
 }
 
@@ -6439,11 +6863,20 @@ func (s *AppsListAccountsForPlanStubbedDirection) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode AppsListAccountsForPlanStubbedDirection to nil`)
 	}
-	v, err := d.Str()
+	v, err := d.StrBytes()
 	if err != nil {
 		return err
 	}
-	*s = AppsListAccountsForPlanStubbedDirection(v)
+	// Try to use constant string.
+	switch AppsListAccountsForPlanStubbedDirection(v) {
+	case AppsListAccountsForPlanStubbedDirectionAsc:
+		*s = AppsListAccountsForPlanStubbedDirectionAsc
+	case AppsListAccountsForPlanStubbedDirectionDesc:
+		*s = AppsListAccountsForPlanStubbedDirectionDesc
+	default:
+		*s = AppsListAccountsForPlanStubbedDirection(v)
+	}
+
 	return nil
 }
 
@@ -6493,11 +6926,20 @@ func (s *AppsListAccountsForPlanStubbedSort) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode AppsListAccountsForPlanStubbedSort to nil`)
 	}
-	v, err := d.Str()
+	v, err := d.StrBytes()
 	if err != nil {
 		return err
 	}
-	*s = AppsListAccountsForPlanStubbedSort(v)
+	// Try to use constant string.
+	switch AppsListAccountsForPlanStubbedSort(v) {
+	case AppsListAccountsForPlanStubbedSortCreated:
+		*s = AppsListAccountsForPlanStubbedSortCreated
+	case AppsListAccountsForPlanStubbedSortUpdated:
+		*s = AppsListAccountsForPlanStubbedSortUpdated
+	default:
+		*s = AppsListAccountsForPlanStubbedSort(v)
+	}
+
 	return nil
 }
 
@@ -8076,11 +8518,20 @@ func (s *AuthenticationTokenRepositorySelection) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode AuthenticationTokenRepositorySelection to nil`)
 	}
-	v, err := d.Str()
+	v, err := d.StrBytes()
 	if err != nil {
 		return err
 	}
-	*s = AuthenticationTokenRepositorySelection(v)
+	// Try to use constant string.
+	switch AuthenticationTokenRepositorySelection(v) {
+	case AuthenticationTokenRepositorySelectionAll:
+		*s = AuthenticationTokenRepositorySelectionAll
+	case AuthenticationTokenRepositorySelectionSelected:
+		*s = AuthenticationTokenRepositorySelectionSelected
+	default:
+		*s = AuthenticationTokenRepositorySelection(v)
+	}
+
 	return nil
 }
 
@@ -8094,11 +8545,32 @@ func (s *AuthorAssociation) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode AuthorAssociation to nil`)
 	}
-	v, err := d.Str()
+	v, err := d.StrBytes()
 	if err != nil {
 		return err
 	}
-	*s = AuthorAssociation(v)
+	// Try to use constant string.
+	switch AuthorAssociation(v) {
+	case AuthorAssociationCOLLABORATOR:
+		*s = AuthorAssociationCOLLABORATOR
+	case AuthorAssociationCONTRIBUTOR:
+		*s = AuthorAssociationCONTRIBUTOR
+	case AuthorAssociationFIRSTTIMER:
+		*s = AuthorAssociationFIRSTTIMER
+	case AuthorAssociationFIRSTTIMECONTRIBUTOR:
+		*s = AuthorAssociationFIRSTTIMECONTRIBUTOR
+	case AuthorAssociationMANNEQUIN:
+		*s = AuthorAssociationMANNEQUIN
+	case AuthorAssociationMEMBER:
+		*s = AuthorAssociationMEMBER
+	case AuthorAssociationNONE:
+		*s = AuthorAssociationNONE
+	case AuthorAssociationOWNER:
+		*s = AuthorAssociationOWNER
+	default:
+		*s = AuthorAssociation(v)
+	}
+
 	return nil
 }
 
@@ -8368,11 +8840,22 @@ func (s *AutoMergeMergeMethod) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode AutoMergeMergeMethod to nil`)
 	}
-	v, err := d.Str()
+	v, err := d.StrBytes()
 	if err != nil {
 		return err
 	}
-	*s = AutoMergeMergeMethod(v)
+	// Try to use constant string.
+	switch AutoMergeMergeMethod(v) {
+	case AutoMergeMergeMethodMerge:
+		*s = AutoMergeMergeMethodMerge
+	case AutoMergeMergeMethodSquash:
+		*s = AutoMergeMergeMethodSquash
+	case AutoMergeMergeMethodRebase:
+		*s = AutoMergeMergeMethodRebase
+	default:
+		*s = AutoMergeMergeMethod(v)
+	}
+
 	return nil
 }
 
@@ -10512,11 +10995,30 @@ func (s *CheckRunConclusion) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode CheckRunConclusion to nil`)
 	}
-	v, err := d.Str()
+	v, err := d.StrBytes()
 	if err != nil {
 		return err
 	}
-	*s = CheckRunConclusion(v)
+	// Try to use constant string.
+	switch CheckRunConclusion(v) {
+	case CheckRunConclusionSuccess:
+		*s = CheckRunConclusionSuccess
+	case CheckRunConclusionFailure:
+		*s = CheckRunConclusionFailure
+	case CheckRunConclusionNeutral:
+		*s = CheckRunConclusionNeutral
+	case CheckRunConclusionCancelled:
+		*s = CheckRunConclusionCancelled
+	case CheckRunConclusionSkipped:
+		*s = CheckRunConclusionSkipped
+	case CheckRunConclusionTimedOut:
+		*s = CheckRunConclusionTimedOut
+	case CheckRunConclusionActionRequired:
+		*s = CheckRunConclusionActionRequired
+	default:
+		*s = CheckRunConclusion(v)
+	}
+
 	return nil
 }
 
@@ -10589,11 +11091,22 @@ func (s *CheckRunStatus) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode CheckRunStatus to nil`)
 	}
-	v, err := d.Str()
+	v, err := d.StrBytes()
 	if err != nil {
 		return err
 	}
-	*s = CheckRunStatus(v)
+	// Try to use constant string.
+	switch CheckRunStatus(v) {
+	case CheckRunStatusQueued:
+		*s = CheckRunStatusQueued
+	case CheckRunStatusInProgress:
+		*s = CheckRunStatusInProgress
+	case CheckRunStatusCompleted:
+		*s = CheckRunStatusCompleted
+	default:
+		*s = CheckRunStatus(v)
+	}
+
 	return nil
 }
 
@@ -10772,11 +11285,30 @@ func (s *CheckSuiteConclusion) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode CheckSuiteConclusion to nil`)
 	}
-	v, err := d.Str()
+	v, err := d.StrBytes()
 	if err != nil {
 		return err
 	}
-	*s = CheckSuiteConclusion(v)
+	// Try to use constant string.
+	switch CheckSuiteConclusion(v) {
+	case CheckSuiteConclusionSuccess:
+		*s = CheckSuiteConclusionSuccess
+	case CheckSuiteConclusionFailure:
+		*s = CheckSuiteConclusionFailure
+	case CheckSuiteConclusionNeutral:
+		*s = CheckSuiteConclusionNeutral
+	case CheckSuiteConclusionCancelled:
+		*s = CheckSuiteConclusionCancelled
+	case CheckSuiteConclusionSkipped:
+		*s = CheckSuiteConclusionSkipped
+	case CheckSuiteConclusionTimedOut:
+		*s = CheckSuiteConclusionTimedOut
+	case CheckSuiteConclusionActionRequired:
+		*s = CheckSuiteConclusionActionRequired
+	default:
+		*s = CheckSuiteConclusion(v)
+	}
+
 	return nil
 }
 
@@ -10902,11 +11434,22 @@ func (s *CheckSuiteStatus) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode CheckSuiteStatus to nil`)
 	}
-	v, err := d.Str()
+	v, err := d.StrBytes()
 	if err != nil {
 		return err
 	}
-	*s = CheckSuiteStatus(v)
+	// Try to use constant string.
+	switch CheckSuiteStatus(v) {
+	case CheckSuiteStatusQueued:
+		*s = CheckSuiteStatusQueued
+	case CheckSuiteStatusInProgress:
+		*s = CheckSuiteStatusInProgress
+	case CheckSuiteStatusCompleted:
+		*s = CheckSuiteStatusCompleted
+	default:
+		*s = CheckSuiteStatus(v)
+	}
+
 	return nil
 }
 
@@ -10997,11 +11540,20 @@ func (s *ChecksListForRefFilter) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode ChecksListForRefFilter to nil`)
 	}
-	v, err := d.Str()
+	v, err := d.StrBytes()
 	if err != nil {
 		return err
 	}
-	*s = ChecksListForRefFilter(v)
+	// Try to use constant string.
+	switch ChecksListForRefFilter(v) {
+	case ChecksListForRefFilterLatest:
+		*s = ChecksListForRefFilterLatest
+	case ChecksListForRefFilterAll:
+		*s = ChecksListForRefFilterAll
+	default:
+		*s = ChecksListForRefFilter(v)
+	}
+
 	return nil
 }
 
@@ -11063,11 +11615,22 @@ func (s *ChecksListForRefStatus) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode ChecksListForRefStatus to nil`)
 	}
-	v, err := d.Str()
+	v, err := d.StrBytes()
 	if err != nil {
 		return err
 	}
-	*s = ChecksListForRefStatus(v)
+	// Try to use constant string.
+	switch ChecksListForRefStatus(v) {
+	case ChecksListForRefStatusQueued:
+		*s = ChecksListForRefStatusQueued
+	case ChecksListForRefStatusInProgress:
+		*s = ChecksListForRefStatusInProgress
+	case ChecksListForRefStatusCompleted:
+		*s = ChecksListForRefStatusCompleted
+	default:
+		*s = ChecksListForRefStatus(v)
+	}
+
 	return nil
 }
 
@@ -11081,11 +11644,20 @@ func (s *ChecksListForSuiteFilter) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode ChecksListForSuiteFilter to nil`)
 	}
-	v, err := d.Str()
+	v, err := d.StrBytes()
 	if err != nil {
 		return err
 	}
-	*s = ChecksListForSuiteFilter(v)
+	// Try to use constant string.
+	switch ChecksListForSuiteFilter(v) {
+	case ChecksListForSuiteFilterLatest:
+		*s = ChecksListForSuiteFilterLatest
+	case ChecksListForSuiteFilterAll:
+		*s = ChecksListForSuiteFilterAll
+	default:
+		*s = ChecksListForSuiteFilter(v)
+	}
+
 	return nil
 }
 
@@ -11147,11 +11719,22 @@ func (s *ChecksListForSuiteStatus) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode ChecksListForSuiteStatus to nil`)
 	}
-	v, err := d.Str()
+	v, err := d.StrBytes()
 	if err != nil {
 		return err
 	}
-	*s = ChecksListForSuiteStatus(v)
+	// Try to use constant string.
+	switch ChecksListForSuiteStatus(v) {
+	case ChecksListForSuiteStatusQueued:
+		*s = ChecksListForSuiteStatusQueued
+	case ChecksListForSuiteStatusInProgress:
+		*s = ChecksListForSuiteStatusInProgress
+	case ChecksListForSuiteStatusCompleted:
+		*s = ChecksListForSuiteStatusCompleted
+	default:
+		*s = ChecksListForSuiteStatus(v)
+	}
+
 	return nil
 }
 
@@ -11666,11 +12249,24 @@ func (s *CodeScanningAlertClassification) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode CodeScanningAlertClassification to nil`)
 	}
-	v, err := d.Str()
+	v, err := d.StrBytes()
 	if err != nil {
 		return err
 	}
-	*s = CodeScanningAlertClassification(v)
+	// Try to use constant string.
+	switch CodeScanningAlertClassification(v) {
+	case CodeScanningAlertClassificationSource:
+		*s = CodeScanningAlertClassificationSource
+	case CodeScanningAlertClassificationGenerated:
+		*s = CodeScanningAlertClassificationGenerated
+	case CodeScanningAlertClassificationTest:
+		*s = CodeScanningAlertClassificationTest
+	case CodeScanningAlertClassificationLibrary:
+		*s = CodeScanningAlertClassificationLibrary
+	default:
+		*s = CodeScanningAlertClassification(v)
+	}
+
 	return nil
 }
 
@@ -11710,11 +12306,22 @@ func (s *CodeScanningAlertDismissedReason) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode CodeScanningAlertDismissedReason to nil`)
 	}
-	v, err := d.Str()
+	v, err := d.StrBytes()
 	if err != nil {
 		return err
 	}
-	*s = CodeScanningAlertDismissedReason(v)
+	// Try to use constant string.
+	switch CodeScanningAlertDismissedReason(v) {
+	case CodeScanningAlertDismissedReasonFalsePositive:
+		*s = CodeScanningAlertDismissedReasonFalsePositive
+	case CodeScanningAlertDismissedReasonWonTFix:
+		*s = CodeScanningAlertDismissedReasonWonTFix
+	case CodeScanningAlertDismissedReasonUsedInTests:
+		*s = CodeScanningAlertDismissedReasonUsedInTests
+	default:
+		*s = CodeScanningAlertDismissedReason(v)
+	}
+
 	return nil
 }
 
@@ -12195,11 +12802,24 @@ func (s *CodeScanningAlertRuleSecuritySeverityLevel) Decode(d *jx.Decoder) error
 	if s == nil {
 		return errors.New(`invalid: unable to decode CodeScanningAlertRuleSecuritySeverityLevel to nil`)
 	}
-	v, err := d.Str()
+	v, err := d.StrBytes()
 	if err != nil {
 		return err
 	}
-	*s = CodeScanningAlertRuleSecuritySeverityLevel(v)
+	// Try to use constant string.
+	switch CodeScanningAlertRuleSecuritySeverityLevel(v) {
+	case CodeScanningAlertRuleSecuritySeverityLevelLow:
+		*s = CodeScanningAlertRuleSecuritySeverityLevelLow
+	case CodeScanningAlertRuleSecuritySeverityLevelMedium:
+		*s = CodeScanningAlertRuleSecuritySeverityLevelMedium
+	case CodeScanningAlertRuleSecuritySeverityLevelHigh:
+		*s = CodeScanningAlertRuleSecuritySeverityLevelHigh
+	case CodeScanningAlertRuleSecuritySeverityLevelCritical:
+		*s = CodeScanningAlertRuleSecuritySeverityLevelCritical
+	default:
+		*s = CodeScanningAlertRuleSecuritySeverityLevel(v)
+	}
+
 	return nil
 }
 
@@ -12213,11 +12833,24 @@ func (s *CodeScanningAlertRuleSeverity) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode CodeScanningAlertRuleSeverity to nil`)
 	}
-	v, err := d.Str()
+	v, err := d.StrBytes()
 	if err != nil {
 		return err
 	}
-	*s = CodeScanningAlertRuleSeverity(v)
+	// Try to use constant string.
+	switch CodeScanningAlertRuleSeverity(v) {
+	case CodeScanningAlertRuleSeverityNone:
+		*s = CodeScanningAlertRuleSeverityNone
+	case CodeScanningAlertRuleSeverityNote:
+		*s = CodeScanningAlertRuleSeverityNote
+	case CodeScanningAlertRuleSeverityWarning:
+		*s = CodeScanningAlertRuleSeverityWarning
+	case CodeScanningAlertRuleSeverityError:
+		*s = CodeScanningAlertRuleSeverityError
+	default:
+		*s = CodeScanningAlertRuleSeverity(v)
+	}
+
 	return nil
 }
 
@@ -12287,11 +12920,24 @@ func (s *CodeScanningAlertRuleSummarySeverity) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode CodeScanningAlertRuleSummarySeverity to nil`)
 	}
-	v, err := d.Str()
+	v, err := d.StrBytes()
 	if err != nil {
 		return err
 	}
-	*s = CodeScanningAlertRuleSummarySeverity(v)
+	// Try to use constant string.
+	switch CodeScanningAlertRuleSummarySeverity(v) {
+	case CodeScanningAlertRuleSummarySeverityNone:
+		*s = CodeScanningAlertRuleSummarySeverityNone
+	case CodeScanningAlertRuleSummarySeverityNote:
+		*s = CodeScanningAlertRuleSummarySeverityNote
+	case CodeScanningAlertRuleSummarySeverityWarning:
+		*s = CodeScanningAlertRuleSummarySeverityWarning
+	case CodeScanningAlertRuleSummarySeverityError:
+		*s = CodeScanningAlertRuleSummarySeverityError
+	default:
+		*s = CodeScanningAlertRuleSummarySeverity(v)
+	}
+
 	return nil
 }
 
@@ -12305,11 +12951,20 @@ func (s *CodeScanningAlertSetState) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode CodeScanningAlertSetState to nil`)
 	}
-	v, err := d.Str()
+	v, err := d.StrBytes()
 	if err != nil {
 		return err
 	}
-	*s = CodeScanningAlertSetState(v)
+	// Try to use constant string.
+	switch CodeScanningAlertSetState(v) {
+	case CodeScanningAlertSetStateOpen:
+		*s = CodeScanningAlertSetStateOpen
+	case CodeScanningAlertSetStateDismissed:
+		*s = CodeScanningAlertSetStateDismissed
+	default:
+		*s = CodeScanningAlertSetState(v)
+	}
+
 	return nil
 }
 
@@ -12323,11 +12978,24 @@ func (s *CodeScanningAlertState) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode CodeScanningAlertState to nil`)
 	}
-	v, err := d.Str()
+	v, err := d.StrBytes()
 	if err != nil {
 		return err
 	}
-	*s = CodeScanningAlertState(v)
+	// Try to use constant string.
+	switch CodeScanningAlertState(v) {
+	case CodeScanningAlertStateOpen:
+		*s = CodeScanningAlertStateOpen
+	case CodeScanningAlertStateClosed:
+		*s = CodeScanningAlertStateClosed
+	case CodeScanningAlertStateDismissed:
+		*s = CodeScanningAlertStateDismissed
+	case CodeScanningAlertStateFixed:
+		*s = CodeScanningAlertStateFixed
+	default:
+		*s = CodeScanningAlertState(v)
+	}
+
 	return nil
 }
 
@@ -13440,11 +14108,20 @@ func (s *CodeScanningSarifsStatusProcessingStatus) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode CodeScanningSarifsStatusProcessingStatus to nil`)
 	}
-	v, err := d.Str()
+	v, err := d.StrBytes()
 	if err != nil {
 		return err
 	}
-	*s = CodeScanningSarifsStatusProcessingStatus(v)
+	// Try to use constant string.
+	switch CodeScanningSarifsStatusProcessingStatus(v) {
+	case CodeScanningSarifsStatusProcessingStatusPending:
+		*s = CodeScanningSarifsStatusProcessingStatusPending
+	case CodeScanningSarifsStatusProcessingStatusComplete:
+		*s = CodeScanningSarifsStatusProcessingStatusComplete
+	default:
+		*s = CodeScanningSarifsStatusProcessingStatus(v)
+	}
+
 	return nil
 }
 
@@ -14920,11 +15597,24 @@ func (s *CommitComparisonStatus) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode CommitComparisonStatus to nil`)
 	}
-	v, err := d.Str()
+	v, err := d.StrBytes()
 	if err != nil {
 		return err
 	}
-	*s = CommitComparisonStatus(v)
+	// Try to use constant string.
+	switch CommitComparisonStatus(v) {
+	case CommitComparisonStatusDiverged:
+		*s = CommitComparisonStatusDiverged
+	case CommitComparisonStatusAhead:
+		*s = CommitComparisonStatusAhead
+	case CommitComparisonStatusBehind:
+		*s = CommitComparisonStatusBehind
+	case CommitComparisonStatusIdentical:
+		*s = CommitComparisonStatusIdentical
+	default:
+		*s = CommitComparisonStatus(v)
+	}
+
 	return nil
 }
 
@@ -16736,11 +17426,20 @@ func (s *DeploymentReviewerType) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode DeploymentReviewerType to nil`)
 	}
-	v, err := d.Str()
+	v, err := d.StrBytes()
 	if err != nil {
 		return err
 	}
-	*s = DeploymentReviewerType(v)
+	// Try to use constant string.
+	switch DeploymentReviewerType(v) {
+	case DeploymentReviewerTypeUser:
+		*s = DeploymentReviewerTypeUser
+	case DeploymentReviewerTypeTeam:
+		*s = DeploymentReviewerTypeTeam
+	default:
+		*s = DeploymentReviewerType(v)
+	}
+
 	return nil
 }
 
@@ -17049,11 +17748,30 @@ func (s *DeploymentStatusState) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode DeploymentStatusState to nil`)
 	}
-	v, err := d.Str()
+	v, err := d.StrBytes()
 	if err != nil {
 		return err
 	}
-	*s = DeploymentStatusState(v)
+	// Try to use constant string.
+	switch DeploymentStatusState(v) {
+	case DeploymentStatusStateError:
+		*s = DeploymentStatusStateError
+	case DeploymentStatusStateFailure:
+		*s = DeploymentStatusStateFailure
+	case DeploymentStatusStateInactive:
+		*s = DeploymentStatusStateInactive
+	case DeploymentStatusStatePending:
+		*s = DeploymentStatusStatePending
+	case DeploymentStatusStateSuccess:
+		*s = DeploymentStatusStateSuccess
+	case DeploymentStatusStateQueued:
+		*s = DeploymentStatusStateQueued
+	case DeploymentStatusStateInProgress:
+		*s = DeploymentStatusStateInProgress
+	default:
+		*s = DeploymentStatusState(v)
+	}
+
 	return nil
 }
 
@@ -17184,11 +17902,30 @@ func (s *DiffEntryStatus) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode DiffEntryStatus to nil`)
 	}
-	v, err := d.Str()
+	v, err := d.StrBytes()
 	if err != nil {
 		return err
 	}
-	*s = DiffEntryStatus(v)
+	// Try to use constant string.
+	switch DiffEntryStatus(v) {
+	case DiffEntryStatusAdded:
+		*s = DiffEntryStatusAdded
+	case DiffEntryStatusRemoved:
+		*s = DiffEntryStatusRemoved
+	case DiffEntryStatusModified:
+		*s = DiffEntryStatusModified
+	case DiffEntryStatusRenamed:
+		*s = DiffEntryStatusRenamed
+	case DiffEntryStatusCopied:
+		*s = DiffEntryStatusCopied
+	case DiffEntryStatusChanged:
+		*s = DiffEntryStatusChanged
+	case DiffEntryStatusUnchanged:
+		*s = DiffEntryStatusUnchanged
+	default:
+		*s = DiffEntryStatus(v)
+	}
+
 	return nil
 }
 
@@ -17296,11 +18033,22 @@ func (s *EnabledOrganizations) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode EnabledOrganizations to nil`)
 	}
-	v, err := d.Str()
+	v, err := d.StrBytes()
 	if err != nil {
 		return err
 	}
-	*s = EnabledOrganizations(v)
+	// Try to use constant string.
+	switch EnabledOrganizations(v) {
+	case EnabledOrganizationsAll:
+		*s = EnabledOrganizationsAll
+	case EnabledOrganizationsNone:
+		*s = EnabledOrganizationsNone
+	case EnabledOrganizationsSelected:
+		*s = EnabledOrganizationsSelected
+	default:
+		*s = EnabledOrganizations(v)
+	}
+
 	return nil
 }
 
@@ -17314,11 +18062,22 @@ func (s *EnabledRepositories) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode EnabledRepositories to nil`)
 	}
-	v, err := d.Str()
+	v, err := d.StrBytes()
 	if err != nil {
 		return err
 	}
-	*s = EnabledRepositories(v)
+	// Try to use constant string.
+	switch EnabledRepositories(v) {
+	case EnabledRepositoriesAll:
+		*s = EnabledRepositoriesAll
+	case EnabledRepositoriesNone:
+		*s = EnabledRepositoriesNone
+	case EnabledRepositoriesSelected:
+		*s = EnabledRepositoriesSelected
+	default:
+		*s = EnabledRepositories(v)
+	}
+
 	return nil
 }
 
@@ -17454,11 +18213,20 @@ func (s *EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseReqVisibility) D
 	if s == nil {
 		return errors.New(`invalid: unable to decode EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseReqVisibility to nil`)
 	}
-	v, err := d.Str()
+	v, err := d.StrBytes()
 	if err != nil {
 		return err
 	}
-	*s = EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseReqVisibility(v)
+	// Try to use constant string.
+	switch EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseReqVisibility(v) {
+	case EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseReqVisibilitySelected:
+		*s = EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseReqVisibilitySelected
+	case EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseReqVisibilityAll:
+		*s = EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseReqVisibilityAll
+	default:
+		*s = EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseReqVisibility(v)
+	}
+
 	return nil
 }
 
@@ -17592,11 +18360,22 @@ func (s *EnterpriseAdminGetAuditLogInclude) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode EnterpriseAdminGetAuditLogInclude to nil`)
 	}
-	v, err := d.Str()
+	v, err := d.StrBytes()
 	if err != nil {
 		return err
 	}
-	*s = EnterpriseAdminGetAuditLogInclude(v)
+	// Try to use constant string.
+	switch EnterpriseAdminGetAuditLogInclude(v) {
+	case EnterpriseAdminGetAuditLogIncludeWeb:
+		*s = EnterpriseAdminGetAuditLogIncludeWeb
+	case EnterpriseAdminGetAuditLogIncludeGit:
+		*s = EnterpriseAdminGetAuditLogIncludeGit
+	case EnterpriseAdminGetAuditLogIncludeAll:
+		*s = EnterpriseAdminGetAuditLogIncludeAll
+	default:
+		*s = EnterpriseAdminGetAuditLogInclude(v)
+	}
+
 	return nil
 }
 
@@ -17610,11 +18389,20 @@ func (s *EnterpriseAdminGetAuditLogOrder) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode EnterpriseAdminGetAuditLogOrder to nil`)
 	}
-	v, err := d.Str()
+	v, err := d.StrBytes()
 	if err != nil {
 		return err
 	}
-	*s = EnterpriseAdminGetAuditLogOrder(v)
+	// Try to use constant string.
+	switch EnterpriseAdminGetAuditLogOrder(v) {
+	case EnterpriseAdminGetAuditLogOrderDesc:
+		*s = EnterpriseAdminGetAuditLogOrderDesc
+	case EnterpriseAdminGetAuditLogOrderAsc:
+		*s = EnterpriseAdminGetAuditLogOrderAsc
+	default:
+		*s = EnterpriseAdminGetAuditLogOrder(v)
+	}
+
 	return nil
 }
 
@@ -18891,11 +19679,28 @@ func (s *EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemOp) De
 	if s == nil {
 		return errors.New(`invalid: unable to decode EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemOp to nil`)
 	}
-	v, err := d.Str()
+	v, err := d.StrBytes()
 	if err != nil {
 		return err
 	}
-	*s = EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemOp(v)
+	// Try to use constant string.
+	switch EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemOp(v) {
+	case EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemOp_add:
+		*s = EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemOp_add
+	case EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemOp_Add:
+		*s = EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemOp_Add
+	case EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemOp_remove:
+		*s = EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemOp_remove
+	case EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemOp_Remove:
+		*s = EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemOp_Remove
+	case EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemOp_replace:
+		*s = EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemOp_replace
+	case EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemOp_Replace:
+		*s = EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemOp_Replace
+	default:
+		*s = EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemOp(v)
+	}
+
 	return nil
 }
 
@@ -19103,11 +19908,20 @@ func (s *EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseReqVisibility) D
 	if s == nil {
 		return errors.New(`invalid: unable to decode EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseReqVisibility to nil`)
 	}
-	v, err := d.Str()
+	v, err := d.StrBytes()
 	if err != nil {
 		return err
 	}
-	*s = EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseReqVisibility(v)
+	// Try to use constant string.
+	switch EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseReqVisibility(v) {
+	case EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseReqVisibilitySelected:
+		*s = EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseReqVisibilitySelected
+	case EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseReqVisibilityAll:
+		*s = EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseReqVisibilityAll
+	default:
+		*s = EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseReqVisibility(v)
+	}
+
 	return nil
 }
 
@@ -19266,11 +20080,20 @@ func (s *EnvironmentApprovalsState) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode EnvironmentApprovalsState to nil`)
 	}
-	v, err := d.Str()
+	v, err := d.StrBytes()
 	if err != nil {
 		return err
 	}
-	*s = EnvironmentApprovalsState(v)
+	// Try to use constant string.
+	switch EnvironmentApprovalsState(v) {
+	case EnvironmentApprovalsStateApproved:
+		*s = EnvironmentApprovalsStateApproved
+	case EnvironmentApprovalsStateRejected:
+		*s = EnvironmentApprovalsStateRejected
+	default:
+		*s = EnvironmentApprovalsState(v)
+	}
+
 	return nil
 }
 
@@ -21425,11 +22248,20 @@ func (s *FullRepositorySecurityAndAnalysisAdvancedSecurityStatus) Decode(d *jx.D
 	if s == nil {
 		return errors.New(`invalid: unable to decode FullRepositorySecurityAndAnalysisAdvancedSecurityStatus to nil`)
 	}
-	v, err := d.Str()
+	v, err := d.StrBytes()
 	if err != nil {
 		return err
 	}
-	*s = FullRepositorySecurityAndAnalysisAdvancedSecurityStatus(v)
+	// Try to use constant string.
+	switch FullRepositorySecurityAndAnalysisAdvancedSecurityStatus(v) {
+	case FullRepositorySecurityAndAnalysisAdvancedSecurityStatusEnabled:
+		*s = FullRepositorySecurityAndAnalysisAdvancedSecurityStatusEnabled
+	case FullRepositorySecurityAndAnalysisAdvancedSecurityStatusDisabled:
+		*s = FullRepositorySecurityAndAnalysisAdvancedSecurityStatusDisabled
+	default:
+		*s = FullRepositorySecurityAndAnalysisAdvancedSecurityStatus(v)
+	}
+
 	return nil
 }
 
@@ -21472,11 +22304,20 @@ func (s *FullRepositorySecurityAndAnalysisSecretScanningStatus) Decode(d *jx.Dec
 	if s == nil {
 		return errors.New(`invalid: unable to decode FullRepositorySecurityAndAnalysisSecretScanningStatus to nil`)
 	}
-	v, err := d.Str()
+	v, err := d.StrBytes()
 	if err != nil {
 		return err
 	}
-	*s = FullRepositorySecurityAndAnalysisSecretScanningStatus(v)
+	// Try to use constant string.
+	switch FullRepositorySecurityAndAnalysisSecretScanningStatus(v) {
+	case FullRepositorySecurityAndAnalysisSecretScanningStatusEnabled:
+		*s = FullRepositorySecurityAndAnalysisSecretScanningStatusEnabled
+	case FullRepositorySecurityAndAnalysisSecretScanningStatusDisabled:
+		*s = FullRepositorySecurityAndAnalysisSecretScanningStatusDisabled
+	default:
+		*s = FullRepositorySecurityAndAnalysisSecretScanningStatus(v)
+	}
+
 	return nil
 }
 
@@ -22599,11 +23440,20 @@ func (s *GistsCreateReqPublic1) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode GistsCreateReqPublic1 to nil`)
 	}
-	v, err := d.Str()
+	v, err := d.StrBytes()
 	if err != nil {
 		return err
 	}
-	*s = GistsCreateReqPublic1(v)
+	// Try to use constant string.
+	switch GistsCreateReqPublic1(v) {
+	case GistsCreateReqPublic1True:
+		*s = GistsCreateReqPublic1True
+	case GistsCreateReqPublic1False:
+		*s = GistsCreateReqPublic1False
+	default:
+		*s = GistsCreateReqPublic1(v)
+	}
+
 	return nil
 }
 
@@ -24249,11 +25099,22 @@ func (s *GitCreateTagReqType) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode GitCreateTagReqType to nil`)
 	}
-	v, err := d.Str()
+	v, err := d.StrBytes()
 	if err != nil {
 		return err
 	}
-	*s = GitCreateTagReqType(v)
+	// Try to use constant string.
+	switch GitCreateTagReqType(v) {
+	case GitCreateTagReqTypeCommit:
+		*s = GitCreateTagReqTypeCommit
+	case GitCreateTagReqTypeTree:
+		*s = GitCreateTagReqTypeTree
+	case GitCreateTagReqTypeBlob:
+		*s = GitCreateTagReqTypeBlob
+	default:
+		*s = GitCreateTagReqType(v)
+	}
+
 	return nil
 }
 
@@ -24428,11 +25289,26 @@ func (s *GitCreateTreeReqTreeItemMode) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode GitCreateTreeReqTreeItemMode to nil`)
 	}
-	v, err := d.Str()
+	v, err := d.StrBytes()
 	if err != nil {
 		return err
 	}
-	*s = GitCreateTreeReqTreeItemMode(v)
+	// Try to use constant string.
+	switch GitCreateTreeReqTreeItemMode(v) {
+	case GitCreateTreeReqTreeItemMode100644:
+		*s = GitCreateTreeReqTreeItemMode100644
+	case GitCreateTreeReqTreeItemMode100755:
+		*s = GitCreateTreeReqTreeItemMode100755
+	case GitCreateTreeReqTreeItemMode040000:
+		*s = GitCreateTreeReqTreeItemMode040000
+	case GitCreateTreeReqTreeItemMode160000:
+		*s = GitCreateTreeReqTreeItemMode160000
+	case GitCreateTreeReqTreeItemMode120000:
+		*s = GitCreateTreeReqTreeItemMode120000
+	default:
+		*s = GitCreateTreeReqTreeItemMode(v)
+	}
+
 	return nil
 }
 
@@ -24446,11 +25322,22 @@ func (s *GitCreateTreeReqTreeItemType) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode GitCreateTreeReqTreeItemType to nil`)
 	}
-	v, err := d.Str()
+	v, err := d.StrBytes()
 	if err != nil {
 		return err
 	}
-	*s = GitCreateTreeReqTreeItemType(v)
+	// Try to use constant string.
+	switch GitCreateTreeReqTreeItemType(v) {
+	case GitCreateTreeReqTreeItemTypeBlob:
+		*s = GitCreateTreeReqTreeItemTypeBlob
+	case GitCreateTreeReqTreeItemTypeTree:
+		*s = GitCreateTreeReqTreeItemTypeTree
+	case GitCreateTreeReqTreeItemTypeCommit:
+		*s = GitCreateTreeReqTreeItemTypeCommit
+	default:
+		*s = GitCreateTreeReqTreeItemType(v)
+	}
+
 	return nil
 }
 
@@ -26578,11 +27465,48 @@ func (s *ImportStatus) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode ImportStatus to nil`)
 	}
-	v, err := d.Str()
+	v, err := d.StrBytes()
 	if err != nil {
 		return err
 	}
-	*s = ImportStatus(v)
+	// Try to use constant string.
+	switch ImportStatus(v) {
+	case ImportStatusAuth:
+		*s = ImportStatusAuth
+	case ImportStatusError:
+		*s = ImportStatusError
+	case ImportStatusNone:
+		*s = ImportStatusNone
+	case ImportStatusDetecting:
+		*s = ImportStatusDetecting
+	case ImportStatusChoose:
+		*s = ImportStatusChoose
+	case ImportStatusAuthFailed:
+		*s = ImportStatusAuthFailed
+	case ImportStatusImporting:
+		*s = ImportStatusImporting
+	case ImportStatusMapping:
+		*s = ImportStatusMapping
+	case ImportStatusWaitingToPush:
+		*s = ImportStatusWaitingToPush
+	case ImportStatusPushing:
+		*s = ImportStatusPushing
+	case ImportStatusComplete:
+		*s = ImportStatusComplete
+	case ImportStatusSetup:
+		*s = ImportStatusSetup
+	case ImportStatusUnknown:
+		*s = ImportStatusUnknown
+	case ImportStatusDetectionFoundMultiple:
+		*s = ImportStatusDetectionFoundMultiple
+	case ImportStatusDetectionFoundNothing:
+		*s = ImportStatusDetectionFoundNothing
+	case ImportStatusDetectionNeedsAuth:
+		*s = ImportStatusDetectionNeedsAuth
+	default:
+		*s = ImportStatus(v)
+	}
+
 	return nil
 }
 
@@ -26712,11 +27636,20 @@ func (s *InstallationTokenRepositorySelection) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode InstallationTokenRepositorySelection to nil`)
 	}
-	v, err := d.Str()
+	v, err := d.StrBytes()
 	if err != nil {
 		return err
 	}
-	*s = InstallationTokenRepositorySelection(v)
+	// Try to use constant string.
+	switch InstallationTokenRepositorySelection(v) {
+	case InstallationTokenRepositorySelectionAll:
+		*s = InstallationTokenRepositorySelectionAll
+	case InstallationTokenRepositorySelectionSelected:
+		*s = InstallationTokenRepositorySelectionSelected
+	default:
+		*s = InstallationTokenRepositorySelection(v)
+	}
+
 	return nil
 }
 
@@ -26974,11 +27907,26 @@ func (s *InteractionExpiry) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode InteractionExpiry to nil`)
 	}
-	v, err := d.Str()
+	v, err := d.StrBytes()
 	if err != nil {
 		return err
 	}
-	*s = InteractionExpiry(v)
+	// Try to use constant string.
+	switch InteractionExpiry(v) {
+	case InteractionExpiryOneDay:
+		*s = InteractionExpiryOneDay
+	case InteractionExpiryThreeDays:
+		*s = InteractionExpiryThreeDays
+	case InteractionExpiryOneWeek:
+		*s = InteractionExpiryOneWeek
+	case InteractionExpiryOneMonth:
+		*s = InteractionExpiryOneMonth
+	case InteractionExpirySixMonths:
+		*s = InteractionExpirySixMonths
+	default:
+		*s = InteractionExpiry(v)
+	}
+
 	return nil
 }
 
@@ -26992,11 +27940,22 @@ func (s *InteractionGroup) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode InteractionGroup to nil`)
 	}
-	v, err := d.Str()
+	v, err := d.StrBytes()
 	if err != nil {
 		return err
 	}
-	*s = InteractionGroup(v)
+	// Try to use constant string.
+	switch InteractionGroup(v) {
+	case InteractionGroupExistingUsers:
+		*s = InteractionGroupExistingUsers
+	case InteractionGroupContributorsOnly:
+		*s = InteractionGroupContributorsOnly
+	case InteractionGroupCollaboratorsOnly:
+		*s = InteractionGroupCollaboratorsOnly
+	default:
+		*s = InteractionGroup(v)
+	}
+
 	return nil
 }
 
@@ -29413,11 +30372,20 @@ func (s *IssuesCreateMilestoneReqState) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode IssuesCreateMilestoneReqState to nil`)
 	}
-	v, err := d.Str()
+	v, err := d.StrBytes()
 	if err != nil {
 		return err
 	}
-	*s = IssuesCreateMilestoneReqState(v)
+	// Try to use constant string.
+	switch IssuesCreateMilestoneReqState(v) {
+	case IssuesCreateMilestoneReqStateOpen:
+		*s = IssuesCreateMilestoneReqStateOpen
+	case IssuesCreateMilestoneReqStateClosed:
+		*s = IssuesCreateMilestoneReqStateClosed
+	default:
+		*s = IssuesCreateMilestoneReqState(v)
+	}
+
 	return nil
 }
 
@@ -29980,11 +30948,20 @@ func (s *IssuesListCommentsForRepoDirection) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode IssuesListCommentsForRepoDirection to nil`)
 	}
-	v, err := d.Str()
+	v, err := d.StrBytes()
 	if err != nil {
 		return err
 	}
-	*s = IssuesListCommentsForRepoDirection(v)
+	// Try to use constant string.
+	switch IssuesListCommentsForRepoDirection(v) {
+	case IssuesListCommentsForRepoDirectionAsc:
+		*s = IssuesListCommentsForRepoDirectionAsc
+	case IssuesListCommentsForRepoDirectionDesc:
+		*s = IssuesListCommentsForRepoDirectionDesc
+	default:
+		*s = IssuesListCommentsForRepoDirection(v)
+	}
+
 	return nil
 }
 
@@ -30034,11 +31011,20 @@ func (s *IssuesListCommentsForRepoSort) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode IssuesListCommentsForRepoSort to nil`)
 	}
-	v, err := d.Str()
+	v, err := d.StrBytes()
 	if err != nil {
 		return err
 	}
-	*s = IssuesListCommentsForRepoSort(v)
+	// Try to use constant string.
+	switch IssuesListCommentsForRepoSort(v) {
+	case IssuesListCommentsForRepoSortCreated:
+		*s = IssuesListCommentsForRepoSortCreated
+	case IssuesListCommentsForRepoSortUpdated:
+		*s = IssuesListCommentsForRepoSortUpdated
+	default:
+		*s = IssuesListCommentsForRepoSort(v)
+	}
+
 	return nil
 }
 
@@ -30088,11 +31074,20 @@ func (s *IssuesListDirection) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode IssuesListDirection to nil`)
 	}
-	v, err := d.Str()
+	v, err := d.StrBytes()
 	if err != nil {
 		return err
 	}
-	*s = IssuesListDirection(v)
+	// Try to use constant string.
+	switch IssuesListDirection(v) {
+	case IssuesListDirectionAsc:
+		*s = IssuesListDirectionAsc
+	case IssuesListDirectionDesc:
+		*s = IssuesListDirectionDesc
+	default:
+		*s = IssuesListDirection(v)
+	}
+
 	return nil
 }
 
@@ -30142,11 +31137,28 @@ func (s *IssuesListFilter) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode IssuesListFilter to nil`)
 	}
-	v, err := d.Str()
+	v, err := d.StrBytes()
 	if err != nil {
 		return err
 	}
-	*s = IssuesListFilter(v)
+	// Try to use constant string.
+	switch IssuesListFilter(v) {
+	case IssuesListFilterAssigned:
+		*s = IssuesListFilterAssigned
+	case IssuesListFilterCreated:
+		*s = IssuesListFilterCreated
+	case IssuesListFilterMentioned:
+		*s = IssuesListFilterMentioned
+	case IssuesListFilterSubscribed:
+		*s = IssuesListFilterSubscribed
+	case IssuesListFilterRepos:
+		*s = IssuesListFilterRepos
+	case IssuesListFilterAll:
+		*s = IssuesListFilterAll
+	default:
+		*s = IssuesListFilter(v)
+	}
+
 	return nil
 }
 
@@ -30160,11 +31172,20 @@ func (s *IssuesListForAuthenticatedUserDirection) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode IssuesListForAuthenticatedUserDirection to nil`)
 	}
-	v, err := d.Str()
+	v, err := d.StrBytes()
 	if err != nil {
 		return err
 	}
-	*s = IssuesListForAuthenticatedUserDirection(v)
+	// Try to use constant string.
+	switch IssuesListForAuthenticatedUserDirection(v) {
+	case IssuesListForAuthenticatedUserDirectionAsc:
+		*s = IssuesListForAuthenticatedUserDirectionAsc
+	case IssuesListForAuthenticatedUserDirectionDesc:
+		*s = IssuesListForAuthenticatedUserDirectionDesc
+	default:
+		*s = IssuesListForAuthenticatedUserDirection(v)
+	}
+
 	return nil
 }
 
@@ -30178,11 +31199,28 @@ func (s *IssuesListForAuthenticatedUserFilter) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode IssuesListForAuthenticatedUserFilter to nil`)
 	}
-	v, err := d.Str()
+	v, err := d.StrBytes()
 	if err != nil {
 		return err
 	}
-	*s = IssuesListForAuthenticatedUserFilter(v)
+	// Try to use constant string.
+	switch IssuesListForAuthenticatedUserFilter(v) {
+	case IssuesListForAuthenticatedUserFilterAssigned:
+		*s = IssuesListForAuthenticatedUserFilterAssigned
+	case IssuesListForAuthenticatedUserFilterCreated:
+		*s = IssuesListForAuthenticatedUserFilterCreated
+	case IssuesListForAuthenticatedUserFilterMentioned:
+		*s = IssuesListForAuthenticatedUserFilterMentioned
+	case IssuesListForAuthenticatedUserFilterSubscribed:
+		*s = IssuesListForAuthenticatedUserFilterSubscribed
+	case IssuesListForAuthenticatedUserFilterRepos:
+		*s = IssuesListForAuthenticatedUserFilterRepos
+	case IssuesListForAuthenticatedUserFilterAll:
+		*s = IssuesListForAuthenticatedUserFilterAll
+	default:
+		*s = IssuesListForAuthenticatedUserFilter(v)
+	}
+
 	return nil
 }
 
@@ -30232,11 +31270,22 @@ func (s *IssuesListForAuthenticatedUserSort) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode IssuesListForAuthenticatedUserSort to nil`)
 	}
-	v, err := d.Str()
+	v, err := d.StrBytes()
 	if err != nil {
 		return err
 	}
-	*s = IssuesListForAuthenticatedUserSort(v)
+	// Try to use constant string.
+	switch IssuesListForAuthenticatedUserSort(v) {
+	case IssuesListForAuthenticatedUserSortCreated:
+		*s = IssuesListForAuthenticatedUserSortCreated
+	case IssuesListForAuthenticatedUserSortUpdated:
+		*s = IssuesListForAuthenticatedUserSortUpdated
+	case IssuesListForAuthenticatedUserSortComments:
+		*s = IssuesListForAuthenticatedUserSortComments
+	default:
+		*s = IssuesListForAuthenticatedUserSort(v)
+	}
+
 	return nil
 }
 
@@ -30250,11 +31299,22 @@ func (s *IssuesListForAuthenticatedUserState) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode IssuesListForAuthenticatedUserState to nil`)
 	}
-	v, err := d.Str()
+	v, err := d.StrBytes()
 	if err != nil {
 		return err
 	}
-	*s = IssuesListForAuthenticatedUserState(v)
+	// Try to use constant string.
+	switch IssuesListForAuthenticatedUserState(v) {
+	case IssuesListForAuthenticatedUserStateOpen:
+		*s = IssuesListForAuthenticatedUserStateOpen
+	case IssuesListForAuthenticatedUserStateClosed:
+		*s = IssuesListForAuthenticatedUserStateClosed
+	case IssuesListForAuthenticatedUserStateAll:
+		*s = IssuesListForAuthenticatedUserStateAll
+	default:
+		*s = IssuesListForAuthenticatedUserState(v)
+	}
+
 	return nil
 }
 
@@ -30268,11 +31328,20 @@ func (s *IssuesListForOrgDirection) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode IssuesListForOrgDirection to nil`)
 	}
-	v, err := d.Str()
+	v, err := d.StrBytes()
 	if err != nil {
 		return err
 	}
-	*s = IssuesListForOrgDirection(v)
+	// Try to use constant string.
+	switch IssuesListForOrgDirection(v) {
+	case IssuesListForOrgDirectionAsc:
+		*s = IssuesListForOrgDirectionAsc
+	case IssuesListForOrgDirectionDesc:
+		*s = IssuesListForOrgDirectionDesc
+	default:
+		*s = IssuesListForOrgDirection(v)
+	}
+
 	return nil
 }
 
@@ -30286,11 +31355,28 @@ func (s *IssuesListForOrgFilter) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode IssuesListForOrgFilter to nil`)
 	}
-	v, err := d.Str()
+	v, err := d.StrBytes()
 	if err != nil {
 		return err
 	}
-	*s = IssuesListForOrgFilter(v)
+	// Try to use constant string.
+	switch IssuesListForOrgFilter(v) {
+	case IssuesListForOrgFilterAssigned:
+		*s = IssuesListForOrgFilterAssigned
+	case IssuesListForOrgFilterCreated:
+		*s = IssuesListForOrgFilterCreated
+	case IssuesListForOrgFilterMentioned:
+		*s = IssuesListForOrgFilterMentioned
+	case IssuesListForOrgFilterSubscribed:
+		*s = IssuesListForOrgFilterSubscribed
+	case IssuesListForOrgFilterRepos:
+		*s = IssuesListForOrgFilterRepos
+	case IssuesListForOrgFilterAll:
+		*s = IssuesListForOrgFilterAll
+	default:
+		*s = IssuesListForOrgFilter(v)
+	}
+
 	return nil
 }
 
@@ -30340,11 +31426,22 @@ func (s *IssuesListForOrgSort) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode IssuesListForOrgSort to nil`)
 	}
-	v, err := d.Str()
+	v, err := d.StrBytes()
 	if err != nil {
 		return err
 	}
-	*s = IssuesListForOrgSort(v)
+	// Try to use constant string.
+	switch IssuesListForOrgSort(v) {
+	case IssuesListForOrgSortCreated:
+		*s = IssuesListForOrgSortCreated
+	case IssuesListForOrgSortUpdated:
+		*s = IssuesListForOrgSortUpdated
+	case IssuesListForOrgSortComments:
+		*s = IssuesListForOrgSortComments
+	default:
+		*s = IssuesListForOrgSort(v)
+	}
+
 	return nil
 }
 
@@ -30358,11 +31455,22 @@ func (s *IssuesListForOrgState) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode IssuesListForOrgState to nil`)
 	}
-	v, err := d.Str()
+	v, err := d.StrBytes()
 	if err != nil {
 		return err
 	}
-	*s = IssuesListForOrgState(v)
+	// Try to use constant string.
+	switch IssuesListForOrgState(v) {
+	case IssuesListForOrgStateOpen:
+		*s = IssuesListForOrgStateOpen
+	case IssuesListForOrgStateClosed:
+		*s = IssuesListForOrgStateClosed
+	case IssuesListForOrgStateAll:
+		*s = IssuesListForOrgStateAll
+	default:
+		*s = IssuesListForOrgState(v)
+	}
+
 	return nil
 }
 
@@ -30424,11 +31532,20 @@ func (s *IssuesListForRepoDirection) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode IssuesListForRepoDirection to nil`)
 	}
-	v, err := d.Str()
+	v, err := d.StrBytes()
 	if err != nil {
 		return err
 	}
-	*s = IssuesListForRepoDirection(v)
+	// Try to use constant string.
+	switch IssuesListForRepoDirection(v) {
+	case IssuesListForRepoDirectionAsc:
+		*s = IssuesListForRepoDirectionAsc
+	case IssuesListForRepoDirectionDesc:
+		*s = IssuesListForRepoDirectionDesc
+	default:
+		*s = IssuesListForRepoDirection(v)
+	}
+
 	return nil
 }
 
@@ -30478,11 +31595,22 @@ func (s *IssuesListForRepoSort) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode IssuesListForRepoSort to nil`)
 	}
-	v, err := d.Str()
+	v, err := d.StrBytes()
 	if err != nil {
 		return err
 	}
-	*s = IssuesListForRepoSort(v)
+	// Try to use constant string.
+	switch IssuesListForRepoSort(v) {
+	case IssuesListForRepoSortCreated:
+		*s = IssuesListForRepoSortCreated
+	case IssuesListForRepoSortUpdated:
+		*s = IssuesListForRepoSortUpdated
+	case IssuesListForRepoSortComments:
+		*s = IssuesListForRepoSortComments
+	default:
+		*s = IssuesListForRepoSort(v)
+	}
+
 	return nil
 }
 
@@ -30496,11 +31624,22 @@ func (s *IssuesListForRepoState) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode IssuesListForRepoState to nil`)
 	}
-	v, err := d.Str()
+	v, err := d.StrBytes()
 	if err != nil {
 		return err
 	}
-	*s = IssuesListForRepoState(v)
+	// Try to use constant string.
+	switch IssuesListForRepoState(v) {
+	case IssuesListForRepoStateOpen:
+		*s = IssuesListForRepoStateOpen
+	case IssuesListForRepoStateClosed:
+		*s = IssuesListForRepoStateClosed
+	case IssuesListForRepoStateAll:
+		*s = IssuesListForRepoStateAll
+	default:
+		*s = IssuesListForRepoState(v)
+	}
+
 	return nil
 }
 
@@ -30586,11 +31725,20 @@ func (s *IssuesListMilestonesDirection) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode IssuesListMilestonesDirection to nil`)
 	}
-	v, err := d.Str()
+	v, err := d.StrBytes()
 	if err != nil {
 		return err
 	}
-	*s = IssuesListMilestonesDirection(v)
+	// Try to use constant string.
+	switch IssuesListMilestonesDirection(v) {
+	case IssuesListMilestonesDirectionAsc:
+		*s = IssuesListMilestonesDirectionAsc
+	case IssuesListMilestonesDirectionDesc:
+		*s = IssuesListMilestonesDirectionDesc
+	default:
+		*s = IssuesListMilestonesDirection(v)
+	}
+
 	return nil
 }
 
@@ -30640,11 +31788,20 @@ func (s *IssuesListMilestonesSort) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode IssuesListMilestonesSort to nil`)
 	}
-	v, err := d.Str()
+	v, err := d.StrBytes()
 	if err != nil {
 		return err
 	}
-	*s = IssuesListMilestonesSort(v)
+	// Try to use constant string.
+	switch IssuesListMilestonesSort(v) {
+	case IssuesListMilestonesSortDueOn:
+		*s = IssuesListMilestonesSortDueOn
+	case IssuesListMilestonesSortCompleteness:
+		*s = IssuesListMilestonesSortCompleteness
+	default:
+		*s = IssuesListMilestonesSort(v)
+	}
+
 	return nil
 }
 
@@ -30658,11 +31815,22 @@ func (s *IssuesListMilestonesState) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode IssuesListMilestonesState to nil`)
 	}
-	v, err := d.Str()
+	v, err := d.StrBytes()
 	if err != nil {
 		return err
 	}
-	*s = IssuesListMilestonesState(v)
+	// Try to use constant string.
+	switch IssuesListMilestonesState(v) {
+	case IssuesListMilestonesStateOpen:
+		*s = IssuesListMilestonesStateOpen
+	case IssuesListMilestonesStateClosed:
+		*s = IssuesListMilestonesStateClosed
+	case IssuesListMilestonesStateAll:
+		*s = IssuesListMilestonesStateAll
+	default:
+		*s = IssuesListMilestonesState(v)
+	}
+
 	return nil
 }
 
@@ -30712,11 +31880,22 @@ func (s *IssuesListSort) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode IssuesListSort to nil`)
 	}
-	v, err := d.Str()
+	v, err := d.StrBytes()
 	if err != nil {
 		return err
 	}
-	*s = IssuesListSort(v)
+	// Try to use constant string.
+	switch IssuesListSort(v) {
+	case IssuesListSortCreated:
+		*s = IssuesListSortCreated
+	case IssuesListSortUpdated:
+		*s = IssuesListSortUpdated
+	case IssuesListSortComments:
+		*s = IssuesListSortComments
+	default:
+		*s = IssuesListSort(v)
+	}
+
 	return nil
 }
 
@@ -30730,11 +31909,22 @@ func (s *IssuesListState) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode IssuesListState to nil`)
 	}
-	v, err := d.Str()
+	v, err := d.StrBytes()
 	if err != nil {
 		return err
 	}
-	*s = IssuesListState(v)
+	// Try to use constant string.
+	switch IssuesListState(v) {
+	case IssuesListStateOpen:
+		*s = IssuesListStateOpen
+	case IssuesListStateClosed:
+		*s = IssuesListStateClosed
+	case IssuesListStateAll:
+		*s = IssuesListStateAll
+	default:
+		*s = IssuesListState(v)
+	}
+
 	return nil
 }
 
@@ -30869,11 +32059,24 @@ func (s *IssuesLockReqLockReason) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode IssuesLockReqLockReason to nil`)
 	}
-	v, err := d.Str()
+	v, err := d.StrBytes()
 	if err != nil {
 		return err
 	}
-	*s = IssuesLockReqLockReason(v)
+	// Try to use constant string.
+	switch IssuesLockReqLockReason(v) {
+	case IssuesLockReqLockReasonOffMinusTopic:
+		*s = IssuesLockReqLockReasonOffMinusTopic
+	case IssuesLockReqLockReasonTooHeated:
+		*s = IssuesLockReqLockReasonTooHeated
+	case IssuesLockReqLockReasonResolved:
+		*s = IssuesLockReqLockReasonResolved
+	case IssuesLockReqLockReasonSpam:
+		*s = IssuesLockReqLockReasonSpam
+	default:
+		*s = IssuesLockReqLockReason(v)
+	}
+
 	return nil
 }
 
@@ -31329,11 +32532,20 @@ func (s *IssuesUpdateMilestoneReqState) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode IssuesUpdateMilestoneReqState to nil`)
 	}
-	v, err := d.Str()
+	v, err := d.StrBytes()
 	if err != nil {
 		return err
 	}
-	*s = IssuesUpdateMilestoneReqState(v)
+	// Try to use constant string.
+	switch IssuesUpdateMilestoneReqState(v) {
+	case IssuesUpdateMilestoneReqStateOpen:
+		*s = IssuesUpdateMilestoneReqStateOpen
+	case IssuesUpdateMilestoneReqStateClosed:
+		*s = IssuesUpdateMilestoneReqStateClosed
+	default:
+		*s = IssuesUpdateMilestoneReqState(v)
+	}
+
 	return nil
 }
 
@@ -31582,11 +32794,20 @@ func (s *IssuesUpdateReqState) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode IssuesUpdateReqState to nil`)
 	}
-	v, err := d.Str()
+	v, err := d.StrBytes()
 	if err != nil {
 		return err
 	}
-	*s = IssuesUpdateReqState(v)
+	// Try to use constant string.
+	switch IssuesUpdateReqState(v) {
+	case IssuesUpdateReqStateOpen:
+		*s = IssuesUpdateReqStateOpen
+	case IssuesUpdateReqStateClosed:
+		*s = IssuesUpdateReqStateClosed
+	default:
+		*s = IssuesUpdateReqState(v)
+	}
+
 	return nil
 }
 
@@ -31786,11 +33007,22 @@ func (s *JobStatus) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode JobStatus to nil`)
 	}
-	v, err := d.Str()
+	v, err := d.StrBytes()
 	if err != nil {
 		return err
 	}
-	*s = JobStatus(v)
+	// Try to use constant string.
+	switch JobStatus(v) {
+	case JobStatusQueued:
+		*s = JobStatusQueued
+	case JobStatusInProgress:
+		*s = JobStatusInProgress
+	case JobStatusCompleted:
+		*s = JobStatusCompleted
+	default:
+		*s = JobStatus(v)
+	}
+
 	return nil
 }
 
@@ -31874,11 +33106,22 @@ func (s *JobStepsItemStatus) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode JobStepsItemStatus to nil`)
 	}
-	v, err := d.Str()
+	v, err := d.StrBytes()
 	if err != nil {
 		return err
 	}
-	*s = JobStepsItemStatus(v)
+	// Try to use constant string.
+	switch JobStepsItemStatus(v) {
+	case JobStepsItemStatusQueued:
+		*s = JobStepsItemStatusQueued
+	case JobStepsItemStatusInProgress:
+		*s = JobStepsItemStatusInProgress
+	case JobStepsItemStatusCompleted:
+		*s = JobStepsItemStatusCompleted
+	default:
+		*s = JobStepsItemStatus(v)
+	}
+
 	return nil
 }
 
@@ -32834,11 +34077,20 @@ func (s *MarkdownRenderReqMode) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode MarkdownRenderReqMode to nil`)
 	}
-	v, err := d.Str()
+	v, err := d.StrBytes()
 	if err != nil {
 		return err
 	}
-	*s = MarkdownRenderReqMode(v)
+	// Try to use constant string.
+	switch MarkdownRenderReqMode(v) {
+	case MarkdownRenderReqModeMarkdown:
+		*s = MarkdownRenderReqModeMarkdown
+	case MarkdownRenderReqModeGfm:
+		*s = MarkdownRenderReqModeGfm
+	default:
+		*s = MarkdownRenderReqMode(v)
+	}
+
 	return nil
 }
 
@@ -33376,11 +34628,22 @@ func (s *MergedUpstreamMergeType) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode MergedUpstreamMergeType to nil`)
 	}
-	v, err := d.Str()
+	v, err := d.StrBytes()
 	if err != nil {
 		return err
 	}
-	*s = MergedUpstreamMergeType(v)
+	// Try to use constant string.
+	switch MergedUpstreamMergeType(v) {
+	case MergedUpstreamMergeTypeMerge:
+		*s = MergedUpstreamMergeTypeMerge
+	case MergedUpstreamMergeTypeFastMinusForward:
+		*s = MergedUpstreamMergeTypeFastMinusForward
+	case MergedUpstreamMergeTypeNone:
+		*s = MergedUpstreamMergeTypeNone
+	default:
+		*s = MergedUpstreamMergeType(v)
+	}
+
 	return nil
 }
 
@@ -34233,11 +35496,18 @@ func (s *MigrationsGetStatusForOrgExcludeItem) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode MigrationsGetStatusForOrgExcludeItem to nil`)
 	}
-	v, err := d.Str()
+	v, err := d.StrBytes()
 	if err != nil {
 		return err
 	}
-	*s = MigrationsGetStatusForOrgExcludeItem(v)
+	// Try to use constant string.
+	switch MigrationsGetStatusForOrgExcludeItem(v) {
+	case MigrationsGetStatusForOrgExcludeItemRepositories:
+		*s = MigrationsGetStatusForOrgExcludeItemRepositories
+	default:
+		*s = MigrationsGetStatusForOrgExcludeItem(v)
+	}
+
 	return nil
 }
 
@@ -34335,11 +35605,18 @@ func (s *MigrationsListForOrgExcludeItem) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode MigrationsListForOrgExcludeItem to nil`)
 	}
-	v, err := d.Str()
+	v, err := d.StrBytes()
 	if err != nil {
 		return err
 	}
-	*s = MigrationsListForOrgExcludeItem(v)
+	// Try to use constant string.
+	switch MigrationsListForOrgExcludeItem(v) {
+	case MigrationsListForOrgExcludeItemRepositories:
+		*s = MigrationsListForOrgExcludeItemRepositories
+	default:
+		*s = MigrationsListForOrgExcludeItem(v)
+	}
+
 	return nil
 }
 
@@ -34490,11 +35767,20 @@ func (s *MigrationsSetLfsPreferenceReqUseLfs) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode MigrationsSetLfsPreferenceReqUseLfs to nil`)
 	}
-	v, err := d.Str()
+	v, err := d.StrBytes()
 	if err != nil {
 		return err
 	}
-	*s = MigrationsSetLfsPreferenceReqUseLfs(v)
+	// Try to use constant string.
+	switch MigrationsSetLfsPreferenceReqUseLfs(v) {
+	case MigrationsSetLfsPreferenceReqUseLfsOptIn:
+		*s = MigrationsSetLfsPreferenceReqUseLfsOptIn
+	case MigrationsSetLfsPreferenceReqUseLfsOptOut:
+		*s = MigrationsSetLfsPreferenceReqUseLfsOptOut
+	default:
+		*s = MigrationsSetLfsPreferenceReqUseLfs(v)
+	}
+
 	return nil
 }
 
@@ -34653,11 +35939,18 @@ func (s *MigrationsStartForAuthenticatedUserReqExcludeItem) Decode(d *jx.Decoder
 	if s == nil {
 		return errors.New(`invalid: unable to decode MigrationsStartForAuthenticatedUserReqExcludeItem to nil`)
 	}
-	v, err := d.Str()
+	v, err := d.StrBytes()
 	if err != nil {
 		return err
 	}
-	*s = MigrationsStartForAuthenticatedUserReqExcludeItem(v)
+	// Try to use constant string.
+	switch MigrationsStartForAuthenticatedUserReqExcludeItem(v) {
+	case MigrationsStartForAuthenticatedUserReqExcludeItemRepositories:
+		*s = MigrationsStartForAuthenticatedUserReqExcludeItemRepositories
+	default:
+		*s = MigrationsStartForAuthenticatedUserReqExcludeItem(v)
+	}
+
 	return nil
 }
 
@@ -34768,11 +36061,18 @@ func (s *MigrationsStartForOrgReqExcludeItem) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode MigrationsStartForOrgReqExcludeItem to nil`)
 	}
-	v, err := d.Str()
+	v, err := d.StrBytes()
 	if err != nil {
 		return err
 	}
-	*s = MigrationsStartForOrgReqExcludeItem(v)
+	// Try to use constant string.
+	switch MigrationsStartForOrgReqExcludeItem(v) {
+	case MigrationsStartForOrgReqExcludeItemRepositories:
+		*s = MigrationsStartForOrgReqExcludeItemRepositories
+	default:
+		*s = MigrationsStartForOrgReqExcludeItem(v)
+	}
+
 	return nil
 }
 
@@ -34851,11 +36151,24 @@ func (s *MigrationsStartImportReqVcs) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode MigrationsStartImportReqVcs to nil`)
 	}
-	v, err := d.Str()
+	v, err := d.StrBytes()
 	if err != nil {
 		return err
 	}
-	*s = MigrationsStartImportReqVcs(v)
+	// Try to use constant string.
+	switch MigrationsStartImportReqVcs(v) {
+	case MigrationsStartImportReqVcsSubversion:
+		*s = MigrationsStartImportReqVcsSubversion
+	case MigrationsStartImportReqVcsGit:
+		*s = MigrationsStartImportReqVcsGit
+	case MigrationsStartImportReqVcsMercurial:
+		*s = MigrationsStartImportReqVcsMercurial
+	case MigrationsStartImportReqVcsTfvc:
+		*s = MigrationsStartImportReqVcsTfvc
+	default:
+		*s = MigrationsStartImportReqVcs(v)
+	}
+
 	return nil
 }
 
@@ -35191,11 +36504,20 @@ func (s *MilestoneState) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode MilestoneState to nil`)
 	}
-	v, err := d.Str()
+	v, err := d.StrBytes()
 	if err != nil {
 		return err
 	}
-	*s = MilestoneState(v)
+	// Try to use constant string.
+	switch MilestoneState(v) {
+	case MilestoneStateOpen:
+		*s = MilestoneStateOpen
+	case MilestoneStateClosed:
+		*s = MilestoneStateClosed
+	default:
+		*s = MilestoneState(v)
+	}
+
 	return nil
 }
 
@@ -36235,11 +37557,9 @@ func (o *NilCheckRunConclusion) Decode(d *jx.Decoder) error {
 	switch d.Next() {
 	case jx.String:
 		o.Null = false
-		v, err := d.Str()
-		if err != nil {
+		if err := o.Value.Decode(d); err != nil {
 			return err
 		}
-		o.Value = CheckRunConclusion(v)
 		return nil
 	case jx.Null:
 		if err := d.Null(); err != nil {
@@ -36271,11 +37591,9 @@ func (o *NilCheckSuiteConclusion) Decode(d *jx.Decoder) error {
 	switch d.Next() {
 	case jx.String:
 		o.Null = false
-		v, err := d.Str()
-		if err != nil {
+		if err := o.Value.Decode(d); err != nil {
 			return err
 		}
-		o.Value = CheckSuiteConclusion(v)
 		return nil
 	case jx.Null:
 		if err := d.Null(); err != nil {
@@ -36307,11 +37625,9 @@ func (o *NilCheckSuiteStatus) Decode(d *jx.Decoder) error {
 	switch d.Next() {
 	case jx.String:
 		o.Null = false
-		v, err := d.Str()
-		if err != nil {
+		if err := o.Value.Decode(d); err != nil {
 			return err
 		}
-		o.Value = CheckSuiteStatus(v)
 		return nil
 	case jx.Null:
 		if err := d.Null(); err != nil {
@@ -36373,11 +37689,9 @@ func (o *NilCodeScanningAlertDismissedReason) Decode(d *jx.Decoder) error {
 	switch d.Next() {
 	case jx.String:
 		o.Null = false
-		v, err := d.Str()
-		if err != nil {
+		if err := o.Value.Decode(d); err != nil {
 			return err
 		}
-		o.Value = CodeScanningAlertDismissedReason(v)
 		return nil
 	case jx.Null:
 		if err := d.Null(); err != nil {
@@ -36853,11 +38167,9 @@ func (o *NilPageStatus) Decode(d *jx.Decoder) error {
 	switch d.Next() {
 	case jx.String:
 		o.Null = false
-		v, err := d.Str()
-		if err != nil {
+		if err := o.Value.Decode(d); err != nil {
 			return err
 		}
-		o.Value = PageStatus(v)
 		return nil
 	case jx.Null:
 		if err := d.Null(); err != nil {
@@ -37875,11 +39187,20 @@ func (s *NullableMilestoneState) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode NullableMilestoneState to nil`)
 	}
-	v, err := d.Str()
+	v, err := d.StrBytes()
 	if err != nil {
 		return err
 	}
-	*s = NullableMilestoneState(v)
+	// Try to use constant string.
+	switch NullableMilestoneState(v) {
+	case NullableMilestoneStateOpen:
+		*s = NullableMilestoneStateOpen
+	case NullableMilestoneStateClosed:
+		*s = NullableMilestoneStateClosed
+	default:
+		*s = NullableMilestoneState(v)
+	}
+
 	return nil
 }
 
@@ -40795,11 +42116,20 @@ func (s *NullableScopedInstallationRepositorySelection) Decode(d *jx.Decoder) er
 	if s == nil {
 		return errors.New(`invalid: unable to decode NullableScopedInstallationRepositorySelection to nil`)
 	}
-	v, err := d.Str()
+	v, err := d.StrBytes()
 	if err != nil {
 		return err
 	}
-	*s = NullableScopedInstallationRepositorySelection(v)
+	// Try to use constant string.
+	switch NullableScopedInstallationRepositorySelection(v) {
+	case NullableScopedInstallationRepositorySelectionAll:
+		*s = NullableScopedInstallationRepositorySelectionAll
+	case NullableScopedInstallationRepositorySelectionSelected:
+		*s = NullableScopedInstallationRepositorySelectionSelected
+	default:
+		*s = NullableScopedInstallationRepositorySelection(v)
+	}
+
 	return nil
 }
 
@@ -42276,11 +43606,9 @@ func (o *OptActionsCreateSelfHostedRunnerGroupForOrgReqVisibility) Decode(d *jx.
 	switch d.Next() {
 	case jx.String:
 		o.Set = true
-		v, err := d.Str()
-		if err != nil {
+		if err := o.Value.Decode(d); err != nil {
 			return err
 		}
-		o.Value = ActionsCreateSelfHostedRunnerGroupForOrgReqVisibility(v)
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptActionsCreateSelfHostedRunnerGroupForOrgReqVisibility`, d.Next())
@@ -42300,11 +43628,9 @@ func (o *OptActionsListJobsForWorkflowRunFilter) Decode(d *jx.Decoder) error {
 	switch d.Next() {
 	case jx.String:
 		o.Set = true
-		v, err := d.Str()
-		if err != nil {
+		if err := o.Value.Decode(d); err != nil {
 			return err
 		}
-		o.Value = ActionsListJobsForWorkflowRunFilter(v)
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptActionsListJobsForWorkflowRunFilter`, d.Next())
@@ -42324,11 +43650,9 @@ func (o *OptActionsListWorkflowRunsForRepoStatus) Decode(d *jx.Decoder) error {
 	switch d.Next() {
 	case jx.String:
 		o.Set = true
-		v, err := d.Str()
-		if err != nil {
+		if err := o.Value.Decode(d); err != nil {
 			return err
 		}
-		o.Value = ActionsListWorkflowRunsForRepoStatus(v)
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptActionsListWorkflowRunsForRepoStatus`, d.Next())
@@ -42348,11 +43672,9 @@ func (o *OptActionsUpdateSelfHostedRunnerGroupForOrgReqVisibility) Decode(d *jx.
 	switch d.Next() {
 	case jx.String:
 		o.Set = true
-		v, err := d.Str()
-		if err != nil {
+		if err := o.Value.Decode(d); err != nil {
 			return err
 		}
-		o.Value = ActionsUpdateSelfHostedRunnerGroupForOrgReqVisibility(v)
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptActionsUpdateSelfHostedRunnerGroupForOrgReqVisibility`, d.Next())
@@ -42372,11 +43694,9 @@ func (o *OptActivityListReposStarredByAuthenticatedUserDirection) Decode(d *jx.D
 	switch d.Next() {
 	case jx.String:
 		o.Set = true
-		v, err := d.Str()
-		if err != nil {
+		if err := o.Value.Decode(d); err != nil {
 			return err
 		}
-		o.Value = ActivityListReposStarredByAuthenticatedUserDirection(v)
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptActivityListReposStarredByAuthenticatedUserDirection`, d.Next())
@@ -42396,11 +43716,9 @@ func (o *OptActivityListReposStarredByAuthenticatedUserSort) Decode(d *jx.Decode
 	switch d.Next() {
 	case jx.String:
 		o.Set = true
-		v, err := d.Str()
-		if err != nil {
+		if err := o.Value.Decode(d); err != nil {
 			return err
 		}
-		o.Value = ActivityListReposStarredByAuthenticatedUserSort(v)
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptActivityListReposStarredByAuthenticatedUserSort`, d.Next())
@@ -42602,11 +43920,9 @@ func (o *OptAllowedActions) Decode(d *jx.Decoder) error {
 	switch d.Next() {
 	case jx.String:
 		o.Set = true
-		v, err := d.Str()
-		if err != nil {
+		if err := o.Value.Decode(d); err != nil {
 			return err
 		}
-		o.Value = AllowedActions(v)
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptAllowedActions`, d.Next())
@@ -42648,11 +43964,9 @@ func (o *OptAppPermissionsActions) Decode(d *jx.Decoder) error {
 	switch d.Next() {
 	case jx.String:
 		o.Set = true
-		v, err := d.Str()
-		if err != nil {
+		if err := o.Value.Decode(d); err != nil {
 			return err
 		}
-		o.Value = AppPermissionsActions(v)
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptAppPermissionsActions`, d.Next())
@@ -42672,11 +43986,9 @@ func (o *OptAppPermissionsAdministration) Decode(d *jx.Decoder) error {
 	switch d.Next() {
 	case jx.String:
 		o.Set = true
-		v, err := d.Str()
-		if err != nil {
+		if err := o.Value.Decode(d); err != nil {
 			return err
 		}
-		o.Value = AppPermissionsAdministration(v)
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptAppPermissionsAdministration`, d.Next())
@@ -42696,11 +44008,9 @@ func (o *OptAppPermissionsChecks) Decode(d *jx.Decoder) error {
 	switch d.Next() {
 	case jx.String:
 		o.Set = true
-		v, err := d.Str()
-		if err != nil {
+		if err := o.Value.Decode(d); err != nil {
 			return err
 		}
-		o.Value = AppPermissionsChecks(v)
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptAppPermissionsChecks`, d.Next())
@@ -42720,11 +44030,9 @@ func (o *OptAppPermissionsContentReferences) Decode(d *jx.Decoder) error {
 	switch d.Next() {
 	case jx.String:
 		o.Set = true
-		v, err := d.Str()
-		if err != nil {
+		if err := o.Value.Decode(d); err != nil {
 			return err
 		}
-		o.Value = AppPermissionsContentReferences(v)
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptAppPermissionsContentReferences`, d.Next())
@@ -42744,11 +44052,9 @@ func (o *OptAppPermissionsContents) Decode(d *jx.Decoder) error {
 	switch d.Next() {
 	case jx.String:
 		o.Set = true
-		v, err := d.Str()
-		if err != nil {
+		if err := o.Value.Decode(d); err != nil {
 			return err
 		}
-		o.Value = AppPermissionsContents(v)
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptAppPermissionsContents`, d.Next())
@@ -42768,11 +44074,9 @@ func (o *OptAppPermissionsDeployments) Decode(d *jx.Decoder) error {
 	switch d.Next() {
 	case jx.String:
 		o.Set = true
-		v, err := d.Str()
-		if err != nil {
+		if err := o.Value.Decode(d); err != nil {
 			return err
 		}
-		o.Value = AppPermissionsDeployments(v)
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptAppPermissionsDeployments`, d.Next())
@@ -42792,11 +44096,9 @@ func (o *OptAppPermissionsEnvironments) Decode(d *jx.Decoder) error {
 	switch d.Next() {
 	case jx.String:
 		o.Set = true
-		v, err := d.Str()
-		if err != nil {
+		if err := o.Value.Decode(d); err != nil {
 			return err
 		}
-		o.Value = AppPermissionsEnvironments(v)
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptAppPermissionsEnvironments`, d.Next())
@@ -42816,11 +44118,9 @@ func (o *OptAppPermissionsIssues) Decode(d *jx.Decoder) error {
 	switch d.Next() {
 	case jx.String:
 		o.Set = true
-		v, err := d.Str()
-		if err != nil {
+		if err := o.Value.Decode(d); err != nil {
 			return err
 		}
-		o.Value = AppPermissionsIssues(v)
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptAppPermissionsIssues`, d.Next())
@@ -42840,11 +44140,9 @@ func (o *OptAppPermissionsMembers) Decode(d *jx.Decoder) error {
 	switch d.Next() {
 	case jx.String:
 		o.Set = true
-		v, err := d.Str()
-		if err != nil {
+		if err := o.Value.Decode(d); err != nil {
 			return err
 		}
-		o.Value = AppPermissionsMembers(v)
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptAppPermissionsMembers`, d.Next())
@@ -42864,11 +44162,9 @@ func (o *OptAppPermissionsMetadata) Decode(d *jx.Decoder) error {
 	switch d.Next() {
 	case jx.String:
 		o.Set = true
-		v, err := d.Str()
-		if err != nil {
+		if err := o.Value.Decode(d); err != nil {
 			return err
 		}
-		o.Value = AppPermissionsMetadata(v)
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptAppPermissionsMetadata`, d.Next())
@@ -42888,11 +44184,9 @@ func (o *OptAppPermissionsOrganizationAdministration) Decode(d *jx.Decoder) erro
 	switch d.Next() {
 	case jx.String:
 		o.Set = true
-		v, err := d.Str()
-		if err != nil {
+		if err := o.Value.Decode(d); err != nil {
 			return err
 		}
-		o.Value = AppPermissionsOrganizationAdministration(v)
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptAppPermissionsOrganizationAdministration`, d.Next())
@@ -42912,11 +44206,9 @@ func (o *OptAppPermissionsOrganizationHooks) Decode(d *jx.Decoder) error {
 	switch d.Next() {
 	case jx.String:
 		o.Set = true
-		v, err := d.Str()
-		if err != nil {
+		if err := o.Value.Decode(d); err != nil {
 			return err
 		}
-		o.Value = AppPermissionsOrganizationHooks(v)
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptAppPermissionsOrganizationHooks`, d.Next())
@@ -42936,11 +44228,9 @@ func (o *OptAppPermissionsOrganizationPackages) Decode(d *jx.Decoder) error {
 	switch d.Next() {
 	case jx.String:
 		o.Set = true
-		v, err := d.Str()
-		if err != nil {
+		if err := o.Value.Decode(d); err != nil {
 			return err
 		}
-		o.Value = AppPermissionsOrganizationPackages(v)
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptAppPermissionsOrganizationPackages`, d.Next())
@@ -42960,11 +44250,9 @@ func (o *OptAppPermissionsOrganizationPlan) Decode(d *jx.Decoder) error {
 	switch d.Next() {
 	case jx.String:
 		o.Set = true
-		v, err := d.Str()
-		if err != nil {
+		if err := o.Value.Decode(d); err != nil {
 			return err
 		}
-		o.Value = AppPermissionsOrganizationPlan(v)
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptAppPermissionsOrganizationPlan`, d.Next())
@@ -42984,11 +44272,9 @@ func (o *OptAppPermissionsOrganizationProjects) Decode(d *jx.Decoder) error {
 	switch d.Next() {
 	case jx.String:
 		o.Set = true
-		v, err := d.Str()
-		if err != nil {
+		if err := o.Value.Decode(d); err != nil {
 			return err
 		}
-		o.Value = AppPermissionsOrganizationProjects(v)
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptAppPermissionsOrganizationProjects`, d.Next())
@@ -43008,11 +44294,9 @@ func (o *OptAppPermissionsOrganizationSecrets) Decode(d *jx.Decoder) error {
 	switch d.Next() {
 	case jx.String:
 		o.Set = true
-		v, err := d.Str()
-		if err != nil {
+		if err := o.Value.Decode(d); err != nil {
 			return err
 		}
-		o.Value = AppPermissionsOrganizationSecrets(v)
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptAppPermissionsOrganizationSecrets`, d.Next())
@@ -43032,11 +44316,9 @@ func (o *OptAppPermissionsOrganizationSelfHostedRunners) Decode(d *jx.Decoder) e
 	switch d.Next() {
 	case jx.String:
 		o.Set = true
-		v, err := d.Str()
-		if err != nil {
+		if err := o.Value.Decode(d); err != nil {
 			return err
 		}
-		o.Value = AppPermissionsOrganizationSelfHostedRunners(v)
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptAppPermissionsOrganizationSelfHostedRunners`, d.Next())
@@ -43056,11 +44338,9 @@ func (o *OptAppPermissionsOrganizationUserBlocking) Decode(d *jx.Decoder) error 
 	switch d.Next() {
 	case jx.String:
 		o.Set = true
-		v, err := d.Str()
-		if err != nil {
+		if err := o.Value.Decode(d); err != nil {
 			return err
 		}
-		o.Value = AppPermissionsOrganizationUserBlocking(v)
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptAppPermissionsOrganizationUserBlocking`, d.Next())
@@ -43080,11 +44360,9 @@ func (o *OptAppPermissionsPackages) Decode(d *jx.Decoder) error {
 	switch d.Next() {
 	case jx.String:
 		o.Set = true
-		v, err := d.Str()
-		if err != nil {
+		if err := o.Value.Decode(d); err != nil {
 			return err
 		}
-		o.Value = AppPermissionsPackages(v)
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptAppPermissionsPackages`, d.Next())
@@ -43104,11 +44382,9 @@ func (o *OptAppPermissionsPages) Decode(d *jx.Decoder) error {
 	switch d.Next() {
 	case jx.String:
 		o.Set = true
-		v, err := d.Str()
-		if err != nil {
+		if err := o.Value.Decode(d); err != nil {
 			return err
 		}
-		o.Value = AppPermissionsPages(v)
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptAppPermissionsPages`, d.Next())
@@ -43128,11 +44404,9 @@ func (o *OptAppPermissionsPullRequests) Decode(d *jx.Decoder) error {
 	switch d.Next() {
 	case jx.String:
 		o.Set = true
-		v, err := d.Str()
-		if err != nil {
+		if err := o.Value.Decode(d); err != nil {
 			return err
 		}
-		o.Value = AppPermissionsPullRequests(v)
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptAppPermissionsPullRequests`, d.Next())
@@ -43152,11 +44426,9 @@ func (o *OptAppPermissionsRepositoryHooks) Decode(d *jx.Decoder) error {
 	switch d.Next() {
 	case jx.String:
 		o.Set = true
-		v, err := d.Str()
-		if err != nil {
+		if err := o.Value.Decode(d); err != nil {
 			return err
 		}
-		o.Value = AppPermissionsRepositoryHooks(v)
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptAppPermissionsRepositoryHooks`, d.Next())
@@ -43176,11 +44448,9 @@ func (o *OptAppPermissionsRepositoryProjects) Decode(d *jx.Decoder) error {
 	switch d.Next() {
 	case jx.String:
 		o.Set = true
-		v, err := d.Str()
-		if err != nil {
+		if err := o.Value.Decode(d); err != nil {
 			return err
 		}
-		o.Value = AppPermissionsRepositoryProjects(v)
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptAppPermissionsRepositoryProjects`, d.Next())
@@ -43200,11 +44470,9 @@ func (o *OptAppPermissionsSecretScanningAlerts) Decode(d *jx.Decoder) error {
 	switch d.Next() {
 	case jx.String:
 		o.Set = true
-		v, err := d.Str()
-		if err != nil {
+		if err := o.Value.Decode(d); err != nil {
 			return err
 		}
-		o.Value = AppPermissionsSecretScanningAlerts(v)
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptAppPermissionsSecretScanningAlerts`, d.Next())
@@ -43224,11 +44492,9 @@ func (o *OptAppPermissionsSecrets) Decode(d *jx.Decoder) error {
 	switch d.Next() {
 	case jx.String:
 		o.Set = true
-		v, err := d.Str()
-		if err != nil {
+		if err := o.Value.Decode(d); err != nil {
 			return err
 		}
-		o.Value = AppPermissionsSecrets(v)
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptAppPermissionsSecrets`, d.Next())
@@ -43248,11 +44514,9 @@ func (o *OptAppPermissionsSecurityEvents) Decode(d *jx.Decoder) error {
 	switch d.Next() {
 	case jx.String:
 		o.Set = true
-		v, err := d.Str()
-		if err != nil {
+		if err := o.Value.Decode(d); err != nil {
 			return err
 		}
-		o.Value = AppPermissionsSecurityEvents(v)
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptAppPermissionsSecurityEvents`, d.Next())
@@ -43272,11 +44536,9 @@ func (o *OptAppPermissionsSingleFile) Decode(d *jx.Decoder) error {
 	switch d.Next() {
 	case jx.String:
 		o.Set = true
-		v, err := d.Str()
-		if err != nil {
+		if err := o.Value.Decode(d); err != nil {
 			return err
 		}
-		o.Value = AppPermissionsSingleFile(v)
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptAppPermissionsSingleFile`, d.Next())
@@ -43296,11 +44558,9 @@ func (o *OptAppPermissionsStatuses) Decode(d *jx.Decoder) error {
 	switch d.Next() {
 	case jx.String:
 		o.Set = true
-		v, err := d.Str()
-		if err != nil {
+		if err := o.Value.Decode(d); err != nil {
 			return err
 		}
-		o.Value = AppPermissionsStatuses(v)
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptAppPermissionsStatuses`, d.Next())
@@ -43320,11 +44580,9 @@ func (o *OptAppPermissionsTeamDiscussions) Decode(d *jx.Decoder) error {
 	switch d.Next() {
 	case jx.String:
 		o.Set = true
-		v, err := d.Str()
-		if err != nil {
+		if err := o.Value.Decode(d); err != nil {
 			return err
 		}
-		o.Value = AppPermissionsTeamDiscussions(v)
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptAppPermissionsTeamDiscussions`, d.Next())
@@ -43344,11 +44602,9 @@ func (o *OptAppPermissionsVulnerabilityAlerts) Decode(d *jx.Decoder) error {
 	switch d.Next() {
 	case jx.String:
 		o.Set = true
-		v, err := d.Str()
-		if err != nil {
+		if err := o.Value.Decode(d); err != nil {
 			return err
 		}
-		o.Value = AppPermissionsVulnerabilityAlerts(v)
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptAppPermissionsVulnerabilityAlerts`, d.Next())
@@ -43368,11 +44624,9 @@ func (o *OptAppPermissionsWorkflows) Decode(d *jx.Decoder) error {
 	switch d.Next() {
 	case jx.String:
 		o.Set = true
-		v, err := d.Str()
-		if err != nil {
+		if err := o.Value.Decode(d); err != nil {
 			return err
 		}
-		o.Value = AppPermissionsWorkflows(v)
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptAppPermissionsWorkflows`, d.Next())
@@ -43436,11 +44690,9 @@ func (o *OptAppsListAccountsForPlanDirection) Decode(d *jx.Decoder) error {
 	switch d.Next() {
 	case jx.String:
 		o.Set = true
-		v, err := d.Str()
-		if err != nil {
+		if err := o.Value.Decode(d); err != nil {
 			return err
 		}
-		o.Value = AppsListAccountsForPlanDirection(v)
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptAppsListAccountsForPlanDirection`, d.Next())
@@ -43460,11 +44712,9 @@ func (o *OptAppsListAccountsForPlanSort) Decode(d *jx.Decoder) error {
 	switch d.Next() {
 	case jx.String:
 		o.Set = true
-		v, err := d.Str()
-		if err != nil {
+		if err := o.Value.Decode(d); err != nil {
 			return err
 		}
-		o.Value = AppsListAccountsForPlanSort(v)
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptAppsListAccountsForPlanSort`, d.Next())
@@ -43484,11 +44734,9 @@ func (o *OptAppsListAccountsForPlanStubbedDirection) Decode(d *jx.Decoder) error
 	switch d.Next() {
 	case jx.String:
 		o.Set = true
-		v, err := d.Str()
-		if err != nil {
+		if err := o.Value.Decode(d); err != nil {
 			return err
 		}
-		o.Value = AppsListAccountsForPlanStubbedDirection(v)
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptAppsListAccountsForPlanStubbedDirection`, d.Next())
@@ -43508,11 +44756,9 @@ func (o *OptAppsListAccountsForPlanStubbedSort) Decode(d *jx.Decoder) error {
 	switch d.Next() {
 	case jx.String:
 		o.Set = true
-		v, err := d.Str()
-		if err != nil {
+		if err := o.Value.Decode(d); err != nil {
 			return err
 		}
-		o.Value = AppsListAccountsForPlanStubbedSort(v)
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptAppsListAccountsForPlanStubbedSort`, d.Next())
@@ -43576,11 +44822,9 @@ func (o *OptAuthenticationTokenRepositorySelection) Decode(d *jx.Decoder) error 
 	switch d.Next() {
 	case jx.String:
 		o.Set = true
-		v, err := d.Str()
-		if err != nil {
+		if err := o.Value.Decode(d); err != nil {
 			return err
 		}
-		o.Value = AuthenticationTokenRepositorySelection(v)
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptAuthenticationTokenRepositorySelection`, d.Next())
@@ -43600,11 +44844,9 @@ func (o *OptAuthorAssociation) Decode(d *jx.Decoder) error {
 	switch d.Next() {
 	case jx.String:
 		o.Set = true
-		v, err := d.Str()
-		if err != nil {
+		if err := o.Value.Decode(d); err != nil {
 			return err
 		}
-		o.Value = AuthorAssociation(v)
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptAuthorAssociation`, d.Next())
@@ -43868,11 +45110,9 @@ func (o *OptChecksListForRefFilter) Decode(d *jx.Decoder) error {
 	switch d.Next() {
 	case jx.String:
 		o.Set = true
-		v, err := d.Str()
-		if err != nil {
+		if err := o.Value.Decode(d); err != nil {
 			return err
 		}
-		o.Value = ChecksListForRefFilter(v)
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptChecksListForRefFilter`, d.Next())
@@ -43892,11 +45132,9 @@ func (o *OptChecksListForRefStatus) Decode(d *jx.Decoder) error {
 	switch d.Next() {
 	case jx.String:
 		o.Set = true
-		v, err := d.Str()
-		if err != nil {
+		if err := o.Value.Decode(d); err != nil {
 			return err
 		}
-		o.Value = ChecksListForRefStatus(v)
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptChecksListForRefStatus`, d.Next())
@@ -43916,11 +45154,9 @@ func (o *OptChecksListForSuiteFilter) Decode(d *jx.Decoder) error {
 	switch d.Next() {
 	case jx.String:
 		o.Set = true
-		v, err := d.Str()
-		if err != nil {
+		if err := o.Value.Decode(d); err != nil {
 			return err
 		}
-		o.Value = ChecksListForSuiteFilter(v)
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptChecksListForSuiteFilter`, d.Next())
@@ -43940,11 +45176,9 @@ func (o *OptChecksListForSuiteStatus) Decode(d *jx.Decoder) error {
 	switch d.Next() {
 	case jx.String:
 		o.Set = true
-		v, err := d.Str()
-		if err != nil {
+		if err := o.Value.Decode(d); err != nil {
 			return err
 		}
-		o.Value = ChecksListForSuiteStatus(v)
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptChecksListForSuiteStatus`, d.Next())
@@ -44070,11 +45304,9 @@ func (o *OptCodeScanningAlertState) Decode(d *jx.Decoder) error {
 	switch d.Next() {
 	case jx.String:
 		o.Set = true
-		v, err := d.Str()
-		if err != nil {
+		if err := o.Value.Decode(d); err != nil {
 			return err
 		}
-		o.Value = CodeScanningAlertState(v)
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptCodeScanningAlertState`, d.Next())
@@ -44184,11 +45416,9 @@ func (o *OptCodeScanningSarifsStatusProcessingStatus) Decode(d *jx.Decoder) erro
 	switch d.Next() {
 	case jx.String:
 		o.Set = true
-		v, err := d.Str()
-		if err != nil {
+		if err := o.Value.Decode(d); err != nil {
 			return err
 		}
-		o.Value = CodeScanningSarifsStatusProcessingStatus(v)
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptCodeScanningSarifsStatusProcessingStatus`, d.Next())
@@ -44252,11 +45482,9 @@ func (o *OptDeploymentReviewerType) Decode(d *jx.Decoder) error {
 	switch d.Next() {
 	case jx.String:
 		o.Set = true
-		v, err := d.Str()
-		if err != nil {
+		if err := o.Value.Decode(d); err != nil {
 			return err
 		}
-		o.Value = DeploymentReviewerType(v)
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptDeploymentReviewerType`, d.Next())
@@ -44298,11 +45526,9 @@ func (o *OptEnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseReqVisibility
 	switch d.Next() {
 	case jx.String:
 		o.Set = true
-		v, err := d.Str()
-		if err != nil {
+		if err := o.Value.Decode(d); err != nil {
 			return err
 		}
-		o.Value = EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseReqVisibility(v)
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptEnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseReqVisibility`, d.Next())
@@ -44322,11 +45548,9 @@ func (o *OptEnterpriseAdminGetAuditLogInclude) Decode(d *jx.Decoder) error {
 	switch d.Next() {
 	case jx.String:
 		o.Set = true
-		v, err := d.Str()
-		if err != nil {
+		if err := o.Value.Decode(d); err != nil {
 			return err
 		}
-		o.Value = EnterpriseAdminGetAuditLogInclude(v)
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptEnterpriseAdminGetAuditLogInclude`, d.Next())
@@ -44346,11 +45570,9 @@ func (o *OptEnterpriseAdminGetAuditLogOrder) Decode(d *jx.Decoder) error {
 	switch d.Next() {
 	case jx.String:
 		o.Set = true
-		v, err := d.Str()
-		if err != nil {
+		if err := o.Value.Decode(d); err != nil {
 			return err
 		}
-		o.Value = EnterpriseAdminGetAuditLogOrder(v)
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptEnterpriseAdminGetAuditLogOrder`, d.Next())
@@ -44410,11 +45632,9 @@ func (o *OptEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseReqVisibility
 	switch d.Next() {
 	case jx.String:
 		o.Set = true
-		v, err := d.Str()
-		if err != nil {
+		if err := o.Value.Decode(d); err != nil {
 			return err
 		}
-		o.Value = EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseReqVisibility(v)
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseReqVisibility`, d.Next())
@@ -44634,11 +45854,9 @@ func (o *OptFullRepositorySecurityAndAnalysisAdvancedSecurityStatus) Decode(d *j
 	switch d.Next() {
 	case jx.String:
 		o.Set = true
-		v, err := d.Str()
-		if err != nil {
+		if err := o.Value.Decode(d); err != nil {
 			return err
 		}
-		o.Value = FullRepositorySecurityAndAnalysisAdvancedSecurityStatus(v)
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptFullRepositorySecurityAndAnalysisAdvancedSecurityStatus`, d.Next())
@@ -44680,11 +45898,9 @@ func (o *OptFullRepositorySecurityAndAnalysisSecretScanningStatus) Decode(d *jx.
 	switch d.Next() {
 	case jx.String:
 		o.Set = true
-		v, err := d.Str()
-		if err != nil {
+		if err := o.Value.Decode(d); err != nil {
 			return err
 		}
-		o.Value = FullRepositorySecurityAndAnalysisSecretScanningStatus(v)
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptFullRepositorySecurityAndAnalysisSecretScanningStatus`, d.Next())
@@ -44810,11 +46026,9 @@ func (o *OptGitCreateTreeReqTreeItemMode) Decode(d *jx.Decoder) error {
 	switch d.Next() {
 	case jx.String:
 		o.Set = true
-		v, err := d.Str()
-		if err != nil {
+		if err := o.Value.Decode(d); err != nil {
 			return err
 		}
-		o.Value = GitCreateTreeReqTreeItemMode(v)
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptGitCreateTreeReqTreeItemMode`, d.Next())
@@ -44834,11 +46048,9 @@ func (o *OptGitCreateTreeReqTreeItemType) Decode(d *jx.Decoder) error {
 	switch d.Next() {
 	case jx.String:
 		o.Set = true
-		v, err := d.Str()
-		if err != nil {
+		if err := o.Value.Decode(d); err != nil {
 			return err
 		}
-		o.Value = GitCreateTreeReqTreeItemType(v)
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptGitCreateTreeReqTreeItemType`, d.Next())
@@ -44858,11 +46070,9 @@ func (o *OptInstallationTokenRepositorySelection) Decode(d *jx.Decoder) error {
 	switch d.Next() {
 	case jx.String:
 		o.Set = true
-		v, err := d.Str()
-		if err != nil {
+		if err := o.Value.Decode(d); err != nil {
 			return err
 		}
-		o.Value = InstallationTokenRepositorySelection(v)
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptInstallationTokenRepositorySelection`, d.Next())
@@ -44930,11 +46140,9 @@ func (o *OptInteractionExpiry) Decode(d *jx.Decoder) error {
 	switch d.Next() {
 	case jx.String:
 		o.Set = true
-		v, err := d.Str()
-		if err != nil {
+		if err := o.Value.Decode(d); err != nil {
 			return err
 		}
-		o.Value = InteractionExpiry(v)
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptInteractionExpiry`, d.Next())
@@ -45196,11 +46404,9 @@ func (o *OptIssuesCreateMilestoneReqState) Decode(d *jx.Decoder) error {
 	switch d.Next() {
 	case jx.String:
 		o.Set = true
-		v, err := d.Str()
-		if err != nil {
+		if err := o.Value.Decode(d); err != nil {
 			return err
 		}
-		o.Value = IssuesCreateMilestoneReqState(v)
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptIssuesCreateMilestoneReqState`, d.Next())
@@ -45220,11 +46426,9 @@ func (o *OptIssuesListCommentsForRepoDirection) Decode(d *jx.Decoder) error {
 	switch d.Next() {
 	case jx.String:
 		o.Set = true
-		v, err := d.Str()
-		if err != nil {
+		if err := o.Value.Decode(d); err != nil {
 			return err
 		}
-		o.Value = IssuesListCommentsForRepoDirection(v)
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptIssuesListCommentsForRepoDirection`, d.Next())
@@ -45244,11 +46448,9 @@ func (o *OptIssuesListCommentsForRepoSort) Decode(d *jx.Decoder) error {
 	switch d.Next() {
 	case jx.String:
 		o.Set = true
-		v, err := d.Str()
-		if err != nil {
+		if err := o.Value.Decode(d); err != nil {
 			return err
 		}
-		o.Value = IssuesListCommentsForRepoSort(v)
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptIssuesListCommentsForRepoSort`, d.Next())
@@ -45268,11 +46470,9 @@ func (o *OptIssuesListDirection) Decode(d *jx.Decoder) error {
 	switch d.Next() {
 	case jx.String:
 		o.Set = true
-		v, err := d.Str()
-		if err != nil {
+		if err := o.Value.Decode(d); err != nil {
 			return err
 		}
-		o.Value = IssuesListDirection(v)
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptIssuesListDirection`, d.Next())
@@ -45292,11 +46492,9 @@ func (o *OptIssuesListFilter) Decode(d *jx.Decoder) error {
 	switch d.Next() {
 	case jx.String:
 		o.Set = true
-		v, err := d.Str()
-		if err != nil {
+		if err := o.Value.Decode(d); err != nil {
 			return err
 		}
-		o.Value = IssuesListFilter(v)
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptIssuesListFilter`, d.Next())
@@ -45316,11 +46514,9 @@ func (o *OptIssuesListForAuthenticatedUserDirection) Decode(d *jx.Decoder) error
 	switch d.Next() {
 	case jx.String:
 		o.Set = true
-		v, err := d.Str()
-		if err != nil {
+		if err := o.Value.Decode(d); err != nil {
 			return err
 		}
-		o.Value = IssuesListForAuthenticatedUserDirection(v)
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptIssuesListForAuthenticatedUserDirection`, d.Next())
@@ -45340,11 +46536,9 @@ func (o *OptIssuesListForAuthenticatedUserFilter) Decode(d *jx.Decoder) error {
 	switch d.Next() {
 	case jx.String:
 		o.Set = true
-		v, err := d.Str()
-		if err != nil {
+		if err := o.Value.Decode(d); err != nil {
 			return err
 		}
-		o.Value = IssuesListForAuthenticatedUserFilter(v)
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptIssuesListForAuthenticatedUserFilter`, d.Next())
@@ -45364,11 +46558,9 @@ func (o *OptIssuesListForAuthenticatedUserSort) Decode(d *jx.Decoder) error {
 	switch d.Next() {
 	case jx.String:
 		o.Set = true
-		v, err := d.Str()
-		if err != nil {
+		if err := o.Value.Decode(d); err != nil {
 			return err
 		}
-		o.Value = IssuesListForAuthenticatedUserSort(v)
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptIssuesListForAuthenticatedUserSort`, d.Next())
@@ -45388,11 +46580,9 @@ func (o *OptIssuesListForAuthenticatedUserState) Decode(d *jx.Decoder) error {
 	switch d.Next() {
 	case jx.String:
 		o.Set = true
-		v, err := d.Str()
-		if err != nil {
+		if err := o.Value.Decode(d); err != nil {
 			return err
 		}
-		o.Value = IssuesListForAuthenticatedUserState(v)
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptIssuesListForAuthenticatedUserState`, d.Next())
@@ -45412,11 +46602,9 @@ func (o *OptIssuesListForOrgDirection) Decode(d *jx.Decoder) error {
 	switch d.Next() {
 	case jx.String:
 		o.Set = true
-		v, err := d.Str()
-		if err != nil {
+		if err := o.Value.Decode(d); err != nil {
 			return err
 		}
-		o.Value = IssuesListForOrgDirection(v)
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptIssuesListForOrgDirection`, d.Next())
@@ -45436,11 +46624,9 @@ func (o *OptIssuesListForOrgFilter) Decode(d *jx.Decoder) error {
 	switch d.Next() {
 	case jx.String:
 		o.Set = true
-		v, err := d.Str()
-		if err != nil {
+		if err := o.Value.Decode(d); err != nil {
 			return err
 		}
-		o.Value = IssuesListForOrgFilter(v)
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptIssuesListForOrgFilter`, d.Next())
@@ -45460,11 +46646,9 @@ func (o *OptIssuesListForOrgSort) Decode(d *jx.Decoder) error {
 	switch d.Next() {
 	case jx.String:
 		o.Set = true
-		v, err := d.Str()
-		if err != nil {
+		if err := o.Value.Decode(d); err != nil {
 			return err
 		}
-		o.Value = IssuesListForOrgSort(v)
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptIssuesListForOrgSort`, d.Next())
@@ -45484,11 +46668,9 @@ func (o *OptIssuesListForOrgState) Decode(d *jx.Decoder) error {
 	switch d.Next() {
 	case jx.String:
 		o.Set = true
-		v, err := d.Str()
-		if err != nil {
+		if err := o.Value.Decode(d); err != nil {
 			return err
 		}
-		o.Value = IssuesListForOrgState(v)
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptIssuesListForOrgState`, d.Next())
@@ -45508,11 +46690,9 @@ func (o *OptIssuesListForRepoDirection) Decode(d *jx.Decoder) error {
 	switch d.Next() {
 	case jx.String:
 		o.Set = true
-		v, err := d.Str()
-		if err != nil {
+		if err := o.Value.Decode(d); err != nil {
 			return err
 		}
-		o.Value = IssuesListForRepoDirection(v)
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptIssuesListForRepoDirection`, d.Next())
@@ -45532,11 +46712,9 @@ func (o *OptIssuesListForRepoSort) Decode(d *jx.Decoder) error {
 	switch d.Next() {
 	case jx.String:
 		o.Set = true
-		v, err := d.Str()
-		if err != nil {
+		if err := o.Value.Decode(d); err != nil {
 			return err
 		}
-		o.Value = IssuesListForRepoSort(v)
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptIssuesListForRepoSort`, d.Next())
@@ -45556,11 +46734,9 @@ func (o *OptIssuesListForRepoState) Decode(d *jx.Decoder) error {
 	switch d.Next() {
 	case jx.String:
 		o.Set = true
-		v, err := d.Str()
-		if err != nil {
+		if err := o.Value.Decode(d); err != nil {
 			return err
 		}
-		o.Value = IssuesListForRepoState(v)
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptIssuesListForRepoState`, d.Next())
@@ -45580,11 +46756,9 @@ func (o *OptIssuesListMilestonesDirection) Decode(d *jx.Decoder) error {
 	switch d.Next() {
 	case jx.String:
 		o.Set = true
-		v, err := d.Str()
-		if err != nil {
+		if err := o.Value.Decode(d); err != nil {
 			return err
 		}
-		o.Value = IssuesListMilestonesDirection(v)
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptIssuesListMilestonesDirection`, d.Next())
@@ -45604,11 +46778,9 @@ func (o *OptIssuesListMilestonesSort) Decode(d *jx.Decoder) error {
 	switch d.Next() {
 	case jx.String:
 		o.Set = true
-		v, err := d.Str()
-		if err != nil {
+		if err := o.Value.Decode(d); err != nil {
 			return err
 		}
-		o.Value = IssuesListMilestonesSort(v)
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptIssuesListMilestonesSort`, d.Next())
@@ -45628,11 +46800,9 @@ func (o *OptIssuesListMilestonesState) Decode(d *jx.Decoder) error {
 	switch d.Next() {
 	case jx.String:
 		o.Set = true
-		v, err := d.Str()
-		if err != nil {
+		if err := o.Value.Decode(d); err != nil {
 			return err
 		}
-		o.Value = IssuesListMilestonesState(v)
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptIssuesListMilestonesState`, d.Next())
@@ -45652,11 +46822,9 @@ func (o *OptIssuesListSort) Decode(d *jx.Decoder) error {
 	switch d.Next() {
 	case jx.String:
 		o.Set = true
-		v, err := d.Str()
-		if err != nil {
+		if err := o.Value.Decode(d); err != nil {
 			return err
 		}
-		o.Value = IssuesListSort(v)
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptIssuesListSort`, d.Next())
@@ -45676,11 +46844,9 @@ func (o *OptIssuesListState) Decode(d *jx.Decoder) error {
 	switch d.Next() {
 	case jx.String:
 		o.Set = true
-		v, err := d.Str()
-		if err != nil {
+		if err := o.Value.Decode(d); err != nil {
 			return err
 		}
-		o.Value = IssuesListState(v)
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptIssuesListState`, d.Next())
@@ -45722,11 +46888,9 @@ func (o *OptIssuesLockReqLockReason) Decode(d *jx.Decoder) error {
 	switch d.Next() {
 	case jx.String:
 		o.Set = true
-		v, err := d.Str()
-		if err != nil {
+		if err := o.Value.Decode(d); err != nil {
 			return err
 		}
-		o.Value = IssuesLockReqLockReason(v)
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptIssuesLockReqLockReason`, d.Next())
@@ -45812,11 +46976,9 @@ func (o *OptIssuesUpdateMilestoneReqState) Decode(d *jx.Decoder) error {
 	switch d.Next() {
 	case jx.String:
 		o.Set = true
-		v, err := d.Str()
-		if err != nil {
+		if err := o.Value.Decode(d); err != nil {
 			return err
 		}
-		o.Value = IssuesUpdateMilestoneReqState(v)
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptIssuesUpdateMilestoneReqState`, d.Next())
@@ -45858,11 +47020,9 @@ func (o *OptIssuesUpdateReqState) Decode(d *jx.Decoder) error {
 	switch d.Next() {
 	case jx.String:
 		o.Set = true
-		v, err := d.Str()
-		if err != nil {
+		if err := o.Value.Decode(d); err != nil {
 			return err
 		}
-		o.Value = IssuesUpdateReqState(v)
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptIssuesUpdateReqState`, d.Next())
@@ -45904,11 +47064,9 @@ func (o *OptMarkdownRenderReqMode) Decode(d *jx.Decoder) error {
 	switch d.Next() {
 	case jx.String:
 		o.Set = true
-		v, err := d.Str()
-		if err != nil {
+		if err := o.Value.Decode(d); err != nil {
 			return err
 		}
-		o.Value = MarkdownRenderReqMode(v)
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptMarkdownRenderReqMode`, d.Next())
@@ -45950,11 +47108,9 @@ func (o *OptMergedUpstreamMergeType) Decode(d *jx.Decoder) error {
 	switch d.Next() {
 	case jx.String:
 		o.Set = true
-		v, err := d.Str()
-		if err != nil {
+		if err := o.Value.Decode(d); err != nil {
 			return err
 		}
-		o.Value = MergedUpstreamMergeType(v)
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptMergedUpstreamMergeType`, d.Next())
@@ -45996,11 +47152,9 @@ func (o *OptMigrationsStartImportReqVcs) Decode(d *jx.Decoder) error {
 	switch d.Next() {
 	case jx.String:
 		o.Set = true
-		v, err := d.Str()
-		if err != nil {
+		if err := o.Value.Decode(d); err != nil {
 			return err
 		}
-		o.Value = MigrationsStartImportReqVcs(v)
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptMigrationsStartImportReqVcs`, d.Next())
@@ -46129,11 +47283,9 @@ func (o *OptNilCodeScanningAlertDismissedReason) Decode(d *jx.Decoder) error {
 	case jx.String:
 		o.Set = true
 		o.Null = false
-		v, err := d.Str()
-		if err != nil {
+		if err := o.Value.Decode(d); err != nil {
 			return err
 		}
-		o.Value = CodeScanningAlertDismissedReason(v)
 		return nil
 	case jx.Null:
 		if err := d.Null(); err != nil {
@@ -46167,11 +47319,9 @@ func (o *OptNilCodeScanningAlertRuleSecuritySeverityLevel) Decode(d *jx.Decoder)
 	case jx.String:
 		o.Set = true
 		o.Null = false
-		v, err := d.Str()
-		if err != nil {
+		if err := o.Value.Decode(d); err != nil {
 			return err
 		}
-		o.Value = CodeScanningAlertRuleSecuritySeverityLevel(v)
 		return nil
 	case jx.Null:
 		if err := d.Null(); err != nil {
@@ -46205,11 +47355,9 @@ func (o *OptNilCodeScanningAlertRuleSeverity) Decode(d *jx.Decoder) error {
 	case jx.String:
 		o.Set = true
 		o.Null = false
-		v, err := d.Str()
-		if err != nil {
+		if err := o.Value.Decode(d); err != nil {
 			return err
 		}
-		o.Value = CodeScanningAlertRuleSeverity(v)
 		return nil
 	case jx.Null:
 		if err := d.Null(); err != nil {
@@ -46243,11 +47391,9 @@ func (o *OptNilCodeScanningAlertRuleSummarySeverity) Decode(d *jx.Decoder) error
 	case jx.String:
 		o.Set = true
 		o.Null = false
-		v, err := d.Str()
-		if err != nil {
+		if err := o.Value.Decode(d); err != nil {
 			return err
 		}
-		o.Value = CodeScanningAlertRuleSummarySeverity(v)
 		return nil
 	case jx.Null:
 		if err := d.Null(); err != nil {
@@ -47011,11 +48157,9 @@ func (o *OptNilPageProtectedDomainState) Decode(d *jx.Decoder) error {
 	case jx.String:
 		o.Set = true
 		o.Null = false
-		v, err := d.Str()
-		if err != nil {
+		if err := o.Value.Decode(d); err != nil {
 			return err
 		}
-		o.Value = PageProtectedDomainState(v)
 		return nil
 	case jx.Null:
 		if err := d.Null(); err != nil {
@@ -47085,11 +48229,9 @@ func (o *OptNilPullRequestReviewCommentStartSide) Decode(d *jx.Decoder) error {
 	case jx.String:
 		o.Set = true
 		o.Null = false
-		v, err := d.Str()
-		if err != nil {
+		if err := o.Value.Decode(d); err != nil {
 			return err
 		}
-		o.Value = PullRequestReviewCommentStartSide(v)
 		return nil
 	case jx.Null:
 		if err := d.Null(); err != nil {
@@ -47227,11 +48369,9 @@ func (o *OptNilReviewCommentStartSide) Decode(d *jx.Decoder) error {
 	case jx.String:
 		o.Set = true
 		o.Null = false
-		v, err := d.Str()
-		if err != nil {
+		if err := o.Value.Decode(d); err != nil {
 			return err
 		}
-		o.Value = ReviewCommentStartSide(v)
 		return nil
 	case jx.Null:
 		if err := d.Null(); err != nil {
@@ -47265,11 +48405,9 @@ func (o *OptNilSecretScanningAlertResolution) Decode(d *jx.Decoder) error {
 	case jx.String:
 		o.Set = true
 		o.Null = false
-		v, err := d.Str()
-		if err != nil {
+		if err := o.Value.Decode(d); err != nil {
 			return err
 		}
-		o.Value = SecretScanningAlertResolution(v)
 		return nil
 	case jx.Null:
 		if err := d.Null(); err != nil {
@@ -47802,11 +48940,9 @@ func (o *OptOrgsCreateInvitationReqRole) Decode(d *jx.Decoder) error {
 	switch d.Next() {
 	case jx.String:
 		o.Set = true
-		v, err := d.Str()
-		if err != nil {
+		if err := o.Value.Decode(d); err != nil {
 			return err
 		}
-		o.Value = OrgsCreateInvitationReqRole(v)
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptOrgsCreateInvitationReqRole`, d.Next())
@@ -47826,11 +48962,9 @@ func (o *OptOrgsGetAuditLogInclude) Decode(d *jx.Decoder) error {
 	switch d.Next() {
 	case jx.String:
 		o.Set = true
-		v, err := d.Str()
-		if err != nil {
+		if err := o.Value.Decode(d); err != nil {
 			return err
 		}
-		o.Value = OrgsGetAuditLogInclude(v)
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptOrgsGetAuditLogInclude`, d.Next())
@@ -47850,11 +48984,9 @@ func (o *OptOrgsGetAuditLogOrder) Decode(d *jx.Decoder) error {
 	switch d.Next() {
 	case jx.String:
 		o.Set = true
-		v, err := d.Str()
-		if err != nil {
+		if err := o.Value.Decode(d); err != nil {
 			return err
 		}
-		o.Value = OrgsGetAuditLogOrder(v)
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptOrgsGetAuditLogOrder`, d.Next())
@@ -47874,11 +49006,9 @@ func (o *OptOrgsListMembersFilter) Decode(d *jx.Decoder) error {
 	switch d.Next() {
 	case jx.String:
 		o.Set = true
-		v, err := d.Str()
-		if err != nil {
+		if err := o.Value.Decode(d); err != nil {
 			return err
 		}
-		o.Value = OrgsListMembersFilter(v)
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptOrgsListMembersFilter`, d.Next())
@@ -47898,11 +49028,9 @@ func (o *OptOrgsListMembersRole) Decode(d *jx.Decoder) error {
 	switch d.Next() {
 	case jx.String:
 		o.Set = true
-		v, err := d.Str()
-		if err != nil {
+		if err := o.Value.Decode(d); err != nil {
 			return err
 		}
-		o.Value = OrgsListMembersRole(v)
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptOrgsListMembersRole`, d.Next())
@@ -47922,11 +49050,9 @@ func (o *OptOrgsListMembershipsForAuthenticatedUserState) Decode(d *jx.Decoder) 
 	switch d.Next() {
 	case jx.String:
 		o.Set = true
-		v, err := d.Str()
-		if err != nil {
+		if err := o.Value.Decode(d); err != nil {
 			return err
 		}
-		o.Value = OrgsListMembershipsForAuthenticatedUserState(v)
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptOrgsListMembershipsForAuthenticatedUserState`, d.Next())
@@ -47946,11 +49072,9 @@ func (o *OptOrgsListOutsideCollaboratorsFilter) Decode(d *jx.Decoder) error {
 	switch d.Next() {
 	case jx.String:
 		o.Set = true
-		v, err := d.Str()
-		if err != nil {
+		if err := o.Value.Decode(d); err != nil {
 			return err
 		}
-		o.Value = OrgsListOutsideCollaboratorsFilter(v)
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptOrgsListOutsideCollaboratorsFilter`, d.Next())
@@ -47992,11 +49116,9 @@ func (o *OptOrgsSetMembershipForUserReqRole) Decode(d *jx.Decoder) error {
 	switch d.Next() {
 	case jx.String:
 		o.Set = true
-		v, err := d.Str()
-		if err != nil {
+		if err := o.Value.Decode(d); err != nil {
 			return err
 		}
-		o.Value = OrgsSetMembershipForUserReqRole(v)
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptOrgsSetMembershipForUserReqRole`, d.Next())
@@ -48038,11 +49160,9 @@ func (o *OptOrgsUpdateReqDefaultRepositoryPermission) Decode(d *jx.Decoder) erro
 	switch d.Next() {
 	case jx.String:
 		o.Set = true
-		v, err := d.Str()
-		if err != nil {
+		if err := o.Value.Decode(d); err != nil {
 			return err
 		}
-		o.Value = OrgsUpdateReqDefaultRepositoryPermission(v)
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptOrgsUpdateReqDefaultRepositoryPermission`, d.Next())
@@ -48062,11 +49182,9 @@ func (o *OptOrgsUpdateReqMembersAllowedRepositoryCreationType) Decode(d *jx.Deco
 	switch d.Next() {
 	case jx.String:
 		o.Set = true
-		v, err := d.Str()
-		if err != nil {
+		if err := o.Value.Decode(d); err != nil {
 			return err
 		}
-		o.Value = OrgsUpdateReqMembersAllowedRepositoryCreationType(v)
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptOrgsUpdateReqMembersAllowedRepositoryCreationType`, d.Next())
@@ -48218,11 +49336,9 @@ func (o *OptPackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserState
 	switch d.Next() {
 	case jx.String:
 		o.Set = true
-		v, err := d.Str()
-		if err != nil {
+		if err := o.Value.Decode(d); err != nil {
 			return err
 		}
-		o.Value = PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserState(v)
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptPackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserState`, d.Next())
@@ -48242,11 +49358,9 @@ func (o *OptPackagesGetAllPackageVersionsForPackageOwnedByOrgState) Decode(d *jx
 	switch d.Next() {
 	case jx.String:
 		o.Set = true
-		v, err := d.Str()
-		if err != nil {
+		if err := o.Value.Decode(d); err != nil {
 			return err
 		}
-		o.Value = PackagesGetAllPackageVersionsForPackageOwnedByOrgState(v)
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptPackagesGetAllPackageVersionsForPackageOwnedByOrgState`, d.Next())
@@ -48266,11 +49380,9 @@ func (o *OptPackagesListPackagesForAuthenticatedUserVisibility) Decode(d *jx.Dec
 	switch d.Next() {
 	case jx.String:
 		o.Set = true
-		v, err := d.Str()
-		if err != nil {
+		if err := o.Value.Decode(d); err != nil {
 			return err
 		}
-		o.Value = PackagesListPackagesForAuthenticatedUserVisibility(v)
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptPackagesListPackagesForAuthenticatedUserVisibility`, d.Next())
@@ -48290,11 +49402,9 @@ func (o *OptPackagesListPackagesForOrganizationVisibility) Decode(d *jx.Decoder)
 	switch d.Next() {
 	case jx.String:
 		o.Set = true
-		v, err := d.Str()
-		if err != nil {
+		if err := o.Value.Decode(d); err != nil {
 			return err
 		}
-		o.Value = PackagesListPackagesForOrganizationVisibility(v)
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptPackagesListPackagesForOrganizationVisibility`, d.Next())
@@ -48314,11 +49424,9 @@ func (o *OptPackagesListPackagesForUserVisibility) Decode(d *jx.Decoder) error {
 	switch d.Next() {
 	case jx.String:
 		o.Set = true
-		v, err := d.Str()
-		if err != nil {
+		if err := o.Value.Decode(d); err != nil {
 			return err
 		}
-		o.Value = PackagesListPackagesForUserVisibility(v)
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptPackagesListPackagesForUserVisibility`, d.Next())
@@ -48426,11 +49534,9 @@ func (o *OptProjectOrganizationPermission) Decode(d *jx.Decoder) error {
 	switch d.Next() {
 	case jx.String:
 		o.Set = true
-		v, err := d.Str()
-		if err != nil {
+		if err := o.Value.Decode(d); err != nil {
 			return err
 		}
-		o.Value = ProjectOrganizationPermission(v)
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptProjectOrganizationPermission`, d.Next())
@@ -48472,11 +49578,9 @@ func (o *OptProjectsAddCollaboratorReqPermission) Decode(d *jx.Decoder) error {
 	switch d.Next() {
 	case jx.String:
 		o.Set = true
-		v, err := d.Str()
-		if err != nil {
+		if err := o.Value.Decode(d); err != nil {
 			return err
 		}
-		o.Value = ProjectsAddCollaboratorReqPermission(v)
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptProjectsAddCollaboratorReqPermission`, d.Next())
@@ -48496,11 +49600,9 @@ func (o *OptProjectsListCardsArchivedState) Decode(d *jx.Decoder) error {
 	switch d.Next() {
 	case jx.String:
 		o.Set = true
-		v, err := d.Str()
-		if err != nil {
+		if err := o.Value.Decode(d); err != nil {
 			return err
 		}
-		o.Value = ProjectsListCardsArchivedState(v)
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptProjectsListCardsArchivedState`, d.Next())
@@ -48520,11 +49622,9 @@ func (o *OptProjectsListCollaboratorsAffiliation) Decode(d *jx.Decoder) error {
 	switch d.Next() {
 	case jx.String:
 		o.Set = true
-		v, err := d.Str()
-		if err != nil {
+		if err := o.Value.Decode(d); err != nil {
 			return err
 		}
-		o.Value = ProjectsListCollaboratorsAffiliation(v)
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptProjectsListCollaboratorsAffiliation`, d.Next())
@@ -48544,11 +49644,9 @@ func (o *OptProjectsListForOrgState) Decode(d *jx.Decoder) error {
 	switch d.Next() {
 	case jx.String:
 		o.Set = true
-		v, err := d.Str()
-		if err != nil {
+		if err := o.Value.Decode(d); err != nil {
 			return err
 		}
-		o.Value = ProjectsListForOrgState(v)
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptProjectsListForOrgState`, d.Next())
@@ -48568,11 +49666,9 @@ func (o *OptProjectsListForRepoState) Decode(d *jx.Decoder) error {
 	switch d.Next() {
 	case jx.String:
 		o.Set = true
-		v, err := d.Str()
-		if err != nil {
+		if err := o.Value.Decode(d); err != nil {
 			return err
 		}
-		o.Value = ProjectsListForRepoState(v)
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptProjectsListForRepoState`, d.Next())
@@ -48592,11 +49688,9 @@ func (o *OptProjectsListForUserState) Decode(d *jx.Decoder) error {
 	switch d.Next() {
 	case jx.String:
 		o.Set = true
-		v, err := d.Str()
-		if err != nil {
+		if err := o.Value.Decode(d); err != nil {
 			return err
 		}
-		o.Value = ProjectsListForUserState(v)
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptProjectsListForUserState`, d.Next())
@@ -48660,11 +49754,9 @@ func (o *OptProjectsUpdateReqOrganizationPermission) Decode(d *jx.Decoder) error
 	switch d.Next() {
 	case jx.String:
 		o.Set = true
-		v, err := d.Str()
-		if err != nil {
+		if err := o.Value.Decode(d); err != nil {
 			return err
 		}
-		o.Value = ProjectsUpdateReqOrganizationPermission(v)
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptProjectsUpdateReqOrganizationPermission`, d.Next())
@@ -49014,11 +50106,9 @@ func (o *OptPullRequestReviewCommentSide) Decode(d *jx.Decoder) error {
 	switch d.Next() {
 	case jx.String:
 		o.Set = true
-		v, err := d.Str()
-		if err != nil {
+		if err := o.Value.Decode(d); err != nil {
 			return err
 		}
-		o.Value = PullRequestReviewCommentSide(v)
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptPullRequestReviewCommentSide`, d.Next())
@@ -49038,11 +50128,9 @@ func (o *OptPullsCreateReviewCommentReqSide) Decode(d *jx.Decoder) error {
 	switch d.Next() {
 	case jx.String:
 		o.Set = true
-		v, err := d.Str()
-		if err != nil {
+		if err := o.Value.Decode(d); err != nil {
 			return err
 		}
-		o.Value = PullsCreateReviewCommentReqSide(v)
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptPullsCreateReviewCommentReqSide`, d.Next())
@@ -49062,11 +50150,9 @@ func (o *OptPullsCreateReviewCommentReqStartSide) Decode(d *jx.Decoder) error {
 	switch d.Next() {
 	case jx.String:
 		o.Set = true
-		v, err := d.Str()
-		if err != nil {
+		if err := o.Value.Decode(d); err != nil {
 			return err
 		}
-		o.Value = PullsCreateReviewCommentReqStartSide(v)
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptPullsCreateReviewCommentReqStartSide`, d.Next())
@@ -49108,11 +50194,9 @@ func (o *OptPullsCreateReviewReqEvent) Decode(d *jx.Decoder) error {
 	switch d.Next() {
 	case jx.String:
 		o.Set = true
-		v, err := d.Str()
-		if err != nil {
+		if err := o.Value.Decode(d); err != nil {
 			return err
 		}
-		o.Value = PullsCreateReviewReqEvent(v)
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptPullsCreateReviewReqEvent`, d.Next())
@@ -49132,11 +50216,9 @@ func (o *OptPullsListDirection) Decode(d *jx.Decoder) error {
 	switch d.Next() {
 	case jx.String:
 		o.Set = true
-		v, err := d.Str()
-		if err != nil {
+		if err := o.Value.Decode(d); err != nil {
 			return err
 		}
-		o.Value = PullsListDirection(v)
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptPullsListDirection`, d.Next())
@@ -49156,11 +50238,9 @@ func (o *OptPullsListReviewCommentsDirection) Decode(d *jx.Decoder) error {
 	switch d.Next() {
 	case jx.String:
 		o.Set = true
-		v, err := d.Str()
-		if err != nil {
+		if err := o.Value.Decode(d); err != nil {
 			return err
 		}
-		o.Value = PullsListReviewCommentsDirection(v)
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptPullsListReviewCommentsDirection`, d.Next())
@@ -49180,11 +50260,9 @@ func (o *OptPullsListReviewCommentsForRepoDirection) Decode(d *jx.Decoder) error
 	switch d.Next() {
 	case jx.String:
 		o.Set = true
-		v, err := d.Str()
-		if err != nil {
+		if err := o.Value.Decode(d); err != nil {
 			return err
 		}
-		o.Value = PullsListReviewCommentsForRepoDirection(v)
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptPullsListReviewCommentsForRepoDirection`, d.Next())
@@ -49204,11 +50282,9 @@ func (o *OptPullsListReviewCommentsForRepoSort) Decode(d *jx.Decoder) error {
 	switch d.Next() {
 	case jx.String:
 		o.Set = true
-		v, err := d.Str()
-		if err != nil {
+		if err := o.Value.Decode(d); err != nil {
 			return err
 		}
-		o.Value = PullsListReviewCommentsForRepoSort(v)
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptPullsListReviewCommentsForRepoSort`, d.Next())
@@ -49228,11 +50304,9 @@ func (o *OptPullsListReviewCommentsSort) Decode(d *jx.Decoder) error {
 	switch d.Next() {
 	case jx.String:
 		o.Set = true
-		v, err := d.Str()
-		if err != nil {
+		if err := o.Value.Decode(d); err != nil {
 			return err
 		}
-		o.Value = PullsListReviewCommentsSort(v)
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptPullsListReviewCommentsSort`, d.Next())
@@ -49252,11 +50326,9 @@ func (o *OptPullsListSort) Decode(d *jx.Decoder) error {
 	switch d.Next() {
 	case jx.String:
 		o.Set = true
-		v, err := d.Str()
-		if err != nil {
+		if err := o.Value.Decode(d); err != nil {
 			return err
 		}
-		o.Value = PullsListSort(v)
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptPullsListSort`, d.Next())
@@ -49276,11 +50348,9 @@ func (o *OptPullsListState) Decode(d *jx.Decoder) error {
 	switch d.Next() {
 	case jx.String:
 		o.Set = true
-		v, err := d.Str()
-		if err != nil {
+		if err := o.Value.Decode(d); err != nil {
 			return err
 		}
-		o.Value = PullsListState(v)
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptPullsListState`, d.Next())
@@ -49322,11 +50392,9 @@ func (o *OptPullsMergeReqMergeMethod) Decode(d *jx.Decoder) error {
 	switch d.Next() {
 	case jx.String:
 		o.Set = true
-		v, err := d.Str()
-		if err != nil {
+		if err := o.Value.Decode(d); err != nil {
 			return err
 		}
-		o.Value = PullsMergeReqMergeMethod(v)
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptPullsMergeReqMergeMethod`, d.Next())
@@ -49390,11 +50458,9 @@ func (o *OptPullsUpdateReqState) Decode(d *jx.Decoder) error {
 	switch d.Next() {
 	case jx.String:
 		o.Set = true
-		v, err := d.Str()
-		if err != nil {
+		if err := o.Value.Decode(d); err != nil {
 			return err
 		}
-		o.Value = PullsUpdateReqState(v)
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptPullsUpdateReqState`, d.Next())
@@ -49458,11 +50524,9 @@ func (o *OptReactionsListForCommitCommentContent) Decode(d *jx.Decoder) error {
 	switch d.Next() {
 	case jx.String:
 		o.Set = true
-		v, err := d.Str()
-		if err != nil {
+		if err := o.Value.Decode(d); err != nil {
 			return err
 		}
-		o.Value = ReactionsListForCommitCommentContent(v)
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptReactionsListForCommitCommentContent`, d.Next())
@@ -49482,11 +50546,9 @@ func (o *OptReactionsListForIssueCommentContent) Decode(d *jx.Decoder) error {
 	switch d.Next() {
 	case jx.String:
 		o.Set = true
-		v, err := d.Str()
-		if err != nil {
+		if err := o.Value.Decode(d); err != nil {
 			return err
 		}
-		o.Value = ReactionsListForIssueCommentContent(v)
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptReactionsListForIssueCommentContent`, d.Next())
@@ -49506,11 +50568,9 @@ func (o *OptReactionsListForIssueContent) Decode(d *jx.Decoder) error {
 	switch d.Next() {
 	case jx.String:
 		o.Set = true
-		v, err := d.Str()
-		if err != nil {
+		if err := o.Value.Decode(d); err != nil {
 			return err
 		}
-		o.Value = ReactionsListForIssueContent(v)
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptReactionsListForIssueContent`, d.Next())
@@ -49530,11 +50590,9 @@ func (o *OptReactionsListForPullRequestReviewCommentContent) Decode(d *jx.Decode
 	switch d.Next() {
 	case jx.String:
 		o.Set = true
-		v, err := d.Str()
-		if err != nil {
+		if err := o.Value.Decode(d); err != nil {
 			return err
 		}
-		o.Value = ReactionsListForPullRequestReviewCommentContent(v)
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptReactionsListForPullRequestReviewCommentContent`, d.Next())
@@ -49554,11 +50612,9 @@ func (o *OptReactionsListForTeamDiscussionCommentInOrgContent) Decode(d *jx.Deco
 	switch d.Next() {
 	case jx.String:
 		o.Set = true
-		v, err := d.Str()
-		if err != nil {
+		if err := o.Value.Decode(d); err != nil {
 			return err
 		}
-		o.Value = ReactionsListForTeamDiscussionCommentInOrgContent(v)
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptReactionsListForTeamDiscussionCommentInOrgContent`, d.Next())
@@ -49578,11 +50634,9 @@ func (o *OptReactionsListForTeamDiscussionCommentLegacyContent) Decode(d *jx.Dec
 	switch d.Next() {
 	case jx.String:
 		o.Set = true
-		v, err := d.Str()
-		if err != nil {
+		if err := o.Value.Decode(d); err != nil {
 			return err
 		}
-		o.Value = ReactionsListForTeamDiscussionCommentLegacyContent(v)
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptReactionsListForTeamDiscussionCommentLegacyContent`, d.Next())
@@ -49602,11 +50656,9 @@ func (o *OptReactionsListForTeamDiscussionInOrgContent) Decode(d *jx.Decoder) er
 	switch d.Next() {
 	case jx.String:
 		o.Set = true
-		v, err := d.Str()
-		if err != nil {
+		if err := o.Value.Decode(d); err != nil {
 			return err
 		}
-		o.Value = ReactionsListForTeamDiscussionInOrgContent(v)
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptReactionsListForTeamDiscussionInOrgContent`, d.Next())
@@ -49626,11 +50678,9 @@ func (o *OptReactionsListForTeamDiscussionLegacyContent) Decode(d *jx.Decoder) e
 	switch d.Next() {
 	case jx.String:
 		o.Set = true
-		v, err := d.Str()
-		if err != nil {
+		if err := o.Value.Decode(d); err != nil {
 			return err
 		}
-		o.Value = ReactionsListForTeamDiscussionLegacyContent(v)
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptReactionsListForTeamDiscussionLegacyContent`, d.Next())
@@ -49712,11 +50762,9 @@ func (o *OptReposAddCollaboratorReqPermission) Decode(d *jx.Decoder) error {
 	switch d.Next() {
 	case jx.String:
 		o.Set = true
-		v, err := d.Str()
-		if err != nil {
+		if err := o.Value.Decode(d); err != nil {
 			return err
 		}
-		o.Value = ReposAddCollaboratorReqPermission(v)
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptReposAddCollaboratorReqPermission`, d.Next())
@@ -49808,11 +50856,9 @@ func (o *OptReposCreateDeploymentStatusReqEnvironment) Decode(d *jx.Decoder) err
 	switch d.Next() {
 	case jx.String:
 		o.Set = true
-		v, err := d.Str()
-		if err != nil {
+		if err := o.Value.Decode(d); err != nil {
 			return err
 		}
-		o.Value = ReposCreateDeploymentStatusReqEnvironment(v)
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptReposCreateDeploymentStatusReqEnvironment`, d.Next())
@@ -49854,11 +50900,9 @@ func (o *OptReposCreateInOrgReqVisibility) Decode(d *jx.Decoder) error {
 	switch d.Next() {
 	case jx.String:
 		o.Set = true
-		v, err := d.Str()
-		if err != nil {
+		if err := o.Value.Decode(d); err != nil {
 			return err
 		}
-		o.Value = ReposCreateInOrgReqVisibility(v)
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptReposCreateInOrgReqVisibility`, d.Next())
@@ -49944,11 +50988,9 @@ func (o *OptReposCreatePagesSiteReqSourcePath) Decode(d *jx.Decoder) error {
 	switch d.Next() {
 	case jx.String:
 		o.Set = true
-		v, err := d.Str()
-		if err != nil {
+		if err := o.Value.Decode(d); err != nil {
 			return err
 		}
-		o.Value = ReposCreatePagesSiteReqSourcePath(v)
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptReposCreatePagesSiteReqSourcePath`, d.Next())
@@ -50056,11 +51098,9 @@ func (o *OptReposGetClonesPer) Decode(d *jx.Decoder) error {
 	switch d.Next() {
 	case jx.String:
 		o.Set = true
-		v, err := d.Str()
-		if err != nil {
+		if err := o.Value.Decode(d); err != nil {
 			return err
 		}
-		o.Value = ReposGetClonesPer(v)
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptReposGetClonesPer`, d.Next())
@@ -50080,11 +51120,9 @@ func (o *OptReposGetViewsPer) Decode(d *jx.Decoder) error {
 	switch d.Next() {
 	case jx.String:
 		o.Set = true
-		v, err := d.Str()
-		if err != nil {
+		if err := o.Value.Decode(d); err != nil {
 			return err
 		}
-		o.Value = ReposGetViewsPer(v)
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptReposGetViewsPer`, d.Next())
@@ -50104,11 +51142,9 @@ func (o *OptReposListCollaboratorsAffiliation) Decode(d *jx.Decoder) error {
 	switch d.Next() {
 	case jx.String:
 		o.Set = true
-		v, err := d.Str()
-		if err != nil {
+		if err := o.Value.Decode(d); err != nil {
 			return err
 		}
-		o.Value = ReposListCollaboratorsAffiliation(v)
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptReposListCollaboratorsAffiliation`, d.Next())
@@ -50128,11 +51164,9 @@ func (o *OptReposListForAuthenticatedUserDirection) Decode(d *jx.Decoder) error 
 	switch d.Next() {
 	case jx.String:
 		o.Set = true
-		v, err := d.Str()
-		if err != nil {
+		if err := o.Value.Decode(d); err != nil {
 			return err
 		}
-		o.Value = ReposListForAuthenticatedUserDirection(v)
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptReposListForAuthenticatedUserDirection`, d.Next())
@@ -50152,11 +51186,9 @@ func (o *OptReposListForAuthenticatedUserSort) Decode(d *jx.Decoder) error {
 	switch d.Next() {
 	case jx.String:
 		o.Set = true
-		v, err := d.Str()
-		if err != nil {
+		if err := o.Value.Decode(d); err != nil {
 			return err
 		}
-		o.Value = ReposListForAuthenticatedUserSort(v)
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptReposListForAuthenticatedUserSort`, d.Next())
@@ -50176,11 +51208,9 @@ func (o *OptReposListForAuthenticatedUserType) Decode(d *jx.Decoder) error {
 	switch d.Next() {
 	case jx.String:
 		o.Set = true
-		v, err := d.Str()
-		if err != nil {
+		if err := o.Value.Decode(d); err != nil {
 			return err
 		}
-		o.Value = ReposListForAuthenticatedUserType(v)
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptReposListForAuthenticatedUserType`, d.Next())
@@ -50200,11 +51230,9 @@ func (o *OptReposListForAuthenticatedUserVisibility) Decode(d *jx.Decoder) error
 	switch d.Next() {
 	case jx.String:
 		o.Set = true
-		v, err := d.Str()
-		if err != nil {
+		if err := o.Value.Decode(d); err != nil {
 			return err
 		}
-		o.Value = ReposListForAuthenticatedUserVisibility(v)
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptReposListForAuthenticatedUserVisibility`, d.Next())
@@ -50224,11 +51252,9 @@ func (o *OptReposListForOrgDirection) Decode(d *jx.Decoder) error {
 	switch d.Next() {
 	case jx.String:
 		o.Set = true
-		v, err := d.Str()
-		if err != nil {
+		if err := o.Value.Decode(d); err != nil {
 			return err
 		}
-		o.Value = ReposListForOrgDirection(v)
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptReposListForOrgDirection`, d.Next())
@@ -50248,11 +51274,9 @@ func (o *OptReposListForOrgSort) Decode(d *jx.Decoder) error {
 	switch d.Next() {
 	case jx.String:
 		o.Set = true
-		v, err := d.Str()
-		if err != nil {
+		if err := o.Value.Decode(d); err != nil {
 			return err
 		}
-		o.Value = ReposListForOrgSort(v)
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptReposListForOrgSort`, d.Next())
@@ -50272,11 +51296,9 @@ func (o *OptReposListForOrgType) Decode(d *jx.Decoder) error {
 	switch d.Next() {
 	case jx.String:
 		o.Set = true
-		v, err := d.Str()
-		if err != nil {
+		if err := o.Value.Decode(d); err != nil {
 			return err
 		}
-		o.Value = ReposListForOrgType(v)
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptReposListForOrgType`, d.Next())
@@ -50296,11 +51318,9 @@ func (o *OptReposListForUserDirection) Decode(d *jx.Decoder) error {
 	switch d.Next() {
 	case jx.String:
 		o.Set = true
-		v, err := d.Str()
-		if err != nil {
+		if err := o.Value.Decode(d); err != nil {
 			return err
 		}
-		o.Value = ReposListForUserDirection(v)
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptReposListForUserDirection`, d.Next())
@@ -50320,11 +51340,9 @@ func (o *OptReposListForUserSort) Decode(d *jx.Decoder) error {
 	switch d.Next() {
 	case jx.String:
 		o.Set = true
-		v, err := d.Str()
-		if err != nil {
+		if err := o.Value.Decode(d); err != nil {
 			return err
 		}
-		o.Value = ReposListForUserSort(v)
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptReposListForUserSort`, d.Next())
@@ -50344,11 +51362,9 @@ func (o *OptReposListForUserType) Decode(d *jx.Decoder) error {
 	switch d.Next() {
 	case jx.String:
 		o.Set = true
-		v, err := d.Str()
-		if err != nil {
+		if err := o.Value.Decode(d); err != nil {
 			return err
 		}
-		o.Value = ReposListForUserType(v)
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptReposListForUserType`, d.Next())
@@ -50368,11 +51384,9 @@ func (o *OptReposListForksSort) Decode(d *jx.Decoder) error {
 	switch d.Next() {
 	case jx.String:
 		o.Set = true
-		v, err := d.Str()
-		if err != nil {
+		if err := o.Value.Decode(d); err != nil {
 			return err
 		}
-		o.Value = ReposListForksSort(v)
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptReposListForksSort`, d.Next())
@@ -50602,11 +51616,9 @@ func (o *OptReposUpdateInvitationReqPermissions) Decode(d *jx.Decoder) error {
 	switch d.Next() {
 	case jx.String:
 		o.Set = true
-		v, err := d.Str()
-		if err != nil {
+		if err := o.Value.Decode(d); err != nil {
 			return err
 		}
-		o.Value = ReposUpdateInvitationReqPermissions(v)
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptReposUpdateInvitationReqPermissions`, d.Next())
@@ -50780,11 +51792,9 @@ func (o *OptReposUpdateReqVisibility) Decode(d *jx.Decoder) error {
 	switch d.Next() {
 	case jx.String:
 		o.Set = true
-		v, err := d.Str()
-		if err != nil {
+		if err := o.Value.Decode(d); err != nil {
 			return err
 		}
-		o.Value = ReposUpdateReqVisibility(v)
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptReposUpdateReqVisibility`, d.Next())
@@ -50980,11 +51990,9 @@ func (o *OptReviewCommentSide) Decode(d *jx.Decoder) error {
 	switch d.Next() {
 	case jx.String:
 		o.Set = true
-		v, err := d.Str()
-		if err != nil {
+		if err := o.Value.Decode(d); err != nil {
 			return err
 		}
-		o.Value = ReviewCommentSide(v)
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptReviewCommentSide`, d.Next())
@@ -51004,11 +52012,9 @@ func (o *OptRunnerLabelsItemType) Decode(d *jx.Decoder) error {
 	switch d.Next() {
 	case jx.String:
 		o.Set = true
-		v, err := d.Str()
-		if err != nil {
+		if err := o.Value.Decode(d); err != nil {
 			return err
 		}
-		o.Value = RunnerLabelsItemType(v)
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptRunnerLabelsItemType`, d.Next())
@@ -51178,11 +52184,9 @@ func (o *OptSearchCodeOrder) Decode(d *jx.Decoder) error {
 	switch d.Next() {
 	case jx.String:
 		o.Set = true
-		v, err := d.Str()
-		if err != nil {
+		if err := o.Value.Decode(d); err != nil {
 			return err
 		}
-		o.Value = SearchCodeOrder(v)
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptSearchCodeOrder`, d.Next())
@@ -51202,11 +52206,9 @@ func (o *OptSearchCodeSort) Decode(d *jx.Decoder) error {
 	switch d.Next() {
 	case jx.String:
 		o.Set = true
-		v, err := d.Str()
-		if err != nil {
+		if err := o.Value.Decode(d); err != nil {
 			return err
 		}
-		o.Value = SearchCodeSort(v)
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptSearchCodeSort`, d.Next())
@@ -51226,11 +52228,9 @@ func (o *OptSearchCommitsOrder) Decode(d *jx.Decoder) error {
 	switch d.Next() {
 	case jx.String:
 		o.Set = true
-		v, err := d.Str()
-		if err != nil {
+		if err := o.Value.Decode(d); err != nil {
 			return err
 		}
-		o.Value = SearchCommitsOrder(v)
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptSearchCommitsOrder`, d.Next())
@@ -51250,11 +52250,9 @@ func (o *OptSearchCommitsSort) Decode(d *jx.Decoder) error {
 	switch d.Next() {
 	case jx.String:
 		o.Set = true
-		v, err := d.Str()
-		if err != nil {
+		if err := o.Value.Decode(d); err != nil {
 			return err
 		}
-		o.Value = SearchCommitsSort(v)
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptSearchCommitsSort`, d.Next())
@@ -51274,11 +52272,9 @@ func (o *OptSearchIssuesAndPullRequestsOrder) Decode(d *jx.Decoder) error {
 	switch d.Next() {
 	case jx.String:
 		o.Set = true
-		v, err := d.Str()
-		if err != nil {
+		if err := o.Value.Decode(d); err != nil {
 			return err
 		}
-		o.Value = SearchIssuesAndPullRequestsOrder(v)
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptSearchIssuesAndPullRequestsOrder`, d.Next())
@@ -51298,11 +52294,9 @@ func (o *OptSearchIssuesAndPullRequestsSort) Decode(d *jx.Decoder) error {
 	switch d.Next() {
 	case jx.String:
 		o.Set = true
-		v, err := d.Str()
-		if err != nil {
+		if err := o.Value.Decode(d); err != nil {
 			return err
 		}
-		o.Value = SearchIssuesAndPullRequestsSort(v)
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptSearchIssuesAndPullRequestsSort`, d.Next())
@@ -51322,11 +52316,9 @@ func (o *OptSearchLabelsOrder) Decode(d *jx.Decoder) error {
 	switch d.Next() {
 	case jx.String:
 		o.Set = true
-		v, err := d.Str()
-		if err != nil {
+		if err := o.Value.Decode(d); err != nil {
 			return err
 		}
-		o.Value = SearchLabelsOrder(v)
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptSearchLabelsOrder`, d.Next())
@@ -51346,11 +52338,9 @@ func (o *OptSearchLabelsSort) Decode(d *jx.Decoder) error {
 	switch d.Next() {
 	case jx.String:
 		o.Set = true
-		v, err := d.Str()
-		if err != nil {
+		if err := o.Value.Decode(d); err != nil {
 			return err
 		}
-		o.Value = SearchLabelsSort(v)
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptSearchLabelsSort`, d.Next())
@@ -51370,11 +52360,9 @@ func (o *OptSearchReposOrder) Decode(d *jx.Decoder) error {
 	switch d.Next() {
 	case jx.String:
 		o.Set = true
-		v, err := d.Str()
-		if err != nil {
+		if err := o.Value.Decode(d); err != nil {
 			return err
 		}
-		o.Value = SearchReposOrder(v)
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptSearchReposOrder`, d.Next())
@@ -51394,11 +52382,9 @@ func (o *OptSearchReposSort) Decode(d *jx.Decoder) error {
 	switch d.Next() {
 	case jx.String:
 		o.Set = true
-		v, err := d.Str()
-		if err != nil {
+		if err := o.Value.Decode(d); err != nil {
 			return err
 		}
-		o.Value = SearchReposSort(v)
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptSearchReposSort`, d.Next())
@@ -51418,11 +52404,9 @@ func (o *OptSearchUsersOrder) Decode(d *jx.Decoder) error {
 	switch d.Next() {
 	case jx.String:
 		o.Set = true
-		v, err := d.Str()
-		if err != nil {
+		if err := o.Value.Decode(d); err != nil {
 			return err
 		}
-		o.Value = SearchUsersOrder(v)
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptSearchUsersOrder`, d.Next())
@@ -51442,11 +52426,9 @@ func (o *OptSearchUsersSort) Decode(d *jx.Decoder) error {
 	switch d.Next() {
 	case jx.String:
 		o.Set = true
-		v, err := d.Str()
-		if err != nil {
+		if err := o.Value.Decode(d); err != nil {
 			return err
 		}
-		o.Value = SearchUsersSort(v)
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptSearchUsersSort`, d.Next())
@@ -51466,11 +52448,9 @@ func (o *OptSecretScanningAlertState) Decode(d *jx.Decoder) error {
 	switch d.Next() {
 	case jx.String:
 		o.Set = true
-		v, err := d.Str()
-		if err != nil {
+		if err := o.Value.Decode(d); err != nil {
 			return err
 		}
-		o.Value = SecretScanningAlertState(v)
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptSecretScanningAlertState`, d.Next())
@@ -51490,11 +52470,9 @@ func (o *OptSecretScanningListAlertsForOrgState) Decode(d *jx.Decoder) error {
 	switch d.Next() {
 	case jx.String:
 		o.Set = true
-		v, err := d.Str()
-		if err != nil {
+		if err := o.Value.Decode(d); err != nil {
 			return err
 		}
-		o.Value = SecretScanningListAlertsForOrgState(v)
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptSecretScanningListAlertsForOrgState`, d.Next())
@@ -51514,11 +52492,9 @@ func (o *OptSecretScanningListAlertsForRepoState) Decode(d *jx.Decoder) error {
 	switch d.Next() {
 	case jx.String:
 		o.Set = true
-		v, err := d.Str()
-		if err != nil {
+		if err := o.Value.Decode(d); err != nil {
 			return err
 		}
-		o.Value = SecretScanningListAlertsForRepoState(v)
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptSecretScanningListAlertsForRepoState`, d.Next())
@@ -51668,11 +52644,9 @@ func (o *OptTeamFullPrivacy) Decode(d *jx.Decoder) error {
 	switch d.Next() {
 	case jx.String:
 		o.Set = true
-		v, err := d.Str()
-		if err != nil {
+		if err := o.Value.Decode(d); err != nil {
 			return err
 		}
-		o.Value = TeamFullPrivacy(v)
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptTeamFullPrivacy`, d.Next())
@@ -51758,11 +52732,9 @@ func (o *OptTeamsAddOrUpdateMembershipForUserInOrgReqRole) Decode(d *jx.Decoder)
 	switch d.Next() {
 	case jx.String:
 		o.Set = true
-		v, err := d.Str()
-		if err != nil {
+		if err := o.Value.Decode(d); err != nil {
 			return err
 		}
-		o.Value = TeamsAddOrUpdateMembershipForUserInOrgReqRole(v)
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptTeamsAddOrUpdateMembershipForUserInOrgReqRole`, d.Next())
@@ -51804,11 +52776,9 @@ func (o *OptTeamsAddOrUpdateMembershipForUserLegacyReqRole) Decode(d *jx.Decoder
 	switch d.Next() {
 	case jx.String:
 		o.Set = true
-		v, err := d.Str()
-		if err != nil {
+		if err := o.Value.Decode(d); err != nil {
 			return err
 		}
-		o.Value = TeamsAddOrUpdateMembershipForUserLegacyReqRole(v)
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptTeamsAddOrUpdateMembershipForUserLegacyReqRole`, d.Next())
@@ -51850,11 +52820,9 @@ func (o *OptTeamsAddOrUpdateProjectPermissionsInOrgReqPermission) Decode(d *jx.D
 	switch d.Next() {
 	case jx.String:
 		o.Set = true
-		v, err := d.Str()
-		if err != nil {
+		if err := o.Value.Decode(d); err != nil {
 			return err
 		}
-		o.Value = TeamsAddOrUpdateProjectPermissionsInOrgReqPermission(v)
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptTeamsAddOrUpdateProjectPermissionsInOrgReqPermission`, d.Next())
@@ -51896,11 +52864,9 @@ func (o *OptTeamsAddOrUpdateProjectPermissionsLegacyReqPermission) Decode(d *jx.
 	switch d.Next() {
 	case jx.String:
 		o.Set = true
-		v, err := d.Str()
-		if err != nil {
+		if err := o.Value.Decode(d); err != nil {
 			return err
 		}
-		o.Value = TeamsAddOrUpdateProjectPermissionsLegacyReqPermission(v)
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptTeamsAddOrUpdateProjectPermissionsLegacyReqPermission`, d.Next())
@@ -51942,11 +52908,9 @@ func (o *OptTeamsAddOrUpdateRepoPermissionsInOrgReqPermission) Decode(d *jx.Deco
 	switch d.Next() {
 	case jx.String:
 		o.Set = true
-		v, err := d.Str()
-		if err != nil {
+		if err := o.Value.Decode(d); err != nil {
 			return err
 		}
-		o.Value = TeamsAddOrUpdateRepoPermissionsInOrgReqPermission(v)
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptTeamsAddOrUpdateRepoPermissionsInOrgReqPermission`, d.Next())
@@ -51988,11 +52952,9 @@ func (o *OptTeamsAddOrUpdateRepoPermissionsLegacyReqPermission) Decode(d *jx.Dec
 	switch d.Next() {
 	case jx.String:
 		o.Set = true
-		v, err := d.Str()
-		if err != nil {
+		if err := o.Value.Decode(d); err != nil {
 			return err
 		}
-		o.Value = TeamsAddOrUpdateRepoPermissionsLegacyReqPermission(v)
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptTeamsAddOrUpdateRepoPermissionsLegacyReqPermission`, d.Next())
@@ -52012,11 +52974,9 @@ func (o *OptTeamsCreateReqPermission) Decode(d *jx.Decoder) error {
 	switch d.Next() {
 	case jx.String:
 		o.Set = true
-		v, err := d.Str()
-		if err != nil {
+		if err := o.Value.Decode(d); err != nil {
 			return err
 		}
-		o.Value = TeamsCreateReqPermission(v)
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptTeamsCreateReqPermission`, d.Next())
@@ -52036,11 +52996,9 @@ func (o *OptTeamsCreateReqPrivacy) Decode(d *jx.Decoder) error {
 	switch d.Next() {
 	case jx.String:
 		o.Set = true
-		v, err := d.Str()
-		if err != nil {
+		if err := o.Value.Decode(d); err != nil {
 			return err
 		}
-		o.Value = TeamsCreateReqPrivacy(v)
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptTeamsCreateReqPrivacy`, d.Next())
@@ -52060,11 +53018,9 @@ func (o *OptTeamsListDiscussionCommentsInOrgDirection) Decode(d *jx.Decoder) err
 	switch d.Next() {
 	case jx.String:
 		o.Set = true
-		v, err := d.Str()
-		if err != nil {
+		if err := o.Value.Decode(d); err != nil {
 			return err
 		}
-		o.Value = TeamsListDiscussionCommentsInOrgDirection(v)
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptTeamsListDiscussionCommentsInOrgDirection`, d.Next())
@@ -52084,11 +53040,9 @@ func (o *OptTeamsListDiscussionCommentsLegacyDirection) Decode(d *jx.Decoder) er
 	switch d.Next() {
 	case jx.String:
 		o.Set = true
-		v, err := d.Str()
-		if err != nil {
+		if err := o.Value.Decode(d); err != nil {
 			return err
 		}
-		o.Value = TeamsListDiscussionCommentsLegacyDirection(v)
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptTeamsListDiscussionCommentsLegacyDirection`, d.Next())
@@ -52108,11 +53062,9 @@ func (o *OptTeamsListDiscussionsInOrgDirection) Decode(d *jx.Decoder) error {
 	switch d.Next() {
 	case jx.String:
 		o.Set = true
-		v, err := d.Str()
-		if err != nil {
+		if err := o.Value.Decode(d); err != nil {
 			return err
 		}
-		o.Value = TeamsListDiscussionsInOrgDirection(v)
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptTeamsListDiscussionsInOrgDirection`, d.Next())
@@ -52132,11 +53084,9 @@ func (o *OptTeamsListDiscussionsLegacyDirection) Decode(d *jx.Decoder) error {
 	switch d.Next() {
 	case jx.String:
 		o.Set = true
-		v, err := d.Str()
-		if err != nil {
+		if err := o.Value.Decode(d); err != nil {
 			return err
 		}
-		o.Value = TeamsListDiscussionsLegacyDirection(v)
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptTeamsListDiscussionsLegacyDirection`, d.Next())
@@ -52156,11 +53106,9 @@ func (o *OptTeamsListMembersInOrgRole) Decode(d *jx.Decoder) error {
 	switch d.Next() {
 	case jx.String:
 		o.Set = true
-		v, err := d.Str()
-		if err != nil {
+		if err := o.Value.Decode(d); err != nil {
 			return err
 		}
-		o.Value = TeamsListMembersInOrgRole(v)
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptTeamsListMembersInOrgRole`, d.Next())
@@ -52180,11 +53128,9 @@ func (o *OptTeamsListMembersLegacyRole) Decode(d *jx.Decoder) error {
 	switch d.Next() {
 	case jx.String:
 		o.Set = true
-		v, err := d.Str()
-		if err != nil {
+		if err := o.Value.Decode(d); err != nil {
 			return err
 		}
-		o.Value = TeamsListMembersLegacyRole(v)
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptTeamsListMembersLegacyRole`, d.Next())
@@ -52270,11 +53216,9 @@ func (o *OptTeamsUpdateInOrgReqPermission) Decode(d *jx.Decoder) error {
 	switch d.Next() {
 	case jx.String:
 		o.Set = true
-		v, err := d.Str()
-		if err != nil {
+		if err := o.Value.Decode(d); err != nil {
 			return err
 		}
-		o.Value = TeamsUpdateInOrgReqPermission(v)
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptTeamsUpdateInOrgReqPermission`, d.Next())
@@ -52294,11 +53238,9 @@ func (o *OptTeamsUpdateInOrgReqPrivacy) Decode(d *jx.Decoder) error {
 	switch d.Next() {
 	case jx.String:
 		o.Set = true
-		v, err := d.Str()
-		if err != nil {
+		if err := o.Value.Decode(d); err != nil {
 			return err
 		}
-		o.Value = TeamsUpdateInOrgReqPrivacy(v)
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptTeamsUpdateInOrgReqPrivacy`, d.Next())
@@ -52318,11 +53260,9 @@ func (o *OptTeamsUpdateLegacyReqPermission) Decode(d *jx.Decoder) error {
 	switch d.Next() {
 	case jx.String:
 		o.Set = true
-		v, err := d.Str()
-		if err != nil {
+		if err := o.Value.Decode(d); err != nil {
 			return err
 		}
-		o.Value = TeamsUpdateLegacyReqPermission(v)
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptTeamsUpdateLegacyReqPermission`, d.Next())
@@ -52342,11 +53282,9 @@ func (o *OptTeamsUpdateLegacyReqPrivacy) Decode(d *jx.Decoder) error {
 	switch d.Next() {
 	case jx.String:
 		o.Set = true
-		v, err := d.Str()
-		if err != nil {
+		if err := o.Value.Decode(d); err != nil {
 			return err
 		}
-		o.Value = TeamsUpdateLegacyReqPrivacy(v)
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptTeamsUpdateLegacyReqPrivacy`, d.Next())
@@ -52494,11 +53432,9 @@ func (o *OptUsersGetContextForUserSubjectType) Decode(d *jx.Decoder) error {
 	switch d.Next() {
 	case jx.String:
 		o.Set = true
-		v, err := d.Str()
-		if err != nil {
+		if err := o.Value.Decode(d); err != nil {
 			return err
 		}
-		o.Value = UsersGetContextForUserSubjectType(v)
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptUsersGetContextForUserSubjectType`, d.Next())
@@ -53022,11 +53958,22 @@ func (s *OrgMembershipRole) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode OrgMembershipRole to nil`)
 	}
-	v, err := d.Str()
+	v, err := d.StrBytes()
 	if err != nil {
 		return err
 	}
-	*s = OrgMembershipRole(v)
+	// Try to use constant string.
+	switch OrgMembershipRole(v) {
+	case OrgMembershipRoleAdmin:
+		*s = OrgMembershipRoleAdmin
+	case OrgMembershipRoleMember:
+		*s = OrgMembershipRoleMember
+	case OrgMembershipRoleBillingManager:
+		*s = OrgMembershipRoleBillingManager
+	default:
+		*s = OrgMembershipRole(v)
+	}
+
 	return nil
 }
 
@@ -53040,11 +53987,20 @@ func (s *OrgMembershipState) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode OrgMembershipState to nil`)
 	}
-	v, err := d.Str()
+	v, err := d.StrBytes()
 	if err != nil {
 		return err
 	}
-	*s = OrgMembershipState(v)
+	// Try to use constant string.
+	switch OrgMembershipState(v) {
+	case OrgMembershipStateActive:
+		*s = OrgMembershipStateActive
+	case OrgMembershipStatePending:
+		*s = OrgMembershipStatePending
+	default:
+		*s = OrgMembershipState(v)
+	}
+
 	return nil
 }
 
@@ -53121,11 +54077,22 @@ func (s *OrganizationActionsSecretVisibility) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode OrganizationActionsSecretVisibility to nil`)
 	}
-	v, err := d.Str()
+	v, err := d.StrBytes()
 	if err != nil {
 		return err
 	}
-	*s = OrganizationActionsSecretVisibility(v)
+	// Try to use constant string.
+	switch OrganizationActionsSecretVisibility(v) {
+	case OrganizationActionsSecretVisibilityAll:
+		*s = OrganizationActionsSecretVisibilityAll
+	case OrganizationActionsSecretVisibilityPrivate:
+		*s = OrganizationActionsSecretVisibilityPrivate
+	case OrganizationActionsSecretVisibilitySelected:
+		*s = OrganizationActionsSecretVisibilitySelected
+	default:
+		*s = OrganizationActionsSecretVisibility(v)
+	}
+
 	return nil
 }
 
@@ -54292,11 +55259,22 @@ func (s *OrgsCreateInvitationReqRole) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode OrgsCreateInvitationReqRole to nil`)
 	}
-	v, err := d.Str()
+	v, err := d.StrBytes()
 	if err != nil {
 		return err
 	}
-	*s = OrgsCreateInvitationReqRole(v)
+	// Try to use constant string.
+	switch OrgsCreateInvitationReqRole(v) {
+	case OrgsCreateInvitationReqRoleAdmin:
+		*s = OrgsCreateInvitationReqRoleAdmin
+	case OrgsCreateInvitationReqRoleDirectMember:
+		*s = OrgsCreateInvitationReqRoleDirectMember
+	case OrgsCreateInvitationReqRoleBillingManager:
+		*s = OrgsCreateInvitationReqRoleBillingManager
+	default:
+		*s = OrgsCreateInvitationReqRole(v)
+	}
+
 	return nil
 }
 
@@ -54475,11 +55453,22 @@ func (s *OrgsGetAuditLogInclude) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode OrgsGetAuditLogInclude to nil`)
 	}
-	v, err := d.Str()
+	v, err := d.StrBytes()
 	if err != nil {
 		return err
 	}
-	*s = OrgsGetAuditLogInclude(v)
+	// Try to use constant string.
+	switch OrgsGetAuditLogInclude(v) {
+	case OrgsGetAuditLogIncludeWeb:
+		*s = OrgsGetAuditLogIncludeWeb
+	case OrgsGetAuditLogIncludeGit:
+		*s = OrgsGetAuditLogIncludeGit
+	case OrgsGetAuditLogIncludeAll:
+		*s = OrgsGetAuditLogIncludeAll
+	default:
+		*s = OrgsGetAuditLogInclude(v)
+	}
+
 	return nil
 }
 
@@ -54493,11 +55482,20 @@ func (s *OrgsGetAuditLogOrder) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode OrgsGetAuditLogOrder to nil`)
 	}
-	v, err := d.Str()
+	v, err := d.StrBytes()
 	if err != nil {
 		return err
 	}
-	*s = OrgsGetAuditLogOrder(v)
+	// Try to use constant string.
+	switch OrgsGetAuditLogOrder(v) {
+	case OrgsGetAuditLogOrderDesc:
+		*s = OrgsGetAuditLogOrderDesc
+	case OrgsGetAuditLogOrderAsc:
+		*s = OrgsGetAuditLogOrderAsc
+	default:
+		*s = OrgsGetAuditLogOrder(v)
+	}
+
 	return nil
 }
 
@@ -54799,11 +55797,20 @@ func (s *OrgsListMembersFilter) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode OrgsListMembersFilter to nil`)
 	}
-	v, err := d.Str()
+	v, err := d.StrBytes()
 	if err != nil {
 		return err
 	}
-	*s = OrgsListMembersFilter(v)
+	// Try to use constant string.
+	switch OrgsListMembersFilter(v) {
+	case OrgsListMembersFilter2FADisabled:
+		*s = OrgsListMembersFilter2FADisabled
+	case OrgsListMembersFilterAll:
+		*s = OrgsListMembersFilterAll
+	default:
+		*s = OrgsListMembersFilter(v)
+	}
+
 	return nil
 }
 
@@ -54873,11 +55880,22 @@ func (s *OrgsListMembersRole) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode OrgsListMembersRole to nil`)
 	}
-	v, err := d.Str()
+	v, err := d.StrBytes()
 	if err != nil {
 		return err
 	}
-	*s = OrgsListMembersRole(v)
+	// Try to use constant string.
+	switch OrgsListMembersRole(v) {
+	case OrgsListMembersRoleAll:
+		*s = OrgsListMembersRoleAll
+	case OrgsListMembersRoleAdmin:
+		*s = OrgsListMembersRoleAdmin
+	case OrgsListMembersRoleMember:
+		*s = OrgsListMembersRoleMember
+	default:
+		*s = OrgsListMembersRole(v)
+	}
+
 	return nil
 }
 
@@ -54975,11 +55993,20 @@ func (s *OrgsListMembershipsForAuthenticatedUserState) Decode(d *jx.Decoder) err
 	if s == nil {
 		return errors.New(`invalid: unable to decode OrgsListMembershipsForAuthenticatedUserState to nil`)
 	}
-	v, err := d.Str()
+	v, err := d.StrBytes()
 	if err != nil {
 		return err
 	}
-	*s = OrgsListMembershipsForAuthenticatedUserState(v)
+	// Try to use constant string.
+	switch OrgsListMembershipsForAuthenticatedUserState(v) {
+	case OrgsListMembershipsForAuthenticatedUserStateActive:
+		*s = OrgsListMembershipsForAuthenticatedUserStateActive
+	case OrgsListMembershipsForAuthenticatedUserStatePending:
+		*s = OrgsListMembershipsForAuthenticatedUserStatePending
+	default:
+		*s = OrgsListMembershipsForAuthenticatedUserState(v)
+	}
+
 	return nil
 }
 
@@ -55029,11 +56056,20 @@ func (s *OrgsListOutsideCollaboratorsFilter) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode OrgsListOutsideCollaboratorsFilter to nil`)
 	}
-	v, err := d.Str()
+	v, err := d.StrBytes()
 	if err != nil {
 		return err
 	}
-	*s = OrgsListOutsideCollaboratorsFilter(v)
+	// Try to use constant string.
+	switch OrgsListOutsideCollaboratorsFilter(v) {
+	case OrgsListOutsideCollaboratorsFilter2FADisabled:
+		*s = OrgsListOutsideCollaboratorsFilter2FADisabled
+	case OrgsListOutsideCollaboratorsFilterAll:
+		*s = OrgsListOutsideCollaboratorsFilterAll
+	default:
+		*s = OrgsListOutsideCollaboratorsFilter(v)
+	}
+
 	return nil
 }
 
@@ -55390,11 +56426,20 @@ func (s *OrgsSetMembershipForUserReqRole) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode OrgsSetMembershipForUserReqRole to nil`)
 	}
-	v, err := d.Str()
+	v, err := d.StrBytes()
 	if err != nil {
 		return err
 	}
-	*s = OrgsSetMembershipForUserReqRole(v)
+	// Try to use constant string.
+	switch OrgsSetMembershipForUserReqRole(v) {
+	case OrgsSetMembershipForUserReqRoleAdmin:
+		*s = OrgsSetMembershipForUserReqRoleAdmin
+	case OrgsSetMembershipForUserReqRoleMember:
+		*s = OrgsSetMembershipForUserReqRoleMember
+	default:
+		*s = OrgsSetMembershipForUserReqRole(v)
+	}
+
 	return nil
 }
 
@@ -55523,11 +56568,18 @@ func (s *OrgsUpdateMembershipForAuthenticatedUserReqState) Decode(d *jx.Decoder)
 	if s == nil {
 		return errors.New(`invalid: unable to decode OrgsUpdateMembershipForAuthenticatedUserReqState to nil`)
 	}
-	v, err := d.Str()
+	v, err := d.StrBytes()
 	if err != nil {
 		return err
 	}
-	*s = OrgsUpdateMembershipForAuthenticatedUserReqState(v)
+	// Try to use constant string.
+	switch OrgsUpdateMembershipForAuthenticatedUserReqState(v) {
+	case OrgsUpdateMembershipForAuthenticatedUserReqStateActive:
+		*s = OrgsUpdateMembershipForAuthenticatedUserReqStateActive
+	default:
+		*s = OrgsUpdateMembershipForAuthenticatedUserReqState(v)
+	}
+
 	return nil
 }
 
@@ -55732,11 +56784,24 @@ func (s *OrgsUpdateReqDefaultRepositoryPermission) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode OrgsUpdateReqDefaultRepositoryPermission to nil`)
 	}
-	v, err := d.Str()
+	v, err := d.StrBytes()
 	if err != nil {
 		return err
 	}
-	*s = OrgsUpdateReqDefaultRepositoryPermission(v)
+	// Try to use constant string.
+	switch OrgsUpdateReqDefaultRepositoryPermission(v) {
+	case OrgsUpdateReqDefaultRepositoryPermissionRead:
+		*s = OrgsUpdateReqDefaultRepositoryPermissionRead
+	case OrgsUpdateReqDefaultRepositoryPermissionWrite:
+		*s = OrgsUpdateReqDefaultRepositoryPermissionWrite
+	case OrgsUpdateReqDefaultRepositoryPermissionAdmin:
+		*s = OrgsUpdateReqDefaultRepositoryPermissionAdmin
+	case OrgsUpdateReqDefaultRepositoryPermissionNone:
+		*s = OrgsUpdateReqDefaultRepositoryPermissionNone
+	default:
+		*s = OrgsUpdateReqDefaultRepositoryPermission(v)
+	}
+
 	return nil
 }
 
@@ -55750,11 +56815,22 @@ func (s *OrgsUpdateReqMembersAllowedRepositoryCreationType) Decode(d *jx.Decoder
 	if s == nil {
 		return errors.New(`invalid: unable to decode OrgsUpdateReqMembersAllowedRepositoryCreationType to nil`)
 	}
-	v, err := d.Str()
+	v, err := d.StrBytes()
 	if err != nil {
 		return err
 	}
-	*s = OrgsUpdateReqMembersAllowedRepositoryCreationType(v)
+	// Try to use constant string.
+	switch OrgsUpdateReqMembersAllowedRepositoryCreationType(v) {
+	case OrgsUpdateReqMembersAllowedRepositoryCreationTypeAll:
+		*s = OrgsUpdateReqMembersAllowedRepositoryCreationTypeAll
+	case OrgsUpdateReqMembersAllowedRepositoryCreationTypePrivate:
+		*s = OrgsUpdateReqMembersAllowedRepositoryCreationTypePrivate
+	case OrgsUpdateReqMembersAllowedRepositoryCreationTypeNone:
+		*s = OrgsUpdateReqMembersAllowedRepositoryCreationTypeNone
+	default:
+		*s = OrgsUpdateReqMembersAllowedRepositoryCreationType(v)
+	}
+
 	return nil
 }
 
@@ -56068,11 +57144,28 @@ func (s *PackagePackageType) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode PackagePackageType to nil`)
 	}
-	v, err := d.Str()
+	v, err := d.StrBytes()
 	if err != nil {
 		return err
 	}
-	*s = PackagePackageType(v)
+	// Try to use constant string.
+	switch PackagePackageType(v) {
+	case PackagePackageTypeNpm:
+		*s = PackagePackageTypeNpm
+	case PackagePackageTypeMaven:
+		*s = PackagePackageTypeMaven
+	case PackagePackageTypeRubygems:
+		*s = PackagePackageTypeRubygems
+	case PackagePackageTypeDocker:
+		*s = PackagePackageTypeDocker
+	case PackagePackageTypeNuget:
+		*s = PackagePackageTypeNuget
+	case PackagePackageTypeContainer:
+		*s = PackagePackageTypeContainer
+	default:
+		*s = PackagePackageType(v)
+	}
+
 	return nil
 }
 
@@ -56333,11 +57426,28 @@ func (s *PackageVersionMetadataPackageType) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode PackageVersionMetadataPackageType to nil`)
 	}
-	v, err := d.Str()
+	v, err := d.StrBytes()
 	if err != nil {
 		return err
 	}
-	*s = PackageVersionMetadataPackageType(v)
+	// Try to use constant string.
+	switch PackageVersionMetadataPackageType(v) {
+	case PackageVersionMetadataPackageTypeNpm:
+		*s = PackageVersionMetadataPackageTypeNpm
+	case PackageVersionMetadataPackageTypeMaven:
+		*s = PackageVersionMetadataPackageTypeMaven
+	case PackageVersionMetadataPackageTypeRubygems:
+		*s = PackageVersionMetadataPackageTypeRubygems
+	case PackageVersionMetadataPackageTypeDocker:
+		*s = PackageVersionMetadataPackageTypeDocker
+	case PackageVersionMetadataPackageTypeNuget:
+		*s = PackageVersionMetadataPackageTypeNuget
+	case PackageVersionMetadataPackageTypeContainer:
+		*s = PackageVersionMetadataPackageTypeContainer
+	default:
+		*s = PackageVersionMetadataPackageType(v)
+	}
+
 	return nil
 }
 
@@ -56351,11 +57461,20 @@ func (s *PackageVisibility) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode PackageVisibility to nil`)
 	}
-	v, err := d.Str()
+	v, err := d.StrBytes()
 	if err != nil {
 		return err
 	}
-	*s = PackageVisibility(v)
+	// Try to use constant string.
+	switch PackageVisibility(v) {
+	case PackageVisibilityPrivate:
+		*s = PackageVisibilityPrivate
+	case PackageVisibilityPublic:
+		*s = PackageVisibilityPublic
+	default:
+		*s = PackageVisibility(v)
+	}
+
 	return nil
 }
 
@@ -56508,11 +57627,28 @@ func (s *PackagesDeletePackageForAuthenticatedUserPackageType) Decode(d *jx.Deco
 	if s == nil {
 		return errors.New(`invalid: unable to decode PackagesDeletePackageForAuthenticatedUserPackageType to nil`)
 	}
-	v, err := d.Str()
+	v, err := d.StrBytes()
 	if err != nil {
 		return err
 	}
-	*s = PackagesDeletePackageForAuthenticatedUserPackageType(v)
+	// Try to use constant string.
+	switch PackagesDeletePackageForAuthenticatedUserPackageType(v) {
+	case PackagesDeletePackageForAuthenticatedUserPackageTypeNpm:
+		*s = PackagesDeletePackageForAuthenticatedUserPackageTypeNpm
+	case PackagesDeletePackageForAuthenticatedUserPackageTypeMaven:
+		*s = PackagesDeletePackageForAuthenticatedUserPackageTypeMaven
+	case PackagesDeletePackageForAuthenticatedUserPackageTypeRubygems:
+		*s = PackagesDeletePackageForAuthenticatedUserPackageTypeRubygems
+	case PackagesDeletePackageForAuthenticatedUserPackageTypeDocker:
+		*s = PackagesDeletePackageForAuthenticatedUserPackageTypeDocker
+	case PackagesDeletePackageForAuthenticatedUserPackageTypeNuget:
+		*s = PackagesDeletePackageForAuthenticatedUserPackageTypeNuget
+	case PackagesDeletePackageForAuthenticatedUserPackageTypeContainer:
+		*s = PackagesDeletePackageForAuthenticatedUserPackageTypeContainer
+	default:
+		*s = PackagesDeletePackageForAuthenticatedUserPackageType(v)
+	}
+
 	return nil
 }
 
@@ -56618,11 +57754,28 @@ func (s *PackagesDeletePackageForOrgPackageType) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode PackagesDeletePackageForOrgPackageType to nil`)
 	}
-	v, err := d.Str()
+	v, err := d.StrBytes()
 	if err != nil {
 		return err
 	}
-	*s = PackagesDeletePackageForOrgPackageType(v)
+	// Try to use constant string.
+	switch PackagesDeletePackageForOrgPackageType(v) {
+	case PackagesDeletePackageForOrgPackageTypeNpm:
+		*s = PackagesDeletePackageForOrgPackageTypeNpm
+	case PackagesDeletePackageForOrgPackageTypeMaven:
+		*s = PackagesDeletePackageForOrgPackageTypeMaven
+	case PackagesDeletePackageForOrgPackageTypeRubygems:
+		*s = PackagesDeletePackageForOrgPackageTypeRubygems
+	case PackagesDeletePackageForOrgPackageTypeDocker:
+		*s = PackagesDeletePackageForOrgPackageTypeDocker
+	case PackagesDeletePackageForOrgPackageTypeNuget:
+		*s = PackagesDeletePackageForOrgPackageTypeNuget
+	case PackagesDeletePackageForOrgPackageTypeContainer:
+		*s = PackagesDeletePackageForOrgPackageTypeContainer
+	default:
+		*s = PackagesDeletePackageForOrgPackageType(v)
+	}
+
 	return nil
 }
 
@@ -56728,11 +57881,28 @@ func (s *PackagesDeletePackageForUserPackageType) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode PackagesDeletePackageForUserPackageType to nil`)
 	}
-	v, err := d.Str()
+	v, err := d.StrBytes()
 	if err != nil {
 		return err
 	}
-	*s = PackagesDeletePackageForUserPackageType(v)
+	// Try to use constant string.
+	switch PackagesDeletePackageForUserPackageType(v) {
+	case PackagesDeletePackageForUserPackageTypeNpm:
+		*s = PackagesDeletePackageForUserPackageTypeNpm
+	case PackagesDeletePackageForUserPackageTypeMaven:
+		*s = PackagesDeletePackageForUserPackageTypeMaven
+	case PackagesDeletePackageForUserPackageTypeRubygems:
+		*s = PackagesDeletePackageForUserPackageTypeRubygems
+	case PackagesDeletePackageForUserPackageTypeDocker:
+		*s = PackagesDeletePackageForUserPackageTypeDocker
+	case PackagesDeletePackageForUserPackageTypeNuget:
+		*s = PackagesDeletePackageForUserPackageTypeNuget
+	case PackagesDeletePackageForUserPackageTypeContainer:
+		*s = PackagesDeletePackageForUserPackageTypeContainer
+	default:
+		*s = PackagesDeletePackageForUserPackageType(v)
+	}
+
 	return nil
 }
 
@@ -56838,11 +58008,28 @@ func (s *PackagesDeletePackageVersionForAuthenticatedUserPackageType) Decode(d *
 	if s == nil {
 		return errors.New(`invalid: unable to decode PackagesDeletePackageVersionForAuthenticatedUserPackageType to nil`)
 	}
-	v, err := d.Str()
+	v, err := d.StrBytes()
 	if err != nil {
 		return err
 	}
-	*s = PackagesDeletePackageVersionForAuthenticatedUserPackageType(v)
+	// Try to use constant string.
+	switch PackagesDeletePackageVersionForAuthenticatedUserPackageType(v) {
+	case PackagesDeletePackageVersionForAuthenticatedUserPackageTypeNpm:
+		*s = PackagesDeletePackageVersionForAuthenticatedUserPackageTypeNpm
+	case PackagesDeletePackageVersionForAuthenticatedUserPackageTypeMaven:
+		*s = PackagesDeletePackageVersionForAuthenticatedUserPackageTypeMaven
+	case PackagesDeletePackageVersionForAuthenticatedUserPackageTypeRubygems:
+		*s = PackagesDeletePackageVersionForAuthenticatedUserPackageTypeRubygems
+	case PackagesDeletePackageVersionForAuthenticatedUserPackageTypeDocker:
+		*s = PackagesDeletePackageVersionForAuthenticatedUserPackageTypeDocker
+	case PackagesDeletePackageVersionForAuthenticatedUserPackageTypeNuget:
+		*s = PackagesDeletePackageVersionForAuthenticatedUserPackageTypeNuget
+	case PackagesDeletePackageVersionForAuthenticatedUserPackageTypeContainer:
+		*s = PackagesDeletePackageVersionForAuthenticatedUserPackageTypeContainer
+	default:
+		*s = PackagesDeletePackageVersionForAuthenticatedUserPackageType(v)
+	}
+
 	return nil
 }
 
@@ -56948,11 +58135,28 @@ func (s *PackagesDeletePackageVersionForOrgPackageType) Decode(d *jx.Decoder) er
 	if s == nil {
 		return errors.New(`invalid: unable to decode PackagesDeletePackageVersionForOrgPackageType to nil`)
 	}
-	v, err := d.Str()
+	v, err := d.StrBytes()
 	if err != nil {
 		return err
 	}
-	*s = PackagesDeletePackageVersionForOrgPackageType(v)
+	// Try to use constant string.
+	switch PackagesDeletePackageVersionForOrgPackageType(v) {
+	case PackagesDeletePackageVersionForOrgPackageTypeNpm:
+		*s = PackagesDeletePackageVersionForOrgPackageTypeNpm
+	case PackagesDeletePackageVersionForOrgPackageTypeMaven:
+		*s = PackagesDeletePackageVersionForOrgPackageTypeMaven
+	case PackagesDeletePackageVersionForOrgPackageTypeRubygems:
+		*s = PackagesDeletePackageVersionForOrgPackageTypeRubygems
+	case PackagesDeletePackageVersionForOrgPackageTypeDocker:
+		*s = PackagesDeletePackageVersionForOrgPackageTypeDocker
+	case PackagesDeletePackageVersionForOrgPackageTypeNuget:
+		*s = PackagesDeletePackageVersionForOrgPackageTypeNuget
+	case PackagesDeletePackageVersionForOrgPackageTypeContainer:
+		*s = PackagesDeletePackageVersionForOrgPackageTypeContainer
+	default:
+		*s = PackagesDeletePackageVersionForOrgPackageType(v)
+	}
+
 	return nil
 }
 
@@ -57058,11 +58262,28 @@ func (s *PackagesDeletePackageVersionForUserPackageType) Decode(d *jx.Decoder) e
 	if s == nil {
 		return errors.New(`invalid: unable to decode PackagesDeletePackageVersionForUserPackageType to nil`)
 	}
-	v, err := d.Str()
+	v, err := d.StrBytes()
 	if err != nil {
 		return err
 	}
-	*s = PackagesDeletePackageVersionForUserPackageType(v)
+	// Try to use constant string.
+	switch PackagesDeletePackageVersionForUserPackageType(v) {
+	case PackagesDeletePackageVersionForUserPackageTypeNpm:
+		*s = PackagesDeletePackageVersionForUserPackageTypeNpm
+	case PackagesDeletePackageVersionForUserPackageTypeMaven:
+		*s = PackagesDeletePackageVersionForUserPackageTypeMaven
+	case PackagesDeletePackageVersionForUserPackageTypeRubygems:
+		*s = PackagesDeletePackageVersionForUserPackageTypeRubygems
+	case PackagesDeletePackageVersionForUserPackageTypeDocker:
+		*s = PackagesDeletePackageVersionForUserPackageTypeDocker
+	case PackagesDeletePackageVersionForUserPackageTypeNuget:
+		*s = PackagesDeletePackageVersionForUserPackageTypeNuget
+	case PackagesDeletePackageVersionForUserPackageTypeContainer:
+		*s = PackagesDeletePackageVersionForUserPackageTypeContainer
+	default:
+		*s = PackagesDeletePackageVersionForUserPackageType(v)
+	}
+
 	return nil
 }
 
@@ -57184,11 +58405,28 @@ func (s *PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserPackageT
 	if s == nil {
 		return errors.New(`invalid: unable to decode PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserPackageType to nil`)
 	}
-	v, err := d.Str()
+	v, err := d.StrBytes()
 	if err != nil {
 		return err
 	}
-	*s = PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserPackageType(v)
+	// Try to use constant string.
+	switch PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserPackageType(v) {
+	case PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserPackageTypeNpm:
+		*s = PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserPackageTypeNpm
+	case PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserPackageTypeMaven:
+		*s = PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserPackageTypeMaven
+	case PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserPackageTypeRubygems:
+		*s = PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserPackageTypeRubygems
+	case PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserPackageTypeDocker:
+		*s = PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserPackageTypeDocker
+	case PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserPackageTypeNuget:
+		*s = PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserPackageTypeNuget
+	case PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserPackageTypeContainer:
+		*s = PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserPackageTypeContainer
+	default:
+		*s = PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserPackageType(v)
+	}
+
 	return nil
 }
 
@@ -57202,11 +58440,20 @@ func (s *PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserState) D
 	if s == nil {
 		return errors.New(`invalid: unable to decode PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserState to nil`)
 	}
-	v, err := d.Str()
+	v, err := d.StrBytes()
 	if err != nil {
 		return err
 	}
-	*s = PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserState(v)
+	// Try to use constant string.
+	switch PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserState(v) {
+	case PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserStateActive:
+		*s = PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserStateActive
+	case PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserStateDeleted:
+		*s = PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserStateDeleted
+	default:
+		*s = PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserState(v)
+	}
+
 	return nil
 }
 
@@ -57328,11 +58575,28 @@ func (s *PackagesGetAllPackageVersionsForPackageOwnedByOrgPackageType) Decode(d 
 	if s == nil {
 		return errors.New(`invalid: unable to decode PackagesGetAllPackageVersionsForPackageOwnedByOrgPackageType to nil`)
 	}
-	v, err := d.Str()
+	v, err := d.StrBytes()
 	if err != nil {
 		return err
 	}
-	*s = PackagesGetAllPackageVersionsForPackageOwnedByOrgPackageType(v)
+	// Try to use constant string.
+	switch PackagesGetAllPackageVersionsForPackageOwnedByOrgPackageType(v) {
+	case PackagesGetAllPackageVersionsForPackageOwnedByOrgPackageTypeNpm:
+		*s = PackagesGetAllPackageVersionsForPackageOwnedByOrgPackageTypeNpm
+	case PackagesGetAllPackageVersionsForPackageOwnedByOrgPackageTypeMaven:
+		*s = PackagesGetAllPackageVersionsForPackageOwnedByOrgPackageTypeMaven
+	case PackagesGetAllPackageVersionsForPackageOwnedByOrgPackageTypeRubygems:
+		*s = PackagesGetAllPackageVersionsForPackageOwnedByOrgPackageTypeRubygems
+	case PackagesGetAllPackageVersionsForPackageOwnedByOrgPackageTypeDocker:
+		*s = PackagesGetAllPackageVersionsForPackageOwnedByOrgPackageTypeDocker
+	case PackagesGetAllPackageVersionsForPackageOwnedByOrgPackageTypeNuget:
+		*s = PackagesGetAllPackageVersionsForPackageOwnedByOrgPackageTypeNuget
+	case PackagesGetAllPackageVersionsForPackageOwnedByOrgPackageTypeContainer:
+		*s = PackagesGetAllPackageVersionsForPackageOwnedByOrgPackageTypeContainer
+	default:
+		*s = PackagesGetAllPackageVersionsForPackageOwnedByOrgPackageType(v)
+	}
+
 	return nil
 }
 
@@ -57346,11 +58610,20 @@ func (s *PackagesGetAllPackageVersionsForPackageOwnedByOrgState) Decode(d *jx.De
 	if s == nil {
 		return errors.New(`invalid: unable to decode PackagesGetAllPackageVersionsForPackageOwnedByOrgState to nil`)
 	}
-	v, err := d.Str()
+	v, err := d.StrBytes()
 	if err != nil {
 		return err
 	}
-	*s = PackagesGetAllPackageVersionsForPackageOwnedByOrgState(v)
+	// Try to use constant string.
+	switch PackagesGetAllPackageVersionsForPackageOwnedByOrgState(v) {
+	case PackagesGetAllPackageVersionsForPackageOwnedByOrgStateActive:
+		*s = PackagesGetAllPackageVersionsForPackageOwnedByOrgStateActive
+	case PackagesGetAllPackageVersionsForPackageOwnedByOrgStateDeleted:
+		*s = PackagesGetAllPackageVersionsForPackageOwnedByOrgStateDeleted
+	default:
+		*s = PackagesGetAllPackageVersionsForPackageOwnedByOrgState(v)
+	}
+
 	return nil
 }
 
@@ -57472,11 +58745,28 @@ func (s *PackagesGetAllPackageVersionsForPackageOwnedByUserPackageType) Decode(d
 	if s == nil {
 		return errors.New(`invalid: unable to decode PackagesGetAllPackageVersionsForPackageOwnedByUserPackageType to nil`)
 	}
-	v, err := d.Str()
+	v, err := d.StrBytes()
 	if err != nil {
 		return err
 	}
-	*s = PackagesGetAllPackageVersionsForPackageOwnedByUserPackageType(v)
+	// Try to use constant string.
+	switch PackagesGetAllPackageVersionsForPackageOwnedByUserPackageType(v) {
+	case PackagesGetAllPackageVersionsForPackageOwnedByUserPackageTypeNpm:
+		*s = PackagesGetAllPackageVersionsForPackageOwnedByUserPackageTypeNpm
+	case PackagesGetAllPackageVersionsForPackageOwnedByUserPackageTypeMaven:
+		*s = PackagesGetAllPackageVersionsForPackageOwnedByUserPackageTypeMaven
+	case PackagesGetAllPackageVersionsForPackageOwnedByUserPackageTypeRubygems:
+		*s = PackagesGetAllPackageVersionsForPackageOwnedByUserPackageTypeRubygems
+	case PackagesGetAllPackageVersionsForPackageOwnedByUserPackageTypeDocker:
+		*s = PackagesGetAllPackageVersionsForPackageOwnedByUserPackageTypeDocker
+	case PackagesGetAllPackageVersionsForPackageOwnedByUserPackageTypeNuget:
+		*s = PackagesGetAllPackageVersionsForPackageOwnedByUserPackageTypeNuget
+	case PackagesGetAllPackageVersionsForPackageOwnedByUserPackageTypeContainer:
+		*s = PackagesGetAllPackageVersionsForPackageOwnedByUserPackageTypeContainer
+	default:
+		*s = PackagesGetAllPackageVersionsForPackageOwnedByUserPackageType(v)
+	}
+
 	return nil
 }
 
@@ -57490,11 +58780,28 @@ func (s *PackagesGetPackageForAuthenticatedUserPackageType) Decode(d *jx.Decoder
 	if s == nil {
 		return errors.New(`invalid: unable to decode PackagesGetPackageForAuthenticatedUserPackageType to nil`)
 	}
-	v, err := d.Str()
+	v, err := d.StrBytes()
 	if err != nil {
 		return err
 	}
-	*s = PackagesGetPackageForAuthenticatedUserPackageType(v)
+	// Try to use constant string.
+	switch PackagesGetPackageForAuthenticatedUserPackageType(v) {
+	case PackagesGetPackageForAuthenticatedUserPackageTypeNpm:
+		*s = PackagesGetPackageForAuthenticatedUserPackageTypeNpm
+	case PackagesGetPackageForAuthenticatedUserPackageTypeMaven:
+		*s = PackagesGetPackageForAuthenticatedUserPackageTypeMaven
+	case PackagesGetPackageForAuthenticatedUserPackageTypeRubygems:
+		*s = PackagesGetPackageForAuthenticatedUserPackageTypeRubygems
+	case PackagesGetPackageForAuthenticatedUserPackageTypeDocker:
+		*s = PackagesGetPackageForAuthenticatedUserPackageTypeDocker
+	case PackagesGetPackageForAuthenticatedUserPackageTypeNuget:
+		*s = PackagesGetPackageForAuthenticatedUserPackageTypeNuget
+	case PackagesGetPackageForAuthenticatedUserPackageTypeContainer:
+		*s = PackagesGetPackageForAuthenticatedUserPackageTypeContainer
+	default:
+		*s = PackagesGetPackageForAuthenticatedUserPackageType(v)
+	}
+
 	return nil
 }
 
@@ -57508,11 +58815,28 @@ func (s *PackagesGetPackageForOrganizationPackageType) Decode(d *jx.Decoder) err
 	if s == nil {
 		return errors.New(`invalid: unable to decode PackagesGetPackageForOrganizationPackageType to nil`)
 	}
-	v, err := d.Str()
+	v, err := d.StrBytes()
 	if err != nil {
 		return err
 	}
-	*s = PackagesGetPackageForOrganizationPackageType(v)
+	// Try to use constant string.
+	switch PackagesGetPackageForOrganizationPackageType(v) {
+	case PackagesGetPackageForOrganizationPackageTypeNpm:
+		*s = PackagesGetPackageForOrganizationPackageTypeNpm
+	case PackagesGetPackageForOrganizationPackageTypeMaven:
+		*s = PackagesGetPackageForOrganizationPackageTypeMaven
+	case PackagesGetPackageForOrganizationPackageTypeRubygems:
+		*s = PackagesGetPackageForOrganizationPackageTypeRubygems
+	case PackagesGetPackageForOrganizationPackageTypeDocker:
+		*s = PackagesGetPackageForOrganizationPackageTypeDocker
+	case PackagesGetPackageForOrganizationPackageTypeNuget:
+		*s = PackagesGetPackageForOrganizationPackageTypeNuget
+	case PackagesGetPackageForOrganizationPackageTypeContainer:
+		*s = PackagesGetPackageForOrganizationPackageTypeContainer
+	default:
+		*s = PackagesGetPackageForOrganizationPackageType(v)
+	}
+
 	return nil
 }
 
@@ -57526,11 +58850,28 @@ func (s *PackagesGetPackageForUserPackageType) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode PackagesGetPackageForUserPackageType to nil`)
 	}
-	v, err := d.Str()
+	v, err := d.StrBytes()
 	if err != nil {
 		return err
 	}
-	*s = PackagesGetPackageForUserPackageType(v)
+	// Try to use constant string.
+	switch PackagesGetPackageForUserPackageType(v) {
+	case PackagesGetPackageForUserPackageTypeNpm:
+		*s = PackagesGetPackageForUserPackageTypeNpm
+	case PackagesGetPackageForUserPackageTypeMaven:
+		*s = PackagesGetPackageForUserPackageTypeMaven
+	case PackagesGetPackageForUserPackageTypeRubygems:
+		*s = PackagesGetPackageForUserPackageTypeRubygems
+	case PackagesGetPackageForUserPackageTypeDocker:
+		*s = PackagesGetPackageForUserPackageTypeDocker
+	case PackagesGetPackageForUserPackageTypeNuget:
+		*s = PackagesGetPackageForUserPackageTypeNuget
+	case PackagesGetPackageForUserPackageTypeContainer:
+		*s = PackagesGetPackageForUserPackageTypeContainer
+	default:
+		*s = PackagesGetPackageForUserPackageType(v)
+	}
+
 	return nil
 }
 
@@ -57544,11 +58885,28 @@ func (s *PackagesGetPackageVersionForAuthenticatedUserPackageType) Decode(d *jx.
 	if s == nil {
 		return errors.New(`invalid: unable to decode PackagesGetPackageVersionForAuthenticatedUserPackageType to nil`)
 	}
-	v, err := d.Str()
+	v, err := d.StrBytes()
 	if err != nil {
 		return err
 	}
-	*s = PackagesGetPackageVersionForAuthenticatedUserPackageType(v)
+	// Try to use constant string.
+	switch PackagesGetPackageVersionForAuthenticatedUserPackageType(v) {
+	case PackagesGetPackageVersionForAuthenticatedUserPackageTypeNpm:
+		*s = PackagesGetPackageVersionForAuthenticatedUserPackageTypeNpm
+	case PackagesGetPackageVersionForAuthenticatedUserPackageTypeMaven:
+		*s = PackagesGetPackageVersionForAuthenticatedUserPackageTypeMaven
+	case PackagesGetPackageVersionForAuthenticatedUserPackageTypeRubygems:
+		*s = PackagesGetPackageVersionForAuthenticatedUserPackageTypeRubygems
+	case PackagesGetPackageVersionForAuthenticatedUserPackageTypeDocker:
+		*s = PackagesGetPackageVersionForAuthenticatedUserPackageTypeDocker
+	case PackagesGetPackageVersionForAuthenticatedUserPackageTypeNuget:
+		*s = PackagesGetPackageVersionForAuthenticatedUserPackageTypeNuget
+	case PackagesGetPackageVersionForAuthenticatedUserPackageTypeContainer:
+		*s = PackagesGetPackageVersionForAuthenticatedUserPackageTypeContainer
+	default:
+		*s = PackagesGetPackageVersionForAuthenticatedUserPackageType(v)
+	}
+
 	return nil
 }
 
@@ -57562,11 +58920,28 @@ func (s *PackagesGetPackageVersionForOrganizationPackageType) Decode(d *jx.Decod
 	if s == nil {
 		return errors.New(`invalid: unable to decode PackagesGetPackageVersionForOrganizationPackageType to nil`)
 	}
-	v, err := d.Str()
+	v, err := d.StrBytes()
 	if err != nil {
 		return err
 	}
-	*s = PackagesGetPackageVersionForOrganizationPackageType(v)
+	// Try to use constant string.
+	switch PackagesGetPackageVersionForOrganizationPackageType(v) {
+	case PackagesGetPackageVersionForOrganizationPackageTypeNpm:
+		*s = PackagesGetPackageVersionForOrganizationPackageTypeNpm
+	case PackagesGetPackageVersionForOrganizationPackageTypeMaven:
+		*s = PackagesGetPackageVersionForOrganizationPackageTypeMaven
+	case PackagesGetPackageVersionForOrganizationPackageTypeRubygems:
+		*s = PackagesGetPackageVersionForOrganizationPackageTypeRubygems
+	case PackagesGetPackageVersionForOrganizationPackageTypeDocker:
+		*s = PackagesGetPackageVersionForOrganizationPackageTypeDocker
+	case PackagesGetPackageVersionForOrganizationPackageTypeNuget:
+		*s = PackagesGetPackageVersionForOrganizationPackageTypeNuget
+	case PackagesGetPackageVersionForOrganizationPackageTypeContainer:
+		*s = PackagesGetPackageVersionForOrganizationPackageTypeContainer
+	default:
+		*s = PackagesGetPackageVersionForOrganizationPackageType(v)
+	}
+
 	return nil
 }
 
@@ -57580,11 +58955,28 @@ func (s *PackagesGetPackageVersionForUserPackageType) Decode(d *jx.Decoder) erro
 	if s == nil {
 		return errors.New(`invalid: unable to decode PackagesGetPackageVersionForUserPackageType to nil`)
 	}
-	v, err := d.Str()
+	v, err := d.StrBytes()
 	if err != nil {
 		return err
 	}
-	*s = PackagesGetPackageVersionForUserPackageType(v)
+	// Try to use constant string.
+	switch PackagesGetPackageVersionForUserPackageType(v) {
+	case PackagesGetPackageVersionForUserPackageTypeNpm:
+		*s = PackagesGetPackageVersionForUserPackageTypeNpm
+	case PackagesGetPackageVersionForUserPackageTypeMaven:
+		*s = PackagesGetPackageVersionForUserPackageTypeMaven
+	case PackagesGetPackageVersionForUserPackageTypeRubygems:
+		*s = PackagesGetPackageVersionForUserPackageTypeRubygems
+	case PackagesGetPackageVersionForUserPackageTypeDocker:
+		*s = PackagesGetPackageVersionForUserPackageTypeDocker
+	case PackagesGetPackageVersionForUserPackageTypeNuget:
+		*s = PackagesGetPackageVersionForUserPackageTypeNuget
+	case PackagesGetPackageVersionForUserPackageTypeContainer:
+		*s = PackagesGetPackageVersionForUserPackageTypeContainer
+	default:
+		*s = PackagesGetPackageVersionForUserPackageType(v)
+	}
+
 	return nil
 }
 
@@ -57598,11 +58990,28 @@ func (s *PackagesListPackagesForAuthenticatedUserPackageType) Decode(d *jx.Decod
 	if s == nil {
 		return errors.New(`invalid: unable to decode PackagesListPackagesForAuthenticatedUserPackageType to nil`)
 	}
-	v, err := d.Str()
+	v, err := d.StrBytes()
 	if err != nil {
 		return err
 	}
-	*s = PackagesListPackagesForAuthenticatedUserPackageType(v)
+	// Try to use constant string.
+	switch PackagesListPackagesForAuthenticatedUserPackageType(v) {
+	case PackagesListPackagesForAuthenticatedUserPackageTypeNpm:
+		*s = PackagesListPackagesForAuthenticatedUserPackageTypeNpm
+	case PackagesListPackagesForAuthenticatedUserPackageTypeMaven:
+		*s = PackagesListPackagesForAuthenticatedUserPackageTypeMaven
+	case PackagesListPackagesForAuthenticatedUserPackageTypeRubygems:
+		*s = PackagesListPackagesForAuthenticatedUserPackageTypeRubygems
+	case PackagesListPackagesForAuthenticatedUserPackageTypeDocker:
+		*s = PackagesListPackagesForAuthenticatedUserPackageTypeDocker
+	case PackagesListPackagesForAuthenticatedUserPackageTypeNuget:
+		*s = PackagesListPackagesForAuthenticatedUserPackageTypeNuget
+	case PackagesListPackagesForAuthenticatedUserPackageTypeContainer:
+		*s = PackagesListPackagesForAuthenticatedUserPackageTypeContainer
+	default:
+		*s = PackagesListPackagesForAuthenticatedUserPackageType(v)
+	}
+
 	return nil
 }
 
@@ -57616,11 +59025,22 @@ func (s *PackagesListPackagesForAuthenticatedUserVisibility) Decode(d *jx.Decode
 	if s == nil {
 		return errors.New(`invalid: unable to decode PackagesListPackagesForAuthenticatedUserVisibility to nil`)
 	}
-	v, err := d.Str()
+	v, err := d.StrBytes()
 	if err != nil {
 		return err
 	}
-	*s = PackagesListPackagesForAuthenticatedUserVisibility(v)
+	// Try to use constant string.
+	switch PackagesListPackagesForAuthenticatedUserVisibility(v) {
+	case PackagesListPackagesForAuthenticatedUserVisibilityPublic:
+		*s = PackagesListPackagesForAuthenticatedUserVisibilityPublic
+	case PackagesListPackagesForAuthenticatedUserVisibilityPrivate:
+		*s = PackagesListPackagesForAuthenticatedUserVisibilityPrivate
+	case PackagesListPackagesForAuthenticatedUserVisibilityInternal:
+		*s = PackagesListPackagesForAuthenticatedUserVisibilityInternal
+	default:
+		*s = PackagesListPackagesForAuthenticatedUserVisibility(v)
+	}
+
 	return nil
 }
 
@@ -57718,11 +59138,28 @@ func (s *PackagesListPackagesForOrganizationPackageType) Decode(d *jx.Decoder) e
 	if s == nil {
 		return errors.New(`invalid: unable to decode PackagesListPackagesForOrganizationPackageType to nil`)
 	}
-	v, err := d.Str()
+	v, err := d.StrBytes()
 	if err != nil {
 		return err
 	}
-	*s = PackagesListPackagesForOrganizationPackageType(v)
+	// Try to use constant string.
+	switch PackagesListPackagesForOrganizationPackageType(v) {
+	case PackagesListPackagesForOrganizationPackageTypeNpm:
+		*s = PackagesListPackagesForOrganizationPackageTypeNpm
+	case PackagesListPackagesForOrganizationPackageTypeMaven:
+		*s = PackagesListPackagesForOrganizationPackageTypeMaven
+	case PackagesListPackagesForOrganizationPackageTypeRubygems:
+		*s = PackagesListPackagesForOrganizationPackageTypeRubygems
+	case PackagesListPackagesForOrganizationPackageTypeDocker:
+		*s = PackagesListPackagesForOrganizationPackageTypeDocker
+	case PackagesListPackagesForOrganizationPackageTypeNuget:
+		*s = PackagesListPackagesForOrganizationPackageTypeNuget
+	case PackagesListPackagesForOrganizationPackageTypeContainer:
+		*s = PackagesListPackagesForOrganizationPackageTypeContainer
+	default:
+		*s = PackagesListPackagesForOrganizationPackageType(v)
+	}
+
 	return nil
 }
 
@@ -57736,11 +59173,22 @@ func (s *PackagesListPackagesForOrganizationVisibility) Decode(d *jx.Decoder) er
 	if s == nil {
 		return errors.New(`invalid: unable to decode PackagesListPackagesForOrganizationVisibility to nil`)
 	}
-	v, err := d.Str()
+	v, err := d.StrBytes()
 	if err != nil {
 		return err
 	}
-	*s = PackagesListPackagesForOrganizationVisibility(v)
+	// Try to use constant string.
+	switch PackagesListPackagesForOrganizationVisibility(v) {
+	case PackagesListPackagesForOrganizationVisibilityPublic:
+		*s = PackagesListPackagesForOrganizationVisibilityPublic
+	case PackagesListPackagesForOrganizationVisibilityPrivate:
+		*s = PackagesListPackagesForOrganizationVisibilityPrivate
+	case PackagesListPackagesForOrganizationVisibilityInternal:
+		*s = PackagesListPackagesForOrganizationVisibilityInternal
+	default:
+		*s = PackagesListPackagesForOrganizationVisibility(v)
+	}
+
 	return nil
 }
 
@@ -57838,11 +59286,28 @@ func (s *PackagesListPackagesForUserPackageType) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode PackagesListPackagesForUserPackageType to nil`)
 	}
-	v, err := d.Str()
+	v, err := d.StrBytes()
 	if err != nil {
 		return err
 	}
-	*s = PackagesListPackagesForUserPackageType(v)
+	// Try to use constant string.
+	switch PackagesListPackagesForUserPackageType(v) {
+	case PackagesListPackagesForUserPackageTypeNpm:
+		*s = PackagesListPackagesForUserPackageTypeNpm
+	case PackagesListPackagesForUserPackageTypeMaven:
+		*s = PackagesListPackagesForUserPackageTypeMaven
+	case PackagesListPackagesForUserPackageTypeRubygems:
+		*s = PackagesListPackagesForUserPackageTypeRubygems
+	case PackagesListPackagesForUserPackageTypeDocker:
+		*s = PackagesListPackagesForUserPackageTypeDocker
+	case PackagesListPackagesForUserPackageTypeNuget:
+		*s = PackagesListPackagesForUserPackageTypeNuget
+	case PackagesListPackagesForUserPackageTypeContainer:
+		*s = PackagesListPackagesForUserPackageTypeContainer
+	default:
+		*s = PackagesListPackagesForUserPackageType(v)
+	}
+
 	return nil
 }
 
@@ -57856,11 +59321,22 @@ func (s *PackagesListPackagesForUserVisibility) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode PackagesListPackagesForUserVisibility to nil`)
 	}
-	v, err := d.Str()
+	v, err := d.StrBytes()
 	if err != nil {
 		return err
 	}
-	*s = PackagesListPackagesForUserVisibility(v)
+	// Try to use constant string.
+	switch PackagesListPackagesForUserVisibility(v) {
+	case PackagesListPackagesForUserVisibilityPublic:
+		*s = PackagesListPackagesForUserVisibilityPublic
+	case PackagesListPackagesForUserVisibilityPrivate:
+		*s = PackagesListPackagesForUserVisibilityPrivate
+	case PackagesListPackagesForUserVisibilityInternal:
+		*s = PackagesListPackagesForUserVisibilityInternal
+	default:
+		*s = PackagesListPackagesForUserVisibility(v)
+	}
+
 	return nil
 }
 
@@ -57966,11 +59442,28 @@ func (s *PackagesRestorePackageForAuthenticatedUserPackageType) Decode(d *jx.Dec
 	if s == nil {
 		return errors.New(`invalid: unable to decode PackagesRestorePackageForAuthenticatedUserPackageType to nil`)
 	}
-	v, err := d.Str()
+	v, err := d.StrBytes()
 	if err != nil {
 		return err
 	}
-	*s = PackagesRestorePackageForAuthenticatedUserPackageType(v)
+	// Try to use constant string.
+	switch PackagesRestorePackageForAuthenticatedUserPackageType(v) {
+	case PackagesRestorePackageForAuthenticatedUserPackageTypeNpm:
+		*s = PackagesRestorePackageForAuthenticatedUserPackageTypeNpm
+	case PackagesRestorePackageForAuthenticatedUserPackageTypeMaven:
+		*s = PackagesRestorePackageForAuthenticatedUserPackageTypeMaven
+	case PackagesRestorePackageForAuthenticatedUserPackageTypeRubygems:
+		*s = PackagesRestorePackageForAuthenticatedUserPackageTypeRubygems
+	case PackagesRestorePackageForAuthenticatedUserPackageTypeDocker:
+		*s = PackagesRestorePackageForAuthenticatedUserPackageTypeDocker
+	case PackagesRestorePackageForAuthenticatedUserPackageTypeNuget:
+		*s = PackagesRestorePackageForAuthenticatedUserPackageTypeNuget
+	case PackagesRestorePackageForAuthenticatedUserPackageTypeContainer:
+		*s = PackagesRestorePackageForAuthenticatedUserPackageTypeContainer
+	default:
+		*s = PackagesRestorePackageForAuthenticatedUserPackageType(v)
+	}
+
 	return nil
 }
 
@@ -58076,11 +59569,28 @@ func (s *PackagesRestorePackageForOrgPackageType) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode PackagesRestorePackageForOrgPackageType to nil`)
 	}
-	v, err := d.Str()
+	v, err := d.StrBytes()
 	if err != nil {
 		return err
 	}
-	*s = PackagesRestorePackageForOrgPackageType(v)
+	// Try to use constant string.
+	switch PackagesRestorePackageForOrgPackageType(v) {
+	case PackagesRestorePackageForOrgPackageTypeNpm:
+		*s = PackagesRestorePackageForOrgPackageTypeNpm
+	case PackagesRestorePackageForOrgPackageTypeMaven:
+		*s = PackagesRestorePackageForOrgPackageTypeMaven
+	case PackagesRestorePackageForOrgPackageTypeRubygems:
+		*s = PackagesRestorePackageForOrgPackageTypeRubygems
+	case PackagesRestorePackageForOrgPackageTypeDocker:
+		*s = PackagesRestorePackageForOrgPackageTypeDocker
+	case PackagesRestorePackageForOrgPackageTypeNuget:
+		*s = PackagesRestorePackageForOrgPackageTypeNuget
+	case PackagesRestorePackageForOrgPackageTypeContainer:
+		*s = PackagesRestorePackageForOrgPackageTypeContainer
+	default:
+		*s = PackagesRestorePackageForOrgPackageType(v)
+	}
+
 	return nil
 }
 
@@ -58186,11 +59696,28 @@ func (s *PackagesRestorePackageForUserPackageType) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode PackagesRestorePackageForUserPackageType to nil`)
 	}
-	v, err := d.Str()
+	v, err := d.StrBytes()
 	if err != nil {
 		return err
 	}
-	*s = PackagesRestorePackageForUserPackageType(v)
+	// Try to use constant string.
+	switch PackagesRestorePackageForUserPackageType(v) {
+	case PackagesRestorePackageForUserPackageTypeNpm:
+		*s = PackagesRestorePackageForUserPackageTypeNpm
+	case PackagesRestorePackageForUserPackageTypeMaven:
+		*s = PackagesRestorePackageForUserPackageTypeMaven
+	case PackagesRestorePackageForUserPackageTypeRubygems:
+		*s = PackagesRestorePackageForUserPackageTypeRubygems
+	case PackagesRestorePackageForUserPackageTypeDocker:
+		*s = PackagesRestorePackageForUserPackageTypeDocker
+	case PackagesRestorePackageForUserPackageTypeNuget:
+		*s = PackagesRestorePackageForUserPackageTypeNuget
+	case PackagesRestorePackageForUserPackageTypeContainer:
+		*s = PackagesRestorePackageForUserPackageTypeContainer
+	default:
+		*s = PackagesRestorePackageForUserPackageType(v)
+	}
+
 	return nil
 }
 
@@ -58296,11 +59823,28 @@ func (s *PackagesRestorePackageVersionForAuthenticatedUserPackageType) Decode(d 
 	if s == nil {
 		return errors.New(`invalid: unable to decode PackagesRestorePackageVersionForAuthenticatedUserPackageType to nil`)
 	}
-	v, err := d.Str()
+	v, err := d.StrBytes()
 	if err != nil {
 		return err
 	}
-	*s = PackagesRestorePackageVersionForAuthenticatedUserPackageType(v)
+	// Try to use constant string.
+	switch PackagesRestorePackageVersionForAuthenticatedUserPackageType(v) {
+	case PackagesRestorePackageVersionForAuthenticatedUserPackageTypeNpm:
+		*s = PackagesRestorePackageVersionForAuthenticatedUserPackageTypeNpm
+	case PackagesRestorePackageVersionForAuthenticatedUserPackageTypeMaven:
+		*s = PackagesRestorePackageVersionForAuthenticatedUserPackageTypeMaven
+	case PackagesRestorePackageVersionForAuthenticatedUserPackageTypeRubygems:
+		*s = PackagesRestorePackageVersionForAuthenticatedUserPackageTypeRubygems
+	case PackagesRestorePackageVersionForAuthenticatedUserPackageTypeDocker:
+		*s = PackagesRestorePackageVersionForAuthenticatedUserPackageTypeDocker
+	case PackagesRestorePackageVersionForAuthenticatedUserPackageTypeNuget:
+		*s = PackagesRestorePackageVersionForAuthenticatedUserPackageTypeNuget
+	case PackagesRestorePackageVersionForAuthenticatedUserPackageTypeContainer:
+		*s = PackagesRestorePackageVersionForAuthenticatedUserPackageTypeContainer
+	default:
+		*s = PackagesRestorePackageVersionForAuthenticatedUserPackageType(v)
+	}
+
 	return nil
 }
 
@@ -58406,11 +59950,28 @@ func (s *PackagesRestorePackageVersionForOrgPackageType) Decode(d *jx.Decoder) e
 	if s == nil {
 		return errors.New(`invalid: unable to decode PackagesRestorePackageVersionForOrgPackageType to nil`)
 	}
-	v, err := d.Str()
+	v, err := d.StrBytes()
 	if err != nil {
 		return err
 	}
-	*s = PackagesRestorePackageVersionForOrgPackageType(v)
+	// Try to use constant string.
+	switch PackagesRestorePackageVersionForOrgPackageType(v) {
+	case PackagesRestorePackageVersionForOrgPackageTypeNpm:
+		*s = PackagesRestorePackageVersionForOrgPackageTypeNpm
+	case PackagesRestorePackageVersionForOrgPackageTypeMaven:
+		*s = PackagesRestorePackageVersionForOrgPackageTypeMaven
+	case PackagesRestorePackageVersionForOrgPackageTypeRubygems:
+		*s = PackagesRestorePackageVersionForOrgPackageTypeRubygems
+	case PackagesRestorePackageVersionForOrgPackageTypeDocker:
+		*s = PackagesRestorePackageVersionForOrgPackageTypeDocker
+	case PackagesRestorePackageVersionForOrgPackageTypeNuget:
+		*s = PackagesRestorePackageVersionForOrgPackageTypeNuget
+	case PackagesRestorePackageVersionForOrgPackageTypeContainer:
+		*s = PackagesRestorePackageVersionForOrgPackageTypeContainer
+	default:
+		*s = PackagesRestorePackageVersionForOrgPackageType(v)
+	}
+
 	return nil
 }
 
@@ -58516,11 +60077,28 @@ func (s *PackagesRestorePackageVersionForUserPackageType) Decode(d *jx.Decoder) 
 	if s == nil {
 		return errors.New(`invalid: unable to decode PackagesRestorePackageVersionForUserPackageType to nil`)
 	}
-	v, err := d.Str()
+	v, err := d.StrBytes()
 	if err != nil {
 		return err
 	}
-	*s = PackagesRestorePackageVersionForUserPackageType(v)
+	// Try to use constant string.
+	switch PackagesRestorePackageVersionForUserPackageType(v) {
+	case PackagesRestorePackageVersionForUserPackageTypeNpm:
+		*s = PackagesRestorePackageVersionForUserPackageTypeNpm
+	case PackagesRestorePackageVersionForUserPackageTypeMaven:
+		*s = PackagesRestorePackageVersionForUserPackageTypeMaven
+	case PackagesRestorePackageVersionForUserPackageTypeRubygems:
+		*s = PackagesRestorePackageVersionForUserPackageTypeRubygems
+	case PackagesRestorePackageVersionForUserPackageTypeDocker:
+		*s = PackagesRestorePackageVersionForUserPackageTypeDocker
+	case PackagesRestorePackageVersionForUserPackageTypeNuget:
+		*s = PackagesRestorePackageVersionForUserPackageTypeNuget
+	case PackagesRestorePackageVersionForUserPackageTypeContainer:
+		*s = PackagesRestorePackageVersionForUserPackageTypeContainer
+	default:
+		*s = PackagesRestorePackageVersionForUserPackageType(v)
+	}
+
 	return nil
 }
 
@@ -58802,11 +60380,22 @@ func (s *PageProtectedDomainState) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode PageProtectedDomainState to nil`)
 	}
-	v, err := d.Str()
+	v, err := d.StrBytes()
 	if err != nil {
 		return err
 	}
-	*s = PageProtectedDomainState(v)
+	// Try to use constant string.
+	switch PageProtectedDomainState(v) {
+	case PageProtectedDomainStatePending:
+		*s = PageProtectedDomainStatePending
+	case PageProtectedDomainStateVerified:
+		*s = PageProtectedDomainStateVerified
+	case PageProtectedDomainStateUnverified:
+		*s = PageProtectedDomainStateUnverified
+	default:
+		*s = PageProtectedDomainState(v)
+	}
+
 	return nil
 }
 
@@ -58820,11 +60409,22 @@ func (s *PageStatus) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode PageStatus to nil`)
 	}
-	v, err := d.Str()
+	v, err := d.StrBytes()
 	if err != nil {
 		return err
 	}
-	*s = PageStatus(v)
+	// Try to use constant string.
+	switch PageStatus(v) {
+	case PageStatusBuilt:
+		*s = PageStatusBuilt
+	case PageStatusBuilding:
+		*s = PageStatusBuilding
+	case PageStatusErrored:
+		*s = PageStatusErrored
+	default:
+		*s = PageStatus(v)
+	}
+
 	return nil
 }
 
@@ -58904,11 +60504,40 @@ func (s *PagesHTTPSCertificateState) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode PagesHTTPSCertificateState to nil`)
 	}
-	v, err := d.Str()
+	v, err := d.StrBytes()
 	if err != nil {
 		return err
 	}
-	*s = PagesHTTPSCertificateState(v)
+	// Try to use constant string.
+	switch PagesHTTPSCertificateState(v) {
+	case PagesHTTPSCertificateStateNew:
+		*s = PagesHTTPSCertificateStateNew
+	case PagesHTTPSCertificateStateAuthorizationCreated:
+		*s = PagesHTTPSCertificateStateAuthorizationCreated
+	case PagesHTTPSCertificateStateAuthorizationPending:
+		*s = PagesHTTPSCertificateStateAuthorizationPending
+	case PagesHTTPSCertificateStateAuthorized:
+		*s = PagesHTTPSCertificateStateAuthorized
+	case PagesHTTPSCertificateStateAuthorizationRevoked:
+		*s = PagesHTTPSCertificateStateAuthorizationRevoked
+	case PagesHTTPSCertificateStateIssued:
+		*s = PagesHTTPSCertificateStateIssued
+	case PagesHTTPSCertificateStateUploaded:
+		*s = PagesHTTPSCertificateStateUploaded
+	case PagesHTTPSCertificateStateApproved:
+		*s = PagesHTTPSCertificateStateApproved
+	case PagesHTTPSCertificateStateErrored:
+		*s = PagesHTTPSCertificateStateErrored
+	case PagesHTTPSCertificateStateBadAuthz:
+		*s = PagesHTTPSCertificateStateBadAuthz
+	case PagesHTTPSCertificateStateDestroyPending:
+		*s = PagesHTTPSCertificateStateDestroyPending
+	case PagesHTTPSCertificateStateDNSChanged:
+		*s = PagesHTTPSCertificateStateDNSChanged
+	default:
+		*s = PagesHTTPSCertificateState(v)
+	}
+
 	return nil
 }
 
@@ -60595,11 +62224,24 @@ func (s *ProjectOrganizationPermission) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode ProjectOrganizationPermission to nil`)
 	}
-	v, err := d.Str()
+	v, err := d.StrBytes()
 	if err != nil {
 		return err
 	}
-	*s = ProjectOrganizationPermission(v)
+	// Try to use constant string.
+	switch ProjectOrganizationPermission(v) {
+	case ProjectOrganizationPermissionRead:
+		*s = ProjectOrganizationPermissionRead
+	case ProjectOrganizationPermissionWrite:
+		*s = ProjectOrganizationPermissionWrite
+	case ProjectOrganizationPermissionAdmin:
+		*s = ProjectOrganizationPermissionAdmin
+	case ProjectOrganizationPermissionNone:
+		*s = ProjectOrganizationPermissionNone
+	default:
+		*s = ProjectOrganizationPermission(v)
+	}
+
 	return nil
 }
 
@@ -60734,11 +62376,22 @@ func (s *ProjectsAddCollaboratorReqPermission) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode ProjectsAddCollaboratorReqPermission to nil`)
 	}
-	v, err := d.Str()
+	v, err := d.StrBytes()
 	if err != nil {
 		return err
 	}
-	*s = ProjectsAddCollaboratorReqPermission(v)
+	// Try to use constant string.
+	switch ProjectsAddCollaboratorReqPermission(v) {
+	case ProjectsAddCollaboratorReqPermissionRead:
+		*s = ProjectsAddCollaboratorReqPermissionRead
+	case ProjectsAddCollaboratorReqPermissionWrite:
+		*s = ProjectsAddCollaboratorReqPermissionWrite
+	case ProjectsAddCollaboratorReqPermissionAdmin:
+		*s = ProjectsAddCollaboratorReqPermissionAdmin
+	default:
+		*s = ProjectsAddCollaboratorReqPermission(v)
+	}
+
 	return nil
 }
 
@@ -61967,11 +63620,22 @@ func (s *ProjectsListCardsArchivedState) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode ProjectsListCardsArchivedState to nil`)
 	}
-	v, err := d.Str()
+	v, err := d.StrBytes()
 	if err != nil {
 		return err
 	}
-	*s = ProjectsListCardsArchivedState(v)
+	// Try to use constant string.
+	switch ProjectsListCardsArchivedState(v) {
+	case ProjectsListCardsArchivedStateAll:
+		*s = ProjectsListCardsArchivedStateAll
+	case ProjectsListCardsArchivedStateArchived:
+		*s = ProjectsListCardsArchivedStateArchived
+	case ProjectsListCardsArchivedStateNotArchived:
+		*s = ProjectsListCardsArchivedStateNotArchived
+	default:
+		*s = ProjectsListCardsArchivedState(v)
+	}
+
 	return nil
 }
 
@@ -62021,11 +63685,22 @@ func (s *ProjectsListCollaboratorsAffiliation) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode ProjectsListCollaboratorsAffiliation to nil`)
 	}
-	v, err := d.Str()
+	v, err := d.StrBytes()
 	if err != nil {
 		return err
 	}
-	*s = ProjectsListCollaboratorsAffiliation(v)
+	// Try to use constant string.
+	switch ProjectsListCollaboratorsAffiliation(v) {
+	case ProjectsListCollaboratorsAffiliationOutside:
+		*s = ProjectsListCollaboratorsAffiliationOutside
+	case ProjectsListCollaboratorsAffiliationDirect:
+		*s = ProjectsListCollaboratorsAffiliationDirect
+	case ProjectsListCollaboratorsAffiliationAll:
+		*s = ProjectsListCollaboratorsAffiliationAll
+	default:
+		*s = ProjectsListCollaboratorsAffiliation(v)
+	}
+
 	return nil
 }
 
@@ -62267,11 +63942,22 @@ func (s *ProjectsListForOrgState) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode ProjectsListForOrgState to nil`)
 	}
-	v, err := d.Str()
+	v, err := d.StrBytes()
 	if err != nil {
 		return err
 	}
-	*s = ProjectsListForOrgState(v)
+	// Try to use constant string.
+	switch ProjectsListForOrgState(v) {
+	case ProjectsListForOrgStateOpen:
+		*s = ProjectsListForOrgStateOpen
+	case ProjectsListForOrgStateClosed:
+		*s = ProjectsListForOrgStateClosed
+	case ProjectsListForOrgStateAll:
+		*s = ProjectsListForOrgStateAll
+	default:
+		*s = ProjectsListForOrgState(v)
+	}
+
 	return nil
 }
 
@@ -62417,11 +64103,22 @@ func (s *ProjectsListForRepoState) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode ProjectsListForRepoState to nil`)
 	}
-	v, err := d.Str()
+	v, err := d.StrBytes()
 	if err != nil {
 		return err
 	}
-	*s = ProjectsListForRepoState(v)
+	// Try to use constant string.
+	switch ProjectsListForRepoState(v) {
+	case ProjectsListForRepoStateOpen:
+		*s = ProjectsListForRepoStateOpen
+	case ProjectsListForRepoStateClosed:
+		*s = ProjectsListForRepoStateClosed
+	case ProjectsListForRepoStateAll:
+		*s = ProjectsListForRepoStateAll
+	default:
+		*s = ProjectsListForRepoState(v)
+	}
+
 	return nil
 }
 
@@ -62471,11 +64168,22 @@ func (s *ProjectsListForUserState) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode ProjectsListForUserState to nil`)
 	}
-	v, err := d.Str()
+	v, err := d.StrBytes()
 	if err != nil {
 		return err
 	}
-	*s = ProjectsListForUserState(v)
+	// Try to use constant string.
+	switch ProjectsListForUserState(v) {
+	case ProjectsListForUserStateOpen:
+		*s = ProjectsListForUserStateOpen
+	case ProjectsListForUserStateClosed:
+		*s = ProjectsListForUserStateClosed
+	case ProjectsListForUserStateAll:
+		*s = ProjectsListForUserStateAll
+	default:
+		*s = ProjectsListForUserState(v)
+	}
+
 	return nil
 }
 
@@ -63335,11 +65043,24 @@ func (s *ProjectsUpdateReqOrganizationPermission) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode ProjectsUpdateReqOrganizationPermission to nil`)
 	}
-	v, err := d.Str()
+	v, err := d.StrBytes()
 	if err != nil {
 		return err
 	}
-	*s = ProjectsUpdateReqOrganizationPermission(v)
+	// Try to use constant string.
+	switch ProjectsUpdateReqOrganizationPermission(v) {
+	case ProjectsUpdateReqOrganizationPermissionRead:
+		*s = ProjectsUpdateReqOrganizationPermissionRead
+	case ProjectsUpdateReqOrganizationPermissionWrite:
+		*s = ProjectsUpdateReqOrganizationPermissionWrite
+	case ProjectsUpdateReqOrganizationPermissionAdmin:
+		*s = ProjectsUpdateReqOrganizationPermissionAdmin
+	case ProjectsUpdateReqOrganizationPermissionNone:
+		*s = ProjectsUpdateReqOrganizationPermissionNone
+	default:
+		*s = ProjectsUpdateReqOrganizationPermission(v)
+	}
+
 	return nil
 }
 
@@ -68345,11 +70066,20 @@ func (s *PullRequestReviewCommentSide) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode PullRequestReviewCommentSide to nil`)
 	}
-	v, err := d.Str()
+	v, err := d.StrBytes()
 	if err != nil {
 		return err
 	}
-	*s = PullRequestReviewCommentSide(v)
+	// Try to use constant string.
+	switch PullRequestReviewCommentSide(v) {
+	case PullRequestReviewCommentSideLEFT:
+		*s = PullRequestReviewCommentSideLEFT
+	case PullRequestReviewCommentSideRIGHT:
+		*s = PullRequestReviewCommentSideRIGHT
+	default:
+		*s = PullRequestReviewCommentSide(v)
+	}
+
 	return nil
 }
 
@@ -68363,11 +70093,20 @@ func (s *PullRequestReviewCommentStartSide) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode PullRequestReviewCommentStartSide to nil`)
 	}
-	v, err := d.Str()
+	v, err := d.StrBytes()
 	if err != nil {
 		return err
 	}
-	*s = PullRequestReviewCommentStartSide(v)
+	// Try to use constant string.
+	switch PullRequestReviewCommentStartSide(v) {
+	case PullRequestReviewCommentStartSideLEFT:
+		*s = PullRequestReviewCommentStartSideLEFT
+	case PullRequestReviewCommentStartSideRIGHT:
+		*s = PullRequestReviewCommentStartSideRIGHT
+	default:
+		*s = PullRequestReviewCommentStartSide(v)
+	}
+
 	return nil
 }
 
@@ -69142,11 +70881,20 @@ func (s *PullRequestState) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode PullRequestState to nil`)
 	}
-	v, err := d.Str()
+	v, err := d.StrBytes()
 	if err != nil {
 		return err
 	}
-	*s = PullRequestState(v)
+	// Try to use constant string.
+	switch PullRequestState(v) {
+	case PullRequestStateOpen:
+		*s = PullRequestStateOpen
+	case PullRequestStateClosed:
+		*s = PullRequestStateClosed
+	default:
+		*s = PullRequestState(v)
+	}
+
 	return nil
 }
 
@@ -69413,11 +71161,20 @@ func (s *PullsCreateReviewCommentReqSide) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode PullsCreateReviewCommentReqSide to nil`)
 	}
-	v, err := d.Str()
+	v, err := d.StrBytes()
 	if err != nil {
 		return err
 	}
-	*s = PullsCreateReviewCommentReqSide(v)
+	// Try to use constant string.
+	switch PullsCreateReviewCommentReqSide(v) {
+	case PullsCreateReviewCommentReqSideLEFT:
+		*s = PullsCreateReviewCommentReqSideLEFT
+	case PullsCreateReviewCommentReqSideRIGHT:
+		*s = PullsCreateReviewCommentReqSideRIGHT
+	default:
+		*s = PullsCreateReviewCommentReqSide(v)
+	}
+
 	return nil
 }
 
@@ -69431,11 +71188,22 @@ func (s *PullsCreateReviewCommentReqStartSide) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode PullsCreateReviewCommentReqStartSide to nil`)
 	}
-	v, err := d.Str()
+	v, err := d.StrBytes()
 	if err != nil {
 		return err
 	}
-	*s = PullsCreateReviewCommentReqStartSide(v)
+	// Try to use constant string.
+	switch PullsCreateReviewCommentReqStartSide(v) {
+	case PullsCreateReviewCommentReqStartSideLEFT:
+		*s = PullsCreateReviewCommentReqStartSideLEFT
+	case PullsCreateReviewCommentReqStartSideRIGHT:
+		*s = PullsCreateReviewCommentReqStartSideRIGHT
+	case PullsCreateReviewCommentReqStartSideSide:
+		*s = PullsCreateReviewCommentReqStartSideSide
+	default:
+		*s = PullsCreateReviewCommentReqStartSide(v)
+	}
+
 	return nil
 }
 
@@ -69599,11 +71367,22 @@ func (s *PullsCreateReviewReqEvent) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode PullsCreateReviewReqEvent to nil`)
 	}
-	v, err := d.Str()
+	v, err := d.StrBytes()
 	if err != nil {
 		return err
 	}
-	*s = PullsCreateReviewReqEvent(v)
+	// Try to use constant string.
+	switch PullsCreateReviewReqEvent(v) {
+	case PullsCreateReviewReqEventAPPROVE:
+		*s = PullsCreateReviewReqEventAPPROVE
+	case PullsCreateReviewReqEventREQUESTCHANGES:
+		*s = PullsCreateReviewReqEventREQUESTCHANGES
+	case PullsCreateReviewReqEventCOMMENT:
+		*s = PullsCreateReviewReqEventCOMMENT
+	default:
+		*s = PullsCreateReviewReqEvent(v)
+	}
+
 	return nil
 }
 
@@ -69759,11 +71538,20 @@ func (s *PullsListDirection) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode PullsListDirection to nil`)
 	}
-	v, err := d.Str()
+	v, err := d.StrBytes()
 	if err != nil {
 		return err
 	}
-	*s = PullsListDirection(v)
+	// Try to use constant string.
+	switch PullsListDirection(v) {
+	case PullsListDirectionAsc:
+		*s = PullsListDirectionAsc
+	case PullsListDirectionDesc:
+		*s = PullsListDirectionDesc
+	default:
+		*s = PullsListDirection(v)
+	}
+
 	return nil
 }
 
@@ -69849,11 +71637,20 @@ func (s *PullsListReviewCommentsDirection) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode PullsListReviewCommentsDirection to nil`)
 	}
-	v, err := d.Str()
+	v, err := d.StrBytes()
 	if err != nil {
 		return err
 	}
-	*s = PullsListReviewCommentsDirection(v)
+	// Try to use constant string.
+	switch PullsListReviewCommentsDirection(v) {
+	case PullsListReviewCommentsDirectionAsc:
+		*s = PullsListReviewCommentsDirectionAsc
+	case PullsListReviewCommentsDirectionDesc:
+		*s = PullsListReviewCommentsDirectionDesc
+	default:
+		*s = PullsListReviewCommentsDirection(v)
+	}
+
 	return nil
 }
 
@@ -69867,11 +71664,20 @@ func (s *PullsListReviewCommentsForRepoDirection) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode PullsListReviewCommentsForRepoDirection to nil`)
 	}
-	v, err := d.Str()
+	v, err := d.StrBytes()
 	if err != nil {
 		return err
 	}
-	*s = PullsListReviewCommentsForRepoDirection(v)
+	// Try to use constant string.
+	switch PullsListReviewCommentsForRepoDirection(v) {
+	case PullsListReviewCommentsForRepoDirectionAsc:
+		*s = PullsListReviewCommentsForRepoDirectionAsc
+	case PullsListReviewCommentsForRepoDirectionDesc:
+		*s = PullsListReviewCommentsForRepoDirectionDesc
+	default:
+		*s = PullsListReviewCommentsForRepoDirection(v)
+	}
+
 	return nil
 }
 
@@ -69885,11 +71691,22 @@ func (s *PullsListReviewCommentsForRepoSort) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode PullsListReviewCommentsForRepoSort to nil`)
 	}
-	v, err := d.Str()
+	v, err := d.StrBytes()
 	if err != nil {
 		return err
 	}
-	*s = PullsListReviewCommentsForRepoSort(v)
+	// Try to use constant string.
+	switch PullsListReviewCommentsForRepoSort(v) {
+	case PullsListReviewCommentsForRepoSortCreated:
+		*s = PullsListReviewCommentsForRepoSortCreated
+	case PullsListReviewCommentsForRepoSortUpdated:
+		*s = PullsListReviewCommentsForRepoSortUpdated
+	case PullsListReviewCommentsForRepoSortCreatedAt:
+		*s = PullsListReviewCommentsForRepoSortCreatedAt
+	default:
+		*s = PullsListReviewCommentsForRepoSort(v)
+	}
+
 	return nil
 }
 
@@ -69903,11 +71720,20 @@ func (s *PullsListReviewCommentsSort) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode PullsListReviewCommentsSort to nil`)
 	}
-	v, err := d.Str()
+	v, err := d.StrBytes()
 	if err != nil {
 		return err
 	}
-	*s = PullsListReviewCommentsSort(v)
+	// Try to use constant string.
+	switch PullsListReviewCommentsSort(v) {
+	case PullsListReviewCommentsSortCreated:
+		*s = PullsListReviewCommentsSortCreated
+	case PullsListReviewCommentsSortUpdated:
+		*s = PullsListReviewCommentsSortUpdated
+	default:
+		*s = PullsListReviewCommentsSort(v)
+	}
+
 	return nil
 }
 
@@ -69921,11 +71747,24 @@ func (s *PullsListSort) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode PullsListSort to nil`)
 	}
-	v, err := d.Str()
+	v, err := d.StrBytes()
 	if err != nil {
 		return err
 	}
-	*s = PullsListSort(v)
+	// Try to use constant string.
+	switch PullsListSort(v) {
+	case PullsListSortCreated:
+		*s = PullsListSortCreated
+	case PullsListSortUpdated:
+		*s = PullsListSortUpdated
+	case PullsListSortPopularity:
+		*s = PullsListSortPopularity
+	case PullsListSortLongMinusRunning:
+		*s = PullsListSortLongMinusRunning
+	default:
+		*s = PullsListSort(v)
+	}
+
 	return nil
 }
 
@@ -69939,11 +71778,22 @@ func (s *PullsListState) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode PullsListState to nil`)
 	}
-	v, err := d.Str()
+	v, err := d.StrBytes()
 	if err != nil {
 		return err
 	}
-	*s = PullsListState(v)
+	// Try to use constant string.
+	switch PullsListState(v) {
+	case PullsListStateOpen:
+		*s = PullsListStateOpen
+	case PullsListStateClosed:
+		*s = PullsListStateClosed
+	case PullsListStateAll:
+		*s = PullsListStateAll
+	default:
+		*s = PullsListState(v)
+	}
+
 	return nil
 }
 
@@ -70137,11 +71987,22 @@ func (s *PullsMergeReqMergeMethod) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode PullsMergeReqMergeMethod to nil`)
 	}
-	v, err := d.Str()
+	v, err := d.StrBytes()
 	if err != nil {
 		return err
 	}
-	*s = PullsMergeReqMergeMethod(v)
+	// Try to use constant string.
+	switch PullsMergeReqMergeMethod(v) {
+	case PullsMergeReqMergeMethodMerge:
+		*s = PullsMergeReqMergeMethodMerge
+	case PullsMergeReqMergeMethodSquash:
+		*s = PullsMergeReqMergeMethodSquash
+	case PullsMergeReqMergeMethodRebase:
+		*s = PullsMergeReqMergeMethodRebase
+	default:
+		*s = PullsMergeReqMergeMethod(v)
+	}
+
 	return nil
 }
 
@@ -70302,11 +72163,22 @@ func (s *PullsSubmitReviewReqEvent) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode PullsSubmitReviewReqEvent to nil`)
 	}
-	v, err := d.Str()
+	v, err := d.StrBytes()
 	if err != nil {
 		return err
 	}
-	*s = PullsSubmitReviewReqEvent(v)
+	// Try to use constant string.
+	switch PullsSubmitReviewReqEvent(v) {
+	case PullsSubmitReviewReqEventAPPROVE:
+		*s = PullsSubmitReviewReqEventAPPROVE
+	case PullsSubmitReviewReqEventREQUESTCHANGES:
+		*s = PullsSubmitReviewReqEventREQUESTCHANGES
+	case PullsSubmitReviewReqEventCOMMENT:
+		*s = PullsSubmitReviewReqEventCOMMENT
+	default:
+		*s = PullsSubmitReviewReqEvent(v)
+	}
+
 	return nil
 }
 
@@ -70452,11 +72324,20 @@ func (s *PullsUpdateReqState) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode PullsUpdateReqState to nil`)
 	}
-	v, err := d.Str()
+	v, err := d.StrBytes()
 	if err != nil {
 		return err
 	}
-	*s = PullsUpdateReqState(v)
+	// Try to use constant string.
+	switch PullsUpdateReqState(v) {
+	case PullsUpdateReqStateOpen:
+		*s = PullsUpdateReqStateOpen
+	case PullsUpdateReqStateClosed:
+		*s = PullsUpdateReqStateClosed
+	default:
+		*s = PullsUpdateReqState(v)
+	}
+
 	return nil
 }
 
@@ -70758,11 +72639,32 @@ func (s *ReactionContent) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode ReactionContent to nil`)
 	}
-	v, err := d.Str()
+	v, err := d.StrBytes()
 	if err != nil {
 		return err
 	}
-	*s = ReactionContent(v)
+	// Try to use constant string.
+	switch ReactionContent(v) {
+	case ReactionContentPlus1:
+		*s = ReactionContentPlus1
+	case ReactionContentMinus1:
+		*s = ReactionContentMinus1
+	case ReactionContentLaugh:
+		*s = ReactionContentLaugh
+	case ReactionContentConfused:
+		*s = ReactionContentConfused
+	case ReactionContentHeart:
+		*s = ReactionContentHeart
+	case ReactionContentHooray:
+		*s = ReactionContentHooray
+	case ReactionContentRocket:
+		*s = ReactionContentRocket
+	case ReactionContentEyes:
+		*s = ReactionContentEyes
+	default:
+		*s = ReactionContent(v)
+	}
+
 	return nil
 }
 
@@ -70961,11 +72863,32 @@ func (s *ReactionsCreateForCommitCommentReqContent) Decode(d *jx.Decoder) error 
 	if s == nil {
 		return errors.New(`invalid: unable to decode ReactionsCreateForCommitCommentReqContent to nil`)
 	}
-	v, err := d.Str()
+	v, err := d.StrBytes()
 	if err != nil {
 		return err
 	}
-	*s = ReactionsCreateForCommitCommentReqContent(v)
+	// Try to use constant string.
+	switch ReactionsCreateForCommitCommentReqContent(v) {
+	case ReactionsCreateForCommitCommentReqContentPlus1:
+		*s = ReactionsCreateForCommitCommentReqContentPlus1
+	case ReactionsCreateForCommitCommentReqContentMinus1:
+		*s = ReactionsCreateForCommitCommentReqContentMinus1
+	case ReactionsCreateForCommitCommentReqContentLaugh:
+		*s = ReactionsCreateForCommitCommentReqContentLaugh
+	case ReactionsCreateForCommitCommentReqContentConfused:
+		*s = ReactionsCreateForCommitCommentReqContentConfused
+	case ReactionsCreateForCommitCommentReqContentHeart:
+		*s = ReactionsCreateForCommitCommentReqContentHeart
+	case ReactionsCreateForCommitCommentReqContentHooray:
+		*s = ReactionsCreateForCommitCommentReqContentHooray
+	case ReactionsCreateForCommitCommentReqContentRocket:
+		*s = ReactionsCreateForCommitCommentReqContentRocket
+	case ReactionsCreateForCommitCommentReqContentEyes:
+		*s = ReactionsCreateForCommitCommentReqContentEyes
+	default:
+		*s = ReactionsCreateForCommitCommentReqContent(v)
+	}
+
 	return nil
 }
 
@@ -71102,11 +73025,32 @@ func (s *ReactionsCreateForIssueCommentReqContent) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode ReactionsCreateForIssueCommentReqContent to nil`)
 	}
-	v, err := d.Str()
+	v, err := d.StrBytes()
 	if err != nil {
 		return err
 	}
-	*s = ReactionsCreateForIssueCommentReqContent(v)
+	// Try to use constant string.
+	switch ReactionsCreateForIssueCommentReqContent(v) {
+	case ReactionsCreateForIssueCommentReqContentPlus1:
+		*s = ReactionsCreateForIssueCommentReqContentPlus1
+	case ReactionsCreateForIssueCommentReqContentMinus1:
+		*s = ReactionsCreateForIssueCommentReqContentMinus1
+	case ReactionsCreateForIssueCommentReqContentLaugh:
+		*s = ReactionsCreateForIssueCommentReqContentLaugh
+	case ReactionsCreateForIssueCommentReqContentConfused:
+		*s = ReactionsCreateForIssueCommentReqContentConfused
+	case ReactionsCreateForIssueCommentReqContentHeart:
+		*s = ReactionsCreateForIssueCommentReqContentHeart
+	case ReactionsCreateForIssueCommentReqContentHooray:
+		*s = ReactionsCreateForIssueCommentReqContentHooray
+	case ReactionsCreateForIssueCommentReqContentRocket:
+		*s = ReactionsCreateForIssueCommentReqContentRocket
+	case ReactionsCreateForIssueCommentReqContentEyes:
+		*s = ReactionsCreateForIssueCommentReqContentEyes
+	default:
+		*s = ReactionsCreateForIssueCommentReqContent(v)
+	}
+
 	return nil
 }
 
@@ -71147,11 +73091,32 @@ func (s *ReactionsCreateForIssueReqContent) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode ReactionsCreateForIssueReqContent to nil`)
 	}
-	v, err := d.Str()
+	v, err := d.StrBytes()
 	if err != nil {
 		return err
 	}
-	*s = ReactionsCreateForIssueReqContent(v)
+	// Try to use constant string.
+	switch ReactionsCreateForIssueReqContent(v) {
+	case ReactionsCreateForIssueReqContentPlus1:
+		*s = ReactionsCreateForIssueReqContentPlus1
+	case ReactionsCreateForIssueReqContentMinus1:
+		*s = ReactionsCreateForIssueReqContentMinus1
+	case ReactionsCreateForIssueReqContentLaugh:
+		*s = ReactionsCreateForIssueReqContentLaugh
+	case ReactionsCreateForIssueReqContentConfused:
+		*s = ReactionsCreateForIssueReqContentConfused
+	case ReactionsCreateForIssueReqContentHeart:
+		*s = ReactionsCreateForIssueReqContentHeart
+	case ReactionsCreateForIssueReqContentHooray:
+		*s = ReactionsCreateForIssueReqContentHooray
+	case ReactionsCreateForIssueReqContentRocket:
+		*s = ReactionsCreateForIssueReqContentRocket
+	case ReactionsCreateForIssueReqContentEyes:
+		*s = ReactionsCreateForIssueReqContentEyes
+	default:
+		*s = ReactionsCreateForIssueReqContent(v)
+	}
+
 	return nil
 }
 
@@ -71240,11 +73205,32 @@ func (s *ReactionsCreateForPullRequestReviewCommentReqContent) Decode(d *jx.Deco
 	if s == nil {
 		return errors.New(`invalid: unable to decode ReactionsCreateForPullRequestReviewCommentReqContent to nil`)
 	}
-	v, err := d.Str()
+	v, err := d.StrBytes()
 	if err != nil {
 		return err
 	}
-	*s = ReactionsCreateForPullRequestReviewCommentReqContent(v)
+	// Try to use constant string.
+	switch ReactionsCreateForPullRequestReviewCommentReqContent(v) {
+	case ReactionsCreateForPullRequestReviewCommentReqContentPlus1:
+		*s = ReactionsCreateForPullRequestReviewCommentReqContentPlus1
+	case ReactionsCreateForPullRequestReviewCommentReqContentMinus1:
+		*s = ReactionsCreateForPullRequestReviewCommentReqContentMinus1
+	case ReactionsCreateForPullRequestReviewCommentReqContentLaugh:
+		*s = ReactionsCreateForPullRequestReviewCommentReqContentLaugh
+	case ReactionsCreateForPullRequestReviewCommentReqContentConfused:
+		*s = ReactionsCreateForPullRequestReviewCommentReqContentConfused
+	case ReactionsCreateForPullRequestReviewCommentReqContentHeart:
+		*s = ReactionsCreateForPullRequestReviewCommentReqContentHeart
+	case ReactionsCreateForPullRequestReviewCommentReqContentHooray:
+		*s = ReactionsCreateForPullRequestReviewCommentReqContentHooray
+	case ReactionsCreateForPullRequestReviewCommentReqContentRocket:
+		*s = ReactionsCreateForPullRequestReviewCommentReqContentRocket
+	case ReactionsCreateForPullRequestReviewCommentReqContentEyes:
+		*s = ReactionsCreateForPullRequestReviewCommentReqContentEyes
+	default:
+		*s = ReactionsCreateForPullRequestReviewCommentReqContent(v)
+	}
+
 	return nil
 }
 
@@ -71333,11 +73319,28 @@ func (s *ReactionsCreateForReleaseReqContent) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode ReactionsCreateForReleaseReqContent to nil`)
 	}
-	v, err := d.Str()
+	v, err := d.StrBytes()
 	if err != nil {
 		return err
 	}
-	*s = ReactionsCreateForReleaseReqContent(v)
+	// Try to use constant string.
+	switch ReactionsCreateForReleaseReqContent(v) {
+	case ReactionsCreateForReleaseReqContentPlus1:
+		*s = ReactionsCreateForReleaseReqContentPlus1
+	case ReactionsCreateForReleaseReqContentLaugh:
+		*s = ReactionsCreateForReleaseReqContentLaugh
+	case ReactionsCreateForReleaseReqContentHeart:
+		*s = ReactionsCreateForReleaseReqContentHeart
+	case ReactionsCreateForReleaseReqContentHooray:
+		*s = ReactionsCreateForReleaseReqContentHooray
+	case ReactionsCreateForReleaseReqContentRocket:
+		*s = ReactionsCreateForReleaseReqContentRocket
+	case ReactionsCreateForReleaseReqContentEyes:
+		*s = ReactionsCreateForReleaseReqContentEyes
+	default:
+		*s = ReactionsCreateForReleaseReqContent(v)
+	}
+
 	return nil
 }
 
@@ -71426,11 +73429,32 @@ func (s *ReactionsCreateForTeamDiscussionCommentInOrgReqContent) Decode(d *jx.De
 	if s == nil {
 		return errors.New(`invalid: unable to decode ReactionsCreateForTeamDiscussionCommentInOrgReqContent to nil`)
 	}
-	v, err := d.Str()
+	v, err := d.StrBytes()
 	if err != nil {
 		return err
 	}
-	*s = ReactionsCreateForTeamDiscussionCommentInOrgReqContent(v)
+	// Try to use constant string.
+	switch ReactionsCreateForTeamDiscussionCommentInOrgReqContent(v) {
+	case ReactionsCreateForTeamDiscussionCommentInOrgReqContentPlus1:
+		*s = ReactionsCreateForTeamDiscussionCommentInOrgReqContentPlus1
+	case ReactionsCreateForTeamDiscussionCommentInOrgReqContentMinus1:
+		*s = ReactionsCreateForTeamDiscussionCommentInOrgReqContentMinus1
+	case ReactionsCreateForTeamDiscussionCommentInOrgReqContentLaugh:
+		*s = ReactionsCreateForTeamDiscussionCommentInOrgReqContentLaugh
+	case ReactionsCreateForTeamDiscussionCommentInOrgReqContentConfused:
+		*s = ReactionsCreateForTeamDiscussionCommentInOrgReqContentConfused
+	case ReactionsCreateForTeamDiscussionCommentInOrgReqContentHeart:
+		*s = ReactionsCreateForTeamDiscussionCommentInOrgReqContentHeart
+	case ReactionsCreateForTeamDiscussionCommentInOrgReqContentHooray:
+		*s = ReactionsCreateForTeamDiscussionCommentInOrgReqContentHooray
+	case ReactionsCreateForTeamDiscussionCommentInOrgReqContentRocket:
+		*s = ReactionsCreateForTeamDiscussionCommentInOrgReqContentRocket
+	case ReactionsCreateForTeamDiscussionCommentInOrgReqContentEyes:
+		*s = ReactionsCreateForTeamDiscussionCommentInOrgReqContentEyes
+	default:
+		*s = ReactionsCreateForTeamDiscussionCommentInOrgReqContent(v)
+	}
+
 	return nil
 }
 
@@ -71471,11 +73495,32 @@ func (s *ReactionsCreateForTeamDiscussionCommentLegacyReqContent) Decode(d *jx.D
 	if s == nil {
 		return errors.New(`invalid: unable to decode ReactionsCreateForTeamDiscussionCommentLegacyReqContent to nil`)
 	}
-	v, err := d.Str()
+	v, err := d.StrBytes()
 	if err != nil {
 		return err
 	}
-	*s = ReactionsCreateForTeamDiscussionCommentLegacyReqContent(v)
+	// Try to use constant string.
+	switch ReactionsCreateForTeamDiscussionCommentLegacyReqContent(v) {
+	case ReactionsCreateForTeamDiscussionCommentLegacyReqContentPlus1:
+		*s = ReactionsCreateForTeamDiscussionCommentLegacyReqContentPlus1
+	case ReactionsCreateForTeamDiscussionCommentLegacyReqContentMinus1:
+		*s = ReactionsCreateForTeamDiscussionCommentLegacyReqContentMinus1
+	case ReactionsCreateForTeamDiscussionCommentLegacyReqContentLaugh:
+		*s = ReactionsCreateForTeamDiscussionCommentLegacyReqContentLaugh
+	case ReactionsCreateForTeamDiscussionCommentLegacyReqContentConfused:
+		*s = ReactionsCreateForTeamDiscussionCommentLegacyReqContentConfused
+	case ReactionsCreateForTeamDiscussionCommentLegacyReqContentHeart:
+		*s = ReactionsCreateForTeamDiscussionCommentLegacyReqContentHeart
+	case ReactionsCreateForTeamDiscussionCommentLegacyReqContentHooray:
+		*s = ReactionsCreateForTeamDiscussionCommentLegacyReqContentHooray
+	case ReactionsCreateForTeamDiscussionCommentLegacyReqContentRocket:
+		*s = ReactionsCreateForTeamDiscussionCommentLegacyReqContentRocket
+	case ReactionsCreateForTeamDiscussionCommentLegacyReqContentEyes:
+		*s = ReactionsCreateForTeamDiscussionCommentLegacyReqContentEyes
+	default:
+		*s = ReactionsCreateForTeamDiscussionCommentLegacyReqContent(v)
+	}
+
 	return nil
 }
 
@@ -71564,11 +73609,32 @@ func (s *ReactionsCreateForTeamDiscussionInOrgReqContent) Decode(d *jx.Decoder) 
 	if s == nil {
 		return errors.New(`invalid: unable to decode ReactionsCreateForTeamDiscussionInOrgReqContent to nil`)
 	}
-	v, err := d.Str()
+	v, err := d.StrBytes()
 	if err != nil {
 		return err
 	}
-	*s = ReactionsCreateForTeamDiscussionInOrgReqContent(v)
+	// Try to use constant string.
+	switch ReactionsCreateForTeamDiscussionInOrgReqContent(v) {
+	case ReactionsCreateForTeamDiscussionInOrgReqContentPlus1:
+		*s = ReactionsCreateForTeamDiscussionInOrgReqContentPlus1
+	case ReactionsCreateForTeamDiscussionInOrgReqContentMinus1:
+		*s = ReactionsCreateForTeamDiscussionInOrgReqContentMinus1
+	case ReactionsCreateForTeamDiscussionInOrgReqContentLaugh:
+		*s = ReactionsCreateForTeamDiscussionInOrgReqContentLaugh
+	case ReactionsCreateForTeamDiscussionInOrgReqContentConfused:
+		*s = ReactionsCreateForTeamDiscussionInOrgReqContentConfused
+	case ReactionsCreateForTeamDiscussionInOrgReqContentHeart:
+		*s = ReactionsCreateForTeamDiscussionInOrgReqContentHeart
+	case ReactionsCreateForTeamDiscussionInOrgReqContentHooray:
+		*s = ReactionsCreateForTeamDiscussionInOrgReqContentHooray
+	case ReactionsCreateForTeamDiscussionInOrgReqContentRocket:
+		*s = ReactionsCreateForTeamDiscussionInOrgReqContentRocket
+	case ReactionsCreateForTeamDiscussionInOrgReqContentEyes:
+		*s = ReactionsCreateForTeamDiscussionInOrgReqContentEyes
+	default:
+		*s = ReactionsCreateForTeamDiscussionInOrgReqContent(v)
+	}
+
 	return nil
 }
 
@@ -71609,11 +73675,32 @@ func (s *ReactionsCreateForTeamDiscussionLegacyReqContent) Decode(d *jx.Decoder)
 	if s == nil {
 		return errors.New(`invalid: unable to decode ReactionsCreateForTeamDiscussionLegacyReqContent to nil`)
 	}
-	v, err := d.Str()
+	v, err := d.StrBytes()
 	if err != nil {
 		return err
 	}
-	*s = ReactionsCreateForTeamDiscussionLegacyReqContent(v)
+	// Try to use constant string.
+	switch ReactionsCreateForTeamDiscussionLegacyReqContent(v) {
+	case ReactionsCreateForTeamDiscussionLegacyReqContentPlus1:
+		*s = ReactionsCreateForTeamDiscussionLegacyReqContentPlus1
+	case ReactionsCreateForTeamDiscussionLegacyReqContentMinus1:
+		*s = ReactionsCreateForTeamDiscussionLegacyReqContentMinus1
+	case ReactionsCreateForTeamDiscussionLegacyReqContentLaugh:
+		*s = ReactionsCreateForTeamDiscussionLegacyReqContentLaugh
+	case ReactionsCreateForTeamDiscussionLegacyReqContentConfused:
+		*s = ReactionsCreateForTeamDiscussionLegacyReqContentConfused
+	case ReactionsCreateForTeamDiscussionLegacyReqContentHeart:
+		*s = ReactionsCreateForTeamDiscussionLegacyReqContentHeart
+	case ReactionsCreateForTeamDiscussionLegacyReqContentHooray:
+		*s = ReactionsCreateForTeamDiscussionLegacyReqContentHooray
+	case ReactionsCreateForTeamDiscussionLegacyReqContentRocket:
+		*s = ReactionsCreateForTeamDiscussionLegacyReqContentRocket
+	case ReactionsCreateForTeamDiscussionLegacyReqContentEyes:
+		*s = ReactionsCreateForTeamDiscussionLegacyReqContentEyes
+	default:
+		*s = ReactionsCreateForTeamDiscussionLegacyReqContent(v)
+	}
+
 	return nil
 }
 
@@ -71839,11 +73926,32 @@ func (s *ReactionsListForCommitCommentContent) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode ReactionsListForCommitCommentContent to nil`)
 	}
-	v, err := d.Str()
+	v, err := d.StrBytes()
 	if err != nil {
 		return err
 	}
-	*s = ReactionsListForCommitCommentContent(v)
+	// Try to use constant string.
+	switch ReactionsListForCommitCommentContent(v) {
+	case ReactionsListForCommitCommentContentPlus1:
+		*s = ReactionsListForCommitCommentContentPlus1
+	case ReactionsListForCommitCommentContentMinus1:
+		*s = ReactionsListForCommitCommentContentMinus1
+	case ReactionsListForCommitCommentContentLaugh:
+		*s = ReactionsListForCommitCommentContentLaugh
+	case ReactionsListForCommitCommentContentConfused:
+		*s = ReactionsListForCommitCommentContentConfused
+	case ReactionsListForCommitCommentContentHeart:
+		*s = ReactionsListForCommitCommentContentHeart
+	case ReactionsListForCommitCommentContentHooray:
+		*s = ReactionsListForCommitCommentContentHooray
+	case ReactionsListForCommitCommentContentRocket:
+		*s = ReactionsListForCommitCommentContentRocket
+	case ReactionsListForCommitCommentContentEyes:
+		*s = ReactionsListForCommitCommentContentEyes
+	default:
+		*s = ReactionsListForCommitCommentContent(v)
+	}
+
 	return nil
 }
 
@@ -71941,11 +74049,32 @@ func (s *ReactionsListForIssueCommentContent) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode ReactionsListForIssueCommentContent to nil`)
 	}
-	v, err := d.Str()
+	v, err := d.StrBytes()
 	if err != nil {
 		return err
 	}
-	*s = ReactionsListForIssueCommentContent(v)
+	// Try to use constant string.
+	switch ReactionsListForIssueCommentContent(v) {
+	case ReactionsListForIssueCommentContentPlus1:
+		*s = ReactionsListForIssueCommentContentPlus1
+	case ReactionsListForIssueCommentContentMinus1:
+		*s = ReactionsListForIssueCommentContentMinus1
+	case ReactionsListForIssueCommentContentLaugh:
+		*s = ReactionsListForIssueCommentContentLaugh
+	case ReactionsListForIssueCommentContentConfused:
+		*s = ReactionsListForIssueCommentContentConfused
+	case ReactionsListForIssueCommentContentHeart:
+		*s = ReactionsListForIssueCommentContentHeart
+	case ReactionsListForIssueCommentContentHooray:
+		*s = ReactionsListForIssueCommentContentHooray
+	case ReactionsListForIssueCommentContentRocket:
+		*s = ReactionsListForIssueCommentContentRocket
+	case ReactionsListForIssueCommentContentEyes:
+		*s = ReactionsListForIssueCommentContentEyes
+	default:
+		*s = ReactionsListForIssueCommentContent(v)
+	}
+
 	return nil
 }
 
@@ -71995,11 +74124,32 @@ func (s *ReactionsListForIssueContent) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode ReactionsListForIssueContent to nil`)
 	}
-	v, err := d.Str()
+	v, err := d.StrBytes()
 	if err != nil {
 		return err
 	}
-	*s = ReactionsListForIssueContent(v)
+	// Try to use constant string.
+	switch ReactionsListForIssueContent(v) {
+	case ReactionsListForIssueContentPlus1:
+		*s = ReactionsListForIssueContentPlus1
+	case ReactionsListForIssueContentMinus1:
+		*s = ReactionsListForIssueContentMinus1
+	case ReactionsListForIssueContentLaugh:
+		*s = ReactionsListForIssueContentLaugh
+	case ReactionsListForIssueContentConfused:
+		*s = ReactionsListForIssueContentConfused
+	case ReactionsListForIssueContentHeart:
+		*s = ReactionsListForIssueContentHeart
+	case ReactionsListForIssueContentHooray:
+		*s = ReactionsListForIssueContentHooray
+	case ReactionsListForIssueContentRocket:
+		*s = ReactionsListForIssueContentRocket
+	case ReactionsListForIssueContentEyes:
+		*s = ReactionsListForIssueContentEyes
+	default:
+		*s = ReactionsListForIssueContent(v)
+	}
+
 	return nil
 }
 
@@ -72049,11 +74199,32 @@ func (s *ReactionsListForPullRequestReviewCommentContent) Decode(d *jx.Decoder) 
 	if s == nil {
 		return errors.New(`invalid: unable to decode ReactionsListForPullRequestReviewCommentContent to nil`)
 	}
-	v, err := d.Str()
+	v, err := d.StrBytes()
 	if err != nil {
 		return err
 	}
-	*s = ReactionsListForPullRequestReviewCommentContent(v)
+	// Try to use constant string.
+	switch ReactionsListForPullRequestReviewCommentContent(v) {
+	case ReactionsListForPullRequestReviewCommentContentPlus1:
+		*s = ReactionsListForPullRequestReviewCommentContentPlus1
+	case ReactionsListForPullRequestReviewCommentContentMinus1:
+		*s = ReactionsListForPullRequestReviewCommentContentMinus1
+	case ReactionsListForPullRequestReviewCommentContentLaugh:
+		*s = ReactionsListForPullRequestReviewCommentContentLaugh
+	case ReactionsListForPullRequestReviewCommentContentConfused:
+		*s = ReactionsListForPullRequestReviewCommentContentConfused
+	case ReactionsListForPullRequestReviewCommentContentHeart:
+		*s = ReactionsListForPullRequestReviewCommentContentHeart
+	case ReactionsListForPullRequestReviewCommentContentHooray:
+		*s = ReactionsListForPullRequestReviewCommentContentHooray
+	case ReactionsListForPullRequestReviewCommentContentRocket:
+		*s = ReactionsListForPullRequestReviewCommentContentRocket
+	case ReactionsListForPullRequestReviewCommentContentEyes:
+		*s = ReactionsListForPullRequestReviewCommentContentEyes
+	default:
+		*s = ReactionsListForPullRequestReviewCommentContent(v)
+	}
+
 	return nil
 }
 
@@ -72103,11 +74274,32 @@ func (s *ReactionsListForTeamDiscussionCommentInOrgContent) Decode(d *jx.Decoder
 	if s == nil {
 		return errors.New(`invalid: unable to decode ReactionsListForTeamDiscussionCommentInOrgContent to nil`)
 	}
-	v, err := d.Str()
+	v, err := d.StrBytes()
 	if err != nil {
 		return err
 	}
-	*s = ReactionsListForTeamDiscussionCommentInOrgContent(v)
+	// Try to use constant string.
+	switch ReactionsListForTeamDiscussionCommentInOrgContent(v) {
+	case ReactionsListForTeamDiscussionCommentInOrgContentPlus1:
+		*s = ReactionsListForTeamDiscussionCommentInOrgContentPlus1
+	case ReactionsListForTeamDiscussionCommentInOrgContentMinus1:
+		*s = ReactionsListForTeamDiscussionCommentInOrgContentMinus1
+	case ReactionsListForTeamDiscussionCommentInOrgContentLaugh:
+		*s = ReactionsListForTeamDiscussionCommentInOrgContentLaugh
+	case ReactionsListForTeamDiscussionCommentInOrgContentConfused:
+		*s = ReactionsListForTeamDiscussionCommentInOrgContentConfused
+	case ReactionsListForTeamDiscussionCommentInOrgContentHeart:
+		*s = ReactionsListForTeamDiscussionCommentInOrgContentHeart
+	case ReactionsListForTeamDiscussionCommentInOrgContentHooray:
+		*s = ReactionsListForTeamDiscussionCommentInOrgContentHooray
+	case ReactionsListForTeamDiscussionCommentInOrgContentRocket:
+		*s = ReactionsListForTeamDiscussionCommentInOrgContentRocket
+	case ReactionsListForTeamDiscussionCommentInOrgContentEyes:
+		*s = ReactionsListForTeamDiscussionCommentInOrgContentEyes
+	default:
+		*s = ReactionsListForTeamDiscussionCommentInOrgContent(v)
+	}
+
 	return nil
 }
 
@@ -72121,11 +74313,32 @@ func (s *ReactionsListForTeamDiscussionCommentLegacyContent) Decode(d *jx.Decode
 	if s == nil {
 		return errors.New(`invalid: unable to decode ReactionsListForTeamDiscussionCommentLegacyContent to nil`)
 	}
-	v, err := d.Str()
+	v, err := d.StrBytes()
 	if err != nil {
 		return err
 	}
-	*s = ReactionsListForTeamDiscussionCommentLegacyContent(v)
+	// Try to use constant string.
+	switch ReactionsListForTeamDiscussionCommentLegacyContent(v) {
+	case ReactionsListForTeamDiscussionCommentLegacyContentPlus1:
+		*s = ReactionsListForTeamDiscussionCommentLegacyContentPlus1
+	case ReactionsListForTeamDiscussionCommentLegacyContentMinus1:
+		*s = ReactionsListForTeamDiscussionCommentLegacyContentMinus1
+	case ReactionsListForTeamDiscussionCommentLegacyContentLaugh:
+		*s = ReactionsListForTeamDiscussionCommentLegacyContentLaugh
+	case ReactionsListForTeamDiscussionCommentLegacyContentConfused:
+		*s = ReactionsListForTeamDiscussionCommentLegacyContentConfused
+	case ReactionsListForTeamDiscussionCommentLegacyContentHeart:
+		*s = ReactionsListForTeamDiscussionCommentLegacyContentHeart
+	case ReactionsListForTeamDiscussionCommentLegacyContentHooray:
+		*s = ReactionsListForTeamDiscussionCommentLegacyContentHooray
+	case ReactionsListForTeamDiscussionCommentLegacyContentRocket:
+		*s = ReactionsListForTeamDiscussionCommentLegacyContentRocket
+	case ReactionsListForTeamDiscussionCommentLegacyContentEyes:
+		*s = ReactionsListForTeamDiscussionCommentLegacyContentEyes
+	default:
+		*s = ReactionsListForTeamDiscussionCommentLegacyContent(v)
+	}
+
 	return nil
 }
 
@@ -72139,11 +74352,32 @@ func (s *ReactionsListForTeamDiscussionInOrgContent) Decode(d *jx.Decoder) error
 	if s == nil {
 		return errors.New(`invalid: unable to decode ReactionsListForTeamDiscussionInOrgContent to nil`)
 	}
-	v, err := d.Str()
+	v, err := d.StrBytes()
 	if err != nil {
 		return err
 	}
-	*s = ReactionsListForTeamDiscussionInOrgContent(v)
+	// Try to use constant string.
+	switch ReactionsListForTeamDiscussionInOrgContent(v) {
+	case ReactionsListForTeamDiscussionInOrgContentPlus1:
+		*s = ReactionsListForTeamDiscussionInOrgContentPlus1
+	case ReactionsListForTeamDiscussionInOrgContentMinus1:
+		*s = ReactionsListForTeamDiscussionInOrgContentMinus1
+	case ReactionsListForTeamDiscussionInOrgContentLaugh:
+		*s = ReactionsListForTeamDiscussionInOrgContentLaugh
+	case ReactionsListForTeamDiscussionInOrgContentConfused:
+		*s = ReactionsListForTeamDiscussionInOrgContentConfused
+	case ReactionsListForTeamDiscussionInOrgContentHeart:
+		*s = ReactionsListForTeamDiscussionInOrgContentHeart
+	case ReactionsListForTeamDiscussionInOrgContentHooray:
+		*s = ReactionsListForTeamDiscussionInOrgContentHooray
+	case ReactionsListForTeamDiscussionInOrgContentRocket:
+		*s = ReactionsListForTeamDiscussionInOrgContentRocket
+	case ReactionsListForTeamDiscussionInOrgContentEyes:
+		*s = ReactionsListForTeamDiscussionInOrgContentEyes
+	default:
+		*s = ReactionsListForTeamDiscussionInOrgContent(v)
+	}
+
 	return nil
 }
 
@@ -72157,11 +74391,32 @@ func (s *ReactionsListForTeamDiscussionLegacyContent) Decode(d *jx.Decoder) erro
 	if s == nil {
 		return errors.New(`invalid: unable to decode ReactionsListForTeamDiscussionLegacyContent to nil`)
 	}
-	v, err := d.Str()
+	v, err := d.StrBytes()
 	if err != nil {
 		return err
 	}
-	*s = ReactionsListForTeamDiscussionLegacyContent(v)
+	// Try to use constant string.
+	switch ReactionsListForTeamDiscussionLegacyContent(v) {
+	case ReactionsListForTeamDiscussionLegacyContentPlus1:
+		*s = ReactionsListForTeamDiscussionLegacyContentPlus1
+	case ReactionsListForTeamDiscussionLegacyContentMinus1:
+		*s = ReactionsListForTeamDiscussionLegacyContentMinus1
+	case ReactionsListForTeamDiscussionLegacyContentLaugh:
+		*s = ReactionsListForTeamDiscussionLegacyContentLaugh
+	case ReactionsListForTeamDiscussionLegacyContentConfused:
+		*s = ReactionsListForTeamDiscussionLegacyContentConfused
+	case ReactionsListForTeamDiscussionLegacyContentHeart:
+		*s = ReactionsListForTeamDiscussionLegacyContentHeart
+	case ReactionsListForTeamDiscussionLegacyContentHooray:
+		*s = ReactionsListForTeamDiscussionLegacyContentHooray
+	case ReactionsListForTeamDiscussionLegacyContentRocket:
+		*s = ReactionsListForTeamDiscussionLegacyContentRocket
+	case ReactionsListForTeamDiscussionLegacyContentEyes:
+		*s = ReactionsListForTeamDiscussionLegacyContentEyes
+	default:
+		*s = ReactionsListForTeamDiscussionLegacyContent(v)
+	}
+
 	return nil
 }
 
@@ -72580,11 +74835,20 @@ func (s *ReleaseAssetState) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode ReleaseAssetState to nil`)
 	}
-	v, err := d.Str()
+	v, err := d.StrBytes()
 	if err != nil {
 		return err
 	}
-	*s = ReleaseAssetState(v)
+	// Try to use constant string.
+	switch ReleaseAssetState(v) {
+	case ReleaseAssetStateUploaded:
+		*s = ReleaseAssetStateUploaded
+	case ReleaseAssetStateOpen:
+		*s = ReleaseAssetStateOpen
+	default:
+		*s = ReleaseAssetState(v)
+	}
+
 	return nil
 }
 
@@ -73737,11 +76001,26 @@ func (s *ReposAddCollaboratorReqPermission) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode ReposAddCollaboratorReqPermission to nil`)
 	}
-	v, err := d.Str()
+	v, err := d.StrBytes()
 	if err != nil {
 		return err
 	}
-	*s = ReposAddCollaboratorReqPermission(v)
+	// Try to use constant string.
+	switch ReposAddCollaboratorReqPermission(v) {
+	case ReposAddCollaboratorReqPermissionPull:
+		*s = ReposAddCollaboratorReqPermissionPull
+	case ReposAddCollaboratorReqPermissionPush:
+		*s = ReposAddCollaboratorReqPermissionPush
+	case ReposAddCollaboratorReqPermissionAdmin:
+		*s = ReposAddCollaboratorReqPermissionAdmin
+	case ReposAddCollaboratorReqPermissionMaintain:
+		*s = ReposAddCollaboratorReqPermissionMaintain
+	case ReposAddCollaboratorReqPermissionTriage:
+		*s = ReposAddCollaboratorReqPermissionTriage
+	default:
+		*s = ReposAddCollaboratorReqPermission(v)
+	}
+
 	return nil
 }
 
@@ -74453,11 +76732,24 @@ func (s *ReposCreateCommitStatusReqState) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode ReposCreateCommitStatusReqState to nil`)
 	}
-	v, err := d.Str()
+	v, err := d.StrBytes()
 	if err != nil {
 		return err
 	}
-	*s = ReposCreateCommitStatusReqState(v)
+	// Try to use constant string.
+	switch ReposCreateCommitStatusReqState(v) {
+	case ReposCreateCommitStatusReqStateError:
+		*s = ReposCreateCommitStatusReqStateError
+	case ReposCreateCommitStatusReqStateFailure:
+		*s = ReposCreateCommitStatusReqStateFailure
+	case ReposCreateCommitStatusReqStatePending:
+		*s = ReposCreateCommitStatusReqStatePending
+	case ReposCreateCommitStatusReqStateSuccess:
+		*s = ReposCreateCommitStatusReqStateSuccess
+	default:
+		*s = ReposCreateCommitStatusReqState(v)
+	}
+
 	return nil
 }
 
@@ -74817,11 +77109,22 @@ func (s *ReposCreateDeploymentStatusReqEnvironment) Decode(d *jx.Decoder) error 
 	if s == nil {
 		return errors.New(`invalid: unable to decode ReposCreateDeploymentStatusReqEnvironment to nil`)
 	}
-	v, err := d.Str()
+	v, err := d.StrBytes()
 	if err != nil {
 		return err
 	}
-	*s = ReposCreateDeploymentStatusReqEnvironment(v)
+	// Try to use constant string.
+	switch ReposCreateDeploymentStatusReqEnvironment(v) {
+	case ReposCreateDeploymentStatusReqEnvironmentProduction:
+		*s = ReposCreateDeploymentStatusReqEnvironmentProduction
+	case ReposCreateDeploymentStatusReqEnvironmentStaging:
+		*s = ReposCreateDeploymentStatusReqEnvironmentStaging
+	case ReposCreateDeploymentStatusReqEnvironmentQa:
+		*s = ReposCreateDeploymentStatusReqEnvironmentQa
+	default:
+		*s = ReposCreateDeploymentStatusReqEnvironment(v)
+	}
+
 	return nil
 }
 
@@ -74835,11 +77138,30 @@ func (s *ReposCreateDeploymentStatusReqState) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode ReposCreateDeploymentStatusReqState to nil`)
 	}
-	v, err := d.Str()
+	v, err := d.StrBytes()
 	if err != nil {
 		return err
 	}
-	*s = ReposCreateDeploymentStatusReqState(v)
+	// Try to use constant string.
+	switch ReposCreateDeploymentStatusReqState(v) {
+	case ReposCreateDeploymentStatusReqStateError:
+		*s = ReposCreateDeploymentStatusReqStateError
+	case ReposCreateDeploymentStatusReqStateFailure:
+		*s = ReposCreateDeploymentStatusReqStateFailure
+	case ReposCreateDeploymentStatusReqStateInactive:
+		*s = ReposCreateDeploymentStatusReqStateInactive
+	case ReposCreateDeploymentStatusReqStateInProgress:
+		*s = ReposCreateDeploymentStatusReqStateInProgress
+	case ReposCreateDeploymentStatusReqStateQueued:
+		*s = ReposCreateDeploymentStatusReqStateQueued
+	case ReposCreateDeploymentStatusReqStatePending:
+		*s = ReposCreateDeploymentStatusReqStatePending
+	case ReposCreateDeploymentStatusReqStateSuccess:
+		*s = ReposCreateDeploymentStatusReqStateSuccess
+	default:
+		*s = ReposCreateDeploymentStatusReqState(v)
+	}
+
 	return nil
 }
 
@@ -75494,11 +77816,24 @@ func (s *ReposCreateInOrgReqVisibility) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode ReposCreateInOrgReqVisibility to nil`)
 	}
-	v, err := d.Str()
+	v, err := d.StrBytes()
 	if err != nil {
 		return err
 	}
-	*s = ReposCreateInOrgReqVisibility(v)
+	// Try to use constant string.
+	switch ReposCreateInOrgReqVisibility(v) {
+	case ReposCreateInOrgReqVisibilityPublic:
+		*s = ReposCreateInOrgReqVisibilityPublic
+	case ReposCreateInOrgReqVisibilityPrivate:
+		*s = ReposCreateInOrgReqVisibilityPrivate
+	case ReposCreateInOrgReqVisibilityVisibility:
+		*s = ReposCreateInOrgReqVisibilityVisibility
+	case ReposCreateInOrgReqVisibilityInternal:
+		*s = ReposCreateInOrgReqVisibilityInternal
+	default:
+		*s = ReposCreateInOrgReqVisibility(v)
+	}
+
 	return nil
 }
 
@@ -75926,11 +78261,20 @@ func (s *ReposCreatePagesSiteReqSourcePath) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode ReposCreatePagesSiteReqSourcePath to nil`)
 	}
-	v, err := d.Str()
+	v, err := d.StrBytes()
 	if err != nil {
 		return err
 	}
-	*s = ReposCreatePagesSiteReqSourcePath(v)
+	// Try to use constant string.
+	switch ReposCreatePagesSiteReqSourcePath(v) {
+	case ReposCreatePagesSiteReqSourcePathSlash:
+		*s = ReposCreatePagesSiteReqSourcePathSlash
+	case ReposCreatePagesSiteReqSourcePathSlashDocs:
+		*s = ReposCreatePagesSiteReqSourcePathSlashDocs
+	default:
+		*s = ReposCreatePagesSiteReqSourcePath(v)
+	}
+
 	return nil
 }
 
@@ -77324,11 +79668,22 @@ func (s *ReposGetClonesPer) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode ReposGetClonesPer to nil`)
 	}
-	v, err := d.Str()
+	v, err := d.StrBytes()
 	if err != nil {
 		return err
 	}
-	*s = ReposGetClonesPer(v)
+	// Try to use constant string.
+	switch ReposGetClonesPer(v) {
+	case ReposGetClonesPerEmpty:
+		*s = ReposGetClonesPerEmpty
+	case ReposGetClonesPerDay:
+		*s = ReposGetClonesPerDay
+	case ReposGetClonesPerWeek:
+		*s = ReposGetClonesPerWeek
+	default:
+		*s = ReposGetClonesPer(v)
+	}
+
 	return nil
 }
 
@@ -77746,11 +80101,22 @@ func (s *ReposGetViewsPer) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode ReposGetViewsPer to nil`)
 	}
-	v, err := d.Str()
+	v, err := d.StrBytes()
 	if err != nil {
 		return err
 	}
-	*s = ReposGetViewsPer(v)
+	// Try to use constant string.
+	switch ReposGetViewsPer(v) {
+	case ReposGetViewsPerEmpty:
+		*s = ReposGetViewsPerEmpty
+	case ReposGetViewsPerDay:
+		*s = ReposGetViewsPerDay
+	case ReposGetViewsPerWeek:
+		*s = ReposGetViewsPerWeek
+	default:
+		*s = ReposGetViewsPer(v)
+	}
+
 	return nil
 }
 
@@ -77836,11 +80202,22 @@ func (s *ReposListCollaboratorsAffiliation) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode ReposListCollaboratorsAffiliation to nil`)
 	}
-	v, err := d.Str()
+	v, err := d.StrBytes()
 	if err != nil {
 		return err
 	}
-	*s = ReposListCollaboratorsAffiliation(v)
+	// Try to use constant string.
+	switch ReposListCollaboratorsAffiliation(v) {
+	case ReposListCollaboratorsAffiliationOutside:
+		*s = ReposListCollaboratorsAffiliationOutside
+	case ReposListCollaboratorsAffiliationDirect:
+		*s = ReposListCollaboratorsAffiliationDirect
+	case ReposListCollaboratorsAffiliationAll:
+		*s = ReposListCollaboratorsAffiliationAll
+	default:
+		*s = ReposListCollaboratorsAffiliation(v)
+	}
+
 	return nil
 }
 
@@ -78246,11 +80623,20 @@ func (s *ReposListForAuthenticatedUserDirection) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode ReposListForAuthenticatedUserDirection to nil`)
 	}
-	v, err := d.Str()
+	v, err := d.StrBytes()
 	if err != nil {
 		return err
 	}
-	*s = ReposListForAuthenticatedUserDirection(v)
+	// Try to use constant string.
+	switch ReposListForAuthenticatedUserDirection(v) {
+	case ReposListForAuthenticatedUserDirectionAsc:
+		*s = ReposListForAuthenticatedUserDirectionAsc
+	case ReposListForAuthenticatedUserDirectionDesc:
+		*s = ReposListForAuthenticatedUserDirectionDesc
+	default:
+		*s = ReposListForAuthenticatedUserDirection(v)
+	}
+
 	return nil
 }
 
@@ -78300,11 +80686,24 @@ func (s *ReposListForAuthenticatedUserSort) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode ReposListForAuthenticatedUserSort to nil`)
 	}
-	v, err := d.Str()
+	v, err := d.StrBytes()
 	if err != nil {
 		return err
 	}
-	*s = ReposListForAuthenticatedUserSort(v)
+	// Try to use constant string.
+	switch ReposListForAuthenticatedUserSort(v) {
+	case ReposListForAuthenticatedUserSortCreated:
+		*s = ReposListForAuthenticatedUserSortCreated
+	case ReposListForAuthenticatedUserSortUpdated:
+		*s = ReposListForAuthenticatedUserSortUpdated
+	case ReposListForAuthenticatedUserSortPushed:
+		*s = ReposListForAuthenticatedUserSortPushed
+	case ReposListForAuthenticatedUserSortFullName:
+		*s = ReposListForAuthenticatedUserSortFullName
+	default:
+		*s = ReposListForAuthenticatedUserSort(v)
+	}
+
 	return nil
 }
 
@@ -78318,11 +80717,26 @@ func (s *ReposListForAuthenticatedUserType) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode ReposListForAuthenticatedUserType to nil`)
 	}
-	v, err := d.Str()
+	v, err := d.StrBytes()
 	if err != nil {
 		return err
 	}
-	*s = ReposListForAuthenticatedUserType(v)
+	// Try to use constant string.
+	switch ReposListForAuthenticatedUserType(v) {
+	case ReposListForAuthenticatedUserTypeAll:
+		*s = ReposListForAuthenticatedUserTypeAll
+	case ReposListForAuthenticatedUserTypeOwner:
+		*s = ReposListForAuthenticatedUserTypeOwner
+	case ReposListForAuthenticatedUserTypePublic:
+		*s = ReposListForAuthenticatedUserTypePublic
+	case ReposListForAuthenticatedUserTypePrivate:
+		*s = ReposListForAuthenticatedUserTypePrivate
+	case ReposListForAuthenticatedUserTypeMember:
+		*s = ReposListForAuthenticatedUserTypeMember
+	default:
+		*s = ReposListForAuthenticatedUserType(v)
+	}
+
 	return nil
 }
 
@@ -78336,11 +80750,22 @@ func (s *ReposListForAuthenticatedUserVisibility) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode ReposListForAuthenticatedUserVisibility to nil`)
 	}
-	v, err := d.Str()
+	v, err := d.StrBytes()
 	if err != nil {
 		return err
 	}
-	*s = ReposListForAuthenticatedUserVisibility(v)
+	// Try to use constant string.
+	switch ReposListForAuthenticatedUserVisibility(v) {
+	case ReposListForAuthenticatedUserVisibilityAll:
+		*s = ReposListForAuthenticatedUserVisibilityAll
+	case ReposListForAuthenticatedUserVisibilityPublic:
+		*s = ReposListForAuthenticatedUserVisibilityPublic
+	case ReposListForAuthenticatedUserVisibilityPrivate:
+		*s = ReposListForAuthenticatedUserVisibilityPrivate
+	default:
+		*s = ReposListForAuthenticatedUserVisibility(v)
+	}
+
 	return nil
 }
 
@@ -78354,11 +80779,20 @@ func (s *ReposListForOrgDirection) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode ReposListForOrgDirection to nil`)
 	}
-	v, err := d.Str()
+	v, err := d.StrBytes()
 	if err != nil {
 		return err
 	}
-	*s = ReposListForOrgDirection(v)
+	// Try to use constant string.
+	switch ReposListForOrgDirection(v) {
+	case ReposListForOrgDirectionAsc:
+		*s = ReposListForOrgDirectionAsc
+	case ReposListForOrgDirectionDesc:
+		*s = ReposListForOrgDirectionDesc
+	default:
+		*s = ReposListForOrgDirection(v)
+	}
+
 	return nil
 }
 
@@ -78372,11 +80806,24 @@ func (s *ReposListForOrgSort) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode ReposListForOrgSort to nil`)
 	}
-	v, err := d.Str()
+	v, err := d.StrBytes()
 	if err != nil {
 		return err
 	}
-	*s = ReposListForOrgSort(v)
+	// Try to use constant string.
+	switch ReposListForOrgSort(v) {
+	case ReposListForOrgSortCreated:
+		*s = ReposListForOrgSortCreated
+	case ReposListForOrgSortUpdated:
+		*s = ReposListForOrgSortUpdated
+	case ReposListForOrgSortPushed:
+		*s = ReposListForOrgSortPushed
+	case ReposListForOrgSortFullName:
+		*s = ReposListForOrgSortFullName
+	default:
+		*s = ReposListForOrgSort(v)
+	}
+
 	return nil
 }
 
@@ -78390,11 +80837,30 @@ func (s *ReposListForOrgType) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode ReposListForOrgType to nil`)
 	}
-	v, err := d.Str()
+	v, err := d.StrBytes()
 	if err != nil {
 		return err
 	}
-	*s = ReposListForOrgType(v)
+	// Try to use constant string.
+	switch ReposListForOrgType(v) {
+	case ReposListForOrgTypeAll:
+		*s = ReposListForOrgTypeAll
+	case ReposListForOrgTypePublic:
+		*s = ReposListForOrgTypePublic
+	case ReposListForOrgTypePrivate:
+		*s = ReposListForOrgTypePrivate
+	case ReposListForOrgTypeForks:
+		*s = ReposListForOrgTypeForks
+	case ReposListForOrgTypeSources:
+		*s = ReposListForOrgTypeSources
+	case ReposListForOrgTypeMember:
+		*s = ReposListForOrgTypeMember
+	case ReposListForOrgTypeInternal:
+		*s = ReposListForOrgTypeInternal
+	default:
+		*s = ReposListForOrgType(v)
+	}
+
 	return nil
 }
 
@@ -78408,11 +80874,20 @@ func (s *ReposListForUserDirection) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode ReposListForUserDirection to nil`)
 	}
-	v, err := d.Str()
+	v, err := d.StrBytes()
 	if err != nil {
 		return err
 	}
-	*s = ReposListForUserDirection(v)
+	// Try to use constant string.
+	switch ReposListForUserDirection(v) {
+	case ReposListForUserDirectionAsc:
+		*s = ReposListForUserDirectionAsc
+	case ReposListForUserDirectionDesc:
+		*s = ReposListForUserDirectionDesc
+	default:
+		*s = ReposListForUserDirection(v)
+	}
+
 	return nil
 }
 
@@ -78426,11 +80901,24 @@ func (s *ReposListForUserSort) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode ReposListForUserSort to nil`)
 	}
-	v, err := d.Str()
+	v, err := d.StrBytes()
 	if err != nil {
 		return err
 	}
-	*s = ReposListForUserSort(v)
+	// Try to use constant string.
+	switch ReposListForUserSort(v) {
+	case ReposListForUserSortCreated:
+		*s = ReposListForUserSortCreated
+	case ReposListForUserSortUpdated:
+		*s = ReposListForUserSortUpdated
+	case ReposListForUserSortPushed:
+		*s = ReposListForUserSortPushed
+	case ReposListForUserSortFullName:
+		*s = ReposListForUserSortFullName
+	default:
+		*s = ReposListForUserSort(v)
+	}
+
 	return nil
 }
 
@@ -78444,11 +80932,22 @@ func (s *ReposListForUserType) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode ReposListForUserType to nil`)
 	}
-	v, err := d.Str()
+	v, err := d.StrBytes()
 	if err != nil {
 		return err
 	}
-	*s = ReposListForUserType(v)
+	// Try to use constant string.
+	switch ReposListForUserType(v) {
+	case ReposListForUserTypeAll:
+		*s = ReposListForUserTypeAll
+	case ReposListForUserTypeOwner:
+		*s = ReposListForUserTypeOwner
+	case ReposListForUserTypeMember:
+		*s = ReposListForUserTypeMember
+	default:
+		*s = ReposListForUserType(v)
+	}
+
 	return nil
 }
 
@@ -78498,11 +80997,24 @@ func (s *ReposListForksSort) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode ReposListForksSort to nil`)
 	}
-	v, err := d.Str()
+	v, err := d.StrBytes()
 	if err != nil {
 		return err
 	}
-	*s = ReposListForksSort(v)
+	// Try to use constant string.
+	switch ReposListForksSort(v) {
+	case ReposListForksSortNewest:
+		*s = ReposListForksSortNewest
+	case ReposListForksSortOldest:
+		*s = ReposListForksSortOldest
+	case ReposListForksSortStargazers:
+		*s = ReposListForksSortStargazers
+	case ReposListForksSortWatchers:
+		*s = ReposListForksSortWatchers
+	default:
+		*s = ReposListForksSort(v)
+	}
+
 	return nil
 }
 
@@ -80705,11 +83217,26 @@ func (s *ReposUpdateInvitationReqPermissions) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode ReposUpdateInvitationReqPermissions to nil`)
 	}
-	v, err := d.Str()
+	v, err := d.StrBytes()
 	if err != nil {
 		return err
 	}
-	*s = ReposUpdateInvitationReqPermissions(v)
+	// Try to use constant string.
+	switch ReposUpdateInvitationReqPermissions(v) {
+	case ReposUpdateInvitationReqPermissionsRead:
+		*s = ReposUpdateInvitationReqPermissionsRead
+	case ReposUpdateInvitationReqPermissionsWrite:
+		*s = ReposUpdateInvitationReqPermissionsWrite
+	case ReposUpdateInvitationReqPermissionsMaintain:
+		*s = ReposUpdateInvitationReqPermissionsMaintain
+	case ReposUpdateInvitationReqPermissionsTriage:
+		*s = ReposUpdateInvitationReqPermissionsTriage
+	case ReposUpdateInvitationReqPermissionsAdmin:
+		*s = ReposUpdateInvitationReqPermissionsAdmin
+	default:
+		*s = ReposUpdateInvitationReqPermissions(v)
+	}
+
 	return nil
 }
 
@@ -81251,11 +83778,24 @@ func (s *ReposUpdateReqVisibility) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode ReposUpdateReqVisibility to nil`)
 	}
-	v, err := d.Str()
+	v, err := d.StrBytes()
 	if err != nil {
 		return err
 	}
-	*s = ReposUpdateReqVisibility(v)
+	// Try to use constant string.
+	switch ReposUpdateReqVisibility(v) {
+	case ReposUpdateReqVisibilityPublic:
+		*s = ReposUpdateReqVisibilityPublic
+	case ReposUpdateReqVisibilityPrivate:
+		*s = ReposUpdateReqVisibilityPrivate
+	case ReposUpdateReqVisibilityVisibility:
+		*s = ReposUpdateReqVisibilityVisibility
+	case ReposUpdateReqVisibilityInternal:
+		*s = ReposUpdateReqVisibilityInternal
+	default:
+		*s = ReposUpdateReqVisibility(v)
+	}
+
 	return nil
 }
 
@@ -82521,11 +85061,26 @@ func (s *RepositoryInvitationPermissions) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode RepositoryInvitationPermissions to nil`)
 	}
-	v, err := d.Str()
+	v, err := d.StrBytes()
 	if err != nil {
 		return err
 	}
-	*s = RepositoryInvitationPermissions(v)
+	// Try to use constant string.
+	switch RepositoryInvitationPermissions(v) {
+	case RepositoryInvitationPermissionsRead:
+		*s = RepositoryInvitationPermissionsRead
+	case RepositoryInvitationPermissionsWrite:
+		*s = RepositoryInvitationPermissionsWrite
+	case RepositoryInvitationPermissionsAdmin:
+		*s = RepositoryInvitationPermissionsAdmin
+	case RepositoryInvitationPermissionsTriage:
+		*s = RepositoryInvitationPermissionsTriage
+	case RepositoryInvitationPermissionsMaintain:
+		*s = RepositoryInvitationPermissionsMaintain
+	default:
+		*s = RepositoryInvitationPermissions(v)
+	}
+
 	return nil
 }
 
@@ -83988,11 +86543,20 @@ func (s *ReviewCommentSide) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode ReviewCommentSide to nil`)
 	}
-	v, err := d.Str()
+	v, err := d.StrBytes()
 	if err != nil {
 		return err
 	}
-	*s = ReviewCommentSide(v)
+	// Try to use constant string.
+	switch ReviewCommentSide(v) {
+	case ReviewCommentSideLEFT:
+		*s = ReviewCommentSideLEFT
+	case ReviewCommentSideRIGHT:
+		*s = ReviewCommentSideRIGHT
+	default:
+		*s = ReviewCommentSide(v)
+	}
+
 	return nil
 }
 
@@ -84006,11 +86570,20 @@ func (s *ReviewCommentStartSide) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode ReviewCommentStartSide to nil`)
 	}
-	v, err := d.Str()
+	v, err := d.StrBytes()
 	if err != nil {
 		return err
 	}
-	*s = ReviewCommentStartSide(v)
+	// Try to use constant string.
+	switch ReviewCommentStartSide(v) {
+	case ReviewCommentStartSideLEFT:
+		*s = ReviewCommentStartSideLEFT
+	case ReviewCommentStartSideRIGHT:
+		*s = ReviewCommentStartSideRIGHT
+	default:
+		*s = ReviewCommentStartSide(v)
+	}
+
 	return nil
 }
 
@@ -84413,11 +86986,20 @@ func (s *RunnerLabelsItemType) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode RunnerLabelsItemType to nil`)
 	}
-	v, err := d.Str()
+	v, err := d.StrBytes()
 	if err != nil {
 		return err
 	}
-	*s = RunnerLabelsItemType(v)
+	// Try to use constant string.
+	switch RunnerLabelsItemType(v) {
+	case RunnerLabelsItemTypeReadMinusOnly:
+		*s = RunnerLabelsItemTypeReadMinusOnly
+	case RunnerLabelsItemTypeCustom:
+		*s = RunnerLabelsItemTypeCustom
+	default:
+		*s = RunnerLabelsItemType(v)
+	}
+
 	return nil
 }
 
@@ -85924,11 +88506,22 @@ func (s *ScimUpdateAttributeForUserReqOperationsItemOp) Decode(d *jx.Decoder) er
 	if s == nil {
 		return errors.New(`invalid: unable to decode ScimUpdateAttributeForUserReqOperationsItemOp to nil`)
 	}
-	v, err := d.Str()
+	v, err := d.StrBytes()
 	if err != nil {
 		return err
 	}
-	*s = ScimUpdateAttributeForUserReqOperationsItemOp(v)
+	// Try to use constant string.
+	switch ScimUpdateAttributeForUserReqOperationsItemOp(v) {
+	case ScimUpdateAttributeForUserReqOperationsItemOpAdd:
+		*s = ScimUpdateAttributeForUserReqOperationsItemOpAdd
+	case ScimUpdateAttributeForUserReqOperationsItemOpRemove:
+		*s = ScimUpdateAttributeForUserReqOperationsItemOpRemove
+	case ScimUpdateAttributeForUserReqOperationsItemOpReplace:
+		*s = ScimUpdateAttributeForUserReqOperationsItemOpReplace
+	default:
+		*s = ScimUpdateAttributeForUserReqOperationsItemOp(v)
+	}
+
 	return nil
 }
 
@@ -86548,11 +89141,20 @@ func (s *SearchCodeOrder) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode SearchCodeOrder to nil`)
 	}
-	v, err := d.Str()
+	v, err := d.StrBytes()
 	if err != nil {
 		return err
 	}
-	*s = SearchCodeOrder(v)
+	// Try to use constant string.
+	switch SearchCodeOrder(v) {
+	case SearchCodeOrderDesc:
+		*s = SearchCodeOrderDesc
+	case SearchCodeOrderAsc:
+		*s = SearchCodeOrderAsc
+	default:
+		*s = SearchCodeOrder(v)
+	}
+
 	return nil
 }
 
@@ -86566,11 +89168,18 @@ func (s *SearchCodeSort) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode SearchCodeSort to nil`)
 	}
-	v, err := d.Str()
+	v, err := d.StrBytes()
 	if err != nil {
 		return err
 	}
-	*s = SearchCodeSort(v)
+	// Try to use constant string.
+	switch SearchCodeSort(v) {
+	case SearchCodeSortIndexed:
+		*s = SearchCodeSortIndexed
+	default:
+		*s = SearchCodeSort(v)
+	}
+
 	return nil
 }
 
@@ -86641,11 +89250,20 @@ func (s *SearchCommitsOrder) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode SearchCommitsOrder to nil`)
 	}
-	v, err := d.Str()
+	v, err := d.StrBytes()
 	if err != nil {
 		return err
 	}
-	*s = SearchCommitsOrder(v)
+	// Try to use constant string.
+	switch SearchCommitsOrder(v) {
+	case SearchCommitsOrderDesc:
+		*s = SearchCommitsOrderDesc
+	case SearchCommitsOrderAsc:
+		*s = SearchCommitsOrderAsc
+	default:
+		*s = SearchCommitsOrder(v)
+	}
+
 	return nil
 }
 
@@ -86659,11 +89277,20 @@ func (s *SearchCommitsSort) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode SearchCommitsSort to nil`)
 	}
-	v, err := d.Str()
+	v, err := d.StrBytes()
 	if err != nil {
 		return err
 	}
-	*s = SearchCommitsSort(v)
+	// Try to use constant string.
+	switch SearchCommitsSort(v) {
+	case SearchCommitsSortAuthorMinusDate:
+		*s = SearchCommitsSortAuthorMinusDate
+	case SearchCommitsSortCommitterMinusDate:
+		*s = SearchCommitsSortCommitterMinusDate
+	default:
+		*s = SearchCommitsSort(v)
+	}
+
 	return nil
 }
 
@@ -86734,11 +89361,20 @@ func (s *SearchIssuesAndPullRequestsOrder) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode SearchIssuesAndPullRequestsOrder to nil`)
 	}
-	v, err := d.Str()
+	v, err := d.StrBytes()
 	if err != nil {
 		return err
 	}
-	*s = SearchIssuesAndPullRequestsOrder(v)
+	// Try to use constant string.
+	switch SearchIssuesAndPullRequestsOrder(v) {
+	case SearchIssuesAndPullRequestsOrderDesc:
+		*s = SearchIssuesAndPullRequestsOrderDesc
+	case SearchIssuesAndPullRequestsOrderAsc:
+		*s = SearchIssuesAndPullRequestsOrderAsc
+	default:
+		*s = SearchIssuesAndPullRequestsOrder(v)
+	}
+
 	return nil
 }
 
@@ -86752,11 +89388,38 @@ func (s *SearchIssuesAndPullRequestsSort) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode SearchIssuesAndPullRequestsSort to nil`)
 	}
-	v, err := d.Str()
+	v, err := d.StrBytes()
 	if err != nil {
 		return err
 	}
-	*s = SearchIssuesAndPullRequestsSort(v)
+	// Try to use constant string.
+	switch SearchIssuesAndPullRequestsSort(v) {
+	case SearchIssuesAndPullRequestsSortComments:
+		*s = SearchIssuesAndPullRequestsSortComments
+	case SearchIssuesAndPullRequestsSortReactions:
+		*s = SearchIssuesAndPullRequestsSortReactions
+	case SearchIssuesAndPullRequestsSortReactionsMinusPlus1:
+		*s = SearchIssuesAndPullRequestsSortReactionsMinusPlus1
+	case SearchIssuesAndPullRequestsSortReactionsMinusMinus1:
+		*s = SearchIssuesAndPullRequestsSortReactionsMinusMinus1
+	case SearchIssuesAndPullRequestsSortReactionsMinusSmile:
+		*s = SearchIssuesAndPullRequestsSortReactionsMinusSmile
+	case SearchIssuesAndPullRequestsSortReactionsMinusThinkingFace:
+		*s = SearchIssuesAndPullRequestsSortReactionsMinusThinkingFace
+	case SearchIssuesAndPullRequestsSortReactionsMinusHeart:
+		*s = SearchIssuesAndPullRequestsSortReactionsMinusHeart
+	case SearchIssuesAndPullRequestsSortReactionsMinusTada:
+		*s = SearchIssuesAndPullRequestsSortReactionsMinusTada
+	case SearchIssuesAndPullRequestsSortInteractions:
+		*s = SearchIssuesAndPullRequestsSortInteractions
+	case SearchIssuesAndPullRequestsSortCreated:
+		*s = SearchIssuesAndPullRequestsSortCreated
+	case SearchIssuesAndPullRequestsSortUpdated:
+		*s = SearchIssuesAndPullRequestsSortUpdated
+	default:
+		*s = SearchIssuesAndPullRequestsSort(v)
+	}
+
 	return nil
 }
 
@@ -86875,11 +89538,20 @@ func (s *SearchLabelsOrder) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode SearchLabelsOrder to nil`)
 	}
-	v, err := d.Str()
+	v, err := d.StrBytes()
 	if err != nil {
 		return err
 	}
-	*s = SearchLabelsOrder(v)
+	// Try to use constant string.
+	switch SearchLabelsOrder(v) {
+	case SearchLabelsOrderDesc:
+		*s = SearchLabelsOrderDesc
+	case SearchLabelsOrderAsc:
+		*s = SearchLabelsOrderAsc
+	default:
+		*s = SearchLabelsOrder(v)
+	}
+
 	return nil
 }
 
@@ -86893,11 +89565,20 @@ func (s *SearchLabelsSort) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode SearchLabelsSort to nil`)
 	}
-	v, err := d.Str()
+	v, err := d.StrBytes()
 	if err != nil {
 		return err
 	}
-	*s = SearchLabelsSort(v)
+	// Try to use constant string.
+	switch SearchLabelsSort(v) {
+	case SearchLabelsSortCreated:
+		*s = SearchLabelsSortCreated
+	case SearchLabelsSortUpdated:
+		*s = SearchLabelsSortUpdated
+	default:
+		*s = SearchLabelsSort(v)
+	}
+
 	return nil
 }
 
@@ -86968,11 +89649,20 @@ func (s *SearchReposOrder) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode SearchReposOrder to nil`)
 	}
-	v, err := d.Str()
+	v, err := d.StrBytes()
 	if err != nil {
 		return err
 	}
-	*s = SearchReposOrder(v)
+	// Try to use constant string.
+	switch SearchReposOrder(v) {
+	case SearchReposOrderDesc:
+		*s = SearchReposOrderDesc
+	case SearchReposOrderAsc:
+		*s = SearchReposOrderAsc
+	default:
+		*s = SearchReposOrder(v)
+	}
+
 	return nil
 }
 
@@ -86986,11 +89676,24 @@ func (s *SearchReposSort) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode SearchReposSort to nil`)
 	}
-	v, err := d.Str()
+	v, err := d.StrBytes()
 	if err != nil {
 		return err
 	}
-	*s = SearchReposSort(v)
+	// Try to use constant string.
+	switch SearchReposSort(v) {
+	case SearchReposSortStars:
+		*s = SearchReposSortStars
+	case SearchReposSortForks:
+		*s = SearchReposSortForks
+	case SearchReposSortHelpMinusWantedMinusIssues:
+		*s = SearchReposSortHelpMinusWantedMinusIssues
+	case SearchReposSortUpdated:
+		*s = SearchReposSortUpdated
+	default:
+		*s = SearchReposSort(v)
+	}
+
 	return nil
 }
 
@@ -87281,11 +89984,20 @@ func (s *SearchUsersOrder) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode SearchUsersOrder to nil`)
 	}
-	v, err := d.Str()
+	v, err := d.StrBytes()
 	if err != nil {
 		return err
 	}
-	*s = SearchUsersOrder(v)
+	// Try to use constant string.
+	switch SearchUsersOrder(v) {
+	case SearchUsersOrderDesc:
+		*s = SearchUsersOrderDesc
+	case SearchUsersOrderAsc:
+		*s = SearchUsersOrderAsc
+	default:
+		*s = SearchUsersOrder(v)
+	}
+
 	return nil
 }
 
@@ -87299,11 +90011,22 @@ func (s *SearchUsersSort) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode SearchUsersSort to nil`)
 	}
-	v, err := d.Str()
+	v, err := d.StrBytes()
 	if err != nil {
 		return err
 	}
-	*s = SearchUsersSort(v)
+	// Try to use constant string.
+	switch SearchUsersSort(v) {
+	case SearchUsersSortFollowers:
+		*s = SearchUsersSortFollowers
+	case SearchUsersSortRepositories:
+		*s = SearchUsersSortRepositories
+	case SearchUsersSortJoined:
+		*s = SearchUsersSortJoined
+	default:
+		*s = SearchUsersSort(v)
+	}
+
 	return nil
 }
 
@@ -87436,11 +90159,24 @@ func (s *SecretScanningAlertResolution) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode SecretScanningAlertResolution to nil`)
 	}
-	v, err := d.Str()
+	v, err := d.StrBytes()
 	if err != nil {
 		return err
 	}
-	*s = SecretScanningAlertResolution(v)
+	// Try to use constant string.
+	switch SecretScanningAlertResolution(v) {
+	case SecretScanningAlertResolutionFalsePositive:
+		*s = SecretScanningAlertResolutionFalsePositive
+	case SecretScanningAlertResolutionWontFix:
+		*s = SecretScanningAlertResolutionWontFix
+	case SecretScanningAlertResolutionRevoked:
+		*s = SecretScanningAlertResolutionRevoked
+	case SecretScanningAlertResolutionUsedInTests:
+		*s = SecretScanningAlertResolutionUsedInTests
+	default:
+		*s = SecretScanningAlertResolution(v)
+	}
+
 	return nil
 }
 
@@ -87454,11 +90190,20 @@ func (s *SecretScanningAlertState) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode SecretScanningAlertState to nil`)
 	}
-	v, err := d.Str()
+	v, err := d.StrBytes()
 	if err != nil {
 		return err
 	}
-	*s = SecretScanningAlertState(v)
+	// Try to use constant string.
+	switch SecretScanningAlertState(v) {
+	case SecretScanningAlertStateOpen:
+		*s = SecretScanningAlertStateOpen
+	case SecretScanningAlertStateResolved:
+		*s = SecretScanningAlertStateResolved
+	default:
+		*s = SecretScanningAlertState(v)
+	}
+
 	return nil
 }
 
@@ -87528,11 +90273,20 @@ func (s *SecretScanningListAlertsForOrgState) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode SecretScanningListAlertsForOrgState to nil`)
 	}
-	v, err := d.Str()
+	v, err := d.StrBytes()
 	if err != nil {
 		return err
 	}
-	*s = SecretScanningListAlertsForOrgState(v)
+	// Try to use constant string.
+	switch SecretScanningListAlertsForOrgState(v) {
+	case SecretScanningListAlertsForOrgStateOpen:
+		*s = SecretScanningListAlertsForOrgStateOpen
+	case SecretScanningListAlertsForOrgStateResolved:
+		*s = SecretScanningListAlertsForOrgStateResolved
+	default:
+		*s = SecretScanningListAlertsForOrgState(v)
+	}
+
 	return nil
 }
 
@@ -87602,11 +90356,20 @@ func (s *SecretScanningListAlertsForRepoState) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode SecretScanningListAlertsForRepoState to nil`)
 	}
-	v, err := d.Str()
+	v, err := d.StrBytes()
 	if err != nil {
 		return err
 	}
-	*s = SecretScanningListAlertsForRepoState(v)
+	// Try to use constant string.
+	switch SecretScanningListAlertsForRepoState(v) {
+	case SecretScanningListAlertsForRepoStateOpen:
+		*s = SecretScanningListAlertsForRepoStateOpen
+	case SecretScanningListAlertsForRepoStateResolved:
+		*s = SecretScanningListAlertsForRepoStateResolved
+	default:
+		*s = SecretScanningListAlertsForRepoState(v)
+	}
+
 	return nil
 }
 
@@ -89342,11 +92105,20 @@ func (s *TeamFullPrivacy) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode TeamFullPrivacy to nil`)
 	}
-	v, err := d.Str()
+	v, err := d.StrBytes()
 	if err != nil {
 		return err
 	}
-	*s = TeamFullPrivacy(v)
+	// Try to use constant string.
+	switch TeamFullPrivacy(v) {
+	case TeamFullPrivacyClosed:
+		*s = TeamFullPrivacyClosed
+	case TeamFullPrivacySecret:
+		*s = TeamFullPrivacySecret
+	default:
+		*s = TeamFullPrivacy(v)
+	}
+
 	return nil
 }
 
@@ -89403,11 +92175,20 @@ func (s *TeamMembershipRole) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode TeamMembershipRole to nil`)
 	}
-	v, err := d.Str()
+	v, err := d.StrBytes()
 	if err != nil {
 		return err
 	}
-	*s = TeamMembershipRole(v)
+	// Try to use constant string.
+	switch TeamMembershipRole(v) {
+	case TeamMembershipRoleMember:
+		*s = TeamMembershipRoleMember
+	case TeamMembershipRoleMaintainer:
+		*s = TeamMembershipRoleMaintainer
+	default:
+		*s = TeamMembershipRole(v)
+	}
+
 	return nil
 }
 
@@ -89421,11 +92202,20 @@ func (s *TeamMembershipState) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode TeamMembershipState to nil`)
 	}
-	v, err := d.Str()
+	v, err := d.StrBytes()
 	if err != nil {
 		return err
 	}
-	*s = TeamMembershipState(v)
+	// Try to use constant string.
+	switch TeamMembershipState(v) {
+	case TeamMembershipStateActive:
+		*s = TeamMembershipStateActive
+	case TeamMembershipStatePending:
+		*s = TeamMembershipStatePending
+	default:
+		*s = TeamMembershipState(v)
+	}
+
 	return nil
 }
 
@@ -90816,11 +93606,20 @@ func (s *TeamsAddOrUpdateMembershipForUserInOrgReqRole) Decode(d *jx.Decoder) er
 	if s == nil {
 		return errors.New(`invalid: unable to decode TeamsAddOrUpdateMembershipForUserInOrgReqRole to nil`)
 	}
-	v, err := d.Str()
+	v, err := d.StrBytes()
 	if err != nil {
 		return err
 	}
-	*s = TeamsAddOrUpdateMembershipForUserInOrgReqRole(v)
+	// Try to use constant string.
+	switch TeamsAddOrUpdateMembershipForUserInOrgReqRole(v) {
+	case TeamsAddOrUpdateMembershipForUserInOrgReqRoleMember:
+		*s = TeamsAddOrUpdateMembershipForUserInOrgReqRoleMember
+	case TeamsAddOrUpdateMembershipForUserInOrgReqRoleMaintainer:
+		*s = TeamsAddOrUpdateMembershipForUserInOrgReqRoleMaintainer
+	default:
+		*s = TeamsAddOrUpdateMembershipForUserInOrgReqRole(v)
+	}
+
 	return nil
 }
 
@@ -90903,11 +93702,20 @@ func (s *TeamsAddOrUpdateMembershipForUserLegacyReqRole) Decode(d *jx.Decoder) e
 	if s == nil {
 		return errors.New(`invalid: unable to decode TeamsAddOrUpdateMembershipForUserLegacyReqRole to nil`)
 	}
-	v, err := d.Str()
+	v, err := d.StrBytes()
 	if err != nil {
 		return err
 	}
-	*s = TeamsAddOrUpdateMembershipForUserLegacyReqRole(v)
+	// Try to use constant string.
+	switch TeamsAddOrUpdateMembershipForUserLegacyReqRole(v) {
+	case TeamsAddOrUpdateMembershipForUserLegacyReqRoleMember:
+		*s = TeamsAddOrUpdateMembershipForUserLegacyReqRoleMember
+	case TeamsAddOrUpdateMembershipForUserLegacyReqRoleMaintainer:
+		*s = TeamsAddOrUpdateMembershipForUserLegacyReqRoleMaintainer
+	default:
+		*s = TeamsAddOrUpdateMembershipForUserLegacyReqRole(v)
+	}
+
 	return nil
 }
 
@@ -91028,11 +93836,22 @@ func (s *TeamsAddOrUpdateProjectPermissionsInOrgReqPermission) Decode(d *jx.Deco
 	if s == nil {
 		return errors.New(`invalid: unable to decode TeamsAddOrUpdateProjectPermissionsInOrgReqPermission to nil`)
 	}
-	v, err := d.Str()
+	v, err := d.StrBytes()
 	if err != nil {
 		return err
 	}
-	*s = TeamsAddOrUpdateProjectPermissionsInOrgReqPermission(v)
+	// Try to use constant string.
+	switch TeamsAddOrUpdateProjectPermissionsInOrgReqPermission(v) {
+	case TeamsAddOrUpdateProjectPermissionsInOrgReqPermissionRead:
+		*s = TeamsAddOrUpdateProjectPermissionsInOrgReqPermissionRead
+	case TeamsAddOrUpdateProjectPermissionsInOrgReqPermissionWrite:
+		*s = TeamsAddOrUpdateProjectPermissionsInOrgReqPermissionWrite
+	case TeamsAddOrUpdateProjectPermissionsInOrgReqPermissionAdmin:
+		*s = TeamsAddOrUpdateProjectPermissionsInOrgReqPermissionAdmin
+	default:
+		*s = TeamsAddOrUpdateProjectPermissionsInOrgReqPermission(v)
+	}
+
 	return nil
 }
 
@@ -91133,11 +93952,22 @@ func (s *TeamsAddOrUpdateProjectPermissionsLegacyReqPermission) Decode(d *jx.Dec
 	if s == nil {
 		return errors.New(`invalid: unable to decode TeamsAddOrUpdateProjectPermissionsLegacyReqPermission to nil`)
 	}
-	v, err := d.Str()
+	v, err := d.StrBytes()
 	if err != nil {
 		return err
 	}
-	*s = TeamsAddOrUpdateProjectPermissionsLegacyReqPermission(v)
+	// Try to use constant string.
+	switch TeamsAddOrUpdateProjectPermissionsLegacyReqPermission(v) {
+	case TeamsAddOrUpdateProjectPermissionsLegacyReqPermissionRead:
+		*s = TeamsAddOrUpdateProjectPermissionsLegacyReqPermissionRead
+	case TeamsAddOrUpdateProjectPermissionsLegacyReqPermissionWrite:
+		*s = TeamsAddOrUpdateProjectPermissionsLegacyReqPermissionWrite
+	case TeamsAddOrUpdateProjectPermissionsLegacyReqPermissionAdmin:
+		*s = TeamsAddOrUpdateProjectPermissionsLegacyReqPermissionAdmin
+	default:
+		*s = TeamsAddOrUpdateProjectPermissionsLegacyReqPermission(v)
+	}
+
 	return nil
 }
 
@@ -91200,11 +94030,26 @@ func (s *TeamsAddOrUpdateRepoPermissionsInOrgReqPermission) Decode(d *jx.Decoder
 	if s == nil {
 		return errors.New(`invalid: unable to decode TeamsAddOrUpdateRepoPermissionsInOrgReqPermission to nil`)
 	}
-	v, err := d.Str()
+	v, err := d.StrBytes()
 	if err != nil {
 		return err
 	}
-	*s = TeamsAddOrUpdateRepoPermissionsInOrgReqPermission(v)
+	// Try to use constant string.
+	switch TeamsAddOrUpdateRepoPermissionsInOrgReqPermission(v) {
+	case TeamsAddOrUpdateRepoPermissionsInOrgReqPermissionPull:
+		*s = TeamsAddOrUpdateRepoPermissionsInOrgReqPermissionPull
+	case TeamsAddOrUpdateRepoPermissionsInOrgReqPermissionPush:
+		*s = TeamsAddOrUpdateRepoPermissionsInOrgReqPermissionPush
+	case TeamsAddOrUpdateRepoPermissionsInOrgReqPermissionAdmin:
+		*s = TeamsAddOrUpdateRepoPermissionsInOrgReqPermissionAdmin
+	case TeamsAddOrUpdateRepoPermissionsInOrgReqPermissionMaintain:
+		*s = TeamsAddOrUpdateRepoPermissionsInOrgReqPermissionMaintain
+	case TeamsAddOrUpdateRepoPermissionsInOrgReqPermissionTriage:
+		*s = TeamsAddOrUpdateRepoPermissionsInOrgReqPermissionTriage
+	default:
+		*s = TeamsAddOrUpdateRepoPermissionsInOrgReqPermission(v)
+	}
+
 	return nil
 }
 
@@ -91267,11 +94112,22 @@ func (s *TeamsAddOrUpdateRepoPermissionsLegacyReqPermission) Decode(d *jx.Decode
 	if s == nil {
 		return errors.New(`invalid: unable to decode TeamsAddOrUpdateRepoPermissionsLegacyReqPermission to nil`)
 	}
-	v, err := d.Str()
+	v, err := d.StrBytes()
 	if err != nil {
 		return err
 	}
-	*s = TeamsAddOrUpdateRepoPermissionsLegacyReqPermission(v)
+	// Try to use constant string.
+	switch TeamsAddOrUpdateRepoPermissionsLegacyReqPermission(v) {
+	case TeamsAddOrUpdateRepoPermissionsLegacyReqPermissionPull:
+		*s = TeamsAddOrUpdateRepoPermissionsLegacyReqPermissionPull
+	case TeamsAddOrUpdateRepoPermissionsLegacyReqPermissionPush:
+		*s = TeamsAddOrUpdateRepoPermissionsLegacyReqPermissionPush
+	case TeamsAddOrUpdateRepoPermissionsLegacyReqPermissionAdmin:
+		*s = TeamsAddOrUpdateRepoPermissionsLegacyReqPermissionAdmin
+	default:
+		*s = TeamsAddOrUpdateRepoPermissionsLegacyReqPermission(v)
+	}
+
 	return nil
 }
 
@@ -91875,11 +94731,22 @@ func (s *TeamsCreateReqPermission) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode TeamsCreateReqPermission to nil`)
 	}
-	v, err := d.Str()
+	v, err := d.StrBytes()
 	if err != nil {
 		return err
 	}
-	*s = TeamsCreateReqPermission(v)
+	// Try to use constant string.
+	switch TeamsCreateReqPermission(v) {
+	case TeamsCreateReqPermissionPull:
+		*s = TeamsCreateReqPermissionPull
+	case TeamsCreateReqPermissionPush:
+		*s = TeamsCreateReqPermissionPush
+	case TeamsCreateReqPermissionAdmin:
+		*s = TeamsCreateReqPermissionAdmin
+	default:
+		*s = TeamsCreateReqPermission(v)
+	}
+
 	return nil
 }
 
@@ -91893,11 +94760,20 @@ func (s *TeamsCreateReqPrivacy) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode TeamsCreateReqPrivacy to nil`)
 	}
-	v, err := d.Str()
+	v, err := d.StrBytes()
 	if err != nil {
 		return err
 	}
-	*s = TeamsCreateReqPrivacy(v)
+	// Try to use constant string.
+	switch TeamsCreateReqPrivacy(v) {
+	case TeamsCreateReqPrivacySecret:
+		*s = TeamsCreateReqPrivacySecret
+	case TeamsCreateReqPrivacyClosed:
+		*s = TeamsCreateReqPrivacyClosed
+	default:
+		*s = TeamsCreateReqPrivacy(v)
+	}
+
 	return nil
 }
 
@@ -92175,11 +95051,20 @@ func (s *TeamsListDiscussionCommentsInOrgDirection) Decode(d *jx.Decoder) error 
 	if s == nil {
 		return errors.New(`invalid: unable to decode TeamsListDiscussionCommentsInOrgDirection to nil`)
 	}
-	v, err := d.Str()
+	v, err := d.StrBytes()
 	if err != nil {
 		return err
 	}
-	*s = TeamsListDiscussionCommentsInOrgDirection(v)
+	// Try to use constant string.
+	switch TeamsListDiscussionCommentsInOrgDirection(v) {
+	case TeamsListDiscussionCommentsInOrgDirectionAsc:
+		*s = TeamsListDiscussionCommentsInOrgDirectionAsc
+	case TeamsListDiscussionCommentsInOrgDirectionDesc:
+		*s = TeamsListDiscussionCommentsInOrgDirectionDesc
+	default:
+		*s = TeamsListDiscussionCommentsInOrgDirection(v)
+	}
+
 	return nil
 }
 
@@ -92193,11 +95078,20 @@ func (s *TeamsListDiscussionCommentsLegacyDirection) Decode(d *jx.Decoder) error
 	if s == nil {
 		return errors.New(`invalid: unable to decode TeamsListDiscussionCommentsLegacyDirection to nil`)
 	}
-	v, err := d.Str()
+	v, err := d.StrBytes()
 	if err != nil {
 		return err
 	}
-	*s = TeamsListDiscussionCommentsLegacyDirection(v)
+	// Try to use constant string.
+	switch TeamsListDiscussionCommentsLegacyDirection(v) {
+	case TeamsListDiscussionCommentsLegacyDirectionAsc:
+		*s = TeamsListDiscussionCommentsLegacyDirectionAsc
+	case TeamsListDiscussionCommentsLegacyDirectionDesc:
+		*s = TeamsListDiscussionCommentsLegacyDirectionDesc
+	default:
+		*s = TeamsListDiscussionCommentsLegacyDirection(v)
+	}
+
 	return nil
 }
 
@@ -92211,11 +95105,20 @@ func (s *TeamsListDiscussionsInOrgDirection) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode TeamsListDiscussionsInOrgDirection to nil`)
 	}
-	v, err := d.Str()
+	v, err := d.StrBytes()
 	if err != nil {
 		return err
 	}
-	*s = TeamsListDiscussionsInOrgDirection(v)
+	// Try to use constant string.
+	switch TeamsListDiscussionsInOrgDirection(v) {
+	case TeamsListDiscussionsInOrgDirectionAsc:
+		*s = TeamsListDiscussionsInOrgDirectionAsc
+	case TeamsListDiscussionsInOrgDirectionDesc:
+		*s = TeamsListDiscussionsInOrgDirectionDesc
+	default:
+		*s = TeamsListDiscussionsInOrgDirection(v)
+	}
+
 	return nil
 }
 
@@ -92229,11 +95132,20 @@ func (s *TeamsListDiscussionsLegacyDirection) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode TeamsListDiscussionsLegacyDirection to nil`)
 	}
-	v, err := d.Str()
+	v, err := d.StrBytes()
 	if err != nil {
 		return err
 	}
-	*s = TeamsListDiscussionsLegacyDirection(v)
+	// Try to use constant string.
+	switch TeamsListDiscussionsLegacyDirection(v) {
+	case TeamsListDiscussionsLegacyDirectionAsc:
+		*s = TeamsListDiscussionsLegacyDirectionAsc
+	case TeamsListDiscussionsLegacyDirectionDesc:
+		*s = TeamsListDiscussionsLegacyDirectionDesc
+	default:
+		*s = TeamsListDiscussionsLegacyDirection(v)
+	}
+
 	return nil
 }
 
@@ -92379,11 +95291,22 @@ func (s *TeamsListMembersInOrgRole) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode TeamsListMembersInOrgRole to nil`)
 	}
-	v, err := d.Str()
+	v, err := d.StrBytes()
 	if err != nil {
 		return err
 	}
-	*s = TeamsListMembersInOrgRole(v)
+	// Try to use constant string.
+	switch TeamsListMembersInOrgRole(v) {
+	case TeamsListMembersInOrgRoleMember:
+		*s = TeamsListMembersInOrgRoleMember
+	case TeamsListMembersInOrgRoleMaintainer:
+		*s = TeamsListMembersInOrgRoleMaintainer
+	case TeamsListMembersInOrgRoleAll:
+		*s = TeamsListMembersInOrgRoleAll
+	default:
+		*s = TeamsListMembersInOrgRole(v)
+	}
+
 	return nil
 }
 
@@ -92433,11 +95356,22 @@ func (s *TeamsListMembersLegacyRole) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode TeamsListMembersLegacyRole to nil`)
 	}
-	v, err := d.Str()
+	v, err := d.StrBytes()
 	if err != nil {
 		return err
 	}
-	*s = TeamsListMembersLegacyRole(v)
+	// Try to use constant string.
+	switch TeamsListMembersLegacyRole(v) {
+	case TeamsListMembersLegacyRoleMember:
+		*s = TeamsListMembersLegacyRoleMember
+	case TeamsListMembersLegacyRoleMaintainer:
+		*s = TeamsListMembersLegacyRoleMaintainer
+	case TeamsListMembersLegacyRoleAll:
+		*s = TeamsListMembersLegacyRoleAll
+	default:
+		*s = TeamsListMembersLegacyRole(v)
+	}
+
 	return nil
 }
 
@@ -92958,11 +95892,22 @@ func (s *TeamsUpdateInOrgReqPermission) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode TeamsUpdateInOrgReqPermission to nil`)
 	}
-	v, err := d.Str()
+	v, err := d.StrBytes()
 	if err != nil {
 		return err
 	}
-	*s = TeamsUpdateInOrgReqPermission(v)
+	// Try to use constant string.
+	switch TeamsUpdateInOrgReqPermission(v) {
+	case TeamsUpdateInOrgReqPermissionPull:
+		*s = TeamsUpdateInOrgReqPermissionPull
+	case TeamsUpdateInOrgReqPermissionPush:
+		*s = TeamsUpdateInOrgReqPermissionPush
+	case TeamsUpdateInOrgReqPermissionAdmin:
+		*s = TeamsUpdateInOrgReqPermissionAdmin
+	default:
+		*s = TeamsUpdateInOrgReqPermission(v)
+	}
+
 	return nil
 }
 
@@ -92976,11 +95921,20 @@ func (s *TeamsUpdateInOrgReqPrivacy) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode TeamsUpdateInOrgReqPrivacy to nil`)
 	}
-	v, err := d.Str()
+	v, err := d.StrBytes()
 	if err != nil {
 		return err
 	}
-	*s = TeamsUpdateInOrgReqPrivacy(v)
+	// Try to use constant string.
+	switch TeamsUpdateInOrgReqPrivacy(v) {
+	case TeamsUpdateInOrgReqPrivacySecret:
+		*s = TeamsUpdateInOrgReqPrivacySecret
+	case TeamsUpdateInOrgReqPrivacyClosed:
+		*s = TeamsUpdateInOrgReqPrivacyClosed
+	default:
+		*s = TeamsUpdateInOrgReqPrivacy(v)
+	}
+
 	return nil
 }
 
@@ -93155,11 +96109,22 @@ func (s *TeamsUpdateLegacyReqPermission) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode TeamsUpdateLegacyReqPermission to nil`)
 	}
-	v, err := d.Str()
+	v, err := d.StrBytes()
 	if err != nil {
 		return err
 	}
-	*s = TeamsUpdateLegacyReqPermission(v)
+	// Try to use constant string.
+	switch TeamsUpdateLegacyReqPermission(v) {
+	case TeamsUpdateLegacyReqPermissionPull:
+		*s = TeamsUpdateLegacyReqPermissionPull
+	case TeamsUpdateLegacyReqPermissionPush:
+		*s = TeamsUpdateLegacyReqPermissionPush
+	case TeamsUpdateLegacyReqPermissionAdmin:
+		*s = TeamsUpdateLegacyReqPermissionAdmin
+	default:
+		*s = TeamsUpdateLegacyReqPermission(v)
+	}
+
 	return nil
 }
 
@@ -93173,11 +96138,20 @@ func (s *TeamsUpdateLegacyReqPrivacy) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode TeamsUpdateLegacyReqPrivacy to nil`)
 	}
-	v, err := d.Str()
+	v, err := d.StrBytes()
 	if err != nil {
 		return err
 	}
-	*s = TeamsUpdateLegacyReqPrivacy(v)
+	// Try to use constant string.
+	switch TeamsUpdateLegacyReqPrivacy(v) {
+	case TeamsUpdateLegacyReqPrivacySecret:
+		*s = TeamsUpdateLegacyReqPrivacySecret
+	case TeamsUpdateLegacyReqPrivacyClosed:
+		*s = TeamsUpdateLegacyReqPrivacyClosed
+	default:
+		*s = TeamsUpdateLegacyReqPrivacy(v)
+	}
+
 	return nil
 }
 
@@ -95862,11 +98836,24 @@ func (s *UsersGetContextForUserSubjectType) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode UsersGetContextForUserSubjectType to nil`)
 	}
-	v, err := d.Str()
+	v, err := d.StrBytes()
 	if err != nil {
 		return err
 	}
-	*s = UsersGetContextForUserSubjectType(v)
+	// Try to use constant string.
+	switch UsersGetContextForUserSubjectType(v) {
+	case UsersGetContextForUserSubjectTypeOrganization:
+		*s = UsersGetContextForUserSubjectTypeOrganization
+	case UsersGetContextForUserSubjectTypeRepository:
+		*s = UsersGetContextForUserSubjectTypeRepository
+	case UsersGetContextForUserSubjectTypeIssue:
+		*s = UsersGetContextForUserSubjectTypeIssue
+	case UsersGetContextForUserSubjectTypePullRequest:
+		*s = UsersGetContextForUserSubjectTypePullRequest
+	default:
+		*s = UsersGetContextForUserSubjectType(v)
+	}
+
 	return nil
 }
 
@@ -96903,11 +99890,20 @@ func (s *UsersSetPrimaryEmailVisibilityForAuthenticatedReqVisibility) Decode(d *
 	if s == nil {
 		return errors.New(`invalid: unable to decode UsersSetPrimaryEmailVisibilityForAuthenticatedReqVisibility to nil`)
 	}
-	v, err := d.Str()
+	v, err := d.StrBytes()
 	if err != nil {
 		return err
 	}
-	*s = UsersSetPrimaryEmailVisibilityForAuthenticatedReqVisibility(v)
+	// Try to use constant string.
+	switch UsersSetPrimaryEmailVisibilityForAuthenticatedReqVisibility(v) {
+	case UsersSetPrimaryEmailVisibilityForAuthenticatedReqVisibilityPublic:
+		*s = UsersSetPrimaryEmailVisibilityForAuthenticatedReqVisibilityPublic
+	case UsersSetPrimaryEmailVisibilityForAuthenticatedReqVisibilityPrivate:
+		*s = UsersSetPrimaryEmailVisibilityForAuthenticatedReqVisibilityPrivate
+	default:
+		*s = UsersSetPrimaryEmailVisibilityForAuthenticatedReqVisibility(v)
+	}
+
 	return nil
 }
 
@@ -98431,10 +101427,25 @@ func (s *WorkflowState) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode WorkflowState to nil`)
 	}
-	v, err := d.Str()
+	v, err := d.StrBytes()
 	if err != nil {
 		return err
 	}
-	*s = WorkflowState(v)
+	// Try to use constant string.
+	switch WorkflowState(v) {
+	case WorkflowStateActive:
+		*s = WorkflowStateActive
+	case WorkflowStateDeleted:
+		*s = WorkflowStateDeleted
+	case WorkflowStateDisabledFork:
+		*s = WorkflowStateDisabledFork
+	case WorkflowStateDisabledInactivity:
+		*s = WorkflowStateDisabledInactivity
+	case WorkflowStateDisabledManually:
+		*s = WorkflowStateDisabledManually
+	default:
+		*s = WorkflowState(v)
+	}
+
 	return nil
 }

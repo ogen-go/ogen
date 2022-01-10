@@ -672,11 +672,9 @@ func (o *OptPetType) Decode(d *jx.Decoder) error {
 	switch d.Next() {
 	case jx.String:
 		o.Set = true
-		v, err := d.Str()
-		if err != nil {
+		if err := o.Value.Decode(d); err != nil {
 			return err
 		}
-		o.Value = PetType(v)
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptPetType`, d.Next())
@@ -1084,11 +1082,20 @@ func (s *PetKind) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode PetKind to nil`)
 	}
-	v, err := d.Str()
+	v, err := d.StrBytes()
 	if err != nil {
 		return err
 	}
-	*s = PetKind(v)
+	// Try to use constant string.
+	switch PetKind(v) {
+	case PetKindBig:
+		*s = PetKindBig
+	case PetKindSmol:
+		*s = PetKindSmol
+	default:
+		*s = PetKind(v)
+	}
+
 	return nil
 }
 
@@ -1128,11 +1135,20 @@ func (s *PetType) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode PetType to nil`)
 	}
-	v, err := d.Str()
+	v, err := d.StrBytes()
 	if err != nil {
 		return err
 	}
-	*s = PetType(v)
+	// Try to use constant string.
+	switch PetType(v) {
+	case PetTypeFifa:
+		*s = PetTypeFifa
+	case PetTypeFofa:
+		*s = PetTypeFofa
+	default:
+		*s = PetType(v)
+	}
+
 	return nil
 }
 

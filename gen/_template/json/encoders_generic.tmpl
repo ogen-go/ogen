@@ -46,16 +46,16 @@ func (o *{{ $.Name }}) Decode(d *jx.Decoder{{ if $g.Format }}, format func(*jx.D
 			return err
 		}
 		o.Value = v
+	{{- else if or ($g.IsStruct) ($g.IsEnum) }}
+		if err := o.Value.Decode(d); err != nil {
+			return err
+		}
 	{{- else if $g.JSON.Fn }}
 		v, err := d.{{ $g.JSON.Fn }}()
 		if err != nil {
 			return err
 		}
 		o.Value = {{ $g.Go }}(v)
-	{{- else if $g.IsStruct }}
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
 	{{- end }}
 		return nil
 	{{- if $v.Nullable }}

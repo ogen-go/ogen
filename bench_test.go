@@ -348,30 +348,91 @@ func BenchmarkJSON(b *testing.B) {
 		b.Run("Pet", func(b *testing.B) {
 			date := time.Date(2011, 10, 10, 7, 12, 34, 4125, time.UTC)
 			pet := api.Pet{
+				Primary:  nil,
+				ID:       42,
+				UniqueID: uuid.New(),
+				Name:     "SomePet",
+				Type:     api.NewOptPetType(api.PetTypeFofa),
+				Kind:     api.PetKindSmol,
+				Tag:      api.NewOptUUID(uuid.New()),
+				IP:       net.IPv4(1, 1, 1, 1),
+				IPV4:     net.IPv4(8, 8, 8, 8),
+				IPV6:     net.IPv6loopback,
+				URI: func() url.URL {
+					u, _ := url.Parse("https://google.com")
+					return *u
+				}(),
 				Birthday:     conv.Date(date),
-				ID:           42,
-				Name:         "SomePet",
+				Rate:         time.Second,
 				Nickname:     api.NewNilString("Nick"),
 				NullStr:      api.NewOptNilString("Bar"),
-				Rate:         time.Second,
-				Tag:          api.NewOptUUID(uuid.New()),
-				TestDate:     api.NewOptTime(conv.Date(date)),
-				TestDateTime: api.NewOptTime(conv.DateTime(date)),
-				TestDuration: api.NewOptDuration(time.Minute),
-				TestFloat1:   api.NewOptFloat64(1.0),
+				Friends:      nil,
+				Next:         api.OptData{},
 				TestInteger1: api.NewOptInt(10),
+				TestFloat1:   api.NewOptFloat64(1.0),
+				TestArray1:   nil,
+				TestDate:     api.NewOptTime(conv.Date(date)),
+				TestDuration: api.NewOptDuration(time.Minute),
 				TestTime:     api.NewOptTime(conv.Time(date)),
-				UniqueID:     uuid.New(),
+				TestDateTime: api.NewOptTime(conv.DateTime(date)),
 			}
 			data := json.Encode(pet)
 			dataBytes := int64(len(data))
 			b.Run("Encode", func(b *testing.B) {
 				var e jx.Encoder
+
 				b.ReportAllocs()
 				b.SetBytes(dataBytes)
+				b.ResetTimer()
+
 				for i := 0; i < b.N; i++ {
 					e.Reset()
 					pet.Encode(&e)
+				}
+			})
+			b.Run("Decode", func(b *testing.B) {
+				var d jx.Decoder
+
+				b.ReportAllocs()
+				b.SetBytes(dataBytes)
+				b.ResetTimer()
+
+				for i := 0; i < b.N; i++ {
+					d.ResetBytes(data)
+					if err := pet.Decode(&d); err != nil {
+						b.Fatal(err)
+					}
+				}
+			})
+		})
+		b.Run("PetType", func(b *testing.B) {
+			pet := api.PetTypeFofa
+			data := json.Encode(pet)
+			dataBytes := int64(len(data))
+			b.Run("Encode", func(b *testing.B) {
+				var e jx.Encoder
+
+				b.ReportAllocs()
+				b.SetBytes(dataBytes)
+				b.ResetTimer()
+
+				for i := 0; i < b.N; i++ {
+					e.Reset()
+					pet.Encode(&e)
+				}
+			})
+			b.Run("Decode", func(b *testing.B) {
+				var d jx.Decoder
+
+				b.ReportAllocs()
+				b.SetBytes(dataBytes)
+				b.ResetTimer()
+
+				for i := 0; i < b.N; i++ {
+					d.ResetBytes(data)
+					if err := pet.Decode(&d); err != nil {
+						b.Fatal(err)
+					}
 				}
 			})
 		})

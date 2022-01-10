@@ -2391,11 +2391,24 @@ func (s *ChatType) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode ChatType to nil`)
 	}
-	v, err := d.Str()
+	v, err := d.StrBytes()
 	if err != nil {
 		return err
 	}
-	*s = ChatType(v)
+	// Try to use constant string.
+	switch ChatType(v) {
+	case ChatTypePrivate:
+		*s = ChatTypePrivate
+	case ChatTypeGroup:
+		*s = ChatTypeGroup
+	case ChatTypeSupergroup:
+		*s = ChatTypeSupergroup
+	case ChatTypeChannel:
+		*s = ChatTypeChannel
+	default:
+		*s = ChatType(v)
+	}
+
 	return nil
 }
 
@@ -3895,11 +3908,42 @@ func (s *EncryptedPassportElementType) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode EncryptedPassportElementType to nil`)
 	}
-	v, err := d.Str()
+	v, err := d.StrBytes()
 	if err != nil {
 		return err
 	}
-	*s = EncryptedPassportElementType(v)
+	// Try to use constant string.
+	switch EncryptedPassportElementType(v) {
+	case EncryptedPassportElementTypePersonalDetails:
+		*s = EncryptedPassportElementTypePersonalDetails
+	case EncryptedPassportElementTypePassport:
+		*s = EncryptedPassportElementTypePassport
+	case EncryptedPassportElementTypeDriverLicense:
+		*s = EncryptedPassportElementTypeDriverLicense
+	case EncryptedPassportElementTypeIdentityCard:
+		*s = EncryptedPassportElementTypeIdentityCard
+	case EncryptedPassportElementTypeInternalPassport:
+		*s = EncryptedPassportElementTypeInternalPassport
+	case EncryptedPassportElementTypeAddress:
+		*s = EncryptedPassportElementTypeAddress
+	case EncryptedPassportElementTypeUtilityBill:
+		*s = EncryptedPassportElementTypeUtilityBill
+	case EncryptedPassportElementTypeBankStatement:
+		*s = EncryptedPassportElementTypeBankStatement
+	case EncryptedPassportElementTypeRentalAgreement:
+		*s = EncryptedPassportElementTypeRentalAgreement
+	case EncryptedPassportElementTypePassportRegistration:
+		*s = EncryptedPassportElementTypePassportRegistration
+	case EncryptedPassportElementTypeTemporaryRegistration:
+		*s = EncryptedPassportElementTypeTemporaryRegistration
+	case EncryptedPassportElementTypePhoneNumber:
+		*s = EncryptedPassportElementTypePhoneNumber
+	case EncryptedPassportElementTypeEmail:
+		*s = EncryptedPassportElementTypeEmail
+	default:
+		*s = EncryptedPassportElementType(v)
+	}
+
 	return nil
 }
 
@@ -4950,11 +4994,26 @@ func (s *InlineQueryChatType) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode InlineQueryChatType to nil`)
 	}
-	v, err := d.Str()
+	v, err := d.StrBytes()
 	if err != nil {
 		return err
 	}
-	*s = InlineQueryChatType(v)
+	// Try to use constant string.
+	switch InlineQueryChatType(v) {
+	case InlineQueryChatTypeSender:
+		*s = InlineQueryChatTypeSender
+	case InlineQueryChatTypePrivate:
+		*s = InlineQueryChatTypePrivate
+	case InlineQueryChatTypeGroup:
+		*s = InlineQueryChatTypeGroup
+	case InlineQueryChatTypeSupergroup:
+		*s = InlineQueryChatTypeSupergroup
+	case InlineQueryChatTypeChannel:
+		*s = InlineQueryChatTypeChannel
+	default:
+		*s = InlineQueryChatType(v)
+	}
+
 	return nil
 }
 
@@ -10114,11 +10173,46 @@ func (s *MessageEntityType) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode MessageEntityType to nil`)
 	}
-	v, err := d.Str()
+	v, err := d.StrBytes()
 	if err != nil {
 		return err
 	}
-	*s = MessageEntityType(v)
+	// Try to use constant string.
+	switch MessageEntityType(v) {
+	case MessageEntityTypeMention:
+		*s = MessageEntityTypeMention
+	case MessageEntityTypeHashtag:
+		*s = MessageEntityTypeHashtag
+	case MessageEntityTypeCashtag:
+		*s = MessageEntityTypeCashtag
+	case MessageEntityTypeBotCommand:
+		*s = MessageEntityTypeBotCommand
+	case MessageEntityTypeURL:
+		*s = MessageEntityTypeURL
+	case MessageEntityTypeEmail:
+		*s = MessageEntityTypeEmail
+	case MessageEntityTypePhoneNumber:
+		*s = MessageEntityTypePhoneNumber
+	case MessageEntityTypeBold:
+		*s = MessageEntityTypeBold
+	case MessageEntityTypeItalic:
+		*s = MessageEntityTypeItalic
+	case MessageEntityTypeUnderline:
+		*s = MessageEntityTypeUnderline
+	case MessageEntityTypeStrikethrough:
+		*s = MessageEntityTypeStrikethrough
+	case MessageEntityTypeCode:
+		*s = MessageEntityTypeCode
+	case MessageEntityTypePre:
+		*s = MessageEntityTypePre
+	case MessageEntityTypeTextLink:
+		*s = MessageEntityTypeTextLink
+	case MessageEntityTypeTextMention:
+		*s = MessageEntityTypeTextMention
+	default:
+		*s = MessageEntityType(v)
+	}
+
 	return nil
 }
 
@@ -10768,11 +10862,9 @@ func (o *OptInlineQueryChatType) Decode(d *jx.Decoder) error {
 	switch d.Next() {
 	case jx.String:
 		o.Set = true
-		v, err := d.Str()
-		if err != nil {
+		if err := o.Value.Decode(d); err != nil {
 			return err
 		}
-		o.Value = InlineQueryChatType(v)
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptInlineQueryChatType`, d.Next())
@@ -12131,11 +12223,28 @@ func (s *PassportElementErrorDataFieldType) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode PassportElementErrorDataFieldType to nil`)
 	}
-	v, err := d.Str()
+	v, err := d.StrBytes()
 	if err != nil {
 		return err
 	}
-	*s = PassportElementErrorDataFieldType(v)
+	// Try to use constant string.
+	switch PassportElementErrorDataFieldType(v) {
+	case PassportElementErrorDataFieldTypePersonalDetails:
+		*s = PassportElementErrorDataFieldTypePersonalDetails
+	case PassportElementErrorDataFieldTypePassport:
+		*s = PassportElementErrorDataFieldTypePassport
+	case PassportElementErrorDataFieldTypeDriverLicense:
+		*s = PassportElementErrorDataFieldTypeDriverLicense
+	case PassportElementErrorDataFieldTypeIdentityCard:
+		*s = PassportElementErrorDataFieldTypeIdentityCard
+	case PassportElementErrorDataFieldTypeInternalPassport:
+		*s = PassportElementErrorDataFieldTypeInternalPassport
+	case PassportElementErrorDataFieldTypeAddress:
+		*s = PassportElementErrorDataFieldTypeAddress
+	default:
+		*s = PassportElementErrorDataFieldType(v)
+	}
+
 	return nil
 }
 
@@ -12203,11 +12312,26 @@ func (s *PassportElementErrorFileType) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode PassportElementErrorFileType to nil`)
 	}
-	v, err := d.Str()
+	v, err := d.StrBytes()
 	if err != nil {
 		return err
 	}
-	*s = PassportElementErrorFileType(v)
+	// Try to use constant string.
+	switch PassportElementErrorFileType(v) {
+	case PassportElementErrorFileTypeUtilityBill:
+		*s = PassportElementErrorFileTypeUtilityBill
+	case PassportElementErrorFileTypeBankStatement:
+		*s = PassportElementErrorFileTypeBankStatement
+	case PassportElementErrorFileTypeRentalAgreement:
+		*s = PassportElementErrorFileTypeRentalAgreement
+	case PassportElementErrorFileTypePassportRegistration:
+		*s = PassportElementErrorFileTypePassportRegistration
+	case PassportElementErrorFileTypeTemporaryRegistration:
+		*s = PassportElementErrorFileTypeTemporaryRegistration
+	default:
+		*s = PassportElementErrorFileType(v)
+	}
+
 	return nil
 }
 
@@ -12287,11 +12411,26 @@ func (s *PassportElementErrorFilesType) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode PassportElementErrorFilesType to nil`)
 	}
-	v, err := d.Str()
+	v, err := d.StrBytes()
 	if err != nil {
 		return err
 	}
-	*s = PassportElementErrorFilesType(v)
+	// Try to use constant string.
+	switch PassportElementErrorFilesType(v) {
+	case PassportElementErrorFilesTypeUtilityBill:
+		*s = PassportElementErrorFilesTypeUtilityBill
+	case PassportElementErrorFilesTypeBankStatement:
+		*s = PassportElementErrorFilesTypeBankStatement
+	case PassportElementErrorFilesTypeRentalAgreement:
+		*s = PassportElementErrorFilesTypeRentalAgreement
+	case PassportElementErrorFilesTypePassportRegistration:
+		*s = PassportElementErrorFilesTypePassportRegistration
+	case PassportElementErrorFilesTypeTemporaryRegistration:
+		*s = PassportElementErrorFilesTypeTemporaryRegistration
+	default:
+		*s = PassportElementErrorFilesType(v)
+	}
+
 	return nil
 }
 
@@ -12359,11 +12498,24 @@ func (s *PassportElementErrorFrontSideType) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode PassportElementErrorFrontSideType to nil`)
 	}
-	v, err := d.Str()
+	v, err := d.StrBytes()
 	if err != nil {
 		return err
 	}
-	*s = PassportElementErrorFrontSideType(v)
+	// Try to use constant string.
+	switch PassportElementErrorFrontSideType(v) {
+	case PassportElementErrorFrontSideTypePassport:
+		*s = PassportElementErrorFrontSideTypePassport
+	case PassportElementErrorFrontSideTypeDriverLicense:
+		*s = PassportElementErrorFrontSideTypeDriverLicense
+	case PassportElementErrorFrontSideTypeIdentityCard:
+		*s = PassportElementErrorFrontSideTypeIdentityCard
+	case PassportElementErrorFrontSideTypeInternalPassport:
+		*s = PassportElementErrorFrontSideTypeInternalPassport
+	default:
+		*s = PassportElementErrorFrontSideType(v)
+	}
+
 	return nil
 }
 
@@ -12431,11 +12583,20 @@ func (s *PassportElementErrorReverseSideType) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode PassportElementErrorReverseSideType to nil`)
 	}
-	v, err := d.Str()
+	v, err := d.StrBytes()
 	if err != nil {
 		return err
 	}
-	*s = PassportElementErrorReverseSideType(v)
+	// Try to use constant string.
+	switch PassportElementErrorReverseSideType(v) {
+	case PassportElementErrorReverseSideTypeDriverLicense:
+		*s = PassportElementErrorReverseSideTypeDriverLicense
+	case PassportElementErrorReverseSideTypeIdentityCard:
+		*s = PassportElementErrorReverseSideTypeIdentityCard
+	default:
+		*s = PassportElementErrorReverseSideType(v)
+	}
+
 	return nil
 }
 
@@ -12503,11 +12664,24 @@ func (s *PassportElementErrorSelfieType) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode PassportElementErrorSelfieType to nil`)
 	}
-	v, err := d.Str()
+	v, err := d.StrBytes()
 	if err != nil {
 		return err
 	}
-	*s = PassportElementErrorSelfieType(v)
+	// Try to use constant string.
+	switch PassportElementErrorSelfieType(v) {
+	case PassportElementErrorSelfieTypePassport:
+		*s = PassportElementErrorSelfieTypePassport
+	case PassportElementErrorSelfieTypeDriverLicense:
+		*s = PassportElementErrorSelfieTypeDriverLicense
+	case PassportElementErrorSelfieTypeIdentityCard:
+		*s = PassportElementErrorSelfieTypeIdentityCard
+	case PassportElementErrorSelfieTypeInternalPassport:
+		*s = PassportElementErrorSelfieTypeInternalPassport
+	default:
+		*s = PassportElementErrorSelfieType(v)
+	}
+
 	return nil
 }
 
@@ -12575,11 +12749,34 @@ func (s *PassportElementErrorTranslationFileType) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode PassportElementErrorTranslationFileType to nil`)
 	}
-	v, err := d.Str()
+	v, err := d.StrBytes()
 	if err != nil {
 		return err
 	}
-	*s = PassportElementErrorTranslationFileType(v)
+	// Try to use constant string.
+	switch PassportElementErrorTranslationFileType(v) {
+	case PassportElementErrorTranslationFileTypePassport:
+		*s = PassportElementErrorTranslationFileTypePassport
+	case PassportElementErrorTranslationFileTypeDriverLicense:
+		*s = PassportElementErrorTranslationFileTypeDriverLicense
+	case PassportElementErrorTranslationFileTypeIdentityCard:
+		*s = PassportElementErrorTranslationFileTypeIdentityCard
+	case PassportElementErrorTranslationFileTypeInternalPassport:
+		*s = PassportElementErrorTranslationFileTypeInternalPassport
+	case PassportElementErrorTranslationFileTypeUtilityBill:
+		*s = PassportElementErrorTranslationFileTypeUtilityBill
+	case PassportElementErrorTranslationFileTypeBankStatement:
+		*s = PassportElementErrorTranslationFileTypeBankStatement
+	case PassportElementErrorTranslationFileTypeRentalAgreement:
+		*s = PassportElementErrorTranslationFileTypeRentalAgreement
+	case PassportElementErrorTranslationFileTypePassportRegistration:
+		*s = PassportElementErrorTranslationFileTypePassportRegistration
+	case PassportElementErrorTranslationFileTypeTemporaryRegistration:
+		*s = PassportElementErrorTranslationFileTypeTemporaryRegistration
+	default:
+		*s = PassportElementErrorTranslationFileType(v)
+	}
+
 	return nil
 }
 
@@ -12659,11 +12856,34 @@ func (s *PassportElementErrorTranslationFilesType) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode PassportElementErrorTranslationFilesType to nil`)
 	}
-	v, err := d.Str()
+	v, err := d.StrBytes()
 	if err != nil {
 		return err
 	}
-	*s = PassportElementErrorTranslationFilesType(v)
+	// Try to use constant string.
+	switch PassportElementErrorTranslationFilesType(v) {
+	case PassportElementErrorTranslationFilesTypePassport:
+		*s = PassportElementErrorTranslationFilesTypePassport
+	case PassportElementErrorTranslationFilesTypeDriverLicense:
+		*s = PassportElementErrorTranslationFilesTypeDriverLicense
+	case PassportElementErrorTranslationFilesTypeIdentityCard:
+		*s = PassportElementErrorTranslationFilesTypeIdentityCard
+	case PassportElementErrorTranslationFilesTypeInternalPassport:
+		*s = PassportElementErrorTranslationFilesTypeInternalPassport
+	case PassportElementErrorTranslationFilesTypeUtilityBill:
+		*s = PassportElementErrorTranslationFilesTypeUtilityBill
+	case PassportElementErrorTranslationFilesTypeBankStatement:
+		*s = PassportElementErrorTranslationFilesTypeBankStatement
+	case PassportElementErrorTranslationFilesTypeRentalAgreement:
+		*s = PassportElementErrorTranslationFilesTypeRentalAgreement
+	case PassportElementErrorTranslationFilesTypePassportRegistration:
+		*s = PassportElementErrorTranslationFilesTypePassportRegistration
+	case PassportElementErrorTranslationFilesTypeTemporaryRegistration:
+		*s = PassportElementErrorTranslationFilesTypeTemporaryRegistration
+	default:
+		*s = PassportElementErrorTranslationFilesType(v)
+	}
+
 	return nil
 }
 
@@ -13150,11 +13370,20 @@ func (s *PollType) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode PollType to nil`)
 	}
-	v, err := d.Str()
+	v, err := d.StrBytes()
 	if err != nil {
 		return err
 	}
-	*s = PollType(v)
+	// Try to use constant string.
+	switch PollType(v) {
+	case PollTypeRegular:
+		*s = PollTypeRegular
+	case PollTypeQuiz:
+		*s = PollTypeQuiz
+	default:
+		*s = PollType(v)
+	}
+
 	return nil
 }
 
