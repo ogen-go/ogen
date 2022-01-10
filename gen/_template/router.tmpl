@@ -25,6 +25,52 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 	}
 	s.notFound(w, r)
 }
+
+// Route is route object.
+type Route struct {
+	name string
+	handle func(map[string]string, http.ResponseWriter, *http.Request)
+	args map[string]string
+}
+
+// OperationID returns OpenAPI operationId.
+func (r Route) OperationID() string {
+	return r.name
+}
+
+// Handler returns http handler.
+func (r Route) Handler() http.HandlerFunc {
+	if r.handle == nil {
+		return http.NotFound
+	}
+	return http.HandlerFunc(func(w http.ResponseWriter, req *http.Request) {
+		r.handle(r.args, w, req)
+	})
+}
+
+// Args returns parsed arguments.
+func (r Route) Args() map[string]string {
+	return r.args
+}
+
+// FindRoute finds Route for given method and path.
+func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
+	var (
+		args = map[string]string{}
+		elem = path
+	)
+	r.args = args
+
+	// Static code generated router with unwrapped path search.
+	switch method {
+	{{- range $m := $.Methods }}
+	case "{{ $m.Method }}":
+		{{- template "find_edge" $m.Tree.Root }}
+	{{- end }}
+	}
+	return r, false
+}
+
 {{ end }}
 
 {{ define "route_edge" }}
@@ -79,6 +125,67 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 			args[{{ printf "%q" $c.ParamName }}] = elem
 			elem = ""
 			{{ template "route_edge" $c }}
+			{{- end }}
+		{{- end }}
+	{{- end }}
+{{- end }}
+
+{{- end }}
+
+{{ define "find_edge" }}
+{{- /*gotype: github.com/ogen-go/ogen/gen.RouteNode*/ -}}
+{{- if $.IsLeaf }}
+	if len(elem) == 0 {
+		// Leaf: {{ $.Operation.Name }}
+		r.name = {{ printf "%q" $.Operation.Name }}
+		r.handle = s.handle{{ $.Operation.Name }}Request
+		return r, true
+	}
+{{- else }}
+	{{- with $child := $.StaticChildren }}
+		if len(elem) == 0 {
+			{{- with $op := $.Operation }}
+			r.name = {{ printf "%q" $op.Name }}
+			r.handle = s.handle{{ $op.Name }}Request
+			return r, true
+			{{- else }}
+			break
+			{{- end }}
+		}
+		switch elem[0] {
+		{{- range $c := $child }}
+		case {{ printf "%q" $c.Head }}: // Prefix: {{ printf "%q" $c.Prefix }}
+			if l := len({{ printf "%q" $c.Prefix }}); len(elem) >= l && elem[0:l] == {{ printf "%q" $c.Prefix }} {
+				elem = elem[l:]
+			} else {
+				break
+			}
+			{{ template "find_edge" $c }}
+		{{- end }}
+		}
+	{{- end }}
+	{{- with $child := $.ParamChildren }}
+		{{- range $c := $child }}
+			// Param: {{ printf "%q" $c.ParamName }}
+			{{- with $tails := $c.Tails }}
+
+			{{- if eq (len $tails) 1 }}
+			// Match until {{ printf "%q" $tails }}
+			idx := strings.IndexByte(elem, {{ printf "%q" (index $tails 0) }})
+			{{- else }}
+			// Match until one of {{ printf "%q" $tails }}
+			idx := strings.IndexAny(elem, {{ printf "%q" $tails }})
+			{{- end }}
+			if idx > 0 {
+				args[{{ printf "%q" $c.ParamName }}] = elem[:idx]
+				elem = elem[idx:]
+				{{ template "find_edge" $c }}
+			}
+			{{- else }}
+			// Leaf parameter
+			args[{{ printf "%q" $c.ParamName }}] = elem
+			elem = ""
+			{{ template "find_edge" $c }}
 			{{- end }}
 		{{- end }}
 	{{- end }}
