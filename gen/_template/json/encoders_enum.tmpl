@@ -10,11 +10,29 @@ func (s *{{ $.Name }}) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode {{ $.Name }} to nil`)
 	}
+
+	{{- if $.Primitive.IsString }}
+	v, err := d.StrBytes()
+	if err != nil {
+		return err
+	}
+	// Try to use constant string.
+	switch {{ $.Name }}(v) {
+    {{- range $variant := $.EnumVariants }}
+	case {{ $variant.Name }}:
+		*s = {{ $variant.Name }}
+	{{- end }}
+	default:
+		*s = {{ $.Name }}(v)
+	}
+	{{- else }}
 	v, err := d.{{ $.JSON.Fn }}()
 	if err != nil {
 		return err
 	}
 	*s = {{ $.Name }}(v)
+    {{- end }}
+
 	return nil
 }
 

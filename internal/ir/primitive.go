@@ -51,6 +51,11 @@ func (p PrimitiveType) String() string {
 	}
 }
 
+// IsString whether this type is string.
+func (p PrimitiveType) IsString() bool {
+	return p == String
+}
+
 const (
 	String PrimitiveType = iota
 	ByteSlice
