@@ -405,5 +405,36 @@ func BenchmarkJSON(b *testing.B) {
 				}
 			})
 		})
+		b.Run("PetType", func(b *testing.B) {
+			pet := api.PetTypeFofa
+			data := json.Encode(pet)
+			dataBytes := int64(len(data))
+			b.Run("Encode", func(b *testing.B) {
+				var e jx.Encoder
+
+				b.ReportAllocs()
+				b.SetBytes(dataBytes)
+				b.ResetTimer()
+
+				for i := 0; i < b.N; i++ {
+					e.Reset()
+					pet.Encode(&e)
+				}
+			})
+			b.Run("Decode", func(b *testing.B) {
+				var d jx.Decoder
+
+				b.ReportAllocs()
+				b.SetBytes(dataBytes)
+				b.ResetTimer()
+
+				for i := 0; i < b.N; i++ {
+					d.ResetBytes(data)
+					if err := pet.Decode(&d); err != nil {
+						b.Fatal(err)
+					}
+				}
+			})
+		})
 	})
 }
