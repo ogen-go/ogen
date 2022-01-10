@@ -72,11 +72,20 @@ func (s *BrokerAccountType) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode BrokerAccountType to nil`)
 	}
-	v, err := d.Str()
+	v, err := d.StrBytes()
 	if err != nil {
 		return err
 	}
-	*s = BrokerAccountType(v)
+	// Try to use constant string.
+	switch BrokerAccountType(v) {
+	case BrokerAccountTypeTinkoff:
+		*s = BrokerAccountTypeTinkoff
+	case BrokerAccountTypeTinkoffIis:
+		*s = BrokerAccountTypeTinkoffIis
+	default:
+		*s = BrokerAccountType(v)
+	}
+
 	return nil
 }
 
@@ -180,11 +189,38 @@ func (s *CandleResolution) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode CandleResolution to nil`)
 	}
-	v, err := d.Str()
+	v, err := d.StrBytes()
 	if err != nil {
 		return err
 	}
-	*s = CandleResolution(v)
+	// Try to use constant string.
+	switch CandleResolution(v) {
+	case CandleResolution1min:
+		*s = CandleResolution1min
+	case CandleResolution2min:
+		*s = CandleResolution2min
+	case CandleResolution3min:
+		*s = CandleResolution3min
+	case CandleResolution5min:
+		*s = CandleResolution5min
+	case CandleResolution10min:
+		*s = CandleResolution10min
+	case CandleResolution15min:
+		*s = CandleResolution15min
+	case CandleResolution30min:
+		*s = CandleResolution30min
+	case CandleResolutionHour:
+		*s = CandleResolutionHour
+	case CandleResolutionDay:
+		*s = CandleResolutionDay
+	case CandleResolutionWeek:
+		*s = CandleResolutionWeek
+	case CandleResolutionMonth:
+		*s = CandleResolutionMonth
+	default:
+		*s = CandleResolution(v)
+	}
+
 	return nil
 }
 
@@ -337,11 +373,34 @@ func (s *Currency) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode Currency to nil`)
 	}
-	v, err := d.Str()
+	v, err := d.StrBytes()
 	if err != nil {
 		return err
 	}
-	*s = Currency(v)
+	// Try to use constant string.
+	switch Currency(v) {
+	case CurrencyRUB:
+		*s = CurrencyRUB
+	case CurrencyUSD:
+		*s = CurrencyUSD
+	case CurrencyEUR:
+		*s = CurrencyEUR
+	case CurrencyGBP:
+		*s = CurrencyGBP
+	case CurrencyHKD:
+		*s = CurrencyHKD
+	case CurrencyCHF:
+		*s = CurrencyCHF
+	case CurrencyJPY:
+		*s = CurrencyJPY
+	case CurrencyCNY:
+		*s = CurrencyCNY
+	case CurrencyTRY:
+		*s = CurrencyTRY
+	default:
+		*s = Currency(v)
+	}
+
 	return nil
 }
 
@@ -548,11 +607,24 @@ func (s *InstrumentType) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode InstrumentType to nil`)
 	}
-	v, err := d.Str()
+	v, err := d.StrBytes()
 	if err != nil {
 		return err
 	}
-	*s = InstrumentType(v)
+	// Try to use constant string.
+	switch InstrumentType(v) {
+	case InstrumentTypeStock:
+		*s = InstrumentTypeStock
+	case InstrumentTypeCurrency:
+		*s = InstrumentTypeCurrency
+	case InstrumentTypeBond:
+		*s = InstrumentTypeBond
+	case InstrumentTypeEtf:
+		*s = InstrumentTypeEtf
+	default:
+		*s = InstrumentType(v)
+	}
+
 	return nil
 }
 
@@ -1118,11 +1190,22 @@ func (s *OperationStatus) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode OperationStatus to nil`)
 	}
-	v, err := d.Str()
+	v, err := d.StrBytes()
 	if err != nil {
 		return err
 	}
-	*s = OperationStatus(v)
+	// Try to use constant string.
+	switch OperationStatus(v) {
+	case OperationStatusDone:
+		*s = OperationStatusDone
+	case OperationStatusDecline:
+		*s = OperationStatusDecline
+	case OperationStatusProgress:
+		*s = OperationStatusProgress
+	default:
+		*s = OperationStatus(v)
+	}
+
 	return nil
 }
 
@@ -1192,11 +1275,20 @@ func (s *OperationType) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode OperationType to nil`)
 	}
-	v, err := d.Str()
+	v, err := d.StrBytes()
 	if err != nil {
 		return err
 	}
-	*s = OperationType(v)
+	// Try to use constant string.
+	switch OperationType(v) {
+	case OperationTypeBuy:
+		*s = OperationTypeBuy
+	case OperationTypeSell:
+		*s = OperationTypeSell
+	default:
+		*s = OperationType(v)
+	}
+
 	return nil
 }
 
@@ -1210,11 +1302,58 @@ func (s *OperationTypeWithCommission) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode OperationTypeWithCommission to nil`)
 	}
-	v, err := d.Str()
+	v, err := d.StrBytes()
 	if err != nil {
 		return err
 	}
-	*s = OperationTypeWithCommission(v)
+	// Try to use constant string.
+	switch OperationTypeWithCommission(v) {
+	case OperationTypeWithCommissionBuy:
+		*s = OperationTypeWithCommissionBuy
+	case OperationTypeWithCommissionBuyCard:
+		*s = OperationTypeWithCommissionBuyCard
+	case OperationTypeWithCommissionSell:
+		*s = OperationTypeWithCommissionSell
+	case OperationTypeWithCommissionBrokerCommission:
+		*s = OperationTypeWithCommissionBrokerCommission
+	case OperationTypeWithCommissionExchangeCommission:
+		*s = OperationTypeWithCommissionExchangeCommission
+	case OperationTypeWithCommissionServiceCommission:
+		*s = OperationTypeWithCommissionServiceCommission
+	case OperationTypeWithCommissionMarginCommission:
+		*s = OperationTypeWithCommissionMarginCommission
+	case OperationTypeWithCommissionOtherCommission:
+		*s = OperationTypeWithCommissionOtherCommission
+	case OperationTypeWithCommissionPayIn:
+		*s = OperationTypeWithCommissionPayIn
+	case OperationTypeWithCommissionPayOut:
+		*s = OperationTypeWithCommissionPayOut
+	case OperationTypeWithCommissionTax:
+		*s = OperationTypeWithCommissionTax
+	case OperationTypeWithCommissionTaxLucre:
+		*s = OperationTypeWithCommissionTaxLucre
+	case OperationTypeWithCommissionTaxDividend:
+		*s = OperationTypeWithCommissionTaxDividend
+	case OperationTypeWithCommissionTaxCoupon:
+		*s = OperationTypeWithCommissionTaxCoupon
+	case OperationTypeWithCommissionTaxBack:
+		*s = OperationTypeWithCommissionTaxBack
+	case OperationTypeWithCommissionRepayment:
+		*s = OperationTypeWithCommissionRepayment
+	case OperationTypeWithCommissionPartRepayment:
+		*s = OperationTypeWithCommissionPartRepayment
+	case OperationTypeWithCommissionCoupon:
+		*s = OperationTypeWithCommissionCoupon
+	case OperationTypeWithCommissionDividend:
+		*s = OperationTypeWithCommissionDividend
+	case OperationTypeWithCommissionSecurityIn:
+		*s = OperationTypeWithCommissionSecurityIn
+	case OperationTypeWithCommissionSecurityOut:
+		*s = OperationTypeWithCommissionSecurityOut
+	default:
+		*s = OperationTypeWithCommission(v)
+	}
+
 	return nil
 }
 
@@ -1315,11 +1454,9 @@ func (o *OptBrokerAccountType) Decode(d *jx.Decoder) error {
 	switch d.Next() {
 	case jx.String:
 		o.Set = true
-		v, err := d.Str()
-		if err != nil {
+		if err := o.Value.Decode(d); err != nil {
 			return err
 		}
-		o.Value = BrokerAccountType(v)
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptBrokerAccountType`, d.Next())
@@ -1339,11 +1476,9 @@ func (o *OptCurrency) Decode(d *jx.Decoder) error {
 	switch d.Next() {
 	case jx.String:
 		o.Set = true
-		v, err := d.Str()
-		if err != nil {
+		if err := o.Value.Decode(d); err != nil {
 			return err
 		}
-		o.Value = Currency(v)
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptCurrency`, d.Next())
@@ -1387,11 +1522,9 @@ func (o *OptInstrumentType) Decode(d *jx.Decoder) error {
 	switch d.Next() {
 	case jx.String:
 		o.Set = true
-		v, err := d.Str()
-		if err != nil {
+		if err := o.Value.Decode(d); err != nil {
 			return err
 		}
-		o.Value = InstrumentType(v)
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptInstrumentType`, d.Next())
@@ -1457,11 +1590,9 @@ func (o *OptOperationTypeWithCommission) Decode(d *jx.Decoder) error {
 	switch d.Next() {
 	case jx.String:
 		o.Set = true
-		v, err := d.Str()
-		if err != nil {
+		if err := o.Value.Decode(d); err != nil {
 			return err
 		}
-		o.Value = OperationTypeWithCommission(v)
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptOperationTypeWithCommission`, d.Next())
@@ -1648,11 +1779,34 @@ func (s *OrderStatus) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode OrderStatus to nil`)
 	}
-	v, err := d.Str()
+	v, err := d.StrBytes()
 	if err != nil {
 		return err
 	}
-	*s = OrderStatus(v)
+	// Try to use constant string.
+	switch OrderStatus(v) {
+	case OrderStatusNew:
+		*s = OrderStatusNew
+	case OrderStatusPartiallyFill:
+		*s = OrderStatusPartiallyFill
+	case OrderStatusFill:
+		*s = OrderStatusFill
+	case OrderStatusCancelled:
+		*s = OrderStatusCancelled
+	case OrderStatusReplaced:
+		*s = OrderStatusReplaced
+	case OrderStatusPendingCancel:
+		*s = OrderStatusPendingCancel
+	case OrderStatusRejected:
+		*s = OrderStatusRejected
+	case OrderStatusPendingReplace:
+		*s = OrderStatusPendingReplace
+	case OrderStatusPendingNew:
+		*s = OrderStatusPendingNew
+	default:
+		*s = OrderStatus(v)
+	}
+
 	return nil
 }
 
@@ -1666,11 +1820,20 @@ func (s *OrderType) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode OrderType to nil`)
 	}
-	v, err := d.Str()
+	v, err := d.StrBytes()
 	if err != nil {
 		return err
 	}
-	*s = OrderType(v)
+	// Try to use constant string.
+	switch OrderType(v) {
+	case OrderTypeLimit:
+		*s = OrderTypeLimit
+	case OrderTypeMarket:
+		*s = OrderTypeMarket
+	default:
+		*s = OrderType(v)
+	}
+
 	return nil
 }
 
@@ -2381,11 +2544,34 @@ func (s *SandboxCurrency) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode SandboxCurrency to nil`)
 	}
-	v, err := d.Str()
+	v, err := d.StrBytes()
 	if err != nil {
 		return err
 	}
-	*s = SandboxCurrency(v)
+	// Try to use constant string.
+	switch SandboxCurrency(v) {
+	case SandboxCurrencyRUB:
+		*s = SandboxCurrencyRUB
+	case SandboxCurrencyUSD:
+		*s = SandboxCurrencyUSD
+	case SandboxCurrencyEUR:
+		*s = SandboxCurrencyEUR
+	case SandboxCurrencyGBP:
+		*s = SandboxCurrencyGBP
+	case SandboxCurrencyHKD:
+		*s = SandboxCurrencyHKD
+	case SandboxCurrencyCHF:
+		*s = SandboxCurrencyCHF
+	case SandboxCurrencyJPY:
+		*s = SandboxCurrencyJPY
+	case SandboxCurrencyCNY:
+		*s = SandboxCurrencyCNY
+	case SandboxCurrencyTRY:
+		*s = SandboxCurrencyTRY
+	default:
+		*s = SandboxCurrency(v)
+	}
+
 	return nil
 }
 
@@ -2682,11 +2868,20 @@ func (s *TradeStatus) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode TradeStatus to nil`)
 	}
-	v, err := d.Str()
+	v, err := d.StrBytes()
 	if err != nil {
 		return err
 	}
-	*s = TradeStatus(v)
+	// Try to use constant string.
+	switch TradeStatus(v) {
+	case TradeStatusNormalTrading:
+		*s = TradeStatusNormalTrading
+	case TradeStatusNotAvailableForTrading:
+		*s = TradeStatusNotAvailableForTrading
+	default:
+		*s = TradeStatus(v)
+	}
+
 	return nil
 }
 

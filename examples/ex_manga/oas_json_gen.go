@@ -464,11 +464,9 @@ func (o *OptTagType) Decode(d *jx.Decoder) error {
 	switch d.Next() {
 	case jx.String:
 		o.Set = true
-		v, err := d.Str()
-		if err != nil {
+		if err := o.Value.Decode(d); err != nil {
 			return err
 		}
-		o.Value = TagType(v)
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptTagType`, d.Next())
@@ -742,11 +740,30 @@ func (s *TagType) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode TagType to nil`)
 	}
-	v, err := d.Str()
+	v, err := d.StrBytes()
 	if err != nil {
 		return err
 	}
-	*s = TagType(v)
+	// Try to use constant string.
+	switch TagType(v) {
+	case TagTypeParody:
+		*s = TagTypeParody
+	case TagTypeCharacter:
+		*s = TagTypeCharacter
+	case TagTypeTag:
+		*s = TagTypeTag
+	case TagTypeArtist:
+		*s = TagTypeArtist
+	case TagTypeGroup:
+		*s = TagTypeGroup
+	case TagTypeCategory:
+		*s = TagTypeCategory
+	case TagTypeLanguage:
+		*s = TagTypeLanguage
+	default:
+		*s = TagType(v)
+	}
+
 	return nil
 }
 

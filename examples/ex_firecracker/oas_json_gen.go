@@ -370,11 +370,20 @@ func (s *CpuTemplate) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode CpuTemplate to nil`)
 	}
-	v, err := d.Str()
+	v, err := d.StrBytes()
 	if err != nil {
 		return err
 	}
-	*s = CpuTemplate(v)
+	// Try to use constant string.
+	switch CpuTemplate(v) {
+	case CpuTemplateC3:
+		*s = CpuTemplateC3
+	case CpuTemplateT2:
+		*s = CpuTemplateT2
+	default:
+		*s = CpuTemplate(v)
+	}
+
 	return nil
 }
 
@@ -710,11 +719,22 @@ func (s *InstanceActionInfoActionType) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode InstanceActionInfoActionType to nil`)
 	}
-	v, err := d.Str()
+	v, err := d.StrBytes()
 	if err != nil {
 		return err
 	}
-	*s = InstanceActionInfoActionType(v)
+	// Try to use constant string.
+	switch InstanceActionInfoActionType(v) {
+	case InstanceActionInfoActionTypeFlushMetrics:
+		*s = InstanceActionInfoActionTypeFlushMetrics
+	case InstanceActionInfoActionTypeInstanceStart:
+		*s = InstanceActionInfoActionTypeInstanceStart
+	case InstanceActionInfoActionTypeSendCtrlAltDel:
+		*s = InstanceActionInfoActionTypeSendCtrlAltDel
+	default:
+		*s = InstanceActionInfoActionType(v)
+	}
+
 	return nil
 }
 
@@ -782,11 +802,22 @@ func (s *InstanceInfoState) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode InstanceInfoState to nil`)
 	}
-	v, err := d.Str()
+	v, err := d.StrBytes()
 	if err != nil {
 		return err
 	}
-	*s = InstanceInfoState(v)
+	// Try to use constant string.
+	switch InstanceInfoState(v) {
+	case InstanceInfoStateNotStarted:
+		*s = InstanceInfoStateNotStarted
+	case InstanceInfoStateRunning:
+		*s = InstanceInfoStateRunning
+	case InstanceInfoStatePaused:
+		*s = InstanceInfoStatePaused
+	default:
+		*s = InstanceInfoState(v)
+	}
+
 	return nil
 }
 
@@ -876,11 +907,24 @@ func (s *LoggerLevel) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode LoggerLevel to nil`)
 	}
-	v, err := d.Str()
+	v, err := d.StrBytes()
 	if err != nil {
 		return err
 	}
-	*s = LoggerLevel(v)
+	// Try to use constant string.
+	switch LoggerLevel(v) {
+	case LoggerLevelError:
+		*s = LoggerLevelError
+	case LoggerLevelWarning:
+		*s = LoggerLevelWarning
+	case LoggerLevelInfo:
+		*s = LoggerLevelInfo
+	case LoggerLevelDebug:
+		*s = LoggerLevelDebug
+	default:
+		*s = LoggerLevel(v)
+	}
+
 	return nil
 }
 
@@ -1282,11 +1326,9 @@ func (o *OptCpuTemplate) Decode(d *jx.Decoder) error {
 	switch d.Next() {
 	case jx.String:
 		o.Set = true
-		v, err := d.Str()
-		if err != nil {
+		if err := o.Value.Decode(d); err != nil {
 			return err
 		}
-		o.Value = CpuTemplate(v)
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptCpuTemplate`, d.Next())
@@ -1376,11 +1418,9 @@ func (o *OptLoggerLevel) Decode(d *jx.Decoder) error {
 	switch d.Next() {
 	case jx.String:
 		o.Set = true
-		v, err := d.Str()
-		if err != nil {
+		if err := o.Value.Decode(d); err != nil {
 			return err
 		}
-		o.Value = LoggerLevel(v)
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptLoggerLevel`, d.Next())
@@ -1532,11 +1572,9 @@ func (o *OptSnapshotCreateParamsSnapshotType) Decode(d *jx.Decoder) error {
 	switch d.Next() {
 	case jx.String:
 		o.Set = true
-		v, err := d.Str()
-		if err != nil {
+		if err := o.Value.Decode(d); err != nil {
 			return err
 		}
-		o.Value = SnapshotCreateParamsSnapshotType(v)
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptSnapshotCreateParamsSnapshotType`, d.Next())
@@ -2089,11 +2127,20 @@ func (s *SnapshotCreateParamsSnapshotType) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode SnapshotCreateParamsSnapshotType to nil`)
 	}
-	v, err := d.Str()
+	v, err := d.StrBytes()
 	if err != nil {
 		return err
 	}
-	*s = SnapshotCreateParamsSnapshotType(v)
+	// Try to use constant string.
+	switch SnapshotCreateParamsSnapshotType(v) {
+	case SnapshotCreateParamsSnapshotTypeFull:
+		*s = SnapshotCreateParamsSnapshotTypeFull
+	case SnapshotCreateParamsSnapshotTypeDiff:
+		*s = SnapshotCreateParamsSnapshotTypeDiff
+	default:
+		*s = SnapshotCreateParamsSnapshotType(v)
+	}
+
 	return nil
 }
 
@@ -2237,11 +2284,20 @@ func (s *VMState) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode VMState to nil`)
 	}
-	v, err := d.Str()
+	v, err := d.StrBytes()
 	if err != nil {
 		return err
 	}
-	*s = VMState(v)
+	// Try to use constant string.
+	switch VMState(v) {
+	case VMStatePaused:
+		*s = VMStatePaused
+	case VMStateResumed:
+		*s = VMStateResumed
+	default:
+		*s = VMState(v)
+	}
+
 	return nil
 }
 
