@@ -80,7 +80,7 @@ func (g *Generator) route() error {
 	for _, op := range g.operations {
 		if err := g.router.Add(Route{
 			Method:    op.Spec.HTTPMethod,
-			Path:      op.RawPath,
+			Path:      op.Spec.Path.String(),
 			Operation: op,
 		}); err != nil {
 			return errors.Wrapf(err, "add route %q", op.Name)
