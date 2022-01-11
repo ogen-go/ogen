@@ -34,7 +34,7 @@ func (p *schemaParser) parse(schema *ogen.Schema, hook func(*oas.Schema) *oas.Sc
 		if err != nil {
 			return nil, errors.Wrapf(err, "reference %q", ref)
 		}
-		return hook(s), nil
+		return s, nil
 	}
 
 	switch {
