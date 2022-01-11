@@ -10,11 +10,11 @@ import (
 )
 
 func TestSchemaSimple(t *testing.T) {
-	gen := &schemaGen{
+	parser := &schemaParser{
 		localRefs: make(map[string]*oas.Schema),
 	}
 
-	out, err := gen.Generate(&ogen.Schema{
+	out, err := parser.Parse(&ogen.Schema{
 		Type: "object",
 		Properties: []ogen.Property{
 			{
@@ -50,33 +50,29 @@ func TestSchemaSimple(t *testing.T) {
 }
 
 func TestSchemaRecursive(t *testing.T) {
-	spec := &ogen.Spec{
-		Components: &ogen.Components{
-			Schemas: map[string]*ogen.Schema{
-				"Pet": {
-					Type: "object",
-					Properties: []ogen.Property{
-						{
-							Name:   "id",
-							Schema: &ogen.Schema{Type: "integer"},
-						},
-						{
-							Name:   "name",
-							Schema: &ogen.Schema{Type: "string"},
-						},
-						{
-							Name: "friends",
-							Schema: &ogen.Schema{
-								Type: "array",
-								Items: &ogen.Schema{
-									Ref: "#/components/schemas/Pet",
-								},
-							},
+	components := map[string]*ogen.Schema{
+		"Pet": {
+			Type: "object",
+			Properties: []ogen.Property{
+				{
+					Name:   "id",
+					Schema: &ogen.Schema{Type: "integer"},
+				},
+				{
+					Name:   "name",
+					Schema: &ogen.Schema{Type: "string"},
+				},
+				{
+					Name: "friends",
+					Schema: &ogen.Schema{
+						Type: "array",
+						Items: &ogen.Schema{
+							Ref: "#/components/schemas/Pet",
 						},
 					},
-					Required: []string{"id", "name", "friends"},
 				},
 			},
+			Required: []string{"id", "name", "friends"},
 		},
 	}
 
@@ -132,16 +128,16 @@ func TestSchemaRecursive(t *testing.T) {
 		},
 	}
 
-	gen := &schemaGen{
-		spec:      spec,
-		localRefs: make(map[string]*oas.Schema),
+	parser := &schemaParser{
+		components: components,
+		localRefs:  make(map[string]*oas.Schema),
 	}
 
-	out, err := gen.Generate(&ogen.Schema{
+	out, err := parser.Parse(&ogen.Schema{
 		Ref: "#/components/schemas/Pet",
 	})
 	require.NoError(t, err)
-	require.Equal(t, expectLocalRefs, gen.localRefs)
+	require.Equal(t, expectLocalRefs, parser.localRefs)
 	require.Equal(t, pet, out)
 }
 
@@ -185,11 +181,11 @@ func TestSchemaSideEffects(t *testing.T) {
 		},
 	}
 
-	gen := &schemaGen{
+	parser := &schemaParser{
 		localRefs: make(map[string]*oas.Schema),
 	}
 
-	out, err := gen.Generate(&ogen.Schema{
+	out, err := parser.Parse(&ogen.Schema{
 		Type: "object",
 		Properties: []ogen.Property{
 			{
@@ -226,15 +222,11 @@ func TestSchemaSideEffects(t *testing.T) {
 }
 
 func TestSchemaReferencedArray(t *testing.T) {
-	spec := &ogen.Spec{
-		Components: &ogen.Components{
-			Schemas: map[string]*ogen.Schema{
-				"Pets": {
-					Type: "array",
-					Items: &ogen.Schema{
-						Type: "string",
-					},
-				},
+	components := map[string]*ogen.Schema{
+		"Pets": {
+			Type: "array",
+			Items: &ogen.Schema{
+				Type: "string",
 			},
 		},
 	}
@@ -260,12 +252,12 @@ func TestSchemaReferencedArray(t *testing.T) {
 		},
 	}
 
-	gen := &schemaGen{
-		spec:      spec,
-		localRefs: make(map[string]*oas.Schema),
+	parser := &schemaParser{
+		components: components,
+		localRefs:  make(map[string]*oas.Schema),
 	}
 
-	out, err := gen.Generate(&ogen.Schema{
+	out, err := parser.Parse(&ogen.Schema{
 		Type: "object",
 		Properties: []ogen.Property{
 			{
@@ -279,6 +271,6 @@ func TestSchemaReferencedArray(t *testing.T) {
 	})
 
 	require.NoError(t, err)
-	require.Equal(t, expectLocalRefs, gen.localRefs)
+	require.Equal(t, expectLocalRefs, parser.localRefs)
 	require.Equal(t, expect, out)
 }

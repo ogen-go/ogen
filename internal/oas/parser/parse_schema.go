@@ -10,19 +10,19 @@ import (
 )
 
 func (p *parser) parseSchema(schema *ogen.Schema) (*oas.Schema, error) {
-	gen := &schemaGen{
-		spec:       p.spec,
+	parser := &schemaParser{
+		components: p.spec.Components.Schemas,
 		globalRefs: p.refs.schemas,
 		localRefs:  make(map[string]*oas.Schema),
 	}
 
-	s, err := gen.Generate(schema)
+	s, err := parser.Parse(schema)
 	if err != nil {
 		return nil, errors.Wrap(err, "generate")
 	}
 
 	// Merge references.
-	for ref, schema := range gen.localRefs {
+	for ref, schema := range parser.localRefs {
 		if _, found := p.refs.schemas[ref]; found {
 			panic(fmt.Sprintf("schema reference conflict: %s", ref))
 		}

@@ -12,7 +12,7 @@ import (
 func parseEnumValues(typ oas.SchemaType, rawValues []json.RawMessage) ([]interface{}, error) {
 	var (
 		values []interface{}
-		uniq   = map[interface{}]struct{}{}
+		unique = map[interface{}]struct{}{}
 	)
 	for _, raw := range rawValues {
 		val, err := parseJSONValue(typ, raw)
@@ -23,11 +23,11 @@ func parseEnumValues(typ oas.SchemaType, rawValues []json.RawMessage) ([]interfa
 			return nil, errors.Wrapf(err, "parse value %q", raw)
 		}
 
-		if _, found := uniq[val]; found {
+		if _, found := unique[val]; found {
 			return nil, errors.Errorf("duplicate enum value: '%v'", val)
 		}
 
-		uniq[val] = struct{}{}
+		unique[val] = struct{}{}
 		values = append(values, val)
 	}
 
