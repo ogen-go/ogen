@@ -39,7 +39,7 @@ func variantFieldName(t *ir.Type) string {
 	return capitalize(result)
 }
 
-func (g *schemaGen) generate(name string, schema *oas.Schema) (*ir.Type, error) {
+func (g *schemaGen) generate(name string, schema *oas.Schema) (_ *ir.Type, err error) {
 	if ref := schema.Ref; ref != "" {
 		if t, ok := g.globalRefs[ref]; ok {
 			return t, nil
@@ -61,52 +61,7 @@ func (g *schemaGen) generate(name string, schema *oas.Schema) (*ir.Type, error) 
 		return nil, &ErrNotImplemented{"allOf"}
 	}
 
-	var reg *regexp.Regexp
-	if schema.Pattern != "" {
-		p, err := regexp.Compile(schema.Pattern)
-		if err != nil {
-			return nil, errors.Wrap(err, "pattern")
-		}
-		reg = p
-	}
-
 	side := func(t *ir.Type) *ir.Type {
-		// Set validation fields.
-		if schema.MultipleOf != nil {
-			t.Validators.Int.MultipleOf = *schema.MultipleOf
-			t.Validators.Int.MultipleOfSet = true
-		}
-		if schema.Maximum != nil {
-			t.Validators.Int.Max = *schema.Maximum
-			t.Validators.Int.MaxSet = true
-		}
-		if schema.Minimum != nil {
-			t.Validators.Int.Min = *schema.Minimum
-			t.Validators.Int.MinSet = true
-		}
-		t.Validators.Int.MaxExclusive = schema.ExclusiveMaximum
-		t.Validators.Int.MinExclusive = schema.ExclusiveMinimum
-
-		if schema.MaxItems != nil {
-			t.Validators.Array.SetMaxLength(int(*schema.MaxItems))
-		}
-		if schema.MinItems != nil {
-			t.Validators.Array.SetMinLength(int(*schema.MinItems))
-		}
-
-		t.Validators.String.Regex = reg
-		if schema.MaxLength != nil {
-			t.Validators.String.SetMaxLength(int(*schema.MaxLength))
-		}
-		if schema.MinLength != nil {
-			t.Validators.String.SetMinLength(int(*schema.MinLength))
-		}
-		if t.Schema.Format == oas.FormatEmail {
-			t.Validators.String.Email = true
-		}
-		if t.Schema.Format == oas.FormatHostname {
-			t.Validators.String.Hostname = true
-		}
 		if ref := t.Schema.Ref; ref != "" {
 			if t.Is(ir.KindPrimitive, ir.KindArray) {
 				t = ir.Alias(name, t)
@@ -157,22 +112,66 @@ func (g *schemaGen) generate(name string, schema *oas.Schema) (*ir.Type, error) 
 			NilSemantic: ir.NilInvalid,
 		}
 
+		if schema.MaxItems != nil {
+			array.Validators.Array.SetMaxLength(int(*schema.MaxItems))
+		}
+		if schema.MinItems != nil {
+			array.Validators.Array.SetMinLength(int(*schema.MinItems))
+		}
+
 		ret := side(array)
-		item, err := g.generate(name+"Item", schema.Item)
+		array.Item, err = g.generate(name+"Item", schema.Item)
 		if err != nil {
 			return nil, err
 		}
 
-		array.Item = item
 		return ret, nil
 
 	case oas.String, oas.Integer, oas.Number, oas.Boolean:
-		prim, err := g.primitive(name, schema)
+		t, err := g.primitive(name, schema)
 		if err != nil {
 			return nil, err
 		}
 
-		return side(prim), nil
+		switch schema.Type {
+		case oas.String:
+			if schema.Pattern != "" {
+				t.Validators.String.Regex, err = regexp.Compile(schema.Pattern)
+				if err != nil {
+					return nil, errors.Wrap(err, "pattern")
+				}
+			}
+			if schema.MaxLength != nil {
+				t.Validators.String.SetMaxLength(int(*schema.MaxLength))
+			}
+			if schema.MinLength != nil {
+				t.Validators.String.SetMinLength(int(*schema.MinLength))
+			}
+			if schema.Format == oas.FormatEmail {
+				t.Validators.String.Email = true
+			}
+			if schema.Format == oas.FormatHostname {
+				t.Validators.String.Hostname = true
+			}
+
+		case oas.Integer, oas.Number:
+			if schema.MultipleOf != nil {
+				t.Validators.Int.MultipleOf = *schema.MultipleOf
+				t.Validators.Int.MultipleOfSet = true
+			}
+			if schema.Maximum != nil {
+				t.Validators.Int.Max = *schema.Maximum
+				t.Validators.Int.MaxSet = true
+			}
+			if schema.Minimum != nil {
+				t.Validators.Int.Min = *schema.Minimum
+				t.Validators.Int.MinSet = true
+			}
+			t.Validators.Int.MaxExclusive = schema.ExclusiveMaximum
+			t.Validators.Int.MinExclusive = schema.ExclusiveMinimum
+		}
+
+		return side(t), nil
 
 	case oas.Empty:
 		sum := &ir.Type{
