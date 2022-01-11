@@ -97,13 +97,10 @@ func (p *parser) parseOp(path, httpMethod string, spec ogen.Operation, itemParam
 		}
 	}
 
-	if len(spec.Responses) > 0 {
-		op.Responses, err = p.parseResponses(spec.Responses)
-		if err != nil {
-			return nil, errors.Wrap(err, "responses")
-		}
+	op.Responses, err = p.parseResponses(spec.Responses)
+	if err != nil {
+		return nil, errors.Wrap(err, "responses")
 	}
-
 	return op, nil
 }
 
