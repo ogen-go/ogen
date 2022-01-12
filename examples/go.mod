@@ -4,7 +4,7 @@ go 1.17
 
 require (
 	github.com/go-faster/errors v0.5.0
-	github.com/go-faster/jx v0.25.1
+	github.com/go-faster/jx v0.26.0-alpha.0
 	github.com/google/uuid v1.3.0
 	github.com/ogen-go/ogen v0.0.0
 	go.opentelemetry.io/otel v1.3.0
