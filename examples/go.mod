@@ -16,7 +16,7 @@ require (
 	github.com/fatih/color v1.13.0 // indirect
 	github.com/go-logr/logr v1.2.1 // indirect
 	github.com/go-logr/stdr v1.2.0 // indirect
-	github.com/goccy/go-yaml v1.9.4 // indirect
+	github.com/goccy/go-yaml v1.9.5 // indirect
 	github.com/mattn/go-colorable v0.1.11 // indirect
 	github.com/mattn/go-isatty v0.0.14 // indirect
 	golang.org/x/crypto v0.0.0-20210513164829-c07d793c2f9a // indirect
