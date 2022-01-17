@@ -4,7 +4,7 @@ go 1.17
 
 require (
 	github.com/go-faster/errors v0.5.0
-	github.com/go-faster/jx v0.27.0
+	github.com/go-faster/jx v0.30.0
 	github.com/goccy/go-yaml v1.9.5
 	github.com/google/uuid v1.3.0
 	github.com/stretchr/testify v1.7.0
