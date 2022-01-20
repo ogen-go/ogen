@@ -29,16 +29,16 @@ func decodeObject(t testing.TB, data []byte, v json.Unmarshaler) {
 }
 
 func encodeObject(v json.Marshaler) []byte {
-	e := jx.GetEncoder()
+	e := &jx.Writer{}
 	e.ObjStart()
 	if settable, ok := v.(json.Settable); ok && !settable.IsSet() {
 		e.ObjEnd()
-		return e.Bytes()
+		return e.Buf
 	}
 	e.FieldStart("key")
 	v.Encode(e)
 	e.ObjEnd()
-	return e.Bytes()
+	return e.Buf
 }
 
 func TestJSONGenerics(t *testing.T) {
@@ -125,11 +125,11 @@ func TestTechEmpowerJSON(t *testing.T) {
 		ID:           10,
 		RandomNumber: 2134,
 	}
-	e := jx.GetEncoder()
+	e := &jx.Writer{}
 	hw.Encode(e)
 	var parsed techempower.WorldObject
 	d := jx.GetDecoder()
-	d.ResetBytes(e.Bytes())
+	d.ResetBytes(e.Buf)
 	t.Log(e)
 	require.NoError(t, parsed.Decode(d))
 	require.Equal(t, hw, parsed)

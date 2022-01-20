@@ -1,7 +1,7 @@
 {{- /*gotype: github.com/ogen-go/ogen/internal/ir.Type*/ -}}
 {{- define "json/encoders_alias" }}
 // Encode encodes {{ $.Name }} as json.
-func (s {{ $.Name }}) Encode(e *jx.Encoder) {
+func (s {{ $.Name }}) Encode(e *jx.Writer) {
 	unwrapped := {{ $.AliasTo.Go }}(s)
 	{{- template "json/enc" elem $.AliasTo "unwrapped" -}}
 }

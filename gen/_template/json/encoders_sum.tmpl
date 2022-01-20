@@ -1,7 +1,7 @@
 {{- /*gotype: github.com/ogen-go/ogen/internal/ir.Type*/ -}}
 {{- define "json/encoders_sum" }}
 // Encode encodes {{ $.Name }} as json.
-func (s {{ $.Name }}) Encode(e *jx.Encoder) {
+func (s {{ $.Name }}) Encode(e *jx.Writer) {
 	switch s.Type {
 	{{- range $s := $.SumOf }}
 	case {{ $s.Name }}{{ $.Name }}:

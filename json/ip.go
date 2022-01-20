@@ -21,6 +21,6 @@ func DecodeIP(i *jx.Decoder) (v net.IP, err error) {
 }
 
 // EncodeIP encodes net.IP.
-func EncodeIP(s *jx.Encoder, v net.IP) {
+func EncodeIP(s *jx.Writer, v net.IP) {
 	s.Str(v.String())
 }

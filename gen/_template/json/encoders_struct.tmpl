@@ -1,11 +1,19 @@
 {{- /*gotype: github.com/ogen-go/ogen/internal/ir.Type*/ -}}
 {{- define "json/encoders_struct" }}
 // Encode implements json.Marshaler.
-func (s {{ $.Name }}) Encode(e *jx.Encoder) {
+func (s {{ $.Name }}) Encode(e *jx.Writer) {
 	e.ObjStart()
-	{{- range $f := $.JSON.Fields }}
-		{{ template "json/enc" field_elem $f -}}
+	{{- range $i, $f := $.JSON.Fields }}
+		{{- $elem := field_elem $f }}
+		{{ template "json/enc" $elem }}
+		{{- if ne $i (add (len $.JSON.Fields) -1) }}
+            {{ template "json/enc_comma" $elem }}
+		{{- end }}
 	{{- end }}
+	{{/* Trim last comma if needed */}}
+	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
+		e.Buf = e.Buf[:length-1]
+	}
 	e.ObjEnd()
 }
 
