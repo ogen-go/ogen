@@ -63,8 +63,12 @@ var (
 )
 
 // Encode implements json.Marshaler.
-func (s CreatePetsCreated) Encode(e *jx.Encoder) {
+func (s CreatePetsCreated) Encode(e *jx.Writer) {
 	e.ObjStart()
+
+	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
+		e.Buf = e.Buf[:length-1]
+	}
 	e.ObjEnd()
 }
 
@@ -83,14 +87,19 @@ func (s *CreatePetsCreated) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s Error) Encode(e *jx.Encoder) {
+func (s Error) Encode(e *jx.Writer) {
 	e.ObjStart()
 
-	e.FieldStart("code")
+	e.RawStr("\"code\"" + ":")
 	e.Int32(s.Code)
+	e.Comma()
 
-	e.FieldStart("message")
+	e.RawStr("\"message\"" + ":")
 	e.Str(s.Message)
+
+	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
+		e.Buf = e.Buf[:length-1]
+	}
 	e.ObjEnd()
 }
 
@@ -121,8 +130,12 @@ func (s *Error) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s ErrorStatusCode) Encode(e *jx.Encoder) {
+func (s ErrorStatusCode) Encode(e *jx.Writer) {
 	e.ObjStart()
+
+	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
+		e.Buf = e.Buf[:length-1]
+	}
 	e.ObjEnd()
 }
 
@@ -141,7 +154,7 @@ func (s *ErrorStatusCode) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes int32 as json.
-func (o OptInt32) Encode(e *jx.Encoder) {
+func (o OptInt32) Encode(e *jx.Writer) {
 	e.Int32(int32(o.Value))
 }
 
@@ -165,7 +178,7 @@ func (o *OptInt32) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes string as json.
-func (o OptString) Encode(e *jx.Encoder) {
+func (o OptString) Encode(e *jx.Writer) {
 	e.Str(string(o.Value))
 }
 
@@ -189,17 +202,23 @@ func (o *OptString) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s Pet) Encode(e *jx.Encoder) {
+func (s Pet) Encode(e *jx.Writer) {
 	e.ObjStart()
 
-	e.FieldStart("id")
+	e.RawStr("\"id\"" + ":")
 	e.Int64(s.ID)
+	e.Comma()
 
-	e.FieldStart("name")
+	e.RawStr("\"name\"" + ":")
 	e.Str(s.Name)
+	e.Comma()
 	if s.Tag.Set {
-		e.FieldStart("tag")
+		e.RawStr("\"tag\"" + ":")
 		s.Tag.Encode(e)
+	}
+
+	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
+		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -236,11 +255,19 @@ func (s *Pet) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes Pets as json.
-func (s Pets) Encode(e *jx.Encoder) {
+func (s Pets) Encode(e *jx.Writer) {
 	unwrapped := []Pet(s)
 	e.ArrStart()
-	for _, elem := range unwrapped {
-		elem.Encode(e)
+	if len(unwrapped) >= 1 {
+		// Encode first element without comma.
+		{
+			elem := unwrapped[0]
+			elem.Encode(e)
+		}
+		for _, elem := range unwrapped[1:] {
+			e.Comma()
+			elem.Encode(e)
+		}
 	}
 	e.ArrEnd()
 }

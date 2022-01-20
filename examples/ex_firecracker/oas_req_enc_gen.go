@@ -64,8 +64,7 @@ var (
 
 func encodeCreateSnapshotRequestJSON(req SnapshotCreateParams, span trace.Span) (data *bytes.Buffer, err error) {
 	buf := getBuf()
-	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
+	e := &jx.Writer{}
 
 	req.Encode(e)
 	if _, err := e.WriteTo(buf); err != nil {
@@ -78,8 +77,7 @@ func encodeCreateSnapshotRequestJSON(req SnapshotCreateParams, span trace.Span) 
 
 func encodeCreateSyncActionRequestJSON(req InstanceActionInfo, span trace.Span) (data *bytes.Buffer, err error) {
 	buf := getBuf()
-	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
+	e := &jx.Writer{}
 
 	req.Encode(e)
 	if _, err := e.WriteTo(buf); err != nil {
@@ -92,8 +90,7 @@ func encodeCreateSyncActionRequestJSON(req InstanceActionInfo, span trace.Span) 
 
 func encodeLoadSnapshotRequestJSON(req SnapshotLoadParams, span trace.Span) (data *bytes.Buffer, err error) {
 	buf := getBuf()
-	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
+	e := &jx.Writer{}
 
 	req.Encode(e)
 	if _, err := e.WriteTo(buf); err != nil {
@@ -106,8 +103,7 @@ func encodeLoadSnapshotRequestJSON(req SnapshotLoadParams, span trace.Span) (dat
 
 func encodeMmdsConfigPutRequestJSON(req MmdsConfig, span trace.Span) (data *bytes.Buffer, err error) {
 	buf := getBuf()
-	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
+	e := &jx.Writer{}
 
 	req.Encode(e)
 	if _, err := e.WriteTo(buf); err != nil {
@@ -120,8 +116,7 @@ func encodeMmdsConfigPutRequestJSON(req MmdsConfig, span trace.Span) (data *byte
 
 func encodeMmdsPatchRequestJSON(req OptMmdsPatchReq, span trace.Span) (data *bytes.Buffer, err error) {
 	buf := getBuf()
-	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
+	e := &jx.Writer{}
 	if req.Set {
 		req.Encode(e)
 	}
@@ -135,8 +130,7 @@ func encodeMmdsPatchRequestJSON(req OptMmdsPatchReq, span trace.Span) (data *byt
 
 func encodeMmdsPutRequestJSON(req OptMmdsPutReq, span trace.Span) (data *bytes.Buffer, err error) {
 	buf := getBuf()
-	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
+	e := &jx.Writer{}
 	if req.Set {
 		req.Encode(e)
 	}
@@ -150,8 +144,7 @@ func encodeMmdsPutRequestJSON(req OptMmdsPutReq, span trace.Span) (data *bytes.B
 
 func encodePatchBalloonRequestJSON(req BalloonUpdate, span trace.Span) (data *bytes.Buffer, err error) {
 	buf := getBuf()
-	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
+	e := &jx.Writer{}
 
 	req.Encode(e)
 	if _, err := e.WriteTo(buf); err != nil {
@@ -164,8 +157,7 @@ func encodePatchBalloonRequestJSON(req BalloonUpdate, span trace.Span) (data *by
 
 func encodePatchBalloonStatsIntervalRequestJSON(req BalloonStatsUpdate, span trace.Span) (data *bytes.Buffer, err error) {
 	buf := getBuf()
-	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
+	e := &jx.Writer{}
 
 	req.Encode(e)
 	if _, err := e.WriteTo(buf); err != nil {
@@ -178,8 +170,7 @@ func encodePatchBalloonStatsIntervalRequestJSON(req BalloonStatsUpdate, span tra
 
 func encodePatchGuestDriveByIDRequestJSON(req PartialDrive, span trace.Span) (data *bytes.Buffer, err error) {
 	buf := getBuf()
-	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
+	e := &jx.Writer{}
 
 	req.Encode(e)
 	if _, err := e.WriteTo(buf); err != nil {
@@ -192,8 +183,7 @@ func encodePatchGuestDriveByIDRequestJSON(req PartialDrive, span trace.Span) (da
 
 func encodePatchGuestNetworkInterfaceByIDRequestJSON(req PartialNetworkInterface, span trace.Span) (data *bytes.Buffer, err error) {
 	buf := getBuf()
-	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
+	e := &jx.Writer{}
 
 	req.Encode(e)
 	if _, err := e.WriteTo(buf); err != nil {
@@ -206,8 +196,7 @@ func encodePatchGuestNetworkInterfaceByIDRequestJSON(req PartialNetworkInterface
 
 func encodePatchMachineConfigurationRequestJSON(req OptMachineConfiguration, span trace.Span) (data *bytes.Buffer, err error) {
 	buf := getBuf()
-	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
+	e := &jx.Writer{}
 	if req.Set {
 		req.Encode(e)
 	}
@@ -221,8 +210,7 @@ func encodePatchMachineConfigurationRequestJSON(req OptMachineConfiguration, spa
 
 func encodePatchVmRequestJSON(req VM, span trace.Span) (data *bytes.Buffer, err error) {
 	buf := getBuf()
-	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
+	e := &jx.Writer{}
 
 	req.Encode(e)
 	if _, err := e.WriteTo(buf); err != nil {
@@ -235,8 +223,7 @@ func encodePatchVmRequestJSON(req VM, span trace.Span) (data *bytes.Buffer, err 
 
 func encodePutBalloonRequestJSON(req Balloon, span trace.Span) (data *bytes.Buffer, err error) {
 	buf := getBuf()
-	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
+	e := &jx.Writer{}
 
 	req.Encode(e)
 	if _, err := e.WriteTo(buf); err != nil {
@@ -249,8 +236,7 @@ func encodePutBalloonRequestJSON(req Balloon, span trace.Span) (data *bytes.Buff
 
 func encodePutGuestBootSourceRequestJSON(req BootSource, span trace.Span) (data *bytes.Buffer, err error) {
 	buf := getBuf()
-	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
+	e := &jx.Writer{}
 
 	req.Encode(e)
 	if _, err := e.WriteTo(buf); err != nil {
@@ -263,8 +249,7 @@ func encodePutGuestBootSourceRequestJSON(req BootSource, span trace.Span) (data 
 
 func encodePutGuestDriveByIDRequestJSON(req Drive, span trace.Span) (data *bytes.Buffer, err error) {
 	buf := getBuf()
-	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
+	e := &jx.Writer{}
 
 	req.Encode(e)
 	if _, err := e.WriteTo(buf); err != nil {
@@ -277,8 +262,7 @@ func encodePutGuestDriveByIDRequestJSON(req Drive, span trace.Span) (data *bytes
 
 func encodePutGuestNetworkInterfaceByIDRequestJSON(req NetworkInterface, span trace.Span) (data *bytes.Buffer, err error) {
 	buf := getBuf()
-	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
+	e := &jx.Writer{}
 
 	req.Encode(e)
 	if _, err := e.WriteTo(buf); err != nil {
@@ -291,8 +275,7 @@ func encodePutGuestNetworkInterfaceByIDRequestJSON(req NetworkInterface, span tr
 
 func encodePutGuestVsockRequestJSON(req Vsock, span trace.Span) (data *bytes.Buffer, err error) {
 	buf := getBuf()
-	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
+	e := &jx.Writer{}
 
 	req.Encode(e)
 	if _, err := e.WriteTo(buf); err != nil {
@@ -305,8 +288,7 @@ func encodePutGuestVsockRequestJSON(req Vsock, span trace.Span) (data *bytes.Buf
 
 func encodePutLoggerRequestJSON(req Logger, span trace.Span) (data *bytes.Buffer, err error) {
 	buf := getBuf()
-	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
+	e := &jx.Writer{}
 
 	req.Encode(e)
 	if _, err := e.WriteTo(buf); err != nil {
@@ -319,8 +301,7 @@ func encodePutLoggerRequestJSON(req Logger, span trace.Span) (data *bytes.Buffer
 
 func encodePutMachineConfigurationRequestJSON(req OptMachineConfiguration, span trace.Span) (data *bytes.Buffer, err error) {
 	buf := getBuf()
-	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
+	e := &jx.Writer{}
 	if req.Set {
 		req.Encode(e)
 	}
@@ -334,8 +315,7 @@ func encodePutMachineConfigurationRequestJSON(req OptMachineConfiguration, span 
 
 func encodePutMetricsRequestJSON(req Metrics, span trace.Span) (data *bytes.Buffer, err error) {
 	buf := getBuf()
-	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
+	e := &jx.Writer{}
 
 	req.Encode(e)
 	if _, err := e.WriteTo(buf); err != nil {

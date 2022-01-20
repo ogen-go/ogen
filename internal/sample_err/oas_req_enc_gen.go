@@ -64,8 +64,7 @@ var (
 
 func encodeDataCreateRequestJSON(req OptData, span trace.Span) (data *bytes.Buffer, err error) {
 	buf := getBuf()
-	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
+	e := &jx.Writer{}
 	if req.Set {
 		req.Encode(e)
 	}

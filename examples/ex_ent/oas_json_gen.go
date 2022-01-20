@@ -63,18 +63,31 @@ var (
 )
 
 // Encode implements json.Marshaler.
-func (s CreatePetCategoriesReq) Encode(e *jx.Encoder) {
+func (s CreatePetCategoriesReq) Encode(e *jx.Writer) {
 	e.ObjStart()
 
-	e.FieldStart("name")
+	e.RawStr("\"name\"" + ":")
 	e.Str(s.Name)
+	e.Comma()
 	if s.Pets != nil {
-		e.FieldStart("pets")
+		e.RawStr("\"pets\"" + ":")
 		e.ArrStart()
-		for _, elem := range s.Pets {
-			e.Int(elem)
+		if len(s.Pets) >= 1 {
+			// Encode first element without comma.
+			{
+				elem := s.Pets[0]
+				e.Int(elem)
+			}
+			for _, elem := range s.Pets[1:] {
+				e.Comma()
+				e.Int(elem)
+			}
 		}
 		e.ArrEnd()
+	}
+
+	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
+		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -114,37 +127,68 @@ func (s *CreatePetCategoriesReq) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s CreatePetFriendsReq) Encode(e *jx.Encoder) {
+func (s CreatePetFriendsReq) Encode(e *jx.Writer) {
 	e.ObjStart()
 
-	e.FieldStart("name")
+	e.RawStr("\"name\"" + ":")
 	e.Str(s.Name)
+	e.Comma()
 	if s.Weight.Set {
-		e.FieldStart("weight")
+		e.RawStr("\"weight\"" + ":")
 		s.Weight.Encode(e)
 	}
+	if s.Weight.Set {
+		e.Comma()
+	}
 	if s.Birthday.Set {
-		e.FieldStart("birthday")
+		e.RawStr("\"birthday\"" + ":")
 		s.Birthday.Encode(e, json.EncodeDateTime)
 	}
+	if s.Birthday.Set {
+		e.Comma()
+	}
 	if s.Categories != nil {
-		e.FieldStart("categories")
+		e.RawStr("\"categories\"" + ":")
 		e.ArrStart()
-		for _, elem := range s.Categories {
-			e.Int(elem)
+		if len(s.Categories) >= 1 {
+			// Encode first element without comma.
+			{
+				elem := s.Categories[0]
+				e.Int(elem)
+			}
+			for _, elem := range s.Categories[1:] {
+				e.Comma()
+				e.Int(elem)
+			}
+		}
+		e.ArrEnd()
+	}
+	if s.Categories != nil {
+		e.Comma()
+	}
+
+	e.RawStr("\"owner\"" + ":")
+	e.Int(s.Owner)
+	e.Comma()
+	if s.Friends != nil {
+		e.RawStr("\"friends\"" + ":")
+		e.ArrStart()
+		if len(s.Friends) >= 1 {
+			// Encode first element without comma.
+			{
+				elem := s.Friends[0]
+				e.Int(elem)
+			}
+			for _, elem := range s.Friends[1:] {
+				e.Comma()
+				e.Int(elem)
+			}
 		}
 		e.ArrEnd()
 	}
 
-	e.FieldStart("owner")
-	e.Int(s.Owner)
-	if s.Friends != nil {
-		e.FieldStart("friends")
-		e.ArrStart()
-		for _, elem := range s.Friends {
-			e.Int(elem)
-		}
-		e.ArrEnd()
+	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
+		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -214,21 +258,35 @@ func (s *CreatePetFriendsReq) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s CreatePetOwnerReq) Encode(e *jx.Encoder) {
+func (s CreatePetOwnerReq) Encode(e *jx.Writer) {
 	e.ObjStart()
 
-	e.FieldStart("name")
+	e.RawStr("\"name\"" + ":")
 	e.Str(s.Name)
+	e.Comma()
 
-	e.FieldStart("age")
+	e.RawStr("\"age\"" + ":")
 	e.Int(s.Age)
+	e.Comma()
 	if s.Pets != nil {
-		e.FieldStart("pets")
+		e.RawStr("\"pets\"" + ":")
 		e.ArrStart()
-		for _, elem := range s.Pets {
-			e.Int(elem)
+		if len(s.Pets) >= 1 {
+			// Encode first element without comma.
+			{
+				elem := s.Pets[0]
+				e.Int(elem)
+			}
+			for _, elem := range s.Pets[1:] {
+				e.Comma()
+				e.Int(elem)
+			}
 		}
 		e.ArrEnd()
+	}
+
+	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
+		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -274,37 +332,68 @@ func (s *CreatePetOwnerReq) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s CreatePetReq) Encode(e *jx.Encoder) {
+func (s CreatePetReq) Encode(e *jx.Writer) {
 	e.ObjStart()
 
-	e.FieldStart("name")
+	e.RawStr("\"name\"" + ":")
 	e.Str(s.Name)
+	e.Comma()
 	if s.Weight.Set {
-		e.FieldStart("weight")
+		e.RawStr("\"weight\"" + ":")
 		s.Weight.Encode(e)
 	}
+	if s.Weight.Set {
+		e.Comma()
+	}
 	if s.Birthday.Set {
-		e.FieldStart("birthday")
+		e.RawStr("\"birthday\"" + ":")
 		s.Birthday.Encode(e, json.EncodeDateTime)
 	}
+	if s.Birthday.Set {
+		e.Comma()
+	}
 	if s.Categories != nil {
-		e.FieldStart("categories")
+		e.RawStr("\"categories\"" + ":")
 		e.ArrStart()
-		for _, elem := range s.Categories {
-			e.Int(elem)
+		if len(s.Categories) >= 1 {
+			// Encode first element without comma.
+			{
+				elem := s.Categories[0]
+				e.Int(elem)
+			}
+			for _, elem := range s.Categories[1:] {
+				e.Comma()
+				e.Int(elem)
+			}
+		}
+		e.ArrEnd()
+	}
+	if s.Categories != nil {
+		e.Comma()
+	}
+
+	e.RawStr("\"owner\"" + ":")
+	e.Int(s.Owner)
+	e.Comma()
+	if s.Friends != nil {
+		e.RawStr("\"friends\"" + ":")
+		e.ArrStart()
+		if len(s.Friends) >= 1 {
+			// Encode first element without comma.
+			{
+				elem := s.Friends[0]
+				e.Int(elem)
+			}
+			for _, elem := range s.Friends[1:] {
+				e.Comma()
+				e.Int(elem)
+			}
 		}
 		e.ArrEnd()
 	}
 
-	e.FieldStart("owner")
-	e.Int(s.Owner)
-	if s.Friends != nil {
-		e.FieldStart("friends")
-		e.ArrStart()
-		for _, elem := range s.Friends {
-			e.Int(elem)
-		}
-		e.ArrEnd()
+	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
+		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -374,8 +463,12 @@ func (s *CreatePetReq) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s DeletePetNoContent) Encode(e *jx.Encoder) {
+func (s DeletePetNoContent) Encode(e *jx.Writer) {
 	e.ObjStart()
+
+	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
+		e.Buf = e.Buf[:length-1]
+	}
 	e.ObjEnd()
 }
 
@@ -394,8 +487,12 @@ func (s *DeletePetNoContent) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s DeletePetOwnerNoContent) Encode(e *jx.Encoder) {
+func (s DeletePetOwnerNoContent) Encode(e *jx.Writer) {
 	e.ObjStart()
+
+	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
+		e.Buf = e.Buf[:length-1]
+	}
 	e.ObjEnd()
 }
 
@@ -414,11 +511,19 @@ func (s *DeletePetOwnerNoContent) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes ListPetCategoriesOKApplicationJSON as json.
-func (s ListPetCategoriesOKApplicationJSON) Encode(e *jx.Encoder) {
+func (s ListPetCategoriesOKApplicationJSON) Encode(e *jx.Writer) {
 	unwrapped := []PetCategoriesList(s)
 	e.ArrStart()
-	for _, elem := range unwrapped {
-		elem.Encode(e)
+	if len(unwrapped) >= 1 {
+		// Encode first element without comma.
+		{
+			elem := unwrapped[0]
+			elem.Encode(e)
+		}
+		for _, elem := range unwrapped[1:] {
+			e.Comma()
+			elem.Encode(e)
+		}
 	}
 	e.ArrEnd()
 }
@@ -450,11 +555,19 @@ func (s *ListPetCategoriesOKApplicationJSON) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes ListPetFriendsOKApplicationJSON as json.
-func (s ListPetFriendsOKApplicationJSON) Encode(e *jx.Encoder) {
+func (s ListPetFriendsOKApplicationJSON) Encode(e *jx.Writer) {
 	unwrapped := []PetFriendsList(s)
 	e.ArrStart()
-	for _, elem := range unwrapped {
-		elem.Encode(e)
+	if len(unwrapped) >= 1 {
+		// Encode first element without comma.
+		{
+			elem := unwrapped[0]
+			elem.Encode(e)
+		}
+		for _, elem := range unwrapped[1:] {
+			e.Comma()
+			elem.Encode(e)
+		}
 	}
 	e.ArrEnd()
 }
@@ -486,11 +599,19 @@ func (s *ListPetFriendsOKApplicationJSON) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes ListPetOKApplicationJSON as json.
-func (s ListPetOKApplicationJSON) Encode(e *jx.Encoder) {
+func (s ListPetOKApplicationJSON) Encode(e *jx.Writer) {
 	unwrapped := []PetList(s)
 	e.ArrStart()
-	for _, elem := range unwrapped {
-		elem.Encode(e)
+	if len(unwrapped) >= 1 {
+		// Encode first element without comma.
+		{
+			elem := unwrapped[0]
+			elem.Encode(e)
+		}
+		for _, elem := range unwrapped[1:] {
+			e.Comma()
+			elem.Encode(e)
+		}
 	}
 	e.ArrEnd()
 }
@@ -522,7 +643,7 @@ func (s *ListPetOKApplicationJSON) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes int as json.
-func (o OptInt) Encode(e *jx.Encoder) {
+func (o OptInt) Encode(e *jx.Writer) {
 	e.Int(int(o.Value))
 }
 
@@ -546,7 +667,7 @@ func (o *OptInt) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes int32 as json.
-func (o OptInt32) Encode(e *jx.Encoder) {
+func (o OptInt32) Encode(e *jx.Writer) {
 	e.Int32(int32(o.Value))
 }
 
@@ -570,7 +691,7 @@ func (o *OptInt32) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes string as json.
-func (o OptString) Encode(e *jx.Encoder) {
+func (o OptString) Encode(e *jx.Writer) {
 	e.Str(string(o.Value))
 }
 
@@ -594,7 +715,7 @@ func (o *OptString) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes time.Time as json.
-func (o OptTime) Encode(e *jx.Encoder, format func(*jx.Encoder, time.Time)) {
+func (o OptTime) Encode(e *jx.Writer, format func(*jx.Writer, time.Time)) {
 	format(e, o.Value)
 }
 
@@ -618,14 +739,19 @@ func (o *OptTime) Decode(d *jx.Decoder, format func(*jx.Decoder) (time.Time, err
 }
 
 // Encode implements json.Marshaler.
-func (s PetCategoriesCreate) Encode(e *jx.Encoder) {
+func (s PetCategoriesCreate) Encode(e *jx.Writer) {
 	e.ObjStart()
 
-	e.FieldStart("id")
+	e.RawStr("\"id\"" + ":")
 	e.Int(s.ID)
+	e.Comma()
 
-	e.FieldStart("name")
+	e.RawStr("\"name\"" + ":")
 	e.Str(s.Name)
+
+	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
+		e.Buf = e.Buf[:length-1]
+	}
 	e.ObjEnd()
 }
 
@@ -656,14 +782,19 @@ func (s *PetCategoriesCreate) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s PetCategoriesList) Encode(e *jx.Encoder) {
+func (s PetCategoriesList) Encode(e *jx.Writer) {
 	e.ObjStart()
 
-	e.FieldStart("id")
+	e.RawStr("\"id\"" + ":")
 	e.Int(s.ID)
+	e.Comma()
 
-	e.FieldStart("name")
+	e.RawStr("\"name\"" + ":")
 	e.Str(s.Name)
+
+	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
+		e.Buf = e.Buf[:length-1]
+	}
 	e.ObjEnd()
 }
 
@@ -694,33 +825,56 @@ func (s *PetCategoriesList) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s PetCreate) Encode(e *jx.Encoder) {
+func (s PetCreate) Encode(e *jx.Writer) {
 	e.ObjStart()
 
-	e.FieldStart("id")
+	e.RawStr("\"id\"" + ":")
 	e.Int(s.ID)
+	e.Comma()
 
-	e.FieldStart("name")
+	e.RawStr("\"name\"" + ":")
 	e.Str(s.Name)
+	e.Comma()
 	if s.Weight.Set {
-		e.FieldStart("weight")
+		e.RawStr("\"weight\"" + ":")
 		s.Weight.Encode(e)
 	}
+	if s.Weight.Set {
+		e.Comma()
+	}
 	if s.Birthday.Set {
-		e.FieldStart("birthday")
+		e.RawStr("\"birthday\"" + ":")
 		s.Birthday.Encode(e, json.EncodeDateTime)
 	}
+	if s.Birthday.Set {
+		e.Comma()
+	}
 	if s.Categories != nil {
-		e.FieldStart("categories")
+		e.RawStr("\"categories\"" + ":")
 		e.ArrStart()
-		for _, elem := range s.Categories {
-			elem.Encode(e)
+		if len(s.Categories) >= 1 {
+			// Encode first element without comma.
+			{
+				elem := s.Categories[0]
+				elem.Encode(e)
+			}
+			for _, elem := range s.Categories[1:] {
+				e.Comma()
+				elem.Encode(e)
+			}
 		}
 		e.ArrEnd()
 	}
+	if s.Categories != nil {
+		e.Comma()
+	}
 
-	e.FieldStart("owner")
+	e.RawStr("\"owner\"" + ":")
 	s.Owner.Encode(e)
+
+	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
+		e.Buf = e.Buf[:length-1]
+	}
 	e.ObjEnd()
 }
 
@@ -777,14 +931,19 @@ func (s *PetCreate) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s PetCreateCategories) Encode(e *jx.Encoder) {
+func (s PetCreateCategories) Encode(e *jx.Writer) {
 	e.ObjStart()
 
-	e.FieldStart("id")
+	e.RawStr("\"id\"" + ":")
 	e.Int(s.ID)
+	e.Comma()
 
-	e.FieldStart("name")
+	e.RawStr("\"name\"" + ":")
 	e.Str(s.Name)
+
+	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
+		e.Buf = e.Buf[:length-1]
+	}
 	e.ObjEnd()
 }
 
@@ -815,17 +974,23 @@ func (s *PetCreateCategories) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s PetCreateOwner) Encode(e *jx.Encoder) {
+func (s PetCreateOwner) Encode(e *jx.Writer) {
 	e.ObjStart()
 
-	e.FieldStart("id")
+	e.RawStr("\"id\"" + ":")
 	e.Int(s.ID)
+	e.Comma()
 
-	e.FieldStart("name")
+	e.RawStr("\"name\"" + ":")
 	e.Str(s.Name)
+	e.Comma()
 
-	e.FieldStart("age")
+	e.RawStr("\"age\"" + ":")
 	e.Int(s.Age)
+
+	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
+		e.Buf = e.Buf[:length-1]
+	}
 	e.ObjEnd()
 }
 
@@ -862,21 +1027,30 @@ func (s *PetCreateOwner) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s PetFriendsCreate) Encode(e *jx.Encoder) {
+func (s PetFriendsCreate) Encode(e *jx.Writer) {
 	e.ObjStart()
 
-	e.FieldStart("id")
+	e.RawStr("\"id\"" + ":")
 	e.Int(s.ID)
+	e.Comma()
 
-	e.FieldStart("name")
+	e.RawStr("\"name\"" + ":")
 	e.Str(s.Name)
+	e.Comma()
 	if s.Weight.Set {
-		e.FieldStart("weight")
+		e.RawStr("\"weight\"" + ":")
 		s.Weight.Encode(e)
 	}
+	if s.Weight.Set {
+		e.Comma()
+	}
 	if s.Birthday.Set {
-		e.FieldStart("birthday")
+		e.RawStr("\"birthday\"" + ":")
 		s.Birthday.Encode(e, json.EncodeDateTime)
+	}
+
+	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
+		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -918,21 +1092,30 @@ func (s *PetFriendsCreate) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s PetFriendsList) Encode(e *jx.Encoder) {
+func (s PetFriendsList) Encode(e *jx.Writer) {
 	e.ObjStart()
 
-	e.FieldStart("id")
+	e.RawStr("\"id\"" + ":")
 	e.Int(s.ID)
+	e.Comma()
 
-	e.FieldStart("name")
+	e.RawStr("\"name\"" + ":")
 	e.Str(s.Name)
+	e.Comma()
 	if s.Weight.Set {
-		e.FieldStart("weight")
+		e.RawStr("\"weight\"" + ":")
 		s.Weight.Encode(e)
 	}
+	if s.Weight.Set {
+		e.Comma()
+	}
 	if s.Birthday.Set {
-		e.FieldStart("birthday")
+		e.RawStr("\"birthday\"" + ":")
 		s.Birthday.Encode(e, json.EncodeDateTime)
+	}
+
+	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
+		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -974,21 +1157,30 @@ func (s *PetFriendsList) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s PetList) Encode(e *jx.Encoder) {
+func (s PetList) Encode(e *jx.Writer) {
 	e.ObjStart()
 
-	e.FieldStart("id")
+	e.RawStr("\"id\"" + ":")
 	e.Int(s.ID)
+	e.Comma()
 
-	e.FieldStart("name")
+	e.RawStr("\"name\"" + ":")
 	e.Str(s.Name)
+	e.Comma()
 	if s.Weight.Set {
-		e.FieldStart("weight")
+		e.RawStr("\"weight\"" + ":")
 		s.Weight.Encode(e)
 	}
+	if s.Weight.Set {
+		e.Comma()
+	}
 	if s.Birthday.Set {
-		e.FieldStart("birthday")
+		e.RawStr("\"birthday\"" + ":")
 		s.Birthday.Encode(e, json.EncodeDateTime)
+	}
+
+	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
+		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -1030,17 +1222,23 @@ func (s *PetList) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s PetOwnerCreate) Encode(e *jx.Encoder) {
+func (s PetOwnerCreate) Encode(e *jx.Writer) {
 	e.ObjStart()
 
-	e.FieldStart("id")
+	e.RawStr("\"id\"" + ":")
 	e.Int(s.ID)
+	e.Comma()
 
-	e.FieldStart("name")
+	e.RawStr("\"name\"" + ":")
 	e.Str(s.Name)
+	e.Comma()
 
-	e.FieldStart("age")
+	e.RawStr("\"age\"" + ":")
 	e.Int(s.Age)
+
+	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
+		e.Buf = e.Buf[:length-1]
+	}
 	e.ObjEnd()
 }
 
@@ -1077,17 +1275,23 @@ func (s *PetOwnerCreate) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s PetOwnerRead) Encode(e *jx.Encoder) {
+func (s PetOwnerRead) Encode(e *jx.Writer) {
 	e.ObjStart()
 
-	e.FieldStart("id")
+	e.RawStr("\"id\"" + ":")
 	e.Int(s.ID)
+	e.Comma()
 
-	e.FieldStart("name")
+	e.RawStr("\"name\"" + ":")
 	e.Str(s.Name)
+	e.Comma()
 
-	e.FieldStart("age")
+	e.RawStr("\"age\"" + ":")
 	e.Int(s.Age)
+
+	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
+		e.Buf = e.Buf[:length-1]
+	}
 	e.ObjEnd()
 }
 
@@ -1124,21 +1328,30 @@ func (s *PetOwnerRead) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s PetRead) Encode(e *jx.Encoder) {
+func (s PetRead) Encode(e *jx.Writer) {
 	e.ObjStart()
 
-	e.FieldStart("id")
+	e.RawStr("\"id\"" + ":")
 	e.Int(s.ID)
+	e.Comma()
 
-	e.FieldStart("name")
+	e.RawStr("\"name\"" + ":")
 	e.Str(s.Name)
+	e.Comma()
 	if s.Weight.Set {
-		e.FieldStart("weight")
+		e.RawStr("\"weight\"" + ":")
 		s.Weight.Encode(e)
 	}
+	if s.Weight.Set {
+		e.Comma()
+	}
 	if s.Birthday.Set {
-		e.FieldStart("birthday")
+		e.RawStr("\"birthday\"" + ":")
 		s.Birthday.Encode(e, json.EncodeDateTime)
+	}
+
+	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
+		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -1180,21 +1393,30 @@ func (s *PetRead) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s PetUpdate) Encode(e *jx.Encoder) {
+func (s PetUpdate) Encode(e *jx.Writer) {
 	e.ObjStart()
 
-	e.FieldStart("id")
+	e.RawStr("\"id\"" + ":")
 	e.Int(s.ID)
+	e.Comma()
 
-	e.FieldStart("name")
+	e.RawStr("\"name\"" + ":")
 	e.Str(s.Name)
+	e.Comma()
 	if s.Weight.Set {
-		e.FieldStart("weight")
+		e.RawStr("\"weight\"" + ":")
 		s.Weight.Encode(e)
 	}
+	if s.Weight.Set {
+		e.Comma()
+	}
 	if s.Birthday.Set {
-		e.FieldStart("birthday")
+		e.RawStr("\"birthday\"" + ":")
 		s.Birthday.Encode(e, json.EncodeDateTime)
+	}
+
+	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
+		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -1236,17 +1458,23 @@ func (s *PetUpdate) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s R400) Encode(e *jx.Encoder) {
+func (s R400) Encode(e *jx.Writer) {
 	e.ObjStart()
 
-	e.FieldStart("code")
+	e.RawStr("\"code\"" + ":")
 	e.Int(s.Code)
+	e.Comma()
 
-	e.FieldStart("status")
+	e.RawStr("\"status\"" + ":")
 	e.Str(s.Status)
+	e.Comma()
 	if s.Errors.Set {
-		e.FieldStart("errors")
+		e.RawStr("\"errors\"" + ":")
 		s.Errors.Encode(e)
+	}
+
+	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
+		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -1283,17 +1511,23 @@ func (s *R400) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s R404) Encode(e *jx.Encoder) {
+func (s R404) Encode(e *jx.Writer) {
 	e.ObjStart()
 
-	e.FieldStart("code")
+	e.RawStr("\"code\"" + ":")
 	e.Int(s.Code)
+	e.Comma()
 
-	e.FieldStart("status")
+	e.RawStr("\"status\"" + ":")
 	e.Str(s.Status)
+	e.Comma()
 	if s.Errors.Set {
-		e.FieldStart("errors")
+		e.RawStr("\"errors\"" + ":")
 		s.Errors.Encode(e)
+	}
+
+	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
+		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -1330,17 +1564,23 @@ func (s *R404) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s R409) Encode(e *jx.Encoder) {
+func (s R409) Encode(e *jx.Writer) {
 	e.ObjStart()
 
-	e.FieldStart("code")
+	e.RawStr("\"code\"" + ":")
 	e.Int(s.Code)
+	e.Comma()
 
-	e.FieldStart("status")
+	e.RawStr("\"status\"" + ":")
 	e.Str(s.Status)
+	e.Comma()
 	if s.Errors.Set {
-		e.FieldStart("errors")
+		e.RawStr("\"errors\"" + ":")
 		s.Errors.Encode(e)
+	}
+
+	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
+		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -1377,17 +1617,23 @@ func (s *R409) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s R500) Encode(e *jx.Encoder) {
+func (s R500) Encode(e *jx.Writer) {
 	e.ObjStart()
 
-	e.FieldStart("code")
+	e.RawStr("\"code\"" + ":")
 	e.Int(s.Code)
+	e.Comma()
 
-	e.FieldStart("status")
+	e.RawStr("\"status\"" + ":")
 	e.Str(s.Status)
+	e.Comma()
 	if s.Errors.Set {
-		e.FieldStart("errors")
+		e.RawStr("\"errors\"" + ":")
 		s.Errors.Encode(e)
+	}
+
+	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
+		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -1424,37 +1670,68 @@ func (s *R500) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s UpdatePetReq) Encode(e *jx.Encoder) {
+func (s UpdatePetReq) Encode(e *jx.Writer) {
 	e.ObjStart()
 
-	e.FieldStart("name")
+	e.RawStr("\"name\"" + ":")
 	e.Str(s.Name)
+	e.Comma()
 	if s.Weight.Set {
-		e.FieldStart("weight")
+		e.RawStr("\"weight\"" + ":")
 		s.Weight.Encode(e)
 	}
+	if s.Weight.Set {
+		e.Comma()
+	}
 	if s.Birthday.Set {
-		e.FieldStart("birthday")
+		e.RawStr("\"birthday\"" + ":")
 		s.Birthday.Encode(e, json.EncodeDateTime)
 	}
+	if s.Birthday.Set {
+		e.Comma()
+	}
 	if s.Categories != nil {
-		e.FieldStart("categories")
+		e.RawStr("\"categories\"" + ":")
 		e.ArrStart()
-		for _, elem := range s.Categories {
-			e.Int(elem)
+		if len(s.Categories) >= 1 {
+			// Encode first element without comma.
+			{
+				elem := s.Categories[0]
+				e.Int(elem)
+			}
+			for _, elem := range s.Categories[1:] {
+				e.Comma()
+				e.Int(elem)
+			}
+		}
+		e.ArrEnd()
+	}
+	if s.Categories != nil {
+		e.Comma()
+	}
+
+	e.RawStr("\"owner\"" + ":")
+	e.Int(s.Owner)
+	e.Comma()
+	if s.Friends != nil {
+		e.RawStr("\"friends\"" + ":")
+		e.ArrStart()
+		if len(s.Friends) >= 1 {
+			// Encode first element without comma.
+			{
+				elem := s.Friends[0]
+				e.Int(elem)
+			}
+			for _, elem := range s.Friends[1:] {
+				e.Comma()
+				e.Int(elem)
+			}
 		}
 		e.ArrEnd()
 	}
 
-	e.FieldStart("owner")
-	e.Int(s.Owner)
-	if s.Friends != nil {
-		e.FieldStart("friends")
-		e.ArrStart()
-		for _, elem := range s.Friends {
-			e.Int(elem)
-		}
-		e.ArrEnd()
+	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
+		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }

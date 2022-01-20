@@ -64,8 +64,7 @@ var (
 
 func encodeCreatePetRequestJSON(req CreatePetReq, span trace.Span) (data *bytes.Buffer, err error) {
 	buf := getBuf()
-	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
+	e := &jx.Writer{}
 
 	req.Encode(e)
 	if _, err := e.WriteTo(buf); err != nil {
@@ -78,8 +77,7 @@ func encodeCreatePetRequestJSON(req CreatePetReq, span trace.Span) (data *bytes.
 
 func encodeCreatePetCategoriesRequestJSON(req CreatePetCategoriesReq, span trace.Span) (data *bytes.Buffer, err error) {
 	buf := getBuf()
-	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
+	e := &jx.Writer{}
 
 	req.Encode(e)
 	if _, err := e.WriteTo(buf); err != nil {
@@ -92,8 +90,7 @@ func encodeCreatePetCategoriesRequestJSON(req CreatePetCategoriesReq, span trace
 
 func encodeCreatePetFriendsRequestJSON(req CreatePetFriendsReq, span trace.Span) (data *bytes.Buffer, err error) {
 	buf := getBuf()
-	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
+	e := &jx.Writer{}
 
 	req.Encode(e)
 	if _, err := e.WriteTo(buf); err != nil {
@@ -106,8 +103,7 @@ func encodeCreatePetFriendsRequestJSON(req CreatePetFriendsReq, span trace.Span)
 
 func encodeCreatePetOwnerRequestJSON(req CreatePetOwnerReq, span trace.Span) (data *bytes.Buffer, err error) {
 	buf := getBuf()
-	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
+	e := &jx.Writer{}
 
 	req.Encode(e)
 	if _, err := e.WriteTo(buf); err != nil {
@@ -120,8 +116,7 @@ func encodeCreatePetOwnerRequestJSON(req CreatePetOwnerReq, span trace.Span) (da
 
 func encodeUpdatePetRequestJSON(req UpdatePetReq, span trace.Span) (data *bytes.Buffer, err error) {
 	buf := getBuf()
-	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
+	e := &jx.Writer{}
 
 	req.Encode(e)
 	if _, err := e.WriteTo(buf); err != nil {

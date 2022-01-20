@@ -63,17 +63,23 @@ var (
 )
 
 // Encode implements json.Marshaler.
-func (s Balloon) Encode(e *jx.Encoder) {
+func (s Balloon) Encode(e *jx.Writer) {
 	e.ObjStart()
 
-	e.FieldStart("amount_mib")
+	e.RawStr("\"amount_mib\"" + ":")
 	e.Int(s.AmountMib)
+	e.Comma()
 
-	e.FieldStart("deflate_on_oom")
+	e.RawStr("\"deflate_on_oom\"" + ":")
 	e.Bool(s.DeflateOnOom)
+	e.Comma()
 	if s.StatsPollingIntervalS.Set {
-		e.FieldStart("stats_polling_interval_s")
+		e.RawStr("\"stats_polling_interval_s\"" + ":")
 		s.StatsPollingIntervalS.Encode(e)
+	}
+
+	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
+		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -110,59 +116,94 @@ func (s *Balloon) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s BalloonStats) Encode(e *jx.Encoder) {
+func (s BalloonStats) Encode(e *jx.Writer) {
 	e.ObjStart()
 
-	e.FieldStart("target_pages")
+	e.RawStr("\"target_pages\"" + ":")
 	e.Int(s.TargetPages)
+	e.Comma()
 
-	e.FieldStart("actual_pages")
+	e.RawStr("\"actual_pages\"" + ":")
 	e.Int(s.ActualPages)
+	e.Comma()
 
-	e.FieldStart("target_mib")
+	e.RawStr("\"target_mib\"" + ":")
 	e.Int(s.TargetMib)
+	e.Comma()
 
-	e.FieldStart("actual_mib")
+	e.RawStr("\"actual_mib\"" + ":")
 	e.Int(s.ActualMib)
+	e.Comma()
 	if s.SwapIn.Set {
-		e.FieldStart("swap_in")
+		e.RawStr("\"swap_in\"" + ":")
 		s.SwapIn.Encode(e)
 	}
+	if s.SwapIn.Set {
+		e.Comma()
+	}
 	if s.SwapOut.Set {
-		e.FieldStart("swap_out")
+		e.RawStr("\"swap_out\"" + ":")
 		s.SwapOut.Encode(e)
 	}
+	if s.SwapOut.Set {
+		e.Comma()
+	}
 	if s.MajorFaults.Set {
-		e.FieldStart("major_faults")
+		e.RawStr("\"major_faults\"" + ":")
 		s.MajorFaults.Encode(e)
 	}
+	if s.MajorFaults.Set {
+		e.Comma()
+	}
 	if s.MinorFaults.Set {
-		e.FieldStart("minor_faults")
+		e.RawStr("\"minor_faults\"" + ":")
 		s.MinorFaults.Encode(e)
 	}
+	if s.MinorFaults.Set {
+		e.Comma()
+	}
 	if s.FreeMemory.Set {
-		e.FieldStart("free_memory")
+		e.RawStr("\"free_memory\"" + ":")
 		s.FreeMemory.Encode(e)
 	}
+	if s.FreeMemory.Set {
+		e.Comma()
+	}
 	if s.TotalMemory.Set {
-		e.FieldStart("total_memory")
+		e.RawStr("\"total_memory\"" + ":")
 		s.TotalMemory.Encode(e)
 	}
+	if s.TotalMemory.Set {
+		e.Comma()
+	}
 	if s.AvailableMemory.Set {
-		e.FieldStart("available_memory")
+		e.RawStr("\"available_memory\"" + ":")
 		s.AvailableMemory.Encode(e)
 	}
+	if s.AvailableMemory.Set {
+		e.Comma()
+	}
 	if s.DiskCaches.Set {
-		e.FieldStart("disk_caches")
+		e.RawStr("\"disk_caches\"" + ":")
 		s.DiskCaches.Encode(e)
 	}
+	if s.DiskCaches.Set {
+		e.Comma()
+	}
 	if s.HugetlbAllocations.Set {
-		e.FieldStart("hugetlb_allocations")
+		e.RawStr("\"hugetlb_allocations\"" + ":")
 		s.HugetlbAllocations.Encode(e)
 	}
+	if s.HugetlbAllocations.Set {
+		e.Comma()
+	}
 	if s.HugetlbFailures.Set {
-		e.FieldStart("hugetlb_failures")
+		e.RawStr("\"hugetlb_failures\"" + ":")
 		s.HugetlbFailures.Encode(e)
+	}
+
+	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
+		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -256,11 +297,15 @@ func (s *BalloonStats) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s BalloonStatsUpdate) Encode(e *jx.Encoder) {
+func (s BalloonStatsUpdate) Encode(e *jx.Writer) {
 	e.ObjStart()
 
-	e.FieldStart("stats_polling_interval_s")
+	e.RawStr("\"stats_polling_interval_s\"" + ":")
 	e.Int(s.StatsPollingIntervalS)
+
+	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
+		e.Buf = e.Buf[:length-1]
+	}
 	e.ObjEnd()
 }
 
@@ -285,11 +330,15 @@ func (s *BalloonStatsUpdate) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s BalloonUpdate) Encode(e *jx.Encoder) {
+func (s BalloonUpdate) Encode(e *jx.Writer) {
 	e.ObjStart()
 
-	e.FieldStart("amount_mib")
+	e.RawStr("\"amount_mib\"" + ":")
 	e.Int(s.AmountMib)
+
+	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
+		e.Buf = e.Buf[:length-1]
+	}
 	e.ObjEnd()
 }
 
@@ -314,19 +363,29 @@ func (s *BalloonUpdate) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s BootSource) Encode(e *jx.Encoder) {
+func (s BootSource) Encode(e *jx.Writer) {
 	e.ObjStart()
 	if s.BootArgs.Set {
-		e.FieldStart("boot_args")
+		e.RawStr("\"boot_args\"" + ":")
 		s.BootArgs.Encode(e)
 	}
+	if s.BootArgs.Set {
+		e.Comma()
+	}
 	if s.InitrdPath.Set {
-		e.FieldStart("initrd_path")
+		e.RawStr("\"initrd_path\"" + ":")
 		s.InitrdPath.Encode(e)
 	}
+	if s.InitrdPath.Set {
+		e.Comma()
+	}
 
-	e.FieldStart("kernel_image_path")
+	e.RawStr("\"kernel_image_path\"" + ":")
 	e.Str(s.KernelImagePath)
+
+	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
+		e.Buf = e.Buf[:length-1]
+	}
 	e.ObjEnd()
 }
 
@@ -361,7 +420,7 @@ func (s *BootSource) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes CpuTemplate as json.
-func (s CpuTemplate) Encode(e *jx.Encoder) {
+func (s CpuTemplate) Encode(e *jx.Writer) {
 	e.Str(string(s))
 }
 
@@ -388,8 +447,12 @@ func (s *CpuTemplate) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s CreateSnapshotNoContent) Encode(e *jx.Encoder) {
+func (s CreateSnapshotNoContent) Encode(e *jx.Writer) {
 	e.ObjStart()
+
+	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
+		e.Buf = e.Buf[:length-1]
+	}
 	e.ObjEnd()
 }
 
@@ -408,8 +471,12 @@ func (s *CreateSnapshotNoContent) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s CreateSyncActionNoContent) Encode(e *jx.Encoder) {
+func (s CreateSyncActionNoContent) Encode(e *jx.Writer) {
 	e.ObjStart()
+
+	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
+		e.Buf = e.Buf[:length-1]
+	}
 	e.ObjEnd()
 }
 
@@ -428,31 +495,45 @@ func (s *CreateSyncActionNoContent) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s Drive) Encode(e *jx.Encoder) {
+func (s Drive) Encode(e *jx.Writer) {
 	e.ObjStart()
 
-	e.FieldStart("drive_id")
+	e.RawStr("\"drive_id\"" + ":")
 	e.Str(s.DriveID)
+	e.Comma()
 	if s.CacheType.Set {
-		e.FieldStart("cache_type")
+		e.RawStr("\"cache_type\"" + ":")
 		s.CacheType.Encode(e)
 	}
-
-	e.FieldStart("is_read_only")
-	e.Bool(s.IsReadOnly)
-
-	e.FieldStart("is_root_device")
-	e.Bool(s.IsRootDevice)
-	if s.Partuuid.Set {
-		e.FieldStart("partuuid")
-		s.Partuuid.Encode(e)
+	if s.CacheType.Set {
+		e.Comma()
 	}
 
-	e.FieldStart("path_on_host")
+	e.RawStr("\"is_read_only\"" + ":")
+	e.Bool(s.IsReadOnly)
+	e.Comma()
+
+	e.RawStr("\"is_root_device\"" + ":")
+	e.Bool(s.IsRootDevice)
+	e.Comma()
+	if s.Partuuid.Set {
+		e.RawStr("\"partuuid\"" + ":")
+		s.Partuuid.Encode(e)
+	}
+	if s.Partuuid.Set {
+		e.Comma()
+	}
+
+	e.RawStr("\"path_on_host\"" + ":")
 	e.Str(s.PathOnHost)
+	e.Comma()
 	if s.RateLimiter.Set {
-		e.FieldStart("rate_limiter")
+		e.RawStr("\"rate_limiter\"" + ":")
 		s.RateLimiter.Encode(e)
+	}
+
+	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
+		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -511,11 +592,15 @@ func (s *Drive) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s Error) Encode(e *jx.Encoder) {
+func (s Error) Encode(e *jx.Writer) {
 	e.ObjStart()
 	if s.FaultMessage.Set {
-		e.FieldStart("fault_message")
+		e.RawStr("\"fault_message\"" + ":")
 		s.FaultMessage.Encode(e)
+	}
+
+	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
+		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -540,8 +625,12 @@ func (s *Error) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s ErrorStatusCode) Encode(e *jx.Encoder) {
+func (s ErrorStatusCode) Encode(e *jx.Writer) {
 	e.ObjStart()
+
+	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
+		e.Buf = e.Buf[:length-1]
+	}
 	e.ObjEnd()
 }
 
@@ -560,51 +649,95 @@ func (s *ErrorStatusCode) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s FullVmConfiguration) Encode(e *jx.Encoder) {
+func (s FullVmConfiguration) Encode(e *jx.Writer) {
 	e.ObjStart()
 	if s.BalloonDevice.Set {
-		e.FieldStart("balloon_device")
+		e.RawStr("\"balloon_device\"" + ":")
 		s.BalloonDevice.Encode(e)
 	}
+	if s.BalloonDevice.Set {
+		e.Comma()
+	}
 	if s.BlockDevices != nil {
-		e.FieldStart("block_devices")
+		e.RawStr("\"block_devices\"" + ":")
 		e.ArrStart()
-		for _, elem := range s.BlockDevices {
-			elem.Encode(e)
+		if len(s.BlockDevices) >= 1 {
+			// Encode first element without comma.
+			{
+				elem := s.BlockDevices[0]
+				elem.Encode(e)
+			}
+			for _, elem := range s.BlockDevices[1:] {
+				e.Comma()
+				elem.Encode(e)
+			}
 		}
 		e.ArrEnd()
+	}
+	if s.BlockDevices != nil {
+		e.Comma()
 	}
 	if s.BootSource.Set {
-		e.FieldStart("boot_source")
+		e.RawStr("\"boot_source\"" + ":")
 		s.BootSource.Encode(e)
 	}
+	if s.BootSource.Set {
+		e.Comma()
+	}
 	if s.Logger.Set {
-		e.FieldStart("logger")
+		e.RawStr("\"logger\"" + ":")
 		s.Logger.Encode(e)
 	}
+	if s.Logger.Set {
+		e.Comma()
+	}
 	if s.MachineConfig.Set {
-		e.FieldStart("machine_config")
+		e.RawStr("\"machine_config\"" + ":")
 		s.MachineConfig.Encode(e)
 	}
+	if s.MachineConfig.Set {
+		e.Comma()
+	}
 	if s.Metrics.Set {
-		e.FieldStart("metrics")
+		e.RawStr("\"metrics\"" + ":")
 		s.Metrics.Encode(e)
 	}
+	if s.Metrics.Set {
+		e.Comma()
+	}
 	if s.MmdsConfig.Set {
-		e.FieldStart("mmds_config")
+		e.RawStr("\"mmds_config\"" + ":")
 		s.MmdsConfig.Encode(e)
 	}
+	if s.MmdsConfig.Set {
+		e.Comma()
+	}
 	if s.NetDevices != nil {
-		e.FieldStart("net_devices")
+		e.RawStr("\"net_devices\"" + ":")
 		e.ArrStart()
-		for _, elem := range s.NetDevices {
-			elem.Encode(e)
+		if len(s.NetDevices) >= 1 {
+			// Encode first element without comma.
+			{
+				elem := s.NetDevices[0]
+				elem.Encode(e)
+			}
+			for _, elem := range s.NetDevices[1:] {
+				e.Comma()
+				elem.Encode(e)
+			}
 		}
 		e.ArrEnd()
 	}
+	if s.NetDevices != nil {
+		e.Comma()
+	}
 	if s.VsockDevice.Set {
-		e.FieldStart("vsock_device")
+		e.RawStr("\"vsock_device\"" + ":")
 		s.VsockDevice.Encode(e)
+	}
+
+	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
+		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -683,11 +816,15 @@ func (s *FullVmConfiguration) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s InstanceActionInfo) Encode(e *jx.Encoder) {
+func (s InstanceActionInfo) Encode(e *jx.Writer) {
 	e.ObjStart()
 
-	e.FieldStart("action_type")
+	e.RawStr("\"action_type\"" + ":")
 	s.ActionType.Encode(e)
+
+	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
+		e.Buf = e.Buf[:length-1]
+	}
 	e.ObjEnd()
 }
 
@@ -710,7 +847,7 @@ func (s *InstanceActionInfo) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes InstanceActionInfoActionType as json.
-func (s InstanceActionInfoActionType) Encode(e *jx.Encoder) {
+func (s InstanceActionInfoActionType) Encode(e *jx.Writer) {
 	e.Str(string(s))
 }
 
@@ -739,20 +876,28 @@ func (s *InstanceActionInfoActionType) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s InstanceInfo) Encode(e *jx.Encoder) {
+func (s InstanceInfo) Encode(e *jx.Writer) {
 	e.ObjStart()
 
-	e.FieldStart("app_name")
+	e.RawStr("\"app_name\"" + ":")
 	e.Str(s.AppName)
+	e.Comma()
 
-	e.FieldStart("id")
+	e.RawStr("\"id\"" + ":")
 	e.Str(s.ID)
+	e.Comma()
 
-	e.FieldStart("state")
+	e.RawStr("\"state\"" + ":")
 	s.State.Encode(e)
 
-	e.FieldStart("vmm_version")
+	e.Comma()
+
+	e.RawStr("\"vmm_version\"" + ":")
 	e.Str(s.VmmVersion)
+
+	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
+		e.Buf = e.Buf[:length-1]
+	}
 	e.ObjEnd()
 }
 
@@ -793,7 +938,7 @@ func (s *InstanceInfo) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes InstanceInfoState as json.
-func (s InstanceInfoState) Encode(e *jx.Encoder) {
+func (s InstanceInfoState) Encode(e *jx.Writer) {
 	e.Str(string(s))
 }
 
@@ -822,8 +967,12 @@ func (s *InstanceInfoState) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s LoadSnapshotNoContent) Encode(e *jx.Encoder) {
+func (s LoadSnapshotNoContent) Encode(e *jx.Writer) {
 	e.ObjStart()
+
+	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
+		e.Buf = e.Buf[:length-1]
+	}
 	e.ObjEnd()
 }
 
@@ -842,22 +991,33 @@ func (s *LoadSnapshotNoContent) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s Logger) Encode(e *jx.Encoder) {
+func (s Logger) Encode(e *jx.Writer) {
 	e.ObjStart()
 	if s.Level.Set {
-		e.FieldStart("level")
+		e.RawStr("\"level\"" + ":")
 		s.Level.Encode(e)
 	}
+	if s.Level.Set {
+		e.Comma()
+	}
 
-	e.FieldStart("log_path")
+	e.RawStr("\"log_path\"" + ":")
 	e.Str(s.LogPath)
+	e.Comma()
 	if s.ShowLevel.Set {
-		e.FieldStart("show_level")
+		e.RawStr("\"show_level\"" + ":")
 		s.ShowLevel.Encode(e)
 	}
+	if s.ShowLevel.Set {
+		e.Comma()
+	}
 	if s.ShowLogOrigin.Set {
-		e.FieldStart("show_log_origin")
+		e.RawStr("\"show_log_origin\"" + ":")
 		s.ShowLogOrigin.Encode(e)
+	}
+
+	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
+		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -898,7 +1058,7 @@ func (s *Logger) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes LoggerLevel as json.
-func (s LoggerLevel) Encode(e *jx.Encoder) {
+func (s LoggerLevel) Encode(e *jx.Writer) {
 	e.Str(string(s))
 }
 
@@ -929,25 +1089,37 @@ func (s *LoggerLevel) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s MachineConfiguration) Encode(e *jx.Encoder) {
+func (s MachineConfiguration) Encode(e *jx.Writer) {
 	e.ObjStart()
 	if s.CPUTemplate.Set {
-		e.FieldStart("cpu_template")
+		e.RawStr("\"cpu_template\"" + ":")
 		s.CPUTemplate.Encode(e)
 	}
-
-	e.FieldStart("ht_enabled")
-	e.Bool(s.HtEnabled)
-
-	e.FieldStart("mem_size_mib")
-	e.Int(s.MemSizeMib)
-	if s.TrackDirtyPages.Set {
-		e.FieldStart("track_dirty_pages")
-		s.TrackDirtyPages.Encode(e)
+	if s.CPUTemplate.Set {
+		e.Comma()
 	}
 
-	e.FieldStart("vcpu_count")
+	e.RawStr("\"ht_enabled\"" + ":")
+	e.Bool(s.HtEnabled)
+	e.Comma()
+
+	e.RawStr("\"mem_size_mib\"" + ":")
+	e.Int(s.MemSizeMib)
+	e.Comma()
+	if s.TrackDirtyPages.Set {
+		e.RawStr("\"track_dirty_pages\"" + ":")
+		s.TrackDirtyPages.Encode(e)
+	}
+	if s.TrackDirtyPages.Set {
+		e.Comma()
+	}
+
+	e.RawStr("\"vcpu_count\"" + ":")
 	e.Int(s.VcpuCount)
+
+	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
+		e.Buf = e.Buf[:length-1]
+	}
 	e.ObjEnd()
 }
 
@@ -994,11 +1166,15 @@ func (s *MachineConfiguration) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s Metrics) Encode(e *jx.Encoder) {
+func (s Metrics) Encode(e *jx.Writer) {
 	e.ObjStart()
 
-	e.FieldStart("metrics_path")
+	e.RawStr("\"metrics_path\"" + ":")
 	e.Str(s.MetricsPath)
+
+	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
+		e.Buf = e.Buf[:length-1]
+	}
 	e.ObjEnd()
 }
 
@@ -1023,11 +1199,15 @@ func (s *Metrics) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s MmdsConfig) Encode(e *jx.Encoder) {
+func (s MmdsConfig) Encode(e *jx.Writer) {
 	e.ObjStart()
 	if s.Ipv4Address.Set {
-		e.FieldStart("ipv4_address")
+		e.RawStr("\"ipv4_address\"" + ":")
 		s.Ipv4Address.Encode(e)
+	}
+
+	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
+		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -1052,8 +1232,12 @@ func (s *MmdsConfig) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s MmdsConfigPutNoContent) Encode(e *jx.Encoder) {
+func (s MmdsConfigPutNoContent) Encode(e *jx.Writer) {
 	e.ObjStart()
+
+	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
+		e.Buf = e.Buf[:length-1]
+	}
 	e.ObjEnd()
 }
 
@@ -1072,8 +1256,12 @@ func (s *MmdsConfigPutNoContent) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s MmdsGetOK) Encode(e *jx.Encoder) {
+func (s MmdsGetOK) Encode(e *jx.Writer) {
 	e.ObjStart()
+
+	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
+		e.Buf = e.Buf[:length-1]
+	}
 	e.ObjEnd()
 }
 
@@ -1092,8 +1280,12 @@ func (s *MmdsGetOK) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s MmdsPatchNoContent) Encode(e *jx.Encoder) {
+func (s MmdsPatchNoContent) Encode(e *jx.Writer) {
 	e.ObjStart()
+
+	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
+		e.Buf = e.Buf[:length-1]
+	}
 	e.ObjEnd()
 }
 
@@ -1112,8 +1304,12 @@ func (s *MmdsPatchNoContent) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s MmdsPatchReq) Encode(e *jx.Encoder) {
+func (s MmdsPatchReq) Encode(e *jx.Writer) {
 	e.ObjStart()
+
+	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
+		e.Buf = e.Buf[:length-1]
+	}
 	e.ObjEnd()
 }
 
@@ -1132,8 +1328,12 @@ func (s *MmdsPatchReq) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s MmdsPutNoContent) Encode(e *jx.Encoder) {
+func (s MmdsPutNoContent) Encode(e *jx.Writer) {
 	e.ObjStart()
+
+	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
+		e.Buf = e.Buf[:length-1]
+	}
 	e.ObjEnd()
 }
 
@@ -1152,8 +1352,12 @@ func (s *MmdsPutNoContent) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s MmdsPutReq) Encode(e *jx.Encoder) {
+func (s MmdsPutReq) Encode(e *jx.Writer) {
 	e.ObjStart()
+
+	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
+		e.Buf = e.Buf[:length-1]
+	}
 	e.ObjEnd()
 }
 
@@ -1172,29 +1376,44 @@ func (s *MmdsPutReq) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s NetworkInterface) Encode(e *jx.Encoder) {
+func (s NetworkInterface) Encode(e *jx.Writer) {
 	e.ObjStart()
 	if s.AllowMmdsRequests.Set {
-		e.FieldStart("allow_mmds_requests")
+		e.RawStr("\"allow_mmds_requests\"" + ":")
 		s.AllowMmdsRequests.Encode(e)
 	}
+	if s.AllowMmdsRequests.Set {
+		e.Comma()
+	}
 	if s.GuestMAC.Set {
-		e.FieldStart("guest_mac")
+		e.RawStr("\"guest_mac\"" + ":")
 		s.GuestMAC.Encode(e)
 	}
+	if s.GuestMAC.Set {
+		e.Comma()
+	}
 
-	e.FieldStart("host_dev_name")
+	e.RawStr("\"host_dev_name\"" + ":")
 	e.Str(s.HostDevName)
+	e.Comma()
 
-	e.FieldStart("iface_id")
+	e.RawStr("\"iface_id\"" + ":")
 	e.Str(s.IfaceID)
+	e.Comma()
 	if s.RxRateLimiter.Set {
-		e.FieldStart("rx_rate_limiter")
+		e.RawStr("\"rx_rate_limiter\"" + ":")
 		s.RxRateLimiter.Encode(e)
 	}
+	if s.RxRateLimiter.Set {
+		e.Comma()
+	}
 	if s.TxRateLimiter.Set {
-		e.FieldStart("tx_rate_limiter")
+		e.RawStr("\"tx_rate_limiter\"" + ":")
 		s.TxRateLimiter.Encode(e)
+	}
+
+	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
+		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -1246,7 +1465,7 @@ func (s *NetworkInterface) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes Balloon as json.
-func (o OptBalloon) Encode(e *jx.Encoder) {
+func (o OptBalloon) Encode(e *jx.Writer) {
 	o.Value.Encode(e)
 }
 
@@ -1268,7 +1487,7 @@ func (o *OptBalloon) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes bool as json.
-func (o OptBool) Encode(e *jx.Encoder) {
+func (o OptBool) Encode(e *jx.Writer) {
 	e.Bool(bool(o.Value))
 }
 
@@ -1292,7 +1511,7 @@ func (o *OptBool) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes BootSource as json.
-func (o OptBootSource) Encode(e *jx.Encoder) {
+func (o OptBootSource) Encode(e *jx.Writer) {
 	o.Value.Encode(e)
 }
 
@@ -1314,7 +1533,7 @@ func (o *OptBootSource) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes CpuTemplate as json.
-func (o OptCpuTemplate) Encode(e *jx.Encoder) {
+func (o OptCpuTemplate) Encode(e *jx.Writer) {
 	e.Str(string(o.Value))
 }
 
@@ -1336,7 +1555,7 @@ func (o *OptCpuTemplate) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes int as json.
-func (o OptInt) Encode(e *jx.Encoder) {
+func (o OptInt) Encode(e *jx.Writer) {
 	e.Int(int(o.Value))
 }
 
@@ -1360,7 +1579,7 @@ func (o *OptInt) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes int64 as json.
-func (o OptInt64) Encode(e *jx.Encoder) {
+func (o OptInt64) Encode(e *jx.Writer) {
 	e.Int64(int64(o.Value))
 }
 
@@ -1384,7 +1603,7 @@ func (o *OptInt64) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes Logger as json.
-func (o OptLogger) Encode(e *jx.Encoder) {
+func (o OptLogger) Encode(e *jx.Writer) {
 	o.Value.Encode(e)
 }
 
@@ -1406,7 +1625,7 @@ func (o *OptLogger) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes LoggerLevel as json.
-func (o OptLoggerLevel) Encode(e *jx.Encoder) {
+func (o OptLoggerLevel) Encode(e *jx.Writer) {
 	e.Str(string(o.Value))
 }
 
@@ -1428,7 +1647,7 @@ func (o *OptLoggerLevel) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes MachineConfiguration as json.
-func (o OptMachineConfiguration) Encode(e *jx.Encoder) {
+func (o OptMachineConfiguration) Encode(e *jx.Writer) {
 	o.Value.Encode(e)
 }
 
@@ -1450,7 +1669,7 @@ func (o *OptMachineConfiguration) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes Metrics as json.
-func (o OptMetrics) Encode(e *jx.Encoder) {
+func (o OptMetrics) Encode(e *jx.Writer) {
 	o.Value.Encode(e)
 }
 
@@ -1472,7 +1691,7 @@ func (o *OptMetrics) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes MmdsConfig as json.
-func (o OptMmdsConfig) Encode(e *jx.Encoder) {
+func (o OptMmdsConfig) Encode(e *jx.Writer) {
 	o.Value.Encode(e)
 }
 
@@ -1494,7 +1713,7 @@ func (o *OptMmdsConfig) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes MmdsPatchReq as json.
-func (o OptMmdsPatchReq) Encode(e *jx.Encoder) {
+func (o OptMmdsPatchReq) Encode(e *jx.Writer) {
 	o.Value.Encode(e)
 }
 
@@ -1516,7 +1735,7 @@ func (o *OptMmdsPatchReq) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes MmdsPutReq as json.
-func (o OptMmdsPutReq) Encode(e *jx.Encoder) {
+func (o OptMmdsPutReq) Encode(e *jx.Writer) {
 	o.Value.Encode(e)
 }
 
@@ -1538,7 +1757,7 @@ func (o *OptMmdsPutReq) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes RateLimiter as json.
-func (o OptRateLimiter) Encode(e *jx.Encoder) {
+func (o OptRateLimiter) Encode(e *jx.Writer) {
 	o.Value.Encode(e)
 }
 
@@ -1560,7 +1779,7 @@ func (o *OptRateLimiter) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes SnapshotCreateParamsSnapshotType as json.
-func (o OptSnapshotCreateParamsSnapshotType) Encode(e *jx.Encoder) {
+func (o OptSnapshotCreateParamsSnapshotType) Encode(e *jx.Writer) {
 	e.Str(string(o.Value))
 }
 
@@ -1582,7 +1801,7 @@ func (o *OptSnapshotCreateParamsSnapshotType) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes string as json.
-func (o OptString) Encode(e *jx.Encoder) {
+func (o OptString) Encode(e *jx.Writer) {
 	e.Str(string(o.Value))
 }
 
@@ -1606,7 +1825,7 @@ func (o *OptString) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes TokenBucket as json.
-func (o OptTokenBucket) Encode(e *jx.Encoder) {
+func (o OptTokenBucket) Encode(e *jx.Writer) {
 	o.Value.Encode(e)
 }
 
@@ -1628,7 +1847,7 @@ func (o *OptTokenBucket) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes Vsock as json.
-func (o OptVsock) Encode(e *jx.Encoder) {
+func (o OptVsock) Encode(e *jx.Writer) {
 	o.Value.Encode(e)
 }
 
@@ -1650,18 +1869,26 @@ func (o *OptVsock) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s PartialDrive) Encode(e *jx.Encoder) {
+func (s PartialDrive) Encode(e *jx.Writer) {
 	e.ObjStart()
 
-	e.FieldStart("drive_id")
+	e.RawStr("\"drive_id\"" + ":")
 	e.Str(s.DriveID)
+	e.Comma()
 	if s.PathOnHost.Set {
-		e.FieldStart("path_on_host")
+		e.RawStr("\"path_on_host\"" + ":")
 		s.PathOnHost.Encode(e)
 	}
+	if s.PathOnHost.Set {
+		e.Comma()
+	}
 	if s.RateLimiter.Set {
-		e.FieldStart("rate_limiter")
+		e.RawStr("\"rate_limiter\"" + ":")
 		s.RateLimiter.Encode(e)
+	}
+
+	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
+		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -1697,18 +1924,26 @@ func (s *PartialDrive) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s PartialNetworkInterface) Encode(e *jx.Encoder) {
+func (s PartialNetworkInterface) Encode(e *jx.Writer) {
 	e.ObjStart()
 
-	e.FieldStart("iface_id")
+	e.RawStr("\"iface_id\"" + ":")
 	e.Str(s.IfaceID)
+	e.Comma()
 	if s.RxRateLimiter.Set {
-		e.FieldStart("rx_rate_limiter")
+		e.RawStr("\"rx_rate_limiter\"" + ":")
 		s.RxRateLimiter.Encode(e)
 	}
+	if s.RxRateLimiter.Set {
+		e.Comma()
+	}
 	if s.TxRateLimiter.Set {
-		e.FieldStart("tx_rate_limiter")
+		e.RawStr("\"tx_rate_limiter\"" + ":")
 		s.TxRateLimiter.Encode(e)
+	}
+
+	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
+		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -1744,8 +1979,12 @@ func (s *PartialNetworkInterface) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s PatchBalloonNoContent) Encode(e *jx.Encoder) {
+func (s PatchBalloonNoContent) Encode(e *jx.Writer) {
 	e.ObjStart()
+
+	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
+		e.Buf = e.Buf[:length-1]
+	}
 	e.ObjEnd()
 }
 
@@ -1764,8 +2003,12 @@ func (s *PatchBalloonNoContent) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s PatchBalloonStatsIntervalNoContent) Encode(e *jx.Encoder) {
+func (s PatchBalloonStatsIntervalNoContent) Encode(e *jx.Writer) {
 	e.ObjStart()
+
+	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
+		e.Buf = e.Buf[:length-1]
+	}
 	e.ObjEnd()
 }
 
@@ -1784,8 +2027,12 @@ func (s *PatchBalloonStatsIntervalNoContent) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s PatchGuestDriveByIDNoContent) Encode(e *jx.Encoder) {
+func (s PatchGuestDriveByIDNoContent) Encode(e *jx.Writer) {
 	e.ObjStart()
+
+	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
+		e.Buf = e.Buf[:length-1]
+	}
 	e.ObjEnd()
 }
 
@@ -1804,8 +2051,12 @@ func (s *PatchGuestDriveByIDNoContent) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s PatchGuestNetworkInterfaceByIDNoContent) Encode(e *jx.Encoder) {
+func (s PatchGuestNetworkInterfaceByIDNoContent) Encode(e *jx.Writer) {
 	e.ObjStart()
+
+	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
+		e.Buf = e.Buf[:length-1]
+	}
 	e.ObjEnd()
 }
 
@@ -1824,8 +2075,12 @@ func (s *PatchGuestNetworkInterfaceByIDNoContent) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s PatchMachineConfigurationNoContent) Encode(e *jx.Encoder) {
+func (s PatchMachineConfigurationNoContent) Encode(e *jx.Writer) {
 	e.ObjStart()
+
+	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
+		e.Buf = e.Buf[:length-1]
+	}
 	e.ObjEnd()
 }
 
@@ -1844,8 +2099,12 @@ func (s *PatchMachineConfigurationNoContent) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s PatchVmNoContent) Encode(e *jx.Encoder) {
+func (s PatchVmNoContent) Encode(e *jx.Writer) {
 	e.ObjStart()
+
+	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
+		e.Buf = e.Buf[:length-1]
+	}
 	e.ObjEnd()
 }
 
@@ -1864,8 +2123,12 @@ func (s *PatchVmNoContent) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s PutBalloonNoContent) Encode(e *jx.Encoder) {
+func (s PutBalloonNoContent) Encode(e *jx.Writer) {
 	e.ObjStart()
+
+	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
+		e.Buf = e.Buf[:length-1]
+	}
 	e.ObjEnd()
 }
 
@@ -1884,8 +2147,12 @@ func (s *PutBalloonNoContent) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s PutGuestBootSourceNoContent) Encode(e *jx.Encoder) {
+func (s PutGuestBootSourceNoContent) Encode(e *jx.Writer) {
 	e.ObjStart()
+
+	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
+		e.Buf = e.Buf[:length-1]
+	}
 	e.ObjEnd()
 }
 
@@ -1904,8 +2171,12 @@ func (s *PutGuestBootSourceNoContent) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s PutGuestDriveByIDNoContent) Encode(e *jx.Encoder) {
+func (s PutGuestDriveByIDNoContent) Encode(e *jx.Writer) {
 	e.ObjStart()
+
+	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
+		e.Buf = e.Buf[:length-1]
+	}
 	e.ObjEnd()
 }
 
@@ -1924,8 +2195,12 @@ func (s *PutGuestDriveByIDNoContent) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s PutGuestNetworkInterfaceByIDNoContent) Encode(e *jx.Encoder) {
+func (s PutGuestNetworkInterfaceByIDNoContent) Encode(e *jx.Writer) {
 	e.ObjStart()
+
+	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
+		e.Buf = e.Buf[:length-1]
+	}
 	e.ObjEnd()
 }
 
@@ -1944,8 +2219,12 @@ func (s *PutGuestNetworkInterfaceByIDNoContent) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s PutGuestVsockNoContent) Encode(e *jx.Encoder) {
+func (s PutGuestVsockNoContent) Encode(e *jx.Writer) {
 	e.ObjStart()
+
+	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
+		e.Buf = e.Buf[:length-1]
+	}
 	e.ObjEnd()
 }
 
@@ -1964,8 +2243,12 @@ func (s *PutGuestVsockNoContent) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s PutLoggerNoContent) Encode(e *jx.Encoder) {
+func (s PutLoggerNoContent) Encode(e *jx.Writer) {
 	e.ObjStart()
+
+	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
+		e.Buf = e.Buf[:length-1]
+	}
 	e.ObjEnd()
 }
 
@@ -1984,8 +2267,12 @@ func (s *PutLoggerNoContent) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s PutMachineConfigurationNoContent) Encode(e *jx.Encoder) {
+func (s PutMachineConfigurationNoContent) Encode(e *jx.Writer) {
 	e.ObjStart()
+
+	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
+		e.Buf = e.Buf[:length-1]
+	}
 	e.ObjEnd()
 }
 
@@ -2004,8 +2291,12 @@ func (s *PutMachineConfigurationNoContent) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s PutMetricsNoContent) Encode(e *jx.Encoder) {
+func (s PutMetricsNoContent) Encode(e *jx.Writer) {
 	e.ObjStart()
+
+	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
+		e.Buf = e.Buf[:length-1]
+	}
 	e.ObjEnd()
 }
 
@@ -2024,15 +2315,22 @@ func (s *PutMetricsNoContent) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s RateLimiter) Encode(e *jx.Encoder) {
+func (s RateLimiter) Encode(e *jx.Writer) {
 	e.ObjStart()
 	if s.Bandwidth.Set {
-		e.FieldStart("bandwidth")
+		e.RawStr("\"bandwidth\"" + ":")
 		s.Bandwidth.Encode(e)
 	}
+	if s.Bandwidth.Set {
+		e.Comma()
+	}
 	if s.Ops.Set {
-		e.FieldStart("ops")
+		e.RawStr("\"ops\"" + ":")
 		s.Ops.Encode(e)
+	}
+
+	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
+		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -2062,21 +2360,30 @@ func (s *RateLimiter) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s SnapshotCreateParams) Encode(e *jx.Encoder) {
+func (s SnapshotCreateParams) Encode(e *jx.Writer) {
 	e.ObjStart()
 
-	e.FieldStart("mem_file_path")
+	e.RawStr("\"mem_file_path\"" + ":")
 	e.Str(s.MemFilePath)
+	e.Comma()
 
-	e.FieldStart("snapshot_path")
+	e.RawStr("\"snapshot_path\"" + ":")
 	e.Str(s.SnapshotPath)
+	e.Comma()
 	if s.SnapshotType.Set {
-		e.FieldStart("snapshot_type")
+		e.RawStr("\"snapshot_type\"" + ":")
 		s.SnapshotType.Encode(e)
 	}
+	if s.SnapshotType.Set {
+		e.Comma()
+	}
 	if s.Version.Set {
-		e.FieldStart("version")
+		e.RawStr("\"version\"" + ":")
 		s.Version.Encode(e)
+	}
+
+	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
+		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -2118,7 +2425,7 @@ func (s *SnapshotCreateParams) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes SnapshotCreateParamsSnapshotType as json.
-func (s SnapshotCreateParamsSnapshotType) Encode(e *jx.Encoder) {
+func (s SnapshotCreateParamsSnapshotType) Encode(e *jx.Writer) {
 	e.Str(string(s))
 }
 
@@ -2145,21 +2452,30 @@ func (s *SnapshotCreateParamsSnapshotType) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s SnapshotLoadParams) Encode(e *jx.Encoder) {
+func (s SnapshotLoadParams) Encode(e *jx.Writer) {
 	e.ObjStart()
 	if s.EnableDiffSnapshots.Set {
-		e.FieldStart("enable_diff_snapshots")
+		e.RawStr("\"enable_diff_snapshots\"" + ":")
 		s.EnableDiffSnapshots.Encode(e)
 	}
+	if s.EnableDiffSnapshots.Set {
+		e.Comma()
+	}
 
-	e.FieldStart("mem_file_path")
+	e.RawStr("\"mem_file_path\"" + ":")
 	e.Str(s.MemFilePath)
+	e.Comma()
 
-	e.FieldStart("snapshot_path")
+	e.RawStr("\"snapshot_path\"" + ":")
 	e.Str(s.SnapshotPath)
+	e.Comma()
 	if s.ResumeVM.Set {
-		e.FieldStart("resume_vm")
+		e.RawStr("\"resume_vm\"" + ":")
 		s.ResumeVM.Encode(e)
+	}
+
+	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
+		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -2201,18 +2517,26 @@ func (s *SnapshotLoadParams) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s TokenBucket) Encode(e *jx.Encoder) {
+func (s TokenBucket) Encode(e *jx.Writer) {
 	e.ObjStart()
 	if s.OneTimeBurst.Set {
-		e.FieldStart("one_time_burst")
+		e.RawStr("\"one_time_burst\"" + ":")
 		s.OneTimeBurst.Encode(e)
 	}
+	if s.OneTimeBurst.Set {
+		e.Comma()
+	}
 
-	e.FieldStart("refill_time")
+	e.RawStr("\"refill_time\"" + ":")
 	e.Int64(s.RefillTime)
+	e.Comma()
 
-	e.FieldStart("size")
+	e.RawStr("\"size\"" + ":")
 	e.Int64(s.Size)
+
+	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
+		e.Buf = e.Buf[:length-1]
+	}
 	e.ObjEnd()
 }
 
@@ -2248,11 +2572,15 @@ func (s *TokenBucket) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s VM) Encode(e *jx.Encoder) {
+func (s VM) Encode(e *jx.Writer) {
 	e.ObjStart()
 
-	e.FieldStart("state")
+	e.RawStr("\"state\"" + ":")
 	s.State.Encode(e)
+
+	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
+		e.Buf = e.Buf[:length-1]
+	}
 	e.ObjEnd()
 }
 
@@ -2275,7 +2603,7 @@ func (s *VM) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes VMState as json.
-func (s VMState) Encode(e *jx.Encoder) {
+func (s VMState) Encode(e *jx.Writer) {
 	e.Str(string(s))
 }
 
@@ -2302,17 +2630,23 @@ func (s *VMState) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s Vsock) Encode(e *jx.Encoder) {
+func (s Vsock) Encode(e *jx.Writer) {
 	e.ObjStart()
 
-	e.FieldStart("guest_cid")
+	e.RawStr("\"guest_cid\"" + ":")
 	e.Int(s.GuestCid)
+	e.Comma()
 
-	e.FieldStart("uds_path")
+	e.RawStr("\"uds_path\"" + ":")
 	e.Str(s.UdsPath)
+	e.Comma()
 
-	e.FieldStart("vsock_id")
+	e.RawStr("\"vsock_id\"" + ":")
 	e.Str(s.VsockID)
+
+	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
+		e.Buf = e.Buf[:length-1]
+	}
 	e.ObjEnd()
 }
 

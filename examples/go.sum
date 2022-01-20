@@ -9,7 +9,6 @@ github.com/fatih/color v1.13.0 h1:8LOYc1KYPPmyKMuN8QV2DNRWNbLo6LZ0iLs8+mlH53w=
 github.com/fatih/color v1.13.0/go.mod h1:kLAiJbzzSOZDVNGyDpeOxJ47H46qBXwg5ILebYFFOfk=
 github.com/go-faster/errors v0.5.0 h1:hS/zHFJ2Vb14jcupq5J9tk05XW+PFTmySOkDRByHBo4=
 github.com/go-faster/errors v0.5.0/go.mod h1:/9SNBcg2ESJTYztBFEiM5Np6ns85BtPNMJd8lFTiFwk=
-github.com/go-faster/jx v0.27.0/go.mod h1:T561ezgn74siJgc+QzZzoGHokGBKxV6WZugVyfw+68c=
 github.com/go-faster/jx v0.31.0 h1:vbJu/aiEtZ2TZ/Stfkf0QLB8RBm5MPvfsn60YFnu7k8=
 github.com/go-faster/jx v0.31.0/go.mod h1:T561ezgn74siJgc+QzZzoGHokGBKxV6WZugVyfw+68c=
 github.com/go-logr/logr v1.2.0/go.mod h1:jdQByPbusPIv2/zmleS9BjJVeZ6kBagPoEUsqbVz/1A=

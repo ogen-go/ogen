@@ -64,8 +64,7 @@ var (
 
 func encodeOrdersLimitOrderPostRequestJSON(req LimitOrderRequest, span trace.Span) (data *bytes.Buffer, err error) {
 	buf := getBuf()
-	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
+	e := &jx.Writer{}
 
 	req.Encode(e)
 	if _, err := e.WriteTo(buf); err != nil {
@@ -78,8 +77,7 @@ func encodeOrdersLimitOrderPostRequestJSON(req LimitOrderRequest, span trace.Spa
 
 func encodeOrdersMarketOrderPostRequestJSON(req MarketOrderRequest, span trace.Span) (data *bytes.Buffer, err error) {
 	buf := getBuf()
-	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
+	e := &jx.Writer{}
 
 	req.Encode(e)
 	if _, err := e.WriteTo(buf); err != nil {
@@ -92,8 +90,7 @@ func encodeOrdersMarketOrderPostRequestJSON(req MarketOrderRequest, span trace.S
 
 func encodeSandboxCurrenciesBalancePostRequestJSON(req SandboxSetCurrencyBalanceRequest, span trace.Span) (data *bytes.Buffer, err error) {
 	buf := getBuf()
-	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
+	e := &jx.Writer{}
 
 	req.Encode(e)
 	if _, err := e.WriteTo(buf); err != nil {
@@ -106,8 +103,7 @@ func encodeSandboxCurrenciesBalancePostRequestJSON(req SandboxSetCurrencyBalance
 
 func encodeSandboxPositionsBalancePostRequestJSON(req SandboxSetPositionBalanceRequest, span trace.Span) (data *bytes.Buffer, err error) {
 	buf := getBuf()
-	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
+	e := &jx.Writer{}
 
 	req.Encode(e)
 	if _, err := e.WriteTo(buf); err != nil {
@@ -120,8 +116,7 @@ func encodeSandboxPositionsBalancePostRequestJSON(req SandboxSetPositionBalanceR
 
 func encodeSandboxRegisterPostRequestJSON(req OptSandboxRegisterRequest, span trace.Span) (data *bytes.Buffer, err error) {
 	buf := getBuf()
-	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
+	e := &jx.Writer{}
 	if req.Set {
 		req.Encode(e)
 	}

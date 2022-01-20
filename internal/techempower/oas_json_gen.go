@@ -63,11 +63,15 @@ var (
 )
 
 // Encode implements json.Marshaler.
-func (s HelloWorld) Encode(e *jx.Encoder) {
+func (s HelloWorld) Encode(e *jx.Writer) {
 	e.ObjStart()
 
-	e.FieldStart("message")
+	e.RawStr("\"message\"" + ":")
 	e.Str(s.Message)
+
+	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
+		e.Buf = e.Buf[:length-1]
+	}
 	e.ObjEnd()
 }
 
@@ -92,14 +96,19 @@ func (s *HelloWorld) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s WorldObject) Encode(e *jx.Encoder) {
+func (s WorldObject) Encode(e *jx.Writer) {
 	e.ObjStart()
 
-	e.FieldStart("id")
+	e.RawStr("\"id\"" + ":")
 	e.Int64(s.ID)
+	e.Comma()
 
-	e.FieldStart("randomNumber")
+	e.RawStr("\"randomNumber\"" + ":")
 	e.Int64(s.RandomNumber)
+
+	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
+		e.Buf = e.Buf[:length-1]
+	}
 	e.ObjEnd()
 }
 
@@ -130,11 +139,19 @@ func (s *WorldObject) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes WorldObjects as json.
-func (s WorldObjects) Encode(e *jx.Encoder) {
+func (s WorldObjects) Encode(e *jx.Writer) {
 	unwrapped := []WorldObject(s)
 	e.ArrStart()
-	for _, elem := range unwrapped {
-		elem.Encode(e)
+	if len(unwrapped) >= 1 {
+		// Encode first element without comma.
+		{
+			elem := unwrapped[0]
+			elem.Encode(e)
+		}
+		for _, elem := range unwrapped[1:] {
+			e.Comma()
+			elem.Encode(e)
+		}
 	}
 	e.ArrEnd()
 }

@@ -67,8 +67,7 @@ func encodeGetAPIVersionsResponse(response GetAPIVersionsRes, w http.ResponseWri
 	case *IoK8sApimachineryPkgApisMetaV1APIGroupList:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -89,8 +88,7 @@ func encodeGetAdmissionregistrationAPIGroupResponse(response GetAdmissionregistr
 	case *IoK8sApimachineryPkgApisMetaV1APIGroup:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -111,8 +109,7 @@ func encodeGetAdmissionregistrationV1APIResourcesResponse(response GetAdmissionr
 	case *IoK8sApimachineryPkgApisMetaV1APIResourceList:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -133,8 +130,7 @@ func encodeGetApiextensionsAPIGroupResponse(response GetApiextensionsAPIGroupRes
 	case *IoK8sApimachineryPkgApisMetaV1APIGroup:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -155,8 +151,7 @@ func encodeGetApiextensionsV1APIResourcesResponse(response GetApiextensionsV1API
 	case *IoK8sApimachineryPkgApisMetaV1APIResourceList:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -177,8 +172,7 @@ func encodeGetApiregistrationAPIGroupResponse(response GetApiregistrationAPIGrou
 	case *IoK8sApimachineryPkgApisMetaV1APIGroup:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -199,8 +193,7 @@ func encodeGetApiregistrationV1APIResourcesResponse(response GetApiregistrationV
 	case *IoK8sApimachineryPkgApisMetaV1APIResourceList:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -221,8 +214,7 @@ func encodeGetAppsAPIGroupResponse(response GetAppsAPIGroupRes, w http.ResponseW
 	case *IoK8sApimachineryPkgApisMetaV1APIGroup:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -243,8 +235,7 @@ func encodeGetAppsV1APIResourcesResponse(response GetAppsV1APIResourcesRes, w ht
 	case *IoK8sApimachineryPkgApisMetaV1APIResourceList:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -265,8 +256,7 @@ func encodeGetAuthenticationAPIGroupResponse(response GetAuthenticationAPIGroupR
 	case *IoK8sApimachineryPkgApisMetaV1APIGroup:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -287,8 +277,7 @@ func encodeGetAuthenticationV1APIResourcesResponse(response GetAuthenticationV1A
 	case *IoK8sApimachineryPkgApisMetaV1APIResourceList:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -309,8 +298,7 @@ func encodeGetAuthorizationAPIGroupResponse(response GetAuthorizationAPIGroupRes
 	case *IoK8sApimachineryPkgApisMetaV1APIGroup:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -331,8 +319,7 @@ func encodeGetAuthorizationV1APIResourcesResponse(response GetAuthorizationV1API
 	case *IoK8sApimachineryPkgApisMetaV1APIResourceList:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -353,8 +340,7 @@ func encodeGetAutoscalingAPIGroupResponse(response GetAutoscalingAPIGroupRes, w 
 	case *IoK8sApimachineryPkgApisMetaV1APIGroup:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -375,8 +361,7 @@ func encodeGetAutoscalingV1APIResourcesResponse(response GetAutoscalingV1APIReso
 	case *IoK8sApimachineryPkgApisMetaV1APIResourceList:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -397,8 +382,7 @@ func encodeGetAutoscalingV2beta1APIResourcesResponse(response GetAutoscalingV2be
 	case *IoK8sApimachineryPkgApisMetaV1APIResourceList:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -419,8 +403,7 @@ func encodeGetAutoscalingV2beta2APIResourcesResponse(response GetAutoscalingV2be
 	case *IoK8sApimachineryPkgApisMetaV1APIResourceList:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -441,8 +424,7 @@ func encodeGetBatchAPIGroupResponse(response GetBatchAPIGroupRes, w http.Respons
 	case *IoK8sApimachineryPkgApisMetaV1APIGroup:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -463,8 +445,7 @@ func encodeGetBatchV1APIResourcesResponse(response GetBatchV1APIResourcesRes, w 
 	case *IoK8sApimachineryPkgApisMetaV1APIResourceList:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -485,8 +466,7 @@ func encodeGetBatchV1beta1APIResourcesResponse(response GetBatchV1beta1APIResour
 	case *IoK8sApimachineryPkgApisMetaV1APIResourceList:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -507,8 +487,7 @@ func encodeGetCertificatesAPIGroupResponse(response GetCertificatesAPIGroupRes, 
 	case *IoK8sApimachineryPkgApisMetaV1APIGroup:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -529,8 +508,7 @@ func encodeGetCertificatesV1APIResourcesResponse(response GetCertificatesV1APIRe
 	case *IoK8sApimachineryPkgApisMetaV1APIResourceList:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -551,8 +529,7 @@ func encodeGetCodeVersionResponse(response GetCodeVersionRes, w http.ResponseWri
 	case *IoK8sApimachineryPkgVersionInfo:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -573,8 +550,7 @@ func encodeGetCoordinationAPIGroupResponse(response GetCoordinationAPIGroupRes, 
 	case *IoK8sApimachineryPkgApisMetaV1APIGroup:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -595,8 +571,7 @@ func encodeGetCoordinationV1APIResourcesResponse(response GetCoordinationV1APIRe
 	case *IoK8sApimachineryPkgApisMetaV1APIResourceList:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -617,8 +592,7 @@ func encodeGetCoreAPIVersionsResponse(response GetCoreAPIVersionsRes, w http.Res
 	case *IoK8sApimachineryPkgApisMetaV1APIVersions:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -639,8 +613,7 @@ func encodeGetCoreV1APIResourcesResponse(response GetCoreV1APIResourcesRes, w ht
 	case *IoK8sApimachineryPkgApisMetaV1APIResourceList:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -661,8 +634,7 @@ func encodeGetDiscoveryAPIGroupResponse(response GetDiscoveryAPIGroupRes, w http
 	case *IoK8sApimachineryPkgApisMetaV1APIGroup:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -683,8 +655,7 @@ func encodeGetDiscoveryV1APIResourcesResponse(response GetDiscoveryV1APIResource
 	case *IoK8sApimachineryPkgApisMetaV1APIResourceList:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -705,8 +676,7 @@ func encodeGetDiscoveryV1beta1APIResourcesResponse(response GetDiscoveryV1beta1A
 	case *IoK8sApimachineryPkgApisMetaV1APIResourceList:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -727,8 +697,7 @@ func encodeGetEventsAPIGroupResponse(response GetEventsAPIGroupRes, w http.Respo
 	case *IoK8sApimachineryPkgApisMetaV1APIGroup:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -749,8 +718,7 @@ func encodeGetEventsV1APIResourcesResponse(response GetEventsV1APIResourcesRes, 
 	case *IoK8sApimachineryPkgApisMetaV1APIResourceList:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -771,8 +739,7 @@ func encodeGetEventsV1beta1APIResourcesResponse(response GetEventsV1beta1APIReso
 	case *IoK8sApimachineryPkgApisMetaV1APIResourceList:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -793,8 +760,7 @@ func encodeGetFlowcontrolApiserverAPIGroupResponse(response GetFlowcontrolApiser
 	case *IoK8sApimachineryPkgApisMetaV1APIGroup:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -815,8 +781,7 @@ func encodeGetFlowcontrolApiserverV1beta1APIResourcesResponse(response GetFlowco
 	case *IoK8sApimachineryPkgApisMetaV1APIResourceList:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -837,8 +802,7 @@ func encodeGetFlowcontrolApiserverV1beta2APIResourcesResponse(response GetFlowco
 	case *IoK8sApimachineryPkgApisMetaV1APIResourceList:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -859,8 +823,7 @@ func encodeGetInternalApiserverAPIGroupResponse(response GetInternalApiserverAPI
 	case *IoK8sApimachineryPkgApisMetaV1APIGroup:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -881,8 +844,7 @@ func encodeGetInternalApiserverV1alpha1APIResourcesResponse(response GetInternal
 	case *IoK8sApimachineryPkgApisMetaV1APIResourceList:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -903,8 +865,7 @@ func encodeGetNetworkingAPIGroupResponse(response GetNetworkingAPIGroupRes, w ht
 	case *IoK8sApimachineryPkgApisMetaV1APIGroup:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -925,8 +886,7 @@ func encodeGetNetworkingV1APIResourcesResponse(response GetNetworkingV1APIResour
 	case *IoK8sApimachineryPkgApisMetaV1APIResourceList:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -947,8 +907,7 @@ func encodeGetNodeAPIGroupResponse(response GetNodeAPIGroupRes, w http.ResponseW
 	case *IoK8sApimachineryPkgApisMetaV1APIGroup:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -969,8 +928,7 @@ func encodeGetNodeV1APIResourcesResponse(response GetNodeV1APIResourcesRes, w ht
 	case *IoK8sApimachineryPkgApisMetaV1APIResourceList:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -991,8 +949,7 @@ func encodeGetNodeV1alpha1APIResourcesResponse(response GetNodeV1alpha1APIResour
 	case *IoK8sApimachineryPkgApisMetaV1APIResourceList:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -1013,8 +970,7 @@ func encodeGetNodeV1beta1APIResourcesResponse(response GetNodeV1beta1APIResource
 	case *IoK8sApimachineryPkgApisMetaV1APIResourceList:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -1035,8 +991,7 @@ func encodeGetPolicyAPIGroupResponse(response GetPolicyAPIGroupRes, w http.Respo
 	case *IoK8sApimachineryPkgApisMetaV1APIGroup:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -1057,8 +1012,7 @@ func encodeGetPolicyV1APIResourcesResponse(response GetPolicyV1APIResourcesRes, 
 	case *IoK8sApimachineryPkgApisMetaV1APIResourceList:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -1079,8 +1033,7 @@ func encodeGetPolicyV1beta1APIResourcesResponse(response GetPolicyV1beta1APIReso
 	case *IoK8sApimachineryPkgApisMetaV1APIResourceList:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -1101,8 +1054,7 @@ func encodeGetRbacAuthorizationAPIGroupResponse(response GetRbacAuthorizationAPI
 	case *IoK8sApimachineryPkgApisMetaV1APIGroup:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -1123,8 +1075,7 @@ func encodeGetRbacAuthorizationV1APIResourcesResponse(response GetRbacAuthorizat
 	case *IoK8sApimachineryPkgApisMetaV1APIResourceList:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -1145,8 +1096,7 @@ func encodeGetSchedulingAPIGroupResponse(response GetSchedulingAPIGroupRes, w ht
 	case *IoK8sApimachineryPkgApisMetaV1APIGroup:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -1167,8 +1117,7 @@ func encodeGetSchedulingV1APIResourcesResponse(response GetSchedulingV1APIResour
 	case *IoK8sApimachineryPkgApisMetaV1APIResourceList:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -1189,8 +1138,7 @@ func encodeGetServiceAccountIssuerOpenIDConfigurationResponse(response GetServic
 	case *GetServiceAccountIssuerOpenIDConfigurationOKApplicationJSON:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -1211,8 +1159,7 @@ func encodeGetStorageAPIGroupResponse(response GetStorageAPIGroupRes, w http.Res
 	case *IoK8sApimachineryPkgApisMetaV1APIGroup:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -1233,8 +1180,7 @@ func encodeGetStorageV1APIResourcesResponse(response GetStorageV1APIResourcesRes
 	case *IoK8sApimachineryPkgApisMetaV1APIResourceList:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -1255,8 +1201,7 @@ func encodeGetStorageV1alpha1APIResourcesResponse(response GetStorageV1alpha1API
 	case *IoK8sApimachineryPkgApisMetaV1APIResourceList:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -1277,8 +1222,7 @@ func encodeGetStorageV1beta1APIResourcesResponse(response GetStorageV1beta1APIRe
 	case *IoK8sApimachineryPkgApisMetaV1APIResourceList:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -1299,8 +1243,7 @@ func encodeListAdmissionregistrationV1MutatingWebhookConfigurationResponse(respo
 	case *IoK8sAPIAdmissionregistrationV1MutatingWebhookConfigurationList:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -1321,8 +1264,7 @@ func encodeListAdmissionregistrationV1ValidatingWebhookConfigurationResponse(res
 	case *IoK8sAPIAdmissionregistrationV1ValidatingWebhookConfigurationList:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -1343,8 +1285,7 @@ func encodeListApiextensionsV1CustomResourceDefinitionResponse(response ListApie
 	case *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionList:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -1365,8 +1306,7 @@ func encodeListApiregistrationV1APIServiceResponse(response ListApiregistrationV
 	case *IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceList:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -1387,8 +1327,7 @@ func encodeListAppsV1ControllerRevisionForAllNamespacesResponse(response ListApp
 	case *IoK8sAPIAppsV1ControllerRevisionList:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -1409,8 +1348,7 @@ func encodeListAppsV1DaemonSetForAllNamespacesResponse(response ListAppsV1Daemon
 	case *IoK8sAPIAppsV1DaemonSetList:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -1431,8 +1369,7 @@ func encodeListAppsV1DeploymentForAllNamespacesResponse(response ListAppsV1Deplo
 	case *IoK8sAPIAppsV1DeploymentList:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -1453,8 +1390,7 @@ func encodeListAppsV1NamespacedControllerRevisionResponse(response ListAppsV1Nam
 	case *IoK8sAPIAppsV1ControllerRevisionList:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -1475,8 +1411,7 @@ func encodeListAppsV1NamespacedDaemonSetResponse(response ListAppsV1NamespacedDa
 	case *IoK8sAPIAppsV1DaemonSetList:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -1497,8 +1432,7 @@ func encodeListAppsV1NamespacedDeploymentResponse(response ListAppsV1NamespacedD
 	case *IoK8sAPIAppsV1DeploymentList:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -1519,8 +1453,7 @@ func encodeListAppsV1NamespacedReplicaSetResponse(response ListAppsV1NamespacedR
 	case *IoK8sAPIAppsV1ReplicaSetList:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -1541,8 +1474,7 @@ func encodeListAppsV1NamespacedStatefulSetResponse(response ListAppsV1Namespaced
 	case *IoK8sAPIAppsV1StatefulSetList:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -1563,8 +1495,7 @@ func encodeListAppsV1ReplicaSetForAllNamespacesResponse(response ListAppsV1Repli
 	case *IoK8sAPIAppsV1ReplicaSetList:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -1585,8 +1516,7 @@ func encodeListAppsV1StatefulSetForAllNamespacesResponse(response ListAppsV1Stat
 	case *IoK8sAPIAppsV1StatefulSetList:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -1607,8 +1537,7 @@ func encodeListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesResponse(resp
 	case *IoK8sAPIAutoscalingV1HorizontalPodAutoscalerList:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -1629,8 +1558,7 @@ func encodeListAutoscalingV1NamespacedHorizontalPodAutoscalerResponse(response L
 	case *IoK8sAPIAutoscalingV1HorizontalPodAutoscalerList:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -1651,8 +1579,7 @@ func encodeListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespacesResponse
 	case *IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerList:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -1673,8 +1600,7 @@ func encodeListAutoscalingV2beta1NamespacedHorizontalPodAutoscalerResponse(respo
 	case *IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerList:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -1695,8 +1621,7 @@ func encodeListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespacesResponse
 	case *IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerList:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -1717,8 +1642,7 @@ func encodeListAutoscalingV2beta2NamespacedHorizontalPodAutoscalerResponse(respo
 	case *IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerList:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -1739,8 +1663,7 @@ func encodeListBatchV1CronJobForAllNamespacesResponse(response ListBatchV1CronJo
 	case *IoK8sAPIBatchV1CronJobList:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -1761,8 +1684,7 @@ func encodeListBatchV1JobForAllNamespacesResponse(response ListBatchV1JobForAllN
 	case *IoK8sAPIBatchV1JobList:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -1783,8 +1705,7 @@ func encodeListBatchV1NamespacedCronJobResponse(response ListBatchV1NamespacedCr
 	case *IoK8sAPIBatchV1CronJobList:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -1805,8 +1726,7 @@ func encodeListBatchV1NamespacedJobResponse(response ListBatchV1NamespacedJobRes
 	case *IoK8sAPIBatchV1JobList:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -1827,8 +1747,7 @@ func encodeListBatchV1beta1CronJobForAllNamespacesResponse(response ListBatchV1b
 	case *IoK8sAPIBatchV1beta1CronJobList:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -1849,8 +1768,7 @@ func encodeListBatchV1beta1NamespacedCronJobResponse(response ListBatchV1beta1Na
 	case *IoK8sAPIBatchV1beta1CronJobList:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -1871,8 +1789,7 @@ func encodeListCertificatesV1CertificateSigningRequestResponse(response ListCert
 	case *IoK8sAPICertificatesV1CertificateSigningRequestList:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -1893,8 +1810,7 @@ func encodeListCoordinationV1LeaseForAllNamespacesResponse(response ListCoordina
 	case *IoK8sAPICoordinationV1LeaseList:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -1915,8 +1831,7 @@ func encodeListCoordinationV1NamespacedLeaseResponse(response ListCoordinationV1
 	case *IoK8sAPICoordinationV1LeaseList:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -1937,8 +1852,7 @@ func encodeListCoreV1ComponentStatusResponse(response ListCoreV1ComponentStatusR
 	case *IoK8sAPICoreV1ComponentStatusList:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -1959,8 +1873,7 @@ func encodeListCoreV1ConfigMapForAllNamespacesResponse(response ListCoreV1Config
 	case *IoK8sAPICoreV1ConfigMapList:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -1981,8 +1894,7 @@ func encodeListCoreV1EndpointsForAllNamespacesResponse(response ListCoreV1Endpoi
 	case *IoK8sAPICoreV1EndpointsList:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -2003,8 +1915,7 @@ func encodeListCoreV1EventForAllNamespacesResponse(response ListCoreV1EventForAl
 	case *IoK8sAPICoreV1EventList:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -2025,8 +1936,7 @@ func encodeListCoreV1LimitRangeForAllNamespacesResponse(response ListCoreV1Limit
 	case *IoK8sAPICoreV1LimitRangeList:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -2047,8 +1957,7 @@ func encodeListCoreV1NamespaceResponse(response ListCoreV1NamespaceRes, w http.R
 	case *IoK8sAPICoreV1NamespaceList:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -2069,8 +1978,7 @@ func encodeListCoreV1NamespacedConfigMapResponse(response ListCoreV1NamespacedCo
 	case *IoK8sAPICoreV1ConfigMapList:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -2091,8 +1999,7 @@ func encodeListCoreV1NamespacedEndpointsResponse(response ListCoreV1NamespacedEn
 	case *IoK8sAPICoreV1EndpointsList:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -2113,8 +2020,7 @@ func encodeListCoreV1NamespacedEventResponse(response ListCoreV1NamespacedEventR
 	case *IoK8sAPICoreV1EventList:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -2135,8 +2041,7 @@ func encodeListCoreV1NamespacedLimitRangeResponse(response ListCoreV1NamespacedL
 	case *IoK8sAPICoreV1LimitRangeList:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -2157,8 +2062,7 @@ func encodeListCoreV1NamespacedPersistentVolumeClaimResponse(response ListCoreV1
 	case *IoK8sAPICoreV1PersistentVolumeClaimList:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -2179,8 +2083,7 @@ func encodeListCoreV1NamespacedPodResponse(response ListCoreV1NamespacedPodRes, 
 	case *IoK8sAPICoreV1PodList:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -2201,8 +2104,7 @@ func encodeListCoreV1NamespacedPodTemplateResponse(response ListCoreV1Namespaced
 	case *IoK8sAPICoreV1PodTemplateList:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -2223,8 +2125,7 @@ func encodeListCoreV1NamespacedReplicationControllerResponse(response ListCoreV1
 	case *IoK8sAPICoreV1ReplicationControllerList:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -2245,8 +2146,7 @@ func encodeListCoreV1NamespacedResourceQuotaResponse(response ListCoreV1Namespac
 	case *IoK8sAPICoreV1ResourceQuotaList:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -2267,8 +2167,7 @@ func encodeListCoreV1NamespacedSecretResponse(response ListCoreV1NamespacedSecre
 	case *IoK8sAPICoreV1SecretList:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -2289,8 +2188,7 @@ func encodeListCoreV1NamespacedServiceResponse(response ListCoreV1NamespacedServ
 	case *IoK8sAPICoreV1ServiceList:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -2311,8 +2209,7 @@ func encodeListCoreV1NamespacedServiceAccountResponse(response ListCoreV1Namespa
 	case *IoK8sAPICoreV1ServiceAccountList:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -2333,8 +2230,7 @@ func encodeListCoreV1NodeResponse(response ListCoreV1NodeRes, w http.ResponseWri
 	case *IoK8sAPICoreV1NodeList:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -2355,8 +2251,7 @@ func encodeListCoreV1PersistentVolumeResponse(response ListCoreV1PersistentVolum
 	case *IoK8sAPICoreV1PersistentVolumeList:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -2377,8 +2272,7 @@ func encodeListCoreV1PersistentVolumeClaimForAllNamespacesResponse(response List
 	case *IoK8sAPICoreV1PersistentVolumeClaimList:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -2399,8 +2293,7 @@ func encodeListCoreV1PodForAllNamespacesResponse(response ListCoreV1PodForAllNam
 	case *IoK8sAPICoreV1PodList:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -2421,8 +2314,7 @@ func encodeListCoreV1PodTemplateForAllNamespacesResponse(response ListCoreV1PodT
 	case *IoK8sAPICoreV1PodTemplateList:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -2443,8 +2335,7 @@ func encodeListCoreV1ReplicationControllerForAllNamespacesResponse(response List
 	case *IoK8sAPICoreV1ReplicationControllerList:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -2465,8 +2356,7 @@ func encodeListCoreV1ResourceQuotaForAllNamespacesResponse(response ListCoreV1Re
 	case *IoK8sAPICoreV1ResourceQuotaList:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -2487,8 +2377,7 @@ func encodeListCoreV1SecretForAllNamespacesResponse(response ListCoreV1SecretFor
 	case *IoK8sAPICoreV1SecretList:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -2509,8 +2398,7 @@ func encodeListCoreV1ServiceAccountForAllNamespacesResponse(response ListCoreV1S
 	case *IoK8sAPICoreV1ServiceAccountList:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -2531,8 +2419,7 @@ func encodeListCoreV1ServiceForAllNamespacesResponse(response ListCoreV1ServiceF
 	case *IoK8sAPICoreV1ServiceList:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -2553,8 +2440,7 @@ func encodeListDiscoveryV1EndpointSliceForAllNamespacesResponse(response ListDis
 	case *IoK8sAPIDiscoveryV1EndpointSliceList:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -2575,8 +2461,7 @@ func encodeListDiscoveryV1NamespacedEndpointSliceResponse(response ListDiscovery
 	case *IoK8sAPIDiscoveryV1EndpointSliceList:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -2597,8 +2482,7 @@ func encodeListDiscoveryV1beta1EndpointSliceForAllNamespacesResponse(response Li
 	case *IoK8sAPIDiscoveryV1beta1EndpointSliceList:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -2619,8 +2503,7 @@ func encodeListDiscoveryV1beta1NamespacedEndpointSliceResponse(response ListDisc
 	case *IoK8sAPIDiscoveryV1beta1EndpointSliceList:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -2641,8 +2524,7 @@ func encodeListEventsV1EventForAllNamespacesResponse(response ListEventsV1EventF
 	case *IoK8sAPIEventsV1EventList:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -2663,8 +2545,7 @@ func encodeListEventsV1NamespacedEventResponse(response ListEventsV1NamespacedEv
 	case *IoK8sAPIEventsV1EventList:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -2685,8 +2566,7 @@ func encodeListEventsV1beta1EventForAllNamespacesResponse(response ListEventsV1b
 	case *IoK8sAPIEventsV1beta1EventList:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -2707,8 +2587,7 @@ func encodeListEventsV1beta1NamespacedEventResponse(response ListEventsV1beta1Na
 	case *IoK8sAPIEventsV1beta1EventList:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -2729,8 +2608,7 @@ func encodeListFlowcontrolApiserverV1beta1FlowSchemaResponse(response ListFlowco
 	case *IoK8sAPIFlowcontrolV1beta1FlowSchemaList:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -2751,8 +2629,7 @@ func encodeListFlowcontrolApiserverV1beta1PriorityLevelConfigurationResponse(res
 	case *IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationList:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -2773,8 +2650,7 @@ func encodeListFlowcontrolApiserverV1beta2FlowSchemaResponse(response ListFlowco
 	case *IoK8sAPIFlowcontrolV1beta2FlowSchemaList:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -2795,8 +2671,7 @@ func encodeListFlowcontrolApiserverV1beta2PriorityLevelConfigurationResponse(res
 	case *IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationList:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -2817,8 +2692,7 @@ func encodeListInternalApiserverV1alpha1StorageVersionResponse(response ListInte
 	case *IoK8sAPIApiserverinternalV1alpha1StorageVersionList:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -2839,8 +2713,7 @@ func encodeListNetworkingV1IngressClassResponse(response ListNetworkingV1Ingress
 	case *IoK8sAPINetworkingV1IngressClassList:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -2861,8 +2734,7 @@ func encodeListNetworkingV1IngressForAllNamespacesResponse(response ListNetworki
 	case *IoK8sAPINetworkingV1IngressList:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -2883,8 +2755,7 @@ func encodeListNetworkingV1NamespacedIngressResponse(response ListNetworkingV1Na
 	case *IoK8sAPINetworkingV1IngressList:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -2905,8 +2776,7 @@ func encodeListNetworkingV1NamespacedNetworkPolicyResponse(response ListNetworki
 	case *IoK8sAPINetworkingV1NetworkPolicyList:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -2927,8 +2797,7 @@ func encodeListNetworkingV1NetworkPolicyForAllNamespacesResponse(response ListNe
 	case *IoK8sAPINetworkingV1NetworkPolicyList:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -2949,8 +2818,7 @@ func encodeListNodeV1RuntimeClassResponse(response ListNodeV1RuntimeClassRes, w 
 	case *IoK8sAPINodeV1RuntimeClassList:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -2971,8 +2839,7 @@ func encodeListNodeV1alpha1RuntimeClassResponse(response ListNodeV1alpha1Runtime
 	case *IoK8sAPINodeV1alpha1RuntimeClassList:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -2993,8 +2860,7 @@ func encodeListNodeV1beta1RuntimeClassResponse(response ListNodeV1beta1RuntimeCl
 	case *IoK8sAPINodeV1beta1RuntimeClassList:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -3015,8 +2881,7 @@ func encodeListPolicyV1NamespacedPodDisruptionBudgetResponse(response ListPolicy
 	case *IoK8sAPIPolicyV1PodDisruptionBudgetList:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -3037,8 +2902,7 @@ func encodeListPolicyV1PodDisruptionBudgetForAllNamespacesResponse(response List
 	case *IoK8sAPIPolicyV1PodDisruptionBudgetList:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -3059,8 +2923,7 @@ func encodeListPolicyV1beta1NamespacedPodDisruptionBudgetResponse(response ListP
 	case *IoK8sAPIPolicyV1beta1PodDisruptionBudgetList:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -3081,8 +2944,7 @@ func encodeListPolicyV1beta1PodDisruptionBudgetForAllNamespacesResponse(response
 	case *IoK8sAPIPolicyV1beta1PodDisruptionBudgetList:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -3103,8 +2965,7 @@ func encodeListPolicyV1beta1PodSecurityPolicyResponse(response ListPolicyV1beta1
 	case *IoK8sAPIPolicyV1beta1PodSecurityPolicyList:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -3125,8 +2986,7 @@ func encodeListRbacAuthorizationV1ClusterRoleResponse(response ListRbacAuthoriza
 	case *IoK8sAPIRbacV1ClusterRoleList:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -3147,8 +3007,7 @@ func encodeListRbacAuthorizationV1ClusterRoleBindingResponse(response ListRbacAu
 	case *IoK8sAPIRbacV1ClusterRoleBindingList:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -3169,8 +3028,7 @@ func encodeListRbacAuthorizationV1NamespacedRoleResponse(response ListRbacAuthor
 	case *IoK8sAPIRbacV1RoleList:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -3191,8 +3049,7 @@ func encodeListRbacAuthorizationV1NamespacedRoleBindingResponse(response ListRba
 	case *IoK8sAPIRbacV1RoleBindingList:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -3213,8 +3070,7 @@ func encodeListRbacAuthorizationV1RoleBindingForAllNamespacesResponse(response L
 	case *IoK8sAPIRbacV1RoleBindingList:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -3235,8 +3091,7 @@ func encodeListRbacAuthorizationV1RoleForAllNamespacesResponse(response ListRbac
 	case *IoK8sAPIRbacV1RoleList:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -3257,8 +3112,7 @@ func encodeListSchedulingV1PriorityClassResponse(response ListSchedulingV1Priori
 	case *IoK8sAPISchedulingV1PriorityClassList:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -3279,8 +3133,7 @@ func encodeListStorageV1CSIDriverResponse(response ListStorageV1CSIDriverRes, w 
 	case *IoK8sAPIStorageV1CSIDriverList:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -3301,8 +3154,7 @@ func encodeListStorageV1CSINodeResponse(response ListStorageV1CSINodeRes, w http
 	case *IoK8sAPIStorageV1CSINodeList:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -3323,8 +3175,7 @@ func encodeListStorageV1StorageClassResponse(response ListStorageV1StorageClassR
 	case *IoK8sAPIStorageV1StorageClassList:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -3345,8 +3196,7 @@ func encodeListStorageV1VolumeAttachmentResponse(response ListStorageV1VolumeAtt
 	case *IoK8sAPIStorageV1VolumeAttachmentList:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -3367,8 +3217,7 @@ func encodeListStorageV1alpha1CSIStorageCapacityForAllNamespacesResponse(respons
 	case *IoK8sAPIStorageV1alpha1CSIStorageCapacityList:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -3389,8 +3238,7 @@ func encodeListStorageV1alpha1NamespacedCSIStorageCapacityResponse(response List
 	case *IoK8sAPIStorageV1alpha1CSIStorageCapacityList:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -3411,8 +3259,7 @@ func encodeListStorageV1beta1CSIStorageCapacityForAllNamespacesResponse(response
 	case *IoK8sAPIStorageV1beta1CSIStorageCapacityList:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -3433,8 +3280,7 @@ func encodeListStorageV1beta1NamespacedCSIStorageCapacityResponse(response ListS
 	case *IoK8sAPIStorageV1beta1CSIStorageCapacityList:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -3465,8 +3311,7 @@ func encodeReadAdmissionregistrationV1MutatingWebhookConfigurationResponse(respo
 	case *IoK8sAPIAdmissionregistrationV1MutatingWebhookConfiguration:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -3487,8 +3332,7 @@ func encodeReadAdmissionregistrationV1ValidatingWebhookConfigurationResponse(res
 	case *IoK8sAPIAdmissionregistrationV1ValidatingWebhookConfiguration:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -3509,8 +3353,7 @@ func encodeReadApiextensionsV1CustomResourceDefinitionResponse(response ReadApie
 	case *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinition:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -3531,8 +3374,7 @@ func encodeReadApiextensionsV1CustomResourceDefinitionStatusResponse(response Re
 	case *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinition:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -3553,8 +3395,7 @@ func encodeReadApiregistrationV1APIServiceResponse(response ReadApiregistrationV
 	case *IoK8sKubeAggregatorPkgApisApiregistrationV1APIService:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -3575,8 +3416,7 @@ func encodeReadApiregistrationV1APIServiceStatusResponse(response ReadApiregistr
 	case *IoK8sKubeAggregatorPkgApisApiregistrationV1APIService:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -3597,8 +3437,7 @@ func encodeReadAppsV1NamespacedControllerRevisionResponse(response ReadAppsV1Nam
 	case *IoK8sAPIAppsV1ControllerRevision:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -3619,8 +3458,7 @@ func encodeReadAppsV1NamespacedDaemonSetResponse(response ReadAppsV1NamespacedDa
 	case *IoK8sAPIAppsV1DaemonSet:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -3641,8 +3479,7 @@ func encodeReadAppsV1NamespacedDaemonSetStatusResponse(response ReadAppsV1Namesp
 	case *IoK8sAPIAppsV1DaemonSet:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -3663,8 +3500,7 @@ func encodeReadAppsV1NamespacedDeploymentResponse(response ReadAppsV1NamespacedD
 	case *IoK8sAPIAppsV1Deployment:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -3685,8 +3521,7 @@ func encodeReadAppsV1NamespacedDeploymentScaleResponse(response ReadAppsV1Namesp
 	case *IoK8sAPIAutoscalingV1Scale:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -3707,8 +3542,7 @@ func encodeReadAppsV1NamespacedDeploymentStatusResponse(response ReadAppsV1Names
 	case *IoK8sAPIAppsV1Deployment:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -3729,8 +3563,7 @@ func encodeReadAppsV1NamespacedReplicaSetResponse(response ReadAppsV1NamespacedR
 	case *IoK8sAPIAppsV1ReplicaSet:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -3751,8 +3584,7 @@ func encodeReadAppsV1NamespacedReplicaSetScaleResponse(response ReadAppsV1Namesp
 	case *IoK8sAPIAutoscalingV1Scale:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -3773,8 +3605,7 @@ func encodeReadAppsV1NamespacedReplicaSetStatusResponse(response ReadAppsV1Names
 	case *IoK8sAPIAppsV1ReplicaSet:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -3795,8 +3626,7 @@ func encodeReadAppsV1NamespacedStatefulSetResponse(response ReadAppsV1Namespaced
 	case *IoK8sAPIAppsV1StatefulSet:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -3817,8 +3647,7 @@ func encodeReadAppsV1NamespacedStatefulSetScaleResponse(response ReadAppsV1Names
 	case *IoK8sAPIAutoscalingV1Scale:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -3839,8 +3668,7 @@ func encodeReadAppsV1NamespacedStatefulSetStatusResponse(response ReadAppsV1Name
 	case *IoK8sAPIAppsV1StatefulSet:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -3861,8 +3689,7 @@ func encodeReadAutoscalingV1NamespacedHorizontalPodAutoscalerResponse(response R
 	case *IoK8sAPIAutoscalingV1HorizontalPodAutoscaler:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -3883,8 +3710,7 @@ func encodeReadAutoscalingV1NamespacedHorizontalPodAutoscalerStatusResponse(resp
 	case *IoK8sAPIAutoscalingV1HorizontalPodAutoscaler:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -3905,8 +3731,7 @@ func encodeReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerResponse(respo
 	case *IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscaler:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -3927,8 +3752,7 @@ func encodeReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatusResponse
 	case *IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscaler:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -3949,8 +3773,7 @@ func encodeReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerResponse(respo
 	case *IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscaler:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -3971,8 +3794,7 @@ func encodeReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatusResponse
 	case *IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscaler:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -3993,8 +3815,7 @@ func encodeReadBatchV1NamespacedCronJobResponse(response ReadBatchV1NamespacedCr
 	case *IoK8sAPIBatchV1CronJob:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -4015,8 +3836,7 @@ func encodeReadBatchV1NamespacedCronJobStatusResponse(response ReadBatchV1Namesp
 	case *IoK8sAPIBatchV1CronJob:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -4037,8 +3857,7 @@ func encodeReadBatchV1NamespacedJobResponse(response ReadBatchV1NamespacedJobRes
 	case *IoK8sAPIBatchV1Job:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -4059,8 +3878,7 @@ func encodeReadBatchV1NamespacedJobStatusResponse(response ReadBatchV1Namespaced
 	case *IoK8sAPIBatchV1Job:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -4081,8 +3899,7 @@ func encodeReadBatchV1beta1NamespacedCronJobResponse(response ReadBatchV1beta1Na
 	case *IoK8sAPIBatchV1beta1CronJob:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -4103,8 +3920,7 @@ func encodeReadBatchV1beta1NamespacedCronJobStatusResponse(response ReadBatchV1b
 	case *IoK8sAPIBatchV1beta1CronJob:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -4125,8 +3941,7 @@ func encodeReadCertificatesV1CertificateSigningRequestResponse(response ReadCert
 	case *IoK8sAPICertificatesV1CertificateSigningRequest:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -4147,8 +3962,7 @@ func encodeReadCertificatesV1CertificateSigningRequestApprovalResponse(response 
 	case *IoK8sAPICertificatesV1CertificateSigningRequest:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -4169,8 +3983,7 @@ func encodeReadCertificatesV1CertificateSigningRequestStatusResponse(response Re
 	case *IoK8sAPICertificatesV1CertificateSigningRequest:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -4191,8 +4004,7 @@ func encodeReadCoordinationV1NamespacedLeaseResponse(response ReadCoordinationV1
 	case *IoK8sAPICoordinationV1Lease:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -4213,8 +4025,7 @@ func encodeReadCoreV1ComponentStatusResponse(response ReadCoreV1ComponentStatusR
 	case *IoK8sAPICoreV1ComponentStatus:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -4235,8 +4046,7 @@ func encodeReadCoreV1NamespaceResponse(response ReadCoreV1NamespaceRes, w http.R
 	case *IoK8sAPICoreV1Namespace:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -4257,8 +4067,7 @@ func encodeReadCoreV1NamespaceStatusResponse(response ReadCoreV1NamespaceStatusR
 	case *IoK8sAPICoreV1Namespace:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -4279,8 +4088,7 @@ func encodeReadCoreV1NamespacedConfigMapResponse(response ReadCoreV1NamespacedCo
 	case *IoK8sAPICoreV1ConfigMap:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -4301,8 +4109,7 @@ func encodeReadCoreV1NamespacedEndpointsResponse(response ReadCoreV1NamespacedEn
 	case *IoK8sAPICoreV1Endpoints:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -4323,8 +4130,7 @@ func encodeReadCoreV1NamespacedEventResponse(response ReadCoreV1NamespacedEventR
 	case *IoK8sAPICoreV1Event:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -4345,8 +4151,7 @@ func encodeReadCoreV1NamespacedLimitRangeResponse(response ReadCoreV1NamespacedL
 	case *IoK8sAPICoreV1LimitRange:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -4367,8 +4172,7 @@ func encodeReadCoreV1NamespacedPersistentVolumeClaimResponse(response ReadCoreV1
 	case *IoK8sAPICoreV1PersistentVolumeClaim:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -4389,8 +4193,7 @@ func encodeReadCoreV1NamespacedPersistentVolumeClaimStatusResponse(response Read
 	case *IoK8sAPICoreV1PersistentVolumeClaim:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -4411,8 +4214,7 @@ func encodeReadCoreV1NamespacedPodResponse(response ReadCoreV1NamespacedPodRes, 
 	case *IoK8sAPICoreV1Pod:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -4433,8 +4235,7 @@ func encodeReadCoreV1NamespacedPodEphemeralcontainersResponse(response ReadCoreV
 	case *IoK8sAPICoreV1Pod:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -4455,8 +4256,7 @@ func encodeReadCoreV1NamespacedPodLogResponse(response ReadCoreV1NamespacedPodLo
 	case *ReadCoreV1NamespacedPodLogOKApplicationJSON:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -4477,8 +4277,7 @@ func encodeReadCoreV1NamespacedPodStatusResponse(response ReadCoreV1NamespacedPo
 	case *IoK8sAPICoreV1Pod:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -4499,8 +4298,7 @@ func encodeReadCoreV1NamespacedPodTemplateResponse(response ReadCoreV1Namespaced
 	case *IoK8sAPICoreV1PodTemplate:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -4521,8 +4319,7 @@ func encodeReadCoreV1NamespacedReplicationControllerResponse(response ReadCoreV1
 	case *IoK8sAPICoreV1ReplicationController:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -4543,8 +4340,7 @@ func encodeReadCoreV1NamespacedReplicationControllerScaleResponse(response ReadC
 	case *IoK8sAPIAutoscalingV1Scale:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -4565,8 +4361,7 @@ func encodeReadCoreV1NamespacedReplicationControllerStatusResponse(response Read
 	case *IoK8sAPICoreV1ReplicationController:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -4587,8 +4382,7 @@ func encodeReadCoreV1NamespacedResourceQuotaResponse(response ReadCoreV1Namespac
 	case *IoK8sAPICoreV1ResourceQuota:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -4609,8 +4403,7 @@ func encodeReadCoreV1NamespacedResourceQuotaStatusResponse(response ReadCoreV1Na
 	case *IoK8sAPICoreV1ResourceQuota:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -4631,8 +4424,7 @@ func encodeReadCoreV1NamespacedSecretResponse(response ReadCoreV1NamespacedSecre
 	case *IoK8sAPICoreV1Secret:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -4653,8 +4445,7 @@ func encodeReadCoreV1NamespacedServiceResponse(response ReadCoreV1NamespacedServ
 	case *IoK8sAPICoreV1Service:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -4675,8 +4466,7 @@ func encodeReadCoreV1NamespacedServiceAccountResponse(response ReadCoreV1Namespa
 	case *IoK8sAPICoreV1ServiceAccount:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -4697,8 +4487,7 @@ func encodeReadCoreV1NamespacedServiceStatusResponse(response ReadCoreV1Namespac
 	case *IoK8sAPICoreV1Service:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -4719,8 +4508,7 @@ func encodeReadCoreV1NodeResponse(response ReadCoreV1NodeRes, w http.ResponseWri
 	case *IoK8sAPICoreV1Node:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -4741,8 +4529,7 @@ func encodeReadCoreV1NodeStatusResponse(response ReadCoreV1NodeStatusRes, w http
 	case *IoK8sAPICoreV1Node:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -4763,8 +4550,7 @@ func encodeReadCoreV1PersistentVolumeResponse(response ReadCoreV1PersistentVolum
 	case *IoK8sAPICoreV1PersistentVolume:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -4785,8 +4571,7 @@ func encodeReadCoreV1PersistentVolumeStatusResponse(response ReadCoreV1Persisten
 	case *IoK8sAPICoreV1PersistentVolume:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -4807,8 +4592,7 @@ func encodeReadDiscoveryV1NamespacedEndpointSliceResponse(response ReadDiscovery
 	case *IoK8sAPIDiscoveryV1EndpointSlice:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -4829,8 +4613,7 @@ func encodeReadDiscoveryV1beta1NamespacedEndpointSliceResponse(response ReadDisc
 	case *IoK8sAPIDiscoveryV1beta1EndpointSlice:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -4851,8 +4634,7 @@ func encodeReadEventsV1NamespacedEventResponse(response ReadEventsV1NamespacedEv
 	case *IoK8sAPIEventsV1Event:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -4873,8 +4655,7 @@ func encodeReadEventsV1beta1NamespacedEventResponse(response ReadEventsV1beta1Na
 	case *IoK8sAPIEventsV1beta1Event:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -4895,8 +4676,7 @@ func encodeReadFlowcontrolApiserverV1beta1FlowSchemaResponse(response ReadFlowco
 	case *IoK8sAPIFlowcontrolV1beta1FlowSchema:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -4917,8 +4697,7 @@ func encodeReadFlowcontrolApiserverV1beta1FlowSchemaStatusResponse(response Read
 	case *IoK8sAPIFlowcontrolV1beta1FlowSchema:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -4939,8 +4718,7 @@ func encodeReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationResponse(res
 	case *IoK8sAPIFlowcontrolV1beta1PriorityLevelConfiguration:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -4961,8 +4739,7 @@ func encodeReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationStatusRespon
 	case *IoK8sAPIFlowcontrolV1beta1PriorityLevelConfiguration:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -4983,8 +4760,7 @@ func encodeReadFlowcontrolApiserverV1beta2FlowSchemaResponse(response ReadFlowco
 	case *IoK8sAPIFlowcontrolV1beta2FlowSchema:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -5005,8 +4781,7 @@ func encodeReadFlowcontrolApiserverV1beta2FlowSchemaStatusResponse(response Read
 	case *IoK8sAPIFlowcontrolV1beta2FlowSchema:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -5027,8 +4802,7 @@ func encodeReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationResponse(res
 	case *IoK8sAPIFlowcontrolV1beta2PriorityLevelConfiguration:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -5049,8 +4823,7 @@ func encodeReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationStatusRespon
 	case *IoK8sAPIFlowcontrolV1beta2PriorityLevelConfiguration:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -5071,8 +4844,7 @@ func encodeReadInternalApiserverV1alpha1StorageVersionResponse(response ReadInte
 	case *IoK8sAPIApiserverinternalV1alpha1StorageVersion:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -5093,8 +4865,7 @@ func encodeReadInternalApiserverV1alpha1StorageVersionStatusResponse(response Re
 	case *IoK8sAPIApiserverinternalV1alpha1StorageVersion:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -5115,8 +4886,7 @@ func encodeReadNetworkingV1IngressClassResponse(response ReadNetworkingV1Ingress
 	case *IoK8sAPINetworkingV1IngressClass:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -5137,8 +4907,7 @@ func encodeReadNetworkingV1NamespacedIngressResponse(response ReadNetworkingV1Na
 	case *IoK8sAPINetworkingV1Ingress:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -5159,8 +4928,7 @@ func encodeReadNetworkingV1NamespacedIngressStatusResponse(response ReadNetworki
 	case *IoK8sAPINetworkingV1Ingress:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -5181,8 +4949,7 @@ func encodeReadNetworkingV1NamespacedNetworkPolicyResponse(response ReadNetworki
 	case *IoK8sAPINetworkingV1NetworkPolicy:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -5203,8 +4970,7 @@ func encodeReadNodeV1RuntimeClassResponse(response ReadNodeV1RuntimeClassRes, w 
 	case *IoK8sAPINodeV1RuntimeClass:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -5225,8 +4991,7 @@ func encodeReadNodeV1alpha1RuntimeClassResponse(response ReadNodeV1alpha1Runtime
 	case *IoK8sAPINodeV1alpha1RuntimeClass:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -5247,8 +5012,7 @@ func encodeReadNodeV1beta1RuntimeClassResponse(response ReadNodeV1beta1RuntimeCl
 	case *IoK8sAPINodeV1beta1RuntimeClass:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -5269,8 +5033,7 @@ func encodeReadPolicyV1NamespacedPodDisruptionBudgetResponse(response ReadPolicy
 	case *IoK8sAPIPolicyV1PodDisruptionBudget:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -5291,8 +5054,7 @@ func encodeReadPolicyV1NamespacedPodDisruptionBudgetStatusResponse(response Read
 	case *IoK8sAPIPolicyV1PodDisruptionBudget:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -5313,8 +5075,7 @@ func encodeReadPolicyV1beta1NamespacedPodDisruptionBudgetResponse(response ReadP
 	case *IoK8sAPIPolicyV1beta1PodDisruptionBudget:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -5335,8 +5096,7 @@ func encodeReadPolicyV1beta1NamespacedPodDisruptionBudgetStatusResponse(response
 	case *IoK8sAPIPolicyV1beta1PodDisruptionBudget:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -5357,8 +5117,7 @@ func encodeReadPolicyV1beta1PodSecurityPolicyResponse(response ReadPolicyV1beta1
 	case *IoK8sAPIPolicyV1beta1PodSecurityPolicy:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -5379,8 +5138,7 @@ func encodeReadRbacAuthorizationV1ClusterRoleResponse(response ReadRbacAuthoriza
 	case *IoK8sAPIRbacV1ClusterRole:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -5401,8 +5159,7 @@ func encodeReadRbacAuthorizationV1ClusterRoleBindingResponse(response ReadRbacAu
 	case *IoK8sAPIRbacV1ClusterRoleBinding:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -5423,8 +5180,7 @@ func encodeReadRbacAuthorizationV1NamespacedRoleResponse(response ReadRbacAuthor
 	case *IoK8sAPIRbacV1Role:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -5445,8 +5201,7 @@ func encodeReadRbacAuthorizationV1NamespacedRoleBindingResponse(response ReadRba
 	case *IoK8sAPIRbacV1RoleBinding:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -5467,8 +5222,7 @@ func encodeReadSchedulingV1PriorityClassResponse(response ReadSchedulingV1Priori
 	case *IoK8sAPISchedulingV1PriorityClass:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -5489,8 +5243,7 @@ func encodeReadStorageV1CSIDriverResponse(response ReadStorageV1CSIDriverRes, w 
 	case *IoK8sAPIStorageV1CSIDriver:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -5511,8 +5264,7 @@ func encodeReadStorageV1CSINodeResponse(response ReadStorageV1CSINodeRes, w http
 	case *IoK8sAPIStorageV1CSINode:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -5533,8 +5285,7 @@ func encodeReadStorageV1StorageClassResponse(response ReadStorageV1StorageClassR
 	case *IoK8sAPIStorageV1StorageClass:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -5555,8 +5306,7 @@ func encodeReadStorageV1VolumeAttachmentResponse(response ReadStorageV1VolumeAtt
 	case *IoK8sAPIStorageV1VolumeAttachment:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -5577,8 +5327,7 @@ func encodeReadStorageV1VolumeAttachmentStatusResponse(response ReadStorageV1Vol
 	case *IoK8sAPIStorageV1VolumeAttachment:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -5599,8 +5348,7 @@ func encodeReadStorageV1alpha1NamespacedCSIStorageCapacityResponse(response Read
 	case *IoK8sAPIStorageV1alpha1CSIStorageCapacity:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -5621,8 +5369,7 @@ func encodeReadStorageV1beta1NamespacedCSIStorageCapacityResponse(response ReadS
 	case *IoK8sAPIStorageV1beta1CSIStorageCapacity:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -5643,8 +5390,7 @@ func encodeWatchAdmissionregistrationV1MutatingWebhookConfigurationResponse(resp
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -5665,8 +5411,7 @@ func encodeWatchAdmissionregistrationV1MutatingWebhookConfigurationListResponse(
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -5687,8 +5432,7 @@ func encodeWatchAdmissionregistrationV1ValidatingWebhookConfigurationResponse(re
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -5709,8 +5453,7 @@ func encodeWatchAdmissionregistrationV1ValidatingWebhookConfigurationListRespons
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -5731,8 +5474,7 @@ func encodeWatchApiextensionsV1CustomResourceDefinitionResponse(response WatchAp
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -5753,8 +5495,7 @@ func encodeWatchApiextensionsV1CustomResourceDefinitionListResponse(response Wat
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -5775,8 +5516,7 @@ func encodeWatchApiregistrationV1APIServiceResponse(response WatchApiregistratio
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -5797,8 +5537,7 @@ func encodeWatchApiregistrationV1APIServiceListResponse(response WatchApiregistr
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -5819,8 +5558,7 @@ func encodeWatchAppsV1ControllerRevisionListForAllNamespacesResponse(response Wa
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -5841,8 +5579,7 @@ func encodeWatchAppsV1DaemonSetListForAllNamespacesResponse(response WatchAppsV1
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -5863,8 +5600,7 @@ func encodeWatchAppsV1DeploymentListForAllNamespacesResponse(response WatchAppsV
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -5885,8 +5621,7 @@ func encodeWatchAppsV1NamespacedControllerRevisionResponse(response WatchAppsV1N
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -5907,8 +5642,7 @@ func encodeWatchAppsV1NamespacedControllerRevisionListResponse(response WatchApp
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -5929,8 +5663,7 @@ func encodeWatchAppsV1NamespacedDaemonSetResponse(response WatchAppsV1Namespaced
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -5951,8 +5684,7 @@ func encodeWatchAppsV1NamespacedDaemonSetListResponse(response WatchAppsV1Namesp
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -5973,8 +5705,7 @@ func encodeWatchAppsV1NamespacedDeploymentResponse(response WatchAppsV1Namespace
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -5995,8 +5726,7 @@ func encodeWatchAppsV1NamespacedDeploymentListResponse(response WatchAppsV1Names
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -6017,8 +5747,7 @@ func encodeWatchAppsV1NamespacedReplicaSetResponse(response WatchAppsV1Namespace
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -6039,8 +5768,7 @@ func encodeWatchAppsV1NamespacedReplicaSetListResponse(response WatchAppsV1Names
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -6061,8 +5789,7 @@ func encodeWatchAppsV1NamespacedStatefulSetResponse(response WatchAppsV1Namespac
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -6083,8 +5810,7 @@ func encodeWatchAppsV1NamespacedStatefulSetListResponse(response WatchAppsV1Name
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -6105,8 +5831,7 @@ func encodeWatchAppsV1ReplicaSetListForAllNamespacesResponse(response WatchAppsV
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -6127,8 +5852,7 @@ func encodeWatchAppsV1StatefulSetListForAllNamespacesResponse(response WatchApps
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -6149,8 +5873,7 @@ func encodeWatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespacesResponse
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -6171,8 +5894,7 @@ func encodeWatchAutoscalingV1NamespacedHorizontalPodAutoscalerResponse(response 
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -6193,8 +5915,7 @@ func encodeWatchAutoscalingV1NamespacedHorizontalPodAutoscalerListResponse(respo
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -6215,8 +5936,7 @@ func encodeWatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespacesRes
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -6237,8 +5957,7 @@ func encodeWatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerResponse(resp
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -6259,8 +5978,7 @@ func encodeWatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerListResponse(
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -6281,8 +5999,7 @@ func encodeWatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespacesRes
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -6303,8 +6020,7 @@ func encodeWatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerResponse(resp
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -6325,8 +6041,7 @@ func encodeWatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerListResponse(
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -6347,8 +6062,7 @@ func encodeWatchBatchV1CronJobListForAllNamespacesResponse(response WatchBatchV1
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -6369,8 +6083,7 @@ func encodeWatchBatchV1JobListForAllNamespacesResponse(response WatchBatchV1JobL
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -6391,8 +6104,7 @@ func encodeWatchBatchV1NamespacedCronJobResponse(response WatchBatchV1Namespaced
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -6413,8 +6125,7 @@ func encodeWatchBatchV1NamespacedCronJobListResponse(response WatchBatchV1Namesp
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -6435,8 +6146,7 @@ func encodeWatchBatchV1NamespacedJobResponse(response WatchBatchV1NamespacedJobR
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -6457,8 +6167,7 @@ func encodeWatchBatchV1NamespacedJobListResponse(response WatchBatchV1Namespaced
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -6479,8 +6188,7 @@ func encodeWatchBatchV1beta1CronJobListForAllNamespacesResponse(response WatchBa
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -6501,8 +6209,7 @@ func encodeWatchBatchV1beta1NamespacedCronJobResponse(response WatchBatchV1beta1
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -6523,8 +6230,7 @@ func encodeWatchBatchV1beta1NamespacedCronJobListResponse(response WatchBatchV1b
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -6545,8 +6251,7 @@ func encodeWatchCertificatesV1CertificateSigningRequestResponse(response WatchCe
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -6567,8 +6272,7 @@ func encodeWatchCertificatesV1CertificateSigningRequestListResponse(response Wat
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -6589,8 +6293,7 @@ func encodeWatchCoordinationV1LeaseListForAllNamespacesResponse(response WatchCo
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -6611,8 +6314,7 @@ func encodeWatchCoordinationV1NamespacedLeaseResponse(response WatchCoordination
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -6633,8 +6335,7 @@ func encodeWatchCoordinationV1NamespacedLeaseListResponse(response WatchCoordina
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -6655,8 +6356,7 @@ func encodeWatchCoreV1ConfigMapListForAllNamespacesResponse(response WatchCoreV1
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -6677,8 +6377,7 @@ func encodeWatchCoreV1EndpointsListForAllNamespacesResponse(response WatchCoreV1
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -6699,8 +6398,7 @@ func encodeWatchCoreV1EventListForAllNamespacesResponse(response WatchCoreV1Even
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -6721,8 +6419,7 @@ func encodeWatchCoreV1LimitRangeListForAllNamespacesResponse(response WatchCoreV
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -6743,8 +6440,7 @@ func encodeWatchCoreV1NamespaceResponse(response WatchCoreV1NamespaceRes, w http
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -6765,8 +6461,7 @@ func encodeWatchCoreV1NamespaceListResponse(response WatchCoreV1NamespaceListRes
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -6787,8 +6482,7 @@ func encodeWatchCoreV1NamespacedConfigMapResponse(response WatchCoreV1Namespaced
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -6809,8 +6503,7 @@ func encodeWatchCoreV1NamespacedConfigMapListResponse(response WatchCoreV1Namesp
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -6831,8 +6524,7 @@ func encodeWatchCoreV1NamespacedEndpointsResponse(response WatchCoreV1Namespaced
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -6853,8 +6545,7 @@ func encodeWatchCoreV1NamespacedEndpointsListResponse(response WatchCoreV1Namesp
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -6875,8 +6566,7 @@ func encodeWatchCoreV1NamespacedEventResponse(response WatchCoreV1NamespacedEven
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -6897,8 +6587,7 @@ func encodeWatchCoreV1NamespacedEventListResponse(response WatchCoreV1Namespaced
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -6919,8 +6608,7 @@ func encodeWatchCoreV1NamespacedLimitRangeResponse(response WatchCoreV1Namespace
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -6941,8 +6629,7 @@ func encodeWatchCoreV1NamespacedLimitRangeListResponse(response WatchCoreV1Names
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -6963,8 +6650,7 @@ func encodeWatchCoreV1NamespacedPersistentVolumeClaimResponse(response WatchCore
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -6985,8 +6671,7 @@ func encodeWatchCoreV1NamespacedPersistentVolumeClaimListResponse(response Watch
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -7007,8 +6692,7 @@ func encodeWatchCoreV1NamespacedPodResponse(response WatchCoreV1NamespacedPodRes
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -7029,8 +6713,7 @@ func encodeWatchCoreV1NamespacedPodListResponse(response WatchCoreV1NamespacedPo
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -7051,8 +6734,7 @@ func encodeWatchCoreV1NamespacedPodTemplateResponse(response WatchCoreV1Namespac
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -7073,8 +6755,7 @@ func encodeWatchCoreV1NamespacedPodTemplateListResponse(response WatchCoreV1Name
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -7095,8 +6776,7 @@ func encodeWatchCoreV1NamespacedReplicationControllerResponse(response WatchCore
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -7117,8 +6797,7 @@ func encodeWatchCoreV1NamespacedReplicationControllerListResponse(response Watch
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -7139,8 +6818,7 @@ func encodeWatchCoreV1NamespacedResourceQuotaResponse(response WatchCoreV1Namesp
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -7161,8 +6839,7 @@ func encodeWatchCoreV1NamespacedResourceQuotaListResponse(response WatchCoreV1Na
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -7183,8 +6860,7 @@ func encodeWatchCoreV1NamespacedSecretResponse(response WatchCoreV1NamespacedSec
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -7205,8 +6881,7 @@ func encodeWatchCoreV1NamespacedSecretListResponse(response WatchCoreV1Namespace
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -7227,8 +6902,7 @@ func encodeWatchCoreV1NamespacedServiceResponse(response WatchCoreV1NamespacedSe
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -7249,8 +6923,7 @@ func encodeWatchCoreV1NamespacedServiceAccountResponse(response WatchCoreV1Names
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -7271,8 +6944,7 @@ func encodeWatchCoreV1NamespacedServiceAccountListResponse(response WatchCoreV1N
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -7293,8 +6965,7 @@ func encodeWatchCoreV1NamespacedServiceListResponse(response WatchCoreV1Namespac
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -7315,8 +6986,7 @@ func encodeWatchCoreV1NodeResponse(response WatchCoreV1NodeRes, w http.ResponseW
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -7337,8 +7007,7 @@ func encodeWatchCoreV1NodeListResponse(response WatchCoreV1NodeListRes, w http.R
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -7359,8 +7028,7 @@ func encodeWatchCoreV1PersistentVolumeResponse(response WatchCoreV1PersistentVol
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -7381,8 +7049,7 @@ func encodeWatchCoreV1PersistentVolumeClaimListForAllNamespacesResponse(response
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -7403,8 +7070,7 @@ func encodeWatchCoreV1PersistentVolumeListResponse(response WatchCoreV1Persisten
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -7425,8 +7091,7 @@ func encodeWatchCoreV1PodListForAllNamespacesResponse(response WatchCoreV1PodLis
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -7447,8 +7112,7 @@ func encodeWatchCoreV1PodTemplateListForAllNamespacesResponse(response WatchCore
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -7469,8 +7133,7 @@ func encodeWatchCoreV1ReplicationControllerListForAllNamespacesResponse(response
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -7491,8 +7154,7 @@ func encodeWatchCoreV1ResourceQuotaListForAllNamespacesResponse(response WatchCo
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -7513,8 +7175,7 @@ func encodeWatchCoreV1SecretListForAllNamespacesResponse(response WatchCoreV1Sec
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -7535,8 +7196,7 @@ func encodeWatchCoreV1ServiceAccountListForAllNamespacesResponse(response WatchC
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -7557,8 +7217,7 @@ func encodeWatchCoreV1ServiceListForAllNamespacesResponse(response WatchCoreV1Se
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -7579,8 +7238,7 @@ func encodeWatchDiscoveryV1EndpointSliceListForAllNamespacesResponse(response Wa
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -7601,8 +7259,7 @@ func encodeWatchDiscoveryV1NamespacedEndpointSliceResponse(response WatchDiscove
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -7623,8 +7280,7 @@ func encodeWatchDiscoveryV1NamespacedEndpointSliceListResponse(response WatchDis
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -7645,8 +7301,7 @@ func encodeWatchDiscoveryV1beta1EndpointSliceListForAllNamespacesResponse(respon
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -7667,8 +7322,7 @@ func encodeWatchDiscoveryV1beta1NamespacedEndpointSliceResponse(response WatchDi
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -7689,8 +7343,7 @@ func encodeWatchDiscoveryV1beta1NamespacedEndpointSliceListResponse(response Wat
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -7711,8 +7364,7 @@ func encodeWatchEventsV1EventListForAllNamespacesResponse(response WatchEventsV1
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -7733,8 +7385,7 @@ func encodeWatchEventsV1NamespacedEventResponse(response WatchEventsV1Namespaced
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -7755,8 +7406,7 @@ func encodeWatchEventsV1NamespacedEventListResponse(response WatchEventsV1Namesp
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -7777,8 +7427,7 @@ func encodeWatchEventsV1beta1EventListForAllNamespacesResponse(response WatchEve
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -7799,8 +7448,7 @@ func encodeWatchEventsV1beta1NamespacedEventResponse(response WatchEventsV1beta1
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -7821,8 +7469,7 @@ func encodeWatchEventsV1beta1NamespacedEventListResponse(response WatchEventsV1b
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -7843,8 +7490,7 @@ func encodeWatchFlowcontrolApiserverV1beta1FlowSchemaResponse(response WatchFlow
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -7865,8 +7511,7 @@ func encodeWatchFlowcontrolApiserverV1beta1FlowSchemaListResponse(response Watch
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -7887,8 +7532,7 @@ func encodeWatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationResponse(re
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -7909,8 +7553,7 @@ func encodeWatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationListRespons
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -7931,8 +7574,7 @@ func encodeWatchFlowcontrolApiserverV1beta2FlowSchemaResponse(response WatchFlow
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -7953,8 +7595,7 @@ func encodeWatchFlowcontrolApiserverV1beta2FlowSchemaListResponse(response Watch
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -7975,8 +7616,7 @@ func encodeWatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationResponse(re
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -7997,8 +7637,7 @@ func encodeWatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationListRespons
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -8019,8 +7658,7 @@ func encodeWatchInternalApiserverV1alpha1StorageVersionResponse(response WatchIn
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -8041,8 +7679,7 @@ func encodeWatchInternalApiserverV1alpha1StorageVersionListResponse(response Wat
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -8063,8 +7700,7 @@ func encodeWatchNetworkingV1IngressClassResponse(response WatchNetworkingV1Ingre
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -8085,8 +7721,7 @@ func encodeWatchNetworkingV1IngressClassListResponse(response WatchNetworkingV1I
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -8107,8 +7742,7 @@ func encodeWatchNetworkingV1IngressListForAllNamespacesResponse(response WatchNe
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -8129,8 +7763,7 @@ func encodeWatchNetworkingV1NamespacedIngressResponse(response WatchNetworkingV1
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -8151,8 +7784,7 @@ func encodeWatchNetworkingV1NamespacedIngressListResponse(response WatchNetworki
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -8173,8 +7805,7 @@ func encodeWatchNetworkingV1NamespacedNetworkPolicyResponse(response WatchNetwor
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -8195,8 +7826,7 @@ func encodeWatchNetworkingV1NamespacedNetworkPolicyListResponse(response WatchNe
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -8217,8 +7847,7 @@ func encodeWatchNetworkingV1NetworkPolicyListForAllNamespacesResponse(response W
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -8239,8 +7868,7 @@ func encodeWatchNodeV1RuntimeClassResponse(response WatchNodeV1RuntimeClassRes, 
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -8261,8 +7889,7 @@ func encodeWatchNodeV1RuntimeClassListResponse(response WatchNodeV1RuntimeClassL
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -8283,8 +7910,7 @@ func encodeWatchNodeV1alpha1RuntimeClassResponse(response WatchNodeV1alpha1Runti
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -8305,8 +7931,7 @@ func encodeWatchNodeV1alpha1RuntimeClassListResponse(response WatchNodeV1alpha1R
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -8327,8 +7952,7 @@ func encodeWatchNodeV1beta1RuntimeClassResponse(response WatchNodeV1beta1Runtime
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -8349,8 +7973,7 @@ func encodeWatchNodeV1beta1RuntimeClassListResponse(response WatchNodeV1beta1Run
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -8371,8 +7994,7 @@ func encodeWatchPolicyV1NamespacedPodDisruptionBudgetResponse(response WatchPoli
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -8393,8 +8015,7 @@ func encodeWatchPolicyV1NamespacedPodDisruptionBudgetListResponse(response Watch
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -8415,8 +8036,7 @@ func encodeWatchPolicyV1PodDisruptionBudgetListForAllNamespacesResponse(response
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -8437,8 +8057,7 @@ func encodeWatchPolicyV1beta1NamespacedPodDisruptionBudgetResponse(response Watc
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -8459,8 +8078,7 @@ func encodeWatchPolicyV1beta1NamespacedPodDisruptionBudgetListResponse(response 
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -8481,8 +8099,7 @@ func encodeWatchPolicyV1beta1PodDisruptionBudgetListForAllNamespacesResponse(res
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -8503,8 +8120,7 @@ func encodeWatchPolicyV1beta1PodSecurityPolicyResponse(response WatchPolicyV1bet
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -8525,8 +8141,7 @@ func encodeWatchPolicyV1beta1PodSecurityPolicyListResponse(response WatchPolicyV
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -8547,8 +8162,7 @@ func encodeWatchRbacAuthorizationV1ClusterRoleResponse(response WatchRbacAuthori
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -8569,8 +8183,7 @@ func encodeWatchRbacAuthorizationV1ClusterRoleBindingResponse(response WatchRbac
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -8591,8 +8204,7 @@ func encodeWatchRbacAuthorizationV1ClusterRoleBindingListResponse(response Watch
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -8613,8 +8225,7 @@ func encodeWatchRbacAuthorizationV1ClusterRoleListResponse(response WatchRbacAut
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -8635,8 +8246,7 @@ func encodeWatchRbacAuthorizationV1NamespacedRoleResponse(response WatchRbacAuth
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -8657,8 +8267,7 @@ func encodeWatchRbacAuthorizationV1NamespacedRoleBindingResponse(response WatchR
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -8679,8 +8288,7 @@ func encodeWatchRbacAuthorizationV1NamespacedRoleBindingListResponse(response Wa
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -8701,8 +8309,7 @@ func encodeWatchRbacAuthorizationV1NamespacedRoleListResponse(response WatchRbac
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -8723,8 +8330,7 @@ func encodeWatchRbacAuthorizationV1RoleBindingListForAllNamespacesResponse(respo
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -8745,8 +8351,7 @@ func encodeWatchRbacAuthorizationV1RoleListForAllNamespacesResponse(response Wat
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -8767,8 +8372,7 @@ func encodeWatchSchedulingV1PriorityClassResponse(response WatchSchedulingV1Prio
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -8789,8 +8393,7 @@ func encodeWatchSchedulingV1PriorityClassListResponse(response WatchSchedulingV1
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -8811,8 +8414,7 @@ func encodeWatchStorageV1CSIDriverResponse(response WatchStorageV1CSIDriverRes, 
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -8833,8 +8435,7 @@ func encodeWatchStorageV1CSIDriverListResponse(response WatchStorageV1CSIDriverL
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -8855,8 +8456,7 @@ func encodeWatchStorageV1CSINodeResponse(response WatchStorageV1CSINodeRes, w ht
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -8877,8 +8477,7 @@ func encodeWatchStorageV1CSINodeListResponse(response WatchStorageV1CSINodeListR
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -8899,8 +8498,7 @@ func encodeWatchStorageV1StorageClassResponse(response WatchStorageV1StorageClas
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -8921,8 +8519,7 @@ func encodeWatchStorageV1StorageClassListResponse(response WatchStorageV1Storage
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -8943,8 +8540,7 @@ func encodeWatchStorageV1VolumeAttachmentResponse(response WatchStorageV1VolumeA
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -8965,8 +8561,7 @@ func encodeWatchStorageV1VolumeAttachmentListResponse(response WatchStorageV1Vol
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -8987,8 +8582,7 @@ func encodeWatchStorageV1alpha1CSIStorageCapacityListForAllNamespacesResponse(re
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -9009,8 +8603,7 @@ func encodeWatchStorageV1alpha1NamespacedCSIStorageCapacityResponse(response Wat
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -9031,8 +8624,7 @@ func encodeWatchStorageV1alpha1NamespacedCSIStorageCapacityListResponse(response
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -9053,8 +8645,7 @@ func encodeWatchStorageV1beta1CSIStorageCapacityListForAllNamespacesResponse(res
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -9075,8 +8666,7 @@ func encodeWatchStorageV1beta1NamespacedCSIStorageCapacityResponse(response Watc
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -9097,8 +8687,7 @@ func encodeWatchStorageV1beta1NamespacedCSIStorageCapacityListResponse(response 
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetEncoder()
-		defer jx.PutEncoder(e)
+		e := &jx.Writer{}
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {

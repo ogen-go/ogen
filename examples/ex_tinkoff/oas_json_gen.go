@@ -63,7 +63,7 @@ var (
 )
 
 // Encode encodes BrokerAccountType as json.
-func (s BrokerAccountType) Encode(e *jx.Encoder) {
+func (s BrokerAccountType) Encode(e *jx.Writer) {
 	e.Str(string(s))
 }
 
@@ -90,32 +90,44 @@ func (s *BrokerAccountType) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s Candle) Encode(e *jx.Encoder) {
+func (s Candle) Encode(e *jx.Writer) {
 	e.ObjStart()
 
-	e.FieldStart("figi")
+	e.RawStr("\"figi\"" + ":")
 	e.Str(s.Figi)
+	e.Comma()
 
-	e.FieldStart("interval")
+	e.RawStr("\"interval\"" + ":")
 	s.Interval.Encode(e)
 
-	e.FieldStart("o")
+	e.Comma()
+
+	e.RawStr("\"o\"" + ":")
 	e.Float64(s.O)
+	e.Comma()
 
-	e.FieldStart("c")
+	e.RawStr("\"c\"" + ":")
 	e.Float64(s.C)
+	e.Comma()
 
-	e.FieldStart("h")
+	e.RawStr("\"h\"" + ":")
 	e.Float64(s.H)
+	e.Comma()
 
-	e.FieldStart("l")
+	e.RawStr("\"l\"" + ":")
 	e.Float64(s.L)
+	e.Comma()
 
-	e.FieldStart("v")
+	e.RawStr("\"v\"" + ":")
 	e.Int32(s.V)
+	e.Comma()
 
-	e.FieldStart("time")
+	e.RawStr("\"time\"" + ":")
 	json.EncodeDateTime(e, s.Time)
+
+	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
+		e.Buf = e.Buf[:length-1]
+	}
 	e.ObjEnd()
 }
 
@@ -180,7 +192,7 @@ func (s *Candle) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes CandleResolution as json.
-func (s CandleResolution) Encode(e *jx.Encoder) {
+func (s CandleResolution) Encode(e *jx.Writer) {
 	e.Str(string(s))
 }
 
@@ -225,21 +237,36 @@ func (s *CandleResolution) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s Candles) Encode(e *jx.Encoder) {
+func (s Candles) Encode(e *jx.Writer) {
 	e.ObjStart()
 
-	e.FieldStart("figi")
+	e.RawStr("\"figi\"" + ":")
 	e.Str(s.Figi)
+	e.Comma()
 
-	e.FieldStart("interval")
+	e.RawStr("\"interval\"" + ":")
 	s.Interval.Encode(e)
 
-	e.FieldStart("candles")
+	e.Comma()
+
+	e.RawStr("\"candles\"" + ":")
 	e.ArrStart()
-	for _, elem := range s.Candles {
-		elem.Encode(e)
+	if len(s.Candles) >= 1 {
+		// Encode first element without comma.
+		{
+			elem := s.Candles[0]
+			elem.Encode(e)
+		}
+		for _, elem := range s.Candles[1:] {
+			e.Comma()
+			elem.Encode(e)
+		}
 	}
 	e.ArrEnd()
+
+	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
+		e.Buf = e.Buf[:length-1]
+	}
 	e.ObjEnd()
 }
 
@@ -280,17 +307,23 @@ func (s *Candles) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s CandlesResponse) Encode(e *jx.Encoder) {
+func (s CandlesResponse) Encode(e *jx.Writer) {
 	e.ObjStart()
 
-	e.FieldStart("trackingId")
+	e.RawStr("\"trackingId\"" + ":")
 	e.Str(s.TrackingId)
+	e.Comma()
 
-	e.FieldStart("status")
+	e.RawStr("\"status\"" + ":")
 	e.Str(s.Status)
+	e.Comma()
 
-	e.FieldStart("payload")
+	e.RawStr("\"payload\"" + ":")
 	s.Payload.Encode(e)
+
+	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
+		e.Buf = e.Buf[:length-1]
+	}
 	e.ObjEnd()
 }
 
@@ -325,15 +358,27 @@ func (s *CandlesResponse) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s Currencies) Encode(e *jx.Encoder) {
+func (s Currencies) Encode(e *jx.Writer) {
 	e.ObjStart()
 
-	e.FieldStart("currencies")
+	e.RawStr("\"currencies\"" + ":")
 	e.ArrStart()
-	for _, elem := range s.Currencies {
-		elem.Encode(e)
+	if len(s.Currencies) >= 1 {
+		// Encode first element without comma.
+		{
+			elem := s.Currencies[0]
+			elem.Encode(e)
+		}
+		for _, elem := range s.Currencies[1:] {
+			e.Comma()
+			elem.Encode(e)
+		}
 	}
 	e.ArrEnd()
+
+	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
+		e.Buf = e.Buf[:length-1]
+	}
 	e.ObjEnd()
 }
 
@@ -364,7 +409,7 @@ func (s *Currencies) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes Currency as json.
-func (s Currency) Encode(e *jx.Encoder) {
+func (s Currency) Encode(e *jx.Writer) {
 	e.Str(string(s))
 }
 
@@ -405,17 +450,24 @@ func (s *Currency) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s CurrencyPosition) Encode(e *jx.Encoder) {
+func (s CurrencyPosition) Encode(e *jx.Writer) {
 	e.ObjStart()
 
-	e.FieldStart("currency")
+	e.RawStr("\"currency\"" + ":")
 	s.Currency.Encode(e)
 
-	e.FieldStart("balance")
+	e.Comma()
+
+	e.RawStr("\"balance\"" + ":")
 	e.Float64(s.Balance)
+	e.Comma()
 	if s.Blocked.Set {
-		e.FieldStart("blocked")
+		e.RawStr("\"blocked\"" + ":")
 		s.Blocked.Encode(e)
+	}
+
+	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
+		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -450,17 +502,24 @@ func (s *CurrencyPosition) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s Empty) Encode(e *jx.Encoder) {
+func (s Empty) Encode(e *jx.Writer) {
 	e.ObjStart()
 
-	e.FieldStart("trackingId")
+	e.RawStr("\"trackingId\"" + ":")
 	e.Str(s.TrackingId)
+	e.Comma()
 
-	e.FieldStart("payload")
+	e.RawStr("\"payload\"" + ":")
 	s.Payload.Encode(e)
 
-	e.FieldStart("status")
+	e.Comma()
+
+	e.RawStr("\"status\"" + ":")
 	e.Str(s.Status)
+
+	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
+		e.Buf = e.Buf[:length-1]
+	}
 	e.ObjEnd()
 }
 
@@ -495,8 +554,12 @@ func (s *Empty) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s EmptyPayload) Encode(e *jx.Encoder) {
+func (s EmptyPayload) Encode(e *jx.Writer) {
 	e.ObjStart()
+
+	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
+		e.Buf = e.Buf[:length-1]
+	}
 	e.ObjEnd()
 }
 
@@ -515,17 +578,23 @@ func (s *EmptyPayload) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s Error) Encode(e *jx.Encoder) {
+func (s Error) Encode(e *jx.Writer) {
 	e.ObjStart()
 
-	e.FieldStart("trackingId")
+	e.RawStr("\"trackingId\"" + ":")
 	e.Str(s.TrackingId)
+	e.Comma()
 
-	e.FieldStart("status")
+	e.RawStr("\"status\"" + ":")
 	e.Str(s.Status)
+	e.Comma()
 
-	e.FieldStart("payload")
+	e.RawStr("\"payload\"" + ":")
 	s.Payload.Encode(e)
+
+	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
+		e.Buf = e.Buf[:length-1]
+	}
 	e.ObjEnd()
 }
 
@@ -560,15 +629,22 @@ func (s *Error) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s ErrorPayload) Encode(e *jx.Encoder) {
+func (s ErrorPayload) Encode(e *jx.Writer) {
 	e.ObjStart()
 	if s.Message.Set {
-		e.FieldStart("message")
+		e.RawStr("\"message\"" + ":")
 		s.Message.Encode(e)
 	}
+	if s.Message.Set {
+		e.Comma()
+	}
 	if s.Code.Set {
-		e.FieldStart("code")
+		e.RawStr("\"code\"" + ":")
 		s.Code.Encode(e)
+	}
+
+	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
+		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -598,7 +674,7 @@ func (s *ErrorPayload) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes InstrumentType as json.
-func (s InstrumentType) Encode(e *jx.Encoder) {
+func (s InstrumentType) Encode(e *jx.Writer) {
 	e.Str(string(s))
 }
 
@@ -629,17 +705,24 @@ func (s *InstrumentType) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s LimitOrderRequest) Encode(e *jx.Encoder) {
+func (s LimitOrderRequest) Encode(e *jx.Writer) {
 	e.ObjStart()
 
-	e.FieldStart("lots")
+	e.RawStr("\"lots\"" + ":")
 	e.Int32(s.Lots)
+	e.Comma()
 
-	e.FieldStart("operation")
+	e.RawStr("\"operation\"" + ":")
 	s.Operation.Encode(e)
 
-	e.FieldStart("price")
+	e.Comma()
+
+	e.RawStr("\"price\"" + ":")
 	e.Float64(s.Price)
+
+	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
+		e.Buf = e.Buf[:length-1]
+	}
 	e.ObjEnd()
 }
 
@@ -674,17 +757,23 @@ func (s *LimitOrderRequest) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s LimitOrderResponse) Encode(e *jx.Encoder) {
+func (s LimitOrderResponse) Encode(e *jx.Writer) {
 	e.ObjStart()
 
-	e.FieldStart("trackingId")
+	e.RawStr("\"trackingId\"" + ":")
 	e.Str(s.TrackingId)
+	e.Comma()
 
-	e.FieldStart("status")
+	e.RawStr("\"status\"" + ":")
 	e.Str(s.Status)
+	e.Comma()
 
-	e.FieldStart("payload")
+	e.RawStr("\"payload\"" + ":")
 	s.Payload.Encode(e)
+
+	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
+		e.Buf = e.Buf[:length-1]
+	}
 	e.ObjEnd()
 }
 
@@ -719,39 +808,59 @@ func (s *LimitOrderResponse) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s MarketInstrument) Encode(e *jx.Encoder) {
+func (s MarketInstrument) Encode(e *jx.Writer) {
 	e.ObjStart()
 
-	e.FieldStart("figi")
+	e.RawStr("\"figi\"" + ":")
 	e.Str(s.Figi)
+	e.Comma()
 
-	e.FieldStart("ticker")
+	e.RawStr("\"ticker\"" + ":")
 	e.Str(s.Ticker)
+	e.Comma()
 	if s.Isin.Set {
-		e.FieldStart("isin")
+		e.RawStr("\"isin\"" + ":")
 		s.Isin.Encode(e)
 	}
+	if s.Isin.Set {
+		e.Comma()
+	}
 	if s.MinPriceIncrement.Set {
-		e.FieldStart("minPriceIncrement")
+		e.RawStr("\"minPriceIncrement\"" + ":")
 		s.MinPriceIncrement.Encode(e)
 	}
+	if s.MinPriceIncrement.Set {
+		e.Comma()
+	}
 
-	e.FieldStart("lot")
+	e.RawStr("\"lot\"" + ":")
 	e.Int32(s.Lot)
+	e.Comma()
 	if s.MinQuantity.Set {
-		e.FieldStart("minQuantity")
+		e.RawStr("\"minQuantity\"" + ":")
 		s.MinQuantity.Encode(e)
 	}
+	if s.MinQuantity.Set {
+		e.Comma()
+	}
 	if s.Currency.Set {
-		e.FieldStart("currency")
+		e.RawStr("\"currency\"" + ":")
 		s.Currency.Encode(e)
 	}
+	if s.Currency.Set {
+		e.Comma()
+	}
 
-	e.FieldStart("name")
+	e.RawStr("\"name\"" + ":")
 	e.Str(s.Name)
+	e.Comma()
 
-	e.FieldStart("type")
+	e.RawStr("\"type\"" + ":")
 	s.Type.Encode(e)
+
+	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
+		e.Buf = e.Buf[:length-1]
+	}
 	e.ObjEnd()
 }
 
@@ -818,18 +927,31 @@ func (s *MarketInstrument) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s MarketInstrumentList) Encode(e *jx.Encoder) {
+func (s MarketInstrumentList) Encode(e *jx.Writer) {
 	e.ObjStart()
 
-	e.FieldStart("total")
+	e.RawStr("\"total\"" + ":")
 	e.Int32(s.Total)
+	e.Comma()
 
-	e.FieldStart("instruments")
+	e.RawStr("\"instruments\"" + ":")
 	e.ArrStart()
-	for _, elem := range s.Instruments {
-		elem.Encode(e)
+	if len(s.Instruments) >= 1 {
+		// Encode first element without comma.
+		{
+			elem := s.Instruments[0]
+			elem.Encode(e)
+		}
+		for _, elem := range s.Instruments[1:] {
+			e.Comma()
+			elem.Encode(e)
+		}
 	}
 	e.ArrEnd()
+
+	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
+		e.Buf = e.Buf[:length-1]
+	}
 	e.ObjEnd()
 }
 
@@ -866,17 +988,23 @@ func (s *MarketInstrumentList) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s MarketInstrumentListResponse) Encode(e *jx.Encoder) {
+func (s MarketInstrumentListResponse) Encode(e *jx.Writer) {
 	e.ObjStart()
 
-	e.FieldStart("trackingId")
+	e.RawStr("\"trackingId\"" + ":")
 	e.Str(s.TrackingId)
+	e.Comma()
 
-	e.FieldStart("status")
+	e.RawStr("\"status\"" + ":")
 	e.Str(s.Status)
+	e.Comma()
 
-	e.FieldStart("payload")
+	e.RawStr("\"payload\"" + ":")
 	s.Payload.Encode(e)
+
+	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
+		e.Buf = e.Buf[:length-1]
+	}
 	e.ObjEnd()
 }
 
@@ -911,14 +1039,19 @@ func (s *MarketInstrumentListResponse) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s MarketOrderRequest) Encode(e *jx.Encoder) {
+func (s MarketOrderRequest) Encode(e *jx.Writer) {
 	e.ObjStart()
 
-	e.FieldStart("lots")
+	e.RawStr("\"lots\"" + ":")
 	e.Int32(s.Lots)
+	e.Comma()
 
-	e.FieldStart("operation")
+	e.RawStr("\"operation\"" + ":")
 	s.Operation.Encode(e)
+
+	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
+		e.Buf = e.Buf[:length-1]
+	}
 	e.ObjEnd()
 }
 
@@ -947,17 +1080,23 @@ func (s *MarketOrderRequest) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s MarketOrderResponse) Encode(e *jx.Encoder) {
+func (s MarketOrderResponse) Encode(e *jx.Writer) {
 	e.ObjStart()
 
-	e.FieldStart("trackingId")
+	e.RawStr("\"trackingId\"" + ":")
 	e.Str(s.TrackingId)
+	e.Comma()
 
-	e.FieldStart("status")
+	e.RawStr("\"status\"" + ":")
 	e.Str(s.Status)
+	e.Comma()
 
-	e.FieldStart("payload")
+	e.RawStr("\"payload\"" + ":")
 	s.Payload.Encode(e)
+
+	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
+		e.Buf = e.Buf[:length-1]
+	}
 	e.ObjEnd()
 }
 
@@ -992,14 +1131,20 @@ func (s *MarketOrderResponse) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s MoneyAmount) Encode(e *jx.Encoder) {
+func (s MoneyAmount) Encode(e *jx.Writer) {
 	e.ObjStart()
 
-	e.FieldStart("currency")
+	e.RawStr("\"currency\"" + ":")
 	s.Currency.Encode(e)
 
-	e.FieldStart("value")
+	e.Comma()
+
+	e.RawStr("\"value\"" + ":")
 	e.Float64(s.Value)
+
+	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
+		e.Buf = e.Buf[:length-1]
+	}
 	e.ObjEnd()
 }
 
@@ -1028,61 +1173,102 @@ func (s *MoneyAmount) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s Operation) Encode(e *jx.Encoder) {
+func (s Operation) Encode(e *jx.Writer) {
 	e.ObjStart()
 
-	e.FieldStart("id")
+	e.RawStr("\"id\"" + ":")
 	e.Str(s.ID)
+	e.Comma()
 
-	e.FieldStart("status")
+	e.RawStr("\"status\"" + ":")
 	s.Status.Encode(e)
+
+	e.Comma()
 	if s.Trades != nil {
-		e.FieldStart("trades")
+		e.RawStr("\"trades\"" + ":")
 		e.ArrStart()
-		for _, elem := range s.Trades {
-			elem.Encode(e)
+		if len(s.Trades) >= 1 {
+			// Encode first element without comma.
+			{
+				elem := s.Trades[0]
+				elem.Encode(e)
+			}
+			for _, elem := range s.Trades[1:] {
+				e.Comma()
+				elem.Encode(e)
+			}
 		}
 		e.ArrEnd()
 	}
+	if s.Trades != nil {
+		e.Comma()
+	}
 	if s.Commission.Set {
-		e.FieldStart("commission")
+		e.RawStr("\"commission\"" + ":")
 		s.Commission.Encode(e)
 	}
+	if s.Commission.Set {
+		e.Comma()
+	}
 
-	e.FieldStart("currency")
+	e.RawStr("\"currency\"" + ":")
 	s.Currency.Encode(e)
 
-	e.FieldStart("payment")
+	e.Comma()
+
+	e.RawStr("\"payment\"" + ":")
 	e.Float64(s.Payment)
+	e.Comma()
 	if s.Price.Set {
-		e.FieldStart("price")
+		e.RawStr("\"price\"" + ":")
 		s.Price.Encode(e)
 	}
+	if s.Price.Set {
+		e.Comma()
+	}
 	if s.Quantity.Set {
-		e.FieldStart("quantity")
+		e.RawStr("\"quantity\"" + ":")
 		s.Quantity.Encode(e)
 	}
+	if s.Quantity.Set {
+		e.Comma()
+	}
 	if s.QuantityExecuted.Set {
-		e.FieldStart("quantityExecuted")
+		e.RawStr("\"quantityExecuted\"" + ":")
 		s.QuantityExecuted.Encode(e)
 	}
+	if s.QuantityExecuted.Set {
+		e.Comma()
+	}
 	if s.Figi.Set {
-		e.FieldStart("figi")
+		e.RawStr("\"figi\"" + ":")
 		s.Figi.Encode(e)
 	}
+	if s.Figi.Set {
+		e.Comma()
+	}
 	if s.InstrumentType.Set {
-		e.FieldStart("instrumentType")
+		e.RawStr("\"instrumentType\"" + ":")
 		s.InstrumentType.Encode(e)
 	}
+	if s.InstrumentType.Set {
+		e.Comma()
+	}
 
-	e.FieldStart("isMarginCall")
+	e.RawStr("\"isMarginCall\"" + ":")
 	e.Bool(s.IsMarginCall)
+	e.Comma()
 
-	e.FieldStart("date")
+	e.RawStr("\"date\"" + ":")
 	json.EncodeDateTime(e, s.Date)
+	e.Comma()
 	if s.OperationType.Set {
-		e.FieldStart("operationType")
+		e.RawStr("\"operationType\"" + ":")
 		s.OperationType.Encode(e)
+	}
+
+	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
+		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -1181,7 +1367,7 @@ func (s *Operation) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes OperationStatus as json.
-func (s OperationStatus) Encode(e *jx.Encoder) {
+func (s OperationStatus) Encode(e *jx.Writer) {
 	e.Str(string(s))
 }
 
@@ -1210,20 +1396,27 @@ func (s *OperationStatus) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s OperationTrade) Encode(e *jx.Encoder) {
+func (s OperationTrade) Encode(e *jx.Writer) {
 	e.ObjStart()
 
-	e.FieldStart("tradeId")
+	e.RawStr("\"tradeId\"" + ":")
 	e.Str(s.TradeId)
+	e.Comma()
 
-	e.FieldStart("date")
+	e.RawStr("\"date\"" + ":")
 	json.EncodeDateTime(e, s.Date)
+	e.Comma()
 
-	e.FieldStart("price")
+	e.RawStr("\"price\"" + ":")
 	e.Float64(s.Price)
+	e.Comma()
 
-	e.FieldStart("quantity")
+	e.RawStr("\"quantity\"" + ":")
 	e.Int32(s.Quantity)
+
+	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
+		e.Buf = e.Buf[:length-1]
+	}
 	e.ObjEnd()
 }
 
@@ -1266,7 +1459,7 @@ func (s *OperationTrade) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes OperationType as json.
-func (s OperationType) Encode(e *jx.Encoder) {
+func (s OperationType) Encode(e *jx.Writer) {
 	e.Str(string(s))
 }
 
@@ -1293,7 +1486,7 @@ func (s *OperationType) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes OperationTypeWithCommission as json.
-func (s OperationTypeWithCommission) Encode(e *jx.Encoder) {
+func (s OperationTypeWithCommission) Encode(e *jx.Writer) {
 	e.Str(string(s))
 }
 
@@ -1358,15 +1551,27 @@ func (s *OperationTypeWithCommission) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s Operations) Encode(e *jx.Encoder) {
+func (s Operations) Encode(e *jx.Writer) {
 	e.ObjStart()
 
-	e.FieldStart("operations")
+	e.RawStr("\"operations\"" + ":")
 	e.ArrStart()
-	for _, elem := range s.Operations {
-		elem.Encode(e)
+	if len(s.Operations) >= 1 {
+		// Encode first element without comma.
+		{
+			elem := s.Operations[0]
+			elem.Encode(e)
+		}
+		for _, elem := range s.Operations[1:] {
+			e.Comma()
+			elem.Encode(e)
+		}
 	}
 	e.ArrEnd()
+
+	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
+		e.Buf = e.Buf[:length-1]
+	}
 	e.ObjEnd()
 }
 
@@ -1397,17 +1602,23 @@ func (s *Operations) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s OperationsResponse) Encode(e *jx.Encoder) {
+func (s OperationsResponse) Encode(e *jx.Writer) {
 	e.ObjStart()
 
-	e.FieldStart("trackingId")
+	e.RawStr("\"trackingId\"" + ":")
 	e.Str(s.TrackingId)
+	e.Comma()
 
-	e.FieldStart("status")
+	e.RawStr("\"status\"" + ":")
 	e.Str(s.Status)
+	e.Comma()
 
-	e.FieldStart("payload")
+	e.RawStr("\"payload\"" + ":")
 	s.Payload.Encode(e)
+
+	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
+		e.Buf = e.Buf[:length-1]
+	}
 	e.ObjEnd()
 }
 
@@ -1442,7 +1653,7 @@ func (s *OperationsResponse) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes BrokerAccountType as json.
-func (o OptBrokerAccountType) Encode(e *jx.Encoder) {
+func (o OptBrokerAccountType) Encode(e *jx.Writer) {
 	e.Str(string(o.Value))
 }
 
@@ -1464,7 +1675,7 @@ func (o *OptBrokerAccountType) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes Currency as json.
-func (o OptCurrency) Encode(e *jx.Encoder) {
+func (o OptCurrency) Encode(e *jx.Writer) {
 	e.Str(string(o.Value))
 }
 
@@ -1486,7 +1697,7 @@ func (o *OptCurrency) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes float64 as json.
-func (o OptFloat64) Encode(e *jx.Encoder) {
+func (o OptFloat64) Encode(e *jx.Writer) {
 	e.Float64(float64(o.Value))
 }
 
@@ -1510,7 +1721,7 @@ func (o *OptFloat64) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes InstrumentType as json.
-func (o OptInstrumentType) Encode(e *jx.Encoder) {
+func (o OptInstrumentType) Encode(e *jx.Writer) {
 	e.Str(string(o.Value))
 }
 
@@ -1532,7 +1743,7 @@ func (o *OptInstrumentType) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes int32 as json.
-func (o OptInt32) Encode(e *jx.Encoder) {
+func (o OptInt32) Encode(e *jx.Writer) {
 	e.Int32(int32(o.Value))
 }
 
@@ -1556,7 +1767,7 @@ func (o *OptInt32) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes MoneyAmount as json.
-func (o OptMoneyAmount) Encode(e *jx.Encoder) {
+func (o OptMoneyAmount) Encode(e *jx.Writer) {
 	o.Value.Encode(e)
 }
 
@@ -1578,7 +1789,7 @@ func (o *OptMoneyAmount) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes OperationTypeWithCommission as json.
-func (o OptOperationTypeWithCommission) Encode(e *jx.Encoder) {
+func (o OptOperationTypeWithCommission) Encode(e *jx.Writer) {
 	e.Str(string(o.Value))
 }
 
@@ -1600,7 +1811,7 @@ func (o *OptOperationTypeWithCommission) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes SandboxRegisterRequest as json.
-func (o OptSandboxRegisterRequest) Encode(e *jx.Encoder) {
+func (o OptSandboxRegisterRequest) Encode(e *jx.Writer) {
 	o.Value.Encode(e)
 }
 
@@ -1622,7 +1833,7 @@ func (o *OptSandboxRegisterRequest) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes string as json.
-func (o OptString) Encode(e *jx.Encoder) {
+func (o OptString) Encode(e *jx.Writer) {
 	e.Str(string(o.Value))
 }
 
@@ -1646,32 +1857,46 @@ func (o *OptString) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s Order) Encode(e *jx.Encoder) {
+func (s Order) Encode(e *jx.Writer) {
 	e.ObjStart()
 
-	e.FieldStart("orderId")
+	e.RawStr("\"orderId\"" + ":")
 	e.Str(s.OrderId)
+	e.Comma()
 
-	e.FieldStart("figi")
+	e.RawStr("\"figi\"" + ":")
 	e.Str(s.Figi)
+	e.Comma()
 
-	e.FieldStart("operation")
+	e.RawStr("\"operation\"" + ":")
 	s.Operation.Encode(e)
 
-	e.FieldStart("status")
+	e.Comma()
+
+	e.RawStr("\"status\"" + ":")
 	s.Status.Encode(e)
 
-	e.FieldStart("requestedLots")
+	e.Comma()
+
+	e.RawStr("\"requestedLots\"" + ":")
 	e.Int32(s.RequestedLots)
+	e.Comma()
 
-	e.FieldStart("executedLots")
+	e.RawStr("\"executedLots\"" + ":")
 	e.Int32(s.ExecutedLots)
+	e.Comma()
 
-	e.FieldStart("type")
+	e.RawStr("\"type\"" + ":")
 	s.Type.Encode(e)
 
-	e.FieldStart("price")
+	e.Comma()
+
+	e.RawStr("\"price\"" + ":")
 	e.Float64(s.Price)
+
+	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
+		e.Buf = e.Buf[:length-1]
+	}
 	e.ObjEnd()
 }
 
@@ -1732,14 +1957,19 @@ func (s *Order) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s OrderResponse) Encode(e *jx.Encoder) {
+func (s OrderResponse) Encode(e *jx.Writer) {
 	e.ObjStart()
 
-	e.FieldStart("price")
+	e.RawStr("\"price\"" + ":")
 	e.Float64(s.Price)
+	e.Comma()
 
-	e.FieldStart("quantity")
+	e.RawStr("\"quantity\"" + ":")
 	e.Int32(s.Quantity)
+
+	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
+		e.Buf = e.Buf[:length-1]
+	}
 	e.ObjEnd()
 }
 
@@ -1770,7 +2000,7 @@ func (s *OrderResponse) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes OrderStatus as json.
-func (s OrderStatus) Encode(e *jx.Encoder) {
+func (s OrderStatus) Encode(e *jx.Writer) {
 	e.Str(string(s))
 }
 
@@ -1811,7 +2041,7 @@ func (s *OrderStatus) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes OrderType as json.
-func (s OrderType) Encode(e *jx.Encoder) {
+func (s OrderType) Encode(e *jx.Writer) {
 	e.Str(string(s))
 }
 
@@ -1838,53 +2068,94 @@ func (s *OrderType) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s Orderbook) Encode(e *jx.Encoder) {
+func (s Orderbook) Encode(e *jx.Writer) {
 	e.ObjStart()
 
-	e.FieldStart("figi")
+	e.RawStr("\"figi\"" + ":")
 	e.Str(s.Figi)
+	e.Comma()
 
-	e.FieldStart("depth")
+	e.RawStr("\"depth\"" + ":")
 	e.Int32(s.Depth)
+	e.Comma()
 
-	e.FieldStart("bids")
+	e.RawStr("\"bids\"" + ":")
 	e.ArrStart()
-	for _, elem := range s.Bids {
-		elem.Encode(e)
+	if len(s.Bids) >= 1 {
+		// Encode first element without comma.
+		{
+			elem := s.Bids[0]
+			elem.Encode(e)
+		}
+		for _, elem := range s.Bids[1:] {
+			e.Comma()
+			elem.Encode(e)
+		}
 	}
 	e.ArrEnd()
 
-	e.FieldStart("asks")
+	e.Comma()
+
+	e.RawStr("\"asks\"" + ":")
 	e.ArrStart()
-	for _, elem := range s.Asks {
-		elem.Encode(e)
+	if len(s.Asks) >= 1 {
+		// Encode first element without comma.
+		{
+			elem := s.Asks[0]
+			elem.Encode(e)
+		}
+		for _, elem := range s.Asks[1:] {
+			e.Comma()
+			elem.Encode(e)
+		}
 	}
 	e.ArrEnd()
 
-	e.FieldStart("tradeStatus")
+	e.Comma()
+
+	e.RawStr("\"tradeStatus\"" + ":")
 	s.TradeStatus.Encode(e)
 
-	e.FieldStart("minPriceIncrement")
+	e.Comma()
+
+	e.RawStr("\"minPriceIncrement\"" + ":")
 	e.Float64(s.MinPriceIncrement)
+	e.Comma()
 	if s.FaceValue.Set {
-		e.FieldStart("faceValue")
+		e.RawStr("\"faceValue\"" + ":")
 		s.FaceValue.Encode(e)
 	}
+	if s.FaceValue.Set {
+		e.Comma()
+	}
 	if s.LastPrice.Set {
-		e.FieldStart("lastPrice")
+		e.RawStr("\"lastPrice\"" + ":")
 		s.LastPrice.Encode(e)
 	}
+	if s.LastPrice.Set {
+		e.Comma()
+	}
 	if s.ClosePrice.Set {
-		e.FieldStart("closePrice")
+		e.RawStr("\"closePrice\"" + ":")
 		s.ClosePrice.Encode(e)
 	}
+	if s.ClosePrice.Set {
+		e.Comma()
+	}
 	if s.LimitUp.Set {
-		e.FieldStart("limitUp")
+		e.RawStr("\"limitUp\"" + ":")
 		s.LimitUp.Encode(e)
 	}
+	if s.LimitUp.Set {
+		e.Comma()
+	}
 	if s.LimitDown.Set {
-		e.FieldStart("limitDown")
+		e.RawStr("\"limitDown\"" + ":")
 		s.LimitDown.Encode(e)
+	}
+
+	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
+		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -1975,17 +2246,23 @@ func (s *Orderbook) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s OrderbookResponse) Encode(e *jx.Encoder) {
+func (s OrderbookResponse) Encode(e *jx.Writer) {
 	e.ObjStart()
 
-	e.FieldStart("trackingId")
+	e.RawStr("\"trackingId\"" + ":")
 	e.Str(s.TrackingId)
+	e.Comma()
 
-	e.FieldStart("status")
+	e.RawStr("\"status\"" + ":")
 	e.Str(s.Status)
+	e.Comma()
 
-	e.FieldStart("payload")
+	e.RawStr("\"payload\"" + ":")
 	s.Payload.Encode(e)
+
+	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
+		e.Buf = e.Buf[:length-1]
+	}
 	e.ObjEnd()
 }
 
@@ -2020,21 +2297,35 @@ func (s *OrderbookResponse) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s OrdersResponse) Encode(e *jx.Encoder) {
+func (s OrdersResponse) Encode(e *jx.Writer) {
 	e.ObjStart()
 
-	e.FieldStart("trackingId")
+	e.RawStr("\"trackingId\"" + ":")
 	e.Str(s.TrackingId)
+	e.Comma()
 
-	e.FieldStart("status")
+	e.RawStr("\"status\"" + ":")
 	e.Str(s.Status)
+	e.Comma()
 
-	e.FieldStart("payload")
+	e.RawStr("\"payload\"" + ":")
 	e.ArrStart()
-	for _, elem := range s.Payload {
-		elem.Encode(e)
+	if len(s.Payload) >= 1 {
+		// Encode first element without comma.
+		{
+			elem := s.Payload[0]
+			elem.Encode(e)
+		}
+		for _, elem := range s.Payload[1:] {
+			e.Comma()
+			elem.Encode(e)
+		}
 	}
 	e.ArrEnd()
+
+	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
+		e.Buf = e.Buf[:length-1]
+	}
 	e.ObjEnd()
 }
 
@@ -2077,34 +2368,51 @@ func (s *OrdersResponse) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s PlacedLimitOrder) Encode(e *jx.Encoder) {
+func (s PlacedLimitOrder) Encode(e *jx.Writer) {
 	e.ObjStart()
 
-	e.FieldStart("orderId")
+	e.RawStr("\"orderId\"" + ":")
 	e.Str(s.OrderId)
+	e.Comma()
 
-	e.FieldStart("operation")
+	e.RawStr("\"operation\"" + ":")
 	s.Operation.Encode(e)
 
-	e.FieldStart("status")
+	e.Comma()
+
+	e.RawStr("\"status\"" + ":")
 	s.Status.Encode(e)
+
+	e.Comma()
 	if s.RejectReason.Set {
-		e.FieldStart("rejectReason")
+		e.RawStr("\"rejectReason\"" + ":")
 		s.RejectReason.Encode(e)
 	}
+	if s.RejectReason.Set {
+		e.Comma()
+	}
 	if s.Message.Set {
-		e.FieldStart("message")
+		e.RawStr("\"message\"" + ":")
 		s.Message.Encode(e)
 	}
+	if s.Message.Set {
+		e.Comma()
+	}
 
-	e.FieldStart("requestedLots")
+	e.RawStr("\"requestedLots\"" + ":")
 	e.Int(s.RequestedLots)
+	e.Comma()
 
-	e.FieldStart("executedLots")
+	e.RawStr("\"executedLots\"" + ":")
 	e.Int(s.ExecutedLots)
+	e.Comma()
 	if s.Commission.Set {
-		e.FieldStart("commission")
+		e.RawStr("\"commission\"" + ":")
 		s.Commission.Encode(e)
+	}
+
+	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
+		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -2165,34 +2473,51 @@ func (s *PlacedLimitOrder) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s PlacedMarketOrder) Encode(e *jx.Encoder) {
+func (s PlacedMarketOrder) Encode(e *jx.Writer) {
 	e.ObjStart()
 
-	e.FieldStart("orderId")
+	e.RawStr("\"orderId\"" + ":")
 	e.Str(s.OrderId)
+	e.Comma()
 
-	e.FieldStart("operation")
+	e.RawStr("\"operation\"" + ":")
 	s.Operation.Encode(e)
 
-	e.FieldStart("status")
+	e.Comma()
+
+	e.RawStr("\"status\"" + ":")
 	s.Status.Encode(e)
+
+	e.Comma()
 	if s.RejectReason.Set {
-		e.FieldStart("rejectReason")
+		e.RawStr("\"rejectReason\"" + ":")
 		s.RejectReason.Encode(e)
 	}
+	if s.RejectReason.Set {
+		e.Comma()
+	}
 	if s.Message.Set {
-		e.FieldStart("message")
+		e.RawStr("\"message\"" + ":")
 		s.Message.Encode(e)
 	}
+	if s.Message.Set {
+		e.Comma()
+	}
 
-	e.FieldStart("requestedLots")
+	e.RawStr("\"requestedLots\"" + ":")
 	e.Int(s.RequestedLots)
+	e.Comma()
 
-	e.FieldStart("executedLots")
+	e.RawStr("\"executedLots\"" + ":")
 	e.Int(s.ExecutedLots)
+	e.Comma()
 	if s.Commission.Set {
-		e.FieldStart("commission")
+		e.RawStr("\"commission\"" + ":")
 		s.Commission.Encode(e)
+	}
+
+	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
+		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -2253,15 +2578,27 @@ func (s *PlacedMarketOrder) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s Portfolio) Encode(e *jx.Encoder) {
+func (s Portfolio) Encode(e *jx.Writer) {
 	e.ObjStart()
 
-	e.FieldStart("positions")
+	e.RawStr("\"positions\"" + ":")
 	e.ArrStart()
-	for _, elem := range s.Positions {
-		elem.Encode(e)
+	if len(s.Positions) >= 1 {
+		// Encode first element without comma.
+		{
+			elem := s.Positions[0]
+			elem.Encode(e)
+		}
+		for _, elem := range s.Positions[1:] {
+			e.Comma()
+			elem.Encode(e)
+		}
 	}
 	e.ArrEnd()
+
+	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
+		e.Buf = e.Buf[:length-1]
+	}
 	e.ObjEnd()
 }
 
@@ -2292,17 +2629,23 @@ func (s *Portfolio) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s PortfolioCurrenciesResponse) Encode(e *jx.Encoder) {
+func (s PortfolioCurrenciesResponse) Encode(e *jx.Writer) {
 	e.ObjStart()
 
-	e.FieldStart("trackingId")
+	e.RawStr("\"trackingId\"" + ":")
 	e.Str(s.TrackingId)
+	e.Comma()
 
-	e.FieldStart("status")
+	e.RawStr("\"status\"" + ":")
 	e.Str(s.Status)
+	e.Comma()
 
-	e.FieldStart("payload")
+	e.RawStr("\"payload\"" + ":")
 	s.Payload.Encode(e)
+
+	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
+		e.Buf = e.Buf[:length-1]
+	}
 	e.ObjEnd()
 }
 
@@ -2337,47 +2680,74 @@ func (s *PortfolioCurrenciesResponse) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s PortfolioPosition) Encode(e *jx.Encoder) {
+func (s PortfolioPosition) Encode(e *jx.Writer) {
 	e.ObjStart()
 
-	e.FieldStart("figi")
+	e.RawStr("\"figi\"" + ":")
 	e.Str(s.Figi)
+	e.Comma()
 	if s.Ticker.Set {
-		e.FieldStart("ticker")
+		e.RawStr("\"ticker\"" + ":")
 		s.Ticker.Encode(e)
 	}
+	if s.Ticker.Set {
+		e.Comma()
+	}
 	if s.Isin.Set {
-		e.FieldStart("isin")
+		e.RawStr("\"isin\"" + ":")
 		s.Isin.Encode(e)
 	}
+	if s.Isin.Set {
+		e.Comma()
+	}
 
-	e.FieldStart("instrumentType")
+	e.RawStr("\"instrumentType\"" + ":")
 	s.InstrumentType.Encode(e)
 
-	e.FieldStart("balance")
+	e.Comma()
+
+	e.RawStr("\"balance\"" + ":")
 	e.Float64(s.Balance)
+	e.Comma()
 	if s.Blocked.Set {
-		e.FieldStart("blocked")
+		e.RawStr("\"blocked\"" + ":")
 		s.Blocked.Encode(e)
 	}
+	if s.Blocked.Set {
+		e.Comma()
+	}
 	if s.ExpectedYield.Set {
-		e.FieldStart("expectedYield")
+		e.RawStr("\"expectedYield\"" + ":")
 		s.ExpectedYield.Encode(e)
 	}
+	if s.ExpectedYield.Set {
+		e.Comma()
+	}
 
-	e.FieldStart("lots")
+	e.RawStr("\"lots\"" + ":")
 	e.Int32(s.Lots)
+	e.Comma()
 	if s.AveragePositionPrice.Set {
-		e.FieldStart("averagePositionPrice")
+		e.RawStr("\"averagePositionPrice\"" + ":")
 		s.AveragePositionPrice.Encode(e)
 	}
+	if s.AveragePositionPrice.Set {
+		e.Comma()
+	}
 	if s.AveragePositionPriceNoNkd.Set {
-		e.FieldStart("averagePositionPriceNoNkd")
+		e.RawStr("\"averagePositionPriceNoNkd\"" + ":")
 		s.AveragePositionPriceNoNkd.Encode(e)
 	}
+	if s.AveragePositionPriceNoNkd.Set {
+		e.Comma()
+	}
 
-	e.FieldStart("name")
+	e.RawStr("\"name\"" + ":")
 	e.Str(s.Name)
+
+	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
+		e.Buf = e.Buf[:length-1]
+	}
 	e.ObjEnd()
 }
 
@@ -2454,17 +2824,23 @@ func (s *PortfolioPosition) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s PortfolioResponse) Encode(e *jx.Encoder) {
+func (s PortfolioResponse) Encode(e *jx.Writer) {
 	e.ObjStart()
 
-	e.FieldStart("trackingId")
+	e.RawStr("\"trackingId\"" + ":")
 	e.Str(s.TrackingId)
+	e.Comma()
 
-	e.FieldStart("status")
+	e.RawStr("\"status\"" + ":")
 	e.Str(s.Status)
+	e.Comma()
 
-	e.FieldStart("payload")
+	e.RawStr("\"payload\"" + ":")
 	s.Payload.Encode(e)
+
+	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
+		e.Buf = e.Buf[:length-1]
+	}
 	e.ObjEnd()
 }
 
@@ -2499,14 +2875,20 @@ func (s *PortfolioResponse) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s SandboxAccount) Encode(e *jx.Encoder) {
+func (s SandboxAccount) Encode(e *jx.Writer) {
 	e.ObjStart()
 
-	e.FieldStart("brokerAccountType")
+	e.RawStr("\"brokerAccountType\"" + ":")
 	s.BrokerAccountType.Encode(e)
 
-	e.FieldStart("brokerAccountId")
+	e.Comma()
+
+	e.RawStr("\"brokerAccountId\"" + ":")
 	e.Str(s.BrokerAccountId)
+
+	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
+		e.Buf = e.Buf[:length-1]
+	}
 	e.ObjEnd()
 }
 
@@ -2535,7 +2917,7 @@ func (s *SandboxAccount) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes SandboxCurrency as json.
-func (s SandboxCurrency) Encode(e *jx.Encoder) {
+func (s SandboxCurrency) Encode(e *jx.Writer) {
 	e.Str(string(s))
 }
 
@@ -2576,11 +2958,15 @@ func (s *SandboxCurrency) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s SandboxRegisterRequest) Encode(e *jx.Encoder) {
+func (s SandboxRegisterRequest) Encode(e *jx.Writer) {
 	e.ObjStart()
 	if s.BrokerAccountType.Set {
-		e.FieldStart("brokerAccountType")
+		e.RawStr("\"brokerAccountType\"" + ":")
 		s.BrokerAccountType.Encode(e)
+	}
+
+	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
+		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -2605,17 +2991,23 @@ func (s *SandboxRegisterRequest) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s SandboxRegisterResponse) Encode(e *jx.Encoder) {
+func (s SandboxRegisterResponse) Encode(e *jx.Writer) {
 	e.ObjStart()
 
-	e.FieldStart("trackingId")
+	e.RawStr("\"trackingId\"" + ":")
 	e.Str(s.TrackingId)
+	e.Comma()
 
-	e.FieldStart("status")
+	e.RawStr("\"status\"" + ":")
 	e.Str(s.Status)
+	e.Comma()
 
-	e.FieldStart("payload")
+	e.RawStr("\"payload\"" + ":")
 	s.Payload.Encode(e)
+
+	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
+		e.Buf = e.Buf[:length-1]
+	}
 	e.ObjEnd()
 }
 
@@ -2650,14 +3042,20 @@ func (s *SandboxRegisterResponse) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s SandboxSetCurrencyBalanceRequest) Encode(e *jx.Encoder) {
+func (s SandboxSetCurrencyBalanceRequest) Encode(e *jx.Writer) {
 	e.ObjStart()
 
-	e.FieldStart("currency")
+	e.RawStr("\"currency\"" + ":")
 	s.Currency.Encode(e)
 
-	e.FieldStart("balance")
+	e.Comma()
+
+	e.RawStr("\"balance\"" + ":")
 	e.Float64(s.Balance)
+
+	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
+		e.Buf = e.Buf[:length-1]
+	}
 	e.ObjEnd()
 }
 
@@ -2686,15 +3084,22 @@ func (s *SandboxSetCurrencyBalanceRequest) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s SandboxSetPositionBalanceRequest) Encode(e *jx.Encoder) {
+func (s SandboxSetPositionBalanceRequest) Encode(e *jx.Writer) {
 	e.ObjStart()
 	if s.Figi.Set {
-		e.FieldStart("figi")
+		e.RawStr("\"figi\"" + ":")
 		s.Figi.Encode(e)
 	}
+	if s.Figi.Set {
+		e.Comma()
+	}
 
-	e.FieldStart("balance")
+	e.RawStr("\"balance\"" + ":")
 	e.Float64(s.Balance)
+
+	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
+		e.Buf = e.Buf[:length-1]
+	}
 	e.ObjEnd()
 }
 
@@ -2724,35 +3129,52 @@ func (s *SandboxSetPositionBalanceRequest) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s SearchMarketInstrument) Encode(e *jx.Encoder) {
+func (s SearchMarketInstrument) Encode(e *jx.Writer) {
 	e.ObjStart()
 
-	e.FieldStart("figi")
+	e.RawStr("\"figi\"" + ":")
 	e.Str(s.Figi)
+	e.Comma()
 
-	e.FieldStart("ticker")
+	e.RawStr("\"ticker\"" + ":")
 	e.Str(s.Ticker)
+	e.Comma()
 	if s.Isin.Set {
-		e.FieldStart("isin")
+		e.RawStr("\"isin\"" + ":")
 		s.Isin.Encode(e)
 	}
+	if s.Isin.Set {
+		e.Comma()
+	}
 	if s.MinPriceIncrement.Set {
-		e.FieldStart("minPriceIncrement")
+		e.RawStr("\"minPriceIncrement\"" + ":")
 		s.MinPriceIncrement.Encode(e)
 	}
-
-	e.FieldStart("lot")
-	e.Int32(s.Lot)
-	if s.Currency.Set {
-		e.FieldStart("currency")
-		s.Currency.Encode(e)
+	if s.MinPriceIncrement.Set {
+		e.Comma()
 	}
 
-	e.FieldStart("name")
-	e.Str(s.Name)
+	e.RawStr("\"lot\"" + ":")
+	e.Int32(s.Lot)
+	e.Comma()
+	if s.Currency.Set {
+		e.RawStr("\"currency\"" + ":")
+		s.Currency.Encode(e)
+	}
+	if s.Currency.Set {
+		e.Comma()
+	}
 
-	e.FieldStart("type")
+	e.RawStr("\"name\"" + ":")
+	e.Str(s.Name)
+	e.Comma()
+
+	e.RawStr("\"type\"" + ":")
 	s.Type.Encode(e)
+
+	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
+		e.Buf = e.Buf[:length-1]
+	}
 	e.ObjEnd()
 }
 
@@ -2814,17 +3236,23 @@ func (s *SearchMarketInstrument) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s SearchMarketInstrumentResponse) Encode(e *jx.Encoder) {
+func (s SearchMarketInstrumentResponse) Encode(e *jx.Writer) {
 	e.ObjStart()
 
-	e.FieldStart("trackingId")
+	e.RawStr("\"trackingId\"" + ":")
 	e.Str(s.TrackingId)
+	e.Comma()
 
-	e.FieldStart("status")
+	e.RawStr("\"status\"" + ":")
 	e.Str(s.Status)
+	e.Comma()
 
-	e.FieldStart("payload")
+	e.RawStr("\"payload\"" + ":")
 	s.Payload.Encode(e)
+
+	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
+		e.Buf = e.Buf[:length-1]
+	}
 	e.ObjEnd()
 }
 
@@ -2859,7 +3287,7 @@ func (s *SearchMarketInstrumentResponse) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes TradeStatus as json.
-func (s TradeStatus) Encode(e *jx.Encoder) {
+func (s TradeStatus) Encode(e *jx.Writer) {
 	e.Str(string(s))
 }
 
@@ -2886,14 +3314,20 @@ func (s *TradeStatus) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s UserAccount) Encode(e *jx.Encoder) {
+func (s UserAccount) Encode(e *jx.Writer) {
 	e.ObjStart()
 
-	e.FieldStart("brokerAccountType")
+	e.RawStr("\"brokerAccountType\"" + ":")
 	s.BrokerAccountType.Encode(e)
 
-	e.FieldStart("brokerAccountId")
+	e.Comma()
+
+	e.RawStr("\"brokerAccountId\"" + ":")
 	e.Str(s.BrokerAccountId)
+
+	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
+		e.Buf = e.Buf[:length-1]
+	}
 	e.ObjEnd()
 }
 
@@ -2922,15 +3356,27 @@ func (s *UserAccount) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s UserAccounts) Encode(e *jx.Encoder) {
+func (s UserAccounts) Encode(e *jx.Writer) {
 	e.ObjStart()
 
-	e.FieldStart("accounts")
+	e.RawStr("\"accounts\"" + ":")
 	e.ArrStart()
-	for _, elem := range s.Accounts {
-		elem.Encode(e)
+	if len(s.Accounts) >= 1 {
+		// Encode first element without comma.
+		{
+			elem := s.Accounts[0]
+			elem.Encode(e)
+		}
+		for _, elem := range s.Accounts[1:] {
+			e.Comma()
+			elem.Encode(e)
+		}
 	}
 	e.ArrEnd()
+
+	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
+		e.Buf = e.Buf[:length-1]
+	}
 	e.ObjEnd()
 }
 
@@ -2961,17 +3407,23 @@ func (s *UserAccounts) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s UserAccountsResponse) Encode(e *jx.Encoder) {
+func (s UserAccountsResponse) Encode(e *jx.Writer) {
 	e.ObjStart()
 
-	e.FieldStart("trackingId")
+	e.RawStr("\"trackingId\"" + ":")
 	e.Str(s.TrackingId)
+	e.Comma()
 
-	e.FieldStart("status")
+	e.RawStr("\"status\"" + ":")
 	e.Str(s.Status)
+	e.Comma()
 
-	e.FieldStart("payload")
+	e.RawStr("\"payload\"" + ":")
 	s.Payload.Encode(e)
+
+	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
+		e.Buf = e.Buf[:length-1]
+	}
 	e.ObjEnd()
 }
 

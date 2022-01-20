@@ -63,47 +63,83 @@ var (
 )
 
 // Encode implements json.Marshaler.
-func (s Book) Encode(e *jx.Encoder) {
+func (s Book) Encode(e *jx.Writer) {
 	e.ObjStart()
 	if s.ID.Set {
-		e.FieldStart("id")
+		e.RawStr("\"id\"" + ":")
 		s.ID.Encode(e)
 	}
+	if s.ID.Set {
+		e.Comma()
+	}
 	if s.MediaID.Set {
-		e.FieldStart("media_id")
+		e.RawStr("\"media_id\"" + ":")
 		s.MediaID.Encode(e)
 	}
+	if s.MediaID.Set {
+		e.Comma()
+	}
 	if s.Images.Set {
-		e.FieldStart("images")
+		e.RawStr("\"images\"" + ":")
 		s.Images.Encode(e)
 	}
+	if s.Images.Set {
+		e.Comma()
+	}
 	if s.Title.Set {
-		e.FieldStart("title")
+		e.RawStr("\"title\"" + ":")
 		s.Title.Encode(e)
 	}
+	if s.Title.Set {
+		e.Comma()
+	}
 	if s.Tags != nil {
-		e.FieldStart("tags")
+		e.RawStr("\"tags\"" + ":")
 		e.ArrStart()
-		for _, elem := range s.Tags {
-			elem.Encode(e)
+		if len(s.Tags) >= 1 {
+			// Encode first element without comma.
+			{
+				elem := s.Tags[0]
+				elem.Encode(e)
+			}
+			for _, elem := range s.Tags[1:] {
+				e.Comma()
+				elem.Encode(e)
+			}
 		}
 		e.ArrEnd()
 	}
+	if s.Tags != nil {
+		e.Comma()
+	}
 	if s.Scanlator.Set {
-		e.FieldStart("scanlator")
+		e.RawStr("\"scanlator\"" + ":")
 		s.Scanlator.Encode(e)
 	}
+	if s.Scanlator.Set {
+		e.Comma()
+	}
 	if s.UploadDate.Set {
-		e.FieldStart("upload_date")
+		e.RawStr("\"upload_date\"" + ":")
 		s.UploadDate.Encode(e)
 	}
+	if s.UploadDate.Set {
+		e.Comma()
+	}
 	if s.NumPages.Set {
-		e.FieldStart("num_pages")
+		e.RawStr("\"num_pages\"" + ":")
 		s.NumPages.Encode(e)
 	}
+	if s.NumPages.Set {
+		e.Comma()
+	}
 	if s.NumFavorites.Set {
-		e.FieldStart("num_favorites")
+		e.RawStr("\"num_favorites\"" + ":")
 		s.NumFavorites.Encode(e)
+	}
+
+	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
+		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -175,8 +211,12 @@ func (s *Book) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s GetBookForbidden) Encode(e *jx.Encoder) {
+func (s GetBookForbidden) Encode(e *jx.Writer) {
 	e.ObjStart()
+
+	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
+		e.Buf = e.Buf[:length-1]
+	}
 	e.ObjEnd()
 }
 
@@ -195,8 +235,12 @@ func (s *GetBookForbidden) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s GetPageCoverImageForbidden) Encode(e *jx.Encoder) {
+func (s GetPageCoverImageForbidden) Encode(e *jx.Writer) {
 	e.ObjStart()
+
+	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
+		e.Buf = e.Buf[:length-1]
+	}
 	e.ObjEnd()
 }
 
@@ -215,8 +259,12 @@ func (s *GetPageCoverImageForbidden) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s GetPageImageForbidden) Encode(e *jx.Encoder) {
+func (s GetPageImageForbidden) Encode(e *jx.Writer) {
 	e.ObjStart()
+
+	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
+		e.Buf = e.Buf[:length-1]
+	}
 	e.ObjEnd()
 }
 
@@ -235,8 +283,12 @@ func (s *GetPageImageForbidden) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s GetPageThumbnailImageForbidden) Encode(e *jx.Encoder) {
+func (s GetPageThumbnailImageForbidden) Encode(e *jx.Writer) {
 	e.ObjStart()
+
+	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
+		e.Buf = e.Buf[:length-1]
+	}
 	e.ObjEnd()
 }
 
@@ -255,19 +307,29 @@ func (s *GetPageThumbnailImageForbidden) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s Image) Encode(e *jx.Encoder) {
+func (s Image) Encode(e *jx.Writer) {
 	e.ObjStart()
 	if s.T.Set {
-		e.FieldStart("t")
+		e.RawStr("\"t\"" + ":")
 		s.T.Encode(e)
 	}
+	if s.T.Set {
+		e.Comma()
+	}
 	if s.W.Set {
-		e.FieldStart("w")
+		e.RawStr("\"w\"" + ":")
 		s.W.Encode(e)
 	}
+	if s.W.Set {
+		e.Comma()
+	}
 	if s.H.Set {
-		e.FieldStart("h")
+		e.RawStr("\"h\"" + ":")
 		s.H.Encode(e)
+	}
+
+	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
+		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -302,23 +364,41 @@ func (s *Image) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s Images) Encode(e *jx.Encoder) {
+func (s Images) Encode(e *jx.Writer) {
 	e.ObjStart()
 	if s.Pages != nil {
-		e.FieldStart("pages")
+		e.RawStr("\"pages\"" + ":")
 		e.ArrStart()
-		for _, elem := range s.Pages {
-			elem.Encode(e)
+		if len(s.Pages) >= 1 {
+			// Encode first element without comma.
+			{
+				elem := s.Pages[0]
+				elem.Encode(e)
+			}
+			for _, elem := range s.Pages[1:] {
+				e.Comma()
+				elem.Encode(e)
+			}
 		}
 		e.ArrEnd()
 	}
+	if s.Pages != nil {
+		e.Comma()
+	}
 	if s.Cover.Set {
-		e.FieldStart("cover")
+		e.RawStr("\"cover\"" + ":")
 		s.Cover.Encode(e)
 	}
+	if s.Cover.Set {
+		e.Comma()
+	}
 	if s.Thumbnail.Set {
-		e.FieldStart("thumbnail")
+		e.RawStr("\"thumbnail\"" + ":")
 		s.Thumbnail.Encode(e)
+	}
+
+	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
+		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -360,7 +440,7 @@ func (s *Images) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes Image as json.
-func (o OptImage) Encode(e *jx.Encoder) {
+func (o OptImage) Encode(e *jx.Writer) {
 	o.Value.Encode(e)
 }
 
@@ -382,7 +462,7 @@ func (o *OptImage) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes Images as json.
-func (o OptImages) Encode(e *jx.Encoder) {
+func (o OptImages) Encode(e *jx.Writer) {
 	o.Value.Encode(e)
 }
 
@@ -404,7 +484,7 @@ func (o *OptImages) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes int as json.
-func (o OptInt) Encode(e *jx.Encoder) {
+func (o OptInt) Encode(e *jx.Writer) {
 	e.Int(int(o.Value))
 }
 
@@ -428,7 +508,7 @@ func (o *OptInt) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes string as json.
-func (o OptString) Encode(e *jx.Encoder) {
+func (o OptString) Encode(e *jx.Writer) {
 	e.Str(string(o.Value))
 }
 
@@ -452,7 +532,7 @@ func (o *OptString) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes TagType as json.
-func (o OptTagType) Encode(e *jx.Encoder) {
+func (o OptTagType) Encode(e *jx.Writer) {
 	e.Str(string(o.Value))
 }
 
@@ -474,7 +554,7 @@ func (o *OptTagType) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes Title as json.
-func (o OptTitle) Encode(e *jx.Encoder) {
+func (o OptTitle) Encode(e *jx.Writer) {
 	o.Value.Encode(e)
 }
 
@@ -496,8 +576,12 @@ func (o *OptTitle) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s SearchByTagIDForbidden) Encode(e *jx.Encoder) {
+func (s SearchByTagIDForbidden) Encode(e *jx.Writer) {
 	e.ObjStart()
+
+	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
+		e.Buf = e.Buf[:length-1]
+	}
 	e.ObjEnd()
 }
 
@@ -516,11 +600,19 @@ func (s *SearchByTagIDForbidden) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes SearchByTagIDOKApplicationJSON as json.
-func (s SearchByTagIDOKApplicationJSON) Encode(e *jx.Encoder) {
+func (s SearchByTagIDOKApplicationJSON) Encode(e *jx.Writer) {
 	unwrapped := []SearchResponse(s)
 	e.ArrStart()
-	for _, elem := range unwrapped {
-		elem.Encode(e)
+	if len(unwrapped) >= 1 {
+		// Encode first element without comma.
+		{
+			elem := unwrapped[0]
+			elem.Encode(e)
+		}
+		for _, elem := range unwrapped[1:] {
+			e.Comma()
+			elem.Encode(e)
+		}
 	}
 	e.ArrEnd()
 }
@@ -552,8 +644,12 @@ func (s *SearchByTagIDOKApplicationJSON) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s SearchForbidden) Encode(e *jx.Encoder) {
+func (s SearchForbidden) Encode(e *jx.Writer) {
 	e.ObjStart()
+
+	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
+		e.Buf = e.Buf[:length-1]
+	}
 	e.ObjEnd()
 }
 
@@ -572,11 +668,19 @@ func (s *SearchForbidden) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes SearchOKApplicationJSON as json.
-func (s SearchOKApplicationJSON) Encode(e *jx.Encoder) {
+func (s SearchOKApplicationJSON) Encode(e *jx.Writer) {
 	unwrapped := []SearchResponse(s)
 	e.ArrStart()
-	for _, elem := range unwrapped {
-		elem.Encode(e)
+	if len(unwrapped) >= 1 {
+		// Encode first element without comma.
+		{
+			elem := unwrapped[0]
+			elem.Encode(e)
+		}
+		for _, elem := range unwrapped[1:] {
+			e.Comma()
+			elem.Encode(e)
+		}
 	}
 	e.ArrEnd()
 }
@@ -608,23 +712,41 @@ func (s *SearchOKApplicationJSON) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s SearchResponse) Encode(e *jx.Encoder) {
+func (s SearchResponse) Encode(e *jx.Writer) {
 	e.ObjStart()
 	if s.Result != nil {
-		e.FieldStart("result")
+		e.RawStr("\"result\"" + ":")
 		e.ArrStart()
-		for _, elem := range s.Result {
-			elem.Encode(e)
+		if len(s.Result) >= 1 {
+			// Encode first element without comma.
+			{
+				elem := s.Result[0]
+				elem.Encode(e)
+			}
+			for _, elem := range s.Result[1:] {
+				e.Comma()
+				elem.Encode(e)
+			}
 		}
 		e.ArrEnd()
 	}
+	if s.Result != nil {
+		e.Comma()
+	}
 	if s.NumPages.Set {
-		e.FieldStart("num_pages")
+		e.RawStr("\"num_pages\"" + ":")
 		s.NumPages.Encode(e)
 	}
+	if s.NumPages.Set {
+		e.Comma()
+	}
 	if s.PerPage.Set {
-		e.FieldStart("per_page")
+		e.RawStr("\"per_page\"" + ":")
 		s.PerPage.Encode(e)
+	}
+
+	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
+		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -666,27 +788,43 @@ func (s *SearchResponse) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s Tag) Encode(e *jx.Encoder) {
+func (s Tag) Encode(e *jx.Writer) {
 	e.ObjStart()
 	if s.ID.Set {
-		e.FieldStart("id")
+		e.RawStr("\"id\"" + ":")
 		s.ID.Encode(e)
 	}
+	if s.ID.Set {
+		e.Comma()
+	}
 	if s.Type.Set {
-		e.FieldStart("type")
+		e.RawStr("\"type\"" + ":")
 		s.Type.Encode(e)
 	}
+	if s.Type.Set {
+		e.Comma()
+	}
 	if s.Name.Set {
-		e.FieldStart("name")
+		e.RawStr("\"name\"" + ":")
 		s.Name.Encode(e)
 	}
+	if s.Name.Set {
+		e.Comma()
+	}
 	if s.URL.Set {
-		e.FieldStart("url")
+		e.RawStr("\"url\"" + ":")
 		s.URL.Encode(e)
 	}
+	if s.URL.Set {
+		e.Comma()
+	}
 	if s.Count.Set {
-		e.FieldStart("count")
+		e.RawStr("\"count\"" + ":")
 		s.Count.Encode(e)
+	}
+
+	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
+		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -731,7 +869,7 @@ func (s *Tag) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes TagType as json.
-func (s TagType) Encode(e *jx.Encoder) {
+func (s TagType) Encode(e *jx.Writer) {
 	e.Str(string(s))
 }
 
@@ -768,19 +906,29 @@ func (s *TagType) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s Title) Encode(e *jx.Encoder) {
+func (s Title) Encode(e *jx.Writer) {
 	e.ObjStart()
 	if s.English.Set {
-		e.FieldStart("english")
+		e.RawStr("\"english\"" + ":")
 		s.English.Encode(e)
 	}
+	if s.English.Set {
+		e.Comma()
+	}
 	if s.Japanese.Set {
-		e.FieldStart("japanese")
+		e.RawStr("\"japanese\"" + ":")
 		s.Japanese.Encode(e)
 	}
+	if s.Japanese.Set {
+		e.Comma()
+	}
 	if s.Pretty.Set {
-		e.FieldStart("pretty")
+		e.RawStr("\"pretty\"" + ":")
 		s.Pretty.Encode(e)
+	}
+
+	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
+		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }

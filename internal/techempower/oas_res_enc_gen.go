@@ -65,8 +65,7 @@ var (
 func encodeCachingResponse(response WorldObjects, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
+	e := &jx.Writer{}
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -79,8 +78,7 @@ func encodeCachingResponse(response WorldObjects, w http.ResponseWriter, span tr
 func encodeDBResponse(response WorldObject, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
+	e := &jx.Writer{}
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -93,8 +91,7 @@ func encodeDBResponse(response WorldObject, w http.ResponseWriter, span trace.Sp
 func encodeJSONResponse(response HelloWorld, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
+	e := &jx.Writer{}
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -107,8 +104,7 @@ func encodeJSONResponse(response HelloWorld, w http.ResponseWriter, span trace.S
 func encodeQueriesResponse(response WorldObjects, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
+	e := &jx.Writer{}
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -121,8 +117,7 @@ func encodeQueriesResponse(response WorldObjects, w http.ResponseWriter, span tr
 func encodeUpdatesResponse(response WorldObjects, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
+	e := &jx.Writer{}
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {

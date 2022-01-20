@@ -63,11 +63,15 @@ var (
 )
 
 // Encode implements json.Marshaler.
-func (s Data) Encode(e *jx.Encoder) {
+func (s Data) Encode(e *jx.Writer) {
 	e.ObjStart()
 
-	e.FieldStart("name")
+	e.RawStr("\"name\"" + ":")
 	e.Str(s.Name)
+
+	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
+		e.Buf = e.Buf[:length-1]
+	}
 	e.ObjEnd()
 }
 
@@ -92,14 +96,19 @@ func (s *Data) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s Error) Encode(e *jx.Encoder) {
+func (s Error) Encode(e *jx.Writer) {
 	e.ObjStart()
 
-	e.FieldStart("code")
+	e.RawStr("\"code\"" + ":")
 	e.Int64(s.Code)
+	e.Comma()
 
-	e.FieldStart("message")
+	e.RawStr("\"message\"" + ":")
 	e.Str(s.Message)
+
+	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
+		e.Buf = e.Buf[:length-1]
+	}
 	e.ObjEnd()
 }
 
@@ -130,8 +139,12 @@ func (s *Error) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s ErrorStatusCode) Encode(e *jx.Encoder) {
+func (s ErrorStatusCode) Encode(e *jx.Writer) {
 	e.ObjStart()
+
+	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
+		e.Buf = e.Buf[:length-1]
+	}
 	e.ObjEnd()
 }
 
@@ -150,7 +163,7 @@ func (s *ErrorStatusCode) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes Data as json.
-func (o OptData) Encode(e *jx.Encoder) {
+func (o OptData) Encode(e *jx.Writer) {
 	o.Value.Encode(e)
 }
 

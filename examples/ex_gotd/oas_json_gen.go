@@ -63,28 +63,41 @@ var (
 )
 
 // Encode implements json.Marshaler.
-func (s AddStickerToSet) Encode(e *jx.Encoder) {
+func (s AddStickerToSet) Encode(e *jx.Writer) {
 	e.ObjStart()
 
-	e.FieldStart("user_id")
+	e.RawStr("\"user_id\"" + ":")
 	e.Int(s.UserID)
+	e.Comma()
 
-	e.FieldStart("name")
+	e.RawStr("\"name\"" + ":")
 	e.Str(s.Name)
+	e.Comma()
 	if s.PNGSticker.Set {
-		e.FieldStart("png_sticker")
+		e.RawStr("\"png_sticker\"" + ":")
 		s.PNGSticker.Encode(e)
 	}
+	if s.PNGSticker.Set {
+		e.Comma()
+	}
 	if s.TgsSticker.Set {
-		e.FieldStart("tgs_sticker")
+		e.RawStr("\"tgs_sticker\"" + ":")
 		s.TgsSticker.Encode(e)
 	}
+	if s.TgsSticker.Set {
+		e.Comma()
+	}
 
-	e.FieldStart("emojis")
+	e.RawStr("\"emojis\"" + ":")
 	e.Str(s.Emojis)
+	e.Comma()
 	if s.MaskPosition.Set {
-		e.FieldStart("mask_position")
+		e.RawStr("\"mask_position\"" + ":")
 		s.MaskPosition.Encode(e)
+	}
+
+	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
+		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -137,38 +150,56 @@ func (s *AddStickerToSet) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s Animation) Encode(e *jx.Encoder) {
+func (s Animation) Encode(e *jx.Writer) {
 	e.ObjStart()
 
-	e.FieldStart("file_id")
+	e.RawStr("\"file_id\"" + ":")
 	e.Str(s.FileID)
+	e.Comma()
 
-	e.FieldStart("file_unique_id")
+	e.RawStr("\"file_unique_id\"" + ":")
 	e.Str(s.FileUniqueID)
+	e.Comma()
 
-	e.FieldStart("width")
+	e.RawStr("\"width\"" + ":")
 	e.Int(s.Width)
+	e.Comma()
 
-	e.FieldStart("height")
+	e.RawStr("\"height\"" + ":")
 	e.Int(s.Height)
+	e.Comma()
 
-	e.FieldStart("duration")
+	e.RawStr("\"duration\"" + ":")
 	e.Int(s.Duration)
+	e.Comma()
 	if s.Thumb.Set {
-		e.FieldStart("thumb")
+		e.RawStr("\"thumb\"" + ":")
 		s.Thumb.Encode(e)
 	}
+	if s.Thumb.Set {
+		e.Comma()
+	}
 	if s.FileName.Set {
-		e.FieldStart("file_name")
+		e.RawStr("\"file_name\"" + ":")
 		s.FileName.Encode(e)
 	}
+	if s.FileName.Set {
+		e.Comma()
+	}
 	if s.MimeType.Set {
-		e.FieldStart("mime_type")
+		e.RawStr("\"mime_type\"" + ":")
 		s.MimeType.Encode(e)
 	}
+	if s.MimeType.Set {
+		e.Comma()
+	}
 	if s.FileSize.Set {
-		e.FieldStart("file_size")
+		e.RawStr("\"file_size\"" + ":")
 		s.FileSize.Encode(e)
+	}
+
+	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
+		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -238,26 +269,40 @@ func (s *Animation) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s AnswerCallbackQuery) Encode(e *jx.Encoder) {
+func (s AnswerCallbackQuery) Encode(e *jx.Writer) {
 	e.ObjStart()
 
-	e.FieldStart("callback_query_id")
+	e.RawStr("\"callback_query_id\"" + ":")
 	e.Str(s.CallbackQueryID)
+	e.Comma()
 	if s.Text.Set {
-		e.FieldStart("text")
+		e.RawStr("\"text\"" + ":")
 		s.Text.Encode(e)
 	}
+	if s.Text.Set {
+		e.Comma()
+	}
 	if s.ShowAlert.Set {
-		e.FieldStart("show_alert")
+		e.RawStr("\"show_alert\"" + ":")
 		s.ShowAlert.Encode(e)
 	}
+	if s.ShowAlert.Set {
+		e.Comma()
+	}
 	if s.URL.Set {
-		e.FieldStart("url")
+		e.RawStr("\"url\"" + ":")
 		s.URL.Encode(e)
 	}
+	if s.URL.Set {
+		e.Comma()
+	}
 	if s.CacheTime.Set {
-		e.FieldStart("cache_time")
+		e.RawStr("\"cache_time\"" + ":")
 		s.CacheTime.Encode(e)
+	}
+
+	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
+		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -303,37 +348,64 @@ func (s *AnswerCallbackQuery) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s AnswerInlineQuery) Encode(e *jx.Encoder) {
+func (s AnswerInlineQuery) Encode(e *jx.Writer) {
 	e.ObjStart()
 
-	e.FieldStart("inline_query_id")
+	e.RawStr("\"inline_query_id\"" + ":")
 	e.Str(s.InlineQueryID)
+	e.Comma()
 
-	e.FieldStart("results")
+	e.RawStr("\"results\"" + ":")
 	e.ArrStart()
-	for _, elem := range s.Results {
-		elem.Encode(e)
+	if len(s.Results) >= 1 {
+		// Encode first element without comma.
+		{
+			elem := s.Results[0]
+			elem.Encode(e)
+		}
+		for _, elem := range s.Results[1:] {
+			e.Comma()
+			elem.Encode(e)
+		}
 	}
 	e.ArrEnd()
+
+	e.Comma()
 	if s.CacheTime.Set {
-		e.FieldStart("cache_time")
+		e.RawStr("\"cache_time\"" + ":")
 		s.CacheTime.Encode(e)
 	}
+	if s.CacheTime.Set {
+		e.Comma()
+	}
 	if s.IsPersonal.Set {
-		e.FieldStart("is_personal")
+		e.RawStr("\"is_personal\"" + ":")
 		s.IsPersonal.Encode(e)
 	}
+	if s.IsPersonal.Set {
+		e.Comma()
+	}
 	if s.NextOffset.Set {
-		e.FieldStart("next_offset")
+		e.RawStr("\"next_offset\"" + ":")
 		s.NextOffset.Encode(e)
 	}
+	if s.NextOffset.Set {
+		e.Comma()
+	}
 	if s.SwitchPmText.Set {
-		e.FieldStart("switch_pm_text")
+		e.RawStr("\"switch_pm_text\"" + ":")
 		s.SwitchPmText.Encode(e)
 	}
+	if s.SwitchPmText.Set {
+		e.Comma()
+	}
 	if s.SwitchPmParameter.Set {
-		e.FieldStart("switch_pm_parameter")
+		e.RawStr("\"switch_pm_parameter\"" + ":")
 		s.SwitchPmParameter.Encode(e)
+	}
+
+	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
+		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -402,17 +474,23 @@ func (s *AnswerInlineQuery) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s AnswerPreCheckoutQuery) Encode(e *jx.Encoder) {
+func (s AnswerPreCheckoutQuery) Encode(e *jx.Writer) {
 	e.ObjStart()
 
-	e.FieldStart("pre_checkout_query_id")
+	e.RawStr("\"pre_checkout_query_id\"" + ":")
 	e.Str(s.PreCheckoutQueryID)
+	e.Comma()
 
-	e.FieldStart("ok")
+	e.RawStr("\"ok\"" + ":")
 	e.Bool(s.Ok)
+	e.Comma()
 	if s.ErrorMessage.Set {
-		e.FieldStart("error_message")
+		e.RawStr("\"error_message\"" + ":")
 		s.ErrorMessage.Encode(e)
+	}
+
+	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
+		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -449,25 +527,42 @@ func (s *AnswerPreCheckoutQuery) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s AnswerShippingQuery) Encode(e *jx.Encoder) {
+func (s AnswerShippingQuery) Encode(e *jx.Writer) {
 	e.ObjStart()
 
-	e.FieldStart("shipping_query_id")
+	e.RawStr("\"shipping_query_id\"" + ":")
 	e.Str(s.ShippingQueryID)
+	e.Comma()
 
-	e.FieldStart("ok")
+	e.RawStr("\"ok\"" + ":")
 	e.Bool(s.Ok)
+	e.Comma()
 	if s.ShippingOptions != nil {
-		e.FieldStart("shipping_options")
+		e.RawStr("\"shipping_options\"" + ":")
 		e.ArrStart()
-		for _, elem := range s.ShippingOptions {
-			elem.Encode(e)
+		if len(s.ShippingOptions) >= 1 {
+			// Encode first element without comma.
+			{
+				elem := s.ShippingOptions[0]
+				elem.Encode(e)
+			}
+			for _, elem := range s.ShippingOptions[1:] {
+				e.Comma()
+				elem.Encode(e)
+			}
 		}
 		e.ArrEnd()
 	}
+	if s.ShippingOptions != nil {
+		e.Comma()
+	}
 	if s.ErrorMessage.Set {
-		e.FieldStart("error_message")
+		e.RawStr("\"error_message\"" + ":")
 		s.ErrorMessage.Encode(e)
+	}
+
+	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
+		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -516,14 +611,20 @@ func (s *AnswerShippingQuery) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s ApproveChatJoinRequest) Encode(e *jx.Encoder) {
+func (s ApproveChatJoinRequest) Encode(e *jx.Writer) {
 	e.ObjStart()
 
-	e.FieldStart("chat_id")
+	e.RawStr("\"chat_id\"" + ":")
 	s.ChatID.Encode(e)
 
-	e.FieldStart("user_id")
+	e.Comma()
+
+	e.RawStr("\"user_id\"" + ":")
 	e.Int(s.UserID)
+
+	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
+		e.Buf = e.Buf[:length-1]
+	}
 	e.ObjEnd()
 }
 
@@ -552,40 +653,62 @@ func (s *ApproveChatJoinRequest) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s Audio) Encode(e *jx.Encoder) {
+func (s Audio) Encode(e *jx.Writer) {
 	e.ObjStart()
 
-	e.FieldStart("file_id")
+	e.RawStr("\"file_id\"" + ":")
 	e.Str(s.FileID)
+	e.Comma()
 
-	e.FieldStart("file_unique_id")
+	e.RawStr("\"file_unique_id\"" + ":")
 	e.Str(s.FileUniqueID)
+	e.Comma()
 
-	e.FieldStart("duration")
+	e.RawStr("\"duration\"" + ":")
 	e.Int(s.Duration)
+	e.Comma()
 	if s.Performer.Set {
-		e.FieldStart("performer")
+		e.RawStr("\"performer\"" + ":")
 		s.Performer.Encode(e)
 	}
+	if s.Performer.Set {
+		e.Comma()
+	}
 	if s.Title.Set {
-		e.FieldStart("title")
+		e.RawStr("\"title\"" + ":")
 		s.Title.Encode(e)
 	}
+	if s.Title.Set {
+		e.Comma()
+	}
 	if s.FileName.Set {
-		e.FieldStart("file_name")
+		e.RawStr("\"file_name\"" + ":")
 		s.FileName.Encode(e)
 	}
+	if s.FileName.Set {
+		e.Comma()
+	}
 	if s.MimeType.Set {
-		e.FieldStart("mime_type")
+		e.RawStr("\"mime_type\"" + ":")
 		s.MimeType.Encode(e)
 	}
+	if s.MimeType.Set {
+		e.Comma()
+	}
 	if s.FileSize.Set {
-		e.FieldStart("file_size")
+		e.RawStr("\"file_size\"" + ":")
 		s.FileSize.Encode(e)
 	}
+	if s.FileSize.Set {
+		e.Comma()
+	}
 	if s.Thumb.Set {
-		e.FieldStart("thumb")
+		e.RawStr("\"thumb\"" + ":")
 		s.Thumb.Encode(e)
+	}
+
+	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
+		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -653,21 +776,31 @@ func (s *Audio) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s BanChatMember) Encode(e *jx.Encoder) {
+func (s BanChatMember) Encode(e *jx.Writer) {
 	e.ObjStart()
 
-	e.FieldStart("chat_id")
+	e.RawStr("\"chat_id\"" + ":")
 	s.ChatID.Encode(e)
 
-	e.FieldStart("user_id")
+	e.Comma()
+
+	e.RawStr("\"user_id\"" + ":")
 	e.Int(s.UserID)
+	e.Comma()
 	if s.UntilDate.Set {
-		e.FieldStart("until_date")
+		e.RawStr("\"until_date\"" + ":")
 		s.UntilDate.Encode(e)
 	}
+	if s.UntilDate.Set {
+		e.Comma()
+	}
 	if s.RevokeMessages.Set {
-		e.FieldStart("revoke_messages")
+		e.RawStr("\"revoke_messages\"" + ":")
 		s.RevokeMessages.Encode(e)
+	}
+
+	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
+		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -707,14 +840,19 @@ func (s *BanChatMember) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s BotCommand) Encode(e *jx.Encoder) {
+func (s BotCommand) Encode(e *jx.Writer) {
 	e.ObjStart()
 
-	e.FieldStart("command")
+	e.RawStr("\"command\"" + ":")
 	e.Str(s.Command)
+	e.Comma()
 
-	e.FieldStart("description")
+	e.RawStr("\"description\"" + ":")
 	e.Str(s.Description)
+
+	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
+		e.Buf = e.Buf[:length-1]
+	}
 	e.ObjEnd()
 }
 
@@ -745,7 +883,7 @@ func (s *BotCommand) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes BotCommandScope as json.
-func (s BotCommandScope) Encode(e *jx.Encoder) {
+func (s BotCommandScope) Encode(e *jx.Writer) {
 	switch s.Type {
 	case BotCommandScopeDefaultBotCommandScope:
 		s.BotCommandScopeDefault.Encode(e)
@@ -856,11 +994,15 @@ func (s *BotCommandScope) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s BotCommandScopeAllChatAdministrators) Encode(e *jx.Encoder) {
+func (s BotCommandScopeAllChatAdministrators) Encode(e *jx.Writer) {
 	e.ObjStart()
 
-	e.FieldStart("type")
+	e.RawStr("\"type\"" + ":")
 	e.Str(s.Type)
+
+	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
+		e.Buf = e.Buf[:length-1]
+	}
 	e.ObjEnd()
 }
 
@@ -885,11 +1027,15 @@ func (s *BotCommandScopeAllChatAdministrators) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s BotCommandScopeAllGroupChats) Encode(e *jx.Encoder) {
+func (s BotCommandScopeAllGroupChats) Encode(e *jx.Writer) {
 	e.ObjStart()
 
-	e.FieldStart("type")
+	e.RawStr("\"type\"" + ":")
 	e.Str(s.Type)
+
+	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
+		e.Buf = e.Buf[:length-1]
+	}
 	e.ObjEnd()
 }
 
@@ -914,11 +1060,15 @@ func (s *BotCommandScopeAllGroupChats) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s BotCommandScopeAllPrivateChats) Encode(e *jx.Encoder) {
+func (s BotCommandScopeAllPrivateChats) Encode(e *jx.Writer) {
 	e.ObjStart()
 
-	e.FieldStart("type")
+	e.RawStr("\"type\"" + ":")
 	e.Str(s.Type)
+
+	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
+		e.Buf = e.Buf[:length-1]
+	}
 	e.ObjEnd()
 }
 
@@ -943,14 +1093,19 @@ func (s *BotCommandScopeAllPrivateChats) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s BotCommandScopeChat) Encode(e *jx.Encoder) {
+func (s BotCommandScopeChat) Encode(e *jx.Writer) {
 	e.ObjStart()
 
-	e.FieldStart("type")
+	e.RawStr("\"type\"" + ":")
 	e.Str(s.Type)
+	e.Comma()
 
-	e.FieldStart("chat_id")
+	e.RawStr("\"chat_id\"" + ":")
 	s.ChatID.Encode(e)
+
+	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
+		e.Buf = e.Buf[:length-1]
+	}
 	e.ObjEnd()
 }
 
@@ -979,14 +1134,19 @@ func (s *BotCommandScopeChat) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s BotCommandScopeChatAdministrators) Encode(e *jx.Encoder) {
+func (s BotCommandScopeChatAdministrators) Encode(e *jx.Writer) {
 	e.ObjStart()
 
-	e.FieldStart("type")
+	e.RawStr("\"type\"" + ":")
 	e.Str(s.Type)
+	e.Comma()
 
-	e.FieldStart("chat_id")
+	e.RawStr("\"chat_id\"" + ":")
 	s.ChatID.Encode(e)
+
+	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
+		e.Buf = e.Buf[:length-1]
+	}
 	e.ObjEnd()
 }
 
@@ -1015,17 +1175,24 @@ func (s *BotCommandScopeChatAdministrators) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s BotCommandScopeChatMember) Encode(e *jx.Encoder) {
+func (s BotCommandScopeChatMember) Encode(e *jx.Writer) {
 	e.ObjStart()
 
-	e.FieldStart("type")
+	e.RawStr("\"type\"" + ":")
 	e.Str(s.Type)
+	e.Comma()
 
-	e.FieldStart("chat_id")
+	e.RawStr("\"chat_id\"" + ":")
 	s.ChatID.Encode(e)
 
-	e.FieldStart("user_id")
+	e.Comma()
+
+	e.RawStr("\"user_id\"" + ":")
 	e.Int(s.UserID)
+
+	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
+		e.Buf = e.Buf[:length-1]
+	}
 	e.ObjEnd()
 }
 
@@ -1060,11 +1227,15 @@ func (s *BotCommandScopeChatMember) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s BotCommandScopeDefault) Encode(e *jx.Encoder) {
+func (s BotCommandScopeDefault) Encode(e *jx.Writer) {
 	e.ObjStart()
 
-	e.FieldStart("type")
+	e.RawStr("\"type\"" + ":")
 	e.Str(s.Type)
+
+	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
+		e.Buf = e.Buf[:length-1]
+	}
 	e.ObjEnd()
 }
 
@@ -1089,8 +1260,12 @@ func (s *BotCommandScopeDefault) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s CallbackGame) Encode(e *jx.Encoder) {
+func (s CallbackGame) Encode(e *jx.Writer) {
 	e.ObjStart()
+
+	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
+		e.Buf = e.Buf[:length-1]
+	}
 	e.ObjEnd()
 }
 
@@ -1109,77 +1284,128 @@ func (s *CallbackGame) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s Chat) Encode(e *jx.Encoder) {
+func (s Chat) Encode(e *jx.Writer) {
 	e.ObjStart()
 
-	e.FieldStart("id")
+	e.RawStr("\"id\"" + ":")
 	e.Int(s.ID)
+	e.Comma()
 
-	e.FieldStart("type")
+	e.RawStr("\"type\"" + ":")
 	e.Str(s.Type)
+	e.Comma()
 	if s.Title.Set {
-		e.FieldStart("title")
+		e.RawStr("\"title\"" + ":")
 		s.Title.Encode(e)
 	}
+	if s.Title.Set {
+		e.Comma()
+	}
 	if s.Username.Set {
-		e.FieldStart("username")
+		e.RawStr("\"username\"" + ":")
 		s.Username.Encode(e)
 	}
+	if s.Username.Set {
+		e.Comma()
+	}
 	if s.FirstName.Set {
-		e.FieldStart("first_name")
+		e.RawStr("\"first_name\"" + ":")
 		s.FirstName.Encode(e)
 	}
+	if s.FirstName.Set {
+		e.Comma()
+	}
 	if s.LastName.Set {
-		e.FieldStart("last_name")
+		e.RawStr("\"last_name\"" + ":")
 		s.LastName.Encode(e)
 	}
+	if s.LastName.Set {
+		e.Comma()
+	}
 	if s.Photo.Set {
-		e.FieldStart("photo")
+		e.RawStr("\"photo\"" + ":")
 		s.Photo.Encode(e)
 	}
+	if s.Photo.Set {
+		e.Comma()
+	}
 	if s.Bio.Set {
-		e.FieldStart("bio")
+		e.RawStr("\"bio\"" + ":")
 		s.Bio.Encode(e)
 	}
+	if s.Bio.Set {
+		e.Comma()
+	}
 	if s.Description.Set {
-		e.FieldStart("description")
+		e.RawStr("\"description\"" + ":")
 		s.Description.Encode(e)
 	}
+	if s.Description.Set {
+		e.Comma()
+	}
 	if s.InviteLink.Set {
-		e.FieldStart("invite_link")
+		e.RawStr("\"invite_link\"" + ":")
 		s.InviteLink.Encode(e)
 	}
+	if s.InviteLink.Set {
+		e.Comma()
+	}
 	if s.PinnedMessage != nil {
-		e.FieldStart("pinned_message")
+		e.RawStr("\"pinned_message\"" + ":")
 		s.PinnedMessage.Encode(e)
 	}
+	if s.PinnedMessage != nil {
+		e.Comma()
+	}
 	if s.Permissions.Set {
-		e.FieldStart("permissions")
+		e.RawStr("\"permissions\"" + ":")
 		s.Permissions.Encode(e)
 	}
+	if s.Permissions.Set {
+		e.Comma()
+	}
 	if s.SlowModeDelay.Set {
-		e.FieldStart("slow_mode_delay")
+		e.RawStr("\"slow_mode_delay\"" + ":")
 		s.SlowModeDelay.Encode(e)
 	}
+	if s.SlowModeDelay.Set {
+		e.Comma()
+	}
 	if s.MessageAutoDeleteTime.Set {
-		e.FieldStart("message_auto_delete_time")
+		e.RawStr("\"message_auto_delete_time\"" + ":")
 		s.MessageAutoDeleteTime.Encode(e)
 	}
+	if s.MessageAutoDeleteTime.Set {
+		e.Comma()
+	}
 	if s.StickerSetName.Set {
-		e.FieldStart("sticker_set_name")
+		e.RawStr("\"sticker_set_name\"" + ":")
 		s.StickerSetName.Encode(e)
 	}
+	if s.StickerSetName.Set {
+		e.Comma()
+	}
 	if s.CanSetStickerSet.Set {
-		e.FieldStart("can_set_sticker_set")
+		e.RawStr("\"can_set_sticker_set\"" + ":")
 		s.CanSetStickerSet.Encode(e)
 	}
+	if s.CanSetStickerSet.Set {
+		e.Comma()
+	}
 	if s.LinkedChatID.Set {
-		e.FieldStart("linked_chat_id")
+		e.RawStr("\"linked_chat_id\"" + ":")
 		s.LinkedChatID.Encode(e)
 	}
+	if s.LinkedChatID.Set {
+		e.Comma()
+	}
 	if s.Location.Set {
-		e.FieldStart("location")
+		e.RawStr("\"location\"" + ":")
 		s.Location.Encode(e)
+	}
+
+	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
+		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -1293,14 +1519,20 @@ func (s *Chat) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s ChatLocation) Encode(e *jx.Encoder) {
+func (s ChatLocation) Encode(e *jx.Writer) {
 	e.ObjStart()
 
-	e.FieldStart("location")
+	e.RawStr("\"location\"" + ":")
 	s.Location.Encode(e)
 
-	e.FieldStart("address")
+	e.Comma()
+
+	e.RawStr("\"address\"" + ":")
 	e.Str(s.Address)
+
+	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
+		e.Buf = e.Buf[:length-1]
+	}
 	e.ObjEnd()
 }
 
@@ -1329,39 +1561,64 @@ func (s *ChatLocation) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s ChatPermissions) Encode(e *jx.Encoder) {
+func (s ChatPermissions) Encode(e *jx.Writer) {
 	e.ObjStart()
 	if s.CanSendMessages.Set {
-		e.FieldStart("can_send_messages")
+		e.RawStr("\"can_send_messages\"" + ":")
 		s.CanSendMessages.Encode(e)
 	}
+	if s.CanSendMessages.Set {
+		e.Comma()
+	}
 	if s.CanSendMediaMessages.Set {
-		e.FieldStart("can_send_media_messages")
+		e.RawStr("\"can_send_media_messages\"" + ":")
 		s.CanSendMediaMessages.Encode(e)
 	}
+	if s.CanSendMediaMessages.Set {
+		e.Comma()
+	}
 	if s.CanSendPolls.Set {
-		e.FieldStart("can_send_polls")
+		e.RawStr("\"can_send_polls\"" + ":")
 		s.CanSendPolls.Encode(e)
 	}
+	if s.CanSendPolls.Set {
+		e.Comma()
+	}
 	if s.CanSendOtherMessages.Set {
-		e.FieldStart("can_send_other_messages")
+		e.RawStr("\"can_send_other_messages\"" + ":")
 		s.CanSendOtherMessages.Encode(e)
 	}
+	if s.CanSendOtherMessages.Set {
+		e.Comma()
+	}
 	if s.CanAddWebPagePreviews.Set {
-		e.FieldStart("can_add_web_page_previews")
+		e.RawStr("\"can_add_web_page_previews\"" + ":")
 		s.CanAddWebPagePreviews.Encode(e)
 	}
+	if s.CanAddWebPagePreviews.Set {
+		e.Comma()
+	}
 	if s.CanChangeInfo.Set {
-		e.FieldStart("can_change_info")
+		e.RawStr("\"can_change_info\"" + ":")
 		s.CanChangeInfo.Encode(e)
 	}
+	if s.CanChangeInfo.Set {
+		e.Comma()
+	}
 	if s.CanInviteUsers.Set {
-		e.FieldStart("can_invite_users")
+		e.RawStr("\"can_invite_users\"" + ":")
 		s.CanInviteUsers.Encode(e)
 	}
+	if s.CanInviteUsers.Set {
+		e.Comma()
+	}
 	if s.CanPinMessages.Set {
-		e.FieldStart("can_pin_messages")
+		e.RawStr("\"can_pin_messages\"" + ":")
 		s.CanPinMessages.Encode(e)
+	}
+
+	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
+		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -1421,20 +1678,27 @@ func (s *ChatPermissions) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s ChatPhoto) Encode(e *jx.Encoder) {
+func (s ChatPhoto) Encode(e *jx.Writer) {
 	e.ObjStart()
 
-	e.FieldStart("small_file_id")
+	e.RawStr("\"small_file_id\"" + ":")
 	e.Str(s.SmallFileID)
+	e.Comma()
 
-	e.FieldStart("small_file_unique_id")
+	e.RawStr("\"small_file_unique_id\"" + ":")
 	e.Str(s.SmallFileUniqueID)
+	e.Comma()
 
-	e.FieldStart("big_file_id")
+	e.RawStr("\"big_file_id\"" + ":")
 	e.Str(s.BigFileID)
+	e.Comma()
 
-	e.FieldStart("big_file_unique_id")
+	e.RawStr("\"big_file_unique_id\"" + ":")
 	e.Str(s.BigFileUniqueID)
+
+	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
+		e.Buf = e.Buf[:length-1]
+	}
 	e.ObjEnd()
 }
 
@@ -1477,25 +1741,37 @@ func (s *ChatPhoto) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s Contact) Encode(e *jx.Encoder) {
+func (s Contact) Encode(e *jx.Writer) {
 	e.ObjStart()
 
-	e.FieldStart("phone_number")
+	e.RawStr("\"phone_number\"" + ":")
 	e.Str(s.PhoneNumber)
+	e.Comma()
 
-	e.FieldStart("first_name")
+	e.RawStr("\"first_name\"" + ":")
 	e.Str(s.FirstName)
+	e.Comma()
 	if s.LastName.Set {
-		e.FieldStart("last_name")
+		e.RawStr("\"last_name\"" + ":")
 		s.LastName.Encode(e)
 	}
+	if s.LastName.Set {
+		e.Comma()
+	}
 	if s.UserID.Set {
-		e.FieldStart("user_id")
+		e.RawStr("\"user_id\"" + ":")
 		s.UserID.Encode(e)
 	}
+	if s.UserID.Set {
+		e.Comma()
+	}
 	if s.Vcard.Set {
-		e.FieldStart("vcard")
+		e.RawStr("\"vcard\"" + ":")
 		s.Vcard.Encode(e)
+	}
+
+	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
+		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -1542,48 +1818,83 @@ func (s *Contact) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s CopyMessage) Encode(e *jx.Encoder) {
+func (s CopyMessage) Encode(e *jx.Writer) {
 	e.ObjStart()
 
-	e.FieldStart("chat_id")
+	e.RawStr("\"chat_id\"" + ":")
 	s.ChatID.Encode(e)
 
-	e.FieldStart("from_chat_id")
+	e.Comma()
+
+	e.RawStr("\"from_chat_id\"" + ":")
 	s.FromChatID.Encode(e)
 
-	e.FieldStart("message_id")
+	e.Comma()
+
+	e.RawStr("\"message_id\"" + ":")
 	e.Int(s.MessageID)
+	e.Comma()
 	if s.Caption.Set {
-		e.FieldStart("caption")
+		e.RawStr("\"caption\"" + ":")
 		s.Caption.Encode(e)
 	}
+	if s.Caption.Set {
+		e.Comma()
+	}
 	if s.ParseMode.Set {
-		e.FieldStart("parse_mode")
+		e.RawStr("\"parse_mode\"" + ":")
 		s.ParseMode.Encode(e)
 	}
+	if s.ParseMode.Set {
+		e.Comma()
+	}
 	if s.CaptionEntities != nil {
-		e.FieldStart("caption_entities")
+		e.RawStr("\"caption_entities\"" + ":")
 		e.ArrStart()
-		for _, elem := range s.CaptionEntities {
-			elem.Encode(e)
+		if len(s.CaptionEntities) >= 1 {
+			// Encode first element without comma.
+			{
+				elem := s.CaptionEntities[0]
+				elem.Encode(e)
+			}
+			for _, elem := range s.CaptionEntities[1:] {
+				e.Comma()
+				elem.Encode(e)
+			}
 		}
 		e.ArrEnd()
 	}
+	if s.CaptionEntities != nil {
+		e.Comma()
+	}
 	if s.DisableNotification.Set {
-		e.FieldStart("disable_notification")
+		e.RawStr("\"disable_notification\"" + ":")
 		s.DisableNotification.Encode(e)
 	}
+	if s.DisableNotification.Set {
+		e.Comma()
+	}
 	if s.ReplyToMessageID.Set {
-		e.FieldStart("reply_to_message_id")
+		e.RawStr("\"reply_to_message_id\"" + ":")
 		s.ReplyToMessageID.Encode(e)
 	}
+	if s.ReplyToMessageID.Set {
+		e.Comma()
+	}
 	if s.AllowSendingWithoutReply.Set {
-		e.FieldStart("allow_sending_without_reply")
+		e.RawStr("\"allow_sending_without_reply\"" + ":")
 		s.AllowSendingWithoutReply.Encode(e)
 	}
+	if s.AllowSendingWithoutReply.Set {
+		e.Comma()
+	}
 	if s.ReplyMarkup.Set {
-		e.FieldStart("reply_markup")
+		e.RawStr("\"reply_markup\"" + ":")
 		s.ReplyMarkup.Encode(e)
+	}
+
+	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
+		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -1659,7 +1970,7 @@ func (s *CopyMessage) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes CopyMessageReplyMarkup as json.
-func (s CopyMessageReplyMarkup) Encode(e *jx.Encoder) {
+func (s CopyMessageReplyMarkup) Encode(e *jx.Writer) {
 	switch s.Type {
 	case InlineKeyboardMarkupCopyMessageReplyMarkup:
 		s.InlineKeyboardMarkup.Encode(e)
@@ -1745,26 +2056,41 @@ func (s *CopyMessageReplyMarkup) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s CreateChatInviteLink) Encode(e *jx.Encoder) {
+func (s CreateChatInviteLink) Encode(e *jx.Writer) {
 	e.ObjStart()
 
-	e.FieldStart("chat_id")
+	e.RawStr("\"chat_id\"" + ":")
 	s.ChatID.Encode(e)
+
+	e.Comma()
 	if s.Name.Set {
-		e.FieldStart("name")
+		e.RawStr("\"name\"" + ":")
 		s.Name.Encode(e)
 	}
+	if s.Name.Set {
+		e.Comma()
+	}
 	if s.ExpireDate.Set {
-		e.FieldStart("expire_date")
+		e.RawStr("\"expire_date\"" + ":")
 		s.ExpireDate.Encode(e)
 	}
+	if s.ExpireDate.Set {
+		e.Comma()
+	}
 	if s.MemberLimit.Set {
-		e.FieldStart("member_limit")
+		e.RawStr("\"member_limit\"" + ":")
 		s.MemberLimit.Encode(e)
 	}
+	if s.MemberLimit.Set {
+		e.Comma()
+	}
 	if s.CreatesJoinRequest.Set {
-		e.FieldStart("creates_join_request")
+		e.RawStr("\"creates_join_request\"" + ":")
 		s.CreatesJoinRequest.Encode(e)
+	}
+
+	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
+		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -1808,35 +2134,52 @@ func (s *CreateChatInviteLink) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s CreateNewStickerSet) Encode(e *jx.Encoder) {
+func (s CreateNewStickerSet) Encode(e *jx.Writer) {
 	e.ObjStart()
 
-	e.FieldStart("user_id")
+	e.RawStr("\"user_id\"" + ":")
 	e.Int(s.UserID)
+	e.Comma()
 
-	e.FieldStart("name")
+	e.RawStr("\"name\"" + ":")
 	e.Str(s.Name)
+	e.Comma()
 
-	e.FieldStart("title")
+	e.RawStr("\"title\"" + ":")
 	e.Str(s.Title)
+	e.Comma()
 	if s.PNGSticker.Set {
-		e.FieldStart("png_sticker")
+		e.RawStr("\"png_sticker\"" + ":")
 		s.PNGSticker.Encode(e)
 	}
+	if s.PNGSticker.Set {
+		e.Comma()
+	}
 	if s.TgsSticker.Set {
-		e.FieldStart("tgs_sticker")
+		e.RawStr("\"tgs_sticker\"" + ":")
 		s.TgsSticker.Encode(e)
 	}
+	if s.TgsSticker.Set {
+		e.Comma()
+	}
 
-	e.FieldStart("emojis")
+	e.RawStr("\"emojis\"" + ":")
 	e.Str(s.Emojis)
+	e.Comma()
 	if s.ContainsMasks.Set {
-		e.FieldStart("contains_masks")
+		e.RawStr("\"contains_masks\"" + ":")
 		s.ContainsMasks.Encode(e)
 	}
+	if s.ContainsMasks.Set {
+		e.Comma()
+	}
 	if s.MaskPosition.Set {
-		e.FieldStart("mask_position")
+		e.RawStr("\"mask_position\"" + ":")
 		s.MaskPosition.Encode(e)
+	}
+
+	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
+		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -1900,14 +2243,20 @@ func (s *CreateNewStickerSet) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s DeclineChatJoinRequest) Encode(e *jx.Encoder) {
+func (s DeclineChatJoinRequest) Encode(e *jx.Writer) {
 	e.ObjStart()
 
-	e.FieldStart("chat_id")
+	e.RawStr("\"chat_id\"" + ":")
 	s.ChatID.Encode(e)
 
-	e.FieldStart("user_id")
+	e.Comma()
+
+	e.RawStr("\"user_id\"" + ":")
 	e.Int(s.UserID)
+
+	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
+		e.Buf = e.Buf[:length-1]
+	}
 	e.ObjEnd()
 }
 
@@ -1936,11 +2285,15 @@ func (s *DeclineChatJoinRequest) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s DeleteChatPhoto) Encode(e *jx.Encoder) {
+func (s DeleteChatPhoto) Encode(e *jx.Writer) {
 	e.ObjStart()
 
-	e.FieldStart("chat_id")
+	e.RawStr("\"chat_id\"" + ":")
 	s.ChatID.Encode(e)
+
+	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
+		e.Buf = e.Buf[:length-1]
+	}
 	e.ObjEnd()
 }
 
@@ -1963,11 +2316,15 @@ func (s *DeleteChatPhoto) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s DeleteChatStickerSet) Encode(e *jx.Encoder) {
+func (s DeleteChatStickerSet) Encode(e *jx.Writer) {
 	e.ObjStart()
 
-	e.FieldStart("chat_id")
+	e.RawStr("\"chat_id\"" + ":")
 	s.ChatID.Encode(e)
+
+	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
+		e.Buf = e.Buf[:length-1]
+	}
 	e.ObjEnd()
 }
 
@@ -1990,14 +2347,20 @@ func (s *DeleteChatStickerSet) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s DeleteMessage) Encode(e *jx.Encoder) {
+func (s DeleteMessage) Encode(e *jx.Writer) {
 	e.ObjStart()
 
-	e.FieldStart("chat_id")
+	e.RawStr("\"chat_id\"" + ":")
 	s.ChatID.Encode(e)
 
-	e.FieldStart("message_id")
+	e.Comma()
+
+	e.RawStr("\"message_id\"" + ":")
 	e.Int(s.MessageID)
+
+	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
+		e.Buf = e.Buf[:length-1]
+	}
 	e.ObjEnd()
 }
 
@@ -2026,15 +2389,22 @@ func (s *DeleteMessage) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s DeleteMyCommands) Encode(e *jx.Encoder) {
+func (s DeleteMyCommands) Encode(e *jx.Writer) {
 	e.ObjStart()
 	if s.Scope.Set {
-		e.FieldStart("scope")
+		e.RawStr("\"scope\"" + ":")
 		s.Scope.Encode(e)
 	}
+	if s.Scope.Set {
+		e.Comma()
+	}
 	if s.LanguageCode.Set {
-		e.FieldStart("language_code")
+		e.RawStr("\"language_code\"" + ":")
 		s.LanguageCode.Encode(e)
+	}
+
+	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
+		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -2064,11 +2434,15 @@ func (s *DeleteMyCommands) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s DeleteStickerFromSet) Encode(e *jx.Encoder) {
+func (s DeleteStickerFromSet) Encode(e *jx.Writer) {
 	e.ObjStart()
 
-	e.FieldStart("sticker")
+	e.RawStr("\"sticker\"" + ":")
 	e.Str(s.Sticker)
+
+	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
+		e.Buf = e.Buf[:length-1]
+	}
 	e.ObjEnd()
 }
 
@@ -2093,11 +2467,15 @@ func (s *DeleteStickerFromSet) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s DeleteWebhook) Encode(e *jx.Encoder) {
+func (s DeleteWebhook) Encode(e *jx.Writer) {
 	e.ObjStart()
 	if s.DropPendingUpdates.Set {
-		e.FieldStart("drop_pending_updates")
+		e.RawStr("\"drop_pending_updates\"" + ":")
 		s.DropPendingUpdates.Encode(e)
+	}
+
+	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
+		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -2122,14 +2500,19 @@ func (s *DeleteWebhook) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s Dice) Encode(e *jx.Encoder) {
+func (s Dice) Encode(e *jx.Writer) {
 	e.ObjStart()
 
-	e.FieldStart("emoji")
+	e.RawStr("\"emoji\"" + ":")
 	e.Str(s.Emoji)
+	e.Comma()
 
-	e.FieldStart("value")
+	e.RawStr("\"value\"" + ":")
 	e.Int(s.Value)
+
+	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
+		e.Buf = e.Buf[:length-1]
+	}
 	e.ObjEnd()
 }
 
@@ -2160,29 +2543,44 @@ func (s *Dice) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s Document) Encode(e *jx.Encoder) {
+func (s Document) Encode(e *jx.Writer) {
 	e.ObjStart()
 
-	e.FieldStart("file_id")
+	e.RawStr("\"file_id\"" + ":")
 	e.Str(s.FileID)
+	e.Comma()
 
-	e.FieldStart("file_unique_id")
+	e.RawStr("\"file_unique_id\"" + ":")
 	e.Str(s.FileUniqueID)
+	e.Comma()
 	if s.Thumb.Set {
-		e.FieldStart("thumb")
+		e.RawStr("\"thumb\"" + ":")
 		s.Thumb.Encode(e)
 	}
+	if s.Thumb.Set {
+		e.Comma()
+	}
 	if s.FileName.Set {
-		e.FieldStart("file_name")
+		e.RawStr("\"file_name\"" + ":")
 		s.FileName.Encode(e)
 	}
+	if s.FileName.Set {
+		e.Comma()
+	}
 	if s.MimeType.Set {
-		e.FieldStart("mime_type")
+		e.RawStr("\"mime_type\"" + ":")
 		s.MimeType.Encode(e)
 	}
+	if s.MimeType.Set {
+		e.Comma()
+	}
 	if s.FileSize.Set {
-		e.FieldStart("file_size")
+		e.RawStr("\"file_size\"" + ":")
 		s.FileSize.Encode(e)
+	}
+
+	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
+		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -2234,29 +2632,45 @@ func (s *Document) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s EditChatInviteLink) Encode(e *jx.Encoder) {
+func (s EditChatInviteLink) Encode(e *jx.Writer) {
 	e.ObjStart()
 
-	e.FieldStart("chat_id")
+	e.RawStr("\"chat_id\"" + ":")
 	s.ChatID.Encode(e)
 
-	e.FieldStart("invite_link")
+	e.Comma()
+
+	e.RawStr("\"invite_link\"" + ":")
 	e.Str(s.InviteLink)
+	e.Comma()
 	if s.Name.Set {
-		e.FieldStart("name")
+		e.RawStr("\"name\"" + ":")
 		s.Name.Encode(e)
 	}
+	if s.Name.Set {
+		e.Comma()
+	}
 	if s.ExpireDate.Set {
-		e.FieldStart("expire_date")
+		e.RawStr("\"expire_date\"" + ":")
 		s.ExpireDate.Encode(e)
 	}
+	if s.ExpireDate.Set {
+		e.Comma()
+	}
 	if s.MemberLimit.Set {
-		e.FieldStart("member_limit")
+		e.RawStr("\"member_limit\"" + ":")
 		s.MemberLimit.Encode(e)
 	}
+	if s.MemberLimit.Set {
+		e.Comma()
+	}
 	if s.CreatesJoinRequest.Set {
-		e.FieldStart("creates_join_request")
+		e.RawStr("\"creates_join_request\"" + ":")
 		s.CreatesJoinRequest.Encode(e)
+	}
+
+	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
+		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -2306,39 +2720,69 @@ func (s *EditChatInviteLink) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s EditMessageCaption) Encode(e *jx.Encoder) {
+func (s EditMessageCaption) Encode(e *jx.Writer) {
 	e.ObjStart()
 	if s.ChatID.Set {
-		e.FieldStart("chat_id")
+		e.RawStr("\"chat_id\"" + ":")
 		s.ChatID.Encode(e)
 	}
+	if s.ChatID.Set {
+		e.Comma()
+	}
 	if s.MessageID.Set {
-		e.FieldStart("message_id")
+		e.RawStr("\"message_id\"" + ":")
 		s.MessageID.Encode(e)
 	}
+	if s.MessageID.Set {
+		e.Comma()
+	}
 	if s.InlineMessageID.Set {
-		e.FieldStart("inline_message_id")
+		e.RawStr("\"inline_message_id\"" + ":")
 		s.InlineMessageID.Encode(e)
 	}
+	if s.InlineMessageID.Set {
+		e.Comma()
+	}
 	if s.Caption.Set {
-		e.FieldStart("caption")
+		e.RawStr("\"caption\"" + ":")
 		s.Caption.Encode(e)
 	}
+	if s.Caption.Set {
+		e.Comma()
+	}
 	if s.ParseMode.Set {
-		e.FieldStart("parse_mode")
+		e.RawStr("\"parse_mode\"" + ":")
 		s.ParseMode.Encode(e)
 	}
+	if s.ParseMode.Set {
+		e.Comma()
+	}
 	if s.CaptionEntities != nil {
-		e.FieldStart("caption_entities")
+		e.RawStr("\"caption_entities\"" + ":")
 		e.ArrStart()
-		for _, elem := range s.CaptionEntities {
-			elem.Encode(e)
+		if len(s.CaptionEntities) >= 1 {
+			// Encode first element without comma.
+			{
+				elem := s.CaptionEntities[0]
+				elem.Encode(e)
+			}
+			for _, elem := range s.CaptionEntities[1:] {
+				e.Comma()
+				elem.Encode(e)
+			}
 		}
 		e.ArrEnd()
 	}
+	if s.CaptionEntities != nil {
+		e.Comma()
+	}
 	if s.ReplyMarkup.Set {
-		e.FieldStart("reply_markup")
+		e.RawStr("\"reply_markup\"" + ":")
 		s.ReplyMarkup.Encode(e)
+	}
+
+	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
+		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -2400,41 +2844,65 @@ func (s *EditMessageCaption) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s EditMessageLiveLocation) Encode(e *jx.Encoder) {
+func (s EditMessageLiveLocation) Encode(e *jx.Writer) {
 	e.ObjStart()
 	if s.ChatID.Set {
-		e.FieldStart("chat_id")
+		e.RawStr("\"chat_id\"" + ":")
 		s.ChatID.Encode(e)
 	}
+	if s.ChatID.Set {
+		e.Comma()
+	}
 	if s.MessageID.Set {
-		e.FieldStart("message_id")
+		e.RawStr("\"message_id\"" + ":")
 		s.MessageID.Encode(e)
 	}
+	if s.MessageID.Set {
+		e.Comma()
+	}
 	if s.InlineMessageID.Set {
-		e.FieldStart("inline_message_id")
+		e.RawStr("\"inline_message_id\"" + ":")
 		s.InlineMessageID.Encode(e)
 	}
+	if s.InlineMessageID.Set {
+		e.Comma()
+	}
 
-	e.FieldStart("latitude")
+	e.RawStr("\"latitude\"" + ":")
 	e.Float64(s.Latitude)
+	e.Comma()
 
-	e.FieldStart("longitude")
+	e.RawStr("\"longitude\"" + ":")
 	e.Float64(s.Longitude)
+	e.Comma()
 	if s.HorizontalAccuracy.Set {
-		e.FieldStart("horizontal_accuracy")
+		e.RawStr("\"horizontal_accuracy\"" + ":")
 		s.HorizontalAccuracy.Encode(e)
 	}
+	if s.HorizontalAccuracy.Set {
+		e.Comma()
+	}
 	if s.Heading.Set {
-		e.FieldStart("heading")
+		e.RawStr("\"heading\"" + ":")
 		s.Heading.Encode(e)
 	}
+	if s.Heading.Set {
+		e.Comma()
+	}
 	if s.ProximityAlertRadius.Set {
-		e.FieldStart("proximity_alert_radius")
+		e.RawStr("\"proximity_alert_radius\"" + ":")
 		s.ProximityAlertRadius.Encode(e)
 	}
+	if s.ProximityAlertRadius.Set {
+		e.Comma()
+	}
 	if s.ReplyMarkup.Set {
-		e.FieldStart("reply_markup")
+		e.RawStr("\"reply_markup\"" + ":")
 		s.ReplyMarkup.Encode(e)
+	}
+
+	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
+		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -2501,26 +2969,41 @@ func (s *EditMessageLiveLocation) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s EditMessageMedia) Encode(e *jx.Encoder) {
+func (s EditMessageMedia) Encode(e *jx.Writer) {
 	e.ObjStart()
 	if s.ChatID.Set {
-		e.FieldStart("chat_id")
+		e.RawStr("\"chat_id\"" + ":")
 		s.ChatID.Encode(e)
 	}
+	if s.ChatID.Set {
+		e.Comma()
+	}
 	if s.MessageID.Set {
-		e.FieldStart("message_id")
+		e.RawStr("\"message_id\"" + ":")
 		s.MessageID.Encode(e)
 	}
+	if s.MessageID.Set {
+		e.Comma()
+	}
 	if s.InlineMessageID.Set {
-		e.FieldStart("inline_message_id")
+		e.RawStr("\"inline_message_id\"" + ":")
 		s.InlineMessageID.Encode(e)
 	}
+	if s.InlineMessageID.Set {
+		e.Comma()
+	}
 
-	e.FieldStart("media")
+	e.RawStr("\"media\"" + ":")
 	s.Media.Encode(e)
+
+	e.Comma()
 	if s.ReplyMarkup.Set {
-		e.FieldStart("reply_markup")
+		e.RawStr("\"reply_markup\"" + ":")
 		s.ReplyMarkup.Encode(e)
+	}
+
+	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
+		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -2564,23 +3047,36 @@ func (s *EditMessageMedia) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s EditMessageReplyMarkup) Encode(e *jx.Encoder) {
+func (s EditMessageReplyMarkup) Encode(e *jx.Writer) {
 	e.ObjStart()
 	if s.ChatID.Set {
-		e.FieldStart("chat_id")
+		e.RawStr("\"chat_id\"" + ":")
 		s.ChatID.Encode(e)
 	}
+	if s.ChatID.Set {
+		e.Comma()
+	}
 	if s.MessageID.Set {
-		e.FieldStart("message_id")
+		e.RawStr("\"message_id\"" + ":")
 		s.MessageID.Encode(e)
 	}
+	if s.MessageID.Set {
+		e.Comma()
+	}
 	if s.InlineMessageID.Set {
-		e.FieldStart("inline_message_id")
+		e.RawStr("\"inline_message_id\"" + ":")
 		s.InlineMessageID.Encode(e)
 	}
+	if s.InlineMessageID.Set {
+		e.Comma()
+	}
 	if s.ReplyMarkup.Set {
-		e.FieldStart("reply_markup")
+		e.RawStr("\"reply_markup\"" + ":")
 		s.ReplyMarkup.Encode(e)
+	}
+
+	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
+		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -2620,42 +3116,73 @@ func (s *EditMessageReplyMarkup) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s EditMessageText) Encode(e *jx.Encoder) {
+func (s EditMessageText) Encode(e *jx.Writer) {
 	e.ObjStart()
 	if s.ChatID.Set {
-		e.FieldStart("chat_id")
+		e.RawStr("\"chat_id\"" + ":")
 		s.ChatID.Encode(e)
 	}
+	if s.ChatID.Set {
+		e.Comma()
+	}
 	if s.MessageID.Set {
-		e.FieldStart("message_id")
+		e.RawStr("\"message_id\"" + ":")
 		s.MessageID.Encode(e)
 	}
+	if s.MessageID.Set {
+		e.Comma()
+	}
 	if s.InlineMessageID.Set {
-		e.FieldStart("inline_message_id")
+		e.RawStr("\"inline_message_id\"" + ":")
 		s.InlineMessageID.Encode(e)
 	}
+	if s.InlineMessageID.Set {
+		e.Comma()
+	}
 
-	e.FieldStart("text")
+	e.RawStr("\"text\"" + ":")
 	e.Str(s.Text)
+	e.Comma()
 	if s.ParseMode.Set {
-		e.FieldStart("parse_mode")
+		e.RawStr("\"parse_mode\"" + ":")
 		s.ParseMode.Encode(e)
 	}
+	if s.ParseMode.Set {
+		e.Comma()
+	}
 	if s.Entities != nil {
-		e.FieldStart("entities")
+		e.RawStr("\"entities\"" + ":")
 		e.ArrStart()
-		for _, elem := range s.Entities {
-			elem.Encode(e)
+		if len(s.Entities) >= 1 {
+			// Encode first element without comma.
+			{
+				elem := s.Entities[0]
+				elem.Encode(e)
+			}
+			for _, elem := range s.Entities[1:] {
+				e.Comma()
+				elem.Encode(e)
+			}
 		}
 		e.ArrEnd()
 	}
+	if s.Entities != nil {
+		e.Comma()
+	}
 	if s.DisableWebPagePreview.Set {
-		e.FieldStart("disable_web_page_preview")
+		e.RawStr("\"disable_web_page_preview\"" + ":")
 		s.DisableWebPagePreview.Encode(e)
 	}
+	if s.DisableWebPagePreview.Set {
+		e.Comma()
+	}
 	if s.ReplyMarkup.Set {
-		e.FieldStart("reply_markup")
+		e.RawStr("\"reply_markup\"" + ":")
 		s.ReplyMarkup.Encode(e)
+	}
+
+	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
+		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -2723,17 +3250,23 @@ func (s *EditMessageText) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s EncryptedCredentials) Encode(e *jx.Encoder) {
+func (s EncryptedCredentials) Encode(e *jx.Writer) {
 	e.ObjStart()
 
-	e.FieldStart("data")
+	e.RawStr("\"data\"" + ":")
 	e.Str(s.Data)
+	e.Comma()
 
-	e.FieldStart("hash")
+	e.RawStr("\"hash\"" + ":")
 	e.Str(s.Hash)
+	e.Comma()
 
-	e.FieldStart("secret")
+	e.RawStr("\"secret\"" + ":")
 	e.Str(s.Secret)
+
+	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
+		e.Buf = e.Buf[:length-1]
+	}
 	e.ObjEnd()
 }
 
@@ -2770,54 +3303,99 @@ func (s *EncryptedCredentials) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s EncryptedPassportElement) Encode(e *jx.Encoder) {
+func (s EncryptedPassportElement) Encode(e *jx.Writer) {
 	e.ObjStart()
 
-	e.FieldStart("type")
+	e.RawStr("\"type\"" + ":")
 	e.Str(s.Type)
+	e.Comma()
 	if s.Data.Set {
-		e.FieldStart("data")
+		e.RawStr("\"data\"" + ":")
 		s.Data.Encode(e)
 	}
+	if s.Data.Set {
+		e.Comma()
+	}
 	if s.PhoneNumber.Set {
-		e.FieldStart("phone_number")
+		e.RawStr("\"phone_number\"" + ":")
 		s.PhoneNumber.Encode(e)
 	}
+	if s.PhoneNumber.Set {
+		e.Comma()
+	}
 	if s.Email.Set {
-		e.FieldStart("email")
+		e.RawStr("\"email\"" + ":")
 		s.Email.Encode(e)
 	}
+	if s.Email.Set {
+		e.Comma()
+	}
 	if s.Files != nil {
-		e.FieldStart("files")
+		e.RawStr("\"files\"" + ":")
 		e.ArrStart()
-		for _, elem := range s.Files {
-			elem.Encode(e)
+		if len(s.Files) >= 1 {
+			// Encode first element without comma.
+			{
+				elem := s.Files[0]
+				elem.Encode(e)
+			}
+			for _, elem := range s.Files[1:] {
+				e.Comma()
+				elem.Encode(e)
+			}
 		}
 		e.ArrEnd()
+	}
+	if s.Files != nil {
+		e.Comma()
 	}
 	if s.FrontSide.Set {
-		e.FieldStart("front_side")
+		e.RawStr("\"front_side\"" + ":")
 		s.FrontSide.Encode(e)
 	}
+	if s.FrontSide.Set {
+		e.Comma()
+	}
 	if s.ReverseSide.Set {
-		e.FieldStart("reverse_side")
+		e.RawStr("\"reverse_side\"" + ":")
 		s.ReverseSide.Encode(e)
 	}
+	if s.ReverseSide.Set {
+		e.Comma()
+	}
 	if s.Selfie.Set {
-		e.FieldStart("selfie")
+		e.RawStr("\"selfie\"" + ":")
 		s.Selfie.Encode(e)
 	}
+	if s.Selfie.Set {
+		e.Comma()
+	}
 	if s.Translation != nil {
-		e.FieldStart("translation")
+		e.RawStr("\"translation\"" + ":")
 		e.ArrStart()
-		for _, elem := range s.Translation {
-			elem.Encode(e)
+		if len(s.Translation) >= 1 {
+			// Encode first element without comma.
+			{
+				elem := s.Translation[0]
+				elem.Encode(e)
+			}
+			for _, elem := range s.Translation[1:] {
+				e.Comma()
+				elem.Encode(e)
+			}
 		}
 		e.ArrEnd()
 	}
+	if s.Translation != nil {
+		e.Comma()
+	}
 
-	e.FieldStart("hash")
+	e.RawStr("\"hash\"" + ":")
 	e.Str(s.Hash)
+
+	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
+		e.Buf = e.Buf[:length-1]
+	}
 	e.ObjEnd()
 }
 
@@ -2902,20 +3480,27 @@ func (s *EncryptedPassportElement) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s Error) Encode(e *jx.Encoder) {
+func (s Error) Encode(e *jx.Writer) {
 	e.ObjStart()
 
-	e.FieldStart("ok")
+	e.RawStr("\"ok\"" + ":")
 	e.Bool(s.Ok)
+	e.Comma()
 
-	e.FieldStart("error_code")
+	e.RawStr("\"error_code\"" + ":")
 	e.Int(s.ErrorCode)
+	e.Comma()
 
-	e.FieldStart("description")
+	e.RawStr("\"description\"" + ":")
 	e.Str(s.Description)
+	e.Comma()
 	if s.Parameters.Set {
-		e.FieldStart("parameters")
+		e.RawStr("\"parameters\"" + ":")
 		s.Parameters.Encode(e)
+	}
+
+	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
+		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -2958,8 +3543,12 @@ func (s *Error) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s ErrorStatusCode) Encode(e *jx.Encoder) {
+func (s ErrorStatusCode) Encode(e *jx.Writer) {
 	e.ObjStart()
+
+	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
+		e.Buf = e.Buf[:length-1]
+	}
 	e.ObjEnd()
 }
 
@@ -2978,11 +3567,15 @@ func (s *ErrorStatusCode) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s ExportChatInviteLink) Encode(e *jx.Encoder) {
+func (s ExportChatInviteLink) Encode(e *jx.Writer) {
 	e.ObjStart()
 
-	e.FieldStart("chat_id")
+	e.RawStr("\"chat_id\"" + ":")
 	s.ChatID.Encode(e)
+
+	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
+		e.Buf = e.Buf[:length-1]
+	}
 	e.ObjEnd()
 }
 
@@ -3005,18 +3598,26 @@ func (s *ExportChatInviteLink) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s ForceReply) Encode(e *jx.Encoder) {
+func (s ForceReply) Encode(e *jx.Writer) {
 	e.ObjStart()
 
-	e.FieldStart("force_reply")
+	e.RawStr("\"force_reply\"" + ":")
 	e.Bool(s.ForceReply)
+	e.Comma()
 	if s.InputFieldPlaceholder.Set {
-		e.FieldStart("input_field_placeholder")
+		e.RawStr("\"input_field_placeholder\"" + ":")
 		s.InputFieldPlaceholder.Encode(e)
 	}
+	if s.InputFieldPlaceholder.Set {
+		e.Comma()
+	}
 	if s.Selective.Set {
-		e.FieldStart("selective")
+		e.RawStr("\"selective\"" + ":")
 		s.Selective.Encode(e)
+	}
+
+	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
+		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -3052,21 +3653,32 @@ func (s *ForceReply) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s ForwardMessage) Encode(e *jx.Encoder) {
+func (s ForwardMessage) Encode(e *jx.Writer) {
 	e.ObjStart()
 
-	e.FieldStart("chat_id")
+	e.RawStr("\"chat_id\"" + ":")
 	s.ChatID.Encode(e)
 
-	e.FieldStart("from_chat_id")
+	e.Comma()
+
+	e.RawStr("\"from_chat_id\"" + ":")
 	s.FromChatID.Encode(e)
+
+	e.Comma()
 	if s.DisableNotification.Set {
-		e.FieldStart("disable_notification")
+		e.RawStr("\"disable_notification\"" + ":")
 		s.DisableNotification.Encode(e)
 	}
+	if s.DisableNotification.Set {
+		e.Comma()
+	}
 
-	e.FieldStart("message_id")
+	e.RawStr("\"message_id\"" + ":")
 	e.Int(s.MessageID)
+
+	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
+		e.Buf = e.Buf[:length-1]
+	}
 	e.ObjEnd()
 }
 
@@ -3104,36 +3716,66 @@ func (s *ForwardMessage) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s Game) Encode(e *jx.Encoder) {
+func (s Game) Encode(e *jx.Writer) {
 	e.ObjStart()
 
-	e.FieldStart("title")
+	e.RawStr("\"title\"" + ":")
 	e.Str(s.Title)
+	e.Comma()
 
-	e.FieldStart("description")
+	e.RawStr("\"description\"" + ":")
 	e.Str(s.Description)
+	e.Comma()
 
-	e.FieldStart("photo")
+	e.RawStr("\"photo\"" + ":")
 	e.ArrStart()
-	for _, elem := range s.Photo {
-		elem.Encode(e)
+	if len(s.Photo) >= 1 {
+		// Encode first element without comma.
+		{
+			elem := s.Photo[0]
+			elem.Encode(e)
+		}
+		for _, elem := range s.Photo[1:] {
+			e.Comma()
+			elem.Encode(e)
+		}
 	}
 	e.ArrEnd()
+
+	e.Comma()
 	if s.Text.Set {
-		e.FieldStart("text")
+		e.RawStr("\"text\"" + ":")
 		s.Text.Encode(e)
 	}
+	if s.Text.Set {
+		e.Comma()
+	}
 	if s.TextEntities != nil {
-		e.FieldStart("text_entities")
+		e.RawStr("\"text_entities\"" + ":")
 		e.ArrStart()
-		for _, elem := range s.TextEntities {
-			elem.Encode(e)
+		if len(s.TextEntities) >= 1 {
+			// Encode first element without comma.
+			{
+				elem := s.TextEntities[0]
+				elem.Encode(e)
+			}
+			for _, elem := range s.TextEntities[1:] {
+				e.Comma()
+				elem.Encode(e)
+			}
 		}
 		e.ArrEnd()
 	}
+	if s.TextEntities != nil {
+		e.Comma()
+	}
 	if s.Animation.Set {
-		e.FieldStart("animation")
+		e.RawStr("\"animation\"" + ":")
 		s.Animation.Encode(e)
+	}
+
+	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
+		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -3199,11 +3841,15 @@ func (s *Game) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s GetChat) Encode(e *jx.Encoder) {
+func (s GetChat) Encode(e *jx.Writer) {
 	e.ObjStart()
 
-	e.FieldStart("chat_id")
+	e.RawStr("\"chat_id\"" + ":")
 	s.ChatID.Encode(e)
+
+	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
+		e.Buf = e.Buf[:length-1]
+	}
 	e.ObjEnd()
 }
 
@@ -3226,11 +3872,15 @@ func (s *GetChat) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s GetChatAdministrators) Encode(e *jx.Encoder) {
+func (s GetChatAdministrators) Encode(e *jx.Writer) {
 	e.ObjStart()
 
-	e.FieldStart("chat_id")
+	e.RawStr("\"chat_id\"" + ":")
 	s.ChatID.Encode(e)
+
+	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
+		e.Buf = e.Buf[:length-1]
+	}
 	e.ObjEnd()
 }
 
@@ -3253,14 +3903,20 @@ func (s *GetChatAdministrators) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s GetChatMember) Encode(e *jx.Encoder) {
+func (s GetChatMember) Encode(e *jx.Writer) {
 	e.ObjStart()
 
-	e.FieldStart("chat_id")
+	e.RawStr("\"chat_id\"" + ":")
 	s.ChatID.Encode(e)
 
-	e.FieldStart("user_id")
+	e.Comma()
+
+	e.RawStr("\"user_id\"" + ":")
 	e.Int(s.UserID)
+
+	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
+		e.Buf = e.Buf[:length-1]
+	}
 	e.ObjEnd()
 }
 
@@ -3289,11 +3945,15 @@ func (s *GetChatMember) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s GetChatMemberCount) Encode(e *jx.Encoder) {
+func (s GetChatMemberCount) Encode(e *jx.Writer) {
 	e.ObjStart()
 
-	e.FieldStart("chat_id")
+	e.RawStr("\"chat_id\"" + ":")
 	s.ChatID.Encode(e)
+
+	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
+		e.Buf = e.Buf[:length-1]
+	}
 	e.ObjEnd()
 }
 
@@ -3316,11 +3976,15 @@ func (s *GetChatMemberCount) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s GetFile) Encode(e *jx.Encoder) {
+func (s GetFile) Encode(e *jx.Writer) {
 	e.ObjStart()
 
-	e.FieldStart("file_id")
+	e.RawStr("\"file_id\"" + ":")
 	e.Str(s.FileID)
+
+	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
+		e.Buf = e.Buf[:length-1]
+	}
 	e.ObjEnd()
 }
 
@@ -3345,22 +4009,33 @@ func (s *GetFile) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s GetGameHighScores) Encode(e *jx.Encoder) {
+func (s GetGameHighScores) Encode(e *jx.Writer) {
 	e.ObjStart()
 
-	e.FieldStart("user_id")
+	e.RawStr("\"user_id\"" + ":")
 	e.Int(s.UserID)
+	e.Comma()
 	if s.ChatID.Set {
-		e.FieldStart("chat_id")
+		e.RawStr("\"chat_id\"" + ":")
 		s.ChatID.Encode(e)
 	}
+	if s.ChatID.Set {
+		e.Comma()
+	}
 	if s.MessageID.Set {
-		e.FieldStart("message_id")
+		e.RawStr("\"message_id\"" + ":")
 		s.MessageID.Encode(e)
 	}
+	if s.MessageID.Set {
+		e.Comma()
+	}
 	if s.InlineMessageID.Set {
-		e.FieldStart("inline_message_id")
+		e.RawStr("\"inline_message_id\"" + ":")
 		s.InlineMessageID.Encode(e)
+	}
+
+	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
+		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -3401,15 +4076,22 @@ func (s *GetGameHighScores) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s GetMyCommands) Encode(e *jx.Encoder) {
+func (s GetMyCommands) Encode(e *jx.Writer) {
 	e.ObjStart()
 	if s.Scope.Set {
-		e.FieldStart("scope")
+		e.RawStr("\"scope\"" + ":")
 		s.Scope.Encode(e)
 	}
+	if s.Scope.Set {
+		e.Comma()
+	}
 	if s.LanguageCode.Set {
-		e.FieldStart("language_code")
+		e.RawStr("\"language_code\"" + ":")
 		s.LanguageCode.Encode(e)
+	}
+
+	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
+		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -3439,11 +4121,15 @@ func (s *GetMyCommands) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s GetStickerSet) Encode(e *jx.Encoder) {
+func (s GetStickerSet) Encode(e *jx.Writer) {
 	e.ObjStart()
 
-	e.FieldStart("name")
+	e.RawStr("\"name\"" + ":")
 	e.Str(s.Name)
+
+	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
+		e.Buf = e.Buf[:length-1]
+	}
 	e.ObjEnd()
 }
 
@@ -3468,27 +4154,48 @@ func (s *GetStickerSet) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s GetUpdates) Encode(e *jx.Encoder) {
+func (s GetUpdates) Encode(e *jx.Writer) {
 	e.ObjStart()
 	if s.Offset.Set {
-		e.FieldStart("offset")
+		e.RawStr("\"offset\"" + ":")
 		s.Offset.Encode(e)
 	}
+	if s.Offset.Set {
+		e.Comma()
+	}
 	if s.Limit.Set {
-		e.FieldStart("limit")
+		e.RawStr("\"limit\"" + ":")
 		s.Limit.Encode(e)
 	}
+	if s.Limit.Set {
+		e.Comma()
+	}
 	if s.Timeout.Set {
-		e.FieldStart("timeout")
+		e.RawStr("\"timeout\"" + ":")
 		s.Timeout.Encode(e)
 	}
+	if s.Timeout.Set {
+		e.Comma()
+	}
 	if s.AllowedUpdates != nil {
-		e.FieldStart("allowed_updates")
+		e.RawStr("\"allowed_updates\"" + ":")
 		e.ArrStart()
-		for _, elem := range s.AllowedUpdates {
-			e.Str(elem)
+		if len(s.AllowedUpdates) >= 1 {
+			// Encode first element without comma.
+			{
+				elem := s.AllowedUpdates[0]
+				e.Str(elem)
+			}
+			for _, elem := range s.AllowedUpdates[1:] {
+				e.Comma()
+				e.Str(elem)
+			}
 		}
 		e.ArrEnd()
+	}
+
+	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
+		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -3537,18 +4244,26 @@ func (s *GetUpdates) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s GetUserProfilePhotos) Encode(e *jx.Encoder) {
+func (s GetUserProfilePhotos) Encode(e *jx.Writer) {
 	e.ObjStart()
 
-	e.FieldStart("user_id")
+	e.RawStr("\"user_id\"" + ":")
 	e.Int(s.UserID)
+	e.Comma()
 	if s.Offset.Set {
-		e.FieldStart("offset")
+		e.RawStr("\"offset\"" + ":")
 		s.Offset.Encode(e)
 	}
+	if s.Offset.Set {
+		e.Comma()
+	}
 	if s.Limit.Set {
-		e.FieldStart("limit")
+		e.RawStr("\"limit\"" + ":")
 		s.Limit.Encode(e)
+	}
+
+	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
+		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -3584,7 +4299,7 @@ func (s *GetUserProfilePhotos) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes ID as json.
-func (s ID) Encode(e *jx.Encoder) {
+func (s ID) Encode(e *jx.Writer) {
 	switch s.Type {
 	case StringID:
 		e.Str(s.String)
@@ -3621,38 +4336,61 @@ func (s *ID) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s InlineKeyboardButton) Encode(e *jx.Encoder) {
+func (s InlineKeyboardButton) Encode(e *jx.Writer) {
 	e.ObjStart()
 
-	e.FieldStart("text")
+	e.RawStr("\"text\"" + ":")
 	e.Str(s.Text)
+	e.Comma()
 	if s.URL.Set {
-		e.FieldStart("url")
+		e.RawStr("\"url\"" + ":")
 		s.URL.Encode(e)
 	}
+	if s.URL.Set {
+		e.Comma()
+	}
 	if s.LoginURL.Set {
-		e.FieldStart("login_url")
+		e.RawStr("\"login_url\"" + ":")
 		s.LoginURL.Encode(e)
 	}
+	if s.LoginURL.Set {
+		e.Comma()
+	}
 	if s.CallbackData.Set {
-		e.FieldStart("callback_data")
+		e.RawStr("\"callback_data\"" + ":")
 		s.CallbackData.Encode(e)
 	}
+	if s.CallbackData.Set {
+		e.Comma()
+	}
 	if s.SwitchInlineQuery.Set {
-		e.FieldStart("switch_inline_query")
+		e.RawStr("\"switch_inline_query\"" + ":")
 		s.SwitchInlineQuery.Encode(e)
 	}
+	if s.SwitchInlineQuery.Set {
+		e.Comma()
+	}
 	if s.SwitchInlineQueryCurrentChat.Set {
-		e.FieldStart("switch_inline_query_current_chat")
+		e.RawStr("\"switch_inline_query_current_chat\"" + ":")
 		s.SwitchInlineQueryCurrentChat.Encode(e)
 	}
+	if s.SwitchInlineQueryCurrentChat.Set {
+		e.Comma()
+	}
 	if s.CallbackGame != nil {
-		e.FieldStart("callback_game")
+		e.RawStr("\"callback_game\"" + ":")
 		s.CallbackGame.Encode(e)
 	}
+	if s.CallbackGame != nil {
+		e.Comma()
+	}
 	if s.Pay.Set {
-		e.FieldStart("pay")
+		e.RawStr("\"pay\"" + ":")
 		s.Pay.Encode(e)
+	}
+
+	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
+		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -3715,19 +4453,51 @@ func (s *InlineKeyboardButton) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s InlineKeyboardMarkup) Encode(e *jx.Encoder) {
+func (s InlineKeyboardMarkup) Encode(e *jx.Writer) {
 	e.ObjStart()
 
-	e.FieldStart("inline_keyboard")
+	e.RawStr("\"inline_keyboard\"" + ":")
 	e.ArrStart()
-	for _, elem := range s.InlineKeyboard {
-		e.ArrStart()
-		for _, elem := range elem {
-			elem.Encode(e)
+	if len(s.InlineKeyboard) >= 1 {
+		// Encode first element without comma.
+		{
+			elem := s.InlineKeyboard[0]
+			e.ArrStart()
+			if len(elem) >= 1 {
+				// Encode first element without comma.
+				{
+					elem := elem[0]
+					elem.Encode(e)
+				}
+				for _, elem := range elem[1:] {
+					e.Comma()
+					elem.Encode(e)
+				}
+			}
+			e.ArrEnd()
 		}
-		e.ArrEnd()
+		for _, elem := range s.InlineKeyboard[1:] {
+			e.Comma()
+			e.ArrStart()
+			if len(elem) >= 1 {
+				// Encode first element without comma.
+				{
+					elem := elem[0]
+					elem.Encode(e)
+				}
+				for _, elem := range elem[1:] {
+					e.Comma()
+					elem.Encode(e)
+				}
+			}
+			e.ArrEnd()
+		}
 	}
 	e.ArrEnd()
+
+	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
+		e.Buf = e.Buf[:length-1]
+	}
 	e.ObjEnd()
 }
 
@@ -3766,7 +4536,7 @@ func (s *InlineKeyboardMarkup) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes InlineQueryResult as json.
-func (s InlineQueryResult) Encode(e *jx.Encoder) {
+func (s InlineQueryResult) Encode(e *jx.Writer) {
 	unwrapped := string(s)
 	e.Str(unwrapped)
 }
@@ -3792,7 +4562,7 @@ func (s *InlineQueryResult) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes InputMedia as json.
-func (s InputMedia) Encode(e *jx.Encoder) {
+func (s InputMedia) Encode(e *jx.Writer) {
 	switch s.Type {
 	case InputMediaAnimationInputMedia:
 		s.InputMediaAnimation.Encode(e)
@@ -3885,45 +4655,77 @@ func (s *InputMedia) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s InputMediaAnimation) Encode(e *jx.Encoder) {
+func (s InputMediaAnimation) Encode(e *jx.Writer) {
 	e.ObjStart()
 
-	e.FieldStart("type")
+	e.RawStr("\"type\"" + ":")
 	e.Str(s.Type)
+	e.Comma()
 
-	e.FieldStart("media")
+	e.RawStr("\"media\"" + ":")
 	e.Str(s.Media)
+	e.Comma()
 	if s.Thumb.Set {
-		e.FieldStart("thumb")
+		e.RawStr("\"thumb\"" + ":")
 		s.Thumb.Encode(e)
 	}
+	if s.Thumb.Set {
+		e.Comma()
+	}
 	if s.Caption.Set {
-		e.FieldStart("caption")
+		e.RawStr("\"caption\"" + ":")
 		s.Caption.Encode(e)
 	}
+	if s.Caption.Set {
+		e.Comma()
+	}
 	if s.ParseMode.Set {
-		e.FieldStart("parse_mode")
+		e.RawStr("\"parse_mode\"" + ":")
 		s.ParseMode.Encode(e)
 	}
+	if s.ParseMode.Set {
+		e.Comma()
+	}
 	if s.CaptionEntities != nil {
-		e.FieldStart("caption_entities")
+		e.RawStr("\"caption_entities\"" + ":")
 		e.ArrStart()
-		for _, elem := range s.CaptionEntities {
-			elem.Encode(e)
+		if len(s.CaptionEntities) >= 1 {
+			// Encode first element without comma.
+			{
+				elem := s.CaptionEntities[0]
+				elem.Encode(e)
+			}
+			for _, elem := range s.CaptionEntities[1:] {
+				e.Comma()
+				elem.Encode(e)
+			}
 		}
 		e.ArrEnd()
 	}
+	if s.CaptionEntities != nil {
+		e.Comma()
+	}
 	if s.Width.Set {
-		e.FieldStart("width")
+		e.RawStr("\"width\"" + ":")
 		s.Width.Encode(e)
 	}
+	if s.Width.Set {
+		e.Comma()
+	}
 	if s.Height.Set {
-		e.FieldStart("height")
+		e.RawStr("\"height\"" + ":")
 		s.Height.Encode(e)
 	}
+	if s.Height.Set {
+		e.Comma()
+	}
 	if s.Duration.Set {
-		e.FieldStart("duration")
+		e.RawStr("\"duration\"" + ":")
 		s.Duration.Encode(e)
+	}
+
+	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
+		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -3997,45 +4799,77 @@ func (s *InputMediaAnimation) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s InputMediaAudio) Encode(e *jx.Encoder) {
+func (s InputMediaAudio) Encode(e *jx.Writer) {
 	e.ObjStart()
 
-	e.FieldStart("type")
+	e.RawStr("\"type\"" + ":")
 	e.Str(s.Type)
+	e.Comma()
 
-	e.FieldStart("media")
+	e.RawStr("\"media\"" + ":")
 	e.Str(s.Media)
+	e.Comma()
 	if s.Thumb.Set {
-		e.FieldStart("thumb")
+		e.RawStr("\"thumb\"" + ":")
 		s.Thumb.Encode(e)
 	}
+	if s.Thumb.Set {
+		e.Comma()
+	}
 	if s.Caption.Set {
-		e.FieldStart("caption")
+		e.RawStr("\"caption\"" + ":")
 		s.Caption.Encode(e)
 	}
+	if s.Caption.Set {
+		e.Comma()
+	}
 	if s.ParseMode.Set {
-		e.FieldStart("parse_mode")
+		e.RawStr("\"parse_mode\"" + ":")
 		s.ParseMode.Encode(e)
 	}
+	if s.ParseMode.Set {
+		e.Comma()
+	}
 	if s.CaptionEntities != nil {
-		e.FieldStart("caption_entities")
+		e.RawStr("\"caption_entities\"" + ":")
 		e.ArrStart()
-		for _, elem := range s.CaptionEntities {
-			elem.Encode(e)
+		if len(s.CaptionEntities) >= 1 {
+			// Encode first element without comma.
+			{
+				elem := s.CaptionEntities[0]
+				elem.Encode(e)
+			}
+			for _, elem := range s.CaptionEntities[1:] {
+				e.Comma()
+				elem.Encode(e)
+			}
 		}
 		e.ArrEnd()
 	}
+	if s.CaptionEntities != nil {
+		e.Comma()
+	}
 	if s.Duration.Set {
-		e.FieldStart("duration")
+		e.RawStr("\"duration\"" + ":")
 		s.Duration.Encode(e)
 	}
+	if s.Duration.Set {
+		e.Comma()
+	}
 	if s.Performer.Set {
-		e.FieldStart("performer")
+		e.RawStr("\"performer\"" + ":")
 		s.Performer.Encode(e)
 	}
+	if s.Performer.Set {
+		e.Comma()
+	}
 	if s.Title.Set {
-		e.FieldStart("title")
+		e.RawStr("\"title\"" + ":")
 		s.Title.Encode(e)
+	}
+
+	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
+		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -4109,37 +4943,63 @@ func (s *InputMediaAudio) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s InputMediaDocument) Encode(e *jx.Encoder) {
+func (s InputMediaDocument) Encode(e *jx.Writer) {
 	e.ObjStart()
 
-	e.FieldStart("type")
+	e.RawStr("\"type\"" + ":")
 	e.Str(s.Type)
+	e.Comma()
 
-	e.FieldStart("media")
+	e.RawStr("\"media\"" + ":")
 	e.Str(s.Media)
+	e.Comma()
 	if s.Thumb.Set {
-		e.FieldStart("thumb")
+		e.RawStr("\"thumb\"" + ":")
 		s.Thumb.Encode(e)
 	}
+	if s.Thumb.Set {
+		e.Comma()
+	}
 	if s.Caption.Set {
-		e.FieldStart("caption")
+		e.RawStr("\"caption\"" + ":")
 		s.Caption.Encode(e)
 	}
+	if s.Caption.Set {
+		e.Comma()
+	}
 	if s.ParseMode.Set {
-		e.FieldStart("parse_mode")
+		e.RawStr("\"parse_mode\"" + ":")
 		s.ParseMode.Encode(e)
 	}
+	if s.ParseMode.Set {
+		e.Comma()
+	}
 	if s.CaptionEntities != nil {
-		e.FieldStart("caption_entities")
+		e.RawStr("\"caption_entities\"" + ":")
 		e.ArrStart()
-		for _, elem := range s.CaptionEntities {
-			elem.Encode(e)
+		if len(s.CaptionEntities) >= 1 {
+			// Encode first element without comma.
+			{
+				elem := s.CaptionEntities[0]
+				elem.Encode(e)
+			}
+			for _, elem := range s.CaptionEntities[1:] {
+				e.Comma()
+				elem.Encode(e)
+			}
 		}
 		e.ArrEnd()
 	}
+	if s.CaptionEntities != nil {
+		e.Comma()
+	}
 	if s.DisableContentTypeDetection.Set {
-		e.FieldStart("disable_content_type_detection")
+		e.RawStr("\"disable_content_type_detection\"" + ":")
 		s.DisableContentTypeDetection.Encode(e)
+	}
+
+	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
+		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -4203,29 +5063,49 @@ func (s *InputMediaDocument) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s InputMediaPhoto) Encode(e *jx.Encoder) {
+func (s InputMediaPhoto) Encode(e *jx.Writer) {
 	e.ObjStart()
 
-	e.FieldStart("type")
+	e.RawStr("\"type\"" + ":")
 	e.Str(s.Type)
+	e.Comma()
 
-	e.FieldStart("media")
+	e.RawStr("\"media\"" + ":")
 	e.Str(s.Media)
+	e.Comma()
 	if s.Caption.Set {
-		e.FieldStart("caption")
+		e.RawStr("\"caption\"" + ":")
 		s.Caption.Encode(e)
 	}
+	if s.Caption.Set {
+		e.Comma()
+	}
 	if s.ParseMode.Set {
-		e.FieldStart("parse_mode")
+		e.RawStr("\"parse_mode\"" + ":")
 		s.ParseMode.Encode(e)
 	}
+	if s.ParseMode.Set {
+		e.Comma()
+	}
 	if s.CaptionEntities != nil {
-		e.FieldStart("caption_entities")
+		e.RawStr("\"caption_entities\"" + ":")
 		e.ArrStart()
-		for _, elem := range s.CaptionEntities {
-			elem.Encode(e)
+		if len(s.CaptionEntities) >= 1 {
+			// Encode first element without comma.
+			{
+				elem := s.CaptionEntities[0]
+				elem.Encode(e)
+			}
+			for _, elem := range s.CaptionEntities[1:] {
+				e.Comma()
+				elem.Encode(e)
+			}
 		}
 		e.ArrEnd()
+	}
+
+	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
+		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -4279,49 +5159,84 @@ func (s *InputMediaPhoto) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s InputMediaVideo) Encode(e *jx.Encoder) {
+func (s InputMediaVideo) Encode(e *jx.Writer) {
 	e.ObjStart()
 
-	e.FieldStart("type")
+	e.RawStr("\"type\"" + ":")
 	e.Str(s.Type)
+	e.Comma()
 
-	e.FieldStart("media")
+	e.RawStr("\"media\"" + ":")
 	e.Str(s.Media)
+	e.Comma()
 	if s.Thumb.Set {
-		e.FieldStart("thumb")
+		e.RawStr("\"thumb\"" + ":")
 		s.Thumb.Encode(e)
 	}
+	if s.Thumb.Set {
+		e.Comma()
+	}
 	if s.Caption.Set {
-		e.FieldStart("caption")
+		e.RawStr("\"caption\"" + ":")
 		s.Caption.Encode(e)
 	}
+	if s.Caption.Set {
+		e.Comma()
+	}
 	if s.ParseMode.Set {
-		e.FieldStart("parse_mode")
+		e.RawStr("\"parse_mode\"" + ":")
 		s.ParseMode.Encode(e)
 	}
+	if s.ParseMode.Set {
+		e.Comma()
+	}
 	if s.CaptionEntities != nil {
-		e.FieldStart("caption_entities")
+		e.RawStr("\"caption_entities\"" + ":")
 		e.ArrStart()
-		for _, elem := range s.CaptionEntities {
-			elem.Encode(e)
+		if len(s.CaptionEntities) >= 1 {
+			// Encode first element without comma.
+			{
+				elem := s.CaptionEntities[0]
+				elem.Encode(e)
+			}
+			for _, elem := range s.CaptionEntities[1:] {
+				e.Comma()
+				elem.Encode(e)
+			}
 		}
 		e.ArrEnd()
 	}
+	if s.CaptionEntities != nil {
+		e.Comma()
+	}
 	if s.Width.Set {
-		e.FieldStart("width")
+		e.RawStr("\"width\"" + ":")
 		s.Width.Encode(e)
 	}
+	if s.Width.Set {
+		e.Comma()
+	}
 	if s.Height.Set {
-		e.FieldStart("height")
+		e.RawStr("\"height\"" + ":")
 		s.Height.Encode(e)
 	}
+	if s.Height.Set {
+		e.Comma()
+	}
 	if s.Duration.Set {
-		e.FieldStart("duration")
+		e.RawStr("\"duration\"" + ":")
 		s.Duration.Encode(e)
 	}
+	if s.Duration.Set {
+		e.Comma()
+	}
 	if s.SupportsStreaming.Set {
-		e.FieldStart("supports_streaming")
+		e.RawStr("\"supports_streaming\"" + ":")
 		s.SupportsStreaming.Encode(e)
+	}
+
+	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
+		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -4400,23 +5315,31 @@ func (s *InputMediaVideo) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s Invoice) Encode(e *jx.Encoder) {
+func (s Invoice) Encode(e *jx.Writer) {
 	e.ObjStart()
 
-	e.FieldStart("title")
+	e.RawStr("\"title\"" + ":")
 	e.Str(s.Title)
+	e.Comma()
 
-	e.FieldStart("description")
+	e.RawStr("\"description\"" + ":")
 	e.Str(s.Description)
+	e.Comma()
 
-	e.FieldStart("start_parameter")
+	e.RawStr("\"start_parameter\"" + ":")
 	e.Str(s.StartParameter)
+	e.Comma()
 
-	e.FieldStart("currency")
+	e.RawStr("\"currency\"" + ":")
 	e.Str(s.Currency)
+	e.Comma()
 
-	e.FieldStart("total_amount")
+	e.RawStr("\"total_amount\"" + ":")
 	e.Int(s.TotalAmount)
+
+	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
+		e.Buf = e.Buf[:length-1]
+	}
 	e.ObjEnd()
 }
 
@@ -4465,22 +5388,33 @@ func (s *Invoice) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s KeyboardButton) Encode(e *jx.Encoder) {
+func (s KeyboardButton) Encode(e *jx.Writer) {
 	e.ObjStart()
 
-	e.FieldStart("text")
+	e.RawStr("\"text\"" + ":")
 	e.Str(s.Text)
+	e.Comma()
 	if s.RequestContact.Set {
-		e.FieldStart("request_contact")
+		e.RawStr("\"request_contact\"" + ":")
 		s.RequestContact.Encode(e)
 	}
+	if s.RequestContact.Set {
+		e.Comma()
+	}
 	if s.RequestLocation.Set {
-		e.FieldStart("request_location")
+		e.RawStr("\"request_location\"" + ":")
 		s.RequestLocation.Encode(e)
 	}
+	if s.RequestLocation.Set {
+		e.Comma()
+	}
 	if s.RequestPoll.Set {
-		e.FieldStart("request_poll")
+		e.RawStr("\"request_poll\"" + ":")
 		s.RequestPoll.Encode(e)
+	}
+
+	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
+		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -4521,11 +5455,15 @@ func (s *KeyboardButton) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s KeyboardButtonPollType) Encode(e *jx.Encoder) {
+func (s KeyboardButtonPollType) Encode(e *jx.Writer) {
 	e.ObjStart()
 	if s.Type.Set {
-		e.FieldStart("type")
+		e.RawStr("\"type\"" + ":")
 		s.Type.Encode(e)
+	}
+
+	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
+		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -4550,14 +5488,19 @@ func (s *KeyboardButtonPollType) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s LabeledPrice) Encode(e *jx.Encoder) {
+func (s LabeledPrice) Encode(e *jx.Writer) {
 	e.ObjStart()
 
-	e.FieldStart("label")
+	e.RawStr("\"label\"" + ":")
 	e.Str(s.Label)
+	e.Comma()
 
-	e.FieldStart("amount")
+	e.RawStr("\"amount\"" + ":")
 	e.Int(s.Amount)
+
+	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
+		e.Buf = e.Buf[:length-1]
+	}
 	e.ObjEnd()
 }
 
@@ -4588,11 +5531,15 @@ func (s *LabeledPrice) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s LeaveChat) Encode(e *jx.Encoder) {
+func (s LeaveChat) Encode(e *jx.Writer) {
 	e.ObjStart()
 
-	e.FieldStart("chat_id")
+	e.RawStr("\"chat_id\"" + ":")
 	s.ChatID.Encode(e)
+
+	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
+		e.Buf = e.Buf[:length-1]
+	}
 	e.ObjEnd()
 }
 
@@ -4615,29 +5562,44 @@ func (s *LeaveChat) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s Location) Encode(e *jx.Encoder) {
+func (s Location) Encode(e *jx.Writer) {
 	e.ObjStart()
 
-	e.FieldStart("longitude")
+	e.RawStr("\"longitude\"" + ":")
 	e.Float64(s.Longitude)
+	e.Comma()
 
-	e.FieldStart("latitude")
+	e.RawStr("\"latitude\"" + ":")
 	e.Float64(s.Latitude)
+	e.Comma()
 	if s.HorizontalAccuracy.Set {
-		e.FieldStart("horizontal_accuracy")
+		e.RawStr("\"horizontal_accuracy\"" + ":")
 		s.HorizontalAccuracy.Encode(e)
 	}
+	if s.HorizontalAccuracy.Set {
+		e.Comma()
+	}
 	if s.LivePeriod.Set {
-		e.FieldStart("live_period")
+		e.RawStr("\"live_period\"" + ":")
 		s.LivePeriod.Encode(e)
 	}
+	if s.LivePeriod.Set {
+		e.Comma()
+	}
 	if s.Heading.Set {
-		e.FieldStart("heading")
+		e.RawStr("\"heading\"" + ":")
 		s.Heading.Encode(e)
 	}
+	if s.Heading.Set {
+		e.Comma()
+	}
 	if s.ProximityAlertRadius.Set {
-		e.FieldStart("proximity_alert_radius")
+		e.RawStr("\"proximity_alert_radius\"" + ":")
 		s.ProximityAlertRadius.Encode(e)
+	}
+
+	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
+		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -4689,22 +5651,33 @@ func (s *Location) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s LoginUrl) Encode(e *jx.Encoder) {
+func (s LoginUrl) Encode(e *jx.Writer) {
 	e.ObjStart()
 
-	e.FieldStart("url")
+	e.RawStr("\"url\"" + ":")
 	json.EncodeURI(e, s.URL)
+	e.Comma()
 	if s.ForwardText.Set {
-		e.FieldStart("forward_text")
+		e.RawStr("\"forward_text\"" + ":")
 		s.ForwardText.Encode(e)
 	}
+	if s.ForwardText.Set {
+		e.Comma()
+	}
 	if s.BotUsername.Set {
-		e.FieldStart("bot_username")
+		e.RawStr("\"bot_username\"" + ":")
 		s.BotUsername.Encode(e)
 	}
+	if s.BotUsername.Set {
+		e.Comma()
+	}
 	if s.RequestWriteAccess.Set {
-		e.FieldStart("request_write_access")
+		e.RawStr("\"request_write_access\"" + ":")
 		s.RequestWriteAccess.Encode(e)
+	}
+
+	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
+		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -4745,20 +5718,27 @@ func (s *LoginUrl) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s MaskPosition) Encode(e *jx.Encoder) {
+func (s MaskPosition) Encode(e *jx.Writer) {
 	e.ObjStart()
 
-	e.FieldStart("point")
+	e.RawStr("\"point\"" + ":")
 	e.Str(s.Point)
+	e.Comma()
 
-	e.FieldStart("x_shift")
+	e.RawStr("\"x_shift\"" + ":")
 	e.Float64(s.XShift)
+	e.Comma()
 
-	e.FieldStart("y_shift")
+	e.RawStr("\"y_shift\"" + ":")
 	e.Float64(s.YShift)
+	e.Comma()
 
-	e.FieldStart("scale")
+	e.RawStr("\"scale\"" + ":")
 	e.Float64(s.Scale)
+
+	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
+		e.Buf = e.Buf[:length-1]
+	}
 	e.ObjEnd()
 }
 
@@ -4801,248 +5781,452 @@ func (s *MaskPosition) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s Message) Encode(e *jx.Encoder) {
+func (s Message) Encode(e *jx.Writer) {
 	e.ObjStart()
 
-	e.FieldStart("message_id")
+	e.RawStr("\"message_id\"" + ":")
 	e.Int(s.MessageID)
+	e.Comma()
 	if s.From.Set {
-		e.FieldStart("from")
+		e.RawStr("\"from\"" + ":")
 		s.From.Encode(e)
 	}
+	if s.From.Set {
+		e.Comma()
+	}
 	if s.SenderChat.Set {
-		e.FieldStart("sender_chat")
+		e.RawStr("\"sender_chat\"" + ":")
 		s.SenderChat.Encode(e)
 	}
+	if s.SenderChat.Set {
+		e.Comma()
+	}
 
-	e.FieldStart("date")
+	e.RawStr("\"date\"" + ":")
 	e.Int(s.Date)
+	e.Comma()
 
-	e.FieldStart("chat")
+	e.RawStr("\"chat\"" + ":")
 	s.Chat.Encode(e)
+
+	e.Comma()
 	if s.ForwardFrom.Set {
-		e.FieldStart("forward_from")
+		e.RawStr("\"forward_from\"" + ":")
 		s.ForwardFrom.Encode(e)
 	}
+	if s.ForwardFrom.Set {
+		e.Comma()
+	}
 	if s.ForwardFromChat.Set {
-		e.FieldStart("forward_from_chat")
+		e.RawStr("\"forward_from_chat\"" + ":")
 		s.ForwardFromChat.Encode(e)
 	}
+	if s.ForwardFromChat.Set {
+		e.Comma()
+	}
 	if s.ForwardFromMessageID.Set {
-		e.FieldStart("forward_from_message_id")
+		e.RawStr("\"forward_from_message_id\"" + ":")
 		s.ForwardFromMessageID.Encode(e)
 	}
+	if s.ForwardFromMessageID.Set {
+		e.Comma()
+	}
 	if s.ForwardSignature.Set {
-		e.FieldStart("forward_signature")
+		e.RawStr("\"forward_signature\"" + ":")
 		s.ForwardSignature.Encode(e)
 	}
+	if s.ForwardSignature.Set {
+		e.Comma()
+	}
 	if s.ForwardSenderName.Set {
-		e.FieldStart("forward_sender_name")
+		e.RawStr("\"forward_sender_name\"" + ":")
 		s.ForwardSenderName.Encode(e)
 	}
+	if s.ForwardSenderName.Set {
+		e.Comma()
+	}
 	if s.ForwardDate.Set {
-		e.FieldStart("forward_date")
+		e.RawStr("\"forward_date\"" + ":")
 		s.ForwardDate.Encode(e)
 	}
+	if s.ForwardDate.Set {
+		e.Comma()
+	}
 	if s.ReplyToMessage != nil {
-		e.FieldStart("reply_to_message")
+		e.RawStr("\"reply_to_message\"" + ":")
 		s.ReplyToMessage.Encode(e)
 	}
+	if s.ReplyToMessage != nil {
+		e.Comma()
+	}
 	if s.ViaBot.Set {
-		e.FieldStart("via_bot")
+		e.RawStr("\"via_bot\"" + ":")
 		s.ViaBot.Encode(e)
 	}
+	if s.ViaBot.Set {
+		e.Comma()
+	}
 	if s.EditDate.Set {
-		e.FieldStart("edit_date")
+		e.RawStr("\"edit_date\"" + ":")
 		s.EditDate.Encode(e)
 	}
+	if s.EditDate.Set {
+		e.Comma()
+	}
 	if s.MediaGroupID.Set {
-		e.FieldStart("media_group_id")
+		e.RawStr("\"media_group_id\"" + ":")
 		s.MediaGroupID.Encode(e)
 	}
+	if s.MediaGroupID.Set {
+		e.Comma()
+	}
 	if s.AuthorSignature.Set {
-		e.FieldStart("author_signature")
+		e.RawStr("\"author_signature\"" + ":")
 		s.AuthorSignature.Encode(e)
 	}
+	if s.AuthorSignature.Set {
+		e.Comma()
+	}
 	if s.Text.Set {
-		e.FieldStart("text")
+		e.RawStr("\"text\"" + ":")
 		s.Text.Encode(e)
 	}
+	if s.Text.Set {
+		e.Comma()
+	}
 	if s.Entities != nil {
-		e.FieldStart("entities")
+		e.RawStr("\"entities\"" + ":")
 		e.ArrStart()
-		for _, elem := range s.Entities {
-			elem.Encode(e)
+		if len(s.Entities) >= 1 {
+			// Encode first element without comma.
+			{
+				elem := s.Entities[0]
+				elem.Encode(e)
+			}
+			for _, elem := range s.Entities[1:] {
+				e.Comma()
+				elem.Encode(e)
+			}
 		}
 		e.ArrEnd()
+	}
+	if s.Entities != nil {
+		e.Comma()
 	}
 	if s.Animation.Set {
-		e.FieldStart("animation")
+		e.RawStr("\"animation\"" + ":")
 		s.Animation.Encode(e)
 	}
+	if s.Animation.Set {
+		e.Comma()
+	}
 	if s.Audio.Set {
-		e.FieldStart("audio")
+		e.RawStr("\"audio\"" + ":")
 		s.Audio.Encode(e)
 	}
+	if s.Audio.Set {
+		e.Comma()
+	}
 	if s.Document.Set {
-		e.FieldStart("document")
+		e.RawStr("\"document\"" + ":")
 		s.Document.Encode(e)
 	}
+	if s.Document.Set {
+		e.Comma()
+	}
 	if s.Photo != nil {
-		e.FieldStart("photo")
+		e.RawStr("\"photo\"" + ":")
 		e.ArrStart()
-		for _, elem := range s.Photo {
-			elem.Encode(e)
+		if len(s.Photo) >= 1 {
+			// Encode first element without comma.
+			{
+				elem := s.Photo[0]
+				elem.Encode(e)
+			}
+			for _, elem := range s.Photo[1:] {
+				e.Comma()
+				elem.Encode(e)
+			}
 		}
 		e.ArrEnd()
+	}
+	if s.Photo != nil {
+		e.Comma()
 	}
 	if s.Sticker.Set {
-		e.FieldStart("sticker")
+		e.RawStr("\"sticker\"" + ":")
 		s.Sticker.Encode(e)
 	}
+	if s.Sticker.Set {
+		e.Comma()
+	}
 	if s.Video.Set {
-		e.FieldStart("video")
+		e.RawStr("\"video\"" + ":")
 		s.Video.Encode(e)
 	}
+	if s.Video.Set {
+		e.Comma()
+	}
 	if s.VideoNote.Set {
-		e.FieldStart("video_note")
+		e.RawStr("\"video_note\"" + ":")
 		s.VideoNote.Encode(e)
 	}
+	if s.VideoNote.Set {
+		e.Comma()
+	}
 	if s.Voice.Set {
-		e.FieldStart("voice")
+		e.RawStr("\"voice\"" + ":")
 		s.Voice.Encode(e)
 	}
+	if s.Voice.Set {
+		e.Comma()
+	}
 	if s.Caption.Set {
-		e.FieldStart("caption")
+		e.RawStr("\"caption\"" + ":")
 		s.Caption.Encode(e)
 	}
+	if s.Caption.Set {
+		e.Comma()
+	}
 	if s.CaptionEntities != nil {
-		e.FieldStart("caption_entities")
+		e.RawStr("\"caption_entities\"" + ":")
 		e.ArrStart()
-		for _, elem := range s.CaptionEntities {
-			elem.Encode(e)
+		if len(s.CaptionEntities) >= 1 {
+			// Encode first element without comma.
+			{
+				elem := s.CaptionEntities[0]
+				elem.Encode(e)
+			}
+			for _, elem := range s.CaptionEntities[1:] {
+				e.Comma()
+				elem.Encode(e)
+			}
 		}
 		e.ArrEnd()
+	}
+	if s.CaptionEntities != nil {
+		e.Comma()
 	}
 	if s.Contact.Set {
-		e.FieldStart("contact")
+		e.RawStr("\"contact\"" + ":")
 		s.Contact.Encode(e)
 	}
+	if s.Contact.Set {
+		e.Comma()
+	}
 	if s.Dice.Set {
-		e.FieldStart("dice")
+		e.RawStr("\"dice\"" + ":")
 		s.Dice.Encode(e)
 	}
+	if s.Dice.Set {
+		e.Comma()
+	}
 	if s.Game.Set {
-		e.FieldStart("game")
+		e.RawStr("\"game\"" + ":")
 		s.Game.Encode(e)
 	}
+	if s.Game.Set {
+		e.Comma()
+	}
 	if s.Poll.Set {
-		e.FieldStart("poll")
+		e.RawStr("\"poll\"" + ":")
 		s.Poll.Encode(e)
 	}
+	if s.Poll.Set {
+		e.Comma()
+	}
 	if s.Venue.Set {
-		e.FieldStart("venue")
+		e.RawStr("\"venue\"" + ":")
 		s.Venue.Encode(e)
 	}
+	if s.Venue.Set {
+		e.Comma()
+	}
 	if s.Location.Set {
-		e.FieldStart("location")
+		e.RawStr("\"location\"" + ":")
 		s.Location.Encode(e)
 	}
+	if s.Location.Set {
+		e.Comma()
+	}
 	if s.NewChatMembers != nil {
-		e.FieldStart("new_chat_members")
+		e.RawStr("\"new_chat_members\"" + ":")
 		e.ArrStart()
-		for _, elem := range s.NewChatMembers {
-			elem.Encode(e)
+		if len(s.NewChatMembers) >= 1 {
+			// Encode first element without comma.
+			{
+				elem := s.NewChatMembers[0]
+				elem.Encode(e)
+			}
+			for _, elem := range s.NewChatMembers[1:] {
+				e.Comma()
+				elem.Encode(e)
+			}
 		}
 		e.ArrEnd()
+	}
+	if s.NewChatMembers != nil {
+		e.Comma()
 	}
 	if s.LeftChatMember.Set {
-		e.FieldStart("left_chat_member")
+		e.RawStr("\"left_chat_member\"" + ":")
 		s.LeftChatMember.Encode(e)
 	}
+	if s.LeftChatMember.Set {
+		e.Comma()
+	}
 	if s.NewChatTitle.Set {
-		e.FieldStart("new_chat_title")
+		e.RawStr("\"new_chat_title\"" + ":")
 		s.NewChatTitle.Encode(e)
 	}
+	if s.NewChatTitle.Set {
+		e.Comma()
+	}
 	if s.NewChatPhoto != nil {
-		e.FieldStart("new_chat_photo")
+		e.RawStr("\"new_chat_photo\"" + ":")
 		e.ArrStart()
-		for _, elem := range s.NewChatPhoto {
-			elem.Encode(e)
+		if len(s.NewChatPhoto) >= 1 {
+			// Encode first element without comma.
+			{
+				elem := s.NewChatPhoto[0]
+				elem.Encode(e)
+			}
+			for _, elem := range s.NewChatPhoto[1:] {
+				e.Comma()
+				elem.Encode(e)
+			}
 		}
 		e.ArrEnd()
 	}
+	if s.NewChatPhoto != nil {
+		e.Comma()
+	}
 	if s.DeleteChatPhoto.Set {
-		e.FieldStart("delete_chat_photo")
+		e.RawStr("\"delete_chat_photo\"" + ":")
 		s.DeleteChatPhoto.Encode(e)
 	}
+	if s.DeleteChatPhoto.Set {
+		e.Comma()
+	}
 	if s.GroupChatCreated.Set {
-		e.FieldStart("group_chat_created")
+		e.RawStr("\"group_chat_created\"" + ":")
 		s.GroupChatCreated.Encode(e)
 	}
+	if s.GroupChatCreated.Set {
+		e.Comma()
+	}
 	if s.SupergroupChatCreated.Set {
-		e.FieldStart("supergroup_chat_created")
+		e.RawStr("\"supergroup_chat_created\"" + ":")
 		s.SupergroupChatCreated.Encode(e)
 	}
+	if s.SupergroupChatCreated.Set {
+		e.Comma()
+	}
 	if s.ChannelChatCreated.Set {
-		e.FieldStart("channel_chat_created")
+		e.RawStr("\"channel_chat_created\"" + ":")
 		s.ChannelChatCreated.Encode(e)
 	}
+	if s.ChannelChatCreated.Set {
+		e.Comma()
+	}
 	if s.MessageAutoDeleteTimerChanged.Set {
-		e.FieldStart("message_auto_delete_timer_changed")
+		e.RawStr("\"message_auto_delete_timer_changed\"" + ":")
 		s.MessageAutoDeleteTimerChanged.Encode(e)
 	}
+	if s.MessageAutoDeleteTimerChanged.Set {
+		e.Comma()
+	}
 	if s.MigrateToChatID.Set {
-		e.FieldStart("migrate_to_chat_id")
+		e.RawStr("\"migrate_to_chat_id\"" + ":")
 		s.MigrateToChatID.Encode(e)
 	}
+	if s.MigrateToChatID.Set {
+		e.Comma()
+	}
 	if s.MigrateFromChatID.Set {
-		e.FieldStart("migrate_from_chat_id")
+		e.RawStr("\"migrate_from_chat_id\"" + ":")
 		s.MigrateFromChatID.Encode(e)
 	}
+	if s.MigrateFromChatID.Set {
+		e.Comma()
+	}
 	if s.PinnedMessage != nil {
-		e.FieldStart("pinned_message")
+		e.RawStr("\"pinned_message\"" + ":")
 		s.PinnedMessage.Encode(e)
 	}
+	if s.PinnedMessage != nil {
+		e.Comma()
+	}
 	if s.Invoice.Set {
-		e.FieldStart("invoice")
+		e.RawStr("\"invoice\"" + ":")
 		s.Invoice.Encode(e)
 	}
+	if s.Invoice.Set {
+		e.Comma()
+	}
 	if s.SuccessfulPayment.Set {
-		e.FieldStart("successful_payment")
+		e.RawStr("\"successful_payment\"" + ":")
 		s.SuccessfulPayment.Encode(e)
 	}
+	if s.SuccessfulPayment.Set {
+		e.Comma()
+	}
 	if s.ConnectedWebsite.Set {
-		e.FieldStart("connected_website")
+		e.RawStr("\"connected_website\"" + ":")
 		s.ConnectedWebsite.Encode(e)
 	}
+	if s.ConnectedWebsite.Set {
+		e.Comma()
+	}
 	if s.PassportData.Set {
-		e.FieldStart("passport_data")
+		e.RawStr("\"passport_data\"" + ":")
 		s.PassportData.Encode(e)
 	}
+	if s.PassportData.Set {
+		e.Comma()
+	}
 	if s.ProximityAlertTriggered.Set {
-		e.FieldStart("proximity_alert_triggered")
+		e.RawStr("\"proximity_alert_triggered\"" + ":")
 		s.ProximityAlertTriggered.Encode(e)
 	}
+	if s.ProximityAlertTriggered.Set {
+		e.Comma()
+	}
 	if s.VoiceChatScheduled.Set {
-		e.FieldStart("voice_chat_scheduled")
+		e.RawStr("\"voice_chat_scheduled\"" + ":")
 		s.VoiceChatScheduled.Encode(e)
 	}
+	if s.VoiceChatScheduled.Set {
+		e.Comma()
+	}
 	if s.VoiceChatStarted != nil {
-		e.FieldStart("voice_chat_started")
+		e.RawStr("\"voice_chat_started\"" + ":")
 		s.VoiceChatStarted.Encode(e)
 	}
+	if s.VoiceChatStarted != nil {
+		e.Comma()
+	}
 	if s.VoiceChatEnded.Set {
-		e.FieldStart("voice_chat_ended")
+		e.RawStr("\"voice_chat_ended\"" + ":")
 		s.VoiceChatEnded.Encode(e)
 	}
+	if s.VoiceChatEnded.Set {
+		e.Comma()
+	}
 	if s.VoiceChatParticipantsInvited.Set {
-		e.FieldStart("voice_chat_participants_invited")
+		e.RawStr("\"voice_chat_participants_invited\"" + ":")
 		s.VoiceChatParticipantsInvited.Encode(e)
 	}
+	if s.VoiceChatParticipantsInvited.Set {
+		e.Comma()
+	}
 	if s.ReplyMarkup.Set {
-		e.FieldStart("reply_markup")
+		e.RawStr("\"reply_markup\"" + ":")
 		s.ReplyMarkup.Encode(e)
+	}
+
+	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
+		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -5384,11 +6568,15 @@ func (s *Message) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s MessageAutoDeleteTimerChanged) Encode(e *jx.Encoder) {
+func (s MessageAutoDeleteTimerChanged) Encode(e *jx.Writer) {
 	e.ObjStart()
 
-	e.FieldStart("message_auto_delete_time")
+	e.RawStr("\"message_auto_delete_time\"" + ":")
 	e.Int(s.MessageAutoDeleteTime)
+
+	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
+		e.Buf = e.Buf[:length-1]
+	}
 	e.ObjEnd()
 }
 
@@ -5413,28 +6601,41 @@ func (s *MessageAutoDeleteTimerChanged) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s MessageEntity) Encode(e *jx.Encoder) {
+func (s MessageEntity) Encode(e *jx.Writer) {
 	e.ObjStart()
 
-	e.FieldStart("type")
+	e.RawStr("\"type\"" + ":")
 	e.Str(s.Type)
+	e.Comma()
 
-	e.FieldStart("offset")
+	e.RawStr("\"offset\"" + ":")
 	e.Int(s.Offset)
+	e.Comma()
 
-	e.FieldStart("length")
+	e.RawStr("\"length\"" + ":")
 	e.Int(s.Length)
+	e.Comma()
 	if s.URL.Set {
-		e.FieldStart("url")
+		e.RawStr("\"url\"" + ":")
 		s.URL.Encode(e)
 	}
+	if s.URL.Set {
+		e.Comma()
+	}
 	if s.User.Set {
-		e.FieldStart("user")
+		e.RawStr("\"user\"" + ":")
 		s.User.Encode(e)
 	}
+	if s.User.Set {
+		e.Comma()
+	}
 	if s.Language.Set {
-		e.FieldStart("language")
+		e.RawStr("\"language\"" + ":")
 		s.Language.Encode(e)
+	}
+
+	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
+		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -5487,7 +6688,7 @@ func (s *MessageEntity) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes Animation as json.
-func (o OptAnimation) Encode(e *jx.Encoder) {
+func (o OptAnimation) Encode(e *jx.Writer) {
 	o.Value.Encode(e)
 }
 
@@ -5509,7 +6710,7 @@ func (o *OptAnimation) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes Audio as json.
-func (o OptAudio) Encode(e *jx.Encoder) {
+func (o OptAudio) Encode(e *jx.Writer) {
 	o.Value.Encode(e)
 }
 
@@ -5531,7 +6732,7 @@ func (o *OptAudio) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes bool as json.
-func (o OptBool) Encode(e *jx.Encoder) {
+func (o OptBool) Encode(e *jx.Writer) {
 	e.Bool(bool(o.Value))
 }
 
@@ -5555,7 +6756,7 @@ func (o *OptBool) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes BotCommandScope as json.
-func (o OptBotCommandScope) Encode(e *jx.Encoder) {
+func (o OptBotCommandScope) Encode(e *jx.Writer) {
 }
 
 // Decode decodes BotCommandScope from json.
@@ -5573,7 +6774,7 @@ func (o *OptBotCommandScope) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes Chat as json.
-func (o OptChat) Encode(e *jx.Encoder) {
+func (o OptChat) Encode(e *jx.Writer) {
 	o.Value.Encode(e)
 }
 
@@ -5595,7 +6796,7 @@ func (o *OptChat) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes ChatLocation as json.
-func (o OptChatLocation) Encode(e *jx.Encoder) {
+func (o OptChatLocation) Encode(e *jx.Writer) {
 	o.Value.Encode(e)
 }
 
@@ -5617,7 +6818,7 @@ func (o *OptChatLocation) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes ChatPermissions as json.
-func (o OptChatPermissions) Encode(e *jx.Encoder) {
+func (o OptChatPermissions) Encode(e *jx.Writer) {
 	o.Value.Encode(e)
 }
 
@@ -5639,7 +6840,7 @@ func (o *OptChatPermissions) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes ChatPhoto as json.
-func (o OptChatPhoto) Encode(e *jx.Encoder) {
+func (o OptChatPhoto) Encode(e *jx.Writer) {
 	o.Value.Encode(e)
 }
 
@@ -5661,7 +6862,7 @@ func (o *OptChatPhoto) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes Contact as json.
-func (o OptContact) Encode(e *jx.Encoder) {
+func (o OptContact) Encode(e *jx.Writer) {
 	o.Value.Encode(e)
 }
 
@@ -5683,7 +6884,7 @@ func (o *OptContact) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes CopyMessageReplyMarkup as json.
-func (o OptCopyMessageReplyMarkup) Encode(e *jx.Encoder) {
+func (o OptCopyMessageReplyMarkup) Encode(e *jx.Writer) {
 }
 
 // Decode decodes CopyMessageReplyMarkup from json.
@@ -5701,7 +6902,7 @@ func (o *OptCopyMessageReplyMarkup) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes Dice as json.
-func (o OptDice) Encode(e *jx.Encoder) {
+func (o OptDice) Encode(e *jx.Writer) {
 	o.Value.Encode(e)
 }
 
@@ -5723,7 +6924,7 @@ func (o *OptDice) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes Document as json.
-func (o OptDocument) Encode(e *jx.Encoder) {
+func (o OptDocument) Encode(e *jx.Writer) {
 	o.Value.Encode(e)
 }
 
@@ -5745,7 +6946,7 @@ func (o *OptDocument) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes float64 as json.
-func (o OptFloat64) Encode(e *jx.Encoder) {
+func (o OptFloat64) Encode(e *jx.Writer) {
 	e.Float64(float64(o.Value))
 }
 
@@ -5769,7 +6970,7 @@ func (o *OptFloat64) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes Game as json.
-func (o OptGame) Encode(e *jx.Encoder) {
+func (o OptGame) Encode(e *jx.Writer) {
 	o.Value.Encode(e)
 }
 
@@ -5791,7 +6992,7 @@ func (o *OptGame) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes ID as json.
-func (o OptID) Encode(e *jx.Encoder) {
+func (o OptID) Encode(e *jx.Writer) {
 }
 
 // Decode decodes ID from json.
@@ -5809,7 +7010,7 @@ func (o *OptID) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes InlineKeyboardMarkup as json.
-func (o OptInlineKeyboardMarkup) Encode(e *jx.Encoder) {
+func (o OptInlineKeyboardMarkup) Encode(e *jx.Writer) {
 	o.Value.Encode(e)
 }
 
@@ -5831,7 +7032,7 @@ func (o *OptInlineKeyboardMarkup) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes int as json.
-func (o OptInt) Encode(e *jx.Encoder) {
+func (o OptInt) Encode(e *jx.Writer) {
 	e.Int(int(o.Value))
 }
 
@@ -5855,7 +7056,7 @@ func (o *OptInt) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes int64 as json.
-func (o OptInt64) Encode(e *jx.Encoder) {
+func (o OptInt64) Encode(e *jx.Writer) {
 	e.Int64(int64(o.Value))
 }
 
@@ -5879,7 +7080,7 @@ func (o *OptInt64) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes Invoice as json.
-func (o OptInvoice) Encode(e *jx.Encoder) {
+func (o OptInvoice) Encode(e *jx.Writer) {
 	o.Value.Encode(e)
 }
 
@@ -5901,7 +7102,7 @@ func (o *OptInvoice) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes KeyboardButtonPollType as json.
-func (o OptKeyboardButtonPollType) Encode(e *jx.Encoder) {
+func (o OptKeyboardButtonPollType) Encode(e *jx.Writer) {
 	o.Value.Encode(e)
 }
 
@@ -5923,7 +7124,7 @@ func (o *OptKeyboardButtonPollType) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes Location as json.
-func (o OptLocation) Encode(e *jx.Encoder) {
+func (o OptLocation) Encode(e *jx.Writer) {
 	o.Value.Encode(e)
 }
 
@@ -5945,7 +7146,7 @@ func (o *OptLocation) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes LoginUrl as json.
-func (o OptLoginUrl) Encode(e *jx.Encoder) {
+func (o OptLoginUrl) Encode(e *jx.Writer) {
 	o.Value.Encode(e)
 }
 
@@ -5967,7 +7168,7 @@ func (o *OptLoginUrl) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes MaskPosition as json.
-func (o OptMaskPosition) Encode(e *jx.Encoder) {
+func (o OptMaskPosition) Encode(e *jx.Writer) {
 	o.Value.Encode(e)
 }
 
@@ -5989,7 +7190,7 @@ func (o *OptMaskPosition) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes Message as json.
-func (o OptMessage) Encode(e *jx.Encoder) {
+func (o OptMessage) Encode(e *jx.Writer) {
 	o.Value.Encode(e)
 }
 
@@ -6011,7 +7212,7 @@ func (o *OptMessage) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes MessageAutoDeleteTimerChanged as json.
-func (o OptMessageAutoDeleteTimerChanged) Encode(e *jx.Encoder) {
+func (o OptMessageAutoDeleteTimerChanged) Encode(e *jx.Writer) {
 	o.Value.Encode(e)
 }
 
@@ -6033,7 +7234,7 @@ func (o *OptMessageAutoDeleteTimerChanged) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes OrderInfo as json.
-func (o OptOrderInfo) Encode(e *jx.Encoder) {
+func (o OptOrderInfo) Encode(e *jx.Writer) {
 	o.Value.Encode(e)
 }
 
@@ -6055,7 +7256,7 @@ func (o *OptOrderInfo) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes PassportData as json.
-func (o OptPassportData) Encode(e *jx.Encoder) {
+func (o OptPassportData) Encode(e *jx.Writer) {
 	o.Value.Encode(e)
 }
 
@@ -6077,7 +7278,7 @@ func (o *OptPassportData) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes PassportFile as json.
-func (o OptPassportFile) Encode(e *jx.Encoder) {
+func (o OptPassportFile) Encode(e *jx.Writer) {
 	o.Value.Encode(e)
 }
 
@@ -6099,7 +7300,7 @@ func (o *OptPassportFile) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes PhotoSize as json.
-func (o OptPhotoSize) Encode(e *jx.Encoder) {
+func (o OptPhotoSize) Encode(e *jx.Writer) {
 	o.Value.Encode(e)
 }
 
@@ -6121,7 +7322,7 @@ func (o *OptPhotoSize) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes Poll as json.
-func (o OptPoll) Encode(e *jx.Encoder) {
+func (o OptPoll) Encode(e *jx.Writer) {
 	o.Value.Encode(e)
 }
 
@@ -6143,7 +7344,7 @@ func (o *OptPoll) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes ProximityAlertTriggered as json.
-func (o OptProximityAlertTriggered) Encode(e *jx.Encoder) {
+func (o OptProximityAlertTriggered) Encode(e *jx.Writer) {
 	o.Value.Encode(e)
 }
 
@@ -6165,7 +7366,7 @@ func (o *OptProximityAlertTriggered) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes Response as json.
-func (o OptResponse) Encode(e *jx.Encoder) {
+func (o OptResponse) Encode(e *jx.Writer) {
 	o.Value.Encode(e)
 }
 
@@ -6187,7 +7388,7 @@ func (o *OptResponse) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes SendAnimationReplyMarkup as json.
-func (o OptSendAnimationReplyMarkup) Encode(e *jx.Encoder) {
+func (o OptSendAnimationReplyMarkup) Encode(e *jx.Writer) {
 }
 
 // Decode decodes SendAnimationReplyMarkup from json.
@@ -6205,7 +7406,7 @@ func (o *OptSendAnimationReplyMarkup) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes SendAudioReplyMarkup as json.
-func (o OptSendAudioReplyMarkup) Encode(e *jx.Encoder) {
+func (o OptSendAudioReplyMarkup) Encode(e *jx.Writer) {
 }
 
 // Decode decodes SendAudioReplyMarkup from json.
@@ -6223,7 +7424,7 @@ func (o *OptSendAudioReplyMarkup) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes SendContactReplyMarkup as json.
-func (o OptSendContactReplyMarkup) Encode(e *jx.Encoder) {
+func (o OptSendContactReplyMarkup) Encode(e *jx.Writer) {
 }
 
 // Decode decodes SendContactReplyMarkup from json.
@@ -6241,7 +7442,7 @@ func (o *OptSendContactReplyMarkup) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes SendDiceReplyMarkup as json.
-func (o OptSendDiceReplyMarkup) Encode(e *jx.Encoder) {
+func (o OptSendDiceReplyMarkup) Encode(e *jx.Writer) {
 }
 
 // Decode decodes SendDiceReplyMarkup from json.
@@ -6259,7 +7460,7 @@ func (o *OptSendDiceReplyMarkup) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes SendDocumentReplyMarkup as json.
-func (o OptSendDocumentReplyMarkup) Encode(e *jx.Encoder) {
+func (o OptSendDocumentReplyMarkup) Encode(e *jx.Writer) {
 }
 
 // Decode decodes SendDocumentReplyMarkup from json.
@@ -6277,7 +7478,7 @@ func (o *OptSendDocumentReplyMarkup) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes SendLocationReplyMarkup as json.
-func (o OptSendLocationReplyMarkup) Encode(e *jx.Encoder) {
+func (o OptSendLocationReplyMarkup) Encode(e *jx.Writer) {
 }
 
 // Decode decodes SendLocationReplyMarkup from json.
@@ -6295,7 +7496,7 @@ func (o *OptSendLocationReplyMarkup) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes SendMessageReplyMarkup as json.
-func (o OptSendMessageReplyMarkup) Encode(e *jx.Encoder) {
+func (o OptSendMessageReplyMarkup) Encode(e *jx.Writer) {
 }
 
 // Decode decodes SendMessageReplyMarkup from json.
@@ -6313,7 +7514,7 @@ func (o *OptSendMessageReplyMarkup) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes SendPhotoReplyMarkup as json.
-func (o OptSendPhotoReplyMarkup) Encode(e *jx.Encoder) {
+func (o OptSendPhotoReplyMarkup) Encode(e *jx.Writer) {
 }
 
 // Decode decodes SendPhotoReplyMarkup from json.
@@ -6331,7 +7532,7 @@ func (o *OptSendPhotoReplyMarkup) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes SendPollReplyMarkup as json.
-func (o OptSendPollReplyMarkup) Encode(e *jx.Encoder) {
+func (o OptSendPollReplyMarkup) Encode(e *jx.Writer) {
 }
 
 // Decode decodes SendPollReplyMarkup from json.
@@ -6349,7 +7550,7 @@ func (o *OptSendPollReplyMarkup) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes SendStickerReplyMarkup as json.
-func (o OptSendStickerReplyMarkup) Encode(e *jx.Encoder) {
+func (o OptSendStickerReplyMarkup) Encode(e *jx.Writer) {
 }
 
 // Decode decodes SendStickerReplyMarkup from json.
@@ -6367,7 +7568,7 @@ func (o *OptSendStickerReplyMarkup) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes SendVenueReplyMarkup as json.
-func (o OptSendVenueReplyMarkup) Encode(e *jx.Encoder) {
+func (o OptSendVenueReplyMarkup) Encode(e *jx.Writer) {
 }
 
 // Decode decodes SendVenueReplyMarkup from json.
@@ -6385,7 +7586,7 @@ func (o *OptSendVenueReplyMarkup) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes SendVideoNoteReplyMarkup as json.
-func (o OptSendVideoNoteReplyMarkup) Encode(e *jx.Encoder) {
+func (o OptSendVideoNoteReplyMarkup) Encode(e *jx.Writer) {
 }
 
 // Decode decodes SendVideoNoteReplyMarkup from json.
@@ -6403,7 +7604,7 @@ func (o *OptSendVideoNoteReplyMarkup) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes SendVideoReplyMarkup as json.
-func (o OptSendVideoReplyMarkup) Encode(e *jx.Encoder) {
+func (o OptSendVideoReplyMarkup) Encode(e *jx.Writer) {
 }
 
 // Decode decodes SendVideoReplyMarkup from json.
@@ -6421,7 +7622,7 @@ func (o *OptSendVideoReplyMarkup) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes SendVoiceReplyMarkup as json.
-func (o OptSendVoiceReplyMarkup) Encode(e *jx.Encoder) {
+func (o OptSendVoiceReplyMarkup) Encode(e *jx.Writer) {
 }
 
 // Decode decodes SendVoiceReplyMarkup from json.
@@ -6439,7 +7640,7 @@ func (o *OptSendVoiceReplyMarkup) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes ShippingAddress as json.
-func (o OptShippingAddress) Encode(e *jx.Encoder) {
+func (o OptShippingAddress) Encode(e *jx.Writer) {
 	o.Value.Encode(e)
 }
 
@@ -6461,7 +7662,7 @@ func (o *OptShippingAddress) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes Sticker as json.
-func (o OptSticker) Encode(e *jx.Encoder) {
+func (o OptSticker) Encode(e *jx.Writer) {
 	o.Value.Encode(e)
 }
 
@@ -6483,7 +7684,7 @@ func (o *OptSticker) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes string as json.
-func (o OptString) Encode(e *jx.Encoder) {
+func (o OptString) Encode(e *jx.Writer) {
 	e.Str(string(o.Value))
 }
 
@@ -6507,7 +7708,7 @@ func (o *OptString) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes SuccessfulPayment as json.
-func (o OptSuccessfulPayment) Encode(e *jx.Encoder) {
+func (o OptSuccessfulPayment) Encode(e *jx.Writer) {
 	o.Value.Encode(e)
 }
 
@@ -6529,7 +7730,7 @@ func (o *OptSuccessfulPayment) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes url.URL as json.
-func (o OptURL) Encode(e *jx.Encoder) {
+func (o OptURL) Encode(e *jx.Writer) {
 	json.EncodeURI(e, o.Value)
 }
 
@@ -6553,7 +7754,7 @@ func (o *OptURL) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes User as json.
-func (o OptUser) Encode(e *jx.Encoder) {
+func (o OptUser) Encode(e *jx.Writer) {
 	o.Value.Encode(e)
 }
 
@@ -6575,7 +7776,7 @@ func (o *OptUser) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes Venue as json.
-func (o OptVenue) Encode(e *jx.Encoder) {
+func (o OptVenue) Encode(e *jx.Writer) {
 	o.Value.Encode(e)
 }
 
@@ -6597,7 +7798,7 @@ func (o *OptVenue) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes Video as json.
-func (o OptVideo) Encode(e *jx.Encoder) {
+func (o OptVideo) Encode(e *jx.Writer) {
 	o.Value.Encode(e)
 }
 
@@ -6619,7 +7820,7 @@ func (o *OptVideo) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes VideoNote as json.
-func (o OptVideoNote) Encode(e *jx.Encoder) {
+func (o OptVideoNote) Encode(e *jx.Writer) {
 	o.Value.Encode(e)
 }
 
@@ -6641,7 +7842,7 @@ func (o *OptVideoNote) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes Voice as json.
-func (o OptVoice) Encode(e *jx.Encoder) {
+func (o OptVoice) Encode(e *jx.Writer) {
 	o.Value.Encode(e)
 }
 
@@ -6663,7 +7864,7 @@ func (o *OptVoice) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes VoiceChatEnded as json.
-func (o OptVoiceChatEnded) Encode(e *jx.Encoder) {
+func (o OptVoiceChatEnded) Encode(e *jx.Writer) {
 	o.Value.Encode(e)
 }
 
@@ -6685,7 +7886,7 @@ func (o *OptVoiceChatEnded) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes VoiceChatParticipantsInvited as json.
-func (o OptVoiceChatParticipantsInvited) Encode(e *jx.Encoder) {
+func (o OptVoiceChatParticipantsInvited) Encode(e *jx.Writer) {
 	o.Value.Encode(e)
 }
 
@@ -6707,7 +7908,7 @@ func (o *OptVoiceChatParticipantsInvited) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes VoiceChatScheduled as json.
-func (o OptVoiceChatScheduled) Encode(e *jx.Encoder) {
+func (o OptVoiceChatScheduled) Encode(e *jx.Writer) {
 	o.Value.Encode(e)
 }
 
@@ -6729,23 +7930,36 @@ func (o *OptVoiceChatScheduled) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s OrderInfo) Encode(e *jx.Encoder) {
+func (s OrderInfo) Encode(e *jx.Writer) {
 	e.ObjStart()
 	if s.Name.Set {
-		e.FieldStart("name")
+		e.RawStr("\"name\"" + ":")
 		s.Name.Encode(e)
 	}
+	if s.Name.Set {
+		e.Comma()
+	}
 	if s.PhoneNumber.Set {
-		e.FieldStart("phone_number")
+		e.RawStr("\"phone_number\"" + ":")
 		s.PhoneNumber.Encode(e)
 	}
+	if s.PhoneNumber.Set {
+		e.Comma()
+	}
 	if s.Email.Set {
-		e.FieldStart("email")
+		e.RawStr("\"email\"" + ":")
 		s.Email.Encode(e)
 	}
+	if s.Email.Set {
+		e.Comma()
+	}
 	if s.ShippingAddress.Set {
-		e.FieldStart("shipping_address")
+		e.RawStr("\"shipping_address\"" + ":")
 		s.ShippingAddress.Encode(e)
+	}
+
+	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
+		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -6785,18 +7999,32 @@ func (s *OrderInfo) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s PassportData) Encode(e *jx.Encoder) {
+func (s PassportData) Encode(e *jx.Writer) {
 	e.ObjStart()
 
-	e.FieldStart("data")
+	e.RawStr("\"data\"" + ":")
 	e.ArrStart()
-	for _, elem := range s.Data {
-		elem.Encode(e)
+	if len(s.Data) >= 1 {
+		// Encode first element without comma.
+		{
+			elem := s.Data[0]
+			elem.Encode(e)
+		}
+		for _, elem := range s.Data[1:] {
+			e.Comma()
+			elem.Encode(e)
+		}
 	}
 	e.ArrEnd()
 
-	e.FieldStart("credentials")
+	e.Comma()
+
+	e.RawStr("\"credentials\"" + ":")
 	s.Credentials.Encode(e)
+
+	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
+		e.Buf = e.Buf[:length-1]
+	}
 	e.ObjEnd()
 }
 
@@ -6831,7 +8059,7 @@ func (s *PassportData) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes PassportElementError as json.
-func (s PassportElementError) Encode(e *jx.Encoder) {
+func (s PassportElementError) Encode(e *jx.Writer) {
 	switch s.Type {
 	case PassportElementErrorDataFieldPassportElementError:
 		s.PassportElementErrorDataField.Encode(e)
@@ -6960,23 +8188,31 @@ func (s *PassportElementError) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s PassportElementErrorDataField) Encode(e *jx.Encoder) {
+func (s PassportElementErrorDataField) Encode(e *jx.Writer) {
 	e.ObjStart()
 
-	e.FieldStart("source")
+	e.RawStr("\"source\"" + ":")
 	e.Str(s.Source)
+	e.Comma()
 
-	e.FieldStart("type")
+	e.RawStr("\"type\"" + ":")
 	e.Str(s.Type)
+	e.Comma()
 
-	e.FieldStart("field_name")
+	e.RawStr("\"field_name\"" + ":")
 	e.Str(s.FieldName)
+	e.Comma()
 
-	e.FieldStart("data_hash")
+	e.RawStr("\"data_hash\"" + ":")
 	e.Str(s.DataHash)
+	e.Comma()
 
-	e.FieldStart("message")
+	e.RawStr("\"message\"" + ":")
 	e.Str(s.Message)
+
+	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
+		e.Buf = e.Buf[:length-1]
+	}
 	e.ObjEnd()
 }
 
@@ -7025,20 +8261,27 @@ func (s *PassportElementErrorDataField) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s PassportElementErrorFile) Encode(e *jx.Encoder) {
+func (s PassportElementErrorFile) Encode(e *jx.Writer) {
 	e.ObjStart()
 
-	e.FieldStart("source")
+	e.RawStr("\"source\"" + ":")
 	e.Str(s.Source)
+	e.Comma()
 
-	e.FieldStart("type")
+	e.RawStr("\"type\"" + ":")
 	e.Str(s.Type)
+	e.Comma()
 
-	e.FieldStart("file_hash")
+	e.RawStr("\"file_hash\"" + ":")
 	e.Str(s.FileHash)
+	e.Comma()
 
-	e.FieldStart("message")
+	e.RawStr("\"message\"" + ":")
 	e.Str(s.Message)
+
+	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
+		e.Buf = e.Buf[:length-1]
+	}
 	e.ObjEnd()
 }
 
@@ -7081,24 +8324,40 @@ func (s *PassportElementErrorFile) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s PassportElementErrorFiles) Encode(e *jx.Encoder) {
+func (s PassportElementErrorFiles) Encode(e *jx.Writer) {
 	e.ObjStart()
 
-	e.FieldStart("source")
+	e.RawStr("\"source\"" + ":")
 	e.Str(s.Source)
+	e.Comma()
 
-	e.FieldStart("type")
+	e.RawStr("\"type\"" + ":")
 	e.Str(s.Type)
+	e.Comma()
 
-	e.FieldStart("file_hashes")
+	e.RawStr("\"file_hashes\"" + ":")
 	e.ArrStart()
-	for _, elem := range s.FileHashes {
-		e.Str(elem)
+	if len(s.FileHashes) >= 1 {
+		// Encode first element without comma.
+		{
+			elem := s.FileHashes[0]
+			e.Str(elem)
+		}
+		for _, elem := range s.FileHashes[1:] {
+			e.Comma()
+			e.Str(elem)
+		}
 	}
 	e.ArrEnd()
 
-	e.FieldStart("message")
+	e.Comma()
+
+	e.RawStr("\"message\"" + ":")
 	e.Str(s.Message)
+
+	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
+		e.Buf = e.Buf[:length-1]
+	}
 	e.ObjEnd()
 }
 
@@ -7149,20 +8408,27 @@ func (s *PassportElementErrorFiles) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s PassportElementErrorFrontSide) Encode(e *jx.Encoder) {
+func (s PassportElementErrorFrontSide) Encode(e *jx.Writer) {
 	e.ObjStart()
 
-	e.FieldStart("source")
+	e.RawStr("\"source\"" + ":")
 	e.Str(s.Source)
+	e.Comma()
 
-	e.FieldStart("type")
+	e.RawStr("\"type\"" + ":")
 	e.Str(s.Type)
+	e.Comma()
 
-	e.FieldStart("file_hash")
+	e.RawStr("\"file_hash\"" + ":")
 	e.Str(s.FileHash)
+	e.Comma()
 
-	e.FieldStart("message")
+	e.RawStr("\"message\"" + ":")
 	e.Str(s.Message)
+
+	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
+		e.Buf = e.Buf[:length-1]
+	}
 	e.ObjEnd()
 }
 
@@ -7205,20 +8471,27 @@ func (s *PassportElementErrorFrontSide) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s PassportElementErrorReverseSide) Encode(e *jx.Encoder) {
+func (s PassportElementErrorReverseSide) Encode(e *jx.Writer) {
 	e.ObjStart()
 
-	e.FieldStart("source")
+	e.RawStr("\"source\"" + ":")
 	e.Str(s.Source)
+	e.Comma()
 
-	e.FieldStart("type")
+	e.RawStr("\"type\"" + ":")
 	e.Str(s.Type)
+	e.Comma()
 
-	e.FieldStart("file_hash")
+	e.RawStr("\"file_hash\"" + ":")
 	e.Str(s.FileHash)
+	e.Comma()
 
-	e.FieldStart("message")
+	e.RawStr("\"message\"" + ":")
 	e.Str(s.Message)
+
+	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
+		e.Buf = e.Buf[:length-1]
+	}
 	e.ObjEnd()
 }
 
@@ -7261,20 +8534,27 @@ func (s *PassportElementErrorReverseSide) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s PassportElementErrorSelfie) Encode(e *jx.Encoder) {
+func (s PassportElementErrorSelfie) Encode(e *jx.Writer) {
 	e.ObjStart()
 
-	e.FieldStart("source")
+	e.RawStr("\"source\"" + ":")
 	e.Str(s.Source)
+	e.Comma()
 
-	e.FieldStart("type")
+	e.RawStr("\"type\"" + ":")
 	e.Str(s.Type)
+	e.Comma()
 
-	e.FieldStart("file_hash")
+	e.RawStr("\"file_hash\"" + ":")
 	e.Str(s.FileHash)
+	e.Comma()
 
-	e.FieldStart("message")
+	e.RawStr("\"message\"" + ":")
 	e.Str(s.Message)
+
+	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
+		e.Buf = e.Buf[:length-1]
+	}
 	e.ObjEnd()
 }
 
@@ -7317,20 +8597,27 @@ func (s *PassportElementErrorSelfie) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s PassportElementErrorTranslationFile) Encode(e *jx.Encoder) {
+func (s PassportElementErrorTranslationFile) Encode(e *jx.Writer) {
 	e.ObjStart()
 
-	e.FieldStart("source")
+	e.RawStr("\"source\"" + ":")
 	e.Str(s.Source)
+	e.Comma()
 
-	e.FieldStart("type")
+	e.RawStr("\"type\"" + ":")
 	e.Str(s.Type)
+	e.Comma()
 
-	e.FieldStart("file_hash")
+	e.RawStr("\"file_hash\"" + ":")
 	e.Str(s.FileHash)
+	e.Comma()
 
-	e.FieldStart("message")
+	e.RawStr("\"message\"" + ":")
 	e.Str(s.Message)
+
+	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
+		e.Buf = e.Buf[:length-1]
+	}
 	e.ObjEnd()
 }
 
@@ -7373,24 +8660,40 @@ func (s *PassportElementErrorTranslationFile) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s PassportElementErrorTranslationFiles) Encode(e *jx.Encoder) {
+func (s PassportElementErrorTranslationFiles) Encode(e *jx.Writer) {
 	e.ObjStart()
 
-	e.FieldStart("source")
+	e.RawStr("\"source\"" + ":")
 	e.Str(s.Source)
+	e.Comma()
 
-	e.FieldStart("type")
+	e.RawStr("\"type\"" + ":")
 	e.Str(s.Type)
+	e.Comma()
 
-	e.FieldStart("file_hashes")
+	e.RawStr("\"file_hashes\"" + ":")
 	e.ArrStart()
-	for _, elem := range s.FileHashes {
-		e.Str(elem)
+	if len(s.FileHashes) >= 1 {
+		// Encode first element without comma.
+		{
+			elem := s.FileHashes[0]
+			e.Str(elem)
+		}
+		for _, elem := range s.FileHashes[1:] {
+			e.Comma()
+			e.Str(elem)
+		}
 	}
 	e.ArrEnd()
 
-	e.FieldStart("message")
+	e.Comma()
+
+	e.RawStr("\"message\"" + ":")
 	e.Str(s.Message)
+
+	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
+		e.Buf = e.Buf[:length-1]
+	}
 	e.ObjEnd()
 }
 
@@ -7441,20 +8744,27 @@ func (s *PassportElementErrorTranslationFiles) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s PassportElementErrorUnspecified) Encode(e *jx.Encoder) {
+func (s PassportElementErrorUnspecified) Encode(e *jx.Writer) {
 	e.ObjStart()
 
-	e.FieldStart("source")
+	e.RawStr("\"source\"" + ":")
 	e.Str(s.Source)
+	e.Comma()
 
-	e.FieldStart("type")
+	e.RawStr("\"type\"" + ":")
 	e.Str(s.Type)
+	e.Comma()
 
-	e.FieldStart("element_hash")
+	e.RawStr("\"element_hash\"" + ":")
 	e.Str(s.ElementHash)
+	e.Comma()
 
-	e.FieldStart("message")
+	e.RawStr("\"message\"" + ":")
 	e.Str(s.Message)
+
+	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
+		e.Buf = e.Buf[:length-1]
+	}
 	e.ObjEnd()
 }
 
@@ -7497,20 +8807,27 @@ func (s *PassportElementErrorUnspecified) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s PassportFile) Encode(e *jx.Encoder) {
+func (s PassportFile) Encode(e *jx.Writer) {
 	e.ObjStart()
 
-	e.FieldStart("file_id")
+	e.RawStr("\"file_id\"" + ":")
 	e.Str(s.FileID)
+	e.Comma()
 
-	e.FieldStart("file_unique_id")
+	e.RawStr("\"file_unique_id\"" + ":")
 	e.Str(s.FileUniqueID)
+	e.Comma()
 
-	e.FieldStart("file_size")
+	e.RawStr("\"file_size\"" + ":")
 	e.Int(s.FileSize)
+	e.Comma()
 
-	e.FieldStart("file_date")
+	e.RawStr("\"file_date\"" + ":")
 	e.Int(s.FileDate)
+
+	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
+		e.Buf = e.Buf[:length-1]
+	}
 	e.ObjEnd()
 }
 
@@ -7553,23 +8870,31 @@ func (s *PassportFile) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s PhotoSize) Encode(e *jx.Encoder) {
+func (s PhotoSize) Encode(e *jx.Writer) {
 	e.ObjStart()
 
-	e.FieldStart("file_id")
+	e.RawStr("\"file_id\"" + ":")
 	e.Str(s.FileID)
+	e.Comma()
 
-	e.FieldStart("file_unique_id")
+	e.RawStr("\"file_unique_id\"" + ":")
 	e.Str(s.FileUniqueID)
+	e.Comma()
 
-	e.FieldStart("width")
+	e.RawStr("\"width\"" + ":")
 	e.Int(s.Width)
+	e.Comma()
 
-	e.FieldStart("height")
+	e.RawStr("\"height\"" + ":")
 	e.Int(s.Height)
+	e.Comma()
 	if s.FileSize.Set {
-		e.FieldStart("file_size")
+		e.RawStr("\"file_size\"" + ":")
 		s.FileSize.Encode(e)
+	}
+
+	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
+		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -7618,17 +8943,24 @@ func (s *PhotoSize) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s PinChatMessage) Encode(e *jx.Encoder) {
+func (s PinChatMessage) Encode(e *jx.Writer) {
 	e.ObjStart()
 
-	e.FieldStart("chat_id")
+	e.RawStr("\"chat_id\"" + ":")
 	s.ChatID.Encode(e)
 
-	e.FieldStart("message_id")
+	e.Comma()
+
+	e.RawStr("\"message_id\"" + ":")
 	e.Int(s.MessageID)
+	e.Comma()
 	if s.DisableNotification.Set {
-		e.FieldStart("disable_notification")
+		e.RawStr("\"disable_notification\"" + ":")
 		s.DisableNotification.Encode(e)
+	}
+
+	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
+		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -7663,59 +8995,100 @@ func (s *PinChatMessage) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s Poll) Encode(e *jx.Encoder) {
+func (s Poll) Encode(e *jx.Writer) {
 	e.ObjStart()
 
-	e.FieldStart("id")
+	e.RawStr("\"id\"" + ":")
 	e.Str(s.ID)
+	e.Comma()
 
-	e.FieldStart("question")
+	e.RawStr("\"question\"" + ":")
 	e.Str(s.Question)
+	e.Comma()
 
-	e.FieldStart("options")
+	e.RawStr("\"options\"" + ":")
 	e.ArrStart()
-	for _, elem := range s.Options {
-		elem.Encode(e)
+	if len(s.Options) >= 1 {
+		// Encode first element without comma.
+		{
+			elem := s.Options[0]
+			elem.Encode(e)
+		}
+		for _, elem := range s.Options[1:] {
+			e.Comma()
+			elem.Encode(e)
+		}
 	}
 	e.ArrEnd()
 
-	e.FieldStart("total_voter_count")
+	e.Comma()
+
+	e.RawStr("\"total_voter_count\"" + ":")
 	e.Int(s.TotalVoterCount)
+	e.Comma()
 
-	e.FieldStart("is_closed")
+	e.RawStr("\"is_closed\"" + ":")
 	e.Bool(s.IsClosed)
+	e.Comma()
 
-	e.FieldStart("is_anonymous")
+	e.RawStr("\"is_anonymous\"" + ":")
 	e.Bool(s.IsAnonymous)
+	e.Comma()
 
-	e.FieldStart("type")
+	e.RawStr("\"type\"" + ":")
 	e.Str(s.Type)
+	e.Comma()
 
-	e.FieldStart("allows_multiple_answers")
+	e.RawStr("\"allows_multiple_answers\"" + ":")
 	e.Bool(s.AllowsMultipleAnswers)
+	e.Comma()
 	if s.CorrectOptionID.Set {
-		e.FieldStart("correct_option_id")
+		e.RawStr("\"correct_option_id\"" + ":")
 		s.CorrectOptionID.Encode(e)
 	}
+	if s.CorrectOptionID.Set {
+		e.Comma()
+	}
 	if s.Explanation.Set {
-		e.FieldStart("explanation")
+		e.RawStr("\"explanation\"" + ":")
 		s.Explanation.Encode(e)
 	}
+	if s.Explanation.Set {
+		e.Comma()
+	}
 	if s.ExplanationEntities != nil {
-		e.FieldStart("explanation_entities")
+		e.RawStr("\"explanation_entities\"" + ":")
 		e.ArrStart()
-		for _, elem := range s.ExplanationEntities {
-			elem.Encode(e)
+		if len(s.ExplanationEntities) >= 1 {
+			// Encode first element without comma.
+			{
+				elem := s.ExplanationEntities[0]
+				elem.Encode(e)
+			}
+			for _, elem := range s.ExplanationEntities[1:] {
+				e.Comma()
+				elem.Encode(e)
+			}
 		}
 		e.ArrEnd()
 	}
+	if s.ExplanationEntities != nil {
+		e.Comma()
+	}
 	if s.OpenPeriod.Set {
-		e.FieldStart("open_period")
+		e.RawStr("\"open_period\"" + ":")
 		s.OpenPeriod.Encode(e)
 	}
+	if s.OpenPeriod.Set {
+		e.Comma()
+	}
 	if s.CloseDate.Set {
-		e.FieldStart("close_date")
+		e.RawStr("\"close_date\"" + ":")
 		s.CloseDate.Encode(e)
+	}
+
+	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
+		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -7821,14 +9194,19 @@ func (s *Poll) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s PollOption) Encode(e *jx.Encoder) {
+func (s PollOption) Encode(e *jx.Writer) {
 	e.ObjStart()
 
-	e.FieldStart("text")
+	e.RawStr("\"text\"" + ":")
 	e.Str(s.Text)
+	e.Comma()
 
-	e.FieldStart("voter_count")
+	e.RawStr("\"voter_count\"" + ":")
 	e.Int(s.VoterCount)
+
+	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
+		e.Buf = e.Buf[:length-1]
+	}
 	e.ObjEnd()
 }
 
@@ -7859,57 +9237,94 @@ func (s *PollOption) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s PromoteChatMember) Encode(e *jx.Encoder) {
+func (s PromoteChatMember) Encode(e *jx.Writer) {
 	e.ObjStart()
 
-	e.FieldStart("chat_id")
+	e.RawStr("\"chat_id\"" + ":")
 	s.ChatID.Encode(e)
 
-	e.FieldStart("user_id")
+	e.Comma()
+
+	e.RawStr("\"user_id\"" + ":")
 	e.Int(s.UserID)
+	e.Comma()
 	if s.IsAnonymous.Set {
-		e.FieldStart("is_anonymous")
+		e.RawStr("\"is_anonymous\"" + ":")
 		s.IsAnonymous.Encode(e)
 	}
+	if s.IsAnonymous.Set {
+		e.Comma()
+	}
 	if s.CanManageChat.Set {
-		e.FieldStart("can_manage_chat")
+		e.RawStr("\"can_manage_chat\"" + ":")
 		s.CanManageChat.Encode(e)
 	}
+	if s.CanManageChat.Set {
+		e.Comma()
+	}
 	if s.CanPostMessages.Set {
-		e.FieldStart("can_post_messages")
+		e.RawStr("\"can_post_messages\"" + ":")
 		s.CanPostMessages.Encode(e)
 	}
+	if s.CanPostMessages.Set {
+		e.Comma()
+	}
 	if s.CanEditMessages.Set {
-		e.FieldStart("can_edit_messages")
+		e.RawStr("\"can_edit_messages\"" + ":")
 		s.CanEditMessages.Encode(e)
 	}
+	if s.CanEditMessages.Set {
+		e.Comma()
+	}
 	if s.CanDeleteMessages.Set {
-		e.FieldStart("can_delete_messages")
+		e.RawStr("\"can_delete_messages\"" + ":")
 		s.CanDeleteMessages.Encode(e)
 	}
+	if s.CanDeleteMessages.Set {
+		e.Comma()
+	}
 	if s.CanManageVoiceChats.Set {
-		e.FieldStart("can_manage_voice_chats")
+		e.RawStr("\"can_manage_voice_chats\"" + ":")
 		s.CanManageVoiceChats.Encode(e)
 	}
+	if s.CanManageVoiceChats.Set {
+		e.Comma()
+	}
 	if s.CanRestrictMembers.Set {
-		e.FieldStart("can_restrict_members")
+		e.RawStr("\"can_restrict_members\"" + ":")
 		s.CanRestrictMembers.Encode(e)
 	}
+	if s.CanRestrictMembers.Set {
+		e.Comma()
+	}
 	if s.CanPromoteMembers.Set {
-		e.FieldStart("can_promote_members")
+		e.RawStr("\"can_promote_members\"" + ":")
 		s.CanPromoteMembers.Encode(e)
 	}
+	if s.CanPromoteMembers.Set {
+		e.Comma()
+	}
 	if s.CanChangeInfo.Set {
-		e.FieldStart("can_change_info")
+		e.RawStr("\"can_change_info\"" + ":")
 		s.CanChangeInfo.Encode(e)
 	}
+	if s.CanChangeInfo.Set {
+		e.Comma()
+	}
 	if s.CanInviteUsers.Set {
-		e.FieldStart("can_invite_users")
+		e.RawStr("\"can_invite_users\"" + ":")
 		s.CanInviteUsers.Encode(e)
 	}
+	if s.CanInviteUsers.Set {
+		e.Comma()
+	}
 	if s.CanPinMessages.Set {
-		e.FieldStart("can_pin_messages")
+		e.RawStr("\"can_pin_messages\"" + ":")
 		s.CanPinMessages.Encode(e)
+	}
+
+	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
+		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -7994,17 +9409,25 @@ func (s *PromoteChatMember) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s ProximityAlertTriggered) Encode(e *jx.Encoder) {
+func (s ProximityAlertTriggered) Encode(e *jx.Writer) {
 	e.ObjStart()
 
-	e.FieldStart("traveler")
+	e.RawStr("\"traveler\"" + ":")
 	s.Traveler.Encode(e)
 
-	e.FieldStart("watcher")
+	e.Comma()
+
+	e.RawStr("\"watcher\"" + ":")
 	s.Watcher.Encode(e)
 
-	e.FieldStart("distance")
+	e.Comma()
+
+	e.RawStr("\"distance\"" + ":")
 	e.Int(s.Distance)
+
+	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
+		e.Buf = e.Buf[:length-1]
+	}
 	e.ObjEnd()
 }
 
@@ -8037,34 +9460,77 @@ func (s *ProximityAlertTriggered) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s ReplyKeyboardMarkup) Encode(e *jx.Encoder) {
+func (s ReplyKeyboardMarkup) Encode(e *jx.Writer) {
 	e.ObjStart()
 
-	e.FieldStart("keyboard")
+	e.RawStr("\"keyboard\"" + ":")
 	e.ArrStart()
-	for _, elem := range s.Keyboard {
-		e.ArrStart()
-		for _, elem := range elem {
-			elem.Encode(e)
+	if len(s.Keyboard) >= 1 {
+		// Encode first element without comma.
+		{
+			elem := s.Keyboard[0]
+			e.ArrStart()
+			if len(elem) >= 1 {
+				// Encode first element without comma.
+				{
+					elem := elem[0]
+					elem.Encode(e)
+				}
+				for _, elem := range elem[1:] {
+					e.Comma()
+					elem.Encode(e)
+				}
+			}
+			e.ArrEnd()
 		}
-		e.ArrEnd()
+		for _, elem := range s.Keyboard[1:] {
+			e.Comma()
+			e.ArrStart()
+			if len(elem) >= 1 {
+				// Encode first element without comma.
+				{
+					elem := elem[0]
+					elem.Encode(e)
+				}
+				for _, elem := range elem[1:] {
+					e.Comma()
+					elem.Encode(e)
+				}
+			}
+			e.ArrEnd()
+		}
 	}
 	e.ArrEnd()
+
+	e.Comma()
 	if s.ResizeKeyboard.Set {
-		e.FieldStart("resize_keyboard")
+		e.RawStr("\"resize_keyboard\"" + ":")
 		s.ResizeKeyboard.Encode(e)
 	}
+	if s.ResizeKeyboard.Set {
+		e.Comma()
+	}
 	if s.OneTimeKeyboard.Set {
-		e.FieldStart("one_time_keyboard")
+		e.RawStr("\"one_time_keyboard\"" + ":")
 		s.OneTimeKeyboard.Encode(e)
 	}
+	if s.OneTimeKeyboard.Set {
+		e.Comma()
+	}
 	if s.InputFieldPlaceholder.Set {
-		e.FieldStart("input_field_placeholder")
+		e.RawStr("\"input_field_placeholder\"" + ":")
 		s.InputFieldPlaceholder.Encode(e)
 	}
+	if s.InputFieldPlaceholder.Set {
+		e.Comma()
+	}
 	if s.Selective.Set {
-		e.FieldStart("selective")
+		e.RawStr("\"selective\"" + ":")
 		s.Selective.Encode(e)
+	}
+
+	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
+		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -8124,14 +9590,19 @@ func (s *ReplyKeyboardMarkup) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s ReplyKeyboardRemove) Encode(e *jx.Encoder) {
+func (s ReplyKeyboardRemove) Encode(e *jx.Writer) {
 	e.ObjStart()
 
-	e.FieldStart("remove_keyboard")
+	e.RawStr("\"remove_keyboard\"" + ":")
 	e.Bool(s.RemoveKeyboard)
+	e.Comma()
 	if s.Selective.Set {
-		e.FieldStart("selective")
+		e.RawStr("\"selective\"" + ":")
 		s.Selective.Encode(e)
+	}
+
+	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
+		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -8162,15 +9633,22 @@ func (s *ReplyKeyboardRemove) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s Response) Encode(e *jx.Encoder) {
+func (s Response) Encode(e *jx.Writer) {
 	e.ObjStart()
 	if s.MigrateToChatID.Set {
-		e.FieldStart("migrate_to_chat_id")
+		e.RawStr("\"migrate_to_chat_id\"" + ":")
 		s.MigrateToChatID.Encode(e)
 	}
+	if s.MigrateToChatID.Set {
+		e.Comma()
+	}
 	if s.RetryAfter.Set {
-		e.FieldStart("retry_after")
+		e.RawStr("\"retry_after\"" + ":")
 		s.RetryAfter.Encode(e)
+	}
+
+	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
+		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -8200,20 +9678,29 @@ func (s *Response) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s RestrictChatMember) Encode(e *jx.Encoder) {
+func (s RestrictChatMember) Encode(e *jx.Writer) {
 	e.ObjStart()
 
-	e.FieldStart("chat_id")
+	e.RawStr("\"chat_id\"" + ":")
 	s.ChatID.Encode(e)
 
-	e.FieldStart("user_id")
-	e.Int(s.UserID)
+	e.Comma()
 
-	e.FieldStart("permissions")
+	e.RawStr("\"user_id\"" + ":")
+	e.Int(s.UserID)
+	e.Comma()
+
+	e.RawStr("\"permissions\"" + ":")
 	s.Permissions.Encode(e)
+
+	e.Comma()
 	if s.UntilDate.Set {
-		e.FieldStart("until_date")
+		e.RawStr("\"until_date\"" + ":")
 		s.UntilDate.Encode(e)
+	}
+
+	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
+		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -8252,15 +9739,22 @@ func (s *RestrictChatMember) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s Result) Encode(e *jx.Encoder) {
+func (s Result) Encode(e *jx.Writer) {
 	e.ObjStart()
 	if s.Result.Set {
-		e.FieldStart("result")
+		e.RawStr("\"result\"" + ":")
 		s.Result.Encode(e)
 	}
+	if s.Result.Set {
+		e.Comma()
+	}
 
-	e.FieldStart("ok")
+	e.RawStr("\"ok\"" + ":")
 	e.Bool(s.Ok)
+
+	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
+		e.Buf = e.Buf[:length-1]
+	}
 	e.ObjEnd()
 }
 
@@ -8290,15 +9784,22 @@ func (s *Result) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s ResultMsg) Encode(e *jx.Encoder) {
+func (s ResultMsg) Encode(e *jx.Writer) {
 	e.ObjStart()
 	if s.Result.Set {
-		e.FieldStart("result")
+		e.RawStr("\"result\"" + ":")
 		s.Result.Encode(e)
 	}
+	if s.Result.Set {
+		e.Comma()
+	}
 
-	e.FieldStart("ok")
+	e.RawStr("\"ok\"" + ":")
 	e.Bool(s.Ok)
+
+	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
+		e.Buf = e.Buf[:length-1]
+	}
 	e.ObjEnd()
 }
 
@@ -8328,15 +9829,22 @@ func (s *ResultMsg) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s ResultUsr) Encode(e *jx.Encoder) {
+func (s ResultUsr) Encode(e *jx.Writer) {
 	e.ObjStart()
 	if s.Result.Set {
-		e.FieldStart("result")
+		e.RawStr("\"result\"" + ":")
 		s.Result.Encode(e)
 	}
+	if s.Result.Set {
+		e.Comma()
+	}
 
-	e.FieldStart("ok")
+	e.RawStr("\"ok\"" + ":")
 	e.Bool(s.Ok)
+
+	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
+		e.Buf = e.Buf[:length-1]
+	}
 	e.ObjEnd()
 }
 
@@ -8366,14 +9874,20 @@ func (s *ResultUsr) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s RevokeChatInviteLink) Encode(e *jx.Encoder) {
+func (s RevokeChatInviteLink) Encode(e *jx.Writer) {
 	e.ObjStart()
 
-	e.FieldStart("chat_id")
+	e.RawStr("\"chat_id\"" + ":")
 	s.ChatID.Encode(e)
 
-	e.FieldStart("invite_link")
+	e.Comma()
+
+	e.RawStr("\"invite_link\"" + ":")
 	e.Str(s.InviteLink)
+
+	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
+		e.Buf = e.Buf[:length-1]
+	}
 	e.ObjEnd()
 }
 
@@ -8402,61 +9916,106 @@ func (s *RevokeChatInviteLink) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s SendAnimation) Encode(e *jx.Encoder) {
+func (s SendAnimation) Encode(e *jx.Writer) {
 	e.ObjStart()
 
-	e.FieldStart("chat_id")
+	e.RawStr("\"chat_id\"" + ":")
 	s.ChatID.Encode(e)
 
-	e.FieldStart("animation")
+	e.Comma()
+
+	e.RawStr("\"animation\"" + ":")
 	e.Str(s.Animation)
+	e.Comma()
 	if s.Duration.Set {
-		e.FieldStart("duration")
+		e.RawStr("\"duration\"" + ":")
 		s.Duration.Encode(e)
 	}
+	if s.Duration.Set {
+		e.Comma()
+	}
 	if s.Width.Set {
-		e.FieldStart("width")
+		e.RawStr("\"width\"" + ":")
 		s.Width.Encode(e)
 	}
+	if s.Width.Set {
+		e.Comma()
+	}
 	if s.Height.Set {
-		e.FieldStart("height")
+		e.RawStr("\"height\"" + ":")
 		s.Height.Encode(e)
 	}
+	if s.Height.Set {
+		e.Comma()
+	}
 	if s.Thumb.Set {
-		e.FieldStart("thumb")
+		e.RawStr("\"thumb\"" + ":")
 		s.Thumb.Encode(e)
 	}
+	if s.Thumb.Set {
+		e.Comma()
+	}
 	if s.Caption.Set {
-		e.FieldStart("caption")
+		e.RawStr("\"caption\"" + ":")
 		s.Caption.Encode(e)
 	}
+	if s.Caption.Set {
+		e.Comma()
+	}
 	if s.ParseMode.Set {
-		e.FieldStart("parse_mode")
+		e.RawStr("\"parse_mode\"" + ":")
 		s.ParseMode.Encode(e)
 	}
+	if s.ParseMode.Set {
+		e.Comma()
+	}
 	if s.CaptionEntities != nil {
-		e.FieldStart("caption_entities")
+		e.RawStr("\"caption_entities\"" + ":")
 		e.ArrStart()
-		for _, elem := range s.CaptionEntities {
-			elem.Encode(e)
+		if len(s.CaptionEntities) >= 1 {
+			// Encode first element without comma.
+			{
+				elem := s.CaptionEntities[0]
+				elem.Encode(e)
+			}
+			for _, elem := range s.CaptionEntities[1:] {
+				e.Comma()
+				elem.Encode(e)
+			}
 		}
 		e.ArrEnd()
 	}
+	if s.CaptionEntities != nil {
+		e.Comma()
+	}
 	if s.DisableNotification.Set {
-		e.FieldStart("disable_notification")
+		e.RawStr("\"disable_notification\"" + ":")
 		s.DisableNotification.Encode(e)
 	}
+	if s.DisableNotification.Set {
+		e.Comma()
+	}
 	if s.ReplyToMessageID.Set {
-		e.FieldStart("reply_to_message_id")
+		e.RawStr("\"reply_to_message_id\"" + ":")
 		s.ReplyToMessageID.Encode(e)
 	}
+	if s.ReplyToMessageID.Set {
+		e.Comma()
+	}
 	if s.AllowSendingWithoutReply.Set {
-		e.FieldStart("allow_sending_without_reply")
+		e.RawStr("\"allow_sending_without_reply\"" + ":")
 		s.AllowSendingWithoutReply.Encode(e)
 	}
+	if s.AllowSendingWithoutReply.Set {
+		e.Comma()
+	}
 	if s.ReplyMarkup.Set {
-		e.FieldStart("reply_markup")
+		e.RawStr("\"reply_markup\"" + ":")
 		s.ReplyMarkup.Encode(e)
+	}
+
+	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
+		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -8548,7 +10107,7 @@ func (s *SendAnimation) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes SendAnimationReplyMarkup as json.
-func (s SendAnimationReplyMarkup) Encode(e *jx.Encoder) {
+func (s SendAnimationReplyMarkup) Encode(e *jx.Writer) {
 	switch s.Type {
 	case InlineKeyboardMarkupSendAnimationReplyMarkup:
 		s.InlineKeyboardMarkup.Encode(e)
@@ -8634,61 +10193,106 @@ func (s *SendAnimationReplyMarkup) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s SendAudio) Encode(e *jx.Encoder) {
+func (s SendAudio) Encode(e *jx.Writer) {
 	e.ObjStart()
 
-	e.FieldStart("chat_id")
+	e.RawStr("\"chat_id\"" + ":")
 	s.ChatID.Encode(e)
 
-	e.FieldStart("audio")
+	e.Comma()
+
+	e.RawStr("\"audio\"" + ":")
 	e.Str(s.Audio)
+	e.Comma()
 	if s.Caption.Set {
-		e.FieldStart("caption")
+		e.RawStr("\"caption\"" + ":")
 		s.Caption.Encode(e)
 	}
+	if s.Caption.Set {
+		e.Comma()
+	}
 	if s.ParseMode.Set {
-		e.FieldStart("parse_mode")
+		e.RawStr("\"parse_mode\"" + ":")
 		s.ParseMode.Encode(e)
 	}
+	if s.ParseMode.Set {
+		e.Comma()
+	}
 	if s.CaptionEntities != nil {
-		e.FieldStart("caption_entities")
+		e.RawStr("\"caption_entities\"" + ":")
 		e.ArrStart()
-		for _, elem := range s.CaptionEntities {
-			elem.Encode(e)
+		if len(s.CaptionEntities) >= 1 {
+			// Encode first element without comma.
+			{
+				elem := s.CaptionEntities[0]
+				elem.Encode(e)
+			}
+			for _, elem := range s.CaptionEntities[1:] {
+				e.Comma()
+				elem.Encode(e)
+			}
 		}
 		e.ArrEnd()
 	}
+	if s.CaptionEntities != nil {
+		e.Comma()
+	}
 	if s.Duration.Set {
-		e.FieldStart("duration")
+		e.RawStr("\"duration\"" + ":")
 		s.Duration.Encode(e)
 	}
+	if s.Duration.Set {
+		e.Comma()
+	}
 	if s.Performer.Set {
-		e.FieldStart("performer")
+		e.RawStr("\"performer\"" + ":")
 		s.Performer.Encode(e)
 	}
+	if s.Performer.Set {
+		e.Comma()
+	}
 	if s.Title.Set {
-		e.FieldStart("title")
+		e.RawStr("\"title\"" + ":")
 		s.Title.Encode(e)
 	}
+	if s.Title.Set {
+		e.Comma()
+	}
 	if s.Thumb.Set {
-		e.FieldStart("thumb")
+		e.RawStr("\"thumb\"" + ":")
 		s.Thumb.Encode(e)
 	}
+	if s.Thumb.Set {
+		e.Comma()
+	}
 	if s.DisableNotification.Set {
-		e.FieldStart("disable_notification")
+		e.RawStr("\"disable_notification\"" + ":")
 		s.DisableNotification.Encode(e)
 	}
+	if s.DisableNotification.Set {
+		e.Comma()
+	}
 	if s.ReplyToMessageID.Set {
-		e.FieldStart("reply_to_message_id")
+		e.RawStr("\"reply_to_message_id\"" + ":")
 		s.ReplyToMessageID.Encode(e)
 	}
+	if s.ReplyToMessageID.Set {
+		e.Comma()
+	}
 	if s.AllowSendingWithoutReply.Set {
-		e.FieldStart("allow_sending_without_reply")
+		e.RawStr("\"allow_sending_without_reply\"" + ":")
 		s.AllowSendingWithoutReply.Encode(e)
 	}
+	if s.AllowSendingWithoutReply.Set {
+		e.Comma()
+	}
 	if s.ReplyMarkup.Set {
-		e.FieldStart("reply_markup")
+		e.RawStr("\"reply_markup\"" + ":")
 		s.ReplyMarkup.Encode(e)
+	}
+
+	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
+		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -8780,7 +10384,7 @@ func (s *SendAudio) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes SendAudioReplyMarkup as json.
-func (s SendAudioReplyMarkup) Encode(e *jx.Encoder) {
+func (s SendAudioReplyMarkup) Encode(e *jx.Writer) {
 	switch s.Type {
 	case InlineKeyboardMarkupSendAudioReplyMarkup:
 		s.InlineKeyboardMarkup.Encode(e)
@@ -8866,14 +10470,20 @@ func (s *SendAudioReplyMarkup) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s SendChatAction) Encode(e *jx.Encoder) {
+func (s SendChatAction) Encode(e *jx.Writer) {
 	e.ObjStart()
 
-	e.FieldStart("chat_id")
+	e.RawStr("\"chat_id\"" + ":")
 	s.ChatID.Encode(e)
 
-	e.FieldStart("action")
+	e.Comma()
+
+	e.RawStr("\"action\"" + ":")
 	e.Str(s.Action)
+
+	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
+		e.Buf = e.Buf[:length-1]
+	}
 	e.ObjEnd()
 }
 
@@ -8902,40 +10512,63 @@ func (s *SendChatAction) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s SendContact) Encode(e *jx.Encoder) {
+func (s SendContact) Encode(e *jx.Writer) {
 	e.ObjStart()
 
-	e.FieldStart("chat_id")
+	e.RawStr("\"chat_id\"" + ":")
 	s.ChatID.Encode(e)
 
-	e.FieldStart("phone_number")
-	e.Str(s.PhoneNumber)
+	e.Comma()
 
-	e.FieldStart("first_name")
+	e.RawStr("\"phone_number\"" + ":")
+	e.Str(s.PhoneNumber)
+	e.Comma()
+
+	e.RawStr("\"first_name\"" + ":")
 	e.Str(s.FirstName)
+	e.Comma()
 	if s.LastName.Set {
-		e.FieldStart("last_name")
+		e.RawStr("\"last_name\"" + ":")
 		s.LastName.Encode(e)
 	}
+	if s.LastName.Set {
+		e.Comma()
+	}
 	if s.Vcard.Set {
-		e.FieldStart("vcard")
+		e.RawStr("\"vcard\"" + ":")
 		s.Vcard.Encode(e)
 	}
+	if s.Vcard.Set {
+		e.Comma()
+	}
 	if s.DisableNotification.Set {
-		e.FieldStart("disable_notification")
+		e.RawStr("\"disable_notification\"" + ":")
 		s.DisableNotification.Encode(e)
 	}
+	if s.DisableNotification.Set {
+		e.Comma()
+	}
 	if s.ReplyToMessageID.Set {
-		e.FieldStart("reply_to_message_id")
+		e.RawStr("\"reply_to_message_id\"" + ":")
 		s.ReplyToMessageID.Encode(e)
 	}
+	if s.ReplyToMessageID.Set {
+		e.Comma()
+	}
 	if s.AllowSendingWithoutReply.Set {
-		e.FieldStart("allow_sending_without_reply")
+		e.RawStr("\"allow_sending_without_reply\"" + ":")
 		s.AllowSendingWithoutReply.Encode(e)
 	}
+	if s.AllowSendingWithoutReply.Set {
+		e.Comma()
+	}
 	if s.ReplyMarkup.Set {
-		e.FieldStart("reply_markup")
+		e.RawStr("\"reply_markup\"" + ":")
 		s.ReplyMarkup.Encode(e)
+	}
+
+	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
+		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -9001,7 +10634,7 @@ func (s *SendContact) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes SendContactReplyMarkup as json.
-func (s SendContactReplyMarkup) Encode(e *jx.Encoder) {
+func (s SendContactReplyMarkup) Encode(e *jx.Writer) {
 	switch s.Type {
 	case InlineKeyboardMarkupSendContactReplyMarkup:
 		s.InlineKeyboardMarkup.Encode(e)
@@ -9087,30 +10720,48 @@ func (s *SendContactReplyMarkup) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s SendDice) Encode(e *jx.Encoder) {
+func (s SendDice) Encode(e *jx.Writer) {
 	e.ObjStart()
 
-	e.FieldStart("chat_id")
+	e.RawStr("\"chat_id\"" + ":")
 	s.ChatID.Encode(e)
+
+	e.Comma()
 	if s.Emoji.Set {
-		e.FieldStart("emoji")
+		e.RawStr("\"emoji\"" + ":")
 		s.Emoji.Encode(e)
 	}
+	if s.Emoji.Set {
+		e.Comma()
+	}
 	if s.DisableNotification.Set {
-		e.FieldStart("disable_notification")
+		e.RawStr("\"disable_notification\"" + ":")
 		s.DisableNotification.Encode(e)
 	}
+	if s.DisableNotification.Set {
+		e.Comma()
+	}
 	if s.ReplyToMessageID.Set {
-		e.FieldStart("reply_to_message_id")
+		e.RawStr("\"reply_to_message_id\"" + ":")
 		s.ReplyToMessageID.Encode(e)
 	}
+	if s.ReplyToMessageID.Set {
+		e.Comma()
+	}
 	if s.AllowSendingWithoutReply.Set {
-		e.FieldStart("allow_sending_without_reply")
+		e.RawStr("\"allow_sending_without_reply\"" + ":")
 		s.AllowSendingWithoutReply.Encode(e)
 	}
+	if s.AllowSendingWithoutReply.Set {
+		e.Comma()
+	}
 	if s.ReplyMarkup.Set {
-		e.FieldStart("reply_markup")
+		e.RawStr("\"reply_markup\"" + ":")
 		s.ReplyMarkup.Encode(e)
+	}
+
+	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
+		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -9159,7 +10810,7 @@ func (s *SendDice) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes SendDiceReplyMarkup as json.
-func (s SendDiceReplyMarkup) Encode(e *jx.Encoder) {
+func (s SendDiceReplyMarkup) Encode(e *jx.Writer) {
 	switch s.Type {
 	case InlineKeyboardMarkupSendDiceReplyMarkup:
 		s.InlineKeyboardMarkup.Encode(e)
@@ -9245,53 +10896,92 @@ func (s *SendDiceReplyMarkup) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s SendDocument) Encode(e *jx.Encoder) {
+func (s SendDocument) Encode(e *jx.Writer) {
 	e.ObjStart()
 
-	e.FieldStart("chat_id")
+	e.RawStr("\"chat_id\"" + ":")
 	s.ChatID.Encode(e)
 
-	e.FieldStart("document")
+	e.Comma()
+
+	e.RawStr("\"document\"" + ":")
 	e.Str(s.Document)
+	e.Comma()
 	if s.Thumb.Set {
-		e.FieldStart("thumb")
+		e.RawStr("\"thumb\"" + ":")
 		s.Thumb.Encode(e)
 	}
+	if s.Thumb.Set {
+		e.Comma()
+	}
 	if s.Caption.Set {
-		e.FieldStart("caption")
+		e.RawStr("\"caption\"" + ":")
 		s.Caption.Encode(e)
 	}
+	if s.Caption.Set {
+		e.Comma()
+	}
 	if s.ParseMode.Set {
-		e.FieldStart("parse_mode")
+		e.RawStr("\"parse_mode\"" + ":")
 		s.ParseMode.Encode(e)
 	}
+	if s.ParseMode.Set {
+		e.Comma()
+	}
 	if s.CaptionEntities != nil {
-		e.FieldStart("caption_entities")
+		e.RawStr("\"caption_entities\"" + ":")
 		e.ArrStart()
-		for _, elem := range s.CaptionEntities {
-			elem.Encode(e)
+		if len(s.CaptionEntities) >= 1 {
+			// Encode first element without comma.
+			{
+				elem := s.CaptionEntities[0]
+				elem.Encode(e)
+			}
+			for _, elem := range s.CaptionEntities[1:] {
+				e.Comma()
+				elem.Encode(e)
+			}
 		}
 		e.ArrEnd()
 	}
+	if s.CaptionEntities != nil {
+		e.Comma()
+	}
 	if s.DisableContentTypeDetection.Set {
-		e.FieldStart("disable_content_type_detection")
+		e.RawStr("\"disable_content_type_detection\"" + ":")
 		s.DisableContentTypeDetection.Encode(e)
 	}
+	if s.DisableContentTypeDetection.Set {
+		e.Comma()
+	}
 	if s.DisableNotification.Set {
-		e.FieldStart("disable_notification")
+		e.RawStr("\"disable_notification\"" + ":")
 		s.DisableNotification.Encode(e)
 	}
+	if s.DisableNotification.Set {
+		e.Comma()
+	}
 	if s.ReplyToMessageID.Set {
-		e.FieldStart("reply_to_message_id")
+		e.RawStr("\"reply_to_message_id\"" + ":")
 		s.ReplyToMessageID.Encode(e)
 	}
+	if s.ReplyToMessageID.Set {
+		e.Comma()
+	}
 	if s.AllowSendingWithoutReply.Set {
-		e.FieldStart("allow_sending_without_reply")
+		e.RawStr("\"allow_sending_without_reply\"" + ":")
 		s.AllowSendingWithoutReply.Encode(e)
 	}
+	if s.AllowSendingWithoutReply.Set {
+		e.Comma()
+	}
 	if s.ReplyMarkup.Set {
-		e.FieldStart("reply_markup")
+		e.RawStr("\"reply_markup\"" + ":")
 		s.ReplyMarkup.Encode(e)
+	}
+
+	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
+		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -9373,7 +11063,7 @@ func (s *SendDocument) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes SendDocumentReplyMarkup as json.
-func (s SendDocumentReplyMarkup) Encode(e *jx.Encoder) {
+func (s SendDocumentReplyMarkup) Encode(e *jx.Writer) {
 	switch s.Type {
 	case InlineKeyboardMarkupSendDocumentReplyMarkup:
 		s.InlineKeyboardMarkup.Encode(e)
@@ -9459,29 +11149,44 @@ func (s *SendDocumentReplyMarkup) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s SendGame) Encode(e *jx.Encoder) {
+func (s SendGame) Encode(e *jx.Writer) {
 	e.ObjStart()
 
-	e.FieldStart("chat_id")
+	e.RawStr("\"chat_id\"" + ":")
 	e.Int(s.ChatID)
+	e.Comma()
 
-	e.FieldStart("game_short_name")
+	e.RawStr("\"game_short_name\"" + ":")
 	e.Str(s.GameShortName)
+	e.Comma()
 	if s.DisableNotification.Set {
-		e.FieldStart("disable_notification")
+		e.RawStr("\"disable_notification\"" + ":")
 		s.DisableNotification.Encode(e)
 	}
+	if s.DisableNotification.Set {
+		e.Comma()
+	}
 	if s.ReplyToMessageID.Set {
-		e.FieldStart("reply_to_message_id")
+		e.RawStr("\"reply_to_message_id\"" + ":")
 		s.ReplyToMessageID.Encode(e)
 	}
+	if s.ReplyToMessageID.Set {
+		e.Comma()
+	}
 	if s.AllowSendingWithoutReply.Set {
-		e.FieldStart("allow_sending_without_reply")
+		e.RawStr("\"allow_sending_without_reply\"" + ":")
 		s.AllowSendingWithoutReply.Encode(e)
 	}
+	if s.AllowSendingWithoutReply.Set {
+		e.Comma()
+	}
 	if s.ReplyMarkup.Set {
-		e.FieldStart("reply_markup")
+		e.RawStr("\"reply_markup\"" + ":")
 		s.ReplyMarkup.Encode(e)
+	}
+
+	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
+		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -9533,112 +11238,195 @@ func (s *SendGame) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s SendInvoice) Encode(e *jx.Encoder) {
+func (s SendInvoice) Encode(e *jx.Writer) {
 	e.ObjStart()
 
-	e.FieldStart("chat_id")
+	e.RawStr("\"chat_id\"" + ":")
 	s.ChatID.Encode(e)
 
-	e.FieldStart("title")
+	e.Comma()
+
+	e.RawStr("\"title\"" + ":")
 	e.Str(s.Title)
+	e.Comma()
 
-	e.FieldStart("description")
+	e.RawStr("\"description\"" + ":")
 	e.Str(s.Description)
+	e.Comma()
 
-	e.FieldStart("payload")
+	e.RawStr("\"payload\"" + ":")
 	e.Str(s.Payload)
+	e.Comma()
 
-	e.FieldStart("provider_token")
+	e.RawStr("\"provider_token\"" + ":")
 	e.Str(s.ProviderToken)
+	e.Comma()
 
-	e.FieldStart("currency")
+	e.RawStr("\"currency\"" + ":")
 	e.Str(s.Currency)
+	e.Comma()
 
-	e.FieldStart("prices")
+	e.RawStr("\"prices\"" + ":")
 	e.ArrStart()
-	for _, elem := range s.Prices {
-		elem.Encode(e)
+	if len(s.Prices) >= 1 {
+		// Encode first element without comma.
+		{
+			elem := s.Prices[0]
+			elem.Encode(e)
+		}
+		for _, elem := range s.Prices[1:] {
+			e.Comma()
+			elem.Encode(e)
+		}
 	}
 	e.ArrEnd()
+
+	e.Comma()
 	if s.MaxTipAmount.Set {
-		e.FieldStart("max_tip_amount")
+		e.RawStr("\"max_tip_amount\"" + ":")
 		s.MaxTipAmount.Encode(e)
 	}
+	if s.MaxTipAmount.Set {
+		e.Comma()
+	}
 	if s.SuggestedTipAmounts != nil {
-		e.FieldStart("suggested_tip_amounts")
+		e.RawStr("\"suggested_tip_amounts\"" + ":")
 		e.ArrStart()
-		for _, elem := range s.SuggestedTipAmounts {
-			e.Int(elem)
+		if len(s.SuggestedTipAmounts) >= 1 {
+			// Encode first element without comma.
+			{
+				elem := s.SuggestedTipAmounts[0]
+				e.Int(elem)
+			}
+			for _, elem := range s.SuggestedTipAmounts[1:] {
+				e.Comma()
+				e.Int(elem)
+			}
 		}
 		e.ArrEnd()
 	}
+	if s.SuggestedTipAmounts != nil {
+		e.Comma()
+	}
 	if s.StartParameter.Set {
-		e.FieldStart("start_parameter")
+		e.RawStr("\"start_parameter\"" + ":")
 		s.StartParameter.Encode(e)
 	}
+	if s.StartParameter.Set {
+		e.Comma()
+	}
 	if s.ProviderData.Set {
-		e.FieldStart("provider_data")
+		e.RawStr("\"provider_data\"" + ":")
 		s.ProviderData.Encode(e)
 	}
+	if s.ProviderData.Set {
+		e.Comma()
+	}
 	if s.PhotoURL.Set {
-		e.FieldStart("photo_url")
+		e.RawStr("\"photo_url\"" + ":")
 		s.PhotoURL.Encode(e)
 	}
+	if s.PhotoURL.Set {
+		e.Comma()
+	}
 	if s.PhotoSize.Set {
-		e.FieldStart("photo_size")
+		e.RawStr("\"photo_size\"" + ":")
 		s.PhotoSize.Encode(e)
 	}
+	if s.PhotoSize.Set {
+		e.Comma()
+	}
 	if s.PhotoWidth.Set {
-		e.FieldStart("photo_width")
+		e.RawStr("\"photo_width\"" + ":")
 		s.PhotoWidth.Encode(e)
 	}
+	if s.PhotoWidth.Set {
+		e.Comma()
+	}
 	if s.PhotoHeight.Set {
-		e.FieldStart("photo_height")
+		e.RawStr("\"photo_height\"" + ":")
 		s.PhotoHeight.Encode(e)
 	}
+	if s.PhotoHeight.Set {
+		e.Comma()
+	}
 	if s.NeedName.Set {
-		e.FieldStart("need_name")
+		e.RawStr("\"need_name\"" + ":")
 		s.NeedName.Encode(e)
 	}
+	if s.NeedName.Set {
+		e.Comma()
+	}
 	if s.NeedPhoneNumber.Set {
-		e.FieldStart("need_phone_number")
+		e.RawStr("\"need_phone_number\"" + ":")
 		s.NeedPhoneNumber.Encode(e)
 	}
+	if s.NeedPhoneNumber.Set {
+		e.Comma()
+	}
 	if s.NeedEmail.Set {
-		e.FieldStart("need_email")
+		e.RawStr("\"need_email\"" + ":")
 		s.NeedEmail.Encode(e)
 	}
+	if s.NeedEmail.Set {
+		e.Comma()
+	}
 	if s.NeedShippingAddress.Set {
-		e.FieldStart("need_shipping_address")
+		e.RawStr("\"need_shipping_address\"" + ":")
 		s.NeedShippingAddress.Encode(e)
 	}
+	if s.NeedShippingAddress.Set {
+		e.Comma()
+	}
 	if s.SendPhoneNumberToProvider.Set {
-		e.FieldStart("send_phone_number_to_provider")
+		e.RawStr("\"send_phone_number_to_provider\"" + ":")
 		s.SendPhoneNumberToProvider.Encode(e)
 	}
+	if s.SendPhoneNumberToProvider.Set {
+		e.Comma()
+	}
 	if s.SendEmailToProvider.Set {
-		e.FieldStart("send_email_to_provider")
+		e.RawStr("\"send_email_to_provider\"" + ":")
 		s.SendEmailToProvider.Encode(e)
 	}
+	if s.SendEmailToProvider.Set {
+		e.Comma()
+	}
 	if s.IsFlexible.Set {
-		e.FieldStart("is_flexible")
+		e.RawStr("\"is_flexible\"" + ":")
 		s.IsFlexible.Encode(e)
 	}
+	if s.IsFlexible.Set {
+		e.Comma()
+	}
 	if s.DisableNotification.Set {
-		e.FieldStart("disable_notification")
+		e.RawStr("\"disable_notification\"" + ":")
 		s.DisableNotification.Encode(e)
 	}
+	if s.DisableNotification.Set {
+		e.Comma()
+	}
 	if s.ReplyToMessageID.Set {
-		e.FieldStart("reply_to_message_id")
+		e.RawStr("\"reply_to_message_id\"" + ":")
 		s.ReplyToMessageID.Encode(e)
 	}
+	if s.ReplyToMessageID.Set {
+		e.Comma()
+	}
 	if s.AllowSendingWithoutReply.Set {
-		e.FieldStart("allow_sending_without_reply")
+		e.RawStr("\"allow_sending_without_reply\"" + ":")
 		s.AllowSendingWithoutReply.Encode(e)
 	}
+	if s.AllowSendingWithoutReply.Set {
+		e.Comma()
+	}
 	if s.ReplyMarkup.Set {
-		e.FieldStart("reply_markup")
+		e.RawStr("\"reply_markup\"" + ":")
 		s.ReplyMarkup.Encode(e)
+	}
+
+	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
+		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -9808,48 +11596,77 @@ func (s *SendInvoice) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s SendLocation) Encode(e *jx.Encoder) {
+func (s SendLocation) Encode(e *jx.Writer) {
 	e.ObjStart()
 
-	e.FieldStart("chat_id")
+	e.RawStr("\"chat_id\"" + ":")
 	s.ChatID.Encode(e)
 
-	e.FieldStart("latitude")
-	e.Float64(s.Latitude)
+	e.Comma()
 
-	e.FieldStart("longitude")
+	e.RawStr("\"latitude\"" + ":")
+	e.Float64(s.Latitude)
+	e.Comma()
+
+	e.RawStr("\"longitude\"" + ":")
 	e.Float64(s.Longitude)
+	e.Comma()
 	if s.HorizontalAccuracy.Set {
-		e.FieldStart("horizontal_accuracy")
+		e.RawStr("\"horizontal_accuracy\"" + ":")
 		s.HorizontalAccuracy.Encode(e)
 	}
+	if s.HorizontalAccuracy.Set {
+		e.Comma()
+	}
 	if s.LivePeriod.Set {
-		e.FieldStart("live_period")
+		e.RawStr("\"live_period\"" + ":")
 		s.LivePeriod.Encode(e)
 	}
+	if s.LivePeriod.Set {
+		e.Comma()
+	}
 	if s.Heading.Set {
-		e.FieldStart("heading")
+		e.RawStr("\"heading\"" + ":")
 		s.Heading.Encode(e)
 	}
+	if s.Heading.Set {
+		e.Comma()
+	}
 	if s.ProximityAlertRadius.Set {
-		e.FieldStart("proximity_alert_radius")
+		e.RawStr("\"proximity_alert_radius\"" + ":")
 		s.ProximityAlertRadius.Encode(e)
 	}
+	if s.ProximityAlertRadius.Set {
+		e.Comma()
+	}
 	if s.DisableNotification.Set {
-		e.FieldStart("disable_notification")
+		e.RawStr("\"disable_notification\"" + ":")
 		s.DisableNotification.Encode(e)
 	}
+	if s.DisableNotification.Set {
+		e.Comma()
+	}
 	if s.ReplyToMessageID.Set {
-		e.FieldStart("reply_to_message_id")
+		e.RawStr("\"reply_to_message_id\"" + ":")
 		s.ReplyToMessageID.Encode(e)
 	}
+	if s.ReplyToMessageID.Set {
+		e.Comma()
+	}
 	if s.AllowSendingWithoutReply.Set {
-		e.FieldStart("allow_sending_without_reply")
+		e.RawStr("\"allow_sending_without_reply\"" + ":")
 		s.AllowSendingWithoutReply.Encode(e)
 	}
+	if s.AllowSendingWithoutReply.Set {
+		e.Comma()
+	}
 	if s.ReplyMarkup.Set {
-		e.FieldStart("reply_markup")
+		e.RawStr("\"reply_markup\"" + ":")
 		s.ReplyMarkup.Encode(e)
+	}
+
+	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
+		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -9925,7 +11742,7 @@ func (s *SendLocation) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes SendLocationReplyMarkup as json.
-func (s SendLocationReplyMarkup) Encode(e *jx.Encoder) {
+func (s SendLocationReplyMarkup) Encode(e *jx.Writer) {
 	switch s.Type {
 	case InlineKeyboardMarkupSendLocationReplyMarkup:
 		s.InlineKeyboardMarkup.Encode(e)
@@ -10011,29 +11828,51 @@ func (s *SendLocationReplyMarkup) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s SendMediaGroup) Encode(e *jx.Encoder) {
+func (s SendMediaGroup) Encode(e *jx.Writer) {
 	e.ObjStart()
 
-	e.FieldStart("chat_id")
+	e.RawStr("\"chat_id\"" + ":")
 	s.ChatID.Encode(e)
 
-	e.FieldStart("media")
+	e.Comma()
+
+	e.RawStr("\"media\"" + ":")
 	e.ArrStart()
-	for _, elem := range s.Media {
-		elem.Encode(e)
+	if len(s.Media) >= 1 {
+		// Encode first element without comma.
+		{
+			elem := s.Media[0]
+			elem.Encode(e)
+		}
+		for _, elem := range s.Media[1:] {
+			e.Comma()
+			elem.Encode(e)
+		}
 	}
 	e.ArrEnd()
+
+	e.Comma()
 	if s.DisableNotification.Set {
-		e.FieldStart("disable_notification")
+		e.RawStr("\"disable_notification\"" + ":")
 		s.DisableNotification.Encode(e)
 	}
+	if s.DisableNotification.Set {
+		e.Comma()
+	}
 	if s.ReplyToMessageID.Set {
-		e.FieldStart("reply_to_message_id")
+		e.RawStr("\"reply_to_message_id\"" + ":")
 		s.ReplyToMessageID.Encode(e)
 	}
+	if s.ReplyToMessageID.Set {
+		e.Comma()
+	}
 	if s.AllowSendingWithoutReply.Set {
-		e.FieldStart("allow_sending_without_reply")
+		e.RawStr("\"allow_sending_without_reply\"" + ":")
 		s.AllowSendingWithoutReply.Encode(e)
+	}
+
+	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
+		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -10084,7 +11923,7 @@ func (s *SendMediaGroup) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes SendMediaGroupMediaItem as json.
-func (s SendMediaGroupMediaItem) Encode(e *jx.Encoder) {
+func (s SendMediaGroupMediaItem) Encode(e *jx.Writer) {
 	switch s.Type {
 	case InputMediaAudioSendMediaGroupMediaItem:
 		s.InputMediaAudio.Encode(e)
@@ -10168,45 +12007,78 @@ func (s *SendMediaGroupMediaItem) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s SendMessage) Encode(e *jx.Encoder) {
+func (s SendMessage) Encode(e *jx.Writer) {
 	e.ObjStart()
 
-	e.FieldStart("chat_id")
+	e.RawStr("\"chat_id\"" + ":")
 	s.ChatID.Encode(e)
 
-	e.FieldStart("text")
+	e.Comma()
+
+	e.RawStr("\"text\"" + ":")
 	e.Str(s.Text)
+	e.Comma()
 	if s.ParseMode.Set {
-		e.FieldStart("parse_mode")
+		e.RawStr("\"parse_mode\"" + ":")
 		s.ParseMode.Encode(e)
 	}
+	if s.ParseMode.Set {
+		e.Comma()
+	}
 	if s.Entities != nil {
-		e.FieldStart("entities")
+		e.RawStr("\"entities\"" + ":")
 		e.ArrStart()
-		for _, elem := range s.Entities {
-			elem.Encode(e)
+		if len(s.Entities) >= 1 {
+			// Encode first element without comma.
+			{
+				elem := s.Entities[0]
+				elem.Encode(e)
+			}
+			for _, elem := range s.Entities[1:] {
+				e.Comma()
+				elem.Encode(e)
+			}
 		}
 		e.ArrEnd()
 	}
+	if s.Entities != nil {
+		e.Comma()
+	}
 	if s.DisableWebPagePreview.Set {
-		e.FieldStart("disable_web_page_preview")
+		e.RawStr("\"disable_web_page_preview\"" + ":")
 		s.DisableWebPagePreview.Encode(e)
 	}
+	if s.DisableWebPagePreview.Set {
+		e.Comma()
+	}
 	if s.DisableNotification.Set {
-		e.FieldStart("disable_notification")
+		e.RawStr("\"disable_notification\"" + ":")
 		s.DisableNotification.Encode(e)
 	}
+	if s.DisableNotification.Set {
+		e.Comma()
+	}
 	if s.ReplyToMessageID.Set {
-		e.FieldStart("reply_to_message_id")
+		e.RawStr("\"reply_to_message_id\"" + ":")
 		s.ReplyToMessageID.Encode(e)
 	}
+	if s.ReplyToMessageID.Set {
+		e.Comma()
+	}
 	if s.AllowSendingWithoutReply.Set {
-		e.FieldStart("allow_sending_without_reply")
+		e.RawStr("\"allow_sending_without_reply\"" + ":")
 		s.AllowSendingWithoutReply.Encode(e)
 	}
+	if s.AllowSendingWithoutReply.Set {
+		e.Comma()
+	}
 	if s.ReplyMarkup.Set {
-		e.FieldStart("reply_markup")
+		e.RawStr("\"reply_markup\"" + ":")
 		s.ReplyMarkup.Encode(e)
+	}
+
+	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
+		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -10278,7 +12150,7 @@ func (s *SendMessage) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes SendMessageReplyMarkup as json.
-func (s SendMessageReplyMarkup) Encode(e *jx.Encoder) {
+func (s SendMessageReplyMarkup) Encode(e *jx.Writer) {
 	switch s.Type {
 	case InlineKeyboardMarkupSendMessageReplyMarkup:
 		s.InlineKeyboardMarkup.Encode(e)
@@ -10364,45 +12236,78 @@ func (s *SendMessageReplyMarkup) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s SendPhoto) Encode(e *jx.Encoder) {
+func (s SendPhoto) Encode(e *jx.Writer) {
 	e.ObjStart()
 
-	e.FieldStart("chat_id")
+	e.RawStr("\"chat_id\"" + ":")
 	s.ChatID.Encode(e)
 
-	e.FieldStart("photo")
+	e.Comma()
+
+	e.RawStr("\"photo\"" + ":")
 	e.Str(s.Photo)
+	e.Comma()
 	if s.Caption.Set {
-		e.FieldStart("caption")
+		e.RawStr("\"caption\"" + ":")
 		s.Caption.Encode(e)
 	}
+	if s.Caption.Set {
+		e.Comma()
+	}
 	if s.ParseMode.Set {
-		e.FieldStart("parse_mode")
+		e.RawStr("\"parse_mode\"" + ":")
 		s.ParseMode.Encode(e)
 	}
+	if s.ParseMode.Set {
+		e.Comma()
+	}
 	if s.CaptionEntities != nil {
-		e.FieldStart("caption_entities")
+		e.RawStr("\"caption_entities\"" + ":")
 		e.ArrStart()
-		for _, elem := range s.CaptionEntities {
-			elem.Encode(e)
+		if len(s.CaptionEntities) >= 1 {
+			// Encode first element without comma.
+			{
+				elem := s.CaptionEntities[0]
+				elem.Encode(e)
+			}
+			for _, elem := range s.CaptionEntities[1:] {
+				e.Comma()
+				elem.Encode(e)
+			}
 		}
 		e.ArrEnd()
 	}
+	if s.CaptionEntities != nil {
+		e.Comma()
+	}
 	if s.DisableNotification.Set {
-		e.FieldStart("disable_notification")
+		e.RawStr("\"disable_notification\"" + ":")
 		s.DisableNotification.Encode(e)
 	}
+	if s.DisableNotification.Set {
+		e.Comma()
+	}
 	if s.ReplyToMessageID.Set {
-		e.FieldStart("reply_to_message_id")
+		e.RawStr("\"reply_to_message_id\"" + ":")
 		s.ReplyToMessageID.Encode(e)
 	}
+	if s.ReplyToMessageID.Set {
+		e.Comma()
+	}
 	if s.AllowSendingWithoutReply.Set {
-		e.FieldStart("allow_sending_without_reply")
+		e.RawStr("\"allow_sending_without_reply\"" + ":")
 		s.AllowSendingWithoutReply.Encode(e)
 	}
+	if s.AllowSendingWithoutReply.Set {
+		e.Comma()
+	}
 	if s.ReplyMarkup.Set {
-		e.FieldStart("reply_markup")
+		e.RawStr("\"reply_markup\"" + ":")
 		s.ReplyMarkup.Encode(e)
+	}
+
+	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
+		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -10474,7 +12379,7 @@ func (s *SendPhoto) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes SendPhotoReplyMarkup as json.
-func (s SendPhotoReplyMarkup) Encode(e *jx.Encoder) {
+func (s SendPhotoReplyMarkup) Encode(e *jx.Writer) {
 	switch s.Type {
 	case InlineKeyboardMarkupSendPhotoReplyMarkup:
 		s.InlineKeyboardMarkup.Encode(e)
@@ -10560,80 +12465,144 @@ func (s *SendPhotoReplyMarkup) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s SendPoll) Encode(e *jx.Encoder) {
+func (s SendPoll) Encode(e *jx.Writer) {
 	e.ObjStart()
 
-	e.FieldStart("chat_id")
+	e.RawStr("\"chat_id\"" + ":")
 	s.ChatID.Encode(e)
 
-	e.FieldStart("question")
-	e.Str(s.Question)
+	e.Comma()
 
-	e.FieldStart("options")
+	e.RawStr("\"question\"" + ":")
+	e.Str(s.Question)
+	e.Comma()
+
+	e.RawStr("\"options\"" + ":")
 	e.ArrStart()
-	for _, elem := range s.Options {
-		e.Str(elem)
+	if len(s.Options) >= 1 {
+		// Encode first element without comma.
+		{
+			elem := s.Options[0]
+			e.Str(elem)
+		}
+		for _, elem := range s.Options[1:] {
+			e.Comma()
+			e.Str(elem)
+		}
 	}
 	e.ArrEnd()
+
+	e.Comma()
 	if s.IsAnonymous.Set {
-		e.FieldStart("is_anonymous")
+		e.RawStr("\"is_anonymous\"" + ":")
 		s.IsAnonymous.Encode(e)
 	}
+	if s.IsAnonymous.Set {
+		e.Comma()
+	}
 	if s.Type.Set {
-		e.FieldStart("type")
+		e.RawStr("\"type\"" + ":")
 		s.Type.Encode(e)
 	}
+	if s.Type.Set {
+		e.Comma()
+	}
 	if s.AllowsMultipleAnswers.Set {
-		e.FieldStart("allows_multiple_answers")
+		e.RawStr("\"allows_multiple_answers\"" + ":")
 		s.AllowsMultipleAnswers.Encode(e)
 	}
+	if s.AllowsMultipleAnswers.Set {
+		e.Comma()
+	}
 	if s.CorrectOptionID.Set {
-		e.FieldStart("correct_option_id")
+		e.RawStr("\"correct_option_id\"" + ":")
 		s.CorrectOptionID.Encode(e)
 	}
+	if s.CorrectOptionID.Set {
+		e.Comma()
+	}
 	if s.Explanation.Set {
-		e.FieldStart("explanation")
+		e.RawStr("\"explanation\"" + ":")
 		s.Explanation.Encode(e)
 	}
+	if s.Explanation.Set {
+		e.Comma()
+	}
 	if s.ExplanationParseMode.Set {
-		e.FieldStart("explanation_parse_mode")
+		e.RawStr("\"explanation_parse_mode\"" + ":")
 		s.ExplanationParseMode.Encode(e)
 	}
+	if s.ExplanationParseMode.Set {
+		e.Comma()
+	}
 	if s.ExplanationEntities != nil {
-		e.FieldStart("explanation_entities")
+		e.RawStr("\"explanation_entities\"" + ":")
 		e.ArrStart()
-		for _, elem := range s.ExplanationEntities {
-			elem.Encode(e)
+		if len(s.ExplanationEntities) >= 1 {
+			// Encode first element without comma.
+			{
+				elem := s.ExplanationEntities[0]
+				elem.Encode(e)
+			}
+			for _, elem := range s.ExplanationEntities[1:] {
+				e.Comma()
+				elem.Encode(e)
+			}
 		}
 		e.ArrEnd()
 	}
+	if s.ExplanationEntities != nil {
+		e.Comma()
+	}
 	if s.OpenPeriod.Set {
-		e.FieldStart("open_period")
+		e.RawStr("\"open_period\"" + ":")
 		s.OpenPeriod.Encode(e)
 	}
+	if s.OpenPeriod.Set {
+		e.Comma()
+	}
 	if s.CloseDate.Set {
-		e.FieldStart("close_date")
+		e.RawStr("\"close_date\"" + ":")
 		s.CloseDate.Encode(e)
 	}
+	if s.CloseDate.Set {
+		e.Comma()
+	}
 	if s.IsClosed.Set {
-		e.FieldStart("is_closed")
+		e.RawStr("\"is_closed\"" + ":")
 		s.IsClosed.Encode(e)
 	}
+	if s.IsClosed.Set {
+		e.Comma()
+	}
 	if s.DisableNotification.Set {
-		e.FieldStart("disable_notification")
+		e.RawStr("\"disable_notification\"" + ":")
 		s.DisableNotification.Encode(e)
 	}
+	if s.DisableNotification.Set {
+		e.Comma()
+	}
 	if s.ReplyToMessageID.Set {
-		e.FieldStart("reply_to_message_id")
+		e.RawStr("\"reply_to_message_id\"" + ":")
 		s.ReplyToMessageID.Encode(e)
 	}
+	if s.ReplyToMessageID.Set {
+		e.Comma()
+	}
 	if s.AllowSendingWithoutReply.Set {
-		e.FieldStart("allow_sending_without_reply")
+		e.RawStr("\"allow_sending_without_reply\"" + ":")
 		s.AllowSendingWithoutReply.Encode(e)
 	}
+	if s.AllowSendingWithoutReply.Set {
+		e.Comma()
+	}
 	if s.ReplyMarkup.Set {
-		e.FieldStart("reply_markup")
+		e.RawStr("\"reply_markup\"" + ":")
 		s.ReplyMarkup.Encode(e)
+	}
+
+	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
+		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -10754,7 +12723,7 @@ func (s *SendPoll) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes SendPollReplyMarkup as json.
-func (s SendPollReplyMarkup) Encode(e *jx.Encoder) {
+func (s SendPollReplyMarkup) Encode(e *jx.Writer) {
 	switch s.Type {
 	case InlineKeyboardMarkupSendPollReplyMarkup:
 		s.InlineKeyboardMarkup.Encode(e)
@@ -10840,29 +12809,45 @@ func (s *SendPollReplyMarkup) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s SendSticker) Encode(e *jx.Encoder) {
+func (s SendSticker) Encode(e *jx.Writer) {
 	e.ObjStart()
 
-	e.FieldStart("chat_id")
+	e.RawStr("\"chat_id\"" + ":")
 	s.ChatID.Encode(e)
 
-	e.FieldStart("sticker")
+	e.Comma()
+
+	e.RawStr("\"sticker\"" + ":")
 	e.Str(s.Sticker)
+	e.Comma()
 	if s.DisableNotification.Set {
-		e.FieldStart("disable_notification")
+		e.RawStr("\"disable_notification\"" + ":")
 		s.DisableNotification.Encode(e)
 	}
+	if s.DisableNotification.Set {
+		e.Comma()
+	}
 	if s.ReplyToMessageID.Set {
-		e.FieldStart("reply_to_message_id")
+		e.RawStr("\"reply_to_message_id\"" + ":")
 		s.ReplyToMessageID.Encode(e)
 	}
+	if s.ReplyToMessageID.Set {
+		e.Comma()
+	}
 	if s.AllowSendingWithoutReply.Set {
-		e.FieldStart("allow_sending_without_reply")
+		e.RawStr("\"allow_sending_without_reply\"" + ":")
 		s.AllowSendingWithoutReply.Encode(e)
 	}
+	if s.AllowSendingWithoutReply.Set {
+		e.Comma()
+	}
 	if s.ReplyMarkup.Set {
-		e.FieldStart("reply_markup")
+		e.RawStr("\"reply_markup\"" + ":")
 		s.ReplyMarkup.Encode(e)
+	}
+
+	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
+		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -10912,7 +12897,7 @@ func (s *SendSticker) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes SendStickerReplyMarkup as json.
-func (s SendStickerReplyMarkup) Encode(e *jx.Encoder) {
+func (s SendStickerReplyMarkup) Encode(e *jx.Writer) {
 	switch s.Type {
 	case InlineKeyboardMarkupSendStickerReplyMarkup:
 		s.InlineKeyboardMarkup.Encode(e)
@@ -10998,54 +12983,85 @@ func (s *SendStickerReplyMarkup) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s SendVenue) Encode(e *jx.Encoder) {
+func (s SendVenue) Encode(e *jx.Writer) {
 	e.ObjStart()
 
-	e.FieldStart("chat_id")
+	e.RawStr("\"chat_id\"" + ":")
 	s.ChatID.Encode(e)
 
-	e.FieldStart("latitude")
+	e.Comma()
+
+	e.RawStr("\"latitude\"" + ":")
 	e.Float64(s.Latitude)
+	e.Comma()
 
-	e.FieldStart("longitude")
+	e.RawStr("\"longitude\"" + ":")
 	e.Float64(s.Longitude)
+	e.Comma()
 
-	e.FieldStart("title")
+	e.RawStr("\"title\"" + ":")
 	e.Str(s.Title)
+	e.Comma()
 
-	e.FieldStart("address")
+	e.RawStr("\"address\"" + ":")
 	e.Str(s.Address)
+	e.Comma()
 	if s.FoursquareID.Set {
-		e.FieldStart("foursquare_id")
+		e.RawStr("\"foursquare_id\"" + ":")
 		s.FoursquareID.Encode(e)
 	}
+	if s.FoursquareID.Set {
+		e.Comma()
+	}
 	if s.FoursquareType.Set {
-		e.FieldStart("foursquare_type")
+		e.RawStr("\"foursquare_type\"" + ":")
 		s.FoursquareType.Encode(e)
 	}
+	if s.FoursquareType.Set {
+		e.Comma()
+	}
 	if s.GooglePlaceID.Set {
-		e.FieldStart("google_place_id")
+		e.RawStr("\"google_place_id\"" + ":")
 		s.GooglePlaceID.Encode(e)
 	}
+	if s.GooglePlaceID.Set {
+		e.Comma()
+	}
 	if s.GooglePlaceType.Set {
-		e.FieldStart("google_place_type")
+		e.RawStr("\"google_place_type\"" + ":")
 		s.GooglePlaceType.Encode(e)
 	}
+	if s.GooglePlaceType.Set {
+		e.Comma()
+	}
 	if s.DisableNotification.Set {
-		e.FieldStart("disable_notification")
+		e.RawStr("\"disable_notification\"" + ":")
 		s.DisableNotification.Encode(e)
 	}
+	if s.DisableNotification.Set {
+		e.Comma()
+	}
 	if s.ReplyToMessageID.Set {
-		e.FieldStart("reply_to_message_id")
+		e.RawStr("\"reply_to_message_id\"" + ":")
 		s.ReplyToMessageID.Encode(e)
 	}
+	if s.ReplyToMessageID.Set {
+		e.Comma()
+	}
 	if s.AllowSendingWithoutReply.Set {
-		e.FieldStart("allow_sending_without_reply")
+		e.RawStr("\"allow_sending_without_reply\"" + ":")
 		s.AllowSendingWithoutReply.Encode(e)
 	}
+	if s.AllowSendingWithoutReply.Set {
+		e.Comma()
+	}
 	if s.ReplyMarkup.Set {
-		e.FieldStart("reply_markup")
+		e.RawStr("\"reply_markup\"" + ":")
 		s.ReplyMarkup.Encode(e)
+	}
+
+	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
+		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -11133,7 +13149,7 @@ func (s *SendVenue) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes SendVenueReplyMarkup as json.
-func (s SendVenueReplyMarkup) Encode(e *jx.Encoder) {
+func (s SendVenueReplyMarkup) Encode(e *jx.Writer) {
 	switch s.Type {
 	case InlineKeyboardMarkupSendVenueReplyMarkup:
 		s.InlineKeyboardMarkup.Encode(e)
@@ -11219,65 +13235,113 @@ func (s *SendVenueReplyMarkup) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s SendVideo) Encode(e *jx.Encoder) {
+func (s SendVideo) Encode(e *jx.Writer) {
 	e.ObjStart()
 
-	e.FieldStart("chat_id")
+	e.RawStr("\"chat_id\"" + ":")
 	s.ChatID.Encode(e)
 
-	e.FieldStart("video")
+	e.Comma()
+
+	e.RawStr("\"video\"" + ":")
 	e.Str(s.Video)
+	e.Comma()
 	if s.Duration.Set {
-		e.FieldStart("duration")
+		e.RawStr("\"duration\"" + ":")
 		s.Duration.Encode(e)
 	}
+	if s.Duration.Set {
+		e.Comma()
+	}
 	if s.Width.Set {
-		e.FieldStart("width")
+		e.RawStr("\"width\"" + ":")
 		s.Width.Encode(e)
 	}
+	if s.Width.Set {
+		e.Comma()
+	}
 	if s.Height.Set {
-		e.FieldStart("height")
+		e.RawStr("\"height\"" + ":")
 		s.Height.Encode(e)
 	}
+	if s.Height.Set {
+		e.Comma()
+	}
 	if s.Thumb.Set {
-		e.FieldStart("thumb")
+		e.RawStr("\"thumb\"" + ":")
 		s.Thumb.Encode(e)
 	}
+	if s.Thumb.Set {
+		e.Comma()
+	}
 	if s.Caption.Set {
-		e.FieldStart("caption")
+		e.RawStr("\"caption\"" + ":")
 		s.Caption.Encode(e)
 	}
+	if s.Caption.Set {
+		e.Comma()
+	}
 	if s.ParseMode.Set {
-		e.FieldStart("parse_mode")
+		e.RawStr("\"parse_mode\"" + ":")
 		s.ParseMode.Encode(e)
 	}
+	if s.ParseMode.Set {
+		e.Comma()
+	}
 	if s.CaptionEntities != nil {
-		e.FieldStart("caption_entities")
+		e.RawStr("\"caption_entities\"" + ":")
 		e.ArrStart()
-		for _, elem := range s.CaptionEntities {
-			elem.Encode(e)
+		if len(s.CaptionEntities) >= 1 {
+			// Encode first element without comma.
+			{
+				elem := s.CaptionEntities[0]
+				elem.Encode(e)
+			}
+			for _, elem := range s.CaptionEntities[1:] {
+				e.Comma()
+				elem.Encode(e)
+			}
 		}
 		e.ArrEnd()
 	}
+	if s.CaptionEntities != nil {
+		e.Comma()
+	}
 	if s.SupportsStreaming.Set {
-		e.FieldStart("supports_streaming")
+		e.RawStr("\"supports_streaming\"" + ":")
 		s.SupportsStreaming.Encode(e)
 	}
+	if s.SupportsStreaming.Set {
+		e.Comma()
+	}
 	if s.DisableNotification.Set {
-		e.FieldStart("disable_notification")
+		e.RawStr("\"disable_notification\"" + ":")
 		s.DisableNotification.Encode(e)
 	}
+	if s.DisableNotification.Set {
+		e.Comma()
+	}
 	if s.ReplyToMessageID.Set {
-		e.FieldStart("reply_to_message_id")
+		e.RawStr("\"reply_to_message_id\"" + ":")
 		s.ReplyToMessageID.Encode(e)
 	}
+	if s.ReplyToMessageID.Set {
+		e.Comma()
+	}
 	if s.AllowSendingWithoutReply.Set {
-		e.FieldStart("allow_sending_without_reply")
+		e.RawStr("\"allow_sending_without_reply\"" + ":")
 		s.AllowSendingWithoutReply.Encode(e)
 	}
+	if s.AllowSendingWithoutReply.Set {
+		e.Comma()
+	}
 	if s.ReplyMarkup.Set {
-		e.FieldStart("reply_markup")
+		e.RawStr("\"reply_markup\"" + ":")
 		s.ReplyMarkup.Encode(e)
+	}
+
+	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
+		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -11374,41 +13438,66 @@ func (s *SendVideo) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s SendVideoNote) Encode(e *jx.Encoder) {
+func (s SendVideoNote) Encode(e *jx.Writer) {
 	e.ObjStart()
 
-	e.FieldStart("chat_id")
+	e.RawStr("\"chat_id\"" + ":")
 	s.ChatID.Encode(e)
 
-	e.FieldStart("video_note")
+	e.Comma()
+
+	e.RawStr("\"video_note\"" + ":")
 	e.Str(s.VideoNote)
+	e.Comma()
 	if s.Duration.Set {
-		e.FieldStart("duration")
+		e.RawStr("\"duration\"" + ":")
 		s.Duration.Encode(e)
 	}
+	if s.Duration.Set {
+		e.Comma()
+	}
 	if s.Length.Set {
-		e.FieldStart("length")
+		e.RawStr("\"length\"" + ":")
 		s.Length.Encode(e)
 	}
+	if s.Length.Set {
+		e.Comma()
+	}
 	if s.Thumb.Set {
-		e.FieldStart("thumb")
+		e.RawStr("\"thumb\"" + ":")
 		s.Thumb.Encode(e)
 	}
+	if s.Thumb.Set {
+		e.Comma()
+	}
 	if s.DisableNotification.Set {
-		e.FieldStart("disable_notification")
+		e.RawStr("\"disable_notification\"" + ":")
 		s.DisableNotification.Encode(e)
 	}
+	if s.DisableNotification.Set {
+		e.Comma()
+	}
 	if s.ReplyToMessageID.Set {
-		e.FieldStart("reply_to_message_id")
+		e.RawStr("\"reply_to_message_id\"" + ":")
 		s.ReplyToMessageID.Encode(e)
 	}
+	if s.ReplyToMessageID.Set {
+		e.Comma()
+	}
 	if s.AllowSendingWithoutReply.Set {
-		e.FieldStart("allow_sending_without_reply")
+		e.RawStr("\"allow_sending_without_reply\"" + ":")
 		s.AllowSendingWithoutReply.Encode(e)
 	}
+	if s.AllowSendingWithoutReply.Set {
+		e.Comma()
+	}
 	if s.ReplyMarkup.Set {
-		e.FieldStart("reply_markup")
+		e.RawStr("\"reply_markup\"" + ":")
 		s.ReplyMarkup.Encode(e)
+	}
+
+	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
+		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -11473,7 +13562,7 @@ func (s *SendVideoNote) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes SendVideoNoteReplyMarkup as json.
-func (s SendVideoNoteReplyMarkup) Encode(e *jx.Encoder) {
+func (s SendVideoNoteReplyMarkup) Encode(e *jx.Writer) {
 	switch s.Type {
 	case InlineKeyboardMarkupSendVideoNoteReplyMarkup:
 		s.InlineKeyboardMarkup.Encode(e)
@@ -11559,7 +13648,7 @@ func (s *SendVideoNoteReplyMarkup) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes SendVideoReplyMarkup as json.
-func (s SendVideoReplyMarkup) Encode(e *jx.Encoder) {
+func (s SendVideoReplyMarkup) Encode(e *jx.Writer) {
 	switch s.Type {
 	case InlineKeyboardMarkupSendVideoReplyMarkup:
 		s.InlineKeyboardMarkup.Encode(e)
@@ -11645,49 +13734,85 @@ func (s *SendVideoReplyMarkup) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s SendVoice) Encode(e *jx.Encoder) {
+func (s SendVoice) Encode(e *jx.Writer) {
 	e.ObjStart()
 
-	e.FieldStart("chat_id")
+	e.RawStr("\"chat_id\"" + ":")
 	s.ChatID.Encode(e)
 
-	e.FieldStart("voice")
+	e.Comma()
+
+	e.RawStr("\"voice\"" + ":")
 	e.Str(s.Voice)
+	e.Comma()
 	if s.Caption.Set {
-		e.FieldStart("caption")
+		e.RawStr("\"caption\"" + ":")
 		s.Caption.Encode(e)
 	}
+	if s.Caption.Set {
+		e.Comma()
+	}
 	if s.ParseMode.Set {
-		e.FieldStart("parse_mode")
+		e.RawStr("\"parse_mode\"" + ":")
 		s.ParseMode.Encode(e)
 	}
+	if s.ParseMode.Set {
+		e.Comma()
+	}
 	if s.CaptionEntities != nil {
-		e.FieldStart("caption_entities")
+		e.RawStr("\"caption_entities\"" + ":")
 		e.ArrStart()
-		for _, elem := range s.CaptionEntities {
-			elem.Encode(e)
+		if len(s.CaptionEntities) >= 1 {
+			// Encode first element without comma.
+			{
+				elem := s.CaptionEntities[0]
+				elem.Encode(e)
+			}
+			for _, elem := range s.CaptionEntities[1:] {
+				e.Comma()
+				elem.Encode(e)
+			}
 		}
 		e.ArrEnd()
 	}
+	if s.CaptionEntities != nil {
+		e.Comma()
+	}
 	if s.Duration.Set {
-		e.FieldStart("duration")
+		e.RawStr("\"duration\"" + ":")
 		s.Duration.Encode(e)
 	}
+	if s.Duration.Set {
+		e.Comma()
+	}
 	if s.DisableNotification.Set {
-		e.FieldStart("disable_notification")
+		e.RawStr("\"disable_notification\"" + ":")
 		s.DisableNotification.Encode(e)
 	}
+	if s.DisableNotification.Set {
+		e.Comma()
+	}
 	if s.ReplyToMessageID.Set {
-		e.FieldStart("reply_to_message_id")
+		e.RawStr("\"reply_to_message_id\"" + ":")
 		s.ReplyToMessageID.Encode(e)
 	}
+	if s.ReplyToMessageID.Set {
+		e.Comma()
+	}
 	if s.AllowSendingWithoutReply.Set {
-		e.FieldStart("allow_sending_without_reply")
+		e.RawStr("\"allow_sending_without_reply\"" + ":")
 		s.AllowSendingWithoutReply.Encode(e)
 	}
+	if s.AllowSendingWithoutReply.Set {
+		e.Comma()
+	}
 	if s.ReplyMarkup.Set {
-		e.FieldStart("reply_markup")
+		e.RawStr("\"reply_markup\"" + ":")
 		s.ReplyMarkup.Encode(e)
+	}
+
+	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
+		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -11764,7 +13889,7 @@ func (s *SendVoice) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes SendVoiceReplyMarkup as json.
-func (s SendVoiceReplyMarkup) Encode(e *jx.Encoder) {
+func (s SendVoiceReplyMarkup) Encode(e *jx.Writer) {
 	switch s.Type {
 	case InlineKeyboardMarkupSendVoiceReplyMarkup:
 		s.InlineKeyboardMarkup.Encode(e)
@@ -11850,17 +13975,24 @@ func (s *SendVoiceReplyMarkup) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s SetChatAdministratorCustomTitle) Encode(e *jx.Encoder) {
+func (s SetChatAdministratorCustomTitle) Encode(e *jx.Writer) {
 	e.ObjStart()
 
-	e.FieldStart("chat_id")
+	e.RawStr("\"chat_id\"" + ":")
 	s.ChatID.Encode(e)
 
-	e.FieldStart("user_id")
-	e.Int(s.UserID)
+	e.Comma()
 
-	e.FieldStart("custom_title")
+	e.RawStr("\"user_id\"" + ":")
+	e.Int(s.UserID)
+	e.Comma()
+
+	e.RawStr("\"custom_title\"" + ":")
 	e.Str(s.CustomTitle)
+
+	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
+		e.Buf = e.Buf[:length-1]
+	}
 	e.ObjEnd()
 }
 
@@ -11895,14 +14027,20 @@ func (s *SetChatAdministratorCustomTitle) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s SetChatDescription) Encode(e *jx.Encoder) {
+func (s SetChatDescription) Encode(e *jx.Writer) {
 	e.ObjStart()
 
-	e.FieldStart("chat_id")
+	e.RawStr("\"chat_id\"" + ":")
 	s.ChatID.Encode(e)
+
+	e.Comma()
 	if s.Description.Set {
-		e.FieldStart("description")
+		e.RawStr("\"description\"" + ":")
 		s.Description.Encode(e)
+	}
+
+	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
+		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -11931,14 +14069,20 @@ func (s *SetChatDescription) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s SetChatPermissions) Encode(e *jx.Encoder) {
+func (s SetChatPermissions) Encode(e *jx.Writer) {
 	e.ObjStart()
 
-	e.FieldStart("chat_id")
+	e.RawStr("\"chat_id\"" + ":")
 	s.ChatID.Encode(e)
 
-	e.FieldStart("permissions")
+	e.Comma()
+
+	e.RawStr("\"permissions\"" + ":")
 	s.Permissions.Encode(e)
+
+	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
+		e.Buf = e.Buf[:length-1]
+	}
 	e.ObjEnd()
 }
 
@@ -11965,14 +14109,20 @@ func (s *SetChatPermissions) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s SetChatPhoto) Encode(e *jx.Encoder) {
+func (s SetChatPhoto) Encode(e *jx.Writer) {
 	e.ObjStart()
 
-	e.FieldStart("chat_id")
+	e.RawStr("\"chat_id\"" + ":")
 	s.ChatID.Encode(e)
 
-	e.FieldStart("photo")
+	e.Comma()
+
+	e.RawStr("\"photo\"" + ":")
 	e.Str(s.Photo)
+
+	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
+		e.Buf = e.Buf[:length-1]
+	}
 	e.ObjEnd()
 }
 
@@ -12001,14 +14151,20 @@ func (s *SetChatPhoto) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s SetChatStickerSet) Encode(e *jx.Encoder) {
+func (s SetChatStickerSet) Encode(e *jx.Writer) {
 	e.ObjStart()
 
-	e.FieldStart("chat_id")
+	e.RawStr("\"chat_id\"" + ":")
 	s.ChatID.Encode(e)
 
-	e.FieldStart("sticker_set_name")
+	e.Comma()
+
+	e.RawStr("\"sticker_set_name\"" + ":")
 	e.Str(s.StickerSetName)
+
+	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
+		e.Buf = e.Buf[:length-1]
+	}
 	e.ObjEnd()
 }
 
@@ -12037,14 +14193,20 @@ func (s *SetChatStickerSet) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s SetChatTitle) Encode(e *jx.Encoder) {
+func (s SetChatTitle) Encode(e *jx.Writer) {
 	e.ObjStart()
 
-	e.FieldStart("chat_id")
+	e.RawStr("\"chat_id\"" + ":")
 	s.ChatID.Encode(e)
 
-	e.FieldStart("title")
+	e.Comma()
+
+	e.RawStr("\"title\"" + ":")
 	e.Str(s.Title)
+
+	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
+		e.Buf = e.Buf[:length-1]
+	}
 	e.ObjEnd()
 }
 
@@ -12073,33 +14235,51 @@ func (s *SetChatTitle) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s SetGameScore) Encode(e *jx.Encoder) {
+func (s SetGameScore) Encode(e *jx.Writer) {
 	e.ObjStart()
 
-	e.FieldStart("user_id")
+	e.RawStr("\"user_id\"" + ":")
 	e.Int(s.UserID)
+	e.Comma()
 
-	e.FieldStart("score")
+	e.RawStr("\"score\"" + ":")
 	e.Int(s.Score)
+	e.Comma()
 	if s.Force.Set {
-		e.FieldStart("force")
+		e.RawStr("\"force\"" + ":")
 		s.Force.Encode(e)
 	}
+	if s.Force.Set {
+		e.Comma()
+	}
 	if s.DisableEditMessage.Set {
-		e.FieldStart("disable_edit_message")
+		e.RawStr("\"disable_edit_message\"" + ":")
 		s.DisableEditMessage.Encode(e)
 	}
+	if s.DisableEditMessage.Set {
+		e.Comma()
+	}
 	if s.ChatID.Set {
-		e.FieldStart("chat_id")
+		e.RawStr("\"chat_id\"" + ":")
 		s.ChatID.Encode(e)
 	}
+	if s.ChatID.Set {
+		e.Comma()
+	}
 	if s.MessageID.Set {
-		e.FieldStart("message_id")
+		e.RawStr("\"message_id\"" + ":")
 		s.MessageID.Encode(e)
 	}
+	if s.MessageID.Set {
+		e.Comma()
+	}
 	if s.InlineMessageID.Set {
-		e.FieldStart("inline_message_id")
+		e.RawStr("\"inline_message_id\"" + ":")
 		s.InlineMessageID.Encode(e)
+	}
+
+	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
+		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -12156,22 +14336,39 @@ func (s *SetGameScore) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s SetMyCommands) Encode(e *jx.Encoder) {
+func (s SetMyCommands) Encode(e *jx.Writer) {
 	e.ObjStart()
 
-	e.FieldStart("commands")
+	e.RawStr("\"commands\"" + ":")
 	e.ArrStart()
-	for _, elem := range s.Commands {
-		elem.Encode(e)
+	if len(s.Commands) >= 1 {
+		// Encode first element without comma.
+		{
+			elem := s.Commands[0]
+			elem.Encode(e)
+		}
+		for _, elem := range s.Commands[1:] {
+			e.Comma()
+			elem.Encode(e)
+		}
 	}
 	e.ArrEnd()
+
+	e.Comma()
 	if s.Scope.Set {
-		e.FieldStart("scope")
+		e.RawStr("\"scope\"" + ":")
 		s.Scope.Encode(e)
 	}
+	if s.Scope.Set {
+		e.Comma()
+	}
 	if s.LanguageCode.Set {
-		e.FieldStart("language_code")
+		e.RawStr("\"language_code\"" + ":")
 		s.LanguageCode.Encode(e)
+	}
+
+	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
+		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -12213,18 +14410,31 @@ func (s *SetMyCommands) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s SetPassportDataErrors) Encode(e *jx.Encoder) {
+func (s SetPassportDataErrors) Encode(e *jx.Writer) {
 	e.ObjStart()
 
-	e.FieldStart("user_id")
+	e.RawStr("\"user_id\"" + ":")
 	e.Int(s.UserID)
+	e.Comma()
 
-	e.FieldStart("errors")
+	e.RawStr("\"errors\"" + ":")
 	e.ArrStart()
-	for _, elem := range s.Errors {
-		elem.Encode(e)
+	if len(s.Errors) >= 1 {
+		// Encode first element without comma.
+		{
+			elem := s.Errors[0]
+			elem.Encode(e)
+		}
+		for _, elem := range s.Errors[1:] {
+			e.Comma()
+			elem.Encode(e)
+		}
 	}
 	e.ArrEnd()
+
+	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
+		e.Buf = e.Buf[:length-1]
+	}
 	e.ObjEnd()
 }
 
@@ -12261,14 +14471,19 @@ func (s *SetPassportDataErrors) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s SetStickerPositionInSet) Encode(e *jx.Encoder) {
+func (s SetStickerPositionInSet) Encode(e *jx.Writer) {
 	e.ObjStart()
 
-	e.FieldStart("sticker")
+	e.RawStr("\"sticker\"" + ":")
 	e.Str(s.Sticker)
+	e.Comma()
 
-	e.FieldStart("position")
+	e.RawStr("\"position\"" + ":")
 	e.Int(s.Position)
+
+	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
+		e.Buf = e.Buf[:length-1]
+	}
 	e.ObjEnd()
 }
 
@@ -12299,17 +14514,23 @@ func (s *SetStickerPositionInSet) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s SetStickerSetThumb) Encode(e *jx.Encoder) {
+func (s SetStickerSetThumb) Encode(e *jx.Writer) {
 	e.ObjStart()
 
-	e.FieldStart("name")
+	e.RawStr("\"name\"" + ":")
 	e.Str(s.Name)
+	e.Comma()
 
-	e.FieldStart("user_id")
+	e.RawStr("\"user_id\"" + ":")
 	e.Int(s.UserID)
+	e.Comma()
 	if s.Thumb.Set {
-		e.FieldStart("thumb")
+		e.RawStr("\"thumb\"" + ":")
 		s.Thumb.Encode(e)
+	}
+
+	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
+		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -12346,34 +14567,59 @@ func (s *SetStickerSetThumb) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s SetWebhook) Encode(e *jx.Encoder) {
+func (s SetWebhook) Encode(e *jx.Writer) {
 	e.ObjStart()
 
-	e.FieldStart("url")
+	e.RawStr("\"url\"" + ":")
 	json.EncodeURI(e, s.URL)
+	e.Comma()
 	if s.Certificate.Set {
-		e.FieldStart("certificate")
+		e.RawStr("\"certificate\"" + ":")
 		s.Certificate.Encode(e)
 	}
+	if s.Certificate.Set {
+		e.Comma()
+	}
 	if s.IPAddress.Set {
-		e.FieldStart("ip_address")
+		e.RawStr("\"ip_address\"" + ":")
 		s.IPAddress.Encode(e)
 	}
+	if s.IPAddress.Set {
+		e.Comma()
+	}
 	if s.MaxConnections.Set {
-		e.FieldStart("max_connections")
+		e.RawStr("\"max_connections\"" + ":")
 		s.MaxConnections.Encode(e)
 	}
+	if s.MaxConnections.Set {
+		e.Comma()
+	}
 	if s.AllowedUpdates != nil {
-		e.FieldStart("allowed_updates")
+		e.RawStr("\"allowed_updates\"" + ":")
 		e.ArrStart()
-		for _, elem := range s.AllowedUpdates {
-			e.Str(elem)
+		if len(s.AllowedUpdates) >= 1 {
+			// Encode first element without comma.
+			{
+				elem := s.AllowedUpdates[0]
+				e.Str(elem)
+			}
+			for _, elem := range s.AllowedUpdates[1:] {
+				e.Comma()
+				e.Str(elem)
+			}
 		}
 		e.ArrEnd()
 	}
+	if s.AllowedUpdates != nil {
+		e.Comma()
+	}
 	if s.DropPendingUpdates.Set {
-		e.FieldStart("drop_pending_updates")
+		e.RawStr("\"drop_pending_updates\"" + ":")
 		s.DropPendingUpdates.Encode(e)
+	}
+
+	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
+		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -12433,26 +14679,35 @@ func (s *SetWebhook) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s ShippingAddress) Encode(e *jx.Encoder) {
+func (s ShippingAddress) Encode(e *jx.Writer) {
 	e.ObjStart()
 
-	e.FieldStart("country_code")
+	e.RawStr("\"country_code\"" + ":")
 	e.Str(s.CountryCode)
+	e.Comma()
 
-	e.FieldStart("state")
+	e.RawStr("\"state\"" + ":")
 	e.Str(s.State)
+	e.Comma()
 
-	e.FieldStart("city")
+	e.RawStr("\"city\"" + ":")
 	e.Str(s.City)
+	e.Comma()
 
-	e.FieldStart("street_line1")
+	e.RawStr("\"street_line1\"" + ":")
 	e.Str(s.StreetLine1)
+	e.Comma()
 
-	e.FieldStart("street_line2")
+	e.RawStr("\"street_line2\"" + ":")
 	e.Str(s.StreetLine2)
+	e.Comma()
 
-	e.FieldStart("post_code")
+	e.RawStr("\"post_code\"" + ":")
 	e.Str(s.PostCode)
+
+	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
+		e.Buf = e.Buf[:length-1]
+	}
 	e.ObjEnd()
 }
 
@@ -12507,21 +14762,35 @@ func (s *ShippingAddress) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s ShippingOption) Encode(e *jx.Encoder) {
+func (s ShippingOption) Encode(e *jx.Writer) {
 	e.ObjStart()
 
-	e.FieldStart("id")
+	e.RawStr("\"id\"" + ":")
 	e.Str(s.ID)
+	e.Comma()
 
-	e.FieldStart("title")
+	e.RawStr("\"title\"" + ":")
 	e.Str(s.Title)
+	e.Comma()
 
-	e.FieldStart("prices")
+	e.RawStr("\"prices\"" + ":")
 	e.ArrStart()
-	for _, elem := range s.Prices {
-		elem.Encode(e)
+	if len(s.Prices) >= 1 {
+		// Encode first element without comma.
+		{
+			elem := s.Prices[0]
+			elem.Encode(e)
+		}
+		for _, elem := range s.Prices[1:] {
+			e.Comma()
+			elem.Encode(e)
+		}
 	}
 	e.ArrEnd()
+
+	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
+		e.Buf = e.Buf[:length-1]
+	}
 	e.ObjEnd()
 }
 
@@ -12564,42 +14833,63 @@ func (s *ShippingOption) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s Sticker) Encode(e *jx.Encoder) {
+func (s Sticker) Encode(e *jx.Writer) {
 	e.ObjStart()
 
-	e.FieldStart("file_id")
+	e.RawStr("\"file_id\"" + ":")
 	e.Str(s.FileID)
+	e.Comma()
 
-	e.FieldStart("file_unique_id")
+	e.RawStr("\"file_unique_id\"" + ":")
 	e.Str(s.FileUniqueID)
+	e.Comma()
 
-	e.FieldStart("width")
+	e.RawStr("\"width\"" + ":")
 	e.Int(s.Width)
+	e.Comma()
 
-	e.FieldStart("height")
+	e.RawStr("\"height\"" + ":")
 	e.Int(s.Height)
+	e.Comma()
 
-	e.FieldStart("is_animated")
+	e.RawStr("\"is_animated\"" + ":")
 	e.Bool(s.IsAnimated)
+	e.Comma()
 	if s.Thumb.Set {
-		e.FieldStart("thumb")
+		e.RawStr("\"thumb\"" + ":")
 		s.Thumb.Encode(e)
 	}
+	if s.Thumb.Set {
+		e.Comma()
+	}
 	if s.Emoji.Set {
-		e.FieldStart("emoji")
+		e.RawStr("\"emoji\"" + ":")
 		s.Emoji.Encode(e)
 	}
+	if s.Emoji.Set {
+		e.Comma()
+	}
 	if s.SetName.Set {
-		e.FieldStart("set_name")
+		e.RawStr("\"set_name\"" + ":")
 		s.SetName.Encode(e)
 	}
+	if s.SetName.Set {
+		e.Comma()
+	}
 	if s.MaskPosition.Set {
-		e.FieldStart("mask_position")
+		e.RawStr("\"mask_position\"" + ":")
 		s.MaskPosition.Encode(e)
 	}
+	if s.MaskPosition.Set {
+		e.Comma()
+	}
 	if s.FileSize.Set {
-		e.FieldStart("file_size")
+		e.RawStr("\"file_size\"" + ":")
 		s.FileSize.Encode(e)
+	}
+
+	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
+		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -12674,23 +14964,36 @@ func (s *Sticker) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s StopMessageLiveLocation) Encode(e *jx.Encoder) {
+func (s StopMessageLiveLocation) Encode(e *jx.Writer) {
 	e.ObjStart()
 	if s.ChatID.Set {
-		e.FieldStart("chat_id")
+		e.RawStr("\"chat_id\"" + ":")
 		s.ChatID.Encode(e)
 	}
+	if s.ChatID.Set {
+		e.Comma()
+	}
 	if s.MessageID.Set {
-		e.FieldStart("message_id")
+		e.RawStr("\"message_id\"" + ":")
 		s.MessageID.Encode(e)
 	}
+	if s.MessageID.Set {
+		e.Comma()
+	}
 	if s.InlineMessageID.Set {
-		e.FieldStart("inline_message_id")
+		e.RawStr("\"inline_message_id\"" + ":")
 		s.InlineMessageID.Encode(e)
 	}
+	if s.InlineMessageID.Set {
+		e.Comma()
+	}
 	if s.ReplyMarkup.Set {
-		e.FieldStart("reply_markup")
+		e.RawStr("\"reply_markup\"" + ":")
 		s.ReplyMarkup.Encode(e)
+	}
+
+	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
+		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -12730,17 +15033,24 @@ func (s *StopMessageLiveLocation) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s StopPoll) Encode(e *jx.Encoder) {
+func (s StopPoll) Encode(e *jx.Writer) {
 	e.ObjStart()
 
-	e.FieldStart("chat_id")
+	e.RawStr("\"chat_id\"" + ":")
 	s.ChatID.Encode(e)
 
-	e.FieldStart("message_id")
+	e.Comma()
+
+	e.RawStr("\"message_id\"" + ":")
 	e.Int(s.MessageID)
+	e.Comma()
 	if s.ReplyMarkup.Set {
-		e.FieldStart("reply_markup")
+		e.RawStr("\"reply_markup\"" + ":")
 		s.ReplyMarkup.Encode(e)
+	}
+
+	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
+		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -12775,31 +15085,45 @@ func (s *StopPoll) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s SuccessfulPayment) Encode(e *jx.Encoder) {
+func (s SuccessfulPayment) Encode(e *jx.Writer) {
 	e.ObjStart()
 
-	e.FieldStart("currency")
+	e.RawStr("\"currency\"" + ":")
 	e.Str(s.Currency)
+	e.Comma()
 
-	e.FieldStart("total_amount")
+	e.RawStr("\"total_amount\"" + ":")
 	e.Int(s.TotalAmount)
+	e.Comma()
 
-	e.FieldStart("invoice_payload")
+	e.RawStr("\"invoice_payload\"" + ":")
 	e.Str(s.InvoicePayload)
+	e.Comma()
 	if s.ShippingOptionID.Set {
-		e.FieldStart("shipping_option_id")
+		e.RawStr("\"shipping_option_id\"" + ":")
 		s.ShippingOptionID.Encode(e)
 	}
+	if s.ShippingOptionID.Set {
+		e.Comma()
+	}
 	if s.OrderInfo.Set {
-		e.FieldStart("order_info")
+		e.RawStr("\"order_info\"" + ":")
 		s.OrderInfo.Encode(e)
 	}
+	if s.OrderInfo.Set {
+		e.Comma()
+	}
 
-	e.FieldStart("telegram_payment_charge_id")
+	e.RawStr("\"telegram_payment_charge_id\"" + ":")
 	e.Str(s.TelegramPaymentChargeID)
+	e.Comma()
 
-	e.FieldStart("provider_payment_charge_id")
+	e.RawStr("\"provider_payment_charge_id\"" + ":")
 	e.Str(s.ProviderPaymentChargeID)
+
+	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
+		e.Buf = e.Buf[:length-1]
+	}
 	e.ObjEnd()
 }
 
@@ -12858,17 +15182,24 @@ func (s *SuccessfulPayment) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s UnbanChatMember) Encode(e *jx.Encoder) {
+func (s UnbanChatMember) Encode(e *jx.Writer) {
 	e.ObjStart()
 
-	e.FieldStart("chat_id")
+	e.RawStr("\"chat_id\"" + ":")
 	s.ChatID.Encode(e)
 
-	e.FieldStart("user_id")
+	e.Comma()
+
+	e.RawStr("\"user_id\"" + ":")
 	e.Int(s.UserID)
+	e.Comma()
 	if s.OnlyIfBanned.Set {
-		e.FieldStart("only_if_banned")
+		e.RawStr("\"only_if_banned\"" + ":")
 		s.OnlyIfBanned.Encode(e)
+	}
+
+	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
+		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -12903,11 +15234,15 @@ func (s *UnbanChatMember) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s UnpinAllChatMessages) Encode(e *jx.Encoder) {
+func (s UnpinAllChatMessages) Encode(e *jx.Writer) {
 	e.ObjStart()
 
-	e.FieldStart("chat_id")
+	e.RawStr("\"chat_id\"" + ":")
 	s.ChatID.Encode(e)
+
+	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
+		e.Buf = e.Buf[:length-1]
+	}
 	e.ObjEnd()
 }
 
@@ -12930,14 +15265,20 @@ func (s *UnpinAllChatMessages) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s UnpinChatMessage) Encode(e *jx.Encoder) {
+func (s UnpinChatMessage) Encode(e *jx.Writer) {
 	e.ObjStart()
 
-	e.FieldStart("chat_id")
+	e.RawStr("\"chat_id\"" + ":")
 	s.ChatID.Encode(e)
+
+	e.Comma()
 	if s.MessageID.Set {
-		e.FieldStart("message_id")
+		e.RawStr("\"message_id\"" + ":")
 		s.MessageID.Encode(e)
+	}
+
+	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
+		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -12966,14 +15307,19 @@ func (s *UnpinChatMessage) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s UploadStickerFile) Encode(e *jx.Encoder) {
+func (s UploadStickerFile) Encode(e *jx.Writer) {
 	e.ObjStart()
 
-	e.FieldStart("user_id")
+	e.RawStr("\"user_id\"" + ":")
 	e.Int(s.UserID)
+	e.Comma()
 
-	e.FieldStart("png_sticker")
+	e.RawStr("\"png_sticker\"" + ":")
 	e.Str(s.PNGSticker)
+
+	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
+		e.Buf = e.Buf[:length-1]
+	}
 	e.ObjEnd()
 }
 
@@ -13004,40 +15350,62 @@ func (s *UploadStickerFile) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s User) Encode(e *jx.Encoder) {
+func (s User) Encode(e *jx.Writer) {
 	e.ObjStart()
 
-	e.FieldStart("id")
+	e.RawStr("\"id\"" + ":")
 	e.Int(s.ID)
+	e.Comma()
 
-	e.FieldStart("is_bot")
+	e.RawStr("\"is_bot\"" + ":")
 	e.Bool(s.IsBot)
+	e.Comma()
 
-	e.FieldStart("first_name")
+	e.RawStr("\"first_name\"" + ":")
 	e.Str(s.FirstName)
+	e.Comma()
 	if s.LastName.Set {
-		e.FieldStart("last_name")
+		e.RawStr("\"last_name\"" + ":")
 		s.LastName.Encode(e)
 	}
+	if s.LastName.Set {
+		e.Comma()
+	}
 	if s.Username.Set {
-		e.FieldStart("username")
+		e.RawStr("\"username\"" + ":")
 		s.Username.Encode(e)
 	}
+	if s.Username.Set {
+		e.Comma()
+	}
 	if s.LanguageCode.Set {
-		e.FieldStart("language_code")
+		e.RawStr("\"language_code\"" + ":")
 		s.LanguageCode.Encode(e)
 	}
+	if s.LanguageCode.Set {
+		e.Comma()
+	}
 	if s.CanJoinGroups.Set {
-		e.FieldStart("can_join_groups")
+		e.RawStr("\"can_join_groups\"" + ":")
 		s.CanJoinGroups.Encode(e)
 	}
+	if s.CanJoinGroups.Set {
+		e.Comma()
+	}
 	if s.CanReadAllGroupMessages.Set {
-		e.FieldStart("can_read_all_group_messages")
+		e.RawStr("\"can_read_all_group_messages\"" + ":")
 		s.CanReadAllGroupMessages.Encode(e)
 	}
+	if s.CanReadAllGroupMessages.Set {
+		e.Comma()
+	}
 	if s.SupportsInlineQueries.Set {
-		e.FieldStart("supports_inline_queries")
+		e.RawStr("\"supports_inline_queries\"" + ":")
 		s.SupportsInlineQueries.Encode(e)
+	}
+
+	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
+		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -13105,32 +15473,49 @@ func (s *User) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s Venue) Encode(e *jx.Encoder) {
+func (s Venue) Encode(e *jx.Writer) {
 	e.ObjStart()
 
-	e.FieldStart("location")
+	e.RawStr("\"location\"" + ":")
 	s.Location.Encode(e)
 
-	e.FieldStart("title")
-	e.Str(s.Title)
+	e.Comma()
 
-	e.FieldStart("address")
+	e.RawStr("\"title\"" + ":")
+	e.Str(s.Title)
+	e.Comma()
+
+	e.RawStr("\"address\"" + ":")
 	e.Str(s.Address)
+	e.Comma()
 	if s.FoursquareID.Set {
-		e.FieldStart("foursquare_id")
+		e.RawStr("\"foursquare_id\"" + ":")
 		s.FoursquareID.Encode(e)
 	}
+	if s.FoursquareID.Set {
+		e.Comma()
+	}
 	if s.FoursquareType.Set {
-		e.FieldStart("foursquare_type")
+		e.RawStr("\"foursquare_type\"" + ":")
 		s.FoursquareType.Encode(e)
 	}
+	if s.FoursquareType.Set {
+		e.Comma()
+	}
 	if s.GooglePlaceID.Set {
-		e.FieldStart("google_place_id")
+		e.RawStr("\"google_place_id\"" + ":")
 		s.GooglePlaceID.Encode(e)
 	}
+	if s.GooglePlaceID.Set {
+		e.Comma()
+	}
 	if s.GooglePlaceType.Set {
-		e.FieldStart("google_place_type")
+		e.RawStr("\"google_place_type\"" + ":")
 		s.GooglePlaceType.Encode(e)
+	}
+
+	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
+		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -13186,38 +15571,56 @@ func (s *Venue) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s Video) Encode(e *jx.Encoder) {
+func (s Video) Encode(e *jx.Writer) {
 	e.ObjStart()
 
-	e.FieldStart("file_id")
+	e.RawStr("\"file_id\"" + ":")
 	e.Str(s.FileID)
+	e.Comma()
 
-	e.FieldStart("file_unique_id")
+	e.RawStr("\"file_unique_id\"" + ":")
 	e.Str(s.FileUniqueID)
+	e.Comma()
 
-	e.FieldStart("width")
+	e.RawStr("\"width\"" + ":")
 	e.Int(s.Width)
+	e.Comma()
 
-	e.FieldStart("height")
+	e.RawStr("\"height\"" + ":")
 	e.Int(s.Height)
+	e.Comma()
 
-	e.FieldStart("duration")
+	e.RawStr("\"duration\"" + ":")
 	e.Int(s.Duration)
+	e.Comma()
 	if s.Thumb.Set {
-		e.FieldStart("thumb")
+		e.RawStr("\"thumb\"" + ":")
 		s.Thumb.Encode(e)
 	}
+	if s.Thumb.Set {
+		e.Comma()
+	}
 	if s.FileName.Set {
-		e.FieldStart("file_name")
+		e.RawStr("\"file_name\"" + ":")
 		s.FileName.Encode(e)
 	}
+	if s.FileName.Set {
+		e.Comma()
+	}
 	if s.MimeType.Set {
-		e.FieldStart("mime_type")
+		e.RawStr("\"mime_type\"" + ":")
 		s.MimeType.Encode(e)
 	}
+	if s.MimeType.Set {
+		e.Comma()
+	}
 	if s.FileSize.Set {
-		e.FieldStart("file_size")
+		e.RawStr("\"file_size\"" + ":")
 		s.FileSize.Encode(e)
+	}
+
+	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
+		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -13287,27 +15690,38 @@ func (s *Video) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s VideoNote) Encode(e *jx.Encoder) {
+func (s VideoNote) Encode(e *jx.Writer) {
 	e.ObjStart()
 
-	e.FieldStart("file_id")
+	e.RawStr("\"file_id\"" + ":")
 	e.Str(s.FileID)
+	e.Comma()
 
-	e.FieldStart("file_unique_id")
+	e.RawStr("\"file_unique_id\"" + ":")
 	e.Str(s.FileUniqueID)
+	e.Comma()
 
-	e.FieldStart("length")
+	e.RawStr("\"length\"" + ":")
 	e.Int(s.Length)
+	e.Comma()
 
-	e.FieldStart("duration")
+	e.RawStr("\"duration\"" + ":")
 	e.Int(s.Duration)
+	e.Comma()
 	if s.Thumb.Set {
-		e.FieldStart("thumb")
+		e.RawStr("\"thumb\"" + ":")
 		s.Thumb.Encode(e)
 	}
+	if s.Thumb.Set {
+		e.Comma()
+	}
 	if s.FileSize.Set {
-		e.FieldStart("file_size")
+		e.RawStr("\"file_size\"" + ":")
 		s.FileSize.Encode(e)
+	}
+
+	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
+		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -13361,24 +15775,34 @@ func (s *VideoNote) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s Voice) Encode(e *jx.Encoder) {
+func (s Voice) Encode(e *jx.Writer) {
 	e.ObjStart()
 
-	e.FieldStart("file_id")
+	e.RawStr("\"file_id\"" + ":")
 	e.Str(s.FileID)
+	e.Comma()
 
-	e.FieldStart("file_unique_id")
+	e.RawStr("\"file_unique_id\"" + ":")
 	e.Str(s.FileUniqueID)
+	e.Comma()
 
-	e.FieldStart("duration")
+	e.RawStr("\"duration\"" + ":")
 	e.Int(s.Duration)
+	e.Comma()
 	if s.MimeType.Set {
-		e.FieldStart("mime_type")
+		e.RawStr("\"mime_type\"" + ":")
 		s.MimeType.Encode(e)
 	}
+	if s.MimeType.Set {
+		e.Comma()
+	}
 	if s.FileSize.Set {
-		e.FieldStart("file_size")
+		e.RawStr("\"file_size\"" + ":")
 		s.FileSize.Encode(e)
+	}
+
+	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
+		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -13426,11 +15850,15 @@ func (s *Voice) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s VoiceChatEnded) Encode(e *jx.Encoder) {
+func (s VoiceChatEnded) Encode(e *jx.Writer) {
 	e.ObjStart()
 
-	e.FieldStart("duration")
+	e.RawStr("\"duration\"" + ":")
 	e.Int(s.Duration)
+
+	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
+		e.Buf = e.Buf[:length-1]
+	}
 	e.ObjEnd()
 }
 
@@ -13455,15 +15883,27 @@ func (s *VoiceChatEnded) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s VoiceChatParticipantsInvited) Encode(e *jx.Encoder) {
+func (s VoiceChatParticipantsInvited) Encode(e *jx.Writer) {
 	e.ObjStart()
 	if s.Users != nil {
-		e.FieldStart("users")
+		e.RawStr("\"users\"" + ":")
 		e.ArrStart()
-		for _, elem := range s.Users {
-			elem.Encode(e)
+		if len(s.Users) >= 1 {
+			// Encode first element without comma.
+			{
+				elem := s.Users[0]
+				elem.Encode(e)
+			}
+			for _, elem := range s.Users[1:] {
+				e.Comma()
+				elem.Encode(e)
+			}
 		}
 		e.ArrEnd()
+	}
+
+	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
+		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -13495,11 +15935,15 @@ func (s *VoiceChatParticipantsInvited) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s VoiceChatScheduled) Encode(e *jx.Encoder) {
+func (s VoiceChatScheduled) Encode(e *jx.Writer) {
 	e.ObjStart()
 
-	e.FieldStart("start_date")
+	e.RawStr("\"start_date\"" + ":")
 	e.Int(s.StartDate)
+
+	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
+		e.Buf = e.Buf[:length-1]
+	}
 	e.ObjEnd()
 }
 
@@ -13524,8 +15968,12 @@ func (s *VoiceChatScheduled) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s VoiceChatStarted) Encode(e *jx.Encoder) {
+func (s VoiceChatStarted) Encode(e *jx.Writer) {
 	e.ObjStart()
+
+	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
+		e.Buf = e.Buf[:length-1]
+	}
 	e.ObjEnd()
 }
 
