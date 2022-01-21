@@ -506,6 +506,9 @@
           },
           "count": {
             "type": "integer"
+          },
+          "id": {
+            "$ref": "#/components/schemas/ID"
           }
         }
       },
