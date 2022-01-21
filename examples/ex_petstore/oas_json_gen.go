@@ -163,6 +163,9 @@ func (s *ErrorStatusCode) Decode(d *jx.Decoder) error {
 
 // Encode encodes int32 as json.
 func (o OptInt32) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	e.Int32(int32(o.Value))
 }
 
@@ -187,6 +190,9 @@ func (o *OptInt32) Decode(d *jx.Decoder) error {
 
 // Encode encodes string as json.
 func (o OptString) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	e.Str(string(o.Value))
 }
 

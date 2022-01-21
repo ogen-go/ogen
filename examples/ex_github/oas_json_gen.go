@@ -50564,6 +50564,7 @@ func (o NilCodeScanningAlertDismissedAt) Encode(e *jx.Writer) {
 		e.Null()
 		return
 	}
+	o.Value.Encode(e)
 }
 
 // Decode decodes CodeScanningAlertDismissedAt from json.
@@ -58808,6 +58809,9 @@ func (s *OAuthAuthorizationsUpdateAuthorizationReq) Decode(d *jx.Decoder) error 
 
 // Encode encodes APIOverviewSSHKeyFingerprints as json.
 func (o OptAPIOverviewSSHKeyFingerprints) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -58830,6 +58834,9 @@ func (o *OptAPIOverviewSSHKeyFingerprints) Decode(d *jx.Decoder) error {
 
 // Encode encodes ActionsCreateSelfHostedRunnerGroupForOrgReqVisibility as json.
 func (o OptActionsCreateSelfHostedRunnerGroupForOrgReqVisibility) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	e.Str(string(o.Value))
 }
 
@@ -58852,6 +58859,9 @@ func (o *OptActionsCreateSelfHostedRunnerGroupForOrgReqVisibility) Decode(d *jx.
 
 // Encode encodes ActionsListJobsForWorkflowRunFilter as json.
 func (o OptActionsListJobsForWorkflowRunFilter) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	e.Str(string(o.Value))
 }
 
@@ -58874,6 +58884,9 @@ func (o *OptActionsListJobsForWorkflowRunFilter) Decode(d *jx.Decoder) error {
 
 // Encode encodes ActionsListWorkflowRunsForRepoStatus as json.
 func (o OptActionsListWorkflowRunsForRepoStatus) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	e.Str(string(o.Value))
 }
 
@@ -58896,6 +58909,9 @@ func (o *OptActionsListWorkflowRunsForRepoStatus) Decode(d *jx.Decoder) error {
 
 // Encode encodes ActionsUpdateSelfHostedRunnerGroupForOrgReqVisibility as json.
 func (o OptActionsUpdateSelfHostedRunnerGroupForOrgReqVisibility) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	e.Str(string(o.Value))
 }
 
@@ -58918,6 +58934,9 @@ func (o *OptActionsUpdateSelfHostedRunnerGroupForOrgReqVisibility) Decode(d *jx.
 
 // Encode encodes ActivityListReposStarredByAuthenticatedUserDirection as json.
 func (o OptActivityListReposStarredByAuthenticatedUserDirection) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	e.Str(string(o.Value))
 }
 
@@ -58940,6 +58959,9 @@ func (o *OptActivityListReposStarredByAuthenticatedUserDirection) Decode(d *jx.D
 
 // Encode encodes ActivityListReposStarredByAuthenticatedUserSort as json.
 func (o OptActivityListReposStarredByAuthenticatedUserSort) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	e.Str(string(o.Value))
 }
 
@@ -58962,6 +58984,9 @@ func (o *OptActivityListReposStarredByAuthenticatedUserSort) Decode(d *jx.Decode
 
 // Encode encodes ActivityMarkNotificationsAsReadReq as json.
 func (o OptActivityMarkNotificationsAsReadReq) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -58984,6 +59009,9 @@ func (o *OptActivityMarkNotificationsAsReadReq) Decode(d *jx.Decoder) error {
 
 // Encode encodes ActivityMarkRepoNotificationsAsReadReq as json.
 func (o OptActivityMarkRepoNotificationsAsReadReq) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -59006,6 +59034,9 @@ func (o *OptActivityMarkRepoNotificationsAsReadReq) Decode(d *jx.Decoder) error 
 
 // Encode encodes ActivitySetRepoSubscriptionReq as json.
 func (o OptActivitySetRepoSubscriptionReq) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -59028,6 +59059,9 @@ func (o *OptActivitySetRepoSubscriptionReq) Decode(d *jx.Decoder) error {
 
 // Encode encodes ActivitySetThreadSubscriptionReq as json.
 func (o OptActivitySetThreadSubscriptionReq) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -59050,6 +59084,9 @@ func (o *OptActivitySetThreadSubscriptionReq) Decode(d *jx.Decoder) error {
 
 // Encode encodes Actor as json.
 func (o OptActor) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -59072,6 +59109,10 @@ func (o *OptActor) Decode(d *jx.Decoder) error {
 
 // Encode encodes AlertCreatedAt as json.
 func (o OptAlertCreatedAt) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
+	o.Value.Encode(e)
 }
 
 // Decode decodes AlertCreatedAt from json.
@@ -59090,6 +59131,10 @@ func (o *OptAlertCreatedAt) Decode(d *jx.Decoder) error {
 
 // Encode encodes AlertHTMLURL as json.
 func (o OptAlertHTMLURL) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
+	o.Value.Encode(e)
 }
 
 // Decode decodes AlertHTMLURL from json.
@@ -59108,6 +59153,10 @@ func (o *OptAlertHTMLURL) Decode(d *jx.Decoder) error {
 
 // Encode encodes AlertNumber as json.
 func (o OptAlertNumber) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
+	o.Value.Encode(e)
 }
 
 // Decode decodes AlertNumber from json.
@@ -59126,6 +59175,10 @@ func (o *OptAlertNumber) Decode(d *jx.Decoder) error {
 
 // Encode encodes AlertURL as json.
 func (o OptAlertURL) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
+	o.Value.Encode(e)
 }
 
 // Decode decodes AlertURL from json.
@@ -59144,6 +59197,9 @@ func (o *OptAlertURL) Decode(d *jx.Decoder) error {
 
 // Encode encodes AllowedActions as json.
 func (o OptAllowedActions) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	e.Str(string(o.Value))
 }
 
@@ -59166,6 +59222,9 @@ func (o *OptAllowedActions) Decode(d *jx.Decoder) error {
 
 // Encode encodes AppPermissions as json.
 func (o OptAppPermissions) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -59188,6 +59247,9 @@ func (o *OptAppPermissions) Decode(d *jx.Decoder) error {
 
 // Encode encodes AppPermissionsActions as json.
 func (o OptAppPermissionsActions) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	e.Str(string(o.Value))
 }
 
@@ -59210,6 +59272,9 @@ func (o *OptAppPermissionsActions) Decode(d *jx.Decoder) error {
 
 // Encode encodes AppPermissionsAdministration as json.
 func (o OptAppPermissionsAdministration) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	e.Str(string(o.Value))
 }
 
@@ -59232,6 +59297,9 @@ func (o *OptAppPermissionsAdministration) Decode(d *jx.Decoder) error {
 
 // Encode encodes AppPermissionsChecks as json.
 func (o OptAppPermissionsChecks) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	e.Str(string(o.Value))
 }
 
@@ -59254,6 +59322,9 @@ func (o *OptAppPermissionsChecks) Decode(d *jx.Decoder) error {
 
 // Encode encodes AppPermissionsContentReferences as json.
 func (o OptAppPermissionsContentReferences) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	e.Str(string(o.Value))
 }
 
@@ -59276,6 +59347,9 @@ func (o *OptAppPermissionsContentReferences) Decode(d *jx.Decoder) error {
 
 // Encode encodes AppPermissionsContents as json.
 func (o OptAppPermissionsContents) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	e.Str(string(o.Value))
 }
 
@@ -59298,6 +59372,9 @@ func (o *OptAppPermissionsContents) Decode(d *jx.Decoder) error {
 
 // Encode encodes AppPermissionsDeployments as json.
 func (o OptAppPermissionsDeployments) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	e.Str(string(o.Value))
 }
 
@@ -59320,6 +59397,9 @@ func (o *OptAppPermissionsDeployments) Decode(d *jx.Decoder) error {
 
 // Encode encodes AppPermissionsEnvironments as json.
 func (o OptAppPermissionsEnvironments) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	e.Str(string(o.Value))
 }
 
@@ -59342,6 +59422,9 @@ func (o *OptAppPermissionsEnvironments) Decode(d *jx.Decoder) error {
 
 // Encode encodes AppPermissionsIssues as json.
 func (o OptAppPermissionsIssues) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	e.Str(string(o.Value))
 }
 
@@ -59364,6 +59447,9 @@ func (o *OptAppPermissionsIssues) Decode(d *jx.Decoder) error {
 
 // Encode encodes AppPermissionsMembers as json.
 func (o OptAppPermissionsMembers) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	e.Str(string(o.Value))
 }
 
@@ -59386,6 +59472,9 @@ func (o *OptAppPermissionsMembers) Decode(d *jx.Decoder) error {
 
 // Encode encodes AppPermissionsMetadata as json.
 func (o OptAppPermissionsMetadata) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	e.Str(string(o.Value))
 }
 
@@ -59408,6 +59497,9 @@ func (o *OptAppPermissionsMetadata) Decode(d *jx.Decoder) error {
 
 // Encode encodes AppPermissionsOrganizationAdministration as json.
 func (o OptAppPermissionsOrganizationAdministration) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	e.Str(string(o.Value))
 }
 
@@ -59430,6 +59522,9 @@ func (o *OptAppPermissionsOrganizationAdministration) Decode(d *jx.Decoder) erro
 
 // Encode encodes AppPermissionsOrganizationHooks as json.
 func (o OptAppPermissionsOrganizationHooks) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	e.Str(string(o.Value))
 }
 
@@ -59452,6 +59547,9 @@ func (o *OptAppPermissionsOrganizationHooks) Decode(d *jx.Decoder) error {
 
 // Encode encodes AppPermissionsOrganizationPackages as json.
 func (o OptAppPermissionsOrganizationPackages) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	e.Str(string(o.Value))
 }
 
@@ -59474,6 +59572,9 @@ func (o *OptAppPermissionsOrganizationPackages) Decode(d *jx.Decoder) error {
 
 // Encode encodes AppPermissionsOrganizationPlan as json.
 func (o OptAppPermissionsOrganizationPlan) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	e.Str(string(o.Value))
 }
 
@@ -59496,6 +59597,9 @@ func (o *OptAppPermissionsOrganizationPlan) Decode(d *jx.Decoder) error {
 
 // Encode encodes AppPermissionsOrganizationProjects as json.
 func (o OptAppPermissionsOrganizationProjects) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	e.Str(string(o.Value))
 }
 
@@ -59518,6 +59622,9 @@ func (o *OptAppPermissionsOrganizationProjects) Decode(d *jx.Decoder) error {
 
 // Encode encodes AppPermissionsOrganizationSecrets as json.
 func (o OptAppPermissionsOrganizationSecrets) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	e.Str(string(o.Value))
 }
 
@@ -59540,6 +59647,9 @@ func (o *OptAppPermissionsOrganizationSecrets) Decode(d *jx.Decoder) error {
 
 // Encode encodes AppPermissionsOrganizationSelfHostedRunners as json.
 func (o OptAppPermissionsOrganizationSelfHostedRunners) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	e.Str(string(o.Value))
 }
 
@@ -59562,6 +59672,9 @@ func (o *OptAppPermissionsOrganizationSelfHostedRunners) Decode(d *jx.Decoder) e
 
 // Encode encodes AppPermissionsOrganizationUserBlocking as json.
 func (o OptAppPermissionsOrganizationUserBlocking) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	e.Str(string(o.Value))
 }
 
@@ -59584,6 +59697,9 @@ func (o *OptAppPermissionsOrganizationUserBlocking) Decode(d *jx.Decoder) error 
 
 // Encode encodes AppPermissionsPackages as json.
 func (o OptAppPermissionsPackages) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	e.Str(string(o.Value))
 }
 
@@ -59606,6 +59722,9 @@ func (o *OptAppPermissionsPackages) Decode(d *jx.Decoder) error {
 
 // Encode encodes AppPermissionsPages as json.
 func (o OptAppPermissionsPages) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	e.Str(string(o.Value))
 }
 
@@ -59628,6 +59747,9 @@ func (o *OptAppPermissionsPages) Decode(d *jx.Decoder) error {
 
 // Encode encodes AppPermissionsPullRequests as json.
 func (o OptAppPermissionsPullRequests) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	e.Str(string(o.Value))
 }
 
@@ -59650,6 +59772,9 @@ func (o *OptAppPermissionsPullRequests) Decode(d *jx.Decoder) error {
 
 // Encode encodes AppPermissionsRepositoryHooks as json.
 func (o OptAppPermissionsRepositoryHooks) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	e.Str(string(o.Value))
 }
 
@@ -59672,6 +59797,9 @@ func (o *OptAppPermissionsRepositoryHooks) Decode(d *jx.Decoder) error {
 
 // Encode encodes AppPermissionsRepositoryProjects as json.
 func (o OptAppPermissionsRepositoryProjects) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	e.Str(string(o.Value))
 }
 
@@ -59694,6 +59822,9 @@ func (o *OptAppPermissionsRepositoryProjects) Decode(d *jx.Decoder) error {
 
 // Encode encodes AppPermissionsSecretScanningAlerts as json.
 func (o OptAppPermissionsSecretScanningAlerts) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	e.Str(string(o.Value))
 }
 
@@ -59716,6 +59847,9 @@ func (o *OptAppPermissionsSecretScanningAlerts) Decode(d *jx.Decoder) error {
 
 // Encode encodes AppPermissionsSecrets as json.
 func (o OptAppPermissionsSecrets) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	e.Str(string(o.Value))
 }
 
@@ -59738,6 +59872,9 @@ func (o *OptAppPermissionsSecrets) Decode(d *jx.Decoder) error {
 
 // Encode encodes AppPermissionsSecurityEvents as json.
 func (o OptAppPermissionsSecurityEvents) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	e.Str(string(o.Value))
 }
 
@@ -59760,6 +59897,9 @@ func (o *OptAppPermissionsSecurityEvents) Decode(d *jx.Decoder) error {
 
 // Encode encodes AppPermissionsSingleFile as json.
 func (o OptAppPermissionsSingleFile) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	e.Str(string(o.Value))
 }
 
@@ -59782,6 +59922,9 @@ func (o *OptAppPermissionsSingleFile) Decode(d *jx.Decoder) error {
 
 // Encode encodes AppPermissionsStatuses as json.
 func (o OptAppPermissionsStatuses) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	e.Str(string(o.Value))
 }
 
@@ -59804,6 +59947,9 @@ func (o *OptAppPermissionsStatuses) Decode(d *jx.Decoder) error {
 
 // Encode encodes AppPermissionsTeamDiscussions as json.
 func (o OptAppPermissionsTeamDiscussions) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	e.Str(string(o.Value))
 }
 
@@ -59826,6 +59972,9 @@ func (o *OptAppPermissionsTeamDiscussions) Decode(d *jx.Decoder) error {
 
 // Encode encodes AppPermissionsVulnerabilityAlerts as json.
 func (o OptAppPermissionsVulnerabilityAlerts) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	e.Str(string(o.Value))
 }
 
@@ -59848,6 +59997,9 @@ func (o *OptAppPermissionsVulnerabilityAlerts) Decode(d *jx.Decoder) error {
 
 // Encode encodes AppPermissionsWorkflows as json.
 func (o OptAppPermissionsWorkflows) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	e.Str(string(o.Value))
 }
 
@@ -59870,6 +60022,9 @@ func (o *OptAppPermissionsWorkflows) Decode(d *jx.Decoder) error {
 
 // Encode encodes AppsCreateFromManifestReq as json.
 func (o OptAppsCreateFromManifestReq) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -59892,6 +60047,9 @@ func (o *OptAppsCreateFromManifestReq) Decode(d *jx.Decoder) error {
 
 // Encode encodes AppsCreateInstallationAccessTokenReq as json.
 func (o OptAppsCreateInstallationAccessTokenReq) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -59914,6 +60072,9 @@ func (o *OptAppsCreateInstallationAccessTokenReq) Decode(d *jx.Decoder) error {
 
 // Encode encodes AppsListAccountsForPlanDirection as json.
 func (o OptAppsListAccountsForPlanDirection) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	e.Str(string(o.Value))
 }
 
@@ -59936,6 +60097,9 @@ func (o *OptAppsListAccountsForPlanDirection) Decode(d *jx.Decoder) error {
 
 // Encode encodes AppsListAccountsForPlanSort as json.
 func (o OptAppsListAccountsForPlanSort) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	e.Str(string(o.Value))
 }
 
@@ -59958,6 +60122,9 @@ func (o *OptAppsListAccountsForPlanSort) Decode(d *jx.Decoder) error {
 
 // Encode encodes AppsListAccountsForPlanStubbedDirection as json.
 func (o OptAppsListAccountsForPlanStubbedDirection) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	e.Str(string(o.Value))
 }
 
@@ -59980,6 +60147,9 @@ func (o *OptAppsListAccountsForPlanStubbedDirection) Decode(d *jx.Decoder) error
 
 // Encode encodes AppsListAccountsForPlanStubbedSort as json.
 func (o OptAppsListAccountsForPlanStubbedSort) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	e.Str(string(o.Value))
 }
 
@@ -60002,6 +60172,9 @@ func (o *OptAppsListAccountsForPlanStubbedSort) Decode(d *jx.Decoder) error {
 
 // Encode encodes AppsUpdateWebhookConfigForAppReq as json.
 func (o OptAppsUpdateWebhookConfigForAppReq) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -60024,6 +60197,9 @@ func (o *OptAppsUpdateWebhookConfigForAppReq) Decode(d *jx.Decoder) error {
 
 // Encode encodes AuditLogEventActorLocation as json.
 func (o OptAuditLogEventActorLocation) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -60046,6 +60222,9 @@ func (o *OptAuditLogEventActorLocation) Decode(d *jx.Decoder) error {
 
 // Encode encodes AuthenticationTokenRepositorySelection as json.
 func (o OptAuthenticationTokenRepositorySelection) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	e.Str(string(o.Value))
 }
 
@@ -60068,6 +60247,9 @@ func (o *OptAuthenticationTokenRepositorySelection) Decode(d *jx.Decoder) error 
 
 // Encode encodes AuthorAssociation as json.
 func (o OptAuthorAssociation) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	e.Str(string(o.Value))
 }
 
@@ -60090,6 +60272,9 @@ func (o *OptAuthorAssociation) Decode(d *jx.Decoder) error {
 
 // Encode encodes bool as json.
 func (o OptBool) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	e.Bool(bool(o.Value))
 }
 
@@ -60114,6 +60299,9 @@ func (o *OptBool) Decode(d *jx.Decoder) error {
 
 // Encode encodes BranchProtection as json.
 func (o OptBranchProtection) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -60136,6 +60324,9 @@ func (o *OptBranchProtection) Decode(d *jx.Decoder) error {
 
 // Encode encodes BranchProtectionAllowDeletions as json.
 func (o OptBranchProtectionAllowDeletions) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -60158,6 +60349,9 @@ func (o *OptBranchProtectionAllowDeletions) Decode(d *jx.Decoder) error {
 
 // Encode encodes BranchProtectionAllowForcePushes as json.
 func (o OptBranchProtectionAllowForcePushes) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -60180,6 +60374,9 @@ func (o *OptBranchProtectionAllowForcePushes) Decode(d *jx.Decoder) error {
 
 // Encode encodes BranchProtectionRequiredConversationResolution as json.
 func (o OptBranchProtectionRequiredConversationResolution) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -60202,6 +60399,9 @@ func (o *OptBranchProtectionRequiredConversationResolution) Decode(d *jx.Decoder
 
 // Encode encodes BranchProtectionRequiredLinearHistory as json.
 func (o OptBranchProtectionRequiredLinearHistory) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -60224,6 +60424,9 @@ func (o *OptBranchProtectionRequiredLinearHistory) Decode(d *jx.Decoder) error {
 
 // Encode encodes BranchProtectionRequiredSignatures as json.
 func (o OptBranchProtectionRequiredSignatures) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -60246,6 +60449,9 @@ func (o *OptBranchProtectionRequiredSignatures) Decode(d *jx.Decoder) error {
 
 // Encode encodes BranchProtectionRequiredStatusChecks as json.
 func (o OptBranchProtectionRequiredStatusChecks) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -60268,6 +60474,9 @@ func (o *OptBranchProtectionRequiredStatusChecks) Decode(d *jx.Decoder) error {
 
 // Encode encodes BranchRestrictionPolicy as json.
 func (o OptBranchRestrictionPolicy) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -60290,6 +60499,9 @@ func (o *OptBranchRestrictionPolicy) Decode(d *jx.Decoder) error {
 
 // Encode encodes BranchRestrictionPolicyAppsItemOwner as json.
 func (o OptBranchRestrictionPolicyAppsItemOwner) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -60312,6 +60524,9 @@ func (o *OptBranchRestrictionPolicyAppsItemOwner) Decode(d *jx.Decoder) error {
 
 // Encode encodes BranchRestrictionPolicyAppsItemPermissions as json.
 func (o OptBranchRestrictionPolicyAppsItemPermissions) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -60334,6 +60549,9 @@ func (o *OptBranchRestrictionPolicyAppsItemPermissions) Decode(d *jx.Decoder) er
 
 // Encode encodes ChecksListForRefFilter as json.
 func (o OptChecksListForRefFilter) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	e.Str(string(o.Value))
 }
 
@@ -60356,6 +60574,9 @@ func (o *OptChecksListForRefFilter) Decode(d *jx.Decoder) error {
 
 // Encode encodes ChecksListForRefStatus as json.
 func (o OptChecksListForRefStatus) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	e.Str(string(o.Value))
 }
 
@@ -60378,6 +60599,9 @@ func (o *OptChecksListForRefStatus) Decode(d *jx.Decoder) error {
 
 // Encode encodes ChecksListForSuiteFilter as json.
 func (o OptChecksListForSuiteFilter) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	e.Str(string(o.Value))
 }
 
@@ -60400,6 +60624,9 @@ func (o *OptChecksListForSuiteFilter) Decode(d *jx.Decoder) error {
 
 // Encode encodes ChecksListForSuiteStatus as json.
 func (o OptChecksListForSuiteStatus) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	e.Str(string(o.Value))
 }
 
@@ -60422,6 +60649,9 @@ func (o *OptChecksListForSuiteStatus) Decode(d *jx.Decoder) error {
 
 // Encode encodes CodeOfConduct as json.
 func (o OptCodeOfConduct) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -60444,6 +60674,9 @@ func (o *OptCodeOfConduct) Decode(d *jx.Decoder) error {
 
 // Encode encodes CodeOfConductSimple as json.
 func (o OptCodeOfConductSimple) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -60466,6 +60699,10 @@ func (o *OptCodeOfConductSimple) Decode(d *jx.Decoder) error {
 
 // Encode encodes CodeScanningAlertEnvironment as json.
 func (o OptCodeScanningAlertEnvironment) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
+	o.Value.Encode(e)
 }
 
 // Decode decodes CodeScanningAlertEnvironment from json.
@@ -60484,6 +60721,9 @@ func (o *OptCodeScanningAlertEnvironment) Decode(d *jx.Decoder) error {
 
 // Encode encodes CodeScanningAlertInstanceMessage as json.
 func (o OptCodeScanningAlertInstanceMessage) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -60506,6 +60746,9 @@ func (o *OptCodeScanningAlertInstanceMessage) Decode(d *jx.Decoder) error {
 
 // Encode encodes CodeScanningAlertLocation as json.
 func (o OptCodeScanningAlertLocation) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -60528,6 +60771,9 @@ func (o *OptCodeScanningAlertLocation) Decode(d *jx.Decoder) error {
 
 // Encode encodes CodeScanningAlertState as json.
 func (o OptCodeScanningAlertState) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	e.Str(string(o.Value))
 }
 
@@ -60550,6 +60796,10 @@ func (o *OptCodeScanningAlertState) Decode(d *jx.Decoder) error {
 
 // Encode encodes CodeScanningAnalysisAnalysisKey as json.
 func (o OptCodeScanningAnalysisAnalysisKey) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
+	o.Value.Encode(e)
 }
 
 // Decode decodes CodeScanningAnalysisAnalysisKey from json.
@@ -60568,6 +60818,10 @@ func (o *OptCodeScanningAnalysisAnalysisKey) Decode(d *jx.Decoder) error {
 
 // Encode encodes CodeScanningAnalysisCategory as json.
 func (o OptCodeScanningAnalysisCategory) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
+	o.Value.Encode(e)
 }
 
 // Decode decodes CodeScanningAnalysisCategory from json.
@@ -60586,6 +60840,10 @@ func (o *OptCodeScanningAnalysisCategory) Decode(d *jx.Decoder) error {
 
 // Encode encodes CodeScanningAnalysisSarifID as json.
 func (o OptCodeScanningAnalysisSarifID) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
+	o.Value.Encode(e)
 }
 
 // Decode decodes CodeScanningAnalysisSarifID from json.
@@ -60604,6 +60862,10 @@ func (o *OptCodeScanningAnalysisSarifID) Decode(d *jx.Decoder) error {
 
 // Encode encodes CodeScanningAnalysisToolName as json.
 func (o OptCodeScanningAnalysisToolName) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
+	o.Value.Encode(e)
 }
 
 // Decode decodes CodeScanningAnalysisToolName from json.
@@ -60622,6 +60884,10 @@ func (o *OptCodeScanningAnalysisToolName) Decode(d *jx.Decoder) error {
 
 // Encode encodes CodeScanningRef as json.
 func (o OptCodeScanningRef) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
+	o.Value.Encode(e)
 }
 
 // Decode decodes CodeScanningRef from json.
@@ -60640,6 +60906,9 @@ func (o *OptCodeScanningRef) Decode(d *jx.Decoder) error {
 
 // Encode encodes CodeScanningSarifsStatusProcessingStatus as json.
 func (o OptCodeScanningSarifsStatusProcessingStatus) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	e.Str(string(o.Value))
 }
 
@@ -60662,6 +60931,9 @@ func (o *OptCodeScanningSarifsStatusProcessingStatus) Decode(d *jx.Decoder) erro
 
 // Encode encodes CollaboratorPermissions as json.
 func (o OptCollaboratorPermissions) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -60684,6 +60956,9 @@ func (o *OptCollaboratorPermissions) Decode(d *jx.Decoder) error {
 
 // Encode encodes CommitStats as json.
 func (o OptCommitStats) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -60706,6 +60981,9 @@ func (o *OptCommitStats) Decode(d *jx.Decoder) error {
 
 // Encode encodes DeploymentReviewerType as json.
 func (o OptDeploymentReviewerType) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	e.Str(string(o.Value))
 }
 
@@ -60728,6 +61006,9 @@ func (o *OptDeploymentReviewerType) Decode(d *jx.Decoder) error {
 
 // Encode encodes DeploymentSimple as json.
 func (o OptDeploymentSimple) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -60750,6 +61031,9 @@ func (o *OptDeploymentSimple) Decode(d *jx.Decoder) error {
 
 // Encode encodes EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseReqVisibility as json.
 func (o OptEnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseReqVisibility) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	e.Str(string(o.Value))
 }
 
@@ -60772,6 +61056,9 @@ func (o *OptEnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseReqVisibility
 
 // Encode encodes EnterpriseAdminGetAuditLogInclude as json.
 func (o OptEnterpriseAdminGetAuditLogInclude) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	e.Str(string(o.Value))
 }
 
@@ -60794,6 +61081,9 @@ func (o *OptEnterpriseAdminGetAuditLogInclude) Decode(d *jx.Decoder) error {
 
 // Encode encodes EnterpriseAdminGetAuditLogOrder as json.
 func (o OptEnterpriseAdminGetAuditLogOrder) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	e.Str(string(o.Value))
 }
 
@@ -60816,6 +61106,10 @@ func (o *OptEnterpriseAdminGetAuditLogOrder) Decode(d *jx.Decoder) error {
 
 // Encode encodes EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue as json.
 func (o OptEnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
+	o.Value.Encode(e)
 }
 
 // Decode decodes EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue from json.
@@ -60834,6 +61128,9 @@ func (o *OptEnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemVal
 
 // Encode encodes EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseReq as json.
 func (o OptEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseReq) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -60856,6 +61153,9 @@ func (o *OptEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseReq) Decode(d
 
 // Encode encodes EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseReqVisibility as json.
 func (o OptEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseReqVisibility) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	e.Str(string(o.Value))
 }
 
@@ -60878,6 +61178,9 @@ func (o *OptEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseReqVisibility
 
 // Encode encodes FileCommitCommitAuthor as json.
 func (o OptFileCommitCommitAuthor) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -60900,6 +61203,9 @@ func (o *OptFileCommitCommitAuthor) Decode(d *jx.Decoder) error {
 
 // Encode encodes FileCommitCommitCommitter as json.
 func (o OptFileCommitCommitCommitter) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -60922,6 +61228,9 @@ func (o *OptFileCommitCommitCommitter) Decode(d *jx.Decoder) error {
 
 // Encode encodes FileCommitCommitTree as json.
 func (o OptFileCommitCommitTree) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -60944,6 +61253,9 @@ func (o *OptFileCommitCommitTree) Decode(d *jx.Decoder) error {
 
 // Encode encodes FileCommitCommitVerification as json.
 func (o OptFileCommitCommitVerification) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -60966,6 +61278,9 @@ func (o *OptFileCommitCommitVerification) Decode(d *jx.Decoder) error {
 
 // Encode encodes FileCommitContentLinks as json.
 func (o OptFileCommitContentLinks) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -60988,6 +61303,9 @@ func (o *OptFileCommitContentLinks) Decode(d *jx.Decoder) error {
 
 // Encode encodes float64 as json.
 func (o OptFloat64) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	e.Float64(float64(o.Value))
 }
 
@@ -61012,6 +61330,9 @@ func (o *OptFloat64) Decode(d *jx.Decoder) error {
 
 // Encode encodes ForbiddenGistBlock as json.
 func (o OptForbiddenGistBlock) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -61034,6 +61355,9 @@ func (o *OptForbiddenGistBlock) Decode(d *jx.Decoder) error {
 
 // Encode encodes FullRepositoryPermissions as json.
 func (o OptFullRepositoryPermissions) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -61056,6 +61380,9 @@ func (o *OptFullRepositoryPermissions) Decode(d *jx.Decoder) error {
 
 // Encode encodes FullRepositorySecurityAndAnalysisAdvancedSecurity as json.
 func (o OptFullRepositorySecurityAndAnalysisAdvancedSecurity) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -61078,6 +61405,9 @@ func (o *OptFullRepositorySecurityAndAnalysisAdvancedSecurity) Decode(d *jx.Deco
 
 // Encode encodes FullRepositorySecurityAndAnalysisAdvancedSecurityStatus as json.
 func (o OptFullRepositorySecurityAndAnalysisAdvancedSecurityStatus) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	e.Str(string(o.Value))
 }
 
@@ -61100,6 +61430,9 @@ func (o *OptFullRepositorySecurityAndAnalysisAdvancedSecurityStatus) Decode(d *j
 
 // Encode encodes FullRepositorySecurityAndAnalysisSecretScanning as json.
 func (o OptFullRepositorySecurityAndAnalysisSecretScanning) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -61122,6 +61455,9 @@ func (o *OptFullRepositorySecurityAndAnalysisSecretScanning) Decode(d *jx.Decode
 
 // Encode encodes FullRepositorySecurityAndAnalysisSecretScanningStatus as json.
 func (o OptFullRepositorySecurityAndAnalysisSecretScanningStatus) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	e.Str(string(o.Value))
 }
 
@@ -61144,6 +61480,9 @@ func (o *OptFullRepositorySecurityAndAnalysisSecretScanningStatus) Decode(d *jx.
 
 // Encode encodes GistHistoryChangeStatus as json.
 func (o OptGistHistoryChangeStatus) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -61166,6 +61505,10 @@ func (o *OptGistHistoryChangeStatus) Decode(d *jx.Decoder) error {
 
 // Encode encodes GistsCreateReqPublic as json.
 func (o OptGistsCreateReqPublic) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
+	o.Value.Encode(e)
 }
 
 // Decode decodes GistsCreateReqPublic from json.
@@ -61184,6 +61527,9 @@ func (o *OptGistsCreateReqPublic) Decode(d *jx.Decoder) error {
 
 // Encode encodes GitCreateCommitReqAuthor as json.
 func (o OptGitCreateCommitReqAuthor) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -61206,6 +61552,9 @@ func (o *OptGitCreateCommitReqAuthor) Decode(d *jx.Decoder) error {
 
 // Encode encodes GitCreateCommitReqCommitter as json.
 func (o OptGitCreateCommitReqCommitter) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -61228,6 +61577,9 @@ func (o *OptGitCreateCommitReqCommitter) Decode(d *jx.Decoder) error {
 
 // Encode encodes GitCreateTagReqTagger as json.
 func (o OptGitCreateTagReqTagger) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -61250,6 +61602,9 @@ func (o *OptGitCreateTagReqTagger) Decode(d *jx.Decoder) error {
 
 // Encode encodes GitCreateTreeReqTreeItemMode as json.
 func (o OptGitCreateTreeReqTreeItemMode) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	e.Str(string(o.Value))
 }
 
@@ -61272,6 +61627,9 @@ func (o *OptGitCreateTreeReqTreeItemMode) Decode(d *jx.Decoder) error {
 
 // Encode encodes GitCreateTreeReqTreeItemType as json.
 func (o OptGitCreateTreeReqTreeItemType) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	e.Str(string(o.Value))
 }
 
@@ -61294,6 +61652,9 @@ func (o *OptGitCreateTreeReqTreeItemType) Decode(d *jx.Decoder) error {
 
 // Encode encodes InstallationTokenRepositorySelection as json.
 func (o OptInstallationTokenRepositorySelection) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	e.Str(string(o.Value))
 }
 
@@ -61316,6 +61677,9 @@ func (o *OptInstallationTokenRepositorySelection) Decode(d *jx.Decoder) error {
 
 // Encode encodes int as json.
 func (o OptInt) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	e.Int(int(o.Value))
 }
 
@@ -61340,6 +61704,9 @@ func (o *OptInt) Decode(d *jx.Decoder) error {
 
 // Encode encodes int64 as json.
 func (o OptInt64) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	e.Int64(int64(o.Value))
 }
 
@@ -61364,6 +61731,9 @@ func (o *OptInt64) Decode(d *jx.Decoder) error {
 
 // Encode encodes InteractionExpiry as json.
 func (o OptInteractionExpiry) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	e.Str(string(o.Value))
 }
 
@@ -61386,6 +61756,9 @@ func (o *OptInteractionExpiry) Decode(d *jx.Decoder) error {
 
 // Encode encodes IssueComment as json.
 func (o OptIssueComment) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -61408,6 +61781,9 @@ func (o *OptIssueComment) Decode(d *jx.Decoder) error {
 
 // Encode encodes IssueEventDismissedReview as json.
 func (o OptIssueEventDismissedReview) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -61430,6 +61806,9 @@ func (o *OptIssueEventDismissedReview) Decode(d *jx.Decoder) error {
 
 // Encode encodes IssueEventLabel as json.
 func (o OptIssueEventLabel) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -61452,6 +61831,9 @@ func (o *OptIssueEventLabel) Decode(d *jx.Decoder) error {
 
 // Encode encodes IssueEventMilestone as json.
 func (o OptIssueEventMilestone) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -61474,6 +61856,9 @@ func (o *OptIssueEventMilestone) Decode(d *jx.Decoder) error {
 
 // Encode encodes IssueEventProjectCard as json.
 func (o OptIssueEventProjectCard) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -61496,6 +61881,9 @@ func (o *OptIssueEventProjectCard) Decode(d *jx.Decoder) error {
 
 // Encode encodes IssueEventRename as json.
 func (o OptIssueEventRename) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -61518,6 +61906,9 @@ func (o *OptIssueEventRename) Decode(d *jx.Decoder) error {
 
 // Encode encodes IssuePullRequest as json.
 func (o OptIssuePullRequest) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -61540,6 +61931,9 @@ func (o *OptIssuePullRequest) Decode(d *jx.Decoder) error {
 
 // Encode encodes IssueSearchResultItemPullRequest as json.
 func (o OptIssueSearchResultItemPullRequest) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -61562,6 +61956,9 @@ func (o *OptIssueSearchResultItemPullRequest) Decode(d *jx.Decoder) error {
 
 // Encode encodes IssueSimple as json.
 func (o OptIssueSimple) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -61584,6 +61981,9 @@ func (o *OptIssueSimple) Decode(d *jx.Decoder) error {
 
 // Encode encodes IssueSimplePullRequest as json.
 func (o OptIssueSimplePullRequest) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -61606,6 +62006,9 @@ func (o *OptIssueSimplePullRequest) Decode(d *jx.Decoder) error {
 
 // Encode encodes IssuesAddAssigneesReq as json.
 func (o OptIssuesAddAssigneesReq) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -61628,6 +62031,9 @@ func (o *OptIssuesAddAssigneesReq) Decode(d *jx.Decoder) error {
 
 // Encode encodes IssuesCreateMilestoneReqState as json.
 func (o OptIssuesCreateMilestoneReqState) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	e.Str(string(o.Value))
 }
 
@@ -61650,6 +62056,9 @@ func (o *OptIssuesCreateMilestoneReqState) Decode(d *jx.Decoder) error {
 
 // Encode encodes IssuesListCommentsForRepoDirection as json.
 func (o OptIssuesListCommentsForRepoDirection) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	e.Str(string(o.Value))
 }
 
@@ -61672,6 +62081,9 @@ func (o *OptIssuesListCommentsForRepoDirection) Decode(d *jx.Decoder) error {
 
 // Encode encodes IssuesListCommentsForRepoSort as json.
 func (o OptIssuesListCommentsForRepoSort) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	e.Str(string(o.Value))
 }
 
@@ -61694,6 +62106,9 @@ func (o *OptIssuesListCommentsForRepoSort) Decode(d *jx.Decoder) error {
 
 // Encode encodes IssuesListDirection as json.
 func (o OptIssuesListDirection) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	e.Str(string(o.Value))
 }
 
@@ -61716,6 +62131,9 @@ func (o *OptIssuesListDirection) Decode(d *jx.Decoder) error {
 
 // Encode encodes IssuesListFilter as json.
 func (o OptIssuesListFilter) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	e.Str(string(o.Value))
 }
 
@@ -61738,6 +62156,9 @@ func (o *OptIssuesListFilter) Decode(d *jx.Decoder) error {
 
 // Encode encodes IssuesListForAuthenticatedUserDirection as json.
 func (o OptIssuesListForAuthenticatedUserDirection) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	e.Str(string(o.Value))
 }
 
@@ -61760,6 +62181,9 @@ func (o *OptIssuesListForAuthenticatedUserDirection) Decode(d *jx.Decoder) error
 
 // Encode encodes IssuesListForAuthenticatedUserFilter as json.
 func (o OptIssuesListForAuthenticatedUserFilter) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	e.Str(string(o.Value))
 }
 
@@ -61782,6 +62206,9 @@ func (o *OptIssuesListForAuthenticatedUserFilter) Decode(d *jx.Decoder) error {
 
 // Encode encodes IssuesListForAuthenticatedUserSort as json.
 func (o OptIssuesListForAuthenticatedUserSort) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	e.Str(string(o.Value))
 }
 
@@ -61804,6 +62231,9 @@ func (o *OptIssuesListForAuthenticatedUserSort) Decode(d *jx.Decoder) error {
 
 // Encode encodes IssuesListForAuthenticatedUserState as json.
 func (o OptIssuesListForAuthenticatedUserState) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	e.Str(string(o.Value))
 }
 
@@ -61826,6 +62256,9 @@ func (o *OptIssuesListForAuthenticatedUserState) Decode(d *jx.Decoder) error {
 
 // Encode encodes IssuesListForOrgDirection as json.
 func (o OptIssuesListForOrgDirection) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	e.Str(string(o.Value))
 }
 
@@ -61848,6 +62281,9 @@ func (o *OptIssuesListForOrgDirection) Decode(d *jx.Decoder) error {
 
 // Encode encodes IssuesListForOrgFilter as json.
 func (o OptIssuesListForOrgFilter) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	e.Str(string(o.Value))
 }
 
@@ -61870,6 +62306,9 @@ func (o *OptIssuesListForOrgFilter) Decode(d *jx.Decoder) error {
 
 // Encode encodes IssuesListForOrgSort as json.
 func (o OptIssuesListForOrgSort) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	e.Str(string(o.Value))
 }
 
@@ -61892,6 +62331,9 @@ func (o *OptIssuesListForOrgSort) Decode(d *jx.Decoder) error {
 
 // Encode encodes IssuesListForOrgState as json.
 func (o OptIssuesListForOrgState) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	e.Str(string(o.Value))
 }
 
@@ -61914,6 +62356,9 @@ func (o *OptIssuesListForOrgState) Decode(d *jx.Decoder) error {
 
 // Encode encodes IssuesListForRepoDirection as json.
 func (o OptIssuesListForRepoDirection) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	e.Str(string(o.Value))
 }
 
@@ -61936,6 +62381,9 @@ func (o *OptIssuesListForRepoDirection) Decode(d *jx.Decoder) error {
 
 // Encode encodes IssuesListForRepoSort as json.
 func (o OptIssuesListForRepoSort) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	e.Str(string(o.Value))
 }
 
@@ -61958,6 +62406,9 @@ func (o *OptIssuesListForRepoSort) Decode(d *jx.Decoder) error {
 
 // Encode encodes IssuesListForRepoState as json.
 func (o OptIssuesListForRepoState) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	e.Str(string(o.Value))
 }
 
@@ -61980,6 +62431,9 @@ func (o *OptIssuesListForRepoState) Decode(d *jx.Decoder) error {
 
 // Encode encodes IssuesListMilestonesDirection as json.
 func (o OptIssuesListMilestonesDirection) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	e.Str(string(o.Value))
 }
 
@@ -62002,6 +62456,9 @@ func (o *OptIssuesListMilestonesDirection) Decode(d *jx.Decoder) error {
 
 // Encode encodes IssuesListMilestonesSort as json.
 func (o OptIssuesListMilestonesSort) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	e.Str(string(o.Value))
 }
 
@@ -62024,6 +62481,9 @@ func (o *OptIssuesListMilestonesSort) Decode(d *jx.Decoder) error {
 
 // Encode encodes IssuesListMilestonesState as json.
 func (o OptIssuesListMilestonesState) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	e.Str(string(o.Value))
 }
 
@@ -62046,6 +62506,9 @@ func (o *OptIssuesListMilestonesState) Decode(d *jx.Decoder) error {
 
 // Encode encodes IssuesListSort as json.
 func (o OptIssuesListSort) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	e.Str(string(o.Value))
 }
 
@@ -62068,6 +62531,9 @@ func (o *OptIssuesListSort) Decode(d *jx.Decoder) error {
 
 // Encode encodes IssuesListState as json.
 func (o OptIssuesListState) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	e.Str(string(o.Value))
 }
 
@@ -62090,6 +62556,9 @@ func (o *OptIssuesListState) Decode(d *jx.Decoder) error {
 
 // Encode encodes IssuesLockReq as json.
 func (o OptIssuesLockReq) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -62112,6 +62581,9 @@ func (o *OptIssuesLockReq) Decode(d *jx.Decoder) error {
 
 // Encode encodes IssuesLockReqLockReason as json.
 func (o OptIssuesLockReqLockReason) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	e.Str(string(o.Value))
 }
 
@@ -62134,6 +62606,9 @@ func (o *OptIssuesLockReqLockReason) Decode(d *jx.Decoder) error {
 
 // Encode encodes IssuesRemoveAssigneesReq as json.
 func (o OptIssuesRemoveAssigneesReq) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -62156,6 +62631,9 @@ func (o *OptIssuesRemoveAssigneesReq) Decode(d *jx.Decoder) error {
 
 // Encode encodes IssuesUpdateLabelReq as json.
 func (o OptIssuesUpdateLabelReq) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -62178,6 +62656,9 @@ func (o *OptIssuesUpdateLabelReq) Decode(d *jx.Decoder) error {
 
 // Encode encodes IssuesUpdateMilestoneReq as json.
 func (o OptIssuesUpdateMilestoneReq) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -62200,6 +62681,9 @@ func (o *OptIssuesUpdateMilestoneReq) Decode(d *jx.Decoder) error {
 
 // Encode encodes IssuesUpdateMilestoneReqState as json.
 func (o OptIssuesUpdateMilestoneReqState) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	e.Str(string(o.Value))
 }
 
@@ -62222,6 +62706,9 @@ func (o *OptIssuesUpdateMilestoneReqState) Decode(d *jx.Decoder) error {
 
 // Encode encodes IssuesUpdateReq as json.
 func (o OptIssuesUpdateReq) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -62244,6 +62731,9 @@ func (o *OptIssuesUpdateReq) Decode(d *jx.Decoder) error {
 
 // Encode encodes IssuesUpdateReqState as json.
 func (o OptIssuesUpdateReqState) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	e.Str(string(o.Value))
 }
 
@@ -62266,6 +62756,9 @@ func (o *OptIssuesUpdateReqState) Decode(d *jx.Decoder) error {
 
 // Encode encodes LinkWithType as json.
 func (o OptLinkWithType) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -62288,6 +62781,9 @@ func (o *OptLinkWithType) Decode(d *jx.Decoder) error {
 
 // Encode encodes MarkdownRenderReqMode as json.
 func (o OptMarkdownRenderReqMode) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	e.Str(string(o.Value))
 }
 
@@ -62310,6 +62806,9 @@ func (o *OptMarkdownRenderReqMode) Decode(d *jx.Decoder) error {
 
 // Encode encodes MarketplaceListingPlan as json.
 func (o OptMarketplaceListingPlan) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -62332,6 +62831,9 @@ func (o *OptMarketplaceListingPlan) Decode(d *jx.Decoder) error {
 
 // Encode encodes MergedUpstreamMergeType as json.
 func (o OptMergedUpstreamMergeType) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	e.Str(string(o.Value))
 }
 
@@ -62354,6 +62856,9 @@ func (o *OptMergedUpstreamMergeType) Decode(d *jx.Decoder) error {
 
 // Encode encodes MigrationsMapCommitAuthorReq as json.
 func (o OptMigrationsMapCommitAuthorReq) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -62376,6 +62881,9 @@ func (o *OptMigrationsMapCommitAuthorReq) Decode(d *jx.Decoder) error {
 
 // Encode encodes MigrationsStartImportReqVcs as json.
 func (o OptMigrationsStartImportReqVcs) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	e.Str(string(o.Value))
 }
 
@@ -62398,6 +62906,9 @@ func (o *OptMigrationsStartImportReqVcs) Decode(d *jx.Decoder) error {
 
 // Encode encodes MigrationsUpdateImportReq as json.
 func (o OptMigrationsUpdateImportReq) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -62420,6 +62931,9 @@ func (o *OptMigrationsUpdateImportReq) Decode(d *jx.Decoder) error {
 
 // Encode encodes MinimalRepository as json.
 func (o OptMinimalRepository) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -62442,6 +62956,9 @@ func (o *OptMinimalRepository) Decode(d *jx.Decoder) error {
 
 // Encode encodes MinimalRepositoryPermissions as json.
 func (o OptMinimalRepositoryPermissions) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -62464,6 +62981,9 @@ func (o *OptMinimalRepositoryPermissions) Decode(d *jx.Decoder) error {
 
 // Encode encodes bool as json.
 func (o OptNilBool) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	if o.Null {
 		e.Null()
 		return
@@ -62502,6 +63022,9 @@ func (o *OptNilBool) Decode(d *jx.Decoder) error {
 
 // Encode encodes CodeScanningAlertDismissedReason as json.
 func (o OptNilCodeScanningAlertDismissedReason) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	if o.Null {
 		e.Null()
 		return
@@ -62538,6 +63061,9 @@ func (o *OptNilCodeScanningAlertDismissedReason) Decode(d *jx.Decoder) error {
 
 // Encode encodes CodeScanningAlertRuleSecuritySeverityLevel as json.
 func (o OptNilCodeScanningAlertRuleSecuritySeverityLevel) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	if o.Null {
 		e.Null()
 		return
@@ -62574,6 +63100,9 @@ func (o *OptNilCodeScanningAlertRuleSecuritySeverityLevel) Decode(d *jx.Decoder)
 
 // Encode encodes CodeScanningAlertRuleSeverity as json.
 func (o OptNilCodeScanningAlertRuleSeverity) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	if o.Null {
 		e.Null()
 		return
@@ -62610,6 +63139,9 @@ func (o *OptNilCodeScanningAlertRuleSeverity) Decode(d *jx.Decoder) error {
 
 // Encode encodes CodeScanningAlertRuleSummarySeverity as json.
 func (o OptNilCodeScanningAlertRuleSummarySeverity) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	if o.Null {
 		e.Null()
 		return
@@ -62646,10 +63178,14 @@ func (o *OptNilCodeScanningAlertRuleSummarySeverity) Decode(d *jx.Decoder) error
 
 // Encode encodes CodeScanningAnalysisToolGUID as json.
 func (o OptNilCodeScanningAnalysisToolGUID) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	if o.Null {
 		e.Null()
 		return
 	}
+	o.Value.Encode(e)
 }
 
 // Decode decodes CodeScanningAnalysisToolGUID from json.
@@ -62678,10 +63214,14 @@ func (o *OptNilCodeScanningAnalysisToolGUID) Decode(d *jx.Decoder) error {
 
 // Encode encodes CodeScanningAnalysisToolVersion as json.
 func (o OptNilCodeScanningAnalysisToolVersion) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	if o.Null {
 		e.Null()
 		return
 	}
+	o.Value.Encode(e)
 }
 
 // Decode decodes CodeScanningAnalysisToolVersion from json.
@@ -62710,6 +63250,9 @@ func (o *OptNilCodeScanningAnalysisToolVersion) Decode(d *jx.Decoder) error {
 
 // Encode encodes DeploymentBranchPolicy as json.
 func (o OptNilDeploymentBranchPolicy) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	if o.Null {
 		e.Null()
 		return
@@ -62746,6 +63289,9 @@ func (o *OptNilDeploymentBranchPolicy) Decode(d *jx.Decoder) error {
 
 // Encode encodes FullRepositorySecurityAndAnalysis as json.
 func (o OptNilFullRepositorySecurityAndAnalysis) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	if o.Null {
 		e.Null()
 		return
@@ -62782,6 +63328,9 @@ func (o *OptNilFullRepositorySecurityAndAnalysis) Decode(d *jx.Decoder) error {
 
 // Encode encodes []GistHistory as json.
 func (o OptNilGistHistoryArray) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	if o.Null {
 		e.Null()
 		return
@@ -62814,6 +63363,9 @@ func (o *OptNilGistHistoryArray) Decode(d *jx.Decoder) error {
 
 // Encode encodes GistSimpleForkOf as json.
 func (o OptNilGistSimpleForkOf) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	if o.Null {
 		e.Null()
 		return
@@ -62850,6 +63402,9 @@ func (o *OptNilGistSimpleForkOf) Decode(d *jx.Decoder) error {
 
 // Encode encodes []GistSimpleForksItem as json.
 func (o OptNilGistSimpleForksItemArray) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	if o.Null {
 		e.Null()
 		return
@@ -62882,6 +63437,9 @@ func (o *OptNilGistSimpleForksItemArray) Decode(d *jx.Decoder) error {
 
 // Encode encodes int as json.
 func (o OptNilInt) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	if o.Null {
 		e.Null()
 		return
@@ -62920,10 +63478,14 @@ func (o *OptNilInt) Decode(d *jx.Decoder) error {
 
 // Encode encodes IssuesCreateReqMilestone as json.
 func (o OptNilIssuesCreateReqMilestone) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	if o.Null {
 		e.Null()
 		return
 	}
+	o.Value.Encode(e)
 }
 
 // Decode decodes IssuesCreateReqMilestone from json.
@@ -62952,10 +63514,14 @@ func (o *OptNilIssuesCreateReqMilestone) Decode(d *jx.Decoder) error {
 
 // Encode encodes IssuesUpdateReqMilestone as json.
 func (o OptNilIssuesUpdateReqMilestone) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	if o.Null {
 		e.Null()
 		return
 	}
+	o.Value.Encode(e)
 }
 
 // Decode decodes IssuesUpdateReqMilestone from json.
@@ -62984,10 +63550,14 @@ func (o *OptNilIssuesUpdateReqMilestone) Decode(d *jx.Decoder) error {
 
 // Encode encodes IssuesUpdateReqTitle as json.
 func (o OptNilIssuesUpdateReqTitle) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	if o.Null {
 		e.Null()
 		return
 	}
+	o.Value.Encode(e)
 }
 
 // Decode decodes IssuesUpdateReqTitle from json.
@@ -63016,6 +63586,9 @@ func (o *OptNilIssuesUpdateReqTitle) Decode(d *jx.Decoder) error {
 
 // Encode encodes MarketplacePurchaseMarketplacePendingChange as json.
 func (o OptNilMarketplacePurchaseMarketplacePendingChange) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	if o.Null {
 		e.Null()
 		return
@@ -63052,6 +63625,9 @@ func (o *OptNilMarketplacePurchaseMarketplacePendingChange) Decode(d *jx.Decoder
 
 // Encode encodes MinimalRepositoryLicense as json.
 func (o OptNilMinimalRepositoryLicense) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	if o.Null {
 		e.Null()
 		return
@@ -63088,6 +63664,9 @@ func (o *OptNilMinimalRepositoryLicense) Decode(d *jx.Decoder) error {
 
 // Encode encodes NullableIntegration as json.
 func (o OptNilNullableIntegration) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	if o.Null {
 		e.Null()
 		return
@@ -63124,6 +63703,9 @@ func (o *OptNilNullableIntegration) Decode(d *jx.Decoder) error {
 
 // Encode encodes NullableMinimalRepository as json.
 func (o OptNilNullableMinimalRepository) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	if o.Null {
 		e.Null()
 		return
@@ -63160,6 +63742,9 @@ func (o *OptNilNullableMinimalRepository) Decode(d *jx.Decoder) error {
 
 // Encode encodes NullableMinimalRepositoryLicense as json.
 func (o OptNilNullableMinimalRepositoryLicense) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	if o.Null {
 		e.Null()
 		return
@@ -63196,6 +63781,9 @@ func (o *OptNilNullableMinimalRepositoryLicense) Decode(d *jx.Decoder) error {
 
 // Encode encodes NullableRepository as json.
 func (o OptNilNullableRepository) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	if o.Null {
 		e.Null()
 		return
@@ -63232,6 +63820,9 @@ func (o *OptNilNullableRepository) Decode(d *jx.Decoder) error {
 
 // Encode encodes NullableRepositoryTemplateRepository as json.
 func (o OptNilNullableRepositoryTemplateRepository) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	if o.Null {
 		e.Null()
 		return
@@ -63268,6 +63859,9 @@ func (o *OptNilNullableRepositoryTemplateRepository) Decode(d *jx.Decoder) error
 
 // Encode encodes NullableScopedInstallation as json.
 func (o OptNilNullableScopedInstallation) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	if o.Null {
 		e.Null()
 		return
@@ -63304,6 +63898,9 @@ func (o *OptNilNullableScopedInstallation) Decode(d *jx.Decoder) error {
 
 // Encode encodes NullableSimpleUser as json.
 func (o OptNilNullableSimpleUser) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	if o.Null {
 		e.Null()
 		return
@@ -63340,6 +63937,9 @@ func (o *OptNilNullableSimpleUser) Decode(d *jx.Decoder) error {
 
 // Encode encodes NullableTeamSimple as json.
 func (o OptNilNullableTeamSimple) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	if o.Null {
 		e.Null()
 		return
@@ -63376,6 +63976,9 @@ func (o *OptNilNullableTeamSimple) Decode(d *jx.Decoder) error {
 
 // Encode encodes PageProtectedDomainState as json.
 func (o OptNilPageProtectedDomainState) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	if o.Null {
 		e.Null()
 		return
@@ -63412,6 +64015,9 @@ func (o *OptNilPageProtectedDomainState) Decode(d *jx.Decoder) error {
 
 // Encode encodes PagesHealthCheckAltDomain as json.
 func (o OptNilPagesHealthCheckAltDomain) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	if o.Null {
 		e.Null()
 		return
@@ -63448,6 +64054,9 @@ func (o *OptNilPagesHealthCheckAltDomain) Decode(d *jx.Decoder) error {
 
 // Encode encodes PullRequestReviewCommentStartSide as json.
 func (o OptNilPullRequestReviewCommentStartSide) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	if o.Null {
 		e.Null()
 		return
@@ -63484,6 +64093,9 @@ func (o *OptNilPullRequestReviewCommentStartSide) Decode(d *jx.Decoder) error {
 
 // Encode encodes []ReposCreateOrUpdateEnvironmentReqReviewersItem as json.
 func (o OptNilReposCreateOrUpdateEnvironmentReqReviewersItemArray) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	if o.Null {
 		e.Null()
 		return
@@ -63516,6 +64128,9 @@ func (o *OptNilReposCreateOrUpdateEnvironmentReqReviewersItemArray) Decode(d *jx
 
 // Encode encodes ReposUpdateReqSecurityAndAnalysis as json.
 func (o OptNilReposUpdateReqSecurityAndAnalysis) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	if o.Null {
 		e.Null()
 		return
@@ -63552,6 +64167,9 @@ func (o *OptNilReposUpdateReqSecurityAndAnalysis) Decode(d *jx.Decoder) error {
 
 // Encode encodes RepositoryTemplateRepository as json.
 func (o OptNilRepositoryTemplateRepository) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	if o.Null {
 		e.Null()
 		return
@@ -63588,6 +64206,9 @@ func (o *OptNilRepositoryTemplateRepository) Decode(d *jx.Decoder) error {
 
 // Encode encodes ReviewCommentStartSide as json.
 func (o OptNilReviewCommentStartSide) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	if o.Null {
 		e.Null()
 		return
@@ -63624,6 +64245,9 @@ func (o *OptNilReviewCommentStartSide) Decode(d *jx.Decoder) error {
 
 // Encode encodes SecretScanningAlertResolution as json.
 func (o OptNilSecretScanningAlertResolution) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	if o.Null {
 		e.Null()
 		return
@@ -63660,6 +64284,9 @@ func (o *OptNilSecretScanningAlertResolution) Decode(d *jx.Decoder) error {
 
 // Encode encodes []SimpleUser as json.
 func (o OptNilSimpleUserArray) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	if o.Null {
 		e.Null()
 		return
@@ -63692,6 +64319,9 @@ func (o *OptNilSimpleUserArray) Decode(d *jx.Decoder) error {
 
 // Encode encodes string as json.
 func (o OptNilString) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	if o.Null {
 		e.Null()
 		return
@@ -63730,6 +64360,9 @@ func (o *OptNilString) Decode(d *jx.Decoder) error {
 
 // Encode encodes []string as json.
 func (o OptNilStringArray) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	if o.Null {
 		e.Null()
 		return
@@ -63762,6 +64395,9 @@ func (o *OptNilStringArray) Decode(d *jx.Decoder) error {
 
 // Encode encodes []Team as json.
 func (o OptNilTeamArray) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	if o.Null {
 		e.Null()
 		return
@@ -63794,6 +64430,9 @@ func (o *OptNilTeamArray) Decode(d *jx.Decoder) error {
 
 // Encode encodes []TeamSimple as json.
 func (o OptNilTeamSimpleArray) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	if o.Null {
 		e.Null()
 		return
@@ -63826,6 +64465,9 @@ func (o *OptNilTeamSimpleArray) Decode(d *jx.Decoder) error {
 
 // Encode encodes time.Time as json.
 func (o OptNilTime) Encode(e *jx.Writer, format func(*jx.Writer, time.Time)) {
+	if !o.Set {
+		return
+	}
 	if o.Null {
 		e.Null()
 		return
@@ -63864,6 +64506,9 @@ func (o *OptNilTime) Decode(d *jx.Decoder, format func(*jx.Decoder) (time.Time, 
 
 // Encode encodes []TopicSearchResultItemAliasesItem as json.
 func (o OptNilTopicSearchResultItemAliasesItemArray) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	if o.Null {
 		e.Null()
 		return
@@ -63896,6 +64541,9 @@ func (o *OptNilTopicSearchResultItemAliasesItemArray) Decode(d *jx.Decoder) erro
 
 // Encode encodes []TopicSearchResultItemRelatedItem as json.
 func (o OptNilTopicSearchResultItemRelatedItemArray) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	if o.Null {
 		e.Null()
 		return
@@ -63928,6 +64576,9 @@ func (o *OptNilTopicSearchResultItemRelatedItemArray) Decode(d *jx.Decoder) erro
 
 // Encode encodes url.URL as json.
 func (o OptNilURL) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	if o.Null {
 		e.Null()
 		return
@@ -63966,6 +64617,9 @@ func (o *OptNilURL) Decode(d *jx.Decoder) error {
 
 // Encode encodes NullableMinimalRepositoryPermissions as json.
 func (o OptNullableMinimalRepositoryPermissions) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -63988,6 +64642,9 @@ func (o *OptNullableMinimalRepositoryPermissions) Decode(d *jx.Decoder) error {
 
 // Encode encodes NullableRepositoryPermissions as json.
 func (o OptNullableRepositoryPermissions) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -64010,6 +64667,9 @@ func (o *OptNullableRepositoryPermissions) Decode(d *jx.Decoder) error {
 
 // Encode encodes NullableRepositoryTemplateRepositoryOwner as json.
 func (o OptNullableRepositoryTemplateRepositoryOwner) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -64032,6 +64692,9 @@ func (o *OptNullableRepositoryTemplateRepositoryOwner) Decode(d *jx.Decoder) err
 
 // Encode encodes NullableRepositoryTemplateRepositoryPermissions as json.
 func (o OptNullableRepositoryTemplateRepositoryPermissions) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -64054,6 +64717,9 @@ func (o *OptNullableRepositoryTemplateRepositoryPermissions) Decode(d *jx.Decode
 
 // Encode encodes OAuthAuthorizationsCreateAuthorizationReq as json.
 func (o OptOAuthAuthorizationsCreateAuthorizationReq) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -64076,6 +64742,9 @@ func (o *OptOAuthAuthorizationsCreateAuthorizationReq) Decode(d *jx.Decoder) err
 
 // Encode encodes OAuthAuthorizationsUpdateAuthorizationReq as json.
 func (o OptOAuthAuthorizationsUpdateAuthorizationReq) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -64098,6 +64767,9 @@ func (o *OptOAuthAuthorizationsUpdateAuthorizationReq) Decode(d *jx.Decoder) err
 
 // Encode encodes OrgMembershipPermissions as json.
 func (o OptOrgMembershipPermissions) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -64120,6 +64792,9 @@ func (o *OptOrgMembershipPermissions) Decode(d *jx.Decoder) error {
 
 // Encode encodes OrganizationFullPlan as json.
 func (o OptOrganizationFullPlan) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -64142,6 +64817,9 @@ func (o *OptOrganizationFullPlan) Decode(d *jx.Decoder) error {
 
 // Encode encodes OrgsCreateInvitationReq as json.
 func (o OptOrgsCreateInvitationReq) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -64164,6 +64842,9 @@ func (o *OptOrgsCreateInvitationReq) Decode(d *jx.Decoder) error {
 
 // Encode encodes OrgsCreateInvitationReqRole as json.
 func (o OptOrgsCreateInvitationReqRole) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	e.Str(string(o.Value))
 }
 
@@ -64186,6 +64867,9 @@ func (o *OptOrgsCreateInvitationReqRole) Decode(d *jx.Decoder) error {
 
 // Encode encodes OrgsGetAuditLogInclude as json.
 func (o OptOrgsGetAuditLogInclude) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	e.Str(string(o.Value))
 }
 
@@ -64208,6 +64892,9 @@ func (o *OptOrgsGetAuditLogInclude) Decode(d *jx.Decoder) error {
 
 // Encode encodes OrgsGetAuditLogOrder as json.
 func (o OptOrgsGetAuditLogOrder) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	e.Str(string(o.Value))
 }
 
@@ -64230,6 +64917,9 @@ func (o *OptOrgsGetAuditLogOrder) Decode(d *jx.Decoder) error {
 
 // Encode encodes OrgsListMembersFilter as json.
 func (o OptOrgsListMembersFilter) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	e.Str(string(o.Value))
 }
 
@@ -64252,6 +64942,9 @@ func (o *OptOrgsListMembersFilter) Decode(d *jx.Decoder) error {
 
 // Encode encodes OrgsListMembersRole as json.
 func (o OptOrgsListMembersRole) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	e.Str(string(o.Value))
 }
 
@@ -64274,6 +64967,9 @@ func (o *OptOrgsListMembersRole) Decode(d *jx.Decoder) error {
 
 // Encode encodes OrgsListMembershipsForAuthenticatedUserState as json.
 func (o OptOrgsListMembershipsForAuthenticatedUserState) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	e.Str(string(o.Value))
 }
 
@@ -64296,6 +64992,9 @@ func (o *OptOrgsListMembershipsForAuthenticatedUserState) Decode(d *jx.Decoder) 
 
 // Encode encodes OrgsListOutsideCollaboratorsFilter as json.
 func (o OptOrgsListOutsideCollaboratorsFilter) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	e.Str(string(o.Value))
 }
 
@@ -64318,6 +65017,9 @@ func (o *OptOrgsListOutsideCollaboratorsFilter) Decode(d *jx.Decoder) error {
 
 // Encode encodes OrgsSetMembershipForUserReq as json.
 func (o OptOrgsSetMembershipForUserReq) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -64340,6 +65042,9 @@ func (o *OptOrgsSetMembershipForUserReq) Decode(d *jx.Decoder) error {
 
 // Encode encodes OrgsSetMembershipForUserReqRole as json.
 func (o OptOrgsSetMembershipForUserReqRole) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	e.Str(string(o.Value))
 }
 
@@ -64362,6 +65067,9 @@ func (o *OptOrgsSetMembershipForUserReqRole) Decode(d *jx.Decoder) error {
 
 // Encode encodes OrgsUpdateReq as json.
 func (o OptOrgsUpdateReq) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -64384,6 +65092,9 @@ func (o *OptOrgsUpdateReq) Decode(d *jx.Decoder) error {
 
 // Encode encodes OrgsUpdateReqDefaultRepositoryPermission as json.
 func (o OptOrgsUpdateReqDefaultRepositoryPermission) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	e.Str(string(o.Value))
 }
 
@@ -64406,6 +65117,9 @@ func (o *OptOrgsUpdateReqDefaultRepositoryPermission) Decode(d *jx.Decoder) erro
 
 // Encode encodes OrgsUpdateReqMembersAllowedRepositoryCreationType as json.
 func (o OptOrgsUpdateReqMembersAllowedRepositoryCreationType) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	e.Str(string(o.Value))
 }
 
@@ -64428,6 +65142,9 @@ func (o *OptOrgsUpdateReqMembersAllowedRepositoryCreationType) Decode(d *jx.Deco
 
 // Encode encodes OrgsUpdateWebhookConfigForOrgReq as json.
 func (o OptOrgsUpdateWebhookConfigForOrgReq) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -64450,6 +65167,9 @@ func (o *OptOrgsUpdateWebhookConfigForOrgReq) Decode(d *jx.Decoder) error {
 
 // Encode encodes OrgsUpdateWebhookReq as json.
 func (o OptOrgsUpdateWebhookReq) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -64472,6 +65192,9 @@ func (o *OptOrgsUpdateWebhookReq) Decode(d *jx.Decoder) error {
 
 // Encode encodes OrgsUpdateWebhookReqConfig as json.
 func (o OptOrgsUpdateWebhookReqConfig) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -64494,6 +65217,9 @@ func (o *OptOrgsUpdateWebhookReqConfig) Decode(d *jx.Decoder) error {
 
 // Encode encodes PackageVersionMetadata as json.
 func (o OptPackageVersionMetadata) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -64516,6 +65242,9 @@ func (o *OptPackageVersionMetadata) Decode(d *jx.Decoder) error {
 
 // Encode encodes PackageVersionMetadataContainer as json.
 func (o OptPackageVersionMetadataContainer) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -64538,6 +65267,9 @@ func (o *OptPackageVersionMetadataContainer) Decode(d *jx.Decoder) error {
 
 // Encode encodes PackageVersionMetadataDocker as json.
 func (o OptPackageVersionMetadataDocker) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -64560,6 +65292,9 @@ func (o *OptPackageVersionMetadataDocker) Decode(d *jx.Decoder) error {
 
 // Encode encodes PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserState as json.
 func (o OptPackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserState) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	e.Str(string(o.Value))
 }
 
@@ -64582,6 +65317,9 @@ func (o *OptPackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserState
 
 // Encode encodes PackagesGetAllPackageVersionsForPackageOwnedByOrgState as json.
 func (o OptPackagesGetAllPackageVersionsForPackageOwnedByOrgState) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	e.Str(string(o.Value))
 }
 
@@ -64604,6 +65342,9 @@ func (o *OptPackagesGetAllPackageVersionsForPackageOwnedByOrgState) Decode(d *jx
 
 // Encode encodes PackagesListPackagesForAuthenticatedUserVisibility as json.
 func (o OptPackagesListPackagesForAuthenticatedUserVisibility) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	e.Str(string(o.Value))
 }
 
@@ -64626,6 +65367,9 @@ func (o *OptPackagesListPackagesForAuthenticatedUserVisibility) Decode(d *jx.Dec
 
 // Encode encodes PackagesListPackagesForOrganizationVisibility as json.
 func (o OptPackagesListPackagesForOrganizationVisibility) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	e.Str(string(o.Value))
 }
 
@@ -64648,6 +65392,9 @@ func (o *OptPackagesListPackagesForOrganizationVisibility) Decode(d *jx.Decoder)
 
 // Encode encodes PackagesListPackagesForUserVisibility as json.
 func (o OptPackagesListPackagesForUserVisibility) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	e.Str(string(o.Value))
 }
 
@@ -64670,6 +65417,9 @@ func (o *OptPackagesListPackagesForUserVisibility) Decode(d *jx.Decoder) error {
 
 // Encode encodes PagesHTTPSCertificate as json.
 func (o OptPagesHTTPSCertificate) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -64692,6 +65442,9 @@ func (o *OptPagesHTTPSCertificate) Decode(d *jx.Decoder) error {
 
 // Encode encodes PagesHealthCheckDomain as json.
 func (o OptPagesHealthCheckDomain) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -64714,6 +65467,9 @@ func (o *OptPagesHealthCheckDomain) Decode(d *jx.Decoder) error {
 
 // Encode encodes PagesSourceHash as json.
 func (o OptPagesSourceHash) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -64736,6 +65492,9 @@ func (o *OptPagesSourceHash) Decode(d *jx.Decoder) error {
 
 // Encode encodes PrivateUserPlan as json.
 func (o OptPrivateUserPlan) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -64758,6 +65517,9 @@ func (o *OptPrivateUserPlan) Decode(d *jx.Decoder) error {
 
 // Encode encodes ProjectOrganizationPermission as json.
 func (o OptProjectOrganizationPermission) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	e.Str(string(o.Value))
 }
 
@@ -64780,6 +65542,9 @@ func (o *OptProjectOrganizationPermission) Decode(d *jx.Decoder) error {
 
 // Encode encodes ProjectsAddCollaboratorReq as json.
 func (o OptProjectsAddCollaboratorReq) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -64802,6 +65567,9 @@ func (o *OptProjectsAddCollaboratorReq) Decode(d *jx.Decoder) error {
 
 // Encode encodes ProjectsAddCollaboratorReqPermission as json.
 func (o OptProjectsAddCollaboratorReqPermission) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	e.Str(string(o.Value))
 }
 
@@ -64824,6 +65592,9 @@ func (o *OptProjectsAddCollaboratorReqPermission) Decode(d *jx.Decoder) error {
 
 // Encode encodes ProjectsListCardsArchivedState as json.
 func (o OptProjectsListCardsArchivedState) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	e.Str(string(o.Value))
 }
 
@@ -64846,6 +65617,9 @@ func (o *OptProjectsListCardsArchivedState) Decode(d *jx.Decoder) error {
 
 // Encode encodes ProjectsListCollaboratorsAffiliation as json.
 func (o OptProjectsListCollaboratorsAffiliation) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	e.Str(string(o.Value))
 }
 
@@ -64868,6 +65642,9 @@ func (o *OptProjectsListCollaboratorsAffiliation) Decode(d *jx.Decoder) error {
 
 // Encode encodes ProjectsListForOrgState as json.
 func (o OptProjectsListForOrgState) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	e.Str(string(o.Value))
 }
 
@@ -64890,6 +65667,9 @@ func (o *OptProjectsListForOrgState) Decode(d *jx.Decoder) error {
 
 // Encode encodes ProjectsListForRepoState as json.
 func (o OptProjectsListForRepoState) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	e.Str(string(o.Value))
 }
 
@@ -64912,6 +65692,9 @@ func (o *OptProjectsListForRepoState) Decode(d *jx.Decoder) error {
 
 // Encode encodes ProjectsListForUserState as json.
 func (o OptProjectsListForUserState) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	e.Str(string(o.Value))
 }
 
@@ -64934,6 +65717,9 @@ func (o *OptProjectsListForUserState) Decode(d *jx.Decoder) error {
 
 // Encode encodes ProjectsUpdateCardReq as json.
 func (o OptProjectsUpdateCardReq) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -64956,6 +65742,9 @@ func (o *OptProjectsUpdateCardReq) Decode(d *jx.Decoder) error {
 
 // Encode encodes ProjectsUpdateReq as json.
 func (o OptProjectsUpdateReq) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -64978,6 +65767,9 @@ func (o *OptProjectsUpdateReq) Decode(d *jx.Decoder) error {
 
 // Encode encodes ProjectsUpdateReqOrganizationPermission as json.
 func (o OptProjectsUpdateReqOrganizationPermission) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	e.Str(string(o.Value))
 }
 
@@ -65000,6 +65792,9 @@ func (o *OptProjectsUpdateReqOrganizationPermission) Decode(d *jx.Decoder) error
 
 // Encode encodes ProtectedBranchAdminEnforced as json.
 func (o OptProtectedBranchAdminEnforced) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -65022,6 +65817,9 @@ func (o *OptProtectedBranchAdminEnforced) Decode(d *jx.Decoder) error {
 
 // Encode encodes ProtectedBranchAllowDeletions as json.
 func (o OptProtectedBranchAllowDeletions) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -65044,6 +65842,9 @@ func (o *OptProtectedBranchAllowDeletions) Decode(d *jx.Decoder) error {
 
 // Encode encodes ProtectedBranchAllowForcePushes as json.
 func (o OptProtectedBranchAllowForcePushes) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -65066,6 +65867,9 @@ func (o *OptProtectedBranchAllowForcePushes) Decode(d *jx.Decoder) error {
 
 // Encode encodes ProtectedBranchEnforceAdmins as json.
 func (o OptProtectedBranchEnforceAdmins) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -65088,6 +65892,9 @@ func (o *OptProtectedBranchEnforceAdmins) Decode(d *jx.Decoder) error {
 
 // Encode encodes ProtectedBranchPullRequestReview as json.
 func (o OptProtectedBranchPullRequestReview) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -65110,6 +65917,9 @@ func (o *OptProtectedBranchPullRequestReview) Decode(d *jx.Decoder) error {
 
 // Encode encodes ProtectedBranchPullRequestReviewDismissalRestrictions as json.
 func (o OptProtectedBranchPullRequestReviewDismissalRestrictions) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -65132,6 +65942,9 @@ func (o *OptProtectedBranchPullRequestReviewDismissalRestrictions) Decode(d *jx.
 
 // Encode encodes ProtectedBranchRequiredConversationResolution as json.
 func (o OptProtectedBranchRequiredConversationResolution) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -65154,6 +65967,9 @@ func (o *OptProtectedBranchRequiredConversationResolution) Decode(d *jx.Decoder)
 
 // Encode encodes ProtectedBranchRequiredLinearHistory as json.
 func (o OptProtectedBranchRequiredLinearHistory) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -65176,6 +65992,9 @@ func (o *OptProtectedBranchRequiredLinearHistory) Decode(d *jx.Decoder) error {
 
 // Encode encodes ProtectedBranchRequiredPullRequestReviews as json.
 func (o OptProtectedBranchRequiredPullRequestReviews) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -65198,6 +66017,9 @@ func (o *OptProtectedBranchRequiredPullRequestReviews) Decode(d *jx.Decoder) err
 
 // Encode encodes ProtectedBranchRequiredPullRequestReviewsDismissalRestrictions as json.
 func (o OptProtectedBranchRequiredPullRequestReviewsDismissalRestrictions) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -65220,6 +66042,9 @@ func (o *OptProtectedBranchRequiredPullRequestReviewsDismissalRestrictions) Deco
 
 // Encode encodes ProtectedBranchRequiredSignatures as json.
 func (o OptProtectedBranchRequiredSignatures) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -65242,6 +66067,9 @@ func (o *OptProtectedBranchRequiredSignatures) Decode(d *jx.Decoder) error {
 
 // Encode encodes PublicUser as json.
 func (o OptPublicUser) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -65264,6 +66092,9 @@ func (o *OptPublicUser) Decode(d *jx.Decoder) error {
 
 // Encode encodes PublicUserPlan as json.
 func (o OptPublicUserPlan) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -65286,6 +66117,9 @@ func (o *OptPublicUserPlan) Decode(d *jx.Decoder) error {
 
 // Encode encodes PullRequestBaseRepoPermissions as json.
 func (o OptPullRequestBaseRepoPermissions) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -65308,6 +66142,9 @@ func (o *OptPullRequestBaseRepoPermissions) Decode(d *jx.Decoder) error {
 
 // Encode encodes PullRequestHeadRepoPermissions as json.
 func (o OptPullRequestHeadRepoPermissions) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -65330,6 +66167,9 @@ func (o *OptPullRequestHeadRepoPermissions) Decode(d *jx.Decoder) error {
 
 // Encode encodes PullRequestReviewCommentSide as json.
 func (o OptPullRequestReviewCommentSide) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	e.Str(string(o.Value))
 }
 
@@ -65352,6 +66192,9 @@ func (o *OptPullRequestReviewCommentSide) Decode(d *jx.Decoder) error {
 
 // Encode encodes PullsCreateReviewCommentReqSide as json.
 func (o OptPullsCreateReviewCommentReqSide) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	e.Str(string(o.Value))
 }
 
@@ -65374,6 +66217,9 @@ func (o *OptPullsCreateReviewCommentReqSide) Decode(d *jx.Decoder) error {
 
 // Encode encodes PullsCreateReviewCommentReqStartSide as json.
 func (o OptPullsCreateReviewCommentReqStartSide) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	e.Str(string(o.Value))
 }
 
@@ -65396,6 +66242,9 @@ func (o *OptPullsCreateReviewCommentReqStartSide) Decode(d *jx.Decoder) error {
 
 // Encode encodes PullsCreateReviewReq as json.
 func (o OptPullsCreateReviewReq) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -65418,6 +66267,9 @@ func (o *OptPullsCreateReviewReq) Decode(d *jx.Decoder) error {
 
 // Encode encodes PullsCreateReviewReqEvent as json.
 func (o OptPullsCreateReviewReqEvent) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	e.Str(string(o.Value))
 }
 
@@ -65440,6 +66292,9 @@ func (o *OptPullsCreateReviewReqEvent) Decode(d *jx.Decoder) error {
 
 // Encode encodes PullsListDirection as json.
 func (o OptPullsListDirection) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	e.Str(string(o.Value))
 }
 
@@ -65462,6 +66317,9 @@ func (o *OptPullsListDirection) Decode(d *jx.Decoder) error {
 
 // Encode encodes PullsListReviewCommentsDirection as json.
 func (o OptPullsListReviewCommentsDirection) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	e.Str(string(o.Value))
 }
 
@@ -65484,6 +66342,9 @@ func (o *OptPullsListReviewCommentsDirection) Decode(d *jx.Decoder) error {
 
 // Encode encodes PullsListReviewCommentsForRepoDirection as json.
 func (o OptPullsListReviewCommentsForRepoDirection) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	e.Str(string(o.Value))
 }
 
@@ -65506,6 +66367,9 @@ func (o *OptPullsListReviewCommentsForRepoDirection) Decode(d *jx.Decoder) error
 
 // Encode encodes PullsListReviewCommentsForRepoSort as json.
 func (o OptPullsListReviewCommentsForRepoSort) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	e.Str(string(o.Value))
 }
 
@@ -65528,6 +66392,9 @@ func (o *OptPullsListReviewCommentsForRepoSort) Decode(d *jx.Decoder) error {
 
 // Encode encodes PullsListReviewCommentsSort as json.
 func (o OptPullsListReviewCommentsSort) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	e.Str(string(o.Value))
 }
 
@@ -65550,6 +66417,9 @@ func (o *OptPullsListReviewCommentsSort) Decode(d *jx.Decoder) error {
 
 // Encode encodes PullsListSort as json.
 func (o OptPullsListSort) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	e.Str(string(o.Value))
 }
 
@@ -65572,6 +66442,9 @@ func (o *OptPullsListSort) Decode(d *jx.Decoder) error {
 
 // Encode encodes PullsListState as json.
 func (o OptPullsListState) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	e.Str(string(o.Value))
 }
 
@@ -65594,6 +66467,9 @@ func (o *OptPullsListState) Decode(d *jx.Decoder) error {
 
 // Encode encodes PullsMergeReq as json.
 func (o OptPullsMergeReq) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -65616,6 +66492,9 @@ func (o *OptPullsMergeReq) Decode(d *jx.Decoder) error {
 
 // Encode encodes PullsMergeReqMergeMethod as json.
 func (o OptPullsMergeReqMergeMethod) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	e.Str(string(o.Value))
 }
 
@@ -65638,6 +66517,9 @@ func (o *OptPullsMergeReqMergeMethod) Decode(d *jx.Decoder) error {
 
 // Encode encodes PullsUpdateBranchReq as json.
 func (o OptPullsUpdateBranchReq) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -65660,6 +66542,9 @@ func (o *OptPullsUpdateBranchReq) Decode(d *jx.Decoder) error {
 
 // Encode encodes PullsUpdateReq as json.
 func (o OptPullsUpdateReq) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -65682,6 +66567,9 @@ func (o *OptPullsUpdateReq) Decode(d *jx.Decoder) error {
 
 // Encode encodes PullsUpdateReqState as json.
 func (o OptPullsUpdateReqState) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	e.Str(string(o.Value))
 }
 
@@ -65704,6 +66592,9 @@ func (o *OptPullsUpdateReqState) Decode(d *jx.Decoder) error {
 
 // Encode encodes RateLimit as json.
 func (o OptRateLimit) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -65726,6 +66617,9 @@ func (o *OptRateLimit) Decode(d *jx.Decoder) error {
 
 // Encode encodes ReactionRollup as json.
 func (o OptReactionRollup) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -65748,6 +66642,9 @@ func (o *OptReactionRollup) Decode(d *jx.Decoder) error {
 
 // Encode encodes ReactionsListForCommitCommentContent as json.
 func (o OptReactionsListForCommitCommentContent) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	e.Str(string(o.Value))
 }
 
@@ -65770,6 +66667,9 @@ func (o *OptReactionsListForCommitCommentContent) Decode(d *jx.Decoder) error {
 
 // Encode encodes ReactionsListForIssueCommentContent as json.
 func (o OptReactionsListForIssueCommentContent) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	e.Str(string(o.Value))
 }
 
@@ -65792,6 +66692,9 @@ func (o *OptReactionsListForIssueCommentContent) Decode(d *jx.Decoder) error {
 
 // Encode encodes ReactionsListForIssueContent as json.
 func (o OptReactionsListForIssueContent) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	e.Str(string(o.Value))
 }
 
@@ -65814,6 +66717,9 @@ func (o *OptReactionsListForIssueContent) Decode(d *jx.Decoder) error {
 
 // Encode encodes ReactionsListForPullRequestReviewCommentContent as json.
 func (o OptReactionsListForPullRequestReviewCommentContent) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	e.Str(string(o.Value))
 }
 
@@ -65836,6 +66742,9 @@ func (o *OptReactionsListForPullRequestReviewCommentContent) Decode(d *jx.Decode
 
 // Encode encodes ReactionsListForTeamDiscussionCommentInOrgContent as json.
 func (o OptReactionsListForTeamDiscussionCommentInOrgContent) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	e.Str(string(o.Value))
 }
 
@@ -65858,6 +66767,9 @@ func (o *OptReactionsListForTeamDiscussionCommentInOrgContent) Decode(d *jx.Deco
 
 // Encode encodes ReactionsListForTeamDiscussionCommentLegacyContent as json.
 func (o OptReactionsListForTeamDiscussionCommentLegacyContent) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	e.Str(string(o.Value))
 }
 
@@ -65880,6 +66792,9 @@ func (o *OptReactionsListForTeamDiscussionCommentLegacyContent) Decode(d *jx.Dec
 
 // Encode encodes ReactionsListForTeamDiscussionInOrgContent as json.
 func (o OptReactionsListForTeamDiscussionInOrgContent) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	e.Str(string(o.Value))
 }
 
@@ -65902,6 +66817,9 @@ func (o *OptReactionsListForTeamDiscussionInOrgContent) Decode(d *jx.Decoder) er
 
 // Encode encodes ReactionsListForTeamDiscussionLegacyContent as json.
 func (o OptReactionsListForTeamDiscussionLegacyContent) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	e.Str(string(o.Value))
 }
 
@@ -65924,6 +66842,9 @@ func (o *OptReactionsListForTeamDiscussionLegacyContent) Decode(d *jx.Decoder) e
 
 // Encode encodes RepoSearchResultItemPermissions as json.
 func (o OptRepoSearchResultItemPermissions) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -65946,6 +66867,10 @@ func (o *OptRepoSearchResultItemPermissions) Decode(d *jx.Decoder) error {
 
 // Encode encodes ReposAddAppAccessRestrictionsReq as json.
 func (o OptReposAddAppAccessRestrictionsReq) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
+	o.Value.Encode(e)
 }
 
 // Decode decodes ReposAddAppAccessRestrictionsReq from json.
@@ -65964,6 +66889,9 @@ func (o *OptReposAddAppAccessRestrictionsReq) Decode(d *jx.Decoder) error {
 
 // Encode encodes ReposAddCollaboratorReq as json.
 func (o OptReposAddCollaboratorReq) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -65986,6 +66914,9 @@ func (o *OptReposAddCollaboratorReq) Decode(d *jx.Decoder) error {
 
 // Encode encodes ReposAddCollaboratorReqPermission as json.
 func (o OptReposAddCollaboratorReqPermission) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	e.Str(string(o.Value))
 }
 
@@ -66008,6 +66939,10 @@ func (o *OptReposAddCollaboratorReqPermission) Decode(d *jx.Decoder) error {
 
 // Encode encodes ReposAddStatusCheckContextsReq as json.
 func (o OptReposAddStatusCheckContextsReq) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
+	o.Value.Encode(e)
 }
 
 // Decode decodes ReposAddStatusCheckContextsReq from json.
@@ -66026,6 +66961,10 @@ func (o *OptReposAddStatusCheckContextsReq) Decode(d *jx.Decoder) error {
 
 // Encode encodes ReposAddTeamAccessRestrictionsReq as json.
 func (o OptReposAddTeamAccessRestrictionsReq) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
+	o.Value.Encode(e)
 }
 
 // Decode decodes ReposAddTeamAccessRestrictionsReq from json.
@@ -66044,6 +66983,10 @@ func (o *OptReposAddTeamAccessRestrictionsReq) Decode(d *jx.Decoder) error {
 
 // Encode encodes ReposAddUserAccessRestrictionsReq as json.
 func (o OptReposAddUserAccessRestrictionsReq) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
+	o.Value.Encode(e)
 }
 
 // Decode decodes ReposAddUserAccessRestrictionsReq from json.
@@ -66062,6 +67005,10 @@ func (o *OptReposAddUserAccessRestrictionsReq) Decode(d *jx.Decoder) error {
 
 // Encode encodes ReposCreateDeploymentReqPayload as json.
 func (o OptReposCreateDeploymentReqPayload) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
+	o.Value.Encode(e)
 }
 
 // Decode decodes ReposCreateDeploymentReqPayload from json.
@@ -66080,6 +67027,9 @@ func (o *OptReposCreateDeploymentReqPayload) Decode(d *jx.Decoder) error {
 
 // Encode encodes ReposCreateDeploymentStatusReqEnvironment as json.
 func (o OptReposCreateDeploymentStatusReqEnvironment) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	e.Str(string(o.Value))
 }
 
@@ -66102,6 +67052,9 @@ func (o *OptReposCreateDeploymentStatusReqEnvironment) Decode(d *jx.Decoder) err
 
 // Encode encodes ReposCreateForkReq as json.
 func (o OptReposCreateForkReq) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -66124,6 +67077,9 @@ func (o *OptReposCreateForkReq) Decode(d *jx.Decoder) error {
 
 // Encode encodes ReposCreateInOrgReqVisibility as json.
 func (o OptReposCreateInOrgReqVisibility) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	e.Str(string(o.Value))
 }
 
@@ -66146,6 +67102,9 @@ func (o *OptReposCreateInOrgReqVisibility) Decode(d *jx.Decoder) error {
 
 // Encode encodes ReposCreateOrUpdateEnvironmentReq as json.
 func (o OptReposCreateOrUpdateEnvironmentReq) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -66168,6 +67127,9 @@ func (o *OptReposCreateOrUpdateEnvironmentReq) Decode(d *jx.Decoder) error {
 
 // Encode encodes ReposCreateOrUpdateFileContentsReqAuthor as json.
 func (o OptReposCreateOrUpdateFileContentsReqAuthor) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -66190,6 +67152,9 @@ func (o *OptReposCreateOrUpdateFileContentsReqAuthor) Decode(d *jx.Decoder) erro
 
 // Encode encodes ReposCreateOrUpdateFileContentsReqCommitter as json.
 func (o OptReposCreateOrUpdateFileContentsReqCommitter) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -66212,6 +67177,9 @@ func (o *OptReposCreateOrUpdateFileContentsReqCommitter) Decode(d *jx.Decoder) e
 
 // Encode encodes ReposCreatePagesSiteReqSourcePath as json.
 func (o OptReposCreatePagesSiteReqSourcePath) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	e.Str(string(o.Value))
 }
 
@@ -66234,6 +67202,9 @@ func (o *OptReposCreatePagesSiteReqSourcePath) Decode(d *jx.Decoder) error {
 
 // Encode encodes ReposCreateWebhookReq as json.
 func (o OptReposCreateWebhookReq) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -66256,6 +67227,9 @@ func (o *OptReposCreateWebhookReq) Decode(d *jx.Decoder) error {
 
 // Encode encodes ReposCreateWebhookReqConfig as json.
 func (o OptReposCreateWebhookReqConfig) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -66278,6 +67252,9 @@ func (o *OptReposCreateWebhookReqConfig) Decode(d *jx.Decoder) error {
 
 // Encode encodes ReposDeleteFileReqAuthor as json.
 func (o OptReposDeleteFileReqAuthor) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -66300,6 +67277,9 @@ func (o *OptReposDeleteFileReqAuthor) Decode(d *jx.Decoder) error {
 
 // Encode encodes ReposDeleteFileReqCommitter as json.
 func (o OptReposDeleteFileReqCommitter) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -66322,6 +67302,9 @@ func (o *OptReposDeleteFileReqCommitter) Decode(d *jx.Decoder) error {
 
 // Encode encodes ReposGetClonesPer as json.
 func (o OptReposGetClonesPer) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	e.Str(string(o.Value))
 }
 
@@ -66344,6 +67327,9 @@ func (o *OptReposGetClonesPer) Decode(d *jx.Decoder) error {
 
 // Encode encodes ReposGetViewsPer as json.
 func (o OptReposGetViewsPer) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	e.Str(string(o.Value))
 }
 
@@ -66366,6 +67352,9 @@ func (o *OptReposGetViewsPer) Decode(d *jx.Decoder) error {
 
 // Encode encodes ReposListCollaboratorsAffiliation as json.
 func (o OptReposListCollaboratorsAffiliation) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	e.Str(string(o.Value))
 }
 
@@ -66388,6 +67377,9 @@ func (o *OptReposListCollaboratorsAffiliation) Decode(d *jx.Decoder) error {
 
 // Encode encodes ReposListForAuthenticatedUserDirection as json.
 func (o OptReposListForAuthenticatedUserDirection) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	e.Str(string(o.Value))
 }
 
@@ -66410,6 +67402,9 @@ func (o *OptReposListForAuthenticatedUserDirection) Decode(d *jx.Decoder) error 
 
 // Encode encodes ReposListForAuthenticatedUserSort as json.
 func (o OptReposListForAuthenticatedUserSort) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	e.Str(string(o.Value))
 }
 
@@ -66432,6 +67427,9 @@ func (o *OptReposListForAuthenticatedUserSort) Decode(d *jx.Decoder) error {
 
 // Encode encodes ReposListForAuthenticatedUserType as json.
 func (o OptReposListForAuthenticatedUserType) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	e.Str(string(o.Value))
 }
 
@@ -66454,6 +67452,9 @@ func (o *OptReposListForAuthenticatedUserType) Decode(d *jx.Decoder) error {
 
 // Encode encodes ReposListForAuthenticatedUserVisibility as json.
 func (o OptReposListForAuthenticatedUserVisibility) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	e.Str(string(o.Value))
 }
 
@@ -66476,6 +67477,9 @@ func (o *OptReposListForAuthenticatedUserVisibility) Decode(d *jx.Decoder) error
 
 // Encode encodes ReposListForOrgDirection as json.
 func (o OptReposListForOrgDirection) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	e.Str(string(o.Value))
 }
 
@@ -66498,6 +67502,9 @@ func (o *OptReposListForOrgDirection) Decode(d *jx.Decoder) error {
 
 // Encode encodes ReposListForOrgSort as json.
 func (o OptReposListForOrgSort) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	e.Str(string(o.Value))
 }
 
@@ -66520,6 +67527,9 @@ func (o *OptReposListForOrgSort) Decode(d *jx.Decoder) error {
 
 // Encode encodes ReposListForOrgType as json.
 func (o OptReposListForOrgType) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	e.Str(string(o.Value))
 }
 
@@ -66542,6 +67552,9 @@ func (o *OptReposListForOrgType) Decode(d *jx.Decoder) error {
 
 // Encode encodes ReposListForUserDirection as json.
 func (o OptReposListForUserDirection) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	e.Str(string(o.Value))
 }
 
@@ -66564,6 +67577,9 @@ func (o *OptReposListForUserDirection) Decode(d *jx.Decoder) error {
 
 // Encode encodes ReposListForUserSort as json.
 func (o OptReposListForUserSort) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	e.Str(string(o.Value))
 }
 
@@ -66586,6 +67602,9 @@ func (o *OptReposListForUserSort) Decode(d *jx.Decoder) error {
 
 // Encode encodes ReposListForUserType as json.
 func (o OptReposListForUserType) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	e.Str(string(o.Value))
 }
 
@@ -66608,6 +67627,9 @@ func (o *OptReposListForUserType) Decode(d *jx.Decoder) error {
 
 // Encode encodes ReposListForksSort as json.
 func (o OptReposListForksSort) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	e.Str(string(o.Value))
 }
 
@@ -66630,6 +67652,10 @@ func (o *OptReposListForksSort) Decode(d *jx.Decoder) error {
 
 // Encode encodes ReposRemoveAppAccessRestrictionsReq as json.
 func (o OptReposRemoveAppAccessRestrictionsReq) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
+	o.Value.Encode(e)
 }
 
 // Decode decodes ReposRemoveAppAccessRestrictionsReq from json.
@@ -66648,6 +67674,10 @@ func (o *OptReposRemoveAppAccessRestrictionsReq) Decode(d *jx.Decoder) error {
 
 // Encode encodes ReposRemoveStatusCheckContextsReq as json.
 func (o OptReposRemoveStatusCheckContextsReq) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
+	o.Value.Encode(e)
 }
 
 // Decode decodes ReposRemoveStatusCheckContextsReq from json.
@@ -66666,6 +67696,10 @@ func (o *OptReposRemoveStatusCheckContextsReq) Decode(d *jx.Decoder) error {
 
 // Encode encodes ReposRemoveTeamAccessRestrictionsReq as json.
 func (o OptReposRemoveTeamAccessRestrictionsReq) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
+	o.Value.Encode(e)
 }
 
 // Decode decodes ReposRemoveTeamAccessRestrictionsReq from json.
@@ -66684,6 +67718,10 @@ func (o *OptReposRemoveTeamAccessRestrictionsReq) Decode(d *jx.Decoder) error {
 
 // Encode encodes ReposRemoveUserAccessRestrictionsReq as json.
 func (o OptReposRemoveUserAccessRestrictionsReq) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
+	o.Value.Encode(e)
 }
 
 // Decode decodes ReposRemoveUserAccessRestrictionsReq from json.
@@ -66702,6 +67740,9 @@ func (o *OptReposRemoveUserAccessRestrictionsReq) Decode(d *jx.Decoder) error {
 
 // Encode encodes ReposRenameBranchReq as json.
 func (o OptReposRenameBranchReq) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -66724,6 +67765,10 @@ func (o *OptReposRenameBranchReq) Decode(d *jx.Decoder) error {
 
 // Encode encodes ReposSetAppAccessRestrictionsReq as json.
 func (o OptReposSetAppAccessRestrictionsReq) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
+	o.Value.Encode(e)
 }
 
 // Decode decodes ReposSetAppAccessRestrictionsReq from json.
@@ -66742,6 +67787,10 @@ func (o *OptReposSetAppAccessRestrictionsReq) Decode(d *jx.Decoder) error {
 
 // Encode encodes ReposSetStatusCheckContextsReq as json.
 func (o OptReposSetStatusCheckContextsReq) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
+	o.Value.Encode(e)
 }
 
 // Decode decodes ReposSetStatusCheckContextsReq from json.
@@ -66760,6 +67809,10 @@ func (o *OptReposSetStatusCheckContextsReq) Decode(d *jx.Decoder) error {
 
 // Encode encodes ReposSetTeamAccessRestrictionsReq as json.
 func (o OptReposSetTeamAccessRestrictionsReq) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
+	o.Value.Encode(e)
 }
 
 // Decode decodes ReposSetTeamAccessRestrictionsReq from json.
@@ -66778,6 +67831,10 @@ func (o *OptReposSetTeamAccessRestrictionsReq) Decode(d *jx.Decoder) error {
 
 // Encode encodes ReposSetUserAccessRestrictionsReq as json.
 func (o OptReposSetUserAccessRestrictionsReq) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
+	o.Value.Encode(e)
 }
 
 // Decode decodes ReposSetUserAccessRestrictionsReq from json.
@@ -66796,6 +67853,9 @@ func (o *OptReposSetUserAccessRestrictionsReq) Decode(d *jx.Decoder) error {
 
 // Encode encodes ReposUpdateBranchProtectionReqRequiredPullRequestReviewsDismissalRestrictions as json.
 func (o OptReposUpdateBranchProtectionReqRequiredPullRequestReviewsDismissalRestrictions) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -66818,6 +67878,9 @@ func (o *OptReposUpdateBranchProtectionReqRequiredPullRequestReviewsDismissalRes
 
 // Encode encodes ReposUpdateInvitationReq as json.
 func (o OptReposUpdateInvitationReq) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -66840,6 +67903,9 @@ func (o *OptReposUpdateInvitationReq) Decode(d *jx.Decoder) error {
 
 // Encode encodes ReposUpdateInvitationReqPermissions as json.
 func (o OptReposUpdateInvitationReqPermissions) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	e.Str(string(o.Value))
 }
 
@@ -66862,6 +67928,9 @@ func (o *OptReposUpdateInvitationReqPermissions) Decode(d *jx.Decoder) error {
 
 // Encode encodes ReposUpdatePullRequestReviewProtectionReq as json.
 func (o OptReposUpdatePullRequestReviewProtectionReq) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -66884,6 +67953,9 @@ func (o *OptReposUpdatePullRequestReviewProtectionReq) Decode(d *jx.Decoder) err
 
 // Encode encodes ReposUpdatePullRequestReviewProtectionReqDismissalRestrictions as json.
 func (o OptReposUpdatePullRequestReviewProtectionReqDismissalRestrictions) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -66906,6 +67978,9 @@ func (o *OptReposUpdatePullRequestReviewProtectionReqDismissalRestrictions) Deco
 
 // Encode encodes ReposUpdateReleaseAssetReq as json.
 func (o OptReposUpdateReleaseAssetReq) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -66928,6 +68003,9 @@ func (o *OptReposUpdateReleaseAssetReq) Decode(d *jx.Decoder) error {
 
 // Encode encodes ReposUpdateReleaseReq as json.
 func (o OptReposUpdateReleaseReq) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -66950,6 +68028,9 @@ func (o *OptReposUpdateReleaseReq) Decode(d *jx.Decoder) error {
 
 // Encode encodes ReposUpdateReq as json.
 func (o OptReposUpdateReq) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -66972,6 +68053,9 @@ func (o *OptReposUpdateReq) Decode(d *jx.Decoder) error {
 
 // Encode encodes ReposUpdateReqSecurityAndAnalysisAdvancedSecurity as json.
 func (o OptReposUpdateReqSecurityAndAnalysisAdvancedSecurity) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -66994,6 +68078,9 @@ func (o *OptReposUpdateReqSecurityAndAnalysisAdvancedSecurity) Decode(d *jx.Deco
 
 // Encode encodes ReposUpdateReqSecurityAndAnalysisSecretScanning as json.
 func (o OptReposUpdateReqSecurityAndAnalysisSecretScanning) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -67016,6 +68103,9 @@ func (o *OptReposUpdateReqSecurityAndAnalysisSecretScanning) Decode(d *jx.Decode
 
 // Encode encodes ReposUpdateReqVisibility as json.
 func (o OptReposUpdateReqVisibility) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	e.Str(string(o.Value))
 }
 
@@ -67038,6 +68128,9 @@ func (o *OptReposUpdateReqVisibility) Decode(d *jx.Decoder) error {
 
 // Encode encodes ReposUpdateStatusCheckProtectionReq as json.
 func (o OptReposUpdateStatusCheckProtectionReq) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -67060,6 +68153,9 @@ func (o *OptReposUpdateStatusCheckProtectionReq) Decode(d *jx.Decoder) error {
 
 // Encode encodes ReposUpdateWebhookConfigForRepoReq as json.
 func (o OptReposUpdateWebhookConfigForRepoReq) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -67082,6 +68178,9 @@ func (o *OptReposUpdateWebhookConfigForRepoReq) Decode(d *jx.Decoder) error {
 
 // Encode encodes ReposUpdateWebhookReq as json.
 func (o OptReposUpdateWebhookReq) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -67104,6 +68203,9 @@ func (o *OptReposUpdateWebhookReq) Decode(d *jx.Decoder) error {
 
 // Encode encodes ReposUpdateWebhookReqConfig as json.
 func (o OptReposUpdateWebhookReqConfig) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -67126,6 +68228,9 @@ func (o *OptReposUpdateWebhookReqConfig) Decode(d *jx.Decoder) error {
 
 // Encode encodes Repository as json.
 func (o OptRepository) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -67148,6 +68253,9 @@ func (o *OptRepository) Decode(d *jx.Decoder) error {
 
 // Encode encodes RepositoryPermissions as json.
 func (o OptRepositoryPermissions) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -67170,6 +68278,9 @@ func (o *OptRepositoryPermissions) Decode(d *jx.Decoder) error {
 
 // Encode encodes RepositoryTemplateRepositoryOwner as json.
 func (o OptRepositoryTemplateRepositoryOwner) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -67192,6 +68303,9 @@ func (o *OptRepositoryTemplateRepositoryOwner) Decode(d *jx.Decoder) error {
 
 // Encode encodes RepositoryTemplateRepositoryPermissions as json.
 func (o OptRepositoryTemplateRepositoryPermissions) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -67214,6 +68328,9 @@ func (o *OptRepositoryTemplateRepositoryPermissions) Decode(d *jx.Decoder) error
 
 // Encode encodes ReviewCommentSide as json.
 func (o OptReviewCommentSide) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	e.Str(string(o.Value))
 }
 
@@ -67236,6 +68353,9 @@ func (o *OptReviewCommentSide) Decode(d *jx.Decoder) error {
 
 // Encode encodes RunnerLabelsItemType as json.
 func (o OptRunnerLabelsItemType) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	e.Str(string(o.Value))
 }
 
@@ -67258,6 +68378,9 @@ func (o *OptRunnerLabelsItemType) Decode(d *jx.Decoder) error {
 
 // Encode encodes ScimEnterpriseGroupMeta as json.
 func (o OptScimEnterpriseGroupMeta) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -67280,6 +68403,9 @@ func (o *OptScimEnterpriseGroupMeta) Decode(d *jx.Decoder) error {
 
 // Encode encodes ScimEnterpriseUserMeta as json.
 func (o OptScimEnterpriseUserMeta) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -67302,6 +68428,9 @@ func (o *OptScimEnterpriseUserMeta) Decode(d *jx.Decoder) error {
 
 // Encode encodes ScimEnterpriseUserName as json.
 func (o OptScimEnterpriseUserName) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -67324,6 +68453,9 @@ func (o *OptScimEnterpriseUserName) Decode(d *jx.Decoder) error {
 
 // Encode encodes ScimGroupListEnterpriseResourcesItemMeta as json.
 func (o OptScimGroupListEnterpriseResourcesItemMeta) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -67346,6 +68478,10 @@ func (o *OptScimGroupListEnterpriseResourcesItemMeta) Decode(d *jx.Decoder) erro
 
 // Encode encodes ScimUpdateAttributeForUserReqOperationsItemValue as json.
 func (o OptScimUpdateAttributeForUserReqOperationsItemValue) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
+	o.Value.Encode(e)
 }
 
 // Decode decodes ScimUpdateAttributeForUserReqOperationsItemValue from json.
@@ -67364,6 +68500,9 @@ func (o *OptScimUpdateAttributeForUserReqOperationsItemValue) Decode(d *jx.Decod
 
 // Encode encodes ScimUserListEnterpriseResourcesItemMeta as json.
 func (o OptScimUserListEnterpriseResourcesItemMeta) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -67386,6 +68525,9 @@ func (o *OptScimUserListEnterpriseResourcesItemMeta) Decode(d *jx.Decoder) error
 
 // Encode encodes ScimUserListEnterpriseResourcesItemName as json.
 func (o OptScimUserListEnterpriseResourcesItemName) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -67408,6 +68550,9 @@ func (o *OptScimUserListEnterpriseResourcesItemName) Decode(d *jx.Decoder) error
 
 // Encode encodes SearchCodeOrder as json.
 func (o OptSearchCodeOrder) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	e.Str(string(o.Value))
 }
 
@@ -67430,6 +68575,9 @@ func (o *OptSearchCodeOrder) Decode(d *jx.Decoder) error {
 
 // Encode encodes SearchCodeSort as json.
 func (o OptSearchCodeSort) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	e.Str(string(o.Value))
 }
 
@@ -67452,6 +68600,9 @@ func (o *OptSearchCodeSort) Decode(d *jx.Decoder) error {
 
 // Encode encodes SearchCommitsOrder as json.
 func (o OptSearchCommitsOrder) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	e.Str(string(o.Value))
 }
 
@@ -67474,6 +68625,9 @@ func (o *OptSearchCommitsOrder) Decode(d *jx.Decoder) error {
 
 // Encode encodes SearchCommitsSort as json.
 func (o OptSearchCommitsSort) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	e.Str(string(o.Value))
 }
 
@@ -67496,6 +68650,9 @@ func (o *OptSearchCommitsSort) Decode(d *jx.Decoder) error {
 
 // Encode encodes SearchIssuesAndPullRequestsOrder as json.
 func (o OptSearchIssuesAndPullRequestsOrder) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	e.Str(string(o.Value))
 }
 
@@ -67518,6 +68675,9 @@ func (o *OptSearchIssuesAndPullRequestsOrder) Decode(d *jx.Decoder) error {
 
 // Encode encodes SearchIssuesAndPullRequestsSort as json.
 func (o OptSearchIssuesAndPullRequestsSort) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	e.Str(string(o.Value))
 }
 
@@ -67540,6 +68700,9 @@ func (o *OptSearchIssuesAndPullRequestsSort) Decode(d *jx.Decoder) error {
 
 // Encode encodes SearchLabelsOrder as json.
 func (o OptSearchLabelsOrder) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	e.Str(string(o.Value))
 }
 
@@ -67562,6 +68725,9 @@ func (o *OptSearchLabelsOrder) Decode(d *jx.Decoder) error {
 
 // Encode encodes SearchLabelsSort as json.
 func (o OptSearchLabelsSort) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	e.Str(string(o.Value))
 }
 
@@ -67584,6 +68750,9 @@ func (o *OptSearchLabelsSort) Decode(d *jx.Decoder) error {
 
 // Encode encodes SearchReposOrder as json.
 func (o OptSearchReposOrder) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	e.Str(string(o.Value))
 }
 
@@ -67606,6 +68775,9 @@ func (o *OptSearchReposOrder) Decode(d *jx.Decoder) error {
 
 // Encode encodes SearchReposSort as json.
 func (o OptSearchReposSort) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	e.Str(string(o.Value))
 }
 
@@ -67628,6 +68800,9 @@ func (o *OptSearchReposSort) Decode(d *jx.Decoder) error {
 
 // Encode encodes SearchUsersOrder as json.
 func (o OptSearchUsersOrder) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	e.Str(string(o.Value))
 }
 
@@ -67650,6 +68825,9 @@ func (o *OptSearchUsersOrder) Decode(d *jx.Decoder) error {
 
 // Encode encodes SearchUsersSort as json.
 func (o OptSearchUsersSort) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	e.Str(string(o.Value))
 }
 
@@ -67672,6 +68850,9 @@ func (o *OptSearchUsersSort) Decode(d *jx.Decoder) error {
 
 // Encode encodes SecretScanningAlertState as json.
 func (o OptSecretScanningAlertState) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	e.Str(string(o.Value))
 }
 
@@ -67694,6 +68875,9 @@ func (o *OptSecretScanningAlertState) Decode(d *jx.Decoder) error {
 
 // Encode encodes SecretScanningListAlertsForOrgState as json.
 func (o OptSecretScanningListAlertsForOrgState) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	e.Str(string(o.Value))
 }
 
@@ -67716,6 +68900,9 @@ func (o *OptSecretScanningListAlertsForOrgState) Decode(d *jx.Decoder) error {
 
 // Encode encodes SecretScanningListAlertsForRepoState as json.
 func (o OptSecretScanningListAlertsForRepoState) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	e.Str(string(o.Value))
 }
 
@@ -67738,6 +68925,9 @@ func (o *OptSecretScanningListAlertsForRepoState) Decode(d *jx.Decoder) error {
 
 // Encode encodes SelectedActions as json.
 func (o OptSelectedActions) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -67760,6 +68950,10 @@ func (o *OptSelectedActions) Decode(d *jx.Decoder) error {
 
 // Encode encodes SelectedActionsURL as json.
 func (o OptSelectedActionsURL) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
+	o.Value.Encode(e)
 }
 
 // Decode decodes SelectedActionsURL from json.
@@ -67778,6 +68972,9 @@ func (o *OptSelectedActionsURL) Decode(d *jx.Decoder) error {
 
 // Encode encodes SimpleUser as json.
 func (o OptSimpleUser) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -67800,6 +68997,9 @@ func (o *OptSimpleUser) Decode(d *jx.Decoder) error {
 
 // Encode encodes StatusCheckPolicy as json.
 func (o OptStatusCheckPolicy) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -67822,6 +69022,9 @@ func (o *OptStatusCheckPolicy) Decode(d *jx.Decoder) error {
 
 // Encode encodes string as json.
 func (o OptString) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	e.Str(string(o.Value))
 }
 
@@ -67846,6 +69049,9 @@ func (o *OptString) Decode(d *jx.Decoder) error {
 
 // Encode encodes Team as json.
 func (o OptTeam) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -67868,6 +69074,9 @@ func (o *OptTeam) Decode(d *jx.Decoder) error {
 
 // Encode encodes TeamFullPrivacy as json.
 func (o OptTeamFullPrivacy) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	e.Str(string(o.Value))
 }
 
@@ -67890,6 +69099,9 @@ func (o *OptTeamFullPrivacy) Decode(d *jx.Decoder) error {
 
 // Encode encodes TeamPermissions as json.
 func (o OptTeamPermissions) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -67912,6 +69124,9 @@ func (o *OptTeamPermissions) Decode(d *jx.Decoder) error {
 
 // Encode encodes TeamRepositoryPermissions as json.
 func (o OptTeamRepositoryPermissions) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -67934,6 +69149,9 @@ func (o *OptTeamRepositoryPermissions) Decode(d *jx.Decoder) error {
 
 // Encode encodes TeamsAddOrUpdateMembershipForUserInOrgReq as json.
 func (o OptTeamsAddOrUpdateMembershipForUserInOrgReq) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -67956,6 +69174,9 @@ func (o *OptTeamsAddOrUpdateMembershipForUserInOrgReq) Decode(d *jx.Decoder) err
 
 // Encode encodes TeamsAddOrUpdateMembershipForUserInOrgReqRole as json.
 func (o OptTeamsAddOrUpdateMembershipForUserInOrgReqRole) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	e.Str(string(o.Value))
 }
 
@@ -67978,6 +69199,9 @@ func (o *OptTeamsAddOrUpdateMembershipForUserInOrgReqRole) Decode(d *jx.Decoder)
 
 // Encode encodes TeamsAddOrUpdateMembershipForUserLegacyReq as json.
 func (o OptTeamsAddOrUpdateMembershipForUserLegacyReq) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -68000,6 +69224,9 @@ func (o *OptTeamsAddOrUpdateMembershipForUserLegacyReq) Decode(d *jx.Decoder) er
 
 // Encode encodes TeamsAddOrUpdateMembershipForUserLegacyReqRole as json.
 func (o OptTeamsAddOrUpdateMembershipForUserLegacyReqRole) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	e.Str(string(o.Value))
 }
 
@@ -68022,6 +69249,9 @@ func (o *OptTeamsAddOrUpdateMembershipForUserLegacyReqRole) Decode(d *jx.Decoder
 
 // Encode encodes TeamsAddOrUpdateProjectPermissionsInOrgReq as json.
 func (o OptTeamsAddOrUpdateProjectPermissionsInOrgReq) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -68044,6 +69274,9 @@ func (o *OptTeamsAddOrUpdateProjectPermissionsInOrgReq) Decode(d *jx.Decoder) er
 
 // Encode encodes TeamsAddOrUpdateProjectPermissionsInOrgReqPermission as json.
 func (o OptTeamsAddOrUpdateProjectPermissionsInOrgReqPermission) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	e.Str(string(o.Value))
 }
 
@@ -68066,6 +69299,9 @@ func (o *OptTeamsAddOrUpdateProjectPermissionsInOrgReqPermission) Decode(d *jx.D
 
 // Encode encodes TeamsAddOrUpdateProjectPermissionsLegacyReq as json.
 func (o OptTeamsAddOrUpdateProjectPermissionsLegacyReq) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -68088,6 +69324,9 @@ func (o *OptTeamsAddOrUpdateProjectPermissionsLegacyReq) Decode(d *jx.Decoder) e
 
 // Encode encodes TeamsAddOrUpdateProjectPermissionsLegacyReqPermission as json.
 func (o OptTeamsAddOrUpdateProjectPermissionsLegacyReqPermission) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	e.Str(string(o.Value))
 }
 
@@ -68110,6 +69349,9 @@ func (o *OptTeamsAddOrUpdateProjectPermissionsLegacyReqPermission) Decode(d *jx.
 
 // Encode encodes TeamsAddOrUpdateRepoPermissionsInOrgReq as json.
 func (o OptTeamsAddOrUpdateRepoPermissionsInOrgReq) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -68132,6 +69374,9 @@ func (o *OptTeamsAddOrUpdateRepoPermissionsInOrgReq) Decode(d *jx.Decoder) error
 
 // Encode encodes TeamsAddOrUpdateRepoPermissionsInOrgReqPermission as json.
 func (o OptTeamsAddOrUpdateRepoPermissionsInOrgReqPermission) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	e.Str(string(o.Value))
 }
 
@@ -68154,6 +69399,9 @@ func (o *OptTeamsAddOrUpdateRepoPermissionsInOrgReqPermission) Decode(d *jx.Deco
 
 // Encode encodes TeamsAddOrUpdateRepoPermissionsLegacyReq as json.
 func (o OptTeamsAddOrUpdateRepoPermissionsLegacyReq) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -68176,6 +69424,9 @@ func (o *OptTeamsAddOrUpdateRepoPermissionsLegacyReq) Decode(d *jx.Decoder) erro
 
 // Encode encodes TeamsAddOrUpdateRepoPermissionsLegacyReqPermission as json.
 func (o OptTeamsAddOrUpdateRepoPermissionsLegacyReqPermission) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	e.Str(string(o.Value))
 }
 
@@ -68198,6 +69449,9 @@ func (o *OptTeamsAddOrUpdateRepoPermissionsLegacyReqPermission) Decode(d *jx.Dec
 
 // Encode encodes TeamsCreateReqPermission as json.
 func (o OptTeamsCreateReqPermission) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	e.Str(string(o.Value))
 }
 
@@ -68220,6 +69474,9 @@ func (o *OptTeamsCreateReqPermission) Decode(d *jx.Decoder) error {
 
 // Encode encodes TeamsCreateReqPrivacy as json.
 func (o OptTeamsCreateReqPrivacy) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	e.Str(string(o.Value))
 }
 
@@ -68242,6 +69499,9 @@ func (o *OptTeamsCreateReqPrivacy) Decode(d *jx.Decoder) error {
 
 // Encode encodes TeamsListDiscussionCommentsInOrgDirection as json.
 func (o OptTeamsListDiscussionCommentsInOrgDirection) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	e.Str(string(o.Value))
 }
 
@@ -68264,6 +69524,9 @@ func (o *OptTeamsListDiscussionCommentsInOrgDirection) Decode(d *jx.Decoder) err
 
 // Encode encodes TeamsListDiscussionCommentsLegacyDirection as json.
 func (o OptTeamsListDiscussionCommentsLegacyDirection) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	e.Str(string(o.Value))
 }
 
@@ -68286,6 +69549,9 @@ func (o *OptTeamsListDiscussionCommentsLegacyDirection) Decode(d *jx.Decoder) er
 
 // Encode encodes TeamsListDiscussionsInOrgDirection as json.
 func (o OptTeamsListDiscussionsInOrgDirection) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	e.Str(string(o.Value))
 }
 
@@ -68308,6 +69574,9 @@ func (o *OptTeamsListDiscussionsInOrgDirection) Decode(d *jx.Decoder) error {
 
 // Encode encodes TeamsListDiscussionsLegacyDirection as json.
 func (o OptTeamsListDiscussionsLegacyDirection) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	e.Str(string(o.Value))
 }
 
@@ -68330,6 +69599,9 @@ func (o *OptTeamsListDiscussionsLegacyDirection) Decode(d *jx.Decoder) error {
 
 // Encode encodes TeamsListMembersInOrgRole as json.
 func (o OptTeamsListMembersInOrgRole) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	e.Str(string(o.Value))
 }
 
@@ -68352,6 +69624,9 @@ func (o *OptTeamsListMembersInOrgRole) Decode(d *jx.Decoder) error {
 
 // Encode encodes TeamsListMembersLegacyRole as json.
 func (o OptTeamsListMembersLegacyRole) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	e.Str(string(o.Value))
 }
 
@@ -68374,6 +69649,9 @@ func (o *OptTeamsListMembersLegacyRole) Decode(d *jx.Decoder) error {
 
 // Encode encodes TeamsUpdateDiscussionInOrgReq as json.
 func (o OptTeamsUpdateDiscussionInOrgReq) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -68396,6 +69674,9 @@ func (o *OptTeamsUpdateDiscussionInOrgReq) Decode(d *jx.Decoder) error {
 
 // Encode encodes TeamsUpdateDiscussionLegacyReq as json.
 func (o OptTeamsUpdateDiscussionLegacyReq) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -68418,6 +69699,9 @@ func (o *OptTeamsUpdateDiscussionLegacyReq) Decode(d *jx.Decoder) error {
 
 // Encode encodes TeamsUpdateInOrgReq as json.
 func (o OptTeamsUpdateInOrgReq) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -68440,6 +69724,9 @@ func (o *OptTeamsUpdateInOrgReq) Decode(d *jx.Decoder) error {
 
 // Encode encodes TeamsUpdateInOrgReqPermission as json.
 func (o OptTeamsUpdateInOrgReqPermission) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	e.Str(string(o.Value))
 }
 
@@ -68462,6 +69749,9 @@ func (o *OptTeamsUpdateInOrgReqPermission) Decode(d *jx.Decoder) error {
 
 // Encode encodes TeamsUpdateInOrgReqPrivacy as json.
 func (o OptTeamsUpdateInOrgReqPrivacy) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	e.Str(string(o.Value))
 }
 
@@ -68484,6 +69774,9 @@ func (o *OptTeamsUpdateInOrgReqPrivacy) Decode(d *jx.Decoder) error {
 
 // Encode encodes TeamsUpdateLegacyReqPermission as json.
 func (o OptTeamsUpdateLegacyReqPermission) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	e.Str(string(o.Value))
 }
 
@@ -68506,6 +69799,9 @@ func (o *OptTeamsUpdateLegacyReqPermission) Decode(d *jx.Decoder) error {
 
 // Encode encodes TeamsUpdateLegacyReqPrivacy as json.
 func (o OptTeamsUpdateLegacyReqPrivacy) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	e.Str(string(o.Value))
 }
 
@@ -68528,6 +69824,9 @@ func (o *OptTeamsUpdateLegacyReqPrivacy) Decode(d *jx.Decoder) error {
 
 // Encode encodes time.Time as json.
 func (o OptTime) Encode(e *jx.Writer, format func(*jx.Writer, time.Time)) {
+	if !o.Set {
+		return
+	}
 	format(e, o.Value)
 }
 
@@ -68552,6 +69851,9 @@ func (o *OptTime) Decode(d *jx.Decoder, format func(*jx.Decoder) (time.Time, err
 
 // Encode encodes TopicSearchResultItemAliasesItemTopicRelation as json.
 func (o OptTopicSearchResultItemAliasesItemTopicRelation) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -68574,6 +69876,9 @@ func (o *OptTopicSearchResultItemAliasesItemTopicRelation) Decode(d *jx.Decoder)
 
 // Encode encodes TopicSearchResultItemRelatedItemTopicRelation as json.
 func (o OptTopicSearchResultItemRelatedItemTopicRelation) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -68596,6 +69901,9 @@ func (o *OptTopicSearchResultItemRelatedItemTopicRelation) Decode(d *jx.Decoder)
 
 // Encode encodes url.URL as json.
 func (o OptURL) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	json.EncodeURI(e, o.Value)
 }
 
@@ -68620,6 +69928,10 @@ func (o *OptURL) Decode(d *jx.Decoder) error {
 
 // Encode encodes UsersAddEmailForAuthenticatedReq as json.
 func (o OptUsersAddEmailForAuthenticatedReq) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
+	o.Value.Encode(e)
 }
 
 // Decode decodes UsersAddEmailForAuthenticatedReq from json.
@@ -68638,6 +69950,10 @@ func (o *OptUsersAddEmailForAuthenticatedReq) Decode(d *jx.Decoder) error {
 
 // Encode encodes UsersDeleteEmailForAuthenticatedReq as json.
 func (o OptUsersDeleteEmailForAuthenticatedReq) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
+	o.Value.Encode(e)
 }
 
 // Decode decodes UsersDeleteEmailForAuthenticatedReq from json.
@@ -68656,6 +69972,9 @@ func (o *OptUsersDeleteEmailForAuthenticatedReq) Decode(d *jx.Decoder) error {
 
 // Encode encodes UsersGetContextForUserSubjectType as json.
 func (o OptUsersGetContextForUserSubjectType) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	e.Str(string(o.Value))
 }
 
@@ -68678,6 +69997,9 @@ func (o *OptUsersGetContextForUserSubjectType) Decode(d *jx.Decoder) error {
 
 // Encode encodes UsersUpdateAuthenticatedReq as json.
 func (o OptUsersUpdateAuthenticatedReq) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -68700,6 +70022,10 @@ func (o *OptUsersUpdateAuthenticatedReq) Decode(d *jx.Decoder) error {
 
 // Encode encodes ValidationErrorErrorsItemValue as json.
 func (o OptValidationErrorErrorsItemValue) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
+	o.Value.Encode(e)
 }
 
 // Decode decodes ValidationErrorErrorsItemValue from json.
@@ -68718,6 +70044,9 @@ func (o *OptValidationErrorErrorsItemValue) Decode(d *jx.Decoder) error {
 
 // Encode encodes Verification as json.
 func (o OptVerification) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -68740,6 +70069,10 @@ func (o *OptVerification) Decode(d *jx.Decoder) error {
 
 // Encode encodes WaitTimer as json.
 func (o OptWaitTimer) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
+	o.Value.Encode(e)
 }
 
 // Decode decodes WaitTimer from json.
@@ -68758,6 +70091,10 @@ func (o *OptWaitTimer) Decode(d *jx.Decoder) error {
 
 // Encode encodes WebhookConfigContentType as json.
 func (o OptWebhookConfigContentType) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
+	o.Value.Encode(e)
 }
 
 // Decode decodes WebhookConfigContentType from json.
@@ -68776,6 +70113,10 @@ func (o *OptWebhookConfigContentType) Decode(d *jx.Decoder) error {
 
 // Encode encodes WebhookConfigInsecureSsl as json.
 func (o OptWebhookConfigInsecureSsl) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
+	o.Value.Encode(e)
 }
 
 // Decode decodes WebhookConfigInsecureSsl from json.
@@ -68794,6 +70135,10 @@ func (o *OptWebhookConfigInsecureSsl) Decode(d *jx.Decoder) error {
 
 // Encode encodes WebhookConfigSecret as json.
 func (o OptWebhookConfigSecret) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
+	o.Value.Encode(e)
 }
 
 // Decode decodes WebhookConfigSecret from json.
@@ -68812,6 +70157,10 @@ func (o *OptWebhookConfigSecret) Decode(d *jx.Decoder) error {
 
 // Encode encodes WebhookConfigURL as json.
 func (o OptWebhookConfigURL) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
+	o.Value.Encode(e)
 }
 
 // Decode decodes WebhookConfigURL from json.
@@ -68830,6 +70179,9 @@ func (o *OptWebhookConfigURL) Decode(d *jx.Decoder) error {
 
 // Encode encodes WorkflowRunUsageBillableMACOS as json.
 func (o OptWorkflowRunUsageBillableMACOS) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -68852,6 +70204,9 @@ func (o *OptWorkflowRunUsageBillableMACOS) Decode(d *jx.Decoder) error {
 
 // Encode encodes WorkflowRunUsageBillableUBUNTU as json.
 func (o OptWorkflowRunUsageBillableUBUNTU) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -68874,6 +70229,9 @@ func (o *OptWorkflowRunUsageBillableUBUNTU) Decode(d *jx.Decoder) error {
 
 // Encode encodes WorkflowRunUsageBillableWINDOWS as json.
 func (o OptWorkflowRunUsageBillableWINDOWS) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 

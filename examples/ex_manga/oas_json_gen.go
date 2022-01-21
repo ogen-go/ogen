@@ -525,6 +525,9 @@ func (s *Images) Decode(d *jx.Decoder) error {
 
 // Encode encodes Image as json.
 func (o OptImage) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -547,6 +550,9 @@ func (o *OptImage) Decode(d *jx.Decoder) error {
 
 // Encode encodes Images as json.
 func (o OptImages) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -569,6 +575,9 @@ func (o *OptImages) Decode(d *jx.Decoder) error {
 
 // Encode encodes int as json.
 func (o OptInt) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	e.Int(int(o.Value))
 }
 
@@ -593,6 +602,9 @@ func (o *OptInt) Decode(d *jx.Decoder) error {
 
 // Encode encodes string as json.
 func (o OptString) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	e.Str(string(o.Value))
 }
 
@@ -617,6 +629,9 @@ func (o *OptString) Decode(d *jx.Decoder) error {
 
 // Encode encodes TagType as json.
 func (o OptTagType) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	e.Str(string(o.Value))
 }
 
@@ -639,6 +654,9 @@ func (o *OptTagType) Decode(d *jx.Decoder) error {
 
 // Encode encodes Title as json.
 func (o OptTitle) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 

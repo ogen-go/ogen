@@ -3,6 +3,7 @@ package ogen
 import (
 	"net"
 	"net/url"
+	"strconv"
 	"testing"
 	"time"
 
@@ -44,39 +45,105 @@ func encodeObject(v json.Marshaler) []byte {
 func TestJSONGenerics(t *testing.T) {
 	t.Parallel()
 
-	for _, tc := range []struct {
-		Name   string
-		Value  api.OptNilString
-		Result string
-	}{
-		{
-			Name:   "Zero",
-			Result: "{}",
-		},
-		{
-			Name:   "Set",
-			Result: `{"key":"foo"}`,
-			Value:  api.NewOptNilString("foo"),
-		},
-		{
-			Name:   "Nil",
-			Result: `{"key":null}`,
-			Value:  api.OptNilString{Null: true, Set: true},
-		},
-	} {
-		// Make range value copy to prevent data races.
-		tc := tc
-		t.Run(tc.Name, func(t *testing.T) {
-			t.Parallel()
+	t.Run("EncodeDecodeEncode", func(t *testing.T) {
+		for _, tc := range []struct {
+			Name   string
+			Value  api.OptNilString
+			Result string
+		}{
+			{
+				Name:   "Zero",
+				Value:  api.OptNilString{},
+				Result: "{}",
+			},
+			{
+				Name:   "Set",
+				Value:  api.NewOptNilString("foo"),
+				Result: `{"key":"foo"}`,
+			},
+			{
+				Name:   "Nil",
+				Value:  api.OptNilString{Null: true, Set: true},
+				Result: `{"key":null}`,
+			},
+		} {
+			// Make range value copy to prevent data races.
+			tc := tc
+			t.Run(tc.Name, func(t *testing.T) {
+				t.Parallel()
 
-			result := encodeObject(tc.Value)
-			require.Equal(t, tc.Result, string(result), "encoding result mismatch")
-			var v api.OptNilString
-			decodeObject(t, result, &v)
-			require.Equal(t, tc.Value, v)
-			require.Equal(t, tc.Result, string(encodeObject(v)))
-		})
-	}
+				result := encodeObject(tc.Value)
+				require.Equal(t, tc.Result, string(result), "encoding result mismatch")
+				var v api.OptNilString
+				decodeObject(t, result, &v)
+				require.Equal(t, tc.Value, v)
+				require.Equal(t, tc.Result, string(encodeObject(v)))
+			})
+		}
+	})
+	t.Run("Encode", func(t *testing.T) {
+		for _, tc := range []struct {
+			Name   string
+			Value  json.Marshaler
+			Result string
+		}{
+			{
+				Name:   "ZeroPrimitive",
+				Value:  api.OptNilString{},
+				Result: "",
+			},
+			{
+				Name:   "SetPrimitive",
+				Value:  api.NewOptNilString("foo"),
+				Result: `"foo"`,
+			},
+			{
+				Name:   "NilPrimitive",
+				Value:  api.OptNilString{Null: true, Set: true},
+				Result: `null`,
+			},
+			{
+				Name:   "ZeroAlias",
+				Value:  api.OptPetName{},
+				Result: "",
+			},
+			{
+				Name:   "SetAlias",
+				Value:  api.NewOptPetName("foo"),
+				Result: `"foo"`,
+			},
+			{
+				Name:   "ZeroEnum",
+				Value:  api.OptPetType{},
+				Result: "",
+			},
+			{
+				Name:   "SetEnum",
+				Value:  api.NewOptPetType(api.PetTypeFifa),
+				Result: strconv.Quote(string(api.PetTypeFifa)),
+			},
+			{
+				Name:   "ZeroSum",
+				Value:  api.OptID{},
+				Result: "",
+			},
+			{
+				Name:   "SetSum",
+				Value:  api.NewOptID(api.NewIntID(10)),
+				Result: `10`,
+			},
+		} {
+			// Make range value copy to prevent data races.
+			tc := tc
+			t.Run(tc.Name, func(t *testing.T) {
+				t.Parallel()
+
+				e := jx.GetWriter()
+				tc.Value.Encode(e)
+				require.Equal(t, tc.Result, string(e.Buf), "encoding result mismatch")
+			})
+		}
+	})
 }
 
 func TestJSONExample(t *testing.T) {
@@ -122,21 +189,44 @@ func TestJSONExample(t *testing.T) {
 		Name  string
 		Value interface {
 			json.Marshaler
-			json.Unmarshaler
 		}
+		Expected string
 	}{
 		{
 			Name:  "Pet",
-			Value: &pet,
+			Value: pet,
 		},
 		{
 			Name: "PetWithPrimary",
-			Value: func(input api.Pet) (r *api.Pet) {
-				cp := input
-				r = &input
-				r.Primary = &cp
+			Value: func(input api.Pet) (r api.Pet) {
+				r = input
+				r.Primary = &input
 				return r
 			}(pet),
+		},
+		{
+			Name:  "OptPetSet",
+			Value: api.NewOptPet(pet),
+		},
+		{
+			Name:     "PetName",
+			Value:    api.PetName("boba"),
+			Expected: `"boba"`,
+		},
+		{
+			Name:     "OptPetName",
+			Value:    api.NewOptPetName("boba"),
+			Expected: `"boba"`,
+		},
+		{
+			Name:     "PetType",
+			Value:    api.PetTypeFifa,
+			Expected: strconv.Quote(string(api.PetTypeFifa)),
+		},
+		{
+			Name:     "OptPetType",
+			Value:    api.NewOptPetType(api.PetTypeFifa),
+			Expected: strconv.Quote(string(api.PetTypeFifa)),
 		},
 	} {
 		// Make range value copy to prevent data races.
@@ -145,6 +235,9 @@ func TestJSONExample(t *testing.T) {
 			encode := json.Encode(tc.Value)
 			t.Logf("%s", encode)
 			require.True(t, jx.Valid(encode), "invalid json")
+			if tc.Expected != "" {
+				require.JSONEq(t, tc.Expected, string(encode))
+			}
 		})
 	}
 

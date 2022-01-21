@@ -7884,6 +7884,9 @@ func (s *MessageEntity) Decode(d *jx.Decoder) error {
 
 // Encode encodes Animation as json.
 func (o OptAnimation) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -7906,6 +7909,9 @@ func (o *OptAnimation) Decode(d *jx.Decoder) error {
 
 // Encode encodes Audio as json.
 func (o OptAudio) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -7928,6 +7934,9 @@ func (o *OptAudio) Decode(d *jx.Decoder) error {
 
 // Encode encodes bool as json.
 func (o OptBool) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	e.Bool(bool(o.Value))
 }
 
@@ -7952,6 +7961,10 @@ func (o *OptBool) Decode(d *jx.Decoder) error {
 
 // Encode encodes BotCommandScope as json.
 func (o OptBotCommandScope) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
+	o.Value.Encode(e)
 }
 
 // Decode decodes BotCommandScope from json.
@@ -7970,6 +7983,9 @@ func (o *OptBotCommandScope) Decode(d *jx.Decoder) error {
 
 // Encode encodes Chat as json.
 func (o OptChat) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -7992,6 +8008,9 @@ func (o *OptChat) Decode(d *jx.Decoder) error {
 
 // Encode encodes ChatLocation as json.
 func (o OptChatLocation) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -8014,6 +8033,9 @@ func (o *OptChatLocation) Decode(d *jx.Decoder) error {
 
 // Encode encodes ChatPermissions as json.
 func (o OptChatPermissions) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -8036,6 +8058,9 @@ func (o *OptChatPermissions) Decode(d *jx.Decoder) error {
 
 // Encode encodes ChatPhoto as json.
 func (o OptChatPhoto) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -8058,6 +8083,9 @@ func (o *OptChatPhoto) Decode(d *jx.Decoder) error {
 
 // Encode encodes Contact as json.
 func (o OptContact) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -8080,6 +8108,10 @@ func (o *OptContact) Decode(d *jx.Decoder) error {
 
 // Encode encodes CopyMessageReplyMarkup as json.
 func (o OptCopyMessageReplyMarkup) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
+	o.Value.Encode(e)
 }
 
 // Decode decodes CopyMessageReplyMarkup from json.
@@ -8098,6 +8130,9 @@ func (o *OptCopyMessageReplyMarkup) Decode(d *jx.Decoder) error {
 
 // Encode encodes Dice as json.
 func (o OptDice) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -8120,6 +8155,9 @@ func (o *OptDice) Decode(d *jx.Decoder) error {
 
 // Encode encodes Document as json.
 func (o OptDocument) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -8142,6 +8180,9 @@ func (o *OptDocument) Decode(d *jx.Decoder) error {
 
 // Encode encodes float64 as json.
 func (o OptFloat64) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	e.Float64(float64(o.Value))
 }
 
@@ -8166,6 +8207,9 @@ func (o *OptFloat64) Decode(d *jx.Decoder) error {
 
 // Encode encodes Game as json.
 func (o OptGame) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -8188,6 +8232,10 @@ func (o *OptGame) Decode(d *jx.Decoder) error {
 
 // Encode encodes ID as json.
 func (o OptID) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
+	o.Value.Encode(e)
 }
 
 // Decode decodes ID from json.
@@ -8206,6 +8254,9 @@ func (o *OptID) Decode(d *jx.Decoder) error {
 
 // Encode encodes InlineKeyboardMarkup as json.
 func (o OptInlineKeyboardMarkup) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -8228,6 +8279,9 @@ func (o *OptInlineKeyboardMarkup) Decode(d *jx.Decoder) error {
 
 // Encode encodes int as json.
 func (o OptInt) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	e.Int(int(o.Value))
 }
 
@@ -8252,6 +8306,9 @@ func (o *OptInt) Decode(d *jx.Decoder) error {
 
 // Encode encodes int64 as json.
 func (o OptInt64) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	e.Int64(int64(o.Value))
 }
 
@@ -8276,6 +8333,9 @@ func (o *OptInt64) Decode(d *jx.Decoder) error {
 
 // Encode encodes Invoice as json.
 func (o OptInvoice) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -8298,6 +8358,9 @@ func (o *OptInvoice) Decode(d *jx.Decoder) error {
 
 // Encode encodes KeyboardButtonPollType as json.
 func (o OptKeyboardButtonPollType) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -8320,6 +8383,9 @@ func (o *OptKeyboardButtonPollType) Decode(d *jx.Decoder) error {
 
 // Encode encodes Location as json.
 func (o OptLocation) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -8342,6 +8408,9 @@ func (o *OptLocation) Decode(d *jx.Decoder) error {
 
 // Encode encodes LoginUrl as json.
 func (o OptLoginUrl) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -8364,6 +8433,9 @@ func (o *OptLoginUrl) Decode(d *jx.Decoder) error {
 
 // Encode encodes MaskPosition as json.
 func (o OptMaskPosition) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -8386,6 +8458,9 @@ func (o *OptMaskPosition) Decode(d *jx.Decoder) error {
 
 // Encode encodes Message as json.
 func (o OptMessage) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -8408,6 +8483,9 @@ func (o *OptMessage) Decode(d *jx.Decoder) error {
 
 // Encode encodes MessageAutoDeleteTimerChanged as json.
 func (o OptMessageAutoDeleteTimerChanged) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -8430,6 +8508,9 @@ func (o *OptMessageAutoDeleteTimerChanged) Decode(d *jx.Decoder) error {
 
 // Encode encodes OrderInfo as json.
 func (o OptOrderInfo) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -8452,6 +8533,9 @@ func (o *OptOrderInfo) Decode(d *jx.Decoder) error {
 
 // Encode encodes PassportData as json.
 func (o OptPassportData) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -8474,6 +8558,9 @@ func (o *OptPassportData) Decode(d *jx.Decoder) error {
 
 // Encode encodes PassportFile as json.
 func (o OptPassportFile) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -8496,6 +8583,9 @@ func (o *OptPassportFile) Decode(d *jx.Decoder) error {
 
 // Encode encodes PhotoSize as json.
 func (o OptPhotoSize) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -8518,6 +8608,9 @@ func (o *OptPhotoSize) Decode(d *jx.Decoder) error {
 
 // Encode encodes Poll as json.
 func (o OptPoll) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -8540,6 +8633,9 @@ func (o *OptPoll) Decode(d *jx.Decoder) error {
 
 // Encode encodes ProximityAlertTriggered as json.
 func (o OptProximityAlertTriggered) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -8562,6 +8658,9 @@ func (o *OptProximityAlertTriggered) Decode(d *jx.Decoder) error {
 
 // Encode encodes Response as json.
 func (o OptResponse) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -8584,6 +8683,10 @@ func (o *OptResponse) Decode(d *jx.Decoder) error {
 
 // Encode encodes SendAnimationReplyMarkup as json.
 func (o OptSendAnimationReplyMarkup) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
+	o.Value.Encode(e)
 }
 
 // Decode decodes SendAnimationReplyMarkup from json.
@@ -8602,6 +8705,10 @@ func (o *OptSendAnimationReplyMarkup) Decode(d *jx.Decoder) error {
 
 // Encode encodes SendAudioReplyMarkup as json.
 func (o OptSendAudioReplyMarkup) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
+	o.Value.Encode(e)
 }
 
 // Decode decodes SendAudioReplyMarkup from json.
@@ -8620,6 +8727,10 @@ func (o *OptSendAudioReplyMarkup) Decode(d *jx.Decoder) error {
 
 // Encode encodes SendContactReplyMarkup as json.
 func (o OptSendContactReplyMarkup) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
+	o.Value.Encode(e)
 }
 
 // Decode decodes SendContactReplyMarkup from json.
@@ -8638,6 +8749,10 @@ func (o *OptSendContactReplyMarkup) Decode(d *jx.Decoder) error {
 
 // Encode encodes SendDiceReplyMarkup as json.
 func (o OptSendDiceReplyMarkup) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
+	o.Value.Encode(e)
 }
 
 // Decode decodes SendDiceReplyMarkup from json.
@@ -8656,6 +8771,10 @@ func (o *OptSendDiceReplyMarkup) Decode(d *jx.Decoder) error {
 
 // Encode encodes SendDocumentReplyMarkup as json.
 func (o OptSendDocumentReplyMarkup) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
+	o.Value.Encode(e)
 }
 
 // Decode decodes SendDocumentReplyMarkup from json.
@@ -8674,6 +8793,10 @@ func (o *OptSendDocumentReplyMarkup) Decode(d *jx.Decoder) error {
 
 // Encode encodes SendLocationReplyMarkup as json.
 func (o OptSendLocationReplyMarkup) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
+	o.Value.Encode(e)
 }
 
 // Decode decodes SendLocationReplyMarkup from json.
@@ -8692,6 +8815,10 @@ func (o *OptSendLocationReplyMarkup) Decode(d *jx.Decoder) error {
 
 // Encode encodes SendMessageReplyMarkup as json.
 func (o OptSendMessageReplyMarkup) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
+	o.Value.Encode(e)
 }
 
 // Decode decodes SendMessageReplyMarkup from json.
@@ -8710,6 +8837,10 @@ func (o *OptSendMessageReplyMarkup) Decode(d *jx.Decoder) error {
 
 // Encode encodes SendPhotoReplyMarkup as json.
 func (o OptSendPhotoReplyMarkup) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
+	o.Value.Encode(e)
 }
 
 // Decode decodes SendPhotoReplyMarkup from json.
@@ -8728,6 +8859,10 @@ func (o *OptSendPhotoReplyMarkup) Decode(d *jx.Decoder) error {
 
 // Encode encodes SendPollReplyMarkup as json.
 func (o OptSendPollReplyMarkup) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
+	o.Value.Encode(e)
 }
 
 // Decode decodes SendPollReplyMarkup from json.
@@ -8746,6 +8881,10 @@ func (o *OptSendPollReplyMarkup) Decode(d *jx.Decoder) error {
 
 // Encode encodes SendStickerReplyMarkup as json.
 func (o OptSendStickerReplyMarkup) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
+	o.Value.Encode(e)
 }
 
 // Decode decodes SendStickerReplyMarkup from json.
@@ -8764,6 +8903,10 @@ func (o *OptSendStickerReplyMarkup) Decode(d *jx.Decoder) error {
 
 // Encode encodes SendVenueReplyMarkup as json.
 func (o OptSendVenueReplyMarkup) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
+	o.Value.Encode(e)
 }
 
 // Decode decodes SendVenueReplyMarkup from json.
@@ -8782,6 +8925,10 @@ func (o *OptSendVenueReplyMarkup) Decode(d *jx.Decoder) error {
 
 // Encode encodes SendVideoNoteReplyMarkup as json.
 func (o OptSendVideoNoteReplyMarkup) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
+	o.Value.Encode(e)
 }
 
 // Decode decodes SendVideoNoteReplyMarkup from json.
@@ -8800,6 +8947,10 @@ func (o *OptSendVideoNoteReplyMarkup) Decode(d *jx.Decoder) error {
 
 // Encode encodes SendVideoReplyMarkup as json.
 func (o OptSendVideoReplyMarkup) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
+	o.Value.Encode(e)
 }
 
 // Decode decodes SendVideoReplyMarkup from json.
@@ -8818,6 +8969,10 @@ func (o *OptSendVideoReplyMarkup) Decode(d *jx.Decoder) error {
 
 // Encode encodes SendVoiceReplyMarkup as json.
 func (o OptSendVoiceReplyMarkup) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
+	o.Value.Encode(e)
 }
 
 // Decode decodes SendVoiceReplyMarkup from json.
@@ -8836,6 +8991,9 @@ func (o *OptSendVoiceReplyMarkup) Decode(d *jx.Decoder) error {
 
 // Encode encodes ShippingAddress as json.
 func (o OptShippingAddress) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -8858,6 +9016,9 @@ func (o *OptShippingAddress) Decode(d *jx.Decoder) error {
 
 // Encode encodes Sticker as json.
 func (o OptSticker) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -8880,6 +9041,9 @@ func (o *OptSticker) Decode(d *jx.Decoder) error {
 
 // Encode encodes string as json.
 func (o OptString) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	e.Str(string(o.Value))
 }
 
@@ -8904,6 +9068,9 @@ func (o *OptString) Decode(d *jx.Decoder) error {
 
 // Encode encodes SuccessfulPayment as json.
 func (o OptSuccessfulPayment) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -8926,6 +9093,9 @@ func (o *OptSuccessfulPayment) Decode(d *jx.Decoder) error {
 
 // Encode encodes url.URL as json.
 func (o OptURL) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	json.EncodeURI(e, o.Value)
 }
 
@@ -8950,6 +9120,9 @@ func (o *OptURL) Decode(d *jx.Decoder) error {
 
 // Encode encodes User as json.
 func (o OptUser) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -8972,6 +9145,9 @@ func (o *OptUser) Decode(d *jx.Decoder) error {
 
 // Encode encodes Venue as json.
 func (o OptVenue) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -8994,6 +9170,9 @@ func (o *OptVenue) Decode(d *jx.Decoder) error {
 
 // Encode encodes Video as json.
 func (o OptVideo) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -9016,6 +9195,9 @@ func (o *OptVideo) Decode(d *jx.Decoder) error {
 
 // Encode encodes VideoNote as json.
 func (o OptVideoNote) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -9038,6 +9220,9 @@ func (o *OptVideoNote) Decode(d *jx.Decoder) error {
 
 // Encode encodes Voice as json.
 func (o OptVoice) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -9060,6 +9245,9 @@ func (o *OptVoice) Decode(d *jx.Decoder) error {
 
 // Encode encodes VoiceChatEnded as json.
 func (o OptVoiceChatEnded) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -9082,6 +9270,9 @@ func (o *OptVoiceChatEnded) Decode(d *jx.Decoder) error {
 
 // Encode encodes VoiceChatParticipantsInvited as json.
 func (o OptVoiceChatParticipantsInvited) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -9104,6 +9295,9 @@ func (o *OptVoiceChatParticipantsInvited) Decode(d *jx.Decoder) error {
 
 // Encode encodes VoiceChatScheduled as json.
 func (o OptVoiceChatScheduled) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 

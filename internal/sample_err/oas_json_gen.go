@@ -178,6 +178,9 @@ func (s *ErrorStatusCode) Decode(d *jx.Decoder) error {
 
 // Encode encodes Data as json.
 func (o OptData) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
