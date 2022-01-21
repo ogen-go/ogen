@@ -4,6 +4,11 @@
 {{ $v := $.GenericVariant }}
 // Encode encodes {{ $g.Go }} as json.
 func (o {{ $.Name }}) Encode(e *jx.Writer{{ if $g.Format }}, format func(*jx.Writer, {{ $g.Go }}){{ end }}) {
+{{- if $v.Optional }}
+	if !o.Set {
+		return
+	}
+{{- end }}
 {{- if $v.Nullable }}
 	if o.Null {
 		e.Null()
@@ -16,7 +21,7 @@ func (o {{ $.Name }}) Encode(e *jx.Writer{{ if $g.Format }}, format func(*jx.Wri
 	json.Encode{{ $g.JSON.Format }}(e, o.Value)
 {{- else if $g.JSON.Fn }}
 	e.{{ $g.JSON.Fn }}({{ $g.Primitive }}(o.Value))
-{{- else if $g.IsStruct }}
+{{- else if or ($g.IsStruct) ($g.IsEnum) ($g.IsPointer) ($g.IsSum) ($g.IsAlias) }}
 	o.Value.Encode(e)
 {{- end }}
 }
