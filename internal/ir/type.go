@@ -3,6 +3,7 @@ package ir
 import (
 	"fmt"
 	"sort"
+	"strconv"
 	"strings"
 
 	"github.com/ogen-go/ogen/internal/oas"
@@ -132,6 +133,11 @@ func (t *Type) Format() bool {
 // Tag of Field.
 type Tag struct {
 	JSON string // json tag, empty for none
+}
+
+// EscapedJSON returns quoted and escaped JSON tag.
+func (t Tag) EscapedJSON() string {
+	return strconv.Quote(t.JSON)
 }
 
 // Field of structure.

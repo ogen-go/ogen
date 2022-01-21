@@ -16,8 +16,31 @@ type JSON struct {
 	t *Type
 }
 
+type JSONFields []*Field
+
+// FirstRequiredIndex returns first required field index.
+//
+// Or -1 if there is no required fields.
+func (j JSONFields) FirstRequiredIndex() int {
+	for idx, f := range j {
+		if typ := f.Type; typ.IsGeneric() && typ.GenericVariant.Optional ||
+			typ.Is(
+				KindStruct,
+				KindEnum,
+				KindPointer,
+				KindSum,
+				KindAlias,
+			) && (typ.NilSemantic.Optional() || typ.NilSemantic.Invalid()) ||
+			typ.IsArray() && typ.NilSemantic.Optional() {
+			continue
+		}
+		return idx
+	}
+	return -1
+}
+
 // Fields return all fields of Type that should be encoded via json.
-func (j JSON) Fields() (fields []*Field) {
+func (j JSON) Fields() (fields JSONFields) {
 	for _, f := range j.t.Fields {
 		if f.Tag.JSON == "" {
 			continue

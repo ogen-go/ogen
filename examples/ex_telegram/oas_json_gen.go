@@ -63,28 +63,59 @@ var (
 )
 
 // Encode implements json.Marshaler.
-func (s AddStickerToSet) Encode(e *jx.Encoder) {
+func (s AddStickerToSet) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+	{
+		if !first {
+			e.Comma()
+		}
+		first = false
 
-	e.FieldStart("user_id")
-	e.Int64(s.UserID)
-
-	e.FieldStart("name")
-	e.Str(s.Name)
-	if s.PNGSticker.Set {
-		e.FieldStart("png_sticker")
-		s.PNGSticker.Encode(e)
+		e.RawStr("\"user_id\"" + ":")
+		e.Int64(s.UserID)
 	}
-	if s.TgsSticker.Set {
-		e.FieldStart("tgs_sticker")
-		s.TgsSticker.Encode(e)
-	}
+	{
+		e.Comma()
 
-	e.FieldStart("emojis")
-	e.Str(s.Emojis)
-	if s.MaskPosition.Set {
-		e.FieldStart("mask_position")
-		s.MaskPosition.Encode(e)
+		e.RawStr("\"name\"" + ":")
+		e.Str(s.Name)
+	}
+	{
+		if s.PNGSticker.Set {
+			e.Comma()
+		}
+		if s.PNGSticker.Set {
+			e.RawStr("\"png_sticker\"" + ":")
+			s.PNGSticker.Encode(e)
+		}
+	}
+	{
+		if s.TgsSticker.Set {
+			e.Comma()
+		}
+		if s.TgsSticker.Set {
+			e.RawStr("\"tgs_sticker\"" + ":")
+			s.TgsSticker.Encode(e)
+		}
+	}
+	{
+		e.Comma()
+
+		e.RawStr("\"emojis\"" + ":")
+		e.Str(s.Emojis)
+	}
+	{
+		if s.MaskPosition.Set {
+			e.Comma()
+		}
+		if s.MaskPosition.Set {
+			e.RawStr("\"mask_position\"" + ":")
+			s.MaskPosition.Encode(e)
+		}
 	}
 	e.ObjEnd()
 }
@@ -137,38 +168,80 @@ func (s *AddStickerToSet) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s Animation) Encode(e *jx.Encoder) {
+func (s Animation) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+	{
+		if !first {
+			e.Comma()
+		}
+		first = false
 
-	e.FieldStart("file_id")
-	e.Str(s.FileID)
-
-	e.FieldStart("file_unique_id")
-	e.Str(s.FileUniqueID)
-
-	e.FieldStart("width")
-	e.Int(s.Width)
-
-	e.FieldStart("height")
-	e.Int(s.Height)
-
-	e.FieldStart("duration")
-	e.Int(s.Duration)
-	if s.Thumb.Set {
-		e.FieldStart("thumb")
-		s.Thumb.Encode(e)
+		e.RawStr("\"file_id\"" + ":")
+		e.Str(s.FileID)
 	}
-	if s.FileName.Set {
-		e.FieldStart("file_name")
-		s.FileName.Encode(e)
+	{
+		e.Comma()
+
+		e.RawStr("\"file_unique_id\"" + ":")
+		e.Str(s.FileUniqueID)
 	}
-	if s.MimeType.Set {
-		e.FieldStart("mime_type")
-		s.MimeType.Encode(e)
+	{
+		e.Comma()
+
+		e.RawStr("\"width\"" + ":")
+		e.Int(s.Width)
 	}
-	if s.FileSize.Set {
-		e.FieldStart("file_size")
-		s.FileSize.Encode(e)
+	{
+		e.Comma()
+
+		e.RawStr("\"height\"" + ":")
+		e.Int(s.Height)
+	}
+	{
+		e.Comma()
+
+		e.RawStr("\"duration\"" + ":")
+		e.Int(s.Duration)
+	}
+	{
+		if s.Thumb.Set {
+			e.Comma()
+		}
+		if s.Thumb.Set {
+			e.RawStr("\"thumb\"" + ":")
+			s.Thumb.Encode(e)
+		}
+	}
+	{
+		if s.FileName.Set {
+			e.Comma()
+		}
+		if s.FileName.Set {
+			e.RawStr("\"file_name\"" + ":")
+			s.FileName.Encode(e)
+		}
+	}
+	{
+		if s.MimeType.Set {
+			e.Comma()
+		}
+		if s.MimeType.Set {
+			e.RawStr("\"mime_type\"" + ":")
+			s.MimeType.Encode(e)
+		}
+	}
+	{
+		if s.FileSize.Set {
+			e.Comma()
+		}
+		if s.FileSize.Set {
+			e.RawStr("\"file_size\"" + ":")
+			s.FileSize.Encode(e)
+		}
 	}
 	e.ObjEnd()
 }
@@ -238,26 +311,56 @@ func (s *Animation) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s AnswerCallbackQuery) Encode(e *jx.Encoder) {
+func (s AnswerCallbackQuery) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+	{
+		if !first {
+			e.Comma()
+		}
+		first = false
 
-	e.FieldStart("callback_query_id")
-	e.Str(s.CallbackQueryID)
-	if s.Text.Set {
-		e.FieldStart("text")
-		s.Text.Encode(e)
+		e.RawStr("\"callback_query_id\"" + ":")
+		e.Str(s.CallbackQueryID)
 	}
-	if s.ShowAlert.Set {
-		e.FieldStart("show_alert")
-		s.ShowAlert.Encode(e)
+	{
+		if s.Text.Set {
+			e.Comma()
+		}
+		if s.Text.Set {
+			e.RawStr("\"text\"" + ":")
+			s.Text.Encode(e)
+		}
 	}
-	if s.URL.Set {
-		e.FieldStart("url")
-		s.URL.Encode(e)
+	{
+		if s.ShowAlert.Set {
+			e.Comma()
+		}
+		if s.ShowAlert.Set {
+			e.RawStr("\"show_alert\"" + ":")
+			s.ShowAlert.Encode(e)
+		}
 	}
-	if s.CacheTime.Set {
-		e.FieldStart("cache_time")
-		s.CacheTime.Encode(e)
+	{
+		if s.URL.Set {
+			e.Comma()
+		}
+		if s.URL.Set {
+			e.RawStr("\"url\"" + ":")
+			s.URL.Encode(e)
+		}
+	}
+	{
+		if s.CacheTime.Set {
+			e.Comma()
+		}
+		if s.CacheTime.Set {
+			e.RawStr("\"cache_time\"" + ":")
+			s.CacheTime.Encode(e)
+		}
 	}
 	e.ObjEnd()
 }
@@ -303,37 +406,83 @@ func (s *AnswerCallbackQuery) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s AnswerInlineQuery) Encode(e *jx.Encoder) {
+func (s AnswerInlineQuery) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+	{
+		if !first {
+			e.Comma()
+		}
+		first = false
 
-	e.FieldStart("inline_query_id")
-	e.Str(s.InlineQueryID)
+		e.RawStr("\"inline_query_id\"" + ":")
+		e.Str(s.InlineQueryID)
+	}
+	{
+		e.Comma()
 
-	e.FieldStart("results")
-	e.ArrStart()
-	for _, elem := range s.Results {
-		elem.Encode(e)
+		e.RawStr("\"results\"" + ":")
+		e.ArrStart()
+		if len(s.Results) >= 1 {
+			// Encode first element without comma.
+			{
+				elem := s.Results[0]
+				elem.Encode(e)
+			}
+			for _, elem := range s.Results[1:] {
+				e.Comma()
+				elem.Encode(e)
+			}
+		}
+		e.ArrEnd()
 	}
-	e.ArrEnd()
-	if s.CacheTime.Set {
-		e.FieldStart("cache_time")
-		s.CacheTime.Encode(e)
+	{
+		if s.CacheTime.Set {
+			e.Comma()
+		}
+		if s.CacheTime.Set {
+			e.RawStr("\"cache_time\"" + ":")
+			s.CacheTime.Encode(e)
+		}
 	}
-	if s.IsPersonal.Set {
-		e.FieldStart("is_personal")
-		s.IsPersonal.Encode(e)
+	{
+		if s.IsPersonal.Set {
+			e.Comma()
+		}
+		if s.IsPersonal.Set {
+			e.RawStr("\"is_personal\"" + ":")
+			s.IsPersonal.Encode(e)
+		}
 	}
-	if s.NextOffset.Set {
-		e.FieldStart("next_offset")
-		s.NextOffset.Encode(e)
+	{
+		if s.NextOffset.Set {
+			e.Comma()
+		}
+		if s.NextOffset.Set {
+			e.RawStr("\"next_offset\"" + ":")
+			s.NextOffset.Encode(e)
+		}
 	}
-	if s.SwitchPmText.Set {
-		e.FieldStart("switch_pm_text")
-		s.SwitchPmText.Encode(e)
+	{
+		if s.SwitchPmText.Set {
+			e.Comma()
+		}
+		if s.SwitchPmText.Set {
+			e.RawStr("\"switch_pm_text\"" + ":")
+			s.SwitchPmText.Encode(e)
+		}
 	}
-	if s.SwitchPmParameter.Set {
-		e.FieldStart("switch_pm_parameter")
-		s.SwitchPmParameter.Encode(e)
+	{
+		if s.SwitchPmParameter.Set {
+			e.Comma()
+		}
+		if s.SwitchPmParameter.Set {
+			e.RawStr("\"switch_pm_parameter\"" + ":")
+			s.SwitchPmParameter.Encode(e)
+		}
 	}
 	e.ObjEnd()
 }
@@ -396,17 +545,35 @@ func (s *AnswerInlineQuery) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s AnswerPreCheckoutQuery) Encode(e *jx.Encoder) {
+func (s AnswerPreCheckoutQuery) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+	{
+		if !first {
+			e.Comma()
+		}
+		first = false
 
-	e.FieldStart("pre_checkout_query_id")
-	e.Str(s.PreCheckoutQueryID)
+		e.RawStr("\"pre_checkout_query_id\"" + ":")
+		e.Str(s.PreCheckoutQueryID)
+	}
+	{
+		e.Comma()
 
-	e.FieldStart("ok")
-	e.Bool(s.Ok)
-	if s.ErrorMessage.Set {
-		e.FieldStart("error_message")
-		s.ErrorMessage.Encode(e)
+		e.RawStr("\"ok\"" + ":")
+		e.Bool(s.Ok)
+	}
+	{
+		if s.ErrorMessage.Set {
+			e.Comma()
+		}
+		if s.ErrorMessage.Set {
+			e.RawStr("\"error_message\"" + ":")
+			s.ErrorMessage.Encode(e)
+		}
 	}
 	e.ObjEnd()
 }
@@ -443,25 +610,56 @@ func (s *AnswerPreCheckoutQuery) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s AnswerShippingQuery) Encode(e *jx.Encoder) {
+func (s AnswerShippingQuery) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	e.FieldStart("shipping_query_id")
-	e.Str(s.ShippingQueryID)
-
-	e.FieldStart("ok")
-	e.Bool(s.Ok)
-	if s.ShippingOptions != nil {
-		e.FieldStart("shipping_options")
-		e.ArrStart()
-		for _, elem := range s.ShippingOptions {
-			elem.Encode(e)
+	var (
+		first = true
+		_     = first
+	)
+	{
+		if !first {
+			e.Comma()
 		}
-		e.ArrEnd()
+		first = false
+
+		e.RawStr("\"shipping_query_id\"" + ":")
+		e.Str(s.ShippingQueryID)
 	}
-	if s.ErrorMessage.Set {
-		e.FieldStart("error_message")
-		s.ErrorMessage.Encode(e)
+	{
+		e.Comma()
+
+		e.RawStr("\"ok\"" + ":")
+		e.Bool(s.Ok)
+	}
+	{
+		if s.ShippingOptions != nil {
+			e.Comma()
+		}
+		if s.ShippingOptions != nil {
+			e.RawStr("\"shipping_options\"" + ":")
+			e.ArrStart()
+			if len(s.ShippingOptions) >= 1 {
+				// Encode first element without comma.
+				{
+					elem := s.ShippingOptions[0]
+					elem.Encode(e)
+				}
+				for _, elem := range s.ShippingOptions[1:] {
+					e.Comma()
+					elem.Encode(e)
+				}
+			}
+			e.ArrEnd()
+		}
+	}
+	{
+		if s.ErrorMessage.Set {
+			e.Comma()
+		}
+		if s.ErrorMessage.Set {
+			e.RawStr("\"error_message\"" + ":")
+			s.ErrorMessage.Encode(e)
+		}
 	}
 	e.ObjEnd()
 }
@@ -510,14 +708,27 @@ func (s *AnswerShippingQuery) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s ApproveChatJoinRequest) Encode(e *jx.Encoder) {
+func (s ApproveChatJoinRequest) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+	{
+		if !first {
+			e.Comma()
+		}
+		first = false
 
-	e.FieldStart("chat_id")
-	s.ChatID.Encode(e)
+		e.RawStr("\"chat_id\"" + ":")
+		s.ChatID.Encode(e)
+	}
+	{
+		e.Comma()
 
-	e.FieldStart("user_id")
-	e.Int64(s.UserID)
+		e.RawStr("\"user_id\"" + ":")
+		e.Int64(s.UserID)
+	}
 	e.ObjEnd()
 }
 
@@ -546,40 +757,86 @@ func (s *ApproveChatJoinRequest) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s Audio) Encode(e *jx.Encoder) {
+func (s Audio) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+	{
+		if !first {
+			e.Comma()
+		}
+		first = false
 
-	e.FieldStart("file_id")
-	e.Str(s.FileID)
+		e.RawStr("\"file_id\"" + ":")
+		e.Str(s.FileID)
+	}
+	{
+		e.Comma()
 
-	e.FieldStart("file_unique_id")
-	e.Str(s.FileUniqueID)
+		e.RawStr("\"file_unique_id\"" + ":")
+		e.Str(s.FileUniqueID)
+	}
+	{
+		e.Comma()
 
-	e.FieldStart("duration")
-	e.Int(s.Duration)
-	if s.Performer.Set {
-		e.FieldStart("performer")
-		s.Performer.Encode(e)
+		e.RawStr("\"duration\"" + ":")
+		e.Int(s.Duration)
 	}
-	if s.Title.Set {
-		e.FieldStart("title")
-		s.Title.Encode(e)
+	{
+		if s.Performer.Set {
+			e.Comma()
+		}
+		if s.Performer.Set {
+			e.RawStr("\"performer\"" + ":")
+			s.Performer.Encode(e)
+		}
 	}
-	if s.FileName.Set {
-		e.FieldStart("file_name")
-		s.FileName.Encode(e)
+	{
+		if s.Title.Set {
+			e.Comma()
+		}
+		if s.Title.Set {
+			e.RawStr("\"title\"" + ":")
+			s.Title.Encode(e)
+		}
 	}
-	if s.MimeType.Set {
-		e.FieldStart("mime_type")
-		s.MimeType.Encode(e)
+	{
+		if s.FileName.Set {
+			e.Comma()
+		}
+		if s.FileName.Set {
+			e.RawStr("\"file_name\"" + ":")
+			s.FileName.Encode(e)
+		}
 	}
-	if s.FileSize.Set {
-		e.FieldStart("file_size")
-		s.FileSize.Encode(e)
+	{
+		if s.MimeType.Set {
+			e.Comma()
+		}
+		if s.MimeType.Set {
+			e.RawStr("\"mime_type\"" + ":")
+			s.MimeType.Encode(e)
+		}
 	}
-	if s.Thumb.Set {
-		e.FieldStart("thumb")
-		s.Thumb.Encode(e)
+	{
+		if s.FileSize.Set {
+			e.Comma()
+		}
+		if s.FileSize.Set {
+			e.RawStr("\"file_size\"" + ":")
+			s.FileSize.Encode(e)
+		}
+	}
+	{
+		if s.Thumb.Set {
+			e.Comma()
+		}
+		if s.Thumb.Set {
+			e.RawStr("\"thumb\"" + ":")
+			s.Thumb.Encode(e)
+		}
 	}
 	e.ObjEnd()
 }
@@ -647,21 +904,44 @@ func (s *Audio) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s BanChatMember) Encode(e *jx.Encoder) {
+func (s BanChatMember) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+	{
+		if !first {
+			e.Comma()
+		}
+		first = false
 
-	e.FieldStart("chat_id")
-	s.ChatID.Encode(e)
-
-	e.FieldStart("user_id")
-	e.Int64(s.UserID)
-	if s.UntilDate.Set {
-		e.FieldStart("until_date")
-		s.UntilDate.Encode(e)
+		e.RawStr("\"chat_id\"" + ":")
+		s.ChatID.Encode(e)
 	}
-	if s.RevokeMessages.Set {
-		e.FieldStart("revoke_messages")
-		s.RevokeMessages.Encode(e)
+	{
+		e.Comma()
+
+		e.RawStr("\"user_id\"" + ":")
+		e.Int64(s.UserID)
+	}
+	{
+		if s.UntilDate.Set {
+			e.Comma()
+		}
+		if s.UntilDate.Set {
+			e.RawStr("\"until_date\"" + ":")
+			s.UntilDate.Encode(e)
+		}
+	}
+	{
+		if s.RevokeMessages.Set {
+			e.Comma()
+		}
+		if s.RevokeMessages.Set {
+			e.RawStr("\"revoke_messages\"" + ":")
+			s.RevokeMessages.Encode(e)
+		}
 	}
 	e.ObjEnd()
 }
@@ -701,14 +981,27 @@ func (s *BanChatMember) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s BanChatSenderChat) Encode(e *jx.Encoder) {
+func (s BanChatSenderChat) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+	{
+		if !first {
+			e.Comma()
+		}
+		first = false
 
-	e.FieldStart("chat_id")
-	s.ChatID.Encode(e)
+		e.RawStr("\"chat_id\"" + ":")
+		s.ChatID.Encode(e)
+	}
+	{
+		e.Comma()
 
-	e.FieldStart("sender_chat_id")
-	e.Int64(s.SenderChatID)
+		e.RawStr("\"sender_chat_id\"" + ":")
+		e.Int64(s.SenderChatID)
+	}
 	e.ObjEnd()
 }
 
@@ -737,14 +1030,27 @@ func (s *BanChatSenderChat) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s BotCommand) Encode(e *jx.Encoder) {
+func (s BotCommand) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+	{
+		if !first {
+			e.Comma()
+		}
+		first = false
 
-	e.FieldStart("command")
-	e.Str(s.Command)
+		e.RawStr("\"command\"" + ":")
+		e.Str(s.Command)
+	}
+	{
+		e.Comma()
 
-	e.FieldStart("description")
-	e.Str(s.Description)
+		e.RawStr("\"description\"" + ":")
+		e.Str(s.Description)
+	}
 	e.ObjEnd()
 }
 
@@ -775,7 +1081,7 @@ func (s *BotCommand) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes BotCommandScope as json.
-func (s BotCommandScope) Encode(e *jx.Encoder) {
+func (s BotCommandScope) Encode(e *jx.Writer) {
 	switch s.Type {
 	case BotCommandScopeDefaultBotCommandScope:
 		s.BotCommandScopeDefault.Encode(e)
@@ -886,11 +1192,21 @@ func (s *BotCommandScope) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s BotCommandScopeAllChatAdministrators) Encode(e *jx.Encoder) {
+func (s BotCommandScopeAllChatAdministrators) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+	{
+		if !first {
+			e.Comma()
+		}
+		first = false
 
-	e.FieldStart("type")
-	e.Str(s.Type)
+		e.RawStr("\"type\"" + ":")
+		e.Str(s.Type)
+	}
 	e.ObjEnd()
 }
 
@@ -915,11 +1231,21 @@ func (s *BotCommandScopeAllChatAdministrators) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s BotCommandScopeAllGroupChats) Encode(e *jx.Encoder) {
+func (s BotCommandScopeAllGroupChats) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+	{
+		if !first {
+			e.Comma()
+		}
+		first = false
 
-	e.FieldStart("type")
-	e.Str(s.Type)
+		e.RawStr("\"type\"" + ":")
+		e.Str(s.Type)
+	}
 	e.ObjEnd()
 }
 
@@ -944,11 +1270,21 @@ func (s *BotCommandScopeAllGroupChats) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s BotCommandScopeAllPrivateChats) Encode(e *jx.Encoder) {
+func (s BotCommandScopeAllPrivateChats) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+	{
+		if !first {
+			e.Comma()
+		}
+		first = false
 
-	e.FieldStart("type")
-	e.Str(s.Type)
+		e.RawStr("\"type\"" + ":")
+		e.Str(s.Type)
+	}
 	e.ObjEnd()
 }
 
@@ -973,14 +1309,27 @@ func (s *BotCommandScopeAllPrivateChats) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s BotCommandScopeChat) Encode(e *jx.Encoder) {
+func (s BotCommandScopeChat) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+	{
+		if !first {
+			e.Comma()
+		}
+		first = false
 
-	e.FieldStart("type")
-	e.Str(s.Type)
+		e.RawStr("\"type\"" + ":")
+		e.Str(s.Type)
+	}
+	{
+		e.Comma()
 
-	e.FieldStart("chat_id")
-	s.ChatID.Encode(e)
+		e.RawStr("\"chat_id\"" + ":")
+		s.ChatID.Encode(e)
+	}
 	e.ObjEnd()
 }
 
@@ -1009,14 +1358,27 @@ func (s *BotCommandScopeChat) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s BotCommandScopeChatAdministrators) Encode(e *jx.Encoder) {
+func (s BotCommandScopeChatAdministrators) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+	{
+		if !first {
+			e.Comma()
+		}
+		first = false
 
-	e.FieldStart("type")
-	e.Str(s.Type)
+		e.RawStr("\"type\"" + ":")
+		e.Str(s.Type)
+	}
+	{
+		e.Comma()
 
-	e.FieldStart("chat_id")
-	s.ChatID.Encode(e)
+		e.RawStr("\"chat_id\"" + ":")
+		s.ChatID.Encode(e)
+	}
 	e.ObjEnd()
 }
 
@@ -1045,17 +1407,33 @@ func (s *BotCommandScopeChatAdministrators) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s BotCommandScopeChatMember) Encode(e *jx.Encoder) {
+func (s BotCommandScopeChatMember) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+	{
+		if !first {
+			e.Comma()
+		}
+		first = false
 
-	e.FieldStart("type")
-	e.Str(s.Type)
+		e.RawStr("\"type\"" + ":")
+		e.Str(s.Type)
+	}
+	{
+		e.Comma()
 
-	e.FieldStart("chat_id")
-	s.ChatID.Encode(e)
+		e.RawStr("\"chat_id\"" + ":")
+		s.ChatID.Encode(e)
+	}
+	{
+		e.Comma()
 
-	e.FieldStart("user_id")
-	e.Int64(s.UserID)
+		e.RawStr("\"user_id\"" + ":")
+		e.Int64(s.UserID)
+	}
 	e.ObjEnd()
 }
 
@@ -1090,11 +1468,21 @@ func (s *BotCommandScopeChatMember) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s BotCommandScopeDefault) Encode(e *jx.Encoder) {
+func (s BotCommandScopeDefault) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+	{
+		if !first {
+			e.Comma()
+		}
+		first = false
 
-	e.FieldStart("type")
-	e.Str(s.Type)
+		e.RawStr("\"type\"" + ":")
+		e.Str(s.Type)
+	}
 	e.ObjEnd()
 }
 
@@ -1119,8 +1507,12 @@ func (s *BotCommandScopeDefault) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s CallbackGame) Encode(e *jx.Encoder) {
+func (s CallbackGame) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -1139,32 +1531,68 @@ func (s *CallbackGame) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s CallbackQuery) Encode(e *jx.Encoder) {
+func (s CallbackQuery) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+	{
+		if !first {
+			e.Comma()
+		}
+		first = false
 
-	e.FieldStart("id")
-	e.Str(s.ID)
+		e.RawStr("\"id\"" + ":")
+		e.Str(s.ID)
+	}
+	{
+		e.Comma()
 
-	e.FieldStart("from")
-	s.From.Encode(e)
-	if s.Message.Set {
-		e.FieldStart("message")
-		s.Message.Encode(e)
+		e.RawStr("\"from\"" + ":")
+		s.From.Encode(e)
 	}
-	if s.InlineMessageID.Set {
-		e.FieldStart("inline_message_id")
-		s.InlineMessageID.Encode(e)
+	{
+		if s.Message.Set {
+			e.Comma()
+		}
+		if s.Message.Set {
+			e.RawStr("\"message\"" + ":")
+			s.Message.Encode(e)
+		}
 	}
+	{
+		if s.InlineMessageID.Set {
+			e.Comma()
+		}
+		if s.InlineMessageID.Set {
+			e.RawStr("\"inline_message_id\"" + ":")
+			s.InlineMessageID.Encode(e)
+		}
+	}
+	{
+		e.Comma()
 
-	e.FieldStart("chat_instance")
-	e.Str(s.ChatInstance)
-	if s.Data.Set {
-		e.FieldStart("data")
-		s.Data.Encode(e)
+		e.RawStr("\"chat_instance\"" + ":")
+		e.Str(s.ChatInstance)
 	}
-	if s.GameShortName.Set {
-		e.FieldStart("game_short_name")
-		s.GameShortName.Encode(e)
+	{
+		if s.Data.Set {
+			e.Comma()
+		}
+		if s.Data.Set {
+			e.RawStr("\"data\"" + ":")
+			s.Data.Encode(e)
+		}
+	}
+	{
+		if s.GameShortName.Set {
+			e.Comma()
+		}
+		if s.GameShortName.Set {
+			e.RawStr("\"game_short_name\"" + ":")
+			s.GameShortName.Encode(e)
+		}
 	}
 	e.ObjEnd()
 }
@@ -1220,85 +1648,188 @@ func (s *CallbackQuery) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s Chat) Encode(e *jx.Encoder) {
+func (s Chat) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+	{
+		if !first {
+			e.Comma()
+		}
+		first = false
 
-	e.FieldStart("id")
-	e.Int64(s.ID)
+		e.RawStr("\"id\"" + ":")
+		e.Int64(s.ID)
+	}
+	{
+		e.Comma()
 
-	e.FieldStart("type")
-	s.Type.Encode(e)
-	if s.Title.Set {
-		e.FieldStart("title")
-		s.Title.Encode(e)
+		e.RawStr("\"type\"" + ":")
+		s.Type.Encode(e)
 	}
-	if s.Username.Set {
-		e.FieldStart("username")
-		s.Username.Encode(e)
+	{
+		if s.Title.Set {
+			e.Comma()
+		}
+		if s.Title.Set {
+			e.RawStr("\"title\"" + ":")
+			s.Title.Encode(e)
+		}
 	}
-	if s.FirstName.Set {
-		e.FieldStart("first_name")
-		s.FirstName.Encode(e)
+	{
+		if s.Username.Set {
+			e.Comma()
+		}
+		if s.Username.Set {
+			e.RawStr("\"username\"" + ":")
+			s.Username.Encode(e)
+		}
 	}
-	if s.LastName.Set {
-		e.FieldStart("last_name")
-		s.LastName.Encode(e)
+	{
+		if s.FirstName.Set {
+			e.Comma()
+		}
+		if s.FirstName.Set {
+			e.RawStr("\"first_name\"" + ":")
+			s.FirstName.Encode(e)
+		}
 	}
-	if s.Photo.Set {
-		e.FieldStart("photo")
-		s.Photo.Encode(e)
+	{
+		if s.LastName.Set {
+			e.Comma()
+		}
+		if s.LastName.Set {
+			e.RawStr("\"last_name\"" + ":")
+			s.LastName.Encode(e)
+		}
 	}
-	if s.Bio.Set {
-		e.FieldStart("bio")
-		s.Bio.Encode(e)
+	{
+		if s.Photo.Set {
+			e.Comma()
+		}
+		if s.Photo.Set {
+			e.RawStr("\"photo\"" + ":")
+			s.Photo.Encode(e)
+		}
 	}
-	if s.HasPrivateForwards.Set {
-		e.FieldStart("has_private_forwards")
-		s.HasPrivateForwards.Encode(e)
+	{
+		if s.Bio.Set {
+			e.Comma()
+		}
+		if s.Bio.Set {
+			e.RawStr("\"bio\"" + ":")
+			s.Bio.Encode(e)
+		}
 	}
-	if s.Description.Set {
-		e.FieldStart("description")
-		s.Description.Encode(e)
+	{
+		if s.HasPrivateForwards.Set {
+			e.Comma()
+		}
+		if s.HasPrivateForwards.Set {
+			e.RawStr("\"has_private_forwards\"" + ":")
+			s.HasPrivateForwards.Encode(e)
+		}
 	}
-	if s.InviteLink.Set {
-		e.FieldStart("invite_link")
-		s.InviteLink.Encode(e)
+	{
+		if s.Description.Set {
+			e.Comma()
+		}
+		if s.Description.Set {
+			e.RawStr("\"description\"" + ":")
+			s.Description.Encode(e)
+		}
 	}
-	if s.PinnedMessage != nil {
-		e.FieldStart("pinned_message")
-		s.PinnedMessage.Encode(e)
+	{
+		if s.InviteLink.Set {
+			e.Comma()
+		}
+		if s.InviteLink.Set {
+			e.RawStr("\"invite_link\"" + ":")
+			s.InviteLink.Encode(e)
+		}
 	}
-	if s.Permissions.Set {
-		e.FieldStart("permissions")
-		s.Permissions.Encode(e)
+	{
+		if s.PinnedMessage != nil {
+			e.Comma()
+		}
+		if s.PinnedMessage != nil {
+			e.RawStr("\"pinned_message\"" + ":")
+			s.PinnedMessage.Encode(e)
+		}
 	}
-	if s.SlowModeDelay.Set {
-		e.FieldStart("slow_mode_delay")
-		s.SlowModeDelay.Encode(e)
+	{
+		if s.Permissions.Set {
+			e.Comma()
+		}
+		if s.Permissions.Set {
+			e.RawStr("\"permissions\"" + ":")
+			s.Permissions.Encode(e)
+		}
 	}
-	if s.MessageAutoDeleteTime.Set {
-		e.FieldStart("message_auto_delete_time")
-		s.MessageAutoDeleteTime.Encode(e)
+	{
+		if s.SlowModeDelay.Set {
+			e.Comma()
+		}
+		if s.SlowModeDelay.Set {
+			e.RawStr("\"slow_mode_delay\"" + ":")
+			s.SlowModeDelay.Encode(e)
+		}
 	}
-	if s.HasProtectedContent.Set {
-		e.FieldStart("has_protected_content")
-		s.HasProtectedContent.Encode(e)
+	{
+		if s.MessageAutoDeleteTime.Set {
+			e.Comma()
+		}
+		if s.MessageAutoDeleteTime.Set {
+			e.RawStr("\"message_auto_delete_time\"" + ":")
+			s.MessageAutoDeleteTime.Encode(e)
+		}
 	}
-	if s.StickerSetName.Set {
-		e.FieldStart("sticker_set_name")
-		s.StickerSetName.Encode(e)
+	{
+		if s.HasProtectedContent.Set {
+			e.Comma()
+		}
+		if s.HasProtectedContent.Set {
+			e.RawStr("\"has_protected_content\"" + ":")
+			s.HasProtectedContent.Encode(e)
+		}
 	}
-	if s.CanSetStickerSet.Set {
-		e.FieldStart("can_set_sticker_set")
-		s.CanSetStickerSet.Encode(e)
+	{
+		if s.StickerSetName.Set {
+			e.Comma()
+		}
+		if s.StickerSetName.Set {
+			e.RawStr("\"sticker_set_name\"" + ":")
+			s.StickerSetName.Encode(e)
+		}
 	}
-	if s.LinkedChatID.Set {
-		e.FieldStart("linked_chat_id")
-		s.LinkedChatID.Encode(e)
+	{
+		if s.CanSetStickerSet.Set {
+			e.Comma()
+		}
+		if s.CanSetStickerSet.Set {
+			e.RawStr("\"can_set_sticker_set\"" + ":")
+			s.CanSetStickerSet.Encode(e)
+		}
 	}
-	if s.Location.Set {
-		e.FieldStart("location")
-		s.Location.Encode(e)
+	{
+		if s.LinkedChatID.Set {
+			e.Comma()
+		}
+		if s.LinkedChatID.Set {
+			e.RawStr("\"linked_chat_id\"" + ":")
+			s.LinkedChatID.Encode(e)
+		}
+	}
+	{
+		if s.Location.Set {
+			e.Comma()
+		}
+		if s.Location.Set {
+			e.RawStr("\"location\"" + ":")
+			s.Location.Encode(e)
+		}
 	}
 	e.ObjEnd()
 }
@@ -1420,38 +1951,80 @@ func (s *Chat) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s ChatInviteLink) Encode(e *jx.Encoder) {
+func (s ChatInviteLink) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+	{
+		if !first {
+			e.Comma()
+		}
+		first = false
 
-	e.FieldStart("invite_link")
-	e.Str(s.InviteLink)
-
-	e.FieldStart("creator")
-	s.Creator.Encode(e)
-
-	e.FieldStart("creates_join_request")
-	e.Bool(s.CreatesJoinRequest)
-
-	e.FieldStart("is_primary")
-	e.Bool(s.IsPrimary)
-
-	e.FieldStart("is_revoked")
-	e.Bool(s.IsRevoked)
-	if s.Name.Set {
-		e.FieldStart("name")
-		s.Name.Encode(e)
+		e.RawStr("\"invite_link\"" + ":")
+		e.Str(s.InviteLink)
 	}
-	if s.ExpireDate.Set {
-		e.FieldStart("expire_date")
-		s.ExpireDate.Encode(e)
+	{
+		e.Comma()
+
+		e.RawStr("\"creator\"" + ":")
+		s.Creator.Encode(e)
 	}
-	if s.MemberLimit.Set {
-		e.FieldStart("member_limit")
-		s.MemberLimit.Encode(e)
+	{
+		e.Comma()
+
+		e.RawStr("\"creates_join_request\"" + ":")
+		e.Bool(s.CreatesJoinRequest)
 	}
-	if s.PendingJoinRequestCount.Set {
-		e.FieldStart("pending_join_request_count")
-		s.PendingJoinRequestCount.Encode(e)
+	{
+		e.Comma()
+
+		e.RawStr("\"is_primary\"" + ":")
+		e.Bool(s.IsPrimary)
+	}
+	{
+		e.Comma()
+
+		e.RawStr("\"is_revoked\"" + ":")
+		e.Bool(s.IsRevoked)
+	}
+	{
+		if s.Name.Set {
+			e.Comma()
+		}
+		if s.Name.Set {
+			e.RawStr("\"name\"" + ":")
+			s.Name.Encode(e)
+		}
+	}
+	{
+		if s.ExpireDate.Set {
+			e.Comma()
+		}
+		if s.ExpireDate.Set {
+			e.RawStr("\"expire_date\"" + ":")
+			s.ExpireDate.Encode(e)
+		}
+	}
+	{
+		if s.MemberLimit.Set {
+			e.Comma()
+		}
+		if s.MemberLimit.Set {
+			e.RawStr("\"member_limit\"" + ":")
+			s.MemberLimit.Encode(e)
+		}
+	}
+	{
+		if s.PendingJoinRequestCount.Set {
+			e.Comma()
+		}
+		if s.PendingJoinRequestCount.Set {
+			e.RawStr("\"pending_join_request_count\"" + ":")
+			s.PendingJoinRequestCount.Encode(e)
+		}
 	}
 	e.ObjEnd()
 }
@@ -1519,24 +2092,50 @@ func (s *ChatInviteLink) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s ChatJoinRequest) Encode(e *jx.Encoder) {
+func (s ChatJoinRequest) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+	{
+		if !first {
+			e.Comma()
+		}
+		first = false
 
-	e.FieldStart("chat")
-	s.Chat.Encode(e)
-
-	e.FieldStart("from")
-	s.From.Encode(e)
-
-	e.FieldStart("date")
-	e.Int(s.Date)
-	if s.Bio.Set {
-		e.FieldStart("bio")
-		s.Bio.Encode(e)
+		e.RawStr("\"chat\"" + ":")
+		s.Chat.Encode(e)
 	}
-	if s.InviteLink.Set {
-		e.FieldStart("invite_link")
-		s.InviteLink.Encode(e)
+	{
+		e.Comma()
+
+		e.RawStr("\"from\"" + ":")
+		s.From.Encode(e)
+	}
+	{
+		e.Comma()
+
+		e.RawStr("\"date\"" + ":")
+		e.Int(s.Date)
+	}
+	{
+		if s.Bio.Set {
+			e.Comma()
+		}
+		if s.Bio.Set {
+			e.RawStr("\"bio\"" + ":")
+			s.Bio.Encode(e)
+		}
+	}
+	{
+		if s.InviteLink.Set {
+			e.Comma()
+		}
+		if s.InviteLink.Set {
+			e.RawStr("\"invite_link\"" + ":")
+			s.InviteLink.Encode(e)
+		}
 	}
 	e.ObjEnd()
 }
@@ -1580,14 +2179,27 @@ func (s *ChatJoinRequest) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s ChatLocation) Encode(e *jx.Encoder) {
+func (s ChatLocation) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+	{
+		if !first {
+			e.Comma()
+		}
+		first = false
 
-	e.FieldStart("location")
-	s.Location.Encode(e)
+		e.RawStr("\"location\"" + ":")
+		s.Location.Encode(e)
+	}
+	{
+		e.Comma()
 
-	e.FieldStart("address")
-	e.Str(s.Address)
+		e.RawStr("\"address\"" + ":")
+		e.Str(s.Address)
+	}
 	e.ObjEnd()
 }
 
@@ -1616,7 +2228,7 @@ func (s *ChatLocation) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes ChatMember as json.
-func (s ChatMember) Encode(e *jx.Encoder) {
+func (s ChatMember) Encode(e *jx.Writer) {
 	switch s.Type {
 	case ChatMemberOwnerChatMember:
 		s.ChatMemberOwner.Encode(e)
@@ -1718,56 +2330,116 @@ func (s *ChatMember) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s ChatMemberAdministrator) Encode(e *jx.Encoder) {
+func (s ChatMemberAdministrator) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+	{
+		if !first {
+			e.Comma()
+		}
+		first = false
 
-	e.FieldStart("status")
-	e.Str(s.Status)
-
-	e.FieldStart("user")
-	s.User.Encode(e)
-
-	e.FieldStart("can_be_edited")
-	e.Bool(s.CanBeEdited)
-
-	e.FieldStart("is_anonymous")
-	e.Bool(s.IsAnonymous)
-
-	e.FieldStart("can_manage_chat")
-	e.Bool(s.CanManageChat)
-
-	e.FieldStart("can_delete_messages")
-	e.Bool(s.CanDeleteMessages)
-
-	e.FieldStart("can_manage_voice_chats")
-	e.Bool(s.CanManageVoiceChats)
-
-	e.FieldStart("can_restrict_members")
-	e.Bool(s.CanRestrictMembers)
-
-	e.FieldStart("can_promote_members")
-	e.Bool(s.CanPromoteMembers)
-
-	e.FieldStart("can_change_info")
-	e.Bool(s.CanChangeInfo)
-
-	e.FieldStart("can_invite_users")
-	e.Bool(s.CanInviteUsers)
-	if s.CanPostMessages.Set {
-		e.FieldStart("can_post_messages")
-		s.CanPostMessages.Encode(e)
+		e.RawStr("\"status\"" + ":")
+		e.Str(s.Status)
 	}
-	if s.CanEditMessages.Set {
-		e.FieldStart("can_edit_messages")
-		s.CanEditMessages.Encode(e)
+	{
+		e.Comma()
+
+		e.RawStr("\"user\"" + ":")
+		s.User.Encode(e)
 	}
-	if s.CanPinMessages.Set {
-		e.FieldStart("can_pin_messages")
-		s.CanPinMessages.Encode(e)
+	{
+		e.Comma()
+
+		e.RawStr("\"can_be_edited\"" + ":")
+		e.Bool(s.CanBeEdited)
 	}
-	if s.CustomTitle.Set {
-		e.FieldStart("custom_title")
-		s.CustomTitle.Encode(e)
+	{
+		e.Comma()
+
+		e.RawStr("\"is_anonymous\"" + ":")
+		e.Bool(s.IsAnonymous)
+	}
+	{
+		e.Comma()
+
+		e.RawStr("\"can_manage_chat\"" + ":")
+		e.Bool(s.CanManageChat)
+	}
+	{
+		e.Comma()
+
+		e.RawStr("\"can_delete_messages\"" + ":")
+		e.Bool(s.CanDeleteMessages)
+	}
+	{
+		e.Comma()
+
+		e.RawStr("\"can_manage_voice_chats\"" + ":")
+		e.Bool(s.CanManageVoiceChats)
+	}
+	{
+		e.Comma()
+
+		e.RawStr("\"can_restrict_members\"" + ":")
+		e.Bool(s.CanRestrictMembers)
+	}
+	{
+		e.Comma()
+
+		e.RawStr("\"can_promote_members\"" + ":")
+		e.Bool(s.CanPromoteMembers)
+	}
+	{
+		e.Comma()
+
+		e.RawStr("\"can_change_info\"" + ":")
+		e.Bool(s.CanChangeInfo)
+	}
+	{
+		e.Comma()
+
+		e.RawStr("\"can_invite_users\"" + ":")
+		e.Bool(s.CanInviteUsers)
+	}
+	{
+		if s.CanPostMessages.Set {
+			e.Comma()
+		}
+		if s.CanPostMessages.Set {
+			e.RawStr("\"can_post_messages\"" + ":")
+			s.CanPostMessages.Encode(e)
+		}
+	}
+	{
+		if s.CanEditMessages.Set {
+			e.Comma()
+		}
+		if s.CanEditMessages.Set {
+			e.RawStr("\"can_edit_messages\"" + ":")
+			s.CanEditMessages.Encode(e)
+		}
+	}
+	{
+		if s.CanPinMessages.Set {
+			e.Comma()
+		}
+		if s.CanPinMessages.Set {
+			e.RawStr("\"can_pin_messages\"" + ":")
+			s.CanPinMessages.Encode(e)
+		}
+	}
+	{
+		if s.CustomTitle.Set {
+			e.Comma()
+		}
+		if s.CustomTitle.Set {
+			e.RawStr("\"custom_title\"" + ":")
+			s.CustomTitle.Encode(e)
+		}
 	}
 	e.ObjEnd()
 }
@@ -1871,17 +2543,33 @@ func (s *ChatMemberAdministrator) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s ChatMemberBanned) Encode(e *jx.Encoder) {
+func (s ChatMemberBanned) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+	{
+		if !first {
+			e.Comma()
+		}
+		first = false
 
-	e.FieldStart("status")
-	e.Str(s.Status)
+		e.RawStr("\"status\"" + ":")
+		e.Str(s.Status)
+	}
+	{
+		e.Comma()
 
-	e.FieldStart("user")
-	s.User.Encode(e)
+		e.RawStr("\"user\"" + ":")
+		s.User.Encode(e)
+	}
+	{
+		e.Comma()
 
-	e.FieldStart("until_date")
-	e.Int(s.UntilDate)
+		e.RawStr("\"until_date\"" + ":")
+		e.Int(s.UntilDate)
+	}
 	e.ObjEnd()
 }
 
@@ -1916,14 +2604,27 @@ func (s *ChatMemberBanned) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s ChatMemberLeft) Encode(e *jx.Encoder) {
+func (s ChatMemberLeft) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+	{
+		if !first {
+			e.Comma()
+		}
+		first = false
 
-	e.FieldStart("status")
-	e.Str(s.Status)
+		e.RawStr("\"status\"" + ":")
+		e.Str(s.Status)
+	}
+	{
+		e.Comma()
 
-	e.FieldStart("user")
-	s.User.Encode(e)
+		e.RawStr("\"user\"" + ":")
+		s.User.Encode(e)
+	}
 	e.ObjEnd()
 }
 
@@ -1952,14 +2653,27 @@ func (s *ChatMemberLeft) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s ChatMemberMember) Encode(e *jx.Encoder) {
+func (s ChatMemberMember) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+	{
+		if !first {
+			e.Comma()
+		}
+		first = false
 
-	e.FieldStart("status")
-	e.Str(s.Status)
+		e.RawStr("\"status\"" + ":")
+		e.Str(s.Status)
+	}
+	{
+		e.Comma()
 
-	e.FieldStart("user")
-	s.User.Encode(e)
+		e.RawStr("\"user\"" + ":")
+		s.User.Encode(e)
+	}
 	e.ObjEnd()
 }
 
@@ -1988,20 +2702,41 @@ func (s *ChatMemberMember) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s ChatMemberOwner) Encode(e *jx.Encoder) {
+func (s ChatMemberOwner) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+	{
+		if !first {
+			e.Comma()
+		}
+		first = false
 
-	e.FieldStart("status")
-	e.Str(s.Status)
+		e.RawStr("\"status\"" + ":")
+		e.Str(s.Status)
+	}
+	{
+		e.Comma()
 
-	e.FieldStart("user")
-	s.User.Encode(e)
+		e.RawStr("\"user\"" + ":")
+		s.User.Encode(e)
+	}
+	{
+		e.Comma()
 
-	e.FieldStart("is_anonymous")
-	e.Bool(s.IsAnonymous)
-	if s.CustomTitle.Set {
-		e.FieldStart("custom_title")
-		s.CustomTitle.Encode(e)
+		e.RawStr("\"is_anonymous\"" + ":")
+		e.Bool(s.IsAnonymous)
+	}
+	{
+		if s.CustomTitle.Set {
+			e.Comma()
+		}
+		if s.CustomTitle.Set {
+			e.RawStr("\"custom_title\"" + ":")
+			s.CustomTitle.Encode(e)
+		}
 	}
 	e.ObjEnd()
 }
@@ -2042,44 +2777,87 @@ func (s *ChatMemberOwner) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s ChatMemberRestricted) Encode(e *jx.Encoder) {
+func (s ChatMemberRestricted) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+	{
+		if !first {
+			e.Comma()
+		}
+		first = false
 
-	e.FieldStart("status")
-	e.Str(s.Status)
+		e.RawStr("\"status\"" + ":")
+		e.Str(s.Status)
+	}
+	{
+		e.Comma()
 
-	e.FieldStart("user")
-	s.User.Encode(e)
+		e.RawStr("\"user\"" + ":")
+		s.User.Encode(e)
+	}
+	{
+		e.Comma()
 
-	e.FieldStart("is_member")
-	e.Bool(s.IsMember)
+		e.RawStr("\"is_member\"" + ":")
+		e.Bool(s.IsMember)
+	}
+	{
+		e.Comma()
 
-	e.FieldStart("can_change_info")
-	e.Bool(s.CanChangeInfo)
+		e.RawStr("\"can_change_info\"" + ":")
+		e.Bool(s.CanChangeInfo)
+	}
+	{
+		e.Comma()
 
-	e.FieldStart("can_invite_users")
-	e.Bool(s.CanInviteUsers)
+		e.RawStr("\"can_invite_users\"" + ":")
+		e.Bool(s.CanInviteUsers)
+	}
+	{
+		e.Comma()
 
-	e.FieldStart("can_pin_messages")
-	e.Bool(s.CanPinMessages)
+		e.RawStr("\"can_pin_messages\"" + ":")
+		e.Bool(s.CanPinMessages)
+	}
+	{
+		e.Comma()
 
-	e.FieldStart("can_send_messages")
-	e.Bool(s.CanSendMessages)
+		e.RawStr("\"can_send_messages\"" + ":")
+		e.Bool(s.CanSendMessages)
+	}
+	{
+		e.Comma()
 
-	e.FieldStart("can_send_media_messages")
-	e.Bool(s.CanSendMediaMessages)
+		e.RawStr("\"can_send_media_messages\"" + ":")
+		e.Bool(s.CanSendMediaMessages)
+	}
+	{
+		e.Comma()
 
-	e.FieldStart("can_send_polls")
-	e.Bool(s.CanSendPolls)
+		e.RawStr("\"can_send_polls\"" + ":")
+		e.Bool(s.CanSendPolls)
+	}
+	{
+		e.Comma()
 
-	e.FieldStart("can_send_other_messages")
-	e.Bool(s.CanSendOtherMessages)
+		e.RawStr("\"can_send_other_messages\"" + ":")
+		e.Bool(s.CanSendOtherMessages)
+	}
+	{
+		e.Comma()
 
-	e.FieldStart("can_add_web_page_previews")
-	e.Bool(s.CanAddWebPagePreviews)
+		e.RawStr("\"can_add_web_page_previews\"" + ":")
+		e.Bool(s.CanAddWebPagePreviews)
+	}
+	{
+		e.Comma()
 
-	e.FieldStart("until_date")
-	e.Int(s.UntilDate)
+		e.RawStr("\"until_date\"" + ":")
+		e.Int(s.UntilDate)
+	}
 	e.ObjEnd()
 }
 
@@ -2168,26 +2946,53 @@ func (s *ChatMemberRestricted) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s ChatMemberUpdated) Encode(e *jx.Encoder) {
+func (s ChatMemberUpdated) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+	{
+		if !first {
+			e.Comma()
+		}
+		first = false
 
-	e.FieldStart("chat")
-	s.Chat.Encode(e)
+		e.RawStr("\"chat\"" + ":")
+		s.Chat.Encode(e)
+	}
+	{
+		e.Comma()
 
-	e.FieldStart("from")
-	s.From.Encode(e)
+		e.RawStr("\"from\"" + ":")
+		s.From.Encode(e)
+	}
+	{
+		e.Comma()
 
-	e.FieldStart("date")
-	e.Int(s.Date)
+		e.RawStr("\"date\"" + ":")
+		e.Int(s.Date)
+	}
+	{
+		e.Comma()
 
-	e.FieldStart("old_chat_member")
-	s.OldChatMember.Encode(e)
+		e.RawStr("\"old_chat_member\"" + ":")
+		s.OldChatMember.Encode(e)
+	}
+	{
+		e.Comma()
 
-	e.FieldStart("new_chat_member")
-	s.NewChatMember.Encode(e)
-	if s.InviteLink.Set {
-		e.FieldStart("invite_link")
-		s.InviteLink.Encode(e)
+		e.RawStr("\"new_chat_member\"" + ":")
+		s.NewChatMember.Encode(e)
+	}
+	{
+		if s.InviteLink.Set {
+			e.Comma()
+		}
+		if s.InviteLink.Set {
+			e.RawStr("\"invite_link\"" + ":")
+			s.InviteLink.Encode(e)
+		}
 	}
 	e.ObjEnd()
 }
@@ -2234,39 +3039,107 @@ func (s *ChatMemberUpdated) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s ChatPermissions) Encode(e *jx.Encoder) {
+func (s ChatPermissions) Encode(e *jx.Writer) {
 	e.ObjStart()
-	if s.CanSendMessages.Set {
-		e.FieldStart("can_send_messages")
-		s.CanSendMessages.Encode(e)
+	var (
+		first = true
+		_     = first
+	)
+	{
+		if s.CanSendMessages.Set {
+			if !first {
+				e.Comma()
+			}
+			first = false
+		}
+		if s.CanSendMessages.Set {
+			e.RawStr("\"can_send_messages\"" + ":")
+			s.CanSendMessages.Encode(e)
+		}
 	}
-	if s.CanSendMediaMessages.Set {
-		e.FieldStart("can_send_media_messages")
-		s.CanSendMediaMessages.Encode(e)
+	{
+		if s.CanSendMediaMessages.Set {
+			if !first {
+				e.Comma()
+			}
+			first = false
+		}
+		if s.CanSendMediaMessages.Set {
+			e.RawStr("\"can_send_media_messages\"" + ":")
+			s.CanSendMediaMessages.Encode(e)
+		}
 	}
-	if s.CanSendPolls.Set {
-		e.FieldStart("can_send_polls")
-		s.CanSendPolls.Encode(e)
+	{
+		if s.CanSendPolls.Set {
+			if !first {
+				e.Comma()
+			}
+			first = false
+		}
+		if s.CanSendPolls.Set {
+			e.RawStr("\"can_send_polls\"" + ":")
+			s.CanSendPolls.Encode(e)
+		}
 	}
-	if s.CanSendOtherMessages.Set {
-		e.FieldStart("can_send_other_messages")
-		s.CanSendOtherMessages.Encode(e)
+	{
+		if s.CanSendOtherMessages.Set {
+			if !first {
+				e.Comma()
+			}
+			first = false
+		}
+		if s.CanSendOtherMessages.Set {
+			e.RawStr("\"can_send_other_messages\"" + ":")
+			s.CanSendOtherMessages.Encode(e)
+		}
 	}
-	if s.CanAddWebPagePreviews.Set {
-		e.FieldStart("can_add_web_page_previews")
-		s.CanAddWebPagePreviews.Encode(e)
+	{
+		if s.CanAddWebPagePreviews.Set {
+			if !first {
+				e.Comma()
+			}
+			first = false
+		}
+		if s.CanAddWebPagePreviews.Set {
+			e.RawStr("\"can_add_web_page_previews\"" + ":")
+			s.CanAddWebPagePreviews.Encode(e)
+		}
 	}
-	if s.CanChangeInfo.Set {
-		e.FieldStart("can_change_info")
-		s.CanChangeInfo.Encode(e)
+	{
+		if s.CanChangeInfo.Set {
+			if !first {
+				e.Comma()
+			}
+			first = false
+		}
+		if s.CanChangeInfo.Set {
+			e.RawStr("\"can_change_info\"" + ":")
+			s.CanChangeInfo.Encode(e)
+		}
 	}
-	if s.CanInviteUsers.Set {
-		e.FieldStart("can_invite_users")
-		s.CanInviteUsers.Encode(e)
+	{
+		if s.CanInviteUsers.Set {
+			if !first {
+				e.Comma()
+			}
+			first = false
+		}
+		if s.CanInviteUsers.Set {
+			e.RawStr("\"can_invite_users\"" + ":")
+			s.CanInviteUsers.Encode(e)
+		}
 	}
-	if s.CanPinMessages.Set {
-		e.FieldStart("can_pin_messages")
-		s.CanPinMessages.Encode(e)
+	{
+		if s.CanPinMessages.Set {
+			if !first {
+				e.Comma()
+			}
+			first = false
+		}
+		if s.CanPinMessages.Set {
+			e.RawStr("\"can_pin_messages\"" + ":")
+			s.CanPinMessages.Encode(e)
+		}
 	}
 	e.ObjEnd()
 }
@@ -2326,20 +3199,39 @@ func (s *ChatPermissions) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s ChatPhoto) Encode(e *jx.Encoder) {
+func (s ChatPhoto) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+	{
+		if !first {
+			e.Comma()
+		}
+		first = false
 
-	e.FieldStart("small_file_id")
-	e.Str(s.SmallFileID)
+		e.RawStr("\"small_file_id\"" + ":")
+		e.Str(s.SmallFileID)
+	}
+	{
+		e.Comma()
 
-	e.FieldStart("small_file_unique_id")
-	e.Str(s.SmallFileUniqueID)
+		e.RawStr("\"small_file_unique_id\"" + ":")
+		e.Str(s.SmallFileUniqueID)
+	}
+	{
+		e.Comma()
 
-	e.FieldStart("big_file_id")
-	e.Str(s.BigFileID)
+		e.RawStr("\"big_file_id\"" + ":")
+		e.Str(s.BigFileID)
+	}
+	{
+		e.Comma()
 
-	e.FieldStart("big_file_unique_id")
-	e.Str(s.BigFileUniqueID)
+		e.RawStr("\"big_file_unique_id\"" + ":")
+		e.Str(s.BigFileUniqueID)
+	}
 	e.ObjEnd()
 }
 
@@ -2382,7 +3274,7 @@ func (s *ChatPhoto) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes ChatType as json.
-func (s ChatType) Encode(e *jx.Encoder) {
+func (s ChatType) Encode(e *jx.Writer) {
 	e.Str(string(s))
 }
 
@@ -2413,25 +3305,51 @@ func (s *ChatType) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s ChosenInlineResult) Encode(e *jx.Encoder) {
+func (s ChosenInlineResult) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+	{
+		if !first {
+			e.Comma()
+		}
+		first = false
 
-	e.FieldStart("result_id")
-	e.Str(s.ResultID)
-
-	e.FieldStart("from")
-	s.From.Encode(e)
-	if s.Location.Set {
-		e.FieldStart("location")
-		s.Location.Encode(e)
+		e.RawStr("\"result_id\"" + ":")
+		e.Str(s.ResultID)
 	}
-	if s.InlineMessageID.Set {
-		e.FieldStart("inline_message_id")
-		s.InlineMessageID.Encode(e)
-	}
+	{
+		e.Comma()
 
-	e.FieldStart("query")
-	e.Str(s.Query)
+		e.RawStr("\"from\"" + ":")
+		s.From.Encode(e)
+	}
+	{
+		if s.Location.Set {
+			e.Comma()
+		}
+		if s.Location.Set {
+			e.RawStr("\"location\"" + ":")
+			s.Location.Encode(e)
+		}
+	}
+	{
+		if s.InlineMessageID.Set {
+			e.Comma()
+		}
+		if s.InlineMessageID.Set {
+			e.RawStr("\"inline_message_id\"" + ":")
+			s.InlineMessageID.Encode(e)
+		}
+	}
+	{
+		e.Comma()
+
+		e.RawStr("\"query\"" + ":")
+		e.Str(s.Query)
+	}
 	e.ObjEnd()
 }
 
@@ -2476,25 +3394,53 @@ func (s *ChosenInlineResult) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s Contact) Encode(e *jx.Encoder) {
+func (s Contact) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+	{
+		if !first {
+			e.Comma()
+		}
+		first = false
 
-	e.FieldStart("phone_number")
-	e.Str(s.PhoneNumber)
+		e.RawStr("\"phone_number\"" + ":")
+		e.Str(s.PhoneNumber)
+	}
+	{
+		e.Comma()
 
-	e.FieldStart("first_name")
-	e.Str(s.FirstName)
-	if s.LastName.Set {
-		e.FieldStart("last_name")
-		s.LastName.Encode(e)
+		e.RawStr("\"first_name\"" + ":")
+		e.Str(s.FirstName)
 	}
-	if s.UserID.Set {
-		e.FieldStart("user_id")
-		s.UserID.Encode(e)
+	{
+		if s.LastName.Set {
+			e.Comma()
+		}
+		if s.LastName.Set {
+			e.RawStr("\"last_name\"" + ":")
+			s.LastName.Encode(e)
+		}
 	}
-	if s.Vcard.Set {
-		e.FieldStart("vcard")
-		s.Vcard.Encode(e)
+	{
+		if s.UserID.Set {
+			e.Comma()
+		}
+		if s.UserID.Set {
+			e.RawStr("\"user_id\"" + ":")
+			s.UserID.Encode(e)
+		}
+	}
+	{
+		if s.Vcard.Set {
+			e.Comma()
+		}
+		if s.Vcard.Set {
+			e.RawStr("\"vcard\"" + ":")
+			s.Vcard.Encode(e)
+		}
 	}
 	e.ObjEnd()
 }
@@ -2541,48 +3487,107 @@ func (s *Contact) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s CopyMessage) Encode(e *jx.Encoder) {
+func (s CopyMessage) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	e.FieldStart("chat_id")
-	s.ChatID.Encode(e)
-
-	e.FieldStart("from_chat_id")
-	s.FromChatID.Encode(e)
-
-	e.FieldStart("message_id")
-	e.Int(s.MessageID)
-	if s.Caption.Set {
-		e.FieldStart("caption")
-		s.Caption.Encode(e)
-	}
-	if s.ParseMode.Set {
-		e.FieldStart("parse_mode")
-		s.ParseMode.Encode(e)
-	}
-	if s.CaptionEntities != nil {
-		e.FieldStart("caption_entities")
-		e.ArrStart()
-		for _, elem := range s.CaptionEntities {
-			elem.Encode(e)
+	var (
+		first = true
+		_     = first
+	)
+	{
+		if !first {
+			e.Comma()
 		}
-		e.ArrEnd()
+		first = false
+
+		e.RawStr("\"chat_id\"" + ":")
+		s.ChatID.Encode(e)
 	}
-	if s.DisableNotification.Set {
-		e.FieldStart("disable_notification")
-		s.DisableNotification.Encode(e)
+	{
+		e.Comma()
+
+		e.RawStr("\"from_chat_id\"" + ":")
+		s.FromChatID.Encode(e)
 	}
-	if s.ReplyToMessageID.Set {
-		e.FieldStart("reply_to_message_id")
-		s.ReplyToMessageID.Encode(e)
+	{
+		e.Comma()
+
+		e.RawStr("\"message_id\"" + ":")
+		e.Int(s.MessageID)
 	}
-	if s.AllowSendingWithoutReply.Set {
-		e.FieldStart("allow_sending_without_reply")
-		s.AllowSendingWithoutReply.Encode(e)
+	{
+		if s.Caption.Set {
+			e.Comma()
+		}
+		if s.Caption.Set {
+			e.RawStr("\"caption\"" + ":")
+			s.Caption.Encode(e)
+		}
 	}
-	if s.ReplyMarkup.Set {
-		e.FieldStart("reply_markup")
-		s.ReplyMarkup.Encode(e)
+	{
+		if s.ParseMode.Set {
+			e.Comma()
+		}
+		if s.ParseMode.Set {
+			e.RawStr("\"parse_mode\"" + ":")
+			s.ParseMode.Encode(e)
+		}
+	}
+	{
+		if s.CaptionEntities != nil {
+			e.Comma()
+		}
+		if s.CaptionEntities != nil {
+			e.RawStr("\"caption_entities\"" + ":")
+			e.ArrStart()
+			if len(s.CaptionEntities) >= 1 {
+				// Encode first element without comma.
+				{
+					elem := s.CaptionEntities[0]
+					elem.Encode(e)
+				}
+				for _, elem := range s.CaptionEntities[1:] {
+					e.Comma()
+					elem.Encode(e)
+				}
+			}
+			e.ArrEnd()
+		}
+	}
+	{
+		if s.DisableNotification.Set {
+			e.Comma()
+		}
+		if s.DisableNotification.Set {
+			e.RawStr("\"disable_notification\"" + ":")
+			s.DisableNotification.Encode(e)
+		}
+	}
+	{
+		if s.ReplyToMessageID.Set {
+			e.Comma()
+		}
+		if s.ReplyToMessageID.Set {
+			e.RawStr("\"reply_to_message_id\"" + ":")
+			s.ReplyToMessageID.Encode(e)
+		}
+	}
+	{
+		if s.AllowSendingWithoutReply.Set {
+			e.Comma()
+		}
+		if s.AllowSendingWithoutReply.Set {
+			e.RawStr("\"allow_sending_without_reply\"" + ":")
+			s.AllowSendingWithoutReply.Encode(e)
+		}
+	}
+	{
+		if s.ReplyMarkup.Set {
+			e.Comma()
+		}
+		if s.ReplyMarkup.Set {
+			e.RawStr("\"reply_markup\"" + ":")
+			s.ReplyMarkup.Encode(e)
+		}
 	}
 	e.ObjEnd()
 }
@@ -2658,7 +3663,7 @@ func (s *CopyMessage) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes CopyMessageReplyMarkup as json.
-func (s CopyMessageReplyMarkup) Encode(e *jx.Encoder) {
+func (s CopyMessageReplyMarkup) Encode(e *jx.Writer) {
 	switch s.Type {
 	case InlineKeyboardMarkupCopyMessageReplyMarkup:
 		s.InlineKeyboardMarkup.Encode(e)
@@ -2744,26 +3749,56 @@ func (s *CopyMessageReplyMarkup) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s CreateChatInviteLink) Encode(e *jx.Encoder) {
+func (s CreateChatInviteLink) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+	{
+		if !first {
+			e.Comma()
+		}
+		first = false
 
-	e.FieldStart("chat_id")
-	s.ChatID.Encode(e)
-	if s.Name.Set {
-		e.FieldStart("name")
-		s.Name.Encode(e)
+		e.RawStr("\"chat_id\"" + ":")
+		s.ChatID.Encode(e)
 	}
-	if s.ExpireDate.Set {
-		e.FieldStart("expire_date")
-		s.ExpireDate.Encode(e)
+	{
+		if s.Name.Set {
+			e.Comma()
+		}
+		if s.Name.Set {
+			e.RawStr("\"name\"" + ":")
+			s.Name.Encode(e)
+		}
 	}
-	if s.MemberLimit.Set {
-		e.FieldStart("member_limit")
-		s.MemberLimit.Encode(e)
+	{
+		if s.ExpireDate.Set {
+			e.Comma()
+		}
+		if s.ExpireDate.Set {
+			e.RawStr("\"expire_date\"" + ":")
+			s.ExpireDate.Encode(e)
+		}
 	}
-	if s.CreatesJoinRequest.Set {
-		e.FieldStart("creates_join_request")
-		s.CreatesJoinRequest.Encode(e)
+	{
+		if s.MemberLimit.Set {
+			e.Comma()
+		}
+		if s.MemberLimit.Set {
+			e.RawStr("\"member_limit\"" + ":")
+			s.MemberLimit.Encode(e)
+		}
+	}
+	{
+		if s.CreatesJoinRequest.Set {
+			e.Comma()
+		}
+		if s.CreatesJoinRequest.Set {
+			e.RawStr("\"creates_join_request\"" + ":")
+			s.CreatesJoinRequest.Encode(e)
+		}
 	}
 	e.ObjEnd()
 }
@@ -2807,35 +3842,74 @@ func (s *CreateChatInviteLink) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s CreateNewStickerSet) Encode(e *jx.Encoder) {
+func (s CreateNewStickerSet) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+	{
+		if !first {
+			e.Comma()
+		}
+		first = false
 
-	e.FieldStart("user_id")
-	e.Int64(s.UserID)
-
-	e.FieldStart("name")
-	e.Str(s.Name)
-
-	e.FieldStart("title")
-	e.Str(s.Title)
-	if s.PNGSticker.Set {
-		e.FieldStart("png_sticker")
-		s.PNGSticker.Encode(e)
+		e.RawStr("\"user_id\"" + ":")
+		e.Int64(s.UserID)
 	}
-	if s.TgsSticker.Set {
-		e.FieldStart("tgs_sticker")
-		s.TgsSticker.Encode(e)
-	}
+	{
+		e.Comma()
 
-	e.FieldStart("emojis")
-	e.Str(s.Emojis)
-	if s.ContainsMasks.Set {
-		e.FieldStart("contains_masks")
-		s.ContainsMasks.Encode(e)
+		e.RawStr("\"name\"" + ":")
+		e.Str(s.Name)
 	}
-	if s.MaskPosition.Set {
-		e.FieldStart("mask_position")
-		s.MaskPosition.Encode(e)
+	{
+		e.Comma()
+
+		e.RawStr("\"title\"" + ":")
+		e.Str(s.Title)
+	}
+	{
+		if s.PNGSticker.Set {
+			e.Comma()
+		}
+		if s.PNGSticker.Set {
+			e.RawStr("\"png_sticker\"" + ":")
+			s.PNGSticker.Encode(e)
+		}
+	}
+	{
+		if s.TgsSticker.Set {
+			e.Comma()
+		}
+		if s.TgsSticker.Set {
+			e.RawStr("\"tgs_sticker\"" + ":")
+			s.TgsSticker.Encode(e)
+		}
+	}
+	{
+		e.Comma()
+
+		e.RawStr("\"emojis\"" + ":")
+		e.Str(s.Emojis)
+	}
+	{
+		if s.ContainsMasks.Set {
+			e.Comma()
+		}
+		if s.ContainsMasks.Set {
+			e.RawStr("\"contains_masks\"" + ":")
+			s.ContainsMasks.Encode(e)
+		}
+	}
+	{
+		if s.MaskPosition.Set {
+			e.Comma()
+		}
+		if s.MaskPosition.Set {
+			e.RawStr("\"mask_position\"" + ":")
+			s.MaskPosition.Encode(e)
+		}
 	}
 	e.ObjEnd()
 }
@@ -2899,14 +3973,27 @@ func (s *CreateNewStickerSet) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s DeclineChatJoinRequest) Encode(e *jx.Encoder) {
+func (s DeclineChatJoinRequest) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+	{
+		if !first {
+			e.Comma()
+		}
+		first = false
 
-	e.FieldStart("chat_id")
-	s.ChatID.Encode(e)
+		e.RawStr("\"chat_id\"" + ":")
+		s.ChatID.Encode(e)
+	}
+	{
+		e.Comma()
 
-	e.FieldStart("user_id")
-	e.Int64(s.UserID)
+		e.RawStr("\"user_id\"" + ":")
+		e.Int64(s.UserID)
+	}
 	e.ObjEnd()
 }
 
@@ -2935,11 +4022,21 @@ func (s *DeclineChatJoinRequest) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s DeleteChatPhoto) Encode(e *jx.Encoder) {
+func (s DeleteChatPhoto) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+	{
+		if !first {
+			e.Comma()
+		}
+		first = false
 
-	e.FieldStart("chat_id")
-	s.ChatID.Encode(e)
+		e.RawStr("\"chat_id\"" + ":")
+		s.ChatID.Encode(e)
+	}
 	e.ObjEnd()
 }
 
@@ -2962,11 +4059,21 @@ func (s *DeleteChatPhoto) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s DeleteChatStickerSet) Encode(e *jx.Encoder) {
+func (s DeleteChatStickerSet) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+	{
+		if !first {
+			e.Comma()
+		}
+		first = false
 
-	e.FieldStart("chat_id")
-	s.ChatID.Encode(e)
+		e.RawStr("\"chat_id\"" + ":")
+		s.ChatID.Encode(e)
+	}
 	e.ObjEnd()
 }
 
@@ -2989,14 +4096,27 @@ func (s *DeleteChatStickerSet) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s DeleteMessage) Encode(e *jx.Encoder) {
+func (s DeleteMessage) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+	{
+		if !first {
+			e.Comma()
+		}
+		first = false
 
-	e.FieldStart("chat_id")
-	s.ChatID.Encode(e)
+		e.RawStr("\"chat_id\"" + ":")
+		s.ChatID.Encode(e)
+	}
+	{
+		e.Comma()
 
-	e.FieldStart("message_id")
-	e.Int(s.MessageID)
+		e.RawStr("\"message_id\"" + ":")
+		e.Int(s.MessageID)
+	}
 	e.ObjEnd()
 }
 
@@ -3025,15 +4145,35 @@ func (s *DeleteMessage) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s DeleteMyCommands) Encode(e *jx.Encoder) {
+func (s DeleteMyCommands) Encode(e *jx.Writer) {
 	e.ObjStart()
-	if s.Scope.Set {
-		e.FieldStart("scope")
-		s.Scope.Encode(e)
+	var (
+		first = true
+		_     = first
+	)
+	{
+		if s.Scope.Set {
+			if !first {
+				e.Comma()
+			}
+			first = false
+		}
+		if s.Scope.Set {
+			e.RawStr("\"scope\"" + ":")
+			s.Scope.Encode(e)
+		}
 	}
-	if s.LanguageCode.Set {
-		e.FieldStart("language_code")
-		s.LanguageCode.Encode(e)
+	{
+		if s.LanguageCode.Set {
+			if !first {
+				e.Comma()
+			}
+			first = false
+		}
+		if s.LanguageCode.Set {
+			e.RawStr("\"language_code\"" + ":")
+			s.LanguageCode.Encode(e)
+		}
 	}
 	e.ObjEnd()
 }
@@ -3063,11 +4203,21 @@ func (s *DeleteMyCommands) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s DeleteStickerFromSet) Encode(e *jx.Encoder) {
+func (s DeleteStickerFromSet) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+	{
+		if !first {
+			e.Comma()
+		}
+		first = false
 
-	e.FieldStart("sticker")
-	e.Str(s.Sticker)
+		e.RawStr("\"sticker\"" + ":")
+		e.Str(s.Sticker)
+	}
 	e.ObjEnd()
 }
 
@@ -3092,11 +4242,23 @@ func (s *DeleteStickerFromSet) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s DeleteWebhook) Encode(e *jx.Encoder) {
+func (s DeleteWebhook) Encode(e *jx.Writer) {
 	e.ObjStart()
-	if s.DropPendingUpdates.Set {
-		e.FieldStart("drop_pending_updates")
-		s.DropPendingUpdates.Encode(e)
+	var (
+		first = true
+		_     = first
+	)
+	{
+		if s.DropPendingUpdates.Set {
+			if !first {
+				e.Comma()
+			}
+			first = false
+		}
+		if s.DropPendingUpdates.Set {
+			e.RawStr("\"drop_pending_updates\"" + ":")
+			s.DropPendingUpdates.Encode(e)
+		}
 	}
 	e.ObjEnd()
 }
@@ -3121,14 +4283,27 @@ func (s *DeleteWebhook) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s Dice) Encode(e *jx.Encoder) {
+func (s Dice) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+	{
+		if !first {
+			e.Comma()
+		}
+		first = false
 
-	e.FieldStart("emoji")
-	e.Str(s.Emoji)
+		e.RawStr("\"emoji\"" + ":")
+		e.Str(s.Emoji)
+	}
+	{
+		e.Comma()
 
-	e.FieldStart("value")
-	e.Int(s.Value)
+		e.RawStr("\"value\"" + ":")
+		e.Int(s.Value)
+	}
 	e.ObjEnd()
 }
 
@@ -3159,29 +4334,62 @@ func (s *Dice) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s Document) Encode(e *jx.Encoder) {
+func (s Document) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+	{
+		if !first {
+			e.Comma()
+		}
+		first = false
 
-	e.FieldStart("file_id")
-	e.Str(s.FileID)
+		e.RawStr("\"file_id\"" + ":")
+		e.Str(s.FileID)
+	}
+	{
+		e.Comma()
 
-	e.FieldStart("file_unique_id")
-	e.Str(s.FileUniqueID)
-	if s.Thumb.Set {
-		e.FieldStart("thumb")
-		s.Thumb.Encode(e)
+		e.RawStr("\"file_unique_id\"" + ":")
+		e.Str(s.FileUniqueID)
 	}
-	if s.FileName.Set {
-		e.FieldStart("file_name")
-		s.FileName.Encode(e)
+	{
+		if s.Thumb.Set {
+			e.Comma()
+		}
+		if s.Thumb.Set {
+			e.RawStr("\"thumb\"" + ":")
+			s.Thumb.Encode(e)
+		}
 	}
-	if s.MimeType.Set {
-		e.FieldStart("mime_type")
-		s.MimeType.Encode(e)
+	{
+		if s.FileName.Set {
+			e.Comma()
+		}
+		if s.FileName.Set {
+			e.RawStr("\"file_name\"" + ":")
+			s.FileName.Encode(e)
+		}
 	}
-	if s.FileSize.Set {
-		e.FieldStart("file_size")
-		s.FileSize.Encode(e)
+	{
+		if s.MimeType.Set {
+			e.Comma()
+		}
+		if s.MimeType.Set {
+			e.RawStr("\"mime_type\"" + ":")
+			s.MimeType.Encode(e)
+		}
+	}
+	{
+		if s.FileSize.Set {
+			e.Comma()
+		}
+		if s.FileSize.Set {
+			e.RawStr("\"file_size\"" + ":")
+			s.FileSize.Encode(e)
+		}
 	}
 	e.ObjEnd()
 }
@@ -3233,29 +4441,62 @@ func (s *Document) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s EditChatInviteLink) Encode(e *jx.Encoder) {
+func (s EditChatInviteLink) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+	{
+		if !first {
+			e.Comma()
+		}
+		first = false
 
-	e.FieldStart("chat_id")
-	s.ChatID.Encode(e)
+		e.RawStr("\"chat_id\"" + ":")
+		s.ChatID.Encode(e)
+	}
+	{
+		e.Comma()
 
-	e.FieldStart("invite_link")
-	e.Str(s.InviteLink)
-	if s.Name.Set {
-		e.FieldStart("name")
-		s.Name.Encode(e)
+		e.RawStr("\"invite_link\"" + ":")
+		e.Str(s.InviteLink)
 	}
-	if s.ExpireDate.Set {
-		e.FieldStart("expire_date")
-		s.ExpireDate.Encode(e)
+	{
+		if s.Name.Set {
+			e.Comma()
+		}
+		if s.Name.Set {
+			e.RawStr("\"name\"" + ":")
+			s.Name.Encode(e)
+		}
 	}
-	if s.MemberLimit.Set {
-		e.FieldStart("member_limit")
-		s.MemberLimit.Encode(e)
+	{
+		if s.ExpireDate.Set {
+			e.Comma()
+		}
+		if s.ExpireDate.Set {
+			e.RawStr("\"expire_date\"" + ":")
+			s.ExpireDate.Encode(e)
+		}
 	}
-	if s.CreatesJoinRequest.Set {
-		e.FieldStart("creates_join_request")
-		s.CreatesJoinRequest.Encode(e)
+	{
+		if s.MemberLimit.Set {
+			e.Comma()
+		}
+		if s.MemberLimit.Set {
+			e.RawStr("\"member_limit\"" + ":")
+			s.MemberLimit.Encode(e)
+		}
+	}
+	{
+		if s.CreatesJoinRequest.Set {
+			e.Comma()
+		}
+		if s.CreatesJoinRequest.Set {
+			e.RawStr("\"creates_join_request\"" + ":")
+			s.CreatesJoinRequest.Encode(e)
+		}
 	}
 	e.ObjEnd()
 }
@@ -3305,39 +4546,107 @@ func (s *EditChatInviteLink) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s EditMessageCaption) Encode(e *jx.Encoder) {
+func (s EditMessageCaption) Encode(e *jx.Writer) {
 	e.ObjStart()
-	if s.ChatID.Set {
-		e.FieldStart("chat_id")
-		s.ChatID.Encode(e)
-	}
-	if s.MessageID.Set {
-		e.FieldStart("message_id")
-		s.MessageID.Encode(e)
-	}
-	if s.InlineMessageID.Set {
-		e.FieldStart("inline_message_id")
-		s.InlineMessageID.Encode(e)
-	}
-	if s.Caption.Set {
-		e.FieldStart("caption")
-		s.Caption.Encode(e)
-	}
-	if s.ParseMode.Set {
-		e.FieldStart("parse_mode")
-		s.ParseMode.Encode(e)
-	}
-	if s.CaptionEntities != nil {
-		e.FieldStart("caption_entities")
-		e.ArrStart()
-		for _, elem := range s.CaptionEntities {
-			elem.Encode(e)
+	var (
+		first = true
+		_     = first
+	)
+	{
+		if s.ChatID.Set {
+			if !first {
+				e.Comma()
+			}
+			first = false
 		}
-		e.ArrEnd()
+		if s.ChatID.Set {
+			e.RawStr("\"chat_id\"" + ":")
+			s.ChatID.Encode(e)
+		}
 	}
-	if s.ReplyMarkup.Set {
-		e.FieldStart("reply_markup")
-		s.ReplyMarkup.Encode(e)
+	{
+		if s.MessageID.Set {
+			if !first {
+				e.Comma()
+			}
+			first = false
+		}
+		if s.MessageID.Set {
+			e.RawStr("\"message_id\"" + ":")
+			s.MessageID.Encode(e)
+		}
+	}
+	{
+		if s.InlineMessageID.Set {
+			if !first {
+				e.Comma()
+			}
+			first = false
+		}
+		if s.InlineMessageID.Set {
+			e.RawStr("\"inline_message_id\"" + ":")
+			s.InlineMessageID.Encode(e)
+		}
+	}
+	{
+		if s.Caption.Set {
+			if !first {
+				e.Comma()
+			}
+			first = false
+		}
+		if s.Caption.Set {
+			e.RawStr("\"caption\"" + ":")
+			s.Caption.Encode(e)
+		}
+	}
+	{
+		if s.ParseMode.Set {
+			if !first {
+				e.Comma()
+			}
+			first = false
+		}
+		if s.ParseMode.Set {
+			e.RawStr("\"parse_mode\"" + ":")
+			s.ParseMode.Encode(e)
+		}
+	}
+	{
+		if s.CaptionEntities != nil {
+			if !first {
+				e.Comma()
+			}
+			first = false
+		}
+		if s.CaptionEntities != nil {
+			e.RawStr("\"caption_entities\"" + ":")
+			e.ArrStart()
+			if len(s.CaptionEntities) >= 1 {
+				// Encode first element without comma.
+				{
+					elem := s.CaptionEntities[0]
+					elem.Encode(e)
+				}
+				for _, elem := range s.CaptionEntities[1:] {
+					e.Comma()
+					elem.Encode(e)
+				}
+			}
+			e.ArrEnd()
+		}
+	}
+	{
+		if s.ReplyMarkup.Set {
+			if !first {
+				e.Comma()
+			}
+			first = false
+		}
+		if s.ReplyMarkup.Set {
+			e.RawStr("\"reply_markup\"" + ":")
+			s.ReplyMarkup.Encode(e)
+		}
 	}
 	e.ObjEnd()
 }
@@ -3399,41 +4708,98 @@ func (s *EditMessageCaption) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s EditMessageLiveLocation) Encode(e *jx.Encoder) {
+func (s EditMessageLiveLocation) Encode(e *jx.Writer) {
 	e.ObjStart()
-	if s.ChatID.Set {
-		e.FieldStart("chat_id")
-		s.ChatID.Encode(e)
+	var (
+		first = true
+		_     = first
+	)
+	{
+		if s.ChatID.Set {
+			if !first {
+				e.Comma()
+			}
+			first = false
+		}
+		if s.ChatID.Set {
+			e.RawStr("\"chat_id\"" + ":")
+			s.ChatID.Encode(e)
+		}
 	}
-	if s.MessageID.Set {
-		e.FieldStart("message_id")
-		s.MessageID.Encode(e)
+	{
+		if s.MessageID.Set {
+			if !first {
+				e.Comma()
+			}
+			first = false
+		}
+		if s.MessageID.Set {
+			e.RawStr("\"message_id\"" + ":")
+			s.MessageID.Encode(e)
+		}
 	}
-	if s.InlineMessageID.Set {
-		e.FieldStart("inline_message_id")
-		s.InlineMessageID.Encode(e)
+	{
+		if s.InlineMessageID.Set {
+			if !first {
+				e.Comma()
+			}
+			first = false
+		}
+		if s.InlineMessageID.Set {
+			e.RawStr("\"inline_message_id\"" + ":")
+			s.InlineMessageID.Encode(e)
+		}
 	}
+	{
+		if !first {
+			e.Comma()
+		}
+		first = false
 
-	e.FieldStart("latitude")
-	e.Float64(s.Latitude)
+		e.RawStr("\"latitude\"" + ":")
+		e.Float64(s.Latitude)
+	}
+	{
+		e.Comma()
 
-	e.FieldStart("longitude")
-	e.Float64(s.Longitude)
-	if s.HorizontalAccuracy.Set {
-		e.FieldStart("horizontal_accuracy")
-		s.HorizontalAccuracy.Encode(e)
+		e.RawStr("\"longitude\"" + ":")
+		e.Float64(s.Longitude)
 	}
-	if s.Heading.Set {
-		e.FieldStart("heading")
-		s.Heading.Encode(e)
+	{
+		if s.HorizontalAccuracy.Set {
+			e.Comma()
+		}
+		if s.HorizontalAccuracy.Set {
+			e.RawStr("\"horizontal_accuracy\"" + ":")
+			s.HorizontalAccuracy.Encode(e)
+		}
 	}
-	if s.ProximityAlertRadius.Set {
-		e.FieldStart("proximity_alert_radius")
-		s.ProximityAlertRadius.Encode(e)
+	{
+		if s.Heading.Set {
+			e.Comma()
+		}
+		if s.Heading.Set {
+			e.RawStr("\"heading\"" + ":")
+			s.Heading.Encode(e)
+		}
 	}
-	if s.ReplyMarkup.Set {
-		e.FieldStart("reply_markup")
-		s.ReplyMarkup.Encode(e)
+	{
+		if s.ProximityAlertRadius.Set {
+			e.Comma()
+		}
+		if s.ProximityAlertRadius.Set {
+			e.RawStr("\"proximity_alert_radius\"" + ":")
+			s.ProximityAlertRadius.Encode(e)
+		}
+	}
+	{
+		if s.ReplyMarkup.Set {
+			e.Comma()
+		}
+		if s.ReplyMarkup.Set {
+			e.RawStr("\"reply_markup\"" + ":")
+			s.ReplyMarkup.Encode(e)
+		}
 	}
 	e.ObjEnd()
 }
@@ -3500,26 +4866,65 @@ func (s *EditMessageLiveLocation) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s EditMessageMedia) Encode(e *jx.Encoder) {
+func (s EditMessageMedia) Encode(e *jx.Writer) {
 	e.ObjStart()
-	if s.ChatID.Set {
-		e.FieldStart("chat_id")
-		s.ChatID.Encode(e)
+	var (
+		first = true
+		_     = first
+	)
+	{
+		if s.ChatID.Set {
+			if !first {
+				e.Comma()
+			}
+			first = false
+		}
+		if s.ChatID.Set {
+			e.RawStr("\"chat_id\"" + ":")
+			s.ChatID.Encode(e)
+		}
 	}
-	if s.MessageID.Set {
-		e.FieldStart("message_id")
-		s.MessageID.Encode(e)
+	{
+		if s.MessageID.Set {
+			if !first {
+				e.Comma()
+			}
+			first = false
+		}
+		if s.MessageID.Set {
+			e.RawStr("\"message_id\"" + ":")
+			s.MessageID.Encode(e)
+		}
 	}
-	if s.InlineMessageID.Set {
-		e.FieldStart("inline_message_id")
-		s.InlineMessageID.Encode(e)
+	{
+		if s.InlineMessageID.Set {
+			if !first {
+				e.Comma()
+			}
+			first = false
+		}
+		if s.InlineMessageID.Set {
+			e.RawStr("\"inline_message_id\"" + ":")
+			s.InlineMessageID.Encode(e)
+		}
 	}
+	{
+		if !first {
+			e.Comma()
+		}
+		first = false
 
-	e.FieldStart("media")
-	s.Media.Encode(e)
-	if s.ReplyMarkup.Set {
-		e.FieldStart("reply_markup")
-		s.ReplyMarkup.Encode(e)
+		e.RawStr("\"media\"" + ":")
+		s.Media.Encode(e)
+	}
+	{
+		if s.ReplyMarkup.Set {
+			e.Comma()
+		}
+		if s.ReplyMarkup.Set {
+			e.RawStr("\"reply_markup\"" + ":")
+			s.ReplyMarkup.Encode(e)
+		}
 	}
 	e.ObjEnd()
 }
@@ -3563,23 +4968,59 @@ func (s *EditMessageMedia) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s EditMessageReplyMarkup) Encode(e *jx.Encoder) {
+func (s EditMessageReplyMarkup) Encode(e *jx.Writer) {
 	e.ObjStart()
-	if s.ChatID.Set {
-		e.FieldStart("chat_id")
-		s.ChatID.Encode(e)
+	var (
+		first = true
+		_     = first
+	)
+	{
+		if s.ChatID.Set {
+			if !first {
+				e.Comma()
+			}
+			first = false
+		}
+		if s.ChatID.Set {
+			e.RawStr("\"chat_id\"" + ":")
+			s.ChatID.Encode(e)
+		}
 	}
-	if s.MessageID.Set {
-		e.FieldStart("message_id")
-		s.MessageID.Encode(e)
+	{
+		if s.MessageID.Set {
+			if !first {
+				e.Comma()
+			}
+			first = false
+		}
+		if s.MessageID.Set {
+			e.RawStr("\"message_id\"" + ":")
+			s.MessageID.Encode(e)
+		}
 	}
-	if s.InlineMessageID.Set {
-		e.FieldStart("inline_message_id")
-		s.InlineMessageID.Encode(e)
+	{
+		if s.InlineMessageID.Set {
+			if !first {
+				e.Comma()
+			}
+			first = false
+		}
+		if s.InlineMessageID.Set {
+			e.RawStr("\"inline_message_id\"" + ":")
+			s.InlineMessageID.Encode(e)
+		}
 	}
-	if s.ReplyMarkup.Set {
-		e.FieldStart("reply_markup")
-		s.ReplyMarkup.Encode(e)
+	{
+		if s.ReplyMarkup.Set {
+			if !first {
+				e.Comma()
+			}
+			first = false
+		}
+		if s.ReplyMarkup.Set {
+			e.RawStr("\"reply_markup\"" + ":")
+			s.ReplyMarkup.Encode(e)
+		}
 	}
 	e.ObjEnd()
 }
@@ -3619,42 +5060,104 @@ func (s *EditMessageReplyMarkup) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s EditMessageText) Encode(e *jx.Encoder) {
+func (s EditMessageText) Encode(e *jx.Writer) {
 	e.ObjStart()
-	if s.ChatID.Set {
-		e.FieldStart("chat_id")
-		s.ChatID.Encode(e)
-	}
-	if s.MessageID.Set {
-		e.FieldStart("message_id")
-		s.MessageID.Encode(e)
-	}
-	if s.InlineMessageID.Set {
-		e.FieldStart("inline_message_id")
-		s.InlineMessageID.Encode(e)
-	}
-
-	e.FieldStart("text")
-	e.Str(s.Text)
-	if s.ParseMode.Set {
-		e.FieldStart("parse_mode")
-		s.ParseMode.Encode(e)
-	}
-	if s.Entities != nil {
-		e.FieldStart("entities")
-		e.ArrStart()
-		for _, elem := range s.Entities {
-			elem.Encode(e)
+	var (
+		first = true
+		_     = first
+	)
+	{
+		if s.ChatID.Set {
+			if !first {
+				e.Comma()
+			}
+			first = false
 		}
-		e.ArrEnd()
+		if s.ChatID.Set {
+			e.RawStr("\"chat_id\"" + ":")
+			s.ChatID.Encode(e)
+		}
 	}
-	if s.DisableWebPagePreview.Set {
-		e.FieldStart("disable_web_page_preview")
-		s.DisableWebPagePreview.Encode(e)
+	{
+		if s.MessageID.Set {
+			if !first {
+				e.Comma()
+			}
+			first = false
+		}
+		if s.MessageID.Set {
+			e.RawStr("\"message_id\"" + ":")
+			s.MessageID.Encode(e)
+		}
 	}
-	if s.ReplyMarkup.Set {
-		e.FieldStart("reply_markup")
-		s.ReplyMarkup.Encode(e)
+	{
+		if s.InlineMessageID.Set {
+			if !first {
+				e.Comma()
+			}
+			first = false
+		}
+		if s.InlineMessageID.Set {
+			e.RawStr("\"inline_message_id\"" + ":")
+			s.InlineMessageID.Encode(e)
+		}
+	}
+	{
+		if !first {
+			e.Comma()
+		}
+		first = false
+
+		e.RawStr("\"text\"" + ":")
+		e.Str(s.Text)
+	}
+	{
+		if s.ParseMode.Set {
+			e.Comma()
+		}
+		if s.ParseMode.Set {
+			e.RawStr("\"parse_mode\"" + ":")
+			s.ParseMode.Encode(e)
+		}
+	}
+	{
+		if s.Entities != nil {
+			e.Comma()
+		}
+		if s.Entities != nil {
+			e.RawStr("\"entities\"" + ":")
+			e.ArrStart()
+			if len(s.Entities) >= 1 {
+				// Encode first element without comma.
+				{
+					elem := s.Entities[0]
+					elem.Encode(e)
+				}
+				for _, elem := range s.Entities[1:] {
+					e.Comma()
+					elem.Encode(e)
+				}
+			}
+			e.ArrEnd()
+		}
+	}
+	{
+		if s.DisableWebPagePreview.Set {
+			e.Comma()
+		}
+		if s.DisableWebPagePreview.Set {
+			e.RawStr("\"disable_web_page_preview\"" + ":")
+			s.DisableWebPagePreview.Encode(e)
+		}
+	}
+	{
+		if s.ReplyMarkup.Set {
+			e.Comma()
+		}
+		if s.ReplyMarkup.Set {
+			e.RawStr("\"reply_markup\"" + ":")
+			s.ReplyMarkup.Encode(e)
+		}
 	}
 	e.ObjEnd()
 }
@@ -3722,17 +5225,33 @@ func (s *EditMessageText) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s EncryptedCredentials) Encode(e *jx.Encoder) {
+func (s EncryptedCredentials) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+	{
+		if !first {
+			e.Comma()
+		}
+		first = false
 
-	e.FieldStart("data")
-	e.Str(s.Data)
+		e.RawStr("\"data\"" + ":")
+		e.Str(s.Data)
+	}
+	{
+		e.Comma()
 
-	e.FieldStart("hash")
-	e.Str(s.Hash)
+		e.RawStr("\"hash\"" + ":")
+		e.Str(s.Hash)
+	}
+	{
+		e.Comma()
 
-	e.FieldStart("secret")
-	e.Str(s.Secret)
+		e.RawStr("\"secret\"" + ":")
+		e.Str(s.Secret)
+	}
 	e.ObjEnd()
 }
 
@@ -3769,54 +5288,123 @@ func (s *EncryptedCredentials) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s EncryptedPassportElement) Encode(e *jx.Encoder) {
+func (s EncryptedPassportElement) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	e.FieldStart("type")
-	s.Type.Encode(e)
-	if s.Data.Set {
-		e.FieldStart("data")
-		s.Data.Encode(e)
-	}
-	if s.PhoneNumber.Set {
-		e.FieldStart("phone_number")
-		s.PhoneNumber.Encode(e)
-	}
-	if s.Email.Set {
-		e.FieldStart("email")
-		s.Email.Encode(e)
-	}
-	if s.Files != nil {
-		e.FieldStart("files")
-		e.ArrStart()
-		for _, elem := range s.Files {
-			elem.Encode(e)
+	var (
+		first = true
+		_     = first
+	)
+	{
+		if !first {
+			e.Comma()
 		}
-		e.ArrEnd()
-	}
-	if s.FrontSide.Set {
-		e.FieldStart("front_side")
-		s.FrontSide.Encode(e)
-	}
-	if s.ReverseSide.Set {
-		e.FieldStart("reverse_side")
-		s.ReverseSide.Encode(e)
-	}
-	if s.Selfie.Set {
-		e.FieldStart("selfie")
-		s.Selfie.Encode(e)
-	}
-	if s.Translation != nil {
-		e.FieldStart("translation")
-		e.ArrStart()
-		for _, elem := range s.Translation {
-			elem.Encode(e)
-		}
-		e.ArrEnd()
-	}
+		first = false
 
-	e.FieldStart("hash")
-	e.Str(s.Hash)
+		e.RawStr("\"type\"" + ":")
+		s.Type.Encode(e)
+	}
+	{
+		if s.Data.Set {
+			e.Comma()
+		}
+		if s.Data.Set {
+			e.RawStr("\"data\"" + ":")
+			s.Data.Encode(e)
+		}
+	}
+	{
+		if s.PhoneNumber.Set {
+			e.Comma()
+		}
+		if s.PhoneNumber.Set {
+			e.RawStr("\"phone_number\"" + ":")
+			s.PhoneNumber.Encode(e)
+		}
+	}
+	{
+		if s.Email.Set {
+			e.Comma()
+		}
+		if s.Email.Set {
+			e.RawStr("\"email\"" + ":")
+			s.Email.Encode(e)
+		}
+	}
+	{
+		if s.Files != nil {
+			e.Comma()
+		}
+		if s.Files != nil {
+			e.RawStr("\"files\"" + ":")
+			e.ArrStart()
+			if len(s.Files) >= 1 {
+				// Encode first element without comma.
+				{
+					elem := s.Files[0]
+					elem.Encode(e)
+				}
+				for _, elem := range s.Files[1:] {
+					e.Comma()
+					elem.Encode(e)
+				}
+			}
+			e.ArrEnd()
+		}
+	}
+	{
+		if s.FrontSide.Set {
+			e.Comma()
+		}
+		if s.FrontSide.Set {
+			e.RawStr("\"front_side\"" + ":")
+			s.FrontSide.Encode(e)
+		}
+	}
+	{
+		if s.ReverseSide.Set {
+			e.Comma()
+		}
+		if s.ReverseSide.Set {
+			e.RawStr("\"reverse_side\"" + ":")
+			s.ReverseSide.Encode(e)
+		}
+	}
+	{
+		if s.Selfie.Set {
+			e.Comma()
+		}
+		if s.Selfie.Set {
+			e.RawStr("\"selfie\"" + ":")
+			s.Selfie.Encode(e)
+		}
+	}
+	{
+		if s.Translation != nil {
+			e.Comma()
+		}
+		if s.Translation != nil {
+			e.RawStr("\"translation\"" + ":")
+			e.ArrStart()
+			if len(s.Translation) >= 1 {
+				// Encode first element without comma.
+				{
+					elem := s.Translation[0]
+					elem.Encode(e)
+				}
+				for _, elem := range s.Translation[1:] {
+					e.Comma()
+					elem.Encode(e)
+				}
+			}
+			e.ArrEnd()
+		}
+	}
+	{
+		e.Comma()
+
+		e.RawStr("\"hash\"" + ":")
+		e.Str(s.Hash)
+	}
 	e.ObjEnd()
 }
 
@@ -3899,7 +5487,7 @@ func (s *EncryptedPassportElement) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes EncryptedPassportElementType as json.
-func (s EncryptedPassportElementType) Encode(e *jx.Encoder) {
+func (s EncryptedPassportElementType) Encode(e *jx.Writer) {
 	e.Str(string(s))
 }
 
@@ -3948,20 +5536,41 @@ func (s *EncryptedPassportElementType) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s Error) Encode(e *jx.Encoder) {
+func (s Error) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+	{
+		if !first {
+			e.Comma()
+		}
+		first = false
 
-	e.FieldStart("ok")
-	e.Bool(s.Ok)
+		e.RawStr("\"ok\"" + ":")
+		e.Bool(s.Ok)
+	}
+	{
+		e.Comma()
 
-	e.FieldStart("error_code")
-	e.Int(s.ErrorCode)
+		e.RawStr("\"error_code\"" + ":")
+		e.Int(s.ErrorCode)
+	}
+	{
+		e.Comma()
 
-	e.FieldStart("description")
-	e.Str(s.Description)
-	if s.Parameters.Set {
-		e.FieldStart("parameters")
-		s.Parameters.Encode(e)
+		e.RawStr("\"description\"" + ":")
+		e.Str(s.Description)
+	}
+	{
+		if s.Parameters.Set {
+			e.Comma()
+		}
+		if s.Parameters.Set {
+			e.RawStr("\"parameters\"" + ":")
+			s.Parameters.Encode(e)
+		}
 	}
 	e.ObjEnd()
 }
@@ -4004,8 +5613,12 @@ func (s *Error) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s ErrorStatusCode) Encode(e *jx.Encoder) {
+func (s ErrorStatusCode) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -4024,11 +5637,21 @@ func (s *ErrorStatusCode) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s ExportChatInviteLink) Encode(e *jx.Encoder) {
+func (s ExportChatInviteLink) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+	{
+		if !first {
+			e.Comma()
+		}
+		first = false
 
-	e.FieldStart("chat_id")
-	s.ChatID.Encode(e)
+		e.RawStr("\"chat_id\"" + ":")
+		s.ChatID.Encode(e)
+	}
 	e.ObjEnd()
 }
 
@@ -4051,21 +5674,44 @@ func (s *ExportChatInviteLink) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s File) Encode(e *jx.Encoder) {
+func (s File) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+	{
+		if !first {
+			e.Comma()
+		}
+		first = false
 
-	e.FieldStart("file_id")
-	e.Str(s.FileID)
-
-	e.FieldStart("file_unique_id")
-	e.Str(s.FileUniqueID)
-	if s.FileSize.Set {
-		e.FieldStart("file_size")
-		s.FileSize.Encode(e)
+		e.RawStr("\"file_id\"" + ":")
+		e.Str(s.FileID)
 	}
-	if s.FilePath.Set {
-		e.FieldStart("file_path")
-		s.FilePath.Encode(e)
+	{
+		e.Comma()
+
+		e.RawStr("\"file_unique_id\"" + ":")
+		e.Str(s.FileUniqueID)
+	}
+	{
+		if s.FileSize.Set {
+			e.Comma()
+		}
+		if s.FileSize.Set {
+			e.RawStr("\"file_size\"" + ":")
+			s.FileSize.Encode(e)
+		}
+	}
+	{
+		if s.FilePath.Set {
+			e.Comma()
+		}
+		if s.FilePath.Set {
+			e.RawStr("\"file_path\"" + ":")
+			s.FilePath.Encode(e)
+		}
 	}
 	e.ObjEnd()
 }
@@ -4107,18 +5753,38 @@ func (s *File) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s ForceReply) Encode(e *jx.Encoder) {
+func (s ForceReply) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+	{
+		if !first {
+			e.Comma()
+		}
+		first = false
 
-	e.FieldStart("force_reply")
-	e.Bool(s.ForceReply)
-	if s.InputFieldPlaceholder.Set {
-		e.FieldStart("input_field_placeholder")
-		s.InputFieldPlaceholder.Encode(e)
+		e.RawStr("\"force_reply\"" + ":")
+		e.Bool(s.ForceReply)
 	}
-	if s.Selective.Set {
-		e.FieldStart("selective")
-		s.Selective.Encode(e)
+	{
+		if s.InputFieldPlaceholder.Set {
+			e.Comma()
+		}
+		if s.InputFieldPlaceholder.Set {
+			e.RawStr("\"input_field_placeholder\"" + ":")
+			s.InputFieldPlaceholder.Encode(e)
+		}
+	}
+	{
+		if s.Selective.Set {
+			e.Comma()
+		}
+		if s.Selective.Set {
+			e.RawStr("\"selective\"" + ":")
+			s.Selective.Encode(e)
+		}
 	}
 	e.ObjEnd()
 }
@@ -4154,21 +5820,42 @@ func (s *ForceReply) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s ForwardMessage) Encode(e *jx.Encoder) {
+func (s ForwardMessage) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+	{
+		if !first {
+			e.Comma()
+		}
+		first = false
 
-	e.FieldStart("chat_id")
-	s.ChatID.Encode(e)
-
-	e.FieldStart("from_chat_id")
-	s.FromChatID.Encode(e)
-	if s.DisableNotification.Set {
-		e.FieldStart("disable_notification")
-		s.DisableNotification.Encode(e)
+		e.RawStr("\"chat_id\"" + ":")
+		s.ChatID.Encode(e)
 	}
+	{
+		e.Comma()
 
-	e.FieldStart("message_id")
-	e.Int(s.MessageID)
+		e.RawStr("\"from_chat_id\"" + ":")
+		s.FromChatID.Encode(e)
+	}
+	{
+		if s.DisableNotification.Set {
+			e.Comma()
+		}
+		if s.DisableNotification.Set {
+			e.RawStr("\"disable_notification\"" + ":")
+			s.DisableNotification.Encode(e)
+		}
+	}
+	{
+		e.Comma()
+
+		e.RawStr("\"message_id\"" + ":")
+		e.Int(s.MessageID)
+	}
 	e.ObjEnd()
 }
 
@@ -4206,36 +5893,83 @@ func (s *ForwardMessage) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s Game) Encode(e *jx.Encoder) {
+func (s Game) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+	{
+		if !first {
+			e.Comma()
+		}
+		first = false
 
-	e.FieldStart("title")
-	e.Str(s.Title)
-
-	e.FieldStart("description")
-	e.Str(s.Description)
-
-	e.FieldStart("photo")
-	e.ArrStart()
-	for _, elem := range s.Photo {
-		elem.Encode(e)
+		e.RawStr("\"title\"" + ":")
+		e.Str(s.Title)
 	}
-	e.ArrEnd()
-	if s.Text.Set {
-		e.FieldStart("text")
-		s.Text.Encode(e)
+	{
+		e.Comma()
+
+		e.RawStr("\"description\"" + ":")
+		e.Str(s.Description)
 	}
-	if s.TextEntities != nil {
-		e.FieldStart("text_entities")
+	{
+		e.Comma()
+
+		e.RawStr("\"photo\"" + ":")
 		e.ArrStart()
-		for _, elem := range s.TextEntities {
-			elem.Encode(e)
+		if len(s.Photo) >= 1 {
+			// Encode first element without comma.
+			{
+				elem := s.Photo[0]
+				elem.Encode(e)
+			}
+			for _, elem := range s.Photo[1:] {
+				e.Comma()
+				elem.Encode(e)
+			}
 		}
 		e.ArrEnd()
 	}
-	if s.Animation.Set {
-		e.FieldStart("animation")
-		s.Animation.Encode(e)
+	{
+		if s.Text.Set {
+			e.Comma()
+		}
+		if s.Text.Set {
+			e.RawStr("\"text\"" + ":")
+			s.Text.Encode(e)
+		}
+	}
+	{
+		if s.TextEntities != nil {
+			e.Comma()
+		}
+		if s.TextEntities != nil {
+			e.RawStr("\"text_entities\"" + ":")
+			e.ArrStart()
+			if len(s.TextEntities) >= 1 {
+				// Encode first element without comma.
+				{
+					elem := s.TextEntities[0]
+					elem.Encode(e)
+				}
+				for _, elem := range s.TextEntities[1:] {
+					e.Comma()
+					elem.Encode(e)
+				}
+			}
+			e.ArrEnd()
+		}
+	}
+	{
+		if s.Animation.Set {
+			e.Comma()
+		}
+		if s.Animation.Set {
+			e.RawStr("\"animation\"" + ":")
+			s.Animation.Encode(e)
+		}
 	}
 	e.ObjEnd()
 }
@@ -4301,17 +6035,33 @@ func (s *Game) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s GameHighScore) Encode(e *jx.Encoder) {
+func (s GameHighScore) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+	{
+		if !first {
+			e.Comma()
+		}
+		first = false
 
-	e.FieldStart("position")
-	e.Int(s.Position)
+		e.RawStr("\"position\"" + ":")
+		e.Int(s.Position)
+	}
+	{
+		e.Comma()
 
-	e.FieldStart("user")
-	s.User.Encode(e)
+		e.RawStr("\"user\"" + ":")
+		s.User.Encode(e)
+	}
+	{
+		e.Comma()
 
-	e.FieldStart("score")
-	e.Int(s.Score)
+		e.RawStr("\"score\"" + ":")
+		e.Int(s.Score)
+	}
 	e.ObjEnd()
 }
 
@@ -4346,11 +6096,21 @@ func (s *GameHighScore) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s GetChat) Encode(e *jx.Encoder) {
+func (s GetChat) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+	{
+		if !first {
+			e.Comma()
+		}
+		first = false
 
-	e.FieldStart("chat_id")
-	s.ChatID.Encode(e)
+		e.RawStr("\"chat_id\"" + ":")
+		s.ChatID.Encode(e)
+	}
 	e.ObjEnd()
 }
 
@@ -4373,11 +6133,21 @@ func (s *GetChat) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s GetChatAdministrators) Encode(e *jx.Encoder) {
+func (s GetChatAdministrators) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+	{
+		if !first {
+			e.Comma()
+		}
+		first = false
 
-	e.FieldStart("chat_id")
-	s.ChatID.Encode(e)
+		e.RawStr("\"chat_id\"" + ":")
+		s.ChatID.Encode(e)
+	}
 	e.ObjEnd()
 }
 
@@ -4400,14 +6170,27 @@ func (s *GetChatAdministrators) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s GetChatMember) Encode(e *jx.Encoder) {
+func (s GetChatMember) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+	{
+		if !first {
+			e.Comma()
+		}
+		first = false
 
-	e.FieldStart("chat_id")
-	s.ChatID.Encode(e)
+		e.RawStr("\"chat_id\"" + ":")
+		s.ChatID.Encode(e)
+	}
+	{
+		e.Comma()
 
-	e.FieldStart("user_id")
-	e.Int64(s.UserID)
+		e.RawStr("\"user_id\"" + ":")
+		e.Int64(s.UserID)
+	}
 	e.ObjEnd()
 }
 
@@ -4436,11 +6219,21 @@ func (s *GetChatMember) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s GetChatMemberCount) Encode(e *jx.Encoder) {
+func (s GetChatMemberCount) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+	{
+		if !first {
+			e.Comma()
+		}
+		first = false
 
-	e.FieldStart("chat_id")
-	s.ChatID.Encode(e)
+		e.RawStr("\"chat_id\"" + ":")
+		s.ChatID.Encode(e)
+	}
 	e.ObjEnd()
 }
 
@@ -4463,11 +6256,21 @@ func (s *GetChatMemberCount) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s GetFile) Encode(e *jx.Encoder) {
+func (s GetFile) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+	{
+		if !first {
+			e.Comma()
+		}
+		first = false
 
-	e.FieldStart("file_id")
-	e.Str(s.FileID)
+		e.RawStr("\"file_id\"" + ":")
+		e.Str(s.FileID)
+	}
 	e.ObjEnd()
 }
 
@@ -4492,22 +6295,47 @@ func (s *GetFile) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s GetGameHighScores) Encode(e *jx.Encoder) {
+func (s GetGameHighScores) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+	{
+		if !first {
+			e.Comma()
+		}
+		first = false
 
-	e.FieldStart("user_id")
-	e.Int64(s.UserID)
-	if s.ChatID.Set {
-		e.FieldStart("chat_id")
-		s.ChatID.Encode(e)
+		e.RawStr("\"user_id\"" + ":")
+		e.Int64(s.UserID)
 	}
-	if s.MessageID.Set {
-		e.FieldStart("message_id")
-		s.MessageID.Encode(e)
+	{
+		if s.ChatID.Set {
+			e.Comma()
+		}
+		if s.ChatID.Set {
+			e.RawStr("\"chat_id\"" + ":")
+			s.ChatID.Encode(e)
+		}
 	}
-	if s.InlineMessageID.Set {
-		e.FieldStart("inline_message_id")
-		s.InlineMessageID.Encode(e)
+	{
+		if s.MessageID.Set {
+			e.Comma()
+		}
+		if s.MessageID.Set {
+			e.RawStr("\"message_id\"" + ":")
+			s.MessageID.Encode(e)
+		}
+	}
+	{
+		if s.InlineMessageID.Set {
+			e.Comma()
+		}
+		if s.InlineMessageID.Set {
+			e.RawStr("\"inline_message_id\"" + ":")
+			s.InlineMessageID.Encode(e)
+		}
 	}
 	e.ObjEnd()
 }
@@ -4548,15 +6376,35 @@ func (s *GetGameHighScores) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s GetMyCommands) Encode(e *jx.Encoder) {
+func (s GetMyCommands) Encode(e *jx.Writer) {
 	e.ObjStart()
-	if s.Scope.Set {
-		e.FieldStart("scope")
-		s.Scope.Encode(e)
+	var (
+		first = true
+		_     = first
+	)
+	{
+		if s.Scope.Set {
+			if !first {
+				e.Comma()
+			}
+			first = false
+		}
+		if s.Scope.Set {
+			e.RawStr("\"scope\"" + ":")
+			s.Scope.Encode(e)
+		}
 	}
-	if s.LanguageCode.Set {
-		e.FieldStart("language_code")
-		s.LanguageCode.Encode(e)
+	{
+		if s.LanguageCode.Set {
+			if !first {
+				e.Comma()
+			}
+			first = false
+		}
+		if s.LanguageCode.Set {
+			e.RawStr("\"language_code\"" + ":")
+			s.LanguageCode.Encode(e)
+		}
 	}
 	e.ObjEnd()
 }
@@ -4586,11 +6434,21 @@ func (s *GetMyCommands) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s GetStickerSet) Encode(e *jx.Encoder) {
+func (s GetStickerSet) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+	{
+		if !first {
+			e.Comma()
+		}
+		first = false
 
-	e.FieldStart("name")
-	e.Str(s.Name)
+		e.RawStr("\"name\"" + ":")
+		e.Str(s.Name)
+	}
 	e.ObjEnd()
 }
 
@@ -4615,27 +6473,71 @@ func (s *GetStickerSet) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s GetUpdates) Encode(e *jx.Encoder) {
+func (s GetUpdates) Encode(e *jx.Writer) {
 	e.ObjStart()
-	if s.Offset.Set {
-		e.FieldStart("offset")
-		s.Offset.Encode(e)
-	}
-	if s.Limit.Set {
-		e.FieldStart("limit")
-		s.Limit.Encode(e)
-	}
-	if s.Timeout.Set {
-		e.FieldStart("timeout")
-		s.Timeout.Encode(e)
-	}
-	if s.AllowedUpdates != nil {
-		e.FieldStart("allowed_updates")
-		e.ArrStart()
-		for _, elem := range s.AllowedUpdates {
-			e.Str(elem)
+	var (
+		first = true
+		_     = first
+	)
+	{
+		if s.Offset.Set {
+			if !first {
+				e.Comma()
+			}
+			first = false
 		}
-		e.ArrEnd()
+		if s.Offset.Set {
+			e.RawStr("\"offset\"" + ":")
+			s.Offset.Encode(e)
+		}
+	}
+	{
+		if s.Limit.Set {
+			if !first {
+				e.Comma()
+			}
+			first = false
+		}
+		if s.Limit.Set {
+			e.RawStr("\"limit\"" + ":")
+			s.Limit.Encode(e)
+		}
+	}
+	{
+		if s.Timeout.Set {
+			if !first {
+				e.Comma()
+			}
+			first = false
+		}
+		if s.Timeout.Set {
+			e.RawStr("\"timeout\"" + ":")
+			s.Timeout.Encode(e)
+		}
+	}
+	{
+		if s.AllowedUpdates != nil {
+			if !first {
+				e.Comma()
+			}
+			first = false
+		}
+		if s.AllowedUpdates != nil {
+			e.RawStr("\"allowed_updates\"" + ":")
+			e.ArrStart()
+			if len(s.AllowedUpdates) >= 1 {
+				// Encode first element without comma.
+				{
+					elem := s.AllowedUpdates[0]
+					e.Str(elem)
+				}
+				for _, elem := range s.AllowedUpdates[1:] {
+					e.Comma()
+					e.Str(elem)
+				}
+			}
+			e.ArrEnd()
+		}
 	}
 	e.ObjEnd()
 }
@@ -4684,18 +6586,38 @@ func (s *GetUpdates) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s GetUserProfilePhotos) Encode(e *jx.Encoder) {
+func (s GetUserProfilePhotos) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+	{
+		if !first {
+			e.Comma()
+		}
+		first = false
 
-	e.FieldStart("user_id")
-	e.Int64(s.UserID)
-	if s.Offset.Set {
-		e.FieldStart("offset")
-		s.Offset.Encode(e)
+		e.RawStr("\"user_id\"" + ":")
+		e.Int64(s.UserID)
 	}
-	if s.Limit.Set {
-		e.FieldStart("limit")
-		s.Limit.Encode(e)
+	{
+		if s.Offset.Set {
+			e.Comma()
+		}
+		if s.Offset.Set {
+			e.RawStr("\"offset\"" + ":")
+			s.Offset.Encode(e)
+		}
+	}
+	{
+		if s.Limit.Set {
+			e.Comma()
+		}
+		if s.Limit.Set {
+			e.RawStr("\"limit\"" + ":")
+			s.Limit.Encode(e)
+		}
 	}
 	e.ObjEnd()
 }
@@ -4731,7 +6653,7 @@ func (s *GetUserProfilePhotos) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes ID as json.
-func (s ID) Encode(e *jx.Encoder) {
+func (s ID) Encode(e *jx.Writer) {
 	switch s.Type {
 	case StringID:
 		e.Str(s.String)
@@ -4768,38 +6690,83 @@ func (s *ID) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s InlineKeyboardButton) Encode(e *jx.Encoder) {
+func (s InlineKeyboardButton) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+	{
+		if !first {
+			e.Comma()
+		}
+		first = false
 
-	e.FieldStart("text")
-	e.Str(s.Text)
-	if s.URL.Set {
-		e.FieldStart("url")
-		s.URL.Encode(e)
+		e.RawStr("\"text\"" + ":")
+		e.Str(s.Text)
 	}
-	if s.LoginURL.Set {
-		e.FieldStart("login_url")
-		s.LoginURL.Encode(e)
+	{
+		if s.URL.Set {
+			e.Comma()
+		}
+		if s.URL.Set {
+			e.RawStr("\"url\"" + ":")
+			s.URL.Encode(e)
+		}
 	}
-	if s.CallbackData.Set {
-		e.FieldStart("callback_data")
-		s.CallbackData.Encode(e)
+	{
+		if s.LoginURL.Set {
+			e.Comma()
+		}
+		if s.LoginURL.Set {
+			e.RawStr("\"login_url\"" + ":")
+			s.LoginURL.Encode(e)
+		}
 	}
-	if s.SwitchInlineQuery.Set {
-		e.FieldStart("switch_inline_query")
-		s.SwitchInlineQuery.Encode(e)
+	{
+		if s.CallbackData.Set {
+			e.Comma()
+		}
+		if s.CallbackData.Set {
+			e.RawStr("\"callback_data\"" + ":")
+			s.CallbackData.Encode(e)
+		}
 	}
-	if s.SwitchInlineQueryCurrentChat.Set {
-		e.FieldStart("switch_inline_query_current_chat")
-		s.SwitchInlineQueryCurrentChat.Encode(e)
+	{
+		if s.SwitchInlineQuery.Set {
+			e.Comma()
+		}
+		if s.SwitchInlineQuery.Set {
+			e.RawStr("\"switch_inline_query\"" + ":")
+			s.SwitchInlineQuery.Encode(e)
+		}
 	}
-	if s.CallbackGame != nil {
-		e.FieldStart("callback_game")
-		s.CallbackGame.Encode(e)
+	{
+		if s.SwitchInlineQueryCurrentChat.Set {
+			e.Comma()
+		}
+		if s.SwitchInlineQueryCurrentChat.Set {
+			e.RawStr("\"switch_inline_query_current_chat\"" + ":")
+			s.SwitchInlineQueryCurrentChat.Encode(e)
+		}
 	}
-	if s.Pay.Set {
-		e.FieldStart("pay")
-		s.Pay.Encode(e)
+	{
+		if s.CallbackGame != nil {
+			e.Comma()
+		}
+		if s.CallbackGame != nil {
+			e.RawStr("\"callback_game\"" + ":")
+			s.CallbackGame.Encode(e)
+		}
+	}
+	{
+		if s.Pay.Set {
+			e.Comma()
+		}
+		if s.Pay.Set {
+			e.RawStr("\"pay\"" + ":")
+			s.Pay.Encode(e)
+		}
 	}
 	e.ObjEnd()
 }
@@ -4862,19 +6829,57 @@ func (s *InlineKeyboardButton) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s InlineKeyboardMarkup) Encode(e *jx.Encoder) {
+func (s InlineKeyboardMarkup) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+	{
+		if !first {
+			e.Comma()
+		}
+		first = false
 
-	e.FieldStart("inline_keyboard")
-	e.ArrStart()
-	for _, elem := range s.InlineKeyboard {
+		e.RawStr("\"inline_keyboard\"" + ":")
 		e.ArrStart()
-		for _, elem := range elem {
-			elem.Encode(e)
+		if len(s.InlineKeyboard) >= 1 {
+			// Encode first element without comma.
+			{
+				elem := s.InlineKeyboard[0]
+				e.ArrStart()
+				if len(elem) >= 1 {
+					// Encode first element without comma.
+					{
+						elem := elem[0]
+						elem.Encode(e)
+					}
+					for _, elem := range elem[1:] {
+						e.Comma()
+						elem.Encode(e)
+					}
+				}
+				e.ArrEnd()
+			}
+			for _, elem := range s.InlineKeyboard[1:] {
+				e.Comma()
+				e.ArrStart()
+				if len(elem) >= 1 {
+					// Encode first element without comma.
+					{
+						elem := elem[0]
+						elem.Encode(e)
+					}
+					for _, elem := range elem[1:] {
+						e.Comma()
+						elem.Encode(e)
+					}
+				}
+				e.ArrEnd()
+			}
 		}
 		e.ArrEnd()
 	}
-	e.ArrEnd()
 	e.ObjEnd()
 }
 
@@ -4913,27 +6918,56 @@ func (s *InlineKeyboardMarkup) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s InlineQuery) Encode(e *jx.Encoder) {
+func (s InlineQuery) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+	{
+		if !first {
+			e.Comma()
+		}
+		first = false
 
-	e.FieldStart("id")
-	e.Str(s.ID)
-
-	e.FieldStart("from")
-	s.From.Encode(e)
-
-	e.FieldStart("query")
-	e.Str(s.Query)
-
-	e.FieldStart("offset")
-	e.Str(s.Offset)
-	if s.ChatType.Set {
-		e.FieldStart("chat_type")
-		s.ChatType.Encode(e)
+		e.RawStr("\"id\"" + ":")
+		e.Str(s.ID)
 	}
-	if s.Location.Set {
-		e.FieldStart("location")
-		s.Location.Encode(e)
+	{
+		e.Comma()
+
+		e.RawStr("\"from\"" + ":")
+		s.From.Encode(e)
+	}
+	{
+		e.Comma()
+
+		e.RawStr("\"query\"" + ":")
+		e.Str(s.Query)
+	}
+	{
+		e.Comma()
+
+		e.RawStr("\"offset\"" + ":")
+		e.Str(s.Offset)
+	}
+	{
+		if s.ChatType.Set {
+			e.Comma()
+		}
+		if s.ChatType.Set {
+			e.RawStr("\"chat_type\"" + ":")
+			s.ChatType.Encode(e)
+		}
+	}
+	{
+		if s.Location.Set {
+			e.Comma()
+		}
+		if s.Location.Set {
+			e.RawStr("\"location\"" + ":")
+			s.Location.Encode(e)
+		}
 	}
 	e.ObjEnd()
 }
@@ -4985,7 +7019,7 @@ func (s *InlineQuery) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes InlineQueryChatType as json.
-func (s InlineQueryChatType) Encode(e *jx.Encoder) {
+func (s InlineQueryChatType) Encode(e *jx.Writer) {
 	e.Str(string(s))
 }
 
@@ -5018,7 +7052,7 @@ func (s *InlineQueryChatType) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes InlineQueryResult as json.
-func (s InlineQueryResult) Encode(e *jx.Encoder) {
+func (s InlineQueryResult) Encode(e *jx.Writer) {
 	switch s.Type {
 	case InlineQueryResultCachedAudioInlineQueryResult:
 		s.InlineQueryResultCachedAudio.Encode(e)
@@ -5225,47 +7259,101 @@ func (s *InlineQueryResult) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s InlineQueryResultArticle) Encode(e *jx.Encoder) {
+func (s InlineQueryResultArticle) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+	{
+		if !first {
+			e.Comma()
+		}
+		first = false
 
-	e.FieldStart("type")
-	e.Str(s.Type)
+		e.RawStr("\"type\"" + ":")
+		e.Str(s.Type)
+	}
+	{
+		e.Comma()
 
-	e.FieldStart("id")
-	e.Str(s.ID)
+		e.RawStr("\"id\"" + ":")
+		e.Str(s.ID)
+	}
+	{
+		e.Comma()
 
-	e.FieldStart("title")
-	e.Str(s.Title)
+		e.RawStr("\"title\"" + ":")
+		e.Str(s.Title)
+	}
+	{
+		e.Comma()
 
-	e.FieldStart("input_message_content")
-	s.InputMessageContent.Encode(e)
-	if s.ReplyMarkup.Set {
-		e.FieldStart("reply_markup")
-		s.ReplyMarkup.Encode(e)
+		e.RawStr("\"input_message_content\"" + ":")
+		s.InputMessageContent.Encode(e)
 	}
-	if s.URL.Set {
-		e.FieldStart("url")
-		s.URL.Encode(e)
+	{
+		if s.ReplyMarkup.Set {
+			e.Comma()
+		}
+		if s.ReplyMarkup.Set {
+			e.RawStr("\"reply_markup\"" + ":")
+			s.ReplyMarkup.Encode(e)
+		}
 	}
-	if s.HideURL.Set {
-		e.FieldStart("hide_url")
-		s.HideURL.Encode(e)
+	{
+		if s.URL.Set {
+			e.Comma()
+		}
+		if s.URL.Set {
+			e.RawStr("\"url\"" + ":")
+			s.URL.Encode(e)
+		}
 	}
-	if s.Description.Set {
-		e.FieldStart("description")
-		s.Description.Encode(e)
+	{
+		if s.HideURL.Set {
+			e.Comma()
+		}
+		if s.HideURL.Set {
+			e.RawStr("\"hide_url\"" + ":")
+			s.HideURL.Encode(e)
+		}
 	}
-	if s.ThumbURL.Set {
-		e.FieldStart("thumb_url")
-		s.ThumbURL.Encode(e)
+	{
+		if s.Description.Set {
+			e.Comma()
+		}
+		if s.Description.Set {
+			e.RawStr("\"description\"" + ":")
+			s.Description.Encode(e)
+		}
 	}
-	if s.ThumbWidth.Set {
-		e.FieldStart("thumb_width")
-		s.ThumbWidth.Encode(e)
+	{
+		if s.ThumbURL.Set {
+			e.Comma()
+		}
+		if s.ThumbURL.Set {
+			e.RawStr("\"thumb_url\"" + ":")
+			s.ThumbURL.Encode(e)
+		}
 	}
-	if s.ThumbHeight.Set {
-		e.FieldStart("thumb_height")
-		s.ThumbHeight.Encode(e)
+	{
+		if s.ThumbWidth.Set {
+			e.Comma()
+		}
+		if s.ThumbWidth.Set {
+			e.RawStr("\"thumb_width\"" + ":")
+			s.ThumbWidth.Encode(e)
+		}
+	}
+	{
+		if s.ThumbHeight.Set {
+			e.Comma()
+		}
+		if s.ThumbHeight.Set {
+			e.RawStr("\"thumb_height\"" + ":")
+			s.ThumbHeight.Encode(e)
+		}
 	}
 	e.ObjEnd()
 }
@@ -5342,51 +7430,113 @@ func (s *InlineQueryResultArticle) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s InlineQueryResultAudio) Encode(e *jx.Encoder) {
+func (s InlineQueryResultAudio) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	e.FieldStart("type")
-	e.Str(s.Type)
-
-	e.FieldStart("id")
-	e.Str(s.ID)
-
-	e.FieldStart("audio_url")
-	json.EncodeURI(e, s.AudioURL)
-
-	e.FieldStart("title")
-	e.Str(s.Title)
-	if s.Caption.Set {
-		e.FieldStart("caption")
-		s.Caption.Encode(e)
-	}
-	if s.ParseMode.Set {
-		e.FieldStart("parse_mode")
-		s.ParseMode.Encode(e)
-	}
-	if s.CaptionEntities != nil {
-		e.FieldStart("caption_entities")
-		e.ArrStart()
-		for _, elem := range s.CaptionEntities {
-			elem.Encode(e)
+	var (
+		first = true
+		_     = first
+	)
+	{
+		if !first {
+			e.Comma()
 		}
-		e.ArrEnd()
+		first = false
+
+		e.RawStr("\"type\"" + ":")
+		e.Str(s.Type)
 	}
-	if s.Performer.Set {
-		e.FieldStart("performer")
-		s.Performer.Encode(e)
+	{
+		e.Comma()
+
+		e.RawStr("\"id\"" + ":")
+		e.Str(s.ID)
 	}
-	if s.AudioDuration.Set {
-		e.FieldStart("audio_duration")
-		s.AudioDuration.Encode(e)
+	{
+		e.Comma()
+
+		e.RawStr("\"audio_url\"" + ":")
+		json.EncodeURI(e, s.AudioURL)
 	}
-	if s.ReplyMarkup.Set {
-		e.FieldStart("reply_markup")
-		s.ReplyMarkup.Encode(e)
+	{
+		e.Comma()
+
+		e.RawStr("\"title\"" + ":")
+		e.Str(s.Title)
 	}
-	if s.InputMessageContent.Set {
-		e.FieldStart("input_message_content")
-		s.InputMessageContent.Encode(e)
+	{
+		if s.Caption.Set {
+			e.Comma()
+		}
+		if s.Caption.Set {
+			e.RawStr("\"caption\"" + ":")
+			s.Caption.Encode(e)
+		}
+	}
+	{
+		if s.ParseMode.Set {
+			e.Comma()
+		}
+		if s.ParseMode.Set {
+			e.RawStr("\"parse_mode\"" + ":")
+			s.ParseMode.Encode(e)
+		}
+	}
+	{
+		if s.CaptionEntities != nil {
+			e.Comma()
+		}
+		if s.CaptionEntities != nil {
+			e.RawStr("\"caption_entities\"" + ":")
+			e.ArrStart()
+			if len(s.CaptionEntities) >= 1 {
+				// Encode first element without comma.
+				{
+					elem := s.CaptionEntities[0]
+					elem.Encode(e)
+				}
+				for _, elem := range s.CaptionEntities[1:] {
+					e.Comma()
+					elem.Encode(e)
+				}
+			}
+			e.ArrEnd()
+		}
+	}
+	{
+		if s.Performer.Set {
+			e.Comma()
+		}
+		if s.Performer.Set {
+			e.RawStr("\"performer\"" + ":")
+			s.Performer.Encode(e)
+		}
+	}
+	{
+		if s.AudioDuration.Set {
+			e.Comma()
+		}
+		if s.AudioDuration.Set {
+			e.RawStr("\"audio_duration\"" + ":")
+			s.AudioDuration.Encode(e)
+		}
+	}
+	{
+		if s.ReplyMarkup.Set {
+			e.Comma()
+		}
+		if s.ReplyMarkup.Set {
+			e.RawStr("\"reply_markup\"" + ":")
+			s.ReplyMarkup.Encode(e)
+		}
+	}
+	{
+		if s.InputMessageContent.Set {
+			e.Comma()
+		}
+		if s.InputMessageContent.Set {
+			e.RawStr("\"input_message_content\"" + ":")
+			s.InputMessageContent.Encode(e)
+		}
 	}
 	e.ObjEnd()
 }
@@ -5472,40 +7622,89 @@ func (s *InlineQueryResultAudio) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s InlineQueryResultCachedAudio) Encode(e *jx.Encoder) {
+func (s InlineQueryResultCachedAudio) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	e.FieldStart("type")
-	e.Str(s.Type)
-
-	e.FieldStart("id")
-	e.Str(s.ID)
-
-	e.FieldStart("audio_file_id")
-	e.Str(s.AudioFileID)
-	if s.Caption.Set {
-		e.FieldStart("caption")
-		s.Caption.Encode(e)
-	}
-	if s.ParseMode.Set {
-		e.FieldStart("parse_mode")
-		s.ParseMode.Encode(e)
-	}
-	if s.CaptionEntities != nil {
-		e.FieldStart("caption_entities")
-		e.ArrStart()
-		for _, elem := range s.CaptionEntities {
-			elem.Encode(e)
+	var (
+		first = true
+		_     = first
+	)
+	{
+		if !first {
+			e.Comma()
 		}
-		e.ArrEnd()
+		first = false
+
+		e.RawStr("\"type\"" + ":")
+		e.Str(s.Type)
 	}
-	if s.ReplyMarkup.Set {
-		e.FieldStart("reply_markup")
-		s.ReplyMarkup.Encode(e)
+	{
+		e.Comma()
+
+		e.RawStr("\"id\"" + ":")
+		e.Str(s.ID)
 	}
-	if s.InputMessageContent.Set {
-		e.FieldStart("input_message_content")
-		s.InputMessageContent.Encode(e)
+	{
+		e.Comma()
+
+		e.RawStr("\"audio_file_id\"" + ":")
+		e.Str(s.AudioFileID)
+	}
+	{
+		if s.Caption.Set {
+			e.Comma()
+		}
+		if s.Caption.Set {
+			e.RawStr("\"caption\"" + ":")
+			s.Caption.Encode(e)
+		}
+	}
+	{
+		if s.ParseMode.Set {
+			e.Comma()
+		}
+		if s.ParseMode.Set {
+			e.RawStr("\"parse_mode\"" + ":")
+			s.ParseMode.Encode(e)
+		}
+	}
+	{
+		if s.CaptionEntities != nil {
+			e.Comma()
+		}
+		if s.CaptionEntities != nil {
+			e.RawStr("\"caption_entities\"" + ":")
+			e.ArrStart()
+			if len(s.CaptionEntities) >= 1 {
+				// Encode first element without comma.
+				{
+					elem := s.CaptionEntities[0]
+					elem.Encode(e)
+				}
+				for _, elem := range s.CaptionEntities[1:] {
+					e.Comma()
+					elem.Encode(e)
+				}
+			}
+			e.ArrEnd()
+		}
+	}
+	{
+		if s.ReplyMarkup.Set {
+			e.Comma()
+		}
+		if s.ReplyMarkup.Set {
+			e.RawStr("\"reply_markup\"" + ":")
+			s.ReplyMarkup.Encode(e)
+		}
+	}
+	{
+		if s.InputMessageContent.Set {
+			e.Comma()
+		}
+		if s.InputMessageContent.Set {
+			e.RawStr("\"input_message_content\"" + ":")
+			s.InputMessageContent.Encode(e)
+		}
 	}
 	e.ObjEnd()
 }
@@ -5575,47 +7774,104 @@ func (s *InlineQueryResultCachedAudio) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s InlineQueryResultCachedDocument) Encode(e *jx.Encoder) {
+func (s InlineQueryResultCachedDocument) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	e.FieldStart("type")
-	e.Str(s.Type)
-
-	e.FieldStart("id")
-	e.Str(s.ID)
-
-	e.FieldStart("title")
-	e.Str(s.Title)
-
-	e.FieldStart("document_file_id")
-	e.Str(s.DocumentFileID)
-	if s.Description.Set {
-		e.FieldStart("description")
-		s.Description.Encode(e)
-	}
-	if s.Caption.Set {
-		e.FieldStart("caption")
-		s.Caption.Encode(e)
-	}
-	if s.ParseMode.Set {
-		e.FieldStart("parse_mode")
-		s.ParseMode.Encode(e)
-	}
-	if s.CaptionEntities != nil {
-		e.FieldStart("caption_entities")
-		e.ArrStart()
-		for _, elem := range s.CaptionEntities {
-			elem.Encode(e)
+	var (
+		first = true
+		_     = first
+	)
+	{
+		if !first {
+			e.Comma()
 		}
-		e.ArrEnd()
+		first = false
+
+		e.RawStr("\"type\"" + ":")
+		e.Str(s.Type)
 	}
-	if s.ReplyMarkup.Set {
-		e.FieldStart("reply_markup")
-		s.ReplyMarkup.Encode(e)
+	{
+		e.Comma()
+
+		e.RawStr("\"id\"" + ":")
+		e.Str(s.ID)
 	}
-	if s.InputMessageContent.Set {
-		e.FieldStart("input_message_content")
-		s.InputMessageContent.Encode(e)
+	{
+		e.Comma()
+
+		e.RawStr("\"title\"" + ":")
+		e.Str(s.Title)
+	}
+	{
+		e.Comma()
+
+		e.RawStr("\"document_file_id\"" + ":")
+		e.Str(s.DocumentFileID)
+	}
+	{
+		if s.Description.Set {
+			e.Comma()
+		}
+		if s.Description.Set {
+			e.RawStr("\"description\"" + ":")
+			s.Description.Encode(e)
+		}
+	}
+	{
+		if s.Caption.Set {
+			e.Comma()
+		}
+		if s.Caption.Set {
+			e.RawStr("\"caption\"" + ":")
+			s.Caption.Encode(e)
+		}
+	}
+	{
+		if s.ParseMode.Set {
+			e.Comma()
+		}
+		if s.ParseMode.Set {
+			e.RawStr("\"parse_mode\"" + ":")
+			s.ParseMode.Encode(e)
+		}
+	}
+	{
+		if s.CaptionEntities != nil {
+			e.Comma()
+		}
+		if s.CaptionEntities != nil {
+			e.RawStr("\"caption_entities\"" + ":")
+			e.ArrStart()
+			if len(s.CaptionEntities) >= 1 {
+				// Encode first element without comma.
+				{
+					elem := s.CaptionEntities[0]
+					elem.Encode(e)
+				}
+				for _, elem := range s.CaptionEntities[1:] {
+					e.Comma()
+					elem.Encode(e)
+				}
+			}
+			e.ArrEnd()
+		}
+	}
+	{
+		if s.ReplyMarkup.Set {
+			e.Comma()
+		}
+		if s.ReplyMarkup.Set {
+			e.RawStr("\"reply_markup\"" + ":")
+			s.ReplyMarkup.Encode(e)
+		}
+	}
+	{
+		if s.InputMessageContent.Set {
+			e.Comma()
+		}
+		if s.InputMessageContent.Set {
+			e.RawStr("\"input_message_content\"" + ":")
+			s.InputMessageContent.Encode(e)
+		}
 	}
 	e.ObjEnd()
 }
@@ -5696,44 +7952,98 @@ func (s *InlineQueryResultCachedDocument) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s InlineQueryResultCachedGif) Encode(e *jx.Encoder) {
+func (s InlineQueryResultCachedGif) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	e.FieldStart("type")
-	e.Str(s.Type)
-
-	e.FieldStart("id")
-	e.Str(s.ID)
-
-	e.FieldStart("gif_file_id")
-	e.Str(s.GIFFileID)
-	if s.Title.Set {
-		e.FieldStart("title")
-		s.Title.Encode(e)
-	}
-	if s.Caption.Set {
-		e.FieldStart("caption")
-		s.Caption.Encode(e)
-	}
-	if s.ParseMode.Set {
-		e.FieldStart("parse_mode")
-		s.ParseMode.Encode(e)
-	}
-	if s.CaptionEntities != nil {
-		e.FieldStart("caption_entities")
-		e.ArrStart()
-		for _, elem := range s.CaptionEntities {
-			elem.Encode(e)
+	var (
+		first = true
+		_     = first
+	)
+	{
+		if !first {
+			e.Comma()
 		}
-		e.ArrEnd()
+		first = false
+
+		e.RawStr("\"type\"" + ":")
+		e.Str(s.Type)
 	}
-	if s.ReplyMarkup.Set {
-		e.FieldStart("reply_markup")
-		s.ReplyMarkup.Encode(e)
+	{
+		e.Comma()
+
+		e.RawStr("\"id\"" + ":")
+		e.Str(s.ID)
 	}
-	if s.InputMessageContent.Set {
-		e.FieldStart("input_message_content")
-		s.InputMessageContent.Encode(e)
+	{
+		e.Comma()
+
+		e.RawStr("\"gif_file_id\"" + ":")
+		e.Str(s.GIFFileID)
+	}
+	{
+		if s.Title.Set {
+			e.Comma()
+		}
+		if s.Title.Set {
+			e.RawStr("\"title\"" + ":")
+			s.Title.Encode(e)
+		}
+	}
+	{
+		if s.Caption.Set {
+			e.Comma()
+		}
+		if s.Caption.Set {
+			e.RawStr("\"caption\"" + ":")
+			s.Caption.Encode(e)
+		}
+	}
+	{
+		if s.ParseMode.Set {
+			e.Comma()
+		}
+		if s.ParseMode.Set {
+			e.RawStr("\"parse_mode\"" + ":")
+			s.ParseMode.Encode(e)
+		}
+	}
+	{
+		if s.CaptionEntities != nil {
+			e.Comma()
+		}
+		if s.CaptionEntities != nil {
+			e.RawStr("\"caption_entities\"" + ":")
+			e.ArrStart()
+			if len(s.CaptionEntities) >= 1 {
+				// Encode first element without comma.
+				{
+					elem := s.CaptionEntities[0]
+					elem.Encode(e)
+				}
+				for _, elem := range s.CaptionEntities[1:] {
+					e.Comma()
+					elem.Encode(e)
+				}
+			}
+			e.ArrEnd()
+		}
+	}
+	{
+		if s.ReplyMarkup.Set {
+			e.Comma()
+		}
+		if s.ReplyMarkup.Set {
+			e.RawStr("\"reply_markup\"" + ":")
+			s.ReplyMarkup.Encode(e)
+		}
+	}
+	{
+		if s.InputMessageContent.Set {
+			e.Comma()
+		}
+		if s.InputMessageContent.Set {
+			e.RawStr("\"input_message_content\"" + ":")
+			s.InputMessageContent.Encode(e)
+		}
 	}
 	e.ObjEnd()
 }
@@ -5808,44 +8118,98 @@ func (s *InlineQueryResultCachedGif) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s InlineQueryResultCachedMpeg4Gif) Encode(e *jx.Encoder) {
+func (s InlineQueryResultCachedMpeg4Gif) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	e.FieldStart("type")
-	e.Str(s.Type)
-
-	e.FieldStart("id")
-	e.Str(s.ID)
-
-	e.FieldStart("mpeg4_file_id")
-	e.Str(s.Mpeg4FileID)
-	if s.Title.Set {
-		e.FieldStart("title")
-		s.Title.Encode(e)
-	}
-	if s.Caption.Set {
-		e.FieldStart("caption")
-		s.Caption.Encode(e)
-	}
-	if s.ParseMode.Set {
-		e.FieldStart("parse_mode")
-		s.ParseMode.Encode(e)
-	}
-	if s.CaptionEntities != nil {
-		e.FieldStart("caption_entities")
-		e.ArrStart()
-		for _, elem := range s.CaptionEntities {
-			elem.Encode(e)
+	var (
+		first = true
+		_     = first
+	)
+	{
+		if !first {
+			e.Comma()
 		}
-		e.ArrEnd()
+		first = false
+
+		e.RawStr("\"type\"" + ":")
+		e.Str(s.Type)
 	}
-	if s.ReplyMarkup.Set {
-		e.FieldStart("reply_markup")
-		s.ReplyMarkup.Encode(e)
+	{
+		e.Comma()
+
+		e.RawStr("\"id\"" + ":")
+		e.Str(s.ID)
 	}
-	if s.InputMessageContent.Set {
-		e.FieldStart("input_message_content")
-		s.InputMessageContent.Encode(e)
+	{
+		e.Comma()
+
+		e.RawStr("\"mpeg4_file_id\"" + ":")
+		e.Str(s.Mpeg4FileID)
+	}
+	{
+		if s.Title.Set {
+			e.Comma()
+		}
+		if s.Title.Set {
+			e.RawStr("\"title\"" + ":")
+			s.Title.Encode(e)
+		}
+	}
+	{
+		if s.Caption.Set {
+			e.Comma()
+		}
+		if s.Caption.Set {
+			e.RawStr("\"caption\"" + ":")
+			s.Caption.Encode(e)
+		}
+	}
+	{
+		if s.ParseMode.Set {
+			e.Comma()
+		}
+		if s.ParseMode.Set {
+			e.RawStr("\"parse_mode\"" + ":")
+			s.ParseMode.Encode(e)
+		}
+	}
+	{
+		if s.CaptionEntities != nil {
+			e.Comma()
+		}
+		if s.CaptionEntities != nil {
+			e.RawStr("\"caption_entities\"" + ":")
+			e.ArrStart()
+			if len(s.CaptionEntities) >= 1 {
+				// Encode first element without comma.
+				{
+					elem := s.CaptionEntities[0]
+					elem.Encode(e)
+				}
+				for _, elem := range s.CaptionEntities[1:] {
+					e.Comma()
+					elem.Encode(e)
+				}
+			}
+			e.ArrEnd()
+		}
+	}
+	{
+		if s.ReplyMarkup.Set {
+			e.Comma()
+		}
+		if s.ReplyMarkup.Set {
+			e.RawStr("\"reply_markup\"" + ":")
+			s.ReplyMarkup.Encode(e)
+		}
+	}
+	{
+		if s.InputMessageContent.Set {
+			e.Comma()
+		}
+		if s.InputMessageContent.Set {
+			e.RawStr("\"input_message_content\"" + ":")
+			s.InputMessageContent.Encode(e)
+		}
 	}
 	e.ObjEnd()
 }
@@ -5920,48 +8284,107 @@ func (s *InlineQueryResultCachedMpeg4Gif) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s InlineQueryResultCachedPhoto) Encode(e *jx.Encoder) {
+func (s InlineQueryResultCachedPhoto) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	e.FieldStart("type")
-	e.Str(s.Type)
-
-	e.FieldStart("id")
-	e.Str(s.ID)
-
-	e.FieldStart("photo_file_id")
-	e.Str(s.PhotoFileID)
-	if s.Title.Set {
-		e.FieldStart("title")
-		s.Title.Encode(e)
-	}
-	if s.Description.Set {
-		e.FieldStart("description")
-		s.Description.Encode(e)
-	}
-	if s.Caption.Set {
-		e.FieldStart("caption")
-		s.Caption.Encode(e)
-	}
-	if s.ParseMode.Set {
-		e.FieldStart("parse_mode")
-		s.ParseMode.Encode(e)
-	}
-	if s.CaptionEntities != nil {
-		e.FieldStart("caption_entities")
-		e.ArrStart()
-		for _, elem := range s.CaptionEntities {
-			elem.Encode(e)
+	var (
+		first = true
+		_     = first
+	)
+	{
+		if !first {
+			e.Comma()
 		}
-		e.ArrEnd()
+		first = false
+
+		e.RawStr("\"type\"" + ":")
+		e.Str(s.Type)
 	}
-	if s.ReplyMarkup.Set {
-		e.FieldStart("reply_markup")
-		s.ReplyMarkup.Encode(e)
+	{
+		e.Comma()
+
+		e.RawStr("\"id\"" + ":")
+		e.Str(s.ID)
 	}
-	if s.InputMessageContent.Set {
-		e.FieldStart("input_message_content")
-		s.InputMessageContent.Encode(e)
+	{
+		e.Comma()
+
+		e.RawStr("\"photo_file_id\"" + ":")
+		e.Str(s.PhotoFileID)
+	}
+	{
+		if s.Title.Set {
+			e.Comma()
+		}
+		if s.Title.Set {
+			e.RawStr("\"title\"" + ":")
+			s.Title.Encode(e)
+		}
+	}
+	{
+		if s.Description.Set {
+			e.Comma()
+		}
+		if s.Description.Set {
+			e.RawStr("\"description\"" + ":")
+			s.Description.Encode(e)
+		}
+	}
+	{
+		if s.Caption.Set {
+			e.Comma()
+		}
+		if s.Caption.Set {
+			e.RawStr("\"caption\"" + ":")
+			s.Caption.Encode(e)
+		}
+	}
+	{
+		if s.ParseMode.Set {
+			e.Comma()
+		}
+		if s.ParseMode.Set {
+			e.RawStr("\"parse_mode\"" + ":")
+			s.ParseMode.Encode(e)
+		}
+	}
+	{
+		if s.CaptionEntities != nil {
+			e.Comma()
+		}
+		if s.CaptionEntities != nil {
+			e.RawStr("\"caption_entities\"" + ":")
+			e.ArrStart()
+			if len(s.CaptionEntities) >= 1 {
+				// Encode first element without comma.
+				{
+					elem := s.CaptionEntities[0]
+					elem.Encode(e)
+				}
+				for _, elem := range s.CaptionEntities[1:] {
+					e.Comma()
+					elem.Encode(e)
+				}
+			}
+			e.ArrEnd()
+		}
+	}
+	{
+		if s.ReplyMarkup.Set {
+			e.Comma()
+		}
+		if s.ReplyMarkup.Set {
+			e.RawStr("\"reply_markup\"" + ":")
+			s.ReplyMarkup.Encode(e)
+		}
+	}
+	{
+		if s.InputMessageContent.Set {
+			e.Comma()
+		}
+		if s.InputMessageContent.Set {
+			e.RawStr("\"input_message_content\"" + ":")
+			s.InputMessageContent.Encode(e)
+		}
 	}
 	e.ObjEnd()
 }
@@ -6041,24 +8464,50 @@ func (s *InlineQueryResultCachedPhoto) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s InlineQueryResultCachedSticker) Encode(e *jx.Encoder) {
+func (s InlineQueryResultCachedSticker) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+	{
+		if !first {
+			e.Comma()
+		}
+		first = false
 
-	e.FieldStart("type")
-	e.Str(s.Type)
-
-	e.FieldStart("id")
-	e.Str(s.ID)
-
-	e.FieldStart("sticker_file_id")
-	e.Str(s.StickerFileID)
-	if s.ReplyMarkup.Set {
-		e.FieldStart("reply_markup")
-		s.ReplyMarkup.Encode(e)
+		e.RawStr("\"type\"" + ":")
+		e.Str(s.Type)
 	}
-	if s.InputMessageContent.Set {
-		e.FieldStart("input_message_content")
-		s.InputMessageContent.Encode(e)
+	{
+		e.Comma()
+
+		e.RawStr("\"id\"" + ":")
+		e.Str(s.ID)
+	}
+	{
+		e.Comma()
+
+		e.RawStr("\"sticker_file_id\"" + ":")
+		e.Str(s.StickerFileID)
+	}
+	{
+		if s.ReplyMarkup.Set {
+			e.Comma()
+		}
+		if s.ReplyMarkup.Set {
+			e.RawStr("\"reply_markup\"" + ":")
+			s.ReplyMarkup.Encode(e)
+		}
+	}
+	{
+		if s.InputMessageContent.Set {
+			e.Comma()
+		}
+		if s.InputMessageContent.Set {
+			e.RawStr("\"input_message_content\"" + ":")
+			s.InputMessageContent.Encode(e)
+		}
 	}
 	e.ObjEnd()
 }
@@ -6106,47 +8555,104 @@ func (s *InlineQueryResultCachedSticker) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s InlineQueryResultCachedVideo) Encode(e *jx.Encoder) {
+func (s InlineQueryResultCachedVideo) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	e.FieldStart("type")
-	e.Str(s.Type)
-
-	e.FieldStart("id")
-	e.Str(s.ID)
-
-	e.FieldStart("video_file_id")
-	e.Str(s.VideoFileID)
-
-	e.FieldStart("title")
-	e.Str(s.Title)
-	if s.Description.Set {
-		e.FieldStart("description")
-		s.Description.Encode(e)
-	}
-	if s.Caption.Set {
-		e.FieldStart("caption")
-		s.Caption.Encode(e)
-	}
-	if s.ParseMode.Set {
-		e.FieldStart("parse_mode")
-		s.ParseMode.Encode(e)
-	}
-	if s.CaptionEntities != nil {
-		e.FieldStart("caption_entities")
-		e.ArrStart()
-		for _, elem := range s.CaptionEntities {
-			elem.Encode(e)
+	var (
+		first = true
+		_     = first
+	)
+	{
+		if !first {
+			e.Comma()
 		}
-		e.ArrEnd()
+		first = false
+
+		e.RawStr("\"type\"" + ":")
+		e.Str(s.Type)
 	}
-	if s.ReplyMarkup.Set {
-		e.FieldStart("reply_markup")
-		s.ReplyMarkup.Encode(e)
+	{
+		e.Comma()
+
+		e.RawStr("\"id\"" + ":")
+		e.Str(s.ID)
 	}
-	if s.InputMessageContent.Set {
-		e.FieldStart("input_message_content")
-		s.InputMessageContent.Encode(e)
+	{
+		e.Comma()
+
+		e.RawStr("\"video_file_id\"" + ":")
+		e.Str(s.VideoFileID)
+	}
+	{
+		e.Comma()
+
+		e.RawStr("\"title\"" + ":")
+		e.Str(s.Title)
+	}
+	{
+		if s.Description.Set {
+			e.Comma()
+		}
+		if s.Description.Set {
+			e.RawStr("\"description\"" + ":")
+			s.Description.Encode(e)
+		}
+	}
+	{
+		if s.Caption.Set {
+			e.Comma()
+		}
+		if s.Caption.Set {
+			e.RawStr("\"caption\"" + ":")
+			s.Caption.Encode(e)
+		}
+	}
+	{
+		if s.ParseMode.Set {
+			e.Comma()
+		}
+		if s.ParseMode.Set {
+			e.RawStr("\"parse_mode\"" + ":")
+			s.ParseMode.Encode(e)
+		}
+	}
+	{
+		if s.CaptionEntities != nil {
+			e.Comma()
+		}
+		if s.CaptionEntities != nil {
+			e.RawStr("\"caption_entities\"" + ":")
+			e.ArrStart()
+			if len(s.CaptionEntities) >= 1 {
+				// Encode first element without comma.
+				{
+					elem := s.CaptionEntities[0]
+					elem.Encode(e)
+				}
+				for _, elem := range s.CaptionEntities[1:] {
+					e.Comma()
+					elem.Encode(e)
+				}
+			}
+			e.ArrEnd()
+		}
+	}
+	{
+		if s.ReplyMarkup.Set {
+			e.Comma()
+		}
+		if s.ReplyMarkup.Set {
+			e.RawStr("\"reply_markup\"" + ":")
+			s.ReplyMarkup.Encode(e)
+		}
+	}
+	{
+		if s.InputMessageContent.Set {
+			e.Comma()
+		}
+		if s.InputMessageContent.Set {
+			e.RawStr("\"input_message_content\"" + ":")
+			s.InputMessageContent.Encode(e)
+		}
 	}
 	e.ObjEnd()
 }
@@ -6227,43 +8733,95 @@ func (s *InlineQueryResultCachedVideo) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s InlineQueryResultCachedVoice) Encode(e *jx.Encoder) {
+func (s InlineQueryResultCachedVoice) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	e.FieldStart("type")
-	e.Str(s.Type)
-
-	e.FieldStart("id")
-	e.Str(s.ID)
-
-	e.FieldStart("voice_file_id")
-	e.Str(s.VoiceFileID)
-
-	e.FieldStart("title")
-	e.Str(s.Title)
-	if s.Caption.Set {
-		e.FieldStart("caption")
-		s.Caption.Encode(e)
-	}
-	if s.ParseMode.Set {
-		e.FieldStart("parse_mode")
-		s.ParseMode.Encode(e)
-	}
-	if s.CaptionEntities != nil {
-		e.FieldStart("caption_entities")
-		e.ArrStart()
-		for _, elem := range s.CaptionEntities {
-			elem.Encode(e)
+	var (
+		first = true
+		_     = first
+	)
+	{
+		if !first {
+			e.Comma()
 		}
-		e.ArrEnd()
+		first = false
+
+		e.RawStr("\"type\"" + ":")
+		e.Str(s.Type)
 	}
-	if s.ReplyMarkup.Set {
-		e.FieldStart("reply_markup")
-		s.ReplyMarkup.Encode(e)
+	{
+		e.Comma()
+
+		e.RawStr("\"id\"" + ":")
+		e.Str(s.ID)
 	}
-	if s.InputMessageContent.Set {
-		e.FieldStart("input_message_content")
-		s.InputMessageContent.Encode(e)
+	{
+		e.Comma()
+
+		e.RawStr("\"voice_file_id\"" + ":")
+		e.Str(s.VoiceFileID)
+	}
+	{
+		e.Comma()
+
+		e.RawStr("\"title\"" + ":")
+		e.Str(s.Title)
+	}
+	{
+		if s.Caption.Set {
+			e.Comma()
+		}
+		if s.Caption.Set {
+			e.RawStr("\"caption\"" + ":")
+			s.Caption.Encode(e)
+		}
+	}
+	{
+		if s.ParseMode.Set {
+			e.Comma()
+		}
+		if s.ParseMode.Set {
+			e.RawStr("\"parse_mode\"" + ":")
+			s.ParseMode.Encode(e)
+		}
+	}
+	{
+		if s.CaptionEntities != nil {
+			e.Comma()
+		}
+		if s.CaptionEntities != nil {
+			e.RawStr("\"caption_entities\"" + ":")
+			e.ArrStart()
+			if len(s.CaptionEntities) >= 1 {
+				// Encode first element without comma.
+				{
+					elem := s.CaptionEntities[0]
+					elem.Encode(e)
+				}
+				for _, elem := range s.CaptionEntities[1:] {
+					e.Comma()
+					elem.Encode(e)
+				}
+			}
+			e.ArrEnd()
+		}
+	}
+	{
+		if s.ReplyMarkup.Set {
+			e.Comma()
+		}
+		if s.ReplyMarkup.Set {
+			e.RawStr("\"reply_markup\"" + ":")
+			s.ReplyMarkup.Encode(e)
+		}
+	}
+	{
+		if s.InputMessageContent.Set {
+			e.Comma()
+		}
+		if s.InputMessageContent.Set {
+			e.RawStr("\"input_message_content\"" + ":")
+			s.InputMessageContent.Encode(e)
+		}
 	}
 	e.ObjEnd()
 }
@@ -6339,47 +8897,101 @@ func (s *InlineQueryResultCachedVoice) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s InlineQueryResultContact) Encode(e *jx.Encoder) {
+func (s InlineQueryResultContact) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+	{
+		if !first {
+			e.Comma()
+		}
+		first = false
 
-	e.FieldStart("type")
-	e.Str(s.Type)
+		e.RawStr("\"type\"" + ":")
+		e.Str(s.Type)
+	}
+	{
+		e.Comma()
 
-	e.FieldStart("id")
-	e.Str(s.ID)
+		e.RawStr("\"id\"" + ":")
+		e.Str(s.ID)
+	}
+	{
+		e.Comma()
 
-	e.FieldStart("phone_number")
-	e.Str(s.PhoneNumber)
+		e.RawStr("\"phone_number\"" + ":")
+		e.Str(s.PhoneNumber)
+	}
+	{
+		e.Comma()
 
-	e.FieldStart("first_name")
-	e.Str(s.FirstName)
-	if s.LastName.Set {
-		e.FieldStart("last_name")
-		s.LastName.Encode(e)
+		e.RawStr("\"first_name\"" + ":")
+		e.Str(s.FirstName)
 	}
-	if s.Vcard.Set {
-		e.FieldStart("vcard")
-		s.Vcard.Encode(e)
+	{
+		if s.LastName.Set {
+			e.Comma()
+		}
+		if s.LastName.Set {
+			e.RawStr("\"last_name\"" + ":")
+			s.LastName.Encode(e)
+		}
 	}
-	if s.ReplyMarkup.Set {
-		e.FieldStart("reply_markup")
-		s.ReplyMarkup.Encode(e)
+	{
+		if s.Vcard.Set {
+			e.Comma()
+		}
+		if s.Vcard.Set {
+			e.RawStr("\"vcard\"" + ":")
+			s.Vcard.Encode(e)
+		}
 	}
-	if s.InputMessageContent.Set {
-		e.FieldStart("input_message_content")
-		s.InputMessageContent.Encode(e)
+	{
+		if s.ReplyMarkup.Set {
+			e.Comma()
+		}
+		if s.ReplyMarkup.Set {
+			e.RawStr("\"reply_markup\"" + ":")
+			s.ReplyMarkup.Encode(e)
+		}
 	}
-	if s.ThumbURL.Set {
-		e.FieldStart("thumb_url")
-		s.ThumbURL.Encode(e)
+	{
+		if s.InputMessageContent.Set {
+			e.Comma()
+		}
+		if s.InputMessageContent.Set {
+			e.RawStr("\"input_message_content\"" + ":")
+			s.InputMessageContent.Encode(e)
+		}
 	}
-	if s.ThumbWidth.Set {
-		e.FieldStart("thumb_width")
-		s.ThumbWidth.Encode(e)
+	{
+		if s.ThumbURL.Set {
+			e.Comma()
+		}
+		if s.ThumbURL.Set {
+			e.RawStr("\"thumb_url\"" + ":")
+			s.ThumbURL.Encode(e)
+		}
 	}
-	if s.ThumbHeight.Set {
-		e.FieldStart("thumb_height")
-		s.ThumbHeight.Encode(e)
+	{
+		if s.ThumbWidth.Set {
+			e.Comma()
+		}
+		if s.ThumbWidth.Set {
+			e.RawStr("\"thumb_width\"" + ":")
+			s.ThumbWidth.Encode(e)
+		}
+	}
+	{
+		if s.ThumbHeight.Set {
+			e.Comma()
+		}
+		if s.ThumbHeight.Set {
+			e.RawStr("\"thumb_height\"" + ":")
+			s.ThumbHeight.Encode(e)
+		}
 	}
 	e.ObjEnd()
 }
@@ -6458,62 +9070,137 @@ func (s *InlineQueryResultContact) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s InlineQueryResultDocument) Encode(e *jx.Encoder) {
+func (s InlineQueryResultDocument) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	e.FieldStart("type")
-	e.Str(s.Type)
-
-	e.FieldStart("id")
-	e.Str(s.ID)
-
-	e.FieldStart("title")
-	e.Str(s.Title)
-	if s.Caption.Set {
-		e.FieldStart("caption")
-		s.Caption.Encode(e)
-	}
-	if s.ParseMode.Set {
-		e.FieldStart("parse_mode")
-		s.ParseMode.Encode(e)
-	}
-	if s.CaptionEntities != nil {
-		e.FieldStart("caption_entities")
-		e.ArrStart()
-		for _, elem := range s.CaptionEntities {
-			elem.Encode(e)
+	var (
+		first = true
+		_     = first
+	)
+	{
+		if !first {
+			e.Comma()
 		}
-		e.ArrEnd()
-	}
+		first = false
 
-	e.FieldStart("document_url")
-	json.EncodeURI(e, s.DocumentURL)
+		e.RawStr("\"type\"" + ":")
+		e.Str(s.Type)
+	}
+	{
+		e.Comma()
 
-	e.FieldStart("mime_type")
-	e.Str(s.MimeType)
-	if s.Description.Set {
-		e.FieldStart("description")
-		s.Description.Encode(e)
+		e.RawStr("\"id\"" + ":")
+		e.Str(s.ID)
 	}
-	if s.ReplyMarkup.Set {
-		e.FieldStart("reply_markup")
-		s.ReplyMarkup.Encode(e)
+	{
+		e.Comma()
+
+		e.RawStr("\"title\"" + ":")
+		e.Str(s.Title)
 	}
-	if s.InputMessageContent.Set {
-		e.FieldStart("input_message_content")
-		s.InputMessageContent.Encode(e)
+	{
+		if s.Caption.Set {
+			e.Comma()
+		}
+		if s.Caption.Set {
+			e.RawStr("\"caption\"" + ":")
+			s.Caption.Encode(e)
+		}
 	}
-	if s.ThumbURL.Set {
-		e.FieldStart("thumb_url")
-		s.ThumbURL.Encode(e)
+	{
+		if s.ParseMode.Set {
+			e.Comma()
+		}
+		if s.ParseMode.Set {
+			e.RawStr("\"parse_mode\"" + ":")
+			s.ParseMode.Encode(e)
+		}
 	}
-	if s.ThumbWidth.Set {
-		e.FieldStart("thumb_width")
-		s.ThumbWidth.Encode(e)
+	{
+		if s.CaptionEntities != nil {
+			e.Comma()
+		}
+		if s.CaptionEntities != nil {
+			e.RawStr("\"caption_entities\"" + ":")
+			e.ArrStart()
+			if len(s.CaptionEntities) >= 1 {
+				// Encode first element without comma.
+				{
+					elem := s.CaptionEntities[0]
+					elem.Encode(e)
+				}
+				for _, elem := range s.CaptionEntities[1:] {
+					e.Comma()
+					elem.Encode(e)
+				}
+			}
+			e.ArrEnd()
+		}
 	}
-	if s.ThumbHeight.Set {
-		e.FieldStart("thumb_height")
-		s.ThumbHeight.Encode(e)
+	{
+		e.Comma()
+
+		e.RawStr("\"document_url\"" + ":")
+		json.EncodeURI(e, s.DocumentURL)
+	}
+	{
+		e.Comma()
+
+		e.RawStr("\"mime_type\"" + ":")
+		e.Str(s.MimeType)
+	}
+	{
+		if s.Description.Set {
+			e.Comma()
+		}
+		if s.Description.Set {
+			e.RawStr("\"description\"" + ":")
+			s.Description.Encode(e)
+		}
+	}
+	{
+		if s.ReplyMarkup.Set {
+			e.Comma()
+		}
+		if s.ReplyMarkup.Set {
+			e.RawStr("\"reply_markup\"" + ":")
+			s.ReplyMarkup.Encode(e)
+		}
+	}
+	{
+		if s.InputMessageContent.Set {
+			e.Comma()
+		}
+		if s.InputMessageContent.Set {
+			e.RawStr("\"input_message_content\"" + ":")
+			s.InputMessageContent.Encode(e)
+		}
+	}
+	{
+		if s.ThumbURL.Set {
+			e.Comma()
+		}
+		if s.ThumbURL.Set {
+			e.RawStr("\"thumb_url\"" + ":")
+			s.ThumbURL.Encode(e)
+		}
+	}
+	{
+		if s.ThumbWidth.Set {
+			e.Comma()
+		}
+		if s.ThumbWidth.Set {
+			e.RawStr("\"thumb_width\"" + ":")
+			s.ThumbWidth.Encode(e)
+		}
+	}
+	{
+		if s.ThumbHeight.Set {
+			e.Comma()
+		}
+		if s.ThumbHeight.Set {
+			e.RawStr("\"thumb_height\"" + ":")
+			s.ThumbHeight.Encode(e)
+		}
 	}
 	e.ObjEnd()
 }
@@ -6615,20 +9302,41 @@ func (s *InlineQueryResultDocument) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s InlineQueryResultGame) Encode(e *jx.Encoder) {
+func (s InlineQueryResultGame) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+	{
+		if !first {
+			e.Comma()
+		}
+		first = false
 
-	e.FieldStart("type")
-	e.Str(s.Type)
+		e.RawStr("\"type\"" + ":")
+		e.Str(s.Type)
+	}
+	{
+		e.Comma()
 
-	e.FieldStart("id")
-	e.Str(s.ID)
+		e.RawStr("\"id\"" + ":")
+		e.Str(s.ID)
+	}
+	{
+		e.Comma()
 
-	e.FieldStart("game_short_name")
-	e.Str(s.GameShortName)
-	if s.ReplyMarkup.Set {
-		e.FieldStart("reply_markup")
-		s.ReplyMarkup.Encode(e)
+		e.RawStr("\"game_short_name\"" + ":")
+		e.Str(s.GameShortName)
+	}
+	{
+		if s.ReplyMarkup.Set {
+			e.Comma()
+		}
+		if s.ReplyMarkup.Set {
+			e.RawStr("\"reply_markup\"" + ":")
+			s.ReplyMarkup.Encode(e)
+		}
 	}
 	e.ObjEnd()
 }
@@ -6671,63 +9379,140 @@ func (s *InlineQueryResultGame) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s InlineQueryResultGif) Encode(e *jx.Encoder) {
+func (s InlineQueryResultGif) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	e.FieldStart("type")
-	e.Str(s.Type)
-
-	e.FieldStart("id")
-	e.Str(s.ID)
-
-	e.FieldStart("gif_url")
-	json.EncodeURI(e, s.GIFURL)
-	if s.GIFWidth.Set {
-		e.FieldStart("gif_width")
-		s.GIFWidth.Encode(e)
-	}
-	if s.GIFHeight.Set {
-		e.FieldStart("gif_height")
-		s.GIFHeight.Encode(e)
-	}
-	if s.GIFDuration.Set {
-		e.FieldStart("gif_duration")
-		s.GIFDuration.Encode(e)
-	}
-
-	e.FieldStart("thumb_url")
-	json.EncodeURI(e, s.ThumbURL)
-	if s.ThumbMimeType.Set {
-		e.FieldStart("thumb_mime_type")
-		s.ThumbMimeType.Encode(e)
-	}
-	if s.Title.Set {
-		e.FieldStart("title")
-		s.Title.Encode(e)
-	}
-	if s.Caption.Set {
-		e.FieldStart("caption")
-		s.Caption.Encode(e)
-	}
-	if s.ParseMode.Set {
-		e.FieldStart("parse_mode")
-		s.ParseMode.Encode(e)
-	}
-	if s.CaptionEntities != nil {
-		e.FieldStart("caption_entities")
-		e.ArrStart()
-		for _, elem := range s.CaptionEntities {
-			elem.Encode(e)
+	var (
+		first = true
+		_     = first
+	)
+	{
+		if !first {
+			e.Comma()
 		}
-		e.ArrEnd()
+		first = false
+
+		e.RawStr("\"type\"" + ":")
+		e.Str(s.Type)
 	}
-	if s.ReplyMarkup.Set {
-		e.FieldStart("reply_markup")
-		s.ReplyMarkup.Encode(e)
+	{
+		e.Comma()
+
+		e.RawStr("\"id\"" + ":")
+		e.Str(s.ID)
 	}
-	if s.InputMessageContent.Set {
-		e.FieldStart("input_message_content")
-		s.InputMessageContent.Encode(e)
+	{
+		e.Comma()
+
+		e.RawStr("\"gif_url\"" + ":")
+		json.EncodeURI(e, s.GIFURL)
+	}
+	{
+		if s.GIFWidth.Set {
+			e.Comma()
+		}
+		if s.GIFWidth.Set {
+			e.RawStr("\"gif_width\"" + ":")
+			s.GIFWidth.Encode(e)
+		}
+	}
+	{
+		if s.GIFHeight.Set {
+			e.Comma()
+		}
+		if s.GIFHeight.Set {
+			e.RawStr("\"gif_height\"" + ":")
+			s.GIFHeight.Encode(e)
+		}
+	}
+	{
+		if s.GIFDuration.Set {
+			e.Comma()
+		}
+		if s.GIFDuration.Set {
+			e.RawStr("\"gif_duration\"" + ":")
+			s.GIFDuration.Encode(e)
+		}
+	}
+	{
+		e.Comma()
+
+		e.RawStr("\"thumb_url\"" + ":")
+		json.EncodeURI(e, s.ThumbURL)
+	}
+	{
+		if s.ThumbMimeType.Set {
+			e.Comma()
+		}
+		if s.ThumbMimeType.Set {
+			e.RawStr("\"thumb_mime_type\"" + ":")
+			s.ThumbMimeType.Encode(e)
+		}
+	}
+	{
+		if s.Title.Set {
+			e.Comma()
+		}
+		if s.Title.Set {
+			e.RawStr("\"title\"" + ":")
+			s.Title.Encode(e)
+		}
+	}
+	{
+		if s.Caption.Set {
+			e.Comma()
+		}
+		if s.Caption.Set {
+			e.RawStr("\"caption\"" + ":")
+			s.Caption.Encode(e)
+		}
+	}
+	{
+		if s.ParseMode.Set {
+			e.Comma()
+		}
+		if s.ParseMode.Set {
+			e.RawStr("\"parse_mode\"" + ":")
+			s.ParseMode.Encode(e)
+		}
+	}
+	{
+		if s.CaptionEntities != nil {
+			e.Comma()
+		}
+		if s.CaptionEntities != nil {
+			e.RawStr("\"caption_entities\"" + ":")
+			e.ArrStart()
+			if len(s.CaptionEntities) >= 1 {
+				// Encode first element without comma.
+				{
+					elem := s.CaptionEntities[0]
+					elem.Encode(e)
+				}
+				for _, elem := range s.CaptionEntities[1:] {
+					e.Comma()
+					elem.Encode(e)
+				}
+			}
+			e.ArrEnd()
+		}
+	}
+	{
+		if s.ReplyMarkup.Set {
+			e.Comma()
+		}
+		if s.ReplyMarkup.Set {
+			e.RawStr("\"reply_markup\"" + ":")
+			s.ReplyMarkup.Encode(e)
+		}
+	}
+	{
+		if s.InputMessageContent.Set {
+			e.Comma()
+		}
+		if s.InputMessageContent.Set {
+			e.RawStr("\"input_message_content\"" + ":")
+			s.InputMessageContent.Encode(e)
+		}
 	}
 	e.ObjEnd()
 }
@@ -6828,58 +9613,125 @@ func (s *InlineQueryResultGif) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s InlineQueryResultLocation) Encode(e *jx.Encoder) {
+func (s InlineQueryResultLocation) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+	{
+		if !first {
+			e.Comma()
+		}
+		first = false
 
-	e.FieldStart("type")
-	e.Str(s.Type)
+		e.RawStr("\"type\"" + ":")
+		e.Str(s.Type)
+	}
+	{
+		e.Comma()
 
-	e.FieldStart("id")
-	e.Str(s.ID)
+		e.RawStr("\"id\"" + ":")
+		e.Str(s.ID)
+	}
+	{
+		e.Comma()
 
-	e.FieldStart("latitude")
-	e.Float64(s.Latitude)
+		e.RawStr("\"latitude\"" + ":")
+		e.Float64(s.Latitude)
+	}
+	{
+		e.Comma()
 
-	e.FieldStart("longitude")
-	e.Float64(s.Longitude)
+		e.RawStr("\"longitude\"" + ":")
+		e.Float64(s.Longitude)
+	}
+	{
+		e.Comma()
 
-	e.FieldStart("title")
-	e.Str(s.Title)
-	if s.HorizontalAccuracy.Set {
-		e.FieldStart("horizontal_accuracy")
-		s.HorizontalAccuracy.Encode(e)
+		e.RawStr("\"title\"" + ":")
+		e.Str(s.Title)
 	}
-	if s.LivePeriod.Set {
-		e.FieldStart("live_period")
-		s.LivePeriod.Encode(e)
+	{
+		if s.HorizontalAccuracy.Set {
+			e.Comma()
+		}
+		if s.HorizontalAccuracy.Set {
+			e.RawStr("\"horizontal_accuracy\"" + ":")
+			s.HorizontalAccuracy.Encode(e)
+		}
 	}
-	if s.Heading.Set {
-		e.FieldStart("heading")
-		s.Heading.Encode(e)
+	{
+		if s.LivePeriod.Set {
+			e.Comma()
+		}
+		if s.LivePeriod.Set {
+			e.RawStr("\"live_period\"" + ":")
+			s.LivePeriod.Encode(e)
+		}
 	}
-	if s.ProximityAlertRadius.Set {
-		e.FieldStart("proximity_alert_radius")
-		s.ProximityAlertRadius.Encode(e)
+	{
+		if s.Heading.Set {
+			e.Comma()
+		}
+		if s.Heading.Set {
+			e.RawStr("\"heading\"" + ":")
+			s.Heading.Encode(e)
+		}
 	}
-	if s.ReplyMarkup.Set {
-		e.FieldStart("reply_markup")
-		s.ReplyMarkup.Encode(e)
+	{
+		if s.ProximityAlertRadius.Set {
+			e.Comma()
+		}
+		if s.ProximityAlertRadius.Set {
+			e.RawStr("\"proximity_alert_radius\"" + ":")
+			s.ProximityAlertRadius.Encode(e)
+		}
 	}
-	if s.InputMessageContent.Set {
-		e.FieldStart("input_message_content")
-		s.InputMessageContent.Encode(e)
+	{
+		if s.ReplyMarkup.Set {
+			e.Comma()
+		}
+		if s.ReplyMarkup.Set {
+			e.RawStr("\"reply_markup\"" + ":")
+			s.ReplyMarkup.Encode(e)
+		}
 	}
-	if s.ThumbURL.Set {
-		e.FieldStart("thumb_url")
-		s.ThumbURL.Encode(e)
+	{
+		if s.InputMessageContent.Set {
+			e.Comma()
+		}
+		if s.InputMessageContent.Set {
+			e.RawStr("\"input_message_content\"" + ":")
+			s.InputMessageContent.Encode(e)
+		}
 	}
-	if s.ThumbWidth.Set {
-		e.FieldStart("thumb_width")
-		s.ThumbWidth.Encode(e)
+	{
+		if s.ThumbURL.Set {
+			e.Comma()
+		}
+		if s.ThumbURL.Set {
+			e.RawStr("\"thumb_url\"" + ":")
+			s.ThumbURL.Encode(e)
+		}
 	}
-	if s.ThumbHeight.Set {
-		e.FieldStart("thumb_height")
-		s.ThumbHeight.Encode(e)
+	{
+		if s.ThumbWidth.Set {
+			e.Comma()
+		}
+		if s.ThumbWidth.Set {
+			e.RawStr("\"thumb_width\"" + ":")
+			s.ThumbWidth.Encode(e)
+		}
+	}
+	{
+		if s.ThumbHeight.Set {
+			e.Comma()
+		}
+		if s.ThumbHeight.Set {
+			e.RawStr("\"thumb_height\"" + ":")
+			s.ThumbHeight.Encode(e)
+		}
 	}
 	e.ObjEnd()
 }
@@ -6974,63 +9826,140 @@ func (s *InlineQueryResultLocation) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s InlineQueryResultMpeg4Gif) Encode(e *jx.Encoder) {
+func (s InlineQueryResultMpeg4Gif) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	e.FieldStart("type")
-	e.Str(s.Type)
-
-	e.FieldStart("id")
-	e.Str(s.ID)
-
-	e.FieldStart("mpeg4_url")
-	json.EncodeURI(e, s.Mpeg4URL)
-	if s.Mpeg4Width.Set {
-		e.FieldStart("mpeg4_width")
-		s.Mpeg4Width.Encode(e)
-	}
-	if s.Mpeg4Height.Set {
-		e.FieldStart("mpeg4_height")
-		s.Mpeg4Height.Encode(e)
-	}
-	if s.Mpeg4Duration.Set {
-		e.FieldStart("mpeg4_duration")
-		s.Mpeg4Duration.Encode(e)
-	}
-
-	e.FieldStart("thumb_url")
-	json.EncodeURI(e, s.ThumbURL)
-	if s.ThumbMimeType.Set {
-		e.FieldStart("thumb_mime_type")
-		s.ThumbMimeType.Encode(e)
-	}
-	if s.Title.Set {
-		e.FieldStart("title")
-		s.Title.Encode(e)
-	}
-	if s.Caption.Set {
-		e.FieldStart("caption")
-		s.Caption.Encode(e)
-	}
-	if s.ParseMode.Set {
-		e.FieldStart("parse_mode")
-		s.ParseMode.Encode(e)
-	}
-	if s.CaptionEntities != nil {
-		e.FieldStart("caption_entities")
-		e.ArrStart()
-		for _, elem := range s.CaptionEntities {
-			elem.Encode(e)
+	var (
+		first = true
+		_     = first
+	)
+	{
+		if !first {
+			e.Comma()
 		}
-		e.ArrEnd()
+		first = false
+
+		e.RawStr("\"type\"" + ":")
+		e.Str(s.Type)
 	}
-	if s.ReplyMarkup.Set {
-		e.FieldStart("reply_markup")
-		s.ReplyMarkup.Encode(e)
+	{
+		e.Comma()
+
+		e.RawStr("\"id\"" + ":")
+		e.Str(s.ID)
 	}
-	if s.InputMessageContent.Set {
-		e.FieldStart("input_message_content")
-		s.InputMessageContent.Encode(e)
+	{
+		e.Comma()
+
+		e.RawStr("\"mpeg4_url\"" + ":")
+		json.EncodeURI(e, s.Mpeg4URL)
+	}
+	{
+		if s.Mpeg4Width.Set {
+			e.Comma()
+		}
+		if s.Mpeg4Width.Set {
+			e.RawStr("\"mpeg4_width\"" + ":")
+			s.Mpeg4Width.Encode(e)
+		}
+	}
+	{
+		if s.Mpeg4Height.Set {
+			e.Comma()
+		}
+		if s.Mpeg4Height.Set {
+			e.RawStr("\"mpeg4_height\"" + ":")
+			s.Mpeg4Height.Encode(e)
+		}
+	}
+	{
+		if s.Mpeg4Duration.Set {
+			e.Comma()
+		}
+		if s.Mpeg4Duration.Set {
+			e.RawStr("\"mpeg4_duration\"" + ":")
+			s.Mpeg4Duration.Encode(e)
+		}
+	}
+	{
+		e.Comma()
+
+		e.RawStr("\"thumb_url\"" + ":")
+		json.EncodeURI(e, s.ThumbURL)
+	}
+	{
+		if s.ThumbMimeType.Set {
+			e.Comma()
+		}
+		if s.ThumbMimeType.Set {
+			e.RawStr("\"thumb_mime_type\"" + ":")
+			s.ThumbMimeType.Encode(e)
+		}
+	}
+	{
+		if s.Title.Set {
+			e.Comma()
+		}
+		if s.Title.Set {
+			e.RawStr("\"title\"" + ":")
+			s.Title.Encode(e)
+		}
+	}
+	{
+		if s.Caption.Set {
+			e.Comma()
+		}
+		if s.Caption.Set {
+			e.RawStr("\"caption\"" + ":")
+			s.Caption.Encode(e)
+		}
+	}
+	{
+		if s.ParseMode.Set {
+			e.Comma()
+		}
+		if s.ParseMode.Set {
+			e.RawStr("\"parse_mode\"" + ":")
+			s.ParseMode.Encode(e)
+		}
+	}
+	{
+		if s.CaptionEntities != nil {
+			e.Comma()
+		}
+		if s.CaptionEntities != nil {
+			e.RawStr("\"caption_entities\"" + ":")
+			e.ArrStart()
+			if len(s.CaptionEntities) >= 1 {
+				// Encode first element without comma.
+				{
+					elem := s.CaptionEntities[0]
+					elem.Encode(e)
+				}
+				for _, elem := range s.CaptionEntities[1:] {
+					e.Comma()
+					elem.Encode(e)
+				}
+			}
+			e.ArrEnd()
+		}
+	}
+	{
+		if s.ReplyMarkup.Set {
+			e.Comma()
+		}
+		if s.ReplyMarkup.Set {
+			e.RawStr("\"reply_markup\"" + ":")
+			s.ReplyMarkup.Encode(e)
+		}
+	}
+	{
+		if s.InputMessageContent.Set {
+			e.Comma()
+		}
+		if s.InputMessageContent.Set {
+			e.RawStr("\"input_message_content\"" + ":")
+			s.InputMessageContent.Encode(e)
+		}
 	}
 	e.ObjEnd()
 }
@@ -7131,59 +10060,131 @@ func (s *InlineQueryResultMpeg4Gif) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s InlineQueryResultPhoto) Encode(e *jx.Encoder) {
+func (s InlineQueryResultPhoto) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	e.FieldStart("type")
-	e.Str(s.Type)
-
-	e.FieldStart("id")
-	e.Str(s.ID)
-
-	e.FieldStart("photo_url")
-	json.EncodeURI(e, s.PhotoURL)
-
-	e.FieldStart("thumb_url")
-	json.EncodeURI(e, s.ThumbURL)
-	if s.PhotoWidth.Set {
-		e.FieldStart("photo_width")
-		s.PhotoWidth.Encode(e)
-	}
-	if s.PhotoHeight.Set {
-		e.FieldStart("photo_height")
-		s.PhotoHeight.Encode(e)
-	}
-	if s.Title.Set {
-		e.FieldStart("title")
-		s.Title.Encode(e)
-	}
-	if s.Description.Set {
-		e.FieldStart("description")
-		s.Description.Encode(e)
-	}
-	if s.Caption.Set {
-		e.FieldStart("caption")
-		s.Caption.Encode(e)
-	}
-	if s.ParseMode.Set {
-		e.FieldStart("parse_mode")
-		s.ParseMode.Encode(e)
-	}
-	if s.CaptionEntities != nil {
-		e.FieldStart("caption_entities")
-		e.ArrStart()
-		for _, elem := range s.CaptionEntities {
-			elem.Encode(e)
+	var (
+		first = true
+		_     = first
+	)
+	{
+		if !first {
+			e.Comma()
 		}
-		e.ArrEnd()
+		first = false
+
+		e.RawStr("\"type\"" + ":")
+		e.Str(s.Type)
 	}
-	if s.ReplyMarkup.Set {
-		e.FieldStart("reply_markup")
-		s.ReplyMarkup.Encode(e)
+	{
+		e.Comma()
+
+		e.RawStr("\"id\"" + ":")
+		e.Str(s.ID)
 	}
-	if s.InputMessageContent.Set {
-		e.FieldStart("input_message_content")
-		s.InputMessageContent.Encode(e)
+	{
+		e.Comma()
+
+		e.RawStr("\"photo_url\"" + ":")
+		json.EncodeURI(e, s.PhotoURL)
+	}
+	{
+		e.Comma()
+
+		e.RawStr("\"thumb_url\"" + ":")
+		json.EncodeURI(e, s.ThumbURL)
+	}
+	{
+		if s.PhotoWidth.Set {
+			e.Comma()
+		}
+		if s.PhotoWidth.Set {
+			e.RawStr("\"photo_width\"" + ":")
+			s.PhotoWidth.Encode(e)
+		}
+	}
+	{
+		if s.PhotoHeight.Set {
+			e.Comma()
+		}
+		if s.PhotoHeight.Set {
+			e.RawStr("\"photo_height\"" + ":")
+			s.PhotoHeight.Encode(e)
+		}
+	}
+	{
+		if s.Title.Set {
+			e.Comma()
+		}
+		if s.Title.Set {
+			e.RawStr("\"title\"" + ":")
+			s.Title.Encode(e)
+		}
+	}
+	{
+		if s.Description.Set {
+			e.Comma()
+		}
+		if s.Description.Set {
+			e.RawStr("\"description\"" + ":")
+			s.Description.Encode(e)
+		}
+	}
+	{
+		if s.Caption.Set {
+			e.Comma()
+		}
+		if s.Caption.Set {
+			e.RawStr("\"caption\"" + ":")
+			s.Caption.Encode(e)
+		}
+	}
+	{
+		if s.ParseMode.Set {
+			e.Comma()
+		}
+		if s.ParseMode.Set {
+			e.RawStr("\"parse_mode\"" + ":")
+			s.ParseMode.Encode(e)
+		}
+	}
+	{
+		if s.CaptionEntities != nil {
+			e.Comma()
+		}
+		if s.CaptionEntities != nil {
+			e.RawStr("\"caption_entities\"" + ":")
+			e.ArrStart()
+			if len(s.CaptionEntities) >= 1 {
+				// Encode first element without comma.
+				{
+					elem := s.CaptionEntities[0]
+					elem.Encode(e)
+				}
+				for _, elem := range s.CaptionEntities[1:] {
+					e.Comma()
+					elem.Encode(e)
+				}
+			}
+			e.ArrEnd()
+		}
+	}
+	{
+		if s.ReplyMarkup.Set {
+			e.Comma()
+		}
+		if s.ReplyMarkup.Set {
+			e.RawStr("\"reply_markup\"" + ":")
+			s.ReplyMarkup.Encode(e)
+		}
+	}
+	{
+		if s.InputMessageContent.Set {
+			e.Comma()
+		}
+		if s.InputMessageContent.Set {
+			e.RawStr("\"input_message_content\"" + ":")
+			s.InputMessageContent.Encode(e)
+		}
 	}
 	e.ObjEnd()
 }
@@ -7279,61 +10280,131 @@ func (s *InlineQueryResultPhoto) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s InlineQueryResultVenue) Encode(e *jx.Encoder) {
+func (s InlineQueryResultVenue) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+	{
+		if !first {
+			e.Comma()
+		}
+		first = false
 
-	e.FieldStart("type")
-	e.Str(s.Type)
+		e.RawStr("\"type\"" + ":")
+		e.Str(s.Type)
+	}
+	{
+		e.Comma()
 
-	e.FieldStart("id")
-	e.Str(s.ID)
+		e.RawStr("\"id\"" + ":")
+		e.Str(s.ID)
+	}
+	{
+		e.Comma()
 
-	e.FieldStart("latitude")
-	e.Float64(s.Latitude)
+		e.RawStr("\"latitude\"" + ":")
+		e.Float64(s.Latitude)
+	}
+	{
+		e.Comma()
 
-	e.FieldStart("longitude")
-	e.Float64(s.Longitude)
+		e.RawStr("\"longitude\"" + ":")
+		e.Float64(s.Longitude)
+	}
+	{
+		e.Comma()
 
-	e.FieldStart("title")
-	e.Str(s.Title)
+		e.RawStr("\"title\"" + ":")
+		e.Str(s.Title)
+	}
+	{
+		e.Comma()
 
-	e.FieldStart("address")
-	e.Str(s.Address)
-	if s.FoursquareID.Set {
-		e.FieldStart("foursquare_id")
-		s.FoursquareID.Encode(e)
+		e.RawStr("\"address\"" + ":")
+		e.Str(s.Address)
 	}
-	if s.FoursquareType.Set {
-		e.FieldStart("foursquare_type")
-		s.FoursquareType.Encode(e)
+	{
+		if s.FoursquareID.Set {
+			e.Comma()
+		}
+		if s.FoursquareID.Set {
+			e.RawStr("\"foursquare_id\"" + ":")
+			s.FoursquareID.Encode(e)
+		}
 	}
-	if s.GooglePlaceID.Set {
-		e.FieldStart("google_place_id")
-		s.GooglePlaceID.Encode(e)
+	{
+		if s.FoursquareType.Set {
+			e.Comma()
+		}
+		if s.FoursquareType.Set {
+			e.RawStr("\"foursquare_type\"" + ":")
+			s.FoursquareType.Encode(e)
+		}
 	}
-	if s.GooglePlaceType.Set {
-		e.FieldStart("google_place_type")
-		s.GooglePlaceType.Encode(e)
+	{
+		if s.GooglePlaceID.Set {
+			e.Comma()
+		}
+		if s.GooglePlaceID.Set {
+			e.RawStr("\"google_place_id\"" + ":")
+			s.GooglePlaceID.Encode(e)
+		}
 	}
-	if s.ReplyMarkup.Set {
-		e.FieldStart("reply_markup")
-		s.ReplyMarkup.Encode(e)
+	{
+		if s.GooglePlaceType.Set {
+			e.Comma()
+		}
+		if s.GooglePlaceType.Set {
+			e.RawStr("\"google_place_type\"" + ":")
+			s.GooglePlaceType.Encode(e)
+		}
 	}
-	if s.InputMessageContent.Set {
-		e.FieldStart("input_message_content")
-		s.InputMessageContent.Encode(e)
+	{
+		if s.ReplyMarkup.Set {
+			e.Comma()
+		}
+		if s.ReplyMarkup.Set {
+			e.RawStr("\"reply_markup\"" + ":")
+			s.ReplyMarkup.Encode(e)
+		}
 	}
-	if s.ThumbURL.Set {
-		e.FieldStart("thumb_url")
-		s.ThumbURL.Encode(e)
+	{
+		if s.InputMessageContent.Set {
+			e.Comma()
+		}
+		if s.InputMessageContent.Set {
+			e.RawStr("\"input_message_content\"" + ":")
+			s.InputMessageContent.Encode(e)
+		}
 	}
-	if s.ThumbWidth.Set {
-		e.FieldStart("thumb_width")
-		s.ThumbWidth.Encode(e)
+	{
+		if s.ThumbURL.Set {
+			e.Comma()
+		}
+		if s.ThumbURL.Set {
+			e.RawStr("\"thumb_url\"" + ":")
+			s.ThumbURL.Encode(e)
+		}
 	}
-	if s.ThumbHeight.Set {
-		e.FieldStart("thumb_height")
-		s.ThumbHeight.Encode(e)
+	{
+		if s.ThumbWidth.Set {
+			e.Comma()
+		}
+		if s.ThumbWidth.Set {
+			e.RawStr("\"thumb_width\"" + ":")
+			s.ThumbWidth.Encode(e)
+		}
+	}
+	{
+		if s.ThumbHeight.Set {
+			e.Comma()
+		}
+		if s.ThumbHeight.Set {
+			e.RawStr("\"thumb_height\"" + ":")
+			s.ThumbHeight.Encode(e)
+		}
 	}
 	e.ObjEnd()
 }
@@ -7434,65 +10505,143 @@ func (s *InlineQueryResultVenue) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s InlineQueryResultVideo) Encode(e *jx.Encoder) {
+func (s InlineQueryResultVideo) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	e.FieldStart("type")
-	e.Str(s.Type)
-
-	e.FieldStart("id")
-	e.Str(s.ID)
-
-	e.FieldStart("video_url")
-	json.EncodeURI(e, s.VideoURL)
-
-	e.FieldStart("mime_type")
-	e.Str(s.MimeType)
-
-	e.FieldStart("thumb_url")
-	json.EncodeURI(e, s.ThumbURL)
-
-	e.FieldStart("title")
-	e.Str(s.Title)
-	if s.Caption.Set {
-		e.FieldStart("caption")
-		s.Caption.Encode(e)
-	}
-	if s.ParseMode.Set {
-		e.FieldStart("parse_mode")
-		s.ParseMode.Encode(e)
-	}
-	if s.CaptionEntities != nil {
-		e.FieldStart("caption_entities")
-		e.ArrStart()
-		for _, elem := range s.CaptionEntities {
-			elem.Encode(e)
+	var (
+		first = true
+		_     = first
+	)
+	{
+		if !first {
+			e.Comma()
 		}
-		e.ArrEnd()
+		first = false
+
+		e.RawStr("\"type\"" + ":")
+		e.Str(s.Type)
 	}
-	if s.VideoWidth.Set {
-		e.FieldStart("video_width")
-		s.VideoWidth.Encode(e)
+	{
+		e.Comma()
+
+		e.RawStr("\"id\"" + ":")
+		e.Str(s.ID)
 	}
-	if s.VideoHeight.Set {
-		e.FieldStart("video_height")
-		s.VideoHeight.Encode(e)
+	{
+		e.Comma()
+
+		e.RawStr("\"video_url\"" + ":")
+		json.EncodeURI(e, s.VideoURL)
 	}
-	if s.VideoDuration.Set {
-		e.FieldStart("video_duration")
-		s.VideoDuration.Encode(e)
+	{
+		e.Comma()
+
+		e.RawStr("\"mime_type\"" + ":")
+		e.Str(s.MimeType)
 	}
-	if s.Description.Set {
-		e.FieldStart("description")
-		s.Description.Encode(e)
+	{
+		e.Comma()
+
+		e.RawStr("\"thumb_url\"" + ":")
+		json.EncodeURI(e, s.ThumbURL)
 	}
-	if s.ReplyMarkup.Set {
-		e.FieldStart("reply_markup")
-		s.ReplyMarkup.Encode(e)
+	{
+		e.Comma()
+
+		e.RawStr("\"title\"" + ":")
+		e.Str(s.Title)
 	}
-	if s.InputMessageContent.Set {
-		e.FieldStart("input_message_content")
-		s.InputMessageContent.Encode(e)
+	{
+		if s.Caption.Set {
+			e.Comma()
+		}
+		if s.Caption.Set {
+			e.RawStr("\"caption\"" + ":")
+			s.Caption.Encode(e)
+		}
+	}
+	{
+		if s.ParseMode.Set {
+			e.Comma()
+		}
+		if s.ParseMode.Set {
+			e.RawStr("\"parse_mode\"" + ":")
+			s.ParseMode.Encode(e)
+		}
+	}
+	{
+		if s.CaptionEntities != nil {
+			e.Comma()
+		}
+		if s.CaptionEntities != nil {
+			e.RawStr("\"caption_entities\"" + ":")
+			e.ArrStart()
+			if len(s.CaptionEntities) >= 1 {
+				// Encode first element without comma.
+				{
+					elem := s.CaptionEntities[0]
+					elem.Encode(e)
+				}
+				for _, elem := range s.CaptionEntities[1:] {
+					e.Comma()
+					elem.Encode(e)
+				}
+			}
+			e.ArrEnd()
+		}
+	}
+	{
+		if s.VideoWidth.Set {
+			e.Comma()
+		}
+		if s.VideoWidth.Set {
+			e.RawStr("\"video_width\"" + ":")
+			s.VideoWidth.Encode(e)
+		}
+	}
+	{
+		if s.VideoHeight.Set {
+			e.Comma()
+		}
+		if s.VideoHeight.Set {
+			e.RawStr("\"video_height\"" + ":")
+			s.VideoHeight.Encode(e)
+		}
+	}
+	{
+		if s.VideoDuration.Set {
+			e.Comma()
+		}
+		if s.VideoDuration.Set {
+			e.RawStr("\"video_duration\"" + ":")
+			s.VideoDuration.Encode(e)
+		}
+	}
+	{
+		if s.Description.Set {
+			e.Comma()
+		}
+		if s.Description.Set {
+			e.RawStr("\"description\"" + ":")
+			s.Description.Encode(e)
+		}
+	}
+	{
+		if s.ReplyMarkup.Set {
+			e.Comma()
+		}
+		if s.ReplyMarkup.Set {
+			e.RawStr("\"reply_markup\"" + ":")
+			s.ReplyMarkup.Encode(e)
+		}
+	}
+	{
+		if s.InputMessageContent.Set {
+			e.Comma()
+		}
+		if s.InputMessageContent.Set {
+			e.RawStr("\"input_message_content\"" + ":")
+			s.InputMessageContent.Encode(e)
+		}
 	}
 	e.ObjEnd()
 }
@@ -7600,47 +10749,104 @@ func (s *InlineQueryResultVideo) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s InlineQueryResultVoice) Encode(e *jx.Encoder) {
+func (s InlineQueryResultVoice) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	e.FieldStart("type")
-	e.Str(s.Type)
-
-	e.FieldStart("id")
-	e.Str(s.ID)
-
-	e.FieldStart("voice_url")
-	json.EncodeURI(e, s.VoiceURL)
-
-	e.FieldStart("title")
-	e.Str(s.Title)
-	if s.Caption.Set {
-		e.FieldStart("caption")
-		s.Caption.Encode(e)
-	}
-	if s.ParseMode.Set {
-		e.FieldStart("parse_mode")
-		s.ParseMode.Encode(e)
-	}
-	if s.CaptionEntities != nil {
-		e.FieldStart("caption_entities")
-		e.ArrStart()
-		for _, elem := range s.CaptionEntities {
-			elem.Encode(e)
+	var (
+		first = true
+		_     = first
+	)
+	{
+		if !first {
+			e.Comma()
 		}
-		e.ArrEnd()
+		first = false
+
+		e.RawStr("\"type\"" + ":")
+		e.Str(s.Type)
 	}
-	if s.VoiceDuration.Set {
-		e.FieldStart("voice_duration")
-		s.VoiceDuration.Encode(e)
+	{
+		e.Comma()
+
+		e.RawStr("\"id\"" + ":")
+		e.Str(s.ID)
 	}
-	if s.ReplyMarkup.Set {
-		e.FieldStart("reply_markup")
-		s.ReplyMarkup.Encode(e)
+	{
+		e.Comma()
+
+		e.RawStr("\"voice_url\"" + ":")
+		json.EncodeURI(e, s.VoiceURL)
 	}
-	if s.InputMessageContent.Set {
-		e.FieldStart("input_message_content")
-		s.InputMessageContent.Encode(e)
+	{
+		e.Comma()
+
+		e.RawStr("\"title\"" + ":")
+		e.Str(s.Title)
+	}
+	{
+		if s.Caption.Set {
+			e.Comma()
+		}
+		if s.Caption.Set {
+			e.RawStr("\"caption\"" + ":")
+			s.Caption.Encode(e)
+		}
+	}
+	{
+		if s.ParseMode.Set {
+			e.Comma()
+		}
+		if s.ParseMode.Set {
+			e.RawStr("\"parse_mode\"" + ":")
+			s.ParseMode.Encode(e)
+		}
+	}
+	{
+		if s.CaptionEntities != nil {
+			e.Comma()
+		}
+		if s.CaptionEntities != nil {
+			e.RawStr("\"caption_entities\"" + ":")
+			e.ArrStart()
+			if len(s.CaptionEntities) >= 1 {
+				// Encode first element without comma.
+				{
+					elem := s.CaptionEntities[0]
+					elem.Encode(e)
+				}
+				for _, elem := range s.CaptionEntities[1:] {
+					e.Comma()
+					elem.Encode(e)
+				}
+			}
+			e.ArrEnd()
+		}
+	}
+	{
+		if s.VoiceDuration.Set {
+			e.Comma()
+		}
+		if s.VoiceDuration.Set {
+			e.RawStr("\"voice_duration\"" + ":")
+			s.VoiceDuration.Encode(e)
+		}
+	}
+	{
+		if s.ReplyMarkup.Set {
+			e.Comma()
+		}
+		if s.ReplyMarkup.Set {
+			e.RawStr("\"reply_markup\"" + ":")
+			s.ReplyMarkup.Encode(e)
+		}
+	}
+	{
+		if s.InputMessageContent.Set {
+			e.Comma()
+		}
+		if s.InputMessageContent.Set {
+			e.RawStr("\"input_message_content\"" + ":")
+			s.InputMessageContent.Encode(e)
+		}
 	}
 	e.ObjEnd()
 }
@@ -7721,21 +10927,44 @@ func (s *InlineQueryResultVoice) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s InputContactMessageContent) Encode(e *jx.Encoder) {
+func (s InputContactMessageContent) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+	{
+		if !first {
+			e.Comma()
+		}
+		first = false
 
-	e.FieldStart("phone_number")
-	e.Str(s.PhoneNumber)
-
-	e.FieldStart("first_name")
-	e.Str(s.FirstName)
-	if s.LastName.Set {
-		e.FieldStart("last_name")
-		s.LastName.Encode(e)
+		e.RawStr("\"phone_number\"" + ":")
+		e.Str(s.PhoneNumber)
 	}
-	if s.Vcard.Set {
-		e.FieldStart("vcard")
-		s.Vcard.Encode(e)
+	{
+		e.Comma()
+
+		e.RawStr("\"first_name\"" + ":")
+		e.Str(s.FirstName)
+	}
+	{
+		if s.LastName.Set {
+			e.Comma()
+		}
+		if s.LastName.Set {
+			e.RawStr("\"last_name\"" + ":")
+			s.LastName.Encode(e)
+		}
+	}
+	{
+		if s.Vcard.Set {
+			e.Comma()
+		}
+		if s.Vcard.Set {
+			e.RawStr("\"vcard\"" + ":")
+			s.Vcard.Encode(e)
+		}
 	}
 	e.ObjEnd()
 }
@@ -7777,89 +11006,200 @@ func (s *InputContactMessageContent) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s InputInvoiceMessageContent) Encode(e *jx.Encoder) {
+func (s InputInvoiceMessageContent) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+	{
+		if !first {
+			e.Comma()
+		}
+		first = false
 
-	e.FieldStart("title")
-	e.Str(s.Title)
-
-	e.FieldStart("description")
-	e.Str(s.Description)
-
-	e.FieldStart("payload")
-	e.Str(s.Payload)
-
-	e.FieldStart("provider_token")
-	e.Str(s.ProviderToken)
-
-	e.FieldStart("currency")
-	e.Str(s.Currency)
-
-	e.FieldStart("prices")
-	e.ArrStart()
-	for _, elem := range s.Prices {
-		elem.Encode(e)
+		e.RawStr("\"title\"" + ":")
+		e.Str(s.Title)
 	}
-	e.ArrEnd()
-	if s.MaxTipAmount.Set {
-		e.FieldStart("max_tip_amount")
-		s.MaxTipAmount.Encode(e)
+	{
+		e.Comma()
+
+		e.RawStr("\"description\"" + ":")
+		e.Str(s.Description)
 	}
-	if s.SuggestedTipAmounts != nil {
-		e.FieldStart("suggested_tip_amounts")
+	{
+		e.Comma()
+
+		e.RawStr("\"payload\"" + ":")
+		e.Str(s.Payload)
+	}
+	{
+		e.Comma()
+
+		e.RawStr("\"provider_token\"" + ":")
+		e.Str(s.ProviderToken)
+	}
+	{
+		e.Comma()
+
+		e.RawStr("\"currency\"" + ":")
+		e.Str(s.Currency)
+	}
+	{
+		e.Comma()
+
+		e.RawStr("\"prices\"" + ":")
 		e.ArrStart()
-		for _, elem := range s.SuggestedTipAmounts {
-			e.Int(elem)
+		if len(s.Prices) >= 1 {
+			// Encode first element without comma.
+			{
+				elem := s.Prices[0]
+				elem.Encode(e)
+			}
+			for _, elem := range s.Prices[1:] {
+				e.Comma()
+				elem.Encode(e)
+			}
 		}
 		e.ArrEnd()
 	}
-	if s.ProviderData.Set {
-		e.FieldStart("provider_data")
-		s.ProviderData.Encode(e)
+	{
+		if s.MaxTipAmount.Set {
+			e.Comma()
+		}
+		if s.MaxTipAmount.Set {
+			e.RawStr("\"max_tip_amount\"" + ":")
+			s.MaxTipAmount.Encode(e)
+		}
 	}
-	if s.PhotoURL.Set {
-		e.FieldStart("photo_url")
-		s.PhotoURL.Encode(e)
+	{
+		if s.SuggestedTipAmounts != nil {
+			e.Comma()
+		}
+		if s.SuggestedTipAmounts != nil {
+			e.RawStr("\"suggested_tip_amounts\"" + ":")
+			e.ArrStart()
+			if len(s.SuggestedTipAmounts) >= 1 {
+				// Encode first element without comma.
+				{
+					elem := s.SuggestedTipAmounts[0]
+					e.Int(elem)
+				}
+				for _, elem := range s.SuggestedTipAmounts[1:] {
+					e.Comma()
+					e.Int(elem)
+				}
+			}
+			e.ArrEnd()
+		}
 	}
-	if s.PhotoSize.Set {
-		e.FieldStart("photo_size")
-		s.PhotoSize.Encode(e)
+	{
+		if s.ProviderData.Set {
+			e.Comma()
+		}
+		if s.ProviderData.Set {
+			e.RawStr("\"provider_data\"" + ":")
+			s.ProviderData.Encode(e)
+		}
 	}
-	if s.PhotoWidth.Set {
-		e.FieldStart("photo_width")
-		s.PhotoWidth.Encode(e)
+	{
+		if s.PhotoURL.Set {
+			e.Comma()
+		}
+		if s.PhotoURL.Set {
+			e.RawStr("\"photo_url\"" + ":")
+			s.PhotoURL.Encode(e)
+		}
 	}
-	if s.PhotoHeight.Set {
-		e.FieldStart("photo_height")
-		s.PhotoHeight.Encode(e)
+	{
+		if s.PhotoSize.Set {
+			e.Comma()
+		}
+		if s.PhotoSize.Set {
+			e.RawStr("\"photo_size\"" + ":")
+			s.PhotoSize.Encode(e)
+		}
 	}
-	if s.NeedName.Set {
-		e.FieldStart("need_name")
-		s.NeedName.Encode(e)
+	{
+		if s.PhotoWidth.Set {
+			e.Comma()
+		}
+		if s.PhotoWidth.Set {
+			e.RawStr("\"photo_width\"" + ":")
+			s.PhotoWidth.Encode(e)
+		}
 	}
-	if s.NeedPhoneNumber.Set {
-		e.FieldStart("need_phone_number")
-		s.NeedPhoneNumber.Encode(e)
+	{
+		if s.PhotoHeight.Set {
+			e.Comma()
+		}
+		if s.PhotoHeight.Set {
+			e.RawStr("\"photo_height\"" + ":")
+			s.PhotoHeight.Encode(e)
+		}
 	}
-	if s.NeedEmail.Set {
-		e.FieldStart("need_email")
-		s.NeedEmail.Encode(e)
+	{
+		if s.NeedName.Set {
+			e.Comma()
+		}
+		if s.NeedName.Set {
+			e.RawStr("\"need_name\"" + ":")
+			s.NeedName.Encode(e)
+		}
 	}
-	if s.NeedShippingAddress.Set {
-		e.FieldStart("need_shipping_address")
-		s.NeedShippingAddress.Encode(e)
+	{
+		if s.NeedPhoneNumber.Set {
+			e.Comma()
+		}
+		if s.NeedPhoneNumber.Set {
+			e.RawStr("\"need_phone_number\"" + ":")
+			s.NeedPhoneNumber.Encode(e)
+		}
 	}
-	if s.SendPhoneNumberToProvider.Set {
-		e.FieldStart("send_phone_number_to_provider")
-		s.SendPhoneNumberToProvider.Encode(e)
+	{
+		if s.NeedEmail.Set {
+			e.Comma()
+		}
+		if s.NeedEmail.Set {
+			e.RawStr("\"need_email\"" + ":")
+			s.NeedEmail.Encode(e)
+		}
 	}
-	if s.SendEmailToProvider.Set {
-		e.FieldStart("send_email_to_provider")
-		s.SendEmailToProvider.Encode(e)
+	{
+		if s.NeedShippingAddress.Set {
+			e.Comma()
+		}
+		if s.NeedShippingAddress.Set {
+			e.RawStr("\"need_shipping_address\"" + ":")
+			s.NeedShippingAddress.Encode(e)
+		}
 	}
-	if s.IsFlexible.Set {
-		e.FieldStart("is_flexible")
-		s.IsFlexible.Encode(e)
+	{
+		if s.SendPhoneNumberToProvider.Set {
+			e.Comma()
+		}
+		if s.SendPhoneNumberToProvider.Set {
+			e.RawStr("\"send_phone_number_to_provider\"" + ":")
+			s.SendPhoneNumberToProvider.Encode(e)
+		}
+	}
+	{
+		if s.SendEmailToProvider.Set {
+			e.Comma()
+		}
+		if s.SendEmailToProvider.Set {
+			e.RawStr("\"send_email_to_provider\"" + ":")
+			s.SendEmailToProvider.Encode(e)
+		}
+	}
+	{
+		if s.IsFlexible.Set {
+			e.Comma()
+		}
+		if s.IsFlexible.Set {
+			e.RawStr("\"is_flexible\"" + ":")
+			s.IsFlexible.Encode(e)
+		}
 	}
 	e.ObjEnd()
 }
@@ -8000,29 +11340,62 @@ func (s *InputInvoiceMessageContent) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s InputLocationMessageContent) Encode(e *jx.Encoder) {
+func (s InputLocationMessageContent) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+	{
+		if !first {
+			e.Comma()
+		}
+		first = false
 
-	e.FieldStart("latitude")
-	e.Float64(s.Latitude)
+		e.RawStr("\"latitude\"" + ":")
+		e.Float64(s.Latitude)
+	}
+	{
+		e.Comma()
 
-	e.FieldStart("longitude")
-	e.Float64(s.Longitude)
-	if s.HorizontalAccuracy.Set {
-		e.FieldStart("horizontal_accuracy")
-		s.HorizontalAccuracy.Encode(e)
+		e.RawStr("\"longitude\"" + ":")
+		e.Float64(s.Longitude)
 	}
-	if s.LivePeriod.Set {
-		e.FieldStart("live_period")
-		s.LivePeriod.Encode(e)
+	{
+		if s.HorizontalAccuracy.Set {
+			e.Comma()
+		}
+		if s.HorizontalAccuracy.Set {
+			e.RawStr("\"horizontal_accuracy\"" + ":")
+			s.HorizontalAccuracy.Encode(e)
+		}
 	}
-	if s.Heading.Set {
-		e.FieldStart("heading")
-		s.Heading.Encode(e)
+	{
+		if s.LivePeriod.Set {
+			e.Comma()
+		}
+		if s.LivePeriod.Set {
+			e.RawStr("\"live_period\"" + ":")
+			s.LivePeriod.Encode(e)
+		}
 	}
-	if s.ProximityAlertRadius.Set {
-		e.FieldStart("proximity_alert_radius")
-		s.ProximityAlertRadius.Encode(e)
+	{
+		if s.Heading.Set {
+			e.Comma()
+		}
+		if s.Heading.Set {
+			e.RawStr("\"heading\"" + ":")
+			s.Heading.Encode(e)
+		}
+	}
+	{
+		if s.ProximityAlertRadius.Set {
+			e.Comma()
+		}
+		if s.ProximityAlertRadius.Set {
+			e.RawStr("\"proximity_alert_radius\"" + ":")
+			s.ProximityAlertRadius.Encode(e)
+		}
 	}
 	e.ObjEnd()
 }
@@ -8074,7 +11447,7 @@ func (s *InputLocationMessageContent) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes InputMedia as json.
-func (s InputMedia) Encode(e *jx.Encoder) {
+func (s InputMedia) Encode(e *jx.Writer) {
 	switch s.Type {
 	case InputMediaAnimationInputMedia:
 		s.InputMediaAnimation.Encode(e)
@@ -8167,45 +11540,101 @@ func (s *InputMedia) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s InputMediaAnimation) Encode(e *jx.Encoder) {
+func (s InputMediaAnimation) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	e.FieldStart("type")
-	e.Str(s.Type)
-
-	e.FieldStart("media")
-	e.Str(s.Media)
-	if s.Thumb.Set {
-		e.FieldStart("thumb")
-		s.Thumb.Encode(e)
-	}
-	if s.Caption.Set {
-		e.FieldStart("caption")
-		s.Caption.Encode(e)
-	}
-	if s.ParseMode.Set {
-		e.FieldStart("parse_mode")
-		s.ParseMode.Encode(e)
-	}
-	if s.CaptionEntities != nil {
-		e.FieldStart("caption_entities")
-		e.ArrStart()
-		for _, elem := range s.CaptionEntities {
-			elem.Encode(e)
+	var (
+		first = true
+		_     = first
+	)
+	{
+		if !first {
+			e.Comma()
 		}
-		e.ArrEnd()
+		first = false
+
+		e.RawStr("\"type\"" + ":")
+		e.Str(s.Type)
 	}
-	if s.Width.Set {
-		e.FieldStart("width")
-		s.Width.Encode(e)
+	{
+		e.Comma()
+
+		e.RawStr("\"media\"" + ":")
+		e.Str(s.Media)
 	}
-	if s.Height.Set {
-		e.FieldStart("height")
-		s.Height.Encode(e)
+	{
+		if s.Thumb.Set {
+			e.Comma()
+		}
+		if s.Thumb.Set {
+			e.RawStr("\"thumb\"" + ":")
+			s.Thumb.Encode(e)
+		}
 	}
-	if s.Duration.Set {
-		e.FieldStart("duration")
-		s.Duration.Encode(e)
+	{
+		if s.Caption.Set {
+			e.Comma()
+		}
+		if s.Caption.Set {
+			e.RawStr("\"caption\"" + ":")
+			s.Caption.Encode(e)
+		}
+	}
+	{
+		if s.ParseMode.Set {
+			e.Comma()
+		}
+		if s.ParseMode.Set {
+			e.RawStr("\"parse_mode\"" + ":")
+			s.ParseMode.Encode(e)
+		}
+	}
+	{
+		if s.CaptionEntities != nil {
+			e.Comma()
+		}
+		if s.CaptionEntities != nil {
+			e.RawStr("\"caption_entities\"" + ":")
+			e.ArrStart()
+			if len(s.CaptionEntities) >= 1 {
+				// Encode first element without comma.
+				{
+					elem := s.CaptionEntities[0]
+					elem.Encode(e)
+				}
+				for _, elem := range s.CaptionEntities[1:] {
+					e.Comma()
+					elem.Encode(e)
+				}
+			}
+			e.ArrEnd()
+		}
+	}
+	{
+		if s.Width.Set {
+			e.Comma()
+		}
+		if s.Width.Set {
+			e.RawStr("\"width\"" + ":")
+			s.Width.Encode(e)
+		}
+	}
+	{
+		if s.Height.Set {
+			e.Comma()
+		}
+		if s.Height.Set {
+			e.RawStr("\"height\"" + ":")
+			s.Height.Encode(e)
+		}
+	}
+	{
+		if s.Duration.Set {
+			e.Comma()
+		}
+		if s.Duration.Set {
+			e.RawStr("\"duration\"" + ":")
+			s.Duration.Encode(e)
+		}
 	}
 	e.ObjEnd()
 }
@@ -8279,45 +11708,101 @@ func (s *InputMediaAnimation) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s InputMediaAudio) Encode(e *jx.Encoder) {
+func (s InputMediaAudio) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	e.FieldStart("type")
-	e.Str(s.Type)
-
-	e.FieldStart("media")
-	e.Str(s.Media)
-	if s.Thumb.Set {
-		e.FieldStart("thumb")
-		s.Thumb.Encode(e)
-	}
-	if s.Caption.Set {
-		e.FieldStart("caption")
-		s.Caption.Encode(e)
-	}
-	if s.ParseMode.Set {
-		e.FieldStart("parse_mode")
-		s.ParseMode.Encode(e)
-	}
-	if s.CaptionEntities != nil {
-		e.FieldStart("caption_entities")
-		e.ArrStart()
-		for _, elem := range s.CaptionEntities {
-			elem.Encode(e)
+	var (
+		first = true
+		_     = first
+	)
+	{
+		if !first {
+			e.Comma()
 		}
-		e.ArrEnd()
+		first = false
+
+		e.RawStr("\"type\"" + ":")
+		e.Str(s.Type)
 	}
-	if s.Duration.Set {
-		e.FieldStart("duration")
-		s.Duration.Encode(e)
+	{
+		e.Comma()
+
+		e.RawStr("\"media\"" + ":")
+		e.Str(s.Media)
 	}
-	if s.Performer.Set {
-		e.FieldStart("performer")
-		s.Performer.Encode(e)
+	{
+		if s.Thumb.Set {
+			e.Comma()
+		}
+		if s.Thumb.Set {
+			e.RawStr("\"thumb\"" + ":")
+			s.Thumb.Encode(e)
+		}
 	}
-	if s.Title.Set {
-		e.FieldStart("title")
-		s.Title.Encode(e)
+	{
+		if s.Caption.Set {
+			e.Comma()
+		}
+		if s.Caption.Set {
+			e.RawStr("\"caption\"" + ":")
+			s.Caption.Encode(e)
+		}
+	}
+	{
+		if s.ParseMode.Set {
+			e.Comma()
+		}
+		if s.ParseMode.Set {
+			e.RawStr("\"parse_mode\"" + ":")
+			s.ParseMode.Encode(e)
+		}
+	}
+	{
+		if s.CaptionEntities != nil {
+			e.Comma()
+		}
+		if s.CaptionEntities != nil {
+			e.RawStr("\"caption_entities\"" + ":")
+			e.ArrStart()
+			if len(s.CaptionEntities) >= 1 {
+				// Encode first element without comma.
+				{
+					elem := s.CaptionEntities[0]
+					elem.Encode(e)
+				}
+				for _, elem := range s.CaptionEntities[1:] {
+					e.Comma()
+					elem.Encode(e)
+				}
+			}
+			e.ArrEnd()
+		}
+	}
+	{
+		if s.Duration.Set {
+			e.Comma()
+		}
+		if s.Duration.Set {
+			e.RawStr("\"duration\"" + ":")
+			s.Duration.Encode(e)
+		}
+	}
+	{
+		if s.Performer.Set {
+			e.Comma()
+		}
+		if s.Performer.Set {
+			e.RawStr("\"performer\"" + ":")
+			s.Performer.Encode(e)
+		}
+	}
+	{
+		if s.Title.Set {
+			e.Comma()
+		}
+		if s.Title.Set {
+			e.RawStr("\"title\"" + ":")
+			s.Title.Encode(e)
+		}
 	}
 	e.ObjEnd()
 }
@@ -8391,37 +11876,83 @@ func (s *InputMediaAudio) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s InputMediaDocument) Encode(e *jx.Encoder) {
+func (s InputMediaDocument) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	e.FieldStart("type")
-	e.Str(s.Type)
-
-	e.FieldStart("media")
-	e.Str(s.Media)
-	if s.Thumb.Set {
-		e.FieldStart("thumb")
-		s.Thumb.Encode(e)
-	}
-	if s.Caption.Set {
-		e.FieldStart("caption")
-		s.Caption.Encode(e)
-	}
-	if s.ParseMode.Set {
-		e.FieldStart("parse_mode")
-		s.ParseMode.Encode(e)
-	}
-	if s.CaptionEntities != nil {
-		e.FieldStart("caption_entities")
-		e.ArrStart()
-		for _, elem := range s.CaptionEntities {
-			elem.Encode(e)
+	var (
+		first = true
+		_     = first
+	)
+	{
+		if !first {
+			e.Comma()
 		}
-		e.ArrEnd()
+		first = false
+
+		e.RawStr("\"type\"" + ":")
+		e.Str(s.Type)
 	}
-	if s.DisableContentTypeDetection.Set {
-		e.FieldStart("disable_content_type_detection")
-		s.DisableContentTypeDetection.Encode(e)
+	{
+		e.Comma()
+
+		e.RawStr("\"media\"" + ":")
+		e.Str(s.Media)
+	}
+	{
+		if s.Thumb.Set {
+			e.Comma()
+		}
+		if s.Thumb.Set {
+			e.RawStr("\"thumb\"" + ":")
+			s.Thumb.Encode(e)
+		}
+	}
+	{
+		if s.Caption.Set {
+			e.Comma()
+		}
+		if s.Caption.Set {
+			e.RawStr("\"caption\"" + ":")
+			s.Caption.Encode(e)
+		}
+	}
+	{
+		if s.ParseMode.Set {
+			e.Comma()
+		}
+		if s.ParseMode.Set {
+			e.RawStr("\"parse_mode\"" + ":")
+			s.ParseMode.Encode(e)
+		}
+	}
+	{
+		if s.CaptionEntities != nil {
+			e.Comma()
+		}
+		if s.CaptionEntities != nil {
+			e.RawStr("\"caption_entities\"" + ":")
+			e.ArrStart()
+			if len(s.CaptionEntities) >= 1 {
+				// Encode first element without comma.
+				{
+					elem := s.CaptionEntities[0]
+					elem.Encode(e)
+				}
+				for _, elem := range s.CaptionEntities[1:] {
+					e.Comma()
+					elem.Encode(e)
+				}
+			}
+			e.ArrEnd()
+		}
+	}
+	{
+		if s.DisableContentTypeDetection.Set {
+			e.Comma()
+		}
+		if s.DisableContentTypeDetection.Set {
+			e.RawStr("\"disable_content_type_detection\"" + ":")
+			s.DisableContentTypeDetection.Encode(e)
+		}
 	}
 	e.ObjEnd()
 }
@@ -8485,29 +12016,65 @@ func (s *InputMediaDocument) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s InputMediaPhoto) Encode(e *jx.Encoder) {
+func (s InputMediaPhoto) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	e.FieldStart("type")
-	e.Str(s.Type)
-
-	e.FieldStart("media")
-	e.Str(s.Media)
-	if s.Caption.Set {
-		e.FieldStart("caption")
-		s.Caption.Encode(e)
-	}
-	if s.ParseMode.Set {
-		e.FieldStart("parse_mode")
-		s.ParseMode.Encode(e)
-	}
-	if s.CaptionEntities != nil {
-		e.FieldStart("caption_entities")
-		e.ArrStart()
-		for _, elem := range s.CaptionEntities {
-			elem.Encode(e)
+	var (
+		first = true
+		_     = first
+	)
+	{
+		if !first {
+			e.Comma()
 		}
-		e.ArrEnd()
+		first = false
+
+		e.RawStr("\"type\"" + ":")
+		e.Str(s.Type)
+	}
+	{
+		e.Comma()
+
+		e.RawStr("\"media\"" + ":")
+		e.Str(s.Media)
+	}
+	{
+		if s.Caption.Set {
+			e.Comma()
+		}
+		if s.Caption.Set {
+			e.RawStr("\"caption\"" + ":")
+			s.Caption.Encode(e)
+		}
+	}
+	{
+		if s.ParseMode.Set {
+			e.Comma()
+		}
+		if s.ParseMode.Set {
+			e.RawStr("\"parse_mode\"" + ":")
+			s.ParseMode.Encode(e)
+		}
+	}
+	{
+		if s.CaptionEntities != nil {
+			e.Comma()
+		}
+		if s.CaptionEntities != nil {
+			e.RawStr("\"caption_entities\"" + ":")
+			e.ArrStart()
+			if len(s.CaptionEntities) >= 1 {
+				// Encode first element without comma.
+				{
+					elem := s.CaptionEntities[0]
+					elem.Encode(e)
+				}
+				for _, elem := range s.CaptionEntities[1:] {
+					e.Comma()
+					elem.Encode(e)
+				}
+			}
+			e.ArrEnd()
+		}
 	}
 	e.ObjEnd()
 }
@@ -8561,49 +12128,110 @@ func (s *InputMediaPhoto) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s InputMediaVideo) Encode(e *jx.Encoder) {
+func (s InputMediaVideo) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	e.FieldStart("type")
-	e.Str(s.Type)
-
-	e.FieldStart("media")
-	e.Str(s.Media)
-	if s.Thumb.Set {
-		e.FieldStart("thumb")
-		s.Thumb.Encode(e)
-	}
-	if s.Caption.Set {
-		e.FieldStart("caption")
-		s.Caption.Encode(e)
-	}
-	if s.ParseMode.Set {
-		e.FieldStart("parse_mode")
-		s.ParseMode.Encode(e)
-	}
-	if s.CaptionEntities != nil {
-		e.FieldStart("caption_entities")
-		e.ArrStart()
-		for _, elem := range s.CaptionEntities {
-			elem.Encode(e)
+	var (
+		first = true
+		_     = first
+	)
+	{
+		if !first {
+			e.Comma()
 		}
-		e.ArrEnd()
+		first = false
+
+		e.RawStr("\"type\"" + ":")
+		e.Str(s.Type)
 	}
-	if s.Width.Set {
-		e.FieldStart("width")
-		s.Width.Encode(e)
+	{
+		e.Comma()
+
+		e.RawStr("\"media\"" + ":")
+		e.Str(s.Media)
 	}
-	if s.Height.Set {
-		e.FieldStart("height")
-		s.Height.Encode(e)
+	{
+		if s.Thumb.Set {
+			e.Comma()
+		}
+		if s.Thumb.Set {
+			e.RawStr("\"thumb\"" + ":")
+			s.Thumb.Encode(e)
+		}
 	}
-	if s.Duration.Set {
-		e.FieldStart("duration")
-		s.Duration.Encode(e)
+	{
+		if s.Caption.Set {
+			e.Comma()
+		}
+		if s.Caption.Set {
+			e.RawStr("\"caption\"" + ":")
+			s.Caption.Encode(e)
+		}
 	}
-	if s.SupportsStreaming.Set {
-		e.FieldStart("supports_streaming")
-		s.SupportsStreaming.Encode(e)
+	{
+		if s.ParseMode.Set {
+			e.Comma()
+		}
+		if s.ParseMode.Set {
+			e.RawStr("\"parse_mode\"" + ":")
+			s.ParseMode.Encode(e)
+		}
+	}
+	{
+		if s.CaptionEntities != nil {
+			e.Comma()
+		}
+		if s.CaptionEntities != nil {
+			e.RawStr("\"caption_entities\"" + ":")
+			e.ArrStart()
+			if len(s.CaptionEntities) >= 1 {
+				// Encode first element without comma.
+				{
+					elem := s.CaptionEntities[0]
+					elem.Encode(e)
+				}
+				for _, elem := range s.CaptionEntities[1:] {
+					e.Comma()
+					elem.Encode(e)
+				}
+			}
+			e.ArrEnd()
+		}
+	}
+	{
+		if s.Width.Set {
+			e.Comma()
+		}
+		if s.Width.Set {
+			e.RawStr("\"width\"" + ":")
+			s.Width.Encode(e)
+		}
+	}
+	{
+		if s.Height.Set {
+			e.Comma()
+		}
+		if s.Height.Set {
+			e.RawStr("\"height\"" + ":")
+			s.Height.Encode(e)
+		}
+	}
+	{
+		if s.Duration.Set {
+			e.Comma()
+		}
+		if s.Duration.Set {
+			e.RawStr("\"duration\"" + ":")
+			s.Duration.Encode(e)
+		}
+	}
+	{
+		if s.SupportsStreaming.Set {
+			e.Comma()
+		}
+		if s.SupportsStreaming.Set {
+			e.RawStr("\"supports_streaming\"" + ":")
+			s.SupportsStreaming.Encode(e)
+		}
 	}
 	e.ObjEnd()
 }
@@ -8682,7 +12310,7 @@ func (s *InputMediaVideo) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes InputMessageContent as json.
-func (s InputMessageContent) Encode(e *jx.Encoder) {
+func (s InputMessageContent) Encode(e *jx.Writer) {
 	switch s.Type {
 	case InputTextMessageContentInputMessageContent:
 		s.InputTextMessageContent.Encode(e)
@@ -8867,26 +12495,59 @@ func (s *InputMessageContent) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s InputTextMessageContent) Encode(e *jx.Encoder) {
+func (s InputTextMessageContent) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	e.FieldStart("message_text")
-	e.Str(s.MessageText)
-	if s.ParseMode.Set {
-		e.FieldStart("parse_mode")
-		s.ParseMode.Encode(e)
-	}
-	if s.Entities != nil {
-		e.FieldStart("entities")
-		e.ArrStart()
-		for _, elem := range s.Entities {
-			elem.Encode(e)
+	var (
+		first = true
+		_     = first
+	)
+	{
+		if !first {
+			e.Comma()
 		}
-		e.ArrEnd()
+		first = false
+
+		e.RawStr("\"message_text\"" + ":")
+		e.Str(s.MessageText)
 	}
-	if s.DisableWebPagePreview.Set {
-		e.FieldStart("disable_web_page_preview")
-		s.DisableWebPagePreview.Encode(e)
+	{
+		if s.ParseMode.Set {
+			e.Comma()
+		}
+		if s.ParseMode.Set {
+			e.RawStr("\"parse_mode\"" + ":")
+			s.ParseMode.Encode(e)
+		}
+	}
+	{
+		if s.Entities != nil {
+			e.Comma()
+		}
+		if s.Entities != nil {
+			e.RawStr("\"entities\"" + ":")
+			e.ArrStart()
+			if len(s.Entities) >= 1 {
+				// Encode first element without comma.
+				{
+					elem := s.Entities[0]
+					elem.Encode(e)
+				}
+				for _, elem := range s.Entities[1:] {
+					e.Comma()
+					elem.Encode(e)
+				}
+			}
+			e.ArrEnd()
+		}
+	}
+	{
+		if s.DisableWebPagePreview.Set {
+			e.Comma()
+		}
+		if s.DisableWebPagePreview.Set {
+			e.RawStr("\"disable_web_page_preview\"" + ":")
+			s.DisableWebPagePreview.Encode(e)
+		}
 	}
 	e.ObjEnd()
 }
@@ -8934,35 +12595,74 @@ func (s *InputTextMessageContent) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s InputVenueMessageContent) Encode(e *jx.Encoder) {
+func (s InputVenueMessageContent) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+	{
+		if !first {
+			e.Comma()
+		}
+		first = false
 
-	e.FieldStart("latitude")
-	e.Float64(s.Latitude)
-
-	e.FieldStart("longitude")
-	e.Float64(s.Longitude)
-
-	e.FieldStart("title")
-	e.Str(s.Title)
-
-	e.FieldStart("address")
-	e.Str(s.Address)
-	if s.FoursquareID.Set {
-		e.FieldStart("foursquare_id")
-		s.FoursquareID.Encode(e)
+		e.RawStr("\"latitude\"" + ":")
+		e.Float64(s.Latitude)
 	}
-	if s.FoursquareType.Set {
-		e.FieldStart("foursquare_type")
-		s.FoursquareType.Encode(e)
+	{
+		e.Comma()
+
+		e.RawStr("\"longitude\"" + ":")
+		e.Float64(s.Longitude)
 	}
-	if s.GooglePlaceID.Set {
-		e.FieldStart("google_place_id")
-		s.GooglePlaceID.Encode(e)
+	{
+		e.Comma()
+
+		e.RawStr("\"title\"" + ":")
+		e.Str(s.Title)
 	}
-	if s.GooglePlaceType.Set {
-		e.FieldStart("google_place_type")
-		s.GooglePlaceType.Encode(e)
+	{
+		e.Comma()
+
+		e.RawStr("\"address\"" + ":")
+		e.Str(s.Address)
+	}
+	{
+		if s.FoursquareID.Set {
+			e.Comma()
+		}
+		if s.FoursquareID.Set {
+			e.RawStr("\"foursquare_id\"" + ":")
+			s.FoursquareID.Encode(e)
+		}
+	}
+	{
+		if s.FoursquareType.Set {
+			e.Comma()
+		}
+		if s.FoursquareType.Set {
+			e.RawStr("\"foursquare_type\"" + ":")
+			s.FoursquareType.Encode(e)
+		}
+	}
+	{
+		if s.GooglePlaceID.Set {
+			e.Comma()
+		}
+		if s.GooglePlaceID.Set {
+			e.RawStr("\"google_place_id\"" + ":")
+			s.GooglePlaceID.Encode(e)
+		}
+	}
+	{
+		if s.GooglePlaceType.Set {
+			e.Comma()
+		}
+		if s.GooglePlaceType.Set {
+			e.RawStr("\"google_place_type\"" + ":")
+			s.GooglePlaceType.Encode(e)
+		}
 	}
 	e.ObjEnd()
 }
@@ -9026,23 +12726,45 @@ func (s *InputVenueMessageContent) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s Invoice) Encode(e *jx.Encoder) {
+func (s Invoice) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+	{
+		if !first {
+			e.Comma()
+		}
+		first = false
 
-	e.FieldStart("title")
-	e.Str(s.Title)
+		e.RawStr("\"title\"" + ":")
+		e.Str(s.Title)
+	}
+	{
+		e.Comma()
 
-	e.FieldStart("description")
-	e.Str(s.Description)
+		e.RawStr("\"description\"" + ":")
+		e.Str(s.Description)
+	}
+	{
+		e.Comma()
 
-	e.FieldStart("start_parameter")
-	e.Str(s.StartParameter)
+		e.RawStr("\"start_parameter\"" + ":")
+		e.Str(s.StartParameter)
+	}
+	{
+		e.Comma()
 
-	e.FieldStart("currency")
-	e.Str(s.Currency)
+		e.RawStr("\"currency\"" + ":")
+		e.Str(s.Currency)
+	}
+	{
+		e.Comma()
 
-	e.FieldStart("total_amount")
-	e.Int(s.TotalAmount)
+		e.RawStr("\"total_amount\"" + ":")
+		e.Int(s.TotalAmount)
+	}
 	e.ObjEnd()
 }
 
@@ -9091,7 +12813,7 @@ func (s *Invoice) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes KeyboardButton as json.
-func (s KeyboardButton) Encode(e *jx.Encoder) {
+func (s KeyboardButton) Encode(e *jx.Writer) {
 	switch s.Type {
 	case StringKeyboardButton:
 		e.Str(s.String)
@@ -9126,22 +12848,47 @@ func (s *KeyboardButton) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s KeyboardButtonObject) Encode(e *jx.Encoder) {
+func (s KeyboardButtonObject) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+	{
+		if !first {
+			e.Comma()
+		}
+		first = false
 
-	e.FieldStart("text")
-	e.Str(s.Text)
-	if s.RequestContact.Set {
-		e.FieldStart("request_contact")
-		s.RequestContact.Encode(e)
+		e.RawStr("\"text\"" + ":")
+		e.Str(s.Text)
 	}
-	if s.RequestLocation.Set {
-		e.FieldStart("request_location")
-		s.RequestLocation.Encode(e)
+	{
+		if s.RequestContact.Set {
+			e.Comma()
+		}
+		if s.RequestContact.Set {
+			e.RawStr("\"request_contact\"" + ":")
+			s.RequestContact.Encode(e)
+		}
 	}
-	if s.RequestPoll.Set {
-		e.FieldStart("request_poll")
-		s.RequestPoll.Encode(e)
+	{
+		if s.RequestLocation.Set {
+			e.Comma()
+		}
+		if s.RequestLocation.Set {
+			e.RawStr("\"request_location\"" + ":")
+			s.RequestLocation.Encode(e)
+		}
+	}
+	{
+		if s.RequestPoll.Set {
+			e.Comma()
+		}
+		if s.RequestPoll.Set {
+			e.RawStr("\"request_poll\"" + ":")
+			s.RequestPoll.Encode(e)
+		}
 	}
 	e.ObjEnd()
 }
@@ -9182,11 +12929,23 @@ func (s *KeyboardButtonObject) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s KeyboardButtonPollType) Encode(e *jx.Encoder) {
+func (s KeyboardButtonPollType) Encode(e *jx.Writer) {
 	e.ObjStart()
-	if s.Type.Set {
-		e.FieldStart("type")
-		s.Type.Encode(e)
+	var (
+		first = true
+		_     = first
+	)
+	{
+		if s.Type.Set {
+			if !first {
+				e.Comma()
+			}
+			first = false
+		}
+		if s.Type.Set {
+			e.RawStr("\"type\"" + ":")
+			s.Type.Encode(e)
+		}
 	}
 	e.ObjEnd()
 }
@@ -9211,14 +12970,27 @@ func (s *KeyboardButtonPollType) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s LabeledPrice) Encode(e *jx.Encoder) {
+func (s LabeledPrice) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+	{
+		if !first {
+			e.Comma()
+		}
+		first = false
 
-	e.FieldStart("label")
-	e.Str(s.Label)
+		e.RawStr("\"label\"" + ":")
+		e.Str(s.Label)
+	}
+	{
+		e.Comma()
 
-	e.FieldStart("amount")
-	e.Int(s.Amount)
+		e.RawStr("\"amount\"" + ":")
+		e.Int(s.Amount)
+	}
 	e.ObjEnd()
 }
 
@@ -9249,11 +13021,21 @@ func (s *LabeledPrice) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s LeaveChat) Encode(e *jx.Encoder) {
+func (s LeaveChat) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+	{
+		if !first {
+			e.Comma()
+		}
+		first = false
 
-	e.FieldStart("chat_id")
-	s.ChatID.Encode(e)
+		e.RawStr("\"chat_id\"" + ":")
+		s.ChatID.Encode(e)
+	}
 	e.ObjEnd()
 }
 
@@ -9276,29 +13058,62 @@ func (s *LeaveChat) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s Location) Encode(e *jx.Encoder) {
+func (s Location) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+	{
+		if !first {
+			e.Comma()
+		}
+		first = false
 
-	e.FieldStart("longitude")
-	e.Float64(s.Longitude)
+		e.RawStr("\"longitude\"" + ":")
+		e.Float64(s.Longitude)
+	}
+	{
+		e.Comma()
 
-	e.FieldStart("latitude")
-	e.Float64(s.Latitude)
-	if s.HorizontalAccuracy.Set {
-		e.FieldStart("horizontal_accuracy")
-		s.HorizontalAccuracy.Encode(e)
+		e.RawStr("\"latitude\"" + ":")
+		e.Float64(s.Latitude)
 	}
-	if s.LivePeriod.Set {
-		e.FieldStart("live_period")
-		s.LivePeriod.Encode(e)
+	{
+		if s.HorizontalAccuracy.Set {
+			e.Comma()
+		}
+		if s.HorizontalAccuracy.Set {
+			e.RawStr("\"horizontal_accuracy\"" + ":")
+			s.HorizontalAccuracy.Encode(e)
+		}
 	}
-	if s.Heading.Set {
-		e.FieldStart("heading")
-		s.Heading.Encode(e)
+	{
+		if s.LivePeriod.Set {
+			e.Comma()
+		}
+		if s.LivePeriod.Set {
+			e.RawStr("\"live_period\"" + ":")
+			s.LivePeriod.Encode(e)
+		}
 	}
-	if s.ProximityAlertRadius.Set {
-		e.FieldStart("proximity_alert_radius")
-		s.ProximityAlertRadius.Encode(e)
+	{
+		if s.Heading.Set {
+			e.Comma()
+		}
+		if s.Heading.Set {
+			e.RawStr("\"heading\"" + ":")
+			s.Heading.Encode(e)
+		}
+	}
+	{
+		if s.ProximityAlertRadius.Set {
+			e.Comma()
+		}
+		if s.ProximityAlertRadius.Set {
+			e.RawStr("\"proximity_alert_radius\"" + ":")
+			s.ProximityAlertRadius.Encode(e)
+		}
 	}
 	e.ObjEnd()
 }
@@ -9350,22 +13165,47 @@ func (s *Location) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s LoginUrl) Encode(e *jx.Encoder) {
+func (s LoginUrl) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+	{
+		if !first {
+			e.Comma()
+		}
+		first = false
 
-	e.FieldStart("url")
-	json.EncodeURI(e, s.URL)
-	if s.ForwardText.Set {
-		e.FieldStart("forward_text")
-		s.ForwardText.Encode(e)
+		e.RawStr("\"url\"" + ":")
+		json.EncodeURI(e, s.URL)
 	}
-	if s.BotUsername.Set {
-		e.FieldStart("bot_username")
-		s.BotUsername.Encode(e)
+	{
+		if s.ForwardText.Set {
+			e.Comma()
+		}
+		if s.ForwardText.Set {
+			e.RawStr("\"forward_text\"" + ":")
+			s.ForwardText.Encode(e)
+		}
 	}
-	if s.RequestWriteAccess.Set {
-		e.FieldStart("request_write_access")
-		s.RequestWriteAccess.Encode(e)
+	{
+		if s.BotUsername.Set {
+			e.Comma()
+		}
+		if s.BotUsername.Set {
+			e.RawStr("\"bot_username\"" + ":")
+			s.BotUsername.Encode(e)
+		}
+	}
+	{
+		if s.RequestWriteAccess.Set {
+			e.Comma()
+		}
+		if s.RequestWriteAccess.Set {
+			e.RawStr("\"request_write_access\"" + ":")
+			s.RequestWriteAccess.Encode(e)
+		}
 	}
 	e.ObjEnd()
 }
@@ -9406,20 +13246,39 @@ func (s *LoginUrl) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s MaskPosition) Encode(e *jx.Encoder) {
+func (s MaskPosition) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+	{
+		if !first {
+			e.Comma()
+		}
+		first = false
 
-	e.FieldStart("point")
-	e.Str(s.Point)
+		e.RawStr("\"point\"" + ":")
+		e.Str(s.Point)
+	}
+	{
+		e.Comma()
 
-	e.FieldStart("x_shift")
-	e.Float64(s.XShift)
+		e.RawStr("\"x_shift\"" + ":")
+		e.Float64(s.XShift)
+	}
+	{
+		e.Comma()
 
-	e.FieldStart("y_shift")
-	e.Float64(s.YShift)
+		e.RawStr("\"y_shift\"" + ":")
+		e.Float64(s.YShift)
+	}
+	{
+		e.Comma()
 
-	e.FieldStart("scale")
-	e.Float64(s.Scale)
+		e.RawStr("\"scale\"" + ":")
+		e.Float64(s.Scale)
+	}
 	e.ObjEnd()
 }
 
@@ -9462,256 +13321,587 @@ func (s *MaskPosition) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s Message) Encode(e *jx.Encoder) {
+func (s Message) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+	{
+		if !first {
+			e.Comma()
+		}
+		first = false
 
-	e.FieldStart("message_id")
-	e.Int(s.MessageID)
-	if s.From.Set {
-		e.FieldStart("from")
-		s.From.Encode(e)
+		e.RawStr("\"message_id\"" + ":")
+		e.Int(s.MessageID)
 	}
-	if s.SenderChat.Set {
-		e.FieldStart("sender_chat")
-		s.SenderChat.Encode(e)
+	{
+		if s.From.Set {
+			e.Comma()
+		}
+		if s.From.Set {
+			e.RawStr("\"from\"" + ":")
+			s.From.Encode(e)
+		}
 	}
+	{
+		if s.SenderChat.Set {
+			e.Comma()
+		}
+		if s.SenderChat.Set {
+			e.RawStr("\"sender_chat\"" + ":")
+			s.SenderChat.Encode(e)
+		}
+	}
+	{
+		e.Comma()
 
-	e.FieldStart("date")
-	e.Int(s.Date)
+		e.RawStr("\"date\"" + ":")
+		e.Int(s.Date)
+	}
+	{
+		e.Comma()
 
-	e.FieldStart("chat")
-	s.Chat.Encode(e)
-	if s.ForwardFrom.Set {
-		e.FieldStart("forward_from")
-		s.ForwardFrom.Encode(e)
+		e.RawStr("\"chat\"" + ":")
+		s.Chat.Encode(e)
 	}
-	if s.ForwardFromChat.Set {
-		e.FieldStart("forward_from_chat")
-		s.ForwardFromChat.Encode(e)
-	}
-	if s.ForwardFromMessageID.Set {
-		e.FieldStart("forward_from_message_id")
-		s.ForwardFromMessageID.Encode(e)
-	}
-	if s.ForwardSignature.Set {
-		e.FieldStart("forward_signature")
-		s.ForwardSignature.Encode(e)
-	}
-	if s.ForwardSenderName.Set {
-		e.FieldStart("forward_sender_name")
-		s.ForwardSenderName.Encode(e)
-	}
-	if s.ForwardDate.Set {
-		e.FieldStart("forward_date")
-		s.ForwardDate.Encode(e)
-	}
-	if s.IsAutomaticForward.Set {
-		e.FieldStart("is_automatic_forward")
-		s.IsAutomaticForward.Encode(e)
-	}
-	if s.ReplyToMessage != nil {
-		e.FieldStart("reply_to_message")
-		s.ReplyToMessage.Encode(e)
-	}
-	if s.ViaBot.Set {
-		e.FieldStart("via_bot")
-		s.ViaBot.Encode(e)
-	}
-	if s.EditDate.Set {
-		e.FieldStart("edit_date")
-		s.EditDate.Encode(e)
-	}
-	if s.HasProtectedContent.Set {
-		e.FieldStart("has_protected_content")
-		s.HasProtectedContent.Encode(e)
-	}
-	if s.MediaGroupID.Set {
-		e.FieldStart("media_group_id")
-		s.MediaGroupID.Encode(e)
-	}
-	if s.AuthorSignature.Set {
-		e.FieldStart("author_signature")
-		s.AuthorSignature.Encode(e)
-	}
-	if s.Text.Set {
-		e.FieldStart("text")
-		s.Text.Encode(e)
-	}
-	if s.Entities != nil {
-		e.FieldStart("entities")
-		e.ArrStart()
-		for _, elem := range s.Entities {
-			elem.Encode(e)
+	{
+		if s.ForwardFrom.Set {
+			e.Comma()
 		}
-		e.ArrEnd()
-	}
-	if s.Animation.Set {
-		e.FieldStart("animation")
-		s.Animation.Encode(e)
-	}
-	if s.Audio.Set {
-		e.FieldStart("audio")
-		s.Audio.Encode(e)
-	}
-	if s.Document.Set {
-		e.FieldStart("document")
-		s.Document.Encode(e)
-	}
-	if s.Photo != nil {
-		e.FieldStart("photo")
-		e.ArrStart()
-		for _, elem := range s.Photo {
-			elem.Encode(e)
+		if s.ForwardFrom.Set {
+			e.RawStr("\"forward_from\"" + ":")
+			s.ForwardFrom.Encode(e)
 		}
-		e.ArrEnd()
 	}
-	if s.Sticker.Set {
-		e.FieldStart("sticker")
-		s.Sticker.Encode(e)
-	}
-	if s.Video.Set {
-		e.FieldStart("video")
-		s.Video.Encode(e)
-	}
-	if s.VideoNote.Set {
-		e.FieldStart("video_note")
-		s.VideoNote.Encode(e)
-	}
-	if s.Voice.Set {
-		e.FieldStart("voice")
-		s.Voice.Encode(e)
-	}
-	if s.Caption.Set {
-		e.FieldStart("caption")
-		s.Caption.Encode(e)
-	}
-	if s.CaptionEntities != nil {
-		e.FieldStart("caption_entities")
-		e.ArrStart()
-		for _, elem := range s.CaptionEntities {
-			elem.Encode(e)
+	{
+		if s.ForwardFromChat.Set {
+			e.Comma()
 		}
-		e.ArrEnd()
-	}
-	if s.Contact.Set {
-		e.FieldStart("contact")
-		s.Contact.Encode(e)
-	}
-	if s.Dice.Set {
-		e.FieldStart("dice")
-		s.Dice.Encode(e)
-	}
-	if s.Game.Set {
-		e.FieldStart("game")
-		s.Game.Encode(e)
-	}
-	if s.Poll.Set {
-		e.FieldStart("poll")
-		s.Poll.Encode(e)
-	}
-	if s.Venue.Set {
-		e.FieldStart("venue")
-		s.Venue.Encode(e)
-	}
-	if s.Location.Set {
-		e.FieldStart("location")
-		s.Location.Encode(e)
-	}
-	if s.NewChatMembers != nil {
-		e.FieldStart("new_chat_members")
-		e.ArrStart()
-		for _, elem := range s.NewChatMembers {
-			elem.Encode(e)
+		if s.ForwardFromChat.Set {
+			e.RawStr("\"forward_from_chat\"" + ":")
+			s.ForwardFromChat.Encode(e)
 		}
-		e.ArrEnd()
 	}
-	if s.LeftChatMember.Set {
-		e.FieldStart("left_chat_member")
-		s.LeftChatMember.Encode(e)
-	}
-	if s.NewChatTitle.Set {
-		e.FieldStart("new_chat_title")
-		s.NewChatTitle.Encode(e)
-	}
-	if s.NewChatPhoto != nil {
-		e.FieldStart("new_chat_photo")
-		e.ArrStart()
-		for _, elem := range s.NewChatPhoto {
-			elem.Encode(e)
+	{
+		if s.ForwardFromMessageID.Set {
+			e.Comma()
 		}
-		e.ArrEnd()
+		if s.ForwardFromMessageID.Set {
+			e.RawStr("\"forward_from_message_id\"" + ":")
+			s.ForwardFromMessageID.Encode(e)
+		}
 	}
-	if s.DeleteChatPhoto.Set {
-		e.FieldStart("delete_chat_photo")
-		s.DeleteChatPhoto.Encode(e)
+	{
+		if s.ForwardSignature.Set {
+			e.Comma()
+		}
+		if s.ForwardSignature.Set {
+			e.RawStr("\"forward_signature\"" + ":")
+			s.ForwardSignature.Encode(e)
+		}
 	}
-	if s.GroupChatCreated.Set {
-		e.FieldStart("group_chat_created")
-		s.GroupChatCreated.Encode(e)
+	{
+		if s.ForwardSenderName.Set {
+			e.Comma()
+		}
+		if s.ForwardSenderName.Set {
+			e.RawStr("\"forward_sender_name\"" + ":")
+			s.ForwardSenderName.Encode(e)
+		}
 	}
-	if s.SupergroupChatCreated.Set {
-		e.FieldStart("supergroup_chat_created")
-		s.SupergroupChatCreated.Encode(e)
+	{
+		if s.ForwardDate.Set {
+			e.Comma()
+		}
+		if s.ForwardDate.Set {
+			e.RawStr("\"forward_date\"" + ":")
+			s.ForwardDate.Encode(e)
+		}
 	}
-	if s.ChannelChatCreated.Set {
-		e.FieldStart("channel_chat_created")
-		s.ChannelChatCreated.Encode(e)
+	{
+		if s.IsAutomaticForward.Set {
+			e.Comma()
+		}
+		if s.IsAutomaticForward.Set {
+			e.RawStr("\"is_automatic_forward\"" + ":")
+			s.IsAutomaticForward.Encode(e)
+		}
 	}
-	if s.MessageAutoDeleteTimerChanged.Set {
-		e.FieldStart("message_auto_delete_timer_changed")
-		s.MessageAutoDeleteTimerChanged.Encode(e)
+	{
+		if s.ReplyToMessage != nil {
+			e.Comma()
+		}
+		if s.ReplyToMessage != nil {
+			e.RawStr("\"reply_to_message\"" + ":")
+			s.ReplyToMessage.Encode(e)
+		}
 	}
-	if s.MigrateToChatID.Set {
-		e.FieldStart("migrate_to_chat_id")
-		s.MigrateToChatID.Encode(e)
+	{
+		if s.ViaBot.Set {
+			e.Comma()
+		}
+		if s.ViaBot.Set {
+			e.RawStr("\"via_bot\"" + ":")
+			s.ViaBot.Encode(e)
+		}
 	}
-	if s.MigrateFromChatID.Set {
-		e.FieldStart("migrate_from_chat_id")
-		s.MigrateFromChatID.Encode(e)
+	{
+		if s.EditDate.Set {
+			e.Comma()
+		}
+		if s.EditDate.Set {
+			e.RawStr("\"edit_date\"" + ":")
+			s.EditDate.Encode(e)
+		}
 	}
-	if s.PinnedMessage != nil {
-		e.FieldStart("pinned_message")
-		s.PinnedMessage.Encode(e)
+	{
+		if s.HasProtectedContent.Set {
+			e.Comma()
+		}
+		if s.HasProtectedContent.Set {
+			e.RawStr("\"has_protected_content\"" + ":")
+			s.HasProtectedContent.Encode(e)
+		}
 	}
-	if s.Invoice.Set {
-		e.FieldStart("invoice")
-		s.Invoice.Encode(e)
+	{
+		if s.MediaGroupID.Set {
+			e.Comma()
+		}
+		if s.MediaGroupID.Set {
+			e.RawStr("\"media_group_id\"" + ":")
+			s.MediaGroupID.Encode(e)
+		}
 	}
-	if s.SuccessfulPayment.Set {
-		e.FieldStart("successful_payment")
-		s.SuccessfulPayment.Encode(e)
+	{
+		if s.AuthorSignature.Set {
+			e.Comma()
+		}
+		if s.AuthorSignature.Set {
+			e.RawStr("\"author_signature\"" + ":")
+			s.AuthorSignature.Encode(e)
+		}
 	}
-	if s.ConnectedWebsite.Set {
-		e.FieldStart("connected_website")
-		s.ConnectedWebsite.Encode(e)
+	{
+		if s.Text.Set {
+			e.Comma()
+		}
+		if s.Text.Set {
+			e.RawStr("\"text\"" + ":")
+			s.Text.Encode(e)
+		}
 	}
-	if s.PassportData.Set {
-		e.FieldStart("passport_data")
-		s.PassportData.Encode(e)
+	{
+		if s.Entities != nil {
+			e.Comma()
+		}
+		if s.Entities != nil {
+			e.RawStr("\"entities\"" + ":")
+			e.ArrStart()
+			if len(s.Entities) >= 1 {
+				// Encode first element without comma.
+				{
+					elem := s.Entities[0]
+					elem.Encode(e)
+				}
+				for _, elem := range s.Entities[1:] {
+					e.Comma()
+					elem.Encode(e)
+				}
+			}
+			e.ArrEnd()
+		}
 	}
-	if s.ProximityAlertTriggered.Set {
-		e.FieldStart("proximity_alert_triggered")
-		s.ProximityAlertTriggered.Encode(e)
+	{
+		if s.Animation.Set {
+			e.Comma()
+		}
+		if s.Animation.Set {
+			e.RawStr("\"animation\"" + ":")
+			s.Animation.Encode(e)
+		}
 	}
-	if s.VoiceChatScheduled.Set {
-		e.FieldStart("voice_chat_scheduled")
-		s.VoiceChatScheduled.Encode(e)
+	{
+		if s.Audio.Set {
+			e.Comma()
+		}
+		if s.Audio.Set {
+			e.RawStr("\"audio\"" + ":")
+			s.Audio.Encode(e)
+		}
 	}
-	if s.VoiceChatStarted != nil {
-		e.FieldStart("voice_chat_started")
-		s.VoiceChatStarted.Encode(e)
+	{
+		if s.Document.Set {
+			e.Comma()
+		}
+		if s.Document.Set {
+			e.RawStr("\"document\"" + ":")
+			s.Document.Encode(e)
+		}
 	}
-	if s.VoiceChatEnded.Set {
-		e.FieldStart("voice_chat_ended")
-		s.VoiceChatEnded.Encode(e)
+	{
+		if s.Photo != nil {
+			e.Comma()
+		}
+		if s.Photo != nil {
+			e.RawStr("\"photo\"" + ":")
+			e.ArrStart()
+			if len(s.Photo) >= 1 {
+				// Encode first element without comma.
+				{
+					elem := s.Photo[0]
+					elem.Encode(e)
+				}
+				for _, elem := range s.Photo[1:] {
+					e.Comma()
+					elem.Encode(e)
+				}
+			}
+			e.ArrEnd()
+		}
 	}
-	if s.VoiceChatParticipantsInvited.Set {
-		e.FieldStart("voice_chat_participants_invited")
-		s.VoiceChatParticipantsInvited.Encode(e)
+	{
+		if s.Sticker.Set {
+			e.Comma()
+		}
+		if s.Sticker.Set {
+			e.RawStr("\"sticker\"" + ":")
+			s.Sticker.Encode(e)
+		}
 	}
-	if s.ReplyMarkup.Set {
-		e.FieldStart("reply_markup")
-		s.ReplyMarkup.Encode(e)
+	{
+		if s.Video.Set {
+			e.Comma()
+		}
+		if s.Video.Set {
+			e.RawStr("\"video\"" + ":")
+			s.Video.Encode(e)
+		}
+	}
+	{
+		if s.VideoNote.Set {
+			e.Comma()
+		}
+		if s.VideoNote.Set {
+			e.RawStr("\"video_note\"" + ":")
+			s.VideoNote.Encode(e)
+		}
+	}
+	{
+		if s.Voice.Set {
+			e.Comma()
+		}
+		if s.Voice.Set {
+			e.RawStr("\"voice\"" + ":")
+			s.Voice.Encode(e)
+		}
+	}
+	{
+		if s.Caption.Set {
+			e.Comma()
+		}
+		if s.Caption.Set {
+			e.RawStr("\"caption\"" + ":")
+			s.Caption.Encode(e)
+		}
+	}
+	{
+		if s.CaptionEntities != nil {
+			e.Comma()
+		}
+		if s.CaptionEntities != nil {
+			e.RawStr("\"caption_entities\"" + ":")
+			e.ArrStart()
+			if len(s.CaptionEntities) >= 1 {
+				// Encode first element without comma.
+				{
+					elem := s.CaptionEntities[0]
+					elem.Encode(e)
+				}
+				for _, elem := range s.CaptionEntities[1:] {
+					e.Comma()
+					elem.Encode(e)
+				}
+			}
+			e.ArrEnd()
+		}
+	}
+	{
+		if s.Contact.Set {
+			e.Comma()
+		}
+		if s.Contact.Set {
+			e.RawStr("\"contact\"" + ":")
+			s.Contact.Encode(e)
+		}
+	}
+	{
+		if s.Dice.Set {
+			e.Comma()
+		}
+		if s.Dice.Set {
+			e.RawStr("\"dice\"" + ":")
+			s.Dice.Encode(e)
+		}
+	}
+	{
+		if s.Game.Set {
+			e.Comma()
+		}
+		if s.Game.Set {
+			e.RawStr("\"game\"" + ":")
+			s.Game.Encode(e)
+		}
+	}
+	{
+		if s.Poll.Set {
+			e.Comma()
+		}
+		if s.Poll.Set {
+			e.RawStr("\"poll\"" + ":")
+			s.Poll.Encode(e)
+		}
+	}
+	{
+		if s.Venue.Set {
+			e.Comma()
+		}
+		if s.Venue.Set {
+			e.RawStr("\"venue\"" + ":")
+			s.Venue.Encode(e)
+		}
+	}
+	{
+		if s.Location.Set {
+			e.Comma()
+		}
+		if s.Location.Set {
+			e.RawStr("\"location\"" + ":")
+			s.Location.Encode(e)
+		}
+	}
+	{
+		if s.NewChatMembers != nil {
+			e.Comma()
+		}
+		if s.NewChatMembers != nil {
+			e.RawStr("\"new_chat_members\"" + ":")
+			e.ArrStart()
+			if len(s.NewChatMembers) >= 1 {
+				// Encode first element without comma.
+				{
+					elem := s.NewChatMembers[0]
+					elem.Encode(e)
+				}
+				for _, elem := range s.NewChatMembers[1:] {
+					e.Comma()
+					elem.Encode(e)
+				}
+			}
+			e.ArrEnd()
+		}
+	}
+	{
+		if s.LeftChatMember.Set {
+			e.Comma()
+		}
+		if s.LeftChatMember.Set {
+			e.RawStr("\"left_chat_member\"" + ":")
+			s.LeftChatMember.Encode(e)
+		}
+	}
+	{
+		if s.NewChatTitle.Set {
+			e.Comma()
+		}
+		if s.NewChatTitle.Set {
+			e.RawStr("\"new_chat_title\"" + ":")
+			s.NewChatTitle.Encode(e)
+		}
+	}
+	{
+		if s.NewChatPhoto != nil {
+			e.Comma()
+		}
+		if s.NewChatPhoto != nil {
+			e.RawStr("\"new_chat_photo\"" + ":")
+			e.ArrStart()
+			if len(s.NewChatPhoto) >= 1 {
+				// Encode first element without comma.
+				{
+					elem := s.NewChatPhoto[0]
+					elem.Encode(e)
+				}
+				for _, elem := range s.NewChatPhoto[1:] {
+					e.Comma()
+					elem.Encode(e)
+				}
+			}
+			e.ArrEnd()
+		}
+	}
+	{
+		if s.DeleteChatPhoto.Set {
+			e.Comma()
+		}
+		if s.DeleteChatPhoto.Set {
+			e.RawStr("\"delete_chat_photo\"" + ":")
+			s.DeleteChatPhoto.Encode(e)
+		}
+	}
+	{
+		if s.GroupChatCreated.Set {
+			e.Comma()
+		}
+		if s.GroupChatCreated.Set {
+			e.RawStr("\"group_chat_created\"" + ":")
+			s.GroupChatCreated.Encode(e)
+		}
+	}
+	{
+		if s.SupergroupChatCreated.Set {
+			e.Comma()
+		}
+		if s.SupergroupChatCreated.Set {
+			e.RawStr("\"supergroup_chat_created\"" + ":")
+			s.SupergroupChatCreated.Encode(e)
+		}
+	}
+	{
+		if s.ChannelChatCreated.Set {
+			e.Comma()
+		}
+		if s.ChannelChatCreated.Set {
+			e.RawStr("\"channel_chat_created\"" + ":")
+			s.ChannelChatCreated.Encode(e)
+		}
+	}
+	{
+		if s.MessageAutoDeleteTimerChanged.Set {
+			e.Comma()
+		}
+		if s.MessageAutoDeleteTimerChanged.Set {
+			e.RawStr("\"message_auto_delete_timer_changed\"" + ":")
+			s.MessageAutoDeleteTimerChanged.Encode(e)
+		}
+	}
+	{
+		if s.MigrateToChatID.Set {
+			e.Comma()
+		}
+		if s.MigrateToChatID.Set {
+			e.RawStr("\"migrate_to_chat_id\"" + ":")
+			s.MigrateToChatID.Encode(e)
+		}
+	}
+	{
+		if s.MigrateFromChatID.Set {
+			e.Comma()
+		}
+		if s.MigrateFromChatID.Set {
+			e.RawStr("\"migrate_from_chat_id\"" + ":")
+			s.MigrateFromChatID.Encode(e)
+		}
+	}
+	{
+		if s.PinnedMessage != nil {
+			e.Comma()
+		}
+		if s.PinnedMessage != nil {
+			e.RawStr("\"pinned_message\"" + ":")
+			s.PinnedMessage.Encode(e)
+		}
+	}
+	{
+		if s.Invoice.Set {
+			e.Comma()
+		}
+		if s.Invoice.Set {
+			e.RawStr("\"invoice\"" + ":")
+			s.Invoice.Encode(e)
+		}
+	}
+	{
+		if s.SuccessfulPayment.Set {
+			e.Comma()
+		}
+		if s.SuccessfulPayment.Set {
+			e.RawStr("\"successful_payment\"" + ":")
+			s.SuccessfulPayment.Encode(e)
+		}
+	}
+	{
+		if s.ConnectedWebsite.Set {
+			e.Comma()
+		}
+		if s.ConnectedWebsite.Set {
+			e.RawStr("\"connected_website\"" + ":")
+			s.ConnectedWebsite.Encode(e)
+		}
+	}
+	{
+		if s.PassportData.Set {
+			e.Comma()
+		}
+		if s.PassportData.Set {
+			e.RawStr("\"passport_data\"" + ":")
+			s.PassportData.Encode(e)
+		}
+	}
+	{
+		if s.ProximityAlertTriggered.Set {
+			e.Comma()
+		}
+		if s.ProximityAlertTriggered.Set {
+			e.RawStr("\"proximity_alert_triggered\"" + ":")
+			s.ProximityAlertTriggered.Encode(e)
+		}
+	}
+	{
+		if s.VoiceChatScheduled.Set {
+			e.Comma()
+		}
+		if s.VoiceChatScheduled.Set {
+			e.RawStr("\"voice_chat_scheduled\"" + ":")
+			s.VoiceChatScheduled.Encode(e)
+		}
+	}
+	{
+		if s.VoiceChatStarted != nil {
+			e.Comma()
+		}
+		if s.VoiceChatStarted != nil {
+			e.RawStr("\"voice_chat_started\"" + ":")
+			s.VoiceChatStarted.Encode(e)
+		}
+	}
+	{
+		if s.VoiceChatEnded.Set {
+			e.Comma()
+		}
+		if s.VoiceChatEnded.Set {
+			e.RawStr("\"voice_chat_ended\"" + ":")
+			s.VoiceChatEnded.Encode(e)
+		}
+	}
+	{
+		if s.VoiceChatParticipantsInvited.Set {
+			e.Comma()
+		}
+		if s.VoiceChatParticipantsInvited.Set {
+			e.RawStr("\"voice_chat_participants_invited\"" + ":")
+			s.VoiceChatParticipantsInvited.Encode(e)
+		}
+	}
+	{
+		if s.ReplyMarkup.Set {
+			e.Comma()
+		}
+		if s.ReplyMarkup.Set {
+			e.RawStr("\"reply_markup\"" + ":")
+			s.ReplyMarkup.Encode(e)
+		}
 	}
 	e.ObjEnd()
 }
@@ -10063,11 +14253,21 @@ func (s *Message) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s MessageAutoDeleteTimerChanged) Encode(e *jx.Encoder) {
+func (s MessageAutoDeleteTimerChanged) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+	{
+		if !first {
+			e.Comma()
+		}
+		first = false
 
-	e.FieldStart("message_auto_delete_time")
-	e.Int(s.MessageAutoDeleteTime)
+		e.RawStr("\"message_auto_delete_time\"" + ":")
+		e.Int(s.MessageAutoDeleteTime)
+	}
 	e.ObjEnd()
 }
 
@@ -10092,28 +14292,59 @@ func (s *MessageAutoDeleteTimerChanged) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s MessageEntity) Encode(e *jx.Encoder) {
+func (s MessageEntity) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+	{
+		if !first {
+			e.Comma()
+		}
+		first = false
 
-	e.FieldStart("type")
-	s.Type.Encode(e)
-
-	e.FieldStart("offset")
-	e.Int(s.Offset)
-
-	e.FieldStart("length")
-	e.Int(s.Length)
-	if s.URL.Set {
-		e.FieldStart("url")
-		s.URL.Encode(e)
+		e.RawStr("\"type\"" + ":")
+		s.Type.Encode(e)
 	}
-	if s.User.Set {
-		e.FieldStart("user")
-		s.User.Encode(e)
+	{
+		e.Comma()
+
+		e.RawStr("\"offset\"" + ":")
+		e.Int(s.Offset)
 	}
-	if s.Language.Set {
-		e.FieldStart("language")
-		s.Language.Encode(e)
+	{
+		e.Comma()
+
+		e.RawStr("\"length\"" + ":")
+		e.Int(s.Length)
+	}
+	{
+		if s.URL.Set {
+			e.Comma()
+		}
+		if s.URL.Set {
+			e.RawStr("\"url\"" + ":")
+			s.URL.Encode(e)
+		}
+	}
+	{
+		if s.User.Set {
+			e.Comma()
+		}
+		if s.User.Set {
+			e.RawStr("\"user\"" + ":")
+			s.User.Encode(e)
+		}
+	}
+	{
+		if s.Language.Set {
+			e.Comma()
+		}
+		if s.Language.Set {
+			e.RawStr("\"language\"" + ":")
+			s.Language.Encode(e)
+		}
 	}
 	e.ObjEnd()
 }
@@ -10164,7 +14395,7 @@ func (s *MessageEntity) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes MessageEntityType as json.
-func (s MessageEntityType) Encode(e *jx.Encoder) {
+func (s MessageEntityType) Encode(e *jx.Writer) {
 	e.Str(string(s))
 }
 
@@ -10217,11 +14448,21 @@ func (s *MessageEntityType) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s MessageId) Encode(e *jx.Encoder) {
+func (s MessageId) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+	{
+		if !first {
+			e.Comma()
+		}
+		first = false
 
-	e.FieldStart("message_id")
-	e.Int(s.MessageID)
+		e.RawStr("\"message_id\"" + ":")
+		e.Int(s.MessageID)
+	}
 	e.ObjEnd()
 }
 
@@ -10246,7 +14487,7 @@ func (s *MessageId) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes Animation as json.
-func (o OptAnimation) Encode(e *jx.Encoder) {
+func (o OptAnimation) Encode(e *jx.Writer) {
 	o.Value.Encode(e)
 }
 
@@ -10268,7 +14509,7 @@ func (o *OptAnimation) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes Audio as json.
-func (o OptAudio) Encode(e *jx.Encoder) {
+func (o OptAudio) Encode(e *jx.Writer) {
 	o.Value.Encode(e)
 }
 
@@ -10290,7 +14531,7 @@ func (o *OptAudio) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes bool as json.
-func (o OptBool) Encode(e *jx.Encoder) {
+func (o OptBool) Encode(e *jx.Writer) {
 	e.Bool(bool(o.Value))
 }
 
@@ -10314,7 +14555,7 @@ func (o *OptBool) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes BotCommandScope as json.
-func (o OptBotCommandScope) Encode(e *jx.Encoder) {
+func (o OptBotCommandScope) Encode(e *jx.Writer) {
 }
 
 // Decode decodes BotCommandScope from json.
@@ -10332,7 +14573,7 @@ func (o *OptBotCommandScope) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes CallbackQuery as json.
-func (o OptCallbackQuery) Encode(e *jx.Encoder) {
+func (o OptCallbackQuery) Encode(e *jx.Writer) {
 	o.Value.Encode(e)
 }
 
@@ -10354,7 +14595,7 @@ func (o *OptCallbackQuery) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes Chat as json.
-func (o OptChat) Encode(e *jx.Encoder) {
+func (o OptChat) Encode(e *jx.Writer) {
 	o.Value.Encode(e)
 }
 
@@ -10376,7 +14617,7 @@ func (o *OptChat) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes ChatInviteLink as json.
-func (o OptChatInviteLink) Encode(e *jx.Encoder) {
+func (o OptChatInviteLink) Encode(e *jx.Writer) {
 	o.Value.Encode(e)
 }
 
@@ -10398,7 +14639,7 @@ func (o *OptChatInviteLink) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes ChatJoinRequest as json.
-func (o OptChatJoinRequest) Encode(e *jx.Encoder) {
+func (o OptChatJoinRequest) Encode(e *jx.Writer) {
 	o.Value.Encode(e)
 }
 
@@ -10420,7 +14661,7 @@ func (o *OptChatJoinRequest) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes ChatLocation as json.
-func (o OptChatLocation) Encode(e *jx.Encoder) {
+func (o OptChatLocation) Encode(e *jx.Writer) {
 	o.Value.Encode(e)
 }
 
@@ -10442,7 +14683,7 @@ func (o *OptChatLocation) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes ChatMember as json.
-func (o OptChatMember) Encode(e *jx.Encoder) {
+func (o OptChatMember) Encode(e *jx.Writer) {
 }
 
 // Decode decodes ChatMember from json.
@@ -10460,7 +14701,7 @@ func (o *OptChatMember) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes ChatMemberUpdated as json.
-func (o OptChatMemberUpdated) Encode(e *jx.Encoder) {
+func (o OptChatMemberUpdated) Encode(e *jx.Writer) {
 	o.Value.Encode(e)
 }
 
@@ -10482,7 +14723,7 @@ func (o *OptChatMemberUpdated) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes ChatPermissions as json.
-func (o OptChatPermissions) Encode(e *jx.Encoder) {
+func (o OptChatPermissions) Encode(e *jx.Writer) {
 	o.Value.Encode(e)
 }
 
@@ -10504,7 +14745,7 @@ func (o *OptChatPermissions) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes ChatPhoto as json.
-func (o OptChatPhoto) Encode(e *jx.Encoder) {
+func (o OptChatPhoto) Encode(e *jx.Writer) {
 	o.Value.Encode(e)
 }
 
@@ -10526,7 +14767,7 @@ func (o *OptChatPhoto) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes ChosenInlineResult as json.
-func (o OptChosenInlineResult) Encode(e *jx.Encoder) {
+func (o OptChosenInlineResult) Encode(e *jx.Writer) {
 	o.Value.Encode(e)
 }
 
@@ -10548,7 +14789,7 @@ func (o *OptChosenInlineResult) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes Contact as json.
-func (o OptContact) Encode(e *jx.Encoder) {
+func (o OptContact) Encode(e *jx.Writer) {
 	o.Value.Encode(e)
 }
 
@@ -10570,7 +14811,7 @@ func (o *OptContact) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes CopyMessageReplyMarkup as json.
-func (o OptCopyMessageReplyMarkup) Encode(e *jx.Encoder) {
+func (o OptCopyMessageReplyMarkup) Encode(e *jx.Writer) {
 }
 
 // Decode decodes CopyMessageReplyMarkup from json.
@@ -10588,7 +14829,7 @@ func (o *OptCopyMessageReplyMarkup) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes DeleteMyCommands as json.
-func (o OptDeleteMyCommands) Encode(e *jx.Encoder) {
+func (o OptDeleteMyCommands) Encode(e *jx.Writer) {
 	o.Value.Encode(e)
 }
 
@@ -10610,7 +14851,7 @@ func (o *OptDeleteMyCommands) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes DeleteWebhook as json.
-func (o OptDeleteWebhook) Encode(e *jx.Encoder) {
+func (o OptDeleteWebhook) Encode(e *jx.Writer) {
 	o.Value.Encode(e)
 }
 
@@ -10632,7 +14873,7 @@ func (o *OptDeleteWebhook) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes Dice as json.
-func (o OptDice) Encode(e *jx.Encoder) {
+func (o OptDice) Encode(e *jx.Writer) {
 	o.Value.Encode(e)
 }
 
@@ -10654,7 +14895,7 @@ func (o *OptDice) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes Document as json.
-func (o OptDocument) Encode(e *jx.Encoder) {
+func (o OptDocument) Encode(e *jx.Writer) {
 	o.Value.Encode(e)
 }
 
@@ -10676,7 +14917,7 @@ func (o *OptDocument) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes File as json.
-func (o OptFile) Encode(e *jx.Encoder) {
+func (o OptFile) Encode(e *jx.Writer) {
 	o.Value.Encode(e)
 }
 
@@ -10698,7 +14939,7 @@ func (o *OptFile) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes float64 as json.
-func (o OptFloat64) Encode(e *jx.Encoder) {
+func (o OptFloat64) Encode(e *jx.Writer) {
 	e.Float64(float64(o.Value))
 }
 
@@ -10722,7 +14963,7 @@ func (o *OptFloat64) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes Game as json.
-func (o OptGame) Encode(e *jx.Encoder) {
+func (o OptGame) Encode(e *jx.Writer) {
 	o.Value.Encode(e)
 }
 
@@ -10744,7 +14985,7 @@ func (o *OptGame) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes GetMyCommands as json.
-func (o OptGetMyCommands) Encode(e *jx.Encoder) {
+func (o OptGetMyCommands) Encode(e *jx.Writer) {
 	o.Value.Encode(e)
 }
 
@@ -10766,7 +15007,7 @@ func (o *OptGetMyCommands) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes GetUpdates as json.
-func (o OptGetUpdates) Encode(e *jx.Encoder) {
+func (o OptGetUpdates) Encode(e *jx.Writer) {
 	o.Value.Encode(e)
 }
 
@@ -10788,7 +15029,7 @@ func (o *OptGetUpdates) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes ID as json.
-func (o OptID) Encode(e *jx.Encoder) {
+func (o OptID) Encode(e *jx.Writer) {
 }
 
 // Decode decodes ID from json.
@@ -10806,7 +15047,7 @@ func (o *OptID) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes InlineKeyboardMarkup as json.
-func (o OptInlineKeyboardMarkup) Encode(e *jx.Encoder) {
+func (o OptInlineKeyboardMarkup) Encode(e *jx.Writer) {
 	o.Value.Encode(e)
 }
 
@@ -10828,7 +15069,7 @@ func (o *OptInlineKeyboardMarkup) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes InlineQuery as json.
-func (o OptInlineQuery) Encode(e *jx.Encoder) {
+func (o OptInlineQuery) Encode(e *jx.Writer) {
 	o.Value.Encode(e)
 }
 
@@ -10850,7 +15091,7 @@ func (o *OptInlineQuery) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes InlineQueryChatType as json.
-func (o OptInlineQueryChatType) Encode(e *jx.Encoder) {
+func (o OptInlineQueryChatType) Encode(e *jx.Writer) {
 	e.Str(string(o.Value))
 }
 
@@ -10872,7 +15113,7 @@ func (o *OptInlineQueryChatType) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes InputMessageContent as json.
-func (o OptInputMessageContent) Encode(e *jx.Encoder) {
+func (o OptInputMessageContent) Encode(e *jx.Writer) {
 }
 
 // Decode decodes InputMessageContent from json.
@@ -10890,7 +15131,7 @@ func (o *OptInputMessageContent) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes int as json.
-func (o OptInt) Encode(e *jx.Encoder) {
+func (o OptInt) Encode(e *jx.Writer) {
 	e.Int(int(o.Value))
 }
 
@@ -10914,7 +15155,7 @@ func (o *OptInt) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes int64 as json.
-func (o OptInt64) Encode(e *jx.Encoder) {
+func (o OptInt64) Encode(e *jx.Writer) {
 	e.Int64(int64(o.Value))
 }
 
@@ -10938,7 +15179,7 @@ func (o *OptInt64) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes Invoice as json.
-func (o OptInvoice) Encode(e *jx.Encoder) {
+func (o OptInvoice) Encode(e *jx.Writer) {
 	o.Value.Encode(e)
 }
 
@@ -10960,7 +15201,7 @@ func (o *OptInvoice) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes KeyboardButtonPollType as json.
-func (o OptKeyboardButtonPollType) Encode(e *jx.Encoder) {
+func (o OptKeyboardButtonPollType) Encode(e *jx.Writer) {
 	o.Value.Encode(e)
 }
 
@@ -10982,7 +15223,7 @@ func (o *OptKeyboardButtonPollType) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes Location as json.
-func (o OptLocation) Encode(e *jx.Encoder) {
+func (o OptLocation) Encode(e *jx.Writer) {
 	o.Value.Encode(e)
 }
 
@@ -11004,7 +15245,7 @@ func (o *OptLocation) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes LoginUrl as json.
-func (o OptLoginUrl) Encode(e *jx.Encoder) {
+func (o OptLoginUrl) Encode(e *jx.Writer) {
 	o.Value.Encode(e)
 }
 
@@ -11026,7 +15267,7 @@ func (o *OptLoginUrl) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes MaskPosition as json.
-func (o OptMaskPosition) Encode(e *jx.Encoder) {
+func (o OptMaskPosition) Encode(e *jx.Writer) {
 	o.Value.Encode(e)
 }
 
@@ -11048,7 +15289,7 @@ func (o *OptMaskPosition) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes Message as json.
-func (o OptMessage) Encode(e *jx.Encoder) {
+func (o OptMessage) Encode(e *jx.Writer) {
 	o.Value.Encode(e)
 }
 
@@ -11070,7 +15311,7 @@ func (o *OptMessage) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes MessageAutoDeleteTimerChanged as json.
-func (o OptMessageAutoDeleteTimerChanged) Encode(e *jx.Encoder) {
+func (o OptMessageAutoDeleteTimerChanged) Encode(e *jx.Writer) {
 	o.Value.Encode(e)
 }
 
@@ -11092,7 +15333,7 @@ func (o *OptMessageAutoDeleteTimerChanged) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes MessageId as json.
-func (o OptMessageId) Encode(e *jx.Encoder) {
+func (o OptMessageId) Encode(e *jx.Writer) {
 	o.Value.Encode(e)
 }
 
@@ -11114,7 +15355,7 @@ func (o *OptMessageId) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes OrderInfo as json.
-func (o OptOrderInfo) Encode(e *jx.Encoder) {
+func (o OptOrderInfo) Encode(e *jx.Writer) {
 	o.Value.Encode(e)
 }
 
@@ -11136,7 +15377,7 @@ func (o *OptOrderInfo) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes PassportData as json.
-func (o OptPassportData) Encode(e *jx.Encoder) {
+func (o OptPassportData) Encode(e *jx.Writer) {
 	o.Value.Encode(e)
 }
 
@@ -11158,7 +15399,7 @@ func (o *OptPassportData) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes PassportFile as json.
-func (o OptPassportFile) Encode(e *jx.Encoder) {
+func (o OptPassportFile) Encode(e *jx.Writer) {
 	o.Value.Encode(e)
 }
 
@@ -11180,7 +15421,7 @@ func (o *OptPassportFile) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes PhotoSize as json.
-func (o OptPhotoSize) Encode(e *jx.Encoder) {
+func (o OptPhotoSize) Encode(e *jx.Writer) {
 	o.Value.Encode(e)
 }
 
@@ -11202,7 +15443,7 @@ func (o *OptPhotoSize) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes Poll as json.
-func (o OptPoll) Encode(e *jx.Encoder) {
+func (o OptPoll) Encode(e *jx.Writer) {
 	o.Value.Encode(e)
 }
 
@@ -11224,7 +15465,7 @@ func (o *OptPoll) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes PollAnswer as json.
-func (o OptPollAnswer) Encode(e *jx.Encoder) {
+func (o OptPollAnswer) Encode(e *jx.Writer) {
 	o.Value.Encode(e)
 }
 
@@ -11246,7 +15487,7 @@ func (o *OptPollAnswer) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes PreCheckoutQuery as json.
-func (o OptPreCheckoutQuery) Encode(e *jx.Encoder) {
+func (o OptPreCheckoutQuery) Encode(e *jx.Writer) {
 	o.Value.Encode(e)
 }
 
@@ -11268,7 +15509,7 @@ func (o *OptPreCheckoutQuery) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes ProximityAlertTriggered as json.
-func (o OptProximityAlertTriggered) Encode(e *jx.Encoder) {
+func (o OptProximityAlertTriggered) Encode(e *jx.Writer) {
 	o.Value.Encode(e)
 }
 
@@ -11290,7 +15531,7 @@ func (o *OptProximityAlertTriggered) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes Response as json.
-func (o OptResponse) Encode(e *jx.Encoder) {
+func (o OptResponse) Encode(e *jx.Writer) {
 	o.Value.Encode(e)
 }
 
@@ -11312,7 +15553,7 @@ func (o *OptResponse) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes SendAnimationReplyMarkup as json.
-func (o OptSendAnimationReplyMarkup) Encode(e *jx.Encoder) {
+func (o OptSendAnimationReplyMarkup) Encode(e *jx.Writer) {
 }
 
 // Decode decodes SendAnimationReplyMarkup from json.
@@ -11330,7 +15571,7 @@ func (o *OptSendAnimationReplyMarkup) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes SendAudioReplyMarkup as json.
-func (o OptSendAudioReplyMarkup) Encode(e *jx.Encoder) {
+func (o OptSendAudioReplyMarkup) Encode(e *jx.Writer) {
 }
 
 // Decode decodes SendAudioReplyMarkup from json.
@@ -11348,7 +15589,7 @@ func (o *OptSendAudioReplyMarkup) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes SendContactReplyMarkup as json.
-func (o OptSendContactReplyMarkup) Encode(e *jx.Encoder) {
+func (o OptSendContactReplyMarkup) Encode(e *jx.Writer) {
 }
 
 // Decode decodes SendContactReplyMarkup from json.
@@ -11366,7 +15607,7 @@ func (o *OptSendContactReplyMarkup) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes SendDiceReplyMarkup as json.
-func (o OptSendDiceReplyMarkup) Encode(e *jx.Encoder) {
+func (o OptSendDiceReplyMarkup) Encode(e *jx.Writer) {
 }
 
 // Decode decodes SendDiceReplyMarkup from json.
@@ -11384,7 +15625,7 @@ func (o *OptSendDiceReplyMarkup) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes SendDocumentReplyMarkup as json.
-func (o OptSendDocumentReplyMarkup) Encode(e *jx.Encoder) {
+func (o OptSendDocumentReplyMarkup) Encode(e *jx.Writer) {
 }
 
 // Decode decodes SendDocumentReplyMarkup from json.
@@ -11402,7 +15643,7 @@ func (o *OptSendDocumentReplyMarkup) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes SendLocationReplyMarkup as json.
-func (o OptSendLocationReplyMarkup) Encode(e *jx.Encoder) {
+func (o OptSendLocationReplyMarkup) Encode(e *jx.Writer) {
 }
 
 // Decode decodes SendLocationReplyMarkup from json.
@@ -11420,7 +15661,7 @@ func (o *OptSendLocationReplyMarkup) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes SendMessageReplyMarkup as json.
-func (o OptSendMessageReplyMarkup) Encode(e *jx.Encoder) {
+func (o OptSendMessageReplyMarkup) Encode(e *jx.Writer) {
 }
 
 // Decode decodes SendMessageReplyMarkup from json.
@@ -11438,7 +15679,7 @@ func (o *OptSendMessageReplyMarkup) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes SendPhotoReplyMarkup as json.
-func (o OptSendPhotoReplyMarkup) Encode(e *jx.Encoder) {
+func (o OptSendPhotoReplyMarkup) Encode(e *jx.Writer) {
 }
 
 // Decode decodes SendPhotoReplyMarkup from json.
@@ -11456,7 +15697,7 @@ func (o *OptSendPhotoReplyMarkup) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes SendPollReplyMarkup as json.
-func (o OptSendPollReplyMarkup) Encode(e *jx.Encoder) {
+func (o OptSendPollReplyMarkup) Encode(e *jx.Writer) {
 }
 
 // Decode decodes SendPollReplyMarkup from json.
@@ -11474,7 +15715,7 @@ func (o *OptSendPollReplyMarkup) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes SendStickerReplyMarkup as json.
-func (o OptSendStickerReplyMarkup) Encode(e *jx.Encoder) {
+func (o OptSendStickerReplyMarkup) Encode(e *jx.Writer) {
 }
 
 // Decode decodes SendStickerReplyMarkup from json.
@@ -11492,7 +15733,7 @@ func (o *OptSendStickerReplyMarkup) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes SendVenueReplyMarkup as json.
-func (o OptSendVenueReplyMarkup) Encode(e *jx.Encoder) {
+func (o OptSendVenueReplyMarkup) Encode(e *jx.Writer) {
 }
 
 // Decode decodes SendVenueReplyMarkup from json.
@@ -11510,7 +15751,7 @@ func (o *OptSendVenueReplyMarkup) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes SendVideoNoteReplyMarkup as json.
-func (o OptSendVideoNoteReplyMarkup) Encode(e *jx.Encoder) {
+func (o OptSendVideoNoteReplyMarkup) Encode(e *jx.Writer) {
 }
 
 // Decode decodes SendVideoNoteReplyMarkup from json.
@@ -11528,7 +15769,7 @@ func (o *OptSendVideoNoteReplyMarkup) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes SendVideoReplyMarkup as json.
-func (o OptSendVideoReplyMarkup) Encode(e *jx.Encoder) {
+func (o OptSendVideoReplyMarkup) Encode(e *jx.Writer) {
 }
 
 // Decode decodes SendVideoReplyMarkup from json.
@@ -11546,7 +15787,7 @@ func (o *OptSendVideoReplyMarkup) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes SendVoiceReplyMarkup as json.
-func (o OptSendVoiceReplyMarkup) Encode(e *jx.Encoder) {
+func (o OptSendVoiceReplyMarkup) Encode(e *jx.Writer) {
 }
 
 // Decode decodes SendVoiceReplyMarkup from json.
@@ -11564,7 +15805,7 @@ func (o *OptSendVoiceReplyMarkup) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes ShippingAddress as json.
-func (o OptShippingAddress) Encode(e *jx.Encoder) {
+func (o OptShippingAddress) Encode(e *jx.Writer) {
 	o.Value.Encode(e)
 }
 
@@ -11586,7 +15827,7 @@ func (o *OptShippingAddress) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes ShippingQuery as json.
-func (o OptShippingQuery) Encode(e *jx.Encoder) {
+func (o OptShippingQuery) Encode(e *jx.Writer) {
 	o.Value.Encode(e)
 }
 
@@ -11608,7 +15849,7 @@ func (o *OptShippingQuery) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes Sticker as json.
-func (o OptSticker) Encode(e *jx.Encoder) {
+func (o OptSticker) Encode(e *jx.Writer) {
 	o.Value.Encode(e)
 }
 
@@ -11630,7 +15871,7 @@ func (o *OptSticker) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes string as json.
-func (o OptString) Encode(e *jx.Encoder) {
+func (o OptString) Encode(e *jx.Writer) {
 	e.Str(string(o.Value))
 }
 
@@ -11654,7 +15895,7 @@ func (o *OptString) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes SuccessfulPayment as json.
-func (o OptSuccessfulPayment) Encode(e *jx.Encoder) {
+func (o OptSuccessfulPayment) Encode(e *jx.Writer) {
 	o.Value.Encode(e)
 }
 
@@ -11676,7 +15917,7 @@ func (o *OptSuccessfulPayment) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes url.URL as json.
-func (o OptURL) Encode(e *jx.Encoder) {
+func (o OptURL) Encode(e *jx.Writer) {
 	json.EncodeURI(e, o.Value)
 }
 
@@ -11700,7 +15941,7 @@ func (o *OptURL) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes User as json.
-func (o OptUser) Encode(e *jx.Encoder) {
+func (o OptUser) Encode(e *jx.Writer) {
 	o.Value.Encode(e)
 }
 
@@ -11722,7 +15963,7 @@ func (o *OptUser) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes UserProfilePhotos as json.
-func (o OptUserProfilePhotos) Encode(e *jx.Encoder) {
+func (o OptUserProfilePhotos) Encode(e *jx.Writer) {
 	o.Value.Encode(e)
 }
 
@@ -11744,7 +15985,7 @@ func (o *OptUserProfilePhotos) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes Venue as json.
-func (o OptVenue) Encode(e *jx.Encoder) {
+func (o OptVenue) Encode(e *jx.Writer) {
 	o.Value.Encode(e)
 }
 
@@ -11766,7 +16007,7 @@ func (o *OptVenue) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes Video as json.
-func (o OptVideo) Encode(e *jx.Encoder) {
+func (o OptVideo) Encode(e *jx.Writer) {
 	o.Value.Encode(e)
 }
 
@@ -11788,7 +16029,7 @@ func (o *OptVideo) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes VideoNote as json.
-func (o OptVideoNote) Encode(e *jx.Encoder) {
+func (o OptVideoNote) Encode(e *jx.Writer) {
 	o.Value.Encode(e)
 }
 
@@ -11810,7 +16051,7 @@ func (o *OptVideoNote) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes Voice as json.
-func (o OptVoice) Encode(e *jx.Encoder) {
+func (o OptVoice) Encode(e *jx.Writer) {
 	o.Value.Encode(e)
 }
 
@@ -11832,7 +16073,7 @@ func (o *OptVoice) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes VoiceChatEnded as json.
-func (o OptVoiceChatEnded) Encode(e *jx.Encoder) {
+func (o OptVoiceChatEnded) Encode(e *jx.Writer) {
 	o.Value.Encode(e)
 }
 
@@ -11854,7 +16095,7 @@ func (o *OptVoiceChatEnded) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes VoiceChatParticipantsInvited as json.
-func (o OptVoiceChatParticipantsInvited) Encode(e *jx.Encoder) {
+func (o OptVoiceChatParticipantsInvited) Encode(e *jx.Writer) {
 	o.Value.Encode(e)
 }
 
@@ -11876,7 +16117,7 @@ func (o *OptVoiceChatParticipantsInvited) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes VoiceChatScheduled as json.
-func (o OptVoiceChatScheduled) Encode(e *jx.Encoder) {
+func (o OptVoiceChatScheduled) Encode(e *jx.Writer) {
 	o.Value.Encode(e)
 }
 
@@ -11898,7 +16139,7 @@ func (o *OptVoiceChatScheduled) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes WebhookInfo as json.
-func (o OptWebhookInfo) Encode(e *jx.Encoder) {
+func (o OptWebhookInfo) Encode(e *jx.Writer) {
 	o.Value.Encode(e)
 }
 
@@ -11920,23 +16161,59 @@ func (o *OptWebhookInfo) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s OrderInfo) Encode(e *jx.Encoder) {
+func (s OrderInfo) Encode(e *jx.Writer) {
 	e.ObjStart()
-	if s.Name.Set {
-		e.FieldStart("name")
-		s.Name.Encode(e)
+	var (
+		first = true
+		_     = first
+	)
+	{
+		if s.Name.Set {
+			if !first {
+				e.Comma()
+			}
+			first = false
+		}
+		if s.Name.Set {
+			e.RawStr("\"name\"" + ":")
+			s.Name.Encode(e)
+		}
 	}
-	if s.PhoneNumber.Set {
-		e.FieldStart("phone_number")
-		s.PhoneNumber.Encode(e)
+	{
+		if s.PhoneNumber.Set {
+			if !first {
+				e.Comma()
+			}
+			first = false
+		}
+		if s.PhoneNumber.Set {
+			e.RawStr("\"phone_number\"" + ":")
+			s.PhoneNumber.Encode(e)
+		}
 	}
-	if s.Email.Set {
-		e.FieldStart("email")
-		s.Email.Encode(e)
+	{
+		if s.Email.Set {
+			if !first {
+				e.Comma()
+			}
+			first = false
+		}
+		if s.Email.Set {
+			e.RawStr("\"email\"" + ":")
+			s.Email.Encode(e)
+		}
 	}
-	if s.ShippingAddress.Set {
-		e.FieldStart("shipping_address")
-		s.ShippingAddress.Encode(e)
+	{
+		if s.ShippingAddress.Set {
+			if !first {
+				e.Comma()
+			}
+			first = false
+		}
+		if s.ShippingAddress.Set {
+			e.RawStr("\"shipping_address\"" + ":")
+			s.ShippingAddress.Encode(e)
+		}
 	}
 	e.ObjEnd()
 }
@@ -11976,18 +16253,39 @@ func (s *OrderInfo) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s PassportData) Encode(e *jx.Encoder) {
+func (s PassportData) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+	{
+		if !first {
+			e.Comma()
+		}
+		first = false
 
-	e.FieldStart("data")
-	e.ArrStart()
-	for _, elem := range s.Data {
-		elem.Encode(e)
+		e.RawStr("\"data\"" + ":")
+		e.ArrStart()
+		if len(s.Data) >= 1 {
+			// Encode first element without comma.
+			{
+				elem := s.Data[0]
+				elem.Encode(e)
+			}
+			for _, elem := range s.Data[1:] {
+				e.Comma()
+				elem.Encode(e)
+			}
+		}
+		e.ArrEnd()
 	}
-	e.ArrEnd()
+	{
+		e.Comma()
 
-	e.FieldStart("credentials")
-	s.Credentials.Encode(e)
+		e.RawStr("\"credentials\"" + ":")
+		s.Credentials.Encode(e)
+	}
 	e.ObjEnd()
 }
 
@@ -12022,7 +16320,7 @@ func (s *PassportData) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes PassportElementError as json.
-func (s PassportElementError) Encode(e *jx.Encoder) {
+func (s PassportElementError) Encode(e *jx.Writer) {
 	switch s.Type {
 	case PassportElementErrorDataFieldPassportElementError:
 		s.PassportElementErrorDataField.Encode(e)
@@ -12151,23 +16449,45 @@ func (s *PassportElementError) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s PassportElementErrorDataField) Encode(e *jx.Encoder) {
+func (s PassportElementErrorDataField) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+	{
+		if !first {
+			e.Comma()
+		}
+		first = false
 
-	e.FieldStart("source")
-	e.Str(s.Source)
+		e.RawStr("\"source\"" + ":")
+		e.Str(s.Source)
+	}
+	{
+		e.Comma()
 
-	e.FieldStart("type")
-	s.Type.Encode(e)
+		e.RawStr("\"type\"" + ":")
+		s.Type.Encode(e)
+	}
+	{
+		e.Comma()
 
-	e.FieldStart("field_name")
-	e.Str(s.FieldName)
+		e.RawStr("\"field_name\"" + ":")
+		e.Str(s.FieldName)
+	}
+	{
+		e.Comma()
 
-	e.FieldStart("data_hash")
-	e.Str(s.DataHash)
+		e.RawStr("\"data_hash\"" + ":")
+		e.Str(s.DataHash)
+	}
+	{
+		e.Comma()
 
-	e.FieldStart("message")
-	e.Str(s.Message)
+		e.RawStr("\"message\"" + ":")
+		e.Str(s.Message)
+	}
 	e.ObjEnd()
 }
 
@@ -12214,7 +16534,7 @@ func (s *PassportElementErrorDataField) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes PassportElementErrorDataFieldType as json.
-func (s PassportElementErrorDataFieldType) Encode(e *jx.Encoder) {
+func (s PassportElementErrorDataFieldType) Encode(e *jx.Writer) {
 	e.Str(string(s))
 }
 
@@ -12249,20 +16569,39 @@ func (s *PassportElementErrorDataFieldType) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s PassportElementErrorFile) Encode(e *jx.Encoder) {
+func (s PassportElementErrorFile) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+	{
+		if !first {
+			e.Comma()
+		}
+		first = false
 
-	e.FieldStart("source")
-	e.Str(s.Source)
+		e.RawStr("\"source\"" + ":")
+		e.Str(s.Source)
+	}
+	{
+		e.Comma()
 
-	e.FieldStart("type")
-	s.Type.Encode(e)
+		e.RawStr("\"type\"" + ":")
+		s.Type.Encode(e)
+	}
+	{
+		e.Comma()
 
-	e.FieldStart("file_hash")
-	e.Str(s.FileHash)
+		e.RawStr("\"file_hash\"" + ":")
+		e.Str(s.FileHash)
+	}
+	{
+		e.Comma()
 
-	e.FieldStart("message")
-	e.Str(s.Message)
+		e.RawStr("\"message\"" + ":")
+		e.Str(s.Message)
+	}
 	e.ObjEnd()
 }
 
@@ -12303,7 +16642,7 @@ func (s *PassportElementErrorFile) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes PassportElementErrorFileType as json.
-func (s PassportElementErrorFileType) Encode(e *jx.Encoder) {
+func (s PassportElementErrorFileType) Encode(e *jx.Writer) {
 	e.Str(string(s))
 }
 
@@ -12336,24 +16675,51 @@ func (s *PassportElementErrorFileType) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s PassportElementErrorFiles) Encode(e *jx.Encoder) {
+func (s PassportElementErrorFiles) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+	{
+		if !first {
+			e.Comma()
+		}
+		first = false
 
-	e.FieldStart("source")
-	e.Str(s.Source)
-
-	e.FieldStart("type")
-	s.Type.Encode(e)
-
-	e.FieldStart("file_hashes")
-	e.ArrStart()
-	for _, elem := range s.FileHashes {
-		e.Str(elem)
+		e.RawStr("\"source\"" + ":")
+		e.Str(s.Source)
 	}
-	e.ArrEnd()
+	{
+		e.Comma()
 
-	e.FieldStart("message")
-	e.Str(s.Message)
+		e.RawStr("\"type\"" + ":")
+		s.Type.Encode(e)
+	}
+	{
+		e.Comma()
+
+		e.RawStr("\"file_hashes\"" + ":")
+		e.ArrStart()
+		if len(s.FileHashes) >= 1 {
+			// Encode first element without comma.
+			{
+				elem := s.FileHashes[0]
+				e.Str(elem)
+			}
+			for _, elem := range s.FileHashes[1:] {
+				e.Comma()
+				e.Str(elem)
+			}
+		}
+		e.ArrEnd()
+	}
+	{
+		e.Comma()
+
+		e.RawStr("\"message\"" + ":")
+		e.Str(s.Message)
+	}
 	e.ObjEnd()
 }
 
@@ -12402,7 +16768,7 @@ func (s *PassportElementErrorFiles) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes PassportElementErrorFilesType as json.
-func (s PassportElementErrorFilesType) Encode(e *jx.Encoder) {
+func (s PassportElementErrorFilesType) Encode(e *jx.Writer) {
 	e.Str(string(s))
 }
 
@@ -12435,20 +16801,39 @@ func (s *PassportElementErrorFilesType) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s PassportElementErrorFrontSide) Encode(e *jx.Encoder) {
+func (s PassportElementErrorFrontSide) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+	{
+		if !first {
+			e.Comma()
+		}
+		first = false
 
-	e.FieldStart("source")
-	e.Str(s.Source)
+		e.RawStr("\"source\"" + ":")
+		e.Str(s.Source)
+	}
+	{
+		e.Comma()
 
-	e.FieldStart("type")
-	s.Type.Encode(e)
+		e.RawStr("\"type\"" + ":")
+		s.Type.Encode(e)
+	}
+	{
+		e.Comma()
 
-	e.FieldStart("file_hash")
-	e.Str(s.FileHash)
+		e.RawStr("\"file_hash\"" + ":")
+		e.Str(s.FileHash)
+	}
+	{
+		e.Comma()
 
-	e.FieldStart("message")
-	e.Str(s.Message)
+		e.RawStr("\"message\"" + ":")
+		e.Str(s.Message)
+	}
 	e.ObjEnd()
 }
 
@@ -12489,7 +16874,7 @@ func (s *PassportElementErrorFrontSide) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes PassportElementErrorFrontSideType as json.
-func (s PassportElementErrorFrontSideType) Encode(e *jx.Encoder) {
+func (s PassportElementErrorFrontSideType) Encode(e *jx.Writer) {
 	e.Str(string(s))
 }
 
@@ -12520,20 +16905,39 @@ func (s *PassportElementErrorFrontSideType) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s PassportElementErrorReverseSide) Encode(e *jx.Encoder) {
+func (s PassportElementErrorReverseSide) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+	{
+		if !first {
+			e.Comma()
+		}
+		first = false
 
-	e.FieldStart("source")
-	e.Str(s.Source)
+		e.RawStr("\"source\"" + ":")
+		e.Str(s.Source)
+	}
+	{
+		e.Comma()
 
-	e.FieldStart("type")
-	s.Type.Encode(e)
+		e.RawStr("\"type\"" + ":")
+		s.Type.Encode(e)
+	}
+	{
+		e.Comma()
 
-	e.FieldStart("file_hash")
-	e.Str(s.FileHash)
+		e.RawStr("\"file_hash\"" + ":")
+		e.Str(s.FileHash)
+	}
+	{
+		e.Comma()
 
-	e.FieldStart("message")
-	e.Str(s.Message)
+		e.RawStr("\"message\"" + ":")
+		e.Str(s.Message)
+	}
 	e.ObjEnd()
 }
 
@@ -12574,7 +16978,7 @@ func (s *PassportElementErrorReverseSide) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes PassportElementErrorReverseSideType as json.
-func (s PassportElementErrorReverseSideType) Encode(e *jx.Encoder) {
+func (s PassportElementErrorReverseSideType) Encode(e *jx.Writer) {
 	e.Str(string(s))
 }
 
@@ -12601,20 +17005,39 @@ func (s *PassportElementErrorReverseSideType) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s PassportElementErrorSelfie) Encode(e *jx.Encoder) {
+func (s PassportElementErrorSelfie) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+	{
+		if !first {
+			e.Comma()
+		}
+		first = false
 
-	e.FieldStart("source")
-	e.Str(s.Source)
+		e.RawStr("\"source\"" + ":")
+		e.Str(s.Source)
+	}
+	{
+		e.Comma()
 
-	e.FieldStart("type")
-	s.Type.Encode(e)
+		e.RawStr("\"type\"" + ":")
+		s.Type.Encode(e)
+	}
+	{
+		e.Comma()
 
-	e.FieldStart("file_hash")
-	e.Str(s.FileHash)
+		e.RawStr("\"file_hash\"" + ":")
+		e.Str(s.FileHash)
+	}
+	{
+		e.Comma()
 
-	e.FieldStart("message")
-	e.Str(s.Message)
+		e.RawStr("\"message\"" + ":")
+		e.Str(s.Message)
+	}
 	e.ObjEnd()
 }
 
@@ -12655,7 +17078,7 @@ func (s *PassportElementErrorSelfie) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes PassportElementErrorSelfieType as json.
-func (s PassportElementErrorSelfieType) Encode(e *jx.Encoder) {
+func (s PassportElementErrorSelfieType) Encode(e *jx.Writer) {
 	e.Str(string(s))
 }
 
@@ -12686,20 +17109,39 @@ func (s *PassportElementErrorSelfieType) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s PassportElementErrorTranslationFile) Encode(e *jx.Encoder) {
+func (s PassportElementErrorTranslationFile) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+	{
+		if !first {
+			e.Comma()
+		}
+		first = false
 
-	e.FieldStart("source")
-	e.Str(s.Source)
+		e.RawStr("\"source\"" + ":")
+		e.Str(s.Source)
+	}
+	{
+		e.Comma()
 
-	e.FieldStart("type")
-	s.Type.Encode(e)
+		e.RawStr("\"type\"" + ":")
+		s.Type.Encode(e)
+	}
+	{
+		e.Comma()
 
-	e.FieldStart("file_hash")
-	e.Str(s.FileHash)
+		e.RawStr("\"file_hash\"" + ":")
+		e.Str(s.FileHash)
+	}
+	{
+		e.Comma()
 
-	e.FieldStart("message")
-	e.Str(s.Message)
+		e.RawStr("\"message\"" + ":")
+		e.Str(s.Message)
+	}
 	e.ObjEnd()
 }
 
@@ -12740,7 +17182,7 @@ func (s *PassportElementErrorTranslationFile) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes PassportElementErrorTranslationFileType as json.
-func (s PassportElementErrorTranslationFileType) Encode(e *jx.Encoder) {
+func (s PassportElementErrorTranslationFileType) Encode(e *jx.Writer) {
 	e.Str(string(s))
 }
 
@@ -12781,24 +17223,51 @@ func (s *PassportElementErrorTranslationFileType) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s PassportElementErrorTranslationFiles) Encode(e *jx.Encoder) {
+func (s PassportElementErrorTranslationFiles) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+	{
+		if !first {
+			e.Comma()
+		}
+		first = false
 
-	e.FieldStart("source")
-	e.Str(s.Source)
-
-	e.FieldStart("type")
-	s.Type.Encode(e)
-
-	e.FieldStart("file_hashes")
-	e.ArrStart()
-	for _, elem := range s.FileHashes {
-		e.Str(elem)
+		e.RawStr("\"source\"" + ":")
+		e.Str(s.Source)
 	}
-	e.ArrEnd()
+	{
+		e.Comma()
 
-	e.FieldStart("message")
-	e.Str(s.Message)
+		e.RawStr("\"type\"" + ":")
+		s.Type.Encode(e)
+	}
+	{
+		e.Comma()
+
+		e.RawStr("\"file_hashes\"" + ":")
+		e.ArrStart()
+		if len(s.FileHashes) >= 1 {
+			// Encode first element without comma.
+			{
+				elem := s.FileHashes[0]
+				e.Str(elem)
+			}
+			for _, elem := range s.FileHashes[1:] {
+				e.Comma()
+				e.Str(elem)
+			}
+		}
+		e.ArrEnd()
+	}
+	{
+		e.Comma()
+
+		e.RawStr("\"message\"" + ":")
+		e.Str(s.Message)
+	}
 	e.ObjEnd()
 }
 
@@ -12847,7 +17316,7 @@ func (s *PassportElementErrorTranslationFiles) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes PassportElementErrorTranslationFilesType as json.
-func (s PassportElementErrorTranslationFilesType) Encode(e *jx.Encoder) {
+func (s PassportElementErrorTranslationFilesType) Encode(e *jx.Writer) {
 	e.Str(string(s))
 }
 
@@ -12888,20 +17357,39 @@ func (s *PassportElementErrorTranslationFilesType) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s PassportElementErrorUnspecified) Encode(e *jx.Encoder) {
+func (s PassportElementErrorUnspecified) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+	{
+		if !first {
+			e.Comma()
+		}
+		first = false
 
-	e.FieldStart("source")
-	e.Str(s.Source)
+		e.RawStr("\"source\"" + ":")
+		e.Str(s.Source)
+	}
+	{
+		e.Comma()
 
-	e.FieldStart("type")
-	e.Str(s.Type)
+		e.RawStr("\"type\"" + ":")
+		e.Str(s.Type)
+	}
+	{
+		e.Comma()
 
-	e.FieldStart("element_hash")
-	e.Str(s.ElementHash)
+		e.RawStr("\"element_hash\"" + ":")
+		e.Str(s.ElementHash)
+	}
+	{
+		e.Comma()
 
-	e.FieldStart("message")
-	e.Str(s.Message)
+		e.RawStr("\"message\"" + ":")
+		e.Str(s.Message)
+	}
 	e.ObjEnd()
 }
 
@@ -12944,20 +17432,39 @@ func (s *PassportElementErrorUnspecified) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s PassportFile) Encode(e *jx.Encoder) {
+func (s PassportFile) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+	{
+		if !first {
+			e.Comma()
+		}
+		first = false
 
-	e.FieldStart("file_id")
-	e.Str(s.FileID)
+		e.RawStr("\"file_id\"" + ":")
+		e.Str(s.FileID)
+	}
+	{
+		e.Comma()
 
-	e.FieldStart("file_unique_id")
-	e.Str(s.FileUniqueID)
+		e.RawStr("\"file_unique_id\"" + ":")
+		e.Str(s.FileUniqueID)
+	}
+	{
+		e.Comma()
 
-	e.FieldStart("file_size")
-	e.Int(s.FileSize)
+		e.RawStr("\"file_size\"" + ":")
+		e.Int(s.FileSize)
+	}
+	{
+		e.Comma()
 
-	e.FieldStart("file_date")
-	e.Int(s.FileDate)
+		e.RawStr("\"file_date\"" + ":")
+		e.Int(s.FileDate)
+	}
 	e.ObjEnd()
 }
 
@@ -13000,23 +17507,47 @@ func (s *PassportFile) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s PhotoSize) Encode(e *jx.Encoder) {
+func (s PhotoSize) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+	{
+		if !first {
+			e.Comma()
+		}
+		first = false
 
-	e.FieldStart("file_id")
-	e.Str(s.FileID)
+		e.RawStr("\"file_id\"" + ":")
+		e.Str(s.FileID)
+	}
+	{
+		e.Comma()
 
-	e.FieldStart("file_unique_id")
-	e.Str(s.FileUniqueID)
+		e.RawStr("\"file_unique_id\"" + ":")
+		e.Str(s.FileUniqueID)
+	}
+	{
+		e.Comma()
 
-	e.FieldStart("width")
-	e.Int(s.Width)
+		e.RawStr("\"width\"" + ":")
+		e.Int(s.Width)
+	}
+	{
+		e.Comma()
 
-	e.FieldStart("height")
-	e.Int(s.Height)
-	if s.FileSize.Set {
-		e.FieldStart("file_size")
-		s.FileSize.Encode(e)
+		e.RawStr("\"height\"" + ":")
+		e.Int(s.Height)
+	}
+	{
+		if s.FileSize.Set {
+			e.Comma()
+		}
+		if s.FileSize.Set {
+			e.RawStr("\"file_size\"" + ":")
+			s.FileSize.Encode(e)
+		}
 	}
 	e.ObjEnd()
 }
@@ -13065,17 +17596,35 @@ func (s *PhotoSize) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s PinChatMessage) Encode(e *jx.Encoder) {
+func (s PinChatMessage) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+	{
+		if !first {
+			e.Comma()
+		}
+		first = false
 
-	e.FieldStart("chat_id")
-	s.ChatID.Encode(e)
+		e.RawStr("\"chat_id\"" + ":")
+		s.ChatID.Encode(e)
+	}
+	{
+		e.Comma()
 
-	e.FieldStart("message_id")
-	e.Int(s.MessageID)
-	if s.DisableNotification.Set {
-		e.FieldStart("disable_notification")
-		s.DisableNotification.Encode(e)
+		e.RawStr("\"message_id\"" + ":")
+		e.Int(s.MessageID)
+	}
+	{
+		if s.DisableNotification.Set {
+			e.Comma()
+		}
+		if s.DisableNotification.Set {
+			e.RawStr("\"disable_notification\"" + ":")
+			s.DisableNotification.Encode(e)
+		}
 	}
 	e.ObjEnd()
 }
@@ -13110,59 +17659,131 @@ func (s *PinChatMessage) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s Poll) Encode(e *jx.Encoder) {
+func (s Poll) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+	{
+		if !first {
+			e.Comma()
+		}
+		first = false
 
-	e.FieldStart("id")
-	e.Str(s.ID)
-
-	e.FieldStart("question")
-	e.Str(s.Question)
-
-	e.FieldStart("options")
-	e.ArrStart()
-	for _, elem := range s.Options {
-		elem.Encode(e)
+		e.RawStr("\"id\"" + ":")
+		e.Str(s.ID)
 	}
-	e.ArrEnd()
+	{
+		e.Comma()
 
-	e.FieldStart("total_voter_count")
-	e.Int(s.TotalVoterCount)
-
-	e.FieldStart("is_closed")
-	e.Bool(s.IsClosed)
-
-	e.FieldStart("is_anonymous")
-	e.Bool(s.IsAnonymous)
-
-	e.FieldStart("type")
-	s.Type.Encode(e)
-
-	e.FieldStart("allows_multiple_answers")
-	e.Bool(s.AllowsMultipleAnswers)
-	if s.CorrectOptionID.Set {
-		e.FieldStart("correct_option_id")
-		s.CorrectOptionID.Encode(e)
+		e.RawStr("\"question\"" + ":")
+		e.Str(s.Question)
 	}
-	if s.Explanation.Set {
-		e.FieldStart("explanation")
-		s.Explanation.Encode(e)
-	}
-	if s.ExplanationEntities != nil {
-		e.FieldStart("explanation_entities")
+	{
+		e.Comma()
+
+		e.RawStr("\"options\"" + ":")
 		e.ArrStart()
-		for _, elem := range s.ExplanationEntities {
-			elem.Encode(e)
+		if len(s.Options) >= 1 {
+			// Encode first element without comma.
+			{
+				elem := s.Options[0]
+				elem.Encode(e)
+			}
+			for _, elem := range s.Options[1:] {
+				e.Comma()
+				elem.Encode(e)
+			}
 		}
 		e.ArrEnd()
 	}
-	if s.OpenPeriod.Set {
-		e.FieldStart("open_period")
-		s.OpenPeriod.Encode(e)
+	{
+		e.Comma()
+
+		e.RawStr("\"total_voter_count\"" + ":")
+		e.Int(s.TotalVoterCount)
 	}
-	if s.CloseDate.Set {
-		e.FieldStart("close_date")
-		s.CloseDate.Encode(e)
+	{
+		e.Comma()
+
+		e.RawStr("\"is_closed\"" + ":")
+		e.Bool(s.IsClosed)
+	}
+	{
+		e.Comma()
+
+		e.RawStr("\"is_anonymous\"" + ":")
+		e.Bool(s.IsAnonymous)
+	}
+	{
+		e.Comma()
+
+		e.RawStr("\"type\"" + ":")
+		s.Type.Encode(e)
+	}
+	{
+		e.Comma()
+
+		e.RawStr("\"allows_multiple_answers\"" + ":")
+		e.Bool(s.AllowsMultipleAnswers)
+	}
+	{
+		if s.CorrectOptionID.Set {
+			e.Comma()
+		}
+		if s.CorrectOptionID.Set {
+			e.RawStr("\"correct_option_id\"" + ":")
+			s.CorrectOptionID.Encode(e)
+		}
+	}
+	{
+		if s.Explanation.Set {
+			e.Comma()
+		}
+		if s.Explanation.Set {
+			e.RawStr("\"explanation\"" + ":")
+			s.Explanation.Encode(e)
+		}
+	}
+	{
+		if s.ExplanationEntities != nil {
+			e.Comma()
+		}
+		if s.ExplanationEntities != nil {
+			e.RawStr("\"explanation_entities\"" + ":")
+			e.ArrStart()
+			if len(s.ExplanationEntities) >= 1 {
+				// Encode first element without comma.
+				{
+					elem := s.ExplanationEntities[0]
+					elem.Encode(e)
+				}
+				for _, elem := range s.ExplanationEntities[1:] {
+					e.Comma()
+					elem.Encode(e)
+				}
+			}
+			e.ArrEnd()
+		}
+	}
+	{
+		if s.OpenPeriod.Set {
+			e.Comma()
+		}
+		if s.OpenPeriod.Set {
+			e.RawStr("\"open_period\"" + ":")
+			s.OpenPeriod.Encode(e)
+		}
+	}
+	{
+		if s.CloseDate.Set {
+			e.Comma()
+		}
+		if s.CloseDate.Set {
+			e.RawStr("\"close_date\"" + ":")
+			s.CloseDate.Encode(e)
+		}
 	}
 	e.ObjEnd()
 }
@@ -13266,21 +17887,45 @@ func (s *Poll) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s PollAnswer) Encode(e *jx.Encoder) {
+func (s PollAnswer) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+	{
+		if !first {
+			e.Comma()
+		}
+		first = false
 
-	e.FieldStart("poll_id")
-	e.Str(s.PollID)
-
-	e.FieldStart("user")
-	s.User.Encode(e)
-
-	e.FieldStart("option_ids")
-	e.ArrStart()
-	for _, elem := range s.OptionIds {
-		e.Int(elem)
+		e.RawStr("\"poll_id\"" + ":")
+		e.Str(s.PollID)
 	}
-	e.ArrEnd()
+	{
+		e.Comma()
+
+		e.RawStr("\"user\"" + ":")
+		s.User.Encode(e)
+	}
+	{
+		e.Comma()
+
+		e.RawStr("\"option_ids\"" + ":")
+		e.ArrStart()
+		if len(s.OptionIds) >= 1 {
+			// Encode first element without comma.
+			{
+				elem := s.OptionIds[0]
+				e.Int(elem)
+			}
+			for _, elem := range s.OptionIds[1:] {
+				e.Comma()
+				e.Int(elem)
+			}
+		}
+		e.ArrEnd()
+	}
 	e.ObjEnd()
 }
 
@@ -13323,14 +17968,27 @@ func (s *PollAnswer) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s PollOption) Encode(e *jx.Encoder) {
+func (s PollOption) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+	{
+		if !first {
+			e.Comma()
+		}
+		first = false
 
-	e.FieldStart("text")
-	e.Str(s.Text)
+		e.RawStr("\"text\"" + ":")
+		e.Str(s.Text)
+	}
+	{
+		e.Comma()
 
-	e.FieldStart("voter_count")
-	e.Int(s.VoterCount)
+		e.RawStr("\"voter_count\"" + ":")
+		e.Int(s.VoterCount)
+	}
 	e.ObjEnd()
 }
 
@@ -13361,7 +18019,7 @@ func (s *PollOption) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes PollType as json.
-func (s PollType) Encode(e *jx.Encoder) {
+func (s PollType) Encode(e *jx.Writer) {
 	e.Str(string(s))
 }
 
@@ -13388,30 +18046,62 @@ func (s *PollType) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s PreCheckoutQuery) Encode(e *jx.Encoder) {
+func (s PreCheckoutQuery) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+	{
+		if !first {
+			e.Comma()
+		}
+		first = false
 
-	e.FieldStart("id")
-	e.Str(s.ID)
-
-	e.FieldStart("from")
-	s.From.Encode(e)
-
-	e.FieldStart("currency")
-	e.Str(s.Currency)
-
-	e.FieldStart("total_amount")
-	e.Int(s.TotalAmount)
-
-	e.FieldStart("invoice_payload")
-	e.Str(s.InvoicePayload)
-	if s.ShippingOptionID.Set {
-		e.FieldStart("shipping_option_id")
-		s.ShippingOptionID.Encode(e)
+		e.RawStr("\"id\"" + ":")
+		e.Str(s.ID)
 	}
-	if s.OrderInfo.Set {
-		e.FieldStart("order_info")
-		s.OrderInfo.Encode(e)
+	{
+		e.Comma()
+
+		e.RawStr("\"from\"" + ":")
+		s.From.Encode(e)
+	}
+	{
+		e.Comma()
+
+		e.RawStr("\"currency\"" + ":")
+		e.Str(s.Currency)
+	}
+	{
+		e.Comma()
+
+		e.RawStr("\"total_amount\"" + ":")
+		e.Int(s.TotalAmount)
+	}
+	{
+		e.Comma()
+
+		e.RawStr("\"invoice_payload\"" + ":")
+		e.Str(s.InvoicePayload)
+	}
+	{
+		if s.ShippingOptionID.Set {
+			e.Comma()
+		}
+		if s.ShippingOptionID.Set {
+			e.RawStr("\"shipping_option_id\"" + ":")
+			s.ShippingOptionID.Encode(e)
+		}
+	}
+	{
+		if s.OrderInfo.Set {
+			e.Comma()
+		}
+		if s.OrderInfo.Set {
+			e.RawStr("\"order_info\"" + ":")
+			s.OrderInfo.Encode(e)
+		}
 	}
 	e.ObjEnd()
 }
@@ -13469,57 +18159,125 @@ func (s *PreCheckoutQuery) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s PromoteChatMember) Encode(e *jx.Encoder) {
+func (s PromoteChatMember) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+	{
+		if !first {
+			e.Comma()
+		}
+		first = false
 
-	e.FieldStart("chat_id")
-	s.ChatID.Encode(e)
+		e.RawStr("\"chat_id\"" + ":")
+		s.ChatID.Encode(e)
+	}
+	{
+		e.Comma()
 
-	e.FieldStart("user_id")
-	e.Int64(s.UserID)
-	if s.IsAnonymous.Set {
-		e.FieldStart("is_anonymous")
-		s.IsAnonymous.Encode(e)
+		e.RawStr("\"user_id\"" + ":")
+		e.Int64(s.UserID)
 	}
-	if s.CanManageChat.Set {
-		e.FieldStart("can_manage_chat")
-		s.CanManageChat.Encode(e)
+	{
+		if s.IsAnonymous.Set {
+			e.Comma()
+		}
+		if s.IsAnonymous.Set {
+			e.RawStr("\"is_anonymous\"" + ":")
+			s.IsAnonymous.Encode(e)
+		}
 	}
-	if s.CanPostMessages.Set {
-		e.FieldStart("can_post_messages")
-		s.CanPostMessages.Encode(e)
+	{
+		if s.CanManageChat.Set {
+			e.Comma()
+		}
+		if s.CanManageChat.Set {
+			e.RawStr("\"can_manage_chat\"" + ":")
+			s.CanManageChat.Encode(e)
+		}
 	}
-	if s.CanEditMessages.Set {
-		e.FieldStart("can_edit_messages")
-		s.CanEditMessages.Encode(e)
+	{
+		if s.CanPostMessages.Set {
+			e.Comma()
+		}
+		if s.CanPostMessages.Set {
+			e.RawStr("\"can_post_messages\"" + ":")
+			s.CanPostMessages.Encode(e)
+		}
 	}
-	if s.CanDeleteMessages.Set {
-		e.FieldStart("can_delete_messages")
-		s.CanDeleteMessages.Encode(e)
+	{
+		if s.CanEditMessages.Set {
+			e.Comma()
+		}
+		if s.CanEditMessages.Set {
+			e.RawStr("\"can_edit_messages\"" + ":")
+			s.CanEditMessages.Encode(e)
+		}
 	}
-	if s.CanManageVoiceChats.Set {
-		e.FieldStart("can_manage_voice_chats")
-		s.CanManageVoiceChats.Encode(e)
+	{
+		if s.CanDeleteMessages.Set {
+			e.Comma()
+		}
+		if s.CanDeleteMessages.Set {
+			e.RawStr("\"can_delete_messages\"" + ":")
+			s.CanDeleteMessages.Encode(e)
+		}
 	}
-	if s.CanRestrictMembers.Set {
-		e.FieldStart("can_restrict_members")
-		s.CanRestrictMembers.Encode(e)
+	{
+		if s.CanManageVoiceChats.Set {
+			e.Comma()
+		}
+		if s.CanManageVoiceChats.Set {
+			e.RawStr("\"can_manage_voice_chats\"" + ":")
+			s.CanManageVoiceChats.Encode(e)
+		}
 	}
-	if s.CanPromoteMembers.Set {
-		e.FieldStart("can_promote_members")
-		s.CanPromoteMembers.Encode(e)
+	{
+		if s.CanRestrictMembers.Set {
+			e.Comma()
+		}
+		if s.CanRestrictMembers.Set {
+			e.RawStr("\"can_restrict_members\"" + ":")
+			s.CanRestrictMembers.Encode(e)
+		}
 	}
-	if s.CanChangeInfo.Set {
-		e.FieldStart("can_change_info")
-		s.CanChangeInfo.Encode(e)
+	{
+		if s.CanPromoteMembers.Set {
+			e.Comma()
+		}
+		if s.CanPromoteMembers.Set {
+			e.RawStr("\"can_promote_members\"" + ":")
+			s.CanPromoteMembers.Encode(e)
+		}
 	}
-	if s.CanInviteUsers.Set {
-		e.FieldStart("can_invite_users")
-		s.CanInviteUsers.Encode(e)
+	{
+		if s.CanChangeInfo.Set {
+			e.Comma()
+		}
+		if s.CanChangeInfo.Set {
+			e.RawStr("\"can_change_info\"" + ":")
+			s.CanChangeInfo.Encode(e)
+		}
 	}
-	if s.CanPinMessages.Set {
-		e.FieldStart("can_pin_messages")
-		s.CanPinMessages.Encode(e)
+	{
+		if s.CanInviteUsers.Set {
+			e.Comma()
+		}
+		if s.CanInviteUsers.Set {
+			e.RawStr("\"can_invite_users\"" + ":")
+			s.CanInviteUsers.Encode(e)
+		}
+	}
+	{
+		if s.CanPinMessages.Set {
+			e.Comma()
+		}
+		if s.CanPinMessages.Set {
+			e.RawStr("\"can_pin_messages\"" + ":")
+			s.CanPinMessages.Encode(e)
+		}
 	}
 	e.ObjEnd()
 }
@@ -13604,17 +18362,33 @@ func (s *PromoteChatMember) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s ProximityAlertTriggered) Encode(e *jx.Encoder) {
+func (s ProximityAlertTriggered) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+	{
+		if !first {
+			e.Comma()
+		}
+		first = false
 
-	e.FieldStart("traveler")
-	s.Traveler.Encode(e)
+		e.RawStr("\"traveler\"" + ":")
+		s.Traveler.Encode(e)
+	}
+	{
+		e.Comma()
 
-	e.FieldStart("watcher")
-	s.Watcher.Encode(e)
+		e.RawStr("\"watcher\"" + ":")
+		s.Watcher.Encode(e)
+	}
+	{
+		e.Comma()
 
-	e.FieldStart("distance")
-	e.Int(s.Distance)
+		e.RawStr("\"distance\"" + ":")
+		e.Int(s.Distance)
+	}
 	e.ObjEnd()
 }
 
@@ -13647,34 +18421,92 @@ func (s *ProximityAlertTriggered) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s ReplyKeyboardMarkup) Encode(e *jx.Encoder) {
+func (s ReplyKeyboardMarkup) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+	{
+		if !first {
+			e.Comma()
+		}
+		first = false
 
-	e.FieldStart("keyboard")
-	e.ArrStart()
-	for _, elem := range s.Keyboard {
+		e.RawStr("\"keyboard\"" + ":")
 		e.ArrStart()
-		for _, elem := range elem {
-			elem.Encode(e)
+		if len(s.Keyboard) >= 1 {
+			// Encode first element without comma.
+			{
+				elem := s.Keyboard[0]
+				e.ArrStart()
+				if len(elem) >= 1 {
+					// Encode first element without comma.
+					{
+						elem := elem[0]
+						elem.Encode(e)
+					}
+					for _, elem := range elem[1:] {
+						e.Comma()
+						elem.Encode(e)
+					}
+				}
+				e.ArrEnd()
+			}
+			for _, elem := range s.Keyboard[1:] {
+				e.Comma()
+				e.ArrStart()
+				if len(elem) >= 1 {
+					// Encode first element without comma.
+					{
+						elem := elem[0]
+						elem.Encode(e)
+					}
+					for _, elem := range elem[1:] {
+						e.Comma()
+						elem.Encode(e)
+					}
+				}
+				e.ArrEnd()
+			}
 		}
 		e.ArrEnd()
 	}
-	e.ArrEnd()
-	if s.ResizeKeyboard.Set {
-		e.FieldStart("resize_keyboard")
-		s.ResizeKeyboard.Encode(e)
+	{
+		if s.ResizeKeyboard.Set {
+			e.Comma()
+		}
+		if s.ResizeKeyboard.Set {
+			e.RawStr("\"resize_keyboard\"" + ":")
+			s.ResizeKeyboard.Encode(e)
+		}
 	}
-	if s.OneTimeKeyboard.Set {
-		e.FieldStart("one_time_keyboard")
-		s.OneTimeKeyboard.Encode(e)
+	{
+		if s.OneTimeKeyboard.Set {
+			e.Comma()
+		}
+		if s.OneTimeKeyboard.Set {
+			e.RawStr("\"one_time_keyboard\"" + ":")
+			s.OneTimeKeyboard.Encode(e)
+		}
 	}
-	if s.InputFieldPlaceholder.Set {
-		e.FieldStart("input_field_placeholder")
-		s.InputFieldPlaceholder.Encode(e)
+	{
+		if s.InputFieldPlaceholder.Set {
+			e.Comma()
+		}
+		if s.InputFieldPlaceholder.Set {
+			e.RawStr("\"input_field_placeholder\"" + ":")
+			s.InputFieldPlaceholder.Encode(e)
+		}
 	}
-	if s.Selective.Set {
-		e.FieldStart("selective")
-		s.Selective.Encode(e)
+	{
+		if s.Selective.Set {
+			e.Comma()
+		}
+		if s.Selective.Set {
+			e.RawStr("\"selective\"" + ":")
+			s.Selective.Encode(e)
+		}
 	}
 	e.ObjEnd()
 }
@@ -13734,14 +18566,29 @@ func (s *ReplyKeyboardMarkup) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s ReplyKeyboardRemove) Encode(e *jx.Encoder) {
+func (s ReplyKeyboardRemove) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+	{
+		if !first {
+			e.Comma()
+		}
+		first = false
 
-	e.FieldStart("remove_keyboard")
-	e.Bool(s.RemoveKeyboard)
-	if s.Selective.Set {
-		e.FieldStart("selective")
-		s.Selective.Encode(e)
+		e.RawStr("\"remove_keyboard\"" + ":")
+		e.Bool(s.RemoveKeyboard)
+	}
+	{
+		if s.Selective.Set {
+			e.Comma()
+		}
+		if s.Selective.Set {
+			e.RawStr("\"selective\"" + ":")
+			s.Selective.Encode(e)
+		}
 	}
 	e.ObjEnd()
 }
@@ -13772,15 +18619,35 @@ func (s *ReplyKeyboardRemove) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s Response) Encode(e *jx.Encoder) {
+func (s Response) Encode(e *jx.Writer) {
 	e.ObjStart()
-	if s.MigrateToChatID.Set {
-		e.FieldStart("migrate_to_chat_id")
-		s.MigrateToChatID.Encode(e)
+	var (
+		first = true
+		_     = first
+	)
+	{
+		if s.MigrateToChatID.Set {
+			if !first {
+				e.Comma()
+			}
+			first = false
+		}
+		if s.MigrateToChatID.Set {
+			e.RawStr("\"migrate_to_chat_id\"" + ":")
+			s.MigrateToChatID.Encode(e)
+		}
 	}
-	if s.RetryAfter.Set {
-		e.FieldStart("retry_after")
-		s.RetryAfter.Encode(e)
+	{
+		if s.RetryAfter.Set {
+			if !first {
+				e.Comma()
+			}
+			first = false
+		}
+		if s.RetryAfter.Set {
+			e.RawStr("\"retry_after\"" + ":")
+			s.RetryAfter.Encode(e)
+		}
 	}
 	e.ObjEnd()
 }
@@ -13810,20 +18677,41 @@ func (s *Response) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s RestrictChatMember) Encode(e *jx.Encoder) {
+func (s RestrictChatMember) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+	{
+		if !first {
+			e.Comma()
+		}
+		first = false
 
-	e.FieldStart("chat_id")
-	s.ChatID.Encode(e)
+		e.RawStr("\"chat_id\"" + ":")
+		s.ChatID.Encode(e)
+	}
+	{
+		e.Comma()
 
-	e.FieldStart("user_id")
-	e.Int64(s.UserID)
+		e.RawStr("\"user_id\"" + ":")
+		e.Int64(s.UserID)
+	}
+	{
+		e.Comma()
 
-	e.FieldStart("permissions")
-	s.Permissions.Encode(e)
-	if s.UntilDate.Set {
-		e.FieldStart("until_date")
-		s.UntilDate.Encode(e)
+		e.RawStr("\"permissions\"" + ":")
+		s.Permissions.Encode(e)
+	}
+	{
+		if s.UntilDate.Set {
+			e.Comma()
+		}
+		if s.UntilDate.Set {
+			e.RawStr("\"until_date\"" + ":")
+			s.UntilDate.Encode(e)
+		}
 	}
 	e.ObjEnd()
 }
@@ -13862,15 +18750,33 @@ func (s *RestrictChatMember) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s Result) Encode(e *jx.Encoder) {
+func (s Result) Encode(e *jx.Writer) {
 	e.ObjStart()
-	if s.Result.Set {
-		e.FieldStart("result")
-		s.Result.Encode(e)
+	var (
+		first = true
+		_     = first
+	)
+	{
+		if s.Result.Set {
+			if !first {
+				e.Comma()
+			}
+			first = false
+		}
+		if s.Result.Set {
+			e.RawStr("\"result\"" + ":")
+			s.Result.Encode(e)
+		}
 	}
+	{
+		if !first {
+			e.Comma()
+		}
+		first = false
 
-	e.FieldStart("ok")
-	e.Bool(s.Ok)
+		e.RawStr("\"ok\"" + ":")
+		e.Bool(s.Ok)
+	}
 	e.ObjEnd()
 }
 
@@ -13900,19 +18806,45 @@ func (s *Result) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s ResultArrayOfBotCommand) Encode(e *jx.Encoder) {
+func (s ResultArrayOfBotCommand) Encode(e *jx.Writer) {
 	e.ObjStart()
-	if s.Result != nil {
-		e.FieldStart("result")
-		e.ArrStart()
-		for _, elem := range s.Result {
-			elem.Encode(e)
+	var (
+		first = true
+		_     = first
+	)
+	{
+		if s.Result != nil {
+			if !first {
+				e.Comma()
+			}
+			first = false
 		}
-		e.ArrEnd()
+		if s.Result != nil {
+			e.RawStr("\"result\"" + ":")
+			e.ArrStart()
+			if len(s.Result) >= 1 {
+				// Encode first element without comma.
+				{
+					elem := s.Result[0]
+					elem.Encode(e)
+				}
+				for _, elem := range s.Result[1:] {
+					e.Comma()
+					elem.Encode(e)
+				}
+			}
+			e.ArrEnd()
+		}
 	}
+	{
+		if !first {
+			e.Comma()
+		}
+		first = false
 
-	e.FieldStart("ok")
-	e.Bool(s.Ok)
+		e.RawStr("\"ok\"" + ":")
+		e.Bool(s.Ok)
+	}
 	e.ObjEnd()
 }
 
@@ -13949,19 +18881,45 @@ func (s *ResultArrayOfBotCommand) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s ResultArrayOfChatMember) Encode(e *jx.Encoder) {
+func (s ResultArrayOfChatMember) Encode(e *jx.Writer) {
 	e.ObjStart()
-	if s.Result != nil {
-		e.FieldStart("result")
-		e.ArrStart()
-		for _, elem := range s.Result {
-			elem.Encode(e)
+	var (
+		first = true
+		_     = first
+	)
+	{
+		if s.Result != nil {
+			if !first {
+				e.Comma()
+			}
+			first = false
 		}
-		e.ArrEnd()
+		if s.Result != nil {
+			e.RawStr("\"result\"" + ":")
+			e.ArrStart()
+			if len(s.Result) >= 1 {
+				// Encode first element without comma.
+				{
+					elem := s.Result[0]
+					elem.Encode(e)
+				}
+				for _, elem := range s.Result[1:] {
+					e.Comma()
+					elem.Encode(e)
+				}
+			}
+			e.ArrEnd()
+		}
 	}
+	{
+		if !first {
+			e.Comma()
+		}
+		first = false
 
-	e.FieldStart("ok")
-	e.Bool(s.Ok)
+		e.RawStr("\"ok\"" + ":")
+		e.Bool(s.Ok)
+	}
 	e.ObjEnd()
 }
 
@@ -13998,19 +18956,45 @@ func (s *ResultArrayOfChatMember) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s ResultArrayOfGameHighScore) Encode(e *jx.Encoder) {
+func (s ResultArrayOfGameHighScore) Encode(e *jx.Writer) {
 	e.ObjStart()
-	if s.Result != nil {
-		e.FieldStart("result")
-		e.ArrStart()
-		for _, elem := range s.Result {
-			elem.Encode(e)
+	var (
+		first = true
+		_     = first
+	)
+	{
+		if s.Result != nil {
+			if !first {
+				e.Comma()
+			}
+			first = false
 		}
-		e.ArrEnd()
+		if s.Result != nil {
+			e.RawStr("\"result\"" + ":")
+			e.ArrStart()
+			if len(s.Result) >= 1 {
+				// Encode first element without comma.
+				{
+					elem := s.Result[0]
+					elem.Encode(e)
+				}
+				for _, elem := range s.Result[1:] {
+					e.Comma()
+					elem.Encode(e)
+				}
+			}
+			e.ArrEnd()
+		}
 	}
+	{
+		if !first {
+			e.Comma()
+		}
+		first = false
 
-	e.FieldStart("ok")
-	e.Bool(s.Ok)
+		e.RawStr("\"ok\"" + ":")
+		e.Bool(s.Ok)
+	}
 	e.ObjEnd()
 }
 
@@ -14047,19 +19031,45 @@ func (s *ResultArrayOfGameHighScore) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s ResultArrayOfMessage) Encode(e *jx.Encoder) {
+func (s ResultArrayOfMessage) Encode(e *jx.Writer) {
 	e.ObjStart()
-	if s.Result != nil {
-		e.FieldStart("result")
-		e.ArrStart()
-		for _, elem := range s.Result {
-			elem.Encode(e)
+	var (
+		first = true
+		_     = first
+	)
+	{
+		if s.Result != nil {
+			if !first {
+				e.Comma()
+			}
+			first = false
 		}
-		e.ArrEnd()
+		if s.Result != nil {
+			e.RawStr("\"result\"" + ":")
+			e.ArrStart()
+			if len(s.Result) >= 1 {
+				// Encode first element without comma.
+				{
+					elem := s.Result[0]
+					elem.Encode(e)
+				}
+				for _, elem := range s.Result[1:] {
+					e.Comma()
+					elem.Encode(e)
+				}
+			}
+			e.ArrEnd()
+		}
 	}
+	{
+		if !first {
+			e.Comma()
+		}
+		first = false
 
-	e.FieldStart("ok")
-	e.Bool(s.Ok)
+		e.RawStr("\"ok\"" + ":")
+		e.Bool(s.Ok)
+	}
 	e.ObjEnd()
 }
 
@@ -14096,19 +19106,45 @@ func (s *ResultArrayOfMessage) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s ResultArrayOfUpdate) Encode(e *jx.Encoder) {
+func (s ResultArrayOfUpdate) Encode(e *jx.Writer) {
 	e.ObjStart()
-	if s.Result != nil {
-		e.FieldStart("result")
-		e.ArrStart()
-		for _, elem := range s.Result {
-			elem.Encode(e)
+	var (
+		first = true
+		_     = first
+	)
+	{
+		if s.Result != nil {
+			if !first {
+				e.Comma()
+			}
+			first = false
 		}
-		e.ArrEnd()
+		if s.Result != nil {
+			e.RawStr("\"result\"" + ":")
+			e.ArrStart()
+			if len(s.Result) >= 1 {
+				// Encode first element without comma.
+				{
+					elem := s.Result[0]
+					elem.Encode(e)
+				}
+				for _, elem := range s.Result[1:] {
+					e.Comma()
+					elem.Encode(e)
+				}
+			}
+			e.ArrEnd()
+		}
 	}
+	{
+		if !first {
+			e.Comma()
+		}
+		first = false
 
-	e.FieldStart("ok")
-	e.Bool(s.Ok)
+		e.RawStr("\"ok\"" + ":")
+		e.Bool(s.Ok)
+	}
 	e.ObjEnd()
 }
 
@@ -14145,15 +19181,33 @@ func (s *ResultArrayOfUpdate) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s ResultChat) Encode(e *jx.Encoder) {
+func (s ResultChat) Encode(e *jx.Writer) {
 	e.ObjStart()
-	if s.Result.Set {
-		e.FieldStart("result")
-		s.Result.Encode(e)
+	var (
+		first = true
+		_     = first
+	)
+	{
+		if s.Result.Set {
+			if !first {
+				e.Comma()
+			}
+			first = false
+		}
+		if s.Result.Set {
+			e.RawStr("\"result\"" + ":")
+			s.Result.Encode(e)
+		}
 	}
+	{
+		if !first {
+			e.Comma()
+		}
+		first = false
 
-	e.FieldStart("ok")
-	e.Bool(s.Ok)
+		e.RawStr("\"ok\"" + ":")
+		e.Bool(s.Ok)
+	}
 	e.ObjEnd()
 }
 
@@ -14183,15 +19237,33 @@ func (s *ResultChat) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s ResultChatInviteLink) Encode(e *jx.Encoder) {
+func (s ResultChatInviteLink) Encode(e *jx.Writer) {
 	e.ObjStart()
-	if s.Result.Set {
-		e.FieldStart("result")
-		s.Result.Encode(e)
+	var (
+		first = true
+		_     = first
+	)
+	{
+		if s.Result.Set {
+			if !first {
+				e.Comma()
+			}
+			first = false
+		}
+		if s.Result.Set {
+			e.RawStr("\"result\"" + ":")
+			s.Result.Encode(e)
+		}
 	}
+	{
+		if !first {
+			e.Comma()
+		}
+		first = false
 
-	e.FieldStart("ok")
-	e.Bool(s.Ok)
+		e.RawStr("\"ok\"" + ":")
+		e.Bool(s.Ok)
+	}
 	e.ObjEnd()
 }
 
@@ -14221,15 +19293,33 @@ func (s *ResultChatInviteLink) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s ResultChatMember) Encode(e *jx.Encoder) {
+func (s ResultChatMember) Encode(e *jx.Writer) {
 	e.ObjStart()
-	if s.Result.Set {
-		e.FieldStart("result")
-		s.Result.Encode(e)
+	var (
+		first = true
+		_     = first
+	)
+	{
+		if s.Result.Set {
+			if !first {
+				e.Comma()
+			}
+			first = false
+		}
+		if s.Result.Set {
+			e.RawStr("\"result\"" + ":")
+			s.Result.Encode(e)
+		}
 	}
+	{
+		if !first {
+			e.Comma()
+		}
+		first = false
 
-	e.FieldStart("ok")
-	e.Bool(s.Ok)
+		e.RawStr("\"ok\"" + ":")
+		e.Bool(s.Ok)
+	}
 	e.ObjEnd()
 }
 
@@ -14259,15 +19349,33 @@ func (s *ResultChatMember) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s ResultFile) Encode(e *jx.Encoder) {
+func (s ResultFile) Encode(e *jx.Writer) {
 	e.ObjStart()
-	if s.Result.Set {
-		e.FieldStart("result")
-		s.Result.Encode(e)
+	var (
+		first = true
+		_     = first
+	)
+	{
+		if s.Result.Set {
+			if !first {
+				e.Comma()
+			}
+			first = false
+		}
+		if s.Result.Set {
+			e.RawStr("\"result\"" + ":")
+			s.Result.Encode(e)
+		}
 	}
+	{
+		if !first {
+			e.Comma()
+		}
+		first = false
 
-	e.FieldStart("ok")
-	e.Bool(s.Ok)
+		e.RawStr("\"ok\"" + ":")
+		e.Bool(s.Ok)
+	}
 	e.ObjEnd()
 }
 
@@ -14297,15 +19405,33 @@ func (s *ResultFile) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s ResultInt) Encode(e *jx.Encoder) {
+func (s ResultInt) Encode(e *jx.Writer) {
 	e.ObjStart()
-	if s.Result.Set {
-		e.FieldStart("result")
-		s.Result.Encode(e)
+	var (
+		first = true
+		_     = first
+	)
+	{
+		if s.Result.Set {
+			if !first {
+				e.Comma()
+			}
+			first = false
+		}
+		if s.Result.Set {
+			e.RawStr("\"result\"" + ":")
+			s.Result.Encode(e)
+		}
 	}
+	{
+		if !first {
+			e.Comma()
+		}
+		first = false
 
-	e.FieldStart("ok")
-	e.Bool(s.Ok)
+		e.RawStr("\"ok\"" + ":")
+		e.Bool(s.Ok)
+	}
 	e.ObjEnd()
 }
 
@@ -14335,15 +19461,33 @@ func (s *ResultInt) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s ResultMessage) Encode(e *jx.Encoder) {
+func (s ResultMessage) Encode(e *jx.Writer) {
 	e.ObjStart()
-	if s.Result.Set {
-		e.FieldStart("result")
-		s.Result.Encode(e)
+	var (
+		first = true
+		_     = first
+	)
+	{
+		if s.Result.Set {
+			if !first {
+				e.Comma()
+			}
+			first = false
+		}
+		if s.Result.Set {
+			e.RawStr("\"result\"" + ":")
+			s.Result.Encode(e)
+		}
 	}
+	{
+		if !first {
+			e.Comma()
+		}
+		first = false
 
-	e.FieldStart("ok")
-	e.Bool(s.Ok)
+		e.RawStr("\"ok\"" + ":")
+		e.Bool(s.Ok)
+	}
 	e.ObjEnd()
 }
 
@@ -14373,15 +19517,33 @@ func (s *ResultMessage) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s ResultMessageId) Encode(e *jx.Encoder) {
+func (s ResultMessageId) Encode(e *jx.Writer) {
 	e.ObjStart()
-	if s.Result.Set {
-		e.FieldStart("result")
-		s.Result.Encode(e)
+	var (
+		first = true
+		_     = first
+	)
+	{
+		if s.Result.Set {
+			if !first {
+				e.Comma()
+			}
+			first = false
+		}
+		if s.Result.Set {
+			e.RawStr("\"result\"" + ":")
+			s.Result.Encode(e)
+		}
 	}
+	{
+		if !first {
+			e.Comma()
+		}
+		first = false
 
-	e.FieldStart("ok")
-	e.Bool(s.Ok)
+		e.RawStr("\"ok\"" + ":")
+		e.Bool(s.Ok)
+	}
 	e.ObjEnd()
 }
 
@@ -14411,15 +19573,33 @@ func (s *ResultMessageId) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s ResultPoll) Encode(e *jx.Encoder) {
+func (s ResultPoll) Encode(e *jx.Writer) {
 	e.ObjStart()
-	if s.Result.Set {
-		e.FieldStart("result")
-		s.Result.Encode(e)
+	var (
+		first = true
+		_     = first
+	)
+	{
+		if s.Result.Set {
+			if !first {
+				e.Comma()
+			}
+			first = false
+		}
+		if s.Result.Set {
+			e.RawStr("\"result\"" + ":")
+			s.Result.Encode(e)
+		}
 	}
+	{
+		if !first {
+			e.Comma()
+		}
+		first = false
 
-	e.FieldStart("ok")
-	e.Bool(s.Ok)
+		e.RawStr("\"ok\"" + ":")
+		e.Bool(s.Ok)
+	}
 	e.ObjEnd()
 }
 
@@ -14449,15 +19629,33 @@ func (s *ResultPoll) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s ResultString) Encode(e *jx.Encoder) {
+func (s ResultString) Encode(e *jx.Writer) {
 	e.ObjStart()
-	if s.Result.Set {
-		e.FieldStart("result")
-		s.Result.Encode(e)
+	var (
+		first = true
+		_     = first
+	)
+	{
+		if s.Result.Set {
+			if !first {
+				e.Comma()
+			}
+			first = false
+		}
+		if s.Result.Set {
+			e.RawStr("\"result\"" + ":")
+			s.Result.Encode(e)
+		}
 	}
+	{
+		if !first {
+			e.Comma()
+		}
+		first = false
 
-	e.FieldStart("ok")
-	e.Bool(s.Ok)
+		e.RawStr("\"ok\"" + ":")
+		e.Bool(s.Ok)
+	}
 	e.ObjEnd()
 }
 
@@ -14487,15 +19685,33 @@ func (s *ResultString) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s ResultUser) Encode(e *jx.Encoder) {
+func (s ResultUser) Encode(e *jx.Writer) {
 	e.ObjStart()
-	if s.Result.Set {
-		e.FieldStart("result")
-		s.Result.Encode(e)
+	var (
+		first = true
+		_     = first
+	)
+	{
+		if s.Result.Set {
+			if !first {
+				e.Comma()
+			}
+			first = false
+		}
+		if s.Result.Set {
+			e.RawStr("\"result\"" + ":")
+			s.Result.Encode(e)
+		}
 	}
+	{
+		if !first {
+			e.Comma()
+		}
+		first = false
 
-	e.FieldStart("ok")
-	e.Bool(s.Ok)
+		e.RawStr("\"ok\"" + ":")
+		e.Bool(s.Ok)
+	}
 	e.ObjEnd()
 }
 
@@ -14525,15 +19741,33 @@ func (s *ResultUser) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s ResultUserProfilePhotos) Encode(e *jx.Encoder) {
+func (s ResultUserProfilePhotos) Encode(e *jx.Writer) {
 	e.ObjStart()
-	if s.Result.Set {
-		e.FieldStart("result")
-		s.Result.Encode(e)
+	var (
+		first = true
+		_     = first
+	)
+	{
+		if s.Result.Set {
+			if !first {
+				e.Comma()
+			}
+			first = false
+		}
+		if s.Result.Set {
+			e.RawStr("\"result\"" + ":")
+			s.Result.Encode(e)
+		}
 	}
+	{
+		if !first {
+			e.Comma()
+		}
+		first = false
 
-	e.FieldStart("ok")
-	e.Bool(s.Ok)
+		e.RawStr("\"ok\"" + ":")
+		e.Bool(s.Ok)
+	}
 	e.ObjEnd()
 }
 
@@ -14563,15 +19797,33 @@ func (s *ResultUserProfilePhotos) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s ResultWebhookInfo) Encode(e *jx.Encoder) {
+func (s ResultWebhookInfo) Encode(e *jx.Writer) {
 	e.ObjStart()
-	if s.Result.Set {
-		e.FieldStart("result")
-		s.Result.Encode(e)
+	var (
+		first = true
+		_     = first
+	)
+	{
+		if s.Result.Set {
+			if !first {
+				e.Comma()
+			}
+			first = false
+		}
+		if s.Result.Set {
+			e.RawStr("\"result\"" + ":")
+			s.Result.Encode(e)
+		}
 	}
+	{
+		if !first {
+			e.Comma()
+		}
+		first = false
 
-	e.FieldStart("ok")
-	e.Bool(s.Ok)
+		e.RawStr("\"ok\"" + ":")
+		e.Bool(s.Ok)
+	}
 	e.ObjEnd()
 }
 
@@ -14601,14 +19853,27 @@ func (s *ResultWebhookInfo) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s RevokeChatInviteLink) Encode(e *jx.Encoder) {
+func (s RevokeChatInviteLink) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+	{
+		if !first {
+			e.Comma()
+		}
+		first = false
 
-	e.FieldStart("chat_id")
-	s.ChatID.Encode(e)
+		e.RawStr("\"chat_id\"" + ":")
+		s.ChatID.Encode(e)
+	}
+	{
+		e.Comma()
 
-	e.FieldStart("invite_link")
-	e.Str(s.InviteLink)
+		e.RawStr("\"invite_link\"" + ":")
+		e.Str(s.InviteLink)
+	}
 	e.ObjEnd()
 }
 
@@ -14637,61 +19902,137 @@ func (s *RevokeChatInviteLink) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s SendAnimation) Encode(e *jx.Encoder) {
+func (s SendAnimation) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	e.FieldStart("chat_id")
-	s.ChatID.Encode(e)
-
-	e.FieldStart("animation")
-	e.Str(s.Animation)
-	if s.Duration.Set {
-		e.FieldStart("duration")
-		s.Duration.Encode(e)
-	}
-	if s.Width.Set {
-		e.FieldStart("width")
-		s.Width.Encode(e)
-	}
-	if s.Height.Set {
-		e.FieldStart("height")
-		s.Height.Encode(e)
-	}
-	if s.Thumb.Set {
-		e.FieldStart("thumb")
-		s.Thumb.Encode(e)
-	}
-	if s.Caption.Set {
-		e.FieldStart("caption")
-		s.Caption.Encode(e)
-	}
-	if s.ParseMode.Set {
-		e.FieldStart("parse_mode")
-		s.ParseMode.Encode(e)
-	}
-	if s.CaptionEntities != nil {
-		e.FieldStart("caption_entities")
-		e.ArrStart()
-		for _, elem := range s.CaptionEntities {
-			elem.Encode(e)
+	var (
+		first = true
+		_     = first
+	)
+	{
+		if !first {
+			e.Comma()
 		}
-		e.ArrEnd()
+		first = false
+
+		e.RawStr("\"chat_id\"" + ":")
+		s.ChatID.Encode(e)
 	}
-	if s.DisableNotification.Set {
-		e.FieldStart("disable_notification")
-		s.DisableNotification.Encode(e)
+	{
+		e.Comma()
+
+		e.RawStr("\"animation\"" + ":")
+		e.Str(s.Animation)
 	}
-	if s.ReplyToMessageID.Set {
-		e.FieldStart("reply_to_message_id")
-		s.ReplyToMessageID.Encode(e)
+	{
+		if s.Duration.Set {
+			e.Comma()
+		}
+		if s.Duration.Set {
+			e.RawStr("\"duration\"" + ":")
+			s.Duration.Encode(e)
+		}
 	}
-	if s.AllowSendingWithoutReply.Set {
-		e.FieldStart("allow_sending_without_reply")
-		s.AllowSendingWithoutReply.Encode(e)
+	{
+		if s.Width.Set {
+			e.Comma()
+		}
+		if s.Width.Set {
+			e.RawStr("\"width\"" + ":")
+			s.Width.Encode(e)
+		}
 	}
-	if s.ReplyMarkup.Set {
-		e.FieldStart("reply_markup")
-		s.ReplyMarkup.Encode(e)
+	{
+		if s.Height.Set {
+			e.Comma()
+		}
+		if s.Height.Set {
+			e.RawStr("\"height\"" + ":")
+			s.Height.Encode(e)
+		}
+	}
+	{
+		if s.Thumb.Set {
+			e.Comma()
+		}
+		if s.Thumb.Set {
+			e.RawStr("\"thumb\"" + ":")
+			s.Thumb.Encode(e)
+		}
+	}
+	{
+		if s.Caption.Set {
+			e.Comma()
+		}
+		if s.Caption.Set {
+			e.RawStr("\"caption\"" + ":")
+			s.Caption.Encode(e)
+		}
+	}
+	{
+		if s.ParseMode.Set {
+			e.Comma()
+		}
+		if s.ParseMode.Set {
+			e.RawStr("\"parse_mode\"" + ":")
+			s.ParseMode.Encode(e)
+		}
+	}
+	{
+		if s.CaptionEntities != nil {
+			e.Comma()
+		}
+		if s.CaptionEntities != nil {
+			e.RawStr("\"caption_entities\"" + ":")
+			e.ArrStart()
+			if len(s.CaptionEntities) >= 1 {
+				// Encode first element without comma.
+				{
+					elem := s.CaptionEntities[0]
+					elem.Encode(e)
+				}
+				for _, elem := range s.CaptionEntities[1:] {
+					e.Comma()
+					elem.Encode(e)
+				}
+			}
+			e.ArrEnd()
+		}
+	}
+	{
+		if s.DisableNotification.Set {
+			e.Comma()
+		}
+		if s.DisableNotification.Set {
+			e.RawStr("\"disable_notification\"" + ":")
+			s.DisableNotification.Encode(e)
+		}
+	}
+	{
+		if s.ReplyToMessageID.Set {
+			e.Comma()
+		}
+		if s.ReplyToMessageID.Set {
+			e.RawStr("\"reply_to_message_id\"" + ":")
+			s.ReplyToMessageID.Encode(e)
+		}
+	}
+	{
+		if s.AllowSendingWithoutReply.Set {
+			e.Comma()
+		}
+		if s.AllowSendingWithoutReply.Set {
+			e.RawStr("\"allow_sending_without_reply\"" + ":")
+			s.AllowSendingWithoutReply.Encode(e)
+		}
+	}
+	{
+		if s.ReplyMarkup.Set {
+			e.Comma()
+		}
+		if s.ReplyMarkup.Set {
+			e.RawStr("\"reply_markup\"" + ":")
+			s.ReplyMarkup.Encode(e)
+		}
 	}
 	e.ObjEnd()
 }
@@ -14783,7 +20124,7 @@ func (s *SendAnimation) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes SendAnimationReplyMarkup as json.
-func (s SendAnimationReplyMarkup) Encode(e *jx.Encoder) {
+func (s SendAnimationReplyMarkup) Encode(e *jx.Writer) {
 	switch s.Type {
 	case InlineKeyboardMarkupSendAnimationReplyMarkup:
 		s.InlineKeyboardMarkup.Encode(e)
@@ -14869,61 +20210,137 @@ func (s *SendAnimationReplyMarkup) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s SendAudio) Encode(e *jx.Encoder) {
+func (s SendAudio) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	e.FieldStart("chat_id")
-	s.ChatID.Encode(e)
-
-	e.FieldStart("audio")
-	e.Str(s.Audio)
-	if s.Caption.Set {
-		e.FieldStart("caption")
-		s.Caption.Encode(e)
-	}
-	if s.ParseMode.Set {
-		e.FieldStart("parse_mode")
-		s.ParseMode.Encode(e)
-	}
-	if s.CaptionEntities != nil {
-		e.FieldStart("caption_entities")
-		e.ArrStart()
-		for _, elem := range s.CaptionEntities {
-			elem.Encode(e)
+	var (
+		first = true
+		_     = first
+	)
+	{
+		if !first {
+			e.Comma()
 		}
-		e.ArrEnd()
+		first = false
+
+		e.RawStr("\"chat_id\"" + ":")
+		s.ChatID.Encode(e)
 	}
-	if s.Duration.Set {
-		e.FieldStart("duration")
-		s.Duration.Encode(e)
+	{
+		e.Comma()
+
+		e.RawStr("\"audio\"" + ":")
+		e.Str(s.Audio)
 	}
-	if s.Performer.Set {
-		e.FieldStart("performer")
-		s.Performer.Encode(e)
+	{
+		if s.Caption.Set {
+			e.Comma()
+		}
+		if s.Caption.Set {
+			e.RawStr("\"caption\"" + ":")
+			s.Caption.Encode(e)
+		}
 	}
-	if s.Title.Set {
-		e.FieldStart("title")
-		s.Title.Encode(e)
+	{
+		if s.ParseMode.Set {
+			e.Comma()
+		}
+		if s.ParseMode.Set {
+			e.RawStr("\"parse_mode\"" + ":")
+			s.ParseMode.Encode(e)
+		}
 	}
-	if s.Thumb.Set {
-		e.FieldStart("thumb")
-		s.Thumb.Encode(e)
+	{
+		if s.CaptionEntities != nil {
+			e.Comma()
+		}
+		if s.CaptionEntities != nil {
+			e.RawStr("\"caption_entities\"" + ":")
+			e.ArrStart()
+			if len(s.CaptionEntities) >= 1 {
+				// Encode first element without comma.
+				{
+					elem := s.CaptionEntities[0]
+					elem.Encode(e)
+				}
+				for _, elem := range s.CaptionEntities[1:] {
+					e.Comma()
+					elem.Encode(e)
+				}
+			}
+			e.ArrEnd()
+		}
 	}
-	if s.DisableNotification.Set {
-		e.FieldStart("disable_notification")
-		s.DisableNotification.Encode(e)
+	{
+		if s.Duration.Set {
+			e.Comma()
+		}
+		if s.Duration.Set {
+			e.RawStr("\"duration\"" + ":")
+			s.Duration.Encode(e)
+		}
 	}
-	if s.ReplyToMessageID.Set {
-		e.FieldStart("reply_to_message_id")
-		s.ReplyToMessageID.Encode(e)
+	{
+		if s.Performer.Set {
+			e.Comma()
+		}
+		if s.Performer.Set {
+			e.RawStr("\"performer\"" + ":")
+			s.Performer.Encode(e)
+		}
 	}
-	if s.AllowSendingWithoutReply.Set {
-		e.FieldStart("allow_sending_without_reply")
-		s.AllowSendingWithoutReply.Encode(e)
+	{
+		if s.Title.Set {
+			e.Comma()
+		}
+		if s.Title.Set {
+			e.RawStr("\"title\"" + ":")
+			s.Title.Encode(e)
+		}
 	}
-	if s.ReplyMarkup.Set {
-		e.FieldStart("reply_markup")
-		s.ReplyMarkup.Encode(e)
+	{
+		if s.Thumb.Set {
+			e.Comma()
+		}
+		if s.Thumb.Set {
+			e.RawStr("\"thumb\"" + ":")
+			s.Thumb.Encode(e)
+		}
+	}
+	{
+		if s.DisableNotification.Set {
+			e.Comma()
+		}
+		if s.DisableNotification.Set {
+			e.RawStr("\"disable_notification\"" + ":")
+			s.DisableNotification.Encode(e)
+		}
+	}
+	{
+		if s.ReplyToMessageID.Set {
+			e.Comma()
+		}
+		if s.ReplyToMessageID.Set {
+			e.RawStr("\"reply_to_message_id\"" + ":")
+			s.ReplyToMessageID.Encode(e)
+		}
+	}
+	{
+		if s.AllowSendingWithoutReply.Set {
+			e.Comma()
+		}
+		if s.AllowSendingWithoutReply.Set {
+			e.RawStr("\"allow_sending_without_reply\"" + ":")
+			s.AllowSendingWithoutReply.Encode(e)
+		}
+	}
+	{
+		if s.ReplyMarkup.Set {
+			e.Comma()
+		}
+		if s.ReplyMarkup.Set {
+			e.RawStr("\"reply_markup\"" + ":")
+			s.ReplyMarkup.Encode(e)
+		}
 	}
 	e.ObjEnd()
 }
@@ -15015,7 +20432,7 @@ func (s *SendAudio) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes SendAudioReplyMarkup as json.
-func (s SendAudioReplyMarkup) Encode(e *jx.Encoder) {
+func (s SendAudioReplyMarkup) Encode(e *jx.Writer) {
 	switch s.Type {
 	case InlineKeyboardMarkupSendAudioReplyMarkup:
 		s.InlineKeyboardMarkup.Encode(e)
@@ -15101,14 +20518,27 @@ func (s *SendAudioReplyMarkup) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s SendChatAction) Encode(e *jx.Encoder) {
+func (s SendChatAction) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+	{
+		if !first {
+			e.Comma()
+		}
+		first = false
 
-	e.FieldStart("chat_id")
-	s.ChatID.Encode(e)
+		e.RawStr("\"chat_id\"" + ":")
+		s.ChatID.Encode(e)
+	}
+	{
+		e.Comma()
 
-	e.FieldStart("action")
-	e.Str(s.Action)
+		e.RawStr("\"action\"" + ":")
+		e.Str(s.Action)
+	}
 	e.ObjEnd()
 }
 
@@ -15137,40 +20567,86 @@ func (s *SendChatAction) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s SendContact) Encode(e *jx.Encoder) {
+func (s SendContact) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+	{
+		if !first {
+			e.Comma()
+		}
+		first = false
 
-	e.FieldStart("chat_id")
-	s.ChatID.Encode(e)
+		e.RawStr("\"chat_id\"" + ":")
+		s.ChatID.Encode(e)
+	}
+	{
+		e.Comma()
 
-	e.FieldStart("phone_number")
-	e.Str(s.PhoneNumber)
+		e.RawStr("\"phone_number\"" + ":")
+		e.Str(s.PhoneNumber)
+	}
+	{
+		e.Comma()
 
-	e.FieldStart("first_name")
-	e.Str(s.FirstName)
-	if s.LastName.Set {
-		e.FieldStart("last_name")
-		s.LastName.Encode(e)
+		e.RawStr("\"first_name\"" + ":")
+		e.Str(s.FirstName)
 	}
-	if s.Vcard.Set {
-		e.FieldStart("vcard")
-		s.Vcard.Encode(e)
+	{
+		if s.LastName.Set {
+			e.Comma()
+		}
+		if s.LastName.Set {
+			e.RawStr("\"last_name\"" + ":")
+			s.LastName.Encode(e)
+		}
 	}
-	if s.DisableNotification.Set {
-		e.FieldStart("disable_notification")
-		s.DisableNotification.Encode(e)
+	{
+		if s.Vcard.Set {
+			e.Comma()
+		}
+		if s.Vcard.Set {
+			e.RawStr("\"vcard\"" + ":")
+			s.Vcard.Encode(e)
+		}
 	}
-	if s.ReplyToMessageID.Set {
-		e.FieldStart("reply_to_message_id")
-		s.ReplyToMessageID.Encode(e)
+	{
+		if s.DisableNotification.Set {
+			e.Comma()
+		}
+		if s.DisableNotification.Set {
+			e.RawStr("\"disable_notification\"" + ":")
+			s.DisableNotification.Encode(e)
+		}
 	}
-	if s.AllowSendingWithoutReply.Set {
-		e.FieldStart("allow_sending_without_reply")
-		s.AllowSendingWithoutReply.Encode(e)
+	{
+		if s.ReplyToMessageID.Set {
+			e.Comma()
+		}
+		if s.ReplyToMessageID.Set {
+			e.RawStr("\"reply_to_message_id\"" + ":")
+			s.ReplyToMessageID.Encode(e)
+		}
 	}
-	if s.ReplyMarkup.Set {
-		e.FieldStart("reply_markup")
-		s.ReplyMarkup.Encode(e)
+	{
+		if s.AllowSendingWithoutReply.Set {
+			e.Comma()
+		}
+		if s.AllowSendingWithoutReply.Set {
+			e.RawStr("\"allow_sending_without_reply\"" + ":")
+			s.AllowSendingWithoutReply.Encode(e)
+		}
+	}
+	{
+		if s.ReplyMarkup.Set {
+			e.Comma()
+		}
+		if s.ReplyMarkup.Set {
+			e.RawStr("\"reply_markup\"" + ":")
+			s.ReplyMarkup.Encode(e)
+		}
 	}
 	e.ObjEnd()
 }
@@ -15236,7 +20712,7 @@ func (s *SendContact) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes SendContactReplyMarkup as json.
-func (s SendContactReplyMarkup) Encode(e *jx.Encoder) {
+func (s SendContactReplyMarkup) Encode(e *jx.Writer) {
 	switch s.Type {
 	case InlineKeyboardMarkupSendContactReplyMarkup:
 		s.InlineKeyboardMarkup.Encode(e)
@@ -15322,30 +20798,65 @@ func (s *SendContactReplyMarkup) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s SendDice) Encode(e *jx.Encoder) {
+func (s SendDice) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+	{
+		if !first {
+			e.Comma()
+		}
+		first = false
 
-	e.FieldStart("chat_id")
-	s.ChatID.Encode(e)
-	if s.Emoji.Set {
-		e.FieldStart("emoji")
-		s.Emoji.Encode(e)
+		e.RawStr("\"chat_id\"" + ":")
+		s.ChatID.Encode(e)
 	}
-	if s.DisableNotification.Set {
-		e.FieldStart("disable_notification")
-		s.DisableNotification.Encode(e)
+	{
+		if s.Emoji.Set {
+			e.Comma()
+		}
+		if s.Emoji.Set {
+			e.RawStr("\"emoji\"" + ":")
+			s.Emoji.Encode(e)
+		}
 	}
-	if s.ReplyToMessageID.Set {
-		e.FieldStart("reply_to_message_id")
-		s.ReplyToMessageID.Encode(e)
+	{
+		if s.DisableNotification.Set {
+			e.Comma()
+		}
+		if s.DisableNotification.Set {
+			e.RawStr("\"disable_notification\"" + ":")
+			s.DisableNotification.Encode(e)
+		}
 	}
-	if s.AllowSendingWithoutReply.Set {
-		e.FieldStart("allow_sending_without_reply")
-		s.AllowSendingWithoutReply.Encode(e)
+	{
+		if s.ReplyToMessageID.Set {
+			e.Comma()
+		}
+		if s.ReplyToMessageID.Set {
+			e.RawStr("\"reply_to_message_id\"" + ":")
+			s.ReplyToMessageID.Encode(e)
+		}
 	}
-	if s.ReplyMarkup.Set {
-		e.FieldStart("reply_markup")
-		s.ReplyMarkup.Encode(e)
+	{
+		if s.AllowSendingWithoutReply.Set {
+			e.Comma()
+		}
+		if s.AllowSendingWithoutReply.Set {
+			e.RawStr("\"allow_sending_without_reply\"" + ":")
+			s.AllowSendingWithoutReply.Encode(e)
+		}
+	}
+	{
+		if s.ReplyMarkup.Set {
+			e.Comma()
+		}
+		if s.ReplyMarkup.Set {
+			e.RawStr("\"reply_markup\"" + ":")
+			s.ReplyMarkup.Encode(e)
+		}
 	}
 	e.ObjEnd()
 }
@@ -15394,7 +20905,7 @@ func (s *SendDice) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes SendDiceReplyMarkup as json.
-func (s SendDiceReplyMarkup) Encode(e *jx.Encoder) {
+func (s SendDiceReplyMarkup) Encode(e *jx.Writer) {
 	switch s.Type {
 	case InlineKeyboardMarkupSendDiceReplyMarkup:
 		s.InlineKeyboardMarkup.Encode(e)
@@ -15480,53 +20991,119 @@ func (s *SendDiceReplyMarkup) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s SendDocument) Encode(e *jx.Encoder) {
+func (s SendDocument) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	e.FieldStart("chat_id")
-	s.ChatID.Encode(e)
-
-	e.FieldStart("document")
-	e.Str(s.Document)
-	if s.Thumb.Set {
-		e.FieldStart("thumb")
-		s.Thumb.Encode(e)
-	}
-	if s.Caption.Set {
-		e.FieldStart("caption")
-		s.Caption.Encode(e)
-	}
-	if s.ParseMode.Set {
-		e.FieldStart("parse_mode")
-		s.ParseMode.Encode(e)
-	}
-	if s.CaptionEntities != nil {
-		e.FieldStart("caption_entities")
-		e.ArrStart()
-		for _, elem := range s.CaptionEntities {
-			elem.Encode(e)
+	var (
+		first = true
+		_     = first
+	)
+	{
+		if !first {
+			e.Comma()
 		}
-		e.ArrEnd()
+		first = false
+
+		e.RawStr("\"chat_id\"" + ":")
+		s.ChatID.Encode(e)
 	}
-	if s.DisableContentTypeDetection.Set {
-		e.FieldStart("disable_content_type_detection")
-		s.DisableContentTypeDetection.Encode(e)
+	{
+		e.Comma()
+
+		e.RawStr("\"document\"" + ":")
+		e.Str(s.Document)
 	}
-	if s.DisableNotification.Set {
-		e.FieldStart("disable_notification")
-		s.DisableNotification.Encode(e)
+	{
+		if s.Thumb.Set {
+			e.Comma()
+		}
+		if s.Thumb.Set {
+			e.RawStr("\"thumb\"" + ":")
+			s.Thumb.Encode(e)
+		}
 	}
-	if s.ReplyToMessageID.Set {
-		e.FieldStart("reply_to_message_id")
-		s.ReplyToMessageID.Encode(e)
+	{
+		if s.Caption.Set {
+			e.Comma()
+		}
+		if s.Caption.Set {
+			e.RawStr("\"caption\"" + ":")
+			s.Caption.Encode(e)
+		}
 	}
-	if s.AllowSendingWithoutReply.Set {
-		e.FieldStart("allow_sending_without_reply")
-		s.AllowSendingWithoutReply.Encode(e)
+	{
+		if s.ParseMode.Set {
+			e.Comma()
+		}
+		if s.ParseMode.Set {
+			e.RawStr("\"parse_mode\"" + ":")
+			s.ParseMode.Encode(e)
+		}
 	}
-	if s.ReplyMarkup.Set {
-		e.FieldStart("reply_markup")
-		s.ReplyMarkup.Encode(e)
+	{
+		if s.CaptionEntities != nil {
+			e.Comma()
+		}
+		if s.CaptionEntities != nil {
+			e.RawStr("\"caption_entities\"" + ":")
+			e.ArrStart()
+			if len(s.CaptionEntities) >= 1 {
+				// Encode first element without comma.
+				{
+					elem := s.CaptionEntities[0]
+					elem.Encode(e)
+				}
+				for _, elem := range s.CaptionEntities[1:] {
+					e.Comma()
+					elem.Encode(e)
+				}
+			}
+			e.ArrEnd()
+		}
+	}
+	{
+		if s.DisableContentTypeDetection.Set {
+			e.Comma()
+		}
+		if s.DisableContentTypeDetection.Set {
+			e.RawStr("\"disable_content_type_detection\"" + ":")
+			s.DisableContentTypeDetection.Encode(e)
+		}
+	}
+	{
+		if s.DisableNotification.Set {
+			e.Comma()
+		}
+		if s.DisableNotification.Set {
+			e.RawStr("\"disable_notification\"" + ":")
+			s.DisableNotification.Encode(e)
+		}
+	}
+	{
+		if s.ReplyToMessageID.Set {
+			e.Comma()
+		}
+		if s.ReplyToMessageID.Set {
+			e.RawStr("\"reply_to_message_id\"" + ":")
+			s.ReplyToMessageID.Encode(e)
+		}
+	}
+	{
+		if s.AllowSendingWithoutReply.Set {
+			e.Comma()
+		}
+		if s.AllowSendingWithoutReply.Set {
+			e.RawStr("\"allow_sending_without_reply\"" + ":")
+			s.AllowSendingWithoutReply.Encode(e)
+		}
+	}
+	{
+		if s.ReplyMarkup.Set {
+			e.Comma()
+		}
+		if s.ReplyMarkup.Set {
+			e.RawStr("\"reply_markup\"" + ":")
+			s.ReplyMarkup.Encode(e)
+		}
 	}
 	e.ObjEnd()
 }
@@ -15608,7 +21185,7 @@ func (s *SendDocument) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes SendDocumentReplyMarkup as json.
-func (s SendDocumentReplyMarkup) Encode(e *jx.Encoder) {
+func (s SendDocumentReplyMarkup) Encode(e *jx.Writer) {
 	switch s.Type {
 	case InlineKeyboardMarkupSendDocumentReplyMarkup:
 		s.InlineKeyboardMarkup.Encode(e)
@@ -15694,29 +21271,62 @@ func (s *SendDocumentReplyMarkup) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s SendGame) Encode(e *jx.Encoder) {
+func (s SendGame) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+	{
+		if !first {
+			e.Comma()
+		}
+		first = false
 
-	e.FieldStart("chat_id")
-	e.Int64(s.ChatID)
+		e.RawStr("\"chat_id\"" + ":")
+		e.Int64(s.ChatID)
+	}
+	{
+		e.Comma()
 
-	e.FieldStart("game_short_name")
-	e.Str(s.GameShortName)
-	if s.DisableNotification.Set {
-		e.FieldStart("disable_notification")
-		s.DisableNotification.Encode(e)
+		e.RawStr("\"game_short_name\"" + ":")
+		e.Str(s.GameShortName)
 	}
-	if s.ReplyToMessageID.Set {
-		e.FieldStart("reply_to_message_id")
-		s.ReplyToMessageID.Encode(e)
+	{
+		if s.DisableNotification.Set {
+			e.Comma()
+		}
+		if s.DisableNotification.Set {
+			e.RawStr("\"disable_notification\"" + ":")
+			s.DisableNotification.Encode(e)
+		}
 	}
-	if s.AllowSendingWithoutReply.Set {
-		e.FieldStart("allow_sending_without_reply")
-		s.AllowSendingWithoutReply.Encode(e)
+	{
+		if s.ReplyToMessageID.Set {
+			e.Comma()
+		}
+		if s.ReplyToMessageID.Set {
+			e.RawStr("\"reply_to_message_id\"" + ":")
+			s.ReplyToMessageID.Encode(e)
+		}
 	}
-	if s.ReplyMarkup.Set {
-		e.FieldStart("reply_markup")
-		s.ReplyMarkup.Encode(e)
+	{
+		if s.AllowSendingWithoutReply.Set {
+			e.Comma()
+		}
+		if s.AllowSendingWithoutReply.Set {
+			e.RawStr("\"allow_sending_without_reply\"" + ":")
+			s.AllowSendingWithoutReply.Encode(e)
+		}
+	}
+	{
+		if s.ReplyMarkup.Set {
+			e.Comma()
+		}
+		if s.ReplyMarkup.Set {
+			e.RawStr("\"reply_markup\"" + ":")
+			s.ReplyMarkup.Encode(e)
+		}
 	}
 	e.ObjEnd()
 }
@@ -15768,112 +21378,251 @@ func (s *SendGame) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s SendInvoice) Encode(e *jx.Encoder) {
+func (s SendInvoice) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+	{
+		if !first {
+			e.Comma()
+		}
+		first = false
 
-	e.FieldStart("chat_id")
-	s.ChatID.Encode(e)
-
-	e.FieldStart("title")
-	e.Str(s.Title)
-
-	e.FieldStart("description")
-	e.Str(s.Description)
-
-	e.FieldStart("payload")
-	e.Str(s.Payload)
-
-	e.FieldStart("provider_token")
-	e.Str(s.ProviderToken)
-
-	e.FieldStart("currency")
-	e.Str(s.Currency)
-
-	e.FieldStart("prices")
-	e.ArrStart()
-	for _, elem := range s.Prices {
-		elem.Encode(e)
+		e.RawStr("\"chat_id\"" + ":")
+		s.ChatID.Encode(e)
 	}
-	e.ArrEnd()
-	if s.MaxTipAmount.Set {
-		e.FieldStart("max_tip_amount")
-		s.MaxTipAmount.Encode(e)
+	{
+		e.Comma()
+
+		e.RawStr("\"title\"" + ":")
+		e.Str(s.Title)
 	}
-	if s.SuggestedTipAmounts != nil {
-		e.FieldStart("suggested_tip_amounts")
+	{
+		e.Comma()
+
+		e.RawStr("\"description\"" + ":")
+		e.Str(s.Description)
+	}
+	{
+		e.Comma()
+
+		e.RawStr("\"payload\"" + ":")
+		e.Str(s.Payload)
+	}
+	{
+		e.Comma()
+
+		e.RawStr("\"provider_token\"" + ":")
+		e.Str(s.ProviderToken)
+	}
+	{
+		e.Comma()
+
+		e.RawStr("\"currency\"" + ":")
+		e.Str(s.Currency)
+	}
+	{
+		e.Comma()
+
+		e.RawStr("\"prices\"" + ":")
 		e.ArrStart()
-		for _, elem := range s.SuggestedTipAmounts {
-			e.Int(elem)
+		if len(s.Prices) >= 1 {
+			// Encode first element without comma.
+			{
+				elem := s.Prices[0]
+				elem.Encode(e)
+			}
+			for _, elem := range s.Prices[1:] {
+				e.Comma()
+				elem.Encode(e)
+			}
 		}
 		e.ArrEnd()
 	}
-	if s.StartParameter.Set {
-		e.FieldStart("start_parameter")
-		s.StartParameter.Encode(e)
+	{
+		if s.MaxTipAmount.Set {
+			e.Comma()
+		}
+		if s.MaxTipAmount.Set {
+			e.RawStr("\"max_tip_amount\"" + ":")
+			s.MaxTipAmount.Encode(e)
+		}
 	}
-	if s.ProviderData.Set {
-		e.FieldStart("provider_data")
-		s.ProviderData.Encode(e)
+	{
+		if s.SuggestedTipAmounts != nil {
+			e.Comma()
+		}
+		if s.SuggestedTipAmounts != nil {
+			e.RawStr("\"suggested_tip_amounts\"" + ":")
+			e.ArrStart()
+			if len(s.SuggestedTipAmounts) >= 1 {
+				// Encode first element without comma.
+				{
+					elem := s.SuggestedTipAmounts[0]
+					e.Int(elem)
+				}
+				for _, elem := range s.SuggestedTipAmounts[1:] {
+					e.Comma()
+					e.Int(elem)
+				}
+			}
+			e.ArrEnd()
+		}
 	}
-	if s.PhotoURL.Set {
-		e.FieldStart("photo_url")
-		s.PhotoURL.Encode(e)
+	{
+		if s.StartParameter.Set {
+			e.Comma()
+		}
+		if s.StartParameter.Set {
+			e.RawStr("\"start_parameter\"" + ":")
+			s.StartParameter.Encode(e)
+		}
 	}
-	if s.PhotoSize.Set {
-		e.FieldStart("photo_size")
-		s.PhotoSize.Encode(e)
+	{
+		if s.ProviderData.Set {
+			e.Comma()
+		}
+		if s.ProviderData.Set {
+			e.RawStr("\"provider_data\"" + ":")
+			s.ProviderData.Encode(e)
+		}
 	}
-	if s.PhotoWidth.Set {
-		e.FieldStart("photo_width")
-		s.PhotoWidth.Encode(e)
+	{
+		if s.PhotoURL.Set {
+			e.Comma()
+		}
+		if s.PhotoURL.Set {
+			e.RawStr("\"photo_url\"" + ":")
+			s.PhotoURL.Encode(e)
+		}
 	}
-	if s.PhotoHeight.Set {
-		e.FieldStart("photo_height")
-		s.PhotoHeight.Encode(e)
+	{
+		if s.PhotoSize.Set {
+			e.Comma()
+		}
+		if s.PhotoSize.Set {
+			e.RawStr("\"photo_size\"" + ":")
+			s.PhotoSize.Encode(e)
+		}
 	}
-	if s.NeedName.Set {
-		e.FieldStart("need_name")
-		s.NeedName.Encode(e)
+	{
+		if s.PhotoWidth.Set {
+			e.Comma()
+		}
+		if s.PhotoWidth.Set {
+			e.RawStr("\"photo_width\"" + ":")
+			s.PhotoWidth.Encode(e)
+		}
 	}
-	if s.NeedPhoneNumber.Set {
-		e.FieldStart("need_phone_number")
-		s.NeedPhoneNumber.Encode(e)
+	{
+		if s.PhotoHeight.Set {
+			e.Comma()
+		}
+		if s.PhotoHeight.Set {
+			e.RawStr("\"photo_height\"" + ":")
+			s.PhotoHeight.Encode(e)
+		}
 	}
-	if s.NeedEmail.Set {
-		e.FieldStart("need_email")
-		s.NeedEmail.Encode(e)
+	{
+		if s.NeedName.Set {
+			e.Comma()
+		}
+		if s.NeedName.Set {
+			e.RawStr("\"need_name\"" + ":")
+			s.NeedName.Encode(e)
+		}
 	}
-	if s.NeedShippingAddress.Set {
-		e.FieldStart("need_shipping_address")
-		s.NeedShippingAddress.Encode(e)
+	{
+		if s.NeedPhoneNumber.Set {
+			e.Comma()
+		}
+		if s.NeedPhoneNumber.Set {
+			e.RawStr("\"need_phone_number\"" + ":")
+			s.NeedPhoneNumber.Encode(e)
+		}
 	}
-	if s.SendPhoneNumberToProvider.Set {
-		e.FieldStart("send_phone_number_to_provider")
-		s.SendPhoneNumberToProvider.Encode(e)
+	{
+		if s.NeedEmail.Set {
+			e.Comma()
+		}
+		if s.NeedEmail.Set {
+			e.RawStr("\"need_email\"" + ":")
+			s.NeedEmail.Encode(e)
+		}
 	}
-	if s.SendEmailToProvider.Set {
-		e.FieldStart("send_email_to_provider")
-		s.SendEmailToProvider.Encode(e)
+	{
+		if s.NeedShippingAddress.Set {
+			e.Comma()
+		}
+		if s.NeedShippingAddress.Set {
+			e.RawStr("\"need_shipping_address\"" + ":")
+			s.NeedShippingAddress.Encode(e)
+		}
 	}
-	if s.IsFlexible.Set {
-		e.FieldStart("is_flexible")
-		s.IsFlexible.Encode(e)
+	{
+		if s.SendPhoneNumberToProvider.Set {
+			e.Comma()
+		}
+		if s.SendPhoneNumberToProvider.Set {
+			e.RawStr("\"send_phone_number_to_provider\"" + ":")
+			s.SendPhoneNumberToProvider.Encode(e)
+		}
 	}
-	if s.DisableNotification.Set {
-		e.FieldStart("disable_notification")
-		s.DisableNotification.Encode(e)
+	{
+		if s.SendEmailToProvider.Set {
+			e.Comma()
+		}
+		if s.SendEmailToProvider.Set {
+			e.RawStr("\"send_email_to_provider\"" + ":")
+			s.SendEmailToProvider.Encode(e)
+		}
 	}
-	if s.ReplyToMessageID.Set {
-		e.FieldStart("reply_to_message_id")
-		s.ReplyToMessageID.Encode(e)
+	{
+		if s.IsFlexible.Set {
+			e.Comma()
+		}
+		if s.IsFlexible.Set {
+			e.RawStr("\"is_flexible\"" + ":")
+			s.IsFlexible.Encode(e)
+		}
 	}
-	if s.AllowSendingWithoutReply.Set {
-		e.FieldStart("allow_sending_without_reply")
-		s.AllowSendingWithoutReply.Encode(e)
+	{
+		if s.DisableNotification.Set {
+			e.Comma()
+		}
+		if s.DisableNotification.Set {
+			e.RawStr("\"disable_notification\"" + ":")
+			s.DisableNotification.Encode(e)
+		}
 	}
-	if s.ReplyMarkup.Set {
-		e.FieldStart("reply_markup")
-		s.ReplyMarkup.Encode(e)
+	{
+		if s.ReplyToMessageID.Set {
+			e.Comma()
+		}
+		if s.ReplyToMessageID.Set {
+			e.RawStr("\"reply_to_message_id\"" + ":")
+			s.ReplyToMessageID.Encode(e)
+		}
+	}
+	{
+		if s.AllowSendingWithoutReply.Set {
+			e.Comma()
+		}
+		if s.AllowSendingWithoutReply.Set {
+			e.RawStr("\"allow_sending_without_reply\"" + ":")
+			s.AllowSendingWithoutReply.Encode(e)
+		}
+	}
+	{
+		if s.ReplyMarkup.Set {
+			e.Comma()
+		}
+		if s.ReplyMarkup.Set {
+			e.RawStr("\"reply_markup\"" + ":")
+			s.ReplyMarkup.Encode(e)
+		}
 	}
 	e.ObjEnd()
 }
@@ -16043,48 +21792,104 @@ func (s *SendInvoice) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s SendLocation) Encode(e *jx.Encoder) {
+func (s SendLocation) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+	{
+		if !first {
+			e.Comma()
+		}
+		first = false
 
-	e.FieldStart("chat_id")
-	s.ChatID.Encode(e)
+		e.RawStr("\"chat_id\"" + ":")
+		s.ChatID.Encode(e)
+	}
+	{
+		e.Comma()
 
-	e.FieldStart("latitude")
-	e.Float64(s.Latitude)
+		e.RawStr("\"latitude\"" + ":")
+		e.Float64(s.Latitude)
+	}
+	{
+		e.Comma()
 
-	e.FieldStart("longitude")
-	e.Float64(s.Longitude)
-	if s.HorizontalAccuracy.Set {
-		e.FieldStart("horizontal_accuracy")
-		s.HorizontalAccuracy.Encode(e)
+		e.RawStr("\"longitude\"" + ":")
+		e.Float64(s.Longitude)
 	}
-	if s.LivePeriod.Set {
-		e.FieldStart("live_period")
-		s.LivePeriod.Encode(e)
+	{
+		if s.HorizontalAccuracy.Set {
+			e.Comma()
+		}
+		if s.HorizontalAccuracy.Set {
+			e.RawStr("\"horizontal_accuracy\"" + ":")
+			s.HorizontalAccuracy.Encode(e)
+		}
 	}
-	if s.Heading.Set {
-		e.FieldStart("heading")
-		s.Heading.Encode(e)
+	{
+		if s.LivePeriod.Set {
+			e.Comma()
+		}
+		if s.LivePeriod.Set {
+			e.RawStr("\"live_period\"" + ":")
+			s.LivePeriod.Encode(e)
+		}
 	}
-	if s.ProximityAlertRadius.Set {
-		e.FieldStart("proximity_alert_radius")
-		s.ProximityAlertRadius.Encode(e)
+	{
+		if s.Heading.Set {
+			e.Comma()
+		}
+		if s.Heading.Set {
+			e.RawStr("\"heading\"" + ":")
+			s.Heading.Encode(e)
+		}
 	}
-	if s.DisableNotification.Set {
-		e.FieldStart("disable_notification")
-		s.DisableNotification.Encode(e)
+	{
+		if s.ProximityAlertRadius.Set {
+			e.Comma()
+		}
+		if s.ProximityAlertRadius.Set {
+			e.RawStr("\"proximity_alert_radius\"" + ":")
+			s.ProximityAlertRadius.Encode(e)
+		}
 	}
-	if s.ReplyToMessageID.Set {
-		e.FieldStart("reply_to_message_id")
-		s.ReplyToMessageID.Encode(e)
+	{
+		if s.DisableNotification.Set {
+			e.Comma()
+		}
+		if s.DisableNotification.Set {
+			e.RawStr("\"disable_notification\"" + ":")
+			s.DisableNotification.Encode(e)
+		}
 	}
-	if s.AllowSendingWithoutReply.Set {
-		e.FieldStart("allow_sending_without_reply")
-		s.AllowSendingWithoutReply.Encode(e)
+	{
+		if s.ReplyToMessageID.Set {
+			e.Comma()
+		}
+		if s.ReplyToMessageID.Set {
+			e.RawStr("\"reply_to_message_id\"" + ":")
+			s.ReplyToMessageID.Encode(e)
+		}
 	}
-	if s.ReplyMarkup.Set {
-		e.FieldStart("reply_markup")
-		s.ReplyMarkup.Encode(e)
+	{
+		if s.AllowSendingWithoutReply.Set {
+			e.Comma()
+		}
+		if s.AllowSendingWithoutReply.Set {
+			e.RawStr("\"allow_sending_without_reply\"" + ":")
+			s.AllowSendingWithoutReply.Encode(e)
+		}
+	}
+	{
+		if s.ReplyMarkup.Set {
+			e.Comma()
+		}
+		if s.ReplyMarkup.Set {
+			e.RawStr("\"reply_markup\"" + ":")
+			s.ReplyMarkup.Encode(e)
+		}
 	}
 	e.ObjEnd()
 }
@@ -16160,7 +21965,7 @@ func (s *SendLocation) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes SendLocationReplyMarkup as json.
-func (s SendLocationReplyMarkup) Encode(e *jx.Encoder) {
+func (s SendLocationReplyMarkup) Encode(e *jx.Writer) {
 	switch s.Type {
 	case InlineKeyboardMarkupSendLocationReplyMarkup:
 		s.InlineKeyboardMarkup.Encode(e)
@@ -16246,29 +22051,65 @@ func (s *SendLocationReplyMarkup) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s SendMediaGroup) Encode(e *jx.Encoder) {
+func (s SendMediaGroup) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+	{
+		if !first {
+			e.Comma()
+		}
+		first = false
 
-	e.FieldStart("chat_id")
-	s.ChatID.Encode(e)
+		e.RawStr("\"chat_id\"" + ":")
+		s.ChatID.Encode(e)
+	}
+	{
+		e.Comma()
 
-	e.FieldStart("media")
-	e.ArrStart()
-	for _, elem := range s.Media {
-		elem.Encode(e)
+		e.RawStr("\"media\"" + ":")
+		e.ArrStart()
+		if len(s.Media) >= 1 {
+			// Encode first element without comma.
+			{
+				elem := s.Media[0]
+				elem.Encode(e)
+			}
+			for _, elem := range s.Media[1:] {
+				e.Comma()
+				elem.Encode(e)
+			}
+		}
+		e.ArrEnd()
 	}
-	e.ArrEnd()
-	if s.DisableNotification.Set {
-		e.FieldStart("disable_notification")
-		s.DisableNotification.Encode(e)
+	{
+		if s.DisableNotification.Set {
+			e.Comma()
+		}
+		if s.DisableNotification.Set {
+			e.RawStr("\"disable_notification\"" + ":")
+			s.DisableNotification.Encode(e)
+		}
 	}
-	if s.ReplyToMessageID.Set {
-		e.FieldStart("reply_to_message_id")
-		s.ReplyToMessageID.Encode(e)
+	{
+		if s.ReplyToMessageID.Set {
+			e.Comma()
+		}
+		if s.ReplyToMessageID.Set {
+			e.RawStr("\"reply_to_message_id\"" + ":")
+			s.ReplyToMessageID.Encode(e)
+		}
 	}
-	if s.AllowSendingWithoutReply.Set {
-		e.FieldStart("allow_sending_without_reply")
-		s.AllowSendingWithoutReply.Encode(e)
+	{
+		if s.AllowSendingWithoutReply.Set {
+			e.Comma()
+		}
+		if s.AllowSendingWithoutReply.Set {
+			e.RawStr("\"allow_sending_without_reply\"" + ":")
+			s.AllowSendingWithoutReply.Encode(e)
+		}
 	}
 	e.ObjEnd()
 }
@@ -16319,7 +22160,7 @@ func (s *SendMediaGroup) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes SendMediaGroupMediaItem as json.
-func (s SendMediaGroupMediaItem) Encode(e *jx.Encoder) {
+func (s SendMediaGroupMediaItem) Encode(e *jx.Writer) {
 	switch s.Type {
 	case InputMediaAudioSendMediaGroupMediaItem:
 		s.InputMediaAudio.Encode(e)
@@ -16403,45 +22244,101 @@ func (s *SendMediaGroupMediaItem) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s SendMessage) Encode(e *jx.Encoder) {
+func (s SendMessage) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	e.FieldStart("chat_id")
-	s.ChatID.Encode(e)
-
-	e.FieldStart("text")
-	e.Str(s.Text)
-	if s.ParseMode.Set {
-		e.FieldStart("parse_mode")
-		s.ParseMode.Encode(e)
-	}
-	if s.Entities != nil {
-		e.FieldStart("entities")
-		e.ArrStart()
-		for _, elem := range s.Entities {
-			elem.Encode(e)
+	var (
+		first = true
+		_     = first
+	)
+	{
+		if !first {
+			e.Comma()
 		}
-		e.ArrEnd()
+		first = false
+
+		e.RawStr("\"chat_id\"" + ":")
+		s.ChatID.Encode(e)
 	}
-	if s.DisableWebPagePreview.Set {
-		e.FieldStart("disable_web_page_preview")
-		s.DisableWebPagePreview.Encode(e)
+	{
+		e.Comma()
+
+		e.RawStr("\"text\"" + ":")
+		e.Str(s.Text)
 	}
-	if s.DisableNotification.Set {
-		e.FieldStart("disable_notification")
-		s.DisableNotification.Encode(e)
+	{
+		if s.ParseMode.Set {
+			e.Comma()
+		}
+		if s.ParseMode.Set {
+			e.RawStr("\"parse_mode\"" + ":")
+			s.ParseMode.Encode(e)
+		}
 	}
-	if s.ReplyToMessageID.Set {
-		e.FieldStart("reply_to_message_id")
-		s.ReplyToMessageID.Encode(e)
+	{
+		if s.Entities != nil {
+			e.Comma()
+		}
+		if s.Entities != nil {
+			e.RawStr("\"entities\"" + ":")
+			e.ArrStart()
+			if len(s.Entities) >= 1 {
+				// Encode first element without comma.
+				{
+					elem := s.Entities[0]
+					elem.Encode(e)
+				}
+				for _, elem := range s.Entities[1:] {
+					e.Comma()
+					elem.Encode(e)
+				}
+			}
+			e.ArrEnd()
+		}
 	}
-	if s.AllowSendingWithoutReply.Set {
-		e.FieldStart("allow_sending_without_reply")
-		s.AllowSendingWithoutReply.Encode(e)
+	{
+		if s.DisableWebPagePreview.Set {
+			e.Comma()
+		}
+		if s.DisableWebPagePreview.Set {
+			e.RawStr("\"disable_web_page_preview\"" + ":")
+			s.DisableWebPagePreview.Encode(e)
+		}
 	}
-	if s.ReplyMarkup.Set {
-		e.FieldStart("reply_markup")
-		s.ReplyMarkup.Encode(e)
+	{
+		if s.DisableNotification.Set {
+			e.Comma()
+		}
+		if s.DisableNotification.Set {
+			e.RawStr("\"disable_notification\"" + ":")
+			s.DisableNotification.Encode(e)
+		}
+	}
+	{
+		if s.ReplyToMessageID.Set {
+			e.Comma()
+		}
+		if s.ReplyToMessageID.Set {
+			e.RawStr("\"reply_to_message_id\"" + ":")
+			s.ReplyToMessageID.Encode(e)
+		}
+	}
+	{
+		if s.AllowSendingWithoutReply.Set {
+			e.Comma()
+		}
+		if s.AllowSendingWithoutReply.Set {
+			e.RawStr("\"allow_sending_without_reply\"" + ":")
+			s.AllowSendingWithoutReply.Encode(e)
+		}
+	}
+	{
+		if s.ReplyMarkup.Set {
+			e.Comma()
+		}
+		if s.ReplyMarkup.Set {
+			e.RawStr("\"reply_markup\"" + ":")
+			s.ReplyMarkup.Encode(e)
+		}
 	}
 	e.ObjEnd()
 }
@@ -16513,7 +22410,7 @@ func (s *SendMessage) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes SendMessageReplyMarkup as json.
-func (s SendMessageReplyMarkup) Encode(e *jx.Encoder) {
+func (s SendMessageReplyMarkup) Encode(e *jx.Writer) {
 	switch s.Type {
 	case InlineKeyboardMarkupSendMessageReplyMarkup:
 		s.InlineKeyboardMarkup.Encode(e)
@@ -16599,45 +22496,101 @@ func (s *SendMessageReplyMarkup) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s SendPhoto) Encode(e *jx.Encoder) {
+func (s SendPhoto) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	e.FieldStart("chat_id")
-	s.ChatID.Encode(e)
-
-	e.FieldStart("photo")
-	e.Str(s.Photo)
-	if s.Caption.Set {
-		e.FieldStart("caption")
-		s.Caption.Encode(e)
-	}
-	if s.ParseMode.Set {
-		e.FieldStart("parse_mode")
-		s.ParseMode.Encode(e)
-	}
-	if s.CaptionEntities != nil {
-		e.FieldStart("caption_entities")
-		e.ArrStart()
-		for _, elem := range s.CaptionEntities {
-			elem.Encode(e)
+	var (
+		first = true
+		_     = first
+	)
+	{
+		if !first {
+			e.Comma()
 		}
-		e.ArrEnd()
+		first = false
+
+		e.RawStr("\"chat_id\"" + ":")
+		s.ChatID.Encode(e)
 	}
-	if s.DisableNotification.Set {
-		e.FieldStart("disable_notification")
-		s.DisableNotification.Encode(e)
+	{
+		e.Comma()
+
+		e.RawStr("\"photo\"" + ":")
+		e.Str(s.Photo)
 	}
-	if s.ReplyToMessageID.Set {
-		e.FieldStart("reply_to_message_id")
-		s.ReplyToMessageID.Encode(e)
+	{
+		if s.Caption.Set {
+			e.Comma()
+		}
+		if s.Caption.Set {
+			e.RawStr("\"caption\"" + ":")
+			s.Caption.Encode(e)
+		}
 	}
-	if s.AllowSendingWithoutReply.Set {
-		e.FieldStart("allow_sending_without_reply")
-		s.AllowSendingWithoutReply.Encode(e)
+	{
+		if s.ParseMode.Set {
+			e.Comma()
+		}
+		if s.ParseMode.Set {
+			e.RawStr("\"parse_mode\"" + ":")
+			s.ParseMode.Encode(e)
+		}
 	}
-	if s.ReplyMarkup.Set {
-		e.FieldStart("reply_markup")
-		s.ReplyMarkup.Encode(e)
+	{
+		if s.CaptionEntities != nil {
+			e.Comma()
+		}
+		if s.CaptionEntities != nil {
+			e.RawStr("\"caption_entities\"" + ":")
+			e.ArrStart()
+			if len(s.CaptionEntities) >= 1 {
+				// Encode first element without comma.
+				{
+					elem := s.CaptionEntities[0]
+					elem.Encode(e)
+				}
+				for _, elem := range s.CaptionEntities[1:] {
+					e.Comma()
+					elem.Encode(e)
+				}
+			}
+			e.ArrEnd()
+		}
+	}
+	{
+		if s.DisableNotification.Set {
+			e.Comma()
+		}
+		if s.DisableNotification.Set {
+			e.RawStr("\"disable_notification\"" + ":")
+			s.DisableNotification.Encode(e)
+		}
+	}
+	{
+		if s.ReplyToMessageID.Set {
+			e.Comma()
+		}
+		if s.ReplyToMessageID.Set {
+			e.RawStr("\"reply_to_message_id\"" + ":")
+			s.ReplyToMessageID.Encode(e)
+		}
+	}
+	{
+		if s.AllowSendingWithoutReply.Set {
+			e.Comma()
+		}
+		if s.AllowSendingWithoutReply.Set {
+			e.RawStr("\"allow_sending_without_reply\"" + ":")
+			s.AllowSendingWithoutReply.Encode(e)
+		}
+	}
+	{
+		if s.ReplyMarkup.Set {
+			e.Comma()
+		}
+		if s.ReplyMarkup.Set {
+			e.RawStr("\"reply_markup\"" + ":")
+			s.ReplyMarkup.Encode(e)
+		}
 	}
 	e.ObjEnd()
 }
@@ -16709,7 +22662,7 @@ func (s *SendPhoto) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes SendPhotoReplyMarkup as json.
-func (s SendPhotoReplyMarkup) Encode(e *jx.Encoder) {
+func (s SendPhotoReplyMarkup) Encode(e *jx.Writer) {
 	switch s.Type {
 	case InlineKeyboardMarkupSendPhotoReplyMarkup:
 		s.InlineKeyboardMarkup.Encode(e)
@@ -16795,80 +22748,182 @@ func (s *SendPhotoReplyMarkup) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s SendPoll) Encode(e *jx.Encoder) {
+func (s SendPoll) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+	{
+		if !first {
+			e.Comma()
+		}
+		first = false
 
-	e.FieldStart("chat_id")
-	s.ChatID.Encode(e)
+		e.RawStr("\"chat_id\"" + ":")
+		s.ChatID.Encode(e)
+	}
+	{
+		e.Comma()
 
-	e.FieldStart("question")
-	e.Str(s.Question)
+		e.RawStr("\"question\"" + ":")
+		e.Str(s.Question)
+	}
+	{
+		e.Comma()
 
-	e.FieldStart("options")
-	e.ArrStart()
-	for _, elem := range s.Options {
-		e.Str(elem)
-	}
-	e.ArrEnd()
-	if s.IsAnonymous.Set {
-		e.FieldStart("is_anonymous")
-		s.IsAnonymous.Encode(e)
-	}
-	if s.Type.Set {
-		e.FieldStart("type")
-		s.Type.Encode(e)
-	}
-	if s.AllowsMultipleAnswers.Set {
-		e.FieldStart("allows_multiple_answers")
-		s.AllowsMultipleAnswers.Encode(e)
-	}
-	if s.CorrectOptionID.Set {
-		e.FieldStart("correct_option_id")
-		s.CorrectOptionID.Encode(e)
-	}
-	if s.Explanation.Set {
-		e.FieldStart("explanation")
-		s.Explanation.Encode(e)
-	}
-	if s.ExplanationParseMode.Set {
-		e.FieldStart("explanation_parse_mode")
-		s.ExplanationParseMode.Encode(e)
-	}
-	if s.ExplanationEntities != nil {
-		e.FieldStart("explanation_entities")
+		e.RawStr("\"options\"" + ":")
 		e.ArrStart()
-		for _, elem := range s.ExplanationEntities {
-			elem.Encode(e)
+		if len(s.Options) >= 1 {
+			// Encode first element without comma.
+			{
+				elem := s.Options[0]
+				e.Str(elem)
+			}
+			for _, elem := range s.Options[1:] {
+				e.Comma()
+				e.Str(elem)
+			}
 		}
 		e.ArrEnd()
 	}
-	if s.OpenPeriod.Set {
-		e.FieldStart("open_period")
-		s.OpenPeriod.Encode(e)
+	{
+		if s.IsAnonymous.Set {
+			e.Comma()
+		}
+		if s.IsAnonymous.Set {
+			e.RawStr("\"is_anonymous\"" + ":")
+			s.IsAnonymous.Encode(e)
+		}
 	}
-	if s.CloseDate.Set {
-		e.FieldStart("close_date")
-		s.CloseDate.Encode(e)
+	{
+		if s.Type.Set {
+			e.Comma()
+		}
+		if s.Type.Set {
+			e.RawStr("\"type\"" + ":")
+			s.Type.Encode(e)
+		}
 	}
-	if s.IsClosed.Set {
-		e.FieldStart("is_closed")
-		s.IsClosed.Encode(e)
+	{
+		if s.AllowsMultipleAnswers.Set {
+			e.Comma()
+		}
+		if s.AllowsMultipleAnswers.Set {
+			e.RawStr("\"allows_multiple_answers\"" + ":")
+			s.AllowsMultipleAnswers.Encode(e)
+		}
 	}
-	if s.DisableNotification.Set {
-		e.FieldStart("disable_notification")
-		s.DisableNotification.Encode(e)
+	{
+		if s.CorrectOptionID.Set {
+			e.Comma()
+		}
+		if s.CorrectOptionID.Set {
+			e.RawStr("\"correct_option_id\"" + ":")
+			s.CorrectOptionID.Encode(e)
+		}
 	}
-	if s.ReplyToMessageID.Set {
-		e.FieldStart("reply_to_message_id")
-		s.ReplyToMessageID.Encode(e)
+	{
+		if s.Explanation.Set {
+			e.Comma()
+		}
+		if s.Explanation.Set {
+			e.RawStr("\"explanation\"" + ":")
+			s.Explanation.Encode(e)
+		}
 	}
-	if s.AllowSendingWithoutReply.Set {
-		e.FieldStart("allow_sending_without_reply")
-		s.AllowSendingWithoutReply.Encode(e)
+	{
+		if s.ExplanationParseMode.Set {
+			e.Comma()
+		}
+		if s.ExplanationParseMode.Set {
+			e.RawStr("\"explanation_parse_mode\"" + ":")
+			s.ExplanationParseMode.Encode(e)
+		}
 	}
-	if s.ReplyMarkup.Set {
-		e.FieldStart("reply_markup")
-		s.ReplyMarkup.Encode(e)
+	{
+		if s.ExplanationEntities != nil {
+			e.Comma()
+		}
+		if s.ExplanationEntities != nil {
+			e.RawStr("\"explanation_entities\"" + ":")
+			e.ArrStart()
+			if len(s.ExplanationEntities) >= 1 {
+				// Encode first element without comma.
+				{
+					elem := s.ExplanationEntities[0]
+					elem.Encode(e)
+				}
+				for _, elem := range s.ExplanationEntities[1:] {
+					e.Comma()
+					elem.Encode(e)
+				}
+			}
+			e.ArrEnd()
+		}
+	}
+	{
+		if s.OpenPeriod.Set {
+			e.Comma()
+		}
+		if s.OpenPeriod.Set {
+			e.RawStr("\"open_period\"" + ":")
+			s.OpenPeriod.Encode(e)
+		}
+	}
+	{
+		if s.CloseDate.Set {
+			e.Comma()
+		}
+		if s.CloseDate.Set {
+			e.RawStr("\"close_date\"" + ":")
+			s.CloseDate.Encode(e)
+		}
+	}
+	{
+		if s.IsClosed.Set {
+			e.Comma()
+		}
+		if s.IsClosed.Set {
+			e.RawStr("\"is_closed\"" + ":")
+			s.IsClosed.Encode(e)
+		}
+	}
+	{
+		if s.DisableNotification.Set {
+			e.Comma()
+		}
+		if s.DisableNotification.Set {
+			e.RawStr("\"disable_notification\"" + ":")
+			s.DisableNotification.Encode(e)
+		}
+	}
+	{
+		if s.ReplyToMessageID.Set {
+			e.Comma()
+		}
+		if s.ReplyToMessageID.Set {
+			e.RawStr("\"reply_to_message_id\"" + ":")
+			s.ReplyToMessageID.Encode(e)
+		}
+	}
+	{
+		if s.AllowSendingWithoutReply.Set {
+			e.Comma()
+		}
+		if s.AllowSendingWithoutReply.Set {
+			e.RawStr("\"allow_sending_without_reply\"" + ":")
+			s.AllowSendingWithoutReply.Encode(e)
+		}
+	}
+	{
+		if s.ReplyMarkup.Set {
+			e.Comma()
+		}
+		if s.ReplyMarkup.Set {
+			e.RawStr("\"reply_markup\"" + ":")
+			s.ReplyMarkup.Encode(e)
+		}
 	}
 	e.ObjEnd()
 }
@@ -16989,7 +23044,7 @@ func (s *SendPoll) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes SendPollReplyMarkup as json.
-func (s SendPollReplyMarkup) Encode(e *jx.Encoder) {
+func (s SendPollReplyMarkup) Encode(e *jx.Writer) {
 	switch s.Type {
 	case InlineKeyboardMarkupSendPollReplyMarkup:
 		s.InlineKeyboardMarkup.Encode(e)
@@ -17075,29 +23130,62 @@ func (s *SendPollReplyMarkup) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s SendSticker) Encode(e *jx.Encoder) {
+func (s SendSticker) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+	{
+		if !first {
+			e.Comma()
+		}
+		first = false
 
-	e.FieldStart("chat_id")
-	s.ChatID.Encode(e)
+		e.RawStr("\"chat_id\"" + ":")
+		s.ChatID.Encode(e)
+	}
+	{
+		e.Comma()
 
-	e.FieldStart("sticker")
-	e.Str(s.Sticker)
-	if s.DisableNotification.Set {
-		e.FieldStart("disable_notification")
-		s.DisableNotification.Encode(e)
+		e.RawStr("\"sticker\"" + ":")
+		e.Str(s.Sticker)
 	}
-	if s.ReplyToMessageID.Set {
-		e.FieldStart("reply_to_message_id")
-		s.ReplyToMessageID.Encode(e)
+	{
+		if s.DisableNotification.Set {
+			e.Comma()
+		}
+		if s.DisableNotification.Set {
+			e.RawStr("\"disable_notification\"" + ":")
+			s.DisableNotification.Encode(e)
+		}
 	}
-	if s.AllowSendingWithoutReply.Set {
-		e.FieldStart("allow_sending_without_reply")
-		s.AllowSendingWithoutReply.Encode(e)
+	{
+		if s.ReplyToMessageID.Set {
+			e.Comma()
+		}
+		if s.ReplyToMessageID.Set {
+			e.RawStr("\"reply_to_message_id\"" + ":")
+			s.ReplyToMessageID.Encode(e)
+		}
 	}
-	if s.ReplyMarkup.Set {
-		e.FieldStart("reply_markup")
-		s.ReplyMarkup.Encode(e)
+	{
+		if s.AllowSendingWithoutReply.Set {
+			e.Comma()
+		}
+		if s.AllowSendingWithoutReply.Set {
+			e.RawStr("\"allow_sending_without_reply\"" + ":")
+			s.AllowSendingWithoutReply.Encode(e)
+		}
+	}
+	{
+		if s.ReplyMarkup.Set {
+			e.Comma()
+		}
+		if s.ReplyMarkup.Set {
+			e.RawStr("\"reply_markup\"" + ":")
+			s.ReplyMarkup.Encode(e)
+		}
 	}
 	e.ObjEnd()
 }
@@ -17147,7 +23235,7 @@ func (s *SendSticker) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes SendStickerReplyMarkup as json.
-func (s SendStickerReplyMarkup) Encode(e *jx.Encoder) {
+func (s SendStickerReplyMarkup) Encode(e *jx.Writer) {
 	switch s.Type {
 	case InlineKeyboardMarkupSendStickerReplyMarkup:
 		s.InlineKeyboardMarkup.Encode(e)
@@ -17233,54 +23321,116 @@ func (s *SendStickerReplyMarkup) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s SendVenue) Encode(e *jx.Encoder) {
+func (s SendVenue) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+	{
+		if !first {
+			e.Comma()
+		}
+		first = false
 
-	e.FieldStart("chat_id")
-	s.ChatID.Encode(e)
+		e.RawStr("\"chat_id\"" + ":")
+		s.ChatID.Encode(e)
+	}
+	{
+		e.Comma()
 
-	e.FieldStart("latitude")
-	e.Float64(s.Latitude)
+		e.RawStr("\"latitude\"" + ":")
+		e.Float64(s.Latitude)
+	}
+	{
+		e.Comma()
 
-	e.FieldStart("longitude")
-	e.Float64(s.Longitude)
+		e.RawStr("\"longitude\"" + ":")
+		e.Float64(s.Longitude)
+	}
+	{
+		e.Comma()
 
-	e.FieldStart("title")
-	e.Str(s.Title)
+		e.RawStr("\"title\"" + ":")
+		e.Str(s.Title)
+	}
+	{
+		e.Comma()
 
-	e.FieldStart("address")
-	e.Str(s.Address)
-	if s.FoursquareID.Set {
-		e.FieldStart("foursquare_id")
-		s.FoursquareID.Encode(e)
+		e.RawStr("\"address\"" + ":")
+		e.Str(s.Address)
 	}
-	if s.FoursquareType.Set {
-		e.FieldStart("foursquare_type")
-		s.FoursquareType.Encode(e)
+	{
+		if s.FoursquareID.Set {
+			e.Comma()
+		}
+		if s.FoursquareID.Set {
+			e.RawStr("\"foursquare_id\"" + ":")
+			s.FoursquareID.Encode(e)
+		}
 	}
-	if s.GooglePlaceID.Set {
-		e.FieldStart("google_place_id")
-		s.GooglePlaceID.Encode(e)
+	{
+		if s.FoursquareType.Set {
+			e.Comma()
+		}
+		if s.FoursquareType.Set {
+			e.RawStr("\"foursquare_type\"" + ":")
+			s.FoursquareType.Encode(e)
+		}
 	}
-	if s.GooglePlaceType.Set {
-		e.FieldStart("google_place_type")
-		s.GooglePlaceType.Encode(e)
+	{
+		if s.GooglePlaceID.Set {
+			e.Comma()
+		}
+		if s.GooglePlaceID.Set {
+			e.RawStr("\"google_place_id\"" + ":")
+			s.GooglePlaceID.Encode(e)
+		}
 	}
-	if s.DisableNotification.Set {
-		e.FieldStart("disable_notification")
-		s.DisableNotification.Encode(e)
+	{
+		if s.GooglePlaceType.Set {
+			e.Comma()
+		}
+		if s.GooglePlaceType.Set {
+			e.RawStr("\"google_place_type\"" + ":")
+			s.GooglePlaceType.Encode(e)
+		}
 	}
-	if s.ReplyToMessageID.Set {
-		e.FieldStart("reply_to_message_id")
-		s.ReplyToMessageID.Encode(e)
+	{
+		if s.DisableNotification.Set {
+			e.Comma()
+		}
+		if s.DisableNotification.Set {
+			e.RawStr("\"disable_notification\"" + ":")
+			s.DisableNotification.Encode(e)
+		}
 	}
-	if s.AllowSendingWithoutReply.Set {
-		e.FieldStart("allow_sending_without_reply")
-		s.AllowSendingWithoutReply.Encode(e)
+	{
+		if s.ReplyToMessageID.Set {
+			e.Comma()
+		}
+		if s.ReplyToMessageID.Set {
+			e.RawStr("\"reply_to_message_id\"" + ":")
+			s.ReplyToMessageID.Encode(e)
+		}
 	}
-	if s.ReplyMarkup.Set {
-		e.FieldStart("reply_markup")
-		s.ReplyMarkup.Encode(e)
+	{
+		if s.AllowSendingWithoutReply.Set {
+			e.Comma()
+		}
+		if s.AllowSendingWithoutReply.Set {
+			e.RawStr("\"allow_sending_without_reply\"" + ":")
+			s.AllowSendingWithoutReply.Encode(e)
+		}
+	}
+	{
+		if s.ReplyMarkup.Set {
+			e.Comma()
+		}
+		if s.ReplyMarkup.Set {
+			e.RawStr("\"reply_markup\"" + ":")
+			s.ReplyMarkup.Encode(e)
+		}
 	}
 	e.ObjEnd()
 }
@@ -17368,7 +23518,7 @@ func (s *SendVenue) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes SendVenueReplyMarkup as json.
-func (s SendVenueReplyMarkup) Encode(e *jx.Encoder) {
+func (s SendVenueReplyMarkup) Encode(e *jx.Writer) {
 	switch s.Type {
 	case InlineKeyboardMarkupSendVenueReplyMarkup:
 		s.InlineKeyboardMarkup.Encode(e)
@@ -17454,65 +23604,146 @@ func (s *SendVenueReplyMarkup) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s SendVideo) Encode(e *jx.Encoder) {
+func (s SendVideo) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	e.FieldStart("chat_id")
-	s.ChatID.Encode(e)
-
-	e.FieldStart("video")
-	e.Str(s.Video)
-	if s.Duration.Set {
-		e.FieldStart("duration")
-		s.Duration.Encode(e)
-	}
-	if s.Width.Set {
-		e.FieldStart("width")
-		s.Width.Encode(e)
-	}
-	if s.Height.Set {
-		e.FieldStart("height")
-		s.Height.Encode(e)
-	}
-	if s.Thumb.Set {
-		e.FieldStart("thumb")
-		s.Thumb.Encode(e)
-	}
-	if s.Caption.Set {
-		e.FieldStart("caption")
-		s.Caption.Encode(e)
-	}
-	if s.ParseMode.Set {
-		e.FieldStart("parse_mode")
-		s.ParseMode.Encode(e)
-	}
-	if s.CaptionEntities != nil {
-		e.FieldStart("caption_entities")
-		e.ArrStart()
-		for _, elem := range s.CaptionEntities {
-			elem.Encode(e)
+	var (
+		first = true
+		_     = first
+	)
+	{
+		if !first {
+			e.Comma()
 		}
-		e.ArrEnd()
+		first = false
+
+		e.RawStr("\"chat_id\"" + ":")
+		s.ChatID.Encode(e)
 	}
-	if s.SupportsStreaming.Set {
-		e.FieldStart("supports_streaming")
-		s.SupportsStreaming.Encode(e)
+	{
+		e.Comma()
+
+		e.RawStr("\"video\"" + ":")
+		e.Str(s.Video)
 	}
-	if s.DisableNotification.Set {
-		e.FieldStart("disable_notification")
-		s.DisableNotification.Encode(e)
+	{
+		if s.Duration.Set {
+			e.Comma()
+		}
+		if s.Duration.Set {
+			e.RawStr("\"duration\"" + ":")
+			s.Duration.Encode(e)
+		}
 	}
-	if s.ReplyToMessageID.Set {
-		e.FieldStart("reply_to_message_id")
-		s.ReplyToMessageID.Encode(e)
+	{
+		if s.Width.Set {
+			e.Comma()
+		}
+		if s.Width.Set {
+			e.RawStr("\"width\"" + ":")
+			s.Width.Encode(e)
+		}
 	}
-	if s.AllowSendingWithoutReply.Set {
-		e.FieldStart("allow_sending_without_reply")
-		s.AllowSendingWithoutReply.Encode(e)
+	{
+		if s.Height.Set {
+			e.Comma()
+		}
+		if s.Height.Set {
+			e.RawStr("\"height\"" + ":")
+			s.Height.Encode(e)
+		}
 	}
-	if s.ReplyMarkup.Set {
-		e.FieldStart("reply_markup")
-		s.ReplyMarkup.Encode(e)
+	{
+		if s.Thumb.Set {
+			e.Comma()
+		}
+		if s.Thumb.Set {
+			e.RawStr("\"thumb\"" + ":")
+			s.Thumb.Encode(e)
+		}
+	}
+	{
+		if s.Caption.Set {
+			e.Comma()
+		}
+		if s.Caption.Set {
+			e.RawStr("\"caption\"" + ":")
+			s.Caption.Encode(e)
+		}
+	}
+	{
+		if s.ParseMode.Set {
+			e.Comma()
+		}
+		if s.ParseMode.Set {
+			e.RawStr("\"parse_mode\"" + ":")
+			s.ParseMode.Encode(e)
+		}
+	}
+	{
+		if s.CaptionEntities != nil {
+			e.Comma()
+		}
+		if s.CaptionEntities != nil {
+			e.RawStr("\"caption_entities\"" + ":")
+			e.ArrStart()
+			if len(s.CaptionEntities) >= 1 {
+				// Encode first element without comma.
+				{
+					elem := s.CaptionEntities[0]
+					elem.Encode(e)
+				}
+				for _, elem := range s.CaptionEntities[1:] {
+					e.Comma()
+					elem.Encode(e)
+				}
+			}
+			e.ArrEnd()
+		}
+	}
+	{
+		if s.SupportsStreaming.Set {
+			e.Comma()
+		}
+		if s.SupportsStreaming.Set {
+			e.RawStr("\"supports_streaming\"" + ":")
+			s.SupportsStreaming.Encode(e)
+		}
+	}
+	{
+		if s.DisableNotification.Set {
+			e.Comma()
+		}
+		if s.DisableNotification.Set {
+			e.RawStr("\"disable_notification\"" + ":")
+			s.DisableNotification.Encode(e)
+		}
+	}
+	{
+		if s.ReplyToMessageID.Set {
+			e.Comma()
+		}
+		if s.ReplyToMessageID.Set {
+			e.RawStr("\"reply_to_message_id\"" + ":")
+			s.ReplyToMessageID.Encode(e)
+		}
+	}
+	{
+		if s.AllowSendingWithoutReply.Set {
+			e.Comma()
+		}
+		if s.AllowSendingWithoutReply.Set {
+			e.RawStr("\"allow_sending_without_reply\"" + ":")
+			s.AllowSendingWithoutReply.Encode(e)
+		}
+	}
+	{
+		if s.ReplyMarkup.Set {
+			e.Comma()
+		}
+		if s.ReplyMarkup.Set {
+			e.RawStr("\"reply_markup\"" + ":")
+			s.ReplyMarkup.Encode(e)
+		}
 	}
 	e.ObjEnd()
 }
@@ -17609,41 +23840,89 @@ func (s *SendVideo) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s SendVideoNote) Encode(e *jx.Encoder) {
+func (s SendVideoNote) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+	{
+		if !first {
+			e.Comma()
+		}
+		first = false
 
-	e.FieldStart("chat_id")
-	s.ChatID.Encode(e)
+		e.RawStr("\"chat_id\"" + ":")
+		s.ChatID.Encode(e)
+	}
+	{
+		e.Comma()
 
-	e.FieldStart("video_note")
-	e.Str(s.VideoNote)
-	if s.Duration.Set {
-		e.FieldStart("duration")
-		s.Duration.Encode(e)
+		e.RawStr("\"video_note\"" + ":")
+		e.Str(s.VideoNote)
 	}
-	if s.Length.Set {
-		e.FieldStart("length")
-		s.Length.Encode(e)
+	{
+		if s.Duration.Set {
+			e.Comma()
+		}
+		if s.Duration.Set {
+			e.RawStr("\"duration\"" + ":")
+			s.Duration.Encode(e)
+		}
 	}
-	if s.Thumb.Set {
-		e.FieldStart("thumb")
-		s.Thumb.Encode(e)
+	{
+		if s.Length.Set {
+			e.Comma()
+		}
+		if s.Length.Set {
+			e.RawStr("\"length\"" + ":")
+			s.Length.Encode(e)
+		}
 	}
-	if s.DisableNotification.Set {
-		e.FieldStart("disable_notification")
-		s.DisableNotification.Encode(e)
+	{
+		if s.Thumb.Set {
+			e.Comma()
+		}
+		if s.Thumb.Set {
+			e.RawStr("\"thumb\"" + ":")
+			s.Thumb.Encode(e)
+		}
 	}
-	if s.ReplyToMessageID.Set {
-		e.FieldStart("reply_to_message_id")
-		s.ReplyToMessageID.Encode(e)
+	{
+		if s.DisableNotification.Set {
+			e.Comma()
+		}
+		if s.DisableNotification.Set {
+			e.RawStr("\"disable_notification\"" + ":")
+			s.DisableNotification.Encode(e)
+		}
 	}
-	if s.AllowSendingWithoutReply.Set {
-		e.FieldStart("allow_sending_without_reply")
-		s.AllowSendingWithoutReply.Encode(e)
+	{
+		if s.ReplyToMessageID.Set {
+			e.Comma()
+		}
+		if s.ReplyToMessageID.Set {
+			e.RawStr("\"reply_to_message_id\"" + ":")
+			s.ReplyToMessageID.Encode(e)
+		}
 	}
-	if s.ReplyMarkup.Set {
-		e.FieldStart("reply_markup")
-		s.ReplyMarkup.Encode(e)
+	{
+		if s.AllowSendingWithoutReply.Set {
+			e.Comma()
+		}
+		if s.AllowSendingWithoutReply.Set {
+			e.RawStr("\"allow_sending_without_reply\"" + ":")
+			s.AllowSendingWithoutReply.Encode(e)
+		}
+	}
+	{
+		if s.ReplyMarkup.Set {
+			e.Comma()
+		}
+		if s.ReplyMarkup.Set {
+			e.RawStr("\"reply_markup\"" + ":")
+			s.ReplyMarkup.Encode(e)
+		}
 	}
 	e.ObjEnd()
 }
@@ -17708,7 +23987,7 @@ func (s *SendVideoNote) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes SendVideoNoteReplyMarkup as json.
-func (s SendVideoNoteReplyMarkup) Encode(e *jx.Encoder) {
+func (s SendVideoNoteReplyMarkup) Encode(e *jx.Writer) {
 	switch s.Type {
 	case InlineKeyboardMarkupSendVideoNoteReplyMarkup:
 		s.InlineKeyboardMarkup.Encode(e)
@@ -17794,7 +24073,7 @@ func (s *SendVideoNoteReplyMarkup) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes SendVideoReplyMarkup as json.
-func (s SendVideoReplyMarkup) Encode(e *jx.Encoder) {
+func (s SendVideoReplyMarkup) Encode(e *jx.Writer) {
 	switch s.Type {
 	case InlineKeyboardMarkupSendVideoReplyMarkup:
 		s.InlineKeyboardMarkup.Encode(e)
@@ -17880,49 +24159,110 @@ func (s *SendVideoReplyMarkup) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s SendVoice) Encode(e *jx.Encoder) {
+func (s SendVoice) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	e.FieldStart("chat_id")
-	s.ChatID.Encode(e)
-
-	e.FieldStart("voice")
-	e.Str(s.Voice)
-	if s.Caption.Set {
-		e.FieldStart("caption")
-		s.Caption.Encode(e)
-	}
-	if s.ParseMode.Set {
-		e.FieldStart("parse_mode")
-		s.ParseMode.Encode(e)
-	}
-	if s.CaptionEntities != nil {
-		e.FieldStart("caption_entities")
-		e.ArrStart()
-		for _, elem := range s.CaptionEntities {
-			elem.Encode(e)
+	var (
+		first = true
+		_     = first
+	)
+	{
+		if !first {
+			e.Comma()
 		}
-		e.ArrEnd()
+		first = false
+
+		e.RawStr("\"chat_id\"" + ":")
+		s.ChatID.Encode(e)
 	}
-	if s.Duration.Set {
-		e.FieldStart("duration")
-		s.Duration.Encode(e)
+	{
+		e.Comma()
+
+		e.RawStr("\"voice\"" + ":")
+		e.Str(s.Voice)
 	}
-	if s.DisableNotification.Set {
-		e.FieldStart("disable_notification")
-		s.DisableNotification.Encode(e)
+	{
+		if s.Caption.Set {
+			e.Comma()
+		}
+		if s.Caption.Set {
+			e.RawStr("\"caption\"" + ":")
+			s.Caption.Encode(e)
+		}
 	}
-	if s.ReplyToMessageID.Set {
-		e.FieldStart("reply_to_message_id")
-		s.ReplyToMessageID.Encode(e)
+	{
+		if s.ParseMode.Set {
+			e.Comma()
+		}
+		if s.ParseMode.Set {
+			e.RawStr("\"parse_mode\"" + ":")
+			s.ParseMode.Encode(e)
+		}
 	}
-	if s.AllowSendingWithoutReply.Set {
-		e.FieldStart("allow_sending_without_reply")
-		s.AllowSendingWithoutReply.Encode(e)
+	{
+		if s.CaptionEntities != nil {
+			e.Comma()
+		}
+		if s.CaptionEntities != nil {
+			e.RawStr("\"caption_entities\"" + ":")
+			e.ArrStart()
+			if len(s.CaptionEntities) >= 1 {
+				// Encode first element without comma.
+				{
+					elem := s.CaptionEntities[0]
+					elem.Encode(e)
+				}
+				for _, elem := range s.CaptionEntities[1:] {
+					e.Comma()
+					elem.Encode(e)
+				}
+			}
+			e.ArrEnd()
+		}
 	}
-	if s.ReplyMarkup.Set {
-		e.FieldStart("reply_markup")
-		s.ReplyMarkup.Encode(e)
+	{
+		if s.Duration.Set {
+			e.Comma()
+		}
+		if s.Duration.Set {
+			e.RawStr("\"duration\"" + ":")
+			s.Duration.Encode(e)
+		}
+	}
+	{
+		if s.DisableNotification.Set {
+			e.Comma()
+		}
+		if s.DisableNotification.Set {
+			e.RawStr("\"disable_notification\"" + ":")
+			s.DisableNotification.Encode(e)
+		}
+	}
+	{
+		if s.ReplyToMessageID.Set {
+			e.Comma()
+		}
+		if s.ReplyToMessageID.Set {
+			e.RawStr("\"reply_to_message_id\"" + ":")
+			s.ReplyToMessageID.Encode(e)
+		}
+	}
+	{
+		if s.AllowSendingWithoutReply.Set {
+			e.Comma()
+		}
+		if s.AllowSendingWithoutReply.Set {
+			e.RawStr("\"allow_sending_without_reply\"" + ":")
+			s.AllowSendingWithoutReply.Encode(e)
+		}
+	}
+	{
+		if s.ReplyMarkup.Set {
+			e.Comma()
+		}
+		if s.ReplyMarkup.Set {
+			e.RawStr("\"reply_markup\"" + ":")
+			s.ReplyMarkup.Encode(e)
+		}
 	}
 	e.ObjEnd()
 }
@@ -17999,7 +24339,7 @@ func (s *SendVoice) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes SendVoiceReplyMarkup as json.
-func (s SendVoiceReplyMarkup) Encode(e *jx.Encoder) {
+func (s SendVoiceReplyMarkup) Encode(e *jx.Writer) {
 	switch s.Type {
 	case InlineKeyboardMarkupSendVoiceReplyMarkup:
 		s.InlineKeyboardMarkup.Encode(e)
@@ -18085,17 +24425,33 @@ func (s *SendVoiceReplyMarkup) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s SetChatAdministratorCustomTitle) Encode(e *jx.Encoder) {
+func (s SetChatAdministratorCustomTitle) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+	{
+		if !first {
+			e.Comma()
+		}
+		first = false
 
-	e.FieldStart("chat_id")
-	s.ChatID.Encode(e)
+		e.RawStr("\"chat_id\"" + ":")
+		s.ChatID.Encode(e)
+	}
+	{
+		e.Comma()
 
-	e.FieldStart("user_id")
-	e.Int64(s.UserID)
+		e.RawStr("\"user_id\"" + ":")
+		e.Int64(s.UserID)
+	}
+	{
+		e.Comma()
 
-	e.FieldStart("custom_title")
-	e.Str(s.CustomTitle)
+		e.RawStr("\"custom_title\"" + ":")
+		e.Str(s.CustomTitle)
+	}
 	e.ObjEnd()
 }
 
@@ -18130,14 +24486,29 @@ func (s *SetChatAdministratorCustomTitle) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s SetChatDescription) Encode(e *jx.Encoder) {
+func (s SetChatDescription) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+	{
+		if !first {
+			e.Comma()
+		}
+		first = false
 
-	e.FieldStart("chat_id")
-	s.ChatID.Encode(e)
-	if s.Description.Set {
-		e.FieldStart("description")
-		s.Description.Encode(e)
+		e.RawStr("\"chat_id\"" + ":")
+		s.ChatID.Encode(e)
+	}
+	{
+		if s.Description.Set {
+			e.Comma()
+		}
+		if s.Description.Set {
+			e.RawStr("\"description\"" + ":")
+			s.Description.Encode(e)
+		}
 	}
 	e.ObjEnd()
 }
@@ -18166,14 +24537,27 @@ func (s *SetChatDescription) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s SetChatPermissions) Encode(e *jx.Encoder) {
+func (s SetChatPermissions) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+	{
+		if !first {
+			e.Comma()
+		}
+		first = false
 
-	e.FieldStart("chat_id")
-	s.ChatID.Encode(e)
+		e.RawStr("\"chat_id\"" + ":")
+		s.ChatID.Encode(e)
+	}
+	{
+		e.Comma()
 
-	e.FieldStart("permissions")
-	s.Permissions.Encode(e)
+		e.RawStr("\"permissions\"" + ":")
+		s.Permissions.Encode(e)
+	}
 	e.ObjEnd()
 }
 
@@ -18200,14 +24584,27 @@ func (s *SetChatPermissions) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s SetChatPhoto) Encode(e *jx.Encoder) {
+func (s SetChatPhoto) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+	{
+		if !first {
+			e.Comma()
+		}
+		first = false
 
-	e.FieldStart("chat_id")
-	s.ChatID.Encode(e)
+		e.RawStr("\"chat_id\"" + ":")
+		s.ChatID.Encode(e)
+	}
+	{
+		e.Comma()
 
-	e.FieldStart("photo")
-	e.Str(s.Photo)
+		e.RawStr("\"photo\"" + ":")
+		e.Str(s.Photo)
+	}
 	e.ObjEnd()
 }
 
@@ -18236,14 +24633,27 @@ func (s *SetChatPhoto) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s SetChatStickerSet) Encode(e *jx.Encoder) {
+func (s SetChatStickerSet) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+	{
+		if !first {
+			e.Comma()
+		}
+		first = false
 
-	e.FieldStart("chat_id")
-	s.ChatID.Encode(e)
+		e.RawStr("\"chat_id\"" + ":")
+		s.ChatID.Encode(e)
+	}
+	{
+		e.Comma()
 
-	e.FieldStart("sticker_set_name")
-	e.Str(s.StickerSetName)
+		e.RawStr("\"sticker_set_name\"" + ":")
+		e.Str(s.StickerSetName)
+	}
 	e.ObjEnd()
 }
 
@@ -18272,14 +24682,27 @@ func (s *SetChatStickerSet) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s SetChatTitle) Encode(e *jx.Encoder) {
+func (s SetChatTitle) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+	{
+		if !first {
+			e.Comma()
+		}
+		first = false
 
-	e.FieldStart("chat_id")
-	s.ChatID.Encode(e)
+		e.RawStr("\"chat_id\"" + ":")
+		s.ChatID.Encode(e)
+	}
+	{
+		e.Comma()
 
-	e.FieldStart("title")
-	e.Str(s.Title)
+		e.RawStr("\"title\"" + ":")
+		e.Str(s.Title)
+	}
 	e.ObjEnd()
 }
 
@@ -18308,33 +24731,71 @@ func (s *SetChatTitle) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s SetGameScore) Encode(e *jx.Encoder) {
+func (s SetGameScore) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+	{
+		if !first {
+			e.Comma()
+		}
+		first = false
 
-	e.FieldStart("user_id")
-	e.Int64(s.UserID)
+		e.RawStr("\"user_id\"" + ":")
+		e.Int64(s.UserID)
+	}
+	{
+		e.Comma()
 
-	e.FieldStart("score")
-	e.Int(s.Score)
-	if s.Force.Set {
-		e.FieldStart("force")
-		s.Force.Encode(e)
+		e.RawStr("\"score\"" + ":")
+		e.Int(s.Score)
 	}
-	if s.DisableEditMessage.Set {
-		e.FieldStart("disable_edit_message")
-		s.DisableEditMessage.Encode(e)
+	{
+		if s.Force.Set {
+			e.Comma()
+		}
+		if s.Force.Set {
+			e.RawStr("\"force\"" + ":")
+			s.Force.Encode(e)
+		}
 	}
-	if s.ChatID.Set {
-		e.FieldStart("chat_id")
-		s.ChatID.Encode(e)
+	{
+		if s.DisableEditMessage.Set {
+			e.Comma()
+		}
+		if s.DisableEditMessage.Set {
+			e.RawStr("\"disable_edit_message\"" + ":")
+			s.DisableEditMessage.Encode(e)
+		}
 	}
-	if s.MessageID.Set {
-		e.FieldStart("message_id")
-		s.MessageID.Encode(e)
+	{
+		if s.ChatID.Set {
+			e.Comma()
+		}
+		if s.ChatID.Set {
+			e.RawStr("\"chat_id\"" + ":")
+			s.ChatID.Encode(e)
+		}
 	}
-	if s.InlineMessageID.Set {
-		e.FieldStart("inline_message_id")
-		s.InlineMessageID.Encode(e)
+	{
+		if s.MessageID.Set {
+			e.Comma()
+		}
+		if s.MessageID.Set {
+			e.RawStr("\"message_id\"" + ":")
+			s.MessageID.Encode(e)
+		}
+	}
+	{
+		if s.InlineMessageID.Set {
+			e.Comma()
+		}
+		if s.InlineMessageID.Set {
+			e.RawStr("\"inline_message_id\"" + ":")
+			s.InlineMessageID.Encode(e)
+		}
 	}
 	e.ObjEnd()
 }
@@ -18391,22 +24852,50 @@ func (s *SetGameScore) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s SetMyCommands) Encode(e *jx.Encoder) {
+func (s SetMyCommands) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+	{
+		if !first {
+			e.Comma()
+		}
+		first = false
 
-	e.FieldStart("commands")
-	e.ArrStart()
-	for _, elem := range s.Commands {
-		elem.Encode(e)
+		e.RawStr("\"commands\"" + ":")
+		e.ArrStart()
+		if len(s.Commands) >= 1 {
+			// Encode first element without comma.
+			{
+				elem := s.Commands[0]
+				elem.Encode(e)
+			}
+			for _, elem := range s.Commands[1:] {
+				e.Comma()
+				elem.Encode(e)
+			}
+		}
+		e.ArrEnd()
 	}
-	e.ArrEnd()
-	if s.Scope.Set {
-		e.FieldStart("scope")
-		s.Scope.Encode(e)
+	{
+		if s.Scope.Set {
+			e.Comma()
+		}
+		if s.Scope.Set {
+			e.RawStr("\"scope\"" + ":")
+			s.Scope.Encode(e)
+		}
 	}
-	if s.LanguageCode.Set {
-		e.FieldStart("language_code")
-		s.LanguageCode.Encode(e)
+	{
+		if s.LanguageCode.Set {
+			e.Comma()
+		}
+		if s.LanguageCode.Set {
+			e.RawStr("\"language_code\"" + ":")
+			s.LanguageCode.Encode(e)
+		}
 	}
 	e.ObjEnd()
 }
@@ -18448,18 +24937,39 @@ func (s *SetMyCommands) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s SetPassportDataErrors) Encode(e *jx.Encoder) {
+func (s SetPassportDataErrors) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+	{
+		if !first {
+			e.Comma()
+		}
+		first = false
 
-	e.FieldStart("user_id")
-	e.Int64(s.UserID)
-
-	e.FieldStart("errors")
-	e.ArrStart()
-	for _, elem := range s.Errors {
-		elem.Encode(e)
+		e.RawStr("\"user_id\"" + ":")
+		e.Int64(s.UserID)
 	}
-	e.ArrEnd()
+	{
+		e.Comma()
+
+		e.RawStr("\"errors\"" + ":")
+		e.ArrStart()
+		if len(s.Errors) >= 1 {
+			// Encode first element without comma.
+			{
+				elem := s.Errors[0]
+				elem.Encode(e)
+			}
+			for _, elem := range s.Errors[1:] {
+				e.Comma()
+				elem.Encode(e)
+			}
+		}
+		e.ArrEnd()
+	}
 	e.ObjEnd()
 }
 
@@ -18496,14 +25006,27 @@ func (s *SetPassportDataErrors) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s SetStickerPositionInSet) Encode(e *jx.Encoder) {
+func (s SetStickerPositionInSet) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+	{
+		if !first {
+			e.Comma()
+		}
+		first = false
 
-	e.FieldStart("sticker")
-	e.Str(s.Sticker)
+		e.RawStr("\"sticker\"" + ":")
+		e.Str(s.Sticker)
+	}
+	{
+		e.Comma()
 
-	e.FieldStart("position")
-	e.Int(s.Position)
+		e.RawStr("\"position\"" + ":")
+		e.Int(s.Position)
+	}
 	e.ObjEnd()
 }
 
@@ -18534,17 +25057,35 @@ func (s *SetStickerPositionInSet) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s SetStickerSetThumb) Encode(e *jx.Encoder) {
+func (s SetStickerSetThumb) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+	{
+		if !first {
+			e.Comma()
+		}
+		first = false
 
-	e.FieldStart("name")
-	e.Str(s.Name)
+		e.RawStr("\"name\"" + ":")
+		e.Str(s.Name)
+	}
+	{
+		e.Comma()
 
-	e.FieldStart("user_id")
-	e.Int64(s.UserID)
-	if s.Thumb.Set {
-		e.FieldStart("thumb")
-		s.Thumb.Encode(e)
+		e.RawStr("\"user_id\"" + ":")
+		e.Int64(s.UserID)
+	}
+	{
+		if s.Thumb.Set {
+			e.Comma()
+		}
+		if s.Thumb.Set {
+			e.RawStr("\"thumb\"" + ":")
+			s.Thumb.Encode(e)
+		}
 	}
 	e.ObjEnd()
 }
@@ -18581,34 +25122,77 @@ func (s *SetStickerSetThumb) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s SetWebhook) Encode(e *jx.Encoder) {
+func (s SetWebhook) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	e.FieldStart("url")
-	json.EncodeURI(e, s.URL)
-	if s.Certificate.Set {
-		e.FieldStart("certificate")
-		s.Certificate.Encode(e)
-	}
-	if s.IPAddress.Set {
-		e.FieldStart("ip_address")
-		s.IPAddress.Encode(e)
-	}
-	if s.MaxConnections.Set {
-		e.FieldStart("max_connections")
-		s.MaxConnections.Encode(e)
-	}
-	if s.AllowedUpdates != nil {
-		e.FieldStart("allowed_updates")
-		e.ArrStart()
-		for _, elem := range s.AllowedUpdates {
-			e.Str(elem)
+	var (
+		first = true
+		_     = first
+	)
+	{
+		if !first {
+			e.Comma()
 		}
-		e.ArrEnd()
+		first = false
+
+		e.RawStr("\"url\"" + ":")
+		json.EncodeURI(e, s.URL)
 	}
-	if s.DropPendingUpdates.Set {
-		e.FieldStart("drop_pending_updates")
-		s.DropPendingUpdates.Encode(e)
+	{
+		if s.Certificate.Set {
+			e.Comma()
+		}
+		if s.Certificate.Set {
+			e.RawStr("\"certificate\"" + ":")
+			s.Certificate.Encode(e)
+		}
+	}
+	{
+		if s.IPAddress.Set {
+			e.Comma()
+		}
+		if s.IPAddress.Set {
+			e.RawStr("\"ip_address\"" + ":")
+			s.IPAddress.Encode(e)
+		}
+	}
+	{
+		if s.MaxConnections.Set {
+			e.Comma()
+		}
+		if s.MaxConnections.Set {
+			e.RawStr("\"max_connections\"" + ":")
+			s.MaxConnections.Encode(e)
+		}
+	}
+	{
+		if s.AllowedUpdates != nil {
+			e.Comma()
+		}
+		if s.AllowedUpdates != nil {
+			e.RawStr("\"allowed_updates\"" + ":")
+			e.ArrStart()
+			if len(s.AllowedUpdates) >= 1 {
+				// Encode first element without comma.
+				{
+					elem := s.AllowedUpdates[0]
+					e.Str(elem)
+				}
+				for _, elem := range s.AllowedUpdates[1:] {
+					e.Comma()
+					e.Str(elem)
+				}
+			}
+			e.ArrEnd()
+		}
+	}
+	{
+		if s.DropPendingUpdates.Set {
+			e.Comma()
+		}
+		if s.DropPendingUpdates.Set {
+			e.RawStr("\"drop_pending_updates\"" + ":")
+			s.DropPendingUpdates.Encode(e)
+		}
 	}
 	e.ObjEnd()
 }
@@ -18668,26 +25252,51 @@ func (s *SetWebhook) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s ShippingAddress) Encode(e *jx.Encoder) {
+func (s ShippingAddress) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+	{
+		if !first {
+			e.Comma()
+		}
+		first = false
 
-	e.FieldStart("country_code")
-	e.Str(s.CountryCode)
+		e.RawStr("\"country_code\"" + ":")
+		e.Str(s.CountryCode)
+	}
+	{
+		e.Comma()
 
-	e.FieldStart("state")
-	e.Str(s.State)
+		e.RawStr("\"state\"" + ":")
+		e.Str(s.State)
+	}
+	{
+		e.Comma()
 
-	e.FieldStart("city")
-	e.Str(s.City)
+		e.RawStr("\"city\"" + ":")
+		e.Str(s.City)
+	}
+	{
+		e.Comma()
 
-	e.FieldStart("street_line1")
-	e.Str(s.StreetLine1)
+		e.RawStr("\"street_line1\"" + ":")
+		e.Str(s.StreetLine1)
+	}
+	{
+		e.Comma()
 
-	e.FieldStart("street_line2")
-	e.Str(s.StreetLine2)
+		e.RawStr("\"street_line2\"" + ":")
+		e.Str(s.StreetLine2)
+	}
+	{
+		e.Comma()
 
-	e.FieldStart("post_code")
-	e.Str(s.PostCode)
+		e.RawStr("\"post_code\"" + ":")
+		e.Str(s.PostCode)
+	}
 	e.ObjEnd()
 }
 
@@ -18742,21 +25351,45 @@ func (s *ShippingAddress) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s ShippingOption) Encode(e *jx.Encoder) {
+func (s ShippingOption) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+	{
+		if !first {
+			e.Comma()
+		}
+		first = false
 
-	e.FieldStart("id")
-	e.Str(s.ID)
-
-	e.FieldStart("title")
-	e.Str(s.Title)
-
-	e.FieldStart("prices")
-	e.ArrStart()
-	for _, elem := range s.Prices {
-		elem.Encode(e)
+		e.RawStr("\"id\"" + ":")
+		e.Str(s.ID)
 	}
-	e.ArrEnd()
+	{
+		e.Comma()
+
+		e.RawStr("\"title\"" + ":")
+		e.Str(s.Title)
+	}
+	{
+		e.Comma()
+
+		e.RawStr("\"prices\"" + ":")
+		e.ArrStart()
+		if len(s.Prices) >= 1 {
+			// Encode first element without comma.
+			{
+				elem := s.Prices[0]
+				elem.Encode(e)
+			}
+			for _, elem := range s.Prices[1:] {
+				e.Comma()
+				elem.Encode(e)
+			}
+		}
+		e.ArrEnd()
+	}
 	e.ObjEnd()
 }
 
@@ -18799,20 +25432,39 @@ func (s *ShippingOption) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s ShippingQuery) Encode(e *jx.Encoder) {
+func (s ShippingQuery) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+	{
+		if !first {
+			e.Comma()
+		}
+		first = false
 
-	e.FieldStart("id")
-	e.Str(s.ID)
+		e.RawStr("\"id\"" + ":")
+		e.Str(s.ID)
+	}
+	{
+		e.Comma()
 
-	e.FieldStart("from")
-	s.From.Encode(e)
+		e.RawStr("\"from\"" + ":")
+		s.From.Encode(e)
+	}
+	{
+		e.Comma()
 
-	e.FieldStart("invoice_payload")
-	e.Str(s.InvoicePayload)
+		e.RawStr("\"invoice_payload\"" + ":")
+		e.Str(s.InvoicePayload)
+	}
+	{
+		e.Comma()
 
-	e.FieldStart("shipping_address")
-	s.ShippingAddress.Encode(e)
+		e.RawStr("\"shipping_address\"" + ":")
+		s.ShippingAddress.Encode(e)
+	}
 	e.ObjEnd()
 }
 
@@ -18851,42 +25503,89 @@ func (s *ShippingQuery) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s Sticker) Encode(e *jx.Encoder) {
+func (s Sticker) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+	{
+		if !first {
+			e.Comma()
+		}
+		first = false
 
-	e.FieldStart("file_id")
-	e.Str(s.FileID)
-
-	e.FieldStart("file_unique_id")
-	e.Str(s.FileUniqueID)
-
-	e.FieldStart("width")
-	e.Int(s.Width)
-
-	e.FieldStart("height")
-	e.Int(s.Height)
-
-	e.FieldStart("is_animated")
-	e.Bool(s.IsAnimated)
-	if s.Thumb.Set {
-		e.FieldStart("thumb")
-		s.Thumb.Encode(e)
+		e.RawStr("\"file_id\"" + ":")
+		e.Str(s.FileID)
 	}
-	if s.Emoji.Set {
-		e.FieldStart("emoji")
-		s.Emoji.Encode(e)
+	{
+		e.Comma()
+
+		e.RawStr("\"file_unique_id\"" + ":")
+		e.Str(s.FileUniqueID)
 	}
-	if s.SetName.Set {
-		e.FieldStart("set_name")
-		s.SetName.Encode(e)
+	{
+		e.Comma()
+
+		e.RawStr("\"width\"" + ":")
+		e.Int(s.Width)
 	}
-	if s.MaskPosition.Set {
-		e.FieldStart("mask_position")
-		s.MaskPosition.Encode(e)
+	{
+		e.Comma()
+
+		e.RawStr("\"height\"" + ":")
+		e.Int(s.Height)
 	}
-	if s.FileSize.Set {
-		e.FieldStart("file_size")
-		s.FileSize.Encode(e)
+	{
+		e.Comma()
+
+		e.RawStr("\"is_animated\"" + ":")
+		e.Bool(s.IsAnimated)
+	}
+	{
+		if s.Thumb.Set {
+			e.Comma()
+		}
+		if s.Thumb.Set {
+			e.RawStr("\"thumb\"" + ":")
+			s.Thumb.Encode(e)
+		}
+	}
+	{
+		if s.Emoji.Set {
+			e.Comma()
+		}
+		if s.Emoji.Set {
+			e.RawStr("\"emoji\"" + ":")
+			s.Emoji.Encode(e)
+		}
+	}
+	{
+		if s.SetName.Set {
+			e.Comma()
+		}
+		if s.SetName.Set {
+			e.RawStr("\"set_name\"" + ":")
+			s.SetName.Encode(e)
+		}
+	}
+	{
+		if s.MaskPosition.Set {
+			e.Comma()
+		}
+		if s.MaskPosition.Set {
+			e.RawStr("\"mask_position\"" + ":")
+			s.MaskPosition.Encode(e)
+		}
+	}
+	{
+		if s.FileSize.Set {
+			e.Comma()
+		}
+		if s.FileSize.Set {
+			e.RawStr("\"file_size\"" + ":")
+			s.FileSize.Encode(e)
+		}
 	}
 	e.ObjEnd()
 }
@@ -18961,23 +25660,59 @@ func (s *Sticker) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s StopMessageLiveLocation) Encode(e *jx.Encoder) {
+func (s StopMessageLiveLocation) Encode(e *jx.Writer) {
 	e.ObjStart()
-	if s.ChatID.Set {
-		e.FieldStart("chat_id")
-		s.ChatID.Encode(e)
+	var (
+		first = true
+		_     = first
+	)
+	{
+		if s.ChatID.Set {
+			if !first {
+				e.Comma()
+			}
+			first = false
+		}
+		if s.ChatID.Set {
+			e.RawStr("\"chat_id\"" + ":")
+			s.ChatID.Encode(e)
+		}
 	}
-	if s.MessageID.Set {
-		e.FieldStart("message_id")
-		s.MessageID.Encode(e)
+	{
+		if s.MessageID.Set {
+			if !first {
+				e.Comma()
+			}
+			first = false
+		}
+		if s.MessageID.Set {
+			e.RawStr("\"message_id\"" + ":")
+			s.MessageID.Encode(e)
+		}
 	}
-	if s.InlineMessageID.Set {
-		e.FieldStart("inline_message_id")
-		s.InlineMessageID.Encode(e)
+	{
+		if s.InlineMessageID.Set {
+			if !first {
+				e.Comma()
+			}
+			first = false
+		}
+		if s.InlineMessageID.Set {
+			e.RawStr("\"inline_message_id\"" + ":")
+			s.InlineMessageID.Encode(e)
+		}
 	}
-	if s.ReplyMarkup.Set {
-		e.FieldStart("reply_markup")
-		s.ReplyMarkup.Encode(e)
+	{
+		if s.ReplyMarkup.Set {
+			if !first {
+				e.Comma()
+			}
+			first = false
+		}
+		if s.ReplyMarkup.Set {
+			e.RawStr("\"reply_markup\"" + ":")
+			s.ReplyMarkup.Encode(e)
+		}
 	}
 	e.ObjEnd()
 }
@@ -19017,17 +25752,35 @@ func (s *StopMessageLiveLocation) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s StopPoll) Encode(e *jx.Encoder) {
+func (s StopPoll) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+	{
+		if !first {
+			e.Comma()
+		}
+		first = false
 
-	e.FieldStart("chat_id")
-	s.ChatID.Encode(e)
+		e.RawStr("\"chat_id\"" + ":")
+		s.ChatID.Encode(e)
+	}
+	{
+		e.Comma()
 
-	e.FieldStart("message_id")
-	e.Int(s.MessageID)
-	if s.ReplyMarkup.Set {
-		e.FieldStart("reply_markup")
-		s.ReplyMarkup.Encode(e)
+		e.RawStr("\"message_id\"" + ":")
+		e.Int(s.MessageID)
+	}
+	{
+		if s.ReplyMarkup.Set {
+			e.Comma()
+		}
+		if s.ReplyMarkup.Set {
+			e.RawStr("\"reply_markup\"" + ":")
+			s.ReplyMarkup.Encode(e)
+		}
 	}
 	e.ObjEnd()
 }
@@ -19062,31 +25815,63 @@ func (s *StopPoll) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s SuccessfulPayment) Encode(e *jx.Encoder) {
+func (s SuccessfulPayment) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+	{
+		if !first {
+			e.Comma()
+		}
+		first = false
 
-	e.FieldStart("currency")
-	e.Str(s.Currency)
-
-	e.FieldStart("total_amount")
-	e.Int(s.TotalAmount)
-
-	e.FieldStart("invoice_payload")
-	e.Str(s.InvoicePayload)
-	if s.ShippingOptionID.Set {
-		e.FieldStart("shipping_option_id")
-		s.ShippingOptionID.Encode(e)
+		e.RawStr("\"currency\"" + ":")
+		e.Str(s.Currency)
 	}
-	if s.OrderInfo.Set {
-		e.FieldStart("order_info")
-		s.OrderInfo.Encode(e)
+	{
+		e.Comma()
+
+		e.RawStr("\"total_amount\"" + ":")
+		e.Int(s.TotalAmount)
 	}
+	{
+		e.Comma()
 
-	e.FieldStart("telegram_payment_charge_id")
-	e.Str(s.TelegramPaymentChargeID)
+		e.RawStr("\"invoice_payload\"" + ":")
+		e.Str(s.InvoicePayload)
+	}
+	{
+		if s.ShippingOptionID.Set {
+			e.Comma()
+		}
+		if s.ShippingOptionID.Set {
+			e.RawStr("\"shipping_option_id\"" + ":")
+			s.ShippingOptionID.Encode(e)
+		}
+	}
+	{
+		if s.OrderInfo.Set {
+			e.Comma()
+		}
+		if s.OrderInfo.Set {
+			e.RawStr("\"order_info\"" + ":")
+			s.OrderInfo.Encode(e)
+		}
+	}
+	{
+		e.Comma()
 
-	e.FieldStart("provider_payment_charge_id")
-	e.Str(s.ProviderPaymentChargeID)
+		e.RawStr("\"telegram_payment_charge_id\"" + ":")
+		e.Str(s.TelegramPaymentChargeID)
+	}
+	{
+		e.Comma()
+
+		e.RawStr("\"provider_payment_charge_id\"" + ":")
+		e.Str(s.ProviderPaymentChargeID)
+	}
 	e.ObjEnd()
 }
 
@@ -19145,17 +25930,35 @@ func (s *SuccessfulPayment) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s UnbanChatMember) Encode(e *jx.Encoder) {
+func (s UnbanChatMember) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+	{
+		if !first {
+			e.Comma()
+		}
+		first = false
 
-	e.FieldStart("chat_id")
-	s.ChatID.Encode(e)
+		e.RawStr("\"chat_id\"" + ":")
+		s.ChatID.Encode(e)
+	}
+	{
+		e.Comma()
 
-	e.FieldStart("user_id")
-	e.Int64(s.UserID)
-	if s.OnlyIfBanned.Set {
-		e.FieldStart("only_if_banned")
-		s.OnlyIfBanned.Encode(e)
+		e.RawStr("\"user_id\"" + ":")
+		e.Int64(s.UserID)
+	}
+	{
+		if s.OnlyIfBanned.Set {
+			e.Comma()
+		}
+		if s.OnlyIfBanned.Set {
+			e.RawStr("\"only_if_banned\"" + ":")
+			s.OnlyIfBanned.Encode(e)
+		}
 	}
 	e.ObjEnd()
 }
@@ -19190,14 +25993,27 @@ func (s *UnbanChatMember) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s UnbanChatSenderChat) Encode(e *jx.Encoder) {
+func (s UnbanChatSenderChat) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+	{
+		if !first {
+			e.Comma()
+		}
+		first = false
 
-	e.FieldStart("chat_id")
-	s.ChatID.Encode(e)
+		e.RawStr("\"chat_id\"" + ":")
+		s.ChatID.Encode(e)
+	}
+	{
+		e.Comma()
 
-	e.FieldStart("sender_chat_id")
-	e.Int64(s.SenderChatID)
+		e.RawStr("\"sender_chat_id\"" + ":")
+		e.Int64(s.SenderChatID)
+	}
 	e.ObjEnd()
 }
 
@@ -19226,11 +26042,21 @@ func (s *UnbanChatSenderChat) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s UnpinAllChatMessages) Encode(e *jx.Encoder) {
+func (s UnpinAllChatMessages) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+	{
+		if !first {
+			e.Comma()
+		}
+		first = false
 
-	e.FieldStart("chat_id")
-	s.ChatID.Encode(e)
+		e.RawStr("\"chat_id\"" + ":")
+		s.ChatID.Encode(e)
+	}
 	e.ObjEnd()
 }
 
@@ -19253,14 +26079,29 @@ func (s *UnpinAllChatMessages) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s UnpinChatMessage) Encode(e *jx.Encoder) {
+func (s UnpinChatMessage) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+	{
+		if !first {
+			e.Comma()
+		}
+		first = false
 
-	e.FieldStart("chat_id")
-	s.ChatID.Encode(e)
-	if s.MessageID.Set {
-		e.FieldStart("message_id")
-		s.MessageID.Encode(e)
+		e.RawStr("\"chat_id\"" + ":")
+		s.ChatID.Encode(e)
+	}
+	{
+		if s.MessageID.Set {
+			e.Comma()
+		}
+		if s.MessageID.Set {
+			e.RawStr("\"message_id\"" + ":")
+			s.MessageID.Encode(e)
+		}
 	}
 	e.ObjEnd()
 }
@@ -19289,66 +26130,146 @@ func (s *UnpinChatMessage) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s Update) Encode(e *jx.Encoder) {
+func (s Update) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+	{
+		if !first {
+			e.Comma()
+		}
+		first = false
 
-	e.FieldStart("update_id")
-	e.Int(s.UpdateID)
-	if s.Message.Set {
-		e.FieldStart("message")
-		s.Message.Encode(e)
+		e.RawStr("\"update_id\"" + ":")
+		e.Int(s.UpdateID)
 	}
-	if s.EditedMessage.Set {
-		e.FieldStart("edited_message")
-		s.EditedMessage.Encode(e)
+	{
+		if s.Message.Set {
+			e.Comma()
+		}
+		if s.Message.Set {
+			e.RawStr("\"message\"" + ":")
+			s.Message.Encode(e)
+		}
 	}
-	if s.ChannelPost.Set {
-		e.FieldStart("channel_post")
-		s.ChannelPost.Encode(e)
+	{
+		if s.EditedMessage.Set {
+			e.Comma()
+		}
+		if s.EditedMessage.Set {
+			e.RawStr("\"edited_message\"" + ":")
+			s.EditedMessage.Encode(e)
+		}
 	}
-	if s.EditedChannelPost.Set {
-		e.FieldStart("edited_channel_post")
-		s.EditedChannelPost.Encode(e)
+	{
+		if s.ChannelPost.Set {
+			e.Comma()
+		}
+		if s.ChannelPost.Set {
+			e.RawStr("\"channel_post\"" + ":")
+			s.ChannelPost.Encode(e)
+		}
 	}
-	if s.InlineQuery.Set {
-		e.FieldStart("inline_query")
-		s.InlineQuery.Encode(e)
+	{
+		if s.EditedChannelPost.Set {
+			e.Comma()
+		}
+		if s.EditedChannelPost.Set {
+			e.RawStr("\"edited_channel_post\"" + ":")
+			s.EditedChannelPost.Encode(e)
+		}
 	}
-	if s.ChosenInlineResult.Set {
-		e.FieldStart("chosen_inline_result")
-		s.ChosenInlineResult.Encode(e)
+	{
+		if s.InlineQuery.Set {
+			e.Comma()
+		}
+		if s.InlineQuery.Set {
+			e.RawStr("\"inline_query\"" + ":")
+			s.InlineQuery.Encode(e)
+		}
 	}
-	if s.CallbackQuery.Set {
-		e.FieldStart("callback_query")
-		s.CallbackQuery.Encode(e)
+	{
+		if s.ChosenInlineResult.Set {
+			e.Comma()
+		}
+		if s.ChosenInlineResult.Set {
+			e.RawStr("\"chosen_inline_result\"" + ":")
+			s.ChosenInlineResult.Encode(e)
+		}
 	}
-	if s.ShippingQuery.Set {
-		e.FieldStart("shipping_query")
-		s.ShippingQuery.Encode(e)
+	{
+		if s.CallbackQuery.Set {
+			e.Comma()
+		}
+		if s.CallbackQuery.Set {
+			e.RawStr("\"callback_query\"" + ":")
+			s.CallbackQuery.Encode(e)
+		}
 	}
-	if s.PreCheckoutQuery.Set {
-		e.FieldStart("pre_checkout_query")
-		s.PreCheckoutQuery.Encode(e)
+	{
+		if s.ShippingQuery.Set {
+			e.Comma()
+		}
+		if s.ShippingQuery.Set {
+			e.RawStr("\"shipping_query\"" + ":")
+			s.ShippingQuery.Encode(e)
+		}
 	}
-	if s.Poll.Set {
-		e.FieldStart("poll")
-		s.Poll.Encode(e)
+	{
+		if s.PreCheckoutQuery.Set {
+			e.Comma()
+		}
+		if s.PreCheckoutQuery.Set {
+			e.RawStr("\"pre_checkout_query\"" + ":")
+			s.PreCheckoutQuery.Encode(e)
+		}
 	}
-	if s.PollAnswer.Set {
-		e.FieldStart("poll_answer")
-		s.PollAnswer.Encode(e)
+	{
+		if s.Poll.Set {
+			e.Comma()
+		}
+		if s.Poll.Set {
+			e.RawStr("\"poll\"" + ":")
+			s.Poll.Encode(e)
+		}
 	}
-	if s.MyChatMember.Set {
-		e.FieldStart("my_chat_member")
-		s.MyChatMember.Encode(e)
+	{
+		if s.PollAnswer.Set {
+			e.Comma()
+		}
+		if s.PollAnswer.Set {
+			e.RawStr("\"poll_answer\"" + ":")
+			s.PollAnswer.Encode(e)
+		}
 	}
-	if s.ChatMember.Set {
-		e.FieldStart("chat_member")
-		s.ChatMember.Encode(e)
+	{
+		if s.MyChatMember.Set {
+			e.Comma()
+		}
+		if s.MyChatMember.Set {
+			e.RawStr("\"my_chat_member\"" + ":")
+			s.MyChatMember.Encode(e)
+		}
 	}
-	if s.ChatJoinRequest.Set {
-		e.FieldStart("chat_join_request")
-		s.ChatJoinRequest.Encode(e)
+	{
+		if s.ChatMember.Set {
+			e.Comma()
+		}
+		if s.ChatMember.Set {
+			e.RawStr("\"chat_member\"" + ":")
+			s.ChatMember.Encode(e)
+		}
+	}
+	{
+		if s.ChatJoinRequest.Set {
+			e.Comma()
+		}
+		if s.ChatJoinRequest.Set {
+			e.RawStr("\"chat_join_request\"" + ":")
+			s.ChatJoinRequest.Encode(e)
+		}
 	}
 	e.ObjEnd()
 }
@@ -19444,14 +26365,27 @@ func (s *Update) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s UploadStickerFile) Encode(e *jx.Encoder) {
+func (s UploadStickerFile) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+	{
+		if !first {
+			e.Comma()
+		}
+		first = false
 
-	e.FieldStart("user_id")
-	e.Int64(s.UserID)
+		e.RawStr("\"user_id\"" + ":")
+		e.Int64(s.UserID)
+	}
+	{
+		e.Comma()
 
-	e.FieldStart("png_sticker")
-	e.Str(s.PNGSticker)
+		e.RawStr("\"png_sticker\"" + ":")
+		e.Str(s.PNGSticker)
+	}
 	e.ObjEnd()
 }
 
@@ -19482,40 +26416,86 @@ func (s *UploadStickerFile) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s User) Encode(e *jx.Encoder) {
+func (s User) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+	{
+		if !first {
+			e.Comma()
+		}
+		first = false
 
-	e.FieldStart("id")
-	e.Int64(s.ID)
+		e.RawStr("\"id\"" + ":")
+		e.Int64(s.ID)
+	}
+	{
+		e.Comma()
 
-	e.FieldStart("is_bot")
-	e.Bool(s.IsBot)
+		e.RawStr("\"is_bot\"" + ":")
+		e.Bool(s.IsBot)
+	}
+	{
+		e.Comma()
 
-	e.FieldStart("first_name")
-	e.Str(s.FirstName)
-	if s.LastName.Set {
-		e.FieldStart("last_name")
-		s.LastName.Encode(e)
+		e.RawStr("\"first_name\"" + ":")
+		e.Str(s.FirstName)
 	}
-	if s.Username.Set {
-		e.FieldStart("username")
-		s.Username.Encode(e)
+	{
+		if s.LastName.Set {
+			e.Comma()
+		}
+		if s.LastName.Set {
+			e.RawStr("\"last_name\"" + ":")
+			s.LastName.Encode(e)
+		}
 	}
-	if s.LanguageCode.Set {
-		e.FieldStart("language_code")
-		s.LanguageCode.Encode(e)
+	{
+		if s.Username.Set {
+			e.Comma()
+		}
+		if s.Username.Set {
+			e.RawStr("\"username\"" + ":")
+			s.Username.Encode(e)
+		}
 	}
-	if s.CanJoinGroups.Set {
-		e.FieldStart("can_join_groups")
-		s.CanJoinGroups.Encode(e)
+	{
+		if s.LanguageCode.Set {
+			e.Comma()
+		}
+		if s.LanguageCode.Set {
+			e.RawStr("\"language_code\"" + ":")
+			s.LanguageCode.Encode(e)
+		}
 	}
-	if s.CanReadAllGroupMessages.Set {
-		e.FieldStart("can_read_all_group_messages")
-		s.CanReadAllGroupMessages.Encode(e)
+	{
+		if s.CanJoinGroups.Set {
+			e.Comma()
+		}
+		if s.CanJoinGroups.Set {
+			e.RawStr("\"can_join_groups\"" + ":")
+			s.CanJoinGroups.Encode(e)
+		}
 	}
-	if s.SupportsInlineQueries.Set {
-		e.FieldStart("supports_inline_queries")
-		s.SupportsInlineQueries.Encode(e)
+	{
+		if s.CanReadAllGroupMessages.Set {
+			e.Comma()
+		}
+		if s.CanReadAllGroupMessages.Set {
+			e.RawStr("\"can_read_all_group_messages\"" + ":")
+			s.CanReadAllGroupMessages.Encode(e)
+		}
+	}
+	{
+		if s.SupportsInlineQueries.Set {
+			e.Comma()
+		}
+		if s.SupportsInlineQueries.Set {
+			e.RawStr("\"supports_inline_queries\"" + ":")
+			s.SupportsInlineQueries.Encode(e)
+		}
 	}
 	e.ObjEnd()
 }
@@ -19583,22 +26563,63 @@ func (s *User) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s UserProfilePhotos) Encode(e *jx.Encoder) {
+func (s UserProfilePhotos) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+	{
+		if !first {
+			e.Comma()
+		}
+		first = false
 
-	e.FieldStart("total_count")
-	e.Int(s.TotalCount)
+		e.RawStr("\"total_count\"" + ":")
+		e.Int(s.TotalCount)
+	}
+	{
+		e.Comma()
 
-	e.FieldStart("photos")
-	e.ArrStart()
-	for _, elem := range s.Photos {
+		e.RawStr("\"photos\"" + ":")
 		e.ArrStart()
-		for _, elem := range elem {
-			elem.Encode(e)
+		if len(s.Photos) >= 1 {
+			// Encode first element without comma.
+			{
+				elem := s.Photos[0]
+				e.ArrStart()
+				if len(elem) >= 1 {
+					// Encode first element without comma.
+					{
+						elem := elem[0]
+						elem.Encode(e)
+					}
+					for _, elem := range elem[1:] {
+						e.Comma()
+						elem.Encode(e)
+					}
+				}
+				e.ArrEnd()
+			}
+			for _, elem := range s.Photos[1:] {
+				e.Comma()
+				e.ArrStart()
+				if len(elem) >= 1 {
+					// Encode first element without comma.
+					{
+						elem := elem[0]
+						elem.Encode(e)
+					}
+					for _, elem := range elem[1:] {
+						e.Comma()
+						elem.Encode(e)
+					}
+				}
+				e.ArrEnd()
+			}
 		}
 		e.ArrEnd()
 	}
-	e.ArrEnd()
 	e.ObjEnd()
 }
 
@@ -19643,32 +26664,68 @@ func (s *UserProfilePhotos) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s Venue) Encode(e *jx.Encoder) {
+func (s Venue) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+	{
+		if !first {
+			e.Comma()
+		}
+		first = false
 
-	e.FieldStart("location")
-	s.Location.Encode(e)
+		e.RawStr("\"location\"" + ":")
+		s.Location.Encode(e)
+	}
+	{
+		e.Comma()
 
-	e.FieldStart("title")
-	e.Str(s.Title)
+		e.RawStr("\"title\"" + ":")
+		e.Str(s.Title)
+	}
+	{
+		e.Comma()
 
-	e.FieldStart("address")
-	e.Str(s.Address)
-	if s.FoursquareID.Set {
-		e.FieldStart("foursquare_id")
-		s.FoursquareID.Encode(e)
+		e.RawStr("\"address\"" + ":")
+		e.Str(s.Address)
 	}
-	if s.FoursquareType.Set {
-		e.FieldStart("foursquare_type")
-		s.FoursquareType.Encode(e)
+	{
+		if s.FoursquareID.Set {
+			e.Comma()
+		}
+		if s.FoursquareID.Set {
+			e.RawStr("\"foursquare_id\"" + ":")
+			s.FoursquareID.Encode(e)
+		}
 	}
-	if s.GooglePlaceID.Set {
-		e.FieldStart("google_place_id")
-		s.GooglePlaceID.Encode(e)
+	{
+		if s.FoursquareType.Set {
+			e.Comma()
+		}
+		if s.FoursquareType.Set {
+			e.RawStr("\"foursquare_type\"" + ":")
+			s.FoursquareType.Encode(e)
+		}
 	}
-	if s.GooglePlaceType.Set {
-		e.FieldStart("google_place_type")
-		s.GooglePlaceType.Encode(e)
+	{
+		if s.GooglePlaceID.Set {
+			e.Comma()
+		}
+		if s.GooglePlaceID.Set {
+			e.RawStr("\"google_place_id\"" + ":")
+			s.GooglePlaceID.Encode(e)
+		}
+	}
+	{
+		if s.GooglePlaceType.Set {
+			e.Comma()
+		}
+		if s.GooglePlaceType.Set {
+			e.RawStr("\"google_place_type\"" + ":")
+			s.GooglePlaceType.Encode(e)
+		}
 	}
 	e.ObjEnd()
 }
@@ -19724,38 +26781,80 @@ func (s *Venue) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s Video) Encode(e *jx.Encoder) {
+func (s Video) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+	{
+		if !first {
+			e.Comma()
+		}
+		first = false
 
-	e.FieldStart("file_id")
-	e.Str(s.FileID)
-
-	e.FieldStart("file_unique_id")
-	e.Str(s.FileUniqueID)
-
-	e.FieldStart("width")
-	e.Int(s.Width)
-
-	e.FieldStart("height")
-	e.Int(s.Height)
-
-	e.FieldStart("duration")
-	e.Int(s.Duration)
-	if s.Thumb.Set {
-		e.FieldStart("thumb")
-		s.Thumb.Encode(e)
+		e.RawStr("\"file_id\"" + ":")
+		e.Str(s.FileID)
 	}
-	if s.FileName.Set {
-		e.FieldStart("file_name")
-		s.FileName.Encode(e)
+	{
+		e.Comma()
+
+		e.RawStr("\"file_unique_id\"" + ":")
+		e.Str(s.FileUniqueID)
 	}
-	if s.MimeType.Set {
-		e.FieldStart("mime_type")
-		s.MimeType.Encode(e)
+	{
+		e.Comma()
+
+		e.RawStr("\"width\"" + ":")
+		e.Int(s.Width)
 	}
-	if s.FileSize.Set {
-		e.FieldStart("file_size")
-		s.FileSize.Encode(e)
+	{
+		e.Comma()
+
+		e.RawStr("\"height\"" + ":")
+		e.Int(s.Height)
+	}
+	{
+		e.Comma()
+
+		e.RawStr("\"duration\"" + ":")
+		e.Int(s.Duration)
+	}
+	{
+		if s.Thumb.Set {
+			e.Comma()
+		}
+		if s.Thumb.Set {
+			e.RawStr("\"thumb\"" + ":")
+			s.Thumb.Encode(e)
+		}
+	}
+	{
+		if s.FileName.Set {
+			e.Comma()
+		}
+		if s.FileName.Set {
+			e.RawStr("\"file_name\"" + ":")
+			s.FileName.Encode(e)
+		}
+	}
+	{
+		if s.MimeType.Set {
+			e.Comma()
+		}
+		if s.MimeType.Set {
+			e.RawStr("\"mime_type\"" + ":")
+			s.MimeType.Encode(e)
+		}
+	}
+	{
+		if s.FileSize.Set {
+			e.Comma()
+		}
+		if s.FileSize.Set {
+			e.RawStr("\"file_size\"" + ":")
+			s.FileSize.Encode(e)
+		}
 	}
 	e.ObjEnd()
 }
@@ -19825,27 +26924,56 @@ func (s *Video) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s VideoNote) Encode(e *jx.Encoder) {
+func (s VideoNote) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+	{
+		if !first {
+			e.Comma()
+		}
+		first = false
 
-	e.FieldStart("file_id")
-	e.Str(s.FileID)
-
-	e.FieldStart("file_unique_id")
-	e.Str(s.FileUniqueID)
-
-	e.FieldStart("length")
-	e.Int(s.Length)
-
-	e.FieldStart("duration")
-	e.Int(s.Duration)
-	if s.Thumb.Set {
-		e.FieldStart("thumb")
-		s.Thumb.Encode(e)
+		e.RawStr("\"file_id\"" + ":")
+		e.Str(s.FileID)
 	}
-	if s.FileSize.Set {
-		e.FieldStart("file_size")
-		s.FileSize.Encode(e)
+	{
+		e.Comma()
+
+		e.RawStr("\"file_unique_id\"" + ":")
+		e.Str(s.FileUniqueID)
+	}
+	{
+		e.Comma()
+
+		e.RawStr("\"length\"" + ":")
+		e.Int(s.Length)
+	}
+	{
+		e.Comma()
+
+		e.RawStr("\"duration\"" + ":")
+		e.Int(s.Duration)
+	}
+	{
+		if s.Thumb.Set {
+			e.Comma()
+		}
+		if s.Thumb.Set {
+			e.RawStr("\"thumb\"" + ":")
+			s.Thumb.Encode(e)
+		}
+	}
+	{
+		if s.FileSize.Set {
+			e.Comma()
+		}
+		if s.FileSize.Set {
+			e.RawStr("\"file_size\"" + ":")
+			s.FileSize.Encode(e)
+		}
 	}
 	e.ObjEnd()
 }
@@ -19899,24 +27027,50 @@ func (s *VideoNote) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s Voice) Encode(e *jx.Encoder) {
+func (s Voice) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+	{
+		if !first {
+			e.Comma()
+		}
+		first = false
 
-	e.FieldStart("file_id")
-	e.Str(s.FileID)
-
-	e.FieldStart("file_unique_id")
-	e.Str(s.FileUniqueID)
-
-	e.FieldStart("duration")
-	e.Int(s.Duration)
-	if s.MimeType.Set {
-		e.FieldStart("mime_type")
-		s.MimeType.Encode(e)
+		e.RawStr("\"file_id\"" + ":")
+		e.Str(s.FileID)
 	}
-	if s.FileSize.Set {
-		e.FieldStart("file_size")
-		s.FileSize.Encode(e)
+	{
+		e.Comma()
+
+		e.RawStr("\"file_unique_id\"" + ":")
+		e.Str(s.FileUniqueID)
+	}
+	{
+		e.Comma()
+
+		e.RawStr("\"duration\"" + ":")
+		e.Int(s.Duration)
+	}
+	{
+		if s.MimeType.Set {
+			e.Comma()
+		}
+		if s.MimeType.Set {
+			e.RawStr("\"mime_type\"" + ":")
+			s.MimeType.Encode(e)
+		}
+	}
+	{
+		if s.FileSize.Set {
+			e.Comma()
+		}
+		if s.FileSize.Set {
+			e.RawStr("\"file_size\"" + ":")
+			s.FileSize.Encode(e)
+		}
 	}
 	e.ObjEnd()
 }
@@ -19964,11 +27118,21 @@ func (s *Voice) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s VoiceChatEnded) Encode(e *jx.Encoder) {
+func (s VoiceChatEnded) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+	{
+		if !first {
+			e.Comma()
+		}
+		first = false
 
-	e.FieldStart("duration")
-	e.Int(s.Duration)
+		e.RawStr("\"duration\"" + ":")
+		e.Int(s.Duration)
+	}
 	e.ObjEnd()
 }
 
@@ -19993,15 +27157,35 @@ func (s *VoiceChatEnded) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s VoiceChatParticipantsInvited) Encode(e *jx.Encoder) {
+func (s VoiceChatParticipantsInvited) Encode(e *jx.Writer) {
 	e.ObjStart()
-	if s.Users != nil {
-		e.FieldStart("users")
-		e.ArrStart()
-		for _, elem := range s.Users {
-			elem.Encode(e)
+	var (
+		first = true
+		_     = first
+	)
+	{
+		if s.Users != nil {
+			if !first {
+				e.Comma()
+			}
+			first = false
 		}
-		e.ArrEnd()
+		if s.Users != nil {
+			e.RawStr("\"users\"" + ":")
+			e.ArrStart()
+			if len(s.Users) >= 1 {
+				// Encode first element without comma.
+				{
+					elem := s.Users[0]
+					elem.Encode(e)
+				}
+				for _, elem := range s.Users[1:] {
+					e.Comma()
+					elem.Encode(e)
+				}
+			}
+			e.ArrEnd()
+		}
 	}
 	e.ObjEnd()
 }
@@ -20033,11 +27217,21 @@ func (s *VoiceChatParticipantsInvited) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s VoiceChatScheduled) Encode(e *jx.Encoder) {
+func (s VoiceChatScheduled) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+	{
+		if !first {
+			e.Comma()
+		}
+		first = false
 
-	e.FieldStart("start_date")
-	e.Int(s.StartDate)
+		e.RawStr("\"start_date\"" + ":")
+		e.Int(s.StartDate)
+	}
 	e.ObjEnd()
 }
 
@@ -20062,8 +27256,12 @@ func (s *VoiceChatScheduled) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s VoiceChatStarted) Encode(e *jx.Encoder) {
+func (s VoiceChatStarted) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -20082,40 +27280,89 @@ func (s *VoiceChatStarted) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s WebhookInfo) Encode(e *jx.Encoder) {
+func (s WebhookInfo) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	e.FieldStart("url")
-	json.EncodeURI(e, s.URL)
-
-	e.FieldStart("has_custom_certificate")
-	e.Bool(s.HasCustomCertificate)
-
-	e.FieldStart("pending_update_count")
-	e.Int(s.PendingUpdateCount)
-	if s.IPAddress.Set {
-		e.FieldStart("ip_address")
-		s.IPAddress.Encode(e)
-	}
-	if s.LastErrorDate.Set {
-		e.FieldStart("last_error_date")
-		s.LastErrorDate.Encode(e)
-	}
-	if s.LastErrorMessage.Set {
-		e.FieldStart("last_error_message")
-		s.LastErrorMessage.Encode(e)
-	}
-	if s.MaxConnections.Set {
-		e.FieldStart("max_connections")
-		s.MaxConnections.Encode(e)
-	}
-	if s.AllowedUpdates != nil {
-		e.FieldStart("allowed_updates")
-		e.ArrStart()
-		for _, elem := range s.AllowedUpdates {
-			e.Str(elem)
+	var (
+		first = true
+		_     = first
+	)
+	{
+		if !first {
+			e.Comma()
 		}
-		e.ArrEnd()
+		first = false
+
+		e.RawStr("\"url\"" + ":")
+		json.EncodeURI(e, s.URL)
+	}
+	{
+		e.Comma()
+
+		e.RawStr("\"has_custom_certificate\"" + ":")
+		e.Bool(s.HasCustomCertificate)
+	}
+	{
+		e.Comma()
+
+		e.RawStr("\"pending_update_count\"" + ":")
+		e.Int(s.PendingUpdateCount)
+	}
+	{
+		if s.IPAddress.Set {
+			e.Comma()
+		}
+		if s.IPAddress.Set {
+			e.RawStr("\"ip_address\"" + ":")
+			s.IPAddress.Encode(e)
+		}
+	}
+	{
+		if s.LastErrorDate.Set {
+			e.Comma()
+		}
+		if s.LastErrorDate.Set {
+			e.RawStr("\"last_error_date\"" + ":")
+			s.LastErrorDate.Encode(e)
+		}
+	}
+	{
+		if s.LastErrorMessage.Set {
+			e.Comma()
+		}
+		if s.LastErrorMessage.Set {
+			e.RawStr("\"last_error_message\"" + ":")
+			s.LastErrorMessage.Encode(e)
+		}
+	}
+	{
+		if s.MaxConnections.Set {
+			e.Comma()
+		}
+		if s.MaxConnections.Set {
+			e.RawStr("\"max_connections\"" + ":")
+			s.MaxConnections.Encode(e)
+		}
+	}
+	{
+		if s.AllowedUpdates != nil {
+			e.Comma()
+		}
+		if s.AllowedUpdates != nil {
+			e.RawStr("\"allowed_updates\"" + ":")
+			e.ArrStart()
+			if len(s.AllowedUpdates) >= 1 {
+				// Encode first element without comma.
+				{
+					elem := s.AllowedUpdates[0]
+					e.Str(elem)
+				}
+				for _, elem := range s.AllowedUpdates[1:] {
+					e.Comma()
+					e.Str(elem)
+				}
+			}
+			e.ArrEnd()
+		}
 	}
 	e.ObjEnd()
 }

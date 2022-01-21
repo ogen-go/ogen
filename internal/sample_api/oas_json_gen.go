@@ -63,26 +63,51 @@ var (
 )
 
 // Encode implements json.Marshaler.
-func (s Data) Encode(e *jx.Encoder) {
+func (s Data) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+	{
+		if !first {
+			e.Comma()
+		}
+		first = false
 
-	e.FieldStart("id")
-	s.ID.Encode(e)
+		e.RawStr("\"id\"" + ":")
+		s.ID.Encode(e)
+	}
+	{
+		e.Comma()
 
-	e.FieldStart("description")
-	s.Description.Encode(e)
+		e.RawStr("\"description\"" + ":")
+		s.Description.Encode(e)
+	}
+	{
+		e.Comma()
 
-	e.FieldStart("email")
-	e.Str(s.Email)
+		e.RawStr("\"email\"" + ":")
+		e.Str(s.Email)
+	}
+	{
+		e.Comma()
 
-	e.FieldStart("hostname")
-	e.Str(s.Hostname)
+		e.RawStr("\"hostname\"" + ":")
+		e.Str(s.Hostname)
+	}
+	{
+		e.Comma()
 
-	e.FieldStart("format")
-	e.Str(s.Format)
+		e.RawStr("\"format\"" + ":")
+		e.Str(s.Format)
+	}
+	{
+		e.Comma()
 
-	e.FieldStart("base64")
-	e.Base64(s.Base64)
+		e.RawStr("\"base64\"" + ":")
+		e.Base64(s.Base64)
+	}
 	e.ObjEnd()
 }
 
@@ -133,7 +158,7 @@ func (s *Data) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes DataDescription as json.
-func (s DataDescription) Encode(e *jx.Encoder) {
+func (s DataDescription) Encode(e *jx.Writer) {
 	switch s.Type {
 	case DescriptionDetailedDataDescription:
 		s.DescriptionDetailed.Encode(e)
@@ -192,14 +217,27 @@ func (s *DataDescription) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s DescriptionDetailed) Encode(e *jx.Encoder) {
+func (s DescriptionDetailed) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+	{
+		if !first {
+			e.Comma()
+		}
+		first = false
 
-	e.FieldStart("name")
-	e.Str(s.Name)
+		e.RawStr("\"name\"" + ":")
+		e.Str(s.Name)
+	}
+	{
+		e.Comma()
 
-	e.FieldStart("count")
-	e.Int(s.Count)
+		e.RawStr("\"count\"" + ":")
+		e.Int(s.Count)
+	}
 	e.ObjEnd()
 }
 
@@ -230,11 +268,21 @@ func (s *DescriptionDetailed) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s DescriptionSimple) Encode(e *jx.Encoder) {
+func (s DescriptionSimple) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+	{
+		if !first {
+			e.Comma()
+		}
+		first = false
 
-	e.FieldStart("description")
-	e.Str(s.Description)
+		e.RawStr("\"description\"" + ":")
+		e.Str(s.Description)
+	}
 	e.ObjEnd()
 }
 
@@ -259,14 +307,27 @@ func (s *DescriptionSimple) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s Error) Encode(e *jx.Encoder) {
+func (s Error) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+	{
+		if !first {
+			e.Comma()
+		}
+		first = false
 
-	e.FieldStart("code")
-	e.Int64(s.Code)
+		e.RawStr("\"code\"" + ":")
+		e.Int64(s.Code)
+	}
+	{
+		e.Comma()
 
-	e.FieldStart("message")
-	e.Str(s.Message)
+		e.RawStr("\"message\"" + ":")
+		e.Str(s.Message)
+	}
 	e.ObjEnd()
 }
 
@@ -297,8 +358,12 @@ func (s *Error) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s ErrorStatusCode) Encode(e *jx.Encoder) {
+func (s ErrorStatusCode) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -317,8 +382,12 @@ func (s *ErrorStatusCode) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s FoobarPutDef) Encode(e *jx.Encoder) {
+func (s FoobarPutDef) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -337,8 +406,12 @@ func (s *FoobarPutDef) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s FoobarPutDefStatusCode) Encode(e *jx.Encoder) {
+func (s FoobarPutDefStatusCode) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -357,14 +430,27 @@ func (s *FoobarPutDefStatusCode) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s Hash) Encode(e *jx.Encoder) {
+func (s Hash) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+	{
+		if !first {
+			e.Comma()
+		}
+		first = false
 
-	e.FieldStart("raw")
-	e.Base64(s.Raw)
+		e.RawStr("\"raw\"" + ":")
+		e.Base64(s.Raw)
+	}
+	{
+		e.Comma()
 
-	e.FieldStart("hex")
-	e.Str(s.Hex)
+		e.RawStr("\"hex\"" + ":")
+		e.Str(s.Hex)
+	}
 	e.ObjEnd()
 }
 
@@ -395,7 +481,7 @@ func (s *Hash) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes ID as json.
-func (s ID) Encode(e *jx.Encoder) {
+func (s ID) Encode(e *jx.Writer) {
 	switch s.Type {
 	case StringID:
 		e.Str(s.String)
@@ -432,7 +518,7 @@ func (s *ID) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes string as json.
-func (o NilString) Encode(e *jx.Encoder) {
+func (o NilString) Encode(e *jx.Writer) {
 	if o.Null {
 		e.Null()
 		return
@@ -468,8 +554,12 @@ func (o *NilString) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s NotFound) Encode(e *jx.Encoder) {
+func (s NotFound) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -488,7 +578,7 @@ func (s *NotFound) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes Data as json.
-func (o OptData) Encode(e *jx.Encoder) {
+func (o OptData) Encode(e *jx.Writer) {
 	o.Value.Encode(e)
 }
 
@@ -510,7 +600,7 @@ func (o *OptData) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes time.Duration as json.
-func (o OptDuration) Encode(e *jx.Encoder) {
+func (o OptDuration) Encode(e *jx.Writer) {
 	json.EncodeDuration(e, o.Value)
 }
 
@@ -534,7 +624,7 @@ func (o *OptDuration) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes float64 as json.
-func (o OptFloat64) Encode(e *jx.Encoder) {
+func (o OptFloat64) Encode(e *jx.Writer) {
 	e.Float64(float64(o.Value))
 }
 
@@ -558,7 +648,7 @@ func (o *OptFloat64) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes int as json.
-func (o OptInt) Encode(e *jx.Encoder) {
+func (o OptInt) Encode(e *jx.Writer) {
 	e.Int(int(o.Value))
 }
 
@@ -582,7 +672,7 @@ func (o *OptInt) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes string as json.
-func (o OptNilString) Encode(e *jx.Encoder) {
+func (o OptNilString) Encode(e *jx.Writer) {
 	if o.Null {
 		e.Null()
 		return
@@ -620,7 +710,7 @@ func (o *OptNilString) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes Pet as json.
-func (o OptPet) Encode(e *jx.Encoder) {
+func (o OptPet) Encode(e *jx.Writer) {
 	o.Value.Encode(e)
 }
 
@@ -642,7 +732,7 @@ func (o *OptPet) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes PetName as json.
-func (o OptPetName) Encode(e *jx.Encoder) {
+func (o OptPetName) Encode(e *jx.Writer) {
 }
 
 // Decode decodes PetName from json.
@@ -660,7 +750,7 @@ func (o *OptPetName) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes PetType as json.
-func (o OptPetType) Encode(e *jx.Encoder) {
+func (o OptPetType) Encode(e *jx.Writer) {
 	e.Str(string(o.Value))
 }
 
@@ -682,7 +772,7 @@ func (o *OptPetType) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes string as json.
-func (o OptString) Encode(e *jx.Encoder) {
+func (o OptString) Encode(e *jx.Writer) {
 	e.Str(string(o.Value))
 }
 
@@ -706,7 +796,7 @@ func (o *OptString) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes time.Time as json.
-func (o OptTime) Encode(e *jx.Encoder, format func(*jx.Encoder, time.Time)) {
+func (o OptTime) Encode(e *jx.Writer, format func(*jx.Writer, time.Time)) {
 	format(e, o.Value)
 }
 
@@ -730,7 +820,7 @@ func (o *OptTime) Decode(d *jx.Decoder, format func(*jx.Decoder) (time.Time, err
 }
 
 // Encode encodes uuid.UUID as json.
-func (o OptUUID) Encode(e *jx.Encoder) {
+func (o OptUUID) Encode(e *jx.Writer) {
 	json.EncodeUUID(e, o.Value)
 }
 
@@ -754,104 +844,248 @@ func (o *OptUUID) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s Pet) Encode(e *jx.Encoder) {
+func (s Pet) Encode(e *jx.Writer) {
 	e.ObjStart()
-	if s.Primary != nil {
-		e.FieldStart("primary")
-		s.Primary.Encode(e)
-	}
-
-	e.FieldStart("id")
-	e.Int64(s.ID)
-
-	e.FieldStart("unique_id")
-	json.EncodeUUID(e, s.UniqueID)
-
-	e.FieldStart("name")
-	e.Str(s.Name)
-	if s.Type.Set {
-		e.FieldStart("type")
-		s.Type.Encode(e)
-	}
-
-	e.FieldStart("kind")
-	s.Kind.Encode(e)
-	if s.Tag.Set {
-		e.FieldStart("tag")
-		s.Tag.Encode(e)
-	}
-
-	e.FieldStart("ip")
-	json.EncodeIP(e, s.IP)
-
-	e.FieldStart("ip_v4")
-	json.EncodeIP(e, s.IPV4)
-
-	e.FieldStart("ip_v6")
-	json.EncodeIP(e, s.IPV6)
-
-	e.FieldStart("uri")
-	json.EncodeURI(e, s.URI)
-
-	e.FieldStart("birthday")
-	json.EncodeDate(e, s.Birthday)
-
-	e.FieldStart("rate")
-	json.EncodeDuration(e, s.Rate)
-
-	e.FieldStart("nickname")
-	s.Nickname.Encode(e)
-	if s.NullStr.Set {
-		e.FieldStart("nullStr")
-		s.NullStr.Encode(e)
-	}
-	if s.Friends != nil {
-		e.FieldStart("friends")
-		e.ArrStart()
-		for _, elem := range s.Friends {
-			elem.Encode(e)
+	var (
+		first = true
+		_     = first
+	)
+	{
+		if s.Primary != nil {
+			if !first {
+				e.Comma()
+			}
+			first = false
 		}
-		e.ArrEnd()
+		if s.Primary != nil {
+			e.RawStr("\"primary\"" + ":")
+			s.Primary.Encode(e)
+		}
 	}
-	if s.Next.Set {
-		e.FieldStart("next")
-		s.Next.Encode(e)
+	{
+		if !first {
+			e.Comma()
+		}
+		first = false
+
+		e.RawStr("\"id\"" + ":")
+		e.Int64(s.ID)
 	}
-	if s.TestInteger1.Set {
-		e.FieldStart("testInteger1")
-		s.TestInteger1.Encode(e)
+	{
+		e.Comma()
+
+		e.RawStr("\"unique_id\"" + ":")
+		json.EncodeUUID(e, s.UniqueID)
 	}
-	if s.TestFloat1.Set {
-		e.FieldStart("testFloat1")
-		s.TestFloat1.Encode(e)
+	{
+		e.Comma()
+
+		e.RawStr("\"name\"" + ":")
+		e.Str(s.Name)
 	}
-	if s.TestArray1 != nil {
-		e.FieldStart("testArray1")
-		e.ArrStart()
-		for _, elem := range s.TestArray1 {
+	{
+		if s.Type.Set {
+			e.Comma()
+		}
+		if s.Type.Set {
+			e.RawStr("\"type\"" + ":")
+			s.Type.Encode(e)
+		}
+	}
+	{
+		e.Comma()
+
+		e.RawStr("\"kind\"" + ":")
+		s.Kind.Encode(e)
+	}
+	{
+		if s.Tag.Set {
+			e.Comma()
+		}
+		if s.Tag.Set {
+			e.RawStr("\"tag\"" + ":")
+			s.Tag.Encode(e)
+		}
+	}
+	{
+		e.Comma()
+
+		e.RawStr("\"ip\"" + ":")
+		json.EncodeIP(e, s.IP)
+	}
+	{
+		e.Comma()
+
+		e.RawStr("\"ip_v4\"" + ":")
+		json.EncodeIP(e, s.IPV4)
+	}
+	{
+		e.Comma()
+
+		e.RawStr("\"ip_v6\"" + ":")
+		json.EncodeIP(e, s.IPV6)
+	}
+	{
+		e.Comma()
+
+		e.RawStr("\"uri\"" + ":")
+		json.EncodeURI(e, s.URI)
+	}
+	{
+		e.Comma()
+
+		e.RawStr("\"birthday\"" + ":")
+		json.EncodeDate(e, s.Birthday)
+	}
+	{
+		e.Comma()
+
+		e.RawStr("\"rate\"" + ":")
+		json.EncodeDuration(e, s.Rate)
+	}
+	{
+		e.Comma()
+
+		e.RawStr("\"nickname\"" + ":")
+		s.Nickname.Encode(e)
+	}
+	{
+		if s.NullStr.Set {
+			e.Comma()
+		}
+		if s.NullStr.Set {
+			e.RawStr("\"nullStr\"" + ":")
+			s.NullStr.Encode(e)
+		}
+	}
+	{
+		if s.Friends != nil {
+			e.Comma()
+		}
+		if s.Friends != nil {
+			e.RawStr("\"friends\"" + ":")
 			e.ArrStart()
-			for _, elem := range elem {
-				e.Str(elem)
+			if len(s.Friends) >= 1 {
+				// Encode first element without comma.
+				{
+					elem := s.Friends[0]
+					elem.Encode(e)
+				}
+				for _, elem := range s.Friends[1:] {
+					e.Comma()
+					elem.Encode(e)
+				}
 			}
 			e.ArrEnd()
 		}
-		e.ArrEnd()
 	}
-	if s.TestDate.Set {
-		e.FieldStart("testDate")
-		s.TestDate.Encode(e, json.EncodeDate)
+	{
+		if s.Next.Set {
+			e.Comma()
+		}
+		if s.Next.Set {
+			e.RawStr("\"next\"" + ":")
+			s.Next.Encode(e)
+		}
 	}
-	if s.TestDuration.Set {
-		e.FieldStart("testDuration")
-		s.TestDuration.Encode(e)
+	{
+		if s.TestInteger1.Set {
+			e.Comma()
+		}
+		if s.TestInteger1.Set {
+			e.RawStr("\"testInteger1\"" + ":")
+			s.TestInteger1.Encode(e)
+		}
 	}
-	if s.TestTime.Set {
-		e.FieldStart("testTime")
-		s.TestTime.Encode(e, json.EncodeTime)
+	{
+		if s.TestFloat1.Set {
+			e.Comma()
+		}
+		if s.TestFloat1.Set {
+			e.RawStr("\"testFloat1\"" + ":")
+			s.TestFloat1.Encode(e)
+		}
 	}
-	if s.TestDateTime.Set {
-		e.FieldStart("testDateTime")
-		s.TestDateTime.Encode(e, json.EncodeDateTime)
+	{
+		if s.TestArray1 != nil {
+			e.Comma()
+		}
+		if s.TestArray1 != nil {
+			e.RawStr("\"testArray1\"" + ":")
+			e.ArrStart()
+			if len(s.TestArray1) >= 1 {
+				// Encode first element without comma.
+				{
+					elem := s.TestArray1[0]
+					e.ArrStart()
+					if len(elem) >= 1 {
+						// Encode first element without comma.
+						{
+							elem := elem[0]
+							e.Str(elem)
+						}
+						for _, elem := range elem[1:] {
+							e.Comma()
+							e.Str(elem)
+						}
+					}
+					e.ArrEnd()
+				}
+				for _, elem := range s.TestArray1[1:] {
+					e.Comma()
+					e.ArrStart()
+					if len(elem) >= 1 {
+						// Encode first element without comma.
+						{
+							elem := elem[0]
+							e.Str(elem)
+						}
+						for _, elem := range elem[1:] {
+							e.Comma()
+							e.Str(elem)
+						}
+					}
+					e.ArrEnd()
+				}
+			}
+			e.ArrEnd()
+		}
+	}
+	{
+		if s.TestDate.Set {
+			e.Comma()
+		}
+		if s.TestDate.Set {
+			e.RawStr("\"testDate\"" + ":")
+			s.TestDate.Encode(e, json.EncodeDate)
+		}
+	}
+	{
+		if s.TestDuration.Set {
+			e.Comma()
+		}
+		if s.TestDuration.Set {
+			e.RawStr("\"testDuration\"" + ":")
+			s.TestDuration.Encode(e)
+		}
+	}
+	{
+		if s.TestTime.Set {
+			e.Comma()
+		}
+		if s.TestTime.Set {
+			e.RawStr("\"testTime\"" + ":")
+			s.TestTime.Encode(e, json.EncodeTime)
+		}
+	}
+	{
+		if s.TestDateTime.Set {
+			e.Comma()
+		}
+		if s.TestDateTime.Set {
+			e.RawStr("\"testDateTime\"" + ":")
+			s.TestDateTime.Encode(e, json.EncodeDateTime)
+		}
 	}
 	e.ObjEnd()
 }
@@ -1024,11 +1258,21 @@ func (s *Pet) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s PetGetDef) Encode(e *jx.Encoder) {
+func (s PetGetDef) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+	{
+		if !first {
+			e.Comma()
+		}
+		first = false
 
-	e.FieldStart("message")
-	e.Str(s.Message)
+		e.RawStr("\"message\"" + ":")
+		e.Str(s.Message)
+	}
 	e.ObjEnd()
 }
 
@@ -1053,8 +1297,12 @@ func (s *PetGetDef) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s PetGetDefStatusCode) Encode(e *jx.Encoder) {
+func (s PetGetDefStatusCode) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -1073,7 +1321,7 @@ func (s *PetGetDefStatusCode) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes PetKind as json.
-func (s PetKind) Encode(e *jx.Encoder) {
+func (s PetKind) Encode(e *jx.Writer) {
 	e.Str(string(s))
 }
 
@@ -1100,7 +1348,7 @@ func (s *PetKind) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes PetName as json.
-func (s PetName) Encode(e *jx.Encoder) {
+func (s PetName) Encode(e *jx.Writer) {
 	unwrapped := string(s)
 	e.Str(unwrapped)
 }
@@ -1126,7 +1374,7 @@ func (s *PetName) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes PetType as json.
-func (s PetType) Encode(e *jx.Encoder) {
+func (s PetType) Encode(e *jx.Writer) {
 	e.Str(string(s))
 }
 
@@ -1153,8 +1401,12 @@ func (s *PetType) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s PetUpdateNameAliasPostDef) Encode(e *jx.Encoder) {
+func (s PetUpdateNameAliasPostDef) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -1173,8 +1425,12 @@ func (s *PetUpdateNameAliasPostDef) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s PetUpdateNameAliasPostDefStatusCode) Encode(e *jx.Encoder) {
+func (s PetUpdateNameAliasPostDefStatusCode) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -1193,8 +1449,12 @@ func (s *PetUpdateNameAliasPostDefStatusCode) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s PetUpdateNamePostDef) Encode(e *jx.Encoder) {
+func (s PetUpdateNamePostDef) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -1213,8 +1473,12 @@ func (s *PetUpdateNamePostDef) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s PetUpdateNamePostDefStatusCode) Encode(e *jx.Encoder) {
+func (s PetUpdateNamePostDefStatusCode) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -1233,8 +1497,12 @@ func (s *PetUpdateNamePostDefStatusCode) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s PetUploadAvatarByIDOK) Encode(e *jx.Encoder) {
+func (s PetUploadAvatarByIDOK) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 

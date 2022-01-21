@@ -12,11 +12,16 @@ import (
 
 // Elem variable helper for recursive array or object encoding or decoding.
 type Elem struct {
-	Sub  bool // true if Elem has parent Elem
+	// Sub whether this Elem has parent Elem.
+	Sub bool
+	// Type is type of this Elem.
 	Type *ir.Type
-	Var  string
-	Tag  ir.Tag
-	More bool
+	// Var is decoding/encoding variable Go name (obj) or selector (obj.Field).
+	Var string
+	// Tag contains info about field tags, if any.
+	Tag ir.Tag
+	// First whether this field is first.
+	First bool
 }
 
 // NextVar returns name of variable for decoding recursive call.
@@ -56,7 +61,6 @@ func templateFunctions() template.FuncMap {
 				Type: parent.Type.PointerTo,
 				Sub:  true,
 				Var:  parent.NextVar(),
-				More: true,
 			}
 		},
 		// Recursive array element (e.g. array of arrays).
@@ -65,7 +69,6 @@ func templateFunctions() template.FuncMap {
 				Type: t,
 				Sub:  true,
 				Var:  parent.NextVar(),
-				More: true,
 			}
 		},
 		// Initial array element.
@@ -74,12 +77,11 @@ func templateFunctions() template.FuncMap {
 				Type: t,
 				Sub:  true,
 				Var:  "elem",
-				More: true,
 			}
 		},
-		"req_elem":     func(t *ir.Type) Elem { return Elem{Type: t, Var: "response", More: true} },
-		"req_dec_elem": func(t *ir.Type) Elem { return Elem{Type: t, Var: "request", More: true} },
-		"req_enc_elem": func(t *ir.Type) Elem { return Elem{Type: t, Var: "req", More: true} },
+		"req_elem":     func(t *ir.Type) Elem { return Elem{Type: t, Var: "response"} },
+		"req_dec_elem": func(t *ir.Type) Elem { return Elem{Type: t, Var: "request"} },
+		"req_enc_elem": func(t *ir.Type) Elem { return Elem{Type: t, Var: "req"} },
 		"res_elem": func(i *ir.ResponseInfo) Elem {
 			v := "response"
 			if i.Default {
@@ -88,7 +90,6 @@ func templateFunctions() template.FuncMap {
 			return Elem{
 				Type: i.Type,
 				Var:  v,
-				More: true,
 			}
 		},
 		// Field of structure.
@@ -97,7 +98,14 @@ func templateFunctions() template.FuncMap {
 				Type: f.Type,
 				Var:  fmt.Sprintf("s.%s", f.Name),
 				Tag:  f.Tag,
-				More: true,
+			}
+		},
+		"first_field_elem": func(f *ir.Field) Elem {
+			return Elem{
+				Type:  f.Type,
+				Var:   fmt.Sprintf("s.%s", f.Name),
+				Tag:   f.Tag,
+				First: true,
 			}
 		},
 		"status_res_elem": func(r *ir.StatusResponse, ptr bool) ResponseElem {
@@ -105,6 +113,9 @@ func templateFunctions() template.FuncMap {
 				Response: r,
 				Ptr:      ptr,
 			}
+		},
+		"add": func(a, b int) int {
+			return a + b
 		},
 	}
 }

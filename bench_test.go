@@ -288,7 +288,7 @@ func BenchmarkJSON(b *testing.B) {
 			dataBytes := int64(len(data))
 
 			b.Run("Encode", func(b *testing.B) {
-				var e jx.Encoder
+				var e jx.Writer
 				b.ReportAllocs()
 				b.SetBytes(dataBytes)
 
@@ -320,7 +320,7 @@ func BenchmarkJSON(b *testing.B) {
 			dataBytes := int64(len(data))
 
 			b.Run("Encode", func(b *testing.B) {
-				var e jx.Encoder
+				var e jx.Writer
 				b.ReportAllocs()
 				b.SetBytes(dataBytes)
 
@@ -379,7 +379,7 @@ func BenchmarkJSON(b *testing.B) {
 			data := json.Encode(pet)
 			dataBytes := int64(len(data))
 			b.Run("Encode", func(b *testing.B) {
-				var e jx.Encoder
+				var e jx.Writer
 
 				b.ReportAllocs()
 				b.SetBytes(dataBytes)
@@ -410,7 +410,7 @@ func BenchmarkJSON(b *testing.B) {
 			data := json.Encode(pet)
 			dataBytes := int64(len(data))
 			b.Run("Encode", func(b *testing.B) {
-				var e jx.Encoder
+				var e jx.Writer
 
 				b.ReportAllocs()
 				b.SetBytes(dataBytes)

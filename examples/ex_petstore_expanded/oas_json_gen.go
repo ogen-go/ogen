@@ -63,8 +63,12 @@ var (
 )
 
 // Encode implements json.Marshaler.
-func (s DeletePetNoContent) Encode(e *jx.Encoder) {
+func (s DeletePetNoContent) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -83,14 +87,27 @@ func (s *DeletePetNoContent) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s Error) Encode(e *jx.Encoder) {
+func (s Error) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+	{
+		if !first {
+			e.Comma()
+		}
+		first = false
 
-	e.FieldStart("code")
-	e.Int32(s.Code)
+		e.RawStr("\"code\"" + ":")
+		e.Int32(s.Code)
+	}
+	{
+		e.Comma()
 
-	e.FieldStart("message")
-	e.Str(s.Message)
+		e.RawStr("\"message\"" + ":")
+		e.Str(s.Message)
+	}
 	e.ObjEnd()
 }
 
@@ -121,8 +138,12 @@ func (s *Error) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s ErrorStatusCode) Encode(e *jx.Encoder) {
+func (s ErrorStatusCode) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -141,14 +162,29 @@ func (s *ErrorStatusCode) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s NewPet) Encode(e *jx.Encoder) {
+func (s NewPet) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+	{
+		if !first {
+			e.Comma()
+		}
+		first = false
 
-	e.FieldStart("name")
-	e.Str(s.Name)
-	if s.Tag.Set {
-		e.FieldStart("tag")
-		s.Tag.Encode(e)
+		e.RawStr("\"name\"" + ":")
+		e.Str(s.Name)
+	}
+	{
+		if s.Tag.Set {
+			e.Comma()
+		}
+		if s.Tag.Set {
+			e.RawStr("\"tag\"" + ":")
+			s.Tag.Encode(e)
+		}
 	}
 	e.ObjEnd()
 }
@@ -179,7 +215,7 @@ func (s *NewPet) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes string as json.
-func (o OptString) Encode(e *jx.Encoder) {
+func (o OptString) Encode(e *jx.Writer) {
 	e.Str(string(o.Value))
 }
 

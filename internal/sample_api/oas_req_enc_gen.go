@@ -64,8 +64,8 @@ var (
 
 func encodeFoobarPostRequestJSON(req OptPet, span trace.Span) (data *bytes.Buffer, err error) {
 	buf := getBuf()
-	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
+	e := jx.GetWriter()
+	defer jx.PutWriter(e)
 	if req.Set {
 		req.Encode(e)
 	}
@@ -79,8 +79,8 @@ func encodeFoobarPostRequestJSON(req OptPet, span trace.Span) (data *bytes.Buffe
 
 func encodePetCreateRequestJSON(req OptPet, span trace.Span) (data *bytes.Buffer, err error) {
 	buf := getBuf()
-	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
+	e := jx.GetWriter()
+	defer jx.PutWriter(e)
 	if req.Set {
 		req.Encode(e)
 	}
@@ -94,8 +94,8 @@ func encodePetCreateRequestJSON(req OptPet, span trace.Span) (data *bytes.Buffer
 
 func encodePetUpdateNameAliasPostRequestJSON(req OptPetName, span trace.Span) (data *bytes.Buffer, err error) {
 	buf := getBuf()
-	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
+	e := jx.GetWriter()
+	defer jx.PutWriter(e)
 	if req.Set {
 		req.Encode(e)
 	}
@@ -109,8 +109,8 @@ func encodePetUpdateNameAliasPostRequestJSON(req OptPetName, span trace.Span) (d
 
 func encodePetUpdateNamePostRequestJSON(req OptString, span trace.Span) (data *bytes.Buffer, err error) {
 	buf := getBuf()
-	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
+	e := jx.GetWriter()
+	defer jx.PutWriter(e)
 	if req.Set {
 		req.Encode(e)
 	}
