@@ -1885,6 +1885,9 @@ func (s *OperationsResponse) Decode(d *jx.Decoder) error {
 
 // Encode encodes BrokerAccountType as json.
 func (o OptBrokerAccountType) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	e.Str(string(o.Value))
 }
 
@@ -1907,6 +1910,9 @@ func (o *OptBrokerAccountType) Decode(d *jx.Decoder) error {
 
 // Encode encodes Currency as json.
 func (o OptCurrency) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	e.Str(string(o.Value))
 }
 
@@ -1929,6 +1935,9 @@ func (o *OptCurrency) Decode(d *jx.Decoder) error {
 
 // Encode encodes float64 as json.
 func (o OptFloat64) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	e.Float64(float64(o.Value))
 }
 
@@ -1953,6 +1962,9 @@ func (o *OptFloat64) Decode(d *jx.Decoder) error {
 
 // Encode encodes InstrumentType as json.
 func (o OptInstrumentType) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	e.Str(string(o.Value))
 }
 
@@ -1975,6 +1987,9 @@ func (o *OptInstrumentType) Decode(d *jx.Decoder) error {
 
 // Encode encodes int32 as json.
 func (o OptInt32) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	e.Int32(int32(o.Value))
 }
 
@@ -1999,6 +2014,9 @@ func (o *OptInt32) Decode(d *jx.Decoder) error {
 
 // Encode encodes MoneyAmount as json.
 func (o OptMoneyAmount) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -2021,6 +2039,9 @@ func (o *OptMoneyAmount) Decode(d *jx.Decoder) error {
 
 // Encode encodes OperationTypeWithCommission as json.
 func (o OptOperationTypeWithCommission) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	e.Str(string(o.Value))
 }
 
@@ -2043,6 +2064,9 @@ func (o *OptOperationTypeWithCommission) Decode(d *jx.Decoder) error {
 
 // Encode encodes SandboxRegisterRequest as json.
 func (o OptSandboxRegisterRequest) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -2065,6 +2089,9 @@ func (o *OptSandboxRegisterRequest) Decode(d *jx.Decoder) error {
 
 // Encode encodes string as json.
 func (o OptString) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	e.Str(string(o.Value))
 }
 

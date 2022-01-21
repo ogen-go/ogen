@@ -216,6 +216,9 @@ func (s *NewPet) Decode(d *jx.Decoder) error {
 
 // Encode encodes string as json.
 func (o OptString) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	e.Str(string(o.Value))
 }
 

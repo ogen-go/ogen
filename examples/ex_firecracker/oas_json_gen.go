@@ -1705,6 +1705,9 @@ func (s *NetworkInterface) Decode(d *jx.Decoder) error {
 
 // Encode encodes Balloon as json.
 func (o OptBalloon) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -1727,6 +1730,9 @@ func (o *OptBalloon) Decode(d *jx.Decoder) error {
 
 // Encode encodes bool as json.
 func (o OptBool) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	e.Bool(bool(o.Value))
 }
 
@@ -1751,6 +1757,9 @@ func (o *OptBool) Decode(d *jx.Decoder) error {
 
 // Encode encodes BootSource as json.
 func (o OptBootSource) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -1773,6 +1782,9 @@ func (o *OptBootSource) Decode(d *jx.Decoder) error {
 
 // Encode encodes CpuTemplate as json.
 func (o OptCpuTemplate) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	e.Str(string(o.Value))
 }
 
@@ -1795,6 +1807,9 @@ func (o *OptCpuTemplate) Decode(d *jx.Decoder) error {
 
 // Encode encodes int as json.
 func (o OptInt) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	e.Int(int(o.Value))
 }
 
@@ -1819,6 +1834,9 @@ func (o *OptInt) Decode(d *jx.Decoder) error {
 
 // Encode encodes int64 as json.
 func (o OptInt64) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	e.Int64(int64(o.Value))
 }
 
@@ -1843,6 +1861,9 @@ func (o *OptInt64) Decode(d *jx.Decoder) error {
 
 // Encode encodes Logger as json.
 func (o OptLogger) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -1865,6 +1886,9 @@ func (o *OptLogger) Decode(d *jx.Decoder) error {
 
 // Encode encodes LoggerLevel as json.
 func (o OptLoggerLevel) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	e.Str(string(o.Value))
 }
 
@@ -1887,6 +1911,9 @@ func (o *OptLoggerLevel) Decode(d *jx.Decoder) error {
 
 // Encode encodes MachineConfiguration as json.
 func (o OptMachineConfiguration) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -1909,6 +1936,9 @@ func (o *OptMachineConfiguration) Decode(d *jx.Decoder) error {
 
 // Encode encodes Metrics as json.
 func (o OptMetrics) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -1931,6 +1961,9 @@ func (o *OptMetrics) Decode(d *jx.Decoder) error {
 
 // Encode encodes MmdsConfig as json.
 func (o OptMmdsConfig) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -1953,6 +1986,9 @@ func (o *OptMmdsConfig) Decode(d *jx.Decoder) error {
 
 // Encode encodes MmdsPatchReq as json.
 func (o OptMmdsPatchReq) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -1975,6 +2011,9 @@ func (o *OptMmdsPatchReq) Decode(d *jx.Decoder) error {
 
 // Encode encodes MmdsPutReq as json.
 func (o OptMmdsPutReq) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -1997,6 +2036,9 @@ func (o *OptMmdsPutReq) Decode(d *jx.Decoder) error {
 
 // Encode encodes RateLimiter as json.
 func (o OptRateLimiter) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -2019,6 +2061,9 @@ func (o *OptRateLimiter) Decode(d *jx.Decoder) error {
 
 // Encode encodes SnapshotCreateParamsSnapshotType as json.
 func (o OptSnapshotCreateParamsSnapshotType) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	e.Str(string(o.Value))
 }
 
@@ -2041,6 +2086,9 @@ func (o *OptSnapshotCreateParamsSnapshotType) Decode(d *jx.Decoder) error {
 
 // Encode encodes string as json.
 func (o OptString) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	e.Str(string(o.Value))
 }
 
@@ -2065,6 +2113,9 @@ func (o *OptString) Decode(d *jx.Decoder) error {
 
 // Encode encodes TokenBucket as json.
 func (o OptTokenBucket) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -2087,6 +2138,9 @@ func (o *OptTokenBucket) Decode(d *jx.Decoder) error {
 
 // Encode encodes Vsock as json.
 func (o OptVsock) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 

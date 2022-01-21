@@ -189,6 +189,9 @@ func (s *DataDescription) Decode(d *jx.Decoder) error {
 			case "count":
 				found = true
 				s.Type = DescriptionDetailedDataDescription
+			case "id":
+				found = true
+				s.Type = DescriptionDetailedDataDescription
 			case "description":
 				found = true
 				s.Type = DescriptionSimpleDataDescription
@@ -238,6 +241,15 @@ func (s DescriptionDetailed) Encode(e *jx.Writer) {
 		e.RawStr("\"count\"" + ":")
 		e.Int(s.Count)
 	}
+	{
+		if s.ID.Set {
+			e.Comma()
+		}
+		if s.ID.Set {
+			e.RawStr("\"id\"" + ":")
+			s.ID.Encode(e)
+		}
+	}
 	e.ObjEnd()
 }
 
@@ -258,6 +270,11 @@ func (s *DescriptionDetailed) Decode(d *jx.Decoder) error {
 			v, err := d.Int()
 			s.Count = int(v)
 			if err != nil {
+				return err
+			}
+		case "id":
+			s.ID.Reset()
+			if err := s.ID.Decode(d); err != nil {
 				return err
 			}
 		default:
@@ -579,6 +596,9 @@ func (s *NotFound) Decode(d *jx.Decoder) error {
 
 // Encode encodes Data as json.
 func (o OptData) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -601,6 +621,9 @@ func (o *OptData) Decode(d *jx.Decoder) error {
 
 // Encode encodes time.Duration as json.
 func (o OptDuration) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	json.EncodeDuration(e, o.Value)
 }
 
@@ -625,6 +648,9 @@ func (o *OptDuration) Decode(d *jx.Decoder) error {
 
 // Encode encodes float64 as json.
 func (o OptFloat64) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	e.Float64(float64(o.Value))
 }
 
@@ -647,8 +673,33 @@ func (o *OptFloat64) Decode(d *jx.Decoder) error {
 	}
 }
 
+// Encode encodes ID as json.
+func (o OptID) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
+	o.Value.Encode(e)
+}
+
+// Decode decodes ID from json.
+func (o *OptID) Decode(d *jx.Decoder) error {
+	if o == nil {
+		return errors.New(`invalid: unable to decode OptID to nil`)
+	}
+	switch d.Next() {
+	case jx.String:
+		o.Set = true
+		return nil
+	default:
+		return errors.Errorf(`unexpected type %q while reading OptID`, d.Next())
+	}
+}
+
 // Encode encodes int as json.
 func (o OptInt) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	e.Int(int(o.Value))
 }
 
@@ -673,6 +724,9 @@ func (o *OptInt) Decode(d *jx.Decoder) error {
 
 // Encode encodes string as json.
 func (o OptNilString) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	if o.Null {
 		e.Null()
 		return
@@ -711,6 +765,9 @@ func (o *OptNilString) Decode(d *jx.Decoder) error {
 
 // Encode encodes Pet as json.
 func (o OptPet) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -733,6 +790,10 @@ func (o *OptPet) Decode(d *jx.Decoder) error {
 
 // Encode encodes PetName as json.
 func (o OptPetName) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
+	o.Value.Encode(e)
 }
 
 // Decode decodes PetName from json.
@@ -751,6 +812,9 @@ func (o *OptPetName) Decode(d *jx.Decoder) error {
 
 // Encode encodes PetType as json.
 func (o OptPetType) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	e.Str(string(o.Value))
 }
 
@@ -773,6 +837,9 @@ func (o *OptPetType) Decode(d *jx.Decoder) error {
 
 // Encode encodes string as json.
 func (o OptString) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	e.Str(string(o.Value))
 }
 
@@ -797,6 +864,9 @@ func (o *OptString) Decode(d *jx.Decoder) error {
 
 // Encode encodes time.Time as json.
 func (o OptTime) Encode(e *jx.Writer, format func(*jx.Writer, time.Time)) {
+	if !o.Set {
+		return
+	}
 	format(e, o.Value)
 }
 
@@ -821,6 +891,9 @@ func (o *OptTime) Decode(d *jx.Decoder, format func(*jx.Decoder) (time.Time, err
 
 // Encode encodes uuid.UUID as json.
 func (o OptUUID) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	json.EncodeUUID(e, o.Value)
 }
 

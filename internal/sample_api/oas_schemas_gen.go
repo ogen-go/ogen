@@ -144,6 +144,7 @@ func NewDescriptionSimpleDataDescription(v DescriptionSimple) DataDescription {
 type DescriptionDetailed struct {
 	Name  string `json:"name"`
 	Count int    `json:"count"`
+	ID    OptID  `json:"id"`
 }
 
 // Ref: #/components/schemas/DescriptionSimple
@@ -424,6 +425,52 @@ func (o OptFloat64) Get() (v float64, ok bool) {
 
 // Or returns value if set, or given parameter if does not.
 func (o OptFloat64) Or(d float64) float64 {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
+// NewOptID returns new OptID with value set to v.
+func NewOptID(v ID) OptID {
+	return OptID{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptID is optional ID.
+type OptID struct {
+	Value ID
+	Set   bool
+}
+
+// IsSet returns true if OptID was set.
+func (o OptID) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptID) Reset() {
+	var v ID
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptID) SetTo(v ID) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptID) Get() (v ID, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptID) Or(d ID) ID {
 	if v, ok := o.Get(); ok {
 		return v
 	}

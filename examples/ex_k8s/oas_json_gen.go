@@ -56901,6 +56901,9 @@ func (s *LogFileListHandlerUnauthorized) Decode(d *jx.Decoder) error {
 
 // Encode encodes bool as json.
 func (o OptBool) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	e.Bool(bool(o.Value))
 }
 
@@ -56925,6 +56928,9 @@ func (o *OptBool) Decode(d *jx.Decoder) error {
 
 // Encode encodes float64 as json.
 func (o OptFloat64) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	e.Float64(float64(o.Value))
 }
 
@@ -56949,6 +56955,9 @@ func (o *OptFloat64) Decode(d *jx.Decoder) error {
 
 // Encode encodes int as json.
 func (o OptInt) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	e.Int(int(o.Value))
 }
 
@@ -56973,6 +56982,9 @@ func (o *OptInt) Decode(d *jx.Decoder) error {
 
 // Encode encodes int32 as json.
 func (o OptInt32) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	e.Int32(int32(o.Value))
 }
 
@@ -56997,6 +57009,9 @@ func (o *OptInt32) Decode(d *jx.Decoder) error {
 
 // Encode encodes int64 as json.
 func (o OptInt64) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	e.Int64(int64(o.Value))
 }
 
@@ -57021,6 +57036,9 @@ func (o *OptInt64) Decode(d *jx.Decoder) error {
 
 // Encode encodes IoK8sAPIAdmissionregistrationV1ServiceReference as json.
 func (o OptIoK8sAPIAdmissionregistrationV1ServiceReference) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -57043,6 +57061,9 @@ func (o *OptIoK8sAPIAdmissionregistrationV1ServiceReference) Decode(d *jx.Decode
 
 // Encode encodes IoK8sAPIAppsV1DaemonSetSpec as json.
 func (o OptIoK8sAPIAppsV1DaemonSetSpec) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -57065,6 +57086,9 @@ func (o *OptIoK8sAPIAppsV1DaemonSetSpec) Decode(d *jx.Decoder) error {
 
 // Encode encodes IoK8sAPIAppsV1DaemonSetStatus as json.
 func (o OptIoK8sAPIAppsV1DaemonSetStatus) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -57087,6 +57111,9 @@ func (o *OptIoK8sAPIAppsV1DaemonSetStatus) Decode(d *jx.Decoder) error {
 
 // Encode encodes IoK8sAPIAppsV1DaemonSetUpdateStrategy as json.
 func (o OptIoK8sAPIAppsV1DaemonSetUpdateStrategy) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -57109,6 +57136,9 @@ func (o *OptIoK8sAPIAppsV1DaemonSetUpdateStrategy) Decode(d *jx.Decoder) error {
 
 // Encode encodes IoK8sAPIAppsV1DeploymentSpec as json.
 func (o OptIoK8sAPIAppsV1DeploymentSpec) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -57131,6 +57161,9 @@ func (o *OptIoK8sAPIAppsV1DeploymentSpec) Decode(d *jx.Decoder) error {
 
 // Encode encodes IoK8sAPIAppsV1DeploymentStatus as json.
 func (o OptIoK8sAPIAppsV1DeploymentStatus) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -57153,6 +57186,9 @@ func (o *OptIoK8sAPIAppsV1DeploymentStatus) Decode(d *jx.Decoder) error {
 
 // Encode encodes IoK8sAPIAppsV1DeploymentStrategy as json.
 func (o OptIoK8sAPIAppsV1DeploymentStrategy) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -57175,6 +57211,9 @@ func (o *OptIoK8sAPIAppsV1DeploymentStrategy) Decode(d *jx.Decoder) error {
 
 // Encode encodes IoK8sAPIAppsV1ReplicaSetSpec as json.
 func (o OptIoK8sAPIAppsV1ReplicaSetSpec) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -57197,6 +57236,9 @@ func (o *OptIoK8sAPIAppsV1ReplicaSetSpec) Decode(d *jx.Decoder) error {
 
 // Encode encodes IoK8sAPIAppsV1ReplicaSetStatus as json.
 func (o OptIoK8sAPIAppsV1ReplicaSetStatus) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -57219,6 +57261,9 @@ func (o *OptIoK8sAPIAppsV1ReplicaSetStatus) Decode(d *jx.Decoder) error {
 
 // Encode encodes IoK8sAPIAppsV1RollingUpdateDaemonSet as json.
 func (o OptIoK8sAPIAppsV1RollingUpdateDaemonSet) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -57241,6 +57286,9 @@ func (o *OptIoK8sAPIAppsV1RollingUpdateDaemonSet) Decode(d *jx.Decoder) error {
 
 // Encode encodes IoK8sAPIAppsV1RollingUpdateDeployment as json.
 func (o OptIoK8sAPIAppsV1RollingUpdateDeployment) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -57263,6 +57311,9 @@ func (o *OptIoK8sAPIAppsV1RollingUpdateDeployment) Decode(d *jx.Decoder) error {
 
 // Encode encodes IoK8sAPIAppsV1RollingUpdateStatefulSetStrategy as json.
 func (o OptIoK8sAPIAppsV1RollingUpdateStatefulSetStrategy) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -57285,6 +57336,9 @@ func (o *OptIoK8sAPIAppsV1RollingUpdateStatefulSetStrategy) Decode(d *jx.Decoder
 
 // Encode encodes IoK8sAPIAppsV1StatefulSetSpec as json.
 func (o OptIoK8sAPIAppsV1StatefulSetSpec) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -57307,6 +57361,9 @@ func (o *OptIoK8sAPIAppsV1StatefulSetSpec) Decode(d *jx.Decoder) error {
 
 // Encode encodes IoK8sAPIAppsV1StatefulSetStatus as json.
 func (o OptIoK8sAPIAppsV1StatefulSetStatus) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -57329,6 +57386,9 @@ func (o *OptIoK8sAPIAppsV1StatefulSetStatus) Decode(d *jx.Decoder) error {
 
 // Encode encodes IoK8sAPIAppsV1StatefulSetUpdateStrategy as json.
 func (o OptIoK8sAPIAppsV1StatefulSetUpdateStrategy) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -57351,6 +57411,9 @@ func (o *OptIoK8sAPIAppsV1StatefulSetUpdateStrategy) Decode(d *jx.Decoder) error
 
 // Encode encodes IoK8sAPIAutoscalingV1HorizontalPodAutoscalerSpec as json.
 func (o OptIoK8sAPIAutoscalingV1HorizontalPodAutoscalerSpec) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -57373,6 +57436,9 @@ func (o *OptIoK8sAPIAutoscalingV1HorizontalPodAutoscalerSpec) Decode(d *jx.Decod
 
 // Encode encodes IoK8sAPIAutoscalingV1HorizontalPodAutoscalerStatus as json.
 func (o OptIoK8sAPIAutoscalingV1HorizontalPodAutoscalerStatus) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -57395,6 +57461,9 @@ func (o *OptIoK8sAPIAutoscalingV1HorizontalPodAutoscalerStatus) Decode(d *jx.Dec
 
 // Encode encodes IoK8sAPIAutoscalingV1ScaleSpec as json.
 func (o OptIoK8sAPIAutoscalingV1ScaleSpec) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -57417,6 +57486,9 @@ func (o *OptIoK8sAPIAutoscalingV1ScaleSpec) Decode(d *jx.Decoder) error {
 
 // Encode encodes IoK8sAPIAutoscalingV1ScaleStatus as json.
 func (o OptIoK8sAPIAutoscalingV1ScaleStatus) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -57439,6 +57511,9 @@ func (o *OptIoK8sAPIAutoscalingV1ScaleStatus) Decode(d *jx.Decoder) error {
 
 // Encode encodes IoK8sAPIAutoscalingV2beta1ContainerResourceMetricSource as json.
 func (o OptIoK8sAPIAutoscalingV2beta1ContainerResourceMetricSource) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -57461,6 +57536,9 @@ func (o *OptIoK8sAPIAutoscalingV2beta1ContainerResourceMetricSource) Decode(d *j
 
 // Encode encodes IoK8sAPIAutoscalingV2beta1ContainerResourceMetricStatus as json.
 func (o OptIoK8sAPIAutoscalingV2beta1ContainerResourceMetricStatus) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -57483,6 +57561,9 @@ func (o *OptIoK8sAPIAutoscalingV2beta1ContainerResourceMetricStatus) Decode(d *j
 
 // Encode encodes IoK8sAPIAutoscalingV2beta1ExternalMetricSource as json.
 func (o OptIoK8sAPIAutoscalingV2beta1ExternalMetricSource) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -57505,6 +57586,9 @@ func (o *OptIoK8sAPIAutoscalingV2beta1ExternalMetricSource) Decode(d *jx.Decoder
 
 // Encode encodes IoK8sAPIAutoscalingV2beta1ExternalMetricStatus as json.
 func (o OptIoK8sAPIAutoscalingV2beta1ExternalMetricStatus) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -57527,6 +57611,9 @@ func (o *OptIoK8sAPIAutoscalingV2beta1ExternalMetricStatus) Decode(d *jx.Decoder
 
 // Encode encodes IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerSpec as json.
 func (o OptIoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerSpec) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -57549,6 +57636,9 @@ func (o *OptIoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerSpec) Decode(d *jx.
 
 // Encode encodes IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerStatus as json.
 func (o OptIoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerStatus) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -57571,6 +57661,9 @@ func (o *OptIoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerStatus) Decode(d *j
 
 // Encode encodes IoK8sAPIAutoscalingV2beta1ObjectMetricSource as json.
 func (o OptIoK8sAPIAutoscalingV2beta1ObjectMetricSource) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -57593,6 +57686,9 @@ func (o *OptIoK8sAPIAutoscalingV2beta1ObjectMetricSource) Decode(d *jx.Decoder) 
 
 // Encode encodes IoK8sAPIAutoscalingV2beta1ObjectMetricStatus as json.
 func (o OptIoK8sAPIAutoscalingV2beta1ObjectMetricStatus) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -57615,6 +57711,9 @@ func (o *OptIoK8sAPIAutoscalingV2beta1ObjectMetricStatus) Decode(d *jx.Decoder) 
 
 // Encode encodes IoK8sAPIAutoscalingV2beta1PodsMetricSource as json.
 func (o OptIoK8sAPIAutoscalingV2beta1PodsMetricSource) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -57637,6 +57736,9 @@ func (o *OptIoK8sAPIAutoscalingV2beta1PodsMetricSource) Decode(d *jx.Decoder) er
 
 // Encode encodes IoK8sAPIAutoscalingV2beta1PodsMetricStatus as json.
 func (o OptIoK8sAPIAutoscalingV2beta1PodsMetricStatus) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -57659,6 +57761,9 @@ func (o *OptIoK8sAPIAutoscalingV2beta1PodsMetricStatus) Decode(d *jx.Decoder) er
 
 // Encode encodes IoK8sAPIAutoscalingV2beta1ResourceMetricSource as json.
 func (o OptIoK8sAPIAutoscalingV2beta1ResourceMetricSource) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -57681,6 +57786,9 @@ func (o *OptIoK8sAPIAutoscalingV2beta1ResourceMetricSource) Decode(d *jx.Decoder
 
 // Encode encodes IoK8sAPIAutoscalingV2beta1ResourceMetricStatus as json.
 func (o OptIoK8sAPIAutoscalingV2beta1ResourceMetricStatus) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -57703,6 +57811,9 @@ func (o *OptIoK8sAPIAutoscalingV2beta1ResourceMetricStatus) Decode(d *jx.Decoder
 
 // Encode encodes IoK8sAPIAutoscalingV2beta2ContainerResourceMetricSource as json.
 func (o OptIoK8sAPIAutoscalingV2beta2ContainerResourceMetricSource) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -57725,6 +57836,9 @@ func (o *OptIoK8sAPIAutoscalingV2beta2ContainerResourceMetricSource) Decode(d *j
 
 // Encode encodes IoK8sAPIAutoscalingV2beta2ContainerResourceMetricStatus as json.
 func (o OptIoK8sAPIAutoscalingV2beta2ContainerResourceMetricStatus) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -57747,6 +57861,9 @@ func (o *OptIoK8sAPIAutoscalingV2beta2ContainerResourceMetricStatus) Decode(d *j
 
 // Encode encodes IoK8sAPIAutoscalingV2beta2ExternalMetricSource as json.
 func (o OptIoK8sAPIAutoscalingV2beta2ExternalMetricSource) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -57769,6 +57886,9 @@ func (o *OptIoK8sAPIAutoscalingV2beta2ExternalMetricSource) Decode(d *jx.Decoder
 
 // Encode encodes IoK8sAPIAutoscalingV2beta2ExternalMetricStatus as json.
 func (o OptIoK8sAPIAutoscalingV2beta2ExternalMetricStatus) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -57791,6 +57911,9 @@ func (o *OptIoK8sAPIAutoscalingV2beta2ExternalMetricStatus) Decode(d *jx.Decoder
 
 // Encode encodes IoK8sAPIAutoscalingV2beta2HPAScalingRules as json.
 func (o OptIoK8sAPIAutoscalingV2beta2HPAScalingRules) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -57813,6 +57936,9 @@ func (o *OptIoK8sAPIAutoscalingV2beta2HPAScalingRules) Decode(d *jx.Decoder) err
 
 // Encode encodes IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerBehavior as json.
 func (o OptIoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerBehavior) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -57835,6 +57961,9 @@ func (o *OptIoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerBehavior) Decode(d 
 
 // Encode encodes IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerSpec as json.
 func (o OptIoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerSpec) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -57857,6 +57986,9 @@ func (o *OptIoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerSpec) Decode(d *jx.
 
 // Encode encodes IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerStatus as json.
 func (o OptIoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerStatus) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -57879,6 +58011,9 @@ func (o *OptIoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerStatus) Decode(d *j
 
 // Encode encodes IoK8sAPIAutoscalingV2beta2ObjectMetricSource as json.
 func (o OptIoK8sAPIAutoscalingV2beta2ObjectMetricSource) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -57901,6 +58036,9 @@ func (o *OptIoK8sAPIAutoscalingV2beta2ObjectMetricSource) Decode(d *jx.Decoder) 
 
 // Encode encodes IoK8sAPIAutoscalingV2beta2ObjectMetricStatus as json.
 func (o OptIoK8sAPIAutoscalingV2beta2ObjectMetricStatus) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -57923,6 +58061,9 @@ func (o *OptIoK8sAPIAutoscalingV2beta2ObjectMetricStatus) Decode(d *jx.Decoder) 
 
 // Encode encodes IoK8sAPIAutoscalingV2beta2PodsMetricSource as json.
 func (o OptIoK8sAPIAutoscalingV2beta2PodsMetricSource) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -57945,6 +58086,9 @@ func (o *OptIoK8sAPIAutoscalingV2beta2PodsMetricSource) Decode(d *jx.Decoder) er
 
 // Encode encodes IoK8sAPIAutoscalingV2beta2PodsMetricStatus as json.
 func (o OptIoK8sAPIAutoscalingV2beta2PodsMetricStatus) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -57967,6 +58111,9 @@ func (o *OptIoK8sAPIAutoscalingV2beta2PodsMetricStatus) Decode(d *jx.Decoder) er
 
 // Encode encodes IoK8sAPIAutoscalingV2beta2ResourceMetricSource as json.
 func (o OptIoK8sAPIAutoscalingV2beta2ResourceMetricSource) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -57989,6 +58136,9 @@ func (o *OptIoK8sAPIAutoscalingV2beta2ResourceMetricSource) Decode(d *jx.Decoder
 
 // Encode encodes IoK8sAPIAutoscalingV2beta2ResourceMetricStatus as json.
 func (o OptIoK8sAPIAutoscalingV2beta2ResourceMetricStatus) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -58011,6 +58161,9 @@ func (o *OptIoK8sAPIAutoscalingV2beta2ResourceMetricStatus) Decode(d *jx.Decoder
 
 // Encode encodes IoK8sAPIBatchV1CronJobSpec as json.
 func (o OptIoK8sAPIBatchV1CronJobSpec) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -58033,6 +58186,9 @@ func (o *OptIoK8sAPIBatchV1CronJobSpec) Decode(d *jx.Decoder) error {
 
 // Encode encodes IoK8sAPIBatchV1CronJobStatus as json.
 func (o OptIoK8sAPIBatchV1CronJobStatus) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -58055,6 +58211,9 @@ func (o *OptIoK8sAPIBatchV1CronJobStatus) Decode(d *jx.Decoder) error {
 
 // Encode encodes IoK8sAPIBatchV1JobSpec as json.
 func (o OptIoK8sAPIBatchV1JobSpec) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -58077,6 +58236,9 @@ func (o *OptIoK8sAPIBatchV1JobSpec) Decode(d *jx.Decoder) error {
 
 // Encode encodes IoK8sAPIBatchV1JobStatus as json.
 func (o OptIoK8sAPIBatchV1JobStatus) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -58099,6 +58261,9 @@ func (o *OptIoK8sAPIBatchV1JobStatus) Decode(d *jx.Decoder) error {
 
 // Encode encodes IoK8sAPIBatchV1UncountedTerminatedPods as json.
 func (o OptIoK8sAPIBatchV1UncountedTerminatedPods) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -58121,6 +58286,9 @@ func (o *OptIoK8sAPIBatchV1UncountedTerminatedPods) Decode(d *jx.Decoder) error 
 
 // Encode encodes IoK8sAPIBatchV1beta1CronJobSpec as json.
 func (o OptIoK8sAPIBatchV1beta1CronJobSpec) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -58143,6 +58311,9 @@ func (o *OptIoK8sAPIBatchV1beta1CronJobSpec) Decode(d *jx.Decoder) error {
 
 // Encode encodes IoK8sAPIBatchV1beta1CronJobStatus as json.
 func (o OptIoK8sAPIBatchV1beta1CronJobStatus) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -58165,6 +58336,9 @@ func (o *OptIoK8sAPIBatchV1beta1CronJobStatus) Decode(d *jx.Decoder) error {
 
 // Encode encodes IoK8sAPICertificatesV1CertificateSigningRequestStatus as json.
 func (o OptIoK8sAPICertificatesV1CertificateSigningRequestStatus) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -58187,6 +58361,9 @@ func (o *OptIoK8sAPICertificatesV1CertificateSigningRequestStatus) Decode(d *jx.
 
 // Encode encodes IoK8sAPICoordinationV1LeaseSpec as json.
 func (o OptIoK8sAPICoordinationV1LeaseSpec) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -58209,6 +58386,9 @@ func (o *OptIoK8sAPICoordinationV1LeaseSpec) Decode(d *jx.Decoder) error {
 
 // Encode encodes IoK8sAPICoreV1AWSElasticBlockStoreVolumeSource as json.
 func (o OptIoK8sAPICoreV1AWSElasticBlockStoreVolumeSource) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -58231,6 +58411,9 @@ func (o *OptIoK8sAPICoreV1AWSElasticBlockStoreVolumeSource) Decode(d *jx.Decoder
 
 // Encode encodes IoK8sAPICoreV1Affinity as json.
 func (o OptIoK8sAPICoreV1Affinity) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -58253,6 +58436,9 @@ func (o *OptIoK8sAPICoreV1Affinity) Decode(d *jx.Decoder) error {
 
 // Encode encodes IoK8sAPICoreV1AzureDiskVolumeSource as json.
 func (o OptIoK8sAPICoreV1AzureDiskVolumeSource) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -58275,6 +58461,9 @@ func (o *OptIoK8sAPICoreV1AzureDiskVolumeSource) Decode(d *jx.Decoder) error {
 
 // Encode encodes IoK8sAPICoreV1AzureFilePersistentVolumeSource as json.
 func (o OptIoK8sAPICoreV1AzureFilePersistentVolumeSource) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -58297,6 +58486,9 @@ func (o *OptIoK8sAPICoreV1AzureFilePersistentVolumeSource) Decode(d *jx.Decoder)
 
 // Encode encodes IoK8sAPICoreV1AzureFileVolumeSource as json.
 func (o OptIoK8sAPICoreV1AzureFileVolumeSource) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -58319,6 +58511,9 @@ func (o *OptIoK8sAPICoreV1AzureFileVolumeSource) Decode(d *jx.Decoder) error {
 
 // Encode encodes IoK8sAPICoreV1CSIPersistentVolumeSource as json.
 func (o OptIoK8sAPICoreV1CSIPersistentVolumeSource) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -58341,6 +58536,9 @@ func (o *OptIoK8sAPICoreV1CSIPersistentVolumeSource) Decode(d *jx.Decoder) error
 
 // Encode encodes IoK8sAPICoreV1CSIVolumeSource as json.
 func (o OptIoK8sAPICoreV1CSIVolumeSource) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -58363,6 +58561,9 @@ func (o *OptIoK8sAPICoreV1CSIVolumeSource) Decode(d *jx.Decoder) error {
 
 // Encode encodes IoK8sAPICoreV1Capabilities as json.
 func (o OptIoK8sAPICoreV1Capabilities) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -58385,6 +58586,9 @@ func (o *OptIoK8sAPICoreV1Capabilities) Decode(d *jx.Decoder) error {
 
 // Encode encodes IoK8sAPICoreV1CephFSPersistentVolumeSource as json.
 func (o OptIoK8sAPICoreV1CephFSPersistentVolumeSource) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -58407,6 +58611,9 @@ func (o *OptIoK8sAPICoreV1CephFSPersistentVolumeSource) Decode(d *jx.Decoder) er
 
 // Encode encodes IoK8sAPICoreV1CephFSVolumeSource as json.
 func (o OptIoK8sAPICoreV1CephFSVolumeSource) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -58429,6 +58636,9 @@ func (o *OptIoK8sAPICoreV1CephFSVolumeSource) Decode(d *jx.Decoder) error {
 
 // Encode encodes IoK8sAPICoreV1CinderPersistentVolumeSource as json.
 func (o OptIoK8sAPICoreV1CinderPersistentVolumeSource) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -58451,6 +58661,9 @@ func (o *OptIoK8sAPICoreV1CinderPersistentVolumeSource) Decode(d *jx.Decoder) er
 
 // Encode encodes IoK8sAPICoreV1CinderVolumeSource as json.
 func (o OptIoK8sAPICoreV1CinderVolumeSource) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -58473,6 +58686,9 @@ func (o *OptIoK8sAPICoreV1CinderVolumeSource) Decode(d *jx.Decoder) error {
 
 // Encode encodes IoK8sAPICoreV1ClientIPConfig as json.
 func (o OptIoK8sAPICoreV1ClientIPConfig) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -58495,6 +58711,9 @@ func (o *OptIoK8sAPICoreV1ClientIPConfig) Decode(d *jx.Decoder) error {
 
 // Encode encodes IoK8sAPICoreV1ConfigMapEnvSource as json.
 func (o OptIoK8sAPICoreV1ConfigMapEnvSource) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -58517,6 +58736,9 @@ func (o *OptIoK8sAPICoreV1ConfigMapEnvSource) Decode(d *jx.Decoder) error {
 
 // Encode encodes IoK8sAPICoreV1ConfigMapKeySelector as json.
 func (o OptIoK8sAPICoreV1ConfigMapKeySelector) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -58539,6 +58761,9 @@ func (o *OptIoK8sAPICoreV1ConfigMapKeySelector) Decode(d *jx.Decoder) error {
 
 // Encode encodes IoK8sAPICoreV1ConfigMapNodeConfigSource as json.
 func (o OptIoK8sAPICoreV1ConfigMapNodeConfigSource) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -58561,6 +58786,9 @@ func (o *OptIoK8sAPICoreV1ConfigMapNodeConfigSource) Decode(d *jx.Decoder) error
 
 // Encode encodes IoK8sAPICoreV1ConfigMapProjection as json.
 func (o OptIoK8sAPICoreV1ConfigMapProjection) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -58583,6 +58811,9 @@ func (o *OptIoK8sAPICoreV1ConfigMapProjection) Decode(d *jx.Decoder) error {
 
 // Encode encodes IoK8sAPICoreV1ConfigMapVolumeSource as json.
 func (o OptIoK8sAPICoreV1ConfigMapVolumeSource) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -58605,6 +58836,9 @@ func (o *OptIoK8sAPICoreV1ConfigMapVolumeSource) Decode(d *jx.Decoder) error {
 
 // Encode encodes IoK8sAPICoreV1ContainerState as json.
 func (o OptIoK8sAPICoreV1ContainerState) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -58627,6 +58861,9 @@ func (o *OptIoK8sAPICoreV1ContainerState) Decode(d *jx.Decoder) error {
 
 // Encode encodes IoK8sAPICoreV1ContainerStateRunning as json.
 func (o OptIoK8sAPICoreV1ContainerStateRunning) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -58649,6 +58886,9 @@ func (o *OptIoK8sAPICoreV1ContainerStateRunning) Decode(d *jx.Decoder) error {
 
 // Encode encodes IoK8sAPICoreV1ContainerStateTerminated as json.
 func (o OptIoK8sAPICoreV1ContainerStateTerminated) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -58671,6 +58911,9 @@ func (o *OptIoK8sAPICoreV1ContainerStateTerminated) Decode(d *jx.Decoder) error 
 
 // Encode encodes IoK8sAPICoreV1ContainerStateWaiting as json.
 func (o OptIoK8sAPICoreV1ContainerStateWaiting) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -58693,6 +58936,9 @@ func (o *OptIoK8sAPICoreV1ContainerStateWaiting) Decode(d *jx.Decoder) error {
 
 // Encode encodes IoK8sAPICoreV1DaemonEndpoint as json.
 func (o OptIoK8sAPICoreV1DaemonEndpoint) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -58715,6 +58961,9 @@ func (o *OptIoK8sAPICoreV1DaemonEndpoint) Decode(d *jx.Decoder) error {
 
 // Encode encodes IoK8sAPICoreV1DownwardAPIProjection as json.
 func (o OptIoK8sAPICoreV1DownwardAPIProjection) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -58737,6 +58986,9 @@ func (o *OptIoK8sAPICoreV1DownwardAPIProjection) Decode(d *jx.Decoder) error {
 
 // Encode encodes IoK8sAPICoreV1DownwardAPIVolumeSource as json.
 func (o OptIoK8sAPICoreV1DownwardAPIVolumeSource) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -58759,6 +59011,9 @@ func (o *OptIoK8sAPICoreV1DownwardAPIVolumeSource) Decode(d *jx.Decoder) error {
 
 // Encode encodes IoK8sAPICoreV1EmptyDirVolumeSource as json.
 func (o OptIoK8sAPICoreV1EmptyDirVolumeSource) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -58781,6 +59036,9 @@ func (o *OptIoK8sAPICoreV1EmptyDirVolumeSource) Decode(d *jx.Decoder) error {
 
 // Encode encodes IoK8sAPICoreV1EnvVarSource as json.
 func (o OptIoK8sAPICoreV1EnvVarSource) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -58803,6 +59061,9 @@ func (o *OptIoK8sAPICoreV1EnvVarSource) Decode(d *jx.Decoder) error {
 
 // Encode encodes IoK8sAPICoreV1EphemeralVolumeSource as json.
 func (o OptIoK8sAPICoreV1EphemeralVolumeSource) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -58825,6 +59086,9 @@ func (o *OptIoK8sAPICoreV1EphemeralVolumeSource) Decode(d *jx.Decoder) error {
 
 // Encode encodes IoK8sAPICoreV1EventSeries as json.
 func (o OptIoK8sAPICoreV1EventSeries) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -58847,6 +59111,9 @@ func (o *OptIoK8sAPICoreV1EventSeries) Decode(d *jx.Decoder) error {
 
 // Encode encodes IoK8sAPICoreV1EventSource as json.
 func (o OptIoK8sAPICoreV1EventSource) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -58869,6 +59136,9 @@ func (o *OptIoK8sAPICoreV1EventSource) Decode(d *jx.Decoder) error {
 
 // Encode encodes IoK8sAPICoreV1ExecAction as json.
 func (o OptIoK8sAPICoreV1ExecAction) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -58891,6 +59161,9 @@ func (o *OptIoK8sAPICoreV1ExecAction) Decode(d *jx.Decoder) error {
 
 // Encode encodes IoK8sAPICoreV1FCVolumeSource as json.
 func (o OptIoK8sAPICoreV1FCVolumeSource) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -58913,6 +59186,9 @@ func (o *OptIoK8sAPICoreV1FCVolumeSource) Decode(d *jx.Decoder) error {
 
 // Encode encodes IoK8sAPICoreV1FlexPersistentVolumeSource as json.
 func (o OptIoK8sAPICoreV1FlexPersistentVolumeSource) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -58935,6 +59211,9 @@ func (o *OptIoK8sAPICoreV1FlexPersistentVolumeSource) Decode(d *jx.Decoder) erro
 
 // Encode encodes IoK8sAPICoreV1FlexVolumeSource as json.
 func (o OptIoK8sAPICoreV1FlexVolumeSource) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -58957,6 +59236,9 @@ func (o *OptIoK8sAPICoreV1FlexVolumeSource) Decode(d *jx.Decoder) error {
 
 // Encode encodes IoK8sAPICoreV1FlockerVolumeSource as json.
 func (o OptIoK8sAPICoreV1FlockerVolumeSource) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -58979,6 +59261,9 @@ func (o *OptIoK8sAPICoreV1FlockerVolumeSource) Decode(d *jx.Decoder) error {
 
 // Encode encodes IoK8sAPICoreV1GCEPersistentDiskVolumeSource as json.
 func (o OptIoK8sAPICoreV1GCEPersistentDiskVolumeSource) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -59001,6 +59286,9 @@ func (o *OptIoK8sAPICoreV1GCEPersistentDiskVolumeSource) Decode(d *jx.Decoder) e
 
 // Encode encodes IoK8sAPICoreV1GitRepoVolumeSource as json.
 func (o OptIoK8sAPICoreV1GitRepoVolumeSource) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -59023,6 +59311,9 @@ func (o *OptIoK8sAPICoreV1GitRepoVolumeSource) Decode(d *jx.Decoder) error {
 
 // Encode encodes IoK8sAPICoreV1GlusterfsPersistentVolumeSource as json.
 func (o OptIoK8sAPICoreV1GlusterfsPersistentVolumeSource) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -59045,6 +59336,9 @@ func (o *OptIoK8sAPICoreV1GlusterfsPersistentVolumeSource) Decode(d *jx.Decoder)
 
 // Encode encodes IoK8sAPICoreV1GlusterfsVolumeSource as json.
 func (o OptIoK8sAPICoreV1GlusterfsVolumeSource) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -59067,6 +59361,9 @@ func (o *OptIoK8sAPICoreV1GlusterfsVolumeSource) Decode(d *jx.Decoder) error {
 
 // Encode encodes IoK8sAPICoreV1HTTPGetAction as json.
 func (o OptIoK8sAPICoreV1HTTPGetAction) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -59089,6 +59386,9 @@ func (o *OptIoK8sAPICoreV1HTTPGetAction) Decode(d *jx.Decoder) error {
 
 // Encode encodes IoK8sAPICoreV1Handler as json.
 func (o OptIoK8sAPICoreV1Handler) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -59111,6 +59411,9 @@ func (o *OptIoK8sAPICoreV1Handler) Decode(d *jx.Decoder) error {
 
 // Encode encodes IoK8sAPICoreV1HostPathVolumeSource as json.
 func (o OptIoK8sAPICoreV1HostPathVolumeSource) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -59133,6 +59436,9 @@ func (o *OptIoK8sAPICoreV1HostPathVolumeSource) Decode(d *jx.Decoder) error {
 
 // Encode encodes IoK8sAPICoreV1ISCSIPersistentVolumeSource as json.
 func (o OptIoK8sAPICoreV1ISCSIPersistentVolumeSource) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -59155,6 +59461,9 @@ func (o *OptIoK8sAPICoreV1ISCSIPersistentVolumeSource) Decode(d *jx.Decoder) err
 
 // Encode encodes IoK8sAPICoreV1ISCSIVolumeSource as json.
 func (o OptIoK8sAPICoreV1ISCSIVolumeSource) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -59177,6 +59486,9 @@ func (o *OptIoK8sAPICoreV1ISCSIVolumeSource) Decode(d *jx.Decoder) error {
 
 // Encode encodes IoK8sAPICoreV1Lifecycle as json.
 func (o OptIoK8sAPICoreV1Lifecycle) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -59199,6 +59511,9 @@ func (o *OptIoK8sAPICoreV1Lifecycle) Decode(d *jx.Decoder) error {
 
 // Encode encodes IoK8sAPICoreV1LimitRangeSpec as json.
 func (o OptIoK8sAPICoreV1LimitRangeSpec) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -59221,6 +59536,9 @@ func (o *OptIoK8sAPICoreV1LimitRangeSpec) Decode(d *jx.Decoder) error {
 
 // Encode encodes IoK8sAPICoreV1LoadBalancerStatus as json.
 func (o OptIoK8sAPICoreV1LoadBalancerStatus) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -59243,6 +59561,9 @@ func (o *OptIoK8sAPICoreV1LoadBalancerStatus) Decode(d *jx.Decoder) error {
 
 // Encode encodes IoK8sAPICoreV1LocalObjectReference as json.
 func (o OptIoK8sAPICoreV1LocalObjectReference) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -59265,6 +59586,9 @@ func (o *OptIoK8sAPICoreV1LocalObjectReference) Decode(d *jx.Decoder) error {
 
 // Encode encodes IoK8sAPICoreV1LocalVolumeSource as json.
 func (o OptIoK8sAPICoreV1LocalVolumeSource) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -59287,6 +59611,9 @@ func (o *OptIoK8sAPICoreV1LocalVolumeSource) Decode(d *jx.Decoder) error {
 
 // Encode encodes IoK8sAPICoreV1NFSVolumeSource as json.
 func (o OptIoK8sAPICoreV1NFSVolumeSource) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -59309,6 +59636,9 @@ func (o *OptIoK8sAPICoreV1NFSVolumeSource) Decode(d *jx.Decoder) error {
 
 // Encode encodes IoK8sAPICoreV1NamespaceSpec as json.
 func (o OptIoK8sAPICoreV1NamespaceSpec) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -59331,6 +59661,9 @@ func (o *OptIoK8sAPICoreV1NamespaceSpec) Decode(d *jx.Decoder) error {
 
 // Encode encodes IoK8sAPICoreV1NamespaceStatus as json.
 func (o OptIoK8sAPICoreV1NamespaceStatus) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -59353,6 +59686,9 @@ func (o *OptIoK8sAPICoreV1NamespaceStatus) Decode(d *jx.Decoder) error {
 
 // Encode encodes IoK8sAPICoreV1NodeAffinity as json.
 func (o OptIoK8sAPICoreV1NodeAffinity) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -59375,6 +59711,9 @@ func (o *OptIoK8sAPICoreV1NodeAffinity) Decode(d *jx.Decoder) error {
 
 // Encode encodes IoK8sAPICoreV1NodeConfigSource as json.
 func (o OptIoK8sAPICoreV1NodeConfigSource) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -59397,6 +59736,9 @@ func (o *OptIoK8sAPICoreV1NodeConfigSource) Decode(d *jx.Decoder) error {
 
 // Encode encodes IoK8sAPICoreV1NodeConfigStatus as json.
 func (o OptIoK8sAPICoreV1NodeConfigStatus) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -59419,6 +59761,9 @@ func (o *OptIoK8sAPICoreV1NodeConfigStatus) Decode(d *jx.Decoder) error {
 
 // Encode encodes IoK8sAPICoreV1NodeDaemonEndpoints as json.
 func (o OptIoK8sAPICoreV1NodeDaemonEndpoints) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -59441,6 +59786,9 @@ func (o *OptIoK8sAPICoreV1NodeDaemonEndpoints) Decode(d *jx.Decoder) error {
 
 // Encode encodes IoK8sAPICoreV1NodeSelector as json.
 func (o OptIoK8sAPICoreV1NodeSelector) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -59463,6 +59811,9 @@ func (o *OptIoK8sAPICoreV1NodeSelector) Decode(d *jx.Decoder) error {
 
 // Encode encodes IoK8sAPICoreV1NodeSpec as json.
 func (o OptIoK8sAPICoreV1NodeSpec) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -59485,6 +59836,9 @@ func (o *OptIoK8sAPICoreV1NodeSpec) Decode(d *jx.Decoder) error {
 
 // Encode encodes IoK8sAPICoreV1NodeStatus as json.
 func (o OptIoK8sAPICoreV1NodeStatus) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -59507,6 +59861,9 @@ func (o *OptIoK8sAPICoreV1NodeStatus) Decode(d *jx.Decoder) error {
 
 // Encode encodes IoK8sAPICoreV1NodeSystemInfo as json.
 func (o OptIoK8sAPICoreV1NodeSystemInfo) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -59529,6 +59886,9 @@ func (o *OptIoK8sAPICoreV1NodeSystemInfo) Decode(d *jx.Decoder) error {
 
 // Encode encodes IoK8sAPICoreV1ObjectFieldSelector as json.
 func (o OptIoK8sAPICoreV1ObjectFieldSelector) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -59551,6 +59911,9 @@ func (o *OptIoK8sAPICoreV1ObjectFieldSelector) Decode(d *jx.Decoder) error {
 
 // Encode encodes IoK8sAPICoreV1ObjectReference as json.
 func (o OptIoK8sAPICoreV1ObjectReference) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -59573,6 +59936,9 @@ func (o *OptIoK8sAPICoreV1ObjectReference) Decode(d *jx.Decoder) error {
 
 // Encode encodes IoK8sAPICoreV1PersistentVolumeClaimSpec as json.
 func (o OptIoK8sAPICoreV1PersistentVolumeClaimSpec) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -59595,6 +59961,9 @@ func (o *OptIoK8sAPICoreV1PersistentVolumeClaimSpec) Decode(d *jx.Decoder) error
 
 // Encode encodes IoK8sAPICoreV1PersistentVolumeClaimStatus as json.
 func (o OptIoK8sAPICoreV1PersistentVolumeClaimStatus) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -59617,6 +59986,9 @@ func (o *OptIoK8sAPICoreV1PersistentVolumeClaimStatus) Decode(d *jx.Decoder) err
 
 // Encode encodes IoK8sAPICoreV1PersistentVolumeClaimTemplate as json.
 func (o OptIoK8sAPICoreV1PersistentVolumeClaimTemplate) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -59639,6 +60011,9 @@ func (o *OptIoK8sAPICoreV1PersistentVolumeClaimTemplate) Decode(d *jx.Decoder) e
 
 // Encode encodes IoK8sAPICoreV1PersistentVolumeClaimVolumeSource as json.
 func (o OptIoK8sAPICoreV1PersistentVolumeClaimVolumeSource) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -59661,6 +60036,9 @@ func (o *OptIoK8sAPICoreV1PersistentVolumeClaimVolumeSource) Decode(d *jx.Decode
 
 // Encode encodes IoK8sAPICoreV1PersistentVolumeSpec as json.
 func (o OptIoK8sAPICoreV1PersistentVolumeSpec) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -59683,6 +60061,9 @@ func (o *OptIoK8sAPICoreV1PersistentVolumeSpec) Decode(d *jx.Decoder) error {
 
 // Encode encodes IoK8sAPICoreV1PersistentVolumeStatus as json.
 func (o OptIoK8sAPICoreV1PersistentVolumeStatus) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -59705,6 +60086,9 @@ func (o *OptIoK8sAPICoreV1PersistentVolumeStatus) Decode(d *jx.Decoder) error {
 
 // Encode encodes IoK8sAPICoreV1PhotonPersistentDiskVolumeSource as json.
 func (o OptIoK8sAPICoreV1PhotonPersistentDiskVolumeSource) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -59727,6 +60111,9 @@ func (o *OptIoK8sAPICoreV1PhotonPersistentDiskVolumeSource) Decode(d *jx.Decoder
 
 // Encode encodes IoK8sAPICoreV1PodAffinity as json.
 func (o OptIoK8sAPICoreV1PodAffinity) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -59749,6 +60136,9 @@ func (o *OptIoK8sAPICoreV1PodAffinity) Decode(d *jx.Decoder) error {
 
 // Encode encodes IoK8sAPICoreV1PodAntiAffinity as json.
 func (o OptIoK8sAPICoreV1PodAntiAffinity) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -59771,6 +60161,9 @@ func (o *OptIoK8sAPICoreV1PodAntiAffinity) Decode(d *jx.Decoder) error {
 
 // Encode encodes IoK8sAPICoreV1PodDNSConfig as json.
 func (o OptIoK8sAPICoreV1PodDNSConfig) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -59793,6 +60186,9 @@ func (o *OptIoK8sAPICoreV1PodDNSConfig) Decode(d *jx.Decoder) error {
 
 // Encode encodes IoK8sAPICoreV1PodSecurityContext as json.
 func (o OptIoK8sAPICoreV1PodSecurityContext) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -59815,6 +60211,9 @@ func (o *OptIoK8sAPICoreV1PodSecurityContext) Decode(d *jx.Decoder) error {
 
 // Encode encodes IoK8sAPICoreV1PodSpec as json.
 func (o OptIoK8sAPICoreV1PodSpec) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -59837,6 +60236,9 @@ func (o *OptIoK8sAPICoreV1PodSpec) Decode(d *jx.Decoder) error {
 
 // Encode encodes IoK8sAPICoreV1PodStatus as json.
 func (o OptIoK8sAPICoreV1PodStatus) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -59859,6 +60261,9 @@ func (o *OptIoK8sAPICoreV1PodStatus) Decode(d *jx.Decoder) error {
 
 // Encode encodes IoK8sAPICoreV1PodTemplateSpec as json.
 func (o OptIoK8sAPICoreV1PodTemplateSpec) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -59881,6 +60286,9 @@ func (o *OptIoK8sAPICoreV1PodTemplateSpec) Decode(d *jx.Decoder) error {
 
 // Encode encodes IoK8sAPICoreV1PortworxVolumeSource as json.
 func (o OptIoK8sAPICoreV1PortworxVolumeSource) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -59903,6 +60311,9 @@ func (o *OptIoK8sAPICoreV1PortworxVolumeSource) Decode(d *jx.Decoder) error {
 
 // Encode encodes IoK8sAPICoreV1Probe as json.
 func (o OptIoK8sAPICoreV1Probe) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -59925,6 +60336,9 @@ func (o *OptIoK8sAPICoreV1Probe) Decode(d *jx.Decoder) error {
 
 // Encode encodes IoK8sAPICoreV1ProjectedVolumeSource as json.
 func (o OptIoK8sAPICoreV1ProjectedVolumeSource) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -59947,6 +60361,9 @@ func (o *OptIoK8sAPICoreV1ProjectedVolumeSource) Decode(d *jx.Decoder) error {
 
 // Encode encodes IoK8sAPICoreV1QuobyteVolumeSource as json.
 func (o OptIoK8sAPICoreV1QuobyteVolumeSource) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -59969,6 +60386,9 @@ func (o *OptIoK8sAPICoreV1QuobyteVolumeSource) Decode(d *jx.Decoder) error {
 
 // Encode encodes IoK8sAPICoreV1RBDPersistentVolumeSource as json.
 func (o OptIoK8sAPICoreV1RBDPersistentVolumeSource) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -59991,6 +60411,9 @@ func (o *OptIoK8sAPICoreV1RBDPersistentVolumeSource) Decode(d *jx.Decoder) error
 
 // Encode encodes IoK8sAPICoreV1RBDVolumeSource as json.
 func (o OptIoK8sAPICoreV1RBDVolumeSource) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -60013,6 +60436,9 @@ func (o *OptIoK8sAPICoreV1RBDVolumeSource) Decode(d *jx.Decoder) error {
 
 // Encode encodes IoK8sAPICoreV1ReplicationControllerSpec as json.
 func (o OptIoK8sAPICoreV1ReplicationControllerSpec) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -60035,6 +60461,9 @@ func (o *OptIoK8sAPICoreV1ReplicationControllerSpec) Decode(d *jx.Decoder) error
 
 // Encode encodes IoK8sAPICoreV1ReplicationControllerStatus as json.
 func (o OptIoK8sAPICoreV1ReplicationControllerStatus) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -60057,6 +60486,9 @@ func (o *OptIoK8sAPICoreV1ReplicationControllerStatus) Decode(d *jx.Decoder) err
 
 // Encode encodes IoK8sAPICoreV1ResourceFieldSelector as json.
 func (o OptIoK8sAPICoreV1ResourceFieldSelector) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -60079,6 +60511,9 @@ func (o *OptIoK8sAPICoreV1ResourceFieldSelector) Decode(d *jx.Decoder) error {
 
 // Encode encodes IoK8sAPICoreV1ResourceQuotaSpec as json.
 func (o OptIoK8sAPICoreV1ResourceQuotaSpec) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -60101,6 +60536,9 @@ func (o *OptIoK8sAPICoreV1ResourceQuotaSpec) Decode(d *jx.Decoder) error {
 
 // Encode encodes IoK8sAPICoreV1ResourceQuotaStatus as json.
 func (o OptIoK8sAPICoreV1ResourceQuotaStatus) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -60123,6 +60561,9 @@ func (o *OptIoK8sAPICoreV1ResourceQuotaStatus) Decode(d *jx.Decoder) error {
 
 // Encode encodes IoK8sAPICoreV1ResourceRequirements as json.
 func (o OptIoK8sAPICoreV1ResourceRequirements) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -60145,6 +60586,9 @@ func (o *OptIoK8sAPICoreV1ResourceRequirements) Decode(d *jx.Decoder) error {
 
 // Encode encodes IoK8sAPICoreV1SELinuxOptions as json.
 func (o OptIoK8sAPICoreV1SELinuxOptions) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -60167,6 +60611,9 @@ func (o *OptIoK8sAPICoreV1SELinuxOptions) Decode(d *jx.Decoder) error {
 
 // Encode encodes IoK8sAPICoreV1ScaleIOPersistentVolumeSource as json.
 func (o OptIoK8sAPICoreV1ScaleIOPersistentVolumeSource) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -60189,6 +60636,9 @@ func (o *OptIoK8sAPICoreV1ScaleIOPersistentVolumeSource) Decode(d *jx.Decoder) e
 
 // Encode encodes IoK8sAPICoreV1ScaleIOVolumeSource as json.
 func (o OptIoK8sAPICoreV1ScaleIOVolumeSource) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -60211,6 +60661,9 @@ func (o *OptIoK8sAPICoreV1ScaleIOVolumeSource) Decode(d *jx.Decoder) error {
 
 // Encode encodes IoK8sAPICoreV1ScopeSelector as json.
 func (o OptIoK8sAPICoreV1ScopeSelector) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -60233,6 +60686,9 @@ func (o *OptIoK8sAPICoreV1ScopeSelector) Decode(d *jx.Decoder) error {
 
 // Encode encodes IoK8sAPICoreV1SeccompProfile as json.
 func (o OptIoK8sAPICoreV1SeccompProfile) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -60255,6 +60711,9 @@ func (o *OptIoK8sAPICoreV1SeccompProfile) Decode(d *jx.Decoder) error {
 
 // Encode encodes IoK8sAPICoreV1SecretEnvSource as json.
 func (o OptIoK8sAPICoreV1SecretEnvSource) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -60277,6 +60736,9 @@ func (o *OptIoK8sAPICoreV1SecretEnvSource) Decode(d *jx.Decoder) error {
 
 // Encode encodes IoK8sAPICoreV1SecretKeySelector as json.
 func (o OptIoK8sAPICoreV1SecretKeySelector) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -60299,6 +60761,9 @@ func (o *OptIoK8sAPICoreV1SecretKeySelector) Decode(d *jx.Decoder) error {
 
 // Encode encodes IoK8sAPICoreV1SecretProjection as json.
 func (o OptIoK8sAPICoreV1SecretProjection) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -60321,6 +60786,9 @@ func (o *OptIoK8sAPICoreV1SecretProjection) Decode(d *jx.Decoder) error {
 
 // Encode encodes IoK8sAPICoreV1SecretReference as json.
 func (o OptIoK8sAPICoreV1SecretReference) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -60343,6 +60811,9 @@ func (o *OptIoK8sAPICoreV1SecretReference) Decode(d *jx.Decoder) error {
 
 // Encode encodes IoK8sAPICoreV1SecretVolumeSource as json.
 func (o OptIoK8sAPICoreV1SecretVolumeSource) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -60365,6 +60836,9 @@ func (o *OptIoK8sAPICoreV1SecretVolumeSource) Decode(d *jx.Decoder) error {
 
 // Encode encodes IoK8sAPICoreV1SecurityContext as json.
 func (o OptIoK8sAPICoreV1SecurityContext) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -60387,6 +60861,9 @@ func (o *OptIoK8sAPICoreV1SecurityContext) Decode(d *jx.Decoder) error {
 
 // Encode encodes IoK8sAPICoreV1ServiceAccountTokenProjection as json.
 func (o OptIoK8sAPICoreV1ServiceAccountTokenProjection) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -60409,6 +60886,9 @@ func (o *OptIoK8sAPICoreV1ServiceAccountTokenProjection) Decode(d *jx.Decoder) e
 
 // Encode encodes IoK8sAPICoreV1ServiceSpec as json.
 func (o OptIoK8sAPICoreV1ServiceSpec) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -60431,6 +60911,9 @@ func (o *OptIoK8sAPICoreV1ServiceSpec) Decode(d *jx.Decoder) error {
 
 // Encode encodes IoK8sAPICoreV1ServiceStatus as json.
 func (o OptIoK8sAPICoreV1ServiceStatus) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -60453,6 +60936,9 @@ func (o *OptIoK8sAPICoreV1ServiceStatus) Decode(d *jx.Decoder) error {
 
 // Encode encodes IoK8sAPICoreV1SessionAffinityConfig as json.
 func (o OptIoK8sAPICoreV1SessionAffinityConfig) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -60475,6 +60961,9 @@ func (o *OptIoK8sAPICoreV1SessionAffinityConfig) Decode(d *jx.Decoder) error {
 
 // Encode encodes IoK8sAPICoreV1StorageOSPersistentVolumeSource as json.
 func (o OptIoK8sAPICoreV1StorageOSPersistentVolumeSource) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -60497,6 +60986,9 @@ func (o *OptIoK8sAPICoreV1StorageOSPersistentVolumeSource) Decode(d *jx.Decoder)
 
 // Encode encodes IoK8sAPICoreV1StorageOSVolumeSource as json.
 func (o OptIoK8sAPICoreV1StorageOSVolumeSource) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -60519,6 +61011,9 @@ func (o *OptIoK8sAPICoreV1StorageOSVolumeSource) Decode(d *jx.Decoder) error {
 
 // Encode encodes IoK8sAPICoreV1TCPSocketAction as json.
 func (o OptIoK8sAPICoreV1TCPSocketAction) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -60541,6 +61036,9 @@ func (o *OptIoK8sAPICoreV1TCPSocketAction) Decode(d *jx.Decoder) error {
 
 // Encode encodes IoK8sAPICoreV1TypedLocalObjectReference as json.
 func (o OptIoK8sAPICoreV1TypedLocalObjectReference) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -60563,6 +61061,9 @@ func (o *OptIoK8sAPICoreV1TypedLocalObjectReference) Decode(d *jx.Decoder) error
 
 // Encode encodes IoK8sAPICoreV1VolumeNodeAffinity as json.
 func (o OptIoK8sAPICoreV1VolumeNodeAffinity) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -60585,6 +61086,9 @@ func (o *OptIoK8sAPICoreV1VolumeNodeAffinity) Decode(d *jx.Decoder) error {
 
 // Encode encodes IoK8sAPICoreV1VsphereVirtualDiskVolumeSource as json.
 func (o OptIoK8sAPICoreV1VsphereVirtualDiskVolumeSource) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -60607,6 +61111,9 @@ func (o *OptIoK8sAPICoreV1VsphereVirtualDiskVolumeSource) Decode(d *jx.Decoder) 
 
 // Encode encodes IoK8sAPICoreV1WindowsSecurityContextOptions as json.
 func (o OptIoK8sAPICoreV1WindowsSecurityContextOptions) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -60629,6 +61136,9 @@ func (o *OptIoK8sAPICoreV1WindowsSecurityContextOptions) Decode(d *jx.Decoder) e
 
 // Encode encodes IoK8sAPIDiscoveryV1EndpointConditions as json.
 func (o OptIoK8sAPIDiscoveryV1EndpointConditions) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -60651,6 +61161,9 @@ func (o *OptIoK8sAPIDiscoveryV1EndpointConditions) Decode(d *jx.Decoder) error {
 
 // Encode encodes IoK8sAPIDiscoveryV1EndpointHints as json.
 func (o OptIoK8sAPIDiscoveryV1EndpointHints) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -60673,6 +61186,9 @@ func (o *OptIoK8sAPIDiscoveryV1EndpointHints) Decode(d *jx.Decoder) error {
 
 // Encode encodes IoK8sAPIDiscoveryV1beta1EndpointConditions as json.
 func (o OptIoK8sAPIDiscoveryV1beta1EndpointConditions) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -60695,6 +61211,9 @@ func (o *OptIoK8sAPIDiscoveryV1beta1EndpointConditions) Decode(d *jx.Decoder) er
 
 // Encode encodes IoK8sAPIDiscoveryV1beta1EndpointHints as json.
 func (o OptIoK8sAPIDiscoveryV1beta1EndpointHints) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -60717,6 +61236,9 @@ func (o *OptIoK8sAPIDiscoveryV1beta1EndpointHints) Decode(d *jx.Decoder) error {
 
 // Encode encodes IoK8sAPIEventsV1EventSeries as json.
 func (o OptIoK8sAPIEventsV1EventSeries) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -60739,6 +61261,9 @@ func (o *OptIoK8sAPIEventsV1EventSeries) Decode(d *jx.Decoder) error {
 
 // Encode encodes IoK8sAPIEventsV1beta1EventSeries as json.
 func (o OptIoK8sAPIEventsV1beta1EventSeries) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -60761,6 +61286,9 @@ func (o *OptIoK8sAPIEventsV1beta1EventSeries) Decode(d *jx.Decoder) error {
 
 // Encode encodes IoK8sAPIFlowcontrolV1beta1FlowDistinguisherMethod as json.
 func (o OptIoK8sAPIFlowcontrolV1beta1FlowDistinguisherMethod) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -60783,6 +61311,9 @@ func (o *OptIoK8sAPIFlowcontrolV1beta1FlowDistinguisherMethod) Decode(d *jx.Deco
 
 // Encode encodes IoK8sAPIFlowcontrolV1beta1FlowSchemaSpec as json.
 func (o OptIoK8sAPIFlowcontrolV1beta1FlowSchemaSpec) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -60805,6 +61336,9 @@ func (o *OptIoK8sAPIFlowcontrolV1beta1FlowSchemaSpec) Decode(d *jx.Decoder) erro
 
 // Encode encodes IoK8sAPIFlowcontrolV1beta1FlowSchemaStatus as json.
 func (o OptIoK8sAPIFlowcontrolV1beta1FlowSchemaStatus) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -60827,6 +61361,9 @@ func (o *OptIoK8sAPIFlowcontrolV1beta1FlowSchemaStatus) Decode(d *jx.Decoder) er
 
 // Encode encodes IoK8sAPIFlowcontrolV1beta1GroupSubject as json.
 func (o OptIoK8sAPIFlowcontrolV1beta1GroupSubject) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -60849,6 +61386,9 @@ func (o *OptIoK8sAPIFlowcontrolV1beta1GroupSubject) Decode(d *jx.Decoder) error 
 
 // Encode encodes IoK8sAPIFlowcontrolV1beta1LimitResponse as json.
 func (o OptIoK8sAPIFlowcontrolV1beta1LimitResponse) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -60871,6 +61411,9 @@ func (o *OptIoK8sAPIFlowcontrolV1beta1LimitResponse) Decode(d *jx.Decoder) error
 
 // Encode encodes IoK8sAPIFlowcontrolV1beta1LimitedPriorityLevelConfiguration as json.
 func (o OptIoK8sAPIFlowcontrolV1beta1LimitedPriorityLevelConfiguration) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -60893,6 +61436,9 @@ func (o *OptIoK8sAPIFlowcontrolV1beta1LimitedPriorityLevelConfiguration) Decode(
 
 // Encode encodes IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationSpec as json.
 func (o OptIoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationSpec) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -60915,6 +61461,9 @@ func (o *OptIoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationSpec) Decode(d *
 
 // Encode encodes IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationStatus as json.
 func (o OptIoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationStatus) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -60937,6 +61486,9 @@ func (o *OptIoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationStatus) Decode(d
 
 // Encode encodes IoK8sAPIFlowcontrolV1beta1QueuingConfiguration as json.
 func (o OptIoK8sAPIFlowcontrolV1beta1QueuingConfiguration) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -60959,6 +61511,9 @@ func (o *OptIoK8sAPIFlowcontrolV1beta1QueuingConfiguration) Decode(d *jx.Decoder
 
 // Encode encodes IoK8sAPIFlowcontrolV1beta1ServiceAccountSubject as json.
 func (o OptIoK8sAPIFlowcontrolV1beta1ServiceAccountSubject) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -60981,6 +61536,9 @@ func (o *OptIoK8sAPIFlowcontrolV1beta1ServiceAccountSubject) Decode(d *jx.Decode
 
 // Encode encodes IoK8sAPIFlowcontrolV1beta1UserSubject as json.
 func (o OptIoK8sAPIFlowcontrolV1beta1UserSubject) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -61003,6 +61561,9 @@ func (o *OptIoK8sAPIFlowcontrolV1beta1UserSubject) Decode(d *jx.Decoder) error {
 
 // Encode encodes IoK8sAPIFlowcontrolV1beta2FlowDistinguisherMethod as json.
 func (o OptIoK8sAPIFlowcontrolV1beta2FlowDistinguisherMethod) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -61025,6 +61586,9 @@ func (o *OptIoK8sAPIFlowcontrolV1beta2FlowDistinguisherMethod) Decode(d *jx.Deco
 
 // Encode encodes IoK8sAPIFlowcontrolV1beta2FlowSchemaSpec as json.
 func (o OptIoK8sAPIFlowcontrolV1beta2FlowSchemaSpec) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -61047,6 +61611,9 @@ func (o *OptIoK8sAPIFlowcontrolV1beta2FlowSchemaSpec) Decode(d *jx.Decoder) erro
 
 // Encode encodes IoK8sAPIFlowcontrolV1beta2FlowSchemaStatus as json.
 func (o OptIoK8sAPIFlowcontrolV1beta2FlowSchemaStatus) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -61069,6 +61636,9 @@ func (o *OptIoK8sAPIFlowcontrolV1beta2FlowSchemaStatus) Decode(d *jx.Decoder) er
 
 // Encode encodes IoK8sAPIFlowcontrolV1beta2GroupSubject as json.
 func (o OptIoK8sAPIFlowcontrolV1beta2GroupSubject) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -61091,6 +61661,9 @@ func (o *OptIoK8sAPIFlowcontrolV1beta2GroupSubject) Decode(d *jx.Decoder) error 
 
 // Encode encodes IoK8sAPIFlowcontrolV1beta2LimitResponse as json.
 func (o OptIoK8sAPIFlowcontrolV1beta2LimitResponse) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -61113,6 +61686,9 @@ func (o *OptIoK8sAPIFlowcontrolV1beta2LimitResponse) Decode(d *jx.Decoder) error
 
 // Encode encodes IoK8sAPIFlowcontrolV1beta2LimitedPriorityLevelConfiguration as json.
 func (o OptIoK8sAPIFlowcontrolV1beta2LimitedPriorityLevelConfiguration) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -61135,6 +61711,9 @@ func (o *OptIoK8sAPIFlowcontrolV1beta2LimitedPriorityLevelConfiguration) Decode(
 
 // Encode encodes IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationSpec as json.
 func (o OptIoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationSpec) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -61157,6 +61736,9 @@ func (o *OptIoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationSpec) Decode(d *
 
 // Encode encodes IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationStatus as json.
 func (o OptIoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationStatus) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -61179,6 +61761,9 @@ func (o *OptIoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationStatus) Decode(d
 
 // Encode encodes IoK8sAPIFlowcontrolV1beta2QueuingConfiguration as json.
 func (o OptIoK8sAPIFlowcontrolV1beta2QueuingConfiguration) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -61201,6 +61786,9 @@ func (o *OptIoK8sAPIFlowcontrolV1beta2QueuingConfiguration) Decode(d *jx.Decoder
 
 // Encode encodes IoK8sAPIFlowcontrolV1beta2ServiceAccountSubject as json.
 func (o OptIoK8sAPIFlowcontrolV1beta2ServiceAccountSubject) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -61223,6 +61811,9 @@ func (o *OptIoK8sAPIFlowcontrolV1beta2ServiceAccountSubject) Decode(d *jx.Decode
 
 // Encode encodes IoK8sAPIFlowcontrolV1beta2UserSubject as json.
 func (o OptIoK8sAPIFlowcontrolV1beta2UserSubject) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -61245,6 +61836,9 @@ func (o *OptIoK8sAPIFlowcontrolV1beta2UserSubject) Decode(d *jx.Decoder) error {
 
 // Encode encodes IoK8sAPINetworkingV1HTTPIngressRuleValue as json.
 func (o OptIoK8sAPINetworkingV1HTTPIngressRuleValue) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -61267,6 +61861,9 @@ func (o *OptIoK8sAPINetworkingV1HTTPIngressRuleValue) Decode(d *jx.Decoder) erro
 
 // Encode encodes IoK8sAPINetworkingV1IPBlock as json.
 func (o OptIoK8sAPINetworkingV1IPBlock) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -61289,6 +61886,9 @@ func (o *OptIoK8sAPINetworkingV1IPBlock) Decode(d *jx.Decoder) error {
 
 // Encode encodes IoK8sAPINetworkingV1IngressBackend as json.
 func (o OptIoK8sAPINetworkingV1IngressBackend) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -61311,6 +61911,9 @@ func (o *OptIoK8sAPINetworkingV1IngressBackend) Decode(d *jx.Decoder) error {
 
 // Encode encodes IoK8sAPINetworkingV1IngressClassParametersReference as json.
 func (o OptIoK8sAPINetworkingV1IngressClassParametersReference) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -61333,6 +61936,9 @@ func (o *OptIoK8sAPINetworkingV1IngressClassParametersReference) Decode(d *jx.De
 
 // Encode encodes IoK8sAPINetworkingV1IngressClassSpec as json.
 func (o OptIoK8sAPINetworkingV1IngressClassSpec) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -61355,6 +61961,9 @@ func (o *OptIoK8sAPINetworkingV1IngressClassSpec) Decode(d *jx.Decoder) error {
 
 // Encode encodes IoK8sAPINetworkingV1IngressServiceBackend as json.
 func (o OptIoK8sAPINetworkingV1IngressServiceBackend) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -61377,6 +61986,9 @@ func (o *OptIoK8sAPINetworkingV1IngressServiceBackend) Decode(d *jx.Decoder) err
 
 // Encode encodes IoK8sAPINetworkingV1IngressSpec as json.
 func (o OptIoK8sAPINetworkingV1IngressSpec) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -61399,6 +62011,9 @@ func (o *OptIoK8sAPINetworkingV1IngressSpec) Decode(d *jx.Decoder) error {
 
 // Encode encodes IoK8sAPINetworkingV1IngressStatus as json.
 func (o OptIoK8sAPINetworkingV1IngressStatus) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -61421,6 +62036,9 @@ func (o *OptIoK8sAPINetworkingV1IngressStatus) Decode(d *jx.Decoder) error {
 
 // Encode encodes IoK8sAPINetworkingV1NetworkPolicySpec as json.
 func (o OptIoK8sAPINetworkingV1NetworkPolicySpec) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -61443,6 +62061,9 @@ func (o *OptIoK8sAPINetworkingV1NetworkPolicySpec) Decode(d *jx.Decoder) error {
 
 // Encode encodes IoK8sAPINetworkingV1ServiceBackendPort as json.
 func (o OptIoK8sAPINetworkingV1ServiceBackendPort) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -61465,6 +62086,9 @@ func (o *OptIoK8sAPINetworkingV1ServiceBackendPort) Decode(d *jx.Decoder) error 
 
 // Encode encodes IoK8sAPINodeV1Overhead as json.
 func (o OptIoK8sAPINodeV1Overhead) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -61487,6 +62111,9 @@ func (o *OptIoK8sAPINodeV1Overhead) Decode(d *jx.Decoder) error {
 
 // Encode encodes IoK8sAPINodeV1Scheduling as json.
 func (o OptIoK8sAPINodeV1Scheduling) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -61509,6 +62136,9 @@ func (o *OptIoK8sAPINodeV1Scheduling) Decode(d *jx.Decoder) error {
 
 // Encode encodes IoK8sAPINodeV1alpha1Overhead as json.
 func (o OptIoK8sAPINodeV1alpha1Overhead) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -61531,6 +62161,9 @@ func (o *OptIoK8sAPINodeV1alpha1Overhead) Decode(d *jx.Decoder) error {
 
 // Encode encodes IoK8sAPINodeV1alpha1Scheduling as json.
 func (o OptIoK8sAPINodeV1alpha1Scheduling) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -61553,6 +62186,9 @@ func (o *OptIoK8sAPINodeV1alpha1Scheduling) Decode(d *jx.Decoder) error {
 
 // Encode encodes IoK8sAPINodeV1beta1Overhead as json.
 func (o OptIoK8sAPINodeV1beta1Overhead) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -61575,6 +62211,9 @@ func (o *OptIoK8sAPINodeV1beta1Overhead) Decode(d *jx.Decoder) error {
 
 // Encode encodes IoK8sAPINodeV1beta1Scheduling as json.
 func (o OptIoK8sAPINodeV1beta1Scheduling) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -61597,6 +62236,9 @@ func (o *OptIoK8sAPINodeV1beta1Scheduling) Decode(d *jx.Decoder) error {
 
 // Encode encodes IoK8sAPIPolicyV1PodDisruptionBudgetSpec as json.
 func (o OptIoK8sAPIPolicyV1PodDisruptionBudgetSpec) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -61619,6 +62261,9 @@ func (o *OptIoK8sAPIPolicyV1PodDisruptionBudgetSpec) Decode(d *jx.Decoder) error
 
 // Encode encodes IoK8sAPIPolicyV1PodDisruptionBudgetStatus as json.
 func (o OptIoK8sAPIPolicyV1PodDisruptionBudgetStatus) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -61641,6 +62286,9 @@ func (o *OptIoK8sAPIPolicyV1PodDisruptionBudgetStatus) Decode(d *jx.Decoder) err
 
 // Encode encodes IoK8sAPIPolicyV1beta1PodDisruptionBudgetSpec as json.
 func (o OptIoK8sAPIPolicyV1beta1PodDisruptionBudgetSpec) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -61663,6 +62311,9 @@ func (o *OptIoK8sAPIPolicyV1beta1PodDisruptionBudgetSpec) Decode(d *jx.Decoder) 
 
 // Encode encodes IoK8sAPIPolicyV1beta1PodDisruptionBudgetStatus as json.
 func (o OptIoK8sAPIPolicyV1beta1PodDisruptionBudgetStatus) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -61685,6 +62336,9 @@ func (o *OptIoK8sAPIPolicyV1beta1PodDisruptionBudgetStatus) Decode(d *jx.Decoder
 
 // Encode encodes IoK8sAPIPolicyV1beta1PodSecurityPolicySpec as json.
 func (o OptIoK8sAPIPolicyV1beta1PodSecurityPolicySpec) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -61707,6 +62361,9 @@ func (o *OptIoK8sAPIPolicyV1beta1PodSecurityPolicySpec) Decode(d *jx.Decoder) er
 
 // Encode encodes IoK8sAPIPolicyV1beta1RunAsGroupStrategyOptions as json.
 func (o OptIoK8sAPIPolicyV1beta1RunAsGroupStrategyOptions) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -61729,6 +62386,9 @@ func (o *OptIoK8sAPIPolicyV1beta1RunAsGroupStrategyOptions) Decode(d *jx.Decoder
 
 // Encode encodes IoK8sAPIPolicyV1beta1RuntimeClassStrategyOptions as json.
 func (o OptIoK8sAPIPolicyV1beta1RuntimeClassStrategyOptions) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -61751,6 +62411,9 @@ func (o *OptIoK8sAPIPolicyV1beta1RuntimeClassStrategyOptions) Decode(d *jx.Decod
 
 // Encode encodes IoK8sAPIRbacV1AggregationRule as json.
 func (o OptIoK8sAPIRbacV1AggregationRule) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -61773,6 +62436,9 @@ func (o *OptIoK8sAPIRbacV1AggregationRule) Decode(d *jx.Decoder) error {
 
 // Encode encodes IoK8sAPIStorageV1VolumeAttachmentStatus as json.
 func (o OptIoK8sAPIStorageV1VolumeAttachmentStatus) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -61795,6 +62461,9 @@ func (o *OptIoK8sAPIStorageV1VolumeAttachmentStatus) Decode(d *jx.Decoder) error
 
 // Encode encodes IoK8sAPIStorageV1VolumeError as json.
 func (o OptIoK8sAPIStorageV1VolumeError) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -61817,6 +62486,9 @@ func (o *OptIoK8sAPIStorageV1VolumeError) Decode(d *jx.Decoder) error {
 
 // Encode encodes IoK8sAPIStorageV1VolumeNodeResources as json.
 func (o OptIoK8sAPIStorageV1VolumeNodeResources) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -61839,6 +62511,9 @@ func (o *OptIoK8sAPIStorageV1VolumeNodeResources) Decode(d *jx.Decoder) error {
 
 // Encode encodes IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceConversion as json.
 func (o OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceConversion) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -61861,6 +62536,9 @@ func (o *OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceConve
 
 // Encode encodes IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionNames as json.
 func (o OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionNames) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -61883,6 +62561,9 @@ func (o *OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefin
 
 // Encode encodes IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionStatus as json.
 func (o OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionStatus) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -61905,6 +62586,9 @@ func (o *OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefin
 
 // Encode encodes IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresourceScale as json.
 func (o OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresourceScale) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -61927,6 +62611,9 @@ func (o *OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubre
 
 // Encode encodes IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresources as json.
 func (o OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresources) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -61949,6 +62636,9 @@ func (o *OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubre
 
 // Encode encodes IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceValidation as json.
 func (o OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceValidation) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -61971,6 +62661,9 @@ func (o *OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceValid
 
 // Encode encodes IoK8sApiextensionsApiserverPkgApisApiextensionsV1ExternalDocumentation as json.
 func (o OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1ExternalDocumentation) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -61993,6 +62686,9 @@ func (o *OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1ExternalDocumentati
 
 // Encode encodes IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps as json.
 func (o OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -62015,6 +62711,9 @@ func (o *OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) De
 
 // Encode encodes IoK8sApiextensionsApiserverPkgApisApiextensionsV1ServiceReference as json.
 func (o OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1ServiceReference) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -62037,6 +62736,9 @@ func (o *OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1ServiceReference) D
 
 // Encode encodes IoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookClientConfig as json.
 func (o OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookClientConfig) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -62059,6 +62761,9 @@ func (o *OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookClientConfig
 
 // Encode encodes IoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookConversion as json.
 func (o OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookConversion) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -62081,6 +62786,10 @@ func (o *OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookConversion) 
 
 // Encode encodes IoK8sApimachineryPkgAPIResourceQuantity as json.
 func (o OptIoK8sApimachineryPkgAPIResourceQuantity) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
+	o.Value.Encode(e)
 }
 
 // Decode decodes IoK8sApimachineryPkgAPIResourceQuantity from json.
@@ -62099,6 +62808,9 @@ func (o *OptIoK8sApimachineryPkgAPIResourceQuantity) Decode(d *jx.Decoder) error
 
 // Encode encodes IoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery as json.
 func (o OptIoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -62121,6 +62833,9 @@ func (o *OptIoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery) Decode(d *jx
 
 // Encode encodes IoK8sApimachineryPkgApisMetaV1LabelSelector as json.
 func (o OptIoK8sApimachineryPkgApisMetaV1LabelSelector) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -62143,6 +62858,9 @@ func (o *OptIoK8sApimachineryPkgApisMetaV1LabelSelector) Decode(d *jx.Decoder) e
 
 // Encode encodes IoK8sApimachineryPkgApisMetaV1ListMeta as json.
 func (o OptIoK8sApimachineryPkgApisMetaV1ListMeta) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -62165,6 +62883,10 @@ func (o *OptIoK8sApimachineryPkgApisMetaV1ListMeta) Decode(d *jx.Decoder) error 
 
 // Encode encodes IoK8sApimachineryPkgApisMetaV1MicroTime as json.
 func (o OptIoK8sApimachineryPkgApisMetaV1MicroTime) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
+	o.Value.Encode(e)
 }
 
 // Decode decodes IoK8sApimachineryPkgApisMetaV1MicroTime from json.
@@ -62183,6 +62905,9 @@ func (o *OptIoK8sApimachineryPkgApisMetaV1MicroTime) Decode(d *jx.Decoder) error
 
 // Encode encodes IoK8sApimachineryPkgApisMetaV1ObjectMeta as json.
 func (o OptIoK8sApimachineryPkgApisMetaV1ObjectMeta) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -62205,6 +62930,10 @@ func (o *OptIoK8sApimachineryPkgApisMetaV1ObjectMeta) Decode(d *jx.Decoder) erro
 
 // Encode encodes IoK8sApimachineryPkgApisMetaV1Time as json.
 func (o OptIoK8sApimachineryPkgApisMetaV1Time) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
+	o.Value.Encode(e)
 }
 
 // Decode decodes IoK8sApimachineryPkgApisMetaV1Time from json.
@@ -62223,6 +62952,10 @@ func (o *OptIoK8sApimachineryPkgApisMetaV1Time) Decode(d *jx.Decoder) error {
 
 // Encode encodes IoK8sApimachineryPkgUtilIntstrIntOrString as json.
 func (o OptIoK8sApimachineryPkgUtilIntstrIntOrString) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
+	o.Value.Encode(e)
 }
 
 // Decode decodes IoK8sApimachineryPkgUtilIntstrIntOrString from json.
@@ -62241,6 +62974,9 @@ func (o *OptIoK8sApimachineryPkgUtilIntstrIntOrString) Decode(d *jx.Decoder) err
 
 // Encode encodes IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceSpec as json.
 func (o OptIoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceSpec) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -62263,6 +62999,9 @@ func (o *OptIoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceSpec) Decode(d 
 
 // Encode encodes IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceStatus as json.
 func (o OptIoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceStatus) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -62285,6 +63024,9 @@ func (o *OptIoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceStatus) Decode(
 
 // Encode encodes IoK8sKubeAggregatorPkgApisApiregistrationV1ServiceReference as json.
 func (o OptIoK8sKubeAggregatorPkgApisApiregistrationV1ServiceReference) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	o.Value.Encode(e)
 }
 
@@ -62307,6 +63049,9 @@ func (o *OptIoK8sKubeAggregatorPkgApisApiregistrationV1ServiceReference) Decode(
 
 // Encode encodes string as json.
 func (o OptString) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
 	e.Str(string(o.Value))
 }
 
