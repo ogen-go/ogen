@@ -69,33 +69,35 @@ func (s CreatePetCategoriesReq) Encode(e *jx.Writer) {
 		first = true
 		_     = first
 	)
-
-	if !first {
-		e.Comma()
-	}
-	first = false
-
-	e.RawStr("\"name\"" + ":")
-	e.Str(s.Name)
-
-	if s.Pets != nil {
-		e.Comma()
-	}
-	if s.Pets != nil {
-		e.RawStr("\"pets\"" + ":")
-		e.ArrStart()
-		if len(s.Pets) >= 1 {
-			// Encode first element without comma.
-			{
-				elem := s.Pets[0]
-				e.Int(elem)
-			}
-			for _, elem := range s.Pets[1:] {
-				e.Comma()
-				e.Int(elem)
-			}
+	{
+		if !first {
+			e.Comma()
 		}
-		e.ArrEnd()
+		first = false
+
+		e.RawStr("\"name\"" + ":")
+		e.Str(s.Name)
+	}
+	{
+		if s.Pets != nil {
+			e.Comma()
+		}
+		if s.Pets != nil {
+			e.RawStr("\"pets\"" + ":")
+			e.ArrStart()
+			if len(s.Pets) >= 1 {
+				// Encode first element without comma.
+				{
+					elem := s.Pets[0]
+					e.Int(elem)
+				}
+				for _, elem := range s.Pets[1:] {
+					e.Comma()
+					e.Int(elem)
+				}
+			}
+			e.ArrEnd()
+		}
 	}
 	e.ObjEnd()
 }
@@ -141,74 +143,80 @@ func (s CreatePetFriendsReq) Encode(e *jx.Writer) {
 		first = true
 		_     = first
 	)
-
-	if !first {
-		e.Comma()
-	}
-	first = false
-
-	e.RawStr("\"name\"" + ":")
-	e.Str(s.Name)
-
-	if s.Weight.Set {
-		e.Comma()
-	}
-	if s.Weight.Set {
-		e.RawStr("\"weight\"" + ":")
-		s.Weight.Encode(e)
-	}
-
-	if s.Birthday.Set {
-		e.Comma()
-	}
-	if s.Birthday.Set {
-		e.RawStr("\"birthday\"" + ":")
-		s.Birthday.Encode(e, json.EncodeDateTime)
-	}
-
-	if s.Categories != nil {
-		e.Comma()
-	}
-	if s.Categories != nil {
-		e.RawStr("\"categories\"" + ":")
-		e.ArrStart()
-		if len(s.Categories) >= 1 {
-			// Encode first element without comma.
-			{
-				elem := s.Categories[0]
-				e.Int(elem)
-			}
-			for _, elem := range s.Categories[1:] {
-				e.Comma()
-				e.Int(elem)
-			}
+	{
+		if !first {
+			e.Comma()
 		}
-		e.ArrEnd()
+		first = false
+
+		e.RawStr("\"name\"" + ":")
+		e.Str(s.Name)
 	}
-
-	e.Comma()
-
-	e.RawStr("\"owner\"" + ":")
-	e.Int(s.Owner)
-
-	if s.Friends != nil {
-		e.Comma()
-	}
-	if s.Friends != nil {
-		e.RawStr("\"friends\"" + ":")
-		e.ArrStart()
-		if len(s.Friends) >= 1 {
-			// Encode first element without comma.
-			{
-				elem := s.Friends[0]
-				e.Int(elem)
-			}
-			for _, elem := range s.Friends[1:] {
-				e.Comma()
-				e.Int(elem)
-			}
+	{
+		if s.Weight.Set {
+			e.Comma()
 		}
-		e.ArrEnd()
+		if s.Weight.Set {
+			e.RawStr("\"weight\"" + ":")
+			s.Weight.Encode(e)
+		}
+	}
+	{
+		if s.Birthday.Set {
+			e.Comma()
+		}
+		if s.Birthday.Set {
+			e.RawStr("\"birthday\"" + ":")
+			s.Birthday.Encode(e, json.EncodeDateTime)
+		}
+	}
+	{
+		if s.Categories != nil {
+			e.Comma()
+		}
+		if s.Categories != nil {
+			e.RawStr("\"categories\"" + ":")
+			e.ArrStart()
+			if len(s.Categories) >= 1 {
+				// Encode first element without comma.
+				{
+					elem := s.Categories[0]
+					e.Int(elem)
+				}
+				for _, elem := range s.Categories[1:] {
+					e.Comma()
+					e.Int(elem)
+				}
+			}
+			e.ArrEnd()
+		}
+	}
+	{
+		e.Comma()
+
+		e.RawStr("\"owner\"" + ":")
+		e.Int(s.Owner)
+	}
+	{
+		if s.Friends != nil {
+			e.Comma()
+		}
+		if s.Friends != nil {
+			e.RawStr("\"friends\"" + ":")
+			e.ArrStart()
+			if len(s.Friends) >= 1 {
+				// Encode first element without comma.
+				{
+					elem := s.Friends[0]
+					e.Int(elem)
+				}
+				for _, elem := range s.Friends[1:] {
+					e.Comma()
+					e.Int(elem)
+				}
+			}
+			e.ArrEnd()
+		}
 	}
 	e.ObjEnd()
 }
@@ -284,38 +292,41 @@ func (s CreatePetOwnerReq) Encode(e *jx.Writer) {
 		first = true
 		_     = first
 	)
-
-	if !first {
-		e.Comma()
-	}
-	first = false
-
-	e.RawStr("\"name\"" + ":")
-	e.Str(s.Name)
-
-	e.Comma()
-
-	e.RawStr("\"age\"" + ":")
-	e.Int(s.Age)
-
-	if s.Pets != nil {
-		e.Comma()
-	}
-	if s.Pets != nil {
-		e.RawStr("\"pets\"" + ":")
-		e.ArrStart()
-		if len(s.Pets) >= 1 {
-			// Encode first element without comma.
-			{
-				elem := s.Pets[0]
-				e.Int(elem)
-			}
-			for _, elem := range s.Pets[1:] {
-				e.Comma()
-				e.Int(elem)
-			}
+	{
+		if !first {
+			e.Comma()
 		}
-		e.ArrEnd()
+		first = false
+
+		e.RawStr("\"name\"" + ":")
+		e.Str(s.Name)
+	}
+	{
+		e.Comma()
+
+		e.RawStr("\"age\"" + ":")
+		e.Int(s.Age)
+	}
+	{
+		if s.Pets != nil {
+			e.Comma()
+		}
+		if s.Pets != nil {
+			e.RawStr("\"pets\"" + ":")
+			e.ArrStart()
+			if len(s.Pets) >= 1 {
+				// Encode first element without comma.
+				{
+					elem := s.Pets[0]
+					e.Int(elem)
+				}
+				for _, elem := range s.Pets[1:] {
+					e.Comma()
+					e.Int(elem)
+				}
+			}
+			e.ArrEnd()
+		}
 	}
 	e.ObjEnd()
 }
@@ -367,74 +378,80 @@ func (s CreatePetReq) Encode(e *jx.Writer) {
 		first = true
 		_     = first
 	)
-
-	if !first {
-		e.Comma()
-	}
-	first = false
-
-	e.RawStr("\"name\"" + ":")
-	e.Str(s.Name)
-
-	if s.Weight.Set {
-		e.Comma()
-	}
-	if s.Weight.Set {
-		e.RawStr("\"weight\"" + ":")
-		s.Weight.Encode(e)
-	}
-
-	if s.Birthday.Set {
-		e.Comma()
-	}
-	if s.Birthday.Set {
-		e.RawStr("\"birthday\"" + ":")
-		s.Birthday.Encode(e, json.EncodeDateTime)
-	}
-
-	if s.Categories != nil {
-		e.Comma()
-	}
-	if s.Categories != nil {
-		e.RawStr("\"categories\"" + ":")
-		e.ArrStart()
-		if len(s.Categories) >= 1 {
-			// Encode first element without comma.
-			{
-				elem := s.Categories[0]
-				e.Int(elem)
-			}
-			for _, elem := range s.Categories[1:] {
-				e.Comma()
-				e.Int(elem)
-			}
+	{
+		if !first {
+			e.Comma()
 		}
-		e.ArrEnd()
+		first = false
+
+		e.RawStr("\"name\"" + ":")
+		e.Str(s.Name)
 	}
-
-	e.Comma()
-
-	e.RawStr("\"owner\"" + ":")
-	e.Int(s.Owner)
-
-	if s.Friends != nil {
-		e.Comma()
-	}
-	if s.Friends != nil {
-		e.RawStr("\"friends\"" + ":")
-		e.ArrStart()
-		if len(s.Friends) >= 1 {
-			// Encode first element without comma.
-			{
-				elem := s.Friends[0]
-				e.Int(elem)
-			}
-			for _, elem := range s.Friends[1:] {
-				e.Comma()
-				e.Int(elem)
-			}
+	{
+		if s.Weight.Set {
+			e.Comma()
 		}
-		e.ArrEnd()
+		if s.Weight.Set {
+			e.RawStr("\"weight\"" + ":")
+			s.Weight.Encode(e)
+		}
+	}
+	{
+		if s.Birthday.Set {
+			e.Comma()
+		}
+		if s.Birthday.Set {
+			e.RawStr("\"birthday\"" + ":")
+			s.Birthday.Encode(e, json.EncodeDateTime)
+		}
+	}
+	{
+		if s.Categories != nil {
+			e.Comma()
+		}
+		if s.Categories != nil {
+			e.RawStr("\"categories\"" + ":")
+			e.ArrStart()
+			if len(s.Categories) >= 1 {
+				// Encode first element without comma.
+				{
+					elem := s.Categories[0]
+					e.Int(elem)
+				}
+				for _, elem := range s.Categories[1:] {
+					e.Comma()
+					e.Int(elem)
+				}
+			}
+			e.ArrEnd()
+		}
+	}
+	{
+		e.Comma()
+
+		e.RawStr("\"owner\"" + ":")
+		e.Int(s.Owner)
+	}
+	{
+		if s.Friends != nil {
+			e.Comma()
+		}
+		if s.Friends != nil {
+			e.RawStr("\"friends\"" + ":")
+			e.ArrStart()
+			if len(s.Friends) >= 1 {
+				// Encode first element without comma.
+				{
+					elem := s.Friends[0]
+					e.Int(elem)
+				}
+				for _, elem := range s.Friends[1:] {
+					e.Comma()
+					e.Int(elem)
+				}
+			}
+			e.ArrEnd()
+		}
 	}
 	e.ObjEnd()
 }
@@ -786,19 +803,21 @@ func (s PetCategoriesCreate) Encode(e *jx.Writer) {
 		first = true
 		_     = first
 	)
+	{
+		if !first {
+			e.Comma()
+		}
+		first = false
 
-	if !first {
-		e.Comma()
+		e.RawStr("\"id\"" + ":")
+		e.Int(s.ID)
 	}
-	first = false
+	{
+		e.Comma()
 
-	e.RawStr("\"id\"" + ":")
-	e.Int(s.ID)
-
-	e.Comma()
-
-	e.RawStr("\"name\"" + ":")
-	e.Str(s.Name)
+		e.RawStr("\"name\"" + ":")
+		e.Str(s.Name)
+	}
 	e.ObjEnd()
 }
 
@@ -835,19 +854,21 @@ func (s PetCategoriesList) Encode(e *jx.Writer) {
 		first = true
 		_     = first
 	)
+	{
+		if !first {
+			e.Comma()
+		}
+		first = false
 
-	if !first {
-		e.Comma()
+		e.RawStr("\"id\"" + ":")
+		e.Int(s.ID)
 	}
-	first = false
+	{
+		e.Comma()
 
-	e.RawStr("\"id\"" + ":")
-	e.Int(s.ID)
-
-	e.Comma()
-
-	e.RawStr("\"name\"" + ":")
-	e.Str(s.Name)
+		e.RawStr("\"name\"" + ":")
+		e.Str(s.Name)
+	}
 	e.ObjEnd()
 }
 
@@ -884,60 +905,66 @@ func (s PetCreate) Encode(e *jx.Writer) {
 		first = true
 		_     = first
 	)
-
-	if !first {
-		e.Comma()
-	}
-	first = false
-
-	e.RawStr("\"id\"" + ":")
-	e.Int(s.ID)
-
-	e.Comma()
-
-	e.RawStr("\"name\"" + ":")
-	e.Str(s.Name)
-
-	if s.Weight.Set {
-		e.Comma()
-	}
-	if s.Weight.Set {
-		e.RawStr("\"weight\"" + ":")
-		s.Weight.Encode(e)
-	}
-
-	if s.Birthday.Set {
-		e.Comma()
-	}
-	if s.Birthday.Set {
-		e.RawStr("\"birthday\"" + ":")
-		s.Birthday.Encode(e, json.EncodeDateTime)
-	}
-
-	if s.Categories != nil {
-		e.Comma()
-	}
-	if s.Categories != nil {
-		e.RawStr("\"categories\"" + ":")
-		e.ArrStart()
-		if len(s.Categories) >= 1 {
-			// Encode first element without comma.
-			{
-				elem := s.Categories[0]
-				elem.Encode(e)
-			}
-			for _, elem := range s.Categories[1:] {
-				e.Comma()
-				elem.Encode(e)
-			}
+	{
+		if !first {
+			e.Comma()
 		}
-		e.ArrEnd()
+		first = false
+
+		e.RawStr("\"id\"" + ":")
+		e.Int(s.ID)
 	}
+	{
+		e.Comma()
 
-	e.Comma()
+		e.RawStr("\"name\"" + ":")
+		e.Str(s.Name)
+	}
+	{
+		if s.Weight.Set {
+			e.Comma()
+		}
+		if s.Weight.Set {
+			e.RawStr("\"weight\"" + ":")
+			s.Weight.Encode(e)
+		}
+	}
+	{
+		if s.Birthday.Set {
+			e.Comma()
+		}
+		if s.Birthday.Set {
+			e.RawStr("\"birthday\"" + ":")
+			s.Birthday.Encode(e, json.EncodeDateTime)
+		}
+	}
+	{
+		if s.Categories != nil {
+			e.Comma()
+		}
+		if s.Categories != nil {
+			e.RawStr("\"categories\"" + ":")
+			e.ArrStart()
+			if len(s.Categories) >= 1 {
+				// Encode first element without comma.
+				{
+					elem := s.Categories[0]
+					elem.Encode(e)
+				}
+				for _, elem := range s.Categories[1:] {
+					e.Comma()
+					elem.Encode(e)
+				}
+			}
+			e.ArrEnd()
+		}
+	}
+	{
+		e.Comma()
 
-	e.RawStr("\"owner\"" + ":")
-	s.Owner.Encode(e)
+		e.RawStr("\"owner\"" + ":")
+		s.Owner.Encode(e)
+	}
 	e.ObjEnd()
 }
 
@@ -1000,19 +1027,21 @@ func (s PetCreateCategories) Encode(e *jx.Writer) {
 		first = true
 		_     = first
 	)
+	{
+		if !first {
+			e.Comma()
+		}
+		first = false
 
-	if !first {
-		e.Comma()
+		e.RawStr("\"id\"" + ":")
+		e.Int(s.ID)
 	}
-	first = false
+	{
+		e.Comma()
 
-	e.RawStr("\"id\"" + ":")
-	e.Int(s.ID)
-
-	e.Comma()
-
-	e.RawStr("\"name\"" + ":")
-	e.Str(s.Name)
+		e.RawStr("\"name\"" + ":")
+		e.Str(s.Name)
+	}
 	e.ObjEnd()
 }
 
@@ -1049,24 +1078,27 @@ func (s PetCreateOwner) Encode(e *jx.Writer) {
 		first = true
 		_     = first
 	)
+	{
+		if !first {
+			e.Comma()
+		}
+		first = false
 
-	if !first {
-		e.Comma()
+		e.RawStr("\"id\"" + ":")
+		e.Int(s.ID)
 	}
-	first = false
+	{
+		e.Comma()
 
-	e.RawStr("\"id\"" + ":")
-	e.Int(s.ID)
+		e.RawStr("\"name\"" + ":")
+		e.Str(s.Name)
+	}
+	{
+		e.Comma()
 
-	e.Comma()
-
-	e.RawStr("\"name\"" + ":")
-	e.Str(s.Name)
-
-	e.Comma()
-
-	e.RawStr("\"age\"" + ":")
-	e.Int(s.Age)
+		e.RawStr("\"age\"" + ":")
+		e.Int(s.Age)
+	}
 	e.ObjEnd()
 }
 
@@ -1109,34 +1141,38 @@ func (s PetFriendsCreate) Encode(e *jx.Writer) {
 		first = true
 		_     = first
 	)
+	{
+		if !first {
+			e.Comma()
+		}
+		first = false
 
-	if !first {
+		e.RawStr("\"id\"" + ":")
+		e.Int(s.ID)
+	}
+	{
 		e.Comma()
+
+		e.RawStr("\"name\"" + ":")
+		e.Str(s.Name)
 	}
-	first = false
-
-	e.RawStr("\"id\"" + ":")
-	e.Int(s.ID)
-
-	e.Comma()
-
-	e.RawStr("\"name\"" + ":")
-	e.Str(s.Name)
-
-	if s.Weight.Set {
-		e.Comma()
+	{
+		if s.Weight.Set {
+			e.Comma()
+		}
+		if s.Weight.Set {
+			e.RawStr("\"weight\"" + ":")
+			s.Weight.Encode(e)
+		}
 	}
-	if s.Weight.Set {
-		e.RawStr("\"weight\"" + ":")
-		s.Weight.Encode(e)
-	}
-
-	if s.Birthday.Set {
-		e.Comma()
-	}
-	if s.Birthday.Set {
-		e.RawStr("\"birthday\"" + ":")
-		s.Birthday.Encode(e, json.EncodeDateTime)
+	{
+		if s.Birthday.Set {
+			e.Comma()
+		}
+		if s.Birthday.Set {
+			e.RawStr("\"birthday\"" + ":")
+			s.Birthday.Encode(e, json.EncodeDateTime)
+		}
 	}
 	e.ObjEnd()
 }
@@ -1184,34 +1220,38 @@ func (s PetFriendsList) Encode(e *jx.Writer) {
 		first = true
 		_     = first
 	)
+	{
+		if !first {
+			e.Comma()
+		}
+		first = false
 
-	if !first {
+		e.RawStr("\"id\"" + ":")
+		e.Int(s.ID)
+	}
+	{
 		e.Comma()
+
+		e.RawStr("\"name\"" + ":")
+		e.Str(s.Name)
 	}
-	first = false
-
-	e.RawStr("\"id\"" + ":")
-	e.Int(s.ID)
-
-	e.Comma()
-
-	e.RawStr("\"name\"" + ":")
-	e.Str(s.Name)
-
-	if s.Weight.Set {
-		e.Comma()
+	{
+		if s.Weight.Set {
+			e.Comma()
+		}
+		if s.Weight.Set {
+			e.RawStr("\"weight\"" + ":")
+			s.Weight.Encode(e)
+		}
 	}
-	if s.Weight.Set {
-		e.RawStr("\"weight\"" + ":")
-		s.Weight.Encode(e)
-	}
-
-	if s.Birthday.Set {
-		e.Comma()
-	}
-	if s.Birthday.Set {
-		e.RawStr("\"birthday\"" + ":")
-		s.Birthday.Encode(e, json.EncodeDateTime)
+	{
+		if s.Birthday.Set {
+			e.Comma()
+		}
+		if s.Birthday.Set {
+			e.RawStr("\"birthday\"" + ":")
+			s.Birthday.Encode(e, json.EncodeDateTime)
+		}
 	}
 	e.ObjEnd()
 }
@@ -1259,34 +1299,38 @@ func (s PetList) Encode(e *jx.Writer) {
 		first = true
 		_     = first
 	)
+	{
+		if !first {
+			e.Comma()
+		}
+		first = false
 
-	if !first {
+		e.RawStr("\"id\"" + ":")
+		e.Int(s.ID)
+	}
+	{
 		e.Comma()
+
+		e.RawStr("\"name\"" + ":")
+		e.Str(s.Name)
 	}
-	first = false
-
-	e.RawStr("\"id\"" + ":")
-	e.Int(s.ID)
-
-	e.Comma()
-
-	e.RawStr("\"name\"" + ":")
-	e.Str(s.Name)
-
-	if s.Weight.Set {
-		e.Comma()
+	{
+		if s.Weight.Set {
+			e.Comma()
+		}
+		if s.Weight.Set {
+			e.RawStr("\"weight\"" + ":")
+			s.Weight.Encode(e)
+		}
 	}
-	if s.Weight.Set {
-		e.RawStr("\"weight\"" + ":")
-		s.Weight.Encode(e)
-	}
-
-	if s.Birthday.Set {
-		e.Comma()
-	}
-	if s.Birthday.Set {
-		e.RawStr("\"birthday\"" + ":")
-		s.Birthday.Encode(e, json.EncodeDateTime)
+	{
+		if s.Birthday.Set {
+			e.Comma()
+		}
+		if s.Birthday.Set {
+			e.RawStr("\"birthday\"" + ":")
+			s.Birthday.Encode(e, json.EncodeDateTime)
+		}
 	}
 	e.ObjEnd()
 }
@@ -1334,24 +1378,27 @@ func (s PetOwnerCreate) Encode(e *jx.Writer) {
 		first = true
 		_     = first
 	)
+	{
+		if !first {
+			e.Comma()
+		}
+		first = false
 
-	if !first {
-		e.Comma()
+		e.RawStr("\"id\"" + ":")
+		e.Int(s.ID)
 	}
-	first = false
+	{
+		e.Comma()
 
-	e.RawStr("\"id\"" + ":")
-	e.Int(s.ID)
+		e.RawStr("\"name\"" + ":")
+		e.Str(s.Name)
+	}
+	{
+		e.Comma()
 
-	e.Comma()
-
-	e.RawStr("\"name\"" + ":")
-	e.Str(s.Name)
-
-	e.Comma()
-
-	e.RawStr("\"age\"" + ":")
-	e.Int(s.Age)
+		e.RawStr("\"age\"" + ":")
+		e.Int(s.Age)
+	}
 	e.ObjEnd()
 }
 
@@ -1394,24 +1441,27 @@ func (s PetOwnerRead) Encode(e *jx.Writer) {
 		first = true
 		_     = first
 	)
+	{
+		if !first {
+			e.Comma()
+		}
+		first = false
 
-	if !first {
-		e.Comma()
+		e.RawStr("\"id\"" + ":")
+		e.Int(s.ID)
 	}
-	first = false
+	{
+		e.Comma()
 
-	e.RawStr("\"id\"" + ":")
-	e.Int(s.ID)
+		e.RawStr("\"name\"" + ":")
+		e.Str(s.Name)
+	}
+	{
+		e.Comma()
 
-	e.Comma()
-
-	e.RawStr("\"name\"" + ":")
-	e.Str(s.Name)
-
-	e.Comma()
-
-	e.RawStr("\"age\"" + ":")
-	e.Int(s.Age)
+		e.RawStr("\"age\"" + ":")
+		e.Int(s.Age)
+	}
 	e.ObjEnd()
 }
 
@@ -1454,34 +1504,38 @@ func (s PetRead) Encode(e *jx.Writer) {
 		first = true
 		_     = first
 	)
+	{
+		if !first {
+			e.Comma()
+		}
+		first = false
 
-	if !first {
+		e.RawStr("\"id\"" + ":")
+		e.Int(s.ID)
+	}
+	{
 		e.Comma()
+
+		e.RawStr("\"name\"" + ":")
+		e.Str(s.Name)
 	}
-	first = false
-
-	e.RawStr("\"id\"" + ":")
-	e.Int(s.ID)
-
-	e.Comma()
-
-	e.RawStr("\"name\"" + ":")
-	e.Str(s.Name)
-
-	if s.Weight.Set {
-		e.Comma()
+	{
+		if s.Weight.Set {
+			e.Comma()
+		}
+		if s.Weight.Set {
+			e.RawStr("\"weight\"" + ":")
+			s.Weight.Encode(e)
+		}
 	}
-	if s.Weight.Set {
-		e.RawStr("\"weight\"" + ":")
-		s.Weight.Encode(e)
-	}
-
-	if s.Birthday.Set {
-		e.Comma()
-	}
-	if s.Birthday.Set {
-		e.RawStr("\"birthday\"" + ":")
-		s.Birthday.Encode(e, json.EncodeDateTime)
+	{
+		if s.Birthday.Set {
+			e.Comma()
+		}
+		if s.Birthday.Set {
+			e.RawStr("\"birthday\"" + ":")
+			s.Birthday.Encode(e, json.EncodeDateTime)
+		}
 	}
 	e.ObjEnd()
 }
@@ -1529,34 +1583,38 @@ func (s PetUpdate) Encode(e *jx.Writer) {
 		first = true
 		_     = first
 	)
+	{
+		if !first {
+			e.Comma()
+		}
+		first = false
 
-	if !first {
+		e.RawStr("\"id\"" + ":")
+		e.Int(s.ID)
+	}
+	{
 		e.Comma()
+
+		e.RawStr("\"name\"" + ":")
+		e.Str(s.Name)
 	}
-	first = false
-
-	e.RawStr("\"id\"" + ":")
-	e.Int(s.ID)
-
-	e.Comma()
-
-	e.RawStr("\"name\"" + ":")
-	e.Str(s.Name)
-
-	if s.Weight.Set {
-		e.Comma()
+	{
+		if s.Weight.Set {
+			e.Comma()
+		}
+		if s.Weight.Set {
+			e.RawStr("\"weight\"" + ":")
+			s.Weight.Encode(e)
+		}
 	}
-	if s.Weight.Set {
-		e.RawStr("\"weight\"" + ":")
-		s.Weight.Encode(e)
-	}
-
-	if s.Birthday.Set {
-		e.Comma()
-	}
-	if s.Birthday.Set {
-		e.RawStr("\"birthday\"" + ":")
-		s.Birthday.Encode(e, json.EncodeDateTime)
+	{
+		if s.Birthday.Set {
+			e.Comma()
+		}
+		if s.Birthday.Set {
+			e.RawStr("\"birthday\"" + ":")
+			s.Birthday.Encode(e, json.EncodeDateTime)
+		}
 	}
 	e.ObjEnd()
 }
@@ -1604,26 +1662,29 @@ func (s R400) Encode(e *jx.Writer) {
 		first = true
 		_     = first
 	)
+	{
+		if !first {
+			e.Comma()
+		}
+		first = false
 
-	if !first {
-		e.Comma()
+		e.RawStr("\"code\"" + ":")
+		e.Int(s.Code)
 	}
-	first = false
-
-	e.RawStr("\"code\"" + ":")
-	e.Int(s.Code)
-
-	e.Comma()
-
-	e.RawStr("\"status\"" + ":")
-	e.Str(s.Status)
-
-	if s.Errors.Set {
+	{
 		e.Comma()
+
+		e.RawStr("\"status\"" + ":")
+		e.Str(s.Status)
 	}
-	if s.Errors.Set {
-		e.RawStr("\"errors\"" + ":")
-		s.Errors.Encode(e)
+	{
+		if s.Errors.Set {
+			e.Comma()
+		}
+		if s.Errors.Set {
+			e.RawStr("\"errors\"" + ":")
+			s.Errors.Encode(e)
+		}
 	}
 	e.ObjEnd()
 }
@@ -1666,26 +1727,29 @@ func (s R404) Encode(e *jx.Writer) {
 		first = true
 		_     = first
 	)
+	{
+		if !first {
+			e.Comma()
+		}
+		first = false
 
-	if !first {
-		e.Comma()
+		e.RawStr("\"code\"" + ":")
+		e.Int(s.Code)
 	}
-	first = false
-
-	e.RawStr("\"code\"" + ":")
-	e.Int(s.Code)
-
-	e.Comma()
-
-	e.RawStr("\"status\"" + ":")
-	e.Str(s.Status)
-
-	if s.Errors.Set {
+	{
 		e.Comma()
+
+		e.RawStr("\"status\"" + ":")
+		e.Str(s.Status)
 	}
-	if s.Errors.Set {
-		e.RawStr("\"errors\"" + ":")
-		s.Errors.Encode(e)
+	{
+		if s.Errors.Set {
+			e.Comma()
+		}
+		if s.Errors.Set {
+			e.RawStr("\"errors\"" + ":")
+			s.Errors.Encode(e)
+		}
 	}
 	e.ObjEnd()
 }
@@ -1728,26 +1792,29 @@ func (s R409) Encode(e *jx.Writer) {
 		first = true
 		_     = first
 	)
+	{
+		if !first {
+			e.Comma()
+		}
+		first = false
 
-	if !first {
-		e.Comma()
+		e.RawStr("\"code\"" + ":")
+		e.Int(s.Code)
 	}
-	first = false
-
-	e.RawStr("\"code\"" + ":")
-	e.Int(s.Code)
-
-	e.Comma()
-
-	e.RawStr("\"status\"" + ":")
-	e.Str(s.Status)
-
-	if s.Errors.Set {
+	{
 		e.Comma()
+
+		e.RawStr("\"status\"" + ":")
+		e.Str(s.Status)
 	}
-	if s.Errors.Set {
-		e.RawStr("\"errors\"" + ":")
-		s.Errors.Encode(e)
+	{
+		if s.Errors.Set {
+			e.Comma()
+		}
+		if s.Errors.Set {
+			e.RawStr("\"errors\"" + ":")
+			s.Errors.Encode(e)
+		}
 	}
 	e.ObjEnd()
 }
@@ -1790,26 +1857,29 @@ func (s R500) Encode(e *jx.Writer) {
 		first = true
 		_     = first
 	)
+	{
+		if !first {
+			e.Comma()
+		}
+		first = false
 
-	if !first {
-		e.Comma()
+		e.RawStr("\"code\"" + ":")
+		e.Int(s.Code)
 	}
-	first = false
-
-	e.RawStr("\"code\"" + ":")
-	e.Int(s.Code)
-
-	e.Comma()
-
-	e.RawStr("\"status\"" + ":")
-	e.Str(s.Status)
-
-	if s.Errors.Set {
+	{
 		e.Comma()
+
+		e.RawStr("\"status\"" + ":")
+		e.Str(s.Status)
 	}
-	if s.Errors.Set {
-		e.RawStr("\"errors\"" + ":")
-		s.Errors.Encode(e)
+	{
+		if s.Errors.Set {
+			e.Comma()
+		}
+		if s.Errors.Set {
+			e.RawStr("\"errors\"" + ":")
+			s.Errors.Encode(e)
+		}
 	}
 	e.ObjEnd()
 }
@@ -1852,74 +1922,80 @@ func (s UpdatePetReq) Encode(e *jx.Writer) {
 		first = true
 		_     = first
 	)
-
-	if !first {
-		e.Comma()
-	}
-	first = false
-
-	e.RawStr("\"name\"" + ":")
-	e.Str(s.Name)
-
-	if s.Weight.Set {
-		e.Comma()
-	}
-	if s.Weight.Set {
-		e.RawStr("\"weight\"" + ":")
-		s.Weight.Encode(e)
-	}
-
-	if s.Birthday.Set {
-		e.Comma()
-	}
-	if s.Birthday.Set {
-		e.RawStr("\"birthday\"" + ":")
-		s.Birthday.Encode(e, json.EncodeDateTime)
-	}
-
-	if s.Categories != nil {
-		e.Comma()
-	}
-	if s.Categories != nil {
-		e.RawStr("\"categories\"" + ":")
-		e.ArrStart()
-		if len(s.Categories) >= 1 {
-			// Encode first element without comma.
-			{
-				elem := s.Categories[0]
-				e.Int(elem)
-			}
-			for _, elem := range s.Categories[1:] {
-				e.Comma()
-				e.Int(elem)
-			}
+	{
+		if !first {
+			e.Comma()
 		}
-		e.ArrEnd()
+		first = false
+
+		e.RawStr("\"name\"" + ":")
+		e.Str(s.Name)
 	}
-
-	e.Comma()
-
-	e.RawStr("\"owner\"" + ":")
-	e.Int(s.Owner)
-
-	if s.Friends != nil {
-		e.Comma()
-	}
-	if s.Friends != nil {
-		e.RawStr("\"friends\"" + ":")
-		e.ArrStart()
-		if len(s.Friends) >= 1 {
-			// Encode first element without comma.
-			{
-				elem := s.Friends[0]
-				e.Int(elem)
-			}
-			for _, elem := range s.Friends[1:] {
-				e.Comma()
-				e.Int(elem)
-			}
+	{
+		if s.Weight.Set {
+			e.Comma()
 		}
-		e.ArrEnd()
+		if s.Weight.Set {
+			e.RawStr("\"weight\"" + ":")
+			s.Weight.Encode(e)
+		}
+	}
+	{
+		if s.Birthday.Set {
+			e.Comma()
+		}
+		if s.Birthday.Set {
+			e.RawStr("\"birthday\"" + ":")
+			s.Birthday.Encode(e, json.EncodeDateTime)
+		}
+	}
+	{
+		if s.Categories != nil {
+			e.Comma()
+		}
+		if s.Categories != nil {
+			e.RawStr("\"categories\"" + ":")
+			e.ArrStart()
+			if len(s.Categories) >= 1 {
+				// Encode first element without comma.
+				{
+					elem := s.Categories[0]
+					e.Int(elem)
+				}
+				for _, elem := range s.Categories[1:] {
+					e.Comma()
+					e.Int(elem)
+				}
+			}
+			e.ArrEnd()
+		}
+	}
+	{
+		e.Comma()
+
+		e.RawStr("\"owner\"" + ":")
+		e.Int(s.Owner)
+	}
+	{
+		if s.Friends != nil {
+			e.Comma()
+		}
+		if s.Friends != nil {
+			e.RawStr("\"friends\"" + ":")
+			e.ArrStart()
+			if len(s.Friends) >= 1 {
+				// Encode first element without comma.
+				{
+					elem := s.Friends[0]
+					e.Int(elem)
+				}
+				for _, elem := range s.Friends[1:] {
+					e.Comma()
+					e.Int(elem)
+				}
+			}
+			e.ArrEnd()
+		}
 	}
 	e.ObjEnd()
 }

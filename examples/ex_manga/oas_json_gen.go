@@ -69,116 +69,125 @@ func (s Book) Encode(e *jx.Writer) {
 		first = true
 		_     = first
 	)
-
-	if s.ID.Set {
-		if !first {
-			e.Comma()
-		}
-		first = false
-	}
-	if s.ID.Set {
-		e.RawStr("\"id\"" + ":")
-		s.ID.Encode(e)
-	}
-
-	if s.MediaID.Set {
-		if !first {
-			e.Comma()
-		}
-		first = false
-	}
-	if s.MediaID.Set {
-		e.RawStr("\"media_id\"" + ":")
-		s.MediaID.Encode(e)
-	}
-
-	if s.Images.Set {
-		if !first {
-			e.Comma()
-		}
-		first = false
-	}
-	if s.Images.Set {
-		e.RawStr("\"images\"" + ":")
-		s.Images.Encode(e)
-	}
-
-	if s.Title.Set {
-		if !first {
-			e.Comma()
-		}
-		first = false
-	}
-	if s.Title.Set {
-		e.RawStr("\"title\"" + ":")
-		s.Title.Encode(e)
-	}
-
-	if s.Tags != nil {
-		if !first {
-			e.Comma()
-		}
-		first = false
-	}
-	if s.Tags != nil {
-		e.RawStr("\"tags\"" + ":")
-		e.ArrStart()
-		if len(s.Tags) >= 1 {
-			// Encode first element without comma.
-			{
-				elem := s.Tags[0]
-				elem.Encode(e)
-			}
-			for _, elem := range s.Tags[1:] {
+	{
+		if s.ID.Set {
+			if !first {
 				e.Comma()
-				elem.Encode(e)
 			}
+			first = false
 		}
-		e.ArrEnd()
-	}
-
-	if s.Scanlator.Set {
-		if !first {
-			e.Comma()
+		if s.ID.Set {
+			e.RawStr("\"id\"" + ":")
+			s.ID.Encode(e)
 		}
-		first = false
 	}
-	if s.Scanlator.Set {
-		e.RawStr("\"scanlator\"" + ":")
-		s.Scanlator.Encode(e)
-	}
-
-	if s.UploadDate.Set {
-		if !first {
-			e.Comma()
+	{
+		if s.MediaID.Set {
+			if !first {
+				e.Comma()
+			}
+			first = false
 		}
-		first = false
-	}
-	if s.UploadDate.Set {
-		e.RawStr("\"upload_date\"" + ":")
-		s.UploadDate.Encode(e)
-	}
-
-	if s.NumPages.Set {
-		if !first {
-			e.Comma()
+		if s.MediaID.Set {
+			e.RawStr("\"media_id\"" + ":")
+			s.MediaID.Encode(e)
 		}
-		first = false
 	}
-	if s.NumPages.Set {
-		e.RawStr("\"num_pages\"" + ":")
-		s.NumPages.Encode(e)
-	}
-
-	if s.NumFavorites.Set {
-		if !first {
-			e.Comma()
+	{
+		if s.Images.Set {
+			if !first {
+				e.Comma()
+			}
+			first = false
 		}
-		first = false
+		if s.Images.Set {
+			e.RawStr("\"images\"" + ":")
+			s.Images.Encode(e)
+		}
 	}
-	if s.NumFavorites.Set {
-		e.RawStr("\"num_favorites\"" + ":")
-		s.NumFavorites.Encode(e)
+	{
+		if s.Title.Set {
+			if !first {
+				e.Comma()
+			}
+			first = false
+		}
+		if s.Title.Set {
+			e.RawStr("\"title\"" + ":")
+			s.Title.Encode(e)
+		}
+	}
+	{
+		if s.Tags != nil {
+			if !first {
+				e.Comma()
+			}
+			first = false
+		}
+		if s.Tags != nil {
+			e.RawStr("\"tags\"" + ":")
+			e.ArrStart()
+			if len(s.Tags) >= 1 {
+				// Encode first element without comma.
+				{
+					elem := s.Tags[0]
+					elem.Encode(e)
+				}
+				for _, elem := range s.Tags[1:] {
+					e.Comma()
+					elem.Encode(e)
+				}
+			}
+			e.ArrEnd()
+		}
+	}
+	{
+		if s.Scanlator.Set {
+			if !first {
+				e.Comma()
+			}
+			first = false
+		}
+		if s.Scanlator.Set {
+			e.RawStr("\"scanlator\"" + ":")
+			s.Scanlator.Encode(e)
+		}
+	}
+	{
+		if s.UploadDate.Set {
+			if !first {
+				e.Comma()
+			}
+			first = false
+		}
+		if s.UploadDate.Set {
+			e.RawStr("\"upload_date\"" + ":")
+			s.UploadDate.Encode(e)
+		}
+	}
+	{
+		if s.NumPages.Set {
+			if !first {
+				e.Comma()
+			}
+			first = false
+		}
+		if s.NumPages.Set {
+			e.RawStr("\"num_pages\"" + ":")
+			s.NumPages.Encode(e)
+		}
+	}
+	{
+		if s.NumFavorites.Set {
+			if !first {
+				e.Comma()
+			}
+			first = false
+		}
+		if s.NumFavorites.Set {
+			e.RawStr("\"num_favorites\"" + ":")
+			s.NumFavorites.Encode(e)
+		}
 	}
 	e.ObjEnd()
 }
@@ -352,38 +361,41 @@ func (s Image) Encode(e *jx.Writer) {
 		first = true
 		_     = first
 	)
-
-	if s.T.Set {
-		if !first {
-			e.Comma()
+	{
+		if s.T.Set {
+			if !first {
+				e.Comma()
+			}
+			first = false
 		}
-		first = false
-	}
-	if s.T.Set {
-		e.RawStr("\"t\"" + ":")
-		s.T.Encode(e)
-	}
-
-	if s.W.Set {
-		if !first {
-			e.Comma()
+		if s.T.Set {
+			e.RawStr("\"t\"" + ":")
+			s.T.Encode(e)
 		}
-		first = false
 	}
-	if s.W.Set {
-		e.RawStr("\"w\"" + ":")
-		s.W.Encode(e)
-	}
-
-	if s.H.Set {
-		if !first {
-			e.Comma()
+	{
+		if s.W.Set {
+			if !first {
+				e.Comma()
+			}
+			first = false
 		}
-		first = false
+		if s.W.Set {
+			e.RawStr("\"w\"" + ":")
+			s.W.Encode(e)
+		}
 	}
-	if s.H.Set {
-		e.RawStr("\"h\"" + ":")
-		s.H.Encode(e)
+	{
+		if s.H.Set {
+			if !first {
+				e.Comma()
+			}
+			first = false
+		}
+		if s.H.Set {
+			e.RawStr("\"h\"" + ":")
+			s.H.Encode(e)
+		}
 	}
 	e.ObjEnd()
 }
@@ -424,50 +436,53 @@ func (s Images) Encode(e *jx.Writer) {
 		first = true
 		_     = first
 	)
-
-	if s.Pages != nil {
-		if !first {
-			e.Comma()
-		}
-		first = false
-	}
-	if s.Pages != nil {
-		e.RawStr("\"pages\"" + ":")
-		e.ArrStart()
-		if len(s.Pages) >= 1 {
-			// Encode first element without comma.
-			{
-				elem := s.Pages[0]
-				elem.Encode(e)
-			}
-			for _, elem := range s.Pages[1:] {
+	{
+		if s.Pages != nil {
+			if !first {
 				e.Comma()
-				elem.Encode(e)
 			}
+			first = false
 		}
-		e.ArrEnd()
-	}
-
-	if s.Cover.Set {
-		if !first {
-			e.Comma()
+		if s.Pages != nil {
+			e.RawStr("\"pages\"" + ":")
+			e.ArrStart()
+			if len(s.Pages) >= 1 {
+				// Encode first element without comma.
+				{
+					elem := s.Pages[0]
+					elem.Encode(e)
+				}
+				for _, elem := range s.Pages[1:] {
+					e.Comma()
+					elem.Encode(e)
+				}
+			}
+			e.ArrEnd()
 		}
-		first = false
 	}
-	if s.Cover.Set {
-		e.RawStr("\"cover\"" + ":")
-		s.Cover.Encode(e)
-	}
-
-	if s.Thumbnail.Set {
-		if !first {
-			e.Comma()
+	{
+		if s.Cover.Set {
+			if !first {
+				e.Comma()
+			}
+			first = false
 		}
-		first = false
+		if s.Cover.Set {
+			e.RawStr("\"cover\"" + ":")
+			s.Cover.Encode(e)
+		}
 	}
-	if s.Thumbnail.Set {
-		e.RawStr("\"thumbnail\"" + ":")
-		s.Thumbnail.Encode(e)
+	{
+		if s.Thumbnail.Set {
+			if !first {
+				e.Comma()
+			}
+			first = false
+		}
+		if s.Thumbnail.Set {
+			e.RawStr("\"thumbnail\"" + ":")
+			s.Thumbnail.Encode(e)
+		}
 	}
 	e.ObjEnd()
 }
@@ -787,50 +802,53 @@ func (s SearchResponse) Encode(e *jx.Writer) {
 		first = true
 		_     = first
 	)
-
-	if s.Result != nil {
-		if !first {
-			e.Comma()
-		}
-		first = false
-	}
-	if s.Result != nil {
-		e.RawStr("\"result\"" + ":")
-		e.ArrStart()
-		if len(s.Result) >= 1 {
-			// Encode first element without comma.
-			{
-				elem := s.Result[0]
-				elem.Encode(e)
-			}
-			for _, elem := range s.Result[1:] {
+	{
+		if s.Result != nil {
+			if !first {
 				e.Comma()
-				elem.Encode(e)
 			}
+			first = false
 		}
-		e.ArrEnd()
-	}
-
-	if s.NumPages.Set {
-		if !first {
-			e.Comma()
+		if s.Result != nil {
+			e.RawStr("\"result\"" + ":")
+			e.ArrStart()
+			if len(s.Result) >= 1 {
+				// Encode first element without comma.
+				{
+					elem := s.Result[0]
+					elem.Encode(e)
+				}
+				for _, elem := range s.Result[1:] {
+					e.Comma()
+					elem.Encode(e)
+				}
+			}
+			e.ArrEnd()
 		}
-		first = false
 	}
-	if s.NumPages.Set {
-		e.RawStr("\"num_pages\"" + ":")
-		s.NumPages.Encode(e)
-	}
-
-	if s.PerPage.Set {
-		if !first {
-			e.Comma()
+	{
+		if s.NumPages.Set {
+			if !first {
+				e.Comma()
+			}
+			first = false
 		}
-		first = false
+		if s.NumPages.Set {
+			e.RawStr("\"num_pages\"" + ":")
+			s.NumPages.Encode(e)
+		}
 	}
-	if s.PerPage.Set {
-		e.RawStr("\"per_page\"" + ":")
-		s.PerPage.Encode(e)
+	{
+		if s.PerPage.Set {
+			if !first {
+				e.Comma()
+			}
+			first = false
+		}
+		if s.PerPage.Set {
+			e.RawStr("\"per_page\"" + ":")
+			s.PerPage.Encode(e)
+		}
 	}
 	e.ObjEnd()
 }
@@ -878,60 +896,65 @@ func (s Tag) Encode(e *jx.Writer) {
 		first = true
 		_     = first
 	)
-
-	if s.ID.Set {
-		if !first {
-			e.Comma()
+	{
+		if s.ID.Set {
+			if !first {
+				e.Comma()
+			}
+			first = false
 		}
-		first = false
-	}
-	if s.ID.Set {
-		e.RawStr("\"id\"" + ":")
-		s.ID.Encode(e)
-	}
-
-	if s.Type.Set {
-		if !first {
-			e.Comma()
+		if s.ID.Set {
+			e.RawStr("\"id\"" + ":")
+			s.ID.Encode(e)
 		}
-		first = false
 	}
-	if s.Type.Set {
-		e.RawStr("\"type\"" + ":")
-		s.Type.Encode(e)
-	}
-
-	if s.Name.Set {
-		if !first {
-			e.Comma()
+	{
+		if s.Type.Set {
+			if !first {
+				e.Comma()
+			}
+			first = false
 		}
-		first = false
-	}
-	if s.Name.Set {
-		e.RawStr("\"name\"" + ":")
-		s.Name.Encode(e)
-	}
-
-	if s.URL.Set {
-		if !first {
-			e.Comma()
+		if s.Type.Set {
+			e.RawStr("\"type\"" + ":")
+			s.Type.Encode(e)
 		}
-		first = false
 	}
-	if s.URL.Set {
-		e.RawStr("\"url\"" + ":")
-		s.URL.Encode(e)
-	}
-
-	if s.Count.Set {
-		if !first {
-			e.Comma()
+	{
+		if s.Name.Set {
+			if !first {
+				e.Comma()
+			}
+			first = false
 		}
-		first = false
+		if s.Name.Set {
+			e.RawStr("\"name\"" + ":")
+			s.Name.Encode(e)
+		}
 	}
-	if s.Count.Set {
-		e.RawStr("\"count\"" + ":")
-		s.Count.Encode(e)
+	{
+		if s.URL.Set {
+			if !first {
+				e.Comma()
+			}
+			first = false
+		}
+		if s.URL.Set {
+			e.RawStr("\"url\"" + ":")
+			s.URL.Encode(e)
+		}
+	}
+	{
+		if s.Count.Set {
+			if !first {
+				e.Comma()
+			}
+			first = false
+		}
+		if s.Count.Set {
+			e.RawStr("\"count\"" + ":")
+			s.Count.Encode(e)
+		}
 	}
 	e.ObjEnd()
 }
@@ -1019,38 +1042,41 @@ func (s Title) Encode(e *jx.Writer) {
 		first = true
 		_     = first
 	)
-
-	if s.English.Set {
-		if !first {
-			e.Comma()
+	{
+		if s.English.Set {
+			if !first {
+				e.Comma()
+			}
+			first = false
 		}
-		first = false
-	}
-	if s.English.Set {
-		e.RawStr("\"english\"" + ":")
-		s.English.Encode(e)
-	}
-
-	if s.Japanese.Set {
-		if !first {
-			e.Comma()
+		if s.English.Set {
+			e.RawStr("\"english\"" + ":")
+			s.English.Encode(e)
 		}
-		first = false
 	}
-	if s.Japanese.Set {
-		e.RawStr("\"japanese\"" + ":")
-		s.Japanese.Encode(e)
-	}
-
-	if s.Pretty.Set {
-		if !first {
-			e.Comma()
+	{
+		if s.Japanese.Set {
+			if !first {
+				e.Comma()
+			}
+			first = false
 		}
-		first = false
+		if s.Japanese.Set {
+			e.RawStr("\"japanese\"" + ":")
+			s.Japanese.Encode(e)
+		}
 	}
-	if s.Pretty.Set {
-		e.RawStr("\"pretty\"" + ":")
-		s.Pretty.Encode(e)
+	{
+		if s.Pretty.Set {
+			if !first {
+				e.Comma()
+			}
+			first = false
+		}
+		if s.Pretty.Set {
+			e.RawStr("\"pretty\"" + ":")
+			s.Pretty.Encode(e)
+		}
 	}
 	e.ObjEnd()
 }

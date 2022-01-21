@@ -93,19 +93,21 @@ func (s Error) Encode(e *jx.Writer) {
 		first = true
 		_     = first
 	)
+	{
+		if !first {
+			e.Comma()
+		}
+		first = false
 
-	if !first {
-		e.Comma()
+		e.RawStr("\"code\"" + ":")
+		e.Int32(s.Code)
 	}
-	first = false
+	{
+		e.Comma()
 
-	e.RawStr("\"code\"" + ":")
-	e.Int32(s.Code)
-
-	e.Comma()
-
-	e.RawStr("\"message\"" + ":")
-	e.Str(s.Message)
+		e.RawStr("\"message\"" + ":")
+		e.Str(s.Message)
+	}
 	e.ObjEnd()
 }
 
@@ -166,21 +168,23 @@ func (s NewPet) Encode(e *jx.Writer) {
 		first = true
 		_     = first
 	)
+	{
+		if !first {
+			e.Comma()
+		}
+		first = false
 
-	if !first {
-		e.Comma()
+		e.RawStr("\"name\"" + ":")
+		e.Str(s.Name)
 	}
-	first = false
-
-	e.RawStr("\"name\"" + ":")
-	e.Str(s.Name)
-
-	if s.Tag.Set {
-		e.Comma()
-	}
-	if s.Tag.Set {
-		e.RawStr("\"tag\"" + ":")
-		s.Tag.Encode(e)
+	{
+		if s.Tag.Set {
+			e.Comma()
+		}
+		if s.Tag.Set {
+			e.RawStr("\"tag\"" + ":")
+			s.Tag.Encode(e)
+		}
 	}
 	e.ObjEnd()
 }

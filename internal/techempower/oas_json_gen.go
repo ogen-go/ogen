@@ -69,14 +69,15 @@ func (s HelloWorld) Encode(e *jx.Writer) {
 		first = true
 		_     = first
 	)
+	{
+		if !first {
+			e.Comma()
+		}
+		first = false
 
-	if !first {
-		e.Comma()
+		e.RawStr("\"message\"" + ":")
+		e.Str(s.Message)
 	}
-	first = false
-
-	e.RawStr("\"message\"" + ":")
-	e.Str(s.Message)
 	e.ObjEnd()
 }
 
@@ -107,19 +108,21 @@ func (s WorldObject) Encode(e *jx.Writer) {
 		first = true
 		_     = first
 	)
+	{
+		if !first {
+			e.Comma()
+		}
+		first = false
 
-	if !first {
-		e.Comma()
+		e.RawStr("\"id\"" + ":")
+		e.Int64(s.ID)
 	}
-	first = false
+	{
+		e.Comma()
 
-	e.RawStr("\"id\"" + ":")
-	e.Int64(s.ID)
-
-	e.Comma()
-
-	e.RawStr("\"randomNumber\"" + ":")
-	e.Int64(s.RandomNumber)
+		e.RawStr("\"randomNumber\"" + ":")
+		e.Int64(s.RandomNumber)
+	}
 	e.ObjEnd()
 }
 

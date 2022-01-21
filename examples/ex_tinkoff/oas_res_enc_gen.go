@@ -67,7 +67,8 @@ func encodeMarketBondsGetResponse(response MarketBondsGetRes, w http.ResponseWri
 	case *MarketInstrumentListResponse:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := &jx.Writer{}
+		e := jx.GetWriter()
+		defer jx.PutWriter(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -78,7 +79,8 @@ func encodeMarketBondsGetResponse(response MarketBondsGetRes, w http.ResponseWri
 	case *Error:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(500)
-		e := &jx.Writer{}
+		e := jx.GetWriter()
+		defer jx.PutWriter(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -96,7 +98,8 @@ func encodeMarketCandlesGetResponse(response MarketCandlesGetRes, w http.Respons
 	case *CandlesResponse:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := &jx.Writer{}
+		e := jx.GetWriter()
+		defer jx.PutWriter(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -107,7 +110,8 @@ func encodeMarketCandlesGetResponse(response MarketCandlesGetRes, w http.Respons
 	case *Error:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(500)
-		e := &jx.Writer{}
+		e := jx.GetWriter()
+		defer jx.PutWriter(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -125,7 +129,8 @@ func encodeMarketCurrenciesGetResponse(response MarketCurrenciesGetRes, w http.R
 	case *MarketInstrumentListResponse:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := &jx.Writer{}
+		e := jx.GetWriter()
+		defer jx.PutWriter(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -136,7 +141,8 @@ func encodeMarketCurrenciesGetResponse(response MarketCurrenciesGetRes, w http.R
 	case *Error:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(500)
-		e := &jx.Writer{}
+		e := jx.GetWriter()
+		defer jx.PutWriter(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -154,7 +160,8 @@ func encodeMarketEtfsGetResponse(response MarketEtfsGetRes, w http.ResponseWrite
 	case *MarketInstrumentListResponse:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := &jx.Writer{}
+		e := jx.GetWriter()
+		defer jx.PutWriter(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -165,7 +172,8 @@ func encodeMarketEtfsGetResponse(response MarketEtfsGetRes, w http.ResponseWrite
 	case *Error:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(500)
-		e := &jx.Writer{}
+		e := jx.GetWriter()
+		defer jx.PutWriter(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -183,7 +191,8 @@ func encodeMarketOrderbookGetResponse(response MarketOrderbookGetRes, w http.Res
 	case *OrderbookResponse:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := &jx.Writer{}
+		e := jx.GetWriter()
+		defer jx.PutWriter(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -194,7 +203,8 @@ func encodeMarketOrderbookGetResponse(response MarketOrderbookGetRes, w http.Res
 	case *Error:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(500)
-		e := &jx.Writer{}
+		e := jx.GetWriter()
+		defer jx.PutWriter(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -212,7 +222,8 @@ func encodeMarketSearchByFigiGetResponse(response MarketSearchByFigiGetRes, w ht
 	case *SearchMarketInstrumentResponse:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := &jx.Writer{}
+		e := jx.GetWriter()
+		defer jx.PutWriter(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -223,7 +234,8 @@ func encodeMarketSearchByFigiGetResponse(response MarketSearchByFigiGetRes, w ht
 	case *Error:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(500)
-		e := &jx.Writer{}
+		e := jx.GetWriter()
+		defer jx.PutWriter(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -241,7 +253,8 @@ func encodeMarketSearchByTickerGetResponse(response MarketSearchByTickerGetRes, 
 	case *MarketInstrumentListResponse:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := &jx.Writer{}
+		e := jx.GetWriter()
+		defer jx.PutWriter(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -252,7 +265,8 @@ func encodeMarketSearchByTickerGetResponse(response MarketSearchByTickerGetRes, 
 	case *Error:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(500)
-		e := &jx.Writer{}
+		e := jx.GetWriter()
+		defer jx.PutWriter(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -270,7 +284,8 @@ func encodeMarketStocksGetResponse(response MarketStocksGetRes, w http.ResponseW
 	case *MarketInstrumentListResponse:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := &jx.Writer{}
+		e := jx.GetWriter()
+		defer jx.PutWriter(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -281,7 +296,8 @@ func encodeMarketStocksGetResponse(response MarketStocksGetRes, w http.ResponseW
 	case *Error:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(500)
-		e := &jx.Writer{}
+		e := jx.GetWriter()
+		defer jx.PutWriter(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -299,7 +315,8 @@ func encodeOperationsGetResponse(response OperationsGetRes, w http.ResponseWrite
 	case *OperationsResponse:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := &jx.Writer{}
+		e := jx.GetWriter()
+		defer jx.PutWriter(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -310,7 +327,8 @@ func encodeOperationsGetResponse(response OperationsGetRes, w http.ResponseWrite
 	case *Error:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(500)
-		e := &jx.Writer{}
+		e := jx.GetWriter()
+		defer jx.PutWriter(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -328,7 +346,8 @@ func encodeOrdersCancelPostResponse(response OrdersCancelPostRes, w http.Respons
 	case *Empty:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := &jx.Writer{}
+		e := jx.GetWriter()
+		defer jx.PutWriter(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -339,7 +358,8 @@ func encodeOrdersCancelPostResponse(response OrdersCancelPostRes, w http.Respons
 	case *Error:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(500)
-		e := &jx.Writer{}
+		e := jx.GetWriter()
+		defer jx.PutWriter(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -357,7 +377,8 @@ func encodeOrdersGetResponse(response OrdersGetRes, w http.ResponseWriter, span 
 	case *OrdersResponse:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := &jx.Writer{}
+		e := jx.GetWriter()
+		defer jx.PutWriter(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -368,7 +389,8 @@ func encodeOrdersGetResponse(response OrdersGetRes, w http.ResponseWriter, span 
 	case *Error:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(500)
-		e := &jx.Writer{}
+		e := jx.GetWriter()
+		defer jx.PutWriter(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -386,7 +408,8 @@ func encodeOrdersLimitOrderPostResponse(response OrdersLimitOrderPostRes, w http
 	case *LimitOrderResponse:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := &jx.Writer{}
+		e := jx.GetWriter()
+		defer jx.PutWriter(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -397,7 +420,8 @@ func encodeOrdersLimitOrderPostResponse(response OrdersLimitOrderPostRes, w http
 	case *Error:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(500)
-		e := &jx.Writer{}
+		e := jx.GetWriter()
+		defer jx.PutWriter(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -415,7 +439,8 @@ func encodeOrdersMarketOrderPostResponse(response OrdersMarketOrderPostRes, w ht
 	case *MarketOrderResponse:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := &jx.Writer{}
+		e := jx.GetWriter()
+		defer jx.PutWriter(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -426,7 +451,8 @@ func encodeOrdersMarketOrderPostResponse(response OrdersMarketOrderPostRes, w ht
 	case *Error:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(500)
-		e := &jx.Writer{}
+		e := jx.GetWriter()
+		defer jx.PutWriter(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -444,7 +470,8 @@ func encodePortfolioCurrenciesGetResponse(response PortfolioCurrenciesGetRes, w 
 	case *PortfolioCurrenciesResponse:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := &jx.Writer{}
+		e := jx.GetWriter()
+		defer jx.PutWriter(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -455,7 +482,8 @@ func encodePortfolioCurrenciesGetResponse(response PortfolioCurrenciesGetRes, w 
 	case *Error:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(500)
-		e := &jx.Writer{}
+		e := jx.GetWriter()
+		defer jx.PutWriter(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -473,7 +501,8 @@ func encodePortfolioGetResponse(response PortfolioGetRes, w http.ResponseWriter,
 	case *PortfolioResponse:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := &jx.Writer{}
+		e := jx.GetWriter()
+		defer jx.PutWriter(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -484,7 +513,8 @@ func encodePortfolioGetResponse(response PortfolioGetRes, w http.ResponseWriter,
 	case *Error:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(500)
-		e := &jx.Writer{}
+		e := jx.GetWriter()
+		defer jx.PutWriter(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -502,7 +532,8 @@ func encodeSandboxClearPostResponse(response SandboxClearPostRes, w http.Respons
 	case *Empty:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := &jx.Writer{}
+		e := jx.GetWriter()
+		defer jx.PutWriter(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -513,7 +544,8 @@ func encodeSandboxClearPostResponse(response SandboxClearPostRes, w http.Respons
 	case *Error:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(500)
-		e := &jx.Writer{}
+		e := jx.GetWriter()
+		defer jx.PutWriter(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -531,7 +563,8 @@ func encodeSandboxCurrenciesBalancePostResponse(response SandboxCurrenciesBalanc
 	case *Empty:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := &jx.Writer{}
+		e := jx.GetWriter()
+		defer jx.PutWriter(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -542,7 +575,8 @@ func encodeSandboxCurrenciesBalancePostResponse(response SandboxCurrenciesBalanc
 	case *Error:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(500)
-		e := &jx.Writer{}
+		e := jx.GetWriter()
+		defer jx.PutWriter(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -560,7 +594,8 @@ func encodeSandboxPositionsBalancePostResponse(response SandboxPositionsBalanceP
 	case *Empty:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := &jx.Writer{}
+		e := jx.GetWriter()
+		defer jx.PutWriter(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -571,7 +606,8 @@ func encodeSandboxPositionsBalancePostResponse(response SandboxPositionsBalanceP
 	case *Error:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(500)
-		e := &jx.Writer{}
+		e := jx.GetWriter()
+		defer jx.PutWriter(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -589,7 +625,8 @@ func encodeSandboxRegisterPostResponse(response SandboxRegisterPostRes, w http.R
 	case *SandboxRegisterResponse:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := &jx.Writer{}
+		e := jx.GetWriter()
+		defer jx.PutWriter(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -600,7 +637,8 @@ func encodeSandboxRegisterPostResponse(response SandboxRegisterPostRes, w http.R
 	case *Error:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(500)
-		e := &jx.Writer{}
+		e := jx.GetWriter()
+		defer jx.PutWriter(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -618,7 +656,8 @@ func encodeSandboxRemovePostResponse(response SandboxRemovePostRes, w http.Respo
 	case *Empty:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := &jx.Writer{}
+		e := jx.GetWriter()
+		defer jx.PutWriter(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -629,7 +668,8 @@ func encodeSandboxRemovePostResponse(response SandboxRemovePostRes, w http.Respo
 	case *Error:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(500)
-		e := &jx.Writer{}
+		e := jx.GetWriter()
+		defer jx.PutWriter(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -647,7 +687,8 @@ func encodeUserAccountsGetResponse(response UserAccountsGetRes, w http.ResponseW
 	case *UserAccountsResponse:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := &jx.Writer{}
+		e := jx.GetWriter()
+		defer jx.PutWriter(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -658,7 +699,8 @@ func encodeUserAccountsGetResponse(response UserAccountsGetRes, w http.ResponseW
 	case *Error:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(500)
-		e := &jx.Writer{}
+		e := jx.GetWriter()
+		defer jx.PutWriter(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {

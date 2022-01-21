@@ -1,6 +1,7 @@
 {{ define "req_json/enc"}}
 buf := getBuf()
-e := &jx.Writer{}
+e := jx.GetWriter()
+defer jx.PutWriter(e)
 {{ template "json/enc" req_enc_elem $ }}
 if _, err := e.WriteTo(buf); err != nil {
 	putBuf(buf)

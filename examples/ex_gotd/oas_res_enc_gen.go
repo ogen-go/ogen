@@ -65,7 +65,8 @@ var (
 func encodeAddStickerToSetResponse(response Result, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := &jx.Writer{}
+	e := jx.GetWriter()
+	defer jx.PutWriter(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -78,7 +79,8 @@ func encodeAddStickerToSetResponse(response Result, w http.ResponseWriter, span 
 func encodeAnswerCallbackQueryResponse(response Result, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := &jx.Writer{}
+	e := jx.GetWriter()
+	defer jx.PutWriter(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -91,7 +93,8 @@ func encodeAnswerCallbackQueryResponse(response Result, w http.ResponseWriter, s
 func encodeAnswerInlineQueryResponse(response Result, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := &jx.Writer{}
+	e := jx.GetWriter()
+	defer jx.PutWriter(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -104,7 +107,8 @@ func encodeAnswerInlineQueryResponse(response Result, w http.ResponseWriter, spa
 func encodeAnswerPreCheckoutQueryResponse(response Result, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := &jx.Writer{}
+	e := jx.GetWriter()
+	defer jx.PutWriter(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -117,7 +121,8 @@ func encodeAnswerPreCheckoutQueryResponse(response Result, w http.ResponseWriter
 func encodeAnswerShippingQueryResponse(response Result, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := &jx.Writer{}
+	e := jx.GetWriter()
+	defer jx.PutWriter(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -130,7 +135,8 @@ func encodeAnswerShippingQueryResponse(response Result, w http.ResponseWriter, s
 func encodeApproveChatJoinRequestResponse(response Result, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := &jx.Writer{}
+	e := jx.GetWriter()
+	defer jx.PutWriter(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -143,7 +149,8 @@ func encodeApproveChatJoinRequestResponse(response Result, w http.ResponseWriter
 func encodeBanChatMemberResponse(response Result, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := &jx.Writer{}
+	e := jx.GetWriter()
+	defer jx.PutWriter(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -156,7 +163,8 @@ func encodeBanChatMemberResponse(response Result, w http.ResponseWriter, span tr
 func encodeCopyMessageResponse(response Result, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := &jx.Writer{}
+	e := jx.GetWriter()
+	defer jx.PutWriter(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -169,7 +177,8 @@ func encodeCopyMessageResponse(response Result, w http.ResponseWriter, span trac
 func encodeCreateChatInviteLinkResponse(response Result, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := &jx.Writer{}
+	e := jx.GetWriter()
+	defer jx.PutWriter(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -182,7 +191,8 @@ func encodeCreateChatInviteLinkResponse(response Result, w http.ResponseWriter, 
 func encodeCreateNewStickerSetResponse(response Result, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := &jx.Writer{}
+	e := jx.GetWriter()
+	defer jx.PutWriter(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -195,7 +205,8 @@ func encodeCreateNewStickerSetResponse(response Result, w http.ResponseWriter, s
 func encodeDeclineChatJoinRequestResponse(response Result, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := &jx.Writer{}
+	e := jx.GetWriter()
+	defer jx.PutWriter(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -208,7 +219,8 @@ func encodeDeclineChatJoinRequestResponse(response Result, w http.ResponseWriter
 func encodeDeleteChatPhotoResponse(response Result, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := &jx.Writer{}
+	e := jx.GetWriter()
+	defer jx.PutWriter(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -221,7 +233,8 @@ func encodeDeleteChatPhotoResponse(response Result, w http.ResponseWriter, span 
 func encodeDeleteChatStickerSetResponse(response Result, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := &jx.Writer{}
+	e := jx.GetWriter()
+	defer jx.PutWriter(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -234,7 +247,8 @@ func encodeDeleteChatStickerSetResponse(response Result, w http.ResponseWriter, 
 func encodeDeleteMessageResponse(response Result, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := &jx.Writer{}
+	e := jx.GetWriter()
+	defer jx.PutWriter(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -247,7 +261,8 @@ func encodeDeleteMessageResponse(response Result, w http.ResponseWriter, span tr
 func encodeDeleteMyCommandsResponse(response Result, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := &jx.Writer{}
+	e := jx.GetWriter()
+	defer jx.PutWriter(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -260,7 +275,8 @@ func encodeDeleteMyCommandsResponse(response Result, w http.ResponseWriter, span
 func encodeDeleteStickerFromSetResponse(response Result, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := &jx.Writer{}
+	e := jx.GetWriter()
+	defer jx.PutWriter(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -273,7 +289,8 @@ func encodeDeleteStickerFromSetResponse(response Result, w http.ResponseWriter, 
 func encodeDeleteWebhookResponse(response Result, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := &jx.Writer{}
+	e := jx.GetWriter()
+	defer jx.PutWriter(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -286,7 +303,8 @@ func encodeDeleteWebhookResponse(response Result, w http.ResponseWriter, span tr
 func encodeEditChatInviteLinkResponse(response Result, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := &jx.Writer{}
+	e := jx.GetWriter()
+	defer jx.PutWriter(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -299,7 +317,8 @@ func encodeEditChatInviteLinkResponse(response Result, w http.ResponseWriter, sp
 func encodeEditMessageCaptionResponse(response Result, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := &jx.Writer{}
+	e := jx.GetWriter()
+	defer jx.PutWriter(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -312,7 +331,8 @@ func encodeEditMessageCaptionResponse(response Result, w http.ResponseWriter, sp
 func encodeEditMessageLiveLocationResponse(response Result, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := &jx.Writer{}
+	e := jx.GetWriter()
+	defer jx.PutWriter(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -325,7 +345,8 @@ func encodeEditMessageLiveLocationResponse(response Result, w http.ResponseWrite
 func encodeEditMessageMediaResponse(response Result, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := &jx.Writer{}
+	e := jx.GetWriter()
+	defer jx.PutWriter(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -338,7 +359,8 @@ func encodeEditMessageMediaResponse(response Result, w http.ResponseWriter, span
 func encodeEditMessageReplyMarkupResponse(response Result, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := &jx.Writer{}
+	e := jx.GetWriter()
+	defer jx.PutWriter(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -351,7 +373,8 @@ func encodeEditMessageReplyMarkupResponse(response Result, w http.ResponseWriter
 func encodeEditMessageTextResponse(response Result, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := &jx.Writer{}
+	e := jx.GetWriter()
+	defer jx.PutWriter(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -364,7 +387,8 @@ func encodeEditMessageTextResponse(response Result, w http.ResponseWriter, span 
 func encodeExportChatInviteLinkResponse(response Result, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := &jx.Writer{}
+	e := jx.GetWriter()
+	defer jx.PutWriter(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -377,7 +401,8 @@ func encodeExportChatInviteLinkResponse(response Result, w http.ResponseWriter, 
 func encodeForwardMessageResponse(response ResultMsg, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := &jx.Writer{}
+	e := jx.GetWriter()
+	defer jx.PutWriter(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -390,7 +415,8 @@ func encodeForwardMessageResponse(response ResultMsg, w http.ResponseWriter, spa
 func encodeGetChatResponse(response Result, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := &jx.Writer{}
+	e := jx.GetWriter()
+	defer jx.PutWriter(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -403,7 +429,8 @@ func encodeGetChatResponse(response Result, w http.ResponseWriter, span trace.Sp
 func encodeGetChatAdministratorsResponse(response Result, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := &jx.Writer{}
+	e := jx.GetWriter()
+	defer jx.PutWriter(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -416,7 +443,8 @@ func encodeGetChatAdministratorsResponse(response Result, w http.ResponseWriter,
 func encodeGetChatMemberResponse(response Result, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := &jx.Writer{}
+	e := jx.GetWriter()
+	defer jx.PutWriter(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -429,7 +457,8 @@ func encodeGetChatMemberResponse(response Result, w http.ResponseWriter, span tr
 func encodeGetChatMemberCountResponse(response Result, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := &jx.Writer{}
+	e := jx.GetWriter()
+	defer jx.PutWriter(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -442,7 +471,8 @@ func encodeGetChatMemberCountResponse(response Result, w http.ResponseWriter, sp
 func encodeGetFileResponse(response Result, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := &jx.Writer{}
+	e := jx.GetWriter()
+	defer jx.PutWriter(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -455,7 +485,8 @@ func encodeGetFileResponse(response Result, w http.ResponseWriter, span trace.Sp
 func encodeGetGameHighScoresResponse(response Result, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := &jx.Writer{}
+	e := jx.GetWriter()
+	defer jx.PutWriter(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -468,7 +499,8 @@ func encodeGetGameHighScoresResponse(response Result, w http.ResponseWriter, spa
 func encodeGetMeResponse(response ResultUsr, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := &jx.Writer{}
+	e := jx.GetWriter()
+	defer jx.PutWriter(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -481,7 +513,8 @@ func encodeGetMeResponse(response ResultUsr, w http.ResponseWriter, span trace.S
 func encodeGetMyCommandsResponse(response Result, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := &jx.Writer{}
+	e := jx.GetWriter()
+	defer jx.PutWriter(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -494,7 +527,8 @@ func encodeGetMyCommandsResponse(response Result, w http.ResponseWriter, span tr
 func encodeGetStickerSetResponse(response Result, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := &jx.Writer{}
+	e := jx.GetWriter()
+	defer jx.PutWriter(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -507,7 +541,8 @@ func encodeGetStickerSetResponse(response Result, w http.ResponseWriter, span tr
 func encodeGetUpdatesResponse(response Result, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := &jx.Writer{}
+	e := jx.GetWriter()
+	defer jx.PutWriter(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -520,7 +555,8 @@ func encodeGetUpdatesResponse(response Result, w http.ResponseWriter, span trace
 func encodeGetUserProfilePhotosResponse(response Result, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := &jx.Writer{}
+	e := jx.GetWriter()
+	defer jx.PutWriter(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -533,7 +569,8 @@ func encodeGetUserProfilePhotosResponse(response Result, w http.ResponseWriter, 
 func encodeLeaveChatResponse(response Result, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := &jx.Writer{}
+	e := jx.GetWriter()
+	defer jx.PutWriter(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -546,7 +583,8 @@ func encodeLeaveChatResponse(response Result, w http.ResponseWriter, span trace.
 func encodePinChatMessageResponse(response Result, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := &jx.Writer{}
+	e := jx.GetWriter()
+	defer jx.PutWriter(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -559,7 +597,8 @@ func encodePinChatMessageResponse(response Result, w http.ResponseWriter, span t
 func encodePromoteChatMemberResponse(response Result, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := &jx.Writer{}
+	e := jx.GetWriter()
+	defer jx.PutWriter(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -572,7 +611,8 @@ func encodePromoteChatMemberResponse(response Result, w http.ResponseWriter, spa
 func encodeRestrictChatMemberResponse(response Result, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := &jx.Writer{}
+	e := jx.GetWriter()
+	defer jx.PutWriter(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -585,7 +625,8 @@ func encodeRestrictChatMemberResponse(response Result, w http.ResponseWriter, sp
 func encodeRevokeChatInviteLinkResponse(response Result, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := &jx.Writer{}
+	e := jx.GetWriter()
+	defer jx.PutWriter(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -598,7 +639,8 @@ func encodeRevokeChatInviteLinkResponse(response Result, w http.ResponseWriter, 
 func encodeSendAnimationResponse(response ResultMsg, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := &jx.Writer{}
+	e := jx.GetWriter()
+	defer jx.PutWriter(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -611,7 +653,8 @@ func encodeSendAnimationResponse(response ResultMsg, w http.ResponseWriter, span
 func encodeSendAudioResponse(response Result, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := &jx.Writer{}
+	e := jx.GetWriter()
+	defer jx.PutWriter(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -624,7 +667,8 @@ func encodeSendAudioResponse(response Result, w http.ResponseWriter, span trace.
 func encodeSendChatActionResponse(response Result, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := &jx.Writer{}
+	e := jx.GetWriter()
+	defer jx.PutWriter(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -637,7 +681,8 @@ func encodeSendChatActionResponse(response Result, w http.ResponseWriter, span t
 func encodeSendContactResponse(response ResultMsg, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := &jx.Writer{}
+	e := jx.GetWriter()
+	defer jx.PutWriter(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -650,7 +695,8 @@ func encodeSendContactResponse(response ResultMsg, w http.ResponseWriter, span t
 func encodeSendDiceResponse(response ResultMsg, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := &jx.Writer{}
+	e := jx.GetWriter()
+	defer jx.PutWriter(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -663,7 +709,8 @@ func encodeSendDiceResponse(response ResultMsg, w http.ResponseWriter, span trac
 func encodeSendDocumentResponse(response ResultMsg, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := &jx.Writer{}
+	e := jx.GetWriter()
+	defer jx.PutWriter(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -676,7 +723,8 @@ func encodeSendDocumentResponse(response ResultMsg, w http.ResponseWriter, span 
 func encodeSendGameResponse(response ResultMsg, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := &jx.Writer{}
+	e := jx.GetWriter()
+	defer jx.PutWriter(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -689,7 +737,8 @@ func encodeSendGameResponse(response ResultMsg, w http.ResponseWriter, span trac
 func encodeSendInvoiceResponse(response ResultMsg, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := &jx.Writer{}
+	e := jx.GetWriter()
+	defer jx.PutWriter(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -702,7 +751,8 @@ func encodeSendInvoiceResponse(response ResultMsg, w http.ResponseWriter, span t
 func encodeSendLocationResponse(response ResultMsg, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := &jx.Writer{}
+	e := jx.GetWriter()
+	defer jx.PutWriter(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -715,7 +765,8 @@ func encodeSendLocationResponse(response ResultMsg, w http.ResponseWriter, span 
 func encodeSendMediaGroupResponse(response Result, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := &jx.Writer{}
+	e := jx.GetWriter()
+	defer jx.PutWriter(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -728,7 +779,8 @@ func encodeSendMediaGroupResponse(response Result, w http.ResponseWriter, span t
 func encodeSendMessageResponse(response ResultMsg, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := &jx.Writer{}
+	e := jx.GetWriter()
+	defer jx.PutWriter(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -741,7 +793,8 @@ func encodeSendMessageResponse(response ResultMsg, w http.ResponseWriter, span t
 func encodeSendPhotoResponse(response ResultMsg, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := &jx.Writer{}
+	e := jx.GetWriter()
+	defer jx.PutWriter(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -754,7 +807,8 @@ func encodeSendPhotoResponse(response ResultMsg, w http.ResponseWriter, span tra
 func encodeSendPollResponse(response ResultMsg, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := &jx.Writer{}
+	e := jx.GetWriter()
+	defer jx.PutWriter(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -767,7 +821,8 @@ func encodeSendPollResponse(response ResultMsg, w http.ResponseWriter, span trac
 func encodeSendStickerResponse(response ResultMsg, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := &jx.Writer{}
+	e := jx.GetWriter()
+	defer jx.PutWriter(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -780,7 +835,8 @@ func encodeSendStickerResponse(response ResultMsg, w http.ResponseWriter, span t
 func encodeSendVenueResponse(response ResultMsg, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := &jx.Writer{}
+	e := jx.GetWriter()
+	defer jx.PutWriter(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -793,7 +849,8 @@ func encodeSendVenueResponse(response ResultMsg, w http.ResponseWriter, span tra
 func encodeSendVideoResponse(response ResultMsg, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := &jx.Writer{}
+	e := jx.GetWriter()
+	defer jx.PutWriter(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -806,7 +863,8 @@ func encodeSendVideoResponse(response ResultMsg, w http.ResponseWriter, span tra
 func encodeSendVideoNoteResponse(response ResultMsg, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := &jx.Writer{}
+	e := jx.GetWriter()
+	defer jx.PutWriter(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -819,7 +877,8 @@ func encodeSendVideoNoteResponse(response ResultMsg, w http.ResponseWriter, span
 func encodeSendVoiceResponse(response ResultMsg, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := &jx.Writer{}
+	e := jx.GetWriter()
+	defer jx.PutWriter(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -832,7 +891,8 @@ func encodeSendVoiceResponse(response ResultMsg, w http.ResponseWriter, span tra
 func encodeSetChatAdministratorCustomTitleResponse(response Result, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := &jx.Writer{}
+	e := jx.GetWriter()
+	defer jx.PutWriter(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -845,7 +905,8 @@ func encodeSetChatAdministratorCustomTitleResponse(response Result, w http.Respo
 func encodeSetChatDescriptionResponse(response Result, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := &jx.Writer{}
+	e := jx.GetWriter()
+	defer jx.PutWriter(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -858,7 +919,8 @@ func encodeSetChatDescriptionResponse(response Result, w http.ResponseWriter, sp
 func encodeSetChatPermissionsResponse(response Result, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := &jx.Writer{}
+	e := jx.GetWriter()
+	defer jx.PutWriter(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -871,7 +933,8 @@ func encodeSetChatPermissionsResponse(response Result, w http.ResponseWriter, sp
 func encodeSetChatPhotoResponse(response Result, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := &jx.Writer{}
+	e := jx.GetWriter()
+	defer jx.PutWriter(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -884,7 +947,8 @@ func encodeSetChatPhotoResponse(response Result, w http.ResponseWriter, span tra
 func encodeSetChatStickerSetResponse(response Result, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := &jx.Writer{}
+	e := jx.GetWriter()
+	defer jx.PutWriter(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -897,7 +961,8 @@ func encodeSetChatStickerSetResponse(response Result, w http.ResponseWriter, spa
 func encodeSetChatTitleResponse(response Result, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := &jx.Writer{}
+	e := jx.GetWriter()
+	defer jx.PutWriter(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -910,7 +975,8 @@ func encodeSetChatTitleResponse(response Result, w http.ResponseWriter, span tra
 func encodeSetGameScoreResponse(response Result, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := &jx.Writer{}
+	e := jx.GetWriter()
+	defer jx.PutWriter(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -923,7 +989,8 @@ func encodeSetGameScoreResponse(response Result, w http.ResponseWriter, span tra
 func encodeSetMyCommandsResponse(response Result, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := &jx.Writer{}
+	e := jx.GetWriter()
+	defer jx.PutWriter(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -936,7 +1003,8 @@ func encodeSetMyCommandsResponse(response Result, w http.ResponseWriter, span tr
 func encodeSetPassportDataErrorsResponse(response Result, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := &jx.Writer{}
+	e := jx.GetWriter()
+	defer jx.PutWriter(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -949,7 +1017,8 @@ func encodeSetPassportDataErrorsResponse(response Result, w http.ResponseWriter,
 func encodeSetStickerPositionInSetResponse(response Result, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := &jx.Writer{}
+	e := jx.GetWriter()
+	defer jx.PutWriter(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -962,7 +1031,8 @@ func encodeSetStickerPositionInSetResponse(response Result, w http.ResponseWrite
 func encodeSetStickerSetThumbResponse(response Result, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := &jx.Writer{}
+	e := jx.GetWriter()
+	defer jx.PutWriter(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -975,7 +1045,8 @@ func encodeSetStickerSetThumbResponse(response Result, w http.ResponseWriter, sp
 func encodeSetWebhookResponse(response Result, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := &jx.Writer{}
+	e := jx.GetWriter()
+	defer jx.PutWriter(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -988,7 +1059,8 @@ func encodeSetWebhookResponse(response Result, w http.ResponseWriter, span trace
 func encodeStopMessageLiveLocationResponse(response Result, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := &jx.Writer{}
+	e := jx.GetWriter()
+	defer jx.PutWriter(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -1001,7 +1073,8 @@ func encodeStopMessageLiveLocationResponse(response Result, w http.ResponseWrite
 func encodeStopPollResponse(response Result, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := &jx.Writer{}
+	e := jx.GetWriter()
+	defer jx.PutWriter(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -1014,7 +1087,8 @@ func encodeStopPollResponse(response Result, w http.ResponseWriter, span trace.S
 func encodeUnbanChatMemberResponse(response Result, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := &jx.Writer{}
+	e := jx.GetWriter()
+	defer jx.PutWriter(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -1027,7 +1101,8 @@ func encodeUnbanChatMemberResponse(response Result, w http.ResponseWriter, span 
 func encodeUnpinAllChatMessagesResponse(response Result, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := &jx.Writer{}
+	e := jx.GetWriter()
+	defer jx.PutWriter(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -1040,7 +1115,8 @@ func encodeUnpinAllChatMessagesResponse(response Result, w http.ResponseWriter, 
 func encodeUnpinChatMessageResponse(response Result, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := &jx.Writer{}
+	e := jx.GetWriter()
+	defer jx.PutWriter(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -1053,7 +1129,8 @@ func encodeUnpinChatMessageResponse(response Result, w http.ResponseWriter, span
 func encodeUploadStickerFileResponse(response Result, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := &jx.Writer{}
+	e := jx.GetWriter()
+	defer jx.PutWriter(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -1065,7 +1142,8 @@ func encodeUploadStickerFileResponse(response Result, w http.ResponseWriter, spa
 func encodeErrorResponse(response ErrorStatusCode, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(response.StatusCode)
-	e := &jx.Writer{}
+	e := jx.GetWriter()
+	defer jx.PutWriter(e)
 
 	response.Response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {

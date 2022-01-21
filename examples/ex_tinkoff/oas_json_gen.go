@@ -96,49 +96,57 @@ func (s Candle) Encode(e *jx.Writer) {
 		first = true
 		_     = first
 	)
+	{
+		if !first {
+			e.Comma()
+		}
+		first = false
 
-	if !first {
-		e.Comma()
+		e.RawStr("\"figi\"" + ":")
+		e.Str(s.Figi)
 	}
-	first = false
+	{
+		e.Comma()
 
-	e.RawStr("\"figi\"" + ":")
-	e.Str(s.Figi)
+		e.RawStr("\"interval\"" + ":")
+		s.Interval.Encode(e)
+	}
+	{
+		e.Comma()
 
-	e.Comma()
+		e.RawStr("\"o\"" + ":")
+		e.Float64(s.O)
+	}
+	{
+		e.Comma()
 
-	e.RawStr("\"interval\"" + ":")
-	s.Interval.Encode(e)
+		e.RawStr("\"c\"" + ":")
+		e.Float64(s.C)
+	}
+	{
+		e.Comma()
 
-	e.Comma()
+		e.RawStr("\"h\"" + ":")
+		e.Float64(s.H)
+	}
+	{
+		e.Comma()
 
-	e.RawStr("\"o\"" + ":")
-	e.Float64(s.O)
+		e.RawStr("\"l\"" + ":")
+		e.Float64(s.L)
+	}
+	{
+		e.Comma()
 
-	e.Comma()
+		e.RawStr("\"v\"" + ":")
+		e.Int32(s.V)
+	}
+	{
+		e.Comma()
 
-	e.RawStr("\"c\"" + ":")
-	e.Float64(s.C)
-
-	e.Comma()
-
-	e.RawStr("\"h\"" + ":")
-	e.Float64(s.H)
-
-	e.Comma()
-
-	e.RawStr("\"l\"" + ":")
-	e.Float64(s.L)
-
-	e.Comma()
-
-	e.RawStr("\"v\"" + ":")
-	e.Int32(s.V)
-
-	e.Comma()
-
-	e.RawStr("\"time\"" + ":")
-	json.EncodeDateTime(e, s.Time)
+		e.RawStr("\"time\"" + ":")
+		json.EncodeDateTime(e, s.Time)
+	}
 	e.ObjEnd()
 }
 
@@ -254,36 +262,39 @@ func (s Candles) Encode(e *jx.Writer) {
 		first = true
 		_     = first
 	)
-
-	if !first {
-		e.Comma()
-	}
-	first = false
-
-	e.RawStr("\"figi\"" + ":")
-	e.Str(s.Figi)
-
-	e.Comma()
-
-	e.RawStr("\"interval\"" + ":")
-	s.Interval.Encode(e)
-
-	e.Comma()
-
-	e.RawStr("\"candles\"" + ":")
-	e.ArrStart()
-	if len(s.Candles) >= 1 {
-		// Encode first element without comma.
-		{
-			elem := s.Candles[0]
-			elem.Encode(e)
-		}
-		for _, elem := range s.Candles[1:] {
+	{
+		if !first {
 			e.Comma()
-			elem.Encode(e)
 		}
+		first = false
+
+		e.RawStr("\"figi\"" + ":")
+		e.Str(s.Figi)
 	}
-	e.ArrEnd()
+	{
+		e.Comma()
+
+		e.RawStr("\"interval\"" + ":")
+		s.Interval.Encode(e)
+	}
+	{
+		e.Comma()
+
+		e.RawStr("\"candles\"" + ":")
+		e.ArrStart()
+		if len(s.Candles) >= 1 {
+			// Encode first element without comma.
+			{
+				elem := s.Candles[0]
+				elem.Encode(e)
+			}
+			for _, elem := range s.Candles[1:] {
+				e.Comma()
+				elem.Encode(e)
+			}
+		}
+		e.ArrEnd()
+	}
 	e.ObjEnd()
 }
 
@@ -330,24 +341,27 @@ func (s CandlesResponse) Encode(e *jx.Writer) {
 		first = true
 		_     = first
 	)
+	{
+		if !first {
+			e.Comma()
+		}
+		first = false
 
-	if !first {
-		e.Comma()
+		e.RawStr("\"trackingId\"" + ":")
+		e.Str(s.TrackingId)
 	}
-	first = false
+	{
+		e.Comma()
 
-	e.RawStr("\"trackingId\"" + ":")
-	e.Str(s.TrackingId)
+		e.RawStr("\"status\"" + ":")
+		e.Str(s.Status)
+	}
+	{
+		e.Comma()
 
-	e.Comma()
-
-	e.RawStr("\"status\"" + ":")
-	e.Str(s.Status)
-
-	e.Comma()
-
-	e.RawStr("\"payload\"" + ":")
-	s.Payload.Encode(e)
+		e.RawStr("\"payload\"" + ":")
+		s.Payload.Encode(e)
+	}
 	e.ObjEnd()
 }
 
@@ -388,27 +402,27 @@ func (s Currencies) Encode(e *jx.Writer) {
 		first = true
 		_     = first
 	)
-
-	if !first {
-
-		e.Comma()
-	}
-	first = false
-
-	e.RawStr("\"currencies\"" + ":")
-	e.ArrStart()
-	if len(s.Currencies) >= 1 {
-		// Encode first element without comma.
-		{
-			elem := s.Currencies[0]
-			elem.Encode(e)
-		}
-		for _, elem := range s.Currencies[1:] {
+	{
+		if !first {
 			e.Comma()
-			elem.Encode(e)
 		}
+		first = false
+
+		e.RawStr("\"currencies\"" + ":")
+		e.ArrStart()
+		if len(s.Currencies) >= 1 {
+			// Encode first element without comma.
+			{
+				elem := s.Currencies[0]
+				elem.Encode(e)
+			}
+			for _, elem := range s.Currencies[1:] {
+				e.Comma()
+				elem.Encode(e)
+			}
+		}
+		e.ArrEnd()
 	}
-	e.ArrEnd()
 	e.ObjEnd()
 }
 
@@ -486,27 +500,29 @@ func (s CurrencyPosition) Encode(e *jx.Writer) {
 		first = true
 		_     = first
 	)
+	{
+		if !first {
+			e.Comma()
+		}
+		first = false
 
-	if !first {
-
-		e.Comma()
+		e.RawStr("\"currency\"" + ":")
+		s.Currency.Encode(e)
 	}
-	first = false
-
-	e.RawStr("\"currency\"" + ":")
-	s.Currency.Encode(e)
-
-	e.Comma()
-
-	e.RawStr("\"balance\"" + ":")
-	e.Float64(s.Balance)
-
-	if s.Blocked.Set {
+	{
 		e.Comma()
+
+		e.RawStr("\"balance\"" + ":")
+		e.Float64(s.Balance)
 	}
-	if s.Blocked.Set {
-		e.RawStr("\"blocked\"" + ":")
-		s.Blocked.Encode(e)
+	{
+		if s.Blocked.Set {
+			e.Comma()
+		}
+		if s.Blocked.Set {
+			e.RawStr("\"blocked\"" + ":")
+			s.Blocked.Encode(e)
+		}
 	}
 	e.ObjEnd()
 }
@@ -547,24 +563,27 @@ func (s Empty) Encode(e *jx.Writer) {
 		first = true
 		_     = first
 	)
+	{
+		if !first {
+			e.Comma()
+		}
+		first = false
 
-	if !first {
-		e.Comma()
+		e.RawStr("\"trackingId\"" + ":")
+		e.Str(s.TrackingId)
 	}
-	first = false
+	{
+		e.Comma()
 
-	e.RawStr("\"trackingId\"" + ":")
-	e.Str(s.TrackingId)
+		e.RawStr("\"payload\"" + ":")
+		s.Payload.Encode(e)
+	}
+	{
+		e.Comma()
 
-	e.Comma()
-
-	e.RawStr("\"payload\"" + ":")
-	s.Payload.Encode(e)
-
-	e.Comma()
-
-	e.RawStr("\"status\"" + ":")
-	e.Str(s.Status)
+		e.RawStr("\"status\"" + ":")
+		e.Str(s.Status)
+	}
 	e.ObjEnd()
 }
 
@@ -629,24 +648,27 @@ func (s Error) Encode(e *jx.Writer) {
 		first = true
 		_     = first
 	)
+	{
+		if !first {
+			e.Comma()
+		}
+		first = false
 
-	if !first {
-		e.Comma()
+		e.RawStr("\"trackingId\"" + ":")
+		e.Str(s.TrackingId)
 	}
-	first = false
+	{
+		e.Comma()
 
-	e.RawStr("\"trackingId\"" + ":")
-	e.Str(s.TrackingId)
+		e.RawStr("\"status\"" + ":")
+		e.Str(s.Status)
+	}
+	{
+		e.Comma()
 
-	e.Comma()
-
-	e.RawStr("\"status\"" + ":")
-	e.Str(s.Status)
-
-	e.Comma()
-
-	e.RawStr("\"payload\"" + ":")
-	s.Payload.Encode(e)
+		e.RawStr("\"payload\"" + ":")
+		s.Payload.Encode(e)
+	}
 	e.ObjEnd()
 }
 
@@ -687,27 +709,29 @@ func (s ErrorPayload) Encode(e *jx.Writer) {
 		first = true
 		_     = first
 	)
-
-	if s.Message.Set {
-		if !first {
-			e.Comma()
+	{
+		if s.Message.Set {
+			if !first {
+				e.Comma()
+			}
+			first = false
 		}
-		first = false
-	}
-	if s.Message.Set {
-		e.RawStr("\"message\"" + ":")
-		s.Message.Encode(e)
-	}
-
-	if s.Code.Set {
-		if !first {
-			e.Comma()
+		if s.Message.Set {
+			e.RawStr("\"message\"" + ":")
+			s.Message.Encode(e)
 		}
-		first = false
 	}
-	if s.Code.Set {
-		e.RawStr("\"code\"" + ":")
-		s.Code.Encode(e)
+	{
+		if s.Code.Set {
+			if !first {
+				e.Comma()
+			}
+			first = false
+		}
+		if s.Code.Set {
+			e.RawStr("\"code\"" + ":")
+			s.Code.Encode(e)
+		}
 	}
 	e.ObjEnd()
 }
@@ -774,24 +798,27 @@ func (s LimitOrderRequest) Encode(e *jx.Writer) {
 		first = true
 		_     = first
 	)
+	{
+		if !first {
+			e.Comma()
+		}
+		first = false
 
-	if !first {
-		e.Comma()
+		e.RawStr("\"lots\"" + ":")
+		e.Int32(s.Lots)
 	}
-	first = false
+	{
+		e.Comma()
 
-	e.RawStr("\"lots\"" + ":")
-	e.Int32(s.Lots)
+		e.RawStr("\"operation\"" + ":")
+		s.Operation.Encode(e)
+	}
+	{
+		e.Comma()
 
-	e.Comma()
-
-	e.RawStr("\"operation\"" + ":")
-	s.Operation.Encode(e)
-
-	e.Comma()
-
-	e.RawStr("\"price\"" + ":")
-	e.Float64(s.Price)
+		e.RawStr("\"price\"" + ":")
+		e.Float64(s.Price)
+	}
 	e.ObjEnd()
 }
 
@@ -832,24 +859,27 @@ func (s LimitOrderResponse) Encode(e *jx.Writer) {
 		first = true
 		_     = first
 	)
+	{
+		if !first {
+			e.Comma()
+		}
+		first = false
 
-	if !first {
-		e.Comma()
+		e.RawStr("\"trackingId\"" + ":")
+		e.Str(s.TrackingId)
 	}
-	first = false
+	{
+		e.Comma()
 
-	e.RawStr("\"trackingId\"" + ":")
-	e.Str(s.TrackingId)
+		e.RawStr("\"status\"" + ":")
+		e.Str(s.Status)
+	}
+	{
+		e.Comma()
 
-	e.Comma()
-
-	e.RawStr("\"status\"" + ":")
-	e.Str(s.Status)
-
-	e.Comma()
-
-	e.RawStr("\"payload\"" + ":")
-	s.Payload.Encode(e)
+		e.RawStr("\"payload\"" + ":")
+		s.Payload.Encode(e)
+	}
 	e.ObjEnd()
 }
 
@@ -890,66 +920,75 @@ func (s MarketInstrument) Encode(e *jx.Writer) {
 		first = true
 		_     = first
 	)
+	{
+		if !first {
+			e.Comma()
+		}
+		first = false
 
-	if !first {
+		e.RawStr("\"figi\"" + ":")
+		e.Str(s.Figi)
+	}
+	{
 		e.Comma()
+
+		e.RawStr("\"ticker\"" + ":")
+		e.Str(s.Ticker)
 	}
-	first = false
-
-	e.RawStr("\"figi\"" + ":")
-	e.Str(s.Figi)
-
-	e.Comma()
-
-	e.RawStr("\"ticker\"" + ":")
-	e.Str(s.Ticker)
-
-	if s.Isin.Set {
+	{
+		if s.Isin.Set {
+			e.Comma()
+		}
+		if s.Isin.Set {
+			e.RawStr("\"isin\"" + ":")
+			s.Isin.Encode(e)
+		}
+	}
+	{
+		if s.MinPriceIncrement.Set {
+			e.Comma()
+		}
+		if s.MinPriceIncrement.Set {
+			e.RawStr("\"minPriceIncrement\"" + ":")
+			s.MinPriceIncrement.Encode(e)
+		}
+	}
+	{
 		e.Comma()
-	}
-	if s.Isin.Set {
-		e.RawStr("\"isin\"" + ":")
-		s.Isin.Encode(e)
-	}
 
-	if s.MinPriceIncrement.Set {
+		e.RawStr("\"lot\"" + ":")
+		e.Int32(s.Lot)
+	}
+	{
+		if s.MinQuantity.Set {
+			e.Comma()
+		}
+		if s.MinQuantity.Set {
+			e.RawStr("\"minQuantity\"" + ":")
+			s.MinQuantity.Encode(e)
+		}
+	}
+	{
+		if s.Currency.Set {
+			e.Comma()
+		}
+		if s.Currency.Set {
+			e.RawStr("\"currency\"" + ":")
+			s.Currency.Encode(e)
+		}
+	}
+	{
 		e.Comma()
+
+		e.RawStr("\"name\"" + ":")
+		e.Str(s.Name)
 	}
-	if s.MinPriceIncrement.Set {
-		e.RawStr("\"minPriceIncrement\"" + ":")
-		s.MinPriceIncrement.Encode(e)
-	}
-
-	e.Comma()
-
-	e.RawStr("\"lot\"" + ":")
-	e.Int32(s.Lot)
-
-	if s.MinQuantity.Set {
+	{
 		e.Comma()
+
+		e.RawStr("\"type\"" + ":")
+		s.Type.Encode(e)
 	}
-	if s.MinQuantity.Set {
-		e.RawStr("\"minQuantity\"" + ":")
-		s.MinQuantity.Encode(e)
-	}
-
-	if s.Currency.Set {
-		e.Comma()
-	}
-	if s.Currency.Set {
-		e.RawStr("\"currency\"" + ":")
-		s.Currency.Encode(e)
-	}
-
-	e.Comma()
-
-	e.RawStr("\"name\"" + ":")
-	e.Str(s.Name)
-
-	e.Comma()
-
-	e.RawStr("\"type\"" + ":")
-	s.Type.Encode(e)
 	e.ObjEnd()
 }
 
@@ -1022,31 +1061,33 @@ func (s MarketInstrumentList) Encode(e *jx.Writer) {
 		first = true
 		_     = first
 	)
-
-	if !first {
-		e.Comma()
-	}
-	first = false
-
-	e.RawStr("\"total\"" + ":")
-	e.Int32(s.Total)
-
-	e.Comma()
-
-	e.RawStr("\"instruments\"" + ":")
-	e.ArrStart()
-	if len(s.Instruments) >= 1 {
-		// Encode first element without comma.
-		{
-			elem := s.Instruments[0]
-			elem.Encode(e)
-		}
-		for _, elem := range s.Instruments[1:] {
+	{
+		if !first {
 			e.Comma()
-			elem.Encode(e)
 		}
+		first = false
+
+		e.RawStr("\"total\"" + ":")
+		e.Int32(s.Total)
 	}
-	e.ArrEnd()
+	{
+		e.Comma()
+
+		e.RawStr("\"instruments\"" + ":")
+		e.ArrStart()
+		if len(s.Instruments) >= 1 {
+			// Encode first element without comma.
+			{
+				elem := s.Instruments[0]
+				elem.Encode(e)
+			}
+			for _, elem := range s.Instruments[1:] {
+				e.Comma()
+				elem.Encode(e)
+			}
+		}
+		e.ArrEnd()
+	}
 	e.ObjEnd()
 }
 
@@ -1089,24 +1130,27 @@ func (s MarketInstrumentListResponse) Encode(e *jx.Writer) {
 		first = true
 		_     = first
 	)
+	{
+		if !first {
+			e.Comma()
+		}
+		first = false
 
-	if !first {
-		e.Comma()
+		e.RawStr("\"trackingId\"" + ":")
+		e.Str(s.TrackingId)
 	}
-	first = false
+	{
+		e.Comma()
 
-	e.RawStr("\"trackingId\"" + ":")
-	e.Str(s.TrackingId)
+		e.RawStr("\"status\"" + ":")
+		e.Str(s.Status)
+	}
+	{
+		e.Comma()
 
-	e.Comma()
-
-	e.RawStr("\"status\"" + ":")
-	e.Str(s.Status)
-
-	e.Comma()
-
-	e.RawStr("\"payload\"" + ":")
-	s.Payload.Encode(e)
+		e.RawStr("\"payload\"" + ":")
+		s.Payload.Encode(e)
+	}
 	e.ObjEnd()
 }
 
@@ -1147,19 +1191,21 @@ func (s MarketOrderRequest) Encode(e *jx.Writer) {
 		first = true
 		_     = first
 	)
+	{
+		if !first {
+			e.Comma()
+		}
+		first = false
 
-	if !first {
-		e.Comma()
+		e.RawStr("\"lots\"" + ":")
+		e.Int32(s.Lots)
 	}
-	first = false
+	{
+		e.Comma()
 
-	e.RawStr("\"lots\"" + ":")
-	e.Int32(s.Lots)
-
-	e.Comma()
-
-	e.RawStr("\"operation\"" + ":")
-	s.Operation.Encode(e)
+		e.RawStr("\"operation\"" + ":")
+		s.Operation.Encode(e)
+	}
 	e.ObjEnd()
 }
 
@@ -1194,24 +1240,27 @@ func (s MarketOrderResponse) Encode(e *jx.Writer) {
 		first = true
 		_     = first
 	)
+	{
+		if !first {
+			e.Comma()
+		}
+		first = false
 
-	if !first {
-		e.Comma()
+		e.RawStr("\"trackingId\"" + ":")
+		e.Str(s.TrackingId)
 	}
-	first = false
+	{
+		e.Comma()
 
-	e.RawStr("\"trackingId\"" + ":")
-	e.Str(s.TrackingId)
+		e.RawStr("\"status\"" + ":")
+		e.Str(s.Status)
+	}
+	{
+		e.Comma()
 
-	e.Comma()
-
-	e.RawStr("\"status\"" + ":")
-	e.Str(s.Status)
-
-	e.Comma()
-
-	e.RawStr("\"payload\"" + ":")
-	s.Payload.Encode(e)
+		e.RawStr("\"payload\"" + ":")
+		s.Payload.Encode(e)
+	}
 	e.ObjEnd()
 }
 
@@ -1252,20 +1301,21 @@ func (s MoneyAmount) Encode(e *jx.Writer) {
 		first = true
 		_     = first
 	)
+	{
+		if !first {
+			e.Comma()
+		}
+		first = false
 
-	if !first {
-
-		e.Comma()
+		e.RawStr("\"currency\"" + ":")
+		s.Currency.Encode(e)
 	}
-	first = false
+	{
+		e.Comma()
 
-	e.RawStr("\"currency\"" + ":")
-	s.Currency.Encode(e)
-
-	e.Comma()
-
-	e.RawStr("\"value\"" + ":")
-	e.Float64(s.Value)
+		e.RawStr("\"value\"" + ":")
+		e.Float64(s.Value)
+	}
 	e.ObjEnd()
 }
 
@@ -1300,114 +1350,128 @@ func (s Operation) Encode(e *jx.Writer) {
 		first = true
 		_     = first
 	)
-
-	if !first {
-		e.Comma()
-	}
-	first = false
-
-	e.RawStr("\"id\"" + ":")
-	e.Str(s.ID)
-
-	e.Comma()
-
-	e.RawStr("\"status\"" + ":")
-	s.Status.Encode(e)
-
-	if s.Trades != nil {
-		e.Comma()
-	}
-	if s.Trades != nil {
-		e.RawStr("\"trades\"" + ":")
-		e.ArrStart()
-		if len(s.Trades) >= 1 {
-			// Encode first element without comma.
-			{
-				elem := s.Trades[0]
-				elem.Encode(e)
-			}
-			for _, elem := range s.Trades[1:] {
-				e.Comma()
-				elem.Encode(e)
-			}
+	{
+		if !first {
+			e.Comma()
 		}
-		e.ArrEnd()
-	}
+		first = false
 
-	if s.Commission.Set {
+		e.RawStr("\"id\"" + ":")
+		e.Str(s.ID)
+	}
+	{
 		e.Comma()
+
+		e.RawStr("\"status\"" + ":")
+		s.Status.Encode(e)
 	}
-	if s.Commission.Set {
-		e.RawStr("\"commission\"" + ":")
-		s.Commission.Encode(e)
+	{
+		if s.Trades != nil {
+			e.Comma()
+		}
+		if s.Trades != nil {
+			e.RawStr("\"trades\"" + ":")
+			e.ArrStart()
+			if len(s.Trades) >= 1 {
+				// Encode first element without comma.
+				{
+					elem := s.Trades[0]
+					elem.Encode(e)
+				}
+				for _, elem := range s.Trades[1:] {
+					e.Comma()
+					elem.Encode(e)
+				}
+			}
+			e.ArrEnd()
+		}
 	}
-
-	e.Comma()
-
-	e.RawStr("\"currency\"" + ":")
-	s.Currency.Encode(e)
-
-	e.Comma()
-
-	e.RawStr("\"payment\"" + ":")
-	e.Float64(s.Payment)
-
-	if s.Price.Set {
+	{
+		if s.Commission.Set {
+			e.Comma()
+		}
+		if s.Commission.Set {
+			e.RawStr("\"commission\"" + ":")
+			s.Commission.Encode(e)
+		}
+	}
+	{
 		e.Comma()
-	}
-	if s.Price.Set {
-		e.RawStr("\"price\"" + ":")
-		s.Price.Encode(e)
-	}
 
-	if s.Quantity.Set {
+		e.RawStr("\"currency\"" + ":")
+		s.Currency.Encode(e)
+	}
+	{
 		e.Comma()
-	}
-	if s.Quantity.Set {
-		e.RawStr("\"quantity\"" + ":")
-		s.Quantity.Encode(e)
-	}
 
-	if s.QuantityExecuted.Set {
+		e.RawStr("\"payment\"" + ":")
+		e.Float64(s.Payment)
+	}
+	{
+		if s.Price.Set {
+			e.Comma()
+		}
+		if s.Price.Set {
+			e.RawStr("\"price\"" + ":")
+			s.Price.Encode(e)
+		}
+	}
+	{
+		if s.Quantity.Set {
+			e.Comma()
+		}
+		if s.Quantity.Set {
+			e.RawStr("\"quantity\"" + ":")
+			s.Quantity.Encode(e)
+		}
+	}
+	{
+		if s.QuantityExecuted.Set {
+			e.Comma()
+		}
+		if s.QuantityExecuted.Set {
+			e.RawStr("\"quantityExecuted\"" + ":")
+			s.QuantityExecuted.Encode(e)
+		}
+	}
+	{
+		if s.Figi.Set {
+			e.Comma()
+		}
+		if s.Figi.Set {
+			e.RawStr("\"figi\"" + ":")
+			s.Figi.Encode(e)
+		}
+	}
+	{
+		if s.InstrumentType.Set {
+			e.Comma()
+		}
+		if s.InstrumentType.Set {
+			e.RawStr("\"instrumentType\"" + ":")
+			s.InstrumentType.Encode(e)
+		}
+	}
+	{
 		e.Comma()
-	}
-	if s.QuantityExecuted.Set {
-		e.RawStr("\"quantityExecuted\"" + ":")
-		s.QuantityExecuted.Encode(e)
-	}
 
-	if s.Figi.Set {
+		e.RawStr("\"isMarginCall\"" + ":")
+		e.Bool(s.IsMarginCall)
+	}
+	{
 		e.Comma()
+
+		e.RawStr("\"date\"" + ":")
+		json.EncodeDateTime(e, s.Date)
 	}
-	if s.Figi.Set {
-		e.RawStr("\"figi\"" + ":")
-		s.Figi.Encode(e)
-	}
-
-	if s.InstrumentType.Set {
-		e.Comma()
-	}
-	if s.InstrumentType.Set {
-		e.RawStr("\"instrumentType\"" + ":")
-		s.InstrumentType.Encode(e)
-	}
-
-	e.Comma()
-
-	e.RawStr("\"isMarginCall\"" + ":")
-	e.Bool(s.IsMarginCall)
-
-	e.Comma()
-
-	e.RawStr("\"date\"" + ":")
-	json.EncodeDateTime(e, s.Date)
-
-	if s.OperationType.Set {
-		e.Comma()
-	}
-	if s.OperationType.Set {
-		e.RawStr("\"operationType\"" + ":")
-		s.OperationType.Encode(e)
+	{
+		if s.OperationType.Set {
+			e.Comma()
+		}
+		if s.OperationType.Set {
+			e.RawStr("\"operationType\"" + ":")
+			s.OperationType.Encode(e)
+		}
 	}
 	e.ObjEnd()
 }
@@ -1541,29 +1605,33 @@ func (s OperationTrade) Encode(e *jx.Writer) {
 		first = true
 		_     = first
 	)
+	{
+		if !first {
+			e.Comma()
+		}
+		first = false
 
-	if !first {
-		e.Comma()
+		e.RawStr("\"tradeId\"" + ":")
+		e.Str(s.TradeId)
 	}
-	first = false
+	{
+		e.Comma()
 
-	e.RawStr("\"tradeId\"" + ":")
-	e.Str(s.TradeId)
+		e.RawStr("\"date\"" + ":")
+		json.EncodeDateTime(e, s.Date)
+	}
+	{
+		e.Comma()
 
-	e.Comma()
+		e.RawStr("\"price\"" + ":")
+		e.Float64(s.Price)
+	}
+	{
+		e.Comma()
 
-	e.RawStr("\"date\"" + ":")
-	json.EncodeDateTime(e, s.Date)
-
-	e.Comma()
-
-	e.RawStr("\"price\"" + ":")
-	e.Float64(s.Price)
-
-	e.Comma()
-
-	e.RawStr("\"quantity\"" + ":")
-	e.Int32(s.Quantity)
+		e.RawStr("\"quantity\"" + ":")
+		e.Int32(s.Quantity)
+	}
 	e.ObjEnd()
 }
 
@@ -1704,27 +1772,27 @@ func (s Operations) Encode(e *jx.Writer) {
 		first = true
 		_     = first
 	)
-
-	if !first {
-
-		e.Comma()
-	}
-	first = false
-
-	e.RawStr("\"operations\"" + ":")
-	e.ArrStart()
-	if len(s.Operations) >= 1 {
-		// Encode first element without comma.
-		{
-			elem := s.Operations[0]
-			elem.Encode(e)
-		}
-		for _, elem := range s.Operations[1:] {
+	{
+		if !first {
 			e.Comma()
-			elem.Encode(e)
 		}
+		first = false
+
+		e.RawStr("\"operations\"" + ":")
+		e.ArrStart()
+		if len(s.Operations) >= 1 {
+			// Encode first element without comma.
+			{
+				elem := s.Operations[0]
+				elem.Encode(e)
+			}
+			for _, elem := range s.Operations[1:] {
+				e.Comma()
+				elem.Encode(e)
+			}
+		}
+		e.ArrEnd()
 	}
-	e.ArrEnd()
 	e.ObjEnd()
 }
 
@@ -1761,24 +1829,27 @@ func (s OperationsResponse) Encode(e *jx.Writer) {
 		first = true
 		_     = first
 	)
+	{
+		if !first {
+			e.Comma()
+		}
+		first = false
 
-	if !first {
-		e.Comma()
+		e.RawStr("\"trackingId\"" + ":")
+		e.Str(s.TrackingId)
 	}
-	first = false
+	{
+		e.Comma()
 
-	e.RawStr("\"trackingId\"" + ":")
-	e.Str(s.TrackingId)
+		e.RawStr("\"status\"" + ":")
+		e.Str(s.Status)
+	}
+	{
+		e.Comma()
 
-	e.Comma()
-
-	e.RawStr("\"status\"" + ":")
-	e.Str(s.Status)
-
-	e.Comma()
-
-	e.RawStr("\"payload\"" + ":")
-	s.Payload.Encode(e)
+		e.RawStr("\"payload\"" + ":")
+		s.Payload.Encode(e)
+	}
 	e.ObjEnd()
 }
 
@@ -2023,49 +2094,57 @@ func (s Order) Encode(e *jx.Writer) {
 		first = true
 		_     = first
 	)
+	{
+		if !first {
+			e.Comma()
+		}
+		first = false
 
-	if !first {
-		e.Comma()
+		e.RawStr("\"orderId\"" + ":")
+		e.Str(s.OrderId)
 	}
-	first = false
+	{
+		e.Comma()
 
-	e.RawStr("\"orderId\"" + ":")
-	e.Str(s.OrderId)
+		e.RawStr("\"figi\"" + ":")
+		e.Str(s.Figi)
+	}
+	{
+		e.Comma()
 
-	e.Comma()
+		e.RawStr("\"operation\"" + ":")
+		s.Operation.Encode(e)
+	}
+	{
+		e.Comma()
 
-	e.RawStr("\"figi\"" + ":")
-	e.Str(s.Figi)
+		e.RawStr("\"status\"" + ":")
+		s.Status.Encode(e)
+	}
+	{
+		e.Comma()
 
-	e.Comma()
+		e.RawStr("\"requestedLots\"" + ":")
+		e.Int32(s.RequestedLots)
+	}
+	{
+		e.Comma()
 
-	e.RawStr("\"operation\"" + ":")
-	s.Operation.Encode(e)
+		e.RawStr("\"executedLots\"" + ":")
+		e.Int32(s.ExecutedLots)
+	}
+	{
+		e.Comma()
 
-	e.Comma()
+		e.RawStr("\"type\"" + ":")
+		s.Type.Encode(e)
+	}
+	{
+		e.Comma()
 
-	e.RawStr("\"status\"" + ":")
-	s.Status.Encode(e)
-
-	e.Comma()
-
-	e.RawStr("\"requestedLots\"" + ":")
-	e.Int32(s.RequestedLots)
-
-	e.Comma()
-
-	e.RawStr("\"executedLots\"" + ":")
-	e.Int32(s.ExecutedLots)
-
-	e.Comma()
-
-	e.RawStr("\"type\"" + ":")
-	s.Type.Encode(e)
-
-	e.Comma()
-
-	e.RawStr("\"price\"" + ":")
-	e.Float64(s.Price)
+		e.RawStr("\"price\"" + ":")
+		e.Float64(s.Price)
+	}
 	e.ObjEnd()
 }
 
@@ -2132,19 +2211,21 @@ func (s OrderResponse) Encode(e *jx.Writer) {
 		first = true
 		_     = first
 	)
+	{
+		if !first {
+			e.Comma()
+		}
+		first = false
 
-	if !first {
-		e.Comma()
+		e.RawStr("\"price\"" + ":")
+		e.Float64(s.Price)
 	}
-	first = false
+	{
+		e.Comma()
 
-	e.RawStr("\"price\"" + ":")
-	e.Float64(s.Price)
-
-	e.Comma()
-
-	e.RawStr("\"quantity\"" + ":")
-	e.Int32(s.Quantity)
+		e.RawStr("\"quantity\"" + ":")
+		e.Int32(s.Quantity)
+	}
 	e.ObjEnd()
 }
 
@@ -2249,102 +2330,113 @@ func (s Orderbook) Encode(e *jx.Writer) {
 		first = true
 		_     = first
 	)
-
-	if !first {
-		e.Comma()
-	}
-	first = false
-
-	e.RawStr("\"figi\"" + ":")
-	e.Str(s.Figi)
-
-	e.Comma()
-
-	e.RawStr("\"depth\"" + ":")
-	e.Int32(s.Depth)
-
-	e.Comma()
-
-	e.RawStr("\"bids\"" + ":")
-	e.ArrStart()
-	if len(s.Bids) >= 1 {
-		// Encode first element without comma.
-		{
-			elem := s.Bids[0]
-			elem.Encode(e)
-		}
-		for _, elem := range s.Bids[1:] {
+	{
+		if !first {
 			e.Comma()
-			elem.Encode(e)
 		}
+		first = false
+
+		e.RawStr("\"figi\"" + ":")
+		e.Str(s.Figi)
 	}
-	e.ArrEnd()
+	{
+		e.Comma()
 
-	e.Comma()
+		e.RawStr("\"depth\"" + ":")
+		e.Int32(s.Depth)
+	}
+	{
+		e.Comma()
 
-	e.RawStr("\"asks\"" + ":")
-	e.ArrStart()
-	if len(s.Asks) >= 1 {
-		// Encode first element without comma.
-		{
-			elem := s.Asks[0]
-			elem.Encode(e)
+		e.RawStr("\"bids\"" + ":")
+		e.ArrStart()
+		if len(s.Bids) >= 1 {
+			// Encode first element without comma.
+			{
+				elem := s.Bids[0]
+				elem.Encode(e)
+			}
+			for _, elem := range s.Bids[1:] {
+				e.Comma()
+				elem.Encode(e)
+			}
 		}
-		for _, elem := range s.Asks[1:] {
+		e.ArrEnd()
+	}
+	{
+		e.Comma()
+
+		e.RawStr("\"asks\"" + ":")
+		e.ArrStart()
+		if len(s.Asks) >= 1 {
+			// Encode first element without comma.
+			{
+				elem := s.Asks[0]
+				elem.Encode(e)
+			}
+			for _, elem := range s.Asks[1:] {
+				e.Comma()
+				elem.Encode(e)
+			}
+		}
+		e.ArrEnd()
+	}
+	{
+		e.Comma()
+
+		e.RawStr("\"tradeStatus\"" + ":")
+		s.TradeStatus.Encode(e)
+	}
+	{
+		e.Comma()
+
+		e.RawStr("\"minPriceIncrement\"" + ":")
+		e.Float64(s.MinPriceIncrement)
+	}
+	{
+		if s.FaceValue.Set {
 			e.Comma()
-			elem.Encode(e)
+		}
+		if s.FaceValue.Set {
+			e.RawStr("\"faceValue\"" + ":")
+			s.FaceValue.Encode(e)
 		}
 	}
-	e.ArrEnd()
-
-	e.Comma()
-
-	e.RawStr("\"tradeStatus\"" + ":")
-	s.TradeStatus.Encode(e)
-
-	e.Comma()
-
-	e.RawStr("\"minPriceIncrement\"" + ":")
-	e.Float64(s.MinPriceIncrement)
-
-	if s.FaceValue.Set {
-		e.Comma()
+	{
+		if s.LastPrice.Set {
+			e.Comma()
+		}
+		if s.LastPrice.Set {
+			e.RawStr("\"lastPrice\"" + ":")
+			s.LastPrice.Encode(e)
+		}
 	}
-	if s.FaceValue.Set {
-		e.RawStr("\"faceValue\"" + ":")
-		s.FaceValue.Encode(e)
+	{
+		if s.ClosePrice.Set {
+			e.Comma()
+		}
+		if s.ClosePrice.Set {
+			e.RawStr("\"closePrice\"" + ":")
+			s.ClosePrice.Encode(e)
+		}
 	}
-
-	if s.LastPrice.Set {
-		e.Comma()
+	{
+		if s.LimitUp.Set {
+			e.Comma()
+		}
+		if s.LimitUp.Set {
+			e.RawStr("\"limitUp\"" + ":")
+			s.LimitUp.Encode(e)
+		}
 	}
-	if s.LastPrice.Set {
-		e.RawStr("\"lastPrice\"" + ":")
-		s.LastPrice.Encode(e)
-	}
-
-	if s.ClosePrice.Set {
-		e.Comma()
-	}
-	if s.ClosePrice.Set {
-		e.RawStr("\"closePrice\"" + ":")
-		s.ClosePrice.Encode(e)
-	}
-
-	if s.LimitUp.Set {
-		e.Comma()
-	}
-	if s.LimitUp.Set {
-		e.RawStr("\"limitUp\"" + ":")
-		s.LimitUp.Encode(e)
-	}
-
-	if s.LimitDown.Set {
-		e.Comma()
-	}
-	if s.LimitDown.Set {
-		e.RawStr("\"limitDown\"" + ":")
-		s.LimitDown.Encode(e)
+	{
+		if s.LimitDown.Set {
+			e.Comma()
+		}
+		if s.LimitDown.Set {
+			e.RawStr("\"limitDown\"" + ":")
+			s.LimitDown.Encode(e)
+		}
 	}
 	e.ObjEnd()
 }
@@ -2441,24 +2533,27 @@ func (s OrderbookResponse) Encode(e *jx.Writer) {
 		first = true
 		_     = first
 	)
+	{
+		if !first {
+			e.Comma()
+		}
+		first = false
 
-	if !first {
-		e.Comma()
+		e.RawStr("\"trackingId\"" + ":")
+		e.Str(s.TrackingId)
 	}
-	first = false
+	{
+		e.Comma()
 
-	e.RawStr("\"trackingId\"" + ":")
-	e.Str(s.TrackingId)
+		e.RawStr("\"status\"" + ":")
+		e.Str(s.Status)
+	}
+	{
+		e.Comma()
 
-	e.Comma()
-
-	e.RawStr("\"status\"" + ":")
-	e.Str(s.Status)
-
-	e.Comma()
-
-	e.RawStr("\"payload\"" + ":")
-	s.Payload.Encode(e)
+		e.RawStr("\"payload\"" + ":")
+		s.Payload.Encode(e)
+	}
 	e.ObjEnd()
 }
 
@@ -2499,36 +2594,39 @@ func (s OrdersResponse) Encode(e *jx.Writer) {
 		first = true
 		_     = first
 	)
-
-	if !first {
-		e.Comma()
-	}
-	first = false
-
-	e.RawStr("\"trackingId\"" + ":")
-	e.Str(s.TrackingId)
-
-	e.Comma()
-
-	e.RawStr("\"status\"" + ":")
-	e.Str(s.Status)
-
-	e.Comma()
-
-	e.RawStr("\"payload\"" + ":")
-	e.ArrStart()
-	if len(s.Payload) >= 1 {
-		// Encode first element without comma.
-		{
-			elem := s.Payload[0]
-			elem.Encode(e)
-		}
-		for _, elem := range s.Payload[1:] {
+	{
+		if !first {
 			e.Comma()
-			elem.Encode(e)
 		}
+		first = false
+
+		e.RawStr("\"trackingId\"" + ":")
+		e.Str(s.TrackingId)
 	}
-	e.ArrEnd()
+	{
+		e.Comma()
+
+		e.RawStr("\"status\"" + ":")
+		e.Str(s.Status)
+	}
+	{
+		e.Comma()
+
+		e.RawStr("\"payload\"" + ":")
+		e.ArrStart()
+		if len(s.Payload) >= 1 {
+			// Encode first element without comma.
+			{
+				elem := s.Payload[0]
+				elem.Encode(e)
+			}
+			for _, elem := range s.Payload[1:] {
+				e.Comma()
+				elem.Encode(e)
+			}
+		}
+		e.ArrEnd()
+	}
 	e.ObjEnd()
 }
 
@@ -2577,57 +2675,65 @@ func (s PlacedLimitOrder) Encode(e *jx.Writer) {
 		first = true
 		_     = first
 	)
+	{
+		if !first {
+			e.Comma()
+		}
+		first = false
 
-	if !first {
+		e.RawStr("\"orderId\"" + ":")
+		e.Str(s.OrderId)
+	}
+	{
 		e.Comma()
+
+		e.RawStr("\"operation\"" + ":")
+		s.Operation.Encode(e)
 	}
-	first = false
-
-	e.RawStr("\"orderId\"" + ":")
-	e.Str(s.OrderId)
-
-	e.Comma()
-
-	e.RawStr("\"operation\"" + ":")
-	s.Operation.Encode(e)
-
-	e.Comma()
-
-	e.RawStr("\"status\"" + ":")
-	s.Status.Encode(e)
-
-	if s.RejectReason.Set {
+	{
 		e.Comma()
-	}
-	if s.RejectReason.Set {
-		e.RawStr("\"rejectReason\"" + ":")
-		s.RejectReason.Encode(e)
-	}
 
-	if s.Message.Set {
+		e.RawStr("\"status\"" + ":")
+		s.Status.Encode(e)
+	}
+	{
+		if s.RejectReason.Set {
+			e.Comma()
+		}
+		if s.RejectReason.Set {
+			e.RawStr("\"rejectReason\"" + ":")
+			s.RejectReason.Encode(e)
+		}
+	}
+	{
+		if s.Message.Set {
+			e.Comma()
+		}
+		if s.Message.Set {
+			e.RawStr("\"message\"" + ":")
+			s.Message.Encode(e)
+		}
+	}
+	{
 		e.Comma()
+
+		e.RawStr("\"requestedLots\"" + ":")
+		e.Int(s.RequestedLots)
 	}
-	if s.Message.Set {
-		e.RawStr("\"message\"" + ":")
-		s.Message.Encode(e)
-	}
-
-	e.Comma()
-
-	e.RawStr("\"requestedLots\"" + ":")
-	e.Int(s.RequestedLots)
-
-	e.Comma()
-
-	e.RawStr("\"executedLots\"" + ":")
-	e.Int(s.ExecutedLots)
-
-	if s.Commission.Set {
+	{
 		e.Comma()
+
+		e.RawStr("\"executedLots\"" + ":")
+		e.Int(s.ExecutedLots)
 	}
-	if s.Commission.Set {
-		e.RawStr("\"commission\"" + ":")
-		s.Commission.Encode(e)
+	{
+		if s.Commission.Set {
+			e.Comma()
+		}
+		if s.Commission.Set {
+			e.RawStr("\"commission\"" + ":")
+			s.Commission.Encode(e)
+		}
 	}
 	e.ObjEnd()
 }
@@ -2694,57 +2800,65 @@ func (s PlacedMarketOrder) Encode(e *jx.Writer) {
 		first = true
 		_     = first
 	)
+	{
+		if !first {
+			e.Comma()
+		}
+		first = false
 
-	if !first {
+		e.RawStr("\"orderId\"" + ":")
+		e.Str(s.OrderId)
+	}
+	{
 		e.Comma()
+
+		e.RawStr("\"operation\"" + ":")
+		s.Operation.Encode(e)
 	}
-	first = false
-
-	e.RawStr("\"orderId\"" + ":")
-	e.Str(s.OrderId)
-
-	e.Comma()
-
-	e.RawStr("\"operation\"" + ":")
-	s.Operation.Encode(e)
-
-	e.Comma()
-
-	e.RawStr("\"status\"" + ":")
-	s.Status.Encode(e)
-
-	if s.RejectReason.Set {
+	{
 		e.Comma()
-	}
-	if s.RejectReason.Set {
-		e.RawStr("\"rejectReason\"" + ":")
-		s.RejectReason.Encode(e)
-	}
 
-	if s.Message.Set {
+		e.RawStr("\"status\"" + ":")
+		s.Status.Encode(e)
+	}
+	{
+		if s.RejectReason.Set {
+			e.Comma()
+		}
+		if s.RejectReason.Set {
+			e.RawStr("\"rejectReason\"" + ":")
+			s.RejectReason.Encode(e)
+		}
+	}
+	{
+		if s.Message.Set {
+			e.Comma()
+		}
+		if s.Message.Set {
+			e.RawStr("\"message\"" + ":")
+			s.Message.Encode(e)
+		}
+	}
+	{
 		e.Comma()
+
+		e.RawStr("\"requestedLots\"" + ":")
+		e.Int(s.RequestedLots)
 	}
-	if s.Message.Set {
-		e.RawStr("\"message\"" + ":")
-		s.Message.Encode(e)
-	}
-
-	e.Comma()
-
-	e.RawStr("\"requestedLots\"" + ":")
-	e.Int(s.RequestedLots)
-
-	e.Comma()
-
-	e.RawStr("\"executedLots\"" + ":")
-	e.Int(s.ExecutedLots)
-
-	if s.Commission.Set {
+	{
 		e.Comma()
+
+		e.RawStr("\"executedLots\"" + ":")
+		e.Int(s.ExecutedLots)
 	}
-	if s.Commission.Set {
-		e.RawStr("\"commission\"" + ":")
-		s.Commission.Encode(e)
+	{
+		if s.Commission.Set {
+			e.Comma()
+		}
+		if s.Commission.Set {
+			e.RawStr("\"commission\"" + ":")
+			s.Commission.Encode(e)
+		}
 	}
 	e.ObjEnd()
 }
@@ -2811,27 +2925,27 @@ func (s Portfolio) Encode(e *jx.Writer) {
 		first = true
 		_     = first
 	)
-
-	if !first {
-
-		e.Comma()
-	}
-	first = false
-
-	e.RawStr("\"positions\"" + ":")
-	e.ArrStart()
-	if len(s.Positions) >= 1 {
-		// Encode first element without comma.
-		{
-			elem := s.Positions[0]
-			elem.Encode(e)
-		}
-		for _, elem := range s.Positions[1:] {
+	{
+		if !first {
 			e.Comma()
-			elem.Encode(e)
 		}
+		first = false
+
+		e.RawStr("\"positions\"" + ":")
+		e.ArrStart()
+		if len(s.Positions) >= 1 {
+			// Encode first element without comma.
+			{
+				elem := s.Positions[0]
+				elem.Encode(e)
+			}
+			for _, elem := range s.Positions[1:] {
+				e.Comma()
+				elem.Encode(e)
+			}
+		}
+		e.ArrEnd()
 	}
-	e.ArrEnd()
 	e.ObjEnd()
 }
 
@@ -2868,24 +2982,27 @@ func (s PortfolioCurrenciesResponse) Encode(e *jx.Writer) {
 		first = true
 		_     = first
 	)
+	{
+		if !first {
+			e.Comma()
+		}
+		first = false
 
-	if !first {
-		e.Comma()
+		e.RawStr("\"trackingId\"" + ":")
+		e.Str(s.TrackingId)
 	}
-	first = false
+	{
+		e.Comma()
 
-	e.RawStr("\"trackingId\"" + ":")
-	e.Str(s.TrackingId)
+		e.RawStr("\"status\"" + ":")
+		e.Str(s.Status)
+	}
+	{
+		e.Comma()
 
-	e.Comma()
-
-	e.RawStr("\"status\"" + ":")
-	e.Str(s.Status)
-
-	e.Comma()
-
-	e.RawStr("\"payload\"" + ":")
-	s.Payload.Encode(e)
+		e.RawStr("\"payload\"" + ":")
+		s.Payload.Encode(e)
+	}
 	e.ObjEnd()
 }
 
@@ -2926,82 +3043,93 @@ func (s PortfolioPosition) Encode(e *jx.Writer) {
 		first = true
 		_     = first
 	)
+	{
+		if !first {
+			e.Comma()
+		}
+		first = false
 
-	if !first {
+		e.RawStr("\"figi\"" + ":")
+		e.Str(s.Figi)
+	}
+	{
+		if s.Ticker.Set {
+			e.Comma()
+		}
+		if s.Ticker.Set {
+			e.RawStr("\"ticker\"" + ":")
+			s.Ticker.Encode(e)
+		}
+	}
+	{
+		if s.Isin.Set {
+			e.Comma()
+		}
+		if s.Isin.Set {
+			e.RawStr("\"isin\"" + ":")
+			s.Isin.Encode(e)
+		}
+	}
+	{
 		e.Comma()
+
+		e.RawStr("\"instrumentType\"" + ":")
+		s.InstrumentType.Encode(e)
 	}
-	first = false
-
-	e.RawStr("\"figi\"" + ":")
-	e.Str(s.Figi)
-
-	if s.Ticker.Set {
+	{
 		e.Comma()
-	}
-	if s.Ticker.Set {
-		e.RawStr("\"ticker\"" + ":")
-		s.Ticker.Encode(e)
-	}
 
-	if s.Isin.Set {
+		e.RawStr("\"balance\"" + ":")
+		e.Float64(s.Balance)
+	}
+	{
+		if s.Blocked.Set {
+			e.Comma()
+		}
+		if s.Blocked.Set {
+			e.RawStr("\"blocked\"" + ":")
+			s.Blocked.Encode(e)
+		}
+	}
+	{
+		if s.ExpectedYield.Set {
+			e.Comma()
+		}
+		if s.ExpectedYield.Set {
+			e.RawStr("\"expectedYield\"" + ":")
+			s.ExpectedYield.Encode(e)
+		}
+	}
+	{
 		e.Comma()
+
+		e.RawStr("\"lots\"" + ":")
+		e.Int32(s.Lots)
 	}
-	if s.Isin.Set {
-		e.RawStr("\"isin\"" + ":")
-		s.Isin.Encode(e)
+	{
+		if s.AveragePositionPrice.Set {
+			e.Comma()
+		}
+		if s.AveragePositionPrice.Set {
+			e.RawStr("\"averagePositionPrice\"" + ":")
+			s.AveragePositionPrice.Encode(e)
+		}
 	}
-
-	e.Comma()
-
-	e.RawStr("\"instrumentType\"" + ":")
-	s.InstrumentType.Encode(e)
-
-	e.Comma()
-
-	e.RawStr("\"balance\"" + ":")
-	e.Float64(s.Balance)
-
-	if s.Blocked.Set {
+	{
+		if s.AveragePositionPriceNoNkd.Set {
+			e.Comma()
+		}
+		if s.AveragePositionPriceNoNkd.Set {
+			e.RawStr("\"averagePositionPriceNoNkd\"" + ":")
+			s.AveragePositionPriceNoNkd.Encode(e)
+		}
+	}
+	{
 		e.Comma()
-	}
-	if s.Blocked.Set {
-		e.RawStr("\"blocked\"" + ":")
-		s.Blocked.Encode(e)
-	}
 
-	if s.ExpectedYield.Set {
-		e.Comma()
+		e.RawStr("\"name\"" + ":")
+		e.Str(s.Name)
 	}
-	if s.ExpectedYield.Set {
-		e.RawStr("\"expectedYield\"" + ":")
-		s.ExpectedYield.Encode(e)
-	}
-
-	e.Comma()
-
-	e.RawStr("\"lots\"" + ":")
-	e.Int32(s.Lots)
-
-	if s.AveragePositionPrice.Set {
-		e.Comma()
-	}
-	if s.AveragePositionPrice.Set {
-		e.RawStr("\"averagePositionPrice\"" + ":")
-		s.AveragePositionPrice.Encode(e)
-	}
-
-	if s.AveragePositionPriceNoNkd.Set {
-		e.Comma()
-	}
-	if s.AveragePositionPriceNoNkd.Set {
-		e.RawStr("\"averagePositionPriceNoNkd\"" + ":")
-		s.AveragePositionPriceNoNkd.Encode(e)
-	}
-
-	e.Comma()
-
-	e.RawStr("\"name\"" + ":")
-	e.Str(s.Name)
 	e.ObjEnd()
 }
 
@@ -3084,24 +3212,27 @@ func (s PortfolioResponse) Encode(e *jx.Writer) {
 		first = true
 		_     = first
 	)
+	{
+		if !first {
+			e.Comma()
+		}
+		first = false
 
-	if !first {
-		e.Comma()
+		e.RawStr("\"trackingId\"" + ":")
+		e.Str(s.TrackingId)
 	}
-	first = false
+	{
+		e.Comma()
 
-	e.RawStr("\"trackingId\"" + ":")
-	e.Str(s.TrackingId)
+		e.RawStr("\"status\"" + ":")
+		e.Str(s.Status)
+	}
+	{
+		e.Comma()
 
-	e.Comma()
-
-	e.RawStr("\"status\"" + ":")
-	e.Str(s.Status)
-
-	e.Comma()
-
-	e.RawStr("\"payload\"" + ":")
-	s.Payload.Encode(e)
+		e.RawStr("\"payload\"" + ":")
+		s.Payload.Encode(e)
+	}
 	e.ObjEnd()
 }
 
@@ -3142,20 +3273,21 @@ func (s SandboxAccount) Encode(e *jx.Writer) {
 		first = true
 		_     = first
 	)
+	{
+		if !first {
+			e.Comma()
+		}
+		first = false
 
-	if !first {
-
-		e.Comma()
+		e.RawStr("\"brokerAccountType\"" + ":")
+		s.BrokerAccountType.Encode(e)
 	}
-	first = false
+	{
+		e.Comma()
 
-	e.RawStr("\"brokerAccountType\"" + ":")
-	s.BrokerAccountType.Encode(e)
-
-	e.Comma()
-
-	e.RawStr("\"brokerAccountId\"" + ":")
-	e.Str(s.BrokerAccountId)
+		e.RawStr("\"brokerAccountId\"" + ":")
+		e.Str(s.BrokerAccountId)
+	}
 	e.ObjEnd()
 }
 
@@ -3231,16 +3363,17 @@ func (s SandboxRegisterRequest) Encode(e *jx.Writer) {
 		first = true
 		_     = first
 	)
-
-	if s.BrokerAccountType.Set {
-		if !first {
-			e.Comma()
+	{
+		if s.BrokerAccountType.Set {
+			if !first {
+				e.Comma()
+			}
+			first = false
 		}
-		first = false
-	}
-	if s.BrokerAccountType.Set {
-		e.RawStr("\"brokerAccountType\"" + ":")
-		s.BrokerAccountType.Encode(e)
+		if s.BrokerAccountType.Set {
+			e.RawStr("\"brokerAccountType\"" + ":")
+			s.BrokerAccountType.Encode(e)
+		}
 	}
 	e.ObjEnd()
 }
@@ -3271,24 +3404,27 @@ func (s SandboxRegisterResponse) Encode(e *jx.Writer) {
 		first = true
 		_     = first
 	)
+	{
+		if !first {
+			e.Comma()
+		}
+		first = false
 
-	if !first {
-		e.Comma()
+		e.RawStr("\"trackingId\"" + ":")
+		e.Str(s.TrackingId)
 	}
-	first = false
+	{
+		e.Comma()
 
-	e.RawStr("\"trackingId\"" + ":")
-	e.Str(s.TrackingId)
+		e.RawStr("\"status\"" + ":")
+		e.Str(s.Status)
+	}
+	{
+		e.Comma()
 
-	e.Comma()
-
-	e.RawStr("\"status\"" + ":")
-	e.Str(s.Status)
-
-	e.Comma()
-
-	e.RawStr("\"payload\"" + ":")
-	s.Payload.Encode(e)
+		e.RawStr("\"payload\"" + ":")
+		s.Payload.Encode(e)
+	}
 	e.ObjEnd()
 }
 
@@ -3329,20 +3465,21 @@ func (s SandboxSetCurrencyBalanceRequest) Encode(e *jx.Writer) {
 		first = true
 		_     = first
 	)
+	{
+		if !first {
+			e.Comma()
+		}
+		first = false
 
-	if !first {
-
-		e.Comma()
+		e.RawStr("\"currency\"" + ":")
+		s.Currency.Encode(e)
 	}
-	first = false
+	{
+		e.Comma()
 
-	e.RawStr("\"currency\"" + ":")
-	s.Currency.Encode(e)
-
-	e.Comma()
-
-	e.RawStr("\"balance\"" + ":")
-	e.Float64(s.Balance)
+		e.RawStr("\"balance\"" + ":")
+		e.Float64(s.Balance)
+	}
 	e.ObjEnd()
 }
 
@@ -3377,25 +3514,27 @@ func (s SandboxSetPositionBalanceRequest) Encode(e *jx.Writer) {
 		first = true
 		_     = first
 	)
-
-	if s.Figi.Set {
+	{
+		if s.Figi.Set {
+			if !first {
+				e.Comma()
+			}
+			first = false
+		}
+		if s.Figi.Set {
+			e.RawStr("\"figi\"" + ":")
+			s.Figi.Encode(e)
+		}
+	}
+	{
 		if !first {
 			e.Comma()
 		}
 		first = false
-	}
-	if s.Figi.Set {
-		e.RawStr("\"figi\"" + ":")
-		s.Figi.Encode(e)
-	}
 
-	if !first {
-		e.Comma()
+		e.RawStr("\"balance\"" + ":")
+		e.Float64(s.Balance)
 	}
-	first = false
-
-	e.RawStr("\"balance\"" + ":")
-	e.Float64(s.Balance)
 	e.ObjEnd()
 }
 
@@ -3431,58 +3570,66 @@ func (s SearchMarketInstrument) Encode(e *jx.Writer) {
 		first = true
 		_     = first
 	)
+	{
+		if !first {
+			e.Comma()
+		}
+		first = false
 
-	if !first {
+		e.RawStr("\"figi\"" + ":")
+		e.Str(s.Figi)
+	}
+	{
 		e.Comma()
+
+		e.RawStr("\"ticker\"" + ":")
+		e.Str(s.Ticker)
 	}
-	first = false
-
-	e.RawStr("\"figi\"" + ":")
-	e.Str(s.Figi)
-
-	e.Comma()
-
-	e.RawStr("\"ticker\"" + ":")
-	e.Str(s.Ticker)
-
-	if s.Isin.Set {
+	{
+		if s.Isin.Set {
+			e.Comma()
+		}
+		if s.Isin.Set {
+			e.RawStr("\"isin\"" + ":")
+			s.Isin.Encode(e)
+		}
+	}
+	{
+		if s.MinPriceIncrement.Set {
+			e.Comma()
+		}
+		if s.MinPriceIncrement.Set {
+			e.RawStr("\"minPriceIncrement\"" + ":")
+			s.MinPriceIncrement.Encode(e)
+		}
+	}
+	{
 		e.Comma()
-	}
-	if s.Isin.Set {
-		e.RawStr("\"isin\"" + ":")
-		s.Isin.Encode(e)
-	}
 
-	if s.MinPriceIncrement.Set {
+		e.RawStr("\"lot\"" + ":")
+		e.Int32(s.Lot)
+	}
+	{
+		if s.Currency.Set {
+			e.Comma()
+		}
+		if s.Currency.Set {
+			e.RawStr("\"currency\"" + ":")
+			s.Currency.Encode(e)
+		}
+	}
+	{
 		e.Comma()
+
+		e.RawStr("\"name\"" + ":")
+		e.Str(s.Name)
 	}
-	if s.MinPriceIncrement.Set {
-		e.RawStr("\"minPriceIncrement\"" + ":")
-		s.MinPriceIncrement.Encode(e)
-	}
-
-	e.Comma()
-
-	e.RawStr("\"lot\"" + ":")
-	e.Int32(s.Lot)
-
-	if s.Currency.Set {
+	{
 		e.Comma()
+
+		e.RawStr("\"type\"" + ":")
+		s.Type.Encode(e)
 	}
-	if s.Currency.Set {
-		e.RawStr("\"currency\"" + ":")
-		s.Currency.Encode(e)
-	}
-
-	e.Comma()
-
-	e.RawStr("\"name\"" + ":")
-	e.Str(s.Name)
-
-	e.Comma()
-
-	e.RawStr("\"type\"" + ":")
-	s.Type.Encode(e)
 	e.ObjEnd()
 }
 
@@ -3550,24 +3697,27 @@ func (s SearchMarketInstrumentResponse) Encode(e *jx.Writer) {
 		first = true
 		_     = first
 	)
+	{
+		if !first {
+			e.Comma()
+		}
+		first = false
 
-	if !first {
-		e.Comma()
+		e.RawStr("\"trackingId\"" + ":")
+		e.Str(s.TrackingId)
 	}
-	first = false
+	{
+		e.Comma()
 
-	e.RawStr("\"trackingId\"" + ":")
-	e.Str(s.TrackingId)
+		e.RawStr("\"status\"" + ":")
+		e.Str(s.Status)
+	}
+	{
+		e.Comma()
 
-	e.Comma()
-
-	e.RawStr("\"status\"" + ":")
-	e.Str(s.Status)
-
-	e.Comma()
-
-	e.RawStr("\"payload\"" + ":")
-	s.Payload.Encode(e)
+		e.RawStr("\"payload\"" + ":")
+		s.Payload.Encode(e)
+	}
 	e.ObjEnd()
 }
 
@@ -3635,20 +3785,21 @@ func (s UserAccount) Encode(e *jx.Writer) {
 		first = true
 		_     = first
 	)
+	{
+		if !first {
+			e.Comma()
+		}
+		first = false
 
-	if !first {
-
-		e.Comma()
+		e.RawStr("\"brokerAccountType\"" + ":")
+		s.BrokerAccountType.Encode(e)
 	}
-	first = false
+	{
+		e.Comma()
 
-	e.RawStr("\"brokerAccountType\"" + ":")
-	s.BrokerAccountType.Encode(e)
-
-	e.Comma()
-
-	e.RawStr("\"brokerAccountId\"" + ":")
-	e.Str(s.BrokerAccountId)
+		e.RawStr("\"brokerAccountId\"" + ":")
+		e.Str(s.BrokerAccountId)
+	}
 	e.ObjEnd()
 }
 
@@ -3683,27 +3834,27 @@ func (s UserAccounts) Encode(e *jx.Writer) {
 		first = true
 		_     = first
 	)
-
-	if !first {
-
-		e.Comma()
-	}
-	first = false
-
-	e.RawStr("\"accounts\"" + ":")
-	e.ArrStart()
-	if len(s.Accounts) >= 1 {
-		// Encode first element without comma.
-		{
-			elem := s.Accounts[0]
-			elem.Encode(e)
-		}
-		for _, elem := range s.Accounts[1:] {
+	{
+		if !first {
 			e.Comma()
-			elem.Encode(e)
 		}
+		first = false
+
+		e.RawStr("\"accounts\"" + ":")
+		e.ArrStart()
+		if len(s.Accounts) >= 1 {
+			// Encode first element without comma.
+			{
+				elem := s.Accounts[0]
+				elem.Encode(e)
+			}
+			for _, elem := range s.Accounts[1:] {
+				e.Comma()
+				elem.Encode(e)
+			}
+		}
+		e.ArrEnd()
 	}
-	e.ArrEnd()
 	e.ObjEnd()
 }
 
@@ -3740,24 +3891,27 @@ func (s UserAccountsResponse) Encode(e *jx.Writer) {
 		first = true
 		_     = first
 	)
+	{
+		if !first {
+			e.Comma()
+		}
+		first = false
 
-	if !first {
-		e.Comma()
+		e.RawStr("\"trackingId\"" + ":")
+		e.Str(s.TrackingId)
 	}
-	first = false
+	{
+		e.Comma()
 
-	e.RawStr("\"trackingId\"" + ":")
-	e.Str(s.TrackingId)
+		e.RawStr("\"status\"" + ":")
+		e.Str(s.Status)
+	}
+	{
+		e.Comma()
 
-	e.Comma()
-
-	e.RawStr("\"status\"" + ":")
-	e.Str(s.Status)
-
-	e.Comma()
-
-	e.RawStr("\"payload\"" + ":")
-	s.Payload.Encode(e)
+		e.RawStr("\"payload\"" + ":")
+		s.Payload.Encode(e)
+	}
 	e.ObjEnd()
 }
 

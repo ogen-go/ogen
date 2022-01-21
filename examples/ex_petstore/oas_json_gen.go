@@ -93,19 +93,21 @@ func (s Error) Encode(e *jx.Writer) {
 		first = true
 		_     = first
 	)
+	{
+		if !first {
+			e.Comma()
+		}
+		first = false
 
-	if !first {
-		e.Comma()
+		e.RawStr("\"code\"" + ":")
+		e.Int32(s.Code)
 	}
-	first = false
+	{
+		e.Comma()
 
-	e.RawStr("\"code\"" + ":")
-	e.Int32(s.Code)
-
-	e.Comma()
-
-	e.RawStr("\"message\"" + ":")
-	e.Str(s.Message)
+		e.RawStr("\"message\"" + ":")
+		e.Str(s.Message)
+	}
 	e.ObjEnd()
 }
 
@@ -214,26 +216,29 @@ func (s Pet) Encode(e *jx.Writer) {
 		first = true
 		_     = first
 	)
+	{
+		if !first {
+			e.Comma()
+		}
+		first = false
 
-	if !first {
-		e.Comma()
+		e.RawStr("\"id\"" + ":")
+		e.Int64(s.ID)
 	}
-	first = false
-
-	e.RawStr("\"id\"" + ":")
-	e.Int64(s.ID)
-
-	e.Comma()
-
-	e.RawStr("\"name\"" + ":")
-	e.Str(s.Name)
-
-	if s.Tag.Set {
+	{
 		e.Comma()
+
+		e.RawStr("\"name\"" + ":")
+		e.Str(s.Name)
 	}
-	if s.Tag.Set {
-		e.RawStr("\"tag\"" + ":")
-		s.Tag.Encode(e)
+	{
+		if s.Tag.Set {
+			e.Comma()
+		}
+		if s.Tag.Set {
+			e.RawStr("\"tag\"" + ":")
+			s.Tag.Encode(e)
+		}
 	}
 	e.ObjEnd()
 }

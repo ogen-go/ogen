@@ -69,40 +69,45 @@ func (s Data) Encode(e *jx.Writer) {
 		first = true
 		_     = first
 	)
+	{
+		if !first {
+			e.Comma()
+		}
+		first = false
 
-	if !first {
-
-		e.Comma()
+		e.RawStr("\"id\"" + ":")
+		s.ID.Encode(e)
 	}
-	first = false
+	{
+		e.Comma()
 
-	e.RawStr("\"id\"" + ":")
-	s.ID.Encode(e)
+		e.RawStr("\"description\"" + ":")
+		s.Description.Encode(e)
+	}
+	{
+		e.Comma()
 
-	e.Comma()
+		e.RawStr("\"email\"" + ":")
+		e.Str(s.Email)
+	}
+	{
+		e.Comma()
 
-	e.RawStr("\"description\"" + ":")
-	s.Description.Encode(e)
+		e.RawStr("\"hostname\"" + ":")
+		e.Str(s.Hostname)
+	}
+	{
+		e.Comma()
 
-	e.Comma()
+		e.RawStr("\"format\"" + ":")
+		e.Str(s.Format)
+	}
+	{
+		e.Comma()
 
-	e.RawStr("\"email\"" + ":")
-	e.Str(s.Email)
-
-	e.Comma()
-
-	e.RawStr("\"hostname\"" + ":")
-	e.Str(s.Hostname)
-
-	e.Comma()
-
-	e.RawStr("\"format\"" + ":")
-	e.Str(s.Format)
-
-	e.Comma()
-
-	e.RawStr("\"base64\"" + ":")
-	e.Base64(s.Base64)
+		e.RawStr("\"base64\"" + ":")
+		e.Base64(s.Base64)
+	}
 	e.ObjEnd()
 }
 
@@ -218,19 +223,21 @@ func (s DescriptionDetailed) Encode(e *jx.Writer) {
 		first = true
 		_     = first
 	)
+	{
+		if !first {
+			e.Comma()
+		}
+		first = false
 
-	if !first {
-		e.Comma()
+		e.RawStr("\"name\"" + ":")
+		e.Str(s.Name)
 	}
-	first = false
+	{
+		e.Comma()
 
-	e.RawStr("\"name\"" + ":")
-	e.Str(s.Name)
-
-	e.Comma()
-
-	e.RawStr("\"count\"" + ":")
-	e.Int(s.Count)
+		e.RawStr("\"count\"" + ":")
+		e.Int(s.Count)
+	}
 	e.ObjEnd()
 }
 
@@ -267,14 +274,15 @@ func (s DescriptionSimple) Encode(e *jx.Writer) {
 		first = true
 		_     = first
 	)
+	{
+		if !first {
+			e.Comma()
+		}
+		first = false
 
-	if !first {
-		e.Comma()
+		e.RawStr("\"description\"" + ":")
+		e.Str(s.Description)
 	}
-	first = false
-
-	e.RawStr("\"description\"" + ":")
-	e.Str(s.Description)
 	e.ObjEnd()
 }
 
@@ -305,19 +313,21 @@ func (s Error) Encode(e *jx.Writer) {
 		first = true
 		_     = first
 	)
+	{
+		if !first {
+			e.Comma()
+		}
+		first = false
 
-	if !first {
-		e.Comma()
+		e.RawStr("\"code\"" + ":")
+		e.Int64(s.Code)
 	}
-	first = false
+	{
+		e.Comma()
 
-	e.RawStr("\"code\"" + ":")
-	e.Int64(s.Code)
-
-	e.Comma()
-
-	e.RawStr("\"message\"" + ":")
-	e.Str(s.Message)
+		e.RawStr("\"message\"" + ":")
+		e.Str(s.Message)
+	}
 	e.ObjEnd()
 }
 
@@ -426,19 +436,21 @@ func (s Hash) Encode(e *jx.Writer) {
 		first = true
 		_     = first
 	)
+	{
+		if !first {
+			e.Comma()
+		}
+		first = false
 
-	if !first {
-		e.Comma()
+		e.RawStr("\"raw\"" + ":")
+		e.Base64(s.Raw)
 	}
-	first = false
+	{
+		e.Comma()
 
-	e.RawStr("\"raw\"" + ":")
-	e.Base64(s.Raw)
-
-	e.Comma()
-
-	e.RawStr("\"hex\"" + ":")
-	e.Str(s.Hex)
+		e.RawStr("\"hex\"" + ":")
+		e.Str(s.Hex)
+	}
 	e.ObjEnd()
 }
 
@@ -838,218 +850,242 @@ func (s Pet) Encode(e *jx.Writer) {
 		first = true
 		_     = first
 	)
-
-	if s.Primary != nil {
+	{
+		if s.Primary != nil {
+			if !first {
+				e.Comma()
+			}
+			first = false
+		}
+		if s.Primary != nil {
+			e.RawStr("\"primary\"" + ":")
+			s.Primary.Encode(e)
+		}
+	}
+	{
 		if !first {
 			e.Comma()
 		}
 		first = false
-	}
-	if s.Primary != nil {
-		e.RawStr("\"primary\"" + ":")
-		s.Primary.Encode(e)
-	}
 
-	if !first {
+		e.RawStr("\"id\"" + ":")
+		e.Int64(s.ID)
+	}
+	{
 		e.Comma()
+
+		e.RawStr("\"unique_id\"" + ":")
+		json.EncodeUUID(e, s.UniqueID)
 	}
-	first = false
-
-	e.RawStr("\"id\"" + ":")
-	e.Int64(s.ID)
-
-	e.Comma()
-
-	e.RawStr("\"unique_id\"" + ":")
-	json.EncodeUUID(e, s.UniqueID)
-
-	e.Comma()
-
-	e.RawStr("\"name\"" + ":")
-	e.Str(s.Name)
-
-	if s.Type.Set {
+	{
 		e.Comma()
+
+		e.RawStr("\"name\"" + ":")
+		e.Str(s.Name)
 	}
-	if s.Type.Set {
-		e.RawStr("\"type\"" + ":")
-		s.Type.Encode(e)
-	}
-
-	e.Comma()
-
-	e.RawStr("\"kind\"" + ":")
-	s.Kind.Encode(e)
-
-	if s.Tag.Set {
-		e.Comma()
-	}
-	if s.Tag.Set {
-		e.RawStr("\"tag\"" + ":")
-		s.Tag.Encode(e)
-	}
-
-	e.Comma()
-
-	e.RawStr("\"ip\"" + ":")
-	json.EncodeIP(e, s.IP)
-
-	e.Comma()
-
-	e.RawStr("\"ip_v4\"" + ":")
-	json.EncodeIP(e, s.IPV4)
-
-	e.Comma()
-
-	e.RawStr("\"ip_v6\"" + ":")
-	json.EncodeIP(e, s.IPV6)
-
-	e.Comma()
-
-	e.RawStr("\"uri\"" + ":")
-	json.EncodeURI(e, s.URI)
-
-	e.Comma()
-
-	e.RawStr("\"birthday\"" + ":")
-	json.EncodeDate(e, s.Birthday)
-
-	e.Comma()
-
-	e.RawStr("\"rate\"" + ":")
-	json.EncodeDuration(e, s.Rate)
-
-	e.Comma()
-
-	e.RawStr("\"nickname\"" + ":")
-	s.Nickname.Encode(e)
-
-	if s.NullStr.Set {
-		e.Comma()
-	}
-	if s.NullStr.Set {
-		e.RawStr("\"nullStr\"" + ":")
-		s.NullStr.Encode(e)
-	}
-
-	if s.Friends != nil {
-		e.Comma()
-	}
-	if s.Friends != nil {
-		e.RawStr("\"friends\"" + ":")
-		e.ArrStart()
-		if len(s.Friends) >= 1 {
-			// Encode first element without comma.
-			{
-				elem := s.Friends[0]
-				elem.Encode(e)
-			}
-			for _, elem := range s.Friends[1:] {
-				e.Comma()
-				elem.Encode(e)
-			}
+	{
+		if s.Type.Set {
+			e.Comma()
 		}
-		e.ArrEnd()
-	}
-
-	if s.Next.Set {
-		e.Comma()
-	}
-	if s.Next.Set {
-		e.RawStr("\"next\"" + ":")
-		s.Next.Encode(e)
-	}
-
-	if s.TestInteger1.Set {
-		e.Comma()
-	}
-	if s.TestInteger1.Set {
-		e.RawStr("\"testInteger1\"" + ":")
-		s.TestInteger1.Encode(e)
-	}
-
-	if s.TestFloat1.Set {
-		e.Comma()
-	}
-	if s.TestFloat1.Set {
-		e.RawStr("\"testFloat1\"" + ":")
-		s.TestFloat1.Encode(e)
-	}
-
-	if s.TestArray1 != nil {
-		e.Comma()
-	}
-	if s.TestArray1 != nil {
-		e.RawStr("\"testArray1\"" + ":")
-		e.ArrStart()
-		if len(s.TestArray1) >= 1 {
-			// Encode first element without comma.
-			{
-				elem := s.TestArray1[0]
-				e.ArrStart()
-				if len(elem) >= 1 {
-					// Encode first element without comma.
-					{
-						elem := elem[0]
-						e.Str(elem)
-					}
-					for _, elem := range elem[1:] {
-						e.Comma()
-						e.Str(elem)
-					}
-				}
-				e.ArrEnd()
-			}
-			for _, elem := range s.TestArray1[1:] {
-				e.Comma()
-				e.ArrStart()
-				if len(elem) >= 1 {
-					// Encode first element without comma.
-					{
-						elem := elem[0]
-						e.Str(elem)
-					}
-					for _, elem := range elem[1:] {
-						e.Comma()
-						e.Str(elem)
-					}
-				}
-				e.ArrEnd()
-			}
+		if s.Type.Set {
+			e.RawStr("\"type\"" + ":")
+			s.Type.Encode(e)
 		}
-		e.ArrEnd()
 	}
-
-	if s.TestDate.Set {
+	{
 		e.Comma()
-	}
-	if s.TestDate.Set {
-		e.RawStr("\"testDate\"" + ":")
-		s.TestDate.Encode(e, json.EncodeDate)
-	}
 
-	if s.TestDuration.Set {
+		e.RawStr("\"kind\"" + ":")
+		s.Kind.Encode(e)
+	}
+	{
+		if s.Tag.Set {
+			e.Comma()
+		}
+		if s.Tag.Set {
+			e.RawStr("\"tag\"" + ":")
+			s.Tag.Encode(e)
+		}
+	}
+	{
 		e.Comma()
-	}
-	if s.TestDuration.Set {
-		e.RawStr("\"testDuration\"" + ":")
-		s.TestDuration.Encode(e)
-	}
 
-	if s.TestTime.Set {
+		e.RawStr("\"ip\"" + ":")
+		json.EncodeIP(e, s.IP)
+	}
+	{
 		e.Comma()
-	}
-	if s.TestTime.Set {
-		e.RawStr("\"testTime\"" + ":")
-		s.TestTime.Encode(e, json.EncodeTime)
-	}
 
-	if s.TestDateTime.Set {
-		e.Comma()
+		e.RawStr("\"ip_v4\"" + ":")
+		json.EncodeIP(e, s.IPV4)
 	}
-	if s.TestDateTime.Set {
-		e.RawStr("\"testDateTime\"" + ":")
-		s.TestDateTime.Encode(e, json.EncodeDateTime)
+	{
+		e.Comma()
+
+		e.RawStr("\"ip_v6\"" + ":")
+		json.EncodeIP(e, s.IPV6)
+	}
+	{
+		e.Comma()
+
+		e.RawStr("\"uri\"" + ":")
+		json.EncodeURI(e, s.URI)
+	}
+	{
+		e.Comma()
+
+		e.RawStr("\"birthday\"" + ":")
+		json.EncodeDate(e, s.Birthday)
+	}
+	{
+		e.Comma()
+
+		e.RawStr("\"rate\"" + ":")
+		json.EncodeDuration(e, s.Rate)
+	}
+	{
+		e.Comma()
+
+		e.RawStr("\"nickname\"" + ":")
+		s.Nickname.Encode(e)
+	}
+	{
+		if s.NullStr.Set {
+			e.Comma()
+		}
+		if s.NullStr.Set {
+			e.RawStr("\"nullStr\"" + ":")
+			s.NullStr.Encode(e)
+		}
+	}
+	{
+		if s.Friends != nil {
+			e.Comma()
+		}
+		if s.Friends != nil {
+			e.RawStr("\"friends\"" + ":")
+			e.ArrStart()
+			if len(s.Friends) >= 1 {
+				// Encode first element without comma.
+				{
+					elem := s.Friends[0]
+					elem.Encode(e)
+				}
+				for _, elem := range s.Friends[1:] {
+					e.Comma()
+					elem.Encode(e)
+				}
+			}
+			e.ArrEnd()
+		}
+	}
+	{
+		if s.Next.Set {
+			e.Comma()
+		}
+		if s.Next.Set {
+			e.RawStr("\"next\"" + ":")
+			s.Next.Encode(e)
+		}
+	}
+	{
+		if s.TestInteger1.Set {
+			e.Comma()
+		}
+		if s.TestInteger1.Set {
+			e.RawStr("\"testInteger1\"" + ":")
+			s.TestInteger1.Encode(e)
+		}
+	}
+	{
+		if s.TestFloat1.Set {
+			e.Comma()
+		}
+		if s.TestFloat1.Set {
+			e.RawStr("\"testFloat1\"" + ":")
+			s.TestFloat1.Encode(e)
+		}
+	}
+	{
+		if s.TestArray1 != nil {
+			e.Comma()
+		}
+		if s.TestArray1 != nil {
+			e.RawStr("\"testArray1\"" + ":")
+			e.ArrStart()
+			if len(s.TestArray1) >= 1 {
+				// Encode first element without comma.
+				{
+					elem := s.TestArray1[0]
+					e.ArrStart()
+					if len(elem) >= 1 {
+						// Encode first element without comma.
+						{
+							elem := elem[0]
+							e.Str(elem)
+						}
+						for _, elem := range elem[1:] {
+							e.Comma()
+							e.Str(elem)
+						}
+					}
+					e.ArrEnd()
+				}
+				for _, elem := range s.TestArray1[1:] {
+					e.Comma()
+					e.ArrStart()
+					if len(elem) >= 1 {
+						// Encode first element without comma.
+						{
+							elem := elem[0]
+							e.Str(elem)
+						}
+						for _, elem := range elem[1:] {
+							e.Comma()
+							e.Str(elem)
+						}
+					}
+					e.ArrEnd()
+				}
+			}
+			e.ArrEnd()
+		}
+	}
+	{
+		if s.TestDate.Set {
+			e.Comma()
+		}
+		if s.TestDate.Set {
+			e.RawStr("\"testDate\"" + ":")
+			s.TestDate.Encode(e, json.EncodeDate)
+		}
+	}
+	{
+		if s.TestDuration.Set {
+			e.Comma()
+		}
+		if s.TestDuration.Set {
+			e.RawStr("\"testDuration\"" + ":")
+			s.TestDuration.Encode(e)
+		}
+	}
+	{
+		if s.TestTime.Set {
+			e.Comma()
+		}
+		if s.TestTime.Set {
+			e.RawStr("\"testTime\"" + ":")
+			s.TestTime.Encode(e, json.EncodeTime)
+		}
+	}
+	{
+		if s.TestDateTime.Set {
+			e.Comma()
+		}
+		if s.TestDateTime.Set {
+			e.RawStr("\"testDateTime\"" + ":")
+			s.TestDateTime.Encode(e, json.EncodeDateTime)
+		}
 	}
 	e.ObjEnd()
 }
@@ -1228,14 +1264,15 @@ func (s PetGetDef) Encode(e *jx.Writer) {
 		first = true
 		_     = first
 	)
+	{
+		if !first {
+			e.Comma()
+		}
+		first = false
 
-	if !first {
-		e.Comma()
+		e.RawStr("\"message\"" + ":")
+		e.Str(s.Message)
 	}
-	first = false
-
-	e.RawStr("\"message\"" + ":")
-	e.Str(s.Message)
 	e.ObjEnd()
 }
 
