@@ -64,6 +64,8 @@ func TestJSONGenerics(t *testing.T) {
 			Value:  api.OptNilString{Null: true, Set: true},
 		},
 	} {
+		// Make range value copy to prevent data races.
+		tc := tc
 		t.Run(tc.Name, func(t *testing.T) {
 			t.Parallel()
 
@@ -79,7 +81,6 @@ func TestJSONGenerics(t *testing.T) {
 
 func TestJSONExample(t *testing.T) {
 	t.Parallel()
-
 	date := time.Date(2011, 10, 10, 7, 12, 34, 4125, time.UTC)
 	pet := api.Pet{
 		Friends:  []api.Pet{},
@@ -116,8 +117,37 @@ func TestJSONExample(t *testing.T) {
 			ID: api.NewIntID(10),
 		}),
 	}
-	t.Logf("%s", json.Encode(pet))
-	require.True(t, jx.Valid(json.Encode(pet)), "invalid json")
+
+	for _, tc := range []struct {
+		Name  string
+		Value interface {
+			json.Marshaler
+			json.Unmarshaler
+		}
+	}{
+		{
+			Name:  "Pet",
+			Value: &pet,
+		},
+		{
+			Name: "PetWithPrimary",
+			Value: func(input api.Pet) (r *api.Pet) {
+				cp := input
+				r = &input
+				r.Primary = &cp
+				return r
+			}(pet),
+		},
+	} {
+		// Make range value copy to prevent data races.
+		tc := tc
+		t.Run(tc.Name, func(t *testing.T) {
+			encode := json.Encode(tc.Value)
+			t.Logf("%s", encode)
+			require.True(t, jx.Valid(encode), "invalid json")
+		})
+	}
+
 }
 
 func TestTechEmpowerJSON(t *testing.T) {
