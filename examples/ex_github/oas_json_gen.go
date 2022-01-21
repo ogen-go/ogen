@@ -65,15 +65,28 @@ var (
 // Encode implements json.Marshaler.
 func (s APIOverview) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"verifiable_password_authentication\"" + ":")
 	e.Bool(s.VerifiablePasswordAuthentication)
-	e.Comma()
+
+	if s.SSHKeyFingerprints.Set {
+		e.Comma()
+	}
 	if s.SSHKeyFingerprints.Set {
 		e.RawStr("\"ssh_key_fingerprints\"" + ":")
 		s.SSHKeyFingerprints.Encode(e)
 	}
-	if s.SSHKeyFingerprints.Set {
+
+	if s.Hooks != nil {
 		e.Comma()
 	}
 	if s.Hooks != nil {
@@ -92,7 +105,8 @@ func (s APIOverview) Encode(e *jx.Writer) {
 		}
 		e.ArrEnd()
 	}
-	if s.Hooks != nil {
+
+	if s.Web != nil {
 		e.Comma()
 	}
 	if s.Web != nil {
@@ -111,7 +125,8 @@ func (s APIOverview) Encode(e *jx.Writer) {
 		}
 		e.ArrEnd()
 	}
-	if s.Web != nil {
+
+	if s.API != nil {
 		e.Comma()
 	}
 	if s.API != nil {
@@ -130,7 +145,8 @@ func (s APIOverview) Encode(e *jx.Writer) {
 		}
 		e.ArrEnd()
 	}
-	if s.API != nil {
+
+	if s.Git != nil {
 		e.Comma()
 	}
 	if s.Git != nil {
@@ -149,7 +165,8 @@ func (s APIOverview) Encode(e *jx.Writer) {
 		}
 		e.ArrEnd()
 	}
-	if s.Git != nil {
+
+	if s.Packages != nil {
 		e.Comma()
 	}
 	if s.Packages != nil {
@@ -168,7 +185,8 @@ func (s APIOverview) Encode(e *jx.Writer) {
 		}
 		e.ArrEnd()
 	}
-	if s.Packages != nil {
+
+	if s.Pages != nil {
 		e.Comma()
 	}
 	if s.Pages != nil {
@@ -187,7 +205,8 @@ func (s APIOverview) Encode(e *jx.Writer) {
 		}
 		e.ArrEnd()
 	}
-	if s.Pages != nil {
+
+	if s.Importer != nil {
 		e.Comma()
 	}
 	if s.Importer != nil {
@@ -206,7 +225,8 @@ func (s APIOverview) Encode(e *jx.Writer) {
 		}
 		e.ArrEnd()
 	}
-	if s.Importer != nil {
+
+	if s.Actions != nil {
 		e.Comma()
 	}
 	if s.Actions != nil {
@@ -225,7 +245,8 @@ func (s APIOverview) Encode(e *jx.Writer) {
 		}
 		e.ArrEnd()
 	}
-	if s.Actions != nil {
+
+	if s.Dependabot != nil {
 		e.Comma()
 	}
 	if s.Dependabot != nil {
@@ -243,10 +264,6 @@ func (s APIOverview) Encode(e *jx.Writer) {
 			}
 		}
 		e.ArrEnd()
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -405,34 +422,53 @@ func (s *APIOverview) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s APIOverviewSSHKeyFingerprints) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.SHA256RSA.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.SHA256RSA.Set {
 		e.RawStr("\"SHA256_RSA\"" + ":")
 		s.SHA256RSA.Encode(e)
 	}
-	if s.SHA256RSA.Set {
-		e.Comma()
+
+	if s.SHA256DSA.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.SHA256DSA.Set {
 		e.RawStr("\"SHA256_DSA\"" + ":")
 		s.SHA256DSA.Encode(e)
 	}
-	if s.SHA256DSA.Set {
-		e.Comma()
+
+	if s.SHA256ECDSA.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.SHA256ECDSA.Set {
 		e.RawStr("\"SHA256_ECDSA\"" + ":")
 		s.SHA256ECDSA.Encode(e)
 	}
-	if s.SHA256ECDSA.Set {
-		e.Comma()
+
+	if s.SHA256ED25519.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.SHA256ED25519.Set {
 		e.RawStr("\"SHA256_ED25519\"" + ":")
 		s.SHA256ED25519.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -474,10 +510,10 @@ func (s *APIOverviewSSHKeyFingerprints) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s Accepted) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -498,10 +534,10 @@ func (s *Accepted) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s ActionsAddRepoAccessToSelfHostedRunnerGroupInOrgNoContent) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -522,10 +558,10 @@ func (s *ActionsAddRepoAccessToSelfHostedRunnerGroupInOrgNoContent) Decode(d *jx
 // Encode implements json.Marshaler.
 func (s ActionsAddSelectedRepoToOrgSecretConflict) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -546,10 +582,10 @@ func (s *ActionsAddSelectedRepoToOrgSecretConflict) Decode(d *jx.Decoder) error 
 // Encode implements json.Marshaler.
 func (s ActionsAddSelectedRepoToOrgSecretNoContent) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -570,10 +606,10 @@ func (s *ActionsAddSelectedRepoToOrgSecretNoContent) Decode(d *jx.Decoder) error
 // Encode implements json.Marshaler.
 func (s ActionsAddSelfHostedRunnerToGroupForOrgNoContent) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -642,25 +678,33 @@ func (s *ActionsApproveWorkflowRunApplicationJSONNotFound) Decode(d *jx.Decoder)
 // Encode implements json.Marshaler.
 func (s ActionsBillingUsage) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"total_minutes_used\"" + ":")
 	e.Int(s.TotalMinutesUsed)
+
 	e.Comma()
 
 	e.RawStr("\"total_paid_minutes_used\"" + ":")
 	e.Int(s.TotalPaidMinutesUsed)
+
 	e.Comma()
 
 	e.RawStr("\"included_minutes\"" + ":")
 	e.Int(s.IncludedMinutes)
+
 	e.Comma()
 
 	e.RawStr("\"minutes_used_breakdown\"" + ":")
 	s.MinutesUsedBreakdown.Encode(e)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -703,27 +747,42 @@ func (s *ActionsBillingUsage) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s ActionsBillingUsageMinutesUsedBreakdown) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.UBUNTU.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.UBUNTU.Set {
 		e.RawStr("\"UBUNTU\"" + ":")
 		s.UBUNTU.Encode(e)
 	}
-	if s.UBUNTU.Set {
-		e.Comma()
+
+	if s.MACOS.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.MACOS.Set {
 		e.RawStr("\"MACOS\"" + ":")
 		s.MACOS.Encode(e)
 	}
-	if s.MACOS.Set {
-		e.Comma()
+
+	if s.WINDOWS.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.WINDOWS.Set {
 		e.RawStr("\"WINDOWS\"" + ":")
 		s.WINDOWS.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -760,10 +819,10 @@ func (s *ActionsBillingUsageMinutesUsedBreakdown) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s ActionsCancelWorkflowRunAccepted) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -784,10 +843,10 @@ func (s *ActionsCancelWorkflowRunAccepted) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s ActionsCreateOrUpdateEnvironmentSecretNoContent) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -808,17 +867,23 @@ func (s *ActionsCreateOrUpdateEnvironmentSecretNoContent) Decode(d *jx.Decoder) 
 // Encode implements json.Marshaler.
 func (s ActionsCreateOrUpdateEnvironmentSecretReq) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"encrypted_value\"" + ":")
 	e.Str(s.EncryptedValue)
+
 	e.Comma()
 
 	e.RawStr("\"key_id\"" + ":")
 	e.Str(s.KeyID)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -851,10 +916,10 @@ func (s *ActionsCreateOrUpdateEnvironmentSecretReq) Decode(d *jx.Decoder) error 
 // Encode implements json.Marshaler.
 func (s ActionsCreateOrUpdateOrgSecretNoContent) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -875,25 +940,45 @@ func (s *ActionsCreateOrUpdateOrgSecretNoContent) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s ActionsCreateOrUpdateOrgSecretReq) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.EncryptedValue.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.EncryptedValue.Set {
 		e.RawStr("\"encrypted_value\"" + ":")
 		s.EncryptedValue.Encode(e)
 	}
-	if s.EncryptedValue.Set {
-		e.Comma()
+
+	if s.KeyID.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.KeyID.Set {
 		e.RawStr("\"key_id\"" + ":")
 		s.KeyID.Encode(e)
 	}
-	if s.KeyID.Set {
+
+	if !first {
+
 		e.Comma()
 	}
+	first = false
 
 	e.RawStr("\"visibility\"" + ":")
 	s.Visibility.Encode(e)
 
-	e.Comma()
+	if s.SelectedRepositoryIds != nil {
+		e.Comma()
+	}
 	if s.SelectedRepositoryIds != nil {
 		e.RawStr("\"selected_repository_ids\"" + ":")
 		e.ArrStart()
@@ -909,10 +994,6 @@ func (s ActionsCreateOrUpdateOrgSecretReq) Encode(e *jx.Writer) {
 			}
 		}
 		e.ArrEnd()
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -991,10 +1072,10 @@ func (s *ActionsCreateOrUpdateOrgSecretReqVisibility) Decode(d *jx.Decoder) erro
 // Encode implements json.Marshaler.
 func (s ActionsCreateOrUpdateRepoSecretCreated) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -1015,10 +1096,10 @@ func (s *ActionsCreateOrUpdateRepoSecretCreated) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s ActionsCreateOrUpdateRepoSecretNoContent) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -1039,20 +1120,31 @@ func (s *ActionsCreateOrUpdateRepoSecretNoContent) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s ActionsCreateOrUpdateRepoSecretReq) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.EncryptedValue.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.EncryptedValue.Set {
 		e.RawStr("\"encrypted_value\"" + ":")
 		s.EncryptedValue.Encode(e)
 	}
-	if s.EncryptedValue.Set {
-		e.Comma()
+
+	if s.KeyID.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.KeyID.Set {
 		e.RawStr("\"key_id\"" + ":")
 		s.KeyID.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -1084,15 +1176,28 @@ func (s *ActionsCreateOrUpdateRepoSecretReq) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s ActionsCreateSelfHostedRunnerGroupForOrgReq) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"name\"" + ":")
 	e.Str(s.Name)
-	e.Comma()
+
+	if s.Visibility.Set {
+		e.Comma()
+	}
 	if s.Visibility.Set {
 		e.RawStr("\"visibility\"" + ":")
 		s.Visibility.Encode(e)
 	}
-	if s.Visibility.Set {
+
+	if s.SelectedRepositoryIds != nil {
 		e.Comma()
 	}
 	if s.SelectedRepositoryIds != nil {
@@ -1111,7 +1216,8 @@ func (s ActionsCreateSelfHostedRunnerGroupForOrgReq) Encode(e *jx.Writer) {
 		}
 		e.ArrEnd()
 	}
-	if s.SelectedRepositoryIds != nil {
+
+	if s.Runners != nil {
 		e.Comma()
 	}
 	if s.Runners != nil {
@@ -1129,10 +1235,6 @@ func (s ActionsCreateSelfHostedRunnerGroupForOrgReq) Encode(e *jx.Writer) {
 			}
 		}
 		e.ArrEnd()
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -1259,10 +1361,10 @@ func (s *ActionsCreateWorkflowDispatchWorkflowID) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s ActionsDeleteArtifactNoContent) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -1283,10 +1385,10 @@ func (s *ActionsDeleteArtifactNoContent) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s ActionsDeleteEnvironmentSecretNoContent) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -1307,10 +1409,10 @@ func (s *ActionsDeleteEnvironmentSecretNoContent) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s ActionsDeleteOrgSecretNoContent) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -1331,10 +1433,10 @@ func (s *ActionsDeleteOrgSecretNoContent) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s ActionsDeleteRepoSecretNoContent) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -1355,10 +1457,10 @@ func (s *ActionsDeleteRepoSecretNoContent) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s ActionsDeleteSelfHostedRunnerFromOrgNoContent) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -1379,10 +1481,10 @@ func (s *ActionsDeleteSelfHostedRunnerFromOrgNoContent) Decode(d *jx.Decoder) er
 // Encode implements json.Marshaler.
 func (s ActionsDeleteSelfHostedRunnerFromRepoNoContent) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -1403,10 +1505,10 @@ func (s *ActionsDeleteSelfHostedRunnerFromRepoNoContent) Decode(d *jx.Decoder) e
 // Encode implements json.Marshaler.
 func (s ActionsDeleteSelfHostedRunnerGroupFromOrgNoContent) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -1427,10 +1529,10 @@ func (s *ActionsDeleteSelfHostedRunnerGroupFromOrgNoContent) Decode(d *jx.Decode
 // Encode implements json.Marshaler.
 func (s ActionsDeleteWorkflowRunLogsNoContent) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -1451,10 +1553,10 @@ func (s *ActionsDeleteWorkflowRunLogsNoContent) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s ActionsDeleteWorkflowRunNoContent) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -1475,10 +1577,10 @@ func (s *ActionsDeleteWorkflowRunNoContent) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s ActionsDisableSelectedRepositoryGithubActionsOrganizationNoContent) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -1536,10 +1638,10 @@ func (s *ActionsDisableWorkflowWorkflowID) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s ActionsDownloadArtifactFound) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -1560,10 +1662,10 @@ func (s *ActionsDownloadArtifactFound) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s ActionsDownloadJobLogsForWorkflowRunFound) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -1584,10 +1686,10 @@ func (s *ActionsDownloadJobLogsForWorkflowRunFound) Decode(d *jx.Decoder) error 
 // Encode implements json.Marshaler.
 func (s ActionsDownloadWorkflowRunLogsFound) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -1608,10 +1710,10 @@ func (s *ActionsDownloadWorkflowRunLogsFound) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s ActionsEnableSelectedRepositoryGithubActionsOrganizationNoContent) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -1695,32 +1797,42 @@ func (s *ActionsEnabled) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s ActionsEnterprisePermissions) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"enabled_organizations\"" + ":")
 	s.EnabledOrganizations.Encode(e)
 
-	e.Comma()
+	if s.SelectedOrganizationsURL.Set {
+		e.Comma()
+	}
 	if s.SelectedOrganizationsURL.Set {
 		e.RawStr("\"selected_organizations_url\"" + ":")
 		s.SelectedOrganizationsURL.Encode(e)
 	}
-	if s.SelectedOrganizationsURL.Set {
+
+	if s.AllowedActions.Set {
 		e.Comma()
 	}
 	if s.AllowedActions.Set {
 		e.RawStr("\"allowed_actions\"" + ":")
 		s.AllowedActions.Encode(e)
 	}
-	if s.AllowedActions.Set {
+
+	if s.SelectedActionsURL.Set {
 		e.Comma()
 	}
 	if s.SelectedActionsURL.Set {
 		e.RawStr("\"selected_actions_url\"" + ":")
 		s.SelectedActionsURL.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -1835,9 +1947,19 @@ func (s *ActionsGetWorkflowWorkflowID) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s ActionsListArtifactsForRepoOK) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"total_count\"" + ":")
 	e.Int(s.TotalCount)
+
 	e.Comma()
 
 	e.RawStr("\"artifacts\"" + ":")
@@ -1854,10 +1976,6 @@ func (s ActionsListArtifactsForRepoOK) Encode(e *jx.Writer) {
 		}
 	}
 	e.ArrEnd()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -1896,9 +2014,19 @@ func (s *ActionsListArtifactsForRepoOK) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s ActionsListEnvironmentSecretsOK) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"total_count\"" + ":")
 	e.Int(s.TotalCount)
+
 	e.Comma()
 
 	e.RawStr("\"secrets\"" + ":")
@@ -1915,10 +2043,6 @@ func (s ActionsListEnvironmentSecretsOK) Encode(e *jx.Writer) {
 		}
 	}
 	e.ArrEnd()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -1984,9 +2108,19 @@ func (s *ActionsListJobsForWorkflowRunFilter) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s ActionsListJobsForWorkflowRunOK) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"total_count\"" + ":")
 	e.Int(s.TotalCount)
+
 	e.Comma()
 
 	e.RawStr("\"jobs\"" + ":")
@@ -2003,10 +2137,6 @@ func (s ActionsListJobsForWorkflowRunOK) Encode(e *jx.Writer) {
 		}
 	}
 	e.ArrEnd()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -2045,9 +2175,19 @@ func (s *ActionsListJobsForWorkflowRunOK) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s ActionsListOrgSecretsOK) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"total_count\"" + ":")
 	e.Int(s.TotalCount)
+
 	e.Comma()
 
 	e.RawStr("\"secrets\"" + ":")
@@ -2064,10 +2204,6 @@ func (s ActionsListOrgSecretsOK) Encode(e *jx.Writer) {
 		}
 	}
 	e.ArrEnd()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -2106,9 +2242,19 @@ func (s *ActionsListOrgSecretsOK) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s ActionsListRepoAccessToSelfHostedRunnerGroupInOrgOK) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"total_count\"" + ":")
 	e.Float64(s.TotalCount)
+
 	e.Comma()
 
 	e.RawStr("\"repositories\"" + ":")
@@ -2125,10 +2271,6 @@ func (s ActionsListRepoAccessToSelfHostedRunnerGroupInOrgOK) Encode(e *jx.Writer
 		}
 	}
 	e.ArrEnd()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -2167,9 +2309,19 @@ func (s *ActionsListRepoAccessToSelfHostedRunnerGroupInOrgOK) Decode(d *jx.Decod
 // Encode implements json.Marshaler.
 func (s ActionsListRepoSecretsOK) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"total_count\"" + ":")
 	e.Int(s.TotalCount)
+
 	e.Comma()
 
 	e.RawStr("\"secrets\"" + ":")
@@ -2186,10 +2338,6 @@ func (s ActionsListRepoSecretsOK) Encode(e *jx.Writer) {
 		}
 	}
 	e.ArrEnd()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -2228,9 +2376,19 @@ func (s *ActionsListRepoSecretsOK) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s ActionsListRepoWorkflowsOK) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"total_count\"" + ":")
 	e.Int(s.TotalCount)
+
 	e.Comma()
 
 	e.RawStr("\"workflows\"" + ":")
@@ -2247,10 +2405,6 @@ func (s ActionsListRepoWorkflowsOK) Encode(e *jx.Writer) {
 		}
 	}
 	e.ArrEnd()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -2289,9 +2443,19 @@ func (s *ActionsListRepoWorkflowsOK) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s ActionsListSelectedReposForOrgSecretOK) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"total_count\"" + ":")
 	e.Int(s.TotalCount)
+
 	e.Comma()
 
 	e.RawStr("\"repositories\"" + ":")
@@ -2308,10 +2472,6 @@ func (s ActionsListSelectedReposForOrgSecretOK) Encode(e *jx.Writer) {
 		}
 	}
 	e.ArrEnd()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -2350,9 +2510,19 @@ func (s *ActionsListSelectedReposForOrgSecretOK) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s ActionsListSelectedRepositoriesEnabledGithubActionsOrganizationOK) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"total_count\"" + ":")
 	e.Float64(s.TotalCount)
+
 	e.Comma()
 
 	e.RawStr("\"repositories\"" + ":")
@@ -2369,10 +2539,6 @@ func (s ActionsListSelectedRepositoriesEnabledGithubActionsOrganizationOK) Encod
 		}
 	}
 	e.ArrEnd()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -2411,9 +2577,19 @@ func (s *ActionsListSelectedRepositoriesEnabledGithubActionsOrganizationOK) Deco
 // Encode implements json.Marshaler.
 func (s ActionsListSelfHostedRunnerGroupsForOrgOK) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"total_count\"" + ":")
 	e.Float64(s.TotalCount)
+
 	e.Comma()
 
 	e.RawStr("\"runner_groups\"" + ":")
@@ -2430,10 +2606,6 @@ func (s ActionsListSelfHostedRunnerGroupsForOrgOK) Encode(e *jx.Writer) {
 		}
 	}
 	e.ArrEnd()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -2472,9 +2644,19 @@ func (s *ActionsListSelfHostedRunnerGroupsForOrgOK) Decode(d *jx.Decoder) error 
 // Encode implements json.Marshaler.
 func (s ActionsListSelfHostedRunnersForOrgOK) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"total_count\"" + ":")
 	e.Int(s.TotalCount)
+
 	e.Comma()
 
 	e.RawStr("\"runners\"" + ":")
@@ -2491,10 +2673,6 @@ func (s ActionsListSelfHostedRunnersForOrgOK) Encode(e *jx.Writer) {
 		}
 	}
 	e.ArrEnd()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -2533,9 +2711,19 @@ func (s *ActionsListSelfHostedRunnersForOrgOK) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s ActionsListSelfHostedRunnersForRepoOK) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"total_count\"" + ":")
 	e.Int(s.TotalCount)
+
 	e.Comma()
 
 	e.RawStr("\"runners\"" + ":")
@@ -2552,10 +2740,6 @@ func (s ActionsListSelfHostedRunnersForRepoOK) Encode(e *jx.Writer) {
 		}
 	}
 	e.ArrEnd()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -2594,9 +2778,19 @@ func (s *ActionsListSelfHostedRunnersForRepoOK) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s ActionsListSelfHostedRunnersInGroupForOrgOK) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"total_count\"" + ":")
 	e.Float64(s.TotalCount)
+
 	e.Comma()
 
 	e.RawStr("\"runners\"" + ":")
@@ -2613,10 +2807,6 @@ func (s ActionsListSelfHostedRunnersInGroupForOrgOK) Encode(e *jx.Writer) {
 		}
 	}
 	e.ArrEnd()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -2655,9 +2845,19 @@ func (s *ActionsListSelfHostedRunnersInGroupForOrgOK) Decode(d *jx.Decoder) erro
 // Encode implements json.Marshaler.
 func (s ActionsListWorkflowRunArtifactsOK) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"total_count\"" + ":")
 	e.Int(s.TotalCount)
+
 	e.Comma()
 
 	e.RawStr("\"artifacts\"" + ":")
@@ -2674,10 +2874,6 @@ func (s ActionsListWorkflowRunArtifactsOK) Encode(e *jx.Writer) {
 		}
 	}
 	e.ArrEnd()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -2716,9 +2912,19 @@ func (s *ActionsListWorkflowRunArtifactsOK) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s ActionsListWorkflowRunsForRepoOK) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"total_count\"" + ":")
 	e.Int(s.TotalCount)
+
 	e.Comma()
 
 	e.RawStr("\"workflow_runs\"" + ":")
@@ -2735,10 +2941,6 @@ func (s ActionsListWorkflowRunsForRepoOK) Encode(e *jx.Writer) {
 		}
 	}
 	e.ArrEnd()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -2863,32 +3065,42 @@ func (s *ActionsListWorkflowRunsWorkflowID) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s ActionsOrganizationPermissions) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"enabled_repositories\"" + ":")
 	s.EnabledRepositories.Encode(e)
 
-	e.Comma()
+	if s.SelectedRepositoriesURL.Set {
+		e.Comma()
+	}
 	if s.SelectedRepositoriesURL.Set {
 		e.RawStr("\"selected_repositories_url\"" + ":")
 		s.SelectedRepositoriesURL.Encode(e)
 	}
-	if s.SelectedRepositoriesURL.Set {
+
+	if s.AllowedActions.Set {
 		e.Comma()
 	}
 	if s.AllowedActions.Set {
 		e.RawStr("\"allowed_actions\"" + ":")
 		s.AllowedActions.Encode(e)
 	}
-	if s.AllowedActions.Set {
+
+	if s.SelectedActionsURL.Set {
 		e.Comma()
 	}
 	if s.SelectedActionsURL.Set {
 		e.RawStr("\"selected_actions_url\"" + ":")
 		s.SelectedActionsURL.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -2929,42 +3141,54 @@ func (s *ActionsOrganizationPermissions) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s ActionsPublicKey) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"key_id\"" + ":")
 	e.Str(s.KeyID)
+
 	e.Comma()
 
 	e.RawStr("\"key\"" + ":")
 	e.Str(s.Key)
-	e.Comma()
+
+	if s.ID.Set {
+		e.Comma()
+	}
 	if s.ID.Set {
 		e.RawStr("\"id\"" + ":")
 		s.ID.Encode(e)
 	}
-	if s.ID.Set {
+
+	if s.URL.Set {
 		e.Comma()
 	}
 	if s.URL.Set {
 		e.RawStr("\"url\"" + ":")
 		s.URL.Encode(e)
 	}
-	if s.URL.Set {
+
+	if s.Title.Set {
 		e.Comma()
 	}
 	if s.Title.Set {
 		e.RawStr("\"title\"" + ":")
 		s.Title.Encode(e)
 	}
-	if s.Title.Set {
+
+	if s.CreatedAt.Set {
 		e.Comma()
 	}
 	if s.CreatedAt.Set {
 		e.RawStr("\"created_at\"" + ":")
 		s.CreatedAt.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -3018,10 +3242,10 @@ func (s *ActionsPublicKey) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s ActionsReRunWorkflowCreated) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -3042,10 +3266,10 @@ func (s *ActionsReRunWorkflowCreated) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s ActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrgNoContent) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -3066,10 +3290,10 @@ func (s *ActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrgNoContent) Decode(d 
 // Encode implements json.Marshaler.
 func (s ActionsRemoveSelectedRepoFromOrgSecretConflict) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -3090,10 +3314,10 @@ func (s *ActionsRemoveSelectedRepoFromOrgSecretConflict) Decode(d *jx.Decoder) e
 // Encode implements json.Marshaler.
 func (s ActionsRemoveSelectedRepoFromOrgSecretNoContent) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -3114,10 +3338,10 @@ func (s *ActionsRemoveSelectedRepoFromOrgSecretNoContent) Decode(d *jx.Decoder) 
 // Encode implements json.Marshaler.
 func (s ActionsRemoveSelfHostedRunnerFromGroupForOrgNoContent) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -3138,25 +3362,34 @@ func (s *ActionsRemoveSelfHostedRunnerFromGroupForOrgNoContent) Decode(d *jx.Dec
 // Encode implements json.Marshaler.
 func (s ActionsRepositoryPermissions) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"enabled\"" + ":")
 	s.Enabled.Encode(e)
 
-	e.Comma()
+	if s.AllowedActions.Set {
+		e.Comma()
+	}
 	if s.AllowedActions.Set {
 		e.RawStr("\"allowed_actions\"" + ":")
 		s.AllowedActions.Encode(e)
 	}
-	if s.AllowedActions.Set {
+
+	if s.SelectedActionsURL.Set {
 		e.Comma()
 	}
 	if s.SelectedActionsURL.Set {
 		e.RawStr("\"selected_actions_url\"" + ":")
 		s.SelectedActionsURL.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -3198,10 +3431,10 @@ func (s *ActionsRepositoryPermissions) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s ActionsRetryWorkflowCreated) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -3222,6 +3455,16 @@ func (s *ActionsRetryWorkflowCreated) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s ActionsReviewPendingDeploymentsForRunReq) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"environment_ids\"" + ":")
 	e.ArrStart()
@@ -3247,10 +3490,6 @@ func (s ActionsReviewPendingDeploymentsForRunReq) Encode(e *jx.Writer) {
 
 	e.RawStr("\"comment\"" + ":")
 	e.Str(s.Comment)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -3322,21 +3561,28 @@ func (s *ActionsReviewPendingDeploymentsForRunReqState) Decode(d *jx.Decoder) er
 // Encode implements json.Marshaler.
 func (s ActionsSecret) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"name\"" + ":")
 	e.Str(s.Name)
+
 	e.Comma()
 
 	e.RawStr("\"created_at\"" + ":")
 	json.EncodeDateTime(e, s.CreatedAt)
+
 	e.Comma()
 
 	e.RawStr("\"updated_at\"" + ":")
 	json.EncodeDateTime(e, s.UpdatedAt)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -3375,10 +3621,10 @@ func (s *ActionsSecret) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s ActionsSetAllowedActionsOrganizationNoContent) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -3399,10 +3645,10 @@ func (s *ActionsSetAllowedActionsOrganizationNoContent) Decode(d *jx.Decoder) er
 // Encode implements json.Marshaler.
 func (s ActionsSetAllowedActionsRepositoryNoContent) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -3423,10 +3669,10 @@ func (s *ActionsSetAllowedActionsRepositoryNoContent) Decode(d *jx.Decoder) erro
 // Encode implements json.Marshaler.
 func (s ActionsSetGithubActionsPermissionsOrganizationNoContent) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -3447,18 +3693,26 @@ func (s *ActionsSetGithubActionsPermissionsOrganizationNoContent) Decode(d *jx.D
 // Encode implements json.Marshaler.
 func (s ActionsSetGithubActionsPermissionsOrganizationReq) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"enabled_repositories\"" + ":")
 	s.EnabledRepositories.Encode(e)
 
-	e.Comma()
+	if s.AllowedActions.Set {
+		e.Comma()
+	}
 	if s.AllowedActions.Set {
 		e.RawStr("\"allowed_actions\"" + ":")
 		s.AllowedActions.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -3489,10 +3743,10 @@ func (s *ActionsSetGithubActionsPermissionsOrganizationReq) Decode(d *jx.Decoder
 // Encode implements json.Marshaler.
 func (s ActionsSetGithubActionsPermissionsRepositoryNoContent) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -3513,18 +3767,26 @@ func (s *ActionsSetGithubActionsPermissionsRepositoryNoContent) Decode(d *jx.Dec
 // Encode implements json.Marshaler.
 func (s ActionsSetGithubActionsPermissionsRepositoryReq) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"enabled\"" + ":")
 	s.Enabled.Encode(e)
 
-	e.Comma()
+	if s.AllowedActions.Set {
+		e.Comma()
+	}
 	if s.AllowedActions.Set {
 		e.RawStr("\"allowed_actions\"" + ":")
 		s.AllowedActions.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -3561,10 +3823,10 @@ func (s *ActionsSetGithubActionsPermissionsRepositoryReq) Decode(d *jx.Decoder) 
 // Encode implements json.Marshaler.
 func (s ActionsSetRepoAccessToSelfHostedRunnerGroupInOrgNoContent) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -3585,6 +3847,16 @@ func (s *ActionsSetRepoAccessToSelfHostedRunnerGroupInOrgNoContent) Decode(d *jx
 // Encode implements json.Marshaler.
 func (s ActionsSetRepoAccessToSelfHostedRunnerGroupInOrgReq) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"selected_repository_ids\"" + ":")
 	e.ArrStart()
@@ -3600,10 +3872,6 @@ func (s ActionsSetRepoAccessToSelfHostedRunnerGroupInOrgReq) Encode(e *jx.Writer
 		}
 	}
 	e.ArrEnd()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -3638,10 +3906,10 @@ func (s *ActionsSetRepoAccessToSelfHostedRunnerGroupInOrgReq) Decode(d *jx.Decod
 // Encode implements json.Marshaler.
 func (s ActionsSetSelectedReposForOrgSecretNoContent) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -3662,6 +3930,16 @@ func (s *ActionsSetSelectedReposForOrgSecretNoContent) Decode(d *jx.Decoder) err
 // Encode implements json.Marshaler.
 func (s ActionsSetSelectedReposForOrgSecretReq) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"selected_repository_ids\"" + ":")
 	e.ArrStart()
@@ -3677,10 +3955,6 @@ func (s ActionsSetSelectedReposForOrgSecretReq) Encode(e *jx.Writer) {
 		}
 	}
 	e.ArrEnd()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -3715,10 +3989,10 @@ func (s *ActionsSetSelectedReposForOrgSecretReq) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s ActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationNoContent) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -3739,6 +4013,16 @@ func (s *ActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationNoContent
 // Encode implements json.Marshaler.
 func (s ActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationReq) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"selected_repository_ids\"" + ":")
 	e.ArrStart()
@@ -3754,10 +4038,6 @@ func (s ActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationReq) Encod
 		}
 	}
 	e.ArrEnd()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -3792,10 +4072,10 @@ func (s *ActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationReq) Deco
 // Encode implements json.Marshaler.
 func (s ActionsSetSelfHostedRunnersInGroupForOrgNoContent) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -3816,6 +4096,16 @@ func (s *ActionsSetSelfHostedRunnersInGroupForOrgNoContent) Decode(d *jx.Decoder
 // Encode implements json.Marshaler.
 func (s ActionsSetSelfHostedRunnersInGroupForOrgReq) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"runners\"" + ":")
 	e.ArrStart()
@@ -3831,10 +4121,6 @@ func (s ActionsSetSelfHostedRunnersInGroupForOrgReq) Encode(e *jx.Writer) {
 		}
 	}
 	e.ArrEnd()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -3869,17 +4155,25 @@ func (s *ActionsSetSelfHostedRunnersInGroupForOrgReq) Decode(d *jx.Decoder) erro
 // Encode implements json.Marshaler.
 func (s ActionsUpdateSelfHostedRunnerGroupForOrgReq) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"name\"" + ":")
 	e.Str(s.Name)
-	e.Comma()
+
+	if s.Visibility.Set {
+		e.Comma()
+	}
 	if s.Visibility.Set {
 		e.RawStr("\"visibility\"" + ":")
 		s.Visibility.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -4013,10 +4307,10 @@ func (s *ActivityCheckRepoIsStarredByAuthenticatedUserApplicationJSONUnauthorize
 // Encode implements json.Marshaler.
 func (s ActivityCheckRepoIsStarredByAuthenticatedUserNoContent) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -4037,10 +4331,10 @@ func (s *ActivityCheckRepoIsStarredByAuthenticatedUserNoContent) Decode(d *jx.De
 // Encode implements json.Marshaler.
 func (s ActivityDeleteRepoSubscriptionNoContent) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -4109,10 +4403,10 @@ func (s *ActivityDeleteThreadSubscriptionApplicationJSONUnauthorized) Decode(d *
 // Encode implements json.Marshaler.
 func (s ActivityDeleteThreadSubscriptionNoContent) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -4133,10 +4427,10 @@ func (s *ActivityDeleteThreadSubscriptionNoContent) Decode(d *jx.Decoder) error 
 // Encode implements json.Marshaler.
 func (s ActivityGetRepoSubscriptionNotFound) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -4797,13 +5091,20 @@ func (s *ActivityListWatchedReposForAuthenticatedUserOKApplicationJSON) Decode(d
 // Encode implements json.Marshaler.
 func (s ActivityMarkNotificationsAsReadAccepted) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.Message.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.Message.Set {
 		e.RawStr("\"message\"" + ":")
 		s.Message.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -4878,20 +5179,31 @@ func (s *ActivityMarkNotificationsAsReadApplicationJSONUnauthorized) Decode(d *j
 // Encode implements json.Marshaler.
 func (s ActivityMarkNotificationsAsReadReq) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.LastReadAt.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.LastReadAt.Set {
 		e.RawStr("\"last_read_at\"" + ":")
 		s.LastReadAt.Encode(e, json.EncodeDateTime)
 	}
-	if s.LastReadAt.Set {
-		e.Comma()
+
+	if s.Read.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Read.Set {
 		e.RawStr("\"read\"" + ":")
 		s.Read.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -4923,10 +5235,10 @@ func (s *ActivityMarkNotificationsAsReadReq) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s ActivityMarkNotificationsAsReadResetContent) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -4947,20 +5259,31 @@ func (s *ActivityMarkNotificationsAsReadResetContent) Decode(d *jx.Decoder) erro
 // Encode implements json.Marshaler.
 func (s ActivityMarkRepoNotificationsAsReadAccepted) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.Message.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.Message.Set {
 		e.RawStr("\"message\"" + ":")
 		s.Message.Encode(e)
 	}
-	if s.Message.Set {
-		e.Comma()
+
+	if s.URL.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.URL.Set {
 		e.RawStr("\"url\"" + ":")
 		s.URL.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -4992,13 +5315,20 @@ func (s *ActivityMarkRepoNotificationsAsReadAccepted) Decode(d *jx.Decoder) erro
 // Encode implements json.Marshaler.
 func (s ActivityMarkRepoNotificationsAsReadReq) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.LastReadAt.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.LastReadAt.Set {
 		e.RawStr("\"last_read_at\"" + ":")
 		s.LastReadAt.Encode(e, json.EncodeDateTime)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -5025,10 +5355,10 @@ func (s *ActivityMarkRepoNotificationsAsReadReq) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s ActivityMarkRepoNotificationsAsReadResetContent) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -5049,10 +5379,10 @@ func (s *ActivityMarkRepoNotificationsAsReadResetContent) Decode(d *jx.Decoder) 
 // Encode implements json.Marshaler.
 func (s ActivityMarkThreadAsReadResetContent) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -5073,20 +5403,31 @@ func (s *ActivityMarkThreadAsReadResetContent) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s ActivitySetRepoSubscriptionReq) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.Subscribed.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.Subscribed.Set {
 		e.RawStr("\"subscribed\"" + ":")
 		s.Subscribed.Encode(e)
 	}
-	if s.Subscribed.Set {
-		e.Comma()
+
+	if s.Ignored.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Ignored.Set {
 		e.RawStr("\"ignored\"" + ":")
 		s.Ignored.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -5166,13 +5507,20 @@ func (s *ActivitySetThreadSubscriptionApplicationJSONUnauthorized) Decode(d *jx.
 // Encode implements json.Marshaler.
 func (s ActivitySetThreadSubscriptionReq) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.Ignored.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.Ignored.Set {
 		e.RawStr("\"ignored\"" + ":")
 		s.Ignored.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -5271,10 +5619,10 @@ func (s *ActivityStarRepoForAuthenticatedUserApplicationJSONUnauthorized) Decode
 // Encode implements json.Marshaler.
 func (s ActivityStarRepoForAuthenticatedUserNoContent) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -5367,10 +5715,10 @@ func (s *ActivityUnstarRepoForAuthenticatedUserApplicationJSONUnauthorized) Deco
 // Encode implements json.Marshaler.
 func (s ActivityUnstarRepoForAuthenticatedUserNoContent) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -5391,21 +5739,33 @@ func (s *ActivityUnstarRepoForAuthenticatedUserNoContent) Decode(d *jx.Decoder) 
 // Encode implements json.Marshaler.
 func (s Actor) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"id\"" + ":")
 	e.Int(s.ID)
+
 	e.Comma()
 
 	e.RawStr("\"login\"" + ":")
 	e.Str(s.Login)
-	e.Comma()
+
+	if s.DisplayLogin.Set {
+		e.Comma()
+	}
 	if s.DisplayLogin.Set {
 		e.RawStr("\"display_login\"" + ":")
 		s.DisplayLogin.Encode(e)
 	}
-	if s.DisplayLogin.Set {
-		e.Comma()
-	}
+
+	e.Comma()
 
 	e.RawStr("\"gravatar_id\"" + ":")
 	s.GravatarID.Encode(e)
@@ -5414,14 +5774,11 @@ func (s Actor) Encode(e *jx.Writer) {
 
 	e.RawStr("\"url\"" + ":")
 	json.EncodeURI(e, s.URL)
+
 	e.Comma()
 
 	e.RawStr("\"avatar_url\"" + ":")
 	json.EncodeURI(e, s.AvatarURL)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -5634,223 +5991,350 @@ func (s *AllowedActions) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s AppPermissions) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.Actions.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.Actions.Set {
 		e.RawStr("\"actions\"" + ":")
 		s.Actions.Encode(e)
 	}
-	if s.Actions.Set {
-		e.Comma()
+
+	if s.Administration.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Administration.Set {
 		e.RawStr("\"administration\"" + ":")
 		s.Administration.Encode(e)
 	}
-	if s.Administration.Set {
-		e.Comma()
+
+	if s.Checks.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Checks.Set {
 		e.RawStr("\"checks\"" + ":")
 		s.Checks.Encode(e)
 	}
-	if s.Checks.Set {
-		e.Comma()
+
+	if s.ContentReferences.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.ContentReferences.Set {
 		e.RawStr("\"content_references\"" + ":")
 		s.ContentReferences.Encode(e)
 	}
-	if s.ContentReferences.Set {
-		e.Comma()
+
+	if s.Contents.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Contents.Set {
 		e.RawStr("\"contents\"" + ":")
 		s.Contents.Encode(e)
 	}
-	if s.Contents.Set {
-		e.Comma()
+
+	if s.Deployments.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Deployments.Set {
 		e.RawStr("\"deployments\"" + ":")
 		s.Deployments.Encode(e)
 	}
-	if s.Deployments.Set {
-		e.Comma()
+
+	if s.Environments.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Environments.Set {
 		e.RawStr("\"environments\"" + ":")
 		s.Environments.Encode(e)
 	}
-	if s.Environments.Set {
-		e.Comma()
+
+	if s.Issues.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Issues.Set {
 		e.RawStr("\"issues\"" + ":")
 		s.Issues.Encode(e)
 	}
-	if s.Issues.Set {
-		e.Comma()
+
+	if s.Metadata.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Metadata.Set {
 		e.RawStr("\"metadata\"" + ":")
 		s.Metadata.Encode(e)
 	}
-	if s.Metadata.Set {
-		e.Comma()
+
+	if s.Packages.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Packages.Set {
 		e.RawStr("\"packages\"" + ":")
 		s.Packages.Encode(e)
 	}
-	if s.Packages.Set {
-		e.Comma()
+
+	if s.Pages.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Pages.Set {
 		e.RawStr("\"pages\"" + ":")
 		s.Pages.Encode(e)
 	}
-	if s.Pages.Set {
-		e.Comma()
+
+	if s.PullRequests.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.PullRequests.Set {
 		e.RawStr("\"pull_requests\"" + ":")
 		s.PullRequests.Encode(e)
 	}
-	if s.PullRequests.Set {
-		e.Comma()
+
+	if s.RepositoryHooks.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.RepositoryHooks.Set {
 		e.RawStr("\"repository_hooks\"" + ":")
 		s.RepositoryHooks.Encode(e)
 	}
-	if s.RepositoryHooks.Set {
-		e.Comma()
+
+	if s.RepositoryProjects.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.RepositoryProjects.Set {
 		e.RawStr("\"repository_projects\"" + ":")
 		s.RepositoryProjects.Encode(e)
 	}
-	if s.RepositoryProjects.Set {
-		e.Comma()
+
+	if s.SecretScanningAlerts.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.SecretScanningAlerts.Set {
 		e.RawStr("\"secret_scanning_alerts\"" + ":")
 		s.SecretScanningAlerts.Encode(e)
 	}
-	if s.SecretScanningAlerts.Set {
-		e.Comma()
+
+	if s.Secrets.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Secrets.Set {
 		e.RawStr("\"secrets\"" + ":")
 		s.Secrets.Encode(e)
 	}
-	if s.Secrets.Set {
-		e.Comma()
+
+	if s.SecurityEvents.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.SecurityEvents.Set {
 		e.RawStr("\"security_events\"" + ":")
 		s.SecurityEvents.Encode(e)
 	}
-	if s.SecurityEvents.Set {
-		e.Comma()
+
+	if s.SingleFile.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.SingleFile.Set {
 		e.RawStr("\"single_file\"" + ":")
 		s.SingleFile.Encode(e)
 	}
-	if s.SingleFile.Set {
-		e.Comma()
+
+	if s.Statuses.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Statuses.Set {
 		e.RawStr("\"statuses\"" + ":")
 		s.Statuses.Encode(e)
 	}
-	if s.Statuses.Set {
-		e.Comma()
+
+	if s.VulnerabilityAlerts.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.VulnerabilityAlerts.Set {
 		e.RawStr("\"vulnerability_alerts\"" + ":")
 		s.VulnerabilityAlerts.Encode(e)
 	}
-	if s.VulnerabilityAlerts.Set {
-		e.Comma()
+
+	if s.Workflows.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Workflows.Set {
 		e.RawStr("\"workflows\"" + ":")
 		s.Workflows.Encode(e)
 	}
-	if s.Workflows.Set {
-		e.Comma()
+
+	if s.Members.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Members.Set {
 		e.RawStr("\"members\"" + ":")
 		s.Members.Encode(e)
 	}
-	if s.Members.Set {
-		e.Comma()
+
+	if s.OrganizationAdministration.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.OrganizationAdministration.Set {
 		e.RawStr("\"organization_administration\"" + ":")
 		s.OrganizationAdministration.Encode(e)
 	}
-	if s.OrganizationAdministration.Set {
-		e.Comma()
+
+	if s.OrganizationHooks.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.OrganizationHooks.Set {
 		e.RawStr("\"organization_hooks\"" + ":")
 		s.OrganizationHooks.Encode(e)
 	}
-	if s.OrganizationHooks.Set {
-		e.Comma()
+
+	if s.OrganizationPlan.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.OrganizationPlan.Set {
 		e.RawStr("\"organization_plan\"" + ":")
 		s.OrganizationPlan.Encode(e)
 	}
-	if s.OrganizationPlan.Set {
-		e.Comma()
+
+	if s.OrganizationProjects.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.OrganizationProjects.Set {
 		e.RawStr("\"organization_projects\"" + ":")
 		s.OrganizationProjects.Encode(e)
 	}
-	if s.OrganizationProjects.Set {
-		e.Comma()
+
+	if s.OrganizationPackages.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.OrganizationPackages.Set {
 		e.RawStr("\"organization_packages\"" + ":")
 		s.OrganizationPackages.Encode(e)
 	}
-	if s.OrganizationPackages.Set {
-		e.Comma()
+
+	if s.OrganizationSecrets.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.OrganizationSecrets.Set {
 		e.RawStr("\"organization_secrets\"" + ":")
 		s.OrganizationSecrets.Encode(e)
 	}
-	if s.OrganizationSecrets.Set {
-		e.Comma()
+
+	if s.OrganizationSelfHostedRunners.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.OrganizationSelfHostedRunners.Set {
 		e.RawStr("\"organization_self_hosted_runners\"" + ":")
 		s.OrganizationSelfHostedRunners.Encode(e)
 	}
-	if s.OrganizationSelfHostedRunners.Set {
-		e.Comma()
+
+	if s.OrganizationUserBlocking.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.OrganizationUserBlocking.Set {
 		e.RawStr("\"organization_user_blocking\"" + ":")
 		s.OrganizationUserBlocking.Encode(e)
 	}
-	if s.OrganizationUserBlocking.Set {
-		e.Comma()
+
+	if s.TeamDiscussions.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.TeamDiscussions.Set {
 		e.RawStr("\"team_discussions\"" + ":")
 		s.TeamDiscussions.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -6862,13 +7346,24 @@ func (s *AppPermissionsWorkflows) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s ApplicationGrant) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"id\"" + ":")
 	e.Int(s.ID)
+
 	e.Comma()
 
 	e.RawStr("\"url\"" + ":")
 	json.EncodeURI(e, s.URL)
+
 	e.Comma()
 
 	e.RawStr("\"app\"" + ":")
@@ -6878,10 +7373,12 @@ func (s ApplicationGrant) Encode(e *jx.Writer) {
 
 	e.RawStr("\"created_at\"" + ":")
 	json.EncodeDateTime(e, s.CreatedAt)
+
 	e.Comma()
 
 	e.RawStr("\"updated_at\"" + ":")
 	json.EncodeDateTime(e, s.UpdatedAt)
+
 	e.Comma()
 
 	e.RawStr("\"scopes\"" + ":")
@@ -6899,14 +7396,12 @@ func (s ApplicationGrant) Encode(e *jx.Writer) {
 	}
 	e.ArrEnd()
 
-	e.Comma()
+	if s.User.Set {
+		e.Comma()
+	}
 	if s.User.Set {
 		e.RawStr("\"user\"" + ":")
 		s.User.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -6975,21 +7470,28 @@ func (s *ApplicationGrant) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s ApplicationGrantApp) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"client_id\"" + ":")
 	e.Str(s.ClientID)
+
 	e.Comma()
 
 	e.RawStr("\"name\"" + ":")
 	e.Str(s.Name)
+
 	e.Comma()
 
 	e.RawStr("\"url\"" + ":")
 	json.EncodeURI(e, s.URL)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -7076,10 +7578,10 @@ func (s *AppsAddRepoToInstallationApplicationJSONNotFound) Decode(d *jx.Decoder)
 // Encode implements json.Marshaler.
 func (s AppsAddRepoToInstallationNoContent) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -7100,13 +7602,18 @@ func (s *AppsAddRepoToInstallationNoContent) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s AppsCheckTokenReq) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"access_token\"" + ":")
 	e.Str(s.AccessToken)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -7205,17 +7712,23 @@ func (s *AppsCreateContentAttachmentApplicationJSONNotFound) Decode(d *jx.Decode
 // Encode implements json.Marshaler.
 func (s AppsCreateContentAttachmentReq) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"title\"" + ":")
 	e.Str(s.Title)
+
 	e.Comma()
 
 	e.RawStr("\"body\"" + ":")
 	e.Str(s.Body)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -7248,10 +7761,10 @@ func (s *AppsCreateContentAttachmentReq) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s AppsCreateFromManifestReq) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -7344,6 +7857,17 @@ func (s *AppsCreateInstallationAccessTokenApplicationJSONUnauthorized) Decode(d 
 // Encode implements json.Marshaler.
 func (s AppsCreateInstallationAccessTokenReq) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.Repositories != nil {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.Repositories != nil {
 		e.RawStr("\"repositories\"" + ":")
 		e.ArrStart()
@@ -7360,8 +7884,12 @@ func (s AppsCreateInstallationAccessTokenReq) Encode(e *jx.Writer) {
 		}
 		e.ArrEnd()
 	}
-	if s.Repositories != nil {
-		e.Comma()
+
+	if s.RepositoryIds != nil {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.RepositoryIds != nil {
 		e.RawStr("\"repository_ids\"" + ":")
@@ -7379,16 +7907,16 @@ func (s AppsCreateInstallationAccessTokenReq) Encode(e *jx.Writer) {
 		}
 		e.ArrEnd()
 	}
-	if s.RepositoryIds != nil {
-		e.Comma()
+
+	if s.Permissions.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Permissions.Set {
 		e.RawStr("\"permissions\"" + ":")
 		s.Permissions.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -7443,10 +7971,10 @@ func (s *AppsCreateInstallationAccessTokenReq) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s AppsDeleteAuthorizationNoContent) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -7467,13 +7995,18 @@ func (s *AppsDeleteAuthorizationNoContent) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s AppsDeleteAuthorizationReq) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"access_token\"" + ":")
 	e.Str(s.AccessToken)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -7500,10 +8033,10 @@ func (s *AppsDeleteAuthorizationReq) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s AppsDeleteInstallationNoContent) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -7524,10 +8057,10 @@ func (s *AppsDeleteInstallationNoContent) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s AppsDeleteTokenNoContent) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -7548,13 +8081,18 @@ func (s *AppsDeleteTokenNoContent) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s AppsDeleteTokenReq) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"access_token\"" + ":")
 	e.Str(s.AccessToken)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -7677,10 +8215,10 @@ func (s *AppsGetSubscriptionPlanForAccountApplicationJSONUnauthorized) Decode(d 
 // Encode implements json.Marshaler.
 func (s AppsGetSubscriptionPlanForAccountStubbedNotFound) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -7993,17 +8531,28 @@ func (s *AppsListInstallationReposForAuthenticatedUserApplicationJSONNotFound) D
 // Encode implements json.Marshaler.
 func (s AppsListInstallationReposForAuthenticatedUserOK) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"total_count\"" + ":")
 	e.Int(s.TotalCount)
-	e.Comma()
+
+	if s.RepositorySelection.Set {
+		e.Comma()
+	}
 	if s.RepositorySelection.Set {
 		e.RawStr("\"repository_selection\"" + ":")
 		s.RepositorySelection.Encode(e)
 	}
-	if s.RepositorySelection.Set {
-		e.Comma()
-	}
+
+	e.Comma()
 
 	e.RawStr("\"repositories\"" + ":")
 	e.ArrStart()
@@ -8019,10 +8568,6 @@ func (s AppsListInstallationReposForAuthenticatedUserOK) Encode(e *jx.Writer) {
 		}
 	}
 	e.ArrEnd()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -8250,9 +8795,19 @@ func (s *AppsListReposAccessibleToInstallationApplicationJSONUnauthorized) Decod
 // Encode implements json.Marshaler.
 func (s AppsListReposAccessibleToInstallationOK) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"total_count\"" + ":")
 	e.Int(s.TotalCount)
+
 	e.Comma()
 
 	e.RawStr("\"repositories\"" + ":")
@@ -8270,14 +8825,12 @@ func (s AppsListReposAccessibleToInstallationOK) Encode(e *jx.Writer) {
 	}
 	e.ArrEnd()
 
-	e.Comma()
+	if s.RepositorySelection.Set {
+		e.Comma()
+	}
 	if s.RepositorySelection.Set {
 		e.RawStr("\"repository_selection\"" + ":")
 		s.RepositorySelection.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -8550,10 +9103,10 @@ func (s *AppsRemoveRepoFromInstallationApplicationJSONNotFound) Decode(d *jx.Dec
 // Encode implements json.Marshaler.
 func (s AppsRemoveRepoFromInstallationNoContent) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -8574,13 +9127,18 @@ func (s *AppsRemoveRepoFromInstallationNoContent) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s AppsResetTokenReq) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"access_token\"" + ":")
 	e.Str(s.AccessToken)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -8607,10 +9165,10 @@ func (s *AppsResetTokenReq) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s AppsRevokeInstallationAccessTokenNoContent) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -8703,22 +9261,36 @@ func (s *AppsScopeTokenApplicationJSONUnauthorized) Decode(d *jx.Decoder) error 
 // Encode implements json.Marshaler.
 func (s AppsScopeTokenReq) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"access_token\"" + ":")
 	e.Str(s.AccessToken)
-	e.Comma()
+
+	if s.Target.Set {
+		e.Comma()
+	}
 	if s.Target.Set {
 		e.RawStr("\"target\"" + ":")
 		s.Target.Encode(e)
 	}
-	if s.Target.Set {
+
+	if s.TargetID.Set {
 		e.Comma()
 	}
 	if s.TargetID.Set {
 		e.RawStr("\"target_id\"" + ":")
 		s.TargetID.Encode(e)
 	}
-	if s.TargetID.Set {
+
+	if s.Repositories != nil {
 		e.Comma()
 	}
 	if s.Repositories != nil {
@@ -8737,7 +9309,8 @@ func (s AppsScopeTokenReq) Encode(e *jx.Writer) {
 		}
 		e.ArrEnd()
 	}
-	if s.Repositories != nil {
+
+	if s.RepositoryIds != nil {
 		e.Comma()
 	}
 	if s.RepositoryIds != nil {
@@ -8756,16 +9329,13 @@ func (s AppsScopeTokenReq) Encode(e *jx.Writer) {
 		}
 		e.ArrEnd()
 	}
-	if s.RepositoryIds != nil {
+
+	if s.Permissions.Set {
 		e.Comma()
 	}
 	if s.Permissions.Set {
 		e.RawStr("\"permissions\"" + ":")
 		s.Permissions.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -8836,10 +9406,10 @@ func (s *AppsScopeTokenReq) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s AppsSuspendInstallationNoContent) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -8860,10 +9430,10 @@ func (s *AppsSuspendInstallationNoContent) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s AppsUnsuspendInstallationNoContent) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -8884,34 +9454,53 @@ func (s *AppsUnsuspendInstallationNoContent) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s AppsUpdateWebhookConfigForAppReq) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.URL.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.URL.Set {
 		e.RawStr("\"url\"" + ":")
 		s.URL.Encode(e)
 	}
-	if s.URL.Set {
-		e.Comma()
+
+	if s.ContentType.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.ContentType.Set {
 		e.RawStr("\"content_type\"" + ":")
 		s.ContentType.Encode(e)
 	}
-	if s.ContentType.Set {
-		e.Comma()
+
+	if s.Secret.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Secret.Set {
 		e.RawStr("\"secret\"" + ":")
 		s.Secret.Encode(e)
 	}
-	if s.Secret.Set {
-		e.Comma()
+
+	if s.InsecureSsl.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.InsecureSsl.Set {
 		e.RawStr("\"insecure_ssl\"" + ":")
 		s.InsecureSsl.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -8953,33 +9542,49 @@ func (s *AppsUpdateWebhookConfigForAppReq) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s Artifact) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"id\"" + ":")
 	e.Int(s.ID)
+
 	e.Comma()
 
 	e.RawStr("\"node_id\"" + ":")
 	e.Str(s.NodeID)
+
 	e.Comma()
 
 	e.RawStr("\"name\"" + ":")
 	e.Str(s.Name)
+
 	e.Comma()
 
 	e.RawStr("\"size_in_bytes\"" + ":")
 	e.Int(s.SizeInBytes)
+
 	e.Comma()
 
 	e.RawStr("\"url\"" + ":")
 	e.Str(s.URL)
+
 	e.Comma()
 
 	e.RawStr("\"archive_download_url\"" + ":")
 	e.Str(s.ArchiveDownloadURL)
+
 	e.Comma()
 
 	e.RawStr("\"expired\"" + ":")
 	e.Bool(s.Expired)
+
 	e.Comma()
 
 	e.RawStr("\"created_at\"" + ":")
@@ -8994,10 +9599,6 @@ func (s Artifact) Encode(e *jx.Writer) {
 
 	e.RawStr("\"updated_at\"" + ":")
 	s.UpdatedAt.Encode(e, json.EncodeDateTime)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -9072,82 +9673,137 @@ func (s *Artifact) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s AuditLogEvent) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.Timestamp.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.Timestamp.Set {
 		e.RawStr("\"@timestamp\"" + ":")
 		s.Timestamp.Encode(e)
 	}
-	if s.Timestamp.Set {
-		e.Comma()
+
+	if s.Action.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Action.Set {
 		e.RawStr("\"action\"" + ":")
 		s.Action.Encode(e)
 	}
-	if s.Action.Set {
-		e.Comma()
+
+	if s.Active.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Active.Set {
 		e.RawStr("\"active\"" + ":")
 		s.Active.Encode(e)
 	}
-	if s.Active.Set {
-		e.Comma()
+
+	if s.ActiveWas.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.ActiveWas.Set {
 		e.RawStr("\"active_was\"" + ":")
 		s.ActiveWas.Encode(e)
 	}
-	if s.ActiveWas.Set {
-		e.Comma()
+
+	if s.Actor.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Actor.Set {
 		e.RawStr("\"actor\"" + ":")
 		s.Actor.Encode(e)
 	}
-	if s.Actor.Set {
-		e.Comma()
+
+	if s.ActorID.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.ActorID.Set {
 		e.RawStr("\"actor_id\"" + ":")
 		s.ActorID.Encode(e)
 	}
-	if s.ActorID.Set {
-		e.Comma()
+
+	if s.ActorLocation.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.ActorLocation.Set {
 		e.RawStr("\"actor_location\"" + ":")
 		s.ActorLocation.Encode(e)
 	}
-	if s.ActorLocation.Set {
-		e.Comma()
+
+	if s.Data != nil {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Data != nil {
 		e.RawStr("\"data\"" + ":")
 		s.Data.Encode(e)
 	}
-	if s.Data != nil {
-		e.Comma()
+
+	if s.OrgID.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.OrgID.Set {
 		e.RawStr("\"org_id\"" + ":")
 		s.OrgID.Encode(e)
 	}
-	if s.OrgID.Set {
-		e.Comma()
+
+	if s.BlockedUser.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.BlockedUser.Set {
 		e.RawStr("\"blocked_user\"" + ":")
 		s.BlockedUser.Encode(e)
 	}
-	if s.BlockedUser.Set {
-		e.Comma()
+
+	if s.Business.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Business.Set {
 		e.RawStr("\"business\"" + ":")
 		s.Business.Encode(e)
 	}
-	if s.Business.Set {
-		e.Comma()
+
+	if s.Config != nil {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Config != nil {
 		e.RawStr("\"config\"" + ":")
@@ -9165,8 +9821,12 @@ func (s AuditLogEvent) Encode(e *jx.Writer) {
 		}
 		e.ArrEnd()
 	}
-	if s.Config != nil {
-		e.Comma()
+
+	if s.ConfigWas != nil {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.ConfigWas != nil {
 		e.RawStr("\"config_was\"" + ":")
@@ -9184,43 +9844,67 @@ func (s AuditLogEvent) Encode(e *jx.Writer) {
 		}
 		e.ArrEnd()
 	}
-	if s.ConfigWas != nil {
-		e.Comma()
+
+	if s.ContentType.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.ContentType.Set {
 		e.RawStr("\"content_type\"" + ":")
 		s.ContentType.Encode(e)
 	}
-	if s.ContentType.Set {
-		e.Comma()
+
+	if s.CreatedAt.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.CreatedAt.Set {
 		e.RawStr("\"created_at\"" + ":")
 		s.CreatedAt.Encode(e)
 	}
-	if s.CreatedAt.Set {
-		e.Comma()
+
+	if s.DeployKeyFingerprint.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.DeployKeyFingerprint.Set {
 		e.RawStr("\"deploy_key_fingerprint\"" + ":")
 		s.DeployKeyFingerprint.Encode(e)
 	}
-	if s.DeployKeyFingerprint.Set {
-		e.Comma()
+
+	if s.DocumentID.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.DocumentID.Set {
 		e.RawStr("\"_document_id\"" + ":")
 		s.DocumentID.Encode(e)
 	}
-	if s.DocumentID.Set {
-		e.Comma()
+
+	if s.Emoji.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Emoji.Set {
 		e.RawStr("\"emoji\"" + ":")
 		s.Emoji.Encode(e)
 	}
-	if s.Emoji.Set {
-		e.Comma()
+
+	if s.Events != nil {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Events != nil {
 		e.RawStr("\"events\"" + ":")
@@ -9238,8 +9922,12 @@ func (s AuditLogEvent) Encode(e *jx.Writer) {
 		}
 		e.ArrEnd()
 	}
-	if s.Events != nil {
-		e.Comma()
+
+	if s.EventsWere != nil {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.EventsWere != nil {
 		e.RawStr("\"events_were\"" + ":")
@@ -9257,149 +9945,225 @@ func (s AuditLogEvent) Encode(e *jx.Writer) {
 		}
 		e.ArrEnd()
 	}
-	if s.EventsWere != nil {
-		e.Comma()
+
+	if s.Explanation.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Explanation.Set {
 		e.RawStr("\"explanation\"" + ":")
 		s.Explanation.Encode(e)
 	}
-	if s.Explanation.Set {
-		e.Comma()
+
+	if s.Fingerprint.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Fingerprint.Set {
 		e.RawStr("\"fingerprint\"" + ":")
 		s.Fingerprint.Encode(e)
 	}
-	if s.Fingerprint.Set {
-		e.Comma()
+
+	if s.HookID.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.HookID.Set {
 		e.RawStr("\"hook_id\"" + ":")
 		s.HookID.Encode(e)
 	}
-	if s.HookID.Set {
-		e.Comma()
+
+	if s.LimitedAvailability.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.LimitedAvailability.Set {
 		e.RawStr("\"limited_availability\"" + ":")
 		s.LimitedAvailability.Encode(e)
 	}
-	if s.LimitedAvailability.Set {
-		e.Comma()
+
+	if s.Message.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Message.Set {
 		e.RawStr("\"message\"" + ":")
 		s.Message.Encode(e)
 	}
-	if s.Message.Set {
-		e.Comma()
+
+	if s.Name.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Name.Set {
 		e.RawStr("\"name\"" + ":")
 		s.Name.Encode(e)
 	}
-	if s.Name.Set {
-		e.Comma()
+
+	if s.OldUser.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.OldUser.Set {
 		e.RawStr("\"old_user\"" + ":")
 		s.OldUser.Encode(e)
 	}
-	if s.OldUser.Set {
-		e.Comma()
+
+	if s.OpensshPublicKey.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.OpensshPublicKey.Set {
 		e.RawStr("\"openssh_public_key\"" + ":")
 		s.OpensshPublicKey.Encode(e)
 	}
-	if s.OpensshPublicKey.Set {
-		e.Comma()
+
+	if s.Org.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Org.Set {
 		e.RawStr("\"org\"" + ":")
 		s.Org.Encode(e)
 	}
-	if s.Org.Set {
-		e.Comma()
+
+	if s.PreviousVisibility.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.PreviousVisibility.Set {
 		e.RawStr("\"previous_visibility\"" + ":")
 		s.PreviousVisibility.Encode(e)
 	}
-	if s.PreviousVisibility.Set {
-		e.Comma()
+
+	if s.ReadOnly.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.ReadOnly.Set {
 		e.RawStr("\"read_only\"" + ":")
 		s.ReadOnly.Encode(e)
 	}
-	if s.ReadOnly.Set {
-		e.Comma()
+
+	if s.Repo.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Repo.Set {
 		e.RawStr("\"repo\"" + ":")
 		s.Repo.Encode(e)
 	}
-	if s.Repo.Set {
-		e.Comma()
+
+	if s.Repository.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Repository.Set {
 		e.RawStr("\"repository\"" + ":")
 		s.Repository.Encode(e)
 	}
-	if s.Repository.Set {
-		e.Comma()
+
+	if s.RepositoryPublic.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.RepositoryPublic.Set {
 		e.RawStr("\"repository_public\"" + ":")
 		s.RepositoryPublic.Encode(e)
 	}
-	if s.RepositoryPublic.Set {
-		e.Comma()
+
+	if s.TargetLogin.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.TargetLogin.Set {
 		e.RawStr("\"target_login\"" + ":")
 		s.TargetLogin.Encode(e)
 	}
-	if s.TargetLogin.Set {
-		e.Comma()
+
+	if s.Team.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Team.Set {
 		e.RawStr("\"team\"" + ":")
 		s.Team.Encode(e)
 	}
-	if s.Team.Set {
-		e.Comma()
+
+	if s.TransportProtocol.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.TransportProtocol.Set {
 		e.RawStr("\"transport_protocol\"" + ":")
 		s.TransportProtocol.Encode(e)
 	}
-	if s.TransportProtocol.Set {
-		e.Comma()
+
+	if s.TransportProtocolName.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.TransportProtocolName.Set {
 		e.RawStr("\"transport_protocol_name\"" + ":")
 		s.TransportProtocolName.Encode(e)
 	}
-	if s.TransportProtocolName.Set {
-		e.Comma()
+
+	if s.User.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.User.Set {
 		e.RawStr("\"user\"" + ":")
 		s.User.Encode(e)
 	}
-	if s.User.Set {
-		e.Comma()
+
+	if s.Visibility.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Visibility.Set {
 		e.RawStr("\"visibility\"" + ":")
 		s.Visibility.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -9659,13 +10423,20 @@ func (s *AuditLogEvent) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s AuditLogEventActorLocation) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.CountryName.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.CountryName.Set {
 		e.RawStr("\"country_name\"" + ":")
 		s.CountryName.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -9692,10 +10463,10 @@ func (s *AuditLogEventActorLocation) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s AuditLogEventData) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -9716,19 +10487,33 @@ func (s *AuditLogEventData) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s AuthenticationToken) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"token\"" + ":")
 	e.Str(s.Token)
+
 	e.Comma()
 
 	e.RawStr("\"expires_at\"" + ":")
 	json.EncodeDateTime(e, s.ExpiresAt)
-	e.Comma()
+
+	if s.Permissions != nil {
+		e.Comma()
+	}
 	if s.Permissions != nil {
 		e.RawStr("\"permissions\"" + ":")
 		s.Permissions.Encode(e)
 	}
-	if s.Permissions != nil {
+
+	if s.Repositories != nil {
 		e.Comma()
 	}
 	if s.Repositories != nil {
@@ -9747,23 +10532,21 @@ func (s AuthenticationToken) Encode(e *jx.Writer) {
 		}
 		e.ArrEnd()
 	}
-	if s.Repositories != nil {
+
+	if s.SingleFile.Set {
 		e.Comma()
 	}
 	if s.SingleFile.Set {
 		e.RawStr("\"single_file\"" + ":")
 		s.SingleFile.Encode(e)
 	}
-	if s.SingleFile.Set {
+
+	if s.RepositorySelection.Set {
 		e.Comma()
 	}
 	if s.RepositorySelection.Set {
 		e.RawStr("\"repository_selection\"" + ":")
 		s.RepositorySelection.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -9826,10 +10609,10 @@ func (s *AuthenticationToken) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s AuthenticationTokenPermissions) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -9916,13 +10699,24 @@ func (s *AuthorAssociation) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s Authorization) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"id\"" + ":")
 	e.Int(s.ID)
+
 	e.Comma()
 
 	e.RawStr("\"url\"" + ":")
 	json.EncodeURI(e, s.URL)
+
 	e.Comma()
 
 	e.RawStr("\"scopes\"" + ":")
@@ -9948,6 +10742,7 @@ func (s Authorization) Encode(e *jx.Writer) {
 
 	e.RawStr("\"token\"" + ":")
 	e.Str(s.Token)
+
 	e.Comma()
 
 	e.RawStr("\"token_last_eight\"" + ":")
@@ -9977,37 +10772,37 @@ func (s Authorization) Encode(e *jx.Writer) {
 
 	e.RawStr("\"updated_at\"" + ":")
 	json.EncodeDateTime(e, s.UpdatedAt)
+
 	e.Comma()
 
 	e.RawStr("\"created_at\"" + ":")
 	json.EncodeDateTime(e, s.CreatedAt)
+
 	e.Comma()
 
 	e.RawStr("\"fingerprint\"" + ":")
 	s.Fingerprint.Encode(e)
 
-	e.Comma()
+	if s.User.Set {
+		e.Comma()
+	}
 	if s.User.Set {
 		e.RawStr("\"user\"" + ":")
 		s.User.Encode(e)
 	}
-	if s.User.Set {
+
+	if s.Installation.Set {
 		e.Comma()
 	}
 	if s.Installation.Set {
 		e.RawStr("\"installation\"" + ":")
 		s.Installation.Encode(e)
 	}
-	if s.Installation.Set {
-		e.Comma()
-	}
+
+	e.Comma()
 
 	e.RawStr("\"expires_at\"" + ":")
 	s.ExpiresAt.Encode(e, json.EncodeDateTime)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -10110,21 +10905,28 @@ func (s *Authorization) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s AuthorizationApp) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"client_id\"" + ":")
 	e.Str(s.ClientID)
+
 	e.Comma()
 
 	e.RawStr("\"name\"" + ":")
 	e.Str(s.Name)
+
 	e.Comma()
 
 	e.RawStr("\"url\"" + ":")
 	json.EncodeURI(e, s.URL)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -10163,6 +10965,16 @@ func (s *AuthorizationApp) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s AutoMerge) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"enabled_by\"" + ":")
 	s.EnabledBy.Encode(e)
@@ -10176,14 +10988,11 @@ func (s AutoMerge) Encode(e *jx.Writer) {
 
 	e.RawStr("\"commit_title\"" + ":")
 	e.Str(s.CommitTitle)
+
 	e.Comma()
 
 	e.RawStr("\"commit_message\"" + ":")
 	e.Str(s.CommitMessage)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -10253,21 +11062,28 @@ func (s *AutoMergeMergeMethod) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s Autolink) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"id\"" + ":")
 	e.Int(s.ID)
+
 	e.Comma()
 
 	e.RawStr("\"key_prefix\"" + ":")
 	e.Str(s.KeyPrefix)
+
 	e.Comma()
 
 	e.RawStr("\"url_template\"" + ":")
 	e.Str(s.URLTemplate)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -10306,37 +11122,54 @@ func (s *Autolink) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s BaseGist) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"url\"" + ":")
 	json.EncodeURI(e, s.URL)
+
 	e.Comma()
 
 	e.RawStr("\"forks_url\"" + ":")
 	json.EncodeURI(e, s.ForksURL)
+
 	e.Comma()
 
 	e.RawStr("\"commits_url\"" + ":")
 	json.EncodeURI(e, s.CommitsURL)
+
 	e.Comma()
 
 	e.RawStr("\"id\"" + ":")
 	e.Str(s.ID)
+
 	e.Comma()
 
 	e.RawStr("\"node_id\"" + ":")
 	e.Str(s.NodeID)
+
 	e.Comma()
 
 	e.RawStr("\"git_pull_url\"" + ":")
 	json.EncodeURI(e, s.GitPullURL)
+
 	e.Comma()
 
 	e.RawStr("\"git_push_url\"" + ":")
 	json.EncodeURI(e, s.GitPushURL)
+
 	e.Comma()
 
 	e.RawStr("\"html_url\"" + ":")
 	json.EncodeURI(e, s.HTMLURL)
+
 	e.Comma()
 
 	e.RawStr("\"files\"" + ":")
@@ -10346,14 +11179,17 @@ func (s BaseGist) Encode(e *jx.Writer) {
 
 	e.RawStr("\"public\"" + ":")
 	e.Bool(s.Public)
+
 	e.Comma()
 
 	e.RawStr("\"created_at\"" + ":")
 	json.EncodeDateTime(e, s.CreatedAt)
+
 	e.Comma()
 
 	e.RawStr("\"updated_at\"" + ":")
 	json.EncodeDateTime(e, s.UpdatedAt)
+
 	e.Comma()
 
 	e.RawStr("\"description\"" + ":")
@@ -10363,6 +11199,7 @@ func (s BaseGist) Encode(e *jx.Writer) {
 
 	e.RawStr("\"comments\"" + ":")
 	e.Int(s.Comments)
+
 	e.Comma()
 
 	e.RawStr("\"user\"" + ":")
@@ -10372,19 +11209,24 @@ func (s BaseGist) Encode(e *jx.Writer) {
 
 	e.RawStr("\"comments_url\"" + ":")
 	json.EncodeURI(e, s.CommentsURL)
-	e.Comma()
+
+	if s.Owner.Set {
+		e.Comma()
+	}
 	if s.Owner.Set {
 		e.RawStr("\"owner\"" + ":")
 		s.Owner.Encode(e)
 	}
-	if s.Owner.Set {
+
+	if s.Truncated.Set {
 		e.Comma()
 	}
 	if s.Truncated.Set {
 		e.RawStr("\"truncated\"" + ":")
 		s.Truncated.Encode(e)
 	}
-	if s.Truncated.Set {
+
+	if s.Forks != nil {
 		e.Comma()
 	}
 	if s.Forks != nil {
@@ -10403,7 +11245,8 @@ func (s BaseGist) Encode(e *jx.Writer) {
 		}
 		e.ArrEnd()
 	}
-	if s.Forks != nil {
+
+	if s.History != nil {
 		e.Comma()
 	}
 	if s.History != nil {
@@ -10421,10 +11264,6 @@ func (s BaseGist) Encode(e *jx.Writer) {
 			}
 		}
 		e.ArrEnd()
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -10574,10 +11413,10 @@ func (s *BaseGist) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s BaseGistFiles) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -10598,34 +11437,53 @@ func (s *BaseGistFiles) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s BasicError) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.Message.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.Message.Set {
 		e.RawStr("\"message\"" + ":")
 		s.Message.Encode(e)
 	}
-	if s.Message.Set {
-		e.Comma()
+
+	if s.DocumentationURL.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.DocumentationURL.Set {
 		e.RawStr("\"documentation_url\"" + ":")
 		s.DocumentationURL.Encode(e)
 	}
-	if s.DocumentationURL.Set {
-		e.Comma()
+
+	if s.URL.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.URL.Set {
 		e.RawStr("\"url\"" + ":")
 		s.URL.Encode(e)
 	}
-	if s.URL.Set {
-		e.Comma()
+
+	if s.Status.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Status.Set {
 		e.RawStr("\"status\"" + ":")
 		s.Status.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -10667,21 +11525,34 @@ func (s *BasicError) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s Blob) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"content\"" + ":")
 	e.Str(s.Content)
+
 	e.Comma()
 
 	e.RawStr("\"encoding\"" + ":")
 	e.Str(s.Encoding)
+
 	e.Comma()
 
 	e.RawStr("\"url\"" + ":")
 	json.EncodeURI(e, s.URL)
+
 	e.Comma()
 
 	e.RawStr("\"sha\"" + ":")
 	e.Str(s.Sha)
+
 	e.Comma()
 
 	e.RawStr("\"size\"" + ":")
@@ -10691,14 +11562,13 @@ func (s Blob) Encode(e *jx.Writer) {
 
 	e.RawStr("\"node_id\"" + ":")
 	e.Str(s.NodeID)
-	e.Comma()
+
+	if s.HighlightedContent.Set {
+		e.Comma()
+	}
 	if s.HighlightedContent.Set {
 		e.RawStr("\"highlighted_content\"" + ":")
 		s.HighlightedContent.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -10759,97 +11629,152 @@ func (s *Blob) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s BranchProtection) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.URL.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.URL.Set {
 		e.RawStr("\"url\"" + ":")
 		s.URL.Encode(e)
 	}
-	if s.URL.Set {
-		e.Comma()
+
+	if s.Enabled.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Enabled.Set {
 		e.RawStr("\"enabled\"" + ":")
 		s.Enabled.Encode(e)
 	}
-	if s.Enabled.Set {
-		e.Comma()
+
+	if s.RequiredStatusChecks.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.RequiredStatusChecks.Set {
 		e.RawStr("\"required_status_checks\"" + ":")
 		s.RequiredStatusChecks.Encode(e)
 	}
-	if s.RequiredStatusChecks.Set {
-		e.Comma()
+
+	if s.EnforceAdmins.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.EnforceAdmins.Set {
 		e.RawStr("\"enforce_admins\"" + ":")
 		s.EnforceAdmins.Encode(e)
 	}
-	if s.EnforceAdmins.Set {
-		e.Comma()
+
+	if s.RequiredPullRequestReviews.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.RequiredPullRequestReviews.Set {
 		e.RawStr("\"required_pull_request_reviews\"" + ":")
 		s.RequiredPullRequestReviews.Encode(e)
 	}
-	if s.RequiredPullRequestReviews.Set {
-		e.Comma()
+
+	if s.Restrictions.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Restrictions.Set {
 		e.RawStr("\"restrictions\"" + ":")
 		s.Restrictions.Encode(e)
 	}
-	if s.Restrictions.Set {
-		e.Comma()
+
+	if s.RequiredLinearHistory.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.RequiredLinearHistory.Set {
 		e.RawStr("\"required_linear_history\"" + ":")
 		s.RequiredLinearHistory.Encode(e)
 	}
-	if s.RequiredLinearHistory.Set {
-		e.Comma()
+
+	if s.AllowForcePushes.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.AllowForcePushes.Set {
 		e.RawStr("\"allow_force_pushes\"" + ":")
 		s.AllowForcePushes.Encode(e)
 	}
-	if s.AllowForcePushes.Set {
-		e.Comma()
+
+	if s.AllowDeletions.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.AllowDeletions.Set {
 		e.RawStr("\"allow_deletions\"" + ":")
 		s.AllowDeletions.Encode(e)
 	}
-	if s.AllowDeletions.Set {
-		e.Comma()
+
+	if s.RequiredConversationResolution.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.RequiredConversationResolution.Set {
 		e.RawStr("\"required_conversation_resolution\"" + ":")
 		s.RequiredConversationResolution.Encode(e)
 	}
-	if s.RequiredConversationResolution.Set {
-		e.Comma()
+
+	if s.Name.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Name.Set {
 		e.RawStr("\"name\"" + ":")
 		s.Name.Encode(e)
 	}
-	if s.Name.Set {
-		e.Comma()
+
+	if s.ProtectionURL.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.ProtectionURL.Set {
 		e.RawStr("\"protection_url\"" + ":")
 		s.ProtectionURL.Encode(e)
 	}
-	if s.ProtectionURL.Set {
-		e.Comma()
+
+	if s.RequiredSignatures.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.RequiredSignatures.Set {
 		e.RawStr("\"required_signatures\"" + ":")
 		s.RequiredSignatures.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -10936,13 +11861,20 @@ func (s *BranchProtection) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s BranchProtectionAllowDeletions) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.Enabled.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.Enabled.Set {
 		e.RawStr("\"enabled\"" + ":")
 		s.Enabled.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -10969,13 +11901,20 @@ func (s *BranchProtectionAllowDeletions) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s BranchProtectionAllowForcePushes) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.Enabled.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.Enabled.Set {
 		e.RawStr("\"enabled\"" + ":")
 		s.Enabled.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -11002,13 +11941,20 @@ func (s *BranchProtectionAllowForcePushes) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s BranchProtectionRequiredConversationResolution) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.Enabled.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.Enabled.Set {
 		e.RawStr("\"enabled\"" + ":")
 		s.Enabled.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -11035,13 +11981,20 @@ func (s *BranchProtectionRequiredConversationResolution) Decode(d *jx.Decoder) e
 // Encode implements json.Marshaler.
 func (s BranchProtectionRequiredLinearHistory) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.Enabled.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.Enabled.Set {
 		e.RawStr("\"enabled\"" + ":")
 		s.Enabled.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -11068,17 +12021,23 @@ func (s *BranchProtectionRequiredLinearHistory) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s BranchProtectionRequiredSignatures) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"url\"" + ":")
 	json.EncodeURI(e, s.URL)
+
 	e.Comma()
 
 	e.RawStr("\"enabled\"" + ":")
 	e.Bool(s.Enabled)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -11111,20 +12070,38 @@ func (s *BranchProtectionRequiredSignatures) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s BranchProtectionRequiredStatusChecks) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.URL.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.URL.Set {
 		e.RawStr("\"url\"" + ":")
 		s.URL.Encode(e)
 	}
-	if s.URL.Set {
-		e.Comma()
+
+	if s.EnforcementLevel.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.EnforcementLevel.Set {
 		e.RawStr("\"enforcement_level\"" + ":")
 		s.EnforcementLevel.Encode(e)
 	}
-	if s.EnforcementLevel.Set {
+
+	if !first {
+
 		e.Comma()
 	}
+	first = false
 
 	e.RawStr("\"contexts\"" + ":")
 	e.ArrStart()
@@ -11141,21 +12118,20 @@ func (s BranchProtectionRequiredStatusChecks) Encode(e *jx.Writer) {
 	}
 	e.ArrEnd()
 
-	e.Comma()
+	if s.ContextsURL.Set {
+		e.Comma()
+	}
 	if s.ContextsURL.Set {
 		e.RawStr("\"contexts_url\"" + ":")
 		s.ContextsURL.Encode(e)
 	}
-	if s.ContextsURL.Set {
+
+	if s.Strict.Set {
 		e.Comma()
 	}
 	if s.Strict.Set {
 		e.RawStr("\"strict\"" + ":")
 		s.Strict.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -11211,21 +12187,34 @@ func (s *BranchProtectionRequiredStatusChecks) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s BranchRestrictionPolicy) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"url\"" + ":")
 	json.EncodeURI(e, s.URL)
+
 	e.Comma()
 
 	e.RawStr("\"users_url\"" + ":")
 	json.EncodeURI(e, s.UsersURL)
+
 	e.Comma()
 
 	e.RawStr("\"teams_url\"" + ":")
 	json.EncodeURI(e, s.TeamsURL)
+
 	e.Comma()
 
 	e.RawStr("\"apps_url\"" + ":")
 	json.EncodeURI(e, s.AppsURL)
+
 	e.Comma()
 
 	e.RawStr("\"users\"" + ":")
@@ -11276,10 +12265,6 @@ func (s BranchRestrictionPolicy) Encode(e *jx.Writer) {
 		}
 	}
 	e.ArrEnd()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -11360,82 +12345,137 @@ func (s *BranchRestrictionPolicy) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s BranchRestrictionPolicyAppsItem) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.ID.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.ID.Set {
 		e.RawStr("\"id\"" + ":")
 		s.ID.Encode(e)
 	}
-	if s.ID.Set {
-		e.Comma()
+
+	if s.Slug.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Slug.Set {
 		e.RawStr("\"slug\"" + ":")
 		s.Slug.Encode(e)
 	}
-	if s.Slug.Set {
-		e.Comma()
+
+	if s.NodeID.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.NodeID.Set {
 		e.RawStr("\"node_id\"" + ":")
 		s.NodeID.Encode(e)
 	}
-	if s.NodeID.Set {
-		e.Comma()
+
+	if s.Owner.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Owner.Set {
 		e.RawStr("\"owner\"" + ":")
 		s.Owner.Encode(e)
 	}
-	if s.Owner.Set {
-		e.Comma()
+
+	if s.Name.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Name.Set {
 		e.RawStr("\"name\"" + ":")
 		s.Name.Encode(e)
 	}
-	if s.Name.Set {
-		e.Comma()
+
+	if s.Description.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Description.Set {
 		e.RawStr("\"description\"" + ":")
 		s.Description.Encode(e)
 	}
-	if s.Description.Set {
-		e.Comma()
+
+	if s.ExternalURL.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.ExternalURL.Set {
 		e.RawStr("\"external_url\"" + ":")
 		s.ExternalURL.Encode(e)
 	}
-	if s.ExternalURL.Set {
-		e.Comma()
+
+	if s.HTMLURL.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.HTMLURL.Set {
 		e.RawStr("\"html_url\"" + ":")
 		s.HTMLURL.Encode(e)
 	}
-	if s.HTMLURL.Set {
-		e.Comma()
+
+	if s.CreatedAt.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.CreatedAt.Set {
 		e.RawStr("\"created_at\"" + ":")
 		s.CreatedAt.Encode(e)
 	}
-	if s.CreatedAt.Set {
-		e.Comma()
+
+	if s.UpdatedAt.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.UpdatedAt.Set {
 		e.RawStr("\"updated_at\"" + ":")
 		s.UpdatedAt.Encode(e)
 	}
-	if s.UpdatedAt.Set {
-		e.Comma()
+
+	if s.Permissions.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Permissions.Set {
 		e.RawStr("\"permissions\"" + ":")
 		s.Permissions.Encode(e)
 	}
-	if s.Permissions.Set {
-		e.Comma()
+
+	if s.Events != nil {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Events != nil {
 		e.RawStr("\"events\"" + ":")
@@ -11452,10 +12492,6 @@ func (s BranchRestrictionPolicyAppsItem) Encode(e *jx.Writer) {
 			}
 		}
 		e.ArrEnd()
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -11546,167 +12582,262 @@ func (s *BranchRestrictionPolicyAppsItem) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s BranchRestrictionPolicyAppsItemOwner) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.Login.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.Login.Set {
 		e.RawStr("\"login\"" + ":")
 		s.Login.Encode(e)
 	}
-	if s.Login.Set {
-		e.Comma()
+
+	if s.ID.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.ID.Set {
 		e.RawStr("\"id\"" + ":")
 		s.ID.Encode(e)
 	}
-	if s.ID.Set {
-		e.Comma()
+
+	if s.NodeID.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.NodeID.Set {
 		e.RawStr("\"node_id\"" + ":")
 		s.NodeID.Encode(e)
 	}
-	if s.NodeID.Set {
-		e.Comma()
+
+	if s.URL.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.URL.Set {
 		e.RawStr("\"url\"" + ":")
 		s.URL.Encode(e)
 	}
-	if s.URL.Set {
-		e.Comma()
+
+	if s.ReposURL.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.ReposURL.Set {
 		e.RawStr("\"repos_url\"" + ":")
 		s.ReposURL.Encode(e)
 	}
-	if s.ReposURL.Set {
-		e.Comma()
+
+	if s.EventsURL.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.EventsURL.Set {
 		e.RawStr("\"events_url\"" + ":")
 		s.EventsURL.Encode(e)
 	}
-	if s.EventsURL.Set {
-		e.Comma()
+
+	if s.HooksURL.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.HooksURL.Set {
 		e.RawStr("\"hooks_url\"" + ":")
 		s.HooksURL.Encode(e)
 	}
-	if s.HooksURL.Set {
-		e.Comma()
+
+	if s.IssuesURL.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.IssuesURL.Set {
 		e.RawStr("\"issues_url\"" + ":")
 		s.IssuesURL.Encode(e)
 	}
-	if s.IssuesURL.Set {
-		e.Comma()
+
+	if s.MembersURL.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.MembersURL.Set {
 		e.RawStr("\"members_url\"" + ":")
 		s.MembersURL.Encode(e)
 	}
-	if s.MembersURL.Set {
-		e.Comma()
+
+	if s.PublicMembersURL.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.PublicMembersURL.Set {
 		e.RawStr("\"public_members_url\"" + ":")
 		s.PublicMembersURL.Encode(e)
 	}
-	if s.PublicMembersURL.Set {
-		e.Comma()
+
+	if s.AvatarURL.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.AvatarURL.Set {
 		e.RawStr("\"avatar_url\"" + ":")
 		s.AvatarURL.Encode(e)
 	}
-	if s.AvatarURL.Set {
-		e.Comma()
+
+	if s.Description.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Description.Set {
 		e.RawStr("\"description\"" + ":")
 		s.Description.Encode(e)
 	}
-	if s.Description.Set {
-		e.Comma()
+
+	if s.GravatarID.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.GravatarID.Set {
 		e.RawStr("\"gravatar_id\"" + ":")
 		s.GravatarID.Encode(e)
 	}
-	if s.GravatarID.Set {
-		e.Comma()
+
+	if s.HTMLURL.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.HTMLURL.Set {
 		e.RawStr("\"html_url\"" + ":")
 		s.HTMLURL.Encode(e)
 	}
-	if s.HTMLURL.Set {
-		e.Comma()
+
+	if s.FollowersURL.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.FollowersURL.Set {
 		e.RawStr("\"followers_url\"" + ":")
 		s.FollowersURL.Encode(e)
 	}
-	if s.FollowersURL.Set {
-		e.Comma()
+
+	if s.FollowingURL.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.FollowingURL.Set {
 		e.RawStr("\"following_url\"" + ":")
 		s.FollowingURL.Encode(e)
 	}
-	if s.FollowingURL.Set {
-		e.Comma()
+
+	if s.GistsURL.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.GistsURL.Set {
 		e.RawStr("\"gists_url\"" + ":")
 		s.GistsURL.Encode(e)
 	}
-	if s.GistsURL.Set {
-		e.Comma()
+
+	if s.StarredURL.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.StarredURL.Set {
 		e.RawStr("\"starred_url\"" + ":")
 		s.StarredURL.Encode(e)
 	}
-	if s.StarredURL.Set {
-		e.Comma()
+
+	if s.SubscriptionsURL.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.SubscriptionsURL.Set {
 		e.RawStr("\"subscriptions_url\"" + ":")
 		s.SubscriptionsURL.Encode(e)
 	}
-	if s.SubscriptionsURL.Set {
-		e.Comma()
+
+	if s.OrganizationsURL.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.OrganizationsURL.Set {
 		e.RawStr("\"organizations_url\"" + ":")
 		s.OrganizationsURL.Encode(e)
 	}
-	if s.OrganizationsURL.Set {
-		e.Comma()
+
+	if s.ReceivedEventsURL.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.ReceivedEventsURL.Set {
 		e.RawStr("\"received_events_url\"" + ":")
 		s.ReceivedEventsURL.Encode(e)
 	}
-	if s.ReceivedEventsURL.Set {
-		e.Comma()
+
+	if s.Type.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Type.Set {
 		e.RawStr("\"type\"" + ":")
 		s.Type.Encode(e)
 	}
-	if s.Type.Set {
-		e.Comma()
+
+	if s.SiteAdmin.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.SiteAdmin.Set {
 		e.RawStr("\"site_admin\"" + ":")
 		s.SiteAdmin.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -11843,34 +12974,53 @@ func (s *BranchRestrictionPolicyAppsItemOwner) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s BranchRestrictionPolicyAppsItemPermissions) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.Metadata.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.Metadata.Set {
 		e.RawStr("\"metadata\"" + ":")
 		s.Metadata.Encode(e)
 	}
-	if s.Metadata.Set {
-		e.Comma()
+
+	if s.Contents.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Contents.Set {
 		e.RawStr("\"contents\"" + ":")
 		s.Contents.Encode(e)
 	}
-	if s.Contents.Set {
-		e.Comma()
+
+	if s.Issues.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Issues.Set {
 		e.RawStr("\"issues\"" + ":")
 		s.Issues.Encode(e)
 	}
-	if s.Issues.Set {
-		e.Comma()
+
+	if s.SingleFile.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.SingleFile.Set {
 		e.RawStr("\"single_file\"" + ":")
 		s.SingleFile.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -11912,90 +13062,141 @@ func (s *BranchRestrictionPolicyAppsItemPermissions) Decode(d *jx.Decoder) error
 // Encode implements json.Marshaler.
 func (s BranchRestrictionPolicyTeamsItem) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.ID.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.ID.Set {
 		e.RawStr("\"id\"" + ":")
 		s.ID.Encode(e)
 	}
-	if s.ID.Set {
-		e.Comma()
+
+	if s.NodeID.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.NodeID.Set {
 		e.RawStr("\"node_id\"" + ":")
 		s.NodeID.Encode(e)
 	}
-	if s.NodeID.Set {
-		e.Comma()
+
+	if s.URL.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.URL.Set {
 		e.RawStr("\"url\"" + ":")
 		s.URL.Encode(e)
 	}
-	if s.URL.Set {
-		e.Comma()
+
+	if s.HTMLURL.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.HTMLURL.Set {
 		e.RawStr("\"html_url\"" + ":")
 		s.HTMLURL.Encode(e)
 	}
-	if s.HTMLURL.Set {
-		e.Comma()
+
+	if s.Name.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Name.Set {
 		e.RawStr("\"name\"" + ":")
 		s.Name.Encode(e)
 	}
-	if s.Name.Set {
-		e.Comma()
+
+	if s.Slug.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Slug.Set {
 		e.RawStr("\"slug\"" + ":")
 		s.Slug.Encode(e)
 	}
-	if s.Slug.Set {
-		e.Comma()
+
+	if s.Description.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Description.Set {
 		e.RawStr("\"description\"" + ":")
 		s.Description.Encode(e)
 	}
-	if s.Description.Set {
-		e.Comma()
+
+	if s.Privacy.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Privacy.Set {
 		e.RawStr("\"privacy\"" + ":")
 		s.Privacy.Encode(e)
 	}
-	if s.Privacy.Set {
-		e.Comma()
+
+	if s.Permission.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Permission.Set {
 		e.RawStr("\"permission\"" + ":")
 		s.Permission.Encode(e)
 	}
-	if s.Permission.Set {
-		e.Comma()
+
+	if s.MembersURL.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.MembersURL.Set {
 		e.RawStr("\"members_url\"" + ":")
 		s.MembersURL.Encode(e)
 	}
-	if s.MembersURL.Set {
-		e.Comma()
+
+	if s.RepositoriesURL.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.RepositoriesURL.Set {
 		e.RawStr("\"repositories_url\"" + ":")
 		s.RepositoriesURL.Encode(e)
 	}
-	if s.RepositoriesURL.Set {
-		e.Comma()
+
+	if s.Parent.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Parent.Set {
 		e.RawStr("\"parent\"" + ":")
 		s.Parent.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -12077,132 +13278,207 @@ func (s *BranchRestrictionPolicyTeamsItem) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s BranchRestrictionPolicyUsersItem) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.Login.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.Login.Set {
 		e.RawStr("\"login\"" + ":")
 		s.Login.Encode(e)
 	}
-	if s.Login.Set {
-		e.Comma()
+
+	if s.ID.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.ID.Set {
 		e.RawStr("\"id\"" + ":")
 		s.ID.Encode(e)
 	}
-	if s.ID.Set {
-		e.Comma()
+
+	if s.NodeID.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.NodeID.Set {
 		e.RawStr("\"node_id\"" + ":")
 		s.NodeID.Encode(e)
 	}
-	if s.NodeID.Set {
-		e.Comma()
+
+	if s.AvatarURL.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.AvatarURL.Set {
 		e.RawStr("\"avatar_url\"" + ":")
 		s.AvatarURL.Encode(e)
 	}
-	if s.AvatarURL.Set {
-		e.Comma()
+
+	if s.GravatarID.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.GravatarID.Set {
 		e.RawStr("\"gravatar_id\"" + ":")
 		s.GravatarID.Encode(e)
 	}
-	if s.GravatarID.Set {
-		e.Comma()
+
+	if s.URL.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.URL.Set {
 		e.RawStr("\"url\"" + ":")
 		s.URL.Encode(e)
 	}
-	if s.URL.Set {
-		e.Comma()
+
+	if s.HTMLURL.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.HTMLURL.Set {
 		e.RawStr("\"html_url\"" + ":")
 		s.HTMLURL.Encode(e)
 	}
-	if s.HTMLURL.Set {
-		e.Comma()
+
+	if s.FollowersURL.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.FollowersURL.Set {
 		e.RawStr("\"followers_url\"" + ":")
 		s.FollowersURL.Encode(e)
 	}
-	if s.FollowersURL.Set {
-		e.Comma()
+
+	if s.FollowingURL.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.FollowingURL.Set {
 		e.RawStr("\"following_url\"" + ":")
 		s.FollowingURL.Encode(e)
 	}
-	if s.FollowingURL.Set {
-		e.Comma()
+
+	if s.GistsURL.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.GistsURL.Set {
 		e.RawStr("\"gists_url\"" + ":")
 		s.GistsURL.Encode(e)
 	}
-	if s.GistsURL.Set {
-		e.Comma()
+
+	if s.StarredURL.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.StarredURL.Set {
 		e.RawStr("\"starred_url\"" + ":")
 		s.StarredURL.Encode(e)
 	}
-	if s.StarredURL.Set {
-		e.Comma()
+
+	if s.SubscriptionsURL.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.SubscriptionsURL.Set {
 		e.RawStr("\"subscriptions_url\"" + ":")
 		s.SubscriptionsURL.Encode(e)
 	}
-	if s.SubscriptionsURL.Set {
-		e.Comma()
+
+	if s.OrganizationsURL.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.OrganizationsURL.Set {
 		e.RawStr("\"organizations_url\"" + ":")
 		s.OrganizationsURL.Encode(e)
 	}
-	if s.OrganizationsURL.Set {
-		e.Comma()
+
+	if s.ReposURL.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.ReposURL.Set {
 		e.RawStr("\"repos_url\"" + ":")
 		s.ReposURL.Encode(e)
 	}
-	if s.ReposURL.Set {
-		e.Comma()
+
+	if s.EventsURL.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.EventsURL.Set {
 		e.RawStr("\"events_url\"" + ":")
 		s.EventsURL.Encode(e)
 	}
-	if s.EventsURL.Set {
-		e.Comma()
+
+	if s.ReceivedEventsURL.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.ReceivedEventsURL.Set {
 		e.RawStr("\"received_events_url\"" + ":")
 		s.ReceivedEventsURL.Encode(e)
 	}
-	if s.ReceivedEventsURL.Set {
-		e.Comma()
+
+	if s.Type.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Type.Set {
 		e.RawStr("\"type\"" + ":")
 		s.Type.Encode(e)
 	}
-	if s.Type.Set {
-		e.Comma()
+
+	if s.SiteAdmin.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.SiteAdmin.Set {
 		e.RawStr("\"site_admin\"" + ":")
 		s.SiteAdmin.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -12314,9 +13590,19 @@ func (s *BranchRestrictionPolicyUsersItem) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s BranchShort) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"name\"" + ":")
 	e.Str(s.Name)
+
 	e.Comma()
 
 	e.RawStr("\"commit\"" + ":")
@@ -12326,10 +13612,6 @@ func (s BranchShort) Encode(e *jx.Writer) {
 
 	e.RawStr("\"protected\"" + ":")
 	e.Bool(s.Protected)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -12366,17 +13648,23 @@ func (s *BranchShort) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s BranchShortCommit) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"sha\"" + ":")
 	e.Str(s.Sha)
+
 	e.Comma()
 
 	e.RawStr("\"url\"" + ":")
 	e.Str(s.URL)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -12409,9 +13697,19 @@ func (s *BranchShortCommit) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s BranchWithProtection) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"name\"" + ":")
 	e.Str(s.Name)
+
 	e.Comma()
 
 	e.RawStr("\"commit\"" + ":")
@@ -12426,6 +13724,7 @@ func (s BranchWithProtection) Encode(e *jx.Writer) {
 
 	e.RawStr("\"protected\"" + ":")
 	e.Bool(s.Protected)
+
 	e.Comma()
 
 	e.RawStr("\"protection\"" + ":")
@@ -12435,21 +13734,21 @@ func (s BranchWithProtection) Encode(e *jx.Writer) {
 
 	e.RawStr("\"protection_url\"" + ":")
 	json.EncodeURI(e, s.ProtectionURL)
-	e.Comma()
+
+	if s.Pattern.Set {
+		e.Comma()
+	}
 	if s.Pattern.Set {
 		e.RawStr("\"pattern\"" + ":")
 		s.Pattern.Encode(e)
 	}
-	if s.Pattern.Set {
+
+	if s.RequiredApprovingReviewCount.Set {
 		e.Comma()
 	}
 	if s.RequiredApprovingReviewCount.Set {
 		e.RawStr("\"required_approving_review_count\"" + ":")
 		s.RequiredApprovingReviewCount.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -12511,17 +13810,23 @@ func (s *BranchWithProtection) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s BranchWithProtectionLinks) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"html\"" + ":")
 	e.Str(s.HTML)
+
 	e.Comma()
 
 	e.RawStr("\"self\"" + ":")
 	json.EncodeURI(e, s.Self)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -12554,17 +13859,29 @@ func (s *BranchWithProtectionLinks) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s CheckAnnotation) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"path\"" + ":")
 	e.Str(s.Path)
+
 	e.Comma()
 
 	e.RawStr("\"start_line\"" + ":")
 	e.Int(s.StartLine)
+
 	e.Comma()
 
 	e.RawStr("\"end_line\"" + ":")
 	e.Int(s.EndLine)
+
 	e.Comma()
 
 	e.RawStr("\"start_column\"" + ":")
@@ -12599,10 +13916,6 @@ func (s CheckAnnotation) Encode(e *jx.Writer) {
 
 	e.RawStr("\"blob_href\"" + ":")
 	e.Str(s.BlobHref)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -12671,17 +13984,29 @@ func (s *CheckAnnotation) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s CheckRun) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"id\"" + ":")
 	e.Int(s.ID)
+
 	e.Comma()
 
 	e.RawStr("\"head_sha\"" + ":")
 	e.Str(s.HeadSha)
+
 	e.Comma()
 
 	e.RawStr("\"node_id\"" + ":")
 	e.Str(s.NodeID)
+
 	e.Comma()
 
 	e.RawStr("\"external_id\"" + ":")
@@ -12691,6 +14016,7 @@ func (s CheckRun) Encode(e *jx.Writer) {
 
 	e.RawStr("\"url\"" + ":")
 	e.Str(s.URL)
+
 	e.Comma()
 
 	e.RawStr("\"html_url\"" + ":")
@@ -12730,6 +14056,7 @@ func (s CheckRun) Encode(e *jx.Writer) {
 
 	e.RawStr("\"name\"" + ":")
 	e.Str(s.Name)
+
 	e.Comma()
 
 	e.RawStr("\"check_suite\"" + ":")
@@ -12744,14 +14071,13 @@ func (s CheckRun) Encode(e *jx.Writer) {
 
 	e.RawStr("\"pull_requests\"" + ":")
 	e.Str(s.PullRequests)
-	e.Comma()
+
+	if s.Deployment.Set {
+		e.Comma()
+	}
 	if s.Deployment.Set {
 		e.RawStr("\"deployment\"" + ":")
 		s.Deployment.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -12854,13 +14180,18 @@ func (s *CheckRun) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s CheckRunCheckSuite) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"id\"" + ":")
 	e.Int(s.ID)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -12924,6 +14255,16 @@ func (s *CheckRunConclusion) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s CheckRunOutput) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"title\"" + ":")
 	s.Title.Encode(e)
@@ -12942,14 +14283,11 @@ func (s CheckRunOutput) Encode(e *jx.Writer) {
 
 	e.RawStr("\"annotations_count\"" + ":")
 	e.Int(s.AnnotationsCount)
+
 	e.Comma()
 
 	e.RawStr("\"annotations_url\"" + ":")
 	json.EncodeURI(e, s.AnnotationsURL)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -13023,13 +14361,24 @@ func (s *CheckRunStatus) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s CheckSuite) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"id\"" + ":")
 	e.Int(s.ID)
+
 	e.Comma()
 
 	e.RawStr("\"node_id\"" + ":")
 	e.Str(s.NodeID)
+
 	e.Comma()
 
 	e.RawStr("\"head_branch\"" + ":")
@@ -13039,6 +14388,7 @@ func (s CheckSuite) Encode(e *jx.Writer) {
 
 	e.RawStr("\"head_sha\"" + ":")
 	e.Str(s.HeadSha)
+
 	e.Comma()
 
 	e.RawStr("\"status\"" + ":")
@@ -13114,14 +14464,11 @@ func (s CheckSuite) Encode(e *jx.Writer) {
 
 	e.RawStr("\"latest_check_runs_count\"" + ":")
 	e.Int(s.LatestCheckRunsCount)
+
 	e.Comma()
 
 	e.RawStr("\"check_runs_url\"" + ":")
 	e.Str(s.CheckRunsURL)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -13265,6 +14612,16 @@ func (s *CheckSuiteConclusion) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s CheckSuitePreference) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"preferences\"" + ":")
 	s.Preferences.Encode(e)
@@ -13273,10 +14630,6 @@ func (s CheckSuitePreference) Encode(e *jx.Writer) {
 
 	e.RawStr("\"repository\"" + ":")
 	s.Repository.Encode(e)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -13305,6 +14658,17 @@ func (s *CheckSuitePreference) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s CheckSuitePreferencePreferences) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.AutoTriggerChecks != nil {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.AutoTriggerChecks != nil {
 		e.RawStr("\"auto_trigger_checks\"" + ":")
 		e.ArrStart()
@@ -13320,10 +14684,6 @@ func (s CheckSuitePreferencePreferences) Encode(e *jx.Writer) {
 			}
 		}
 		e.ArrEnd()
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -13357,17 +14717,23 @@ func (s *CheckSuitePreferencePreferences) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s CheckSuitePreferencePreferencesAutoTriggerChecksItem) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"app_id\"" + ":")
 	e.Int(s.AppID)
+
 	e.Comma()
 
 	e.RawStr("\"setting\"" + ":")
 	e.Bool(s.Setting)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -13477,13 +14843,18 @@ func (s *ChecksCreateSuiteApplicationJSONOK) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s ChecksCreateSuiteReq) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"head_sha\"" + ":")
 	e.Str(s.HeadSha)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -13537,9 +14908,19 @@ func (s *ChecksListForRefFilter) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s ChecksListForRefOK) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"total_count\"" + ":")
 	e.Int(s.TotalCount)
+
 	e.Comma()
 
 	e.RawStr("\"check_runs\"" + ":")
@@ -13556,10 +14937,6 @@ func (s ChecksListForRefOK) Encode(e *jx.Writer) {
 		}
 	}
 	e.ArrEnd()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -13654,9 +15031,19 @@ func (s *ChecksListForSuiteFilter) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s ChecksListForSuiteOK) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"total_count\"" + ":")
 	e.Int(s.TotalCount)
+
 	e.Comma()
 
 	e.RawStr("\"check_runs\"" + ":")
@@ -13673,10 +15060,6 @@ func (s ChecksListForSuiteOK) Encode(e *jx.Writer) {
 		}
 	}
 	e.ArrEnd()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -13744,9 +15127,19 @@ func (s *ChecksListForSuiteStatus) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s ChecksListSuitesForRefOK) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"total_count\"" + ":")
 	e.Int(s.TotalCount)
+
 	e.Comma()
 
 	e.RawStr("\"check_suites\"" + ":")
@@ -13763,10 +15156,6 @@ func (s ChecksListSuitesForRefOK) Encode(e *jx.Writer) {
 		}
 	}
 	e.ArrEnd()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -13805,10 +15194,10 @@ func (s *ChecksListSuitesForRefOK) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s ChecksRerequestSuiteCreated) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -13829,6 +15218,17 @@ func (s *ChecksRerequestSuiteCreated) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s ChecksSetSuitesPreferencesReq) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.AutoTriggerChecks != nil {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.AutoTriggerChecks != nil {
 		e.RawStr("\"auto_trigger_checks\"" + ":")
 		e.ArrStart()
@@ -13844,10 +15244,6 @@ func (s ChecksSetSuitesPreferencesReq) Encode(e *jx.Writer) {
 			}
 		}
 		e.ArrEnd()
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -13881,17 +15277,23 @@ func (s *ChecksSetSuitesPreferencesReq) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s ChecksSetSuitesPreferencesReqAutoTriggerChecksItem) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"app_id\"" + ":")
 	e.Int(s.AppID)
+
 	e.Comma()
 
 	e.RawStr("\"setting\"" + ":")
 	e.Bool(s.Setting)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -13924,13 +15326,24 @@ func (s *ChecksSetSuitesPreferencesReqAutoTriggerChecksItem) Decode(d *jx.Decode
 // Encode implements json.Marshaler.
 func (s CloneTraffic) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"count\"" + ":")
 	e.Int(s.Count)
+
 	e.Comma()
 
 	e.RawStr("\"uniques\"" + ":")
 	e.Int(s.Uniques)
+
 	e.Comma()
 
 	e.RawStr("\"clones\"" + ":")
@@ -13947,10 +15360,6 @@ func (s CloneTraffic) Encode(e *jx.Writer) {
 		}
 	}
 	e.ArrEnd()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -14041,32 +15450,41 @@ func (s *CodeFrequencyStat) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s CodeOfConduct) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"key\"" + ":")
 	e.Str(s.Key)
+
 	e.Comma()
 
 	e.RawStr("\"name\"" + ":")
 	e.Str(s.Name)
+
 	e.Comma()
 
 	e.RawStr("\"url\"" + ":")
 	json.EncodeURI(e, s.URL)
-	e.Comma()
+
+	if s.Body.Set {
+		e.Comma()
+	}
 	if s.Body.Set {
 		e.RawStr("\"body\"" + ":")
 		s.Body.Encode(e)
 	}
-	if s.Body.Set {
-		e.Comma()
-	}
+
+	e.Comma()
 
 	e.RawStr("\"html_url\"" + ":")
 	s.HTMLURL.Encode(e)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -14114,25 +15532,33 @@ func (s *CodeOfConduct) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s CodeOfConductSimple) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"url\"" + ":")
 	json.EncodeURI(e, s.URL)
+
 	e.Comma()
 
 	e.RawStr("\"key\"" + ":")
 	e.Str(s.Key)
+
 	e.Comma()
 
 	e.RawStr("\"name\"" + ":")
 	e.Str(s.Name)
+
 	e.Comma()
 
 	e.RawStr("\"html_url\"" + ":")
 	s.HTMLURL.Encode(e)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -14175,6 +15601,16 @@ func (s *CodeOfConductSimple) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s CodeScanningAlert) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"number\"" + ":")
 	s.Number.Encode(e)
@@ -14194,14 +15630,15 @@ func (s CodeScanningAlert) Encode(e *jx.Writer) {
 	e.RawStr("\"html_url\"" + ":")
 	s.HTMLURL.Encode(e)
 
-	e.Comma()
+	if s.Instances.Set {
+		e.Comma()
+	}
 	if s.Instances.Set {
 		e.RawStr("\"instances\"" + ":")
 		s.Instances.Encode(e)
 	}
-	if s.Instances.Set {
-		e.Comma()
-	}
+
+	e.Comma()
 
 	e.RawStr("\"instances_url\"" + ":")
 	s.InstancesURL.Encode(e)
@@ -14240,10 +15677,6 @@ func (s CodeScanningAlert) Encode(e *jx.Writer) {
 
 	e.RawStr("\"most_recent_instance\"" + ":")
 	s.MostRecentInstance.Encode(e)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -14459,68 +15892,115 @@ func (s *CodeScanningAlertEnvironment) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s CodeScanningAlertInstance) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.Ref.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.Ref.Set {
 		e.RawStr("\"ref\"" + ":")
 		s.Ref.Encode(e)
 	}
-	if s.Ref.Set {
-		e.Comma()
+
+	if s.AnalysisKey.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.AnalysisKey.Set {
 		e.RawStr("\"analysis_key\"" + ":")
 		s.AnalysisKey.Encode(e)
 	}
-	if s.AnalysisKey.Set {
-		e.Comma()
+
+	if s.Environment.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Environment.Set {
 		e.RawStr("\"environment\"" + ":")
 		s.Environment.Encode(e)
 	}
-	if s.Environment.Set {
-		e.Comma()
+
+	if s.Category.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Category.Set {
 		e.RawStr("\"category\"" + ":")
 		s.Category.Encode(e)
 	}
-	if s.Category.Set {
-		e.Comma()
+
+	if s.State.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.State.Set {
 		e.RawStr("\"state\"" + ":")
 		s.State.Encode(e)
 	}
-	if s.State.Set {
-		e.Comma()
+
+	if s.CommitSha.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.CommitSha.Set {
 		e.RawStr("\"commit_sha\"" + ":")
 		s.CommitSha.Encode(e)
 	}
-	if s.CommitSha.Set {
-		e.Comma()
+
+	if s.Message.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Message.Set {
 		e.RawStr("\"message\"" + ":")
 		s.Message.Encode(e)
 	}
-	if s.Message.Set {
-		e.Comma()
+
+	if s.Location.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Location.Set {
 		e.RawStr("\"location\"" + ":")
 		s.Location.Encode(e)
 	}
-	if s.Location.Set {
-		e.Comma()
+
+	if s.HTMLURL.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.HTMLURL.Set {
 		e.RawStr("\"html_url\"" + ":")
 		s.HTMLURL.Encode(e)
 	}
-	if s.HTMLURL.Set {
-		e.Comma()
+
+	if s.Classifications != nil {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Classifications != nil {
 		e.RawStr("\"classifications\"" + ":")
@@ -14537,10 +16017,6 @@ func (s CodeScanningAlertInstance) Encode(e *jx.Writer) {
 			}
 		}
 		e.ArrEnd()
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -14619,13 +16095,20 @@ func (s *CodeScanningAlertInstance) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s CodeScanningAlertInstanceMessage) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.Text.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.Text.Set {
 		e.RawStr("\"text\"" + ":")
 		s.Text.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -14652,6 +16135,16 @@ func (s *CodeScanningAlertInstanceMessage) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s CodeScanningAlertItems) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"number\"" + ":")
 	s.Number.Encode(e)
@@ -14710,10 +16203,6 @@ func (s CodeScanningAlertItems) Encode(e *jx.Writer) {
 
 	e.RawStr("\"most_recent_instance\"" + ":")
 	s.MostRecentInstance.Encode(e)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -14812,41 +16301,64 @@ func (s *CodeScanningAlertItems) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s CodeScanningAlertLocation) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.Path.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.Path.Set {
 		e.RawStr("\"path\"" + ":")
 		s.Path.Encode(e)
 	}
-	if s.Path.Set {
-		e.Comma()
+
+	if s.StartLine.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.StartLine.Set {
 		e.RawStr("\"start_line\"" + ":")
 		s.StartLine.Encode(e)
 	}
-	if s.StartLine.Set {
-		e.Comma()
+
+	if s.EndLine.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.EndLine.Set {
 		e.RawStr("\"end_line\"" + ":")
 		s.EndLine.Encode(e)
 	}
-	if s.EndLine.Set {
-		e.Comma()
+
+	if s.StartColumn.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.StartColumn.Set {
 		e.RawStr("\"start_column\"" + ":")
 		s.StartColumn.Encode(e)
 	}
-	if s.StartColumn.Set {
-		e.Comma()
+
+	if s.EndColumn.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.EndColumn.Set {
 		e.RawStr("\"end_column\"" + ":")
 		s.EndColumn.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -14893,62 +16405,97 @@ func (s *CodeScanningAlertLocation) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s CodeScanningAlertRule) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.ID.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.ID.Set {
 		e.RawStr("\"id\"" + ":")
 		s.ID.Encode(e)
 	}
-	if s.ID.Set {
-		e.Comma()
+
+	if s.Name.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Name.Set {
 		e.RawStr("\"name\"" + ":")
 		s.Name.Encode(e)
 	}
-	if s.Name.Set {
-		e.Comma()
+
+	if s.Severity.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Severity.Set {
 		e.RawStr("\"severity\"" + ":")
 		s.Severity.Encode(e)
 	}
-	if s.Severity.Set {
-		e.Comma()
+
+	if s.SecuritySeverityLevel.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.SecuritySeverityLevel.Set {
 		e.RawStr("\"security_severity_level\"" + ":")
 		s.SecuritySeverityLevel.Encode(e)
 	}
-	if s.SecuritySeverityLevel.Set {
-		e.Comma()
+
+	if s.Description.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Description.Set {
 		e.RawStr("\"description\"" + ":")
 		s.Description.Encode(e)
 	}
-	if s.Description.Set {
-		e.Comma()
+
+	if s.FullDescription.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.FullDescription.Set {
 		e.RawStr("\"full_description\"" + ":")
 		s.FullDescription.Encode(e)
 	}
-	if s.FullDescription.Set {
-		e.Comma()
+
+	if s.Tags.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Tags.Set {
 		e.RawStr("\"tags\"" + ":")
 		s.Tags.Encode(e)
 	}
-	if s.Tags.Set {
-		e.Comma()
+
+	if s.Help.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Help.Set {
 		e.RawStr("\"help\"" + ":")
 		s.Help.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -15072,34 +16619,53 @@ func (s *CodeScanningAlertRuleSeverity) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s CodeScanningAlertRuleSummary) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.ID.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.ID.Set {
 		e.RawStr("\"id\"" + ":")
 		s.ID.Encode(e)
 	}
-	if s.ID.Set {
-		e.Comma()
+
+	if s.Name.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Name.Set {
 		e.RawStr("\"name\"" + ":")
 		s.Name.Encode(e)
 	}
-	if s.Name.Set {
-		e.Comma()
+
+	if s.Severity.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Severity.Set {
 		e.RawStr("\"severity\"" + ":")
 		s.Severity.Encode(e)
 	}
-	if s.Severity.Set {
-		e.Comma()
+
+	if s.Description.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Description.Set {
 		e.RawStr("\"description\"" + ":")
 		s.Description.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -15230,6 +16796,16 @@ func (s *CodeScanningAlertState) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s CodeScanningAnalysis) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"ref\"" + ":")
 	s.Ref.Encode(e)
@@ -15249,17 +16825,19 @@ func (s CodeScanningAnalysis) Encode(e *jx.Writer) {
 	e.RawStr("\"environment\"" + ":")
 	s.Environment.Encode(e)
 
-	e.Comma()
+	if s.Category.Set {
+		e.Comma()
+	}
 	if s.Category.Set {
 		e.RawStr("\"category\"" + ":")
 		s.Category.Encode(e)
 	}
-	if s.Category.Set {
-		e.Comma()
-	}
+
+	e.Comma()
 
 	e.RawStr("\"error\"" + ":")
 	e.Str(s.Error)
+
 	e.Comma()
 
 	e.RawStr("\"created_at\"" + ":")
@@ -15269,14 +16847,17 @@ func (s CodeScanningAnalysis) Encode(e *jx.Writer) {
 
 	e.RawStr("\"results_count\"" + ":")
 	e.Int(s.ResultsCount)
+
 	e.Comma()
 
 	e.RawStr("\"rules_count\"" + ":")
 	e.Int(s.RulesCount)
+
 	e.Comma()
 
 	e.RawStr("\"id\"" + ":")
 	e.Int(s.ID)
+
 	e.Comma()
 
 	e.RawStr("\"url\"" + ":")
@@ -15296,18 +16877,18 @@ func (s CodeScanningAnalysis) Encode(e *jx.Writer) {
 
 	e.RawStr("\"deletable\"" + ":")
 	e.Bool(s.Deletable)
+
 	e.Comma()
 
 	e.RawStr("\"warning\"" + ":")
 	e.Str(s.Warning)
-	e.Comma()
+
+	if s.ToolName.Set {
+		e.Comma()
+	}
 	if s.ToolName.Set {
 		e.RawStr("\"tool_name\"" + ":")
 		s.ToolName.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -15553,6 +17134,16 @@ func (s *CodeScanningAnalysisCreatedAt) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s CodeScanningAnalysisDeletion) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"next_analysis_url\"" + ":")
 	s.NextAnalysisURL.Encode(e)
@@ -15561,10 +17152,6 @@ func (s CodeScanningAnalysisDeletion) Encode(e *jx.Writer) {
 
 	e.RawStr("\"confirm_delete_url\"" + ":")
 	s.ConfirmDeleteURL.Encode(e)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -15671,27 +17258,42 @@ func (s *CodeScanningAnalysisSarifID) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s CodeScanningAnalysisTool) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.Name.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.Name.Set {
 		e.RawStr("\"name\"" + ":")
 		s.Name.Encode(e)
 	}
-	if s.Name.Set {
-		e.Comma()
+
+	if s.Version.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Version.Set {
 		e.RawStr("\"version\"" + ":")
 		s.Version.Encode(e)
 	}
-	if s.Version.Set {
-		e.Comma()
+
+	if s.GUID.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.GUID.Set {
 		e.RawStr("\"guid\"" + ":")
 		s.GUID.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -16000,10 +17602,10 @@ func (s *CodeScanningGetAnalysisApplicationJSONNotFound) Decode(d *jx.Decoder) e
 // Encode implements json.Marshaler.
 func (s CodeScanningGetSarifNotFound) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -16326,20 +17928,31 @@ func (s *CodeScanningRef) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s CodeScanningSarifsReceipt) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.ID.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.ID.Set {
 		e.RawStr("\"id\"" + ":")
 		s.ID.Encode(e)
 	}
-	if s.ID.Set {
-		e.Comma()
+
+	if s.URL.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.URL.Set {
 		e.RawStr("\"url\"" + ":")
 		s.URL.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -16371,20 +17984,31 @@ func (s *CodeScanningSarifsReceipt) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s CodeScanningSarifsStatus) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.ProcessingStatus.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.ProcessingStatus.Set {
 		e.RawStr("\"processing_status\"" + ":")
 		s.ProcessingStatus.Encode(e)
 	}
-	if s.ProcessingStatus.Set {
-		e.Comma()
+
+	if s.AnalysesURL.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.AnalysesURL.Set {
 		e.RawStr("\"analyses_url\"" + ":")
 		s.AnalysesURL.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -16491,18 +18115,26 @@ func (s *CodeScanningUpdateAlertApplicationJSONNotFound) Decode(d *jx.Decoder) e
 // Encode implements json.Marshaler.
 func (s CodeScanningUpdateAlertReq) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"state\"" + ":")
 	s.State.Encode(e)
 
-	e.Comma()
+	if s.DismissedReason.Set {
+		e.Comma()
+	}
 	if s.DismissedReason.Set {
 		e.RawStr("\"dismissed_reason\"" + ":")
 		s.DismissedReason.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -16581,10 +18213,10 @@ func (s *CodeScanningUploadSarifApplicationJSONNotFound) Decode(d *jx.Decoder) e
 // Encode implements json.Marshaler.
 func (s CodeScanningUploadSarifBadRequest) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -16605,6 +18237,16 @@ func (s *CodeScanningUploadSarifBadRequest) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s CodeScanningUploadSarifReq) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"commit_sha\"" + ":")
 	s.CommitSha.Encode(e)
@@ -16619,28 +18261,28 @@ func (s CodeScanningUploadSarifReq) Encode(e *jx.Writer) {
 	e.RawStr("\"sarif\"" + ":")
 	s.Sarif.Encode(e)
 
-	e.Comma()
+	if s.CheckoutURI.Set {
+		e.Comma()
+	}
 	if s.CheckoutURI.Set {
 		e.RawStr("\"checkout_uri\"" + ":")
 		s.CheckoutURI.Encode(e)
 	}
-	if s.CheckoutURI.Set {
+
+	if s.StartedAt.Set {
 		e.Comma()
 	}
 	if s.StartedAt.Set {
 		e.RawStr("\"started_at\"" + ":")
 		s.StartedAt.Encode(e, json.EncodeDateTime)
 	}
-	if s.StartedAt.Set {
+
+	if s.ToolName.Set {
 		e.Comma()
 	}
 	if s.ToolName.Set {
 		e.RawStr("\"tool_name\"" + ":")
 		s.ToolName.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -16707,10 +18349,10 @@ func (s *CodeScanningUploadSarifReq) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s CodeScanningUploadSarifRequestEntityTooLarge) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -16731,29 +18373,44 @@ func (s *CodeScanningUploadSarifRequestEntityTooLarge) Decode(d *jx.Decoder) err
 // Encode implements json.Marshaler.
 func (s CodeSearchResultItem) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"name\"" + ":")
 	e.Str(s.Name)
+
 	e.Comma()
 
 	e.RawStr("\"path\"" + ":")
 	e.Str(s.Path)
+
 	e.Comma()
 
 	e.RawStr("\"sha\"" + ":")
 	e.Str(s.Sha)
+
 	e.Comma()
 
 	e.RawStr("\"url\"" + ":")
 	json.EncodeURI(e, s.URL)
+
 	e.Comma()
 
 	e.RawStr("\"git_url\"" + ":")
 	json.EncodeURI(e, s.GitURL)
+
 	e.Comma()
 
 	e.RawStr("\"html_url\"" + ":")
 	json.EncodeURI(e, s.HTMLURL)
+
 	e.Comma()
 
 	e.RawStr("\"repository\"" + ":")
@@ -16763,26 +18420,32 @@ func (s CodeSearchResultItem) Encode(e *jx.Writer) {
 
 	e.RawStr("\"score\"" + ":")
 	e.Float64(s.Score)
-	e.Comma()
+
+	if s.FileSize.Set {
+		e.Comma()
+	}
 	if s.FileSize.Set {
 		e.RawStr("\"file_size\"" + ":")
 		s.FileSize.Encode(e)
 	}
-	if s.FileSize.Set {
+
+	if s.Language.Set {
 		e.Comma()
 	}
 	if s.Language.Set {
 		e.RawStr("\"language\"" + ":")
 		s.Language.Encode(e)
 	}
-	if s.Language.Set {
+
+	if s.LastModifiedAt.Set {
 		e.Comma()
 	}
 	if s.LastModifiedAt.Set {
 		e.RawStr("\"last_modified_at\"" + ":")
 		s.LastModifiedAt.Encode(e, json.EncodeDateTime)
 	}
-	if s.LastModifiedAt.Set {
+
+	if s.LineNumbers != nil {
 		e.Comma()
 	}
 	if s.LineNumbers != nil {
@@ -16801,16 +18464,13 @@ func (s CodeSearchResultItem) Encode(e *jx.Writer) {
 		}
 		e.ArrEnd()
 	}
-	if s.LineNumbers != nil {
+
+	if s.TextMatches != nil {
 		e.Comma()
 	}
 	if s.TextMatches != nil {
 		e.RawStr("\"text_matches\"" + ":")
 		s.TextMatches.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -16970,35 +18630,50 @@ func (s *CodesOfConductGetAllCodesOfConductOKApplicationJSON) Decode(d *jx.Decod
 // Encode implements json.Marshaler.
 func (s Collaborator) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"login\"" + ":")
 	e.Str(s.Login)
+
 	e.Comma()
 
 	e.RawStr("\"id\"" + ":")
 	e.Int(s.ID)
-	e.Comma()
+
+	if s.Email.Set {
+		e.Comma()
+	}
 	if s.Email.Set {
 		e.RawStr("\"email\"" + ":")
 		s.Email.Encode(e)
 	}
-	if s.Email.Set {
+
+	if s.Name.Set {
 		e.Comma()
 	}
 	if s.Name.Set {
 		e.RawStr("\"name\"" + ":")
 		s.Name.Encode(e)
 	}
-	if s.Name.Set {
-		e.Comma()
-	}
+
+	e.Comma()
 
 	e.RawStr("\"node_id\"" + ":")
 	e.Str(s.NodeID)
+
 	e.Comma()
 
 	e.RawStr("\"avatar_url\"" + ":")
 	json.EncodeURI(e, s.AvatarURL)
+
 	e.Comma()
 
 	e.RawStr("\"gravatar_id\"" + ":")
@@ -17008,62 +18683,73 @@ func (s Collaborator) Encode(e *jx.Writer) {
 
 	e.RawStr("\"url\"" + ":")
 	json.EncodeURI(e, s.URL)
+
 	e.Comma()
 
 	e.RawStr("\"html_url\"" + ":")
 	json.EncodeURI(e, s.HTMLURL)
+
 	e.Comma()
 
 	e.RawStr("\"followers_url\"" + ":")
 	json.EncodeURI(e, s.FollowersURL)
+
 	e.Comma()
 
 	e.RawStr("\"following_url\"" + ":")
 	e.Str(s.FollowingURL)
+
 	e.Comma()
 
 	e.RawStr("\"gists_url\"" + ":")
 	e.Str(s.GistsURL)
+
 	e.Comma()
 
 	e.RawStr("\"starred_url\"" + ":")
 	e.Str(s.StarredURL)
+
 	e.Comma()
 
 	e.RawStr("\"subscriptions_url\"" + ":")
 	json.EncodeURI(e, s.SubscriptionsURL)
+
 	e.Comma()
 
 	e.RawStr("\"organizations_url\"" + ":")
 	json.EncodeURI(e, s.OrganizationsURL)
+
 	e.Comma()
 
 	e.RawStr("\"repos_url\"" + ":")
 	json.EncodeURI(e, s.ReposURL)
+
 	e.Comma()
 
 	e.RawStr("\"events_url\"" + ":")
 	e.Str(s.EventsURL)
+
 	e.Comma()
 
 	e.RawStr("\"received_events_url\"" + ":")
 	json.EncodeURI(e, s.ReceivedEventsURL)
+
 	e.Comma()
 
 	e.RawStr("\"type\"" + ":")
 	e.Str(s.Type)
+
 	e.Comma()
 
 	e.RawStr("\"site_admin\"" + ":")
 	e.Bool(s.SiteAdmin)
-	e.Comma()
+
+	if s.Permissions.Set {
+		e.Comma()
+	}
 	if s.Permissions.Set {
 		e.RawStr("\"permissions\"" + ":")
 		s.Permissions.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -17206,35 +18892,44 @@ func (s *Collaborator) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s CollaboratorPermissions) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"pull\"" + ":")
 	e.Bool(s.Pull)
-	e.Comma()
+
+	if s.Triage.Set {
+		e.Comma()
+	}
 	if s.Triage.Set {
 		e.RawStr("\"triage\"" + ":")
 		s.Triage.Encode(e)
 	}
-	if s.Triage.Set {
-		e.Comma()
-	}
+
+	e.Comma()
 
 	e.RawStr("\"push\"" + ":")
 	e.Bool(s.Push)
-	e.Comma()
+
+	if s.Maintain.Set {
+		e.Comma()
+	}
 	if s.Maintain.Set {
 		e.RawStr("\"maintain\"" + ":")
 		s.Maintain.Encode(e)
 	}
-	if s.Maintain.Set {
-		e.Comma()
-	}
+
+	e.Comma()
 
 	e.RawStr("\"admin\"" + ":")
 	e.Bool(s.Admin)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -17283,21 +18978,28 @@ func (s *CollaboratorPermissions) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s CombinedBillingUsage) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"days_left_in_billing_cycle\"" + ":")
 	e.Int(s.DaysLeftInBillingCycle)
+
 	e.Comma()
 
 	e.RawStr("\"estimated_paid_storage_for_month\"" + ":")
 	e.Int(s.EstimatedPaidStorageForMonth)
+
 	e.Comma()
 
 	e.RawStr("\"estimated_storage_for_month\"" + ":")
 	e.Int(s.EstimatedStorageForMonth)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -17336,9 +19038,19 @@ func (s *CombinedBillingUsage) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s CombinedCommitStatus) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"state\"" + ":")
 	e.Str(s.State)
+
 	e.Comma()
 
 	e.RawStr("\"statuses\"" + ":")
@@ -17360,10 +19072,12 @@ func (s CombinedCommitStatus) Encode(e *jx.Writer) {
 
 	e.RawStr("\"sha\"" + ":")
 	e.Str(s.Sha)
+
 	e.Comma()
 
 	e.RawStr("\"total_count\"" + ":")
 	e.Int(s.TotalCount)
+
 	e.Comma()
 
 	e.RawStr("\"repository\"" + ":")
@@ -17373,14 +19087,11 @@ func (s CombinedCommitStatus) Encode(e *jx.Writer) {
 
 	e.RawStr("\"commit_url\"" + ":")
 	json.EncodeURI(e, s.CommitURL)
+
 	e.Comma()
 
 	e.RawStr("\"url\"" + ":")
 	json.EncodeURI(e, s.URL)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -17447,25 +19158,39 @@ func (s *CombinedCommitStatus) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s Commit) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"url\"" + ":")
 	json.EncodeURI(e, s.URL)
+
 	e.Comma()
 
 	e.RawStr("\"sha\"" + ":")
 	e.Str(s.Sha)
+
 	e.Comma()
 
 	e.RawStr("\"node_id\"" + ":")
 	e.Str(s.NodeID)
+
 	e.Comma()
 
 	e.RawStr("\"html_url\"" + ":")
 	json.EncodeURI(e, s.HTMLURL)
+
 	e.Comma()
 
 	e.RawStr("\"comments_url\"" + ":")
 	json.EncodeURI(e, s.CommentsURL)
+
 	e.Comma()
 
 	e.RawStr("\"commit\"" + ":")
@@ -17498,12 +19223,15 @@ func (s Commit) Encode(e *jx.Writer) {
 	}
 	e.ArrEnd()
 
-	e.Comma()
+	if s.Stats.Set {
+		e.Comma()
+	}
 	if s.Stats.Set {
 		e.RawStr("\"stats\"" + ":")
 		s.Stats.Encode(e)
 	}
-	if s.Stats.Set {
+
+	if s.Files != nil {
 		e.Comma()
 	}
 	if s.Files != nil {
@@ -17521,10 +19249,6 @@ func (s Commit) Encode(e *jx.Writer) {
 			}
 		}
 		e.ArrEnd()
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -17617,6 +19341,16 @@ func (s *Commit) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s CommitActivity) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"days\"" + ":")
 	e.ArrStart()
@@ -17637,14 +19371,11 @@ func (s CommitActivity) Encode(e *jx.Writer) {
 
 	e.RawStr("\"total\"" + ":")
 	e.Int(s.Total)
+
 	e.Comma()
 
 	e.RawStr("\"week\"" + ":")
 	e.Int(s.Week)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -17691,25 +19422,39 @@ func (s *CommitActivity) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s CommitComment) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"html_url\"" + ":")
 	json.EncodeURI(e, s.HTMLURL)
+
 	e.Comma()
 
 	e.RawStr("\"url\"" + ":")
 	json.EncodeURI(e, s.URL)
+
 	e.Comma()
 
 	e.RawStr("\"id\"" + ":")
 	e.Int(s.ID)
+
 	e.Comma()
 
 	e.RawStr("\"node_id\"" + ":")
 	e.Str(s.NodeID)
+
 	e.Comma()
 
 	e.RawStr("\"body\"" + ":")
 	e.Str(s.Body)
+
 	e.Comma()
 
 	e.RawStr("\"path\"" + ":")
@@ -17729,6 +19474,7 @@ func (s CommitComment) Encode(e *jx.Writer) {
 
 	e.RawStr("\"commit_id\"" + ":")
 	e.Str(s.CommitID)
+
 	e.Comma()
 
 	e.RawStr("\"user\"" + ":")
@@ -17738,23 +19484,23 @@ func (s CommitComment) Encode(e *jx.Writer) {
 
 	e.RawStr("\"created_at\"" + ":")
 	json.EncodeDateTime(e, s.CreatedAt)
+
 	e.Comma()
 
 	e.RawStr("\"updated_at\"" + ":")
 	json.EncodeDateTime(e, s.UpdatedAt)
+
 	e.Comma()
 
 	e.RawStr("\"author_association\"" + ":")
 	s.AuthorAssociation.Encode(e)
 
-	e.Comma()
+	if s.Reactions.Set {
+		e.Comma()
+	}
 	if s.Reactions.Set {
 		e.RawStr("\"reactions\"" + ":")
 		s.Reactions.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -17849,9 +19595,19 @@ func (s *CommitComment) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s CommitCommit) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"url\"" + ":")
 	json.EncodeURI(e, s.URL)
+
 	e.Comma()
 
 	e.RawStr("\"author\"" + ":")
@@ -17866,23 +19622,23 @@ func (s CommitCommit) Encode(e *jx.Writer) {
 
 	e.RawStr("\"message\"" + ":")
 	e.Str(s.Message)
+
 	e.Comma()
 
 	e.RawStr("\"comment_count\"" + ":")
 	e.Int(s.CommentCount)
+
 	e.Comma()
 
 	e.RawStr("\"tree\"" + ":")
 	s.Tree.Encode(e)
 
-	e.Comma()
+	if s.Verification.Set {
+		e.Comma()
+	}
 	if s.Verification.Set {
 		e.RawStr("\"verification\"" + ":")
 		s.Verification.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -17939,17 +19695,23 @@ func (s *CommitCommit) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s CommitCommitTree) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"sha\"" + ":")
 	e.Str(s.Sha)
+
 	e.Comma()
 
 	e.RawStr("\"url\"" + ":")
 	json.EncodeURI(e, s.URL)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -17982,25 +19744,39 @@ func (s *CommitCommitTree) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s CommitComparison) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"url\"" + ":")
 	json.EncodeURI(e, s.URL)
+
 	e.Comma()
 
 	e.RawStr("\"html_url\"" + ":")
 	json.EncodeURI(e, s.HTMLURL)
+
 	e.Comma()
 
 	e.RawStr("\"permalink_url\"" + ":")
 	json.EncodeURI(e, s.PermalinkURL)
+
 	e.Comma()
 
 	e.RawStr("\"diff_url\"" + ":")
 	json.EncodeURI(e, s.DiffURL)
+
 	e.Comma()
 
 	e.RawStr("\"patch_url\"" + ":")
 	json.EncodeURI(e, s.PatchURL)
+
 	e.Comma()
 
 	e.RawStr("\"base_commit\"" + ":")
@@ -18020,14 +19796,17 @@ func (s CommitComparison) Encode(e *jx.Writer) {
 
 	e.RawStr("\"ahead_by\"" + ":")
 	e.Int(s.AheadBy)
+
 	e.Comma()
 
 	e.RawStr("\"behind_by\"" + ":")
 	e.Int(s.BehindBy)
+
 	e.Comma()
 
 	e.RawStr("\"total_commits\"" + ":")
 	e.Int(s.TotalCommits)
+
 	e.Comma()
 
 	e.RawStr("\"commits\"" + ":")
@@ -18045,7 +19824,9 @@ func (s CommitComparison) Encode(e *jx.Writer) {
 	}
 	e.ArrEnd()
 
-	e.Comma()
+	if s.Files != nil {
+		e.Comma()
+	}
 	if s.Files != nil {
 		e.RawStr("\"files\"" + ":")
 		e.ArrStart()
@@ -18061,10 +19842,6 @@ func (s CommitComparison) Encode(e *jx.Writer) {
 			}
 		}
 		e.ArrEnd()
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -18201,83 +19978,130 @@ func (s *CommitComparisonStatus) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s CommitFilesItem) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.Filename.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.Filename.Set {
 		e.RawStr("\"filename\"" + ":")
 		s.Filename.Encode(e)
 	}
-	if s.Filename.Set {
-		e.Comma()
+
+	if s.Additions.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Additions.Set {
 		e.RawStr("\"additions\"" + ":")
 		s.Additions.Encode(e)
 	}
-	if s.Additions.Set {
-		e.Comma()
+
+	if s.Deletions.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Deletions.Set {
 		e.RawStr("\"deletions\"" + ":")
 		s.Deletions.Encode(e)
 	}
-	if s.Deletions.Set {
-		e.Comma()
+
+	if s.Changes.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Changes.Set {
 		e.RawStr("\"changes\"" + ":")
 		s.Changes.Encode(e)
 	}
-	if s.Changes.Set {
-		e.Comma()
+
+	if s.Status.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Status.Set {
 		e.RawStr("\"status\"" + ":")
 		s.Status.Encode(e)
 	}
-	if s.Status.Set {
-		e.Comma()
+
+	if s.RawURL.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.RawURL.Set {
 		e.RawStr("\"raw_url\"" + ":")
 		s.RawURL.Encode(e)
 	}
-	if s.RawURL.Set {
-		e.Comma()
+
+	if s.BlobURL.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.BlobURL.Set {
 		e.RawStr("\"blob_url\"" + ":")
 		s.BlobURL.Encode(e)
 	}
-	if s.BlobURL.Set {
-		e.Comma()
+
+	if s.Patch.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Patch.Set {
 		e.RawStr("\"patch\"" + ":")
 		s.Patch.Encode(e)
 	}
-	if s.Patch.Set {
-		e.Comma()
+
+	if s.Sha.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Sha.Set {
 		e.RawStr("\"sha\"" + ":")
 		s.Sha.Encode(e)
 	}
-	if s.Sha.Set {
-		e.Comma()
+
+	if s.ContentsURL.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.ContentsURL.Set {
 		e.RawStr("\"contents_url\"" + ":")
 		s.ContentsURL.Encode(e)
 	}
-	if s.ContentsURL.Set {
-		e.Comma()
+
+	if s.PreviousFilename.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.PreviousFilename.Set {
 		e.RawStr("\"previous_filename\"" + ":")
 		s.PreviousFilename.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -18354,21 +20178,30 @@ func (s *CommitFilesItem) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s CommitParentsItem) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"sha\"" + ":")
 	e.Str(s.Sha)
+
 	e.Comma()
 
 	e.RawStr("\"url\"" + ":")
 	json.EncodeURI(e, s.URL)
-	e.Comma()
+
+	if s.HTMLURL.Set {
+		e.Comma()
+	}
 	if s.HTMLURL.Set {
 		e.RawStr("\"html_url\"" + ":")
 		s.HTMLURL.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -18407,21 +20240,34 @@ func (s *CommitParentsItem) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s CommitSearchResultItem) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"url\"" + ":")
 	json.EncodeURI(e, s.URL)
+
 	e.Comma()
 
 	e.RawStr("\"sha\"" + ":")
 	e.Str(s.Sha)
+
 	e.Comma()
 
 	e.RawStr("\"html_url\"" + ":")
 	json.EncodeURI(e, s.HTMLURL)
+
 	e.Comma()
 
 	e.RawStr("\"comments_url\"" + ":")
 	json.EncodeURI(e, s.CommentsURL)
+
 	e.Comma()
 
 	e.RawStr("\"commit\"" + ":")
@@ -18463,18 +20309,18 @@ func (s CommitSearchResultItem) Encode(e *jx.Writer) {
 
 	e.RawStr("\"score\"" + ":")
 	e.Float64(s.Score)
+
 	e.Comma()
 
 	e.RawStr("\"node_id\"" + ":")
 	e.Str(s.NodeID)
-	e.Comma()
+
+	if s.TextMatches != nil {
+		e.Comma()
+	}
 	if s.TextMatches != nil {
 		e.RawStr("\"text_matches\"" + ":")
 		s.TextMatches.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -18579,6 +20425,16 @@ func (s *CommitSearchResultItem) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s CommitSearchResultItemCommit) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"author\"" + ":")
 	s.Author.Encode(e)
@@ -18592,10 +20448,12 @@ func (s CommitSearchResultItemCommit) Encode(e *jx.Writer) {
 
 	e.RawStr("\"comment_count\"" + ":")
 	e.Int(s.CommentCount)
+
 	e.Comma()
 
 	e.RawStr("\"message\"" + ":")
 	e.Str(s.Message)
+
 	e.Comma()
 
 	e.RawStr("\"tree\"" + ":")
@@ -18605,14 +20463,13 @@ func (s CommitSearchResultItemCommit) Encode(e *jx.Writer) {
 
 	e.RawStr("\"url\"" + ":")
 	json.EncodeURI(e, s.URL)
-	e.Comma()
+
+	if s.Verification.Set {
+		e.Comma()
+	}
 	if s.Verification.Set {
 		e.RawStr("\"verification\"" + ":")
 		s.Verification.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -18669,21 +20526,28 @@ func (s *CommitSearchResultItemCommit) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s CommitSearchResultItemCommitAuthor) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"name\"" + ":")
 	e.Str(s.Name)
+
 	e.Comma()
 
 	e.RawStr("\"email\"" + ":")
 	e.Str(s.Email)
+
 	e.Comma()
 
 	e.RawStr("\"date\"" + ":")
 	json.EncodeDateTime(e, s.Date)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -18722,17 +20586,23 @@ func (s *CommitSearchResultItemCommitAuthor) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s CommitSearchResultItemCommitTree) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"sha\"" + ":")
 	e.Str(s.Sha)
+
 	e.Comma()
 
 	e.RawStr("\"url\"" + ":")
 	json.EncodeURI(e, s.URL)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -18765,27 +20635,42 @@ func (s *CommitSearchResultItemCommitTree) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s CommitSearchResultItemParentsItem) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.URL.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.URL.Set {
 		e.RawStr("\"url\"" + ":")
 		s.URL.Encode(e)
 	}
-	if s.URL.Set {
-		e.Comma()
+
+	if s.HTMLURL.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.HTMLURL.Set {
 		e.RawStr("\"html_url\"" + ":")
 		s.HTMLURL.Encode(e)
 	}
-	if s.HTMLURL.Set {
-		e.Comma()
+
+	if s.Sha.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Sha.Set {
 		e.RawStr("\"sha\"" + ":")
 		s.Sha.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -18822,27 +20707,42 @@ func (s *CommitSearchResultItemParentsItem) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s CommitStats) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.Additions.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.Additions.Set {
 		e.RawStr("\"additions\"" + ":")
 		s.Additions.Encode(e)
 	}
-	if s.Additions.Set {
-		e.Comma()
+
+	if s.Deletions.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Deletions.Set {
 		e.RawStr("\"deletions\"" + ":")
 		s.Deletions.Encode(e)
 	}
-	if s.Deletions.Set {
-		e.Comma()
+
+	if s.Total.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Total.Set {
 		e.RawStr("\"total\"" + ":")
 		s.Total.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -18879,9 +20779,19 @@ func (s *CommitStats) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s CommunityProfile) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"health_percentage\"" + ":")
 	e.Int(s.HealthPercentage)
+
 	e.Comma()
 
 	e.RawStr("\"description\"" + ":")
@@ -18902,14 +20812,12 @@ func (s CommunityProfile) Encode(e *jx.Writer) {
 	e.RawStr("\"updated_at\"" + ":")
 	s.UpdatedAt.Encode(e, json.EncodeDateTime)
 
-	e.Comma()
+	if s.ContentReportsEnabled.Set {
+		e.Comma()
+	}
 	if s.ContentReportsEnabled.Set {
 		e.RawStr("\"content_reports_enabled\"" + ":")
 		s.ContentReportsEnabled.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -18958,6 +20866,16 @@ func (s *CommunityProfile) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s CommunityProfileFiles) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"code_of_conduct\"" + ":")
 	s.CodeOfConduct.Encode(e)
@@ -18991,10 +20909,6 @@ func (s CommunityProfileFiles) Encode(e *jx.Writer) {
 
 	e.RawStr("\"pull_request_template\"" + ":")
 	s.PullRequestTemplate.Encode(e)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -19043,37 +20957,54 @@ func (s *CommunityProfileFiles) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s ContentFile) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"type\"" + ":")
 	e.Str(s.Type)
+
 	e.Comma()
 
 	e.RawStr("\"encoding\"" + ":")
 	e.Str(s.Encoding)
+
 	e.Comma()
 
 	e.RawStr("\"size\"" + ":")
 	e.Int(s.Size)
+
 	e.Comma()
 
 	e.RawStr("\"name\"" + ":")
 	e.Str(s.Name)
+
 	e.Comma()
 
 	e.RawStr("\"path\"" + ":")
 	e.Str(s.Path)
+
 	e.Comma()
 
 	e.RawStr("\"content\"" + ":")
 	e.Str(s.Content)
+
 	e.Comma()
 
 	e.RawStr("\"sha\"" + ":")
 	e.Str(s.Sha)
+
 	e.Comma()
 
 	e.RawStr("\"url\"" + ":")
 	json.EncodeURI(e, s.URL)
+
 	e.Comma()
 
 	e.RawStr("\"git_url\"" + ":")
@@ -19094,21 +21025,20 @@ func (s ContentFile) Encode(e *jx.Writer) {
 	e.RawStr("\"_links\"" + ":")
 	s.Links.Encode(e)
 
-	e.Comma()
+	if s.Target.Set {
+		e.Comma()
+	}
 	if s.Target.Set {
 		e.RawStr("\"target\"" + ":")
 		s.Target.Encode(e)
 	}
-	if s.Target.Set {
+
+	if s.SubmoduleGitURL.Set {
 		e.Comma()
 	}
 	if s.SubmoduleGitURL.Set {
 		e.RawStr("\"submodule_git_url\"" + ":")
 		s.SubmoduleGitURL.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -19204,6 +21134,16 @@ func (s *ContentFile) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s ContentFileLinks) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"git\"" + ":")
 	s.Git.Encode(e)
@@ -19217,10 +21157,6 @@ func (s ContentFileLinks) Encode(e *jx.Writer) {
 
 	e.RawStr("\"self\"" + ":")
 	json.EncodeURI(e, s.Self)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -19255,25 +21191,35 @@ func (s *ContentFileLinks) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s ContentReferenceAttachment) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"id\"" + ":")
 	e.Int(s.ID)
+
 	e.Comma()
 
 	e.RawStr("\"title\"" + ":")
 	e.Str(s.Title)
+
 	e.Comma()
 
 	e.RawStr("\"body\"" + ":")
 	e.Str(s.Body)
-	e.Comma()
+
+	if s.NodeID.Set {
+		e.Comma()
+	}
 	if s.NodeID.Set {
 		e.RawStr("\"node_id\"" + ":")
 		s.NodeID.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -19318,25 +21264,33 @@ func (s *ContentReferenceAttachment) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s ContentTraffic) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"path\"" + ":")
 	e.Str(s.Path)
+
 	e.Comma()
 
 	e.RawStr("\"title\"" + ":")
 	e.Str(s.Title)
+
 	e.Comma()
 
 	e.RawStr("\"count\"" + ":")
 	e.Int(s.Count)
+
 	e.Comma()
 
 	e.RawStr("\"uniques\"" + ":")
 	e.Int(s.Uniques)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -19381,147 +21335,222 @@ func (s *ContentTraffic) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s Contributor) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.Login.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.Login.Set {
 		e.RawStr("\"login\"" + ":")
 		s.Login.Encode(e)
 	}
-	if s.Login.Set {
-		e.Comma()
+
+	if s.ID.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.ID.Set {
 		e.RawStr("\"id\"" + ":")
 		s.ID.Encode(e)
 	}
-	if s.ID.Set {
-		e.Comma()
+
+	if s.NodeID.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.NodeID.Set {
 		e.RawStr("\"node_id\"" + ":")
 		s.NodeID.Encode(e)
 	}
-	if s.NodeID.Set {
-		e.Comma()
+
+	if s.AvatarURL.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.AvatarURL.Set {
 		e.RawStr("\"avatar_url\"" + ":")
 		s.AvatarURL.Encode(e)
 	}
-	if s.AvatarURL.Set {
-		e.Comma()
+
+	if s.GravatarID.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.GravatarID.Set {
 		e.RawStr("\"gravatar_id\"" + ":")
 		s.GravatarID.Encode(e)
 	}
-	if s.GravatarID.Set {
-		e.Comma()
+
+	if s.URL.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.URL.Set {
 		e.RawStr("\"url\"" + ":")
 		s.URL.Encode(e)
 	}
-	if s.URL.Set {
-		e.Comma()
+
+	if s.HTMLURL.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.HTMLURL.Set {
 		e.RawStr("\"html_url\"" + ":")
 		s.HTMLURL.Encode(e)
 	}
-	if s.HTMLURL.Set {
-		e.Comma()
+
+	if s.FollowersURL.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.FollowersURL.Set {
 		e.RawStr("\"followers_url\"" + ":")
 		s.FollowersURL.Encode(e)
 	}
-	if s.FollowersURL.Set {
-		e.Comma()
+
+	if s.FollowingURL.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.FollowingURL.Set {
 		e.RawStr("\"following_url\"" + ":")
 		s.FollowingURL.Encode(e)
 	}
-	if s.FollowingURL.Set {
-		e.Comma()
+
+	if s.GistsURL.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.GistsURL.Set {
 		e.RawStr("\"gists_url\"" + ":")
 		s.GistsURL.Encode(e)
 	}
-	if s.GistsURL.Set {
-		e.Comma()
+
+	if s.StarredURL.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.StarredURL.Set {
 		e.RawStr("\"starred_url\"" + ":")
 		s.StarredURL.Encode(e)
 	}
-	if s.StarredURL.Set {
-		e.Comma()
+
+	if s.SubscriptionsURL.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.SubscriptionsURL.Set {
 		e.RawStr("\"subscriptions_url\"" + ":")
 		s.SubscriptionsURL.Encode(e)
 	}
-	if s.SubscriptionsURL.Set {
-		e.Comma()
+
+	if s.OrganizationsURL.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.OrganizationsURL.Set {
 		e.RawStr("\"organizations_url\"" + ":")
 		s.OrganizationsURL.Encode(e)
 	}
-	if s.OrganizationsURL.Set {
-		e.Comma()
+
+	if s.ReposURL.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.ReposURL.Set {
 		e.RawStr("\"repos_url\"" + ":")
 		s.ReposURL.Encode(e)
 	}
-	if s.ReposURL.Set {
-		e.Comma()
+
+	if s.EventsURL.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.EventsURL.Set {
 		e.RawStr("\"events_url\"" + ":")
 		s.EventsURL.Encode(e)
 	}
-	if s.EventsURL.Set {
-		e.Comma()
+
+	if s.ReceivedEventsURL.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.ReceivedEventsURL.Set {
 		e.RawStr("\"received_events_url\"" + ":")
 		s.ReceivedEventsURL.Encode(e)
 	}
-	if s.ReceivedEventsURL.Set {
+
+	if !first {
 		e.Comma()
 	}
+	first = false
 
 	e.RawStr("\"type\"" + ":")
 	e.Str(s.Type)
-	e.Comma()
+
+	if s.SiteAdmin.Set {
+		e.Comma()
+	}
 	if s.SiteAdmin.Set {
 		e.RawStr("\"site_admin\"" + ":")
 		s.SiteAdmin.Encode(e)
 	}
-	if s.SiteAdmin.Set {
-		e.Comma()
-	}
+
+	e.Comma()
 
 	e.RawStr("\"contributions\"" + ":")
 	e.Int(s.Contributions)
-	e.Comma()
+
+	if s.Email.Set {
+		e.Comma()
+	}
 	if s.Email.Set {
 		e.RawStr("\"email\"" + ":")
 		s.Email.Encode(e)
 	}
-	if s.Email.Set {
+
+	if s.Name.Set {
 		e.Comma()
 	}
 	if s.Name.Set {
 		e.RawStr("\"name\"" + ":")
 		s.Name.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -19650,6 +21679,16 @@ func (s *Contributor) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s ContributorActivity) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"author\"" + ":")
 	s.Author.Encode(e)
@@ -19658,6 +21697,7 @@ func (s ContributorActivity) Encode(e *jx.Writer) {
 
 	e.RawStr("\"total\"" + ":")
 	e.Int(s.Total)
+
 	e.Comma()
 
 	e.RawStr("\"weeks\"" + ":")
@@ -19674,10 +21714,6 @@ func (s ContributorActivity) Encode(e *jx.Writer) {
 		}
 	}
 	e.ArrEnd()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -19720,34 +21756,53 @@ func (s *ContributorActivity) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s ContributorActivityWeeksItem) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.W.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.W.Set {
 		e.RawStr("\"w\"" + ":")
 		s.W.Encode(e)
 	}
-	if s.W.Set {
-		e.Comma()
+
+	if s.A.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.A.Set {
 		e.RawStr("\"a\"" + ":")
 		s.A.Encode(e)
 	}
-	if s.A.Set {
-		e.Comma()
+
+	if s.D.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.D.Set {
 		e.RawStr("\"d\"" + ":")
 		s.D.Encode(e)
 	}
-	if s.D.Set {
-		e.Comma()
+
+	if s.C.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.C.Set {
 		e.RawStr("\"c\"" + ":")
 		s.C.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -19789,29 +21844,45 @@ func (s *ContributorActivityWeeksItem) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s CredentialAuthorization) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"login\"" + ":")
 	e.Str(s.Login)
+
 	e.Comma()
 
 	e.RawStr("\"credential_id\"" + ":")
 	e.Int(s.CredentialID)
+
 	e.Comma()
 
 	e.RawStr("\"credential_type\"" + ":")
 	e.Str(s.CredentialType)
-	e.Comma()
+
+	if s.TokenLastEight.Set {
+		e.Comma()
+	}
 	if s.TokenLastEight.Set {
 		e.RawStr("\"token_last_eight\"" + ":")
 		s.TokenLastEight.Encode(e)
 	}
-	if s.TokenLastEight.Set {
-		e.Comma()
-	}
+
+	e.Comma()
 
 	e.RawStr("\"credential_authorized_at\"" + ":")
 	json.EncodeDateTime(e, s.CredentialAuthorizedAt)
-	e.Comma()
+
+	if s.Scopes != nil {
+		e.Comma()
+	}
 	if s.Scopes != nil {
 		e.RawStr("\"scopes\"" + ":")
 		e.ArrStart()
@@ -19828,44 +21899,45 @@ func (s CredentialAuthorization) Encode(e *jx.Writer) {
 		}
 		e.ArrEnd()
 	}
-	if s.Scopes != nil {
+
+	if s.Fingerprint.Set {
 		e.Comma()
 	}
 	if s.Fingerprint.Set {
 		e.RawStr("\"fingerprint\"" + ":")
 		s.Fingerprint.Encode(e)
 	}
-	if s.Fingerprint.Set {
+
+	if s.CredentialAccessedAt.Set {
 		e.Comma()
 	}
 	if s.CredentialAccessedAt.Set {
 		e.RawStr("\"credential_accessed_at\"" + ":")
 		s.CredentialAccessedAt.Encode(e, json.EncodeDateTime)
 	}
-	if s.CredentialAccessedAt.Set {
+
+	if s.AuthorizedCredentialID.Set {
 		e.Comma()
 	}
 	if s.AuthorizedCredentialID.Set {
 		e.RawStr("\"authorized_credential_id\"" + ":")
 		s.AuthorizedCredentialID.Encode(e)
 	}
-	if s.AuthorizedCredentialID.Set {
+
+	if s.AuthorizedCredentialTitle.Set {
 		e.Comma()
 	}
 	if s.AuthorizedCredentialTitle.Set {
 		e.RawStr("\"authorized_credential_title\"" + ":")
 		s.AuthorizedCredentialTitle.Encode(e)
 	}
-	if s.AuthorizedCredentialTitle.Set {
+
+	if s.AuthorizedCredentialNote.Set {
 		e.Comma()
 	}
 	if s.AuthorizedCredentialNote.Set {
 		e.RawStr("\"authorized_credential_note\"" + ":")
 		s.AuthorizedCredentialNote.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -19955,37 +22027,48 @@ func (s *CredentialAuthorization) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s DeployKey) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"id\"" + ":")
 	e.Int(s.ID)
+
 	e.Comma()
 
 	e.RawStr("\"key\"" + ":")
 	e.Str(s.Key)
+
 	e.Comma()
 
 	e.RawStr("\"url\"" + ":")
 	e.Str(s.URL)
+
 	e.Comma()
 
 	e.RawStr("\"title\"" + ":")
 	e.Str(s.Title)
+
 	e.Comma()
 
 	e.RawStr("\"verified\"" + ":")
 	e.Bool(s.Verified)
+
 	e.Comma()
 
 	e.RawStr("\"created_at\"" + ":")
 	e.Str(s.CreatedAt)
+
 	e.Comma()
 
 	e.RawStr("\"read_only\"" + ":")
 	e.Bool(s.ReadOnly)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -20048,45 +22131,62 @@ func (s *DeployKey) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s Deployment) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"url\"" + ":")
 	json.EncodeURI(e, s.URL)
+
 	e.Comma()
 
 	e.RawStr("\"id\"" + ":")
 	e.Int(s.ID)
+
 	e.Comma()
 
 	e.RawStr("\"node_id\"" + ":")
 	e.Str(s.NodeID)
+
 	e.Comma()
 
 	e.RawStr("\"sha\"" + ":")
 	e.Str(s.Sha)
+
 	e.Comma()
 
 	e.RawStr("\"ref\"" + ":")
 	e.Str(s.Ref)
+
 	e.Comma()
 
 	e.RawStr("\"task\"" + ":")
 	e.Str(s.Task)
+
 	e.Comma()
 
 	e.RawStr("\"payload\"" + ":")
 	s.Payload.Encode(e)
 
-	e.Comma()
+	if s.OriginalEnvironment.Set {
+		e.Comma()
+	}
 	if s.OriginalEnvironment.Set {
 		e.RawStr("\"original_environment\"" + ":")
 		s.OriginalEnvironment.Encode(e)
 	}
-	if s.OriginalEnvironment.Set {
-		e.Comma()
-	}
+
+	e.Comma()
 
 	e.RawStr("\"environment\"" + ":")
 	e.Str(s.Environment)
+
 	e.Comma()
 
 	e.RawStr("\"description\"" + ":")
@@ -20101,40 +22201,44 @@ func (s Deployment) Encode(e *jx.Writer) {
 
 	e.RawStr("\"created_at\"" + ":")
 	json.EncodeDateTime(e, s.CreatedAt)
+
 	e.Comma()
 
 	e.RawStr("\"updated_at\"" + ":")
 	json.EncodeDateTime(e, s.UpdatedAt)
+
 	e.Comma()
 
 	e.RawStr("\"statuses_url\"" + ":")
 	json.EncodeURI(e, s.StatusesURL)
+
 	e.Comma()
 
 	e.RawStr("\"repository_url\"" + ":")
 	json.EncodeURI(e, s.RepositoryURL)
-	e.Comma()
+
+	if s.TransientEnvironment.Set {
+		e.Comma()
+	}
 	if s.TransientEnvironment.Set {
 		e.RawStr("\"transient_environment\"" + ":")
 		s.TransientEnvironment.Encode(e)
 	}
-	if s.TransientEnvironment.Set {
+
+	if s.ProductionEnvironment.Set {
 		e.Comma()
 	}
 	if s.ProductionEnvironment.Set {
 		e.RawStr("\"production_environment\"" + ":")
 		s.ProductionEnvironment.Encode(e)
 	}
-	if s.ProductionEnvironment.Set {
+
+	if s.PerformedViaGithubApp.Set {
 		e.Comma()
 	}
 	if s.PerformedViaGithubApp.Set {
 		e.RawStr("\"performed_via_github_app\"" + ":")
 		s.PerformedViaGithubApp.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -20254,17 +22358,23 @@ func (s *Deployment) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s DeploymentBranchPolicy) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"protected_branches\"" + ":")
 	e.Bool(s.ProtectedBranches)
+
 	e.Comma()
 
 	e.RawStr("\"custom_branch_policies\"" + ":")
 	e.Bool(s.CustomBranchPolicies)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -20332,10 +22442,10 @@ func (s *DeploymentPayload) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s DeploymentPayload0) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -20383,32 +22493,47 @@ func (s *DeploymentReviewerType) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s DeploymentSimple) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"url\"" + ":")
 	json.EncodeURI(e, s.URL)
+
 	e.Comma()
 
 	e.RawStr("\"id\"" + ":")
 	e.Int(s.ID)
+
 	e.Comma()
 
 	e.RawStr("\"node_id\"" + ":")
 	e.Str(s.NodeID)
+
 	e.Comma()
 
 	e.RawStr("\"task\"" + ":")
 	e.Str(s.Task)
-	e.Comma()
+
+	if s.OriginalEnvironment.Set {
+		e.Comma()
+	}
 	if s.OriginalEnvironment.Set {
 		e.RawStr("\"original_environment\"" + ":")
 		s.OriginalEnvironment.Encode(e)
 	}
-	if s.OriginalEnvironment.Set {
-		e.Comma()
-	}
+
+	e.Comma()
 
 	e.RawStr("\"environment\"" + ":")
 	e.Str(s.Environment)
+
 	e.Comma()
 
 	e.RawStr("\"description\"" + ":")
@@ -20418,40 +22543,44 @@ func (s DeploymentSimple) Encode(e *jx.Writer) {
 
 	e.RawStr("\"created_at\"" + ":")
 	json.EncodeDateTime(e, s.CreatedAt)
+
 	e.Comma()
 
 	e.RawStr("\"updated_at\"" + ":")
 	json.EncodeDateTime(e, s.UpdatedAt)
+
 	e.Comma()
 
 	e.RawStr("\"statuses_url\"" + ":")
 	json.EncodeURI(e, s.StatusesURL)
+
 	e.Comma()
 
 	e.RawStr("\"repository_url\"" + ":")
 	json.EncodeURI(e, s.RepositoryURL)
-	e.Comma()
+
+	if s.TransientEnvironment.Set {
+		e.Comma()
+	}
 	if s.TransientEnvironment.Set {
 		e.RawStr("\"transient_environment\"" + ":")
 		s.TransientEnvironment.Encode(e)
 	}
-	if s.TransientEnvironment.Set {
+
+	if s.ProductionEnvironment.Set {
 		e.Comma()
 	}
 	if s.ProductionEnvironment.Set {
 		e.RawStr("\"production_environment\"" + ":")
 		s.ProductionEnvironment.Encode(e)
 	}
-	if s.ProductionEnvironment.Set {
+
+	if s.PerformedViaGithubApp.Set {
 		e.Comma()
 	}
 	if s.PerformedViaGithubApp.Set {
 		e.RawStr("\"performed_via_github_app\"" + ":")
 		s.PerformedViaGithubApp.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -20551,17 +22680,29 @@ func (s *DeploymentSimple) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s DeploymentStatus) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"url\"" + ":")
 	json.EncodeURI(e, s.URL)
+
 	e.Comma()
 
 	e.RawStr("\"id\"" + ":")
 	e.Int(s.ID)
+
 	e.Comma()
 
 	e.RawStr("\"node_id\"" + ":")
 	e.Str(s.NodeID)
+
 	e.Comma()
 
 	e.RawStr("\"state\"" + ":")
@@ -20576,55 +22717,62 @@ func (s DeploymentStatus) Encode(e *jx.Writer) {
 
 	e.RawStr("\"description\"" + ":")
 	e.Str(s.Description)
-	e.Comma()
+
+	if s.Environment.Set {
+		e.Comma()
+	}
 	if s.Environment.Set {
 		e.RawStr("\"environment\"" + ":")
 		s.Environment.Encode(e)
 	}
-	if s.Environment.Set {
-		e.Comma()
-	}
+
+	e.Comma()
 
 	e.RawStr("\"target_url\"" + ":")
 	json.EncodeURI(e, s.TargetURL)
+
 	e.Comma()
 
 	e.RawStr("\"created_at\"" + ":")
 	json.EncodeDateTime(e, s.CreatedAt)
+
 	e.Comma()
 
 	e.RawStr("\"updated_at\"" + ":")
 	json.EncodeDateTime(e, s.UpdatedAt)
+
 	e.Comma()
 
 	e.RawStr("\"deployment_url\"" + ":")
 	json.EncodeURI(e, s.DeploymentURL)
+
 	e.Comma()
 
 	e.RawStr("\"repository_url\"" + ":")
 	json.EncodeURI(e, s.RepositoryURL)
-	e.Comma()
+
+	if s.EnvironmentURL.Set {
+		e.Comma()
+	}
 	if s.EnvironmentURL.Set {
 		e.RawStr("\"environment_url\"" + ":")
 		s.EnvironmentURL.Encode(e)
 	}
-	if s.EnvironmentURL.Set {
+
+	if s.LogURL.Set {
 		e.Comma()
 	}
 	if s.LogURL.Set {
 		e.RawStr("\"log_url\"" + ":")
 		s.LogURL.Encode(e)
 	}
-	if s.LogURL.Set {
+
+	if s.PerformedViaGithubApp.Set {
 		e.Comma()
 	}
 	if s.PerformedViaGithubApp.Set {
 		e.RawStr("\"performed_via_github_app\"" + ":")
 		s.PerformedViaGithubApp.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -20765,13 +22913,24 @@ func (s *DeploymentStatusState) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s DiffEntry) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"sha\"" + ":")
 	e.Str(s.Sha)
+
 	e.Comma()
 
 	e.RawStr("\"filename\"" + ":")
 	e.Str(s.Filename)
+
 	e.Comma()
 
 	e.RawStr("\"status\"" + ":")
@@ -20781,41 +22940,46 @@ func (s DiffEntry) Encode(e *jx.Writer) {
 
 	e.RawStr("\"additions\"" + ":")
 	e.Int(s.Additions)
+
 	e.Comma()
 
 	e.RawStr("\"deletions\"" + ":")
 	e.Int(s.Deletions)
+
 	e.Comma()
 
 	e.RawStr("\"changes\"" + ":")
 	e.Int(s.Changes)
+
 	e.Comma()
 
 	e.RawStr("\"blob_url\"" + ":")
 	json.EncodeURI(e, s.BlobURL)
+
 	e.Comma()
 
 	e.RawStr("\"raw_url\"" + ":")
 	json.EncodeURI(e, s.RawURL)
+
 	e.Comma()
 
 	e.RawStr("\"contents_url\"" + ":")
 	json.EncodeURI(e, s.ContentsURL)
-	e.Comma()
+
+	if s.Patch.Set {
+		e.Comma()
+	}
 	if s.Patch.Set {
 		e.RawStr("\"patch\"" + ":")
 		s.Patch.Encode(e)
 	}
-	if s.Patch.Set {
+
+	if s.PreviousFilename.Set {
 		e.Comma()
 	}
 	if s.PreviousFilename.Set {
 		e.RawStr("\"previous_filename\"" + ":")
 		s.PreviousFilename.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -20936,25 +23100,33 @@ func (s *DiffEntryStatus) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s Email) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"email\"" + ":")
 	e.Str(s.Email)
+
 	e.Comma()
 
 	e.RawStr("\"primary\"" + ":")
 	e.Bool(s.Primary)
+
 	e.Comma()
 
 	e.RawStr("\"verified\"" + ":")
 	e.Bool(s.Verified)
+
 	e.Comma()
 
 	e.RawStr("\"visibility\"" + ":")
 	s.Visibility.Encode(e)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -20997,10 +23169,10 @@ func (s *Email) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s EmojisGetOK) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -21021,10 +23193,10 @@ func (s *EmojisGetOK) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s EmptyObject) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -21103,10 +23275,10 @@ func (s *EnabledRepositories) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s EnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterpriseNoContent) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -21127,10 +23299,10 @@ func (s *EnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterpriseNoContent
 // Encode implements json.Marshaler.
 func (s EnterpriseAdminAddSelfHostedRunnerToGroupForEnterpriseNoContent) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -21151,15 +23323,28 @@ func (s *EnterpriseAdminAddSelfHostedRunnerToGroupForEnterpriseNoContent) Decode
 // Encode implements json.Marshaler.
 func (s EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseReq) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"name\"" + ":")
 	e.Str(s.Name)
-	e.Comma()
+
+	if s.Visibility.Set {
+		e.Comma()
+	}
 	if s.Visibility.Set {
 		e.RawStr("\"visibility\"" + ":")
 		s.Visibility.Encode(e)
 	}
-	if s.Visibility.Set {
+
+	if s.SelectedOrganizationIds != nil {
 		e.Comma()
 	}
 	if s.SelectedOrganizationIds != nil {
@@ -21178,7 +23363,8 @@ func (s EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseReq) Encode(e *jx
 		}
 		e.ArrEnd()
 	}
-	if s.SelectedOrganizationIds != nil {
+
+	if s.Runners != nil {
 		e.Comma()
 	}
 	if s.Runners != nil {
@@ -21196,10 +23382,6 @@ func (s EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseReq) Encode(e *jx
 			}
 		}
 		e.ArrEnd()
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -21287,10 +23469,10 @@ func (s *EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseReqVisibility) D
 // Encode implements json.Marshaler.
 func (s EnterpriseAdminDeleteScimGroupFromEnterpriseNoContent) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -21311,10 +23493,10 @@ func (s *EnterpriseAdminDeleteScimGroupFromEnterpriseNoContent) Decode(d *jx.Dec
 // Encode implements json.Marshaler.
 func (s EnterpriseAdminDeleteSelfHostedRunnerFromEnterpriseNoContent) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -21335,10 +23517,10 @@ func (s *EnterpriseAdminDeleteSelfHostedRunnerFromEnterpriseNoContent) Decode(d 
 // Encode implements json.Marshaler.
 func (s EnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterpriseNoContent) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -21359,10 +23541,10 @@ func (s *EnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterpriseNoContent) Deco
 // Encode implements json.Marshaler.
 func (s EnterpriseAdminDeleteUserFromEnterpriseNoContent) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -21383,10 +23565,10 @@ func (s *EnterpriseAdminDeleteUserFromEnterpriseNoContent) Decode(d *jx.Decoder)
 // Encode implements json.Marshaler.
 func (s EnterpriseAdminDisableSelectedOrganizationGithubActionsEnterpriseNoContent) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -21407,10 +23589,10 @@ func (s *EnterpriseAdminDisableSelectedOrganizationGithubActionsEnterpriseNoCont
 // Encode implements json.Marshaler.
 func (s EnterpriseAdminEnableSelectedOrganizationGithubActionsEnterpriseNoContent) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -21487,9 +23669,19 @@ func (s *EnterpriseAdminGetAuditLogOrder) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s EnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseOK) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"total_count\"" + ":")
 	e.Float64(s.TotalCount)
+
 	e.Comma()
 
 	e.RawStr("\"organizations\"" + ":")
@@ -21506,10 +23698,6 @@ func (s EnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseOK) Encod
 		}
 	}
 	e.ArrEnd()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -21548,9 +23736,19 @@ func (s *EnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseOK) Deco
 // Encode implements json.Marshaler.
 func (s EnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterpriseOK) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"total_count\"" + ":")
 	e.Float64(s.TotalCount)
+
 	e.Comma()
 
 	e.RawStr("\"organizations\"" + ":")
@@ -21567,10 +23765,6 @@ func (s EnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterpriseOK
 		}
 	}
 	e.ArrEnd()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -21609,9 +23803,19 @@ func (s *EnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterpriseO
 // Encode implements json.Marshaler.
 func (s EnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseOK) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"total_count\"" + ":")
 	e.Float64(s.TotalCount)
+
 	e.Comma()
 
 	e.RawStr("\"runner_groups\"" + ":")
@@ -21628,10 +23832,6 @@ func (s EnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseOK) Encode(e *jx.W
 		}
 	}
 	e.ArrEnd()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -21670,12 +23870,27 @@ func (s *EnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseOK) Decode(d *jx.
 // Encode implements json.Marshaler.
 func (s EnterpriseAdminListSelfHostedRunnersForEnterpriseOK) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.TotalCount.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.TotalCount.Set {
 		e.RawStr("\"total_count\"" + ":")
 		s.TotalCount.Encode(e)
 	}
-	if s.TotalCount.Set {
-		e.Comma()
+
+	if s.Runners != nil {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Runners != nil {
 		e.RawStr("\"runners\"" + ":")
@@ -21692,10 +23907,6 @@ func (s EnterpriseAdminListSelfHostedRunnersForEnterpriseOK) Encode(e *jx.Writer
 			}
 		}
 		e.ArrEnd()
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -21734,9 +23945,19 @@ func (s *EnterpriseAdminListSelfHostedRunnersForEnterpriseOK) Decode(d *jx.Decod
 // Encode implements json.Marshaler.
 func (s EnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseOK) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"total_count\"" + ":")
 	e.Float64(s.TotalCount)
+
 	e.Comma()
 
 	e.RawStr("\"runners\"" + ":")
@@ -21753,10 +23974,6 @@ func (s EnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseOK) Encode(e *jx
 		}
 	}
 	e.ArrEnd()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -21795,6 +24012,16 @@ func (s *EnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseOK) Decode(d *j
 // Encode implements json.Marshaler.
 func (s EnterpriseAdminProvisionAndInviteEnterpriseGroupReq) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"schemas\"" + ":")
 	e.ArrStart()
@@ -21815,7 +24042,10 @@ func (s EnterpriseAdminProvisionAndInviteEnterpriseGroupReq) Encode(e *jx.Writer
 
 	e.RawStr("\"displayName\"" + ":")
 	e.Str(s.DisplayName)
-	e.Comma()
+
+	if s.Members != nil {
+		e.Comma()
+	}
 	if s.Members != nil {
 		e.RawStr("\"members\"" + ":")
 		e.ArrStart()
@@ -21831,10 +24061,6 @@ func (s EnterpriseAdminProvisionAndInviteEnterpriseGroupReq) Encode(e *jx.Writer
 			}
 		}
 		e.ArrEnd()
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -21888,13 +24114,18 @@ func (s *EnterpriseAdminProvisionAndInviteEnterpriseGroupReq) Decode(d *jx.Decod
 // Encode implements json.Marshaler.
 func (s EnterpriseAdminProvisionAndInviteEnterpriseGroupReqMembersItem) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"value\"" + ":")
 	e.Str(s.Value)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -21921,6 +24152,16 @@ func (s *EnterpriseAdminProvisionAndInviteEnterpriseGroupReqMembersItem) Decode(
 // Encode implements json.Marshaler.
 func (s EnterpriseAdminProvisionAndInviteEnterpriseUserReq) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"schemas\"" + ":")
 	e.ArrStart()
@@ -21941,6 +24182,7 @@ func (s EnterpriseAdminProvisionAndInviteEnterpriseUserReq) Encode(e *jx.Writer)
 
 	e.RawStr("\"userName\"" + ":")
 	e.Str(s.UserName)
+
 	e.Comma()
 
 	e.RawStr("\"name\"" + ":")
@@ -21963,7 +24205,9 @@ func (s EnterpriseAdminProvisionAndInviteEnterpriseUserReq) Encode(e *jx.Writer)
 	}
 	e.ArrEnd()
 
-	e.Comma()
+	if s.Groups != nil {
+		e.Comma()
+	}
 	if s.Groups != nil {
 		e.RawStr("\"groups\"" + ":")
 		e.ArrStart()
@@ -21979,10 +24223,6 @@ func (s EnterpriseAdminProvisionAndInviteEnterpriseUserReq) Encode(e *jx.Writer)
 			}
 		}
 		e.ArrEnd()
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -22052,21 +24292,28 @@ func (s *EnterpriseAdminProvisionAndInviteEnterpriseUserReq) Decode(d *jx.Decode
 // Encode implements json.Marshaler.
 func (s EnterpriseAdminProvisionAndInviteEnterpriseUserReqEmailsItem) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"value\"" + ":")
 	e.Str(s.Value)
+
 	e.Comma()
 
 	e.RawStr("\"type\"" + ":")
 	e.Str(s.Type)
+
 	e.Comma()
 
 	e.RawStr("\"primary\"" + ":")
 	e.Bool(s.Primary)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -22105,13 +24352,20 @@ func (s *EnterpriseAdminProvisionAndInviteEnterpriseUserReqEmailsItem) Decode(d 
 // Encode implements json.Marshaler.
 func (s EnterpriseAdminProvisionAndInviteEnterpriseUserReqGroupsItem) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.Value.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.Value.Set {
 		e.RawStr("\"value\"" + ":")
 		s.Value.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -22138,17 +24392,23 @@ func (s *EnterpriseAdminProvisionAndInviteEnterpriseUserReqGroupsItem) Decode(d 
 // Encode implements json.Marshaler.
 func (s EnterpriseAdminProvisionAndInviteEnterpriseUserReqName) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"givenName\"" + ":")
 	e.Str(s.GivenName)
+
 	e.Comma()
 
 	e.RawStr("\"familyName\"" + ":")
 	e.Str(s.FamilyName)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -22181,10 +24441,10 @@ func (s *EnterpriseAdminProvisionAndInviteEnterpriseUserReqName) Decode(d *jx.De
 // Encode implements json.Marshaler.
 func (s EnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterpriseNoContent) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -22205,10 +24465,10 @@ func (s *EnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterpriseNoCont
 // Encode implements json.Marshaler.
 func (s EnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterpriseNoContent) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -22229,10 +24489,10 @@ func (s *EnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterpriseNoContent) D
 // Encode implements json.Marshaler.
 func (s EnterpriseAdminSetAllowedActionsEnterpriseNoContent) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -22253,10 +24513,10 @@ func (s *EnterpriseAdminSetAllowedActionsEnterpriseNoContent) Decode(d *jx.Decod
 // Encode implements json.Marshaler.
 func (s EnterpriseAdminSetGithubActionsPermissionsEnterpriseNoContent) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -22277,18 +24537,26 @@ func (s *EnterpriseAdminSetGithubActionsPermissionsEnterpriseNoContent) Decode(d
 // Encode implements json.Marshaler.
 func (s EnterpriseAdminSetGithubActionsPermissionsEnterpriseReq) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"enabled_organizations\"" + ":")
 	s.EnabledOrganizations.Encode(e)
 
-	e.Comma()
+	if s.AllowedActions.Set {
+		e.Comma()
+	}
 	if s.AllowedActions.Set {
 		e.RawStr("\"allowed_actions\"" + ":")
 		s.AllowedActions.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -22319,6 +24587,16 @@ func (s *EnterpriseAdminSetGithubActionsPermissionsEnterpriseReq) Decode(d *jx.D
 // Encode implements json.Marshaler.
 func (s EnterpriseAdminSetInformationForProvisionedEnterpriseGroupReq) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"schemas\"" + ":")
 	e.ArrStart()
@@ -22339,7 +24617,10 @@ func (s EnterpriseAdminSetInformationForProvisionedEnterpriseGroupReq) Encode(e 
 
 	e.RawStr("\"displayName\"" + ":")
 	e.Str(s.DisplayName)
-	e.Comma()
+
+	if s.Members != nil {
+		e.Comma()
+	}
 	if s.Members != nil {
 		e.RawStr("\"members\"" + ":")
 		e.ArrStart()
@@ -22355,10 +24636,6 @@ func (s EnterpriseAdminSetInformationForProvisionedEnterpriseGroupReq) Encode(e 
 			}
 		}
 		e.ArrEnd()
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -22412,13 +24689,18 @@ func (s *EnterpriseAdminSetInformationForProvisionedEnterpriseGroupReq) Decode(d
 // Encode implements json.Marshaler.
 func (s EnterpriseAdminSetInformationForProvisionedEnterpriseGroupReqMembersItem) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"value\"" + ":")
 	e.Str(s.Value)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -22445,6 +24727,16 @@ func (s *EnterpriseAdminSetInformationForProvisionedEnterpriseGroupReqMembersIte
 // Encode implements json.Marshaler.
 func (s EnterpriseAdminSetInformationForProvisionedEnterpriseUserReq) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"schemas\"" + ":")
 	e.ArrStart()
@@ -22465,6 +24757,7 @@ func (s EnterpriseAdminSetInformationForProvisionedEnterpriseUserReq) Encode(e *
 
 	e.RawStr("\"userName\"" + ":")
 	e.Str(s.UserName)
+
 	e.Comma()
 
 	e.RawStr("\"name\"" + ":")
@@ -22487,7 +24780,9 @@ func (s EnterpriseAdminSetInformationForProvisionedEnterpriseUserReq) Encode(e *
 	}
 	e.ArrEnd()
 
-	e.Comma()
+	if s.Groups != nil {
+		e.Comma()
+	}
 	if s.Groups != nil {
 		e.RawStr("\"groups\"" + ":")
 		e.ArrStart()
@@ -22503,10 +24798,6 @@ func (s EnterpriseAdminSetInformationForProvisionedEnterpriseUserReq) Encode(e *
 			}
 		}
 		e.ArrEnd()
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -22576,21 +24867,28 @@ func (s *EnterpriseAdminSetInformationForProvisionedEnterpriseUserReq) Decode(d 
 // Encode implements json.Marshaler.
 func (s EnterpriseAdminSetInformationForProvisionedEnterpriseUserReqEmailsItem) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"value\"" + ":")
 	e.Str(s.Value)
+
 	e.Comma()
 
 	e.RawStr("\"type\"" + ":")
 	e.Str(s.Type)
+
 	e.Comma()
 
 	e.RawStr("\"primary\"" + ":")
 	e.Bool(s.Primary)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -22629,13 +24927,20 @@ func (s *EnterpriseAdminSetInformationForProvisionedEnterpriseUserReqEmailsItem)
 // Encode implements json.Marshaler.
 func (s EnterpriseAdminSetInformationForProvisionedEnterpriseUserReqGroupsItem) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.Value.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.Value.Set {
 		e.RawStr("\"value\"" + ":")
 		s.Value.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -22662,17 +24967,23 @@ func (s *EnterpriseAdminSetInformationForProvisionedEnterpriseUserReqGroupsItem)
 // Encode implements json.Marshaler.
 func (s EnterpriseAdminSetInformationForProvisionedEnterpriseUserReqName) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"givenName\"" + ":")
 	e.Str(s.GivenName)
+
 	e.Comma()
 
 	e.RawStr("\"familyName\"" + ":")
 	e.Str(s.FamilyName)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -22705,10 +25016,10 @@ func (s *EnterpriseAdminSetInformationForProvisionedEnterpriseUserReqName) Decod
 // Encode implements json.Marshaler.
 func (s EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseNoContent) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -22729,6 +25040,16 @@ func (s *EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseNoContent
 // Encode implements json.Marshaler.
 func (s EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseReq) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"selected_organization_ids\"" + ":")
 	e.ArrStart()
@@ -22744,10 +25065,6 @@ func (s EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseReq) Encod
 		}
 	}
 	e.ArrEnd()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -22782,10 +25099,10 @@ func (s *EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseReq) Deco
 // Encode implements json.Marshaler.
 func (s EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseNoContent) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -22806,6 +25123,16 @@ func (s *EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseNo
 // Encode implements json.Marshaler.
 func (s EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseReq) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"selected_organization_ids\"" + ":")
 	e.ArrStart()
@@ -22821,10 +25148,6 @@ func (s EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseReq
 		}
 	}
 	e.ArrEnd()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -22859,10 +25182,10 @@ func (s *EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseRe
 // Encode implements json.Marshaler.
 func (s EnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseNoContent) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -22883,6 +25206,16 @@ func (s *EnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseNoContent) Decod
 // Encode implements json.Marshaler.
 func (s EnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseReq) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"runners\"" + ":")
 	e.ArrStart()
@@ -22898,10 +25231,6 @@ func (s EnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseReq) Encode(e *jx
 		}
 	}
 	e.ArrEnd()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -22936,6 +25265,16 @@ func (s *EnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseReq) Decode(d *j
 // Encode implements json.Marshaler.
 func (s EnterpriseAdminUpdateAttributeForEnterpriseGroupReq) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"schemas\"" + ":")
 	e.ArrStart()
@@ -22968,10 +25307,6 @@ func (s EnterpriseAdminUpdateAttributeForEnterpriseGroupReq) Encode(e *jx.Writer
 		}
 	}
 	e.ArrEnd()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -23018,25 +25353,34 @@ func (s *EnterpriseAdminUpdateAttributeForEnterpriseGroupReq) Decode(d *jx.Decod
 // Encode implements json.Marshaler.
 func (s EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItem) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"op\"" + ":")
 	s.Op.Encode(e)
 
-	e.Comma()
+	if s.Path.Set {
+		e.Comma()
+	}
 	if s.Path.Set {
 		e.RawStr("\"path\"" + ":")
 		s.Path.Encode(e)
 	}
-	if s.Path.Set {
+
+	if s.Value.Set {
 		e.Comma()
 	}
 	if s.Value.Set {
 		e.RawStr("\"value\"" + ":")
 		s.Value.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -23171,10 +25515,10 @@ func (s *EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue)
 // Encode implements json.Marshaler.
 func (s EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue1) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -23195,6 +25539,16 @@ func (s *EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue1
 // Encode implements json.Marshaler.
 func (s EnterpriseAdminUpdateAttributeForEnterpriseUserReq) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"schemas\"" + ":")
 	e.ArrStart()
@@ -23227,10 +25581,6 @@ func (s EnterpriseAdminUpdateAttributeForEnterpriseUserReq) Encode(e *jx.Writer)
 		}
 	}
 	e.ArrEnd()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -23277,10 +25627,10 @@ func (s *EnterpriseAdminUpdateAttributeForEnterpriseUserReq) Decode(d *jx.Decode
 // Encode implements json.Marshaler.
 func (s EnterpriseAdminUpdateAttributeForEnterpriseUserReqOperationsItem) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -23301,20 +25651,31 @@ func (s *EnterpriseAdminUpdateAttributeForEnterpriseUserReqOperationsItem) Decod
 // Encode implements json.Marshaler.
 func (s EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseReq) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.Name.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.Name.Set {
 		e.RawStr("\"name\"" + ":")
 		s.Name.Encode(e)
 	}
-	if s.Name.Set {
-		e.Comma()
+
+	if s.Visibility.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Visibility.Set {
 		e.RawStr("\"visibility\"" + ":")
 		s.Visibility.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -23373,6 +25734,16 @@ func (s *EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseReqVisibility) D
 // Encode implements json.Marshaler.
 func (s EnvironmentApprovals) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"environments\"" + ":")
 	e.ArrStart()
@@ -23403,10 +25774,6 @@ func (s EnvironmentApprovals) Encode(e *jx.Writer) {
 
 	e.RawStr("\"comment\"" + ":")
 	e.Str(s.Comment)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -23453,55 +25820,86 @@ func (s *EnvironmentApprovals) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s EnvironmentApprovalsEnvironmentsItem) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.ID.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.ID.Set {
 		e.RawStr("\"id\"" + ":")
 		s.ID.Encode(e)
 	}
-	if s.ID.Set {
-		e.Comma()
+
+	if s.NodeID.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.NodeID.Set {
 		e.RawStr("\"node_id\"" + ":")
 		s.NodeID.Encode(e)
 	}
-	if s.NodeID.Set {
-		e.Comma()
+
+	if s.Name.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Name.Set {
 		e.RawStr("\"name\"" + ":")
 		s.Name.Encode(e)
 	}
-	if s.Name.Set {
-		e.Comma()
+
+	if s.URL.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.URL.Set {
 		e.RawStr("\"url\"" + ":")
 		s.URL.Encode(e)
 	}
-	if s.URL.Set {
-		e.Comma()
+
+	if s.HTMLURL.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.HTMLURL.Set {
 		e.RawStr("\"html_url\"" + ":")
 		s.HTMLURL.Encode(e)
 	}
-	if s.HTMLURL.Set {
-		e.Comma()
+
+	if s.CreatedAt.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.CreatedAt.Set {
 		e.RawStr("\"created_at\"" + ":")
 		s.CreatedAt.Encode(e, json.EncodeDateTime)
 	}
-	if s.CreatedAt.Set {
-		e.Comma()
+
+	if s.UpdatedAt.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.UpdatedAt.Set {
 		e.RawStr("\"updated_at\"" + ":")
 		s.UpdatedAt.Encode(e, json.EncodeDateTime)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -23585,9 +25983,19 @@ func (s *EnvironmentApprovalsState) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s Event) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"id\"" + ":")
 	e.Str(s.ID)
+
 	e.Comma()
 
 	e.RawStr("\"type\"" + ":")
@@ -23603,14 +26011,15 @@ func (s Event) Encode(e *jx.Writer) {
 	e.RawStr("\"repo\"" + ":")
 	s.Repo.Encode(e)
 
-	e.Comma()
+	if s.Org.Set {
+		e.Comma()
+	}
 	if s.Org.Set {
 		e.RawStr("\"org\"" + ":")
 		s.Org.Encode(e)
 	}
-	if s.Org.Set {
-		e.Comma()
-	}
+
+	e.Comma()
 
 	e.RawStr("\"payload\"" + ":")
 	s.Payload.Encode(e)
@@ -23619,14 +26028,11 @@ func (s Event) Encode(e *jx.Writer) {
 
 	e.RawStr("\"public\"" + ":")
 	e.Bool(s.Public)
+
 	e.Comma()
 
 	e.RawStr("\"created_at\"" + ":")
 	s.CreatedAt.Encode(e, json.EncodeDateTime)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -23684,26 +26090,49 @@ func (s *Event) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s EventPayload) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.Action.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.Action.Set {
 		e.RawStr("\"action\"" + ":")
 		s.Action.Encode(e)
 	}
-	if s.Action.Set {
-		e.Comma()
+
+	if s.Issue.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Issue.Set {
 		e.RawStr("\"issue\"" + ":")
 		s.Issue.Encode(e)
 	}
-	if s.Issue.Set {
-		e.Comma()
+
+	if s.Comment.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Comment.Set {
 		e.RawStr("\"comment\"" + ":")
 		s.Comment.Encode(e)
 	}
-	if s.Comment.Set {
-		e.Comma()
+
+	if s.Pages != nil {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Pages != nil {
 		e.RawStr("\"pages\"" + ":")
@@ -23720,10 +26149,6 @@ func (s EventPayload) Encode(e *jx.Writer) {
 			}
 		}
 		e.ArrEnd()
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -23772,48 +26197,75 @@ func (s *EventPayload) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s EventPayloadPagesItem) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.PageName.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.PageName.Set {
 		e.RawStr("\"page_name\"" + ":")
 		s.PageName.Encode(e)
 	}
-	if s.PageName.Set {
-		e.Comma()
+
+	if s.Title.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Title.Set {
 		e.RawStr("\"title\"" + ":")
 		s.Title.Encode(e)
 	}
-	if s.Title.Set {
-		e.Comma()
+
+	if s.Summary.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Summary.Set {
 		e.RawStr("\"summary\"" + ":")
 		s.Summary.Encode(e)
 	}
-	if s.Summary.Set {
-		e.Comma()
+
+	if s.Action.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Action.Set {
 		e.RawStr("\"action\"" + ":")
 		s.Action.Encode(e)
 	}
-	if s.Action.Set {
-		e.Comma()
+
+	if s.Sha.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Sha.Set {
 		e.RawStr("\"sha\"" + ":")
 		s.Sha.Encode(e)
 	}
-	if s.Sha.Set {
-		e.Comma()
+
+	if s.HTMLURL.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.HTMLURL.Set {
 		e.RawStr("\"html_url\"" + ":")
 		s.HTMLURL.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -23865,21 +26317,28 @@ func (s *EventPayloadPagesItem) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s EventRepo) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"id\"" + ":")
 	e.Int(s.ID)
+
 	e.Comma()
 
 	e.RawStr("\"name\"" + ":")
 	e.Str(s.Name)
+
 	e.Comma()
 
 	e.RawStr("\"url\"" + ":")
 	json.EncodeURI(e, s.URL)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -23918,40 +26377,57 @@ func (s *EventRepo) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s Feed) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"timeline_url\"" + ":")
 	e.Str(s.TimelineURL)
+
 	e.Comma()
 
 	e.RawStr("\"user_url\"" + ":")
 	e.Str(s.UserURL)
-	e.Comma()
+
+	if s.CurrentUserPublicURL.Set {
+		e.Comma()
+	}
 	if s.CurrentUserPublicURL.Set {
 		e.RawStr("\"current_user_public_url\"" + ":")
 		s.CurrentUserPublicURL.Encode(e)
 	}
-	if s.CurrentUserPublicURL.Set {
+
+	if s.CurrentUserURL.Set {
 		e.Comma()
 	}
 	if s.CurrentUserURL.Set {
 		e.RawStr("\"current_user_url\"" + ":")
 		s.CurrentUserURL.Encode(e)
 	}
-	if s.CurrentUserURL.Set {
+
+	if s.CurrentUserActorURL.Set {
 		e.Comma()
 	}
 	if s.CurrentUserActorURL.Set {
 		e.RawStr("\"current_user_actor_url\"" + ":")
 		s.CurrentUserActorURL.Encode(e)
 	}
-	if s.CurrentUserActorURL.Set {
+
+	if s.CurrentUserOrganizationURL.Set {
 		e.Comma()
 	}
 	if s.CurrentUserOrganizationURL.Set {
 		e.RawStr("\"current_user_organization_url\"" + ":")
 		s.CurrentUserOrganizationURL.Encode(e)
 	}
-	if s.CurrentUserOrganizationURL.Set {
+
+	if s.CurrentUserOrganizationUrls != nil {
 		e.Comma()
 	}
 	if s.CurrentUserOrganizationUrls != nil {
@@ -23970,23 +26446,19 @@ func (s Feed) Encode(e *jx.Writer) {
 		}
 		e.ArrEnd()
 	}
-	if s.CurrentUserOrganizationUrls != nil {
+
+	if s.SecurityAdvisoriesURL.Set {
 		e.Comma()
 	}
 	if s.SecurityAdvisoriesURL.Set {
 		e.RawStr("\"security_advisories_url\"" + ":")
 		s.SecurityAdvisoriesURL.Encode(e)
 	}
-	if s.SecurityAdvisoriesURL.Set {
-		e.Comma()
-	}
+
+	e.Comma()
 
 	e.RawStr("\"_links\"" + ":")
 	s.Links.Encode(e)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -24062,6 +26534,16 @@ func (s *Feed) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s FeedLinks) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"timeline\"" + ":")
 	s.Timeline.Encode(e)
@@ -24071,40 +26553,47 @@ func (s FeedLinks) Encode(e *jx.Writer) {
 	e.RawStr("\"user\"" + ":")
 	s.User.Encode(e)
 
-	e.Comma()
+	if s.SecurityAdvisories.Set {
+		e.Comma()
+	}
 	if s.SecurityAdvisories.Set {
 		e.RawStr("\"security_advisories\"" + ":")
 		s.SecurityAdvisories.Encode(e)
 	}
-	if s.SecurityAdvisories.Set {
+
+	if s.CurrentUser.Set {
 		e.Comma()
 	}
 	if s.CurrentUser.Set {
 		e.RawStr("\"current_user\"" + ":")
 		s.CurrentUser.Encode(e)
 	}
-	if s.CurrentUser.Set {
+
+	if s.CurrentUserPublic.Set {
 		e.Comma()
 	}
 	if s.CurrentUserPublic.Set {
 		e.RawStr("\"current_user_public\"" + ":")
 		s.CurrentUserPublic.Encode(e)
 	}
-	if s.CurrentUserPublic.Set {
+
+	if s.CurrentUserActor.Set {
 		e.Comma()
 	}
 	if s.CurrentUserActor.Set {
 		e.RawStr("\"current_user_actor\"" + ":")
 		s.CurrentUserActor.Encode(e)
 	}
-	if s.CurrentUserActor.Set {
+
+	if s.CurrentUserOrganization.Set {
 		e.Comma()
 	}
 	if s.CurrentUserOrganization.Set {
 		e.RawStr("\"current_user_organization\"" + ":")
 		s.CurrentUserOrganization.Encode(e)
 	}
-	if s.CurrentUserOrganization.Set {
+
+	if s.CurrentUserOrganizations != nil {
 		e.Comma()
 	}
 	if s.CurrentUserOrganizations != nil {
@@ -24122,10 +26611,6 @@ func (s FeedLinks) Encode(e *jx.Writer) {
 			}
 		}
 		e.ArrEnd()
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -24192,6 +26677,16 @@ func (s *FeedLinks) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s FileCommit) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"content\"" + ":")
 	s.Content.Encode(e)
@@ -24200,10 +26695,6 @@ func (s FileCommit) Encode(e *jx.Writer) {
 
 	e.RawStr("\"commit\"" + ":")
 	s.Commit.Encode(e)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -24232,61 +26723,104 @@ func (s *FileCommit) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s FileCommitCommit) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.Sha.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.Sha.Set {
 		e.RawStr("\"sha\"" + ":")
 		s.Sha.Encode(e)
 	}
-	if s.Sha.Set {
-		e.Comma()
+
+	if s.NodeID.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.NodeID.Set {
 		e.RawStr("\"node_id\"" + ":")
 		s.NodeID.Encode(e)
 	}
-	if s.NodeID.Set {
-		e.Comma()
+
+	if s.URL.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.URL.Set {
 		e.RawStr("\"url\"" + ":")
 		s.URL.Encode(e)
 	}
-	if s.URL.Set {
-		e.Comma()
+
+	if s.HTMLURL.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.HTMLURL.Set {
 		e.RawStr("\"html_url\"" + ":")
 		s.HTMLURL.Encode(e)
 	}
-	if s.HTMLURL.Set {
-		e.Comma()
+
+	if s.Author.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Author.Set {
 		e.RawStr("\"author\"" + ":")
 		s.Author.Encode(e)
 	}
-	if s.Author.Set {
-		e.Comma()
+
+	if s.Committer.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Committer.Set {
 		e.RawStr("\"committer\"" + ":")
 		s.Committer.Encode(e)
 	}
-	if s.Committer.Set {
-		e.Comma()
+
+	if s.Message.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Message.Set {
 		e.RawStr("\"message\"" + ":")
 		s.Message.Encode(e)
 	}
-	if s.Message.Set {
-		e.Comma()
+
+	if s.Tree.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Tree.Set {
 		e.RawStr("\"tree\"" + ":")
 		s.Tree.Encode(e)
 	}
-	if s.Tree.Set {
-		e.Comma()
+
+	if s.Parents != nil {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Parents != nil {
 		e.RawStr("\"parents\"" + ":")
@@ -24304,16 +26838,16 @@ func (s FileCommitCommit) Encode(e *jx.Writer) {
 		}
 		e.ArrEnd()
 	}
-	if s.Parents != nil {
-		e.Comma()
+
+	if s.Verification.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Verification.Set {
 		e.RawStr("\"verification\"" + ":")
 		s.Verification.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -24392,27 +26926,42 @@ func (s *FileCommitCommit) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s FileCommitCommitAuthor) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.Date.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.Date.Set {
 		e.RawStr("\"date\"" + ":")
 		s.Date.Encode(e)
 	}
-	if s.Date.Set {
-		e.Comma()
+
+	if s.Name.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Name.Set {
 		e.RawStr("\"name\"" + ":")
 		s.Name.Encode(e)
 	}
-	if s.Name.Set {
-		e.Comma()
+
+	if s.Email.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Email.Set {
 		e.RawStr("\"email\"" + ":")
 		s.Email.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -24449,27 +26998,42 @@ func (s *FileCommitCommitAuthor) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s FileCommitCommitCommitter) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.Date.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.Date.Set {
 		e.RawStr("\"date\"" + ":")
 		s.Date.Encode(e)
 	}
-	if s.Date.Set {
-		e.Comma()
+
+	if s.Name.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Name.Set {
 		e.RawStr("\"name\"" + ":")
 		s.Name.Encode(e)
 	}
-	if s.Name.Set {
-		e.Comma()
+
+	if s.Email.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Email.Set {
 		e.RawStr("\"email\"" + ":")
 		s.Email.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -24506,27 +27070,42 @@ func (s *FileCommitCommitCommitter) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s FileCommitCommitParentsItem) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.URL.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.URL.Set {
 		e.RawStr("\"url\"" + ":")
 		s.URL.Encode(e)
 	}
-	if s.URL.Set {
-		e.Comma()
+
+	if s.HTMLURL.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.HTMLURL.Set {
 		e.RawStr("\"html_url\"" + ":")
 		s.HTMLURL.Encode(e)
 	}
-	if s.HTMLURL.Set {
-		e.Comma()
+
+	if s.Sha.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Sha.Set {
 		e.RawStr("\"sha\"" + ":")
 		s.Sha.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -24563,20 +27142,31 @@ func (s *FileCommitCommitParentsItem) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s FileCommitCommitTree) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.URL.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.URL.Set {
 		e.RawStr("\"url\"" + ":")
 		s.URL.Encode(e)
 	}
-	if s.URL.Set {
-		e.Comma()
+
+	if s.Sha.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Sha.Set {
 		e.RawStr("\"sha\"" + ":")
 		s.Sha.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -24608,34 +27198,53 @@ func (s *FileCommitCommitTree) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s FileCommitCommitVerification) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.Verified.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.Verified.Set {
 		e.RawStr("\"verified\"" + ":")
 		s.Verified.Encode(e)
 	}
-	if s.Verified.Set {
-		e.Comma()
+
+	if s.Reason.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Reason.Set {
 		e.RawStr("\"reason\"" + ":")
 		s.Reason.Encode(e)
 	}
-	if s.Reason.Set {
-		e.Comma()
+
+	if s.Signature.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Signature.Set {
 		e.RawStr("\"signature\"" + ":")
 		s.Signature.Encode(e)
 	}
-	if s.Signature.Set {
-		e.Comma()
+
+	if s.Payload.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Payload.Set {
 		e.RawStr("\"payload\"" + ":")
 		s.Payload.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -24677,76 +27286,119 @@ func (s *FileCommitCommitVerification) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s FileCommitContent) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.Name.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.Name.Set {
 		e.RawStr("\"name\"" + ":")
 		s.Name.Encode(e)
 	}
-	if s.Name.Set {
-		e.Comma()
+
+	if s.Path.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Path.Set {
 		e.RawStr("\"path\"" + ":")
 		s.Path.Encode(e)
 	}
-	if s.Path.Set {
-		e.Comma()
+
+	if s.Sha.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Sha.Set {
 		e.RawStr("\"sha\"" + ":")
 		s.Sha.Encode(e)
 	}
-	if s.Sha.Set {
-		e.Comma()
+
+	if s.Size.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Size.Set {
 		e.RawStr("\"size\"" + ":")
 		s.Size.Encode(e)
 	}
-	if s.Size.Set {
-		e.Comma()
+
+	if s.URL.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.URL.Set {
 		e.RawStr("\"url\"" + ":")
 		s.URL.Encode(e)
 	}
-	if s.URL.Set {
-		e.Comma()
+
+	if s.HTMLURL.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.HTMLURL.Set {
 		e.RawStr("\"html_url\"" + ":")
 		s.HTMLURL.Encode(e)
 	}
-	if s.HTMLURL.Set {
-		e.Comma()
+
+	if s.GitURL.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.GitURL.Set {
 		e.RawStr("\"git_url\"" + ":")
 		s.GitURL.Encode(e)
 	}
-	if s.GitURL.Set {
-		e.Comma()
+
+	if s.DownloadURL.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.DownloadURL.Set {
 		e.RawStr("\"download_url\"" + ":")
 		s.DownloadURL.Encode(e)
 	}
-	if s.DownloadURL.Set {
-		e.Comma()
+
+	if s.Type.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Type.Set {
 		e.RawStr("\"type\"" + ":")
 		s.Type.Encode(e)
 	}
-	if s.Type.Set {
-		e.Comma()
+
+	if s.Links.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Links.Set {
 		e.RawStr("\"_links\"" + ":")
 		s.Links.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -24818,27 +27470,42 @@ func (s *FileCommitContent) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s FileCommitContentLinks) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.Self.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.Self.Set {
 		e.RawStr("\"self\"" + ":")
 		s.Self.Encode(e)
 	}
-	if s.Self.Set {
-		e.Comma()
+
+	if s.Git.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Git.Set {
 		e.RawStr("\"git\"" + ":")
 		s.Git.Encode(e)
 	}
-	if s.Git.Set {
-		e.Comma()
+
+	if s.HTML.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.HTML.Set {
 		e.RawStr("\"html\"" + ":")
 		s.HTML.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -24875,27 +27542,42 @@ func (s *FileCommitContentLinks) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s ForbiddenGist) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.Block.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.Block.Set {
 		e.RawStr("\"block\"" + ":")
 		s.Block.Encode(e)
 	}
-	if s.Block.Set {
-		e.Comma()
+
+	if s.Message.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Message.Set {
 		e.RawStr("\"message\"" + ":")
 		s.Message.Encode(e)
 	}
-	if s.Message.Set {
-		e.Comma()
+
+	if s.DocumentationURL.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.DocumentationURL.Set {
 		e.RawStr("\"documentation_url\"" + ":")
 		s.DocumentationURL.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -24932,27 +27614,42 @@ func (s *ForbiddenGist) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s ForbiddenGistBlock) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.Reason.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.Reason.Set {
 		e.RawStr("\"reason\"" + ":")
 		s.Reason.Encode(e)
 	}
-	if s.Reason.Set {
-		e.Comma()
+
+	if s.CreatedAt.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.CreatedAt.Set {
 		e.RawStr("\"created_at\"" + ":")
 		s.CreatedAt.Encode(e)
 	}
-	if s.CreatedAt.Set {
-		e.Comma()
+
+	if s.HTMLURL.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.HTMLURL.Set {
 		e.RawStr("\"html_url\"" + ":")
 		s.HTMLURL.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -24989,10 +27686,10 @@ func (s *ForbiddenGistBlock) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s Found) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -25013,21 +27710,34 @@ func (s *Found) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s FullRepository) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"id\"" + ":")
 	e.Int(s.ID)
+
 	e.Comma()
 
 	e.RawStr("\"node_id\"" + ":")
 	e.Str(s.NodeID)
+
 	e.Comma()
 
 	e.RawStr("\"name\"" + ":")
 	e.Str(s.Name)
+
 	e.Comma()
 
 	e.RawStr("\"full_name\"" + ":")
 	e.Str(s.FullName)
+
 	e.Comma()
 
 	e.RawStr("\"owner\"" + ":")
@@ -25037,10 +27747,12 @@ func (s FullRepository) Encode(e *jx.Writer) {
 
 	e.RawStr("\"private\"" + ":")
 	e.Bool(s.Private)
+
 	e.Comma()
 
 	e.RawStr("\"html_url\"" + ":")
 	json.EncodeURI(e, s.HTMLURL)
+
 	e.Comma()
 
 	e.RawStr("\"description\"" + ":")
@@ -25050,162 +27762,202 @@ func (s FullRepository) Encode(e *jx.Writer) {
 
 	e.RawStr("\"fork\"" + ":")
 	e.Bool(s.Fork)
+
 	e.Comma()
 
 	e.RawStr("\"url\"" + ":")
 	json.EncodeURI(e, s.URL)
+
 	e.Comma()
 
 	e.RawStr("\"archive_url\"" + ":")
 	e.Str(s.ArchiveURL)
+
 	e.Comma()
 
 	e.RawStr("\"assignees_url\"" + ":")
 	e.Str(s.AssigneesURL)
+
 	e.Comma()
 
 	e.RawStr("\"blobs_url\"" + ":")
 	e.Str(s.BlobsURL)
+
 	e.Comma()
 
 	e.RawStr("\"branches_url\"" + ":")
 	e.Str(s.BranchesURL)
+
 	e.Comma()
 
 	e.RawStr("\"collaborators_url\"" + ":")
 	e.Str(s.CollaboratorsURL)
+
 	e.Comma()
 
 	e.RawStr("\"comments_url\"" + ":")
 	e.Str(s.CommentsURL)
+
 	e.Comma()
 
 	e.RawStr("\"commits_url\"" + ":")
 	e.Str(s.CommitsURL)
+
 	e.Comma()
 
 	e.RawStr("\"compare_url\"" + ":")
 	e.Str(s.CompareURL)
+
 	e.Comma()
 
 	e.RawStr("\"contents_url\"" + ":")
 	e.Str(s.ContentsURL)
+
 	e.Comma()
 
 	e.RawStr("\"contributors_url\"" + ":")
 	json.EncodeURI(e, s.ContributorsURL)
+
 	e.Comma()
 
 	e.RawStr("\"deployments_url\"" + ":")
 	json.EncodeURI(e, s.DeploymentsURL)
+
 	e.Comma()
 
 	e.RawStr("\"downloads_url\"" + ":")
 	json.EncodeURI(e, s.DownloadsURL)
+
 	e.Comma()
 
 	e.RawStr("\"events_url\"" + ":")
 	json.EncodeURI(e, s.EventsURL)
+
 	e.Comma()
 
 	e.RawStr("\"forks_url\"" + ":")
 	json.EncodeURI(e, s.ForksURL)
+
 	e.Comma()
 
 	e.RawStr("\"git_commits_url\"" + ":")
 	e.Str(s.GitCommitsURL)
+
 	e.Comma()
 
 	e.RawStr("\"git_refs_url\"" + ":")
 	e.Str(s.GitRefsURL)
+
 	e.Comma()
 
 	e.RawStr("\"git_tags_url\"" + ":")
 	e.Str(s.GitTagsURL)
+
 	e.Comma()
 
 	e.RawStr("\"git_url\"" + ":")
 	e.Str(s.GitURL)
+
 	e.Comma()
 
 	e.RawStr("\"issue_comment_url\"" + ":")
 	e.Str(s.IssueCommentURL)
+
 	e.Comma()
 
 	e.RawStr("\"issue_events_url\"" + ":")
 	e.Str(s.IssueEventsURL)
+
 	e.Comma()
 
 	e.RawStr("\"issues_url\"" + ":")
 	e.Str(s.IssuesURL)
+
 	e.Comma()
 
 	e.RawStr("\"keys_url\"" + ":")
 	e.Str(s.KeysURL)
+
 	e.Comma()
 
 	e.RawStr("\"labels_url\"" + ":")
 	e.Str(s.LabelsURL)
+
 	e.Comma()
 
 	e.RawStr("\"languages_url\"" + ":")
 	json.EncodeURI(e, s.LanguagesURL)
+
 	e.Comma()
 
 	e.RawStr("\"merges_url\"" + ":")
 	json.EncodeURI(e, s.MergesURL)
+
 	e.Comma()
 
 	e.RawStr("\"milestones_url\"" + ":")
 	e.Str(s.MilestonesURL)
+
 	e.Comma()
 
 	e.RawStr("\"notifications_url\"" + ":")
 	e.Str(s.NotificationsURL)
+
 	e.Comma()
 
 	e.RawStr("\"pulls_url\"" + ":")
 	e.Str(s.PullsURL)
+
 	e.Comma()
 
 	e.RawStr("\"releases_url\"" + ":")
 	e.Str(s.ReleasesURL)
+
 	e.Comma()
 
 	e.RawStr("\"ssh_url\"" + ":")
 	e.Str(s.SSHURL)
+
 	e.Comma()
 
 	e.RawStr("\"stargazers_url\"" + ":")
 	json.EncodeURI(e, s.StargazersURL)
+
 	e.Comma()
 
 	e.RawStr("\"statuses_url\"" + ":")
 	e.Str(s.StatusesURL)
+
 	e.Comma()
 
 	e.RawStr("\"subscribers_url\"" + ":")
 	json.EncodeURI(e, s.SubscribersURL)
+
 	e.Comma()
 
 	e.RawStr("\"subscription_url\"" + ":")
 	json.EncodeURI(e, s.SubscriptionURL)
+
 	e.Comma()
 
 	e.RawStr("\"tags_url\"" + ":")
 	json.EncodeURI(e, s.TagsURL)
+
 	e.Comma()
 
 	e.RawStr("\"teams_url\"" + ":")
 	json.EncodeURI(e, s.TeamsURL)
+
 	e.Comma()
 
 	e.RawStr("\"trees_url\"" + ":")
 	e.Str(s.TreesURL)
+
 	e.Comma()
 
 	e.RawStr("\"clone_url\"" + ":")
 	e.Str(s.CloneURL)
+
 	e.Comma()
 
 	e.RawStr("\"mirror_url\"" + ":")
@@ -25215,10 +27967,12 @@ func (s FullRepository) Encode(e *jx.Writer) {
 
 	e.RawStr("\"hooks_url\"" + ":")
 	json.EncodeURI(e, s.HooksURL)
+
 	e.Comma()
 
 	e.RawStr("\"svn_url\"" + ":")
 	json.EncodeURI(e, s.SvnURL)
+
 	e.Comma()
 
 	e.RawStr("\"homepage\"" + ":")
@@ -25233,32 +27987,41 @@ func (s FullRepository) Encode(e *jx.Writer) {
 
 	e.RawStr("\"forks_count\"" + ":")
 	e.Int(s.ForksCount)
+
 	e.Comma()
 
 	e.RawStr("\"stargazers_count\"" + ":")
 	e.Int(s.StargazersCount)
+
 	e.Comma()
 
 	e.RawStr("\"watchers_count\"" + ":")
 	e.Int(s.WatchersCount)
+
 	e.Comma()
 
 	e.RawStr("\"size\"" + ":")
 	e.Int(s.Size)
+
 	e.Comma()
 
 	e.RawStr("\"default_branch\"" + ":")
 	e.Str(s.DefaultBranch)
+
 	e.Comma()
 
 	e.RawStr("\"open_issues_count\"" + ":")
 	e.Int(s.OpenIssuesCount)
-	e.Comma()
+
+	if s.IsTemplate.Set {
+		e.Comma()
+	}
 	if s.IsTemplate.Set {
 		e.RawStr("\"is_template\"" + ":")
 		s.IsTemplate.Encode(e)
 	}
-	if s.IsTemplate.Set {
+
+	if s.Topics != nil {
 		e.Comma()
 	}
 	if s.Topics != nil {
@@ -25277,193 +28040,221 @@ func (s FullRepository) Encode(e *jx.Writer) {
 		}
 		e.ArrEnd()
 	}
-	if s.Topics != nil {
-		e.Comma()
-	}
+
+	e.Comma()
 
 	e.RawStr("\"has_issues\"" + ":")
 	e.Bool(s.HasIssues)
+
 	e.Comma()
 
 	e.RawStr("\"has_projects\"" + ":")
 	e.Bool(s.HasProjects)
+
 	e.Comma()
 
 	e.RawStr("\"has_wiki\"" + ":")
 	e.Bool(s.HasWiki)
+
 	e.Comma()
 
 	e.RawStr("\"has_pages\"" + ":")
 	e.Bool(s.HasPages)
+
 	e.Comma()
 
 	e.RawStr("\"has_downloads\"" + ":")
 	e.Bool(s.HasDownloads)
+
 	e.Comma()
 
 	e.RawStr("\"archived\"" + ":")
 	e.Bool(s.Archived)
+
 	e.Comma()
 
 	e.RawStr("\"disabled\"" + ":")
 	e.Bool(s.Disabled)
-	e.Comma()
+
+	if s.Visibility.Set {
+		e.Comma()
+	}
 	if s.Visibility.Set {
 		e.RawStr("\"visibility\"" + ":")
 		s.Visibility.Encode(e)
 	}
-	if s.Visibility.Set {
-		e.Comma()
-	}
+
+	e.Comma()
 
 	e.RawStr("\"pushed_at\"" + ":")
 	json.EncodeDateTime(e, s.PushedAt)
+
 	e.Comma()
 
 	e.RawStr("\"created_at\"" + ":")
 	json.EncodeDateTime(e, s.CreatedAt)
+
 	e.Comma()
 
 	e.RawStr("\"updated_at\"" + ":")
 	json.EncodeDateTime(e, s.UpdatedAt)
-	e.Comma()
+
+	if s.Permissions.Set {
+		e.Comma()
+	}
 	if s.Permissions.Set {
 		e.RawStr("\"permissions\"" + ":")
 		s.Permissions.Encode(e)
 	}
-	if s.Permissions.Set {
+
+	if s.AllowRebaseMerge.Set {
 		e.Comma()
 	}
 	if s.AllowRebaseMerge.Set {
 		e.RawStr("\"allow_rebase_merge\"" + ":")
 		s.AllowRebaseMerge.Encode(e)
 	}
-	if s.AllowRebaseMerge.Set {
+
+	if s.TemplateRepository.Set {
 		e.Comma()
 	}
 	if s.TemplateRepository.Set {
 		e.RawStr("\"template_repository\"" + ":")
 		s.TemplateRepository.Encode(e)
 	}
-	if s.TemplateRepository.Set {
+
+	if s.TempCloneToken.Set {
 		e.Comma()
 	}
 	if s.TempCloneToken.Set {
 		e.RawStr("\"temp_clone_token\"" + ":")
 		s.TempCloneToken.Encode(e)
 	}
-	if s.TempCloneToken.Set {
+
+	if s.AllowSquashMerge.Set {
 		e.Comma()
 	}
 	if s.AllowSquashMerge.Set {
 		e.RawStr("\"allow_squash_merge\"" + ":")
 		s.AllowSquashMerge.Encode(e)
 	}
-	if s.AllowSquashMerge.Set {
+
+	if s.AllowAutoMerge.Set {
 		e.Comma()
 	}
 	if s.AllowAutoMerge.Set {
 		e.RawStr("\"allow_auto_merge\"" + ":")
 		s.AllowAutoMerge.Encode(e)
 	}
-	if s.AllowAutoMerge.Set {
+
+	if s.DeleteBranchOnMerge.Set {
 		e.Comma()
 	}
 	if s.DeleteBranchOnMerge.Set {
 		e.RawStr("\"delete_branch_on_merge\"" + ":")
 		s.DeleteBranchOnMerge.Encode(e)
 	}
-	if s.DeleteBranchOnMerge.Set {
+
+	if s.AllowMergeCommit.Set {
 		e.Comma()
 	}
 	if s.AllowMergeCommit.Set {
 		e.RawStr("\"allow_merge_commit\"" + ":")
 		s.AllowMergeCommit.Encode(e)
 	}
-	if s.AllowMergeCommit.Set {
+
+	if s.AllowForking.Set {
 		e.Comma()
 	}
 	if s.AllowForking.Set {
 		e.RawStr("\"allow_forking\"" + ":")
 		s.AllowForking.Encode(e)
 	}
-	if s.AllowForking.Set {
-		e.Comma()
-	}
+
+	e.Comma()
 
 	e.RawStr("\"subscribers_count\"" + ":")
 	e.Int(s.SubscribersCount)
+
 	e.Comma()
 
 	e.RawStr("\"network_count\"" + ":")
 	e.Int(s.NetworkCount)
+
 	e.Comma()
 
 	e.RawStr("\"license\"" + ":")
 	s.License.Encode(e)
 
-	e.Comma()
+	if s.Organization.Set {
+		e.Comma()
+	}
 	if s.Organization.Set {
 		e.RawStr("\"organization\"" + ":")
 		s.Organization.Encode(e)
 	}
-	if s.Organization.Set {
+
+	if s.Parent.Set {
 		e.Comma()
 	}
 	if s.Parent.Set {
 		e.RawStr("\"parent\"" + ":")
 		s.Parent.Encode(e)
 	}
-	if s.Parent.Set {
+
+	if s.Source.Set {
 		e.Comma()
 	}
 	if s.Source.Set {
 		e.RawStr("\"source\"" + ":")
 		s.Source.Encode(e)
 	}
-	if s.Source.Set {
-		e.Comma()
-	}
+
+	e.Comma()
 
 	e.RawStr("\"forks\"" + ":")
 	e.Int(s.Forks)
-	e.Comma()
+
+	if s.MasterBranch.Set {
+		e.Comma()
+	}
 	if s.MasterBranch.Set {
 		e.RawStr("\"master_branch\"" + ":")
 		s.MasterBranch.Encode(e)
 	}
-	if s.MasterBranch.Set {
-		e.Comma()
-	}
+
+	e.Comma()
 
 	e.RawStr("\"open_issues\"" + ":")
 	e.Int(s.OpenIssues)
+
 	e.Comma()
 
 	e.RawStr("\"watchers\"" + ":")
 	e.Int(s.Watchers)
-	e.Comma()
+
+	if s.AnonymousAccessEnabled.Set {
+		e.Comma()
+	}
 	if s.AnonymousAccessEnabled.Set {
 		e.RawStr("\"anonymous_access_enabled\"" + ":")
 		s.AnonymousAccessEnabled.Encode(e)
 	}
-	if s.AnonymousAccessEnabled.Set {
+
+	if s.CodeOfConduct.Set {
 		e.Comma()
 	}
 	if s.CodeOfConduct.Set {
 		e.RawStr("\"code_of_conduct\"" + ":")
 		s.CodeOfConduct.Encode(e)
 	}
-	if s.CodeOfConduct.Set {
+
+	if s.SecurityAndAnalysis.Set {
 		e.Comma()
 	}
 	if s.SecurityAndAnalysis.Set {
 		e.RawStr("\"security_and_analysis\"" + ":")
 		s.SecurityAndAnalysis.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -26027,35 +28818,44 @@ func (s *FullRepository) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s FullRepositoryPermissions) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"admin\"" + ":")
 	e.Bool(s.Admin)
-	e.Comma()
+
+	if s.Maintain.Set {
+		e.Comma()
+	}
 	if s.Maintain.Set {
 		e.RawStr("\"maintain\"" + ":")
 		s.Maintain.Encode(e)
 	}
-	if s.Maintain.Set {
-		e.Comma()
-	}
+
+	e.Comma()
 
 	e.RawStr("\"push\"" + ":")
 	e.Bool(s.Push)
-	e.Comma()
+
+	if s.Triage.Set {
+		e.Comma()
+	}
 	if s.Triage.Set {
 		e.RawStr("\"triage\"" + ":")
 		s.Triage.Encode(e)
 	}
-	if s.Triage.Set {
-		e.Comma()
-	}
+
+	e.Comma()
 
 	e.RawStr("\"pull\"" + ":")
 	e.Bool(s.Pull)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -26104,20 +28904,31 @@ func (s *FullRepositoryPermissions) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s FullRepositorySecurityAndAnalysis) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.AdvancedSecurity.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.AdvancedSecurity.Set {
 		e.RawStr("\"advanced_security\"" + ":")
 		s.AdvancedSecurity.Encode(e)
 	}
-	if s.AdvancedSecurity.Set {
-		e.Comma()
+
+	if s.SecretScanning.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.SecretScanning.Set {
 		e.RawStr("\"secret_scanning\"" + ":")
 		s.SecretScanning.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -26149,13 +28960,20 @@ func (s *FullRepositorySecurityAndAnalysis) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s FullRepositorySecurityAndAnalysisAdvancedSecurity) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.Status.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.Status.Set {
 		e.RawStr("\"status\"" + ":")
 		s.Status.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -26209,13 +29027,20 @@ func (s *FullRepositorySecurityAndAnalysisAdvancedSecurityStatus) Decode(d *jx.D
 // Encode implements json.Marshaler.
 func (s FullRepositorySecurityAndAnalysisSecretScanning) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.Status.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.Status.Set {
 		e.RawStr("\"status\"" + ":")
 		s.Status.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -26269,21 +29094,34 @@ func (s *FullRepositorySecurityAndAnalysisSecretScanningStatus) Decode(d *jx.Dec
 // Encode implements json.Marshaler.
 func (s GistComment) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"id\"" + ":")
 	e.Int(s.ID)
+
 	e.Comma()
 
 	e.RawStr("\"node_id\"" + ":")
 	e.Str(s.NodeID)
+
 	e.Comma()
 
 	e.RawStr("\"url\"" + ":")
 	json.EncodeURI(e, s.URL)
+
 	e.Comma()
 
 	e.RawStr("\"body\"" + ":")
 	e.Str(s.Body)
+
 	e.Comma()
 
 	e.RawStr("\"user\"" + ":")
@@ -26293,18 +29131,16 @@ func (s GistComment) Encode(e *jx.Writer) {
 
 	e.RawStr("\"created_at\"" + ":")
 	json.EncodeDateTime(e, s.CreatedAt)
+
 	e.Comma()
 
 	e.RawStr("\"updated_at\"" + ":")
 	json.EncodeDateTime(e, s.UpdatedAt)
+
 	e.Comma()
 
 	e.RawStr("\"author_association\"" + ":")
 	s.AuthorAssociation.Encode(e)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -26369,13 +29205,24 @@ func (s *GistComment) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s GistCommit) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"url\"" + ":")
 	json.EncodeURI(e, s.URL)
+
 	e.Comma()
 
 	e.RawStr("\"version\"" + ":")
 	e.Str(s.Version)
+
 	e.Comma()
 
 	e.RawStr("\"user\"" + ":")
@@ -26390,10 +29237,6 @@ func (s GistCommit) Encode(e *jx.Writer) {
 
 	e.RawStr("\"committed_at\"" + ":")
 	json.EncodeDateTime(e, s.CommittedAt)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -26440,27 +29283,42 @@ func (s *GistCommit) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s GistCommitChangeStatus) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.Total.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.Total.Set {
 		e.RawStr("\"total\"" + ":")
 		s.Total.Encode(e)
 	}
-	if s.Total.Set {
-		e.Comma()
+
+	if s.Additions.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Additions.Set {
 		e.RawStr("\"additions\"" + ":")
 		s.Additions.Encode(e)
 	}
-	if s.Additions.Set {
-		e.Comma()
+
+	if s.Deletions.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Deletions.Set {
 		e.RawStr("\"deletions\"" + ":")
 		s.Deletions.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -26497,41 +29355,64 @@ func (s *GistCommitChangeStatus) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s GistHistory) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.User.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.User.Set {
 		e.RawStr("\"user\"" + ":")
 		s.User.Encode(e)
 	}
-	if s.User.Set {
-		e.Comma()
+
+	if s.Version.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Version.Set {
 		e.RawStr("\"version\"" + ":")
 		s.Version.Encode(e)
 	}
-	if s.Version.Set {
-		e.Comma()
+
+	if s.CommittedAt.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.CommittedAt.Set {
 		e.RawStr("\"committed_at\"" + ":")
 		s.CommittedAt.Encode(e, json.EncodeDateTime)
 	}
-	if s.CommittedAt.Set {
-		e.Comma()
+
+	if s.ChangeStatus.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.ChangeStatus.Set {
 		e.RawStr("\"change_status\"" + ":")
 		s.ChangeStatus.Encode(e)
 	}
-	if s.ChangeStatus.Set {
-		e.Comma()
+
+	if s.URL.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.URL.Set {
 		e.RawStr("\"url\"" + ":")
 		s.URL.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -26578,27 +29459,42 @@ func (s *GistHistory) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s GistHistoryChangeStatus) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.Total.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.Total.Set {
 		e.RawStr("\"total\"" + ":")
 		s.Total.Encode(e)
 	}
-	if s.Total.Set {
-		e.Comma()
+
+	if s.Additions.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Additions.Set {
 		e.RawStr("\"additions\"" + ":")
 		s.Additions.Encode(e)
 	}
-	if s.Additions.Set {
-		e.Comma()
+
+	if s.Deletions.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Deletions.Set {
 		e.RawStr("\"deletions\"" + ":")
 		s.Deletions.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -26635,153 +29531,240 @@ func (s *GistHistoryChangeStatus) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s GistSimple) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.Forks.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.Forks.Set {
 		e.RawStr("\"forks\"" + ":")
 		s.Forks.Encode(e)
 	}
-	if s.Forks.Set {
-		e.Comma()
+
+	if s.History.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.History.Set {
 		e.RawStr("\"history\"" + ":")
 		s.History.Encode(e)
 	}
-	if s.History.Set {
-		e.Comma()
+
+	if s.ForkOf.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.ForkOf.Set {
 		e.RawStr("\"fork_of\"" + ":")
 		s.ForkOf.Encode(e)
 	}
-	if s.ForkOf.Set {
-		e.Comma()
+
+	if s.URL.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.URL.Set {
 		e.RawStr("\"url\"" + ":")
 		s.URL.Encode(e)
 	}
-	if s.URL.Set {
-		e.Comma()
+
+	if s.ForksURL.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.ForksURL.Set {
 		e.RawStr("\"forks_url\"" + ":")
 		s.ForksURL.Encode(e)
 	}
-	if s.ForksURL.Set {
-		e.Comma()
+
+	if s.CommitsURL.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.CommitsURL.Set {
 		e.RawStr("\"commits_url\"" + ":")
 		s.CommitsURL.Encode(e)
 	}
-	if s.CommitsURL.Set {
-		e.Comma()
+
+	if s.ID.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.ID.Set {
 		e.RawStr("\"id\"" + ":")
 		s.ID.Encode(e)
 	}
-	if s.ID.Set {
-		e.Comma()
+
+	if s.NodeID.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.NodeID.Set {
 		e.RawStr("\"node_id\"" + ":")
 		s.NodeID.Encode(e)
 	}
-	if s.NodeID.Set {
-		e.Comma()
+
+	if s.GitPullURL.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.GitPullURL.Set {
 		e.RawStr("\"git_pull_url\"" + ":")
 		s.GitPullURL.Encode(e)
 	}
-	if s.GitPullURL.Set {
-		e.Comma()
+
+	if s.GitPushURL.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.GitPushURL.Set {
 		e.RawStr("\"git_push_url\"" + ":")
 		s.GitPushURL.Encode(e)
 	}
-	if s.GitPushURL.Set {
-		e.Comma()
+
+	if s.HTMLURL.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.HTMLURL.Set {
 		e.RawStr("\"html_url\"" + ":")
 		s.HTMLURL.Encode(e)
 	}
-	if s.HTMLURL.Set {
-		e.Comma()
+
+	if s.Files != nil {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Files != nil {
 		e.RawStr("\"files\"" + ":")
 		s.Files.Encode(e)
 	}
-	if s.Files != nil {
-		e.Comma()
+
+	if s.Public.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Public.Set {
 		e.RawStr("\"public\"" + ":")
 		s.Public.Encode(e)
 	}
-	if s.Public.Set {
-		e.Comma()
+
+	if s.CreatedAt.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.CreatedAt.Set {
 		e.RawStr("\"created_at\"" + ":")
 		s.CreatedAt.Encode(e)
 	}
-	if s.CreatedAt.Set {
-		e.Comma()
+
+	if s.UpdatedAt.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.UpdatedAt.Set {
 		e.RawStr("\"updated_at\"" + ":")
 		s.UpdatedAt.Encode(e)
 	}
-	if s.UpdatedAt.Set {
-		e.Comma()
+
+	if s.Description.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Description.Set {
 		e.RawStr("\"description\"" + ":")
 		s.Description.Encode(e)
 	}
-	if s.Description.Set {
-		e.Comma()
+
+	if s.Comments.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Comments.Set {
 		e.RawStr("\"comments\"" + ":")
 		s.Comments.Encode(e)
 	}
-	if s.Comments.Set {
-		e.Comma()
+
+	if s.User.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.User.Set {
 		e.RawStr("\"user\"" + ":")
 		s.User.Encode(e)
 	}
-	if s.User.Set {
-		e.Comma()
+
+	if s.CommentsURL.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.CommentsURL.Set {
 		e.RawStr("\"comments_url\"" + ":")
 		s.CommentsURL.Encode(e)
 	}
-	if s.CommentsURL.Set {
-		e.Comma()
+
+	if s.Owner.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Owner.Set {
 		e.RawStr("\"owner\"" + ":")
 		s.Owner.Encode(e)
 	}
-	if s.Owner.Set {
-		e.Comma()
+
+	if s.Truncated.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Truncated.Set {
 		e.RawStr("\"truncated\"" + ":")
 		s.Truncated.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -26910,10 +29893,10 @@ func (s *GistSimple) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s GistSimpleFiles) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -26934,37 +29917,54 @@ func (s *GistSimpleFiles) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s GistSimpleForkOf) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"url\"" + ":")
 	json.EncodeURI(e, s.URL)
+
 	e.Comma()
 
 	e.RawStr("\"forks_url\"" + ":")
 	json.EncodeURI(e, s.ForksURL)
+
 	e.Comma()
 
 	e.RawStr("\"commits_url\"" + ":")
 	json.EncodeURI(e, s.CommitsURL)
+
 	e.Comma()
 
 	e.RawStr("\"id\"" + ":")
 	e.Str(s.ID)
+
 	e.Comma()
 
 	e.RawStr("\"node_id\"" + ":")
 	e.Str(s.NodeID)
+
 	e.Comma()
 
 	e.RawStr("\"git_pull_url\"" + ":")
 	json.EncodeURI(e, s.GitPullURL)
+
 	e.Comma()
 
 	e.RawStr("\"git_push_url\"" + ":")
 	json.EncodeURI(e, s.GitPushURL)
+
 	e.Comma()
 
 	e.RawStr("\"html_url\"" + ":")
 	json.EncodeURI(e, s.HTMLURL)
+
 	e.Comma()
 
 	e.RawStr("\"files\"" + ":")
@@ -26974,14 +29974,17 @@ func (s GistSimpleForkOf) Encode(e *jx.Writer) {
 
 	e.RawStr("\"public\"" + ":")
 	e.Bool(s.Public)
+
 	e.Comma()
 
 	e.RawStr("\"created_at\"" + ":")
 	json.EncodeDateTime(e, s.CreatedAt)
+
 	e.Comma()
 
 	e.RawStr("\"updated_at\"" + ":")
 	json.EncodeDateTime(e, s.UpdatedAt)
+
 	e.Comma()
 
 	e.RawStr("\"description\"" + ":")
@@ -26991,6 +29994,7 @@ func (s GistSimpleForkOf) Encode(e *jx.Writer) {
 
 	e.RawStr("\"comments\"" + ":")
 	e.Int(s.Comments)
+
 	e.Comma()
 
 	e.RawStr("\"user\"" + ":")
@@ -27000,19 +30004,24 @@ func (s GistSimpleForkOf) Encode(e *jx.Writer) {
 
 	e.RawStr("\"comments_url\"" + ":")
 	json.EncodeURI(e, s.CommentsURL)
-	e.Comma()
+
+	if s.Owner.Set {
+		e.Comma()
+	}
 	if s.Owner.Set {
 		e.RawStr("\"owner\"" + ":")
 		s.Owner.Encode(e)
 	}
-	if s.Owner.Set {
+
+	if s.Truncated.Set {
 		e.Comma()
 	}
 	if s.Truncated.Set {
 		e.RawStr("\"truncated\"" + ":")
 		s.Truncated.Encode(e)
 	}
-	if s.Truncated.Set {
+
+	if s.Forks != nil {
 		e.Comma()
 	}
 	if s.Forks != nil {
@@ -27031,7 +30040,8 @@ func (s GistSimpleForkOf) Encode(e *jx.Writer) {
 		}
 		e.ArrEnd()
 	}
-	if s.Forks != nil {
+
+	if s.History != nil {
 		e.Comma()
 	}
 	if s.History != nil {
@@ -27049,10 +30059,6 @@ func (s GistSimpleForkOf) Encode(e *jx.Writer) {
 			}
 		}
 		e.ArrEnd()
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -27202,10 +30208,10 @@ func (s *GistSimpleForkOf) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s GistSimpleForkOfFiles) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -27226,41 +30232,64 @@ func (s *GistSimpleForkOfFiles) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s GistSimpleForksItem) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.ID.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.ID.Set {
 		e.RawStr("\"id\"" + ":")
 		s.ID.Encode(e)
 	}
-	if s.ID.Set {
-		e.Comma()
+
+	if s.URL.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.URL.Set {
 		e.RawStr("\"url\"" + ":")
 		s.URL.Encode(e)
 	}
-	if s.URL.Set {
-		e.Comma()
+
+	if s.User.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.User.Set {
 		e.RawStr("\"user\"" + ":")
 		s.User.Encode(e)
 	}
-	if s.User.Set {
-		e.Comma()
+
+	if s.CreatedAt.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.CreatedAt.Set {
 		e.RawStr("\"created_at\"" + ":")
 		s.CreatedAt.Encode(e, json.EncodeDateTime)
 	}
-	if s.CreatedAt.Set {
-		e.Comma()
+
+	if s.UpdatedAt.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.UpdatedAt.Set {
 		e.RawStr("\"updated_at\"" + ":")
 		s.UpdatedAt.Encode(e, json.EncodeDateTime)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -27307,10 +30336,10 @@ func (s *GistSimpleForksItem) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s GistsCheckIsStarredNoContent) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -27331,10 +30360,10 @@ func (s *GistsCheckIsStarredNoContent) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s GistsCheckIsStarredNotFound) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -27451,13 +30480,18 @@ func (s *GistsCreateCommentApplicationJSONNotFound) Decode(d *jx.Decoder) error 
 // Encode implements json.Marshaler.
 func (s GistsCreateCommentReq) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"body\"" + ":")
 	e.Str(s.Body)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -27484,25 +30518,37 @@ func (s *GistsCreateCommentReq) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s GistsCreateReq) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.Description.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.Description.Set {
 		e.RawStr("\"description\"" + ":")
 		s.Description.Encode(e)
 	}
-	if s.Description.Set {
+
+	if !first {
+
 		e.Comma()
 	}
+	first = false
 
 	e.RawStr("\"files\"" + ":")
 	s.Files.Encode(e)
 
-	e.Comma()
+	if s.Public.Set {
+		e.Comma()
+	}
 	if s.Public.Set {
 		e.RawStr("\"public\"" + ":")
 		s.Public.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -27538,10 +30584,10 @@ func (s *GistsCreateReq) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s GistsCreateReqFiles) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -27720,10 +30766,10 @@ func (s *GistsDeleteCommentApplicationJSONNotFound) Decode(d *jx.Decoder) error 
 // Encode implements json.Marshaler.
 func (s GistsDeleteCommentNoContent) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -27744,10 +30790,10 @@ func (s *GistsDeleteCommentNoContent) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s GistsDeleteNoContent) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -28412,10 +31458,10 @@ func (s *GistsStarApplicationJSONNotFound) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s GistsStarNoContent) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -28484,10 +31530,10 @@ func (s *GistsUnstarApplicationJSONNotFound) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s GistsUnstarNoContent) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -28508,13 +31554,18 @@ func (s *GistsUnstarNoContent) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s GistsUpdateCommentReq) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"body\"" + ":")
 	e.Str(s.Body)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -28541,17 +31592,29 @@ func (s *GistsUpdateCommentReq) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s GitCommit) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"sha\"" + ":")
 	e.Str(s.Sha)
+
 	e.Comma()
 
 	e.RawStr("\"node_id\"" + ":")
 	e.Str(s.NodeID)
+
 	e.Comma()
 
 	e.RawStr("\"url\"" + ":")
 	json.EncodeURI(e, s.URL)
+
 	e.Comma()
 
 	e.RawStr("\"author\"" + ":")
@@ -28566,6 +31629,7 @@ func (s GitCommit) Encode(e *jx.Writer) {
 
 	e.RawStr("\"message\"" + ":")
 	e.Str(s.Message)
+
 	e.Comma()
 
 	e.RawStr("\"tree\"" + ":")
@@ -28597,10 +31661,6 @@ func (s GitCommit) Encode(e *jx.Writer) {
 
 	e.RawStr("\"html_url\"" + ":")
 	json.EncodeURI(e, s.HTMLURL)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -28679,21 +31739,28 @@ func (s *GitCommit) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s GitCommitAuthor) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"date\"" + ":")
 	json.EncodeDateTime(e, s.Date)
+
 	e.Comma()
 
 	e.RawStr("\"email\"" + ":")
 	e.Str(s.Email)
+
 	e.Comma()
 
 	e.RawStr("\"name\"" + ":")
 	e.Str(s.Name)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -28732,21 +31799,28 @@ func (s *GitCommitAuthor) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s GitCommitCommitter) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"date\"" + ":")
 	json.EncodeDateTime(e, s.Date)
+
 	e.Comma()
 
 	e.RawStr("\"email\"" + ":")
 	e.Str(s.Email)
+
 	e.Comma()
 
 	e.RawStr("\"name\"" + ":")
 	e.Str(s.Name)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -28785,21 +31859,28 @@ func (s *GitCommitCommitter) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s GitCommitParentsItem) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"sha\"" + ":")
 	e.Str(s.Sha)
+
 	e.Comma()
 
 	e.RawStr("\"url\"" + ":")
 	json.EncodeURI(e, s.URL)
+
 	e.Comma()
 
 	e.RawStr("\"html_url\"" + ":")
 	json.EncodeURI(e, s.HTMLURL)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -28838,17 +31919,23 @@ func (s *GitCommitParentsItem) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s GitCommitTree) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"sha\"" + ":")
 	e.Str(s.Sha)
+
 	e.Comma()
 
 	e.RawStr("\"url\"" + ":")
 	json.EncodeURI(e, s.URL)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -28881,13 +31968,24 @@ func (s *GitCommitTree) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s GitCommitVerification) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"verified\"" + ":")
 	e.Bool(s.Verified)
+
 	e.Comma()
 
 	e.RawStr("\"reason\"" + ":")
 	e.Str(s.Reason)
+
 	e.Comma()
 
 	e.RawStr("\"signature\"" + ":")
@@ -28897,10 +31995,6 @@ func (s GitCommitVerification) Encode(e *jx.Writer) {
 
 	e.RawStr("\"payload\"" + ":")
 	s.Payload.Encode(e)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -29013,17 +32107,25 @@ func (s *GitCreateBlobApplicationJSONNotFound) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s GitCreateBlobReq) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"content\"" + ":")
 	e.Str(s.Content)
-	e.Comma()
+
+	if s.Encoding.Set {
+		e.Comma()
+	}
 	if s.Encoding.Set {
 		e.RawStr("\"encoding\"" + ":")
 		s.Encoding.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -29056,14 +32158,27 @@ func (s *GitCreateBlobReq) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s GitCreateCommitReq) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"message\"" + ":")
 	e.Str(s.Message)
+
 	e.Comma()
 
 	e.RawStr("\"tree\"" + ":")
 	e.Str(s.Tree)
-	e.Comma()
+
+	if s.Parents != nil {
+		e.Comma()
+	}
 	if s.Parents != nil {
 		e.RawStr("\"parents\"" + ":")
 		e.ArrStart()
@@ -29080,30 +32195,29 @@ func (s GitCreateCommitReq) Encode(e *jx.Writer) {
 		}
 		e.ArrEnd()
 	}
-	if s.Parents != nil {
+
+	if s.Author.Set {
 		e.Comma()
 	}
 	if s.Author.Set {
 		e.RawStr("\"author\"" + ":")
 		s.Author.Encode(e)
 	}
-	if s.Author.Set {
+
+	if s.Committer.Set {
 		e.Comma()
 	}
 	if s.Committer.Set {
 		e.RawStr("\"committer\"" + ":")
 		s.Committer.Encode(e)
 	}
-	if s.Committer.Set {
+
+	if s.Signature.Set {
 		e.Comma()
 	}
 	if s.Signature.Set {
 		e.RawStr("\"signature\"" + ":")
 		s.Signature.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -29166,21 +32280,30 @@ func (s *GitCreateCommitReq) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s GitCreateCommitReqAuthor) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"name\"" + ":")
 	e.Str(s.Name)
+
 	e.Comma()
 
 	e.RawStr("\"email\"" + ":")
 	e.Str(s.Email)
-	e.Comma()
+
+	if s.Date.Set {
+		e.Comma()
+	}
 	if s.Date.Set {
 		e.RawStr("\"date\"" + ":")
 		s.Date.Encode(e, json.EncodeDateTime)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -29219,27 +32342,42 @@ func (s *GitCreateCommitReqAuthor) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s GitCreateCommitReqCommitter) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.Name.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.Name.Set {
 		e.RawStr("\"name\"" + ":")
 		s.Name.Encode(e)
 	}
-	if s.Name.Set {
-		e.Comma()
+
+	if s.Email.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Email.Set {
 		e.RawStr("\"email\"" + ":")
 		s.Email.Encode(e)
 	}
-	if s.Email.Set {
-		e.Comma()
+
+	if s.Date.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Date.Set {
 		e.RawStr("\"date\"" + ":")
 		s.Date.Encode(e, json.EncodeDateTime)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -29276,21 +32414,30 @@ func (s *GitCreateCommitReqCommitter) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s GitCreateRefReq) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"ref\"" + ":")
 	e.Str(s.Ref)
+
 	e.Comma()
 
 	e.RawStr("\"sha\"" + ":")
 	e.Str(s.Sha)
-	e.Comma()
+
+	if s.Key.Set {
+		e.Comma()
+	}
 	if s.Key.Set {
 		e.RawStr("\"key\"" + ":")
 		s.Key.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -29329,30 +32476,40 @@ func (s *GitCreateRefReq) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s GitCreateTagReq) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"tag\"" + ":")
 	e.Str(s.Tag)
+
 	e.Comma()
 
 	e.RawStr("\"message\"" + ":")
 	e.Str(s.Message)
+
 	e.Comma()
 
 	e.RawStr("\"object\"" + ":")
 	e.Str(s.Object)
+
 	e.Comma()
 
 	e.RawStr("\"type\"" + ":")
 	s.Type.Encode(e)
 
-	e.Comma()
+	if s.Tagger.Set {
+		e.Comma()
+	}
 	if s.Tagger.Set {
 		e.RawStr("\"tagger\"" + ":")
 		s.Tagger.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -29401,21 +32558,30 @@ func (s *GitCreateTagReq) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s GitCreateTagReqTagger) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"name\"" + ":")
 	e.Str(s.Name)
+
 	e.Comma()
 
 	e.RawStr("\"email\"" + ":")
 	e.Str(s.Email)
-	e.Comma()
+
+	if s.Date.Set {
+		e.Comma()
+	}
 	if s.Date.Set {
 		e.RawStr("\"date\"" + ":")
 		s.Date.Encode(e, json.EncodeDateTime)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -29531,6 +32697,16 @@ func (s *GitCreateTreeApplicationJSONNotFound) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s GitCreateTreeReq) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"tree\"" + ":")
 	e.ArrStart()
@@ -29547,14 +32723,12 @@ func (s GitCreateTreeReq) Encode(e *jx.Writer) {
 	}
 	e.ArrEnd()
 
-	e.Comma()
+	if s.BaseTree.Set {
+		e.Comma()
+	}
 	if s.BaseTree.Set {
 		e.RawStr("\"base_tree\"" + ":")
 		s.BaseTree.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -29593,41 +32767,64 @@ func (s *GitCreateTreeReq) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s GitCreateTreeReqTreeItem) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.Path.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.Path.Set {
 		e.RawStr("\"path\"" + ":")
 		s.Path.Encode(e)
 	}
-	if s.Path.Set {
-		e.Comma()
+
+	if s.Mode.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Mode.Set {
 		e.RawStr("\"mode\"" + ":")
 		s.Mode.Encode(e)
 	}
-	if s.Mode.Set {
-		e.Comma()
+
+	if s.Type.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Type.Set {
 		e.RawStr("\"type\"" + ":")
 		s.Type.Encode(e)
 	}
-	if s.Type.Set {
-		e.Comma()
+
+	if s.Sha.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Sha.Set {
 		e.RawStr("\"sha\"" + ":")
 		s.Sha.Encode(e)
 	}
-	if s.Sha.Set {
-		e.Comma()
+
+	if s.Content.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Content.Set {
 		e.RawStr("\"content\"" + ":")
 		s.Content.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -29736,10 +32933,10 @@ func (s *GitCreateTreeReqTreeItemType) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s GitDeleteRefNoContent) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -29808,25 +33005,33 @@ func (s *GitGetBlobApplicationJSONNotFound) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s GitRef) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"ref\"" + ":")
 	e.Str(s.Ref)
+
 	e.Comma()
 
 	e.RawStr("\"node_id\"" + ":")
 	e.Str(s.NodeID)
+
 	e.Comma()
 
 	e.RawStr("\"url\"" + ":")
 	json.EncodeURI(e, s.URL)
+
 	e.Comma()
 
 	e.RawStr("\"object\"" + ":")
 	s.Object.Encode(e)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -29869,21 +33074,28 @@ func (s *GitRef) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s GitRefObject) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"type\"" + ":")
 	e.Str(s.Type)
+
 	e.Comma()
 
 	e.RawStr("\"sha\"" + ":")
 	e.Str(s.Sha)
+
 	e.Comma()
 
 	e.RawStr("\"url\"" + ":")
 	json.EncodeURI(e, s.URL)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -29922,25 +33134,39 @@ func (s *GitRefObject) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s GitTag) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"node_id\"" + ":")
 	e.Str(s.NodeID)
+
 	e.Comma()
 
 	e.RawStr("\"tag\"" + ":")
 	e.Str(s.Tag)
+
 	e.Comma()
 
 	e.RawStr("\"sha\"" + ":")
 	e.Str(s.Sha)
+
 	e.Comma()
 
 	e.RawStr("\"url\"" + ":")
 	json.EncodeURI(e, s.URL)
+
 	e.Comma()
 
 	e.RawStr("\"message\"" + ":")
 	e.Str(s.Message)
+
 	e.Comma()
 
 	e.RawStr("\"tagger\"" + ":")
@@ -29951,14 +33177,12 @@ func (s GitTag) Encode(e *jx.Writer) {
 	e.RawStr("\"object\"" + ":")
 	s.Object.Encode(e)
 
-	e.Comma()
+	if s.Verification.Set {
+		e.Comma()
+	}
 	if s.Verification.Set {
 		e.RawStr("\"verification\"" + ":")
 		s.Verification.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -30023,21 +33247,28 @@ func (s *GitTag) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s GitTagObject) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"sha\"" + ":")
 	e.Str(s.Sha)
+
 	e.Comma()
 
 	e.RawStr("\"type\"" + ":")
 	e.Str(s.Type)
+
 	e.Comma()
 
 	e.RawStr("\"url\"" + ":")
 	json.EncodeURI(e, s.URL)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -30076,21 +33307,28 @@ func (s *GitTagObject) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s GitTagTagger) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"date\"" + ":")
 	e.Str(s.Date)
+
 	e.Comma()
 
 	e.RawStr("\"email\"" + ":")
 	e.Str(s.Email)
+
 	e.Comma()
 
 	e.RawStr("\"name\"" + ":")
 	e.Str(s.Name)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -30129,17 +33367,29 @@ func (s *GitTagTagger) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s GitTree) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"sha\"" + ":")
 	e.Str(s.Sha)
+
 	e.Comma()
 
 	e.RawStr("\"url\"" + ":")
 	json.EncodeURI(e, s.URL)
+
 	e.Comma()
 
 	e.RawStr("\"truncated\"" + ":")
 	e.Bool(s.Truncated)
+
 	e.Comma()
 
 	e.RawStr("\"tree\"" + ":")
@@ -30156,10 +33406,6 @@ func (s GitTree) Encode(e *jx.Writer) {
 		}
 	}
 	e.ArrEnd()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -30210,48 +33456,75 @@ func (s *GitTree) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s GitTreeTreeItem) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.Path.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.Path.Set {
 		e.RawStr("\"path\"" + ":")
 		s.Path.Encode(e)
 	}
-	if s.Path.Set {
-		e.Comma()
+
+	if s.Mode.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Mode.Set {
 		e.RawStr("\"mode\"" + ":")
 		s.Mode.Encode(e)
 	}
-	if s.Mode.Set {
-		e.Comma()
+
+	if s.Type.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Type.Set {
 		e.RawStr("\"type\"" + ":")
 		s.Type.Encode(e)
 	}
-	if s.Type.Set {
-		e.Comma()
+
+	if s.Sha.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Sha.Set {
 		e.RawStr("\"sha\"" + ":")
 		s.Sha.Encode(e)
 	}
-	if s.Sha.Set {
-		e.Comma()
+
+	if s.Size.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Size.Set {
 		e.RawStr("\"size\"" + ":")
 		s.Size.Encode(e)
 	}
-	if s.Size.Set {
-		e.Comma()
+
+	if s.URL.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.URL.Set {
 		e.RawStr("\"url\"" + ":")
 		s.URL.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -30303,17 +33576,25 @@ func (s *GitTreeTreeItem) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s GitUpdateRefReq) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"sha\"" + ":")
 	e.Str(s.Sha)
-	e.Comma()
+
+	if s.Force.Set {
+		e.Comma()
+	}
 	if s.Force.Set {
 		e.RawStr("\"force\"" + ":")
 		s.Force.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -30392,17 +33673,23 @@ func (s *GitignoreGetAllTemplatesOKApplicationJSON) Decode(d *jx.Decoder) error 
 // Encode implements json.Marshaler.
 func (s GitignoreTemplate) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"name\"" + ":")
 	e.Str(s.Name)
+
 	e.Comma()
 
 	e.RawStr("\"source\"" + ":")
 	e.Str(s.Source)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -30435,9 +33722,19 @@ func (s *GitignoreTemplate) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s GpgKey) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"id\"" + ":")
 	e.Int(s.ID)
+
 	e.Comma()
 
 	e.RawStr("\"primary_key_id\"" + ":")
@@ -30447,10 +33744,12 @@ func (s GpgKey) Encode(e *jx.Writer) {
 
 	e.RawStr("\"key_id\"" + ":")
 	e.Str(s.KeyID)
+
 	e.Comma()
 
 	e.RawStr("\"public_key\"" + ":")
 	e.Str(s.PublicKey)
+
 	e.Comma()
 
 	e.RawStr("\"emails\"" + ":")
@@ -30489,22 +33788,27 @@ func (s GpgKey) Encode(e *jx.Writer) {
 
 	e.RawStr("\"can_sign\"" + ":")
 	e.Bool(s.CanSign)
+
 	e.Comma()
 
 	e.RawStr("\"can_encrypt_comms\"" + ":")
 	e.Bool(s.CanEncryptComms)
+
 	e.Comma()
 
 	e.RawStr("\"can_encrypt_storage\"" + ":")
 	e.Bool(s.CanEncryptStorage)
+
 	e.Comma()
 
 	e.RawStr("\"can_certify\"" + ":")
 	e.Bool(s.CanCertify)
+
 	e.Comma()
 
 	e.RawStr("\"created_at\"" + ":")
 	json.EncodeDateTime(e, s.CreatedAt)
+
 	e.Comma()
 
 	e.RawStr("\"expires_at\"" + ":")
@@ -30514,10 +33818,6 @@ func (s GpgKey) Encode(e *jx.Writer) {
 
 	e.RawStr("\"raw_key\"" + ":")
 	s.RawKey.Encode(e)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -30622,20 +33922,31 @@ func (s *GpgKey) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s GpgKeyEmailsItem) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.Email.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.Email.Set {
 		e.RawStr("\"email\"" + ":")
 		s.Email.Encode(e)
 	}
-	if s.Email.Set {
-		e.Comma()
+
+	if s.Verified.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Verified.Set {
 		e.RawStr("\"verified\"" + ":")
 		s.Verified.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -30667,33 +33978,60 @@ func (s *GpgKeyEmailsItem) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s GpgKeySubkeysItem) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.ID.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.ID.Set {
 		e.RawStr("\"id\"" + ":")
 		s.ID.Encode(e)
 	}
-	if s.ID.Set {
-		e.Comma()
+
+	if s.PrimaryKeyID.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.PrimaryKeyID.Set {
 		e.RawStr("\"primary_key_id\"" + ":")
 		s.PrimaryKeyID.Encode(e)
 	}
-	if s.PrimaryKeyID.Set {
-		e.Comma()
+
+	if s.KeyID.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.KeyID.Set {
 		e.RawStr("\"key_id\"" + ":")
 		s.KeyID.Encode(e)
 	}
-	if s.KeyID.Set {
-		e.Comma()
+
+	if s.PublicKey.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.PublicKey.Set {
 		e.RawStr("\"public_key\"" + ":")
 		s.PublicKey.Encode(e)
 	}
-	if s.PublicKey.Set {
-		e.Comma()
+
+	if s.Emails != nil {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Emails != nil {
 		e.RawStr("\"emails\"" + ":")
@@ -30711,8 +34049,12 @@ func (s GpgKeySubkeysItem) Encode(e *jx.Writer) {
 		}
 		e.ArrEnd()
 	}
-	if s.Emails != nil {
-		e.Comma()
+
+	if s.Subkeys != nil {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Subkeys != nil {
 		e.RawStr("\"subkeys\"" + ":")
@@ -30730,58 +34072,82 @@ func (s GpgKeySubkeysItem) Encode(e *jx.Writer) {
 		}
 		e.ArrEnd()
 	}
-	if s.Subkeys != nil {
-		e.Comma()
+
+	if s.CanSign.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.CanSign.Set {
 		e.RawStr("\"can_sign\"" + ":")
 		s.CanSign.Encode(e)
 	}
-	if s.CanSign.Set {
-		e.Comma()
+
+	if s.CanEncryptComms.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.CanEncryptComms.Set {
 		e.RawStr("\"can_encrypt_comms\"" + ":")
 		s.CanEncryptComms.Encode(e)
 	}
-	if s.CanEncryptComms.Set {
-		e.Comma()
+
+	if s.CanEncryptStorage.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.CanEncryptStorage.Set {
 		e.RawStr("\"can_encrypt_storage\"" + ":")
 		s.CanEncryptStorage.Encode(e)
 	}
-	if s.CanEncryptStorage.Set {
-		e.Comma()
+
+	if s.CanCertify.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.CanCertify.Set {
 		e.RawStr("\"can_certify\"" + ":")
 		s.CanCertify.Encode(e)
 	}
-	if s.CanCertify.Set {
-		e.Comma()
+
+	if s.CreatedAt.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.CreatedAt.Set {
 		e.RawStr("\"created_at\"" + ":")
 		s.CreatedAt.Encode(e)
 	}
-	if s.CreatedAt.Set {
-		e.Comma()
+
+	if s.ExpiresAt.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.ExpiresAt.Set {
 		e.RawStr("\"expires_at\"" + ":")
 		s.ExpiresAt.Encode(e)
 	}
-	if s.ExpiresAt.Set {
-		e.Comma()
+
+	if s.RawKey.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.RawKey.Set {
 		e.RawStr("\"raw_key\"" + ":")
 		s.RawKey.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -30886,6 +34252,17 @@ func (s *GpgKeySubkeysItem) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s GroupMapping) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.Groups != nil {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.Groups != nil {
 		e.RawStr("\"groups\"" + ":")
 		e.ArrStart()
@@ -30901,10 +34278,6 @@ func (s GroupMapping) Encode(e *jx.Writer) {
 			}
 		}
 		e.ArrEnd()
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -30938,32 +34311,43 @@ func (s *GroupMapping) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s GroupMappingGroupsItem) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"group_id\"" + ":")
 	e.Str(s.GroupID)
+
 	e.Comma()
 
 	e.RawStr("\"group_name\"" + ":")
 	e.Str(s.GroupName)
+
 	e.Comma()
 
 	e.RawStr("\"group_description\"" + ":")
 	e.Str(s.GroupDescription)
-	e.Comma()
+
+	if s.Status.Set {
+		e.Comma()
+	}
 	if s.Status.Set {
 		e.RawStr("\"status\"" + ":")
 		s.Status.Encode(e)
 	}
-	if s.Status.Set {
+
+	if s.SyncedAt.Set {
 		e.Comma()
 	}
 	if s.SyncedAt.Set {
 		e.RawStr("\"synced_at\"" + ":")
 		s.SyncedAt.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -31013,21 +34397,34 @@ func (s *GroupMappingGroupsItem) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s Hook) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"type\"" + ":")
 	e.Str(s.Type)
+
 	e.Comma()
 
 	e.RawStr("\"id\"" + ":")
 	e.Int(s.ID)
+
 	e.Comma()
 
 	e.RawStr("\"name\"" + ":")
 	e.Str(s.Name)
+
 	e.Comma()
 
 	e.RawStr("\"active\"" + ":")
 	e.Bool(s.Active)
+
 	e.Comma()
 
 	e.RawStr("\"events\"" + ":")
@@ -31054,37 +34451,39 @@ func (s Hook) Encode(e *jx.Writer) {
 
 	e.RawStr("\"updated_at\"" + ":")
 	json.EncodeDateTime(e, s.UpdatedAt)
+
 	e.Comma()
 
 	e.RawStr("\"created_at\"" + ":")
 	json.EncodeDateTime(e, s.CreatedAt)
+
 	e.Comma()
 
 	e.RawStr("\"url\"" + ":")
 	json.EncodeURI(e, s.URL)
+
 	e.Comma()
 
 	e.RawStr("\"test_url\"" + ":")
 	json.EncodeURI(e, s.TestURL)
+
 	e.Comma()
 
 	e.RawStr("\"ping_url\"" + ":")
 	json.EncodeURI(e, s.PingURL)
-	e.Comma()
+
+	if s.DeliveriesURL.Set {
+		e.Comma()
+	}
 	if s.DeliveriesURL.Set {
 		e.RawStr("\"deliveries_url\"" + ":")
 		s.DeliveriesURL.Encode(e)
 	}
-	if s.DeliveriesURL.Set {
-		e.Comma()
-	}
+
+	e.Comma()
 
 	e.RawStr("\"last_response\"" + ":")
 	s.LastResponse.Encode(e)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -31186,76 +34585,119 @@ func (s *Hook) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s HookConfig) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.Email.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.Email.Set {
 		e.RawStr("\"email\"" + ":")
 		s.Email.Encode(e)
 	}
-	if s.Email.Set {
-		e.Comma()
+
+	if s.Password.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Password.Set {
 		e.RawStr("\"password\"" + ":")
 		s.Password.Encode(e)
 	}
-	if s.Password.Set {
-		e.Comma()
+
+	if s.Room.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Room.Set {
 		e.RawStr("\"room\"" + ":")
 		s.Room.Encode(e)
 	}
-	if s.Room.Set {
-		e.Comma()
+
+	if s.Subdomain.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Subdomain.Set {
 		e.RawStr("\"subdomain\"" + ":")
 		s.Subdomain.Encode(e)
 	}
-	if s.Subdomain.Set {
-		e.Comma()
+
+	if s.URL.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.URL.Set {
 		e.RawStr("\"url\"" + ":")
 		s.URL.Encode(e)
 	}
-	if s.URL.Set {
-		e.Comma()
+
+	if s.InsecureSsl.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.InsecureSsl.Set {
 		e.RawStr("\"insecure_ssl\"" + ":")
 		s.InsecureSsl.Encode(e)
 	}
-	if s.InsecureSsl.Set {
-		e.Comma()
+
+	if s.ContentType.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.ContentType.Set {
 		e.RawStr("\"content_type\"" + ":")
 		s.ContentType.Encode(e)
 	}
-	if s.ContentType.Set {
-		e.Comma()
+
+	if s.Digest.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Digest.Set {
 		e.RawStr("\"digest\"" + ":")
 		s.Digest.Encode(e)
 	}
-	if s.Digest.Set {
-		e.Comma()
+
+	if s.Secret.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Secret.Set {
 		e.RawStr("\"secret\"" + ":")
 		s.Secret.Encode(e)
 	}
-	if s.Secret.Set {
-		e.Comma()
+
+	if s.Token.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Token.Set {
 		e.RawStr("\"token\"" + ":")
 		s.Token.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -31327,37 +34769,54 @@ func (s *HookConfig) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s HookDelivery) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"id\"" + ":")
 	e.Int(s.ID)
+
 	e.Comma()
 
 	e.RawStr("\"guid\"" + ":")
 	e.Str(s.GUID)
+
 	e.Comma()
 
 	e.RawStr("\"delivered_at\"" + ":")
 	json.EncodeDateTime(e, s.DeliveredAt)
+
 	e.Comma()
 
 	e.RawStr("\"redelivery\"" + ":")
 	e.Bool(s.Redelivery)
+
 	e.Comma()
 
 	e.RawStr("\"duration\"" + ":")
 	e.Float64(s.Duration)
+
 	e.Comma()
 
 	e.RawStr("\"status\"" + ":")
 	e.Str(s.Status)
+
 	e.Comma()
 
 	e.RawStr("\"status_code\"" + ":")
 	e.Int(s.StatusCode)
+
 	e.Comma()
 
 	e.RawStr("\"event\"" + ":")
 	e.Str(s.Event)
+
 	e.Comma()
 
 	e.RawStr("\"action\"" + ":")
@@ -31373,14 +34832,15 @@ func (s HookDelivery) Encode(e *jx.Writer) {
 	e.RawStr("\"repository_id\"" + ":")
 	s.RepositoryID.Encode(e)
 
-	e.Comma()
+	if s.URL.Set {
+		e.Comma()
+	}
 	if s.URL.Set {
 		e.RawStr("\"url\"" + ":")
 		s.URL.Encode(e)
 	}
-	if s.URL.Set {
-		e.Comma()
-	}
+
+	e.Comma()
 
 	e.RawStr("\"request\"" + ":")
 	s.Request.Encode(e)
@@ -31389,10 +34849,6 @@ func (s HookDelivery) Encode(e *jx.Writer) {
 
 	e.RawStr("\"response\"" + ":")
 	s.Response.Encode(e)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -31486,37 +34942,54 @@ func (s *HookDelivery) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s HookDeliveryItem) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"id\"" + ":")
 	e.Int(s.ID)
+
 	e.Comma()
 
 	e.RawStr("\"guid\"" + ":")
 	e.Str(s.GUID)
+
 	e.Comma()
 
 	e.RawStr("\"delivered_at\"" + ":")
 	json.EncodeDateTime(e, s.DeliveredAt)
+
 	e.Comma()
 
 	e.RawStr("\"redelivery\"" + ":")
 	e.Bool(s.Redelivery)
+
 	e.Comma()
 
 	e.RawStr("\"duration\"" + ":")
 	e.Float64(s.Duration)
+
 	e.Comma()
 
 	e.RawStr("\"status\"" + ":")
 	e.Str(s.Status)
+
 	e.Comma()
 
 	e.RawStr("\"status_code\"" + ":")
 	e.Int(s.StatusCode)
+
 	e.Comma()
 
 	e.RawStr("\"event\"" + ":")
 	e.Str(s.Event)
+
 	e.Comma()
 
 	e.RawStr("\"action\"" + ":")
@@ -31531,10 +35004,6 @@ func (s HookDeliveryItem) Encode(e *jx.Writer) {
 
 	e.RawStr("\"repository_id\"" + ":")
 	s.RepositoryID.Encode(e)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -31615,6 +35084,16 @@ func (s *HookDeliveryItem) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s HookDeliveryRequest) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"headers\"" + ":")
 	if s.Headers == nil {
@@ -31630,10 +35109,6 @@ func (s HookDeliveryRequest) Encode(e *jx.Writer) {
 		e.Null()
 	} else {
 		s.Payload.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -31669,10 +35144,10 @@ func (s *HookDeliveryRequest) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s HookDeliveryRequestHeaders) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -31693,10 +35168,10 @@ func (s *HookDeliveryRequestHeaders) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s HookDeliveryRequestPayload) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -31717,6 +35192,16 @@ func (s *HookDeliveryRequestPayload) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s HookDeliveryResponse) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"headers\"" + ":")
 	if s.Headers == nil {
@@ -31729,10 +35214,6 @@ func (s HookDeliveryResponse) Encode(e *jx.Writer) {
 
 	e.RawStr("\"payload\"" + ":")
 	s.Payload.Encode(e)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -31764,10 +35245,10 @@ func (s *HookDeliveryResponse) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s HookDeliveryResponseHeaders) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -31788,6 +35269,16 @@ func (s *HookDeliveryResponseHeaders) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s HookResponse) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"code\"" + ":")
 	s.Code.Encode(e)
@@ -31801,10 +35292,6 @@ func (s HookResponse) Encode(e *jx.Writer) {
 
 	e.RawStr("\"message\"" + ":")
 	s.Message.Encode(e)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -31837,6 +35324,16 @@ func (s *HookResponse) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s Hovercard) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"contexts\"" + ":")
 	e.ArrStart()
@@ -31852,10 +35349,6 @@ func (s Hovercard) Encode(e *jx.Writer) {
 		}
 	}
 	e.ArrEnd()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -31888,17 +35381,23 @@ func (s *Hovercard) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s HovercardContextsItem) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"message\"" + ":")
 	e.Str(s.Message)
+
 	e.Comma()
 
 	e.RawStr("\"octicon\"" + ":")
 	e.Str(s.Octicon)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -31931,102 +35430,127 @@ func (s *HovercardContextsItem) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s Import) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"vcs\"" + ":")
 	s.Vcs.Encode(e)
 
-	e.Comma()
+	if s.UseLfs.Set {
+		e.Comma()
+	}
 	if s.UseLfs.Set {
 		e.RawStr("\"use_lfs\"" + ":")
 		s.UseLfs.Encode(e)
 	}
-	if s.UseLfs.Set {
-		e.Comma()
-	}
+
+	e.Comma()
 
 	e.RawStr("\"vcs_url\"" + ":")
 	e.Str(s.VcsURL)
-	e.Comma()
+
+	if s.SvcRoot.Set {
+		e.Comma()
+	}
 	if s.SvcRoot.Set {
 		e.RawStr("\"svc_root\"" + ":")
 		s.SvcRoot.Encode(e)
 	}
-	if s.SvcRoot.Set {
+
+	if s.TfvcProject.Set {
 		e.Comma()
 	}
 	if s.TfvcProject.Set {
 		e.RawStr("\"tfvc_project\"" + ":")
 		s.TfvcProject.Encode(e)
 	}
-	if s.TfvcProject.Set {
-		e.Comma()
-	}
+
+	e.Comma()
 
 	e.RawStr("\"status\"" + ":")
 	s.Status.Encode(e)
 
-	e.Comma()
+	if s.StatusText.Set {
+		e.Comma()
+	}
 	if s.StatusText.Set {
 		e.RawStr("\"status_text\"" + ":")
 		s.StatusText.Encode(e)
 	}
-	if s.StatusText.Set {
+
+	if s.FailedStep.Set {
 		e.Comma()
 	}
 	if s.FailedStep.Set {
 		e.RawStr("\"failed_step\"" + ":")
 		s.FailedStep.Encode(e)
 	}
-	if s.FailedStep.Set {
+
+	if s.ErrorMessage.Set {
 		e.Comma()
 	}
 	if s.ErrorMessage.Set {
 		e.RawStr("\"error_message\"" + ":")
 		s.ErrorMessage.Encode(e)
 	}
-	if s.ErrorMessage.Set {
+
+	if s.ImportPercent.Set {
 		e.Comma()
 	}
 	if s.ImportPercent.Set {
 		e.RawStr("\"import_percent\"" + ":")
 		s.ImportPercent.Encode(e)
 	}
-	if s.ImportPercent.Set {
+
+	if s.CommitCount.Set {
 		e.Comma()
 	}
 	if s.CommitCount.Set {
 		e.RawStr("\"commit_count\"" + ":")
 		s.CommitCount.Encode(e)
 	}
-	if s.CommitCount.Set {
+
+	if s.PushPercent.Set {
 		e.Comma()
 	}
 	if s.PushPercent.Set {
 		e.RawStr("\"push_percent\"" + ":")
 		s.PushPercent.Encode(e)
 	}
-	if s.PushPercent.Set {
+
+	if s.HasLargeFiles.Set {
 		e.Comma()
 	}
 	if s.HasLargeFiles.Set {
 		e.RawStr("\"has_large_files\"" + ":")
 		s.HasLargeFiles.Encode(e)
 	}
-	if s.HasLargeFiles.Set {
+
+	if s.LargeFilesSize.Set {
 		e.Comma()
 	}
 	if s.LargeFilesSize.Set {
 		e.RawStr("\"large_files_size\"" + ":")
 		s.LargeFilesSize.Encode(e)
 	}
-	if s.LargeFilesSize.Set {
+
+	if s.LargeFilesCount.Set {
 		e.Comma()
 	}
 	if s.LargeFilesCount.Set {
 		e.RawStr("\"large_files_count\"" + ":")
 		s.LargeFilesCount.Encode(e)
 	}
-	if s.LargeFilesCount.Set {
+
+	if s.ProjectChoices != nil {
 		e.Comma()
 	}
 	if s.ProjectChoices != nil {
@@ -32045,46 +35569,49 @@ func (s Import) Encode(e *jx.Writer) {
 		}
 		e.ArrEnd()
 	}
-	if s.ProjectChoices != nil {
+
+	if s.Message.Set {
 		e.Comma()
 	}
 	if s.Message.Set {
 		e.RawStr("\"message\"" + ":")
 		s.Message.Encode(e)
 	}
-	if s.Message.Set {
+
+	if s.AuthorsCount.Set {
 		e.Comma()
 	}
 	if s.AuthorsCount.Set {
 		e.RawStr("\"authors_count\"" + ":")
 		s.AuthorsCount.Encode(e)
 	}
-	if s.AuthorsCount.Set {
-		e.Comma()
-	}
+
+	e.Comma()
 
 	e.RawStr("\"url\"" + ":")
 	json.EncodeURI(e, s.URL)
+
 	e.Comma()
 
 	e.RawStr("\"html_url\"" + ":")
 	json.EncodeURI(e, s.HTMLURL)
+
 	e.Comma()
 
 	e.RawStr("\"authors_url\"" + ":")
 	json.EncodeURI(e, s.AuthorsURL)
+
 	e.Comma()
 
 	e.RawStr("\"repository_url\"" + ":")
 	json.EncodeURI(e, s.RepositoryURL)
-	e.Comma()
+
+	if s.SvnRoot.Set {
+		e.Comma()
+	}
 	if s.SvnRoot.Set {
 		e.RawStr("\"svn_root\"" + ":")
 		s.SvnRoot.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -32231,27 +35758,42 @@ func (s *Import) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s ImportProjectChoicesItem) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.Vcs.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.Vcs.Set {
 		e.RawStr("\"vcs\"" + ":")
 		s.Vcs.Encode(e)
 	}
-	if s.Vcs.Set {
-		e.Comma()
+
+	if s.TfvcProject.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.TfvcProject.Set {
 		e.RawStr("\"tfvc_project\"" + ":")
 		s.TfvcProject.Encode(e)
 	}
-	if s.TfvcProject.Set {
-		e.Comma()
+
+	if s.HumanName.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.HumanName.Set {
 		e.RawStr("\"human_name\"" + ":")
 		s.HumanName.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -32343,26 +35885,41 @@ func (s *ImportStatus) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s InstallationToken) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"token\"" + ":")
 	e.Str(s.Token)
+
 	e.Comma()
 
 	e.RawStr("\"expires_at\"" + ":")
 	e.Str(s.ExpiresAt)
-	e.Comma()
+
+	if s.Permissions.Set {
+		e.Comma()
+	}
 	if s.Permissions.Set {
 		e.RawStr("\"permissions\"" + ":")
 		s.Permissions.Encode(e)
 	}
-	if s.Permissions.Set {
+
+	if s.RepositorySelection.Set {
 		e.Comma()
 	}
 	if s.RepositorySelection.Set {
 		e.RawStr("\"repository_selection\"" + ":")
 		s.RepositorySelection.Encode(e)
 	}
-	if s.RepositorySelection.Set {
+
+	if s.Repositories != nil {
 		e.Comma()
 	}
 	if s.Repositories != nil {
@@ -32381,21 +35938,24 @@ func (s InstallationToken) Encode(e *jx.Writer) {
 		}
 		e.ArrEnd()
 	}
-	if s.Repositories != nil {
+
+	if s.SingleFile.Set {
 		e.Comma()
 	}
 	if s.SingleFile.Set {
 		e.RawStr("\"single_file\"" + ":")
 		s.SingleFile.Encode(e)
 	}
-	if s.SingleFile.Set {
+
+	if s.HasMultipleSingleFiles.Set {
 		e.Comma()
 	}
 	if s.HasMultipleSingleFiles.Set {
 		e.RawStr("\"has_multiple_single_files\"" + ":")
 		s.HasMultipleSingleFiles.Encode(e)
 	}
-	if s.HasMultipleSingleFiles.Set {
+
+	if s.SingleFilePaths != nil {
 		e.Comma()
 	}
 	if s.SingleFilePaths != nil {
@@ -32413,10 +35973,6 @@ func (s InstallationToken) Encode(e *jx.Writer) {
 			}
 		}
 		e.ArrEnd()
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -32523,20 +36079,32 @@ func (s *InstallationTokenRepositorySelection) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s Integration) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"id\"" + ":")
 	e.Int(s.ID)
-	e.Comma()
+
+	if s.Slug.Set {
+		e.Comma()
+	}
 	if s.Slug.Set {
 		e.RawStr("\"slug\"" + ":")
 		s.Slug.Encode(e)
 	}
-	if s.Slug.Set {
-		e.Comma()
-	}
+
+	e.Comma()
 
 	e.RawStr("\"node_id\"" + ":")
 	e.Str(s.NodeID)
+
 	e.Comma()
 
 	e.RawStr("\"owner\"" + ":")
@@ -32546,6 +36114,7 @@ func (s Integration) Encode(e *jx.Writer) {
 
 	e.RawStr("\"name\"" + ":")
 	e.Str(s.Name)
+
 	e.Comma()
 
 	e.RawStr("\"description\"" + ":")
@@ -32555,18 +36124,22 @@ func (s Integration) Encode(e *jx.Writer) {
 
 	e.RawStr("\"external_url\"" + ":")
 	json.EncodeURI(e, s.ExternalURL)
+
 	e.Comma()
 
 	e.RawStr("\"html_url\"" + ":")
 	json.EncodeURI(e, s.HTMLURL)
+
 	e.Comma()
 
 	e.RawStr("\"created_at\"" + ":")
 	json.EncodeDateTime(e, s.CreatedAt)
+
 	e.Comma()
 
 	e.RawStr("\"updated_at\"" + ":")
 	json.EncodeDateTime(e, s.UpdatedAt)
+
 	e.Comma()
 
 	e.RawStr("\"permissions\"" + ":")
@@ -32589,42 +36162,44 @@ func (s Integration) Encode(e *jx.Writer) {
 	}
 	e.ArrEnd()
 
-	e.Comma()
+	if s.InstallationsCount.Set {
+		e.Comma()
+	}
 	if s.InstallationsCount.Set {
 		e.RawStr("\"installations_count\"" + ":")
 		s.InstallationsCount.Encode(e)
 	}
-	if s.InstallationsCount.Set {
+
+	if s.ClientID.Set {
 		e.Comma()
 	}
 	if s.ClientID.Set {
 		e.RawStr("\"client_id\"" + ":")
 		s.ClientID.Encode(e)
 	}
-	if s.ClientID.Set {
+
+	if s.ClientSecret.Set {
 		e.Comma()
 	}
 	if s.ClientSecret.Set {
 		e.RawStr("\"client_secret\"" + ":")
 		s.ClientSecret.Encode(e)
 	}
-	if s.ClientSecret.Set {
+
+	if s.WebhookSecret.Set {
 		e.Comma()
 	}
 	if s.WebhookSecret.Set {
 		e.RawStr("\"webhook_secret\"" + ":")
 		s.WebhookSecret.Encode(e)
 	}
-	if s.WebhookSecret.Set {
+
+	if s.Pem.Set {
 		e.Comma()
 	}
 	if s.Pem.Set {
 		e.RawStr("\"pem\"" + ":")
 		s.Pem.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -32744,41 +36319,64 @@ func (s *Integration) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IntegrationPermissions) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.Issues.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.Issues.Set {
 		e.RawStr("\"issues\"" + ":")
 		s.Issues.Encode(e)
 	}
-	if s.Issues.Set {
-		e.Comma()
+
+	if s.Checks.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Checks.Set {
 		e.RawStr("\"checks\"" + ":")
 		s.Checks.Encode(e)
 	}
-	if s.Checks.Set {
-		e.Comma()
+
+	if s.Metadata.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Metadata.Set {
 		e.RawStr("\"metadata\"" + ":")
 		s.Metadata.Encode(e)
 	}
-	if s.Metadata.Set {
-		e.Comma()
+
+	if s.Contents.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Contents.Set {
 		e.RawStr("\"contents\"" + ":")
 		s.Contents.Encode(e)
 	}
-	if s.Contents.Set {
-		e.Comma()
+
+	if s.Deployments.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Deployments.Set {
 		e.RawStr("\"deployments\"" + ":")
 		s.Deployments.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -32887,18 +36485,26 @@ func (s *InteractionGroup) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s InteractionLimit) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"limit\"" + ":")
 	s.Limit.Encode(e)
 
-	e.Comma()
+	if s.Expiry.Set {
+		e.Comma()
+	}
 	if s.Expiry.Set {
 		e.RawStr("\"expiry\"" + ":")
 		s.Expiry.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -32929,6 +36535,16 @@ func (s *InteractionLimit) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s InteractionLimitResponse) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"limit\"" + ":")
 	s.Limit.Encode(e)
@@ -32937,14 +36553,11 @@ func (s InteractionLimitResponse) Encode(e *jx.Writer) {
 
 	e.RawStr("\"origin\"" + ":")
 	e.Str(s.Origin)
+
 	e.Comma()
 
 	e.RawStr("\"expires_at\"" + ":")
 	json.EncodeDateTime(e, s.ExpiresAt)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -32981,10 +36594,10 @@ func (s *InteractionLimitResponse) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s InteractionsRemoveRestrictionsForAuthenticatedUserNoContent) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -33005,10 +36618,10 @@ func (s *InteractionsRemoveRestrictionsForAuthenticatedUserNoContent) Decode(d *
 // Encode implements json.Marshaler.
 func (s InteractionsRemoveRestrictionsForOrgNoContent) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -33029,10 +36642,10 @@ func (s *InteractionsRemoveRestrictionsForOrgNoContent) Decode(d *jx.Decoder) er
 // Encode implements json.Marshaler.
 func (s InteractionsRemoveRestrictionsForRepoConflict) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -33053,10 +36666,10 @@ func (s *InteractionsRemoveRestrictionsForRepoConflict) Decode(d *jx.Decoder) er
 // Encode implements json.Marshaler.
 func (s InteractionsRemoveRestrictionsForRepoNoContent) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -33077,10 +36690,10 @@ func (s *InteractionsRemoveRestrictionsForRepoNoContent) Decode(d *jx.Decoder) e
 // Encode implements json.Marshaler.
 func (s InteractionsSetRestrictionsForRepoConflict) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -33101,57 +36714,78 @@ func (s *InteractionsSetRestrictionsForRepoConflict) Decode(d *jx.Decoder) error
 // Encode implements json.Marshaler.
 func (s Issue) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"id\"" + ":")
 	e.Int(s.ID)
+
 	e.Comma()
 
 	e.RawStr("\"node_id\"" + ":")
 	e.Str(s.NodeID)
+
 	e.Comma()
 
 	e.RawStr("\"url\"" + ":")
 	json.EncodeURI(e, s.URL)
+
 	e.Comma()
 
 	e.RawStr("\"repository_url\"" + ":")
 	json.EncodeURI(e, s.RepositoryURL)
+
 	e.Comma()
 
 	e.RawStr("\"labels_url\"" + ":")
 	e.Str(s.LabelsURL)
+
 	e.Comma()
 
 	e.RawStr("\"comments_url\"" + ":")
 	json.EncodeURI(e, s.CommentsURL)
+
 	e.Comma()
 
 	e.RawStr("\"events_url\"" + ":")
 	json.EncodeURI(e, s.EventsURL)
+
 	e.Comma()
 
 	e.RawStr("\"html_url\"" + ":")
 	json.EncodeURI(e, s.HTMLURL)
+
 	e.Comma()
 
 	e.RawStr("\"number\"" + ":")
 	e.Int(s.Number)
+
 	e.Comma()
 
 	e.RawStr("\"state\"" + ":")
 	e.Str(s.State)
+
 	e.Comma()
 
 	e.RawStr("\"title\"" + ":")
 	e.Str(s.Title)
-	e.Comma()
+
+	if s.Body.Set {
+		e.Comma()
+	}
 	if s.Body.Set {
 		e.RawStr("\"body\"" + ":")
 		s.Body.Encode(e)
 	}
-	if s.Body.Set {
-		e.Comma()
-	}
+
+	e.Comma()
 
 	e.RawStr("\"user\"" + ":")
 	s.User.Encode(e)
@@ -33178,14 +36812,15 @@ func (s Issue) Encode(e *jx.Writer) {
 	e.RawStr("\"assignee\"" + ":")
 	s.Assignee.Encode(e)
 
-	e.Comma()
+	if s.Assignees.Set {
+		e.Comma()
+	}
 	if s.Assignees.Set {
 		e.RawStr("\"assignees\"" + ":")
 		s.Assignees.Encode(e)
 	}
-	if s.Assignees.Set {
-		e.Comma()
-	}
+
+	e.Comma()
 
 	e.RawStr("\"milestone\"" + ":")
 	s.Milestone.Encode(e)
@@ -33194,25 +36829,29 @@ func (s Issue) Encode(e *jx.Writer) {
 
 	e.RawStr("\"locked\"" + ":")
 	e.Bool(s.Locked)
-	e.Comma()
+
+	if s.ActiveLockReason.Set {
+		e.Comma()
+	}
 	if s.ActiveLockReason.Set {
 		e.RawStr("\"active_lock_reason\"" + ":")
 		s.ActiveLockReason.Encode(e)
 	}
-	if s.ActiveLockReason.Set {
-		e.Comma()
-	}
+
+	e.Comma()
 
 	e.RawStr("\"comments\"" + ":")
 	e.Int(s.Comments)
-	e.Comma()
+
+	if s.PullRequest.Set {
+		e.Comma()
+	}
 	if s.PullRequest.Set {
 		e.RawStr("\"pull_request\"" + ":")
 		s.PullRequest.Encode(e)
 	}
-	if s.PullRequest.Set {
-		e.Comma()
-	}
+
+	e.Comma()
 
 	e.RawStr("\"closed_at\"" + ":")
 	s.ClosedAt.Encode(e, json.EncodeDateTime)
@@ -33221,65 +36860,71 @@ func (s Issue) Encode(e *jx.Writer) {
 
 	e.RawStr("\"created_at\"" + ":")
 	json.EncodeDateTime(e, s.CreatedAt)
+
 	e.Comma()
 
 	e.RawStr("\"updated_at\"" + ":")
 	json.EncodeDateTime(e, s.UpdatedAt)
-	e.Comma()
+
+	if s.ClosedBy.Set {
+		e.Comma()
+	}
 	if s.ClosedBy.Set {
 		e.RawStr("\"closed_by\"" + ":")
 		s.ClosedBy.Encode(e)
 	}
-	if s.ClosedBy.Set {
+
+	if s.BodyHTML.Set {
 		e.Comma()
 	}
 	if s.BodyHTML.Set {
 		e.RawStr("\"body_html\"" + ":")
 		s.BodyHTML.Encode(e)
 	}
-	if s.BodyHTML.Set {
+
+	if s.BodyText.Set {
 		e.Comma()
 	}
 	if s.BodyText.Set {
 		e.RawStr("\"body_text\"" + ":")
 		s.BodyText.Encode(e)
 	}
-	if s.BodyText.Set {
+
+	if s.TimelineURL.Set {
 		e.Comma()
 	}
 	if s.TimelineURL.Set {
 		e.RawStr("\"timeline_url\"" + ":")
 		s.TimelineURL.Encode(e)
 	}
-	if s.TimelineURL.Set {
+
+	if s.Repository.Set {
 		e.Comma()
 	}
 	if s.Repository.Set {
 		e.RawStr("\"repository\"" + ":")
 		s.Repository.Encode(e)
 	}
-	if s.Repository.Set {
+
+	if s.PerformedViaGithubApp.Set {
 		e.Comma()
 	}
 	if s.PerformedViaGithubApp.Set {
 		e.RawStr("\"performed_via_github_app\"" + ":")
 		s.PerformedViaGithubApp.Encode(e)
 	}
-	if s.PerformedViaGithubApp.Set {
-		e.Comma()
-	}
+
+	e.Comma()
 
 	e.RawStr("\"author_association\"" + ":")
 	s.AuthorAssociation.Encode(e)
 
-	e.Comma()
+	if s.Reactions.Set {
+		e.Comma()
+	}
 	if s.Reactions.Set {
 		e.RawStr("\"reactions\"" + ":")
 		s.Reactions.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -33478,42 +37123,58 @@ func (s *Issue) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IssueComment) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"id\"" + ":")
 	e.Int(s.ID)
+
 	e.Comma()
 
 	e.RawStr("\"node_id\"" + ":")
 	e.Str(s.NodeID)
+
 	e.Comma()
 
 	e.RawStr("\"url\"" + ":")
 	json.EncodeURI(e, s.URL)
-	e.Comma()
+
+	if s.Body.Set {
+		e.Comma()
+	}
 	if s.Body.Set {
 		e.RawStr("\"body\"" + ":")
 		s.Body.Encode(e)
 	}
-	if s.Body.Set {
+
+	if s.BodyText.Set {
 		e.Comma()
 	}
 	if s.BodyText.Set {
 		e.RawStr("\"body_text\"" + ":")
 		s.BodyText.Encode(e)
 	}
-	if s.BodyText.Set {
+
+	if s.BodyHTML.Set {
 		e.Comma()
 	}
 	if s.BodyHTML.Set {
 		e.RawStr("\"body_html\"" + ":")
 		s.BodyHTML.Encode(e)
 	}
-	if s.BodyHTML.Set {
-		e.Comma()
-	}
+
+	e.Comma()
 
 	e.RawStr("\"html_url\"" + ":")
 	json.EncodeURI(e, s.HTMLURL)
+
 	e.Comma()
 
 	e.RawStr("\"user\"" + ":")
@@ -33523,34 +37184,36 @@ func (s IssueComment) Encode(e *jx.Writer) {
 
 	e.RawStr("\"created_at\"" + ":")
 	json.EncodeDateTime(e, s.CreatedAt)
+
 	e.Comma()
 
 	e.RawStr("\"updated_at\"" + ":")
 	json.EncodeDateTime(e, s.UpdatedAt)
+
 	e.Comma()
 
 	e.RawStr("\"issue_url\"" + ":")
 	json.EncodeURI(e, s.IssueURL)
+
 	e.Comma()
 
 	e.RawStr("\"author_association\"" + ":")
 	s.AuthorAssociation.Encode(e)
 
-	e.Comma()
+	if s.PerformedViaGithubApp.Set {
+		e.Comma()
+	}
 	if s.PerformedViaGithubApp.Set {
 		e.RawStr("\"performed_via_github_app\"" + ":")
 		s.PerformedViaGithubApp.Encode(e)
 	}
-	if s.PerformedViaGithubApp.Set {
+
+	if s.Reactions.Set {
 		e.Comma()
 	}
 	if s.Reactions.Set {
 		e.RawStr("\"reactions\"" + ":")
 		s.Reactions.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -33647,17 +37310,29 @@ func (s *IssueComment) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IssueEvent) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"id\"" + ":")
 	e.Int(s.ID)
+
 	e.Comma()
 
 	e.RawStr("\"node_id\"" + ":")
 	e.Str(s.NodeID)
+
 	e.Comma()
 
 	e.RawStr("\"url\"" + ":")
 	json.EncodeURI(e, s.URL)
+
 	e.Comma()
 
 	e.RawStr("\"actor\"" + ":")
@@ -33667,6 +37342,7 @@ func (s IssueEvent) Encode(e *jx.Writer) {
 
 	e.RawStr("\"event\"" + ":")
 	e.Str(s.Event)
+
 	e.Comma()
 
 	e.RawStr("\"commit_id\"" + ":")
@@ -33681,105 +37357,117 @@ func (s IssueEvent) Encode(e *jx.Writer) {
 
 	e.RawStr("\"created_at\"" + ":")
 	json.EncodeDateTime(e, s.CreatedAt)
-	e.Comma()
+
+	if s.Issue.Set {
+		e.Comma()
+	}
 	if s.Issue.Set {
 		e.RawStr("\"issue\"" + ":")
 		s.Issue.Encode(e)
 	}
-	if s.Issue.Set {
+
+	if s.Label.Set {
 		e.Comma()
 	}
 	if s.Label.Set {
 		e.RawStr("\"label\"" + ":")
 		s.Label.Encode(e)
 	}
-	if s.Label.Set {
+
+	if s.Assignee.Set {
 		e.Comma()
 	}
 	if s.Assignee.Set {
 		e.RawStr("\"assignee\"" + ":")
 		s.Assignee.Encode(e)
 	}
-	if s.Assignee.Set {
+
+	if s.Assigner.Set {
 		e.Comma()
 	}
 	if s.Assigner.Set {
 		e.RawStr("\"assigner\"" + ":")
 		s.Assigner.Encode(e)
 	}
-	if s.Assigner.Set {
+
+	if s.ReviewRequester.Set {
 		e.Comma()
 	}
 	if s.ReviewRequester.Set {
 		e.RawStr("\"review_requester\"" + ":")
 		s.ReviewRequester.Encode(e)
 	}
-	if s.ReviewRequester.Set {
+
+	if s.RequestedReviewer.Set {
 		e.Comma()
 	}
 	if s.RequestedReviewer.Set {
 		e.RawStr("\"requested_reviewer\"" + ":")
 		s.RequestedReviewer.Encode(e)
 	}
-	if s.RequestedReviewer.Set {
+
+	if s.RequestedTeam.Set {
 		e.Comma()
 	}
 	if s.RequestedTeam.Set {
 		e.RawStr("\"requested_team\"" + ":")
 		s.RequestedTeam.Encode(e)
 	}
-	if s.RequestedTeam.Set {
+
+	if s.DismissedReview.Set {
 		e.Comma()
 	}
 	if s.DismissedReview.Set {
 		e.RawStr("\"dismissed_review\"" + ":")
 		s.DismissedReview.Encode(e)
 	}
-	if s.DismissedReview.Set {
+
+	if s.Milestone.Set {
 		e.Comma()
 	}
 	if s.Milestone.Set {
 		e.RawStr("\"milestone\"" + ":")
 		s.Milestone.Encode(e)
 	}
-	if s.Milestone.Set {
+
+	if s.ProjectCard.Set {
 		e.Comma()
 	}
 	if s.ProjectCard.Set {
 		e.RawStr("\"project_card\"" + ":")
 		s.ProjectCard.Encode(e)
 	}
-	if s.ProjectCard.Set {
+
+	if s.Rename.Set {
 		e.Comma()
 	}
 	if s.Rename.Set {
 		e.RawStr("\"rename\"" + ":")
 		s.Rename.Encode(e)
 	}
-	if s.Rename.Set {
+
+	if s.AuthorAssociation.Set {
 		e.Comma()
 	}
 	if s.AuthorAssociation.Set {
 		e.RawStr("\"author_association\"" + ":")
 		s.AuthorAssociation.Encode(e)
 	}
-	if s.AuthorAssociation.Set {
+
+	if s.LockReason.Set {
 		e.Comma()
 	}
 	if s.LockReason.Set {
 		e.RawStr("\"lock_reason\"" + ":")
 		s.LockReason.Encode(e)
 	}
-	if s.LockReason.Set {
+
+	if s.PerformedViaGithubApp.Set {
 		e.Comma()
 	}
 	if s.PerformedViaGithubApp.Set {
 		e.RawStr("\"performed_via_github_app\"" + ":")
 		s.PerformedViaGithubApp.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -33913,26 +37601,35 @@ func (s *IssueEvent) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IssueEventDismissedReview) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"state\"" + ":")
 	e.Str(s.State)
+
 	e.Comma()
 
 	e.RawStr("\"review_id\"" + ":")
 	e.Int(s.ReviewID)
+
 	e.Comma()
 
 	e.RawStr("\"dismissal_message\"" + ":")
 	s.DismissalMessage.Encode(e)
 
-	e.Comma()
+	if s.DismissalCommitID.Set {
+		e.Comma()
+	}
 	if s.DismissalCommitID.Set {
 		e.RawStr("\"dismissal_commit_id\"" + ":")
 		s.DismissalCommitID.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -33975,6 +37672,16 @@ func (s *IssueEventDismissedReview) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IssueEventLabel) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"name\"" + ":")
 	s.Name.Encode(e)
@@ -33983,10 +37690,6 @@ func (s IssueEventLabel) Encode(e *jx.Writer) {
 
 	e.RawStr("\"color\"" + ":")
 	s.Color.Encode(e)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -34015,13 +37718,18 @@ func (s *IssueEventLabel) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IssueEventMilestone) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"title\"" + ":")
 	e.Str(s.Title)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -34048,33 +37756,45 @@ func (s *IssueEventMilestone) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IssueEventProjectCard) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"url\"" + ":")
 	json.EncodeURI(e, s.URL)
+
 	e.Comma()
 
 	e.RawStr("\"id\"" + ":")
 	e.Int(s.ID)
+
 	e.Comma()
 
 	e.RawStr("\"project_url\"" + ":")
 	json.EncodeURI(e, s.ProjectURL)
+
 	e.Comma()
 
 	e.RawStr("\"project_id\"" + ":")
 	e.Int(s.ProjectID)
+
 	e.Comma()
 
 	e.RawStr("\"column_name\"" + ":")
 	e.Str(s.ColumnName)
-	e.Comma()
+
+	if s.PreviousColumnName.Set {
+		e.Comma()
+	}
 	if s.PreviousColumnName.Set {
 		e.RawStr("\"previous_column_name\"" + ":")
 		s.PreviousColumnName.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -34131,17 +37851,23 @@ func (s *IssueEventProjectCard) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IssueEventRename) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"from\"" + ":")
 	e.Str(s.From)
+
 	e.Comma()
 
 	e.RawStr("\"to\"" + ":")
 	e.Str(s.To)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -34209,55 +37935,86 @@ func (s *IssueLabelsItem) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IssueLabelsItem1) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.ID.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.ID.Set {
 		e.RawStr("\"id\"" + ":")
 		s.ID.Encode(e)
 	}
-	if s.ID.Set {
-		e.Comma()
+
+	if s.NodeID.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.NodeID.Set {
 		e.RawStr("\"node_id\"" + ":")
 		s.NodeID.Encode(e)
 	}
-	if s.NodeID.Set {
-		e.Comma()
+
+	if s.URL.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.URL.Set {
 		e.RawStr("\"url\"" + ":")
 		s.URL.Encode(e)
 	}
-	if s.URL.Set {
-		e.Comma()
+
+	if s.Name.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Name.Set {
 		e.RawStr("\"name\"" + ":")
 		s.Name.Encode(e)
 	}
-	if s.Name.Set {
-		e.Comma()
+
+	if s.Description.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Description.Set {
 		e.RawStr("\"description\"" + ":")
 		s.Description.Encode(e)
 	}
-	if s.Description.Set {
-		e.Comma()
+
+	if s.Color.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Color.Set {
 		e.RawStr("\"color\"" + ":")
 		s.Color.Encode(e)
 	}
-	if s.Color.Set {
-		e.Comma()
+
+	if s.Default.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Default.Set {
 		e.RawStr("\"default\"" + ":")
 		s.Default.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -34314,13 +38071,27 @@ func (s *IssueLabelsItem1) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IssuePullRequest) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.MergedAt.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.MergedAt.Set {
 		e.RawStr("\"merged_at\"" + ":")
 		s.MergedAt.Encode(e, json.EncodeDateTime)
 	}
-	if s.MergedAt.Set {
+
+	if !first {
+
 		e.Comma()
 	}
+	first = false
 
 	e.RawStr("\"diff_url\"" + ":")
 	s.DiffURL.Encode(e)
@@ -34339,10 +38110,6 @@ func (s IssuePullRequest) Encode(e *jx.Writer) {
 
 	e.RawStr("\"url\"" + ":")
 	s.URL.Encode(e)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -34384,64 +38151,86 @@ func (s *IssuePullRequest) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IssueSearchResultItem) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"url\"" + ":")
 	json.EncodeURI(e, s.URL)
+
 	e.Comma()
 
 	e.RawStr("\"repository_url\"" + ":")
 	json.EncodeURI(e, s.RepositoryURL)
+
 	e.Comma()
 
 	e.RawStr("\"labels_url\"" + ":")
 	e.Str(s.LabelsURL)
+
 	e.Comma()
 
 	e.RawStr("\"comments_url\"" + ":")
 	json.EncodeURI(e, s.CommentsURL)
+
 	e.Comma()
 
 	e.RawStr("\"events_url\"" + ":")
 	json.EncodeURI(e, s.EventsURL)
+
 	e.Comma()
 
 	e.RawStr("\"html_url\"" + ":")
 	json.EncodeURI(e, s.HTMLURL)
+
 	e.Comma()
 
 	e.RawStr("\"id\"" + ":")
 	e.Int(s.ID)
+
 	e.Comma()
 
 	e.RawStr("\"node_id\"" + ":")
 	e.Str(s.NodeID)
+
 	e.Comma()
 
 	e.RawStr("\"number\"" + ":")
 	e.Int(s.Number)
+
 	e.Comma()
 
 	e.RawStr("\"title\"" + ":")
 	e.Str(s.Title)
+
 	e.Comma()
 
 	e.RawStr("\"locked\"" + ":")
 	e.Bool(s.Locked)
-	e.Comma()
+
+	if s.ActiveLockReason.Set {
+		e.Comma()
+	}
 	if s.ActiveLockReason.Set {
 		e.RawStr("\"active_lock_reason\"" + ":")
 		s.ActiveLockReason.Encode(e)
 	}
-	if s.ActiveLockReason.Set {
+
+	if s.Assignees.Set {
 		e.Comma()
 	}
 	if s.Assignees.Set {
 		e.RawStr("\"assignees\"" + ":")
 		s.Assignees.Encode(e)
 	}
-	if s.Assignees.Set {
-		e.Comma()
-	}
+
+	e.Comma()
 
 	e.RawStr("\"user\"" + ":")
 	s.User.Encode(e)
@@ -34467,6 +38256,7 @@ func (s IssueSearchResultItem) Encode(e *jx.Writer) {
 
 	e.RawStr("\"state\"" + ":")
 	e.Str(s.State)
+
 	e.Comma()
 
 	e.RawStr("\"assignee\"" + ":")
@@ -34481,92 +38271,102 @@ func (s IssueSearchResultItem) Encode(e *jx.Writer) {
 
 	e.RawStr("\"comments\"" + ":")
 	e.Int(s.Comments)
+
 	e.Comma()
 
 	e.RawStr("\"created_at\"" + ":")
 	json.EncodeDateTime(e, s.CreatedAt)
+
 	e.Comma()
 
 	e.RawStr("\"updated_at\"" + ":")
 	json.EncodeDateTime(e, s.UpdatedAt)
+
 	e.Comma()
 
 	e.RawStr("\"closed_at\"" + ":")
 	s.ClosedAt.Encode(e, json.EncodeDateTime)
 
-	e.Comma()
+	if s.TextMatches != nil {
+		e.Comma()
+	}
 	if s.TextMatches != nil {
 		e.RawStr("\"text_matches\"" + ":")
 		s.TextMatches.Encode(e)
 	}
-	if s.TextMatches != nil {
+
+	if s.PullRequest.Set {
 		e.Comma()
 	}
 	if s.PullRequest.Set {
 		e.RawStr("\"pull_request\"" + ":")
 		s.PullRequest.Encode(e)
 	}
-	if s.PullRequest.Set {
+
+	if s.Body.Set {
 		e.Comma()
 	}
 	if s.Body.Set {
 		e.RawStr("\"body\"" + ":")
 		s.Body.Encode(e)
 	}
-	if s.Body.Set {
-		e.Comma()
-	}
+
+	e.Comma()
 
 	e.RawStr("\"score\"" + ":")
 	e.Float64(s.Score)
+
 	e.Comma()
 
 	e.RawStr("\"author_association\"" + ":")
 	s.AuthorAssociation.Encode(e)
 
-	e.Comma()
+	if s.Draft.Set {
+		e.Comma()
+	}
 	if s.Draft.Set {
 		e.RawStr("\"draft\"" + ":")
 		s.Draft.Encode(e)
 	}
-	if s.Draft.Set {
+
+	if s.Repository.Set {
 		e.Comma()
 	}
 	if s.Repository.Set {
 		e.RawStr("\"repository\"" + ":")
 		s.Repository.Encode(e)
 	}
-	if s.Repository.Set {
+
+	if s.BodyHTML.Set {
 		e.Comma()
 	}
 	if s.BodyHTML.Set {
 		e.RawStr("\"body_html\"" + ":")
 		s.BodyHTML.Encode(e)
 	}
-	if s.BodyHTML.Set {
+
+	if s.BodyText.Set {
 		e.Comma()
 	}
 	if s.BodyText.Set {
 		e.RawStr("\"body_text\"" + ":")
 		s.BodyText.Encode(e)
 	}
-	if s.BodyText.Set {
+
+	if s.TimelineURL.Set {
 		e.Comma()
 	}
 	if s.TimelineURL.Set {
 		e.RawStr("\"timeline_url\"" + ":")
 		s.TimelineURL.Encode(e)
 	}
-	if s.TimelineURL.Set {
+
+	if s.PerformedViaGithubApp.Set {
 		e.Comma()
 	}
 	if s.PerformedViaGithubApp.Set {
 		e.RawStr("\"performed_via_github_app\"" + ":")
 		s.PerformedViaGithubApp.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -34785,55 +38585,86 @@ func (s *IssueSearchResultItem) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IssueSearchResultItemLabelsItem) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.ID.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.ID.Set {
 		e.RawStr("\"id\"" + ":")
 		s.ID.Encode(e)
 	}
-	if s.ID.Set {
-		e.Comma()
+
+	if s.NodeID.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.NodeID.Set {
 		e.RawStr("\"node_id\"" + ":")
 		s.NodeID.Encode(e)
 	}
-	if s.NodeID.Set {
-		e.Comma()
+
+	if s.URL.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.URL.Set {
 		e.RawStr("\"url\"" + ":")
 		s.URL.Encode(e)
 	}
-	if s.URL.Set {
-		e.Comma()
+
+	if s.Name.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Name.Set {
 		e.RawStr("\"name\"" + ":")
 		s.Name.Encode(e)
 	}
-	if s.Name.Set {
-		e.Comma()
+
+	if s.Color.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Color.Set {
 		e.RawStr("\"color\"" + ":")
 		s.Color.Encode(e)
 	}
-	if s.Color.Set {
-		e.Comma()
+
+	if s.Default.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Default.Set {
 		e.RawStr("\"default\"" + ":")
 		s.Default.Encode(e)
 	}
-	if s.Default.Set {
-		e.Comma()
+
+	if s.Description.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Description.Set {
 		e.RawStr("\"description\"" + ":")
 		s.Description.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -34890,13 +38721,27 @@ func (s *IssueSearchResultItemLabelsItem) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IssueSearchResultItemPullRequest) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.MergedAt.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.MergedAt.Set {
 		e.RawStr("\"merged_at\"" + ":")
 		s.MergedAt.Encode(e, json.EncodeDateTime)
 	}
-	if s.MergedAt.Set {
+
+	if !first {
+
 		e.Comma()
 	}
+	first = false
 
 	e.RawStr("\"diff_url\"" + ":")
 	s.DiffURL.Encode(e)
@@ -34915,10 +38760,6 @@ func (s IssueSearchResultItemPullRequest) Encode(e *jx.Writer) {
 
 	e.RawStr("\"url\"" + ":")
 	s.URL.Encode(e)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -34960,57 +38801,78 @@ func (s *IssueSearchResultItemPullRequest) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IssueSimple) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"id\"" + ":")
 	e.Int(s.ID)
+
 	e.Comma()
 
 	e.RawStr("\"node_id\"" + ":")
 	e.Str(s.NodeID)
+
 	e.Comma()
 
 	e.RawStr("\"url\"" + ":")
 	json.EncodeURI(e, s.URL)
+
 	e.Comma()
 
 	e.RawStr("\"repository_url\"" + ":")
 	json.EncodeURI(e, s.RepositoryURL)
+
 	e.Comma()
 
 	e.RawStr("\"labels_url\"" + ":")
 	e.Str(s.LabelsURL)
+
 	e.Comma()
 
 	e.RawStr("\"comments_url\"" + ":")
 	json.EncodeURI(e, s.CommentsURL)
+
 	e.Comma()
 
 	e.RawStr("\"events_url\"" + ":")
 	json.EncodeURI(e, s.EventsURL)
+
 	e.Comma()
 
 	e.RawStr("\"html_url\"" + ":")
 	json.EncodeURI(e, s.HTMLURL)
+
 	e.Comma()
 
 	e.RawStr("\"number\"" + ":")
 	e.Int(s.Number)
+
 	e.Comma()
 
 	e.RawStr("\"state\"" + ":")
 	e.Str(s.State)
+
 	e.Comma()
 
 	e.RawStr("\"title\"" + ":")
 	e.Str(s.Title)
-	e.Comma()
+
+	if s.Body.Set {
+		e.Comma()
+	}
 	if s.Body.Set {
 		e.RawStr("\"body\"" + ":")
 		s.Body.Encode(e)
 	}
-	if s.Body.Set {
-		e.Comma()
-	}
+
+	e.Comma()
 
 	e.RawStr("\"user\"" + ":")
 	s.User.Encode(e)
@@ -35037,14 +38899,15 @@ func (s IssueSimple) Encode(e *jx.Writer) {
 	e.RawStr("\"assignee\"" + ":")
 	s.Assignee.Encode(e)
 
-	e.Comma()
+	if s.Assignees.Set {
+		e.Comma()
+	}
 	if s.Assignees.Set {
 		e.RawStr("\"assignees\"" + ":")
 		s.Assignees.Encode(e)
 	}
-	if s.Assignees.Set {
-		e.Comma()
-	}
+
+	e.Comma()
 
 	e.RawStr("\"milestone\"" + ":")
 	s.Milestone.Encode(e)
@@ -35053,25 +38916,29 @@ func (s IssueSimple) Encode(e *jx.Writer) {
 
 	e.RawStr("\"locked\"" + ":")
 	e.Bool(s.Locked)
-	e.Comma()
+
+	if s.ActiveLockReason.Set {
+		e.Comma()
+	}
 	if s.ActiveLockReason.Set {
 		e.RawStr("\"active_lock_reason\"" + ":")
 		s.ActiveLockReason.Encode(e)
 	}
-	if s.ActiveLockReason.Set {
-		e.Comma()
-	}
+
+	e.Comma()
 
 	e.RawStr("\"comments\"" + ":")
 	e.Int(s.Comments)
-	e.Comma()
+
+	if s.PullRequest.Set {
+		e.Comma()
+	}
 	if s.PullRequest.Set {
 		e.RawStr("\"pull_request\"" + ":")
 		s.PullRequest.Encode(e)
 	}
-	if s.PullRequest.Set {
-		e.Comma()
-	}
+
+	e.Comma()
 
 	e.RawStr("\"closed_at\"" + ":")
 	s.ClosedAt.Encode(e, json.EncodeDateTime)
@@ -35080,51 +38947,55 @@ func (s IssueSimple) Encode(e *jx.Writer) {
 
 	e.RawStr("\"created_at\"" + ":")
 	json.EncodeDateTime(e, s.CreatedAt)
+
 	e.Comma()
 
 	e.RawStr("\"updated_at\"" + ":")
 	json.EncodeDateTime(e, s.UpdatedAt)
+
 	e.Comma()
 
 	e.RawStr("\"author_association\"" + ":")
 	s.AuthorAssociation.Encode(e)
 
-	e.Comma()
+	if s.BodyHTML.Set {
+		e.Comma()
+	}
 	if s.BodyHTML.Set {
 		e.RawStr("\"body_html\"" + ":")
 		s.BodyHTML.Encode(e)
 	}
-	if s.BodyHTML.Set {
+
+	if s.BodyText.Set {
 		e.Comma()
 	}
 	if s.BodyText.Set {
 		e.RawStr("\"body_text\"" + ":")
 		s.BodyText.Encode(e)
 	}
-	if s.BodyText.Set {
+
+	if s.TimelineURL.Set {
 		e.Comma()
 	}
 	if s.TimelineURL.Set {
 		e.RawStr("\"timeline_url\"" + ":")
 		s.TimelineURL.Encode(e)
 	}
-	if s.TimelineURL.Set {
+
+	if s.Repository.Set {
 		e.Comma()
 	}
 	if s.Repository.Set {
 		e.RawStr("\"repository\"" + ":")
 		s.Repository.Encode(e)
 	}
-	if s.Repository.Set {
+
+	if s.PerformedViaGithubApp.Set {
 		e.Comma()
 	}
 	if s.PerformedViaGithubApp.Set {
 		e.RawStr("\"performed_via_github_app\"" + ":")
 		s.PerformedViaGithubApp.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -35313,13 +39184,27 @@ func (s *IssueSimple) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IssueSimplePullRequest) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.MergedAt.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.MergedAt.Set {
 		e.RawStr("\"merged_at\"" + ":")
 		s.MergedAt.Encode(e, json.EncodeDateTime)
 	}
-	if s.MergedAt.Set {
+
+	if !first {
+
 		e.Comma()
 	}
+	first = false
 
 	e.RawStr("\"diff_url\"" + ":")
 	s.DiffURL.Encode(e)
@@ -35338,10 +39223,6 @@ func (s IssueSimplePullRequest) Encode(e *jx.Writer) {
 
 	e.RawStr("\"url\"" + ":")
 	s.URL.Encode(e)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -35383,6 +39264,17 @@ func (s *IssueSimplePullRequest) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IssuesAddAssigneesReq) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.Assignees != nil {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.Assignees != nil {
 		e.RawStr("\"assignees\"" + ":")
 		e.ArrStart()
@@ -35398,10 +39290,6 @@ func (s IssuesAddAssigneesReq) Encode(e *jx.Writer) {
 			}
 		}
 		e.ArrEnd()
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -35437,10 +39325,10 @@ func (s *IssuesAddAssigneesReq) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IssuesCheckUserCanBeAssignedNoContent) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -35605,13 +39493,18 @@ func (s *IssuesCreateCommentApplicationJSONNotFound) Decode(d *jx.Decoder) error
 // Encode implements json.Marshaler.
 func (s IssuesCreateCommentReq) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"body\"" + ":")
 	e.Str(s.Body)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -35638,24 +39531,33 @@ func (s *IssuesCreateCommentReq) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IssuesCreateLabelReq) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"name\"" + ":")
 	e.Str(s.Name)
-	e.Comma()
+
+	if s.Color.Set {
+		e.Comma()
+	}
 	if s.Color.Set {
 		e.RawStr("\"color\"" + ":")
 		s.Color.Encode(e)
 	}
-	if s.Color.Set {
+
+	if s.Description.Set {
 		e.Comma()
 	}
 	if s.Description.Set {
 		e.RawStr("\"description\"" + ":")
 		s.Description.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -35693,31 +39595,41 @@ func (s *IssuesCreateLabelReq) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IssuesCreateMilestoneReq) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"title\"" + ":")
 	e.Str(s.Title)
-	e.Comma()
+
+	if s.State.Set {
+		e.Comma()
+	}
 	if s.State.Set {
 		e.RawStr("\"state\"" + ":")
 		s.State.Encode(e)
 	}
-	if s.State.Set {
+
+	if s.Description.Set {
 		e.Comma()
 	}
 	if s.Description.Set {
 		e.RawStr("\"description\"" + ":")
 		s.Description.Encode(e)
 	}
-	if s.Description.Set {
+
+	if s.DueOn.Set {
 		e.Comma()
 	}
 	if s.DueOn.Set {
 		e.RawStr("\"due_on\"" + ":")
 		s.DueOn.Encode(e, json.EncodeDateTime)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -35787,30 +39699,45 @@ func (s *IssuesCreateMilestoneReqState) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IssuesCreateReq) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"title\"" + ":")
 	s.Title.Encode(e)
 
-	e.Comma()
+	if s.Body.Set {
+		e.Comma()
+	}
 	if s.Body.Set {
 		e.RawStr("\"body\"" + ":")
 		s.Body.Encode(e)
 	}
-	if s.Body.Set {
+
+	if s.Assignee.Set {
 		e.Comma()
 	}
 	if s.Assignee.Set {
 		e.RawStr("\"assignee\"" + ":")
 		s.Assignee.Encode(e)
 	}
-	if s.Assignee.Set {
+
+	if s.Milestone.Set {
 		e.Comma()
 	}
 	if s.Milestone.Set {
 		e.RawStr("\"milestone\"" + ":")
 		s.Milestone.Encode(e)
 	}
-	if s.Milestone.Set {
+
+	if s.Labels != nil {
 		e.Comma()
 	}
 	if s.Labels != nil {
@@ -35829,7 +39756,8 @@ func (s IssuesCreateReq) Encode(e *jx.Writer) {
 		}
 		e.ArrEnd()
 	}
-	if s.Labels != nil {
+
+	if s.Assignees != nil {
 		e.Comma()
 	}
 	if s.Assignees != nil {
@@ -35847,10 +39775,6 @@ func (s IssuesCreateReq) Encode(e *jx.Writer) {
 			}
 		}
 		e.ArrEnd()
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -35952,34 +39876,53 @@ func (s *IssuesCreateReqLabelsItem) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IssuesCreateReqLabelsItem1) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.ID.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.ID.Set {
 		e.RawStr("\"id\"" + ":")
 		s.ID.Encode(e)
 	}
-	if s.ID.Set {
-		e.Comma()
+
+	if s.Name.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Name.Set {
 		e.RawStr("\"name\"" + ":")
 		s.Name.Encode(e)
 	}
-	if s.Name.Set {
-		e.Comma()
+
+	if s.Description.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Description.Set {
 		e.RawStr("\"description\"" + ":")
 		s.Description.Encode(e)
 	}
-	if s.Description.Set {
-		e.Comma()
+
+	if s.Color.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Color.Set {
 		e.RawStr("\"color\"" + ":")
 		s.Color.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -36095,10 +40038,10 @@ func (s *IssuesCreateReqTitle) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IssuesDeleteCommentNoContent) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -36119,10 +40062,10 @@ func (s *IssuesDeleteCommentNoContent) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IssuesDeleteLabelNoContent) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -36143,10 +40086,10 @@ func (s *IssuesDeleteLabelNoContent) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IssuesDeleteMilestoneNoContent) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -37545,10 +41488,10 @@ func (s *IssuesLockApplicationJSONNotFound) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IssuesLockNoContent) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -37569,13 +41512,20 @@ func (s *IssuesLockNoContent) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IssuesLockReq) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.LockReason.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.LockReason.Set {
 		e.RawStr("\"lock_reason\"" + ":")
 		s.LockReason.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -37633,10 +41583,10 @@ func (s *IssuesLockReqLockReason) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IssuesRemoveAllLabelsNoContent) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -37657,6 +41607,17 @@ func (s *IssuesRemoveAllLabelsNoContent) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IssuesRemoveAssigneesReq) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.Assignees != nil {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.Assignees != nil {
 		e.RawStr("\"assignees\"" + ":")
 		e.ArrStart()
@@ -37672,10 +41633,6 @@ func (s IssuesRemoveAssigneesReq) Encode(e *jx.Writer) {
 			}
 		}
 		e.ArrEnd()
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -37851,10 +41808,10 @@ func (s *IssuesUnlockApplicationJSONNotFound) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IssuesUnlockNoContent) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -37971,13 +41928,18 @@ func (s *IssuesUpdateApplicationJSONNotFound) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IssuesUpdateCommentReq) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"body\"" + ":")
 	e.Str(s.Body)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -38004,27 +41966,42 @@ func (s *IssuesUpdateCommentReq) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IssuesUpdateLabelReq) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.NewName.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.NewName.Set {
 		e.RawStr("\"new_name\"" + ":")
 		s.NewName.Encode(e)
 	}
-	if s.NewName.Set {
-		e.Comma()
+
+	if s.Color.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Color.Set {
 		e.RawStr("\"color\"" + ":")
 		s.Color.Encode(e)
 	}
-	if s.Color.Set {
-		e.Comma()
+
+	if s.Description.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Description.Set {
 		e.RawStr("\"description\"" + ":")
 		s.Description.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -38061,34 +42038,53 @@ func (s *IssuesUpdateLabelReq) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IssuesUpdateMilestoneReq) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.Title.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.Title.Set {
 		e.RawStr("\"title\"" + ":")
 		s.Title.Encode(e)
 	}
-	if s.Title.Set {
-		e.Comma()
+
+	if s.State.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.State.Set {
 		e.RawStr("\"state\"" + ":")
 		s.State.Encode(e)
 	}
-	if s.State.Set {
-		e.Comma()
+
+	if s.Description.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Description.Set {
 		e.RawStr("\"description\"" + ":")
 		s.Description.Encode(e)
 	}
-	if s.Description.Set {
-		e.Comma()
+
+	if s.DueOn.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.DueOn.Set {
 		e.RawStr("\"due_on\"" + ":")
 		s.DueOn.Encode(e, json.EncodeDateTime)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -38157,40 +42153,71 @@ func (s *IssuesUpdateMilestoneReqState) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IssuesUpdateReq) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.Title.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.Title.Set {
 		e.RawStr("\"title\"" + ":")
 		s.Title.Encode(e)
 	}
-	if s.Title.Set {
-		e.Comma()
+
+	if s.Body.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Body.Set {
 		e.RawStr("\"body\"" + ":")
 		s.Body.Encode(e)
 	}
-	if s.Body.Set {
-		e.Comma()
+
+	if s.Assignee.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Assignee.Set {
 		e.RawStr("\"assignee\"" + ":")
 		s.Assignee.Encode(e)
 	}
-	if s.Assignee.Set {
-		e.Comma()
+
+	if s.State.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.State.Set {
 		e.RawStr("\"state\"" + ":")
 		s.State.Encode(e)
 	}
-	if s.State.Set {
-		e.Comma()
+
+	if s.Milestone.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Milestone.Set {
 		e.RawStr("\"milestone\"" + ":")
 		s.Milestone.Encode(e)
 	}
-	if s.Milestone.Set {
-		e.Comma()
+
+	if s.Labels != nil {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Labels != nil {
 		e.RawStr("\"labels\"" + ":")
@@ -38208,8 +42235,12 @@ func (s IssuesUpdateReq) Encode(e *jx.Writer) {
 		}
 		e.ArrEnd()
 	}
-	if s.Labels != nil {
-		e.Comma()
+
+	if s.Assignees != nil {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Assignees != nil {
 		e.RawStr("\"assignees\"" + ":")
@@ -38226,10 +42257,6 @@ func (s IssuesUpdateReq) Encode(e *jx.Writer) {
 			}
 		}
 		e.ArrEnd()
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -38337,34 +42364,53 @@ func (s *IssuesUpdateReqLabelsItem) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IssuesUpdateReqLabelsItem1) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.ID.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.ID.Set {
 		e.RawStr("\"id\"" + ":")
 		s.ID.Encode(e)
 	}
-	if s.ID.Set {
-		e.Comma()
+
+	if s.Name.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Name.Set {
 		e.RawStr("\"name\"" + ":")
 		s.Name.Encode(e)
 	}
-	if s.Name.Set {
-		e.Comma()
+
+	if s.Description.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Description.Set {
 		e.RawStr("\"description\"" + ":")
 		s.Description.Encode(e)
 	}
-	if s.Description.Set {
-		e.Comma()
+
+	if s.Color.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Color.Set {
 		e.RawStr("\"color\"" + ":")
 		s.Color.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -38507,29 +42553,44 @@ func (s *IssuesUpdateReqTitle) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s Job) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"id\"" + ":")
 	e.Int(s.ID)
+
 	e.Comma()
 
 	e.RawStr("\"run_id\"" + ":")
 	e.Int(s.RunID)
+
 	e.Comma()
 
 	e.RawStr("\"run_url\"" + ":")
 	e.Str(s.RunURL)
+
 	e.Comma()
 
 	e.RawStr("\"node_id\"" + ":")
 	e.Str(s.NodeID)
+
 	e.Comma()
 
 	e.RawStr("\"head_sha\"" + ":")
 	e.Str(s.HeadSha)
+
 	e.Comma()
 
 	e.RawStr("\"url\"" + ":")
 	e.Str(s.URL)
+
 	e.Comma()
 
 	e.RawStr("\"html_url\"" + ":")
@@ -38549,6 +42610,7 @@ func (s Job) Encode(e *jx.Writer) {
 
 	e.RawStr("\"started_at\"" + ":")
 	json.EncodeDateTime(e, s.StartedAt)
+
 	e.Comma()
 
 	e.RawStr("\"completed_at\"" + ":")
@@ -38558,7 +42620,10 @@ func (s Job) Encode(e *jx.Writer) {
 
 	e.RawStr("\"name\"" + ":")
 	e.Str(s.Name)
-	e.Comma()
+
+	if s.Steps != nil {
+		e.Comma()
+	}
 	if s.Steps != nil {
 		e.RawStr("\"steps\"" + ":")
 		e.ArrStart()
@@ -38575,16 +42640,11 @@ func (s Job) Encode(e *jx.Writer) {
 		}
 		e.ArrEnd()
 	}
-	if s.Steps != nil {
-		e.Comma()
-	}
+
+	e.Comma()
 
 	e.RawStr("\"check_run_url\"" + ":")
 	e.Str(s.CheckRunURL)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -38716,6 +42776,16 @@ func (s *JobStatus) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s JobStepsItem) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"status\"" + ":")
 	s.Status.Encode(e)
@@ -38729,25 +42799,26 @@ func (s JobStepsItem) Encode(e *jx.Writer) {
 
 	e.RawStr("\"name\"" + ":")
 	e.Str(s.Name)
+
 	e.Comma()
 
 	e.RawStr("\"number\"" + ":")
 	e.Int(s.Number)
-	e.Comma()
+
+	if s.StartedAt.Set {
+		e.Comma()
+	}
 	if s.StartedAt.Set {
 		e.RawStr("\"started_at\"" + ":")
 		s.StartedAt.Encode(e, json.EncodeDateTime)
 	}
-	if s.StartedAt.Set {
+
+	if s.CompletedAt.Set {
 		e.Comma()
 	}
 	if s.CompletedAt.Set {
 		e.RawStr("\"completed_at\"" + ":")
 		s.CompletedAt.Encode(e, json.EncodeDateTime)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -38828,37 +42899,48 @@ func (s *JobStepsItemStatus) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s Key) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"key\"" + ":")
 	e.Str(s.Key)
+
 	e.Comma()
 
 	e.RawStr("\"id\"" + ":")
 	e.Int(s.ID)
+
 	e.Comma()
 
 	e.RawStr("\"url\"" + ":")
 	e.Str(s.URL)
+
 	e.Comma()
 
 	e.RawStr("\"title\"" + ":")
 	e.Str(s.Title)
+
 	e.Comma()
 
 	e.RawStr("\"created_at\"" + ":")
 	json.EncodeDateTime(e, s.CreatedAt)
+
 	e.Comma()
 
 	e.RawStr("\"verified\"" + ":")
 	e.Bool(s.Verified)
+
 	e.Comma()
 
 	e.RawStr("\"read_only\"" + ":")
 	e.Bool(s.ReadOnly)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -38921,17 +43003,23 @@ func (s *Key) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s KeySimple) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"id\"" + ":")
 	e.Int(s.ID)
+
 	e.Comma()
 
 	e.RawStr("\"key\"" + ":")
 	e.Str(s.Key)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -38964,21 +43052,34 @@ func (s *KeySimple) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s Label) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"id\"" + ":")
 	e.Int64(s.ID)
+
 	e.Comma()
 
 	e.RawStr("\"node_id\"" + ":")
 	e.Str(s.NodeID)
+
 	e.Comma()
 
 	e.RawStr("\"url\"" + ":")
 	json.EncodeURI(e, s.URL)
+
 	e.Comma()
 
 	e.RawStr("\"name\"" + ":")
 	e.Str(s.Name)
+
 	e.Comma()
 
 	e.RawStr("\"description\"" + ":")
@@ -38988,14 +43089,11 @@ func (s Label) Encode(e *jx.Writer) {
 
 	e.RawStr("\"color\"" + ":")
 	e.Str(s.Color)
+
 	e.Comma()
 
 	e.RawStr("\"default\"" + ":")
 	e.Bool(s.Default)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -39056,29 +43154,44 @@ func (s *Label) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s LabelSearchResultItem) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"id\"" + ":")
 	e.Int(s.ID)
+
 	e.Comma()
 
 	e.RawStr("\"node_id\"" + ":")
 	e.Str(s.NodeID)
+
 	e.Comma()
 
 	e.RawStr("\"url\"" + ":")
 	json.EncodeURI(e, s.URL)
+
 	e.Comma()
 
 	e.RawStr("\"name\"" + ":")
 	e.Str(s.Name)
+
 	e.Comma()
 
 	e.RawStr("\"color\"" + ":")
 	e.Str(s.Color)
+
 	e.Comma()
 
 	e.RawStr("\"default\"" + ":")
 	e.Bool(s.Default)
+
 	e.Comma()
 
 	e.RawStr("\"description\"" + ":")
@@ -39088,14 +43201,13 @@ func (s LabelSearchResultItem) Encode(e *jx.Writer) {
 
 	e.RawStr("\"score\"" + ":")
 	e.Float64(s.Score)
-	e.Comma()
+
+	if s.TextMatches != nil {
+		e.Comma()
+	}
 	if s.TextMatches != nil {
 		e.RawStr("\"text_matches\"" + ":")
 		s.TextMatches.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -39182,10 +43294,10 @@ func (s *LabelSearchResultItem) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s Language) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -39206,13 +43318,24 @@ func (s *Language) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s License) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"key\"" + ":")
 	e.Str(s.Key)
+
 	e.Comma()
 
 	e.RawStr("\"name\"" + ":")
 	e.Str(s.Name)
+
 	e.Comma()
 
 	e.RawStr("\"spdx_id\"" + ":")
@@ -39227,18 +43350,22 @@ func (s License) Encode(e *jx.Writer) {
 
 	e.RawStr("\"node_id\"" + ":")
 	e.Str(s.NodeID)
+
 	e.Comma()
 
 	e.RawStr("\"html_url\"" + ":")
 	json.EncodeURI(e, s.HTMLURL)
+
 	e.Comma()
 
 	e.RawStr("\"description\"" + ":")
 	e.Str(s.Description)
+
 	e.Comma()
 
 	e.RawStr("\"implementation\"" + ":")
 	e.Str(s.Implementation)
+
 	e.Comma()
 
 	e.RawStr("\"permissions\"" + ":")
@@ -39294,14 +43421,11 @@ func (s License) Encode(e *jx.Writer) {
 
 	e.RawStr("\"body\"" + ":")
 	e.Str(s.Body)
+
 	e.Comma()
 
 	e.RawStr("\"featured\"" + ":")
 	e.Bool(s.Featured)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -39420,25 +43544,39 @@ func (s *License) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s LicenseContent) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"name\"" + ":")
 	e.Str(s.Name)
+
 	e.Comma()
 
 	e.RawStr("\"path\"" + ":")
 	e.Str(s.Path)
+
 	e.Comma()
 
 	e.RawStr("\"sha\"" + ":")
 	e.Str(s.Sha)
+
 	e.Comma()
 
 	e.RawStr("\"size\"" + ":")
 	e.Int(s.Size)
+
 	e.Comma()
 
 	e.RawStr("\"url\"" + ":")
 	json.EncodeURI(e, s.URL)
+
 	e.Comma()
 
 	e.RawStr("\"html_url\"" + ":")
@@ -39458,14 +43596,17 @@ func (s LicenseContent) Encode(e *jx.Writer) {
 
 	e.RawStr("\"type\"" + ":")
 	e.Str(s.Type)
+
 	e.Comma()
 
 	e.RawStr("\"content\"" + ":")
 	e.Str(s.Content)
+
 	e.Comma()
 
 	e.RawStr("\"encoding\"" + ":")
 	e.Str(s.Encoding)
+
 	e.Comma()
 
 	e.RawStr("\"_links\"" + ":")
@@ -39475,10 +43616,6 @@ func (s LicenseContent) Encode(e *jx.Writer) {
 
 	e.RawStr("\"license\"" + ":")
 	s.License.Encode(e)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -39567,6 +43704,16 @@ func (s *LicenseContent) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s LicenseContentLinks) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"git\"" + ":")
 	s.Git.Encode(e)
@@ -39580,10 +43727,6 @@ func (s LicenseContentLinks) Encode(e *jx.Writer) {
 
 	e.RawStr("\"self\"" + ":")
 	json.EncodeURI(e, s.Self)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -39618,13 +43761,24 @@ func (s *LicenseContentLinks) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s LicenseSimple) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"key\"" + ":")
 	e.Str(s.Key)
+
 	e.Comma()
 
 	e.RawStr("\"name\"" + ":")
 	e.Str(s.Name)
+
 	e.Comma()
 
 	e.RawStr("\"url\"" + ":")
@@ -39639,14 +43793,13 @@ func (s LicenseSimple) Encode(e *jx.Writer) {
 
 	e.RawStr("\"node_id\"" + ":")
 	e.Str(s.NodeID)
-	e.Comma()
+
+	if s.HTMLURL.Set {
+		e.Comma()
+	}
 	if s.HTMLURL.Set {
 		e.RawStr("\"html_url\"" + ":")
 		s.HTMLURL.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -39791,13 +43944,18 @@ func (s *LicensesGetApplicationJSONNotFound) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s Link) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"href\"" + ":")
 	e.Str(s.Href)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -39824,17 +43982,23 @@ func (s *Link) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s LinkWithType) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"href\"" + ":")
 	e.Str(s.Href)
+
 	e.Comma()
 
 	e.RawStr("\"type\"" + ":")
 	e.Str(s.Type)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -39867,24 +44031,33 @@ func (s *LinkWithType) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s MarkdownRenderReq) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"text\"" + ":")
 	e.Str(s.Text)
-	e.Comma()
+
+	if s.Mode.Set {
+		e.Comma()
+	}
 	if s.Mode.Set {
 		e.RawStr("\"mode\"" + ":")
 		s.Mode.Encode(e)
 	}
-	if s.Mode.Set {
+
+	if s.Context.Set {
 		e.Comma()
 	}
 	if s.Context.Set {
 		e.RawStr("\"context\"" + ":")
 		s.Context.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -39949,43 +44122,56 @@ func (s *MarkdownRenderReqMode) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s MarketplaceAccount) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"url\"" + ":")
 	json.EncodeURI(e, s.URL)
+
 	e.Comma()
 
 	e.RawStr("\"id\"" + ":")
 	e.Int(s.ID)
+
 	e.Comma()
 
 	e.RawStr("\"type\"" + ":")
 	e.Str(s.Type)
-	e.Comma()
+
+	if s.NodeID.Set {
+		e.Comma()
+	}
 	if s.NodeID.Set {
 		e.RawStr("\"node_id\"" + ":")
 		s.NodeID.Encode(e)
 	}
-	if s.NodeID.Set {
-		e.Comma()
-	}
+
+	e.Comma()
 
 	e.RawStr("\"login\"" + ":")
 	e.Str(s.Login)
-	e.Comma()
+
+	if s.Email.Set {
+		e.Comma()
+	}
 	if s.Email.Set {
 		e.RawStr("\"email\"" + ":")
 		s.Email.Encode(e)
 	}
-	if s.Email.Set {
+
+	if s.OrganizationBillingEmail.Set {
 		e.Comma()
 	}
 	if s.OrganizationBillingEmail.Set {
 		e.RawStr("\"organization_billing_email\"" + ":")
 		s.OrganizationBillingEmail.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -40046,45 +44232,64 @@ func (s *MarketplaceAccount) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s MarketplaceListingPlan) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"url\"" + ":")
 	json.EncodeURI(e, s.URL)
+
 	e.Comma()
 
 	e.RawStr("\"accounts_url\"" + ":")
 	json.EncodeURI(e, s.AccountsURL)
+
 	e.Comma()
 
 	e.RawStr("\"id\"" + ":")
 	e.Int(s.ID)
+
 	e.Comma()
 
 	e.RawStr("\"number\"" + ":")
 	e.Int(s.Number)
+
 	e.Comma()
 
 	e.RawStr("\"name\"" + ":")
 	e.Str(s.Name)
+
 	e.Comma()
 
 	e.RawStr("\"description\"" + ":")
 	e.Str(s.Description)
+
 	e.Comma()
 
 	e.RawStr("\"monthly_price_in_cents\"" + ":")
 	e.Int(s.MonthlyPriceInCents)
+
 	e.Comma()
 
 	e.RawStr("\"yearly_price_in_cents\"" + ":")
 	e.Int(s.YearlyPriceInCents)
+
 	e.Comma()
 
 	e.RawStr("\"price_model\"" + ":")
 	e.Str(s.PriceModel)
+
 	e.Comma()
 
 	e.RawStr("\"has_free_trial\"" + ":")
 	e.Bool(s.HasFreeTrial)
+
 	e.Comma()
 
 	e.RawStr("\"unit_name\"" + ":")
@@ -40094,6 +44299,7 @@ func (s MarketplaceListingPlan) Encode(e *jx.Writer) {
 
 	e.RawStr("\"state\"" + ":")
 	e.Str(s.State)
+
 	e.Comma()
 
 	e.RawStr("\"bullets\"" + ":")
@@ -40110,10 +44316,6 @@ func (s MarketplaceListingPlan) Encode(e *jx.Writer) {
 		}
 	}
 	e.ArrEnd()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -40218,50 +44420,62 @@ func (s *MarketplaceListingPlan) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s MarketplacePurchase) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"url\"" + ":")
 	e.Str(s.URL)
+
 	e.Comma()
 
 	e.RawStr("\"type\"" + ":")
 	e.Str(s.Type)
+
 	e.Comma()
 
 	e.RawStr("\"id\"" + ":")
 	e.Int(s.ID)
+
 	e.Comma()
 
 	e.RawStr("\"login\"" + ":")
 	e.Str(s.Login)
-	e.Comma()
+
+	if s.OrganizationBillingEmail.Set {
+		e.Comma()
+	}
 	if s.OrganizationBillingEmail.Set {
 		e.RawStr("\"organization_billing_email\"" + ":")
 		s.OrganizationBillingEmail.Encode(e)
 	}
-	if s.OrganizationBillingEmail.Set {
+
+	if s.Email.Set {
 		e.Comma()
 	}
 	if s.Email.Set {
 		e.RawStr("\"email\"" + ":")
 		s.Email.Encode(e)
 	}
-	if s.Email.Set {
+
+	if s.MarketplacePendingChange.Set {
 		e.Comma()
 	}
 	if s.MarketplacePendingChange.Set {
 		e.RawStr("\"marketplace_pending_change\"" + ":")
 		s.MarketplacePendingChange.Encode(e)
 	}
-	if s.MarketplacePendingChange.Set {
-		e.Comma()
-	}
+
+	e.Comma()
 
 	e.RawStr("\"marketplace_purchase\"" + ":")
 	s.MarketplacePurchase.Encode(e)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -40325,41 +44539,64 @@ func (s *MarketplacePurchase) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s MarketplacePurchaseMarketplacePendingChange) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.IsInstalled.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.IsInstalled.Set {
 		e.RawStr("\"is_installed\"" + ":")
 		s.IsInstalled.Encode(e)
 	}
-	if s.IsInstalled.Set {
-		e.Comma()
+
+	if s.EffectiveDate.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.EffectiveDate.Set {
 		e.RawStr("\"effective_date\"" + ":")
 		s.EffectiveDate.Encode(e)
 	}
-	if s.EffectiveDate.Set {
-		e.Comma()
+
+	if s.UnitCount.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.UnitCount.Set {
 		e.RawStr("\"unit_count\"" + ":")
 		s.UnitCount.Encode(e)
 	}
-	if s.UnitCount.Set {
-		e.Comma()
+
+	if s.ID.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.ID.Set {
 		e.RawStr("\"id\"" + ":")
 		s.ID.Encode(e)
 	}
-	if s.ID.Set {
-		e.Comma()
+
+	if s.Plan.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Plan.Set {
 		e.RawStr("\"plan\"" + ":")
 		s.Plan.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -40406,62 +44643,97 @@ func (s *MarketplacePurchaseMarketplacePendingChange) Decode(d *jx.Decoder) erro
 // Encode implements json.Marshaler.
 func (s MarketplacePurchaseMarketplacePurchase) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.BillingCycle.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.BillingCycle.Set {
 		e.RawStr("\"billing_cycle\"" + ":")
 		s.BillingCycle.Encode(e)
 	}
-	if s.BillingCycle.Set {
-		e.Comma()
+
+	if s.NextBillingDate.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.NextBillingDate.Set {
 		e.RawStr("\"next_billing_date\"" + ":")
 		s.NextBillingDate.Encode(e)
 	}
-	if s.NextBillingDate.Set {
-		e.Comma()
+
+	if s.IsInstalled.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.IsInstalled.Set {
 		e.RawStr("\"is_installed\"" + ":")
 		s.IsInstalled.Encode(e)
 	}
-	if s.IsInstalled.Set {
-		e.Comma()
+
+	if s.UnitCount.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.UnitCount.Set {
 		e.RawStr("\"unit_count\"" + ":")
 		s.UnitCount.Encode(e)
 	}
-	if s.UnitCount.Set {
-		e.Comma()
+
+	if s.OnFreeTrial.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.OnFreeTrial.Set {
 		e.RawStr("\"on_free_trial\"" + ":")
 		s.OnFreeTrial.Encode(e)
 	}
-	if s.OnFreeTrial.Set {
-		e.Comma()
+
+	if s.FreeTrialEndsOn.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.FreeTrialEndsOn.Set {
 		e.RawStr("\"free_trial_ends_on\"" + ":")
 		s.FreeTrialEndsOn.Encode(e)
 	}
-	if s.FreeTrialEndsOn.Set {
-		e.Comma()
+
+	if s.UpdatedAt.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.UpdatedAt.Set {
 		e.RawStr("\"updated_at\"" + ":")
 		s.UpdatedAt.Encode(e)
 	}
-	if s.UpdatedAt.Set {
-		e.Comma()
+
+	if s.Plan.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Plan.Set {
 		e.RawStr("\"plan\"" + ":")
 		s.Plan.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -40523,27 +44795,42 @@ func (s *MarketplacePurchaseMarketplacePurchase) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s MergedUpstream) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.Message.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.Message.Set {
 		e.RawStr("\"message\"" + ":")
 		s.Message.Encode(e)
 	}
-	if s.Message.Set {
-		e.Comma()
+
+	if s.MergeType.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.MergeType.Set {
 		e.RawStr("\"merge_type\"" + ":")
 		s.MergeType.Encode(e)
 	}
-	if s.MergeType.Set {
-		e.Comma()
+
+	if s.BaseBranch.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.BaseBranch.Set {
 		e.RawStr("\"base_branch\"" + ":")
 		s.BaseBranch.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -40609,144 +44896,181 @@ func (s *MergedUpstreamMergeType) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s MetaRootOK) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"current_user_url\"" + ":")
 	e.Str(s.CurrentUserURL)
+
 	e.Comma()
 
 	e.RawStr("\"current_user_authorizations_html_url\"" + ":")
 	e.Str(s.CurrentUserAuthorizationsHTMLURL)
+
 	e.Comma()
 
 	e.RawStr("\"authorizations_url\"" + ":")
 	e.Str(s.AuthorizationsURL)
+
 	e.Comma()
 
 	e.RawStr("\"code_search_url\"" + ":")
 	e.Str(s.CodeSearchURL)
+
 	e.Comma()
 
 	e.RawStr("\"commit_search_url\"" + ":")
 	e.Str(s.CommitSearchURL)
+
 	e.Comma()
 
 	e.RawStr("\"emails_url\"" + ":")
 	e.Str(s.EmailsURL)
+
 	e.Comma()
 
 	e.RawStr("\"emojis_url\"" + ":")
 	e.Str(s.EmojisURL)
+
 	e.Comma()
 
 	e.RawStr("\"events_url\"" + ":")
 	e.Str(s.EventsURL)
+
 	e.Comma()
 
 	e.RawStr("\"feeds_url\"" + ":")
 	e.Str(s.FeedsURL)
+
 	e.Comma()
 
 	e.RawStr("\"followers_url\"" + ":")
 	e.Str(s.FollowersURL)
+
 	e.Comma()
 
 	e.RawStr("\"following_url\"" + ":")
 	e.Str(s.FollowingURL)
+
 	e.Comma()
 
 	e.RawStr("\"gists_url\"" + ":")
 	e.Str(s.GistsURL)
+
 	e.Comma()
 
 	e.RawStr("\"hub_url\"" + ":")
 	e.Str(s.HubURL)
+
 	e.Comma()
 
 	e.RawStr("\"issue_search_url\"" + ":")
 	e.Str(s.IssueSearchURL)
+
 	e.Comma()
 
 	e.RawStr("\"issues_url\"" + ":")
 	e.Str(s.IssuesURL)
+
 	e.Comma()
 
 	e.RawStr("\"keys_url\"" + ":")
 	e.Str(s.KeysURL)
+
 	e.Comma()
 
 	e.RawStr("\"label_search_url\"" + ":")
 	e.Str(s.LabelSearchURL)
+
 	e.Comma()
 
 	e.RawStr("\"notifications_url\"" + ":")
 	e.Str(s.NotificationsURL)
+
 	e.Comma()
 
 	e.RawStr("\"organization_url\"" + ":")
 	e.Str(s.OrganizationURL)
+
 	e.Comma()
 
 	e.RawStr("\"organization_repositories_url\"" + ":")
 	e.Str(s.OrganizationRepositoriesURL)
+
 	e.Comma()
 
 	e.RawStr("\"organization_teams_url\"" + ":")
 	e.Str(s.OrganizationTeamsURL)
+
 	e.Comma()
 
 	e.RawStr("\"public_gists_url\"" + ":")
 	e.Str(s.PublicGistsURL)
+
 	e.Comma()
 
 	e.RawStr("\"rate_limit_url\"" + ":")
 	e.Str(s.RateLimitURL)
+
 	e.Comma()
 
 	e.RawStr("\"repository_url\"" + ":")
 	e.Str(s.RepositoryURL)
+
 	e.Comma()
 
 	e.RawStr("\"repository_search_url\"" + ":")
 	e.Str(s.RepositorySearchURL)
+
 	e.Comma()
 
 	e.RawStr("\"current_user_repositories_url\"" + ":")
 	e.Str(s.CurrentUserRepositoriesURL)
+
 	e.Comma()
 
 	e.RawStr("\"starred_url\"" + ":")
 	e.Str(s.StarredURL)
+
 	e.Comma()
 
 	e.RawStr("\"starred_gists_url\"" + ":")
 	e.Str(s.StarredGistsURL)
-	e.Comma()
+
+	if s.TopicSearchURL.Set {
+		e.Comma()
+	}
 	if s.TopicSearchURL.Set {
 		e.RawStr("\"topic_search_url\"" + ":")
 		s.TopicSearchURL.Encode(e)
 	}
-	if s.TopicSearchURL.Set {
-		e.Comma()
-	}
+
+	e.Comma()
 
 	e.RawStr("\"user_url\"" + ":")
 	e.Str(s.UserURL)
+
 	e.Comma()
 
 	e.RawStr("\"user_organizations_url\"" + ":")
 	e.Str(s.UserOrganizationsURL)
+
 	e.Comma()
 
 	e.RawStr("\"user_repositories_url\"" + ":")
 	e.Str(s.UserRepositoriesURL)
+
 	e.Comma()
 
 	e.RawStr("\"user_search_url\"" + ":")
 	e.Str(s.UserSearchURL)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -40964,9 +45288,19 @@ func (s *MetaRootOK) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s Migration) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"id\"" + ":")
 	e.Int(s.ID)
+
 	e.Comma()
 
 	e.RawStr("\"owner\"" + ":")
@@ -40976,34 +45310,42 @@ func (s Migration) Encode(e *jx.Writer) {
 
 	e.RawStr("\"guid\"" + ":")
 	e.Str(s.GUID)
+
 	e.Comma()
 
 	e.RawStr("\"state\"" + ":")
 	e.Str(s.State)
+
 	e.Comma()
 
 	e.RawStr("\"lock_repositories\"" + ":")
 	e.Bool(s.LockRepositories)
+
 	e.Comma()
 
 	e.RawStr("\"exclude_metadata\"" + ":")
 	e.Bool(s.ExcludeMetadata)
+
 	e.Comma()
 
 	e.RawStr("\"exclude_git_data\"" + ":")
 	e.Bool(s.ExcludeGitData)
+
 	e.Comma()
 
 	e.RawStr("\"exclude_attachments\"" + ":")
 	e.Bool(s.ExcludeAttachments)
+
 	e.Comma()
 
 	e.RawStr("\"exclude_releases\"" + ":")
 	e.Bool(s.ExcludeReleases)
+
 	e.Comma()
 
 	e.RawStr("\"exclude_owner_projects\"" + ":")
 	e.Bool(s.ExcludeOwnerProjects)
+
 	e.Comma()
 
 	e.RawStr("\"repositories\"" + ":")
@@ -41025,24 +45367,31 @@ func (s Migration) Encode(e *jx.Writer) {
 
 	e.RawStr("\"url\"" + ":")
 	json.EncodeURI(e, s.URL)
+
 	e.Comma()
 
 	e.RawStr("\"created_at\"" + ":")
 	json.EncodeDateTime(e, s.CreatedAt)
+
 	e.Comma()
 
 	e.RawStr("\"updated_at\"" + ":")
 	json.EncodeDateTime(e, s.UpdatedAt)
+
 	e.Comma()
 
 	e.RawStr("\"node_id\"" + ":")
 	e.Str(s.NodeID)
-	e.Comma()
+
+	if s.ArchiveURL.Set {
+		e.Comma()
+	}
 	if s.ArchiveURL.Set {
 		e.RawStr("\"archive_url\"" + ":")
 		s.ArchiveURL.Encode(e)
 	}
-	if s.ArchiveURL.Set {
+
+	if s.Exclude != nil {
 		e.Comma()
 	}
 	if s.Exclude != nil {
@@ -41060,10 +45409,6 @@ func (s Migration) Encode(e *jx.Writer) {
 			}
 		}
 		e.ArrEnd()
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -41198,10 +45543,10 @@ func (s *Migration) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s MigrationsCancelImportNoContent) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -41294,10 +45639,10 @@ func (s *MigrationsDeleteArchiveForAuthenticatedUserApplicationJSONUnauthorized)
 // Encode implements json.Marshaler.
 func (s MigrationsDeleteArchiveForAuthenticatedUserNoContent) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -41318,10 +45663,10 @@ func (s *MigrationsDeleteArchiveForAuthenticatedUserNoContent) Decode(d *jx.Deco
 // Encode implements json.Marshaler.
 func (s MigrationsDeleteArchiveForOrgNoContent) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -41342,10 +45687,10 @@ func (s *MigrationsDeleteArchiveForOrgNoContent) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s MigrationsDownloadArchiveForOrgFound) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -41414,10 +45759,10 @@ func (s *MigrationsGetArchiveForAuthenticatedUserApplicationJSONUnauthorized) De
 // Encode implements json.Marshaler.
 func (s MigrationsGetArchiveForAuthenticatedUserFound) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -41784,20 +46129,31 @@ func (s *MigrationsListReposForUserOKApplicationJSON) Decode(d *jx.Decoder) erro
 // Encode implements json.Marshaler.
 func (s MigrationsMapCommitAuthorReq) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.Email.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.Email.Set {
 		e.RawStr("\"email\"" + ":")
 		s.Email.Encode(e)
 	}
-	if s.Email.Set {
-		e.Comma()
+
+	if s.Name.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Name.Set {
 		e.RawStr("\"name\"" + ":")
 		s.Name.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -41829,13 +46185,19 @@ func (s *MigrationsMapCommitAuthorReq) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s MigrationsSetLfsPreferenceReq) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"use_lfs\"" + ":")
 	s.UseLfs.Encode(e)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -41935,33 +46297,60 @@ func (s *MigrationsStartForAuthenticatedUserApplicationJSONUnauthorized) Decode(
 // Encode implements json.Marshaler.
 func (s MigrationsStartForAuthenticatedUserReq) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.LockRepositories.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.LockRepositories.Set {
 		e.RawStr("\"lock_repositories\"" + ":")
 		s.LockRepositories.Encode(e)
 	}
-	if s.LockRepositories.Set {
-		e.Comma()
+
+	if s.ExcludeAttachments.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.ExcludeAttachments.Set {
 		e.RawStr("\"exclude_attachments\"" + ":")
 		s.ExcludeAttachments.Encode(e)
 	}
-	if s.ExcludeAttachments.Set {
-		e.Comma()
+
+	if s.ExcludeReleases.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.ExcludeReleases.Set {
 		e.RawStr("\"exclude_releases\"" + ":")
 		s.ExcludeReleases.Encode(e)
 	}
-	if s.ExcludeReleases.Set {
-		e.Comma()
+
+	if s.ExcludeOwnerProjects.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.ExcludeOwnerProjects.Set {
 		e.RawStr("\"exclude_owner_projects\"" + ":")
 		s.ExcludeOwnerProjects.Encode(e)
 	}
-	if s.ExcludeOwnerProjects.Set {
-		e.Comma()
+
+	if s.Exclude != nil {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Exclude != nil {
 		e.RawStr("\"exclude\"" + ":")
@@ -41979,9 +46368,12 @@ func (s MigrationsStartForAuthenticatedUserReq) Encode(e *jx.Writer) {
 		}
 		e.ArrEnd()
 	}
-	if s.Exclude != nil {
+
+	if !first {
+
 		e.Comma()
 	}
+	first = false
 
 	e.RawStr("\"repositories\"" + ":")
 	e.ArrStart()
@@ -41997,10 +46389,6 @@ func (s MigrationsStartForAuthenticatedUserReq) Encode(e *jx.Writer) {
 		}
 	}
 	e.ArrEnd()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -42092,6 +46480,16 @@ func (s *MigrationsStartForAuthenticatedUserReqExcludeItem) Decode(d *jx.Decoder
 // Encode implements json.Marshaler.
 func (s MigrationsStartForOrgReq) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"repositories\"" + ":")
 	e.ArrStart()
@@ -42108,33 +46506,39 @@ func (s MigrationsStartForOrgReq) Encode(e *jx.Writer) {
 	}
 	e.ArrEnd()
 
-	e.Comma()
+	if s.LockRepositories.Set {
+		e.Comma()
+	}
 	if s.LockRepositories.Set {
 		e.RawStr("\"lock_repositories\"" + ":")
 		s.LockRepositories.Encode(e)
 	}
-	if s.LockRepositories.Set {
+
+	if s.ExcludeAttachments.Set {
 		e.Comma()
 	}
 	if s.ExcludeAttachments.Set {
 		e.RawStr("\"exclude_attachments\"" + ":")
 		s.ExcludeAttachments.Encode(e)
 	}
-	if s.ExcludeAttachments.Set {
+
+	if s.ExcludeReleases.Set {
 		e.Comma()
 	}
 	if s.ExcludeReleases.Set {
 		e.RawStr("\"exclude_releases\"" + ":")
 		s.ExcludeReleases.Encode(e)
 	}
-	if s.ExcludeReleases.Set {
+
+	if s.ExcludeOwnerProjects.Set {
 		e.Comma()
 	}
 	if s.ExcludeOwnerProjects.Set {
 		e.RawStr("\"exclude_owner_projects\"" + ":")
 		s.ExcludeOwnerProjects.Encode(e)
 	}
-	if s.ExcludeOwnerProjects.Set {
+
+	if s.Exclude != nil {
 		e.Comma()
 	}
 	if s.Exclude != nil {
@@ -42152,10 +46556,6 @@ func (s MigrationsStartForOrgReq) Encode(e *jx.Writer) {
 			}
 		}
 		e.ArrEnd()
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -42248,38 +46648,49 @@ func (s *MigrationsStartForOrgReqExcludeItem) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s MigrationsStartImportReq) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"vcs_url\"" + ":")
 	e.Str(s.VcsURL)
-	e.Comma()
+
+	if s.Vcs.Set {
+		e.Comma()
+	}
 	if s.Vcs.Set {
 		e.RawStr("\"vcs\"" + ":")
 		s.Vcs.Encode(e)
 	}
-	if s.Vcs.Set {
+
+	if s.VcsUsername.Set {
 		e.Comma()
 	}
 	if s.VcsUsername.Set {
 		e.RawStr("\"vcs_username\"" + ":")
 		s.VcsUsername.Encode(e)
 	}
-	if s.VcsUsername.Set {
+
+	if s.VcsPassword.Set {
 		e.Comma()
 	}
 	if s.VcsPassword.Set {
 		e.RawStr("\"vcs_password\"" + ":")
 		s.VcsPassword.Encode(e)
 	}
-	if s.VcsPassword.Set {
+
+	if s.TfvcProject.Set {
 		e.Comma()
 	}
 	if s.TfvcProject.Set {
 		e.RawStr("\"tfvc_project\"" + ":")
 		s.TfvcProject.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -42430,10 +46841,10 @@ func (s *MigrationsUnlockRepoForAuthenticatedUserApplicationJSONUnauthorized) De
 // Encode implements json.Marshaler.
 func (s MigrationsUnlockRepoForAuthenticatedUserNoContent) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -42454,10 +46865,10 @@ func (s *MigrationsUnlockRepoForAuthenticatedUserNoContent) Decode(d *jx.Decoder
 // Encode implements json.Marshaler.
 func (s MigrationsUnlockRepoForOrgNoContent) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -42478,34 +46889,53 @@ func (s *MigrationsUnlockRepoForOrgNoContent) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s MigrationsUpdateImportReq) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.VcsUsername.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.VcsUsername.Set {
 		e.RawStr("\"vcs_username\"" + ":")
 		s.VcsUsername.Encode(e)
 	}
-	if s.VcsUsername.Set {
-		e.Comma()
+
+	if s.VcsPassword.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.VcsPassword.Set {
 		e.RawStr("\"vcs_password\"" + ":")
 		s.VcsPassword.Encode(e)
 	}
-	if s.VcsPassword.Set {
-		e.Comma()
+
+	if s.Vcs.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Vcs.Set {
 		e.RawStr("\"vcs\"" + ":")
 		s.Vcs.Encode(e)
 	}
-	if s.Vcs.Set {
-		e.Comma()
+
+	if s.TfvcProject.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.TfvcProject.Set {
 		e.RawStr("\"tfvc_project\"" + ":")
 		s.TfvcProject.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -42547,29 +46977,44 @@ func (s *MigrationsUpdateImportReq) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s Milestone) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"url\"" + ":")
 	json.EncodeURI(e, s.URL)
+
 	e.Comma()
 
 	e.RawStr("\"html_url\"" + ":")
 	json.EncodeURI(e, s.HTMLURL)
+
 	e.Comma()
 
 	e.RawStr("\"labels_url\"" + ":")
 	json.EncodeURI(e, s.LabelsURL)
+
 	e.Comma()
 
 	e.RawStr("\"id\"" + ":")
 	e.Int(s.ID)
+
 	e.Comma()
 
 	e.RawStr("\"node_id\"" + ":")
 	e.Str(s.NodeID)
+
 	e.Comma()
 
 	e.RawStr("\"number\"" + ":")
 	e.Int(s.Number)
+
 	e.Comma()
 
 	e.RawStr("\"state\"" + ":")
@@ -42579,6 +47024,7 @@ func (s Milestone) Encode(e *jx.Writer) {
 
 	e.RawStr("\"title\"" + ":")
 	e.Str(s.Title)
+
 	e.Comma()
 
 	e.RawStr("\"description\"" + ":")
@@ -42593,18 +47039,22 @@ func (s Milestone) Encode(e *jx.Writer) {
 
 	e.RawStr("\"open_issues\"" + ":")
 	e.Int(s.OpenIssues)
+
 	e.Comma()
 
 	e.RawStr("\"closed_issues\"" + ":")
 	e.Int(s.ClosedIssues)
+
 	e.Comma()
 
 	e.RawStr("\"created_at\"" + ":")
 	json.EncodeDateTime(e, s.CreatedAt)
+
 	e.Comma()
 
 	e.RawStr("\"updated_at\"" + ":")
 	json.EncodeDateTime(e, s.UpdatedAt)
+
 	e.Comma()
 
 	e.RawStr("\"closed_at\"" + ":")
@@ -42614,10 +47064,6 @@ func (s Milestone) Encode(e *jx.Writer) {
 
 	e.RawStr("\"due_on\"" + ":")
 	s.DueOn.Encode(e, json.EncodeDateTime)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -42751,21 +47197,34 @@ func (s *MilestoneState) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s MinimalRepository) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"id\"" + ":")
 	e.Int(s.ID)
+
 	e.Comma()
 
 	e.RawStr("\"node_id\"" + ":")
 	e.Str(s.NodeID)
+
 	e.Comma()
 
 	e.RawStr("\"name\"" + ":")
 	e.Str(s.Name)
+
 	e.Comma()
 
 	e.RawStr("\"full_name\"" + ":")
 	e.Str(s.FullName)
+
 	e.Comma()
 
 	e.RawStr("\"owner\"" + ":")
@@ -42775,10 +47234,12 @@ func (s MinimalRepository) Encode(e *jx.Writer) {
 
 	e.RawStr("\"private\"" + ":")
 	e.Bool(s.Private)
+
 	e.Comma()
 
 	e.RawStr("\"html_url\"" + ":")
 	json.EncodeURI(e, s.HTMLURL)
+
 	e.Comma()
 
 	e.RawStr("\"description\"" + ":")
@@ -42788,251 +47249,305 @@ func (s MinimalRepository) Encode(e *jx.Writer) {
 
 	e.RawStr("\"fork\"" + ":")
 	e.Bool(s.Fork)
+
 	e.Comma()
 
 	e.RawStr("\"url\"" + ":")
 	json.EncodeURI(e, s.URL)
+
 	e.Comma()
 
 	e.RawStr("\"archive_url\"" + ":")
 	e.Str(s.ArchiveURL)
+
 	e.Comma()
 
 	e.RawStr("\"assignees_url\"" + ":")
 	e.Str(s.AssigneesURL)
+
 	e.Comma()
 
 	e.RawStr("\"blobs_url\"" + ":")
 	e.Str(s.BlobsURL)
+
 	e.Comma()
 
 	e.RawStr("\"branches_url\"" + ":")
 	e.Str(s.BranchesURL)
+
 	e.Comma()
 
 	e.RawStr("\"collaborators_url\"" + ":")
 	e.Str(s.CollaboratorsURL)
+
 	e.Comma()
 
 	e.RawStr("\"comments_url\"" + ":")
 	e.Str(s.CommentsURL)
+
 	e.Comma()
 
 	e.RawStr("\"commits_url\"" + ":")
 	e.Str(s.CommitsURL)
+
 	e.Comma()
 
 	e.RawStr("\"compare_url\"" + ":")
 	e.Str(s.CompareURL)
+
 	e.Comma()
 
 	e.RawStr("\"contents_url\"" + ":")
 	e.Str(s.ContentsURL)
+
 	e.Comma()
 
 	e.RawStr("\"contributors_url\"" + ":")
 	json.EncodeURI(e, s.ContributorsURL)
+
 	e.Comma()
 
 	e.RawStr("\"deployments_url\"" + ":")
 	json.EncodeURI(e, s.DeploymentsURL)
+
 	e.Comma()
 
 	e.RawStr("\"downloads_url\"" + ":")
 	json.EncodeURI(e, s.DownloadsURL)
+
 	e.Comma()
 
 	e.RawStr("\"events_url\"" + ":")
 	json.EncodeURI(e, s.EventsURL)
+
 	e.Comma()
 
 	e.RawStr("\"forks_url\"" + ":")
 	json.EncodeURI(e, s.ForksURL)
+
 	e.Comma()
 
 	e.RawStr("\"git_commits_url\"" + ":")
 	e.Str(s.GitCommitsURL)
+
 	e.Comma()
 
 	e.RawStr("\"git_refs_url\"" + ":")
 	e.Str(s.GitRefsURL)
+
 	e.Comma()
 
 	e.RawStr("\"git_tags_url\"" + ":")
 	e.Str(s.GitTagsURL)
-	e.Comma()
+
+	if s.GitURL.Set {
+		e.Comma()
+	}
 	if s.GitURL.Set {
 		e.RawStr("\"git_url\"" + ":")
 		s.GitURL.Encode(e)
 	}
-	if s.GitURL.Set {
-		e.Comma()
-	}
+
+	e.Comma()
 
 	e.RawStr("\"issue_comment_url\"" + ":")
 	e.Str(s.IssueCommentURL)
+
 	e.Comma()
 
 	e.RawStr("\"issue_events_url\"" + ":")
 	e.Str(s.IssueEventsURL)
+
 	e.Comma()
 
 	e.RawStr("\"issues_url\"" + ":")
 	e.Str(s.IssuesURL)
+
 	e.Comma()
 
 	e.RawStr("\"keys_url\"" + ":")
 	e.Str(s.KeysURL)
+
 	e.Comma()
 
 	e.RawStr("\"labels_url\"" + ":")
 	e.Str(s.LabelsURL)
+
 	e.Comma()
 
 	e.RawStr("\"languages_url\"" + ":")
 	json.EncodeURI(e, s.LanguagesURL)
+
 	e.Comma()
 
 	e.RawStr("\"merges_url\"" + ":")
 	json.EncodeURI(e, s.MergesURL)
+
 	e.Comma()
 
 	e.RawStr("\"milestones_url\"" + ":")
 	e.Str(s.MilestonesURL)
+
 	e.Comma()
 
 	e.RawStr("\"notifications_url\"" + ":")
 	e.Str(s.NotificationsURL)
+
 	e.Comma()
 
 	e.RawStr("\"pulls_url\"" + ":")
 	e.Str(s.PullsURL)
+
 	e.Comma()
 
 	e.RawStr("\"releases_url\"" + ":")
 	e.Str(s.ReleasesURL)
-	e.Comma()
+
+	if s.SSHURL.Set {
+		e.Comma()
+	}
 	if s.SSHURL.Set {
 		e.RawStr("\"ssh_url\"" + ":")
 		s.SSHURL.Encode(e)
 	}
-	if s.SSHURL.Set {
-		e.Comma()
-	}
+
+	e.Comma()
 
 	e.RawStr("\"stargazers_url\"" + ":")
 	json.EncodeURI(e, s.StargazersURL)
+
 	e.Comma()
 
 	e.RawStr("\"statuses_url\"" + ":")
 	e.Str(s.StatusesURL)
+
 	e.Comma()
 
 	e.RawStr("\"subscribers_url\"" + ":")
 	json.EncodeURI(e, s.SubscribersURL)
+
 	e.Comma()
 
 	e.RawStr("\"subscription_url\"" + ":")
 	json.EncodeURI(e, s.SubscriptionURL)
+
 	e.Comma()
 
 	e.RawStr("\"tags_url\"" + ":")
 	json.EncodeURI(e, s.TagsURL)
+
 	e.Comma()
 
 	e.RawStr("\"teams_url\"" + ":")
 	json.EncodeURI(e, s.TeamsURL)
+
 	e.Comma()
 
 	e.RawStr("\"trees_url\"" + ":")
 	e.Str(s.TreesURL)
-	e.Comma()
+
+	if s.CloneURL.Set {
+		e.Comma()
+	}
 	if s.CloneURL.Set {
 		e.RawStr("\"clone_url\"" + ":")
 		s.CloneURL.Encode(e)
 	}
-	if s.CloneURL.Set {
+
+	if s.MirrorURL.Set {
 		e.Comma()
 	}
 	if s.MirrorURL.Set {
 		e.RawStr("\"mirror_url\"" + ":")
 		s.MirrorURL.Encode(e)
 	}
-	if s.MirrorURL.Set {
-		e.Comma()
-	}
+
+	e.Comma()
 
 	e.RawStr("\"hooks_url\"" + ":")
 	json.EncodeURI(e, s.HooksURL)
-	e.Comma()
+
+	if s.SvnURL.Set {
+		e.Comma()
+	}
 	if s.SvnURL.Set {
 		e.RawStr("\"svn_url\"" + ":")
 		s.SvnURL.Encode(e)
 	}
-	if s.SvnURL.Set {
+
+	if s.Homepage.Set {
 		e.Comma()
 	}
 	if s.Homepage.Set {
 		e.RawStr("\"homepage\"" + ":")
 		s.Homepage.Encode(e)
 	}
-	if s.Homepage.Set {
+
+	if s.Language.Set {
 		e.Comma()
 	}
 	if s.Language.Set {
 		e.RawStr("\"language\"" + ":")
 		s.Language.Encode(e)
 	}
-	if s.Language.Set {
+
+	if s.ForksCount.Set {
 		e.Comma()
 	}
 	if s.ForksCount.Set {
 		e.RawStr("\"forks_count\"" + ":")
 		s.ForksCount.Encode(e)
 	}
-	if s.ForksCount.Set {
+
+	if s.StargazersCount.Set {
 		e.Comma()
 	}
 	if s.StargazersCount.Set {
 		e.RawStr("\"stargazers_count\"" + ":")
 		s.StargazersCount.Encode(e)
 	}
-	if s.StargazersCount.Set {
+
+	if s.WatchersCount.Set {
 		e.Comma()
 	}
 	if s.WatchersCount.Set {
 		e.RawStr("\"watchers_count\"" + ":")
 		s.WatchersCount.Encode(e)
 	}
-	if s.WatchersCount.Set {
+
+	if s.Size.Set {
 		e.Comma()
 	}
 	if s.Size.Set {
 		e.RawStr("\"size\"" + ":")
 		s.Size.Encode(e)
 	}
-	if s.Size.Set {
+
+	if s.DefaultBranch.Set {
 		e.Comma()
 	}
 	if s.DefaultBranch.Set {
 		e.RawStr("\"default_branch\"" + ":")
 		s.DefaultBranch.Encode(e)
 	}
-	if s.DefaultBranch.Set {
+
+	if s.OpenIssuesCount.Set {
 		e.Comma()
 	}
 	if s.OpenIssuesCount.Set {
 		e.RawStr("\"open_issues_count\"" + ":")
 		s.OpenIssuesCount.Encode(e)
 	}
-	if s.OpenIssuesCount.Set {
+
+	if s.IsTemplate.Set {
 		e.Comma()
 	}
 	if s.IsTemplate.Set {
 		e.RawStr("\"is_template\"" + ":")
 		s.IsTemplate.Encode(e)
 	}
-	if s.IsTemplate.Set {
+
+	if s.Topics != nil {
 		e.Comma()
 	}
 	if s.Topics != nil {
@@ -43051,170 +47566,189 @@ func (s MinimalRepository) Encode(e *jx.Writer) {
 		}
 		e.ArrEnd()
 	}
-	if s.Topics != nil {
+
+	if s.HasIssues.Set {
 		e.Comma()
 	}
 	if s.HasIssues.Set {
 		e.RawStr("\"has_issues\"" + ":")
 		s.HasIssues.Encode(e)
 	}
-	if s.HasIssues.Set {
+
+	if s.HasProjects.Set {
 		e.Comma()
 	}
 	if s.HasProjects.Set {
 		e.RawStr("\"has_projects\"" + ":")
 		s.HasProjects.Encode(e)
 	}
-	if s.HasProjects.Set {
+
+	if s.HasWiki.Set {
 		e.Comma()
 	}
 	if s.HasWiki.Set {
 		e.RawStr("\"has_wiki\"" + ":")
 		s.HasWiki.Encode(e)
 	}
-	if s.HasWiki.Set {
+
+	if s.HasPages.Set {
 		e.Comma()
 	}
 	if s.HasPages.Set {
 		e.RawStr("\"has_pages\"" + ":")
 		s.HasPages.Encode(e)
 	}
-	if s.HasPages.Set {
+
+	if s.HasDownloads.Set {
 		e.Comma()
 	}
 	if s.HasDownloads.Set {
 		e.RawStr("\"has_downloads\"" + ":")
 		s.HasDownloads.Encode(e)
 	}
-	if s.HasDownloads.Set {
+
+	if s.Archived.Set {
 		e.Comma()
 	}
 	if s.Archived.Set {
 		e.RawStr("\"archived\"" + ":")
 		s.Archived.Encode(e)
 	}
-	if s.Archived.Set {
+
+	if s.Disabled.Set {
 		e.Comma()
 	}
 	if s.Disabled.Set {
 		e.RawStr("\"disabled\"" + ":")
 		s.Disabled.Encode(e)
 	}
-	if s.Disabled.Set {
+
+	if s.Visibility.Set {
 		e.Comma()
 	}
 	if s.Visibility.Set {
 		e.RawStr("\"visibility\"" + ":")
 		s.Visibility.Encode(e)
 	}
-	if s.Visibility.Set {
+
+	if s.PushedAt.Set {
 		e.Comma()
 	}
 	if s.PushedAt.Set {
 		e.RawStr("\"pushed_at\"" + ":")
 		s.PushedAt.Encode(e, json.EncodeDateTime)
 	}
-	if s.PushedAt.Set {
+
+	if s.CreatedAt.Set {
 		e.Comma()
 	}
 	if s.CreatedAt.Set {
 		e.RawStr("\"created_at\"" + ":")
 		s.CreatedAt.Encode(e, json.EncodeDateTime)
 	}
-	if s.CreatedAt.Set {
+
+	if s.UpdatedAt.Set {
 		e.Comma()
 	}
 	if s.UpdatedAt.Set {
 		e.RawStr("\"updated_at\"" + ":")
 		s.UpdatedAt.Encode(e, json.EncodeDateTime)
 	}
-	if s.UpdatedAt.Set {
+
+	if s.Permissions.Set {
 		e.Comma()
 	}
 	if s.Permissions.Set {
 		e.RawStr("\"permissions\"" + ":")
 		s.Permissions.Encode(e)
 	}
-	if s.Permissions.Set {
+
+	if s.TemplateRepository.Set {
 		e.Comma()
 	}
 	if s.TemplateRepository.Set {
 		e.RawStr("\"template_repository\"" + ":")
 		s.TemplateRepository.Encode(e)
 	}
-	if s.TemplateRepository.Set {
+
+	if s.TempCloneToken.Set {
 		e.Comma()
 	}
 	if s.TempCloneToken.Set {
 		e.RawStr("\"temp_clone_token\"" + ":")
 		s.TempCloneToken.Encode(e)
 	}
-	if s.TempCloneToken.Set {
+
+	if s.DeleteBranchOnMerge.Set {
 		e.Comma()
 	}
 	if s.DeleteBranchOnMerge.Set {
 		e.RawStr("\"delete_branch_on_merge\"" + ":")
 		s.DeleteBranchOnMerge.Encode(e)
 	}
-	if s.DeleteBranchOnMerge.Set {
+
+	if s.SubscribersCount.Set {
 		e.Comma()
 	}
 	if s.SubscribersCount.Set {
 		e.RawStr("\"subscribers_count\"" + ":")
 		s.SubscribersCount.Encode(e)
 	}
-	if s.SubscribersCount.Set {
+
+	if s.NetworkCount.Set {
 		e.Comma()
 	}
 	if s.NetworkCount.Set {
 		e.RawStr("\"network_count\"" + ":")
 		s.NetworkCount.Encode(e)
 	}
-	if s.NetworkCount.Set {
+
+	if s.CodeOfConduct.Set {
 		e.Comma()
 	}
 	if s.CodeOfConduct.Set {
 		e.RawStr("\"code_of_conduct\"" + ":")
 		s.CodeOfConduct.Encode(e)
 	}
-	if s.CodeOfConduct.Set {
+
+	if s.License.Set {
 		e.Comma()
 	}
 	if s.License.Set {
 		e.RawStr("\"license\"" + ":")
 		s.License.Encode(e)
 	}
-	if s.License.Set {
+
+	if s.Forks.Set {
 		e.Comma()
 	}
 	if s.Forks.Set {
 		e.RawStr("\"forks\"" + ":")
 		s.Forks.Encode(e)
 	}
-	if s.Forks.Set {
+
+	if s.OpenIssues.Set {
 		e.Comma()
 	}
 	if s.OpenIssues.Set {
 		e.RawStr("\"open_issues\"" + ":")
 		s.OpenIssues.Encode(e)
 	}
-	if s.OpenIssues.Set {
+
+	if s.Watchers.Set {
 		e.Comma()
 	}
 	if s.Watchers.Set {
 		e.RawStr("\"watchers\"" + ":")
 		s.Watchers.Encode(e)
 	}
-	if s.Watchers.Set {
+
+	if s.AllowForking.Set {
 		e.Comma()
 	}
 	if s.AllowForking.Set {
 		e.RawStr("\"allow_forking\"" + ":")
 		s.AllowForking.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -43707,41 +48241,64 @@ func (s *MinimalRepository) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s MinimalRepositoryLicense) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.Key.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.Key.Set {
 		e.RawStr("\"key\"" + ":")
 		s.Key.Encode(e)
 	}
-	if s.Key.Set {
-		e.Comma()
+
+	if s.Name.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Name.Set {
 		e.RawStr("\"name\"" + ":")
 		s.Name.Encode(e)
 	}
-	if s.Name.Set {
-		e.Comma()
+
+	if s.SpdxID.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.SpdxID.Set {
 		e.RawStr("\"spdx_id\"" + ":")
 		s.SpdxID.Encode(e)
 	}
-	if s.SpdxID.Set {
-		e.Comma()
+
+	if s.URL.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.URL.Set {
 		e.RawStr("\"url\"" + ":")
 		s.URL.Encode(e)
 	}
-	if s.URL.Set {
-		e.Comma()
+
+	if s.NodeID.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.NodeID.Set {
 		e.RawStr("\"node_id\"" + ":")
 		s.NodeID.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -43788,41 +48345,64 @@ func (s *MinimalRepositoryLicense) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s MinimalRepositoryPermissions) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.Admin.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.Admin.Set {
 		e.RawStr("\"admin\"" + ":")
 		s.Admin.Encode(e)
 	}
-	if s.Admin.Set {
-		e.Comma()
+
+	if s.Maintain.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Maintain.Set {
 		e.RawStr("\"maintain\"" + ":")
 		s.Maintain.Encode(e)
 	}
-	if s.Maintain.Set {
-		e.Comma()
+
+	if s.Push.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Push.Set {
 		e.RawStr("\"push\"" + ":")
 		s.Push.Encode(e)
 	}
-	if s.Push.Set {
-		e.Comma()
+
+	if s.Triage.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Triage.Set {
 		e.RawStr("\"triage\"" + ":")
 		s.Triage.Encode(e)
 	}
-	if s.Triage.Set {
-		e.Comma()
+
+	if s.Pull.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Pull.Set {
 		e.RawStr("\"pull\"" + ":")
 		s.Pull.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -44963,10 +49543,10 @@ func (o *NilURL) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s NoContent) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -44987,10 +49567,10 @@ func (s *NoContent) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s NotModified) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -45011,25 +49591,33 @@ func (s *NotModified) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s NullableCodeOfConductSimple) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"url\"" + ":")
 	json.EncodeURI(e, s.URL)
+
 	e.Comma()
 
 	e.RawStr("\"key\"" + ":")
 	e.Str(s.Key)
+
 	e.Comma()
 
 	e.RawStr("\"name\"" + ":")
 	e.Str(s.Name)
+
 	e.Comma()
 
 	e.RawStr("\"html_url\"" + ":")
 	s.HTMLURL.Encode(e)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -45072,17 +49660,23 @@ func (s *NullableCodeOfConductSimple) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s NullableCommunityHealthFile) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"url\"" + ":")
 	json.EncodeURI(e, s.URL)
+
 	e.Comma()
 
 	e.RawStr("\"html_url\"" + ":")
 	json.EncodeURI(e, s.HTMLURL)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -45115,27 +49709,42 @@ func (s *NullableCommunityHealthFile) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s NullableGitUser) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.Name.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.Name.Set {
 		e.RawStr("\"name\"" + ":")
 		s.Name.Encode(e)
 	}
-	if s.Name.Set {
-		e.Comma()
+
+	if s.Email.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Email.Set {
 		e.RawStr("\"email\"" + ":")
 		s.Email.Encode(e)
 	}
-	if s.Email.Set {
-		e.Comma()
+
+	if s.Date.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Date.Set {
 		e.RawStr("\"date\"" + ":")
 		s.Date.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -45172,20 +49781,32 @@ func (s *NullableGitUser) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s NullableIntegration) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"id\"" + ":")
 	e.Int(s.ID)
-	e.Comma()
+
+	if s.Slug.Set {
+		e.Comma()
+	}
 	if s.Slug.Set {
 		e.RawStr("\"slug\"" + ":")
 		s.Slug.Encode(e)
 	}
-	if s.Slug.Set {
-		e.Comma()
-	}
+
+	e.Comma()
 
 	e.RawStr("\"node_id\"" + ":")
 	e.Str(s.NodeID)
+
 	e.Comma()
 
 	e.RawStr("\"owner\"" + ":")
@@ -45195,6 +49816,7 @@ func (s NullableIntegration) Encode(e *jx.Writer) {
 
 	e.RawStr("\"name\"" + ":")
 	e.Str(s.Name)
+
 	e.Comma()
 
 	e.RawStr("\"description\"" + ":")
@@ -45204,18 +49826,22 @@ func (s NullableIntegration) Encode(e *jx.Writer) {
 
 	e.RawStr("\"external_url\"" + ":")
 	json.EncodeURI(e, s.ExternalURL)
+
 	e.Comma()
 
 	e.RawStr("\"html_url\"" + ":")
 	json.EncodeURI(e, s.HTMLURL)
+
 	e.Comma()
 
 	e.RawStr("\"created_at\"" + ":")
 	json.EncodeDateTime(e, s.CreatedAt)
+
 	e.Comma()
 
 	e.RawStr("\"updated_at\"" + ":")
 	json.EncodeDateTime(e, s.UpdatedAt)
+
 	e.Comma()
 
 	e.RawStr("\"permissions\"" + ":")
@@ -45238,42 +49864,44 @@ func (s NullableIntegration) Encode(e *jx.Writer) {
 	}
 	e.ArrEnd()
 
-	e.Comma()
+	if s.InstallationsCount.Set {
+		e.Comma()
+	}
 	if s.InstallationsCount.Set {
 		e.RawStr("\"installations_count\"" + ":")
 		s.InstallationsCount.Encode(e)
 	}
-	if s.InstallationsCount.Set {
+
+	if s.ClientID.Set {
 		e.Comma()
 	}
 	if s.ClientID.Set {
 		e.RawStr("\"client_id\"" + ":")
 		s.ClientID.Encode(e)
 	}
-	if s.ClientID.Set {
+
+	if s.ClientSecret.Set {
 		e.Comma()
 	}
 	if s.ClientSecret.Set {
 		e.RawStr("\"client_secret\"" + ":")
 		s.ClientSecret.Encode(e)
 	}
-	if s.ClientSecret.Set {
+
+	if s.WebhookSecret.Set {
 		e.Comma()
 	}
 	if s.WebhookSecret.Set {
 		e.RawStr("\"webhook_secret\"" + ":")
 		s.WebhookSecret.Encode(e)
 	}
-	if s.WebhookSecret.Set {
+
+	if s.Pem.Set {
 		e.Comma()
 	}
 	if s.Pem.Set {
 		e.RawStr("\"pem\"" + ":")
 		s.Pem.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -45393,41 +50021,64 @@ func (s *NullableIntegration) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s NullableIntegrationPermissions) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.Issues.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.Issues.Set {
 		e.RawStr("\"issues\"" + ":")
 		s.Issues.Encode(e)
 	}
-	if s.Issues.Set {
-		e.Comma()
+
+	if s.Checks.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Checks.Set {
 		e.RawStr("\"checks\"" + ":")
 		s.Checks.Encode(e)
 	}
-	if s.Checks.Set {
-		e.Comma()
+
+	if s.Metadata.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Metadata.Set {
 		e.RawStr("\"metadata\"" + ":")
 		s.Metadata.Encode(e)
 	}
-	if s.Metadata.Set {
-		e.Comma()
+
+	if s.Contents.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Contents.Set {
 		e.RawStr("\"contents\"" + ":")
 		s.Contents.Encode(e)
 	}
-	if s.Contents.Set {
-		e.Comma()
+
+	if s.Deployments.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Deployments.Set {
 		e.RawStr("\"deployments\"" + ":")
 		s.Deployments.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -45474,13 +50125,24 @@ func (s *NullableIntegrationPermissions) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s NullableLicenseSimple) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"key\"" + ":")
 	e.Str(s.Key)
+
 	e.Comma()
 
 	e.RawStr("\"name\"" + ":")
 	e.Str(s.Name)
+
 	e.Comma()
 
 	e.RawStr("\"url\"" + ":")
@@ -45495,14 +50157,13 @@ func (s NullableLicenseSimple) Encode(e *jx.Writer) {
 
 	e.RawStr("\"node_id\"" + ":")
 	e.Str(s.NodeID)
-	e.Comma()
+
+	if s.HTMLURL.Set {
+		e.Comma()
+	}
 	if s.HTMLURL.Set {
 		e.RawStr("\"html_url\"" + ":")
 		s.HTMLURL.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -45555,29 +50216,44 @@ func (s *NullableLicenseSimple) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s NullableMilestone) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"url\"" + ":")
 	json.EncodeURI(e, s.URL)
+
 	e.Comma()
 
 	e.RawStr("\"html_url\"" + ":")
 	json.EncodeURI(e, s.HTMLURL)
+
 	e.Comma()
 
 	e.RawStr("\"labels_url\"" + ":")
 	json.EncodeURI(e, s.LabelsURL)
+
 	e.Comma()
 
 	e.RawStr("\"id\"" + ":")
 	e.Int(s.ID)
+
 	e.Comma()
 
 	e.RawStr("\"node_id\"" + ":")
 	e.Str(s.NodeID)
+
 	e.Comma()
 
 	e.RawStr("\"number\"" + ":")
 	e.Int(s.Number)
+
 	e.Comma()
 
 	e.RawStr("\"state\"" + ":")
@@ -45587,6 +50263,7 @@ func (s NullableMilestone) Encode(e *jx.Writer) {
 
 	e.RawStr("\"title\"" + ":")
 	e.Str(s.Title)
+
 	e.Comma()
 
 	e.RawStr("\"description\"" + ":")
@@ -45601,18 +50278,22 @@ func (s NullableMilestone) Encode(e *jx.Writer) {
 
 	e.RawStr("\"open_issues\"" + ":")
 	e.Int(s.OpenIssues)
+
 	e.Comma()
 
 	e.RawStr("\"closed_issues\"" + ":")
 	e.Int(s.ClosedIssues)
+
 	e.Comma()
 
 	e.RawStr("\"created_at\"" + ":")
 	json.EncodeDateTime(e, s.CreatedAt)
+
 	e.Comma()
 
 	e.RawStr("\"updated_at\"" + ":")
 	json.EncodeDateTime(e, s.UpdatedAt)
+
 	e.Comma()
 
 	e.RawStr("\"closed_at\"" + ":")
@@ -45622,10 +50303,6 @@ func (s NullableMilestone) Encode(e *jx.Writer) {
 
 	e.RawStr("\"due_on\"" + ":")
 	s.DueOn.Encode(e, json.EncodeDateTime)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -45759,21 +50436,34 @@ func (s *NullableMilestoneState) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s NullableMinimalRepository) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"id\"" + ":")
 	e.Int(s.ID)
+
 	e.Comma()
 
 	e.RawStr("\"node_id\"" + ":")
 	e.Str(s.NodeID)
+
 	e.Comma()
 
 	e.RawStr("\"name\"" + ":")
 	e.Str(s.Name)
+
 	e.Comma()
 
 	e.RawStr("\"full_name\"" + ":")
 	e.Str(s.FullName)
+
 	e.Comma()
 
 	e.RawStr("\"owner\"" + ":")
@@ -45783,10 +50473,12 @@ func (s NullableMinimalRepository) Encode(e *jx.Writer) {
 
 	e.RawStr("\"private\"" + ":")
 	e.Bool(s.Private)
+
 	e.Comma()
 
 	e.RawStr("\"html_url\"" + ":")
 	json.EncodeURI(e, s.HTMLURL)
+
 	e.Comma()
 
 	e.RawStr("\"description\"" + ":")
@@ -45796,251 +50488,305 @@ func (s NullableMinimalRepository) Encode(e *jx.Writer) {
 
 	e.RawStr("\"fork\"" + ":")
 	e.Bool(s.Fork)
+
 	e.Comma()
 
 	e.RawStr("\"url\"" + ":")
 	json.EncodeURI(e, s.URL)
+
 	e.Comma()
 
 	e.RawStr("\"archive_url\"" + ":")
 	e.Str(s.ArchiveURL)
+
 	e.Comma()
 
 	e.RawStr("\"assignees_url\"" + ":")
 	e.Str(s.AssigneesURL)
+
 	e.Comma()
 
 	e.RawStr("\"blobs_url\"" + ":")
 	e.Str(s.BlobsURL)
+
 	e.Comma()
 
 	e.RawStr("\"branches_url\"" + ":")
 	e.Str(s.BranchesURL)
+
 	e.Comma()
 
 	e.RawStr("\"collaborators_url\"" + ":")
 	e.Str(s.CollaboratorsURL)
+
 	e.Comma()
 
 	e.RawStr("\"comments_url\"" + ":")
 	e.Str(s.CommentsURL)
+
 	e.Comma()
 
 	e.RawStr("\"commits_url\"" + ":")
 	e.Str(s.CommitsURL)
+
 	e.Comma()
 
 	e.RawStr("\"compare_url\"" + ":")
 	e.Str(s.CompareURL)
+
 	e.Comma()
 
 	e.RawStr("\"contents_url\"" + ":")
 	e.Str(s.ContentsURL)
+
 	e.Comma()
 
 	e.RawStr("\"contributors_url\"" + ":")
 	json.EncodeURI(e, s.ContributorsURL)
+
 	e.Comma()
 
 	e.RawStr("\"deployments_url\"" + ":")
 	json.EncodeURI(e, s.DeploymentsURL)
+
 	e.Comma()
 
 	e.RawStr("\"downloads_url\"" + ":")
 	json.EncodeURI(e, s.DownloadsURL)
+
 	e.Comma()
 
 	e.RawStr("\"events_url\"" + ":")
 	json.EncodeURI(e, s.EventsURL)
+
 	e.Comma()
 
 	e.RawStr("\"forks_url\"" + ":")
 	json.EncodeURI(e, s.ForksURL)
+
 	e.Comma()
 
 	e.RawStr("\"git_commits_url\"" + ":")
 	e.Str(s.GitCommitsURL)
+
 	e.Comma()
 
 	e.RawStr("\"git_refs_url\"" + ":")
 	e.Str(s.GitRefsURL)
+
 	e.Comma()
 
 	e.RawStr("\"git_tags_url\"" + ":")
 	e.Str(s.GitTagsURL)
-	e.Comma()
+
+	if s.GitURL.Set {
+		e.Comma()
+	}
 	if s.GitURL.Set {
 		e.RawStr("\"git_url\"" + ":")
 		s.GitURL.Encode(e)
 	}
-	if s.GitURL.Set {
-		e.Comma()
-	}
+
+	e.Comma()
 
 	e.RawStr("\"issue_comment_url\"" + ":")
 	e.Str(s.IssueCommentURL)
+
 	e.Comma()
 
 	e.RawStr("\"issue_events_url\"" + ":")
 	e.Str(s.IssueEventsURL)
+
 	e.Comma()
 
 	e.RawStr("\"issues_url\"" + ":")
 	e.Str(s.IssuesURL)
+
 	e.Comma()
 
 	e.RawStr("\"keys_url\"" + ":")
 	e.Str(s.KeysURL)
+
 	e.Comma()
 
 	e.RawStr("\"labels_url\"" + ":")
 	e.Str(s.LabelsURL)
+
 	e.Comma()
 
 	e.RawStr("\"languages_url\"" + ":")
 	json.EncodeURI(e, s.LanguagesURL)
+
 	e.Comma()
 
 	e.RawStr("\"merges_url\"" + ":")
 	json.EncodeURI(e, s.MergesURL)
+
 	e.Comma()
 
 	e.RawStr("\"milestones_url\"" + ":")
 	e.Str(s.MilestonesURL)
+
 	e.Comma()
 
 	e.RawStr("\"notifications_url\"" + ":")
 	e.Str(s.NotificationsURL)
+
 	e.Comma()
 
 	e.RawStr("\"pulls_url\"" + ":")
 	e.Str(s.PullsURL)
+
 	e.Comma()
 
 	e.RawStr("\"releases_url\"" + ":")
 	e.Str(s.ReleasesURL)
-	e.Comma()
+
+	if s.SSHURL.Set {
+		e.Comma()
+	}
 	if s.SSHURL.Set {
 		e.RawStr("\"ssh_url\"" + ":")
 		s.SSHURL.Encode(e)
 	}
-	if s.SSHURL.Set {
-		e.Comma()
-	}
+
+	e.Comma()
 
 	e.RawStr("\"stargazers_url\"" + ":")
 	json.EncodeURI(e, s.StargazersURL)
+
 	e.Comma()
 
 	e.RawStr("\"statuses_url\"" + ":")
 	e.Str(s.StatusesURL)
+
 	e.Comma()
 
 	e.RawStr("\"subscribers_url\"" + ":")
 	json.EncodeURI(e, s.SubscribersURL)
+
 	e.Comma()
 
 	e.RawStr("\"subscription_url\"" + ":")
 	json.EncodeURI(e, s.SubscriptionURL)
+
 	e.Comma()
 
 	e.RawStr("\"tags_url\"" + ":")
 	json.EncodeURI(e, s.TagsURL)
+
 	e.Comma()
 
 	e.RawStr("\"teams_url\"" + ":")
 	json.EncodeURI(e, s.TeamsURL)
+
 	e.Comma()
 
 	e.RawStr("\"trees_url\"" + ":")
 	e.Str(s.TreesURL)
-	e.Comma()
+
+	if s.CloneURL.Set {
+		e.Comma()
+	}
 	if s.CloneURL.Set {
 		e.RawStr("\"clone_url\"" + ":")
 		s.CloneURL.Encode(e)
 	}
-	if s.CloneURL.Set {
+
+	if s.MirrorURL.Set {
 		e.Comma()
 	}
 	if s.MirrorURL.Set {
 		e.RawStr("\"mirror_url\"" + ":")
 		s.MirrorURL.Encode(e)
 	}
-	if s.MirrorURL.Set {
-		e.Comma()
-	}
+
+	e.Comma()
 
 	e.RawStr("\"hooks_url\"" + ":")
 	json.EncodeURI(e, s.HooksURL)
-	e.Comma()
+
+	if s.SvnURL.Set {
+		e.Comma()
+	}
 	if s.SvnURL.Set {
 		e.RawStr("\"svn_url\"" + ":")
 		s.SvnURL.Encode(e)
 	}
-	if s.SvnURL.Set {
+
+	if s.Homepage.Set {
 		e.Comma()
 	}
 	if s.Homepage.Set {
 		e.RawStr("\"homepage\"" + ":")
 		s.Homepage.Encode(e)
 	}
-	if s.Homepage.Set {
+
+	if s.Language.Set {
 		e.Comma()
 	}
 	if s.Language.Set {
 		e.RawStr("\"language\"" + ":")
 		s.Language.Encode(e)
 	}
-	if s.Language.Set {
+
+	if s.ForksCount.Set {
 		e.Comma()
 	}
 	if s.ForksCount.Set {
 		e.RawStr("\"forks_count\"" + ":")
 		s.ForksCount.Encode(e)
 	}
-	if s.ForksCount.Set {
+
+	if s.StargazersCount.Set {
 		e.Comma()
 	}
 	if s.StargazersCount.Set {
 		e.RawStr("\"stargazers_count\"" + ":")
 		s.StargazersCount.Encode(e)
 	}
-	if s.StargazersCount.Set {
+
+	if s.WatchersCount.Set {
 		e.Comma()
 	}
 	if s.WatchersCount.Set {
 		e.RawStr("\"watchers_count\"" + ":")
 		s.WatchersCount.Encode(e)
 	}
-	if s.WatchersCount.Set {
+
+	if s.Size.Set {
 		e.Comma()
 	}
 	if s.Size.Set {
 		e.RawStr("\"size\"" + ":")
 		s.Size.Encode(e)
 	}
-	if s.Size.Set {
+
+	if s.DefaultBranch.Set {
 		e.Comma()
 	}
 	if s.DefaultBranch.Set {
 		e.RawStr("\"default_branch\"" + ":")
 		s.DefaultBranch.Encode(e)
 	}
-	if s.DefaultBranch.Set {
+
+	if s.OpenIssuesCount.Set {
 		e.Comma()
 	}
 	if s.OpenIssuesCount.Set {
 		e.RawStr("\"open_issues_count\"" + ":")
 		s.OpenIssuesCount.Encode(e)
 	}
-	if s.OpenIssuesCount.Set {
+
+	if s.IsTemplate.Set {
 		e.Comma()
 	}
 	if s.IsTemplate.Set {
 		e.RawStr("\"is_template\"" + ":")
 		s.IsTemplate.Encode(e)
 	}
-	if s.IsTemplate.Set {
+
+	if s.Topics != nil {
 		e.Comma()
 	}
 	if s.Topics != nil {
@@ -46059,170 +50805,189 @@ func (s NullableMinimalRepository) Encode(e *jx.Writer) {
 		}
 		e.ArrEnd()
 	}
-	if s.Topics != nil {
+
+	if s.HasIssues.Set {
 		e.Comma()
 	}
 	if s.HasIssues.Set {
 		e.RawStr("\"has_issues\"" + ":")
 		s.HasIssues.Encode(e)
 	}
-	if s.HasIssues.Set {
+
+	if s.HasProjects.Set {
 		e.Comma()
 	}
 	if s.HasProjects.Set {
 		e.RawStr("\"has_projects\"" + ":")
 		s.HasProjects.Encode(e)
 	}
-	if s.HasProjects.Set {
+
+	if s.HasWiki.Set {
 		e.Comma()
 	}
 	if s.HasWiki.Set {
 		e.RawStr("\"has_wiki\"" + ":")
 		s.HasWiki.Encode(e)
 	}
-	if s.HasWiki.Set {
+
+	if s.HasPages.Set {
 		e.Comma()
 	}
 	if s.HasPages.Set {
 		e.RawStr("\"has_pages\"" + ":")
 		s.HasPages.Encode(e)
 	}
-	if s.HasPages.Set {
+
+	if s.HasDownloads.Set {
 		e.Comma()
 	}
 	if s.HasDownloads.Set {
 		e.RawStr("\"has_downloads\"" + ":")
 		s.HasDownloads.Encode(e)
 	}
-	if s.HasDownloads.Set {
+
+	if s.Archived.Set {
 		e.Comma()
 	}
 	if s.Archived.Set {
 		e.RawStr("\"archived\"" + ":")
 		s.Archived.Encode(e)
 	}
-	if s.Archived.Set {
+
+	if s.Disabled.Set {
 		e.Comma()
 	}
 	if s.Disabled.Set {
 		e.RawStr("\"disabled\"" + ":")
 		s.Disabled.Encode(e)
 	}
-	if s.Disabled.Set {
+
+	if s.Visibility.Set {
 		e.Comma()
 	}
 	if s.Visibility.Set {
 		e.RawStr("\"visibility\"" + ":")
 		s.Visibility.Encode(e)
 	}
-	if s.Visibility.Set {
+
+	if s.PushedAt.Set {
 		e.Comma()
 	}
 	if s.PushedAt.Set {
 		e.RawStr("\"pushed_at\"" + ":")
 		s.PushedAt.Encode(e, json.EncodeDateTime)
 	}
-	if s.PushedAt.Set {
+
+	if s.CreatedAt.Set {
 		e.Comma()
 	}
 	if s.CreatedAt.Set {
 		e.RawStr("\"created_at\"" + ":")
 		s.CreatedAt.Encode(e, json.EncodeDateTime)
 	}
-	if s.CreatedAt.Set {
+
+	if s.UpdatedAt.Set {
 		e.Comma()
 	}
 	if s.UpdatedAt.Set {
 		e.RawStr("\"updated_at\"" + ":")
 		s.UpdatedAt.Encode(e, json.EncodeDateTime)
 	}
-	if s.UpdatedAt.Set {
+
+	if s.Permissions.Set {
 		e.Comma()
 	}
 	if s.Permissions.Set {
 		e.RawStr("\"permissions\"" + ":")
 		s.Permissions.Encode(e)
 	}
-	if s.Permissions.Set {
+
+	if s.TemplateRepository.Set {
 		e.Comma()
 	}
 	if s.TemplateRepository.Set {
 		e.RawStr("\"template_repository\"" + ":")
 		s.TemplateRepository.Encode(e)
 	}
-	if s.TemplateRepository.Set {
+
+	if s.TempCloneToken.Set {
 		e.Comma()
 	}
 	if s.TempCloneToken.Set {
 		e.RawStr("\"temp_clone_token\"" + ":")
 		s.TempCloneToken.Encode(e)
 	}
-	if s.TempCloneToken.Set {
+
+	if s.DeleteBranchOnMerge.Set {
 		e.Comma()
 	}
 	if s.DeleteBranchOnMerge.Set {
 		e.RawStr("\"delete_branch_on_merge\"" + ":")
 		s.DeleteBranchOnMerge.Encode(e)
 	}
-	if s.DeleteBranchOnMerge.Set {
+
+	if s.SubscribersCount.Set {
 		e.Comma()
 	}
 	if s.SubscribersCount.Set {
 		e.RawStr("\"subscribers_count\"" + ":")
 		s.SubscribersCount.Encode(e)
 	}
-	if s.SubscribersCount.Set {
+
+	if s.NetworkCount.Set {
 		e.Comma()
 	}
 	if s.NetworkCount.Set {
 		e.RawStr("\"network_count\"" + ":")
 		s.NetworkCount.Encode(e)
 	}
-	if s.NetworkCount.Set {
+
+	if s.CodeOfConduct.Set {
 		e.Comma()
 	}
 	if s.CodeOfConduct.Set {
 		e.RawStr("\"code_of_conduct\"" + ":")
 		s.CodeOfConduct.Encode(e)
 	}
-	if s.CodeOfConduct.Set {
+
+	if s.License.Set {
 		e.Comma()
 	}
 	if s.License.Set {
 		e.RawStr("\"license\"" + ":")
 		s.License.Encode(e)
 	}
-	if s.License.Set {
+
+	if s.Forks.Set {
 		e.Comma()
 	}
 	if s.Forks.Set {
 		e.RawStr("\"forks\"" + ":")
 		s.Forks.Encode(e)
 	}
-	if s.Forks.Set {
+
+	if s.OpenIssues.Set {
 		e.Comma()
 	}
 	if s.OpenIssues.Set {
 		e.RawStr("\"open_issues\"" + ":")
 		s.OpenIssues.Encode(e)
 	}
-	if s.OpenIssues.Set {
+
+	if s.Watchers.Set {
 		e.Comma()
 	}
 	if s.Watchers.Set {
 		e.RawStr("\"watchers\"" + ":")
 		s.Watchers.Encode(e)
 	}
-	if s.Watchers.Set {
+
+	if s.AllowForking.Set {
 		e.Comma()
 	}
 	if s.AllowForking.Set {
 		e.RawStr("\"allow_forking\"" + ":")
 		s.AllowForking.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -46715,41 +51480,64 @@ func (s *NullableMinimalRepository) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s NullableMinimalRepositoryLicense) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.Key.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.Key.Set {
 		e.RawStr("\"key\"" + ":")
 		s.Key.Encode(e)
 	}
-	if s.Key.Set {
-		e.Comma()
+
+	if s.Name.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Name.Set {
 		e.RawStr("\"name\"" + ":")
 		s.Name.Encode(e)
 	}
-	if s.Name.Set {
-		e.Comma()
+
+	if s.SpdxID.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.SpdxID.Set {
 		e.RawStr("\"spdx_id\"" + ":")
 		s.SpdxID.Encode(e)
 	}
-	if s.SpdxID.Set {
-		e.Comma()
+
+	if s.URL.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.URL.Set {
 		e.RawStr("\"url\"" + ":")
 		s.URL.Encode(e)
 	}
-	if s.URL.Set {
-		e.Comma()
+
+	if s.NodeID.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.NodeID.Set {
 		e.RawStr("\"node_id\"" + ":")
 		s.NodeID.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -46796,41 +51584,64 @@ func (s *NullableMinimalRepositoryLicense) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s NullableMinimalRepositoryPermissions) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.Admin.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.Admin.Set {
 		e.RawStr("\"admin\"" + ":")
 		s.Admin.Encode(e)
 	}
-	if s.Admin.Set {
-		e.Comma()
+
+	if s.Maintain.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Maintain.Set {
 		e.RawStr("\"maintain\"" + ":")
 		s.Maintain.Encode(e)
 	}
-	if s.Maintain.Set {
-		e.Comma()
+
+	if s.Push.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Push.Set {
 		e.RawStr("\"push\"" + ":")
 		s.Push.Encode(e)
 	}
-	if s.Push.Set {
-		e.Comma()
+
+	if s.Triage.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Triage.Set {
 		e.RawStr("\"triage\"" + ":")
 		s.Triage.Encode(e)
 	}
-	if s.Triage.Set {
-		e.Comma()
+
+	if s.Pull.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Pull.Set {
 		e.RawStr("\"pull\"" + ":")
 		s.Pull.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -46877,45 +51688,61 @@ func (s *NullableMinimalRepositoryPermissions) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s NullableRepository) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"id\"" + ":")
 	e.Int(s.ID)
+
 	e.Comma()
 
 	e.RawStr("\"node_id\"" + ":")
 	e.Str(s.NodeID)
+
 	e.Comma()
 
 	e.RawStr("\"name\"" + ":")
 	e.Str(s.Name)
+
 	e.Comma()
 
 	e.RawStr("\"full_name\"" + ":")
 	e.Str(s.FullName)
+
 	e.Comma()
 
 	e.RawStr("\"license\"" + ":")
 	s.License.Encode(e)
 
-	e.Comma()
+	if s.Organization.Set {
+		e.Comma()
+	}
 	if s.Organization.Set {
 		e.RawStr("\"organization\"" + ":")
 		s.Organization.Encode(e)
 	}
-	if s.Organization.Set {
-		e.Comma()
-	}
+
+	e.Comma()
 
 	e.RawStr("\"forks\"" + ":")
 	e.Int(s.Forks)
-	e.Comma()
+
+	if s.Permissions.Set {
+		e.Comma()
+	}
 	if s.Permissions.Set {
 		e.RawStr("\"permissions\"" + ":")
 		s.Permissions.Encode(e)
 	}
-	if s.Permissions.Set {
-		e.Comma()
-	}
+
+	e.Comma()
 
 	e.RawStr("\"owner\"" + ":")
 	s.Owner.Encode(e)
@@ -46924,10 +51751,12 @@ func (s NullableRepository) Encode(e *jx.Writer) {
 
 	e.RawStr("\"private\"" + ":")
 	e.Bool(s.Private)
+
 	e.Comma()
 
 	e.RawStr("\"html_url\"" + ":")
 	json.EncodeURI(e, s.HTMLURL)
+
 	e.Comma()
 
 	e.RawStr("\"description\"" + ":")
@@ -46937,162 +51766,202 @@ func (s NullableRepository) Encode(e *jx.Writer) {
 
 	e.RawStr("\"fork\"" + ":")
 	e.Bool(s.Fork)
+
 	e.Comma()
 
 	e.RawStr("\"url\"" + ":")
 	json.EncodeURI(e, s.URL)
+
 	e.Comma()
 
 	e.RawStr("\"archive_url\"" + ":")
 	e.Str(s.ArchiveURL)
+
 	e.Comma()
 
 	e.RawStr("\"assignees_url\"" + ":")
 	e.Str(s.AssigneesURL)
+
 	e.Comma()
 
 	e.RawStr("\"blobs_url\"" + ":")
 	e.Str(s.BlobsURL)
+
 	e.Comma()
 
 	e.RawStr("\"branches_url\"" + ":")
 	e.Str(s.BranchesURL)
+
 	e.Comma()
 
 	e.RawStr("\"collaborators_url\"" + ":")
 	e.Str(s.CollaboratorsURL)
+
 	e.Comma()
 
 	e.RawStr("\"comments_url\"" + ":")
 	e.Str(s.CommentsURL)
+
 	e.Comma()
 
 	e.RawStr("\"commits_url\"" + ":")
 	e.Str(s.CommitsURL)
+
 	e.Comma()
 
 	e.RawStr("\"compare_url\"" + ":")
 	e.Str(s.CompareURL)
+
 	e.Comma()
 
 	e.RawStr("\"contents_url\"" + ":")
 	e.Str(s.ContentsURL)
+
 	e.Comma()
 
 	e.RawStr("\"contributors_url\"" + ":")
 	json.EncodeURI(e, s.ContributorsURL)
+
 	e.Comma()
 
 	e.RawStr("\"deployments_url\"" + ":")
 	json.EncodeURI(e, s.DeploymentsURL)
+
 	e.Comma()
 
 	e.RawStr("\"downloads_url\"" + ":")
 	json.EncodeURI(e, s.DownloadsURL)
+
 	e.Comma()
 
 	e.RawStr("\"events_url\"" + ":")
 	json.EncodeURI(e, s.EventsURL)
+
 	e.Comma()
 
 	e.RawStr("\"forks_url\"" + ":")
 	json.EncodeURI(e, s.ForksURL)
+
 	e.Comma()
 
 	e.RawStr("\"git_commits_url\"" + ":")
 	e.Str(s.GitCommitsURL)
+
 	e.Comma()
 
 	e.RawStr("\"git_refs_url\"" + ":")
 	e.Str(s.GitRefsURL)
+
 	e.Comma()
 
 	e.RawStr("\"git_tags_url\"" + ":")
 	e.Str(s.GitTagsURL)
+
 	e.Comma()
 
 	e.RawStr("\"git_url\"" + ":")
 	e.Str(s.GitURL)
+
 	e.Comma()
 
 	e.RawStr("\"issue_comment_url\"" + ":")
 	e.Str(s.IssueCommentURL)
+
 	e.Comma()
 
 	e.RawStr("\"issue_events_url\"" + ":")
 	e.Str(s.IssueEventsURL)
+
 	e.Comma()
 
 	e.RawStr("\"issues_url\"" + ":")
 	e.Str(s.IssuesURL)
+
 	e.Comma()
 
 	e.RawStr("\"keys_url\"" + ":")
 	e.Str(s.KeysURL)
+
 	e.Comma()
 
 	e.RawStr("\"labels_url\"" + ":")
 	e.Str(s.LabelsURL)
+
 	e.Comma()
 
 	e.RawStr("\"languages_url\"" + ":")
 	json.EncodeURI(e, s.LanguagesURL)
+
 	e.Comma()
 
 	e.RawStr("\"merges_url\"" + ":")
 	json.EncodeURI(e, s.MergesURL)
+
 	e.Comma()
 
 	e.RawStr("\"milestones_url\"" + ":")
 	e.Str(s.MilestonesURL)
+
 	e.Comma()
 
 	e.RawStr("\"notifications_url\"" + ":")
 	e.Str(s.NotificationsURL)
+
 	e.Comma()
 
 	e.RawStr("\"pulls_url\"" + ":")
 	e.Str(s.PullsURL)
+
 	e.Comma()
 
 	e.RawStr("\"releases_url\"" + ":")
 	e.Str(s.ReleasesURL)
+
 	e.Comma()
 
 	e.RawStr("\"ssh_url\"" + ":")
 	e.Str(s.SSHURL)
+
 	e.Comma()
 
 	e.RawStr("\"stargazers_url\"" + ":")
 	json.EncodeURI(e, s.StargazersURL)
+
 	e.Comma()
 
 	e.RawStr("\"statuses_url\"" + ":")
 	e.Str(s.StatusesURL)
+
 	e.Comma()
 
 	e.RawStr("\"subscribers_url\"" + ":")
 	json.EncodeURI(e, s.SubscribersURL)
+
 	e.Comma()
 
 	e.RawStr("\"subscription_url\"" + ":")
 	json.EncodeURI(e, s.SubscriptionURL)
+
 	e.Comma()
 
 	e.RawStr("\"tags_url\"" + ":")
 	json.EncodeURI(e, s.TagsURL)
+
 	e.Comma()
 
 	e.RawStr("\"teams_url\"" + ":")
 	json.EncodeURI(e, s.TeamsURL)
+
 	e.Comma()
 
 	e.RawStr("\"trees_url\"" + ":")
 	e.Str(s.TreesURL)
+
 	e.Comma()
 
 	e.RawStr("\"clone_url\"" + ":")
 	e.Str(s.CloneURL)
+
 	e.Comma()
 
 	e.RawStr("\"mirror_url\"" + ":")
@@ -47102,10 +51971,12 @@ func (s NullableRepository) Encode(e *jx.Writer) {
 
 	e.RawStr("\"hooks_url\"" + ":")
 	json.EncodeURI(e, s.HooksURL)
+
 	e.Comma()
 
 	e.RawStr("\"svn_url\"" + ":")
 	json.EncodeURI(e, s.SvnURL)
+
 	e.Comma()
 
 	e.RawStr("\"homepage\"" + ":")
@@ -47120,32 +51991,41 @@ func (s NullableRepository) Encode(e *jx.Writer) {
 
 	e.RawStr("\"forks_count\"" + ":")
 	e.Int(s.ForksCount)
+
 	e.Comma()
 
 	e.RawStr("\"stargazers_count\"" + ":")
 	e.Int(s.StargazersCount)
+
 	e.Comma()
 
 	e.RawStr("\"watchers_count\"" + ":")
 	e.Int(s.WatchersCount)
+
 	e.Comma()
 
 	e.RawStr("\"size\"" + ":")
 	e.Int(s.Size)
+
 	e.Comma()
 
 	e.RawStr("\"default_branch\"" + ":")
 	e.Str(s.DefaultBranch)
+
 	e.Comma()
 
 	e.RawStr("\"open_issues_count\"" + ":")
 	e.Int(s.OpenIssuesCount)
-	e.Comma()
+
+	if s.IsTemplate.Set {
+		e.Comma()
+	}
 	if s.IsTemplate.Set {
 		e.RawStr("\"is_template\"" + ":")
 		s.IsTemplate.Encode(e)
 	}
-	if s.IsTemplate.Set {
+
+	if s.Topics != nil {
 		e.Comma()
 	}
 	if s.Topics != nil {
@@ -47164,44 +52044,51 @@ func (s NullableRepository) Encode(e *jx.Writer) {
 		}
 		e.ArrEnd()
 	}
-	if s.Topics != nil {
-		e.Comma()
-	}
+
+	e.Comma()
 
 	e.RawStr("\"has_issues\"" + ":")
 	e.Bool(s.HasIssues)
+
 	e.Comma()
 
 	e.RawStr("\"has_projects\"" + ":")
 	e.Bool(s.HasProjects)
+
 	e.Comma()
 
 	e.RawStr("\"has_wiki\"" + ":")
 	e.Bool(s.HasWiki)
+
 	e.Comma()
 
 	e.RawStr("\"has_pages\"" + ":")
 	e.Bool(s.HasPages)
+
 	e.Comma()
 
 	e.RawStr("\"has_downloads\"" + ":")
 	e.Bool(s.HasDownloads)
+
 	e.Comma()
 
 	e.RawStr("\"archived\"" + ":")
 	e.Bool(s.Archived)
+
 	e.Comma()
 
 	e.RawStr("\"disabled\"" + ":")
 	e.Bool(s.Disabled)
-	e.Comma()
+
+	if s.Visibility.Set {
+		e.Comma()
+	}
 	if s.Visibility.Set {
 		e.RawStr("\"visibility\"" + ":")
 		s.Visibility.Encode(e)
 	}
-	if s.Visibility.Set {
-		e.Comma()
-	}
+
+	e.Comma()
 
 	e.RawStr("\"pushed_at\"" + ":")
 	s.PushedAt.Encode(e, json.EncodeDateTime)
@@ -47216,99 +52103,110 @@ func (s NullableRepository) Encode(e *jx.Writer) {
 	e.RawStr("\"updated_at\"" + ":")
 	s.UpdatedAt.Encode(e, json.EncodeDateTime)
 
-	e.Comma()
+	if s.AllowRebaseMerge.Set {
+		e.Comma()
+	}
 	if s.AllowRebaseMerge.Set {
 		e.RawStr("\"allow_rebase_merge\"" + ":")
 		s.AllowRebaseMerge.Encode(e)
 	}
-	if s.AllowRebaseMerge.Set {
+
+	if s.TemplateRepository.Set {
 		e.Comma()
 	}
 	if s.TemplateRepository.Set {
 		e.RawStr("\"template_repository\"" + ":")
 		s.TemplateRepository.Encode(e)
 	}
-	if s.TemplateRepository.Set {
+
+	if s.TempCloneToken.Set {
 		e.Comma()
 	}
 	if s.TempCloneToken.Set {
 		e.RawStr("\"temp_clone_token\"" + ":")
 		s.TempCloneToken.Encode(e)
 	}
-	if s.TempCloneToken.Set {
+
+	if s.AllowSquashMerge.Set {
 		e.Comma()
 	}
 	if s.AllowSquashMerge.Set {
 		e.RawStr("\"allow_squash_merge\"" + ":")
 		s.AllowSquashMerge.Encode(e)
 	}
-	if s.AllowSquashMerge.Set {
+
+	if s.AllowAutoMerge.Set {
 		e.Comma()
 	}
 	if s.AllowAutoMerge.Set {
 		e.RawStr("\"allow_auto_merge\"" + ":")
 		s.AllowAutoMerge.Encode(e)
 	}
-	if s.AllowAutoMerge.Set {
+
+	if s.DeleteBranchOnMerge.Set {
 		e.Comma()
 	}
 	if s.DeleteBranchOnMerge.Set {
 		e.RawStr("\"delete_branch_on_merge\"" + ":")
 		s.DeleteBranchOnMerge.Encode(e)
 	}
-	if s.DeleteBranchOnMerge.Set {
+
+	if s.AllowMergeCommit.Set {
 		e.Comma()
 	}
 	if s.AllowMergeCommit.Set {
 		e.RawStr("\"allow_merge_commit\"" + ":")
 		s.AllowMergeCommit.Encode(e)
 	}
-	if s.AllowMergeCommit.Set {
+
+	if s.AllowForking.Set {
 		e.Comma()
 	}
 	if s.AllowForking.Set {
 		e.RawStr("\"allow_forking\"" + ":")
 		s.AllowForking.Encode(e)
 	}
-	if s.AllowForking.Set {
+
+	if s.SubscribersCount.Set {
 		e.Comma()
 	}
 	if s.SubscribersCount.Set {
 		e.RawStr("\"subscribers_count\"" + ":")
 		s.SubscribersCount.Encode(e)
 	}
-	if s.SubscribersCount.Set {
+
+	if s.NetworkCount.Set {
 		e.Comma()
 	}
 	if s.NetworkCount.Set {
 		e.RawStr("\"network_count\"" + ":")
 		s.NetworkCount.Encode(e)
 	}
-	if s.NetworkCount.Set {
-		e.Comma()
-	}
+
+	e.Comma()
 
 	e.RawStr("\"open_issues\"" + ":")
 	e.Int(s.OpenIssues)
+
 	e.Comma()
 
 	e.RawStr("\"watchers\"" + ":")
 	e.Int(s.Watchers)
-	e.Comma()
+
+	if s.MasterBranch.Set {
+		e.Comma()
+	}
 	if s.MasterBranch.Set {
 		e.RawStr("\"master_branch\"" + ":")
 		s.MasterBranch.Encode(e)
 	}
-	if s.MasterBranch.Set {
+
+	if s.StarredAt.Set {
 		e.Comma()
 	}
 	if s.StarredAt.Set {
 		e.RawStr("\"starred_at\"" + ":")
 		s.StarredAt.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -47844,32 +52742,43 @@ func (s *NullableRepository) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s NullableRepositoryPermissions) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"admin\"" + ":")
 	e.Bool(s.Admin)
+
 	e.Comma()
 
 	e.RawStr("\"pull\"" + ":")
 	e.Bool(s.Pull)
-	e.Comma()
+
+	if s.Triage.Set {
+		e.Comma()
+	}
 	if s.Triage.Set {
 		e.RawStr("\"triage\"" + ":")
 		s.Triage.Encode(e)
 	}
-	if s.Triage.Set {
-		e.Comma()
-	}
+
+	e.Comma()
 
 	e.RawStr("\"push\"" + ":")
 	e.Bool(s.Push)
-	e.Comma()
+
+	if s.Maintain.Set {
+		e.Comma()
+	}
 	if s.Maintain.Set {
 		e.RawStr("\"maintain\"" + ":")
 		s.Maintain.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -47919,425 +52828,676 @@ func (s *NullableRepositoryPermissions) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s NullableRepositoryTemplateRepository) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.ID.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.ID.Set {
 		e.RawStr("\"id\"" + ":")
 		s.ID.Encode(e)
 	}
-	if s.ID.Set {
-		e.Comma()
+
+	if s.NodeID.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.NodeID.Set {
 		e.RawStr("\"node_id\"" + ":")
 		s.NodeID.Encode(e)
 	}
-	if s.NodeID.Set {
-		e.Comma()
+
+	if s.Name.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Name.Set {
 		e.RawStr("\"name\"" + ":")
 		s.Name.Encode(e)
 	}
-	if s.Name.Set {
-		e.Comma()
+
+	if s.FullName.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.FullName.Set {
 		e.RawStr("\"full_name\"" + ":")
 		s.FullName.Encode(e)
 	}
-	if s.FullName.Set {
-		e.Comma()
+
+	if s.Owner.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Owner.Set {
 		e.RawStr("\"owner\"" + ":")
 		s.Owner.Encode(e)
 	}
-	if s.Owner.Set {
-		e.Comma()
+
+	if s.Private.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Private.Set {
 		e.RawStr("\"private\"" + ":")
 		s.Private.Encode(e)
 	}
-	if s.Private.Set {
-		e.Comma()
+
+	if s.HTMLURL.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.HTMLURL.Set {
 		e.RawStr("\"html_url\"" + ":")
 		s.HTMLURL.Encode(e)
 	}
-	if s.HTMLURL.Set {
-		e.Comma()
+
+	if s.Description.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Description.Set {
 		e.RawStr("\"description\"" + ":")
 		s.Description.Encode(e)
 	}
-	if s.Description.Set {
-		e.Comma()
+
+	if s.Fork.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Fork.Set {
 		e.RawStr("\"fork\"" + ":")
 		s.Fork.Encode(e)
 	}
-	if s.Fork.Set {
-		e.Comma()
+
+	if s.URL.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.URL.Set {
 		e.RawStr("\"url\"" + ":")
 		s.URL.Encode(e)
 	}
-	if s.URL.Set {
-		e.Comma()
+
+	if s.ArchiveURL.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.ArchiveURL.Set {
 		e.RawStr("\"archive_url\"" + ":")
 		s.ArchiveURL.Encode(e)
 	}
-	if s.ArchiveURL.Set {
-		e.Comma()
+
+	if s.AssigneesURL.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.AssigneesURL.Set {
 		e.RawStr("\"assignees_url\"" + ":")
 		s.AssigneesURL.Encode(e)
 	}
-	if s.AssigneesURL.Set {
-		e.Comma()
+
+	if s.BlobsURL.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.BlobsURL.Set {
 		e.RawStr("\"blobs_url\"" + ":")
 		s.BlobsURL.Encode(e)
 	}
-	if s.BlobsURL.Set {
-		e.Comma()
+
+	if s.BranchesURL.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.BranchesURL.Set {
 		e.RawStr("\"branches_url\"" + ":")
 		s.BranchesURL.Encode(e)
 	}
-	if s.BranchesURL.Set {
-		e.Comma()
+
+	if s.CollaboratorsURL.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.CollaboratorsURL.Set {
 		e.RawStr("\"collaborators_url\"" + ":")
 		s.CollaboratorsURL.Encode(e)
 	}
-	if s.CollaboratorsURL.Set {
-		e.Comma()
+
+	if s.CommentsURL.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.CommentsURL.Set {
 		e.RawStr("\"comments_url\"" + ":")
 		s.CommentsURL.Encode(e)
 	}
-	if s.CommentsURL.Set {
-		e.Comma()
+
+	if s.CommitsURL.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.CommitsURL.Set {
 		e.RawStr("\"commits_url\"" + ":")
 		s.CommitsURL.Encode(e)
 	}
-	if s.CommitsURL.Set {
-		e.Comma()
+
+	if s.CompareURL.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.CompareURL.Set {
 		e.RawStr("\"compare_url\"" + ":")
 		s.CompareURL.Encode(e)
 	}
-	if s.CompareURL.Set {
-		e.Comma()
+
+	if s.ContentsURL.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.ContentsURL.Set {
 		e.RawStr("\"contents_url\"" + ":")
 		s.ContentsURL.Encode(e)
 	}
-	if s.ContentsURL.Set {
-		e.Comma()
+
+	if s.ContributorsURL.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.ContributorsURL.Set {
 		e.RawStr("\"contributors_url\"" + ":")
 		s.ContributorsURL.Encode(e)
 	}
-	if s.ContributorsURL.Set {
-		e.Comma()
+
+	if s.DeploymentsURL.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.DeploymentsURL.Set {
 		e.RawStr("\"deployments_url\"" + ":")
 		s.DeploymentsURL.Encode(e)
 	}
-	if s.DeploymentsURL.Set {
-		e.Comma()
+
+	if s.DownloadsURL.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.DownloadsURL.Set {
 		e.RawStr("\"downloads_url\"" + ":")
 		s.DownloadsURL.Encode(e)
 	}
-	if s.DownloadsURL.Set {
-		e.Comma()
+
+	if s.EventsURL.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.EventsURL.Set {
 		e.RawStr("\"events_url\"" + ":")
 		s.EventsURL.Encode(e)
 	}
-	if s.EventsURL.Set {
-		e.Comma()
+
+	if s.ForksURL.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.ForksURL.Set {
 		e.RawStr("\"forks_url\"" + ":")
 		s.ForksURL.Encode(e)
 	}
-	if s.ForksURL.Set {
-		e.Comma()
+
+	if s.GitCommitsURL.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.GitCommitsURL.Set {
 		e.RawStr("\"git_commits_url\"" + ":")
 		s.GitCommitsURL.Encode(e)
 	}
-	if s.GitCommitsURL.Set {
-		e.Comma()
+
+	if s.GitRefsURL.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.GitRefsURL.Set {
 		e.RawStr("\"git_refs_url\"" + ":")
 		s.GitRefsURL.Encode(e)
 	}
-	if s.GitRefsURL.Set {
-		e.Comma()
+
+	if s.GitTagsURL.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.GitTagsURL.Set {
 		e.RawStr("\"git_tags_url\"" + ":")
 		s.GitTagsURL.Encode(e)
 	}
-	if s.GitTagsURL.Set {
-		e.Comma()
+
+	if s.GitURL.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.GitURL.Set {
 		e.RawStr("\"git_url\"" + ":")
 		s.GitURL.Encode(e)
 	}
-	if s.GitURL.Set {
-		e.Comma()
+
+	if s.IssueCommentURL.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.IssueCommentURL.Set {
 		e.RawStr("\"issue_comment_url\"" + ":")
 		s.IssueCommentURL.Encode(e)
 	}
-	if s.IssueCommentURL.Set {
-		e.Comma()
+
+	if s.IssueEventsURL.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.IssueEventsURL.Set {
 		e.RawStr("\"issue_events_url\"" + ":")
 		s.IssueEventsURL.Encode(e)
 	}
-	if s.IssueEventsURL.Set {
-		e.Comma()
+
+	if s.IssuesURL.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.IssuesURL.Set {
 		e.RawStr("\"issues_url\"" + ":")
 		s.IssuesURL.Encode(e)
 	}
-	if s.IssuesURL.Set {
-		e.Comma()
+
+	if s.KeysURL.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.KeysURL.Set {
 		e.RawStr("\"keys_url\"" + ":")
 		s.KeysURL.Encode(e)
 	}
-	if s.KeysURL.Set {
-		e.Comma()
+
+	if s.LabelsURL.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.LabelsURL.Set {
 		e.RawStr("\"labels_url\"" + ":")
 		s.LabelsURL.Encode(e)
 	}
-	if s.LabelsURL.Set {
-		e.Comma()
+
+	if s.LanguagesURL.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.LanguagesURL.Set {
 		e.RawStr("\"languages_url\"" + ":")
 		s.LanguagesURL.Encode(e)
 	}
-	if s.LanguagesURL.Set {
-		e.Comma()
+
+	if s.MergesURL.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.MergesURL.Set {
 		e.RawStr("\"merges_url\"" + ":")
 		s.MergesURL.Encode(e)
 	}
-	if s.MergesURL.Set {
-		e.Comma()
+
+	if s.MilestonesURL.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.MilestonesURL.Set {
 		e.RawStr("\"milestones_url\"" + ":")
 		s.MilestonesURL.Encode(e)
 	}
-	if s.MilestonesURL.Set {
-		e.Comma()
+
+	if s.NotificationsURL.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.NotificationsURL.Set {
 		e.RawStr("\"notifications_url\"" + ":")
 		s.NotificationsURL.Encode(e)
 	}
-	if s.NotificationsURL.Set {
-		e.Comma()
+
+	if s.PullsURL.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.PullsURL.Set {
 		e.RawStr("\"pulls_url\"" + ":")
 		s.PullsURL.Encode(e)
 	}
-	if s.PullsURL.Set {
-		e.Comma()
+
+	if s.ReleasesURL.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.ReleasesURL.Set {
 		e.RawStr("\"releases_url\"" + ":")
 		s.ReleasesURL.Encode(e)
 	}
-	if s.ReleasesURL.Set {
-		e.Comma()
+
+	if s.SSHURL.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.SSHURL.Set {
 		e.RawStr("\"ssh_url\"" + ":")
 		s.SSHURL.Encode(e)
 	}
-	if s.SSHURL.Set {
-		e.Comma()
+
+	if s.StargazersURL.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.StargazersURL.Set {
 		e.RawStr("\"stargazers_url\"" + ":")
 		s.StargazersURL.Encode(e)
 	}
-	if s.StargazersURL.Set {
-		e.Comma()
+
+	if s.StatusesURL.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.StatusesURL.Set {
 		e.RawStr("\"statuses_url\"" + ":")
 		s.StatusesURL.Encode(e)
 	}
-	if s.StatusesURL.Set {
-		e.Comma()
+
+	if s.SubscribersURL.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.SubscribersURL.Set {
 		e.RawStr("\"subscribers_url\"" + ":")
 		s.SubscribersURL.Encode(e)
 	}
-	if s.SubscribersURL.Set {
-		e.Comma()
+
+	if s.SubscriptionURL.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.SubscriptionURL.Set {
 		e.RawStr("\"subscription_url\"" + ":")
 		s.SubscriptionURL.Encode(e)
 	}
-	if s.SubscriptionURL.Set {
-		e.Comma()
+
+	if s.TagsURL.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.TagsURL.Set {
 		e.RawStr("\"tags_url\"" + ":")
 		s.TagsURL.Encode(e)
 	}
-	if s.TagsURL.Set {
-		e.Comma()
+
+	if s.TeamsURL.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.TeamsURL.Set {
 		e.RawStr("\"teams_url\"" + ":")
 		s.TeamsURL.Encode(e)
 	}
-	if s.TeamsURL.Set {
-		e.Comma()
+
+	if s.TreesURL.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.TreesURL.Set {
 		e.RawStr("\"trees_url\"" + ":")
 		s.TreesURL.Encode(e)
 	}
-	if s.TreesURL.Set {
-		e.Comma()
+
+	if s.CloneURL.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.CloneURL.Set {
 		e.RawStr("\"clone_url\"" + ":")
 		s.CloneURL.Encode(e)
 	}
-	if s.CloneURL.Set {
-		e.Comma()
+
+	if s.MirrorURL.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.MirrorURL.Set {
 		e.RawStr("\"mirror_url\"" + ":")
 		s.MirrorURL.Encode(e)
 	}
-	if s.MirrorURL.Set {
-		e.Comma()
+
+	if s.HooksURL.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.HooksURL.Set {
 		e.RawStr("\"hooks_url\"" + ":")
 		s.HooksURL.Encode(e)
 	}
-	if s.HooksURL.Set {
-		e.Comma()
+
+	if s.SvnURL.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.SvnURL.Set {
 		e.RawStr("\"svn_url\"" + ":")
 		s.SvnURL.Encode(e)
 	}
-	if s.SvnURL.Set {
-		e.Comma()
+
+	if s.Homepage.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Homepage.Set {
 		e.RawStr("\"homepage\"" + ":")
 		s.Homepage.Encode(e)
 	}
-	if s.Homepage.Set {
-		e.Comma()
+
+	if s.Language.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Language.Set {
 		e.RawStr("\"language\"" + ":")
 		s.Language.Encode(e)
 	}
-	if s.Language.Set {
-		e.Comma()
+
+	if s.ForksCount.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.ForksCount.Set {
 		e.RawStr("\"forks_count\"" + ":")
 		s.ForksCount.Encode(e)
 	}
-	if s.ForksCount.Set {
-		e.Comma()
+
+	if s.StargazersCount.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.StargazersCount.Set {
 		e.RawStr("\"stargazers_count\"" + ":")
 		s.StargazersCount.Encode(e)
 	}
-	if s.StargazersCount.Set {
-		e.Comma()
+
+	if s.WatchersCount.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.WatchersCount.Set {
 		e.RawStr("\"watchers_count\"" + ":")
 		s.WatchersCount.Encode(e)
 	}
-	if s.WatchersCount.Set {
-		e.Comma()
+
+	if s.Size.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Size.Set {
 		e.RawStr("\"size\"" + ":")
 		s.Size.Encode(e)
 	}
-	if s.Size.Set {
-		e.Comma()
+
+	if s.DefaultBranch.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.DefaultBranch.Set {
 		e.RawStr("\"default_branch\"" + ":")
 		s.DefaultBranch.Encode(e)
 	}
-	if s.DefaultBranch.Set {
-		e.Comma()
+
+	if s.OpenIssuesCount.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.OpenIssuesCount.Set {
 		e.RawStr("\"open_issues_count\"" + ":")
 		s.OpenIssuesCount.Encode(e)
 	}
-	if s.OpenIssuesCount.Set {
-		e.Comma()
+
+	if s.IsTemplate.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.IsTemplate.Set {
 		e.RawStr("\"is_template\"" + ":")
 		s.IsTemplate.Encode(e)
 	}
-	if s.IsTemplate.Set {
-		e.Comma()
+
+	if s.Topics != nil {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Topics != nil {
 		e.RawStr("\"topics\"" + ":")
@@ -48355,149 +53515,225 @@ func (s NullableRepositoryTemplateRepository) Encode(e *jx.Writer) {
 		}
 		e.ArrEnd()
 	}
-	if s.Topics != nil {
-		e.Comma()
+
+	if s.HasIssues.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.HasIssues.Set {
 		e.RawStr("\"has_issues\"" + ":")
 		s.HasIssues.Encode(e)
 	}
-	if s.HasIssues.Set {
-		e.Comma()
+
+	if s.HasProjects.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.HasProjects.Set {
 		e.RawStr("\"has_projects\"" + ":")
 		s.HasProjects.Encode(e)
 	}
-	if s.HasProjects.Set {
-		e.Comma()
+
+	if s.HasWiki.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.HasWiki.Set {
 		e.RawStr("\"has_wiki\"" + ":")
 		s.HasWiki.Encode(e)
 	}
-	if s.HasWiki.Set {
-		e.Comma()
+
+	if s.HasPages.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.HasPages.Set {
 		e.RawStr("\"has_pages\"" + ":")
 		s.HasPages.Encode(e)
 	}
-	if s.HasPages.Set {
-		e.Comma()
+
+	if s.HasDownloads.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.HasDownloads.Set {
 		e.RawStr("\"has_downloads\"" + ":")
 		s.HasDownloads.Encode(e)
 	}
-	if s.HasDownloads.Set {
-		e.Comma()
+
+	if s.Archived.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Archived.Set {
 		e.RawStr("\"archived\"" + ":")
 		s.Archived.Encode(e)
 	}
-	if s.Archived.Set {
-		e.Comma()
+
+	if s.Disabled.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Disabled.Set {
 		e.RawStr("\"disabled\"" + ":")
 		s.Disabled.Encode(e)
 	}
-	if s.Disabled.Set {
-		e.Comma()
+
+	if s.Visibility.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Visibility.Set {
 		e.RawStr("\"visibility\"" + ":")
 		s.Visibility.Encode(e)
 	}
-	if s.Visibility.Set {
-		e.Comma()
+
+	if s.PushedAt.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.PushedAt.Set {
 		e.RawStr("\"pushed_at\"" + ":")
 		s.PushedAt.Encode(e)
 	}
-	if s.PushedAt.Set {
-		e.Comma()
+
+	if s.CreatedAt.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.CreatedAt.Set {
 		e.RawStr("\"created_at\"" + ":")
 		s.CreatedAt.Encode(e)
 	}
-	if s.CreatedAt.Set {
-		e.Comma()
+
+	if s.UpdatedAt.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.UpdatedAt.Set {
 		e.RawStr("\"updated_at\"" + ":")
 		s.UpdatedAt.Encode(e)
 	}
-	if s.UpdatedAt.Set {
-		e.Comma()
+
+	if s.Permissions.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Permissions.Set {
 		e.RawStr("\"permissions\"" + ":")
 		s.Permissions.Encode(e)
 	}
-	if s.Permissions.Set {
-		e.Comma()
+
+	if s.AllowRebaseMerge.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.AllowRebaseMerge.Set {
 		e.RawStr("\"allow_rebase_merge\"" + ":")
 		s.AllowRebaseMerge.Encode(e)
 	}
-	if s.AllowRebaseMerge.Set {
-		e.Comma()
+
+	if s.TempCloneToken.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.TempCloneToken.Set {
 		e.RawStr("\"temp_clone_token\"" + ":")
 		s.TempCloneToken.Encode(e)
 	}
-	if s.TempCloneToken.Set {
-		e.Comma()
+
+	if s.AllowSquashMerge.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.AllowSquashMerge.Set {
 		e.RawStr("\"allow_squash_merge\"" + ":")
 		s.AllowSquashMerge.Encode(e)
 	}
-	if s.AllowSquashMerge.Set {
-		e.Comma()
+
+	if s.AllowAutoMerge.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.AllowAutoMerge.Set {
 		e.RawStr("\"allow_auto_merge\"" + ":")
 		s.AllowAutoMerge.Encode(e)
 	}
-	if s.AllowAutoMerge.Set {
-		e.Comma()
+
+	if s.DeleteBranchOnMerge.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.DeleteBranchOnMerge.Set {
 		e.RawStr("\"delete_branch_on_merge\"" + ":")
 		s.DeleteBranchOnMerge.Encode(e)
 	}
-	if s.DeleteBranchOnMerge.Set {
-		e.Comma()
+
+	if s.AllowMergeCommit.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.AllowMergeCommit.Set {
 		e.RawStr("\"allow_merge_commit\"" + ":")
 		s.AllowMergeCommit.Encode(e)
 	}
-	if s.AllowMergeCommit.Set {
-		e.Comma()
+
+	if s.SubscribersCount.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.SubscribersCount.Set {
 		e.RawStr("\"subscribers_count\"" + ":")
 		s.SubscribersCount.Encode(e)
 	}
-	if s.SubscribersCount.Set {
-		e.Comma()
+
+	if s.NetworkCount.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.NetworkCount.Set {
 		e.RawStr("\"network_count\"" + ":")
 		s.NetworkCount.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -48933,132 +54169,207 @@ func (s *NullableRepositoryTemplateRepository) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s NullableRepositoryTemplateRepositoryOwner) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.Login.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.Login.Set {
 		e.RawStr("\"login\"" + ":")
 		s.Login.Encode(e)
 	}
-	if s.Login.Set {
-		e.Comma()
+
+	if s.ID.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.ID.Set {
 		e.RawStr("\"id\"" + ":")
 		s.ID.Encode(e)
 	}
-	if s.ID.Set {
-		e.Comma()
+
+	if s.NodeID.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.NodeID.Set {
 		e.RawStr("\"node_id\"" + ":")
 		s.NodeID.Encode(e)
 	}
-	if s.NodeID.Set {
-		e.Comma()
+
+	if s.AvatarURL.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.AvatarURL.Set {
 		e.RawStr("\"avatar_url\"" + ":")
 		s.AvatarURL.Encode(e)
 	}
-	if s.AvatarURL.Set {
-		e.Comma()
+
+	if s.GravatarID.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.GravatarID.Set {
 		e.RawStr("\"gravatar_id\"" + ":")
 		s.GravatarID.Encode(e)
 	}
-	if s.GravatarID.Set {
-		e.Comma()
+
+	if s.URL.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.URL.Set {
 		e.RawStr("\"url\"" + ":")
 		s.URL.Encode(e)
 	}
-	if s.URL.Set {
-		e.Comma()
+
+	if s.HTMLURL.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.HTMLURL.Set {
 		e.RawStr("\"html_url\"" + ":")
 		s.HTMLURL.Encode(e)
 	}
-	if s.HTMLURL.Set {
-		e.Comma()
+
+	if s.FollowersURL.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.FollowersURL.Set {
 		e.RawStr("\"followers_url\"" + ":")
 		s.FollowersURL.Encode(e)
 	}
-	if s.FollowersURL.Set {
-		e.Comma()
+
+	if s.FollowingURL.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.FollowingURL.Set {
 		e.RawStr("\"following_url\"" + ":")
 		s.FollowingURL.Encode(e)
 	}
-	if s.FollowingURL.Set {
-		e.Comma()
+
+	if s.GistsURL.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.GistsURL.Set {
 		e.RawStr("\"gists_url\"" + ":")
 		s.GistsURL.Encode(e)
 	}
-	if s.GistsURL.Set {
-		e.Comma()
+
+	if s.StarredURL.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.StarredURL.Set {
 		e.RawStr("\"starred_url\"" + ":")
 		s.StarredURL.Encode(e)
 	}
-	if s.StarredURL.Set {
-		e.Comma()
+
+	if s.SubscriptionsURL.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.SubscriptionsURL.Set {
 		e.RawStr("\"subscriptions_url\"" + ":")
 		s.SubscriptionsURL.Encode(e)
 	}
-	if s.SubscriptionsURL.Set {
-		e.Comma()
+
+	if s.OrganizationsURL.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.OrganizationsURL.Set {
 		e.RawStr("\"organizations_url\"" + ":")
 		s.OrganizationsURL.Encode(e)
 	}
-	if s.OrganizationsURL.Set {
-		e.Comma()
+
+	if s.ReposURL.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.ReposURL.Set {
 		e.RawStr("\"repos_url\"" + ":")
 		s.ReposURL.Encode(e)
 	}
-	if s.ReposURL.Set {
-		e.Comma()
+
+	if s.EventsURL.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.EventsURL.Set {
 		e.RawStr("\"events_url\"" + ":")
 		s.EventsURL.Encode(e)
 	}
-	if s.EventsURL.Set {
-		e.Comma()
+
+	if s.ReceivedEventsURL.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.ReceivedEventsURL.Set {
 		e.RawStr("\"received_events_url\"" + ":")
 		s.ReceivedEventsURL.Encode(e)
 	}
-	if s.ReceivedEventsURL.Set {
-		e.Comma()
+
+	if s.Type.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Type.Set {
 		e.RawStr("\"type\"" + ":")
 		s.Type.Encode(e)
 	}
-	if s.Type.Set {
-		e.Comma()
+
+	if s.SiteAdmin.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.SiteAdmin.Set {
 		e.RawStr("\"site_admin\"" + ":")
 		s.SiteAdmin.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -49170,41 +54481,64 @@ func (s *NullableRepositoryTemplateRepositoryOwner) Decode(d *jx.Decoder) error 
 // Encode implements json.Marshaler.
 func (s NullableRepositoryTemplateRepositoryPermissions) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.Admin.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.Admin.Set {
 		e.RawStr("\"admin\"" + ":")
 		s.Admin.Encode(e)
 	}
-	if s.Admin.Set {
-		e.Comma()
+
+	if s.Maintain.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Maintain.Set {
 		e.RawStr("\"maintain\"" + ":")
 		s.Maintain.Encode(e)
 	}
-	if s.Maintain.Set {
-		e.Comma()
+
+	if s.Push.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Push.Set {
 		e.RawStr("\"push\"" + ":")
 		s.Push.Encode(e)
 	}
-	if s.Push.Set {
-		e.Comma()
+
+	if s.Triage.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Triage.Set {
 		e.RawStr("\"triage\"" + ":")
 		s.Triage.Encode(e)
 	}
-	if s.Triage.Set {
-		e.Comma()
+
+	if s.Pull.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Pull.Set {
 		e.RawStr("\"pull\"" + ":")
 		s.Pull.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -49251,6 +54585,16 @@ func (s *NullableRepositoryTemplateRepositoryPermissions) Decode(d *jx.Decoder) 
 // Encode implements json.Marshaler.
 func (s NullableScopedInstallation) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"permissions\"" + ":")
 	s.Permissions.Encode(e)
@@ -49265,12 +54609,15 @@ func (s NullableScopedInstallation) Encode(e *jx.Writer) {
 	e.RawStr("\"single_file_name\"" + ":")
 	s.SingleFileName.Encode(e)
 
-	e.Comma()
+	if s.HasMultipleSingleFiles.Set {
+		e.Comma()
+	}
 	if s.HasMultipleSingleFiles.Set {
 		e.RawStr("\"has_multiple_single_files\"" + ":")
 		s.HasMultipleSingleFiles.Encode(e)
 	}
-	if s.HasMultipleSingleFiles.Set {
+
+	if s.SingleFilePaths != nil {
 		e.Comma()
 	}
 	if s.SingleFilePaths != nil {
@@ -49289,20 +54636,16 @@ func (s NullableScopedInstallation) Encode(e *jx.Writer) {
 		}
 		e.ArrEnd()
 	}
-	if s.SingleFilePaths != nil {
-		e.Comma()
-	}
+
+	e.Comma()
 
 	e.RawStr("\"repositories_url\"" + ":")
 	json.EncodeURI(e, s.RepositoriesURL)
+
 	e.Comma()
 
 	e.RawStr("\"account\"" + ":")
 	s.Account.Encode(e)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -49391,21 +54734,34 @@ func (s *NullableScopedInstallationRepositorySelection) Decode(d *jx.Decoder) er
 // Encode implements json.Marshaler.
 func (s NullableSimpleCommit) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"id\"" + ":")
 	e.Str(s.ID)
+
 	e.Comma()
 
 	e.RawStr("\"tree_id\"" + ":")
 	e.Str(s.TreeID)
+
 	e.Comma()
 
 	e.RawStr("\"message\"" + ":")
 	e.Str(s.Message)
+
 	e.Comma()
 
 	e.RawStr("\"timestamp\"" + ":")
 	json.EncodeDateTime(e, s.Timestamp)
+
 	e.Comma()
 
 	e.RawStr("\"author\"" + ":")
@@ -49415,10 +54771,6 @@ func (s NullableSimpleCommit) Encode(e *jx.Writer) {
 
 	e.RawStr("\"committer\"" + ":")
 	s.Committer.Encode(e)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -49471,17 +54823,23 @@ func (s *NullableSimpleCommit) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s NullableSimpleCommitAuthor) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"name\"" + ":")
 	e.Str(s.Name)
+
 	e.Comma()
 
 	e.RawStr("\"email\"" + ":")
 	e.Str(s.Email)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -49514,17 +54872,23 @@ func (s *NullableSimpleCommitAuthor) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s NullableSimpleCommitCommitter) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"name\"" + ":")
 	e.Str(s.Name)
+
 	e.Comma()
 
 	e.RawStr("\"email\"" + ":")
 	e.Str(s.Email)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -49557,35 +54921,56 @@ func (s *NullableSimpleCommitCommitter) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s NullableSimpleUser) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.Name.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.Name.Set {
 		e.RawStr("\"name\"" + ":")
 		s.Name.Encode(e)
 	}
-	if s.Name.Set {
-		e.Comma()
+
+	if s.Email.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Email.Set {
 		e.RawStr("\"email\"" + ":")
 		s.Email.Encode(e)
 	}
-	if s.Email.Set {
+
+	if !first {
 		e.Comma()
 	}
+	first = false
 
 	e.RawStr("\"login\"" + ":")
 	e.Str(s.Login)
+
 	e.Comma()
 
 	e.RawStr("\"id\"" + ":")
 	e.Int(s.ID)
+
 	e.Comma()
 
 	e.RawStr("\"node_id\"" + ":")
 	e.Str(s.NodeID)
+
 	e.Comma()
 
 	e.RawStr("\"avatar_url\"" + ":")
 	json.EncodeURI(e, s.AvatarURL)
+
 	e.Comma()
 
 	e.RawStr("\"gravatar_id\"" + ":")
@@ -49595,62 +54980,73 @@ func (s NullableSimpleUser) Encode(e *jx.Writer) {
 
 	e.RawStr("\"url\"" + ":")
 	json.EncodeURI(e, s.URL)
+
 	e.Comma()
 
 	e.RawStr("\"html_url\"" + ":")
 	json.EncodeURI(e, s.HTMLURL)
+
 	e.Comma()
 
 	e.RawStr("\"followers_url\"" + ":")
 	json.EncodeURI(e, s.FollowersURL)
+
 	e.Comma()
 
 	e.RawStr("\"following_url\"" + ":")
 	e.Str(s.FollowingURL)
+
 	e.Comma()
 
 	e.RawStr("\"gists_url\"" + ":")
 	e.Str(s.GistsURL)
+
 	e.Comma()
 
 	e.RawStr("\"starred_url\"" + ":")
 	e.Str(s.StarredURL)
+
 	e.Comma()
 
 	e.RawStr("\"subscriptions_url\"" + ":")
 	json.EncodeURI(e, s.SubscriptionsURL)
+
 	e.Comma()
 
 	e.RawStr("\"organizations_url\"" + ":")
 	json.EncodeURI(e, s.OrganizationsURL)
+
 	e.Comma()
 
 	e.RawStr("\"repos_url\"" + ":")
 	json.EncodeURI(e, s.ReposURL)
+
 	e.Comma()
 
 	e.RawStr("\"events_url\"" + ":")
 	e.Str(s.EventsURL)
+
 	e.Comma()
 
 	e.RawStr("\"received_events_url\"" + ":")
 	json.EncodeURI(e, s.ReceivedEventsURL)
+
 	e.Comma()
 
 	e.RawStr("\"type\"" + ":")
 	e.Str(s.Type)
+
 	e.Comma()
 
 	e.RawStr("\"site_admin\"" + ":")
 	e.Bool(s.SiteAdmin)
-	e.Comma()
+
+	if s.StarredAt.Set {
+		e.Comma()
+	}
 	if s.StarredAt.Set {
 		e.RawStr("\"starred_at\"" + ":")
 		s.StarredAt.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -49793,25 +55189,39 @@ func (s *NullableSimpleUser) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s NullableTeamSimple) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"id\"" + ":")
 	e.Int(s.ID)
+
 	e.Comma()
 
 	e.RawStr("\"node_id\"" + ":")
 	e.Str(s.NodeID)
+
 	e.Comma()
 
 	e.RawStr("\"url\"" + ":")
 	json.EncodeURI(e, s.URL)
+
 	e.Comma()
 
 	e.RawStr("\"members_url\"" + ":")
 	e.Str(s.MembersURL)
+
 	e.Comma()
 
 	e.RawStr("\"name\"" + ":")
 	e.Str(s.Name)
+
 	e.Comma()
 
 	e.RawStr("\"description\"" + ":")
@@ -49821,33 +55231,36 @@ func (s NullableTeamSimple) Encode(e *jx.Writer) {
 
 	e.RawStr("\"permission\"" + ":")
 	e.Str(s.Permission)
-	e.Comma()
+
+	if s.Privacy.Set {
+		e.Comma()
+	}
 	if s.Privacy.Set {
 		e.RawStr("\"privacy\"" + ":")
 		s.Privacy.Encode(e)
 	}
-	if s.Privacy.Set {
-		e.Comma()
-	}
+
+	e.Comma()
 
 	e.RawStr("\"html_url\"" + ":")
 	json.EncodeURI(e, s.HTMLURL)
+
 	e.Comma()
 
 	e.RawStr("\"repositories_url\"" + ":")
 	json.EncodeURI(e, s.RepositoriesURL)
+
 	e.Comma()
 
 	e.RawStr("\"slug\"" + ":")
 	e.Str(s.Slug)
-	e.Comma()
+
+	if s.LdapDn.Set {
+		e.Comma()
+	}
 	if s.LdapDn.Set {
 		e.RawStr("\"ldap_dn\"" + ":")
 		s.LdapDn.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -50009,48 +55422,75 @@ func (s *OAuthAuthorizationsCreateAuthorizationApplicationJSONUnauthorized) Deco
 // Encode implements json.Marshaler.
 func (s OAuthAuthorizationsCreateAuthorizationReq) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.Scopes.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.Scopes.Set {
 		e.RawStr("\"scopes\"" + ":")
 		s.Scopes.Encode(e)
 	}
-	if s.Scopes.Set {
-		e.Comma()
+
+	if s.Note.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Note.Set {
 		e.RawStr("\"note\"" + ":")
 		s.Note.Encode(e)
 	}
-	if s.Note.Set {
-		e.Comma()
+
+	if s.NoteURL.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.NoteURL.Set {
 		e.RawStr("\"note_url\"" + ":")
 		s.NoteURL.Encode(e)
 	}
-	if s.NoteURL.Set {
-		e.Comma()
+
+	if s.ClientID.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.ClientID.Set {
 		e.RawStr("\"client_id\"" + ":")
 		s.ClientID.Encode(e)
 	}
-	if s.ClientID.Set {
-		e.Comma()
+
+	if s.ClientSecret.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.ClientSecret.Set {
 		e.RawStr("\"client_secret\"" + ":")
 		s.ClientSecret.Encode(e)
 	}
-	if s.ClientSecret.Set {
-		e.Comma()
+
+	if s.Fingerprint.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Fingerprint.Set {
 		e.RawStr("\"fingerprint\"" + ":")
 		s.Fingerprint.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -50150,10 +55590,10 @@ func (s *OAuthAuthorizationsDeleteAuthorizationApplicationJSONUnauthorized) Deco
 // Encode implements json.Marshaler.
 func (s OAuthAuthorizationsDeleteAuthorizationNoContent) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -50222,10 +55662,10 @@ func (s *OAuthAuthorizationsDeleteGrantApplicationJSONUnauthorized) Decode(d *jx
 // Encode implements json.Marshaler.
 func (s OAuthAuthorizationsDeleteGrantNoContent) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -50390,31 +55830,41 @@ func (s *OAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintApplicat
 // Encode implements json.Marshaler.
 func (s OAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintReq) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"client_secret\"" + ":")
 	e.Str(s.ClientSecret)
-	e.Comma()
+
+	if s.Scopes.Set {
+		e.Comma()
+	}
 	if s.Scopes.Set {
 		e.RawStr("\"scopes\"" + ":")
 		s.Scopes.Encode(e)
 	}
-	if s.Scopes.Set {
+
+	if s.Note.Set {
 		e.Comma()
 	}
 	if s.Note.Set {
 		e.RawStr("\"note\"" + ":")
 		s.Note.Encode(e)
 	}
-	if s.Note.Set {
+
+	if s.NoteURL.Set {
 		e.Comma()
 	}
 	if s.NoteURL.Set {
 		e.RawStr("\"note_url\"" + ":")
 		s.NoteURL.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -50553,38 +56003,49 @@ func (s *OAuthAuthorizationsGetOrCreateAuthorizationForAppApplicationJSONUnautho
 // Encode implements json.Marshaler.
 func (s OAuthAuthorizationsGetOrCreateAuthorizationForAppReq) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"client_secret\"" + ":")
 	e.Str(s.ClientSecret)
-	e.Comma()
+
+	if s.Scopes.Set {
+		e.Comma()
+	}
 	if s.Scopes.Set {
 		e.RawStr("\"scopes\"" + ":")
 		s.Scopes.Encode(e)
 	}
-	if s.Scopes.Set {
+
+	if s.Note.Set {
 		e.Comma()
 	}
 	if s.Note.Set {
 		e.RawStr("\"note\"" + ":")
 		s.Note.Encode(e)
 	}
-	if s.Note.Set {
+
+	if s.NoteURL.Set {
 		e.Comma()
 	}
 	if s.NoteURL.Set {
 		e.RawStr("\"note_url\"" + ":")
 		s.NoteURL.Encode(e)
 	}
-	if s.NoteURL.Set {
+
+	if s.Fingerprint.Set {
 		e.Comma()
 	}
 	if s.Fingerprint.Set {
 		e.RawStr("\"fingerprint\"" + ":")
 		s.Fingerprint.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -50864,12 +56325,27 @@ func (s *OAuthAuthorizationsListGrantsOKApplicationJSON) Decode(d *jx.Decoder) e
 // Encode implements json.Marshaler.
 func (s OAuthAuthorizationsUpdateAuthorizationReq) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.Scopes.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.Scopes.Set {
 		e.RawStr("\"scopes\"" + ":")
 		s.Scopes.Encode(e)
 	}
-	if s.Scopes.Set {
-		e.Comma()
+
+	if s.AddScopes != nil {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.AddScopes != nil {
 		e.RawStr("\"add_scopes\"" + ":")
@@ -50887,8 +56363,12 @@ func (s OAuthAuthorizationsUpdateAuthorizationReq) Encode(e *jx.Writer) {
 		}
 		e.ArrEnd()
 	}
-	if s.AddScopes != nil {
-		e.Comma()
+
+	if s.RemoveScopes != nil {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.RemoveScopes != nil {
 		e.RawStr("\"remove_scopes\"" + ":")
@@ -50906,30 +56386,38 @@ func (s OAuthAuthorizationsUpdateAuthorizationReq) Encode(e *jx.Writer) {
 		}
 		e.ArrEnd()
 	}
-	if s.RemoveScopes != nil {
-		e.Comma()
+
+	if s.Note.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Note.Set {
 		e.RawStr("\"note\"" + ":")
 		s.Note.Encode(e)
 	}
-	if s.Note.Set {
-		e.Comma()
+
+	if s.NoteURL.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.NoteURL.Set {
 		e.RawStr("\"note_url\"" + ":")
 		s.NoteURL.Encode(e)
 	}
-	if s.NoteURL.Set {
-		e.Comma()
+
+	if s.Fingerprint.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Fingerprint.Set {
 		e.RawStr("\"fingerprint\"" + ":")
 		s.Fingerprint.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -61087,28 +66575,42 @@ func (o *OptWorkflowRunUsageBillableWINDOWS) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s OrgHook) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"id\"" + ":")
 	e.Int(s.ID)
+
 	e.Comma()
 
 	e.RawStr("\"url\"" + ":")
 	json.EncodeURI(e, s.URL)
+
 	e.Comma()
 
 	e.RawStr("\"ping_url\"" + ":")
 	json.EncodeURI(e, s.PingURL)
-	e.Comma()
+
+	if s.DeliveriesURL.Set {
+		e.Comma()
+	}
 	if s.DeliveriesURL.Set {
 		e.RawStr("\"deliveries_url\"" + ":")
 		s.DeliveriesURL.Encode(e)
 	}
-	if s.DeliveriesURL.Set {
-		e.Comma()
-	}
+
+	e.Comma()
 
 	e.RawStr("\"name\"" + ":")
 	e.Str(s.Name)
+
 	e.Comma()
 
 	e.RawStr("\"events\"" + ":")
@@ -61130,6 +66632,7 @@ func (s OrgHook) Encode(e *jx.Writer) {
 
 	e.RawStr("\"active\"" + ":")
 	e.Bool(s.Active)
+
 	e.Comma()
 
 	e.RawStr("\"config\"" + ":")
@@ -61139,18 +66642,16 @@ func (s OrgHook) Encode(e *jx.Writer) {
 
 	e.RawStr("\"updated_at\"" + ":")
 	json.EncodeDateTime(e, s.UpdatedAt)
+
 	e.Comma()
 
 	e.RawStr("\"created_at\"" + ":")
 	json.EncodeDateTime(e, s.CreatedAt)
+
 	e.Comma()
 
 	e.RawStr("\"type\"" + ":")
 	e.Str(s.Type)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -61242,34 +66743,53 @@ func (s *OrgHook) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s OrgHookConfig) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.URL.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.URL.Set {
 		e.RawStr("\"url\"" + ":")
 		s.URL.Encode(e)
 	}
-	if s.URL.Set {
-		e.Comma()
+
+	if s.InsecureSsl.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.InsecureSsl.Set {
 		e.RawStr("\"insecure_ssl\"" + ":")
 		s.InsecureSsl.Encode(e)
 	}
-	if s.InsecureSsl.Set {
-		e.Comma()
+
+	if s.ContentType.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.ContentType.Set {
 		e.RawStr("\"content_type\"" + ":")
 		s.ContentType.Encode(e)
 	}
-	if s.ContentType.Set {
-		e.Comma()
+
+	if s.Secret.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Secret.Set {
 		e.RawStr("\"secret\"" + ":")
 		s.Secret.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -61311,9 +66831,19 @@ func (s *OrgHookConfig) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s OrgMembership) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"url\"" + ":")
 	json.EncodeURI(e, s.URL)
+
 	e.Comma()
 
 	e.RawStr("\"state\"" + ":")
@@ -61328,6 +66858,7 @@ func (s OrgMembership) Encode(e *jx.Writer) {
 
 	e.RawStr("\"organization_url\"" + ":")
 	json.EncodeURI(e, s.OrganizationURL)
+
 	e.Comma()
 
 	e.RawStr("\"organization\"" + ":")
@@ -61338,14 +66869,12 @@ func (s OrgMembership) Encode(e *jx.Writer) {
 	e.RawStr("\"user\"" + ":")
 	s.User.Encode(e)
 
-	e.Comma()
+	if s.Permissions.Set {
+		e.Comma()
+	}
 	if s.Permissions.Set {
 		e.RawStr("\"permissions\"" + ":")
 		s.Permissions.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -61400,13 +66929,18 @@ func (s *OrgMembership) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s OrgMembershipPermissions) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"can_create_repository\"" + ":")
 	e.Bool(s.CanCreateRepository)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -61489,30 +67023,40 @@ func (s *OrgMembershipState) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s OrganizationActionsSecret) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"name\"" + ":")
 	e.Str(s.Name)
+
 	e.Comma()
 
 	e.RawStr("\"created_at\"" + ":")
 	json.EncodeDateTime(e, s.CreatedAt)
+
 	e.Comma()
 
 	e.RawStr("\"updated_at\"" + ":")
 	json.EncodeDateTime(e, s.UpdatedAt)
+
 	e.Comma()
 
 	e.RawStr("\"visibility\"" + ":")
 	s.Visibility.Encode(e)
 
-	e.Comma()
+	if s.SelectedRepositoriesURL.Set {
+		e.Comma()
+	}
 	if s.SelectedRepositoriesURL.Set {
 		e.RawStr("\"selected_repositories_url\"" + ":")
 		s.SelectedRepositoriesURL.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -61590,266 +67134,315 @@ func (s *OrganizationActionsSecretVisibility) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s OrganizationFull) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"login\"" + ":")
 	e.Str(s.Login)
+
 	e.Comma()
 
 	e.RawStr("\"id\"" + ":")
 	e.Int(s.ID)
+
 	e.Comma()
 
 	e.RawStr("\"node_id\"" + ":")
 	e.Str(s.NodeID)
+
 	e.Comma()
 
 	e.RawStr("\"url\"" + ":")
 	json.EncodeURI(e, s.URL)
+
 	e.Comma()
 
 	e.RawStr("\"repos_url\"" + ":")
 	json.EncodeURI(e, s.ReposURL)
+
 	e.Comma()
 
 	e.RawStr("\"events_url\"" + ":")
 	json.EncodeURI(e, s.EventsURL)
+
 	e.Comma()
 
 	e.RawStr("\"hooks_url\"" + ":")
 	e.Str(s.HooksURL)
+
 	e.Comma()
 
 	e.RawStr("\"issues_url\"" + ":")
 	e.Str(s.IssuesURL)
+
 	e.Comma()
 
 	e.RawStr("\"members_url\"" + ":")
 	e.Str(s.MembersURL)
+
 	e.Comma()
 
 	e.RawStr("\"public_members_url\"" + ":")
 	e.Str(s.PublicMembersURL)
+
 	e.Comma()
 
 	e.RawStr("\"avatar_url\"" + ":")
 	e.Str(s.AvatarURL)
+
 	e.Comma()
 
 	e.RawStr("\"description\"" + ":")
 	s.Description.Encode(e)
 
-	e.Comma()
+	if s.Name.Set {
+		e.Comma()
+	}
 	if s.Name.Set {
 		e.RawStr("\"name\"" + ":")
 		s.Name.Encode(e)
 	}
-	if s.Name.Set {
+
+	if s.Company.Set {
 		e.Comma()
 	}
 	if s.Company.Set {
 		e.RawStr("\"company\"" + ":")
 		s.Company.Encode(e)
 	}
-	if s.Company.Set {
+
+	if s.Blog.Set {
 		e.Comma()
 	}
 	if s.Blog.Set {
 		e.RawStr("\"blog\"" + ":")
 		s.Blog.Encode(e)
 	}
-	if s.Blog.Set {
+
+	if s.Location.Set {
 		e.Comma()
 	}
 	if s.Location.Set {
 		e.RawStr("\"location\"" + ":")
 		s.Location.Encode(e)
 	}
-	if s.Location.Set {
+
+	if s.Email.Set {
 		e.Comma()
 	}
 	if s.Email.Set {
 		e.RawStr("\"email\"" + ":")
 		s.Email.Encode(e)
 	}
-	if s.Email.Set {
+
+	if s.TwitterUsername.Set {
 		e.Comma()
 	}
 	if s.TwitterUsername.Set {
 		e.RawStr("\"twitter_username\"" + ":")
 		s.TwitterUsername.Encode(e)
 	}
-	if s.TwitterUsername.Set {
+
+	if s.IsVerified.Set {
 		e.Comma()
 	}
 	if s.IsVerified.Set {
 		e.RawStr("\"is_verified\"" + ":")
 		s.IsVerified.Encode(e)
 	}
-	if s.IsVerified.Set {
-		e.Comma()
-	}
+
+	e.Comma()
 
 	e.RawStr("\"has_organization_projects\"" + ":")
 	e.Bool(s.HasOrganizationProjects)
+
 	e.Comma()
 
 	e.RawStr("\"has_repository_projects\"" + ":")
 	e.Bool(s.HasRepositoryProjects)
+
 	e.Comma()
 
 	e.RawStr("\"public_repos\"" + ":")
 	e.Int(s.PublicRepos)
+
 	e.Comma()
 
 	e.RawStr("\"public_gists\"" + ":")
 	e.Int(s.PublicGists)
+
 	e.Comma()
 
 	e.RawStr("\"followers\"" + ":")
 	e.Int(s.Followers)
+
 	e.Comma()
 
 	e.RawStr("\"following\"" + ":")
 	e.Int(s.Following)
+
 	e.Comma()
 
 	e.RawStr("\"html_url\"" + ":")
 	json.EncodeURI(e, s.HTMLURL)
+
 	e.Comma()
 
 	e.RawStr("\"created_at\"" + ":")
 	json.EncodeDateTime(e, s.CreatedAt)
+
 	e.Comma()
 
 	e.RawStr("\"type\"" + ":")
 	e.Str(s.Type)
-	e.Comma()
+
+	if s.TotalPrivateRepos.Set {
+		e.Comma()
+	}
 	if s.TotalPrivateRepos.Set {
 		e.RawStr("\"total_private_repos\"" + ":")
 		s.TotalPrivateRepos.Encode(e)
 	}
-	if s.TotalPrivateRepos.Set {
+
+	if s.OwnedPrivateRepos.Set {
 		e.Comma()
 	}
 	if s.OwnedPrivateRepos.Set {
 		e.RawStr("\"owned_private_repos\"" + ":")
 		s.OwnedPrivateRepos.Encode(e)
 	}
-	if s.OwnedPrivateRepos.Set {
+
+	if s.PrivateGists.Set {
 		e.Comma()
 	}
 	if s.PrivateGists.Set {
 		e.RawStr("\"private_gists\"" + ":")
 		s.PrivateGists.Encode(e)
 	}
-	if s.PrivateGists.Set {
+
+	if s.DiskUsage.Set {
 		e.Comma()
 	}
 	if s.DiskUsage.Set {
 		e.RawStr("\"disk_usage\"" + ":")
 		s.DiskUsage.Encode(e)
 	}
-	if s.DiskUsage.Set {
+
+	if s.Collaborators.Set {
 		e.Comma()
 	}
 	if s.Collaborators.Set {
 		e.RawStr("\"collaborators\"" + ":")
 		s.Collaborators.Encode(e)
 	}
-	if s.Collaborators.Set {
+
+	if s.BillingEmail.Set {
 		e.Comma()
 	}
 	if s.BillingEmail.Set {
 		e.RawStr("\"billing_email\"" + ":")
 		s.BillingEmail.Encode(e)
 	}
-	if s.BillingEmail.Set {
+
+	if s.Plan.Set {
 		e.Comma()
 	}
 	if s.Plan.Set {
 		e.RawStr("\"plan\"" + ":")
 		s.Plan.Encode(e)
 	}
-	if s.Plan.Set {
+
+	if s.DefaultRepositoryPermission.Set {
 		e.Comma()
 	}
 	if s.DefaultRepositoryPermission.Set {
 		e.RawStr("\"default_repository_permission\"" + ":")
 		s.DefaultRepositoryPermission.Encode(e)
 	}
-	if s.DefaultRepositoryPermission.Set {
+
+	if s.MembersCanCreateRepositories.Set {
 		e.Comma()
 	}
 	if s.MembersCanCreateRepositories.Set {
 		e.RawStr("\"members_can_create_repositories\"" + ":")
 		s.MembersCanCreateRepositories.Encode(e)
 	}
-	if s.MembersCanCreateRepositories.Set {
+
+	if s.TwoFactorRequirementEnabled.Set {
 		e.Comma()
 	}
 	if s.TwoFactorRequirementEnabled.Set {
 		e.RawStr("\"two_factor_requirement_enabled\"" + ":")
 		s.TwoFactorRequirementEnabled.Encode(e)
 	}
-	if s.TwoFactorRequirementEnabled.Set {
+
+	if s.MembersAllowedRepositoryCreationType.Set {
 		e.Comma()
 	}
 	if s.MembersAllowedRepositoryCreationType.Set {
 		e.RawStr("\"members_allowed_repository_creation_type\"" + ":")
 		s.MembersAllowedRepositoryCreationType.Encode(e)
 	}
-	if s.MembersAllowedRepositoryCreationType.Set {
+
+	if s.MembersCanCreatePublicRepositories.Set {
 		e.Comma()
 	}
 	if s.MembersCanCreatePublicRepositories.Set {
 		e.RawStr("\"members_can_create_public_repositories\"" + ":")
 		s.MembersCanCreatePublicRepositories.Encode(e)
 	}
-	if s.MembersCanCreatePublicRepositories.Set {
+
+	if s.MembersCanCreatePrivateRepositories.Set {
 		e.Comma()
 	}
 	if s.MembersCanCreatePrivateRepositories.Set {
 		e.RawStr("\"members_can_create_private_repositories\"" + ":")
 		s.MembersCanCreatePrivateRepositories.Encode(e)
 	}
-	if s.MembersCanCreatePrivateRepositories.Set {
+
+	if s.MembersCanCreateInternalRepositories.Set {
 		e.Comma()
 	}
 	if s.MembersCanCreateInternalRepositories.Set {
 		e.RawStr("\"members_can_create_internal_repositories\"" + ":")
 		s.MembersCanCreateInternalRepositories.Encode(e)
 	}
-	if s.MembersCanCreateInternalRepositories.Set {
+
+	if s.MembersCanCreatePages.Set {
 		e.Comma()
 	}
 	if s.MembersCanCreatePages.Set {
 		e.RawStr("\"members_can_create_pages\"" + ":")
 		s.MembersCanCreatePages.Encode(e)
 	}
-	if s.MembersCanCreatePages.Set {
+
+	if s.MembersCanCreatePublicPages.Set {
 		e.Comma()
 	}
 	if s.MembersCanCreatePublicPages.Set {
 		e.RawStr("\"members_can_create_public_pages\"" + ":")
 		s.MembersCanCreatePublicPages.Encode(e)
 	}
-	if s.MembersCanCreatePublicPages.Set {
+
+	if s.MembersCanCreatePrivatePages.Set {
 		e.Comma()
 	}
 	if s.MembersCanCreatePrivatePages.Set {
 		e.RawStr("\"members_can_create_private_pages\"" + ":")
 		s.MembersCanCreatePrivatePages.Encode(e)
 	}
-	if s.MembersCanCreatePrivatePages.Set {
-		e.Comma()
-	}
+
+	e.Comma()
 
 	e.RawStr("\"updated_at\"" + ":")
 	json.EncodeDateTime(e, s.UpdatedAt)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -62120,32 +67713,43 @@ func (s *OrganizationFull) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s OrganizationFullPlan) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"name\"" + ":")
 	e.Str(s.Name)
+
 	e.Comma()
 
 	e.RawStr("\"space\"" + ":")
 	e.Int(s.Space)
+
 	e.Comma()
 
 	e.RawStr("\"private_repos\"" + ":")
 	e.Int(s.PrivateRepos)
-	e.Comma()
+
+	if s.FilledSeats.Set {
+		e.Comma()
+	}
 	if s.FilledSeats.Set {
 		e.RawStr("\"filled_seats\"" + ":")
 		s.FilledSeats.Encode(e)
 	}
-	if s.FilledSeats.Set {
+
+	if s.Seats.Set {
 		e.Comma()
 	}
 	if s.Seats.Set {
 		e.RawStr("\"seats\"" + ":")
 		s.Seats.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -62195,9 +67799,19 @@ func (s *OrganizationFullPlan) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s OrganizationInvitation) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"id\"" + ":")
 	e.Int(s.ID)
+
 	e.Comma()
 
 	e.RawStr("\"login\"" + ":")
@@ -62212,25 +67826,29 @@ func (s OrganizationInvitation) Encode(e *jx.Writer) {
 
 	e.RawStr("\"role\"" + ":")
 	e.Str(s.Role)
+
 	e.Comma()
 
 	e.RawStr("\"created_at\"" + ":")
 	e.Str(s.CreatedAt)
-	e.Comma()
+
+	if s.FailedAt.Set {
+		e.Comma()
+	}
 	if s.FailedAt.Set {
 		e.RawStr("\"failed_at\"" + ":")
 		s.FailedAt.Encode(e)
 	}
-	if s.FailedAt.Set {
+
+	if s.FailedReason.Set {
 		e.Comma()
 	}
 	if s.FailedReason.Set {
 		e.RawStr("\"failed_reason\"" + ":")
 		s.FailedReason.Encode(e)
 	}
-	if s.FailedReason.Set {
-		e.Comma()
-	}
+
+	e.Comma()
 
 	e.RawStr("\"inviter\"" + ":")
 	s.Inviter.Encode(e)
@@ -62239,18 +67857,16 @@ func (s OrganizationInvitation) Encode(e *jx.Writer) {
 
 	e.RawStr("\"team_count\"" + ":")
 	e.Int(s.TeamCount)
+
 	e.Comma()
 
 	e.RawStr("\"node_id\"" + ":")
 	e.Str(s.NodeID)
+
 	e.Comma()
 
 	e.RawStr("\"invitation_teams_url\"" + ":")
 	e.Str(s.InvitationTeamsURL)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -62329,90 +67945,141 @@ func (s *OrganizationInvitation) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s OrganizationSecretScanningAlert) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.Number.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.Number.Set {
 		e.RawStr("\"number\"" + ":")
 		s.Number.Encode(e)
 	}
-	if s.Number.Set {
-		e.Comma()
+
+	if s.CreatedAt.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.CreatedAt.Set {
 		e.RawStr("\"created_at\"" + ":")
 		s.CreatedAt.Encode(e)
 	}
-	if s.CreatedAt.Set {
-		e.Comma()
+
+	if s.URL.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.URL.Set {
 		e.RawStr("\"url\"" + ":")
 		s.URL.Encode(e)
 	}
-	if s.URL.Set {
-		e.Comma()
+
+	if s.HTMLURL.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.HTMLURL.Set {
 		e.RawStr("\"html_url\"" + ":")
 		s.HTMLURL.Encode(e)
 	}
-	if s.HTMLURL.Set {
-		e.Comma()
+
+	if s.LocationsURL.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.LocationsURL.Set {
 		e.RawStr("\"locations_url\"" + ":")
 		s.LocationsURL.Encode(e)
 	}
-	if s.LocationsURL.Set {
-		e.Comma()
+
+	if s.State.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.State.Set {
 		e.RawStr("\"state\"" + ":")
 		s.State.Encode(e)
 	}
-	if s.State.Set {
-		e.Comma()
+
+	if s.Resolution.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Resolution.Set {
 		e.RawStr("\"resolution\"" + ":")
 		s.Resolution.Encode(e)
 	}
-	if s.Resolution.Set {
-		e.Comma()
+
+	if s.ResolvedAt.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.ResolvedAt.Set {
 		e.RawStr("\"resolved_at\"" + ":")
 		s.ResolvedAt.Encode(e, json.EncodeDateTime)
 	}
-	if s.ResolvedAt.Set {
-		e.Comma()
+
+	if s.ResolvedBy.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.ResolvedBy.Set {
 		e.RawStr("\"resolved_by\"" + ":")
 		s.ResolvedBy.Encode(e)
 	}
-	if s.ResolvedBy.Set {
-		e.Comma()
+
+	if s.SecretType.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.SecretType.Set {
 		e.RawStr("\"secret_type\"" + ":")
 		s.SecretType.Encode(e)
 	}
-	if s.SecretType.Set {
-		e.Comma()
+
+	if s.Secret.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Secret.Set {
 		e.RawStr("\"secret\"" + ":")
 		s.Secret.Encode(e)
 	}
-	if s.Secret.Set {
-		e.Comma()
+
+	if s.Repository.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Repository.Set {
 		e.RawStr("\"repository\"" + ":")
 		s.Repository.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -62494,57 +68161,73 @@ func (s *OrganizationSecretScanningAlert) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s OrganizationSimple) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"login\"" + ":")
 	e.Str(s.Login)
+
 	e.Comma()
 
 	e.RawStr("\"id\"" + ":")
 	e.Int(s.ID)
+
 	e.Comma()
 
 	e.RawStr("\"node_id\"" + ":")
 	e.Str(s.NodeID)
+
 	e.Comma()
 
 	e.RawStr("\"url\"" + ":")
 	json.EncodeURI(e, s.URL)
+
 	e.Comma()
 
 	e.RawStr("\"repos_url\"" + ":")
 	json.EncodeURI(e, s.ReposURL)
+
 	e.Comma()
 
 	e.RawStr("\"events_url\"" + ":")
 	json.EncodeURI(e, s.EventsURL)
+
 	e.Comma()
 
 	e.RawStr("\"hooks_url\"" + ":")
 	e.Str(s.HooksURL)
+
 	e.Comma()
 
 	e.RawStr("\"issues_url\"" + ":")
 	e.Str(s.IssuesURL)
+
 	e.Comma()
 
 	e.RawStr("\"members_url\"" + ":")
 	e.Str(s.MembersURL)
+
 	e.Comma()
 
 	e.RawStr("\"public_members_url\"" + ":")
 	e.Str(s.PublicMembersURL)
+
 	e.Comma()
 
 	e.RawStr("\"avatar_url\"" + ":")
 	e.Str(s.AvatarURL)
+
 	e.Comma()
 
 	e.RawStr("\"description\"" + ":")
 	s.Description.Encode(e)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -62635,10 +68318,10 @@ func (s *OrganizationSimple) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s OrgsBlockUserNoContent) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -62659,10 +68342,10 @@ func (s *OrgsBlockUserNoContent) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s OrgsCancelInvitationNoContent) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -62683,10 +68366,10 @@ func (s *OrgsCancelInvitationNoContent) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s OrgsCheckBlockedUserNoContent) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -62707,10 +68390,10 @@ func (s *OrgsCheckBlockedUserNoContent) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s OrgsCheckMembershipForUserFound) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -62731,10 +68414,10 @@ func (s *OrgsCheckMembershipForUserFound) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s OrgsCheckMembershipForUserNoContent) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -62755,10 +68438,10 @@ func (s *OrgsCheckMembershipForUserNoContent) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s OrgsCheckMembershipForUserNotFound) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -62779,10 +68462,10 @@ func (s *OrgsCheckMembershipForUserNotFound) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s OrgsCheckPublicMembershipForUserNoContent) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -62803,10 +68486,10 @@ func (s *OrgsCheckPublicMembershipForUserNoContent) Decode(d *jx.Decoder) error 
 // Encode implements json.Marshaler.
 func (s OrgsCheckPublicMembershipForUserNotFound) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -62827,10 +68510,10 @@ func (s *OrgsCheckPublicMembershipForUserNotFound) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s OrgsConvertMemberToOutsideCollaboratorAccepted) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -62851,10 +68534,10 @@ func (s *OrgsConvertMemberToOutsideCollaboratorAccepted) Decode(d *jx.Decoder) e
 // Encode implements json.Marshaler.
 func (s OrgsConvertMemberToOutsideCollaboratorForbidden) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -62875,10 +68558,10 @@ func (s *OrgsConvertMemberToOutsideCollaboratorForbidden) Decode(d *jx.Decoder) 
 // Encode implements json.Marshaler.
 func (s OrgsConvertMemberToOutsideCollaboratorNoContent) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -62899,26 +68582,49 @@ func (s *OrgsConvertMemberToOutsideCollaboratorNoContent) Decode(d *jx.Decoder) 
 // Encode implements json.Marshaler.
 func (s OrgsCreateInvitationReq) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.InviteeID.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.InviteeID.Set {
 		e.RawStr("\"invitee_id\"" + ":")
 		s.InviteeID.Encode(e)
 	}
-	if s.InviteeID.Set {
-		e.Comma()
+
+	if s.Email.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Email.Set {
 		e.RawStr("\"email\"" + ":")
 		s.Email.Encode(e)
 	}
-	if s.Email.Set {
-		e.Comma()
+
+	if s.Role.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Role.Set {
 		e.RawStr("\"role\"" + ":")
 		s.Role.Encode(e)
 	}
-	if s.Role.Set {
-		e.Comma()
+
+	if s.TeamIds != nil {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.TeamIds != nil {
 		e.RawStr("\"team_ids\"" + ":")
@@ -62935,10 +68641,6 @@ func (s OrgsCreateInvitationReq) Encode(e *jx.Writer) {
 			}
 		}
 		e.ArrEnd()
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -63018,15 +68720,27 @@ func (s *OrgsCreateInvitationReqRole) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s OrgsCreateWebhookReq) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"name\"" + ":")
 	e.Str(s.Name)
+
 	e.Comma()
 
 	e.RawStr("\"config\"" + ":")
 	s.Config.Encode(e)
 
-	e.Comma()
+	if s.Events != nil {
+		e.Comma()
+	}
 	if s.Events != nil {
 		e.RawStr("\"events\"" + ":")
 		e.ArrStart()
@@ -63043,16 +68757,13 @@ func (s OrgsCreateWebhookReq) Encode(e *jx.Writer) {
 		}
 		e.ArrEnd()
 	}
-	if s.Events != nil {
+
+	if s.Active.Set {
 		e.Comma()
 	}
 	if s.Active.Set {
 		e.RawStr("\"active\"" + ":")
 		s.Active.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -63103,46 +68814,58 @@ func (s *OrgsCreateWebhookReq) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s OrgsCreateWebhookReqConfig) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"url\"" + ":")
 	s.URL.Encode(e)
 
-	e.Comma()
+	if s.ContentType.Set {
+		e.Comma()
+	}
 	if s.ContentType.Set {
 		e.RawStr("\"content_type\"" + ":")
 		s.ContentType.Encode(e)
 	}
-	if s.ContentType.Set {
+
+	if s.Secret.Set {
 		e.Comma()
 	}
 	if s.Secret.Set {
 		e.RawStr("\"secret\"" + ":")
 		s.Secret.Encode(e)
 	}
-	if s.Secret.Set {
+
+	if s.InsecureSsl.Set {
 		e.Comma()
 	}
 	if s.InsecureSsl.Set {
 		e.RawStr("\"insecure_ssl\"" + ":")
 		s.InsecureSsl.Encode(e)
 	}
-	if s.InsecureSsl.Set {
+
+	if s.Username.Set {
 		e.Comma()
 	}
 	if s.Username.Set {
 		e.RawStr("\"username\"" + ":")
 		s.Username.Encode(e)
 	}
-	if s.Username.Set {
+
+	if s.Password.Set {
 		e.Comma()
 	}
 	if s.Password.Set {
 		e.RawStr("\"password\"" + ":")
 		s.Password.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -63199,10 +68922,10 @@ func (s *OrgsCreateWebhookReqConfig) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s OrgsDeleteWebhookNoContent) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -63626,10 +69349,10 @@ func (s *OrgsListMembersFilter) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s OrgsListMembersFound) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -64045,10 +69768,10 @@ func (s *OrgsListWebhooksOKApplicationJSON) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s OrgsPingWebhookNoContent) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -64069,10 +69792,10 @@ func (s *OrgsPingWebhookNoContent) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s OrgsRemoveMemberNoContent) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -64141,10 +69864,10 @@ func (s *OrgsRemoveMembershipForUserApplicationJSONNotFound) Decode(d *jx.Decode
 // Encode implements json.Marshaler.
 func (s OrgsRemoveMembershipForUserNoContent) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -64165,10 +69888,10 @@ func (s *OrgsRemoveMembershipForUserNoContent) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s OrgsRemoveOutsideCollaboratorNoContent) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -64189,20 +69912,31 @@ func (s *OrgsRemoveOutsideCollaboratorNoContent) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s OrgsRemoveOutsideCollaboratorUnprocessableEntity) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.Message.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.Message.Set {
 		e.RawStr("\"message\"" + ":")
 		s.Message.Encode(e)
 	}
-	if s.Message.Set {
-		e.Comma()
+
+	if s.DocumentationURL.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.DocumentationURL.Set {
 		e.RawStr("\"documentation_url\"" + ":")
 		s.DocumentationURL.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -64234,10 +69968,10 @@ func (s *OrgsRemoveOutsideCollaboratorUnprocessableEntity) Decode(d *jx.Decoder)
 // Encode implements json.Marshaler.
 func (s OrgsRemovePublicMembershipForAuthenticatedUserNoContent) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -64258,10 +69992,10 @@ func (s *OrgsRemovePublicMembershipForAuthenticatedUserNoContent) Decode(d *jx.D
 // Encode implements json.Marshaler.
 func (s OrgsRemoveSamlSSOAuthorizationNoContent) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -64282,13 +70016,20 @@ func (s *OrgsRemoveSamlSSOAuthorizationNoContent) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s OrgsSetMembershipForUserReq) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.Role.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.Role.Set {
 		e.RawStr("\"role\"" + ":")
 		s.Role.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -64342,10 +70083,10 @@ func (s *OrgsSetMembershipForUserReqRole) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s OrgsSetPublicMembershipForAuthenticatedUserNoContent) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -64366,10 +70107,10 @@ func (s *OrgsSetPublicMembershipForAuthenticatedUserNoContent) Decode(d *jx.Deco
 // Encode implements json.Marshaler.
 func (s OrgsUnblockUserNoContent) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -64438,13 +70179,19 @@ func (s *OrgsUpdateMembershipForAuthenticatedUserApplicationJSONNotFound) Decode
 // Encode implements json.Marshaler.
 func (s OrgsUpdateMembershipForAuthenticatedUserReq) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"state\"" + ":")
 	s.State.Encode(e)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -64494,139 +70241,218 @@ func (s *OrgsUpdateMembershipForAuthenticatedUserReqState) Decode(d *jx.Decoder)
 // Encode implements json.Marshaler.
 func (s OrgsUpdateReq) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.BillingEmail.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.BillingEmail.Set {
 		e.RawStr("\"billing_email\"" + ":")
 		s.BillingEmail.Encode(e)
 	}
-	if s.BillingEmail.Set {
-		e.Comma()
+
+	if s.Company.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Company.Set {
 		e.RawStr("\"company\"" + ":")
 		s.Company.Encode(e)
 	}
-	if s.Company.Set {
-		e.Comma()
+
+	if s.Email.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Email.Set {
 		e.RawStr("\"email\"" + ":")
 		s.Email.Encode(e)
 	}
-	if s.Email.Set {
-		e.Comma()
+
+	if s.TwitterUsername.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.TwitterUsername.Set {
 		e.RawStr("\"twitter_username\"" + ":")
 		s.TwitterUsername.Encode(e)
 	}
-	if s.TwitterUsername.Set {
-		e.Comma()
+
+	if s.Location.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Location.Set {
 		e.RawStr("\"location\"" + ":")
 		s.Location.Encode(e)
 	}
-	if s.Location.Set {
-		e.Comma()
+
+	if s.Name.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Name.Set {
 		e.RawStr("\"name\"" + ":")
 		s.Name.Encode(e)
 	}
-	if s.Name.Set {
-		e.Comma()
+
+	if s.Description.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Description.Set {
 		e.RawStr("\"description\"" + ":")
 		s.Description.Encode(e)
 	}
-	if s.Description.Set {
-		e.Comma()
+
+	if s.HasOrganizationProjects.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.HasOrganizationProjects.Set {
 		e.RawStr("\"has_organization_projects\"" + ":")
 		s.HasOrganizationProjects.Encode(e)
 	}
-	if s.HasOrganizationProjects.Set {
-		e.Comma()
+
+	if s.HasRepositoryProjects.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.HasRepositoryProjects.Set {
 		e.RawStr("\"has_repository_projects\"" + ":")
 		s.HasRepositoryProjects.Encode(e)
 	}
-	if s.HasRepositoryProjects.Set {
-		e.Comma()
+
+	if s.DefaultRepositoryPermission.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.DefaultRepositoryPermission.Set {
 		e.RawStr("\"default_repository_permission\"" + ":")
 		s.DefaultRepositoryPermission.Encode(e)
 	}
-	if s.DefaultRepositoryPermission.Set {
-		e.Comma()
+
+	if s.MembersCanCreateRepositories.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.MembersCanCreateRepositories.Set {
 		e.RawStr("\"members_can_create_repositories\"" + ":")
 		s.MembersCanCreateRepositories.Encode(e)
 	}
-	if s.MembersCanCreateRepositories.Set {
-		e.Comma()
+
+	if s.MembersCanCreateInternalRepositories.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.MembersCanCreateInternalRepositories.Set {
 		e.RawStr("\"members_can_create_internal_repositories\"" + ":")
 		s.MembersCanCreateInternalRepositories.Encode(e)
 	}
-	if s.MembersCanCreateInternalRepositories.Set {
-		e.Comma()
+
+	if s.MembersCanCreatePrivateRepositories.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.MembersCanCreatePrivateRepositories.Set {
 		e.RawStr("\"members_can_create_private_repositories\"" + ":")
 		s.MembersCanCreatePrivateRepositories.Encode(e)
 	}
-	if s.MembersCanCreatePrivateRepositories.Set {
-		e.Comma()
+
+	if s.MembersCanCreatePublicRepositories.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.MembersCanCreatePublicRepositories.Set {
 		e.RawStr("\"members_can_create_public_repositories\"" + ":")
 		s.MembersCanCreatePublicRepositories.Encode(e)
 	}
-	if s.MembersCanCreatePublicRepositories.Set {
-		e.Comma()
+
+	if s.MembersAllowedRepositoryCreationType.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.MembersAllowedRepositoryCreationType.Set {
 		e.RawStr("\"members_allowed_repository_creation_type\"" + ":")
 		s.MembersAllowedRepositoryCreationType.Encode(e)
 	}
-	if s.MembersAllowedRepositoryCreationType.Set {
-		e.Comma()
+
+	if s.MembersCanCreatePages.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.MembersCanCreatePages.Set {
 		e.RawStr("\"members_can_create_pages\"" + ":")
 		s.MembersCanCreatePages.Encode(e)
 	}
-	if s.MembersCanCreatePages.Set {
-		e.Comma()
+
+	if s.MembersCanCreatePublicPages.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.MembersCanCreatePublicPages.Set {
 		e.RawStr("\"members_can_create_public_pages\"" + ":")
 		s.MembersCanCreatePublicPages.Encode(e)
 	}
-	if s.MembersCanCreatePublicPages.Set {
-		e.Comma()
+
+	if s.MembersCanCreatePrivatePages.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.MembersCanCreatePrivatePages.Set {
 		e.RawStr("\"members_can_create_private_pages\"" + ":")
 		s.MembersCanCreatePrivatePages.Encode(e)
 	}
-	if s.MembersCanCreatePrivatePages.Set {
-		e.Comma()
+
+	if s.Blog.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Blog.Set {
 		e.RawStr("\"blog\"" + ":")
 		s.Blog.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -64803,34 +70629,53 @@ func (s *OrgsUpdateReqMembersAllowedRepositoryCreationType) Decode(d *jx.Decoder
 // Encode implements json.Marshaler.
 func (s OrgsUpdateWebhookConfigForOrgReq) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.URL.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.URL.Set {
 		e.RawStr("\"url\"" + ":")
 		s.URL.Encode(e)
 	}
-	if s.URL.Set {
-		e.Comma()
+
+	if s.ContentType.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.ContentType.Set {
 		e.RawStr("\"content_type\"" + ":")
 		s.ContentType.Encode(e)
 	}
-	if s.ContentType.Set {
-		e.Comma()
+
+	if s.Secret.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Secret.Set {
 		e.RawStr("\"secret\"" + ":")
 		s.Secret.Encode(e)
 	}
-	if s.Secret.Set {
-		e.Comma()
+
+	if s.InsecureSsl.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.InsecureSsl.Set {
 		e.RawStr("\"insecure_ssl\"" + ":")
 		s.InsecureSsl.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -64872,12 +70717,27 @@ func (s *OrgsUpdateWebhookConfigForOrgReq) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s OrgsUpdateWebhookReq) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.Config.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.Config.Set {
 		e.RawStr("\"config\"" + ":")
 		s.Config.Encode(e)
 	}
-	if s.Config.Set {
-		e.Comma()
+
+	if s.Events != nil {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Events != nil {
 		e.RawStr("\"events\"" + ":")
@@ -64895,23 +70755,27 @@ func (s OrgsUpdateWebhookReq) Encode(e *jx.Writer) {
 		}
 		e.ArrEnd()
 	}
-	if s.Events != nil {
-		e.Comma()
+
+	if s.Active.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Active.Set {
 		e.RawStr("\"active\"" + ":")
 		s.Active.Encode(e)
 	}
-	if s.Active.Set {
-		e.Comma()
+
+	if s.Name.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Name.Set {
 		e.RawStr("\"name\"" + ":")
 		s.Name.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -64962,32 +70826,42 @@ func (s *OrgsUpdateWebhookReq) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s OrgsUpdateWebhookReqConfig) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"url\"" + ":")
 	s.URL.Encode(e)
 
-	e.Comma()
+	if s.ContentType.Set {
+		e.Comma()
+	}
 	if s.ContentType.Set {
 		e.RawStr("\"content_type\"" + ":")
 		s.ContentType.Encode(e)
 	}
-	if s.ContentType.Set {
+
+	if s.Secret.Set {
 		e.Comma()
 	}
 	if s.Secret.Set {
 		e.RawStr("\"secret\"" + ":")
 		s.Secret.Encode(e)
 	}
-	if s.Secret.Set {
+
+	if s.InsecureSsl.Set {
 		e.Comma()
 	}
 	if s.InsecureSsl.Set {
 		e.RawStr("\"insecure_ssl\"" + ":")
 		s.InsecureSsl.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -65034,13 +70908,24 @@ func (s *OrgsUpdateWebhookReqConfig) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s Package) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"id\"" + ":")
 	e.Int(s.ID)
+
 	e.Comma()
 
 	e.RawStr("\"name\"" + ":")
 	e.Str(s.Name)
+
 	e.Comma()
 
 	e.RawStr("\"package_type\"" + ":")
@@ -65050,45 +70935,47 @@ func (s Package) Encode(e *jx.Writer) {
 
 	e.RawStr("\"url\"" + ":")
 	e.Str(s.URL)
+
 	e.Comma()
 
 	e.RawStr("\"html_url\"" + ":")
 	e.Str(s.HTMLURL)
+
 	e.Comma()
 
 	e.RawStr("\"version_count\"" + ":")
 	e.Int(s.VersionCount)
+
 	e.Comma()
 
 	e.RawStr("\"visibility\"" + ":")
 	s.Visibility.Encode(e)
 
-	e.Comma()
+	if s.Owner.Set {
+		e.Comma()
+	}
 	if s.Owner.Set {
 		e.RawStr("\"owner\"" + ":")
 		s.Owner.Encode(e)
 	}
-	if s.Owner.Set {
+
+	if s.Repository.Set {
 		e.Comma()
 	}
 	if s.Repository.Set {
 		e.RawStr("\"repository\"" + ":")
 		s.Repository.Encode(e)
 	}
-	if s.Repository.Set {
-		e.Comma()
-	}
+
+	e.Comma()
 
 	e.RawStr("\"created_at\"" + ":")
 	json.EncodeDateTime(e, s.CreatedAt)
+
 	e.Comma()
 
 	e.RawStr("\"updated_at\"" + ":")
 	json.EncodeDateTime(e, s.UpdatedAt)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -65204,65 +71091,82 @@ func (s *PackagePackageType) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s PackageVersion) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"id\"" + ":")
 	e.Int(s.ID)
+
 	e.Comma()
 
 	e.RawStr("\"name\"" + ":")
 	e.Str(s.Name)
+
 	e.Comma()
 
 	e.RawStr("\"url\"" + ":")
 	e.Str(s.URL)
+
 	e.Comma()
 
 	e.RawStr("\"package_html_url\"" + ":")
 	e.Str(s.PackageHTMLURL)
-	e.Comma()
+
+	if s.HTMLURL.Set {
+		e.Comma()
+	}
 	if s.HTMLURL.Set {
 		e.RawStr("\"html_url\"" + ":")
 		s.HTMLURL.Encode(e)
 	}
-	if s.HTMLURL.Set {
+
+	if s.License.Set {
 		e.Comma()
 	}
 	if s.License.Set {
 		e.RawStr("\"license\"" + ":")
 		s.License.Encode(e)
 	}
-	if s.License.Set {
+
+	if s.Description.Set {
 		e.Comma()
 	}
 	if s.Description.Set {
 		e.RawStr("\"description\"" + ":")
 		s.Description.Encode(e)
 	}
-	if s.Description.Set {
-		e.Comma()
-	}
+
+	e.Comma()
 
 	e.RawStr("\"created_at\"" + ":")
 	json.EncodeDateTime(e, s.CreatedAt)
+
 	e.Comma()
 
 	e.RawStr("\"updated_at\"" + ":")
 	json.EncodeDateTime(e, s.UpdatedAt)
-	e.Comma()
+
+	if s.DeletedAt.Set {
+		e.Comma()
+	}
 	if s.DeletedAt.Set {
 		e.RawStr("\"deleted_at\"" + ":")
 		s.DeletedAt.Encode(e, json.EncodeDateTime)
 	}
-	if s.DeletedAt.Set {
+
+	if s.Metadata.Set {
 		e.Comma()
 	}
 	if s.Metadata.Set {
 		e.RawStr("\"metadata\"" + ":")
 		s.Metadata.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -65345,25 +71249,34 @@ func (s *PackageVersion) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s PackageVersionMetadata) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"package_type\"" + ":")
 	s.PackageType.Encode(e)
 
-	e.Comma()
+	if s.Container.Set {
+		e.Comma()
+	}
 	if s.Container.Set {
 		e.RawStr("\"container\"" + ":")
 		s.Container.Encode(e)
 	}
-	if s.Container.Set {
+
+	if s.Docker.Set {
 		e.Comma()
 	}
 	if s.Docker.Set {
 		e.RawStr("\"docker\"" + ":")
 		s.Docker.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -65399,6 +71312,16 @@ func (s *PackageVersionMetadata) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s PackageVersionMetadataContainer) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"tags\"" + ":")
 	e.ArrStart()
@@ -65414,10 +71337,6 @@ func (s PackageVersionMetadataContainer) Encode(e *jx.Writer) {
 		}
 	}
 	e.ArrEnd()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -65452,6 +71371,17 @@ func (s *PackageVersionMetadataContainer) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s PackageVersionMetadataDocker) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.Tag != nil {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.Tag != nil {
 		e.RawStr("\"tag\"" + ":")
 		e.ArrStart()
@@ -65467,10 +71397,6 @@ func (s PackageVersionMetadataDocker) Encode(e *jx.Writer) {
 			}
 		}
 		e.ArrEnd()
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -65568,21 +71494,28 @@ func (s *PackageVisibility) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s PackagesBillingUsage) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"total_gigabytes_bandwidth_used\"" + ":")
 	e.Int(s.TotalGigabytesBandwidthUsed)
+
 	e.Comma()
 
 	e.RawStr("\"total_paid_gigabytes_bandwidth_used\"" + ":")
 	e.Int(s.TotalPaidGigabytesBandwidthUsed)
+
 	e.Comma()
 
 	e.RawStr("\"included_gigabytes_bandwidth\"" + ":")
 	e.Int(s.IncludedGigabytesBandwidth)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -65693,10 +71626,10 @@ func (s *PackagesDeletePackageForAuthenticatedUserApplicationJSONUnauthorized) D
 // Encode implements json.Marshaler.
 func (s PackagesDeletePackageForAuthenticatedUserNoContent) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -65824,10 +71757,10 @@ func (s *PackagesDeletePackageForOrgApplicationJSONUnauthorized) Decode(d *jx.De
 // Encode implements json.Marshaler.
 func (s PackagesDeletePackageForOrgNoContent) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -65955,10 +71888,10 @@ func (s *PackagesDeletePackageForUserApplicationJSONUnauthorized) Decode(d *jx.D
 // Encode implements json.Marshaler.
 func (s PackagesDeletePackageForUserNoContent) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -66086,10 +72019,10 @@ func (s *PackagesDeletePackageVersionForAuthenticatedUserApplicationJSONUnauthor
 // Encode implements json.Marshaler.
 func (s PackagesDeletePackageVersionForAuthenticatedUserNoContent) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -66217,10 +72150,10 @@ func (s *PackagesDeletePackageVersionForOrgApplicationJSONUnauthorized) Decode(d
 // Encode implements json.Marshaler.
 func (s PackagesDeletePackageVersionForOrgNoContent) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -66348,10 +72281,10 @@ func (s *PackagesDeletePackageVersionForUserApplicationJSONUnauthorized) Decode(
 // Encode implements json.Marshaler.
 func (s PackagesDeletePackageVersionForUserNoContent) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -67572,10 +73505,10 @@ func (s *PackagesRestorePackageForAuthenticatedUserApplicationJSONUnauthorized) 
 // Encode implements json.Marshaler.
 func (s PackagesRestorePackageForAuthenticatedUserNoContent) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -67703,10 +73636,10 @@ func (s *PackagesRestorePackageForOrgApplicationJSONUnauthorized) Decode(d *jx.D
 // Encode implements json.Marshaler.
 func (s PackagesRestorePackageForOrgNoContent) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -67834,10 +73767,10 @@ func (s *PackagesRestorePackageForUserApplicationJSONUnauthorized) Decode(d *jx.
 // Encode implements json.Marshaler.
 func (s PackagesRestorePackageForUserNoContent) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -67965,10 +73898,10 @@ func (s *PackagesRestorePackageVersionForAuthenticatedUserApplicationJSONUnautho
 // Encode implements json.Marshaler.
 func (s PackagesRestorePackageVersionForAuthenticatedUserNoContent) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -68096,10 +74029,10 @@ func (s *PackagesRestorePackageVersionForOrgApplicationJSONUnauthorized) Decode(
 // Encode implements json.Marshaler.
 func (s PackagesRestorePackageVersionForOrgNoContent) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -68227,10 +74160,10 @@ func (s *PackagesRestorePackageVersionForUserApplicationJSONUnauthorized) Decode
 // Encode implements json.Marshaler.
 func (s PackagesRestorePackageVersionForUserNoContent) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -68286,9 +74219,19 @@ func (s *PackagesRestorePackageVersionForUserPackageType) Decode(d *jx.Decoder) 
 // Encode implements json.Marshaler.
 func (s Page) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"url\"" + ":")
 	json.EncodeURI(e, s.URL)
+
 	e.Comma()
 
 	e.RawStr("\"status\"" + ":")
@@ -68299,57 +74242,62 @@ func (s Page) Encode(e *jx.Writer) {
 	e.RawStr("\"cname\"" + ":")
 	s.Cname.Encode(e)
 
-	e.Comma()
+	if s.ProtectedDomainState.Set {
+		e.Comma()
+	}
 	if s.ProtectedDomainState.Set {
 		e.RawStr("\"protected_domain_state\"" + ":")
 		s.ProtectedDomainState.Encode(e)
 	}
-	if s.ProtectedDomainState.Set {
+
+	if s.PendingDomainUnverifiedAt.Set {
 		e.Comma()
 	}
 	if s.PendingDomainUnverifiedAt.Set {
 		e.RawStr("\"pending_domain_unverified_at\"" + ":")
 		s.PendingDomainUnverifiedAt.Encode(e, json.EncodeDateTime)
 	}
-	if s.PendingDomainUnverifiedAt.Set {
-		e.Comma()
-	}
+
+	e.Comma()
 
 	e.RawStr("\"custom_404\"" + ":")
 	e.Bool(s.Custom404)
-	e.Comma()
+
+	if s.HTMLURL.Set {
+		e.Comma()
+	}
 	if s.HTMLURL.Set {
 		e.RawStr("\"html_url\"" + ":")
 		s.HTMLURL.Encode(e)
 	}
-	if s.HTMLURL.Set {
+
+	if s.Source.Set {
 		e.Comma()
 	}
 	if s.Source.Set {
 		e.RawStr("\"source\"" + ":")
 		s.Source.Encode(e)
 	}
-	if s.Source.Set {
-		e.Comma()
-	}
+
+	e.Comma()
 
 	e.RawStr("\"public\"" + ":")
 	e.Bool(s.Public)
-	e.Comma()
+
+	if s.HTTPSCertificate.Set {
+		e.Comma()
+	}
 	if s.HTTPSCertificate.Set {
 		e.RawStr("\"https_certificate\"" + ":")
 		s.HTTPSCertificate.Encode(e)
 	}
-	if s.HTTPSCertificate.Set {
+
+	if s.HTTPSEnforced.Set {
 		e.Comma()
 	}
 	if s.HTTPSEnforced.Set {
 		e.RawStr("\"https_enforced\"" + ":")
 		s.HTTPSEnforced.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -68427,13 +74375,24 @@ func (s *Page) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s PageBuild) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"url\"" + ":")
 	json.EncodeURI(e, s.URL)
+
 	e.Comma()
 
 	e.RawStr("\"status\"" + ":")
 	e.Str(s.Status)
+
 	e.Comma()
 
 	e.RawStr("\"error\"" + ":")
@@ -68448,22 +74407,21 @@ func (s PageBuild) Encode(e *jx.Writer) {
 
 	e.RawStr("\"commit\"" + ":")
 	e.Str(s.Commit)
+
 	e.Comma()
 
 	e.RawStr("\"duration\"" + ":")
 	e.Int(s.Duration)
+
 	e.Comma()
 
 	e.RawStr("\"created_at\"" + ":")
 	json.EncodeDateTime(e, s.CreatedAt)
+
 	e.Comma()
 
 	e.RawStr("\"updated_at\"" + ":")
 	json.EncodeDateTime(e, s.UpdatedAt)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -68528,13 +74486,19 @@ func (s *PageBuild) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s PageBuildError) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"message\"" + ":")
 	s.Message.Encode(e)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -68559,17 +74523,23 @@ func (s *PageBuildError) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s PageBuildStatus) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"url\"" + ":")
 	json.EncodeURI(e, s.URL)
+
 	e.Comma()
 
 	e.RawStr("\"status\"" + ":")
 	e.Str(s.Status)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -68660,6 +74630,16 @@ func (s *PageStatus) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s PagesHTTPSCertificate) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"state\"" + ":")
 	s.State.Encode(e)
@@ -68668,6 +74648,7 @@ func (s PagesHTTPSCertificate) Encode(e *jx.Writer) {
 
 	e.RawStr("\"description\"" + ":")
 	e.Str(s.Description)
+
 	e.Comma()
 
 	e.RawStr("\"domains\"" + ":")
@@ -68685,14 +74666,12 @@ func (s PagesHTTPSCertificate) Encode(e *jx.Writer) {
 	}
 	e.ArrEnd()
 
-	e.Comma()
+	if s.ExpiresAt.Set {
+		e.Comma()
+	}
 	if s.ExpiresAt.Set {
 		e.RawStr("\"expires_at\"" + ":")
 		s.ExpiresAt.Encode(e, json.EncodeDate)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -68790,20 +74769,31 @@ func (s *PagesHTTPSCertificateState) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s PagesHealthCheck) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.Domain.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.Domain.Set {
 		e.RawStr("\"domain\"" + ":")
 		s.Domain.Encode(e)
 	}
-	if s.Domain.Set {
-		e.Comma()
+
+	if s.AltDomain.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.AltDomain.Set {
 		e.RawStr("\"alt_domain\"" + ":")
 		s.AltDomain.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -68835,202 +74825,317 @@ func (s *PagesHealthCheck) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s PagesHealthCheckAltDomain) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.Host.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.Host.Set {
 		e.RawStr("\"host\"" + ":")
 		s.Host.Encode(e)
 	}
-	if s.Host.Set {
-		e.Comma()
+
+	if s.URI.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.URI.Set {
 		e.RawStr("\"uri\"" + ":")
 		s.URI.Encode(e)
 	}
-	if s.URI.Set {
-		e.Comma()
+
+	if s.Nameservers.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Nameservers.Set {
 		e.RawStr("\"nameservers\"" + ":")
 		s.Nameservers.Encode(e)
 	}
-	if s.Nameservers.Set {
-		e.Comma()
+
+	if s.DNSResolves.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.DNSResolves.Set {
 		e.RawStr("\"dns_resolves\"" + ":")
 		s.DNSResolves.Encode(e)
 	}
-	if s.DNSResolves.Set {
-		e.Comma()
+
+	if s.IsProxied.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.IsProxied.Set {
 		e.RawStr("\"is_proxied\"" + ":")
 		s.IsProxied.Encode(e)
 	}
-	if s.IsProxied.Set {
-		e.Comma()
+
+	if s.IsCloudflareIP.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.IsCloudflareIP.Set {
 		e.RawStr("\"is_cloudflare_ip\"" + ":")
 		s.IsCloudflareIP.Encode(e)
 	}
-	if s.IsCloudflareIP.Set {
-		e.Comma()
+
+	if s.IsFastlyIP.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.IsFastlyIP.Set {
 		e.RawStr("\"is_fastly_ip\"" + ":")
 		s.IsFastlyIP.Encode(e)
 	}
-	if s.IsFastlyIP.Set {
-		e.Comma()
+
+	if s.IsOldIPAddress.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.IsOldIPAddress.Set {
 		e.RawStr("\"is_old_ip_address\"" + ":")
 		s.IsOldIPAddress.Encode(e)
 	}
-	if s.IsOldIPAddress.Set {
-		e.Comma()
+
+	if s.IsARecord.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.IsARecord.Set {
 		e.RawStr("\"is_a_record\"" + ":")
 		s.IsARecord.Encode(e)
 	}
-	if s.IsARecord.Set {
-		e.Comma()
+
+	if s.HasCnameRecord.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.HasCnameRecord.Set {
 		e.RawStr("\"has_cname_record\"" + ":")
 		s.HasCnameRecord.Encode(e)
 	}
-	if s.HasCnameRecord.Set {
-		e.Comma()
+
+	if s.HasMxRecordsPresent.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.HasMxRecordsPresent.Set {
 		e.RawStr("\"has_mx_records_present\"" + ":")
 		s.HasMxRecordsPresent.Encode(e)
 	}
-	if s.HasMxRecordsPresent.Set {
-		e.Comma()
+
+	if s.IsValidDomain.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.IsValidDomain.Set {
 		e.RawStr("\"is_valid_domain\"" + ":")
 		s.IsValidDomain.Encode(e)
 	}
-	if s.IsValidDomain.Set {
-		e.Comma()
+
+	if s.IsApexDomain.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.IsApexDomain.Set {
 		e.RawStr("\"is_apex_domain\"" + ":")
 		s.IsApexDomain.Encode(e)
 	}
-	if s.IsApexDomain.Set {
-		e.Comma()
+
+	if s.ShouldBeARecord.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.ShouldBeARecord.Set {
 		e.RawStr("\"should_be_a_record\"" + ":")
 		s.ShouldBeARecord.Encode(e)
 	}
-	if s.ShouldBeARecord.Set {
-		e.Comma()
+
+	if s.IsCnameToGithubUserDomain.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.IsCnameToGithubUserDomain.Set {
 		e.RawStr("\"is_cname_to_github_user_domain\"" + ":")
 		s.IsCnameToGithubUserDomain.Encode(e)
 	}
-	if s.IsCnameToGithubUserDomain.Set {
-		e.Comma()
+
+	if s.IsCnameToPagesDotGithubDotCom.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.IsCnameToPagesDotGithubDotCom.Set {
 		e.RawStr("\"is_cname_to_pages_dot_github_dot_com\"" + ":")
 		s.IsCnameToPagesDotGithubDotCom.Encode(e)
 	}
-	if s.IsCnameToPagesDotGithubDotCom.Set {
-		e.Comma()
+
+	if s.IsCnameToFastly.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.IsCnameToFastly.Set {
 		e.RawStr("\"is_cname_to_fastly\"" + ":")
 		s.IsCnameToFastly.Encode(e)
 	}
-	if s.IsCnameToFastly.Set {
-		e.Comma()
+
+	if s.IsPointedToGithubPagesIP.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.IsPointedToGithubPagesIP.Set {
 		e.RawStr("\"is_pointed_to_github_pages_ip\"" + ":")
 		s.IsPointedToGithubPagesIP.Encode(e)
 	}
-	if s.IsPointedToGithubPagesIP.Set {
-		e.Comma()
+
+	if s.IsNonGithubPagesIPPresent.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.IsNonGithubPagesIPPresent.Set {
 		e.RawStr("\"is_non_github_pages_ip_present\"" + ":")
 		s.IsNonGithubPagesIPPresent.Encode(e)
 	}
-	if s.IsNonGithubPagesIPPresent.Set {
-		e.Comma()
+
+	if s.IsPagesDomain.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.IsPagesDomain.Set {
 		e.RawStr("\"is_pages_domain\"" + ":")
 		s.IsPagesDomain.Encode(e)
 	}
-	if s.IsPagesDomain.Set {
-		e.Comma()
+
+	if s.IsServedByPages.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.IsServedByPages.Set {
 		e.RawStr("\"is_served_by_pages\"" + ":")
 		s.IsServedByPages.Encode(e)
 	}
-	if s.IsServedByPages.Set {
-		e.Comma()
+
+	if s.IsValid.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.IsValid.Set {
 		e.RawStr("\"is_valid\"" + ":")
 		s.IsValid.Encode(e)
 	}
-	if s.IsValid.Set {
-		e.Comma()
+
+	if s.Reason.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Reason.Set {
 		e.RawStr("\"reason\"" + ":")
 		s.Reason.Encode(e)
 	}
-	if s.Reason.Set {
-		e.Comma()
+
+	if s.RespondsToHTTPS.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.RespondsToHTTPS.Set {
 		e.RawStr("\"responds_to_https\"" + ":")
 		s.RespondsToHTTPS.Encode(e)
 	}
-	if s.RespondsToHTTPS.Set {
-		e.Comma()
+
+	if s.EnforcesHTTPS.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.EnforcesHTTPS.Set {
 		e.RawStr("\"enforces_https\"" + ":")
 		s.EnforcesHTTPS.Encode(e)
 	}
-	if s.EnforcesHTTPS.Set {
-		e.Comma()
+
+	if s.HTTPSError.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.HTTPSError.Set {
 		e.RawStr("\"https_error\"" + ":")
 		s.HTTPSError.Encode(e)
 	}
-	if s.HTTPSError.Set {
-		e.Comma()
+
+	if s.IsHTTPSEligible.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.IsHTTPSEligible.Set {
 		e.RawStr("\"is_https_eligible\"" + ":")
 		s.IsHTTPSEligible.Encode(e)
 	}
-	if s.IsHTTPSEligible.Set {
-		e.Comma()
+
+	if s.CaaError.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.CaaError.Set {
 		e.RawStr("\"caa_error\"" + ":")
 		s.CaaError.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -69192,202 +75297,317 @@ func (s *PagesHealthCheckAltDomain) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s PagesHealthCheckDomain) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.Host.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.Host.Set {
 		e.RawStr("\"host\"" + ":")
 		s.Host.Encode(e)
 	}
-	if s.Host.Set {
-		e.Comma()
+
+	if s.URI.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.URI.Set {
 		e.RawStr("\"uri\"" + ":")
 		s.URI.Encode(e)
 	}
-	if s.URI.Set {
-		e.Comma()
+
+	if s.Nameservers.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Nameservers.Set {
 		e.RawStr("\"nameservers\"" + ":")
 		s.Nameservers.Encode(e)
 	}
-	if s.Nameservers.Set {
-		e.Comma()
+
+	if s.DNSResolves.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.DNSResolves.Set {
 		e.RawStr("\"dns_resolves\"" + ":")
 		s.DNSResolves.Encode(e)
 	}
-	if s.DNSResolves.Set {
-		e.Comma()
+
+	if s.IsProxied.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.IsProxied.Set {
 		e.RawStr("\"is_proxied\"" + ":")
 		s.IsProxied.Encode(e)
 	}
-	if s.IsProxied.Set {
-		e.Comma()
+
+	if s.IsCloudflareIP.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.IsCloudflareIP.Set {
 		e.RawStr("\"is_cloudflare_ip\"" + ":")
 		s.IsCloudflareIP.Encode(e)
 	}
-	if s.IsCloudflareIP.Set {
-		e.Comma()
+
+	if s.IsFastlyIP.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.IsFastlyIP.Set {
 		e.RawStr("\"is_fastly_ip\"" + ":")
 		s.IsFastlyIP.Encode(e)
 	}
-	if s.IsFastlyIP.Set {
-		e.Comma()
+
+	if s.IsOldIPAddress.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.IsOldIPAddress.Set {
 		e.RawStr("\"is_old_ip_address\"" + ":")
 		s.IsOldIPAddress.Encode(e)
 	}
-	if s.IsOldIPAddress.Set {
-		e.Comma()
+
+	if s.IsARecord.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.IsARecord.Set {
 		e.RawStr("\"is_a_record\"" + ":")
 		s.IsARecord.Encode(e)
 	}
-	if s.IsARecord.Set {
-		e.Comma()
+
+	if s.HasCnameRecord.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.HasCnameRecord.Set {
 		e.RawStr("\"has_cname_record\"" + ":")
 		s.HasCnameRecord.Encode(e)
 	}
-	if s.HasCnameRecord.Set {
-		e.Comma()
+
+	if s.HasMxRecordsPresent.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.HasMxRecordsPresent.Set {
 		e.RawStr("\"has_mx_records_present\"" + ":")
 		s.HasMxRecordsPresent.Encode(e)
 	}
-	if s.HasMxRecordsPresent.Set {
-		e.Comma()
+
+	if s.IsValidDomain.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.IsValidDomain.Set {
 		e.RawStr("\"is_valid_domain\"" + ":")
 		s.IsValidDomain.Encode(e)
 	}
-	if s.IsValidDomain.Set {
-		e.Comma()
+
+	if s.IsApexDomain.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.IsApexDomain.Set {
 		e.RawStr("\"is_apex_domain\"" + ":")
 		s.IsApexDomain.Encode(e)
 	}
-	if s.IsApexDomain.Set {
-		e.Comma()
+
+	if s.ShouldBeARecord.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.ShouldBeARecord.Set {
 		e.RawStr("\"should_be_a_record\"" + ":")
 		s.ShouldBeARecord.Encode(e)
 	}
-	if s.ShouldBeARecord.Set {
-		e.Comma()
+
+	if s.IsCnameToGithubUserDomain.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.IsCnameToGithubUserDomain.Set {
 		e.RawStr("\"is_cname_to_github_user_domain\"" + ":")
 		s.IsCnameToGithubUserDomain.Encode(e)
 	}
-	if s.IsCnameToGithubUserDomain.Set {
-		e.Comma()
+
+	if s.IsCnameToPagesDotGithubDotCom.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.IsCnameToPagesDotGithubDotCom.Set {
 		e.RawStr("\"is_cname_to_pages_dot_github_dot_com\"" + ":")
 		s.IsCnameToPagesDotGithubDotCom.Encode(e)
 	}
-	if s.IsCnameToPagesDotGithubDotCom.Set {
-		e.Comma()
+
+	if s.IsCnameToFastly.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.IsCnameToFastly.Set {
 		e.RawStr("\"is_cname_to_fastly\"" + ":")
 		s.IsCnameToFastly.Encode(e)
 	}
-	if s.IsCnameToFastly.Set {
-		e.Comma()
+
+	if s.IsPointedToGithubPagesIP.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.IsPointedToGithubPagesIP.Set {
 		e.RawStr("\"is_pointed_to_github_pages_ip\"" + ":")
 		s.IsPointedToGithubPagesIP.Encode(e)
 	}
-	if s.IsPointedToGithubPagesIP.Set {
-		e.Comma()
+
+	if s.IsNonGithubPagesIPPresent.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.IsNonGithubPagesIPPresent.Set {
 		e.RawStr("\"is_non_github_pages_ip_present\"" + ":")
 		s.IsNonGithubPagesIPPresent.Encode(e)
 	}
-	if s.IsNonGithubPagesIPPresent.Set {
-		e.Comma()
+
+	if s.IsPagesDomain.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.IsPagesDomain.Set {
 		e.RawStr("\"is_pages_domain\"" + ":")
 		s.IsPagesDomain.Encode(e)
 	}
-	if s.IsPagesDomain.Set {
-		e.Comma()
+
+	if s.IsServedByPages.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.IsServedByPages.Set {
 		e.RawStr("\"is_served_by_pages\"" + ":")
 		s.IsServedByPages.Encode(e)
 	}
-	if s.IsServedByPages.Set {
-		e.Comma()
+
+	if s.IsValid.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.IsValid.Set {
 		e.RawStr("\"is_valid\"" + ":")
 		s.IsValid.Encode(e)
 	}
-	if s.IsValid.Set {
-		e.Comma()
+
+	if s.Reason.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Reason.Set {
 		e.RawStr("\"reason\"" + ":")
 		s.Reason.Encode(e)
 	}
-	if s.Reason.Set {
-		e.Comma()
+
+	if s.RespondsToHTTPS.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.RespondsToHTTPS.Set {
 		e.RawStr("\"responds_to_https\"" + ":")
 		s.RespondsToHTTPS.Encode(e)
 	}
-	if s.RespondsToHTTPS.Set {
-		e.Comma()
+
+	if s.EnforcesHTTPS.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.EnforcesHTTPS.Set {
 		e.RawStr("\"enforces_https\"" + ":")
 		s.EnforcesHTTPS.Encode(e)
 	}
-	if s.EnforcesHTTPS.Set {
-		e.Comma()
+
+	if s.HTTPSError.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.HTTPSError.Set {
 		e.RawStr("\"https_error\"" + ":")
 		s.HTTPSError.Encode(e)
 	}
-	if s.HTTPSError.Set {
-		e.Comma()
+
+	if s.IsHTTPSEligible.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.IsHTTPSEligible.Set {
 		e.RawStr("\"is_https_eligible\"" + ":")
 		s.IsHTTPSEligible.Encode(e)
 	}
-	if s.IsHTTPSEligible.Set {
-		e.Comma()
+
+	if s.CaaError.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.CaaError.Set {
 		e.RawStr("\"caa_error\"" + ":")
 		s.CaaError.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -69549,17 +75769,23 @@ func (s *PagesHealthCheckDomain) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s PagesSourceHash) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"branch\"" + ":")
 	e.Str(s.Branch)
+
 	e.Comma()
 
 	e.RawStr("\"path\"" + ":")
 	e.Str(s.Path)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -69592,6 +75818,16 @@ func (s *PagesSourceHash) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s ParticipationStats) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"all\"" + ":")
 	e.ArrStart()
@@ -69624,10 +75860,6 @@ func (s ParticipationStats) Encode(e *jx.Writer) {
 		}
 	}
 	e.ArrEnd()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -69676,37 +75908,48 @@ func (s *ParticipationStats) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s PorterAuthor) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"id\"" + ":")
 	e.Int(s.ID)
+
 	e.Comma()
 
 	e.RawStr("\"remote_id\"" + ":")
 	e.Str(s.RemoteID)
+
 	e.Comma()
 
 	e.RawStr("\"remote_name\"" + ":")
 	e.Str(s.RemoteName)
+
 	e.Comma()
 
 	e.RawStr("\"email\"" + ":")
 	e.Str(s.Email)
+
 	e.Comma()
 
 	e.RawStr("\"name\"" + ":")
 	e.Str(s.Name)
+
 	e.Comma()
 
 	e.RawStr("\"url\"" + ":")
 	json.EncodeURI(e, s.URL)
+
 	e.Comma()
 
 	e.RawStr("\"import_url\"" + ":")
 	json.EncodeURI(e, s.ImportURL)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -69769,25 +76012,33 @@ func (s *PorterAuthor) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s PorterLargeFile) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"ref_name\"" + ":")
 	e.Str(s.RefName)
+
 	e.Comma()
 
 	e.RawStr("\"path\"" + ":")
 	e.Str(s.Path)
+
 	e.Comma()
 
 	e.RawStr("\"oid\"" + ":")
 	e.Str(s.Oid)
+
 	e.Comma()
 
 	e.RawStr("\"size\"" + ":")
 	e.Int(s.Size)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -69832,17 +76083,23 @@ func (s *PorterLargeFile) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s PreviewHeaderMissing) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"message\"" + ":")
 	e.Str(s.Message)
+
 	e.Comma()
 
 	e.RawStr("\"documentation_url\"" + ":")
 	e.Str(s.DocumentationURL)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -69875,21 +76132,34 @@ func (s *PreviewHeaderMissing) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s PrivateUser) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"login\"" + ":")
 	e.Str(s.Login)
+
 	e.Comma()
 
 	e.RawStr("\"id\"" + ":")
 	e.Int(s.ID)
+
 	e.Comma()
 
 	e.RawStr("\"node_id\"" + ":")
 	e.Str(s.NodeID)
+
 	e.Comma()
 
 	e.RawStr("\"avatar_url\"" + ":")
 	json.EncodeURI(e, s.AvatarURL)
+
 	e.Comma()
 
 	e.RawStr("\"gravatar_id\"" + ":")
@@ -69899,54 +76169,67 @@ func (s PrivateUser) Encode(e *jx.Writer) {
 
 	e.RawStr("\"url\"" + ":")
 	json.EncodeURI(e, s.URL)
+
 	e.Comma()
 
 	e.RawStr("\"html_url\"" + ":")
 	json.EncodeURI(e, s.HTMLURL)
+
 	e.Comma()
 
 	e.RawStr("\"followers_url\"" + ":")
 	json.EncodeURI(e, s.FollowersURL)
+
 	e.Comma()
 
 	e.RawStr("\"following_url\"" + ":")
 	e.Str(s.FollowingURL)
+
 	e.Comma()
 
 	e.RawStr("\"gists_url\"" + ":")
 	e.Str(s.GistsURL)
+
 	e.Comma()
 
 	e.RawStr("\"starred_url\"" + ":")
 	e.Str(s.StarredURL)
+
 	e.Comma()
 
 	e.RawStr("\"subscriptions_url\"" + ":")
 	json.EncodeURI(e, s.SubscriptionsURL)
+
 	e.Comma()
 
 	e.RawStr("\"organizations_url\"" + ":")
 	json.EncodeURI(e, s.OrganizationsURL)
+
 	e.Comma()
 
 	e.RawStr("\"repos_url\"" + ":")
 	json.EncodeURI(e, s.ReposURL)
+
 	e.Comma()
 
 	e.RawStr("\"events_url\"" + ":")
 	e.Str(s.EventsURL)
+
 	e.Comma()
 
 	e.RawStr("\"received_events_url\"" + ":")
 	json.EncodeURI(e, s.ReceivedEventsURL)
+
 	e.Comma()
 
 	e.RawStr("\"type\"" + ":")
 	e.Str(s.Type)
+
 	e.Comma()
 
 	e.RawStr("\"site_admin\"" + ":")
 	e.Bool(s.SiteAdmin)
+
 	e.Comma()
 
 	e.RawStr("\"name\"" + ":")
@@ -69982,90 +76265,104 @@ func (s PrivateUser) Encode(e *jx.Writer) {
 	e.RawStr("\"bio\"" + ":")
 	s.Bio.Encode(e)
 
-	e.Comma()
+	if s.TwitterUsername.Set {
+		e.Comma()
+	}
 	if s.TwitterUsername.Set {
 		e.RawStr("\"twitter_username\"" + ":")
 		s.TwitterUsername.Encode(e)
 	}
-	if s.TwitterUsername.Set {
-		e.Comma()
-	}
+
+	e.Comma()
 
 	e.RawStr("\"public_repos\"" + ":")
 	e.Int(s.PublicRepos)
+
 	e.Comma()
 
 	e.RawStr("\"public_gists\"" + ":")
 	e.Int(s.PublicGists)
+
 	e.Comma()
 
 	e.RawStr("\"followers\"" + ":")
 	e.Int(s.Followers)
+
 	e.Comma()
 
 	e.RawStr("\"following\"" + ":")
 	e.Int(s.Following)
+
 	e.Comma()
 
 	e.RawStr("\"created_at\"" + ":")
 	json.EncodeDateTime(e, s.CreatedAt)
+
 	e.Comma()
 
 	e.RawStr("\"updated_at\"" + ":")
 	json.EncodeDateTime(e, s.UpdatedAt)
+
 	e.Comma()
 
 	e.RawStr("\"private_gists\"" + ":")
 	e.Int(s.PrivateGists)
+
 	e.Comma()
 
 	e.RawStr("\"total_private_repos\"" + ":")
 	e.Int(s.TotalPrivateRepos)
+
 	e.Comma()
 
 	e.RawStr("\"owned_private_repos\"" + ":")
 	e.Int(s.OwnedPrivateRepos)
+
 	e.Comma()
 
 	e.RawStr("\"disk_usage\"" + ":")
 	e.Int(s.DiskUsage)
+
 	e.Comma()
 
 	e.RawStr("\"collaborators\"" + ":")
 	e.Int(s.Collaborators)
+
 	e.Comma()
 
 	e.RawStr("\"two_factor_authentication\"" + ":")
 	e.Bool(s.TwoFactorAuthentication)
-	e.Comma()
+
+	if s.Plan.Set {
+		e.Comma()
+	}
 	if s.Plan.Set {
 		e.RawStr("\"plan\"" + ":")
 		s.Plan.Encode(e)
 	}
-	if s.Plan.Set {
+
+	if s.SuspendedAt.Set {
 		e.Comma()
 	}
 	if s.SuspendedAt.Set {
 		e.RawStr("\"suspended_at\"" + ":")
 		s.SuspendedAt.Encode(e, json.EncodeDateTime)
 	}
-	if s.SuspendedAt.Set {
+
+	if s.BusinessPlus.Set {
 		e.Comma()
 	}
 	if s.BusinessPlus.Set {
 		e.RawStr("\"business_plus\"" + ":")
 		s.BusinessPlus.Encode(e)
 	}
-	if s.BusinessPlus.Set {
+
+	if s.LdapDn.Set {
 		e.Comma()
 	}
 	if s.LdapDn.Set {
 		e.RawStr("\"ldap_dn\"" + ":")
 		s.LdapDn.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -70318,25 +76615,33 @@ func (s *PrivateUser) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s PrivateUserPlan) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"collaborators\"" + ":")
 	e.Int(s.Collaborators)
+
 	e.Comma()
 
 	e.RawStr("\"name\"" + ":")
 	e.Str(s.Name)
+
 	e.Comma()
 
 	e.RawStr("\"space\"" + ":")
 	e.Int(s.Space)
+
 	e.Comma()
 
 	e.RawStr("\"private_repos\"" + ":")
 	e.Int(s.PrivateRepos)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -70381,33 +76686,49 @@ func (s *PrivateUserPlan) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s Project) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"owner_url\"" + ":")
 	json.EncodeURI(e, s.OwnerURL)
+
 	e.Comma()
 
 	e.RawStr("\"url\"" + ":")
 	json.EncodeURI(e, s.URL)
+
 	e.Comma()
 
 	e.RawStr("\"html_url\"" + ":")
 	json.EncodeURI(e, s.HTMLURL)
+
 	e.Comma()
 
 	e.RawStr("\"columns_url\"" + ":")
 	json.EncodeURI(e, s.ColumnsURL)
+
 	e.Comma()
 
 	e.RawStr("\"id\"" + ":")
 	e.Int(s.ID)
+
 	e.Comma()
 
 	e.RawStr("\"node_id\"" + ":")
 	e.Str(s.NodeID)
+
 	e.Comma()
 
 	e.RawStr("\"name\"" + ":")
 	e.Str(s.Name)
+
 	e.Comma()
 
 	e.RawStr("\"body\"" + ":")
@@ -70417,10 +76738,12 @@ func (s Project) Encode(e *jx.Writer) {
 
 	e.RawStr("\"number\"" + ":")
 	e.Int(s.Number)
+
 	e.Comma()
 
 	e.RawStr("\"state\"" + ":")
 	e.Str(s.State)
+
 	e.Comma()
 
 	e.RawStr("\"creator\"" + ":")
@@ -70430,25 +76753,26 @@ func (s Project) Encode(e *jx.Writer) {
 
 	e.RawStr("\"created_at\"" + ":")
 	json.EncodeDateTime(e, s.CreatedAt)
+
 	e.Comma()
 
 	e.RawStr("\"updated_at\"" + ":")
 	json.EncodeDateTime(e, s.UpdatedAt)
-	e.Comma()
+
+	if s.OrganizationPermission.Set {
+		e.Comma()
+	}
 	if s.OrganizationPermission.Set {
 		e.RawStr("\"organization_permission\"" + ":")
 		s.OrganizationPermission.Encode(e)
 	}
-	if s.OrganizationPermission.Set {
+
+	if s.Private.Set {
 		e.Comma()
 	}
 	if s.Private.Set {
 		e.RawStr("\"private\"" + ":")
 		s.Private.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -70554,17 +76878,29 @@ func (s *Project) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s ProjectCard) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"url\"" + ":")
 	json.EncodeURI(e, s.URL)
+
 	e.Comma()
 
 	e.RawStr("\"id\"" + ":")
 	e.Int(s.ID)
+
 	e.Comma()
 
 	e.RawStr("\"node_id\"" + ":")
 	e.Str(s.NodeID)
+
 	e.Comma()
 
 	e.RawStr("\"note\"" + ":")
@@ -70579,50 +76915,53 @@ func (s ProjectCard) Encode(e *jx.Writer) {
 
 	e.RawStr("\"created_at\"" + ":")
 	json.EncodeDateTime(e, s.CreatedAt)
+
 	e.Comma()
 
 	e.RawStr("\"updated_at\"" + ":")
 	json.EncodeDateTime(e, s.UpdatedAt)
-	e.Comma()
+
+	if s.Archived.Set {
+		e.Comma()
+	}
 	if s.Archived.Set {
 		e.RawStr("\"archived\"" + ":")
 		s.Archived.Encode(e)
 	}
-	if s.Archived.Set {
+
+	if s.ColumnName.Set {
 		e.Comma()
 	}
 	if s.ColumnName.Set {
 		e.RawStr("\"column_name\"" + ":")
 		s.ColumnName.Encode(e)
 	}
-	if s.ColumnName.Set {
+
+	if s.ProjectID.Set {
 		e.Comma()
 	}
 	if s.ProjectID.Set {
 		e.RawStr("\"project_id\"" + ":")
 		s.ProjectID.Encode(e)
 	}
-	if s.ProjectID.Set {
-		e.Comma()
-	}
+
+	e.Comma()
 
 	e.RawStr("\"column_url\"" + ":")
 	json.EncodeURI(e, s.ColumnURL)
-	e.Comma()
+
+	if s.ContentURL.Set {
+		e.Comma()
+	}
 	if s.ContentURL.Set {
 		e.RawStr("\"content_url\"" + ":")
 		s.ContentURL.Encode(e)
 	}
-	if s.ContentURL.Set {
-		e.Comma()
-	}
+
+	e.Comma()
 
 	e.RawStr("\"project_url\"" + ":")
 	json.EncodeURI(e, s.ProjectURL)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -70713,41 +77052,53 @@ func (s *ProjectCard) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s ProjectColumn) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"url\"" + ":")
 	json.EncodeURI(e, s.URL)
+
 	e.Comma()
 
 	e.RawStr("\"project_url\"" + ":")
 	json.EncodeURI(e, s.ProjectURL)
+
 	e.Comma()
 
 	e.RawStr("\"cards_url\"" + ":")
 	json.EncodeURI(e, s.CardsURL)
+
 	e.Comma()
 
 	e.RawStr("\"id\"" + ":")
 	e.Int(s.ID)
+
 	e.Comma()
 
 	e.RawStr("\"node_id\"" + ":")
 	e.Str(s.NodeID)
+
 	e.Comma()
 
 	e.RawStr("\"name\"" + ":")
 	e.Str(s.Name)
+
 	e.Comma()
 
 	e.RawStr("\"created_at\"" + ":")
 	json.EncodeDateTime(e, s.CreatedAt)
+
 	e.Comma()
 
 	e.RawStr("\"updated_at\"" + ":")
 	json.EncodeDateTime(e, s.UpdatedAt)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -70919,10 +77270,10 @@ func (s *ProjectsAddCollaboratorApplicationJSONUnauthorized) Decode(d *jx.Decode
 // Encode implements json.Marshaler.
 func (s ProjectsAddCollaboratorNoContent) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -70943,13 +77294,20 @@ func (s *ProjectsAddCollaboratorNoContent) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s ProjectsAddCollaboratorReq) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.Permission.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.Permission.Set {
 		e.RawStr("\"permission\"" + ":")
 		s.Permission.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -71064,13 +77422,19 @@ func (s *ProjectsCreateCardReq) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s ProjectsCreateCardReq0) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"note\"" + ":")
 	s.Note.Encode(e)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -71095,17 +77459,23 @@ func (s *ProjectsCreateCardReq0) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s ProjectsCreateCardReq1) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"content_id\"" + ":")
 	e.Int(s.ContentID)
+
 	e.Comma()
 
 	e.RawStr("\"content_type\"" + ":")
 	e.Str(s.ContentType)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -71186,13 +77556,18 @@ func (s *ProjectsCreateColumnApplicationJSONUnauthorized) Decode(d *jx.Decoder) 
 // Encode implements json.Marshaler.
 func (s ProjectsCreateColumnReq) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"name\"" + ":")
 	e.Str(s.Name)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -71267,17 +77642,25 @@ func (s *ProjectsCreateForAuthenticatedUserApplicationJSONUnauthorized) Decode(d
 // Encode implements json.Marshaler.
 func (s ProjectsCreateForAuthenticatedUserReq) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"name\"" + ":")
 	e.Str(s.Name)
-	e.Comma()
+
+	if s.Body.Set {
+		e.Comma()
+	}
 	if s.Body.Set {
 		e.RawStr("\"body\"" + ":")
 		s.Body.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -71406,17 +77789,25 @@ func (s *ProjectsCreateForOrgApplicationJSONUnauthorized) Decode(d *jx.Decoder) 
 // Encode implements json.Marshaler.
 func (s ProjectsCreateForOrgReq) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"name\"" + ":")
 	e.Str(s.Name)
-	e.Comma()
+
+	if s.Body.Set {
+		e.Comma()
+	}
 	if s.Body.Set {
 		e.RawStr("\"body\"" + ":")
 		s.Body.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -71545,17 +77936,25 @@ func (s *ProjectsCreateForRepoApplicationJSONUnauthorized) Decode(d *jx.Decoder)
 // Encode implements json.Marshaler.
 func (s ProjectsCreateForRepoReq) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"name\"" + ":")
 	e.Str(s.Name)
-	e.Comma()
+
+	if s.Body.Set {
+		e.Comma()
+	}
 	if s.Body.Set {
 		e.RawStr("\"body\"" + ":")
 		s.Body.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -71708,19 +78107,38 @@ func (s *ProjectsDeleteCardApplicationJSONUnauthorized) Decode(d *jx.Decoder) er
 // Encode implements json.Marshaler.
 func (s ProjectsDeleteCardForbidden) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.Message.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.Message.Set {
 		e.RawStr("\"message\"" + ":")
 		s.Message.Encode(e)
 	}
-	if s.Message.Set {
-		e.Comma()
+
+	if s.DocumentationURL.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.DocumentationURL.Set {
 		e.RawStr("\"documentation_url\"" + ":")
 		s.DocumentationURL.Encode(e)
 	}
-	if s.DocumentationURL.Set {
-		e.Comma()
+
+	if s.Errors != nil {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Errors != nil {
 		e.RawStr("\"errors\"" + ":")
@@ -71737,10 +78155,6 @@ func (s ProjectsDeleteCardForbidden) Encode(e *jx.Writer) {
 			}
 		}
 		e.ArrEnd()
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -71786,10 +78200,10 @@ func (s *ProjectsDeleteCardForbidden) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s ProjectsDeleteCardNoContent) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -71858,10 +78272,10 @@ func (s *ProjectsDeleteColumnApplicationJSONUnauthorized) Decode(d *jx.Decoder) 
 // Encode implements json.Marshaler.
 func (s ProjectsDeleteColumnNoContent) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -71882,19 +78296,38 @@ func (s *ProjectsDeleteColumnNoContent) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s ProjectsDeleteForbidden) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.Message.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.Message.Set {
 		e.RawStr("\"message\"" + ":")
 		s.Message.Encode(e)
 	}
-	if s.Message.Set {
-		e.Comma()
+
+	if s.DocumentationURL.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.DocumentationURL.Set {
 		e.RawStr("\"documentation_url\"" + ":")
 		s.DocumentationURL.Encode(e)
 	}
-	if s.DocumentationURL.Set {
-		e.Comma()
+
+	if s.Errors != nil {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Errors != nil {
 		e.RawStr("\"errors\"" + ":")
@@ -71911,10 +78344,6 @@ func (s ProjectsDeleteForbidden) Encode(e *jx.Writer) {
 			}
 		}
 		e.ArrEnd()
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -71960,10 +78389,10 @@ func (s *ProjectsDeleteForbidden) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s ProjectsDeleteNoContent) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -72921,10 +79350,10 @@ func (s *ProjectsListForUserState) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s ProjectsMoveCardCreated) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -72945,19 +79374,38 @@ func (s *ProjectsMoveCardCreated) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s ProjectsMoveCardForbidden) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.Message.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.Message.Set {
 		e.RawStr("\"message\"" + ":")
 		s.Message.Encode(e)
 	}
-	if s.Message.Set {
-		e.Comma()
+
+	if s.DocumentationURL.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.DocumentationURL.Set {
 		e.RawStr("\"documentation_url\"" + ":")
 		s.DocumentationURL.Encode(e)
 	}
-	if s.DocumentationURL.Set {
-		e.Comma()
+
+	if s.Errors != nil {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Errors != nil {
 		e.RawStr("\"errors\"" + ":")
@@ -72974,10 +79422,6 @@ func (s ProjectsMoveCardForbidden) Encode(e *jx.Writer) {
 			}
 		}
 		e.ArrEnd()
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -73021,34 +79465,53 @@ func (s *ProjectsMoveCardForbidden) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s ProjectsMoveCardForbiddenErrorsItem) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.Code.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.Code.Set {
 		e.RawStr("\"code\"" + ":")
 		s.Code.Encode(e)
 	}
-	if s.Code.Set {
-		e.Comma()
+
+	if s.Message.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Message.Set {
 		e.RawStr("\"message\"" + ":")
 		s.Message.Encode(e)
 	}
-	if s.Message.Set {
-		e.Comma()
+
+	if s.Resource.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Resource.Set {
 		e.RawStr("\"resource\"" + ":")
 		s.Resource.Encode(e)
 	}
-	if s.Resource.Set {
-		e.Comma()
+
+	if s.Field.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Field.Set {
 		e.RawStr("\"field\"" + ":")
 		s.Field.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -73090,17 +79553,25 @@ func (s *ProjectsMoveCardForbiddenErrorsItem) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s ProjectsMoveCardReq) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"position\"" + ":")
 	e.Str(s.Position)
-	e.Comma()
+
+	if s.ColumnID.Set {
+		e.Comma()
+	}
 	if s.ColumnID.Set {
 		e.RawStr("\"column_id\"" + ":")
 		s.ColumnID.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -73133,26 +79604,49 @@ func (s *ProjectsMoveCardReq) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s ProjectsMoveCardServiceUnavailable) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.Code.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.Code.Set {
 		e.RawStr("\"code\"" + ":")
 		s.Code.Encode(e)
 	}
-	if s.Code.Set {
-		e.Comma()
+
+	if s.Message.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Message.Set {
 		e.RawStr("\"message\"" + ":")
 		s.Message.Encode(e)
 	}
-	if s.Message.Set {
-		e.Comma()
+
+	if s.DocumentationURL.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.DocumentationURL.Set {
 		e.RawStr("\"documentation_url\"" + ":")
 		s.DocumentationURL.Encode(e)
 	}
-	if s.DocumentationURL.Set {
-		e.Comma()
+
+	if s.Errors != nil {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Errors != nil {
 		e.RawStr("\"errors\"" + ":")
@@ -73169,10 +79663,6 @@ func (s ProjectsMoveCardServiceUnavailable) Encode(e *jx.Writer) {
 			}
 		}
 		e.ArrEnd()
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -73221,20 +79711,31 @@ func (s *ProjectsMoveCardServiceUnavailable) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s ProjectsMoveCardServiceUnavailableErrorsItem) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.Code.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.Code.Set {
 		e.RawStr("\"code\"" + ":")
 		s.Code.Encode(e)
 	}
-	if s.Code.Set {
-		e.Comma()
+
+	if s.Message.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Message.Set {
 		e.RawStr("\"message\"" + ":")
 		s.Message.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -73314,10 +79815,10 @@ func (s *ProjectsMoveColumnApplicationJSONUnauthorized) Decode(d *jx.Decoder) er
 // Encode implements json.Marshaler.
 func (s ProjectsMoveColumnCreated) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -73338,13 +79839,18 @@ func (s *ProjectsMoveColumnCreated) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s ProjectsMoveColumnReq) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"position\"" + ":")
 	e.Str(s.Position)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -73443,10 +79949,10 @@ func (s *ProjectsRemoveCollaboratorApplicationJSONUnauthorized) Decode(d *jx.Dec
 // Encode implements json.Marshaler.
 func (s ProjectsRemoveCollaboratorNoContent) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -73587,20 +80093,31 @@ func (s *ProjectsUpdateCardApplicationJSONUnauthorized) Decode(d *jx.Decoder) er
 // Encode implements json.Marshaler.
 func (s ProjectsUpdateCardReq) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.Note.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.Note.Set {
 		e.RawStr("\"note\"" + ":")
 		s.Note.Encode(e)
 	}
-	if s.Note.Set {
-		e.Comma()
+
+	if s.Archived.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Archived.Set {
 		e.RawStr("\"archived\"" + ":")
 		s.Archived.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -73680,13 +80197,18 @@ func (s *ProjectsUpdateColumnApplicationJSONUnauthorized) Decode(d *jx.Decoder) 
 // Encode implements json.Marshaler.
 func (s ProjectsUpdateColumnReq) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"name\"" + ":")
 	e.Str(s.Name)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -73713,19 +80235,38 @@ func (s *ProjectsUpdateColumnReq) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s ProjectsUpdateForbidden) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.Message.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.Message.Set {
 		e.RawStr("\"message\"" + ":")
 		s.Message.Encode(e)
 	}
-	if s.Message.Set {
-		e.Comma()
+
+	if s.DocumentationURL.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.DocumentationURL.Set {
 		e.RawStr("\"documentation_url\"" + ":")
 		s.DocumentationURL.Encode(e)
 	}
-	if s.DocumentationURL.Set {
-		e.Comma()
+
+	if s.Errors != nil {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Errors != nil {
 		e.RawStr("\"errors\"" + ":")
@@ -73742,10 +80283,6 @@ func (s ProjectsUpdateForbidden) Encode(e *jx.Writer) {
 			}
 		}
 		e.ArrEnd()
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -73791,10 +80328,10 @@ func (s *ProjectsUpdateForbidden) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s ProjectsUpdateNotFound) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -73815,41 +80352,64 @@ func (s *ProjectsUpdateNotFound) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s ProjectsUpdateReq) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.Name.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.Name.Set {
 		e.RawStr("\"name\"" + ":")
 		s.Name.Encode(e)
 	}
-	if s.Name.Set {
-		e.Comma()
+
+	if s.Body.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Body.Set {
 		e.RawStr("\"body\"" + ":")
 		s.Body.Encode(e)
 	}
-	if s.Body.Set {
-		e.Comma()
+
+	if s.State.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.State.Set {
 		e.RawStr("\"state\"" + ":")
 		s.State.Encode(e)
 	}
-	if s.State.Set {
-		e.Comma()
+
+	if s.OrganizationPermission.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.OrganizationPermission.Set {
 		e.RawStr("\"organization_permission\"" + ":")
 		s.OrganizationPermission.Encode(e)
 	}
-	if s.OrganizationPermission.Set {
-		e.Comma()
+
+	if s.Private.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Private.Set {
 		e.RawStr("\"private\"" + ":")
 		s.Private.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -73927,73 +80487,89 @@ func (s *ProjectsUpdateReqOrganizationPermission) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s ProtectedBranch) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"url\"" + ":")
 	json.EncodeURI(e, s.URL)
-	e.Comma()
+
+	if s.RequiredStatusChecks.Set {
+		e.Comma()
+	}
 	if s.RequiredStatusChecks.Set {
 		e.RawStr("\"required_status_checks\"" + ":")
 		s.RequiredStatusChecks.Encode(e)
 	}
-	if s.RequiredStatusChecks.Set {
+
+	if s.RequiredPullRequestReviews.Set {
 		e.Comma()
 	}
 	if s.RequiredPullRequestReviews.Set {
 		e.RawStr("\"required_pull_request_reviews\"" + ":")
 		s.RequiredPullRequestReviews.Encode(e)
 	}
-	if s.RequiredPullRequestReviews.Set {
+
+	if s.RequiredSignatures.Set {
 		e.Comma()
 	}
 	if s.RequiredSignatures.Set {
 		e.RawStr("\"required_signatures\"" + ":")
 		s.RequiredSignatures.Encode(e)
 	}
-	if s.RequiredSignatures.Set {
+
+	if s.EnforceAdmins.Set {
 		e.Comma()
 	}
 	if s.EnforceAdmins.Set {
 		e.RawStr("\"enforce_admins\"" + ":")
 		s.EnforceAdmins.Encode(e)
 	}
-	if s.EnforceAdmins.Set {
+
+	if s.RequiredLinearHistory.Set {
 		e.Comma()
 	}
 	if s.RequiredLinearHistory.Set {
 		e.RawStr("\"required_linear_history\"" + ":")
 		s.RequiredLinearHistory.Encode(e)
 	}
-	if s.RequiredLinearHistory.Set {
+
+	if s.AllowForcePushes.Set {
 		e.Comma()
 	}
 	if s.AllowForcePushes.Set {
 		e.RawStr("\"allow_force_pushes\"" + ":")
 		s.AllowForcePushes.Encode(e)
 	}
-	if s.AllowForcePushes.Set {
+
+	if s.AllowDeletions.Set {
 		e.Comma()
 	}
 	if s.AllowDeletions.Set {
 		e.RawStr("\"allow_deletions\"" + ":")
 		s.AllowDeletions.Encode(e)
 	}
-	if s.AllowDeletions.Set {
+
+	if s.Restrictions.Set {
 		e.Comma()
 	}
 	if s.Restrictions.Set {
 		e.RawStr("\"restrictions\"" + ":")
 		s.Restrictions.Encode(e)
 	}
-	if s.Restrictions.Set {
+
+	if s.RequiredConversationResolution.Set {
 		e.Comma()
 	}
 	if s.RequiredConversationResolution.Set {
 		e.RawStr("\"required_conversation_resolution\"" + ":")
 		s.RequiredConversationResolution.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -74066,17 +80642,23 @@ func (s *ProtectedBranch) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s ProtectedBranchAdminEnforced) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"url\"" + ":")
 	json.EncodeURI(e, s.URL)
+
 	e.Comma()
 
 	e.RawStr("\"enabled\"" + ":")
 	e.Bool(s.Enabled)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -74109,13 +80691,18 @@ func (s *ProtectedBranchAdminEnforced) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s ProtectedBranchAllowDeletions) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"enabled\"" + ":")
 	e.Bool(s.Enabled)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -74142,13 +80729,18 @@ func (s *ProtectedBranchAllowDeletions) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s ProtectedBranchAllowForcePushes) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"enabled\"" + ":")
 	e.Bool(s.Enabled)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -74175,17 +80767,23 @@ func (s *ProtectedBranchAllowForcePushes) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s ProtectedBranchEnforceAdmins) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"url\"" + ":")
 	json.EncodeURI(e, s.URL)
+
 	e.Comma()
 
 	e.RawStr("\"enabled\"" + ":")
 	e.Bool(s.Enabled)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -74218,35 +80816,52 @@ func (s *ProtectedBranchEnforceAdmins) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s ProtectedBranchPullRequestReview) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.URL.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.URL.Set {
 		e.RawStr("\"url\"" + ":")
 		s.URL.Encode(e)
 	}
-	if s.URL.Set {
-		e.Comma()
+
+	if s.DismissalRestrictions.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.DismissalRestrictions.Set {
 		e.RawStr("\"dismissal_restrictions\"" + ":")
 		s.DismissalRestrictions.Encode(e)
 	}
-	if s.DismissalRestrictions.Set {
+
+	if !first {
 		e.Comma()
 	}
+	first = false
 
 	e.RawStr("\"dismiss_stale_reviews\"" + ":")
 	e.Bool(s.DismissStaleReviews)
+
 	e.Comma()
 
 	e.RawStr("\"require_code_owner_reviews\"" + ":")
 	e.Bool(s.RequireCodeOwnerReviews)
-	e.Comma()
+
+	if s.RequiredApprovingReviewCount.Set {
+		e.Comma()
+	}
 	if s.RequiredApprovingReviewCount.Set {
 		e.RawStr("\"required_approving_review_count\"" + ":")
 		s.RequiredApprovingReviewCount.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -74295,6 +80910,17 @@ func (s *ProtectedBranchPullRequestReview) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s ProtectedBranchPullRequestReviewDismissalRestrictions) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.Users != nil {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.Users != nil {
 		e.RawStr("\"users\"" + ":")
 		e.ArrStart()
@@ -74311,8 +80937,12 @@ func (s ProtectedBranchPullRequestReviewDismissalRestrictions) Encode(e *jx.Writ
 		}
 		e.ArrEnd()
 	}
-	if s.Users != nil {
-		e.Comma()
+
+	if s.Teams != nil {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Teams != nil {
 		e.RawStr("\"teams\"" + ":")
@@ -74330,30 +80960,38 @@ func (s ProtectedBranchPullRequestReviewDismissalRestrictions) Encode(e *jx.Writ
 		}
 		e.ArrEnd()
 	}
-	if s.Teams != nil {
-		e.Comma()
+
+	if s.URL.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.URL.Set {
 		e.RawStr("\"url\"" + ":")
 		s.URL.Encode(e)
 	}
-	if s.URL.Set {
-		e.Comma()
+
+	if s.UsersURL.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.UsersURL.Set {
 		e.RawStr("\"users_url\"" + ":")
 		s.UsersURL.Encode(e)
 	}
-	if s.UsersURL.Set {
-		e.Comma()
+
+	if s.TeamsURL.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.TeamsURL.Set {
 		e.RawStr("\"teams_url\"" + ":")
 		s.TeamsURL.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -74414,13 +81052,20 @@ func (s *ProtectedBranchPullRequestReviewDismissalRestrictions) Decode(d *jx.Dec
 // Encode implements json.Marshaler.
 func (s ProtectedBranchRequiredConversationResolution) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.Enabled.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.Enabled.Set {
 		e.RawStr("\"enabled\"" + ":")
 		s.Enabled.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -74447,13 +81092,18 @@ func (s *ProtectedBranchRequiredConversationResolution) Decode(d *jx.Decoder) er
 // Encode implements json.Marshaler.
 func (s ProtectedBranchRequiredLinearHistory) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"enabled\"" + ":")
 	e.Bool(s.Enabled)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -74480,38 +81130,49 @@ func (s *ProtectedBranchRequiredLinearHistory) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s ProtectedBranchRequiredPullRequestReviews) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"url\"" + ":")
 	json.EncodeURI(e, s.URL)
-	e.Comma()
+
+	if s.DismissStaleReviews.Set {
+		e.Comma()
+	}
 	if s.DismissStaleReviews.Set {
 		e.RawStr("\"dismiss_stale_reviews\"" + ":")
 		s.DismissStaleReviews.Encode(e)
 	}
-	if s.DismissStaleReviews.Set {
+
+	if s.RequireCodeOwnerReviews.Set {
 		e.Comma()
 	}
 	if s.RequireCodeOwnerReviews.Set {
 		e.RawStr("\"require_code_owner_reviews\"" + ":")
 		s.RequireCodeOwnerReviews.Encode(e)
 	}
-	if s.RequireCodeOwnerReviews.Set {
+
+	if s.RequiredApprovingReviewCount.Set {
 		e.Comma()
 	}
 	if s.RequiredApprovingReviewCount.Set {
 		e.RawStr("\"required_approving_review_count\"" + ":")
 		s.RequiredApprovingReviewCount.Encode(e)
 	}
-	if s.RequiredApprovingReviewCount.Set {
+
+	if s.DismissalRestrictions.Set {
 		e.Comma()
 	}
 	if s.DismissalRestrictions.Set {
 		e.RawStr("\"dismissal_restrictions\"" + ":")
 		s.DismissalRestrictions.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -74559,17 +81220,29 @@ func (s *ProtectedBranchRequiredPullRequestReviews) Decode(d *jx.Decoder) error 
 // Encode implements json.Marshaler.
 func (s ProtectedBranchRequiredPullRequestReviewsDismissalRestrictions) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"url\"" + ":")
 	json.EncodeURI(e, s.URL)
+
 	e.Comma()
 
 	e.RawStr("\"users_url\"" + ":")
 	json.EncodeURI(e, s.UsersURL)
+
 	e.Comma()
 
 	e.RawStr("\"teams_url\"" + ":")
 	json.EncodeURI(e, s.TeamsURL)
+
 	e.Comma()
 
 	e.RawStr("\"users\"" + ":")
@@ -74603,10 +81276,6 @@ func (s ProtectedBranchRequiredPullRequestReviewsDismissalRestrictions) Encode(e
 		}
 	}
 	e.ArrEnd()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -74669,17 +81338,23 @@ func (s *ProtectedBranchRequiredPullRequestReviewsDismissalRestrictions) Decode(
 // Encode implements json.Marshaler.
 func (s ProtectedBranchRequiredSignatures) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"url\"" + ":")
 	json.EncodeURI(e, s.URL)
+
 	e.Comma()
 
 	e.RawStr("\"enabled\"" + ":")
 	e.Bool(s.Enabled)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -74712,21 +81387,34 @@ func (s *ProtectedBranchRequiredSignatures) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s PublicUser) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"login\"" + ":")
 	e.Str(s.Login)
+
 	e.Comma()
 
 	e.RawStr("\"id\"" + ":")
 	e.Int(s.ID)
+
 	e.Comma()
 
 	e.RawStr("\"node_id\"" + ":")
 	e.Str(s.NodeID)
+
 	e.Comma()
 
 	e.RawStr("\"avatar_url\"" + ":")
 	json.EncodeURI(e, s.AvatarURL)
+
 	e.Comma()
 
 	e.RawStr("\"gravatar_id\"" + ":")
@@ -74736,54 +81424,67 @@ func (s PublicUser) Encode(e *jx.Writer) {
 
 	e.RawStr("\"url\"" + ":")
 	json.EncodeURI(e, s.URL)
+
 	e.Comma()
 
 	e.RawStr("\"html_url\"" + ":")
 	json.EncodeURI(e, s.HTMLURL)
+
 	e.Comma()
 
 	e.RawStr("\"followers_url\"" + ":")
 	json.EncodeURI(e, s.FollowersURL)
+
 	e.Comma()
 
 	e.RawStr("\"following_url\"" + ":")
 	e.Str(s.FollowingURL)
+
 	e.Comma()
 
 	e.RawStr("\"gists_url\"" + ":")
 	e.Str(s.GistsURL)
+
 	e.Comma()
 
 	e.RawStr("\"starred_url\"" + ":")
 	e.Str(s.StarredURL)
+
 	e.Comma()
 
 	e.RawStr("\"subscriptions_url\"" + ":")
 	json.EncodeURI(e, s.SubscriptionsURL)
+
 	e.Comma()
 
 	e.RawStr("\"organizations_url\"" + ":")
 	json.EncodeURI(e, s.OrganizationsURL)
+
 	e.Comma()
 
 	e.RawStr("\"repos_url\"" + ":")
 	json.EncodeURI(e, s.ReposURL)
+
 	e.Comma()
 
 	e.RawStr("\"events_url\"" + ":")
 	e.Str(s.EventsURL)
+
 	e.Comma()
 
 	e.RawStr("\"received_events_url\"" + ":")
 	json.EncodeURI(e, s.ReceivedEventsURL)
+
 	e.Comma()
 
 	e.RawStr("\"type\"" + ":")
 	e.Str(s.Type)
+
 	e.Comma()
 
 	e.RawStr("\"site_admin\"" + ":")
 	e.Bool(s.SiteAdmin)
+
 	e.Comma()
 
 	e.RawStr("\"name\"" + ":")
@@ -74819,87 +81520,98 @@ func (s PublicUser) Encode(e *jx.Writer) {
 	e.RawStr("\"bio\"" + ":")
 	s.Bio.Encode(e)
 
-	e.Comma()
+	if s.TwitterUsername.Set {
+		e.Comma()
+	}
 	if s.TwitterUsername.Set {
 		e.RawStr("\"twitter_username\"" + ":")
 		s.TwitterUsername.Encode(e)
 	}
-	if s.TwitterUsername.Set {
-		e.Comma()
-	}
+
+	e.Comma()
 
 	e.RawStr("\"public_repos\"" + ":")
 	e.Int(s.PublicRepos)
+
 	e.Comma()
 
 	e.RawStr("\"public_gists\"" + ":")
 	e.Int(s.PublicGists)
+
 	e.Comma()
 
 	e.RawStr("\"followers\"" + ":")
 	e.Int(s.Followers)
+
 	e.Comma()
 
 	e.RawStr("\"following\"" + ":")
 	e.Int(s.Following)
+
 	e.Comma()
 
 	e.RawStr("\"created_at\"" + ":")
 	json.EncodeDateTime(e, s.CreatedAt)
+
 	e.Comma()
 
 	e.RawStr("\"updated_at\"" + ":")
 	json.EncodeDateTime(e, s.UpdatedAt)
-	e.Comma()
+
+	if s.Plan.Set {
+		e.Comma()
+	}
 	if s.Plan.Set {
 		e.RawStr("\"plan\"" + ":")
 		s.Plan.Encode(e)
 	}
-	if s.Plan.Set {
+
+	if s.SuspendedAt.Set {
 		e.Comma()
 	}
 	if s.SuspendedAt.Set {
 		e.RawStr("\"suspended_at\"" + ":")
 		s.SuspendedAt.Encode(e, json.EncodeDateTime)
 	}
-	if s.SuspendedAt.Set {
+
+	if s.PrivateGists.Set {
 		e.Comma()
 	}
 	if s.PrivateGists.Set {
 		e.RawStr("\"private_gists\"" + ":")
 		s.PrivateGists.Encode(e)
 	}
-	if s.PrivateGists.Set {
+
+	if s.TotalPrivateRepos.Set {
 		e.Comma()
 	}
 	if s.TotalPrivateRepos.Set {
 		e.RawStr("\"total_private_repos\"" + ":")
 		s.TotalPrivateRepos.Encode(e)
 	}
-	if s.TotalPrivateRepos.Set {
+
+	if s.OwnedPrivateRepos.Set {
 		e.Comma()
 	}
 	if s.OwnedPrivateRepos.Set {
 		e.RawStr("\"owned_private_repos\"" + ":")
 		s.OwnedPrivateRepos.Encode(e)
 	}
-	if s.OwnedPrivateRepos.Set {
+
+	if s.DiskUsage.Set {
 		e.Comma()
 	}
 	if s.DiskUsage.Set {
 		e.RawStr("\"disk_usage\"" + ":")
 		s.DiskUsage.Encode(e)
 	}
-	if s.DiskUsage.Set {
+
+	if s.Collaborators.Set {
 		e.Comma()
 	}
 	if s.Collaborators.Set {
 		e.RawStr("\"collaborators\"" + ":")
 		s.Collaborators.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -75131,25 +81843,33 @@ func (s *PublicUser) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s PublicUserPlan) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"collaborators\"" + ":")
 	e.Int(s.Collaborators)
+
 	e.Comma()
 
 	e.RawStr("\"name\"" + ":")
 	e.Str(s.Name)
+
 	e.Comma()
 
 	e.RawStr("\"space\"" + ":")
 	e.Int(s.Space)
+
 	e.Comma()
 
 	e.RawStr("\"private_repos\"" + ":")
 	e.Int(s.PrivateRepos)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -75194,57 +81914,79 @@ func (s *PublicUserPlan) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s PullRequest) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"url\"" + ":")
 	json.EncodeURI(e, s.URL)
+
 	e.Comma()
 
 	e.RawStr("\"id\"" + ":")
 	e.Int(s.ID)
+
 	e.Comma()
 
 	e.RawStr("\"node_id\"" + ":")
 	e.Str(s.NodeID)
+
 	e.Comma()
 
 	e.RawStr("\"html_url\"" + ":")
 	json.EncodeURI(e, s.HTMLURL)
+
 	e.Comma()
 
 	e.RawStr("\"diff_url\"" + ":")
 	json.EncodeURI(e, s.DiffURL)
+
 	e.Comma()
 
 	e.RawStr("\"patch_url\"" + ":")
 	json.EncodeURI(e, s.PatchURL)
+
 	e.Comma()
 
 	e.RawStr("\"issue_url\"" + ":")
 	json.EncodeURI(e, s.IssueURL)
+
 	e.Comma()
 
 	e.RawStr("\"commits_url\"" + ":")
 	json.EncodeURI(e, s.CommitsURL)
+
 	e.Comma()
 
 	e.RawStr("\"review_comments_url\"" + ":")
 	json.EncodeURI(e, s.ReviewCommentsURL)
+
 	e.Comma()
 
 	e.RawStr("\"review_comment_url\"" + ":")
 	e.Str(s.ReviewCommentURL)
+
 	e.Comma()
 
 	e.RawStr("\"comments_url\"" + ":")
 	json.EncodeURI(e, s.CommentsURL)
+
 	e.Comma()
 
 	e.RawStr("\"statuses_url\"" + ":")
 	json.EncodeURI(e, s.StatusesURL)
+
 	e.Comma()
 
 	e.RawStr("\"number\"" + ":")
 	e.Int(s.Number)
+
 	e.Comma()
 
 	e.RawStr("\"state\"" + ":")
@@ -75254,10 +81996,12 @@ func (s PullRequest) Encode(e *jx.Writer) {
 
 	e.RawStr("\"locked\"" + ":")
 	e.Bool(s.Locked)
+
 	e.Comma()
 
 	e.RawStr("\"title\"" + ":")
 	e.Str(s.Title)
+
 	e.Comma()
 
 	e.RawStr("\"user\"" + ":")
@@ -75290,21 +82034,24 @@ func (s PullRequest) Encode(e *jx.Writer) {
 	e.RawStr("\"milestone\"" + ":")
 	s.Milestone.Encode(e)
 
-	e.Comma()
+	if s.ActiveLockReason.Set {
+		e.Comma()
+	}
 	if s.ActiveLockReason.Set {
 		e.RawStr("\"active_lock_reason\"" + ":")
 		s.ActiveLockReason.Encode(e)
 	}
-	if s.ActiveLockReason.Set {
-		e.Comma()
-	}
+
+	e.Comma()
 
 	e.RawStr("\"created_at\"" + ":")
 	json.EncodeDateTime(e, s.CreatedAt)
+
 	e.Comma()
 
 	e.RawStr("\"updated_at\"" + ":")
 	json.EncodeDateTime(e, s.UpdatedAt)
+
 	e.Comma()
 
 	e.RawStr("\"closed_at\"" + ":")
@@ -75325,28 +82072,31 @@ func (s PullRequest) Encode(e *jx.Writer) {
 	e.RawStr("\"assignee\"" + ":")
 	s.Assignee.Encode(e)
 
-	e.Comma()
+	if s.Assignees.Set {
+		e.Comma()
+	}
 	if s.Assignees.Set {
 		e.RawStr("\"assignees\"" + ":")
 		s.Assignees.Encode(e)
 	}
-	if s.Assignees.Set {
+
+	if s.RequestedReviewers.Set {
 		e.Comma()
 	}
 	if s.RequestedReviewers.Set {
 		e.RawStr("\"requested_reviewers\"" + ":")
 		s.RequestedReviewers.Encode(e)
 	}
-	if s.RequestedReviewers.Set {
+
+	if s.RequestedTeams.Set {
 		e.Comma()
 	}
 	if s.RequestedTeams.Set {
 		e.RawStr("\"requested_teams\"" + ":")
 		s.RequestedTeams.Encode(e)
 	}
-	if s.RequestedTeams.Set {
-		e.Comma()
-	}
+
+	e.Comma()
 
 	e.RawStr("\"head\"" + ":")
 	s.Head.Encode(e)
@@ -75371,33 +82121,37 @@ func (s PullRequest) Encode(e *jx.Writer) {
 	e.RawStr("\"auto_merge\"" + ":")
 	s.AutoMerge.Encode(e)
 
-	e.Comma()
+	if s.Draft.Set {
+		e.Comma()
+	}
 	if s.Draft.Set {
 		e.RawStr("\"draft\"" + ":")
 		s.Draft.Encode(e)
 	}
-	if s.Draft.Set {
-		e.Comma()
-	}
+
+	e.Comma()
 
 	e.RawStr("\"merged\"" + ":")
 	e.Bool(s.Merged)
+
 	e.Comma()
 
 	e.RawStr("\"mergeable\"" + ":")
 	s.Mergeable.Encode(e)
 
-	e.Comma()
+	if s.Rebaseable.Set {
+		e.Comma()
+	}
 	if s.Rebaseable.Set {
 		e.RawStr("\"rebaseable\"" + ":")
 		s.Rebaseable.Encode(e)
 	}
-	if s.Rebaseable.Set {
-		e.Comma()
-	}
+
+	e.Comma()
 
 	e.RawStr("\"mergeable_state\"" + ":")
 	e.Str(s.MergeableState)
+
 	e.Comma()
 
 	e.RawStr("\"merged_by\"" + ":")
@@ -75407,34 +82161,36 @@ func (s PullRequest) Encode(e *jx.Writer) {
 
 	e.RawStr("\"comments\"" + ":")
 	e.Int(s.Comments)
+
 	e.Comma()
 
 	e.RawStr("\"review_comments\"" + ":")
 	e.Int(s.ReviewComments)
+
 	e.Comma()
 
 	e.RawStr("\"maintainer_can_modify\"" + ":")
 	e.Bool(s.MaintainerCanModify)
+
 	e.Comma()
 
 	e.RawStr("\"commits\"" + ":")
 	e.Int(s.Commits)
+
 	e.Comma()
 
 	e.RawStr("\"additions\"" + ":")
 	e.Int(s.Additions)
+
 	e.Comma()
 
 	e.RawStr("\"deletions\"" + ":")
 	e.Int(s.Deletions)
+
 	e.Comma()
 
 	e.RawStr("\"changed_files\"" + ":")
 	e.Int(s.ChangedFiles)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -75713,13 +82469,24 @@ func (s *PullRequest) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s PullRequestBase) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"label\"" + ":")
 	e.Str(s.Label)
+
 	e.Comma()
 
 	e.RawStr("\"ref\"" + ":")
 	e.Str(s.Ref)
+
 	e.Comma()
 
 	e.RawStr("\"repo\"" + ":")
@@ -75729,14 +82496,11 @@ func (s PullRequestBase) Encode(e *jx.Writer) {
 
 	e.RawStr("\"sha\"" + ":")
 	e.Str(s.Sha)
+
 	e.Comma()
 
 	e.RawStr("\"user\"" + ":")
 	s.User.Encode(e)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -75783,49 +82547,69 @@ func (s *PullRequestBase) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s PullRequestBaseRepo) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"archive_url\"" + ":")
 	e.Str(s.ArchiveURL)
+
 	e.Comma()
 
 	e.RawStr("\"assignees_url\"" + ":")
 	e.Str(s.AssigneesURL)
+
 	e.Comma()
 
 	e.RawStr("\"blobs_url\"" + ":")
 	e.Str(s.BlobsURL)
+
 	e.Comma()
 
 	e.RawStr("\"branches_url\"" + ":")
 	e.Str(s.BranchesURL)
+
 	e.Comma()
 
 	e.RawStr("\"collaborators_url\"" + ":")
 	e.Str(s.CollaboratorsURL)
+
 	e.Comma()
 
 	e.RawStr("\"comments_url\"" + ":")
 	e.Str(s.CommentsURL)
+
 	e.Comma()
 
 	e.RawStr("\"commits_url\"" + ":")
 	e.Str(s.CommitsURL)
+
 	e.Comma()
 
 	e.RawStr("\"compare_url\"" + ":")
 	e.Str(s.CompareURL)
+
 	e.Comma()
 
 	e.RawStr("\"contents_url\"" + ":")
 	e.Str(s.ContentsURL)
+
 	e.Comma()
 
 	e.RawStr("\"contributors_url\"" + ":")
 	json.EncodeURI(e, s.ContributorsURL)
+
 	e.Comma()
 
 	e.RawStr("\"deployments_url\"" + ":")
 	json.EncodeURI(e, s.DeploymentsURL)
+
 	e.Comma()
 
 	e.RawStr("\"description\"" + ":")
@@ -75835,90 +82619,112 @@ func (s PullRequestBaseRepo) Encode(e *jx.Writer) {
 
 	e.RawStr("\"downloads_url\"" + ":")
 	json.EncodeURI(e, s.DownloadsURL)
+
 	e.Comma()
 
 	e.RawStr("\"events_url\"" + ":")
 	json.EncodeURI(e, s.EventsURL)
+
 	e.Comma()
 
 	e.RawStr("\"fork\"" + ":")
 	e.Bool(s.Fork)
+
 	e.Comma()
 
 	e.RawStr("\"forks_url\"" + ":")
 	json.EncodeURI(e, s.ForksURL)
+
 	e.Comma()
 
 	e.RawStr("\"full_name\"" + ":")
 	e.Str(s.FullName)
+
 	e.Comma()
 
 	e.RawStr("\"git_commits_url\"" + ":")
 	e.Str(s.GitCommitsURL)
+
 	e.Comma()
 
 	e.RawStr("\"git_refs_url\"" + ":")
 	e.Str(s.GitRefsURL)
+
 	e.Comma()
 
 	e.RawStr("\"git_tags_url\"" + ":")
 	e.Str(s.GitTagsURL)
+
 	e.Comma()
 
 	e.RawStr("\"hooks_url\"" + ":")
 	json.EncodeURI(e, s.HooksURL)
+
 	e.Comma()
 
 	e.RawStr("\"html_url\"" + ":")
 	json.EncodeURI(e, s.HTMLURL)
+
 	e.Comma()
 
 	e.RawStr("\"id\"" + ":")
 	e.Int(s.ID)
+
 	e.Comma()
 
 	e.RawStr("\"node_id\"" + ":")
 	e.Str(s.NodeID)
+
 	e.Comma()
 
 	e.RawStr("\"issue_comment_url\"" + ":")
 	e.Str(s.IssueCommentURL)
+
 	e.Comma()
 
 	e.RawStr("\"issue_events_url\"" + ":")
 	e.Str(s.IssueEventsURL)
+
 	e.Comma()
 
 	e.RawStr("\"issues_url\"" + ":")
 	e.Str(s.IssuesURL)
+
 	e.Comma()
 
 	e.RawStr("\"keys_url\"" + ":")
 	e.Str(s.KeysURL)
+
 	e.Comma()
 
 	e.RawStr("\"labels_url\"" + ":")
 	e.Str(s.LabelsURL)
+
 	e.Comma()
 
 	e.RawStr("\"languages_url\"" + ":")
 	json.EncodeURI(e, s.LanguagesURL)
+
 	e.Comma()
 
 	e.RawStr("\"merges_url\"" + ":")
 	json.EncodeURI(e, s.MergesURL)
+
 	e.Comma()
 
 	e.RawStr("\"milestones_url\"" + ":")
 	e.Str(s.MilestonesURL)
+
 	e.Comma()
 
 	e.RawStr("\"name\"" + ":")
 	e.Str(s.Name)
+
 	e.Comma()
 
 	e.RawStr("\"notifications_url\"" + ":")
 	e.Str(s.NotificationsURL)
+
 	e.Comma()
 
 	e.RawStr("\"owner\"" + ":")
@@ -75928,86 +82734,107 @@ func (s PullRequestBaseRepo) Encode(e *jx.Writer) {
 
 	e.RawStr("\"private\"" + ":")
 	e.Bool(s.Private)
+
 	e.Comma()
 
 	e.RawStr("\"pulls_url\"" + ":")
 	e.Str(s.PullsURL)
+
 	e.Comma()
 
 	e.RawStr("\"releases_url\"" + ":")
 	e.Str(s.ReleasesURL)
+
 	e.Comma()
 
 	e.RawStr("\"stargazers_url\"" + ":")
 	json.EncodeURI(e, s.StargazersURL)
+
 	e.Comma()
 
 	e.RawStr("\"statuses_url\"" + ":")
 	e.Str(s.StatusesURL)
+
 	e.Comma()
 
 	e.RawStr("\"subscribers_url\"" + ":")
 	json.EncodeURI(e, s.SubscribersURL)
+
 	e.Comma()
 
 	e.RawStr("\"subscription_url\"" + ":")
 	json.EncodeURI(e, s.SubscriptionURL)
+
 	e.Comma()
 
 	e.RawStr("\"tags_url\"" + ":")
 	json.EncodeURI(e, s.TagsURL)
+
 	e.Comma()
 
 	e.RawStr("\"teams_url\"" + ":")
 	json.EncodeURI(e, s.TeamsURL)
+
 	e.Comma()
 
 	e.RawStr("\"trees_url\"" + ":")
 	e.Str(s.TreesURL)
+
 	e.Comma()
 
 	e.RawStr("\"url\"" + ":")
 	json.EncodeURI(e, s.URL)
+
 	e.Comma()
 
 	e.RawStr("\"clone_url\"" + ":")
 	e.Str(s.CloneURL)
+
 	e.Comma()
 
 	e.RawStr("\"default_branch\"" + ":")
 	e.Str(s.DefaultBranch)
+
 	e.Comma()
 
 	e.RawStr("\"forks\"" + ":")
 	e.Int(s.Forks)
+
 	e.Comma()
 
 	e.RawStr("\"forks_count\"" + ":")
 	e.Int(s.ForksCount)
+
 	e.Comma()
 
 	e.RawStr("\"git_url\"" + ":")
 	e.Str(s.GitURL)
+
 	e.Comma()
 
 	e.RawStr("\"has_downloads\"" + ":")
 	e.Bool(s.HasDownloads)
+
 	e.Comma()
 
 	e.RawStr("\"has_issues\"" + ":")
 	e.Bool(s.HasIssues)
+
 	e.Comma()
 
 	e.RawStr("\"has_projects\"" + ":")
 	e.Bool(s.HasProjects)
+
 	e.Comma()
 
 	e.RawStr("\"has_wiki\"" + ":")
 	e.Bool(s.HasWiki)
+
 	e.Comma()
 
 	e.RawStr("\"has_pages\"" + ":")
 	e.Bool(s.HasPages)
+
 	e.Comma()
 
 	e.RawStr("\"homepage\"" + ":")
@@ -76018,21 +82845,24 @@ func (s PullRequestBaseRepo) Encode(e *jx.Writer) {
 	e.RawStr("\"language\"" + ":")
 	s.Language.Encode(e)
 
-	e.Comma()
+	if s.MasterBranch.Set {
+		e.Comma()
+	}
 	if s.MasterBranch.Set {
 		e.RawStr("\"master_branch\"" + ":")
 		s.MasterBranch.Encode(e)
 	}
-	if s.MasterBranch.Set {
-		e.Comma()
-	}
+
+	e.Comma()
 
 	e.RawStr("\"archived\"" + ":")
 	e.Bool(s.Archived)
+
 	e.Comma()
 
 	e.RawStr("\"disabled\"" + ":")
 	e.Bool(s.Disabled)
+
 	e.Comma()
 
 	e.RawStr("\"mirror_url\"" + ":")
@@ -76042,46 +82872,53 @@ func (s PullRequestBaseRepo) Encode(e *jx.Writer) {
 
 	e.RawStr("\"open_issues\"" + ":")
 	e.Int(s.OpenIssues)
+
 	e.Comma()
 
 	e.RawStr("\"open_issues_count\"" + ":")
 	e.Int(s.OpenIssuesCount)
-	e.Comma()
+
+	if s.Permissions.Set {
+		e.Comma()
+	}
 	if s.Permissions.Set {
 		e.RawStr("\"permissions\"" + ":")
 		s.Permissions.Encode(e)
 	}
-	if s.Permissions.Set {
+
+	if s.TempCloneToken.Set {
 		e.Comma()
 	}
 	if s.TempCloneToken.Set {
 		e.RawStr("\"temp_clone_token\"" + ":")
 		s.TempCloneToken.Encode(e)
 	}
-	if s.TempCloneToken.Set {
+
+	if s.AllowMergeCommit.Set {
 		e.Comma()
 	}
 	if s.AllowMergeCommit.Set {
 		e.RawStr("\"allow_merge_commit\"" + ":")
 		s.AllowMergeCommit.Encode(e)
 	}
-	if s.AllowMergeCommit.Set {
+
+	if s.AllowSquashMerge.Set {
 		e.Comma()
 	}
 	if s.AllowSquashMerge.Set {
 		e.RawStr("\"allow_squash_merge\"" + ":")
 		s.AllowSquashMerge.Encode(e)
 	}
-	if s.AllowSquashMerge.Set {
+
+	if s.AllowRebaseMerge.Set {
 		e.Comma()
 	}
 	if s.AllowRebaseMerge.Set {
 		e.RawStr("\"allow_rebase_merge\"" + ":")
 		s.AllowRebaseMerge.Encode(e)
 	}
-	if s.AllowRebaseMerge.Set {
-		e.Comma()
-	}
+
+	e.Comma()
 
 	e.RawStr("\"license\"" + ":")
 	s.License.Encode(e)
@@ -76090,23 +82927,30 @@ func (s PullRequestBaseRepo) Encode(e *jx.Writer) {
 
 	e.RawStr("\"pushed_at\"" + ":")
 	json.EncodeDateTime(e, s.PushedAt)
+
 	e.Comma()
 
 	e.RawStr("\"size\"" + ":")
 	e.Int(s.Size)
+
 	e.Comma()
 
 	e.RawStr("\"ssh_url\"" + ":")
 	e.Str(s.SSHURL)
+
 	e.Comma()
 
 	e.RawStr("\"stargazers_count\"" + ":")
 	e.Int(s.StargazersCount)
+
 	e.Comma()
 
 	e.RawStr("\"svn_url\"" + ":")
 	json.EncodeURI(e, s.SvnURL)
-	e.Comma()
+
+	if s.Topics != nil {
+		e.Comma()
+	}
 	if s.Topics != nil {
 		e.RawStr("\"topics\"" + ":")
 		e.ArrStart()
@@ -76123,32 +82967,33 @@ func (s PullRequestBaseRepo) Encode(e *jx.Writer) {
 		}
 		e.ArrEnd()
 	}
-	if s.Topics != nil {
-		e.Comma()
-	}
+
+	e.Comma()
 
 	e.RawStr("\"watchers\"" + ":")
 	e.Int(s.Watchers)
+
 	e.Comma()
 
 	e.RawStr("\"watchers_count\"" + ":")
 	e.Int(s.WatchersCount)
+
 	e.Comma()
 
 	e.RawStr("\"created_at\"" + ":")
 	json.EncodeDateTime(e, s.CreatedAt)
+
 	e.Comma()
 
 	e.RawStr("\"updated_at\"" + ":")
 	json.EncodeDateTime(e, s.UpdatedAt)
-	e.Comma()
+
+	if s.AllowForking.Set {
+		e.Comma()
+	}
 	if s.AllowForking.Set {
 		e.RawStr("\"allow_forking\"" + ":")
 		s.AllowForking.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -76645,25 +83490,39 @@ func (s *PullRequestBaseRepo) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s PullRequestBaseRepoOwner) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"avatar_url\"" + ":")
 	json.EncodeURI(e, s.AvatarURL)
+
 	e.Comma()
 
 	e.RawStr("\"events_url\"" + ":")
 	e.Str(s.EventsURL)
+
 	e.Comma()
 
 	e.RawStr("\"followers_url\"" + ":")
 	json.EncodeURI(e, s.FollowersURL)
+
 	e.Comma()
 
 	e.RawStr("\"following_url\"" + ":")
 	e.Str(s.FollowingURL)
+
 	e.Comma()
 
 	e.RawStr("\"gists_url\"" + ":")
 	e.Str(s.GistsURL)
+
 	e.Comma()
 
 	e.RawStr("\"gravatar_id\"" + ":")
@@ -76673,54 +83532,61 @@ func (s PullRequestBaseRepoOwner) Encode(e *jx.Writer) {
 
 	e.RawStr("\"html_url\"" + ":")
 	json.EncodeURI(e, s.HTMLURL)
+
 	e.Comma()
 
 	e.RawStr("\"id\"" + ":")
 	e.Int(s.ID)
+
 	e.Comma()
 
 	e.RawStr("\"node_id\"" + ":")
 	e.Str(s.NodeID)
+
 	e.Comma()
 
 	e.RawStr("\"login\"" + ":")
 	e.Str(s.Login)
+
 	e.Comma()
 
 	e.RawStr("\"organizations_url\"" + ":")
 	json.EncodeURI(e, s.OrganizationsURL)
+
 	e.Comma()
 
 	e.RawStr("\"received_events_url\"" + ":")
 	json.EncodeURI(e, s.ReceivedEventsURL)
+
 	e.Comma()
 
 	e.RawStr("\"repos_url\"" + ":")
 	json.EncodeURI(e, s.ReposURL)
+
 	e.Comma()
 
 	e.RawStr("\"site_admin\"" + ":")
 	e.Bool(s.SiteAdmin)
+
 	e.Comma()
 
 	e.RawStr("\"starred_url\"" + ":")
 	e.Str(s.StarredURL)
+
 	e.Comma()
 
 	e.RawStr("\"subscriptions_url\"" + ":")
 	json.EncodeURI(e, s.SubscriptionsURL)
+
 	e.Comma()
 
 	e.RawStr("\"type\"" + ":")
 	e.Str(s.Type)
+
 	e.Comma()
 
 	e.RawStr("\"url\"" + ":")
 	json.EncodeURI(e, s.URL)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -76847,35 +83713,44 @@ func (s *PullRequestBaseRepoOwner) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s PullRequestBaseRepoPermissions) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"admin\"" + ":")
 	e.Bool(s.Admin)
-	e.Comma()
+
+	if s.Maintain.Set {
+		e.Comma()
+	}
 	if s.Maintain.Set {
 		e.RawStr("\"maintain\"" + ":")
 		s.Maintain.Encode(e)
 	}
-	if s.Maintain.Set {
-		e.Comma()
-	}
+
+	e.Comma()
 
 	e.RawStr("\"push\"" + ":")
 	e.Bool(s.Push)
-	e.Comma()
+
+	if s.Triage.Set {
+		e.Comma()
+	}
 	if s.Triage.Set {
 		e.RawStr("\"triage\"" + ":")
 		s.Triage.Encode(e)
 	}
-	if s.Triage.Set {
-		e.Comma()
-	}
+
+	e.Comma()
 
 	e.RawStr("\"pull\"" + ":")
 	e.Bool(s.Pull)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -76924,25 +83799,39 @@ func (s *PullRequestBaseRepoPermissions) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s PullRequestBaseUser) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"avatar_url\"" + ":")
 	json.EncodeURI(e, s.AvatarURL)
+
 	e.Comma()
 
 	e.RawStr("\"events_url\"" + ":")
 	e.Str(s.EventsURL)
+
 	e.Comma()
 
 	e.RawStr("\"followers_url\"" + ":")
 	json.EncodeURI(e, s.FollowersURL)
+
 	e.Comma()
 
 	e.RawStr("\"following_url\"" + ":")
 	e.Str(s.FollowingURL)
+
 	e.Comma()
 
 	e.RawStr("\"gists_url\"" + ":")
 	e.Str(s.GistsURL)
+
 	e.Comma()
 
 	e.RawStr("\"gravatar_id\"" + ":")
@@ -76952,54 +83841,61 @@ func (s PullRequestBaseUser) Encode(e *jx.Writer) {
 
 	e.RawStr("\"html_url\"" + ":")
 	json.EncodeURI(e, s.HTMLURL)
+
 	e.Comma()
 
 	e.RawStr("\"id\"" + ":")
 	e.Int(s.ID)
+
 	e.Comma()
 
 	e.RawStr("\"node_id\"" + ":")
 	e.Str(s.NodeID)
+
 	e.Comma()
 
 	e.RawStr("\"login\"" + ":")
 	e.Str(s.Login)
+
 	e.Comma()
 
 	e.RawStr("\"organizations_url\"" + ":")
 	json.EncodeURI(e, s.OrganizationsURL)
+
 	e.Comma()
 
 	e.RawStr("\"received_events_url\"" + ":")
 	json.EncodeURI(e, s.ReceivedEventsURL)
+
 	e.Comma()
 
 	e.RawStr("\"repos_url\"" + ":")
 	json.EncodeURI(e, s.ReposURL)
+
 	e.Comma()
 
 	e.RawStr("\"site_admin\"" + ":")
 	e.Bool(s.SiteAdmin)
+
 	e.Comma()
 
 	e.RawStr("\"starred_url\"" + ":")
 	e.Str(s.StarredURL)
+
 	e.Comma()
 
 	e.RawStr("\"subscriptions_url\"" + ":")
 	json.EncodeURI(e, s.SubscriptionsURL)
+
 	e.Comma()
 
 	e.RawStr("\"type\"" + ":")
 	e.Str(s.Type)
+
 	e.Comma()
 
 	e.RawStr("\"url\"" + ":")
 	json.EncodeURI(e, s.URL)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -77126,13 +84022,24 @@ func (s *PullRequestBaseUser) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s PullRequestHead) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"label\"" + ":")
 	e.Str(s.Label)
+
 	e.Comma()
 
 	e.RawStr("\"ref\"" + ":")
 	e.Str(s.Ref)
+
 	e.Comma()
 
 	e.RawStr("\"repo\"" + ":")
@@ -77142,14 +84049,11 @@ func (s PullRequestHead) Encode(e *jx.Writer) {
 
 	e.RawStr("\"sha\"" + ":")
 	e.Str(s.Sha)
+
 	e.Comma()
 
 	e.RawStr("\"user\"" + ":")
 	s.User.Encode(e)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -77196,49 +84100,69 @@ func (s *PullRequestHead) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s PullRequestHeadRepo) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"archive_url\"" + ":")
 	e.Str(s.ArchiveURL)
+
 	e.Comma()
 
 	e.RawStr("\"assignees_url\"" + ":")
 	e.Str(s.AssigneesURL)
+
 	e.Comma()
 
 	e.RawStr("\"blobs_url\"" + ":")
 	e.Str(s.BlobsURL)
+
 	e.Comma()
 
 	e.RawStr("\"branches_url\"" + ":")
 	e.Str(s.BranchesURL)
+
 	e.Comma()
 
 	e.RawStr("\"collaborators_url\"" + ":")
 	e.Str(s.CollaboratorsURL)
+
 	e.Comma()
 
 	e.RawStr("\"comments_url\"" + ":")
 	e.Str(s.CommentsURL)
+
 	e.Comma()
 
 	e.RawStr("\"commits_url\"" + ":")
 	e.Str(s.CommitsURL)
+
 	e.Comma()
 
 	e.RawStr("\"compare_url\"" + ":")
 	e.Str(s.CompareURL)
+
 	e.Comma()
 
 	e.RawStr("\"contents_url\"" + ":")
 	e.Str(s.ContentsURL)
+
 	e.Comma()
 
 	e.RawStr("\"contributors_url\"" + ":")
 	json.EncodeURI(e, s.ContributorsURL)
+
 	e.Comma()
 
 	e.RawStr("\"deployments_url\"" + ":")
 	json.EncodeURI(e, s.DeploymentsURL)
+
 	e.Comma()
 
 	e.RawStr("\"description\"" + ":")
@@ -77248,90 +84172,112 @@ func (s PullRequestHeadRepo) Encode(e *jx.Writer) {
 
 	e.RawStr("\"downloads_url\"" + ":")
 	json.EncodeURI(e, s.DownloadsURL)
+
 	e.Comma()
 
 	e.RawStr("\"events_url\"" + ":")
 	json.EncodeURI(e, s.EventsURL)
+
 	e.Comma()
 
 	e.RawStr("\"fork\"" + ":")
 	e.Bool(s.Fork)
+
 	e.Comma()
 
 	e.RawStr("\"forks_url\"" + ":")
 	json.EncodeURI(e, s.ForksURL)
+
 	e.Comma()
 
 	e.RawStr("\"full_name\"" + ":")
 	e.Str(s.FullName)
+
 	e.Comma()
 
 	e.RawStr("\"git_commits_url\"" + ":")
 	e.Str(s.GitCommitsURL)
+
 	e.Comma()
 
 	e.RawStr("\"git_refs_url\"" + ":")
 	e.Str(s.GitRefsURL)
+
 	e.Comma()
 
 	e.RawStr("\"git_tags_url\"" + ":")
 	e.Str(s.GitTagsURL)
+
 	e.Comma()
 
 	e.RawStr("\"hooks_url\"" + ":")
 	json.EncodeURI(e, s.HooksURL)
+
 	e.Comma()
 
 	e.RawStr("\"html_url\"" + ":")
 	json.EncodeURI(e, s.HTMLURL)
+
 	e.Comma()
 
 	e.RawStr("\"id\"" + ":")
 	e.Int(s.ID)
+
 	e.Comma()
 
 	e.RawStr("\"node_id\"" + ":")
 	e.Str(s.NodeID)
+
 	e.Comma()
 
 	e.RawStr("\"issue_comment_url\"" + ":")
 	e.Str(s.IssueCommentURL)
+
 	e.Comma()
 
 	e.RawStr("\"issue_events_url\"" + ":")
 	e.Str(s.IssueEventsURL)
+
 	e.Comma()
 
 	e.RawStr("\"issues_url\"" + ":")
 	e.Str(s.IssuesURL)
+
 	e.Comma()
 
 	e.RawStr("\"keys_url\"" + ":")
 	e.Str(s.KeysURL)
+
 	e.Comma()
 
 	e.RawStr("\"labels_url\"" + ":")
 	e.Str(s.LabelsURL)
+
 	e.Comma()
 
 	e.RawStr("\"languages_url\"" + ":")
 	json.EncodeURI(e, s.LanguagesURL)
+
 	e.Comma()
 
 	e.RawStr("\"merges_url\"" + ":")
 	json.EncodeURI(e, s.MergesURL)
+
 	e.Comma()
 
 	e.RawStr("\"milestones_url\"" + ":")
 	e.Str(s.MilestonesURL)
+
 	e.Comma()
 
 	e.RawStr("\"name\"" + ":")
 	e.Str(s.Name)
+
 	e.Comma()
 
 	e.RawStr("\"notifications_url\"" + ":")
 	e.Str(s.NotificationsURL)
+
 	e.Comma()
 
 	e.RawStr("\"owner\"" + ":")
@@ -77341,86 +84287,107 @@ func (s PullRequestHeadRepo) Encode(e *jx.Writer) {
 
 	e.RawStr("\"private\"" + ":")
 	e.Bool(s.Private)
+
 	e.Comma()
 
 	e.RawStr("\"pulls_url\"" + ":")
 	e.Str(s.PullsURL)
+
 	e.Comma()
 
 	e.RawStr("\"releases_url\"" + ":")
 	e.Str(s.ReleasesURL)
+
 	e.Comma()
 
 	e.RawStr("\"stargazers_url\"" + ":")
 	json.EncodeURI(e, s.StargazersURL)
+
 	e.Comma()
 
 	e.RawStr("\"statuses_url\"" + ":")
 	e.Str(s.StatusesURL)
+
 	e.Comma()
 
 	e.RawStr("\"subscribers_url\"" + ":")
 	json.EncodeURI(e, s.SubscribersURL)
+
 	e.Comma()
 
 	e.RawStr("\"subscription_url\"" + ":")
 	json.EncodeURI(e, s.SubscriptionURL)
+
 	e.Comma()
 
 	e.RawStr("\"tags_url\"" + ":")
 	json.EncodeURI(e, s.TagsURL)
+
 	e.Comma()
 
 	e.RawStr("\"teams_url\"" + ":")
 	json.EncodeURI(e, s.TeamsURL)
+
 	e.Comma()
 
 	e.RawStr("\"trees_url\"" + ":")
 	e.Str(s.TreesURL)
+
 	e.Comma()
 
 	e.RawStr("\"url\"" + ":")
 	json.EncodeURI(e, s.URL)
+
 	e.Comma()
 
 	e.RawStr("\"clone_url\"" + ":")
 	e.Str(s.CloneURL)
+
 	e.Comma()
 
 	e.RawStr("\"default_branch\"" + ":")
 	e.Str(s.DefaultBranch)
+
 	e.Comma()
 
 	e.RawStr("\"forks\"" + ":")
 	e.Int(s.Forks)
+
 	e.Comma()
 
 	e.RawStr("\"forks_count\"" + ":")
 	e.Int(s.ForksCount)
+
 	e.Comma()
 
 	e.RawStr("\"git_url\"" + ":")
 	e.Str(s.GitURL)
+
 	e.Comma()
 
 	e.RawStr("\"has_downloads\"" + ":")
 	e.Bool(s.HasDownloads)
+
 	e.Comma()
 
 	e.RawStr("\"has_issues\"" + ":")
 	e.Bool(s.HasIssues)
+
 	e.Comma()
 
 	e.RawStr("\"has_projects\"" + ":")
 	e.Bool(s.HasProjects)
+
 	e.Comma()
 
 	e.RawStr("\"has_wiki\"" + ":")
 	e.Bool(s.HasWiki)
+
 	e.Comma()
 
 	e.RawStr("\"has_pages\"" + ":")
 	e.Bool(s.HasPages)
+
 	e.Comma()
 
 	e.RawStr("\"homepage\"" + ":")
@@ -77431,21 +84398,24 @@ func (s PullRequestHeadRepo) Encode(e *jx.Writer) {
 	e.RawStr("\"language\"" + ":")
 	s.Language.Encode(e)
 
-	e.Comma()
+	if s.MasterBranch.Set {
+		e.Comma()
+	}
 	if s.MasterBranch.Set {
 		e.RawStr("\"master_branch\"" + ":")
 		s.MasterBranch.Encode(e)
 	}
-	if s.MasterBranch.Set {
-		e.Comma()
-	}
+
+	e.Comma()
 
 	e.RawStr("\"archived\"" + ":")
 	e.Bool(s.Archived)
+
 	e.Comma()
 
 	e.RawStr("\"disabled\"" + ":")
 	e.Bool(s.Disabled)
+
 	e.Comma()
 
 	e.RawStr("\"mirror_url\"" + ":")
@@ -77455,46 +84425,53 @@ func (s PullRequestHeadRepo) Encode(e *jx.Writer) {
 
 	e.RawStr("\"open_issues\"" + ":")
 	e.Int(s.OpenIssues)
+
 	e.Comma()
 
 	e.RawStr("\"open_issues_count\"" + ":")
 	e.Int(s.OpenIssuesCount)
-	e.Comma()
+
+	if s.Permissions.Set {
+		e.Comma()
+	}
 	if s.Permissions.Set {
 		e.RawStr("\"permissions\"" + ":")
 		s.Permissions.Encode(e)
 	}
-	if s.Permissions.Set {
+
+	if s.TempCloneToken.Set {
 		e.Comma()
 	}
 	if s.TempCloneToken.Set {
 		e.RawStr("\"temp_clone_token\"" + ":")
 		s.TempCloneToken.Encode(e)
 	}
-	if s.TempCloneToken.Set {
+
+	if s.AllowMergeCommit.Set {
 		e.Comma()
 	}
 	if s.AllowMergeCommit.Set {
 		e.RawStr("\"allow_merge_commit\"" + ":")
 		s.AllowMergeCommit.Encode(e)
 	}
-	if s.AllowMergeCommit.Set {
+
+	if s.AllowSquashMerge.Set {
 		e.Comma()
 	}
 	if s.AllowSquashMerge.Set {
 		e.RawStr("\"allow_squash_merge\"" + ":")
 		s.AllowSquashMerge.Encode(e)
 	}
-	if s.AllowSquashMerge.Set {
+
+	if s.AllowRebaseMerge.Set {
 		e.Comma()
 	}
 	if s.AllowRebaseMerge.Set {
 		e.RawStr("\"allow_rebase_merge\"" + ":")
 		s.AllowRebaseMerge.Encode(e)
 	}
-	if s.AllowRebaseMerge.Set {
-		e.Comma()
-	}
+
+	e.Comma()
 
 	e.RawStr("\"license\"" + ":")
 	s.License.Encode(e)
@@ -77503,23 +84480,30 @@ func (s PullRequestHeadRepo) Encode(e *jx.Writer) {
 
 	e.RawStr("\"pushed_at\"" + ":")
 	json.EncodeDateTime(e, s.PushedAt)
+
 	e.Comma()
 
 	e.RawStr("\"size\"" + ":")
 	e.Int(s.Size)
+
 	e.Comma()
 
 	e.RawStr("\"ssh_url\"" + ":")
 	e.Str(s.SSHURL)
+
 	e.Comma()
 
 	e.RawStr("\"stargazers_count\"" + ":")
 	e.Int(s.StargazersCount)
+
 	e.Comma()
 
 	e.RawStr("\"svn_url\"" + ":")
 	json.EncodeURI(e, s.SvnURL)
-	e.Comma()
+
+	if s.Topics != nil {
+		e.Comma()
+	}
 	if s.Topics != nil {
 		e.RawStr("\"topics\"" + ":")
 		e.ArrStart()
@@ -77536,32 +84520,33 @@ func (s PullRequestHeadRepo) Encode(e *jx.Writer) {
 		}
 		e.ArrEnd()
 	}
-	if s.Topics != nil {
-		e.Comma()
-	}
+
+	e.Comma()
 
 	e.RawStr("\"watchers\"" + ":")
 	e.Int(s.Watchers)
+
 	e.Comma()
 
 	e.RawStr("\"watchers_count\"" + ":")
 	e.Int(s.WatchersCount)
+
 	e.Comma()
 
 	e.RawStr("\"created_at\"" + ":")
 	json.EncodeDateTime(e, s.CreatedAt)
+
 	e.Comma()
 
 	e.RawStr("\"updated_at\"" + ":")
 	json.EncodeDateTime(e, s.UpdatedAt)
-	e.Comma()
+
+	if s.AllowForking.Set {
+		e.Comma()
+	}
 	if s.AllowForking.Set {
 		e.RawStr("\"allow_forking\"" + ":")
 		s.AllowForking.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -78058,13 +85043,24 @@ func (s *PullRequestHeadRepo) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s PullRequestHeadRepoLicense) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"key\"" + ":")
 	e.Str(s.Key)
+
 	e.Comma()
 
 	e.RawStr("\"name\"" + ":")
 	e.Str(s.Name)
+
 	e.Comma()
 
 	e.RawStr("\"url\"" + ":")
@@ -78079,10 +85075,6 @@ func (s PullRequestHeadRepoLicense) Encode(e *jx.Writer) {
 
 	e.RawStr("\"node_id\"" + ":")
 	e.Str(s.NodeID)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -78129,25 +85121,39 @@ func (s *PullRequestHeadRepoLicense) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s PullRequestHeadRepoOwner) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"avatar_url\"" + ":")
 	json.EncodeURI(e, s.AvatarURL)
+
 	e.Comma()
 
 	e.RawStr("\"events_url\"" + ":")
 	e.Str(s.EventsURL)
+
 	e.Comma()
 
 	e.RawStr("\"followers_url\"" + ":")
 	json.EncodeURI(e, s.FollowersURL)
+
 	e.Comma()
 
 	e.RawStr("\"following_url\"" + ":")
 	e.Str(s.FollowingURL)
+
 	e.Comma()
 
 	e.RawStr("\"gists_url\"" + ":")
 	e.Str(s.GistsURL)
+
 	e.Comma()
 
 	e.RawStr("\"gravatar_id\"" + ":")
@@ -78157,54 +85163,61 @@ func (s PullRequestHeadRepoOwner) Encode(e *jx.Writer) {
 
 	e.RawStr("\"html_url\"" + ":")
 	json.EncodeURI(e, s.HTMLURL)
+
 	e.Comma()
 
 	e.RawStr("\"id\"" + ":")
 	e.Int(s.ID)
+
 	e.Comma()
 
 	e.RawStr("\"node_id\"" + ":")
 	e.Str(s.NodeID)
+
 	e.Comma()
 
 	e.RawStr("\"login\"" + ":")
 	e.Str(s.Login)
+
 	e.Comma()
 
 	e.RawStr("\"organizations_url\"" + ":")
 	json.EncodeURI(e, s.OrganizationsURL)
+
 	e.Comma()
 
 	e.RawStr("\"received_events_url\"" + ":")
 	json.EncodeURI(e, s.ReceivedEventsURL)
+
 	e.Comma()
 
 	e.RawStr("\"repos_url\"" + ":")
 	json.EncodeURI(e, s.ReposURL)
+
 	e.Comma()
 
 	e.RawStr("\"site_admin\"" + ":")
 	e.Bool(s.SiteAdmin)
+
 	e.Comma()
 
 	e.RawStr("\"starred_url\"" + ":")
 	e.Str(s.StarredURL)
+
 	e.Comma()
 
 	e.RawStr("\"subscriptions_url\"" + ":")
 	json.EncodeURI(e, s.SubscriptionsURL)
+
 	e.Comma()
 
 	e.RawStr("\"type\"" + ":")
 	e.Str(s.Type)
+
 	e.Comma()
 
 	e.RawStr("\"url\"" + ":")
 	json.EncodeURI(e, s.URL)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -78331,35 +85344,44 @@ func (s *PullRequestHeadRepoOwner) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s PullRequestHeadRepoPermissions) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"admin\"" + ":")
 	e.Bool(s.Admin)
-	e.Comma()
+
+	if s.Maintain.Set {
+		e.Comma()
+	}
 	if s.Maintain.Set {
 		e.RawStr("\"maintain\"" + ":")
 		s.Maintain.Encode(e)
 	}
-	if s.Maintain.Set {
-		e.Comma()
-	}
+
+	e.Comma()
 
 	e.RawStr("\"push\"" + ":")
 	e.Bool(s.Push)
-	e.Comma()
+
+	if s.Triage.Set {
+		e.Comma()
+	}
 	if s.Triage.Set {
 		e.RawStr("\"triage\"" + ":")
 		s.Triage.Encode(e)
 	}
-	if s.Triage.Set {
-		e.Comma()
-	}
+
+	e.Comma()
 
 	e.RawStr("\"pull\"" + ":")
 	e.Bool(s.Pull)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -78408,25 +85430,39 @@ func (s *PullRequestHeadRepoPermissions) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s PullRequestHeadUser) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"avatar_url\"" + ":")
 	json.EncodeURI(e, s.AvatarURL)
+
 	e.Comma()
 
 	e.RawStr("\"events_url\"" + ":")
 	e.Str(s.EventsURL)
+
 	e.Comma()
 
 	e.RawStr("\"followers_url\"" + ":")
 	json.EncodeURI(e, s.FollowersURL)
+
 	e.Comma()
 
 	e.RawStr("\"following_url\"" + ":")
 	e.Str(s.FollowingURL)
+
 	e.Comma()
 
 	e.RawStr("\"gists_url\"" + ":")
 	e.Str(s.GistsURL)
+
 	e.Comma()
 
 	e.RawStr("\"gravatar_id\"" + ":")
@@ -78436,54 +85472,61 @@ func (s PullRequestHeadUser) Encode(e *jx.Writer) {
 
 	e.RawStr("\"html_url\"" + ":")
 	json.EncodeURI(e, s.HTMLURL)
+
 	e.Comma()
 
 	e.RawStr("\"id\"" + ":")
 	e.Int(s.ID)
+
 	e.Comma()
 
 	e.RawStr("\"node_id\"" + ":")
 	e.Str(s.NodeID)
+
 	e.Comma()
 
 	e.RawStr("\"login\"" + ":")
 	e.Str(s.Login)
+
 	e.Comma()
 
 	e.RawStr("\"organizations_url\"" + ":")
 	json.EncodeURI(e, s.OrganizationsURL)
+
 	e.Comma()
 
 	e.RawStr("\"received_events_url\"" + ":")
 	json.EncodeURI(e, s.ReceivedEventsURL)
+
 	e.Comma()
 
 	e.RawStr("\"repos_url\"" + ":")
 	json.EncodeURI(e, s.ReposURL)
+
 	e.Comma()
 
 	e.RawStr("\"site_admin\"" + ":")
 	e.Bool(s.SiteAdmin)
+
 	e.Comma()
 
 	e.RawStr("\"starred_url\"" + ":")
 	e.Str(s.StarredURL)
+
 	e.Comma()
 
 	e.RawStr("\"subscriptions_url\"" + ":")
 	json.EncodeURI(e, s.SubscriptionsURL)
+
 	e.Comma()
 
 	e.RawStr("\"type\"" + ":")
 	e.Str(s.Type)
+
 	e.Comma()
 
 	e.RawStr("\"url\"" + ":")
 	json.EncodeURI(e, s.URL)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -78610,55 +85653,86 @@ func (s *PullRequestHeadUser) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s PullRequestLabelsItem) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.ID.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.ID.Set {
 		e.RawStr("\"id\"" + ":")
 		s.ID.Encode(e)
 	}
-	if s.ID.Set {
-		e.Comma()
+
+	if s.NodeID.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.NodeID.Set {
 		e.RawStr("\"node_id\"" + ":")
 		s.NodeID.Encode(e)
 	}
-	if s.NodeID.Set {
-		e.Comma()
+
+	if s.URL.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.URL.Set {
 		e.RawStr("\"url\"" + ":")
 		s.URL.Encode(e)
 	}
-	if s.URL.Set {
-		e.Comma()
+
+	if s.Name.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Name.Set {
 		e.RawStr("\"name\"" + ":")
 		s.Name.Encode(e)
 	}
-	if s.Name.Set {
-		e.Comma()
+
+	if s.Description.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Description.Set {
 		e.RawStr("\"description\"" + ":")
 		s.Description.Encode(e)
 	}
-	if s.Description.Set {
-		e.Comma()
+
+	if s.Color.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Color.Set {
 		e.RawStr("\"color\"" + ":")
 		s.Color.Encode(e)
 	}
-	if s.Color.Set {
-		e.Comma()
+
+	if s.Default.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Default.Set {
 		e.RawStr("\"default\"" + ":")
 		s.Default.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -78715,6 +85789,16 @@ func (s *PullRequestLabelsItem) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s PullRequestLinks) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"comments\"" + ":")
 	s.Comments.Encode(e)
@@ -78753,10 +85837,6 @@ func (s PullRequestLinks) Encode(e *jx.Writer) {
 
 	e.RawStr("\"self\"" + ":")
 	s.Self.Encode(e)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -78809,21 +85889,28 @@ func (s *PullRequestLinks) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s PullRequestMergeResult) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"sha\"" + ":")
 	e.Str(s.Sha)
+
 	e.Comma()
 
 	e.RawStr("\"merged\"" + ":")
 	e.Bool(s.Merged)
+
 	e.Comma()
 
 	e.RawStr("\"message\"" + ":")
 	e.Str(s.Message)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -78862,17 +85949,29 @@ func (s *PullRequestMergeResult) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s PullRequestMinimal) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"id\"" + ":")
 	e.Int(s.ID)
+
 	e.Comma()
 
 	e.RawStr("\"number\"" + ":")
 	e.Int(s.Number)
+
 	e.Comma()
 
 	e.RawStr("\"url\"" + ":")
 	e.Str(s.URL)
+
 	e.Comma()
 
 	e.RawStr("\"head\"" + ":")
@@ -78882,10 +85981,6 @@ func (s PullRequestMinimal) Encode(e *jx.Writer) {
 
 	e.RawStr("\"base\"" + ":")
 	s.Base.Encode(e)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -78932,21 +86027,28 @@ func (s *PullRequestMinimal) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s PullRequestMinimalBase) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"ref\"" + ":")
 	e.Str(s.Ref)
+
 	e.Comma()
 
 	e.RawStr("\"sha\"" + ":")
 	e.Str(s.Sha)
+
 	e.Comma()
 
 	e.RawStr("\"repo\"" + ":")
 	s.Repo.Encode(e)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -78983,21 +86085,28 @@ func (s *PullRequestMinimalBase) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s PullRequestMinimalBaseRepo) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"id\"" + ":")
 	e.Int(s.ID)
+
 	e.Comma()
 
 	e.RawStr("\"url\"" + ":")
 	e.Str(s.URL)
+
 	e.Comma()
 
 	e.RawStr("\"name\"" + ":")
 	e.Str(s.Name)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -79036,21 +86145,28 @@ func (s *PullRequestMinimalBaseRepo) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s PullRequestMinimalHead) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"ref\"" + ":")
 	e.Str(s.Ref)
+
 	e.Comma()
 
 	e.RawStr("\"sha\"" + ":")
 	e.Str(s.Sha)
+
 	e.Comma()
 
 	e.RawStr("\"repo\"" + ":")
 	s.Repo.Encode(e)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -79087,21 +86203,28 @@ func (s *PullRequestMinimalHead) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s PullRequestMinimalHeadRepo) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"id\"" + ":")
 	e.Int(s.ID)
+
 	e.Comma()
 
 	e.RawStr("\"url\"" + ":")
 	e.Str(s.URL)
+
 	e.Comma()
 
 	e.RawStr("\"name\"" + ":")
 	e.Str(s.Name)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -79140,13 +86263,24 @@ func (s *PullRequestMinimalHeadRepo) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s PullRequestReview) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"id\"" + ":")
 	e.Int(s.ID)
+
 	e.Comma()
 
 	e.RawStr("\"node_id\"" + ":")
 	e.Str(s.NodeID)
+
 	e.Comma()
 
 	e.RawStr("\"user\"" + ":")
@@ -79156,56 +86290,60 @@ func (s PullRequestReview) Encode(e *jx.Writer) {
 
 	e.RawStr("\"body\"" + ":")
 	e.Str(s.Body)
+
 	e.Comma()
 
 	e.RawStr("\"state\"" + ":")
 	e.Str(s.State)
+
 	e.Comma()
 
 	e.RawStr("\"html_url\"" + ":")
 	json.EncodeURI(e, s.HTMLURL)
+
 	e.Comma()
 
 	e.RawStr("\"pull_request_url\"" + ":")
 	json.EncodeURI(e, s.PullRequestURL)
+
 	e.Comma()
 
 	e.RawStr("\"_links\"" + ":")
 	s.Links.Encode(e)
 
-	e.Comma()
+	if s.SubmittedAt.Set {
+		e.Comma()
+	}
 	if s.SubmittedAt.Set {
 		e.RawStr("\"submitted_at\"" + ":")
 		s.SubmittedAt.Encode(e, json.EncodeDateTime)
 	}
-	if s.SubmittedAt.Set {
-		e.Comma()
-	}
+
+	e.Comma()
 
 	e.RawStr("\"commit_id\"" + ":")
 	e.Str(s.CommitID)
-	e.Comma()
+
+	if s.BodyHTML.Set {
+		e.Comma()
+	}
 	if s.BodyHTML.Set {
 		e.RawStr("\"body_html\"" + ":")
 		s.BodyHTML.Encode(e)
 	}
-	if s.BodyHTML.Set {
+
+	if s.BodyText.Set {
 		e.Comma()
 	}
 	if s.BodyText.Set {
 		e.RawStr("\"body_text\"" + ":")
 		s.BodyText.Encode(e)
 	}
-	if s.BodyText.Set {
-		e.Comma()
-	}
+
+	e.Comma()
 
 	e.RawStr("\"author_association\"" + ":")
 	s.AuthorAssociation.Encode(e)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -79295,9 +86433,19 @@ func (s *PullRequestReview) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s PullRequestReviewComment) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"url\"" + ":")
 	e.Str(s.URL)
+
 	e.Comma()
 
 	e.RawStr("\"pull_request_review_id\"" + ":")
@@ -79307,42 +86455,51 @@ func (s PullRequestReviewComment) Encode(e *jx.Writer) {
 
 	e.RawStr("\"id\"" + ":")
 	e.Int(s.ID)
+
 	e.Comma()
 
 	e.RawStr("\"node_id\"" + ":")
 	e.Str(s.NodeID)
+
 	e.Comma()
 
 	e.RawStr("\"diff_hunk\"" + ":")
 	e.Str(s.DiffHunk)
+
 	e.Comma()
 
 	e.RawStr("\"path\"" + ":")
 	e.Str(s.Path)
+
 	e.Comma()
 
 	e.RawStr("\"position\"" + ":")
 	e.Int(s.Position)
+
 	e.Comma()
 
 	e.RawStr("\"original_position\"" + ":")
 	e.Int(s.OriginalPosition)
+
 	e.Comma()
 
 	e.RawStr("\"commit_id\"" + ":")
 	e.Str(s.CommitID)
+
 	e.Comma()
 
 	e.RawStr("\"original_commit_id\"" + ":")
 	e.Str(s.OriginalCommitID)
-	e.Comma()
+
+	if s.InReplyToID.Set {
+		e.Comma()
+	}
 	if s.InReplyToID.Set {
 		e.RawStr("\"in_reply_to_id\"" + ":")
 		s.InReplyToID.Encode(e)
 	}
-	if s.InReplyToID.Set {
-		e.Comma()
-	}
+
+	e.Comma()
 
 	e.RawStr("\"user\"" + ":")
 	s.User.Encode(e)
@@ -79351,22 +86508,27 @@ func (s PullRequestReviewComment) Encode(e *jx.Writer) {
 
 	e.RawStr("\"body\"" + ":")
 	e.Str(s.Body)
+
 	e.Comma()
 
 	e.RawStr("\"created_at\"" + ":")
 	json.EncodeDateTime(e, s.CreatedAt)
+
 	e.Comma()
 
 	e.RawStr("\"updated_at\"" + ":")
 	json.EncodeDateTime(e, s.UpdatedAt)
+
 	e.Comma()
 
 	e.RawStr("\"html_url\"" + ":")
 	json.EncodeURI(e, s.HTMLURL)
+
 	e.Comma()
 
 	e.RawStr("\"pull_request_url\"" + ":")
 	json.EncodeURI(e, s.PullRequestURL)
+
 	e.Comma()
 
 	e.RawStr("\"author_association\"" + ":")
@@ -79377,70 +86539,76 @@ func (s PullRequestReviewComment) Encode(e *jx.Writer) {
 	e.RawStr("\"_links\"" + ":")
 	s.Links.Encode(e)
 
-	e.Comma()
+	if s.StartLine.Set {
+		e.Comma()
+	}
 	if s.StartLine.Set {
 		e.RawStr("\"start_line\"" + ":")
 		s.StartLine.Encode(e)
 	}
-	if s.StartLine.Set {
+
+	if s.OriginalStartLine.Set {
 		e.Comma()
 	}
 	if s.OriginalStartLine.Set {
 		e.RawStr("\"original_start_line\"" + ":")
 		s.OriginalStartLine.Encode(e)
 	}
-	if s.OriginalStartLine.Set {
+
+	if s.StartSide.Set {
 		e.Comma()
 	}
 	if s.StartSide.Set {
 		e.RawStr("\"start_side\"" + ":")
 		s.StartSide.Encode(e)
 	}
-	if s.StartSide.Set {
+
+	if s.Line.Set {
 		e.Comma()
 	}
 	if s.Line.Set {
 		e.RawStr("\"line\"" + ":")
 		s.Line.Encode(e)
 	}
-	if s.Line.Set {
+
+	if s.OriginalLine.Set {
 		e.Comma()
 	}
 	if s.OriginalLine.Set {
 		e.RawStr("\"original_line\"" + ":")
 		s.OriginalLine.Encode(e)
 	}
-	if s.OriginalLine.Set {
+
+	if s.Side.Set {
 		e.Comma()
 	}
 	if s.Side.Set {
 		e.RawStr("\"side\"" + ":")
 		s.Side.Encode(e)
 	}
-	if s.Side.Set {
+
+	if s.Reactions.Set {
 		e.Comma()
 	}
 	if s.Reactions.Set {
 		e.RawStr("\"reactions\"" + ":")
 		s.Reactions.Encode(e)
 	}
-	if s.Reactions.Set {
+
+	if s.BodyHTML.Set {
 		e.Comma()
 	}
 	if s.BodyHTML.Set {
 		e.RawStr("\"body_html\"" + ":")
 		s.BodyHTML.Encode(e)
 	}
-	if s.BodyHTML.Set {
+
+	if s.BodyText.Set {
 		e.Comma()
 	}
 	if s.BodyText.Set {
 		e.RawStr("\"body_text\"" + ":")
 		s.BodyText.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -79612,6 +86780,16 @@ func (s *PullRequestReviewComment) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s PullRequestReviewCommentLinks) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"self\"" + ":")
 	s.Self.Encode(e)
@@ -79625,10 +86803,6 @@ func (s PullRequestReviewCommentLinks) Encode(e *jx.Writer) {
 
 	e.RawStr("\"pull_request\"" + ":")
 	s.PullRequest.Encode(e)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -79661,13 +86835,18 @@ func (s *PullRequestReviewCommentLinks) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s PullRequestReviewCommentLinksHTML) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"href\"" + ":")
 	json.EncodeURI(e, s.Href)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -79694,13 +86873,18 @@ func (s *PullRequestReviewCommentLinksHTML) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s PullRequestReviewCommentLinksPullRequest) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"href\"" + ":")
 	json.EncodeURI(e, s.Href)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -79727,13 +86911,18 @@ func (s *PullRequestReviewCommentLinksPullRequest) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s PullRequestReviewCommentLinksSelf) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"href\"" + ":")
 	json.EncodeURI(e, s.Href)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -79814,6 +87003,16 @@ func (s *PullRequestReviewCommentStartSide) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s PullRequestReviewLinks) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"html\"" + ":")
 	s.HTML.Encode(e)
@@ -79822,10 +87021,6 @@ func (s PullRequestReviewLinks) Encode(e *jx.Writer) {
 
 	e.RawStr("\"pull_request\"" + ":")
 	s.PullRequest.Encode(e)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -79854,13 +87049,18 @@ func (s *PullRequestReviewLinks) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s PullRequestReviewLinksHTML) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"href\"" + ":")
 	e.Str(s.Href)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -79887,13 +87087,18 @@ func (s *PullRequestReviewLinksHTML) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s PullRequestReviewLinksPullRequest) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"href\"" + ":")
 	e.Str(s.Href)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -79920,6 +87125,16 @@ func (s *PullRequestReviewLinksPullRequest) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s PullRequestReviewRequest) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"users\"" + ":")
 	e.ArrStart()
@@ -79952,10 +87167,6 @@ func (s PullRequestReviewRequest) Encode(e *jx.Writer) {
 		}
 	}
 	e.ArrEnd()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -80000,69 +87211,94 @@ func (s *PullRequestReviewRequest) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s PullRequestSimple) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"url\"" + ":")
 	json.EncodeURI(e, s.URL)
+
 	e.Comma()
 
 	e.RawStr("\"id\"" + ":")
 	e.Int(s.ID)
+
 	e.Comma()
 
 	e.RawStr("\"node_id\"" + ":")
 	e.Str(s.NodeID)
+
 	e.Comma()
 
 	e.RawStr("\"html_url\"" + ":")
 	json.EncodeURI(e, s.HTMLURL)
+
 	e.Comma()
 
 	e.RawStr("\"diff_url\"" + ":")
 	json.EncodeURI(e, s.DiffURL)
+
 	e.Comma()
 
 	e.RawStr("\"patch_url\"" + ":")
 	json.EncodeURI(e, s.PatchURL)
+
 	e.Comma()
 
 	e.RawStr("\"issue_url\"" + ":")
 	json.EncodeURI(e, s.IssueURL)
+
 	e.Comma()
 
 	e.RawStr("\"commits_url\"" + ":")
 	json.EncodeURI(e, s.CommitsURL)
+
 	e.Comma()
 
 	e.RawStr("\"review_comments_url\"" + ":")
 	json.EncodeURI(e, s.ReviewCommentsURL)
+
 	e.Comma()
 
 	e.RawStr("\"review_comment_url\"" + ":")
 	e.Str(s.ReviewCommentURL)
+
 	e.Comma()
 
 	e.RawStr("\"comments_url\"" + ":")
 	json.EncodeURI(e, s.CommentsURL)
+
 	e.Comma()
 
 	e.RawStr("\"statuses_url\"" + ":")
 	json.EncodeURI(e, s.StatusesURL)
+
 	e.Comma()
 
 	e.RawStr("\"number\"" + ":")
 	e.Int(s.Number)
+
 	e.Comma()
 
 	e.RawStr("\"state\"" + ":")
 	e.Str(s.State)
+
 	e.Comma()
 
 	e.RawStr("\"locked\"" + ":")
 	e.Bool(s.Locked)
+
 	e.Comma()
 
 	e.RawStr("\"title\"" + ":")
 	e.Str(s.Title)
+
 	e.Comma()
 
 	e.RawStr("\"user\"" + ":")
@@ -80095,21 +87331,24 @@ func (s PullRequestSimple) Encode(e *jx.Writer) {
 	e.RawStr("\"milestone\"" + ":")
 	s.Milestone.Encode(e)
 
-	e.Comma()
+	if s.ActiveLockReason.Set {
+		e.Comma()
+	}
 	if s.ActiveLockReason.Set {
 		e.RawStr("\"active_lock_reason\"" + ":")
 		s.ActiveLockReason.Encode(e)
 	}
-	if s.ActiveLockReason.Set {
-		e.Comma()
-	}
+
+	e.Comma()
 
 	e.RawStr("\"created_at\"" + ":")
 	json.EncodeDateTime(e, s.CreatedAt)
+
 	e.Comma()
 
 	e.RawStr("\"updated_at\"" + ":")
 	json.EncodeDateTime(e, s.UpdatedAt)
+
 	e.Comma()
 
 	e.RawStr("\"closed_at\"" + ":")
@@ -80130,28 +87369,31 @@ func (s PullRequestSimple) Encode(e *jx.Writer) {
 	e.RawStr("\"assignee\"" + ":")
 	s.Assignee.Encode(e)
 
-	e.Comma()
+	if s.Assignees.Set {
+		e.Comma()
+	}
 	if s.Assignees.Set {
 		e.RawStr("\"assignees\"" + ":")
 		s.Assignees.Encode(e)
 	}
-	if s.Assignees.Set {
+
+	if s.RequestedReviewers.Set {
 		e.Comma()
 	}
 	if s.RequestedReviewers.Set {
 		e.RawStr("\"requested_reviewers\"" + ":")
 		s.RequestedReviewers.Encode(e)
 	}
-	if s.RequestedReviewers.Set {
+
+	if s.RequestedTeams.Set {
 		e.Comma()
 	}
 	if s.RequestedTeams.Set {
 		e.RawStr("\"requested_teams\"" + ":")
 		s.RequestedTeams.Encode(e)
 	}
-	if s.RequestedTeams.Set {
-		e.Comma()
-	}
+
+	e.Comma()
 
 	e.RawStr("\"head\"" + ":")
 	s.Head.Encode(e)
@@ -80176,14 +87418,12 @@ func (s PullRequestSimple) Encode(e *jx.Writer) {
 	e.RawStr("\"auto_merge\"" + ":")
 	s.AutoMerge.Encode(e)
 
-	e.Comma()
+	if s.Draft.Set {
+		e.Comma()
+	}
 	if s.Draft.Set {
 		e.RawStr("\"draft\"" + ":")
 		s.Draft.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -80398,13 +87638,24 @@ func (s *PullRequestSimple) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s PullRequestSimpleBase) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"label\"" + ":")
 	e.Str(s.Label)
+
 	e.Comma()
 
 	e.RawStr("\"ref\"" + ":")
 	e.Str(s.Ref)
+
 	e.Comma()
 
 	e.RawStr("\"repo\"" + ":")
@@ -80414,14 +87665,11 @@ func (s PullRequestSimpleBase) Encode(e *jx.Writer) {
 
 	e.RawStr("\"sha\"" + ":")
 	e.Str(s.Sha)
+
 	e.Comma()
 
 	e.RawStr("\"user\"" + ":")
 	s.User.Encode(e)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -80468,13 +87716,24 @@ func (s *PullRequestSimpleBase) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s PullRequestSimpleHead) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"label\"" + ":")
 	e.Str(s.Label)
+
 	e.Comma()
 
 	e.RawStr("\"ref\"" + ":")
 	e.Str(s.Ref)
+
 	e.Comma()
 
 	e.RawStr("\"repo\"" + ":")
@@ -80484,14 +87743,11 @@ func (s PullRequestSimpleHead) Encode(e *jx.Writer) {
 
 	e.RawStr("\"sha\"" + ":")
 	e.Str(s.Sha)
+
 	e.Comma()
 
 	e.RawStr("\"user\"" + ":")
 	s.User.Encode(e)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -80538,55 +87794,86 @@ func (s *PullRequestSimpleHead) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s PullRequestSimpleLabelsItem) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.ID.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.ID.Set {
 		e.RawStr("\"id\"" + ":")
 		s.ID.Encode(e)
 	}
-	if s.ID.Set {
-		e.Comma()
+
+	if s.NodeID.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.NodeID.Set {
 		e.RawStr("\"node_id\"" + ":")
 		s.NodeID.Encode(e)
 	}
-	if s.NodeID.Set {
-		e.Comma()
+
+	if s.URL.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.URL.Set {
 		e.RawStr("\"url\"" + ":")
 		s.URL.Encode(e)
 	}
-	if s.URL.Set {
-		e.Comma()
+
+	if s.Name.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Name.Set {
 		e.RawStr("\"name\"" + ":")
 		s.Name.Encode(e)
 	}
-	if s.Name.Set {
-		e.Comma()
+
+	if s.Description.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Description.Set {
 		e.RawStr("\"description\"" + ":")
 		s.Description.Encode(e)
 	}
-	if s.Description.Set {
-		e.Comma()
+
+	if s.Color.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Color.Set {
 		e.RawStr("\"color\"" + ":")
 		s.Color.Encode(e)
 	}
-	if s.Color.Set {
-		e.Comma()
+
+	if s.Default.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Default.Set {
 		e.RawStr("\"default\"" + ":")
 		s.Default.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -80643,6 +87930,16 @@ func (s *PullRequestSimpleLabelsItem) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s PullRequestSimpleLinks) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"comments\"" + ":")
 	s.Comments.Encode(e)
@@ -80681,10 +87978,6 @@ func (s PullRequestSimpleLinks) Encode(e *jx.Writer) {
 
 	e.RawStr("\"self\"" + ":")
 	s.Self.Encode(e)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -80764,10 +88057,10 @@ func (s *PullRequestState) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s PullsCheckIfMergedNoContent) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -80788,10 +88081,10 @@ func (s *PullsCheckIfMergedNoContent) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s PullsCheckIfMergedNotFound) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -80812,13 +88105,18 @@ func (s *PullsCheckIfMergedNotFound) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s PullsCreateReplyForReviewCommentReq) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"body\"" + ":")
 	e.Str(s.Body)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -80845,49 +88143,65 @@ func (s *PullsCreateReplyForReviewCommentReq) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s PullsCreateReq) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.Title.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.Title.Set {
 		e.RawStr("\"title\"" + ":")
 		s.Title.Encode(e)
 	}
-	if s.Title.Set {
+
+	if !first {
 		e.Comma()
 	}
+	first = false
 
 	e.RawStr("\"head\"" + ":")
 	e.Str(s.Head)
+
 	e.Comma()
 
 	e.RawStr("\"base\"" + ":")
 	e.Str(s.Base)
-	e.Comma()
+
+	if s.Body.Set {
+		e.Comma()
+	}
 	if s.Body.Set {
 		e.RawStr("\"body\"" + ":")
 		s.Body.Encode(e)
 	}
-	if s.Body.Set {
+
+	if s.MaintainerCanModify.Set {
 		e.Comma()
 	}
 	if s.MaintainerCanModify.Set {
 		e.RawStr("\"maintainer_can_modify\"" + ":")
 		s.MaintainerCanModify.Encode(e)
 	}
-	if s.MaintainerCanModify.Set {
+
+	if s.Draft.Set {
 		e.Comma()
 	}
 	if s.Draft.Set {
 		e.RawStr("\"draft\"" + ":")
 		s.Draft.Encode(e)
 	}
-	if s.Draft.Set {
+
+	if s.Issue.Set {
 		e.Comma()
 	}
 	if s.Issue.Set {
 		e.RawStr("\"issue\"" + ":")
 		s.Issue.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -80946,66 +88260,81 @@ func (s *PullsCreateReq) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s PullsCreateReviewCommentReq) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"body\"" + ":")
 	e.Str(s.Body)
-	e.Comma()
+
+	if s.CommitID.Set {
+		e.Comma()
+	}
 	if s.CommitID.Set {
 		e.RawStr("\"commit_id\"" + ":")
 		s.CommitID.Encode(e)
 	}
-	if s.CommitID.Set {
+
+	if s.Path.Set {
 		e.Comma()
 	}
 	if s.Path.Set {
 		e.RawStr("\"path\"" + ":")
 		s.Path.Encode(e)
 	}
-	if s.Path.Set {
+
+	if s.Position.Set {
 		e.Comma()
 	}
 	if s.Position.Set {
 		e.RawStr("\"position\"" + ":")
 		s.Position.Encode(e)
 	}
-	if s.Position.Set {
+
+	if s.Side.Set {
 		e.Comma()
 	}
 	if s.Side.Set {
 		e.RawStr("\"side\"" + ":")
 		s.Side.Encode(e)
 	}
-	if s.Side.Set {
+
+	if s.Line.Set {
 		e.Comma()
 	}
 	if s.Line.Set {
 		e.RawStr("\"line\"" + ":")
 		s.Line.Encode(e)
 	}
-	if s.Line.Set {
+
+	if s.StartLine.Set {
 		e.Comma()
 	}
 	if s.StartLine.Set {
 		e.RawStr("\"start_line\"" + ":")
 		s.StartLine.Encode(e)
 	}
-	if s.StartLine.Set {
+
+	if s.StartSide.Set {
 		e.Comma()
 	}
 	if s.StartSide.Set {
 		e.RawStr("\"start_side\"" + ":")
 		s.StartSide.Encode(e)
 	}
-	if s.StartSide.Set {
+
+	if s.InReplyTo.Set {
 		e.Comma()
 	}
 	if s.InReplyTo.Set {
 		e.RawStr("\"in_reply_to\"" + ":")
 		s.InReplyTo.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -81129,26 +88458,49 @@ func (s *PullsCreateReviewCommentReqStartSide) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s PullsCreateReviewReq) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.CommitID.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.CommitID.Set {
 		e.RawStr("\"commit_id\"" + ":")
 		s.CommitID.Encode(e)
 	}
-	if s.CommitID.Set {
-		e.Comma()
+
+	if s.Body.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Body.Set {
 		e.RawStr("\"body\"" + ":")
 		s.Body.Encode(e)
 	}
-	if s.Body.Set {
-		e.Comma()
+
+	if s.Event.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Event.Set {
 		e.RawStr("\"event\"" + ":")
 		s.Event.Encode(e)
 	}
-	if s.Event.Set {
-		e.Comma()
+
+	if s.Comments != nil {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Comments != nil {
 		e.RawStr("\"comments\"" + ":")
@@ -81165,10 +88517,6 @@ func (s PullsCreateReviewReq) Encode(e *jx.Writer) {
 			}
 		}
 		e.ArrEnd()
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -81217,49 +88565,62 @@ func (s *PullsCreateReviewReq) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s PullsCreateReviewReqCommentsItem) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"path\"" + ":")
 	e.Str(s.Path)
-	e.Comma()
+
+	if s.Position.Set {
+		e.Comma()
+	}
 	if s.Position.Set {
 		e.RawStr("\"position\"" + ":")
 		s.Position.Encode(e)
 	}
-	if s.Position.Set {
-		e.Comma()
-	}
+
+	e.Comma()
 
 	e.RawStr("\"body\"" + ":")
 	e.Str(s.Body)
-	e.Comma()
+
+	if s.Line.Set {
+		e.Comma()
+	}
 	if s.Line.Set {
 		e.RawStr("\"line\"" + ":")
 		s.Line.Encode(e)
 	}
-	if s.Line.Set {
+
+	if s.Side.Set {
 		e.Comma()
 	}
 	if s.Side.Set {
 		e.RawStr("\"side\"" + ":")
 		s.Side.Encode(e)
 	}
-	if s.Side.Set {
+
+	if s.StartLine.Set {
 		e.Comma()
 	}
 	if s.StartLine.Set {
 		e.RawStr("\"start_line\"" + ":")
 		s.StartLine.Encode(e)
 	}
-	if s.StartLine.Set {
+
+	if s.StartSide.Set {
 		e.Comma()
 	}
 	if s.StartSide.Set {
 		e.RawStr("\"start_side\"" + ":")
 		s.StartSide.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -81347,10 +88708,10 @@ func (s *PullsCreateReviewReqEvent) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s PullsDeleteReviewCommentNoContent) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -81371,17 +88732,25 @@ func (s *PullsDeleteReviewCommentNoContent) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s PullsDismissReviewReq) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"message\"" + ":")
 	e.Str(s.Message)
-	e.Comma()
+
+	if s.Event.Set {
+		e.Comma()
+	}
 	if s.Event.Set {
 		e.RawStr("\"event\"" + ":")
 		s.Event.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -81839,20 +89208,31 @@ func (s *PullsMergeApplicationJSONNotFound) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s PullsMergeConflict) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.Message.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.Message.Set {
 		e.RawStr("\"message\"" + ":")
 		s.Message.Encode(e)
 	}
-	if s.Message.Set {
-		e.Comma()
+
+	if s.DocumentationURL.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.DocumentationURL.Set {
 		e.RawStr("\"documentation_url\"" + ":")
 		s.DocumentationURL.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -81884,20 +89264,31 @@ func (s *PullsMergeConflict) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s PullsMergeMethodNotAllowed) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.Message.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.Message.Set {
 		e.RawStr("\"message\"" + ":")
 		s.Message.Encode(e)
 	}
-	if s.Message.Set {
-		e.Comma()
+
+	if s.DocumentationURL.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.DocumentationURL.Set {
 		e.RawStr("\"documentation_url\"" + ":")
 		s.DocumentationURL.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -81929,34 +89320,53 @@ func (s *PullsMergeMethodNotAllowed) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s PullsMergeReq) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.CommitTitle.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.CommitTitle.Set {
 		e.RawStr("\"commit_title\"" + ":")
 		s.CommitTitle.Encode(e)
 	}
-	if s.CommitTitle.Set {
-		e.Comma()
+
+	if s.CommitMessage.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.CommitMessage.Set {
 		e.RawStr("\"commit_message\"" + ":")
 		s.CommitMessage.Encode(e)
 	}
-	if s.CommitMessage.Set {
-		e.Comma()
+
+	if s.Sha.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Sha.Set {
 		e.RawStr("\"sha\"" + ":")
 		s.Sha.Encode(e)
 	}
-	if s.Sha.Set {
-		e.Comma()
+
+	if s.MergeMethod.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.MergeMethod.Set {
 		e.RawStr("\"merge_method\"" + ":")
 		s.MergeMethod.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -82027,6 +89437,16 @@ func (s *PullsMergeReqMergeMethod) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s PullsRemoveRequestedReviewersReq) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"reviewers\"" + ":")
 	e.ArrStart()
@@ -82043,7 +89463,9 @@ func (s PullsRemoveRequestedReviewersReq) Encode(e *jx.Writer) {
 	}
 	e.ArrEnd()
 
-	e.Comma()
+	if s.TeamReviewers != nil {
+		e.Comma()
+	}
 	if s.TeamReviewers != nil {
 		e.RawStr("\"team_reviewers\"" + ":")
 		e.ArrStart()
@@ -82059,10 +89481,6 @@ func (s PullsRemoveRequestedReviewersReq) Encode(e *jx.Writer) {
 			}
 		}
 		e.ArrEnd()
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -82160,20 +89578,30 @@ func (s *PullsSubmitReviewApplicationJSONNotFound) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s PullsSubmitReviewReq) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.Body.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.Body.Set {
 		e.RawStr("\"body\"" + ":")
 		s.Body.Encode(e)
 	}
-	if s.Body.Set {
+
+	if !first {
+
 		e.Comma()
 	}
+	first = false
 
 	e.RawStr("\"event\"" + ":")
 	s.Event.Encode(e)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -82232,20 +89660,31 @@ func (s *PullsSubmitReviewReqEvent) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s PullsUpdateBranchAccepted) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.Message.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.Message.Set {
 		e.RawStr("\"message\"" + ":")
 		s.Message.Encode(e)
 	}
-	if s.Message.Set {
-		e.Comma()
+
+	if s.URL.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.URL.Set {
 		e.RawStr("\"url\"" + ":")
 		s.URL.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -82277,13 +89716,20 @@ func (s *PullsUpdateBranchAccepted) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s PullsUpdateBranchReq) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.ExpectedHeadSha.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.ExpectedHeadSha.Set {
 		e.RawStr("\"expected_head_sha\"" + ":")
 		s.ExpectedHeadSha.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -82310,41 +89756,64 @@ func (s *PullsUpdateBranchReq) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s PullsUpdateReq) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.Title.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.Title.Set {
 		e.RawStr("\"title\"" + ":")
 		s.Title.Encode(e)
 	}
-	if s.Title.Set {
-		e.Comma()
+
+	if s.Body.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Body.Set {
 		e.RawStr("\"body\"" + ":")
 		s.Body.Encode(e)
 	}
-	if s.Body.Set {
-		e.Comma()
+
+	if s.State.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.State.Set {
 		e.RawStr("\"state\"" + ":")
 		s.State.Encode(e)
 	}
-	if s.State.Set {
-		e.Comma()
+
+	if s.Base.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Base.Set {
 		e.RawStr("\"base\"" + ":")
 		s.Base.Encode(e)
 	}
-	if s.Base.Set {
-		e.Comma()
+
+	if s.MaintainerCanModify.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.MaintainerCanModify.Set {
 		e.RawStr("\"maintainer_can_modify\"" + ":")
 		s.MaintainerCanModify.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -82418,13 +89887,18 @@ func (s *PullsUpdateReqState) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s PullsUpdateReviewCommentReq) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"body\"" + ":")
 	e.Str(s.Body)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -82451,13 +89925,18 @@ func (s *PullsUpdateReviewCommentReq) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s PullsUpdateReviewReq) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"body\"" + ":")
 	e.Str(s.Body)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -82484,25 +89963,33 @@ func (s *PullsUpdateReviewReq) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s RateLimit) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"limit\"" + ":")
 	e.Int(s.Limit)
+
 	e.Comma()
 
 	e.RawStr("\"remaining\"" + ":")
 	e.Int(s.Remaining)
+
 	e.Comma()
 
 	e.RawStr("\"reset\"" + ":")
 	e.Int(s.Reset)
+
 	e.Comma()
 
 	e.RawStr("\"used\"" + ":")
 	e.Int(s.Used)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -82547,6 +90034,16 @@ func (s *RateLimit) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s RateLimitOverview) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"resources\"" + ":")
 	s.Resources.Encode(e)
@@ -82555,10 +90052,6 @@ func (s RateLimitOverview) Encode(e *jx.Writer) {
 
 	e.RawStr("\"rate\"" + ":")
 	s.Rate.Encode(e)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -82587,51 +90080,63 @@ func (s *RateLimitOverview) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s RateLimitOverviewResources) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"core\"" + ":")
 	s.Core.Encode(e)
 
-	e.Comma()
+	if s.Graphql.Set {
+		e.Comma()
+	}
 	if s.Graphql.Set {
 		e.RawStr("\"graphql\"" + ":")
 		s.Graphql.Encode(e)
 	}
-	if s.Graphql.Set {
-		e.Comma()
-	}
+
+	e.Comma()
 
 	e.RawStr("\"search\"" + ":")
 	s.Search.Encode(e)
 
-	e.Comma()
+	if s.SourceImport.Set {
+		e.Comma()
+	}
 	if s.SourceImport.Set {
 		e.RawStr("\"source_import\"" + ":")
 		s.SourceImport.Encode(e)
 	}
-	if s.SourceImport.Set {
+
+	if s.IntegrationManifest.Set {
 		e.Comma()
 	}
 	if s.IntegrationManifest.Set {
 		e.RawStr("\"integration_manifest\"" + ":")
 		s.IntegrationManifest.Encode(e)
 	}
-	if s.IntegrationManifest.Set {
+
+	if s.CodeScanningUpload.Set {
 		e.Comma()
 	}
 	if s.CodeScanningUpload.Set {
 		e.RawStr("\"code_scanning_upload\"" + ":")
 		s.CodeScanningUpload.Encode(e)
 	}
-	if s.CodeScanningUpload.Set {
+
+	if s.ActionsRunnerRegistration.Set {
 		e.Comma()
 	}
 	if s.ActionsRunnerRegistration.Set {
 		e.RawStr("\"actions_runner_registration\"" + ":")
 		s.ActionsRunnerRegistration.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -82686,13 +90191,24 @@ func (s *RateLimitOverviewResources) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s Reaction) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"id\"" + ":")
 	e.Int(s.ID)
+
 	e.Comma()
 
 	e.RawStr("\"node_id\"" + ":")
 	e.Str(s.NodeID)
+
 	e.Comma()
 
 	e.RawStr("\"user\"" + ":")
@@ -82707,10 +90223,6 @@ func (s Reaction) Encode(e *jx.Writer) {
 
 	e.RawStr("\"created_at\"" + ":")
 	json.EncodeDateTime(e, s.CreatedAt)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -82796,49 +90308,63 @@ func (s *ReactionContent) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s ReactionRollup) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"url\"" + ":")
 	json.EncodeURI(e, s.URL)
+
 	e.Comma()
 
 	e.RawStr("\"total_count\"" + ":")
 	e.Int(s.TotalCount)
+
 	e.Comma()
 
 	e.RawStr("\"+1\"" + ":")
 	e.Int(s.Plus1)
+
 	e.Comma()
 
 	e.RawStr("\"-1\"" + ":")
 	e.Int(s.Minus1)
+
 	e.Comma()
 
 	e.RawStr("\"laugh\"" + ":")
 	e.Int(s.Laugh)
+
 	e.Comma()
 
 	e.RawStr("\"confused\"" + ":")
 	e.Int(s.Confused)
+
 	e.Comma()
 
 	e.RawStr("\"heart\"" + ":")
 	e.Int(s.Heart)
+
 	e.Comma()
 
 	e.RawStr("\"hooray\"" + ":")
 	e.Int(s.Hooray)
+
 	e.Comma()
 
 	e.RawStr("\"eyes\"" + ":")
 	e.Int(s.Eyes)
+
 	e.Comma()
 
 	e.RawStr("\"rocket\"" + ":")
 	e.Int(s.Rocket)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -82967,13 +90493,19 @@ func (s *ReactionsCreateForCommitCommentApplicationJSONOK) Decode(d *jx.Decoder)
 // Encode implements json.Marshaler.
 func (s ReactionsCreateForCommitCommentReq) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"content\"" + ":")
 	s.Content.Encode(e)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -83133,13 +90665,19 @@ func (s *ReactionsCreateForIssueCommentApplicationJSONOK) Decode(d *jx.Decoder) 
 // Encode implements json.Marshaler.
 func (s ReactionsCreateForIssueCommentReq) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"content\"" + ":")
 	s.Content.Encode(e)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -83203,13 +90741,19 @@ func (s *ReactionsCreateForIssueCommentReqContent) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s ReactionsCreateForIssueReq) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"content\"" + ":")
 	s.Content.Encode(e)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -83321,13 +90865,19 @@ func (s *ReactionsCreateForPullRequestReviewCommentApplicationJSONOK) Decode(d *
 // Encode implements json.Marshaler.
 func (s ReactionsCreateForPullRequestReviewCommentReq) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"content\"" + ":")
 	s.Content.Encode(e)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -83439,13 +90989,19 @@ func (s *ReactionsCreateForReleaseApplicationJSONOK) Decode(d *jx.Decoder) error
 // Encode implements json.Marshaler.
 func (s ReactionsCreateForReleaseReq) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"content\"" + ":")
 	s.Content.Encode(e)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -83553,13 +91109,19 @@ func (s *ReactionsCreateForTeamDiscussionCommentInOrgApplicationJSONOK) Decode(d
 // Encode implements json.Marshaler.
 func (s ReactionsCreateForTeamDiscussionCommentInOrgReq) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"content\"" + ":")
 	s.Content.Encode(e)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -83623,13 +91185,19 @@ func (s *ReactionsCreateForTeamDiscussionCommentInOrgReqContent) Decode(d *jx.De
 // Encode implements json.Marshaler.
 func (s ReactionsCreateForTeamDiscussionCommentLegacyReq) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"content\"" + ":")
 	s.Content.Encode(e)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -83741,13 +91309,19 @@ func (s *ReactionsCreateForTeamDiscussionInOrgApplicationJSONOK) Decode(d *jx.De
 // Encode implements json.Marshaler.
 func (s ReactionsCreateForTeamDiscussionInOrgReq) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"content\"" + ":")
 	s.Content.Encode(e)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -83811,13 +91385,19 @@ func (s *ReactionsCreateForTeamDiscussionInOrgReqContent) Decode(d *jx.Decoder) 
 // Encode implements json.Marshaler.
 func (s ReactionsCreateForTeamDiscussionLegacyReq) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"content\"" + ":")
 	s.Content.Encode(e)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -83881,10 +91461,10 @@ func (s *ReactionsCreateForTeamDiscussionLegacyReqContent) Decode(d *jx.Decoder)
 // Encode implements json.Marshaler.
 func (s ReactionsDeleteForCommitCommentNoContent) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -83905,10 +91485,10 @@ func (s *ReactionsDeleteForCommitCommentNoContent) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s ReactionsDeleteForIssueCommentNoContent) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -83929,10 +91509,10 @@ func (s *ReactionsDeleteForIssueCommentNoContent) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s ReactionsDeleteForIssueNoContent) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -83953,10 +91533,10 @@ func (s *ReactionsDeleteForIssueNoContent) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s ReactionsDeleteForPullRequestCommentNoContent) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -83977,10 +91557,10 @@ func (s *ReactionsDeleteForPullRequestCommentNoContent) Decode(d *jx.Decoder) er
 // Encode implements json.Marshaler.
 func (s ReactionsDeleteForTeamDiscussionCommentNoContent) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -84001,10 +91581,10 @@ func (s *ReactionsDeleteForTeamDiscussionCommentNoContent) Decode(d *jx.Decoder)
 // Encode implements json.Marshaler.
 func (s ReactionsDeleteForTeamDiscussionNoContent) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -84097,10 +91677,10 @@ func (s *ReactionsDeleteLegacyApplicationJSONUnauthorized) Decode(d *jx.Decoder)
 // Encode implements json.Marshaler.
 func (s ReactionsDeleteLegacyNoContent) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -84657,21 +92237,28 @@ func (s *ReactionsListForTeamDiscussionLegacyContent) Decode(d *jx.Decoder) erro
 // Encode implements json.Marshaler.
 func (s ReferrerTraffic) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"referrer\"" + ":")
 	e.Str(s.Referrer)
+
 	e.Comma()
 
 	e.RawStr("\"count\"" + ":")
 	e.Int(s.Count)
+
 	e.Comma()
 
 	e.RawStr("\"uniques\"" + ":")
 	e.Int(s.Uniques)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -84710,21 +92297,34 @@ func (s *ReferrerTraffic) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s Release) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"url\"" + ":")
 	json.EncodeURI(e, s.URL)
+
 	e.Comma()
 
 	e.RawStr("\"html_url\"" + ":")
 	json.EncodeURI(e, s.HTMLURL)
+
 	e.Comma()
 
 	e.RawStr("\"assets_url\"" + ":")
 	json.EncodeURI(e, s.AssetsURL)
+
 	e.Comma()
 
 	e.RawStr("\"upload_url\"" + ":")
 	e.Str(s.UploadURL)
+
 	e.Comma()
 
 	e.RawStr("\"tarball_url\"" + ":")
@@ -84739,42 +92339,50 @@ func (s Release) Encode(e *jx.Writer) {
 
 	e.RawStr("\"id\"" + ":")
 	e.Int(s.ID)
+
 	e.Comma()
 
 	e.RawStr("\"node_id\"" + ":")
 	e.Str(s.NodeID)
+
 	e.Comma()
 
 	e.RawStr("\"tag_name\"" + ":")
 	e.Str(s.TagName)
+
 	e.Comma()
 
 	e.RawStr("\"target_commitish\"" + ":")
 	e.Str(s.TargetCommitish)
+
 	e.Comma()
 
 	e.RawStr("\"name\"" + ":")
 	s.Name.Encode(e)
 
-	e.Comma()
+	if s.Body.Set {
+		e.Comma()
+	}
 	if s.Body.Set {
 		e.RawStr("\"body\"" + ":")
 		s.Body.Encode(e)
 	}
-	if s.Body.Set {
-		e.Comma()
-	}
+
+	e.Comma()
 
 	e.RawStr("\"draft\"" + ":")
 	e.Bool(s.Draft)
+
 	e.Comma()
 
 	e.RawStr("\"prerelease\"" + ":")
 	e.Bool(s.Prerelease)
+
 	e.Comma()
 
 	e.RawStr("\"created_at\"" + ":")
 	json.EncodeDateTime(e, s.CreatedAt)
+
 	e.Comma()
 
 	e.RawStr("\"published_at\"" + ":")
@@ -84802,42 +92410,44 @@ func (s Release) Encode(e *jx.Writer) {
 	}
 	e.ArrEnd()
 
-	e.Comma()
+	if s.BodyHTML.Set {
+		e.Comma()
+	}
 	if s.BodyHTML.Set {
 		e.RawStr("\"body_html\"" + ":")
 		s.BodyHTML.Encode(e)
 	}
-	if s.BodyHTML.Set {
+
+	if s.BodyText.Set {
 		e.Comma()
 	}
 	if s.BodyText.Set {
 		e.RawStr("\"body_text\"" + ":")
 		s.BodyText.Encode(e)
 	}
-	if s.BodyText.Set {
+
+	if s.MentionsCount.Set {
 		e.Comma()
 	}
 	if s.MentionsCount.Set {
 		e.RawStr("\"mentions_count\"" + ":")
 		s.MentionsCount.Encode(e)
 	}
-	if s.MentionsCount.Set {
+
+	if s.DiscussionURL.Set {
 		e.Comma()
 	}
 	if s.DiscussionURL.Set {
 		e.RawStr("\"discussion_url\"" + ":")
 		s.DiscussionURL.Encode(e)
 	}
-	if s.DiscussionURL.Set {
+
+	if s.Reactions.Set {
 		e.Comma()
 	}
 	if s.Reactions.Set {
 		e.RawStr("\"reactions\"" + ":")
 		s.Reactions.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -84987,25 +92597,39 @@ func (s *Release) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s ReleaseAsset) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"url\"" + ":")
 	json.EncodeURI(e, s.URL)
+
 	e.Comma()
 
 	e.RawStr("\"browser_download_url\"" + ":")
 	json.EncodeURI(e, s.BrowserDownloadURL)
+
 	e.Comma()
 
 	e.RawStr("\"id\"" + ":")
 	e.Int(s.ID)
+
 	e.Comma()
 
 	e.RawStr("\"node_id\"" + ":")
 	e.Str(s.NodeID)
+
 	e.Comma()
 
 	e.RawStr("\"name\"" + ":")
 	e.Str(s.Name)
+
 	e.Comma()
 
 	e.RawStr("\"label\"" + ":")
@@ -85020,30 +92644,31 @@ func (s ReleaseAsset) Encode(e *jx.Writer) {
 
 	e.RawStr("\"content_type\"" + ":")
 	e.Str(s.ContentType)
+
 	e.Comma()
 
 	e.RawStr("\"size\"" + ":")
 	e.Int(s.Size)
+
 	e.Comma()
 
 	e.RawStr("\"download_count\"" + ":")
 	e.Int(s.DownloadCount)
+
 	e.Comma()
 
 	e.RawStr("\"created_at\"" + ":")
 	json.EncodeDateTime(e, s.CreatedAt)
+
 	e.Comma()
 
 	e.RawStr("\"updated_at\"" + ":")
 	json.EncodeDateTime(e, s.UpdatedAt)
+
 	e.Comma()
 
 	e.RawStr("\"uploader\"" + ":")
 	s.Uploader.Encode(e)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -85163,21 +92788,34 @@ func (s *ReleaseAssetState) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s RepoSearchResultItem) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"id\"" + ":")
 	e.Int(s.ID)
+
 	e.Comma()
 
 	e.RawStr("\"node_id\"" + ":")
 	e.Str(s.NodeID)
+
 	e.Comma()
 
 	e.RawStr("\"name\"" + ":")
 	e.Str(s.Name)
+
 	e.Comma()
 
 	e.RawStr("\"full_name\"" + ":")
 	e.Str(s.FullName)
+
 	e.Comma()
 
 	e.RawStr("\"owner\"" + ":")
@@ -85187,10 +92825,12 @@ func (s RepoSearchResultItem) Encode(e *jx.Writer) {
 
 	e.RawStr("\"private\"" + ":")
 	e.Bool(s.Private)
+
 	e.Comma()
 
 	e.RawStr("\"html_url\"" + ":")
 	json.EncodeURI(e, s.HTMLURL)
+
 	e.Comma()
 
 	e.RawStr("\"description\"" + ":")
@@ -85200,22 +92840,27 @@ func (s RepoSearchResultItem) Encode(e *jx.Writer) {
 
 	e.RawStr("\"fork\"" + ":")
 	e.Bool(s.Fork)
+
 	e.Comma()
 
 	e.RawStr("\"url\"" + ":")
 	json.EncodeURI(e, s.URL)
+
 	e.Comma()
 
 	e.RawStr("\"created_at\"" + ":")
 	json.EncodeDateTime(e, s.CreatedAt)
+
 	e.Comma()
 
 	e.RawStr("\"updated_at\"" + ":")
 	json.EncodeDateTime(e, s.UpdatedAt)
+
 	e.Comma()
 
 	e.RawStr("\"pushed_at\"" + ":")
 	json.EncodeDateTime(e, s.PushedAt)
+
 	e.Comma()
 
 	e.RawStr("\"homepage\"" + ":")
@@ -85225,14 +92870,17 @@ func (s RepoSearchResultItem) Encode(e *jx.Writer) {
 
 	e.RawStr("\"size\"" + ":")
 	e.Int(s.Size)
+
 	e.Comma()
 
 	e.RawStr("\"stargazers_count\"" + ":")
 	e.Int(s.StargazersCount)
+
 	e.Comma()
 
 	e.RawStr("\"watchers_count\"" + ":")
 	e.Int(s.WatchersCount)
+
 	e.Comma()
 
 	e.RawStr("\"language\"" + ":")
@@ -85242,198 +92890,248 @@ func (s RepoSearchResultItem) Encode(e *jx.Writer) {
 
 	e.RawStr("\"forks_count\"" + ":")
 	e.Int(s.ForksCount)
+
 	e.Comma()
 
 	e.RawStr("\"open_issues_count\"" + ":")
 	e.Int(s.OpenIssuesCount)
-	e.Comma()
+
+	if s.MasterBranch.Set {
+		e.Comma()
+	}
 	if s.MasterBranch.Set {
 		e.RawStr("\"master_branch\"" + ":")
 		s.MasterBranch.Encode(e)
 	}
-	if s.MasterBranch.Set {
-		e.Comma()
-	}
+
+	e.Comma()
 
 	e.RawStr("\"default_branch\"" + ":")
 	e.Str(s.DefaultBranch)
+
 	e.Comma()
 
 	e.RawStr("\"score\"" + ":")
 	e.Float64(s.Score)
+
 	e.Comma()
 
 	e.RawStr("\"forks_url\"" + ":")
 	json.EncodeURI(e, s.ForksURL)
+
 	e.Comma()
 
 	e.RawStr("\"keys_url\"" + ":")
 	e.Str(s.KeysURL)
+
 	e.Comma()
 
 	e.RawStr("\"collaborators_url\"" + ":")
 	e.Str(s.CollaboratorsURL)
+
 	e.Comma()
 
 	e.RawStr("\"teams_url\"" + ":")
 	json.EncodeURI(e, s.TeamsURL)
+
 	e.Comma()
 
 	e.RawStr("\"hooks_url\"" + ":")
 	json.EncodeURI(e, s.HooksURL)
+
 	e.Comma()
 
 	e.RawStr("\"issue_events_url\"" + ":")
 	e.Str(s.IssueEventsURL)
+
 	e.Comma()
 
 	e.RawStr("\"events_url\"" + ":")
 	json.EncodeURI(e, s.EventsURL)
+
 	e.Comma()
 
 	e.RawStr("\"assignees_url\"" + ":")
 	e.Str(s.AssigneesURL)
+
 	e.Comma()
 
 	e.RawStr("\"branches_url\"" + ":")
 	e.Str(s.BranchesURL)
+
 	e.Comma()
 
 	e.RawStr("\"tags_url\"" + ":")
 	json.EncodeURI(e, s.TagsURL)
+
 	e.Comma()
 
 	e.RawStr("\"blobs_url\"" + ":")
 	e.Str(s.BlobsURL)
+
 	e.Comma()
 
 	e.RawStr("\"git_tags_url\"" + ":")
 	e.Str(s.GitTagsURL)
+
 	e.Comma()
 
 	e.RawStr("\"git_refs_url\"" + ":")
 	e.Str(s.GitRefsURL)
+
 	e.Comma()
 
 	e.RawStr("\"trees_url\"" + ":")
 	e.Str(s.TreesURL)
+
 	e.Comma()
 
 	e.RawStr("\"statuses_url\"" + ":")
 	e.Str(s.StatusesURL)
+
 	e.Comma()
 
 	e.RawStr("\"languages_url\"" + ":")
 	json.EncodeURI(e, s.LanguagesURL)
+
 	e.Comma()
 
 	e.RawStr("\"stargazers_url\"" + ":")
 	json.EncodeURI(e, s.StargazersURL)
+
 	e.Comma()
 
 	e.RawStr("\"contributors_url\"" + ":")
 	json.EncodeURI(e, s.ContributorsURL)
+
 	e.Comma()
 
 	e.RawStr("\"subscribers_url\"" + ":")
 	json.EncodeURI(e, s.SubscribersURL)
+
 	e.Comma()
 
 	e.RawStr("\"subscription_url\"" + ":")
 	json.EncodeURI(e, s.SubscriptionURL)
+
 	e.Comma()
 
 	e.RawStr("\"commits_url\"" + ":")
 	e.Str(s.CommitsURL)
+
 	e.Comma()
 
 	e.RawStr("\"git_commits_url\"" + ":")
 	e.Str(s.GitCommitsURL)
+
 	e.Comma()
 
 	e.RawStr("\"comments_url\"" + ":")
 	e.Str(s.CommentsURL)
+
 	e.Comma()
 
 	e.RawStr("\"issue_comment_url\"" + ":")
 	e.Str(s.IssueCommentURL)
+
 	e.Comma()
 
 	e.RawStr("\"contents_url\"" + ":")
 	e.Str(s.ContentsURL)
+
 	e.Comma()
 
 	e.RawStr("\"compare_url\"" + ":")
 	e.Str(s.CompareURL)
+
 	e.Comma()
 
 	e.RawStr("\"merges_url\"" + ":")
 	json.EncodeURI(e, s.MergesURL)
+
 	e.Comma()
 
 	e.RawStr("\"archive_url\"" + ":")
 	e.Str(s.ArchiveURL)
+
 	e.Comma()
 
 	e.RawStr("\"downloads_url\"" + ":")
 	json.EncodeURI(e, s.DownloadsURL)
+
 	e.Comma()
 
 	e.RawStr("\"issues_url\"" + ":")
 	e.Str(s.IssuesURL)
+
 	e.Comma()
 
 	e.RawStr("\"pulls_url\"" + ":")
 	e.Str(s.PullsURL)
+
 	e.Comma()
 
 	e.RawStr("\"milestones_url\"" + ":")
 	e.Str(s.MilestonesURL)
+
 	e.Comma()
 
 	e.RawStr("\"notifications_url\"" + ":")
 	e.Str(s.NotificationsURL)
+
 	e.Comma()
 
 	e.RawStr("\"labels_url\"" + ":")
 	e.Str(s.LabelsURL)
+
 	e.Comma()
 
 	e.RawStr("\"releases_url\"" + ":")
 	e.Str(s.ReleasesURL)
+
 	e.Comma()
 
 	e.RawStr("\"deployments_url\"" + ":")
 	json.EncodeURI(e, s.DeploymentsURL)
+
 	e.Comma()
 
 	e.RawStr("\"git_url\"" + ":")
 	e.Str(s.GitURL)
+
 	e.Comma()
 
 	e.RawStr("\"ssh_url\"" + ":")
 	e.Str(s.SSHURL)
+
 	e.Comma()
 
 	e.RawStr("\"clone_url\"" + ":")
 	e.Str(s.CloneURL)
+
 	e.Comma()
 
 	e.RawStr("\"svn_url\"" + ":")
 	json.EncodeURI(e, s.SvnURL)
+
 	e.Comma()
 
 	e.RawStr("\"forks\"" + ":")
 	e.Int(s.Forks)
+
 	e.Comma()
 
 	e.RawStr("\"open_issues\"" + ":")
 	e.Int(s.OpenIssues)
+
 	e.Comma()
 
 	e.RawStr("\"watchers\"" + ":")
 	e.Int(s.Watchers)
-	e.Comma()
+
+	if s.Topics != nil {
+		e.Comma()
+	}
 	if s.Topics != nil {
 		e.RawStr("\"topics\"" + ":")
 		e.ArrStart()
@@ -85450,9 +93148,8 @@ func (s RepoSearchResultItem) Encode(e *jx.Writer) {
 		}
 		e.ArrEnd()
 	}
-	if s.Topics != nil {
-		e.Comma()
-	}
+
+	e.Comma()
 
 	e.RawStr("\"mirror_url\"" + ":")
 	s.MirrorURL.Encode(e)
@@ -85461,99 +93158,112 @@ func (s RepoSearchResultItem) Encode(e *jx.Writer) {
 
 	e.RawStr("\"has_issues\"" + ":")
 	e.Bool(s.HasIssues)
+
 	e.Comma()
 
 	e.RawStr("\"has_projects\"" + ":")
 	e.Bool(s.HasProjects)
+
 	e.Comma()
 
 	e.RawStr("\"has_pages\"" + ":")
 	e.Bool(s.HasPages)
+
 	e.Comma()
 
 	e.RawStr("\"has_wiki\"" + ":")
 	e.Bool(s.HasWiki)
+
 	e.Comma()
 
 	e.RawStr("\"has_downloads\"" + ":")
 	e.Bool(s.HasDownloads)
+
 	e.Comma()
 
 	e.RawStr("\"archived\"" + ":")
 	e.Bool(s.Archived)
+
 	e.Comma()
 
 	e.RawStr("\"disabled\"" + ":")
 	e.Bool(s.Disabled)
+
 	e.Comma()
 
 	e.RawStr("\"license\"" + ":")
 	s.License.Encode(e)
 
-	e.Comma()
+	if s.Permissions.Set {
+		e.Comma()
+	}
 	if s.Permissions.Set {
 		e.RawStr("\"permissions\"" + ":")
 		s.Permissions.Encode(e)
 	}
-	if s.Permissions.Set {
+
+	if s.TextMatches != nil {
 		e.Comma()
 	}
 	if s.TextMatches != nil {
 		e.RawStr("\"text_matches\"" + ":")
 		s.TextMatches.Encode(e)
 	}
-	if s.TextMatches != nil {
+
+	if s.TempCloneToken.Set {
 		e.Comma()
 	}
 	if s.TempCloneToken.Set {
 		e.RawStr("\"temp_clone_token\"" + ":")
 		s.TempCloneToken.Encode(e)
 	}
-	if s.TempCloneToken.Set {
+
+	if s.AllowMergeCommit.Set {
 		e.Comma()
 	}
 	if s.AllowMergeCommit.Set {
 		e.RawStr("\"allow_merge_commit\"" + ":")
 		s.AllowMergeCommit.Encode(e)
 	}
-	if s.AllowMergeCommit.Set {
+
+	if s.AllowSquashMerge.Set {
 		e.Comma()
 	}
 	if s.AllowSquashMerge.Set {
 		e.RawStr("\"allow_squash_merge\"" + ":")
 		s.AllowSquashMerge.Encode(e)
 	}
-	if s.AllowSquashMerge.Set {
+
+	if s.AllowRebaseMerge.Set {
 		e.Comma()
 	}
 	if s.AllowRebaseMerge.Set {
 		e.RawStr("\"allow_rebase_merge\"" + ":")
 		s.AllowRebaseMerge.Encode(e)
 	}
-	if s.AllowRebaseMerge.Set {
+
+	if s.AllowAutoMerge.Set {
 		e.Comma()
 	}
 	if s.AllowAutoMerge.Set {
 		e.RawStr("\"allow_auto_merge\"" + ":")
 		s.AllowAutoMerge.Encode(e)
 	}
-	if s.AllowAutoMerge.Set {
+
+	if s.DeleteBranchOnMerge.Set {
 		e.Comma()
 	}
 	if s.DeleteBranchOnMerge.Set {
 		e.RawStr("\"delete_branch_on_merge\"" + ":")
 		s.DeleteBranchOnMerge.Encode(e)
 	}
-	if s.DeleteBranchOnMerge.Set {
+
+	if s.AllowForking.Set {
 		e.Comma()
 	}
 	if s.AllowForking.Set {
 		e.RawStr("\"allow_forking\"" + ":")
 		s.AllowForking.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -86085,35 +93795,44 @@ func (s *RepoSearchResultItem) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s RepoSearchResultItemPermissions) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"admin\"" + ":")
 	e.Bool(s.Admin)
-	e.Comma()
+
+	if s.Maintain.Set {
+		e.Comma()
+	}
 	if s.Maintain.Set {
 		e.RawStr("\"maintain\"" + ":")
 		s.Maintain.Encode(e)
 	}
-	if s.Maintain.Set {
-		e.Comma()
-	}
+
+	e.Comma()
 
 	e.RawStr("\"push\"" + ":")
 	e.Bool(s.Push)
-	e.Comma()
+
+	if s.Triage.Set {
+		e.Comma()
+	}
 	if s.Triage.Set {
 		e.RawStr("\"triage\"" + ":")
 		s.Triage.Encode(e)
 	}
-	if s.Triage.Set {
-		e.Comma()
-	}
+
+	e.Comma()
 
 	e.RawStr("\"pull\"" + ":")
 	e.Bool(s.Pull)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -86234,10 +93953,10 @@ func (s *ReposAcceptInvitationApplicationJSONNotFound) Decode(d *jx.Decoder) err
 // Encode implements json.Marshaler.
 func (s ReposAcceptInvitationNoContent) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -86357,6 +94076,16 @@ func (s *ReposAddAppAccessRestrictionsReq) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s ReposAddAppAccessRestrictionsReq0) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"apps\"" + ":")
 	e.ArrStart()
@@ -86372,10 +94101,6 @@ func (s ReposAddAppAccessRestrictionsReq0) Encode(e *jx.Writer) {
 		}
 	}
 	e.ArrEnd()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -86410,10 +94135,10 @@ func (s *ReposAddAppAccessRestrictionsReq0) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s ReposAddCollaboratorNoContent) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -86434,20 +94159,31 @@ func (s *ReposAddCollaboratorNoContent) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s ReposAddCollaboratorReq) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.Permission.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.Permission.Set {
 		e.RawStr("\"permission\"" + ":")
 		s.Permission.Encode(e)
 	}
-	if s.Permission.Set {
-		e.Comma()
+
+	if s.Permissions.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Permissions.Set {
 		e.RawStr("\"permissions\"" + ":")
 		s.Permissions.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -86661,6 +94397,16 @@ func (s *ReposAddStatusCheckContextsReq) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s ReposAddStatusCheckContextsReq0) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"contexts\"" + ":")
 	e.ArrStart()
@@ -86676,10 +94422,6 @@ func (s ReposAddStatusCheckContextsReq0) Encode(e *jx.Writer) {
 		}
 	}
 	e.ArrEnd()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -86813,6 +94555,16 @@ func (s *ReposAddTeamAccessRestrictionsReq) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s ReposAddTeamAccessRestrictionsReq0) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"teams\"" + ":")
 	e.ArrStart()
@@ -86828,10 +94580,6 @@ func (s ReposAddTeamAccessRestrictionsReq0) Encode(e *jx.Writer) {
 		}
 	}
 	e.ArrEnd()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -86965,6 +94713,16 @@ func (s *ReposAddUserAccessRestrictionsReq) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s ReposAddUserAccessRestrictionsReq0) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"users\"" + ":")
 	e.ArrStart()
@@ -86980,10 +94738,6 @@ func (s ReposAddUserAccessRestrictionsReq0) Encode(e *jx.Writer) {
 		}
 	}
 	e.ArrEnd()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -87018,10 +94772,10 @@ func (s *ReposAddUserAccessRestrictionsReq0) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s ReposCheckCollaboratorNoContent) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -87042,10 +94796,10 @@ func (s *ReposCheckCollaboratorNoContent) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s ReposCheckCollaboratorNotFound) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -87066,10 +94820,10 @@ func (s *ReposCheckCollaboratorNotFound) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s ReposCheckVulnerabilityAlertsNoContent) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -87090,10 +94844,10 @@ func (s *ReposCheckVulnerabilityAlertsNoContent) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s ReposCheckVulnerabilityAlertsNotFound) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -87162,17 +94916,23 @@ func (s *ReposCompareCommitsApplicationJSONNotFound) Decode(d *jx.Decoder) error
 // Encode implements json.Marshaler.
 func (s ReposCreateAutolinkReq) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"key_prefix\"" + ":")
 	e.Str(s.KeyPrefix)
+
 	e.Comma()
 
 	e.RawStr("\"url_template\"" + ":")
 	e.Str(s.URLTemplate)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -87205,31 +94965,41 @@ func (s *ReposCreateAutolinkReq) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s ReposCreateCommitCommentReq) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"body\"" + ":")
 	e.Str(s.Body)
-	e.Comma()
+
+	if s.Path.Set {
+		e.Comma()
+	}
 	if s.Path.Set {
 		e.RawStr("\"path\"" + ":")
 		s.Path.Encode(e)
 	}
-	if s.Path.Set {
+
+	if s.Position.Set {
 		e.Comma()
 	}
 	if s.Position.Set {
 		e.RawStr("\"position\"" + ":")
 		s.Position.Encode(e)
 	}
-	if s.Position.Set {
+
+	if s.Line.Set {
 		e.Comma()
 	}
 	if s.Line.Set {
 		e.RawStr("\"line\"" + ":")
 		s.Line.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -87272,32 +95042,42 @@ func (s *ReposCreateCommitCommentReq) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s ReposCreateCommitStatusReq) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"state\"" + ":")
 	s.State.Encode(e)
 
-	e.Comma()
+	if s.TargetURL.Set {
+		e.Comma()
+	}
 	if s.TargetURL.Set {
 		e.RawStr("\"target_url\"" + ":")
 		s.TargetURL.Encode(e)
 	}
-	if s.TargetURL.Set {
+
+	if s.Description.Set {
 		e.Comma()
 	}
 	if s.Description.Set {
 		e.RawStr("\"description\"" + ":")
 		s.Description.Encode(e)
 	}
-	if s.Description.Set {
+
+	if s.Context.Set {
 		e.Comma()
 	}
 	if s.Context.Set {
 		e.RawStr("\"context\"" + ":")
 		s.Context.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -87369,24 +95149,36 @@ func (s *ReposCreateCommitStatusReqState) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s ReposCreateDeployKeyReq) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.Title.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.Title.Set {
 		e.RawStr("\"title\"" + ":")
 		s.Title.Encode(e)
 	}
-	if s.Title.Set {
+
+	if !first {
 		e.Comma()
 	}
+	first = false
 
 	e.RawStr("\"key\"" + ":")
 	e.Str(s.Key)
-	e.Comma()
+
+	if s.ReadOnly.Set {
+		e.Comma()
+	}
 	if s.ReadOnly.Set {
 		e.RawStr("\"read_only\"" + ":")
 		s.ReadOnly.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -87424,13 +95216,20 @@ func (s *ReposCreateDeployKeyReq) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s ReposCreateDeploymentAccepted) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.Message.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.Message.Set {
 		e.RawStr("\"message\"" + ":")
 		s.Message.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -87457,10 +95256,10 @@ func (s *ReposCreateDeploymentAccepted) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s ReposCreateDeploymentConflict) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -87481,22 +95280,36 @@ func (s *ReposCreateDeploymentConflict) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s ReposCreateDeploymentReq) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"ref\"" + ":")
 	e.Str(s.Ref)
-	e.Comma()
+
+	if s.Task.Set {
+		e.Comma()
+	}
 	if s.Task.Set {
 		e.RawStr("\"task\"" + ":")
 		s.Task.Encode(e)
 	}
-	if s.Task.Set {
+
+	if s.AutoMerge.Set {
 		e.Comma()
 	}
 	if s.AutoMerge.Set {
 		e.RawStr("\"auto_merge\"" + ":")
 		s.AutoMerge.Encode(e)
 	}
-	if s.AutoMerge.Set {
+
+	if s.RequiredContexts != nil {
 		e.Comma()
 	}
 	if s.RequiredContexts != nil {
@@ -87515,44 +95328,45 @@ func (s ReposCreateDeploymentReq) Encode(e *jx.Writer) {
 		}
 		e.ArrEnd()
 	}
-	if s.RequiredContexts != nil {
+
+	if s.Payload.Set {
 		e.Comma()
 	}
 	if s.Payload.Set {
 		e.RawStr("\"payload\"" + ":")
 		s.Payload.Encode(e)
 	}
-	if s.Payload.Set {
+
+	if s.Environment.Set {
 		e.Comma()
 	}
 	if s.Environment.Set {
 		e.RawStr("\"environment\"" + ":")
 		s.Environment.Encode(e)
 	}
-	if s.Environment.Set {
+
+	if s.Description.Set {
 		e.Comma()
 	}
 	if s.Description.Set {
 		e.RawStr("\"description\"" + ":")
 		s.Description.Encode(e)
 	}
-	if s.Description.Set {
+
+	if s.TransientEnvironment.Set {
 		e.Comma()
 	}
 	if s.TransientEnvironment.Set {
 		e.RawStr("\"transient_environment\"" + ":")
 		s.TransientEnvironment.Encode(e)
 	}
-	if s.TransientEnvironment.Set {
+
+	if s.ProductionEnvironment.Set {
 		e.Comma()
 	}
 	if s.ProductionEnvironment.Set {
 		e.RawStr("\"production_environment\"" + ":")
 		s.ProductionEnvironment.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -87664,10 +95478,10 @@ func (s *ReposCreateDeploymentReqPayload) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s ReposCreateDeploymentReqPayload0) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -87688,53 +95502,66 @@ func (s *ReposCreateDeploymentReqPayload0) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s ReposCreateDeploymentStatusReq) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"state\"" + ":")
 	s.State.Encode(e)
 
-	e.Comma()
+	if s.TargetURL.Set {
+		e.Comma()
+	}
 	if s.TargetURL.Set {
 		e.RawStr("\"target_url\"" + ":")
 		s.TargetURL.Encode(e)
 	}
-	if s.TargetURL.Set {
+
+	if s.LogURL.Set {
 		e.Comma()
 	}
 	if s.LogURL.Set {
 		e.RawStr("\"log_url\"" + ":")
 		s.LogURL.Encode(e)
 	}
-	if s.LogURL.Set {
+
+	if s.Description.Set {
 		e.Comma()
 	}
 	if s.Description.Set {
 		e.RawStr("\"description\"" + ":")
 		s.Description.Encode(e)
 	}
-	if s.Description.Set {
+
+	if s.Environment.Set {
 		e.Comma()
 	}
 	if s.Environment.Set {
 		e.RawStr("\"environment\"" + ":")
 		s.Environment.Encode(e)
 	}
-	if s.Environment.Set {
+
+	if s.EnvironmentURL.Set {
 		e.Comma()
 	}
 	if s.EnvironmentURL.Set {
 		e.RawStr("\"environment_url\"" + ":")
 		s.EnvironmentURL.Encode(e)
 	}
-	if s.EnvironmentURL.Set {
+
+	if s.AutoInactive.Set {
 		e.Comma()
 	}
 	if s.AutoInactive.Set {
 		e.RawStr("\"auto_inactive\"" + ":")
 		s.AutoInactive.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -87856,10 +95683,10 @@ func (s *ReposCreateDeploymentStatusReqState) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s ReposCreateDispatchEventNoContent) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -87880,17 +95707,25 @@ func (s *ReposCreateDispatchEventNoContent) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s ReposCreateDispatchEventReq) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"event_type\"" + ":")
 	e.Str(s.EventType)
-	e.Comma()
+
+	if s.ClientPayload != nil {
+		e.Comma()
+	}
 	if s.ClientPayload != nil {
 		e.RawStr("\"client_payload\"" + ":")
 		s.ClientPayload.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -87925,10 +95760,10 @@ func (s *ReposCreateDispatchEventReq) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s ReposCreateDispatchEventReqClientPayload) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -88045,129 +95880,153 @@ func (s *ReposCreateForAuthenticatedUserApplicationJSONUnauthorized) Decode(d *j
 // Encode implements json.Marshaler.
 func (s ReposCreateForAuthenticatedUserReq) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"name\"" + ":")
 	e.Str(s.Name)
-	e.Comma()
+
+	if s.Description.Set {
+		e.Comma()
+	}
 	if s.Description.Set {
 		e.RawStr("\"description\"" + ":")
 		s.Description.Encode(e)
 	}
-	if s.Description.Set {
+
+	if s.Homepage.Set {
 		e.Comma()
 	}
 	if s.Homepage.Set {
 		e.RawStr("\"homepage\"" + ":")
 		s.Homepage.Encode(e)
 	}
-	if s.Homepage.Set {
+
+	if s.Private.Set {
 		e.Comma()
 	}
 	if s.Private.Set {
 		e.RawStr("\"private\"" + ":")
 		s.Private.Encode(e)
 	}
-	if s.Private.Set {
+
+	if s.HasIssues.Set {
 		e.Comma()
 	}
 	if s.HasIssues.Set {
 		e.RawStr("\"has_issues\"" + ":")
 		s.HasIssues.Encode(e)
 	}
-	if s.HasIssues.Set {
+
+	if s.HasProjects.Set {
 		e.Comma()
 	}
 	if s.HasProjects.Set {
 		e.RawStr("\"has_projects\"" + ":")
 		s.HasProjects.Encode(e)
 	}
-	if s.HasProjects.Set {
+
+	if s.HasWiki.Set {
 		e.Comma()
 	}
 	if s.HasWiki.Set {
 		e.RawStr("\"has_wiki\"" + ":")
 		s.HasWiki.Encode(e)
 	}
-	if s.HasWiki.Set {
+
+	if s.TeamID.Set {
 		e.Comma()
 	}
 	if s.TeamID.Set {
 		e.RawStr("\"team_id\"" + ":")
 		s.TeamID.Encode(e)
 	}
-	if s.TeamID.Set {
+
+	if s.AutoInit.Set {
 		e.Comma()
 	}
 	if s.AutoInit.Set {
 		e.RawStr("\"auto_init\"" + ":")
 		s.AutoInit.Encode(e)
 	}
-	if s.AutoInit.Set {
+
+	if s.GitignoreTemplate.Set {
 		e.Comma()
 	}
 	if s.GitignoreTemplate.Set {
 		e.RawStr("\"gitignore_template\"" + ":")
 		s.GitignoreTemplate.Encode(e)
 	}
-	if s.GitignoreTemplate.Set {
+
+	if s.LicenseTemplate.Set {
 		e.Comma()
 	}
 	if s.LicenseTemplate.Set {
 		e.RawStr("\"license_template\"" + ":")
 		s.LicenseTemplate.Encode(e)
 	}
-	if s.LicenseTemplate.Set {
+
+	if s.AllowSquashMerge.Set {
 		e.Comma()
 	}
 	if s.AllowSquashMerge.Set {
 		e.RawStr("\"allow_squash_merge\"" + ":")
 		s.AllowSquashMerge.Encode(e)
 	}
-	if s.AllowSquashMerge.Set {
+
+	if s.AllowMergeCommit.Set {
 		e.Comma()
 	}
 	if s.AllowMergeCommit.Set {
 		e.RawStr("\"allow_merge_commit\"" + ":")
 		s.AllowMergeCommit.Encode(e)
 	}
-	if s.AllowMergeCommit.Set {
+
+	if s.AllowRebaseMerge.Set {
 		e.Comma()
 	}
 	if s.AllowRebaseMerge.Set {
 		e.RawStr("\"allow_rebase_merge\"" + ":")
 		s.AllowRebaseMerge.Encode(e)
 	}
-	if s.AllowRebaseMerge.Set {
+
+	if s.AllowAutoMerge.Set {
 		e.Comma()
 	}
 	if s.AllowAutoMerge.Set {
 		e.RawStr("\"allow_auto_merge\"" + ":")
 		s.AllowAutoMerge.Encode(e)
 	}
-	if s.AllowAutoMerge.Set {
+
+	if s.DeleteBranchOnMerge.Set {
 		e.Comma()
 	}
 	if s.DeleteBranchOnMerge.Set {
 		e.RawStr("\"delete_branch_on_merge\"" + ":")
 		s.DeleteBranchOnMerge.Encode(e)
 	}
-	if s.DeleteBranchOnMerge.Set {
+
+	if s.HasDownloads.Set {
 		e.Comma()
 	}
 	if s.HasDownloads.Set {
 		e.RawStr("\"has_downloads\"" + ":")
 		s.HasDownloads.Encode(e)
 	}
-	if s.HasDownloads.Set {
+
+	if s.IsTemplate.Set {
 		e.Comma()
 	}
 	if s.IsTemplate.Set {
 		e.RawStr("\"is_template\"" + ":")
 		s.IsTemplate.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -88352,13 +96211,20 @@ func (s *ReposCreateForkApplicationJSONNotFound) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s ReposCreateForkReq) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.Organization.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.Organization.Set {
 		e.RawStr("\"organization\"" + ":")
 		s.Organization.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -88385,129 +96251,153 @@ func (s *ReposCreateForkReq) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s ReposCreateInOrgReq) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"name\"" + ":")
 	e.Str(s.Name)
-	e.Comma()
+
+	if s.Description.Set {
+		e.Comma()
+	}
 	if s.Description.Set {
 		e.RawStr("\"description\"" + ":")
 		s.Description.Encode(e)
 	}
-	if s.Description.Set {
+
+	if s.Homepage.Set {
 		e.Comma()
 	}
 	if s.Homepage.Set {
 		e.RawStr("\"homepage\"" + ":")
 		s.Homepage.Encode(e)
 	}
-	if s.Homepage.Set {
+
+	if s.Private.Set {
 		e.Comma()
 	}
 	if s.Private.Set {
 		e.RawStr("\"private\"" + ":")
 		s.Private.Encode(e)
 	}
-	if s.Private.Set {
+
+	if s.Visibility.Set {
 		e.Comma()
 	}
 	if s.Visibility.Set {
 		e.RawStr("\"visibility\"" + ":")
 		s.Visibility.Encode(e)
 	}
-	if s.Visibility.Set {
+
+	if s.HasIssues.Set {
 		e.Comma()
 	}
 	if s.HasIssues.Set {
 		e.RawStr("\"has_issues\"" + ":")
 		s.HasIssues.Encode(e)
 	}
-	if s.HasIssues.Set {
+
+	if s.HasProjects.Set {
 		e.Comma()
 	}
 	if s.HasProjects.Set {
 		e.RawStr("\"has_projects\"" + ":")
 		s.HasProjects.Encode(e)
 	}
-	if s.HasProjects.Set {
+
+	if s.HasWiki.Set {
 		e.Comma()
 	}
 	if s.HasWiki.Set {
 		e.RawStr("\"has_wiki\"" + ":")
 		s.HasWiki.Encode(e)
 	}
-	if s.HasWiki.Set {
+
+	if s.IsTemplate.Set {
 		e.Comma()
 	}
 	if s.IsTemplate.Set {
 		e.RawStr("\"is_template\"" + ":")
 		s.IsTemplate.Encode(e)
 	}
-	if s.IsTemplate.Set {
+
+	if s.TeamID.Set {
 		e.Comma()
 	}
 	if s.TeamID.Set {
 		e.RawStr("\"team_id\"" + ":")
 		s.TeamID.Encode(e)
 	}
-	if s.TeamID.Set {
+
+	if s.AutoInit.Set {
 		e.Comma()
 	}
 	if s.AutoInit.Set {
 		e.RawStr("\"auto_init\"" + ":")
 		s.AutoInit.Encode(e)
 	}
-	if s.AutoInit.Set {
+
+	if s.GitignoreTemplate.Set {
 		e.Comma()
 	}
 	if s.GitignoreTemplate.Set {
 		e.RawStr("\"gitignore_template\"" + ":")
 		s.GitignoreTemplate.Encode(e)
 	}
-	if s.GitignoreTemplate.Set {
+
+	if s.LicenseTemplate.Set {
 		e.Comma()
 	}
 	if s.LicenseTemplate.Set {
 		e.RawStr("\"license_template\"" + ":")
 		s.LicenseTemplate.Encode(e)
 	}
-	if s.LicenseTemplate.Set {
+
+	if s.AllowSquashMerge.Set {
 		e.Comma()
 	}
 	if s.AllowSquashMerge.Set {
 		e.RawStr("\"allow_squash_merge\"" + ":")
 		s.AllowSquashMerge.Encode(e)
 	}
-	if s.AllowSquashMerge.Set {
+
+	if s.AllowMergeCommit.Set {
 		e.Comma()
 	}
 	if s.AllowMergeCommit.Set {
 		e.RawStr("\"allow_merge_commit\"" + ":")
 		s.AllowMergeCommit.Encode(e)
 	}
-	if s.AllowMergeCommit.Set {
+
+	if s.AllowRebaseMerge.Set {
 		e.Comma()
 	}
 	if s.AllowRebaseMerge.Set {
 		e.RawStr("\"allow_rebase_merge\"" + ":")
 		s.AllowRebaseMerge.Encode(e)
 	}
-	if s.AllowRebaseMerge.Set {
+
+	if s.AllowAutoMerge.Set {
 		e.Comma()
 	}
 	if s.AllowAutoMerge.Set {
 		e.RawStr("\"allow_auto_merge\"" + ":")
 		s.AllowAutoMerge.Encode(e)
 	}
-	if s.AllowAutoMerge.Set {
+
+	if s.DeleteBranchOnMerge.Set {
 		e.Comma()
 	}
 	if s.DeleteBranchOnMerge.Set {
 		e.RawStr("\"delete_branch_on_merge\"" + ":")
 		s.DeleteBranchOnMerge.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -88651,27 +96541,42 @@ func (s *ReposCreateInOrgReqVisibility) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s ReposCreateOrUpdateEnvironmentReq) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.WaitTimer.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.WaitTimer.Set {
 		e.RawStr("\"wait_timer\"" + ":")
 		s.WaitTimer.Encode(e)
 	}
-	if s.WaitTimer.Set {
-		e.Comma()
+
+	if s.Reviewers.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Reviewers.Set {
 		e.RawStr("\"reviewers\"" + ":")
 		s.Reviewers.Encode(e)
 	}
-	if s.Reviewers.Set {
-		e.Comma()
+
+	if s.DeploymentBranchPolicy.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.DeploymentBranchPolicy.Set {
 		e.RawStr("\"deployment_branch_policy\"" + ":")
 		s.DeploymentBranchPolicy.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -88708,20 +96613,31 @@ func (s *ReposCreateOrUpdateEnvironmentReq) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s ReposCreateOrUpdateEnvironmentReqReviewersItem) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.Type.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.Type.Set {
 		e.RawStr("\"type\"" + ":")
 		s.Type.Encode(e)
 	}
-	if s.Type.Set {
-		e.Comma()
+
+	if s.ID.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.ID.Set {
 		e.RawStr("\"id\"" + ":")
 		s.ID.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -88849,42 +96765,54 @@ func (s *ReposCreateOrUpdateFileContentsApplicationJSONOK) Decode(d *jx.Decoder)
 // Encode implements json.Marshaler.
 func (s ReposCreateOrUpdateFileContentsReq) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"message\"" + ":")
 	e.Str(s.Message)
+
 	e.Comma()
 
 	e.RawStr("\"content\"" + ":")
 	e.Str(s.Content)
-	e.Comma()
+
+	if s.Sha.Set {
+		e.Comma()
+	}
 	if s.Sha.Set {
 		e.RawStr("\"sha\"" + ":")
 		s.Sha.Encode(e)
 	}
-	if s.Sha.Set {
+
+	if s.Branch.Set {
 		e.Comma()
 	}
 	if s.Branch.Set {
 		e.RawStr("\"branch\"" + ":")
 		s.Branch.Encode(e)
 	}
-	if s.Branch.Set {
+
+	if s.Committer.Set {
 		e.Comma()
 	}
 	if s.Committer.Set {
 		e.RawStr("\"committer\"" + ":")
 		s.Committer.Encode(e)
 	}
-	if s.Committer.Set {
+
+	if s.Author.Set {
 		e.Comma()
 	}
 	if s.Author.Set {
 		e.RawStr("\"author\"" + ":")
 		s.Author.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -88938,21 +96866,30 @@ func (s *ReposCreateOrUpdateFileContentsReq) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s ReposCreateOrUpdateFileContentsReqAuthor) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"name\"" + ":")
 	e.Str(s.Name)
+
 	e.Comma()
 
 	e.RawStr("\"email\"" + ":")
 	e.Str(s.Email)
-	e.Comma()
+
+	if s.Date.Set {
+		e.Comma()
+	}
 	if s.Date.Set {
 		e.RawStr("\"date\"" + ":")
 		s.Date.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -88991,21 +96928,30 @@ func (s *ReposCreateOrUpdateFileContentsReqAuthor) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s ReposCreateOrUpdateFileContentsReqCommitter) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"name\"" + ":")
 	e.Str(s.Name)
+
 	e.Comma()
 
 	e.RawStr("\"email\"" + ":")
 	e.Str(s.Email)
-	e.Comma()
+
+	if s.Date.Set {
+		e.Comma()
+	}
 	if s.Date.Set {
 		e.RawStr("\"date\"" + ":")
 		s.Date.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -89044,13 +96990,19 @@ func (s *ReposCreateOrUpdateFileContentsReqCommitter) Decode(d *jx.Decoder) erro
 // Encode implements json.Marshaler.
 func (s ReposCreatePagesSiteReq) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"source\"" + ":")
 	s.Source.Encode(e)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -89075,17 +97027,25 @@ func (s *ReposCreatePagesSiteReq) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s ReposCreatePagesSiteReqSource) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"branch\"" + ":")
 	e.Str(s.Branch)
-	e.Comma()
+
+	if s.Path.Set {
+		e.Comma()
+	}
 	if s.Path.Set {
 		e.RawStr("\"path\"" + ":")
 		s.Path.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -89145,52 +97105,65 @@ func (s *ReposCreatePagesSiteReqSourcePath) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s ReposCreateReleaseReq) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"tag_name\"" + ":")
 	e.Str(s.TagName)
-	e.Comma()
+
+	if s.TargetCommitish.Set {
+		e.Comma()
+	}
 	if s.TargetCommitish.Set {
 		e.RawStr("\"target_commitish\"" + ":")
 		s.TargetCommitish.Encode(e)
 	}
-	if s.TargetCommitish.Set {
+
+	if s.Name.Set {
 		e.Comma()
 	}
 	if s.Name.Set {
 		e.RawStr("\"name\"" + ":")
 		s.Name.Encode(e)
 	}
-	if s.Name.Set {
+
+	if s.Body.Set {
 		e.Comma()
 	}
 	if s.Body.Set {
 		e.RawStr("\"body\"" + ":")
 		s.Body.Encode(e)
 	}
-	if s.Body.Set {
+
+	if s.Draft.Set {
 		e.Comma()
 	}
 	if s.Draft.Set {
 		e.RawStr("\"draft\"" + ":")
 		s.Draft.Encode(e)
 	}
-	if s.Draft.Set {
+
+	if s.Prerelease.Set {
 		e.Comma()
 	}
 	if s.Prerelease.Set {
 		e.RawStr("\"prerelease\"" + ":")
 		s.Prerelease.Encode(e)
 	}
-	if s.Prerelease.Set {
+
+	if s.DiscussionCategoryName.Set {
 		e.Comma()
 	}
 	if s.DiscussionCategoryName.Set {
 		e.RawStr("\"discussion_category_name\"" + ":")
 		s.DiscussionCategoryName.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -89248,38 +97221,52 @@ func (s *ReposCreateReleaseReq) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s ReposCreateUsingTemplateReq) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.Owner.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.Owner.Set {
 		e.RawStr("\"owner\"" + ":")
 		s.Owner.Encode(e)
 	}
-	if s.Owner.Set {
+
+	if !first {
 		e.Comma()
 	}
+	first = false
 
 	e.RawStr("\"name\"" + ":")
 	e.Str(s.Name)
-	e.Comma()
+
+	if s.Description.Set {
+		e.Comma()
+	}
 	if s.Description.Set {
 		e.RawStr("\"description\"" + ":")
 		s.Description.Encode(e)
 	}
-	if s.Description.Set {
+
+	if s.IncludeAllBranches.Set {
 		e.Comma()
 	}
 	if s.IncludeAllBranches.Set {
 		e.RawStr("\"include_all_branches\"" + ":")
 		s.IncludeAllBranches.Encode(e)
 	}
-	if s.IncludeAllBranches.Set {
+
+	if s.Private.Set {
 		e.Comma()
 	}
 	if s.Private.Set {
 		e.RawStr("\"private\"" + ":")
 		s.Private.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -89375,19 +97362,38 @@ func (s *ReposCreateWebhookApplicationJSONNotFound) Decode(d *jx.Decoder) error 
 // Encode implements json.Marshaler.
 func (s ReposCreateWebhookReq) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.Name.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.Name.Set {
 		e.RawStr("\"name\"" + ":")
 		s.Name.Encode(e)
 	}
-	if s.Name.Set {
-		e.Comma()
+
+	if s.Config.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Config.Set {
 		e.RawStr("\"config\"" + ":")
 		s.Config.Encode(e)
 	}
-	if s.Config.Set {
-		e.Comma()
+
+	if s.Events != nil {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Events != nil {
 		e.RawStr("\"events\"" + ":")
@@ -89405,16 +97411,16 @@ func (s ReposCreateWebhookReq) Encode(e *jx.Writer) {
 		}
 		e.ArrEnd()
 	}
-	if s.Events != nil {
-		e.Comma()
+
+	if s.Active.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Active.Set {
 		e.RawStr("\"active\"" + ":")
 		s.Active.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -89465,48 +97471,75 @@ func (s *ReposCreateWebhookReq) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s ReposCreateWebhookReqConfig) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.URL.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.URL.Set {
 		e.RawStr("\"url\"" + ":")
 		s.URL.Encode(e)
 	}
-	if s.URL.Set {
-		e.Comma()
+
+	if s.ContentType.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.ContentType.Set {
 		e.RawStr("\"content_type\"" + ":")
 		s.ContentType.Encode(e)
 	}
-	if s.ContentType.Set {
-		e.Comma()
+
+	if s.Secret.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Secret.Set {
 		e.RawStr("\"secret\"" + ":")
 		s.Secret.Encode(e)
 	}
-	if s.Secret.Set {
-		e.Comma()
+
+	if s.InsecureSsl.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.InsecureSsl.Set {
 		e.RawStr("\"insecure_ssl\"" + ":")
 		s.InsecureSsl.Encode(e)
 	}
-	if s.InsecureSsl.Set {
-		e.Comma()
+
+	if s.Token.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Token.Set {
 		e.RawStr("\"token\"" + ":")
 		s.Token.Encode(e)
 	}
-	if s.Token.Set {
-		e.Comma()
+
+	if s.Digest.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Digest.Set {
 		e.RawStr("\"digest\"" + ":")
 		s.Digest.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -89630,10 +97663,10 @@ func (s *ReposDeclineInvitationApplicationJSONNotFound) Decode(d *jx.Decoder) er
 // Encode implements json.Marshaler.
 func (s ReposDeclineInvitationNoContent) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -89654,10 +97687,10 @@ func (s *ReposDeclineInvitationNoContent) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s ReposDeleteAccessRestrictionsNoContent) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -89678,10 +97711,10 @@ func (s *ReposDeleteAccessRestrictionsNoContent) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s ReposDeleteAdminBranchProtectionNoContent) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -89702,10 +97735,10 @@ func (s *ReposDeleteAdminBranchProtectionNoContent) Decode(d *jx.Decoder) error 
 // Encode implements json.Marshaler.
 func (s ReposDeleteAnEnvironmentNoContent) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -89774,10 +97807,10 @@ func (s *ReposDeleteApplicationJSONTemporaryRedirect) Decode(d *jx.Decoder) erro
 // Encode implements json.Marshaler.
 func (s ReposDeleteAutolinkNoContent) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -89798,10 +97831,10 @@ func (s *ReposDeleteAutolinkNoContent) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s ReposDeleteBranchProtectionNoContent) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -89822,10 +97855,10 @@ func (s *ReposDeleteBranchProtectionNoContent) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s ReposDeleteCommitCommentNoContent) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -89846,10 +97879,10 @@ func (s *ReposDeleteCommitCommentNoContent) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s ReposDeleteCommitSignatureProtectionNoContent) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -89870,10 +97903,10 @@ func (s *ReposDeleteCommitSignatureProtectionNoContent) Decode(d *jx.Decoder) er
 // Encode implements json.Marshaler.
 func (s ReposDeleteDeployKeyNoContent) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -89894,10 +97927,10 @@ func (s *ReposDeleteDeployKeyNoContent) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s ReposDeleteDeploymentNoContent) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -89966,35 +97999,46 @@ func (s *ReposDeleteFileApplicationJSONNotFound) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s ReposDeleteFileReq) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"message\"" + ":")
 	e.Str(s.Message)
+
 	e.Comma()
 
 	e.RawStr("\"sha\"" + ":")
 	e.Str(s.Sha)
-	e.Comma()
+
+	if s.Branch.Set {
+		e.Comma()
+	}
 	if s.Branch.Set {
 		e.RawStr("\"branch\"" + ":")
 		s.Branch.Encode(e)
 	}
-	if s.Branch.Set {
+
+	if s.Committer.Set {
 		e.Comma()
 	}
 	if s.Committer.Set {
 		e.RawStr("\"committer\"" + ":")
 		s.Committer.Encode(e)
 	}
-	if s.Committer.Set {
+
+	if s.Author.Set {
 		e.Comma()
 	}
 	if s.Author.Set {
 		e.RawStr("\"author\"" + ":")
 		s.Author.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -90043,20 +98087,31 @@ func (s *ReposDeleteFileReq) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s ReposDeleteFileReqAuthor) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.Name.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.Name.Set {
 		e.RawStr("\"name\"" + ":")
 		s.Name.Encode(e)
 	}
-	if s.Name.Set {
-		e.Comma()
+
+	if s.Email.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Email.Set {
 		e.RawStr("\"email\"" + ":")
 		s.Email.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -90088,20 +98143,31 @@ func (s *ReposDeleteFileReqAuthor) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s ReposDeleteFileReqCommitter) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.Name.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.Name.Set {
 		e.RawStr("\"name\"" + ":")
 		s.Name.Encode(e)
 	}
-	if s.Name.Set {
-		e.Comma()
+
+	if s.Email.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Email.Set {
 		e.RawStr("\"email\"" + ":")
 		s.Email.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -90133,20 +98199,31 @@ func (s *ReposDeleteFileReqCommitter) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s ReposDeleteForbidden) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.Message.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.Message.Set {
 		e.RawStr("\"message\"" + ":")
 		s.Message.Encode(e)
 	}
-	if s.Message.Set {
-		e.Comma()
+
+	if s.DocumentationURL.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.DocumentationURL.Set {
 		e.RawStr("\"documentation_url\"" + ":")
 		s.DocumentationURL.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -90178,10 +98255,10 @@ func (s *ReposDeleteForbidden) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s ReposDeleteInvitationNoContent) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -90202,10 +98279,10 @@ func (s *ReposDeleteInvitationNoContent) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s ReposDeleteNoContent) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -90226,10 +98303,10 @@ func (s *ReposDeleteNoContent) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s ReposDeletePagesSiteNoContent) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -90250,10 +98327,10 @@ func (s *ReposDeletePagesSiteNoContent) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s ReposDeletePullRequestReviewProtectionNoContent) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -90274,10 +98351,10 @@ func (s *ReposDeletePullRequestReviewProtectionNoContent) Decode(d *jx.Decoder) 
 // Encode implements json.Marshaler.
 func (s ReposDeleteReleaseAssetNoContent) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -90298,10 +98375,10 @@ func (s *ReposDeleteReleaseAssetNoContent) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s ReposDeleteReleaseNoContent) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -90322,10 +98399,10 @@ func (s *ReposDeleteReleaseNoContent) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s ReposDeleteWebhookNoContent) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -90346,10 +98423,10 @@ func (s *ReposDeleteWebhookNoContent) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s ReposDisableAutomatedSecurityFixesNoContent) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -90370,10 +98447,10 @@ func (s *ReposDisableAutomatedSecurityFixesNoContent) Decode(d *jx.Decoder) erro
 // Encode implements json.Marshaler.
 func (s ReposDisableLfsForRepoNoContent) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -90394,10 +98471,10 @@ func (s *ReposDisableLfsForRepoNoContent) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s ReposDisableVulnerabilityAlertsNoContent) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -90418,10 +98495,10 @@ func (s *ReposDisableVulnerabilityAlertsNoContent) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s ReposDownloadTarballArchiveFound) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -90442,10 +98519,10 @@ func (s *ReposDownloadTarballArchiveFound) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s ReposDownloadZipballArchiveFound) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -90466,10 +98543,10 @@ func (s *ReposDownloadZipballArchiveFound) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s ReposEnableAutomatedSecurityFixesNoContent) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -90490,10 +98567,10 @@ func (s *ReposEnableAutomatedSecurityFixesNoContent) Decode(d *jx.Decoder) error
 // Encode implements json.Marshaler.
 func (s ReposEnableLfsForRepoForbidden) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -90514,10 +98591,10 @@ func (s *ReposEnableLfsForRepoForbidden) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s ReposEnableVulnerabilityAlertsNoContent) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -90971,10 +99048,10 @@ func (s *ReposGetContributorsStatsOKApplicationJSON) Decode(d *jx.Decoder) error
 // Encode implements json.Marshaler.
 func (s ReposGetPagesHealthCheckBadRequest) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -90995,10 +99072,10 @@ func (s *ReposGetPagesHealthCheckBadRequest) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s ReposGetPagesHealthCheckUnprocessableEntity) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -91675,10 +99752,10 @@ func (s *ReposListContributorsApplicationJSONNotFound) Decode(d *jx.Decoder) err
 // Encode implements json.Marshaler.
 func (s ReposListContributorsNoContent) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -92548,10 +100625,10 @@ func (s *ReposListWebhooksOKApplicationJSON) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s ReposMergeConflict) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -92572,10 +100649,10 @@ func (s *ReposMergeConflict) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s ReposMergeNoContent) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -92596,10 +100673,10 @@ func (s *ReposMergeNoContent) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s ReposMergeNotFound) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -92620,21 +100697,30 @@ func (s *ReposMergeNotFound) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s ReposMergeReq) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"base\"" + ":")
 	e.Str(s.Base)
+
 	e.Comma()
 
 	e.RawStr("\"head\"" + ":")
 	e.Str(s.Head)
-	e.Comma()
+
+	if s.CommitMessage.Set {
+		e.Comma()
+	}
 	if s.CommitMessage.Set {
 		e.RawStr("\"commit_message\"" + ":")
 		s.CommitMessage.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -92673,10 +100759,10 @@ func (s *ReposMergeReq) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s ReposMergeUpstreamConflict) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -92697,13 +100783,18 @@ func (s *ReposMergeUpstreamConflict) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s ReposMergeUpstreamReq) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"branch\"" + ":")
 	e.Str(s.Branch)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -92730,10 +100821,10 @@ func (s *ReposMergeUpstreamReq) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s ReposMergeUpstreamUnprocessableEntity) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -92754,10 +100845,10 @@ func (s *ReposMergeUpstreamUnprocessableEntity) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s ReposPingWebhookNoContent) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -92877,6 +100968,16 @@ func (s *ReposRemoveAppAccessRestrictionsReq) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s ReposRemoveAppAccessRestrictionsReq0) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"apps\"" + ":")
 	e.ArrStart()
@@ -92892,10 +100993,6 @@ func (s ReposRemoveAppAccessRestrictionsReq0) Encode(e *jx.Writer) {
 		}
 	}
 	e.ArrEnd()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -92930,10 +101027,10 @@ func (s *ReposRemoveAppAccessRestrictionsReq0) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s ReposRemoveCollaboratorNoContent) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -93055,6 +101152,16 @@ func (s *ReposRemoveStatusCheckContextsReq) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s ReposRemoveStatusCheckContextsReq0) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"contexts\"" + ":")
 	e.ArrStart()
@@ -93070,10 +101177,6 @@ func (s ReposRemoveStatusCheckContextsReq0) Encode(e *jx.Writer) {
 		}
 	}
 	e.ArrEnd()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -93108,10 +101211,10 @@ func (s *ReposRemoveStatusCheckContextsReq0) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s ReposRemoveStatusCheckProtectionNoContent) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -93231,6 +101334,16 @@ func (s *ReposRemoveTeamAccessRestrictionsReq) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s ReposRemoveTeamAccessRestrictionsReq0) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"teams\"" + ":")
 	e.ArrStart()
@@ -93246,10 +101359,6 @@ func (s ReposRemoveTeamAccessRestrictionsReq0) Encode(e *jx.Writer) {
 		}
 	}
 	e.ArrEnd()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -93383,6 +101492,16 @@ func (s *ReposRemoveUserAccessRestrictionsReq) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s ReposRemoveUserAccessRestrictionsReq0) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"users\"" + ":")
 	e.ArrStart()
@@ -93398,10 +101517,6 @@ func (s ReposRemoveUserAccessRestrictionsReq0) Encode(e *jx.Writer) {
 		}
 	}
 	e.ArrEnd()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -93484,13 +101599,18 @@ func (s *ReposRenameBranchApplicationJSONNotFound) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s ReposRenameBranchReq) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"new_name\"" + ":")
 	e.Str(s.NewName)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -93517,6 +101637,16 @@ func (s *ReposRenameBranchReq) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s ReposReplaceAllTopicsReq) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"names\"" + ":")
 	e.ArrStart()
@@ -93532,10 +101662,6 @@ func (s ReposReplaceAllTopicsReq) Encode(e *jx.Writer) {
 		}
 	}
 	e.ArrEnd()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -93669,6 +101795,16 @@ func (s *ReposSetAppAccessRestrictionsReq) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s ReposSetAppAccessRestrictionsReq0) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"apps\"" + ":")
 	e.ArrStart()
@@ -93684,10 +101820,6 @@ func (s ReposSetAppAccessRestrictionsReq0) Encode(e *jx.Writer) {
 		}
 	}
 	e.ArrEnd()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -93823,6 +101955,16 @@ func (s *ReposSetStatusCheckContextsReq) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s ReposSetStatusCheckContextsReq0) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"contexts\"" + ":")
 	e.ArrStart()
@@ -93838,10 +101980,6 @@ func (s ReposSetStatusCheckContextsReq0) Encode(e *jx.Writer) {
 		}
 	}
 	e.ArrEnd()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -93975,6 +102113,16 @@ func (s *ReposSetTeamAccessRestrictionsReq) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s ReposSetTeamAccessRestrictionsReq0) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"teams\"" + ":")
 	e.ArrStart()
@@ -93990,10 +102138,6 @@ func (s ReposSetTeamAccessRestrictionsReq0) Encode(e *jx.Writer) {
 		}
 	}
 	e.ArrEnd()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -94127,6 +102271,16 @@ func (s *ReposSetUserAccessRestrictionsReq) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s ReposSetUserAccessRestrictionsReq0) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"users\"" + ":")
 	e.ArrStart()
@@ -94142,10 +102296,6 @@ func (s ReposSetUserAccessRestrictionsReq0) Encode(e *jx.Writer) {
 		}
 	}
 	e.ArrEnd()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -94180,10 +102330,10 @@ func (s *ReposSetUserAccessRestrictionsReq0) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s ReposTestPushWebhookNoContent) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -94204,10 +102354,22 @@ func (s *ReposTestPushWebhookNoContent) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s ReposTransferReq) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"new_owner\"" + ":")
 	e.Str(s.NewOwner)
-	e.Comma()
+
+	if s.TeamIds != nil {
+		e.Comma()
+	}
 	if s.TeamIds != nil {
 		e.RawStr("\"team_ids\"" + ":")
 		e.ArrStart()
@@ -94223,10 +102385,6 @@ func (s ReposTransferReq) Encode(e *jx.Writer) {
 			}
 		}
 		e.ArrEnd()
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -94388,6 +102546,16 @@ func (s *ReposUpdateBranchProtectionApplicationJSONNotFound) Decode(d *jx.Decode
 // Encode implements json.Marshaler.
 func (s ReposUpdateBranchProtectionReq) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"required_status_checks\"" + ":")
 	s.RequiredStatusChecks.Encode(e)
@@ -94407,35 +102575,36 @@ func (s ReposUpdateBranchProtectionReq) Encode(e *jx.Writer) {
 	e.RawStr("\"restrictions\"" + ":")
 	s.Restrictions.Encode(e)
 
-	e.Comma()
+	if s.RequiredLinearHistory.Set {
+		e.Comma()
+	}
 	if s.RequiredLinearHistory.Set {
 		e.RawStr("\"required_linear_history\"" + ":")
 		s.RequiredLinearHistory.Encode(e)
 	}
-	if s.RequiredLinearHistory.Set {
+
+	if s.AllowForcePushes.Set {
 		e.Comma()
 	}
 	if s.AllowForcePushes.Set {
 		e.RawStr("\"allow_force_pushes\"" + ":")
 		s.AllowForcePushes.Encode(e)
 	}
-	if s.AllowForcePushes.Set {
+
+	if s.AllowDeletions.Set {
 		e.Comma()
 	}
 	if s.AllowDeletions.Set {
 		e.RawStr("\"allow_deletions\"" + ":")
 		s.AllowDeletions.Encode(e)
 	}
-	if s.AllowDeletions.Set {
+
+	if s.RequiredConversationResolution.Set {
 		e.Comma()
 	}
 	if s.RequiredConversationResolution.Set {
 		e.RawStr("\"required_conversation_resolution\"" + ":")
 		s.RequiredConversationResolution.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -94493,34 +102662,53 @@ func (s *ReposUpdateBranchProtectionReq) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s ReposUpdateBranchProtectionReqRequiredPullRequestReviews) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.DismissalRestrictions.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.DismissalRestrictions.Set {
 		e.RawStr("\"dismissal_restrictions\"" + ":")
 		s.DismissalRestrictions.Encode(e)
 	}
-	if s.DismissalRestrictions.Set {
-		e.Comma()
+
+	if s.DismissStaleReviews.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.DismissStaleReviews.Set {
 		e.RawStr("\"dismiss_stale_reviews\"" + ":")
 		s.DismissStaleReviews.Encode(e)
 	}
-	if s.DismissStaleReviews.Set {
-		e.Comma()
+
+	if s.RequireCodeOwnerReviews.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.RequireCodeOwnerReviews.Set {
 		e.RawStr("\"require_code_owner_reviews\"" + ":")
 		s.RequireCodeOwnerReviews.Encode(e)
 	}
-	if s.RequireCodeOwnerReviews.Set {
-		e.Comma()
+
+	if s.RequiredApprovingReviewCount.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.RequiredApprovingReviewCount.Set {
 		e.RawStr("\"required_approving_review_count\"" + ":")
 		s.RequiredApprovingReviewCount.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -94562,6 +102750,17 @@ func (s *ReposUpdateBranchProtectionReqRequiredPullRequestReviews) Decode(d *jx.
 // Encode implements json.Marshaler.
 func (s ReposUpdateBranchProtectionReqRequiredPullRequestReviewsDismissalRestrictions) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.Users != nil {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.Users != nil {
 		e.RawStr("\"users\"" + ":")
 		e.ArrStart()
@@ -94578,8 +102777,12 @@ func (s ReposUpdateBranchProtectionReqRequiredPullRequestReviewsDismissalRestric
 		}
 		e.ArrEnd()
 	}
-	if s.Users != nil {
-		e.Comma()
+
+	if s.Teams != nil {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Teams != nil {
 		e.RawStr("\"teams\"" + ":")
@@ -94596,10 +102799,6 @@ func (s ReposUpdateBranchProtectionReqRequiredPullRequestReviewsDismissalRestric
 			}
 		}
 		e.ArrEnd()
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -94649,9 +102848,19 @@ func (s *ReposUpdateBranchProtectionReqRequiredPullRequestReviewsDismissalRestri
 // Encode implements json.Marshaler.
 func (s ReposUpdateBranchProtectionReqRequiredStatusChecks) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"strict\"" + ":")
 	e.Bool(s.Strict)
+
 	e.Comma()
 
 	e.RawStr("\"contexts\"" + ":")
@@ -94668,10 +102877,6 @@ func (s ReposUpdateBranchProtectionReqRequiredStatusChecks) Encode(e *jx.Writer)
 		}
 	}
 	e.ArrEnd()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -94712,6 +102917,16 @@ func (s *ReposUpdateBranchProtectionReqRequiredStatusChecks) Decode(d *jx.Decode
 // Encode implements json.Marshaler.
 func (s ReposUpdateBranchProtectionReqRestrictions) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"users\"" + ":")
 	e.ArrStart()
@@ -94745,7 +102960,9 @@ func (s ReposUpdateBranchProtectionReqRestrictions) Encode(e *jx.Writer) {
 	}
 	e.ArrEnd()
 
-	e.Comma()
+	if s.Apps != nil {
+		e.Comma()
+	}
 	if s.Apps != nil {
 		e.RawStr("\"apps\"" + ":")
 		e.ArrStart()
@@ -94761,10 +102978,6 @@ func (s ReposUpdateBranchProtectionReqRestrictions) Encode(e *jx.Writer) {
 			}
 		}
 		e.ArrEnd()
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -94828,13 +103041,18 @@ func (s *ReposUpdateBranchProtectionReqRestrictions) Decode(d *jx.Decoder) error
 // Encode implements json.Marshaler.
 func (s ReposUpdateCommitCommentReq) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"body\"" + ":")
 	e.Str(s.Body)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -94861,13 +103079,20 @@ func (s *ReposUpdateCommitCommentReq) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s ReposUpdateInvitationReq) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.Permissions.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.Permissions.Set {
 		e.RawStr("\"permissions\"" + ":")
 		s.Permissions.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -94927,34 +103152,53 @@ func (s *ReposUpdateInvitationReqPermissions) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s ReposUpdatePullRequestReviewProtectionReq) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.DismissalRestrictions.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.DismissalRestrictions.Set {
 		e.RawStr("\"dismissal_restrictions\"" + ":")
 		s.DismissalRestrictions.Encode(e)
 	}
-	if s.DismissalRestrictions.Set {
-		e.Comma()
+
+	if s.DismissStaleReviews.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.DismissStaleReviews.Set {
 		e.RawStr("\"dismiss_stale_reviews\"" + ":")
 		s.DismissStaleReviews.Encode(e)
 	}
-	if s.DismissStaleReviews.Set {
-		e.Comma()
+
+	if s.RequireCodeOwnerReviews.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.RequireCodeOwnerReviews.Set {
 		e.RawStr("\"require_code_owner_reviews\"" + ":")
 		s.RequireCodeOwnerReviews.Encode(e)
 	}
-	if s.RequireCodeOwnerReviews.Set {
-		e.Comma()
+
+	if s.RequiredApprovingReviewCount.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.RequiredApprovingReviewCount.Set {
 		e.RawStr("\"required_approving_review_count\"" + ":")
 		s.RequiredApprovingReviewCount.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -94996,6 +103240,17 @@ func (s *ReposUpdatePullRequestReviewProtectionReq) Decode(d *jx.Decoder) error 
 // Encode implements json.Marshaler.
 func (s ReposUpdatePullRequestReviewProtectionReqDismissalRestrictions) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.Users != nil {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.Users != nil {
 		e.RawStr("\"users\"" + ":")
 		e.ArrStart()
@@ -95012,8 +103267,12 @@ func (s ReposUpdatePullRequestReviewProtectionReqDismissalRestrictions) Encode(e
 		}
 		e.ArrEnd()
 	}
-	if s.Users != nil {
-		e.Comma()
+
+	if s.Teams != nil {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Teams != nil {
 		e.RawStr("\"teams\"" + ":")
@@ -95030,10 +103289,6 @@ func (s ReposUpdatePullRequestReviewProtectionReqDismissalRestrictions) Encode(e
 			}
 		}
 		e.ArrEnd()
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -95083,27 +103338,42 @@ func (s *ReposUpdatePullRequestReviewProtectionReqDismissalRestrictions) Decode(
 // Encode implements json.Marshaler.
 func (s ReposUpdateReleaseAssetReq) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.Name.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.Name.Set {
 		e.RawStr("\"name\"" + ":")
 		s.Name.Encode(e)
 	}
-	if s.Name.Set {
-		e.Comma()
+
+	if s.Label.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Label.Set {
 		e.RawStr("\"label\"" + ":")
 		s.Label.Encode(e)
 	}
-	if s.Label.Set {
-		e.Comma()
+
+	if s.State.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.State.Set {
 		e.RawStr("\"state\"" + ":")
 		s.State.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -95140,55 +103410,86 @@ func (s *ReposUpdateReleaseAssetReq) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s ReposUpdateReleaseReq) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.TagName.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.TagName.Set {
 		e.RawStr("\"tag_name\"" + ":")
 		s.TagName.Encode(e)
 	}
-	if s.TagName.Set {
-		e.Comma()
+
+	if s.TargetCommitish.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.TargetCommitish.Set {
 		e.RawStr("\"target_commitish\"" + ":")
 		s.TargetCommitish.Encode(e)
 	}
-	if s.TargetCommitish.Set {
-		e.Comma()
+
+	if s.Name.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Name.Set {
 		e.RawStr("\"name\"" + ":")
 		s.Name.Encode(e)
 	}
-	if s.Name.Set {
-		e.Comma()
+
+	if s.Body.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Body.Set {
 		e.RawStr("\"body\"" + ":")
 		s.Body.Encode(e)
 	}
-	if s.Body.Set {
-		e.Comma()
+
+	if s.Draft.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Draft.Set {
 		e.RawStr("\"draft\"" + ":")
 		s.Draft.Encode(e)
 	}
-	if s.Draft.Set {
-		e.Comma()
+
+	if s.Prerelease.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Prerelease.Set {
 		e.RawStr("\"prerelease\"" + ":")
 		s.Prerelease.Encode(e)
 	}
-	if s.Prerelease.Set {
-		e.Comma()
+
+	if s.DiscussionCategoryName.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.DiscussionCategoryName.Set {
 		e.RawStr("\"discussion_category_name\"" + ":")
 		s.DiscussionCategoryName.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -95245,132 +103546,207 @@ func (s *ReposUpdateReleaseReq) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s ReposUpdateReq) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.Name.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.Name.Set {
 		e.RawStr("\"name\"" + ":")
 		s.Name.Encode(e)
 	}
-	if s.Name.Set {
-		e.Comma()
+
+	if s.Description.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Description.Set {
 		e.RawStr("\"description\"" + ":")
 		s.Description.Encode(e)
 	}
-	if s.Description.Set {
-		e.Comma()
+
+	if s.Homepage.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Homepage.Set {
 		e.RawStr("\"homepage\"" + ":")
 		s.Homepage.Encode(e)
 	}
-	if s.Homepage.Set {
-		e.Comma()
+
+	if s.Private.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Private.Set {
 		e.RawStr("\"private\"" + ":")
 		s.Private.Encode(e)
 	}
-	if s.Private.Set {
-		e.Comma()
+
+	if s.Visibility.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Visibility.Set {
 		e.RawStr("\"visibility\"" + ":")
 		s.Visibility.Encode(e)
 	}
-	if s.Visibility.Set {
-		e.Comma()
+
+	if s.SecurityAndAnalysis.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.SecurityAndAnalysis.Set {
 		e.RawStr("\"security_and_analysis\"" + ":")
 		s.SecurityAndAnalysis.Encode(e)
 	}
-	if s.SecurityAndAnalysis.Set {
-		e.Comma()
+
+	if s.HasIssues.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.HasIssues.Set {
 		e.RawStr("\"has_issues\"" + ":")
 		s.HasIssues.Encode(e)
 	}
-	if s.HasIssues.Set {
-		e.Comma()
+
+	if s.HasProjects.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.HasProjects.Set {
 		e.RawStr("\"has_projects\"" + ":")
 		s.HasProjects.Encode(e)
 	}
-	if s.HasProjects.Set {
-		e.Comma()
+
+	if s.HasWiki.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.HasWiki.Set {
 		e.RawStr("\"has_wiki\"" + ":")
 		s.HasWiki.Encode(e)
 	}
-	if s.HasWiki.Set {
-		e.Comma()
+
+	if s.IsTemplate.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.IsTemplate.Set {
 		e.RawStr("\"is_template\"" + ":")
 		s.IsTemplate.Encode(e)
 	}
-	if s.IsTemplate.Set {
-		e.Comma()
+
+	if s.DefaultBranch.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.DefaultBranch.Set {
 		e.RawStr("\"default_branch\"" + ":")
 		s.DefaultBranch.Encode(e)
 	}
-	if s.DefaultBranch.Set {
-		e.Comma()
+
+	if s.AllowSquashMerge.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.AllowSquashMerge.Set {
 		e.RawStr("\"allow_squash_merge\"" + ":")
 		s.AllowSquashMerge.Encode(e)
 	}
-	if s.AllowSquashMerge.Set {
-		e.Comma()
+
+	if s.AllowMergeCommit.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.AllowMergeCommit.Set {
 		e.RawStr("\"allow_merge_commit\"" + ":")
 		s.AllowMergeCommit.Encode(e)
 	}
-	if s.AllowMergeCommit.Set {
-		e.Comma()
+
+	if s.AllowRebaseMerge.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.AllowRebaseMerge.Set {
 		e.RawStr("\"allow_rebase_merge\"" + ":")
 		s.AllowRebaseMerge.Encode(e)
 	}
-	if s.AllowRebaseMerge.Set {
-		e.Comma()
+
+	if s.AllowAutoMerge.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.AllowAutoMerge.Set {
 		e.RawStr("\"allow_auto_merge\"" + ":")
 		s.AllowAutoMerge.Encode(e)
 	}
-	if s.AllowAutoMerge.Set {
-		e.Comma()
+
+	if s.DeleteBranchOnMerge.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.DeleteBranchOnMerge.Set {
 		e.RawStr("\"delete_branch_on_merge\"" + ":")
 		s.DeleteBranchOnMerge.Encode(e)
 	}
-	if s.DeleteBranchOnMerge.Set {
-		e.Comma()
+
+	if s.Archived.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Archived.Set {
 		e.RawStr("\"archived\"" + ":")
 		s.Archived.Encode(e)
 	}
-	if s.Archived.Set {
-		e.Comma()
+
+	if s.AllowForking.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.AllowForking.Set {
 		e.RawStr("\"allow_forking\"" + ":")
 		s.AllowForking.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -95482,20 +103858,31 @@ func (s *ReposUpdateReq) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s ReposUpdateReqSecurityAndAnalysis) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.AdvancedSecurity.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.AdvancedSecurity.Set {
 		e.RawStr("\"advanced_security\"" + ":")
 		s.AdvancedSecurity.Encode(e)
 	}
-	if s.AdvancedSecurity.Set {
-		e.Comma()
+
+	if s.SecretScanning.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.SecretScanning.Set {
 		e.RawStr("\"secret_scanning\"" + ":")
 		s.SecretScanning.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -95527,13 +103914,20 @@ func (s *ReposUpdateReqSecurityAndAnalysis) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s ReposUpdateReqSecurityAndAnalysisAdvancedSecurity) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.Status.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.Status.Set {
 		e.RawStr("\"status\"" + ":")
 		s.Status.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -95560,13 +103954,20 @@ func (s *ReposUpdateReqSecurityAndAnalysisAdvancedSecurity) Decode(d *jx.Decoder
 // Encode implements json.Marshaler.
 func (s ReposUpdateReqSecurityAndAnalysisSecretScanning) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.Status.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.Status.Set {
 		e.RawStr("\"status\"" + ":")
 		s.Status.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -95624,12 +104025,27 @@ func (s *ReposUpdateReqVisibility) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s ReposUpdateStatusCheckProtectionReq) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.Strict.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.Strict.Set {
 		e.RawStr("\"strict\"" + ":")
 		s.Strict.Encode(e)
 	}
-	if s.Strict.Set {
-		e.Comma()
+
+	if s.Contexts != nil {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Contexts != nil {
 		e.RawStr("\"contexts\"" + ":")
@@ -95646,10 +104062,6 @@ func (s ReposUpdateStatusCheckProtectionReq) Encode(e *jx.Writer) {
 			}
 		}
 		e.ArrEnd()
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -95690,34 +104102,53 @@ func (s *ReposUpdateStatusCheckProtectionReq) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s ReposUpdateWebhookConfigForRepoReq) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.URL.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.URL.Set {
 		e.RawStr("\"url\"" + ":")
 		s.URL.Encode(e)
 	}
-	if s.URL.Set {
-		e.Comma()
+
+	if s.ContentType.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.ContentType.Set {
 		e.RawStr("\"content_type\"" + ":")
 		s.ContentType.Encode(e)
 	}
-	if s.ContentType.Set {
-		e.Comma()
+
+	if s.Secret.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Secret.Set {
 		e.RawStr("\"secret\"" + ":")
 		s.Secret.Encode(e)
 	}
-	if s.Secret.Set {
-		e.Comma()
+
+	if s.InsecureSsl.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.InsecureSsl.Set {
 		e.RawStr("\"insecure_ssl\"" + ":")
 		s.InsecureSsl.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -95759,12 +104190,27 @@ func (s *ReposUpdateWebhookConfigForRepoReq) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s ReposUpdateWebhookReq) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.Config.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.Config.Set {
 		e.RawStr("\"config\"" + ":")
 		s.Config.Encode(e)
 	}
-	if s.Config.Set {
-		e.Comma()
+
+	if s.Events != nil {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Events != nil {
 		e.RawStr("\"events\"" + ":")
@@ -95782,8 +104228,12 @@ func (s ReposUpdateWebhookReq) Encode(e *jx.Writer) {
 		}
 		e.ArrEnd()
 	}
-	if s.Events != nil {
-		e.Comma()
+
+	if s.AddEvents != nil {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.AddEvents != nil {
 		e.RawStr("\"add_events\"" + ":")
@@ -95801,8 +104251,12 @@ func (s ReposUpdateWebhookReq) Encode(e *jx.Writer) {
 		}
 		e.ArrEnd()
 	}
-	if s.AddEvents != nil {
-		e.Comma()
+
+	if s.RemoveEvents != nil {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.RemoveEvents != nil {
 		e.RawStr("\"remove_events\"" + ":")
@@ -95820,16 +104274,16 @@ func (s ReposUpdateWebhookReq) Encode(e *jx.Writer) {
 		}
 		e.ArrEnd()
 	}
-	if s.RemoveEvents != nil {
-		e.Comma()
+
+	if s.Active.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Active.Set {
 		e.RawStr("\"active\"" + ":")
 		s.Active.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -95903,46 +104357,58 @@ func (s *ReposUpdateWebhookReq) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s ReposUpdateWebhookReqConfig) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"url\"" + ":")
 	s.URL.Encode(e)
 
-	e.Comma()
+	if s.ContentType.Set {
+		e.Comma()
+	}
 	if s.ContentType.Set {
 		e.RawStr("\"content_type\"" + ":")
 		s.ContentType.Encode(e)
 	}
-	if s.ContentType.Set {
+
+	if s.Secret.Set {
 		e.Comma()
 	}
 	if s.Secret.Set {
 		e.RawStr("\"secret\"" + ":")
 		s.Secret.Encode(e)
 	}
-	if s.Secret.Set {
+
+	if s.InsecureSsl.Set {
 		e.Comma()
 	}
 	if s.InsecureSsl.Set {
 		e.RawStr("\"insecure_ssl\"" + ":")
 		s.InsecureSsl.Encode(e)
 	}
-	if s.InsecureSsl.Set {
+
+	if s.Address.Set {
 		e.Comma()
 	}
 	if s.Address.Set {
 		e.RawStr("\"address\"" + ":")
 		s.Address.Encode(e)
 	}
-	if s.Address.Set {
+
+	if s.Room.Set {
 		e.Comma()
 	}
 	if s.Room.Set {
 		e.RawStr("\"room\"" + ":")
 		s.Room.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -95999,45 +104465,61 @@ func (s *ReposUpdateWebhookReqConfig) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s Repository) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"id\"" + ":")
 	e.Int(s.ID)
+
 	e.Comma()
 
 	e.RawStr("\"node_id\"" + ":")
 	e.Str(s.NodeID)
+
 	e.Comma()
 
 	e.RawStr("\"name\"" + ":")
 	e.Str(s.Name)
+
 	e.Comma()
 
 	e.RawStr("\"full_name\"" + ":")
 	e.Str(s.FullName)
+
 	e.Comma()
 
 	e.RawStr("\"license\"" + ":")
 	s.License.Encode(e)
 
-	e.Comma()
+	if s.Organization.Set {
+		e.Comma()
+	}
 	if s.Organization.Set {
 		e.RawStr("\"organization\"" + ":")
 		s.Organization.Encode(e)
 	}
-	if s.Organization.Set {
-		e.Comma()
-	}
+
+	e.Comma()
 
 	e.RawStr("\"forks\"" + ":")
 	e.Int(s.Forks)
-	e.Comma()
+
+	if s.Permissions.Set {
+		e.Comma()
+	}
 	if s.Permissions.Set {
 		e.RawStr("\"permissions\"" + ":")
 		s.Permissions.Encode(e)
 	}
-	if s.Permissions.Set {
-		e.Comma()
-	}
+
+	e.Comma()
 
 	e.RawStr("\"owner\"" + ":")
 	s.Owner.Encode(e)
@@ -96046,10 +104528,12 @@ func (s Repository) Encode(e *jx.Writer) {
 
 	e.RawStr("\"private\"" + ":")
 	e.Bool(s.Private)
+
 	e.Comma()
 
 	e.RawStr("\"html_url\"" + ":")
 	json.EncodeURI(e, s.HTMLURL)
+
 	e.Comma()
 
 	e.RawStr("\"description\"" + ":")
@@ -96059,162 +104543,202 @@ func (s Repository) Encode(e *jx.Writer) {
 
 	e.RawStr("\"fork\"" + ":")
 	e.Bool(s.Fork)
+
 	e.Comma()
 
 	e.RawStr("\"url\"" + ":")
 	json.EncodeURI(e, s.URL)
+
 	e.Comma()
 
 	e.RawStr("\"archive_url\"" + ":")
 	e.Str(s.ArchiveURL)
+
 	e.Comma()
 
 	e.RawStr("\"assignees_url\"" + ":")
 	e.Str(s.AssigneesURL)
+
 	e.Comma()
 
 	e.RawStr("\"blobs_url\"" + ":")
 	e.Str(s.BlobsURL)
+
 	e.Comma()
 
 	e.RawStr("\"branches_url\"" + ":")
 	e.Str(s.BranchesURL)
+
 	e.Comma()
 
 	e.RawStr("\"collaborators_url\"" + ":")
 	e.Str(s.CollaboratorsURL)
+
 	e.Comma()
 
 	e.RawStr("\"comments_url\"" + ":")
 	e.Str(s.CommentsURL)
+
 	e.Comma()
 
 	e.RawStr("\"commits_url\"" + ":")
 	e.Str(s.CommitsURL)
+
 	e.Comma()
 
 	e.RawStr("\"compare_url\"" + ":")
 	e.Str(s.CompareURL)
+
 	e.Comma()
 
 	e.RawStr("\"contents_url\"" + ":")
 	e.Str(s.ContentsURL)
+
 	e.Comma()
 
 	e.RawStr("\"contributors_url\"" + ":")
 	json.EncodeURI(e, s.ContributorsURL)
+
 	e.Comma()
 
 	e.RawStr("\"deployments_url\"" + ":")
 	json.EncodeURI(e, s.DeploymentsURL)
+
 	e.Comma()
 
 	e.RawStr("\"downloads_url\"" + ":")
 	json.EncodeURI(e, s.DownloadsURL)
+
 	e.Comma()
 
 	e.RawStr("\"events_url\"" + ":")
 	json.EncodeURI(e, s.EventsURL)
+
 	e.Comma()
 
 	e.RawStr("\"forks_url\"" + ":")
 	json.EncodeURI(e, s.ForksURL)
+
 	e.Comma()
 
 	e.RawStr("\"git_commits_url\"" + ":")
 	e.Str(s.GitCommitsURL)
+
 	e.Comma()
 
 	e.RawStr("\"git_refs_url\"" + ":")
 	e.Str(s.GitRefsURL)
+
 	e.Comma()
 
 	e.RawStr("\"git_tags_url\"" + ":")
 	e.Str(s.GitTagsURL)
+
 	e.Comma()
 
 	e.RawStr("\"git_url\"" + ":")
 	e.Str(s.GitURL)
+
 	e.Comma()
 
 	e.RawStr("\"issue_comment_url\"" + ":")
 	e.Str(s.IssueCommentURL)
+
 	e.Comma()
 
 	e.RawStr("\"issue_events_url\"" + ":")
 	e.Str(s.IssueEventsURL)
+
 	e.Comma()
 
 	e.RawStr("\"issues_url\"" + ":")
 	e.Str(s.IssuesURL)
+
 	e.Comma()
 
 	e.RawStr("\"keys_url\"" + ":")
 	e.Str(s.KeysURL)
+
 	e.Comma()
 
 	e.RawStr("\"labels_url\"" + ":")
 	e.Str(s.LabelsURL)
+
 	e.Comma()
 
 	e.RawStr("\"languages_url\"" + ":")
 	json.EncodeURI(e, s.LanguagesURL)
+
 	e.Comma()
 
 	e.RawStr("\"merges_url\"" + ":")
 	json.EncodeURI(e, s.MergesURL)
+
 	e.Comma()
 
 	e.RawStr("\"milestones_url\"" + ":")
 	e.Str(s.MilestonesURL)
+
 	e.Comma()
 
 	e.RawStr("\"notifications_url\"" + ":")
 	e.Str(s.NotificationsURL)
+
 	e.Comma()
 
 	e.RawStr("\"pulls_url\"" + ":")
 	e.Str(s.PullsURL)
+
 	e.Comma()
 
 	e.RawStr("\"releases_url\"" + ":")
 	e.Str(s.ReleasesURL)
+
 	e.Comma()
 
 	e.RawStr("\"ssh_url\"" + ":")
 	e.Str(s.SSHURL)
+
 	e.Comma()
 
 	e.RawStr("\"stargazers_url\"" + ":")
 	json.EncodeURI(e, s.StargazersURL)
+
 	e.Comma()
 
 	e.RawStr("\"statuses_url\"" + ":")
 	e.Str(s.StatusesURL)
+
 	e.Comma()
 
 	e.RawStr("\"subscribers_url\"" + ":")
 	json.EncodeURI(e, s.SubscribersURL)
+
 	e.Comma()
 
 	e.RawStr("\"subscription_url\"" + ":")
 	json.EncodeURI(e, s.SubscriptionURL)
+
 	e.Comma()
 
 	e.RawStr("\"tags_url\"" + ":")
 	json.EncodeURI(e, s.TagsURL)
+
 	e.Comma()
 
 	e.RawStr("\"teams_url\"" + ":")
 	json.EncodeURI(e, s.TeamsURL)
+
 	e.Comma()
 
 	e.RawStr("\"trees_url\"" + ":")
 	e.Str(s.TreesURL)
+
 	e.Comma()
 
 	e.RawStr("\"clone_url\"" + ":")
 	e.Str(s.CloneURL)
+
 	e.Comma()
 
 	e.RawStr("\"mirror_url\"" + ":")
@@ -96224,10 +104748,12 @@ func (s Repository) Encode(e *jx.Writer) {
 
 	e.RawStr("\"hooks_url\"" + ":")
 	json.EncodeURI(e, s.HooksURL)
+
 	e.Comma()
 
 	e.RawStr("\"svn_url\"" + ":")
 	json.EncodeURI(e, s.SvnURL)
+
 	e.Comma()
 
 	e.RawStr("\"homepage\"" + ":")
@@ -96242,32 +104768,41 @@ func (s Repository) Encode(e *jx.Writer) {
 
 	e.RawStr("\"forks_count\"" + ":")
 	e.Int(s.ForksCount)
+
 	e.Comma()
 
 	e.RawStr("\"stargazers_count\"" + ":")
 	e.Int(s.StargazersCount)
+
 	e.Comma()
 
 	e.RawStr("\"watchers_count\"" + ":")
 	e.Int(s.WatchersCount)
+
 	e.Comma()
 
 	e.RawStr("\"size\"" + ":")
 	e.Int(s.Size)
+
 	e.Comma()
 
 	e.RawStr("\"default_branch\"" + ":")
 	e.Str(s.DefaultBranch)
+
 	e.Comma()
 
 	e.RawStr("\"open_issues_count\"" + ":")
 	e.Int(s.OpenIssuesCount)
-	e.Comma()
+
+	if s.IsTemplate.Set {
+		e.Comma()
+	}
 	if s.IsTemplate.Set {
 		e.RawStr("\"is_template\"" + ":")
 		s.IsTemplate.Encode(e)
 	}
-	if s.IsTemplate.Set {
+
+	if s.Topics != nil {
 		e.Comma()
 	}
 	if s.Topics != nil {
@@ -96286,44 +104821,51 @@ func (s Repository) Encode(e *jx.Writer) {
 		}
 		e.ArrEnd()
 	}
-	if s.Topics != nil {
-		e.Comma()
-	}
+
+	e.Comma()
 
 	e.RawStr("\"has_issues\"" + ":")
 	e.Bool(s.HasIssues)
+
 	e.Comma()
 
 	e.RawStr("\"has_projects\"" + ":")
 	e.Bool(s.HasProjects)
+
 	e.Comma()
 
 	e.RawStr("\"has_wiki\"" + ":")
 	e.Bool(s.HasWiki)
+
 	e.Comma()
 
 	e.RawStr("\"has_pages\"" + ":")
 	e.Bool(s.HasPages)
+
 	e.Comma()
 
 	e.RawStr("\"has_downloads\"" + ":")
 	e.Bool(s.HasDownloads)
+
 	e.Comma()
 
 	e.RawStr("\"archived\"" + ":")
 	e.Bool(s.Archived)
+
 	e.Comma()
 
 	e.RawStr("\"disabled\"" + ":")
 	e.Bool(s.Disabled)
-	e.Comma()
+
+	if s.Visibility.Set {
+		e.Comma()
+	}
 	if s.Visibility.Set {
 		e.RawStr("\"visibility\"" + ":")
 		s.Visibility.Encode(e)
 	}
-	if s.Visibility.Set {
-		e.Comma()
-	}
+
+	e.Comma()
 
 	e.RawStr("\"pushed_at\"" + ":")
 	s.PushedAt.Encode(e, json.EncodeDateTime)
@@ -96338,99 +104880,110 @@ func (s Repository) Encode(e *jx.Writer) {
 	e.RawStr("\"updated_at\"" + ":")
 	s.UpdatedAt.Encode(e, json.EncodeDateTime)
 
-	e.Comma()
+	if s.AllowRebaseMerge.Set {
+		e.Comma()
+	}
 	if s.AllowRebaseMerge.Set {
 		e.RawStr("\"allow_rebase_merge\"" + ":")
 		s.AllowRebaseMerge.Encode(e)
 	}
-	if s.AllowRebaseMerge.Set {
+
+	if s.TemplateRepository.Set {
 		e.Comma()
 	}
 	if s.TemplateRepository.Set {
 		e.RawStr("\"template_repository\"" + ":")
 		s.TemplateRepository.Encode(e)
 	}
-	if s.TemplateRepository.Set {
+
+	if s.TempCloneToken.Set {
 		e.Comma()
 	}
 	if s.TempCloneToken.Set {
 		e.RawStr("\"temp_clone_token\"" + ":")
 		s.TempCloneToken.Encode(e)
 	}
-	if s.TempCloneToken.Set {
+
+	if s.AllowSquashMerge.Set {
 		e.Comma()
 	}
 	if s.AllowSquashMerge.Set {
 		e.RawStr("\"allow_squash_merge\"" + ":")
 		s.AllowSquashMerge.Encode(e)
 	}
-	if s.AllowSquashMerge.Set {
+
+	if s.AllowAutoMerge.Set {
 		e.Comma()
 	}
 	if s.AllowAutoMerge.Set {
 		e.RawStr("\"allow_auto_merge\"" + ":")
 		s.AllowAutoMerge.Encode(e)
 	}
-	if s.AllowAutoMerge.Set {
+
+	if s.DeleteBranchOnMerge.Set {
 		e.Comma()
 	}
 	if s.DeleteBranchOnMerge.Set {
 		e.RawStr("\"delete_branch_on_merge\"" + ":")
 		s.DeleteBranchOnMerge.Encode(e)
 	}
-	if s.DeleteBranchOnMerge.Set {
+
+	if s.AllowMergeCommit.Set {
 		e.Comma()
 	}
 	if s.AllowMergeCommit.Set {
 		e.RawStr("\"allow_merge_commit\"" + ":")
 		s.AllowMergeCommit.Encode(e)
 	}
-	if s.AllowMergeCommit.Set {
+
+	if s.AllowForking.Set {
 		e.Comma()
 	}
 	if s.AllowForking.Set {
 		e.RawStr("\"allow_forking\"" + ":")
 		s.AllowForking.Encode(e)
 	}
-	if s.AllowForking.Set {
+
+	if s.SubscribersCount.Set {
 		e.Comma()
 	}
 	if s.SubscribersCount.Set {
 		e.RawStr("\"subscribers_count\"" + ":")
 		s.SubscribersCount.Encode(e)
 	}
-	if s.SubscribersCount.Set {
+
+	if s.NetworkCount.Set {
 		e.Comma()
 	}
 	if s.NetworkCount.Set {
 		e.RawStr("\"network_count\"" + ":")
 		s.NetworkCount.Encode(e)
 	}
-	if s.NetworkCount.Set {
-		e.Comma()
-	}
+
+	e.Comma()
 
 	e.RawStr("\"open_issues\"" + ":")
 	e.Int(s.OpenIssues)
+
 	e.Comma()
 
 	e.RawStr("\"watchers\"" + ":")
 	e.Int(s.Watchers)
-	e.Comma()
+
+	if s.MasterBranch.Set {
+		e.Comma()
+	}
 	if s.MasterBranch.Set {
 		e.RawStr("\"master_branch\"" + ":")
 		s.MasterBranch.Encode(e)
 	}
-	if s.MasterBranch.Set {
+
+	if s.StarredAt.Set {
 		e.Comma()
 	}
 	if s.StarredAt.Set {
 		e.RawStr("\"starred_at\"" + ":")
 		s.StarredAt.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -96966,17 +105519,23 @@ func (s *Repository) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s RepositoryCollaboratorPermission) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"permission\"" + ":")
 	e.Str(s.Permission)
+
 	e.Comma()
 
 	e.RawStr("\"user\"" + ":")
 	s.User.Encode(e)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -97007,9 +105566,19 @@ func (s *RepositoryCollaboratorPermission) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s RepositoryInvitation) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"id\"" + ":")
 	e.Int(s.ID)
+
 	e.Comma()
 
 	e.RawStr("\"repository\"" + ":")
@@ -97034,29 +105603,29 @@ func (s RepositoryInvitation) Encode(e *jx.Writer) {
 
 	e.RawStr("\"created_at\"" + ":")
 	json.EncodeDateTime(e, s.CreatedAt)
-	e.Comma()
+
+	if s.Expired.Set {
+		e.Comma()
+	}
 	if s.Expired.Set {
 		e.RawStr("\"expired\"" + ":")
 		s.Expired.Encode(e)
 	}
-	if s.Expired.Set {
-		e.Comma()
-	}
+
+	e.Comma()
 
 	e.RawStr("\"url\"" + ":")
 	e.Str(s.URL)
+
 	e.Comma()
 
 	e.RawStr("\"html_url\"" + ":")
 	e.Str(s.HTMLURL)
+
 	e.Comma()
 
 	e.RawStr("\"node_id\"" + ":")
 	e.Str(s.NodeID)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -97161,32 +105730,43 @@ func (s *RepositoryInvitationPermissions) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s RepositoryPermissions) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"admin\"" + ":")
 	e.Bool(s.Admin)
+
 	e.Comma()
 
 	e.RawStr("\"pull\"" + ":")
 	e.Bool(s.Pull)
-	e.Comma()
+
+	if s.Triage.Set {
+		e.Comma()
+	}
 	if s.Triage.Set {
 		e.RawStr("\"triage\"" + ":")
 		s.Triage.Encode(e)
 	}
-	if s.Triage.Set {
-		e.Comma()
-	}
+
+	e.Comma()
 
 	e.RawStr("\"push\"" + ":")
 	e.Bool(s.Push)
-	e.Comma()
+
+	if s.Maintain.Set {
+		e.Comma()
+	}
 	if s.Maintain.Set {
 		e.RawStr("\"maintain\"" + ":")
 		s.Maintain.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -97236,13 +105816,24 @@ func (s *RepositoryPermissions) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s RepositorySubscription) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"subscribed\"" + ":")
 	e.Bool(s.Subscribed)
+
 	e.Comma()
 
 	e.RawStr("\"ignored\"" + ":")
 	e.Bool(s.Ignored)
+
 	e.Comma()
 
 	e.RawStr("\"reason\"" + ":")
@@ -97252,18 +105843,16 @@ func (s RepositorySubscription) Encode(e *jx.Writer) {
 
 	e.RawStr("\"created_at\"" + ":")
 	json.EncodeDateTime(e, s.CreatedAt)
+
 	e.Comma()
 
 	e.RawStr("\"url\"" + ":")
 	json.EncodeURI(e, s.URL)
+
 	e.Comma()
 
 	e.RawStr("\"repository_url\"" + ":")
 	json.EncodeURI(e, s.RepositoryURL)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -97318,425 +105907,676 @@ func (s *RepositorySubscription) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s RepositoryTemplateRepository) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.ID.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.ID.Set {
 		e.RawStr("\"id\"" + ":")
 		s.ID.Encode(e)
 	}
-	if s.ID.Set {
-		e.Comma()
+
+	if s.NodeID.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.NodeID.Set {
 		e.RawStr("\"node_id\"" + ":")
 		s.NodeID.Encode(e)
 	}
-	if s.NodeID.Set {
-		e.Comma()
+
+	if s.Name.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Name.Set {
 		e.RawStr("\"name\"" + ":")
 		s.Name.Encode(e)
 	}
-	if s.Name.Set {
-		e.Comma()
+
+	if s.FullName.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.FullName.Set {
 		e.RawStr("\"full_name\"" + ":")
 		s.FullName.Encode(e)
 	}
-	if s.FullName.Set {
-		e.Comma()
+
+	if s.Owner.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Owner.Set {
 		e.RawStr("\"owner\"" + ":")
 		s.Owner.Encode(e)
 	}
-	if s.Owner.Set {
-		e.Comma()
+
+	if s.Private.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Private.Set {
 		e.RawStr("\"private\"" + ":")
 		s.Private.Encode(e)
 	}
-	if s.Private.Set {
-		e.Comma()
+
+	if s.HTMLURL.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.HTMLURL.Set {
 		e.RawStr("\"html_url\"" + ":")
 		s.HTMLURL.Encode(e)
 	}
-	if s.HTMLURL.Set {
-		e.Comma()
+
+	if s.Description.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Description.Set {
 		e.RawStr("\"description\"" + ":")
 		s.Description.Encode(e)
 	}
-	if s.Description.Set {
-		e.Comma()
+
+	if s.Fork.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Fork.Set {
 		e.RawStr("\"fork\"" + ":")
 		s.Fork.Encode(e)
 	}
-	if s.Fork.Set {
-		e.Comma()
+
+	if s.URL.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.URL.Set {
 		e.RawStr("\"url\"" + ":")
 		s.URL.Encode(e)
 	}
-	if s.URL.Set {
-		e.Comma()
+
+	if s.ArchiveURL.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.ArchiveURL.Set {
 		e.RawStr("\"archive_url\"" + ":")
 		s.ArchiveURL.Encode(e)
 	}
-	if s.ArchiveURL.Set {
-		e.Comma()
+
+	if s.AssigneesURL.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.AssigneesURL.Set {
 		e.RawStr("\"assignees_url\"" + ":")
 		s.AssigneesURL.Encode(e)
 	}
-	if s.AssigneesURL.Set {
-		e.Comma()
+
+	if s.BlobsURL.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.BlobsURL.Set {
 		e.RawStr("\"blobs_url\"" + ":")
 		s.BlobsURL.Encode(e)
 	}
-	if s.BlobsURL.Set {
-		e.Comma()
+
+	if s.BranchesURL.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.BranchesURL.Set {
 		e.RawStr("\"branches_url\"" + ":")
 		s.BranchesURL.Encode(e)
 	}
-	if s.BranchesURL.Set {
-		e.Comma()
+
+	if s.CollaboratorsURL.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.CollaboratorsURL.Set {
 		e.RawStr("\"collaborators_url\"" + ":")
 		s.CollaboratorsURL.Encode(e)
 	}
-	if s.CollaboratorsURL.Set {
-		e.Comma()
+
+	if s.CommentsURL.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.CommentsURL.Set {
 		e.RawStr("\"comments_url\"" + ":")
 		s.CommentsURL.Encode(e)
 	}
-	if s.CommentsURL.Set {
-		e.Comma()
+
+	if s.CommitsURL.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.CommitsURL.Set {
 		e.RawStr("\"commits_url\"" + ":")
 		s.CommitsURL.Encode(e)
 	}
-	if s.CommitsURL.Set {
-		e.Comma()
+
+	if s.CompareURL.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.CompareURL.Set {
 		e.RawStr("\"compare_url\"" + ":")
 		s.CompareURL.Encode(e)
 	}
-	if s.CompareURL.Set {
-		e.Comma()
+
+	if s.ContentsURL.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.ContentsURL.Set {
 		e.RawStr("\"contents_url\"" + ":")
 		s.ContentsURL.Encode(e)
 	}
-	if s.ContentsURL.Set {
-		e.Comma()
+
+	if s.ContributorsURL.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.ContributorsURL.Set {
 		e.RawStr("\"contributors_url\"" + ":")
 		s.ContributorsURL.Encode(e)
 	}
-	if s.ContributorsURL.Set {
-		e.Comma()
+
+	if s.DeploymentsURL.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.DeploymentsURL.Set {
 		e.RawStr("\"deployments_url\"" + ":")
 		s.DeploymentsURL.Encode(e)
 	}
-	if s.DeploymentsURL.Set {
-		e.Comma()
+
+	if s.DownloadsURL.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.DownloadsURL.Set {
 		e.RawStr("\"downloads_url\"" + ":")
 		s.DownloadsURL.Encode(e)
 	}
-	if s.DownloadsURL.Set {
-		e.Comma()
+
+	if s.EventsURL.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.EventsURL.Set {
 		e.RawStr("\"events_url\"" + ":")
 		s.EventsURL.Encode(e)
 	}
-	if s.EventsURL.Set {
-		e.Comma()
+
+	if s.ForksURL.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.ForksURL.Set {
 		e.RawStr("\"forks_url\"" + ":")
 		s.ForksURL.Encode(e)
 	}
-	if s.ForksURL.Set {
-		e.Comma()
+
+	if s.GitCommitsURL.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.GitCommitsURL.Set {
 		e.RawStr("\"git_commits_url\"" + ":")
 		s.GitCommitsURL.Encode(e)
 	}
-	if s.GitCommitsURL.Set {
-		e.Comma()
+
+	if s.GitRefsURL.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.GitRefsURL.Set {
 		e.RawStr("\"git_refs_url\"" + ":")
 		s.GitRefsURL.Encode(e)
 	}
-	if s.GitRefsURL.Set {
-		e.Comma()
+
+	if s.GitTagsURL.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.GitTagsURL.Set {
 		e.RawStr("\"git_tags_url\"" + ":")
 		s.GitTagsURL.Encode(e)
 	}
-	if s.GitTagsURL.Set {
-		e.Comma()
+
+	if s.GitURL.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.GitURL.Set {
 		e.RawStr("\"git_url\"" + ":")
 		s.GitURL.Encode(e)
 	}
-	if s.GitURL.Set {
-		e.Comma()
+
+	if s.IssueCommentURL.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.IssueCommentURL.Set {
 		e.RawStr("\"issue_comment_url\"" + ":")
 		s.IssueCommentURL.Encode(e)
 	}
-	if s.IssueCommentURL.Set {
-		e.Comma()
+
+	if s.IssueEventsURL.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.IssueEventsURL.Set {
 		e.RawStr("\"issue_events_url\"" + ":")
 		s.IssueEventsURL.Encode(e)
 	}
-	if s.IssueEventsURL.Set {
-		e.Comma()
+
+	if s.IssuesURL.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.IssuesURL.Set {
 		e.RawStr("\"issues_url\"" + ":")
 		s.IssuesURL.Encode(e)
 	}
-	if s.IssuesURL.Set {
-		e.Comma()
+
+	if s.KeysURL.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.KeysURL.Set {
 		e.RawStr("\"keys_url\"" + ":")
 		s.KeysURL.Encode(e)
 	}
-	if s.KeysURL.Set {
-		e.Comma()
+
+	if s.LabelsURL.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.LabelsURL.Set {
 		e.RawStr("\"labels_url\"" + ":")
 		s.LabelsURL.Encode(e)
 	}
-	if s.LabelsURL.Set {
-		e.Comma()
+
+	if s.LanguagesURL.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.LanguagesURL.Set {
 		e.RawStr("\"languages_url\"" + ":")
 		s.LanguagesURL.Encode(e)
 	}
-	if s.LanguagesURL.Set {
-		e.Comma()
+
+	if s.MergesURL.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.MergesURL.Set {
 		e.RawStr("\"merges_url\"" + ":")
 		s.MergesURL.Encode(e)
 	}
-	if s.MergesURL.Set {
-		e.Comma()
+
+	if s.MilestonesURL.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.MilestonesURL.Set {
 		e.RawStr("\"milestones_url\"" + ":")
 		s.MilestonesURL.Encode(e)
 	}
-	if s.MilestonesURL.Set {
-		e.Comma()
+
+	if s.NotificationsURL.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.NotificationsURL.Set {
 		e.RawStr("\"notifications_url\"" + ":")
 		s.NotificationsURL.Encode(e)
 	}
-	if s.NotificationsURL.Set {
-		e.Comma()
+
+	if s.PullsURL.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.PullsURL.Set {
 		e.RawStr("\"pulls_url\"" + ":")
 		s.PullsURL.Encode(e)
 	}
-	if s.PullsURL.Set {
-		e.Comma()
+
+	if s.ReleasesURL.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.ReleasesURL.Set {
 		e.RawStr("\"releases_url\"" + ":")
 		s.ReleasesURL.Encode(e)
 	}
-	if s.ReleasesURL.Set {
-		e.Comma()
+
+	if s.SSHURL.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.SSHURL.Set {
 		e.RawStr("\"ssh_url\"" + ":")
 		s.SSHURL.Encode(e)
 	}
-	if s.SSHURL.Set {
-		e.Comma()
+
+	if s.StargazersURL.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.StargazersURL.Set {
 		e.RawStr("\"stargazers_url\"" + ":")
 		s.StargazersURL.Encode(e)
 	}
-	if s.StargazersURL.Set {
-		e.Comma()
+
+	if s.StatusesURL.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.StatusesURL.Set {
 		e.RawStr("\"statuses_url\"" + ":")
 		s.StatusesURL.Encode(e)
 	}
-	if s.StatusesURL.Set {
-		e.Comma()
+
+	if s.SubscribersURL.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.SubscribersURL.Set {
 		e.RawStr("\"subscribers_url\"" + ":")
 		s.SubscribersURL.Encode(e)
 	}
-	if s.SubscribersURL.Set {
-		e.Comma()
+
+	if s.SubscriptionURL.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.SubscriptionURL.Set {
 		e.RawStr("\"subscription_url\"" + ":")
 		s.SubscriptionURL.Encode(e)
 	}
-	if s.SubscriptionURL.Set {
-		e.Comma()
+
+	if s.TagsURL.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.TagsURL.Set {
 		e.RawStr("\"tags_url\"" + ":")
 		s.TagsURL.Encode(e)
 	}
-	if s.TagsURL.Set {
-		e.Comma()
+
+	if s.TeamsURL.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.TeamsURL.Set {
 		e.RawStr("\"teams_url\"" + ":")
 		s.TeamsURL.Encode(e)
 	}
-	if s.TeamsURL.Set {
-		e.Comma()
+
+	if s.TreesURL.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.TreesURL.Set {
 		e.RawStr("\"trees_url\"" + ":")
 		s.TreesURL.Encode(e)
 	}
-	if s.TreesURL.Set {
-		e.Comma()
+
+	if s.CloneURL.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.CloneURL.Set {
 		e.RawStr("\"clone_url\"" + ":")
 		s.CloneURL.Encode(e)
 	}
-	if s.CloneURL.Set {
-		e.Comma()
+
+	if s.MirrorURL.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.MirrorURL.Set {
 		e.RawStr("\"mirror_url\"" + ":")
 		s.MirrorURL.Encode(e)
 	}
-	if s.MirrorURL.Set {
-		e.Comma()
+
+	if s.HooksURL.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.HooksURL.Set {
 		e.RawStr("\"hooks_url\"" + ":")
 		s.HooksURL.Encode(e)
 	}
-	if s.HooksURL.Set {
-		e.Comma()
+
+	if s.SvnURL.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.SvnURL.Set {
 		e.RawStr("\"svn_url\"" + ":")
 		s.SvnURL.Encode(e)
 	}
-	if s.SvnURL.Set {
-		e.Comma()
+
+	if s.Homepage.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Homepage.Set {
 		e.RawStr("\"homepage\"" + ":")
 		s.Homepage.Encode(e)
 	}
-	if s.Homepage.Set {
-		e.Comma()
+
+	if s.Language.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Language.Set {
 		e.RawStr("\"language\"" + ":")
 		s.Language.Encode(e)
 	}
-	if s.Language.Set {
-		e.Comma()
+
+	if s.ForksCount.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.ForksCount.Set {
 		e.RawStr("\"forks_count\"" + ":")
 		s.ForksCount.Encode(e)
 	}
-	if s.ForksCount.Set {
-		e.Comma()
+
+	if s.StargazersCount.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.StargazersCount.Set {
 		e.RawStr("\"stargazers_count\"" + ":")
 		s.StargazersCount.Encode(e)
 	}
-	if s.StargazersCount.Set {
-		e.Comma()
+
+	if s.WatchersCount.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.WatchersCount.Set {
 		e.RawStr("\"watchers_count\"" + ":")
 		s.WatchersCount.Encode(e)
 	}
-	if s.WatchersCount.Set {
-		e.Comma()
+
+	if s.Size.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Size.Set {
 		e.RawStr("\"size\"" + ":")
 		s.Size.Encode(e)
 	}
-	if s.Size.Set {
-		e.Comma()
+
+	if s.DefaultBranch.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.DefaultBranch.Set {
 		e.RawStr("\"default_branch\"" + ":")
 		s.DefaultBranch.Encode(e)
 	}
-	if s.DefaultBranch.Set {
-		e.Comma()
+
+	if s.OpenIssuesCount.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.OpenIssuesCount.Set {
 		e.RawStr("\"open_issues_count\"" + ":")
 		s.OpenIssuesCount.Encode(e)
 	}
-	if s.OpenIssuesCount.Set {
-		e.Comma()
+
+	if s.IsTemplate.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.IsTemplate.Set {
 		e.RawStr("\"is_template\"" + ":")
 		s.IsTemplate.Encode(e)
 	}
-	if s.IsTemplate.Set {
-		e.Comma()
+
+	if s.Topics != nil {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Topics != nil {
 		e.RawStr("\"topics\"" + ":")
@@ -97754,149 +106594,225 @@ func (s RepositoryTemplateRepository) Encode(e *jx.Writer) {
 		}
 		e.ArrEnd()
 	}
-	if s.Topics != nil {
-		e.Comma()
+
+	if s.HasIssues.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.HasIssues.Set {
 		e.RawStr("\"has_issues\"" + ":")
 		s.HasIssues.Encode(e)
 	}
-	if s.HasIssues.Set {
-		e.Comma()
+
+	if s.HasProjects.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.HasProjects.Set {
 		e.RawStr("\"has_projects\"" + ":")
 		s.HasProjects.Encode(e)
 	}
-	if s.HasProjects.Set {
-		e.Comma()
+
+	if s.HasWiki.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.HasWiki.Set {
 		e.RawStr("\"has_wiki\"" + ":")
 		s.HasWiki.Encode(e)
 	}
-	if s.HasWiki.Set {
-		e.Comma()
+
+	if s.HasPages.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.HasPages.Set {
 		e.RawStr("\"has_pages\"" + ":")
 		s.HasPages.Encode(e)
 	}
-	if s.HasPages.Set {
-		e.Comma()
+
+	if s.HasDownloads.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.HasDownloads.Set {
 		e.RawStr("\"has_downloads\"" + ":")
 		s.HasDownloads.Encode(e)
 	}
-	if s.HasDownloads.Set {
-		e.Comma()
+
+	if s.Archived.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Archived.Set {
 		e.RawStr("\"archived\"" + ":")
 		s.Archived.Encode(e)
 	}
-	if s.Archived.Set {
-		e.Comma()
+
+	if s.Disabled.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Disabled.Set {
 		e.RawStr("\"disabled\"" + ":")
 		s.Disabled.Encode(e)
 	}
-	if s.Disabled.Set {
-		e.Comma()
+
+	if s.Visibility.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Visibility.Set {
 		e.RawStr("\"visibility\"" + ":")
 		s.Visibility.Encode(e)
 	}
-	if s.Visibility.Set {
-		e.Comma()
+
+	if s.PushedAt.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.PushedAt.Set {
 		e.RawStr("\"pushed_at\"" + ":")
 		s.PushedAt.Encode(e)
 	}
-	if s.PushedAt.Set {
-		e.Comma()
+
+	if s.CreatedAt.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.CreatedAt.Set {
 		e.RawStr("\"created_at\"" + ":")
 		s.CreatedAt.Encode(e)
 	}
-	if s.CreatedAt.Set {
-		e.Comma()
+
+	if s.UpdatedAt.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.UpdatedAt.Set {
 		e.RawStr("\"updated_at\"" + ":")
 		s.UpdatedAt.Encode(e)
 	}
-	if s.UpdatedAt.Set {
-		e.Comma()
+
+	if s.Permissions.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Permissions.Set {
 		e.RawStr("\"permissions\"" + ":")
 		s.Permissions.Encode(e)
 	}
-	if s.Permissions.Set {
-		e.Comma()
+
+	if s.AllowRebaseMerge.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.AllowRebaseMerge.Set {
 		e.RawStr("\"allow_rebase_merge\"" + ":")
 		s.AllowRebaseMerge.Encode(e)
 	}
-	if s.AllowRebaseMerge.Set {
-		e.Comma()
+
+	if s.TempCloneToken.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.TempCloneToken.Set {
 		e.RawStr("\"temp_clone_token\"" + ":")
 		s.TempCloneToken.Encode(e)
 	}
-	if s.TempCloneToken.Set {
-		e.Comma()
+
+	if s.AllowSquashMerge.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.AllowSquashMerge.Set {
 		e.RawStr("\"allow_squash_merge\"" + ":")
 		s.AllowSquashMerge.Encode(e)
 	}
-	if s.AllowSquashMerge.Set {
-		e.Comma()
+
+	if s.AllowAutoMerge.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.AllowAutoMerge.Set {
 		e.RawStr("\"allow_auto_merge\"" + ":")
 		s.AllowAutoMerge.Encode(e)
 	}
-	if s.AllowAutoMerge.Set {
-		e.Comma()
+
+	if s.DeleteBranchOnMerge.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.DeleteBranchOnMerge.Set {
 		e.RawStr("\"delete_branch_on_merge\"" + ":")
 		s.DeleteBranchOnMerge.Encode(e)
 	}
-	if s.DeleteBranchOnMerge.Set {
-		e.Comma()
+
+	if s.AllowMergeCommit.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.AllowMergeCommit.Set {
 		e.RawStr("\"allow_merge_commit\"" + ":")
 		s.AllowMergeCommit.Encode(e)
 	}
-	if s.AllowMergeCommit.Set {
-		e.Comma()
+
+	if s.SubscribersCount.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.SubscribersCount.Set {
 		e.RawStr("\"subscribers_count\"" + ":")
 		s.SubscribersCount.Encode(e)
 	}
-	if s.SubscribersCount.Set {
-		e.Comma()
+
+	if s.NetworkCount.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.NetworkCount.Set {
 		e.RawStr("\"network_count\"" + ":")
 		s.NetworkCount.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -98332,132 +107248,207 @@ func (s *RepositoryTemplateRepository) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s RepositoryTemplateRepositoryOwner) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.Login.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.Login.Set {
 		e.RawStr("\"login\"" + ":")
 		s.Login.Encode(e)
 	}
-	if s.Login.Set {
-		e.Comma()
+
+	if s.ID.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.ID.Set {
 		e.RawStr("\"id\"" + ":")
 		s.ID.Encode(e)
 	}
-	if s.ID.Set {
-		e.Comma()
+
+	if s.NodeID.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.NodeID.Set {
 		e.RawStr("\"node_id\"" + ":")
 		s.NodeID.Encode(e)
 	}
-	if s.NodeID.Set {
-		e.Comma()
+
+	if s.AvatarURL.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.AvatarURL.Set {
 		e.RawStr("\"avatar_url\"" + ":")
 		s.AvatarURL.Encode(e)
 	}
-	if s.AvatarURL.Set {
-		e.Comma()
+
+	if s.GravatarID.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.GravatarID.Set {
 		e.RawStr("\"gravatar_id\"" + ":")
 		s.GravatarID.Encode(e)
 	}
-	if s.GravatarID.Set {
-		e.Comma()
+
+	if s.URL.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.URL.Set {
 		e.RawStr("\"url\"" + ":")
 		s.URL.Encode(e)
 	}
-	if s.URL.Set {
-		e.Comma()
+
+	if s.HTMLURL.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.HTMLURL.Set {
 		e.RawStr("\"html_url\"" + ":")
 		s.HTMLURL.Encode(e)
 	}
-	if s.HTMLURL.Set {
-		e.Comma()
+
+	if s.FollowersURL.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.FollowersURL.Set {
 		e.RawStr("\"followers_url\"" + ":")
 		s.FollowersURL.Encode(e)
 	}
-	if s.FollowersURL.Set {
-		e.Comma()
+
+	if s.FollowingURL.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.FollowingURL.Set {
 		e.RawStr("\"following_url\"" + ":")
 		s.FollowingURL.Encode(e)
 	}
-	if s.FollowingURL.Set {
-		e.Comma()
+
+	if s.GistsURL.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.GistsURL.Set {
 		e.RawStr("\"gists_url\"" + ":")
 		s.GistsURL.Encode(e)
 	}
-	if s.GistsURL.Set {
-		e.Comma()
+
+	if s.StarredURL.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.StarredURL.Set {
 		e.RawStr("\"starred_url\"" + ":")
 		s.StarredURL.Encode(e)
 	}
-	if s.StarredURL.Set {
-		e.Comma()
+
+	if s.SubscriptionsURL.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.SubscriptionsURL.Set {
 		e.RawStr("\"subscriptions_url\"" + ":")
 		s.SubscriptionsURL.Encode(e)
 	}
-	if s.SubscriptionsURL.Set {
-		e.Comma()
+
+	if s.OrganizationsURL.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.OrganizationsURL.Set {
 		e.RawStr("\"organizations_url\"" + ":")
 		s.OrganizationsURL.Encode(e)
 	}
-	if s.OrganizationsURL.Set {
-		e.Comma()
+
+	if s.ReposURL.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.ReposURL.Set {
 		e.RawStr("\"repos_url\"" + ":")
 		s.ReposURL.Encode(e)
 	}
-	if s.ReposURL.Set {
-		e.Comma()
+
+	if s.EventsURL.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.EventsURL.Set {
 		e.RawStr("\"events_url\"" + ":")
 		s.EventsURL.Encode(e)
 	}
-	if s.EventsURL.Set {
-		e.Comma()
+
+	if s.ReceivedEventsURL.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.ReceivedEventsURL.Set {
 		e.RawStr("\"received_events_url\"" + ":")
 		s.ReceivedEventsURL.Encode(e)
 	}
-	if s.ReceivedEventsURL.Set {
-		e.Comma()
+
+	if s.Type.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Type.Set {
 		e.RawStr("\"type\"" + ":")
 		s.Type.Encode(e)
 	}
-	if s.Type.Set {
-		e.Comma()
+
+	if s.SiteAdmin.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.SiteAdmin.Set {
 		e.RawStr("\"site_admin\"" + ":")
 		s.SiteAdmin.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -98569,41 +107560,64 @@ func (s *RepositoryTemplateRepositoryOwner) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s RepositoryTemplateRepositoryPermissions) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.Admin.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.Admin.Set {
 		e.RawStr("\"admin\"" + ":")
 		s.Admin.Encode(e)
 	}
-	if s.Admin.Set {
-		e.Comma()
+
+	if s.Maintain.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Maintain.Set {
 		e.RawStr("\"maintain\"" + ":")
 		s.Maintain.Encode(e)
 	}
-	if s.Maintain.Set {
-		e.Comma()
+
+	if s.Push.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Push.Set {
 		e.RawStr("\"push\"" + ":")
 		s.Push.Encode(e)
 	}
-	if s.Push.Set {
-		e.Comma()
+
+	if s.Triage.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Triage.Set {
 		e.RawStr("\"triage\"" + ":")
 		s.Triage.Encode(e)
 	}
-	if s.Triage.Set {
-		e.Comma()
+
+	if s.Pull.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Pull.Set {
 		e.RawStr("\"pull\"" + ":")
 		s.Pull.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -98650,9 +107664,19 @@ func (s *RepositoryTemplateRepositoryPermissions) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s ReviewComment) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"url\"" + ":")
 	json.EncodeURI(e, s.URL)
+
 	e.Comma()
 
 	e.RawStr("\"pull_request_review_id\"" + ":")
@@ -98662,18 +107686,22 @@ func (s ReviewComment) Encode(e *jx.Writer) {
 
 	e.RawStr("\"id\"" + ":")
 	e.Int(s.ID)
+
 	e.Comma()
 
 	e.RawStr("\"node_id\"" + ":")
 	e.Str(s.NodeID)
+
 	e.Comma()
 
 	e.RawStr("\"diff_hunk\"" + ":")
 	e.Str(s.DiffHunk)
+
 	e.Comma()
 
 	e.RawStr("\"path\"" + ":")
 	e.Str(s.Path)
+
 	e.Comma()
 
 	e.RawStr("\"position\"" + ":")
@@ -98683,22 +107711,26 @@ func (s ReviewComment) Encode(e *jx.Writer) {
 
 	e.RawStr("\"original_position\"" + ":")
 	e.Int(s.OriginalPosition)
+
 	e.Comma()
 
 	e.RawStr("\"commit_id\"" + ":")
 	e.Str(s.CommitID)
+
 	e.Comma()
 
 	e.RawStr("\"original_commit_id\"" + ":")
 	e.Str(s.OriginalCommitID)
-	e.Comma()
+
+	if s.InReplyToID.Set {
+		e.Comma()
+	}
 	if s.InReplyToID.Set {
 		e.RawStr("\"in_reply_to_id\"" + ":")
 		s.InReplyToID.Encode(e)
 	}
-	if s.InReplyToID.Set {
-		e.Comma()
-	}
+
+	e.Comma()
 
 	e.RawStr("\"user\"" + ":")
 	s.User.Encode(e)
@@ -98707,22 +107739,27 @@ func (s ReviewComment) Encode(e *jx.Writer) {
 
 	e.RawStr("\"body\"" + ":")
 	e.Str(s.Body)
+
 	e.Comma()
 
 	e.RawStr("\"created_at\"" + ":")
 	json.EncodeDateTime(e, s.CreatedAt)
+
 	e.Comma()
 
 	e.RawStr("\"updated_at\"" + ":")
 	json.EncodeDateTime(e, s.UpdatedAt)
+
 	e.Comma()
 
 	e.RawStr("\"html_url\"" + ":")
 	json.EncodeURI(e, s.HTMLURL)
+
 	e.Comma()
 
 	e.RawStr("\"pull_request_url\"" + ":")
 	json.EncodeURI(e, s.PullRequestURL)
+
 	e.Comma()
 
 	e.RawStr("\"author_association\"" + ":")
@@ -98733,70 +107770,76 @@ func (s ReviewComment) Encode(e *jx.Writer) {
 	e.RawStr("\"_links\"" + ":")
 	s.Links.Encode(e)
 
-	e.Comma()
+	if s.BodyText.Set {
+		e.Comma()
+	}
 	if s.BodyText.Set {
 		e.RawStr("\"body_text\"" + ":")
 		s.BodyText.Encode(e)
 	}
-	if s.BodyText.Set {
+
+	if s.BodyHTML.Set {
 		e.Comma()
 	}
 	if s.BodyHTML.Set {
 		e.RawStr("\"body_html\"" + ":")
 		s.BodyHTML.Encode(e)
 	}
-	if s.BodyHTML.Set {
+
+	if s.Reactions.Set {
 		e.Comma()
 	}
 	if s.Reactions.Set {
 		e.RawStr("\"reactions\"" + ":")
 		s.Reactions.Encode(e)
 	}
-	if s.Reactions.Set {
+
+	if s.Side.Set {
 		e.Comma()
 	}
 	if s.Side.Set {
 		e.RawStr("\"side\"" + ":")
 		s.Side.Encode(e)
 	}
-	if s.Side.Set {
+
+	if s.StartSide.Set {
 		e.Comma()
 	}
 	if s.StartSide.Set {
 		e.RawStr("\"start_side\"" + ":")
 		s.StartSide.Encode(e)
 	}
-	if s.StartSide.Set {
+
+	if s.Line.Set {
 		e.Comma()
 	}
 	if s.Line.Set {
 		e.RawStr("\"line\"" + ":")
 		s.Line.Encode(e)
 	}
-	if s.Line.Set {
+
+	if s.OriginalLine.Set {
 		e.Comma()
 	}
 	if s.OriginalLine.Set {
 		e.RawStr("\"original_line\"" + ":")
 		s.OriginalLine.Encode(e)
 	}
-	if s.OriginalLine.Set {
+
+	if s.StartLine.Set {
 		e.Comma()
 	}
 	if s.StartLine.Set {
 		e.RawStr("\"start_line\"" + ":")
 		s.StartLine.Encode(e)
 	}
-	if s.StartLine.Set {
+
+	if s.OriginalStartLine.Set {
 		e.Comma()
 	}
 	if s.OriginalStartLine.Set {
 		e.RawStr("\"original_start_line\"" + ":")
 		s.OriginalStartLine.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -98966,6 +108009,16 @@ func (s *ReviewComment) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s ReviewCommentLinks) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"self\"" + ":")
 	s.Self.Encode(e)
@@ -98979,10 +108032,6 @@ func (s ReviewCommentLinks) Encode(e *jx.Writer) {
 
 	e.RawStr("\"pull_request\"" + ":")
 	s.PullRequest.Encode(e)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -99069,25 +108118,39 @@ func (s *ReviewCommentStartSide) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s Runner) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"id\"" + ":")
 	e.Int(s.ID)
+
 	e.Comma()
 
 	e.RawStr("\"name\"" + ":")
 	e.Str(s.Name)
+
 	e.Comma()
 
 	e.RawStr("\"os\"" + ":")
 	e.Str(s.Os)
+
 	e.Comma()
 
 	e.RawStr("\"status\"" + ":")
 	e.Str(s.Status)
+
 	e.Comma()
 
 	e.RawStr("\"busy\"" + ":")
 	e.Bool(s.Busy)
+
 	e.Comma()
 
 	e.RawStr("\"labels\"" + ":")
@@ -99104,10 +108167,6 @@ func (s Runner) Encode(e *jx.Writer) {
 		}
 	}
 	e.ArrEnd()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -99170,36 +108229,48 @@ func (s *Runner) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s RunnerApplication) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"os\"" + ":")
 	e.Str(s.Os)
+
 	e.Comma()
 
 	e.RawStr("\"architecture\"" + ":")
 	e.Str(s.Architecture)
+
 	e.Comma()
 
 	e.RawStr("\"download_url\"" + ":")
 	e.Str(s.DownloadURL)
+
 	e.Comma()
 
 	e.RawStr("\"filename\"" + ":")
 	e.Str(s.Filename)
-	e.Comma()
+
+	if s.TempDownloadToken.Set {
+		e.Comma()
+	}
 	if s.TempDownloadToken.Set {
 		e.RawStr("\"temp_download_token\"" + ":")
 		s.TempDownloadToken.Encode(e)
 	}
-	if s.TempDownloadToken.Set {
+
+	if s.SHA256Checksum.Set {
 		e.Comma()
 	}
 	if s.SHA256Checksum.Set {
 		e.RawStr("\"sha256_checksum\"" + ":")
 		s.SHA256Checksum.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -99255,40 +108326,51 @@ func (s *RunnerApplication) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s RunnerGroupsEnterprise) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"id\"" + ":")
 	e.Float64(s.ID)
+
 	e.Comma()
 
 	e.RawStr("\"name\"" + ":")
 	e.Str(s.Name)
+
 	e.Comma()
 
 	e.RawStr("\"visibility\"" + ":")
 	e.Str(s.Visibility)
+
 	e.Comma()
 
 	e.RawStr("\"default\"" + ":")
 	e.Bool(s.Default)
-	e.Comma()
+
+	if s.SelectedOrganizationsURL.Set {
+		e.Comma()
+	}
 	if s.SelectedOrganizationsURL.Set {
 		e.RawStr("\"selected_organizations_url\"" + ":")
 		s.SelectedOrganizationsURL.Encode(e)
 	}
-	if s.SelectedOrganizationsURL.Set {
-		e.Comma()
-	}
+
+	e.Comma()
 
 	e.RawStr("\"runners_url\"" + ":")
 	e.Str(s.RunnersURL)
+
 	e.Comma()
 
 	e.RawStr("\"allows_public_repositories\"" + ":")
 	e.Bool(s.AllowsPublicRepositories)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -99350,51 +108432,64 @@ func (s *RunnerGroupsEnterprise) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s RunnerGroupsOrg) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"id\"" + ":")
 	e.Float64(s.ID)
+
 	e.Comma()
 
 	e.RawStr("\"name\"" + ":")
 	e.Str(s.Name)
+
 	e.Comma()
 
 	e.RawStr("\"visibility\"" + ":")
 	e.Str(s.Visibility)
+
 	e.Comma()
 
 	e.RawStr("\"default\"" + ":")
 	e.Bool(s.Default)
-	e.Comma()
+
+	if s.SelectedRepositoriesURL.Set {
+		e.Comma()
+	}
 	if s.SelectedRepositoriesURL.Set {
 		e.RawStr("\"selected_repositories_url\"" + ":")
 		s.SelectedRepositoriesURL.Encode(e)
 	}
-	if s.SelectedRepositoriesURL.Set {
-		e.Comma()
-	}
+
+	e.Comma()
 
 	e.RawStr("\"runners_url\"" + ":")
 	e.Str(s.RunnersURL)
+
 	e.Comma()
 
 	e.RawStr("\"inherited\"" + ":")
 	e.Bool(s.Inherited)
-	e.Comma()
+
+	if s.InheritedAllowsPublicRepositories.Set {
+		e.Comma()
+	}
 	if s.InheritedAllowsPublicRepositories.Set {
 		e.RawStr("\"inherited_allows_public_repositories\"" + ":")
 		s.InheritedAllowsPublicRepositories.Encode(e)
 	}
-	if s.InheritedAllowsPublicRepositories.Set {
-		e.Comma()
-	}
+
+	e.Comma()
 
 	e.RawStr("\"allows_public_repositories\"" + ":")
 	e.Bool(s.AllowsPublicRepositories)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -99467,27 +108562,42 @@ func (s *RunnerGroupsOrg) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s RunnerLabelsItem) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.ID.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.ID.Set {
 		e.RawStr("\"id\"" + ":")
 		s.ID.Encode(e)
 	}
-	if s.ID.Set {
-		e.Comma()
+
+	if s.Name.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Name.Set {
 		e.RawStr("\"name\"" + ":")
 		s.Name.Encode(e)
 	}
-	if s.Name.Set {
-		e.Comma()
+
+	if s.Type.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Type.Set {
 		e.RawStr("\"type\"" + ":")
 		s.Type.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -99599,10 +108709,10 @@ func (s *ScimDeleteUserFromOrgApplicationJSONNotFound) Decode(d *jx.Decoder) err
 // Encode implements json.Marshaler.
 func (s ScimDeleteUserFromOrgNoContent) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -99623,6 +108733,16 @@ func (s *ScimDeleteUserFromOrgNoContent) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s ScimEnterpriseGroup) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"schemas\"" + ":")
 	e.ArrStart()
@@ -99643,19 +108763,24 @@ func (s ScimEnterpriseGroup) Encode(e *jx.Writer) {
 
 	e.RawStr("\"id\"" + ":")
 	e.Str(s.ID)
-	e.Comma()
+
+	if s.ExternalId.Set {
+		e.Comma()
+	}
 	if s.ExternalId.Set {
 		e.RawStr("\"externalId\"" + ":")
 		s.ExternalId.Encode(e)
 	}
-	if s.ExternalId.Set {
+
+	if s.DisplayName.Set {
 		e.Comma()
 	}
 	if s.DisplayName.Set {
 		e.RawStr("\"displayName\"" + ":")
 		s.DisplayName.Encode(e)
 	}
-	if s.DisplayName.Set {
+
+	if s.Members != nil {
 		e.Comma()
 	}
 	if s.Members != nil {
@@ -99674,16 +108799,13 @@ func (s ScimEnterpriseGroup) Encode(e *jx.Writer) {
 		}
 		e.ArrEnd()
 	}
-	if s.Members != nil {
+
+	if s.Meta.Set {
 		e.Comma()
 	}
 	if s.Meta.Set {
 		e.RawStr("\"meta\"" + ":")
 		s.Meta.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -99752,27 +108874,42 @@ func (s *ScimEnterpriseGroup) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s ScimEnterpriseGroupMembersItem) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.Value.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.Value.Set {
 		e.RawStr("\"value\"" + ":")
 		s.Value.Encode(e)
 	}
-	if s.Value.Set {
-		e.Comma()
+
+	if s.Ref.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Ref.Set {
 		e.RawStr("\"$ref\"" + ":")
 		s.Ref.Encode(e)
 	}
-	if s.Ref.Set {
-		e.Comma()
+
+	if s.Display.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Display.Set {
 		e.RawStr("\"display\"" + ":")
 		s.Display.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -99809,34 +108946,53 @@ func (s *ScimEnterpriseGroupMembersItem) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s ScimEnterpriseGroupMeta) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.ResourceType.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.ResourceType.Set {
 		e.RawStr("\"resourceType\"" + ":")
 		s.ResourceType.Encode(e)
 	}
-	if s.ResourceType.Set {
-		e.Comma()
+
+	if s.Created.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Created.Set {
 		e.RawStr("\"created\"" + ":")
 		s.Created.Encode(e)
 	}
-	if s.Created.Set {
-		e.Comma()
+
+	if s.LastModified.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.LastModified.Set {
 		e.RawStr("\"lastModified\"" + ":")
 		s.LastModified.Encode(e)
 	}
-	if s.LastModified.Set {
-		e.Comma()
+
+	if s.Location.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Location.Set {
 		e.RawStr("\"location\"" + ":")
 		s.Location.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -99878,6 +109034,16 @@ func (s *ScimEnterpriseGroupMeta) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s ScimEnterpriseUser) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"schemas\"" + ":")
 	e.ArrStart()
@@ -99898,26 +109064,32 @@ func (s ScimEnterpriseUser) Encode(e *jx.Writer) {
 
 	e.RawStr("\"id\"" + ":")
 	e.Str(s.ID)
-	e.Comma()
+
+	if s.ExternalId.Set {
+		e.Comma()
+	}
 	if s.ExternalId.Set {
 		e.RawStr("\"externalId\"" + ":")
 		s.ExternalId.Encode(e)
 	}
-	if s.ExternalId.Set {
+
+	if s.UserName.Set {
 		e.Comma()
 	}
 	if s.UserName.Set {
 		e.RawStr("\"userName\"" + ":")
 		s.UserName.Encode(e)
 	}
-	if s.UserName.Set {
+
+	if s.Name.Set {
 		e.Comma()
 	}
 	if s.Name.Set {
 		e.RawStr("\"name\"" + ":")
 		s.Name.Encode(e)
 	}
-	if s.Name.Set {
+
+	if s.Emails != nil {
 		e.Comma()
 	}
 	if s.Emails != nil {
@@ -99936,7 +109108,8 @@ func (s ScimEnterpriseUser) Encode(e *jx.Writer) {
 		}
 		e.ArrEnd()
 	}
-	if s.Emails != nil {
+
+	if s.Groups != nil {
 		e.Comma()
 	}
 	if s.Groups != nil {
@@ -99955,23 +109128,21 @@ func (s ScimEnterpriseUser) Encode(e *jx.Writer) {
 		}
 		e.ArrEnd()
 	}
-	if s.Groups != nil {
+
+	if s.Active.Set {
 		e.Comma()
 	}
 	if s.Active.Set {
 		e.RawStr("\"active\"" + ":")
 		s.Active.Encode(e)
 	}
-	if s.Active.Set {
+
+	if s.Meta.Set {
 		e.Comma()
 	}
 	if s.Meta.Set {
 		e.RawStr("\"meta\"" + ":")
 		s.Meta.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -100062,27 +109233,42 @@ func (s *ScimEnterpriseUser) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s ScimEnterpriseUserEmailsItem) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.Value.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.Value.Set {
 		e.RawStr("\"value\"" + ":")
 		s.Value.Encode(e)
 	}
-	if s.Value.Set {
-		e.Comma()
+
+	if s.Type.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Type.Set {
 		e.RawStr("\"type\"" + ":")
 		s.Type.Encode(e)
 	}
-	if s.Type.Set {
-		e.Comma()
+
+	if s.Primary.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Primary.Set {
 		e.RawStr("\"primary\"" + ":")
 		s.Primary.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -100119,13 +109305,20 @@ func (s *ScimEnterpriseUserEmailsItem) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s ScimEnterpriseUserGroupsItem) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.Value.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.Value.Set {
 		e.RawStr("\"value\"" + ":")
 		s.Value.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -100152,34 +109345,53 @@ func (s *ScimEnterpriseUserGroupsItem) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s ScimEnterpriseUserMeta) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.ResourceType.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.ResourceType.Set {
 		e.RawStr("\"resourceType\"" + ":")
 		s.ResourceType.Encode(e)
 	}
-	if s.ResourceType.Set {
-		e.Comma()
+
+	if s.Created.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Created.Set {
 		e.RawStr("\"created\"" + ":")
 		s.Created.Encode(e)
 	}
-	if s.Created.Set {
-		e.Comma()
+
+	if s.LastModified.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.LastModified.Set {
 		e.RawStr("\"lastModified\"" + ":")
 		s.LastModified.Encode(e)
 	}
-	if s.LastModified.Set {
-		e.Comma()
+
+	if s.Location.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Location.Set {
 		e.RawStr("\"location\"" + ":")
 		s.Location.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -100221,20 +109433,31 @@ func (s *ScimEnterpriseUserMeta) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s ScimEnterpriseUserName) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.GivenName.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.GivenName.Set {
 		e.RawStr("\"givenName\"" + ":")
 		s.GivenName.Encode(e)
 	}
-	if s.GivenName.Set {
-		e.Comma()
+
+	if s.FamilyName.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.FamilyName.Set {
 		e.RawStr("\"familyName\"" + ":")
 		s.FamilyName.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -100266,40 +109489,71 @@ func (s *ScimEnterpriseUserName) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s ScimError) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.Message.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.Message.Set {
 		e.RawStr("\"message\"" + ":")
 		s.Message.Encode(e)
 	}
-	if s.Message.Set {
-		e.Comma()
+
+	if s.DocumentationURL.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.DocumentationURL.Set {
 		e.RawStr("\"documentation_url\"" + ":")
 		s.DocumentationURL.Encode(e)
 	}
-	if s.DocumentationURL.Set {
-		e.Comma()
+
+	if s.Detail.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Detail.Set {
 		e.RawStr("\"detail\"" + ":")
 		s.Detail.Encode(e)
 	}
-	if s.Detail.Set {
-		e.Comma()
+
+	if s.Status.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Status.Set {
 		e.RawStr("\"status\"" + ":")
 		s.Status.Encode(e)
 	}
-	if s.Status.Set {
-		e.Comma()
+
+	if s.ScimType.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.ScimType.Set {
 		e.RawStr("\"scimType\"" + ":")
 		s.ScimType.Encode(e)
 	}
-	if s.ScimType.Set {
-		e.Comma()
+
+	if s.Schemas != nil {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Schemas != nil {
 		e.RawStr("\"schemas\"" + ":")
@@ -100316,10 +109570,6 @@ func (s ScimError) Encode(e *jx.Writer) {
 			}
 		}
 		e.ArrEnd()
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -100380,6 +109630,16 @@ func (s *ScimError) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s ScimGroupListEnterprise) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"schemas\"" + ":")
 	e.ArrStart()
@@ -100400,14 +109660,17 @@ func (s ScimGroupListEnterprise) Encode(e *jx.Writer) {
 
 	e.RawStr("\"totalResults\"" + ":")
 	e.Float64(s.TotalResults)
+
 	e.Comma()
 
 	e.RawStr("\"itemsPerPage\"" + ":")
 	e.Float64(s.ItemsPerPage)
+
 	e.Comma()
 
 	e.RawStr("\"startIndex\"" + ":")
 	e.Float64(s.StartIndex)
+
 	e.Comma()
 
 	e.RawStr("\"Resources\"" + ":")
@@ -100424,10 +109687,6 @@ func (s ScimGroupListEnterprise) Encode(e *jx.Writer) {
 		}
 	}
 	e.ArrEnd()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -100492,6 +109751,16 @@ func (s *ScimGroupListEnterprise) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s ScimGroupListEnterpriseResourcesItem) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"schemas\"" + ":")
 	e.ArrStart()
@@ -100512,19 +109781,24 @@ func (s ScimGroupListEnterpriseResourcesItem) Encode(e *jx.Writer) {
 
 	e.RawStr("\"id\"" + ":")
 	e.Str(s.ID)
-	e.Comma()
+
+	if s.ExternalId.Set {
+		e.Comma()
+	}
 	if s.ExternalId.Set {
 		e.RawStr("\"externalId\"" + ":")
 		s.ExternalId.Encode(e)
 	}
-	if s.ExternalId.Set {
+
+	if s.DisplayName.Set {
 		e.Comma()
 	}
 	if s.DisplayName.Set {
 		e.RawStr("\"displayName\"" + ":")
 		s.DisplayName.Encode(e)
 	}
-	if s.DisplayName.Set {
+
+	if s.Members != nil {
 		e.Comma()
 	}
 	if s.Members != nil {
@@ -100543,16 +109817,13 @@ func (s ScimGroupListEnterpriseResourcesItem) Encode(e *jx.Writer) {
 		}
 		e.ArrEnd()
 	}
-	if s.Members != nil {
+
+	if s.Meta.Set {
 		e.Comma()
 	}
 	if s.Meta.Set {
 		e.RawStr("\"meta\"" + ":")
 		s.Meta.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -100621,27 +109892,42 @@ func (s *ScimGroupListEnterpriseResourcesItem) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s ScimGroupListEnterpriseResourcesItemMembersItem) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.Value.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.Value.Set {
 		e.RawStr("\"value\"" + ":")
 		s.Value.Encode(e)
 	}
-	if s.Value.Set {
-		e.Comma()
+
+	if s.Ref.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Ref.Set {
 		e.RawStr("\"$ref\"" + ":")
 		s.Ref.Encode(e)
 	}
-	if s.Ref.Set {
-		e.Comma()
+
+	if s.Display.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Display.Set {
 		e.RawStr("\"display\"" + ":")
 		s.Display.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -100678,34 +109964,53 @@ func (s *ScimGroupListEnterpriseResourcesItemMembersItem) Decode(d *jx.Decoder) 
 // Encode implements json.Marshaler.
 func (s ScimGroupListEnterpriseResourcesItemMeta) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.ResourceType.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.ResourceType.Set {
 		e.RawStr("\"resourceType\"" + ":")
 		s.ResourceType.Encode(e)
 	}
-	if s.ResourceType.Set {
-		e.Comma()
+
+	if s.Created.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Created.Set {
 		e.RawStr("\"created\"" + ":")
 		s.Created.Encode(e)
 	}
-	if s.Created.Set {
-		e.Comma()
+
+	if s.LastModified.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.LastModified.Set {
 		e.RawStr("\"lastModified\"" + ":")
 		s.LastModified.Encode(e)
 	}
-	if s.LastModified.Set {
-		e.Comma()
+
+	if s.Location.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Location.Set {
 		e.RawStr("\"location\"" + ":")
 		s.Location.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -100747,17 +110052,28 @@ func (s *ScimGroupListEnterpriseResourcesItemMeta) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s ScimProvisionAndInviteUserReq) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"userName\"" + ":")
 	e.Str(s.UserName)
-	e.Comma()
+
+	if s.DisplayName.Set {
+		e.Comma()
+	}
 	if s.DisplayName.Set {
 		e.RawStr("\"displayName\"" + ":")
 		s.DisplayName.Encode(e)
 	}
-	if s.DisplayName.Set {
-		e.Comma()
-	}
+
+	e.Comma()
 
 	e.RawStr("\"name\"" + ":")
 	s.Name.Encode(e)
@@ -100779,7 +110095,9 @@ func (s ScimProvisionAndInviteUserReq) Encode(e *jx.Writer) {
 	}
 	e.ArrEnd()
 
-	e.Comma()
+	if s.Schemas != nil {
+		e.Comma()
+	}
 	if s.Schemas != nil {
 		e.RawStr("\"schemas\"" + ":")
 		e.ArrStart()
@@ -100796,14 +110114,16 @@ func (s ScimProvisionAndInviteUserReq) Encode(e *jx.Writer) {
 		}
 		e.ArrEnd()
 	}
-	if s.Schemas != nil {
+
+	if s.ExternalId.Set {
 		e.Comma()
 	}
 	if s.ExternalId.Set {
 		e.RawStr("\"externalId\"" + ":")
 		s.ExternalId.Encode(e)
 	}
-	if s.ExternalId.Set {
+
+	if s.Groups != nil {
 		e.Comma()
 	}
 	if s.Groups != nil {
@@ -100822,16 +110142,13 @@ func (s ScimProvisionAndInviteUserReq) Encode(e *jx.Writer) {
 		}
 		e.ArrEnd()
 	}
-	if s.Groups != nil {
+
+	if s.Active.Set {
 		e.Comma()
 	}
 	if s.Active.Set {
 		e.RawStr("\"active\"" + ":")
 		s.Active.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -100918,24 +110235,33 @@ func (s *ScimProvisionAndInviteUserReq) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s ScimProvisionAndInviteUserReqEmailsItem) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"value\"" + ":")
 	e.Str(s.Value)
-	e.Comma()
+
+	if s.Primary.Set {
+		e.Comma()
+	}
 	if s.Primary.Set {
 		e.RawStr("\"primary\"" + ":")
 		s.Primary.Encode(e)
 	}
-	if s.Primary.Set {
+
+	if s.Type.Set {
 		e.Comma()
 	}
 	if s.Type.Set {
 		e.RawStr("\"type\"" + ":")
 		s.Type.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -100973,21 +110299,30 @@ func (s *ScimProvisionAndInviteUserReqEmailsItem) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s ScimProvisionAndInviteUserReqName) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"givenName\"" + ":")
 	e.Str(s.GivenName)
+
 	e.Comma()
 
 	e.RawStr("\"familyName\"" + ":")
 	e.Str(s.FamilyName)
-	e.Comma()
+
+	if s.Formatted.Set {
+		e.Comma()
+	}
 	if s.Formatted.Set {
 		e.RawStr("\"formatted\"" + ":")
 		s.Formatted.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -101026,6 +110361,17 @@ func (s *ScimProvisionAndInviteUserReqName) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s ScimSetInformationForProvisionedUserReq) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.Schemas != nil {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.Schemas != nil {
 		e.RawStr("\"schemas\"" + ":")
 		e.ArrStart()
@@ -101042,22 +110388,34 @@ func (s ScimSetInformationForProvisionedUserReq) Encode(e *jx.Writer) {
 		}
 		e.ArrEnd()
 	}
-	if s.Schemas != nil {
-		e.Comma()
+
+	if s.DisplayName.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.DisplayName.Set {
 		e.RawStr("\"displayName\"" + ":")
 		s.DisplayName.Encode(e)
 	}
-	if s.DisplayName.Set {
-		e.Comma()
+
+	if s.ExternalId.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.ExternalId.Set {
 		e.RawStr("\"externalId\"" + ":")
 		s.ExternalId.Encode(e)
 	}
-	if s.ExternalId.Set {
-		e.Comma()
+
+	if s.Groups != nil {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Groups != nil {
 		e.RawStr("\"groups\"" + ":")
@@ -101075,19 +110433,26 @@ func (s ScimSetInformationForProvisionedUserReq) Encode(e *jx.Writer) {
 		}
 		e.ArrEnd()
 	}
-	if s.Groups != nil {
-		e.Comma()
+
+	if s.Active.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Active.Set {
 		e.RawStr("\"active\"" + ":")
 		s.Active.Encode(e)
 	}
-	if s.Active.Set {
+
+	if !first {
 		e.Comma()
 	}
+	first = false
 
 	e.RawStr("\"userName\"" + ":")
 	e.Str(s.UserName)
+
 	e.Comma()
 
 	e.RawStr("\"name\"" + ":")
@@ -101109,10 +110474,6 @@ func (s ScimSetInformationForProvisionedUserReq) Encode(e *jx.Writer) {
 		}
 	}
 	e.ArrEnd()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -101198,24 +110559,36 @@ func (s *ScimSetInformationForProvisionedUserReq) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s ScimSetInformationForProvisionedUserReqEmailsItem) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.Type.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.Type.Set {
 		e.RawStr("\"type\"" + ":")
 		s.Type.Encode(e)
 	}
-	if s.Type.Set {
+
+	if !first {
 		e.Comma()
 	}
+	first = false
 
 	e.RawStr("\"value\"" + ":")
 	e.Str(s.Value)
-	e.Comma()
+
+	if s.Primary.Set {
+		e.Comma()
+	}
 	if s.Primary.Set {
 		e.RawStr("\"primary\"" + ":")
 		s.Primary.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -101253,21 +110626,30 @@ func (s *ScimSetInformationForProvisionedUserReqEmailsItem) Decode(d *jx.Decoder
 // Encode implements json.Marshaler.
 func (s ScimSetInformationForProvisionedUserReqName) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"givenName\"" + ":")
 	e.Str(s.GivenName)
+
 	e.Comma()
 
 	e.RawStr("\"familyName\"" + ":")
 	e.Str(s.FamilyName)
-	e.Comma()
+
+	if s.Formatted.Set {
+		e.Comma()
+	}
 	if s.Formatted.Set {
 		e.RawStr("\"formatted\"" + ":")
 		s.Formatted.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -101306,6 +110688,17 @@ func (s *ScimSetInformationForProvisionedUserReqName) Decode(d *jx.Decoder) erro
 // Encode implements json.Marshaler.
 func (s ScimUpdateAttributeForUserReq) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.Schemas != nil {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.Schemas != nil {
 		e.RawStr("\"schemas\"" + ":")
 		e.ArrStart()
@@ -101322,9 +110715,12 @@ func (s ScimUpdateAttributeForUserReq) Encode(e *jx.Writer) {
 		}
 		e.ArrEnd()
 	}
-	if s.Schemas != nil {
+
+	if !first {
+
 		e.Comma()
 	}
+	first = false
 
 	e.RawStr("\"Operations\"" + ":")
 	e.ArrStart()
@@ -101340,10 +110736,6 @@ func (s ScimUpdateAttributeForUserReq) Encode(e *jx.Writer) {
 		}
 	}
 	e.ArrEnd()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -101390,25 +110782,34 @@ func (s *ScimUpdateAttributeForUserReq) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s ScimUpdateAttributeForUserReqOperationsItem) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"op\"" + ":")
 	s.Op.Encode(e)
 
-	e.Comma()
+	if s.Path.Set {
+		e.Comma()
+	}
 	if s.Path.Set {
 		e.RawStr("\"path\"" + ":")
 		s.Path.Encode(e)
 	}
-	if s.Path.Set {
+
+	if s.Value.Set {
 		e.Comma()
 	}
 	if s.Value.Set {
 		e.RawStr("\"value\"" + ":")
 		s.Value.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -101535,41 +110936,64 @@ func (s *ScimUpdateAttributeForUserReqOperationsItemValue) Decode(d *jx.Decoder)
 // Encode implements json.Marshaler.
 func (s ScimUpdateAttributeForUserReqOperationsItemValue0) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.Active.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.Active.Set {
 		e.RawStr("\"active\"" + ":")
 		s.Active.Encode(e)
 	}
-	if s.Active.Set {
-		e.Comma()
+
+	if s.UserName.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.UserName.Set {
 		e.RawStr("\"userName\"" + ":")
 		s.UserName.Encode(e)
 	}
-	if s.UserName.Set {
-		e.Comma()
+
+	if s.ExternalId.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.ExternalId.Set {
 		e.RawStr("\"externalId\"" + ":")
 		s.ExternalId.Encode(e)
 	}
-	if s.ExternalId.Set {
-		e.Comma()
+
+	if s.GivenName.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.GivenName.Set {
 		e.RawStr("\"givenName\"" + ":")
 		s.GivenName.Encode(e)
 	}
-	if s.GivenName.Set {
-		e.Comma()
+
+	if s.FamilyName.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.FamilyName.Set {
 		e.RawStr("\"familyName\"" + ":")
 		s.FamilyName.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -101616,20 +111040,31 @@ func (s *ScimUpdateAttributeForUserReqOperationsItemValue0) Decode(d *jx.Decoder
 // Encode implements json.Marshaler.
 func (s ScimUpdateAttributeForUserReqOperationsItemValue1Item) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.Value.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.Value.Set {
 		e.RawStr("\"value\"" + ":")
 		s.Value.Encode(e)
 	}
-	if s.Value.Set {
-		e.Comma()
+
+	if s.Primary.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Primary.Set {
 		e.RawStr("\"primary\"" + ":")
 		s.Primary.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -101661,6 +111096,16 @@ func (s *ScimUpdateAttributeForUserReqOperationsItemValue1Item) Decode(d *jx.Dec
 // Encode implements json.Marshaler.
 func (s ScimUserListEnterprise) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"schemas\"" + ":")
 	e.ArrStart()
@@ -101681,14 +111126,17 @@ func (s ScimUserListEnterprise) Encode(e *jx.Writer) {
 
 	e.RawStr("\"totalResults\"" + ":")
 	e.Float64(s.TotalResults)
+
 	e.Comma()
 
 	e.RawStr("\"itemsPerPage\"" + ":")
 	e.Float64(s.ItemsPerPage)
+
 	e.Comma()
 
 	e.RawStr("\"startIndex\"" + ":")
 	e.Float64(s.StartIndex)
+
 	e.Comma()
 
 	e.RawStr("\"Resources\"" + ":")
@@ -101705,10 +111153,6 @@ func (s ScimUserListEnterprise) Encode(e *jx.Writer) {
 		}
 	}
 	e.ArrEnd()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -101773,6 +111217,16 @@ func (s *ScimUserListEnterprise) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s ScimUserListEnterpriseResourcesItem) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"schemas\"" + ":")
 	e.ArrStart()
@@ -101793,26 +111247,32 @@ func (s ScimUserListEnterpriseResourcesItem) Encode(e *jx.Writer) {
 
 	e.RawStr("\"id\"" + ":")
 	e.Str(s.ID)
-	e.Comma()
+
+	if s.ExternalId.Set {
+		e.Comma()
+	}
 	if s.ExternalId.Set {
 		e.RawStr("\"externalId\"" + ":")
 		s.ExternalId.Encode(e)
 	}
-	if s.ExternalId.Set {
+
+	if s.UserName.Set {
 		e.Comma()
 	}
 	if s.UserName.Set {
 		e.RawStr("\"userName\"" + ":")
 		s.UserName.Encode(e)
 	}
-	if s.UserName.Set {
+
+	if s.Name.Set {
 		e.Comma()
 	}
 	if s.Name.Set {
 		e.RawStr("\"name\"" + ":")
 		s.Name.Encode(e)
 	}
-	if s.Name.Set {
+
+	if s.Emails != nil {
 		e.Comma()
 	}
 	if s.Emails != nil {
@@ -101831,7 +111291,8 @@ func (s ScimUserListEnterpriseResourcesItem) Encode(e *jx.Writer) {
 		}
 		e.ArrEnd()
 	}
-	if s.Emails != nil {
+
+	if s.Groups != nil {
 		e.Comma()
 	}
 	if s.Groups != nil {
@@ -101850,23 +111311,21 @@ func (s ScimUserListEnterpriseResourcesItem) Encode(e *jx.Writer) {
 		}
 		e.ArrEnd()
 	}
-	if s.Groups != nil {
+
+	if s.Active.Set {
 		e.Comma()
 	}
 	if s.Active.Set {
 		e.RawStr("\"active\"" + ":")
 		s.Active.Encode(e)
 	}
-	if s.Active.Set {
+
+	if s.Meta.Set {
 		e.Comma()
 	}
 	if s.Meta.Set {
 		e.RawStr("\"meta\"" + ":")
 		s.Meta.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -101957,27 +111416,42 @@ func (s *ScimUserListEnterpriseResourcesItem) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s ScimUserListEnterpriseResourcesItemEmailsItem) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.Value.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.Value.Set {
 		e.RawStr("\"value\"" + ":")
 		s.Value.Encode(e)
 	}
-	if s.Value.Set {
-		e.Comma()
+
+	if s.Primary.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Primary.Set {
 		e.RawStr("\"primary\"" + ":")
 		s.Primary.Encode(e)
 	}
-	if s.Primary.Set {
-		e.Comma()
+
+	if s.Type.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Type.Set {
 		e.RawStr("\"type\"" + ":")
 		s.Type.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -102014,13 +111488,20 @@ func (s *ScimUserListEnterpriseResourcesItemEmailsItem) Decode(d *jx.Decoder) er
 // Encode implements json.Marshaler.
 func (s ScimUserListEnterpriseResourcesItemGroupsItem) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.Value.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.Value.Set {
 		e.RawStr("\"value\"" + ":")
 		s.Value.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -102047,34 +111528,53 @@ func (s *ScimUserListEnterpriseResourcesItemGroupsItem) Decode(d *jx.Decoder) er
 // Encode implements json.Marshaler.
 func (s ScimUserListEnterpriseResourcesItemMeta) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.ResourceType.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.ResourceType.Set {
 		e.RawStr("\"resourceType\"" + ":")
 		s.ResourceType.Encode(e)
 	}
-	if s.ResourceType.Set {
-		e.Comma()
+
+	if s.Created.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Created.Set {
 		e.RawStr("\"created\"" + ":")
 		s.Created.Encode(e)
 	}
-	if s.Created.Set {
-		e.Comma()
+
+	if s.LastModified.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.LastModified.Set {
 		e.RawStr("\"lastModified\"" + ":")
 		s.LastModified.Encode(e)
 	}
-	if s.LastModified.Set {
-		e.Comma()
+
+	if s.Location.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Location.Set {
 		e.RawStr("\"location\"" + ":")
 		s.Location.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -102116,20 +111616,31 @@ func (s *ScimUserListEnterpriseResourcesItemMeta) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s ScimUserListEnterpriseResourcesItemName) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.GivenName.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.GivenName.Set {
 		e.RawStr("\"givenName\"" + ":")
 		s.GivenName.Encode(e)
 	}
-	if s.GivenName.Set {
-		e.Comma()
+
+	if s.FamilyName.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.FamilyName.Set {
 		e.RawStr("\"familyName\"" + ":")
 		s.FamilyName.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -102161,13 +111672,24 @@ func (s *ScimUserListEnterpriseResourcesItemName) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s SearchCodeOK) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"total_count\"" + ":")
 	e.Int(s.TotalCount)
+
 	e.Comma()
 
 	e.RawStr("\"incomplete_results\"" + ":")
 	e.Bool(s.IncompleteResults)
+
 	e.Comma()
 
 	e.RawStr("\"items\"" + ":")
@@ -102184,10 +111706,6 @@ func (s SearchCodeOK) Encode(e *jx.Writer) {
 		}
 	}
 	e.ArrEnd()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -102284,13 +111802,24 @@ func (s *SearchCodeSort) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s SearchCommitsOK) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"total_count\"" + ":")
 	e.Int(s.TotalCount)
+
 	e.Comma()
 
 	e.RawStr("\"incomplete_results\"" + ":")
 	e.Bool(s.IncompleteResults)
+
 	e.Comma()
 
 	e.RawStr("\"items\"" + ":")
@@ -102307,10 +111836,6 @@ func (s SearchCommitsOK) Encode(e *jx.Writer) {
 		}
 	}
 	e.ArrEnd()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -102409,13 +111934,24 @@ func (s *SearchCommitsSort) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s SearchIssuesAndPullRequestsOK) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"total_count\"" + ":")
 	e.Int(s.TotalCount)
+
 	e.Comma()
 
 	e.RawStr("\"incomplete_results\"" + ":")
 	e.Bool(s.IncompleteResults)
+
 	e.Comma()
 
 	e.RawStr("\"items\"" + ":")
@@ -102432,10 +111968,6 @@ func (s SearchIssuesAndPullRequestsOK) Encode(e *jx.Writer) {
 		}
 	}
 	e.ArrEnd()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -102600,13 +112132,24 @@ func (s *SearchLabelsApplicationJSONNotFound) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s SearchLabelsOK) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"total_count\"" + ":")
 	e.Int(s.TotalCount)
+
 	e.Comma()
 
 	e.RawStr("\"incomplete_results\"" + ":")
 	e.Bool(s.IncompleteResults)
+
 	e.Comma()
 
 	e.RawStr("\"items\"" + ":")
@@ -102623,10 +112166,6 @@ func (s SearchLabelsOK) Encode(e *jx.Writer) {
 		}
 	}
 	e.ArrEnd()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -102725,13 +112264,24 @@ func (s *SearchLabelsSort) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s SearchReposOK) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"total_count\"" + ":")
 	e.Int(s.TotalCount)
+
 	e.Comma()
 
 	e.RawStr("\"incomplete_results\"" + ":")
 	e.Bool(s.IncompleteResults)
+
 	e.Comma()
 
 	e.RawStr("\"items\"" + ":")
@@ -102748,10 +112298,6 @@ func (s SearchReposOK) Encode(e *jx.Writer) {
 		}
 	}
 	e.ArrEnd()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -102898,33 +112444,60 @@ func (s *SearchResultTextMatches) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s SearchResultTextMatchesItem) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.ObjectURL.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.ObjectURL.Set {
 		e.RawStr("\"object_url\"" + ":")
 		s.ObjectURL.Encode(e)
 	}
-	if s.ObjectURL.Set {
-		e.Comma()
+
+	if s.ObjectType.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.ObjectType.Set {
 		e.RawStr("\"object_type\"" + ":")
 		s.ObjectType.Encode(e)
 	}
-	if s.ObjectType.Set {
-		e.Comma()
+
+	if s.Property.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Property.Set {
 		e.RawStr("\"property\"" + ":")
 		s.Property.Encode(e)
 	}
-	if s.Property.Set {
-		e.Comma()
+
+	if s.Fragment.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Fragment.Set {
 		e.RawStr("\"fragment\"" + ":")
 		s.Fragment.Encode(e)
 	}
-	if s.Fragment.Set {
-		e.Comma()
+
+	if s.Matches != nil {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Matches != nil {
 		e.RawStr("\"matches\"" + ":")
@@ -102941,10 +112514,6 @@ func (s SearchResultTextMatchesItem) Encode(e *jx.Writer) {
 			}
 		}
 		e.ArrEnd()
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -102998,12 +112567,27 @@ func (s *SearchResultTextMatchesItem) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s SearchResultTextMatchesItemMatchesItem) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.Text.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.Text.Set {
 		e.RawStr("\"text\"" + ":")
 		s.Text.Encode(e)
 	}
-	if s.Text.Set {
-		e.Comma()
+
+	if s.Indices != nil {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Indices != nil {
 		e.RawStr("\"indices\"" + ":")
@@ -103020,10 +112604,6 @@ func (s SearchResultTextMatchesItemMatchesItem) Encode(e *jx.Writer) {
 			}
 		}
 		e.ArrEnd()
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -103064,13 +112644,24 @@ func (s *SearchResultTextMatchesItemMatchesItem) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s SearchTopicsOK) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"total_count\"" + ":")
 	e.Int(s.TotalCount)
+
 	e.Comma()
 
 	e.RawStr("\"incomplete_results\"" + ":")
 	e.Bool(s.IncompleteResults)
+
 	e.Comma()
 
 	e.RawStr("\"items\"" + ":")
@@ -103087,10 +112678,6 @@ func (s SearchTopicsOK) Encode(e *jx.Writer) {
 		}
 	}
 	e.ArrEnd()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -103135,13 +112722,24 @@ func (s *SearchTopicsOK) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s SearchUsersOK) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"total_count\"" + ":")
 	e.Int(s.TotalCount)
+
 	e.Comma()
 
 	e.RawStr("\"incomplete_results\"" + ":")
 	e.Bool(s.IncompleteResults)
+
 	e.Comma()
 
 	e.RawStr("\"items\"" + ":")
@@ -103158,10 +112756,6 @@ func (s SearchUsersOK) Encode(e *jx.Writer) {
 		}
 	}
 	e.ArrEnd()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -103262,83 +112856,130 @@ func (s *SearchUsersSort) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s SecretScanningAlert) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.Number.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.Number.Set {
 		e.RawStr("\"number\"" + ":")
 		s.Number.Encode(e)
 	}
-	if s.Number.Set {
-		e.Comma()
+
+	if s.CreatedAt.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.CreatedAt.Set {
 		e.RawStr("\"created_at\"" + ":")
 		s.CreatedAt.Encode(e)
 	}
-	if s.CreatedAt.Set {
-		e.Comma()
+
+	if s.URL.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.URL.Set {
 		e.RawStr("\"url\"" + ":")
 		s.URL.Encode(e)
 	}
-	if s.URL.Set {
-		e.Comma()
+
+	if s.HTMLURL.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.HTMLURL.Set {
 		e.RawStr("\"html_url\"" + ":")
 		s.HTMLURL.Encode(e)
 	}
-	if s.HTMLURL.Set {
-		e.Comma()
+
+	if s.LocationsURL.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.LocationsURL.Set {
 		e.RawStr("\"locations_url\"" + ":")
 		s.LocationsURL.Encode(e)
 	}
-	if s.LocationsURL.Set {
-		e.Comma()
+
+	if s.State.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.State.Set {
 		e.RawStr("\"state\"" + ":")
 		s.State.Encode(e)
 	}
-	if s.State.Set {
-		e.Comma()
+
+	if s.Resolution.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Resolution.Set {
 		e.RawStr("\"resolution\"" + ":")
 		s.Resolution.Encode(e)
 	}
-	if s.Resolution.Set {
-		e.Comma()
+
+	if s.ResolvedAt.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.ResolvedAt.Set {
 		e.RawStr("\"resolved_at\"" + ":")
 		s.ResolvedAt.Encode(e, json.EncodeDateTime)
 	}
-	if s.ResolvedAt.Set {
-		e.Comma()
+
+	if s.ResolvedBy.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.ResolvedBy.Set {
 		e.RawStr("\"resolved_by\"" + ":")
 		s.ResolvedBy.Encode(e)
 	}
-	if s.ResolvedBy.Set {
-		e.Comma()
+
+	if s.SecretType.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.SecretType.Set {
 		e.RawStr("\"secret_type\"" + ":")
 		s.SecretType.Encode(e)
 	}
-	if s.SecretType.Set {
-		e.Comma()
+
+	if s.Secret.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Secret.Set {
 		e.RawStr("\"secret\"" + ":")
 		s.Secret.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -103473,10 +113114,10 @@ func (s *SecretScanningAlertState) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s SecretScanningGetAlertNotFound) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -103568,10 +113209,10 @@ func (s *SecretScanningListAlertsForOrgState) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s SecretScanningListAlertsForRepoNotFound) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -103663,10 +113304,10 @@ func (s *SecretScanningListAlertsForRepoState) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s SecretScanningUpdateAlertNotFound) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -103687,18 +113328,26 @@ func (s *SecretScanningUpdateAlertNotFound) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s SecretScanningUpdateAlertReq) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"state\"" + ":")
 	s.State.Encode(e)
 
-	e.Comma()
+	if s.Resolution.Set {
+		e.Comma()
+	}
 	if s.Resolution.Set {
 		e.RawStr("\"resolution\"" + ":")
 		s.Resolution.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -103729,10 +113378,10 @@ func (s *SecretScanningUpdateAlertReq) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s SecretScanningUpdateAlertUnprocessableEntity) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -103753,19 +113402,38 @@ func (s *SecretScanningUpdateAlertUnprocessableEntity) Decode(d *jx.Decoder) err
 // Encode implements json.Marshaler.
 func (s SelectedActions) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.GithubOwnedAllowed.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.GithubOwnedAllowed.Set {
 		e.RawStr("\"github_owned_allowed\"" + ":")
 		s.GithubOwnedAllowed.Encode(e)
 	}
-	if s.GithubOwnedAllowed.Set {
-		e.Comma()
+
+	if s.VerifiedAllowed.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.VerifiedAllowed.Set {
 		e.RawStr("\"verified_allowed\"" + ":")
 		s.VerifiedAllowed.Encode(e)
 	}
-	if s.VerifiedAllowed.Set {
-		e.Comma()
+
+	if s.PatternsAllowed != nil {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.PatternsAllowed != nil {
 		e.RawStr("\"patterns_allowed\"" + ":")
@@ -103782,10 +113450,6 @@ func (s SelectedActions) Encode(e *jx.Writer) {
 			}
 		}
 		e.ArrEnd()
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -103857,27 +113521,42 @@ func (s *SelectedActionsURL) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s ServiceUnavailable) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.Code.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.Code.Set {
 		e.RawStr("\"code\"" + ":")
 		s.Code.Encode(e)
 	}
-	if s.Code.Set {
-		e.Comma()
+
+	if s.Message.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Message.Set {
 		e.RawStr("\"message\"" + ":")
 		s.Message.Encode(e)
 	}
-	if s.Message.Set {
-		e.Comma()
+
+	if s.DocumentationURL.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.DocumentationURL.Set {
 		e.RawStr("\"documentation_url\"" + ":")
 		s.DocumentationURL.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -103914,17 +113593,23 @@ func (s *ServiceUnavailable) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s ShortBlob) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"url\"" + ":")
 	e.Str(s.URL)
+
 	e.Comma()
 
 	e.RawStr("\"sha\"" + ":")
 	e.Str(s.Sha)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -103957,9 +113642,19 @@ func (s *ShortBlob) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s ShortBranch) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"name\"" + ":")
 	e.Str(s.Name)
+
 	e.Comma()
 
 	e.RawStr("\"commit\"" + ":")
@@ -103969,21 +113664,21 @@ func (s ShortBranch) Encode(e *jx.Writer) {
 
 	e.RawStr("\"protected\"" + ":")
 	e.Bool(s.Protected)
-	e.Comma()
+
+	if s.Protection.Set {
+		e.Comma()
+	}
 	if s.Protection.Set {
 		e.RawStr("\"protection\"" + ":")
 		s.Protection.Encode(e)
 	}
-	if s.Protection.Set {
+
+	if s.ProtectionURL.Set {
 		e.Comma()
 	}
 	if s.ProtectionURL.Set {
 		e.RawStr("\"protection_url\"" + ":")
 		s.ProtectionURL.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -104031,17 +113726,23 @@ func (s *ShortBranch) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s ShortBranchCommit) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"sha\"" + ":")
 	e.Str(s.Sha)
+
 	e.Comma()
 
 	e.RawStr("\"url\"" + ":")
 	json.EncodeURI(e, s.URL)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -104074,21 +113775,34 @@ func (s *ShortBranchCommit) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s SimpleCommit) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"id\"" + ":")
 	e.Str(s.ID)
+
 	e.Comma()
 
 	e.RawStr("\"tree_id\"" + ":")
 	e.Str(s.TreeID)
+
 	e.Comma()
 
 	e.RawStr("\"message\"" + ":")
 	e.Str(s.Message)
+
 	e.Comma()
 
 	e.RawStr("\"timestamp\"" + ":")
 	json.EncodeDateTime(e, s.Timestamp)
+
 	e.Comma()
 
 	e.RawStr("\"author\"" + ":")
@@ -104098,10 +113812,6 @@ func (s SimpleCommit) Encode(e *jx.Writer) {
 
 	e.RawStr("\"committer\"" + ":")
 	s.Committer.Encode(e)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -104154,17 +113864,23 @@ func (s *SimpleCommit) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s SimpleCommitAuthor) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"name\"" + ":")
 	e.Str(s.Name)
+
 	e.Comma()
 
 	e.RawStr("\"email\"" + ":")
 	e.Str(s.Email)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -104197,17 +113913,23 @@ func (s *SimpleCommitAuthor) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s SimpleCommitCommitter) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"name\"" + ":")
 	e.Str(s.Name)
+
 	e.Comma()
 
 	e.RawStr("\"email\"" + ":")
 	e.Str(s.Email)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -104240,6 +113962,16 @@ func (s *SimpleCommitCommitter) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s SimpleCommitStatus) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"description\"" + ":")
 	s.Description.Encode(e)
@@ -104248,30 +113980,36 @@ func (s SimpleCommitStatus) Encode(e *jx.Writer) {
 
 	e.RawStr("\"id\"" + ":")
 	e.Int(s.ID)
+
 	e.Comma()
 
 	e.RawStr("\"node_id\"" + ":")
 	e.Str(s.NodeID)
+
 	e.Comma()
 
 	e.RawStr("\"state\"" + ":")
 	e.Str(s.State)
+
 	e.Comma()
 
 	e.RawStr("\"context\"" + ":")
 	e.Str(s.Context)
+
 	e.Comma()
 
 	e.RawStr("\"target_url\"" + ":")
 	json.EncodeURI(e, s.TargetURL)
-	e.Comma()
+
+	if s.Required.Set {
+		e.Comma()
+	}
 	if s.Required.Set {
 		e.RawStr("\"required\"" + ":")
 		s.Required.Encode(e)
 	}
-	if s.Required.Set {
-		e.Comma()
-	}
+
+	e.Comma()
 
 	e.RawStr("\"avatar_url\"" + ":")
 	s.AvatarURL.Encode(e)
@@ -104280,18 +114018,16 @@ func (s SimpleCommitStatus) Encode(e *jx.Writer) {
 
 	e.RawStr("\"url\"" + ":")
 	json.EncodeURI(e, s.URL)
+
 	e.Comma()
 
 	e.RawStr("\"created_at\"" + ":")
 	json.EncodeDateTime(e, s.CreatedAt)
+
 	e.Comma()
 
 	e.RawStr("\"updated_at\"" + ":")
 	json.EncodeDateTime(e, s.UpdatedAt)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -104373,35 +114109,56 @@ func (s *SimpleCommitStatus) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s SimpleUser) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.Name.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.Name.Set {
 		e.RawStr("\"name\"" + ":")
 		s.Name.Encode(e)
 	}
-	if s.Name.Set {
-		e.Comma()
+
+	if s.Email.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Email.Set {
 		e.RawStr("\"email\"" + ":")
 		s.Email.Encode(e)
 	}
-	if s.Email.Set {
+
+	if !first {
 		e.Comma()
 	}
+	first = false
 
 	e.RawStr("\"login\"" + ":")
 	e.Str(s.Login)
+
 	e.Comma()
 
 	e.RawStr("\"id\"" + ":")
 	e.Int(s.ID)
+
 	e.Comma()
 
 	e.RawStr("\"node_id\"" + ":")
 	e.Str(s.NodeID)
+
 	e.Comma()
 
 	e.RawStr("\"avatar_url\"" + ":")
 	json.EncodeURI(e, s.AvatarURL)
+
 	e.Comma()
 
 	e.RawStr("\"gravatar_id\"" + ":")
@@ -104411,62 +114168,73 @@ func (s SimpleUser) Encode(e *jx.Writer) {
 
 	e.RawStr("\"url\"" + ":")
 	json.EncodeURI(e, s.URL)
+
 	e.Comma()
 
 	e.RawStr("\"html_url\"" + ":")
 	json.EncodeURI(e, s.HTMLURL)
+
 	e.Comma()
 
 	e.RawStr("\"followers_url\"" + ":")
 	json.EncodeURI(e, s.FollowersURL)
+
 	e.Comma()
 
 	e.RawStr("\"following_url\"" + ":")
 	e.Str(s.FollowingURL)
+
 	e.Comma()
 
 	e.RawStr("\"gists_url\"" + ":")
 	e.Str(s.GistsURL)
+
 	e.Comma()
 
 	e.RawStr("\"starred_url\"" + ":")
 	e.Str(s.StarredURL)
+
 	e.Comma()
 
 	e.RawStr("\"subscriptions_url\"" + ":")
 	json.EncodeURI(e, s.SubscriptionsURL)
+
 	e.Comma()
 
 	e.RawStr("\"organizations_url\"" + ":")
 	json.EncodeURI(e, s.OrganizationsURL)
+
 	e.Comma()
 
 	e.RawStr("\"repos_url\"" + ":")
 	json.EncodeURI(e, s.ReposURL)
+
 	e.Comma()
 
 	e.RawStr("\"events_url\"" + ":")
 	e.Str(s.EventsURL)
+
 	e.Comma()
 
 	e.RawStr("\"received_events_url\"" + ":")
 	json.EncodeURI(e, s.ReceivedEventsURL)
+
 	e.Comma()
 
 	e.RawStr("\"type\"" + ":")
 	e.Str(s.Type)
+
 	e.Comma()
 
 	e.RawStr("\"site_admin\"" + ":")
 	e.Bool(s.SiteAdmin)
-	e.Comma()
+
+	if s.StarredAt.Set {
+		e.Comma()
+	}
 	if s.StarredAt.Set {
 		e.RawStr("\"starred_at\"" + ":")
 		s.StarredAt.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -104609,9 +114377,19 @@ func (s *SimpleUser) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s Status) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"url\"" + ":")
 	e.Str(s.URL)
+
 	e.Comma()
 
 	e.RawStr("\"avatar_url\"" + ":")
@@ -104621,42 +114399,46 @@ func (s Status) Encode(e *jx.Writer) {
 
 	e.RawStr("\"id\"" + ":")
 	e.Int(s.ID)
+
 	e.Comma()
 
 	e.RawStr("\"node_id\"" + ":")
 	e.Str(s.NodeID)
+
 	e.Comma()
 
 	e.RawStr("\"state\"" + ":")
 	e.Str(s.State)
+
 	e.Comma()
 
 	e.RawStr("\"description\"" + ":")
 	e.Str(s.Description)
+
 	e.Comma()
 
 	e.RawStr("\"target_url\"" + ":")
 	e.Str(s.TargetURL)
+
 	e.Comma()
 
 	e.RawStr("\"context\"" + ":")
 	e.Str(s.Context)
+
 	e.Comma()
 
 	e.RawStr("\"created_at\"" + ":")
 	e.Str(s.CreatedAt)
+
 	e.Comma()
 
 	e.RawStr("\"updated_at\"" + ":")
 	e.Str(s.UpdatedAt)
+
 	e.Comma()
 
 	e.RawStr("\"creator\"" + ":")
 	s.Creator.Encode(e)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -104739,13 +114521,24 @@ func (s *Status) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s StatusCheckPolicy) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"url\"" + ":")
 	json.EncodeURI(e, s.URL)
+
 	e.Comma()
 
 	e.RawStr("\"strict\"" + ":")
 	e.Bool(s.Strict)
+
 	e.Comma()
 
 	e.RawStr("\"contexts\"" + ":")
@@ -104767,10 +114560,6 @@ func (s StatusCheckPolicy) Encode(e *jx.Writer) {
 
 	e.RawStr("\"contexts_url\"" + ":")
 	json.EncodeURI(e, s.ContextsURL)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -104823,9 +114612,19 @@ func (s *StatusCheckPolicy) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s Tag) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"name\"" + ":")
 	e.Str(s.Name)
+
 	e.Comma()
 
 	e.RawStr("\"commit\"" + ":")
@@ -104835,18 +114634,16 @@ func (s Tag) Encode(e *jx.Writer) {
 
 	e.RawStr("\"zipball_url\"" + ":")
 	json.EncodeURI(e, s.ZipballURL)
+
 	e.Comma()
 
 	e.RawStr("\"tarball_url\"" + ":")
 	json.EncodeURI(e, s.TarballURL)
+
 	e.Comma()
 
 	e.RawStr("\"node_id\"" + ":")
 	e.Str(s.NodeID)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -104895,17 +114692,23 @@ func (s *Tag) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s TagCommit) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"sha\"" + ":")
 	e.Str(s.Sha)
+
 	e.Comma()
 
 	e.RawStr("\"url\"" + ":")
 	json.EncodeURI(e, s.URL)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -104938,68 +114741,84 @@ func (s *TagCommit) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s Team) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"id\"" + ":")
 	e.Int(s.ID)
+
 	e.Comma()
 
 	e.RawStr("\"node_id\"" + ":")
 	e.Str(s.NodeID)
+
 	e.Comma()
 
 	e.RawStr("\"name\"" + ":")
 	e.Str(s.Name)
+
 	e.Comma()
 
 	e.RawStr("\"slug\"" + ":")
 	e.Str(s.Slug)
+
 	e.Comma()
 
 	e.RawStr("\"description\"" + ":")
 	s.Description.Encode(e)
 
-	e.Comma()
+	if s.Privacy.Set {
+		e.Comma()
+	}
 	if s.Privacy.Set {
 		e.RawStr("\"privacy\"" + ":")
 		s.Privacy.Encode(e)
 	}
-	if s.Privacy.Set {
-		e.Comma()
-	}
+
+	e.Comma()
 
 	e.RawStr("\"permission\"" + ":")
 	e.Str(s.Permission)
-	e.Comma()
+
+	if s.Permissions.Set {
+		e.Comma()
+	}
 	if s.Permissions.Set {
 		e.RawStr("\"permissions\"" + ":")
 		s.Permissions.Encode(e)
 	}
-	if s.Permissions.Set {
-		e.Comma()
-	}
+
+	e.Comma()
 
 	e.RawStr("\"url\"" + ":")
 	json.EncodeURI(e, s.URL)
+
 	e.Comma()
 
 	e.RawStr("\"html_url\"" + ":")
 	json.EncodeURI(e, s.HTMLURL)
+
 	e.Comma()
 
 	e.RawStr("\"members_url\"" + ":")
 	e.Str(s.MembersURL)
+
 	e.Comma()
 
 	e.RawStr("\"repositories_url\"" + ":")
 	json.EncodeURI(e, s.RepositoriesURL)
+
 	e.Comma()
 
 	e.RawStr("\"parent\"" + ":")
 	s.Parent.Encode(e)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -105092,6 +114911,16 @@ func (s *Team) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s TeamDiscussion) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"author\"" + ":")
 	s.Author.Encode(e)
@@ -105100,26 +114929,32 @@ func (s TeamDiscussion) Encode(e *jx.Writer) {
 
 	e.RawStr("\"body\"" + ":")
 	e.Str(s.Body)
+
 	e.Comma()
 
 	e.RawStr("\"body_html\"" + ":")
 	e.Str(s.BodyHTML)
+
 	e.Comma()
 
 	e.RawStr("\"body_version\"" + ":")
 	e.Str(s.BodyVersion)
+
 	e.Comma()
 
 	e.RawStr("\"comments_count\"" + ":")
 	e.Int(s.CommentsCount)
+
 	e.Comma()
 
 	e.RawStr("\"comments_url\"" + ":")
 	json.EncodeURI(e, s.CommentsURL)
+
 	e.Comma()
 
 	e.RawStr("\"created_at\"" + ":")
 	json.EncodeDateTime(e, s.CreatedAt)
+
 	e.Comma()
 
 	e.RawStr("\"last_edited_at\"" + ":")
@@ -105129,46 +114964,53 @@ func (s TeamDiscussion) Encode(e *jx.Writer) {
 
 	e.RawStr("\"html_url\"" + ":")
 	json.EncodeURI(e, s.HTMLURL)
+
 	e.Comma()
 
 	e.RawStr("\"node_id\"" + ":")
 	e.Str(s.NodeID)
+
 	e.Comma()
 
 	e.RawStr("\"number\"" + ":")
 	e.Int(s.Number)
+
 	e.Comma()
 
 	e.RawStr("\"pinned\"" + ":")
 	e.Bool(s.Pinned)
+
 	e.Comma()
 
 	e.RawStr("\"private\"" + ":")
 	e.Bool(s.Private)
+
 	e.Comma()
 
 	e.RawStr("\"team_url\"" + ":")
 	json.EncodeURI(e, s.TeamURL)
+
 	e.Comma()
 
 	e.RawStr("\"title\"" + ":")
 	e.Str(s.Title)
+
 	e.Comma()
 
 	e.RawStr("\"updated_at\"" + ":")
 	json.EncodeDateTime(e, s.UpdatedAt)
+
 	e.Comma()
 
 	e.RawStr("\"url\"" + ":")
 	json.EncodeURI(e, s.URL)
-	e.Comma()
+
+	if s.Reactions.Set {
+		e.Comma()
+	}
 	if s.Reactions.Set {
 		e.RawStr("\"reactions\"" + ":")
 		s.Reactions.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -105293,6 +115135,16 @@ func (s *TeamDiscussion) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s TeamDiscussionComment) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"author\"" + ":")
 	s.Author.Encode(e)
@@ -105301,18 +115153,22 @@ func (s TeamDiscussionComment) Encode(e *jx.Writer) {
 
 	e.RawStr("\"body\"" + ":")
 	e.Str(s.Body)
+
 	e.Comma()
 
 	e.RawStr("\"body_html\"" + ":")
 	e.Str(s.BodyHTML)
+
 	e.Comma()
 
 	e.RawStr("\"body_version\"" + ":")
 	e.Str(s.BodyVersion)
+
 	e.Comma()
 
 	e.RawStr("\"created_at\"" + ":")
 	json.EncodeDateTime(e, s.CreatedAt)
+
 	e.Comma()
 
 	e.RawStr("\"last_edited_at\"" + ":")
@@ -105322,34 +115178,38 @@ func (s TeamDiscussionComment) Encode(e *jx.Writer) {
 
 	e.RawStr("\"discussion_url\"" + ":")
 	json.EncodeURI(e, s.DiscussionURL)
+
 	e.Comma()
 
 	e.RawStr("\"html_url\"" + ":")
 	json.EncodeURI(e, s.HTMLURL)
+
 	e.Comma()
 
 	e.RawStr("\"node_id\"" + ":")
 	e.Str(s.NodeID)
+
 	e.Comma()
 
 	e.RawStr("\"number\"" + ":")
 	e.Int(s.Number)
+
 	e.Comma()
 
 	e.RawStr("\"updated_at\"" + ":")
 	json.EncodeDateTime(e, s.UpdatedAt)
+
 	e.Comma()
 
 	e.RawStr("\"url\"" + ":")
 	json.EncodeURI(e, s.URL)
-	e.Comma()
+
+	if s.Reactions.Set {
+		e.Comma()
+	}
 	if s.Reactions.Set {
 		e.RawStr("\"reactions\"" + ":")
 		s.Reactions.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -105444,89 +115304,111 @@ func (s *TeamDiscussionComment) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s TeamFull) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"id\"" + ":")
 	e.Int(s.ID)
+
 	e.Comma()
 
 	e.RawStr("\"node_id\"" + ":")
 	e.Str(s.NodeID)
+
 	e.Comma()
 
 	e.RawStr("\"url\"" + ":")
 	json.EncodeURI(e, s.URL)
+
 	e.Comma()
 
 	e.RawStr("\"html_url\"" + ":")
 	json.EncodeURI(e, s.HTMLURL)
+
 	e.Comma()
 
 	e.RawStr("\"name\"" + ":")
 	e.Str(s.Name)
+
 	e.Comma()
 
 	e.RawStr("\"slug\"" + ":")
 	e.Str(s.Slug)
+
 	e.Comma()
 
 	e.RawStr("\"description\"" + ":")
 	s.Description.Encode(e)
 
-	e.Comma()
+	if s.Privacy.Set {
+		e.Comma()
+	}
 	if s.Privacy.Set {
 		e.RawStr("\"privacy\"" + ":")
 		s.Privacy.Encode(e)
 	}
-	if s.Privacy.Set {
-		e.Comma()
-	}
+
+	e.Comma()
 
 	e.RawStr("\"permission\"" + ":")
 	e.Str(s.Permission)
+
 	e.Comma()
 
 	e.RawStr("\"members_url\"" + ":")
 	e.Str(s.MembersURL)
+
 	e.Comma()
 
 	e.RawStr("\"repositories_url\"" + ":")
 	json.EncodeURI(e, s.RepositoriesURL)
-	e.Comma()
+
+	if s.Parent.Set {
+		e.Comma()
+	}
 	if s.Parent.Set {
 		e.RawStr("\"parent\"" + ":")
 		s.Parent.Encode(e)
 	}
-	if s.Parent.Set {
-		e.Comma()
-	}
+
+	e.Comma()
 
 	e.RawStr("\"members_count\"" + ":")
 	e.Int(s.MembersCount)
+
 	e.Comma()
 
 	e.RawStr("\"repos_count\"" + ":")
 	e.Int(s.ReposCount)
+
 	e.Comma()
 
 	e.RawStr("\"created_at\"" + ":")
 	json.EncodeDateTime(e, s.CreatedAt)
+
 	e.Comma()
 
 	e.RawStr("\"updated_at\"" + ":")
 	json.EncodeDateTime(e, s.UpdatedAt)
+
 	e.Comma()
 
 	e.RawStr("\"organization\"" + ":")
 	s.Organization.Encode(e)
 
-	e.Comma()
+	if s.LdapDn.Set {
+		e.Comma()
+	}
 	if s.LdapDn.Set {
 		e.RawStr("\"ldap_dn\"" + ":")
 		s.LdapDn.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -105676,9 +115558,19 @@ func (s *TeamFullPrivacy) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s TeamMembership) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"url\"" + ":")
 	json.EncodeURI(e, s.URL)
+
 	e.Comma()
 
 	e.RawStr("\"role\"" + ":")
@@ -105688,10 +115580,6 @@ func (s TeamMembership) Encode(e *jx.Writer) {
 
 	e.RawStr("\"state\"" + ":")
 	s.State.Encode(e)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -105780,29 +115668,38 @@ func (s *TeamMembershipState) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s TeamPermissions) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"pull\"" + ":")
 	e.Bool(s.Pull)
+
 	e.Comma()
 
 	e.RawStr("\"triage\"" + ":")
 	e.Bool(s.Triage)
+
 	e.Comma()
 
 	e.RawStr("\"push\"" + ":")
 	e.Bool(s.Push)
+
 	e.Comma()
 
 	e.RawStr("\"maintain\"" + ":")
 	e.Bool(s.Maintain)
+
 	e.Comma()
 
 	e.RawStr("\"admin\"" + ":")
 	e.Bool(s.Admin)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -105853,33 +115750,49 @@ func (s *TeamPermissions) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s TeamProject) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"owner_url\"" + ":")
 	e.Str(s.OwnerURL)
+
 	e.Comma()
 
 	e.RawStr("\"url\"" + ":")
 	e.Str(s.URL)
+
 	e.Comma()
 
 	e.RawStr("\"html_url\"" + ":")
 	e.Str(s.HTMLURL)
+
 	e.Comma()
 
 	e.RawStr("\"columns_url\"" + ":")
 	e.Str(s.ColumnsURL)
+
 	e.Comma()
 
 	e.RawStr("\"id\"" + ":")
 	e.Int(s.ID)
+
 	e.Comma()
 
 	e.RawStr("\"node_id\"" + ":")
 	e.Str(s.NodeID)
+
 	e.Comma()
 
 	e.RawStr("\"name\"" + ":")
 	e.Str(s.Name)
+
 	e.Comma()
 
 	e.RawStr("\"body\"" + ":")
@@ -105889,10 +115802,12 @@ func (s TeamProject) Encode(e *jx.Writer) {
 
 	e.RawStr("\"number\"" + ":")
 	e.Int(s.Number)
+
 	e.Comma()
 
 	e.RawStr("\"state\"" + ":")
 	e.Str(s.State)
+
 	e.Comma()
 
 	e.RawStr("\"creator\"" + ":")
@@ -105902,32 +115817,32 @@ func (s TeamProject) Encode(e *jx.Writer) {
 
 	e.RawStr("\"created_at\"" + ":")
 	e.Str(s.CreatedAt)
+
 	e.Comma()
 
 	e.RawStr("\"updated_at\"" + ":")
 	e.Str(s.UpdatedAt)
-	e.Comma()
+
+	if s.OrganizationPermission.Set {
+		e.Comma()
+	}
 	if s.OrganizationPermission.Set {
 		e.RawStr("\"organization_permission\"" + ":")
 		s.OrganizationPermission.Encode(e)
 	}
-	if s.OrganizationPermission.Set {
+
+	if s.Private.Set {
 		e.Comma()
 	}
 	if s.Private.Set {
 		e.RawStr("\"private\"" + ":")
 		s.Private.Encode(e)
 	}
-	if s.Private.Set {
-		e.Comma()
-	}
+
+	e.Comma()
 
 	e.RawStr("\"permissions\"" + ":")
 	s.Permissions.Encode(e)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -106036,21 +115951,28 @@ func (s *TeamProject) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s TeamProjectPermissions) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"read\"" + ":")
 	e.Bool(s.Read)
+
 	e.Comma()
 
 	e.RawStr("\"write\"" + ":")
 	e.Bool(s.Write)
+
 	e.Comma()
 
 	e.RawStr("\"admin\"" + ":")
 	e.Bool(s.Admin)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -106089,21 +116011,34 @@ func (s *TeamProjectPermissions) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s TeamRepository) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"id\"" + ":")
 	e.Int(s.ID)
+
 	e.Comma()
 
 	e.RawStr("\"node_id\"" + ":")
 	e.Str(s.NodeID)
+
 	e.Comma()
 
 	e.RawStr("\"name\"" + ":")
 	e.Str(s.Name)
+
 	e.Comma()
 
 	e.RawStr("\"full_name\"" + ":")
 	e.Str(s.FullName)
+
 	e.Comma()
 
 	e.RawStr("\"license\"" + ":")
@@ -106113,14 +116048,16 @@ func (s TeamRepository) Encode(e *jx.Writer) {
 
 	e.RawStr("\"forks\"" + ":")
 	e.Int(s.Forks)
-	e.Comma()
+
+	if s.Permissions.Set {
+		e.Comma()
+	}
 	if s.Permissions.Set {
 		e.RawStr("\"permissions\"" + ":")
 		s.Permissions.Encode(e)
 	}
-	if s.Permissions.Set {
-		e.Comma()
-	}
+
+	e.Comma()
 
 	e.RawStr("\"owner\"" + ":")
 	s.Owner.Encode(e)
@@ -106129,10 +116066,12 @@ func (s TeamRepository) Encode(e *jx.Writer) {
 
 	e.RawStr("\"private\"" + ":")
 	e.Bool(s.Private)
+
 	e.Comma()
 
 	e.RawStr("\"html_url\"" + ":")
 	json.EncodeURI(e, s.HTMLURL)
+
 	e.Comma()
 
 	e.RawStr("\"description\"" + ":")
@@ -106142,162 +116081,202 @@ func (s TeamRepository) Encode(e *jx.Writer) {
 
 	e.RawStr("\"fork\"" + ":")
 	e.Bool(s.Fork)
+
 	e.Comma()
 
 	e.RawStr("\"url\"" + ":")
 	json.EncodeURI(e, s.URL)
+
 	e.Comma()
 
 	e.RawStr("\"archive_url\"" + ":")
 	e.Str(s.ArchiveURL)
+
 	e.Comma()
 
 	e.RawStr("\"assignees_url\"" + ":")
 	e.Str(s.AssigneesURL)
+
 	e.Comma()
 
 	e.RawStr("\"blobs_url\"" + ":")
 	e.Str(s.BlobsURL)
+
 	e.Comma()
 
 	e.RawStr("\"branches_url\"" + ":")
 	e.Str(s.BranchesURL)
+
 	e.Comma()
 
 	e.RawStr("\"collaborators_url\"" + ":")
 	e.Str(s.CollaboratorsURL)
+
 	e.Comma()
 
 	e.RawStr("\"comments_url\"" + ":")
 	e.Str(s.CommentsURL)
+
 	e.Comma()
 
 	e.RawStr("\"commits_url\"" + ":")
 	e.Str(s.CommitsURL)
+
 	e.Comma()
 
 	e.RawStr("\"compare_url\"" + ":")
 	e.Str(s.CompareURL)
+
 	e.Comma()
 
 	e.RawStr("\"contents_url\"" + ":")
 	e.Str(s.ContentsURL)
+
 	e.Comma()
 
 	e.RawStr("\"contributors_url\"" + ":")
 	json.EncodeURI(e, s.ContributorsURL)
+
 	e.Comma()
 
 	e.RawStr("\"deployments_url\"" + ":")
 	json.EncodeURI(e, s.DeploymentsURL)
+
 	e.Comma()
 
 	e.RawStr("\"downloads_url\"" + ":")
 	json.EncodeURI(e, s.DownloadsURL)
+
 	e.Comma()
 
 	e.RawStr("\"events_url\"" + ":")
 	json.EncodeURI(e, s.EventsURL)
+
 	e.Comma()
 
 	e.RawStr("\"forks_url\"" + ":")
 	json.EncodeURI(e, s.ForksURL)
+
 	e.Comma()
 
 	e.RawStr("\"git_commits_url\"" + ":")
 	e.Str(s.GitCommitsURL)
+
 	e.Comma()
 
 	e.RawStr("\"git_refs_url\"" + ":")
 	e.Str(s.GitRefsURL)
+
 	e.Comma()
 
 	e.RawStr("\"git_tags_url\"" + ":")
 	e.Str(s.GitTagsURL)
+
 	e.Comma()
 
 	e.RawStr("\"git_url\"" + ":")
 	e.Str(s.GitURL)
+
 	e.Comma()
 
 	e.RawStr("\"issue_comment_url\"" + ":")
 	e.Str(s.IssueCommentURL)
+
 	e.Comma()
 
 	e.RawStr("\"issue_events_url\"" + ":")
 	e.Str(s.IssueEventsURL)
+
 	e.Comma()
 
 	e.RawStr("\"issues_url\"" + ":")
 	e.Str(s.IssuesURL)
+
 	e.Comma()
 
 	e.RawStr("\"keys_url\"" + ":")
 	e.Str(s.KeysURL)
+
 	e.Comma()
 
 	e.RawStr("\"labels_url\"" + ":")
 	e.Str(s.LabelsURL)
+
 	e.Comma()
 
 	e.RawStr("\"languages_url\"" + ":")
 	json.EncodeURI(e, s.LanguagesURL)
+
 	e.Comma()
 
 	e.RawStr("\"merges_url\"" + ":")
 	json.EncodeURI(e, s.MergesURL)
+
 	e.Comma()
 
 	e.RawStr("\"milestones_url\"" + ":")
 	e.Str(s.MilestonesURL)
+
 	e.Comma()
 
 	e.RawStr("\"notifications_url\"" + ":")
 	e.Str(s.NotificationsURL)
+
 	e.Comma()
 
 	e.RawStr("\"pulls_url\"" + ":")
 	e.Str(s.PullsURL)
+
 	e.Comma()
 
 	e.RawStr("\"releases_url\"" + ":")
 	e.Str(s.ReleasesURL)
+
 	e.Comma()
 
 	e.RawStr("\"ssh_url\"" + ":")
 	e.Str(s.SSHURL)
+
 	e.Comma()
 
 	e.RawStr("\"stargazers_url\"" + ":")
 	json.EncodeURI(e, s.StargazersURL)
+
 	e.Comma()
 
 	e.RawStr("\"statuses_url\"" + ":")
 	e.Str(s.StatusesURL)
+
 	e.Comma()
 
 	e.RawStr("\"subscribers_url\"" + ":")
 	json.EncodeURI(e, s.SubscribersURL)
+
 	e.Comma()
 
 	e.RawStr("\"subscription_url\"" + ":")
 	json.EncodeURI(e, s.SubscriptionURL)
+
 	e.Comma()
 
 	e.RawStr("\"tags_url\"" + ":")
 	json.EncodeURI(e, s.TagsURL)
+
 	e.Comma()
 
 	e.RawStr("\"teams_url\"" + ":")
 	json.EncodeURI(e, s.TeamsURL)
+
 	e.Comma()
 
 	e.RawStr("\"trees_url\"" + ":")
 	e.Str(s.TreesURL)
+
 	e.Comma()
 
 	e.RawStr("\"clone_url\"" + ":")
 	e.Str(s.CloneURL)
+
 	e.Comma()
 
 	e.RawStr("\"mirror_url\"" + ":")
@@ -106307,10 +116286,12 @@ func (s TeamRepository) Encode(e *jx.Writer) {
 
 	e.RawStr("\"hooks_url\"" + ":")
 	json.EncodeURI(e, s.HooksURL)
+
 	e.Comma()
 
 	e.RawStr("\"svn_url\"" + ":")
 	json.EncodeURI(e, s.SvnURL)
+
 	e.Comma()
 
 	e.RawStr("\"homepage\"" + ":")
@@ -106325,32 +116306,41 @@ func (s TeamRepository) Encode(e *jx.Writer) {
 
 	e.RawStr("\"forks_count\"" + ":")
 	e.Int(s.ForksCount)
+
 	e.Comma()
 
 	e.RawStr("\"stargazers_count\"" + ":")
 	e.Int(s.StargazersCount)
+
 	e.Comma()
 
 	e.RawStr("\"watchers_count\"" + ":")
 	e.Int(s.WatchersCount)
+
 	e.Comma()
 
 	e.RawStr("\"size\"" + ":")
 	e.Int(s.Size)
+
 	e.Comma()
 
 	e.RawStr("\"default_branch\"" + ":")
 	e.Str(s.DefaultBranch)
+
 	e.Comma()
 
 	e.RawStr("\"open_issues_count\"" + ":")
 	e.Int(s.OpenIssuesCount)
-	e.Comma()
+
+	if s.IsTemplate.Set {
+		e.Comma()
+	}
 	if s.IsTemplate.Set {
 		e.RawStr("\"is_template\"" + ":")
 		s.IsTemplate.Encode(e)
 	}
-	if s.IsTemplate.Set {
+
+	if s.Topics != nil {
 		e.Comma()
 	}
 	if s.Topics != nil {
@@ -106369,44 +116359,51 @@ func (s TeamRepository) Encode(e *jx.Writer) {
 		}
 		e.ArrEnd()
 	}
-	if s.Topics != nil {
-		e.Comma()
-	}
+
+	e.Comma()
 
 	e.RawStr("\"has_issues\"" + ":")
 	e.Bool(s.HasIssues)
+
 	e.Comma()
 
 	e.RawStr("\"has_projects\"" + ":")
 	e.Bool(s.HasProjects)
+
 	e.Comma()
 
 	e.RawStr("\"has_wiki\"" + ":")
 	e.Bool(s.HasWiki)
+
 	e.Comma()
 
 	e.RawStr("\"has_pages\"" + ":")
 	e.Bool(s.HasPages)
+
 	e.Comma()
 
 	e.RawStr("\"has_downloads\"" + ":")
 	e.Bool(s.HasDownloads)
+
 	e.Comma()
 
 	e.RawStr("\"archived\"" + ":")
 	e.Bool(s.Archived)
+
 	e.Comma()
 
 	e.RawStr("\"disabled\"" + ":")
 	e.Bool(s.Disabled)
-	e.Comma()
+
+	if s.Visibility.Set {
+		e.Comma()
+	}
 	if s.Visibility.Set {
 		e.RawStr("\"visibility\"" + ":")
 		s.Visibility.Encode(e)
 	}
-	if s.Visibility.Set {
-		e.Comma()
-	}
+
+	e.Comma()
 
 	e.RawStr("\"pushed_at\"" + ":")
 	s.PushedAt.Encode(e, json.EncodeDateTime)
@@ -106421,92 +116418,102 @@ func (s TeamRepository) Encode(e *jx.Writer) {
 	e.RawStr("\"updated_at\"" + ":")
 	s.UpdatedAt.Encode(e, json.EncodeDateTime)
 
-	e.Comma()
+	if s.AllowRebaseMerge.Set {
+		e.Comma()
+	}
 	if s.AllowRebaseMerge.Set {
 		e.RawStr("\"allow_rebase_merge\"" + ":")
 		s.AllowRebaseMerge.Encode(e)
 	}
-	if s.AllowRebaseMerge.Set {
+
+	if s.TemplateRepository.Set {
 		e.Comma()
 	}
 	if s.TemplateRepository.Set {
 		e.RawStr("\"template_repository\"" + ":")
 		s.TemplateRepository.Encode(e)
 	}
-	if s.TemplateRepository.Set {
+
+	if s.TempCloneToken.Set {
 		e.Comma()
 	}
 	if s.TempCloneToken.Set {
 		e.RawStr("\"temp_clone_token\"" + ":")
 		s.TempCloneToken.Encode(e)
 	}
-	if s.TempCloneToken.Set {
+
+	if s.AllowSquashMerge.Set {
 		e.Comma()
 	}
 	if s.AllowSquashMerge.Set {
 		e.RawStr("\"allow_squash_merge\"" + ":")
 		s.AllowSquashMerge.Encode(e)
 	}
-	if s.AllowSquashMerge.Set {
+
+	if s.AllowAutoMerge.Set {
 		e.Comma()
 	}
 	if s.AllowAutoMerge.Set {
 		e.RawStr("\"allow_auto_merge\"" + ":")
 		s.AllowAutoMerge.Encode(e)
 	}
-	if s.AllowAutoMerge.Set {
+
+	if s.DeleteBranchOnMerge.Set {
 		e.Comma()
 	}
 	if s.DeleteBranchOnMerge.Set {
 		e.RawStr("\"delete_branch_on_merge\"" + ":")
 		s.DeleteBranchOnMerge.Encode(e)
 	}
-	if s.DeleteBranchOnMerge.Set {
+
+	if s.AllowMergeCommit.Set {
 		e.Comma()
 	}
 	if s.AllowMergeCommit.Set {
 		e.RawStr("\"allow_merge_commit\"" + ":")
 		s.AllowMergeCommit.Encode(e)
 	}
-	if s.AllowMergeCommit.Set {
+
+	if s.AllowForking.Set {
 		e.Comma()
 	}
 	if s.AllowForking.Set {
 		e.RawStr("\"allow_forking\"" + ":")
 		s.AllowForking.Encode(e)
 	}
-	if s.AllowForking.Set {
+
+	if s.SubscribersCount.Set {
 		e.Comma()
 	}
 	if s.SubscribersCount.Set {
 		e.RawStr("\"subscribers_count\"" + ":")
 		s.SubscribersCount.Encode(e)
 	}
-	if s.SubscribersCount.Set {
+
+	if s.NetworkCount.Set {
 		e.Comma()
 	}
 	if s.NetworkCount.Set {
 		e.RawStr("\"network_count\"" + ":")
 		s.NetworkCount.Encode(e)
 	}
-	if s.NetworkCount.Set {
-		e.Comma()
-	}
+
+	e.Comma()
 
 	e.RawStr("\"open_issues\"" + ":")
 	e.Int(s.OpenIssues)
+
 	e.Comma()
 
 	e.RawStr("\"watchers\"" + ":")
 	e.Int(s.Watchers)
-	e.Comma()
+
+	if s.MasterBranch.Set {
+		e.Comma()
+	}
 	if s.MasterBranch.Set {
 		e.RawStr("\"master_branch\"" + ":")
 		s.MasterBranch.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -107032,32 +117039,43 @@ func (s *TeamRepository) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s TeamRepositoryPermissions) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"admin\"" + ":")
 	e.Bool(s.Admin)
+
 	e.Comma()
 
 	e.RawStr("\"pull\"" + ":")
 	e.Bool(s.Pull)
-	e.Comma()
+
+	if s.Triage.Set {
+		e.Comma()
+	}
 	if s.Triage.Set {
 		e.RawStr("\"triage\"" + ":")
 		s.Triage.Encode(e)
 	}
-	if s.Triage.Set {
-		e.Comma()
-	}
+
+	e.Comma()
 
 	e.RawStr("\"push\"" + ":")
 	e.Bool(s.Push)
-	e.Comma()
+
+	if s.Maintain.Set {
+		e.Comma()
+	}
 	if s.Maintain.Set {
 		e.RawStr("\"maintain\"" + ":")
 		s.Maintain.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -107107,25 +117125,39 @@ func (s *TeamRepositoryPermissions) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s TeamSimple) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"id\"" + ":")
 	e.Int(s.ID)
+
 	e.Comma()
 
 	e.RawStr("\"node_id\"" + ":")
 	e.Str(s.NodeID)
+
 	e.Comma()
 
 	e.RawStr("\"url\"" + ":")
 	json.EncodeURI(e, s.URL)
+
 	e.Comma()
 
 	e.RawStr("\"members_url\"" + ":")
 	e.Str(s.MembersURL)
+
 	e.Comma()
 
 	e.RawStr("\"name\"" + ":")
 	e.Str(s.Name)
+
 	e.Comma()
 
 	e.RawStr("\"description\"" + ":")
@@ -107135,33 +117167,36 @@ func (s TeamSimple) Encode(e *jx.Writer) {
 
 	e.RawStr("\"permission\"" + ":")
 	e.Str(s.Permission)
-	e.Comma()
+
+	if s.Privacy.Set {
+		e.Comma()
+	}
 	if s.Privacy.Set {
 		e.RawStr("\"privacy\"" + ":")
 		s.Privacy.Encode(e)
 	}
-	if s.Privacy.Set {
-		e.Comma()
-	}
+
+	e.Comma()
 
 	e.RawStr("\"html_url\"" + ":")
 	json.EncodeURI(e, s.HTMLURL)
+
 	e.Comma()
 
 	e.RawStr("\"repositories_url\"" + ":")
 	json.EncodeURI(e, s.RepositoriesURL)
+
 	e.Comma()
 
 	e.RawStr("\"slug\"" + ":")
 	e.Str(s.Slug)
-	e.Comma()
+
+	if s.LdapDn.Set {
+		e.Comma()
+	}
 	if s.LdapDn.Set {
 		e.RawStr("\"ldap_dn\"" + ":")
 		s.LdapDn.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -107251,10 +117286,10 @@ func (s *TeamSimple) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s TeamsAddMemberLegacyNoContent) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -107275,10 +117310,10 @@ func (s *TeamsAddMemberLegacyNoContent) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s TeamsAddMemberLegacyNotFound) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -107299,10 +117334,10 @@ func (s *TeamsAddMemberLegacyNotFound) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s TeamsAddMemberLegacyUnprocessableEntity) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -107323,10 +117358,10 @@ func (s *TeamsAddMemberLegacyUnprocessableEntity) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s TeamsAddOrUpdateMembershipForUserInOrgForbidden) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -107347,13 +117382,20 @@ func (s *TeamsAddOrUpdateMembershipForUserInOrgForbidden) Decode(d *jx.Decoder) 
 // Encode implements json.Marshaler.
 func (s TeamsAddOrUpdateMembershipForUserInOrgReq) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.Role.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.Role.Set {
 		e.RawStr("\"role\"" + ":")
 		s.Role.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -107407,10 +117449,10 @@ func (s *TeamsAddOrUpdateMembershipForUserInOrgReqRole) Decode(d *jx.Decoder) er
 // Encode implements json.Marshaler.
 func (s TeamsAddOrUpdateMembershipForUserInOrgUnprocessableEntity) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -107431,10 +117473,10 @@ func (s *TeamsAddOrUpdateMembershipForUserInOrgUnprocessableEntity) Decode(d *jx
 // Encode implements json.Marshaler.
 func (s TeamsAddOrUpdateMembershipForUserLegacyForbidden) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -107455,13 +117497,20 @@ func (s *TeamsAddOrUpdateMembershipForUserLegacyForbidden) Decode(d *jx.Decoder)
 // Encode implements json.Marshaler.
 func (s TeamsAddOrUpdateMembershipForUserLegacyReq) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.Role.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.Role.Set {
 		e.RawStr("\"role\"" + ":")
 		s.Role.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -107515,10 +117564,10 @@ func (s *TeamsAddOrUpdateMembershipForUserLegacyReqRole) Decode(d *jx.Decoder) e
 // Encode implements json.Marshaler.
 func (s TeamsAddOrUpdateMembershipForUserLegacyUnprocessableEntity) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -107539,20 +117588,31 @@ func (s *TeamsAddOrUpdateMembershipForUserLegacyUnprocessableEntity) Decode(d *j
 // Encode implements json.Marshaler.
 func (s TeamsAddOrUpdateProjectPermissionsInOrgForbidden) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.Message.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.Message.Set {
 		e.RawStr("\"message\"" + ":")
 		s.Message.Encode(e)
 	}
-	if s.Message.Set {
-		e.Comma()
+
+	if s.DocumentationURL.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.DocumentationURL.Set {
 		e.RawStr("\"documentation_url\"" + ":")
 		s.DocumentationURL.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -107584,10 +117644,10 @@ func (s *TeamsAddOrUpdateProjectPermissionsInOrgForbidden) Decode(d *jx.Decoder)
 // Encode implements json.Marshaler.
 func (s TeamsAddOrUpdateProjectPermissionsInOrgNoContent) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -107608,13 +117668,20 @@ func (s *TeamsAddOrUpdateProjectPermissionsInOrgNoContent) Decode(d *jx.Decoder)
 // Encode implements json.Marshaler.
 func (s TeamsAddOrUpdateProjectPermissionsInOrgReq) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.Permission.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.Permission.Set {
 		e.RawStr("\"permission\"" + ":")
 		s.Permission.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -107670,20 +117737,31 @@ func (s *TeamsAddOrUpdateProjectPermissionsInOrgReqPermission) Decode(d *jx.Deco
 // Encode implements json.Marshaler.
 func (s TeamsAddOrUpdateProjectPermissionsLegacyForbidden) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.Message.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.Message.Set {
 		e.RawStr("\"message\"" + ":")
 		s.Message.Encode(e)
 	}
-	if s.Message.Set {
-		e.Comma()
+
+	if s.DocumentationURL.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.DocumentationURL.Set {
 		e.RawStr("\"documentation_url\"" + ":")
 		s.DocumentationURL.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -107715,10 +117793,10 @@ func (s *TeamsAddOrUpdateProjectPermissionsLegacyForbidden) Decode(d *jx.Decoder
 // Encode implements json.Marshaler.
 func (s TeamsAddOrUpdateProjectPermissionsLegacyNoContent) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -107739,13 +117817,20 @@ func (s *TeamsAddOrUpdateProjectPermissionsLegacyNoContent) Decode(d *jx.Decoder
 // Encode implements json.Marshaler.
 func (s TeamsAddOrUpdateProjectPermissionsLegacyReq) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.Permission.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.Permission.Set {
 		e.RawStr("\"permission\"" + ":")
 		s.Permission.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -107801,10 +117886,10 @@ func (s *TeamsAddOrUpdateProjectPermissionsLegacyReqPermission) Decode(d *jx.Dec
 // Encode implements json.Marshaler.
 func (s TeamsAddOrUpdateRepoPermissionsInOrgNoContent) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -107825,13 +117910,20 @@ func (s *TeamsAddOrUpdateRepoPermissionsInOrgNoContent) Decode(d *jx.Decoder) er
 // Encode implements json.Marshaler.
 func (s TeamsAddOrUpdateRepoPermissionsInOrgReq) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.Permission.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.Permission.Set {
 		e.RawStr("\"permission\"" + ":")
 		s.Permission.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -107891,10 +117983,10 @@ func (s *TeamsAddOrUpdateRepoPermissionsInOrgReqPermission) Decode(d *jx.Decoder
 // Encode implements json.Marshaler.
 func (s TeamsAddOrUpdateRepoPermissionsLegacyNoContent) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -107915,13 +118007,20 @@ func (s *TeamsAddOrUpdateRepoPermissionsLegacyNoContent) Decode(d *jx.Decoder) e
 // Encode implements json.Marshaler.
 func (s TeamsAddOrUpdateRepoPermissionsLegacyReq) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.Permission.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.Permission.Set {
 		e.RawStr("\"permission\"" + ":")
 		s.Permission.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -107977,10 +118076,10 @@ func (s *TeamsAddOrUpdateRepoPermissionsLegacyReqPermission) Decode(d *jx.Decode
 // Encode implements json.Marshaler.
 func (s TeamsCheckPermissionsForProjectInOrgNotFound) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -108001,10 +118100,10 @@ func (s *TeamsCheckPermissionsForProjectInOrgNotFound) Decode(d *jx.Decoder) err
 // Encode implements json.Marshaler.
 func (s TeamsCheckPermissionsForProjectLegacyNotFound) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -108025,10 +118124,10 @@ func (s *TeamsCheckPermissionsForProjectLegacyNotFound) Decode(d *jx.Decoder) er
 // Encode implements json.Marshaler.
 func (s TeamsCheckPermissionsForRepoInOrgNoContent) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -108049,10 +118148,10 @@ func (s *TeamsCheckPermissionsForRepoInOrgNoContent) Decode(d *jx.Decoder) error
 // Encode implements json.Marshaler.
 func (s TeamsCheckPermissionsForRepoInOrgNotFound) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -108073,10 +118172,10 @@ func (s *TeamsCheckPermissionsForRepoInOrgNotFound) Decode(d *jx.Decoder) error 
 // Encode implements json.Marshaler.
 func (s TeamsCheckPermissionsForRepoLegacyNoContent) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -108097,10 +118196,10 @@ func (s *TeamsCheckPermissionsForRepoLegacyNoContent) Decode(d *jx.Decoder) erro
 // Encode implements json.Marshaler.
 func (s TeamsCheckPermissionsForRepoLegacyNotFound) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -108121,13 +118220,18 @@ func (s *TeamsCheckPermissionsForRepoLegacyNotFound) Decode(d *jx.Decoder) error
 // Encode implements json.Marshaler.
 func (s TeamsCreateDiscussionCommentInOrgReq) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"body\"" + ":")
 	e.Str(s.Body)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -108154,13 +118258,18 @@ func (s *TeamsCreateDiscussionCommentInOrgReq) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s TeamsCreateDiscussionCommentLegacyReq) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"body\"" + ":")
 	e.Str(s.Body)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -108187,21 +118296,30 @@ func (s *TeamsCreateDiscussionCommentLegacyReq) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s TeamsCreateDiscussionInOrgReq) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"title\"" + ":")
 	e.Str(s.Title)
+
 	e.Comma()
 
 	e.RawStr("\"body\"" + ":")
 	e.Str(s.Body)
-	e.Comma()
+
+	if s.Private.Set {
+		e.Comma()
+	}
 	if s.Private.Set {
 		e.RawStr("\"private\"" + ":")
 		s.Private.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -108240,21 +118358,30 @@ func (s *TeamsCreateDiscussionInOrgReq) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s TeamsCreateDiscussionLegacyReq) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"title\"" + ":")
 	e.Str(s.Title)
+
 	e.Comma()
 
 	e.RawStr("\"body\"" + ":")
 	e.Str(s.Body)
-	e.Comma()
+
+	if s.Private.Set {
+		e.Comma()
+	}
 	if s.Private.Set {
 		e.RawStr("\"private\"" + ":")
 		s.Private.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -108293,6 +118420,17 @@ func (s *TeamsCreateDiscussionLegacyReq) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s TeamsCreateOrUpdateIdpGroupConnectionsInOrgReq) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.Groups != nil {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.Groups != nil {
 		e.RawStr("\"groups\"" + ":")
 		e.ArrStart()
@@ -108308,10 +118446,6 @@ func (s TeamsCreateOrUpdateIdpGroupConnectionsInOrgReq) Encode(e *jx.Writer) {
 			}
 		}
 		e.ArrEnd()
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -108345,21 +118479,28 @@ func (s *TeamsCreateOrUpdateIdpGroupConnectionsInOrgReq) Decode(d *jx.Decoder) e
 // Encode implements json.Marshaler.
 func (s TeamsCreateOrUpdateIdpGroupConnectionsInOrgReqGroupsItem) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"group_id\"" + ":")
 	e.Str(s.GroupID)
+
 	e.Comma()
 
 	e.RawStr("\"group_name\"" + ":")
 	e.Str(s.GroupName)
+
 	e.Comma()
 
 	e.RawStr("\"group_description\"" + ":")
 	e.Str(s.GroupDescription)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -108398,6 +118539,16 @@ func (s *TeamsCreateOrUpdateIdpGroupConnectionsInOrgReqGroupsItem) Decode(d *jx.
 // Encode implements json.Marshaler.
 func (s TeamsCreateOrUpdateIdpGroupConnectionsLegacyReq) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"groups\"" + ":")
 	e.ArrStart()
@@ -108414,14 +118565,12 @@ func (s TeamsCreateOrUpdateIdpGroupConnectionsLegacyReq) Encode(e *jx.Writer) {
 	}
 	e.ArrEnd()
 
-	e.Comma()
+	if s.SyncedAt.Set {
+		e.Comma()
+	}
 	if s.SyncedAt.Set {
 		e.RawStr("\"synced_at\"" + ":")
 		s.SyncedAt.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -108460,39 +118609,51 @@ func (s *TeamsCreateOrUpdateIdpGroupConnectionsLegacyReq) Decode(d *jx.Decoder) 
 // Encode implements json.Marshaler.
 func (s TeamsCreateOrUpdateIdpGroupConnectionsLegacyReqGroupsItem) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"group_id\"" + ":")
 	e.Str(s.GroupID)
+
 	e.Comma()
 
 	e.RawStr("\"group_name\"" + ":")
 	e.Str(s.GroupName)
+
 	e.Comma()
 
 	e.RawStr("\"group_description\"" + ":")
 	e.Str(s.GroupDescription)
-	e.Comma()
+
+	if s.ID.Set {
+		e.Comma()
+	}
 	if s.ID.Set {
 		e.RawStr("\"id\"" + ":")
 		s.ID.Encode(e)
 	}
-	if s.ID.Set {
+
+	if s.Name.Set {
 		e.Comma()
 	}
 	if s.Name.Set {
 		e.RawStr("\"name\"" + ":")
 		s.Name.Encode(e)
 	}
-	if s.Name.Set {
+
+	if s.Description.Set {
 		e.Comma()
 	}
 	if s.Description.Set {
 		e.RawStr("\"description\"" + ":")
 		s.Description.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -108547,15 +118708,28 @@ func (s *TeamsCreateOrUpdateIdpGroupConnectionsLegacyReqGroupsItem) Decode(d *jx
 // Encode implements json.Marshaler.
 func (s TeamsCreateReq) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"name\"" + ":")
 	e.Str(s.Name)
-	e.Comma()
+
+	if s.Description.Set {
+		e.Comma()
+	}
 	if s.Description.Set {
 		e.RawStr("\"description\"" + ":")
 		s.Description.Encode(e)
 	}
-	if s.Description.Set {
+
+	if s.Maintainers != nil {
 		e.Comma()
 	}
 	if s.Maintainers != nil {
@@ -108574,7 +118748,8 @@ func (s TeamsCreateReq) Encode(e *jx.Writer) {
 		}
 		e.ArrEnd()
 	}
-	if s.Maintainers != nil {
+
+	if s.RepoNames != nil {
 		e.Comma()
 	}
 	if s.RepoNames != nil {
@@ -108593,30 +118768,29 @@ func (s TeamsCreateReq) Encode(e *jx.Writer) {
 		}
 		e.ArrEnd()
 	}
-	if s.RepoNames != nil {
+
+	if s.Privacy.Set {
 		e.Comma()
 	}
 	if s.Privacy.Set {
 		e.RawStr("\"privacy\"" + ":")
 		s.Privacy.Encode(e)
 	}
-	if s.Privacy.Set {
+
+	if s.Permission.Set {
 		e.Comma()
 	}
 	if s.Permission.Set {
 		e.RawStr("\"permission\"" + ":")
 		s.Permission.Encode(e)
 	}
-	if s.Permission.Set {
+
+	if s.ParentTeamID.Set {
 		e.Comma()
 	}
 	if s.ParentTeamID.Set {
 		e.RawStr("\"parent_team_id\"" + ":")
 		s.ParentTeamID.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -108748,10 +118922,10 @@ func (s *TeamsCreateReqPrivacy) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s TeamsDeleteDiscussionCommentInOrgNoContent) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -108772,10 +118946,10 @@ func (s *TeamsDeleteDiscussionCommentInOrgNoContent) Decode(d *jx.Decoder) error
 // Encode implements json.Marshaler.
 func (s TeamsDeleteDiscussionCommentLegacyNoContent) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -108796,10 +118970,10 @@ func (s *TeamsDeleteDiscussionCommentLegacyNoContent) Decode(d *jx.Decoder) erro
 // Encode implements json.Marshaler.
 func (s TeamsDeleteDiscussionInOrgNoContent) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -108820,10 +118994,10 @@ func (s *TeamsDeleteDiscussionInOrgNoContent) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s TeamsDeleteDiscussionLegacyNoContent) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -108844,10 +119018,10 @@ func (s *TeamsDeleteDiscussionLegacyNoContent) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s TeamsDeleteInOrgNoContent) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -108868,10 +119042,10 @@ func (s *TeamsDeleteInOrgNoContent) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s TeamsDeleteLegacyNoContent) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -108892,10 +119066,10 @@ func (s *TeamsDeleteLegacyNoContent) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s TeamsGetMemberLegacyNoContent) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -108916,10 +119090,10 @@ func (s *TeamsGetMemberLegacyNoContent) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s TeamsGetMemberLegacyNotFound) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -108940,10 +119114,10 @@ func (s *TeamsGetMemberLegacyNotFound) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s TeamsGetMembershipForUserInOrgNotFound) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -109538,10 +119712,10 @@ func (s *TeamsListReposLegacyOKApplicationJSON) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s TeamsRemoveMemberLegacyNoContent) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -109562,10 +119736,10 @@ func (s *TeamsRemoveMemberLegacyNoContent) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s TeamsRemoveMemberLegacyNotFound) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -109586,10 +119760,10 @@ func (s *TeamsRemoveMemberLegacyNotFound) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s TeamsRemoveMembershipForUserInOrgForbidden) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -109610,10 +119784,10 @@ func (s *TeamsRemoveMembershipForUserInOrgForbidden) Decode(d *jx.Decoder) error
 // Encode implements json.Marshaler.
 func (s TeamsRemoveMembershipForUserInOrgNoContent) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -109634,10 +119808,10 @@ func (s *TeamsRemoveMembershipForUserInOrgNoContent) Decode(d *jx.Decoder) error
 // Encode implements json.Marshaler.
 func (s TeamsRemoveMembershipForUserLegacyForbidden) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -109658,10 +119832,10 @@ func (s *TeamsRemoveMembershipForUserLegacyForbidden) Decode(d *jx.Decoder) erro
 // Encode implements json.Marshaler.
 func (s TeamsRemoveMembershipForUserLegacyNoContent) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -109682,10 +119856,10 @@ func (s *TeamsRemoveMembershipForUserLegacyNoContent) Decode(d *jx.Decoder) erro
 // Encode implements json.Marshaler.
 func (s TeamsRemoveProjectInOrgNoContent) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -109706,10 +119880,10 @@ func (s *TeamsRemoveProjectInOrgNoContent) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s TeamsRemoveProjectLegacyNoContent) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -109730,10 +119904,10 @@ func (s *TeamsRemoveProjectLegacyNoContent) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s TeamsRemoveRepoInOrgNoContent) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -109754,10 +119928,10 @@ func (s *TeamsRemoveRepoInOrgNoContent) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s TeamsRemoveRepoLegacyNoContent) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -109778,13 +119952,18 @@ func (s *TeamsRemoveRepoLegacyNoContent) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s TeamsUpdateDiscussionCommentInOrgReq) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"body\"" + ":")
 	e.Str(s.Body)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -109811,13 +119990,18 @@ func (s *TeamsUpdateDiscussionCommentInOrgReq) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s TeamsUpdateDiscussionCommentLegacyReq) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"body\"" + ":")
 	e.Str(s.Body)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -109844,20 +120028,31 @@ func (s *TeamsUpdateDiscussionCommentLegacyReq) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s TeamsUpdateDiscussionInOrgReq) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.Title.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.Title.Set {
 		e.RawStr("\"title\"" + ":")
 		s.Title.Encode(e)
 	}
-	if s.Title.Set {
-		e.Comma()
+
+	if s.Body.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Body.Set {
 		e.RawStr("\"body\"" + ":")
 		s.Body.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -109889,20 +120084,31 @@ func (s *TeamsUpdateDiscussionInOrgReq) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s TeamsUpdateDiscussionLegacyReq) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.Title.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.Title.Set {
 		e.RawStr("\"title\"" + ":")
 		s.Title.Encode(e)
 	}
-	if s.Title.Set {
-		e.Comma()
+
+	if s.Body.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Body.Set {
 		e.RawStr("\"body\"" + ":")
 		s.Body.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -109934,41 +120140,64 @@ func (s *TeamsUpdateDiscussionLegacyReq) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s TeamsUpdateInOrgReq) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.Name.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.Name.Set {
 		e.RawStr("\"name\"" + ":")
 		s.Name.Encode(e)
 	}
-	if s.Name.Set {
-		e.Comma()
+
+	if s.Description.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Description.Set {
 		e.RawStr("\"description\"" + ":")
 		s.Description.Encode(e)
 	}
-	if s.Description.Set {
-		e.Comma()
+
+	if s.Privacy.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Privacy.Set {
 		e.RawStr("\"privacy\"" + ":")
 		s.Privacy.Encode(e)
 	}
-	if s.Privacy.Set {
-		e.Comma()
+
+	if s.Permission.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Permission.Set {
 		e.RawStr("\"permission\"" + ":")
 		s.Permission.Encode(e)
 	}
-	if s.Permission.Set {
-		e.Comma()
+
+	if s.ParentTeamID.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.ParentTeamID.Set {
 		e.RawStr("\"parent_team_id\"" + ":")
 		s.ParentTeamID.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -110167,38 +120396,49 @@ func (s *TeamsUpdateLegacyApplicationJSONOK) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s TeamsUpdateLegacyReq) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"name\"" + ":")
 	e.Str(s.Name)
-	e.Comma()
+
+	if s.Description.Set {
+		e.Comma()
+	}
 	if s.Description.Set {
 		e.RawStr("\"description\"" + ":")
 		s.Description.Encode(e)
 	}
-	if s.Description.Set {
+
+	if s.Privacy.Set {
 		e.Comma()
 	}
 	if s.Privacy.Set {
 		e.RawStr("\"privacy\"" + ":")
 		s.Privacy.Encode(e)
 	}
-	if s.Privacy.Set {
+
+	if s.Permission.Set {
 		e.Comma()
 	}
 	if s.Permission.Set {
 		e.RawStr("\"permission\"" + ":")
 		s.Permission.Encode(e)
 	}
-	if s.Permission.Set {
+
+	if s.ParentTeamID.Set {
 		e.Comma()
 	}
 	if s.ParentTeamID.Set {
 		e.RawStr("\"parent_team_id\"" + ":")
 		s.ParentTeamID.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -110302,9 +120542,19 @@ func (s *TeamsUpdateLegacyReqPrivacy) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s Thread) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"id\"" + ":")
 	e.Str(s.ID)
+
 	e.Comma()
 
 	e.RawStr("\"repository\"" + ":")
@@ -110319,14 +120569,17 @@ func (s Thread) Encode(e *jx.Writer) {
 
 	e.RawStr("\"reason\"" + ":")
 	e.Str(s.Reason)
+
 	e.Comma()
 
 	e.RawStr("\"unread\"" + ":")
 	e.Bool(s.Unread)
+
 	e.Comma()
 
 	e.RawStr("\"updated_at\"" + ":")
 	e.Str(s.UpdatedAt)
+
 	e.Comma()
 
 	e.RawStr("\"last_read_at\"" + ":")
@@ -110336,14 +120589,11 @@ func (s Thread) Encode(e *jx.Writer) {
 
 	e.RawStr("\"url\"" + ":")
 	e.Str(s.URL)
+
 	e.Comma()
 
 	e.RawStr("\"subscription_url\"" + ":")
 	e.Str(s.SubscriptionURL)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -110412,25 +120662,33 @@ func (s *Thread) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s ThreadSubject) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"title\"" + ":")
 	e.Str(s.Title)
+
 	e.Comma()
 
 	e.RawStr("\"url\"" + ":")
 	e.Str(s.URL)
+
 	e.Comma()
 
 	e.RawStr("\"latest_comment_url\"" + ":")
 	e.Str(s.LatestCommentURL)
+
 	e.Comma()
 
 	e.RawStr("\"type\"" + ":")
 	e.Str(s.Type)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -110475,13 +120733,24 @@ func (s *ThreadSubject) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s ThreadSubscription) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"subscribed\"" + ":")
 	e.Bool(s.Subscribed)
+
 	e.Comma()
 
 	e.RawStr("\"ignored\"" + ":")
 	e.Bool(s.Ignored)
+
 	e.Comma()
 
 	e.RawStr("\"reason\"" + ":")
@@ -110496,21 +120765,21 @@ func (s ThreadSubscription) Encode(e *jx.Writer) {
 
 	e.RawStr("\"url\"" + ":")
 	json.EncodeURI(e, s.URL)
-	e.Comma()
+
+	if s.ThreadURL.Set {
+		e.Comma()
+	}
 	if s.ThreadURL.Set {
 		e.RawStr("\"thread_url\"" + ":")
 		s.ThreadURL.Encode(e)
 	}
-	if s.ThreadURL.Set {
+
+	if s.RepositoryURL.Set {
 		e.Comma()
 	}
 	if s.RepositoryURL.Set {
 		e.RawStr("\"repository_url\"" + ":")
 		s.RepositoryURL.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -110568,6 +120837,16 @@ func (s *ThreadSubscription) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s Topic) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"names\"" + ":")
 	e.ArrStart()
@@ -110583,10 +120862,6 @@ func (s Topic) Encode(e *jx.Writer) {
 		}
 	}
 	e.ArrEnd()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -110621,9 +120896,19 @@ func (s *Topic) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s TopicSearchResultItem) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"name\"" + ":")
 	e.Str(s.Name)
+
 	e.Comma()
 
 	e.RawStr("\"display_name\"" + ":")
@@ -110653,58 +120938,65 @@ func (s TopicSearchResultItem) Encode(e *jx.Writer) {
 
 	e.RawStr("\"created_at\"" + ":")
 	json.EncodeDateTime(e, s.CreatedAt)
+
 	e.Comma()
 
 	e.RawStr("\"updated_at\"" + ":")
 	json.EncodeDateTime(e, s.UpdatedAt)
+
 	e.Comma()
 
 	e.RawStr("\"featured\"" + ":")
 	e.Bool(s.Featured)
+
 	e.Comma()
 
 	e.RawStr("\"curated\"" + ":")
 	e.Bool(s.Curated)
+
 	e.Comma()
 
 	e.RawStr("\"score\"" + ":")
 	e.Float64(s.Score)
-	e.Comma()
+
+	if s.RepositoryCount.Set {
+		e.Comma()
+	}
 	if s.RepositoryCount.Set {
 		e.RawStr("\"repository_count\"" + ":")
 		s.RepositoryCount.Encode(e)
 	}
-	if s.RepositoryCount.Set {
+
+	if s.LogoURL.Set {
 		e.Comma()
 	}
 	if s.LogoURL.Set {
 		e.RawStr("\"logo_url\"" + ":")
 		s.LogoURL.Encode(e)
 	}
-	if s.LogoURL.Set {
+
+	if s.TextMatches != nil {
 		e.Comma()
 	}
 	if s.TextMatches != nil {
 		e.RawStr("\"text_matches\"" + ":")
 		s.TextMatches.Encode(e)
 	}
-	if s.TextMatches != nil {
+
+	if s.Related.Set {
 		e.Comma()
 	}
 	if s.Related.Set {
 		e.RawStr("\"related\"" + ":")
 		s.Related.Encode(e)
 	}
-	if s.Related.Set {
+
+	if s.Aliases.Set {
 		e.Comma()
 	}
 	if s.Aliases.Set {
 		e.RawStr("\"aliases\"" + ":")
 		s.Aliases.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -110821,13 +121113,20 @@ func (s *TopicSearchResultItem) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s TopicSearchResultItemAliasesItem) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.TopicRelation.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.TopicRelation.Set {
 		e.RawStr("\"topic_relation\"" + ":")
 		s.TopicRelation.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -110854,34 +121153,53 @@ func (s *TopicSearchResultItemAliasesItem) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s TopicSearchResultItemAliasesItemTopicRelation) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.ID.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.ID.Set {
 		e.RawStr("\"id\"" + ":")
 		s.ID.Encode(e)
 	}
-	if s.ID.Set {
-		e.Comma()
+
+	if s.Name.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Name.Set {
 		e.RawStr("\"name\"" + ":")
 		s.Name.Encode(e)
 	}
-	if s.Name.Set {
-		e.Comma()
+
+	if s.TopicID.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.TopicID.Set {
 		e.RawStr("\"topic_id\"" + ":")
 		s.TopicID.Encode(e)
 	}
-	if s.TopicID.Set {
-		e.Comma()
+
+	if s.RelationType.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.RelationType.Set {
 		e.RawStr("\"relation_type\"" + ":")
 		s.RelationType.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -110923,13 +121241,20 @@ func (s *TopicSearchResultItemAliasesItemTopicRelation) Decode(d *jx.Decoder) er
 // Encode implements json.Marshaler.
 func (s TopicSearchResultItemRelatedItem) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.TopicRelation.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.TopicRelation.Set {
 		e.RawStr("\"topic_relation\"" + ":")
 		s.TopicRelation.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -110956,34 +121281,53 @@ func (s *TopicSearchResultItemRelatedItem) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s TopicSearchResultItemRelatedItemTopicRelation) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.ID.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.ID.Set {
 		e.RawStr("\"id\"" + ":")
 		s.ID.Encode(e)
 	}
-	if s.ID.Set {
-		e.Comma()
+
+	if s.Name.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Name.Set {
 		e.RawStr("\"name\"" + ":")
 		s.Name.Encode(e)
 	}
-	if s.Name.Set {
-		e.Comma()
+
+	if s.TopicID.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.TopicID.Set {
 		e.RawStr("\"topic_id\"" + ":")
 		s.TopicID.Encode(e)
 	}
-	if s.TopicID.Set {
-		e.Comma()
+
+	if s.RelationType.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.RelationType.Set {
 		e.RawStr("\"relation_type\"" + ":")
 		s.RelationType.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -111025,21 +121369,28 @@ func (s *TopicSearchResultItemRelatedItemTopicRelation) Decode(d *jx.Decoder) er
 // Encode implements json.Marshaler.
 func (s Traffic) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"timestamp\"" + ":")
 	json.EncodeDateTime(e, s.Timestamp)
+
 	e.Comma()
 
 	e.RawStr("\"uniques\"" + ":")
 	e.Int(s.Uniques)
+
 	e.Comma()
 
 	e.RawStr("\"count\"" + ":")
 	e.Int(s.Count)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -111078,9 +121429,19 @@ func (s *Traffic) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s UserMarketplacePurchase) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"billing_cycle\"" + ":")
 	e.Str(s.BillingCycle)
+
 	e.Comma()
 
 	e.RawStr("\"next_billing_date\"" + ":")
@@ -111095,6 +121456,7 @@ func (s UserMarketplacePurchase) Encode(e *jx.Writer) {
 
 	e.RawStr("\"on_free_trial\"" + ":")
 	e.Bool(s.OnFreeTrial)
+
 	e.Comma()
 
 	e.RawStr("\"free_trial_ends_on\"" + ":")
@@ -111114,10 +121476,6 @@ func (s UserMarketplacePurchase) Encode(e *jx.Writer) {
 
 	e.RawStr("\"plan\"" + ":")
 	s.Plan.Encode(e)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -111174,21 +121532,34 @@ func (s *UserMarketplacePurchase) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s UserSearchResultItem) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"login\"" + ":")
 	e.Str(s.Login)
+
 	e.Comma()
 
 	e.RawStr("\"id\"" + ":")
 	e.Int(s.ID)
+
 	e.Comma()
 
 	e.RawStr("\"node_id\"" + ":")
 	e.Str(s.NodeID)
+
 	e.Comma()
 
 	e.RawStr("\"avatar_url\"" + ":")
 	json.EncodeURI(e, s.AvatarURL)
+
 	e.Comma()
 
 	e.RawStr("\"gravatar_id\"" + ":")
@@ -111198,164 +121569,190 @@ func (s UserSearchResultItem) Encode(e *jx.Writer) {
 
 	e.RawStr("\"url\"" + ":")
 	json.EncodeURI(e, s.URL)
+
 	e.Comma()
 
 	e.RawStr("\"html_url\"" + ":")
 	json.EncodeURI(e, s.HTMLURL)
+
 	e.Comma()
 
 	e.RawStr("\"followers_url\"" + ":")
 	json.EncodeURI(e, s.FollowersURL)
+
 	e.Comma()
 
 	e.RawStr("\"subscriptions_url\"" + ":")
 	json.EncodeURI(e, s.SubscriptionsURL)
+
 	e.Comma()
 
 	e.RawStr("\"organizations_url\"" + ":")
 	json.EncodeURI(e, s.OrganizationsURL)
+
 	e.Comma()
 
 	e.RawStr("\"repos_url\"" + ":")
 	json.EncodeURI(e, s.ReposURL)
+
 	e.Comma()
 
 	e.RawStr("\"received_events_url\"" + ":")
 	json.EncodeURI(e, s.ReceivedEventsURL)
+
 	e.Comma()
 
 	e.RawStr("\"type\"" + ":")
 	e.Str(s.Type)
+
 	e.Comma()
 
 	e.RawStr("\"score\"" + ":")
 	e.Float64(s.Score)
+
 	e.Comma()
 
 	e.RawStr("\"following_url\"" + ":")
 	e.Str(s.FollowingURL)
+
 	e.Comma()
 
 	e.RawStr("\"gists_url\"" + ":")
 	e.Str(s.GistsURL)
+
 	e.Comma()
 
 	e.RawStr("\"starred_url\"" + ":")
 	e.Str(s.StarredURL)
+
 	e.Comma()
 
 	e.RawStr("\"events_url\"" + ":")
 	e.Str(s.EventsURL)
-	e.Comma()
+
+	if s.PublicRepos.Set {
+		e.Comma()
+	}
 	if s.PublicRepos.Set {
 		e.RawStr("\"public_repos\"" + ":")
 		s.PublicRepos.Encode(e)
 	}
-	if s.PublicRepos.Set {
+
+	if s.PublicGists.Set {
 		e.Comma()
 	}
 	if s.PublicGists.Set {
 		e.RawStr("\"public_gists\"" + ":")
 		s.PublicGists.Encode(e)
 	}
-	if s.PublicGists.Set {
+
+	if s.Followers.Set {
 		e.Comma()
 	}
 	if s.Followers.Set {
 		e.RawStr("\"followers\"" + ":")
 		s.Followers.Encode(e)
 	}
-	if s.Followers.Set {
+
+	if s.Following.Set {
 		e.Comma()
 	}
 	if s.Following.Set {
 		e.RawStr("\"following\"" + ":")
 		s.Following.Encode(e)
 	}
-	if s.Following.Set {
+
+	if s.CreatedAt.Set {
 		e.Comma()
 	}
 	if s.CreatedAt.Set {
 		e.RawStr("\"created_at\"" + ":")
 		s.CreatedAt.Encode(e, json.EncodeDateTime)
 	}
-	if s.CreatedAt.Set {
+
+	if s.UpdatedAt.Set {
 		e.Comma()
 	}
 	if s.UpdatedAt.Set {
 		e.RawStr("\"updated_at\"" + ":")
 		s.UpdatedAt.Encode(e, json.EncodeDateTime)
 	}
-	if s.UpdatedAt.Set {
+
+	if s.Name.Set {
 		e.Comma()
 	}
 	if s.Name.Set {
 		e.RawStr("\"name\"" + ":")
 		s.Name.Encode(e)
 	}
-	if s.Name.Set {
+
+	if s.Bio.Set {
 		e.Comma()
 	}
 	if s.Bio.Set {
 		e.RawStr("\"bio\"" + ":")
 		s.Bio.Encode(e)
 	}
-	if s.Bio.Set {
+
+	if s.Email.Set {
 		e.Comma()
 	}
 	if s.Email.Set {
 		e.RawStr("\"email\"" + ":")
 		s.Email.Encode(e)
 	}
-	if s.Email.Set {
+
+	if s.Location.Set {
 		e.Comma()
 	}
 	if s.Location.Set {
 		e.RawStr("\"location\"" + ":")
 		s.Location.Encode(e)
 	}
-	if s.Location.Set {
-		e.Comma()
-	}
+
+	e.Comma()
 
 	e.RawStr("\"site_admin\"" + ":")
 	e.Bool(s.SiteAdmin)
-	e.Comma()
+
+	if s.Hireable.Set {
+		e.Comma()
+	}
 	if s.Hireable.Set {
 		e.RawStr("\"hireable\"" + ":")
 		s.Hireable.Encode(e)
 	}
-	if s.Hireable.Set {
+
+	if s.TextMatches != nil {
 		e.Comma()
 	}
 	if s.TextMatches != nil {
 		e.RawStr("\"text_matches\"" + ":")
 		s.TextMatches.Encode(e)
 	}
-	if s.TextMatches != nil {
+
+	if s.Blog.Set {
 		e.Comma()
 	}
 	if s.Blog.Set {
 		e.RawStr("\"blog\"" + ":")
 		s.Blog.Encode(e)
 	}
-	if s.Blog.Set {
+
+	if s.Company.Set {
 		e.Comma()
 	}
 	if s.Company.Set {
 		e.RawStr("\"company\"" + ":")
 		s.Company.Encode(e)
 	}
-	if s.Company.Set {
+
+	if s.SuspendedAt.Set {
 		e.Comma()
 	}
 	if s.SuspendedAt.Set {
 		e.RawStr("\"suspended_at\"" + ":")
 		s.SuspendedAt.Encode(e, json.EncodeDateTime)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -111758,6 +122155,16 @@ func (s *UsersAddEmailForAuthenticatedReq) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s UsersAddEmailForAuthenticatedReq0) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"emails\"" + ":")
 	e.ArrStart()
@@ -111773,10 +122180,6 @@ func (s UsersAddEmailForAuthenticatedReq0) Encode(e *jx.Writer) {
 		}
 	}
 	e.ArrEnd()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -111883,10 +122286,10 @@ func (s *UsersBlockApplicationJSONUnauthorized) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s UsersBlockNoContent) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -111979,10 +122382,10 @@ func (s *UsersCheckBlockedApplicationJSONUnauthorized) Decode(d *jx.Decoder) err
 // Encode implements json.Marshaler.
 func (s UsersCheckBlockedNoContent) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -112003,10 +122406,10 @@ func (s *UsersCheckBlockedNoContent) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s UsersCheckFollowingForUserNoContent) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -112027,10 +122430,10 @@ func (s *UsersCheckFollowingForUserNoContent) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s UsersCheckFollowingForUserNotFound) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -112123,10 +122526,10 @@ func (s *UsersCheckPersonIsFollowedByAuthenticatedApplicationJSONUnauthorized) D
 // Encode implements json.Marshaler.
 func (s UsersCheckPersonIsFollowedByAuthenticatedNoContent) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -112219,13 +122622,18 @@ func (s *UsersCreateGpgKeyForAuthenticatedApplicationJSONUnauthorized) Decode(d 
 // Encode implements json.Marshaler.
 func (s UsersCreateGpgKeyForAuthenticatedReq) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"armored_public_key\"" + ":")
 	e.Str(s.ArmoredPublicKey)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -112324,20 +122732,29 @@ func (s *UsersCreatePublicSSHKeyForAuthenticatedApplicationJSONUnauthorized) Dec
 // Encode implements json.Marshaler.
 func (s UsersCreatePublicSSHKeyForAuthenticatedReq) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.Title.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.Title.Set {
 		e.RawStr("\"title\"" + ":")
 		s.Title.Encode(e)
 	}
-	if s.Title.Set {
+
+	if !first {
 		e.Comma()
 	}
+	first = false
 
 	e.RawStr("\"key\"" + ":")
 	e.Str(s.Key)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -112441,10 +122858,10 @@ func (s *UsersDeleteEmailForAuthenticatedApplicationJSONUnauthorized) Decode(d *
 // Encode implements json.Marshaler.
 func (s UsersDeleteEmailForAuthenticatedNoContent) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -112529,6 +122946,16 @@ func (s *UsersDeleteEmailForAuthenticatedReq) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s UsersDeleteEmailForAuthenticatedReq0) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"emails\"" + ":")
 	e.ArrStart()
@@ -112544,10 +122971,6 @@ func (s UsersDeleteEmailForAuthenticatedReq0) Encode(e *jx.Writer) {
 		}
 	}
 	e.ArrEnd()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -112654,10 +123077,10 @@ func (s *UsersDeleteGpgKeyForAuthenticatedApplicationJSONUnauthorized) Decode(d 
 // Encode implements json.Marshaler.
 func (s UsersDeleteGpgKeyForAuthenticatedNoContent) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -112750,10 +123173,10 @@ func (s *UsersDeletePublicSSHKeyForAuthenticatedApplicationJSONUnauthorized) Dec
 // Encode implements json.Marshaler.
 func (s UsersDeletePublicSSHKeyForAuthenticatedNoContent) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -112846,10 +123269,10 @@ func (s *UsersFollowApplicationJSONUnauthorized) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s UsersFollowNoContent) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -114369,13 +124792,19 @@ func (s *UsersSetPrimaryEmailVisibilityForAuthenticatedOKApplicationJSON) Decode
 // Encode implements json.Marshaler.
 func (s UsersSetPrimaryEmailVisibilityForAuthenticatedReq) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"visibility\"" + ":")
 	s.Visibility.Encode(e)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -114499,10 +124928,10 @@ func (s *UsersUnblockApplicationJSONUnauthorized) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s UsersUnblockNoContent) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -114595,10 +125024,10 @@ func (s *UsersUnfollowApplicationJSONUnauthorized) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s UsersUnfollowNoContent) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -114691,62 +125120,97 @@ func (s *UsersUpdateAuthenticatedApplicationJSONUnauthorized) Decode(d *jx.Decod
 // Encode implements json.Marshaler.
 func (s UsersUpdateAuthenticatedReq) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.Name.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.Name.Set {
 		e.RawStr("\"name\"" + ":")
 		s.Name.Encode(e)
 	}
-	if s.Name.Set {
-		e.Comma()
+
+	if s.Email.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Email.Set {
 		e.RawStr("\"email\"" + ":")
 		s.Email.Encode(e)
 	}
-	if s.Email.Set {
-		e.Comma()
+
+	if s.Blog.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Blog.Set {
 		e.RawStr("\"blog\"" + ":")
 		s.Blog.Encode(e)
 	}
-	if s.Blog.Set {
-		e.Comma()
+
+	if s.TwitterUsername.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.TwitterUsername.Set {
 		e.RawStr("\"twitter_username\"" + ":")
 		s.TwitterUsername.Encode(e)
 	}
-	if s.TwitterUsername.Set {
-		e.Comma()
+
+	if s.Company.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Company.Set {
 		e.RawStr("\"company\"" + ":")
 		s.Company.Encode(e)
 	}
-	if s.Company.Set {
-		e.Comma()
+
+	if s.Location.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Location.Set {
 		e.RawStr("\"location\"" + ":")
 		s.Location.Encode(e)
 	}
-	if s.Location.Set {
-		e.Comma()
+
+	if s.Hireable.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Hireable.Set {
 		e.RawStr("\"hireable\"" + ":")
 		s.Hireable.Encode(e)
 	}
-	if s.Hireable.Set {
-		e.Comma()
+
+	if s.Bio.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Bio.Set {
 		e.RawStr("\"bio\"" + ":")
 		s.Bio.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -114808,14 +125272,27 @@ func (s *UsersUpdateAuthenticatedReq) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s ValidationError) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"message\"" + ":")
 	e.Str(s.Message)
+
 	e.Comma()
 
 	e.RawStr("\"documentation_url\"" + ":")
 	e.Str(s.DocumentationURL)
-	e.Comma()
+
+	if s.Errors != nil {
+		e.Comma()
+	}
 	if s.Errors != nil {
 		e.RawStr("\"errors\"" + ":")
 		e.ArrStart()
@@ -114831,10 +125308,6 @@ func (s ValidationError) Encode(e *jx.Writer) {
 			}
 		}
 		e.ArrEnd()
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -114880,45 +125353,66 @@ func (s *ValidationError) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s ValidationErrorErrorsItem) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.Resource.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.Resource.Set {
 		e.RawStr("\"resource\"" + ":")
 		s.Resource.Encode(e)
 	}
-	if s.Resource.Set {
-		e.Comma()
+
+	if s.Field.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Field.Set {
 		e.RawStr("\"field\"" + ":")
 		s.Field.Encode(e)
 	}
-	if s.Field.Set {
-		e.Comma()
+
+	if s.Message.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Message.Set {
 		e.RawStr("\"message\"" + ":")
 		s.Message.Encode(e)
 	}
-	if s.Message.Set {
+
+	if !first {
 		e.Comma()
 	}
+	first = false
 
 	e.RawStr("\"code\"" + ":")
 	e.Str(s.Code)
-	e.Comma()
+
+	if s.Index.Set {
+		e.Comma()
+	}
 	if s.Index.Set {
 		e.RawStr("\"index\"" + ":")
 		s.Index.Encode(e)
 	}
-	if s.Index.Set {
+
+	if s.Value.Set {
 		e.Comma()
 	}
 	if s.Value.Set {
 		e.RawStr("\"value\"" + ":")
 		s.Value.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -115037,14 +125531,27 @@ func (s *ValidationErrorErrorsItemValue) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s ValidationErrorSimple) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"message\"" + ":")
 	e.Str(s.Message)
+
 	e.Comma()
 
 	e.RawStr("\"documentation_url\"" + ":")
 	e.Str(s.DocumentationURL)
-	e.Comma()
+
+	if s.Errors != nil {
+		e.Comma()
+	}
 	if s.Errors != nil {
 		e.RawStr("\"errors\"" + ":")
 		e.ArrStart()
@@ -115060,10 +125567,6 @@ func (s ValidationErrorSimple) Encode(e *jx.Writer) {
 			}
 		}
 		e.ArrEnd()
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -115111,13 +125614,24 @@ func (s *ValidationErrorSimple) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s Verification) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"verified\"" + ":")
 	e.Bool(s.Verified)
+
 	e.Comma()
 
 	e.RawStr("\"reason\"" + ":")
 	e.Str(s.Reason)
+
 	e.Comma()
 
 	e.RawStr("\"payload\"" + ":")
@@ -115127,10 +125641,6 @@ func (s Verification) Encode(e *jx.Writer) {
 
 	e.RawStr("\"signature\"" + ":")
 	s.Signature.Encode(e)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -115171,13 +125681,24 @@ func (s *Verification) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s ViewTraffic) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"count\"" + ":")
 	e.Int(s.Count)
+
 	e.Comma()
 
 	e.RawStr("\"uniques\"" + ":")
 	e.Int(s.Uniques)
+
 	e.Comma()
 
 	e.RawStr("\"views\"" + ":")
@@ -115194,10 +125715,6 @@ func (s ViewTraffic) Encode(e *jx.Writer) {
 		}
 	}
 	e.ArrEnd()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -115268,34 +125785,53 @@ func (s *WaitTimer) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s WebhookConfig) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.URL.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.URL.Set {
 		e.RawStr("\"url\"" + ":")
 		s.URL.Encode(e)
 	}
-	if s.URL.Set {
-		e.Comma()
+
+	if s.ContentType.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.ContentType.Set {
 		e.RawStr("\"content_type\"" + ":")
 		s.ContentType.Encode(e)
 	}
-	if s.ContentType.Set {
-		e.Comma()
+
+	if s.Secret.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Secret.Set {
 		e.RawStr("\"secret\"" + ":")
 		s.Secret.Encode(e)
 	}
-	if s.Secret.Set {
-		e.Comma()
+
+	if s.InsecureSsl.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.InsecureSsl.Set {
 		e.RawStr("\"insecure_ssl\"" + ":")
 		s.InsecureSsl.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -115452,21 +125988,34 @@ func (s *WebhookConfigURL) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s Workflow) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"id\"" + ":")
 	e.Int(s.ID)
+
 	e.Comma()
 
 	e.RawStr("\"node_id\"" + ":")
 	e.Str(s.NodeID)
+
 	e.Comma()
 
 	e.RawStr("\"name\"" + ":")
 	e.Str(s.Name)
+
 	e.Comma()
 
 	e.RawStr("\"path\"" + ":")
 	e.Str(s.Path)
+
 	e.Comma()
 
 	e.RawStr("\"state\"" + ":")
@@ -115476,30 +126025,33 @@ func (s Workflow) Encode(e *jx.Writer) {
 
 	e.RawStr("\"created_at\"" + ":")
 	json.EncodeDateTime(e, s.CreatedAt)
+
 	e.Comma()
 
 	e.RawStr("\"updated_at\"" + ":")
 	json.EncodeDateTime(e, s.UpdatedAt)
+
 	e.Comma()
 
 	e.RawStr("\"url\"" + ":")
 	e.Str(s.URL)
+
 	e.Comma()
 
 	e.RawStr("\"html_url\"" + ":")
 	e.Str(s.HTMLURL)
+
 	e.Comma()
 
 	e.RawStr("\"badge_url\"" + ":")
 	e.Str(s.BadgeURL)
-	e.Comma()
+
+	if s.DeletedAt.Set {
+		e.Comma()
+	}
 	if s.DeletedAt.Set {
 		e.RawStr("\"deleted_at\"" + ":")
 		s.DeletedAt.Encode(e, json.EncodeDateTime)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -115584,35 +126136,49 @@ func (s *Workflow) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s WorkflowRun) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"id\"" + ":")
 	e.Int(s.ID)
-	e.Comma()
+
+	if s.Name.Set {
+		e.Comma()
+	}
 	if s.Name.Set {
 		e.RawStr("\"name\"" + ":")
 		s.Name.Encode(e)
 	}
-	if s.Name.Set {
-		e.Comma()
-	}
+
+	e.Comma()
 
 	e.RawStr("\"node_id\"" + ":")
 	e.Str(s.NodeID)
-	e.Comma()
+
+	if s.CheckSuiteID.Set {
+		e.Comma()
+	}
 	if s.CheckSuiteID.Set {
 		e.RawStr("\"check_suite_id\"" + ":")
 		s.CheckSuiteID.Encode(e)
 	}
-	if s.CheckSuiteID.Set {
+
+	if s.CheckSuiteNodeID.Set {
 		e.Comma()
 	}
 	if s.CheckSuiteNodeID.Set {
 		e.RawStr("\"check_suite_node_id\"" + ":")
 		s.CheckSuiteNodeID.Encode(e)
 	}
-	if s.CheckSuiteNodeID.Set {
-		e.Comma()
-	}
+
+	e.Comma()
 
 	e.RawStr("\"head_branch\"" + ":")
 	s.HeadBranch.Encode(e)
@@ -115621,21 +126187,25 @@ func (s WorkflowRun) Encode(e *jx.Writer) {
 
 	e.RawStr("\"head_sha\"" + ":")
 	e.Str(s.HeadSha)
+
 	e.Comma()
 
 	e.RawStr("\"run_number\"" + ":")
 	e.Int(s.RunNumber)
-	e.Comma()
+
+	if s.RunAttempt.Set {
+		e.Comma()
+	}
 	if s.RunAttempt.Set {
 		e.RawStr("\"run_attempt\"" + ":")
 		s.RunAttempt.Encode(e)
 	}
-	if s.RunAttempt.Set {
-		e.Comma()
-	}
+
+	e.Comma()
 
 	e.RawStr("\"event\"" + ":")
 	e.Str(s.Event)
+
 	e.Comma()
 
 	e.RawStr("\"status\"" + ":")
@@ -115650,14 +126220,17 @@ func (s WorkflowRun) Encode(e *jx.Writer) {
 
 	e.RawStr("\"workflow_id\"" + ":")
 	e.Int(s.WorkflowID)
+
 	e.Comma()
 
 	e.RawStr("\"url\"" + ":")
 	e.Str(s.URL)
+
 	e.Comma()
 
 	e.RawStr("\"html_url\"" + ":")
 	e.Str(s.HTMLURL)
+
 	e.Comma()
 
 	e.RawStr("\"pull_requests\"" + ":")
@@ -115683,45 +126256,55 @@ func (s WorkflowRun) Encode(e *jx.Writer) {
 
 	e.RawStr("\"created_at\"" + ":")
 	json.EncodeDateTime(e, s.CreatedAt)
+
 	e.Comma()
 
 	e.RawStr("\"updated_at\"" + ":")
 	json.EncodeDateTime(e, s.UpdatedAt)
+
 	e.Comma()
 
 	e.RawStr("\"jobs_url\"" + ":")
 	e.Str(s.JobsURL)
+
 	e.Comma()
 
 	e.RawStr("\"logs_url\"" + ":")
 	e.Str(s.LogsURL)
+
 	e.Comma()
 
 	e.RawStr("\"check_suite_url\"" + ":")
 	e.Str(s.CheckSuiteURL)
+
 	e.Comma()
 
 	e.RawStr("\"artifacts_url\"" + ":")
 	e.Str(s.ArtifactsURL)
+
 	e.Comma()
 
 	e.RawStr("\"cancel_url\"" + ":")
 	e.Str(s.CancelURL)
+
 	e.Comma()
 
 	e.RawStr("\"rerun_url\"" + ":")
 	e.Str(s.RerunURL)
-	e.Comma()
+
+	if s.PreviousAttemptURL.Set {
+		e.Comma()
+	}
 	if s.PreviousAttemptURL.Set {
 		e.RawStr("\"previous_attempt_url\"" + ":")
 		s.PreviousAttemptURL.Encode(e)
 	}
-	if s.PreviousAttemptURL.Set {
-		e.Comma()
-	}
+
+	e.Comma()
 
 	e.RawStr("\"workflow_url\"" + ":")
 	e.Str(s.WorkflowURL)
+
 	e.Comma()
 
 	e.RawStr("\"head_commit\"" + ":")
@@ -115737,14 +126320,12 @@ func (s WorkflowRun) Encode(e *jx.Writer) {
 	e.RawStr("\"head_repository\"" + ":")
 	s.HeadRepository.Encode(e)
 
-	e.Comma()
+	if s.HeadRepositoryID.Set {
+		e.Comma()
+	}
 	if s.HeadRepositoryID.Set {
 		e.RawStr("\"head_repository_id\"" + ":")
 		s.HeadRepositoryID.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -115934,18 +126515,26 @@ func (s *WorkflowRun) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s WorkflowRunUsage) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"billable\"" + ":")
 	s.Billable.Encode(e)
 
-	e.Comma()
+	if s.RunDurationMs.Set {
+		e.Comma()
+	}
 	if s.RunDurationMs.Set {
 		e.RawStr("\"run_duration_ms\"" + ":")
 		s.RunDurationMs.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -115976,27 +126565,42 @@ func (s *WorkflowRunUsage) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s WorkflowRunUsageBillable) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.UBUNTU.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.UBUNTU.Set {
 		e.RawStr("\"UBUNTU\"" + ":")
 		s.UBUNTU.Encode(e)
 	}
-	if s.UBUNTU.Set {
-		e.Comma()
+
+	if s.MACOS.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.MACOS.Set {
 		e.RawStr("\"MACOS\"" + ":")
 		s.MACOS.Encode(e)
 	}
-	if s.MACOS.Set {
-		e.Comma()
+
+	if s.WINDOWS.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.WINDOWS.Set {
 		e.RawStr("\"WINDOWS\"" + ":")
 		s.WINDOWS.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -116033,17 +126637,23 @@ func (s *WorkflowRunUsageBillable) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s WorkflowRunUsageBillableMACOS) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"total_ms\"" + ":")
 	e.Int(s.TotalMs)
+
 	e.Comma()
 
 	e.RawStr("\"jobs\"" + ":")
 	e.Int(s.Jobs)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -116076,17 +126686,23 @@ func (s *WorkflowRunUsageBillableMACOS) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s WorkflowRunUsageBillableUBUNTU) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"total_ms\"" + ":")
 	e.Int(s.TotalMs)
+
 	e.Comma()
 
 	e.RawStr("\"jobs\"" + ":")
 	e.Int(s.Jobs)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -116119,17 +126735,23 @@ func (s *WorkflowRunUsageBillableUBUNTU) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s WorkflowRunUsageBillableWINDOWS) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"total_ms\"" + ":")
 	e.Int(s.TotalMs)
+
 	e.Comma()
 
 	e.RawStr("\"jobs\"" + ":")
 	e.Int(s.Jobs)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 

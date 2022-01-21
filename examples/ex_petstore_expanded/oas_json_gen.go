@@ -65,10 +65,10 @@ var (
 // Encode implements json.Marshaler.
 func (s DeletePetNoContent) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -89,17 +89,23 @@ func (s *DeletePetNoContent) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s Error) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"code\"" + ":")
 	e.Int32(s.Code)
+
 	e.Comma()
 
 	e.RawStr("\"message\"" + ":")
 	e.Str(s.Message)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -132,10 +138,10 @@ func (s *Error) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s ErrorStatusCode) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -156,17 +162,25 @@ func (s *ErrorStatusCode) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s NewPet) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"name\"" + ":")
 	e.Str(s.Name)
-	e.Comma()
+
+	if s.Tag.Set {
+		e.Comma()
+	}
 	if s.Tag.Set {
 		e.RawStr("\"tag\"" + ":")
 		s.Tag.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }

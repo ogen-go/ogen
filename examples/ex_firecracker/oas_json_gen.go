@@ -65,21 +65,30 @@ var (
 // Encode implements json.Marshaler.
 func (s Balloon) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"amount_mib\"" + ":")
 	e.Int(s.AmountMib)
+
 	e.Comma()
 
 	e.RawStr("\"deflate_on_oom\"" + ":")
 	e.Bool(s.DeflateOnOom)
-	e.Comma()
+
+	if s.StatsPollingIntervalS.Set {
+		e.Comma()
+	}
 	if s.StatsPollingIntervalS.Set {
 		e.RawStr("\"stats_polling_interval_s\"" + ":")
 		s.StatsPollingIntervalS.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -118,92 +127,112 @@ func (s *Balloon) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s BalloonStats) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"target_pages\"" + ":")
 	e.Int(s.TargetPages)
+
 	e.Comma()
 
 	e.RawStr("\"actual_pages\"" + ":")
 	e.Int(s.ActualPages)
+
 	e.Comma()
 
 	e.RawStr("\"target_mib\"" + ":")
 	e.Int(s.TargetMib)
+
 	e.Comma()
 
 	e.RawStr("\"actual_mib\"" + ":")
 	e.Int(s.ActualMib)
-	e.Comma()
+
+	if s.SwapIn.Set {
+		e.Comma()
+	}
 	if s.SwapIn.Set {
 		e.RawStr("\"swap_in\"" + ":")
 		s.SwapIn.Encode(e)
 	}
-	if s.SwapIn.Set {
+
+	if s.SwapOut.Set {
 		e.Comma()
 	}
 	if s.SwapOut.Set {
 		e.RawStr("\"swap_out\"" + ":")
 		s.SwapOut.Encode(e)
 	}
-	if s.SwapOut.Set {
+
+	if s.MajorFaults.Set {
 		e.Comma()
 	}
 	if s.MajorFaults.Set {
 		e.RawStr("\"major_faults\"" + ":")
 		s.MajorFaults.Encode(e)
 	}
-	if s.MajorFaults.Set {
+
+	if s.MinorFaults.Set {
 		e.Comma()
 	}
 	if s.MinorFaults.Set {
 		e.RawStr("\"minor_faults\"" + ":")
 		s.MinorFaults.Encode(e)
 	}
-	if s.MinorFaults.Set {
+
+	if s.FreeMemory.Set {
 		e.Comma()
 	}
 	if s.FreeMemory.Set {
 		e.RawStr("\"free_memory\"" + ":")
 		s.FreeMemory.Encode(e)
 	}
-	if s.FreeMemory.Set {
+
+	if s.TotalMemory.Set {
 		e.Comma()
 	}
 	if s.TotalMemory.Set {
 		e.RawStr("\"total_memory\"" + ":")
 		s.TotalMemory.Encode(e)
 	}
-	if s.TotalMemory.Set {
+
+	if s.AvailableMemory.Set {
 		e.Comma()
 	}
 	if s.AvailableMemory.Set {
 		e.RawStr("\"available_memory\"" + ":")
 		s.AvailableMemory.Encode(e)
 	}
-	if s.AvailableMemory.Set {
+
+	if s.DiskCaches.Set {
 		e.Comma()
 	}
 	if s.DiskCaches.Set {
 		e.RawStr("\"disk_caches\"" + ":")
 		s.DiskCaches.Encode(e)
 	}
-	if s.DiskCaches.Set {
+
+	if s.HugetlbAllocations.Set {
 		e.Comma()
 	}
 	if s.HugetlbAllocations.Set {
 		e.RawStr("\"hugetlb_allocations\"" + ":")
 		s.HugetlbAllocations.Encode(e)
 	}
-	if s.HugetlbAllocations.Set {
+
+	if s.HugetlbFailures.Set {
 		e.Comma()
 	}
 	if s.HugetlbFailures.Set {
 		e.RawStr("\"hugetlb_failures\"" + ":")
 		s.HugetlbFailures.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -299,13 +328,18 @@ func (s *BalloonStats) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s BalloonStatsUpdate) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"stats_polling_interval_s\"" + ":")
 	e.Int(s.StatsPollingIntervalS)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -332,13 +366,18 @@ func (s *BalloonStatsUpdate) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s BalloonUpdate) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"amount_mib\"" + ":")
 	e.Int(s.AmountMib)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -365,27 +404,40 @@ func (s *BalloonUpdate) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s BootSource) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.BootArgs.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.BootArgs.Set {
 		e.RawStr("\"boot_args\"" + ":")
 		s.BootArgs.Encode(e)
 	}
-	if s.BootArgs.Set {
-		e.Comma()
+
+	if s.InitrdPath.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.InitrdPath.Set {
 		e.RawStr("\"initrd_path\"" + ":")
 		s.InitrdPath.Encode(e)
 	}
-	if s.InitrdPath.Set {
+
+	if !first {
 		e.Comma()
 	}
+	first = false
 
 	e.RawStr("\"kernel_image_path\"" + ":")
 	e.Str(s.KernelImagePath)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -449,10 +501,10 @@ func (s *CpuTemplate) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s CreateSnapshotNoContent) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -473,10 +525,10 @@ func (s *CreateSnapshotNoContent) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s CreateSyncActionNoContent) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -497,43 +549,56 @@ func (s *CreateSyncActionNoContent) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s Drive) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"drive_id\"" + ":")
 	e.Str(s.DriveID)
-	e.Comma()
+
+	if s.CacheType.Set {
+		e.Comma()
+	}
 	if s.CacheType.Set {
 		e.RawStr("\"cache_type\"" + ":")
 		s.CacheType.Encode(e)
 	}
-	if s.CacheType.Set {
-		e.Comma()
-	}
+
+	e.Comma()
 
 	e.RawStr("\"is_read_only\"" + ":")
 	e.Bool(s.IsReadOnly)
+
 	e.Comma()
 
 	e.RawStr("\"is_root_device\"" + ":")
 	e.Bool(s.IsRootDevice)
-	e.Comma()
+
+	if s.Partuuid.Set {
+		e.Comma()
+	}
 	if s.Partuuid.Set {
 		e.RawStr("\"partuuid\"" + ":")
 		s.Partuuid.Encode(e)
 	}
-	if s.Partuuid.Set {
-		e.Comma()
-	}
+
+	e.Comma()
 
 	e.RawStr("\"path_on_host\"" + ":")
 	e.Str(s.PathOnHost)
-	e.Comma()
+
+	if s.RateLimiter.Set {
+		e.Comma()
+	}
 	if s.RateLimiter.Set {
 		e.RawStr("\"rate_limiter\"" + ":")
 		s.RateLimiter.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -594,13 +659,20 @@ func (s *Drive) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s Error) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.FaultMessage.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.FaultMessage.Set {
 		e.RawStr("\"fault_message\"" + ":")
 		s.FaultMessage.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -627,10 +699,10 @@ func (s *Error) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s ErrorStatusCode) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -651,12 +723,27 @@ func (s *ErrorStatusCode) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s FullVmConfiguration) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.BalloonDevice.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.BalloonDevice.Set {
 		e.RawStr("\"balloon_device\"" + ":")
 		s.BalloonDevice.Encode(e)
 	}
-	if s.BalloonDevice.Set {
-		e.Comma()
+
+	if s.BlockDevices != nil {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.BlockDevices != nil {
 		e.RawStr("\"block_devices\"" + ":")
@@ -674,43 +761,67 @@ func (s FullVmConfiguration) Encode(e *jx.Writer) {
 		}
 		e.ArrEnd()
 	}
-	if s.BlockDevices != nil {
-		e.Comma()
+
+	if s.BootSource.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.BootSource.Set {
 		e.RawStr("\"boot_source\"" + ":")
 		s.BootSource.Encode(e)
 	}
-	if s.BootSource.Set {
-		e.Comma()
+
+	if s.Logger.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Logger.Set {
 		e.RawStr("\"logger\"" + ":")
 		s.Logger.Encode(e)
 	}
-	if s.Logger.Set {
-		e.Comma()
+
+	if s.MachineConfig.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.MachineConfig.Set {
 		e.RawStr("\"machine_config\"" + ":")
 		s.MachineConfig.Encode(e)
 	}
-	if s.MachineConfig.Set {
-		e.Comma()
+
+	if s.Metrics.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Metrics.Set {
 		e.RawStr("\"metrics\"" + ":")
 		s.Metrics.Encode(e)
 	}
-	if s.Metrics.Set {
-		e.Comma()
+
+	if s.MmdsConfig.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.MmdsConfig.Set {
 		e.RawStr("\"mmds_config\"" + ":")
 		s.MmdsConfig.Encode(e)
 	}
-	if s.MmdsConfig.Set {
-		e.Comma()
+
+	if s.NetDevices != nil {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.NetDevices != nil {
 		e.RawStr("\"net_devices\"" + ":")
@@ -728,16 +839,16 @@ func (s FullVmConfiguration) Encode(e *jx.Writer) {
 		}
 		e.ArrEnd()
 	}
-	if s.NetDevices != nil {
-		e.Comma()
+
+	if s.VsockDevice.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.VsockDevice.Set {
 		e.RawStr("\"vsock_device\"" + ":")
 		s.VsockDevice.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -818,13 +929,19 @@ func (s *FullVmConfiguration) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s InstanceActionInfo) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"action_type\"" + ":")
 	s.ActionType.Encode(e)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -878,13 +995,24 @@ func (s *InstanceActionInfoActionType) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s InstanceInfo) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"app_name\"" + ":")
 	e.Str(s.AppName)
+
 	e.Comma()
 
 	e.RawStr("\"id\"" + ":")
 	e.Str(s.ID)
+
 	e.Comma()
 
 	e.RawStr("\"state\"" + ":")
@@ -894,10 +1022,6 @@ func (s InstanceInfo) Encode(e *jx.Writer) {
 
 	e.RawStr("\"vmm_version\"" + ":")
 	e.Str(s.VmmVersion)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -969,10 +1093,10 @@ func (s *InstanceInfoState) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s LoadSnapshotNoContent) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -993,31 +1117,44 @@ func (s *LoadSnapshotNoContent) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s Logger) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.Level.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.Level.Set {
 		e.RawStr("\"level\"" + ":")
 		s.Level.Encode(e)
 	}
-	if s.Level.Set {
+
+	if !first {
 		e.Comma()
 	}
+	first = false
 
 	e.RawStr("\"log_path\"" + ":")
 	e.Str(s.LogPath)
-	e.Comma()
+
+	if s.ShowLevel.Set {
+		e.Comma()
+	}
 	if s.ShowLevel.Set {
 		e.RawStr("\"show_level\"" + ":")
 		s.ShowLevel.Encode(e)
 	}
-	if s.ShowLevel.Set {
+
+	if s.ShowLogOrigin.Set {
 		e.Comma()
 	}
 	if s.ShowLogOrigin.Set {
 		e.RawStr("\"show_log_origin\"" + ":")
 		s.ShowLogOrigin.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -1091,35 +1228,47 @@ func (s *LoggerLevel) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s MachineConfiguration) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.CPUTemplate.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.CPUTemplate.Set {
 		e.RawStr("\"cpu_template\"" + ":")
 		s.CPUTemplate.Encode(e)
 	}
-	if s.CPUTemplate.Set {
+
+	if !first {
 		e.Comma()
 	}
+	first = false
 
 	e.RawStr("\"ht_enabled\"" + ":")
 	e.Bool(s.HtEnabled)
+
 	e.Comma()
 
 	e.RawStr("\"mem_size_mib\"" + ":")
 	e.Int(s.MemSizeMib)
-	e.Comma()
+
+	if s.TrackDirtyPages.Set {
+		e.Comma()
+	}
 	if s.TrackDirtyPages.Set {
 		e.RawStr("\"track_dirty_pages\"" + ":")
 		s.TrackDirtyPages.Encode(e)
 	}
-	if s.TrackDirtyPages.Set {
-		e.Comma()
-	}
+
+	e.Comma()
 
 	e.RawStr("\"vcpu_count\"" + ":")
 	e.Int(s.VcpuCount)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -1168,13 +1317,18 @@ func (s *MachineConfiguration) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s Metrics) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"metrics_path\"" + ":")
 	e.Str(s.MetricsPath)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -1201,13 +1355,20 @@ func (s *Metrics) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s MmdsConfig) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.Ipv4Address.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.Ipv4Address.Set {
 		e.RawStr("\"ipv4_address\"" + ":")
 		s.Ipv4Address.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -1234,10 +1395,10 @@ func (s *MmdsConfig) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s MmdsConfigPutNoContent) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -1258,10 +1419,10 @@ func (s *MmdsConfigPutNoContent) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s MmdsGetOK) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -1282,10 +1443,10 @@ func (s *MmdsGetOK) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s MmdsPatchNoContent) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -1306,10 +1467,10 @@ func (s *MmdsPatchNoContent) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s MmdsPatchReq) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -1330,10 +1491,10 @@ func (s *MmdsPatchReq) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s MmdsPutNoContent) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -1354,10 +1515,10 @@ func (s *MmdsPutNoContent) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s MmdsPutReq) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -1378,42 +1539,60 @@ func (s *MmdsPutReq) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s NetworkInterface) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.AllowMmdsRequests.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.AllowMmdsRequests.Set {
 		e.RawStr("\"allow_mmds_requests\"" + ":")
 		s.AllowMmdsRequests.Encode(e)
 	}
-	if s.AllowMmdsRequests.Set {
-		e.Comma()
+
+	if s.GuestMAC.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.GuestMAC.Set {
 		e.RawStr("\"guest_mac\"" + ":")
 		s.GuestMAC.Encode(e)
 	}
-	if s.GuestMAC.Set {
+
+	if !first {
 		e.Comma()
 	}
+	first = false
 
 	e.RawStr("\"host_dev_name\"" + ":")
 	e.Str(s.HostDevName)
+
 	e.Comma()
 
 	e.RawStr("\"iface_id\"" + ":")
 	e.Str(s.IfaceID)
-	e.Comma()
+
+	if s.RxRateLimiter.Set {
+		e.Comma()
+	}
 	if s.RxRateLimiter.Set {
 		e.RawStr("\"rx_rate_limiter\"" + ":")
 		s.RxRateLimiter.Encode(e)
 	}
-	if s.RxRateLimiter.Set {
+
+	if s.TxRateLimiter.Set {
 		e.Comma()
 	}
 	if s.TxRateLimiter.Set {
 		e.RawStr("\"tx_rate_limiter\"" + ":")
 		s.TxRateLimiter.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -1871,24 +2050,33 @@ func (o *OptVsock) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s PartialDrive) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"drive_id\"" + ":")
 	e.Str(s.DriveID)
-	e.Comma()
+
+	if s.PathOnHost.Set {
+		e.Comma()
+	}
 	if s.PathOnHost.Set {
 		e.RawStr("\"path_on_host\"" + ":")
 		s.PathOnHost.Encode(e)
 	}
-	if s.PathOnHost.Set {
+
+	if s.RateLimiter.Set {
 		e.Comma()
 	}
 	if s.RateLimiter.Set {
 		e.RawStr("\"rate_limiter\"" + ":")
 		s.RateLimiter.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -1926,24 +2114,33 @@ func (s *PartialDrive) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s PartialNetworkInterface) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"iface_id\"" + ":")
 	e.Str(s.IfaceID)
-	e.Comma()
+
+	if s.RxRateLimiter.Set {
+		e.Comma()
+	}
 	if s.RxRateLimiter.Set {
 		e.RawStr("\"rx_rate_limiter\"" + ":")
 		s.RxRateLimiter.Encode(e)
 	}
-	if s.RxRateLimiter.Set {
+
+	if s.TxRateLimiter.Set {
 		e.Comma()
 	}
 	if s.TxRateLimiter.Set {
 		e.RawStr("\"tx_rate_limiter\"" + ":")
 		s.TxRateLimiter.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -1981,10 +2178,10 @@ func (s *PartialNetworkInterface) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s PatchBalloonNoContent) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -2005,10 +2202,10 @@ func (s *PatchBalloonNoContent) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s PatchBalloonStatsIntervalNoContent) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -2029,10 +2226,10 @@ func (s *PatchBalloonStatsIntervalNoContent) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s PatchGuestDriveByIDNoContent) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -2053,10 +2250,10 @@ func (s *PatchGuestDriveByIDNoContent) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s PatchGuestNetworkInterfaceByIDNoContent) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -2077,10 +2274,10 @@ func (s *PatchGuestNetworkInterfaceByIDNoContent) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s PatchMachineConfigurationNoContent) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -2101,10 +2298,10 @@ func (s *PatchMachineConfigurationNoContent) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s PatchVmNoContent) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -2125,10 +2322,10 @@ func (s *PatchVmNoContent) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s PutBalloonNoContent) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -2149,10 +2346,10 @@ func (s *PutBalloonNoContent) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s PutGuestBootSourceNoContent) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -2173,10 +2370,10 @@ func (s *PutGuestBootSourceNoContent) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s PutGuestDriveByIDNoContent) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -2197,10 +2394,10 @@ func (s *PutGuestDriveByIDNoContent) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s PutGuestNetworkInterfaceByIDNoContent) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -2221,10 +2418,10 @@ func (s *PutGuestNetworkInterfaceByIDNoContent) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s PutGuestVsockNoContent) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -2245,10 +2442,10 @@ func (s *PutGuestVsockNoContent) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s PutLoggerNoContent) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -2269,10 +2466,10 @@ func (s *PutLoggerNoContent) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s PutMachineConfigurationNoContent) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -2293,10 +2490,10 @@ func (s *PutMachineConfigurationNoContent) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s PutMetricsNoContent) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -2317,20 +2514,31 @@ func (s *PutMetricsNoContent) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s RateLimiter) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.Bandwidth.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.Bandwidth.Set {
 		e.RawStr("\"bandwidth\"" + ":")
 		s.Bandwidth.Encode(e)
 	}
-	if s.Bandwidth.Set {
-		e.Comma()
+
+	if s.Ops.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Ops.Set {
 		e.RawStr("\"ops\"" + ":")
 		s.Ops.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -2362,28 +2570,38 @@ func (s *RateLimiter) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s SnapshotCreateParams) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"mem_file_path\"" + ":")
 	e.Str(s.MemFilePath)
+
 	e.Comma()
 
 	e.RawStr("\"snapshot_path\"" + ":")
 	e.Str(s.SnapshotPath)
-	e.Comma()
+
+	if s.SnapshotType.Set {
+		e.Comma()
+	}
 	if s.SnapshotType.Set {
 		e.RawStr("\"snapshot_type\"" + ":")
 		s.SnapshotType.Encode(e)
 	}
-	if s.SnapshotType.Set {
+
+	if s.Version.Set {
 		e.Comma()
 	}
 	if s.Version.Set {
 		e.RawStr("\"version\"" + ":")
 		s.Version.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -2454,28 +2672,41 @@ func (s *SnapshotCreateParamsSnapshotType) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s SnapshotLoadParams) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.EnableDiffSnapshots.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.EnableDiffSnapshots.Set {
 		e.RawStr("\"enable_diff_snapshots\"" + ":")
 		s.EnableDiffSnapshots.Encode(e)
 	}
-	if s.EnableDiffSnapshots.Set {
+
+	if !first {
 		e.Comma()
 	}
+	first = false
 
 	e.RawStr("\"mem_file_path\"" + ":")
 	e.Str(s.MemFilePath)
+
 	e.Comma()
 
 	e.RawStr("\"snapshot_path\"" + ":")
 	e.Str(s.SnapshotPath)
-	e.Comma()
+
+	if s.ResumeVM.Set {
+		e.Comma()
+	}
 	if s.ResumeVM.Set {
 		e.RawStr("\"resume_vm\"" + ":")
 		s.ResumeVM.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -2519,24 +2750,34 @@ func (s *SnapshotLoadParams) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s TokenBucket) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.OneTimeBurst.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.OneTimeBurst.Set {
 		e.RawStr("\"one_time_burst\"" + ":")
 		s.OneTimeBurst.Encode(e)
 	}
-	if s.OneTimeBurst.Set {
+
+	if !first {
 		e.Comma()
 	}
+	first = false
 
 	e.RawStr("\"refill_time\"" + ":")
 	e.Int64(s.RefillTime)
+
 	e.Comma()
 
 	e.RawStr("\"size\"" + ":")
 	e.Int64(s.Size)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -2574,13 +2815,19 @@ func (s *TokenBucket) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s VM) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"state\"" + ":")
 	s.State.Encode(e)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -2632,21 +2879,28 @@ func (s *VMState) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s Vsock) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"guest_cid\"" + ":")
 	e.Int(s.GuestCid)
+
 	e.Comma()
 
 	e.RawStr("\"uds_path\"" + ":")
 	e.Str(s.UdsPath)
+
 	e.Comma()
 
 	e.RawStr("\"vsock_id\"" + ":")
 	e.Str(s.VsockID)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 

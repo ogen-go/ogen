@@ -65,33 +65,60 @@ var (
 // Encode implements json.Marshaler.
 func (s Book) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.ID.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.ID.Set {
 		e.RawStr("\"id\"" + ":")
 		s.ID.Encode(e)
 	}
-	if s.ID.Set {
-		e.Comma()
+
+	if s.MediaID.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.MediaID.Set {
 		e.RawStr("\"media_id\"" + ":")
 		s.MediaID.Encode(e)
 	}
-	if s.MediaID.Set {
-		e.Comma()
+
+	if s.Images.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Images.Set {
 		e.RawStr("\"images\"" + ":")
 		s.Images.Encode(e)
 	}
-	if s.Images.Set {
-		e.Comma()
+
+	if s.Title.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Title.Set {
 		e.RawStr("\"title\"" + ":")
 		s.Title.Encode(e)
 	}
-	if s.Title.Set {
-		e.Comma()
+
+	if s.Tags != nil {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Tags != nil {
 		e.RawStr("\"tags\"" + ":")
@@ -109,37 +136,49 @@ func (s Book) Encode(e *jx.Writer) {
 		}
 		e.ArrEnd()
 	}
-	if s.Tags != nil {
-		e.Comma()
+
+	if s.Scanlator.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Scanlator.Set {
 		e.RawStr("\"scanlator\"" + ":")
 		s.Scanlator.Encode(e)
 	}
-	if s.Scanlator.Set {
-		e.Comma()
+
+	if s.UploadDate.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.UploadDate.Set {
 		e.RawStr("\"upload_date\"" + ":")
 		s.UploadDate.Encode(e)
 	}
-	if s.UploadDate.Set {
-		e.Comma()
+
+	if s.NumPages.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.NumPages.Set {
 		e.RawStr("\"num_pages\"" + ":")
 		s.NumPages.Encode(e)
 	}
-	if s.NumPages.Set {
-		e.Comma()
+
+	if s.NumFavorites.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.NumFavorites.Set {
 		e.RawStr("\"num_favorites\"" + ":")
 		s.NumFavorites.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -213,10 +252,10 @@ func (s *Book) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s GetBookForbidden) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -237,10 +276,10 @@ func (s *GetBookForbidden) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s GetPageCoverImageForbidden) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -261,10 +300,10 @@ func (s *GetPageCoverImageForbidden) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s GetPageImageForbidden) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -285,10 +324,10 @@ func (s *GetPageImageForbidden) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s GetPageThumbnailImageForbidden) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -309,27 +348,42 @@ func (s *GetPageThumbnailImageForbidden) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s Image) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.T.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.T.Set {
 		e.RawStr("\"t\"" + ":")
 		s.T.Encode(e)
 	}
-	if s.T.Set {
-		e.Comma()
+
+	if s.W.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.W.Set {
 		e.RawStr("\"w\"" + ":")
 		s.W.Encode(e)
 	}
-	if s.W.Set {
-		e.Comma()
+
+	if s.H.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.H.Set {
 		e.RawStr("\"h\"" + ":")
 		s.H.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -366,6 +420,17 @@ func (s *Image) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s Images) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.Pages != nil {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.Pages != nil {
 		e.RawStr("\"pages\"" + ":")
 		e.ArrStart()
@@ -382,23 +447,27 @@ func (s Images) Encode(e *jx.Writer) {
 		}
 		e.ArrEnd()
 	}
-	if s.Pages != nil {
-		e.Comma()
+
+	if s.Cover.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Cover.Set {
 		e.RawStr("\"cover\"" + ":")
 		s.Cover.Encode(e)
 	}
-	if s.Cover.Set {
-		e.Comma()
+
+	if s.Thumbnail.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Thumbnail.Set {
 		e.RawStr("\"thumbnail\"" + ":")
 		s.Thumbnail.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -578,10 +647,10 @@ func (o *OptTitle) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s SearchByTagIDForbidden) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -646,10 +715,10 @@ func (s *SearchByTagIDOKApplicationJSON) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s SearchForbidden) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -714,6 +783,17 @@ func (s *SearchOKApplicationJSON) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s SearchResponse) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.Result != nil {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.Result != nil {
 		e.RawStr("\"result\"" + ":")
 		e.ArrStart()
@@ -730,23 +810,27 @@ func (s SearchResponse) Encode(e *jx.Writer) {
 		}
 		e.ArrEnd()
 	}
-	if s.Result != nil {
-		e.Comma()
+
+	if s.NumPages.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.NumPages.Set {
 		e.RawStr("\"num_pages\"" + ":")
 		s.NumPages.Encode(e)
 	}
-	if s.NumPages.Set {
-		e.Comma()
+
+	if s.PerPage.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.PerPage.Set {
 		e.RawStr("\"per_page\"" + ":")
 		s.PerPage.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -790,41 +874,64 @@ func (s *SearchResponse) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s Tag) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.ID.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.ID.Set {
 		e.RawStr("\"id\"" + ":")
 		s.ID.Encode(e)
 	}
-	if s.ID.Set {
-		e.Comma()
+
+	if s.Type.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Type.Set {
 		e.RawStr("\"type\"" + ":")
 		s.Type.Encode(e)
 	}
-	if s.Type.Set {
-		e.Comma()
+
+	if s.Name.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Name.Set {
 		e.RawStr("\"name\"" + ":")
 		s.Name.Encode(e)
 	}
-	if s.Name.Set {
-		e.Comma()
+
+	if s.URL.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.URL.Set {
 		e.RawStr("\"url\"" + ":")
 		s.URL.Encode(e)
 	}
-	if s.URL.Set {
-		e.Comma()
+
+	if s.Count.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Count.Set {
 		e.RawStr("\"count\"" + ":")
 		s.Count.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -908,27 +1015,42 @@ func (s *TagType) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s Title) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.English.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.English.Set {
 		e.RawStr("\"english\"" + ":")
 		s.English.Encode(e)
 	}
-	if s.English.Set {
-		e.Comma()
+
+	if s.Japanese.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Japanese.Set {
 		e.RawStr("\"japanese\"" + ":")
 		s.Japanese.Encode(e)
 	}
-	if s.Japanese.Set {
-		e.Comma()
+
+	if s.Pretty.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Pretty.Set {
 		e.RawStr("\"pretty\"" + ":")
 		s.Pretty.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }

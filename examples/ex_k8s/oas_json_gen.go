@@ -65,10 +65,10 @@ var (
 // Encode implements json.Marshaler.
 func (s GetAPIVersionsUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -89,10 +89,10 @@ func (s *GetAPIVersionsUnauthorized) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s GetAdmissionregistrationAPIGroupUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -113,10 +113,10 @@ func (s *GetAdmissionregistrationAPIGroupUnauthorized) Decode(d *jx.Decoder) err
 // Encode implements json.Marshaler.
 func (s GetAdmissionregistrationV1APIResourcesUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -137,10 +137,10 @@ func (s *GetAdmissionregistrationV1APIResourcesUnauthorized) Decode(d *jx.Decode
 // Encode implements json.Marshaler.
 func (s GetApiextensionsAPIGroupUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -161,10 +161,10 @@ func (s *GetApiextensionsAPIGroupUnauthorized) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s GetApiextensionsV1APIResourcesUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -185,10 +185,10 @@ func (s *GetApiextensionsV1APIResourcesUnauthorized) Decode(d *jx.Decoder) error
 // Encode implements json.Marshaler.
 func (s GetApiregistrationAPIGroupUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -209,10 +209,10 @@ func (s *GetApiregistrationAPIGroupUnauthorized) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s GetApiregistrationV1APIResourcesUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -233,10 +233,10 @@ func (s *GetApiregistrationV1APIResourcesUnauthorized) Decode(d *jx.Decoder) err
 // Encode implements json.Marshaler.
 func (s GetAppsAPIGroupUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -257,10 +257,10 @@ func (s *GetAppsAPIGroupUnauthorized) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s GetAppsV1APIResourcesUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -281,10 +281,10 @@ func (s *GetAppsV1APIResourcesUnauthorized) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s GetAuthenticationAPIGroupUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -305,10 +305,10 @@ func (s *GetAuthenticationAPIGroupUnauthorized) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s GetAuthenticationV1APIResourcesUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -329,10 +329,10 @@ func (s *GetAuthenticationV1APIResourcesUnauthorized) Decode(d *jx.Decoder) erro
 // Encode implements json.Marshaler.
 func (s GetAuthorizationAPIGroupUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -353,10 +353,10 @@ func (s *GetAuthorizationAPIGroupUnauthorized) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s GetAuthorizationV1APIResourcesUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -377,10 +377,10 @@ func (s *GetAuthorizationV1APIResourcesUnauthorized) Decode(d *jx.Decoder) error
 // Encode implements json.Marshaler.
 func (s GetAutoscalingAPIGroupUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -401,10 +401,10 @@ func (s *GetAutoscalingAPIGroupUnauthorized) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s GetAutoscalingV1APIResourcesUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -425,10 +425,10 @@ func (s *GetAutoscalingV1APIResourcesUnauthorized) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s GetAutoscalingV2beta1APIResourcesUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -449,10 +449,10 @@ func (s *GetAutoscalingV2beta1APIResourcesUnauthorized) Decode(d *jx.Decoder) er
 // Encode implements json.Marshaler.
 func (s GetAutoscalingV2beta2APIResourcesUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -473,10 +473,10 @@ func (s *GetAutoscalingV2beta2APIResourcesUnauthorized) Decode(d *jx.Decoder) er
 // Encode implements json.Marshaler.
 func (s GetBatchAPIGroupUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -497,10 +497,10 @@ func (s *GetBatchAPIGroupUnauthorized) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s GetBatchV1APIResourcesUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -521,10 +521,10 @@ func (s *GetBatchV1APIResourcesUnauthorized) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s GetBatchV1beta1APIResourcesUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -545,10 +545,10 @@ func (s *GetBatchV1beta1APIResourcesUnauthorized) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s GetCertificatesAPIGroupUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -569,10 +569,10 @@ func (s *GetCertificatesAPIGroupUnauthorized) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s GetCertificatesV1APIResourcesUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -593,10 +593,10 @@ func (s *GetCertificatesV1APIResourcesUnauthorized) Decode(d *jx.Decoder) error 
 // Encode implements json.Marshaler.
 func (s GetCodeVersionUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -617,10 +617,10 @@ func (s *GetCodeVersionUnauthorized) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s GetCoordinationAPIGroupUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -641,10 +641,10 @@ func (s *GetCoordinationAPIGroupUnauthorized) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s GetCoordinationV1APIResourcesUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -665,10 +665,10 @@ func (s *GetCoordinationV1APIResourcesUnauthorized) Decode(d *jx.Decoder) error 
 // Encode implements json.Marshaler.
 func (s GetCoreAPIVersionsUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -689,10 +689,10 @@ func (s *GetCoreAPIVersionsUnauthorized) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s GetCoreV1APIResourcesUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -713,10 +713,10 @@ func (s *GetCoreV1APIResourcesUnauthorized) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s GetDiscoveryAPIGroupUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -737,10 +737,10 @@ func (s *GetDiscoveryAPIGroupUnauthorized) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s GetDiscoveryV1APIResourcesUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -761,10 +761,10 @@ func (s *GetDiscoveryV1APIResourcesUnauthorized) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s GetDiscoveryV1beta1APIResourcesUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -785,10 +785,10 @@ func (s *GetDiscoveryV1beta1APIResourcesUnauthorized) Decode(d *jx.Decoder) erro
 // Encode implements json.Marshaler.
 func (s GetEventsAPIGroupUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -809,10 +809,10 @@ func (s *GetEventsAPIGroupUnauthorized) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s GetEventsV1APIResourcesUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -833,10 +833,10 @@ func (s *GetEventsV1APIResourcesUnauthorized) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s GetEventsV1beta1APIResourcesUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -857,10 +857,10 @@ func (s *GetEventsV1beta1APIResourcesUnauthorized) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s GetFlowcontrolApiserverAPIGroupUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -881,10 +881,10 @@ func (s *GetFlowcontrolApiserverAPIGroupUnauthorized) Decode(d *jx.Decoder) erro
 // Encode implements json.Marshaler.
 func (s GetFlowcontrolApiserverV1beta1APIResourcesUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -905,10 +905,10 @@ func (s *GetFlowcontrolApiserverV1beta1APIResourcesUnauthorized) Decode(d *jx.De
 // Encode implements json.Marshaler.
 func (s GetFlowcontrolApiserverV1beta2APIResourcesUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -929,10 +929,10 @@ func (s *GetFlowcontrolApiserverV1beta2APIResourcesUnauthorized) Decode(d *jx.De
 // Encode implements json.Marshaler.
 func (s GetInternalApiserverAPIGroupUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -953,10 +953,10 @@ func (s *GetInternalApiserverAPIGroupUnauthorized) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s GetInternalApiserverV1alpha1APIResourcesUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -977,10 +977,10 @@ func (s *GetInternalApiserverV1alpha1APIResourcesUnauthorized) Decode(d *jx.Deco
 // Encode implements json.Marshaler.
 func (s GetNetworkingAPIGroupUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -1001,10 +1001,10 @@ func (s *GetNetworkingAPIGroupUnauthorized) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s GetNetworkingV1APIResourcesUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -1025,10 +1025,10 @@ func (s *GetNetworkingV1APIResourcesUnauthorized) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s GetNodeAPIGroupUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -1049,10 +1049,10 @@ func (s *GetNodeAPIGroupUnauthorized) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s GetNodeV1APIResourcesUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -1073,10 +1073,10 @@ func (s *GetNodeV1APIResourcesUnauthorized) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s GetNodeV1alpha1APIResourcesUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -1097,10 +1097,10 @@ func (s *GetNodeV1alpha1APIResourcesUnauthorized) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s GetNodeV1beta1APIResourcesUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -1121,10 +1121,10 @@ func (s *GetNodeV1beta1APIResourcesUnauthorized) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s GetPolicyAPIGroupUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -1145,10 +1145,10 @@ func (s *GetPolicyAPIGroupUnauthorized) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s GetPolicyV1APIResourcesUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -1169,10 +1169,10 @@ func (s *GetPolicyV1APIResourcesUnauthorized) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s GetPolicyV1beta1APIResourcesUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -1193,10 +1193,10 @@ func (s *GetPolicyV1beta1APIResourcesUnauthorized) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s GetRbacAuthorizationAPIGroupUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -1217,10 +1217,10 @@ func (s *GetRbacAuthorizationAPIGroupUnauthorized) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s GetRbacAuthorizationV1APIResourcesUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -1241,10 +1241,10 @@ func (s *GetRbacAuthorizationV1APIResourcesUnauthorized) Decode(d *jx.Decoder) e
 // Encode implements json.Marshaler.
 func (s GetSchedulingAPIGroupUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -1265,10 +1265,10 @@ func (s *GetSchedulingAPIGroupUnauthorized) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s GetSchedulingV1APIResourcesUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -1315,10 +1315,10 @@ func (s *GetServiceAccountIssuerOpenIDConfigurationOKApplicationJSON) Decode(d *
 // Encode implements json.Marshaler.
 func (s GetServiceAccountIssuerOpenIDConfigurationUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -1339,10 +1339,10 @@ func (s *GetServiceAccountIssuerOpenIDConfigurationUnauthorized) Decode(d *jx.De
 // Encode implements json.Marshaler.
 func (s GetStorageAPIGroupUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -1363,10 +1363,10 @@ func (s *GetStorageAPIGroupUnauthorized) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s GetStorageV1APIResourcesUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -1387,10 +1387,10 @@ func (s *GetStorageV1APIResourcesUnauthorized) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s GetStorageV1alpha1APIResourcesUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -1411,10 +1411,10 @@ func (s *GetStorageV1alpha1APIResourcesUnauthorized) Decode(d *jx.Decoder) error
 // Encode implements json.Marshaler.
 func (s GetStorageV1beta1APIResourcesUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -1435,6 +1435,16 @@ func (s *GetStorageV1beta1APIResourcesUnauthorized) Decode(d *jx.Decoder) error 
 // Encode implements json.Marshaler.
 func (s IoK8sAPIAdmissionregistrationV1MutatingWebhook) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"admissionReviewVersions\"" + ":")
 	e.ArrStart()
@@ -1456,44 +1466,52 @@ func (s IoK8sAPIAdmissionregistrationV1MutatingWebhook) Encode(e *jx.Writer) {
 	e.RawStr("\"clientConfig\"" + ":")
 	s.ClientConfig.Encode(e)
 
-	e.Comma()
+	if s.FailurePolicy.Set {
+		e.Comma()
+	}
 	if s.FailurePolicy.Set {
 		e.RawStr("\"failurePolicy\"" + ":")
 		s.FailurePolicy.Encode(e)
 	}
-	if s.FailurePolicy.Set {
+
+	if s.MatchPolicy.Set {
 		e.Comma()
 	}
 	if s.MatchPolicy.Set {
 		e.RawStr("\"matchPolicy\"" + ":")
 		s.MatchPolicy.Encode(e)
 	}
-	if s.MatchPolicy.Set {
-		e.Comma()
-	}
+
+	e.Comma()
 
 	e.RawStr("\"name\"" + ":")
 	e.Str(s.Name)
-	e.Comma()
+
+	if s.NamespaceSelector.Set {
+		e.Comma()
+	}
 	if s.NamespaceSelector.Set {
 		e.RawStr("\"namespaceSelector\"" + ":")
 		s.NamespaceSelector.Encode(e)
 	}
-	if s.NamespaceSelector.Set {
+
+	if s.ObjectSelector.Set {
 		e.Comma()
 	}
 	if s.ObjectSelector.Set {
 		e.RawStr("\"objectSelector\"" + ":")
 		s.ObjectSelector.Encode(e)
 	}
-	if s.ObjectSelector.Set {
+
+	if s.ReinvocationPolicy.Set {
 		e.Comma()
 	}
 	if s.ReinvocationPolicy.Set {
 		e.RawStr("\"reinvocationPolicy\"" + ":")
 		s.ReinvocationPolicy.Encode(e)
 	}
-	if s.ReinvocationPolicy.Set {
+
+	if s.Rules != nil {
 		e.Comma()
 	}
 	if s.Rules != nil {
@@ -1512,20 +1530,18 @@ func (s IoK8sAPIAdmissionregistrationV1MutatingWebhook) Encode(e *jx.Writer) {
 		}
 		e.ArrEnd()
 	}
-	if s.Rules != nil {
-		e.Comma()
-	}
+
+	e.Comma()
 
 	e.RawStr("\"sideEffects\"" + ":")
 	e.Str(s.SideEffects)
-	e.Comma()
+
+	if s.TimeoutSeconds.Set {
+		e.Comma()
+	}
 	if s.TimeoutSeconds.Set {
 		e.RawStr("\"timeoutSeconds\"" + ":")
 		s.TimeoutSeconds.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -1619,26 +1635,49 @@ func (s *IoK8sAPIAdmissionregistrationV1MutatingWebhook) Decode(d *jx.Decoder) e
 // Encode implements json.Marshaler.
 func (s IoK8sAPIAdmissionregistrationV1MutatingWebhookConfiguration) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.ApiVersion.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.ApiVersion.Set {
 		e.RawStr("\"apiVersion\"" + ":")
 		s.ApiVersion.Encode(e)
 	}
-	if s.ApiVersion.Set {
-		e.Comma()
+
+	if s.Kind.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Kind.Set {
 		e.RawStr("\"kind\"" + ":")
 		s.Kind.Encode(e)
 	}
-	if s.Kind.Set {
-		e.Comma()
+
+	if s.Metadata.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Metadata.Set {
 		e.RawStr("\"metadata\"" + ":")
 		s.Metadata.Encode(e)
 	}
-	if s.Metadata.Set {
-		e.Comma()
+
+	if s.Webhooks != nil {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Webhooks != nil {
 		e.RawStr("\"webhooks\"" + ":")
@@ -1655,10 +1694,6 @@ func (s IoK8sAPIAdmissionregistrationV1MutatingWebhookConfiguration) Encode(e *j
 			}
 		}
 		e.ArrEnd()
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -1707,13 +1742,27 @@ func (s *IoK8sAPIAdmissionregistrationV1MutatingWebhookConfiguration) Decode(d *
 // Encode implements json.Marshaler.
 func (s IoK8sAPIAdmissionregistrationV1MutatingWebhookConfigurationList) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.ApiVersion.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.ApiVersion.Set {
 		e.RawStr("\"apiVersion\"" + ":")
 		s.ApiVersion.Encode(e)
 	}
-	if s.ApiVersion.Set {
+
+	if !first {
+
 		e.Comma()
 	}
+	first = false
 
 	e.RawStr("\"items\"" + ":")
 	e.ArrStart()
@@ -1730,21 +1779,20 @@ func (s IoK8sAPIAdmissionregistrationV1MutatingWebhookConfigurationList) Encode(
 	}
 	e.ArrEnd()
 
-	e.Comma()
+	if s.Kind.Set {
+		e.Comma()
+	}
 	if s.Kind.Set {
 		e.RawStr("\"kind\"" + ":")
 		s.Kind.Encode(e)
 	}
-	if s.Kind.Set {
+
+	if s.Metadata.Set {
 		e.Comma()
 	}
 	if s.Metadata.Set {
 		e.RawStr("\"metadata\"" + ":")
 		s.Metadata.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -1793,6 +1841,17 @@ func (s *IoK8sAPIAdmissionregistrationV1MutatingWebhookConfigurationList) Decode
 // Encode implements json.Marshaler.
 func (s IoK8sAPIAdmissionregistrationV1RuleWithOperations) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.ApiGroups != nil {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.ApiGroups != nil {
 		e.RawStr("\"apiGroups\"" + ":")
 		e.ArrStart()
@@ -1809,8 +1868,12 @@ func (s IoK8sAPIAdmissionregistrationV1RuleWithOperations) Encode(e *jx.Writer) 
 		}
 		e.ArrEnd()
 	}
-	if s.ApiGroups != nil {
-		e.Comma()
+
+	if s.ApiVersions != nil {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.ApiVersions != nil {
 		e.RawStr("\"apiVersions\"" + ":")
@@ -1828,8 +1891,12 @@ func (s IoK8sAPIAdmissionregistrationV1RuleWithOperations) Encode(e *jx.Writer) 
 		}
 		e.ArrEnd()
 	}
-	if s.ApiVersions != nil {
-		e.Comma()
+
+	if s.Operations != nil {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Operations != nil {
 		e.RawStr("\"operations\"" + ":")
@@ -1847,8 +1914,12 @@ func (s IoK8sAPIAdmissionregistrationV1RuleWithOperations) Encode(e *jx.Writer) 
 		}
 		e.ArrEnd()
 	}
-	if s.Operations != nil {
-		e.Comma()
+
+	if s.Resources != nil {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Resources != nil {
 		e.RawStr("\"resources\"" + ":")
@@ -1866,16 +1937,16 @@ func (s IoK8sAPIAdmissionregistrationV1RuleWithOperations) Encode(e *jx.Writer) 
 		}
 		e.ArrEnd()
 	}
-	if s.Resources != nil {
-		e.Comma()
+
+	if s.Scope.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Scope.Set {
 		e.RawStr("\"scope\"" + ":")
 		s.Scope.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -1958,28 +2029,38 @@ func (s *IoK8sAPIAdmissionregistrationV1RuleWithOperations) Decode(d *jx.Decoder
 // Encode implements json.Marshaler.
 func (s IoK8sAPIAdmissionregistrationV1ServiceReference) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"name\"" + ":")
 	e.Str(s.Name)
+
 	e.Comma()
 
 	e.RawStr("\"namespace\"" + ":")
 	e.Str(s.Namespace)
-	e.Comma()
+
+	if s.Path.Set {
+		e.Comma()
+	}
 	if s.Path.Set {
 		e.RawStr("\"path\"" + ":")
 		s.Path.Encode(e)
 	}
-	if s.Path.Set {
+
+	if s.Port.Set {
 		e.Comma()
 	}
 	if s.Port.Set {
 		e.RawStr("\"port\"" + ":")
 		s.Port.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -2023,6 +2104,16 @@ func (s *IoK8sAPIAdmissionregistrationV1ServiceReference) Decode(d *jx.Decoder) 
 // Encode implements json.Marshaler.
 func (s IoK8sAPIAdmissionregistrationV1ValidatingWebhook) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"admissionReviewVersions\"" + ":")
 	e.ArrStart()
@@ -2044,37 +2135,44 @@ func (s IoK8sAPIAdmissionregistrationV1ValidatingWebhook) Encode(e *jx.Writer) {
 	e.RawStr("\"clientConfig\"" + ":")
 	s.ClientConfig.Encode(e)
 
-	e.Comma()
+	if s.FailurePolicy.Set {
+		e.Comma()
+	}
 	if s.FailurePolicy.Set {
 		e.RawStr("\"failurePolicy\"" + ":")
 		s.FailurePolicy.Encode(e)
 	}
-	if s.FailurePolicy.Set {
+
+	if s.MatchPolicy.Set {
 		e.Comma()
 	}
 	if s.MatchPolicy.Set {
 		e.RawStr("\"matchPolicy\"" + ":")
 		s.MatchPolicy.Encode(e)
 	}
-	if s.MatchPolicy.Set {
-		e.Comma()
-	}
+
+	e.Comma()
 
 	e.RawStr("\"name\"" + ":")
 	e.Str(s.Name)
-	e.Comma()
+
+	if s.NamespaceSelector.Set {
+		e.Comma()
+	}
 	if s.NamespaceSelector.Set {
 		e.RawStr("\"namespaceSelector\"" + ":")
 		s.NamespaceSelector.Encode(e)
 	}
-	if s.NamespaceSelector.Set {
+
+	if s.ObjectSelector.Set {
 		e.Comma()
 	}
 	if s.ObjectSelector.Set {
 		e.RawStr("\"objectSelector\"" + ":")
 		s.ObjectSelector.Encode(e)
 	}
-	if s.ObjectSelector.Set {
+
+	if s.Rules != nil {
 		e.Comma()
 	}
 	if s.Rules != nil {
@@ -2093,20 +2191,18 @@ func (s IoK8sAPIAdmissionregistrationV1ValidatingWebhook) Encode(e *jx.Writer) {
 		}
 		e.ArrEnd()
 	}
-	if s.Rules != nil {
-		e.Comma()
-	}
+
+	e.Comma()
 
 	e.RawStr("\"sideEffects\"" + ":")
 	e.Str(s.SideEffects)
-	e.Comma()
+
+	if s.TimeoutSeconds.Set {
+		e.Comma()
+	}
 	if s.TimeoutSeconds.Set {
 		e.RawStr("\"timeoutSeconds\"" + ":")
 		s.TimeoutSeconds.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -2195,26 +2291,49 @@ func (s *IoK8sAPIAdmissionregistrationV1ValidatingWebhook) Decode(d *jx.Decoder)
 // Encode implements json.Marshaler.
 func (s IoK8sAPIAdmissionregistrationV1ValidatingWebhookConfiguration) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.ApiVersion.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.ApiVersion.Set {
 		e.RawStr("\"apiVersion\"" + ":")
 		s.ApiVersion.Encode(e)
 	}
-	if s.ApiVersion.Set {
-		e.Comma()
+
+	if s.Kind.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Kind.Set {
 		e.RawStr("\"kind\"" + ":")
 		s.Kind.Encode(e)
 	}
-	if s.Kind.Set {
-		e.Comma()
+
+	if s.Metadata.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Metadata.Set {
 		e.RawStr("\"metadata\"" + ":")
 		s.Metadata.Encode(e)
 	}
-	if s.Metadata.Set {
-		e.Comma()
+
+	if s.Webhooks != nil {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Webhooks != nil {
 		e.RawStr("\"webhooks\"" + ":")
@@ -2231,10 +2350,6 @@ func (s IoK8sAPIAdmissionregistrationV1ValidatingWebhookConfiguration) Encode(e 
 			}
 		}
 		e.ArrEnd()
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -2283,13 +2398,27 @@ func (s *IoK8sAPIAdmissionregistrationV1ValidatingWebhookConfiguration) Decode(d
 // Encode implements json.Marshaler.
 func (s IoK8sAPIAdmissionregistrationV1ValidatingWebhookConfigurationList) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.ApiVersion.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.ApiVersion.Set {
 		e.RawStr("\"apiVersion\"" + ":")
 		s.ApiVersion.Encode(e)
 	}
-	if s.ApiVersion.Set {
+
+	if !first {
+
 		e.Comma()
 	}
+	first = false
 
 	e.RawStr("\"items\"" + ":")
 	e.ArrStart()
@@ -2306,21 +2435,20 @@ func (s IoK8sAPIAdmissionregistrationV1ValidatingWebhookConfigurationList) Encod
 	}
 	e.ArrEnd()
 
-	e.Comma()
+	if s.Kind.Set {
+		e.Comma()
+	}
 	if s.Kind.Set {
 		e.RawStr("\"kind\"" + ":")
 		s.Kind.Encode(e)
 	}
-	if s.Kind.Set {
+
+	if s.Metadata.Set {
 		e.Comma()
 	}
 	if s.Metadata.Set {
 		e.RawStr("\"metadata\"" + ":")
 		s.Metadata.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -2369,24 +2497,33 @@ func (s *IoK8sAPIAdmissionregistrationV1ValidatingWebhookConfigurationList) Deco
 // Encode implements json.Marshaler.
 func (s IoK8sAPIAdmissionregistrationV1WebhookClientConfig) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"caBundle\"" + ":")
 	e.Base64(s.CaBundle)
-	e.Comma()
+
+	if s.Service.Set {
+		e.Comma()
+	}
 	if s.Service.Set {
 		e.RawStr("\"service\"" + ":")
 		s.Service.Encode(e)
 	}
-	if s.Service.Set {
+
+	if s.URL.Set {
 		e.Comma()
 	}
 	if s.URL.Set {
 		e.RawStr("\"url\"" + ":")
 		s.URL.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -2424,12 +2561,27 @@ func (s *IoK8sAPIAdmissionregistrationV1WebhookClientConfig) Decode(d *jx.Decode
 // Encode implements json.Marshaler.
 func (s IoK8sAPIApiserverinternalV1alpha1ServerStorageVersion) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.ApiServerID.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.ApiServerID.Set {
 		e.RawStr("\"apiServerID\"" + ":")
 		s.ApiServerID.Encode(e)
 	}
-	if s.ApiServerID.Set {
-		e.Comma()
+
+	if s.DecodableVersions != nil {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.DecodableVersions != nil {
 		e.RawStr("\"decodableVersions\"" + ":")
@@ -2447,16 +2599,16 @@ func (s IoK8sAPIApiserverinternalV1alpha1ServerStorageVersion) Encode(e *jx.Writ
 		}
 		e.ArrEnd()
 	}
-	if s.DecodableVersions != nil {
-		e.Comma()
+
+	if s.EncodingVersion.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.EncodingVersion.Set {
 		e.RawStr("\"encodingVersion\"" + ":")
 		s.EncodingVersion.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -2502,27 +2654,49 @@ func (s *IoK8sAPIApiserverinternalV1alpha1ServerStorageVersion) Decode(d *jx.Dec
 // Encode implements json.Marshaler.
 func (s IoK8sAPIApiserverinternalV1alpha1StorageVersion) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.ApiVersion.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.ApiVersion.Set {
 		e.RawStr("\"apiVersion\"" + ":")
 		s.ApiVersion.Encode(e)
 	}
-	if s.ApiVersion.Set {
-		e.Comma()
+
+	if s.Kind.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Kind.Set {
 		e.RawStr("\"kind\"" + ":")
 		s.Kind.Encode(e)
 	}
-	if s.Kind.Set {
-		e.Comma()
+
+	if s.Metadata.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Metadata.Set {
 		e.RawStr("\"metadata\"" + ":")
 		s.Metadata.Encode(e)
 	}
-	if s.Metadata.Set {
+
+	if !first {
+
 		e.Comma()
 	}
+	first = false
 
 	e.RawStr("\"spec\"" + ":")
 	s.Spec.Encode(e)
@@ -2531,10 +2705,6 @@ func (s IoK8sAPIApiserverinternalV1alpha1StorageVersion) Encode(e *jx.Writer) {
 
 	e.RawStr("\"status\"" + ":")
 	s.Status.Encode(e)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -2578,42 +2748,61 @@ func (s *IoK8sAPIApiserverinternalV1alpha1StorageVersion) Decode(d *jx.Decoder) 
 // Encode implements json.Marshaler.
 func (s IoK8sAPIApiserverinternalV1alpha1StorageVersionCondition) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.LastTransitionTime.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.LastTransitionTime.Set {
 		e.RawStr("\"lastTransitionTime\"" + ":")
 		s.LastTransitionTime.Encode(e)
 	}
-	if s.LastTransitionTime.Set {
-		e.Comma()
+
+	if s.Message.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Message.Set {
 		e.RawStr("\"message\"" + ":")
 		s.Message.Encode(e)
 	}
-	if s.Message.Set {
-		e.Comma()
+
+	if s.ObservedGeneration.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.ObservedGeneration.Set {
 		e.RawStr("\"observedGeneration\"" + ":")
 		s.ObservedGeneration.Encode(e)
 	}
-	if s.ObservedGeneration.Set {
+
+	if !first {
 		e.Comma()
 	}
+	first = false
 
 	e.RawStr("\"reason\"" + ":")
 	e.Str(s.Reason)
+
 	e.Comma()
 
 	e.RawStr("\"status\"" + ":")
 	e.Str(s.Status)
+
 	e.Comma()
 
 	e.RawStr("\"type\"" + ":")
 	e.Str(s.Type)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -2667,13 +2856,27 @@ func (s *IoK8sAPIApiserverinternalV1alpha1StorageVersionCondition) Decode(d *jx.
 // Encode implements json.Marshaler.
 func (s IoK8sAPIApiserverinternalV1alpha1StorageVersionList) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.ApiVersion.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.ApiVersion.Set {
 		e.RawStr("\"apiVersion\"" + ":")
 		s.ApiVersion.Encode(e)
 	}
-	if s.ApiVersion.Set {
+
+	if !first {
+
 		e.Comma()
 	}
+	first = false
 
 	e.RawStr("\"items\"" + ":")
 	e.ArrStart()
@@ -2690,21 +2893,20 @@ func (s IoK8sAPIApiserverinternalV1alpha1StorageVersionList) Encode(e *jx.Writer
 	}
 	e.ArrEnd()
 
-	e.Comma()
+	if s.Kind.Set {
+		e.Comma()
+	}
 	if s.Kind.Set {
 		e.RawStr("\"kind\"" + ":")
 		s.Kind.Encode(e)
 	}
-	if s.Kind.Set {
+
+	if s.Metadata.Set {
 		e.Comma()
 	}
 	if s.Metadata.Set {
 		e.RawStr("\"metadata\"" + ":")
 		s.Metadata.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -2753,10 +2955,10 @@ func (s *IoK8sAPIApiserverinternalV1alpha1StorageVersionList) Decode(d *jx.Decod
 // Encode implements json.Marshaler.
 func (s IoK8sAPIApiserverinternalV1alpha1StorageVersionSpec) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -2777,12 +2979,27 @@ func (s *IoK8sAPIApiserverinternalV1alpha1StorageVersionSpec) Decode(d *jx.Decod
 // Encode implements json.Marshaler.
 func (s IoK8sAPIApiserverinternalV1alpha1StorageVersionStatus) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.CommonEncodingVersion.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.CommonEncodingVersion.Set {
 		e.RawStr("\"commonEncodingVersion\"" + ":")
 		s.CommonEncodingVersion.Encode(e)
 	}
-	if s.CommonEncodingVersion.Set {
-		e.Comma()
+
+	if s.Conditions != nil {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Conditions != nil {
 		e.RawStr("\"conditions\"" + ":")
@@ -2800,8 +3017,12 @@ func (s IoK8sAPIApiserverinternalV1alpha1StorageVersionStatus) Encode(e *jx.Writ
 		}
 		e.ArrEnd()
 	}
-	if s.Conditions != nil {
-		e.Comma()
+
+	if s.StorageVersions != nil {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.StorageVersions != nil {
 		e.RawStr("\"storageVersions\"" + ":")
@@ -2818,10 +3039,6 @@ func (s IoK8sAPIApiserverinternalV1alpha1StorageVersionStatus) Encode(e *jx.Writ
 			}
 		}
 		e.ArrEnd()
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -2872,41 +3089,62 @@ func (s *IoK8sAPIApiserverinternalV1alpha1StorageVersionStatus) Decode(d *jx.Dec
 // Encode implements json.Marshaler.
 func (s IoK8sAPIAppsV1ControllerRevision) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.ApiVersion.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.ApiVersion.Set {
 		e.RawStr("\"apiVersion\"" + ":")
 		s.ApiVersion.Encode(e)
 	}
-	if s.ApiVersion.Set {
-		e.Comma()
+
+	if s.Data != nil {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Data != nil {
 		e.RawStr("\"data\"" + ":")
 		s.Data.Encode(e)
 	}
-	if s.Data != nil {
-		e.Comma()
+
+	if s.Kind.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Kind.Set {
 		e.RawStr("\"kind\"" + ":")
 		s.Kind.Encode(e)
 	}
-	if s.Kind.Set {
-		e.Comma()
+
+	if s.Metadata.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Metadata.Set {
 		e.RawStr("\"metadata\"" + ":")
 		s.Metadata.Encode(e)
 	}
-	if s.Metadata.Set {
+
+	if !first {
 		e.Comma()
 	}
+	first = false
 
 	e.RawStr("\"revision\"" + ":")
 	e.Int64(s.Revision)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -2955,13 +3193,27 @@ func (s *IoK8sAPIAppsV1ControllerRevision) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPIAppsV1ControllerRevisionList) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.ApiVersion.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.ApiVersion.Set {
 		e.RawStr("\"apiVersion\"" + ":")
 		s.ApiVersion.Encode(e)
 	}
-	if s.ApiVersion.Set {
+
+	if !first {
+
 		e.Comma()
 	}
+	first = false
 
 	e.RawStr("\"items\"" + ":")
 	e.ArrStart()
@@ -2978,21 +3230,20 @@ func (s IoK8sAPIAppsV1ControllerRevisionList) Encode(e *jx.Writer) {
 	}
 	e.ArrEnd()
 
-	e.Comma()
+	if s.Kind.Set {
+		e.Comma()
+	}
 	if s.Kind.Set {
 		e.RawStr("\"kind\"" + ":")
 		s.Kind.Encode(e)
 	}
-	if s.Kind.Set {
+
+	if s.Metadata.Set {
 		e.Comma()
 	}
 	if s.Metadata.Set {
 		e.RawStr("\"metadata\"" + ":")
 		s.Metadata.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -3041,41 +3292,64 @@ func (s *IoK8sAPIAppsV1ControllerRevisionList) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPIAppsV1DaemonSet) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.ApiVersion.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.ApiVersion.Set {
 		e.RawStr("\"apiVersion\"" + ":")
 		s.ApiVersion.Encode(e)
 	}
-	if s.ApiVersion.Set {
-		e.Comma()
+
+	if s.Kind.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Kind.Set {
 		e.RawStr("\"kind\"" + ":")
 		s.Kind.Encode(e)
 	}
-	if s.Kind.Set {
-		e.Comma()
+
+	if s.Metadata.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Metadata.Set {
 		e.RawStr("\"metadata\"" + ":")
 		s.Metadata.Encode(e)
 	}
-	if s.Metadata.Set {
-		e.Comma()
+
+	if s.Spec.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Spec.Set {
 		e.RawStr("\"spec\"" + ":")
 		s.Spec.Encode(e)
 	}
-	if s.Spec.Set {
-		e.Comma()
+
+	if s.Status.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Status.Set {
 		e.RawStr("\"status\"" + ":")
 		s.Status.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -3122,38 +3396,56 @@ func (s *IoK8sAPIAppsV1DaemonSet) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPIAppsV1DaemonSetCondition) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.LastTransitionTime.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.LastTransitionTime.Set {
 		e.RawStr("\"lastTransitionTime\"" + ":")
 		s.LastTransitionTime.Encode(e)
 	}
-	if s.LastTransitionTime.Set {
-		e.Comma()
+
+	if s.Message.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Message.Set {
 		e.RawStr("\"message\"" + ":")
 		s.Message.Encode(e)
 	}
-	if s.Message.Set {
-		e.Comma()
+
+	if s.Reason.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Reason.Set {
 		e.RawStr("\"reason\"" + ":")
 		s.Reason.Encode(e)
 	}
-	if s.Reason.Set {
+
+	if !first {
 		e.Comma()
 	}
+	first = false
 
 	e.RawStr("\"status\"" + ":")
 	e.Str(s.Status)
+
 	e.Comma()
 
 	e.RawStr("\"type\"" + ":")
 	e.Str(s.Type)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -3201,13 +3493,27 @@ func (s *IoK8sAPIAppsV1DaemonSetCondition) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPIAppsV1DaemonSetList) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.ApiVersion.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.ApiVersion.Set {
 		e.RawStr("\"apiVersion\"" + ":")
 		s.ApiVersion.Encode(e)
 	}
-	if s.ApiVersion.Set {
+
+	if !first {
+
 		e.Comma()
 	}
+	first = false
 
 	e.RawStr("\"items\"" + ":")
 	e.ArrStart()
@@ -3224,21 +3530,20 @@ func (s IoK8sAPIAppsV1DaemonSetList) Encode(e *jx.Writer) {
 	}
 	e.ArrEnd()
 
-	e.Comma()
+	if s.Kind.Set {
+		e.Comma()
+	}
 	if s.Kind.Set {
 		e.RawStr("\"kind\"" + ":")
 		s.Kind.Encode(e)
 	}
-	if s.Kind.Set {
+
+	if s.Metadata.Set {
 		e.Comma()
 	}
 	if s.Metadata.Set {
 		e.RawStr("\"metadata\"" + ":")
 		s.Metadata.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -3287,20 +3592,38 @@ func (s *IoK8sAPIAppsV1DaemonSetList) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPIAppsV1DaemonSetSpec) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.MinReadySeconds.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.MinReadySeconds.Set {
 		e.RawStr("\"minReadySeconds\"" + ":")
 		s.MinReadySeconds.Encode(e)
 	}
-	if s.MinReadySeconds.Set {
-		e.Comma()
+
+	if s.RevisionHistoryLimit.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.RevisionHistoryLimit.Set {
 		e.RawStr("\"revisionHistoryLimit\"" + ":")
 		s.RevisionHistoryLimit.Encode(e)
 	}
-	if s.RevisionHistoryLimit.Set {
+
+	if !first {
+
 		e.Comma()
 	}
+	first = false
 
 	e.RawStr("\"selector\"" + ":")
 	s.Selector.Encode(e)
@@ -3310,14 +3633,12 @@ func (s IoK8sAPIAppsV1DaemonSetSpec) Encode(e *jx.Writer) {
 	e.RawStr("\"template\"" + ":")
 	s.Template.Encode(e)
 
-	e.Comma()
+	if s.UpdateStrategy.Set {
+		e.Comma()
+	}
 	if s.UpdateStrategy.Set {
 		e.RawStr("\"updateStrategy\"" + ":")
 		s.UpdateStrategy.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -3362,12 +3683,27 @@ func (s *IoK8sAPIAppsV1DaemonSetSpec) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPIAppsV1DaemonSetStatus) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.CollisionCount.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.CollisionCount.Set {
 		e.RawStr("\"collisionCount\"" + ":")
 		s.CollisionCount.Encode(e)
 	}
-	if s.CollisionCount.Set {
-		e.Comma()
+
+	if s.Conditions != nil {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Conditions != nil {
 		e.RawStr("\"conditions\"" + ":")
@@ -3385,53 +3721,60 @@ func (s IoK8sAPIAppsV1DaemonSetStatus) Encode(e *jx.Writer) {
 		}
 		e.ArrEnd()
 	}
-	if s.Conditions != nil {
+
+	if !first {
 		e.Comma()
 	}
+	first = false
 
 	e.RawStr("\"currentNumberScheduled\"" + ":")
 	e.Int32(s.CurrentNumberScheduled)
+
 	e.Comma()
 
 	e.RawStr("\"desiredNumberScheduled\"" + ":")
 	e.Int32(s.DesiredNumberScheduled)
-	e.Comma()
+
+	if s.NumberAvailable.Set {
+		e.Comma()
+	}
 	if s.NumberAvailable.Set {
 		e.RawStr("\"numberAvailable\"" + ":")
 		s.NumberAvailable.Encode(e)
 	}
-	if s.NumberAvailable.Set {
-		e.Comma()
-	}
+
+	e.Comma()
 
 	e.RawStr("\"numberMisscheduled\"" + ":")
 	e.Int32(s.NumberMisscheduled)
+
 	e.Comma()
 
 	e.RawStr("\"numberReady\"" + ":")
 	e.Int32(s.NumberReady)
-	e.Comma()
+
+	if s.NumberUnavailable.Set {
+		e.Comma()
+	}
 	if s.NumberUnavailable.Set {
 		e.RawStr("\"numberUnavailable\"" + ":")
 		s.NumberUnavailable.Encode(e)
 	}
-	if s.NumberUnavailable.Set {
+
+	if s.ObservedGeneration.Set {
 		e.Comma()
 	}
 	if s.ObservedGeneration.Set {
 		e.RawStr("\"observedGeneration\"" + ":")
 		s.ObservedGeneration.Encode(e)
 	}
-	if s.ObservedGeneration.Set {
+
+	if s.UpdatedNumberScheduled.Set {
 		e.Comma()
 	}
 	if s.UpdatedNumberScheduled.Set {
 		e.RawStr("\"updatedNumberScheduled\"" + ":")
 		s.UpdatedNumberScheduled.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -3514,20 +3857,31 @@ func (s *IoK8sAPIAppsV1DaemonSetStatus) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPIAppsV1DaemonSetUpdateStrategy) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.RollingUpdate.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.RollingUpdate.Set {
 		e.RawStr("\"rollingUpdate\"" + ":")
 		s.RollingUpdate.Encode(e)
 	}
-	if s.RollingUpdate.Set {
-		e.Comma()
+
+	if s.Type.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Type.Set {
 		e.RawStr("\"type\"" + ":")
 		s.Type.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -3559,41 +3913,64 @@ func (s *IoK8sAPIAppsV1DaemonSetUpdateStrategy) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPIAppsV1Deployment) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.ApiVersion.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.ApiVersion.Set {
 		e.RawStr("\"apiVersion\"" + ":")
 		s.ApiVersion.Encode(e)
 	}
-	if s.ApiVersion.Set {
-		e.Comma()
+
+	if s.Kind.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Kind.Set {
 		e.RawStr("\"kind\"" + ":")
 		s.Kind.Encode(e)
 	}
-	if s.Kind.Set {
-		e.Comma()
+
+	if s.Metadata.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Metadata.Set {
 		e.RawStr("\"metadata\"" + ":")
 		s.Metadata.Encode(e)
 	}
-	if s.Metadata.Set {
-		e.Comma()
+
+	if s.Spec.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Spec.Set {
 		e.RawStr("\"spec\"" + ":")
 		s.Spec.Encode(e)
 	}
-	if s.Spec.Set {
-		e.Comma()
+
+	if s.Status.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Status.Set {
 		e.RawStr("\"status\"" + ":")
 		s.Status.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -3640,45 +4017,67 @@ func (s *IoK8sAPIAppsV1Deployment) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPIAppsV1DeploymentCondition) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.LastTransitionTime.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.LastTransitionTime.Set {
 		e.RawStr("\"lastTransitionTime\"" + ":")
 		s.LastTransitionTime.Encode(e)
 	}
-	if s.LastTransitionTime.Set {
-		e.Comma()
+
+	if s.LastUpdateTime.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.LastUpdateTime.Set {
 		e.RawStr("\"lastUpdateTime\"" + ":")
 		s.LastUpdateTime.Encode(e)
 	}
-	if s.LastUpdateTime.Set {
-		e.Comma()
+
+	if s.Message.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Message.Set {
 		e.RawStr("\"message\"" + ":")
 		s.Message.Encode(e)
 	}
-	if s.Message.Set {
-		e.Comma()
+
+	if s.Reason.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Reason.Set {
 		e.RawStr("\"reason\"" + ":")
 		s.Reason.Encode(e)
 	}
-	if s.Reason.Set {
+
+	if !first {
 		e.Comma()
 	}
+	first = false
 
 	e.RawStr("\"status\"" + ":")
 	e.Str(s.Status)
+
 	e.Comma()
 
 	e.RawStr("\"type\"" + ":")
 	e.Str(s.Type)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -3731,13 +4130,27 @@ func (s *IoK8sAPIAppsV1DeploymentCondition) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPIAppsV1DeploymentList) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.ApiVersion.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.ApiVersion.Set {
 		e.RawStr("\"apiVersion\"" + ":")
 		s.ApiVersion.Encode(e)
 	}
-	if s.ApiVersion.Set {
+
+	if !first {
+
 		e.Comma()
 	}
+	first = false
 
 	e.RawStr("\"items\"" + ":")
 	e.ArrStart()
@@ -3754,21 +4167,20 @@ func (s IoK8sAPIAppsV1DeploymentList) Encode(e *jx.Writer) {
 	}
 	e.ArrEnd()
 
-	e.Comma()
+	if s.Kind.Set {
+		e.Comma()
+	}
 	if s.Kind.Set {
 		e.RawStr("\"kind\"" + ":")
 		s.Kind.Encode(e)
 	}
-	if s.Kind.Set {
+
+	if s.Metadata.Set {
 		e.Comma()
 	}
 	if s.Metadata.Set {
 		e.RawStr("\"metadata\"" + ":")
 		s.Metadata.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -3817,60 +4229,87 @@ func (s *IoK8sAPIAppsV1DeploymentList) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPIAppsV1DeploymentSpec) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.MinReadySeconds.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.MinReadySeconds.Set {
 		e.RawStr("\"minReadySeconds\"" + ":")
 		s.MinReadySeconds.Encode(e)
 	}
-	if s.MinReadySeconds.Set {
-		e.Comma()
+
+	if s.Paused.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Paused.Set {
 		e.RawStr("\"paused\"" + ":")
 		s.Paused.Encode(e)
 	}
-	if s.Paused.Set {
-		e.Comma()
+
+	if s.ProgressDeadlineSeconds.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.ProgressDeadlineSeconds.Set {
 		e.RawStr("\"progressDeadlineSeconds\"" + ":")
 		s.ProgressDeadlineSeconds.Encode(e)
 	}
-	if s.ProgressDeadlineSeconds.Set {
-		e.Comma()
+
+	if s.Replicas.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Replicas.Set {
 		e.RawStr("\"replicas\"" + ":")
 		s.Replicas.Encode(e)
 	}
-	if s.Replicas.Set {
-		e.Comma()
+
+	if s.RevisionHistoryLimit.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.RevisionHistoryLimit.Set {
 		e.RawStr("\"revisionHistoryLimit\"" + ":")
 		s.RevisionHistoryLimit.Encode(e)
 	}
-	if s.RevisionHistoryLimit.Set {
+
+	if !first {
+
 		e.Comma()
 	}
+	first = false
 
 	e.RawStr("\"selector\"" + ":")
 	s.Selector.Encode(e)
 
-	e.Comma()
+	if s.Strategy.Set {
+		e.Comma()
+	}
 	if s.Strategy.Set {
 		e.RawStr("\"strategy\"" + ":")
 		s.Strategy.Encode(e)
 	}
-	if s.Strategy.Set {
-		e.Comma()
-	}
+
+	e.Comma()
 
 	e.RawStr("\"template\"" + ":")
 	s.Template.Encode(e)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -3929,19 +4368,38 @@ func (s *IoK8sAPIAppsV1DeploymentSpec) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPIAppsV1DeploymentStatus) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.AvailableReplicas.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.AvailableReplicas.Set {
 		e.RawStr("\"availableReplicas\"" + ":")
 		s.AvailableReplicas.Encode(e)
 	}
-	if s.AvailableReplicas.Set {
-		e.Comma()
+
+	if s.CollisionCount.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.CollisionCount.Set {
 		e.RawStr("\"collisionCount\"" + ":")
 		s.CollisionCount.Encode(e)
 	}
-	if s.CollisionCount.Set {
-		e.Comma()
+
+	if s.Conditions != nil {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Conditions != nil {
 		e.RawStr("\"conditions\"" + ":")
@@ -3959,44 +4417,60 @@ func (s IoK8sAPIAppsV1DeploymentStatus) Encode(e *jx.Writer) {
 		}
 		e.ArrEnd()
 	}
-	if s.Conditions != nil {
-		e.Comma()
+
+	if s.ObservedGeneration.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.ObservedGeneration.Set {
 		e.RawStr("\"observedGeneration\"" + ":")
 		s.ObservedGeneration.Encode(e)
 	}
-	if s.ObservedGeneration.Set {
-		e.Comma()
+
+	if s.ReadyReplicas.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.ReadyReplicas.Set {
 		e.RawStr("\"readyReplicas\"" + ":")
 		s.ReadyReplicas.Encode(e)
 	}
-	if s.ReadyReplicas.Set {
-		e.Comma()
+
+	if s.Replicas.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Replicas.Set {
 		e.RawStr("\"replicas\"" + ":")
 		s.Replicas.Encode(e)
 	}
-	if s.Replicas.Set {
-		e.Comma()
+
+	if s.UnavailableReplicas.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.UnavailableReplicas.Set {
 		e.RawStr("\"unavailableReplicas\"" + ":")
 		s.UnavailableReplicas.Encode(e)
 	}
-	if s.UnavailableReplicas.Set {
-		e.Comma()
+
+	if s.UpdatedReplicas.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.UpdatedReplicas.Set {
 		e.RawStr("\"updatedReplicas\"" + ":")
 		s.UpdatedReplicas.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -4065,20 +4539,31 @@ func (s *IoK8sAPIAppsV1DeploymentStatus) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPIAppsV1DeploymentStrategy) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.RollingUpdate.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.RollingUpdate.Set {
 		e.RawStr("\"rollingUpdate\"" + ":")
 		s.RollingUpdate.Encode(e)
 	}
-	if s.RollingUpdate.Set {
-		e.Comma()
+
+	if s.Type.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Type.Set {
 		e.RawStr("\"type\"" + ":")
 		s.Type.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -4110,41 +4595,64 @@ func (s *IoK8sAPIAppsV1DeploymentStrategy) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPIAppsV1ReplicaSet) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.ApiVersion.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.ApiVersion.Set {
 		e.RawStr("\"apiVersion\"" + ":")
 		s.ApiVersion.Encode(e)
 	}
-	if s.ApiVersion.Set {
-		e.Comma()
+
+	if s.Kind.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Kind.Set {
 		e.RawStr("\"kind\"" + ":")
 		s.Kind.Encode(e)
 	}
-	if s.Kind.Set {
-		e.Comma()
+
+	if s.Metadata.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Metadata.Set {
 		e.RawStr("\"metadata\"" + ":")
 		s.Metadata.Encode(e)
 	}
-	if s.Metadata.Set {
-		e.Comma()
+
+	if s.Spec.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Spec.Set {
 		e.RawStr("\"spec\"" + ":")
 		s.Spec.Encode(e)
 	}
-	if s.Spec.Set {
-		e.Comma()
+
+	if s.Status.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Status.Set {
 		e.RawStr("\"status\"" + ":")
 		s.Status.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -4191,38 +4699,56 @@ func (s *IoK8sAPIAppsV1ReplicaSet) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPIAppsV1ReplicaSetCondition) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.LastTransitionTime.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.LastTransitionTime.Set {
 		e.RawStr("\"lastTransitionTime\"" + ":")
 		s.LastTransitionTime.Encode(e)
 	}
-	if s.LastTransitionTime.Set {
-		e.Comma()
+
+	if s.Message.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Message.Set {
 		e.RawStr("\"message\"" + ":")
 		s.Message.Encode(e)
 	}
-	if s.Message.Set {
-		e.Comma()
+
+	if s.Reason.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Reason.Set {
 		e.RawStr("\"reason\"" + ":")
 		s.Reason.Encode(e)
 	}
-	if s.Reason.Set {
+
+	if !first {
 		e.Comma()
 	}
+	first = false
 
 	e.RawStr("\"status\"" + ":")
 	e.Str(s.Status)
+
 	e.Comma()
 
 	e.RawStr("\"type\"" + ":")
 	e.Str(s.Type)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -4270,13 +4796,27 @@ func (s *IoK8sAPIAppsV1ReplicaSetCondition) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPIAppsV1ReplicaSetList) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.ApiVersion.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.ApiVersion.Set {
 		e.RawStr("\"apiVersion\"" + ":")
 		s.ApiVersion.Encode(e)
 	}
-	if s.ApiVersion.Set {
+
+	if !first {
+
 		e.Comma()
 	}
+	first = false
 
 	e.RawStr("\"items\"" + ":")
 	e.ArrStart()
@@ -4293,21 +4833,20 @@ func (s IoK8sAPIAppsV1ReplicaSetList) Encode(e *jx.Writer) {
 	}
 	e.ArrEnd()
 
-	e.Comma()
+	if s.Kind.Set {
+		e.Comma()
+	}
 	if s.Kind.Set {
 		e.RawStr("\"kind\"" + ":")
 		s.Kind.Encode(e)
 	}
-	if s.Kind.Set {
+
+	if s.Metadata.Set {
 		e.Comma()
 	}
 	if s.Metadata.Set {
 		e.RawStr("\"metadata\"" + ":")
 		s.Metadata.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -4356,32 +4895,48 @@ func (s *IoK8sAPIAppsV1ReplicaSetList) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPIAppsV1ReplicaSetSpec) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.MinReadySeconds.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.MinReadySeconds.Set {
 		e.RawStr("\"minReadySeconds\"" + ":")
 		s.MinReadySeconds.Encode(e)
 	}
-	if s.MinReadySeconds.Set {
-		e.Comma()
+
+	if s.Replicas.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Replicas.Set {
 		e.RawStr("\"replicas\"" + ":")
 		s.Replicas.Encode(e)
 	}
-	if s.Replicas.Set {
+
+	if !first {
+
 		e.Comma()
 	}
+	first = false
 
 	e.RawStr("\"selector\"" + ":")
 	s.Selector.Encode(e)
 
-	e.Comma()
+	if s.Template.Set {
+		e.Comma()
+	}
 	if s.Template.Set {
 		e.RawStr("\"template\"" + ":")
 		s.Template.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -4422,12 +4977,27 @@ func (s *IoK8sAPIAppsV1ReplicaSetSpec) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPIAppsV1ReplicaSetStatus) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.AvailableReplicas.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.AvailableReplicas.Set {
 		e.RawStr("\"availableReplicas\"" + ":")
 		s.AvailableReplicas.Encode(e)
 	}
-	if s.AvailableReplicas.Set {
-		e.Comma()
+
+	if s.Conditions != nil {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Conditions != nil {
 		e.RawStr("\"conditions\"" + ":")
@@ -4445,37 +5015,47 @@ func (s IoK8sAPIAppsV1ReplicaSetStatus) Encode(e *jx.Writer) {
 		}
 		e.ArrEnd()
 	}
-	if s.Conditions != nil {
-		e.Comma()
+
+	if s.FullyLabeledReplicas.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.FullyLabeledReplicas.Set {
 		e.RawStr("\"fullyLabeledReplicas\"" + ":")
 		s.FullyLabeledReplicas.Encode(e)
 	}
-	if s.FullyLabeledReplicas.Set {
-		e.Comma()
+
+	if s.ObservedGeneration.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.ObservedGeneration.Set {
 		e.RawStr("\"observedGeneration\"" + ":")
 		s.ObservedGeneration.Encode(e)
 	}
-	if s.ObservedGeneration.Set {
-		e.Comma()
+
+	if s.ReadyReplicas.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.ReadyReplicas.Set {
 		e.RawStr("\"readyReplicas\"" + ":")
 		s.ReadyReplicas.Encode(e)
 	}
-	if s.ReadyReplicas.Set {
+
+	if !first {
 		e.Comma()
 	}
+	first = false
 
 	e.RawStr("\"replicas\"" + ":")
 	e.Int32(s.Replicas)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -4534,20 +5114,31 @@ func (s *IoK8sAPIAppsV1ReplicaSetStatus) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPIAppsV1RollingUpdateDaemonSet) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.MaxSurge.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.MaxSurge.Set {
 		e.RawStr("\"maxSurge\"" + ":")
 		s.MaxSurge.Encode(e)
 	}
-	if s.MaxSurge.Set {
-		e.Comma()
+
+	if s.MaxUnavailable.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.MaxUnavailable.Set {
 		e.RawStr("\"maxUnavailable\"" + ":")
 		s.MaxUnavailable.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -4579,20 +5170,31 @@ func (s *IoK8sAPIAppsV1RollingUpdateDaemonSet) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPIAppsV1RollingUpdateDeployment) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.MaxSurge.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.MaxSurge.Set {
 		e.RawStr("\"maxSurge\"" + ":")
 		s.MaxSurge.Encode(e)
 	}
-	if s.MaxSurge.Set {
-		e.Comma()
+
+	if s.MaxUnavailable.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.MaxUnavailable.Set {
 		e.RawStr("\"maxUnavailable\"" + ":")
 		s.MaxUnavailable.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -4624,13 +5226,20 @@ func (s *IoK8sAPIAppsV1RollingUpdateDeployment) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPIAppsV1RollingUpdateStatefulSetStrategy) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.Partition.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.Partition.Set {
 		e.RawStr("\"partition\"" + ":")
 		s.Partition.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -4657,41 +5266,64 @@ func (s *IoK8sAPIAppsV1RollingUpdateStatefulSetStrategy) Decode(d *jx.Decoder) e
 // Encode implements json.Marshaler.
 func (s IoK8sAPIAppsV1StatefulSet) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.ApiVersion.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.ApiVersion.Set {
 		e.RawStr("\"apiVersion\"" + ":")
 		s.ApiVersion.Encode(e)
 	}
-	if s.ApiVersion.Set {
-		e.Comma()
+
+	if s.Kind.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Kind.Set {
 		e.RawStr("\"kind\"" + ":")
 		s.Kind.Encode(e)
 	}
-	if s.Kind.Set {
-		e.Comma()
+
+	if s.Metadata.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Metadata.Set {
 		e.RawStr("\"metadata\"" + ":")
 		s.Metadata.Encode(e)
 	}
-	if s.Metadata.Set {
-		e.Comma()
+
+	if s.Spec.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Spec.Set {
 		e.RawStr("\"spec\"" + ":")
 		s.Spec.Encode(e)
 	}
-	if s.Spec.Set {
-		e.Comma()
+
+	if s.Status.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Status.Set {
 		e.RawStr("\"status\"" + ":")
 		s.Status.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -4738,38 +5370,56 @@ func (s *IoK8sAPIAppsV1StatefulSet) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPIAppsV1StatefulSetCondition) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.LastTransitionTime.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.LastTransitionTime.Set {
 		e.RawStr("\"lastTransitionTime\"" + ":")
 		s.LastTransitionTime.Encode(e)
 	}
-	if s.LastTransitionTime.Set {
-		e.Comma()
+
+	if s.Message.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Message.Set {
 		e.RawStr("\"message\"" + ":")
 		s.Message.Encode(e)
 	}
-	if s.Message.Set {
-		e.Comma()
+
+	if s.Reason.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Reason.Set {
 		e.RawStr("\"reason\"" + ":")
 		s.Reason.Encode(e)
 	}
-	if s.Reason.Set {
+
+	if !first {
 		e.Comma()
 	}
+	first = false
 
 	e.RawStr("\"status\"" + ":")
 	e.Str(s.Status)
+
 	e.Comma()
 
 	e.RawStr("\"type\"" + ":")
 	e.Str(s.Type)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -4817,13 +5467,27 @@ func (s *IoK8sAPIAppsV1StatefulSetCondition) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPIAppsV1StatefulSetList) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.ApiVersion.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.ApiVersion.Set {
 		e.RawStr("\"apiVersion\"" + ":")
 		s.ApiVersion.Encode(e)
 	}
-	if s.ApiVersion.Set {
+
+	if !first {
+
 		e.Comma()
 	}
+	first = false
 
 	e.RawStr("\"items\"" + ":")
 	e.ArrStart()
@@ -4840,21 +5504,20 @@ func (s IoK8sAPIAppsV1StatefulSetList) Encode(e *jx.Writer) {
 	}
 	e.ArrEnd()
 
-	e.Comma()
+	if s.Kind.Set {
+		e.Comma()
+	}
 	if s.Kind.Set {
 		e.RawStr("\"kind\"" + ":")
 		s.Kind.Encode(e)
 	}
-	if s.Kind.Set {
+
+	if s.Metadata.Set {
 		e.Comma()
 	}
 	if s.Metadata.Set {
 		e.RawStr("\"metadata\"" + ":")
 		s.Metadata.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -4903,34 +5566,60 @@ func (s *IoK8sAPIAppsV1StatefulSetList) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPIAppsV1StatefulSetSpec) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.MinReadySeconds.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.MinReadySeconds.Set {
 		e.RawStr("\"minReadySeconds\"" + ":")
 		s.MinReadySeconds.Encode(e)
 	}
-	if s.MinReadySeconds.Set {
-		e.Comma()
+
+	if s.PodManagementPolicy.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.PodManagementPolicy.Set {
 		e.RawStr("\"podManagementPolicy\"" + ":")
 		s.PodManagementPolicy.Encode(e)
 	}
-	if s.PodManagementPolicy.Set {
-		e.Comma()
+
+	if s.Replicas.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Replicas.Set {
 		e.RawStr("\"replicas\"" + ":")
 		s.Replicas.Encode(e)
 	}
-	if s.Replicas.Set {
-		e.Comma()
+
+	if s.RevisionHistoryLimit.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.RevisionHistoryLimit.Set {
 		e.RawStr("\"revisionHistoryLimit\"" + ":")
 		s.RevisionHistoryLimit.Encode(e)
 	}
-	if s.RevisionHistoryLimit.Set {
+
+	if !first {
+
 		e.Comma()
 	}
+	first = false
 
 	e.RawStr("\"selector\"" + ":")
 	s.Selector.Encode(e)
@@ -4939,17 +5628,21 @@ func (s IoK8sAPIAppsV1StatefulSetSpec) Encode(e *jx.Writer) {
 
 	e.RawStr("\"serviceName\"" + ":")
 	e.Str(s.ServiceName)
+
 	e.Comma()
 
 	e.RawStr("\"template\"" + ":")
 	s.Template.Encode(e)
 
-	e.Comma()
+	if s.UpdateStrategy.Set {
+		e.Comma()
+	}
 	if s.UpdateStrategy.Set {
 		e.RawStr("\"updateStrategy\"" + ":")
 		s.UpdateStrategy.Encode(e)
 	}
-	if s.UpdateStrategy.Set {
+
+	if s.VolumeClaimTemplates != nil {
 		e.Comma()
 	}
 	if s.VolumeClaimTemplates != nil {
@@ -4967,10 +5660,6 @@ func (s IoK8sAPIAppsV1StatefulSetSpec) Encode(e *jx.Writer) {
 			}
 		}
 		e.ArrEnd()
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -5043,15 +5732,28 @@ func (s *IoK8sAPIAppsV1StatefulSetSpec) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPIAppsV1StatefulSetStatus) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"availableReplicas\"" + ":")
 	e.Int32(s.AvailableReplicas)
-	e.Comma()
+
+	if s.CollisionCount.Set {
+		e.Comma()
+	}
 	if s.CollisionCount.Set {
 		e.RawStr("\"collisionCount\"" + ":")
 		s.CollisionCount.Encode(e)
 	}
-	if s.CollisionCount.Set {
+
+	if s.Conditions != nil {
 		e.Comma()
 	}
 	if s.Conditions != nil {
@@ -5070,55 +5772,58 @@ func (s IoK8sAPIAppsV1StatefulSetStatus) Encode(e *jx.Writer) {
 		}
 		e.ArrEnd()
 	}
-	if s.Conditions != nil {
+
+	if s.CurrentReplicas.Set {
 		e.Comma()
 	}
 	if s.CurrentReplicas.Set {
 		e.RawStr("\"currentReplicas\"" + ":")
 		s.CurrentReplicas.Encode(e)
 	}
-	if s.CurrentReplicas.Set {
+
+	if s.CurrentRevision.Set {
 		e.Comma()
 	}
 	if s.CurrentRevision.Set {
 		e.RawStr("\"currentRevision\"" + ":")
 		s.CurrentRevision.Encode(e)
 	}
-	if s.CurrentRevision.Set {
+
+	if s.ObservedGeneration.Set {
 		e.Comma()
 	}
 	if s.ObservedGeneration.Set {
 		e.RawStr("\"observedGeneration\"" + ":")
 		s.ObservedGeneration.Encode(e)
 	}
-	if s.ObservedGeneration.Set {
+
+	if s.ReadyReplicas.Set {
 		e.Comma()
 	}
 	if s.ReadyReplicas.Set {
 		e.RawStr("\"readyReplicas\"" + ":")
 		s.ReadyReplicas.Encode(e)
 	}
-	if s.ReadyReplicas.Set {
-		e.Comma()
-	}
+
+	e.Comma()
 
 	e.RawStr("\"replicas\"" + ":")
 	e.Int32(s.Replicas)
-	e.Comma()
+
+	if s.UpdateRevision.Set {
+		e.Comma()
+	}
 	if s.UpdateRevision.Set {
 		e.RawStr("\"updateRevision\"" + ":")
 		s.UpdateRevision.Encode(e)
 	}
-	if s.UpdateRevision.Set {
+
+	if s.UpdatedReplicas.Set {
 		e.Comma()
 	}
 	if s.UpdatedReplicas.Set {
 		e.RawStr("\"updatedReplicas\"" + ":")
 		s.UpdatedReplicas.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -5199,20 +5904,31 @@ func (s *IoK8sAPIAppsV1StatefulSetStatus) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPIAppsV1StatefulSetUpdateStrategy) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.RollingUpdate.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.RollingUpdate.Set {
 		e.RawStr("\"rollingUpdate\"" + ":")
 		s.RollingUpdate.Encode(e)
 	}
-	if s.RollingUpdate.Set {
-		e.Comma()
+
+	if s.Type.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Type.Set {
 		e.RawStr("\"type\"" + ":")
 		s.Type.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -5244,24 +5960,34 @@ func (s *IoK8sAPIAppsV1StatefulSetUpdateStrategy) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPIAutoscalingV1CrossVersionObjectReference) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.ApiVersion.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.ApiVersion.Set {
 		e.RawStr("\"apiVersion\"" + ":")
 		s.ApiVersion.Encode(e)
 	}
-	if s.ApiVersion.Set {
+
+	if !first {
 		e.Comma()
 	}
+	first = false
 
 	e.RawStr("\"kind\"" + ":")
 	e.Str(s.Kind)
+
 	e.Comma()
 
 	e.RawStr("\"name\"" + ":")
 	e.Str(s.Name)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -5299,41 +6025,64 @@ func (s *IoK8sAPIAutoscalingV1CrossVersionObjectReference) Decode(d *jx.Decoder)
 // Encode implements json.Marshaler.
 func (s IoK8sAPIAutoscalingV1HorizontalPodAutoscaler) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.ApiVersion.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.ApiVersion.Set {
 		e.RawStr("\"apiVersion\"" + ":")
 		s.ApiVersion.Encode(e)
 	}
-	if s.ApiVersion.Set {
-		e.Comma()
+
+	if s.Kind.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Kind.Set {
 		e.RawStr("\"kind\"" + ":")
 		s.Kind.Encode(e)
 	}
-	if s.Kind.Set {
-		e.Comma()
+
+	if s.Metadata.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Metadata.Set {
 		e.RawStr("\"metadata\"" + ":")
 		s.Metadata.Encode(e)
 	}
-	if s.Metadata.Set {
-		e.Comma()
+
+	if s.Spec.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Spec.Set {
 		e.RawStr("\"spec\"" + ":")
 		s.Spec.Encode(e)
 	}
-	if s.Spec.Set {
-		e.Comma()
+
+	if s.Status.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Status.Set {
 		e.RawStr("\"status\"" + ":")
 		s.Status.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -5380,13 +6129,27 @@ func (s *IoK8sAPIAutoscalingV1HorizontalPodAutoscaler) Decode(d *jx.Decoder) err
 // Encode implements json.Marshaler.
 func (s IoK8sAPIAutoscalingV1HorizontalPodAutoscalerList) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.ApiVersion.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.ApiVersion.Set {
 		e.RawStr("\"apiVersion\"" + ":")
 		s.ApiVersion.Encode(e)
 	}
-	if s.ApiVersion.Set {
+
+	if !first {
+
 		e.Comma()
 	}
+	first = false
 
 	e.RawStr("\"items\"" + ":")
 	e.ArrStart()
@@ -5403,21 +6166,20 @@ func (s IoK8sAPIAutoscalingV1HorizontalPodAutoscalerList) Encode(e *jx.Writer) {
 	}
 	e.ArrEnd()
 
-	e.Comma()
+	if s.Kind.Set {
+		e.Comma()
+	}
 	if s.Kind.Set {
 		e.RawStr("\"kind\"" + ":")
 		s.Kind.Encode(e)
 	}
-	if s.Kind.Set {
+
+	if s.Metadata.Set {
 		e.Comma()
 	}
 	if s.Metadata.Set {
 		e.RawStr("\"metadata\"" + ":")
 		s.Metadata.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -5466,29 +6228,38 @@ func (s *IoK8sAPIAutoscalingV1HorizontalPodAutoscalerList) Decode(d *jx.Decoder)
 // Encode implements json.Marshaler.
 func (s IoK8sAPIAutoscalingV1HorizontalPodAutoscalerSpec) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"maxReplicas\"" + ":")
 	e.Int32(s.MaxReplicas)
-	e.Comma()
+
+	if s.MinReplicas.Set {
+		e.Comma()
+	}
 	if s.MinReplicas.Set {
 		e.RawStr("\"minReplicas\"" + ":")
 		s.MinReplicas.Encode(e)
 	}
-	if s.MinReplicas.Set {
-		e.Comma()
-	}
+
+	e.Comma()
 
 	e.RawStr("\"scaleTargetRef\"" + ":")
 	s.ScaleTargetRef.Encode(e)
 
-	e.Comma()
+	if s.TargetCPUUtilizationPercentage.Set {
+		e.Comma()
+	}
 	if s.TargetCPUUtilizationPercentage.Set {
 		e.RawStr("\"targetCPUUtilizationPercentage\"" + ":")
 		s.TargetCPUUtilizationPercentage.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -5530,35 +6301,49 @@ func (s *IoK8sAPIAutoscalingV1HorizontalPodAutoscalerSpec) Decode(d *jx.Decoder)
 // Encode implements json.Marshaler.
 func (s IoK8sAPIAutoscalingV1HorizontalPodAutoscalerStatus) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.CurrentCPUUtilizationPercentage.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.CurrentCPUUtilizationPercentage.Set {
 		e.RawStr("\"currentCPUUtilizationPercentage\"" + ":")
 		s.CurrentCPUUtilizationPercentage.Encode(e)
 	}
-	if s.CurrentCPUUtilizationPercentage.Set {
+
+	if !first {
 		e.Comma()
 	}
+	first = false
 
 	e.RawStr("\"currentReplicas\"" + ":")
 	e.Int32(s.CurrentReplicas)
+
 	e.Comma()
 
 	e.RawStr("\"desiredReplicas\"" + ":")
 	e.Int32(s.DesiredReplicas)
-	e.Comma()
+
+	if s.LastScaleTime.Set {
+		e.Comma()
+	}
 	if s.LastScaleTime.Set {
 		e.RawStr("\"lastScaleTime\"" + ":")
 		s.LastScaleTime.Encode(e)
 	}
-	if s.LastScaleTime.Set {
+
+	if s.ObservedGeneration.Set {
 		e.Comma()
 	}
 	if s.ObservedGeneration.Set {
 		e.RawStr("\"observedGeneration\"" + ":")
 		s.ObservedGeneration.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -5607,41 +6392,64 @@ func (s *IoK8sAPIAutoscalingV1HorizontalPodAutoscalerStatus) Decode(d *jx.Decode
 // Encode implements json.Marshaler.
 func (s IoK8sAPIAutoscalingV1Scale) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.ApiVersion.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.ApiVersion.Set {
 		e.RawStr("\"apiVersion\"" + ":")
 		s.ApiVersion.Encode(e)
 	}
-	if s.ApiVersion.Set {
-		e.Comma()
+
+	if s.Kind.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Kind.Set {
 		e.RawStr("\"kind\"" + ":")
 		s.Kind.Encode(e)
 	}
-	if s.Kind.Set {
-		e.Comma()
+
+	if s.Metadata.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Metadata.Set {
 		e.RawStr("\"metadata\"" + ":")
 		s.Metadata.Encode(e)
 	}
-	if s.Metadata.Set {
-		e.Comma()
+
+	if s.Spec.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Spec.Set {
 		e.RawStr("\"spec\"" + ":")
 		s.Spec.Encode(e)
 	}
-	if s.Spec.Set {
-		e.Comma()
+
+	if s.Status.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Status.Set {
 		e.RawStr("\"status\"" + ":")
 		s.Status.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -5688,13 +6496,20 @@ func (s *IoK8sAPIAutoscalingV1Scale) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPIAutoscalingV1ScaleSpec) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.Replicas.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.Replicas.Set {
 		e.RawStr("\"replicas\"" + ":")
 		s.Replicas.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -5721,17 +6536,25 @@ func (s *IoK8sAPIAutoscalingV1ScaleSpec) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPIAutoscalingV1ScaleStatus) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"replicas\"" + ":")
 	e.Int32(s.Replicas)
-	e.Comma()
+
+	if s.Selector.Set {
+		e.Comma()
+	}
 	if s.Selector.Set {
 		e.RawStr("\"selector\"" + ":")
 		s.Selector.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -5764,28 +6587,38 @@ func (s *IoK8sAPIAutoscalingV1ScaleStatus) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPIAutoscalingV2beta1ContainerResourceMetricSource) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"container\"" + ":")
 	e.Str(s.Container)
+
 	e.Comma()
 
 	e.RawStr("\"name\"" + ":")
 	e.Str(s.Name)
-	e.Comma()
+
+	if s.TargetAverageUtilization.Set {
+		e.Comma()
+	}
 	if s.TargetAverageUtilization.Set {
 		e.RawStr("\"targetAverageUtilization\"" + ":")
 		s.TargetAverageUtilization.Encode(e)
 	}
-	if s.TargetAverageUtilization.Set {
+
+	if s.TargetAverageValue.Set {
 		e.Comma()
 	}
 	if s.TargetAverageValue.Set {
 		e.RawStr("\"targetAverageValue\"" + ":")
 		s.TargetAverageValue.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -5829,17 +6662,28 @@ func (s *IoK8sAPIAutoscalingV2beta1ContainerResourceMetricSource) Decode(d *jx.D
 // Encode implements json.Marshaler.
 func (s IoK8sAPIAutoscalingV2beta1ContainerResourceMetricStatus) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"container\"" + ":")
 	e.Str(s.Container)
-	e.Comma()
+
+	if s.CurrentAverageUtilization.Set {
+		e.Comma()
+	}
 	if s.CurrentAverageUtilization.Set {
 		e.RawStr("\"currentAverageUtilization\"" + ":")
 		s.CurrentAverageUtilization.Encode(e)
 	}
-	if s.CurrentAverageUtilization.Set {
-		e.Comma()
-	}
+
+	e.Comma()
 
 	e.RawStr("\"currentAverageValue\"" + ":")
 	s.CurrentAverageValue.Encode(e)
@@ -5848,10 +6692,6 @@ func (s IoK8sAPIAutoscalingV2beta1ContainerResourceMetricStatus) Encode(e *jx.Wr
 
 	e.RawStr("\"name\"" + ":")
 	e.Str(s.Name)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -5899,24 +6739,34 @@ func (s *IoK8sAPIAutoscalingV2beta1ContainerResourceMetricStatus) Decode(d *jx.D
 // Encode implements json.Marshaler.
 func (s IoK8sAPIAutoscalingV2beta1CrossVersionObjectReference) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.ApiVersion.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.ApiVersion.Set {
 		e.RawStr("\"apiVersion\"" + ":")
 		s.ApiVersion.Encode(e)
 	}
-	if s.ApiVersion.Set {
+
+	if !first {
 		e.Comma()
 	}
+	first = false
 
 	e.RawStr("\"kind\"" + ":")
 	e.Str(s.Kind)
+
 	e.Comma()
 
 	e.RawStr("\"name\"" + ":")
 	e.Str(s.Name)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -5954,31 +6804,41 @@ func (s *IoK8sAPIAutoscalingV2beta1CrossVersionObjectReference) Decode(d *jx.Dec
 // Encode implements json.Marshaler.
 func (s IoK8sAPIAutoscalingV2beta1ExternalMetricSource) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"metricName\"" + ":")
 	e.Str(s.MetricName)
-	e.Comma()
+
+	if s.MetricSelector.Set {
+		e.Comma()
+	}
 	if s.MetricSelector.Set {
 		e.RawStr("\"metricSelector\"" + ":")
 		s.MetricSelector.Encode(e)
 	}
-	if s.MetricSelector.Set {
+
+	if s.TargetAverageValue.Set {
 		e.Comma()
 	}
 	if s.TargetAverageValue.Set {
 		e.RawStr("\"targetAverageValue\"" + ":")
 		s.TargetAverageValue.Encode(e)
 	}
-	if s.TargetAverageValue.Set {
+
+	if s.TargetValue.Set {
 		e.Comma()
 	}
 	if s.TargetValue.Set {
 		e.RawStr("\"targetValue\"" + ":")
 		s.TargetValue.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -6021,13 +6881,27 @@ func (s *IoK8sAPIAutoscalingV2beta1ExternalMetricSource) Decode(d *jx.Decoder) e
 // Encode implements json.Marshaler.
 func (s IoK8sAPIAutoscalingV2beta1ExternalMetricStatus) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.CurrentAverageValue.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.CurrentAverageValue.Set {
 		e.RawStr("\"currentAverageValue\"" + ":")
 		s.CurrentAverageValue.Encode(e)
 	}
-	if s.CurrentAverageValue.Set {
+
+	if !first {
+
 		e.Comma()
 	}
+	first = false
 
 	e.RawStr("\"currentValue\"" + ":")
 	s.CurrentValue.Encode(e)
@@ -6036,14 +6910,13 @@ func (s IoK8sAPIAutoscalingV2beta1ExternalMetricStatus) Encode(e *jx.Writer) {
 
 	e.RawStr("\"metricName\"" + ":")
 	e.Str(s.MetricName)
-	e.Comma()
+
+	if s.MetricSelector.Set {
+		e.Comma()
+	}
 	if s.MetricSelector.Set {
 		e.RawStr("\"metricSelector\"" + ":")
 		s.MetricSelector.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -6091,41 +6964,64 @@ func (s *IoK8sAPIAutoscalingV2beta1ExternalMetricStatus) Decode(d *jx.Decoder) e
 // Encode implements json.Marshaler.
 func (s IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscaler) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.ApiVersion.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.ApiVersion.Set {
 		e.RawStr("\"apiVersion\"" + ":")
 		s.ApiVersion.Encode(e)
 	}
-	if s.ApiVersion.Set {
-		e.Comma()
+
+	if s.Kind.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Kind.Set {
 		e.RawStr("\"kind\"" + ":")
 		s.Kind.Encode(e)
 	}
-	if s.Kind.Set {
-		e.Comma()
+
+	if s.Metadata.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Metadata.Set {
 		e.RawStr("\"metadata\"" + ":")
 		s.Metadata.Encode(e)
 	}
-	if s.Metadata.Set {
-		e.Comma()
+
+	if s.Spec.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Spec.Set {
 		e.RawStr("\"spec\"" + ":")
 		s.Spec.Encode(e)
 	}
-	if s.Spec.Set {
-		e.Comma()
+
+	if s.Status.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Status.Set {
 		e.RawStr("\"status\"" + ":")
 		s.Status.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -6172,38 +7068,56 @@ func (s *IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscaler) Decode(d *jx.Decoder
 // Encode implements json.Marshaler.
 func (s IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerCondition) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.LastTransitionTime.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.LastTransitionTime.Set {
 		e.RawStr("\"lastTransitionTime\"" + ":")
 		s.LastTransitionTime.Encode(e)
 	}
-	if s.LastTransitionTime.Set {
-		e.Comma()
+
+	if s.Message.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Message.Set {
 		e.RawStr("\"message\"" + ":")
 		s.Message.Encode(e)
 	}
-	if s.Message.Set {
-		e.Comma()
+
+	if s.Reason.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Reason.Set {
 		e.RawStr("\"reason\"" + ":")
 		s.Reason.Encode(e)
 	}
-	if s.Reason.Set {
+
+	if !first {
 		e.Comma()
 	}
+	first = false
 
 	e.RawStr("\"status\"" + ":")
 	e.Str(s.Status)
+
 	e.Comma()
 
 	e.RawStr("\"type\"" + ":")
 	e.Str(s.Type)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -6251,13 +7165,27 @@ func (s *IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerCondition) Decode(d *j
 // Encode implements json.Marshaler.
 func (s IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerList) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.ApiVersion.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.ApiVersion.Set {
 		e.RawStr("\"apiVersion\"" + ":")
 		s.ApiVersion.Encode(e)
 	}
-	if s.ApiVersion.Set {
+
+	if !first {
+
 		e.Comma()
 	}
+	first = false
 
 	e.RawStr("\"items\"" + ":")
 	e.ArrStart()
@@ -6274,21 +7202,20 @@ func (s IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerList) Encode(e *jx.Writ
 	}
 	e.ArrEnd()
 
-	e.Comma()
+	if s.Kind.Set {
+		e.Comma()
+	}
 	if s.Kind.Set {
 		e.RawStr("\"kind\"" + ":")
 		s.Kind.Encode(e)
 	}
-	if s.Kind.Set {
+
+	if s.Metadata.Set {
 		e.Comma()
 	}
 	if s.Metadata.Set {
 		e.RawStr("\"metadata\"" + ":")
 		s.Metadata.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -6337,10 +7264,22 @@ func (s *IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerList) Decode(d *jx.Dec
 // Encode implements json.Marshaler.
 func (s IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerSpec) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"maxReplicas\"" + ":")
 	e.Int32(s.MaxReplicas)
-	e.Comma()
+
+	if s.Metrics != nil {
+		e.Comma()
+	}
 	if s.Metrics != nil {
 		e.RawStr("\"metrics\"" + ":")
 		e.ArrStart()
@@ -6357,23 +7296,19 @@ func (s IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerSpec) Encode(e *jx.Writ
 		}
 		e.ArrEnd()
 	}
-	if s.Metrics != nil {
+
+	if s.MinReplicas.Set {
 		e.Comma()
 	}
 	if s.MinReplicas.Set {
 		e.RawStr("\"minReplicas\"" + ":")
 		s.MinReplicas.Encode(e)
 	}
-	if s.MinReplicas.Set {
-		e.Comma()
-	}
+
+	e.Comma()
 
 	e.RawStr("\"scaleTargetRef\"" + ":")
 	s.ScaleTargetRef.Encode(e)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -6421,6 +7356,16 @@ func (s *IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerSpec) Decode(d *jx.Dec
 // Encode implements json.Marshaler.
 func (s IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerStatus) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"conditions\"" + ":")
 	e.ArrStart()
@@ -6437,7 +7382,9 @@ func (s IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerStatus) Encode(e *jx.Wr
 	}
 	e.ArrEnd()
 
-	e.Comma()
+	if s.CurrentMetrics != nil {
+		e.Comma()
+	}
 	if s.CurrentMetrics != nil {
 		e.RawStr("\"currentMetrics\"" + ":")
 		e.ArrStart()
@@ -6454,31 +7401,31 @@ func (s IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerStatus) Encode(e *jx.Wr
 		}
 		e.ArrEnd()
 	}
-	if s.CurrentMetrics != nil {
-		e.Comma()
-	}
+
+	e.Comma()
 
 	e.RawStr("\"currentReplicas\"" + ":")
 	e.Int32(s.CurrentReplicas)
+
 	e.Comma()
 
 	e.RawStr("\"desiredReplicas\"" + ":")
 	e.Int32(s.DesiredReplicas)
-	e.Comma()
+
+	if s.LastScaleTime.Set {
+		e.Comma()
+	}
 	if s.LastScaleTime.Set {
 		e.RawStr("\"lastScaleTime\"" + ":")
 		s.LastScaleTime.Encode(e)
 	}
-	if s.LastScaleTime.Set {
+
+	if s.ObservedGeneration.Set {
 		e.Comma()
 	}
 	if s.ObservedGeneration.Set {
 		e.RawStr("\"observedGeneration\"" + ":")
 		s.ObservedGeneration.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -6546,48 +7493,73 @@ func (s *IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerStatus) Decode(d *jx.D
 // Encode implements json.Marshaler.
 func (s IoK8sAPIAutoscalingV2beta1MetricSpec) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.ContainerResource.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.ContainerResource.Set {
 		e.RawStr("\"containerResource\"" + ":")
 		s.ContainerResource.Encode(e)
 	}
-	if s.ContainerResource.Set {
-		e.Comma()
+
+	if s.External.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.External.Set {
 		e.RawStr("\"external\"" + ":")
 		s.External.Encode(e)
 	}
-	if s.External.Set {
-		e.Comma()
+
+	if s.Object.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Object.Set {
 		e.RawStr("\"object\"" + ":")
 		s.Object.Encode(e)
 	}
-	if s.Object.Set {
-		e.Comma()
+
+	if s.Pods.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Pods.Set {
 		e.RawStr("\"pods\"" + ":")
 		s.Pods.Encode(e)
 	}
-	if s.Pods.Set {
-		e.Comma()
+
+	if s.Resource.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Resource.Set {
 		e.RawStr("\"resource\"" + ":")
 		s.Resource.Encode(e)
 	}
-	if s.Resource.Set {
+
+	if !first {
 		e.Comma()
 	}
+	first = false
 
 	e.RawStr("\"type\"" + ":")
 	e.Str(s.Type)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -6639,48 +7611,73 @@ func (s *IoK8sAPIAutoscalingV2beta1MetricSpec) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPIAutoscalingV2beta1MetricStatus) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.ContainerResource.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.ContainerResource.Set {
 		e.RawStr("\"containerResource\"" + ":")
 		s.ContainerResource.Encode(e)
 	}
-	if s.ContainerResource.Set {
-		e.Comma()
+
+	if s.External.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.External.Set {
 		e.RawStr("\"external\"" + ":")
 		s.External.Encode(e)
 	}
-	if s.External.Set {
-		e.Comma()
+
+	if s.Object.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Object.Set {
 		e.RawStr("\"object\"" + ":")
 		s.Object.Encode(e)
 	}
-	if s.Object.Set {
-		e.Comma()
+
+	if s.Pods.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Pods.Set {
 		e.RawStr("\"pods\"" + ":")
 		s.Pods.Encode(e)
 	}
-	if s.Pods.Set {
-		e.Comma()
+
+	if s.Resource.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Resource.Set {
 		e.RawStr("\"resource\"" + ":")
 		s.Resource.Encode(e)
 	}
-	if s.Resource.Set {
+
+	if !first {
 		e.Comma()
 	}
+	first = false
 
 	e.RawStr("\"type\"" + ":")
 	e.Str(s.Type)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -6732,24 +7729,39 @@ func (s *IoK8sAPIAutoscalingV2beta1MetricStatus) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPIAutoscalingV2beta1ObjectMetricSource) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.AverageValue.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.AverageValue.Set {
 		e.RawStr("\"averageValue\"" + ":")
 		s.AverageValue.Encode(e)
 	}
-	if s.AverageValue.Set {
+
+	if !first {
 		e.Comma()
 	}
+	first = false
 
 	e.RawStr("\"metricName\"" + ":")
 	e.Str(s.MetricName)
-	e.Comma()
+
+	if s.Selector.Set {
+		e.Comma()
+	}
 	if s.Selector.Set {
 		e.RawStr("\"selector\"" + ":")
 		s.Selector.Encode(e)
 	}
-	if s.Selector.Set {
-		e.Comma()
-	}
+
+	e.Comma()
 
 	e.RawStr("\"target\"" + ":")
 	s.Target.Encode(e)
@@ -6758,10 +7770,6 @@ func (s IoK8sAPIAutoscalingV2beta1ObjectMetricSource) Encode(e *jx.Writer) {
 
 	e.RawStr("\"targetValue\"" + ":")
 	s.TargetValue.Encode(e)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -6812,13 +7820,27 @@ func (s *IoK8sAPIAutoscalingV2beta1ObjectMetricSource) Decode(d *jx.Decoder) err
 // Encode implements json.Marshaler.
 func (s IoK8sAPIAutoscalingV2beta1ObjectMetricStatus) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.AverageValue.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.AverageValue.Set {
 		e.RawStr("\"averageValue\"" + ":")
 		s.AverageValue.Encode(e)
 	}
-	if s.AverageValue.Set {
+
+	if !first {
+
 		e.Comma()
 	}
+	first = false
 
 	e.RawStr("\"currentValue\"" + ":")
 	s.CurrentValue.Encode(e)
@@ -6827,21 +7849,19 @@ func (s IoK8sAPIAutoscalingV2beta1ObjectMetricStatus) Encode(e *jx.Writer) {
 
 	e.RawStr("\"metricName\"" + ":")
 	e.Str(s.MetricName)
-	e.Comma()
+
+	if s.Selector.Set {
+		e.Comma()
+	}
 	if s.Selector.Set {
 		e.RawStr("\"selector\"" + ":")
 		s.Selector.Encode(e)
 	}
-	if s.Selector.Set {
-		e.Comma()
-	}
+
+	e.Comma()
 
 	e.RawStr("\"target\"" + ":")
 	s.Target.Encode(e)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -6892,24 +7912,31 @@ func (s *IoK8sAPIAutoscalingV2beta1ObjectMetricStatus) Decode(d *jx.Decoder) err
 // Encode implements json.Marshaler.
 func (s IoK8sAPIAutoscalingV2beta1PodsMetricSource) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"metricName\"" + ":")
 	e.Str(s.MetricName)
-	e.Comma()
+
+	if s.Selector.Set {
+		e.Comma()
+	}
 	if s.Selector.Set {
 		e.RawStr("\"selector\"" + ":")
 		s.Selector.Encode(e)
 	}
-	if s.Selector.Set {
-		e.Comma()
-	}
+
+	e.Comma()
 
 	e.RawStr("\"targetAverageValue\"" + ":")
 	s.TargetAverageValue.Encode(e)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -6951,6 +7978,16 @@ func (s *IoK8sAPIAutoscalingV2beta1PodsMetricSource) Decode(d *jx.Decoder) error
 // Encode implements json.Marshaler.
 func (s IoK8sAPIAutoscalingV2beta1PodsMetricStatus) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"currentAverageValue\"" + ":")
 	s.CurrentAverageValue.Encode(e)
@@ -6959,14 +7996,13 @@ func (s IoK8sAPIAutoscalingV2beta1PodsMetricStatus) Encode(e *jx.Writer) {
 
 	e.RawStr("\"metricName\"" + ":")
 	e.Str(s.MetricName)
-	e.Comma()
+
+	if s.Selector.Set {
+		e.Comma()
+	}
 	if s.Selector.Set {
 		e.RawStr("\"selector\"" + ":")
 		s.Selector.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -7009,24 +8045,33 @@ func (s *IoK8sAPIAutoscalingV2beta1PodsMetricStatus) Decode(d *jx.Decoder) error
 // Encode implements json.Marshaler.
 func (s IoK8sAPIAutoscalingV2beta1ResourceMetricSource) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"name\"" + ":")
 	e.Str(s.Name)
-	e.Comma()
+
+	if s.TargetAverageUtilization.Set {
+		e.Comma()
+	}
 	if s.TargetAverageUtilization.Set {
 		e.RawStr("\"targetAverageUtilization\"" + ":")
 		s.TargetAverageUtilization.Encode(e)
 	}
-	if s.TargetAverageUtilization.Set {
+
+	if s.TargetAverageValue.Set {
 		e.Comma()
 	}
 	if s.TargetAverageValue.Set {
 		e.RawStr("\"targetAverageValue\"" + ":")
 		s.TargetAverageValue.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -7064,13 +8109,27 @@ func (s *IoK8sAPIAutoscalingV2beta1ResourceMetricSource) Decode(d *jx.Decoder) e
 // Encode implements json.Marshaler.
 func (s IoK8sAPIAutoscalingV2beta1ResourceMetricStatus) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.CurrentAverageUtilization.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.CurrentAverageUtilization.Set {
 		e.RawStr("\"currentAverageUtilization\"" + ":")
 		s.CurrentAverageUtilization.Encode(e)
 	}
-	if s.CurrentAverageUtilization.Set {
+
+	if !first {
+
 		e.Comma()
 	}
+	first = false
 
 	e.RawStr("\"currentAverageValue\"" + ":")
 	s.CurrentAverageValue.Encode(e)
@@ -7079,10 +8138,6 @@ func (s IoK8sAPIAutoscalingV2beta1ResourceMetricStatus) Encode(e *jx.Writer) {
 
 	e.RawStr("\"name\"" + ":")
 	e.Str(s.Name)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -7124,21 +8179,28 @@ func (s *IoK8sAPIAutoscalingV2beta1ResourceMetricStatus) Decode(d *jx.Decoder) e
 // Encode implements json.Marshaler.
 func (s IoK8sAPIAutoscalingV2beta2ContainerResourceMetricSource) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"container\"" + ":")
 	e.Str(s.Container)
+
 	e.Comma()
 
 	e.RawStr("\"name\"" + ":")
 	e.Str(s.Name)
+
 	e.Comma()
 
 	e.RawStr("\"target\"" + ":")
 	s.Target.Encode(e)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -7175,9 +8237,19 @@ func (s *IoK8sAPIAutoscalingV2beta2ContainerResourceMetricSource) Decode(d *jx.D
 // Encode implements json.Marshaler.
 func (s IoK8sAPIAutoscalingV2beta2ContainerResourceMetricStatus) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"container\"" + ":")
 	e.Str(s.Container)
+
 	e.Comma()
 
 	e.RawStr("\"current\"" + ":")
@@ -7187,10 +8259,6 @@ func (s IoK8sAPIAutoscalingV2beta2ContainerResourceMetricStatus) Encode(e *jx.Wr
 
 	e.RawStr("\"name\"" + ":")
 	e.Str(s.Name)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -7227,24 +8295,34 @@ func (s *IoK8sAPIAutoscalingV2beta2ContainerResourceMetricStatus) Decode(d *jx.D
 // Encode implements json.Marshaler.
 func (s IoK8sAPIAutoscalingV2beta2CrossVersionObjectReference) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.ApiVersion.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.ApiVersion.Set {
 		e.RawStr("\"apiVersion\"" + ":")
 		s.ApiVersion.Encode(e)
 	}
-	if s.ApiVersion.Set {
+
+	if !first {
 		e.Comma()
 	}
+	first = false
 
 	e.RawStr("\"kind\"" + ":")
 	e.Str(s.Kind)
+
 	e.Comma()
 
 	e.RawStr("\"name\"" + ":")
 	e.Str(s.Name)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -7282,6 +8360,16 @@ func (s *IoK8sAPIAutoscalingV2beta2CrossVersionObjectReference) Decode(d *jx.Dec
 // Encode implements json.Marshaler.
 func (s IoK8sAPIAutoscalingV2beta2ExternalMetricSource) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"metric\"" + ":")
 	s.Metric.Encode(e)
@@ -7290,10 +8378,6 @@ func (s IoK8sAPIAutoscalingV2beta2ExternalMetricSource) Encode(e *jx.Writer) {
 
 	e.RawStr("\"target\"" + ":")
 	s.Target.Encode(e)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -7322,6 +8406,16 @@ func (s *IoK8sAPIAutoscalingV2beta2ExternalMetricSource) Decode(d *jx.Decoder) e
 // Encode implements json.Marshaler.
 func (s IoK8sAPIAutoscalingV2beta2ExternalMetricStatus) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"current\"" + ":")
 	s.Current.Encode(e)
@@ -7330,10 +8424,6 @@ func (s IoK8sAPIAutoscalingV2beta2ExternalMetricStatus) Encode(e *jx.Writer) {
 
 	e.RawStr("\"metric\"" + ":")
 	s.Metric.Encode(e)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -7362,21 +8452,28 @@ func (s *IoK8sAPIAutoscalingV2beta2ExternalMetricStatus) Decode(d *jx.Decoder) e
 // Encode implements json.Marshaler.
 func (s IoK8sAPIAutoscalingV2beta2HPAScalingPolicy) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"periodSeconds\"" + ":")
 	e.Int32(s.PeriodSeconds)
+
 	e.Comma()
 
 	e.RawStr("\"type\"" + ":")
 	e.Str(s.Type)
+
 	e.Comma()
 
 	e.RawStr("\"value\"" + ":")
 	e.Int32(s.Value)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -7415,6 +8512,17 @@ func (s *IoK8sAPIAutoscalingV2beta2HPAScalingPolicy) Decode(d *jx.Decoder) error
 // Encode implements json.Marshaler.
 func (s IoK8sAPIAutoscalingV2beta2HPAScalingRules) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.Policies != nil {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.Policies != nil {
 		e.RawStr("\"policies\"" + ":")
 		e.ArrStart()
@@ -7431,23 +8539,27 @@ func (s IoK8sAPIAutoscalingV2beta2HPAScalingRules) Encode(e *jx.Writer) {
 		}
 		e.ArrEnd()
 	}
-	if s.Policies != nil {
-		e.Comma()
+
+	if s.SelectPolicy.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.SelectPolicy.Set {
 		e.RawStr("\"selectPolicy\"" + ":")
 		s.SelectPolicy.Encode(e)
 	}
-	if s.SelectPolicy.Set {
-		e.Comma()
+
+	if s.StabilizationWindowSeconds.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.StabilizationWindowSeconds.Set {
 		e.RawStr("\"stabilizationWindowSeconds\"" + ":")
 		s.StabilizationWindowSeconds.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -7491,41 +8603,64 @@ func (s *IoK8sAPIAutoscalingV2beta2HPAScalingRules) Decode(d *jx.Decoder) error 
 // Encode implements json.Marshaler.
 func (s IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscaler) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.ApiVersion.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.ApiVersion.Set {
 		e.RawStr("\"apiVersion\"" + ":")
 		s.ApiVersion.Encode(e)
 	}
-	if s.ApiVersion.Set {
-		e.Comma()
+
+	if s.Kind.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Kind.Set {
 		e.RawStr("\"kind\"" + ":")
 		s.Kind.Encode(e)
 	}
-	if s.Kind.Set {
-		e.Comma()
+
+	if s.Metadata.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Metadata.Set {
 		e.RawStr("\"metadata\"" + ":")
 		s.Metadata.Encode(e)
 	}
-	if s.Metadata.Set {
-		e.Comma()
+
+	if s.Spec.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Spec.Set {
 		e.RawStr("\"spec\"" + ":")
 		s.Spec.Encode(e)
 	}
-	if s.Spec.Set {
-		e.Comma()
+
+	if s.Status.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Status.Set {
 		e.RawStr("\"status\"" + ":")
 		s.Status.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -7572,20 +8707,31 @@ func (s *IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscaler) Decode(d *jx.Decoder
 // Encode implements json.Marshaler.
 func (s IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerBehavior) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.ScaleDown.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.ScaleDown.Set {
 		e.RawStr("\"scaleDown\"" + ":")
 		s.ScaleDown.Encode(e)
 	}
-	if s.ScaleDown.Set {
-		e.Comma()
+
+	if s.ScaleUp.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.ScaleUp.Set {
 		e.RawStr("\"scaleUp\"" + ":")
 		s.ScaleUp.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -7617,38 +8763,56 @@ func (s *IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerBehavior) Decode(d *jx
 // Encode implements json.Marshaler.
 func (s IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerCondition) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.LastTransitionTime.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.LastTransitionTime.Set {
 		e.RawStr("\"lastTransitionTime\"" + ":")
 		s.LastTransitionTime.Encode(e)
 	}
-	if s.LastTransitionTime.Set {
-		e.Comma()
+
+	if s.Message.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Message.Set {
 		e.RawStr("\"message\"" + ":")
 		s.Message.Encode(e)
 	}
-	if s.Message.Set {
-		e.Comma()
+
+	if s.Reason.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Reason.Set {
 		e.RawStr("\"reason\"" + ":")
 		s.Reason.Encode(e)
 	}
-	if s.Reason.Set {
+
+	if !first {
 		e.Comma()
 	}
+	first = false
 
 	e.RawStr("\"status\"" + ":")
 	e.Str(s.Status)
+
 	e.Comma()
 
 	e.RawStr("\"type\"" + ":")
 	e.Str(s.Type)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -7696,13 +8860,27 @@ func (s *IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerCondition) Decode(d *j
 // Encode implements json.Marshaler.
 func (s IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerList) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.ApiVersion.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.ApiVersion.Set {
 		e.RawStr("\"apiVersion\"" + ":")
 		s.ApiVersion.Encode(e)
 	}
-	if s.ApiVersion.Set {
+
+	if !first {
+
 		e.Comma()
 	}
+	first = false
 
 	e.RawStr("\"items\"" + ":")
 	e.ArrStart()
@@ -7719,21 +8897,20 @@ func (s IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerList) Encode(e *jx.Writ
 	}
 	e.ArrEnd()
 
-	e.Comma()
+	if s.Kind.Set {
+		e.Comma()
+	}
 	if s.Kind.Set {
 		e.RawStr("\"kind\"" + ":")
 		s.Kind.Encode(e)
 	}
-	if s.Kind.Set {
+
+	if s.Metadata.Set {
 		e.Comma()
 	}
 	if s.Metadata.Set {
 		e.RawStr("\"metadata\"" + ":")
 		s.Metadata.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -7782,17 +8959,33 @@ func (s *IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerList) Decode(d *jx.Dec
 // Encode implements json.Marshaler.
 func (s IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerSpec) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.Behavior.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.Behavior.Set {
 		e.RawStr("\"behavior\"" + ":")
 		s.Behavior.Encode(e)
 	}
-	if s.Behavior.Set {
+
+	if !first {
 		e.Comma()
 	}
+	first = false
 
 	e.RawStr("\"maxReplicas\"" + ":")
 	e.Int32(s.MaxReplicas)
-	e.Comma()
+
+	if s.Metrics != nil {
+		e.Comma()
+	}
 	if s.Metrics != nil {
 		e.RawStr("\"metrics\"" + ":")
 		e.ArrStart()
@@ -7809,23 +9002,19 @@ func (s IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerSpec) Encode(e *jx.Writ
 		}
 		e.ArrEnd()
 	}
-	if s.Metrics != nil {
+
+	if s.MinReplicas.Set {
 		e.Comma()
 	}
 	if s.MinReplicas.Set {
 		e.RawStr("\"minReplicas\"" + ":")
 		s.MinReplicas.Encode(e)
 	}
-	if s.MinReplicas.Set {
-		e.Comma()
-	}
+
+	e.Comma()
 
 	e.RawStr("\"scaleTargetRef\"" + ":")
 	s.ScaleTargetRef.Encode(e)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -7878,6 +9067,16 @@ func (s *IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerSpec) Decode(d *jx.Dec
 // Encode implements json.Marshaler.
 func (s IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerStatus) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"conditions\"" + ":")
 	e.ArrStart()
@@ -7894,7 +9093,9 @@ func (s IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerStatus) Encode(e *jx.Wr
 	}
 	e.ArrEnd()
 
-	e.Comma()
+	if s.CurrentMetrics != nil {
+		e.Comma()
+	}
 	if s.CurrentMetrics != nil {
 		e.RawStr("\"currentMetrics\"" + ":")
 		e.ArrStart()
@@ -7911,31 +9112,31 @@ func (s IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerStatus) Encode(e *jx.Wr
 		}
 		e.ArrEnd()
 	}
-	if s.CurrentMetrics != nil {
-		e.Comma()
-	}
+
+	e.Comma()
 
 	e.RawStr("\"currentReplicas\"" + ":")
 	e.Int32(s.CurrentReplicas)
+
 	e.Comma()
 
 	e.RawStr("\"desiredReplicas\"" + ":")
 	e.Int32(s.DesiredReplicas)
-	e.Comma()
+
+	if s.LastScaleTime.Set {
+		e.Comma()
+	}
 	if s.LastScaleTime.Set {
 		e.RawStr("\"lastScaleTime\"" + ":")
 		s.LastScaleTime.Encode(e)
 	}
-	if s.LastScaleTime.Set {
+
+	if s.ObservedGeneration.Set {
 		e.Comma()
 	}
 	if s.ObservedGeneration.Set {
 		e.RawStr("\"observedGeneration\"" + ":")
 		s.ObservedGeneration.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -8003,17 +9204,25 @@ func (s *IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerStatus) Decode(d *jx.D
 // Encode implements json.Marshaler.
 func (s IoK8sAPIAutoscalingV2beta2MetricIdentifier) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"name\"" + ":")
 	e.Str(s.Name)
-	e.Comma()
+
+	if s.Selector.Set {
+		e.Comma()
+	}
 	if s.Selector.Set {
 		e.RawStr("\"selector\"" + ":")
 		s.Selector.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -8046,48 +9255,73 @@ func (s *IoK8sAPIAutoscalingV2beta2MetricIdentifier) Decode(d *jx.Decoder) error
 // Encode implements json.Marshaler.
 func (s IoK8sAPIAutoscalingV2beta2MetricSpec) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.ContainerResource.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.ContainerResource.Set {
 		e.RawStr("\"containerResource\"" + ":")
 		s.ContainerResource.Encode(e)
 	}
-	if s.ContainerResource.Set {
-		e.Comma()
+
+	if s.External.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.External.Set {
 		e.RawStr("\"external\"" + ":")
 		s.External.Encode(e)
 	}
-	if s.External.Set {
-		e.Comma()
+
+	if s.Object.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Object.Set {
 		e.RawStr("\"object\"" + ":")
 		s.Object.Encode(e)
 	}
-	if s.Object.Set {
-		e.Comma()
+
+	if s.Pods.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Pods.Set {
 		e.RawStr("\"pods\"" + ":")
 		s.Pods.Encode(e)
 	}
-	if s.Pods.Set {
-		e.Comma()
+
+	if s.Resource.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Resource.Set {
 		e.RawStr("\"resource\"" + ":")
 		s.Resource.Encode(e)
 	}
-	if s.Resource.Set {
+
+	if !first {
 		e.Comma()
 	}
+	first = false
 
 	e.RawStr("\"type\"" + ":")
 	e.Str(s.Type)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -8139,48 +9373,73 @@ func (s *IoK8sAPIAutoscalingV2beta2MetricSpec) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPIAutoscalingV2beta2MetricStatus) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.ContainerResource.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.ContainerResource.Set {
 		e.RawStr("\"containerResource\"" + ":")
 		s.ContainerResource.Encode(e)
 	}
-	if s.ContainerResource.Set {
-		e.Comma()
+
+	if s.External.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.External.Set {
 		e.RawStr("\"external\"" + ":")
 		s.External.Encode(e)
 	}
-	if s.External.Set {
-		e.Comma()
+
+	if s.Object.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Object.Set {
 		e.RawStr("\"object\"" + ":")
 		s.Object.Encode(e)
 	}
-	if s.Object.Set {
-		e.Comma()
+
+	if s.Pods.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Pods.Set {
 		e.RawStr("\"pods\"" + ":")
 		s.Pods.Encode(e)
 	}
-	if s.Pods.Set {
-		e.Comma()
+
+	if s.Resource.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Resource.Set {
 		e.RawStr("\"resource\"" + ":")
 		s.Resource.Encode(e)
 	}
-	if s.Resource.Set {
+
+	if !first {
 		e.Comma()
 	}
+	first = false
 
 	e.RawStr("\"type\"" + ":")
 	e.Str(s.Type)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -8232,31 +9491,47 @@ func (s *IoK8sAPIAutoscalingV2beta2MetricStatus) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPIAutoscalingV2beta2MetricTarget) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.AverageUtilization.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.AverageUtilization.Set {
 		e.RawStr("\"averageUtilization\"" + ":")
 		s.AverageUtilization.Encode(e)
 	}
-	if s.AverageUtilization.Set {
-		e.Comma()
+
+	if s.AverageValue.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.AverageValue.Set {
 		e.RawStr("\"averageValue\"" + ":")
 		s.AverageValue.Encode(e)
 	}
-	if s.AverageValue.Set {
+
+	if !first {
 		e.Comma()
 	}
+	first = false
 
 	e.RawStr("\"type\"" + ":")
 	e.Str(s.Type)
-	e.Comma()
+
+	if s.Value.Set {
+		e.Comma()
+	}
 	if s.Value.Set {
 		e.RawStr("\"value\"" + ":")
 		s.Value.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -8299,27 +9574,42 @@ func (s *IoK8sAPIAutoscalingV2beta2MetricTarget) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPIAutoscalingV2beta2MetricValueStatus) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.AverageUtilization.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.AverageUtilization.Set {
 		e.RawStr("\"averageUtilization\"" + ":")
 		s.AverageUtilization.Encode(e)
 	}
-	if s.AverageUtilization.Set {
-		e.Comma()
+
+	if s.AverageValue.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.AverageValue.Set {
 		e.RawStr("\"averageValue\"" + ":")
 		s.AverageValue.Encode(e)
 	}
-	if s.AverageValue.Set {
-		e.Comma()
+
+	if s.Value.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Value.Set {
 		e.RawStr("\"value\"" + ":")
 		s.Value.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -8356,6 +9646,16 @@ func (s *IoK8sAPIAutoscalingV2beta2MetricValueStatus) Decode(d *jx.Decoder) erro
 // Encode implements json.Marshaler.
 func (s IoK8sAPIAutoscalingV2beta2ObjectMetricSource) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"describedObject\"" + ":")
 	s.DescribedObject.Encode(e)
@@ -8369,10 +9669,6 @@ func (s IoK8sAPIAutoscalingV2beta2ObjectMetricSource) Encode(e *jx.Writer) {
 
 	e.RawStr("\"target\"" + ":")
 	s.Target.Encode(e)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -8405,6 +9701,16 @@ func (s *IoK8sAPIAutoscalingV2beta2ObjectMetricSource) Decode(d *jx.Decoder) err
 // Encode implements json.Marshaler.
 func (s IoK8sAPIAutoscalingV2beta2ObjectMetricStatus) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"current\"" + ":")
 	s.Current.Encode(e)
@@ -8418,10 +9724,6 @@ func (s IoK8sAPIAutoscalingV2beta2ObjectMetricStatus) Encode(e *jx.Writer) {
 
 	e.RawStr("\"metric\"" + ":")
 	s.Metric.Encode(e)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -8454,6 +9756,16 @@ func (s *IoK8sAPIAutoscalingV2beta2ObjectMetricStatus) Decode(d *jx.Decoder) err
 // Encode implements json.Marshaler.
 func (s IoK8sAPIAutoscalingV2beta2PodsMetricSource) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"metric\"" + ":")
 	s.Metric.Encode(e)
@@ -8462,10 +9774,6 @@ func (s IoK8sAPIAutoscalingV2beta2PodsMetricSource) Encode(e *jx.Writer) {
 
 	e.RawStr("\"target\"" + ":")
 	s.Target.Encode(e)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -8494,6 +9802,16 @@ func (s *IoK8sAPIAutoscalingV2beta2PodsMetricSource) Decode(d *jx.Decoder) error
 // Encode implements json.Marshaler.
 func (s IoK8sAPIAutoscalingV2beta2PodsMetricStatus) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"current\"" + ":")
 	s.Current.Encode(e)
@@ -8502,10 +9820,6 @@ func (s IoK8sAPIAutoscalingV2beta2PodsMetricStatus) Encode(e *jx.Writer) {
 
 	e.RawStr("\"metric\"" + ":")
 	s.Metric.Encode(e)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -8534,17 +9848,23 @@ func (s *IoK8sAPIAutoscalingV2beta2PodsMetricStatus) Decode(d *jx.Decoder) error
 // Encode implements json.Marshaler.
 func (s IoK8sAPIAutoscalingV2beta2ResourceMetricSource) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"name\"" + ":")
 	e.Str(s.Name)
+
 	e.Comma()
 
 	e.RawStr("\"target\"" + ":")
 	s.Target.Encode(e)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -8575,6 +9895,16 @@ func (s *IoK8sAPIAutoscalingV2beta2ResourceMetricSource) Decode(d *jx.Decoder) e
 // Encode implements json.Marshaler.
 func (s IoK8sAPIAutoscalingV2beta2ResourceMetricStatus) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"current\"" + ":")
 	s.Current.Encode(e)
@@ -8583,10 +9913,6 @@ func (s IoK8sAPIAutoscalingV2beta2ResourceMetricStatus) Encode(e *jx.Writer) {
 
 	e.RawStr("\"name\"" + ":")
 	e.Str(s.Name)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -8617,41 +9943,64 @@ func (s *IoK8sAPIAutoscalingV2beta2ResourceMetricStatus) Decode(d *jx.Decoder) e
 // Encode implements json.Marshaler.
 func (s IoK8sAPIBatchV1CronJob) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.ApiVersion.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.ApiVersion.Set {
 		e.RawStr("\"apiVersion\"" + ":")
 		s.ApiVersion.Encode(e)
 	}
-	if s.ApiVersion.Set {
-		e.Comma()
+
+	if s.Kind.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Kind.Set {
 		e.RawStr("\"kind\"" + ":")
 		s.Kind.Encode(e)
 	}
-	if s.Kind.Set {
-		e.Comma()
+
+	if s.Metadata.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Metadata.Set {
 		e.RawStr("\"metadata\"" + ":")
 		s.Metadata.Encode(e)
 	}
-	if s.Metadata.Set {
-		e.Comma()
+
+	if s.Spec.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Spec.Set {
 		e.RawStr("\"spec\"" + ":")
 		s.Spec.Encode(e)
 	}
-	if s.Spec.Set {
-		e.Comma()
+
+	if s.Status.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Status.Set {
 		e.RawStr("\"status\"" + ":")
 		s.Status.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -8698,13 +10047,27 @@ func (s *IoK8sAPIBatchV1CronJob) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPIBatchV1CronJobList) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.ApiVersion.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.ApiVersion.Set {
 		e.RawStr("\"apiVersion\"" + ":")
 		s.ApiVersion.Encode(e)
 	}
-	if s.ApiVersion.Set {
+
+	if !first {
+
 		e.Comma()
 	}
+	first = false
 
 	e.RawStr("\"items\"" + ":")
 	e.ArrStart()
@@ -8721,21 +10084,20 @@ func (s IoK8sAPIBatchV1CronJobList) Encode(e *jx.Writer) {
 	}
 	e.ArrEnd()
 
-	e.Comma()
+	if s.Kind.Set {
+		e.Comma()
+	}
 	if s.Kind.Set {
 		e.RawStr("\"kind\"" + ":")
 		s.Kind.Encode(e)
 	}
-	if s.Kind.Set {
+
+	if s.Metadata.Set {
 		e.Comma()
 	}
 	if s.Metadata.Set {
 		e.RawStr("\"metadata\"" + ":")
 		s.Metadata.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -8784,20 +10146,38 @@ func (s *IoK8sAPIBatchV1CronJobList) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPIBatchV1CronJobSpec) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.ConcurrencyPolicy.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.ConcurrencyPolicy.Set {
 		e.RawStr("\"concurrencyPolicy\"" + ":")
 		s.ConcurrencyPolicy.Encode(e)
 	}
-	if s.ConcurrencyPolicy.Set {
-		e.Comma()
+
+	if s.FailedJobsHistoryLimit.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.FailedJobsHistoryLimit.Set {
 		e.RawStr("\"failedJobsHistoryLimit\"" + ":")
 		s.FailedJobsHistoryLimit.Encode(e)
 	}
-	if s.FailedJobsHistoryLimit.Set {
+
+	if !first {
+
 		e.Comma()
 	}
+	first = false
 
 	e.RawStr("\"jobTemplate\"" + ":")
 	s.JobTemplate.Encode(e)
@@ -8806,28 +10186,29 @@ func (s IoK8sAPIBatchV1CronJobSpec) Encode(e *jx.Writer) {
 
 	e.RawStr("\"schedule\"" + ":")
 	e.Str(s.Schedule)
-	e.Comma()
+
+	if s.StartingDeadlineSeconds.Set {
+		e.Comma()
+	}
 	if s.StartingDeadlineSeconds.Set {
 		e.RawStr("\"startingDeadlineSeconds\"" + ":")
 		s.StartingDeadlineSeconds.Encode(e)
 	}
-	if s.StartingDeadlineSeconds.Set {
+
+	if s.SuccessfulJobsHistoryLimit.Set {
 		e.Comma()
 	}
 	if s.SuccessfulJobsHistoryLimit.Set {
 		e.RawStr("\"successfulJobsHistoryLimit\"" + ":")
 		s.SuccessfulJobsHistoryLimit.Encode(e)
 	}
-	if s.SuccessfulJobsHistoryLimit.Set {
+
+	if s.Suspend.Set {
 		e.Comma()
 	}
 	if s.Suspend.Set {
 		e.RawStr("\"suspend\"" + ":")
 		s.Suspend.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -8884,6 +10265,17 @@ func (s *IoK8sAPIBatchV1CronJobSpec) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPIBatchV1CronJobStatus) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.Active != nil {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.Active != nil {
 		e.RawStr("\"active\"" + ":")
 		e.ArrStart()
@@ -8900,23 +10292,27 @@ func (s IoK8sAPIBatchV1CronJobStatus) Encode(e *jx.Writer) {
 		}
 		e.ArrEnd()
 	}
-	if s.Active != nil {
-		e.Comma()
+
+	if s.LastScheduleTime.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.LastScheduleTime.Set {
 		e.RawStr("\"lastScheduleTime\"" + ":")
 		s.LastScheduleTime.Encode(e)
 	}
-	if s.LastScheduleTime.Set {
-		e.Comma()
+
+	if s.LastSuccessfulTime.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.LastSuccessfulTime.Set {
 		e.RawStr("\"lastSuccessfulTime\"" + ":")
 		s.LastSuccessfulTime.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -8960,41 +10356,64 @@ func (s *IoK8sAPIBatchV1CronJobStatus) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPIBatchV1Job) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.ApiVersion.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.ApiVersion.Set {
 		e.RawStr("\"apiVersion\"" + ":")
 		s.ApiVersion.Encode(e)
 	}
-	if s.ApiVersion.Set {
-		e.Comma()
+
+	if s.Kind.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Kind.Set {
 		e.RawStr("\"kind\"" + ":")
 		s.Kind.Encode(e)
 	}
-	if s.Kind.Set {
-		e.Comma()
+
+	if s.Metadata.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Metadata.Set {
 		e.RawStr("\"metadata\"" + ":")
 		s.Metadata.Encode(e)
 	}
-	if s.Metadata.Set {
-		e.Comma()
+
+	if s.Spec.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Spec.Set {
 		e.RawStr("\"spec\"" + ":")
 		s.Spec.Encode(e)
 	}
-	if s.Spec.Set {
-		e.Comma()
+
+	if s.Status.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Status.Set {
 		e.RawStr("\"status\"" + ":")
 		s.Status.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -9041,45 +10460,67 @@ func (s *IoK8sAPIBatchV1Job) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPIBatchV1JobCondition) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.LastProbeTime.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.LastProbeTime.Set {
 		e.RawStr("\"lastProbeTime\"" + ":")
 		s.LastProbeTime.Encode(e)
 	}
-	if s.LastProbeTime.Set {
-		e.Comma()
+
+	if s.LastTransitionTime.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.LastTransitionTime.Set {
 		e.RawStr("\"lastTransitionTime\"" + ":")
 		s.LastTransitionTime.Encode(e)
 	}
-	if s.LastTransitionTime.Set {
-		e.Comma()
+
+	if s.Message.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Message.Set {
 		e.RawStr("\"message\"" + ":")
 		s.Message.Encode(e)
 	}
-	if s.Message.Set {
-		e.Comma()
+
+	if s.Reason.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Reason.Set {
 		e.RawStr("\"reason\"" + ":")
 		s.Reason.Encode(e)
 	}
-	if s.Reason.Set {
+
+	if !first {
 		e.Comma()
 	}
+	first = false
 
 	e.RawStr("\"status\"" + ":")
 	e.Str(s.Status)
+
 	e.Comma()
 
 	e.RawStr("\"type\"" + ":")
 	e.Str(s.Type)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -9132,13 +10573,27 @@ func (s *IoK8sAPIBatchV1JobCondition) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPIBatchV1JobList) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.ApiVersion.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.ApiVersion.Set {
 		e.RawStr("\"apiVersion\"" + ":")
 		s.ApiVersion.Encode(e)
 	}
-	if s.ApiVersion.Set {
+
+	if !first {
+
 		e.Comma()
 	}
+	first = false
 
 	e.RawStr("\"items\"" + ":")
 	e.ArrStart()
@@ -9155,21 +10610,20 @@ func (s IoK8sAPIBatchV1JobList) Encode(e *jx.Writer) {
 	}
 	e.ArrEnd()
 
-	e.Comma()
+	if s.Kind.Set {
+		e.Comma()
+	}
 	if s.Kind.Set {
 		e.RawStr("\"kind\"" + ":")
 		s.Kind.Encode(e)
 	}
-	if s.Kind.Set {
+
+	if s.Metadata.Set {
 		e.Comma()
 	}
 	if s.Metadata.Set {
 		e.RawStr("\"metadata\"" + ":")
 		s.Metadata.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -9218,74 +10672,114 @@ func (s *IoK8sAPIBatchV1JobList) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPIBatchV1JobSpec) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.ActiveDeadlineSeconds.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.ActiveDeadlineSeconds.Set {
 		e.RawStr("\"activeDeadlineSeconds\"" + ":")
 		s.ActiveDeadlineSeconds.Encode(e)
 	}
-	if s.ActiveDeadlineSeconds.Set {
-		e.Comma()
+
+	if s.BackoffLimit.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.BackoffLimit.Set {
 		e.RawStr("\"backoffLimit\"" + ":")
 		s.BackoffLimit.Encode(e)
 	}
-	if s.BackoffLimit.Set {
-		e.Comma()
+
+	if s.CompletionMode.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.CompletionMode.Set {
 		e.RawStr("\"completionMode\"" + ":")
 		s.CompletionMode.Encode(e)
 	}
-	if s.CompletionMode.Set {
-		e.Comma()
+
+	if s.Completions.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Completions.Set {
 		e.RawStr("\"completions\"" + ":")
 		s.Completions.Encode(e)
 	}
-	if s.Completions.Set {
-		e.Comma()
+
+	if s.ManualSelector.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.ManualSelector.Set {
 		e.RawStr("\"manualSelector\"" + ":")
 		s.ManualSelector.Encode(e)
 	}
-	if s.ManualSelector.Set {
-		e.Comma()
+
+	if s.Parallelism.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Parallelism.Set {
 		e.RawStr("\"parallelism\"" + ":")
 		s.Parallelism.Encode(e)
 	}
-	if s.Parallelism.Set {
-		e.Comma()
+
+	if s.Selector.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Selector.Set {
 		e.RawStr("\"selector\"" + ":")
 		s.Selector.Encode(e)
 	}
-	if s.Selector.Set {
-		e.Comma()
+
+	if s.Suspend.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Suspend.Set {
 		e.RawStr("\"suspend\"" + ":")
 		s.Suspend.Encode(e)
 	}
-	if s.Suspend.Set {
+
+	if !first {
+
 		e.Comma()
 	}
+	first = false
 
 	e.RawStr("\"template\"" + ":")
 	s.Template.Encode(e)
 
-	e.Comma()
+	if s.TtlSecondsAfterFinished.Set {
+		e.Comma()
+	}
 	if s.TtlSecondsAfterFinished.Set {
 		e.RawStr("\"ttlSecondsAfterFinished\"" + ":")
 		s.TtlSecondsAfterFinished.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -9356,26 +10850,49 @@ func (s *IoK8sAPIBatchV1JobSpec) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPIBatchV1JobStatus) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.Active.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.Active.Set {
 		e.RawStr("\"active\"" + ":")
 		s.Active.Encode(e)
 	}
-	if s.Active.Set {
-		e.Comma()
+
+	if s.CompletedIndexes.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.CompletedIndexes.Set {
 		e.RawStr("\"completedIndexes\"" + ":")
 		s.CompletedIndexes.Encode(e)
 	}
-	if s.CompletedIndexes.Set {
-		e.Comma()
+
+	if s.CompletionTime.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.CompletionTime.Set {
 		e.RawStr("\"completionTime\"" + ":")
 		s.CompletionTime.Encode(e)
 	}
-	if s.CompletionTime.Set {
-		e.Comma()
+
+	if s.Conditions != nil {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Conditions != nil {
 		e.RawStr("\"conditions\"" + ":")
@@ -9393,37 +10910,49 @@ func (s IoK8sAPIBatchV1JobStatus) Encode(e *jx.Writer) {
 		}
 		e.ArrEnd()
 	}
-	if s.Conditions != nil {
-		e.Comma()
+
+	if s.Failed.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Failed.Set {
 		e.RawStr("\"failed\"" + ":")
 		s.Failed.Encode(e)
 	}
-	if s.Failed.Set {
-		e.Comma()
+
+	if s.StartTime.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.StartTime.Set {
 		e.RawStr("\"startTime\"" + ":")
 		s.StartTime.Encode(e)
 	}
-	if s.StartTime.Set {
-		e.Comma()
+
+	if s.Succeeded.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Succeeded.Set {
 		e.RawStr("\"succeeded\"" + ":")
 		s.Succeeded.Encode(e)
 	}
-	if s.Succeeded.Set {
-		e.Comma()
+
+	if s.UncountedTerminatedPods.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.UncountedTerminatedPods.Set {
 		e.RawStr("\"uncountedTerminatedPods\"" + ":")
 		s.UncountedTerminatedPods.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -9492,20 +11021,31 @@ func (s *IoK8sAPIBatchV1JobStatus) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPIBatchV1JobTemplateSpec) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.Metadata.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.Metadata.Set {
 		e.RawStr("\"metadata\"" + ":")
 		s.Metadata.Encode(e)
 	}
-	if s.Metadata.Set {
-		e.Comma()
+
+	if s.Spec.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Spec.Set {
 		e.RawStr("\"spec\"" + ":")
 		s.Spec.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -9537,6 +11077,17 @@ func (s *IoK8sAPIBatchV1JobTemplateSpec) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPIBatchV1UncountedTerminatedPods) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.Failed != nil {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.Failed != nil {
 		e.RawStr("\"failed\"" + ":")
 		e.ArrStart()
@@ -9553,8 +11104,12 @@ func (s IoK8sAPIBatchV1UncountedTerminatedPods) Encode(e *jx.Writer) {
 		}
 		e.ArrEnd()
 	}
-	if s.Failed != nil {
-		e.Comma()
+
+	if s.Succeeded != nil {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Succeeded != nil {
 		e.RawStr("\"succeeded\"" + ":")
@@ -9571,10 +11126,6 @@ func (s IoK8sAPIBatchV1UncountedTerminatedPods) Encode(e *jx.Writer) {
 			}
 		}
 		e.ArrEnd()
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -9624,41 +11175,64 @@ func (s *IoK8sAPIBatchV1UncountedTerminatedPods) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPIBatchV1beta1CronJob) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.ApiVersion.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.ApiVersion.Set {
 		e.RawStr("\"apiVersion\"" + ":")
 		s.ApiVersion.Encode(e)
 	}
-	if s.ApiVersion.Set {
-		e.Comma()
+
+	if s.Kind.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Kind.Set {
 		e.RawStr("\"kind\"" + ":")
 		s.Kind.Encode(e)
 	}
-	if s.Kind.Set {
-		e.Comma()
+
+	if s.Metadata.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Metadata.Set {
 		e.RawStr("\"metadata\"" + ":")
 		s.Metadata.Encode(e)
 	}
-	if s.Metadata.Set {
-		e.Comma()
+
+	if s.Spec.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Spec.Set {
 		e.RawStr("\"spec\"" + ":")
 		s.Spec.Encode(e)
 	}
-	if s.Spec.Set {
-		e.Comma()
+
+	if s.Status.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Status.Set {
 		e.RawStr("\"status\"" + ":")
 		s.Status.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -9705,13 +11279,27 @@ func (s *IoK8sAPIBatchV1beta1CronJob) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPIBatchV1beta1CronJobList) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.ApiVersion.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.ApiVersion.Set {
 		e.RawStr("\"apiVersion\"" + ":")
 		s.ApiVersion.Encode(e)
 	}
-	if s.ApiVersion.Set {
+
+	if !first {
+
 		e.Comma()
 	}
+	first = false
 
 	e.RawStr("\"items\"" + ":")
 	e.ArrStart()
@@ -9728,21 +11316,20 @@ func (s IoK8sAPIBatchV1beta1CronJobList) Encode(e *jx.Writer) {
 	}
 	e.ArrEnd()
 
-	e.Comma()
+	if s.Kind.Set {
+		e.Comma()
+	}
 	if s.Kind.Set {
 		e.RawStr("\"kind\"" + ":")
 		s.Kind.Encode(e)
 	}
-	if s.Kind.Set {
+
+	if s.Metadata.Set {
 		e.Comma()
 	}
 	if s.Metadata.Set {
 		e.RawStr("\"metadata\"" + ":")
 		s.Metadata.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -9791,20 +11378,38 @@ func (s *IoK8sAPIBatchV1beta1CronJobList) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPIBatchV1beta1CronJobSpec) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.ConcurrencyPolicy.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.ConcurrencyPolicy.Set {
 		e.RawStr("\"concurrencyPolicy\"" + ":")
 		s.ConcurrencyPolicy.Encode(e)
 	}
-	if s.ConcurrencyPolicy.Set {
-		e.Comma()
+
+	if s.FailedJobsHistoryLimit.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.FailedJobsHistoryLimit.Set {
 		e.RawStr("\"failedJobsHistoryLimit\"" + ":")
 		s.FailedJobsHistoryLimit.Encode(e)
 	}
-	if s.FailedJobsHistoryLimit.Set {
+
+	if !first {
+
 		e.Comma()
 	}
+	first = false
 
 	e.RawStr("\"jobTemplate\"" + ":")
 	s.JobTemplate.Encode(e)
@@ -9813,28 +11418,29 @@ func (s IoK8sAPIBatchV1beta1CronJobSpec) Encode(e *jx.Writer) {
 
 	e.RawStr("\"schedule\"" + ":")
 	e.Str(s.Schedule)
-	e.Comma()
+
+	if s.StartingDeadlineSeconds.Set {
+		e.Comma()
+	}
 	if s.StartingDeadlineSeconds.Set {
 		e.RawStr("\"startingDeadlineSeconds\"" + ":")
 		s.StartingDeadlineSeconds.Encode(e)
 	}
-	if s.StartingDeadlineSeconds.Set {
+
+	if s.SuccessfulJobsHistoryLimit.Set {
 		e.Comma()
 	}
 	if s.SuccessfulJobsHistoryLimit.Set {
 		e.RawStr("\"successfulJobsHistoryLimit\"" + ":")
 		s.SuccessfulJobsHistoryLimit.Encode(e)
 	}
-	if s.SuccessfulJobsHistoryLimit.Set {
+
+	if s.Suspend.Set {
 		e.Comma()
 	}
 	if s.Suspend.Set {
 		e.RawStr("\"suspend\"" + ":")
 		s.Suspend.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -9891,6 +11497,17 @@ func (s *IoK8sAPIBatchV1beta1CronJobSpec) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPIBatchV1beta1CronJobStatus) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.Active != nil {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.Active != nil {
 		e.RawStr("\"active\"" + ":")
 		e.ArrStart()
@@ -9907,23 +11524,27 @@ func (s IoK8sAPIBatchV1beta1CronJobStatus) Encode(e *jx.Writer) {
 		}
 		e.ArrEnd()
 	}
-	if s.Active != nil {
-		e.Comma()
+
+	if s.LastScheduleTime.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.LastScheduleTime.Set {
 		e.RawStr("\"lastScheduleTime\"" + ":")
 		s.LastScheduleTime.Encode(e)
 	}
-	if s.LastScheduleTime.Set {
-		e.Comma()
+
+	if s.LastSuccessfulTime.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.LastSuccessfulTime.Set {
 		e.RawStr("\"lastSuccessfulTime\"" + ":")
 		s.LastSuccessfulTime.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -9967,20 +11588,31 @@ func (s *IoK8sAPIBatchV1beta1CronJobStatus) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPIBatchV1beta1JobTemplateSpec) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.Metadata.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.Metadata.Set {
 		e.RawStr("\"metadata\"" + ":")
 		s.Metadata.Encode(e)
 	}
-	if s.Metadata.Set {
-		e.Comma()
+
+	if s.Spec.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Spec.Set {
 		e.RawStr("\"spec\"" + ":")
 		s.Spec.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -10012,39 +11644,59 @@ func (s *IoK8sAPIBatchV1beta1JobTemplateSpec) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICertificatesV1CertificateSigningRequest) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.ApiVersion.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.ApiVersion.Set {
 		e.RawStr("\"apiVersion\"" + ":")
 		s.ApiVersion.Encode(e)
 	}
-	if s.ApiVersion.Set {
-		e.Comma()
+
+	if s.Kind.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Kind.Set {
 		e.RawStr("\"kind\"" + ":")
 		s.Kind.Encode(e)
 	}
-	if s.Kind.Set {
-		e.Comma()
+
+	if s.Metadata.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Metadata.Set {
 		e.RawStr("\"metadata\"" + ":")
 		s.Metadata.Encode(e)
 	}
-	if s.Metadata.Set {
+
+	if !first {
+
 		e.Comma()
 	}
+	first = false
 
 	e.RawStr("\"spec\"" + ":")
 	s.Spec.Encode(e)
 
-	e.Comma()
+	if s.Status.Set {
+		e.Comma()
+	}
 	if s.Status.Set {
 		e.RawStr("\"status\"" + ":")
 		s.Status.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -10090,45 +11742,67 @@ func (s *IoK8sAPICertificatesV1CertificateSigningRequest) Decode(d *jx.Decoder) 
 // Encode implements json.Marshaler.
 func (s IoK8sAPICertificatesV1CertificateSigningRequestCondition) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.LastTransitionTime.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.LastTransitionTime.Set {
 		e.RawStr("\"lastTransitionTime\"" + ":")
 		s.LastTransitionTime.Encode(e)
 	}
-	if s.LastTransitionTime.Set {
-		e.Comma()
+
+	if s.LastUpdateTime.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.LastUpdateTime.Set {
 		e.RawStr("\"lastUpdateTime\"" + ":")
 		s.LastUpdateTime.Encode(e)
 	}
-	if s.LastUpdateTime.Set {
-		e.Comma()
+
+	if s.Message.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Message.Set {
 		e.RawStr("\"message\"" + ":")
 		s.Message.Encode(e)
 	}
-	if s.Message.Set {
-		e.Comma()
+
+	if s.Reason.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Reason.Set {
 		e.RawStr("\"reason\"" + ":")
 		s.Reason.Encode(e)
 	}
-	if s.Reason.Set {
+
+	if !first {
 		e.Comma()
 	}
+	first = false
 
 	e.RawStr("\"status\"" + ":")
 	e.Str(s.Status)
+
 	e.Comma()
 
 	e.RawStr("\"type\"" + ":")
 	e.Str(s.Type)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -10181,13 +11855,27 @@ func (s *IoK8sAPICertificatesV1CertificateSigningRequestCondition) Decode(d *jx.
 // Encode implements json.Marshaler.
 func (s IoK8sAPICertificatesV1CertificateSigningRequestList) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.ApiVersion.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.ApiVersion.Set {
 		e.RawStr("\"apiVersion\"" + ":")
 		s.ApiVersion.Encode(e)
 	}
-	if s.ApiVersion.Set {
+
+	if !first {
+
 		e.Comma()
 	}
+	first = false
 
 	e.RawStr("\"items\"" + ":")
 	e.ArrStart()
@@ -10204,21 +11892,20 @@ func (s IoK8sAPICertificatesV1CertificateSigningRequestList) Encode(e *jx.Writer
 	}
 	e.ArrEnd()
 
-	e.Comma()
+	if s.Kind.Set {
+		e.Comma()
+	}
 	if s.Kind.Set {
 		e.RawStr("\"kind\"" + ":")
 		s.Kind.Encode(e)
 	}
-	if s.Kind.Set {
+
+	if s.Metadata.Set {
 		e.Comma()
 	}
 	if s.Metadata.Set {
 		e.RawStr("\"metadata\"" + ":")
 		s.Metadata.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -10267,19 +11954,38 @@ func (s *IoK8sAPICertificatesV1CertificateSigningRequestList) Decode(d *jx.Decod
 // Encode implements json.Marshaler.
 func (s IoK8sAPICertificatesV1CertificateSigningRequestSpec) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.ExpirationSeconds.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.ExpirationSeconds.Set {
 		e.RawStr("\"expirationSeconds\"" + ":")
 		s.ExpirationSeconds.Encode(e)
 	}
-	if s.ExpirationSeconds.Set {
-		e.Comma()
+
+	if s.Extra != nil {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Extra != nil {
 		e.RawStr("\"extra\"" + ":")
 		s.Extra.Encode(e)
 	}
-	if s.Extra != nil {
-		e.Comma()
+
+	if s.Groups != nil {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Groups != nil {
 		e.RawStr("\"groups\"" + ":")
@@ -10297,22 +12003,29 @@ func (s IoK8sAPICertificatesV1CertificateSigningRequestSpec) Encode(e *jx.Writer
 		}
 		e.ArrEnd()
 	}
-	if s.Groups != nil {
+
+	if !first {
 		e.Comma()
 	}
+	first = false
 
 	e.RawStr("\"request\"" + ":")
 	e.Base64(s.Request)
+
 	e.Comma()
 
 	e.RawStr("\"signerName\"" + ":")
 	e.Str(s.SignerName)
-	e.Comma()
+
+	if s.UID.Set {
+		e.Comma()
+	}
 	if s.UID.Set {
 		e.RawStr("\"uid\"" + ":")
 		s.UID.Encode(e)
 	}
-	if s.UID.Set {
+
+	if s.Usages != nil {
 		e.Comma()
 	}
 	if s.Usages != nil {
@@ -10331,16 +12044,13 @@ func (s IoK8sAPICertificatesV1CertificateSigningRequestSpec) Encode(e *jx.Writer
 		}
 		e.ArrEnd()
 	}
-	if s.Usages != nil {
+
+	if s.Username.Set {
 		e.Comma()
 	}
 	if s.Username.Set {
 		e.RawStr("\"username\"" + ":")
 		s.Username.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -10424,10 +12134,10 @@ func (s *IoK8sAPICertificatesV1CertificateSigningRequestSpec) Decode(d *jx.Decod
 // Encode implements json.Marshaler.
 func (s IoK8sAPICertificatesV1CertificateSigningRequestSpecExtra) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -10448,10 +12158,22 @@ func (s *IoK8sAPICertificatesV1CertificateSigningRequestSpecExtra) Decode(d *jx.
 // Encode implements json.Marshaler.
 func (s IoK8sAPICertificatesV1CertificateSigningRequestStatus) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"certificate\"" + ":")
 	e.Base64(s.Certificate)
-	e.Comma()
+
+	if s.Conditions != nil {
+		e.Comma()
+	}
 	if s.Conditions != nil {
 		e.RawStr("\"conditions\"" + ":")
 		e.ArrStart()
@@ -10467,10 +12189,6 @@ func (s IoK8sAPICertificatesV1CertificateSigningRequestStatus) Encode(e *jx.Writ
 			}
 		}
 		e.ArrEnd()
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -10510,34 +12228,53 @@ func (s *IoK8sAPICertificatesV1CertificateSigningRequestStatus) Decode(d *jx.Dec
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoordinationV1Lease) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.ApiVersion.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.ApiVersion.Set {
 		e.RawStr("\"apiVersion\"" + ":")
 		s.ApiVersion.Encode(e)
 	}
-	if s.ApiVersion.Set {
-		e.Comma()
+
+	if s.Kind.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Kind.Set {
 		e.RawStr("\"kind\"" + ":")
 		s.Kind.Encode(e)
 	}
-	if s.Kind.Set {
-		e.Comma()
+
+	if s.Metadata.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Metadata.Set {
 		e.RawStr("\"metadata\"" + ":")
 		s.Metadata.Encode(e)
 	}
-	if s.Metadata.Set {
-		e.Comma()
+
+	if s.Spec.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Spec.Set {
 		e.RawStr("\"spec\"" + ":")
 		s.Spec.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -10579,13 +12316,27 @@ func (s *IoK8sAPICoordinationV1Lease) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoordinationV1LeaseList) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.ApiVersion.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.ApiVersion.Set {
 		e.RawStr("\"apiVersion\"" + ":")
 		s.ApiVersion.Encode(e)
 	}
-	if s.ApiVersion.Set {
+
+	if !first {
+
 		e.Comma()
 	}
+	first = false
 
 	e.RawStr("\"items\"" + ":")
 	e.ArrStart()
@@ -10602,21 +12353,20 @@ func (s IoK8sAPICoordinationV1LeaseList) Encode(e *jx.Writer) {
 	}
 	e.ArrEnd()
 
-	e.Comma()
+	if s.Kind.Set {
+		e.Comma()
+	}
 	if s.Kind.Set {
 		e.RawStr("\"kind\"" + ":")
 		s.Kind.Encode(e)
 	}
-	if s.Kind.Set {
+
+	if s.Metadata.Set {
 		e.Comma()
 	}
 	if s.Metadata.Set {
 		e.RawStr("\"metadata\"" + ":")
 		s.Metadata.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -10665,41 +12415,64 @@ func (s *IoK8sAPICoordinationV1LeaseList) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoordinationV1LeaseSpec) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.AcquireTime.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.AcquireTime.Set {
 		e.RawStr("\"acquireTime\"" + ":")
 		s.AcquireTime.Encode(e)
 	}
-	if s.AcquireTime.Set {
-		e.Comma()
+
+	if s.HolderIdentity.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.HolderIdentity.Set {
 		e.RawStr("\"holderIdentity\"" + ":")
 		s.HolderIdentity.Encode(e)
 	}
-	if s.HolderIdentity.Set {
-		e.Comma()
+
+	if s.LeaseDurationSeconds.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.LeaseDurationSeconds.Set {
 		e.RawStr("\"leaseDurationSeconds\"" + ":")
 		s.LeaseDurationSeconds.Encode(e)
 	}
-	if s.LeaseDurationSeconds.Set {
-		e.Comma()
+
+	if s.LeaseTransitions.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.LeaseTransitions.Set {
 		e.RawStr("\"leaseTransitions\"" + ":")
 		s.LeaseTransitions.Encode(e)
 	}
-	if s.LeaseTransitions.Set {
-		e.Comma()
+
+	if s.RenewTime.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.RenewTime.Set {
 		e.RawStr("\"renewTime\"" + ":")
 		s.RenewTime.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -10746,34 +12519,51 @@ func (s *IoK8sAPICoordinationV1LeaseSpec) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1AWSElasticBlockStoreVolumeSource) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.FsType.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.FsType.Set {
 		e.RawStr("\"fsType\"" + ":")
 		s.FsType.Encode(e)
 	}
-	if s.FsType.Set {
-		e.Comma()
+
+	if s.Partition.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Partition.Set {
 		e.RawStr("\"partition\"" + ":")
 		s.Partition.Encode(e)
 	}
-	if s.Partition.Set {
-		e.Comma()
+
+	if s.ReadOnly.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.ReadOnly.Set {
 		e.RawStr("\"readOnly\"" + ":")
 		s.ReadOnly.Encode(e)
 	}
-	if s.ReadOnly.Set {
+
+	if !first {
 		e.Comma()
 	}
+	first = false
 
 	e.RawStr("\"volumeID\"" + ":")
 	e.Str(s.VolumeID)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -10815,27 +12605,42 @@ func (s *IoK8sAPICoreV1AWSElasticBlockStoreVolumeSource) Decode(d *jx.Decoder) e
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1Affinity) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.NodeAffinity.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.NodeAffinity.Set {
 		e.RawStr("\"nodeAffinity\"" + ":")
 		s.NodeAffinity.Encode(e)
 	}
-	if s.NodeAffinity.Set {
-		e.Comma()
+
+	if s.PodAffinity.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.PodAffinity.Set {
 		e.RawStr("\"podAffinity\"" + ":")
 		s.PodAffinity.Encode(e)
 	}
-	if s.PodAffinity.Set {
-		e.Comma()
+
+	if s.PodAntiAffinity.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.PodAntiAffinity.Set {
 		e.RawStr("\"podAntiAffinity\"" + ":")
 		s.PodAntiAffinity.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -10872,17 +12677,23 @@ func (s *IoK8sAPICoreV1Affinity) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1AttachedVolume) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"devicePath\"" + ":")
 	e.Str(s.DevicePath)
+
 	e.Comma()
 
 	e.RawStr("\"name\"" + ":")
 	e.Str(s.Name)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -10915,42 +12726,57 @@ func (s *IoK8sAPICoreV1AttachedVolume) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1AzureDiskVolumeSource) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.CachingMode.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.CachingMode.Set {
 		e.RawStr("\"cachingMode\"" + ":")
 		s.CachingMode.Encode(e)
 	}
-	if s.CachingMode.Set {
+
+	if !first {
 		e.Comma()
 	}
+	first = false
 
 	e.RawStr("\"diskName\"" + ":")
 	e.Str(s.DiskName)
+
 	e.Comma()
 
 	e.RawStr("\"diskURI\"" + ":")
 	e.Str(s.DiskURI)
-	e.Comma()
+
+	if s.FsType.Set {
+		e.Comma()
+	}
 	if s.FsType.Set {
 		e.RawStr("\"fsType\"" + ":")
 		s.FsType.Encode(e)
 	}
-	if s.FsType.Set {
+
+	if s.Kind.Set {
 		e.Comma()
 	}
 	if s.Kind.Set {
 		e.RawStr("\"kind\"" + ":")
 		s.Kind.Encode(e)
 	}
-	if s.Kind.Set {
+
+	if s.ReadOnly.Set {
 		e.Comma()
 	}
 	if s.ReadOnly.Set {
 		e.RawStr("\"readOnly\"" + ":")
 		s.ReadOnly.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -11004,31 +12830,42 @@ func (s *IoK8sAPICoreV1AzureDiskVolumeSource) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1AzureFilePersistentVolumeSource) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.ReadOnly.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.ReadOnly.Set {
 		e.RawStr("\"readOnly\"" + ":")
 		s.ReadOnly.Encode(e)
 	}
-	if s.ReadOnly.Set {
+
+	if !first {
 		e.Comma()
 	}
+	first = false
 
 	e.RawStr("\"secretName\"" + ":")
 	e.Str(s.SecretName)
-	e.Comma()
+
+	if s.SecretNamespace.Set {
+		e.Comma()
+	}
 	if s.SecretNamespace.Set {
 		e.RawStr("\"secretNamespace\"" + ":")
 		s.SecretNamespace.Encode(e)
 	}
-	if s.SecretNamespace.Set {
-		e.Comma()
-	}
+
+	e.Comma()
 
 	e.RawStr("\"shareName\"" + ":")
 	e.Str(s.ShareName)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -11071,24 +12908,34 @@ func (s *IoK8sAPICoreV1AzureFilePersistentVolumeSource) Decode(d *jx.Decoder) er
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1AzureFileVolumeSource) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.ReadOnly.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.ReadOnly.Set {
 		e.RawStr("\"readOnly\"" + ":")
 		s.ReadOnly.Encode(e)
 	}
-	if s.ReadOnly.Set {
+
+	if !first {
 		e.Comma()
 	}
+	first = false
 
 	e.RawStr("\"secretName\"" + ":")
 	e.Str(s.SecretName)
+
 	e.Comma()
 
 	e.RawStr("\"shareName\"" + ":")
 	e.Str(s.ShareName)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -11126,66 +12973,85 @@ func (s *IoK8sAPICoreV1AzureFileVolumeSource) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1CSIPersistentVolumeSource) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.ControllerExpandSecretRef.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.ControllerExpandSecretRef.Set {
 		e.RawStr("\"controllerExpandSecretRef\"" + ":")
 		s.ControllerExpandSecretRef.Encode(e)
 	}
-	if s.ControllerExpandSecretRef.Set {
-		e.Comma()
+
+	if s.ControllerPublishSecretRef.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.ControllerPublishSecretRef.Set {
 		e.RawStr("\"controllerPublishSecretRef\"" + ":")
 		s.ControllerPublishSecretRef.Encode(e)
 	}
-	if s.ControllerPublishSecretRef.Set {
+
+	if !first {
 		e.Comma()
 	}
+	first = false
 
 	e.RawStr("\"driver\"" + ":")
 	e.Str(s.Driver)
-	e.Comma()
+
+	if s.FsType.Set {
+		e.Comma()
+	}
 	if s.FsType.Set {
 		e.RawStr("\"fsType\"" + ":")
 		s.FsType.Encode(e)
 	}
-	if s.FsType.Set {
+
+	if s.NodePublishSecretRef.Set {
 		e.Comma()
 	}
 	if s.NodePublishSecretRef.Set {
 		e.RawStr("\"nodePublishSecretRef\"" + ":")
 		s.NodePublishSecretRef.Encode(e)
 	}
-	if s.NodePublishSecretRef.Set {
+
+	if s.NodeStageSecretRef.Set {
 		e.Comma()
 	}
 	if s.NodeStageSecretRef.Set {
 		e.RawStr("\"nodeStageSecretRef\"" + ":")
 		s.NodeStageSecretRef.Encode(e)
 	}
-	if s.NodeStageSecretRef.Set {
+
+	if s.ReadOnly.Set {
 		e.Comma()
 	}
 	if s.ReadOnly.Set {
 		e.RawStr("\"readOnly\"" + ":")
 		s.ReadOnly.Encode(e)
 	}
-	if s.ReadOnly.Set {
+
+	if s.VolumeAttributes != nil {
 		e.Comma()
 	}
 	if s.VolumeAttributes != nil {
 		e.RawStr("\"volumeAttributes\"" + ":")
 		s.VolumeAttributes.Encode(e)
 	}
-	if s.VolumeAttributes != nil {
-		e.Comma()
-	}
+
+	e.Comma()
 
 	e.RawStr("\"volumeHandle\"" + ":")
 	e.Str(s.VolumeHandle)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -11255,10 +13121,10 @@ func (s *IoK8sAPICoreV1CSIPersistentVolumeSource) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1CSIPersistentVolumeSourceVolumeAttributes) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -11279,38 +13145,49 @@ func (s *IoK8sAPICoreV1CSIPersistentVolumeSourceVolumeAttributes) Decode(d *jx.D
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1CSIVolumeSource) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"driver\"" + ":")
 	e.Str(s.Driver)
-	e.Comma()
+
+	if s.FsType.Set {
+		e.Comma()
+	}
 	if s.FsType.Set {
 		e.RawStr("\"fsType\"" + ":")
 		s.FsType.Encode(e)
 	}
-	if s.FsType.Set {
+
+	if s.NodePublishSecretRef.Set {
 		e.Comma()
 	}
 	if s.NodePublishSecretRef.Set {
 		e.RawStr("\"nodePublishSecretRef\"" + ":")
 		s.NodePublishSecretRef.Encode(e)
 	}
-	if s.NodePublishSecretRef.Set {
+
+	if s.ReadOnly.Set {
 		e.Comma()
 	}
 	if s.ReadOnly.Set {
 		e.RawStr("\"readOnly\"" + ":")
 		s.ReadOnly.Encode(e)
 	}
-	if s.ReadOnly.Set {
+
+	if s.VolumeAttributes != nil {
 		e.Comma()
 	}
 	if s.VolumeAttributes != nil {
 		e.RawStr("\"volumeAttributes\"" + ":")
 		s.VolumeAttributes.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -11360,10 +13237,10 @@ func (s *IoK8sAPICoreV1CSIVolumeSource) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1CSIVolumeSourceVolumeAttributes) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -11384,6 +13261,17 @@ func (s *IoK8sAPICoreV1CSIVolumeSourceVolumeAttributes) Decode(d *jx.Decoder) er
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1Capabilities) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.Add != nil {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.Add != nil {
 		e.RawStr("\"add\"" + ":")
 		e.ArrStart()
@@ -11400,8 +13288,12 @@ func (s IoK8sAPICoreV1Capabilities) Encode(e *jx.Writer) {
 		}
 		e.ArrEnd()
 	}
-	if s.Add != nil {
-		e.Comma()
+
+	if s.Drop != nil {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Drop != nil {
 		e.RawStr("\"drop\"" + ":")
@@ -11418,10 +13310,6 @@ func (s IoK8sAPICoreV1Capabilities) Encode(e *jx.Writer) {
 			}
 		}
 		e.ArrEnd()
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -11471,6 +13359,16 @@ func (s *IoK8sAPICoreV1Capabilities) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1CephFSPersistentVolumeSource) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"monitors\"" + ":")
 	e.ArrStart()
@@ -11487,42 +13385,44 @@ func (s IoK8sAPICoreV1CephFSPersistentVolumeSource) Encode(e *jx.Writer) {
 	}
 	e.ArrEnd()
 
-	e.Comma()
+	if s.Path.Set {
+		e.Comma()
+	}
 	if s.Path.Set {
 		e.RawStr("\"path\"" + ":")
 		s.Path.Encode(e)
 	}
-	if s.Path.Set {
+
+	if s.ReadOnly.Set {
 		e.Comma()
 	}
 	if s.ReadOnly.Set {
 		e.RawStr("\"readOnly\"" + ":")
 		s.ReadOnly.Encode(e)
 	}
-	if s.ReadOnly.Set {
+
+	if s.SecretFile.Set {
 		e.Comma()
 	}
 	if s.SecretFile.Set {
 		e.RawStr("\"secretFile\"" + ":")
 		s.SecretFile.Encode(e)
 	}
-	if s.SecretFile.Set {
+
+	if s.SecretRef.Set {
 		e.Comma()
 	}
 	if s.SecretRef.Set {
 		e.RawStr("\"secretRef\"" + ":")
 		s.SecretRef.Encode(e)
 	}
-	if s.SecretRef.Set {
+
+	if s.User.Set {
 		e.Comma()
 	}
 	if s.User.Set {
 		e.RawStr("\"user\"" + ":")
 		s.User.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -11583,6 +13483,16 @@ func (s *IoK8sAPICoreV1CephFSPersistentVolumeSource) Decode(d *jx.Decoder) error
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1CephFSVolumeSource) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"monitors\"" + ":")
 	e.ArrStart()
@@ -11599,42 +13509,44 @@ func (s IoK8sAPICoreV1CephFSVolumeSource) Encode(e *jx.Writer) {
 	}
 	e.ArrEnd()
 
-	e.Comma()
+	if s.Path.Set {
+		e.Comma()
+	}
 	if s.Path.Set {
 		e.RawStr("\"path\"" + ":")
 		s.Path.Encode(e)
 	}
-	if s.Path.Set {
+
+	if s.ReadOnly.Set {
 		e.Comma()
 	}
 	if s.ReadOnly.Set {
 		e.RawStr("\"readOnly\"" + ":")
 		s.ReadOnly.Encode(e)
 	}
-	if s.ReadOnly.Set {
+
+	if s.SecretFile.Set {
 		e.Comma()
 	}
 	if s.SecretFile.Set {
 		e.RawStr("\"secretFile\"" + ":")
 		s.SecretFile.Encode(e)
 	}
-	if s.SecretFile.Set {
+
+	if s.SecretRef.Set {
 		e.Comma()
 	}
 	if s.SecretRef.Set {
 		e.RawStr("\"secretRef\"" + ":")
 		s.SecretRef.Encode(e)
 	}
-	if s.SecretRef.Set {
+
+	if s.User.Set {
 		e.Comma()
 	}
 	if s.User.Set {
 		e.RawStr("\"user\"" + ":")
 		s.User.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -11695,34 +13607,51 @@ func (s *IoK8sAPICoreV1CephFSVolumeSource) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1CinderPersistentVolumeSource) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.FsType.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.FsType.Set {
 		e.RawStr("\"fsType\"" + ":")
 		s.FsType.Encode(e)
 	}
-	if s.FsType.Set {
-		e.Comma()
+
+	if s.ReadOnly.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.ReadOnly.Set {
 		e.RawStr("\"readOnly\"" + ":")
 		s.ReadOnly.Encode(e)
 	}
-	if s.ReadOnly.Set {
-		e.Comma()
+
+	if s.SecretRef.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.SecretRef.Set {
 		e.RawStr("\"secretRef\"" + ":")
 		s.SecretRef.Encode(e)
 	}
-	if s.SecretRef.Set {
+
+	if !first {
 		e.Comma()
 	}
+	first = false
 
 	e.RawStr("\"volumeID\"" + ":")
 	e.Str(s.VolumeID)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -11764,34 +13693,51 @@ func (s *IoK8sAPICoreV1CinderPersistentVolumeSource) Decode(d *jx.Decoder) error
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1CinderVolumeSource) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.FsType.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.FsType.Set {
 		e.RawStr("\"fsType\"" + ":")
 		s.FsType.Encode(e)
 	}
-	if s.FsType.Set {
-		e.Comma()
+
+	if s.ReadOnly.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.ReadOnly.Set {
 		e.RawStr("\"readOnly\"" + ":")
 		s.ReadOnly.Encode(e)
 	}
-	if s.ReadOnly.Set {
-		e.Comma()
+
+	if s.SecretRef.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.SecretRef.Set {
 		e.RawStr("\"secretRef\"" + ":")
 		s.SecretRef.Encode(e)
 	}
-	if s.SecretRef.Set {
+
+	if !first {
 		e.Comma()
 	}
+	first = false
 
 	e.RawStr("\"volumeID\"" + ":")
 	e.Str(s.VolumeID)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -11833,13 +13779,20 @@ func (s *IoK8sAPICoreV1CinderVolumeSource) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1ClientIPConfig) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.TimeoutSeconds.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.TimeoutSeconds.Set {
 		e.RawStr("\"timeoutSeconds\"" + ":")
 		s.TimeoutSeconds.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -11866,31 +13819,45 @@ func (s *IoK8sAPICoreV1ClientIPConfig) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1ComponentCondition) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.Error.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.Error.Set {
 		e.RawStr("\"error\"" + ":")
 		s.Error.Encode(e)
 	}
-	if s.Error.Set {
-		e.Comma()
+
+	if s.Message.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Message.Set {
 		e.RawStr("\"message\"" + ":")
 		s.Message.Encode(e)
 	}
-	if s.Message.Set {
+
+	if !first {
 		e.Comma()
 	}
+	first = false
 
 	e.RawStr("\"status\"" + ":")
 	e.Str(s.Status)
+
 	e.Comma()
 
 	e.RawStr("\"type\"" + ":")
 	e.Str(s.Type)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -11933,12 +13900,27 @@ func (s *IoK8sAPICoreV1ComponentCondition) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1ComponentStatus) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.ApiVersion.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.ApiVersion.Set {
 		e.RawStr("\"apiVersion\"" + ":")
 		s.ApiVersion.Encode(e)
 	}
-	if s.ApiVersion.Set {
-		e.Comma()
+
+	if s.Conditions != nil {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Conditions != nil {
 		e.RawStr("\"conditions\"" + ":")
@@ -11956,23 +13938,27 @@ func (s IoK8sAPICoreV1ComponentStatus) Encode(e *jx.Writer) {
 		}
 		e.ArrEnd()
 	}
-	if s.Conditions != nil {
-		e.Comma()
+
+	if s.Kind.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Kind.Set {
 		e.RawStr("\"kind\"" + ":")
 		s.Kind.Encode(e)
 	}
-	if s.Kind.Set {
-		e.Comma()
+
+	if s.Metadata.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Metadata.Set {
 		e.RawStr("\"metadata\"" + ":")
 		s.Metadata.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -12021,13 +14007,27 @@ func (s *IoK8sAPICoreV1ComponentStatus) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1ComponentStatusList) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.ApiVersion.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.ApiVersion.Set {
 		e.RawStr("\"apiVersion\"" + ":")
 		s.ApiVersion.Encode(e)
 	}
-	if s.ApiVersion.Set {
+
+	if !first {
+
 		e.Comma()
 	}
+	first = false
 
 	e.RawStr("\"items\"" + ":")
 	e.ArrStart()
@@ -12044,21 +14044,20 @@ func (s IoK8sAPICoreV1ComponentStatusList) Encode(e *jx.Writer) {
 	}
 	e.ArrEnd()
 
-	e.Comma()
+	if s.Kind.Set {
+		e.Comma()
+	}
 	if s.Kind.Set {
 		e.RawStr("\"kind\"" + ":")
 		s.Kind.Encode(e)
 	}
-	if s.Kind.Set {
+
+	if s.Metadata.Set {
 		e.Comma()
 	}
 	if s.Metadata.Set {
 		e.RawStr("\"metadata\"" + ":")
 		s.Metadata.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -12107,48 +14106,75 @@ func (s *IoK8sAPICoreV1ComponentStatusList) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1ConfigMap) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.ApiVersion.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.ApiVersion.Set {
 		e.RawStr("\"apiVersion\"" + ":")
 		s.ApiVersion.Encode(e)
 	}
-	if s.ApiVersion.Set {
-		e.Comma()
+
+	if s.BinaryData != nil {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.BinaryData != nil {
 		e.RawStr("\"binaryData\"" + ":")
 		s.BinaryData.Encode(e)
 	}
-	if s.BinaryData != nil {
-		e.Comma()
+
+	if s.Data != nil {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Data != nil {
 		e.RawStr("\"data\"" + ":")
 		s.Data.Encode(e)
 	}
-	if s.Data != nil {
-		e.Comma()
+
+	if s.Immutable.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Immutable.Set {
 		e.RawStr("\"immutable\"" + ":")
 		s.Immutable.Encode(e)
 	}
-	if s.Immutable.Set {
-		e.Comma()
+
+	if s.Kind.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Kind.Set {
 		e.RawStr("\"kind\"" + ":")
 		s.Kind.Encode(e)
 	}
-	if s.Kind.Set {
-		e.Comma()
+
+	if s.Metadata.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Metadata.Set {
 		e.RawStr("\"metadata\"" + ":")
 		s.Metadata.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -12204,10 +14230,10 @@ func (s *IoK8sAPICoreV1ConfigMap) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1ConfigMapBinaryData) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -12228,10 +14254,10 @@ func (s *IoK8sAPICoreV1ConfigMapBinaryData) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1ConfigMapData) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -12252,20 +14278,31 @@ func (s *IoK8sAPICoreV1ConfigMapData) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1ConfigMapEnvSource) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.Name.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.Name.Set {
 		e.RawStr("\"name\"" + ":")
 		s.Name.Encode(e)
 	}
-	if s.Name.Set {
-		e.Comma()
+
+	if s.Optional.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Optional.Set {
 		e.RawStr("\"optional\"" + ":")
 		s.Optional.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -12297,24 +14334,33 @@ func (s *IoK8sAPICoreV1ConfigMapEnvSource) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1ConfigMapKeySelector) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"key\"" + ":")
 	e.Str(s.Key)
-	e.Comma()
+
+	if s.Name.Set {
+		e.Comma()
+	}
 	if s.Name.Set {
 		e.RawStr("\"name\"" + ":")
 		s.Name.Encode(e)
 	}
-	if s.Name.Set {
+
+	if s.Optional.Set {
 		e.Comma()
 	}
 	if s.Optional.Set {
 		e.RawStr("\"optional\"" + ":")
 		s.Optional.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -12352,13 +14398,27 @@ func (s *IoK8sAPICoreV1ConfigMapKeySelector) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1ConfigMapList) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.ApiVersion.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.ApiVersion.Set {
 		e.RawStr("\"apiVersion\"" + ":")
 		s.ApiVersion.Encode(e)
 	}
-	if s.ApiVersion.Set {
+
+	if !first {
+
 		e.Comma()
 	}
+	first = false
 
 	e.RawStr("\"items\"" + ":")
 	e.ArrStart()
@@ -12375,21 +14435,20 @@ func (s IoK8sAPICoreV1ConfigMapList) Encode(e *jx.Writer) {
 	}
 	e.ArrEnd()
 
-	e.Comma()
+	if s.Kind.Set {
+		e.Comma()
+	}
 	if s.Kind.Set {
 		e.RawStr("\"kind\"" + ":")
 		s.Kind.Encode(e)
 	}
-	if s.Kind.Set {
+
+	if s.Metadata.Set {
 		e.Comma()
 	}
 	if s.Metadata.Set {
 		e.RawStr("\"metadata\"" + ":")
 		s.Metadata.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -12438,32 +14497,43 @@ func (s *IoK8sAPICoreV1ConfigMapList) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1ConfigMapNodeConfigSource) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"kubeletConfigKey\"" + ":")
 	e.Str(s.KubeletConfigKey)
+
 	e.Comma()
 
 	e.RawStr("\"name\"" + ":")
 	e.Str(s.Name)
+
 	e.Comma()
 
 	e.RawStr("\"namespace\"" + ":")
 	e.Str(s.Namespace)
-	e.Comma()
+
+	if s.ResourceVersion.Set {
+		e.Comma()
+	}
 	if s.ResourceVersion.Set {
 		e.RawStr("\"resourceVersion\"" + ":")
 		s.ResourceVersion.Encode(e)
 	}
-	if s.ResourceVersion.Set {
+
+	if s.UID.Set {
 		e.Comma()
 	}
 	if s.UID.Set {
 		e.RawStr("\"uid\"" + ":")
 		s.UID.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -12513,6 +14583,17 @@ func (s *IoK8sAPICoreV1ConfigMapNodeConfigSource) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1ConfigMapProjection) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.Items != nil {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.Items != nil {
 		e.RawStr("\"items\"" + ":")
 		e.ArrStart()
@@ -12529,23 +14610,27 @@ func (s IoK8sAPICoreV1ConfigMapProjection) Encode(e *jx.Writer) {
 		}
 		e.ArrEnd()
 	}
-	if s.Items != nil {
-		e.Comma()
+
+	if s.Name.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Name.Set {
 		e.RawStr("\"name\"" + ":")
 		s.Name.Encode(e)
 	}
-	if s.Name.Set {
-		e.Comma()
+
+	if s.Optional.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Optional.Set {
 		e.RawStr("\"optional\"" + ":")
 		s.Optional.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -12589,12 +14674,27 @@ func (s *IoK8sAPICoreV1ConfigMapProjection) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1ConfigMapVolumeSource) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.DefaultMode.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.DefaultMode.Set {
 		e.RawStr("\"defaultMode\"" + ":")
 		s.DefaultMode.Encode(e)
 	}
-	if s.DefaultMode.Set {
-		e.Comma()
+
+	if s.Items != nil {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Items != nil {
 		e.RawStr("\"items\"" + ":")
@@ -12612,23 +14712,27 @@ func (s IoK8sAPICoreV1ConfigMapVolumeSource) Encode(e *jx.Writer) {
 		}
 		e.ArrEnd()
 	}
-	if s.Items != nil {
-		e.Comma()
+
+	if s.Name.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Name.Set {
 		e.RawStr("\"name\"" + ":")
 		s.Name.Encode(e)
 	}
-	if s.Name.Set {
-		e.Comma()
+
+	if s.Optional.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Optional.Set {
 		e.RawStr("\"optional\"" + ":")
 		s.Optional.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -12677,6 +14781,17 @@ func (s *IoK8sAPICoreV1ConfigMapVolumeSource) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1Container) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.Args != nil {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.Args != nil {
 		e.RawStr("\"args\"" + ":")
 		e.ArrStart()
@@ -12693,8 +14808,12 @@ func (s IoK8sAPICoreV1Container) Encode(e *jx.Writer) {
 		}
 		e.ArrEnd()
 	}
-	if s.Args != nil {
-		e.Comma()
+
+	if s.Command != nil {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Command != nil {
 		e.RawStr("\"command\"" + ":")
@@ -12712,8 +14831,12 @@ func (s IoK8sAPICoreV1Container) Encode(e *jx.Writer) {
 		}
 		e.ArrEnd()
 	}
-	if s.Command != nil {
-		e.Comma()
+
+	if s.Env != nil {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Env != nil {
 		e.RawStr("\"env\"" + ":")
@@ -12731,8 +14854,12 @@ func (s IoK8sAPICoreV1Container) Encode(e *jx.Writer) {
 		}
 		e.ArrEnd()
 	}
-	if s.Env != nil {
-		e.Comma()
+
+	if s.EnvFrom != nil {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.EnvFrom != nil {
 		e.RawStr("\"envFrom\"" + ":")
@@ -12750,41 +14877,62 @@ func (s IoK8sAPICoreV1Container) Encode(e *jx.Writer) {
 		}
 		e.ArrEnd()
 	}
-	if s.EnvFrom != nil {
-		e.Comma()
+
+	if s.Image.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Image.Set {
 		e.RawStr("\"image\"" + ":")
 		s.Image.Encode(e)
 	}
-	if s.Image.Set {
-		e.Comma()
+
+	if s.ImagePullPolicy.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.ImagePullPolicy.Set {
 		e.RawStr("\"imagePullPolicy\"" + ":")
 		s.ImagePullPolicy.Encode(e)
 	}
-	if s.ImagePullPolicy.Set {
-		e.Comma()
+
+	if s.Lifecycle.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Lifecycle.Set {
 		e.RawStr("\"lifecycle\"" + ":")
 		s.Lifecycle.Encode(e)
 	}
-	if s.Lifecycle.Set {
-		e.Comma()
+
+	if s.LivenessProbe.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.LivenessProbe.Set {
 		e.RawStr("\"livenessProbe\"" + ":")
 		s.LivenessProbe.Encode(e)
 	}
-	if s.LivenessProbe.Set {
+
+	if !first {
 		e.Comma()
 	}
+	first = false
 
 	e.RawStr("\"name\"" + ":")
 	e.Str(s.Name)
-	e.Comma()
+
+	if s.Ports != nil {
+		e.Comma()
+	}
 	if s.Ports != nil {
 		e.RawStr("\"ports\"" + ":")
 		e.ArrStart()
@@ -12801,70 +14949,80 @@ func (s IoK8sAPICoreV1Container) Encode(e *jx.Writer) {
 		}
 		e.ArrEnd()
 	}
-	if s.Ports != nil {
+
+	if s.ReadinessProbe.Set {
 		e.Comma()
 	}
 	if s.ReadinessProbe.Set {
 		e.RawStr("\"readinessProbe\"" + ":")
 		s.ReadinessProbe.Encode(e)
 	}
-	if s.ReadinessProbe.Set {
+
+	if s.Resources.Set {
 		e.Comma()
 	}
 	if s.Resources.Set {
 		e.RawStr("\"resources\"" + ":")
 		s.Resources.Encode(e)
 	}
-	if s.Resources.Set {
+
+	if s.SecurityContext.Set {
 		e.Comma()
 	}
 	if s.SecurityContext.Set {
 		e.RawStr("\"securityContext\"" + ":")
 		s.SecurityContext.Encode(e)
 	}
-	if s.SecurityContext.Set {
+
+	if s.StartupProbe.Set {
 		e.Comma()
 	}
 	if s.StartupProbe.Set {
 		e.RawStr("\"startupProbe\"" + ":")
 		s.StartupProbe.Encode(e)
 	}
-	if s.StartupProbe.Set {
+
+	if s.Stdin.Set {
 		e.Comma()
 	}
 	if s.Stdin.Set {
 		e.RawStr("\"stdin\"" + ":")
 		s.Stdin.Encode(e)
 	}
-	if s.Stdin.Set {
+
+	if s.StdinOnce.Set {
 		e.Comma()
 	}
 	if s.StdinOnce.Set {
 		e.RawStr("\"stdinOnce\"" + ":")
 		s.StdinOnce.Encode(e)
 	}
-	if s.StdinOnce.Set {
+
+	if s.TerminationMessagePath.Set {
 		e.Comma()
 	}
 	if s.TerminationMessagePath.Set {
 		e.RawStr("\"terminationMessagePath\"" + ":")
 		s.TerminationMessagePath.Encode(e)
 	}
-	if s.TerminationMessagePath.Set {
+
+	if s.TerminationMessagePolicy.Set {
 		e.Comma()
 	}
 	if s.TerminationMessagePolicy.Set {
 		e.RawStr("\"terminationMessagePolicy\"" + ":")
 		s.TerminationMessagePolicy.Encode(e)
 	}
-	if s.TerminationMessagePolicy.Set {
+
+	if s.Tty.Set {
 		e.Comma()
 	}
 	if s.Tty.Set {
 		e.RawStr("\"tty\"" + ":")
 		s.Tty.Encode(e)
 	}
-	if s.Tty.Set {
+
+	if s.VolumeDevices != nil {
 		e.Comma()
 	}
 	if s.VolumeDevices != nil {
@@ -12883,7 +15041,8 @@ func (s IoK8sAPICoreV1Container) Encode(e *jx.Writer) {
 		}
 		e.ArrEnd()
 	}
-	if s.VolumeDevices != nil {
+
+	if s.VolumeMounts != nil {
 		e.Comma()
 	}
 	if s.VolumeMounts != nil {
@@ -12902,16 +15061,13 @@ func (s IoK8sAPICoreV1Container) Encode(e *jx.Writer) {
 		}
 		e.ArrEnd()
 	}
-	if s.VolumeMounts != nil {
+
+	if s.WorkingDir.Set {
 		e.Comma()
 	}
 	if s.WorkingDir.Set {
 		e.RawStr("\"workingDir\"" + ":")
 		s.WorkingDir.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -13097,6 +15253,17 @@ func (s *IoK8sAPICoreV1Container) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1ContainerImage) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.Names != nil {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.Names != nil {
 		e.RawStr("\"names\"" + ":")
 		e.ArrStart()
@@ -13113,16 +15280,16 @@ func (s IoK8sAPICoreV1ContainerImage) Encode(e *jx.Writer) {
 		}
 		e.ArrEnd()
 	}
-	if s.Names != nil {
-		e.Comma()
+
+	if s.SizeBytes.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.SizeBytes.Set {
 		e.RawStr("\"sizeBytes\"" + ":")
 		s.SizeBytes.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -13163,38 +15330,49 @@ func (s *IoK8sAPICoreV1ContainerImage) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1ContainerPort) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"containerPort\"" + ":")
 	e.Int32(s.ContainerPort)
-	e.Comma()
+
+	if s.HostIP.Set {
+		e.Comma()
+	}
 	if s.HostIP.Set {
 		e.RawStr("\"hostIP\"" + ":")
 		s.HostIP.Encode(e)
 	}
-	if s.HostIP.Set {
+
+	if s.HostPort.Set {
 		e.Comma()
 	}
 	if s.HostPort.Set {
 		e.RawStr("\"hostPort\"" + ":")
 		s.HostPort.Encode(e)
 	}
-	if s.HostPort.Set {
+
+	if s.Name.Set {
 		e.Comma()
 	}
 	if s.Name.Set {
 		e.RawStr("\"name\"" + ":")
 		s.Name.Encode(e)
 	}
-	if s.Name.Set {
+
+	if s.Protocol.Set {
 		e.Comma()
 	}
 	if s.Protocol.Set {
 		e.RawStr("\"protocol\"" + ":")
 		s.Protocol.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -13242,27 +15420,42 @@ func (s *IoK8sAPICoreV1ContainerPort) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1ContainerState) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.Running.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.Running.Set {
 		e.RawStr("\"running\"" + ":")
 		s.Running.Encode(e)
 	}
-	if s.Running.Set {
-		e.Comma()
+
+	if s.Terminated.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Terminated.Set {
 		e.RawStr("\"terminated\"" + ":")
 		s.Terminated.Encode(e)
 	}
-	if s.Terminated.Set {
-		e.Comma()
+
+	if s.Waiting.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Waiting.Set {
 		e.RawStr("\"waiting\"" + ":")
 		s.Waiting.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -13299,13 +15492,20 @@ func (s *IoK8sAPICoreV1ContainerState) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1ContainerStateRunning) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.StartedAt.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.StartedAt.Set {
 		e.RawStr("\"startedAt\"" + ":")
 		s.StartedAt.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -13332,52 +15532,68 @@ func (s *IoK8sAPICoreV1ContainerStateRunning) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1ContainerStateTerminated) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.ContainerID.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.ContainerID.Set {
 		e.RawStr("\"containerID\"" + ":")
 		s.ContainerID.Encode(e)
 	}
-	if s.ContainerID.Set {
+
+	if !first {
 		e.Comma()
 	}
+	first = false
 
 	e.RawStr("\"exitCode\"" + ":")
 	e.Int32(s.ExitCode)
-	e.Comma()
+
+	if s.FinishedAt.Set {
+		e.Comma()
+	}
 	if s.FinishedAt.Set {
 		e.RawStr("\"finishedAt\"" + ":")
 		s.FinishedAt.Encode(e)
 	}
-	if s.FinishedAt.Set {
+
+	if s.Message.Set {
 		e.Comma()
 	}
 	if s.Message.Set {
 		e.RawStr("\"message\"" + ":")
 		s.Message.Encode(e)
 	}
-	if s.Message.Set {
+
+	if s.Reason.Set {
 		e.Comma()
 	}
 	if s.Reason.Set {
 		e.RawStr("\"reason\"" + ":")
 		s.Reason.Encode(e)
 	}
-	if s.Reason.Set {
+
+	if s.Signal.Set {
 		e.Comma()
 	}
 	if s.Signal.Set {
 		e.RawStr("\"signal\"" + ":")
 		s.Signal.Encode(e)
 	}
-	if s.Signal.Set {
+
+	if s.StartedAt.Set {
 		e.Comma()
 	}
 	if s.StartedAt.Set {
 		e.RawStr("\"startedAt\"" + ":")
 		s.StartedAt.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -13435,20 +15651,31 @@ func (s *IoK8sAPICoreV1ContainerStateTerminated) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1ContainerStateWaiting) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.Message.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.Message.Set {
 		e.RawStr("\"message\"" + ":")
 		s.Message.Encode(e)
 	}
-	if s.Message.Set {
-		e.Comma()
+
+	if s.Reason.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Reason.Set {
 		e.RawStr("\"reason\"" + ":")
 		s.Reason.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -13480,54 +15707,72 @@ func (s *IoK8sAPICoreV1ContainerStateWaiting) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1ContainerStatus) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.ContainerID.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.ContainerID.Set {
 		e.RawStr("\"containerID\"" + ":")
 		s.ContainerID.Encode(e)
 	}
-	if s.ContainerID.Set {
+
+	if !first {
 		e.Comma()
 	}
+	first = false
 
 	e.RawStr("\"image\"" + ":")
 	e.Str(s.Image)
+
 	e.Comma()
 
 	e.RawStr("\"imageID\"" + ":")
 	e.Str(s.ImageID)
-	e.Comma()
+
+	if s.LastState.Set {
+		e.Comma()
+	}
 	if s.LastState.Set {
 		e.RawStr("\"lastState\"" + ":")
 		s.LastState.Encode(e)
 	}
-	if s.LastState.Set {
-		e.Comma()
-	}
+
+	e.Comma()
 
 	e.RawStr("\"name\"" + ":")
 	e.Str(s.Name)
+
 	e.Comma()
 
 	e.RawStr("\"ready\"" + ":")
 	e.Bool(s.Ready)
+
 	e.Comma()
 
 	e.RawStr("\"restartCount\"" + ":")
 	e.Int32(s.RestartCount)
-	e.Comma()
+
+	if s.Started.Set {
+		e.Comma()
+	}
 	if s.Started.Set {
 		e.RawStr("\"started\"" + ":")
 		s.Started.Encode(e)
 	}
-	if s.Started.Set {
+
+	if s.State.Set {
 		e.Comma()
 	}
 	if s.State.Set {
 		e.RawStr("\"state\"" + ":")
 		s.State.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -13599,13 +15844,18 @@ func (s *IoK8sAPICoreV1ContainerStatus) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1DaemonEndpoint) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"Port\"" + ":")
 	e.Int32(s.Port)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -13632,6 +15882,17 @@ func (s *IoK8sAPICoreV1DaemonEndpoint) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1DownwardAPIProjection) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.Items != nil {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.Items != nil {
 		e.RawStr("\"items\"" + ":")
 		e.ArrStart()
@@ -13647,10 +15908,6 @@ func (s IoK8sAPICoreV1DownwardAPIProjection) Encode(e *jx.Writer) {
 			}
 		}
 		e.ArrEnd()
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -13684,31 +15941,47 @@ func (s *IoK8sAPICoreV1DownwardAPIProjection) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1DownwardAPIVolumeFile) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.FieldRef.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.FieldRef.Set {
 		e.RawStr("\"fieldRef\"" + ":")
 		s.FieldRef.Encode(e)
 	}
-	if s.FieldRef.Set {
-		e.Comma()
+
+	if s.Mode.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Mode.Set {
 		e.RawStr("\"mode\"" + ":")
 		s.Mode.Encode(e)
 	}
-	if s.Mode.Set {
+
+	if !first {
 		e.Comma()
 	}
+	first = false
 
 	e.RawStr("\"path\"" + ":")
 	e.Str(s.Path)
-	e.Comma()
+
+	if s.ResourceFieldRef.Set {
+		e.Comma()
+	}
 	if s.ResourceFieldRef.Set {
 		e.RawStr("\"resourceFieldRef\"" + ":")
 		s.ResourceFieldRef.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -13751,12 +16024,27 @@ func (s *IoK8sAPICoreV1DownwardAPIVolumeFile) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1DownwardAPIVolumeSource) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.DefaultMode.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.DefaultMode.Set {
 		e.RawStr("\"defaultMode\"" + ":")
 		s.DefaultMode.Encode(e)
 	}
-	if s.DefaultMode.Set {
-		e.Comma()
+
+	if s.Items != nil {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Items != nil {
 		e.RawStr("\"items\"" + ":")
@@ -13773,10 +16061,6 @@ func (s IoK8sAPICoreV1DownwardAPIVolumeSource) Encode(e *jx.Writer) {
 			}
 		}
 		e.ArrEnd()
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -13815,20 +16099,31 @@ func (s *IoK8sAPICoreV1DownwardAPIVolumeSource) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1EmptyDirVolumeSource) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.Medium.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.Medium.Set {
 		e.RawStr("\"medium\"" + ":")
 		s.Medium.Encode(e)
 	}
-	if s.Medium.Set {
-		e.Comma()
+
+	if s.SizeLimit.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.SizeLimit.Set {
 		e.RawStr("\"sizeLimit\"" + ":")
 		s.SizeLimit.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -13860,31 +16155,44 @@ func (s *IoK8sAPICoreV1EmptyDirVolumeSource) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1EndpointAddress) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.Hostname.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.Hostname.Set {
 		e.RawStr("\"hostname\"" + ":")
 		s.Hostname.Encode(e)
 	}
-	if s.Hostname.Set {
+
+	if !first {
 		e.Comma()
 	}
+	first = false
 
 	e.RawStr("\"ip\"" + ":")
 	e.Str(s.IP)
-	e.Comma()
+
+	if s.NodeName.Set {
+		e.Comma()
+	}
 	if s.NodeName.Set {
 		e.RawStr("\"nodeName\"" + ":")
 		s.NodeName.Encode(e)
 	}
-	if s.NodeName.Set {
+
+	if s.TargetRef.Set {
 		e.Comma()
 	}
 	if s.TargetRef.Set {
 		e.RawStr("\"targetRef\"" + ":")
 		s.TargetRef.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -13927,31 +16235,47 @@ func (s *IoK8sAPICoreV1EndpointAddress) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1EndpointPort) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.AppProtocol.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.AppProtocol.Set {
 		e.RawStr("\"appProtocol\"" + ":")
 		s.AppProtocol.Encode(e)
 	}
-	if s.AppProtocol.Set {
-		e.Comma()
+
+	if s.Name.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Name.Set {
 		e.RawStr("\"name\"" + ":")
 		s.Name.Encode(e)
 	}
-	if s.Name.Set {
+
+	if !first {
 		e.Comma()
 	}
+	first = false
 
 	e.RawStr("\"port\"" + ":")
 	e.Int32(s.Port)
-	e.Comma()
+
+	if s.Protocol.Set {
+		e.Comma()
+	}
 	if s.Protocol.Set {
 		e.RawStr("\"protocol\"" + ":")
 		s.Protocol.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -13994,6 +16318,17 @@ func (s *IoK8sAPICoreV1EndpointPort) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1EndpointSubset) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.Addresses != nil {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.Addresses != nil {
 		e.RawStr("\"addresses\"" + ":")
 		e.ArrStart()
@@ -14010,8 +16345,12 @@ func (s IoK8sAPICoreV1EndpointSubset) Encode(e *jx.Writer) {
 		}
 		e.ArrEnd()
 	}
-	if s.Addresses != nil {
-		e.Comma()
+
+	if s.NotReadyAddresses != nil {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.NotReadyAddresses != nil {
 		e.RawStr("\"notReadyAddresses\"" + ":")
@@ -14029,8 +16368,12 @@ func (s IoK8sAPICoreV1EndpointSubset) Encode(e *jx.Writer) {
 		}
 		e.ArrEnd()
 	}
-	if s.NotReadyAddresses != nil {
-		e.Comma()
+
+	if s.Ports != nil {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Ports != nil {
 		e.RawStr("\"ports\"" + ":")
@@ -14047,10 +16390,6 @@ func (s IoK8sAPICoreV1EndpointSubset) Encode(e *jx.Writer) {
 			}
 		}
 		e.ArrEnd()
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -14108,26 +16447,49 @@ func (s *IoK8sAPICoreV1EndpointSubset) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1Endpoints) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.ApiVersion.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.ApiVersion.Set {
 		e.RawStr("\"apiVersion\"" + ":")
 		s.ApiVersion.Encode(e)
 	}
-	if s.ApiVersion.Set {
-		e.Comma()
+
+	if s.Kind.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Kind.Set {
 		e.RawStr("\"kind\"" + ":")
 		s.Kind.Encode(e)
 	}
-	if s.Kind.Set {
-		e.Comma()
+
+	if s.Metadata.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Metadata.Set {
 		e.RawStr("\"metadata\"" + ":")
 		s.Metadata.Encode(e)
 	}
-	if s.Metadata.Set {
-		e.Comma()
+
+	if s.Subsets != nil {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Subsets != nil {
 		e.RawStr("\"subsets\"" + ":")
@@ -14144,10 +16506,6 @@ func (s IoK8sAPICoreV1Endpoints) Encode(e *jx.Writer) {
 			}
 		}
 		e.ArrEnd()
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -14196,13 +16554,27 @@ func (s *IoK8sAPICoreV1Endpoints) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1EndpointsList) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.ApiVersion.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.ApiVersion.Set {
 		e.RawStr("\"apiVersion\"" + ":")
 		s.ApiVersion.Encode(e)
 	}
-	if s.ApiVersion.Set {
+
+	if !first {
+
 		e.Comma()
 	}
+	first = false
 
 	e.RawStr("\"items\"" + ":")
 	e.ArrStart()
@@ -14219,21 +16591,20 @@ func (s IoK8sAPICoreV1EndpointsList) Encode(e *jx.Writer) {
 	}
 	e.ArrEnd()
 
-	e.Comma()
+	if s.Kind.Set {
+		e.Comma()
+	}
 	if s.Kind.Set {
 		e.RawStr("\"kind\"" + ":")
 		s.Kind.Encode(e)
 	}
-	if s.Kind.Set {
+
+	if s.Metadata.Set {
 		e.Comma()
 	}
 	if s.Metadata.Set {
 		e.RawStr("\"metadata\"" + ":")
 		s.Metadata.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -14282,27 +16653,42 @@ func (s *IoK8sAPICoreV1EndpointsList) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1EnvFromSource) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.ConfigMapRef.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.ConfigMapRef.Set {
 		e.RawStr("\"configMapRef\"" + ":")
 		s.ConfigMapRef.Encode(e)
 	}
-	if s.ConfigMapRef.Set {
-		e.Comma()
+
+	if s.Prefix.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Prefix.Set {
 		e.RawStr("\"prefix\"" + ":")
 		s.Prefix.Encode(e)
 	}
-	if s.Prefix.Set {
-		e.Comma()
+
+	if s.SecretRef.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.SecretRef.Set {
 		e.RawStr("\"secretRef\"" + ":")
 		s.SecretRef.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -14339,24 +16725,33 @@ func (s *IoK8sAPICoreV1EnvFromSource) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1EnvVar) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"name\"" + ":")
 	e.Str(s.Name)
-	e.Comma()
+
+	if s.Value.Set {
+		e.Comma()
+	}
 	if s.Value.Set {
 		e.RawStr("\"value\"" + ":")
 		s.Value.Encode(e)
 	}
-	if s.Value.Set {
+
+	if s.ValueFrom.Set {
 		e.Comma()
 	}
 	if s.ValueFrom.Set {
 		e.RawStr("\"valueFrom\"" + ":")
 		s.ValueFrom.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -14394,34 +16789,53 @@ func (s *IoK8sAPICoreV1EnvVar) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1EnvVarSource) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.ConfigMapKeyRef.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.ConfigMapKeyRef.Set {
 		e.RawStr("\"configMapKeyRef\"" + ":")
 		s.ConfigMapKeyRef.Encode(e)
 	}
-	if s.ConfigMapKeyRef.Set {
-		e.Comma()
+
+	if s.FieldRef.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.FieldRef.Set {
 		e.RawStr("\"fieldRef\"" + ":")
 		s.FieldRef.Encode(e)
 	}
-	if s.FieldRef.Set {
-		e.Comma()
+
+	if s.ResourceFieldRef.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.ResourceFieldRef.Set {
 		e.RawStr("\"resourceFieldRef\"" + ":")
 		s.ResourceFieldRef.Encode(e)
 	}
-	if s.ResourceFieldRef.Set {
-		e.Comma()
+
+	if s.SecretKeyRef.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.SecretKeyRef.Set {
 		e.RawStr("\"secretKeyRef\"" + ":")
 		s.SecretKeyRef.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -14463,6 +16877,17 @@ func (s *IoK8sAPICoreV1EnvVarSource) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1EphemeralContainer) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.Args != nil {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.Args != nil {
 		e.RawStr("\"args\"" + ":")
 		e.ArrStart()
@@ -14479,8 +16904,12 @@ func (s IoK8sAPICoreV1EphemeralContainer) Encode(e *jx.Writer) {
 		}
 		e.ArrEnd()
 	}
-	if s.Args != nil {
-		e.Comma()
+
+	if s.Command != nil {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Command != nil {
 		e.RawStr("\"command\"" + ":")
@@ -14498,8 +16927,12 @@ func (s IoK8sAPICoreV1EphemeralContainer) Encode(e *jx.Writer) {
 		}
 		e.ArrEnd()
 	}
-	if s.Command != nil {
-		e.Comma()
+
+	if s.Env != nil {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Env != nil {
 		e.RawStr("\"env\"" + ":")
@@ -14517,8 +16950,12 @@ func (s IoK8sAPICoreV1EphemeralContainer) Encode(e *jx.Writer) {
 		}
 		e.ArrEnd()
 	}
-	if s.Env != nil {
-		e.Comma()
+
+	if s.EnvFrom != nil {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.EnvFrom != nil {
 		e.RawStr("\"envFrom\"" + ":")
@@ -14536,41 +16973,62 @@ func (s IoK8sAPICoreV1EphemeralContainer) Encode(e *jx.Writer) {
 		}
 		e.ArrEnd()
 	}
-	if s.EnvFrom != nil {
-		e.Comma()
+
+	if s.Image.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Image.Set {
 		e.RawStr("\"image\"" + ":")
 		s.Image.Encode(e)
 	}
-	if s.Image.Set {
-		e.Comma()
+
+	if s.ImagePullPolicy.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.ImagePullPolicy.Set {
 		e.RawStr("\"imagePullPolicy\"" + ":")
 		s.ImagePullPolicy.Encode(e)
 	}
-	if s.ImagePullPolicy.Set {
-		e.Comma()
+
+	if s.Lifecycle.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Lifecycle.Set {
 		e.RawStr("\"lifecycle\"" + ":")
 		s.Lifecycle.Encode(e)
 	}
-	if s.Lifecycle.Set {
-		e.Comma()
+
+	if s.LivenessProbe.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.LivenessProbe.Set {
 		e.RawStr("\"livenessProbe\"" + ":")
 		s.LivenessProbe.Encode(e)
 	}
-	if s.LivenessProbe.Set {
+
+	if !first {
 		e.Comma()
 	}
+	first = false
 
 	e.RawStr("\"name\"" + ":")
 	e.Str(s.Name)
-	e.Comma()
+
+	if s.Ports != nil {
+		e.Comma()
+	}
 	if s.Ports != nil {
 		e.RawStr("\"ports\"" + ":")
 		e.ArrStart()
@@ -14587,77 +17045,88 @@ func (s IoK8sAPICoreV1EphemeralContainer) Encode(e *jx.Writer) {
 		}
 		e.ArrEnd()
 	}
-	if s.Ports != nil {
+
+	if s.ReadinessProbe.Set {
 		e.Comma()
 	}
 	if s.ReadinessProbe.Set {
 		e.RawStr("\"readinessProbe\"" + ":")
 		s.ReadinessProbe.Encode(e)
 	}
-	if s.ReadinessProbe.Set {
+
+	if s.Resources.Set {
 		e.Comma()
 	}
 	if s.Resources.Set {
 		e.RawStr("\"resources\"" + ":")
 		s.Resources.Encode(e)
 	}
-	if s.Resources.Set {
+
+	if s.SecurityContext.Set {
 		e.Comma()
 	}
 	if s.SecurityContext.Set {
 		e.RawStr("\"securityContext\"" + ":")
 		s.SecurityContext.Encode(e)
 	}
-	if s.SecurityContext.Set {
+
+	if s.StartupProbe.Set {
 		e.Comma()
 	}
 	if s.StartupProbe.Set {
 		e.RawStr("\"startupProbe\"" + ":")
 		s.StartupProbe.Encode(e)
 	}
-	if s.StartupProbe.Set {
+
+	if s.Stdin.Set {
 		e.Comma()
 	}
 	if s.Stdin.Set {
 		e.RawStr("\"stdin\"" + ":")
 		s.Stdin.Encode(e)
 	}
-	if s.Stdin.Set {
+
+	if s.StdinOnce.Set {
 		e.Comma()
 	}
 	if s.StdinOnce.Set {
 		e.RawStr("\"stdinOnce\"" + ":")
 		s.StdinOnce.Encode(e)
 	}
-	if s.StdinOnce.Set {
+
+	if s.TargetContainerName.Set {
 		e.Comma()
 	}
 	if s.TargetContainerName.Set {
 		e.RawStr("\"targetContainerName\"" + ":")
 		s.TargetContainerName.Encode(e)
 	}
-	if s.TargetContainerName.Set {
+
+	if s.TerminationMessagePath.Set {
 		e.Comma()
 	}
 	if s.TerminationMessagePath.Set {
 		e.RawStr("\"terminationMessagePath\"" + ":")
 		s.TerminationMessagePath.Encode(e)
 	}
-	if s.TerminationMessagePath.Set {
+
+	if s.TerminationMessagePolicy.Set {
 		e.Comma()
 	}
 	if s.TerminationMessagePolicy.Set {
 		e.RawStr("\"terminationMessagePolicy\"" + ":")
 		s.TerminationMessagePolicy.Encode(e)
 	}
-	if s.TerminationMessagePolicy.Set {
+
+	if s.Tty.Set {
 		e.Comma()
 	}
 	if s.Tty.Set {
 		e.RawStr("\"tty\"" + ":")
 		s.Tty.Encode(e)
 	}
-	if s.Tty.Set {
+
+	if s.VolumeDevices != nil {
 		e.Comma()
 	}
 	if s.VolumeDevices != nil {
@@ -14676,7 +17145,8 @@ func (s IoK8sAPICoreV1EphemeralContainer) Encode(e *jx.Writer) {
 		}
 		e.ArrEnd()
 	}
-	if s.VolumeDevices != nil {
+
+	if s.VolumeMounts != nil {
 		e.Comma()
 	}
 	if s.VolumeMounts != nil {
@@ -14695,16 +17165,13 @@ func (s IoK8sAPICoreV1EphemeralContainer) Encode(e *jx.Writer) {
 		}
 		e.ArrEnd()
 	}
-	if s.VolumeMounts != nil {
+
+	if s.WorkingDir.Set {
 		e.Comma()
 	}
 	if s.WorkingDir.Set {
 		e.RawStr("\"workingDir\"" + ":")
 		s.WorkingDir.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -14895,13 +17362,20 @@ func (s *IoK8sAPICoreV1EphemeralContainer) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1EphemeralVolumeSource) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.VolumeClaimTemplate.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.VolumeClaimTemplate.Set {
 		e.RawStr("\"volumeClaimTemplate\"" + ":")
 		s.VolumeClaimTemplate.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -14928,121 +17402,158 @@ func (s *IoK8sAPICoreV1EphemeralVolumeSource) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1Event) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.Action.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.Action.Set {
 		e.RawStr("\"action\"" + ":")
 		s.Action.Encode(e)
 	}
-	if s.Action.Set {
-		e.Comma()
+
+	if s.ApiVersion.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.ApiVersion.Set {
 		e.RawStr("\"apiVersion\"" + ":")
 		s.ApiVersion.Encode(e)
 	}
-	if s.ApiVersion.Set {
-		e.Comma()
+
+	if s.Count.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Count.Set {
 		e.RawStr("\"count\"" + ":")
 		s.Count.Encode(e)
 	}
-	if s.Count.Set {
-		e.Comma()
+
+	if s.EventTime.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.EventTime.Set {
 		e.RawStr("\"eventTime\"" + ":")
 		s.EventTime.Encode(e)
 	}
-	if s.EventTime.Set {
-		e.Comma()
+
+	if s.FirstTimestamp.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.FirstTimestamp.Set {
 		e.RawStr("\"firstTimestamp\"" + ":")
 		s.FirstTimestamp.Encode(e)
 	}
-	if s.FirstTimestamp.Set {
+
+	if !first {
+
 		e.Comma()
 	}
+	first = false
 
 	e.RawStr("\"involvedObject\"" + ":")
 	s.InvolvedObject.Encode(e)
 
-	e.Comma()
+	if s.Kind.Set {
+		e.Comma()
+	}
 	if s.Kind.Set {
 		e.RawStr("\"kind\"" + ":")
 		s.Kind.Encode(e)
 	}
-	if s.Kind.Set {
+
+	if s.LastTimestamp.Set {
 		e.Comma()
 	}
 	if s.LastTimestamp.Set {
 		e.RawStr("\"lastTimestamp\"" + ":")
 		s.LastTimestamp.Encode(e)
 	}
-	if s.LastTimestamp.Set {
+
+	if s.Message.Set {
 		e.Comma()
 	}
 	if s.Message.Set {
 		e.RawStr("\"message\"" + ":")
 		s.Message.Encode(e)
 	}
-	if s.Message.Set {
-		e.Comma()
-	}
+
+	e.Comma()
 
 	e.RawStr("\"metadata\"" + ":")
 	s.Metadata.Encode(e)
 
-	e.Comma()
+	if s.Reason.Set {
+		e.Comma()
+	}
 	if s.Reason.Set {
 		e.RawStr("\"reason\"" + ":")
 		s.Reason.Encode(e)
 	}
-	if s.Reason.Set {
+
+	if s.Related.Set {
 		e.Comma()
 	}
 	if s.Related.Set {
 		e.RawStr("\"related\"" + ":")
 		s.Related.Encode(e)
 	}
-	if s.Related.Set {
+
+	if s.ReportingComponent.Set {
 		e.Comma()
 	}
 	if s.ReportingComponent.Set {
 		e.RawStr("\"reportingComponent\"" + ":")
 		s.ReportingComponent.Encode(e)
 	}
-	if s.ReportingComponent.Set {
+
+	if s.ReportingInstance.Set {
 		e.Comma()
 	}
 	if s.ReportingInstance.Set {
 		e.RawStr("\"reportingInstance\"" + ":")
 		s.ReportingInstance.Encode(e)
 	}
-	if s.ReportingInstance.Set {
+
+	if s.Series.Set {
 		e.Comma()
 	}
 	if s.Series.Set {
 		e.RawStr("\"series\"" + ":")
 		s.Series.Encode(e)
 	}
-	if s.Series.Set {
+
+	if s.Source.Set {
 		e.Comma()
 	}
 	if s.Source.Set {
 		e.RawStr("\"source\"" + ":")
 		s.Source.Encode(e)
 	}
-	if s.Source.Set {
+
+	if s.Type.Set {
 		e.Comma()
 	}
 	if s.Type.Set {
 		e.RawStr("\"type\"" + ":")
 		s.Type.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -15147,13 +17658,27 @@ func (s *IoK8sAPICoreV1Event) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1EventList) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.ApiVersion.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.ApiVersion.Set {
 		e.RawStr("\"apiVersion\"" + ":")
 		s.ApiVersion.Encode(e)
 	}
-	if s.ApiVersion.Set {
+
+	if !first {
+
 		e.Comma()
 	}
+	first = false
 
 	e.RawStr("\"items\"" + ":")
 	e.ArrStart()
@@ -15170,21 +17695,20 @@ func (s IoK8sAPICoreV1EventList) Encode(e *jx.Writer) {
 	}
 	e.ArrEnd()
 
-	e.Comma()
+	if s.Kind.Set {
+		e.Comma()
+	}
 	if s.Kind.Set {
 		e.RawStr("\"kind\"" + ":")
 		s.Kind.Encode(e)
 	}
-	if s.Kind.Set {
+
+	if s.Metadata.Set {
 		e.Comma()
 	}
 	if s.Metadata.Set {
 		e.RawStr("\"metadata\"" + ":")
 		s.Metadata.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -15233,20 +17757,31 @@ func (s *IoK8sAPICoreV1EventList) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1EventSeries) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.Count.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.Count.Set {
 		e.RawStr("\"count\"" + ":")
 		s.Count.Encode(e)
 	}
-	if s.Count.Set {
-		e.Comma()
+
+	if s.LastObservedTime.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.LastObservedTime.Set {
 		e.RawStr("\"lastObservedTime\"" + ":")
 		s.LastObservedTime.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -15278,20 +17813,31 @@ func (s *IoK8sAPICoreV1EventSeries) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1EventSource) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.Component.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.Component.Set {
 		e.RawStr("\"component\"" + ":")
 		s.Component.Encode(e)
 	}
-	if s.Component.Set {
-		e.Comma()
+
+	if s.Host.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Host.Set {
 		e.RawStr("\"host\"" + ":")
 		s.Host.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -15323,6 +17869,17 @@ func (s *IoK8sAPICoreV1EventSource) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1ExecAction) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.Command != nil {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.Command != nil {
 		e.RawStr("\"command\"" + ":")
 		e.ArrStart()
@@ -15338,10 +17895,6 @@ func (s IoK8sAPICoreV1ExecAction) Encode(e *jx.Writer) {
 			}
 		}
 		e.ArrEnd()
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -15377,26 +17930,49 @@ func (s *IoK8sAPICoreV1ExecAction) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1FCVolumeSource) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.FsType.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.FsType.Set {
 		e.RawStr("\"fsType\"" + ":")
 		s.FsType.Encode(e)
 	}
-	if s.FsType.Set {
-		e.Comma()
+
+	if s.Lun.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Lun.Set {
 		e.RawStr("\"lun\"" + ":")
 		s.Lun.Encode(e)
 	}
-	if s.Lun.Set {
-		e.Comma()
+
+	if s.ReadOnly.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.ReadOnly.Set {
 		e.RawStr("\"readOnly\"" + ":")
 		s.ReadOnly.Encode(e)
 	}
-	if s.ReadOnly.Set {
-		e.Comma()
+
+	if s.TargetWWNs != nil {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.TargetWWNs != nil {
 		e.RawStr("\"targetWWNs\"" + ":")
@@ -15414,8 +17990,12 @@ func (s IoK8sAPICoreV1FCVolumeSource) Encode(e *jx.Writer) {
 		}
 		e.ArrEnd()
 	}
-	if s.TargetWWNs != nil {
-		e.Comma()
+
+	if s.Wwids != nil {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Wwids != nil {
 		e.RawStr("\"wwids\"" + ":")
@@ -15432,10 +18012,6 @@ func (s IoK8sAPICoreV1FCVolumeSource) Encode(e *jx.Writer) {
 			}
 		}
 		e.ArrEnd()
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -15500,38 +18076,49 @@ func (s *IoK8sAPICoreV1FCVolumeSource) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1FlexPersistentVolumeSource) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"driver\"" + ":")
 	e.Str(s.Driver)
-	e.Comma()
+
+	if s.FsType.Set {
+		e.Comma()
+	}
 	if s.FsType.Set {
 		e.RawStr("\"fsType\"" + ":")
 		s.FsType.Encode(e)
 	}
-	if s.FsType.Set {
+
+	if s.Options != nil {
 		e.Comma()
 	}
 	if s.Options != nil {
 		e.RawStr("\"options\"" + ":")
 		s.Options.Encode(e)
 	}
-	if s.Options != nil {
+
+	if s.ReadOnly.Set {
 		e.Comma()
 	}
 	if s.ReadOnly.Set {
 		e.RawStr("\"readOnly\"" + ":")
 		s.ReadOnly.Encode(e)
 	}
-	if s.ReadOnly.Set {
+
+	if s.SecretRef.Set {
 		e.Comma()
 	}
 	if s.SecretRef.Set {
 		e.RawStr("\"secretRef\"" + ":")
 		s.SecretRef.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -15581,10 +18168,10 @@ func (s *IoK8sAPICoreV1FlexPersistentVolumeSource) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1FlexPersistentVolumeSourceOptions) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -15605,38 +18192,49 @@ func (s *IoK8sAPICoreV1FlexPersistentVolumeSourceOptions) Decode(d *jx.Decoder) 
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1FlexVolumeSource) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"driver\"" + ":")
 	e.Str(s.Driver)
-	e.Comma()
+
+	if s.FsType.Set {
+		e.Comma()
+	}
 	if s.FsType.Set {
 		e.RawStr("\"fsType\"" + ":")
 		s.FsType.Encode(e)
 	}
-	if s.FsType.Set {
+
+	if s.Options != nil {
 		e.Comma()
 	}
 	if s.Options != nil {
 		e.RawStr("\"options\"" + ":")
 		s.Options.Encode(e)
 	}
-	if s.Options != nil {
+
+	if s.ReadOnly.Set {
 		e.Comma()
 	}
 	if s.ReadOnly.Set {
 		e.RawStr("\"readOnly\"" + ":")
 		s.ReadOnly.Encode(e)
 	}
-	if s.ReadOnly.Set {
+
+	if s.SecretRef.Set {
 		e.Comma()
 	}
 	if s.SecretRef.Set {
 		e.RawStr("\"secretRef\"" + ":")
 		s.SecretRef.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -15686,10 +18284,10 @@ func (s *IoK8sAPICoreV1FlexVolumeSource) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1FlexVolumeSourceOptions) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -15710,20 +18308,31 @@ func (s *IoK8sAPICoreV1FlexVolumeSourceOptions) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1FlockerVolumeSource) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.DatasetName.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.DatasetName.Set {
 		e.RawStr("\"datasetName\"" + ":")
 		s.DatasetName.Encode(e)
 	}
-	if s.DatasetName.Set {
-		e.Comma()
+
+	if s.DatasetUUID.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.DatasetUUID.Set {
 		e.RawStr("\"datasetUUID\"" + ":")
 		s.DatasetUUID.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -15755,31 +18364,47 @@ func (s *IoK8sAPICoreV1FlockerVolumeSource) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1GCEPersistentDiskVolumeSource) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.FsType.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.FsType.Set {
 		e.RawStr("\"fsType\"" + ":")
 		s.FsType.Encode(e)
 	}
-	if s.FsType.Set {
-		e.Comma()
+
+	if s.Partition.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Partition.Set {
 		e.RawStr("\"partition\"" + ":")
 		s.Partition.Encode(e)
 	}
-	if s.Partition.Set {
+
+	if !first {
 		e.Comma()
 	}
+	first = false
 
 	e.RawStr("\"pdName\"" + ":")
 	e.Str(s.PdName)
-	e.Comma()
+
+	if s.ReadOnly.Set {
+		e.Comma()
+	}
 	if s.ReadOnly.Set {
 		e.RawStr("\"readOnly\"" + ":")
 		s.ReadOnly.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -15822,24 +18447,36 @@ func (s *IoK8sAPICoreV1GCEPersistentDiskVolumeSource) Decode(d *jx.Decoder) erro
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1GitRepoVolumeSource) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.Directory.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.Directory.Set {
 		e.RawStr("\"directory\"" + ":")
 		s.Directory.Encode(e)
 	}
-	if s.Directory.Set {
+
+	if !first {
 		e.Comma()
 	}
+	first = false
 
 	e.RawStr("\"repository\"" + ":")
 	e.Str(s.Repository)
-	e.Comma()
+
+	if s.Revision.Set {
+		e.Comma()
+	}
 	if s.Revision.Set {
 		e.RawStr("\"revision\"" + ":")
 		s.Revision.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -15877,28 +18514,38 @@ func (s *IoK8sAPICoreV1GitRepoVolumeSource) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1GlusterfsPersistentVolumeSource) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"endpoints\"" + ":")
 	e.Str(s.Endpoints)
-	e.Comma()
+
+	if s.EndpointsNamespace.Set {
+		e.Comma()
+	}
 	if s.EndpointsNamespace.Set {
 		e.RawStr("\"endpointsNamespace\"" + ":")
 		s.EndpointsNamespace.Encode(e)
 	}
-	if s.EndpointsNamespace.Set {
-		e.Comma()
-	}
+
+	e.Comma()
 
 	e.RawStr("\"path\"" + ":")
 	e.Str(s.Path)
-	e.Comma()
+
+	if s.ReadOnly.Set {
+		e.Comma()
+	}
 	if s.ReadOnly.Set {
 		e.RawStr("\"readOnly\"" + ":")
 		s.ReadOnly.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -15942,21 +18589,30 @@ func (s *IoK8sAPICoreV1GlusterfsPersistentVolumeSource) Decode(d *jx.Decoder) er
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1GlusterfsVolumeSource) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"endpoints\"" + ":")
 	e.Str(s.Endpoints)
+
 	e.Comma()
 
 	e.RawStr("\"path\"" + ":")
 	e.Str(s.Path)
-	e.Comma()
+
+	if s.ReadOnly.Set {
+		e.Comma()
+	}
 	if s.ReadOnly.Set {
 		e.RawStr("\"readOnly\"" + ":")
 		s.ReadOnly.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -15995,12 +18651,27 @@ func (s *IoK8sAPICoreV1GlusterfsVolumeSource) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1HTTPGetAction) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.Host.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.Host.Set {
 		e.RawStr("\"host\"" + ":")
 		s.Host.Encode(e)
 	}
-	if s.Host.Set {
-		e.Comma()
+
+	if s.HttpHeaders != nil {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.HttpHeaders != nil {
 		e.RawStr("\"httpHeaders\"" + ":")
@@ -16018,28 +18689,33 @@ func (s IoK8sAPICoreV1HTTPGetAction) Encode(e *jx.Writer) {
 		}
 		e.ArrEnd()
 	}
-	if s.HttpHeaders != nil {
-		e.Comma()
+
+	if s.Path.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Path.Set {
 		e.RawStr("\"path\"" + ":")
 		s.Path.Encode(e)
 	}
-	if s.Path.Set {
+
+	if !first {
+
 		e.Comma()
 	}
+	first = false
 
 	e.RawStr("\"port\"" + ":")
 	s.Port.Encode(e)
 
-	e.Comma()
+	if s.Scheme.Set {
+		e.Comma()
+	}
 	if s.Scheme.Set {
 		e.RawStr("\"scheme\"" + ":")
 		s.Scheme.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -16098,17 +18774,23 @@ func (s *IoK8sAPICoreV1HTTPGetAction) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1HTTPHeader) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"name\"" + ":")
 	e.Str(s.Name)
+
 	e.Comma()
 
 	e.RawStr("\"value\"" + ":")
 	e.Str(s.Value)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -16141,27 +18823,42 @@ func (s *IoK8sAPICoreV1HTTPHeader) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1Handler) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.Exec.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.Exec.Set {
 		e.RawStr("\"exec\"" + ":")
 		s.Exec.Encode(e)
 	}
-	if s.Exec.Set {
-		e.Comma()
+
+	if s.HttpGet.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.HttpGet.Set {
 		e.RawStr("\"httpGet\"" + ":")
 		s.HttpGet.Encode(e)
 	}
-	if s.HttpGet.Set {
-		e.Comma()
+
+	if s.TcpSocket.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.TcpSocket.Set {
 		e.RawStr("\"tcpSocket\"" + ":")
 		s.TcpSocket.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -16198,6 +18895,17 @@ func (s *IoK8sAPICoreV1Handler) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1HostAlias) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.Hostnames != nil {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.Hostnames != nil {
 		e.RawStr("\"hostnames\"" + ":")
 		e.ArrStart()
@@ -16214,16 +18922,16 @@ func (s IoK8sAPICoreV1HostAlias) Encode(e *jx.Writer) {
 		}
 		e.ArrEnd()
 	}
-	if s.Hostnames != nil {
-		e.Comma()
+
+	if s.IP.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.IP.Set {
 		e.RawStr("\"ip\"" + ":")
 		s.IP.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -16264,17 +18972,25 @@ func (s *IoK8sAPICoreV1HostAlias) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1HostPathVolumeSource) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"path\"" + ":")
 	e.Str(s.Path)
-	e.Comma()
+
+	if s.Type.Set {
+		e.Comma()
+	}
 	if s.Type.Set {
 		e.RawStr("\"type\"" + ":")
 		s.Type.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -16307,49 +19023,79 @@ func (s *IoK8sAPICoreV1HostPathVolumeSource) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1ISCSIPersistentVolumeSource) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.ChapAuthDiscovery.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.ChapAuthDiscovery.Set {
 		e.RawStr("\"chapAuthDiscovery\"" + ":")
 		s.ChapAuthDiscovery.Encode(e)
 	}
-	if s.ChapAuthDiscovery.Set {
-		e.Comma()
+
+	if s.ChapAuthSession.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.ChapAuthSession.Set {
 		e.RawStr("\"chapAuthSession\"" + ":")
 		s.ChapAuthSession.Encode(e)
 	}
-	if s.ChapAuthSession.Set {
-		e.Comma()
+
+	if s.FsType.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.FsType.Set {
 		e.RawStr("\"fsType\"" + ":")
 		s.FsType.Encode(e)
 	}
-	if s.FsType.Set {
-		e.Comma()
+
+	if s.InitiatorName.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.InitiatorName.Set {
 		e.RawStr("\"initiatorName\"" + ":")
 		s.InitiatorName.Encode(e)
 	}
-	if s.InitiatorName.Set {
+
+	if !first {
 		e.Comma()
 	}
+	first = false
 
 	e.RawStr("\"iqn\"" + ":")
 	e.Str(s.Iqn)
-	e.Comma()
+
+	if s.IscsiInterface.Set {
+		e.Comma()
+	}
 	if s.IscsiInterface.Set {
 		e.RawStr("\"iscsiInterface\"" + ":")
 		s.IscsiInterface.Encode(e)
 	}
-	if s.IscsiInterface.Set {
-		e.Comma()
-	}
+
+	e.Comma()
 
 	e.RawStr("\"lun\"" + ":")
 	e.Int32(s.Lun)
-	e.Comma()
+
+	if s.Portals != nil {
+		e.Comma()
+	}
 	if s.Portals != nil {
 		e.RawStr("\"portals\"" + ":")
 		e.ArrStart()
@@ -16366,30 +19112,27 @@ func (s IoK8sAPICoreV1ISCSIPersistentVolumeSource) Encode(e *jx.Writer) {
 		}
 		e.ArrEnd()
 	}
-	if s.Portals != nil {
+
+	if s.ReadOnly.Set {
 		e.Comma()
 	}
 	if s.ReadOnly.Set {
 		e.RawStr("\"readOnly\"" + ":")
 		s.ReadOnly.Encode(e)
 	}
-	if s.ReadOnly.Set {
+
+	if s.SecretRef.Set {
 		e.Comma()
 	}
 	if s.SecretRef.Set {
 		e.RawStr("\"secretRef\"" + ":")
 		s.SecretRef.Encode(e)
 	}
-	if s.SecretRef.Set {
-		e.Comma()
-	}
+
+	e.Comma()
 
 	e.RawStr("\"targetPortal\"" + ":")
 	e.Str(s.TargetPortal)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -16477,49 +19220,79 @@ func (s *IoK8sAPICoreV1ISCSIPersistentVolumeSource) Decode(d *jx.Decoder) error 
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1ISCSIVolumeSource) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.ChapAuthDiscovery.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.ChapAuthDiscovery.Set {
 		e.RawStr("\"chapAuthDiscovery\"" + ":")
 		s.ChapAuthDiscovery.Encode(e)
 	}
-	if s.ChapAuthDiscovery.Set {
-		e.Comma()
+
+	if s.ChapAuthSession.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.ChapAuthSession.Set {
 		e.RawStr("\"chapAuthSession\"" + ":")
 		s.ChapAuthSession.Encode(e)
 	}
-	if s.ChapAuthSession.Set {
-		e.Comma()
+
+	if s.FsType.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.FsType.Set {
 		e.RawStr("\"fsType\"" + ":")
 		s.FsType.Encode(e)
 	}
-	if s.FsType.Set {
-		e.Comma()
+
+	if s.InitiatorName.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.InitiatorName.Set {
 		e.RawStr("\"initiatorName\"" + ":")
 		s.InitiatorName.Encode(e)
 	}
-	if s.InitiatorName.Set {
+
+	if !first {
 		e.Comma()
 	}
+	first = false
 
 	e.RawStr("\"iqn\"" + ":")
 	e.Str(s.Iqn)
-	e.Comma()
+
+	if s.IscsiInterface.Set {
+		e.Comma()
+	}
 	if s.IscsiInterface.Set {
 		e.RawStr("\"iscsiInterface\"" + ":")
 		s.IscsiInterface.Encode(e)
 	}
-	if s.IscsiInterface.Set {
-		e.Comma()
-	}
+
+	e.Comma()
 
 	e.RawStr("\"lun\"" + ":")
 	e.Int32(s.Lun)
-	e.Comma()
+
+	if s.Portals != nil {
+		e.Comma()
+	}
 	if s.Portals != nil {
 		e.RawStr("\"portals\"" + ":")
 		e.ArrStart()
@@ -16536,30 +19309,27 @@ func (s IoK8sAPICoreV1ISCSIVolumeSource) Encode(e *jx.Writer) {
 		}
 		e.ArrEnd()
 	}
-	if s.Portals != nil {
+
+	if s.ReadOnly.Set {
 		e.Comma()
 	}
 	if s.ReadOnly.Set {
 		e.RawStr("\"readOnly\"" + ":")
 		s.ReadOnly.Encode(e)
 	}
-	if s.ReadOnly.Set {
+
+	if s.SecretRef.Set {
 		e.Comma()
 	}
 	if s.SecretRef.Set {
 		e.RawStr("\"secretRef\"" + ":")
 		s.SecretRef.Encode(e)
 	}
-	if s.SecretRef.Set {
-		e.Comma()
-	}
+
+	e.Comma()
 
 	e.RawStr("\"targetPortal\"" + ":")
 	e.Str(s.TargetPortal)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -16647,24 +19417,31 @@ func (s *IoK8sAPICoreV1ISCSIVolumeSource) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1KeyToPath) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"key\"" + ":")
 	e.Str(s.Key)
-	e.Comma()
+
+	if s.Mode.Set {
+		e.Comma()
+	}
 	if s.Mode.Set {
 		e.RawStr("\"mode\"" + ":")
 		s.Mode.Encode(e)
 	}
-	if s.Mode.Set {
-		e.Comma()
-	}
+
+	e.Comma()
 
 	e.RawStr("\"path\"" + ":")
 	e.Str(s.Path)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -16702,20 +19479,31 @@ func (s *IoK8sAPICoreV1KeyToPath) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1Lifecycle) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.PostStart.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.PostStart.Set {
 		e.RawStr("\"postStart\"" + ":")
 		s.PostStart.Encode(e)
 	}
-	if s.PostStart.Set {
-		e.Comma()
+
+	if s.PreStop.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.PreStop.Set {
 		e.RawStr("\"preStop\"" + ":")
 		s.PreStop.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -16747,34 +19535,53 @@ func (s *IoK8sAPICoreV1Lifecycle) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1LimitRange) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.ApiVersion.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.ApiVersion.Set {
 		e.RawStr("\"apiVersion\"" + ":")
 		s.ApiVersion.Encode(e)
 	}
-	if s.ApiVersion.Set {
-		e.Comma()
+
+	if s.Kind.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Kind.Set {
 		e.RawStr("\"kind\"" + ":")
 		s.Kind.Encode(e)
 	}
-	if s.Kind.Set {
-		e.Comma()
+
+	if s.Metadata.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Metadata.Set {
 		e.RawStr("\"metadata\"" + ":")
 		s.Metadata.Encode(e)
 	}
-	if s.Metadata.Set {
-		e.Comma()
+
+	if s.Spec.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Spec.Set {
 		e.RawStr("\"spec\"" + ":")
 		s.Spec.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -16816,48 +19623,73 @@ func (s *IoK8sAPICoreV1LimitRange) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1LimitRangeItem) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.Default != nil {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.Default != nil {
 		e.RawStr("\"default\"" + ":")
 		s.Default.Encode(e)
 	}
-	if s.Default != nil {
-		e.Comma()
+
+	if s.DefaultRequest != nil {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.DefaultRequest != nil {
 		e.RawStr("\"defaultRequest\"" + ":")
 		s.DefaultRequest.Encode(e)
 	}
-	if s.DefaultRequest != nil {
-		e.Comma()
+
+	if s.Max != nil {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Max != nil {
 		e.RawStr("\"max\"" + ":")
 		s.Max.Encode(e)
 	}
-	if s.Max != nil {
-		e.Comma()
+
+	if s.MaxLimitRequestRatio != nil {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.MaxLimitRequestRatio != nil {
 		e.RawStr("\"maxLimitRequestRatio\"" + ":")
 		s.MaxLimitRequestRatio.Encode(e)
 	}
-	if s.MaxLimitRequestRatio != nil {
-		e.Comma()
+
+	if s.Min != nil {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Min != nil {
 		e.RawStr("\"min\"" + ":")
 		s.Min.Encode(e)
 	}
-	if s.Min != nil {
+
+	if !first {
 		e.Comma()
 	}
+	first = false
 
 	e.RawStr("\"type\"" + ":")
 	e.Str(s.Type)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -16919,10 +19751,10 @@ func (s *IoK8sAPICoreV1LimitRangeItem) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1LimitRangeItemDefault) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -16943,10 +19775,10 @@ func (s *IoK8sAPICoreV1LimitRangeItemDefault) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1LimitRangeItemDefaultRequest) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -16967,10 +19799,10 @@ func (s *IoK8sAPICoreV1LimitRangeItemDefaultRequest) Decode(d *jx.Decoder) error
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1LimitRangeItemMax) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -16991,10 +19823,10 @@ func (s *IoK8sAPICoreV1LimitRangeItemMax) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1LimitRangeItemMaxLimitRequestRatio) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -17015,10 +19847,10 @@ func (s *IoK8sAPICoreV1LimitRangeItemMaxLimitRequestRatio) Decode(d *jx.Decoder)
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1LimitRangeItemMin) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -17039,13 +19871,27 @@ func (s *IoK8sAPICoreV1LimitRangeItemMin) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1LimitRangeList) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.ApiVersion.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.ApiVersion.Set {
 		e.RawStr("\"apiVersion\"" + ":")
 		s.ApiVersion.Encode(e)
 	}
-	if s.ApiVersion.Set {
+
+	if !first {
+
 		e.Comma()
 	}
+	first = false
 
 	e.RawStr("\"items\"" + ":")
 	e.ArrStart()
@@ -17062,21 +19908,20 @@ func (s IoK8sAPICoreV1LimitRangeList) Encode(e *jx.Writer) {
 	}
 	e.ArrEnd()
 
-	e.Comma()
+	if s.Kind.Set {
+		e.Comma()
+	}
 	if s.Kind.Set {
 		e.RawStr("\"kind\"" + ":")
 		s.Kind.Encode(e)
 	}
-	if s.Kind.Set {
+
+	if s.Metadata.Set {
 		e.Comma()
 	}
 	if s.Metadata.Set {
 		e.RawStr("\"metadata\"" + ":")
 		s.Metadata.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -17125,6 +19970,16 @@ func (s *IoK8sAPICoreV1LimitRangeList) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1LimitRangeSpec) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"limits\"" + ":")
 	e.ArrStart()
@@ -17140,10 +19995,6 @@ func (s IoK8sAPICoreV1LimitRangeSpec) Encode(e *jx.Writer) {
 		}
 	}
 	e.ArrEnd()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -17176,19 +20027,38 @@ func (s *IoK8sAPICoreV1LimitRangeSpec) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1LoadBalancerIngress) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.Hostname.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.Hostname.Set {
 		e.RawStr("\"hostname\"" + ":")
 		s.Hostname.Encode(e)
 	}
-	if s.Hostname.Set {
-		e.Comma()
+
+	if s.IP.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.IP.Set {
 		e.RawStr("\"ip\"" + ":")
 		s.IP.Encode(e)
 	}
-	if s.IP.Set {
-		e.Comma()
+
+	if s.Ports != nil {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Ports != nil {
 		e.RawStr("\"ports\"" + ":")
@@ -17205,10 +20075,6 @@ func (s IoK8sAPICoreV1LoadBalancerIngress) Encode(e *jx.Writer) {
 			}
 		}
 		e.ArrEnd()
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -17252,6 +20118,17 @@ func (s *IoK8sAPICoreV1LoadBalancerIngress) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1LoadBalancerStatus) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.Ingress != nil {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.Ingress != nil {
 		e.RawStr("\"ingress\"" + ":")
 		e.ArrStart()
@@ -17267,10 +20144,6 @@ func (s IoK8sAPICoreV1LoadBalancerStatus) Encode(e *jx.Writer) {
 			}
 		}
 		e.ArrEnd()
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -17304,13 +20177,20 @@ func (s *IoK8sAPICoreV1LoadBalancerStatus) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1LocalObjectReference) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.Name.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.Name.Set {
 		e.RawStr("\"name\"" + ":")
 		s.Name.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -17337,20 +20217,29 @@ func (s *IoK8sAPICoreV1LocalObjectReference) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1LocalVolumeSource) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.FsType.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.FsType.Set {
 		e.RawStr("\"fsType\"" + ":")
 		s.FsType.Encode(e)
 	}
-	if s.FsType.Set {
+
+	if !first {
 		e.Comma()
 	}
+	first = false
 
 	e.RawStr("\"path\"" + ":")
 	e.Str(s.Path)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -17382,24 +20271,31 @@ func (s *IoK8sAPICoreV1LocalVolumeSource) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1NFSVolumeSource) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"path\"" + ":")
 	e.Str(s.Path)
-	e.Comma()
+
+	if s.ReadOnly.Set {
+		e.Comma()
+	}
 	if s.ReadOnly.Set {
 		e.RawStr("\"readOnly\"" + ":")
 		s.ReadOnly.Encode(e)
 	}
-	if s.ReadOnly.Set {
-		e.Comma()
-	}
+
+	e.Comma()
 
 	e.RawStr("\"server\"" + ":")
 	e.Str(s.Server)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -17437,41 +20333,64 @@ func (s *IoK8sAPICoreV1NFSVolumeSource) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1Namespace) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.ApiVersion.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.ApiVersion.Set {
 		e.RawStr("\"apiVersion\"" + ":")
 		s.ApiVersion.Encode(e)
 	}
-	if s.ApiVersion.Set {
-		e.Comma()
+
+	if s.Kind.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Kind.Set {
 		e.RawStr("\"kind\"" + ":")
 		s.Kind.Encode(e)
 	}
-	if s.Kind.Set {
-		e.Comma()
+
+	if s.Metadata.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Metadata.Set {
 		e.RawStr("\"metadata\"" + ":")
 		s.Metadata.Encode(e)
 	}
-	if s.Metadata.Set {
-		e.Comma()
+
+	if s.Spec.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Spec.Set {
 		e.RawStr("\"spec\"" + ":")
 		s.Spec.Encode(e)
 	}
-	if s.Spec.Set {
-		e.Comma()
+
+	if s.Status.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Status.Set {
 		e.RawStr("\"status\"" + ":")
 		s.Status.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -17518,38 +20437,56 @@ func (s *IoK8sAPICoreV1Namespace) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1NamespaceCondition) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.LastTransitionTime.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.LastTransitionTime.Set {
 		e.RawStr("\"lastTransitionTime\"" + ":")
 		s.LastTransitionTime.Encode(e)
 	}
-	if s.LastTransitionTime.Set {
-		e.Comma()
+
+	if s.Message.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Message.Set {
 		e.RawStr("\"message\"" + ":")
 		s.Message.Encode(e)
 	}
-	if s.Message.Set {
-		e.Comma()
+
+	if s.Reason.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Reason.Set {
 		e.RawStr("\"reason\"" + ":")
 		s.Reason.Encode(e)
 	}
-	if s.Reason.Set {
+
+	if !first {
 		e.Comma()
 	}
+	first = false
 
 	e.RawStr("\"status\"" + ":")
 	e.Str(s.Status)
+
 	e.Comma()
 
 	e.RawStr("\"type\"" + ":")
 	e.Str(s.Type)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -17597,13 +20534,27 @@ func (s *IoK8sAPICoreV1NamespaceCondition) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1NamespaceList) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.ApiVersion.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.ApiVersion.Set {
 		e.RawStr("\"apiVersion\"" + ":")
 		s.ApiVersion.Encode(e)
 	}
-	if s.ApiVersion.Set {
+
+	if !first {
+
 		e.Comma()
 	}
+	first = false
 
 	e.RawStr("\"items\"" + ":")
 	e.ArrStart()
@@ -17620,21 +20571,20 @@ func (s IoK8sAPICoreV1NamespaceList) Encode(e *jx.Writer) {
 	}
 	e.ArrEnd()
 
-	e.Comma()
+	if s.Kind.Set {
+		e.Comma()
+	}
 	if s.Kind.Set {
 		e.RawStr("\"kind\"" + ":")
 		s.Kind.Encode(e)
 	}
-	if s.Kind.Set {
+
+	if s.Metadata.Set {
 		e.Comma()
 	}
 	if s.Metadata.Set {
 		e.RawStr("\"metadata\"" + ":")
 		s.Metadata.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -17683,6 +20633,17 @@ func (s *IoK8sAPICoreV1NamespaceList) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1NamespaceSpec) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.Finalizers != nil {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.Finalizers != nil {
 		e.RawStr("\"finalizers\"" + ":")
 		e.ArrStart()
@@ -17698,10 +20659,6 @@ func (s IoK8sAPICoreV1NamespaceSpec) Encode(e *jx.Writer) {
 			}
 		}
 		e.ArrEnd()
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -17737,6 +20694,17 @@ func (s *IoK8sAPICoreV1NamespaceSpec) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1NamespaceStatus) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.Conditions != nil {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.Conditions != nil {
 		e.RawStr("\"conditions\"" + ":")
 		e.ArrStart()
@@ -17753,16 +20721,16 @@ func (s IoK8sAPICoreV1NamespaceStatus) Encode(e *jx.Writer) {
 		}
 		e.ArrEnd()
 	}
-	if s.Conditions != nil {
-		e.Comma()
+
+	if s.Phase.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Phase.Set {
 		e.RawStr("\"phase\"" + ":")
 		s.Phase.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -17801,41 +20769,64 @@ func (s *IoK8sAPICoreV1NamespaceStatus) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1Node) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.ApiVersion.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.ApiVersion.Set {
 		e.RawStr("\"apiVersion\"" + ":")
 		s.ApiVersion.Encode(e)
 	}
-	if s.ApiVersion.Set {
-		e.Comma()
+
+	if s.Kind.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Kind.Set {
 		e.RawStr("\"kind\"" + ":")
 		s.Kind.Encode(e)
 	}
-	if s.Kind.Set {
-		e.Comma()
+
+	if s.Metadata.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Metadata.Set {
 		e.RawStr("\"metadata\"" + ":")
 		s.Metadata.Encode(e)
 	}
-	if s.Metadata.Set {
-		e.Comma()
+
+	if s.Spec.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Spec.Set {
 		e.RawStr("\"spec\"" + ":")
 		s.Spec.Encode(e)
 	}
-	if s.Spec.Set {
-		e.Comma()
+
+	if s.Status.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Status.Set {
 		e.RawStr("\"status\"" + ":")
 		s.Status.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -17882,17 +20873,23 @@ func (s *IoK8sAPICoreV1Node) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1NodeAddress) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"address\"" + ":")
 	e.Str(s.Address)
+
 	e.Comma()
 
 	e.RawStr("\"type\"" + ":")
 	e.Str(s.Type)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -17925,6 +20922,17 @@ func (s *IoK8sAPICoreV1NodeAddress) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1NodeAffinity) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.PreferredDuringSchedulingIgnoredDuringExecution != nil {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.PreferredDuringSchedulingIgnoredDuringExecution != nil {
 		e.RawStr("\"preferredDuringSchedulingIgnoredDuringExecution\"" + ":")
 		e.ArrStart()
@@ -17941,16 +20949,16 @@ func (s IoK8sAPICoreV1NodeAffinity) Encode(e *jx.Writer) {
 		}
 		e.ArrEnd()
 	}
-	if s.PreferredDuringSchedulingIgnoredDuringExecution != nil {
-		e.Comma()
+
+	if s.RequiredDuringSchedulingIgnoredDuringExecution.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.RequiredDuringSchedulingIgnoredDuringExecution.Set {
 		e.RawStr("\"requiredDuringSchedulingIgnoredDuringExecution\"" + ":")
 		s.RequiredDuringSchedulingIgnoredDuringExecution.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -17989,45 +20997,67 @@ func (s *IoK8sAPICoreV1NodeAffinity) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1NodeCondition) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.LastHeartbeatTime.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.LastHeartbeatTime.Set {
 		e.RawStr("\"lastHeartbeatTime\"" + ":")
 		s.LastHeartbeatTime.Encode(e)
 	}
-	if s.LastHeartbeatTime.Set {
-		e.Comma()
+
+	if s.LastTransitionTime.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.LastTransitionTime.Set {
 		e.RawStr("\"lastTransitionTime\"" + ":")
 		s.LastTransitionTime.Encode(e)
 	}
-	if s.LastTransitionTime.Set {
-		e.Comma()
+
+	if s.Message.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Message.Set {
 		e.RawStr("\"message\"" + ":")
 		s.Message.Encode(e)
 	}
-	if s.Message.Set {
-		e.Comma()
+
+	if s.Reason.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Reason.Set {
 		e.RawStr("\"reason\"" + ":")
 		s.Reason.Encode(e)
 	}
-	if s.Reason.Set {
+
+	if !first {
 		e.Comma()
 	}
+	first = false
 
 	e.RawStr("\"status\"" + ":")
 	e.Str(s.Status)
+
 	e.Comma()
 
 	e.RawStr("\"type\"" + ":")
 	e.Str(s.Type)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -18080,13 +21110,20 @@ func (s *IoK8sAPICoreV1NodeCondition) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1NodeConfigSource) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.ConfigMap.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.ConfigMap.Set {
 		e.RawStr("\"configMap\"" + ":")
 		s.ConfigMap.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -18113,34 +21150,53 @@ func (s *IoK8sAPICoreV1NodeConfigSource) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1NodeConfigStatus) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.Active.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.Active.Set {
 		e.RawStr("\"active\"" + ":")
 		s.Active.Encode(e)
 	}
-	if s.Active.Set {
-		e.Comma()
+
+	if s.Assigned.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Assigned.Set {
 		e.RawStr("\"assigned\"" + ":")
 		s.Assigned.Encode(e)
 	}
-	if s.Assigned.Set {
-		e.Comma()
+
+	if s.Error.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Error.Set {
 		e.RawStr("\"error\"" + ":")
 		s.Error.Encode(e)
 	}
-	if s.Error.Set {
-		e.Comma()
+
+	if s.LastKnownGood.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.LastKnownGood.Set {
 		e.RawStr("\"lastKnownGood\"" + ":")
 		s.LastKnownGood.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -18182,13 +21238,20 @@ func (s *IoK8sAPICoreV1NodeConfigStatus) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1NodeDaemonEndpoints) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.KubeletEndpoint.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.KubeletEndpoint.Set {
 		e.RawStr("\"kubeletEndpoint\"" + ":")
 		s.KubeletEndpoint.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -18215,13 +21278,27 @@ func (s *IoK8sAPICoreV1NodeDaemonEndpoints) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1NodeList) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.ApiVersion.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.ApiVersion.Set {
 		e.RawStr("\"apiVersion\"" + ":")
 		s.ApiVersion.Encode(e)
 	}
-	if s.ApiVersion.Set {
+
+	if !first {
+
 		e.Comma()
 	}
+	first = false
 
 	e.RawStr("\"items\"" + ":")
 	e.ArrStart()
@@ -18238,21 +21315,20 @@ func (s IoK8sAPICoreV1NodeList) Encode(e *jx.Writer) {
 	}
 	e.ArrEnd()
 
-	e.Comma()
+	if s.Kind.Set {
+		e.Comma()
+	}
 	if s.Kind.Set {
 		e.RawStr("\"kind\"" + ":")
 		s.Kind.Encode(e)
 	}
-	if s.Kind.Set {
+
+	if s.Metadata.Set {
 		e.Comma()
 	}
 	if s.Metadata.Set {
 		e.RawStr("\"metadata\"" + ":")
 		s.Metadata.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -18301,6 +21377,16 @@ func (s *IoK8sAPICoreV1NodeList) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1NodeSelector) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"nodeSelectorTerms\"" + ":")
 	e.ArrStart()
@@ -18316,10 +21402,6 @@ func (s IoK8sAPICoreV1NodeSelector) Encode(e *jx.Writer) {
 		}
 	}
 	e.ArrEnd()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -18352,14 +21434,27 @@ func (s *IoK8sAPICoreV1NodeSelector) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1NodeSelectorRequirement) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"key\"" + ":")
 	e.Str(s.Key)
+
 	e.Comma()
 
 	e.RawStr("\"operator\"" + ":")
 	e.Str(s.Operator)
-	e.Comma()
+
+	if s.Values != nil {
+		e.Comma()
+	}
 	if s.Values != nil {
 		e.RawStr("\"values\"" + ":")
 		e.ArrStart()
@@ -18375,10 +21470,6 @@ func (s IoK8sAPICoreV1NodeSelectorRequirement) Encode(e *jx.Writer) {
 			}
 		}
 		e.ArrEnd()
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -18426,6 +21517,17 @@ func (s *IoK8sAPICoreV1NodeSelectorRequirement) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1NodeSelectorTerm) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.MatchExpressions != nil {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.MatchExpressions != nil {
 		e.RawStr("\"matchExpressions\"" + ":")
 		e.ArrStart()
@@ -18442,8 +21544,12 @@ func (s IoK8sAPICoreV1NodeSelectorTerm) Encode(e *jx.Writer) {
 		}
 		e.ArrEnd()
 	}
-	if s.MatchExpressions != nil {
-		e.Comma()
+
+	if s.MatchFields != nil {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.MatchFields != nil {
 		e.RawStr("\"matchFields\"" + ":")
@@ -18460,10 +21566,6 @@ func (s IoK8sAPICoreV1NodeSelectorTerm) Encode(e *jx.Writer) {
 			}
 		}
 		e.ArrEnd()
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -18509,26 +21611,49 @@ func (s *IoK8sAPICoreV1NodeSelectorTerm) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1NodeSpec) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.ConfigSource.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.ConfigSource.Set {
 		e.RawStr("\"configSource\"" + ":")
 		s.ConfigSource.Encode(e)
 	}
-	if s.ConfigSource.Set {
-		e.Comma()
+
+	if s.ExternalID.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.ExternalID.Set {
 		e.RawStr("\"externalID\"" + ":")
 		s.ExternalID.Encode(e)
 	}
-	if s.ExternalID.Set {
-		e.Comma()
+
+	if s.PodCIDR.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.PodCIDR.Set {
 		e.RawStr("\"podCIDR\"" + ":")
 		s.PodCIDR.Encode(e)
 	}
-	if s.PodCIDR.Set {
-		e.Comma()
+
+	if s.PodCIDRs != nil {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.PodCIDRs != nil {
 		e.RawStr("\"podCIDRs\"" + ":")
@@ -18546,15 +21671,23 @@ func (s IoK8sAPICoreV1NodeSpec) Encode(e *jx.Writer) {
 		}
 		e.ArrEnd()
 	}
-	if s.PodCIDRs != nil {
-		e.Comma()
+
+	if s.ProviderID.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.ProviderID.Set {
 		e.RawStr("\"providerID\"" + ":")
 		s.ProviderID.Encode(e)
 	}
-	if s.ProviderID.Set {
-		e.Comma()
+
+	if s.Taints != nil {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Taints != nil {
 		e.RawStr("\"taints\"" + ":")
@@ -18572,16 +21705,16 @@ func (s IoK8sAPICoreV1NodeSpec) Encode(e *jx.Writer) {
 		}
 		e.ArrEnd()
 	}
-	if s.Taints != nil {
-		e.Comma()
+
+	if s.Unschedulable.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Unschedulable.Set {
 		e.RawStr("\"unschedulable\"" + ":")
 		s.Unschedulable.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -18654,6 +21787,17 @@ func (s *IoK8sAPICoreV1NodeSpec) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1NodeStatus) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.Addresses != nil {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.Addresses != nil {
 		e.RawStr("\"addresses\"" + ":")
 		e.ArrStart()
@@ -18670,22 +21814,34 @@ func (s IoK8sAPICoreV1NodeStatus) Encode(e *jx.Writer) {
 		}
 		e.ArrEnd()
 	}
-	if s.Addresses != nil {
-		e.Comma()
+
+	if s.Allocatable != nil {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Allocatable != nil {
 		e.RawStr("\"allocatable\"" + ":")
 		s.Allocatable.Encode(e)
 	}
-	if s.Allocatable != nil {
-		e.Comma()
+
+	if s.Capacity != nil {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Capacity != nil {
 		e.RawStr("\"capacity\"" + ":")
 		s.Capacity.Encode(e)
 	}
-	if s.Capacity != nil {
-		e.Comma()
+
+	if s.Conditions != nil {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Conditions != nil {
 		e.RawStr("\"conditions\"" + ":")
@@ -18703,22 +21859,34 @@ func (s IoK8sAPICoreV1NodeStatus) Encode(e *jx.Writer) {
 		}
 		e.ArrEnd()
 	}
-	if s.Conditions != nil {
-		e.Comma()
+
+	if s.Config.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Config.Set {
 		e.RawStr("\"config\"" + ":")
 		s.Config.Encode(e)
 	}
-	if s.Config.Set {
-		e.Comma()
+
+	if s.DaemonEndpoints.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.DaemonEndpoints.Set {
 		e.RawStr("\"daemonEndpoints\"" + ":")
 		s.DaemonEndpoints.Encode(e)
 	}
-	if s.DaemonEndpoints.Set {
-		e.Comma()
+
+	if s.Images != nil {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Images != nil {
 		e.RawStr("\"images\"" + ":")
@@ -18736,22 +21904,34 @@ func (s IoK8sAPICoreV1NodeStatus) Encode(e *jx.Writer) {
 		}
 		e.ArrEnd()
 	}
-	if s.Images != nil {
-		e.Comma()
+
+	if s.NodeInfo.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.NodeInfo.Set {
 		e.RawStr("\"nodeInfo\"" + ":")
 		s.NodeInfo.Encode(e)
 	}
-	if s.NodeInfo.Set {
-		e.Comma()
+
+	if s.Phase.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Phase.Set {
 		e.RawStr("\"phase\"" + ":")
 		s.Phase.Encode(e)
 	}
-	if s.Phase.Set {
-		e.Comma()
+
+	if s.VolumesAttached != nil {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.VolumesAttached != nil {
 		e.RawStr("\"volumesAttached\"" + ":")
@@ -18769,8 +21949,12 @@ func (s IoK8sAPICoreV1NodeStatus) Encode(e *jx.Writer) {
 		}
 		e.ArrEnd()
 	}
-	if s.VolumesAttached != nil {
-		e.Comma()
+
+	if s.VolumesInUse != nil {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.VolumesInUse != nil {
 		e.RawStr("\"volumesInUse\"" + ":")
@@ -18787,10 +21971,6 @@ func (s IoK8sAPICoreV1NodeStatus) Encode(e *jx.Writer) {
 			}
 		}
 		e.ArrEnd()
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -18908,10 +22088,10 @@ func (s *IoK8sAPICoreV1NodeStatus) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1NodeStatusAllocatable) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -18932,10 +22112,10 @@ func (s *IoK8sAPICoreV1NodeStatusAllocatable) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1NodeStatusCapacity) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -18956,49 +22136,63 @@ func (s *IoK8sAPICoreV1NodeStatusCapacity) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1NodeSystemInfo) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"architecture\"" + ":")
 	e.Str(s.Architecture)
+
 	e.Comma()
 
 	e.RawStr("\"bootID\"" + ":")
 	e.Str(s.BootID)
+
 	e.Comma()
 
 	e.RawStr("\"containerRuntimeVersion\"" + ":")
 	e.Str(s.ContainerRuntimeVersion)
+
 	e.Comma()
 
 	e.RawStr("\"kernelVersion\"" + ":")
 	e.Str(s.KernelVersion)
+
 	e.Comma()
 
 	e.RawStr("\"kubeProxyVersion\"" + ":")
 	e.Str(s.KubeProxyVersion)
+
 	e.Comma()
 
 	e.RawStr("\"kubeletVersion\"" + ":")
 	e.Str(s.KubeletVersion)
+
 	e.Comma()
 
 	e.RawStr("\"machineID\"" + ":")
 	e.Str(s.MachineID)
+
 	e.Comma()
 
 	e.RawStr("\"operatingSystem\"" + ":")
 	e.Str(s.OperatingSystem)
+
 	e.Comma()
 
 	e.RawStr("\"osImage\"" + ":")
 	e.Str(s.OsImage)
+
 	e.Comma()
 
 	e.RawStr("\"systemUUID\"" + ":")
 	e.Str(s.SystemUUID)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -19079,20 +22273,29 @@ func (s *IoK8sAPICoreV1NodeSystemInfo) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1ObjectFieldSelector) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.ApiVersion.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.ApiVersion.Set {
 		e.RawStr("\"apiVersion\"" + ":")
 		s.ApiVersion.Encode(e)
 	}
-	if s.ApiVersion.Set {
+
+	if !first {
 		e.Comma()
 	}
+	first = false
 
 	e.RawStr("\"fieldPath\"" + ":")
 	e.Str(s.FieldPath)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -19124,55 +22327,86 @@ func (s *IoK8sAPICoreV1ObjectFieldSelector) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1ObjectReference) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.ApiVersion.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.ApiVersion.Set {
 		e.RawStr("\"apiVersion\"" + ":")
 		s.ApiVersion.Encode(e)
 	}
-	if s.ApiVersion.Set {
-		e.Comma()
+
+	if s.FieldPath.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.FieldPath.Set {
 		e.RawStr("\"fieldPath\"" + ":")
 		s.FieldPath.Encode(e)
 	}
-	if s.FieldPath.Set {
-		e.Comma()
+
+	if s.Kind.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Kind.Set {
 		e.RawStr("\"kind\"" + ":")
 		s.Kind.Encode(e)
 	}
-	if s.Kind.Set {
-		e.Comma()
+
+	if s.Name.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Name.Set {
 		e.RawStr("\"name\"" + ":")
 		s.Name.Encode(e)
 	}
-	if s.Name.Set {
-		e.Comma()
+
+	if s.Namespace.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Namespace.Set {
 		e.RawStr("\"namespace\"" + ":")
 		s.Namespace.Encode(e)
 	}
-	if s.Namespace.Set {
-		e.Comma()
+
+	if s.ResourceVersion.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.ResourceVersion.Set {
 		e.RawStr("\"resourceVersion\"" + ":")
 		s.ResourceVersion.Encode(e)
 	}
-	if s.ResourceVersion.Set {
-		e.Comma()
+
+	if s.UID.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.UID.Set {
 		e.RawStr("\"uid\"" + ":")
 		s.UID.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -19229,41 +22463,64 @@ func (s *IoK8sAPICoreV1ObjectReference) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1PersistentVolume) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.ApiVersion.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.ApiVersion.Set {
 		e.RawStr("\"apiVersion\"" + ":")
 		s.ApiVersion.Encode(e)
 	}
-	if s.ApiVersion.Set {
-		e.Comma()
+
+	if s.Kind.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Kind.Set {
 		e.RawStr("\"kind\"" + ":")
 		s.Kind.Encode(e)
 	}
-	if s.Kind.Set {
-		e.Comma()
+
+	if s.Metadata.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Metadata.Set {
 		e.RawStr("\"metadata\"" + ":")
 		s.Metadata.Encode(e)
 	}
-	if s.Metadata.Set {
-		e.Comma()
+
+	if s.Spec.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Spec.Set {
 		e.RawStr("\"spec\"" + ":")
 		s.Spec.Encode(e)
 	}
-	if s.Spec.Set {
-		e.Comma()
+
+	if s.Status.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Status.Set {
 		e.RawStr("\"status\"" + ":")
 		s.Status.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -19310,41 +22567,64 @@ func (s *IoK8sAPICoreV1PersistentVolume) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1PersistentVolumeClaim) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.ApiVersion.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.ApiVersion.Set {
 		e.RawStr("\"apiVersion\"" + ":")
 		s.ApiVersion.Encode(e)
 	}
-	if s.ApiVersion.Set {
-		e.Comma()
+
+	if s.Kind.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Kind.Set {
 		e.RawStr("\"kind\"" + ":")
 		s.Kind.Encode(e)
 	}
-	if s.Kind.Set {
-		e.Comma()
+
+	if s.Metadata.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Metadata.Set {
 		e.RawStr("\"metadata\"" + ":")
 		s.Metadata.Encode(e)
 	}
-	if s.Metadata.Set {
-		e.Comma()
+
+	if s.Spec.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Spec.Set {
 		e.RawStr("\"spec\"" + ":")
 		s.Spec.Encode(e)
 	}
-	if s.Spec.Set {
-		e.Comma()
+
+	if s.Status.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Status.Set {
 		e.RawStr("\"status\"" + ":")
 		s.Status.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -19391,45 +22671,67 @@ func (s *IoK8sAPICoreV1PersistentVolumeClaim) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1PersistentVolumeClaimCondition) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.LastProbeTime.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.LastProbeTime.Set {
 		e.RawStr("\"lastProbeTime\"" + ":")
 		s.LastProbeTime.Encode(e)
 	}
-	if s.LastProbeTime.Set {
-		e.Comma()
+
+	if s.LastTransitionTime.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.LastTransitionTime.Set {
 		e.RawStr("\"lastTransitionTime\"" + ":")
 		s.LastTransitionTime.Encode(e)
 	}
-	if s.LastTransitionTime.Set {
-		e.Comma()
+
+	if s.Message.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Message.Set {
 		e.RawStr("\"message\"" + ":")
 		s.Message.Encode(e)
 	}
-	if s.Message.Set {
-		e.Comma()
+
+	if s.Reason.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Reason.Set {
 		e.RawStr("\"reason\"" + ":")
 		s.Reason.Encode(e)
 	}
-	if s.Reason.Set {
+
+	if !first {
 		e.Comma()
 	}
+	first = false
 
 	e.RawStr("\"status\"" + ":")
 	e.Str(s.Status)
+
 	e.Comma()
 
 	e.RawStr("\"type\"" + ":")
 	e.Str(s.Type)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -19482,13 +22784,27 @@ func (s *IoK8sAPICoreV1PersistentVolumeClaimCondition) Decode(d *jx.Decoder) err
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1PersistentVolumeClaimList) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.ApiVersion.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.ApiVersion.Set {
 		e.RawStr("\"apiVersion\"" + ":")
 		s.ApiVersion.Encode(e)
 	}
-	if s.ApiVersion.Set {
+
+	if !first {
+
 		e.Comma()
 	}
+	first = false
 
 	e.RawStr("\"items\"" + ":")
 	e.ArrStart()
@@ -19505,21 +22821,20 @@ func (s IoK8sAPICoreV1PersistentVolumeClaimList) Encode(e *jx.Writer) {
 	}
 	e.ArrEnd()
 
-	e.Comma()
+	if s.Kind.Set {
+		e.Comma()
+	}
 	if s.Kind.Set {
 		e.RawStr("\"kind\"" + ":")
 		s.Kind.Encode(e)
 	}
-	if s.Kind.Set {
+
+	if s.Metadata.Set {
 		e.Comma()
 	}
 	if s.Metadata.Set {
 		e.RawStr("\"metadata\"" + ":")
 		s.Metadata.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -19568,6 +22883,17 @@ func (s *IoK8sAPICoreV1PersistentVolumeClaimList) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1PersistentVolumeClaimSpec) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.AccessModes != nil {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.AccessModes != nil {
 		e.RawStr("\"accessModes\"" + ":")
 		e.ArrStart()
@@ -19584,58 +22910,82 @@ func (s IoK8sAPICoreV1PersistentVolumeClaimSpec) Encode(e *jx.Writer) {
 		}
 		e.ArrEnd()
 	}
-	if s.AccessModes != nil {
-		e.Comma()
+
+	if s.DataSource.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.DataSource.Set {
 		e.RawStr("\"dataSource\"" + ":")
 		s.DataSource.Encode(e)
 	}
-	if s.DataSource.Set {
-		e.Comma()
+
+	if s.DataSourceRef.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.DataSourceRef.Set {
 		e.RawStr("\"dataSourceRef\"" + ":")
 		s.DataSourceRef.Encode(e)
 	}
-	if s.DataSourceRef.Set {
-		e.Comma()
+
+	if s.Resources.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Resources.Set {
 		e.RawStr("\"resources\"" + ":")
 		s.Resources.Encode(e)
 	}
-	if s.Resources.Set {
-		e.Comma()
+
+	if s.Selector.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Selector.Set {
 		e.RawStr("\"selector\"" + ":")
 		s.Selector.Encode(e)
 	}
-	if s.Selector.Set {
-		e.Comma()
+
+	if s.StorageClassName.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.StorageClassName.Set {
 		e.RawStr("\"storageClassName\"" + ":")
 		s.StorageClassName.Encode(e)
 	}
-	if s.StorageClassName.Set {
-		e.Comma()
+
+	if s.VolumeMode.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.VolumeMode.Set {
 		e.RawStr("\"volumeMode\"" + ":")
 		s.VolumeMode.Encode(e)
 	}
-	if s.VolumeMode.Set {
-		e.Comma()
+
+	if s.VolumeName.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.VolumeName.Set {
 		e.RawStr("\"volumeName\"" + ":")
 		s.VolumeName.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -19706,6 +23056,17 @@ func (s *IoK8sAPICoreV1PersistentVolumeClaimSpec) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1PersistentVolumeClaimStatus) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.AccessModes != nil {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.AccessModes != nil {
 		e.RawStr("\"accessModes\"" + ":")
 		e.ArrStart()
@@ -19722,15 +23083,23 @@ func (s IoK8sAPICoreV1PersistentVolumeClaimStatus) Encode(e *jx.Writer) {
 		}
 		e.ArrEnd()
 	}
-	if s.AccessModes != nil {
-		e.Comma()
+
+	if s.Capacity != nil {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Capacity != nil {
 		e.RawStr("\"capacity\"" + ":")
 		s.Capacity.Encode(e)
 	}
-	if s.Capacity != nil {
-		e.Comma()
+
+	if s.Conditions != nil {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Conditions != nil {
 		e.RawStr("\"conditions\"" + ":")
@@ -19748,16 +23117,16 @@ func (s IoK8sAPICoreV1PersistentVolumeClaimStatus) Encode(e *jx.Writer) {
 		}
 		e.ArrEnd()
 	}
-	if s.Conditions != nil {
-		e.Comma()
+
+	if s.Phase.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Phase.Set {
 		e.RawStr("\"phase\"" + ":")
 		s.Phase.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -19817,10 +23186,10 @@ func (s *IoK8sAPICoreV1PersistentVolumeClaimStatus) Decode(d *jx.Decoder) error 
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1PersistentVolumeClaimStatusCapacity) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -19841,20 +23210,30 @@ func (s *IoK8sAPICoreV1PersistentVolumeClaimStatusCapacity) Decode(d *jx.Decoder
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1PersistentVolumeClaimTemplate) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.Metadata.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.Metadata.Set {
 		e.RawStr("\"metadata\"" + ":")
 		s.Metadata.Encode(e)
 	}
-	if s.Metadata.Set {
+
+	if !first {
+
 		e.Comma()
 	}
+	first = false
 
 	e.RawStr("\"spec\"" + ":")
 	s.Spec.Encode(e)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -19884,17 +23263,25 @@ func (s *IoK8sAPICoreV1PersistentVolumeClaimTemplate) Decode(d *jx.Decoder) erro
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1PersistentVolumeClaimVolumeSource) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"claimName\"" + ":")
 	e.Str(s.ClaimName)
-	e.Comma()
+
+	if s.ReadOnly.Set {
+		e.Comma()
+	}
 	if s.ReadOnly.Set {
 		e.RawStr("\"readOnly\"" + ":")
 		s.ReadOnly.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -19927,13 +23314,27 @@ func (s *IoK8sAPICoreV1PersistentVolumeClaimVolumeSource) Decode(d *jx.Decoder) 
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1PersistentVolumeList) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.ApiVersion.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.ApiVersion.Set {
 		e.RawStr("\"apiVersion\"" + ":")
 		s.ApiVersion.Encode(e)
 	}
-	if s.ApiVersion.Set {
+
+	if !first {
+
 		e.Comma()
 	}
+	first = false
 
 	e.RawStr("\"items\"" + ":")
 	e.ArrStart()
@@ -19950,21 +23351,20 @@ func (s IoK8sAPICoreV1PersistentVolumeList) Encode(e *jx.Writer) {
 	}
 	e.ArrEnd()
 
-	e.Comma()
+	if s.Kind.Set {
+		e.Comma()
+	}
 	if s.Kind.Set {
 		e.RawStr("\"kind\"" + ":")
 		s.Kind.Encode(e)
 	}
-	if s.Kind.Set {
+
+	if s.Metadata.Set {
 		e.Comma()
 	}
 	if s.Metadata.Set {
 		e.RawStr("\"metadata\"" + ":")
 		s.Metadata.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -20013,6 +23413,17 @@ func (s *IoK8sAPICoreV1PersistentVolumeList) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1PersistentVolumeSpec) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.AccessModes != nil {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.AccessModes != nil {
 		e.RawStr("\"accessModes\"" + ":")
 		e.ArrStart()
@@ -20029,120 +23440,188 @@ func (s IoK8sAPICoreV1PersistentVolumeSpec) Encode(e *jx.Writer) {
 		}
 		e.ArrEnd()
 	}
-	if s.AccessModes != nil {
-		e.Comma()
+
+	if s.AwsElasticBlockStore.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.AwsElasticBlockStore.Set {
 		e.RawStr("\"awsElasticBlockStore\"" + ":")
 		s.AwsElasticBlockStore.Encode(e)
 	}
-	if s.AwsElasticBlockStore.Set {
-		e.Comma()
+
+	if s.AzureDisk.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.AzureDisk.Set {
 		e.RawStr("\"azureDisk\"" + ":")
 		s.AzureDisk.Encode(e)
 	}
-	if s.AzureDisk.Set {
-		e.Comma()
+
+	if s.AzureFile.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.AzureFile.Set {
 		e.RawStr("\"azureFile\"" + ":")
 		s.AzureFile.Encode(e)
 	}
-	if s.AzureFile.Set {
-		e.Comma()
+
+	if s.Capacity != nil {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Capacity != nil {
 		e.RawStr("\"capacity\"" + ":")
 		s.Capacity.Encode(e)
 	}
-	if s.Capacity != nil {
-		e.Comma()
+
+	if s.Cephfs.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Cephfs.Set {
 		e.RawStr("\"cephfs\"" + ":")
 		s.Cephfs.Encode(e)
 	}
-	if s.Cephfs.Set {
-		e.Comma()
+
+	if s.Cinder.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Cinder.Set {
 		e.RawStr("\"cinder\"" + ":")
 		s.Cinder.Encode(e)
 	}
-	if s.Cinder.Set {
-		e.Comma()
+
+	if s.ClaimRef.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.ClaimRef.Set {
 		e.RawStr("\"claimRef\"" + ":")
 		s.ClaimRef.Encode(e)
 	}
-	if s.ClaimRef.Set {
-		e.Comma()
+
+	if s.Csi.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Csi.Set {
 		e.RawStr("\"csi\"" + ":")
 		s.Csi.Encode(e)
 	}
-	if s.Csi.Set {
-		e.Comma()
+
+	if s.Fc.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Fc.Set {
 		e.RawStr("\"fc\"" + ":")
 		s.Fc.Encode(e)
 	}
-	if s.Fc.Set {
-		e.Comma()
+
+	if s.FlexVolume.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.FlexVolume.Set {
 		e.RawStr("\"flexVolume\"" + ":")
 		s.FlexVolume.Encode(e)
 	}
-	if s.FlexVolume.Set {
-		e.Comma()
+
+	if s.Flocker.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Flocker.Set {
 		e.RawStr("\"flocker\"" + ":")
 		s.Flocker.Encode(e)
 	}
-	if s.Flocker.Set {
-		e.Comma()
+
+	if s.GcePersistentDisk.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.GcePersistentDisk.Set {
 		e.RawStr("\"gcePersistentDisk\"" + ":")
 		s.GcePersistentDisk.Encode(e)
 	}
-	if s.GcePersistentDisk.Set {
-		e.Comma()
+
+	if s.Glusterfs.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Glusterfs.Set {
 		e.RawStr("\"glusterfs\"" + ":")
 		s.Glusterfs.Encode(e)
 	}
-	if s.Glusterfs.Set {
-		e.Comma()
+
+	if s.HostPath.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.HostPath.Set {
 		e.RawStr("\"hostPath\"" + ":")
 		s.HostPath.Encode(e)
 	}
-	if s.HostPath.Set {
-		e.Comma()
+
+	if s.Iscsi.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Iscsi.Set {
 		e.RawStr("\"iscsi\"" + ":")
 		s.Iscsi.Encode(e)
 	}
-	if s.Iscsi.Set {
-		e.Comma()
+
+	if s.Local.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Local.Set {
 		e.RawStr("\"local\"" + ":")
 		s.Local.Encode(e)
 	}
-	if s.Local.Set {
-		e.Comma()
+
+	if s.MountOptions != nil {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.MountOptions != nil {
 		e.RawStr("\"mountOptions\"" + ":")
@@ -20160,93 +23639,137 @@ func (s IoK8sAPICoreV1PersistentVolumeSpec) Encode(e *jx.Writer) {
 		}
 		e.ArrEnd()
 	}
-	if s.MountOptions != nil {
-		e.Comma()
+
+	if s.Nfs.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Nfs.Set {
 		e.RawStr("\"nfs\"" + ":")
 		s.Nfs.Encode(e)
 	}
-	if s.Nfs.Set {
-		e.Comma()
+
+	if s.NodeAffinity.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.NodeAffinity.Set {
 		e.RawStr("\"nodeAffinity\"" + ":")
 		s.NodeAffinity.Encode(e)
 	}
-	if s.NodeAffinity.Set {
-		e.Comma()
+
+	if s.PersistentVolumeReclaimPolicy.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.PersistentVolumeReclaimPolicy.Set {
 		e.RawStr("\"persistentVolumeReclaimPolicy\"" + ":")
 		s.PersistentVolumeReclaimPolicy.Encode(e)
 	}
-	if s.PersistentVolumeReclaimPolicy.Set {
-		e.Comma()
+
+	if s.PhotonPersistentDisk.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.PhotonPersistentDisk.Set {
 		e.RawStr("\"photonPersistentDisk\"" + ":")
 		s.PhotonPersistentDisk.Encode(e)
 	}
-	if s.PhotonPersistentDisk.Set {
-		e.Comma()
+
+	if s.PortworxVolume.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.PortworxVolume.Set {
 		e.RawStr("\"portworxVolume\"" + ":")
 		s.PortworxVolume.Encode(e)
 	}
-	if s.PortworxVolume.Set {
-		e.Comma()
+
+	if s.Quobyte.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Quobyte.Set {
 		e.RawStr("\"quobyte\"" + ":")
 		s.Quobyte.Encode(e)
 	}
-	if s.Quobyte.Set {
-		e.Comma()
+
+	if s.Rbd.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Rbd.Set {
 		e.RawStr("\"rbd\"" + ":")
 		s.Rbd.Encode(e)
 	}
-	if s.Rbd.Set {
-		e.Comma()
+
+	if s.ScaleIO.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.ScaleIO.Set {
 		e.RawStr("\"scaleIO\"" + ":")
 		s.ScaleIO.Encode(e)
 	}
-	if s.ScaleIO.Set {
-		e.Comma()
+
+	if s.StorageClassName.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.StorageClassName.Set {
 		e.RawStr("\"storageClassName\"" + ":")
 		s.StorageClassName.Encode(e)
 	}
-	if s.StorageClassName.Set {
-		e.Comma()
+
+	if s.Storageos.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Storageos.Set {
 		e.RawStr("\"storageos\"" + ":")
 		s.Storageos.Encode(e)
 	}
-	if s.Storageos.Set {
-		e.Comma()
+
+	if s.VolumeMode.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.VolumeMode.Set {
 		e.RawStr("\"volumeMode\"" + ":")
 		s.VolumeMode.Encode(e)
 	}
-	if s.VolumeMode.Set {
-		e.Comma()
+
+	if s.VsphereVolume.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.VsphereVolume.Set {
 		e.RawStr("\"vsphereVolume\"" + ":")
 		s.VsphereVolume.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -20438,10 +23961,10 @@ func (s *IoK8sAPICoreV1PersistentVolumeSpec) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1PersistentVolumeSpecCapacity) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -20462,27 +23985,42 @@ func (s *IoK8sAPICoreV1PersistentVolumeSpecCapacity) Decode(d *jx.Decoder) error
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1PersistentVolumeStatus) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.Message.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.Message.Set {
 		e.RawStr("\"message\"" + ":")
 		s.Message.Encode(e)
 	}
-	if s.Message.Set {
-		e.Comma()
+
+	if s.Phase.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Phase.Set {
 		e.RawStr("\"phase\"" + ":")
 		s.Phase.Encode(e)
 	}
-	if s.Phase.Set {
-		e.Comma()
+
+	if s.Reason.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Reason.Set {
 		e.RawStr("\"reason\"" + ":")
 		s.Reason.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -20519,20 +24057,29 @@ func (s *IoK8sAPICoreV1PersistentVolumeStatus) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1PhotonPersistentDiskVolumeSource) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.FsType.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.FsType.Set {
 		e.RawStr("\"fsType\"" + ":")
 		s.FsType.Encode(e)
 	}
-	if s.FsType.Set {
+
+	if !first {
 		e.Comma()
 	}
+	first = false
 
 	e.RawStr("\"pdID\"" + ":")
 	e.Str(s.PdID)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -20564,41 +24111,64 @@ func (s *IoK8sAPICoreV1PhotonPersistentDiskVolumeSource) Decode(d *jx.Decoder) e
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1Pod) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.ApiVersion.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.ApiVersion.Set {
 		e.RawStr("\"apiVersion\"" + ":")
 		s.ApiVersion.Encode(e)
 	}
-	if s.ApiVersion.Set {
-		e.Comma()
+
+	if s.Kind.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Kind.Set {
 		e.RawStr("\"kind\"" + ":")
 		s.Kind.Encode(e)
 	}
-	if s.Kind.Set {
-		e.Comma()
+
+	if s.Metadata.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Metadata.Set {
 		e.RawStr("\"metadata\"" + ":")
 		s.Metadata.Encode(e)
 	}
-	if s.Metadata.Set {
-		e.Comma()
+
+	if s.Spec.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Spec.Set {
 		e.RawStr("\"spec\"" + ":")
 		s.Spec.Encode(e)
 	}
-	if s.Spec.Set {
-		e.Comma()
+
+	if s.Status.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Status.Set {
 		e.RawStr("\"status\"" + ":")
 		s.Status.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -20645,6 +24215,17 @@ func (s *IoK8sAPICoreV1Pod) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1PodAffinity) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.PreferredDuringSchedulingIgnoredDuringExecution != nil {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.PreferredDuringSchedulingIgnoredDuringExecution != nil {
 		e.RawStr("\"preferredDuringSchedulingIgnoredDuringExecution\"" + ":")
 		e.ArrStart()
@@ -20661,8 +24242,12 @@ func (s IoK8sAPICoreV1PodAffinity) Encode(e *jx.Writer) {
 		}
 		e.ArrEnd()
 	}
-	if s.PreferredDuringSchedulingIgnoredDuringExecution != nil {
-		e.Comma()
+
+	if s.RequiredDuringSchedulingIgnoredDuringExecution != nil {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.RequiredDuringSchedulingIgnoredDuringExecution != nil {
 		e.RawStr("\"requiredDuringSchedulingIgnoredDuringExecution\"" + ":")
@@ -20679,10 +24264,6 @@ func (s IoK8sAPICoreV1PodAffinity) Encode(e *jx.Writer) {
 			}
 		}
 		e.ArrEnd()
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -20728,19 +24309,38 @@ func (s *IoK8sAPICoreV1PodAffinity) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1PodAffinityTerm) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.LabelSelector.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.LabelSelector.Set {
 		e.RawStr("\"labelSelector\"" + ":")
 		s.LabelSelector.Encode(e)
 	}
-	if s.LabelSelector.Set {
-		e.Comma()
+
+	if s.NamespaceSelector.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.NamespaceSelector.Set {
 		e.RawStr("\"namespaceSelector\"" + ":")
 		s.NamespaceSelector.Encode(e)
 	}
-	if s.NamespaceSelector.Set {
-		e.Comma()
+
+	if s.Namespaces != nil {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Namespaces != nil {
 		e.RawStr("\"namespaces\"" + ":")
@@ -20758,16 +24358,14 @@ func (s IoK8sAPICoreV1PodAffinityTerm) Encode(e *jx.Writer) {
 		}
 		e.ArrEnd()
 	}
-	if s.Namespaces != nil {
+
+	if !first {
 		e.Comma()
 	}
+	first = false
 
 	e.RawStr("\"topologyKey\"" + ":")
 	e.Str(s.TopologyKey)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -20818,6 +24416,17 @@ func (s *IoK8sAPICoreV1PodAffinityTerm) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1PodAntiAffinity) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.PreferredDuringSchedulingIgnoredDuringExecution != nil {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.PreferredDuringSchedulingIgnoredDuringExecution != nil {
 		e.RawStr("\"preferredDuringSchedulingIgnoredDuringExecution\"" + ":")
 		e.ArrStart()
@@ -20834,8 +24443,12 @@ func (s IoK8sAPICoreV1PodAntiAffinity) Encode(e *jx.Writer) {
 		}
 		e.ArrEnd()
 	}
-	if s.PreferredDuringSchedulingIgnoredDuringExecution != nil {
-		e.Comma()
+
+	if s.RequiredDuringSchedulingIgnoredDuringExecution != nil {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.RequiredDuringSchedulingIgnoredDuringExecution != nil {
 		e.RawStr("\"requiredDuringSchedulingIgnoredDuringExecution\"" + ":")
@@ -20852,10 +24465,6 @@ func (s IoK8sAPICoreV1PodAntiAffinity) Encode(e *jx.Writer) {
 			}
 		}
 		e.ArrEnd()
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -20901,45 +24510,67 @@ func (s *IoK8sAPICoreV1PodAntiAffinity) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1PodCondition) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.LastProbeTime.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.LastProbeTime.Set {
 		e.RawStr("\"lastProbeTime\"" + ":")
 		s.LastProbeTime.Encode(e)
 	}
-	if s.LastProbeTime.Set {
-		e.Comma()
+
+	if s.LastTransitionTime.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.LastTransitionTime.Set {
 		e.RawStr("\"lastTransitionTime\"" + ":")
 		s.LastTransitionTime.Encode(e)
 	}
-	if s.LastTransitionTime.Set {
-		e.Comma()
+
+	if s.Message.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Message.Set {
 		e.RawStr("\"message\"" + ":")
 		s.Message.Encode(e)
 	}
-	if s.Message.Set {
-		e.Comma()
+
+	if s.Reason.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Reason.Set {
 		e.RawStr("\"reason\"" + ":")
 		s.Reason.Encode(e)
 	}
-	if s.Reason.Set {
+
+	if !first {
 		e.Comma()
 	}
+	first = false
 
 	e.RawStr("\"status\"" + ":")
 	e.Str(s.Status)
+
 	e.Comma()
 
 	e.RawStr("\"type\"" + ":")
 	e.Str(s.Type)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -20992,6 +24623,17 @@ func (s *IoK8sAPICoreV1PodCondition) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1PodDNSConfig) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.Nameservers != nil {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.Nameservers != nil {
 		e.RawStr("\"nameservers\"" + ":")
 		e.ArrStart()
@@ -21008,8 +24650,12 @@ func (s IoK8sAPICoreV1PodDNSConfig) Encode(e *jx.Writer) {
 		}
 		e.ArrEnd()
 	}
-	if s.Nameservers != nil {
-		e.Comma()
+
+	if s.Options != nil {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Options != nil {
 		e.RawStr("\"options\"" + ":")
@@ -21027,8 +24673,12 @@ func (s IoK8sAPICoreV1PodDNSConfig) Encode(e *jx.Writer) {
 		}
 		e.ArrEnd()
 	}
-	if s.Options != nil {
-		e.Comma()
+
+	if s.Searches != nil {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Searches != nil {
 		e.RawStr("\"searches\"" + ":")
@@ -21045,10 +24695,6 @@ func (s IoK8sAPICoreV1PodDNSConfig) Encode(e *jx.Writer) {
 			}
 		}
 		e.ArrEnd()
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -21110,20 +24756,31 @@ func (s *IoK8sAPICoreV1PodDNSConfig) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1PodDNSConfigOption) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.Name.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.Name.Set {
 		e.RawStr("\"name\"" + ":")
 		s.Name.Encode(e)
 	}
-	if s.Name.Set {
-		e.Comma()
+
+	if s.Value.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Value.Set {
 		e.RawStr("\"value\"" + ":")
 		s.Value.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -21155,13 +24812,20 @@ func (s *IoK8sAPICoreV1PodDNSConfigOption) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1PodIP) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.IP.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.IP.Set {
 		e.RawStr("\"ip\"" + ":")
 		s.IP.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -21188,13 +24852,27 @@ func (s *IoK8sAPICoreV1PodIP) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1PodList) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.ApiVersion.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.ApiVersion.Set {
 		e.RawStr("\"apiVersion\"" + ":")
 		s.ApiVersion.Encode(e)
 	}
-	if s.ApiVersion.Set {
+
+	if !first {
+
 		e.Comma()
 	}
+	first = false
 
 	e.RawStr("\"items\"" + ":")
 	e.ArrStart()
@@ -21211,21 +24889,20 @@ func (s IoK8sAPICoreV1PodList) Encode(e *jx.Writer) {
 	}
 	e.ArrEnd()
 
-	e.Comma()
+	if s.Kind.Set {
+		e.Comma()
+	}
 	if s.Kind.Set {
 		e.RawStr("\"kind\"" + ":")
 		s.Kind.Encode(e)
 	}
-	if s.Kind.Set {
+
+	if s.Metadata.Set {
 		e.Comma()
 	}
 	if s.Metadata.Set {
 		e.RawStr("\"metadata\"" + ":")
 		s.Metadata.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -21274,13 +24951,18 @@ func (s *IoK8sAPICoreV1PodList) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1PodReadinessGate) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"conditionType\"" + ":")
 	e.Str(s.ConditionType)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -21307,54 +24989,93 @@ func (s *IoK8sAPICoreV1PodReadinessGate) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1PodSecurityContext) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.FsGroup.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.FsGroup.Set {
 		e.RawStr("\"fsGroup\"" + ":")
 		s.FsGroup.Encode(e)
 	}
-	if s.FsGroup.Set {
-		e.Comma()
+
+	if s.FsGroupChangePolicy.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.FsGroupChangePolicy.Set {
 		e.RawStr("\"fsGroupChangePolicy\"" + ":")
 		s.FsGroupChangePolicy.Encode(e)
 	}
-	if s.FsGroupChangePolicy.Set {
-		e.Comma()
+
+	if s.RunAsGroup.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.RunAsGroup.Set {
 		e.RawStr("\"runAsGroup\"" + ":")
 		s.RunAsGroup.Encode(e)
 	}
-	if s.RunAsGroup.Set {
-		e.Comma()
+
+	if s.RunAsNonRoot.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.RunAsNonRoot.Set {
 		e.RawStr("\"runAsNonRoot\"" + ":")
 		s.RunAsNonRoot.Encode(e)
 	}
-	if s.RunAsNonRoot.Set {
-		e.Comma()
+
+	if s.RunAsUser.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.RunAsUser.Set {
 		e.RawStr("\"runAsUser\"" + ":")
 		s.RunAsUser.Encode(e)
 	}
-	if s.RunAsUser.Set {
-		e.Comma()
+
+	if s.SeLinuxOptions.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.SeLinuxOptions.Set {
 		e.RawStr("\"seLinuxOptions\"" + ":")
 		s.SeLinuxOptions.Encode(e)
 	}
-	if s.SeLinuxOptions.Set {
-		e.Comma()
+
+	if s.SeccompProfile.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.SeccompProfile.Set {
 		e.RawStr("\"seccompProfile\"" + ":")
 		s.SeccompProfile.Encode(e)
 	}
-	if s.SeccompProfile.Set {
-		e.Comma()
+
+	if s.SupplementalGroups != nil {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.SupplementalGroups != nil {
 		e.RawStr("\"supplementalGroups\"" + ":")
@@ -21372,8 +25093,12 @@ func (s IoK8sAPICoreV1PodSecurityContext) Encode(e *jx.Writer) {
 		}
 		e.ArrEnd()
 	}
-	if s.SupplementalGroups != nil {
-		e.Comma()
+
+	if s.Sysctls != nil {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Sysctls != nil {
 		e.RawStr("\"sysctls\"" + ":")
@@ -21391,16 +25116,16 @@ func (s IoK8sAPICoreV1PodSecurityContext) Encode(e *jx.Writer) {
 		}
 		e.ArrEnd()
 	}
-	if s.Sysctls != nil {
-		e.Comma()
+
+	if s.WindowsOptions.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.WindowsOptions.Set {
 		e.RawStr("\"windowsOptions\"" + ":")
 		s.WindowsOptions.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -21488,27 +25213,49 @@ func (s *IoK8sAPICoreV1PodSecurityContext) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1PodSpec) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.ActiveDeadlineSeconds.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.ActiveDeadlineSeconds.Set {
 		e.RawStr("\"activeDeadlineSeconds\"" + ":")
 		s.ActiveDeadlineSeconds.Encode(e)
 	}
-	if s.ActiveDeadlineSeconds.Set {
-		e.Comma()
+
+	if s.Affinity.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Affinity.Set {
 		e.RawStr("\"affinity\"" + ":")
 		s.Affinity.Encode(e)
 	}
-	if s.Affinity.Set {
-		e.Comma()
+
+	if s.AutomountServiceAccountToken.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.AutomountServiceAccountToken.Set {
 		e.RawStr("\"automountServiceAccountToken\"" + ":")
 		s.AutomountServiceAccountToken.Encode(e)
 	}
-	if s.AutomountServiceAccountToken.Set {
+
+	if !first {
+
 		e.Comma()
 	}
+	first = false
 
 	e.RawStr("\"containers\"" + ":")
 	e.ArrStart()
@@ -21525,26 +25272,31 @@ func (s IoK8sAPICoreV1PodSpec) Encode(e *jx.Writer) {
 	}
 	e.ArrEnd()
 
-	e.Comma()
+	if s.DnsConfig.Set {
+		e.Comma()
+	}
 	if s.DnsConfig.Set {
 		e.RawStr("\"dnsConfig\"" + ":")
 		s.DnsConfig.Encode(e)
 	}
-	if s.DnsConfig.Set {
+
+	if s.DnsPolicy.Set {
 		e.Comma()
 	}
 	if s.DnsPolicy.Set {
 		e.RawStr("\"dnsPolicy\"" + ":")
 		s.DnsPolicy.Encode(e)
 	}
-	if s.DnsPolicy.Set {
+
+	if s.EnableServiceLinks.Set {
 		e.Comma()
 	}
 	if s.EnableServiceLinks.Set {
 		e.RawStr("\"enableServiceLinks\"" + ":")
 		s.EnableServiceLinks.Encode(e)
 	}
-	if s.EnableServiceLinks.Set {
+
+	if s.EphemeralContainers != nil {
 		e.Comma()
 	}
 	if s.EphemeralContainers != nil {
@@ -21563,7 +25315,8 @@ func (s IoK8sAPICoreV1PodSpec) Encode(e *jx.Writer) {
 		}
 		e.ArrEnd()
 	}
-	if s.EphemeralContainers != nil {
+
+	if s.HostAliases != nil {
 		e.Comma()
 	}
 	if s.HostAliases != nil {
@@ -21582,35 +25335,40 @@ func (s IoK8sAPICoreV1PodSpec) Encode(e *jx.Writer) {
 		}
 		e.ArrEnd()
 	}
-	if s.HostAliases != nil {
+
+	if s.HostIPC.Set {
 		e.Comma()
 	}
 	if s.HostIPC.Set {
 		e.RawStr("\"hostIPC\"" + ":")
 		s.HostIPC.Encode(e)
 	}
-	if s.HostIPC.Set {
+
+	if s.HostNetwork.Set {
 		e.Comma()
 	}
 	if s.HostNetwork.Set {
 		e.RawStr("\"hostNetwork\"" + ":")
 		s.HostNetwork.Encode(e)
 	}
-	if s.HostNetwork.Set {
+
+	if s.HostPID.Set {
 		e.Comma()
 	}
 	if s.HostPID.Set {
 		e.RawStr("\"hostPID\"" + ":")
 		s.HostPID.Encode(e)
 	}
-	if s.HostPID.Set {
+
+	if s.Hostname.Set {
 		e.Comma()
 	}
 	if s.Hostname.Set {
 		e.RawStr("\"hostname\"" + ":")
 		s.Hostname.Encode(e)
 	}
-	if s.Hostname.Set {
+
+	if s.ImagePullSecrets != nil {
 		e.Comma()
 	}
 	if s.ImagePullSecrets != nil {
@@ -21629,7 +25387,8 @@ func (s IoK8sAPICoreV1PodSpec) Encode(e *jx.Writer) {
 		}
 		e.ArrEnd()
 	}
-	if s.ImagePullSecrets != nil {
+
+	if s.InitContainers != nil {
 		e.Comma()
 	}
 	if s.InitContainers != nil {
@@ -21648,49 +25407,56 @@ func (s IoK8sAPICoreV1PodSpec) Encode(e *jx.Writer) {
 		}
 		e.ArrEnd()
 	}
-	if s.InitContainers != nil {
+
+	if s.NodeName.Set {
 		e.Comma()
 	}
 	if s.NodeName.Set {
 		e.RawStr("\"nodeName\"" + ":")
 		s.NodeName.Encode(e)
 	}
-	if s.NodeName.Set {
+
+	if s.NodeSelector != nil {
 		e.Comma()
 	}
 	if s.NodeSelector != nil {
 		e.RawStr("\"nodeSelector\"" + ":")
 		s.NodeSelector.Encode(e)
 	}
-	if s.NodeSelector != nil {
+
+	if s.Overhead != nil {
 		e.Comma()
 	}
 	if s.Overhead != nil {
 		e.RawStr("\"overhead\"" + ":")
 		s.Overhead.Encode(e)
 	}
-	if s.Overhead != nil {
+
+	if s.PreemptionPolicy.Set {
 		e.Comma()
 	}
 	if s.PreemptionPolicy.Set {
 		e.RawStr("\"preemptionPolicy\"" + ":")
 		s.PreemptionPolicy.Encode(e)
 	}
-	if s.PreemptionPolicy.Set {
+
+	if s.Priority.Set {
 		e.Comma()
 	}
 	if s.Priority.Set {
 		e.RawStr("\"priority\"" + ":")
 		s.Priority.Encode(e)
 	}
-	if s.Priority.Set {
+
+	if s.PriorityClassName.Set {
 		e.Comma()
 	}
 	if s.PriorityClassName.Set {
 		e.RawStr("\"priorityClassName\"" + ":")
 		s.PriorityClassName.Encode(e)
 	}
-	if s.PriorityClassName.Set {
+
+	if s.ReadinessGates != nil {
 		e.Comma()
 	}
 	if s.ReadinessGates != nil {
@@ -21709,77 +25475,88 @@ func (s IoK8sAPICoreV1PodSpec) Encode(e *jx.Writer) {
 		}
 		e.ArrEnd()
 	}
-	if s.ReadinessGates != nil {
+
+	if s.RestartPolicy.Set {
 		e.Comma()
 	}
 	if s.RestartPolicy.Set {
 		e.RawStr("\"restartPolicy\"" + ":")
 		s.RestartPolicy.Encode(e)
 	}
-	if s.RestartPolicy.Set {
+
+	if s.RuntimeClassName.Set {
 		e.Comma()
 	}
 	if s.RuntimeClassName.Set {
 		e.RawStr("\"runtimeClassName\"" + ":")
 		s.RuntimeClassName.Encode(e)
 	}
-	if s.RuntimeClassName.Set {
+
+	if s.SchedulerName.Set {
 		e.Comma()
 	}
 	if s.SchedulerName.Set {
 		e.RawStr("\"schedulerName\"" + ":")
 		s.SchedulerName.Encode(e)
 	}
-	if s.SchedulerName.Set {
+
+	if s.SecurityContext.Set {
 		e.Comma()
 	}
 	if s.SecurityContext.Set {
 		e.RawStr("\"securityContext\"" + ":")
 		s.SecurityContext.Encode(e)
 	}
-	if s.SecurityContext.Set {
+
+	if s.ServiceAccount.Set {
 		e.Comma()
 	}
 	if s.ServiceAccount.Set {
 		e.RawStr("\"serviceAccount\"" + ":")
 		s.ServiceAccount.Encode(e)
 	}
-	if s.ServiceAccount.Set {
+
+	if s.ServiceAccountName.Set {
 		e.Comma()
 	}
 	if s.ServiceAccountName.Set {
 		e.RawStr("\"serviceAccountName\"" + ":")
 		s.ServiceAccountName.Encode(e)
 	}
-	if s.ServiceAccountName.Set {
+
+	if s.SetHostnameAsFQDN.Set {
 		e.Comma()
 	}
 	if s.SetHostnameAsFQDN.Set {
 		e.RawStr("\"setHostnameAsFQDN\"" + ":")
 		s.SetHostnameAsFQDN.Encode(e)
 	}
-	if s.SetHostnameAsFQDN.Set {
+
+	if s.ShareProcessNamespace.Set {
 		e.Comma()
 	}
 	if s.ShareProcessNamespace.Set {
 		e.RawStr("\"shareProcessNamespace\"" + ":")
 		s.ShareProcessNamespace.Encode(e)
 	}
-	if s.ShareProcessNamespace.Set {
+
+	if s.Subdomain.Set {
 		e.Comma()
 	}
 	if s.Subdomain.Set {
 		e.RawStr("\"subdomain\"" + ":")
 		s.Subdomain.Encode(e)
 	}
-	if s.Subdomain.Set {
+
+	if s.TerminationGracePeriodSeconds.Set {
 		e.Comma()
 	}
 	if s.TerminationGracePeriodSeconds.Set {
 		e.RawStr("\"terminationGracePeriodSeconds\"" + ":")
 		s.TerminationGracePeriodSeconds.Encode(e)
 	}
-	if s.TerminationGracePeriodSeconds.Set {
+
+	if s.Tolerations != nil {
 		e.Comma()
 	}
 	if s.Tolerations != nil {
@@ -21798,7 +25575,8 @@ func (s IoK8sAPICoreV1PodSpec) Encode(e *jx.Writer) {
 		}
 		e.ArrEnd()
 	}
-	if s.Tolerations != nil {
+
+	if s.TopologySpreadConstraints != nil {
 		e.Comma()
 	}
 	if s.TopologySpreadConstraints != nil {
@@ -21817,7 +25595,8 @@ func (s IoK8sAPICoreV1PodSpec) Encode(e *jx.Writer) {
 		}
 		e.ArrEnd()
 	}
-	if s.TopologySpreadConstraints != nil {
+
+	if s.Volumes != nil {
 		e.Comma()
 	}
 	if s.Volumes != nil {
@@ -21835,10 +25614,6 @@ func (s IoK8sAPICoreV1PodSpec) Encode(e *jx.Writer) {
 			}
 		}
 		e.ArrEnd()
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -22102,10 +25877,10 @@ func (s *IoK8sAPICoreV1PodSpec) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1PodSpecNodeSelector) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -22126,10 +25901,10 @@ func (s *IoK8sAPICoreV1PodSpecNodeSelector) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1PodSpecOverhead) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -22150,6 +25925,17 @@ func (s *IoK8sAPICoreV1PodSpecOverhead) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1PodStatus) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.Conditions != nil {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.Conditions != nil {
 		e.RawStr("\"conditions\"" + ":")
 		e.ArrStart()
@@ -22166,8 +25952,12 @@ func (s IoK8sAPICoreV1PodStatus) Encode(e *jx.Writer) {
 		}
 		e.ArrEnd()
 	}
-	if s.Conditions != nil {
-		e.Comma()
+
+	if s.ContainerStatuses != nil {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.ContainerStatuses != nil {
 		e.RawStr("\"containerStatuses\"" + ":")
@@ -22185,8 +25975,12 @@ func (s IoK8sAPICoreV1PodStatus) Encode(e *jx.Writer) {
 		}
 		e.ArrEnd()
 	}
-	if s.ContainerStatuses != nil {
-		e.Comma()
+
+	if s.EphemeralContainerStatuses != nil {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.EphemeralContainerStatuses != nil {
 		e.RawStr("\"ephemeralContainerStatuses\"" + ":")
@@ -22204,15 +25998,23 @@ func (s IoK8sAPICoreV1PodStatus) Encode(e *jx.Writer) {
 		}
 		e.ArrEnd()
 	}
-	if s.EphemeralContainerStatuses != nil {
-		e.Comma()
+
+	if s.HostIP.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.HostIP.Set {
 		e.RawStr("\"hostIP\"" + ":")
 		s.HostIP.Encode(e)
 	}
-	if s.HostIP.Set {
-		e.Comma()
+
+	if s.InitContainerStatuses != nil {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.InitContainerStatuses != nil {
 		e.RawStr("\"initContainerStatuses\"" + ":")
@@ -22230,36 +26032,56 @@ func (s IoK8sAPICoreV1PodStatus) Encode(e *jx.Writer) {
 		}
 		e.ArrEnd()
 	}
-	if s.InitContainerStatuses != nil {
-		e.Comma()
+
+	if s.Message.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Message.Set {
 		e.RawStr("\"message\"" + ":")
 		s.Message.Encode(e)
 	}
-	if s.Message.Set {
-		e.Comma()
+
+	if s.NominatedNodeName.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.NominatedNodeName.Set {
 		e.RawStr("\"nominatedNodeName\"" + ":")
 		s.NominatedNodeName.Encode(e)
 	}
-	if s.NominatedNodeName.Set {
-		e.Comma()
+
+	if s.Phase.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Phase.Set {
 		e.RawStr("\"phase\"" + ":")
 		s.Phase.Encode(e)
 	}
-	if s.Phase.Set {
-		e.Comma()
+
+	if s.PodIP.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.PodIP.Set {
 		e.RawStr("\"podIP\"" + ":")
 		s.PodIP.Encode(e)
 	}
-	if s.PodIP.Set {
-		e.Comma()
+
+	if s.PodIPs != nil {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.PodIPs != nil {
 		e.RawStr("\"podIPs\"" + ":")
@@ -22277,30 +26099,38 @@ func (s IoK8sAPICoreV1PodStatus) Encode(e *jx.Writer) {
 		}
 		e.ArrEnd()
 	}
-	if s.PodIPs != nil {
-		e.Comma()
+
+	if s.QosClass.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.QosClass.Set {
 		e.RawStr("\"qosClass\"" + ":")
 		s.QosClass.Encode(e)
 	}
-	if s.QosClass.Set {
-		e.Comma()
+
+	if s.Reason.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Reason.Set {
 		e.RawStr("\"reason\"" + ":")
 		s.Reason.Encode(e)
 	}
-	if s.Reason.Set {
-		e.Comma()
+
+	if s.StartTime.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.StartTime.Set {
 		e.RawStr("\"startTime\"" + ":")
 		s.StartTime.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -22422,34 +26252,53 @@ func (s *IoK8sAPICoreV1PodStatus) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1PodTemplate) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.ApiVersion.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.ApiVersion.Set {
 		e.RawStr("\"apiVersion\"" + ":")
 		s.ApiVersion.Encode(e)
 	}
-	if s.ApiVersion.Set {
-		e.Comma()
+
+	if s.Kind.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Kind.Set {
 		e.RawStr("\"kind\"" + ":")
 		s.Kind.Encode(e)
 	}
-	if s.Kind.Set {
-		e.Comma()
+
+	if s.Metadata.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Metadata.Set {
 		e.RawStr("\"metadata\"" + ":")
 		s.Metadata.Encode(e)
 	}
-	if s.Metadata.Set {
-		e.Comma()
+
+	if s.Template.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Template.Set {
 		e.RawStr("\"template\"" + ":")
 		s.Template.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -22491,13 +26340,27 @@ func (s *IoK8sAPICoreV1PodTemplate) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1PodTemplateList) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.ApiVersion.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.ApiVersion.Set {
 		e.RawStr("\"apiVersion\"" + ":")
 		s.ApiVersion.Encode(e)
 	}
-	if s.ApiVersion.Set {
+
+	if !first {
+
 		e.Comma()
 	}
+	first = false
 
 	e.RawStr("\"items\"" + ":")
 	e.ArrStart()
@@ -22514,21 +26377,20 @@ func (s IoK8sAPICoreV1PodTemplateList) Encode(e *jx.Writer) {
 	}
 	e.ArrEnd()
 
-	e.Comma()
+	if s.Kind.Set {
+		e.Comma()
+	}
 	if s.Kind.Set {
 		e.RawStr("\"kind\"" + ":")
 		s.Kind.Encode(e)
 	}
-	if s.Kind.Set {
+
+	if s.Metadata.Set {
 		e.Comma()
 	}
 	if s.Metadata.Set {
 		e.RawStr("\"metadata\"" + ":")
 		s.Metadata.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -22577,20 +26439,31 @@ func (s *IoK8sAPICoreV1PodTemplateList) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1PodTemplateSpec) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.Metadata.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.Metadata.Set {
 		e.RawStr("\"metadata\"" + ":")
 		s.Metadata.Encode(e)
 	}
-	if s.Metadata.Set {
-		e.Comma()
+
+	if s.Spec.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Spec.Set {
 		e.RawStr("\"spec\"" + ":")
 		s.Spec.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -22622,24 +26495,34 @@ func (s *IoK8sAPICoreV1PodTemplateSpec) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1PortStatus) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.Error.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.Error.Set {
 		e.RawStr("\"error\"" + ":")
 		s.Error.Encode(e)
 	}
-	if s.Error.Set {
+
+	if !first {
 		e.Comma()
 	}
+	first = false
 
 	e.RawStr("\"port\"" + ":")
 	e.Int32(s.Port)
+
 	e.Comma()
 
 	e.RawStr("\"protocol\"" + ":")
 	e.Str(s.Protocol)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -22677,27 +26560,40 @@ func (s *IoK8sAPICoreV1PortStatus) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1PortworxVolumeSource) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.FsType.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.FsType.Set {
 		e.RawStr("\"fsType\"" + ":")
 		s.FsType.Encode(e)
 	}
-	if s.FsType.Set {
-		e.Comma()
+
+	if s.ReadOnly.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.ReadOnly.Set {
 		e.RawStr("\"readOnly\"" + ":")
 		s.ReadOnly.Encode(e)
 	}
-	if s.ReadOnly.Set {
+
+	if !first {
 		e.Comma()
 	}
+	first = false
 
 	e.RawStr("\"volumeID\"" + ":")
 	e.Str(s.VolumeID)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -22734,6 +26630,16 @@ func (s *IoK8sAPICoreV1PortworxVolumeSource) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1PreferredSchedulingTerm) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"preference\"" + ":")
 	s.Preference.Encode(e)
@@ -22742,10 +26648,6 @@ func (s IoK8sAPICoreV1PreferredSchedulingTerm) Encode(e *jx.Writer) {
 
 	e.RawStr("\"weight\"" + ":")
 	e.Int32(s.Weight)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -22776,69 +26678,108 @@ func (s *IoK8sAPICoreV1PreferredSchedulingTerm) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1Probe) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.Exec.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.Exec.Set {
 		e.RawStr("\"exec\"" + ":")
 		s.Exec.Encode(e)
 	}
-	if s.Exec.Set {
-		e.Comma()
+
+	if s.FailureThreshold.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.FailureThreshold.Set {
 		e.RawStr("\"failureThreshold\"" + ":")
 		s.FailureThreshold.Encode(e)
 	}
-	if s.FailureThreshold.Set {
-		e.Comma()
+
+	if s.HttpGet.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.HttpGet.Set {
 		e.RawStr("\"httpGet\"" + ":")
 		s.HttpGet.Encode(e)
 	}
-	if s.HttpGet.Set {
-		e.Comma()
+
+	if s.InitialDelaySeconds.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.InitialDelaySeconds.Set {
 		e.RawStr("\"initialDelaySeconds\"" + ":")
 		s.InitialDelaySeconds.Encode(e)
 	}
-	if s.InitialDelaySeconds.Set {
-		e.Comma()
+
+	if s.PeriodSeconds.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.PeriodSeconds.Set {
 		e.RawStr("\"periodSeconds\"" + ":")
 		s.PeriodSeconds.Encode(e)
 	}
-	if s.PeriodSeconds.Set {
-		e.Comma()
+
+	if s.SuccessThreshold.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.SuccessThreshold.Set {
 		e.RawStr("\"successThreshold\"" + ":")
 		s.SuccessThreshold.Encode(e)
 	}
-	if s.SuccessThreshold.Set {
-		e.Comma()
+
+	if s.TcpSocket.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.TcpSocket.Set {
 		e.RawStr("\"tcpSocket\"" + ":")
 		s.TcpSocket.Encode(e)
 	}
-	if s.TcpSocket.Set {
-		e.Comma()
+
+	if s.TerminationGracePeriodSeconds.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.TerminationGracePeriodSeconds.Set {
 		e.RawStr("\"terminationGracePeriodSeconds\"" + ":")
 		s.TerminationGracePeriodSeconds.Encode(e)
 	}
-	if s.TerminationGracePeriodSeconds.Set {
-		e.Comma()
+
+	if s.TimeoutSeconds.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.TimeoutSeconds.Set {
 		e.RawStr("\"timeoutSeconds\"" + ":")
 		s.TimeoutSeconds.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -22905,12 +26846,27 @@ func (s *IoK8sAPICoreV1Probe) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1ProjectedVolumeSource) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.DefaultMode.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.DefaultMode.Set {
 		e.RawStr("\"defaultMode\"" + ":")
 		s.DefaultMode.Encode(e)
 	}
-	if s.DefaultMode.Set {
-		e.Comma()
+
+	if s.Sources != nil {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Sources != nil {
 		e.RawStr("\"sources\"" + ":")
@@ -22927,10 +26883,6 @@ func (s IoK8sAPICoreV1ProjectedVolumeSource) Encode(e *jx.Writer) {
 			}
 		}
 		e.ArrEnd()
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -22969,45 +26921,61 @@ func (s *IoK8sAPICoreV1ProjectedVolumeSource) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1QuobyteVolumeSource) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.Group.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.Group.Set {
 		e.RawStr("\"group\"" + ":")
 		s.Group.Encode(e)
 	}
-	if s.Group.Set {
-		e.Comma()
+
+	if s.ReadOnly.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.ReadOnly.Set {
 		e.RawStr("\"readOnly\"" + ":")
 		s.ReadOnly.Encode(e)
 	}
-	if s.ReadOnly.Set {
+
+	if !first {
 		e.Comma()
 	}
+	first = false
 
 	e.RawStr("\"registry\"" + ":")
 	e.Str(s.Registry)
-	e.Comma()
+
+	if s.Tenant.Set {
+		e.Comma()
+	}
 	if s.Tenant.Set {
 		e.RawStr("\"tenant\"" + ":")
 		s.Tenant.Encode(e)
 	}
-	if s.Tenant.Set {
+
+	if s.User.Set {
 		e.Comma()
 	}
 	if s.User.Set {
 		e.RawStr("\"user\"" + ":")
 		s.User.Encode(e)
 	}
-	if s.User.Set {
-		e.Comma()
-	}
+
+	e.Comma()
 
 	e.RawStr("\"volume\"" + ":")
 	e.Str(s.Volume)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -23060,24 +27028,39 @@ func (s *IoK8sAPICoreV1QuobyteVolumeSource) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1RBDPersistentVolumeSource) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.FsType.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.FsType.Set {
 		e.RawStr("\"fsType\"" + ":")
 		s.FsType.Encode(e)
 	}
-	if s.FsType.Set {
+
+	if !first {
 		e.Comma()
 	}
+	first = false
 
 	e.RawStr("\"image\"" + ":")
 	e.Str(s.Image)
-	e.Comma()
+
+	if s.Keyring.Set {
+		e.Comma()
+	}
 	if s.Keyring.Set {
 		e.RawStr("\"keyring\"" + ":")
 		s.Keyring.Encode(e)
 	}
-	if s.Keyring.Set {
-		e.Comma()
-	}
+
+	e.Comma()
 
 	e.RawStr("\"monitors\"" + ":")
 	e.ArrStart()
@@ -23094,35 +27077,36 @@ func (s IoK8sAPICoreV1RBDPersistentVolumeSource) Encode(e *jx.Writer) {
 	}
 	e.ArrEnd()
 
-	e.Comma()
+	if s.Pool.Set {
+		e.Comma()
+	}
 	if s.Pool.Set {
 		e.RawStr("\"pool\"" + ":")
 		s.Pool.Encode(e)
 	}
-	if s.Pool.Set {
+
+	if s.ReadOnly.Set {
 		e.Comma()
 	}
 	if s.ReadOnly.Set {
 		e.RawStr("\"readOnly\"" + ":")
 		s.ReadOnly.Encode(e)
 	}
-	if s.ReadOnly.Set {
+
+	if s.SecretRef.Set {
 		e.Comma()
 	}
 	if s.SecretRef.Set {
 		e.RawStr("\"secretRef\"" + ":")
 		s.SecretRef.Encode(e)
 	}
-	if s.SecretRef.Set {
+
+	if s.User.Set {
 		e.Comma()
 	}
 	if s.User.Set {
 		e.RawStr("\"user\"" + ":")
 		s.User.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -23194,24 +27178,39 @@ func (s *IoK8sAPICoreV1RBDPersistentVolumeSource) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1RBDVolumeSource) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.FsType.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.FsType.Set {
 		e.RawStr("\"fsType\"" + ":")
 		s.FsType.Encode(e)
 	}
-	if s.FsType.Set {
+
+	if !first {
 		e.Comma()
 	}
+	first = false
 
 	e.RawStr("\"image\"" + ":")
 	e.Str(s.Image)
-	e.Comma()
+
+	if s.Keyring.Set {
+		e.Comma()
+	}
 	if s.Keyring.Set {
 		e.RawStr("\"keyring\"" + ":")
 		s.Keyring.Encode(e)
 	}
-	if s.Keyring.Set {
-		e.Comma()
-	}
+
+	e.Comma()
 
 	e.RawStr("\"monitors\"" + ":")
 	e.ArrStart()
@@ -23228,35 +27227,36 @@ func (s IoK8sAPICoreV1RBDVolumeSource) Encode(e *jx.Writer) {
 	}
 	e.ArrEnd()
 
-	e.Comma()
+	if s.Pool.Set {
+		e.Comma()
+	}
 	if s.Pool.Set {
 		e.RawStr("\"pool\"" + ":")
 		s.Pool.Encode(e)
 	}
-	if s.Pool.Set {
+
+	if s.ReadOnly.Set {
 		e.Comma()
 	}
 	if s.ReadOnly.Set {
 		e.RawStr("\"readOnly\"" + ":")
 		s.ReadOnly.Encode(e)
 	}
-	if s.ReadOnly.Set {
+
+	if s.SecretRef.Set {
 		e.Comma()
 	}
 	if s.SecretRef.Set {
 		e.RawStr("\"secretRef\"" + ":")
 		s.SecretRef.Encode(e)
 	}
-	if s.SecretRef.Set {
+
+	if s.User.Set {
 		e.Comma()
 	}
 	if s.User.Set {
 		e.RawStr("\"user\"" + ":")
 		s.User.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -23328,41 +27328,64 @@ func (s *IoK8sAPICoreV1RBDVolumeSource) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1ReplicationController) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.ApiVersion.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.ApiVersion.Set {
 		e.RawStr("\"apiVersion\"" + ":")
 		s.ApiVersion.Encode(e)
 	}
-	if s.ApiVersion.Set {
-		e.Comma()
+
+	if s.Kind.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Kind.Set {
 		e.RawStr("\"kind\"" + ":")
 		s.Kind.Encode(e)
 	}
-	if s.Kind.Set {
-		e.Comma()
+
+	if s.Metadata.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Metadata.Set {
 		e.RawStr("\"metadata\"" + ":")
 		s.Metadata.Encode(e)
 	}
-	if s.Metadata.Set {
-		e.Comma()
+
+	if s.Spec.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Spec.Set {
 		e.RawStr("\"spec\"" + ":")
 		s.Spec.Encode(e)
 	}
-	if s.Spec.Set {
-		e.Comma()
+
+	if s.Status.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Status.Set {
 		e.RawStr("\"status\"" + ":")
 		s.Status.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -23409,38 +27432,56 @@ func (s *IoK8sAPICoreV1ReplicationController) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1ReplicationControllerCondition) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.LastTransitionTime.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.LastTransitionTime.Set {
 		e.RawStr("\"lastTransitionTime\"" + ":")
 		s.LastTransitionTime.Encode(e)
 	}
-	if s.LastTransitionTime.Set {
-		e.Comma()
+
+	if s.Message.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Message.Set {
 		e.RawStr("\"message\"" + ":")
 		s.Message.Encode(e)
 	}
-	if s.Message.Set {
-		e.Comma()
+
+	if s.Reason.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Reason.Set {
 		e.RawStr("\"reason\"" + ":")
 		s.Reason.Encode(e)
 	}
-	if s.Reason.Set {
+
+	if !first {
 		e.Comma()
 	}
+	first = false
 
 	e.RawStr("\"status\"" + ":")
 	e.Str(s.Status)
+
 	e.Comma()
 
 	e.RawStr("\"type\"" + ":")
 	e.Str(s.Type)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -23488,13 +27529,27 @@ func (s *IoK8sAPICoreV1ReplicationControllerCondition) Decode(d *jx.Decoder) err
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1ReplicationControllerList) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.ApiVersion.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.ApiVersion.Set {
 		e.RawStr("\"apiVersion\"" + ":")
 		s.ApiVersion.Encode(e)
 	}
-	if s.ApiVersion.Set {
+
+	if !first {
+
 		e.Comma()
 	}
+	first = false
 
 	e.RawStr("\"items\"" + ":")
 	e.ArrStart()
@@ -23511,21 +27566,20 @@ func (s IoK8sAPICoreV1ReplicationControllerList) Encode(e *jx.Writer) {
 	}
 	e.ArrEnd()
 
-	e.Comma()
+	if s.Kind.Set {
+		e.Comma()
+	}
 	if s.Kind.Set {
 		e.RawStr("\"kind\"" + ":")
 		s.Kind.Encode(e)
 	}
-	if s.Kind.Set {
+
+	if s.Metadata.Set {
 		e.Comma()
 	}
 	if s.Metadata.Set {
 		e.RawStr("\"metadata\"" + ":")
 		s.Metadata.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -23574,34 +27628,53 @@ func (s *IoK8sAPICoreV1ReplicationControllerList) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1ReplicationControllerSpec) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.MinReadySeconds.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.MinReadySeconds.Set {
 		e.RawStr("\"minReadySeconds\"" + ":")
 		s.MinReadySeconds.Encode(e)
 	}
-	if s.MinReadySeconds.Set {
-		e.Comma()
+
+	if s.Replicas.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Replicas.Set {
 		e.RawStr("\"replicas\"" + ":")
 		s.Replicas.Encode(e)
 	}
-	if s.Replicas.Set {
-		e.Comma()
+
+	if s.Selector != nil {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Selector != nil {
 		e.RawStr("\"selector\"" + ":")
 		s.Selector.Encode(e)
 	}
-	if s.Selector != nil {
-		e.Comma()
+
+	if s.Template.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Template.Set {
 		e.RawStr("\"template\"" + ":")
 		s.Template.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -23645,10 +27718,10 @@ func (s *IoK8sAPICoreV1ReplicationControllerSpec) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1ReplicationControllerSpecSelector) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -23669,12 +27742,27 @@ func (s *IoK8sAPICoreV1ReplicationControllerSpecSelector) Decode(d *jx.Decoder) 
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1ReplicationControllerStatus) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.AvailableReplicas.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.AvailableReplicas.Set {
 		e.RawStr("\"availableReplicas\"" + ":")
 		s.AvailableReplicas.Encode(e)
 	}
-	if s.AvailableReplicas.Set {
-		e.Comma()
+
+	if s.Conditions != nil {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Conditions != nil {
 		e.RawStr("\"conditions\"" + ":")
@@ -23692,37 +27780,47 @@ func (s IoK8sAPICoreV1ReplicationControllerStatus) Encode(e *jx.Writer) {
 		}
 		e.ArrEnd()
 	}
-	if s.Conditions != nil {
-		e.Comma()
+
+	if s.FullyLabeledReplicas.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.FullyLabeledReplicas.Set {
 		e.RawStr("\"fullyLabeledReplicas\"" + ":")
 		s.FullyLabeledReplicas.Encode(e)
 	}
-	if s.FullyLabeledReplicas.Set {
-		e.Comma()
+
+	if s.ObservedGeneration.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.ObservedGeneration.Set {
 		e.RawStr("\"observedGeneration\"" + ":")
 		s.ObservedGeneration.Encode(e)
 	}
-	if s.ObservedGeneration.Set {
-		e.Comma()
+
+	if s.ReadyReplicas.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.ReadyReplicas.Set {
 		e.RawStr("\"readyReplicas\"" + ":")
 		s.ReadyReplicas.Encode(e)
 	}
-	if s.ReadyReplicas.Set {
+
+	if !first {
 		e.Comma()
 	}
+	first = false
 
 	e.RawStr("\"replicas\"" + ":")
 	e.Int32(s.Replicas)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -23781,27 +27879,40 @@ func (s *IoK8sAPICoreV1ReplicationControllerStatus) Decode(d *jx.Decoder) error 
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1ResourceFieldSelector) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.ContainerName.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.ContainerName.Set {
 		e.RawStr("\"containerName\"" + ":")
 		s.ContainerName.Encode(e)
 	}
-	if s.ContainerName.Set {
-		e.Comma()
+
+	if s.Divisor.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Divisor.Set {
 		e.RawStr("\"divisor\"" + ":")
 		s.Divisor.Encode(e)
 	}
-	if s.Divisor.Set {
+
+	if !first {
 		e.Comma()
 	}
+	first = false
 
 	e.RawStr("\"resource\"" + ":")
 	e.Str(s.Resource)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -23838,41 +27949,64 @@ func (s *IoK8sAPICoreV1ResourceFieldSelector) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1ResourceQuota) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.ApiVersion.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.ApiVersion.Set {
 		e.RawStr("\"apiVersion\"" + ":")
 		s.ApiVersion.Encode(e)
 	}
-	if s.ApiVersion.Set {
-		e.Comma()
+
+	if s.Kind.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Kind.Set {
 		e.RawStr("\"kind\"" + ":")
 		s.Kind.Encode(e)
 	}
-	if s.Kind.Set {
-		e.Comma()
+
+	if s.Metadata.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Metadata.Set {
 		e.RawStr("\"metadata\"" + ":")
 		s.Metadata.Encode(e)
 	}
-	if s.Metadata.Set {
-		e.Comma()
+
+	if s.Spec.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Spec.Set {
 		e.RawStr("\"spec\"" + ":")
 		s.Spec.Encode(e)
 	}
-	if s.Spec.Set {
-		e.Comma()
+
+	if s.Status.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Status.Set {
 		e.RawStr("\"status\"" + ":")
 		s.Status.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -23919,13 +28053,27 @@ func (s *IoK8sAPICoreV1ResourceQuota) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1ResourceQuotaList) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.ApiVersion.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.ApiVersion.Set {
 		e.RawStr("\"apiVersion\"" + ":")
 		s.ApiVersion.Encode(e)
 	}
-	if s.ApiVersion.Set {
+
+	if !first {
+
 		e.Comma()
 	}
+	first = false
 
 	e.RawStr("\"items\"" + ":")
 	e.ArrStart()
@@ -23942,21 +28090,20 @@ func (s IoK8sAPICoreV1ResourceQuotaList) Encode(e *jx.Writer) {
 	}
 	e.ArrEnd()
 
-	e.Comma()
+	if s.Kind.Set {
+		e.Comma()
+	}
 	if s.Kind.Set {
 		e.RawStr("\"kind\"" + ":")
 		s.Kind.Encode(e)
 	}
-	if s.Kind.Set {
+
+	if s.Metadata.Set {
 		e.Comma()
 	}
 	if s.Metadata.Set {
 		e.RawStr("\"metadata\"" + ":")
 		s.Metadata.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -24005,19 +28152,38 @@ func (s *IoK8sAPICoreV1ResourceQuotaList) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1ResourceQuotaSpec) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.Hard != nil {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.Hard != nil {
 		e.RawStr("\"hard\"" + ":")
 		s.Hard.Encode(e)
 	}
-	if s.Hard != nil {
-		e.Comma()
+
+	if s.ScopeSelector.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.ScopeSelector.Set {
 		e.RawStr("\"scopeSelector\"" + ":")
 		s.ScopeSelector.Encode(e)
 	}
-	if s.ScopeSelector.Set {
-		e.Comma()
+
+	if s.Scopes != nil {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Scopes != nil {
 		e.RawStr("\"scopes\"" + ":")
@@ -24034,10 +28200,6 @@ func (s IoK8sAPICoreV1ResourceQuotaSpec) Encode(e *jx.Writer) {
 			}
 		}
 		e.ArrEnd()
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -24085,10 +28247,10 @@ func (s *IoK8sAPICoreV1ResourceQuotaSpec) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1ResourceQuotaSpecHard) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -24109,20 +28271,31 @@ func (s *IoK8sAPICoreV1ResourceQuotaSpecHard) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1ResourceQuotaStatus) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.Hard != nil {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.Hard != nil {
 		e.RawStr("\"hard\"" + ":")
 		s.Hard.Encode(e)
 	}
-	if s.Hard != nil {
-		e.Comma()
+
+	if s.Used != nil {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Used != nil {
 		e.RawStr("\"used\"" + ":")
 		s.Used.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -24158,10 +28331,10 @@ func (s *IoK8sAPICoreV1ResourceQuotaStatus) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1ResourceQuotaStatusHard) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -24182,10 +28355,10 @@ func (s *IoK8sAPICoreV1ResourceQuotaStatusHard) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1ResourceQuotaStatusUsed) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -24206,20 +28379,31 @@ func (s *IoK8sAPICoreV1ResourceQuotaStatusUsed) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1ResourceRequirements) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.Limits != nil {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.Limits != nil {
 		e.RawStr("\"limits\"" + ":")
 		s.Limits.Encode(e)
 	}
-	if s.Limits != nil {
-		e.Comma()
+
+	if s.Requests != nil {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Requests != nil {
 		e.RawStr("\"requests\"" + ":")
 		s.Requests.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -24255,10 +28439,10 @@ func (s *IoK8sAPICoreV1ResourceRequirements) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1ResourceRequirementsLimits) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -24279,10 +28463,10 @@ func (s *IoK8sAPICoreV1ResourceRequirementsLimits) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1ResourceRequirementsRequests) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -24303,34 +28487,53 @@ func (s *IoK8sAPICoreV1ResourceRequirementsRequests) Decode(d *jx.Decoder) error
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1SELinuxOptions) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.Level.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.Level.Set {
 		e.RawStr("\"level\"" + ":")
 		s.Level.Encode(e)
 	}
-	if s.Level.Set {
-		e.Comma()
+
+	if s.Role.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Role.Set {
 		e.RawStr("\"role\"" + ":")
 		s.Role.Encode(e)
 	}
-	if s.Role.Set {
-		e.Comma()
+
+	if s.Type.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Type.Set {
 		e.RawStr("\"type\"" + ":")
 		s.Type.Encode(e)
 	}
-	if s.Type.Set {
-		e.Comma()
+
+	if s.User.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.User.Set {
 		e.RawStr("\"user\"" + ":")
 		s.User.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -24372,68 +28575,86 @@ func (s *IoK8sAPICoreV1SELinuxOptions) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1ScaleIOPersistentVolumeSource) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.FsType.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.FsType.Set {
 		e.RawStr("\"fsType\"" + ":")
 		s.FsType.Encode(e)
 	}
-	if s.FsType.Set {
+
+	if !first {
 		e.Comma()
 	}
+	first = false
 
 	e.RawStr("\"gateway\"" + ":")
 	e.Str(s.Gateway)
-	e.Comma()
+
+	if s.ProtectionDomain.Set {
+		e.Comma()
+	}
 	if s.ProtectionDomain.Set {
 		e.RawStr("\"protectionDomain\"" + ":")
 		s.ProtectionDomain.Encode(e)
 	}
-	if s.ProtectionDomain.Set {
+
+	if s.ReadOnly.Set {
 		e.Comma()
 	}
 	if s.ReadOnly.Set {
 		e.RawStr("\"readOnly\"" + ":")
 		s.ReadOnly.Encode(e)
 	}
-	if s.ReadOnly.Set {
-		e.Comma()
-	}
+
+	e.Comma()
 
 	e.RawStr("\"secretRef\"" + ":")
 	s.SecretRef.Encode(e)
 
-	e.Comma()
+	if s.SslEnabled.Set {
+		e.Comma()
+	}
 	if s.SslEnabled.Set {
 		e.RawStr("\"sslEnabled\"" + ":")
 		s.SslEnabled.Encode(e)
 	}
-	if s.SslEnabled.Set {
+
+	if s.StorageMode.Set {
 		e.Comma()
 	}
 	if s.StorageMode.Set {
 		e.RawStr("\"storageMode\"" + ":")
 		s.StorageMode.Encode(e)
 	}
-	if s.StorageMode.Set {
+
+	if s.StoragePool.Set {
 		e.Comma()
 	}
 	if s.StoragePool.Set {
 		e.RawStr("\"storagePool\"" + ":")
 		s.StoragePool.Encode(e)
 	}
-	if s.StoragePool.Set {
-		e.Comma()
-	}
+
+	e.Comma()
 
 	e.RawStr("\"system\"" + ":")
 	e.Str(s.System)
-	e.Comma()
+
+	if s.VolumeName.Set {
+		e.Comma()
+	}
 	if s.VolumeName.Set {
 		e.RawStr("\"volumeName\"" + ":")
 		s.VolumeName.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -24506,68 +28727,86 @@ func (s *IoK8sAPICoreV1ScaleIOPersistentVolumeSource) Decode(d *jx.Decoder) erro
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1ScaleIOVolumeSource) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.FsType.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.FsType.Set {
 		e.RawStr("\"fsType\"" + ":")
 		s.FsType.Encode(e)
 	}
-	if s.FsType.Set {
+
+	if !first {
 		e.Comma()
 	}
+	first = false
 
 	e.RawStr("\"gateway\"" + ":")
 	e.Str(s.Gateway)
-	e.Comma()
+
+	if s.ProtectionDomain.Set {
+		e.Comma()
+	}
 	if s.ProtectionDomain.Set {
 		e.RawStr("\"protectionDomain\"" + ":")
 		s.ProtectionDomain.Encode(e)
 	}
-	if s.ProtectionDomain.Set {
+
+	if s.ReadOnly.Set {
 		e.Comma()
 	}
 	if s.ReadOnly.Set {
 		e.RawStr("\"readOnly\"" + ":")
 		s.ReadOnly.Encode(e)
 	}
-	if s.ReadOnly.Set {
-		e.Comma()
-	}
+
+	e.Comma()
 
 	e.RawStr("\"secretRef\"" + ":")
 	s.SecretRef.Encode(e)
 
-	e.Comma()
+	if s.SslEnabled.Set {
+		e.Comma()
+	}
 	if s.SslEnabled.Set {
 		e.RawStr("\"sslEnabled\"" + ":")
 		s.SslEnabled.Encode(e)
 	}
-	if s.SslEnabled.Set {
+
+	if s.StorageMode.Set {
 		e.Comma()
 	}
 	if s.StorageMode.Set {
 		e.RawStr("\"storageMode\"" + ":")
 		s.StorageMode.Encode(e)
 	}
-	if s.StorageMode.Set {
+
+	if s.StoragePool.Set {
 		e.Comma()
 	}
 	if s.StoragePool.Set {
 		e.RawStr("\"storagePool\"" + ":")
 		s.StoragePool.Encode(e)
 	}
-	if s.StoragePool.Set {
-		e.Comma()
-	}
+
+	e.Comma()
 
 	e.RawStr("\"system\"" + ":")
 	e.Str(s.System)
-	e.Comma()
+
+	if s.VolumeName.Set {
+		e.Comma()
+	}
 	if s.VolumeName.Set {
 		e.RawStr("\"volumeName\"" + ":")
 		s.VolumeName.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -24640,6 +28879,17 @@ func (s *IoK8sAPICoreV1ScaleIOVolumeSource) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1ScopeSelector) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.MatchExpressions != nil {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.MatchExpressions != nil {
 		e.RawStr("\"matchExpressions\"" + ":")
 		e.ArrStart()
@@ -24655,10 +28905,6 @@ func (s IoK8sAPICoreV1ScopeSelector) Encode(e *jx.Writer) {
 			}
 		}
 		e.ArrEnd()
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -24692,14 +28938,27 @@ func (s *IoK8sAPICoreV1ScopeSelector) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1ScopedResourceSelectorRequirement) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"operator\"" + ":")
 	e.Str(s.Operator)
+
 	e.Comma()
 
 	e.RawStr("\"scopeName\"" + ":")
 	e.Str(s.ScopeName)
-	e.Comma()
+
+	if s.Values != nil {
+		e.Comma()
+	}
 	if s.Values != nil {
 		e.RawStr("\"values\"" + ":")
 		e.ArrStart()
@@ -24715,10 +28974,6 @@ func (s IoK8sAPICoreV1ScopedResourceSelectorRequirement) Encode(e *jx.Writer) {
 			}
 		}
 		e.ArrEnd()
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -24766,20 +29021,29 @@ func (s *IoK8sAPICoreV1ScopedResourceSelectorRequirement) Decode(d *jx.Decoder) 
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1SeccompProfile) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.LocalhostProfile.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.LocalhostProfile.Set {
 		e.RawStr("\"localhostProfile\"" + ":")
 		s.LocalhostProfile.Encode(e)
 	}
-	if s.LocalhostProfile.Set {
+
+	if !first {
 		e.Comma()
 	}
+	first = false
 
 	e.RawStr("\"type\"" + ":")
 	e.Str(s.Type)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -24811,55 +29075,86 @@ func (s *IoK8sAPICoreV1SeccompProfile) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1Secret) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.ApiVersion.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.ApiVersion.Set {
 		e.RawStr("\"apiVersion\"" + ":")
 		s.ApiVersion.Encode(e)
 	}
-	if s.ApiVersion.Set {
-		e.Comma()
+
+	if s.Data != nil {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Data != nil {
 		e.RawStr("\"data\"" + ":")
 		s.Data.Encode(e)
 	}
-	if s.Data != nil {
-		e.Comma()
+
+	if s.Immutable.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Immutable.Set {
 		e.RawStr("\"immutable\"" + ":")
 		s.Immutable.Encode(e)
 	}
-	if s.Immutable.Set {
-		e.Comma()
+
+	if s.Kind.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Kind.Set {
 		e.RawStr("\"kind\"" + ":")
 		s.Kind.Encode(e)
 	}
-	if s.Kind.Set {
-		e.Comma()
+
+	if s.Metadata.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Metadata.Set {
 		e.RawStr("\"metadata\"" + ":")
 		s.Metadata.Encode(e)
 	}
-	if s.Metadata.Set {
-		e.Comma()
+
+	if s.StringData != nil {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.StringData != nil {
 		e.RawStr("\"stringData\"" + ":")
 		s.StringData.Encode(e)
 	}
-	if s.StringData != nil {
-		e.Comma()
+
+	if s.Type.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Type.Set {
 		e.RawStr("\"type\"" + ":")
 		s.Type.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -24920,10 +29215,10 @@ func (s *IoK8sAPICoreV1Secret) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1SecretData) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -24944,20 +29239,31 @@ func (s *IoK8sAPICoreV1SecretData) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1SecretEnvSource) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.Name.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.Name.Set {
 		e.RawStr("\"name\"" + ":")
 		s.Name.Encode(e)
 	}
-	if s.Name.Set {
-		e.Comma()
+
+	if s.Optional.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Optional.Set {
 		e.RawStr("\"optional\"" + ":")
 		s.Optional.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -24989,24 +29295,33 @@ func (s *IoK8sAPICoreV1SecretEnvSource) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1SecretKeySelector) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"key\"" + ":")
 	e.Str(s.Key)
-	e.Comma()
+
+	if s.Name.Set {
+		e.Comma()
+	}
 	if s.Name.Set {
 		e.RawStr("\"name\"" + ":")
 		s.Name.Encode(e)
 	}
-	if s.Name.Set {
+
+	if s.Optional.Set {
 		e.Comma()
 	}
 	if s.Optional.Set {
 		e.RawStr("\"optional\"" + ":")
 		s.Optional.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -25044,13 +29359,27 @@ func (s *IoK8sAPICoreV1SecretKeySelector) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1SecretList) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.ApiVersion.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.ApiVersion.Set {
 		e.RawStr("\"apiVersion\"" + ":")
 		s.ApiVersion.Encode(e)
 	}
-	if s.ApiVersion.Set {
+
+	if !first {
+
 		e.Comma()
 	}
+	first = false
 
 	e.RawStr("\"items\"" + ":")
 	e.ArrStart()
@@ -25067,21 +29396,20 @@ func (s IoK8sAPICoreV1SecretList) Encode(e *jx.Writer) {
 	}
 	e.ArrEnd()
 
-	e.Comma()
+	if s.Kind.Set {
+		e.Comma()
+	}
 	if s.Kind.Set {
 		e.RawStr("\"kind\"" + ":")
 		s.Kind.Encode(e)
 	}
-	if s.Kind.Set {
+
+	if s.Metadata.Set {
 		e.Comma()
 	}
 	if s.Metadata.Set {
 		e.RawStr("\"metadata\"" + ":")
 		s.Metadata.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -25130,6 +29458,17 @@ func (s *IoK8sAPICoreV1SecretList) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1SecretProjection) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.Items != nil {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.Items != nil {
 		e.RawStr("\"items\"" + ":")
 		e.ArrStart()
@@ -25146,23 +29485,27 @@ func (s IoK8sAPICoreV1SecretProjection) Encode(e *jx.Writer) {
 		}
 		e.ArrEnd()
 	}
-	if s.Items != nil {
-		e.Comma()
+
+	if s.Name.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Name.Set {
 		e.RawStr("\"name\"" + ":")
 		s.Name.Encode(e)
 	}
-	if s.Name.Set {
-		e.Comma()
+
+	if s.Optional.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Optional.Set {
 		e.RawStr("\"optional\"" + ":")
 		s.Optional.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -25206,20 +29549,31 @@ func (s *IoK8sAPICoreV1SecretProjection) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1SecretReference) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.Name.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.Name.Set {
 		e.RawStr("\"name\"" + ":")
 		s.Name.Encode(e)
 	}
-	if s.Name.Set {
-		e.Comma()
+
+	if s.Namespace.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Namespace.Set {
 		e.RawStr("\"namespace\"" + ":")
 		s.Namespace.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -25251,10 +29605,10 @@ func (s *IoK8sAPICoreV1SecretReference) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1SecretStringData) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -25275,12 +29629,27 @@ func (s *IoK8sAPICoreV1SecretStringData) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1SecretVolumeSource) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.DefaultMode.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.DefaultMode.Set {
 		e.RawStr("\"defaultMode\"" + ":")
 		s.DefaultMode.Encode(e)
 	}
-	if s.DefaultMode.Set {
-		e.Comma()
+
+	if s.Items != nil {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Items != nil {
 		e.RawStr("\"items\"" + ":")
@@ -25298,23 +29667,27 @@ func (s IoK8sAPICoreV1SecretVolumeSource) Encode(e *jx.Writer) {
 		}
 		e.ArrEnd()
 	}
-	if s.Items != nil {
-		e.Comma()
+
+	if s.Optional.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Optional.Set {
 		e.RawStr("\"optional\"" + ":")
 		s.Optional.Encode(e)
 	}
-	if s.Optional.Set {
-		e.Comma()
+
+	if s.SecretName.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.SecretName.Set {
 		e.RawStr("\"secretName\"" + ":")
 		s.SecretName.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -25363,83 +29736,130 @@ func (s *IoK8sAPICoreV1SecretVolumeSource) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1SecurityContext) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.AllowPrivilegeEscalation.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.AllowPrivilegeEscalation.Set {
 		e.RawStr("\"allowPrivilegeEscalation\"" + ":")
 		s.AllowPrivilegeEscalation.Encode(e)
 	}
-	if s.AllowPrivilegeEscalation.Set {
-		e.Comma()
+
+	if s.Capabilities.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Capabilities.Set {
 		e.RawStr("\"capabilities\"" + ":")
 		s.Capabilities.Encode(e)
 	}
-	if s.Capabilities.Set {
-		e.Comma()
+
+	if s.Privileged.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Privileged.Set {
 		e.RawStr("\"privileged\"" + ":")
 		s.Privileged.Encode(e)
 	}
-	if s.Privileged.Set {
-		e.Comma()
+
+	if s.ProcMount.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.ProcMount.Set {
 		e.RawStr("\"procMount\"" + ":")
 		s.ProcMount.Encode(e)
 	}
-	if s.ProcMount.Set {
-		e.Comma()
+
+	if s.ReadOnlyRootFilesystem.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.ReadOnlyRootFilesystem.Set {
 		e.RawStr("\"readOnlyRootFilesystem\"" + ":")
 		s.ReadOnlyRootFilesystem.Encode(e)
 	}
-	if s.ReadOnlyRootFilesystem.Set {
-		e.Comma()
+
+	if s.RunAsGroup.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.RunAsGroup.Set {
 		e.RawStr("\"runAsGroup\"" + ":")
 		s.RunAsGroup.Encode(e)
 	}
-	if s.RunAsGroup.Set {
-		e.Comma()
+
+	if s.RunAsNonRoot.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.RunAsNonRoot.Set {
 		e.RawStr("\"runAsNonRoot\"" + ":")
 		s.RunAsNonRoot.Encode(e)
 	}
-	if s.RunAsNonRoot.Set {
-		e.Comma()
+
+	if s.RunAsUser.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.RunAsUser.Set {
 		e.RawStr("\"runAsUser\"" + ":")
 		s.RunAsUser.Encode(e)
 	}
-	if s.RunAsUser.Set {
-		e.Comma()
+
+	if s.SeLinuxOptions.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.SeLinuxOptions.Set {
 		e.RawStr("\"seLinuxOptions\"" + ":")
 		s.SeLinuxOptions.Encode(e)
 	}
-	if s.SeLinuxOptions.Set {
-		e.Comma()
+
+	if s.SeccompProfile.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.SeccompProfile.Set {
 		e.RawStr("\"seccompProfile\"" + ":")
 		s.SeccompProfile.Encode(e)
 	}
-	if s.SeccompProfile.Set {
-		e.Comma()
+
+	if s.WindowsOptions.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.WindowsOptions.Set {
 		e.RawStr("\"windowsOptions\"" + ":")
 		s.WindowsOptions.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -25516,41 +29936,64 @@ func (s *IoK8sAPICoreV1SecurityContext) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1Service) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.ApiVersion.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.ApiVersion.Set {
 		e.RawStr("\"apiVersion\"" + ":")
 		s.ApiVersion.Encode(e)
 	}
-	if s.ApiVersion.Set {
-		e.Comma()
+
+	if s.Kind.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Kind.Set {
 		e.RawStr("\"kind\"" + ":")
 		s.Kind.Encode(e)
 	}
-	if s.Kind.Set {
-		e.Comma()
+
+	if s.Metadata.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Metadata.Set {
 		e.RawStr("\"metadata\"" + ":")
 		s.Metadata.Encode(e)
 	}
-	if s.Metadata.Set {
-		e.Comma()
+
+	if s.Spec.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Spec.Set {
 		e.RawStr("\"spec\"" + ":")
 		s.Spec.Encode(e)
 	}
-	if s.Spec.Set {
-		e.Comma()
+
+	if s.Status.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Status.Set {
 		e.RawStr("\"status\"" + ":")
 		s.Status.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -25597,19 +30040,38 @@ func (s *IoK8sAPICoreV1Service) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1ServiceAccount) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.ApiVersion.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.ApiVersion.Set {
 		e.RawStr("\"apiVersion\"" + ":")
 		s.ApiVersion.Encode(e)
 	}
-	if s.ApiVersion.Set {
-		e.Comma()
+
+	if s.AutomountServiceAccountToken.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.AutomountServiceAccountToken.Set {
 		e.RawStr("\"automountServiceAccountToken\"" + ":")
 		s.AutomountServiceAccountToken.Encode(e)
 	}
-	if s.AutomountServiceAccountToken.Set {
-		e.Comma()
+
+	if s.ImagePullSecrets != nil {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.ImagePullSecrets != nil {
 		e.RawStr("\"imagePullSecrets\"" + ":")
@@ -25627,22 +30089,34 @@ func (s IoK8sAPICoreV1ServiceAccount) Encode(e *jx.Writer) {
 		}
 		e.ArrEnd()
 	}
-	if s.ImagePullSecrets != nil {
-		e.Comma()
+
+	if s.Kind.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Kind.Set {
 		e.RawStr("\"kind\"" + ":")
 		s.Kind.Encode(e)
 	}
-	if s.Kind.Set {
-		e.Comma()
+
+	if s.Metadata.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Metadata.Set {
 		e.RawStr("\"metadata\"" + ":")
 		s.Metadata.Encode(e)
 	}
-	if s.Metadata.Set {
-		e.Comma()
+
+	if s.Secrets != nil {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Secrets != nil {
 		e.RawStr("\"secrets\"" + ":")
@@ -25659,10 +30133,6 @@ func (s IoK8sAPICoreV1ServiceAccount) Encode(e *jx.Writer) {
 			}
 		}
 		e.ArrEnd()
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -25728,13 +30198,27 @@ func (s *IoK8sAPICoreV1ServiceAccount) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1ServiceAccountList) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.ApiVersion.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.ApiVersion.Set {
 		e.RawStr("\"apiVersion\"" + ":")
 		s.ApiVersion.Encode(e)
 	}
-	if s.ApiVersion.Set {
+
+	if !first {
+
 		e.Comma()
 	}
+	first = false
 
 	e.RawStr("\"items\"" + ":")
 	e.ArrStart()
@@ -25751,21 +30235,20 @@ func (s IoK8sAPICoreV1ServiceAccountList) Encode(e *jx.Writer) {
 	}
 	e.ArrEnd()
 
-	e.Comma()
+	if s.Kind.Set {
+		e.Comma()
+	}
 	if s.Kind.Set {
 		e.RawStr("\"kind\"" + ":")
 		s.Kind.Encode(e)
 	}
-	if s.Kind.Set {
+
+	if s.Metadata.Set {
 		e.Comma()
 	}
 	if s.Metadata.Set {
 		e.RawStr("\"metadata\"" + ":")
 		s.Metadata.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -25814,27 +30297,40 @@ func (s *IoK8sAPICoreV1ServiceAccountList) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1ServiceAccountTokenProjection) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.Audience.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.Audience.Set {
 		e.RawStr("\"audience\"" + ":")
 		s.Audience.Encode(e)
 	}
-	if s.Audience.Set {
-		e.Comma()
+
+	if s.ExpirationSeconds.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.ExpirationSeconds.Set {
 		e.RawStr("\"expirationSeconds\"" + ":")
 		s.ExpirationSeconds.Encode(e)
 	}
-	if s.ExpirationSeconds.Set {
+
+	if !first {
 		e.Comma()
 	}
+	first = false
 
 	e.RawStr("\"path\"" + ":")
 	e.Str(s.Path)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -25871,13 +30367,27 @@ func (s *IoK8sAPICoreV1ServiceAccountTokenProjection) Decode(d *jx.Decoder) erro
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1ServiceList) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.ApiVersion.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.ApiVersion.Set {
 		e.RawStr("\"apiVersion\"" + ":")
 		s.ApiVersion.Encode(e)
 	}
-	if s.ApiVersion.Set {
+
+	if !first {
+
 		e.Comma()
 	}
+	first = false
 
 	e.RawStr("\"items\"" + ":")
 	e.ArrStart()
@@ -25894,21 +30404,20 @@ func (s IoK8sAPICoreV1ServiceList) Encode(e *jx.Writer) {
 	}
 	e.ArrEnd()
 
-	e.Comma()
+	if s.Kind.Set {
+		e.Comma()
+	}
 	if s.Kind.Set {
 		e.RawStr("\"kind\"" + ":")
 		s.Kind.Encode(e)
 	}
-	if s.Kind.Set {
+
+	if s.Metadata.Set {
 		e.Comma()
 	}
 	if s.Metadata.Set {
 		e.RawStr("\"metadata\"" + ":")
 		s.Metadata.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -25957,45 +30466,66 @@ func (s *IoK8sAPICoreV1ServiceList) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1ServicePort) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.AppProtocol.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.AppProtocol.Set {
 		e.RawStr("\"appProtocol\"" + ":")
 		s.AppProtocol.Encode(e)
 	}
-	if s.AppProtocol.Set {
-		e.Comma()
+
+	if s.Name.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Name.Set {
 		e.RawStr("\"name\"" + ":")
 		s.Name.Encode(e)
 	}
-	if s.Name.Set {
-		e.Comma()
+
+	if s.NodePort.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.NodePort.Set {
 		e.RawStr("\"nodePort\"" + ":")
 		s.NodePort.Encode(e)
 	}
-	if s.NodePort.Set {
+
+	if !first {
 		e.Comma()
 	}
+	first = false
 
 	e.RawStr("\"port\"" + ":")
 	e.Int32(s.Port)
-	e.Comma()
+
+	if s.Protocol.Set {
+		e.Comma()
+	}
 	if s.Protocol.Set {
 		e.RawStr("\"protocol\"" + ":")
 		s.Protocol.Encode(e)
 	}
-	if s.Protocol.Set {
+
+	if s.TargetPort.Set {
 		e.Comma()
 	}
 	if s.TargetPort.Set {
 		e.RawStr("\"targetPort\"" + ":")
 		s.TargetPort.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -26048,19 +30578,38 @@ func (s *IoK8sAPICoreV1ServicePort) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1ServiceSpec) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.AllocateLoadBalancerNodePorts.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.AllocateLoadBalancerNodePorts.Set {
 		e.RawStr("\"allocateLoadBalancerNodePorts\"" + ":")
 		s.AllocateLoadBalancerNodePorts.Encode(e)
 	}
-	if s.AllocateLoadBalancerNodePorts.Set {
-		e.Comma()
+
+	if s.ClusterIP.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.ClusterIP.Set {
 		e.RawStr("\"clusterIP\"" + ":")
 		s.ClusterIP.Encode(e)
 	}
-	if s.ClusterIP.Set {
-		e.Comma()
+
+	if s.ClusterIPs != nil {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.ClusterIPs != nil {
 		e.RawStr("\"clusterIPs\"" + ":")
@@ -26078,8 +30627,12 @@ func (s IoK8sAPICoreV1ServiceSpec) Encode(e *jx.Writer) {
 		}
 		e.ArrEnd()
 	}
-	if s.ClusterIPs != nil {
-		e.Comma()
+
+	if s.ExternalIPs != nil {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.ExternalIPs != nil {
 		e.RawStr("\"externalIPs\"" + ":")
@@ -26097,36 +30650,56 @@ func (s IoK8sAPICoreV1ServiceSpec) Encode(e *jx.Writer) {
 		}
 		e.ArrEnd()
 	}
-	if s.ExternalIPs != nil {
-		e.Comma()
+
+	if s.ExternalName.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.ExternalName.Set {
 		e.RawStr("\"externalName\"" + ":")
 		s.ExternalName.Encode(e)
 	}
-	if s.ExternalName.Set {
-		e.Comma()
+
+	if s.ExternalTrafficPolicy.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.ExternalTrafficPolicy.Set {
 		e.RawStr("\"externalTrafficPolicy\"" + ":")
 		s.ExternalTrafficPolicy.Encode(e)
 	}
-	if s.ExternalTrafficPolicy.Set {
-		e.Comma()
+
+	if s.HealthCheckNodePort.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.HealthCheckNodePort.Set {
 		e.RawStr("\"healthCheckNodePort\"" + ":")
 		s.HealthCheckNodePort.Encode(e)
 	}
-	if s.HealthCheckNodePort.Set {
-		e.Comma()
+
+	if s.InternalTrafficPolicy.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.InternalTrafficPolicy.Set {
 		e.RawStr("\"internalTrafficPolicy\"" + ":")
 		s.InternalTrafficPolicy.Encode(e)
 	}
-	if s.InternalTrafficPolicy.Set {
-		e.Comma()
+
+	if s.IpFamilies != nil {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.IpFamilies != nil {
 		e.RawStr("\"ipFamilies\"" + ":")
@@ -26144,29 +30717,45 @@ func (s IoK8sAPICoreV1ServiceSpec) Encode(e *jx.Writer) {
 		}
 		e.ArrEnd()
 	}
-	if s.IpFamilies != nil {
-		e.Comma()
+
+	if s.IpFamilyPolicy.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.IpFamilyPolicy.Set {
 		e.RawStr("\"ipFamilyPolicy\"" + ":")
 		s.IpFamilyPolicy.Encode(e)
 	}
-	if s.IpFamilyPolicy.Set {
-		e.Comma()
+
+	if s.LoadBalancerClass.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.LoadBalancerClass.Set {
 		e.RawStr("\"loadBalancerClass\"" + ":")
 		s.LoadBalancerClass.Encode(e)
 	}
-	if s.LoadBalancerClass.Set {
-		e.Comma()
+
+	if s.LoadBalancerIP.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.LoadBalancerIP.Set {
 		e.RawStr("\"loadBalancerIP\"" + ":")
 		s.LoadBalancerIP.Encode(e)
 	}
-	if s.LoadBalancerIP.Set {
-		e.Comma()
+
+	if s.LoadBalancerSourceRanges != nil {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.LoadBalancerSourceRanges != nil {
 		e.RawStr("\"loadBalancerSourceRanges\"" + ":")
@@ -26184,8 +30773,12 @@ func (s IoK8sAPICoreV1ServiceSpec) Encode(e *jx.Writer) {
 		}
 		e.ArrEnd()
 	}
-	if s.LoadBalancerSourceRanges != nil {
-		e.Comma()
+
+	if s.Ports != nil {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Ports != nil {
 		e.RawStr("\"ports\"" + ":")
@@ -26203,44 +30796,60 @@ func (s IoK8sAPICoreV1ServiceSpec) Encode(e *jx.Writer) {
 		}
 		e.ArrEnd()
 	}
-	if s.Ports != nil {
-		e.Comma()
+
+	if s.PublishNotReadyAddresses.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.PublishNotReadyAddresses.Set {
 		e.RawStr("\"publishNotReadyAddresses\"" + ":")
 		s.PublishNotReadyAddresses.Encode(e)
 	}
-	if s.PublishNotReadyAddresses.Set {
-		e.Comma()
+
+	if s.Selector != nil {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Selector != nil {
 		e.RawStr("\"selector\"" + ":")
 		s.Selector.Encode(e)
 	}
-	if s.Selector != nil {
-		e.Comma()
+
+	if s.SessionAffinity.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.SessionAffinity.Set {
 		e.RawStr("\"sessionAffinity\"" + ":")
 		s.SessionAffinity.Encode(e)
 	}
-	if s.SessionAffinity.Set {
-		e.Comma()
+
+	if s.SessionAffinityConfig.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.SessionAffinityConfig.Set {
 		e.RawStr("\"sessionAffinityConfig\"" + ":")
 		s.SessionAffinityConfig.Encode(e)
 	}
-	if s.SessionAffinityConfig.Set {
-		e.Comma()
+
+	if s.Type.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Type.Set {
 		e.RawStr("\"type\"" + ":")
 		s.Type.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -26402,10 +31011,10 @@ func (s *IoK8sAPICoreV1ServiceSpec) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1ServiceSpecSelector) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -26426,6 +31035,17 @@ func (s *IoK8sAPICoreV1ServiceSpecSelector) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1ServiceStatus) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.Conditions != nil {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.Conditions != nil {
 		e.RawStr("\"conditions\"" + ":")
 		e.ArrStart()
@@ -26442,16 +31062,16 @@ func (s IoK8sAPICoreV1ServiceStatus) Encode(e *jx.Writer) {
 		}
 		e.ArrEnd()
 	}
-	if s.Conditions != nil {
-		e.Comma()
+
+	if s.LoadBalancer.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.LoadBalancer.Set {
 		e.RawStr("\"loadBalancer\"" + ":")
 		s.LoadBalancer.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -26490,13 +31110,20 @@ func (s *IoK8sAPICoreV1ServiceStatus) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1SessionAffinityConfig) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.ClientIP.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.ClientIP.Set {
 		e.RawStr("\"clientIP\"" + ":")
 		s.ClientIP.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -26523,41 +31150,64 @@ func (s *IoK8sAPICoreV1SessionAffinityConfig) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1StorageOSPersistentVolumeSource) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.FsType.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.FsType.Set {
 		e.RawStr("\"fsType\"" + ":")
 		s.FsType.Encode(e)
 	}
-	if s.FsType.Set {
-		e.Comma()
+
+	if s.ReadOnly.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.ReadOnly.Set {
 		e.RawStr("\"readOnly\"" + ":")
 		s.ReadOnly.Encode(e)
 	}
-	if s.ReadOnly.Set {
-		e.Comma()
+
+	if s.SecretRef.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.SecretRef.Set {
 		e.RawStr("\"secretRef\"" + ":")
 		s.SecretRef.Encode(e)
 	}
-	if s.SecretRef.Set {
-		e.Comma()
+
+	if s.VolumeName.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.VolumeName.Set {
 		e.RawStr("\"volumeName\"" + ":")
 		s.VolumeName.Encode(e)
 	}
-	if s.VolumeName.Set {
-		e.Comma()
+
+	if s.VolumeNamespace.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.VolumeNamespace.Set {
 		e.RawStr("\"volumeNamespace\"" + ":")
 		s.VolumeNamespace.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -26604,41 +31254,64 @@ func (s *IoK8sAPICoreV1StorageOSPersistentVolumeSource) Decode(d *jx.Decoder) er
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1StorageOSVolumeSource) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.FsType.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.FsType.Set {
 		e.RawStr("\"fsType\"" + ":")
 		s.FsType.Encode(e)
 	}
-	if s.FsType.Set {
-		e.Comma()
+
+	if s.ReadOnly.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.ReadOnly.Set {
 		e.RawStr("\"readOnly\"" + ":")
 		s.ReadOnly.Encode(e)
 	}
-	if s.ReadOnly.Set {
-		e.Comma()
+
+	if s.SecretRef.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.SecretRef.Set {
 		e.RawStr("\"secretRef\"" + ":")
 		s.SecretRef.Encode(e)
 	}
-	if s.SecretRef.Set {
-		e.Comma()
+
+	if s.VolumeName.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.VolumeName.Set {
 		e.RawStr("\"volumeName\"" + ":")
 		s.VolumeName.Encode(e)
 	}
-	if s.VolumeName.Set {
-		e.Comma()
+
+	if s.VolumeNamespace.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.VolumeNamespace.Set {
 		e.RawStr("\"volumeNamespace\"" + ":")
 		s.VolumeNamespace.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -26685,17 +31358,23 @@ func (s *IoK8sAPICoreV1StorageOSVolumeSource) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1Sysctl) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"name\"" + ":")
 	e.Str(s.Name)
+
 	e.Comma()
 
 	e.RawStr("\"value\"" + ":")
 	e.Str(s.Value)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -26728,20 +31407,30 @@ func (s *IoK8sAPICoreV1Sysctl) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1TCPSocketAction) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.Host.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.Host.Set {
 		e.RawStr("\"host\"" + ":")
 		s.Host.Encode(e)
 	}
-	if s.Host.Set {
+
+	if !first {
+
 		e.Comma()
 	}
+	first = false
 
 	e.RawStr("\"port\"" + ":")
 	s.Port.Encode(e)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -26777,28 +31466,38 @@ func (s *IoK8sAPICoreV1TCPSocketAction) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1Taint) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"effect\"" + ":")
 	e.Str(s.Effect)
+
 	e.Comma()
 
 	e.RawStr("\"key\"" + ":")
 	e.Str(s.Key)
-	e.Comma()
+
+	if s.TimeAdded.Set {
+		e.Comma()
+	}
 	if s.TimeAdded.Set {
 		e.RawStr("\"timeAdded\"" + ":")
 		s.TimeAdded.Encode(e)
 	}
-	if s.TimeAdded.Set {
+
+	if s.Value.Set {
 		e.Comma()
 	}
 	if s.Value.Set {
 		e.RawStr("\"value\"" + ":")
 		s.Value.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -26842,41 +31541,64 @@ func (s *IoK8sAPICoreV1Taint) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1Toleration) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.Effect.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.Effect.Set {
 		e.RawStr("\"effect\"" + ":")
 		s.Effect.Encode(e)
 	}
-	if s.Effect.Set {
-		e.Comma()
+
+	if s.Key.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Key.Set {
 		e.RawStr("\"key\"" + ":")
 		s.Key.Encode(e)
 	}
-	if s.Key.Set {
-		e.Comma()
+
+	if s.Operator.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Operator.Set {
 		e.RawStr("\"operator\"" + ":")
 		s.Operator.Encode(e)
 	}
-	if s.Operator.Set {
-		e.Comma()
+
+	if s.TolerationSeconds.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.TolerationSeconds.Set {
 		e.RawStr("\"tolerationSeconds\"" + ":")
 		s.TolerationSeconds.Encode(e)
 	}
-	if s.TolerationSeconds.Set {
-		e.Comma()
+
+	if s.Value.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Value.Set {
 		e.RawStr("\"value\"" + ":")
 		s.Value.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -26923,9 +31645,19 @@ func (s *IoK8sAPICoreV1Toleration) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1TopologySelectorLabelRequirement) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"key\"" + ":")
 	e.Str(s.Key)
+
 	e.Comma()
 
 	e.RawStr("\"values\"" + ":")
@@ -26942,10 +31674,6 @@ func (s IoK8sAPICoreV1TopologySelectorLabelRequirement) Encode(e *jx.Writer) {
 		}
 	}
 	e.ArrEnd()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -26986,6 +31714,17 @@ func (s *IoK8sAPICoreV1TopologySelectorLabelRequirement) Decode(d *jx.Decoder) e
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1TopologySelectorTerm) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.MatchLabelExpressions != nil {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.MatchLabelExpressions != nil {
 		e.RawStr("\"matchLabelExpressions\"" + ":")
 		e.ArrStart()
@@ -27001,10 +31740,6 @@ func (s IoK8sAPICoreV1TopologySelectorTerm) Encode(e *jx.Writer) {
 			}
 		}
 		e.ArrEnd()
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -27038,28 +31773,39 @@ func (s *IoK8sAPICoreV1TopologySelectorTerm) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1TopologySpreadConstraint) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.LabelSelector.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.LabelSelector.Set {
 		e.RawStr("\"labelSelector\"" + ":")
 		s.LabelSelector.Encode(e)
 	}
-	if s.LabelSelector.Set {
+
+	if !first {
 		e.Comma()
 	}
+	first = false
 
 	e.RawStr("\"maxSkew\"" + ":")
 	e.Int32(s.MaxSkew)
+
 	e.Comma()
 
 	e.RawStr("\"topologyKey\"" + ":")
 	e.Str(s.TopologyKey)
+
 	e.Comma()
 
 	e.RawStr("\"whenUnsatisfiable\"" + ":")
 	e.Str(s.WhenUnsatisfiable)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -27103,24 +31849,34 @@ func (s *IoK8sAPICoreV1TopologySpreadConstraint) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1TypedLocalObjectReference) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.ApiGroup.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.ApiGroup.Set {
 		e.RawStr("\"apiGroup\"" + ":")
 		s.ApiGroup.Encode(e)
 	}
-	if s.ApiGroup.Set {
+
+	if !first {
 		e.Comma()
 	}
+	first = false
 
 	e.RawStr("\"kind\"" + ":")
 	e.Str(s.Kind)
+
 	e.Comma()
 
 	e.RawStr("\"name\"" + ":")
 	e.Str(s.Name)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -27158,213 +31914,303 @@ func (s *IoK8sAPICoreV1TypedLocalObjectReference) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1Volume) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.AwsElasticBlockStore.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.AwsElasticBlockStore.Set {
 		e.RawStr("\"awsElasticBlockStore\"" + ":")
 		s.AwsElasticBlockStore.Encode(e)
 	}
-	if s.AwsElasticBlockStore.Set {
-		e.Comma()
+
+	if s.AzureDisk.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.AzureDisk.Set {
 		e.RawStr("\"azureDisk\"" + ":")
 		s.AzureDisk.Encode(e)
 	}
-	if s.AzureDisk.Set {
-		e.Comma()
+
+	if s.AzureFile.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.AzureFile.Set {
 		e.RawStr("\"azureFile\"" + ":")
 		s.AzureFile.Encode(e)
 	}
-	if s.AzureFile.Set {
-		e.Comma()
+
+	if s.Cephfs.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Cephfs.Set {
 		e.RawStr("\"cephfs\"" + ":")
 		s.Cephfs.Encode(e)
 	}
-	if s.Cephfs.Set {
-		e.Comma()
+
+	if s.Cinder.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Cinder.Set {
 		e.RawStr("\"cinder\"" + ":")
 		s.Cinder.Encode(e)
 	}
-	if s.Cinder.Set {
-		e.Comma()
+
+	if s.ConfigMap.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.ConfigMap.Set {
 		e.RawStr("\"configMap\"" + ":")
 		s.ConfigMap.Encode(e)
 	}
-	if s.ConfigMap.Set {
-		e.Comma()
+
+	if s.Csi.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Csi.Set {
 		e.RawStr("\"csi\"" + ":")
 		s.Csi.Encode(e)
 	}
-	if s.Csi.Set {
-		e.Comma()
+
+	if s.DownwardAPI.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.DownwardAPI.Set {
 		e.RawStr("\"downwardAPI\"" + ":")
 		s.DownwardAPI.Encode(e)
 	}
-	if s.DownwardAPI.Set {
-		e.Comma()
+
+	if s.EmptyDir.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.EmptyDir.Set {
 		e.RawStr("\"emptyDir\"" + ":")
 		s.EmptyDir.Encode(e)
 	}
-	if s.EmptyDir.Set {
-		e.Comma()
+
+	if s.Ephemeral.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Ephemeral.Set {
 		e.RawStr("\"ephemeral\"" + ":")
 		s.Ephemeral.Encode(e)
 	}
-	if s.Ephemeral.Set {
-		e.Comma()
+
+	if s.Fc.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Fc.Set {
 		e.RawStr("\"fc\"" + ":")
 		s.Fc.Encode(e)
 	}
-	if s.Fc.Set {
-		e.Comma()
+
+	if s.FlexVolume.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.FlexVolume.Set {
 		e.RawStr("\"flexVolume\"" + ":")
 		s.FlexVolume.Encode(e)
 	}
-	if s.FlexVolume.Set {
-		e.Comma()
+
+	if s.Flocker.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Flocker.Set {
 		e.RawStr("\"flocker\"" + ":")
 		s.Flocker.Encode(e)
 	}
-	if s.Flocker.Set {
-		e.Comma()
+
+	if s.GcePersistentDisk.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.GcePersistentDisk.Set {
 		e.RawStr("\"gcePersistentDisk\"" + ":")
 		s.GcePersistentDisk.Encode(e)
 	}
-	if s.GcePersistentDisk.Set {
-		e.Comma()
+
+	if s.GitRepo.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.GitRepo.Set {
 		e.RawStr("\"gitRepo\"" + ":")
 		s.GitRepo.Encode(e)
 	}
-	if s.GitRepo.Set {
-		e.Comma()
+
+	if s.Glusterfs.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Glusterfs.Set {
 		e.RawStr("\"glusterfs\"" + ":")
 		s.Glusterfs.Encode(e)
 	}
-	if s.Glusterfs.Set {
-		e.Comma()
+
+	if s.HostPath.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.HostPath.Set {
 		e.RawStr("\"hostPath\"" + ":")
 		s.HostPath.Encode(e)
 	}
-	if s.HostPath.Set {
-		e.Comma()
+
+	if s.Iscsi.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Iscsi.Set {
 		e.RawStr("\"iscsi\"" + ":")
 		s.Iscsi.Encode(e)
 	}
-	if s.Iscsi.Set {
+
+	if !first {
 		e.Comma()
 	}
+	first = false
 
 	e.RawStr("\"name\"" + ":")
 	e.Str(s.Name)
-	e.Comma()
+
+	if s.Nfs.Set {
+		e.Comma()
+	}
 	if s.Nfs.Set {
 		e.RawStr("\"nfs\"" + ":")
 		s.Nfs.Encode(e)
 	}
-	if s.Nfs.Set {
+
+	if s.PersistentVolumeClaim.Set {
 		e.Comma()
 	}
 	if s.PersistentVolumeClaim.Set {
 		e.RawStr("\"persistentVolumeClaim\"" + ":")
 		s.PersistentVolumeClaim.Encode(e)
 	}
-	if s.PersistentVolumeClaim.Set {
+
+	if s.PhotonPersistentDisk.Set {
 		e.Comma()
 	}
 	if s.PhotonPersistentDisk.Set {
 		e.RawStr("\"photonPersistentDisk\"" + ":")
 		s.PhotonPersistentDisk.Encode(e)
 	}
-	if s.PhotonPersistentDisk.Set {
+
+	if s.PortworxVolume.Set {
 		e.Comma()
 	}
 	if s.PortworxVolume.Set {
 		e.RawStr("\"portworxVolume\"" + ":")
 		s.PortworxVolume.Encode(e)
 	}
-	if s.PortworxVolume.Set {
+
+	if s.Projected.Set {
 		e.Comma()
 	}
 	if s.Projected.Set {
 		e.RawStr("\"projected\"" + ":")
 		s.Projected.Encode(e)
 	}
-	if s.Projected.Set {
+
+	if s.Quobyte.Set {
 		e.Comma()
 	}
 	if s.Quobyte.Set {
 		e.RawStr("\"quobyte\"" + ":")
 		s.Quobyte.Encode(e)
 	}
-	if s.Quobyte.Set {
+
+	if s.Rbd.Set {
 		e.Comma()
 	}
 	if s.Rbd.Set {
 		e.RawStr("\"rbd\"" + ":")
 		s.Rbd.Encode(e)
 	}
-	if s.Rbd.Set {
+
+	if s.ScaleIO.Set {
 		e.Comma()
 	}
 	if s.ScaleIO.Set {
 		e.RawStr("\"scaleIO\"" + ":")
 		s.ScaleIO.Encode(e)
 	}
-	if s.ScaleIO.Set {
+
+	if s.Secret.Set {
 		e.Comma()
 	}
 	if s.Secret.Set {
 		e.RawStr("\"secret\"" + ":")
 		s.Secret.Encode(e)
 	}
-	if s.Secret.Set {
+
+	if s.Storageos.Set {
 		e.Comma()
 	}
 	if s.Storageos.Set {
 		e.RawStr("\"storageos\"" + ":")
 		s.Storageos.Encode(e)
 	}
-	if s.Storageos.Set {
+
+	if s.VsphereVolume.Set {
 		e.Comma()
 	}
 	if s.VsphereVolume.Set {
 		e.RawStr("\"vsphereVolume\"" + ":")
 		s.VsphereVolume.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -27537,17 +32383,23 @@ func (s *IoK8sAPICoreV1Volume) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1VolumeDevice) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"devicePath\"" + ":")
 	e.Str(s.DevicePath)
+
 	e.Comma()
 
 	e.RawStr("\"name\"" + ":")
 	e.Str(s.Name)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -27580,42 +32432,54 @@ func (s *IoK8sAPICoreV1VolumeDevice) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1VolumeMount) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"mountPath\"" + ":")
 	e.Str(s.MountPath)
-	e.Comma()
+
+	if s.MountPropagation.Set {
+		e.Comma()
+	}
 	if s.MountPropagation.Set {
 		e.RawStr("\"mountPropagation\"" + ":")
 		s.MountPropagation.Encode(e)
 	}
-	if s.MountPropagation.Set {
-		e.Comma()
-	}
+
+	e.Comma()
 
 	e.RawStr("\"name\"" + ":")
 	e.Str(s.Name)
-	e.Comma()
+
+	if s.ReadOnly.Set {
+		e.Comma()
+	}
 	if s.ReadOnly.Set {
 		e.RawStr("\"readOnly\"" + ":")
 		s.ReadOnly.Encode(e)
 	}
-	if s.ReadOnly.Set {
+
+	if s.SubPath.Set {
 		e.Comma()
 	}
 	if s.SubPath.Set {
 		e.RawStr("\"subPath\"" + ":")
 		s.SubPath.Encode(e)
 	}
-	if s.SubPath.Set {
+
+	if s.SubPathExpr.Set {
 		e.Comma()
 	}
 	if s.SubPathExpr.Set {
 		e.RawStr("\"subPathExpr\"" + ":")
 		s.SubPathExpr.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -27669,13 +32533,20 @@ func (s *IoK8sAPICoreV1VolumeMount) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1VolumeNodeAffinity) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.Required.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.Required.Set {
 		e.RawStr("\"required\"" + ":")
 		s.Required.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -27702,34 +32573,53 @@ func (s *IoK8sAPICoreV1VolumeNodeAffinity) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1VolumeProjection) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.ConfigMap.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.ConfigMap.Set {
 		e.RawStr("\"configMap\"" + ":")
 		s.ConfigMap.Encode(e)
 	}
-	if s.ConfigMap.Set {
-		e.Comma()
+
+	if s.DownwardAPI.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.DownwardAPI.Set {
 		e.RawStr("\"downwardAPI\"" + ":")
 		s.DownwardAPI.Encode(e)
 	}
-	if s.DownwardAPI.Set {
-		e.Comma()
+
+	if s.Secret.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Secret.Set {
 		e.RawStr("\"secret\"" + ":")
 		s.Secret.Encode(e)
 	}
-	if s.Secret.Set {
-		e.Comma()
+
+	if s.ServiceAccountToken.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.ServiceAccountToken.Set {
 		e.RawStr("\"serviceAccountToken\"" + ":")
 		s.ServiceAccountToken.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -27771,34 +32661,51 @@ func (s *IoK8sAPICoreV1VolumeProjection) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1VsphereVirtualDiskVolumeSource) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.FsType.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.FsType.Set {
 		e.RawStr("\"fsType\"" + ":")
 		s.FsType.Encode(e)
 	}
-	if s.FsType.Set {
-		e.Comma()
+
+	if s.StoragePolicyID.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.StoragePolicyID.Set {
 		e.RawStr("\"storagePolicyID\"" + ":")
 		s.StoragePolicyID.Encode(e)
 	}
-	if s.StoragePolicyID.Set {
-		e.Comma()
+
+	if s.StoragePolicyName.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.StoragePolicyName.Set {
 		e.RawStr("\"storagePolicyName\"" + ":")
 		s.StoragePolicyName.Encode(e)
 	}
-	if s.StoragePolicyName.Set {
+
+	if !first {
 		e.Comma()
 	}
+	first = false
 
 	e.RawStr("\"volumePath\"" + ":")
 	e.Str(s.VolumePath)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -27840,6 +32747,16 @@ func (s *IoK8sAPICoreV1VsphereVirtualDiskVolumeSource) Decode(d *jx.Decoder) err
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1WeightedPodAffinityTerm) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"podAffinityTerm\"" + ":")
 	s.PodAffinityTerm.Encode(e)
@@ -27848,10 +32765,6 @@ func (s IoK8sAPICoreV1WeightedPodAffinityTerm) Encode(e *jx.Writer) {
 
 	e.RawStr("\"weight\"" + ":")
 	e.Int32(s.Weight)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -27882,34 +32795,53 @@ func (s *IoK8sAPICoreV1WeightedPodAffinityTerm) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1WindowsSecurityContextOptions) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.GmsaCredentialSpec.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.GmsaCredentialSpec.Set {
 		e.RawStr("\"gmsaCredentialSpec\"" + ":")
 		s.GmsaCredentialSpec.Encode(e)
 	}
-	if s.GmsaCredentialSpec.Set {
-		e.Comma()
+
+	if s.GmsaCredentialSpecName.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.GmsaCredentialSpecName.Set {
 		e.RawStr("\"gmsaCredentialSpecName\"" + ":")
 		s.GmsaCredentialSpecName.Encode(e)
 	}
-	if s.GmsaCredentialSpecName.Set {
-		e.Comma()
+
+	if s.HostProcess.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.HostProcess.Set {
 		e.RawStr("\"hostProcess\"" + ":")
 		s.HostProcess.Encode(e)
 	}
-	if s.HostProcess.Set {
-		e.Comma()
+
+	if s.RunAsUserName.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.RunAsUserName.Set {
 		e.RawStr("\"runAsUserName\"" + ":")
 		s.RunAsUserName.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -27951,6 +32883,16 @@ func (s *IoK8sAPICoreV1WindowsSecurityContextOptions) Decode(d *jx.Decoder) erro
 // Encode implements json.Marshaler.
 func (s IoK8sAPIDiscoveryV1Endpoint) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"addresses\"" + ":")
 	e.ArrStart()
@@ -27967,56 +32909,60 @@ func (s IoK8sAPIDiscoveryV1Endpoint) Encode(e *jx.Writer) {
 	}
 	e.ArrEnd()
 
-	e.Comma()
+	if s.Conditions.Set {
+		e.Comma()
+	}
 	if s.Conditions.Set {
 		e.RawStr("\"conditions\"" + ":")
 		s.Conditions.Encode(e)
 	}
-	if s.Conditions.Set {
+
+	if s.DeprecatedTopology != nil {
 		e.Comma()
 	}
 	if s.DeprecatedTopology != nil {
 		e.RawStr("\"deprecatedTopology\"" + ":")
 		s.DeprecatedTopology.Encode(e)
 	}
-	if s.DeprecatedTopology != nil {
+
+	if s.Hints.Set {
 		e.Comma()
 	}
 	if s.Hints.Set {
 		e.RawStr("\"hints\"" + ":")
 		s.Hints.Encode(e)
 	}
-	if s.Hints.Set {
+
+	if s.Hostname.Set {
 		e.Comma()
 	}
 	if s.Hostname.Set {
 		e.RawStr("\"hostname\"" + ":")
 		s.Hostname.Encode(e)
 	}
-	if s.Hostname.Set {
+
+	if s.NodeName.Set {
 		e.Comma()
 	}
 	if s.NodeName.Set {
 		e.RawStr("\"nodeName\"" + ":")
 		s.NodeName.Encode(e)
 	}
-	if s.NodeName.Set {
+
+	if s.TargetRef.Set {
 		e.Comma()
 	}
 	if s.TargetRef.Set {
 		e.RawStr("\"targetRef\"" + ":")
 		s.TargetRef.Encode(e)
 	}
-	if s.TargetRef.Set {
+
+	if s.Zone.Set {
 		e.Comma()
 	}
 	if s.Zone.Set {
 		e.RawStr("\"zone\"" + ":")
 		s.Zone.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -28089,27 +33035,42 @@ func (s *IoK8sAPIDiscoveryV1Endpoint) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPIDiscoveryV1EndpointConditions) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.Ready.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.Ready.Set {
 		e.RawStr("\"ready\"" + ":")
 		s.Ready.Encode(e)
 	}
-	if s.Ready.Set {
-		e.Comma()
+
+	if s.Serving.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Serving.Set {
 		e.RawStr("\"serving\"" + ":")
 		s.Serving.Encode(e)
 	}
-	if s.Serving.Set {
-		e.Comma()
+
+	if s.Terminating.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Terminating.Set {
 		e.RawStr("\"terminating\"" + ":")
 		s.Terminating.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -28146,10 +33107,10 @@ func (s *IoK8sAPIDiscoveryV1EndpointConditions) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPIDiscoveryV1EndpointDeprecatedTopology) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -28170,6 +33131,17 @@ func (s *IoK8sAPIDiscoveryV1EndpointDeprecatedTopology) Decode(d *jx.Decoder) er
 // Encode implements json.Marshaler.
 func (s IoK8sAPIDiscoveryV1EndpointHints) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.ForZones != nil {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.ForZones != nil {
 		e.RawStr("\"forZones\"" + ":")
 		e.ArrStart()
@@ -28185,10 +33157,6 @@ func (s IoK8sAPIDiscoveryV1EndpointHints) Encode(e *jx.Writer) {
 			}
 		}
 		e.ArrEnd()
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -28222,34 +33190,53 @@ func (s *IoK8sAPIDiscoveryV1EndpointHints) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPIDiscoveryV1EndpointPort) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.AppProtocol.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.AppProtocol.Set {
 		e.RawStr("\"appProtocol\"" + ":")
 		s.AppProtocol.Encode(e)
 	}
-	if s.AppProtocol.Set {
-		e.Comma()
+
+	if s.Name.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Name.Set {
 		e.RawStr("\"name\"" + ":")
 		s.Name.Encode(e)
 	}
-	if s.Name.Set {
-		e.Comma()
+
+	if s.Port.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Port.Set {
 		e.RawStr("\"port\"" + ":")
 		s.Port.Encode(e)
 	}
-	if s.Port.Set {
-		e.Comma()
+
+	if s.Protocol.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Protocol.Set {
 		e.RawStr("\"protocol\"" + ":")
 		s.Protocol.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -28291,17 +33278,28 @@ func (s *IoK8sAPIDiscoveryV1EndpointPort) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPIDiscoveryV1EndpointSlice) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"addressType\"" + ":")
 	e.Str(s.AddressType)
-	e.Comma()
+
+	if s.ApiVersion.Set {
+		e.Comma()
+	}
 	if s.ApiVersion.Set {
 		e.RawStr("\"apiVersion\"" + ":")
 		s.ApiVersion.Encode(e)
 	}
-	if s.ApiVersion.Set {
-		e.Comma()
-	}
+
+	e.Comma()
 
 	e.RawStr("\"endpoints\"" + ":")
 	e.ArrStart()
@@ -28318,19 +33316,23 @@ func (s IoK8sAPIDiscoveryV1EndpointSlice) Encode(e *jx.Writer) {
 	}
 	e.ArrEnd()
 
-	e.Comma()
+	if s.Kind.Set {
+		e.Comma()
+	}
 	if s.Kind.Set {
 		e.RawStr("\"kind\"" + ":")
 		s.Kind.Encode(e)
 	}
-	if s.Kind.Set {
+
+	if s.Metadata.Set {
 		e.Comma()
 	}
 	if s.Metadata.Set {
 		e.RawStr("\"metadata\"" + ":")
 		s.Metadata.Encode(e)
 	}
-	if s.Metadata.Set {
+
+	if s.Ports != nil {
 		e.Comma()
 	}
 	if s.Ports != nil {
@@ -28348,10 +33350,6 @@ func (s IoK8sAPIDiscoveryV1EndpointSlice) Encode(e *jx.Writer) {
 			}
 		}
 		e.ArrEnd()
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -28418,13 +33416,27 @@ func (s *IoK8sAPIDiscoveryV1EndpointSlice) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPIDiscoveryV1EndpointSliceList) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.ApiVersion.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.ApiVersion.Set {
 		e.RawStr("\"apiVersion\"" + ":")
 		s.ApiVersion.Encode(e)
 	}
-	if s.ApiVersion.Set {
+
+	if !first {
+
 		e.Comma()
 	}
+	first = false
 
 	e.RawStr("\"items\"" + ":")
 	e.ArrStart()
@@ -28441,21 +33453,20 @@ func (s IoK8sAPIDiscoveryV1EndpointSliceList) Encode(e *jx.Writer) {
 	}
 	e.ArrEnd()
 
-	e.Comma()
+	if s.Kind.Set {
+		e.Comma()
+	}
 	if s.Kind.Set {
 		e.RawStr("\"kind\"" + ":")
 		s.Kind.Encode(e)
 	}
-	if s.Kind.Set {
+
+	if s.Metadata.Set {
 		e.Comma()
 	}
 	if s.Metadata.Set {
 		e.RawStr("\"metadata\"" + ":")
 		s.Metadata.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -28504,13 +33515,18 @@ func (s *IoK8sAPIDiscoveryV1EndpointSliceList) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPIDiscoveryV1ForZone) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"name\"" + ":")
 	e.Str(s.Name)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -28537,6 +33553,16 @@ func (s *IoK8sAPIDiscoveryV1ForZone) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPIDiscoveryV1beta1Endpoint) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"addresses\"" + ":")
 	e.ArrStart()
@@ -28553,49 +33579,52 @@ func (s IoK8sAPIDiscoveryV1beta1Endpoint) Encode(e *jx.Writer) {
 	}
 	e.ArrEnd()
 
-	e.Comma()
+	if s.Conditions.Set {
+		e.Comma()
+	}
 	if s.Conditions.Set {
 		e.RawStr("\"conditions\"" + ":")
 		s.Conditions.Encode(e)
 	}
-	if s.Conditions.Set {
+
+	if s.Hints.Set {
 		e.Comma()
 	}
 	if s.Hints.Set {
 		e.RawStr("\"hints\"" + ":")
 		s.Hints.Encode(e)
 	}
-	if s.Hints.Set {
+
+	if s.Hostname.Set {
 		e.Comma()
 	}
 	if s.Hostname.Set {
 		e.RawStr("\"hostname\"" + ":")
 		s.Hostname.Encode(e)
 	}
-	if s.Hostname.Set {
+
+	if s.NodeName.Set {
 		e.Comma()
 	}
 	if s.NodeName.Set {
 		e.RawStr("\"nodeName\"" + ":")
 		s.NodeName.Encode(e)
 	}
-	if s.NodeName.Set {
+
+	if s.TargetRef.Set {
 		e.Comma()
 	}
 	if s.TargetRef.Set {
 		e.RawStr("\"targetRef\"" + ":")
 		s.TargetRef.Encode(e)
 	}
-	if s.TargetRef.Set {
+
+	if s.Topology != nil {
 		e.Comma()
 	}
 	if s.Topology != nil {
 		e.RawStr("\"topology\"" + ":")
 		s.Topology.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -28663,27 +33692,42 @@ func (s *IoK8sAPIDiscoveryV1beta1Endpoint) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPIDiscoveryV1beta1EndpointConditions) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.Ready.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.Ready.Set {
 		e.RawStr("\"ready\"" + ":")
 		s.Ready.Encode(e)
 	}
-	if s.Ready.Set {
-		e.Comma()
+
+	if s.Serving.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Serving.Set {
 		e.RawStr("\"serving\"" + ":")
 		s.Serving.Encode(e)
 	}
-	if s.Serving.Set {
-		e.Comma()
+
+	if s.Terminating.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Terminating.Set {
 		e.RawStr("\"terminating\"" + ":")
 		s.Terminating.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -28720,6 +33764,17 @@ func (s *IoK8sAPIDiscoveryV1beta1EndpointConditions) Decode(d *jx.Decoder) error
 // Encode implements json.Marshaler.
 func (s IoK8sAPIDiscoveryV1beta1EndpointHints) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.ForZones != nil {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.ForZones != nil {
 		e.RawStr("\"forZones\"" + ":")
 		e.ArrStart()
@@ -28735,10 +33790,6 @@ func (s IoK8sAPIDiscoveryV1beta1EndpointHints) Encode(e *jx.Writer) {
 			}
 		}
 		e.ArrEnd()
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -28772,34 +33823,53 @@ func (s *IoK8sAPIDiscoveryV1beta1EndpointHints) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPIDiscoveryV1beta1EndpointPort) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.AppProtocol.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.AppProtocol.Set {
 		e.RawStr("\"appProtocol\"" + ":")
 		s.AppProtocol.Encode(e)
 	}
-	if s.AppProtocol.Set {
-		e.Comma()
+
+	if s.Name.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Name.Set {
 		e.RawStr("\"name\"" + ":")
 		s.Name.Encode(e)
 	}
-	if s.Name.Set {
-		e.Comma()
+
+	if s.Port.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Port.Set {
 		e.RawStr("\"port\"" + ":")
 		s.Port.Encode(e)
 	}
-	if s.Port.Set {
-		e.Comma()
+
+	if s.Protocol.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Protocol.Set {
 		e.RawStr("\"protocol\"" + ":")
 		s.Protocol.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -28841,17 +33911,28 @@ func (s *IoK8sAPIDiscoveryV1beta1EndpointPort) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPIDiscoveryV1beta1EndpointSlice) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"addressType\"" + ":")
 	e.Str(s.AddressType)
-	e.Comma()
+
+	if s.ApiVersion.Set {
+		e.Comma()
+	}
 	if s.ApiVersion.Set {
 		e.RawStr("\"apiVersion\"" + ":")
 		s.ApiVersion.Encode(e)
 	}
-	if s.ApiVersion.Set {
-		e.Comma()
-	}
+
+	e.Comma()
 
 	e.RawStr("\"endpoints\"" + ":")
 	e.ArrStart()
@@ -28868,19 +33949,23 @@ func (s IoK8sAPIDiscoveryV1beta1EndpointSlice) Encode(e *jx.Writer) {
 	}
 	e.ArrEnd()
 
-	e.Comma()
+	if s.Kind.Set {
+		e.Comma()
+	}
 	if s.Kind.Set {
 		e.RawStr("\"kind\"" + ":")
 		s.Kind.Encode(e)
 	}
-	if s.Kind.Set {
+
+	if s.Metadata.Set {
 		e.Comma()
 	}
 	if s.Metadata.Set {
 		e.RawStr("\"metadata\"" + ":")
 		s.Metadata.Encode(e)
 	}
-	if s.Metadata.Set {
+
+	if s.Ports != nil {
 		e.Comma()
 	}
 	if s.Ports != nil {
@@ -28898,10 +33983,6 @@ func (s IoK8sAPIDiscoveryV1beta1EndpointSlice) Encode(e *jx.Writer) {
 			}
 		}
 		e.ArrEnd()
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -28968,13 +34049,27 @@ func (s *IoK8sAPIDiscoveryV1beta1EndpointSlice) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPIDiscoveryV1beta1EndpointSliceList) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.ApiVersion.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.ApiVersion.Set {
 		e.RawStr("\"apiVersion\"" + ":")
 		s.ApiVersion.Encode(e)
 	}
-	if s.ApiVersion.Set {
+
+	if !first {
+
 		e.Comma()
 	}
+	first = false
 
 	e.RawStr("\"items\"" + ":")
 	e.ArrStart()
@@ -28991,21 +34086,20 @@ func (s IoK8sAPIDiscoveryV1beta1EndpointSliceList) Encode(e *jx.Writer) {
 	}
 	e.ArrEnd()
 
-	e.Comma()
+	if s.Kind.Set {
+		e.Comma()
+	}
 	if s.Kind.Set {
 		e.RawStr("\"kind\"" + ":")
 		s.Kind.Encode(e)
 	}
-	if s.Kind.Set {
+
+	if s.Metadata.Set {
 		e.Comma()
 	}
 	if s.Metadata.Set {
 		e.RawStr("\"metadata\"" + ":")
 		s.Metadata.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -29054,10 +34148,10 @@ func (s *IoK8sAPIDiscoveryV1beta1EndpointSliceList) Decode(d *jx.Decoder) error 
 // Encode implements json.Marshaler.
 func (s IoK8sAPIDiscoveryV1beta1EndpointTopology) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -29078,13 +34172,18 @@ func (s *IoK8sAPIDiscoveryV1beta1EndpointTopology) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPIDiscoveryV1beta1ForZone) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"name\"" + ":")
 	e.Str(s.Name)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -29111,123 +34210,164 @@ func (s *IoK8sAPIDiscoveryV1beta1ForZone) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPIEventsV1Event) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.Action.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.Action.Set {
 		e.RawStr("\"action\"" + ":")
 		s.Action.Encode(e)
 	}
-	if s.Action.Set {
-		e.Comma()
+
+	if s.ApiVersion.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.ApiVersion.Set {
 		e.RawStr("\"apiVersion\"" + ":")
 		s.ApiVersion.Encode(e)
 	}
-	if s.ApiVersion.Set {
-		e.Comma()
+
+	if s.DeprecatedCount.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.DeprecatedCount.Set {
 		e.RawStr("\"deprecatedCount\"" + ":")
 		s.DeprecatedCount.Encode(e)
 	}
-	if s.DeprecatedCount.Set {
-		e.Comma()
+
+	if s.DeprecatedFirstTimestamp.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.DeprecatedFirstTimestamp.Set {
 		e.RawStr("\"deprecatedFirstTimestamp\"" + ":")
 		s.DeprecatedFirstTimestamp.Encode(e)
 	}
-	if s.DeprecatedFirstTimestamp.Set {
-		e.Comma()
+
+	if s.DeprecatedLastTimestamp.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.DeprecatedLastTimestamp.Set {
 		e.RawStr("\"deprecatedLastTimestamp\"" + ":")
 		s.DeprecatedLastTimestamp.Encode(e)
 	}
-	if s.DeprecatedLastTimestamp.Set {
-		e.Comma()
+
+	if s.DeprecatedSource.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.DeprecatedSource.Set {
 		e.RawStr("\"deprecatedSource\"" + ":")
 		s.DeprecatedSource.Encode(e)
 	}
-	if s.DeprecatedSource.Set {
+
+	if !first {
+
 		e.Comma()
 	}
+	first = false
 
 	e.RawStr("\"eventTime\"" + ":")
 	s.EventTime.Encode(e)
 
-	e.Comma()
+	if s.Kind.Set {
+		e.Comma()
+	}
 	if s.Kind.Set {
 		e.RawStr("\"kind\"" + ":")
 		s.Kind.Encode(e)
 	}
-	if s.Kind.Set {
+
+	if s.Metadata.Set {
 		e.Comma()
 	}
 	if s.Metadata.Set {
 		e.RawStr("\"metadata\"" + ":")
 		s.Metadata.Encode(e)
 	}
-	if s.Metadata.Set {
+
+	if s.Note.Set {
 		e.Comma()
 	}
 	if s.Note.Set {
 		e.RawStr("\"note\"" + ":")
 		s.Note.Encode(e)
 	}
-	if s.Note.Set {
+
+	if s.Reason.Set {
 		e.Comma()
 	}
 	if s.Reason.Set {
 		e.RawStr("\"reason\"" + ":")
 		s.Reason.Encode(e)
 	}
-	if s.Reason.Set {
+
+	if s.Regarding.Set {
 		e.Comma()
 	}
 	if s.Regarding.Set {
 		e.RawStr("\"regarding\"" + ":")
 		s.Regarding.Encode(e)
 	}
-	if s.Regarding.Set {
+
+	if s.Related.Set {
 		e.Comma()
 	}
 	if s.Related.Set {
 		e.RawStr("\"related\"" + ":")
 		s.Related.Encode(e)
 	}
-	if s.Related.Set {
+
+	if s.ReportingController.Set {
 		e.Comma()
 	}
 	if s.ReportingController.Set {
 		e.RawStr("\"reportingController\"" + ":")
 		s.ReportingController.Encode(e)
 	}
-	if s.ReportingController.Set {
+
+	if s.ReportingInstance.Set {
 		e.Comma()
 	}
 	if s.ReportingInstance.Set {
 		e.RawStr("\"reportingInstance\"" + ":")
 		s.ReportingInstance.Encode(e)
 	}
-	if s.ReportingInstance.Set {
+
+	if s.Series.Set {
 		e.Comma()
 	}
 	if s.Series.Set {
 		e.RawStr("\"series\"" + ":")
 		s.Series.Encode(e)
 	}
-	if s.Series.Set {
+
+	if s.Type.Set {
 		e.Comma()
 	}
 	if s.Type.Set {
 		e.RawStr("\"type\"" + ":")
 		s.Type.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -29339,13 +34479,27 @@ func (s *IoK8sAPIEventsV1Event) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPIEventsV1EventList) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.ApiVersion.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.ApiVersion.Set {
 		e.RawStr("\"apiVersion\"" + ":")
 		s.ApiVersion.Encode(e)
 	}
-	if s.ApiVersion.Set {
+
+	if !first {
+
 		e.Comma()
 	}
+	first = false
 
 	e.RawStr("\"items\"" + ":")
 	e.ArrStart()
@@ -29362,21 +34516,20 @@ func (s IoK8sAPIEventsV1EventList) Encode(e *jx.Writer) {
 	}
 	e.ArrEnd()
 
-	e.Comma()
+	if s.Kind.Set {
+		e.Comma()
+	}
 	if s.Kind.Set {
 		e.RawStr("\"kind\"" + ":")
 		s.Kind.Encode(e)
 	}
-	if s.Kind.Set {
+
+	if s.Metadata.Set {
 		e.Comma()
 	}
 	if s.Metadata.Set {
 		e.RawStr("\"metadata\"" + ":")
 		s.Metadata.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -29425,17 +34578,23 @@ func (s *IoK8sAPIEventsV1EventList) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPIEventsV1EventSeries) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"count\"" + ":")
 	e.Int32(s.Count)
+
 	e.Comma()
 
 	e.RawStr("\"lastObservedTime\"" + ":")
 	s.LastObservedTime.Encode(e)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -29472,123 +34631,164 @@ func (s *IoK8sAPIEventsV1EventSeries) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPIEventsV1beta1Event) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.Action.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.Action.Set {
 		e.RawStr("\"action\"" + ":")
 		s.Action.Encode(e)
 	}
-	if s.Action.Set {
-		e.Comma()
+
+	if s.ApiVersion.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.ApiVersion.Set {
 		e.RawStr("\"apiVersion\"" + ":")
 		s.ApiVersion.Encode(e)
 	}
-	if s.ApiVersion.Set {
-		e.Comma()
+
+	if s.DeprecatedCount.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.DeprecatedCount.Set {
 		e.RawStr("\"deprecatedCount\"" + ":")
 		s.DeprecatedCount.Encode(e)
 	}
-	if s.DeprecatedCount.Set {
-		e.Comma()
+
+	if s.DeprecatedFirstTimestamp.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.DeprecatedFirstTimestamp.Set {
 		e.RawStr("\"deprecatedFirstTimestamp\"" + ":")
 		s.DeprecatedFirstTimestamp.Encode(e)
 	}
-	if s.DeprecatedFirstTimestamp.Set {
-		e.Comma()
+
+	if s.DeprecatedLastTimestamp.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.DeprecatedLastTimestamp.Set {
 		e.RawStr("\"deprecatedLastTimestamp\"" + ":")
 		s.DeprecatedLastTimestamp.Encode(e)
 	}
-	if s.DeprecatedLastTimestamp.Set {
-		e.Comma()
+
+	if s.DeprecatedSource.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.DeprecatedSource.Set {
 		e.RawStr("\"deprecatedSource\"" + ":")
 		s.DeprecatedSource.Encode(e)
 	}
-	if s.DeprecatedSource.Set {
+
+	if !first {
+
 		e.Comma()
 	}
+	first = false
 
 	e.RawStr("\"eventTime\"" + ":")
 	s.EventTime.Encode(e)
 
-	e.Comma()
+	if s.Kind.Set {
+		e.Comma()
+	}
 	if s.Kind.Set {
 		e.RawStr("\"kind\"" + ":")
 		s.Kind.Encode(e)
 	}
-	if s.Kind.Set {
+
+	if s.Metadata.Set {
 		e.Comma()
 	}
 	if s.Metadata.Set {
 		e.RawStr("\"metadata\"" + ":")
 		s.Metadata.Encode(e)
 	}
-	if s.Metadata.Set {
+
+	if s.Note.Set {
 		e.Comma()
 	}
 	if s.Note.Set {
 		e.RawStr("\"note\"" + ":")
 		s.Note.Encode(e)
 	}
-	if s.Note.Set {
+
+	if s.Reason.Set {
 		e.Comma()
 	}
 	if s.Reason.Set {
 		e.RawStr("\"reason\"" + ":")
 		s.Reason.Encode(e)
 	}
-	if s.Reason.Set {
+
+	if s.Regarding.Set {
 		e.Comma()
 	}
 	if s.Regarding.Set {
 		e.RawStr("\"regarding\"" + ":")
 		s.Regarding.Encode(e)
 	}
-	if s.Regarding.Set {
+
+	if s.Related.Set {
 		e.Comma()
 	}
 	if s.Related.Set {
 		e.RawStr("\"related\"" + ":")
 		s.Related.Encode(e)
 	}
-	if s.Related.Set {
+
+	if s.ReportingController.Set {
 		e.Comma()
 	}
 	if s.ReportingController.Set {
 		e.RawStr("\"reportingController\"" + ":")
 		s.ReportingController.Encode(e)
 	}
-	if s.ReportingController.Set {
+
+	if s.ReportingInstance.Set {
 		e.Comma()
 	}
 	if s.ReportingInstance.Set {
 		e.RawStr("\"reportingInstance\"" + ":")
 		s.ReportingInstance.Encode(e)
 	}
-	if s.ReportingInstance.Set {
+
+	if s.Series.Set {
 		e.Comma()
 	}
 	if s.Series.Set {
 		e.RawStr("\"series\"" + ":")
 		s.Series.Encode(e)
 	}
-	if s.Series.Set {
+
+	if s.Type.Set {
 		e.Comma()
 	}
 	if s.Type.Set {
 		e.RawStr("\"type\"" + ":")
 		s.Type.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -29700,13 +34900,27 @@ func (s *IoK8sAPIEventsV1beta1Event) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPIEventsV1beta1EventList) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.ApiVersion.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.ApiVersion.Set {
 		e.RawStr("\"apiVersion\"" + ":")
 		s.ApiVersion.Encode(e)
 	}
-	if s.ApiVersion.Set {
+
+	if !first {
+
 		e.Comma()
 	}
+	first = false
 
 	e.RawStr("\"items\"" + ":")
 	e.ArrStart()
@@ -29723,21 +34937,20 @@ func (s IoK8sAPIEventsV1beta1EventList) Encode(e *jx.Writer) {
 	}
 	e.ArrEnd()
 
-	e.Comma()
+	if s.Kind.Set {
+		e.Comma()
+	}
 	if s.Kind.Set {
 		e.RawStr("\"kind\"" + ":")
 		s.Kind.Encode(e)
 	}
-	if s.Kind.Set {
+
+	if s.Metadata.Set {
 		e.Comma()
 	}
 	if s.Metadata.Set {
 		e.RawStr("\"metadata\"" + ":")
 		s.Metadata.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -29786,17 +34999,23 @@ func (s *IoK8sAPIEventsV1beta1EventList) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPIEventsV1beta1EventSeries) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"count\"" + ":")
 	e.Int32(s.Count)
+
 	e.Comma()
 
 	e.RawStr("\"lastObservedTime\"" + ":")
 	s.LastObservedTime.Encode(e)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -29833,13 +35052,18 @@ func (s *IoK8sAPIEventsV1beta1EventSeries) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPIFlowcontrolV1beta1FlowDistinguisherMethod) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"type\"" + ":")
 	e.Str(s.Type)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -29866,41 +35090,64 @@ func (s *IoK8sAPIFlowcontrolV1beta1FlowDistinguisherMethod) Decode(d *jx.Decoder
 // Encode implements json.Marshaler.
 func (s IoK8sAPIFlowcontrolV1beta1FlowSchema) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.ApiVersion.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.ApiVersion.Set {
 		e.RawStr("\"apiVersion\"" + ":")
 		s.ApiVersion.Encode(e)
 	}
-	if s.ApiVersion.Set {
-		e.Comma()
+
+	if s.Kind.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Kind.Set {
 		e.RawStr("\"kind\"" + ":")
 		s.Kind.Encode(e)
 	}
-	if s.Kind.Set {
-		e.Comma()
+
+	if s.Metadata.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Metadata.Set {
 		e.RawStr("\"metadata\"" + ":")
 		s.Metadata.Encode(e)
 	}
-	if s.Metadata.Set {
-		e.Comma()
+
+	if s.Spec.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Spec.Set {
 		e.RawStr("\"spec\"" + ":")
 		s.Spec.Encode(e)
 	}
-	if s.Spec.Set {
-		e.Comma()
+
+	if s.Status.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Status.Set {
 		e.RawStr("\"status\"" + ":")
 		s.Status.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -29947,41 +35194,64 @@ func (s *IoK8sAPIFlowcontrolV1beta1FlowSchema) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPIFlowcontrolV1beta1FlowSchemaCondition) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.LastTransitionTime.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.LastTransitionTime.Set {
 		e.RawStr("\"lastTransitionTime\"" + ":")
 		s.LastTransitionTime.Encode(e)
 	}
-	if s.LastTransitionTime.Set {
-		e.Comma()
+
+	if s.Message.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Message.Set {
 		e.RawStr("\"message\"" + ":")
 		s.Message.Encode(e)
 	}
-	if s.Message.Set {
-		e.Comma()
+
+	if s.Reason.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Reason.Set {
 		e.RawStr("\"reason\"" + ":")
 		s.Reason.Encode(e)
 	}
-	if s.Reason.Set {
-		e.Comma()
+
+	if s.Status.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Status.Set {
 		e.RawStr("\"status\"" + ":")
 		s.Status.Encode(e)
 	}
-	if s.Status.Set {
-		e.Comma()
+
+	if s.Type.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Type.Set {
 		e.RawStr("\"type\"" + ":")
 		s.Type.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -30028,13 +35298,27 @@ func (s *IoK8sAPIFlowcontrolV1beta1FlowSchemaCondition) Decode(d *jx.Decoder) er
 // Encode implements json.Marshaler.
 func (s IoK8sAPIFlowcontrolV1beta1FlowSchemaList) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.ApiVersion.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.ApiVersion.Set {
 		e.RawStr("\"apiVersion\"" + ":")
 		s.ApiVersion.Encode(e)
 	}
-	if s.ApiVersion.Set {
+
+	if !first {
+
 		e.Comma()
 	}
+	first = false
 
 	e.RawStr("\"items\"" + ":")
 	e.ArrStart()
@@ -30051,21 +35335,20 @@ func (s IoK8sAPIFlowcontrolV1beta1FlowSchemaList) Encode(e *jx.Writer) {
 	}
 	e.ArrEnd()
 
-	e.Comma()
+	if s.Kind.Set {
+		e.Comma()
+	}
 	if s.Kind.Set {
 		e.RawStr("\"kind\"" + ":")
 		s.Kind.Encode(e)
 	}
-	if s.Kind.Set {
+
+	if s.Metadata.Set {
 		e.Comma()
 	}
 	if s.Metadata.Set {
 		e.RawStr("\"metadata\"" + ":")
 		s.Metadata.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -30114,25 +35397,45 @@ func (s *IoK8sAPIFlowcontrolV1beta1FlowSchemaList) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPIFlowcontrolV1beta1FlowSchemaSpec) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.DistinguisherMethod.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.DistinguisherMethod.Set {
 		e.RawStr("\"distinguisherMethod\"" + ":")
 		s.DistinguisherMethod.Encode(e)
 	}
-	if s.DistinguisherMethod.Set {
-		e.Comma()
+
+	if s.MatchingPrecedence.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.MatchingPrecedence.Set {
 		e.RawStr("\"matchingPrecedence\"" + ":")
 		s.MatchingPrecedence.Encode(e)
 	}
-	if s.MatchingPrecedence.Set {
+
+	if !first {
+
 		e.Comma()
 	}
+	first = false
 
 	e.RawStr("\"priorityLevelConfiguration\"" + ":")
 	s.PriorityLevelConfiguration.Encode(e)
 
-	e.Comma()
+	if s.Rules != nil {
+		e.Comma()
+	}
 	if s.Rules != nil {
 		e.RawStr("\"rules\"" + ":")
 		e.ArrStart()
@@ -30148,10 +35451,6 @@ func (s IoK8sAPIFlowcontrolV1beta1FlowSchemaSpec) Encode(e *jx.Writer) {
 			}
 		}
 		e.ArrEnd()
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -30199,6 +35498,17 @@ func (s *IoK8sAPIFlowcontrolV1beta1FlowSchemaSpec) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPIFlowcontrolV1beta1FlowSchemaStatus) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.Conditions != nil {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.Conditions != nil {
 		e.RawStr("\"conditions\"" + ":")
 		e.ArrStart()
@@ -30214,10 +35524,6 @@ func (s IoK8sAPIFlowcontrolV1beta1FlowSchemaStatus) Encode(e *jx.Writer) {
 			}
 		}
 		e.ArrEnd()
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -30251,13 +35557,18 @@ func (s *IoK8sAPIFlowcontrolV1beta1FlowSchemaStatus) Decode(d *jx.Decoder) error
 // Encode implements json.Marshaler.
 func (s IoK8sAPIFlowcontrolV1beta1GroupSubject) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"name\"" + ":")
 	e.Str(s.Name)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -30284,20 +35595,29 @@ func (s *IoK8sAPIFlowcontrolV1beta1GroupSubject) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPIFlowcontrolV1beta1LimitResponse) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.Queuing.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.Queuing.Set {
 		e.RawStr("\"queuing\"" + ":")
 		s.Queuing.Encode(e)
 	}
-	if s.Queuing.Set {
+
+	if !first {
 		e.Comma()
 	}
+	first = false
 
 	e.RawStr("\"type\"" + ":")
 	e.Str(s.Type)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -30329,20 +35649,31 @@ func (s *IoK8sAPIFlowcontrolV1beta1LimitResponse) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPIFlowcontrolV1beta1LimitedPriorityLevelConfiguration) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.AssuredConcurrencyShares.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.AssuredConcurrencyShares.Set {
 		e.RawStr("\"assuredConcurrencyShares\"" + ":")
 		s.AssuredConcurrencyShares.Encode(e)
 	}
-	if s.AssuredConcurrencyShares.Set {
-		e.Comma()
+
+	if s.LimitResponse.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.LimitResponse.Set {
 		e.RawStr("\"limitResponse\"" + ":")
 		s.LimitResponse.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -30374,6 +35705,16 @@ func (s *IoK8sAPIFlowcontrolV1beta1LimitedPriorityLevelConfiguration) Decode(d *
 // Encode implements json.Marshaler.
 func (s IoK8sAPIFlowcontrolV1beta1NonResourcePolicyRule) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"nonResourceURLs\"" + ":")
 	e.ArrStart()
@@ -30406,10 +35747,6 @@ func (s IoK8sAPIFlowcontrolV1beta1NonResourcePolicyRule) Encode(e *jx.Writer) {
 		}
 	}
 	e.ArrEnd()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -30458,6 +35795,17 @@ func (s *IoK8sAPIFlowcontrolV1beta1NonResourcePolicyRule) Decode(d *jx.Decoder) 
 // Encode implements json.Marshaler.
 func (s IoK8sAPIFlowcontrolV1beta1PolicyRulesWithSubjects) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.NonResourceRules != nil {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.NonResourceRules != nil {
 		e.RawStr("\"nonResourceRules\"" + ":")
 		e.ArrStart()
@@ -30474,8 +35822,12 @@ func (s IoK8sAPIFlowcontrolV1beta1PolicyRulesWithSubjects) Encode(e *jx.Writer) 
 		}
 		e.ArrEnd()
 	}
-	if s.NonResourceRules != nil {
-		e.Comma()
+
+	if s.ResourceRules != nil {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.ResourceRules != nil {
 		e.RawStr("\"resourceRules\"" + ":")
@@ -30493,9 +35845,12 @@ func (s IoK8sAPIFlowcontrolV1beta1PolicyRulesWithSubjects) Encode(e *jx.Writer) 
 		}
 		e.ArrEnd()
 	}
-	if s.ResourceRules != nil {
+
+	if !first {
+
 		e.Comma()
 	}
+	first = false
 
 	e.RawStr("\"subjects\"" + ":")
 	e.ArrStart()
@@ -30511,10 +35866,6 @@ func (s IoK8sAPIFlowcontrolV1beta1PolicyRulesWithSubjects) Encode(e *jx.Writer) 
 		}
 	}
 	e.ArrEnd()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -30571,41 +35922,64 @@ func (s *IoK8sAPIFlowcontrolV1beta1PolicyRulesWithSubjects) Decode(d *jx.Decoder
 // Encode implements json.Marshaler.
 func (s IoK8sAPIFlowcontrolV1beta1PriorityLevelConfiguration) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.ApiVersion.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.ApiVersion.Set {
 		e.RawStr("\"apiVersion\"" + ":")
 		s.ApiVersion.Encode(e)
 	}
-	if s.ApiVersion.Set {
-		e.Comma()
+
+	if s.Kind.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Kind.Set {
 		e.RawStr("\"kind\"" + ":")
 		s.Kind.Encode(e)
 	}
-	if s.Kind.Set {
-		e.Comma()
+
+	if s.Metadata.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Metadata.Set {
 		e.RawStr("\"metadata\"" + ":")
 		s.Metadata.Encode(e)
 	}
-	if s.Metadata.Set {
-		e.Comma()
+
+	if s.Spec.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Spec.Set {
 		e.RawStr("\"spec\"" + ":")
 		s.Spec.Encode(e)
 	}
-	if s.Spec.Set {
-		e.Comma()
+
+	if s.Status.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Status.Set {
 		e.RawStr("\"status\"" + ":")
 		s.Status.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -30652,41 +36026,64 @@ func (s *IoK8sAPIFlowcontrolV1beta1PriorityLevelConfiguration) Decode(d *jx.Deco
 // Encode implements json.Marshaler.
 func (s IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationCondition) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.LastTransitionTime.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.LastTransitionTime.Set {
 		e.RawStr("\"lastTransitionTime\"" + ":")
 		s.LastTransitionTime.Encode(e)
 	}
-	if s.LastTransitionTime.Set {
-		e.Comma()
+
+	if s.Message.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Message.Set {
 		e.RawStr("\"message\"" + ":")
 		s.Message.Encode(e)
 	}
-	if s.Message.Set {
-		e.Comma()
+
+	if s.Reason.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Reason.Set {
 		e.RawStr("\"reason\"" + ":")
 		s.Reason.Encode(e)
 	}
-	if s.Reason.Set {
-		e.Comma()
+
+	if s.Status.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Status.Set {
 		e.RawStr("\"status\"" + ":")
 		s.Status.Encode(e)
 	}
-	if s.Status.Set {
-		e.Comma()
+
+	if s.Type.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Type.Set {
 		e.RawStr("\"type\"" + ":")
 		s.Type.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -30733,13 +36130,27 @@ func (s *IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationCondition) Decode(d
 // Encode implements json.Marshaler.
 func (s IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationList) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.ApiVersion.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.ApiVersion.Set {
 		e.RawStr("\"apiVersion\"" + ":")
 		s.ApiVersion.Encode(e)
 	}
-	if s.ApiVersion.Set {
+
+	if !first {
+
 		e.Comma()
 	}
+	first = false
 
 	e.RawStr("\"items\"" + ":")
 	e.ArrStart()
@@ -30756,21 +36167,20 @@ func (s IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationList) Encode(e *jx.W
 	}
 	e.ArrEnd()
 
-	e.Comma()
+	if s.Kind.Set {
+		e.Comma()
+	}
 	if s.Kind.Set {
 		e.RawStr("\"kind\"" + ":")
 		s.Kind.Encode(e)
 	}
-	if s.Kind.Set {
+
+	if s.Metadata.Set {
 		e.Comma()
 	}
 	if s.Metadata.Set {
 		e.RawStr("\"metadata\"" + ":")
 		s.Metadata.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -30819,13 +36229,18 @@ func (s *IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationList) Decode(d *jx.
 // Encode implements json.Marshaler.
 func (s IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationReference) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"name\"" + ":")
 	e.Str(s.Name)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -30852,20 +36267,29 @@ func (s *IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationReference) Decode(d
 // Encode implements json.Marshaler.
 func (s IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationSpec) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.Limited.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.Limited.Set {
 		e.RawStr("\"limited\"" + ":")
 		s.Limited.Encode(e)
 	}
-	if s.Limited.Set {
+
+	if !first {
 		e.Comma()
 	}
+	first = false
 
 	e.RawStr("\"type\"" + ":")
 	e.Str(s.Type)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -30897,6 +36321,17 @@ func (s *IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationSpec) Decode(d *jx.
 // Encode implements json.Marshaler.
 func (s IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationStatus) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.Conditions != nil {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.Conditions != nil {
 		e.RawStr("\"conditions\"" + ":")
 		e.ArrStart()
@@ -30912,10 +36347,6 @@ func (s IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationStatus) Encode(e *jx
 			}
 		}
 		e.ArrEnd()
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -30949,27 +36380,42 @@ func (s *IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationStatus) Decode(d *j
 // Encode implements json.Marshaler.
 func (s IoK8sAPIFlowcontrolV1beta1QueuingConfiguration) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.HandSize.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.HandSize.Set {
 		e.RawStr("\"handSize\"" + ":")
 		s.HandSize.Encode(e)
 	}
-	if s.HandSize.Set {
-		e.Comma()
+
+	if s.QueueLengthLimit.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.QueueLengthLimit.Set {
 		e.RawStr("\"queueLengthLimit\"" + ":")
 		s.QueueLengthLimit.Encode(e)
 	}
-	if s.QueueLengthLimit.Set {
-		e.Comma()
+
+	if s.Queues.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Queues.Set {
 		e.RawStr("\"queues\"" + ":")
 		s.Queues.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -31006,6 +36452,16 @@ func (s *IoK8sAPIFlowcontrolV1beta1QueuingConfiguration) Decode(d *jx.Decoder) e
 // Encode implements json.Marshaler.
 func (s IoK8sAPIFlowcontrolV1beta1ResourcePolicyRule) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"apiGroups\"" + ":")
 	e.ArrStart()
@@ -31022,12 +36478,15 @@ func (s IoK8sAPIFlowcontrolV1beta1ResourcePolicyRule) Encode(e *jx.Writer) {
 	}
 	e.ArrEnd()
 
-	e.Comma()
+	if s.ClusterScope.Set {
+		e.Comma()
+	}
 	if s.ClusterScope.Set {
 		e.RawStr("\"clusterScope\"" + ":")
 		s.ClusterScope.Encode(e)
 	}
-	if s.ClusterScope.Set {
+
+	if s.Namespaces != nil {
 		e.Comma()
 	}
 	if s.Namespaces != nil {
@@ -31046,9 +36505,8 @@ func (s IoK8sAPIFlowcontrolV1beta1ResourcePolicyRule) Encode(e *jx.Writer) {
 		}
 		e.ArrEnd()
 	}
-	if s.Namespaces != nil {
-		e.Comma()
-	}
+
+	e.Comma()
 
 	e.RawStr("\"resources\"" + ":")
 	e.ArrStart()
@@ -31081,10 +36539,6 @@ func (s IoK8sAPIFlowcontrolV1beta1ResourcePolicyRule) Encode(e *jx.Writer) {
 		}
 	}
 	e.ArrEnd()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -31166,17 +36620,23 @@ func (s *IoK8sAPIFlowcontrolV1beta1ResourcePolicyRule) Decode(d *jx.Decoder) err
 // Encode implements json.Marshaler.
 func (s IoK8sAPIFlowcontrolV1beta1ServiceAccountSubject) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"name\"" + ":")
 	e.Str(s.Name)
+
 	e.Comma()
 
 	e.RawStr("\"namespace\"" + ":")
 	e.Str(s.Namespace)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -31209,31 +36669,44 @@ func (s *IoK8sAPIFlowcontrolV1beta1ServiceAccountSubject) Decode(d *jx.Decoder) 
 // Encode implements json.Marshaler.
 func (s IoK8sAPIFlowcontrolV1beta1Subject) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.Group.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.Group.Set {
 		e.RawStr("\"group\"" + ":")
 		s.Group.Encode(e)
 	}
-	if s.Group.Set {
+
+	if !first {
 		e.Comma()
 	}
+	first = false
 
 	e.RawStr("\"kind\"" + ":")
 	e.Str(s.Kind)
-	e.Comma()
+
+	if s.ServiceAccount.Set {
+		e.Comma()
+	}
 	if s.ServiceAccount.Set {
 		e.RawStr("\"serviceAccount\"" + ":")
 		s.ServiceAccount.Encode(e)
 	}
-	if s.ServiceAccount.Set {
+
+	if s.User.Set {
 		e.Comma()
 	}
 	if s.User.Set {
 		e.RawStr("\"user\"" + ":")
 		s.User.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -31276,13 +36749,18 @@ func (s *IoK8sAPIFlowcontrolV1beta1Subject) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPIFlowcontrolV1beta1UserSubject) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"name\"" + ":")
 	e.Str(s.Name)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -31309,13 +36787,18 @@ func (s *IoK8sAPIFlowcontrolV1beta1UserSubject) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPIFlowcontrolV1beta2FlowDistinguisherMethod) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"type\"" + ":")
 	e.Str(s.Type)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -31342,41 +36825,64 @@ func (s *IoK8sAPIFlowcontrolV1beta2FlowDistinguisherMethod) Decode(d *jx.Decoder
 // Encode implements json.Marshaler.
 func (s IoK8sAPIFlowcontrolV1beta2FlowSchema) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.ApiVersion.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.ApiVersion.Set {
 		e.RawStr("\"apiVersion\"" + ":")
 		s.ApiVersion.Encode(e)
 	}
-	if s.ApiVersion.Set {
-		e.Comma()
+
+	if s.Kind.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Kind.Set {
 		e.RawStr("\"kind\"" + ":")
 		s.Kind.Encode(e)
 	}
-	if s.Kind.Set {
-		e.Comma()
+
+	if s.Metadata.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Metadata.Set {
 		e.RawStr("\"metadata\"" + ":")
 		s.Metadata.Encode(e)
 	}
-	if s.Metadata.Set {
-		e.Comma()
+
+	if s.Spec.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Spec.Set {
 		e.RawStr("\"spec\"" + ":")
 		s.Spec.Encode(e)
 	}
-	if s.Spec.Set {
-		e.Comma()
+
+	if s.Status.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Status.Set {
 		e.RawStr("\"status\"" + ":")
 		s.Status.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -31423,41 +36929,64 @@ func (s *IoK8sAPIFlowcontrolV1beta2FlowSchema) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPIFlowcontrolV1beta2FlowSchemaCondition) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.LastTransitionTime.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.LastTransitionTime.Set {
 		e.RawStr("\"lastTransitionTime\"" + ":")
 		s.LastTransitionTime.Encode(e)
 	}
-	if s.LastTransitionTime.Set {
-		e.Comma()
+
+	if s.Message.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Message.Set {
 		e.RawStr("\"message\"" + ":")
 		s.Message.Encode(e)
 	}
-	if s.Message.Set {
-		e.Comma()
+
+	if s.Reason.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Reason.Set {
 		e.RawStr("\"reason\"" + ":")
 		s.Reason.Encode(e)
 	}
-	if s.Reason.Set {
-		e.Comma()
+
+	if s.Status.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Status.Set {
 		e.RawStr("\"status\"" + ":")
 		s.Status.Encode(e)
 	}
-	if s.Status.Set {
-		e.Comma()
+
+	if s.Type.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Type.Set {
 		e.RawStr("\"type\"" + ":")
 		s.Type.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -31504,13 +37033,27 @@ func (s *IoK8sAPIFlowcontrolV1beta2FlowSchemaCondition) Decode(d *jx.Decoder) er
 // Encode implements json.Marshaler.
 func (s IoK8sAPIFlowcontrolV1beta2FlowSchemaList) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.ApiVersion.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.ApiVersion.Set {
 		e.RawStr("\"apiVersion\"" + ":")
 		s.ApiVersion.Encode(e)
 	}
-	if s.ApiVersion.Set {
+
+	if !first {
+
 		e.Comma()
 	}
+	first = false
 
 	e.RawStr("\"items\"" + ":")
 	e.ArrStart()
@@ -31527,21 +37070,20 @@ func (s IoK8sAPIFlowcontrolV1beta2FlowSchemaList) Encode(e *jx.Writer) {
 	}
 	e.ArrEnd()
 
-	e.Comma()
+	if s.Kind.Set {
+		e.Comma()
+	}
 	if s.Kind.Set {
 		e.RawStr("\"kind\"" + ":")
 		s.Kind.Encode(e)
 	}
-	if s.Kind.Set {
+
+	if s.Metadata.Set {
 		e.Comma()
 	}
 	if s.Metadata.Set {
 		e.RawStr("\"metadata\"" + ":")
 		s.Metadata.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -31590,25 +37132,45 @@ func (s *IoK8sAPIFlowcontrolV1beta2FlowSchemaList) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPIFlowcontrolV1beta2FlowSchemaSpec) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.DistinguisherMethod.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.DistinguisherMethod.Set {
 		e.RawStr("\"distinguisherMethod\"" + ":")
 		s.DistinguisherMethod.Encode(e)
 	}
-	if s.DistinguisherMethod.Set {
-		e.Comma()
+
+	if s.MatchingPrecedence.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.MatchingPrecedence.Set {
 		e.RawStr("\"matchingPrecedence\"" + ":")
 		s.MatchingPrecedence.Encode(e)
 	}
-	if s.MatchingPrecedence.Set {
+
+	if !first {
+
 		e.Comma()
 	}
+	first = false
 
 	e.RawStr("\"priorityLevelConfiguration\"" + ":")
 	s.PriorityLevelConfiguration.Encode(e)
 
-	e.Comma()
+	if s.Rules != nil {
+		e.Comma()
+	}
 	if s.Rules != nil {
 		e.RawStr("\"rules\"" + ":")
 		e.ArrStart()
@@ -31624,10 +37186,6 @@ func (s IoK8sAPIFlowcontrolV1beta2FlowSchemaSpec) Encode(e *jx.Writer) {
 			}
 		}
 		e.ArrEnd()
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -31675,6 +37233,17 @@ func (s *IoK8sAPIFlowcontrolV1beta2FlowSchemaSpec) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPIFlowcontrolV1beta2FlowSchemaStatus) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.Conditions != nil {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.Conditions != nil {
 		e.RawStr("\"conditions\"" + ":")
 		e.ArrStart()
@@ -31690,10 +37259,6 @@ func (s IoK8sAPIFlowcontrolV1beta2FlowSchemaStatus) Encode(e *jx.Writer) {
 			}
 		}
 		e.ArrEnd()
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -31727,13 +37292,18 @@ func (s *IoK8sAPIFlowcontrolV1beta2FlowSchemaStatus) Decode(d *jx.Decoder) error
 // Encode implements json.Marshaler.
 func (s IoK8sAPIFlowcontrolV1beta2GroupSubject) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"name\"" + ":")
 	e.Str(s.Name)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -31760,20 +37330,29 @@ func (s *IoK8sAPIFlowcontrolV1beta2GroupSubject) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPIFlowcontrolV1beta2LimitResponse) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.Queuing.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.Queuing.Set {
 		e.RawStr("\"queuing\"" + ":")
 		s.Queuing.Encode(e)
 	}
-	if s.Queuing.Set {
+
+	if !first {
 		e.Comma()
 	}
+	first = false
 
 	e.RawStr("\"type\"" + ":")
 	e.Str(s.Type)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -31805,20 +37384,31 @@ func (s *IoK8sAPIFlowcontrolV1beta2LimitResponse) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPIFlowcontrolV1beta2LimitedPriorityLevelConfiguration) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.AssuredConcurrencyShares.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.AssuredConcurrencyShares.Set {
 		e.RawStr("\"assuredConcurrencyShares\"" + ":")
 		s.AssuredConcurrencyShares.Encode(e)
 	}
-	if s.AssuredConcurrencyShares.Set {
-		e.Comma()
+
+	if s.LimitResponse.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.LimitResponse.Set {
 		e.RawStr("\"limitResponse\"" + ":")
 		s.LimitResponse.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -31850,6 +37440,16 @@ func (s *IoK8sAPIFlowcontrolV1beta2LimitedPriorityLevelConfiguration) Decode(d *
 // Encode implements json.Marshaler.
 func (s IoK8sAPIFlowcontrolV1beta2NonResourcePolicyRule) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"nonResourceURLs\"" + ":")
 	e.ArrStart()
@@ -31882,10 +37482,6 @@ func (s IoK8sAPIFlowcontrolV1beta2NonResourcePolicyRule) Encode(e *jx.Writer) {
 		}
 	}
 	e.ArrEnd()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -31934,6 +37530,17 @@ func (s *IoK8sAPIFlowcontrolV1beta2NonResourcePolicyRule) Decode(d *jx.Decoder) 
 // Encode implements json.Marshaler.
 func (s IoK8sAPIFlowcontrolV1beta2PolicyRulesWithSubjects) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.NonResourceRules != nil {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.NonResourceRules != nil {
 		e.RawStr("\"nonResourceRules\"" + ":")
 		e.ArrStart()
@@ -31950,8 +37557,12 @@ func (s IoK8sAPIFlowcontrolV1beta2PolicyRulesWithSubjects) Encode(e *jx.Writer) 
 		}
 		e.ArrEnd()
 	}
-	if s.NonResourceRules != nil {
-		e.Comma()
+
+	if s.ResourceRules != nil {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.ResourceRules != nil {
 		e.RawStr("\"resourceRules\"" + ":")
@@ -31969,9 +37580,12 @@ func (s IoK8sAPIFlowcontrolV1beta2PolicyRulesWithSubjects) Encode(e *jx.Writer) 
 		}
 		e.ArrEnd()
 	}
-	if s.ResourceRules != nil {
+
+	if !first {
+
 		e.Comma()
 	}
+	first = false
 
 	e.RawStr("\"subjects\"" + ":")
 	e.ArrStart()
@@ -31987,10 +37601,6 @@ func (s IoK8sAPIFlowcontrolV1beta2PolicyRulesWithSubjects) Encode(e *jx.Writer) 
 		}
 	}
 	e.ArrEnd()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -32047,41 +37657,64 @@ func (s *IoK8sAPIFlowcontrolV1beta2PolicyRulesWithSubjects) Decode(d *jx.Decoder
 // Encode implements json.Marshaler.
 func (s IoK8sAPIFlowcontrolV1beta2PriorityLevelConfiguration) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.ApiVersion.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.ApiVersion.Set {
 		e.RawStr("\"apiVersion\"" + ":")
 		s.ApiVersion.Encode(e)
 	}
-	if s.ApiVersion.Set {
-		e.Comma()
+
+	if s.Kind.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Kind.Set {
 		e.RawStr("\"kind\"" + ":")
 		s.Kind.Encode(e)
 	}
-	if s.Kind.Set {
-		e.Comma()
+
+	if s.Metadata.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Metadata.Set {
 		e.RawStr("\"metadata\"" + ":")
 		s.Metadata.Encode(e)
 	}
-	if s.Metadata.Set {
-		e.Comma()
+
+	if s.Spec.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Spec.Set {
 		e.RawStr("\"spec\"" + ":")
 		s.Spec.Encode(e)
 	}
-	if s.Spec.Set {
-		e.Comma()
+
+	if s.Status.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Status.Set {
 		e.RawStr("\"status\"" + ":")
 		s.Status.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -32128,41 +37761,64 @@ func (s *IoK8sAPIFlowcontrolV1beta2PriorityLevelConfiguration) Decode(d *jx.Deco
 // Encode implements json.Marshaler.
 func (s IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationCondition) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.LastTransitionTime.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.LastTransitionTime.Set {
 		e.RawStr("\"lastTransitionTime\"" + ":")
 		s.LastTransitionTime.Encode(e)
 	}
-	if s.LastTransitionTime.Set {
-		e.Comma()
+
+	if s.Message.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Message.Set {
 		e.RawStr("\"message\"" + ":")
 		s.Message.Encode(e)
 	}
-	if s.Message.Set {
-		e.Comma()
+
+	if s.Reason.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Reason.Set {
 		e.RawStr("\"reason\"" + ":")
 		s.Reason.Encode(e)
 	}
-	if s.Reason.Set {
-		e.Comma()
+
+	if s.Status.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Status.Set {
 		e.RawStr("\"status\"" + ":")
 		s.Status.Encode(e)
 	}
-	if s.Status.Set {
-		e.Comma()
+
+	if s.Type.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Type.Set {
 		e.RawStr("\"type\"" + ":")
 		s.Type.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -32209,13 +37865,27 @@ func (s *IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationCondition) Decode(d
 // Encode implements json.Marshaler.
 func (s IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationList) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.ApiVersion.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.ApiVersion.Set {
 		e.RawStr("\"apiVersion\"" + ":")
 		s.ApiVersion.Encode(e)
 	}
-	if s.ApiVersion.Set {
+
+	if !first {
+
 		e.Comma()
 	}
+	first = false
 
 	e.RawStr("\"items\"" + ":")
 	e.ArrStart()
@@ -32232,21 +37902,20 @@ func (s IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationList) Encode(e *jx.W
 	}
 	e.ArrEnd()
 
-	e.Comma()
+	if s.Kind.Set {
+		e.Comma()
+	}
 	if s.Kind.Set {
 		e.RawStr("\"kind\"" + ":")
 		s.Kind.Encode(e)
 	}
-	if s.Kind.Set {
+
+	if s.Metadata.Set {
 		e.Comma()
 	}
 	if s.Metadata.Set {
 		e.RawStr("\"metadata\"" + ":")
 		s.Metadata.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -32295,13 +37964,18 @@ func (s *IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationList) Decode(d *jx.
 // Encode implements json.Marshaler.
 func (s IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationReference) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"name\"" + ":")
 	e.Str(s.Name)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -32328,20 +38002,29 @@ func (s *IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationReference) Decode(d
 // Encode implements json.Marshaler.
 func (s IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationSpec) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.Limited.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.Limited.Set {
 		e.RawStr("\"limited\"" + ":")
 		s.Limited.Encode(e)
 	}
-	if s.Limited.Set {
+
+	if !first {
 		e.Comma()
 	}
+	first = false
 
 	e.RawStr("\"type\"" + ":")
 	e.Str(s.Type)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -32373,6 +38056,17 @@ func (s *IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationSpec) Decode(d *jx.
 // Encode implements json.Marshaler.
 func (s IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationStatus) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.Conditions != nil {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.Conditions != nil {
 		e.RawStr("\"conditions\"" + ":")
 		e.ArrStart()
@@ -32388,10 +38082,6 @@ func (s IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationStatus) Encode(e *jx
 			}
 		}
 		e.ArrEnd()
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -32425,27 +38115,42 @@ func (s *IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationStatus) Decode(d *j
 // Encode implements json.Marshaler.
 func (s IoK8sAPIFlowcontrolV1beta2QueuingConfiguration) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.HandSize.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.HandSize.Set {
 		e.RawStr("\"handSize\"" + ":")
 		s.HandSize.Encode(e)
 	}
-	if s.HandSize.Set {
-		e.Comma()
+
+	if s.QueueLengthLimit.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.QueueLengthLimit.Set {
 		e.RawStr("\"queueLengthLimit\"" + ":")
 		s.QueueLengthLimit.Encode(e)
 	}
-	if s.QueueLengthLimit.Set {
-		e.Comma()
+
+	if s.Queues.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Queues.Set {
 		e.RawStr("\"queues\"" + ":")
 		s.Queues.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -32482,6 +38187,16 @@ func (s *IoK8sAPIFlowcontrolV1beta2QueuingConfiguration) Decode(d *jx.Decoder) e
 // Encode implements json.Marshaler.
 func (s IoK8sAPIFlowcontrolV1beta2ResourcePolicyRule) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"apiGroups\"" + ":")
 	e.ArrStart()
@@ -32498,12 +38213,15 @@ func (s IoK8sAPIFlowcontrolV1beta2ResourcePolicyRule) Encode(e *jx.Writer) {
 	}
 	e.ArrEnd()
 
-	e.Comma()
+	if s.ClusterScope.Set {
+		e.Comma()
+	}
 	if s.ClusterScope.Set {
 		e.RawStr("\"clusterScope\"" + ":")
 		s.ClusterScope.Encode(e)
 	}
-	if s.ClusterScope.Set {
+
+	if s.Namespaces != nil {
 		e.Comma()
 	}
 	if s.Namespaces != nil {
@@ -32522,9 +38240,8 @@ func (s IoK8sAPIFlowcontrolV1beta2ResourcePolicyRule) Encode(e *jx.Writer) {
 		}
 		e.ArrEnd()
 	}
-	if s.Namespaces != nil {
-		e.Comma()
-	}
+
+	e.Comma()
 
 	e.RawStr("\"resources\"" + ":")
 	e.ArrStart()
@@ -32557,10 +38274,6 @@ func (s IoK8sAPIFlowcontrolV1beta2ResourcePolicyRule) Encode(e *jx.Writer) {
 		}
 	}
 	e.ArrEnd()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -32642,17 +38355,23 @@ func (s *IoK8sAPIFlowcontrolV1beta2ResourcePolicyRule) Decode(d *jx.Decoder) err
 // Encode implements json.Marshaler.
 func (s IoK8sAPIFlowcontrolV1beta2ServiceAccountSubject) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"name\"" + ":")
 	e.Str(s.Name)
+
 	e.Comma()
 
 	e.RawStr("\"namespace\"" + ":")
 	e.Str(s.Namespace)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -32685,31 +38404,44 @@ func (s *IoK8sAPIFlowcontrolV1beta2ServiceAccountSubject) Decode(d *jx.Decoder) 
 // Encode implements json.Marshaler.
 func (s IoK8sAPIFlowcontrolV1beta2Subject) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.Group.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.Group.Set {
 		e.RawStr("\"group\"" + ":")
 		s.Group.Encode(e)
 	}
-	if s.Group.Set {
+
+	if !first {
 		e.Comma()
 	}
+	first = false
 
 	e.RawStr("\"kind\"" + ":")
 	e.Str(s.Kind)
-	e.Comma()
+
+	if s.ServiceAccount.Set {
+		e.Comma()
+	}
 	if s.ServiceAccount.Set {
 		e.RawStr("\"serviceAccount\"" + ":")
 		s.ServiceAccount.Encode(e)
 	}
-	if s.ServiceAccount.Set {
+
+	if s.User.Set {
 		e.Comma()
 	}
 	if s.User.Set {
 		e.RawStr("\"user\"" + ":")
 		s.User.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -32752,13 +38484,18 @@ func (s *IoK8sAPIFlowcontrolV1beta2Subject) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPIFlowcontrolV1beta2UserSubject) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"name\"" + ":")
 	e.Str(s.Name)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -32785,25 +38522,32 @@ func (s *IoK8sAPIFlowcontrolV1beta2UserSubject) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPINetworkingV1HTTPIngressPath) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"backend\"" + ":")
 	s.Backend.Encode(e)
 
-	e.Comma()
+	if s.Path.Set {
+		e.Comma()
+	}
 	if s.Path.Set {
 		e.RawStr("\"path\"" + ":")
 		s.Path.Encode(e)
 	}
-	if s.Path.Set {
-		e.Comma()
-	}
+
+	e.Comma()
 
 	e.RawStr("\"pathType\"" + ":")
 	e.Str(s.PathType)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -32839,6 +38583,16 @@ func (s *IoK8sAPINetworkingV1HTTPIngressPath) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPINetworkingV1HTTPIngressRuleValue) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"paths\"" + ":")
 	e.ArrStart()
@@ -32854,10 +38608,6 @@ func (s IoK8sAPINetworkingV1HTTPIngressRuleValue) Encode(e *jx.Writer) {
 		}
 	}
 	e.ArrEnd()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -32890,10 +38640,22 @@ func (s *IoK8sAPINetworkingV1HTTPIngressRuleValue) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPINetworkingV1IPBlock) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"cidr\"" + ":")
 	e.Str(s.Cidr)
-	e.Comma()
+
+	if s.Except != nil {
+		e.Comma()
+	}
 	if s.Except != nil {
 		e.RawStr("\"except\"" + ":")
 		e.ArrStart()
@@ -32909,10 +38671,6 @@ func (s IoK8sAPINetworkingV1IPBlock) Encode(e *jx.Writer) {
 			}
 		}
 		e.ArrEnd()
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -32954,41 +38712,64 @@ func (s *IoK8sAPINetworkingV1IPBlock) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPINetworkingV1Ingress) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.ApiVersion.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.ApiVersion.Set {
 		e.RawStr("\"apiVersion\"" + ":")
 		s.ApiVersion.Encode(e)
 	}
-	if s.ApiVersion.Set {
-		e.Comma()
+
+	if s.Kind.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Kind.Set {
 		e.RawStr("\"kind\"" + ":")
 		s.Kind.Encode(e)
 	}
-	if s.Kind.Set {
-		e.Comma()
+
+	if s.Metadata.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Metadata.Set {
 		e.RawStr("\"metadata\"" + ":")
 		s.Metadata.Encode(e)
 	}
-	if s.Metadata.Set {
-		e.Comma()
+
+	if s.Spec.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Spec.Set {
 		e.RawStr("\"spec\"" + ":")
 		s.Spec.Encode(e)
 	}
-	if s.Spec.Set {
-		e.Comma()
+
+	if s.Status.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Status.Set {
 		e.RawStr("\"status\"" + ":")
 		s.Status.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -33035,20 +38816,31 @@ func (s *IoK8sAPINetworkingV1Ingress) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPINetworkingV1IngressBackend) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.Resource.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.Resource.Set {
 		e.RawStr("\"resource\"" + ":")
 		s.Resource.Encode(e)
 	}
-	if s.Resource.Set {
-		e.Comma()
+
+	if s.Service.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Service.Set {
 		e.RawStr("\"service\"" + ":")
 		s.Service.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -33080,34 +38872,53 @@ func (s *IoK8sAPINetworkingV1IngressBackend) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPINetworkingV1IngressClass) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.ApiVersion.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.ApiVersion.Set {
 		e.RawStr("\"apiVersion\"" + ":")
 		s.ApiVersion.Encode(e)
 	}
-	if s.ApiVersion.Set {
-		e.Comma()
+
+	if s.Kind.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Kind.Set {
 		e.RawStr("\"kind\"" + ":")
 		s.Kind.Encode(e)
 	}
-	if s.Kind.Set {
-		e.Comma()
+
+	if s.Metadata.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Metadata.Set {
 		e.RawStr("\"metadata\"" + ":")
 		s.Metadata.Encode(e)
 	}
-	if s.Metadata.Set {
-		e.Comma()
+
+	if s.Spec.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Spec.Set {
 		e.RawStr("\"spec\"" + ":")
 		s.Spec.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -33149,13 +38960,27 @@ func (s *IoK8sAPINetworkingV1IngressClass) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPINetworkingV1IngressClassList) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.ApiVersion.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.ApiVersion.Set {
 		e.RawStr("\"apiVersion\"" + ":")
 		s.ApiVersion.Encode(e)
 	}
-	if s.ApiVersion.Set {
+
+	if !first {
+
 		e.Comma()
 	}
+	first = false
 
 	e.RawStr("\"items\"" + ":")
 	e.ArrStart()
@@ -33172,21 +38997,20 @@ func (s IoK8sAPINetworkingV1IngressClassList) Encode(e *jx.Writer) {
 	}
 	e.ArrEnd()
 
-	e.Comma()
+	if s.Kind.Set {
+		e.Comma()
+	}
 	if s.Kind.Set {
 		e.RawStr("\"kind\"" + ":")
 		s.Kind.Encode(e)
 	}
-	if s.Kind.Set {
+
+	if s.Metadata.Set {
 		e.Comma()
 	}
 	if s.Metadata.Set {
 		e.RawStr("\"metadata\"" + ":")
 		s.Metadata.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -33235,35 +39059,49 @@ func (s *IoK8sAPINetworkingV1IngressClassList) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPINetworkingV1IngressClassParametersReference) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.ApiGroup.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.ApiGroup.Set {
 		e.RawStr("\"apiGroup\"" + ":")
 		s.ApiGroup.Encode(e)
 	}
-	if s.ApiGroup.Set {
+
+	if !first {
 		e.Comma()
 	}
+	first = false
 
 	e.RawStr("\"kind\"" + ":")
 	e.Str(s.Kind)
+
 	e.Comma()
 
 	e.RawStr("\"name\"" + ":")
 	e.Str(s.Name)
-	e.Comma()
+
+	if s.Namespace.Set {
+		e.Comma()
+	}
 	if s.Namespace.Set {
 		e.RawStr("\"namespace\"" + ":")
 		s.Namespace.Encode(e)
 	}
-	if s.Namespace.Set {
+
+	if s.Scope.Set {
 		e.Comma()
 	}
 	if s.Scope.Set {
 		e.RawStr("\"scope\"" + ":")
 		s.Scope.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -33312,20 +39150,31 @@ func (s *IoK8sAPINetworkingV1IngressClassParametersReference) Decode(d *jx.Decod
 // Encode implements json.Marshaler.
 func (s IoK8sAPINetworkingV1IngressClassSpec) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.Controller.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.Controller.Set {
 		e.RawStr("\"controller\"" + ":")
 		s.Controller.Encode(e)
 	}
-	if s.Controller.Set {
-		e.Comma()
+
+	if s.Parameters.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Parameters.Set {
 		e.RawStr("\"parameters\"" + ":")
 		s.Parameters.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -33357,13 +39206,27 @@ func (s *IoK8sAPINetworkingV1IngressClassSpec) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPINetworkingV1IngressList) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.ApiVersion.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.ApiVersion.Set {
 		e.RawStr("\"apiVersion\"" + ":")
 		s.ApiVersion.Encode(e)
 	}
-	if s.ApiVersion.Set {
+
+	if !first {
+
 		e.Comma()
 	}
+	first = false
 
 	e.RawStr("\"items\"" + ":")
 	e.ArrStart()
@@ -33380,21 +39243,20 @@ func (s IoK8sAPINetworkingV1IngressList) Encode(e *jx.Writer) {
 	}
 	e.ArrEnd()
 
-	e.Comma()
+	if s.Kind.Set {
+		e.Comma()
+	}
 	if s.Kind.Set {
 		e.RawStr("\"kind\"" + ":")
 		s.Kind.Encode(e)
 	}
-	if s.Kind.Set {
+
+	if s.Metadata.Set {
 		e.Comma()
 	}
 	if s.Metadata.Set {
 		e.RawStr("\"metadata\"" + ":")
 		s.Metadata.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -33443,20 +39305,31 @@ func (s *IoK8sAPINetworkingV1IngressList) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPINetworkingV1IngressRule) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.Host.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.Host.Set {
 		e.RawStr("\"host\"" + ":")
 		s.Host.Encode(e)
 	}
-	if s.Host.Set {
-		e.Comma()
+
+	if s.HTTP.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.HTTP.Set {
 		e.RawStr("\"http\"" + ":")
 		s.HTTP.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -33488,17 +39361,25 @@ func (s *IoK8sAPINetworkingV1IngressRule) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPINetworkingV1IngressServiceBackend) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"name\"" + ":")
 	e.Str(s.Name)
-	e.Comma()
+
+	if s.Port.Set {
+		e.Comma()
+	}
 	if s.Port.Set {
 		e.RawStr("\"port\"" + ":")
 		s.Port.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -33531,19 +39412,38 @@ func (s *IoK8sAPINetworkingV1IngressServiceBackend) Decode(d *jx.Decoder) error 
 // Encode implements json.Marshaler.
 func (s IoK8sAPINetworkingV1IngressSpec) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.DefaultBackend.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.DefaultBackend.Set {
 		e.RawStr("\"defaultBackend\"" + ":")
 		s.DefaultBackend.Encode(e)
 	}
-	if s.DefaultBackend.Set {
-		e.Comma()
+
+	if s.IngressClassName.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.IngressClassName.Set {
 		e.RawStr("\"ingressClassName\"" + ":")
 		s.IngressClassName.Encode(e)
 	}
-	if s.IngressClassName.Set {
-		e.Comma()
+
+	if s.Rules != nil {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Rules != nil {
 		e.RawStr("\"rules\"" + ":")
@@ -33561,8 +39461,12 @@ func (s IoK8sAPINetworkingV1IngressSpec) Encode(e *jx.Writer) {
 		}
 		e.ArrEnd()
 	}
-	if s.Rules != nil {
-		e.Comma()
+
+	if s.TLS != nil {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.TLS != nil {
 		e.RawStr("\"tls\"" + ":")
@@ -33579,10 +39483,6 @@ func (s IoK8sAPINetworkingV1IngressSpec) Encode(e *jx.Writer) {
 			}
 		}
 		e.ArrEnd()
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -33638,13 +39538,20 @@ func (s *IoK8sAPINetworkingV1IngressSpec) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPINetworkingV1IngressStatus) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.LoadBalancer.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.LoadBalancer.Set {
 		e.RawStr("\"loadBalancer\"" + ":")
 		s.LoadBalancer.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -33671,6 +39578,17 @@ func (s *IoK8sAPINetworkingV1IngressStatus) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPINetworkingV1IngressTLS) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.Hosts != nil {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.Hosts != nil {
 		e.RawStr("\"hosts\"" + ":")
 		e.ArrStart()
@@ -33687,16 +39605,16 @@ func (s IoK8sAPINetworkingV1IngressTLS) Encode(e *jx.Writer) {
 		}
 		e.ArrEnd()
 	}
-	if s.Hosts != nil {
-		e.Comma()
+
+	if s.SecretName.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.SecretName.Set {
 		e.RawStr("\"secretName\"" + ":")
 		s.SecretName.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -33737,34 +39655,53 @@ func (s *IoK8sAPINetworkingV1IngressTLS) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPINetworkingV1NetworkPolicy) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.ApiVersion.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.ApiVersion.Set {
 		e.RawStr("\"apiVersion\"" + ":")
 		s.ApiVersion.Encode(e)
 	}
-	if s.ApiVersion.Set {
-		e.Comma()
+
+	if s.Kind.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Kind.Set {
 		e.RawStr("\"kind\"" + ":")
 		s.Kind.Encode(e)
 	}
-	if s.Kind.Set {
-		e.Comma()
+
+	if s.Metadata.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Metadata.Set {
 		e.RawStr("\"metadata\"" + ":")
 		s.Metadata.Encode(e)
 	}
-	if s.Metadata.Set {
-		e.Comma()
+
+	if s.Spec.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Spec.Set {
 		e.RawStr("\"spec\"" + ":")
 		s.Spec.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -33806,6 +39743,17 @@ func (s *IoK8sAPINetworkingV1NetworkPolicy) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPINetworkingV1NetworkPolicyEgressRule) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.Ports != nil {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.Ports != nil {
 		e.RawStr("\"ports\"" + ":")
 		e.ArrStart()
@@ -33822,8 +39770,12 @@ func (s IoK8sAPINetworkingV1NetworkPolicyEgressRule) Encode(e *jx.Writer) {
 		}
 		e.ArrEnd()
 	}
-	if s.Ports != nil {
-		e.Comma()
+
+	if s.To != nil {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.To != nil {
 		e.RawStr("\"to\"" + ":")
@@ -33840,10 +39792,6 @@ func (s IoK8sAPINetworkingV1NetworkPolicyEgressRule) Encode(e *jx.Writer) {
 			}
 		}
 		e.ArrEnd()
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -33889,6 +39837,17 @@ func (s *IoK8sAPINetworkingV1NetworkPolicyEgressRule) Decode(d *jx.Decoder) erro
 // Encode implements json.Marshaler.
 func (s IoK8sAPINetworkingV1NetworkPolicyIngressRule) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.From != nil {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.From != nil {
 		e.RawStr("\"from\"" + ":")
 		e.ArrStart()
@@ -33905,8 +39864,12 @@ func (s IoK8sAPINetworkingV1NetworkPolicyIngressRule) Encode(e *jx.Writer) {
 		}
 		e.ArrEnd()
 	}
-	if s.From != nil {
-		e.Comma()
+
+	if s.Ports != nil {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Ports != nil {
 		e.RawStr("\"ports\"" + ":")
@@ -33923,10 +39886,6 @@ func (s IoK8sAPINetworkingV1NetworkPolicyIngressRule) Encode(e *jx.Writer) {
 			}
 		}
 		e.ArrEnd()
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -33972,13 +39931,27 @@ func (s *IoK8sAPINetworkingV1NetworkPolicyIngressRule) Decode(d *jx.Decoder) err
 // Encode implements json.Marshaler.
 func (s IoK8sAPINetworkingV1NetworkPolicyList) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.ApiVersion.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.ApiVersion.Set {
 		e.RawStr("\"apiVersion\"" + ":")
 		s.ApiVersion.Encode(e)
 	}
-	if s.ApiVersion.Set {
+
+	if !first {
+
 		e.Comma()
 	}
+	first = false
 
 	e.RawStr("\"items\"" + ":")
 	e.ArrStart()
@@ -33995,21 +39968,20 @@ func (s IoK8sAPINetworkingV1NetworkPolicyList) Encode(e *jx.Writer) {
 	}
 	e.ArrEnd()
 
-	e.Comma()
+	if s.Kind.Set {
+		e.Comma()
+	}
 	if s.Kind.Set {
 		e.RawStr("\"kind\"" + ":")
 		s.Kind.Encode(e)
 	}
-	if s.Kind.Set {
+
+	if s.Metadata.Set {
 		e.Comma()
 	}
 	if s.Metadata.Set {
 		e.RawStr("\"metadata\"" + ":")
 		s.Metadata.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -34058,27 +40030,42 @@ func (s *IoK8sAPINetworkingV1NetworkPolicyList) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPINetworkingV1NetworkPolicyPeer) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.IpBlock.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.IpBlock.Set {
 		e.RawStr("\"ipBlock\"" + ":")
 		s.IpBlock.Encode(e)
 	}
-	if s.IpBlock.Set {
-		e.Comma()
+
+	if s.NamespaceSelector.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.NamespaceSelector.Set {
 		e.RawStr("\"namespaceSelector\"" + ":")
 		s.NamespaceSelector.Encode(e)
 	}
-	if s.NamespaceSelector.Set {
-		e.Comma()
+
+	if s.PodSelector.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.PodSelector.Set {
 		e.RawStr("\"podSelector\"" + ":")
 		s.PodSelector.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -34115,27 +40102,42 @@ func (s *IoK8sAPINetworkingV1NetworkPolicyPeer) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPINetworkingV1NetworkPolicyPort) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.EndPort.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.EndPort.Set {
 		e.RawStr("\"endPort\"" + ":")
 		s.EndPort.Encode(e)
 	}
-	if s.EndPort.Set {
-		e.Comma()
+
+	if s.Port.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Port.Set {
 		e.RawStr("\"port\"" + ":")
 		s.Port.Encode(e)
 	}
-	if s.Port.Set {
-		e.Comma()
+
+	if s.Protocol.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Protocol.Set {
 		e.RawStr("\"protocol\"" + ":")
 		s.Protocol.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -34172,6 +40174,17 @@ func (s *IoK8sAPINetworkingV1NetworkPolicyPort) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPINetworkingV1NetworkPolicySpec) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.Egress != nil {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.Egress != nil {
 		e.RawStr("\"egress\"" + ":")
 		e.ArrStart()
@@ -34188,8 +40201,12 @@ func (s IoK8sAPINetworkingV1NetworkPolicySpec) Encode(e *jx.Writer) {
 		}
 		e.ArrEnd()
 	}
-	if s.Egress != nil {
-		e.Comma()
+
+	if s.Ingress != nil {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Ingress != nil {
 		e.RawStr("\"ingress\"" + ":")
@@ -34207,14 +40224,19 @@ func (s IoK8sAPINetworkingV1NetworkPolicySpec) Encode(e *jx.Writer) {
 		}
 		e.ArrEnd()
 	}
-	if s.Ingress != nil {
+
+	if !first {
+
 		e.Comma()
 	}
+	first = false
 
 	e.RawStr("\"podSelector\"" + ":")
 	s.PodSelector.Encode(e)
 
-	e.Comma()
+	if s.PolicyTypes != nil {
+		e.Comma()
+	}
 	if s.PolicyTypes != nil {
 		e.RawStr("\"policyTypes\"" + ":")
 		e.ArrStart()
@@ -34230,10 +40252,6 @@ func (s IoK8sAPINetworkingV1NetworkPolicySpec) Encode(e *jx.Writer) {
 			}
 		}
 		e.ArrEnd()
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -34297,20 +40315,31 @@ func (s *IoK8sAPINetworkingV1NetworkPolicySpec) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPINetworkingV1ServiceBackendPort) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.Name.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.Name.Set {
 		e.RawStr("\"name\"" + ":")
 		s.Name.Encode(e)
 	}
-	if s.Name.Set {
-		e.Comma()
+
+	if s.Number.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Number.Set {
 		e.RawStr("\"number\"" + ":")
 		s.Number.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -34342,13 +40371,20 @@ func (s *IoK8sAPINetworkingV1ServiceBackendPort) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPINodeV1Overhead) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.PodFixed != nil {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.PodFixed != nil {
 		e.RawStr("\"podFixed\"" + ":")
 		s.PodFixed.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -34377,10 +40413,10 @@ func (s *IoK8sAPINodeV1Overhead) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPINodeV1OverheadPodFixed) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -34401,45 +40437,60 @@ func (s *IoK8sAPINodeV1OverheadPodFixed) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPINodeV1RuntimeClass) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.ApiVersion.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.ApiVersion.Set {
 		e.RawStr("\"apiVersion\"" + ":")
 		s.ApiVersion.Encode(e)
 	}
-	if s.ApiVersion.Set {
+
+	if !first {
 		e.Comma()
 	}
+	first = false
 
 	e.RawStr("\"handler\"" + ":")
 	e.Str(s.Handler)
-	e.Comma()
+
+	if s.Kind.Set {
+		e.Comma()
+	}
 	if s.Kind.Set {
 		e.RawStr("\"kind\"" + ":")
 		s.Kind.Encode(e)
 	}
-	if s.Kind.Set {
+
+	if s.Metadata.Set {
 		e.Comma()
 	}
 	if s.Metadata.Set {
 		e.RawStr("\"metadata\"" + ":")
 		s.Metadata.Encode(e)
 	}
-	if s.Metadata.Set {
+
+	if s.Overhead.Set {
 		e.Comma()
 	}
 	if s.Overhead.Set {
 		e.RawStr("\"overhead\"" + ":")
 		s.Overhead.Encode(e)
 	}
-	if s.Overhead.Set {
+
+	if s.Scheduling.Set {
 		e.Comma()
 	}
 	if s.Scheduling.Set {
 		e.RawStr("\"scheduling\"" + ":")
 		s.Scheduling.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -34492,13 +40543,27 @@ func (s *IoK8sAPINodeV1RuntimeClass) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPINodeV1RuntimeClassList) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.ApiVersion.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.ApiVersion.Set {
 		e.RawStr("\"apiVersion\"" + ":")
 		s.ApiVersion.Encode(e)
 	}
-	if s.ApiVersion.Set {
+
+	if !first {
+
 		e.Comma()
 	}
+	first = false
 
 	e.RawStr("\"items\"" + ":")
 	e.ArrStart()
@@ -34515,21 +40580,20 @@ func (s IoK8sAPINodeV1RuntimeClassList) Encode(e *jx.Writer) {
 	}
 	e.ArrEnd()
 
-	e.Comma()
+	if s.Kind.Set {
+		e.Comma()
+	}
 	if s.Kind.Set {
 		e.RawStr("\"kind\"" + ":")
 		s.Kind.Encode(e)
 	}
-	if s.Kind.Set {
+
+	if s.Metadata.Set {
 		e.Comma()
 	}
 	if s.Metadata.Set {
 		e.RawStr("\"metadata\"" + ":")
 		s.Metadata.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -34578,12 +40642,27 @@ func (s *IoK8sAPINodeV1RuntimeClassList) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPINodeV1Scheduling) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.NodeSelector != nil {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.NodeSelector != nil {
 		e.RawStr("\"nodeSelector\"" + ":")
 		s.NodeSelector.Encode(e)
 	}
-	if s.NodeSelector != nil {
-		e.Comma()
+
+	if s.Tolerations != nil {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Tolerations != nil {
 		e.RawStr("\"tolerations\"" + ":")
@@ -34600,10 +40679,6 @@ func (s IoK8sAPINodeV1Scheduling) Encode(e *jx.Writer) {
 			}
 		}
 		e.ArrEnd()
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -34644,10 +40719,10 @@ func (s *IoK8sAPINodeV1Scheduling) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPINodeV1SchedulingNodeSelector) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -34668,13 +40743,20 @@ func (s *IoK8sAPINodeV1SchedulingNodeSelector) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPINodeV1alpha1Overhead) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.PodFixed != nil {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.PodFixed != nil {
 		e.RawStr("\"podFixed\"" + ":")
 		s.PodFixed.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -34703,10 +40785,10 @@ func (s *IoK8sAPINodeV1alpha1Overhead) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPINodeV1alpha1OverheadPodFixed) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -34727,34 +40809,52 @@ func (s *IoK8sAPINodeV1alpha1OverheadPodFixed) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPINodeV1alpha1RuntimeClass) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.ApiVersion.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.ApiVersion.Set {
 		e.RawStr("\"apiVersion\"" + ":")
 		s.ApiVersion.Encode(e)
 	}
-	if s.ApiVersion.Set {
-		e.Comma()
+
+	if s.Kind.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Kind.Set {
 		e.RawStr("\"kind\"" + ":")
 		s.Kind.Encode(e)
 	}
-	if s.Kind.Set {
-		e.Comma()
+
+	if s.Metadata.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Metadata.Set {
 		e.RawStr("\"metadata\"" + ":")
 		s.Metadata.Encode(e)
 	}
-	if s.Metadata.Set {
+
+	if !first {
+
 		e.Comma()
 	}
+	first = false
 
 	e.RawStr("\"spec\"" + ":")
 	s.Spec.Encode(e)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -34794,13 +40894,27 @@ func (s *IoK8sAPINodeV1alpha1RuntimeClass) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPINodeV1alpha1RuntimeClassList) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.ApiVersion.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.ApiVersion.Set {
 		e.RawStr("\"apiVersion\"" + ":")
 		s.ApiVersion.Encode(e)
 	}
-	if s.ApiVersion.Set {
+
+	if !first {
+
 		e.Comma()
 	}
+	first = false
 
 	e.RawStr("\"items\"" + ":")
 	e.ArrStart()
@@ -34817,21 +40931,20 @@ func (s IoK8sAPINodeV1alpha1RuntimeClassList) Encode(e *jx.Writer) {
 	}
 	e.ArrEnd()
 
-	e.Comma()
+	if s.Kind.Set {
+		e.Comma()
+	}
 	if s.Kind.Set {
 		e.RawStr("\"kind\"" + ":")
 		s.Kind.Encode(e)
 	}
-	if s.Kind.Set {
+
+	if s.Metadata.Set {
 		e.Comma()
 	}
 	if s.Metadata.Set {
 		e.RawStr("\"metadata\"" + ":")
 		s.Metadata.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -34880,24 +40993,36 @@ func (s *IoK8sAPINodeV1alpha1RuntimeClassList) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPINodeV1alpha1RuntimeClassSpec) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.Overhead.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.Overhead.Set {
 		e.RawStr("\"overhead\"" + ":")
 		s.Overhead.Encode(e)
 	}
-	if s.Overhead.Set {
+
+	if !first {
 		e.Comma()
 	}
+	first = false
 
 	e.RawStr("\"runtimeHandler\"" + ":")
 	e.Str(s.RuntimeHandler)
-	e.Comma()
+
+	if s.Scheduling.Set {
+		e.Comma()
+	}
 	if s.Scheduling.Set {
 		e.RawStr("\"scheduling\"" + ":")
 		s.Scheduling.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -34935,12 +41060,27 @@ func (s *IoK8sAPINodeV1alpha1RuntimeClassSpec) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPINodeV1alpha1Scheduling) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.NodeSelector != nil {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.NodeSelector != nil {
 		e.RawStr("\"nodeSelector\"" + ":")
 		s.NodeSelector.Encode(e)
 	}
-	if s.NodeSelector != nil {
-		e.Comma()
+
+	if s.Tolerations != nil {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Tolerations != nil {
 		e.RawStr("\"tolerations\"" + ":")
@@ -34957,10 +41097,6 @@ func (s IoK8sAPINodeV1alpha1Scheduling) Encode(e *jx.Writer) {
 			}
 		}
 		e.ArrEnd()
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -35001,10 +41137,10 @@ func (s *IoK8sAPINodeV1alpha1Scheduling) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPINodeV1alpha1SchedulingNodeSelector) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -35025,13 +41161,20 @@ func (s *IoK8sAPINodeV1alpha1SchedulingNodeSelector) Decode(d *jx.Decoder) error
 // Encode implements json.Marshaler.
 func (s IoK8sAPINodeV1beta1Overhead) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.PodFixed != nil {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.PodFixed != nil {
 		e.RawStr("\"podFixed\"" + ":")
 		s.PodFixed.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -35060,10 +41203,10 @@ func (s *IoK8sAPINodeV1beta1Overhead) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPINodeV1beta1OverheadPodFixed) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -35084,45 +41227,60 @@ func (s *IoK8sAPINodeV1beta1OverheadPodFixed) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPINodeV1beta1RuntimeClass) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.ApiVersion.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.ApiVersion.Set {
 		e.RawStr("\"apiVersion\"" + ":")
 		s.ApiVersion.Encode(e)
 	}
-	if s.ApiVersion.Set {
+
+	if !first {
 		e.Comma()
 	}
+	first = false
 
 	e.RawStr("\"handler\"" + ":")
 	e.Str(s.Handler)
-	e.Comma()
+
+	if s.Kind.Set {
+		e.Comma()
+	}
 	if s.Kind.Set {
 		e.RawStr("\"kind\"" + ":")
 		s.Kind.Encode(e)
 	}
-	if s.Kind.Set {
+
+	if s.Metadata.Set {
 		e.Comma()
 	}
 	if s.Metadata.Set {
 		e.RawStr("\"metadata\"" + ":")
 		s.Metadata.Encode(e)
 	}
-	if s.Metadata.Set {
+
+	if s.Overhead.Set {
 		e.Comma()
 	}
 	if s.Overhead.Set {
 		e.RawStr("\"overhead\"" + ":")
 		s.Overhead.Encode(e)
 	}
-	if s.Overhead.Set {
+
+	if s.Scheduling.Set {
 		e.Comma()
 	}
 	if s.Scheduling.Set {
 		e.RawStr("\"scheduling\"" + ":")
 		s.Scheduling.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -35175,13 +41333,27 @@ func (s *IoK8sAPINodeV1beta1RuntimeClass) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPINodeV1beta1RuntimeClassList) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.ApiVersion.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.ApiVersion.Set {
 		e.RawStr("\"apiVersion\"" + ":")
 		s.ApiVersion.Encode(e)
 	}
-	if s.ApiVersion.Set {
+
+	if !first {
+
 		e.Comma()
 	}
+	first = false
 
 	e.RawStr("\"items\"" + ":")
 	e.ArrStart()
@@ -35198,21 +41370,20 @@ func (s IoK8sAPINodeV1beta1RuntimeClassList) Encode(e *jx.Writer) {
 	}
 	e.ArrEnd()
 
-	e.Comma()
+	if s.Kind.Set {
+		e.Comma()
+	}
 	if s.Kind.Set {
 		e.RawStr("\"kind\"" + ":")
 		s.Kind.Encode(e)
 	}
-	if s.Kind.Set {
+
+	if s.Metadata.Set {
 		e.Comma()
 	}
 	if s.Metadata.Set {
 		e.RawStr("\"metadata\"" + ":")
 		s.Metadata.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -35261,12 +41432,27 @@ func (s *IoK8sAPINodeV1beta1RuntimeClassList) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPINodeV1beta1Scheduling) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.NodeSelector != nil {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.NodeSelector != nil {
 		e.RawStr("\"nodeSelector\"" + ":")
 		s.NodeSelector.Encode(e)
 	}
-	if s.NodeSelector != nil {
-		e.Comma()
+
+	if s.Tolerations != nil {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Tolerations != nil {
 		e.RawStr("\"tolerations\"" + ":")
@@ -35283,10 +41469,6 @@ func (s IoK8sAPINodeV1beta1Scheduling) Encode(e *jx.Writer) {
 			}
 		}
 		e.ArrEnd()
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -35327,10 +41509,10 @@ func (s *IoK8sAPINodeV1beta1Scheduling) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPINodeV1beta1SchedulingNodeSelector) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -35351,41 +41533,64 @@ func (s *IoK8sAPINodeV1beta1SchedulingNodeSelector) Decode(d *jx.Decoder) error 
 // Encode implements json.Marshaler.
 func (s IoK8sAPIPolicyV1PodDisruptionBudget) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.ApiVersion.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.ApiVersion.Set {
 		e.RawStr("\"apiVersion\"" + ":")
 		s.ApiVersion.Encode(e)
 	}
-	if s.ApiVersion.Set {
-		e.Comma()
+
+	if s.Kind.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Kind.Set {
 		e.RawStr("\"kind\"" + ":")
 		s.Kind.Encode(e)
 	}
-	if s.Kind.Set {
-		e.Comma()
+
+	if s.Metadata.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Metadata.Set {
 		e.RawStr("\"metadata\"" + ":")
 		s.Metadata.Encode(e)
 	}
-	if s.Metadata.Set {
-		e.Comma()
+
+	if s.Spec.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Spec.Set {
 		e.RawStr("\"spec\"" + ":")
 		s.Spec.Encode(e)
 	}
-	if s.Spec.Set {
-		e.Comma()
+
+	if s.Status.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Status.Set {
 		e.RawStr("\"status\"" + ":")
 		s.Status.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -35432,13 +41637,27 @@ func (s *IoK8sAPIPolicyV1PodDisruptionBudget) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPIPolicyV1PodDisruptionBudgetList) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.ApiVersion.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.ApiVersion.Set {
 		e.RawStr("\"apiVersion\"" + ":")
 		s.ApiVersion.Encode(e)
 	}
-	if s.ApiVersion.Set {
+
+	if !first {
+
 		e.Comma()
 	}
+	first = false
 
 	e.RawStr("\"items\"" + ":")
 	e.ArrStart()
@@ -35455,21 +41674,20 @@ func (s IoK8sAPIPolicyV1PodDisruptionBudgetList) Encode(e *jx.Writer) {
 	}
 	e.ArrEnd()
 
-	e.Comma()
+	if s.Kind.Set {
+		e.Comma()
+	}
 	if s.Kind.Set {
 		e.RawStr("\"kind\"" + ":")
 		s.Kind.Encode(e)
 	}
-	if s.Kind.Set {
+
+	if s.Metadata.Set {
 		e.Comma()
 	}
 	if s.Metadata.Set {
 		e.RawStr("\"metadata\"" + ":")
 		s.Metadata.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -35518,27 +41736,42 @@ func (s *IoK8sAPIPolicyV1PodDisruptionBudgetList) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPIPolicyV1PodDisruptionBudgetSpec) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.MaxUnavailable.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.MaxUnavailable.Set {
 		e.RawStr("\"maxUnavailable\"" + ":")
 		s.MaxUnavailable.Encode(e)
 	}
-	if s.MaxUnavailable.Set {
-		e.Comma()
+
+	if s.MinAvailable.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.MinAvailable.Set {
 		e.RawStr("\"minAvailable\"" + ":")
 		s.MinAvailable.Encode(e)
 	}
-	if s.MinAvailable.Set {
-		e.Comma()
+
+	if s.Selector.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Selector.Set {
 		e.RawStr("\"selector\"" + ":")
 		s.Selector.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -35575,6 +41808,17 @@ func (s *IoK8sAPIPolicyV1PodDisruptionBudgetSpec) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPIPolicyV1PodDisruptionBudgetStatus) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.Conditions != nil {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.Conditions != nil {
 		e.RawStr("\"conditions\"" + ":")
 		e.ArrStart()
@@ -35591,39 +41835,44 @@ func (s IoK8sAPIPolicyV1PodDisruptionBudgetStatus) Encode(e *jx.Writer) {
 		}
 		e.ArrEnd()
 	}
-	if s.Conditions != nil {
+
+	if !first {
 		e.Comma()
 	}
+	first = false
 
 	e.RawStr("\"currentHealthy\"" + ":")
 	e.Int32(s.CurrentHealthy)
+
 	e.Comma()
 
 	e.RawStr("\"desiredHealthy\"" + ":")
 	e.Int32(s.DesiredHealthy)
-	e.Comma()
+
+	if s.DisruptedPods != nil {
+		e.Comma()
+	}
 	if s.DisruptedPods != nil {
 		e.RawStr("\"disruptedPods\"" + ":")
 		s.DisruptedPods.Encode(e)
 	}
-	if s.DisruptedPods != nil {
-		e.Comma()
-	}
+
+	e.Comma()
 
 	e.RawStr("\"disruptionsAllowed\"" + ":")
 	e.Int32(s.DisruptionsAllowed)
+
 	e.Comma()
 
 	e.RawStr("\"expectedPods\"" + ":")
 	e.Int32(s.ExpectedPods)
-	e.Comma()
+
+	if s.ObservedGeneration.Set {
+		e.Comma()
+	}
 	if s.ObservedGeneration.Set {
 		e.RawStr("\"observedGeneration\"" + ":")
 		s.ObservedGeneration.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -35693,10 +41942,10 @@ func (s *IoK8sAPIPolicyV1PodDisruptionBudgetStatus) Decode(d *jx.Decoder) error 
 // Encode implements json.Marshaler.
 func (s IoK8sAPIPolicyV1PodDisruptionBudgetStatusDisruptedPods) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -35717,13 +41966,18 @@ func (s *IoK8sAPIPolicyV1PodDisruptionBudgetStatusDisruptedPods) Decode(d *jx.De
 // Encode implements json.Marshaler.
 func (s IoK8sAPIPolicyV1beta1AllowedCSIDriver) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"name\"" + ":")
 	e.Str(s.Name)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -35750,13 +42004,18 @@ func (s *IoK8sAPIPolicyV1beta1AllowedCSIDriver) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPIPolicyV1beta1AllowedFlexVolume) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"driver\"" + ":")
 	e.Str(s.Driver)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -35783,20 +42042,31 @@ func (s *IoK8sAPIPolicyV1beta1AllowedFlexVolume) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPIPolicyV1beta1AllowedHostPath) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.PathPrefix.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.PathPrefix.Set {
 		e.RawStr("\"pathPrefix\"" + ":")
 		s.PathPrefix.Encode(e)
 	}
-	if s.PathPrefix.Set {
-		e.Comma()
+
+	if s.ReadOnly.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.ReadOnly.Set {
 		e.RawStr("\"readOnly\"" + ":")
 		s.ReadOnly.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -35828,6 +42098,17 @@ func (s *IoK8sAPIPolicyV1beta1AllowedHostPath) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPIPolicyV1beta1FSGroupStrategyOptions) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.Ranges != nil {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.Ranges != nil {
 		e.RawStr("\"ranges\"" + ":")
 		e.ArrStart()
@@ -35844,16 +42125,16 @@ func (s IoK8sAPIPolicyV1beta1FSGroupStrategyOptions) Encode(e *jx.Writer) {
 		}
 		e.ArrEnd()
 	}
-	if s.Ranges != nil {
-		e.Comma()
+
+	if s.Rule.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Rule.Set {
 		e.RawStr("\"rule\"" + ":")
 		s.Rule.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -35892,17 +42173,23 @@ func (s *IoK8sAPIPolicyV1beta1FSGroupStrategyOptions) Decode(d *jx.Decoder) erro
 // Encode implements json.Marshaler.
 func (s IoK8sAPIPolicyV1beta1HostPortRange) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"max\"" + ":")
 	e.Int32(s.Max)
+
 	e.Comma()
 
 	e.RawStr("\"min\"" + ":")
 	e.Int32(s.Min)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -35935,17 +42222,23 @@ func (s *IoK8sAPIPolicyV1beta1HostPortRange) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPIPolicyV1beta1IDRange) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"max\"" + ":")
 	e.Int64(s.Max)
+
 	e.Comma()
 
 	e.RawStr("\"min\"" + ":")
 	e.Int64(s.Min)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -35978,41 +42271,64 @@ func (s *IoK8sAPIPolicyV1beta1IDRange) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPIPolicyV1beta1PodDisruptionBudget) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.ApiVersion.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.ApiVersion.Set {
 		e.RawStr("\"apiVersion\"" + ":")
 		s.ApiVersion.Encode(e)
 	}
-	if s.ApiVersion.Set {
-		e.Comma()
+
+	if s.Kind.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Kind.Set {
 		e.RawStr("\"kind\"" + ":")
 		s.Kind.Encode(e)
 	}
-	if s.Kind.Set {
-		e.Comma()
+
+	if s.Metadata.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Metadata.Set {
 		e.RawStr("\"metadata\"" + ":")
 		s.Metadata.Encode(e)
 	}
-	if s.Metadata.Set {
-		e.Comma()
+
+	if s.Spec.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Spec.Set {
 		e.RawStr("\"spec\"" + ":")
 		s.Spec.Encode(e)
 	}
-	if s.Spec.Set {
-		e.Comma()
+
+	if s.Status.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Status.Set {
 		e.RawStr("\"status\"" + ":")
 		s.Status.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -36059,13 +42375,27 @@ func (s *IoK8sAPIPolicyV1beta1PodDisruptionBudget) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPIPolicyV1beta1PodDisruptionBudgetList) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.ApiVersion.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.ApiVersion.Set {
 		e.RawStr("\"apiVersion\"" + ":")
 		s.ApiVersion.Encode(e)
 	}
-	if s.ApiVersion.Set {
+
+	if !first {
+
 		e.Comma()
 	}
+	first = false
 
 	e.RawStr("\"items\"" + ":")
 	e.ArrStart()
@@ -36082,21 +42412,20 @@ func (s IoK8sAPIPolicyV1beta1PodDisruptionBudgetList) Encode(e *jx.Writer) {
 	}
 	e.ArrEnd()
 
-	e.Comma()
+	if s.Kind.Set {
+		e.Comma()
+	}
 	if s.Kind.Set {
 		e.RawStr("\"kind\"" + ":")
 		s.Kind.Encode(e)
 	}
-	if s.Kind.Set {
+
+	if s.Metadata.Set {
 		e.Comma()
 	}
 	if s.Metadata.Set {
 		e.RawStr("\"metadata\"" + ":")
 		s.Metadata.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -36145,27 +42474,42 @@ func (s *IoK8sAPIPolicyV1beta1PodDisruptionBudgetList) Decode(d *jx.Decoder) err
 // Encode implements json.Marshaler.
 func (s IoK8sAPIPolicyV1beta1PodDisruptionBudgetSpec) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.MaxUnavailable.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.MaxUnavailable.Set {
 		e.RawStr("\"maxUnavailable\"" + ":")
 		s.MaxUnavailable.Encode(e)
 	}
-	if s.MaxUnavailable.Set {
-		e.Comma()
+
+	if s.MinAvailable.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.MinAvailable.Set {
 		e.RawStr("\"minAvailable\"" + ":")
 		s.MinAvailable.Encode(e)
 	}
-	if s.MinAvailable.Set {
-		e.Comma()
+
+	if s.Selector.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Selector.Set {
 		e.RawStr("\"selector\"" + ":")
 		s.Selector.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -36202,6 +42546,17 @@ func (s *IoK8sAPIPolicyV1beta1PodDisruptionBudgetSpec) Decode(d *jx.Decoder) err
 // Encode implements json.Marshaler.
 func (s IoK8sAPIPolicyV1beta1PodDisruptionBudgetStatus) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.Conditions != nil {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.Conditions != nil {
 		e.RawStr("\"conditions\"" + ":")
 		e.ArrStart()
@@ -36218,39 +42573,44 @@ func (s IoK8sAPIPolicyV1beta1PodDisruptionBudgetStatus) Encode(e *jx.Writer) {
 		}
 		e.ArrEnd()
 	}
-	if s.Conditions != nil {
+
+	if !first {
 		e.Comma()
 	}
+	first = false
 
 	e.RawStr("\"currentHealthy\"" + ":")
 	e.Int32(s.CurrentHealthy)
+
 	e.Comma()
 
 	e.RawStr("\"desiredHealthy\"" + ":")
 	e.Int32(s.DesiredHealthy)
-	e.Comma()
+
+	if s.DisruptedPods != nil {
+		e.Comma()
+	}
 	if s.DisruptedPods != nil {
 		e.RawStr("\"disruptedPods\"" + ":")
 		s.DisruptedPods.Encode(e)
 	}
-	if s.DisruptedPods != nil {
-		e.Comma()
-	}
+
+	e.Comma()
 
 	e.RawStr("\"disruptionsAllowed\"" + ":")
 	e.Int32(s.DisruptionsAllowed)
+
 	e.Comma()
 
 	e.RawStr("\"expectedPods\"" + ":")
 	e.Int32(s.ExpectedPods)
-	e.Comma()
+
+	if s.ObservedGeneration.Set {
+		e.Comma()
+	}
 	if s.ObservedGeneration.Set {
 		e.RawStr("\"observedGeneration\"" + ":")
 		s.ObservedGeneration.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -36320,10 +42680,10 @@ func (s *IoK8sAPIPolicyV1beta1PodDisruptionBudgetStatus) Decode(d *jx.Decoder) e
 // Encode implements json.Marshaler.
 func (s IoK8sAPIPolicyV1beta1PodDisruptionBudgetStatusDisruptedPods) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -36344,34 +42704,53 @@ func (s *IoK8sAPIPolicyV1beta1PodDisruptionBudgetStatusDisruptedPods) Decode(d *
 // Encode implements json.Marshaler.
 func (s IoK8sAPIPolicyV1beta1PodSecurityPolicy) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.ApiVersion.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.ApiVersion.Set {
 		e.RawStr("\"apiVersion\"" + ":")
 		s.ApiVersion.Encode(e)
 	}
-	if s.ApiVersion.Set {
-		e.Comma()
+
+	if s.Kind.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Kind.Set {
 		e.RawStr("\"kind\"" + ":")
 		s.Kind.Encode(e)
 	}
-	if s.Kind.Set {
-		e.Comma()
+
+	if s.Metadata.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Metadata.Set {
 		e.RawStr("\"metadata\"" + ":")
 		s.Metadata.Encode(e)
 	}
-	if s.Metadata.Set {
-		e.Comma()
+
+	if s.Spec.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Spec.Set {
 		e.RawStr("\"spec\"" + ":")
 		s.Spec.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -36413,13 +42792,27 @@ func (s *IoK8sAPIPolicyV1beta1PodSecurityPolicy) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPIPolicyV1beta1PodSecurityPolicyList) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.ApiVersion.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.ApiVersion.Set {
 		e.RawStr("\"apiVersion\"" + ":")
 		s.ApiVersion.Encode(e)
 	}
-	if s.ApiVersion.Set {
+
+	if !first {
+
 		e.Comma()
 	}
+	first = false
 
 	e.RawStr("\"items\"" + ":")
 	e.ArrStart()
@@ -36436,21 +42829,20 @@ func (s IoK8sAPIPolicyV1beta1PodSecurityPolicyList) Encode(e *jx.Writer) {
 	}
 	e.ArrEnd()
 
-	e.Comma()
+	if s.Kind.Set {
+		e.Comma()
+	}
 	if s.Kind.Set {
 		e.RawStr("\"kind\"" + ":")
 		s.Kind.Encode(e)
 	}
-	if s.Kind.Set {
+
+	if s.Metadata.Set {
 		e.Comma()
 	}
 	if s.Metadata.Set {
 		e.RawStr("\"metadata\"" + ":")
 		s.Metadata.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -36499,12 +42891,27 @@ func (s *IoK8sAPIPolicyV1beta1PodSecurityPolicyList) Decode(d *jx.Decoder) error
 // Encode implements json.Marshaler.
 func (s IoK8sAPIPolicyV1beta1PodSecurityPolicySpec) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.AllowPrivilegeEscalation.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.AllowPrivilegeEscalation.Set {
 		e.RawStr("\"allowPrivilegeEscalation\"" + ":")
 		s.AllowPrivilegeEscalation.Encode(e)
 	}
-	if s.AllowPrivilegeEscalation.Set {
-		e.Comma()
+
+	if s.AllowedCSIDrivers != nil {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.AllowedCSIDrivers != nil {
 		e.RawStr("\"allowedCSIDrivers\"" + ":")
@@ -36522,8 +42929,12 @@ func (s IoK8sAPIPolicyV1beta1PodSecurityPolicySpec) Encode(e *jx.Writer) {
 		}
 		e.ArrEnd()
 	}
-	if s.AllowedCSIDrivers != nil {
-		e.Comma()
+
+	if s.AllowedCapabilities != nil {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.AllowedCapabilities != nil {
 		e.RawStr("\"allowedCapabilities\"" + ":")
@@ -36541,8 +42952,12 @@ func (s IoK8sAPIPolicyV1beta1PodSecurityPolicySpec) Encode(e *jx.Writer) {
 		}
 		e.ArrEnd()
 	}
-	if s.AllowedCapabilities != nil {
-		e.Comma()
+
+	if s.AllowedFlexVolumes != nil {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.AllowedFlexVolumes != nil {
 		e.RawStr("\"allowedFlexVolumes\"" + ":")
@@ -36560,8 +42975,12 @@ func (s IoK8sAPIPolicyV1beta1PodSecurityPolicySpec) Encode(e *jx.Writer) {
 		}
 		e.ArrEnd()
 	}
-	if s.AllowedFlexVolumes != nil {
-		e.Comma()
+
+	if s.AllowedHostPaths != nil {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.AllowedHostPaths != nil {
 		e.RawStr("\"allowedHostPaths\"" + ":")
@@ -36579,8 +42998,12 @@ func (s IoK8sAPIPolicyV1beta1PodSecurityPolicySpec) Encode(e *jx.Writer) {
 		}
 		e.ArrEnd()
 	}
-	if s.AllowedHostPaths != nil {
-		e.Comma()
+
+	if s.AllowedProcMountTypes != nil {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.AllowedProcMountTypes != nil {
 		e.RawStr("\"allowedProcMountTypes\"" + ":")
@@ -36598,8 +43021,12 @@ func (s IoK8sAPIPolicyV1beta1PodSecurityPolicySpec) Encode(e *jx.Writer) {
 		}
 		e.ArrEnd()
 	}
-	if s.AllowedProcMountTypes != nil {
-		e.Comma()
+
+	if s.AllowedUnsafeSysctls != nil {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.AllowedUnsafeSysctls != nil {
 		e.RawStr("\"allowedUnsafeSysctls\"" + ":")
@@ -36617,8 +43044,12 @@ func (s IoK8sAPIPolicyV1beta1PodSecurityPolicySpec) Encode(e *jx.Writer) {
 		}
 		e.ArrEnd()
 	}
-	if s.AllowedUnsafeSysctls != nil {
-		e.Comma()
+
+	if s.DefaultAddCapabilities != nil {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.DefaultAddCapabilities != nil {
 		e.RawStr("\"defaultAddCapabilities\"" + ":")
@@ -36636,15 +43067,23 @@ func (s IoK8sAPIPolicyV1beta1PodSecurityPolicySpec) Encode(e *jx.Writer) {
 		}
 		e.ArrEnd()
 	}
-	if s.DefaultAddCapabilities != nil {
-		e.Comma()
+
+	if s.DefaultAllowPrivilegeEscalation.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.DefaultAllowPrivilegeEscalation.Set {
 		e.RawStr("\"defaultAllowPrivilegeEscalation\"" + ":")
 		s.DefaultAllowPrivilegeEscalation.Encode(e)
 	}
-	if s.DefaultAllowPrivilegeEscalation.Set {
-		e.Comma()
+
+	if s.ForbiddenSysctls != nil {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.ForbiddenSysctls != nil {
 		e.RawStr("\"forbiddenSysctls\"" + ":")
@@ -36662,33 +43101,41 @@ func (s IoK8sAPIPolicyV1beta1PodSecurityPolicySpec) Encode(e *jx.Writer) {
 		}
 		e.ArrEnd()
 	}
-	if s.ForbiddenSysctls != nil {
+
+	if !first {
+
 		e.Comma()
 	}
+	first = false
 
 	e.RawStr("\"fsGroup\"" + ":")
 	s.FsGroup.Encode(e)
 
-	e.Comma()
+	if s.HostIPC.Set {
+		e.Comma()
+	}
 	if s.HostIPC.Set {
 		e.RawStr("\"hostIPC\"" + ":")
 		s.HostIPC.Encode(e)
 	}
-	if s.HostIPC.Set {
+
+	if s.HostNetwork.Set {
 		e.Comma()
 	}
 	if s.HostNetwork.Set {
 		e.RawStr("\"hostNetwork\"" + ":")
 		s.HostNetwork.Encode(e)
 	}
-	if s.HostNetwork.Set {
+
+	if s.HostPID.Set {
 		e.Comma()
 	}
 	if s.HostPID.Set {
 		e.RawStr("\"hostPID\"" + ":")
 		s.HostPID.Encode(e)
 	}
-	if s.HostPID.Set {
+
+	if s.HostPorts != nil {
 		e.Comma()
 	}
 	if s.HostPorts != nil {
@@ -36707,21 +43154,24 @@ func (s IoK8sAPIPolicyV1beta1PodSecurityPolicySpec) Encode(e *jx.Writer) {
 		}
 		e.ArrEnd()
 	}
-	if s.HostPorts != nil {
+
+	if s.Privileged.Set {
 		e.Comma()
 	}
 	if s.Privileged.Set {
 		e.RawStr("\"privileged\"" + ":")
 		s.Privileged.Encode(e)
 	}
-	if s.Privileged.Set {
+
+	if s.ReadOnlyRootFilesystem.Set {
 		e.Comma()
 	}
 	if s.ReadOnlyRootFilesystem.Set {
 		e.RawStr("\"readOnlyRootFilesystem\"" + ":")
 		s.ReadOnlyRootFilesystem.Encode(e)
 	}
-	if s.ReadOnlyRootFilesystem.Set {
+
+	if s.RequiredDropCapabilities != nil {
 		e.Comma()
 	}
 	if s.RequiredDropCapabilities != nil {
@@ -36740,28 +43190,29 @@ func (s IoK8sAPIPolicyV1beta1PodSecurityPolicySpec) Encode(e *jx.Writer) {
 		}
 		e.ArrEnd()
 	}
-	if s.RequiredDropCapabilities != nil {
+
+	if s.RunAsGroup.Set {
 		e.Comma()
 	}
 	if s.RunAsGroup.Set {
 		e.RawStr("\"runAsGroup\"" + ":")
 		s.RunAsGroup.Encode(e)
 	}
-	if s.RunAsGroup.Set {
-		e.Comma()
-	}
+
+	e.Comma()
 
 	e.RawStr("\"runAsUser\"" + ":")
 	s.RunAsUser.Encode(e)
 
-	e.Comma()
+	if s.RuntimeClass.Set {
+		e.Comma()
+	}
 	if s.RuntimeClass.Set {
 		e.RawStr("\"runtimeClass\"" + ":")
 		s.RuntimeClass.Encode(e)
 	}
-	if s.RuntimeClass.Set {
-		e.Comma()
-	}
+
+	e.Comma()
 
 	e.RawStr("\"seLinux\"" + ":")
 	s.SeLinux.Encode(e)
@@ -36771,7 +43222,9 @@ func (s IoK8sAPIPolicyV1beta1PodSecurityPolicySpec) Encode(e *jx.Writer) {
 	e.RawStr("\"supplementalGroups\"" + ":")
 	s.SupplementalGroups.Encode(e)
 
-	e.Comma()
+	if s.Volumes != nil {
+		e.Comma()
+	}
 	if s.Volumes != nil {
 		e.RawStr("\"volumes\"" + ":")
 		e.ArrStart()
@@ -36787,10 +43240,6 @@ func (s IoK8sAPIPolicyV1beta1PodSecurityPolicySpec) Encode(e *jx.Writer) {
 			}
 		}
 		e.ArrEnd()
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -37019,6 +43468,17 @@ func (s *IoK8sAPIPolicyV1beta1PodSecurityPolicySpec) Decode(d *jx.Decoder) error
 // Encode implements json.Marshaler.
 func (s IoK8sAPIPolicyV1beta1RunAsGroupStrategyOptions) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.Ranges != nil {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.Ranges != nil {
 		e.RawStr("\"ranges\"" + ":")
 		e.ArrStart()
@@ -37035,16 +43495,14 @@ func (s IoK8sAPIPolicyV1beta1RunAsGroupStrategyOptions) Encode(e *jx.Writer) {
 		}
 		e.ArrEnd()
 	}
-	if s.Ranges != nil {
+
+	if !first {
 		e.Comma()
 	}
+	first = false
 
 	e.RawStr("\"rule\"" + ":")
 	e.Str(s.Rule)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -37083,6 +43541,17 @@ func (s *IoK8sAPIPolicyV1beta1RunAsGroupStrategyOptions) Decode(d *jx.Decoder) e
 // Encode implements json.Marshaler.
 func (s IoK8sAPIPolicyV1beta1RunAsUserStrategyOptions) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.Ranges != nil {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.Ranges != nil {
 		e.RawStr("\"ranges\"" + ":")
 		e.ArrStart()
@@ -37099,16 +43568,14 @@ func (s IoK8sAPIPolicyV1beta1RunAsUserStrategyOptions) Encode(e *jx.Writer) {
 		}
 		e.ArrEnd()
 	}
-	if s.Ranges != nil {
+
+	if !first {
 		e.Comma()
 	}
+	first = false
 
 	e.RawStr("\"rule\"" + ":")
 	e.Str(s.Rule)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -37147,6 +43614,16 @@ func (s *IoK8sAPIPolicyV1beta1RunAsUserStrategyOptions) Decode(d *jx.Decoder) er
 // Encode implements json.Marshaler.
 func (s IoK8sAPIPolicyV1beta1RuntimeClassStrategyOptions) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"allowedRuntimeClassNames\"" + ":")
 	e.ArrStart()
@@ -37163,14 +43640,12 @@ func (s IoK8sAPIPolicyV1beta1RuntimeClassStrategyOptions) Encode(e *jx.Writer) {
 	}
 	e.ArrEnd()
 
-	e.Comma()
+	if s.DefaultRuntimeClassName.Set {
+		e.Comma()
+	}
 	if s.DefaultRuntimeClassName.Set {
 		e.RawStr("\"defaultRuntimeClassName\"" + ":")
 		s.DefaultRuntimeClassName.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -37211,17 +43686,25 @@ func (s *IoK8sAPIPolicyV1beta1RuntimeClassStrategyOptions) Decode(d *jx.Decoder)
 // Encode implements json.Marshaler.
 func (s IoK8sAPIPolicyV1beta1SELinuxStrategyOptions) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"rule\"" + ":")
 	e.Str(s.Rule)
-	e.Comma()
+
+	if s.SeLinuxOptions.Set {
+		e.Comma()
+	}
 	if s.SeLinuxOptions.Set {
 		e.RawStr("\"seLinuxOptions\"" + ":")
 		s.SeLinuxOptions.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -37254,6 +43737,17 @@ func (s *IoK8sAPIPolicyV1beta1SELinuxStrategyOptions) Decode(d *jx.Decoder) erro
 // Encode implements json.Marshaler.
 func (s IoK8sAPIPolicyV1beta1SupplementalGroupsStrategyOptions) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.Ranges != nil {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.Ranges != nil {
 		e.RawStr("\"ranges\"" + ":")
 		e.ArrStart()
@@ -37270,16 +43764,16 @@ func (s IoK8sAPIPolicyV1beta1SupplementalGroupsStrategyOptions) Encode(e *jx.Wri
 		}
 		e.ArrEnd()
 	}
-	if s.Ranges != nil {
-		e.Comma()
+
+	if s.Rule.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Rule.Set {
 		e.RawStr("\"rule\"" + ":")
 		s.Rule.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -37318,6 +43812,17 @@ func (s *IoK8sAPIPolicyV1beta1SupplementalGroupsStrategyOptions) Decode(d *jx.De
 // Encode implements json.Marshaler.
 func (s IoK8sAPIRbacV1AggregationRule) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.ClusterRoleSelectors != nil {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.ClusterRoleSelectors != nil {
 		e.RawStr("\"clusterRoleSelectors\"" + ":")
 		e.ArrStart()
@@ -37333,10 +43838,6 @@ func (s IoK8sAPIRbacV1AggregationRule) Encode(e *jx.Writer) {
 			}
 		}
 		e.ArrEnd()
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -37370,33 +43871,60 @@ func (s *IoK8sAPIRbacV1AggregationRule) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPIRbacV1ClusterRole) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.AggregationRule.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.AggregationRule.Set {
 		e.RawStr("\"aggregationRule\"" + ":")
 		s.AggregationRule.Encode(e)
 	}
-	if s.AggregationRule.Set {
-		e.Comma()
+
+	if s.ApiVersion.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.ApiVersion.Set {
 		e.RawStr("\"apiVersion\"" + ":")
 		s.ApiVersion.Encode(e)
 	}
-	if s.ApiVersion.Set {
-		e.Comma()
+
+	if s.Kind.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Kind.Set {
 		e.RawStr("\"kind\"" + ":")
 		s.Kind.Encode(e)
 	}
-	if s.Kind.Set {
-		e.Comma()
+
+	if s.Metadata.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Metadata.Set {
 		e.RawStr("\"metadata\"" + ":")
 		s.Metadata.Encode(e)
 	}
-	if s.Metadata.Set {
-		e.Comma()
+
+	if s.Rules != nil {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Rules != nil {
 		e.RawStr("\"rules\"" + ":")
@@ -37413,10 +43941,6 @@ func (s IoK8sAPIRbacV1ClusterRole) Encode(e *jx.Writer) {
 			}
 		}
 		e.ArrEnd()
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -37470,32 +43994,56 @@ func (s *IoK8sAPIRbacV1ClusterRole) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPIRbacV1ClusterRoleBinding) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.ApiVersion.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.ApiVersion.Set {
 		e.RawStr("\"apiVersion\"" + ":")
 		s.ApiVersion.Encode(e)
 	}
-	if s.ApiVersion.Set {
-		e.Comma()
+
+	if s.Kind.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Kind.Set {
 		e.RawStr("\"kind\"" + ":")
 		s.Kind.Encode(e)
 	}
-	if s.Kind.Set {
-		e.Comma()
+
+	if s.Metadata.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Metadata.Set {
 		e.RawStr("\"metadata\"" + ":")
 		s.Metadata.Encode(e)
 	}
-	if s.Metadata.Set {
+
+	if !first {
+
 		e.Comma()
 	}
+	first = false
 
 	e.RawStr("\"roleRef\"" + ":")
 	s.RoleRef.Encode(e)
 
-	e.Comma()
+	if s.Subjects != nil {
+		e.Comma()
+	}
 	if s.Subjects != nil {
 		e.RawStr("\"subjects\"" + ":")
 		e.ArrStart()
@@ -37511,10 +44059,6 @@ func (s IoK8sAPIRbacV1ClusterRoleBinding) Encode(e *jx.Writer) {
 			}
 		}
 		e.ArrEnd()
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -37567,13 +44111,27 @@ func (s *IoK8sAPIRbacV1ClusterRoleBinding) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPIRbacV1ClusterRoleBindingList) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.ApiVersion.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.ApiVersion.Set {
 		e.RawStr("\"apiVersion\"" + ":")
 		s.ApiVersion.Encode(e)
 	}
-	if s.ApiVersion.Set {
+
+	if !first {
+
 		e.Comma()
 	}
+	first = false
 
 	e.RawStr("\"items\"" + ":")
 	e.ArrStart()
@@ -37590,21 +44148,20 @@ func (s IoK8sAPIRbacV1ClusterRoleBindingList) Encode(e *jx.Writer) {
 	}
 	e.ArrEnd()
 
-	e.Comma()
+	if s.Kind.Set {
+		e.Comma()
+	}
 	if s.Kind.Set {
 		e.RawStr("\"kind\"" + ":")
 		s.Kind.Encode(e)
 	}
-	if s.Kind.Set {
+
+	if s.Metadata.Set {
 		e.Comma()
 	}
 	if s.Metadata.Set {
 		e.RawStr("\"metadata\"" + ":")
 		s.Metadata.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -37653,13 +44210,27 @@ func (s *IoK8sAPIRbacV1ClusterRoleBindingList) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPIRbacV1ClusterRoleList) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.ApiVersion.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.ApiVersion.Set {
 		e.RawStr("\"apiVersion\"" + ":")
 		s.ApiVersion.Encode(e)
 	}
-	if s.ApiVersion.Set {
+
+	if !first {
+
 		e.Comma()
 	}
+	first = false
 
 	e.RawStr("\"items\"" + ":")
 	e.ArrStart()
@@ -37676,21 +44247,20 @@ func (s IoK8sAPIRbacV1ClusterRoleList) Encode(e *jx.Writer) {
 	}
 	e.ArrEnd()
 
-	e.Comma()
+	if s.Kind.Set {
+		e.Comma()
+	}
 	if s.Kind.Set {
 		e.RawStr("\"kind\"" + ":")
 		s.Kind.Encode(e)
 	}
-	if s.Kind.Set {
+
+	if s.Metadata.Set {
 		e.Comma()
 	}
 	if s.Metadata.Set {
 		e.RawStr("\"metadata\"" + ":")
 		s.Metadata.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -37739,6 +44309,17 @@ func (s *IoK8sAPIRbacV1ClusterRoleList) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPIRbacV1PolicyRule) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.ApiGroups != nil {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.ApiGroups != nil {
 		e.RawStr("\"apiGroups\"" + ":")
 		e.ArrStart()
@@ -37755,8 +44336,12 @@ func (s IoK8sAPIRbacV1PolicyRule) Encode(e *jx.Writer) {
 		}
 		e.ArrEnd()
 	}
-	if s.ApiGroups != nil {
-		e.Comma()
+
+	if s.NonResourceURLs != nil {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.NonResourceURLs != nil {
 		e.RawStr("\"nonResourceURLs\"" + ":")
@@ -37774,8 +44359,12 @@ func (s IoK8sAPIRbacV1PolicyRule) Encode(e *jx.Writer) {
 		}
 		e.ArrEnd()
 	}
-	if s.NonResourceURLs != nil {
-		e.Comma()
+
+	if s.ResourceNames != nil {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.ResourceNames != nil {
 		e.RawStr("\"resourceNames\"" + ":")
@@ -37793,8 +44382,12 @@ func (s IoK8sAPIRbacV1PolicyRule) Encode(e *jx.Writer) {
 		}
 		e.ArrEnd()
 	}
-	if s.ResourceNames != nil {
-		e.Comma()
+
+	if s.Resources != nil {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Resources != nil {
 		e.RawStr("\"resources\"" + ":")
@@ -37812,9 +44405,12 @@ func (s IoK8sAPIRbacV1PolicyRule) Encode(e *jx.Writer) {
 		}
 		e.ArrEnd()
 	}
-	if s.Resources != nil {
+
+	if !first {
+
 		e.Comma()
 	}
+	first = false
 
 	e.RawStr("\"verbs\"" + ":")
 	e.ArrStart()
@@ -37830,10 +44426,6 @@ func (s IoK8sAPIRbacV1PolicyRule) Encode(e *jx.Writer) {
 		}
 	}
 	e.ArrEnd()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -37924,26 +44516,49 @@ func (s *IoK8sAPIRbacV1PolicyRule) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPIRbacV1Role) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.ApiVersion.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.ApiVersion.Set {
 		e.RawStr("\"apiVersion\"" + ":")
 		s.ApiVersion.Encode(e)
 	}
-	if s.ApiVersion.Set {
-		e.Comma()
+
+	if s.Kind.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Kind.Set {
 		e.RawStr("\"kind\"" + ":")
 		s.Kind.Encode(e)
 	}
-	if s.Kind.Set {
-		e.Comma()
+
+	if s.Metadata.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Metadata.Set {
 		e.RawStr("\"metadata\"" + ":")
 		s.Metadata.Encode(e)
 	}
-	if s.Metadata.Set {
-		e.Comma()
+
+	if s.Rules != nil {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Rules != nil {
 		e.RawStr("\"rules\"" + ":")
@@ -37960,10 +44575,6 @@ func (s IoK8sAPIRbacV1Role) Encode(e *jx.Writer) {
 			}
 		}
 		e.ArrEnd()
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -38012,32 +44623,56 @@ func (s *IoK8sAPIRbacV1Role) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPIRbacV1RoleBinding) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.ApiVersion.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.ApiVersion.Set {
 		e.RawStr("\"apiVersion\"" + ":")
 		s.ApiVersion.Encode(e)
 	}
-	if s.ApiVersion.Set {
-		e.Comma()
+
+	if s.Kind.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Kind.Set {
 		e.RawStr("\"kind\"" + ":")
 		s.Kind.Encode(e)
 	}
-	if s.Kind.Set {
-		e.Comma()
+
+	if s.Metadata.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Metadata.Set {
 		e.RawStr("\"metadata\"" + ":")
 		s.Metadata.Encode(e)
 	}
-	if s.Metadata.Set {
+
+	if !first {
+
 		e.Comma()
 	}
+	first = false
 
 	e.RawStr("\"roleRef\"" + ":")
 	s.RoleRef.Encode(e)
 
-	e.Comma()
+	if s.Subjects != nil {
+		e.Comma()
+	}
 	if s.Subjects != nil {
 		e.RawStr("\"subjects\"" + ":")
 		e.ArrStart()
@@ -38053,10 +44688,6 @@ func (s IoK8sAPIRbacV1RoleBinding) Encode(e *jx.Writer) {
 			}
 		}
 		e.ArrEnd()
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -38109,13 +44740,27 @@ func (s *IoK8sAPIRbacV1RoleBinding) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPIRbacV1RoleBindingList) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.ApiVersion.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.ApiVersion.Set {
 		e.RawStr("\"apiVersion\"" + ":")
 		s.ApiVersion.Encode(e)
 	}
-	if s.ApiVersion.Set {
+
+	if !first {
+
 		e.Comma()
 	}
+	first = false
 
 	e.RawStr("\"items\"" + ":")
 	e.ArrStart()
@@ -38132,21 +44777,20 @@ func (s IoK8sAPIRbacV1RoleBindingList) Encode(e *jx.Writer) {
 	}
 	e.ArrEnd()
 
-	e.Comma()
+	if s.Kind.Set {
+		e.Comma()
+	}
 	if s.Kind.Set {
 		e.RawStr("\"kind\"" + ":")
 		s.Kind.Encode(e)
 	}
-	if s.Kind.Set {
+
+	if s.Metadata.Set {
 		e.Comma()
 	}
 	if s.Metadata.Set {
 		e.RawStr("\"metadata\"" + ":")
 		s.Metadata.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -38195,13 +44839,27 @@ func (s *IoK8sAPIRbacV1RoleBindingList) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPIRbacV1RoleList) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.ApiVersion.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.ApiVersion.Set {
 		e.RawStr("\"apiVersion\"" + ":")
 		s.ApiVersion.Encode(e)
 	}
-	if s.ApiVersion.Set {
+
+	if !first {
+
 		e.Comma()
 	}
+	first = false
 
 	e.RawStr("\"items\"" + ":")
 	e.ArrStart()
@@ -38218,21 +44876,20 @@ func (s IoK8sAPIRbacV1RoleList) Encode(e *jx.Writer) {
 	}
 	e.ArrEnd()
 
-	e.Comma()
+	if s.Kind.Set {
+		e.Comma()
+	}
 	if s.Kind.Set {
 		e.RawStr("\"kind\"" + ":")
 		s.Kind.Encode(e)
 	}
-	if s.Kind.Set {
+
+	if s.Metadata.Set {
 		e.Comma()
 	}
 	if s.Metadata.Set {
 		e.RawStr("\"metadata\"" + ":")
 		s.Metadata.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -38281,21 +44938,28 @@ func (s *IoK8sAPIRbacV1RoleList) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPIRbacV1RoleRef) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"apiGroup\"" + ":")
 	e.Str(s.ApiGroup)
+
 	e.Comma()
 
 	e.RawStr("\"kind\"" + ":")
 	e.Str(s.Kind)
+
 	e.Comma()
 
 	e.RawStr("\"name\"" + ":")
 	e.Str(s.Name)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -38334,28 +44998,41 @@ func (s *IoK8sAPIRbacV1RoleRef) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPIRbacV1Subject) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.ApiGroup.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.ApiGroup.Set {
 		e.RawStr("\"apiGroup\"" + ":")
 		s.ApiGroup.Encode(e)
 	}
-	if s.ApiGroup.Set {
+
+	if !first {
 		e.Comma()
 	}
+	first = false
 
 	e.RawStr("\"kind\"" + ":")
 	e.Str(s.Kind)
+
 	e.Comma()
 
 	e.RawStr("\"name\"" + ":")
 	e.Str(s.Name)
-	e.Comma()
+
+	if s.Namespace.Set {
+		e.Comma()
+	}
 	if s.Namespace.Set {
 		e.RawStr("\"namespace\"" + ":")
 		s.Namespace.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -38399,55 +45076,84 @@ func (s *IoK8sAPIRbacV1Subject) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPISchedulingV1PriorityClass) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.ApiVersion.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.ApiVersion.Set {
 		e.RawStr("\"apiVersion\"" + ":")
 		s.ApiVersion.Encode(e)
 	}
-	if s.ApiVersion.Set {
-		e.Comma()
+
+	if s.Description.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Description.Set {
 		e.RawStr("\"description\"" + ":")
 		s.Description.Encode(e)
 	}
-	if s.Description.Set {
-		e.Comma()
+
+	if s.GlobalDefault.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.GlobalDefault.Set {
 		e.RawStr("\"globalDefault\"" + ":")
 		s.GlobalDefault.Encode(e)
 	}
-	if s.GlobalDefault.Set {
-		e.Comma()
+
+	if s.Kind.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Kind.Set {
 		e.RawStr("\"kind\"" + ":")
 		s.Kind.Encode(e)
 	}
-	if s.Kind.Set {
-		e.Comma()
+
+	if s.Metadata.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Metadata.Set {
 		e.RawStr("\"metadata\"" + ":")
 		s.Metadata.Encode(e)
 	}
-	if s.Metadata.Set {
-		e.Comma()
+
+	if s.PreemptionPolicy.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.PreemptionPolicy.Set {
 		e.RawStr("\"preemptionPolicy\"" + ":")
 		s.PreemptionPolicy.Encode(e)
 	}
-	if s.PreemptionPolicy.Set {
+
+	if !first {
 		e.Comma()
 	}
+	first = false
 
 	e.RawStr("\"value\"" + ":")
 	e.Int32(s.Value)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -38504,13 +45210,27 @@ func (s *IoK8sAPISchedulingV1PriorityClass) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPISchedulingV1PriorityClassList) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.ApiVersion.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.ApiVersion.Set {
 		e.RawStr("\"apiVersion\"" + ":")
 		s.ApiVersion.Encode(e)
 	}
-	if s.ApiVersion.Set {
+
+	if !first {
+
 		e.Comma()
 	}
+	first = false
 
 	e.RawStr("\"items\"" + ":")
 	e.ArrStart()
@@ -38527,21 +45247,20 @@ func (s IoK8sAPISchedulingV1PriorityClassList) Encode(e *jx.Writer) {
 	}
 	e.ArrEnd()
 
-	e.Comma()
+	if s.Kind.Set {
+		e.Comma()
+	}
 	if s.Kind.Set {
 		e.RawStr("\"kind\"" + ":")
 		s.Kind.Encode(e)
 	}
-	if s.Kind.Set {
+
+	if s.Metadata.Set {
 		e.Comma()
 	}
 	if s.Metadata.Set {
 		e.RawStr("\"metadata\"" + ":")
 		s.Metadata.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -38590,34 +45309,52 @@ func (s *IoK8sAPISchedulingV1PriorityClassList) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPIStorageV1CSIDriver) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.ApiVersion.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.ApiVersion.Set {
 		e.RawStr("\"apiVersion\"" + ":")
 		s.ApiVersion.Encode(e)
 	}
-	if s.ApiVersion.Set {
-		e.Comma()
+
+	if s.Kind.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Kind.Set {
 		e.RawStr("\"kind\"" + ":")
 		s.Kind.Encode(e)
 	}
-	if s.Kind.Set {
-		e.Comma()
+
+	if s.Metadata.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Metadata.Set {
 		e.RawStr("\"metadata\"" + ":")
 		s.Metadata.Encode(e)
 	}
-	if s.Metadata.Set {
+
+	if !first {
+
 		e.Comma()
 	}
+	first = false
 
 	e.RawStr("\"spec\"" + ":")
 	s.Spec.Encode(e)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -38657,13 +45394,27 @@ func (s *IoK8sAPIStorageV1CSIDriver) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPIStorageV1CSIDriverList) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.ApiVersion.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.ApiVersion.Set {
 		e.RawStr("\"apiVersion\"" + ":")
 		s.ApiVersion.Encode(e)
 	}
-	if s.ApiVersion.Set {
+
+	if !first {
+
 		e.Comma()
 	}
+	first = false
 
 	e.RawStr("\"items\"" + ":")
 	e.ArrStart()
@@ -38680,21 +45431,20 @@ func (s IoK8sAPIStorageV1CSIDriverList) Encode(e *jx.Writer) {
 	}
 	e.ArrEnd()
 
-	e.Comma()
+	if s.Kind.Set {
+		e.Comma()
+	}
 	if s.Kind.Set {
 		e.RawStr("\"kind\"" + ":")
 		s.Kind.Encode(e)
 	}
-	if s.Kind.Set {
+
+	if s.Metadata.Set {
 		e.Comma()
 	}
 	if s.Metadata.Set {
 		e.RawStr("\"metadata\"" + ":")
 		s.Metadata.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -38743,40 +45493,71 @@ func (s *IoK8sAPIStorageV1CSIDriverList) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPIStorageV1CSIDriverSpec) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.AttachRequired.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.AttachRequired.Set {
 		e.RawStr("\"attachRequired\"" + ":")
 		s.AttachRequired.Encode(e)
 	}
-	if s.AttachRequired.Set {
-		e.Comma()
+
+	if s.FsGroupPolicy.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.FsGroupPolicy.Set {
 		e.RawStr("\"fsGroupPolicy\"" + ":")
 		s.FsGroupPolicy.Encode(e)
 	}
-	if s.FsGroupPolicy.Set {
-		e.Comma()
+
+	if s.PodInfoOnMount.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.PodInfoOnMount.Set {
 		e.RawStr("\"podInfoOnMount\"" + ":")
 		s.PodInfoOnMount.Encode(e)
 	}
-	if s.PodInfoOnMount.Set {
-		e.Comma()
+
+	if s.RequiresRepublish.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.RequiresRepublish.Set {
 		e.RawStr("\"requiresRepublish\"" + ":")
 		s.RequiresRepublish.Encode(e)
 	}
-	if s.RequiresRepublish.Set {
-		e.Comma()
+
+	if s.StorageCapacity.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.StorageCapacity.Set {
 		e.RawStr("\"storageCapacity\"" + ":")
 		s.StorageCapacity.Encode(e)
 	}
-	if s.StorageCapacity.Set {
-		e.Comma()
+
+	if s.TokenRequests != nil {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.TokenRequests != nil {
 		e.RawStr("\"tokenRequests\"" + ":")
@@ -38794,8 +45575,12 @@ func (s IoK8sAPIStorageV1CSIDriverSpec) Encode(e *jx.Writer) {
 		}
 		e.ArrEnd()
 	}
-	if s.TokenRequests != nil {
-		e.Comma()
+
+	if s.VolumeLifecycleModes != nil {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.VolumeLifecycleModes != nil {
 		e.RawStr("\"volumeLifecycleModes\"" + ":")
@@ -38812,10 +45597,6 @@ func (s IoK8sAPIStorageV1CSIDriverSpec) Encode(e *jx.Writer) {
 			}
 		}
 		e.ArrEnd()
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -38888,34 +45669,52 @@ func (s *IoK8sAPIStorageV1CSIDriverSpec) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPIStorageV1CSINode) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.ApiVersion.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.ApiVersion.Set {
 		e.RawStr("\"apiVersion\"" + ":")
 		s.ApiVersion.Encode(e)
 	}
-	if s.ApiVersion.Set {
-		e.Comma()
+
+	if s.Kind.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Kind.Set {
 		e.RawStr("\"kind\"" + ":")
 		s.Kind.Encode(e)
 	}
-	if s.Kind.Set {
-		e.Comma()
+
+	if s.Metadata.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Metadata.Set {
 		e.RawStr("\"metadata\"" + ":")
 		s.Metadata.Encode(e)
 	}
-	if s.Metadata.Set {
+
+	if !first {
+
 		e.Comma()
 	}
+	first = false
 
 	e.RawStr("\"spec\"" + ":")
 	s.Spec.Encode(e)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -38955,21 +45754,38 @@ func (s *IoK8sAPIStorageV1CSINode) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPIStorageV1CSINodeDriver) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.Allocatable.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.Allocatable.Set {
 		e.RawStr("\"allocatable\"" + ":")
 		s.Allocatable.Encode(e)
 	}
-	if s.Allocatable.Set {
+
+	if !first {
 		e.Comma()
 	}
+	first = false
 
 	e.RawStr("\"name\"" + ":")
 	e.Str(s.Name)
+
 	e.Comma()
 
 	e.RawStr("\"nodeID\"" + ":")
 	e.Str(s.NodeID)
-	e.Comma()
+
+	if s.TopologyKeys != nil {
+		e.Comma()
+	}
 	if s.TopologyKeys != nil {
 		e.RawStr("\"topologyKeys\"" + ":")
 		e.ArrStart()
@@ -38985,10 +45801,6 @@ func (s IoK8sAPIStorageV1CSINodeDriver) Encode(e *jx.Writer) {
 			}
 		}
 		e.ArrEnd()
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -39041,13 +45853,27 @@ func (s *IoK8sAPIStorageV1CSINodeDriver) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPIStorageV1CSINodeList) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.ApiVersion.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.ApiVersion.Set {
 		e.RawStr("\"apiVersion\"" + ":")
 		s.ApiVersion.Encode(e)
 	}
-	if s.ApiVersion.Set {
+
+	if !first {
+
 		e.Comma()
 	}
+	first = false
 
 	e.RawStr("\"items\"" + ":")
 	e.ArrStart()
@@ -39064,21 +45890,20 @@ func (s IoK8sAPIStorageV1CSINodeList) Encode(e *jx.Writer) {
 	}
 	e.ArrEnd()
 
-	e.Comma()
+	if s.Kind.Set {
+		e.Comma()
+	}
 	if s.Kind.Set {
 		e.RawStr("\"kind\"" + ":")
 		s.Kind.Encode(e)
 	}
-	if s.Kind.Set {
+
+	if s.Metadata.Set {
 		e.Comma()
 	}
 	if s.Metadata.Set {
 		e.RawStr("\"metadata\"" + ":")
 		s.Metadata.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -39127,6 +45952,16 @@ func (s *IoK8sAPIStorageV1CSINodeList) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPIStorageV1CSINodeSpec) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"drivers\"" + ":")
 	e.ArrStart()
@@ -39142,10 +45977,6 @@ func (s IoK8sAPIStorageV1CSINodeSpec) Encode(e *jx.Writer) {
 		}
 	}
 	e.ArrEnd()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -39178,12 +46009,27 @@ func (s *IoK8sAPIStorageV1CSINodeSpec) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPIStorageV1StorageClass) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.AllowVolumeExpansion.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.AllowVolumeExpansion.Set {
 		e.RawStr("\"allowVolumeExpansion\"" + ":")
 		s.AllowVolumeExpansion.Encode(e)
 	}
-	if s.AllowVolumeExpansion.Set {
-		e.Comma()
+
+	if s.AllowedTopologies != nil {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.AllowedTopologies != nil {
 		e.RawStr("\"allowedTopologies\"" + ":")
@@ -39201,29 +46047,45 @@ func (s IoK8sAPIStorageV1StorageClass) Encode(e *jx.Writer) {
 		}
 		e.ArrEnd()
 	}
-	if s.AllowedTopologies != nil {
-		e.Comma()
+
+	if s.ApiVersion.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.ApiVersion.Set {
 		e.RawStr("\"apiVersion\"" + ":")
 		s.ApiVersion.Encode(e)
 	}
-	if s.ApiVersion.Set {
-		e.Comma()
+
+	if s.Kind.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Kind.Set {
 		e.RawStr("\"kind\"" + ":")
 		s.Kind.Encode(e)
 	}
-	if s.Kind.Set {
-		e.Comma()
+
+	if s.Metadata.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Metadata.Set {
 		e.RawStr("\"metadata\"" + ":")
 		s.Metadata.Encode(e)
 	}
-	if s.Metadata.Set {
-		e.Comma()
+
+	if s.MountOptions != nil {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.MountOptions != nil {
 		e.RawStr("\"mountOptions\"" + ":")
@@ -39241,34 +46103,40 @@ func (s IoK8sAPIStorageV1StorageClass) Encode(e *jx.Writer) {
 		}
 		e.ArrEnd()
 	}
-	if s.MountOptions != nil {
-		e.Comma()
+
+	if s.Parameters != nil {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Parameters != nil {
 		e.RawStr("\"parameters\"" + ":")
 		s.Parameters.Encode(e)
 	}
-	if s.Parameters != nil {
+
+	if !first {
 		e.Comma()
 	}
+	first = false
 
 	e.RawStr("\"provisioner\"" + ":")
 	e.Str(s.Provisioner)
-	e.Comma()
+
+	if s.ReclaimPolicy.Set {
+		e.Comma()
+	}
 	if s.ReclaimPolicy.Set {
 		e.RawStr("\"reclaimPolicy\"" + ":")
 		s.ReclaimPolicy.Encode(e)
 	}
-	if s.ReclaimPolicy.Set {
+
+	if s.VolumeBindingMode.Set {
 		e.Comma()
 	}
 	if s.VolumeBindingMode.Set {
 		e.RawStr("\"volumeBindingMode\"" + ":")
 		s.VolumeBindingMode.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -39359,13 +46227,27 @@ func (s *IoK8sAPIStorageV1StorageClass) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPIStorageV1StorageClassList) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.ApiVersion.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.ApiVersion.Set {
 		e.RawStr("\"apiVersion\"" + ":")
 		s.ApiVersion.Encode(e)
 	}
-	if s.ApiVersion.Set {
+
+	if !first {
+
 		e.Comma()
 	}
+	first = false
 
 	e.RawStr("\"items\"" + ":")
 	e.ArrStart()
@@ -39382,21 +46264,20 @@ func (s IoK8sAPIStorageV1StorageClassList) Encode(e *jx.Writer) {
 	}
 	e.ArrEnd()
 
-	e.Comma()
+	if s.Kind.Set {
+		e.Comma()
+	}
 	if s.Kind.Set {
 		e.RawStr("\"kind\"" + ":")
 		s.Kind.Encode(e)
 	}
-	if s.Kind.Set {
+
+	if s.Metadata.Set {
 		e.Comma()
 	}
 	if s.Metadata.Set {
 		e.RawStr("\"metadata\"" + ":")
 		s.Metadata.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -39445,10 +46326,10 @@ func (s *IoK8sAPIStorageV1StorageClassList) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPIStorageV1StorageClassParameters) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -39469,17 +46350,25 @@ func (s *IoK8sAPIStorageV1StorageClassParameters) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPIStorageV1TokenRequest) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"audience\"" + ":")
 	e.Str(s.Audience)
-	e.Comma()
+
+	if s.ExpirationSeconds.Set {
+		e.Comma()
+	}
 	if s.ExpirationSeconds.Set {
 		e.RawStr("\"expirationSeconds\"" + ":")
 		s.ExpirationSeconds.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -39512,39 +46401,59 @@ func (s *IoK8sAPIStorageV1TokenRequest) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPIStorageV1VolumeAttachment) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.ApiVersion.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.ApiVersion.Set {
 		e.RawStr("\"apiVersion\"" + ":")
 		s.ApiVersion.Encode(e)
 	}
-	if s.ApiVersion.Set {
-		e.Comma()
+
+	if s.Kind.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Kind.Set {
 		e.RawStr("\"kind\"" + ":")
 		s.Kind.Encode(e)
 	}
-	if s.Kind.Set {
-		e.Comma()
+
+	if s.Metadata.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Metadata.Set {
 		e.RawStr("\"metadata\"" + ":")
 		s.Metadata.Encode(e)
 	}
-	if s.Metadata.Set {
+
+	if !first {
+
 		e.Comma()
 	}
+	first = false
 
 	e.RawStr("\"spec\"" + ":")
 	s.Spec.Encode(e)
 
-	e.Comma()
+	if s.Status.Set {
+		e.Comma()
+	}
 	if s.Status.Set {
 		e.RawStr("\"status\"" + ":")
 		s.Status.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -39590,13 +46499,27 @@ func (s *IoK8sAPIStorageV1VolumeAttachment) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPIStorageV1VolumeAttachmentList) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.ApiVersion.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.ApiVersion.Set {
 		e.RawStr("\"apiVersion\"" + ":")
 		s.ApiVersion.Encode(e)
 	}
-	if s.ApiVersion.Set {
+
+	if !first {
+
 		e.Comma()
 	}
+	first = false
 
 	e.RawStr("\"items\"" + ":")
 	e.ArrStart()
@@ -39613,21 +46536,20 @@ func (s IoK8sAPIStorageV1VolumeAttachmentList) Encode(e *jx.Writer) {
 	}
 	e.ArrEnd()
 
-	e.Comma()
+	if s.Kind.Set {
+		e.Comma()
+	}
 	if s.Kind.Set {
 		e.RawStr("\"kind\"" + ":")
 		s.Kind.Encode(e)
 	}
-	if s.Kind.Set {
+
+	if s.Metadata.Set {
 		e.Comma()
 	}
 	if s.Metadata.Set {
 		e.RawStr("\"metadata\"" + ":")
 		s.Metadata.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -39676,20 +46598,31 @@ func (s *IoK8sAPIStorageV1VolumeAttachmentList) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPIStorageV1VolumeAttachmentSource) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.InlineVolumeSpec.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.InlineVolumeSpec.Set {
 		e.RawStr("\"inlineVolumeSpec\"" + ":")
 		s.InlineVolumeSpec.Encode(e)
 	}
-	if s.InlineVolumeSpec.Set {
-		e.Comma()
+
+	if s.PersistentVolumeName.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.PersistentVolumeName.Set {
 		e.RawStr("\"persistentVolumeName\"" + ":")
 		s.PersistentVolumeName.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -39721,21 +46654,28 @@ func (s *IoK8sAPIStorageV1VolumeAttachmentSource) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPIStorageV1VolumeAttachmentSpec) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"attacher\"" + ":")
 	e.Str(s.Attacher)
+
 	e.Comma()
 
 	e.RawStr("\"nodeName\"" + ":")
 	e.Str(s.NodeName)
+
 	e.Comma()
 
 	e.RawStr("\"source\"" + ":")
 	s.Source.Encode(e)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -39772,31 +46712,44 @@ func (s *IoK8sAPIStorageV1VolumeAttachmentSpec) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPIStorageV1VolumeAttachmentStatus) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.AttachError.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.AttachError.Set {
 		e.RawStr("\"attachError\"" + ":")
 		s.AttachError.Encode(e)
 	}
-	if s.AttachError.Set {
+
+	if !first {
 		e.Comma()
 	}
+	first = false
 
 	e.RawStr("\"attached\"" + ":")
 	e.Bool(s.Attached)
-	e.Comma()
+
+	if s.AttachmentMetadata != nil {
+		e.Comma()
+	}
 	if s.AttachmentMetadata != nil {
 		e.RawStr("\"attachmentMetadata\"" + ":")
 		s.AttachmentMetadata.Encode(e)
 	}
-	if s.AttachmentMetadata != nil {
+
+	if s.DetachError.Set {
 		e.Comma()
 	}
 	if s.DetachError.Set {
 		e.RawStr("\"detachError\"" + ":")
 		s.DetachError.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -39841,10 +46794,10 @@ func (s *IoK8sAPIStorageV1VolumeAttachmentStatus) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPIStorageV1VolumeAttachmentStatusAttachmentMetadata) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -39865,20 +46818,31 @@ func (s *IoK8sAPIStorageV1VolumeAttachmentStatusAttachmentMetadata) Decode(d *jx
 // Encode implements json.Marshaler.
 func (s IoK8sAPIStorageV1VolumeError) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.Message.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.Message.Set {
 		e.RawStr("\"message\"" + ":")
 		s.Message.Encode(e)
 	}
-	if s.Message.Set {
-		e.Comma()
+
+	if s.Time.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Time.Set {
 		e.RawStr("\"time\"" + ":")
 		s.Time.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -39910,13 +46874,20 @@ func (s *IoK8sAPIStorageV1VolumeError) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPIStorageV1VolumeNodeResources) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.Count.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.Count.Set {
 		e.RawStr("\"count\"" + ":")
 		s.Count.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -39943,55 +46914,84 @@ func (s *IoK8sAPIStorageV1VolumeNodeResources) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPIStorageV1alpha1CSIStorageCapacity) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.ApiVersion.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.ApiVersion.Set {
 		e.RawStr("\"apiVersion\"" + ":")
 		s.ApiVersion.Encode(e)
 	}
-	if s.ApiVersion.Set {
-		e.Comma()
+
+	if s.Capacity.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Capacity.Set {
 		e.RawStr("\"capacity\"" + ":")
 		s.Capacity.Encode(e)
 	}
-	if s.Capacity.Set {
-		e.Comma()
+
+	if s.Kind.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Kind.Set {
 		e.RawStr("\"kind\"" + ":")
 		s.Kind.Encode(e)
 	}
-	if s.Kind.Set {
-		e.Comma()
+
+	if s.MaximumVolumeSize.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.MaximumVolumeSize.Set {
 		e.RawStr("\"maximumVolumeSize\"" + ":")
 		s.MaximumVolumeSize.Encode(e)
 	}
-	if s.MaximumVolumeSize.Set {
-		e.Comma()
+
+	if s.Metadata.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Metadata.Set {
 		e.RawStr("\"metadata\"" + ":")
 		s.Metadata.Encode(e)
 	}
-	if s.Metadata.Set {
-		e.Comma()
+
+	if s.NodeTopology.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.NodeTopology.Set {
 		e.RawStr("\"nodeTopology\"" + ":")
 		s.NodeTopology.Encode(e)
 	}
-	if s.NodeTopology.Set {
+
+	if !first {
 		e.Comma()
 	}
+	first = false
 
 	e.RawStr("\"storageClassName\"" + ":")
 	e.Str(s.StorageClassName)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -40048,13 +47048,27 @@ func (s *IoK8sAPIStorageV1alpha1CSIStorageCapacity) Decode(d *jx.Decoder) error 
 // Encode implements json.Marshaler.
 func (s IoK8sAPIStorageV1alpha1CSIStorageCapacityList) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.ApiVersion.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.ApiVersion.Set {
 		e.RawStr("\"apiVersion\"" + ":")
 		s.ApiVersion.Encode(e)
 	}
-	if s.ApiVersion.Set {
+
+	if !first {
+
 		e.Comma()
 	}
+	first = false
 
 	e.RawStr("\"items\"" + ":")
 	e.ArrStart()
@@ -40071,21 +47085,20 @@ func (s IoK8sAPIStorageV1alpha1CSIStorageCapacityList) Encode(e *jx.Writer) {
 	}
 	e.ArrEnd()
 
-	e.Comma()
+	if s.Kind.Set {
+		e.Comma()
+	}
 	if s.Kind.Set {
 		e.RawStr("\"kind\"" + ":")
 		s.Kind.Encode(e)
 	}
-	if s.Kind.Set {
+
+	if s.Metadata.Set {
 		e.Comma()
 	}
 	if s.Metadata.Set {
 		e.RawStr("\"metadata\"" + ":")
 		s.Metadata.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -40134,55 +47147,84 @@ func (s *IoK8sAPIStorageV1alpha1CSIStorageCapacityList) Decode(d *jx.Decoder) er
 // Encode implements json.Marshaler.
 func (s IoK8sAPIStorageV1beta1CSIStorageCapacity) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.ApiVersion.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.ApiVersion.Set {
 		e.RawStr("\"apiVersion\"" + ":")
 		s.ApiVersion.Encode(e)
 	}
-	if s.ApiVersion.Set {
-		e.Comma()
+
+	if s.Capacity.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Capacity.Set {
 		e.RawStr("\"capacity\"" + ":")
 		s.Capacity.Encode(e)
 	}
-	if s.Capacity.Set {
-		e.Comma()
+
+	if s.Kind.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Kind.Set {
 		e.RawStr("\"kind\"" + ":")
 		s.Kind.Encode(e)
 	}
-	if s.Kind.Set {
-		e.Comma()
+
+	if s.MaximumVolumeSize.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.MaximumVolumeSize.Set {
 		e.RawStr("\"maximumVolumeSize\"" + ":")
 		s.MaximumVolumeSize.Encode(e)
 	}
-	if s.MaximumVolumeSize.Set {
-		e.Comma()
+
+	if s.Metadata.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Metadata.Set {
 		e.RawStr("\"metadata\"" + ":")
 		s.Metadata.Encode(e)
 	}
-	if s.Metadata.Set {
-		e.Comma()
+
+	if s.NodeTopology.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.NodeTopology.Set {
 		e.RawStr("\"nodeTopology\"" + ":")
 		s.NodeTopology.Encode(e)
 	}
-	if s.NodeTopology.Set {
+
+	if !first {
 		e.Comma()
 	}
+	first = false
 
 	e.RawStr("\"storageClassName\"" + ":")
 	e.Str(s.StorageClassName)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -40239,13 +47281,27 @@ func (s *IoK8sAPIStorageV1beta1CSIStorageCapacity) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPIStorageV1beta1CSIStorageCapacityList) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.ApiVersion.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.ApiVersion.Set {
 		e.RawStr("\"apiVersion\"" + ":")
 		s.ApiVersion.Encode(e)
 	}
-	if s.ApiVersion.Set {
+
+	if !first {
+
 		e.Comma()
 	}
+	first = false
 
 	e.RawStr("\"items\"" + ":")
 	e.ArrStart()
@@ -40262,21 +47318,20 @@ func (s IoK8sAPIStorageV1beta1CSIStorageCapacityList) Encode(e *jx.Writer) {
 	}
 	e.ArrEnd()
 
-	e.Comma()
+	if s.Kind.Set {
+		e.Comma()
+	}
 	if s.Kind.Set {
 		e.RawStr("\"kind\"" + ":")
 		s.Kind.Encode(e)
 	}
-	if s.Kind.Set {
+
+	if s.Metadata.Set {
 		e.Comma()
 	}
 	if s.Metadata.Set {
 		e.RawStr("\"metadata\"" + ":")
 		s.Metadata.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -40325,42 +47380,58 @@ func (s *IoK8sAPIStorageV1beta1CSIStorageCapacityList) Decode(d *jx.Decoder) err
 // Encode implements json.Marshaler.
 func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceColumnDefinition) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.Description.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.Description.Set {
 		e.RawStr("\"description\"" + ":")
 		s.Description.Encode(e)
 	}
-	if s.Description.Set {
-		e.Comma()
+
+	if s.Format.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Format.Set {
 		e.RawStr("\"format\"" + ":")
 		s.Format.Encode(e)
 	}
-	if s.Format.Set {
+
+	if !first {
 		e.Comma()
 	}
+	first = false
 
 	e.RawStr("\"jsonPath\"" + ":")
 	e.Str(s.JsonPath)
+
 	e.Comma()
 
 	e.RawStr("\"name\"" + ":")
 	e.Str(s.Name)
-	e.Comma()
+
+	if s.Priority.Set {
+		e.Comma()
+	}
 	if s.Priority.Set {
 		e.RawStr("\"priority\"" + ":")
 		s.Priority.Encode(e)
 	}
-	if s.Priority.Set {
-		e.Comma()
-	}
+
+	e.Comma()
 
 	e.RawStr("\"type\"" + ":")
 	e.Str(s.Type)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -40414,17 +47485,25 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceColumnDe
 // Encode implements json.Marshaler.
 func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceConversion) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"strategy\"" + ":")
 	e.Str(s.Strategy)
-	e.Comma()
+
+	if s.Webhook.Set {
+		e.Comma()
+	}
 	if s.Webhook.Set {
 		e.RawStr("\"webhook\"" + ":")
 		s.Webhook.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -40457,39 +47536,59 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceConversi
 // Encode implements json.Marshaler.
 func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinition) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.ApiVersion.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.ApiVersion.Set {
 		e.RawStr("\"apiVersion\"" + ":")
 		s.ApiVersion.Encode(e)
 	}
-	if s.ApiVersion.Set {
-		e.Comma()
+
+	if s.Kind.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Kind.Set {
 		e.RawStr("\"kind\"" + ":")
 		s.Kind.Encode(e)
 	}
-	if s.Kind.Set {
-		e.Comma()
+
+	if s.Metadata.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Metadata.Set {
 		e.RawStr("\"metadata\"" + ":")
 		s.Metadata.Encode(e)
 	}
-	if s.Metadata.Set {
+
+	if !first {
+
 		e.Comma()
 	}
+	first = false
 
 	e.RawStr("\"spec\"" + ":")
 	s.Spec.Encode(e)
 
-	e.Comma()
+	if s.Status.Set {
+		e.Comma()
+	}
 	if s.Status.Set {
 		e.RawStr("\"status\"" + ":")
 		s.Status.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -40535,38 +47634,56 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefiniti
 // Encode implements json.Marshaler.
 func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionCondition) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.LastTransitionTime.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.LastTransitionTime.Set {
 		e.RawStr("\"lastTransitionTime\"" + ":")
 		s.LastTransitionTime.Encode(e)
 	}
-	if s.LastTransitionTime.Set {
-		e.Comma()
+
+	if s.Message.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Message.Set {
 		e.RawStr("\"message\"" + ":")
 		s.Message.Encode(e)
 	}
-	if s.Message.Set {
-		e.Comma()
+
+	if s.Reason.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Reason.Set {
 		e.RawStr("\"reason\"" + ":")
 		s.Reason.Encode(e)
 	}
-	if s.Reason.Set {
+
+	if !first {
 		e.Comma()
 	}
+	first = false
 
 	e.RawStr("\"status\"" + ":")
 	e.Str(s.Status)
+
 	e.Comma()
 
 	e.RawStr("\"type\"" + ":")
 	e.Str(s.Type)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -40614,13 +47731,27 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefiniti
 // Encode implements json.Marshaler.
 func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionList) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.ApiVersion.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.ApiVersion.Set {
 		e.RawStr("\"apiVersion\"" + ":")
 		s.ApiVersion.Encode(e)
 	}
-	if s.ApiVersion.Set {
+
+	if !first {
+
 		e.Comma()
 	}
+	first = false
 
 	e.RawStr("\"items\"" + ":")
 	e.ArrStart()
@@ -40637,21 +47768,20 @@ func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitio
 	}
 	e.ArrEnd()
 
-	e.Comma()
+	if s.Kind.Set {
+		e.Comma()
+	}
 	if s.Kind.Set {
 		e.RawStr("\"kind\"" + ":")
 		s.Kind.Encode(e)
 	}
-	if s.Kind.Set {
+
+	if s.Metadata.Set {
 		e.Comma()
 	}
 	if s.Metadata.Set {
 		e.RawStr("\"metadata\"" + ":")
 		s.Metadata.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -40700,6 +47830,17 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefiniti
 // Encode implements json.Marshaler.
 func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionNames) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.Categories != nil {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.Categories != nil {
 		e.RawStr("\"categories\"" + ":")
 		e.ArrStart()
@@ -40716,24 +47857,31 @@ func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitio
 		}
 		e.ArrEnd()
 	}
-	if s.Categories != nil {
+
+	if !first {
 		e.Comma()
 	}
+	first = false
 
 	e.RawStr("\"kind\"" + ":")
 	e.Str(s.Kind)
-	e.Comma()
+
+	if s.ListKind.Set {
+		e.Comma()
+	}
 	if s.ListKind.Set {
 		e.RawStr("\"listKind\"" + ":")
 		s.ListKind.Encode(e)
 	}
-	if s.ListKind.Set {
-		e.Comma()
-	}
+
+	e.Comma()
 
 	e.RawStr("\"plural\"" + ":")
 	e.Str(s.Plural)
-	e.Comma()
+
+	if s.ShortNames != nil {
+		e.Comma()
+	}
 	if s.ShortNames != nil {
 		e.RawStr("\"shortNames\"" + ":")
 		e.ArrStart()
@@ -40750,16 +47898,13 @@ func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitio
 		}
 		e.ArrEnd()
 	}
-	if s.ShortNames != nil {
+
+	if s.Singular.Set {
 		e.Comma()
 	}
 	if s.Singular.Set {
 		e.RawStr("\"singular\"" + ":")
 		s.Singular.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -40831,32 +47976,48 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefiniti
 // Encode implements json.Marshaler.
 func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionSpec) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.Conversion.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.Conversion.Set {
 		e.RawStr("\"conversion\"" + ":")
 		s.Conversion.Encode(e)
 	}
-	if s.Conversion.Set {
+
+	if !first {
 		e.Comma()
 	}
+	first = false
 
 	e.RawStr("\"group\"" + ":")
 	e.Str(s.Group)
+
 	e.Comma()
 
 	e.RawStr("\"names\"" + ":")
 	s.Names.Encode(e)
 
-	e.Comma()
+	if s.PreserveUnknownFields.Set {
+		e.Comma()
+	}
 	if s.PreserveUnknownFields.Set {
 		e.RawStr("\"preserveUnknownFields\"" + ":")
 		s.PreserveUnknownFields.Encode(e)
 	}
-	if s.PreserveUnknownFields.Set {
-		e.Comma()
-	}
+
+	e.Comma()
 
 	e.RawStr("\"scope\"" + ":")
 	e.Str(s.Scope)
+
 	e.Comma()
 
 	e.RawStr("\"versions\"" + ":")
@@ -40873,10 +48034,6 @@ func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitio
 		}
 	}
 	e.ArrEnd()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -40935,12 +48092,27 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefiniti
 // Encode implements json.Marshaler.
 func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionStatus) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.AcceptedNames.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.AcceptedNames.Set {
 		e.RawStr("\"acceptedNames\"" + ":")
 		s.AcceptedNames.Encode(e)
 	}
-	if s.AcceptedNames.Set {
-		e.Comma()
+
+	if s.Conditions != nil {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Conditions != nil {
 		e.RawStr("\"conditions\"" + ":")
@@ -40958,8 +48130,12 @@ func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitio
 		}
 		e.ArrEnd()
 	}
-	if s.Conditions != nil {
-		e.Comma()
+
+	if s.StoredVersions != nil {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.StoredVersions != nil {
 		e.RawStr("\"storedVersions\"" + ":")
@@ -40976,10 +48152,6 @@ func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitio
 			}
 		}
 		e.ArrEnd()
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -41032,6 +48204,17 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefiniti
 // Encode implements json.Marshaler.
 func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionVersion) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.AdditionalPrinterColumns != nil {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.AdditionalPrinterColumns != nil {
 		e.RawStr("\"additionalPrinterColumns\"" + ":")
 		e.ArrStart()
@@ -41048,49 +48231,61 @@ func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitio
 		}
 		e.ArrEnd()
 	}
-	if s.AdditionalPrinterColumns != nil {
-		e.Comma()
+
+	if s.Deprecated.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Deprecated.Set {
 		e.RawStr("\"deprecated\"" + ":")
 		s.Deprecated.Encode(e)
 	}
-	if s.Deprecated.Set {
-		e.Comma()
+
+	if s.DeprecationWarning.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.DeprecationWarning.Set {
 		e.RawStr("\"deprecationWarning\"" + ":")
 		s.DeprecationWarning.Encode(e)
 	}
-	if s.DeprecationWarning.Set {
+
+	if !first {
 		e.Comma()
 	}
+	first = false
 
 	e.RawStr("\"name\"" + ":")
 	e.Str(s.Name)
-	e.Comma()
+
+	if s.Schema.Set {
+		e.Comma()
+	}
 	if s.Schema.Set {
 		e.RawStr("\"schema\"" + ":")
 		s.Schema.Encode(e)
 	}
-	if s.Schema.Set {
-		e.Comma()
-	}
+
+	e.Comma()
 
 	e.RawStr("\"served\"" + ":")
 	e.Bool(s.Served)
+
 	e.Comma()
 
 	e.RawStr("\"storage\"" + ":")
 	e.Bool(s.Storage)
-	e.Comma()
+
+	if s.Subresources.Set {
+		e.Comma()
+	}
 	if s.Subresources.Set {
 		e.RawStr("\"subresources\"" + ":")
 		s.Subresources.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -41162,24 +48357,34 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefiniti
 // Encode implements json.Marshaler.
 func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresourceScale) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.LabelSelectorPath.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.LabelSelectorPath.Set {
 		e.RawStr("\"labelSelectorPath\"" + ":")
 		s.LabelSelectorPath.Encode(e)
 	}
-	if s.LabelSelectorPath.Set {
+
+	if !first {
 		e.Comma()
 	}
+	first = false
 
 	e.RawStr("\"specReplicasPath\"" + ":")
 	e.Str(s.SpecReplicasPath)
+
 	e.Comma()
 
 	e.RawStr("\"statusReplicasPath\"" + ":")
 	e.Str(s.StatusReplicasPath)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -41217,10 +48422,10 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresou
 // Encode implements json.Marshaler.
 func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresourceStatus) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -41241,20 +48446,31 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresou
 // Encode implements json.Marshaler.
 func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresources) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.Scale.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.Scale.Set {
 		e.RawStr("\"scale\"" + ":")
 		s.Scale.Encode(e)
 	}
-	if s.Scale.Set {
-		e.Comma()
+
+	if s.Status != nil {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Status != nil {
 		e.RawStr("\"status\"" + ":")
 		s.Status.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -41288,13 +48504,20 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresou
 // Encode implements json.Marshaler.
 func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceValidation) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.OpenAPIV3Schema.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.OpenAPIV3Schema.Set {
 		e.RawStr("\"openAPIV3Schema\"" + ":")
 		s.OpenAPIV3Schema.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -41321,20 +48544,31 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceValidati
 // Encode implements json.Marshaler.
 func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1ExternalDocumentation) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.Description.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.Description.Set {
 		e.RawStr("\"description\"" + ":")
 		s.Description.Encode(e)
 	}
-	if s.Description.Set {
-		e.Comma()
+
+	if s.URL.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.URL.Set {
 		e.RawStr("\"url\"" + ":")
 		s.URL.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -41366,10 +48600,10 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1ExternalDocumentation)
 // Encode implements json.Marshaler.
 func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSON) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -41390,33 +48624,60 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSON) Decode(d *jx.Dec
 // Encode implements json.Marshaler.
 func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.Ref.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.Ref.Set {
 		e.RawStr("\"$ref\"" + ":")
 		s.Ref.Encode(e)
 	}
-	if s.Ref.Set {
-		e.Comma()
+
+	if s.Schema.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Schema.Set {
 		e.RawStr("\"$schema\"" + ":")
 		s.Schema.Encode(e)
 	}
-	if s.Schema.Set {
-		e.Comma()
+
+	if s.AdditionalItems != nil {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.AdditionalItems != nil {
 		e.RawStr("\"additionalItems\"" + ":")
 		s.AdditionalItems.Encode(e)
 	}
-	if s.AdditionalItems != nil {
-		e.Comma()
+
+	if s.AdditionalProperties != nil {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.AdditionalProperties != nil {
 		e.RawStr("\"additionalProperties\"" + ":")
 		s.AdditionalProperties.Encode(e)
 	}
-	if s.AdditionalProperties != nil {
-		e.Comma()
+
+	if s.AllOf != nil {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.AllOf != nil {
 		e.RawStr("\"allOf\"" + ":")
@@ -41434,8 +48695,12 @@ func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) Encode
 		}
 		e.ArrEnd()
 	}
-	if s.AllOf != nil {
-		e.Comma()
+
+	if s.AnyOf != nil {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.AnyOf != nil {
 		e.RawStr("\"anyOf\"" + ":")
@@ -41453,36 +48718,56 @@ func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) Encode
 		}
 		e.ArrEnd()
 	}
-	if s.AnyOf != nil {
-		e.Comma()
+
+	if s.Default != nil {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Default != nil {
 		e.RawStr("\"default\"" + ":")
 		s.Default.Encode(e)
 	}
-	if s.Default != nil {
-		e.Comma()
+
+	if s.Definitions != nil {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Definitions != nil {
 		e.RawStr("\"definitions\"" + ":")
 		s.Definitions.Encode(e)
 	}
-	if s.Definitions != nil {
-		e.Comma()
+
+	if s.Dependencies != nil {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Dependencies != nil {
 		e.RawStr("\"dependencies\"" + ":")
 		s.Dependencies.Encode(e)
 	}
-	if s.Dependencies != nil {
-		e.Comma()
+
+	if s.Description.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Description.Set {
 		e.RawStr("\"description\"" + ":")
 		s.Description.Encode(e)
 	}
-	if s.Description.Set {
-		e.Comma()
+
+	if s.Enum != nil {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Enum != nil {
 		e.RawStr("\"enum\"" + ":")
@@ -41500,134 +48785,210 @@ func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) Encode
 		}
 		e.ArrEnd()
 	}
-	if s.Enum != nil {
-		e.Comma()
+
+	if s.Example != nil {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Example != nil {
 		e.RawStr("\"example\"" + ":")
 		s.Example.Encode(e)
 	}
-	if s.Example != nil {
-		e.Comma()
+
+	if s.ExclusiveMaximum.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.ExclusiveMaximum.Set {
 		e.RawStr("\"exclusiveMaximum\"" + ":")
 		s.ExclusiveMaximum.Encode(e)
 	}
-	if s.ExclusiveMaximum.Set {
-		e.Comma()
+
+	if s.ExclusiveMinimum.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.ExclusiveMinimum.Set {
 		e.RawStr("\"exclusiveMinimum\"" + ":")
 		s.ExclusiveMinimum.Encode(e)
 	}
-	if s.ExclusiveMinimum.Set {
-		e.Comma()
+
+	if s.ExternalDocs.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.ExternalDocs.Set {
 		e.RawStr("\"externalDocs\"" + ":")
 		s.ExternalDocs.Encode(e)
 	}
-	if s.ExternalDocs.Set {
-		e.Comma()
+
+	if s.Format.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Format.Set {
 		e.RawStr("\"format\"" + ":")
 		s.Format.Encode(e)
 	}
-	if s.Format.Set {
-		e.Comma()
+
+	if s.ID.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.ID.Set {
 		e.RawStr("\"id\"" + ":")
 		s.ID.Encode(e)
 	}
-	if s.ID.Set {
-		e.Comma()
+
+	if s.Items != nil {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Items != nil {
 		e.RawStr("\"items\"" + ":")
 		s.Items.Encode(e)
 	}
-	if s.Items != nil {
-		e.Comma()
+
+	if s.MaxItems.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.MaxItems.Set {
 		e.RawStr("\"maxItems\"" + ":")
 		s.MaxItems.Encode(e)
 	}
-	if s.MaxItems.Set {
-		e.Comma()
+
+	if s.MaxLength.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.MaxLength.Set {
 		e.RawStr("\"maxLength\"" + ":")
 		s.MaxLength.Encode(e)
 	}
-	if s.MaxLength.Set {
-		e.Comma()
+
+	if s.MaxProperties.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.MaxProperties.Set {
 		e.RawStr("\"maxProperties\"" + ":")
 		s.MaxProperties.Encode(e)
 	}
-	if s.MaxProperties.Set {
-		e.Comma()
+
+	if s.Maximum.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Maximum.Set {
 		e.RawStr("\"maximum\"" + ":")
 		s.Maximum.Encode(e)
 	}
-	if s.Maximum.Set {
-		e.Comma()
+
+	if s.MinItems.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.MinItems.Set {
 		e.RawStr("\"minItems\"" + ":")
 		s.MinItems.Encode(e)
 	}
-	if s.MinItems.Set {
-		e.Comma()
+
+	if s.MinLength.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.MinLength.Set {
 		e.RawStr("\"minLength\"" + ":")
 		s.MinLength.Encode(e)
 	}
-	if s.MinLength.Set {
-		e.Comma()
+
+	if s.MinProperties.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.MinProperties.Set {
 		e.RawStr("\"minProperties\"" + ":")
 		s.MinProperties.Encode(e)
 	}
-	if s.MinProperties.Set {
-		e.Comma()
+
+	if s.Minimum.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Minimum.Set {
 		e.RawStr("\"minimum\"" + ":")
 		s.Minimum.Encode(e)
 	}
-	if s.Minimum.Set {
-		e.Comma()
+
+	if s.MultipleOf.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.MultipleOf.Set {
 		e.RawStr("\"multipleOf\"" + ":")
 		s.MultipleOf.Encode(e)
 	}
-	if s.MultipleOf.Set {
-		e.Comma()
+
+	if s.Not != nil {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Not != nil {
 		e.RawStr("\"not\"" + ":")
 		s.Not.Encode(e)
 	}
-	if s.Not != nil {
-		e.Comma()
+
+	if s.Nullable.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Nullable.Set {
 		e.RawStr("\"nullable\"" + ":")
 		s.Nullable.Encode(e)
 	}
-	if s.Nullable.Set {
-		e.Comma()
+
+	if s.OneOf != nil {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.OneOf != nil {
 		e.RawStr("\"oneOf\"" + ":")
@@ -41645,29 +49006,45 @@ func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) Encode
 		}
 		e.ArrEnd()
 	}
-	if s.OneOf != nil {
-		e.Comma()
+
+	if s.Pattern.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Pattern.Set {
 		e.RawStr("\"pattern\"" + ":")
 		s.Pattern.Encode(e)
 	}
-	if s.Pattern.Set {
-		e.Comma()
+
+	if s.PatternProperties != nil {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.PatternProperties != nil {
 		e.RawStr("\"patternProperties\"" + ":")
 		s.PatternProperties.Encode(e)
 	}
-	if s.PatternProperties != nil {
-		e.Comma()
+
+	if s.Properties != nil {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Properties != nil {
 		e.RawStr("\"properties\"" + ":")
 		s.Properties.Encode(e)
 	}
-	if s.Properties != nil {
-		e.Comma()
+
+	if s.Required != nil {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Required != nil {
 		e.RawStr("\"required\"" + ":")
@@ -41685,43 +49062,67 @@ func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) Encode
 		}
 		e.ArrEnd()
 	}
-	if s.Required != nil {
-		e.Comma()
+
+	if s.Title.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Title.Set {
 		e.RawStr("\"title\"" + ":")
 		s.Title.Encode(e)
 	}
-	if s.Title.Set {
-		e.Comma()
+
+	if s.Type.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Type.Set {
 		e.RawStr("\"type\"" + ":")
 		s.Type.Encode(e)
 	}
-	if s.Type.Set {
-		e.Comma()
+
+	if s.UniqueItems.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.UniqueItems.Set {
 		e.RawStr("\"uniqueItems\"" + ":")
 		s.UniqueItems.Encode(e)
 	}
-	if s.UniqueItems.Set {
-		e.Comma()
+
+	if s.XMinusKubernetesMinusEmbeddedMinusResource.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.XMinusKubernetesMinusEmbeddedMinusResource.Set {
 		e.RawStr("\"x-kubernetes-embedded-resource\"" + ":")
 		s.XMinusKubernetesMinusEmbeddedMinusResource.Encode(e)
 	}
-	if s.XMinusKubernetesMinusEmbeddedMinusResource.Set {
-		e.Comma()
+
+	if s.XMinusKubernetesMinusIntMinusOrMinusString.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.XMinusKubernetesMinusIntMinusOrMinusString.Set {
 		e.RawStr("\"x-kubernetes-int-or-string\"" + ":")
 		s.XMinusKubernetesMinusIntMinusOrMinusString.Encode(e)
 	}
-	if s.XMinusKubernetesMinusIntMinusOrMinusString.Set {
-		e.Comma()
+
+	if s.XMinusKubernetesMinusListMinusMapMinusKeys != nil {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.XMinusKubernetesMinusListMinusMapMinusKeys != nil {
 		e.RawStr("\"x-kubernetes-list-map-keys\"" + ":")
@@ -41739,30 +49140,38 @@ func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) Encode
 		}
 		e.ArrEnd()
 	}
-	if s.XMinusKubernetesMinusListMinusMapMinusKeys != nil {
-		e.Comma()
+
+	if s.XMinusKubernetesMinusListMinusType.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.XMinusKubernetesMinusListMinusType.Set {
 		e.RawStr("\"x-kubernetes-list-type\"" + ":")
 		s.XMinusKubernetesMinusListMinusType.Encode(e)
 	}
-	if s.XMinusKubernetesMinusListMinusType.Set {
-		e.Comma()
+
+	if s.XMinusKubernetesMinusMapMinusType.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.XMinusKubernetesMinusMapMinusType.Set {
 		e.RawStr("\"x-kubernetes-map-type\"" + ":")
 		s.XMinusKubernetesMinusMapMinusType.Encode(e)
 	}
-	if s.XMinusKubernetesMinusMapMinusType.Set {
-		e.Comma()
+
+	if s.XMinusKubernetesMinusPreserveMinusUnknownMinusFields.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.XMinusKubernetesMinusPreserveMinusUnknownMinusFields.Set {
 		e.RawStr("\"x-kubernetes-preserve-unknown-fields\"" + ":")
 		s.XMinusKubernetesMinusPreserveMinusUnknownMinusFields.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -42065,10 +49474,10 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) Decod
 // Encode implements json.Marshaler.
 func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsDefinitions) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -42089,10 +49498,10 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsDefinit
 // Encode implements json.Marshaler.
 func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsDependencies) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -42113,10 +49522,10 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsDepende
 // Encode implements json.Marshaler.
 func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOrArray) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -42137,10 +49546,10 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOrArray
 // Encode implements json.Marshaler.
 func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOrBool) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -42161,10 +49570,10 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOrBool)
 // Encode implements json.Marshaler.
 func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsPatternProperties) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -42185,10 +49594,10 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsPattern
 // Encode implements json.Marshaler.
 func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsProperties) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -42209,28 +49618,38 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsPropert
 // Encode implements json.Marshaler.
 func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1ServiceReference) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"name\"" + ":")
 	e.Str(s.Name)
+
 	e.Comma()
 
 	e.RawStr("\"namespace\"" + ":")
 	e.Str(s.Namespace)
-	e.Comma()
+
+	if s.Path.Set {
+		e.Comma()
+	}
 	if s.Path.Set {
 		e.RawStr("\"path\"" + ":")
 		s.Path.Encode(e)
 	}
-	if s.Path.Set {
+
+	if s.Port.Set {
 		e.Comma()
 	}
 	if s.Port.Set {
 		e.RawStr("\"port\"" + ":")
 		s.Port.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -42274,24 +49693,33 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1ServiceReference) Deco
 // Encode implements json.Marshaler.
 func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookClientConfig) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"caBundle\"" + ":")
 	e.Base64(s.CaBundle)
-	e.Comma()
+
+	if s.Service.Set {
+		e.Comma()
+	}
 	if s.Service.Set {
 		e.RawStr("\"service\"" + ":")
 		s.Service.Encode(e)
 	}
-	if s.Service.Set {
+
+	if s.URL.Set {
 		e.Comma()
 	}
 	if s.URL.Set {
 		e.RawStr("\"url\"" + ":")
 		s.URL.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -42329,13 +49757,27 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookClientConfig) D
 // Encode implements json.Marshaler.
 func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookConversion) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.ClientConfig.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.ClientConfig.Set {
 		e.RawStr("\"clientConfig\"" + ":")
 		s.ClientConfig.Encode(e)
 	}
-	if s.ClientConfig.Set {
+
+	if !first {
+
 		e.Comma()
 	}
+	first = false
 
 	e.RawStr("\"conversionReviewVersions\"" + ":")
 	e.ArrStart()
@@ -42351,10 +49793,6 @@ func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookConversion) Enco
 		}
 	}
 	e.ArrEnd()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -42420,29 +49858,50 @@ func (s *IoK8sApimachineryPkgAPIResourceQuantity) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sApimachineryPkgApisMetaV1APIGroup) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.ApiVersion.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.ApiVersion.Set {
 		e.RawStr("\"apiVersion\"" + ":")
 		s.ApiVersion.Encode(e)
 	}
-	if s.ApiVersion.Set {
-		e.Comma()
+
+	if s.Kind.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Kind.Set {
 		e.RawStr("\"kind\"" + ":")
 		s.Kind.Encode(e)
 	}
-	if s.Kind.Set {
+
+	if !first {
 		e.Comma()
 	}
+	first = false
 
 	e.RawStr("\"name\"" + ":")
 	e.Str(s.Name)
-	e.Comma()
+
+	if s.PreferredVersion.Set {
+		e.Comma()
+	}
 	if s.PreferredVersion.Set {
 		e.RawStr("\"preferredVersion\"" + ":")
 		s.PreferredVersion.Encode(e)
 	}
-	if s.PreferredVersion.Set {
+
+	if s.ServerAddressByClientCIDRs != nil {
 		e.Comma()
 	}
 	if s.ServerAddressByClientCIDRs != nil {
@@ -42461,9 +49920,8 @@ func (s IoK8sApimachineryPkgApisMetaV1APIGroup) Encode(e *jx.Writer) {
 		}
 		e.ArrEnd()
 	}
-	if s.ServerAddressByClientCIDRs != nil {
-		e.Comma()
-	}
+
+	e.Comma()
 
 	e.RawStr("\"versions\"" + ":")
 	e.ArrStart()
@@ -42479,10 +49937,6 @@ func (s IoK8sApimachineryPkgApisMetaV1APIGroup) Encode(e *jx.Writer) {
 		}
 	}
 	e.ArrEnd()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -42548,13 +50002,27 @@ func (s *IoK8sApimachineryPkgApisMetaV1APIGroup) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sApimachineryPkgApisMetaV1APIGroupList) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.ApiVersion.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.ApiVersion.Set {
 		e.RawStr("\"apiVersion\"" + ":")
 		s.ApiVersion.Encode(e)
 	}
-	if s.ApiVersion.Set {
+
+	if !first {
+
 		e.Comma()
 	}
+	first = false
 
 	e.RawStr("\"groups\"" + ":")
 	e.ArrStart()
@@ -42571,14 +50039,12 @@ func (s IoK8sApimachineryPkgApisMetaV1APIGroupList) Encode(e *jx.Writer) {
 	}
 	e.ArrEnd()
 
-	e.Comma()
+	if s.Kind.Set {
+		e.Comma()
+	}
 	if s.Kind.Set {
 		e.RawStr("\"kind\"" + ":")
 		s.Kind.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -42622,6 +50088,17 @@ func (s *IoK8sApimachineryPkgApisMetaV1APIGroupList) Decode(d *jx.Decoder) error
 // Encode implements json.Marshaler.
 func (s IoK8sApimachineryPkgApisMetaV1APIResource) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.Categories != nil {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.Categories != nil {
 		e.RawStr("\"categories\"" + ":")
 		e.ArrStart()
@@ -42638,28 +50115,39 @@ func (s IoK8sApimachineryPkgApisMetaV1APIResource) Encode(e *jx.Writer) {
 		}
 		e.ArrEnd()
 	}
-	if s.Categories != nil {
-		e.Comma()
+
+	if s.Group.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Group.Set {
 		e.RawStr("\"group\"" + ":")
 		s.Group.Encode(e)
 	}
-	if s.Group.Set {
+
+	if !first {
 		e.Comma()
 	}
+	first = false
 
 	e.RawStr("\"kind\"" + ":")
 	e.Str(s.Kind)
+
 	e.Comma()
 
 	e.RawStr("\"name\"" + ":")
 	e.Str(s.Name)
+
 	e.Comma()
 
 	e.RawStr("\"namespaced\"" + ":")
 	e.Bool(s.Namespaced)
-	e.Comma()
+
+	if s.ShortNames != nil {
+		e.Comma()
+	}
 	if s.ShortNames != nil {
 		e.RawStr("\"shortNames\"" + ":")
 		e.ArrStart()
@@ -42676,20 +50164,21 @@ func (s IoK8sApimachineryPkgApisMetaV1APIResource) Encode(e *jx.Writer) {
 		}
 		e.ArrEnd()
 	}
-	if s.ShortNames != nil {
-		e.Comma()
-	}
+
+	e.Comma()
 
 	e.RawStr("\"singularName\"" + ":")
 	e.Str(s.SingularName)
-	e.Comma()
+
+	if s.StorageVersionHash.Set {
+		e.Comma()
+	}
 	if s.StorageVersionHash.Set {
 		e.RawStr("\"storageVersionHash\"" + ":")
 		s.StorageVersionHash.Encode(e)
 	}
-	if s.StorageVersionHash.Set {
-		e.Comma()
-	}
+
+	e.Comma()
 
 	e.RawStr("\"verbs\"" + ":")
 	e.ArrStart()
@@ -42706,14 +50195,12 @@ func (s IoK8sApimachineryPkgApisMetaV1APIResource) Encode(e *jx.Writer) {
 	}
 	e.ArrEnd()
 
-	e.Comma()
+	if s.Version.Set {
+		e.Comma()
+	}
 	if s.Version.Set {
 		e.RawStr("\"version\"" + ":")
 		s.Version.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -42816,24 +50303,39 @@ func (s *IoK8sApimachineryPkgApisMetaV1APIResource) Decode(d *jx.Decoder) error 
 // Encode implements json.Marshaler.
 func (s IoK8sApimachineryPkgApisMetaV1APIResourceList) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.ApiVersion.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.ApiVersion.Set {
 		e.RawStr("\"apiVersion\"" + ":")
 		s.ApiVersion.Encode(e)
 	}
-	if s.ApiVersion.Set {
+
+	if !first {
 		e.Comma()
 	}
+	first = false
 
 	e.RawStr("\"groupVersion\"" + ":")
 	e.Str(s.GroupVersion)
-	e.Comma()
+
+	if s.Kind.Set {
+		e.Comma()
+	}
 	if s.Kind.Set {
 		e.RawStr("\"kind\"" + ":")
 		s.Kind.Encode(e)
 	}
-	if s.Kind.Set {
-		e.Comma()
-	}
+
+	e.Comma()
 
 	e.RawStr("\"resources\"" + ":")
 	e.ArrStart()
@@ -42849,10 +50351,6 @@ func (s IoK8sApimachineryPkgApisMetaV1APIResourceList) Encode(e *jx.Writer) {
 		}
 	}
 	e.ArrEnd()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -42901,20 +50399,38 @@ func (s *IoK8sApimachineryPkgApisMetaV1APIResourceList) Decode(d *jx.Decoder) er
 // Encode implements json.Marshaler.
 func (s IoK8sApimachineryPkgApisMetaV1APIVersions) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.ApiVersion.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.ApiVersion.Set {
 		e.RawStr("\"apiVersion\"" + ":")
 		s.ApiVersion.Encode(e)
 	}
-	if s.ApiVersion.Set {
-		e.Comma()
+
+	if s.Kind.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Kind.Set {
 		e.RawStr("\"kind\"" + ":")
 		s.Kind.Encode(e)
 	}
-	if s.Kind.Set {
+
+	if !first {
+
 		e.Comma()
 	}
+	first = false
 
 	e.RawStr("\"serverAddressByClientCIDRs\"" + ":")
 	e.ArrStart()
@@ -42947,10 +50463,6 @@ func (s IoK8sApimachineryPkgApisMetaV1APIVersions) Encode(e *jx.Writer) {
 		}
 	}
 	e.ArrEnd()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -43007,6 +50519,16 @@ func (s *IoK8sApimachineryPkgApisMetaV1APIVersions) Decode(d *jx.Decoder) error 
 // Encode implements json.Marshaler.
 func (s IoK8sApimachineryPkgApisMetaV1Condition) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"lastTransitionTime\"" + ":")
 	s.LastTransitionTime.Encode(e)
@@ -43015,29 +50537,29 @@ func (s IoK8sApimachineryPkgApisMetaV1Condition) Encode(e *jx.Writer) {
 
 	e.RawStr("\"message\"" + ":")
 	e.Str(s.Message)
-	e.Comma()
+
+	if s.ObservedGeneration.Set {
+		e.Comma()
+	}
 	if s.ObservedGeneration.Set {
 		e.RawStr("\"observedGeneration\"" + ":")
 		s.ObservedGeneration.Encode(e)
 	}
-	if s.ObservedGeneration.Set {
-		e.Comma()
-	}
+
+	e.Comma()
 
 	e.RawStr("\"reason\"" + ":")
 	e.Str(s.Reason)
+
 	e.Comma()
 
 	e.RawStr("\"status\"" + ":")
 	e.Str(s.Status)
+
 	e.Comma()
 
 	e.RawStr("\"type\"" + ":")
 	e.Str(s.Type)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -43097,10 +50619,10 @@ func (s *IoK8sApimachineryPkgApisMetaV1Condition) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sApimachineryPkgApisMetaV1FieldsV1) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -43121,17 +50643,23 @@ func (s *IoK8sApimachineryPkgApisMetaV1FieldsV1) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"groupVersion\"" + ":")
 	e.Str(s.GroupVersion)
+
 	e.Comma()
 
 	e.RawStr("\"version\"" + ":")
 	e.Str(s.Version)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -43164,6 +50692,17 @@ func (s *IoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery) Decode(d *jx.De
 // Encode implements json.Marshaler.
 func (s IoK8sApimachineryPkgApisMetaV1LabelSelector) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.MatchExpressions != nil {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.MatchExpressions != nil {
 		e.RawStr("\"matchExpressions\"" + ":")
 		e.ArrStart()
@@ -43180,16 +50719,16 @@ func (s IoK8sApimachineryPkgApisMetaV1LabelSelector) Encode(e *jx.Writer) {
 		}
 		e.ArrEnd()
 	}
-	if s.MatchExpressions != nil {
-		e.Comma()
+
+	if s.MatchLabels != nil {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.MatchLabels != nil {
 		e.RawStr("\"matchLabels\"" + ":")
 		s.MatchLabels.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -43230,10 +50769,10 @@ func (s *IoK8sApimachineryPkgApisMetaV1LabelSelector) Decode(d *jx.Decoder) erro
 // Encode implements json.Marshaler.
 func (s IoK8sApimachineryPkgApisMetaV1LabelSelectorMatchLabels) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -43254,14 +50793,27 @@ func (s *IoK8sApimachineryPkgApisMetaV1LabelSelectorMatchLabels) Decode(d *jx.De
 // Encode implements json.Marshaler.
 func (s IoK8sApimachineryPkgApisMetaV1LabelSelectorRequirement) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"key\"" + ":")
 	e.Str(s.Key)
+
 	e.Comma()
 
 	e.RawStr("\"operator\"" + ":")
 	e.Str(s.Operator)
-	e.Comma()
+
+	if s.Values != nil {
+		e.Comma()
+	}
 	if s.Values != nil {
 		e.RawStr("\"values\"" + ":")
 		e.ArrStart()
@@ -43277,10 +50829,6 @@ func (s IoK8sApimachineryPkgApisMetaV1LabelSelectorRequirement) Encode(e *jx.Wri
 			}
 		}
 		e.ArrEnd()
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -43328,34 +50876,53 @@ func (s *IoK8sApimachineryPkgApisMetaV1LabelSelectorRequirement) Decode(d *jx.De
 // Encode implements json.Marshaler.
 func (s IoK8sApimachineryPkgApisMetaV1ListMeta) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.Continue.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.Continue.Set {
 		e.RawStr("\"continue\"" + ":")
 		s.Continue.Encode(e)
 	}
-	if s.Continue.Set {
-		e.Comma()
+
+	if s.RemainingItemCount.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.RemainingItemCount.Set {
 		e.RawStr("\"remainingItemCount\"" + ":")
 		s.RemainingItemCount.Encode(e)
 	}
-	if s.RemainingItemCount.Set {
-		e.Comma()
+
+	if s.ResourceVersion.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.ResourceVersion.Set {
 		e.RawStr("\"resourceVersion\"" + ":")
 		s.ResourceVersion.Encode(e)
 	}
-	if s.ResourceVersion.Set {
-		e.Comma()
+
+	if s.SelfLink.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.SelfLink.Set {
 		e.RawStr("\"selfLink\"" + ":")
 		s.SelfLink.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -43397,55 +50964,86 @@ func (s *IoK8sApimachineryPkgApisMetaV1ListMeta) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.ApiVersion.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.ApiVersion.Set {
 		e.RawStr("\"apiVersion\"" + ":")
 		s.ApiVersion.Encode(e)
 	}
-	if s.ApiVersion.Set {
-		e.Comma()
+
+	if s.FieldsType.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.FieldsType.Set {
 		e.RawStr("\"fieldsType\"" + ":")
 		s.FieldsType.Encode(e)
 	}
-	if s.FieldsType.Set {
-		e.Comma()
+
+	if s.FieldsV1 != nil {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.FieldsV1 != nil {
 		e.RawStr("\"fieldsV1\"" + ":")
 		s.FieldsV1.Encode(e)
 	}
-	if s.FieldsV1 != nil {
-		e.Comma()
+
+	if s.Manager.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Manager.Set {
 		e.RawStr("\"manager\"" + ":")
 		s.Manager.Encode(e)
 	}
-	if s.Manager.Set {
-		e.Comma()
+
+	if s.Operation.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Operation.Set {
 		e.RawStr("\"operation\"" + ":")
 		s.Operation.Encode(e)
 	}
-	if s.Operation.Set {
-		e.Comma()
+
+	if s.Subresource.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Subresource.Set {
 		e.RawStr("\"subresource\"" + ":")
 		s.Subresource.Encode(e)
 	}
-	if s.Subresource.Set {
-		e.Comma()
+
+	if s.Time.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Time.Set {
 		e.RawStr("\"time\"" + ":")
 		s.Time.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -43530,40 +51128,71 @@ func (s *IoK8sApimachineryPkgApisMetaV1MicroTime) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sApimachineryPkgApisMetaV1ObjectMeta) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.Annotations != nil {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.Annotations != nil {
 		e.RawStr("\"annotations\"" + ":")
 		s.Annotations.Encode(e)
 	}
-	if s.Annotations != nil {
-		e.Comma()
+
+	if s.ClusterName.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.ClusterName.Set {
 		e.RawStr("\"clusterName\"" + ":")
 		s.ClusterName.Encode(e)
 	}
-	if s.ClusterName.Set {
-		e.Comma()
+
+	if s.CreationTimestamp.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.CreationTimestamp.Set {
 		e.RawStr("\"creationTimestamp\"" + ":")
 		s.CreationTimestamp.Encode(e)
 	}
-	if s.CreationTimestamp.Set {
-		e.Comma()
+
+	if s.DeletionGracePeriodSeconds.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.DeletionGracePeriodSeconds.Set {
 		e.RawStr("\"deletionGracePeriodSeconds\"" + ":")
 		s.DeletionGracePeriodSeconds.Encode(e)
 	}
-	if s.DeletionGracePeriodSeconds.Set {
-		e.Comma()
+
+	if s.DeletionTimestamp.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.DeletionTimestamp.Set {
 		e.RawStr("\"deletionTimestamp\"" + ":")
 		s.DeletionTimestamp.Encode(e)
 	}
-	if s.DeletionTimestamp.Set {
-		e.Comma()
+
+	if s.Finalizers != nil {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Finalizers != nil {
 		e.RawStr("\"finalizers\"" + ":")
@@ -43581,29 +51210,45 @@ func (s IoK8sApimachineryPkgApisMetaV1ObjectMeta) Encode(e *jx.Writer) {
 		}
 		e.ArrEnd()
 	}
-	if s.Finalizers != nil {
-		e.Comma()
+
+	if s.GenerateName.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.GenerateName.Set {
 		e.RawStr("\"generateName\"" + ":")
 		s.GenerateName.Encode(e)
 	}
-	if s.GenerateName.Set {
-		e.Comma()
+
+	if s.Generation.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Generation.Set {
 		e.RawStr("\"generation\"" + ":")
 		s.Generation.Encode(e)
 	}
-	if s.Generation.Set {
-		e.Comma()
+
+	if s.Labels != nil {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Labels != nil {
 		e.RawStr("\"labels\"" + ":")
 		s.Labels.Encode(e)
 	}
-	if s.Labels != nil {
-		e.Comma()
+
+	if s.ManagedFields != nil {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.ManagedFields != nil {
 		e.RawStr("\"managedFields\"" + ":")
@@ -43621,22 +51266,34 @@ func (s IoK8sApimachineryPkgApisMetaV1ObjectMeta) Encode(e *jx.Writer) {
 		}
 		e.ArrEnd()
 	}
-	if s.ManagedFields != nil {
-		e.Comma()
+
+	if s.Name.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Name.Set {
 		e.RawStr("\"name\"" + ":")
 		s.Name.Encode(e)
 	}
-	if s.Name.Set {
-		e.Comma()
+
+	if s.Namespace.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Namespace.Set {
 		e.RawStr("\"namespace\"" + ":")
 		s.Namespace.Encode(e)
 	}
-	if s.Namespace.Set {
-		e.Comma()
+
+	if s.OwnerReferences != nil {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.OwnerReferences != nil {
 		e.RawStr("\"ownerReferences\"" + ":")
@@ -43654,30 +51311,38 @@ func (s IoK8sApimachineryPkgApisMetaV1ObjectMeta) Encode(e *jx.Writer) {
 		}
 		e.ArrEnd()
 	}
-	if s.OwnerReferences != nil {
-		e.Comma()
+
+	if s.ResourceVersion.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.ResourceVersion.Set {
 		e.RawStr("\"resourceVersion\"" + ":")
 		s.ResourceVersion.Encode(e)
 	}
-	if s.ResourceVersion.Set {
-		e.Comma()
+
+	if s.SelfLink.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.SelfLink.Set {
 		e.RawStr("\"selfLink\"" + ":")
 		s.SelfLink.Encode(e)
 	}
-	if s.SelfLink.Set {
-		e.Comma()
+
+	if s.UID.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.UID.Set {
 		e.RawStr("\"uid\"" + ":")
 		s.UID.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -43806,10 +51471,10 @@ func (s *IoK8sApimachineryPkgApisMetaV1ObjectMeta) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotations) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -43830,10 +51495,10 @@ func (s *IoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotations) Decode(d *jx.Decod
 // Encode implements json.Marshaler.
 func (s IoK8sApimachineryPkgApisMetaV1ObjectMetaLabels) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -43854,39 +51519,49 @@ func (s *IoK8sApimachineryPkgApisMetaV1ObjectMetaLabels) Decode(d *jx.Decoder) e
 // Encode implements json.Marshaler.
 func (s IoK8sApimachineryPkgApisMetaV1OwnerReference) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"apiVersion\"" + ":")
 	e.Str(s.ApiVersion)
-	e.Comma()
+
+	if s.BlockOwnerDeletion.Set {
+		e.Comma()
+	}
 	if s.BlockOwnerDeletion.Set {
 		e.RawStr("\"blockOwnerDeletion\"" + ":")
 		s.BlockOwnerDeletion.Encode(e)
 	}
-	if s.BlockOwnerDeletion.Set {
+
+	if s.Controller.Set {
 		e.Comma()
 	}
 	if s.Controller.Set {
 		e.RawStr("\"controller\"" + ":")
 		s.Controller.Encode(e)
 	}
-	if s.Controller.Set {
-		e.Comma()
-	}
+
+	e.Comma()
 
 	e.RawStr("\"kind\"" + ":")
 	e.Str(s.Kind)
+
 	e.Comma()
 
 	e.RawStr("\"name\"" + ":")
 	e.Str(s.Name)
+
 	e.Comma()
 
 	e.RawStr("\"uid\"" + ":")
 	e.Str(s.UID)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -43941,17 +51616,23 @@ func (s *IoK8sApimachineryPkgApisMetaV1OwnerReference) Decode(d *jx.Decoder) err
 // Encode implements json.Marshaler.
 func (s IoK8sApimachineryPkgApisMetaV1ServerAddressByClientCIDR) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"clientCIDR\"" + ":")
 	e.Str(s.ClientCIDR)
+
 	e.Comma()
 
 	e.RawStr("\"serverAddress\"" + ":")
 	e.Str(s.ServerAddress)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -44010,6 +51691,16 @@ func (s *IoK8sApimachineryPkgApisMetaV1Time) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sApimachineryPkgApisMetaV1WatchEvent) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"object\"" + ":")
 	s.Object.Encode(e)
@@ -44018,10 +51709,6 @@ func (s IoK8sApimachineryPkgApisMetaV1WatchEvent) Encode(e *jx.Writer) {
 
 	e.RawStr("\"type\"" + ":")
 	e.Str(s.Type)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -44052,10 +51739,10 @@ func (s *IoK8sApimachineryPkgApisMetaV1WatchEvent) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sApimachineryPkgRuntimeRawExtension) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -44102,45 +51789,58 @@ func (s *IoK8sApimachineryPkgUtilIntstrIntOrString) Decode(d *jx.Decoder) error 
 // Encode implements json.Marshaler.
 func (s IoK8sApimachineryPkgVersionInfo) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"buildDate\"" + ":")
 	e.Str(s.BuildDate)
+
 	e.Comma()
 
 	e.RawStr("\"compiler\"" + ":")
 	e.Str(s.Compiler)
+
 	e.Comma()
 
 	e.RawStr("\"gitCommit\"" + ":")
 	e.Str(s.GitCommit)
+
 	e.Comma()
 
 	e.RawStr("\"gitTreeState\"" + ":")
 	e.Str(s.GitTreeState)
+
 	e.Comma()
 
 	e.RawStr("\"gitVersion\"" + ":")
 	e.Str(s.GitVersion)
+
 	e.Comma()
 
 	e.RawStr("\"goVersion\"" + ":")
 	e.Str(s.GoVersion)
+
 	e.Comma()
 
 	e.RawStr("\"major\"" + ":")
 	e.Str(s.Major)
+
 	e.Comma()
 
 	e.RawStr("\"minor\"" + ":")
 	e.Str(s.Minor)
+
 	e.Comma()
 
 	e.RawStr("\"platform\"" + ":")
 	e.Str(s.Platform)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -44215,41 +51915,64 @@ func (s *IoK8sApimachineryPkgVersionInfo) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sKubeAggregatorPkgApisApiregistrationV1APIService) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.ApiVersion.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.ApiVersion.Set {
 		e.RawStr("\"apiVersion\"" + ":")
 		s.ApiVersion.Encode(e)
 	}
-	if s.ApiVersion.Set {
-		e.Comma()
+
+	if s.Kind.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Kind.Set {
 		e.RawStr("\"kind\"" + ":")
 		s.Kind.Encode(e)
 	}
-	if s.Kind.Set {
-		e.Comma()
+
+	if s.Metadata.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Metadata.Set {
 		e.RawStr("\"metadata\"" + ":")
 		s.Metadata.Encode(e)
 	}
-	if s.Metadata.Set {
-		e.Comma()
+
+	if s.Spec.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Spec.Set {
 		e.RawStr("\"spec\"" + ":")
 		s.Spec.Encode(e)
 	}
-	if s.Spec.Set {
-		e.Comma()
+
+	if s.Status.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Status.Set {
 		e.RawStr("\"status\"" + ":")
 		s.Status.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -44296,38 +52019,56 @@ func (s *IoK8sKubeAggregatorPkgApisApiregistrationV1APIService) Decode(d *jx.Dec
 // Encode implements json.Marshaler.
 func (s IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceCondition) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.LastTransitionTime.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.LastTransitionTime.Set {
 		e.RawStr("\"lastTransitionTime\"" + ":")
 		s.LastTransitionTime.Encode(e)
 	}
-	if s.LastTransitionTime.Set {
-		e.Comma()
+
+	if s.Message.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Message.Set {
 		e.RawStr("\"message\"" + ":")
 		s.Message.Encode(e)
 	}
-	if s.Message.Set {
-		e.Comma()
+
+	if s.Reason.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Reason.Set {
 		e.RawStr("\"reason\"" + ":")
 		s.Reason.Encode(e)
 	}
-	if s.Reason.Set {
+
+	if !first {
 		e.Comma()
 	}
+	first = false
 
 	e.RawStr("\"status\"" + ":")
 	e.Str(s.Status)
+
 	e.Comma()
 
 	e.RawStr("\"type\"" + ":")
 	e.Str(s.Type)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -44375,13 +52116,27 @@ func (s *IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceCondition) Decode(
 // Encode implements json.Marshaler.
 func (s IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceList) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.ApiVersion.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.ApiVersion.Set {
 		e.RawStr("\"apiVersion\"" + ":")
 		s.ApiVersion.Encode(e)
 	}
-	if s.ApiVersion.Set {
+
+	if !first {
+
 		e.Comma()
 	}
+	first = false
 
 	e.RawStr("\"items\"" + ":")
 	e.ArrStart()
@@ -44398,21 +52153,20 @@ func (s IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceList) Encode(e *jx.
 	}
 	e.ArrEnd()
 
-	e.Comma()
+	if s.Kind.Set {
+		e.Comma()
+	}
 	if s.Kind.Set {
 		e.RawStr("\"kind\"" + ":")
 		s.Kind.Encode(e)
 	}
-	if s.Kind.Set {
+
+	if s.Metadata.Set {
 		e.Comma()
 	}
 	if s.Metadata.Set {
 		e.RawStr("\"metadata\"" + ":")
 		s.Metadata.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -44461,49 +52215,60 @@ func (s *IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceList) Decode(d *jx
 // Encode implements json.Marshaler.
 func (s IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceSpec) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"caBundle\"" + ":")
 	e.Base64(s.CaBundle)
-	e.Comma()
+
+	if s.Group.Set {
+		e.Comma()
+	}
 	if s.Group.Set {
 		e.RawStr("\"group\"" + ":")
 		s.Group.Encode(e)
 	}
-	if s.Group.Set {
-		e.Comma()
-	}
+
+	e.Comma()
 
 	e.RawStr("\"groupPriorityMinimum\"" + ":")
 	e.Int32(s.GroupPriorityMinimum)
-	e.Comma()
+
+	if s.InsecureSkipTLSVerify.Set {
+		e.Comma()
+	}
 	if s.InsecureSkipTLSVerify.Set {
 		e.RawStr("\"insecureSkipTLSVerify\"" + ":")
 		s.InsecureSkipTLSVerify.Encode(e)
 	}
-	if s.InsecureSkipTLSVerify.Set {
+
+	if s.Service.Set {
 		e.Comma()
 	}
 	if s.Service.Set {
 		e.RawStr("\"service\"" + ":")
 		s.Service.Encode(e)
 	}
-	if s.Service.Set {
+
+	if s.Version.Set {
 		e.Comma()
 	}
 	if s.Version.Set {
 		e.RawStr("\"version\"" + ":")
 		s.Version.Encode(e)
 	}
-	if s.Version.Set {
-		e.Comma()
-	}
+
+	e.Comma()
 
 	e.RawStr("\"versionPriority\"" + ":")
 	e.Int32(s.VersionPriority)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -44562,6 +52327,17 @@ func (s *IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceSpec) Decode(d *jx
 // Encode implements json.Marshaler.
 func (s IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceStatus) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.Conditions != nil {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.Conditions != nil {
 		e.RawStr("\"conditions\"" + ":")
 		e.ArrStart()
@@ -44577,10 +52353,6 @@ func (s IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceStatus) Encode(e *j
 			}
 		}
 		e.ArrEnd()
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -44614,27 +52386,42 @@ func (s *IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceStatus) Decode(d *
 // Encode implements json.Marshaler.
 func (s IoK8sKubeAggregatorPkgApisApiregistrationV1ServiceReference) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if s.Name.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
+	}
 	if s.Name.Set {
 		e.RawStr("\"name\"" + ":")
 		s.Name.Encode(e)
 	}
-	if s.Name.Set {
-		e.Comma()
+
+	if s.Namespace.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Namespace.Set {
 		e.RawStr("\"namespace\"" + ":")
 		s.Namespace.Encode(e)
 	}
-	if s.Namespace.Set {
-		e.Comma()
+
+	if s.Port.Set {
+		if !first {
+			e.Comma()
+		}
+		first = false
 	}
 	if s.Port.Set {
 		e.RawStr("\"port\"" + ":")
 		s.Port.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -44671,10 +52458,10 @@ func (s *IoK8sKubeAggregatorPkgApisApiregistrationV1ServiceReference) Decode(d *
 // Encode implements json.Marshaler.
 func (s ListAdmissionregistrationV1MutatingWebhookConfigurationUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -44695,10 +52482,10 @@ func (s *ListAdmissionregistrationV1MutatingWebhookConfigurationUnauthorized) De
 // Encode implements json.Marshaler.
 func (s ListAdmissionregistrationV1ValidatingWebhookConfigurationUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -44719,10 +52506,10 @@ func (s *ListAdmissionregistrationV1ValidatingWebhookConfigurationUnauthorized) 
 // Encode implements json.Marshaler.
 func (s ListApiextensionsV1CustomResourceDefinitionUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -44743,10 +52530,10 @@ func (s *ListApiextensionsV1CustomResourceDefinitionUnauthorized) Decode(d *jx.D
 // Encode implements json.Marshaler.
 func (s ListApiregistrationV1APIServiceUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -44767,10 +52554,10 @@ func (s *ListApiregistrationV1APIServiceUnauthorized) Decode(d *jx.Decoder) erro
 // Encode implements json.Marshaler.
 func (s ListAppsV1ControllerRevisionForAllNamespacesUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -44791,10 +52578,10 @@ func (s *ListAppsV1ControllerRevisionForAllNamespacesUnauthorized) Decode(d *jx.
 // Encode implements json.Marshaler.
 func (s ListAppsV1DaemonSetForAllNamespacesUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -44815,10 +52602,10 @@ func (s *ListAppsV1DaemonSetForAllNamespacesUnauthorized) Decode(d *jx.Decoder) 
 // Encode implements json.Marshaler.
 func (s ListAppsV1DeploymentForAllNamespacesUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -44839,10 +52626,10 @@ func (s *ListAppsV1DeploymentForAllNamespacesUnauthorized) Decode(d *jx.Decoder)
 // Encode implements json.Marshaler.
 func (s ListAppsV1NamespacedControllerRevisionUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -44863,10 +52650,10 @@ func (s *ListAppsV1NamespacedControllerRevisionUnauthorized) Decode(d *jx.Decode
 // Encode implements json.Marshaler.
 func (s ListAppsV1NamespacedDaemonSetUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -44887,10 +52674,10 @@ func (s *ListAppsV1NamespacedDaemonSetUnauthorized) Decode(d *jx.Decoder) error 
 // Encode implements json.Marshaler.
 func (s ListAppsV1NamespacedDeploymentUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -44911,10 +52698,10 @@ func (s *ListAppsV1NamespacedDeploymentUnauthorized) Decode(d *jx.Decoder) error
 // Encode implements json.Marshaler.
 func (s ListAppsV1NamespacedReplicaSetUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -44935,10 +52722,10 @@ func (s *ListAppsV1NamespacedReplicaSetUnauthorized) Decode(d *jx.Decoder) error
 // Encode implements json.Marshaler.
 func (s ListAppsV1NamespacedStatefulSetUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -44959,10 +52746,10 @@ func (s *ListAppsV1NamespacedStatefulSetUnauthorized) Decode(d *jx.Decoder) erro
 // Encode implements json.Marshaler.
 func (s ListAppsV1ReplicaSetForAllNamespacesUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -44983,10 +52770,10 @@ func (s *ListAppsV1ReplicaSetForAllNamespacesUnauthorized) Decode(d *jx.Decoder)
 // Encode implements json.Marshaler.
 func (s ListAppsV1StatefulSetForAllNamespacesUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -45007,10 +52794,10 @@ func (s *ListAppsV1StatefulSetForAllNamespacesUnauthorized) Decode(d *jx.Decoder
 // Encode implements json.Marshaler.
 func (s ListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -45031,10 +52818,10 @@ func (s *ListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesUnauthorized) D
 // Encode implements json.Marshaler.
 func (s ListAutoscalingV1NamespacedHorizontalPodAutoscalerUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -45055,10 +52842,10 @@ func (s *ListAutoscalingV1NamespacedHorizontalPodAutoscalerUnauthorized) Decode(
 // Encode implements json.Marshaler.
 func (s ListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespacesUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -45079,10 +52866,10 @@ func (s *ListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespacesUnauthoriz
 // Encode implements json.Marshaler.
 func (s ListAutoscalingV2beta1NamespacedHorizontalPodAutoscalerUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -45103,10 +52890,10 @@ func (s *ListAutoscalingV2beta1NamespacedHorizontalPodAutoscalerUnauthorized) De
 // Encode implements json.Marshaler.
 func (s ListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespacesUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -45127,10 +52914,10 @@ func (s *ListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespacesUnauthoriz
 // Encode implements json.Marshaler.
 func (s ListAutoscalingV2beta2NamespacedHorizontalPodAutoscalerUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -45151,10 +52938,10 @@ func (s *ListAutoscalingV2beta2NamespacedHorizontalPodAutoscalerUnauthorized) De
 // Encode implements json.Marshaler.
 func (s ListBatchV1CronJobForAllNamespacesUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -45175,10 +52962,10 @@ func (s *ListBatchV1CronJobForAllNamespacesUnauthorized) Decode(d *jx.Decoder) e
 // Encode implements json.Marshaler.
 func (s ListBatchV1JobForAllNamespacesUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -45199,10 +52986,10 @@ func (s *ListBatchV1JobForAllNamespacesUnauthorized) Decode(d *jx.Decoder) error
 // Encode implements json.Marshaler.
 func (s ListBatchV1NamespacedCronJobUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -45223,10 +53010,10 @@ func (s *ListBatchV1NamespacedCronJobUnauthorized) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s ListBatchV1NamespacedJobUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -45247,10 +53034,10 @@ func (s *ListBatchV1NamespacedJobUnauthorized) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s ListBatchV1beta1CronJobForAllNamespacesUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -45271,10 +53058,10 @@ func (s *ListBatchV1beta1CronJobForAllNamespacesUnauthorized) Decode(d *jx.Decod
 // Encode implements json.Marshaler.
 func (s ListBatchV1beta1NamespacedCronJobUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -45295,10 +53082,10 @@ func (s *ListBatchV1beta1NamespacedCronJobUnauthorized) Decode(d *jx.Decoder) er
 // Encode implements json.Marshaler.
 func (s ListCertificatesV1CertificateSigningRequestUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -45319,10 +53106,10 @@ func (s *ListCertificatesV1CertificateSigningRequestUnauthorized) Decode(d *jx.D
 // Encode implements json.Marshaler.
 func (s ListCoordinationV1LeaseForAllNamespacesUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -45343,10 +53130,10 @@ func (s *ListCoordinationV1LeaseForAllNamespacesUnauthorized) Decode(d *jx.Decod
 // Encode implements json.Marshaler.
 func (s ListCoordinationV1NamespacedLeaseUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -45367,10 +53154,10 @@ func (s *ListCoordinationV1NamespacedLeaseUnauthorized) Decode(d *jx.Decoder) er
 // Encode implements json.Marshaler.
 func (s ListCoreV1ComponentStatusUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -45391,10 +53178,10 @@ func (s *ListCoreV1ComponentStatusUnauthorized) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s ListCoreV1ConfigMapForAllNamespacesUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -45415,10 +53202,10 @@ func (s *ListCoreV1ConfigMapForAllNamespacesUnauthorized) Decode(d *jx.Decoder) 
 // Encode implements json.Marshaler.
 func (s ListCoreV1EndpointsForAllNamespacesUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -45439,10 +53226,10 @@ func (s *ListCoreV1EndpointsForAllNamespacesUnauthorized) Decode(d *jx.Decoder) 
 // Encode implements json.Marshaler.
 func (s ListCoreV1EventForAllNamespacesUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -45463,10 +53250,10 @@ func (s *ListCoreV1EventForAllNamespacesUnauthorized) Decode(d *jx.Decoder) erro
 // Encode implements json.Marshaler.
 func (s ListCoreV1LimitRangeForAllNamespacesUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -45487,10 +53274,10 @@ func (s *ListCoreV1LimitRangeForAllNamespacesUnauthorized) Decode(d *jx.Decoder)
 // Encode implements json.Marshaler.
 func (s ListCoreV1NamespaceUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -45511,10 +53298,10 @@ func (s *ListCoreV1NamespaceUnauthorized) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s ListCoreV1NamespacedConfigMapUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -45535,10 +53322,10 @@ func (s *ListCoreV1NamespacedConfigMapUnauthorized) Decode(d *jx.Decoder) error 
 // Encode implements json.Marshaler.
 func (s ListCoreV1NamespacedEndpointsUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -45559,10 +53346,10 @@ func (s *ListCoreV1NamespacedEndpointsUnauthorized) Decode(d *jx.Decoder) error 
 // Encode implements json.Marshaler.
 func (s ListCoreV1NamespacedEventUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -45583,10 +53370,10 @@ func (s *ListCoreV1NamespacedEventUnauthorized) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s ListCoreV1NamespacedLimitRangeUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -45607,10 +53394,10 @@ func (s *ListCoreV1NamespacedLimitRangeUnauthorized) Decode(d *jx.Decoder) error
 // Encode implements json.Marshaler.
 func (s ListCoreV1NamespacedPersistentVolumeClaimUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -45631,10 +53418,10 @@ func (s *ListCoreV1NamespacedPersistentVolumeClaimUnauthorized) Decode(d *jx.Dec
 // Encode implements json.Marshaler.
 func (s ListCoreV1NamespacedPodTemplateUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -45655,10 +53442,10 @@ func (s *ListCoreV1NamespacedPodTemplateUnauthorized) Decode(d *jx.Decoder) erro
 // Encode implements json.Marshaler.
 func (s ListCoreV1NamespacedPodUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -45679,10 +53466,10 @@ func (s *ListCoreV1NamespacedPodUnauthorized) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s ListCoreV1NamespacedReplicationControllerUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -45703,10 +53490,10 @@ func (s *ListCoreV1NamespacedReplicationControllerUnauthorized) Decode(d *jx.Dec
 // Encode implements json.Marshaler.
 func (s ListCoreV1NamespacedResourceQuotaUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -45727,10 +53514,10 @@ func (s *ListCoreV1NamespacedResourceQuotaUnauthorized) Decode(d *jx.Decoder) er
 // Encode implements json.Marshaler.
 func (s ListCoreV1NamespacedSecretUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -45751,10 +53538,10 @@ func (s *ListCoreV1NamespacedSecretUnauthorized) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s ListCoreV1NamespacedServiceAccountUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -45775,10 +53562,10 @@ func (s *ListCoreV1NamespacedServiceAccountUnauthorized) Decode(d *jx.Decoder) e
 // Encode implements json.Marshaler.
 func (s ListCoreV1NamespacedServiceUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -45799,10 +53586,10 @@ func (s *ListCoreV1NamespacedServiceUnauthorized) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s ListCoreV1NodeUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -45823,10 +53610,10 @@ func (s *ListCoreV1NodeUnauthorized) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s ListCoreV1PersistentVolumeClaimForAllNamespacesUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -45847,10 +53634,10 @@ func (s *ListCoreV1PersistentVolumeClaimForAllNamespacesUnauthorized) Decode(d *
 // Encode implements json.Marshaler.
 func (s ListCoreV1PersistentVolumeUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -45871,10 +53658,10 @@ func (s *ListCoreV1PersistentVolumeUnauthorized) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s ListCoreV1PodForAllNamespacesUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -45895,10 +53682,10 @@ func (s *ListCoreV1PodForAllNamespacesUnauthorized) Decode(d *jx.Decoder) error 
 // Encode implements json.Marshaler.
 func (s ListCoreV1PodTemplateForAllNamespacesUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -45919,10 +53706,10 @@ func (s *ListCoreV1PodTemplateForAllNamespacesUnauthorized) Decode(d *jx.Decoder
 // Encode implements json.Marshaler.
 func (s ListCoreV1ReplicationControllerForAllNamespacesUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -45943,10 +53730,10 @@ func (s *ListCoreV1ReplicationControllerForAllNamespacesUnauthorized) Decode(d *
 // Encode implements json.Marshaler.
 func (s ListCoreV1ResourceQuotaForAllNamespacesUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -45967,10 +53754,10 @@ func (s *ListCoreV1ResourceQuotaForAllNamespacesUnauthorized) Decode(d *jx.Decod
 // Encode implements json.Marshaler.
 func (s ListCoreV1SecretForAllNamespacesUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -45991,10 +53778,10 @@ func (s *ListCoreV1SecretForAllNamespacesUnauthorized) Decode(d *jx.Decoder) err
 // Encode implements json.Marshaler.
 func (s ListCoreV1ServiceAccountForAllNamespacesUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -46015,10 +53802,10 @@ func (s *ListCoreV1ServiceAccountForAllNamespacesUnauthorized) Decode(d *jx.Deco
 // Encode implements json.Marshaler.
 func (s ListCoreV1ServiceForAllNamespacesUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -46039,10 +53826,10 @@ func (s *ListCoreV1ServiceForAllNamespacesUnauthorized) Decode(d *jx.Decoder) er
 // Encode implements json.Marshaler.
 func (s ListDiscoveryV1EndpointSliceForAllNamespacesUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -46063,10 +53850,10 @@ func (s *ListDiscoveryV1EndpointSliceForAllNamespacesUnauthorized) Decode(d *jx.
 // Encode implements json.Marshaler.
 func (s ListDiscoveryV1NamespacedEndpointSliceUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -46087,10 +53874,10 @@ func (s *ListDiscoveryV1NamespacedEndpointSliceUnauthorized) Decode(d *jx.Decode
 // Encode implements json.Marshaler.
 func (s ListDiscoveryV1beta1EndpointSliceForAllNamespacesUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -46111,10 +53898,10 @@ func (s *ListDiscoveryV1beta1EndpointSliceForAllNamespacesUnauthorized) Decode(d
 // Encode implements json.Marshaler.
 func (s ListDiscoveryV1beta1NamespacedEndpointSliceUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -46135,10 +53922,10 @@ func (s *ListDiscoveryV1beta1NamespacedEndpointSliceUnauthorized) Decode(d *jx.D
 // Encode implements json.Marshaler.
 func (s ListEventsV1EventForAllNamespacesUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -46159,10 +53946,10 @@ func (s *ListEventsV1EventForAllNamespacesUnauthorized) Decode(d *jx.Decoder) er
 // Encode implements json.Marshaler.
 func (s ListEventsV1NamespacedEventUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -46183,10 +53970,10 @@ func (s *ListEventsV1NamespacedEventUnauthorized) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s ListEventsV1beta1EventForAllNamespacesUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -46207,10 +53994,10 @@ func (s *ListEventsV1beta1EventForAllNamespacesUnauthorized) Decode(d *jx.Decode
 // Encode implements json.Marshaler.
 func (s ListEventsV1beta1NamespacedEventUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -46231,10 +54018,10 @@ func (s *ListEventsV1beta1NamespacedEventUnauthorized) Decode(d *jx.Decoder) err
 // Encode implements json.Marshaler.
 func (s ListFlowcontrolApiserverV1beta1FlowSchemaUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -46255,10 +54042,10 @@ func (s *ListFlowcontrolApiserverV1beta1FlowSchemaUnauthorized) Decode(d *jx.Dec
 // Encode implements json.Marshaler.
 func (s ListFlowcontrolApiserverV1beta1PriorityLevelConfigurationUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -46279,10 +54066,10 @@ func (s *ListFlowcontrolApiserverV1beta1PriorityLevelConfigurationUnauthorized) 
 // Encode implements json.Marshaler.
 func (s ListFlowcontrolApiserverV1beta2FlowSchemaUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -46303,10 +54090,10 @@ func (s *ListFlowcontrolApiserverV1beta2FlowSchemaUnauthorized) Decode(d *jx.Dec
 // Encode implements json.Marshaler.
 func (s ListFlowcontrolApiserverV1beta2PriorityLevelConfigurationUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -46327,10 +54114,10 @@ func (s *ListFlowcontrolApiserverV1beta2PriorityLevelConfigurationUnauthorized) 
 // Encode implements json.Marshaler.
 func (s ListInternalApiserverV1alpha1StorageVersionUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -46351,10 +54138,10 @@ func (s *ListInternalApiserverV1alpha1StorageVersionUnauthorized) Decode(d *jx.D
 // Encode implements json.Marshaler.
 func (s ListNetworkingV1IngressClassUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -46375,10 +54162,10 @@ func (s *ListNetworkingV1IngressClassUnauthorized) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s ListNetworkingV1IngressForAllNamespacesUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -46399,10 +54186,10 @@ func (s *ListNetworkingV1IngressForAllNamespacesUnauthorized) Decode(d *jx.Decod
 // Encode implements json.Marshaler.
 func (s ListNetworkingV1NamespacedIngressUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -46423,10 +54210,10 @@ func (s *ListNetworkingV1NamespacedIngressUnauthorized) Decode(d *jx.Decoder) er
 // Encode implements json.Marshaler.
 func (s ListNetworkingV1NamespacedNetworkPolicyUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -46447,10 +54234,10 @@ func (s *ListNetworkingV1NamespacedNetworkPolicyUnauthorized) Decode(d *jx.Decod
 // Encode implements json.Marshaler.
 func (s ListNetworkingV1NetworkPolicyForAllNamespacesUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -46471,10 +54258,10 @@ func (s *ListNetworkingV1NetworkPolicyForAllNamespacesUnauthorized) Decode(d *jx
 // Encode implements json.Marshaler.
 func (s ListNodeV1RuntimeClassUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -46495,10 +54282,10 @@ func (s *ListNodeV1RuntimeClassUnauthorized) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s ListNodeV1alpha1RuntimeClassUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -46519,10 +54306,10 @@ func (s *ListNodeV1alpha1RuntimeClassUnauthorized) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s ListNodeV1beta1RuntimeClassUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -46543,10 +54330,10 @@ func (s *ListNodeV1beta1RuntimeClassUnauthorized) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s ListPolicyV1NamespacedPodDisruptionBudgetUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -46567,10 +54354,10 @@ func (s *ListPolicyV1NamespacedPodDisruptionBudgetUnauthorized) Decode(d *jx.Dec
 // Encode implements json.Marshaler.
 func (s ListPolicyV1PodDisruptionBudgetForAllNamespacesUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -46591,10 +54378,10 @@ func (s *ListPolicyV1PodDisruptionBudgetForAllNamespacesUnauthorized) Decode(d *
 // Encode implements json.Marshaler.
 func (s ListPolicyV1beta1NamespacedPodDisruptionBudgetUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -46615,10 +54402,10 @@ func (s *ListPolicyV1beta1NamespacedPodDisruptionBudgetUnauthorized) Decode(d *j
 // Encode implements json.Marshaler.
 func (s ListPolicyV1beta1PodDisruptionBudgetForAllNamespacesUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -46639,10 +54426,10 @@ func (s *ListPolicyV1beta1PodDisruptionBudgetForAllNamespacesUnauthorized) Decod
 // Encode implements json.Marshaler.
 func (s ListPolicyV1beta1PodSecurityPolicyUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -46663,10 +54450,10 @@ func (s *ListPolicyV1beta1PodSecurityPolicyUnauthorized) Decode(d *jx.Decoder) e
 // Encode implements json.Marshaler.
 func (s ListRbacAuthorizationV1ClusterRoleBindingUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -46687,10 +54474,10 @@ func (s *ListRbacAuthorizationV1ClusterRoleBindingUnauthorized) Decode(d *jx.Dec
 // Encode implements json.Marshaler.
 func (s ListRbacAuthorizationV1ClusterRoleUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -46711,10 +54498,10 @@ func (s *ListRbacAuthorizationV1ClusterRoleUnauthorized) Decode(d *jx.Decoder) e
 // Encode implements json.Marshaler.
 func (s ListRbacAuthorizationV1NamespacedRoleBindingUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -46735,10 +54522,10 @@ func (s *ListRbacAuthorizationV1NamespacedRoleBindingUnauthorized) Decode(d *jx.
 // Encode implements json.Marshaler.
 func (s ListRbacAuthorizationV1NamespacedRoleUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -46759,10 +54546,10 @@ func (s *ListRbacAuthorizationV1NamespacedRoleUnauthorized) Decode(d *jx.Decoder
 // Encode implements json.Marshaler.
 func (s ListRbacAuthorizationV1RoleBindingForAllNamespacesUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -46783,10 +54570,10 @@ func (s *ListRbacAuthorizationV1RoleBindingForAllNamespacesUnauthorized) Decode(
 // Encode implements json.Marshaler.
 func (s ListRbacAuthorizationV1RoleForAllNamespacesUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -46807,10 +54594,10 @@ func (s *ListRbacAuthorizationV1RoleForAllNamespacesUnauthorized) Decode(d *jx.D
 // Encode implements json.Marshaler.
 func (s ListSchedulingV1PriorityClassUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -46831,10 +54618,10 @@ func (s *ListSchedulingV1PriorityClassUnauthorized) Decode(d *jx.Decoder) error 
 // Encode implements json.Marshaler.
 func (s ListStorageV1CSIDriverUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -46855,10 +54642,10 @@ func (s *ListStorageV1CSIDriverUnauthorized) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s ListStorageV1CSINodeUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -46879,10 +54666,10 @@ func (s *ListStorageV1CSINodeUnauthorized) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s ListStorageV1StorageClassUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -46903,10 +54690,10 @@ func (s *ListStorageV1StorageClassUnauthorized) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s ListStorageV1VolumeAttachmentUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -46927,10 +54714,10 @@ func (s *ListStorageV1VolumeAttachmentUnauthorized) Decode(d *jx.Decoder) error 
 // Encode implements json.Marshaler.
 func (s ListStorageV1alpha1CSIStorageCapacityForAllNamespacesUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -46951,10 +54738,10 @@ func (s *ListStorageV1alpha1CSIStorageCapacityForAllNamespacesUnauthorized) Deco
 // Encode implements json.Marshaler.
 func (s ListStorageV1alpha1NamespacedCSIStorageCapacityUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -46975,10 +54762,10 @@ func (s *ListStorageV1alpha1NamespacedCSIStorageCapacityUnauthorized) Decode(d *
 // Encode implements json.Marshaler.
 func (s ListStorageV1beta1CSIStorageCapacityForAllNamespacesUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -46999,10 +54786,10 @@ func (s *ListStorageV1beta1CSIStorageCapacityForAllNamespacesUnauthorized) Decod
 // Encode implements json.Marshaler.
 func (s ListStorageV1beta1NamespacedCSIStorageCapacityUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -47023,10 +54810,10 @@ func (s *ListStorageV1beta1NamespacedCSIStorageCapacityUnauthorized) Decode(d *j
 // Encode implements json.Marshaler.
 func (s LogFileHandlerUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -47047,10 +54834,10 @@ func (s *LogFileHandlerUnauthorized) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s LogFileListHandlerUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -52501,10 +60288,10 @@ func (o *OptString) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s ReadAdmissionregistrationV1MutatingWebhookConfigurationUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -52525,10 +60312,10 @@ func (s *ReadAdmissionregistrationV1MutatingWebhookConfigurationUnauthorized) De
 // Encode implements json.Marshaler.
 func (s ReadAdmissionregistrationV1ValidatingWebhookConfigurationUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -52549,10 +60336,10 @@ func (s *ReadAdmissionregistrationV1ValidatingWebhookConfigurationUnauthorized) 
 // Encode implements json.Marshaler.
 func (s ReadApiextensionsV1CustomResourceDefinitionStatusUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -52573,10 +60360,10 @@ func (s *ReadApiextensionsV1CustomResourceDefinitionStatusUnauthorized) Decode(d
 // Encode implements json.Marshaler.
 func (s ReadApiextensionsV1CustomResourceDefinitionUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -52597,10 +60384,10 @@ func (s *ReadApiextensionsV1CustomResourceDefinitionUnauthorized) Decode(d *jx.D
 // Encode implements json.Marshaler.
 func (s ReadApiregistrationV1APIServiceStatusUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -52621,10 +60408,10 @@ func (s *ReadApiregistrationV1APIServiceStatusUnauthorized) Decode(d *jx.Decoder
 // Encode implements json.Marshaler.
 func (s ReadApiregistrationV1APIServiceUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -52645,10 +60432,10 @@ func (s *ReadApiregistrationV1APIServiceUnauthorized) Decode(d *jx.Decoder) erro
 // Encode implements json.Marshaler.
 func (s ReadAppsV1NamespacedControllerRevisionUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -52669,10 +60456,10 @@ func (s *ReadAppsV1NamespacedControllerRevisionUnauthorized) Decode(d *jx.Decode
 // Encode implements json.Marshaler.
 func (s ReadAppsV1NamespacedDaemonSetStatusUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -52693,10 +60480,10 @@ func (s *ReadAppsV1NamespacedDaemonSetStatusUnauthorized) Decode(d *jx.Decoder) 
 // Encode implements json.Marshaler.
 func (s ReadAppsV1NamespacedDaemonSetUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -52717,10 +60504,10 @@ func (s *ReadAppsV1NamespacedDaemonSetUnauthorized) Decode(d *jx.Decoder) error 
 // Encode implements json.Marshaler.
 func (s ReadAppsV1NamespacedDeploymentScaleUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -52741,10 +60528,10 @@ func (s *ReadAppsV1NamespacedDeploymentScaleUnauthorized) Decode(d *jx.Decoder) 
 // Encode implements json.Marshaler.
 func (s ReadAppsV1NamespacedDeploymentStatusUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -52765,10 +60552,10 @@ func (s *ReadAppsV1NamespacedDeploymentStatusUnauthorized) Decode(d *jx.Decoder)
 // Encode implements json.Marshaler.
 func (s ReadAppsV1NamespacedDeploymentUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -52789,10 +60576,10 @@ func (s *ReadAppsV1NamespacedDeploymentUnauthorized) Decode(d *jx.Decoder) error
 // Encode implements json.Marshaler.
 func (s ReadAppsV1NamespacedReplicaSetScaleUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -52813,10 +60600,10 @@ func (s *ReadAppsV1NamespacedReplicaSetScaleUnauthorized) Decode(d *jx.Decoder) 
 // Encode implements json.Marshaler.
 func (s ReadAppsV1NamespacedReplicaSetStatusUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -52837,10 +60624,10 @@ func (s *ReadAppsV1NamespacedReplicaSetStatusUnauthorized) Decode(d *jx.Decoder)
 // Encode implements json.Marshaler.
 func (s ReadAppsV1NamespacedReplicaSetUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -52861,10 +60648,10 @@ func (s *ReadAppsV1NamespacedReplicaSetUnauthorized) Decode(d *jx.Decoder) error
 // Encode implements json.Marshaler.
 func (s ReadAppsV1NamespacedStatefulSetScaleUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -52885,10 +60672,10 @@ func (s *ReadAppsV1NamespacedStatefulSetScaleUnauthorized) Decode(d *jx.Decoder)
 // Encode implements json.Marshaler.
 func (s ReadAppsV1NamespacedStatefulSetStatusUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -52909,10 +60696,10 @@ func (s *ReadAppsV1NamespacedStatefulSetStatusUnauthorized) Decode(d *jx.Decoder
 // Encode implements json.Marshaler.
 func (s ReadAppsV1NamespacedStatefulSetUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -52933,10 +60720,10 @@ func (s *ReadAppsV1NamespacedStatefulSetUnauthorized) Decode(d *jx.Decoder) erro
 // Encode implements json.Marshaler.
 func (s ReadAutoscalingV1NamespacedHorizontalPodAutoscalerStatusUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -52957,10 +60744,10 @@ func (s *ReadAutoscalingV1NamespacedHorizontalPodAutoscalerStatusUnauthorized) D
 // Encode implements json.Marshaler.
 func (s ReadAutoscalingV1NamespacedHorizontalPodAutoscalerUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -52981,10 +60768,10 @@ func (s *ReadAutoscalingV1NamespacedHorizontalPodAutoscalerUnauthorized) Decode(
 // Encode implements json.Marshaler.
 func (s ReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatusUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -53005,10 +60792,10 @@ func (s *ReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatusUnauthoriz
 // Encode implements json.Marshaler.
 func (s ReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -53029,10 +60816,10 @@ func (s *ReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerUnauthorized) De
 // Encode implements json.Marshaler.
 func (s ReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatusUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -53053,10 +60840,10 @@ func (s *ReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatusUnauthoriz
 // Encode implements json.Marshaler.
 func (s ReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -53077,10 +60864,10 @@ func (s *ReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerUnauthorized) De
 // Encode implements json.Marshaler.
 func (s ReadBatchV1NamespacedCronJobStatusUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -53101,10 +60888,10 @@ func (s *ReadBatchV1NamespacedCronJobStatusUnauthorized) Decode(d *jx.Decoder) e
 // Encode implements json.Marshaler.
 func (s ReadBatchV1NamespacedCronJobUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -53125,10 +60912,10 @@ func (s *ReadBatchV1NamespacedCronJobUnauthorized) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s ReadBatchV1NamespacedJobStatusUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -53149,10 +60936,10 @@ func (s *ReadBatchV1NamespacedJobStatusUnauthorized) Decode(d *jx.Decoder) error
 // Encode implements json.Marshaler.
 func (s ReadBatchV1NamespacedJobUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -53173,10 +60960,10 @@ func (s *ReadBatchV1NamespacedJobUnauthorized) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s ReadBatchV1beta1NamespacedCronJobStatusUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -53197,10 +60984,10 @@ func (s *ReadBatchV1beta1NamespacedCronJobStatusUnauthorized) Decode(d *jx.Decod
 // Encode implements json.Marshaler.
 func (s ReadBatchV1beta1NamespacedCronJobUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -53221,10 +61008,10 @@ func (s *ReadBatchV1beta1NamespacedCronJobUnauthorized) Decode(d *jx.Decoder) er
 // Encode implements json.Marshaler.
 func (s ReadCertificatesV1CertificateSigningRequestApprovalUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -53245,10 +61032,10 @@ func (s *ReadCertificatesV1CertificateSigningRequestApprovalUnauthorized) Decode
 // Encode implements json.Marshaler.
 func (s ReadCertificatesV1CertificateSigningRequestStatusUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -53269,10 +61056,10 @@ func (s *ReadCertificatesV1CertificateSigningRequestStatusUnauthorized) Decode(d
 // Encode implements json.Marshaler.
 func (s ReadCertificatesV1CertificateSigningRequestUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -53293,10 +61080,10 @@ func (s *ReadCertificatesV1CertificateSigningRequestUnauthorized) Decode(d *jx.D
 // Encode implements json.Marshaler.
 func (s ReadCoordinationV1NamespacedLeaseUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -53317,10 +61104,10 @@ func (s *ReadCoordinationV1NamespacedLeaseUnauthorized) Decode(d *jx.Decoder) er
 // Encode implements json.Marshaler.
 func (s ReadCoreV1ComponentStatusUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -53341,10 +61128,10 @@ func (s *ReadCoreV1ComponentStatusUnauthorized) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s ReadCoreV1NamespaceStatusUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -53365,10 +61152,10 @@ func (s *ReadCoreV1NamespaceStatusUnauthorized) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s ReadCoreV1NamespaceUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -53389,10 +61176,10 @@ func (s *ReadCoreV1NamespaceUnauthorized) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s ReadCoreV1NamespacedConfigMapUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -53413,10 +61200,10 @@ func (s *ReadCoreV1NamespacedConfigMapUnauthorized) Decode(d *jx.Decoder) error 
 // Encode implements json.Marshaler.
 func (s ReadCoreV1NamespacedEndpointsUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -53437,10 +61224,10 @@ func (s *ReadCoreV1NamespacedEndpointsUnauthorized) Decode(d *jx.Decoder) error 
 // Encode implements json.Marshaler.
 func (s ReadCoreV1NamespacedEventUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -53461,10 +61248,10 @@ func (s *ReadCoreV1NamespacedEventUnauthorized) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s ReadCoreV1NamespacedLimitRangeUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -53485,10 +61272,10 @@ func (s *ReadCoreV1NamespacedLimitRangeUnauthorized) Decode(d *jx.Decoder) error
 // Encode implements json.Marshaler.
 func (s ReadCoreV1NamespacedPersistentVolumeClaimStatusUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -53509,10 +61296,10 @@ func (s *ReadCoreV1NamespacedPersistentVolumeClaimStatusUnauthorized) Decode(d *
 // Encode implements json.Marshaler.
 func (s ReadCoreV1NamespacedPersistentVolumeClaimUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -53533,10 +61320,10 @@ func (s *ReadCoreV1NamespacedPersistentVolumeClaimUnauthorized) Decode(d *jx.Dec
 // Encode implements json.Marshaler.
 func (s ReadCoreV1NamespacedPodEphemeralcontainersUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -53583,10 +61370,10 @@ func (s *ReadCoreV1NamespacedPodLogOKApplicationJSON) Decode(d *jx.Decoder) erro
 // Encode implements json.Marshaler.
 func (s ReadCoreV1NamespacedPodLogUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -53607,10 +61394,10 @@ func (s *ReadCoreV1NamespacedPodLogUnauthorized) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s ReadCoreV1NamespacedPodStatusUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -53631,10 +61418,10 @@ func (s *ReadCoreV1NamespacedPodStatusUnauthorized) Decode(d *jx.Decoder) error 
 // Encode implements json.Marshaler.
 func (s ReadCoreV1NamespacedPodTemplateUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -53655,10 +61442,10 @@ func (s *ReadCoreV1NamespacedPodTemplateUnauthorized) Decode(d *jx.Decoder) erro
 // Encode implements json.Marshaler.
 func (s ReadCoreV1NamespacedPodUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -53679,10 +61466,10 @@ func (s *ReadCoreV1NamespacedPodUnauthorized) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s ReadCoreV1NamespacedReplicationControllerScaleUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -53703,10 +61490,10 @@ func (s *ReadCoreV1NamespacedReplicationControllerScaleUnauthorized) Decode(d *j
 // Encode implements json.Marshaler.
 func (s ReadCoreV1NamespacedReplicationControllerStatusUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -53727,10 +61514,10 @@ func (s *ReadCoreV1NamespacedReplicationControllerStatusUnauthorized) Decode(d *
 // Encode implements json.Marshaler.
 func (s ReadCoreV1NamespacedReplicationControllerUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -53751,10 +61538,10 @@ func (s *ReadCoreV1NamespacedReplicationControllerUnauthorized) Decode(d *jx.Dec
 // Encode implements json.Marshaler.
 func (s ReadCoreV1NamespacedResourceQuotaStatusUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -53775,10 +61562,10 @@ func (s *ReadCoreV1NamespacedResourceQuotaStatusUnauthorized) Decode(d *jx.Decod
 // Encode implements json.Marshaler.
 func (s ReadCoreV1NamespacedResourceQuotaUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -53799,10 +61586,10 @@ func (s *ReadCoreV1NamespacedResourceQuotaUnauthorized) Decode(d *jx.Decoder) er
 // Encode implements json.Marshaler.
 func (s ReadCoreV1NamespacedSecretUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -53823,10 +61610,10 @@ func (s *ReadCoreV1NamespacedSecretUnauthorized) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s ReadCoreV1NamespacedServiceAccountUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -53847,10 +61634,10 @@ func (s *ReadCoreV1NamespacedServiceAccountUnauthorized) Decode(d *jx.Decoder) e
 // Encode implements json.Marshaler.
 func (s ReadCoreV1NamespacedServiceStatusUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -53871,10 +61658,10 @@ func (s *ReadCoreV1NamespacedServiceStatusUnauthorized) Decode(d *jx.Decoder) er
 // Encode implements json.Marshaler.
 func (s ReadCoreV1NamespacedServiceUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -53895,10 +61682,10 @@ func (s *ReadCoreV1NamespacedServiceUnauthorized) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s ReadCoreV1NodeStatusUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -53919,10 +61706,10 @@ func (s *ReadCoreV1NodeStatusUnauthorized) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s ReadCoreV1NodeUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -53943,10 +61730,10 @@ func (s *ReadCoreV1NodeUnauthorized) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s ReadCoreV1PersistentVolumeStatusUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -53967,10 +61754,10 @@ func (s *ReadCoreV1PersistentVolumeStatusUnauthorized) Decode(d *jx.Decoder) err
 // Encode implements json.Marshaler.
 func (s ReadCoreV1PersistentVolumeUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -53991,10 +61778,10 @@ func (s *ReadCoreV1PersistentVolumeUnauthorized) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s ReadDiscoveryV1NamespacedEndpointSliceUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -54015,10 +61802,10 @@ func (s *ReadDiscoveryV1NamespacedEndpointSliceUnauthorized) Decode(d *jx.Decode
 // Encode implements json.Marshaler.
 func (s ReadDiscoveryV1beta1NamespacedEndpointSliceUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -54039,10 +61826,10 @@ func (s *ReadDiscoveryV1beta1NamespacedEndpointSliceUnauthorized) Decode(d *jx.D
 // Encode implements json.Marshaler.
 func (s ReadEventsV1NamespacedEventUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -54063,10 +61850,10 @@ func (s *ReadEventsV1NamespacedEventUnauthorized) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s ReadEventsV1beta1NamespacedEventUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -54087,10 +61874,10 @@ func (s *ReadEventsV1beta1NamespacedEventUnauthorized) Decode(d *jx.Decoder) err
 // Encode implements json.Marshaler.
 func (s ReadFlowcontrolApiserverV1beta1FlowSchemaStatusUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -54111,10 +61898,10 @@ func (s *ReadFlowcontrolApiserverV1beta1FlowSchemaStatusUnauthorized) Decode(d *
 // Encode implements json.Marshaler.
 func (s ReadFlowcontrolApiserverV1beta1FlowSchemaUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -54135,10 +61922,10 @@ func (s *ReadFlowcontrolApiserverV1beta1FlowSchemaUnauthorized) Decode(d *jx.Dec
 // Encode implements json.Marshaler.
 func (s ReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationStatusUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -54159,10 +61946,10 @@ func (s *ReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationStatusUnauthor
 // Encode implements json.Marshaler.
 func (s ReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -54183,10 +61970,10 @@ func (s *ReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationUnauthorized) 
 // Encode implements json.Marshaler.
 func (s ReadFlowcontrolApiserverV1beta2FlowSchemaStatusUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -54207,10 +61994,10 @@ func (s *ReadFlowcontrolApiserverV1beta2FlowSchemaStatusUnauthorized) Decode(d *
 // Encode implements json.Marshaler.
 func (s ReadFlowcontrolApiserverV1beta2FlowSchemaUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -54231,10 +62018,10 @@ func (s *ReadFlowcontrolApiserverV1beta2FlowSchemaUnauthorized) Decode(d *jx.Dec
 // Encode implements json.Marshaler.
 func (s ReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationStatusUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -54255,10 +62042,10 @@ func (s *ReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationStatusUnauthor
 // Encode implements json.Marshaler.
 func (s ReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -54279,10 +62066,10 @@ func (s *ReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationUnauthorized) 
 // Encode implements json.Marshaler.
 func (s ReadInternalApiserverV1alpha1StorageVersionStatusUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -54303,10 +62090,10 @@ func (s *ReadInternalApiserverV1alpha1StorageVersionStatusUnauthorized) Decode(d
 // Encode implements json.Marshaler.
 func (s ReadInternalApiserverV1alpha1StorageVersionUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -54327,10 +62114,10 @@ func (s *ReadInternalApiserverV1alpha1StorageVersionUnauthorized) Decode(d *jx.D
 // Encode implements json.Marshaler.
 func (s ReadNetworkingV1IngressClassUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -54351,10 +62138,10 @@ func (s *ReadNetworkingV1IngressClassUnauthorized) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s ReadNetworkingV1NamespacedIngressStatusUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -54375,10 +62162,10 @@ func (s *ReadNetworkingV1NamespacedIngressStatusUnauthorized) Decode(d *jx.Decod
 // Encode implements json.Marshaler.
 func (s ReadNetworkingV1NamespacedIngressUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -54399,10 +62186,10 @@ func (s *ReadNetworkingV1NamespacedIngressUnauthorized) Decode(d *jx.Decoder) er
 // Encode implements json.Marshaler.
 func (s ReadNetworkingV1NamespacedNetworkPolicyUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -54423,10 +62210,10 @@ func (s *ReadNetworkingV1NamespacedNetworkPolicyUnauthorized) Decode(d *jx.Decod
 // Encode implements json.Marshaler.
 func (s ReadNodeV1RuntimeClassUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -54447,10 +62234,10 @@ func (s *ReadNodeV1RuntimeClassUnauthorized) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s ReadNodeV1alpha1RuntimeClassUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -54471,10 +62258,10 @@ func (s *ReadNodeV1alpha1RuntimeClassUnauthorized) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s ReadNodeV1beta1RuntimeClassUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -54495,10 +62282,10 @@ func (s *ReadNodeV1beta1RuntimeClassUnauthorized) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s ReadPolicyV1NamespacedPodDisruptionBudgetStatusUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -54519,10 +62306,10 @@ func (s *ReadPolicyV1NamespacedPodDisruptionBudgetStatusUnauthorized) Decode(d *
 // Encode implements json.Marshaler.
 func (s ReadPolicyV1NamespacedPodDisruptionBudgetUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -54543,10 +62330,10 @@ func (s *ReadPolicyV1NamespacedPodDisruptionBudgetUnauthorized) Decode(d *jx.Dec
 // Encode implements json.Marshaler.
 func (s ReadPolicyV1beta1NamespacedPodDisruptionBudgetStatusUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -54567,10 +62354,10 @@ func (s *ReadPolicyV1beta1NamespacedPodDisruptionBudgetStatusUnauthorized) Decod
 // Encode implements json.Marshaler.
 func (s ReadPolicyV1beta1NamespacedPodDisruptionBudgetUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -54591,10 +62378,10 @@ func (s *ReadPolicyV1beta1NamespacedPodDisruptionBudgetUnauthorized) Decode(d *j
 // Encode implements json.Marshaler.
 func (s ReadPolicyV1beta1PodSecurityPolicyUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -54615,10 +62402,10 @@ func (s *ReadPolicyV1beta1PodSecurityPolicyUnauthorized) Decode(d *jx.Decoder) e
 // Encode implements json.Marshaler.
 func (s ReadRbacAuthorizationV1ClusterRoleBindingUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -54639,10 +62426,10 @@ func (s *ReadRbacAuthorizationV1ClusterRoleBindingUnauthorized) Decode(d *jx.Dec
 // Encode implements json.Marshaler.
 func (s ReadRbacAuthorizationV1ClusterRoleUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -54663,10 +62450,10 @@ func (s *ReadRbacAuthorizationV1ClusterRoleUnauthorized) Decode(d *jx.Decoder) e
 // Encode implements json.Marshaler.
 func (s ReadRbacAuthorizationV1NamespacedRoleBindingUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -54687,10 +62474,10 @@ func (s *ReadRbacAuthorizationV1NamespacedRoleBindingUnauthorized) Decode(d *jx.
 // Encode implements json.Marshaler.
 func (s ReadRbacAuthorizationV1NamespacedRoleUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -54711,10 +62498,10 @@ func (s *ReadRbacAuthorizationV1NamespacedRoleUnauthorized) Decode(d *jx.Decoder
 // Encode implements json.Marshaler.
 func (s ReadSchedulingV1PriorityClassUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -54735,10 +62522,10 @@ func (s *ReadSchedulingV1PriorityClassUnauthorized) Decode(d *jx.Decoder) error 
 // Encode implements json.Marshaler.
 func (s ReadStorageV1CSIDriverUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -54759,10 +62546,10 @@ func (s *ReadStorageV1CSIDriverUnauthorized) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s ReadStorageV1CSINodeUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -54783,10 +62570,10 @@ func (s *ReadStorageV1CSINodeUnauthorized) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s ReadStorageV1StorageClassUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -54807,10 +62594,10 @@ func (s *ReadStorageV1StorageClassUnauthorized) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s ReadStorageV1VolumeAttachmentStatusUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -54831,10 +62618,10 @@ func (s *ReadStorageV1VolumeAttachmentStatusUnauthorized) Decode(d *jx.Decoder) 
 // Encode implements json.Marshaler.
 func (s ReadStorageV1VolumeAttachmentUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -54855,10 +62642,10 @@ func (s *ReadStorageV1VolumeAttachmentUnauthorized) Decode(d *jx.Decoder) error 
 // Encode implements json.Marshaler.
 func (s ReadStorageV1alpha1NamespacedCSIStorageCapacityUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -54879,10 +62666,10 @@ func (s *ReadStorageV1alpha1NamespacedCSIStorageCapacityUnauthorized) Decode(d *
 // Encode implements json.Marshaler.
 func (s ReadStorageV1beta1NamespacedCSIStorageCapacityUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -54903,10 +62690,10 @@ func (s *ReadStorageV1beta1NamespacedCSIStorageCapacityUnauthorized) Decode(d *j
 // Encode implements json.Marshaler.
 func (s WatchAdmissionregistrationV1MutatingWebhookConfigurationListUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -54927,10 +62714,10 @@ func (s *WatchAdmissionregistrationV1MutatingWebhookConfigurationListUnauthorize
 // Encode implements json.Marshaler.
 func (s WatchAdmissionregistrationV1MutatingWebhookConfigurationUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -54951,10 +62738,10 @@ func (s *WatchAdmissionregistrationV1MutatingWebhookConfigurationUnauthorized) D
 // Encode implements json.Marshaler.
 func (s WatchAdmissionregistrationV1ValidatingWebhookConfigurationListUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -54975,10 +62762,10 @@ func (s *WatchAdmissionregistrationV1ValidatingWebhookConfigurationListUnauthori
 // Encode implements json.Marshaler.
 func (s WatchAdmissionregistrationV1ValidatingWebhookConfigurationUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -54999,10 +62786,10 @@ func (s *WatchAdmissionregistrationV1ValidatingWebhookConfigurationUnauthorized)
 // Encode implements json.Marshaler.
 func (s WatchApiextensionsV1CustomResourceDefinitionListUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -55023,10 +62810,10 @@ func (s *WatchApiextensionsV1CustomResourceDefinitionListUnauthorized) Decode(d 
 // Encode implements json.Marshaler.
 func (s WatchApiextensionsV1CustomResourceDefinitionUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -55047,10 +62834,10 @@ func (s *WatchApiextensionsV1CustomResourceDefinitionUnauthorized) Decode(d *jx.
 // Encode implements json.Marshaler.
 func (s WatchApiregistrationV1APIServiceListUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -55071,10 +62858,10 @@ func (s *WatchApiregistrationV1APIServiceListUnauthorized) Decode(d *jx.Decoder)
 // Encode implements json.Marshaler.
 func (s WatchApiregistrationV1APIServiceUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -55095,10 +62882,10 @@ func (s *WatchApiregistrationV1APIServiceUnauthorized) Decode(d *jx.Decoder) err
 // Encode implements json.Marshaler.
 func (s WatchAppsV1ControllerRevisionListForAllNamespacesUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -55119,10 +62906,10 @@ func (s *WatchAppsV1ControllerRevisionListForAllNamespacesUnauthorized) Decode(d
 // Encode implements json.Marshaler.
 func (s WatchAppsV1DaemonSetListForAllNamespacesUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -55143,10 +62930,10 @@ func (s *WatchAppsV1DaemonSetListForAllNamespacesUnauthorized) Decode(d *jx.Deco
 // Encode implements json.Marshaler.
 func (s WatchAppsV1DeploymentListForAllNamespacesUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -55167,10 +62954,10 @@ func (s *WatchAppsV1DeploymentListForAllNamespacesUnauthorized) Decode(d *jx.Dec
 // Encode implements json.Marshaler.
 func (s WatchAppsV1NamespacedControllerRevisionListUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -55191,10 +62978,10 @@ func (s *WatchAppsV1NamespacedControllerRevisionListUnauthorized) Decode(d *jx.D
 // Encode implements json.Marshaler.
 func (s WatchAppsV1NamespacedControllerRevisionUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -55215,10 +63002,10 @@ func (s *WatchAppsV1NamespacedControllerRevisionUnauthorized) Decode(d *jx.Decod
 // Encode implements json.Marshaler.
 func (s WatchAppsV1NamespacedDaemonSetListUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -55239,10 +63026,10 @@ func (s *WatchAppsV1NamespacedDaemonSetListUnauthorized) Decode(d *jx.Decoder) e
 // Encode implements json.Marshaler.
 func (s WatchAppsV1NamespacedDaemonSetUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -55263,10 +63050,10 @@ func (s *WatchAppsV1NamespacedDaemonSetUnauthorized) Decode(d *jx.Decoder) error
 // Encode implements json.Marshaler.
 func (s WatchAppsV1NamespacedDeploymentListUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -55287,10 +63074,10 @@ func (s *WatchAppsV1NamespacedDeploymentListUnauthorized) Decode(d *jx.Decoder) 
 // Encode implements json.Marshaler.
 func (s WatchAppsV1NamespacedDeploymentUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -55311,10 +63098,10 @@ func (s *WatchAppsV1NamespacedDeploymentUnauthorized) Decode(d *jx.Decoder) erro
 // Encode implements json.Marshaler.
 func (s WatchAppsV1NamespacedReplicaSetListUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -55335,10 +63122,10 @@ func (s *WatchAppsV1NamespacedReplicaSetListUnauthorized) Decode(d *jx.Decoder) 
 // Encode implements json.Marshaler.
 func (s WatchAppsV1NamespacedReplicaSetUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -55359,10 +63146,10 @@ func (s *WatchAppsV1NamespacedReplicaSetUnauthorized) Decode(d *jx.Decoder) erro
 // Encode implements json.Marshaler.
 func (s WatchAppsV1NamespacedStatefulSetListUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -55383,10 +63170,10 @@ func (s *WatchAppsV1NamespacedStatefulSetListUnauthorized) Decode(d *jx.Decoder)
 // Encode implements json.Marshaler.
 func (s WatchAppsV1NamespacedStatefulSetUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -55407,10 +63194,10 @@ func (s *WatchAppsV1NamespacedStatefulSetUnauthorized) Decode(d *jx.Decoder) err
 // Encode implements json.Marshaler.
 func (s WatchAppsV1ReplicaSetListForAllNamespacesUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -55431,10 +63218,10 @@ func (s *WatchAppsV1ReplicaSetListForAllNamespacesUnauthorized) Decode(d *jx.Dec
 // Encode implements json.Marshaler.
 func (s WatchAppsV1StatefulSetListForAllNamespacesUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -55455,10 +63242,10 @@ func (s *WatchAppsV1StatefulSetListForAllNamespacesUnauthorized) Decode(d *jx.De
 // Encode implements json.Marshaler.
 func (s WatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespacesUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -55479,10 +63266,10 @@ func (s *WatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespacesUnauthoriz
 // Encode implements json.Marshaler.
 func (s WatchAutoscalingV1NamespacedHorizontalPodAutoscalerListUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -55503,10 +63290,10 @@ func (s *WatchAutoscalingV1NamespacedHorizontalPodAutoscalerListUnauthorized) De
 // Encode implements json.Marshaler.
 func (s WatchAutoscalingV1NamespacedHorizontalPodAutoscalerUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -55527,10 +63314,10 @@ func (s *WatchAutoscalingV1NamespacedHorizontalPodAutoscalerUnauthorized) Decode
 // Encode implements json.Marshaler.
 func (s WatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespacesUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -55551,10 +63338,10 @@ func (s *WatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespacesUnaut
 // Encode implements json.Marshaler.
 func (s WatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerListUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -55575,10 +63362,10 @@ func (s *WatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerListUnauthorize
 // Encode implements json.Marshaler.
 func (s WatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -55599,10 +63386,10 @@ func (s *WatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerUnauthorized) D
 // Encode implements json.Marshaler.
 func (s WatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespacesUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -55623,10 +63410,10 @@ func (s *WatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespacesUnaut
 // Encode implements json.Marshaler.
 func (s WatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerListUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -55647,10 +63434,10 @@ func (s *WatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerListUnauthorize
 // Encode implements json.Marshaler.
 func (s WatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -55671,10 +63458,10 @@ func (s *WatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerUnauthorized) D
 // Encode implements json.Marshaler.
 func (s WatchBatchV1CronJobListForAllNamespacesUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -55695,10 +63482,10 @@ func (s *WatchBatchV1CronJobListForAllNamespacesUnauthorized) Decode(d *jx.Decod
 // Encode implements json.Marshaler.
 func (s WatchBatchV1JobListForAllNamespacesUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -55719,10 +63506,10 @@ func (s *WatchBatchV1JobListForAllNamespacesUnauthorized) Decode(d *jx.Decoder) 
 // Encode implements json.Marshaler.
 func (s WatchBatchV1NamespacedCronJobListUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -55743,10 +63530,10 @@ func (s *WatchBatchV1NamespacedCronJobListUnauthorized) Decode(d *jx.Decoder) er
 // Encode implements json.Marshaler.
 func (s WatchBatchV1NamespacedCronJobUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -55767,10 +63554,10 @@ func (s *WatchBatchV1NamespacedCronJobUnauthorized) Decode(d *jx.Decoder) error 
 // Encode implements json.Marshaler.
 func (s WatchBatchV1NamespacedJobListUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -55791,10 +63578,10 @@ func (s *WatchBatchV1NamespacedJobListUnauthorized) Decode(d *jx.Decoder) error 
 // Encode implements json.Marshaler.
 func (s WatchBatchV1NamespacedJobUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -55815,10 +63602,10 @@ func (s *WatchBatchV1NamespacedJobUnauthorized) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s WatchBatchV1beta1CronJobListForAllNamespacesUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -55839,10 +63626,10 @@ func (s *WatchBatchV1beta1CronJobListForAllNamespacesUnauthorized) Decode(d *jx.
 // Encode implements json.Marshaler.
 func (s WatchBatchV1beta1NamespacedCronJobListUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -55863,10 +63650,10 @@ func (s *WatchBatchV1beta1NamespacedCronJobListUnauthorized) Decode(d *jx.Decode
 // Encode implements json.Marshaler.
 func (s WatchBatchV1beta1NamespacedCronJobUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -55887,10 +63674,10 @@ func (s *WatchBatchV1beta1NamespacedCronJobUnauthorized) Decode(d *jx.Decoder) e
 // Encode implements json.Marshaler.
 func (s WatchCertificatesV1CertificateSigningRequestListUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -55911,10 +63698,10 @@ func (s *WatchCertificatesV1CertificateSigningRequestListUnauthorized) Decode(d 
 // Encode implements json.Marshaler.
 func (s WatchCertificatesV1CertificateSigningRequestUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -55935,10 +63722,10 @@ func (s *WatchCertificatesV1CertificateSigningRequestUnauthorized) Decode(d *jx.
 // Encode implements json.Marshaler.
 func (s WatchCoordinationV1LeaseListForAllNamespacesUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -55959,10 +63746,10 @@ func (s *WatchCoordinationV1LeaseListForAllNamespacesUnauthorized) Decode(d *jx.
 // Encode implements json.Marshaler.
 func (s WatchCoordinationV1NamespacedLeaseListUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -55983,10 +63770,10 @@ func (s *WatchCoordinationV1NamespacedLeaseListUnauthorized) Decode(d *jx.Decode
 // Encode implements json.Marshaler.
 func (s WatchCoordinationV1NamespacedLeaseUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -56007,10 +63794,10 @@ func (s *WatchCoordinationV1NamespacedLeaseUnauthorized) Decode(d *jx.Decoder) e
 // Encode implements json.Marshaler.
 func (s WatchCoreV1ConfigMapListForAllNamespacesUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -56031,10 +63818,10 @@ func (s *WatchCoreV1ConfigMapListForAllNamespacesUnauthorized) Decode(d *jx.Deco
 // Encode implements json.Marshaler.
 func (s WatchCoreV1EndpointsListForAllNamespacesUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -56055,10 +63842,10 @@ func (s *WatchCoreV1EndpointsListForAllNamespacesUnauthorized) Decode(d *jx.Deco
 // Encode implements json.Marshaler.
 func (s WatchCoreV1EventListForAllNamespacesUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -56079,10 +63866,10 @@ func (s *WatchCoreV1EventListForAllNamespacesUnauthorized) Decode(d *jx.Decoder)
 // Encode implements json.Marshaler.
 func (s WatchCoreV1LimitRangeListForAllNamespacesUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -56103,10 +63890,10 @@ func (s *WatchCoreV1LimitRangeListForAllNamespacesUnauthorized) Decode(d *jx.Dec
 // Encode implements json.Marshaler.
 func (s WatchCoreV1NamespaceListUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -56127,10 +63914,10 @@ func (s *WatchCoreV1NamespaceListUnauthorized) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s WatchCoreV1NamespaceUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -56151,10 +63938,10 @@ func (s *WatchCoreV1NamespaceUnauthorized) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s WatchCoreV1NamespacedConfigMapListUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -56175,10 +63962,10 @@ func (s *WatchCoreV1NamespacedConfigMapListUnauthorized) Decode(d *jx.Decoder) e
 // Encode implements json.Marshaler.
 func (s WatchCoreV1NamespacedConfigMapUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -56199,10 +63986,10 @@ func (s *WatchCoreV1NamespacedConfigMapUnauthorized) Decode(d *jx.Decoder) error
 // Encode implements json.Marshaler.
 func (s WatchCoreV1NamespacedEndpointsListUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -56223,10 +64010,10 @@ func (s *WatchCoreV1NamespacedEndpointsListUnauthorized) Decode(d *jx.Decoder) e
 // Encode implements json.Marshaler.
 func (s WatchCoreV1NamespacedEndpointsUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -56247,10 +64034,10 @@ func (s *WatchCoreV1NamespacedEndpointsUnauthorized) Decode(d *jx.Decoder) error
 // Encode implements json.Marshaler.
 func (s WatchCoreV1NamespacedEventListUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -56271,10 +64058,10 @@ func (s *WatchCoreV1NamespacedEventListUnauthorized) Decode(d *jx.Decoder) error
 // Encode implements json.Marshaler.
 func (s WatchCoreV1NamespacedEventUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -56295,10 +64082,10 @@ func (s *WatchCoreV1NamespacedEventUnauthorized) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s WatchCoreV1NamespacedLimitRangeListUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -56319,10 +64106,10 @@ func (s *WatchCoreV1NamespacedLimitRangeListUnauthorized) Decode(d *jx.Decoder) 
 // Encode implements json.Marshaler.
 func (s WatchCoreV1NamespacedLimitRangeUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -56343,10 +64130,10 @@ func (s *WatchCoreV1NamespacedLimitRangeUnauthorized) Decode(d *jx.Decoder) erro
 // Encode implements json.Marshaler.
 func (s WatchCoreV1NamespacedPersistentVolumeClaimListUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -56367,10 +64154,10 @@ func (s *WatchCoreV1NamespacedPersistentVolumeClaimListUnauthorized) Decode(d *j
 // Encode implements json.Marshaler.
 func (s WatchCoreV1NamespacedPersistentVolumeClaimUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -56391,10 +64178,10 @@ func (s *WatchCoreV1NamespacedPersistentVolumeClaimUnauthorized) Decode(d *jx.De
 // Encode implements json.Marshaler.
 func (s WatchCoreV1NamespacedPodListUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -56415,10 +64202,10 @@ func (s *WatchCoreV1NamespacedPodListUnauthorized) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s WatchCoreV1NamespacedPodTemplateListUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -56439,10 +64226,10 @@ func (s *WatchCoreV1NamespacedPodTemplateListUnauthorized) Decode(d *jx.Decoder)
 // Encode implements json.Marshaler.
 func (s WatchCoreV1NamespacedPodTemplateUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -56463,10 +64250,10 @@ func (s *WatchCoreV1NamespacedPodTemplateUnauthorized) Decode(d *jx.Decoder) err
 // Encode implements json.Marshaler.
 func (s WatchCoreV1NamespacedPodUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -56487,10 +64274,10 @@ func (s *WatchCoreV1NamespacedPodUnauthorized) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s WatchCoreV1NamespacedReplicationControllerListUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -56511,10 +64298,10 @@ func (s *WatchCoreV1NamespacedReplicationControllerListUnauthorized) Decode(d *j
 // Encode implements json.Marshaler.
 func (s WatchCoreV1NamespacedReplicationControllerUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -56535,10 +64322,10 @@ func (s *WatchCoreV1NamespacedReplicationControllerUnauthorized) Decode(d *jx.De
 // Encode implements json.Marshaler.
 func (s WatchCoreV1NamespacedResourceQuotaListUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -56559,10 +64346,10 @@ func (s *WatchCoreV1NamespacedResourceQuotaListUnauthorized) Decode(d *jx.Decode
 // Encode implements json.Marshaler.
 func (s WatchCoreV1NamespacedResourceQuotaUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -56583,10 +64370,10 @@ func (s *WatchCoreV1NamespacedResourceQuotaUnauthorized) Decode(d *jx.Decoder) e
 // Encode implements json.Marshaler.
 func (s WatchCoreV1NamespacedSecretListUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -56607,10 +64394,10 @@ func (s *WatchCoreV1NamespacedSecretListUnauthorized) Decode(d *jx.Decoder) erro
 // Encode implements json.Marshaler.
 func (s WatchCoreV1NamespacedSecretUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -56631,10 +64418,10 @@ func (s *WatchCoreV1NamespacedSecretUnauthorized) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s WatchCoreV1NamespacedServiceAccountListUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -56655,10 +64442,10 @@ func (s *WatchCoreV1NamespacedServiceAccountListUnauthorized) Decode(d *jx.Decod
 // Encode implements json.Marshaler.
 func (s WatchCoreV1NamespacedServiceAccountUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -56679,10 +64466,10 @@ func (s *WatchCoreV1NamespacedServiceAccountUnauthorized) Decode(d *jx.Decoder) 
 // Encode implements json.Marshaler.
 func (s WatchCoreV1NamespacedServiceListUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -56703,10 +64490,10 @@ func (s *WatchCoreV1NamespacedServiceListUnauthorized) Decode(d *jx.Decoder) err
 // Encode implements json.Marshaler.
 func (s WatchCoreV1NamespacedServiceUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -56727,10 +64514,10 @@ func (s *WatchCoreV1NamespacedServiceUnauthorized) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s WatchCoreV1NodeListUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -56751,10 +64538,10 @@ func (s *WatchCoreV1NodeListUnauthorized) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s WatchCoreV1NodeUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -56775,10 +64562,10 @@ func (s *WatchCoreV1NodeUnauthorized) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s WatchCoreV1PersistentVolumeClaimListForAllNamespacesUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -56799,10 +64586,10 @@ func (s *WatchCoreV1PersistentVolumeClaimListForAllNamespacesUnauthorized) Decod
 // Encode implements json.Marshaler.
 func (s WatchCoreV1PersistentVolumeListUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -56823,10 +64610,10 @@ func (s *WatchCoreV1PersistentVolumeListUnauthorized) Decode(d *jx.Decoder) erro
 // Encode implements json.Marshaler.
 func (s WatchCoreV1PersistentVolumeUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -56847,10 +64634,10 @@ func (s *WatchCoreV1PersistentVolumeUnauthorized) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s WatchCoreV1PodListForAllNamespacesUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -56871,10 +64658,10 @@ func (s *WatchCoreV1PodListForAllNamespacesUnauthorized) Decode(d *jx.Decoder) e
 // Encode implements json.Marshaler.
 func (s WatchCoreV1PodTemplateListForAllNamespacesUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -56895,10 +64682,10 @@ func (s *WatchCoreV1PodTemplateListForAllNamespacesUnauthorized) Decode(d *jx.De
 // Encode implements json.Marshaler.
 func (s WatchCoreV1ReplicationControllerListForAllNamespacesUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -56919,10 +64706,10 @@ func (s *WatchCoreV1ReplicationControllerListForAllNamespacesUnauthorized) Decod
 // Encode implements json.Marshaler.
 func (s WatchCoreV1ResourceQuotaListForAllNamespacesUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -56943,10 +64730,10 @@ func (s *WatchCoreV1ResourceQuotaListForAllNamespacesUnauthorized) Decode(d *jx.
 // Encode implements json.Marshaler.
 func (s WatchCoreV1SecretListForAllNamespacesUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -56967,10 +64754,10 @@ func (s *WatchCoreV1SecretListForAllNamespacesUnauthorized) Decode(d *jx.Decoder
 // Encode implements json.Marshaler.
 func (s WatchCoreV1ServiceAccountListForAllNamespacesUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -56991,10 +64778,10 @@ func (s *WatchCoreV1ServiceAccountListForAllNamespacesUnauthorized) Decode(d *jx
 // Encode implements json.Marshaler.
 func (s WatchCoreV1ServiceListForAllNamespacesUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -57015,10 +64802,10 @@ func (s *WatchCoreV1ServiceListForAllNamespacesUnauthorized) Decode(d *jx.Decode
 // Encode implements json.Marshaler.
 func (s WatchDiscoveryV1EndpointSliceListForAllNamespacesUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -57039,10 +64826,10 @@ func (s *WatchDiscoveryV1EndpointSliceListForAllNamespacesUnauthorized) Decode(d
 // Encode implements json.Marshaler.
 func (s WatchDiscoveryV1NamespacedEndpointSliceListUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -57063,10 +64850,10 @@ func (s *WatchDiscoveryV1NamespacedEndpointSliceListUnauthorized) Decode(d *jx.D
 // Encode implements json.Marshaler.
 func (s WatchDiscoveryV1NamespacedEndpointSliceUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -57087,10 +64874,10 @@ func (s *WatchDiscoveryV1NamespacedEndpointSliceUnauthorized) Decode(d *jx.Decod
 // Encode implements json.Marshaler.
 func (s WatchDiscoveryV1beta1EndpointSliceListForAllNamespacesUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -57111,10 +64898,10 @@ func (s *WatchDiscoveryV1beta1EndpointSliceListForAllNamespacesUnauthorized) Dec
 // Encode implements json.Marshaler.
 func (s WatchDiscoveryV1beta1NamespacedEndpointSliceListUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -57135,10 +64922,10 @@ func (s *WatchDiscoveryV1beta1NamespacedEndpointSliceListUnauthorized) Decode(d 
 // Encode implements json.Marshaler.
 func (s WatchDiscoveryV1beta1NamespacedEndpointSliceUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -57159,10 +64946,10 @@ func (s *WatchDiscoveryV1beta1NamespacedEndpointSliceUnauthorized) Decode(d *jx.
 // Encode implements json.Marshaler.
 func (s WatchEventsV1EventListForAllNamespacesUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -57183,10 +64970,10 @@ func (s *WatchEventsV1EventListForAllNamespacesUnauthorized) Decode(d *jx.Decode
 // Encode implements json.Marshaler.
 func (s WatchEventsV1NamespacedEventListUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -57207,10 +64994,10 @@ func (s *WatchEventsV1NamespacedEventListUnauthorized) Decode(d *jx.Decoder) err
 // Encode implements json.Marshaler.
 func (s WatchEventsV1NamespacedEventUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -57231,10 +65018,10 @@ func (s *WatchEventsV1NamespacedEventUnauthorized) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s WatchEventsV1beta1EventListForAllNamespacesUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -57255,10 +65042,10 @@ func (s *WatchEventsV1beta1EventListForAllNamespacesUnauthorized) Decode(d *jx.D
 // Encode implements json.Marshaler.
 func (s WatchEventsV1beta1NamespacedEventListUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -57279,10 +65066,10 @@ func (s *WatchEventsV1beta1NamespacedEventListUnauthorized) Decode(d *jx.Decoder
 // Encode implements json.Marshaler.
 func (s WatchEventsV1beta1NamespacedEventUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -57303,10 +65090,10 @@ func (s *WatchEventsV1beta1NamespacedEventUnauthorized) Decode(d *jx.Decoder) er
 // Encode implements json.Marshaler.
 func (s WatchFlowcontrolApiserverV1beta1FlowSchemaListUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -57327,10 +65114,10 @@ func (s *WatchFlowcontrolApiserverV1beta1FlowSchemaListUnauthorized) Decode(d *j
 // Encode implements json.Marshaler.
 func (s WatchFlowcontrolApiserverV1beta1FlowSchemaUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -57351,10 +65138,10 @@ func (s *WatchFlowcontrolApiserverV1beta1FlowSchemaUnauthorized) Decode(d *jx.De
 // Encode implements json.Marshaler.
 func (s WatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationListUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -57375,10 +65162,10 @@ func (s *WatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationListUnauthori
 // Encode implements json.Marshaler.
 func (s WatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -57399,10 +65186,10 @@ func (s *WatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationUnauthorized)
 // Encode implements json.Marshaler.
 func (s WatchFlowcontrolApiserverV1beta2FlowSchemaListUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -57423,10 +65210,10 @@ func (s *WatchFlowcontrolApiserverV1beta2FlowSchemaListUnauthorized) Decode(d *j
 // Encode implements json.Marshaler.
 func (s WatchFlowcontrolApiserverV1beta2FlowSchemaUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -57447,10 +65234,10 @@ func (s *WatchFlowcontrolApiserverV1beta2FlowSchemaUnauthorized) Decode(d *jx.De
 // Encode implements json.Marshaler.
 func (s WatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationListUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -57471,10 +65258,10 @@ func (s *WatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationListUnauthori
 // Encode implements json.Marshaler.
 func (s WatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -57495,10 +65282,10 @@ func (s *WatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationUnauthorized)
 // Encode implements json.Marshaler.
 func (s WatchInternalApiserverV1alpha1StorageVersionListUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -57519,10 +65306,10 @@ func (s *WatchInternalApiserverV1alpha1StorageVersionListUnauthorized) Decode(d 
 // Encode implements json.Marshaler.
 func (s WatchInternalApiserverV1alpha1StorageVersionUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -57543,10 +65330,10 @@ func (s *WatchInternalApiserverV1alpha1StorageVersionUnauthorized) Decode(d *jx.
 // Encode implements json.Marshaler.
 func (s WatchNetworkingV1IngressClassListUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -57567,10 +65354,10 @@ func (s *WatchNetworkingV1IngressClassListUnauthorized) Decode(d *jx.Decoder) er
 // Encode implements json.Marshaler.
 func (s WatchNetworkingV1IngressClassUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -57591,10 +65378,10 @@ func (s *WatchNetworkingV1IngressClassUnauthorized) Decode(d *jx.Decoder) error 
 // Encode implements json.Marshaler.
 func (s WatchNetworkingV1IngressListForAllNamespacesUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -57615,10 +65402,10 @@ func (s *WatchNetworkingV1IngressListForAllNamespacesUnauthorized) Decode(d *jx.
 // Encode implements json.Marshaler.
 func (s WatchNetworkingV1NamespacedIngressListUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -57639,10 +65426,10 @@ func (s *WatchNetworkingV1NamespacedIngressListUnauthorized) Decode(d *jx.Decode
 // Encode implements json.Marshaler.
 func (s WatchNetworkingV1NamespacedIngressUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -57663,10 +65450,10 @@ func (s *WatchNetworkingV1NamespacedIngressUnauthorized) Decode(d *jx.Decoder) e
 // Encode implements json.Marshaler.
 func (s WatchNetworkingV1NamespacedNetworkPolicyListUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -57687,10 +65474,10 @@ func (s *WatchNetworkingV1NamespacedNetworkPolicyListUnauthorized) Decode(d *jx.
 // Encode implements json.Marshaler.
 func (s WatchNetworkingV1NamespacedNetworkPolicyUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -57711,10 +65498,10 @@ func (s *WatchNetworkingV1NamespacedNetworkPolicyUnauthorized) Decode(d *jx.Deco
 // Encode implements json.Marshaler.
 func (s WatchNetworkingV1NetworkPolicyListForAllNamespacesUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -57735,10 +65522,10 @@ func (s *WatchNetworkingV1NetworkPolicyListForAllNamespacesUnauthorized) Decode(
 // Encode implements json.Marshaler.
 func (s WatchNodeV1RuntimeClassListUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -57759,10 +65546,10 @@ func (s *WatchNodeV1RuntimeClassListUnauthorized) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s WatchNodeV1RuntimeClassUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -57783,10 +65570,10 @@ func (s *WatchNodeV1RuntimeClassUnauthorized) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s WatchNodeV1alpha1RuntimeClassListUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -57807,10 +65594,10 @@ func (s *WatchNodeV1alpha1RuntimeClassListUnauthorized) Decode(d *jx.Decoder) er
 // Encode implements json.Marshaler.
 func (s WatchNodeV1alpha1RuntimeClassUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -57831,10 +65618,10 @@ func (s *WatchNodeV1alpha1RuntimeClassUnauthorized) Decode(d *jx.Decoder) error 
 // Encode implements json.Marshaler.
 func (s WatchNodeV1beta1RuntimeClassListUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -57855,10 +65642,10 @@ func (s *WatchNodeV1beta1RuntimeClassListUnauthorized) Decode(d *jx.Decoder) err
 // Encode implements json.Marshaler.
 func (s WatchNodeV1beta1RuntimeClassUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -57879,10 +65666,10 @@ func (s *WatchNodeV1beta1RuntimeClassUnauthorized) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s WatchPolicyV1NamespacedPodDisruptionBudgetListUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -57903,10 +65690,10 @@ func (s *WatchPolicyV1NamespacedPodDisruptionBudgetListUnauthorized) Decode(d *j
 // Encode implements json.Marshaler.
 func (s WatchPolicyV1NamespacedPodDisruptionBudgetUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -57927,10 +65714,10 @@ func (s *WatchPolicyV1NamespacedPodDisruptionBudgetUnauthorized) Decode(d *jx.De
 // Encode implements json.Marshaler.
 func (s WatchPolicyV1PodDisruptionBudgetListForAllNamespacesUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -57951,10 +65738,10 @@ func (s *WatchPolicyV1PodDisruptionBudgetListForAllNamespacesUnauthorized) Decod
 // Encode implements json.Marshaler.
 func (s WatchPolicyV1beta1NamespacedPodDisruptionBudgetListUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -57975,10 +65762,10 @@ func (s *WatchPolicyV1beta1NamespacedPodDisruptionBudgetListUnauthorized) Decode
 // Encode implements json.Marshaler.
 func (s WatchPolicyV1beta1NamespacedPodDisruptionBudgetUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -57999,10 +65786,10 @@ func (s *WatchPolicyV1beta1NamespacedPodDisruptionBudgetUnauthorized) Decode(d *
 // Encode implements json.Marshaler.
 func (s WatchPolicyV1beta1PodDisruptionBudgetListForAllNamespacesUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -58023,10 +65810,10 @@ func (s *WatchPolicyV1beta1PodDisruptionBudgetListForAllNamespacesUnauthorized) 
 // Encode implements json.Marshaler.
 func (s WatchPolicyV1beta1PodSecurityPolicyListUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -58047,10 +65834,10 @@ func (s *WatchPolicyV1beta1PodSecurityPolicyListUnauthorized) Decode(d *jx.Decod
 // Encode implements json.Marshaler.
 func (s WatchPolicyV1beta1PodSecurityPolicyUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -58071,10 +65858,10 @@ func (s *WatchPolicyV1beta1PodSecurityPolicyUnauthorized) Decode(d *jx.Decoder) 
 // Encode implements json.Marshaler.
 func (s WatchRbacAuthorizationV1ClusterRoleBindingListUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -58095,10 +65882,10 @@ func (s *WatchRbacAuthorizationV1ClusterRoleBindingListUnauthorized) Decode(d *j
 // Encode implements json.Marshaler.
 func (s WatchRbacAuthorizationV1ClusterRoleBindingUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -58119,10 +65906,10 @@ func (s *WatchRbacAuthorizationV1ClusterRoleBindingUnauthorized) Decode(d *jx.De
 // Encode implements json.Marshaler.
 func (s WatchRbacAuthorizationV1ClusterRoleListUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -58143,10 +65930,10 @@ func (s *WatchRbacAuthorizationV1ClusterRoleListUnauthorized) Decode(d *jx.Decod
 // Encode implements json.Marshaler.
 func (s WatchRbacAuthorizationV1ClusterRoleUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -58167,10 +65954,10 @@ func (s *WatchRbacAuthorizationV1ClusterRoleUnauthorized) Decode(d *jx.Decoder) 
 // Encode implements json.Marshaler.
 func (s WatchRbacAuthorizationV1NamespacedRoleBindingListUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -58191,10 +65978,10 @@ func (s *WatchRbacAuthorizationV1NamespacedRoleBindingListUnauthorized) Decode(d
 // Encode implements json.Marshaler.
 func (s WatchRbacAuthorizationV1NamespacedRoleBindingUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -58215,10 +66002,10 @@ func (s *WatchRbacAuthorizationV1NamespacedRoleBindingUnauthorized) Decode(d *jx
 // Encode implements json.Marshaler.
 func (s WatchRbacAuthorizationV1NamespacedRoleListUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -58239,10 +66026,10 @@ func (s *WatchRbacAuthorizationV1NamespacedRoleListUnauthorized) Decode(d *jx.De
 // Encode implements json.Marshaler.
 func (s WatchRbacAuthorizationV1NamespacedRoleUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -58263,10 +66050,10 @@ func (s *WatchRbacAuthorizationV1NamespacedRoleUnauthorized) Decode(d *jx.Decode
 // Encode implements json.Marshaler.
 func (s WatchRbacAuthorizationV1RoleBindingListForAllNamespacesUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -58287,10 +66074,10 @@ func (s *WatchRbacAuthorizationV1RoleBindingListForAllNamespacesUnauthorized) De
 // Encode implements json.Marshaler.
 func (s WatchRbacAuthorizationV1RoleListForAllNamespacesUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -58311,10 +66098,10 @@ func (s *WatchRbacAuthorizationV1RoleListForAllNamespacesUnauthorized) Decode(d 
 // Encode implements json.Marshaler.
 func (s WatchSchedulingV1PriorityClassListUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -58335,10 +66122,10 @@ func (s *WatchSchedulingV1PriorityClassListUnauthorized) Decode(d *jx.Decoder) e
 // Encode implements json.Marshaler.
 func (s WatchSchedulingV1PriorityClassUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -58359,10 +66146,10 @@ func (s *WatchSchedulingV1PriorityClassUnauthorized) Decode(d *jx.Decoder) error
 // Encode implements json.Marshaler.
 func (s WatchStorageV1CSIDriverListUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -58383,10 +66170,10 @@ func (s *WatchStorageV1CSIDriverListUnauthorized) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s WatchStorageV1CSIDriverUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -58407,10 +66194,10 @@ func (s *WatchStorageV1CSIDriverUnauthorized) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s WatchStorageV1CSINodeListUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -58431,10 +66218,10 @@ func (s *WatchStorageV1CSINodeListUnauthorized) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s WatchStorageV1CSINodeUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -58455,10 +66242,10 @@ func (s *WatchStorageV1CSINodeUnauthorized) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s WatchStorageV1StorageClassListUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -58479,10 +66266,10 @@ func (s *WatchStorageV1StorageClassListUnauthorized) Decode(d *jx.Decoder) error
 // Encode implements json.Marshaler.
 func (s WatchStorageV1StorageClassUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -58503,10 +66290,10 @@ func (s *WatchStorageV1StorageClassUnauthorized) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s WatchStorageV1VolumeAttachmentListUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -58527,10 +66314,10 @@ func (s *WatchStorageV1VolumeAttachmentListUnauthorized) Decode(d *jx.Decoder) e
 // Encode implements json.Marshaler.
 func (s WatchStorageV1VolumeAttachmentUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -58551,10 +66338,10 @@ func (s *WatchStorageV1VolumeAttachmentUnauthorized) Decode(d *jx.Decoder) error
 // Encode implements json.Marshaler.
 func (s WatchStorageV1alpha1CSIStorageCapacityListForAllNamespacesUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -58575,10 +66362,10 @@ func (s *WatchStorageV1alpha1CSIStorageCapacityListForAllNamespacesUnauthorized)
 // Encode implements json.Marshaler.
 func (s WatchStorageV1alpha1NamespacedCSIStorageCapacityListUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -58599,10 +66386,10 @@ func (s *WatchStorageV1alpha1NamespacedCSIStorageCapacityListUnauthorized) Decod
 // Encode implements json.Marshaler.
 func (s WatchStorageV1alpha1NamespacedCSIStorageCapacityUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -58623,10 +66410,10 @@ func (s *WatchStorageV1alpha1NamespacedCSIStorageCapacityUnauthorized) Decode(d 
 // Encode implements json.Marshaler.
 func (s WatchStorageV1beta1CSIStorageCapacityListForAllNamespacesUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -58647,10 +66434,10 @@ func (s *WatchStorageV1beta1CSIStorageCapacityListForAllNamespacesUnauthorized) 
 // Encode implements json.Marshaler.
 func (s WatchStorageV1beta1NamespacedCSIStorageCapacityListUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -58671,10 +66458,10 @@ func (s *WatchStorageV1beta1NamespacedCSIStorageCapacityListUnauthorized) Decode
 // Encode implements json.Marshaler.
 func (s WatchStorageV1beta1NamespacedCSIStorageCapacityUnauthorized) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 

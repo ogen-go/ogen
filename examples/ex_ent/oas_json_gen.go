@@ -65,10 +65,22 @@ var (
 // Encode implements json.Marshaler.
 func (s CreatePetCategoriesReq) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"name\"" + ":")
 	e.Str(s.Name)
-	e.Comma()
+
+	if s.Pets != nil {
+		e.Comma()
+	}
 	if s.Pets != nil {
 		e.RawStr("\"pets\"" + ":")
 		e.ArrStart()
@@ -84,10 +96,6 @@ func (s CreatePetCategoriesReq) Encode(e *jx.Writer) {
 			}
 		}
 		e.ArrEnd()
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -129,22 +137,36 @@ func (s *CreatePetCategoriesReq) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s CreatePetFriendsReq) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"name\"" + ":")
 	e.Str(s.Name)
-	e.Comma()
+
+	if s.Weight.Set {
+		e.Comma()
+	}
 	if s.Weight.Set {
 		e.RawStr("\"weight\"" + ":")
 		s.Weight.Encode(e)
 	}
-	if s.Weight.Set {
+
+	if s.Birthday.Set {
 		e.Comma()
 	}
 	if s.Birthday.Set {
 		e.RawStr("\"birthday\"" + ":")
 		s.Birthday.Encode(e, json.EncodeDateTime)
 	}
-	if s.Birthday.Set {
+
+	if s.Categories != nil {
 		e.Comma()
 	}
 	if s.Categories != nil {
@@ -163,13 +185,15 @@ func (s CreatePetFriendsReq) Encode(e *jx.Writer) {
 		}
 		e.ArrEnd()
 	}
-	if s.Categories != nil {
-		e.Comma()
-	}
+
+	e.Comma()
 
 	e.RawStr("\"owner\"" + ":")
 	e.Int(s.Owner)
-	e.Comma()
+
+	if s.Friends != nil {
+		e.Comma()
+	}
 	if s.Friends != nil {
 		e.RawStr("\"friends\"" + ":")
 		e.ArrStart()
@@ -185,10 +209,6 @@ func (s CreatePetFriendsReq) Encode(e *jx.Writer) {
 			}
 		}
 		e.ArrEnd()
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -260,14 +280,27 @@ func (s *CreatePetFriendsReq) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s CreatePetOwnerReq) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"name\"" + ":")
 	e.Str(s.Name)
+
 	e.Comma()
 
 	e.RawStr("\"age\"" + ":")
 	e.Int(s.Age)
-	e.Comma()
+
+	if s.Pets != nil {
+		e.Comma()
+	}
 	if s.Pets != nil {
 		e.RawStr("\"pets\"" + ":")
 		e.ArrStart()
@@ -283,10 +316,6 @@ func (s CreatePetOwnerReq) Encode(e *jx.Writer) {
 			}
 		}
 		e.ArrEnd()
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -334,22 +363,36 @@ func (s *CreatePetOwnerReq) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s CreatePetReq) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"name\"" + ":")
 	e.Str(s.Name)
-	e.Comma()
+
+	if s.Weight.Set {
+		e.Comma()
+	}
 	if s.Weight.Set {
 		e.RawStr("\"weight\"" + ":")
 		s.Weight.Encode(e)
 	}
-	if s.Weight.Set {
+
+	if s.Birthday.Set {
 		e.Comma()
 	}
 	if s.Birthday.Set {
 		e.RawStr("\"birthday\"" + ":")
 		s.Birthday.Encode(e, json.EncodeDateTime)
 	}
-	if s.Birthday.Set {
+
+	if s.Categories != nil {
 		e.Comma()
 	}
 	if s.Categories != nil {
@@ -368,13 +411,15 @@ func (s CreatePetReq) Encode(e *jx.Writer) {
 		}
 		e.ArrEnd()
 	}
-	if s.Categories != nil {
-		e.Comma()
-	}
+
+	e.Comma()
 
 	e.RawStr("\"owner\"" + ":")
 	e.Int(s.Owner)
-	e.Comma()
+
+	if s.Friends != nil {
+		e.Comma()
+	}
 	if s.Friends != nil {
 		e.RawStr("\"friends\"" + ":")
 		e.ArrStart()
@@ -390,10 +435,6 @@ func (s CreatePetReq) Encode(e *jx.Writer) {
 			}
 		}
 		e.ArrEnd()
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -465,10 +506,10 @@ func (s *CreatePetReq) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s DeletePetNoContent) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -489,10 +530,10 @@ func (s *DeletePetNoContent) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s DeletePetOwnerNoContent) Encode(e *jx.Writer) {
 	e.ObjStart()
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
+	var (
+		first = true
+		_     = first
+	)
 	e.ObjEnd()
 }
 
@@ -741,17 +782,23 @@ func (o *OptTime) Decode(d *jx.Decoder, format func(*jx.Decoder) (time.Time, err
 // Encode implements json.Marshaler.
 func (s PetCategoriesCreate) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"id\"" + ":")
 	e.Int(s.ID)
+
 	e.Comma()
 
 	e.RawStr("\"name\"" + ":")
 	e.Str(s.Name)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -784,17 +831,23 @@ func (s *PetCategoriesCreate) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s PetCategoriesList) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"id\"" + ":")
 	e.Int(s.ID)
+
 	e.Comma()
 
 	e.RawStr("\"name\"" + ":")
 	e.Str(s.Name)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -827,26 +880,41 @@ func (s *PetCategoriesList) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s PetCreate) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"id\"" + ":")
 	e.Int(s.ID)
+
 	e.Comma()
 
 	e.RawStr("\"name\"" + ":")
 	e.Str(s.Name)
-	e.Comma()
+
+	if s.Weight.Set {
+		e.Comma()
+	}
 	if s.Weight.Set {
 		e.RawStr("\"weight\"" + ":")
 		s.Weight.Encode(e)
 	}
-	if s.Weight.Set {
+
+	if s.Birthday.Set {
 		e.Comma()
 	}
 	if s.Birthday.Set {
 		e.RawStr("\"birthday\"" + ":")
 		s.Birthday.Encode(e, json.EncodeDateTime)
 	}
-	if s.Birthday.Set {
+
+	if s.Categories != nil {
 		e.Comma()
 	}
 	if s.Categories != nil {
@@ -865,16 +933,11 @@ func (s PetCreate) Encode(e *jx.Writer) {
 		}
 		e.ArrEnd()
 	}
-	if s.Categories != nil {
-		e.Comma()
-	}
+
+	e.Comma()
 
 	e.RawStr("\"owner\"" + ":")
 	s.Owner.Encode(e)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -933,17 +996,23 @@ func (s *PetCreate) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s PetCreateCategories) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"id\"" + ":")
 	e.Int(s.ID)
+
 	e.Comma()
 
 	e.RawStr("\"name\"" + ":")
 	e.Str(s.Name)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -976,21 +1045,28 @@ func (s *PetCreateCategories) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s PetCreateOwner) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"id\"" + ":")
 	e.Int(s.ID)
+
 	e.Comma()
 
 	e.RawStr("\"name\"" + ":")
 	e.Str(s.Name)
+
 	e.Comma()
 
 	e.RawStr("\"age\"" + ":")
 	e.Int(s.Age)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -1029,28 +1105,38 @@ func (s *PetCreateOwner) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s PetFriendsCreate) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"id\"" + ":")
 	e.Int(s.ID)
+
 	e.Comma()
 
 	e.RawStr("\"name\"" + ":")
 	e.Str(s.Name)
-	e.Comma()
+
+	if s.Weight.Set {
+		e.Comma()
+	}
 	if s.Weight.Set {
 		e.RawStr("\"weight\"" + ":")
 		s.Weight.Encode(e)
 	}
-	if s.Weight.Set {
+
+	if s.Birthday.Set {
 		e.Comma()
 	}
 	if s.Birthday.Set {
 		e.RawStr("\"birthday\"" + ":")
 		s.Birthday.Encode(e, json.EncodeDateTime)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -1094,28 +1180,38 @@ func (s *PetFriendsCreate) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s PetFriendsList) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"id\"" + ":")
 	e.Int(s.ID)
+
 	e.Comma()
 
 	e.RawStr("\"name\"" + ":")
 	e.Str(s.Name)
-	e.Comma()
+
+	if s.Weight.Set {
+		e.Comma()
+	}
 	if s.Weight.Set {
 		e.RawStr("\"weight\"" + ":")
 		s.Weight.Encode(e)
 	}
-	if s.Weight.Set {
+
+	if s.Birthday.Set {
 		e.Comma()
 	}
 	if s.Birthday.Set {
 		e.RawStr("\"birthday\"" + ":")
 		s.Birthday.Encode(e, json.EncodeDateTime)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -1159,28 +1255,38 @@ func (s *PetFriendsList) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s PetList) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"id\"" + ":")
 	e.Int(s.ID)
+
 	e.Comma()
 
 	e.RawStr("\"name\"" + ":")
 	e.Str(s.Name)
-	e.Comma()
+
+	if s.Weight.Set {
+		e.Comma()
+	}
 	if s.Weight.Set {
 		e.RawStr("\"weight\"" + ":")
 		s.Weight.Encode(e)
 	}
-	if s.Weight.Set {
+
+	if s.Birthday.Set {
 		e.Comma()
 	}
 	if s.Birthday.Set {
 		e.RawStr("\"birthday\"" + ":")
 		s.Birthday.Encode(e, json.EncodeDateTime)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -1224,21 +1330,28 @@ func (s *PetList) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s PetOwnerCreate) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"id\"" + ":")
 	e.Int(s.ID)
+
 	e.Comma()
 
 	e.RawStr("\"name\"" + ":")
 	e.Str(s.Name)
+
 	e.Comma()
 
 	e.RawStr("\"age\"" + ":")
 	e.Int(s.Age)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -1277,21 +1390,28 @@ func (s *PetOwnerCreate) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s PetOwnerRead) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"id\"" + ":")
 	e.Int(s.ID)
+
 	e.Comma()
 
 	e.RawStr("\"name\"" + ":")
 	e.Str(s.Name)
+
 	e.Comma()
 
 	e.RawStr("\"age\"" + ":")
 	e.Int(s.Age)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -1330,28 +1450,38 @@ func (s *PetOwnerRead) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s PetRead) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"id\"" + ":")
 	e.Int(s.ID)
+
 	e.Comma()
 
 	e.RawStr("\"name\"" + ":")
 	e.Str(s.Name)
-	e.Comma()
+
+	if s.Weight.Set {
+		e.Comma()
+	}
 	if s.Weight.Set {
 		e.RawStr("\"weight\"" + ":")
 		s.Weight.Encode(e)
 	}
-	if s.Weight.Set {
+
+	if s.Birthday.Set {
 		e.Comma()
 	}
 	if s.Birthday.Set {
 		e.RawStr("\"birthday\"" + ":")
 		s.Birthday.Encode(e, json.EncodeDateTime)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -1395,28 +1525,38 @@ func (s *PetRead) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s PetUpdate) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"id\"" + ":")
 	e.Int(s.ID)
+
 	e.Comma()
 
 	e.RawStr("\"name\"" + ":")
 	e.Str(s.Name)
-	e.Comma()
+
+	if s.Weight.Set {
+		e.Comma()
+	}
 	if s.Weight.Set {
 		e.RawStr("\"weight\"" + ":")
 		s.Weight.Encode(e)
 	}
-	if s.Weight.Set {
+
+	if s.Birthday.Set {
 		e.Comma()
 	}
 	if s.Birthday.Set {
 		e.RawStr("\"birthday\"" + ":")
 		s.Birthday.Encode(e, json.EncodeDateTime)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -1460,21 +1600,30 @@ func (s *PetUpdate) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s R400) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"code\"" + ":")
 	e.Int(s.Code)
+
 	e.Comma()
 
 	e.RawStr("\"status\"" + ":")
 	e.Str(s.Status)
-	e.Comma()
+
+	if s.Errors.Set {
+		e.Comma()
+	}
 	if s.Errors.Set {
 		e.RawStr("\"errors\"" + ":")
 		s.Errors.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -1513,21 +1662,30 @@ func (s *R400) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s R404) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"code\"" + ":")
 	e.Int(s.Code)
+
 	e.Comma()
 
 	e.RawStr("\"status\"" + ":")
 	e.Str(s.Status)
-	e.Comma()
+
+	if s.Errors.Set {
+		e.Comma()
+	}
 	if s.Errors.Set {
 		e.RawStr("\"errors\"" + ":")
 		s.Errors.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -1566,21 +1724,30 @@ func (s *R404) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s R409) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"code\"" + ":")
 	e.Int(s.Code)
+
 	e.Comma()
 
 	e.RawStr("\"status\"" + ":")
 	e.Str(s.Status)
-	e.Comma()
+
+	if s.Errors.Set {
+		e.Comma()
+	}
 	if s.Errors.Set {
 		e.RawStr("\"errors\"" + ":")
 		s.Errors.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -1619,21 +1786,30 @@ func (s *R409) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s R500) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"code\"" + ":")
 	e.Int(s.Code)
+
 	e.Comma()
 
 	e.RawStr("\"status\"" + ":")
 	e.Str(s.Status)
-	e.Comma()
+
+	if s.Errors.Set {
+		e.Comma()
+	}
 	if s.Errors.Set {
 		e.RawStr("\"errors\"" + ":")
 		s.Errors.Encode(e)
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }
@@ -1672,22 +1848,36 @@ func (s *R500) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s UpdatePetReq) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"name\"" + ":")
 	e.Str(s.Name)
-	e.Comma()
+
+	if s.Weight.Set {
+		e.Comma()
+	}
 	if s.Weight.Set {
 		e.RawStr("\"weight\"" + ":")
 		s.Weight.Encode(e)
 	}
-	if s.Weight.Set {
+
+	if s.Birthday.Set {
 		e.Comma()
 	}
 	if s.Birthday.Set {
 		e.RawStr("\"birthday\"" + ":")
 		s.Birthday.Encode(e, json.EncodeDateTime)
 	}
-	if s.Birthday.Set {
+
+	if s.Categories != nil {
 		e.Comma()
 	}
 	if s.Categories != nil {
@@ -1706,13 +1896,15 @@ func (s UpdatePetReq) Encode(e *jx.Writer) {
 		}
 		e.ArrEnd()
 	}
-	if s.Categories != nil {
-		e.Comma()
-	}
+
+	e.Comma()
 
 	e.RawStr("\"owner\"" + ":")
 	e.Int(s.Owner)
-	e.Comma()
+
+	if s.Friends != nil {
+		e.Comma()
+	}
 	if s.Friends != nil {
 		e.RawStr("\"friends\"" + ":")
 		e.ArrStart()
@@ -1728,10 +1920,6 @@ func (s UpdatePetReq) Encode(e *jx.Writer) {
 			}
 		}
 		e.ArrEnd()
-	}
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
 	}
 	e.ObjEnd()
 }

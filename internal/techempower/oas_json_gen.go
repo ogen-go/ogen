@@ -65,13 +65,18 @@ var (
 // Encode implements json.Marshaler.
 func (s HelloWorld) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"message\"" + ":")
 	e.Str(s.Message)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
@@ -98,17 +103,23 @@ func (s *HelloWorld) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s WorldObject) Encode(e *jx.Writer) {
 	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+
+	if !first {
+		e.Comma()
+	}
+	first = false
 
 	e.RawStr("\"id\"" + ":")
 	e.Int64(s.ID)
+
 	e.Comma()
 
 	e.RawStr("\"randomNumber\"" + ":")
 	e.Int64(s.RandomNumber)
-
-	if length := len(e.Buf); length > 0 && e.Buf[length-1] == ',' {
-		e.Buf = e.Buf[:length-1]
-	}
 	e.ObjEnd()
 }
 
