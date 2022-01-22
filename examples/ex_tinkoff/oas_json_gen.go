@@ -169,6 +169,7 @@ func (s *Candle) Decode(d *jx.Decoder) error {
 		return errors.New(`invalid: unable to decode Candle to nil`)
 	}
 	var requiredBitSet [1]uint8
+
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "figi":
@@ -232,7 +233,6 @@ func (s *Candle) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return err
 	}
-
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b11111111,
@@ -264,6 +264,7 @@ func (s *Candle) Decode(d *jx.Decoder) error {
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
+
 	return nil
 }
 
@@ -367,6 +368,7 @@ func (s *Candles) Decode(d *jx.Decoder) error {
 		return errors.New(`invalid: unable to decode Candles to nil`)
 	}
 	var requiredBitSet [1]uint8
+
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "figi":
@@ -401,7 +403,6 @@ func (s *Candles) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return err
 	}
-
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000111,
@@ -433,6 +434,7 @@ func (s *Candles) Decode(d *jx.Decoder) error {
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
+
 	return nil
 }
 
@@ -479,6 +481,7 @@ func (s *CandlesResponse) Decode(d *jx.Decoder) error {
 		return errors.New(`invalid: unable to decode CandlesResponse to nil`)
 	}
 	var requiredBitSet [1]uint8
+
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "trackingId":
@@ -507,7 +510,6 @@ func (s *CandlesResponse) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return err
 	}
-
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000111,
@@ -539,6 +541,7 @@ func (s *CandlesResponse) Decode(d *jx.Decoder) error {
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
+
 	return nil
 }
 
@@ -583,6 +586,7 @@ func (s *Currencies) Decode(d *jx.Decoder) error {
 		return errors.New(`invalid: unable to decode Currencies to nil`)
 	}
 	var requiredBitSet [1]uint8
+
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "currencies":
@@ -605,7 +609,6 @@ func (s *Currencies) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return err
 	}
-
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000001,
@@ -637,6 +640,7 @@ func (s *Currencies) Decode(d *jx.Decoder) error {
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
+
 	return nil
 }
 
@@ -727,6 +731,7 @@ func (s *CurrencyPosition) Decode(d *jx.Decoder) error {
 		return errors.New(`invalid: unable to decode CurrencyPosition to nil`)
 	}
 	var requiredBitSet [1]uint8
+
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "currency":
@@ -742,7 +747,6 @@ func (s *CurrencyPosition) Decode(d *jx.Decoder) error {
 				return err
 			}
 		case "blocked":
-			requiredBitSet[0] |= 1 << 2
 			s.Blocked.Reset()
 			if err := s.Blocked.Decode(d); err != nil {
 				return err
@@ -754,7 +758,6 @@ func (s *CurrencyPosition) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return err
 	}
-
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000011,
@@ -786,6 +789,7 @@ func (s *CurrencyPosition) Decode(d *jx.Decoder) error {
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
+
 	return nil
 }
 
@@ -832,6 +836,7 @@ func (s *Empty) Decode(d *jx.Decoder) error {
 		return errors.New(`invalid: unable to decode Empty to nil`)
 	}
 	var requiredBitSet [1]uint8
+
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "trackingId":
@@ -860,7 +865,6 @@ func (s *Empty) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return err
 	}
-
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000111,
@@ -892,6 +896,7 @@ func (s *Empty) Decode(d *jx.Decoder) error {
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
+
 	return nil
 }
 
@@ -912,7 +917,7 @@ func (s *EmptyPayload) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode EmptyPayload to nil`)
 	}
-	var requiredBitSet [1]uint8
+
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		default:
@@ -923,37 +928,6 @@ func (s *EmptyPayload) Decode(d *jx.Decoder) error {
 		return err
 	}
 
-	var failures []validate.FieldError
-	for i, mask := range [1]uint8{
-		0b00000000,
-	} {
-		if result := (requiredBitSet[i] & mask) ^ mask; result != 0 {
-			// Mask only required fields and check equality to mask using XOR.
-			//
-			// If XOR result is not zero, result is not equal to expected, so some fields are missed.
-			// Bits of fields which would be set are actually bits of missed fields.
-			missed := bits.OnesCount8(result)
-			for bitN := 0; bitN < missed; bitN++ {
-				bitIdx := bits.TrailingZeros8(result)
-				fieldIdx := i*8 + bitIdx
-				var name string
-				if fieldIdx < len(jsonFieldsNameOfEmptyPayload) {
-					name = jsonFieldsNameOfEmptyPayload[fieldIdx]
-				} else {
-					name = strconv.Itoa(fieldIdx)
-				}
-				failures = append(failures, validate.FieldError{
-					Name:  name,
-					Error: validate.ErrFieldRequired,
-				})
-				// Reset bit.
-				result &^= 1 << bitIdx
-			}
-		}
-	}
-	if len(failures) > 0 {
-		return &validate.Error{Fields: failures}
-	}
 	return nil
 }
 
@@ -1000,6 +974,7 @@ func (s *Error) Decode(d *jx.Decoder) error {
 		return errors.New(`invalid: unable to decode Error to nil`)
 	}
 	var requiredBitSet [1]uint8
+
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "trackingId":
@@ -1028,7 +1003,6 @@ func (s *Error) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return err
 	}
-
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000111,
@@ -1060,6 +1034,7 @@ func (s *Error) Decode(d *jx.Decoder) error {
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
+
 	return nil
 }
 
@@ -1107,17 +1082,15 @@ func (s *ErrorPayload) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode ErrorPayload to nil`)
 	}
-	var requiredBitSet [1]uint8
+
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "message":
-			requiredBitSet[0] |= 1 << 0
 			s.Message.Reset()
 			if err := s.Message.Decode(d); err != nil {
 				return err
 			}
 		case "code":
-			requiredBitSet[0] |= 1 << 1
 			s.Code.Reset()
 			if err := s.Code.Decode(d); err != nil {
 				return err
@@ -1130,37 +1103,6 @@ func (s *ErrorPayload) Decode(d *jx.Decoder) error {
 		return err
 	}
 
-	var failures []validate.FieldError
-	for i, mask := range [1]uint8{
-		0b00000000,
-	} {
-		if result := (requiredBitSet[i] & mask) ^ mask; result != 0 {
-			// Mask only required fields and check equality to mask using XOR.
-			//
-			// If XOR result is not zero, result is not equal to expected, so some fields are missed.
-			// Bits of fields which would be set are actually bits of missed fields.
-			missed := bits.OnesCount8(result)
-			for bitN := 0; bitN < missed; bitN++ {
-				bitIdx := bits.TrailingZeros8(result)
-				fieldIdx := i*8 + bitIdx
-				var name string
-				if fieldIdx < len(jsonFieldsNameOfErrorPayload) {
-					name = jsonFieldsNameOfErrorPayload[fieldIdx]
-				} else {
-					name = strconv.Itoa(fieldIdx)
-				}
-				failures = append(failures, validate.FieldError{
-					Name:  name,
-					Error: validate.ErrFieldRequired,
-				})
-				// Reset bit.
-				result &^= 1 << bitIdx
-			}
-		}
-	}
-	if len(failures) > 0 {
-		return &validate.Error{Fields: failures}
-	}
 	return nil
 }
 
@@ -1238,6 +1180,7 @@ func (s *LimitOrderRequest) Decode(d *jx.Decoder) error {
 		return errors.New(`invalid: unable to decode LimitOrderRequest to nil`)
 	}
 	var requiredBitSet [1]uint8
+
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "lots":
@@ -1266,7 +1209,6 @@ func (s *LimitOrderRequest) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return err
 	}
-
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000111,
@@ -1298,6 +1240,7 @@ func (s *LimitOrderRequest) Decode(d *jx.Decoder) error {
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
+
 	return nil
 }
 
@@ -1344,6 +1287,7 @@ func (s *LimitOrderResponse) Decode(d *jx.Decoder) error {
 		return errors.New(`invalid: unable to decode LimitOrderResponse to nil`)
 	}
 	var requiredBitSet [1]uint8
+
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "trackingId":
@@ -1372,7 +1316,6 @@ func (s *LimitOrderResponse) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return err
 	}
-
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000111,
@@ -1404,6 +1347,7 @@ func (s *LimitOrderResponse) Decode(d *jx.Decoder) error {
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
+
 	return nil
 }
 
@@ -1504,6 +1448,7 @@ func (s *MarketInstrument) Decode(d *jx.Decoder) error {
 		return errors.New(`invalid: unable to decode MarketInstrument to nil`)
 	}
 	var requiredBitSet [2]uint8
+
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "figi":
@@ -1521,13 +1466,11 @@ func (s *MarketInstrument) Decode(d *jx.Decoder) error {
 				return err
 			}
 		case "isin":
-			requiredBitSet[0] |= 1 << 2
 			s.Isin.Reset()
 			if err := s.Isin.Decode(d); err != nil {
 				return err
 			}
 		case "minPriceIncrement":
-			requiredBitSet[0] |= 1 << 3
 			s.MinPriceIncrement.Reset()
 			if err := s.MinPriceIncrement.Decode(d); err != nil {
 				return err
@@ -1540,13 +1483,11 @@ func (s *MarketInstrument) Decode(d *jx.Decoder) error {
 				return err
 			}
 		case "minQuantity":
-			requiredBitSet[0] |= 1 << 5
 			s.MinQuantity.Reset()
 			if err := s.MinQuantity.Decode(d); err != nil {
 				return err
 			}
 		case "currency":
-			requiredBitSet[0] |= 1 << 6
 			s.Currency.Reset()
 			if err := s.Currency.Decode(d); err != nil {
 				return err
@@ -1570,7 +1511,6 @@ func (s *MarketInstrument) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return err
 	}
-
 	var failures []validate.FieldError
 	for i, mask := range [2]uint8{
 		0b10010011,
@@ -1603,6 +1543,7 @@ func (s *MarketInstrument) Decode(d *jx.Decoder) error {
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
+
 	return nil
 }
 
@@ -1654,6 +1595,7 @@ func (s *MarketInstrumentList) Decode(d *jx.Decoder) error {
 		return errors.New(`invalid: unable to decode MarketInstrumentList to nil`)
 	}
 	var requiredBitSet [1]uint8
+
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "total":
@@ -1683,7 +1625,6 @@ func (s *MarketInstrumentList) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return err
 	}
-
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000011,
@@ -1715,6 +1656,7 @@ func (s *MarketInstrumentList) Decode(d *jx.Decoder) error {
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
+
 	return nil
 }
 
@@ -1761,6 +1703,7 @@ func (s *MarketInstrumentListResponse) Decode(d *jx.Decoder) error {
 		return errors.New(`invalid: unable to decode MarketInstrumentListResponse to nil`)
 	}
 	var requiredBitSet [1]uint8
+
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "trackingId":
@@ -1789,7 +1732,6 @@ func (s *MarketInstrumentListResponse) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return err
 	}
-
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000111,
@@ -1821,6 +1763,7 @@ func (s *MarketInstrumentListResponse) Decode(d *jx.Decoder) error {
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
+
 	return nil
 }
 
@@ -1860,6 +1803,7 @@ func (s *MarketOrderRequest) Decode(d *jx.Decoder) error {
 		return errors.New(`invalid: unable to decode MarketOrderRequest to nil`)
 	}
 	var requiredBitSet [1]uint8
+
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "lots":
@@ -1881,7 +1825,6 @@ func (s *MarketOrderRequest) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return err
 	}
-
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000011,
@@ -1913,6 +1856,7 @@ func (s *MarketOrderRequest) Decode(d *jx.Decoder) error {
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
+
 	return nil
 }
 
@@ -1959,6 +1903,7 @@ func (s *MarketOrderResponse) Decode(d *jx.Decoder) error {
 		return errors.New(`invalid: unable to decode MarketOrderResponse to nil`)
 	}
 	var requiredBitSet [1]uint8
+
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "trackingId":
@@ -1987,7 +1932,6 @@ func (s *MarketOrderResponse) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return err
 	}
-
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000111,
@@ -2019,6 +1963,7 @@ func (s *MarketOrderResponse) Decode(d *jx.Decoder) error {
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
+
 	return nil
 }
 
@@ -2058,6 +2003,7 @@ func (s *MoneyAmount) Decode(d *jx.Decoder) error {
 		return errors.New(`invalid: unable to decode MoneyAmount to nil`)
 	}
 	var requiredBitSet [1]uint8
+
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "currency":
@@ -2079,7 +2025,6 @@ func (s *MoneyAmount) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return err
 	}
-
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000011,
@@ -2111,6 +2056,7 @@ func (s *MoneyAmount) Decode(d *jx.Decoder) error {
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
+
 	return nil
 }
 
@@ -2270,6 +2216,7 @@ func (s *Operation) Decode(d *jx.Decoder) error {
 		return errors.New(`invalid: unable to decode Operation to nil`)
 	}
 	var requiredBitSet [2]uint8
+
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "id":
@@ -2285,7 +2232,6 @@ func (s *Operation) Decode(d *jx.Decoder) error {
 				return err
 			}
 		case "trades":
-			requiredBitSet[0] |= 1 << 2
 			s.Trades = nil
 			if err := d.Arr(func(d *jx.Decoder) error {
 				var elem OperationTrade
@@ -2298,7 +2244,6 @@ func (s *Operation) Decode(d *jx.Decoder) error {
 				return err
 			}
 		case "commission":
-			requiredBitSet[0] |= 1 << 3
 			s.Commission.Reset()
 			if err := s.Commission.Decode(d); err != nil {
 				return err
@@ -2316,31 +2261,26 @@ func (s *Operation) Decode(d *jx.Decoder) error {
 				return err
 			}
 		case "price":
-			requiredBitSet[0] |= 1 << 6
 			s.Price.Reset()
 			if err := s.Price.Decode(d); err != nil {
 				return err
 			}
 		case "quantity":
-			requiredBitSet[0] |= 1 << 7
 			s.Quantity.Reset()
 			if err := s.Quantity.Decode(d); err != nil {
 				return err
 			}
 		case "quantityExecuted":
-			requiredBitSet[1] |= 1 << 0
 			s.QuantityExecuted.Reset()
 			if err := s.QuantityExecuted.Decode(d); err != nil {
 				return err
 			}
 		case "figi":
-			requiredBitSet[1] |= 1 << 1
 			s.Figi.Reset()
 			if err := s.Figi.Decode(d); err != nil {
 				return err
 			}
 		case "instrumentType":
-			requiredBitSet[1] |= 1 << 2
 			s.InstrumentType.Reset()
 			if err := s.InstrumentType.Decode(d); err != nil {
 				return err
@@ -2360,7 +2300,6 @@ func (s *Operation) Decode(d *jx.Decoder) error {
 				return err
 			}
 		case "operationType":
-			requiredBitSet[1] |= 1 << 5
 			s.OperationType.Reset()
 			if err := s.OperationType.Decode(d); err != nil {
 				return err
@@ -2372,7 +2311,6 @@ func (s *Operation) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return err
 	}
-
 	var failures []validate.FieldError
 	for i, mask := range [2]uint8{
 		0b00110011,
@@ -2405,6 +2343,7 @@ func (s *Operation) Decode(d *jx.Decoder) error {
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
+
 	return nil
 }
 
@@ -2487,6 +2426,7 @@ func (s *OperationTrade) Decode(d *jx.Decoder) error {
 		return errors.New(`invalid: unable to decode OperationTrade to nil`)
 	}
 	var requiredBitSet [1]uint8
+
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "tradeId":
@@ -2524,7 +2464,6 @@ func (s *OperationTrade) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return err
 	}
-
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00001111,
@@ -2556,6 +2495,7 @@ func (s *OperationTrade) Decode(d *jx.Decoder) error {
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
+
 	return nil
 }
 
@@ -2692,6 +2632,7 @@ func (s *Operations) Decode(d *jx.Decoder) error {
 		return errors.New(`invalid: unable to decode Operations to nil`)
 	}
 	var requiredBitSet [1]uint8
+
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "operations":
@@ -2714,7 +2655,6 @@ func (s *Operations) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return err
 	}
-
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000001,
@@ -2746,6 +2686,7 @@ func (s *Operations) Decode(d *jx.Decoder) error {
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
+
 	return nil
 }
 
@@ -2792,6 +2733,7 @@ func (s *OperationsResponse) Decode(d *jx.Decoder) error {
 		return errors.New(`invalid: unable to decode OperationsResponse to nil`)
 	}
 	var requiredBitSet [1]uint8
+
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "trackingId":
@@ -2820,7 +2762,6 @@ func (s *OperationsResponse) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return err
 	}
-
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000111,
@@ -2852,6 +2793,7 @@ func (s *OperationsResponse) Decode(d *jx.Decoder) error {
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
+
 	return nil
 }
 
@@ -3164,6 +3106,7 @@ func (s *Order) Decode(d *jx.Decoder) error {
 		return errors.New(`invalid: unable to decode Order to nil`)
 	}
 	var requiredBitSet [1]uint8
+
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "orderId":
@@ -3223,7 +3166,6 @@ func (s *Order) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return err
 	}
-
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b11111111,
@@ -3255,6 +3197,7 @@ func (s *Order) Decode(d *jx.Decoder) error {
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
+
 	return nil
 }
 
@@ -3294,6 +3237,7 @@ func (s *OrderResponse) Decode(d *jx.Decoder) error {
 		return errors.New(`invalid: unable to decode OrderResponse to nil`)
 	}
 	var requiredBitSet [1]uint8
+
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "price":
@@ -3317,7 +3261,6 @@ func (s *OrderResponse) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return err
 	}
-
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000011,
@@ -3349,6 +3292,7 @@ func (s *OrderResponse) Decode(d *jx.Decoder) error {
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
+
 	return nil
 }
 
@@ -3558,6 +3502,7 @@ func (s *Orderbook) Decode(d *jx.Decoder) error {
 		return errors.New(`invalid: unable to decode Orderbook to nil`)
 	}
 	var requiredBitSet [2]uint8
+
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "figi":
@@ -3613,31 +3558,26 @@ func (s *Orderbook) Decode(d *jx.Decoder) error {
 				return err
 			}
 		case "faceValue":
-			requiredBitSet[0] |= 1 << 6
 			s.FaceValue.Reset()
 			if err := s.FaceValue.Decode(d); err != nil {
 				return err
 			}
 		case "lastPrice":
-			requiredBitSet[0] |= 1 << 7
 			s.LastPrice.Reset()
 			if err := s.LastPrice.Decode(d); err != nil {
 				return err
 			}
 		case "closePrice":
-			requiredBitSet[1] |= 1 << 0
 			s.ClosePrice.Reset()
 			if err := s.ClosePrice.Decode(d); err != nil {
 				return err
 			}
 		case "limitUp":
-			requiredBitSet[1] |= 1 << 1
 			s.LimitUp.Reset()
 			if err := s.LimitUp.Decode(d); err != nil {
 				return err
 			}
 		case "limitDown":
-			requiredBitSet[1] |= 1 << 2
 			s.LimitDown.Reset()
 			if err := s.LimitDown.Decode(d); err != nil {
 				return err
@@ -3649,7 +3589,6 @@ func (s *Orderbook) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return err
 	}
-
 	var failures []validate.FieldError
 	for i, mask := range [2]uint8{
 		0b00111111,
@@ -3682,6 +3621,7 @@ func (s *Orderbook) Decode(d *jx.Decoder) error {
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
+
 	return nil
 }
 
@@ -3728,6 +3668,7 @@ func (s *OrderbookResponse) Decode(d *jx.Decoder) error {
 		return errors.New(`invalid: unable to decode OrderbookResponse to nil`)
 	}
 	var requiredBitSet [1]uint8
+
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "trackingId":
@@ -3756,7 +3697,6 @@ func (s *OrderbookResponse) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return err
 	}
-
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000111,
@@ -3788,6 +3728,7 @@ func (s *OrderbookResponse) Decode(d *jx.Decoder) error {
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
+
 	return nil
 }
 
@@ -3846,6 +3787,7 @@ func (s *OrdersResponse) Decode(d *jx.Decoder) error {
 		return errors.New(`invalid: unable to decode OrdersResponse to nil`)
 	}
 	var requiredBitSet [1]uint8
+
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "trackingId":
@@ -3882,7 +3824,6 @@ func (s *OrdersResponse) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return err
 	}
-
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000111,
@@ -3914,6 +3855,7 @@ func (s *OrdersResponse) Decode(d *jx.Decoder) error {
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
+
 	return nil
 }
 
@@ -4004,6 +3946,7 @@ func (s *PlacedLimitOrder) Decode(d *jx.Decoder) error {
 		return errors.New(`invalid: unable to decode PlacedLimitOrder to nil`)
 	}
 	var requiredBitSet [1]uint8
+
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "orderId":
@@ -4024,13 +3967,11 @@ func (s *PlacedLimitOrder) Decode(d *jx.Decoder) error {
 				return err
 			}
 		case "rejectReason":
-			requiredBitSet[0] |= 1 << 3
 			s.RejectReason.Reset()
 			if err := s.RejectReason.Decode(d); err != nil {
 				return err
 			}
 		case "message":
-			requiredBitSet[0] |= 1 << 4
 			s.Message.Reset()
 			if err := s.Message.Decode(d); err != nil {
 				return err
@@ -4050,7 +3991,6 @@ func (s *PlacedLimitOrder) Decode(d *jx.Decoder) error {
 				return err
 			}
 		case "commission":
-			requiredBitSet[0] |= 1 << 7
 			s.Commission.Reset()
 			if err := s.Commission.Decode(d); err != nil {
 				return err
@@ -4062,7 +4002,6 @@ func (s *PlacedLimitOrder) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return err
 	}
-
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b01100111,
@@ -4094,6 +4033,7 @@ func (s *PlacedLimitOrder) Decode(d *jx.Decoder) error {
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
+
 	return nil
 }
 
@@ -4184,6 +4124,7 @@ func (s *PlacedMarketOrder) Decode(d *jx.Decoder) error {
 		return errors.New(`invalid: unable to decode PlacedMarketOrder to nil`)
 	}
 	var requiredBitSet [1]uint8
+
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "orderId":
@@ -4204,13 +4145,11 @@ func (s *PlacedMarketOrder) Decode(d *jx.Decoder) error {
 				return err
 			}
 		case "rejectReason":
-			requiredBitSet[0] |= 1 << 3
 			s.RejectReason.Reset()
 			if err := s.RejectReason.Decode(d); err != nil {
 				return err
 			}
 		case "message":
-			requiredBitSet[0] |= 1 << 4
 			s.Message.Reset()
 			if err := s.Message.Decode(d); err != nil {
 				return err
@@ -4230,7 +4169,6 @@ func (s *PlacedMarketOrder) Decode(d *jx.Decoder) error {
 				return err
 			}
 		case "commission":
-			requiredBitSet[0] |= 1 << 7
 			s.Commission.Reset()
 			if err := s.Commission.Decode(d); err != nil {
 				return err
@@ -4242,7 +4180,6 @@ func (s *PlacedMarketOrder) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return err
 	}
-
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b01100111,
@@ -4274,6 +4211,7 @@ func (s *PlacedMarketOrder) Decode(d *jx.Decoder) error {
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
+
 	return nil
 }
 
@@ -4318,6 +4256,7 @@ func (s *Portfolio) Decode(d *jx.Decoder) error {
 		return errors.New(`invalid: unable to decode Portfolio to nil`)
 	}
 	var requiredBitSet [1]uint8
+
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "positions":
@@ -4340,7 +4279,6 @@ func (s *Portfolio) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return err
 	}
-
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000001,
@@ -4372,6 +4310,7 @@ func (s *Portfolio) Decode(d *jx.Decoder) error {
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
+
 	return nil
 }
 
@@ -4418,6 +4357,7 @@ func (s *PortfolioCurrenciesResponse) Decode(d *jx.Decoder) error {
 		return errors.New(`invalid: unable to decode PortfolioCurrenciesResponse to nil`)
 	}
 	var requiredBitSet [1]uint8
+
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "trackingId":
@@ -4446,7 +4386,6 @@ func (s *PortfolioCurrenciesResponse) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return err
 	}
-
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000111,
@@ -4478,6 +4417,7 @@ func (s *PortfolioCurrenciesResponse) Decode(d *jx.Decoder) error {
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
+
 	return nil
 }
 
@@ -4598,6 +4538,7 @@ func (s *PortfolioPosition) Decode(d *jx.Decoder) error {
 		return errors.New(`invalid: unable to decode PortfolioPosition to nil`)
 	}
 	var requiredBitSet [2]uint8
+
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "figi":
@@ -4608,13 +4549,11 @@ func (s *PortfolioPosition) Decode(d *jx.Decoder) error {
 				return err
 			}
 		case "ticker":
-			requiredBitSet[0] |= 1 << 1
 			s.Ticker.Reset()
 			if err := s.Ticker.Decode(d); err != nil {
 				return err
 			}
 		case "isin":
-			requiredBitSet[0] |= 1 << 2
 			s.Isin.Reset()
 			if err := s.Isin.Decode(d); err != nil {
 				return err
@@ -4632,13 +4571,11 @@ func (s *PortfolioPosition) Decode(d *jx.Decoder) error {
 				return err
 			}
 		case "blocked":
-			requiredBitSet[0] |= 1 << 5
 			s.Blocked.Reset()
 			if err := s.Blocked.Decode(d); err != nil {
 				return err
 			}
 		case "expectedYield":
-			requiredBitSet[0] |= 1 << 6
 			s.ExpectedYield.Reset()
 			if err := s.ExpectedYield.Decode(d); err != nil {
 				return err
@@ -4651,13 +4588,11 @@ func (s *PortfolioPosition) Decode(d *jx.Decoder) error {
 				return err
 			}
 		case "averagePositionPrice":
-			requiredBitSet[1] |= 1 << 0
 			s.AveragePositionPrice.Reset()
 			if err := s.AveragePositionPrice.Decode(d); err != nil {
 				return err
 			}
 		case "averagePositionPriceNoNkd":
-			requiredBitSet[1] |= 1 << 1
 			s.AveragePositionPriceNoNkd.Reset()
 			if err := s.AveragePositionPriceNoNkd.Decode(d); err != nil {
 				return err
@@ -4676,7 +4611,6 @@ func (s *PortfolioPosition) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return err
 	}
-
 	var failures []validate.FieldError
 	for i, mask := range [2]uint8{
 		0b10011001,
@@ -4709,6 +4643,7 @@ func (s *PortfolioPosition) Decode(d *jx.Decoder) error {
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
+
 	return nil
 }
 
@@ -4755,6 +4690,7 @@ func (s *PortfolioResponse) Decode(d *jx.Decoder) error {
 		return errors.New(`invalid: unable to decode PortfolioResponse to nil`)
 	}
 	var requiredBitSet [1]uint8
+
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "trackingId":
@@ -4783,7 +4719,6 @@ func (s *PortfolioResponse) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return err
 	}
-
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000111,
@@ -4815,6 +4750,7 @@ func (s *PortfolioResponse) Decode(d *jx.Decoder) error {
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
+
 	return nil
 }
 
@@ -4854,6 +4790,7 @@ func (s *SandboxAccount) Decode(d *jx.Decoder) error {
 		return errors.New(`invalid: unable to decode SandboxAccount to nil`)
 	}
 	var requiredBitSet [1]uint8
+
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "brokerAccountType":
@@ -4875,7 +4812,6 @@ func (s *SandboxAccount) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return err
 	}
-
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000011,
@@ -4907,6 +4843,7 @@ func (s *SandboxAccount) Decode(d *jx.Decoder) error {
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
+
 	return nil
 }
 
@@ -4982,11 +4919,10 @@ func (s *SandboxRegisterRequest) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode SandboxRegisterRequest to nil`)
 	}
-	var requiredBitSet [1]uint8
+
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "brokerAccountType":
-			requiredBitSet[0] |= 1 << 0
 			s.BrokerAccountType.Reset()
 			if err := s.BrokerAccountType.Decode(d); err != nil {
 				return err
@@ -4999,37 +4935,6 @@ func (s *SandboxRegisterRequest) Decode(d *jx.Decoder) error {
 		return err
 	}
 
-	var failures []validate.FieldError
-	for i, mask := range [1]uint8{
-		0b00000000,
-	} {
-		if result := (requiredBitSet[i] & mask) ^ mask; result != 0 {
-			// Mask only required fields and check equality to mask using XOR.
-			//
-			// If XOR result is not zero, result is not equal to expected, so some fields are missed.
-			// Bits of fields which would be set are actually bits of missed fields.
-			missed := bits.OnesCount8(result)
-			for bitN := 0; bitN < missed; bitN++ {
-				bitIdx := bits.TrailingZeros8(result)
-				fieldIdx := i*8 + bitIdx
-				var name string
-				if fieldIdx < len(jsonFieldsNameOfSandboxRegisterRequest) {
-					name = jsonFieldsNameOfSandboxRegisterRequest[fieldIdx]
-				} else {
-					name = strconv.Itoa(fieldIdx)
-				}
-				failures = append(failures, validate.FieldError{
-					Name:  name,
-					Error: validate.ErrFieldRequired,
-				})
-				// Reset bit.
-				result &^= 1 << bitIdx
-			}
-		}
-	}
-	if len(failures) > 0 {
-		return &validate.Error{Fields: failures}
-	}
 	return nil
 }
 
@@ -5076,6 +4981,7 @@ func (s *SandboxRegisterResponse) Decode(d *jx.Decoder) error {
 		return errors.New(`invalid: unable to decode SandboxRegisterResponse to nil`)
 	}
 	var requiredBitSet [1]uint8
+
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "trackingId":
@@ -5104,7 +5010,6 @@ func (s *SandboxRegisterResponse) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return err
 	}
-
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000111,
@@ -5136,6 +5041,7 @@ func (s *SandboxRegisterResponse) Decode(d *jx.Decoder) error {
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
+
 	return nil
 }
 
@@ -5175,6 +5081,7 @@ func (s *SandboxSetCurrencyBalanceRequest) Decode(d *jx.Decoder) error {
 		return errors.New(`invalid: unable to decode SandboxSetCurrencyBalanceRequest to nil`)
 	}
 	var requiredBitSet [1]uint8
+
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "currency":
@@ -5196,7 +5103,6 @@ func (s *SandboxSetCurrencyBalanceRequest) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return err
 	}
-
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000011,
@@ -5228,6 +5134,7 @@ func (s *SandboxSetCurrencyBalanceRequest) Decode(d *jx.Decoder) error {
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
+
 	return nil
 }
 
@@ -5273,10 +5180,10 @@ func (s *SandboxSetPositionBalanceRequest) Decode(d *jx.Decoder) error {
 		return errors.New(`invalid: unable to decode SandboxSetPositionBalanceRequest to nil`)
 	}
 	var requiredBitSet [1]uint8
+
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "figi":
-			requiredBitSet[0] |= 1 << 0
 			s.Figi.Reset()
 			if err := s.Figi.Decode(d); err != nil {
 				return err
@@ -5295,7 +5202,6 @@ func (s *SandboxSetPositionBalanceRequest) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return err
 	}
-
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000010,
@@ -5327,6 +5233,7 @@ func (s *SandboxSetPositionBalanceRequest) Decode(d *jx.Decoder) error {
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
+
 	return nil
 }
 
@@ -5417,6 +5324,7 @@ func (s *SearchMarketInstrument) Decode(d *jx.Decoder) error {
 		return errors.New(`invalid: unable to decode SearchMarketInstrument to nil`)
 	}
 	var requiredBitSet [1]uint8
+
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "figi":
@@ -5434,13 +5342,11 @@ func (s *SearchMarketInstrument) Decode(d *jx.Decoder) error {
 				return err
 			}
 		case "isin":
-			requiredBitSet[0] |= 1 << 2
 			s.Isin.Reset()
 			if err := s.Isin.Decode(d); err != nil {
 				return err
 			}
 		case "minPriceIncrement":
-			requiredBitSet[0] |= 1 << 3
 			s.MinPriceIncrement.Reset()
 			if err := s.MinPriceIncrement.Decode(d); err != nil {
 				return err
@@ -5453,7 +5359,6 @@ func (s *SearchMarketInstrument) Decode(d *jx.Decoder) error {
 				return err
 			}
 		case "currency":
-			requiredBitSet[0] |= 1 << 5
 			s.Currency.Reset()
 			if err := s.Currency.Decode(d); err != nil {
 				return err
@@ -5477,7 +5382,6 @@ func (s *SearchMarketInstrument) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return err
 	}
-
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b11010011,
@@ -5509,6 +5413,7 @@ func (s *SearchMarketInstrument) Decode(d *jx.Decoder) error {
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
+
 	return nil
 }
 
@@ -5555,6 +5460,7 @@ func (s *SearchMarketInstrumentResponse) Decode(d *jx.Decoder) error {
 		return errors.New(`invalid: unable to decode SearchMarketInstrumentResponse to nil`)
 	}
 	var requiredBitSet [1]uint8
+
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "trackingId":
@@ -5583,7 +5489,6 @@ func (s *SearchMarketInstrumentResponse) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return err
 	}
-
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000111,
@@ -5615,6 +5520,7 @@ func (s *SearchMarketInstrumentResponse) Decode(d *jx.Decoder) error {
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
+
 	return nil
 }
 
@@ -5681,6 +5587,7 @@ func (s *UserAccount) Decode(d *jx.Decoder) error {
 		return errors.New(`invalid: unable to decode UserAccount to nil`)
 	}
 	var requiredBitSet [1]uint8
+
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "brokerAccountType":
@@ -5702,7 +5609,6 @@ func (s *UserAccount) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return err
 	}
-
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000011,
@@ -5734,6 +5640,7 @@ func (s *UserAccount) Decode(d *jx.Decoder) error {
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
+
 	return nil
 }
 
@@ -5778,6 +5685,7 @@ func (s *UserAccounts) Decode(d *jx.Decoder) error {
 		return errors.New(`invalid: unable to decode UserAccounts to nil`)
 	}
 	var requiredBitSet [1]uint8
+
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "accounts":
@@ -5800,7 +5708,6 @@ func (s *UserAccounts) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return err
 	}
-
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000001,
@@ -5832,6 +5739,7 @@ func (s *UserAccounts) Decode(d *jx.Decoder) error {
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
+
 	return nil
 }
 
@@ -5878,6 +5786,7 @@ func (s *UserAccountsResponse) Decode(d *jx.Decoder) error {
 		return errors.New(`invalid: unable to decode UserAccountsResponse to nil`)
 	}
 	var requiredBitSet [1]uint8
+
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "trackingId":
@@ -5906,7 +5815,6 @@ func (s *UserAccountsResponse) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return err
 	}
-
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000111,
@@ -5938,5 +5846,6 @@ func (s *UserAccountsResponse) Decode(d *jx.Decoder) error {
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
+
 	return nil
 }

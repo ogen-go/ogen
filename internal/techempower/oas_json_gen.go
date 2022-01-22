@@ -93,6 +93,7 @@ func (s *HelloWorld) Decode(d *jx.Decoder) error {
 		return errors.New(`invalid: unable to decode HelloWorld to nil`)
 	}
 	var requiredBitSet [1]uint8
+
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "message":
@@ -109,7 +110,6 @@ func (s *HelloWorld) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return err
 	}
-
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000001,
@@ -141,6 +141,7 @@ func (s *HelloWorld) Decode(d *jx.Decoder) error {
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
+
 	return nil
 }
 
@@ -180,6 +181,7 @@ func (s *WorldObject) Decode(d *jx.Decoder) error {
 		return errors.New(`invalid: unable to decode WorldObject to nil`)
 	}
 	var requiredBitSet [1]uint8
+
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "id":
@@ -203,7 +205,6 @@ func (s *WorldObject) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return err
 	}
-
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000011,
@@ -235,6 +236,7 @@ func (s *WorldObject) Decode(d *jx.Decoder) error {
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
+
 	return nil
 }
 

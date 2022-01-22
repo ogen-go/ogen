@@ -115,6 +115,7 @@ func (s *CreatePetCategoriesReq) Decode(d *jx.Decoder) error {
 		return errors.New(`invalid: unable to decode CreatePetCategoriesReq to nil`)
 	}
 	var requiredBitSet [1]uint8
+
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "name":
@@ -125,7 +126,6 @@ func (s *CreatePetCategoriesReq) Decode(d *jx.Decoder) error {
 				return err
 			}
 		case "pets":
-			requiredBitSet[0] |= 1 << 1
 			s.Pets = nil
 			if err := d.Arr(func(d *jx.Decoder) error {
 				var elem int
@@ -146,7 +146,6 @@ func (s *CreatePetCategoriesReq) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return err
 	}
-
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000001,
@@ -178,6 +177,7 @@ func (s *CreatePetCategoriesReq) Decode(d *jx.Decoder) error {
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
+
 	return nil
 }
 
@@ -281,6 +281,7 @@ func (s *CreatePetFriendsReq) Decode(d *jx.Decoder) error {
 		return errors.New(`invalid: unable to decode CreatePetFriendsReq to nil`)
 	}
 	var requiredBitSet [1]uint8
+
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "name":
@@ -291,19 +292,16 @@ func (s *CreatePetFriendsReq) Decode(d *jx.Decoder) error {
 				return err
 			}
 		case "weight":
-			requiredBitSet[0] |= 1 << 1
 			s.Weight.Reset()
 			if err := s.Weight.Decode(d); err != nil {
 				return err
 			}
 		case "birthday":
-			requiredBitSet[0] |= 1 << 2
 			s.Birthday.Reset()
 			if err := s.Birthday.Decode(d, json.DecodeDateTime); err != nil {
 				return err
 			}
 		case "categories":
-			requiredBitSet[0] |= 1 << 3
 			s.Categories = nil
 			if err := d.Arr(func(d *jx.Decoder) error {
 				var elem int
@@ -325,7 +323,6 @@ func (s *CreatePetFriendsReq) Decode(d *jx.Decoder) error {
 				return err
 			}
 		case "friends":
-			requiredBitSet[0] |= 1 << 5
 			s.Friends = nil
 			if err := d.Arr(func(d *jx.Decoder) error {
 				var elem int
@@ -346,7 +343,6 @@ func (s *CreatePetFriendsReq) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return err
 	}
-
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00010001,
@@ -378,6 +374,7 @@ func (s *CreatePetFriendsReq) Decode(d *jx.Decoder) error {
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
+
 	return nil
 }
 
@@ -439,6 +436,7 @@ func (s *CreatePetOwnerReq) Decode(d *jx.Decoder) error {
 		return errors.New(`invalid: unable to decode CreatePetOwnerReq to nil`)
 	}
 	var requiredBitSet [1]uint8
+
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "name":
@@ -456,7 +454,6 @@ func (s *CreatePetOwnerReq) Decode(d *jx.Decoder) error {
 				return err
 			}
 		case "pets":
-			requiredBitSet[0] |= 1 << 2
 			s.Pets = nil
 			if err := d.Arr(func(d *jx.Decoder) error {
 				var elem int
@@ -477,7 +474,6 @@ func (s *CreatePetOwnerReq) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return err
 	}
-
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000011,
@@ -509,6 +505,7 @@ func (s *CreatePetOwnerReq) Decode(d *jx.Decoder) error {
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
+
 	return nil
 }
 
@@ -612,6 +609,7 @@ func (s *CreatePetReq) Decode(d *jx.Decoder) error {
 		return errors.New(`invalid: unable to decode CreatePetReq to nil`)
 	}
 	var requiredBitSet [1]uint8
+
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "name":
@@ -622,19 +620,16 @@ func (s *CreatePetReq) Decode(d *jx.Decoder) error {
 				return err
 			}
 		case "weight":
-			requiredBitSet[0] |= 1 << 1
 			s.Weight.Reset()
 			if err := s.Weight.Decode(d); err != nil {
 				return err
 			}
 		case "birthday":
-			requiredBitSet[0] |= 1 << 2
 			s.Birthday.Reset()
 			if err := s.Birthday.Decode(d, json.DecodeDateTime); err != nil {
 				return err
 			}
 		case "categories":
-			requiredBitSet[0] |= 1 << 3
 			s.Categories = nil
 			if err := d.Arr(func(d *jx.Decoder) error {
 				var elem int
@@ -656,7 +651,6 @@ func (s *CreatePetReq) Decode(d *jx.Decoder) error {
 				return err
 			}
 		case "friends":
-			requiredBitSet[0] |= 1 << 5
 			s.Friends = nil
 			if err := d.Arr(func(d *jx.Decoder) error {
 				var elem int
@@ -677,7 +671,6 @@ func (s *CreatePetReq) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return err
 	}
-
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00010001,
@@ -709,6 +702,7 @@ func (s *CreatePetReq) Decode(d *jx.Decoder) error {
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
+
 	return nil
 }
 
@@ -729,7 +723,7 @@ func (s *DeletePetNoContent) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode DeletePetNoContent to nil`)
 	}
-	var requiredBitSet [1]uint8
+
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		default:
@@ -740,37 +734,6 @@ func (s *DeletePetNoContent) Decode(d *jx.Decoder) error {
 		return err
 	}
 
-	var failures []validate.FieldError
-	for i, mask := range [1]uint8{
-		0b00000000,
-	} {
-		if result := (requiredBitSet[i] & mask) ^ mask; result != 0 {
-			// Mask only required fields and check equality to mask using XOR.
-			//
-			// If XOR result is not zero, result is not equal to expected, so some fields are missed.
-			// Bits of fields which would be set are actually bits of missed fields.
-			missed := bits.OnesCount8(result)
-			for bitN := 0; bitN < missed; bitN++ {
-				bitIdx := bits.TrailingZeros8(result)
-				fieldIdx := i*8 + bitIdx
-				var name string
-				if fieldIdx < len(jsonFieldsNameOfDeletePetNoContent) {
-					name = jsonFieldsNameOfDeletePetNoContent[fieldIdx]
-				} else {
-					name = strconv.Itoa(fieldIdx)
-				}
-				failures = append(failures, validate.FieldError{
-					Name:  name,
-					Error: validate.ErrFieldRequired,
-				})
-				// Reset bit.
-				result &^= 1 << bitIdx
-			}
-		}
-	}
-	if len(failures) > 0 {
-		return &validate.Error{Fields: failures}
-	}
 	return nil
 }
 
@@ -791,7 +754,7 @@ func (s *DeletePetOwnerNoContent) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode DeletePetOwnerNoContent to nil`)
 	}
-	var requiredBitSet [1]uint8
+
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		default:
@@ -802,37 +765,6 @@ func (s *DeletePetOwnerNoContent) Decode(d *jx.Decoder) error {
 		return err
 	}
 
-	var failures []validate.FieldError
-	for i, mask := range [1]uint8{
-		0b00000000,
-	} {
-		if result := (requiredBitSet[i] & mask) ^ mask; result != 0 {
-			// Mask only required fields and check equality to mask using XOR.
-			//
-			// If XOR result is not zero, result is not equal to expected, so some fields are missed.
-			// Bits of fields which would be set are actually bits of missed fields.
-			missed := bits.OnesCount8(result)
-			for bitN := 0; bitN < missed; bitN++ {
-				bitIdx := bits.TrailingZeros8(result)
-				fieldIdx := i*8 + bitIdx
-				var name string
-				if fieldIdx < len(jsonFieldsNameOfDeletePetOwnerNoContent) {
-					name = jsonFieldsNameOfDeletePetOwnerNoContent[fieldIdx]
-				} else {
-					name = strconv.Itoa(fieldIdx)
-				}
-				failures = append(failures, validate.FieldError{
-					Name:  name,
-					Error: validate.ErrFieldRequired,
-				})
-				// Reset bit.
-				result &^= 1 << bitIdx
-			}
-		}
-	}
-	if len(failures) > 0 {
-		return &validate.Error{Fields: failures}
-	}
 	return nil
 }
 
@@ -1112,6 +1044,7 @@ func (s *PetCategoriesCreate) Decode(d *jx.Decoder) error {
 		return errors.New(`invalid: unable to decode PetCategoriesCreate to nil`)
 	}
 	var requiredBitSet [1]uint8
+
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "id":
@@ -1135,7 +1068,6 @@ func (s *PetCategoriesCreate) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return err
 	}
-
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000011,
@@ -1167,6 +1099,7 @@ func (s *PetCategoriesCreate) Decode(d *jx.Decoder) error {
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
+
 	return nil
 }
 
@@ -1206,6 +1139,7 @@ func (s *PetCategoriesList) Decode(d *jx.Decoder) error {
 		return errors.New(`invalid: unable to decode PetCategoriesList to nil`)
 	}
 	var requiredBitSet [1]uint8
+
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "id":
@@ -1229,7 +1163,6 @@ func (s *PetCategoriesList) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return err
 	}
-
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000011,
@@ -1261,6 +1194,7 @@ func (s *PetCategoriesList) Decode(d *jx.Decoder) error {
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
+
 	return nil
 }
 
@@ -1349,6 +1283,7 @@ func (s *PetCreate) Decode(d *jx.Decoder) error {
 		return errors.New(`invalid: unable to decode PetCreate to nil`)
 	}
 	var requiredBitSet [1]uint8
+
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "id":
@@ -1366,19 +1301,16 @@ func (s *PetCreate) Decode(d *jx.Decoder) error {
 				return err
 			}
 		case "weight":
-			requiredBitSet[0] |= 1 << 2
 			s.Weight.Reset()
 			if err := s.Weight.Decode(d); err != nil {
 				return err
 			}
 		case "birthday":
-			requiredBitSet[0] |= 1 << 3
 			s.Birthday.Reset()
 			if err := s.Birthday.Decode(d, json.DecodeDateTime); err != nil {
 				return err
 			}
 		case "categories":
-			requiredBitSet[0] |= 1 << 4
 			s.Categories = nil
 			if err := d.Arr(func(d *jx.Decoder) error {
 				var elem PetCreateCategories
@@ -1402,7 +1334,6 @@ func (s *PetCreate) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return err
 	}
-
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00100011,
@@ -1434,6 +1365,7 @@ func (s *PetCreate) Decode(d *jx.Decoder) error {
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
+
 	return nil
 }
 
@@ -1473,6 +1405,7 @@ func (s *PetCreateCategories) Decode(d *jx.Decoder) error {
 		return errors.New(`invalid: unable to decode PetCreateCategories to nil`)
 	}
 	var requiredBitSet [1]uint8
+
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "id":
@@ -1496,7 +1429,6 @@ func (s *PetCreateCategories) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return err
 	}
-
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000011,
@@ -1528,6 +1460,7 @@ func (s *PetCreateCategories) Decode(d *jx.Decoder) error {
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
+
 	return nil
 }
 
@@ -1574,6 +1507,7 @@ func (s *PetCreateOwner) Decode(d *jx.Decoder) error {
 		return errors.New(`invalid: unable to decode PetCreateOwner to nil`)
 	}
 	var requiredBitSet [1]uint8
+
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "id":
@@ -1604,7 +1538,6 @@ func (s *PetCreateOwner) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return err
 	}
-
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000111,
@@ -1636,6 +1569,7 @@ func (s *PetCreateOwner) Decode(d *jx.Decoder) error {
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
+
 	return nil
 }
 
@@ -1695,6 +1629,7 @@ func (s *PetFriendsCreate) Decode(d *jx.Decoder) error {
 		return errors.New(`invalid: unable to decode PetFriendsCreate to nil`)
 	}
 	var requiredBitSet [1]uint8
+
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "id":
@@ -1712,13 +1647,11 @@ func (s *PetFriendsCreate) Decode(d *jx.Decoder) error {
 				return err
 			}
 		case "weight":
-			requiredBitSet[0] |= 1 << 2
 			s.Weight.Reset()
 			if err := s.Weight.Decode(d); err != nil {
 				return err
 			}
 		case "birthday":
-			requiredBitSet[0] |= 1 << 3
 			s.Birthday.Reset()
 			if err := s.Birthday.Decode(d, json.DecodeDateTime); err != nil {
 				return err
@@ -1730,7 +1663,6 @@ func (s *PetFriendsCreate) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return err
 	}
-
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000011,
@@ -1762,6 +1694,7 @@ func (s *PetFriendsCreate) Decode(d *jx.Decoder) error {
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
+
 	return nil
 }
 
@@ -1821,6 +1754,7 @@ func (s *PetFriendsList) Decode(d *jx.Decoder) error {
 		return errors.New(`invalid: unable to decode PetFriendsList to nil`)
 	}
 	var requiredBitSet [1]uint8
+
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "id":
@@ -1838,13 +1772,11 @@ func (s *PetFriendsList) Decode(d *jx.Decoder) error {
 				return err
 			}
 		case "weight":
-			requiredBitSet[0] |= 1 << 2
 			s.Weight.Reset()
 			if err := s.Weight.Decode(d); err != nil {
 				return err
 			}
 		case "birthday":
-			requiredBitSet[0] |= 1 << 3
 			s.Birthday.Reset()
 			if err := s.Birthday.Decode(d, json.DecodeDateTime); err != nil {
 				return err
@@ -1856,7 +1788,6 @@ func (s *PetFriendsList) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return err
 	}
-
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000011,
@@ -1888,6 +1819,7 @@ func (s *PetFriendsList) Decode(d *jx.Decoder) error {
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
+
 	return nil
 }
 
@@ -1947,6 +1879,7 @@ func (s *PetList) Decode(d *jx.Decoder) error {
 		return errors.New(`invalid: unable to decode PetList to nil`)
 	}
 	var requiredBitSet [1]uint8
+
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "id":
@@ -1964,13 +1897,11 @@ func (s *PetList) Decode(d *jx.Decoder) error {
 				return err
 			}
 		case "weight":
-			requiredBitSet[0] |= 1 << 2
 			s.Weight.Reset()
 			if err := s.Weight.Decode(d); err != nil {
 				return err
 			}
 		case "birthday":
-			requiredBitSet[0] |= 1 << 3
 			s.Birthday.Reset()
 			if err := s.Birthday.Decode(d, json.DecodeDateTime); err != nil {
 				return err
@@ -1982,7 +1913,6 @@ func (s *PetList) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return err
 	}
-
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000011,
@@ -2014,6 +1944,7 @@ func (s *PetList) Decode(d *jx.Decoder) error {
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
+
 	return nil
 }
 
@@ -2060,6 +1991,7 @@ func (s *PetOwnerCreate) Decode(d *jx.Decoder) error {
 		return errors.New(`invalid: unable to decode PetOwnerCreate to nil`)
 	}
 	var requiredBitSet [1]uint8
+
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "id":
@@ -2090,7 +2022,6 @@ func (s *PetOwnerCreate) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return err
 	}
-
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000111,
@@ -2122,6 +2053,7 @@ func (s *PetOwnerCreate) Decode(d *jx.Decoder) error {
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
+
 	return nil
 }
 
@@ -2168,6 +2100,7 @@ func (s *PetOwnerRead) Decode(d *jx.Decoder) error {
 		return errors.New(`invalid: unable to decode PetOwnerRead to nil`)
 	}
 	var requiredBitSet [1]uint8
+
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "id":
@@ -2198,7 +2131,6 @@ func (s *PetOwnerRead) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return err
 	}
-
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000111,
@@ -2230,6 +2162,7 @@ func (s *PetOwnerRead) Decode(d *jx.Decoder) error {
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
+
 	return nil
 }
 
@@ -2289,6 +2222,7 @@ func (s *PetRead) Decode(d *jx.Decoder) error {
 		return errors.New(`invalid: unable to decode PetRead to nil`)
 	}
 	var requiredBitSet [1]uint8
+
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "id":
@@ -2306,13 +2240,11 @@ func (s *PetRead) Decode(d *jx.Decoder) error {
 				return err
 			}
 		case "weight":
-			requiredBitSet[0] |= 1 << 2
 			s.Weight.Reset()
 			if err := s.Weight.Decode(d); err != nil {
 				return err
 			}
 		case "birthday":
-			requiredBitSet[0] |= 1 << 3
 			s.Birthday.Reset()
 			if err := s.Birthday.Decode(d, json.DecodeDateTime); err != nil {
 				return err
@@ -2324,7 +2256,6 @@ func (s *PetRead) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return err
 	}
-
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000011,
@@ -2356,6 +2287,7 @@ func (s *PetRead) Decode(d *jx.Decoder) error {
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
+
 	return nil
 }
 
@@ -2415,6 +2347,7 @@ func (s *PetUpdate) Decode(d *jx.Decoder) error {
 		return errors.New(`invalid: unable to decode PetUpdate to nil`)
 	}
 	var requiredBitSet [1]uint8
+
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "id":
@@ -2432,13 +2365,11 @@ func (s *PetUpdate) Decode(d *jx.Decoder) error {
 				return err
 			}
 		case "weight":
-			requiredBitSet[0] |= 1 << 2
 			s.Weight.Reset()
 			if err := s.Weight.Decode(d); err != nil {
 				return err
 			}
 		case "birthday":
-			requiredBitSet[0] |= 1 << 3
 			s.Birthday.Reset()
 			if err := s.Birthday.Decode(d, json.DecodeDateTime); err != nil {
 				return err
@@ -2450,7 +2381,6 @@ func (s *PetUpdate) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return err
 	}
-
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000011,
@@ -2482,6 +2412,7 @@ func (s *PetUpdate) Decode(d *jx.Decoder) error {
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
+
 	return nil
 }
 
@@ -2531,6 +2462,7 @@ func (s *R400) Decode(d *jx.Decoder) error {
 		return errors.New(`invalid: unable to decode R400 to nil`)
 	}
 	var requiredBitSet [1]uint8
+
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "code":
@@ -2548,7 +2480,6 @@ func (s *R400) Decode(d *jx.Decoder) error {
 				return err
 			}
 		case "errors":
-			requiredBitSet[0] |= 1 << 2
 			s.Errors.Reset()
 			if err := s.Errors.Decode(d); err != nil {
 				return err
@@ -2560,7 +2491,6 @@ func (s *R400) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return err
 	}
-
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000011,
@@ -2592,6 +2522,7 @@ func (s *R400) Decode(d *jx.Decoder) error {
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
+
 	return nil
 }
 
@@ -2641,6 +2572,7 @@ func (s *R404) Decode(d *jx.Decoder) error {
 		return errors.New(`invalid: unable to decode R404 to nil`)
 	}
 	var requiredBitSet [1]uint8
+
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "code":
@@ -2658,7 +2590,6 @@ func (s *R404) Decode(d *jx.Decoder) error {
 				return err
 			}
 		case "errors":
-			requiredBitSet[0] |= 1 << 2
 			s.Errors.Reset()
 			if err := s.Errors.Decode(d); err != nil {
 				return err
@@ -2670,7 +2601,6 @@ func (s *R404) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return err
 	}
-
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000011,
@@ -2702,6 +2632,7 @@ func (s *R404) Decode(d *jx.Decoder) error {
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
+
 	return nil
 }
 
@@ -2751,6 +2682,7 @@ func (s *R409) Decode(d *jx.Decoder) error {
 		return errors.New(`invalid: unable to decode R409 to nil`)
 	}
 	var requiredBitSet [1]uint8
+
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "code":
@@ -2768,7 +2700,6 @@ func (s *R409) Decode(d *jx.Decoder) error {
 				return err
 			}
 		case "errors":
-			requiredBitSet[0] |= 1 << 2
 			s.Errors.Reset()
 			if err := s.Errors.Decode(d); err != nil {
 				return err
@@ -2780,7 +2711,6 @@ func (s *R409) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return err
 	}
-
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000011,
@@ -2812,6 +2742,7 @@ func (s *R409) Decode(d *jx.Decoder) error {
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
+
 	return nil
 }
 
@@ -2861,6 +2792,7 @@ func (s *R500) Decode(d *jx.Decoder) error {
 		return errors.New(`invalid: unable to decode R500 to nil`)
 	}
 	var requiredBitSet [1]uint8
+
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "code":
@@ -2878,7 +2810,6 @@ func (s *R500) Decode(d *jx.Decoder) error {
 				return err
 			}
 		case "errors":
-			requiredBitSet[0] |= 1 << 2
 			s.Errors.Reset()
 			if err := s.Errors.Decode(d); err != nil {
 				return err
@@ -2890,7 +2821,6 @@ func (s *R500) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return err
 	}
-
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000011,
@@ -2922,6 +2852,7 @@ func (s *R500) Decode(d *jx.Decoder) error {
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
+
 	return nil
 }
 
@@ -3025,6 +2956,7 @@ func (s *UpdatePetReq) Decode(d *jx.Decoder) error {
 		return errors.New(`invalid: unable to decode UpdatePetReq to nil`)
 	}
 	var requiredBitSet [1]uint8
+
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "name":
@@ -3035,19 +2967,16 @@ func (s *UpdatePetReq) Decode(d *jx.Decoder) error {
 				return err
 			}
 		case "weight":
-			requiredBitSet[0] |= 1 << 1
 			s.Weight.Reset()
 			if err := s.Weight.Decode(d); err != nil {
 				return err
 			}
 		case "birthday":
-			requiredBitSet[0] |= 1 << 2
 			s.Birthday.Reset()
 			if err := s.Birthday.Decode(d, json.DecodeDateTime); err != nil {
 				return err
 			}
 		case "categories":
-			requiredBitSet[0] |= 1 << 3
 			s.Categories = nil
 			if err := d.Arr(func(d *jx.Decoder) error {
 				var elem int
@@ -3069,7 +2998,6 @@ func (s *UpdatePetReq) Decode(d *jx.Decoder) error {
 				return err
 			}
 		case "friends":
-			requiredBitSet[0] |= 1 << 5
 			s.Friends = nil
 			if err := d.Arr(func(d *jx.Decoder) error {
 				var elem int
@@ -3090,7 +3018,6 @@ func (s *UpdatePetReq) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return err
 	}
-
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00010001,
@@ -3122,5 +3049,6 @@ func (s *UpdatePetReq) Decode(d *jx.Decoder) error {
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
+
 	return nil
 }

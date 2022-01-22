@@ -137,6 +137,7 @@ func (s *AddStickerToSet) Decode(d *jx.Decoder) error {
 		return errors.New(`invalid: unable to decode AddStickerToSet to nil`)
 	}
 	var requiredBitSet [1]uint8
+
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "user_id":
@@ -154,13 +155,11 @@ func (s *AddStickerToSet) Decode(d *jx.Decoder) error {
 				return err
 			}
 		case "png_sticker":
-			requiredBitSet[0] |= 1 << 2
 			s.PNGSticker.Reset()
 			if err := s.PNGSticker.Decode(d); err != nil {
 				return err
 			}
 		case "tgs_sticker":
-			requiredBitSet[0] |= 1 << 3
 			s.TgsSticker.Reset()
 			if err := s.TgsSticker.Decode(d); err != nil {
 				return err
@@ -173,7 +172,6 @@ func (s *AddStickerToSet) Decode(d *jx.Decoder) error {
 				return err
 			}
 		case "mask_position":
-			requiredBitSet[0] |= 1 << 5
 			s.MaskPosition.Reset()
 			if err := s.MaskPosition.Decode(d); err != nil {
 				return err
@@ -185,7 +183,6 @@ func (s *AddStickerToSet) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return err
 	}
-
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00010011,
@@ -217,6 +214,7 @@ func (s *AddStickerToSet) Decode(d *jx.Decoder) error {
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
+
 	return nil
 }
 
@@ -317,6 +315,7 @@ func (s *Animation) Decode(d *jx.Decoder) error {
 		return errors.New(`invalid: unable to decode Animation to nil`)
 	}
 	var requiredBitSet [2]uint8
+
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "file_id":
@@ -355,25 +354,21 @@ func (s *Animation) Decode(d *jx.Decoder) error {
 				return err
 			}
 		case "thumb":
-			requiredBitSet[0] |= 1 << 5
 			s.Thumb.Reset()
 			if err := s.Thumb.Decode(d); err != nil {
 				return err
 			}
 		case "file_name":
-			requiredBitSet[0] |= 1 << 6
 			s.FileName.Reset()
 			if err := s.FileName.Decode(d); err != nil {
 				return err
 			}
 		case "mime_type":
-			requiredBitSet[0] |= 1 << 7
 			s.MimeType.Reset()
 			if err := s.MimeType.Decode(d); err != nil {
 				return err
 			}
 		case "file_size":
-			requiredBitSet[1] |= 1 << 0
 			s.FileSize.Reset()
 			if err := s.FileSize.Decode(d); err != nil {
 				return err
@@ -385,7 +380,6 @@ func (s *Animation) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return err
 	}
-
 	var failures []validate.FieldError
 	for i, mask := range [2]uint8{
 		0b00011111,
@@ -418,6 +412,7 @@ func (s *Animation) Decode(d *jx.Decoder) error {
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
+
 	return nil
 }
 
@@ -490,6 +485,7 @@ func (s *AnswerCallbackQuery) Decode(d *jx.Decoder) error {
 		return errors.New(`invalid: unable to decode AnswerCallbackQuery to nil`)
 	}
 	var requiredBitSet [1]uint8
+
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "callback_query_id":
@@ -500,25 +496,21 @@ func (s *AnswerCallbackQuery) Decode(d *jx.Decoder) error {
 				return err
 			}
 		case "text":
-			requiredBitSet[0] |= 1 << 1
 			s.Text.Reset()
 			if err := s.Text.Decode(d); err != nil {
 				return err
 			}
 		case "show_alert":
-			requiredBitSet[0] |= 1 << 2
 			s.ShowAlert.Reset()
 			if err := s.ShowAlert.Decode(d); err != nil {
 				return err
 			}
 		case "url":
-			requiredBitSet[0] |= 1 << 3
 			s.URL.Reset()
 			if err := s.URL.Decode(d); err != nil {
 				return err
 			}
 		case "cache_time":
-			requiredBitSet[0] |= 1 << 4
 			s.CacheTime.Reset()
 			if err := s.CacheTime.Decode(d); err != nil {
 				return err
@@ -530,7 +522,6 @@ func (s *AnswerCallbackQuery) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return err
 	}
-
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000001,
@@ -562,6 +553,7 @@ func (s *AnswerCallbackQuery) Decode(d *jx.Decoder) error {
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
+
 	return nil
 }
 
@@ -663,6 +655,7 @@ func (s *AnswerInlineQuery) Decode(d *jx.Decoder) error {
 		return errors.New(`invalid: unable to decode AnswerInlineQuery to nil`)
 	}
 	var requiredBitSet [1]uint8
+
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "inline_query_id":
@@ -686,31 +679,26 @@ func (s *AnswerInlineQuery) Decode(d *jx.Decoder) error {
 				return err
 			}
 		case "cache_time":
-			requiredBitSet[0] |= 1 << 2
 			s.CacheTime.Reset()
 			if err := s.CacheTime.Decode(d); err != nil {
 				return err
 			}
 		case "is_personal":
-			requiredBitSet[0] |= 1 << 3
 			s.IsPersonal.Reset()
 			if err := s.IsPersonal.Decode(d); err != nil {
 				return err
 			}
 		case "next_offset":
-			requiredBitSet[0] |= 1 << 4
 			s.NextOffset.Reset()
 			if err := s.NextOffset.Decode(d); err != nil {
 				return err
 			}
 		case "switch_pm_text":
-			requiredBitSet[0] |= 1 << 5
 			s.SwitchPmText.Reset()
 			if err := s.SwitchPmText.Decode(d); err != nil {
 				return err
 			}
 		case "switch_pm_parameter":
-			requiredBitSet[0] |= 1 << 6
 			s.SwitchPmParameter.Reset()
 			if err := s.SwitchPmParameter.Decode(d); err != nil {
 				return err
@@ -722,7 +710,6 @@ func (s *AnswerInlineQuery) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return err
 	}
-
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000011,
@@ -754,6 +741,7 @@ func (s *AnswerInlineQuery) Decode(d *jx.Decoder) error {
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
+
 	return nil
 }
 
@@ -803,6 +791,7 @@ func (s *AnswerPreCheckoutQuery) Decode(d *jx.Decoder) error {
 		return errors.New(`invalid: unable to decode AnswerPreCheckoutQuery to nil`)
 	}
 	var requiredBitSet [1]uint8
+
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "pre_checkout_query_id":
@@ -820,7 +809,6 @@ func (s *AnswerPreCheckoutQuery) Decode(d *jx.Decoder) error {
 				return err
 			}
 		case "error_message":
-			requiredBitSet[0] |= 1 << 2
 			s.ErrorMessage.Reset()
 			if err := s.ErrorMessage.Decode(d); err != nil {
 				return err
@@ -832,7 +820,6 @@ func (s *AnswerPreCheckoutQuery) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return err
 	}
-
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000011,
@@ -864,6 +851,7 @@ func (s *AnswerPreCheckoutQuery) Decode(d *jx.Decoder) error {
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
+
 	return nil
 }
 
@@ -935,6 +923,7 @@ func (s *AnswerShippingQuery) Decode(d *jx.Decoder) error {
 		return errors.New(`invalid: unable to decode AnswerShippingQuery to nil`)
 	}
 	var requiredBitSet [1]uint8
+
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "shipping_query_id":
@@ -952,7 +941,6 @@ func (s *AnswerShippingQuery) Decode(d *jx.Decoder) error {
 				return err
 			}
 		case "shipping_options":
-			requiredBitSet[0] |= 1 << 2
 			s.ShippingOptions = nil
 			if err := d.Arr(func(d *jx.Decoder) error {
 				var elem ShippingOption
@@ -965,7 +953,6 @@ func (s *AnswerShippingQuery) Decode(d *jx.Decoder) error {
 				return err
 			}
 		case "error_message":
-			requiredBitSet[0] |= 1 << 3
 			s.ErrorMessage.Reset()
 			if err := s.ErrorMessage.Decode(d); err != nil {
 				return err
@@ -977,7 +964,6 @@ func (s *AnswerShippingQuery) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return err
 	}
-
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000011,
@@ -1009,6 +995,7 @@ func (s *AnswerShippingQuery) Decode(d *jx.Decoder) error {
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
+
 	return nil
 }
 
@@ -1048,6 +1035,7 @@ func (s *ApproveChatJoinRequest) Decode(d *jx.Decoder) error {
 		return errors.New(`invalid: unable to decode ApproveChatJoinRequest to nil`)
 	}
 	var requiredBitSet [1]uint8
+
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "chat_id":
@@ -1069,7 +1057,6 @@ func (s *ApproveChatJoinRequest) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return err
 	}
-
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000011,
@@ -1101,6 +1088,7 @@ func (s *ApproveChatJoinRequest) Decode(d *jx.Decoder) error {
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
+
 	return nil
 }
 
@@ -1207,6 +1195,7 @@ func (s *Audio) Decode(d *jx.Decoder) error {
 		return errors.New(`invalid: unable to decode Audio to nil`)
 	}
 	var requiredBitSet [2]uint8
+
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "file_id":
@@ -1231,37 +1220,31 @@ func (s *Audio) Decode(d *jx.Decoder) error {
 				return err
 			}
 		case "performer":
-			requiredBitSet[0] |= 1 << 3
 			s.Performer.Reset()
 			if err := s.Performer.Decode(d); err != nil {
 				return err
 			}
 		case "title":
-			requiredBitSet[0] |= 1 << 4
 			s.Title.Reset()
 			if err := s.Title.Decode(d); err != nil {
 				return err
 			}
 		case "file_name":
-			requiredBitSet[0] |= 1 << 5
 			s.FileName.Reset()
 			if err := s.FileName.Decode(d); err != nil {
 				return err
 			}
 		case "mime_type":
-			requiredBitSet[0] |= 1 << 6
 			s.MimeType.Reset()
 			if err := s.MimeType.Decode(d); err != nil {
 				return err
 			}
 		case "file_size":
-			requiredBitSet[0] |= 1 << 7
 			s.FileSize.Reset()
 			if err := s.FileSize.Decode(d); err != nil {
 				return err
 			}
 		case "thumb":
-			requiredBitSet[1] |= 1 << 0
 			s.Thumb.Reset()
 			if err := s.Thumb.Decode(d); err != nil {
 				return err
@@ -1273,7 +1256,6 @@ func (s *Audio) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return err
 	}
-
 	var failures []validate.FieldError
 	for i, mask := range [2]uint8{
 		0b00000111,
@@ -1306,6 +1288,7 @@ func (s *Audio) Decode(d *jx.Decoder) error {
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
+
 	return nil
 }
 
@@ -1365,6 +1348,7 @@ func (s *BanChatMember) Decode(d *jx.Decoder) error {
 		return errors.New(`invalid: unable to decode BanChatMember to nil`)
 	}
 	var requiredBitSet [1]uint8
+
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "chat_id":
@@ -1380,13 +1364,11 @@ func (s *BanChatMember) Decode(d *jx.Decoder) error {
 				return err
 			}
 		case "until_date":
-			requiredBitSet[0] |= 1 << 2
 			s.UntilDate.Reset()
 			if err := s.UntilDate.Decode(d); err != nil {
 				return err
 			}
 		case "revoke_messages":
-			requiredBitSet[0] |= 1 << 3
 			s.RevokeMessages.Reset()
 			if err := s.RevokeMessages.Decode(d); err != nil {
 				return err
@@ -1398,7 +1380,6 @@ func (s *BanChatMember) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return err
 	}
-
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000011,
@@ -1430,6 +1411,7 @@ func (s *BanChatMember) Decode(d *jx.Decoder) error {
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
+
 	return nil
 }
 
@@ -1469,6 +1451,7 @@ func (s *BanChatSenderChat) Decode(d *jx.Decoder) error {
 		return errors.New(`invalid: unable to decode BanChatSenderChat to nil`)
 	}
 	var requiredBitSet [1]uint8
+
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "chat_id":
@@ -1490,7 +1473,6 @@ func (s *BanChatSenderChat) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return err
 	}
-
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000011,
@@ -1522,6 +1504,7 @@ func (s *BanChatSenderChat) Decode(d *jx.Decoder) error {
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
+
 	return nil
 }
 
@@ -1561,6 +1544,7 @@ func (s *BotCommand) Decode(d *jx.Decoder) error {
 		return errors.New(`invalid: unable to decode BotCommand to nil`)
 	}
 	var requiredBitSet [1]uint8
+
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "command":
@@ -1584,7 +1568,6 @@ func (s *BotCommand) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return err
 	}
-
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000011,
@@ -1616,6 +1599,7 @@ func (s *BotCommand) Decode(d *jx.Decoder) error {
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
+
 	return nil
 }
 
@@ -1759,6 +1743,7 @@ func (s *BotCommandScopeAllChatAdministrators) Decode(d *jx.Decoder) error {
 		return errors.New(`invalid: unable to decode BotCommandScopeAllChatAdministrators to nil`)
 	}
 	var requiredBitSet [1]uint8
+
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "type":
@@ -1775,7 +1760,6 @@ func (s *BotCommandScopeAllChatAdministrators) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return err
 	}
-
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000001,
@@ -1807,6 +1791,7 @@ func (s *BotCommandScopeAllChatAdministrators) Decode(d *jx.Decoder) error {
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
+
 	return nil
 }
 
@@ -1839,6 +1824,7 @@ func (s *BotCommandScopeAllGroupChats) Decode(d *jx.Decoder) error {
 		return errors.New(`invalid: unable to decode BotCommandScopeAllGroupChats to nil`)
 	}
 	var requiredBitSet [1]uint8
+
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "type":
@@ -1855,7 +1841,6 @@ func (s *BotCommandScopeAllGroupChats) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return err
 	}
-
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000001,
@@ -1887,6 +1872,7 @@ func (s *BotCommandScopeAllGroupChats) Decode(d *jx.Decoder) error {
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
+
 	return nil
 }
 
@@ -1919,6 +1905,7 @@ func (s *BotCommandScopeAllPrivateChats) Decode(d *jx.Decoder) error {
 		return errors.New(`invalid: unable to decode BotCommandScopeAllPrivateChats to nil`)
 	}
 	var requiredBitSet [1]uint8
+
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "type":
@@ -1935,7 +1922,6 @@ func (s *BotCommandScopeAllPrivateChats) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return err
 	}
-
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000001,
@@ -1967,6 +1953,7 @@ func (s *BotCommandScopeAllPrivateChats) Decode(d *jx.Decoder) error {
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
+
 	return nil
 }
 
@@ -2006,6 +1993,7 @@ func (s *BotCommandScopeChat) Decode(d *jx.Decoder) error {
 		return errors.New(`invalid: unable to decode BotCommandScopeChat to nil`)
 	}
 	var requiredBitSet [1]uint8
+
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "type":
@@ -2027,7 +2015,6 @@ func (s *BotCommandScopeChat) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return err
 	}
-
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000011,
@@ -2059,6 +2046,7 @@ func (s *BotCommandScopeChat) Decode(d *jx.Decoder) error {
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
+
 	return nil
 }
 
@@ -2098,6 +2086,7 @@ func (s *BotCommandScopeChatAdministrators) Decode(d *jx.Decoder) error {
 		return errors.New(`invalid: unable to decode BotCommandScopeChatAdministrators to nil`)
 	}
 	var requiredBitSet [1]uint8
+
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "type":
@@ -2119,7 +2108,6 @@ func (s *BotCommandScopeChatAdministrators) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return err
 	}
-
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000011,
@@ -2151,6 +2139,7 @@ func (s *BotCommandScopeChatAdministrators) Decode(d *jx.Decoder) error {
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
+
 	return nil
 }
 
@@ -2197,6 +2186,7 @@ func (s *BotCommandScopeChatMember) Decode(d *jx.Decoder) error {
 		return errors.New(`invalid: unable to decode BotCommandScopeChatMember to nil`)
 	}
 	var requiredBitSet [1]uint8
+
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "type":
@@ -2225,7 +2215,6 @@ func (s *BotCommandScopeChatMember) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return err
 	}
-
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000111,
@@ -2257,6 +2246,7 @@ func (s *BotCommandScopeChatMember) Decode(d *jx.Decoder) error {
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
+
 	return nil
 }
 
@@ -2289,6 +2279,7 @@ func (s *BotCommandScopeDefault) Decode(d *jx.Decoder) error {
 		return errors.New(`invalid: unable to decode BotCommandScopeDefault to nil`)
 	}
 	var requiredBitSet [1]uint8
+
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "type":
@@ -2305,7 +2296,6 @@ func (s *BotCommandScopeDefault) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return err
 	}
-
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000001,
@@ -2337,6 +2327,7 @@ func (s *BotCommandScopeDefault) Decode(d *jx.Decoder) error {
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
+
 	return nil
 }
 
@@ -2357,7 +2348,7 @@ func (s *CallbackGame) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode CallbackGame to nil`)
 	}
-	var requiredBitSet [1]uint8
+
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		default:
@@ -2368,37 +2359,6 @@ func (s *CallbackGame) Decode(d *jx.Decoder) error {
 		return err
 	}
 
-	var failures []validate.FieldError
-	for i, mask := range [1]uint8{
-		0b00000000,
-	} {
-		if result := (requiredBitSet[i] & mask) ^ mask; result != 0 {
-			// Mask only required fields and check equality to mask using XOR.
-			//
-			// If XOR result is not zero, result is not equal to expected, so some fields are missed.
-			// Bits of fields which would be set are actually bits of missed fields.
-			missed := bits.OnesCount8(result)
-			for bitN := 0; bitN < missed; bitN++ {
-				bitIdx := bits.TrailingZeros8(result)
-				fieldIdx := i*8 + bitIdx
-				var name string
-				if fieldIdx < len(jsonFieldsNameOfCallbackGame) {
-					name = jsonFieldsNameOfCallbackGame[fieldIdx]
-				} else {
-					name = strconv.Itoa(fieldIdx)
-				}
-				failures = append(failures, validate.FieldError{
-					Name:  name,
-					Error: validate.ErrFieldRequired,
-				})
-				// Reset bit.
-				result &^= 1 << bitIdx
-			}
-		}
-	}
-	if len(failures) > 0 {
-		return &validate.Error{Fields: failures}
-	}
 	return nil
 }
 
@@ -2485,6 +2445,7 @@ func (s *CallbackQuery) Decode(d *jx.Decoder) error {
 		return errors.New(`invalid: unable to decode CallbackQuery to nil`)
 	}
 	var requiredBitSet [1]uint8
+
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "id":
@@ -2500,13 +2461,11 @@ func (s *CallbackQuery) Decode(d *jx.Decoder) error {
 				return err
 			}
 		case "message":
-			requiredBitSet[0] |= 1 << 2
 			s.Message.Reset()
 			if err := s.Message.Decode(d); err != nil {
 				return err
 			}
 		case "inline_message_id":
-			requiredBitSet[0] |= 1 << 3
 			s.InlineMessageID.Reset()
 			if err := s.InlineMessageID.Decode(d); err != nil {
 				return err
@@ -2519,13 +2478,11 @@ func (s *CallbackQuery) Decode(d *jx.Decoder) error {
 				return err
 			}
 		case "data":
-			requiredBitSet[0] |= 1 << 5
 			s.Data.Reset()
 			if err := s.Data.Decode(d); err != nil {
 				return err
 			}
 		case "game_short_name":
-			requiredBitSet[0] |= 1 << 6
 			s.GameShortName.Reset()
 			if err := s.GameShortName.Decode(d); err != nil {
 				return err
@@ -2537,7 +2494,6 @@ func (s *CallbackQuery) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return err
 	}
-
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00010011,
@@ -2569,6 +2525,7 @@ func (s *CallbackQuery) Decode(d *jx.Decoder) error {
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
+
 	return nil
 }
 
@@ -2788,6 +2745,7 @@ func (s *Chat) Decode(d *jx.Decoder) error {
 		return errors.New(`invalid: unable to decode Chat to nil`)
 	}
 	var requiredBitSet [3]uint8
+
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "id":
@@ -2803,61 +2761,51 @@ func (s *Chat) Decode(d *jx.Decoder) error {
 				return err
 			}
 		case "title":
-			requiredBitSet[0] |= 1 << 2
 			s.Title.Reset()
 			if err := s.Title.Decode(d); err != nil {
 				return err
 			}
 		case "username":
-			requiredBitSet[0] |= 1 << 3
 			s.Username.Reset()
 			if err := s.Username.Decode(d); err != nil {
 				return err
 			}
 		case "first_name":
-			requiredBitSet[0] |= 1 << 4
 			s.FirstName.Reset()
 			if err := s.FirstName.Decode(d); err != nil {
 				return err
 			}
 		case "last_name":
-			requiredBitSet[0] |= 1 << 5
 			s.LastName.Reset()
 			if err := s.LastName.Decode(d); err != nil {
 				return err
 			}
 		case "photo":
-			requiredBitSet[0] |= 1 << 6
 			s.Photo.Reset()
 			if err := s.Photo.Decode(d); err != nil {
 				return err
 			}
 		case "bio":
-			requiredBitSet[0] |= 1 << 7
 			s.Bio.Reset()
 			if err := s.Bio.Decode(d); err != nil {
 				return err
 			}
 		case "has_private_forwards":
-			requiredBitSet[1] |= 1 << 0
 			s.HasPrivateForwards.Reset()
 			if err := s.HasPrivateForwards.Decode(d); err != nil {
 				return err
 			}
 		case "description":
-			requiredBitSet[1] |= 1 << 1
 			s.Description.Reset()
 			if err := s.Description.Decode(d); err != nil {
 				return err
 			}
 		case "invite_link":
-			requiredBitSet[1] |= 1 << 2
 			s.InviteLink.Reset()
 			if err := s.InviteLink.Decode(d); err != nil {
 				return err
 			}
 		case "pinned_message":
-			requiredBitSet[1] |= 1 << 3
 			s.PinnedMessage = nil
 			var elem Message
 			if err := elem.Decode(d); err != nil {
@@ -2865,49 +2813,41 @@ func (s *Chat) Decode(d *jx.Decoder) error {
 			}
 			s.PinnedMessage = &elem
 		case "permissions":
-			requiredBitSet[1] |= 1 << 4
 			s.Permissions.Reset()
 			if err := s.Permissions.Decode(d); err != nil {
 				return err
 			}
 		case "slow_mode_delay":
-			requiredBitSet[1] |= 1 << 5
 			s.SlowModeDelay.Reset()
 			if err := s.SlowModeDelay.Decode(d); err != nil {
 				return err
 			}
 		case "message_auto_delete_time":
-			requiredBitSet[1] |= 1 << 6
 			s.MessageAutoDeleteTime.Reset()
 			if err := s.MessageAutoDeleteTime.Decode(d); err != nil {
 				return err
 			}
 		case "has_protected_content":
-			requiredBitSet[1] |= 1 << 7
 			s.HasProtectedContent.Reset()
 			if err := s.HasProtectedContent.Decode(d); err != nil {
 				return err
 			}
 		case "sticker_set_name":
-			requiredBitSet[2] |= 1 << 0
 			s.StickerSetName.Reset()
 			if err := s.StickerSetName.Decode(d); err != nil {
 				return err
 			}
 		case "can_set_sticker_set":
-			requiredBitSet[2] |= 1 << 1
 			s.CanSetStickerSet.Reset()
 			if err := s.CanSetStickerSet.Decode(d); err != nil {
 				return err
 			}
 		case "linked_chat_id":
-			requiredBitSet[2] |= 1 << 2
 			s.LinkedChatID.Reset()
 			if err := s.LinkedChatID.Decode(d); err != nil {
 				return err
 			}
 		case "location":
-			requiredBitSet[2] |= 1 << 3
 			s.Location.Reset()
 			if err := s.Location.Decode(d); err != nil {
 				return err
@@ -2919,7 +2859,6 @@ func (s *Chat) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return err
 	}
-
 	var failures []validate.FieldError
 	for i, mask := range [3]uint8{
 		0b00000011,
@@ -2953,6 +2892,7 @@ func (s *Chat) Decode(d *jx.Decoder) error {
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
+
 	return nil
 }
 
@@ -3053,6 +2993,7 @@ func (s *ChatInviteLink) Decode(d *jx.Decoder) error {
 		return errors.New(`invalid: unable to decode ChatInviteLink to nil`)
 	}
 	var requiredBitSet [2]uint8
+
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "invite_link":
@@ -3089,25 +3030,21 @@ func (s *ChatInviteLink) Decode(d *jx.Decoder) error {
 				return err
 			}
 		case "name":
-			requiredBitSet[0] |= 1 << 5
 			s.Name.Reset()
 			if err := s.Name.Decode(d); err != nil {
 				return err
 			}
 		case "expire_date":
-			requiredBitSet[0] |= 1 << 6
 			s.ExpireDate.Reset()
 			if err := s.ExpireDate.Decode(d); err != nil {
 				return err
 			}
 		case "member_limit":
-			requiredBitSet[0] |= 1 << 7
 			s.MemberLimit.Reset()
 			if err := s.MemberLimit.Decode(d); err != nil {
 				return err
 			}
 		case "pending_join_request_count":
-			requiredBitSet[1] |= 1 << 0
 			s.PendingJoinRequestCount.Reset()
 			if err := s.PendingJoinRequestCount.Decode(d); err != nil {
 				return err
@@ -3119,7 +3056,6 @@ func (s *ChatInviteLink) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return err
 	}
-
 	var failures []validate.FieldError
 	for i, mask := range [2]uint8{
 		0b00011111,
@@ -3152,6 +3088,7 @@ func (s *ChatInviteLink) Decode(d *jx.Decoder) error {
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
+
 	return nil
 }
 
@@ -3218,6 +3155,7 @@ func (s *ChatJoinRequest) Decode(d *jx.Decoder) error {
 		return errors.New(`invalid: unable to decode ChatJoinRequest to nil`)
 	}
 	var requiredBitSet [1]uint8
+
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "chat":
@@ -3238,13 +3176,11 @@ func (s *ChatJoinRequest) Decode(d *jx.Decoder) error {
 				return err
 			}
 		case "bio":
-			requiredBitSet[0] |= 1 << 3
 			s.Bio.Reset()
 			if err := s.Bio.Decode(d); err != nil {
 				return err
 			}
 		case "invite_link":
-			requiredBitSet[0] |= 1 << 4
 			s.InviteLink.Reset()
 			if err := s.InviteLink.Decode(d); err != nil {
 				return err
@@ -3256,7 +3192,6 @@ func (s *ChatJoinRequest) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return err
 	}
-
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000111,
@@ -3288,6 +3223,7 @@ func (s *ChatJoinRequest) Decode(d *jx.Decoder) error {
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
+
 	return nil
 }
 
@@ -3327,6 +3263,7 @@ func (s *ChatLocation) Decode(d *jx.Decoder) error {
 		return errors.New(`invalid: unable to decode ChatLocation to nil`)
 	}
 	var requiredBitSet [1]uint8
+
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "location":
@@ -3348,7 +3285,6 @@ func (s *ChatLocation) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return err
 	}
-
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000011,
@@ -3380,6 +3316,7 @@ func (s *ChatLocation) Decode(d *jx.Decoder) error {
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
+
 	return nil
 }
 
@@ -3624,6 +3561,7 @@ func (s *ChatMemberAdministrator) Decode(d *jx.Decoder) error {
 		return errors.New(`invalid: unable to decode ChatMemberAdministrator to nil`)
 	}
 	var requiredBitSet [2]uint8
+
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "status":
@@ -3702,25 +3640,21 @@ func (s *ChatMemberAdministrator) Decode(d *jx.Decoder) error {
 				return err
 			}
 		case "can_post_messages":
-			requiredBitSet[1] |= 1 << 3
 			s.CanPostMessages.Reset()
 			if err := s.CanPostMessages.Decode(d); err != nil {
 				return err
 			}
 		case "can_edit_messages":
-			requiredBitSet[1] |= 1 << 4
 			s.CanEditMessages.Reset()
 			if err := s.CanEditMessages.Decode(d); err != nil {
 				return err
 			}
 		case "can_pin_messages":
-			requiredBitSet[1] |= 1 << 5
 			s.CanPinMessages.Reset()
 			if err := s.CanPinMessages.Decode(d); err != nil {
 				return err
 			}
 		case "custom_title":
-			requiredBitSet[1] |= 1 << 6
 			s.CustomTitle.Reset()
 			if err := s.CustomTitle.Decode(d); err != nil {
 				return err
@@ -3732,7 +3666,6 @@ func (s *ChatMemberAdministrator) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return err
 	}
-
 	var failures []validate.FieldError
 	for i, mask := range [2]uint8{
 		0b11111111,
@@ -3765,6 +3698,7 @@ func (s *ChatMemberAdministrator) Decode(d *jx.Decoder) error {
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
+
 	return nil
 }
 
@@ -3811,6 +3745,7 @@ func (s *ChatMemberBanned) Decode(d *jx.Decoder) error {
 		return errors.New(`invalid: unable to decode ChatMemberBanned to nil`)
 	}
 	var requiredBitSet [1]uint8
+
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "status":
@@ -3839,7 +3774,6 @@ func (s *ChatMemberBanned) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return err
 	}
-
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000111,
@@ -3871,6 +3805,7 @@ func (s *ChatMemberBanned) Decode(d *jx.Decoder) error {
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
+
 	return nil
 }
 
@@ -3910,6 +3845,7 @@ func (s *ChatMemberLeft) Decode(d *jx.Decoder) error {
 		return errors.New(`invalid: unable to decode ChatMemberLeft to nil`)
 	}
 	var requiredBitSet [1]uint8
+
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "status":
@@ -3931,7 +3867,6 @@ func (s *ChatMemberLeft) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return err
 	}
-
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000011,
@@ -3963,6 +3898,7 @@ func (s *ChatMemberLeft) Decode(d *jx.Decoder) error {
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
+
 	return nil
 }
 
@@ -4002,6 +3938,7 @@ func (s *ChatMemberMember) Decode(d *jx.Decoder) error {
 		return errors.New(`invalid: unable to decode ChatMemberMember to nil`)
 	}
 	var requiredBitSet [1]uint8
+
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "status":
@@ -4023,7 +3960,6 @@ func (s *ChatMemberMember) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return err
 	}
-
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000011,
@@ -4055,6 +3991,7 @@ func (s *ChatMemberMember) Decode(d *jx.Decoder) error {
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
+
 	return nil
 }
 
@@ -4111,6 +4048,7 @@ func (s *ChatMemberOwner) Decode(d *jx.Decoder) error {
 		return errors.New(`invalid: unable to decode ChatMemberOwner to nil`)
 	}
 	var requiredBitSet [1]uint8
+
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "status":
@@ -4133,7 +4071,6 @@ func (s *ChatMemberOwner) Decode(d *jx.Decoder) error {
 				return err
 			}
 		case "custom_title":
-			requiredBitSet[0] |= 1 << 3
 			s.CustomTitle.Reset()
 			if err := s.CustomTitle.Decode(d); err != nil {
 				return err
@@ -4145,7 +4082,6 @@ func (s *ChatMemberOwner) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return err
 	}
-
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000111,
@@ -4177,6 +4113,7 @@ func (s *ChatMemberOwner) Decode(d *jx.Decoder) error {
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
+
 	return nil
 }
 
@@ -4286,6 +4223,7 @@ func (s *ChatMemberRestricted) Decode(d *jx.Decoder) error {
 		return errors.New(`invalid: unable to decode ChatMemberRestricted to nil`)
 	}
 	var requiredBitSet [2]uint8
+
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "status":
@@ -4377,7 +4315,6 @@ func (s *ChatMemberRestricted) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return err
 	}
-
 	var failures []validate.FieldError
 	for i, mask := range [2]uint8{
 		0b11111111,
@@ -4410,6 +4347,7 @@ func (s *ChatMemberRestricted) Decode(d *jx.Decoder) error {
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
+
 	return nil
 }
 
@@ -4480,6 +4418,7 @@ func (s *ChatMemberUpdated) Decode(d *jx.Decoder) error {
 		return errors.New(`invalid: unable to decode ChatMemberUpdated to nil`)
 	}
 	var requiredBitSet [1]uint8
+
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "chat":
@@ -4510,7 +4449,6 @@ func (s *ChatMemberUpdated) Decode(d *jx.Decoder) error {
 				return err
 			}
 		case "invite_link":
-			requiredBitSet[0] |= 1 << 5
 			s.InviteLink.Reset()
 			if err := s.InviteLink.Decode(d); err != nil {
 				return err
@@ -4522,7 +4460,6 @@ func (s *ChatMemberUpdated) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return err
 	}
-
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00011111,
@@ -4554,6 +4491,7 @@ func (s *ChatMemberUpdated) Decode(d *jx.Decoder) error {
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
+
 	return nil
 }
 
@@ -4679,53 +4617,45 @@ func (s *ChatPermissions) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode ChatPermissions to nil`)
 	}
-	var requiredBitSet [1]uint8
+
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "can_send_messages":
-			requiredBitSet[0] |= 1 << 0
 			s.CanSendMessages.Reset()
 			if err := s.CanSendMessages.Decode(d); err != nil {
 				return err
 			}
 		case "can_send_media_messages":
-			requiredBitSet[0] |= 1 << 1
 			s.CanSendMediaMessages.Reset()
 			if err := s.CanSendMediaMessages.Decode(d); err != nil {
 				return err
 			}
 		case "can_send_polls":
-			requiredBitSet[0] |= 1 << 2
 			s.CanSendPolls.Reset()
 			if err := s.CanSendPolls.Decode(d); err != nil {
 				return err
 			}
 		case "can_send_other_messages":
-			requiredBitSet[0] |= 1 << 3
 			s.CanSendOtherMessages.Reset()
 			if err := s.CanSendOtherMessages.Decode(d); err != nil {
 				return err
 			}
 		case "can_add_web_page_previews":
-			requiredBitSet[0] |= 1 << 4
 			s.CanAddWebPagePreviews.Reset()
 			if err := s.CanAddWebPagePreviews.Decode(d); err != nil {
 				return err
 			}
 		case "can_change_info":
-			requiredBitSet[0] |= 1 << 5
 			s.CanChangeInfo.Reset()
 			if err := s.CanChangeInfo.Decode(d); err != nil {
 				return err
 			}
 		case "can_invite_users":
-			requiredBitSet[0] |= 1 << 6
 			s.CanInviteUsers.Reset()
 			if err := s.CanInviteUsers.Decode(d); err != nil {
 				return err
 			}
 		case "can_pin_messages":
-			requiredBitSet[0] |= 1 << 7
 			s.CanPinMessages.Reset()
 			if err := s.CanPinMessages.Decode(d); err != nil {
 				return err
@@ -4738,37 +4668,6 @@ func (s *ChatPermissions) Decode(d *jx.Decoder) error {
 		return err
 	}
 
-	var failures []validate.FieldError
-	for i, mask := range [1]uint8{
-		0b00000000,
-	} {
-		if result := (requiredBitSet[i] & mask) ^ mask; result != 0 {
-			// Mask only required fields and check equality to mask using XOR.
-			//
-			// If XOR result is not zero, result is not equal to expected, so some fields are missed.
-			// Bits of fields which would be set are actually bits of missed fields.
-			missed := bits.OnesCount8(result)
-			for bitN := 0; bitN < missed; bitN++ {
-				bitIdx := bits.TrailingZeros8(result)
-				fieldIdx := i*8 + bitIdx
-				var name string
-				if fieldIdx < len(jsonFieldsNameOfChatPermissions) {
-					name = jsonFieldsNameOfChatPermissions[fieldIdx]
-				} else {
-					name = strconv.Itoa(fieldIdx)
-				}
-				failures = append(failures, validate.FieldError{
-					Name:  name,
-					Error: validate.ErrFieldRequired,
-				})
-				// Reset bit.
-				result &^= 1 << bitIdx
-			}
-		}
-	}
-	if len(failures) > 0 {
-		return &validate.Error{Fields: failures}
-	}
 	return nil
 }
 
@@ -4822,6 +4721,7 @@ func (s *ChatPhoto) Decode(d *jx.Decoder) error {
 		return errors.New(`invalid: unable to decode ChatPhoto to nil`)
 	}
 	var requiredBitSet [1]uint8
+
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "small_file_id":
@@ -4859,7 +4759,6 @@ func (s *ChatPhoto) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return err
 	}
-
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00001111,
@@ -4891,6 +4790,7 @@ func (s *ChatPhoto) Decode(d *jx.Decoder) error {
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
+
 	return nil
 }
 
@@ -4988,6 +4888,7 @@ func (s *ChosenInlineResult) Decode(d *jx.Decoder) error {
 		return errors.New(`invalid: unable to decode ChosenInlineResult to nil`)
 	}
 	var requiredBitSet [1]uint8
+
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "result_id":
@@ -5003,13 +4904,11 @@ func (s *ChosenInlineResult) Decode(d *jx.Decoder) error {
 				return err
 			}
 		case "location":
-			requiredBitSet[0] |= 1 << 2
 			s.Location.Reset()
 			if err := s.Location.Decode(d); err != nil {
 				return err
 			}
 		case "inline_message_id":
-			requiredBitSet[0] |= 1 << 3
 			s.InlineMessageID.Reset()
 			if err := s.InlineMessageID.Decode(d); err != nil {
 				return err
@@ -5028,7 +4927,6 @@ func (s *ChosenInlineResult) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return err
 	}
-
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00010011,
@@ -5060,6 +4958,7 @@ func (s *ChosenInlineResult) Decode(d *jx.Decoder) error {
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
+
 	return nil
 }
 
@@ -5129,6 +5028,7 @@ func (s *Contact) Decode(d *jx.Decoder) error {
 		return errors.New(`invalid: unable to decode Contact to nil`)
 	}
 	var requiredBitSet [1]uint8
+
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "phone_number":
@@ -5146,19 +5046,16 @@ func (s *Contact) Decode(d *jx.Decoder) error {
 				return err
 			}
 		case "last_name":
-			requiredBitSet[0] |= 1 << 2
 			s.LastName.Reset()
 			if err := s.LastName.Decode(d); err != nil {
 				return err
 			}
 		case "user_id":
-			requiredBitSet[0] |= 1 << 3
 			s.UserID.Reset()
 			if err := s.UserID.Decode(d); err != nil {
 				return err
 			}
 		case "vcard":
-			requiredBitSet[0] |= 1 << 4
 			s.Vcard.Reset()
 			if err := s.Vcard.Decode(d); err != nil {
 				return err
@@ -5170,7 +5067,6 @@ func (s *Contact) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return err
 	}
-
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000011,
@@ -5202,6 +5098,7 @@ func (s *Contact) Decode(d *jx.Decoder) error {
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
+
 	return nil
 }
 
@@ -5330,6 +5227,7 @@ func (s *CopyMessage) Decode(d *jx.Decoder) error {
 		return errors.New(`invalid: unable to decode CopyMessage to nil`)
 	}
 	var requiredBitSet [2]uint8
+
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "chat_id":
@@ -5350,19 +5248,16 @@ func (s *CopyMessage) Decode(d *jx.Decoder) error {
 				return err
 			}
 		case "caption":
-			requiredBitSet[0] |= 1 << 3
 			s.Caption.Reset()
 			if err := s.Caption.Decode(d); err != nil {
 				return err
 			}
 		case "parse_mode":
-			requiredBitSet[0] |= 1 << 4
 			s.ParseMode.Reset()
 			if err := s.ParseMode.Decode(d); err != nil {
 				return err
 			}
 		case "caption_entities":
-			requiredBitSet[0] |= 1 << 5
 			s.CaptionEntities = nil
 			if err := d.Arr(func(d *jx.Decoder) error {
 				var elem MessageEntity
@@ -5375,25 +5270,21 @@ func (s *CopyMessage) Decode(d *jx.Decoder) error {
 				return err
 			}
 		case "disable_notification":
-			requiredBitSet[0] |= 1 << 6
 			s.DisableNotification.Reset()
 			if err := s.DisableNotification.Decode(d); err != nil {
 				return err
 			}
 		case "reply_to_message_id":
-			requiredBitSet[0] |= 1 << 7
 			s.ReplyToMessageID.Reset()
 			if err := s.ReplyToMessageID.Decode(d); err != nil {
 				return err
 			}
 		case "allow_sending_without_reply":
-			requiredBitSet[1] |= 1 << 0
 			s.AllowSendingWithoutReply.Reset()
 			if err := s.AllowSendingWithoutReply.Decode(d); err != nil {
 				return err
 			}
 		case "reply_markup":
-			requiredBitSet[1] |= 1 << 1
 			s.ReplyMarkup.Reset()
 			if err := s.ReplyMarkup.Decode(d); err != nil {
 				return err
@@ -5405,7 +5296,6 @@ func (s *CopyMessage) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return err
 	}
-
 	var failures []validate.FieldError
 	for i, mask := range [2]uint8{
 		0b00000111,
@@ -5438,6 +5328,7 @@ func (s *CopyMessage) Decode(d *jx.Decoder) error {
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
+
 	return nil
 }
 
@@ -5596,6 +5487,7 @@ func (s *CreateChatInviteLink) Decode(d *jx.Decoder) error {
 		return errors.New(`invalid: unable to decode CreateChatInviteLink to nil`)
 	}
 	var requiredBitSet [1]uint8
+
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "chat_id":
@@ -5604,25 +5496,21 @@ func (s *CreateChatInviteLink) Decode(d *jx.Decoder) error {
 				return err
 			}
 		case "name":
-			requiredBitSet[0] |= 1 << 1
 			s.Name.Reset()
 			if err := s.Name.Decode(d); err != nil {
 				return err
 			}
 		case "expire_date":
-			requiredBitSet[0] |= 1 << 2
 			s.ExpireDate.Reset()
 			if err := s.ExpireDate.Decode(d); err != nil {
 				return err
 			}
 		case "member_limit":
-			requiredBitSet[0] |= 1 << 3
 			s.MemberLimit.Reset()
 			if err := s.MemberLimit.Decode(d); err != nil {
 				return err
 			}
 		case "creates_join_request":
-			requiredBitSet[0] |= 1 << 4
 			s.CreatesJoinRequest.Reset()
 			if err := s.CreatesJoinRequest.Decode(d); err != nil {
 				return err
@@ -5634,7 +5522,6 @@ func (s *CreateChatInviteLink) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return err
 	}
-
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000001,
@@ -5666,6 +5553,7 @@ func (s *CreateChatInviteLink) Decode(d *jx.Decoder) error {
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
+
 	return nil
 }
 
@@ -5759,6 +5647,7 @@ func (s *CreateNewStickerSet) Decode(d *jx.Decoder) error {
 		return errors.New(`invalid: unable to decode CreateNewStickerSet to nil`)
 	}
 	var requiredBitSet [1]uint8
+
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "user_id":
@@ -5783,13 +5672,11 @@ func (s *CreateNewStickerSet) Decode(d *jx.Decoder) error {
 				return err
 			}
 		case "png_sticker":
-			requiredBitSet[0] |= 1 << 3
 			s.PNGSticker.Reset()
 			if err := s.PNGSticker.Decode(d); err != nil {
 				return err
 			}
 		case "tgs_sticker":
-			requiredBitSet[0] |= 1 << 4
 			s.TgsSticker.Reset()
 			if err := s.TgsSticker.Decode(d); err != nil {
 				return err
@@ -5802,13 +5689,11 @@ func (s *CreateNewStickerSet) Decode(d *jx.Decoder) error {
 				return err
 			}
 		case "contains_masks":
-			requiredBitSet[0] |= 1 << 6
 			s.ContainsMasks.Reset()
 			if err := s.ContainsMasks.Decode(d); err != nil {
 				return err
 			}
 		case "mask_position":
-			requiredBitSet[0] |= 1 << 7
 			s.MaskPosition.Reset()
 			if err := s.MaskPosition.Decode(d); err != nil {
 				return err
@@ -5820,7 +5705,6 @@ func (s *CreateNewStickerSet) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return err
 	}
-
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00100111,
@@ -5852,6 +5736,7 @@ func (s *CreateNewStickerSet) Decode(d *jx.Decoder) error {
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
+
 	return nil
 }
 
@@ -5891,6 +5776,7 @@ func (s *DeclineChatJoinRequest) Decode(d *jx.Decoder) error {
 		return errors.New(`invalid: unable to decode DeclineChatJoinRequest to nil`)
 	}
 	var requiredBitSet [1]uint8
+
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "chat_id":
@@ -5912,7 +5798,6 @@ func (s *DeclineChatJoinRequest) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return err
 	}
-
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000011,
@@ -5944,6 +5829,7 @@ func (s *DeclineChatJoinRequest) Decode(d *jx.Decoder) error {
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
+
 	return nil
 }
 
@@ -5976,6 +5862,7 @@ func (s *DeleteChatPhoto) Decode(d *jx.Decoder) error {
 		return errors.New(`invalid: unable to decode DeleteChatPhoto to nil`)
 	}
 	var requiredBitSet [1]uint8
+
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "chat_id":
@@ -5990,7 +5877,6 @@ func (s *DeleteChatPhoto) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return err
 	}
-
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000001,
@@ -6022,6 +5908,7 @@ func (s *DeleteChatPhoto) Decode(d *jx.Decoder) error {
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
+
 	return nil
 }
 
@@ -6054,6 +5941,7 @@ func (s *DeleteChatStickerSet) Decode(d *jx.Decoder) error {
 		return errors.New(`invalid: unable to decode DeleteChatStickerSet to nil`)
 	}
 	var requiredBitSet [1]uint8
+
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "chat_id":
@@ -6068,7 +5956,6 @@ func (s *DeleteChatStickerSet) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return err
 	}
-
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000001,
@@ -6100,6 +5987,7 @@ func (s *DeleteChatStickerSet) Decode(d *jx.Decoder) error {
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
+
 	return nil
 }
 
@@ -6139,6 +6027,7 @@ func (s *DeleteMessage) Decode(d *jx.Decoder) error {
 		return errors.New(`invalid: unable to decode DeleteMessage to nil`)
 	}
 	var requiredBitSet [1]uint8
+
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "chat_id":
@@ -6160,7 +6049,6 @@ func (s *DeleteMessage) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return err
 	}
-
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000011,
@@ -6192,6 +6080,7 @@ func (s *DeleteMessage) Decode(d *jx.Decoder) error {
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
+
 	return nil
 }
 
@@ -6239,17 +6128,15 @@ func (s *DeleteMyCommands) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode DeleteMyCommands to nil`)
 	}
-	var requiredBitSet [1]uint8
+
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "scope":
-			requiredBitSet[0] |= 1 << 0
 			s.Scope.Reset()
 			if err := s.Scope.Decode(d); err != nil {
 				return err
 			}
 		case "language_code":
-			requiredBitSet[0] |= 1 << 1
 			s.LanguageCode.Reset()
 			if err := s.LanguageCode.Decode(d); err != nil {
 				return err
@@ -6262,37 +6149,6 @@ func (s *DeleteMyCommands) Decode(d *jx.Decoder) error {
 		return err
 	}
 
-	var failures []validate.FieldError
-	for i, mask := range [1]uint8{
-		0b00000000,
-	} {
-		if result := (requiredBitSet[i] & mask) ^ mask; result != 0 {
-			// Mask only required fields and check equality to mask using XOR.
-			//
-			// If XOR result is not zero, result is not equal to expected, so some fields are missed.
-			// Bits of fields which would be set are actually bits of missed fields.
-			missed := bits.OnesCount8(result)
-			for bitN := 0; bitN < missed; bitN++ {
-				bitIdx := bits.TrailingZeros8(result)
-				fieldIdx := i*8 + bitIdx
-				var name string
-				if fieldIdx < len(jsonFieldsNameOfDeleteMyCommands) {
-					name = jsonFieldsNameOfDeleteMyCommands[fieldIdx]
-				} else {
-					name = strconv.Itoa(fieldIdx)
-				}
-				failures = append(failures, validate.FieldError{
-					Name:  name,
-					Error: validate.ErrFieldRequired,
-				})
-				// Reset bit.
-				result &^= 1 << bitIdx
-			}
-		}
-	}
-	if len(failures) > 0 {
-		return &validate.Error{Fields: failures}
-	}
 	return nil
 }
 
@@ -6325,6 +6181,7 @@ func (s *DeleteStickerFromSet) Decode(d *jx.Decoder) error {
 		return errors.New(`invalid: unable to decode DeleteStickerFromSet to nil`)
 	}
 	var requiredBitSet [1]uint8
+
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "sticker":
@@ -6341,7 +6198,6 @@ func (s *DeleteStickerFromSet) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return err
 	}
-
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000001,
@@ -6373,6 +6229,7 @@ func (s *DeleteStickerFromSet) Decode(d *jx.Decoder) error {
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
+
 	return nil
 }
 
@@ -6407,11 +6264,10 @@ func (s *DeleteWebhook) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode DeleteWebhook to nil`)
 	}
-	var requiredBitSet [1]uint8
+
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "drop_pending_updates":
-			requiredBitSet[0] |= 1 << 0
 			s.DropPendingUpdates.Reset()
 			if err := s.DropPendingUpdates.Decode(d); err != nil {
 				return err
@@ -6424,37 +6280,6 @@ func (s *DeleteWebhook) Decode(d *jx.Decoder) error {
 		return err
 	}
 
-	var failures []validate.FieldError
-	for i, mask := range [1]uint8{
-		0b00000000,
-	} {
-		if result := (requiredBitSet[i] & mask) ^ mask; result != 0 {
-			// Mask only required fields and check equality to mask using XOR.
-			//
-			// If XOR result is not zero, result is not equal to expected, so some fields are missed.
-			// Bits of fields which would be set are actually bits of missed fields.
-			missed := bits.OnesCount8(result)
-			for bitN := 0; bitN < missed; bitN++ {
-				bitIdx := bits.TrailingZeros8(result)
-				fieldIdx := i*8 + bitIdx
-				var name string
-				if fieldIdx < len(jsonFieldsNameOfDeleteWebhook) {
-					name = jsonFieldsNameOfDeleteWebhook[fieldIdx]
-				} else {
-					name = strconv.Itoa(fieldIdx)
-				}
-				failures = append(failures, validate.FieldError{
-					Name:  name,
-					Error: validate.ErrFieldRequired,
-				})
-				// Reset bit.
-				result &^= 1 << bitIdx
-			}
-		}
-	}
-	if len(failures) > 0 {
-		return &validate.Error{Fields: failures}
-	}
 	return nil
 }
 
@@ -6494,6 +6319,7 @@ func (s *Dice) Decode(d *jx.Decoder) error {
 		return errors.New(`invalid: unable to decode Dice to nil`)
 	}
 	var requiredBitSet [1]uint8
+
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "emoji":
@@ -6517,7 +6343,6 @@ func (s *Dice) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return err
 	}
-
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000011,
@@ -6549,6 +6374,7 @@ func (s *Dice) Decode(d *jx.Decoder) error {
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
+
 	return nil
 }
 
@@ -6628,6 +6454,7 @@ func (s *Document) Decode(d *jx.Decoder) error {
 		return errors.New(`invalid: unable to decode Document to nil`)
 	}
 	var requiredBitSet [1]uint8
+
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "file_id":
@@ -6645,25 +6472,21 @@ func (s *Document) Decode(d *jx.Decoder) error {
 				return err
 			}
 		case "thumb":
-			requiredBitSet[0] |= 1 << 2
 			s.Thumb.Reset()
 			if err := s.Thumb.Decode(d); err != nil {
 				return err
 			}
 		case "file_name":
-			requiredBitSet[0] |= 1 << 3
 			s.FileName.Reset()
 			if err := s.FileName.Decode(d); err != nil {
 				return err
 			}
 		case "mime_type":
-			requiredBitSet[0] |= 1 << 4
 			s.MimeType.Reset()
 			if err := s.MimeType.Decode(d); err != nil {
 				return err
 			}
 		case "file_size":
-			requiredBitSet[0] |= 1 << 5
 			s.FileSize.Reset()
 			if err := s.FileSize.Decode(d); err != nil {
 				return err
@@ -6675,7 +6498,6 @@ func (s *Document) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return err
 	}
-
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000011,
@@ -6707,6 +6529,7 @@ func (s *Document) Decode(d *jx.Decoder) error {
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
+
 	return nil
 }
 
@@ -6786,6 +6609,7 @@ func (s *EditChatInviteLink) Decode(d *jx.Decoder) error {
 		return errors.New(`invalid: unable to decode EditChatInviteLink to nil`)
 	}
 	var requiredBitSet [1]uint8
+
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "chat_id":
@@ -6801,25 +6625,21 @@ func (s *EditChatInviteLink) Decode(d *jx.Decoder) error {
 				return err
 			}
 		case "name":
-			requiredBitSet[0] |= 1 << 2
 			s.Name.Reset()
 			if err := s.Name.Decode(d); err != nil {
 				return err
 			}
 		case "expire_date":
-			requiredBitSet[0] |= 1 << 3
 			s.ExpireDate.Reset()
 			if err := s.ExpireDate.Decode(d); err != nil {
 				return err
 			}
 		case "member_limit":
-			requiredBitSet[0] |= 1 << 4
 			s.MemberLimit.Reset()
 			if err := s.MemberLimit.Decode(d); err != nil {
 				return err
 			}
 		case "creates_join_request":
-			requiredBitSet[0] |= 1 << 5
 			s.CreatesJoinRequest.Reset()
 			if err := s.CreatesJoinRequest.Decode(d); err != nil {
 				return err
@@ -6831,7 +6651,6 @@ func (s *EditChatInviteLink) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return err
 	}
-
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000011,
@@ -6863,6 +6682,7 @@ func (s *EditChatInviteLink) Decode(d *jx.Decoder) error {
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
+
 	return nil
 }
 
@@ -6987,41 +6807,35 @@ func (s *EditMessageCaption) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode EditMessageCaption to nil`)
 	}
-	var requiredBitSet [1]uint8
+
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "chat_id":
-			requiredBitSet[0] |= 1 << 0
 			s.ChatID.Reset()
 			if err := s.ChatID.Decode(d); err != nil {
 				return err
 			}
 		case "message_id":
-			requiredBitSet[0] |= 1 << 1
 			s.MessageID.Reset()
 			if err := s.MessageID.Decode(d); err != nil {
 				return err
 			}
 		case "inline_message_id":
-			requiredBitSet[0] |= 1 << 2
 			s.InlineMessageID.Reset()
 			if err := s.InlineMessageID.Decode(d); err != nil {
 				return err
 			}
 		case "caption":
-			requiredBitSet[0] |= 1 << 3
 			s.Caption.Reset()
 			if err := s.Caption.Decode(d); err != nil {
 				return err
 			}
 		case "parse_mode":
-			requiredBitSet[0] |= 1 << 4
 			s.ParseMode.Reset()
 			if err := s.ParseMode.Decode(d); err != nil {
 				return err
 			}
 		case "caption_entities":
-			requiredBitSet[0] |= 1 << 5
 			s.CaptionEntities = nil
 			if err := d.Arr(func(d *jx.Decoder) error {
 				var elem MessageEntity
@@ -7034,7 +6848,6 @@ func (s *EditMessageCaption) Decode(d *jx.Decoder) error {
 				return err
 			}
 		case "reply_markup":
-			requiredBitSet[0] |= 1 << 6
 			s.ReplyMarkup.Reset()
 			if err := s.ReplyMarkup.Decode(d); err != nil {
 				return err
@@ -7047,37 +6860,6 @@ func (s *EditMessageCaption) Decode(d *jx.Decoder) error {
 		return err
 	}
 
-	var failures []validate.FieldError
-	for i, mask := range [1]uint8{
-		0b00000000,
-	} {
-		if result := (requiredBitSet[i] & mask) ^ mask; result != 0 {
-			// Mask only required fields and check equality to mask using XOR.
-			//
-			// If XOR result is not zero, result is not equal to expected, so some fields are missed.
-			// Bits of fields which would be set are actually bits of missed fields.
-			missed := bits.OnesCount8(result)
-			for bitN := 0; bitN < missed; bitN++ {
-				bitIdx := bits.TrailingZeros8(result)
-				fieldIdx := i*8 + bitIdx
-				var name string
-				if fieldIdx < len(jsonFieldsNameOfEditMessageCaption) {
-					name = jsonFieldsNameOfEditMessageCaption[fieldIdx]
-				} else {
-					name = strconv.Itoa(fieldIdx)
-				}
-				failures = append(failures, validate.FieldError{
-					Name:  name,
-					Error: validate.ErrFieldRequired,
-				})
-				// Reset bit.
-				result &^= 1 << bitIdx
-			}
-		}
-	}
-	if len(failures) > 0 {
-		return &validate.Error{Fields: failures}
-	}
 	return nil
 }
 
@@ -7196,22 +6978,20 @@ func (s *EditMessageLiveLocation) Decode(d *jx.Decoder) error {
 		return errors.New(`invalid: unable to decode EditMessageLiveLocation to nil`)
 	}
 	var requiredBitSet [2]uint8
+
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "chat_id":
-			requiredBitSet[0] |= 1 << 0
 			s.ChatID.Reset()
 			if err := s.ChatID.Decode(d); err != nil {
 				return err
 			}
 		case "message_id":
-			requiredBitSet[0] |= 1 << 1
 			s.MessageID.Reset()
 			if err := s.MessageID.Decode(d); err != nil {
 				return err
 			}
 		case "inline_message_id":
-			requiredBitSet[0] |= 1 << 2
 			s.InlineMessageID.Reset()
 			if err := s.InlineMessageID.Decode(d); err != nil {
 				return err
@@ -7231,25 +7011,21 @@ func (s *EditMessageLiveLocation) Decode(d *jx.Decoder) error {
 				return err
 			}
 		case "horizontal_accuracy":
-			requiredBitSet[0] |= 1 << 5
 			s.HorizontalAccuracy.Reset()
 			if err := s.HorizontalAccuracy.Decode(d); err != nil {
 				return err
 			}
 		case "heading":
-			requiredBitSet[0] |= 1 << 6
 			s.Heading.Reset()
 			if err := s.Heading.Decode(d); err != nil {
 				return err
 			}
 		case "proximity_alert_radius":
-			requiredBitSet[0] |= 1 << 7
 			s.ProximityAlertRadius.Reset()
 			if err := s.ProximityAlertRadius.Decode(d); err != nil {
 				return err
 			}
 		case "reply_markup":
-			requiredBitSet[1] |= 1 << 0
 			s.ReplyMarkup.Reset()
 			if err := s.ReplyMarkup.Decode(d); err != nil {
 				return err
@@ -7261,7 +7037,6 @@ func (s *EditMessageLiveLocation) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return err
 	}
-
 	var failures []validate.FieldError
 	for i, mask := range [2]uint8{
 		0b00011000,
@@ -7294,6 +7069,7 @@ func (s *EditMessageLiveLocation) Decode(d *jx.Decoder) error {
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
+
 	return nil
 }
 
@@ -7375,22 +7151,20 @@ func (s *EditMessageMedia) Decode(d *jx.Decoder) error {
 		return errors.New(`invalid: unable to decode EditMessageMedia to nil`)
 	}
 	var requiredBitSet [1]uint8
+
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "chat_id":
-			requiredBitSet[0] |= 1 << 0
 			s.ChatID.Reset()
 			if err := s.ChatID.Decode(d); err != nil {
 				return err
 			}
 		case "message_id":
-			requiredBitSet[0] |= 1 << 1
 			s.MessageID.Reset()
 			if err := s.MessageID.Decode(d); err != nil {
 				return err
 			}
 		case "inline_message_id":
-			requiredBitSet[0] |= 1 << 2
 			s.InlineMessageID.Reset()
 			if err := s.InlineMessageID.Decode(d); err != nil {
 				return err
@@ -7401,7 +7175,6 @@ func (s *EditMessageMedia) Decode(d *jx.Decoder) error {
 				return err
 			}
 		case "reply_markup":
-			requiredBitSet[0] |= 1 << 4
 			s.ReplyMarkup.Reset()
 			if err := s.ReplyMarkup.Decode(d); err != nil {
 				return err
@@ -7413,7 +7186,6 @@ func (s *EditMessageMedia) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return err
 	}
-
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00001000,
@@ -7445,6 +7217,7 @@ func (s *EditMessageMedia) Decode(d *jx.Decoder) error {
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
+
 	return nil
 }
 
@@ -7518,29 +7291,25 @@ func (s *EditMessageReplyMarkup) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode EditMessageReplyMarkup to nil`)
 	}
-	var requiredBitSet [1]uint8
+
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "chat_id":
-			requiredBitSet[0] |= 1 << 0
 			s.ChatID.Reset()
 			if err := s.ChatID.Decode(d); err != nil {
 				return err
 			}
 		case "message_id":
-			requiredBitSet[0] |= 1 << 1
 			s.MessageID.Reset()
 			if err := s.MessageID.Decode(d); err != nil {
 				return err
 			}
 		case "inline_message_id":
-			requiredBitSet[0] |= 1 << 2
 			s.InlineMessageID.Reset()
 			if err := s.InlineMessageID.Decode(d); err != nil {
 				return err
 			}
 		case "reply_markup":
-			requiredBitSet[0] |= 1 << 3
 			s.ReplyMarkup.Reset()
 			if err := s.ReplyMarkup.Decode(d); err != nil {
 				return err
@@ -7553,37 +7322,6 @@ func (s *EditMessageReplyMarkup) Decode(d *jx.Decoder) error {
 		return err
 	}
 
-	var failures []validate.FieldError
-	for i, mask := range [1]uint8{
-		0b00000000,
-	} {
-		if result := (requiredBitSet[i] & mask) ^ mask; result != 0 {
-			// Mask only required fields and check equality to mask using XOR.
-			//
-			// If XOR result is not zero, result is not equal to expected, so some fields are missed.
-			// Bits of fields which would be set are actually bits of missed fields.
-			missed := bits.OnesCount8(result)
-			for bitN := 0; bitN < missed; bitN++ {
-				bitIdx := bits.TrailingZeros8(result)
-				fieldIdx := i*8 + bitIdx
-				var name string
-				if fieldIdx < len(jsonFieldsNameOfEditMessageReplyMarkup) {
-					name = jsonFieldsNameOfEditMessageReplyMarkup[fieldIdx]
-				} else {
-					name = strconv.Itoa(fieldIdx)
-				}
-				failures = append(failures, validate.FieldError{
-					Name:  name,
-					Error: validate.ErrFieldRequired,
-				})
-				// Reset bit.
-				result &^= 1 << bitIdx
-			}
-		}
-	}
-	if len(failures) > 0 {
-		return &validate.Error{Fields: failures}
-	}
 	return nil
 }
 
@@ -7707,22 +7445,20 @@ func (s *EditMessageText) Decode(d *jx.Decoder) error {
 		return errors.New(`invalid: unable to decode EditMessageText to nil`)
 	}
 	var requiredBitSet [1]uint8
+
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "chat_id":
-			requiredBitSet[0] |= 1 << 0
 			s.ChatID.Reset()
 			if err := s.ChatID.Decode(d); err != nil {
 				return err
 			}
 		case "message_id":
-			requiredBitSet[0] |= 1 << 1
 			s.MessageID.Reset()
 			if err := s.MessageID.Decode(d); err != nil {
 				return err
 			}
 		case "inline_message_id":
-			requiredBitSet[0] |= 1 << 2
 			s.InlineMessageID.Reset()
 			if err := s.InlineMessageID.Decode(d); err != nil {
 				return err
@@ -7735,13 +7471,11 @@ func (s *EditMessageText) Decode(d *jx.Decoder) error {
 				return err
 			}
 		case "parse_mode":
-			requiredBitSet[0] |= 1 << 4
 			s.ParseMode.Reset()
 			if err := s.ParseMode.Decode(d); err != nil {
 				return err
 			}
 		case "entities":
-			requiredBitSet[0] |= 1 << 5
 			s.Entities = nil
 			if err := d.Arr(func(d *jx.Decoder) error {
 				var elem MessageEntity
@@ -7754,13 +7488,11 @@ func (s *EditMessageText) Decode(d *jx.Decoder) error {
 				return err
 			}
 		case "disable_web_page_preview":
-			requiredBitSet[0] |= 1 << 6
 			s.DisableWebPagePreview.Reset()
 			if err := s.DisableWebPagePreview.Decode(d); err != nil {
 				return err
 			}
 		case "reply_markup":
-			requiredBitSet[0] |= 1 << 7
 			s.ReplyMarkup.Reset()
 			if err := s.ReplyMarkup.Decode(d); err != nil {
 				return err
@@ -7772,7 +7504,6 @@ func (s *EditMessageText) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return err
 	}
-
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00001000,
@@ -7804,6 +7535,7 @@ func (s *EditMessageText) Decode(d *jx.Decoder) error {
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
+
 	return nil
 }
 
@@ -7850,6 +7582,7 @@ func (s *EncryptedCredentials) Decode(d *jx.Decoder) error {
 		return errors.New(`invalid: unable to decode EncryptedCredentials to nil`)
 	}
 	var requiredBitSet [1]uint8
+
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "data":
@@ -7880,7 +7613,6 @@ func (s *EncryptedCredentials) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return err
 	}
-
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000111,
@@ -7912,6 +7644,7 @@ func (s *EncryptedCredentials) Decode(d *jx.Decoder) error {
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
+
 	return nil
 }
 
@@ -8055,6 +7788,7 @@ func (s *EncryptedPassportElement) Decode(d *jx.Decoder) error {
 		return errors.New(`invalid: unable to decode EncryptedPassportElement to nil`)
 	}
 	var requiredBitSet [2]uint8
+
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "type":
@@ -8063,25 +7797,21 @@ func (s *EncryptedPassportElement) Decode(d *jx.Decoder) error {
 				return err
 			}
 		case "data":
-			requiredBitSet[0] |= 1 << 1
 			s.Data.Reset()
 			if err := s.Data.Decode(d); err != nil {
 				return err
 			}
 		case "phone_number":
-			requiredBitSet[0] |= 1 << 2
 			s.PhoneNumber.Reset()
 			if err := s.PhoneNumber.Decode(d); err != nil {
 				return err
 			}
 		case "email":
-			requiredBitSet[0] |= 1 << 3
 			s.Email.Reset()
 			if err := s.Email.Decode(d); err != nil {
 				return err
 			}
 		case "files":
-			requiredBitSet[0] |= 1 << 4
 			s.Files = nil
 			if err := d.Arr(func(d *jx.Decoder) error {
 				var elem PassportFile
@@ -8094,25 +7824,21 @@ func (s *EncryptedPassportElement) Decode(d *jx.Decoder) error {
 				return err
 			}
 		case "front_side":
-			requiredBitSet[0] |= 1 << 5
 			s.FrontSide.Reset()
 			if err := s.FrontSide.Decode(d); err != nil {
 				return err
 			}
 		case "reverse_side":
-			requiredBitSet[0] |= 1 << 6
 			s.ReverseSide.Reset()
 			if err := s.ReverseSide.Decode(d); err != nil {
 				return err
 			}
 		case "selfie":
-			requiredBitSet[0] |= 1 << 7
 			s.Selfie.Reset()
 			if err := s.Selfie.Decode(d); err != nil {
 				return err
 			}
 		case "translation":
-			requiredBitSet[1] |= 1 << 0
 			s.Translation = nil
 			if err := d.Arr(func(d *jx.Decoder) error {
 				var elem PassportFile
@@ -8138,7 +7864,6 @@ func (s *EncryptedPassportElement) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return err
 	}
-
 	var failures []validate.FieldError
 	for i, mask := range [2]uint8{
 		0b00000001,
@@ -8171,6 +7896,7 @@ func (s *EncryptedPassportElement) Decode(d *jx.Decoder) error {
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
+
 	return nil
 }
 
@@ -8276,6 +8002,7 @@ func (s *Error) Decode(d *jx.Decoder) error {
 		return errors.New(`invalid: unable to decode Error to nil`)
 	}
 	var requiredBitSet [1]uint8
+
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "ok":
@@ -8300,7 +8027,6 @@ func (s *Error) Decode(d *jx.Decoder) error {
 				return err
 			}
 		case "parameters":
-			requiredBitSet[0] |= 1 << 3
 			s.Parameters.Reset()
 			if err := s.Parameters.Decode(d); err != nil {
 				return err
@@ -8312,7 +8038,6 @@ func (s *Error) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return err
 	}
-
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000111,
@@ -8344,6 +8069,7 @@ func (s *Error) Decode(d *jx.Decoder) error {
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
+
 	return nil
 }
 
@@ -8364,7 +8090,7 @@ func (s *ErrorStatusCode) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode ErrorStatusCode to nil`)
 	}
-	var requiredBitSet [1]uint8
+
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		default:
@@ -8375,37 +8101,6 @@ func (s *ErrorStatusCode) Decode(d *jx.Decoder) error {
 		return err
 	}
 
-	var failures []validate.FieldError
-	for i, mask := range [1]uint8{
-		0b00000000,
-	} {
-		if result := (requiredBitSet[i] & mask) ^ mask; result != 0 {
-			// Mask only required fields and check equality to mask using XOR.
-			//
-			// If XOR result is not zero, result is not equal to expected, so some fields are missed.
-			// Bits of fields which would be set are actually bits of missed fields.
-			missed := bits.OnesCount8(result)
-			for bitN := 0; bitN < missed; bitN++ {
-				bitIdx := bits.TrailingZeros8(result)
-				fieldIdx := i*8 + bitIdx
-				var name string
-				if fieldIdx < len(jsonFieldsNameOfErrorStatusCode) {
-					name = jsonFieldsNameOfErrorStatusCode[fieldIdx]
-				} else {
-					name = strconv.Itoa(fieldIdx)
-				}
-				failures = append(failures, validate.FieldError{
-					Name:  name,
-					Error: validate.ErrFieldRequired,
-				})
-				// Reset bit.
-				result &^= 1 << bitIdx
-			}
-		}
-	}
-	if len(failures) > 0 {
-		return &validate.Error{Fields: failures}
-	}
 	return nil
 }
 
@@ -8438,6 +8133,7 @@ func (s *ExportChatInviteLink) Decode(d *jx.Decoder) error {
 		return errors.New(`invalid: unable to decode ExportChatInviteLink to nil`)
 	}
 	var requiredBitSet [1]uint8
+
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "chat_id":
@@ -8452,7 +8148,6 @@ func (s *ExportChatInviteLink) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return err
 	}
-
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000001,
@@ -8484,6 +8179,7 @@ func (s *ExportChatInviteLink) Decode(d *jx.Decoder) error {
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
+
 	return nil
 }
 
@@ -8543,6 +8239,7 @@ func (s *File) Decode(d *jx.Decoder) error {
 		return errors.New(`invalid: unable to decode File to nil`)
 	}
 	var requiredBitSet [1]uint8
+
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "file_id":
@@ -8560,13 +8257,11 @@ func (s *File) Decode(d *jx.Decoder) error {
 				return err
 			}
 		case "file_size":
-			requiredBitSet[0] |= 1 << 2
 			s.FileSize.Reset()
 			if err := s.FileSize.Decode(d); err != nil {
 				return err
 			}
 		case "file_path":
-			requiredBitSet[0] |= 1 << 3
 			s.FilePath.Reset()
 			if err := s.FilePath.Decode(d); err != nil {
 				return err
@@ -8578,7 +8273,6 @@ func (s *File) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return err
 	}
-
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000011,
@@ -8610,6 +8304,7 @@ func (s *File) Decode(d *jx.Decoder) error {
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
+
 	return nil
 }
 
@@ -8662,6 +8357,7 @@ func (s *ForceReply) Decode(d *jx.Decoder) error {
 		return errors.New(`invalid: unable to decode ForceReply to nil`)
 	}
 	var requiredBitSet [1]uint8
+
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "force_reply":
@@ -8672,13 +8368,11 @@ func (s *ForceReply) Decode(d *jx.Decoder) error {
 				return err
 			}
 		case "input_field_placeholder":
-			requiredBitSet[0] |= 1 << 1
 			s.InputFieldPlaceholder.Reset()
 			if err := s.InputFieldPlaceholder.Decode(d); err != nil {
 				return err
 			}
 		case "selective":
-			requiredBitSet[0] |= 1 << 2
 			s.Selective.Reset()
 			if err := s.Selective.Decode(d); err != nil {
 				return err
@@ -8690,7 +8384,6 @@ func (s *ForceReply) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return err
 	}
-
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000001,
@@ -8722,6 +8415,7 @@ func (s *ForceReply) Decode(d *jx.Decoder) error {
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
+
 	return nil
 }
 
@@ -8778,6 +8472,7 @@ func (s *ForwardMessage) Decode(d *jx.Decoder) error {
 		return errors.New(`invalid: unable to decode ForwardMessage to nil`)
 	}
 	var requiredBitSet [1]uint8
+
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "chat_id":
@@ -8791,7 +8486,6 @@ func (s *ForwardMessage) Decode(d *jx.Decoder) error {
 				return err
 			}
 		case "disable_notification":
-			requiredBitSet[0] |= 1 << 2
 			s.DisableNotification.Reset()
 			if err := s.DisableNotification.Decode(d); err != nil {
 				return err
@@ -8810,7 +8504,6 @@ func (s *ForwardMessage) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return err
 	}
-
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00001011,
@@ -8842,6 +8535,7 @@ func (s *ForwardMessage) Decode(d *jx.Decoder) error {
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
+
 	return nil
 }
 
@@ -8942,6 +8636,7 @@ func (s *Game) Decode(d *jx.Decoder) error {
 		return errors.New(`invalid: unable to decode Game to nil`)
 	}
 	var requiredBitSet [1]uint8
+
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "title":
@@ -8972,13 +8667,11 @@ func (s *Game) Decode(d *jx.Decoder) error {
 				return err
 			}
 		case "text":
-			requiredBitSet[0] |= 1 << 3
 			s.Text.Reset()
 			if err := s.Text.Decode(d); err != nil {
 				return err
 			}
 		case "text_entities":
-			requiredBitSet[0] |= 1 << 4
 			s.TextEntities = nil
 			if err := d.Arr(func(d *jx.Decoder) error {
 				var elem MessageEntity
@@ -8991,7 +8684,6 @@ func (s *Game) Decode(d *jx.Decoder) error {
 				return err
 			}
 		case "animation":
-			requiredBitSet[0] |= 1 << 5
 			s.Animation.Reset()
 			if err := s.Animation.Decode(d); err != nil {
 				return err
@@ -9003,7 +8695,6 @@ func (s *Game) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return err
 	}
-
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000111,
@@ -9035,6 +8726,7 @@ func (s *Game) Decode(d *jx.Decoder) error {
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
+
 	return nil
 }
 
@@ -9081,6 +8773,7 @@ func (s *GameHighScore) Decode(d *jx.Decoder) error {
 		return errors.New(`invalid: unable to decode GameHighScore to nil`)
 	}
 	var requiredBitSet [1]uint8
+
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "position":
@@ -9109,7 +8802,6 @@ func (s *GameHighScore) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return err
 	}
-
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000111,
@@ -9141,6 +8833,7 @@ func (s *GameHighScore) Decode(d *jx.Decoder) error {
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
+
 	return nil
 }
 
@@ -9173,6 +8866,7 @@ func (s *GetChat) Decode(d *jx.Decoder) error {
 		return errors.New(`invalid: unable to decode GetChat to nil`)
 	}
 	var requiredBitSet [1]uint8
+
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "chat_id":
@@ -9187,7 +8881,6 @@ func (s *GetChat) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return err
 	}
-
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000001,
@@ -9219,6 +8912,7 @@ func (s *GetChat) Decode(d *jx.Decoder) error {
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
+
 	return nil
 }
 
@@ -9251,6 +8945,7 @@ func (s *GetChatAdministrators) Decode(d *jx.Decoder) error {
 		return errors.New(`invalid: unable to decode GetChatAdministrators to nil`)
 	}
 	var requiredBitSet [1]uint8
+
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "chat_id":
@@ -9265,7 +8960,6 @@ func (s *GetChatAdministrators) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return err
 	}
-
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000001,
@@ -9297,6 +8991,7 @@ func (s *GetChatAdministrators) Decode(d *jx.Decoder) error {
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
+
 	return nil
 }
 
@@ -9336,6 +9031,7 @@ func (s *GetChatMember) Decode(d *jx.Decoder) error {
 		return errors.New(`invalid: unable to decode GetChatMember to nil`)
 	}
 	var requiredBitSet [1]uint8
+
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "chat_id":
@@ -9357,7 +9053,6 @@ func (s *GetChatMember) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return err
 	}
-
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000011,
@@ -9389,6 +9084,7 @@ func (s *GetChatMember) Decode(d *jx.Decoder) error {
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
+
 	return nil
 }
 
@@ -9421,6 +9117,7 @@ func (s *GetChatMemberCount) Decode(d *jx.Decoder) error {
 		return errors.New(`invalid: unable to decode GetChatMemberCount to nil`)
 	}
 	var requiredBitSet [1]uint8
+
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "chat_id":
@@ -9435,7 +9132,6 @@ func (s *GetChatMemberCount) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return err
 	}
-
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000001,
@@ -9467,6 +9163,7 @@ func (s *GetChatMemberCount) Decode(d *jx.Decoder) error {
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
+
 	return nil
 }
 
@@ -9499,6 +9196,7 @@ func (s *GetFile) Decode(d *jx.Decoder) error {
 		return errors.New(`invalid: unable to decode GetFile to nil`)
 	}
 	var requiredBitSet [1]uint8
+
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "file_id":
@@ -9515,7 +9213,6 @@ func (s *GetFile) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return err
 	}
-
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000001,
@@ -9547,6 +9244,7 @@ func (s *GetFile) Decode(d *jx.Decoder) error {
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
+
 	return nil
 }
 
@@ -9609,6 +9307,7 @@ func (s *GetGameHighScores) Decode(d *jx.Decoder) error {
 		return errors.New(`invalid: unable to decode GetGameHighScores to nil`)
 	}
 	var requiredBitSet [1]uint8
+
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "user_id":
@@ -9619,19 +9318,16 @@ func (s *GetGameHighScores) Decode(d *jx.Decoder) error {
 				return err
 			}
 		case "chat_id":
-			requiredBitSet[0] |= 1 << 1
 			s.ChatID.Reset()
 			if err := s.ChatID.Decode(d); err != nil {
 				return err
 			}
 		case "message_id":
-			requiredBitSet[0] |= 1 << 2
 			s.MessageID.Reset()
 			if err := s.MessageID.Decode(d); err != nil {
 				return err
 			}
 		case "inline_message_id":
-			requiredBitSet[0] |= 1 << 3
 			s.InlineMessageID.Reset()
 			if err := s.InlineMessageID.Decode(d); err != nil {
 				return err
@@ -9643,7 +9339,6 @@ func (s *GetGameHighScores) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return err
 	}
-
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000001,
@@ -9675,6 +9370,7 @@ func (s *GetGameHighScores) Decode(d *jx.Decoder) error {
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
+
 	return nil
 }
 
@@ -9722,17 +9418,15 @@ func (s *GetMyCommands) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode GetMyCommands to nil`)
 	}
-	var requiredBitSet [1]uint8
+
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "scope":
-			requiredBitSet[0] |= 1 << 0
 			s.Scope.Reset()
 			if err := s.Scope.Decode(d); err != nil {
 				return err
 			}
 		case "language_code":
-			requiredBitSet[0] |= 1 << 1
 			s.LanguageCode.Reset()
 			if err := s.LanguageCode.Decode(d); err != nil {
 				return err
@@ -9745,37 +9439,6 @@ func (s *GetMyCommands) Decode(d *jx.Decoder) error {
 		return err
 	}
 
-	var failures []validate.FieldError
-	for i, mask := range [1]uint8{
-		0b00000000,
-	} {
-		if result := (requiredBitSet[i] & mask) ^ mask; result != 0 {
-			// Mask only required fields and check equality to mask using XOR.
-			//
-			// If XOR result is not zero, result is not equal to expected, so some fields are missed.
-			// Bits of fields which would be set are actually bits of missed fields.
-			missed := bits.OnesCount8(result)
-			for bitN := 0; bitN < missed; bitN++ {
-				bitIdx := bits.TrailingZeros8(result)
-				fieldIdx := i*8 + bitIdx
-				var name string
-				if fieldIdx < len(jsonFieldsNameOfGetMyCommands) {
-					name = jsonFieldsNameOfGetMyCommands[fieldIdx]
-				} else {
-					name = strconv.Itoa(fieldIdx)
-				}
-				failures = append(failures, validate.FieldError{
-					Name:  name,
-					Error: validate.ErrFieldRequired,
-				})
-				// Reset bit.
-				result &^= 1 << bitIdx
-			}
-		}
-	}
-	if len(failures) > 0 {
-		return &validate.Error{Fields: failures}
-	}
 	return nil
 }
 
@@ -9808,6 +9471,7 @@ func (s *GetStickerSet) Decode(d *jx.Decoder) error {
 		return errors.New(`invalid: unable to decode GetStickerSet to nil`)
 	}
 	var requiredBitSet [1]uint8
+
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "name":
@@ -9824,7 +9488,6 @@ func (s *GetStickerSet) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return err
 	}
-
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000001,
@@ -9856,6 +9519,7 @@ func (s *GetStickerSet) Decode(d *jx.Decoder) error {
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
+
 	return nil
 }
 
@@ -9941,29 +9605,25 @@ func (s *GetUpdates) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode GetUpdates to nil`)
 	}
-	var requiredBitSet [1]uint8
+
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "offset":
-			requiredBitSet[0] |= 1 << 0
 			s.Offset.Reset()
 			if err := s.Offset.Decode(d); err != nil {
 				return err
 			}
 		case "limit":
-			requiredBitSet[0] |= 1 << 1
 			s.Limit.Reset()
 			if err := s.Limit.Decode(d); err != nil {
 				return err
 			}
 		case "timeout":
-			requiredBitSet[0] |= 1 << 2
 			s.Timeout.Reset()
 			if err := s.Timeout.Decode(d); err != nil {
 				return err
 			}
 		case "allowed_updates":
-			requiredBitSet[0] |= 1 << 3
 			s.AllowedUpdates = nil
 			if err := d.Arr(func(d *jx.Decoder) error {
 				var elem string
@@ -9985,37 +9645,6 @@ func (s *GetUpdates) Decode(d *jx.Decoder) error {
 		return err
 	}
 
-	var failures []validate.FieldError
-	for i, mask := range [1]uint8{
-		0b00000000,
-	} {
-		if result := (requiredBitSet[i] & mask) ^ mask; result != 0 {
-			// Mask only required fields and check equality to mask using XOR.
-			//
-			// If XOR result is not zero, result is not equal to expected, so some fields are missed.
-			// Bits of fields which would be set are actually bits of missed fields.
-			missed := bits.OnesCount8(result)
-			for bitN := 0; bitN < missed; bitN++ {
-				bitIdx := bits.TrailingZeros8(result)
-				fieldIdx := i*8 + bitIdx
-				var name string
-				if fieldIdx < len(jsonFieldsNameOfGetUpdates) {
-					name = jsonFieldsNameOfGetUpdates[fieldIdx]
-				} else {
-					name = strconv.Itoa(fieldIdx)
-				}
-				failures = append(failures, validate.FieldError{
-					Name:  name,
-					Error: validate.ErrFieldRequired,
-				})
-				// Reset bit.
-				result &^= 1 << bitIdx
-			}
-		}
-	}
-	if len(failures) > 0 {
-		return &validate.Error{Fields: failures}
-	}
 	return nil
 }
 
@@ -10068,6 +9697,7 @@ func (s *GetUserProfilePhotos) Decode(d *jx.Decoder) error {
 		return errors.New(`invalid: unable to decode GetUserProfilePhotos to nil`)
 	}
 	var requiredBitSet [1]uint8
+
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "user_id":
@@ -10078,13 +9708,11 @@ func (s *GetUserProfilePhotos) Decode(d *jx.Decoder) error {
 				return err
 			}
 		case "offset":
-			requiredBitSet[0] |= 1 << 1
 			s.Offset.Reset()
 			if err := s.Offset.Decode(d); err != nil {
 				return err
 			}
 		case "limit":
-			requiredBitSet[0] |= 1 << 2
 			s.Limit.Reset()
 			if err := s.Limit.Decode(d); err != nil {
 				return err
@@ -10096,7 +9724,6 @@ func (s *GetUserProfilePhotos) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return err
 	}
-
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000001,
@@ -10128,6 +9755,7 @@ func (s *GetUserProfilePhotos) Decode(d *jx.Decoder) error {
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
+
 	return nil
 }
 
@@ -10267,6 +9895,7 @@ func (s *InlineKeyboardButton) Decode(d *jx.Decoder) error {
 		return errors.New(`invalid: unable to decode InlineKeyboardButton to nil`)
 	}
 	var requiredBitSet [1]uint8
+
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "text":
@@ -10277,37 +9906,31 @@ func (s *InlineKeyboardButton) Decode(d *jx.Decoder) error {
 				return err
 			}
 		case "url":
-			requiredBitSet[0] |= 1 << 1
 			s.URL.Reset()
 			if err := s.URL.Decode(d); err != nil {
 				return err
 			}
 		case "login_url":
-			requiredBitSet[0] |= 1 << 2
 			s.LoginURL.Reset()
 			if err := s.LoginURL.Decode(d); err != nil {
 				return err
 			}
 		case "callback_data":
-			requiredBitSet[0] |= 1 << 3
 			s.CallbackData.Reset()
 			if err := s.CallbackData.Decode(d); err != nil {
 				return err
 			}
 		case "switch_inline_query":
-			requiredBitSet[0] |= 1 << 4
 			s.SwitchInlineQuery.Reset()
 			if err := s.SwitchInlineQuery.Decode(d); err != nil {
 				return err
 			}
 		case "switch_inline_query_current_chat":
-			requiredBitSet[0] |= 1 << 5
 			s.SwitchInlineQueryCurrentChat.Reset()
 			if err := s.SwitchInlineQueryCurrentChat.Decode(d); err != nil {
 				return err
 			}
 		case "callback_game":
-			requiredBitSet[0] |= 1 << 6
 			s.CallbackGame = nil
 			var elem CallbackGame
 			if err := elem.Decode(d); err != nil {
@@ -10315,7 +9938,6 @@ func (s *InlineKeyboardButton) Decode(d *jx.Decoder) error {
 			}
 			s.CallbackGame = &elem
 		case "pay":
-			requiredBitSet[0] |= 1 << 7
 			s.Pay.Reset()
 			if err := s.Pay.Decode(d); err != nil {
 				return err
@@ -10327,7 +9949,6 @@ func (s *InlineKeyboardButton) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return err
 	}
-
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000001,
@@ -10359,6 +9980,7 @@ func (s *InlineKeyboardButton) Decode(d *jx.Decoder) error {
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
+
 	return nil
 }
 
@@ -10427,6 +10049,7 @@ func (s *InlineKeyboardMarkup) Decode(d *jx.Decoder) error {
 		return errors.New(`invalid: unable to decode InlineKeyboardMarkup to nil`)
 	}
 	var requiredBitSet [1]uint8
+
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "inline_keyboard":
@@ -10457,7 +10080,6 @@ func (s *InlineKeyboardMarkup) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return err
 	}
-
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000001,
@@ -10489,6 +10111,7 @@ func (s *InlineKeyboardMarkup) Decode(d *jx.Decoder) error {
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
+
 	return nil
 }
 
@@ -10562,6 +10185,7 @@ func (s *InlineQuery) Decode(d *jx.Decoder) error {
 		return errors.New(`invalid: unable to decode InlineQuery to nil`)
 	}
 	var requiredBitSet [1]uint8
+
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "id":
@@ -10591,13 +10215,11 @@ func (s *InlineQuery) Decode(d *jx.Decoder) error {
 				return err
 			}
 		case "chat_type":
-			requiredBitSet[0] |= 1 << 4
 			s.ChatType.Reset()
 			if err := s.ChatType.Decode(d); err != nil {
 				return err
 			}
 		case "location":
-			requiredBitSet[0] |= 1 << 5
 			s.Location.Reset()
 			if err := s.Location.Decode(d); err != nil {
 				return err
@@ -10609,7 +10231,6 @@ func (s *InlineQuery) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return err
 	}
-
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00001111,
@@ -10641,6 +10262,7 @@ func (s *InlineQuery) Decode(d *jx.Decoder) error {
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
+
 	return nil
 }
 
@@ -11004,6 +10626,7 @@ func (s *InlineQueryResultArticle) Decode(d *jx.Decoder) error {
 		return errors.New(`invalid: unable to decode InlineQueryResultArticle to nil`)
 	}
 	var requiredBitSet [2]uint8
+
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "type":
@@ -11033,43 +10656,36 @@ func (s *InlineQueryResultArticle) Decode(d *jx.Decoder) error {
 				return err
 			}
 		case "reply_markup":
-			requiredBitSet[0] |= 1 << 4
 			s.ReplyMarkup.Reset()
 			if err := s.ReplyMarkup.Decode(d); err != nil {
 				return err
 			}
 		case "url":
-			requiredBitSet[0] |= 1 << 5
 			s.URL.Reset()
 			if err := s.URL.Decode(d); err != nil {
 				return err
 			}
 		case "hide_url":
-			requiredBitSet[0] |= 1 << 6
 			s.HideURL.Reset()
 			if err := s.HideURL.Decode(d); err != nil {
 				return err
 			}
 		case "description":
-			requiredBitSet[0] |= 1 << 7
 			s.Description.Reset()
 			if err := s.Description.Decode(d); err != nil {
 				return err
 			}
 		case "thumb_url":
-			requiredBitSet[1] |= 1 << 0
 			s.ThumbURL.Reset()
 			if err := s.ThumbURL.Decode(d); err != nil {
 				return err
 			}
 		case "thumb_width":
-			requiredBitSet[1] |= 1 << 1
 			s.ThumbWidth.Reset()
 			if err := s.ThumbWidth.Decode(d); err != nil {
 				return err
 			}
 		case "thumb_height":
-			requiredBitSet[1] |= 1 << 2
 			s.ThumbHeight.Reset()
 			if err := s.ThumbHeight.Decode(d); err != nil {
 				return err
@@ -11081,7 +10697,6 @@ func (s *InlineQueryResultArticle) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return err
 	}
-
 	var failures []validate.FieldError
 	for i, mask := range [2]uint8{
 		0b00001111,
@@ -11114,6 +10729,7 @@ func (s *InlineQueryResultArticle) Decode(d *jx.Decoder) error {
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
+
 	return nil
 }
 
@@ -11249,6 +10865,7 @@ func (s *InlineQueryResultAudio) Decode(d *jx.Decoder) error {
 		return errors.New(`invalid: unable to decode InlineQueryResultAudio to nil`)
 	}
 	var requiredBitSet [2]uint8
+
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "type":
@@ -11280,19 +10897,16 @@ func (s *InlineQueryResultAudio) Decode(d *jx.Decoder) error {
 				return err
 			}
 		case "caption":
-			requiredBitSet[0] |= 1 << 4
 			s.Caption.Reset()
 			if err := s.Caption.Decode(d); err != nil {
 				return err
 			}
 		case "parse_mode":
-			requiredBitSet[0] |= 1 << 5
 			s.ParseMode.Reset()
 			if err := s.ParseMode.Decode(d); err != nil {
 				return err
 			}
 		case "caption_entities":
-			requiredBitSet[0] |= 1 << 6
 			s.CaptionEntities = nil
 			if err := d.Arr(func(d *jx.Decoder) error {
 				var elem MessageEntity
@@ -11305,25 +10919,21 @@ func (s *InlineQueryResultAudio) Decode(d *jx.Decoder) error {
 				return err
 			}
 		case "performer":
-			requiredBitSet[0] |= 1 << 7
 			s.Performer.Reset()
 			if err := s.Performer.Decode(d); err != nil {
 				return err
 			}
 		case "audio_duration":
-			requiredBitSet[1] |= 1 << 0
 			s.AudioDuration.Reset()
 			if err := s.AudioDuration.Decode(d); err != nil {
 				return err
 			}
 		case "reply_markup":
-			requiredBitSet[1] |= 1 << 1
 			s.ReplyMarkup.Reset()
 			if err := s.ReplyMarkup.Decode(d); err != nil {
 				return err
 			}
 		case "input_message_content":
-			requiredBitSet[1] |= 1 << 2
 			s.InputMessageContent.Reset()
 			if err := s.InputMessageContent.Decode(d); err != nil {
 				return err
@@ -11335,7 +10945,6 @@ func (s *InlineQueryResultAudio) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return err
 	}
-
 	var failures []validate.FieldError
 	for i, mask := range [2]uint8{
 		0b00001111,
@@ -11368,6 +10977,7 @@ func (s *InlineQueryResultAudio) Decode(d *jx.Decoder) error {
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
+
 	return nil
 }
 
@@ -11476,6 +11086,7 @@ func (s *InlineQueryResultCachedAudio) Decode(d *jx.Decoder) error {
 		return errors.New(`invalid: unable to decode InlineQueryResultCachedAudio to nil`)
 	}
 	var requiredBitSet [1]uint8
+
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "type":
@@ -11500,19 +11111,16 @@ func (s *InlineQueryResultCachedAudio) Decode(d *jx.Decoder) error {
 				return err
 			}
 		case "caption":
-			requiredBitSet[0] |= 1 << 3
 			s.Caption.Reset()
 			if err := s.Caption.Decode(d); err != nil {
 				return err
 			}
 		case "parse_mode":
-			requiredBitSet[0] |= 1 << 4
 			s.ParseMode.Reset()
 			if err := s.ParseMode.Decode(d); err != nil {
 				return err
 			}
 		case "caption_entities":
-			requiredBitSet[0] |= 1 << 5
 			s.CaptionEntities = nil
 			if err := d.Arr(func(d *jx.Decoder) error {
 				var elem MessageEntity
@@ -11525,13 +11133,11 @@ func (s *InlineQueryResultCachedAudio) Decode(d *jx.Decoder) error {
 				return err
 			}
 		case "reply_markup":
-			requiredBitSet[0] |= 1 << 6
 			s.ReplyMarkup.Reset()
 			if err := s.ReplyMarkup.Decode(d); err != nil {
 				return err
 			}
 		case "input_message_content":
-			requiredBitSet[0] |= 1 << 7
 			s.InputMessageContent.Reset()
 			if err := s.InputMessageContent.Decode(d); err != nil {
 				return err
@@ -11543,7 +11149,6 @@ func (s *InlineQueryResultCachedAudio) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return err
 	}
-
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000111,
@@ -11575,6 +11180,7 @@ func (s *InlineQueryResultCachedAudio) Decode(d *jx.Decoder) error {
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
+
 	return nil
 }
 
@@ -11700,6 +11306,7 @@ func (s *InlineQueryResultCachedDocument) Decode(d *jx.Decoder) error {
 		return errors.New(`invalid: unable to decode InlineQueryResultCachedDocument to nil`)
 	}
 	var requiredBitSet [2]uint8
+
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "type":
@@ -11731,25 +11338,21 @@ func (s *InlineQueryResultCachedDocument) Decode(d *jx.Decoder) error {
 				return err
 			}
 		case "description":
-			requiredBitSet[0] |= 1 << 4
 			s.Description.Reset()
 			if err := s.Description.Decode(d); err != nil {
 				return err
 			}
 		case "caption":
-			requiredBitSet[0] |= 1 << 5
 			s.Caption.Reset()
 			if err := s.Caption.Decode(d); err != nil {
 				return err
 			}
 		case "parse_mode":
-			requiredBitSet[0] |= 1 << 6
 			s.ParseMode.Reset()
 			if err := s.ParseMode.Decode(d); err != nil {
 				return err
 			}
 		case "caption_entities":
-			requiredBitSet[0] |= 1 << 7
 			s.CaptionEntities = nil
 			if err := d.Arr(func(d *jx.Decoder) error {
 				var elem MessageEntity
@@ -11762,13 +11365,11 @@ func (s *InlineQueryResultCachedDocument) Decode(d *jx.Decoder) error {
 				return err
 			}
 		case "reply_markup":
-			requiredBitSet[1] |= 1 << 0
 			s.ReplyMarkup.Reset()
 			if err := s.ReplyMarkup.Decode(d); err != nil {
 				return err
 			}
 		case "input_message_content":
-			requiredBitSet[1] |= 1 << 1
 			s.InputMessageContent.Reset()
 			if err := s.InputMessageContent.Decode(d); err != nil {
 				return err
@@ -11780,7 +11381,6 @@ func (s *InlineQueryResultCachedDocument) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return err
 	}
-
 	var failures []validate.FieldError
 	for i, mask := range [2]uint8{
 		0b00001111,
@@ -11813,6 +11413,7 @@ func (s *InlineQueryResultCachedDocument) Decode(d *jx.Decoder) error {
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
+
 	return nil
 }
 
@@ -11931,6 +11532,7 @@ func (s *InlineQueryResultCachedGif) Decode(d *jx.Decoder) error {
 		return errors.New(`invalid: unable to decode InlineQueryResultCachedGif to nil`)
 	}
 	var requiredBitSet [2]uint8
+
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "type":
@@ -11955,25 +11557,21 @@ func (s *InlineQueryResultCachedGif) Decode(d *jx.Decoder) error {
 				return err
 			}
 		case "title":
-			requiredBitSet[0] |= 1 << 3
 			s.Title.Reset()
 			if err := s.Title.Decode(d); err != nil {
 				return err
 			}
 		case "caption":
-			requiredBitSet[0] |= 1 << 4
 			s.Caption.Reset()
 			if err := s.Caption.Decode(d); err != nil {
 				return err
 			}
 		case "parse_mode":
-			requiredBitSet[0] |= 1 << 5
 			s.ParseMode.Reset()
 			if err := s.ParseMode.Decode(d); err != nil {
 				return err
 			}
 		case "caption_entities":
-			requiredBitSet[0] |= 1 << 6
 			s.CaptionEntities = nil
 			if err := d.Arr(func(d *jx.Decoder) error {
 				var elem MessageEntity
@@ -11986,13 +11584,11 @@ func (s *InlineQueryResultCachedGif) Decode(d *jx.Decoder) error {
 				return err
 			}
 		case "reply_markup":
-			requiredBitSet[0] |= 1 << 7
 			s.ReplyMarkup.Reset()
 			if err := s.ReplyMarkup.Decode(d); err != nil {
 				return err
 			}
 		case "input_message_content":
-			requiredBitSet[1] |= 1 << 0
 			s.InputMessageContent.Reset()
 			if err := s.InputMessageContent.Decode(d); err != nil {
 				return err
@@ -12004,7 +11600,6 @@ func (s *InlineQueryResultCachedGif) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return err
 	}
-
 	var failures []validate.FieldError
 	for i, mask := range [2]uint8{
 		0b00000111,
@@ -12037,6 +11632,7 @@ func (s *InlineQueryResultCachedGif) Decode(d *jx.Decoder) error {
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
+
 	return nil
 }
 
@@ -12155,6 +11751,7 @@ func (s *InlineQueryResultCachedMpeg4Gif) Decode(d *jx.Decoder) error {
 		return errors.New(`invalid: unable to decode InlineQueryResultCachedMpeg4Gif to nil`)
 	}
 	var requiredBitSet [2]uint8
+
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "type":
@@ -12179,25 +11776,21 @@ func (s *InlineQueryResultCachedMpeg4Gif) Decode(d *jx.Decoder) error {
 				return err
 			}
 		case "title":
-			requiredBitSet[0] |= 1 << 3
 			s.Title.Reset()
 			if err := s.Title.Decode(d); err != nil {
 				return err
 			}
 		case "caption":
-			requiredBitSet[0] |= 1 << 4
 			s.Caption.Reset()
 			if err := s.Caption.Decode(d); err != nil {
 				return err
 			}
 		case "parse_mode":
-			requiredBitSet[0] |= 1 << 5
 			s.ParseMode.Reset()
 			if err := s.ParseMode.Decode(d); err != nil {
 				return err
 			}
 		case "caption_entities":
-			requiredBitSet[0] |= 1 << 6
 			s.CaptionEntities = nil
 			if err := d.Arr(func(d *jx.Decoder) error {
 				var elem MessageEntity
@@ -12210,13 +11803,11 @@ func (s *InlineQueryResultCachedMpeg4Gif) Decode(d *jx.Decoder) error {
 				return err
 			}
 		case "reply_markup":
-			requiredBitSet[0] |= 1 << 7
 			s.ReplyMarkup.Reset()
 			if err := s.ReplyMarkup.Decode(d); err != nil {
 				return err
 			}
 		case "input_message_content":
-			requiredBitSet[1] |= 1 << 0
 			s.InputMessageContent.Reset()
 			if err := s.InputMessageContent.Decode(d); err != nil {
 				return err
@@ -12228,7 +11819,6 @@ func (s *InlineQueryResultCachedMpeg4Gif) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return err
 	}
-
 	var failures []validate.FieldError
 	for i, mask := range [2]uint8{
 		0b00000111,
@@ -12261,6 +11851,7 @@ func (s *InlineQueryResultCachedMpeg4Gif) Decode(d *jx.Decoder) error {
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
+
 	return nil
 }
 
@@ -12389,6 +11980,7 @@ func (s *InlineQueryResultCachedPhoto) Decode(d *jx.Decoder) error {
 		return errors.New(`invalid: unable to decode InlineQueryResultCachedPhoto to nil`)
 	}
 	var requiredBitSet [2]uint8
+
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "type":
@@ -12413,31 +12005,26 @@ func (s *InlineQueryResultCachedPhoto) Decode(d *jx.Decoder) error {
 				return err
 			}
 		case "title":
-			requiredBitSet[0] |= 1 << 3
 			s.Title.Reset()
 			if err := s.Title.Decode(d); err != nil {
 				return err
 			}
 		case "description":
-			requiredBitSet[0] |= 1 << 4
 			s.Description.Reset()
 			if err := s.Description.Decode(d); err != nil {
 				return err
 			}
 		case "caption":
-			requiredBitSet[0] |= 1 << 5
 			s.Caption.Reset()
 			if err := s.Caption.Decode(d); err != nil {
 				return err
 			}
 		case "parse_mode":
-			requiredBitSet[0] |= 1 << 6
 			s.ParseMode.Reset()
 			if err := s.ParseMode.Decode(d); err != nil {
 				return err
 			}
 		case "caption_entities":
-			requiredBitSet[0] |= 1 << 7
 			s.CaptionEntities = nil
 			if err := d.Arr(func(d *jx.Decoder) error {
 				var elem MessageEntity
@@ -12450,13 +12037,11 @@ func (s *InlineQueryResultCachedPhoto) Decode(d *jx.Decoder) error {
 				return err
 			}
 		case "reply_markup":
-			requiredBitSet[1] |= 1 << 0
 			s.ReplyMarkup.Reset()
 			if err := s.ReplyMarkup.Decode(d); err != nil {
 				return err
 			}
 		case "input_message_content":
-			requiredBitSet[1] |= 1 << 1
 			s.InputMessageContent.Reset()
 			if err := s.InputMessageContent.Decode(d); err != nil {
 				return err
@@ -12468,7 +12053,6 @@ func (s *InlineQueryResultCachedPhoto) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return err
 	}
-
 	var failures []validate.FieldError
 	for i, mask := range [2]uint8{
 		0b00000111,
@@ -12501,6 +12085,7 @@ func (s *InlineQueryResultCachedPhoto) Decode(d *jx.Decoder) error {
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
+
 	return nil
 }
 
@@ -12567,6 +12152,7 @@ func (s *InlineQueryResultCachedSticker) Decode(d *jx.Decoder) error {
 		return errors.New(`invalid: unable to decode InlineQueryResultCachedSticker to nil`)
 	}
 	var requiredBitSet [1]uint8
+
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "type":
@@ -12591,13 +12177,11 @@ func (s *InlineQueryResultCachedSticker) Decode(d *jx.Decoder) error {
 				return err
 			}
 		case "reply_markup":
-			requiredBitSet[0] |= 1 << 3
 			s.ReplyMarkup.Reset()
 			if err := s.ReplyMarkup.Decode(d); err != nil {
 				return err
 			}
 		case "input_message_content":
-			requiredBitSet[0] |= 1 << 4
 			s.InputMessageContent.Reset()
 			if err := s.InputMessageContent.Decode(d); err != nil {
 				return err
@@ -12609,7 +12193,6 @@ func (s *InlineQueryResultCachedSticker) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return err
 	}
-
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000111,
@@ -12641,6 +12224,7 @@ func (s *InlineQueryResultCachedSticker) Decode(d *jx.Decoder) error {
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
+
 	return nil
 }
 
@@ -12766,6 +12350,7 @@ func (s *InlineQueryResultCachedVideo) Decode(d *jx.Decoder) error {
 		return errors.New(`invalid: unable to decode InlineQueryResultCachedVideo to nil`)
 	}
 	var requiredBitSet [2]uint8
+
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "type":
@@ -12797,25 +12382,21 @@ func (s *InlineQueryResultCachedVideo) Decode(d *jx.Decoder) error {
 				return err
 			}
 		case "description":
-			requiredBitSet[0] |= 1 << 4
 			s.Description.Reset()
 			if err := s.Description.Decode(d); err != nil {
 				return err
 			}
 		case "caption":
-			requiredBitSet[0] |= 1 << 5
 			s.Caption.Reset()
 			if err := s.Caption.Decode(d); err != nil {
 				return err
 			}
 		case "parse_mode":
-			requiredBitSet[0] |= 1 << 6
 			s.ParseMode.Reset()
 			if err := s.ParseMode.Decode(d); err != nil {
 				return err
 			}
 		case "caption_entities":
-			requiredBitSet[0] |= 1 << 7
 			s.CaptionEntities = nil
 			if err := d.Arr(func(d *jx.Decoder) error {
 				var elem MessageEntity
@@ -12828,13 +12409,11 @@ func (s *InlineQueryResultCachedVideo) Decode(d *jx.Decoder) error {
 				return err
 			}
 		case "reply_markup":
-			requiredBitSet[1] |= 1 << 0
 			s.ReplyMarkup.Reset()
 			if err := s.ReplyMarkup.Decode(d); err != nil {
 				return err
 			}
 		case "input_message_content":
-			requiredBitSet[1] |= 1 << 1
 			s.InputMessageContent.Reset()
 			if err := s.InputMessageContent.Decode(d); err != nil {
 				return err
@@ -12846,7 +12425,6 @@ func (s *InlineQueryResultCachedVideo) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return err
 	}
-
 	var failures []validate.FieldError
 	for i, mask := range [2]uint8{
 		0b00001111,
@@ -12879,6 +12457,7 @@ func (s *InlineQueryResultCachedVideo) Decode(d *jx.Decoder) error {
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
+
 	return nil
 }
 
@@ -12994,6 +12573,7 @@ func (s *InlineQueryResultCachedVoice) Decode(d *jx.Decoder) error {
 		return errors.New(`invalid: unable to decode InlineQueryResultCachedVoice to nil`)
 	}
 	var requiredBitSet [2]uint8
+
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "type":
@@ -13025,19 +12605,16 @@ func (s *InlineQueryResultCachedVoice) Decode(d *jx.Decoder) error {
 				return err
 			}
 		case "caption":
-			requiredBitSet[0] |= 1 << 4
 			s.Caption.Reset()
 			if err := s.Caption.Decode(d); err != nil {
 				return err
 			}
 		case "parse_mode":
-			requiredBitSet[0] |= 1 << 5
 			s.ParseMode.Reset()
 			if err := s.ParseMode.Decode(d); err != nil {
 				return err
 			}
 		case "caption_entities":
-			requiredBitSet[0] |= 1 << 6
 			s.CaptionEntities = nil
 			if err := d.Arr(func(d *jx.Decoder) error {
 				var elem MessageEntity
@@ -13050,13 +12627,11 @@ func (s *InlineQueryResultCachedVoice) Decode(d *jx.Decoder) error {
 				return err
 			}
 		case "reply_markup":
-			requiredBitSet[0] |= 1 << 7
 			s.ReplyMarkup.Reset()
 			if err := s.ReplyMarkup.Decode(d); err != nil {
 				return err
 			}
 		case "input_message_content":
-			requiredBitSet[1] |= 1 << 0
 			s.InputMessageContent.Reset()
 			if err := s.InputMessageContent.Decode(d); err != nil {
 				return err
@@ -13068,7 +12643,6 @@ func (s *InlineQueryResultCachedVoice) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return err
 	}
-
 	var failures []validate.FieldError
 	for i, mask := range [2]uint8{
 		0b00001111,
@@ -13101,6 +12675,7 @@ func (s *InlineQueryResultCachedVoice) Decode(d *jx.Decoder) error {
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
+
 	return nil
 }
 
@@ -13224,6 +12799,7 @@ func (s *InlineQueryResultContact) Decode(d *jx.Decoder) error {
 		return errors.New(`invalid: unable to decode InlineQueryResultContact to nil`)
 	}
 	var requiredBitSet [2]uint8
+
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "type":
@@ -13255,43 +12831,36 @@ func (s *InlineQueryResultContact) Decode(d *jx.Decoder) error {
 				return err
 			}
 		case "last_name":
-			requiredBitSet[0] |= 1 << 4
 			s.LastName.Reset()
 			if err := s.LastName.Decode(d); err != nil {
 				return err
 			}
 		case "vcard":
-			requiredBitSet[0] |= 1 << 5
 			s.Vcard.Reset()
 			if err := s.Vcard.Decode(d); err != nil {
 				return err
 			}
 		case "reply_markup":
-			requiredBitSet[0] |= 1 << 6
 			s.ReplyMarkup.Reset()
 			if err := s.ReplyMarkup.Decode(d); err != nil {
 				return err
 			}
 		case "input_message_content":
-			requiredBitSet[0] |= 1 << 7
 			s.InputMessageContent.Reset()
 			if err := s.InputMessageContent.Decode(d); err != nil {
 				return err
 			}
 		case "thumb_url":
-			requiredBitSet[1] |= 1 << 0
 			s.ThumbURL.Reset()
 			if err := s.ThumbURL.Decode(d); err != nil {
 				return err
 			}
 		case "thumb_width":
-			requiredBitSet[1] |= 1 << 1
 			s.ThumbWidth.Reset()
 			if err := s.ThumbWidth.Decode(d); err != nil {
 				return err
 			}
 		case "thumb_height":
-			requiredBitSet[1] |= 1 << 2
 			s.ThumbHeight.Reset()
 			if err := s.ThumbHeight.Decode(d); err != nil {
 				return err
@@ -13303,7 +12872,6 @@ func (s *InlineQueryResultContact) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return err
 	}
-
 	var failures []validate.FieldError
 	for i, mask := range [2]uint8{
 		0b00001111,
@@ -13336,6 +12904,7 @@ func (s *InlineQueryResultContact) Decode(d *jx.Decoder) error {
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
+
 	return nil
 }
 
@@ -13498,6 +13067,7 @@ func (s *InlineQueryResultDocument) Decode(d *jx.Decoder) error {
 		return errors.New(`invalid: unable to decode InlineQueryResultDocument to nil`)
 	}
 	var requiredBitSet [2]uint8
+
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "type":
@@ -13522,19 +13092,16 @@ func (s *InlineQueryResultDocument) Decode(d *jx.Decoder) error {
 				return err
 			}
 		case "caption":
-			requiredBitSet[0] |= 1 << 3
 			s.Caption.Reset()
 			if err := s.Caption.Decode(d); err != nil {
 				return err
 			}
 		case "parse_mode":
-			requiredBitSet[0] |= 1 << 4
 			s.ParseMode.Reset()
 			if err := s.ParseMode.Decode(d); err != nil {
 				return err
 			}
 		case "caption_entities":
-			requiredBitSet[0] |= 1 << 5
 			s.CaptionEntities = nil
 			if err := d.Arr(func(d *jx.Decoder) error {
 				var elem MessageEntity
@@ -13561,37 +13128,31 @@ func (s *InlineQueryResultDocument) Decode(d *jx.Decoder) error {
 				return err
 			}
 		case "description":
-			requiredBitSet[1] |= 1 << 0
 			s.Description.Reset()
 			if err := s.Description.Decode(d); err != nil {
 				return err
 			}
 		case "reply_markup":
-			requiredBitSet[1] |= 1 << 1
 			s.ReplyMarkup.Reset()
 			if err := s.ReplyMarkup.Decode(d); err != nil {
 				return err
 			}
 		case "input_message_content":
-			requiredBitSet[1] |= 1 << 2
 			s.InputMessageContent.Reset()
 			if err := s.InputMessageContent.Decode(d); err != nil {
 				return err
 			}
 		case "thumb_url":
-			requiredBitSet[1] |= 1 << 3
 			s.ThumbURL.Reset()
 			if err := s.ThumbURL.Decode(d); err != nil {
 				return err
 			}
 		case "thumb_width":
-			requiredBitSet[1] |= 1 << 4
 			s.ThumbWidth.Reset()
 			if err := s.ThumbWidth.Decode(d); err != nil {
 				return err
 			}
 		case "thumb_height":
-			requiredBitSet[1] |= 1 << 5
 			s.ThumbHeight.Reset()
 			if err := s.ThumbHeight.Decode(d); err != nil {
 				return err
@@ -13603,7 +13164,6 @@ func (s *InlineQueryResultDocument) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return err
 	}
-
 	var failures []validate.FieldError
 	for i, mask := range [2]uint8{
 		0b11000111,
@@ -13636,6 +13196,7 @@ func (s *InlineQueryResultDocument) Decode(d *jx.Decoder) error {
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
+
 	return nil
 }
 
@@ -13692,6 +13253,7 @@ func (s *InlineQueryResultGame) Decode(d *jx.Decoder) error {
 		return errors.New(`invalid: unable to decode InlineQueryResultGame to nil`)
 	}
 	var requiredBitSet [1]uint8
+
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "type":
@@ -13716,7 +13278,6 @@ func (s *InlineQueryResultGame) Decode(d *jx.Decoder) error {
 				return err
 			}
 		case "reply_markup":
-			requiredBitSet[0] |= 1 << 3
 			s.ReplyMarkup.Reset()
 			if err := s.ReplyMarkup.Decode(d); err != nil {
 				return err
@@ -13728,7 +13289,6 @@ func (s *InlineQueryResultGame) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return err
 	}
-
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000111,
@@ -13760,6 +13320,7 @@ func (s *InlineQueryResultGame) Decode(d *jx.Decoder) error {
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
+
 	return nil
 }
 
@@ -13925,6 +13486,7 @@ func (s *InlineQueryResultGif) Decode(d *jx.Decoder) error {
 		return errors.New(`invalid: unable to decode InlineQueryResultGif to nil`)
 	}
 	var requiredBitSet [2]uint8
+
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "type":
@@ -13949,19 +13511,16 @@ func (s *InlineQueryResultGif) Decode(d *jx.Decoder) error {
 				return err
 			}
 		case "gif_width":
-			requiredBitSet[0] |= 1 << 3
 			s.GIFWidth.Reset()
 			if err := s.GIFWidth.Decode(d); err != nil {
 				return err
 			}
 		case "gif_height":
-			requiredBitSet[0] |= 1 << 4
 			s.GIFHeight.Reset()
 			if err := s.GIFHeight.Decode(d); err != nil {
 				return err
 			}
 		case "gif_duration":
-			requiredBitSet[0] |= 1 << 5
 			s.GIFDuration.Reset()
 			if err := s.GIFDuration.Decode(d); err != nil {
 				return err
@@ -13974,31 +13533,26 @@ func (s *InlineQueryResultGif) Decode(d *jx.Decoder) error {
 				return err
 			}
 		case "thumb_mime_type":
-			requiredBitSet[0] |= 1 << 7
 			s.ThumbMimeType.Reset()
 			if err := s.ThumbMimeType.Decode(d); err != nil {
 				return err
 			}
 		case "title":
-			requiredBitSet[1] |= 1 << 0
 			s.Title.Reset()
 			if err := s.Title.Decode(d); err != nil {
 				return err
 			}
 		case "caption":
-			requiredBitSet[1] |= 1 << 1
 			s.Caption.Reset()
 			if err := s.Caption.Decode(d); err != nil {
 				return err
 			}
 		case "parse_mode":
-			requiredBitSet[1] |= 1 << 2
 			s.ParseMode.Reset()
 			if err := s.ParseMode.Decode(d); err != nil {
 				return err
 			}
 		case "caption_entities":
-			requiredBitSet[1] |= 1 << 3
 			s.CaptionEntities = nil
 			if err := d.Arr(func(d *jx.Decoder) error {
 				var elem MessageEntity
@@ -14011,13 +13565,11 @@ func (s *InlineQueryResultGif) Decode(d *jx.Decoder) error {
 				return err
 			}
 		case "reply_markup":
-			requiredBitSet[1] |= 1 << 4
 			s.ReplyMarkup.Reset()
 			if err := s.ReplyMarkup.Decode(d); err != nil {
 				return err
 			}
 		case "input_message_content":
-			requiredBitSet[1] |= 1 << 5
 			s.InputMessageContent.Reset()
 			if err := s.InputMessageContent.Decode(d); err != nil {
 				return err
@@ -14029,7 +13581,6 @@ func (s *InlineQueryResultGif) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return err
 	}
-
 	var failures []validate.FieldError
 	for i, mask := range [2]uint8{
 		0b01000111,
@@ -14062,6 +13613,7 @@ func (s *InlineQueryResultGif) Decode(d *jx.Decoder) error {
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
+
 	return nil
 }
 
@@ -14212,6 +13764,7 @@ func (s *InlineQueryResultLocation) Decode(d *jx.Decoder) error {
 		return errors.New(`invalid: unable to decode InlineQueryResultLocation to nil`)
 	}
 	var requiredBitSet [2]uint8
+
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "type":
@@ -14250,55 +13803,46 @@ func (s *InlineQueryResultLocation) Decode(d *jx.Decoder) error {
 				return err
 			}
 		case "horizontal_accuracy":
-			requiredBitSet[0] |= 1 << 5
 			s.HorizontalAccuracy.Reset()
 			if err := s.HorizontalAccuracy.Decode(d); err != nil {
 				return err
 			}
 		case "live_period":
-			requiredBitSet[0] |= 1 << 6
 			s.LivePeriod.Reset()
 			if err := s.LivePeriod.Decode(d); err != nil {
 				return err
 			}
 		case "heading":
-			requiredBitSet[0] |= 1 << 7
 			s.Heading.Reset()
 			if err := s.Heading.Decode(d); err != nil {
 				return err
 			}
 		case "proximity_alert_radius":
-			requiredBitSet[1] |= 1 << 0
 			s.ProximityAlertRadius.Reset()
 			if err := s.ProximityAlertRadius.Decode(d); err != nil {
 				return err
 			}
 		case "reply_markup":
-			requiredBitSet[1] |= 1 << 1
 			s.ReplyMarkup.Reset()
 			if err := s.ReplyMarkup.Decode(d); err != nil {
 				return err
 			}
 		case "input_message_content":
-			requiredBitSet[1] |= 1 << 2
 			s.InputMessageContent.Reset()
 			if err := s.InputMessageContent.Decode(d); err != nil {
 				return err
 			}
 		case "thumb_url":
-			requiredBitSet[1] |= 1 << 3
 			s.ThumbURL.Reset()
 			if err := s.ThumbURL.Decode(d); err != nil {
 				return err
 			}
 		case "thumb_width":
-			requiredBitSet[1] |= 1 << 4
 			s.ThumbWidth.Reset()
 			if err := s.ThumbWidth.Decode(d); err != nil {
 				return err
 			}
 		case "thumb_height":
-			requiredBitSet[1] |= 1 << 5
 			s.ThumbHeight.Reset()
 			if err := s.ThumbHeight.Decode(d); err != nil {
 				return err
@@ -14310,7 +13854,6 @@ func (s *InlineQueryResultLocation) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return err
 	}
-
 	var failures []validate.FieldError
 	for i, mask := range [2]uint8{
 		0b00011111,
@@ -14343,6 +13886,7 @@ func (s *InlineQueryResultLocation) Decode(d *jx.Decoder) error {
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
+
 	return nil
 }
 
@@ -14508,6 +14052,7 @@ func (s *InlineQueryResultMpeg4Gif) Decode(d *jx.Decoder) error {
 		return errors.New(`invalid: unable to decode InlineQueryResultMpeg4Gif to nil`)
 	}
 	var requiredBitSet [2]uint8
+
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "type":
@@ -14532,19 +14077,16 @@ func (s *InlineQueryResultMpeg4Gif) Decode(d *jx.Decoder) error {
 				return err
 			}
 		case "mpeg4_width":
-			requiredBitSet[0] |= 1 << 3
 			s.Mpeg4Width.Reset()
 			if err := s.Mpeg4Width.Decode(d); err != nil {
 				return err
 			}
 		case "mpeg4_height":
-			requiredBitSet[0] |= 1 << 4
 			s.Mpeg4Height.Reset()
 			if err := s.Mpeg4Height.Decode(d); err != nil {
 				return err
 			}
 		case "mpeg4_duration":
-			requiredBitSet[0] |= 1 << 5
 			s.Mpeg4Duration.Reset()
 			if err := s.Mpeg4Duration.Decode(d); err != nil {
 				return err
@@ -14557,31 +14099,26 @@ func (s *InlineQueryResultMpeg4Gif) Decode(d *jx.Decoder) error {
 				return err
 			}
 		case "thumb_mime_type":
-			requiredBitSet[0] |= 1 << 7
 			s.ThumbMimeType.Reset()
 			if err := s.ThumbMimeType.Decode(d); err != nil {
 				return err
 			}
 		case "title":
-			requiredBitSet[1] |= 1 << 0
 			s.Title.Reset()
 			if err := s.Title.Decode(d); err != nil {
 				return err
 			}
 		case "caption":
-			requiredBitSet[1] |= 1 << 1
 			s.Caption.Reset()
 			if err := s.Caption.Decode(d); err != nil {
 				return err
 			}
 		case "parse_mode":
-			requiredBitSet[1] |= 1 << 2
 			s.ParseMode.Reset()
 			if err := s.ParseMode.Decode(d); err != nil {
 				return err
 			}
 		case "caption_entities":
-			requiredBitSet[1] |= 1 << 3
 			s.CaptionEntities = nil
 			if err := d.Arr(func(d *jx.Decoder) error {
 				var elem MessageEntity
@@ -14594,13 +14131,11 @@ func (s *InlineQueryResultMpeg4Gif) Decode(d *jx.Decoder) error {
 				return err
 			}
 		case "reply_markup":
-			requiredBitSet[1] |= 1 << 4
 			s.ReplyMarkup.Reset()
 			if err := s.ReplyMarkup.Decode(d); err != nil {
 				return err
 			}
 		case "input_message_content":
-			requiredBitSet[1] |= 1 << 5
 			s.InputMessageContent.Reset()
 			if err := s.InputMessageContent.Decode(d); err != nil {
 				return err
@@ -14612,7 +14147,6 @@ func (s *InlineQueryResultMpeg4Gif) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return err
 	}
-
 	var failures []validate.FieldError
 	for i, mask := range [2]uint8{
 		0b01000111,
@@ -14645,6 +14179,7 @@ func (s *InlineQueryResultMpeg4Gif) Decode(d *jx.Decoder) error {
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
+
 	return nil
 }
 
@@ -14800,6 +14335,7 @@ func (s *InlineQueryResultPhoto) Decode(d *jx.Decoder) error {
 		return errors.New(`invalid: unable to decode InlineQueryResultPhoto to nil`)
 	}
 	var requiredBitSet [2]uint8
+
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "type":
@@ -14831,43 +14367,36 @@ func (s *InlineQueryResultPhoto) Decode(d *jx.Decoder) error {
 				return err
 			}
 		case "photo_width":
-			requiredBitSet[0] |= 1 << 4
 			s.PhotoWidth.Reset()
 			if err := s.PhotoWidth.Decode(d); err != nil {
 				return err
 			}
 		case "photo_height":
-			requiredBitSet[0] |= 1 << 5
 			s.PhotoHeight.Reset()
 			if err := s.PhotoHeight.Decode(d); err != nil {
 				return err
 			}
 		case "title":
-			requiredBitSet[0] |= 1 << 6
 			s.Title.Reset()
 			if err := s.Title.Decode(d); err != nil {
 				return err
 			}
 		case "description":
-			requiredBitSet[0] |= 1 << 7
 			s.Description.Reset()
 			if err := s.Description.Decode(d); err != nil {
 				return err
 			}
 		case "caption":
-			requiredBitSet[1] |= 1 << 0
 			s.Caption.Reset()
 			if err := s.Caption.Decode(d); err != nil {
 				return err
 			}
 		case "parse_mode":
-			requiredBitSet[1] |= 1 << 1
 			s.ParseMode.Reset()
 			if err := s.ParseMode.Decode(d); err != nil {
 				return err
 			}
 		case "caption_entities":
-			requiredBitSet[1] |= 1 << 2
 			s.CaptionEntities = nil
 			if err := d.Arr(func(d *jx.Decoder) error {
 				var elem MessageEntity
@@ -14880,13 +14409,11 @@ func (s *InlineQueryResultPhoto) Decode(d *jx.Decoder) error {
 				return err
 			}
 		case "reply_markup":
-			requiredBitSet[1] |= 1 << 3
 			s.ReplyMarkup.Reset()
 			if err := s.ReplyMarkup.Decode(d); err != nil {
 				return err
 			}
 		case "input_message_content":
-			requiredBitSet[1] |= 1 << 4
 			s.InputMessageContent.Reset()
 			if err := s.InputMessageContent.Decode(d); err != nil {
 				return err
@@ -14898,7 +14425,6 @@ func (s *InlineQueryResultPhoto) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return err
 	}
-
 	var failures []validate.FieldError
 	for i, mask := range [2]uint8{
 		0b00001111,
@@ -14931,6 +14457,7 @@ func (s *InlineQueryResultPhoto) Decode(d *jx.Decoder) error {
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
+
 	return nil
 }
 
@@ -15088,6 +14615,7 @@ func (s *InlineQueryResultVenue) Decode(d *jx.Decoder) error {
 		return errors.New(`invalid: unable to decode InlineQueryResultVenue to nil`)
 	}
 	var requiredBitSet [2]uint8
+
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "type":
@@ -15133,55 +14661,46 @@ func (s *InlineQueryResultVenue) Decode(d *jx.Decoder) error {
 				return err
 			}
 		case "foursquare_id":
-			requiredBitSet[0] |= 1 << 6
 			s.FoursquareID.Reset()
 			if err := s.FoursquareID.Decode(d); err != nil {
 				return err
 			}
 		case "foursquare_type":
-			requiredBitSet[0] |= 1 << 7
 			s.FoursquareType.Reset()
 			if err := s.FoursquareType.Decode(d); err != nil {
 				return err
 			}
 		case "google_place_id":
-			requiredBitSet[1] |= 1 << 0
 			s.GooglePlaceID.Reset()
 			if err := s.GooglePlaceID.Decode(d); err != nil {
 				return err
 			}
 		case "google_place_type":
-			requiredBitSet[1] |= 1 << 1
 			s.GooglePlaceType.Reset()
 			if err := s.GooglePlaceType.Decode(d); err != nil {
 				return err
 			}
 		case "reply_markup":
-			requiredBitSet[1] |= 1 << 2
 			s.ReplyMarkup.Reset()
 			if err := s.ReplyMarkup.Decode(d); err != nil {
 				return err
 			}
 		case "input_message_content":
-			requiredBitSet[1] |= 1 << 3
 			s.InputMessageContent.Reset()
 			if err := s.InputMessageContent.Decode(d); err != nil {
 				return err
 			}
 		case "thumb_url":
-			requiredBitSet[1] |= 1 << 4
 			s.ThumbURL.Reset()
 			if err := s.ThumbURL.Decode(d); err != nil {
 				return err
 			}
 		case "thumb_width":
-			requiredBitSet[1] |= 1 << 5
 			s.ThumbWidth.Reset()
 			if err := s.ThumbWidth.Decode(d); err != nil {
 				return err
 			}
 		case "thumb_height":
-			requiredBitSet[1] |= 1 << 6
 			s.ThumbHeight.Reset()
 			if err := s.ThumbHeight.Decode(d); err != nil {
 				return err
@@ -15193,7 +14712,6 @@ func (s *InlineQueryResultVenue) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return err
 	}
-
 	var failures []validate.FieldError
 	for i, mask := range [2]uint8{
 		0b00111111,
@@ -15226,6 +14744,7 @@ func (s *InlineQueryResultVenue) Decode(d *jx.Decoder) error {
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
+
 	return nil
 }
 
@@ -15395,6 +14914,7 @@ func (s *InlineQueryResultVideo) Decode(d *jx.Decoder) error {
 		return errors.New(`invalid: unable to decode InlineQueryResultVideo to nil`)
 	}
 	var requiredBitSet [2]uint8
+
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "type":
@@ -15440,19 +14960,16 @@ func (s *InlineQueryResultVideo) Decode(d *jx.Decoder) error {
 				return err
 			}
 		case "caption":
-			requiredBitSet[0] |= 1 << 6
 			s.Caption.Reset()
 			if err := s.Caption.Decode(d); err != nil {
 				return err
 			}
 		case "parse_mode":
-			requiredBitSet[0] |= 1 << 7
 			s.ParseMode.Reset()
 			if err := s.ParseMode.Decode(d); err != nil {
 				return err
 			}
 		case "caption_entities":
-			requiredBitSet[1] |= 1 << 0
 			s.CaptionEntities = nil
 			if err := d.Arr(func(d *jx.Decoder) error {
 				var elem MessageEntity
@@ -15465,37 +14982,31 @@ func (s *InlineQueryResultVideo) Decode(d *jx.Decoder) error {
 				return err
 			}
 		case "video_width":
-			requiredBitSet[1] |= 1 << 1
 			s.VideoWidth.Reset()
 			if err := s.VideoWidth.Decode(d); err != nil {
 				return err
 			}
 		case "video_height":
-			requiredBitSet[1] |= 1 << 2
 			s.VideoHeight.Reset()
 			if err := s.VideoHeight.Decode(d); err != nil {
 				return err
 			}
 		case "video_duration":
-			requiredBitSet[1] |= 1 << 3
 			s.VideoDuration.Reset()
 			if err := s.VideoDuration.Decode(d); err != nil {
 				return err
 			}
 		case "description":
-			requiredBitSet[1] |= 1 << 4
 			s.Description.Reset()
 			if err := s.Description.Decode(d); err != nil {
 				return err
 			}
 		case "reply_markup":
-			requiredBitSet[1] |= 1 << 5
 			s.ReplyMarkup.Reset()
 			if err := s.ReplyMarkup.Decode(d); err != nil {
 				return err
 			}
 		case "input_message_content":
-			requiredBitSet[1] |= 1 << 6
 			s.InputMessageContent.Reset()
 			if err := s.InputMessageContent.Decode(d); err != nil {
 				return err
@@ -15507,7 +15018,6 @@ func (s *InlineQueryResultVideo) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return err
 	}
-
 	var failures []validate.FieldError
 	for i, mask := range [2]uint8{
 		0b00111111,
@@ -15540,6 +15050,7 @@ func (s *InlineQueryResultVideo) Decode(d *jx.Decoder) error {
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
+
 	return nil
 }
 
@@ -15665,6 +15176,7 @@ func (s *InlineQueryResultVoice) Decode(d *jx.Decoder) error {
 		return errors.New(`invalid: unable to decode InlineQueryResultVoice to nil`)
 	}
 	var requiredBitSet [2]uint8
+
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "type":
@@ -15696,19 +15208,16 @@ func (s *InlineQueryResultVoice) Decode(d *jx.Decoder) error {
 				return err
 			}
 		case "caption":
-			requiredBitSet[0] |= 1 << 4
 			s.Caption.Reset()
 			if err := s.Caption.Decode(d); err != nil {
 				return err
 			}
 		case "parse_mode":
-			requiredBitSet[0] |= 1 << 5
 			s.ParseMode.Reset()
 			if err := s.ParseMode.Decode(d); err != nil {
 				return err
 			}
 		case "caption_entities":
-			requiredBitSet[0] |= 1 << 6
 			s.CaptionEntities = nil
 			if err := d.Arr(func(d *jx.Decoder) error {
 				var elem MessageEntity
@@ -15721,19 +15230,16 @@ func (s *InlineQueryResultVoice) Decode(d *jx.Decoder) error {
 				return err
 			}
 		case "voice_duration":
-			requiredBitSet[0] |= 1 << 7
 			s.VoiceDuration.Reset()
 			if err := s.VoiceDuration.Decode(d); err != nil {
 				return err
 			}
 		case "reply_markup":
-			requiredBitSet[1] |= 1 << 0
 			s.ReplyMarkup.Reset()
 			if err := s.ReplyMarkup.Decode(d); err != nil {
 				return err
 			}
 		case "input_message_content":
-			requiredBitSet[1] |= 1 << 1
 			s.InputMessageContent.Reset()
 			if err := s.InputMessageContent.Decode(d); err != nil {
 				return err
@@ -15745,7 +15251,6 @@ func (s *InlineQueryResultVoice) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return err
 	}
-
 	var failures []validate.FieldError
 	for i, mask := range [2]uint8{
 		0b00001111,
@@ -15778,6 +15283,7 @@ func (s *InlineQueryResultVoice) Decode(d *jx.Decoder) error {
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
+
 	return nil
 }
 
@@ -15837,6 +15343,7 @@ func (s *InputContactMessageContent) Decode(d *jx.Decoder) error {
 		return errors.New(`invalid: unable to decode InputContactMessageContent to nil`)
 	}
 	var requiredBitSet [1]uint8
+
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "phone_number":
@@ -15854,13 +15361,11 @@ func (s *InputContactMessageContent) Decode(d *jx.Decoder) error {
 				return err
 			}
 		case "last_name":
-			requiredBitSet[0] |= 1 << 2
 			s.LastName.Reset()
 			if err := s.LastName.Decode(d); err != nil {
 				return err
 			}
 		case "vcard":
-			requiredBitSet[0] |= 1 << 3
 			s.Vcard.Reset()
 			if err := s.Vcard.Decode(d); err != nil {
 				return err
@@ -15872,7 +15377,6 @@ func (s *InputContactMessageContent) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return err
 	}
-
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000011,
@@ -15904,6 +15408,7 @@ func (s *InputContactMessageContent) Decode(d *jx.Decoder) error {
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
+
 	return nil
 }
 
@@ -16135,6 +15640,7 @@ func (s *InputInvoiceMessageContent) Decode(d *jx.Decoder) error {
 		return errors.New(`invalid: unable to decode InputInvoiceMessageContent to nil`)
 	}
 	var requiredBitSet [3]uint8
+
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "title":
@@ -16186,13 +15692,11 @@ func (s *InputInvoiceMessageContent) Decode(d *jx.Decoder) error {
 				return err
 			}
 		case "max_tip_amount":
-			requiredBitSet[0] |= 1 << 6
 			s.MaxTipAmount.Reset()
 			if err := s.MaxTipAmount.Decode(d); err != nil {
 				return err
 			}
 		case "suggested_tip_amounts":
-			requiredBitSet[0] |= 1 << 7
 			s.SuggestedTipAmounts = nil
 			if err := d.Arr(func(d *jx.Decoder) error {
 				var elem int
@@ -16207,73 +15711,61 @@ func (s *InputInvoiceMessageContent) Decode(d *jx.Decoder) error {
 				return err
 			}
 		case "provider_data":
-			requiredBitSet[1] |= 1 << 0
 			s.ProviderData.Reset()
 			if err := s.ProviderData.Decode(d); err != nil {
 				return err
 			}
 		case "photo_url":
-			requiredBitSet[1] |= 1 << 1
 			s.PhotoURL.Reset()
 			if err := s.PhotoURL.Decode(d); err != nil {
 				return err
 			}
 		case "photo_size":
-			requiredBitSet[1] |= 1 << 2
 			s.PhotoSize.Reset()
 			if err := s.PhotoSize.Decode(d); err != nil {
 				return err
 			}
 		case "photo_width":
-			requiredBitSet[1] |= 1 << 3
 			s.PhotoWidth.Reset()
 			if err := s.PhotoWidth.Decode(d); err != nil {
 				return err
 			}
 		case "photo_height":
-			requiredBitSet[1] |= 1 << 4
 			s.PhotoHeight.Reset()
 			if err := s.PhotoHeight.Decode(d); err != nil {
 				return err
 			}
 		case "need_name":
-			requiredBitSet[1] |= 1 << 5
 			s.NeedName.Reset()
 			if err := s.NeedName.Decode(d); err != nil {
 				return err
 			}
 		case "need_phone_number":
-			requiredBitSet[1] |= 1 << 6
 			s.NeedPhoneNumber.Reset()
 			if err := s.NeedPhoneNumber.Decode(d); err != nil {
 				return err
 			}
 		case "need_email":
-			requiredBitSet[1] |= 1 << 7
 			s.NeedEmail.Reset()
 			if err := s.NeedEmail.Decode(d); err != nil {
 				return err
 			}
 		case "need_shipping_address":
-			requiredBitSet[2] |= 1 << 0
 			s.NeedShippingAddress.Reset()
 			if err := s.NeedShippingAddress.Decode(d); err != nil {
 				return err
 			}
 		case "send_phone_number_to_provider":
-			requiredBitSet[2] |= 1 << 1
 			s.SendPhoneNumberToProvider.Reset()
 			if err := s.SendPhoneNumberToProvider.Decode(d); err != nil {
 				return err
 			}
 		case "send_email_to_provider":
-			requiredBitSet[2] |= 1 << 2
 			s.SendEmailToProvider.Reset()
 			if err := s.SendEmailToProvider.Decode(d); err != nil {
 				return err
 			}
 		case "is_flexible":
-			requiredBitSet[2] |= 1 << 3
 			s.IsFlexible.Reset()
 			if err := s.IsFlexible.Decode(d); err != nil {
 				return err
@@ -16285,7 +15777,6 @@ func (s *InputInvoiceMessageContent) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return err
 	}
-
 	var failures []validate.FieldError
 	for i, mask := range [3]uint8{
 		0b00111111,
@@ -16319,6 +15810,7 @@ func (s *InputInvoiceMessageContent) Decode(d *jx.Decoder) error {
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
+
 	return nil
 }
 
@@ -16398,6 +15890,7 @@ func (s *InputLocationMessageContent) Decode(d *jx.Decoder) error {
 		return errors.New(`invalid: unable to decode InputLocationMessageContent to nil`)
 	}
 	var requiredBitSet [1]uint8
+
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "latitude":
@@ -16415,25 +15908,21 @@ func (s *InputLocationMessageContent) Decode(d *jx.Decoder) error {
 				return err
 			}
 		case "horizontal_accuracy":
-			requiredBitSet[0] |= 1 << 2
 			s.HorizontalAccuracy.Reset()
 			if err := s.HorizontalAccuracy.Decode(d); err != nil {
 				return err
 			}
 		case "live_period":
-			requiredBitSet[0] |= 1 << 3
 			s.LivePeriod.Reset()
 			if err := s.LivePeriod.Decode(d); err != nil {
 				return err
 			}
 		case "heading":
-			requiredBitSet[0] |= 1 << 4
 			s.Heading.Reset()
 			if err := s.Heading.Decode(d); err != nil {
 				return err
 			}
 		case "proximity_alert_radius":
-			requiredBitSet[0] |= 1 << 5
 			s.ProximityAlertRadius.Reset()
 			if err := s.ProximityAlertRadius.Decode(d); err != nil {
 				return err
@@ -16445,7 +15934,6 @@ func (s *InputLocationMessageContent) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return err
 	}
-
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000011,
@@ -16477,6 +15965,7 @@ func (s *InputLocationMessageContent) Decode(d *jx.Decoder) error {
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
+
 	return nil
 }
 
@@ -16691,6 +16180,7 @@ func (s *InputMediaAnimation) Decode(d *jx.Decoder) error {
 		return errors.New(`invalid: unable to decode InputMediaAnimation to nil`)
 	}
 	var requiredBitSet [2]uint8
+
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "type":
@@ -16708,25 +16198,21 @@ func (s *InputMediaAnimation) Decode(d *jx.Decoder) error {
 				return err
 			}
 		case "thumb":
-			requiredBitSet[0] |= 1 << 2
 			s.Thumb.Reset()
 			if err := s.Thumb.Decode(d); err != nil {
 				return err
 			}
 		case "caption":
-			requiredBitSet[0] |= 1 << 3
 			s.Caption.Reset()
 			if err := s.Caption.Decode(d); err != nil {
 				return err
 			}
 		case "parse_mode":
-			requiredBitSet[0] |= 1 << 4
 			s.ParseMode.Reset()
 			if err := s.ParseMode.Decode(d); err != nil {
 				return err
 			}
 		case "caption_entities":
-			requiredBitSet[0] |= 1 << 5
 			s.CaptionEntities = nil
 			if err := d.Arr(func(d *jx.Decoder) error {
 				var elem MessageEntity
@@ -16739,19 +16225,16 @@ func (s *InputMediaAnimation) Decode(d *jx.Decoder) error {
 				return err
 			}
 		case "width":
-			requiredBitSet[0] |= 1 << 6
 			s.Width.Reset()
 			if err := s.Width.Decode(d); err != nil {
 				return err
 			}
 		case "height":
-			requiredBitSet[0] |= 1 << 7
 			s.Height.Reset()
 			if err := s.Height.Decode(d); err != nil {
 				return err
 			}
 		case "duration":
-			requiredBitSet[1] |= 1 << 0
 			s.Duration.Reset()
 			if err := s.Duration.Decode(d); err != nil {
 				return err
@@ -16763,7 +16246,6 @@ func (s *InputMediaAnimation) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return err
 	}
-
 	var failures []validate.FieldError
 	for i, mask := range [2]uint8{
 		0b00000011,
@@ -16796,6 +16278,7 @@ func (s *InputMediaAnimation) Decode(d *jx.Decoder) error {
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
+
 	return nil
 }
 
@@ -16917,6 +16400,7 @@ func (s *InputMediaAudio) Decode(d *jx.Decoder) error {
 		return errors.New(`invalid: unable to decode InputMediaAudio to nil`)
 	}
 	var requiredBitSet [2]uint8
+
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "type":
@@ -16934,25 +16418,21 @@ func (s *InputMediaAudio) Decode(d *jx.Decoder) error {
 				return err
 			}
 		case "thumb":
-			requiredBitSet[0] |= 1 << 2
 			s.Thumb.Reset()
 			if err := s.Thumb.Decode(d); err != nil {
 				return err
 			}
 		case "caption":
-			requiredBitSet[0] |= 1 << 3
 			s.Caption.Reset()
 			if err := s.Caption.Decode(d); err != nil {
 				return err
 			}
 		case "parse_mode":
-			requiredBitSet[0] |= 1 << 4
 			s.ParseMode.Reset()
 			if err := s.ParseMode.Decode(d); err != nil {
 				return err
 			}
 		case "caption_entities":
-			requiredBitSet[0] |= 1 << 5
 			s.CaptionEntities = nil
 			if err := d.Arr(func(d *jx.Decoder) error {
 				var elem MessageEntity
@@ -16965,19 +16445,16 @@ func (s *InputMediaAudio) Decode(d *jx.Decoder) error {
 				return err
 			}
 		case "duration":
-			requiredBitSet[0] |= 1 << 6
 			s.Duration.Reset()
 			if err := s.Duration.Decode(d); err != nil {
 				return err
 			}
 		case "performer":
-			requiredBitSet[0] |= 1 << 7
 			s.Performer.Reset()
 			if err := s.Performer.Decode(d); err != nil {
 				return err
 			}
 		case "title":
-			requiredBitSet[1] |= 1 << 0
 			s.Title.Reset()
 			if err := s.Title.Decode(d); err != nil {
 				return err
@@ -16989,7 +16466,6 @@ func (s *InputMediaAudio) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return err
 	}
-
 	var failures []validate.FieldError
 	for i, mask := range [2]uint8{
 		0b00000011,
@@ -17022,6 +16498,7 @@ func (s *InputMediaAudio) Decode(d *jx.Decoder) error {
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
+
 	return nil
 }
 
@@ -17123,6 +16600,7 @@ func (s *InputMediaDocument) Decode(d *jx.Decoder) error {
 		return errors.New(`invalid: unable to decode InputMediaDocument to nil`)
 	}
 	var requiredBitSet [1]uint8
+
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "type":
@@ -17140,25 +16618,21 @@ func (s *InputMediaDocument) Decode(d *jx.Decoder) error {
 				return err
 			}
 		case "thumb":
-			requiredBitSet[0] |= 1 << 2
 			s.Thumb.Reset()
 			if err := s.Thumb.Decode(d); err != nil {
 				return err
 			}
 		case "caption":
-			requiredBitSet[0] |= 1 << 3
 			s.Caption.Reset()
 			if err := s.Caption.Decode(d); err != nil {
 				return err
 			}
 		case "parse_mode":
-			requiredBitSet[0] |= 1 << 4
 			s.ParseMode.Reset()
 			if err := s.ParseMode.Decode(d); err != nil {
 				return err
 			}
 		case "caption_entities":
-			requiredBitSet[0] |= 1 << 5
 			s.CaptionEntities = nil
 			if err := d.Arr(func(d *jx.Decoder) error {
 				var elem MessageEntity
@@ -17171,7 +16645,6 @@ func (s *InputMediaDocument) Decode(d *jx.Decoder) error {
 				return err
 			}
 		case "disable_content_type_detection":
-			requiredBitSet[0] |= 1 << 6
 			s.DisableContentTypeDetection.Reset()
 			if err := s.DisableContentTypeDetection.Decode(d); err != nil {
 				return err
@@ -17183,7 +16656,6 @@ func (s *InputMediaDocument) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return err
 	}
-
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000011,
@@ -17215,6 +16687,7 @@ func (s *InputMediaDocument) Decode(d *jx.Decoder) error {
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
+
 	return nil
 }
 
@@ -17296,6 +16769,7 @@ func (s *InputMediaPhoto) Decode(d *jx.Decoder) error {
 		return errors.New(`invalid: unable to decode InputMediaPhoto to nil`)
 	}
 	var requiredBitSet [1]uint8
+
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "type":
@@ -17313,19 +16787,16 @@ func (s *InputMediaPhoto) Decode(d *jx.Decoder) error {
 				return err
 			}
 		case "caption":
-			requiredBitSet[0] |= 1 << 2
 			s.Caption.Reset()
 			if err := s.Caption.Decode(d); err != nil {
 				return err
 			}
 		case "parse_mode":
-			requiredBitSet[0] |= 1 << 3
 			s.ParseMode.Reset()
 			if err := s.ParseMode.Decode(d); err != nil {
 				return err
 			}
 		case "caption_entities":
-			requiredBitSet[0] |= 1 << 4
 			s.CaptionEntities = nil
 			if err := d.Arr(func(d *jx.Decoder) error {
 				var elem MessageEntity
@@ -17344,7 +16815,6 @@ func (s *InputMediaPhoto) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return err
 	}
-
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000011,
@@ -17376,6 +16846,7 @@ func (s *InputMediaPhoto) Decode(d *jx.Decoder) error {
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
+
 	return nil
 }
 
@@ -17507,6 +16978,7 @@ func (s *InputMediaVideo) Decode(d *jx.Decoder) error {
 		return errors.New(`invalid: unable to decode InputMediaVideo to nil`)
 	}
 	var requiredBitSet [2]uint8
+
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "type":
@@ -17524,25 +16996,21 @@ func (s *InputMediaVideo) Decode(d *jx.Decoder) error {
 				return err
 			}
 		case "thumb":
-			requiredBitSet[0] |= 1 << 2
 			s.Thumb.Reset()
 			if err := s.Thumb.Decode(d); err != nil {
 				return err
 			}
 		case "caption":
-			requiredBitSet[0] |= 1 << 3
 			s.Caption.Reset()
 			if err := s.Caption.Decode(d); err != nil {
 				return err
 			}
 		case "parse_mode":
-			requiredBitSet[0] |= 1 << 4
 			s.ParseMode.Reset()
 			if err := s.ParseMode.Decode(d); err != nil {
 				return err
 			}
 		case "caption_entities":
-			requiredBitSet[0] |= 1 << 5
 			s.CaptionEntities = nil
 			if err := d.Arr(func(d *jx.Decoder) error {
 				var elem MessageEntity
@@ -17555,25 +17023,21 @@ func (s *InputMediaVideo) Decode(d *jx.Decoder) error {
 				return err
 			}
 		case "width":
-			requiredBitSet[0] |= 1 << 6
 			s.Width.Reset()
 			if err := s.Width.Decode(d); err != nil {
 				return err
 			}
 		case "height":
-			requiredBitSet[0] |= 1 << 7
 			s.Height.Reset()
 			if err := s.Height.Decode(d); err != nil {
 				return err
 			}
 		case "duration":
-			requiredBitSet[1] |= 1 << 0
 			s.Duration.Reset()
 			if err := s.Duration.Decode(d); err != nil {
 				return err
 			}
 		case "supports_streaming":
-			requiredBitSet[1] |= 1 << 1
 			s.SupportsStreaming.Reset()
 			if err := s.SupportsStreaming.Decode(d); err != nil {
 				return err
@@ -17585,7 +17049,6 @@ func (s *InputMediaVideo) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return err
 	}
-
 	var failures []validate.FieldError
 	for i, mask := range [2]uint8{
 		0b00000011,
@@ -17618,6 +17081,7 @@ func (s *InputMediaVideo) Decode(d *jx.Decoder) error {
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
+
 	return nil
 }
 
@@ -17877,6 +17341,7 @@ func (s *InputTextMessageContent) Decode(d *jx.Decoder) error {
 		return errors.New(`invalid: unable to decode InputTextMessageContent to nil`)
 	}
 	var requiredBitSet [1]uint8
+
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "message_text":
@@ -17887,13 +17352,11 @@ func (s *InputTextMessageContent) Decode(d *jx.Decoder) error {
 				return err
 			}
 		case "parse_mode":
-			requiredBitSet[0] |= 1 << 1
 			s.ParseMode.Reset()
 			if err := s.ParseMode.Decode(d); err != nil {
 				return err
 			}
 		case "entities":
-			requiredBitSet[0] |= 1 << 2
 			s.Entities = nil
 			if err := d.Arr(func(d *jx.Decoder) error {
 				var elem MessageEntity
@@ -17906,7 +17369,6 @@ func (s *InputTextMessageContent) Decode(d *jx.Decoder) error {
 				return err
 			}
 		case "disable_web_page_preview":
-			requiredBitSet[0] |= 1 << 3
 			s.DisableWebPagePreview.Reset()
 			if err := s.DisableWebPagePreview.Decode(d); err != nil {
 				return err
@@ -17918,7 +17380,6 @@ func (s *InputTextMessageContent) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return err
 	}
-
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000001,
@@ -17950,6 +17411,7 @@ func (s *InputTextMessageContent) Decode(d *jx.Decoder) error {
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
+
 	return nil
 }
 
@@ -18043,6 +17505,7 @@ func (s *InputVenueMessageContent) Decode(d *jx.Decoder) error {
 		return errors.New(`invalid: unable to decode InputVenueMessageContent to nil`)
 	}
 	var requiredBitSet [1]uint8
+
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "latitude":
@@ -18074,25 +17537,21 @@ func (s *InputVenueMessageContent) Decode(d *jx.Decoder) error {
 				return err
 			}
 		case "foursquare_id":
-			requiredBitSet[0] |= 1 << 4
 			s.FoursquareID.Reset()
 			if err := s.FoursquareID.Decode(d); err != nil {
 				return err
 			}
 		case "foursquare_type":
-			requiredBitSet[0] |= 1 << 5
 			s.FoursquareType.Reset()
 			if err := s.FoursquareType.Decode(d); err != nil {
 				return err
 			}
 		case "google_place_id":
-			requiredBitSet[0] |= 1 << 6
 			s.GooglePlaceID.Reset()
 			if err := s.GooglePlaceID.Decode(d); err != nil {
 				return err
 			}
 		case "google_place_type":
-			requiredBitSet[0] |= 1 << 7
 			s.GooglePlaceType.Reset()
 			if err := s.GooglePlaceType.Decode(d); err != nil {
 				return err
@@ -18104,7 +17563,6 @@ func (s *InputVenueMessageContent) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return err
 	}
-
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00001111,
@@ -18136,6 +17594,7 @@ func (s *InputVenueMessageContent) Decode(d *jx.Decoder) error {
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
+
 	return nil
 }
 
@@ -18196,6 +17655,7 @@ func (s *Invoice) Decode(d *jx.Decoder) error {
 		return errors.New(`invalid: unable to decode Invoice to nil`)
 	}
 	var requiredBitSet [1]uint8
+
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "title":
@@ -18240,7 +17700,6 @@ func (s *Invoice) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return err
 	}
-
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00011111,
@@ -18272,6 +17731,7 @@ func (s *Invoice) Decode(d *jx.Decoder) error {
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
+
 	return nil
 }
 
@@ -18369,6 +17829,7 @@ func (s *KeyboardButtonObject) Decode(d *jx.Decoder) error {
 		return errors.New(`invalid: unable to decode KeyboardButtonObject to nil`)
 	}
 	var requiredBitSet [1]uint8
+
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "text":
@@ -18379,19 +17840,16 @@ func (s *KeyboardButtonObject) Decode(d *jx.Decoder) error {
 				return err
 			}
 		case "request_contact":
-			requiredBitSet[0] |= 1 << 1
 			s.RequestContact.Reset()
 			if err := s.RequestContact.Decode(d); err != nil {
 				return err
 			}
 		case "request_location":
-			requiredBitSet[0] |= 1 << 2
 			s.RequestLocation.Reset()
 			if err := s.RequestLocation.Decode(d); err != nil {
 				return err
 			}
 		case "request_poll":
-			requiredBitSet[0] |= 1 << 3
 			s.RequestPoll.Reset()
 			if err := s.RequestPoll.Decode(d); err != nil {
 				return err
@@ -18403,7 +17861,6 @@ func (s *KeyboardButtonObject) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return err
 	}
-
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000001,
@@ -18435,6 +17892,7 @@ func (s *KeyboardButtonObject) Decode(d *jx.Decoder) error {
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
+
 	return nil
 }
 
@@ -18469,11 +17927,10 @@ func (s *KeyboardButtonPollType) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode KeyboardButtonPollType to nil`)
 	}
-	var requiredBitSet [1]uint8
+
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "type":
-			requiredBitSet[0] |= 1 << 0
 			s.Type.Reset()
 			if err := s.Type.Decode(d); err != nil {
 				return err
@@ -18486,37 +17943,6 @@ func (s *KeyboardButtonPollType) Decode(d *jx.Decoder) error {
 		return err
 	}
 
-	var failures []validate.FieldError
-	for i, mask := range [1]uint8{
-		0b00000000,
-	} {
-		if result := (requiredBitSet[i] & mask) ^ mask; result != 0 {
-			// Mask only required fields and check equality to mask using XOR.
-			//
-			// If XOR result is not zero, result is not equal to expected, so some fields are missed.
-			// Bits of fields which would be set are actually bits of missed fields.
-			missed := bits.OnesCount8(result)
-			for bitN := 0; bitN < missed; bitN++ {
-				bitIdx := bits.TrailingZeros8(result)
-				fieldIdx := i*8 + bitIdx
-				var name string
-				if fieldIdx < len(jsonFieldsNameOfKeyboardButtonPollType) {
-					name = jsonFieldsNameOfKeyboardButtonPollType[fieldIdx]
-				} else {
-					name = strconv.Itoa(fieldIdx)
-				}
-				failures = append(failures, validate.FieldError{
-					Name:  name,
-					Error: validate.ErrFieldRequired,
-				})
-				// Reset bit.
-				result &^= 1 << bitIdx
-			}
-		}
-	}
-	if len(failures) > 0 {
-		return &validate.Error{Fields: failures}
-	}
 	return nil
 }
 
@@ -18556,6 +17982,7 @@ func (s *LabeledPrice) Decode(d *jx.Decoder) error {
 		return errors.New(`invalid: unable to decode LabeledPrice to nil`)
 	}
 	var requiredBitSet [1]uint8
+
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "label":
@@ -18579,7 +18006,6 @@ func (s *LabeledPrice) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return err
 	}
-
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000011,
@@ -18611,6 +18037,7 @@ func (s *LabeledPrice) Decode(d *jx.Decoder) error {
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
+
 	return nil
 }
 
@@ -18643,6 +18070,7 @@ func (s *LeaveChat) Decode(d *jx.Decoder) error {
 		return errors.New(`invalid: unable to decode LeaveChat to nil`)
 	}
 	var requiredBitSet [1]uint8
+
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "chat_id":
@@ -18657,7 +18085,6 @@ func (s *LeaveChat) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return err
 	}
-
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000001,
@@ -18689,6 +18116,7 @@ func (s *LeaveChat) Decode(d *jx.Decoder) error {
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
+
 	return nil
 }
 
@@ -18768,6 +18196,7 @@ func (s *Location) Decode(d *jx.Decoder) error {
 		return errors.New(`invalid: unable to decode Location to nil`)
 	}
 	var requiredBitSet [1]uint8
+
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "longitude":
@@ -18785,25 +18214,21 @@ func (s *Location) Decode(d *jx.Decoder) error {
 				return err
 			}
 		case "horizontal_accuracy":
-			requiredBitSet[0] |= 1 << 2
 			s.HorizontalAccuracy.Reset()
 			if err := s.HorizontalAccuracy.Decode(d); err != nil {
 				return err
 			}
 		case "live_period":
-			requiredBitSet[0] |= 1 << 3
 			s.LivePeriod.Reset()
 			if err := s.LivePeriod.Decode(d); err != nil {
 				return err
 			}
 		case "heading":
-			requiredBitSet[0] |= 1 << 4
 			s.Heading.Reset()
 			if err := s.Heading.Decode(d); err != nil {
 				return err
 			}
 		case "proximity_alert_radius":
-			requiredBitSet[0] |= 1 << 5
 			s.ProximityAlertRadius.Reset()
 			if err := s.ProximityAlertRadius.Decode(d); err != nil {
 				return err
@@ -18815,7 +18240,6 @@ func (s *Location) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return err
 	}
-
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000011,
@@ -18847,6 +18271,7 @@ func (s *Location) Decode(d *jx.Decoder) error {
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
+
 	return nil
 }
 
@@ -18909,6 +18334,7 @@ func (s *LoginUrl) Decode(d *jx.Decoder) error {
 		return errors.New(`invalid: unable to decode LoginUrl to nil`)
 	}
 	var requiredBitSet [1]uint8
+
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "url":
@@ -18919,19 +18345,16 @@ func (s *LoginUrl) Decode(d *jx.Decoder) error {
 				return err
 			}
 		case "forward_text":
-			requiredBitSet[0] |= 1 << 1
 			s.ForwardText.Reset()
 			if err := s.ForwardText.Decode(d); err != nil {
 				return err
 			}
 		case "bot_username":
-			requiredBitSet[0] |= 1 << 2
 			s.BotUsername.Reset()
 			if err := s.BotUsername.Decode(d); err != nil {
 				return err
 			}
 		case "request_write_access":
-			requiredBitSet[0] |= 1 << 3
 			s.RequestWriteAccess.Reset()
 			if err := s.RequestWriteAccess.Decode(d); err != nil {
 				return err
@@ -18943,7 +18366,6 @@ func (s *LoginUrl) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return err
 	}
-
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000001,
@@ -18975,6 +18397,7 @@ func (s *LoginUrl) Decode(d *jx.Decoder) error {
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
+
 	return nil
 }
 
@@ -19028,6 +18451,7 @@ func (s *MaskPosition) Decode(d *jx.Decoder) error {
 		return errors.New(`invalid: unable to decode MaskPosition to nil`)
 	}
 	var requiredBitSet [1]uint8
+
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "point":
@@ -19065,7 +18489,6 @@ func (s *MaskPosition) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return err
 	}
-
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00001111,
@@ -19097,6 +18520,7 @@ func (s *MaskPosition) Decode(d *jx.Decoder) error {
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
+
 	return nil
 }
 
@@ -19753,6 +19177,7 @@ func (s *Message) Decode(d *jx.Decoder) error {
 		return errors.New(`invalid: unable to decode Message to nil`)
 	}
 	var requiredBitSet [8]uint8
+
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "message_id":
@@ -19763,13 +19188,11 @@ func (s *Message) Decode(d *jx.Decoder) error {
 				return err
 			}
 		case "from":
-			requiredBitSet[0] |= 1 << 1
 			s.From.Reset()
 			if err := s.From.Decode(d); err != nil {
 				return err
 			}
 		case "sender_chat":
-			requiredBitSet[0] |= 1 << 2
 			s.SenderChat.Reset()
 			if err := s.SenderChat.Decode(d); err != nil {
 				return err
@@ -19787,49 +19210,41 @@ func (s *Message) Decode(d *jx.Decoder) error {
 				return err
 			}
 		case "forward_from":
-			requiredBitSet[0] |= 1 << 5
 			s.ForwardFrom.Reset()
 			if err := s.ForwardFrom.Decode(d); err != nil {
 				return err
 			}
 		case "forward_from_chat":
-			requiredBitSet[0] |= 1 << 6
 			s.ForwardFromChat.Reset()
 			if err := s.ForwardFromChat.Decode(d); err != nil {
 				return err
 			}
 		case "forward_from_message_id":
-			requiredBitSet[0] |= 1 << 7
 			s.ForwardFromMessageID.Reset()
 			if err := s.ForwardFromMessageID.Decode(d); err != nil {
 				return err
 			}
 		case "forward_signature":
-			requiredBitSet[1] |= 1 << 0
 			s.ForwardSignature.Reset()
 			if err := s.ForwardSignature.Decode(d); err != nil {
 				return err
 			}
 		case "forward_sender_name":
-			requiredBitSet[1] |= 1 << 1
 			s.ForwardSenderName.Reset()
 			if err := s.ForwardSenderName.Decode(d); err != nil {
 				return err
 			}
 		case "forward_date":
-			requiredBitSet[1] |= 1 << 2
 			s.ForwardDate.Reset()
 			if err := s.ForwardDate.Decode(d); err != nil {
 				return err
 			}
 		case "is_automatic_forward":
-			requiredBitSet[1] |= 1 << 3
 			s.IsAutomaticForward.Reset()
 			if err := s.IsAutomaticForward.Decode(d); err != nil {
 				return err
 			}
 		case "reply_to_message":
-			requiredBitSet[1] |= 1 << 4
 			s.ReplyToMessage = nil
 			var elem Message
 			if err := elem.Decode(d); err != nil {
@@ -19837,43 +19252,36 @@ func (s *Message) Decode(d *jx.Decoder) error {
 			}
 			s.ReplyToMessage = &elem
 		case "via_bot":
-			requiredBitSet[1] |= 1 << 5
 			s.ViaBot.Reset()
 			if err := s.ViaBot.Decode(d); err != nil {
 				return err
 			}
 		case "edit_date":
-			requiredBitSet[1] |= 1 << 6
 			s.EditDate.Reset()
 			if err := s.EditDate.Decode(d); err != nil {
 				return err
 			}
 		case "has_protected_content":
-			requiredBitSet[1] |= 1 << 7
 			s.HasProtectedContent.Reset()
 			if err := s.HasProtectedContent.Decode(d); err != nil {
 				return err
 			}
 		case "media_group_id":
-			requiredBitSet[2] |= 1 << 0
 			s.MediaGroupID.Reset()
 			if err := s.MediaGroupID.Decode(d); err != nil {
 				return err
 			}
 		case "author_signature":
-			requiredBitSet[2] |= 1 << 1
 			s.AuthorSignature.Reset()
 			if err := s.AuthorSignature.Decode(d); err != nil {
 				return err
 			}
 		case "text":
-			requiredBitSet[2] |= 1 << 2
 			s.Text.Reset()
 			if err := s.Text.Decode(d); err != nil {
 				return err
 			}
 		case "entities":
-			requiredBitSet[2] |= 1 << 3
 			s.Entities = nil
 			if err := d.Arr(func(d *jx.Decoder) error {
 				var elem MessageEntity
@@ -19886,25 +19294,21 @@ func (s *Message) Decode(d *jx.Decoder) error {
 				return err
 			}
 		case "animation":
-			requiredBitSet[2] |= 1 << 4
 			s.Animation.Reset()
 			if err := s.Animation.Decode(d); err != nil {
 				return err
 			}
 		case "audio":
-			requiredBitSet[2] |= 1 << 5
 			s.Audio.Reset()
 			if err := s.Audio.Decode(d); err != nil {
 				return err
 			}
 		case "document":
-			requiredBitSet[2] |= 1 << 6
 			s.Document.Reset()
 			if err := s.Document.Decode(d); err != nil {
 				return err
 			}
 		case "photo":
-			requiredBitSet[2] |= 1 << 7
 			s.Photo = nil
 			if err := d.Arr(func(d *jx.Decoder) error {
 				var elem PhotoSize
@@ -19917,37 +19321,31 @@ func (s *Message) Decode(d *jx.Decoder) error {
 				return err
 			}
 		case "sticker":
-			requiredBitSet[3] |= 1 << 0
 			s.Sticker.Reset()
 			if err := s.Sticker.Decode(d); err != nil {
 				return err
 			}
 		case "video":
-			requiredBitSet[3] |= 1 << 1
 			s.Video.Reset()
 			if err := s.Video.Decode(d); err != nil {
 				return err
 			}
 		case "video_note":
-			requiredBitSet[3] |= 1 << 2
 			s.VideoNote.Reset()
 			if err := s.VideoNote.Decode(d); err != nil {
 				return err
 			}
 		case "voice":
-			requiredBitSet[3] |= 1 << 3
 			s.Voice.Reset()
 			if err := s.Voice.Decode(d); err != nil {
 				return err
 			}
 		case "caption":
-			requiredBitSet[3] |= 1 << 4
 			s.Caption.Reset()
 			if err := s.Caption.Decode(d); err != nil {
 				return err
 			}
 		case "caption_entities":
-			requiredBitSet[3] |= 1 << 5
 			s.CaptionEntities = nil
 			if err := d.Arr(func(d *jx.Decoder) error {
 				var elem MessageEntity
@@ -19960,43 +19358,36 @@ func (s *Message) Decode(d *jx.Decoder) error {
 				return err
 			}
 		case "contact":
-			requiredBitSet[3] |= 1 << 6
 			s.Contact.Reset()
 			if err := s.Contact.Decode(d); err != nil {
 				return err
 			}
 		case "dice":
-			requiredBitSet[3] |= 1 << 7
 			s.Dice.Reset()
 			if err := s.Dice.Decode(d); err != nil {
 				return err
 			}
 		case "game":
-			requiredBitSet[4] |= 1 << 0
 			s.Game.Reset()
 			if err := s.Game.Decode(d); err != nil {
 				return err
 			}
 		case "poll":
-			requiredBitSet[4] |= 1 << 1
 			s.Poll.Reset()
 			if err := s.Poll.Decode(d); err != nil {
 				return err
 			}
 		case "venue":
-			requiredBitSet[4] |= 1 << 2
 			s.Venue.Reset()
 			if err := s.Venue.Decode(d); err != nil {
 				return err
 			}
 		case "location":
-			requiredBitSet[4] |= 1 << 3
 			s.Location.Reset()
 			if err := s.Location.Decode(d); err != nil {
 				return err
 			}
 		case "new_chat_members":
-			requiredBitSet[4] |= 1 << 4
 			s.NewChatMembers = nil
 			if err := d.Arr(func(d *jx.Decoder) error {
 				var elem User
@@ -20009,19 +19400,16 @@ func (s *Message) Decode(d *jx.Decoder) error {
 				return err
 			}
 		case "left_chat_member":
-			requiredBitSet[4] |= 1 << 5
 			s.LeftChatMember.Reset()
 			if err := s.LeftChatMember.Decode(d); err != nil {
 				return err
 			}
 		case "new_chat_title":
-			requiredBitSet[4] |= 1 << 6
 			s.NewChatTitle.Reset()
 			if err := s.NewChatTitle.Decode(d); err != nil {
 				return err
 			}
 		case "new_chat_photo":
-			requiredBitSet[4] |= 1 << 7
 			s.NewChatPhoto = nil
 			if err := d.Arr(func(d *jx.Decoder) error {
 				var elem PhotoSize
@@ -20034,49 +19422,41 @@ func (s *Message) Decode(d *jx.Decoder) error {
 				return err
 			}
 		case "delete_chat_photo":
-			requiredBitSet[5] |= 1 << 0
 			s.DeleteChatPhoto.Reset()
 			if err := s.DeleteChatPhoto.Decode(d); err != nil {
 				return err
 			}
 		case "group_chat_created":
-			requiredBitSet[5] |= 1 << 1
 			s.GroupChatCreated.Reset()
 			if err := s.GroupChatCreated.Decode(d); err != nil {
 				return err
 			}
 		case "supergroup_chat_created":
-			requiredBitSet[5] |= 1 << 2
 			s.SupergroupChatCreated.Reset()
 			if err := s.SupergroupChatCreated.Decode(d); err != nil {
 				return err
 			}
 		case "channel_chat_created":
-			requiredBitSet[5] |= 1 << 3
 			s.ChannelChatCreated.Reset()
 			if err := s.ChannelChatCreated.Decode(d); err != nil {
 				return err
 			}
 		case "message_auto_delete_timer_changed":
-			requiredBitSet[5] |= 1 << 4
 			s.MessageAutoDeleteTimerChanged.Reset()
 			if err := s.MessageAutoDeleteTimerChanged.Decode(d); err != nil {
 				return err
 			}
 		case "migrate_to_chat_id":
-			requiredBitSet[5] |= 1 << 5
 			s.MigrateToChatID.Reset()
 			if err := s.MigrateToChatID.Decode(d); err != nil {
 				return err
 			}
 		case "migrate_from_chat_id":
-			requiredBitSet[5] |= 1 << 6
 			s.MigrateFromChatID.Reset()
 			if err := s.MigrateFromChatID.Decode(d); err != nil {
 				return err
 			}
 		case "pinned_message":
-			requiredBitSet[5] |= 1 << 7
 			s.PinnedMessage = nil
 			var elem Message
 			if err := elem.Decode(d); err != nil {
@@ -20084,43 +19464,36 @@ func (s *Message) Decode(d *jx.Decoder) error {
 			}
 			s.PinnedMessage = &elem
 		case "invoice":
-			requiredBitSet[6] |= 1 << 0
 			s.Invoice.Reset()
 			if err := s.Invoice.Decode(d); err != nil {
 				return err
 			}
 		case "successful_payment":
-			requiredBitSet[6] |= 1 << 1
 			s.SuccessfulPayment.Reset()
 			if err := s.SuccessfulPayment.Decode(d); err != nil {
 				return err
 			}
 		case "connected_website":
-			requiredBitSet[6] |= 1 << 2
 			s.ConnectedWebsite.Reset()
 			if err := s.ConnectedWebsite.Decode(d); err != nil {
 				return err
 			}
 		case "passport_data":
-			requiredBitSet[6] |= 1 << 3
 			s.PassportData.Reset()
 			if err := s.PassportData.Decode(d); err != nil {
 				return err
 			}
 		case "proximity_alert_triggered":
-			requiredBitSet[6] |= 1 << 4
 			s.ProximityAlertTriggered.Reset()
 			if err := s.ProximityAlertTriggered.Decode(d); err != nil {
 				return err
 			}
 		case "voice_chat_scheduled":
-			requiredBitSet[6] |= 1 << 5
 			s.VoiceChatScheduled.Reset()
 			if err := s.VoiceChatScheduled.Decode(d); err != nil {
 				return err
 			}
 		case "voice_chat_started":
-			requiredBitSet[6] |= 1 << 6
 			s.VoiceChatStarted = nil
 			var elem VoiceChatStarted
 			if err := elem.Decode(d); err != nil {
@@ -20128,19 +19501,16 @@ func (s *Message) Decode(d *jx.Decoder) error {
 			}
 			s.VoiceChatStarted = &elem
 		case "voice_chat_ended":
-			requiredBitSet[6] |= 1 << 7
 			s.VoiceChatEnded.Reset()
 			if err := s.VoiceChatEnded.Decode(d); err != nil {
 				return err
 			}
 		case "voice_chat_participants_invited":
-			requiredBitSet[7] |= 1 << 0
 			s.VoiceChatParticipantsInvited.Reset()
 			if err := s.VoiceChatParticipantsInvited.Decode(d); err != nil {
 				return err
 			}
 		case "reply_markup":
-			requiredBitSet[7] |= 1 << 1
 			s.ReplyMarkup.Reset()
 			if err := s.ReplyMarkup.Decode(d); err != nil {
 				return err
@@ -20152,7 +19522,6 @@ func (s *Message) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return err
 	}
-
 	var failures []validate.FieldError
 	for i, mask := range [8]uint8{
 		0b00011001,
@@ -20191,6 +19560,7 @@ func (s *Message) Decode(d *jx.Decoder) error {
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
+
 	return nil
 }
 
@@ -20223,6 +19593,7 @@ func (s *MessageAutoDeleteTimerChanged) Decode(d *jx.Decoder) error {
 		return errors.New(`invalid: unable to decode MessageAutoDeleteTimerChanged to nil`)
 	}
 	var requiredBitSet [1]uint8
+
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "message_auto_delete_time":
@@ -20239,7 +19610,6 @@ func (s *MessageAutoDeleteTimerChanged) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return err
 	}
-
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000001,
@@ -20271,6 +19641,7 @@ func (s *MessageAutoDeleteTimerChanged) Decode(d *jx.Decoder) error {
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
+
 	return nil
 }
 
@@ -20347,6 +19718,7 @@ func (s *MessageEntity) Decode(d *jx.Decoder) error {
 		return errors.New(`invalid: unable to decode MessageEntity to nil`)
 	}
 	var requiredBitSet [1]uint8
+
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "type":
@@ -20369,19 +19741,16 @@ func (s *MessageEntity) Decode(d *jx.Decoder) error {
 				return err
 			}
 		case "url":
-			requiredBitSet[0] |= 1 << 3
 			s.URL.Reset()
 			if err := s.URL.Decode(d); err != nil {
 				return err
 			}
 		case "user":
-			requiredBitSet[0] |= 1 << 4
 			s.User.Reset()
 			if err := s.User.Decode(d); err != nil {
 				return err
 			}
 		case "language":
-			requiredBitSet[0] |= 1 << 5
 			s.Language.Reset()
 			if err := s.Language.Decode(d); err != nil {
 				return err
@@ -20393,7 +19762,6 @@ func (s *MessageEntity) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return err
 	}
-
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000111,
@@ -20425,6 +19793,7 @@ func (s *MessageEntity) Decode(d *jx.Decoder) error {
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
+
 	return nil
 }
 
@@ -20510,6 +19879,7 @@ func (s *MessageId) Decode(d *jx.Decoder) error {
 		return errors.New(`invalid: unable to decode MessageId to nil`)
 	}
 	var requiredBitSet [1]uint8
+
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "message_id":
@@ -20526,7 +19896,6 @@ func (s *MessageId) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return err
 	}
-
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000001,
@@ -20558,6 +19927,7 @@ func (s *MessageId) Decode(d *jx.Decoder) error {
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
+
 	return nil
 }
 
@@ -22561,29 +21931,25 @@ func (s *OrderInfo) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode OrderInfo to nil`)
 	}
-	var requiredBitSet [1]uint8
+
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "name":
-			requiredBitSet[0] |= 1 << 0
 			s.Name.Reset()
 			if err := s.Name.Decode(d); err != nil {
 				return err
 			}
 		case "phone_number":
-			requiredBitSet[0] |= 1 << 1
 			s.PhoneNumber.Reset()
 			if err := s.PhoneNumber.Decode(d); err != nil {
 				return err
 			}
 		case "email":
-			requiredBitSet[0] |= 1 << 2
 			s.Email.Reset()
 			if err := s.Email.Decode(d); err != nil {
 				return err
 			}
 		case "shipping_address":
-			requiredBitSet[0] |= 1 << 3
 			s.ShippingAddress.Reset()
 			if err := s.ShippingAddress.Decode(d); err != nil {
 				return err
@@ -22596,37 +21962,6 @@ func (s *OrderInfo) Decode(d *jx.Decoder) error {
 		return err
 	}
 
-	var failures []validate.FieldError
-	for i, mask := range [1]uint8{
-		0b00000000,
-	} {
-		if result := (requiredBitSet[i] & mask) ^ mask; result != 0 {
-			// Mask only required fields and check equality to mask using XOR.
-			//
-			// If XOR result is not zero, result is not equal to expected, so some fields are missed.
-			// Bits of fields which would be set are actually bits of missed fields.
-			missed := bits.OnesCount8(result)
-			for bitN := 0; bitN < missed; bitN++ {
-				bitIdx := bits.TrailingZeros8(result)
-				fieldIdx := i*8 + bitIdx
-				var name string
-				if fieldIdx < len(jsonFieldsNameOfOrderInfo) {
-					name = jsonFieldsNameOfOrderInfo[fieldIdx]
-				} else {
-					name = strconv.Itoa(fieldIdx)
-				}
-				failures = append(failures, validate.FieldError{
-					Name:  name,
-					Error: validate.ErrFieldRequired,
-				})
-				// Reset bit.
-				result &^= 1 << bitIdx
-			}
-		}
-	}
-	if len(failures) > 0 {
-		return &validate.Error{Fields: failures}
-	}
 	return nil
 }
 
@@ -22678,6 +22013,7 @@ func (s *PassportData) Decode(d *jx.Decoder) error {
 		return errors.New(`invalid: unable to decode PassportData to nil`)
 	}
 	var requiredBitSet [1]uint8
+
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "data":
@@ -22705,7 +22041,6 @@ func (s *PassportData) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return err
 	}
-
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000011,
@@ -22737,6 +22072,7 @@ func (s *PassportData) Decode(d *jx.Decoder) error {
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
+
 	return nil
 }
 
@@ -22926,6 +22262,7 @@ func (s *PassportElementErrorDataField) Decode(d *jx.Decoder) error {
 		return errors.New(`invalid: unable to decode PassportElementErrorDataField to nil`)
 	}
 	var requiredBitSet [1]uint8
+
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "source":
@@ -22968,7 +22305,6 @@ func (s *PassportElementErrorDataField) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return err
 	}
-
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00011111,
@@ -23000,6 +22336,7 @@ func (s *PassportElementErrorDataField) Decode(d *jx.Decoder) error {
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
+
 	return nil
 }
 
@@ -23088,6 +22425,7 @@ func (s *PassportElementErrorFile) Decode(d *jx.Decoder) error {
 		return errors.New(`invalid: unable to decode PassportElementErrorFile to nil`)
 	}
 	var requiredBitSet [1]uint8
+
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "source":
@@ -23123,7 +22461,6 @@ func (s *PassportElementErrorFile) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return err
 	}
-
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00001111,
@@ -23155,6 +22492,7 @@ func (s *PassportElementErrorFile) Decode(d *jx.Decoder) error {
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
+
 	return nil
 }
 
@@ -23253,6 +22591,7 @@ func (s *PassportElementErrorFiles) Decode(d *jx.Decoder) error {
 		return errors.New(`invalid: unable to decode PassportElementErrorFiles to nil`)
 	}
 	var requiredBitSet [1]uint8
+
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "source":
@@ -23296,7 +22635,6 @@ func (s *PassportElementErrorFiles) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return err
 	}
-
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00001111,
@@ -23328,6 +22666,7 @@ func (s *PassportElementErrorFiles) Decode(d *jx.Decoder) error {
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
+
 	return nil
 }
 
@@ -23414,6 +22753,7 @@ func (s *PassportElementErrorFrontSide) Decode(d *jx.Decoder) error {
 		return errors.New(`invalid: unable to decode PassportElementErrorFrontSide to nil`)
 	}
 	var requiredBitSet [1]uint8
+
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "source":
@@ -23449,7 +22789,6 @@ func (s *PassportElementErrorFrontSide) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return err
 	}
-
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00001111,
@@ -23481,6 +22820,7 @@ func (s *PassportElementErrorFrontSide) Decode(d *jx.Decoder) error {
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
+
 	return nil
 }
 
@@ -23565,6 +22905,7 @@ func (s *PassportElementErrorReverseSide) Decode(d *jx.Decoder) error {
 		return errors.New(`invalid: unable to decode PassportElementErrorReverseSide to nil`)
 	}
 	var requiredBitSet [1]uint8
+
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "source":
@@ -23600,7 +22941,6 @@ func (s *PassportElementErrorReverseSide) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return err
 	}
-
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00001111,
@@ -23632,6 +22972,7 @@ func (s *PassportElementErrorReverseSide) Decode(d *jx.Decoder) error {
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
+
 	return nil
 }
 
@@ -23712,6 +23053,7 @@ func (s *PassportElementErrorSelfie) Decode(d *jx.Decoder) error {
 		return errors.New(`invalid: unable to decode PassportElementErrorSelfie to nil`)
 	}
 	var requiredBitSet [1]uint8
+
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "source":
@@ -23747,7 +23089,6 @@ func (s *PassportElementErrorSelfie) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return err
 	}
-
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00001111,
@@ -23779,6 +23120,7 @@ func (s *PassportElementErrorSelfie) Decode(d *jx.Decoder) error {
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
+
 	return nil
 }
 
@@ -23863,6 +23205,7 @@ func (s *PassportElementErrorTranslationFile) Decode(d *jx.Decoder) error {
 		return errors.New(`invalid: unable to decode PassportElementErrorTranslationFile to nil`)
 	}
 	var requiredBitSet [1]uint8
+
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "source":
@@ -23898,7 +23241,6 @@ func (s *PassportElementErrorTranslationFile) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return err
 	}
-
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00001111,
@@ -23930,6 +23272,7 @@ func (s *PassportElementErrorTranslationFile) Decode(d *jx.Decoder) error {
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
+
 	return nil
 }
 
@@ -24036,6 +23379,7 @@ func (s *PassportElementErrorTranslationFiles) Decode(d *jx.Decoder) error {
 		return errors.New(`invalid: unable to decode PassportElementErrorTranslationFiles to nil`)
 	}
 	var requiredBitSet [1]uint8
+
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "source":
@@ -24079,7 +23423,6 @@ func (s *PassportElementErrorTranslationFiles) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return err
 	}
-
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00001111,
@@ -24111,6 +23454,7 @@ func (s *PassportElementErrorTranslationFiles) Decode(d *jx.Decoder) error {
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
+
 	return nil
 }
 
@@ -24205,6 +23549,7 @@ func (s *PassportElementErrorUnspecified) Decode(d *jx.Decoder) error {
 		return errors.New(`invalid: unable to decode PassportElementErrorUnspecified to nil`)
 	}
 	var requiredBitSet [1]uint8
+
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "source":
@@ -24242,7 +23587,6 @@ func (s *PassportElementErrorUnspecified) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return err
 	}
-
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00001111,
@@ -24274,6 +23618,7 @@ func (s *PassportElementErrorUnspecified) Decode(d *jx.Decoder) error {
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
+
 	return nil
 }
 
@@ -24327,6 +23672,7 @@ func (s *PassportFile) Decode(d *jx.Decoder) error {
 		return errors.New(`invalid: unable to decode PassportFile to nil`)
 	}
 	var requiredBitSet [1]uint8
+
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "file_id":
@@ -24364,7 +23710,6 @@ func (s *PassportFile) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return err
 	}
-
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00001111,
@@ -24396,6 +23741,7 @@ func (s *PassportFile) Decode(d *jx.Decoder) error {
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
+
 	return nil
 }
 
@@ -24459,6 +23805,7 @@ func (s *PhotoSize) Decode(d *jx.Decoder) error {
 		return errors.New(`invalid: unable to decode PhotoSize to nil`)
 	}
 	var requiredBitSet [1]uint8
+
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "file_id":
@@ -24490,7 +23837,6 @@ func (s *PhotoSize) Decode(d *jx.Decoder) error {
 				return err
 			}
 		case "file_size":
-			requiredBitSet[0] |= 1 << 4
 			s.FileSize.Reset()
 			if err := s.FileSize.Decode(d); err != nil {
 				return err
@@ -24502,7 +23848,6 @@ func (s *PhotoSize) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return err
 	}
-
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00001111,
@@ -24534,6 +23879,7 @@ func (s *PhotoSize) Decode(d *jx.Decoder) error {
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
+
 	return nil
 }
 
@@ -24583,6 +23929,7 @@ func (s *PinChatMessage) Decode(d *jx.Decoder) error {
 		return errors.New(`invalid: unable to decode PinChatMessage to nil`)
 	}
 	var requiredBitSet [1]uint8
+
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "chat_id":
@@ -24598,7 +23945,6 @@ func (s *PinChatMessage) Decode(d *jx.Decoder) error {
 				return err
 			}
 		case "disable_notification":
-			requiredBitSet[0] |= 1 << 2
 			s.DisableNotification.Reset()
 			if err := s.DisableNotification.Decode(d); err != nil {
 				return err
@@ -24610,7 +23956,6 @@ func (s *PinChatMessage) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return err
 	}
-
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000011,
@@ -24642,6 +23987,7 @@ func (s *PinChatMessage) Decode(d *jx.Decoder) error {
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
+
 	return nil
 }
 
@@ -24797,6 +24143,7 @@ func (s *Poll) Decode(d *jx.Decoder) error {
 		return errors.New(`invalid: unable to decode Poll to nil`)
 	}
 	var requiredBitSet [2]uint8
+
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "id":
@@ -24860,19 +24207,16 @@ func (s *Poll) Decode(d *jx.Decoder) error {
 				return err
 			}
 		case "correct_option_id":
-			requiredBitSet[1] |= 1 << 0
 			s.CorrectOptionID.Reset()
 			if err := s.CorrectOptionID.Decode(d); err != nil {
 				return err
 			}
 		case "explanation":
-			requiredBitSet[1] |= 1 << 1
 			s.Explanation.Reset()
 			if err := s.Explanation.Decode(d); err != nil {
 				return err
 			}
 		case "explanation_entities":
-			requiredBitSet[1] |= 1 << 2
 			s.ExplanationEntities = nil
 			if err := d.Arr(func(d *jx.Decoder) error {
 				var elem MessageEntity
@@ -24885,13 +24229,11 @@ func (s *Poll) Decode(d *jx.Decoder) error {
 				return err
 			}
 		case "open_period":
-			requiredBitSet[1] |= 1 << 3
 			s.OpenPeriod.Reset()
 			if err := s.OpenPeriod.Decode(d); err != nil {
 				return err
 			}
 		case "close_date":
-			requiredBitSet[1] |= 1 << 4
 			s.CloseDate.Reset()
 			if err := s.CloseDate.Decode(d); err != nil {
 				return err
@@ -24903,7 +24245,6 @@ func (s *Poll) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return err
 	}
-
 	var failures []validate.FieldError
 	for i, mask := range [2]uint8{
 		0b11111111,
@@ -24936,6 +24277,7 @@ func (s *Poll) Decode(d *jx.Decoder) error {
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
+
 	return nil
 }
 
@@ -24994,6 +24336,7 @@ func (s *PollAnswer) Decode(d *jx.Decoder) error {
 		return errors.New(`invalid: unable to decode PollAnswer to nil`)
 	}
 	var requiredBitSet [1]uint8
+
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "poll_id":
@@ -25030,7 +24373,6 @@ func (s *PollAnswer) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return err
 	}
-
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000111,
@@ -25062,6 +24404,7 @@ func (s *PollAnswer) Decode(d *jx.Decoder) error {
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
+
 	return nil
 }
 
@@ -25101,6 +24444,7 @@ func (s *PollOption) Decode(d *jx.Decoder) error {
 		return errors.New(`invalid: unable to decode PollOption to nil`)
 	}
 	var requiredBitSet [1]uint8
+
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "text":
@@ -25124,7 +24468,6 @@ func (s *PollOption) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return err
 	}
-
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000011,
@@ -25156,6 +24499,7 @@ func (s *PollOption) Decode(d *jx.Decoder) error {
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
+
 	return nil
 }
 
@@ -25263,6 +24607,7 @@ func (s *PreCheckoutQuery) Decode(d *jx.Decoder) error {
 		return errors.New(`invalid: unable to decode PreCheckoutQuery to nil`)
 	}
 	var requiredBitSet [1]uint8
+
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "id":
@@ -25299,13 +24644,11 @@ func (s *PreCheckoutQuery) Decode(d *jx.Decoder) error {
 				return err
 			}
 		case "shipping_option_id":
-			requiredBitSet[0] |= 1 << 5
 			s.ShippingOptionID.Reset()
 			if err := s.ShippingOptionID.Decode(d); err != nil {
 				return err
 			}
 		case "order_info":
-			requiredBitSet[0] |= 1 << 6
 			s.OrderInfo.Reset()
 			if err := s.OrderInfo.Decode(d); err != nil {
 				return err
@@ -25317,7 +24660,6 @@ func (s *PreCheckoutQuery) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return err
 	}
-
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00011111,
@@ -25349,6 +24691,7 @@ func (s *PreCheckoutQuery) Decode(d *jx.Decoder) error {
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
+
 	return nil
 }
 
@@ -25498,6 +24841,7 @@ func (s *PromoteChatMember) Decode(d *jx.Decoder) error {
 		return errors.New(`invalid: unable to decode PromoteChatMember to nil`)
 	}
 	var requiredBitSet [2]uint8
+
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "chat_id":
@@ -25513,67 +24857,56 @@ func (s *PromoteChatMember) Decode(d *jx.Decoder) error {
 				return err
 			}
 		case "is_anonymous":
-			requiredBitSet[0] |= 1 << 2
 			s.IsAnonymous.Reset()
 			if err := s.IsAnonymous.Decode(d); err != nil {
 				return err
 			}
 		case "can_manage_chat":
-			requiredBitSet[0] |= 1 << 3
 			s.CanManageChat.Reset()
 			if err := s.CanManageChat.Decode(d); err != nil {
 				return err
 			}
 		case "can_post_messages":
-			requiredBitSet[0] |= 1 << 4
 			s.CanPostMessages.Reset()
 			if err := s.CanPostMessages.Decode(d); err != nil {
 				return err
 			}
 		case "can_edit_messages":
-			requiredBitSet[0] |= 1 << 5
 			s.CanEditMessages.Reset()
 			if err := s.CanEditMessages.Decode(d); err != nil {
 				return err
 			}
 		case "can_delete_messages":
-			requiredBitSet[0] |= 1 << 6
 			s.CanDeleteMessages.Reset()
 			if err := s.CanDeleteMessages.Decode(d); err != nil {
 				return err
 			}
 		case "can_manage_voice_chats":
-			requiredBitSet[0] |= 1 << 7
 			s.CanManageVoiceChats.Reset()
 			if err := s.CanManageVoiceChats.Decode(d); err != nil {
 				return err
 			}
 		case "can_restrict_members":
-			requiredBitSet[1] |= 1 << 0
 			s.CanRestrictMembers.Reset()
 			if err := s.CanRestrictMembers.Decode(d); err != nil {
 				return err
 			}
 		case "can_promote_members":
-			requiredBitSet[1] |= 1 << 1
 			s.CanPromoteMembers.Reset()
 			if err := s.CanPromoteMembers.Decode(d); err != nil {
 				return err
 			}
 		case "can_change_info":
-			requiredBitSet[1] |= 1 << 2
 			s.CanChangeInfo.Reset()
 			if err := s.CanChangeInfo.Decode(d); err != nil {
 				return err
 			}
 		case "can_invite_users":
-			requiredBitSet[1] |= 1 << 3
 			s.CanInviteUsers.Reset()
 			if err := s.CanInviteUsers.Decode(d); err != nil {
 				return err
 			}
 		case "can_pin_messages":
-			requiredBitSet[1] |= 1 << 4
 			s.CanPinMessages.Reset()
 			if err := s.CanPinMessages.Decode(d); err != nil {
 				return err
@@ -25585,7 +24918,6 @@ func (s *PromoteChatMember) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return err
 	}
-
 	var failures []validate.FieldError
 	for i, mask := range [2]uint8{
 		0b00000011,
@@ -25618,6 +24950,7 @@ func (s *PromoteChatMember) Decode(d *jx.Decoder) error {
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
+
 	return nil
 }
 
@@ -25664,6 +24997,7 @@ func (s *ProximityAlertTriggered) Decode(d *jx.Decoder) error {
 		return errors.New(`invalid: unable to decode ProximityAlertTriggered to nil`)
 	}
 	var requiredBitSet [1]uint8
+
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "traveler":
@@ -25690,7 +25024,6 @@ func (s *ProximityAlertTriggered) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return err
 	}
-
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000111,
@@ -25722,6 +25055,7 @@ func (s *ProximityAlertTriggered) Decode(d *jx.Decoder) error {
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
+
 	return nil
 }
 
@@ -25830,6 +25164,7 @@ func (s *ReplyKeyboardMarkup) Decode(d *jx.Decoder) error {
 		return errors.New(`invalid: unable to decode ReplyKeyboardMarkup to nil`)
 	}
 	var requiredBitSet [1]uint8
+
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "keyboard":
@@ -25854,25 +25189,21 @@ func (s *ReplyKeyboardMarkup) Decode(d *jx.Decoder) error {
 				return err
 			}
 		case "resize_keyboard":
-			requiredBitSet[0] |= 1 << 1
 			s.ResizeKeyboard.Reset()
 			if err := s.ResizeKeyboard.Decode(d); err != nil {
 				return err
 			}
 		case "one_time_keyboard":
-			requiredBitSet[0] |= 1 << 2
 			s.OneTimeKeyboard.Reset()
 			if err := s.OneTimeKeyboard.Decode(d); err != nil {
 				return err
 			}
 		case "input_field_placeholder":
-			requiredBitSet[0] |= 1 << 3
 			s.InputFieldPlaceholder.Reset()
 			if err := s.InputFieldPlaceholder.Decode(d); err != nil {
 				return err
 			}
 		case "selective":
-			requiredBitSet[0] |= 1 << 4
 			s.Selective.Reset()
 			if err := s.Selective.Decode(d); err != nil {
 				return err
@@ -25884,7 +25215,6 @@ func (s *ReplyKeyboardMarkup) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return err
 	}
-
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000001,
@@ -25916,6 +25246,7 @@ func (s *ReplyKeyboardMarkup) Decode(d *jx.Decoder) error {
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
+
 	return nil
 }
 
@@ -25958,6 +25289,7 @@ func (s *ReplyKeyboardRemove) Decode(d *jx.Decoder) error {
 		return errors.New(`invalid: unable to decode ReplyKeyboardRemove to nil`)
 	}
 	var requiredBitSet [1]uint8
+
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "remove_keyboard":
@@ -25968,7 +25300,6 @@ func (s *ReplyKeyboardRemove) Decode(d *jx.Decoder) error {
 				return err
 			}
 		case "selective":
-			requiredBitSet[0] |= 1 << 1
 			s.Selective.Reset()
 			if err := s.Selective.Decode(d); err != nil {
 				return err
@@ -25980,7 +25311,6 @@ func (s *ReplyKeyboardRemove) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return err
 	}
-
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000001,
@@ -26012,6 +25342,7 @@ func (s *ReplyKeyboardRemove) Decode(d *jx.Decoder) error {
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
+
 	return nil
 }
 
@@ -26059,17 +25390,15 @@ func (s *Response) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode Response to nil`)
 	}
-	var requiredBitSet [1]uint8
+
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "migrate_to_chat_id":
-			requiredBitSet[0] |= 1 << 0
 			s.MigrateToChatID.Reset()
 			if err := s.MigrateToChatID.Decode(d); err != nil {
 				return err
 			}
 		case "retry_after":
-			requiredBitSet[0] |= 1 << 1
 			s.RetryAfter.Reset()
 			if err := s.RetryAfter.Decode(d); err != nil {
 				return err
@@ -26082,37 +25411,6 @@ func (s *Response) Decode(d *jx.Decoder) error {
 		return err
 	}
 
-	var failures []validate.FieldError
-	for i, mask := range [1]uint8{
-		0b00000000,
-	} {
-		if result := (requiredBitSet[i] & mask) ^ mask; result != 0 {
-			// Mask only required fields and check equality to mask using XOR.
-			//
-			// If XOR result is not zero, result is not equal to expected, so some fields are missed.
-			// Bits of fields which would be set are actually bits of missed fields.
-			missed := bits.OnesCount8(result)
-			for bitN := 0; bitN < missed; bitN++ {
-				bitIdx := bits.TrailingZeros8(result)
-				fieldIdx := i*8 + bitIdx
-				var name string
-				if fieldIdx < len(jsonFieldsNameOfResponse) {
-					name = jsonFieldsNameOfResponse[fieldIdx]
-				} else {
-					name = strconv.Itoa(fieldIdx)
-				}
-				failures = append(failures, validate.FieldError{
-					Name:  name,
-					Error: validate.ErrFieldRequired,
-				})
-				// Reset bit.
-				result &^= 1 << bitIdx
-			}
-		}
-	}
-	if len(failures) > 0 {
-		return &validate.Error{Fields: failures}
-	}
 	return nil
 }
 
@@ -26169,6 +25467,7 @@ func (s *RestrictChatMember) Decode(d *jx.Decoder) error {
 		return errors.New(`invalid: unable to decode RestrictChatMember to nil`)
 	}
 	var requiredBitSet [1]uint8
+
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "chat_id":
@@ -26189,7 +25488,6 @@ func (s *RestrictChatMember) Decode(d *jx.Decoder) error {
 				return err
 			}
 		case "until_date":
-			requiredBitSet[0] |= 1 << 3
 			s.UntilDate.Reset()
 			if err := s.UntilDate.Decode(d); err != nil {
 				return err
@@ -26201,7 +25499,6 @@ func (s *RestrictChatMember) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return err
 	}
-
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000111,
@@ -26233,6 +25530,7 @@ func (s *RestrictChatMember) Decode(d *jx.Decoder) error {
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
+
 	return nil
 }
 
@@ -26278,10 +25576,10 @@ func (s *Result) Decode(d *jx.Decoder) error {
 		return errors.New(`invalid: unable to decode Result to nil`)
 	}
 	var requiredBitSet [1]uint8
+
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "result":
-			requiredBitSet[0] |= 1 << 0
 			s.Result.Reset()
 			if err := s.Result.Decode(d); err != nil {
 				return err
@@ -26300,7 +25598,6 @@ func (s *Result) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return err
 	}
-
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000010,
@@ -26332,6 +25629,7 @@ func (s *Result) Decode(d *jx.Decoder) error {
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
+
 	return nil
 }
 
@@ -26389,10 +25687,10 @@ func (s *ResultArrayOfBotCommand) Decode(d *jx.Decoder) error {
 		return errors.New(`invalid: unable to decode ResultArrayOfBotCommand to nil`)
 	}
 	var requiredBitSet [1]uint8
+
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "result":
-			requiredBitSet[0] |= 1 << 0
 			s.Result = nil
 			if err := d.Arr(func(d *jx.Decoder) error {
 				var elem BotCommand
@@ -26418,7 +25716,6 @@ func (s *ResultArrayOfBotCommand) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return err
 	}
-
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000010,
@@ -26450,6 +25747,7 @@ func (s *ResultArrayOfBotCommand) Decode(d *jx.Decoder) error {
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
+
 	return nil
 }
 
@@ -26507,10 +25805,10 @@ func (s *ResultArrayOfChatMember) Decode(d *jx.Decoder) error {
 		return errors.New(`invalid: unable to decode ResultArrayOfChatMember to nil`)
 	}
 	var requiredBitSet [1]uint8
+
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "result":
-			requiredBitSet[0] |= 1 << 0
 			s.Result = nil
 			if err := d.Arr(func(d *jx.Decoder) error {
 				var elem ChatMember
@@ -26536,7 +25834,6 @@ func (s *ResultArrayOfChatMember) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return err
 	}
-
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000010,
@@ -26568,6 +25865,7 @@ func (s *ResultArrayOfChatMember) Decode(d *jx.Decoder) error {
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
+
 	return nil
 }
 
@@ -26625,10 +25923,10 @@ func (s *ResultArrayOfGameHighScore) Decode(d *jx.Decoder) error {
 		return errors.New(`invalid: unable to decode ResultArrayOfGameHighScore to nil`)
 	}
 	var requiredBitSet [1]uint8
+
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "result":
-			requiredBitSet[0] |= 1 << 0
 			s.Result = nil
 			if err := d.Arr(func(d *jx.Decoder) error {
 				var elem GameHighScore
@@ -26654,7 +25952,6 @@ func (s *ResultArrayOfGameHighScore) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return err
 	}
-
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000010,
@@ -26686,6 +25983,7 @@ func (s *ResultArrayOfGameHighScore) Decode(d *jx.Decoder) error {
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
+
 	return nil
 }
 
@@ -26743,10 +26041,10 @@ func (s *ResultArrayOfMessage) Decode(d *jx.Decoder) error {
 		return errors.New(`invalid: unable to decode ResultArrayOfMessage to nil`)
 	}
 	var requiredBitSet [1]uint8
+
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "result":
-			requiredBitSet[0] |= 1 << 0
 			s.Result = nil
 			if err := d.Arr(func(d *jx.Decoder) error {
 				var elem Message
@@ -26772,7 +26070,6 @@ func (s *ResultArrayOfMessage) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return err
 	}
-
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000010,
@@ -26804,6 +26101,7 @@ func (s *ResultArrayOfMessage) Decode(d *jx.Decoder) error {
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
+
 	return nil
 }
 
@@ -26861,10 +26159,10 @@ func (s *ResultArrayOfUpdate) Decode(d *jx.Decoder) error {
 		return errors.New(`invalid: unable to decode ResultArrayOfUpdate to nil`)
 	}
 	var requiredBitSet [1]uint8
+
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "result":
-			requiredBitSet[0] |= 1 << 0
 			s.Result = nil
 			if err := d.Arr(func(d *jx.Decoder) error {
 				var elem Update
@@ -26890,7 +26188,6 @@ func (s *ResultArrayOfUpdate) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return err
 	}
-
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000010,
@@ -26922,6 +26219,7 @@ func (s *ResultArrayOfUpdate) Decode(d *jx.Decoder) error {
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
+
 	return nil
 }
 
@@ -26967,10 +26265,10 @@ func (s *ResultChat) Decode(d *jx.Decoder) error {
 		return errors.New(`invalid: unable to decode ResultChat to nil`)
 	}
 	var requiredBitSet [1]uint8
+
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "result":
-			requiredBitSet[0] |= 1 << 0
 			s.Result.Reset()
 			if err := s.Result.Decode(d); err != nil {
 				return err
@@ -26989,7 +26287,6 @@ func (s *ResultChat) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return err
 	}
-
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000010,
@@ -27021,6 +26318,7 @@ func (s *ResultChat) Decode(d *jx.Decoder) error {
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
+
 	return nil
 }
 
@@ -27066,10 +26364,10 @@ func (s *ResultChatInviteLink) Decode(d *jx.Decoder) error {
 		return errors.New(`invalid: unable to decode ResultChatInviteLink to nil`)
 	}
 	var requiredBitSet [1]uint8
+
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "result":
-			requiredBitSet[0] |= 1 << 0
 			s.Result.Reset()
 			if err := s.Result.Decode(d); err != nil {
 				return err
@@ -27088,7 +26386,6 @@ func (s *ResultChatInviteLink) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return err
 	}
-
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000010,
@@ -27120,6 +26417,7 @@ func (s *ResultChatInviteLink) Decode(d *jx.Decoder) error {
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
+
 	return nil
 }
 
@@ -27165,10 +26463,10 @@ func (s *ResultChatMember) Decode(d *jx.Decoder) error {
 		return errors.New(`invalid: unable to decode ResultChatMember to nil`)
 	}
 	var requiredBitSet [1]uint8
+
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "result":
-			requiredBitSet[0] |= 1 << 0
 			s.Result.Reset()
 			if err := s.Result.Decode(d); err != nil {
 				return err
@@ -27187,7 +26485,6 @@ func (s *ResultChatMember) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return err
 	}
-
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000010,
@@ -27219,6 +26516,7 @@ func (s *ResultChatMember) Decode(d *jx.Decoder) error {
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
+
 	return nil
 }
 
@@ -27264,10 +26562,10 @@ func (s *ResultFile) Decode(d *jx.Decoder) error {
 		return errors.New(`invalid: unable to decode ResultFile to nil`)
 	}
 	var requiredBitSet [1]uint8
+
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "result":
-			requiredBitSet[0] |= 1 << 0
 			s.Result.Reset()
 			if err := s.Result.Decode(d); err != nil {
 				return err
@@ -27286,7 +26584,6 @@ func (s *ResultFile) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return err
 	}
-
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000010,
@@ -27318,6 +26615,7 @@ func (s *ResultFile) Decode(d *jx.Decoder) error {
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
+
 	return nil
 }
 
@@ -27363,10 +26661,10 @@ func (s *ResultInt) Decode(d *jx.Decoder) error {
 		return errors.New(`invalid: unable to decode ResultInt to nil`)
 	}
 	var requiredBitSet [1]uint8
+
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "result":
-			requiredBitSet[0] |= 1 << 0
 			s.Result.Reset()
 			if err := s.Result.Decode(d); err != nil {
 				return err
@@ -27385,7 +26683,6 @@ func (s *ResultInt) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return err
 	}
-
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000010,
@@ -27417,6 +26714,7 @@ func (s *ResultInt) Decode(d *jx.Decoder) error {
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
+
 	return nil
 }
 
@@ -27462,10 +26760,10 @@ func (s *ResultMessage) Decode(d *jx.Decoder) error {
 		return errors.New(`invalid: unable to decode ResultMessage to nil`)
 	}
 	var requiredBitSet [1]uint8
+
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "result":
-			requiredBitSet[0] |= 1 << 0
 			s.Result.Reset()
 			if err := s.Result.Decode(d); err != nil {
 				return err
@@ -27484,7 +26782,6 @@ func (s *ResultMessage) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return err
 	}
-
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000010,
@@ -27516,6 +26813,7 @@ func (s *ResultMessage) Decode(d *jx.Decoder) error {
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
+
 	return nil
 }
 
@@ -27561,10 +26859,10 @@ func (s *ResultMessageId) Decode(d *jx.Decoder) error {
 		return errors.New(`invalid: unable to decode ResultMessageId to nil`)
 	}
 	var requiredBitSet [1]uint8
+
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "result":
-			requiredBitSet[0] |= 1 << 0
 			s.Result.Reset()
 			if err := s.Result.Decode(d); err != nil {
 				return err
@@ -27583,7 +26881,6 @@ func (s *ResultMessageId) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return err
 	}
-
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000010,
@@ -27615,6 +26912,7 @@ func (s *ResultMessageId) Decode(d *jx.Decoder) error {
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
+
 	return nil
 }
 
@@ -27660,10 +26958,10 @@ func (s *ResultPoll) Decode(d *jx.Decoder) error {
 		return errors.New(`invalid: unable to decode ResultPoll to nil`)
 	}
 	var requiredBitSet [1]uint8
+
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "result":
-			requiredBitSet[0] |= 1 << 0
 			s.Result.Reset()
 			if err := s.Result.Decode(d); err != nil {
 				return err
@@ -27682,7 +26980,6 @@ func (s *ResultPoll) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return err
 	}
-
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000010,
@@ -27714,6 +27011,7 @@ func (s *ResultPoll) Decode(d *jx.Decoder) error {
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
+
 	return nil
 }
 
@@ -27759,10 +27057,10 @@ func (s *ResultString) Decode(d *jx.Decoder) error {
 		return errors.New(`invalid: unable to decode ResultString to nil`)
 	}
 	var requiredBitSet [1]uint8
+
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "result":
-			requiredBitSet[0] |= 1 << 0
 			s.Result.Reset()
 			if err := s.Result.Decode(d); err != nil {
 				return err
@@ -27781,7 +27079,6 @@ func (s *ResultString) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return err
 	}
-
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000010,
@@ -27813,6 +27110,7 @@ func (s *ResultString) Decode(d *jx.Decoder) error {
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
+
 	return nil
 }
 
@@ -27858,10 +27156,10 @@ func (s *ResultUser) Decode(d *jx.Decoder) error {
 		return errors.New(`invalid: unable to decode ResultUser to nil`)
 	}
 	var requiredBitSet [1]uint8
+
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "result":
-			requiredBitSet[0] |= 1 << 0
 			s.Result.Reset()
 			if err := s.Result.Decode(d); err != nil {
 				return err
@@ -27880,7 +27178,6 @@ func (s *ResultUser) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return err
 	}
-
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000010,
@@ -27912,6 +27209,7 @@ func (s *ResultUser) Decode(d *jx.Decoder) error {
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
+
 	return nil
 }
 
@@ -27957,10 +27255,10 @@ func (s *ResultUserProfilePhotos) Decode(d *jx.Decoder) error {
 		return errors.New(`invalid: unable to decode ResultUserProfilePhotos to nil`)
 	}
 	var requiredBitSet [1]uint8
+
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "result":
-			requiredBitSet[0] |= 1 << 0
 			s.Result.Reset()
 			if err := s.Result.Decode(d); err != nil {
 				return err
@@ -27979,7 +27277,6 @@ func (s *ResultUserProfilePhotos) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return err
 	}
-
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000010,
@@ -28011,6 +27308,7 @@ func (s *ResultUserProfilePhotos) Decode(d *jx.Decoder) error {
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
+
 	return nil
 }
 
@@ -28056,10 +27354,10 @@ func (s *ResultWebhookInfo) Decode(d *jx.Decoder) error {
 		return errors.New(`invalid: unable to decode ResultWebhookInfo to nil`)
 	}
 	var requiredBitSet [1]uint8
+
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "result":
-			requiredBitSet[0] |= 1 << 0
 			s.Result.Reset()
 			if err := s.Result.Decode(d); err != nil {
 				return err
@@ -28078,7 +27376,6 @@ func (s *ResultWebhookInfo) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return err
 	}
-
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000010,
@@ -28110,6 +27407,7 @@ func (s *ResultWebhookInfo) Decode(d *jx.Decoder) error {
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
+
 	return nil
 }
 
@@ -28149,6 +27447,7 @@ func (s *RevokeChatInviteLink) Decode(d *jx.Decoder) error {
 		return errors.New(`invalid: unable to decode RevokeChatInviteLink to nil`)
 	}
 	var requiredBitSet [1]uint8
+
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "chat_id":
@@ -28170,7 +27469,6 @@ func (s *RevokeChatInviteLink) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return err
 	}
-
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000011,
@@ -28202,6 +27500,7 @@ func (s *RevokeChatInviteLink) Decode(d *jx.Decoder) error {
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
+
 	return nil
 }
 
@@ -28363,6 +27662,7 @@ func (s *SendAnimation) Decode(d *jx.Decoder) error {
 		return errors.New(`invalid: unable to decode SendAnimation to nil`)
 	}
 	var requiredBitSet [2]uint8
+
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "chat_id":
@@ -28378,43 +27678,36 @@ func (s *SendAnimation) Decode(d *jx.Decoder) error {
 				return err
 			}
 		case "duration":
-			requiredBitSet[0] |= 1 << 2
 			s.Duration.Reset()
 			if err := s.Duration.Decode(d); err != nil {
 				return err
 			}
 		case "width":
-			requiredBitSet[0] |= 1 << 3
 			s.Width.Reset()
 			if err := s.Width.Decode(d); err != nil {
 				return err
 			}
 		case "height":
-			requiredBitSet[0] |= 1 << 4
 			s.Height.Reset()
 			if err := s.Height.Decode(d); err != nil {
 				return err
 			}
 		case "thumb":
-			requiredBitSet[0] |= 1 << 5
 			s.Thumb.Reset()
 			if err := s.Thumb.Decode(d); err != nil {
 				return err
 			}
 		case "caption":
-			requiredBitSet[0] |= 1 << 6
 			s.Caption.Reset()
 			if err := s.Caption.Decode(d); err != nil {
 				return err
 			}
 		case "parse_mode":
-			requiredBitSet[0] |= 1 << 7
 			s.ParseMode.Reset()
 			if err := s.ParseMode.Decode(d); err != nil {
 				return err
 			}
 		case "caption_entities":
-			requiredBitSet[1] |= 1 << 0
 			s.CaptionEntities = nil
 			if err := d.Arr(func(d *jx.Decoder) error {
 				var elem MessageEntity
@@ -28427,25 +27720,21 @@ func (s *SendAnimation) Decode(d *jx.Decoder) error {
 				return err
 			}
 		case "disable_notification":
-			requiredBitSet[1] |= 1 << 1
 			s.DisableNotification.Reset()
 			if err := s.DisableNotification.Decode(d); err != nil {
 				return err
 			}
 		case "reply_to_message_id":
-			requiredBitSet[1] |= 1 << 2
 			s.ReplyToMessageID.Reset()
 			if err := s.ReplyToMessageID.Decode(d); err != nil {
 				return err
 			}
 		case "allow_sending_without_reply":
-			requiredBitSet[1] |= 1 << 3
 			s.AllowSendingWithoutReply.Reset()
 			if err := s.AllowSendingWithoutReply.Decode(d); err != nil {
 				return err
 			}
 		case "reply_markup":
-			requiredBitSet[1] |= 1 << 4
 			s.ReplyMarkup.Reset()
 			if err := s.ReplyMarkup.Decode(d); err != nil {
 				return err
@@ -28457,7 +27746,6 @@ func (s *SendAnimation) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return err
 	}
-
 	var failures []validate.FieldError
 	for i, mask := range [2]uint8{
 		0b00000011,
@@ -28490,6 +27778,7 @@ func (s *SendAnimation) Decode(d *jx.Decoder) error {
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
+
 	return nil
 }
 
@@ -28737,6 +28026,7 @@ func (s *SendAudio) Decode(d *jx.Decoder) error {
 		return errors.New(`invalid: unable to decode SendAudio to nil`)
 	}
 	var requiredBitSet [2]uint8
+
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "chat_id":
@@ -28752,19 +28042,16 @@ func (s *SendAudio) Decode(d *jx.Decoder) error {
 				return err
 			}
 		case "caption":
-			requiredBitSet[0] |= 1 << 2
 			s.Caption.Reset()
 			if err := s.Caption.Decode(d); err != nil {
 				return err
 			}
 		case "parse_mode":
-			requiredBitSet[0] |= 1 << 3
 			s.ParseMode.Reset()
 			if err := s.ParseMode.Decode(d); err != nil {
 				return err
 			}
 		case "caption_entities":
-			requiredBitSet[0] |= 1 << 4
 			s.CaptionEntities = nil
 			if err := d.Arr(func(d *jx.Decoder) error {
 				var elem MessageEntity
@@ -28777,49 +28064,41 @@ func (s *SendAudio) Decode(d *jx.Decoder) error {
 				return err
 			}
 		case "duration":
-			requiredBitSet[0] |= 1 << 5
 			s.Duration.Reset()
 			if err := s.Duration.Decode(d); err != nil {
 				return err
 			}
 		case "performer":
-			requiredBitSet[0] |= 1 << 6
 			s.Performer.Reset()
 			if err := s.Performer.Decode(d); err != nil {
 				return err
 			}
 		case "title":
-			requiredBitSet[0] |= 1 << 7
 			s.Title.Reset()
 			if err := s.Title.Decode(d); err != nil {
 				return err
 			}
 		case "thumb":
-			requiredBitSet[1] |= 1 << 0
 			s.Thumb.Reset()
 			if err := s.Thumb.Decode(d); err != nil {
 				return err
 			}
 		case "disable_notification":
-			requiredBitSet[1] |= 1 << 1
 			s.DisableNotification.Reset()
 			if err := s.DisableNotification.Decode(d); err != nil {
 				return err
 			}
 		case "reply_to_message_id":
-			requiredBitSet[1] |= 1 << 2
 			s.ReplyToMessageID.Reset()
 			if err := s.ReplyToMessageID.Decode(d); err != nil {
 				return err
 			}
 		case "allow_sending_without_reply":
-			requiredBitSet[1] |= 1 << 3
 			s.AllowSendingWithoutReply.Reset()
 			if err := s.AllowSendingWithoutReply.Decode(d); err != nil {
 				return err
 			}
 		case "reply_markup":
-			requiredBitSet[1] |= 1 << 4
 			s.ReplyMarkup.Reset()
 			if err := s.ReplyMarkup.Decode(d); err != nil {
 				return err
@@ -28831,7 +28110,6 @@ func (s *SendAudio) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return err
 	}
-
 	var failures []validate.FieldError
 	for i, mask := range [2]uint8{
 		0b00000011,
@@ -28864,6 +28142,7 @@ func (s *SendAudio) Decode(d *jx.Decoder) error {
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
+
 	return nil
 }
 
@@ -28989,6 +28268,7 @@ func (s *SendChatAction) Decode(d *jx.Decoder) error {
 		return errors.New(`invalid: unable to decode SendChatAction to nil`)
 	}
 	var requiredBitSet [1]uint8
+
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "chat_id":
@@ -29010,7 +28290,6 @@ func (s *SendChatAction) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return err
 	}
-
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000011,
@@ -29042,6 +28321,7 @@ func (s *SendChatAction) Decode(d *jx.Decoder) error {
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
+
 	return nil
 }
 
@@ -29148,6 +28428,7 @@ func (s *SendContact) Decode(d *jx.Decoder) error {
 		return errors.New(`invalid: unable to decode SendContact to nil`)
 	}
 	var requiredBitSet [2]uint8
+
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "chat_id":
@@ -29170,37 +28451,31 @@ func (s *SendContact) Decode(d *jx.Decoder) error {
 				return err
 			}
 		case "last_name":
-			requiredBitSet[0] |= 1 << 3
 			s.LastName.Reset()
 			if err := s.LastName.Decode(d); err != nil {
 				return err
 			}
 		case "vcard":
-			requiredBitSet[0] |= 1 << 4
 			s.Vcard.Reset()
 			if err := s.Vcard.Decode(d); err != nil {
 				return err
 			}
 		case "disable_notification":
-			requiredBitSet[0] |= 1 << 5
 			s.DisableNotification.Reset()
 			if err := s.DisableNotification.Decode(d); err != nil {
 				return err
 			}
 		case "reply_to_message_id":
-			requiredBitSet[0] |= 1 << 6
 			s.ReplyToMessageID.Reset()
 			if err := s.ReplyToMessageID.Decode(d); err != nil {
 				return err
 			}
 		case "allow_sending_without_reply":
-			requiredBitSet[0] |= 1 << 7
 			s.AllowSendingWithoutReply.Reset()
 			if err := s.AllowSendingWithoutReply.Decode(d); err != nil {
 				return err
 			}
 		case "reply_markup":
-			requiredBitSet[1] |= 1 << 0
 			s.ReplyMarkup.Reset()
 			if err := s.ReplyMarkup.Decode(d); err != nil {
 				return err
@@ -29212,7 +28487,6 @@ func (s *SendContact) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return err
 	}
-
 	var failures []validate.FieldError
 	for i, mask := range [2]uint8{
 		0b00000111,
@@ -29245,6 +28519,7 @@ func (s *SendContact) Decode(d *jx.Decoder) error {
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
+
 	return nil
 }
 
@@ -29413,6 +28688,7 @@ func (s *SendDice) Decode(d *jx.Decoder) error {
 		return errors.New(`invalid: unable to decode SendDice to nil`)
 	}
 	var requiredBitSet [1]uint8
+
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "chat_id":
@@ -29421,31 +28697,26 @@ func (s *SendDice) Decode(d *jx.Decoder) error {
 				return err
 			}
 		case "emoji":
-			requiredBitSet[0] |= 1 << 1
 			s.Emoji.Reset()
 			if err := s.Emoji.Decode(d); err != nil {
 				return err
 			}
 		case "disable_notification":
-			requiredBitSet[0] |= 1 << 2
 			s.DisableNotification.Reset()
 			if err := s.DisableNotification.Decode(d); err != nil {
 				return err
 			}
 		case "reply_to_message_id":
-			requiredBitSet[0] |= 1 << 3
 			s.ReplyToMessageID.Reset()
 			if err := s.ReplyToMessageID.Decode(d); err != nil {
 				return err
 			}
 		case "allow_sending_without_reply":
-			requiredBitSet[0] |= 1 << 4
 			s.AllowSendingWithoutReply.Reset()
 			if err := s.AllowSendingWithoutReply.Decode(d); err != nil {
 				return err
 			}
 		case "reply_markup":
-			requiredBitSet[0] |= 1 << 5
 			s.ReplyMarkup.Reset()
 			if err := s.ReplyMarkup.Decode(d); err != nil {
 				return err
@@ -29457,7 +28728,6 @@ func (s *SendDice) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return err
 	}
-
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000001,
@@ -29489,6 +28759,7 @@ func (s *SendDice) Decode(d *jx.Decoder) error {
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
+
 	return nil
 }
 
@@ -29716,6 +28987,7 @@ func (s *SendDocument) Decode(d *jx.Decoder) error {
 		return errors.New(`invalid: unable to decode SendDocument to nil`)
 	}
 	var requiredBitSet [2]uint8
+
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "chat_id":
@@ -29731,25 +29003,21 @@ func (s *SendDocument) Decode(d *jx.Decoder) error {
 				return err
 			}
 		case "thumb":
-			requiredBitSet[0] |= 1 << 2
 			s.Thumb.Reset()
 			if err := s.Thumb.Decode(d); err != nil {
 				return err
 			}
 		case "caption":
-			requiredBitSet[0] |= 1 << 3
 			s.Caption.Reset()
 			if err := s.Caption.Decode(d); err != nil {
 				return err
 			}
 		case "parse_mode":
-			requiredBitSet[0] |= 1 << 4
 			s.ParseMode.Reset()
 			if err := s.ParseMode.Decode(d); err != nil {
 				return err
 			}
 		case "caption_entities":
-			requiredBitSet[0] |= 1 << 5
 			s.CaptionEntities = nil
 			if err := d.Arr(func(d *jx.Decoder) error {
 				var elem MessageEntity
@@ -29762,31 +29030,26 @@ func (s *SendDocument) Decode(d *jx.Decoder) error {
 				return err
 			}
 		case "disable_content_type_detection":
-			requiredBitSet[0] |= 1 << 6
 			s.DisableContentTypeDetection.Reset()
 			if err := s.DisableContentTypeDetection.Decode(d); err != nil {
 				return err
 			}
 		case "disable_notification":
-			requiredBitSet[0] |= 1 << 7
 			s.DisableNotification.Reset()
 			if err := s.DisableNotification.Decode(d); err != nil {
 				return err
 			}
 		case "reply_to_message_id":
-			requiredBitSet[1] |= 1 << 0
 			s.ReplyToMessageID.Reset()
 			if err := s.ReplyToMessageID.Decode(d); err != nil {
 				return err
 			}
 		case "allow_sending_without_reply":
-			requiredBitSet[1] |= 1 << 1
 			s.AllowSendingWithoutReply.Reset()
 			if err := s.AllowSendingWithoutReply.Decode(d); err != nil {
 				return err
 			}
 		case "reply_markup":
-			requiredBitSet[1] |= 1 << 2
 			s.ReplyMarkup.Reset()
 			if err := s.ReplyMarkup.Decode(d); err != nil {
 				return err
@@ -29798,7 +29061,6 @@ func (s *SendDocument) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return err
 	}
-
 	var failures []validate.FieldError
 	for i, mask := range [2]uint8{
 		0b00000011,
@@ -29831,6 +29093,7 @@ func (s *SendDocument) Decode(d *jx.Decoder) error {
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
+
 	return nil
 }
 
@@ -29996,6 +29259,7 @@ func (s *SendGame) Decode(d *jx.Decoder) error {
 		return errors.New(`invalid: unable to decode SendGame to nil`)
 	}
 	var requiredBitSet [1]uint8
+
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "chat_id":
@@ -30013,25 +29277,21 @@ func (s *SendGame) Decode(d *jx.Decoder) error {
 				return err
 			}
 		case "disable_notification":
-			requiredBitSet[0] |= 1 << 2
 			s.DisableNotification.Reset()
 			if err := s.DisableNotification.Decode(d); err != nil {
 				return err
 			}
 		case "reply_to_message_id":
-			requiredBitSet[0] |= 1 << 3
 			s.ReplyToMessageID.Reset()
 			if err := s.ReplyToMessageID.Decode(d); err != nil {
 				return err
 			}
 		case "allow_sending_without_reply":
-			requiredBitSet[0] |= 1 << 4
 			s.AllowSendingWithoutReply.Reset()
 			if err := s.AllowSendingWithoutReply.Decode(d); err != nil {
 				return err
 			}
 		case "reply_markup":
-			requiredBitSet[0] |= 1 << 5
 			s.ReplyMarkup.Reset()
 			if err := s.ReplyMarkup.Decode(d); err != nil {
 				return err
@@ -30043,7 +29303,6 @@ func (s *SendGame) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return err
 	}
-
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000011,
@@ -30075,6 +29334,7 @@ func (s *SendGame) Decode(d *jx.Decoder) error {
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
+
 	return nil
 }
 
@@ -30363,6 +29623,7 @@ func (s *SendInvoice) Decode(d *jx.Decoder) error {
 		return errors.New(`invalid: unable to decode SendInvoice to nil`)
 	}
 	var requiredBitSet [4]uint8
+
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "chat_id":
@@ -30419,13 +29680,11 @@ func (s *SendInvoice) Decode(d *jx.Decoder) error {
 				return err
 			}
 		case "max_tip_amount":
-			requiredBitSet[0] |= 1 << 7
 			s.MaxTipAmount.Reset()
 			if err := s.MaxTipAmount.Decode(d); err != nil {
 				return err
 			}
 		case "suggested_tip_amounts":
-			requiredBitSet[1] |= 1 << 0
 			s.SuggestedTipAmounts = nil
 			if err := d.Arr(func(d *jx.Decoder) error {
 				var elem int
@@ -30440,103 +29699,86 @@ func (s *SendInvoice) Decode(d *jx.Decoder) error {
 				return err
 			}
 		case "start_parameter":
-			requiredBitSet[1] |= 1 << 1
 			s.StartParameter.Reset()
 			if err := s.StartParameter.Decode(d); err != nil {
 				return err
 			}
 		case "provider_data":
-			requiredBitSet[1] |= 1 << 2
 			s.ProviderData.Reset()
 			if err := s.ProviderData.Decode(d); err != nil {
 				return err
 			}
 		case "photo_url":
-			requiredBitSet[1] |= 1 << 3
 			s.PhotoURL.Reset()
 			if err := s.PhotoURL.Decode(d); err != nil {
 				return err
 			}
 		case "photo_size":
-			requiredBitSet[1] |= 1 << 4
 			s.PhotoSize.Reset()
 			if err := s.PhotoSize.Decode(d); err != nil {
 				return err
 			}
 		case "photo_width":
-			requiredBitSet[1] |= 1 << 5
 			s.PhotoWidth.Reset()
 			if err := s.PhotoWidth.Decode(d); err != nil {
 				return err
 			}
 		case "photo_height":
-			requiredBitSet[1] |= 1 << 6
 			s.PhotoHeight.Reset()
 			if err := s.PhotoHeight.Decode(d); err != nil {
 				return err
 			}
 		case "need_name":
-			requiredBitSet[1] |= 1 << 7
 			s.NeedName.Reset()
 			if err := s.NeedName.Decode(d); err != nil {
 				return err
 			}
 		case "need_phone_number":
-			requiredBitSet[2] |= 1 << 0
 			s.NeedPhoneNumber.Reset()
 			if err := s.NeedPhoneNumber.Decode(d); err != nil {
 				return err
 			}
 		case "need_email":
-			requiredBitSet[2] |= 1 << 1
 			s.NeedEmail.Reset()
 			if err := s.NeedEmail.Decode(d); err != nil {
 				return err
 			}
 		case "need_shipping_address":
-			requiredBitSet[2] |= 1 << 2
 			s.NeedShippingAddress.Reset()
 			if err := s.NeedShippingAddress.Decode(d); err != nil {
 				return err
 			}
 		case "send_phone_number_to_provider":
-			requiredBitSet[2] |= 1 << 3
 			s.SendPhoneNumberToProvider.Reset()
 			if err := s.SendPhoneNumberToProvider.Decode(d); err != nil {
 				return err
 			}
 		case "send_email_to_provider":
-			requiredBitSet[2] |= 1 << 4
 			s.SendEmailToProvider.Reset()
 			if err := s.SendEmailToProvider.Decode(d); err != nil {
 				return err
 			}
 		case "is_flexible":
-			requiredBitSet[2] |= 1 << 5
 			s.IsFlexible.Reset()
 			if err := s.IsFlexible.Decode(d); err != nil {
 				return err
 			}
 		case "disable_notification":
-			requiredBitSet[2] |= 1 << 6
 			s.DisableNotification.Reset()
 			if err := s.DisableNotification.Decode(d); err != nil {
 				return err
 			}
 		case "reply_to_message_id":
-			requiredBitSet[2] |= 1 << 7
 			s.ReplyToMessageID.Reset()
 			if err := s.ReplyToMessageID.Decode(d); err != nil {
 				return err
 			}
 		case "allow_sending_without_reply":
-			requiredBitSet[3] |= 1 << 0
 			s.AllowSendingWithoutReply.Reset()
 			if err := s.AllowSendingWithoutReply.Decode(d); err != nil {
 				return err
 			}
 		case "reply_markup":
-			requiredBitSet[3] |= 1 << 1
 			s.ReplyMarkup.Reset()
 			if err := s.ReplyMarkup.Decode(d); err != nil {
 				return err
@@ -30548,7 +29790,6 @@ func (s *SendInvoice) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return err
 	}
-
 	var failures []validate.FieldError
 	for i, mask := range [4]uint8{
 		0b01111111,
@@ -30583,6 +29824,7 @@ func (s *SendInvoice) Decode(d *jx.Decoder) error {
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
+
 	return nil
 }
 
@@ -30709,6 +29951,7 @@ func (s *SendLocation) Decode(d *jx.Decoder) error {
 		return errors.New(`invalid: unable to decode SendLocation to nil`)
 	}
 	var requiredBitSet [2]uint8
+
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "chat_id":
@@ -30731,49 +29974,41 @@ func (s *SendLocation) Decode(d *jx.Decoder) error {
 				return err
 			}
 		case "horizontal_accuracy":
-			requiredBitSet[0] |= 1 << 3
 			s.HorizontalAccuracy.Reset()
 			if err := s.HorizontalAccuracy.Decode(d); err != nil {
 				return err
 			}
 		case "live_period":
-			requiredBitSet[0] |= 1 << 4
 			s.LivePeriod.Reset()
 			if err := s.LivePeriod.Decode(d); err != nil {
 				return err
 			}
 		case "heading":
-			requiredBitSet[0] |= 1 << 5
 			s.Heading.Reset()
 			if err := s.Heading.Decode(d); err != nil {
 				return err
 			}
 		case "proximity_alert_radius":
-			requiredBitSet[0] |= 1 << 6
 			s.ProximityAlertRadius.Reset()
 			if err := s.ProximityAlertRadius.Decode(d); err != nil {
 				return err
 			}
 		case "disable_notification":
-			requiredBitSet[0] |= 1 << 7
 			s.DisableNotification.Reset()
 			if err := s.DisableNotification.Decode(d); err != nil {
 				return err
 			}
 		case "reply_to_message_id":
-			requiredBitSet[1] |= 1 << 0
 			s.ReplyToMessageID.Reset()
 			if err := s.ReplyToMessageID.Decode(d); err != nil {
 				return err
 			}
 		case "allow_sending_without_reply":
-			requiredBitSet[1] |= 1 << 1
 			s.AllowSendingWithoutReply.Reset()
 			if err := s.AllowSendingWithoutReply.Decode(d); err != nil {
 				return err
 			}
 		case "reply_markup":
-			requiredBitSet[1] |= 1 << 2
 			s.ReplyMarkup.Reset()
 			if err := s.ReplyMarkup.Decode(d); err != nil {
 				return err
@@ -30785,7 +30020,6 @@ func (s *SendLocation) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return err
 	}
-
 	var failures []validate.FieldError
 	for i, mask := range [2]uint8{
 		0b00000111,
@@ -30818,6 +30052,7 @@ func (s *SendLocation) Decode(d *jx.Decoder) error {
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
+
 	return nil
 }
 
@@ -30985,6 +30220,7 @@ func (s *SendMediaGroup) Decode(d *jx.Decoder) error {
 		return errors.New(`invalid: unable to decode SendMediaGroup to nil`)
 	}
 	var requiredBitSet [1]uint8
+
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "chat_id":
@@ -31006,19 +30242,16 @@ func (s *SendMediaGroup) Decode(d *jx.Decoder) error {
 				return err
 			}
 		case "disable_notification":
-			requiredBitSet[0] |= 1 << 2
 			s.DisableNotification.Reset()
 			if err := s.DisableNotification.Decode(d); err != nil {
 				return err
 			}
 		case "reply_to_message_id":
-			requiredBitSet[0] |= 1 << 3
 			s.ReplyToMessageID.Reset()
 			if err := s.ReplyToMessageID.Decode(d); err != nil {
 				return err
 			}
 		case "allow_sending_without_reply":
-			requiredBitSet[0] |= 1 << 4
 			s.AllowSendingWithoutReply.Reset()
 			if err := s.AllowSendingWithoutReply.Decode(d); err != nil {
 				return err
@@ -31030,7 +30263,6 @@ func (s *SendMediaGroup) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return err
 	}
-
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000011,
@@ -31062,6 +30294,7 @@ func (s *SendMediaGroup) Decode(d *jx.Decoder) error {
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
+
 	return nil
 }
 
@@ -31267,6 +30500,7 @@ func (s *SendMessage) Decode(d *jx.Decoder) error {
 		return errors.New(`invalid: unable to decode SendMessage to nil`)
 	}
 	var requiredBitSet [2]uint8
+
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "chat_id":
@@ -31282,13 +30516,11 @@ func (s *SendMessage) Decode(d *jx.Decoder) error {
 				return err
 			}
 		case "parse_mode":
-			requiredBitSet[0] |= 1 << 2
 			s.ParseMode.Reset()
 			if err := s.ParseMode.Decode(d); err != nil {
 				return err
 			}
 		case "entities":
-			requiredBitSet[0] |= 1 << 3
 			s.Entities = nil
 			if err := d.Arr(func(d *jx.Decoder) error {
 				var elem MessageEntity
@@ -31301,31 +30533,26 @@ func (s *SendMessage) Decode(d *jx.Decoder) error {
 				return err
 			}
 		case "disable_web_page_preview":
-			requiredBitSet[0] |= 1 << 4
 			s.DisableWebPagePreview.Reset()
 			if err := s.DisableWebPagePreview.Decode(d); err != nil {
 				return err
 			}
 		case "disable_notification":
-			requiredBitSet[0] |= 1 << 5
 			s.DisableNotification.Reset()
 			if err := s.DisableNotification.Decode(d); err != nil {
 				return err
 			}
 		case "reply_to_message_id":
-			requiredBitSet[0] |= 1 << 6
 			s.ReplyToMessageID.Reset()
 			if err := s.ReplyToMessageID.Decode(d); err != nil {
 				return err
 			}
 		case "allow_sending_without_reply":
-			requiredBitSet[0] |= 1 << 7
 			s.AllowSendingWithoutReply.Reset()
 			if err := s.AllowSendingWithoutReply.Decode(d); err != nil {
 				return err
 			}
 		case "reply_markup":
-			requiredBitSet[1] |= 1 << 0
 			s.ReplyMarkup.Reset()
 			if err := s.ReplyMarkup.Decode(d); err != nil {
 				return err
@@ -31337,7 +30564,6 @@ func (s *SendMessage) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return err
 	}
-
 	var failures []validate.FieldError
 	for i, mask := range [2]uint8{
 		0b00000011,
@@ -31370,6 +30596,7 @@ func (s *SendMessage) Decode(d *jx.Decoder) error {
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
+
 	return nil
 }
 
@@ -31577,6 +30804,7 @@ func (s *SendPhoto) Decode(d *jx.Decoder) error {
 		return errors.New(`invalid: unable to decode SendPhoto to nil`)
 	}
 	var requiredBitSet [2]uint8
+
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "chat_id":
@@ -31592,19 +30820,16 @@ func (s *SendPhoto) Decode(d *jx.Decoder) error {
 				return err
 			}
 		case "caption":
-			requiredBitSet[0] |= 1 << 2
 			s.Caption.Reset()
 			if err := s.Caption.Decode(d); err != nil {
 				return err
 			}
 		case "parse_mode":
-			requiredBitSet[0] |= 1 << 3
 			s.ParseMode.Reset()
 			if err := s.ParseMode.Decode(d); err != nil {
 				return err
 			}
 		case "caption_entities":
-			requiredBitSet[0] |= 1 << 4
 			s.CaptionEntities = nil
 			if err := d.Arr(func(d *jx.Decoder) error {
 				var elem MessageEntity
@@ -31617,25 +30842,21 @@ func (s *SendPhoto) Decode(d *jx.Decoder) error {
 				return err
 			}
 		case "disable_notification":
-			requiredBitSet[0] |= 1 << 5
 			s.DisableNotification.Reset()
 			if err := s.DisableNotification.Decode(d); err != nil {
 				return err
 			}
 		case "reply_to_message_id":
-			requiredBitSet[0] |= 1 << 6
 			s.ReplyToMessageID.Reset()
 			if err := s.ReplyToMessageID.Decode(d); err != nil {
 				return err
 			}
 		case "allow_sending_without_reply":
-			requiredBitSet[0] |= 1 << 7
 			s.AllowSendingWithoutReply.Reset()
 			if err := s.AllowSendingWithoutReply.Decode(d); err != nil {
 				return err
 			}
 		case "reply_markup":
-			requiredBitSet[1] |= 1 << 0
 			s.ReplyMarkup.Reset()
 			if err := s.ReplyMarkup.Decode(d); err != nil {
 				return err
@@ -31647,7 +30868,6 @@ func (s *SendPhoto) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return err
 	}
-
 	var failures []validate.FieldError
 	for i, mask := range [2]uint8{
 		0b00000011,
@@ -31680,6 +30900,7 @@ func (s *SendPhoto) Decode(d *jx.Decoder) error {
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
+
 	return nil
 }
 
@@ -31976,6 +31197,7 @@ func (s *SendPoll) Decode(d *jx.Decoder) error {
 		return errors.New(`invalid: unable to decode SendPoll to nil`)
 	}
 	var requiredBitSet [3]uint8
+
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "chat_id":
@@ -32006,43 +31228,36 @@ func (s *SendPoll) Decode(d *jx.Decoder) error {
 				return err
 			}
 		case "is_anonymous":
-			requiredBitSet[0] |= 1 << 3
 			s.IsAnonymous.Reset()
 			if err := s.IsAnonymous.Decode(d); err != nil {
 				return err
 			}
 		case "type":
-			requiredBitSet[0] |= 1 << 4
 			s.Type.Reset()
 			if err := s.Type.Decode(d); err != nil {
 				return err
 			}
 		case "allows_multiple_answers":
-			requiredBitSet[0] |= 1 << 5
 			s.AllowsMultipleAnswers.Reset()
 			if err := s.AllowsMultipleAnswers.Decode(d); err != nil {
 				return err
 			}
 		case "correct_option_id":
-			requiredBitSet[0] |= 1 << 6
 			s.CorrectOptionID.Reset()
 			if err := s.CorrectOptionID.Decode(d); err != nil {
 				return err
 			}
 		case "explanation":
-			requiredBitSet[0] |= 1 << 7
 			s.Explanation.Reset()
 			if err := s.Explanation.Decode(d); err != nil {
 				return err
 			}
 		case "explanation_parse_mode":
-			requiredBitSet[1] |= 1 << 0
 			s.ExplanationParseMode.Reset()
 			if err := s.ExplanationParseMode.Decode(d); err != nil {
 				return err
 			}
 		case "explanation_entities":
-			requiredBitSet[1] |= 1 << 1
 			s.ExplanationEntities = nil
 			if err := d.Arr(func(d *jx.Decoder) error {
 				var elem MessageEntity
@@ -32055,43 +31270,36 @@ func (s *SendPoll) Decode(d *jx.Decoder) error {
 				return err
 			}
 		case "open_period":
-			requiredBitSet[1] |= 1 << 2
 			s.OpenPeriod.Reset()
 			if err := s.OpenPeriod.Decode(d); err != nil {
 				return err
 			}
 		case "close_date":
-			requiredBitSet[1] |= 1 << 3
 			s.CloseDate.Reset()
 			if err := s.CloseDate.Decode(d); err != nil {
 				return err
 			}
 		case "is_closed":
-			requiredBitSet[1] |= 1 << 4
 			s.IsClosed.Reset()
 			if err := s.IsClosed.Decode(d); err != nil {
 				return err
 			}
 		case "disable_notification":
-			requiredBitSet[1] |= 1 << 5
 			s.DisableNotification.Reset()
 			if err := s.DisableNotification.Decode(d); err != nil {
 				return err
 			}
 		case "reply_to_message_id":
-			requiredBitSet[1] |= 1 << 6
 			s.ReplyToMessageID.Reset()
 			if err := s.ReplyToMessageID.Decode(d); err != nil {
 				return err
 			}
 		case "allow_sending_without_reply":
-			requiredBitSet[1] |= 1 << 7
 			s.AllowSendingWithoutReply.Reset()
 			if err := s.AllowSendingWithoutReply.Decode(d); err != nil {
 				return err
 			}
 		case "reply_markup":
-			requiredBitSet[2] |= 1 << 0
 			s.ReplyMarkup.Reset()
 			if err := s.ReplyMarkup.Decode(d); err != nil {
 				return err
@@ -32103,7 +31311,6 @@ func (s *SendPoll) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return err
 	}
-
 	var failures []validate.FieldError
 	for i, mask := range [3]uint8{
 		0b00000111,
@@ -32137,6 +31344,7 @@ func (s *SendPoll) Decode(d *jx.Decoder) error {
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
+
 	return nil
 }
 
@@ -32302,6 +31510,7 @@ func (s *SendSticker) Decode(d *jx.Decoder) error {
 		return errors.New(`invalid: unable to decode SendSticker to nil`)
 	}
 	var requiredBitSet [1]uint8
+
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "chat_id":
@@ -32317,25 +31526,21 @@ func (s *SendSticker) Decode(d *jx.Decoder) error {
 				return err
 			}
 		case "disable_notification":
-			requiredBitSet[0] |= 1 << 2
 			s.DisableNotification.Reset()
 			if err := s.DisableNotification.Decode(d); err != nil {
 				return err
 			}
 		case "reply_to_message_id":
-			requiredBitSet[0] |= 1 << 3
 			s.ReplyToMessageID.Reset()
 			if err := s.ReplyToMessageID.Decode(d); err != nil {
 				return err
 			}
 		case "allow_sending_without_reply":
-			requiredBitSet[0] |= 1 << 4
 			s.AllowSendingWithoutReply.Reset()
 			if err := s.AllowSendingWithoutReply.Decode(d); err != nil {
 				return err
 			}
 		case "reply_markup":
-			requiredBitSet[0] |= 1 << 5
 			s.ReplyMarkup.Reset()
 			if err := s.ReplyMarkup.Decode(d); err != nil {
 				return err
@@ -32347,7 +31552,6 @@ func (s *SendSticker) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return err
 	}
-
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000011,
@@ -32379,6 +31583,7 @@ func (s *SendSticker) Decode(d *jx.Decoder) error {
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
+
 	return nil
 }
 
@@ -32605,6 +31810,7 @@ func (s *SendVenue) Decode(d *jx.Decoder) error {
 		return errors.New(`invalid: unable to decode SendVenue to nil`)
 	}
 	var requiredBitSet [2]uint8
+
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "chat_id":
@@ -32641,49 +31847,41 @@ func (s *SendVenue) Decode(d *jx.Decoder) error {
 				return err
 			}
 		case "foursquare_id":
-			requiredBitSet[0] |= 1 << 5
 			s.FoursquareID.Reset()
 			if err := s.FoursquareID.Decode(d); err != nil {
 				return err
 			}
 		case "foursquare_type":
-			requiredBitSet[0] |= 1 << 6
 			s.FoursquareType.Reset()
 			if err := s.FoursquareType.Decode(d); err != nil {
 				return err
 			}
 		case "google_place_id":
-			requiredBitSet[0] |= 1 << 7
 			s.GooglePlaceID.Reset()
 			if err := s.GooglePlaceID.Decode(d); err != nil {
 				return err
 			}
 		case "google_place_type":
-			requiredBitSet[1] |= 1 << 0
 			s.GooglePlaceType.Reset()
 			if err := s.GooglePlaceType.Decode(d); err != nil {
 				return err
 			}
 		case "disable_notification":
-			requiredBitSet[1] |= 1 << 1
 			s.DisableNotification.Reset()
 			if err := s.DisableNotification.Decode(d); err != nil {
 				return err
 			}
 		case "reply_to_message_id":
-			requiredBitSet[1] |= 1 << 2
 			s.ReplyToMessageID.Reset()
 			if err := s.ReplyToMessageID.Decode(d); err != nil {
 				return err
 			}
 		case "allow_sending_without_reply":
-			requiredBitSet[1] |= 1 << 3
 			s.AllowSendingWithoutReply.Reset()
 			if err := s.AllowSendingWithoutReply.Decode(d); err != nil {
 				return err
 			}
 		case "reply_markup":
-			requiredBitSet[1] |= 1 << 4
 			s.ReplyMarkup.Reset()
 			if err := s.ReplyMarkup.Decode(d); err != nil {
 				return err
@@ -32695,7 +31893,6 @@ func (s *SendVenue) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return err
 	}
-
 	var failures []validate.FieldError
 	for i, mask := range [2]uint8{
 		0b00011111,
@@ -32728,6 +31925,7 @@ func (s *SendVenue) Decode(d *jx.Decoder) error {
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
+
 	return nil
 }
 
@@ -32985,6 +32183,7 @@ func (s *SendVideo) Decode(d *jx.Decoder) error {
 		return errors.New(`invalid: unable to decode SendVideo to nil`)
 	}
 	var requiredBitSet [2]uint8
+
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "chat_id":
@@ -33000,43 +32199,36 @@ func (s *SendVideo) Decode(d *jx.Decoder) error {
 				return err
 			}
 		case "duration":
-			requiredBitSet[0] |= 1 << 2
 			s.Duration.Reset()
 			if err := s.Duration.Decode(d); err != nil {
 				return err
 			}
 		case "width":
-			requiredBitSet[0] |= 1 << 3
 			s.Width.Reset()
 			if err := s.Width.Decode(d); err != nil {
 				return err
 			}
 		case "height":
-			requiredBitSet[0] |= 1 << 4
 			s.Height.Reset()
 			if err := s.Height.Decode(d); err != nil {
 				return err
 			}
 		case "thumb":
-			requiredBitSet[0] |= 1 << 5
 			s.Thumb.Reset()
 			if err := s.Thumb.Decode(d); err != nil {
 				return err
 			}
 		case "caption":
-			requiredBitSet[0] |= 1 << 6
 			s.Caption.Reset()
 			if err := s.Caption.Decode(d); err != nil {
 				return err
 			}
 		case "parse_mode":
-			requiredBitSet[0] |= 1 << 7
 			s.ParseMode.Reset()
 			if err := s.ParseMode.Decode(d); err != nil {
 				return err
 			}
 		case "caption_entities":
-			requiredBitSet[1] |= 1 << 0
 			s.CaptionEntities = nil
 			if err := d.Arr(func(d *jx.Decoder) error {
 				var elem MessageEntity
@@ -33049,31 +32241,26 @@ func (s *SendVideo) Decode(d *jx.Decoder) error {
 				return err
 			}
 		case "supports_streaming":
-			requiredBitSet[1] |= 1 << 1
 			s.SupportsStreaming.Reset()
 			if err := s.SupportsStreaming.Decode(d); err != nil {
 				return err
 			}
 		case "disable_notification":
-			requiredBitSet[1] |= 1 << 2
 			s.DisableNotification.Reset()
 			if err := s.DisableNotification.Decode(d); err != nil {
 				return err
 			}
 		case "reply_to_message_id":
-			requiredBitSet[1] |= 1 << 3
 			s.ReplyToMessageID.Reset()
 			if err := s.ReplyToMessageID.Decode(d); err != nil {
 				return err
 			}
 		case "allow_sending_without_reply":
-			requiredBitSet[1] |= 1 << 4
 			s.AllowSendingWithoutReply.Reset()
 			if err := s.AllowSendingWithoutReply.Decode(d); err != nil {
 				return err
 			}
 		case "reply_markup":
-			requiredBitSet[1] |= 1 << 5
 			s.ReplyMarkup.Reset()
 			if err := s.ReplyMarkup.Decode(d); err != nil {
 				return err
@@ -33085,7 +32272,6 @@ func (s *SendVideo) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return err
 	}
-
 	var failures []validate.FieldError
 	for i, mask := range [2]uint8{
 		0b00000011,
@@ -33118,6 +32304,7 @@ func (s *SendVideo) Decode(d *jx.Decoder) error {
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
+
 	return nil
 }
 
@@ -33227,6 +32414,7 @@ func (s *SendVideoNote) Decode(d *jx.Decoder) error {
 		return errors.New(`invalid: unable to decode SendVideoNote to nil`)
 	}
 	var requiredBitSet [2]uint8
+
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "chat_id":
@@ -33242,43 +32430,36 @@ func (s *SendVideoNote) Decode(d *jx.Decoder) error {
 				return err
 			}
 		case "duration":
-			requiredBitSet[0] |= 1 << 2
 			s.Duration.Reset()
 			if err := s.Duration.Decode(d); err != nil {
 				return err
 			}
 		case "length":
-			requiredBitSet[0] |= 1 << 3
 			s.Length.Reset()
 			if err := s.Length.Decode(d); err != nil {
 				return err
 			}
 		case "thumb":
-			requiredBitSet[0] |= 1 << 4
 			s.Thumb.Reset()
 			if err := s.Thumb.Decode(d); err != nil {
 				return err
 			}
 		case "disable_notification":
-			requiredBitSet[0] |= 1 << 5
 			s.DisableNotification.Reset()
 			if err := s.DisableNotification.Decode(d); err != nil {
 				return err
 			}
 		case "reply_to_message_id":
-			requiredBitSet[0] |= 1 << 6
 			s.ReplyToMessageID.Reset()
 			if err := s.ReplyToMessageID.Decode(d); err != nil {
 				return err
 			}
 		case "allow_sending_without_reply":
-			requiredBitSet[0] |= 1 << 7
 			s.AllowSendingWithoutReply.Reset()
 			if err := s.AllowSendingWithoutReply.Decode(d); err != nil {
 				return err
 			}
 		case "reply_markup":
-			requiredBitSet[1] |= 1 << 0
 			s.ReplyMarkup.Reset()
 			if err := s.ReplyMarkup.Decode(d); err != nil {
 				return err
@@ -33290,7 +32471,6 @@ func (s *SendVideoNote) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return err
 	}
-
 	var failures []validate.FieldError
 	for i, mask := range [2]uint8{
 		0b00000011,
@@ -33323,6 +32503,7 @@ func (s *SendVideoNote) Decode(d *jx.Decoder) error {
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
+
 	return nil
 }
 
@@ -33626,6 +32807,7 @@ func (s *SendVoice) Decode(d *jx.Decoder) error {
 		return errors.New(`invalid: unable to decode SendVoice to nil`)
 	}
 	var requiredBitSet [2]uint8
+
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "chat_id":
@@ -33641,19 +32823,16 @@ func (s *SendVoice) Decode(d *jx.Decoder) error {
 				return err
 			}
 		case "caption":
-			requiredBitSet[0] |= 1 << 2
 			s.Caption.Reset()
 			if err := s.Caption.Decode(d); err != nil {
 				return err
 			}
 		case "parse_mode":
-			requiredBitSet[0] |= 1 << 3
 			s.ParseMode.Reset()
 			if err := s.ParseMode.Decode(d); err != nil {
 				return err
 			}
 		case "caption_entities":
-			requiredBitSet[0] |= 1 << 4
 			s.CaptionEntities = nil
 			if err := d.Arr(func(d *jx.Decoder) error {
 				var elem MessageEntity
@@ -33666,31 +32845,26 @@ func (s *SendVoice) Decode(d *jx.Decoder) error {
 				return err
 			}
 		case "duration":
-			requiredBitSet[0] |= 1 << 5
 			s.Duration.Reset()
 			if err := s.Duration.Decode(d); err != nil {
 				return err
 			}
 		case "disable_notification":
-			requiredBitSet[0] |= 1 << 6
 			s.DisableNotification.Reset()
 			if err := s.DisableNotification.Decode(d); err != nil {
 				return err
 			}
 		case "reply_to_message_id":
-			requiredBitSet[0] |= 1 << 7
 			s.ReplyToMessageID.Reset()
 			if err := s.ReplyToMessageID.Decode(d); err != nil {
 				return err
 			}
 		case "allow_sending_without_reply":
-			requiredBitSet[1] |= 1 << 0
 			s.AllowSendingWithoutReply.Reset()
 			if err := s.AllowSendingWithoutReply.Decode(d); err != nil {
 				return err
 			}
 		case "reply_markup":
-			requiredBitSet[1] |= 1 << 1
 			s.ReplyMarkup.Reset()
 			if err := s.ReplyMarkup.Decode(d); err != nil {
 				return err
@@ -33702,7 +32876,6 @@ func (s *SendVoice) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return err
 	}
-
 	var failures []validate.FieldError
 	for i, mask := range [2]uint8{
 		0b00000011,
@@ -33735,6 +32908,7 @@ func (s *SendVoice) Decode(d *jx.Decoder) error {
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
+
 	return nil
 }
 
@@ -33867,6 +33041,7 @@ func (s *SetChatAdministratorCustomTitle) Decode(d *jx.Decoder) error {
 		return errors.New(`invalid: unable to decode SetChatAdministratorCustomTitle to nil`)
 	}
 	var requiredBitSet [1]uint8
+
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "chat_id":
@@ -33895,7 +33070,6 @@ func (s *SetChatAdministratorCustomTitle) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return err
 	}
-
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000111,
@@ -33927,6 +33101,7 @@ func (s *SetChatAdministratorCustomTitle) Decode(d *jx.Decoder) error {
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
+
 	return nil
 }
 
@@ -33969,6 +33144,7 @@ func (s *SetChatDescription) Decode(d *jx.Decoder) error {
 		return errors.New(`invalid: unable to decode SetChatDescription to nil`)
 	}
 	var requiredBitSet [1]uint8
+
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "chat_id":
@@ -33977,7 +33153,6 @@ func (s *SetChatDescription) Decode(d *jx.Decoder) error {
 				return err
 			}
 		case "description":
-			requiredBitSet[0] |= 1 << 1
 			s.Description.Reset()
 			if err := s.Description.Decode(d); err != nil {
 				return err
@@ -33989,7 +33164,6 @@ func (s *SetChatDescription) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return err
 	}
-
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000001,
@@ -34021,6 +33195,7 @@ func (s *SetChatDescription) Decode(d *jx.Decoder) error {
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
+
 	return nil
 }
 
@@ -34060,6 +33235,7 @@ func (s *SetChatPermissions) Decode(d *jx.Decoder) error {
 		return errors.New(`invalid: unable to decode SetChatPermissions to nil`)
 	}
 	var requiredBitSet [1]uint8
+
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "chat_id":
@@ -34079,7 +33255,6 @@ func (s *SetChatPermissions) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return err
 	}
-
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000011,
@@ -34111,6 +33286,7 @@ func (s *SetChatPermissions) Decode(d *jx.Decoder) error {
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
+
 	return nil
 }
 
@@ -34150,6 +33326,7 @@ func (s *SetChatPhoto) Decode(d *jx.Decoder) error {
 		return errors.New(`invalid: unable to decode SetChatPhoto to nil`)
 	}
 	var requiredBitSet [1]uint8
+
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "chat_id":
@@ -34171,7 +33348,6 @@ func (s *SetChatPhoto) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return err
 	}
-
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000011,
@@ -34203,6 +33379,7 @@ func (s *SetChatPhoto) Decode(d *jx.Decoder) error {
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
+
 	return nil
 }
 
@@ -34242,6 +33419,7 @@ func (s *SetChatStickerSet) Decode(d *jx.Decoder) error {
 		return errors.New(`invalid: unable to decode SetChatStickerSet to nil`)
 	}
 	var requiredBitSet [1]uint8
+
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "chat_id":
@@ -34263,7 +33441,6 @@ func (s *SetChatStickerSet) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return err
 	}
-
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000011,
@@ -34295,6 +33472,7 @@ func (s *SetChatStickerSet) Decode(d *jx.Decoder) error {
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
+
 	return nil
 }
 
@@ -34334,6 +33512,7 @@ func (s *SetChatTitle) Decode(d *jx.Decoder) error {
 		return errors.New(`invalid: unable to decode SetChatTitle to nil`)
 	}
 	var requiredBitSet [1]uint8
+
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "chat_id":
@@ -34355,7 +33534,6 @@ func (s *SetChatTitle) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return err
 	}
-
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000011,
@@ -34387,6 +33565,7 @@ func (s *SetChatTitle) Decode(d *jx.Decoder) error {
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
+
 	return nil
 }
 
@@ -34476,6 +33655,7 @@ func (s *SetGameScore) Decode(d *jx.Decoder) error {
 		return errors.New(`invalid: unable to decode SetGameScore to nil`)
 	}
 	var requiredBitSet [1]uint8
+
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "user_id":
@@ -34493,31 +33673,26 @@ func (s *SetGameScore) Decode(d *jx.Decoder) error {
 				return err
 			}
 		case "force":
-			requiredBitSet[0] |= 1 << 2
 			s.Force.Reset()
 			if err := s.Force.Decode(d); err != nil {
 				return err
 			}
 		case "disable_edit_message":
-			requiredBitSet[0] |= 1 << 3
 			s.DisableEditMessage.Reset()
 			if err := s.DisableEditMessage.Decode(d); err != nil {
 				return err
 			}
 		case "chat_id":
-			requiredBitSet[0] |= 1 << 4
 			s.ChatID.Reset()
 			if err := s.ChatID.Decode(d); err != nil {
 				return err
 			}
 		case "message_id":
-			requiredBitSet[0] |= 1 << 5
 			s.MessageID.Reset()
 			if err := s.MessageID.Decode(d); err != nil {
 				return err
 			}
 		case "inline_message_id":
-			requiredBitSet[0] |= 1 << 6
 			s.InlineMessageID.Reset()
 			if err := s.InlineMessageID.Decode(d); err != nil {
 				return err
@@ -34529,7 +33704,6 @@ func (s *SetGameScore) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return err
 	}
-
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000011,
@@ -34561,6 +33735,7 @@ func (s *SetGameScore) Decode(d *jx.Decoder) error {
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
+
 	return nil
 }
 
@@ -34625,6 +33800,7 @@ func (s *SetMyCommands) Decode(d *jx.Decoder) error {
 		return errors.New(`invalid: unable to decode SetMyCommands to nil`)
 	}
 	var requiredBitSet [1]uint8
+
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "commands":
@@ -34641,13 +33817,11 @@ func (s *SetMyCommands) Decode(d *jx.Decoder) error {
 				return err
 			}
 		case "scope":
-			requiredBitSet[0] |= 1 << 1
 			s.Scope.Reset()
 			if err := s.Scope.Decode(d); err != nil {
 				return err
 			}
 		case "language_code":
-			requiredBitSet[0] |= 1 << 2
 			s.LanguageCode.Reset()
 			if err := s.LanguageCode.Decode(d); err != nil {
 				return err
@@ -34659,7 +33833,6 @@ func (s *SetMyCommands) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return err
 	}
-
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000001,
@@ -34691,6 +33864,7 @@ func (s *SetMyCommands) Decode(d *jx.Decoder) error {
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
+
 	return nil
 }
 
@@ -34742,6 +33916,7 @@ func (s *SetPassportDataErrors) Decode(d *jx.Decoder) error {
 		return errors.New(`invalid: unable to decode SetPassportDataErrors to nil`)
 	}
 	var requiredBitSet [1]uint8
+
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "user_id":
@@ -34771,7 +33946,6 @@ func (s *SetPassportDataErrors) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return err
 	}
-
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000011,
@@ -34803,6 +33977,7 @@ func (s *SetPassportDataErrors) Decode(d *jx.Decoder) error {
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
+
 	return nil
 }
 
@@ -34842,6 +34017,7 @@ func (s *SetStickerPositionInSet) Decode(d *jx.Decoder) error {
 		return errors.New(`invalid: unable to decode SetStickerPositionInSet to nil`)
 	}
 	var requiredBitSet [1]uint8
+
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "sticker":
@@ -34865,7 +34041,6 @@ func (s *SetStickerPositionInSet) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return err
 	}
-
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000011,
@@ -34897,6 +34072,7 @@ func (s *SetStickerPositionInSet) Decode(d *jx.Decoder) error {
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
+
 	return nil
 }
 
@@ -34946,6 +34122,7 @@ func (s *SetStickerSetThumb) Decode(d *jx.Decoder) error {
 		return errors.New(`invalid: unable to decode SetStickerSetThumb to nil`)
 	}
 	var requiredBitSet [1]uint8
+
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "name":
@@ -34963,7 +34140,6 @@ func (s *SetStickerSetThumb) Decode(d *jx.Decoder) error {
 				return err
 			}
 		case "thumb":
-			requiredBitSet[0] |= 1 << 2
 			s.Thumb.Reset()
 			if err := s.Thumb.Decode(d); err != nil {
 				return err
@@ -34975,7 +34151,6 @@ func (s *SetStickerSetThumb) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return err
 	}
-
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000011,
@@ -35007,6 +34182,7 @@ func (s *SetStickerSetThumb) Decode(d *jx.Decoder) error {
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
+
 	return nil
 }
 
@@ -35101,6 +34277,7 @@ func (s *SetWebhook) Decode(d *jx.Decoder) error {
 		return errors.New(`invalid: unable to decode SetWebhook to nil`)
 	}
 	var requiredBitSet [1]uint8
+
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "url":
@@ -35111,25 +34288,21 @@ func (s *SetWebhook) Decode(d *jx.Decoder) error {
 				return err
 			}
 		case "certificate":
-			requiredBitSet[0] |= 1 << 1
 			s.Certificate.Reset()
 			if err := s.Certificate.Decode(d); err != nil {
 				return err
 			}
 		case "ip_address":
-			requiredBitSet[0] |= 1 << 2
 			s.IPAddress.Reset()
 			if err := s.IPAddress.Decode(d); err != nil {
 				return err
 			}
 		case "max_connections":
-			requiredBitSet[0] |= 1 << 3
 			s.MaxConnections.Reset()
 			if err := s.MaxConnections.Decode(d); err != nil {
 				return err
 			}
 		case "allowed_updates":
-			requiredBitSet[0] |= 1 << 4
 			s.AllowedUpdates = nil
 			if err := d.Arr(func(d *jx.Decoder) error {
 				var elem string
@@ -35144,7 +34317,6 @@ func (s *SetWebhook) Decode(d *jx.Decoder) error {
 				return err
 			}
 		case "drop_pending_updates":
-			requiredBitSet[0] |= 1 << 5
 			s.DropPendingUpdates.Reset()
 			if err := s.DropPendingUpdates.Decode(d); err != nil {
 				return err
@@ -35156,7 +34328,6 @@ func (s *SetWebhook) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return err
 	}
-
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000001,
@@ -35188,6 +34359,7 @@ func (s *SetWebhook) Decode(d *jx.Decoder) error {
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
+
 	return nil
 }
 
@@ -35255,6 +34427,7 @@ func (s *ShippingAddress) Decode(d *jx.Decoder) error {
 		return errors.New(`invalid: unable to decode ShippingAddress to nil`)
 	}
 	var requiredBitSet [1]uint8
+
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "country_code":
@@ -35306,7 +34479,6 @@ func (s *ShippingAddress) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return err
 	}
-
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00111111,
@@ -35338,6 +34510,7 @@ func (s *ShippingAddress) Decode(d *jx.Decoder) error {
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
+
 	return nil
 }
 
@@ -35396,6 +34569,7 @@ func (s *ShippingOption) Decode(d *jx.Decoder) error {
 		return errors.New(`invalid: unable to decode ShippingOption to nil`)
 	}
 	var requiredBitSet [1]uint8
+
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "id":
@@ -35432,7 +34606,6 @@ func (s *ShippingOption) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return err
 	}
-
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000111,
@@ -35464,6 +34637,7 @@ func (s *ShippingOption) Decode(d *jx.Decoder) error {
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
+
 	return nil
 }
 
@@ -35517,6 +34691,7 @@ func (s *ShippingQuery) Decode(d *jx.Decoder) error {
 		return errors.New(`invalid: unable to decode ShippingQuery to nil`)
 	}
 	var requiredBitSet [1]uint8
+
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "id":
@@ -35550,7 +34725,6 @@ func (s *ShippingQuery) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return err
 	}
-
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00001111,
@@ -35582,6 +34756,7 @@ func (s *ShippingQuery) Decode(d *jx.Decoder) error {
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
+
 	return nil
 }
 
@@ -35692,6 +34867,7 @@ func (s *Sticker) Decode(d *jx.Decoder) error {
 		return errors.New(`invalid: unable to decode Sticker to nil`)
 	}
 	var requiredBitSet [2]uint8
+
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "file_id":
@@ -35730,31 +34906,26 @@ func (s *Sticker) Decode(d *jx.Decoder) error {
 				return err
 			}
 		case "thumb":
-			requiredBitSet[0] |= 1 << 5
 			s.Thumb.Reset()
 			if err := s.Thumb.Decode(d); err != nil {
 				return err
 			}
 		case "emoji":
-			requiredBitSet[0] |= 1 << 6
 			s.Emoji.Reset()
 			if err := s.Emoji.Decode(d); err != nil {
 				return err
 			}
 		case "set_name":
-			requiredBitSet[0] |= 1 << 7
 			s.SetName.Reset()
 			if err := s.SetName.Decode(d); err != nil {
 				return err
 			}
 		case "mask_position":
-			requiredBitSet[1] |= 1 << 0
 			s.MaskPosition.Reset()
 			if err := s.MaskPosition.Decode(d); err != nil {
 				return err
 			}
 		case "file_size":
-			requiredBitSet[1] |= 1 << 1
 			s.FileSize.Reset()
 			if err := s.FileSize.Decode(d); err != nil {
 				return err
@@ -35766,7 +34937,6 @@ func (s *Sticker) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return err
 	}
-
 	var failures []validate.FieldError
 	for i, mask := range [2]uint8{
 		0b00011111,
@@ -35799,6 +34969,7 @@ func (s *Sticker) Decode(d *jx.Decoder) error {
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
+
 	return nil
 }
 
@@ -35872,29 +35043,25 @@ func (s *StopMessageLiveLocation) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode StopMessageLiveLocation to nil`)
 	}
-	var requiredBitSet [1]uint8
+
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "chat_id":
-			requiredBitSet[0] |= 1 << 0
 			s.ChatID.Reset()
 			if err := s.ChatID.Decode(d); err != nil {
 				return err
 			}
 		case "message_id":
-			requiredBitSet[0] |= 1 << 1
 			s.MessageID.Reset()
 			if err := s.MessageID.Decode(d); err != nil {
 				return err
 			}
 		case "inline_message_id":
-			requiredBitSet[0] |= 1 << 2
 			s.InlineMessageID.Reset()
 			if err := s.InlineMessageID.Decode(d); err != nil {
 				return err
 			}
 		case "reply_markup":
-			requiredBitSet[0] |= 1 << 3
 			s.ReplyMarkup.Reset()
 			if err := s.ReplyMarkup.Decode(d); err != nil {
 				return err
@@ -35907,37 +35074,6 @@ func (s *StopMessageLiveLocation) Decode(d *jx.Decoder) error {
 		return err
 	}
 
-	var failures []validate.FieldError
-	for i, mask := range [1]uint8{
-		0b00000000,
-	} {
-		if result := (requiredBitSet[i] & mask) ^ mask; result != 0 {
-			// Mask only required fields and check equality to mask using XOR.
-			//
-			// If XOR result is not zero, result is not equal to expected, so some fields are missed.
-			// Bits of fields which would be set are actually bits of missed fields.
-			missed := bits.OnesCount8(result)
-			for bitN := 0; bitN < missed; bitN++ {
-				bitIdx := bits.TrailingZeros8(result)
-				fieldIdx := i*8 + bitIdx
-				var name string
-				if fieldIdx < len(jsonFieldsNameOfStopMessageLiveLocation) {
-					name = jsonFieldsNameOfStopMessageLiveLocation[fieldIdx]
-				} else {
-					name = strconv.Itoa(fieldIdx)
-				}
-				failures = append(failures, validate.FieldError{
-					Name:  name,
-					Error: validate.ErrFieldRequired,
-				})
-				// Reset bit.
-				result &^= 1 << bitIdx
-			}
-		}
-	}
-	if len(failures) > 0 {
-		return &validate.Error{Fields: failures}
-	}
 	return nil
 }
 
@@ -35987,6 +35123,7 @@ func (s *StopPoll) Decode(d *jx.Decoder) error {
 		return errors.New(`invalid: unable to decode StopPoll to nil`)
 	}
 	var requiredBitSet [1]uint8
+
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "chat_id":
@@ -36002,7 +35139,6 @@ func (s *StopPoll) Decode(d *jx.Decoder) error {
 				return err
 			}
 		case "reply_markup":
-			requiredBitSet[0] |= 1 << 2
 			s.ReplyMarkup.Reset()
 			if err := s.ReplyMarkup.Decode(d); err != nil {
 				return err
@@ -36014,7 +35150,6 @@ func (s *StopPoll) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return err
 	}
-
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000011,
@@ -36046,6 +35181,7 @@ func (s *StopPoll) Decode(d *jx.Decoder) error {
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
+
 	return nil
 }
 
@@ -36126,6 +35262,7 @@ func (s *SuccessfulPayment) Decode(d *jx.Decoder) error {
 		return errors.New(`invalid: unable to decode SuccessfulPayment to nil`)
 	}
 	var requiredBitSet [1]uint8
+
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "currency":
@@ -36150,13 +35287,11 @@ func (s *SuccessfulPayment) Decode(d *jx.Decoder) error {
 				return err
 			}
 		case "shipping_option_id":
-			requiredBitSet[0] |= 1 << 3
 			s.ShippingOptionID.Reset()
 			if err := s.ShippingOptionID.Decode(d); err != nil {
 				return err
 			}
 		case "order_info":
-			requiredBitSet[0] |= 1 << 4
 			s.OrderInfo.Reset()
 			if err := s.OrderInfo.Decode(d); err != nil {
 				return err
@@ -36182,7 +35317,6 @@ func (s *SuccessfulPayment) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return err
 	}
-
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b01100111,
@@ -36214,6 +35348,7 @@ func (s *SuccessfulPayment) Decode(d *jx.Decoder) error {
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
+
 	return nil
 }
 
@@ -36263,6 +35398,7 @@ func (s *UnbanChatMember) Decode(d *jx.Decoder) error {
 		return errors.New(`invalid: unable to decode UnbanChatMember to nil`)
 	}
 	var requiredBitSet [1]uint8
+
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "chat_id":
@@ -36278,7 +35414,6 @@ func (s *UnbanChatMember) Decode(d *jx.Decoder) error {
 				return err
 			}
 		case "only_if_banned":
-			requiredBitSet[0] |= 1 << 2
 			s.OnlyIfBanned.Reset()
 			if err := s.OnlyIfBanned.Decode(d); err != nil {
 				return err
@@ -36290,7 +35425,6 @@ func (s *UnbanChatMember) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return err
 	}
-
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000011,
@@ -36322,6 +35456,7 @@ func (s *UnbanChatMember) Decode(d *jx.Decoder) error {
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
+
 	return nil
 }
 
@@ -36361,6 +35496,7 @@ func (s *UnbanChatSenderChat) Decode(d *jx.Decoder) error {
 		return errors.New(`invalid: unable to decode UnbanChatSenderChat to nil`)
 	}
 	var requiredBitSet [1]uint8
+
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "chat_id":
@@ -36382,7 +35518,6 @@ func (s *UnbanChatSenderChat) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return err
 	}
-
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000011,
@@ -36414,6 +35549,7 @@ func (s *UnbanChatSenderChat) Decode(d *jx.Decoder) error {
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
+
 	return nil
 }
 
@@ -36446,6 +35582,7 @@ func (s *UnpinAllChatMessages) Decode(d *jx.Decoder) error {
 		return errors.New(`invalid: unable to decode UnpinAllChatMessages to nil`)
 	}
 	var requiredBitSet [1]uint8
+
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "chat_id":
@@ -36460,7 +35597,6 @@ func (s *UnpinAllChatMessages) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return err
 	}
-
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000001,
@@ -36492,6 +35628,7 @@ func (s *UnpinAllChatMessages) Decode(d *jx.Decoder) error {
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
+
 	return nil
 }
 
@@ -36534,6 +35671,7 @@ func (s *UnpinChatMessage) Decode(d *jx.Decoder) error {
 		return errors.New(`invalid: unable to decode UnpinChatMessage to nil`)
 	}
 	var requiredBitSet [1]uint8
+
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "chat_id":
@@ -36542,7 +35680,6 @@ func (s *UnpinChatMessage) Decode(d *jx.Decoder) error {
 				return err
 			}
 		case "message_id":
-			requiredBitSet[0] |= 1 << 1
 			s.MessageID.Reset()
 			if err := s.MessageID.Decode(d); err != nil {
 				return err
@@ -36554,7 +35691,6 @@ func (s *UnpinChatMessage) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return err
 	}
-
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000001,
@@ -36586,6 +35722,7 @@ func (s *UnpinChatMessage) Decode(d *jx.Decoder) error {
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
+
 	return nil
 }
 
@@ -36758,6 +35895,7 @@ func (s *Update) Decode(d *jx.Decoder) error {
 		return errors.New(`invalid: unable to decode Update to nil`)
 	}
 	var requiredBitSet [2]uint8
+
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "update_id":
@@ -36768,85 +35906,71 @@ func (s *Update) Decode(d *jx.Decoder) error {
 				return err
 			}
 		case "message":
-			requiredBitSet[0] |= 1 << 1
 			s.Message.Reset()
 			if err := s.Message.Decode(d); err != nil {
 				return err
 			}
 		case "edited_message":
-			requiredBitSet[0] |= 1 << 2
 			s.EditedMessage.Reset()
 			if err := s.EditedMessage.Decode(d); err != nil {
 				return err
 			}
 		case "channel_post":
-			requiredBitSet[0] |= 1 << 3
 			s.ChannelPost.Reset()
 			if err := s.ChannelPost.Decode(d); err != nil {
 				return err
 			}
 		case "edited_channel_post":
-			requiredBitSet[0] |= 1 << 4
 			s.EditedChannelPost.Reset()
 			if err := s.EditedChannelPost.Decode(d); err != nil {
 				return err
 			}
 		case "inline_query":
-			requiredBitSet[0] |= 1 << 5
 			s.InlineQuery.Reset()
 			if err := s.InlineQuery.Decode(d); err != nil {
 				return err
 			}
 		case "chosen_inline_result":
-			requiredBitSet[0] |= 1 << 6
 			s.ChosenInlineResult.Reset()
 			if err := s.ChosenInlineResult.Decode(d); err != nil {
 				return err
 			}
 		case "callback_query":
-			requiredBitSet[0] |= 1 << 7
 			s.CallbackQuery.Reset()
 			if err := s.CallbackQuery.Decode(d); err != nil {
 				return err
 			}
 		case "shipping_query":
-			requiredBitSet[1] |= 1 << 0
 			s.ShippingQuery.Reset()
 			if err := s.ShippingQuery.Decode(d); err != nil {
 				return err
 			}
 		case "pre_checkout_query":
-			requiredBitSet[1] |= 1 << 1
 			s.PreCheckoutQuery.Reset()
 			if err := s.PreCheckoutQuery.Decode(d); err != nil {
 				return err
 			}
 		case "poll":
-			requiredBitSet[1] |= 1 << 2
 			s.Poll.Reset()
 			if err := s.Poll.Decode(d); err != nil {
 				return err
 			}
 		case "poll_answer":
-			requiredBitSet[1] |= 1 << 3
 			s.PollAnswer.Reset()
 			if err := s.PollAnswer.Decode(d); err != nil {
 				return err
 			}
 		case "my_chat_member":
-			requiredBitSet[1] |= 1 << 4
 			s.MyChatMember.Reset()
 			if err := s.MyChatMember.Decode(d); err != nil {
 				return err
 			}
 		case "chat_member":
-			requiredBitSet[1] |= 1 << 5
 			s.ChatMember.Reset()
 			if err := s.ChatMember.Decode(d); err != nil {
 				return err
 			}
 		case "chat_join_request":
-			requiredBitSet[1] |= 1 << 6
 			s.ChatJoinRequest.Reset()
 			if err := s.ChatJoinRequest.Decode(d); err != nil {
 				return err
@@ -36858,7 +35982,6 @@ func (s *Update) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return err
 	}
-
 	var failures []validate.FieldError
 	for i, mask := range [2]uint8{
 		0b00000001,
@@ -36891,6 +36014,7 @@ func (s *Update) Decode(d *jx.Decoder) error {
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
+
 	return nil
 }
 
@@ -36930,6 +36054,7 @@ func (s *UploadStickerFile) Decode(d *jx.Decoder) error {
 		return errors.New(`invalid: unable to decode UploadStickerFile to nil`)
 	}
 	var requiredBitSet [1]uint8
+
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "user_id":
@@ -36953,7 +36078,6 @@ func (s *UploadStickerFile) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return err
 	}
-
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000011,
@@ -36985,6 +36109,7 @@ func (s *UploadStickerFile) Decode(d *jx.Decoder) error {
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
+
 	return nil
 }
 
@@ -37091,6 +36216,7 @@ func (s *User) Decode(d *jx.Decoder) error {
 		return errors.New(`invalid: unable to decode User to nil`)
 	}
 	var requiredBitSet [2]uint8
+
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "id":
@@ -37115,37 +36241,31 @@ func (s *User) Decode(d *jx.Decoder) error {
 				return err
 			}
 		case "last_name":
-			requiredBitSet[0] |= 1 << 3
 			s.LastName.Reset()
 			if err := s.LastName.Decode(d); err != nil {
 				return err
 			}
 		case "username":
-			requiredBitSet[0] |= 1 << 4
 			s.Username.Reset()
 			if err := s.Username.Decode(d); err != nil {
 				return err
 			}
 		case "language_code":
-			requiredBitSet[0] |= 1 << 5
 			s.LanguageCode.Reset()
 			if err := s.LanguageCode.Decode(d); err != nil {
 				return err
 			}
 		case "can_join_groups":
-			requiredBitSet[0] |= 1 << 6
 			s.CanJoinGroups.Reset()
 			if err := s.CanJoinGroups.Decode(d); err != nil {
 				return err
 			}
 		case "can_read_all_group_messages":
-			requiredBitSet[0] |= 1 << 7
 			s.CanReadAllGroupMessages.Reset()
 			if err := s.CanReadAllGroupMessages.Decode(d); err != nil {
 				return err
 			}
 		case "supports_inline_queries":
-			requiredBitSet[1] |= 1 << 0
 			s.SupportsInlineQueries.Reset()
 			if err := s.SupportsInlineQueries.Decode(d); err != nil {
 				return err
@@ -37157,7 +36277,6 @@ func (s *User) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return err
 	}
-
 	var failures []validate.FieldError
 	for i, mask := range [2]uint8{
 		0b00000111,
@@ -37190,6 +36309,7 @@ func (s *User) Decode(d *jx.Decoder) error {
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
+
 	return nil
 }
 
@@ -37265,6 +36385,7 @@ func (s *UserProfilePhotos) Decode(d *jx.Decoder) error {
 		return errors.New(`invalid: unable to decode UserProfilePhotos to nil`)
 	}
 	var requiredBitSet [1]uint8
+
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "total_count":
@@ -37302,7 +36423,6 @@ func (s *UserProfilePhotos) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return err
 	}
-
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000011,
@@ -37334,6 +36454,7 @@ func (s *UserProfilePhotos) Decode(d *jx.Decoder) error {
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
+
 	return nil
 }
 
@@ -37420,6 +36541,7 @@ func (s *Venue) Decode(d *jx.Decoder) error {
 		return errors.New(`invalid: unable to decode Venue to nil`)
 	}
 	var requiredBitSet [1]uint8
+
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "location":
@@ -37442,25 +36564,21 @@ func (s *Venue) Decode(d *jx.Decoder) error {
 				return err
 			}
 		case "foursquare_id":
-			requiredBitSet[0] |= 1 << 3
 			s.FoursquareID.Reset()
 			if err := s.FoursquareID.Decode(d); err != nil {
 				return err
 			}
 		case "foursquare_type":
-			requiredBitSet[0] |= 1 << 4
 			s.FoursquareType.Reset()
 			if err := s.FoursquareType.Decode(d); err != nil {
 				return err
 			}
 		case "google_place_id":
-			requiredBitSet[0] |= 1 << 5
 			s.GooglePlaceID.Reset()
 			if err := s.GooglePlaceID.Decode(d); err != nil {
 				return err
 			}
 		case "google_place_type":
-			requiredBitSet[0] |= 1 << 6
 			s.GooglePlaceType.Reset()
 			if err := s.GooglePlaceType.Decode(d); err != nil {
 				return err
@@ -37472,7 +36590,6 @@ func (s *Venue) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return err
 	}
-
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000111,
@@ -37504,6 +36621,7 @@ func (s *Venue) Decode(d *jx.Decoder) error {
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
+
 	return nil
 }
 
@@ -37604,6 +36722,7 @@ func (s *Video) Decode(d *jx.Decoder) error {
 		return errors.New(`invalid: unable to decode Video to nil`)
 	}
 	var requiredBitSet [2]uint8
+
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "file_id":
@@ -37642,25 +36761,21 @@ func (s *Video) Decode(d *jx.Decoder) error {
 				return err
 			}
 		case "thumb":
-			requiredBitSet[0] |= 1 << 5
 			s.Thumb.Reset()
 			if err := s.Thumb.Decode(d); err != nil {
 				return err
 			}
 		case "file_name":
-			requiredBitSet[0] |= 1 << 6
 			s.FileName.Reset()
 			if err := s.FileName.Decode(d); err != nil {
 				return err
 			}
 		case "mime_type":
-			requiredBitSet[0] |= 1 << 7
 			s.MimeType.Reset()
 			if err := s.MimeType.Decode(d); err != nil {
 				return err
 			}
 		case "file_size":
-			requiredBitSet[1] |= 1 << 0
 			s.FileSize.Reset()
 			if err := s.FileSize.Decode(d); err != nil {
 				return err
@@ -37672,7 +36787,6 @@ func (s *Video) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return err
 	}
-
 	var failures []validate.FieldError
 	for i, mask := range [2]uint8{
 		0b00011111,
@@ -37705,6 +36819,7 @@ func (s *Video) Decode(d *jx.Decoder) error {
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
+
 	return nil
 }
 
@@ -37778,6 +36893,7 @@ func (s *VideoNote) Decode(d *jx.Decoder) error {
 		return errors.New(`invalid: unable to decode VideoNote to nil`)
 	}
 	var requiredBitSet [1]uint8
+
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "file_id":
@@ -37809,13 +36925,11 @@ func (s *VideoNote) Decode(d *jx.Decoder) error {
 				return err
 			}
 		case "thumb":
-			requiredBitSet[0] |= 1 << 4
 			s.Thumb.Reset()
 			if err := s.Thumb.Decode(d); err != nil {
 				return err
 			}
 		case "file_size":
-			requiredBitSet[0] |= 1 << 5
 			s.FileSize.Reset()
 			if err := s.FileSize.Decode(d); err != nil {
 				return err
@@ -37827,7 +36941,6 @@ func (s *VideoNote) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return err
 	}
-
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00001111,
@@ -37859,6 +36972,7 @@ func (s *VideoNote) Decode(d *jx.Decoder) error {
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
+
 	return nil
 }
 
@@ -37925,6 +37039,7 @@ func (s *Voice) Decode(d *jx.Decoder) error {
 		return errors.New(`invalid: unable to decode Voice to nil`)
 	}
 	var requiredBitSet [1]uint8
+
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "file_id":
@@ -37949,13 +37064,11 @@ func (s *Voice) Decode(d *jx.Decoder) error {
 				return err
 			}
 		case "mime_type":
-			requiredBitSet[0] |= 1 << 3
 			s.MimeType.Reset()
 			if err := s.MimeType.Decode(d); err != nil {
 				return err
 			}
 		case "file_size":
-			requiredBitSet[0] |= 1 << 4
 			s.FileSize.Reset()
 			if err := s.FileSize.Decode(d); err != nil {
 				return err
@@ -37967,7 +37080,6 @@ func (s *Voice) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return err
 	}
-
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000111,
@@ -37999,6 +37111,7 @@ func (s *Voice) Decode(d *jx.Decoder) error {
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
+
 	return nil
 }
 
@@ -38031,6 +37144,7 @@ func (s *VoiceChatEnded) Decode(d *jx.Decoder) error {
 		return errors.New(`invalid: unable to decode VoiceChatEnded to nil`)
 	}
 	var requiredBitSet [1]uint8
+
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "duration":
@@ -38047,7 +37161,6 @@ func (s *VoiceChatEnded) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return err
 	}
-
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000001,
@@ -38079,6 +37192,7 @@ func (s *VoiceChatEnded) Decode(d *jx.Decoder) error {
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
+
 	return nil
 }
 
@@ -38125,11 +37239,10 @@ func (s *VoiceChatParticipantsInvited) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode VoiceChatParticipantsInvited to nil`)
 	}
-	var requiredBitSet [1]uint8
+
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "users":
-			requiredBitSet[0] |= 1 << 0
 			s.Users = nil
 			if err := d.Arr(func(d *jx.Decoder) error {
 				var elem User
@@ -38149,37 +37262,6 @@ func (s *VoiceChatParticipantsInvited) Decode(d *jx.Decoder) error {
 		return err
 	}
 
-	var failures []validate.FieldError
-	for i, mask := range [1]uint8{
-		0b00000000,
-	} {
-		if result := (requiredBitSet[i] & mask) ^ mask; result != 0 {
-			// Mask only required fields and check equality to mask using XOR.
-			//
-			// If XOR result is not zero, result is not equal to expected, so some fields are missed.
-			// Bits of fields which would be set are actually bits of missed fields.
-			missed := bits.OnesCount8(result)
-			for bitN := 0; bitN < missed; bitN++ {
-				bitIdx := bits.TrailingZeros8(result)
-				fieldIdx := i*8 + bitIdx
-				var name string
-				if fieldIdx < len(jsonFieldsNameOfVoiceChatParticipantsInvited) {
-					name = jsonFieldsNameOfVoiceChatParticipantsInvited[fieldIdx]
-				} else {
-					name = strconv.Itoa(fieldIdx)
-				}
-				failures = append(failures, validate.FieldError{
-					Name:  name,
-					Error: validate.ErrFieldRequired,
-				})
-				// Reset bit.
-				result &^= 1 << bitIdx
-			}
-		}
-	}
-	if len(failures) > 0 {
-		return &validate.Error{Fields: failures}
-	}
 	return nil
 }
 
@@ -38212,6 +37294,7 @@ func (s *VoiceChatScheduled) Decode(d *jx.Decoder) error {
 		return errors.New(`invalid: unable to decode VoiceChatScheduled to nil`)
 	}
 	var requiredBitSet [1]uint8
+
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "start_date":
@@ -38228,7 +37311,6 @@ func (s *VoiceChatScheduled) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return err
 	}
-
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000001,
@@ -38260,6 +37342,7 @@ func (s *VoiceChatScheduled) Decode(d *jx.Decoder) error {
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
+
 	return nil
 }
 
@@ -38280,7 +37363,7 @@ func (s *VoiceChatStarted) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode VoiceChatStarted to nil`)
 	}
-	var requiredBitSet [1]uint8
+
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		default:
@@ -38291,37 +37374,6 @@ func (s *VoiceChatStarted) Decode(d *jx.Decoder) error {
 		return err
 	}
 
-	var failures []validate.FieldError
-	for i, mask := range [1]uint8{
-		0b00000000,
-	} {
-		if result := (requiredBitSet[i] & mask) ^ mask; result != 0 {
-			// Mask only required fields and check equality to mask using XOR.
-			//
-			// If XOR result is not zero, result is not equal to expected, so some fields are missed.
-			// Bits of fields which would be set are actually bits of missed fields.
-			missed := bits.OnesCount8(result)
-			for bitN := 0; bitN < missed; bitN++ {
-				bitIdx := bits.TrailingZeros8(result)
-				fieldIdx := i*8 + bitIdx
-				var name string
-				if fieldIdx < len(jsonFieldsNameOfVoiceChatStarted) {
-					name = jsonFieldsNameOfVoiceChatStarted[fieldIdx]
-				} else {
-					name = strconv.Itoa(fieldIdx)
-				}
-				failures = append(failures, validate.FieldError{
-					Name:  name,
-					Error: validate.ErrFieldRequired,
-				})
-				// Reset bit.
-				result &^= 1 << bitIdx
-			}
-		}
-	}
-	if len(failures) > 0 {
-		return &validate.Error{Fields: failures}
-	}
 	return nil
 }
 
@@ -38430,6 +37482,7 @@ func (s *WebhookInfo) Decode(d *jx.Decoder) error {
 		return errors.New(`invalid: unable to decode WebhookInfo to nil`)
 	}
 	var requiredBitSet [1]uint8
+
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "url":
@@ -38454,31 +37507,26 @@ func (s *WebhookInfo) Decode(d *jx.Decoder) error {
 				return err
 			}
 		case "ip_address":
-			requiredBitSet[0] |= 1 << 3
 			s.IPAddress.Reset()
 			if err := s.IPAddress.Decode(d); err != nil {
 				return err
 			}
 		case "last_error_date":
-			requiredBitSet[0] |= 1 << 4
 			s.LastErrorDate.Reset()
 			if err := s.LastErrorDate.Decode(d); err != nil {
 				return err
 			}
 		case "last_error_message":
-			requiredBitSet[0] |= 1 << 5
 			s.LastErrorMessage.Reset()
 			if err := s.LastErrorMessage.Decode(d); err != nil {
 				return err
 			}
 		case "max_connections":
-			requiredBitSet[0] |= 1 << 6
 			s.MaxConnections.Reset()
 			if err := s.MaxConnections.Decode(d); err != nil {
 				return err
 			}
 		case "allowed_updates":
-			requiredBitSet[0] |= 1 << 7
 			s.AllowedUpdates = nil
 			if err := d.Arr(func(d *jx.Decoder) error {
 				var elem string
@@ -38499,7 +37547,6 @@ func (s *WebhookInfo) Decode(d *jx.Decoder) error {
 	}); err != nil {
 		return err
 	}
-
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
 		0b00000111,
@@ -38531,5 +37578,6 @@ func (s *WebhookInfo) Decode(d *jx.Decoder) error {
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
+
 	return nil
 }
