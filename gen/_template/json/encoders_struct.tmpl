@@ -1,5 +1,6 @@
 {{- /*gotype: github.com/ogen-go/ogen/internal/ir.Type*/ -}}
 {{- define "json/encoders_struct" }}
+{{- $fields := $.JSON.Fields }}
 // Encode implements json.Marshaler.
 func (s {{ $.Name }}) Encode(e *jx.Writer) {
 	e.ObjStart()
@@ -7,7 +8,6 @@ func (s {{ $.Name }}) Encode(e *jx.Writer) {
 		first = true
 		_ = first
 	)
-	{{- $fields := $.JSON.Fields }}
 	{{- $firstRequiredIDx := $fields.FirstRequiredIndex }}
 	{{- range $i, $f := $fields }}
 		{
@@ -31,22 +31,68 @@ func (s {{ $.Name }}) Encode(e *jx.Writer) {
 	e.ObjEnd()
 }
 
+var jsonFieldsNameOf{{ $.Name }} = [{{ len $fields }}]string{
+	{{- range $i, $f := $fields }}
+	{{ $i }}: {{ printf "%q" $f.Tag.JSON }},
+	{{- end }}
+}
+
 // Decode decodes {{ $.Name }} from json.
 func (s *{{ $.Name }}) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New(`invalid: unable to decode {{ $.Name }} to nil`)
 	}
-	return d.ObjBytes(func(d *jx.Decoder, k []byte) error {
+	{{- $requiredMask := $fields.RequiredMask }}
+	var requiredBitSet [{{ len $requiredMask }}]uint8
+	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
-	{{- range $f := $.JSON.Fields }}
-	case "{{ $f.Tag.JSON }}":
+	{{- range $i, $f := $fields }}
+	case {{ printf "%q" $f.Tag.JSON }}:
+		requiredBitSet[{{ div $i 8 }}] |= 1 << {{ mod $i 8 }}
 		{{- template "json/dec" field_elem $f }}
 	{{- end }}
 		default:
 			return d.Skip()
 		}
 		return nil
-	})
+	}); err != nil {
+		return err
+	}
+
+	var failures []validate.FieldError
+	for i, mask := range [{{ len $requiredMask }}]uint8{
+	{{- range $mask := $requiredMask }}
+		{{ printf "%#08b" $mask }},
+	{{- end }}
+	} {
+		if result := (requiredBitSet[i] & mask) ^ mask; result != 0 {
+			// Mask only required fields and check equality to mask using XOR.
+			//
+			// If XOR result is not zero, result is not equal to expected, so some fields are missed.
+			// Bits of fields which would be set are actually bits of missed fields.
+			missed := bits.OnesCount8(result)
+			for bitN := 0; bitN < missed; bitN++ {
+				bitIdx := bits.TrailingZeros8(result)
+				fieldIdx := i * 8 + bitIdx
+				var name string
+				if fieldIdx < len(jsonFieldsNameOf{{ $.Name }}) {
+					name = jsonFieldsNameOf{{ $.Name }}[fieldIdx]
+				} else {
+					name = strconv.Itoa(fieldIdx)
+				}
+				failures = append(failures, validate.FieldError{
+					Name:  name,
+					Error: validate.ErrFieldRequired,
+				})
+				// Reset bit.
+				result &^= 1 << bitIdx
+			}
+		}
+	}
+	if len(failures) > 0 {
+		return &validate.Error{Fields: failures}
+	}
+	return nil
 }
 
 {{ end }}

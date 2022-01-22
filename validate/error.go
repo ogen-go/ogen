@@ -2,7 +2,12 @@ package validate
 
 import (
 	"strings"
+
+	"github.com/go-faster/errors"
 )
+
+// ErrFieldRequired reports that field is required, but not found.
+var ErrFieldRequired = errors.New("field required")
 
 // Error represents validation error.
 type Error struct {
