@@ -39,6 +39,16 @@ func (j JSONFields) FirstRequiredIndex() int {
 	return -1
 }
 
+// HasRequired whether object has required fields
+func (j JSONFields) HasRequired() bool {
+	for _, f := range j {
+		if f.Spec.Required {
+			return true
+		}
+	}
+	return false
+}
+
 // RequiredMask returns array of 64-bit bitmasks for required fields.
 func (j JSONFields) RequiredMask() (r []uint8) {
 	i := 0

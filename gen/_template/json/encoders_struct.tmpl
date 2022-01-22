@@ -43,12 +43,17 @@ func (s *{{ $.Name }}) Decode(d *jx.Decoder) error {
 		return errors.New(`invalid: unable to decode {{ $.Name }} to nil`)
 	}
 	{{- $requiredMask := $fields.RequiredMask }}
+	{{- if $fields.HasRequired }}
 	var requiredBitSet [{{ len $requiredMask }}]uint8
+	{{- end }}
+
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 	{{- range $i, $f := $fields }}
 	case {{ printf "%q" $f.Tag.JSON }}:
+		{{- if $f.Spec.Required }}
 		requiredBitSet[{{ div $i 8 }}] |= 1 << {{ mod $i 8 }}
+		{{- end }}
 		{{- template "json/dec" field_elem $f }}
 	{{- end }}
 		default:
@@ -59,6 +64,7 @@ func (s *{{ $.Name }}) Decode(d *jx.Decoder) error {
 		return err
 	}
 
+	{{- if $fields.HasRequired }}
 	var failures []validate.FieldError
 	for i, mask := range [{{ len $requiredMask }}]uint8{
 	{{- range $mask := $requiredMask }}
@@ -92,6 +98,8 @@ func (s *{{ $.Name }}) Decode(d *jx.Decoder) error {
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
+	{{- end }}
+
 	return nil
 }
 
