@@ -117,6 +117,12 @@ func templateFunctions() template.FuncMap {
 		"add": func(a, b int) int {
 			return a + b
 		},
+		"div": func(a, b int) int {
+			return a / b
+		},
+		"mod": func(a, b int) int {
+			return a % b
+		},
 	}
 }
 

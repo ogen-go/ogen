@@ -8,6 +8,7 @@ import (
 	"fmt"
 	"io"
 	"math"
+	"math/bits"
 	"net"
 	"net/http"
 	"net/url"
@@ -50,6 +51,7 @@ var (
 	_ = uri.PathEncoder{}
 	_ = url.URL{}
 	_ = math.Mod
+	_ = bits.LeadingZeros64
 	_ = validate.Int{}
 	_ = ht.NewRequest
 	_ = net.IP{}

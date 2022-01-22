@@ -1,6 +1,7 @@
 package ogen
 
 import (
+	"fmt"
 	"net"
 	"net/url"
 	"strconv"
@@ -15,6 +16,7 @@ import (
 	api "github.com/ogen-go/ogen/internal/sample_api"
 	"github.com/ogen-go/ogen/internal/techempower"
 	"github.com/ogen-go/ogen/json"
+	"github.com/ogen-go/ogen/validate"
 )
 
 func decodeObject(t testing.TB, data []byte, v json.Unmarshaler) {
@@ -256,4 +258,52 @@ func TestTechEmpowerJSON(t *testing.T) {
 	t.Log(e)
 	require.NoError(t, parsed.Decode(d))
 	require.Equal(t, hw, parsed)
+}
+
+func TestValidateRequired(t *testing.T) {
+	data := func() json.Unmarshaler {
+		return &api.Data{}
+	}
+	required := func(fields ...string) (r []validate.FieldError) {
+		for _, f := range fields {
+			r = append(r, validate.FieldError{
+				Name:  f,
+				Error: validate.ErrFieldRequired,
+			})
+		}
+		return r
+	}
+	for i, tc := range []struct {
+		Input   string
+		Decoder func() json.Unmarshaler
+		Error   []validate.FieldError
+	}{
+		{
+			`{}`,
+			data,
+			required("id", "description", "email", "hostname", "format"),
+		},
+		{
+			`{"email": "aboba"}`,
+			data,
+			required("id", "description", "hostname", "format"),
+		},
+		{
+			`{"id":10, "email": "aboba"}`,
+			data,
+			required("description", "hostname", "format"),
+		},
+	} {
+		tc := tc
+		t.Run(fmt.Sprintf("Test%d", i+1), func(t *testing.T) {
+			err := tc.Decoder().Decode(jx.DecodeStr(tc.Input))
+			if len(tc.Error) > 0 {
+				var e *validate.Error
+				require.ErrorAs(t, err, &e)
+				require.Equal(t, tc.Error, e.Fields)
+			} else {
+				require.NoError(t, err)
+			}
+		})
+	}
 }
