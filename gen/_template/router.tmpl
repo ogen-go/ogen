@@ -32,6 +32,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 // Route is route object.
 type Route struct {
 	name string
+	count int
 	args [{{ $router.MaxParametersCount }}]string
 }
 
@@ -41,8 +42,8 @@ func (r Route) OperationID() string {
 }
 
 // Args returns parsed arguments.
-func (r Route) Args() [{{ $router.MaxParametersCount }}]string {
-	return r.args
+func (r Route) Args() []string {
+	return r.args[:r.count]
 }
 
 // FindRoute finds Route for given method and path.
@@ -141,6 +142,8 @@ s.handle{{ $.Name }}Request([{{ $.PathParamsCount }}]string{
 	if len(elem) == 0 {
 		// Leaf: {{ $r.Operation.Name }}
 		r.name = {{ printf "%q" $r.Operation.Name }}
+		r.args = args
+		r.count = {{ $.ParameterIndex }}
 		return r, true
 	}
 {{- else }}
@@ -148,6 +151,8 @@ s.handle{{ $.Name }}Request([{{ $.PathParamsCount }}]string{
 		if len(elem) == 0 {
 			{{- with $op := $r.Operation }}
 			r.name = {{ printf "%q" $op.Name }}
+			r.args = args
+			r.count = {{ $.ParameterIndex }}
 			return r, true
 			{{- else }}
 			break

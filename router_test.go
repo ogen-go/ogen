@@ -17,37 +17,44 @@ func TestRouter(t *testing.T) {
 		Method    string
 		Path      string
 		Operation string
+		Args      []string
 	}
-	test := func(m, p, op string) testCase {
+	test := func(m, p, op string, args ...string) testCase {
+		if len(args) == 0 {
+			args = []string{}
+		}
 		return testCase{
 			Method:    m,
 			Path:      p,
 			Operation: op,
+			Args:      args,
 		}
 	}
-	get := func(p, op string) testCase {
-		return test(http.MethodGet, p, op)
+	get := func(p, op string, args ...string) testCase {
+		return test(http.MethodGet, p, op, args...)
 	}
-	post := func(p, op string) testCase {
-		return test(http.MethodPost, p, op)
+	post := func(p, op string, args ...string) testCase {
+		return test(http.MethodPost, p, op, args...)
 	}
-	put := func(p, op string) testCase {
-		return test(http.MethodPut, p, op)
+	put := func(p, op string, args ...string) testCase {
+		return test(http.MethodPut, p, op, args...)
 	}
 
 	for i, tc := range []testCase{
-		get("/pet/name/10", "PetNameByID"),
-		get("/pet/friendNames/10", "PetFriendsNamesByID"),
+		get("/pet/name/10", "PetNameByID", "10"),
+		get("/pet/friendNames/10", "PetFriendsNamesByID", "10"),
 		get("/pet", "PetGet"),
 		get("/pet/avatar", "PetGetAvatarByID"),
 		post("/pet/avatar", "PetUploadAvatarByID"),
-		get("/pet/name", "PetGetByName"),
+		get("/pet/aboba", "PetGetByName", "aboba"),
 		get("/foobar", "FoobarGet"),
 		post("/foobar", "FoobarPost"),
 		put("/foobar", "FoobarPut"),
 		get("/error", "ErrorGet"),
 		get("/test/header", "GetHeader"),
-		get("/name/10/foobar1234barh-buzz!-kek", "DataGetFormat"),
+		// "/name/{id}/{foo}1234{bar}-{baz}!{kek}"
+		get("/name/10/foobar1234barh-buzz!-kek", "DataGetFormat",
+			"10", "foobar", "barh", "buzz", "-kek"),
 	} {
 		tc := tc
 		t.Run(fmt.Sprintf("Test%d", i), func(t *testing.T) {
@@ -59,6 +66,7 @@ func TestRouter(t *testing.T) {
 			}
 			a.True(ok)
 			a.Equal(tc.Operation, r.OperationID())
+			a.Equal(tc.Args, r.Args())
 		})
 	}
 }
