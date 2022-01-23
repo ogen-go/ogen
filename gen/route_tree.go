@@ -25,6 +25,7 @@ func findParam(op *ir.Operation, name string) (*ir.Parameter, bool) {
 	return nil, false
 }
 
+// longestPrefix founds the longest common prefix of k1 and k2.
 func longestPrefix(k1, k2 string) int {
 	min := len(k1)
 	if l := len(k2); l < min {
@@ -54,15 +55,19 @@ func (t *RouteTree) addRoute(path string, operation *ir.Operation) error {
 			n.op = operation
 			return nil
 		}
+		// Head is a first character of route.
 		head := path[0]
+		// Find parameter index.
 		_, _, pend, _, err := nextPathPart(path)
 		if err != nil {
 			return err
 		}
 
 		parent := n
+		// Check for existing node with same head.
 		n = n.getChild(head)
 		if n == nil {
+			// If there is no child with such head, create a new one.
 			r, err := parent.addChild(path, operation, &RouteNode{
 				prefix: path,
 				head:   head,
@@ -74,17 +79,27 @@ func (t *RouteTree) addRoute(path string, operation *ir.Operation) error {
 			return nil
 		}
 
+		// Skip common parameter node.
+		//
+		// This condition is met if child have parameter part in same place, e.g.
+		//
+		// /pet/{name}
+		// /pet/{name}/friends
+		//
 		if n.param != nil {
 			path = path[pend:]
 			continue
 		}
 
+		// Found the longest common prefix of existing node and new.
 		commonPrefix := longestPrefix(path, n.prefix)
 		if commonPrefix == len(n.prefix) {
+			// If common prefix fully matched by existing node, try to create child.
 			path = path[commonPrefix:]
 			continue
 		}
 
+		// Otherwise, we try to replace existing node.
 		newChild := &RouteNode{
 			head:   path[0],
 			prefix: path[:commonPrefix],
@@ -92,18 +107,21 @@ func (t *RouteTree) addRoute(path string, operation *ir.Operation) error {
 		}
 		parent.replaceChild(path[0], newChild)
 
+		// Add existing node as child of replacer.
 		n.head = n.prefix[commonPrefix]
 		n.prefix = n.prefix[commonPrefix:]
 		if _, err := newChild.addChild(n.prefix, operation, n); err != nil {
 			return err
 		}
 
+		// Special case: if new node has exactly same path, replace existing node.
 		path = path[commonPrefix:]
 		if len(path) == 0 {
 			newChild.op = operation
 			return nil
 		}
 
+		// Otherwise, we add new node as second child of replacer.
 		r, err := newChild.addChild(path, operation, &RouteNode{
 			prefix: path,
 			head:   path[0],

@@ -8,7 +8,7 @@
 // Handle{{ $op.Name }}Request handles {{ $op.Spec.OperationID }} operation.
 //
 // {{ $op.Spec.HTTPMethod }} {{ $op.Spec.Path }}
-func (s *Server) handle{{ $op.Name }}Request(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handle{{ $op.Name }}Request(args [{{ $op.PathParamsCount }}]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `{{ $op.Name }}`,
 		{{- if $op.Spec.OperationID }}
 		trace.WithAttributes(otelogen.OperationID(`{{ $op.Spec.OperationID }}`)),

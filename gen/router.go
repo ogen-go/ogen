@@ -33,6 +33,8 @@ func (m *MethodRoute) Add(r Route) error {
 // Router contains list of routes.
 type Router struct {
 	Methods []MethodRoute
+	// MaxParametersCount is maximum number of path parameters in one operation.
+	MaxParametersCount int
 }
 
 // Add adds new route.
@@ -77,6 +79,7 @@ func printEdge(ident int, e *RouteNode) {
 }
 
 func (g *Generator) route() error {
+	var maxParametersCount int
 	for _, op := range g.operations {
 		if err := g.router.Add(Route{
 			Method:    op.Spec.HTTPMethod,
@@ -85,7 +88,12 @@ func (g *Generator) route() error {
 		}); err != nil {
 			return errors.Wrapf(err, "add route %q", op.Name)
 		}
+		if count := op.PathParamsCount(); maxParametersCount < count {
+			maxParametersCount = count
+		}
 	}
+	g.router.MaxParametersCount = maxParametersCount
+
 	{
 		m := g.router.Methods
 		sort.SliceStable(m, func(i, j int) bool {

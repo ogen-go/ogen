@@ -10,6 +10,13 @@ import (
 	"github.com/ogen-go/ogen/internal/ir"
 )
 
+// RouterElem is variable helper for router generation.
+type RouterElem struct {
+	// ParameterIndex is index of parameter of this route part.
+	ParameterIndex int
+	Route          *RouteNode
+}
+
 // Elem variable helper for recursive array or object encoding or decoding.
 type Elem struct {
 	// Sub whether this Elem has parent Elem.
@@ -113,6 +120,18 @@ func templateFunctions() template.FuncMap {
 				Response: r,
 				Ptr:      ptr,
 			}
+		},
+		"router_elem": func(child *RouteNode, currentIdx int) RouterElem {
+			if child.IsParam() {
+				currentIdx++
+			}
+			return RouterElem{
+				ParameterIndex: currentIdx,
+				Route:          child,
+			}
+		},
+		"times": func(n int) []struct{} {
+			return make([]struct{}, n)
 		},
 		"add": func(a, b int) int {
 			return a + b
