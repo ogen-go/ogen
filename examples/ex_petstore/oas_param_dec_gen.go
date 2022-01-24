@@ -64,7 +64,7 @@ var (
 	_ = sync.Pool{}
 )
 
-func decodeListPetsParams(args map[string]string, r *http.Request) (ListPetsParams, error) {
+func decodeListPetsParams(args [0]string, r *http.Request) (ListPetsParams, error) {
 	var (
 		params    ListPetsParams
 		queryArgs = r.URL.Query()
@@ -107,13 +107,13 @@ func decodeListPetsParams(args map[string]string, r *http.Request) (ListPetsPara
 	return params, nil
 }
 
-func decodeShowPetByIdParams(args map[string]string, r *http.Request) (ShowPetByIdParams, error) {
+func decodeShowPetByIdParams(args [1]string, r *http.Request) (ShowPetByIdParams, error) {
 	var (
 		params ShowPetByIdParams
 	)
 	// Decode path: petId.
 	{
-		param := args["petId"]
+		param := args[0]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "petId",

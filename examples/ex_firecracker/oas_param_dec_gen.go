@@ -64,13 +64,13 @@ var (
 	_ = sync.Pool{}
 )
 
-func decodePatchGuestDriveByIDParams(args map[string]string, r *http.Request) (PatchGuestDriveByIDParams, error) {
+func decodePatchGuestDriveByIDParams(args [1]string, r *http.Request) (PatchGuestDriveByIDParams, error) {
 	var (
 		params PatchGuestDriveByIDParams
 	)
 	// Decode path: drive_id.
 	{
-		param := args["drive_id"]
+		param := args[0]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "drive_id",
@@ -102,13 +102,13 @@ func decodePatchGuestDriveByIDParams(args map[string]string, r *http.Request) (P
 	return params, nil
 }
 
-func decodePatchGuestNetworkInterfaceByIDParams(args map[string]string, r *http.Request) (PatchGuestNetworkInterfaceByIDParams, error) {
+func decodePatchGuestNetworkInterfaceByIDParams(args [1]string, r *http.Request) (PatchGuestNetworkInterfaceByIDParams, error) {
 	var (
 		params PatchGuestNetworkInterfaceByIDParams
 	)
 	// Decode path: iface_id.
 	{
-		param := args["iface_id"]
+		param := args[0]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "iface_id",
@@ -140,13 +140,13 @@ func decodePatchGuestNetworkInterfaceByIDParams(args map[string]string, r *http.
 	return params, nil
 }
 
-func decodePutGuestDriveByIDParams(args map[string]string, r *http.Request) (PutGuestDriveByIDParams, error) {
+func decodePutGuestDriveByIDParams(args [1]string, r *http.Request) (PutGuestDriveByIDParams, error) {
 	var (
 		params PutGuestDriveByIDParams
 	)
 	// Decode path: drive_id.
 	{
-		param := args["drive_id"]
+		param := args[0]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "drive_id",
@@ -178,13 +178,13 @@ func decodePutGuestDriveByIDParams(args map[string]string, r *http.Request) (Put
 	return params, nil
 }
 
-func decodePutGuestNetworkInterfaceByIDParams(args map[string]string, r *http.Request) (PutGuestNetworkInterfaceByIDParams, error) {
+func decodePutGuestNetworkInterfaceByIDParams(args [1]string, r *http.Request) (PutGuestNetworkInterfaceByIDParams, error) {
 	var (
 		params PutGuestNetworkInterfaceByIDParams
 	)
 	// Decode path: iface_id.
 	{
-		param := args["iface_id"]
+		param := args[0]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "iface_id",

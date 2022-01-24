@@ -67,7 +67,7 @@ var (
 // HandleActionsAddRepoAccessToSelfHostedRunnerGroupInOrgRequest handles actions/add-repo-access-to-self-hosted-runner-group-in-org operation.
 //
 // PUT /orgs/{org}/actions/runner-groups/{runner_group_id}/repositories/{repository_id}
-func (s *Server) handleActionsAddRepoAccessToSelfHostedRunnerGroupInOrgRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleActionsAddRepoAccessToSelfHostedRunnerGroupInOrgRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ActionsAddRepoAccessToSelfHostedRunnerGroupInOrg`,
 		trace.WithAttributes(otelogen.OperationID(`actions/add-repo-access-to-self-hosted-runner-group-in-org`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -96,7 +96,7 @@ func (s *Server) handleActionsAddRepoAccessToSelfHostedRunnerGroupInOrgRequest(a
 // HandleActionsAddSelectedRepoToOrgSecretRequest handles actions/add-selected-repo-to-org-secret operation.
 //
 // PUT /orgs/{org}/actions/secrets/{secret_name}/repositories/{repository_id}
-func (s *Server) handleActionsAddSelectedRepoToOrgSecretRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleActionsAddSelectedRepoToOrgSecretRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ActionsAddSelectedRepoToOrgSecret`,
 		trace.WithAttributes(otelogen.OperationID(`actions/add-selected-repo-to-org-secret`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -125,7 +125,7 @@ func (s *Server) handleActionsAddSelectedRepoToOrgSecretRequest(args map[string]
 // HandleActionsAddSelfHostedRunnerToGroupForOrgRequest handles actions/add-self-hosted-runner-to-group-for-org operation.
 //
 // PUT /orgs/{org}/actions/runner-groups/{runner_group_id}/runners/{runner_id}
-func (s *Server) handleActionsAddSelfHostedRunnerToGroupForOrgRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleActionsAddSelfHostedRunnerToGroupForOrgRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ActionsAddSelfHostedRunnerToGroupForOrg`,
 		trace.WithAttributes(otelogen.OperationID(`actions/add-self-hosted-runner-to-group-for-org`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -154,7 +154,7 @@ func (s *Server) handleActionsAddSelfHostedRunnerToGroupForOrgRequest(args map[s
 // HandleActionsApproveWorkflowRunRequest handles actions/approve-workflow-run operation.
 //
 // POST /repos/{owner}/{repo}/actions/runs/{run_id}/approve
-func (s *Server) handleActionsApproveWorkflowRunRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleActionsApproveWorkflowRunRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ActionsApproveWorkflowRun`,
 		trace.WithAttributes(otelogen.OperationID(`actions/approve-workflow-run`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -183,7 +183,7 @@ func (s *Server) handleActionsApproveWorkflowRunRequest(args map[string]string, 
 // HandleActionsCancelWorkflowRunRequest handles actions/cancel-workflow-run operation.
 //
 // POST /repos/{owner}/{repo}/actions/runs/{run_id}/cancel
-func (s *Server) handleActionsCancelWorkflowRunRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleActionsCancelWorkflowRunRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ActionsCancelWorkflowRun`,
 		trace.WithAttributes(otelogen.OperationID(`actions/cancel-workflow-run`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -212,7 +212,7 @@ func (s *Server) handleActionsCancelWorkflowRunRequest(args map[string]string, w
 // HandleActionsCreateOrUpdateEnvironmentSecretRequest handles actions/create-or-update-environment-secret operation.
 //
 // PUT /repositories/{repository_id}/environments/{environment_name}/secrets/{secret_name}
-func (s *Server) handleActionsCreateOrUpdateEnvironmentSecretRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleActionsCreateOrUpdateEnvironmentSecretRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ActionsCreateOrUpdateEnvironmentSecret`,
 		trace.WithAttributes(otelogen.OperationID(`actions/create-or-update-environment-secret`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -247,7 +247,7 @@ func (s *Server) handleActionsCreateOrUpdateEnvironmentSecretRequest(args map[st
 // HandleActionsCreateOrUpdateOrgSecretRequest handles actions/create-or-update-org-secret operation.
 //
 // PUT /orgs/{org}/actions/secrets/{secret_name}
-func (s *Server) handleActionsCreateOrUpdateOrgSecretRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleActionsCreateOrUpdateOrgSecretRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ActionsCreateOrUpdateOrgSecret`,
 		trace.WithAttributes(otelogen.OperationID(`actions/create-or-update-org-secret`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -282,7 +282,7 @@ func (s *Server) handleActionsCreateOrUpdateOrgSecretRequest(args map[string]str
 // HandleActionsCreateOrUpdateRepoSecretRequest handles actions/create-or-update-repo-secret operation.
 //
 // PUT /repos/{owner}/{repo}/actions/secrets/{secret_name}
-func (s *Server) handleActionsCreateOrUpdateRepoSecretRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleActionsCreateOrUpdateRepoSecretRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ActionsCreateOrUpdateRepoSecret`,
 		trace.WithAttributes(otelogen.OperationID(`actions/create-or-update-repo-secret`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -317,7 +317,7 @@ func (s *Server) handleActionsCreateOrUpdateRepoSecretRequest(args map[string]st
 // HandleActionsCreateRegistrationTokenForOrgRequest handles actions/create-registration-token-for-org operation.
 //
 // POST /orgs/{org}/actions/runners/registration-token
-func (s *Server) handleActionsCreateRegistrationTokenForOrgRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleActionsCreateRegistrationTokenForOrgRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ActionsCreateRegistrationTokenForOrg`,
 		trace.WithAttributes(otelogen.OperationID(`actions/create-registration-token-for-org`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -346,7 +346,7 @@ func (s *Server) handleActionsCreateRegistrationTokenForOrgRequest(args map[stri
 // HandleActionsCreateRegistrationTokenForRepoRequest handles actions/create-registration-token-for-repo operation.
 //
 // POST /repos/{owner}/{repo}/actions/runners/registration-token
-func (s *Server) handleActionsCreateRegistrationTokenForRepoRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleActionsCreateRegistrationTokenForRepoRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ActionsCreateRegistrationTokenForRepo`,
 		trace.WithAttributes(otelogen.OperationID(`actions/create-registration-token-for-repo`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -375,7 +375,7 @@ func (s *Server) handleActionsCreateRegistrationTokenForRepoRequest(args map[str
 // HandleActionsCreateRemoveTokenForOrgRequest handles actions/create-remove-token-for-org operation.
 //
 // POST /orgs/{org}/actions/runners/remove-token
-func (s *Server) handleActionsCreateRemoveTokenForOrgRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleActionsCreateRemoveTokenForOrgRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ActionsCreateRemoveTokenForOrg`,
 		trace.WithAttributes(otelogen.OperationID(`actions/create-remove-token-for-org`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -404,7 +404,7 @@ func (s *Server) handleActionsCreateRemoveTokenForOrgRequest(args map[string]str
 // HandleActionsCreateRemoveTokenForRepoRequest handles actions/create-remove-token-for-repo operation.
 //
 // POST /repos/{owner}/{repo}/actions/runners/remove-token
-func (s *Server) handleActionsCreateRemoveTokenForRepoRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleActionsCreateRemoveTokenForRepoRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ActionsCreateRemoveTokenForRepo`,
 		trace.WithAttributes(otelogen.OperationID(`actions/create-remove-token-for-repo`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -433,7 +433,7 @@ func (s *Server) handleActionsCreateRemoveTokenForRepoRequest(args map[string]st
 // HandleActionsCreateSelfHostedRunnerGroupForOrgRequest handles actions/create-self-hosted-runner-group-for-org operation.
 //
 // POST /orgs/{org}/actions/runner-groups
-func (s *Server) handleActionsCreateSelfHostedRunnerGroupForOrgRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleActionsCreateSelfHostedRunnerGroupForOrgRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ActionsCreateSelfHostedRunnerGroupForOrg`,
 		trace.WithAttributes(otelogen.OperationID(`actions/create-self-hosted-runner-group-for-org`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -468,7 +468,7 @@ func (s *Server) handleActionsCreateSelfHostedRunnerGroupForOrgRequest(args map[
 // HandleActionsDeleteArtifactRequest handles actions/delete-artifact operation.
 //
 // DELETE /repos/{owner}/{repo}/actions/artifacts/{artifact_id}
-func (s *Server) handleActionsDeleteArtifactRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleActionsDeleteArtifactRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ActionsDeleteArtifact`,
 		trace.WithAttributes(otelogen.OperationID(`actions/delete-artifact`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -497,7 +497,7 @@ func (s *Server) handleActionsDeleteArtifactRequest(args map[string]string, w ht
 // HandleActionsDeleteEnvironmentSecretRequest handles actions/delete-environment-secret operation.
 //
 // DELETE /repositories/{repository_id}/environments/{environment_name}/secrets/{secret_name}
-func (s *Server) handleActionsDeleteEnvironmentSecretRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleActionsDeleteEnvironmentSecretRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ActionsDeleteEnvironmentSecret`,
 		trace.WithAttributes(otelogen.OperationID(`actions/delete-environment-secret`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -526,7 +526,7 @@ func (s *Server) handleActionsDeleteEnvironmentSecretRequest(args map[string]str
 // HandleActionsDeleteOrgSecretRequest handles actions/delete-org-secret operation.
 //
 // DELETE /orgs/{org}/actions/secrets/{secret_name}
-func (s *Server) handleActionsDeleteOrgSecretRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleActionsDeleteOrgSecretRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ActionsDeleteOrgSecret`,
 		trace.WithAttributes(otelogen.OperationID(`actions/delete-org-secret`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -555,7 +555,7 @@ func (s *Server) handleActionsDeleteOrgSecretRequest(args map[string]string, w h
 // HandleActionsDeleteRepoSecretRequest handles actions/delete-repo-secret operation.
 //
 // DELETE /repos/{owner}/{repo}/actions/secrets/{secret_name}
-func (s *Server) handleActionsDeleteRepoSecretRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleActionsDeleteRepoSecretRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ActionsDeleteRepoSecret`,
 		trace.WithAttributes(otelogen.OperationID(`actions/delete-repo-secret`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -584,7 +584,7 @@ func (s *Server) handleActionsDeleteRepoSecretRequest(args map[string]string, w 
 // HandleActionsDeleteSelfHostedRunnerFromOrgRequest handles actions/delete-self-hosted-runner-from-org operation.
 //
 // DELETE /orgs/{org}/actions/runners/{runner_id}
-func (s *Server) handleActionsDeleteSelfHostedRunnerFromOrgRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleActionsDeleteSelfHostedRunnerFromOrgRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ActionsDeleteSelfHostedRunnerFromOrg`,
 		trace.WithAttributes(otelogen.OperationID(`actions/delete-self-hosted-runner-from-org`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -613,7 +613,7 @@ func (s *Server) handleActionsDeleteSelfHostedRunnerFromOrgRequest(args map[stri
 // HandleActionsDeleteSelfHostedRunnerFromRepoRequest handles actions/delete-self-hosted-runner-from-repo operation.
 //
 // DELETE /repos/{owner}/{repo}/actions/runners/{runner_id}
-func (s *Server) handleActionsDeleteSelfHostedRunnerFromRepoRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleActionsDeleteSelfHostedRunnerFromRepoRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ActionsDeleteSelfHostedRunnerFromRepo`,
 		trace.WithAttributes(otelogen.OperationID(`actions/delete-self-hosted-runner-from-repo`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -642,7 +642,7 @@ func (s *Server) handleActionsDeleteSelfHostedRunnerFromRepoRequest(args map[str
 // HandleActionsDeleteSelfHostedRunnerGroupFromOrgRequest handles actions/delete-self-hosted-runner-group-from-org operation.
 //
 // DELETE /orgs/{org}/actions/runner-groups/{runner_group_id}
-func (s *Server) handleActionsDeleteSelfHostedRunnerGroupFromOrgRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleActionsDeleteSelfHostedRunnerGroupFromOrgRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ActionsDeleteSelfHostedRunnerGroupFromOrg`,
 		trace.WithAttributes(otelogen.OperationID(`actions/delete-self-hosted-runner-group-from-org`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -671,7 +671,7 @@ func (s *Server) handleActionsDeleteSelfHostedRunnerGroupFromOrgRequest(args map
 // HandleActionsDeleteWorkflowRunRequest handles actions/delete-workflow-run operation.
 //
 // DELETE /repos/{owner}/{repo}/actions/runs/{run_id}
-func (s *Server) handleActionsDeleteWorkflowRunRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleActionsDeleteWorkflowRunRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ActionsDeleteWorkflowRun`,
 		trace.WithAttributes(otelogen.OperationID(`actions/delete-workflow-run`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -700,7 +700,7 @@ func (s *Server) handleActionsDeleteWorkflowRunRequest(args map[string]string, w
 // HandleActionsDeleteWorkflowRunLogsRequest handles actions/delete-workflow-run-logs operation.
 //
 // DELETE /repos/{owner}/{repo}/actions/runs/{run_id}/logs
-func (s *Server) handleActionsDeleteWorkflowRunLogsRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleActionsDeleteWorkflowRunLogsRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ActionsDeleteWorkflowRunLogs`,
 		trace.WithAttributes(otelogen.OperationID(`actions/delete-workflow-run-logs`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -729,7 +729,7 @@ func (s *Server) handleActionsDeleteWorkflowRunLogsRequest(args map[string]strin
 // HandleActionsDisableSelectedRepositoryGithubActionsOrganizationRequest handles actions/disable-selected-repository-github-actions-organization operation.
 //
 // DELETE /orgs/{org}/actions/permissions/repositories/{repository_id}
-func (s *Server) handleActionsDisableSelectedRepositoryGithubActionsOrganizationRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleActionsDisableSelectedRepositoryGithubActionsOrganizationRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ActionsDisableSelectedRepositoryGithubActionsOrganization`,
 		trace.WithAttributes(otelogen.OperationID(`actions/disable-selected-repository-github-actions-organization`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -758,7 +758,7 @@ func (s *Server) handleActionsDisableSelectedRepositoryGithubActionsOrganization
 // HandleActionsDownloadArtifactRequest handles actions/download-artifact operation.
 //
 // GET /repos/{owner}/{repo}/actions/artifacts/{artifact_id}/{archive_format}
-func (s *Server) handleActionsDownloadArtifactRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleActionsDownloadArtifactRequest(args [4]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ActionsDownloadArtifact`,
 		trace.WithAttributes(otelogen.OperationID(`actions/download-artifact`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -787,7 +787,7 @@ func (s *Server) handleActionsDownloadArtifactRequest(args map[string]string, w 
 // HandleActionsDownloadJobLogsForWorkflowRunRequest handles actions/download-job-logs-for-workflow-run operation.
 //
 // GET /repos/{owner}/{repo}/actions/jobs/{job_id}/logs
-func (s *Server) handleActionsDownloadJobLogsForWorkflowRunRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleActionsDownloadJobLogsForWorkflowRunRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ActionsDownloadJobLogsForWorkflowRun`,
 		trace.WithAttributes(otelogen.OperationID(`actions/download-job-logs-for-workflow-run`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -816,7 +816,7 @@ func (s *Server) handleActionsDownloadJobLogsForWorkflowRunRequest(args map[stri
 // HandleActionsDownloadWorkflowRunLogsRequest handles actions/download-workflow-run-logs operation.
 //
 // GET /repos/{owner}/{repo}/actions/runs/{run_id}/logs
-func (s *Server) handleActionsDownloadWorkflowRunLogsRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleActionsDownloadWorkflowRunLogsRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ActionsDownloadWorkflowRunLogs`,
 		trace.WithAttributes(otelogen.OperationID(`actions/download-workflow-run-logs`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -845,7 +845,7 @@ func (s *Server) handleActionsDownloadWorkflowRunLogsRequest(args map[string]str
 // HandleActionsEnableSelectedRepositoryGithubActionsOrganizationRequest handles actions/enable-selected-repository-github-actions-organization operation.
 //
 // PUT /orgs/{org}/actions/permissions/repositories/{repository_id}
-func (s *Server) handleActionsEnableSelectedRepositoryGithubActionsOrganizationRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleActionsEnableSelectedRepositoryGithubActionsOrganizationRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ActionsEnableSelectedRepositoryGithubActionsOrganization`,
 		trace.WithAttributes(otelogen.OperationID(`actions/enable-selected-repository-github-actions-organization`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -874,7 +874,7 @@ func (s *Server) handleActionsEnableSelectedRepositoryGithubActionsOrganizationR
 // HandleActionsGetAllowedActionsOrganizationRequest handles actions/get-allowed-actions-organization operation.
 //
 // GET /orgs/{org}/actions/permissions/selected-actions
-func (s *Server) handleActionsGetAllowedActionsOrganizationRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleActionsGetAllowedActionsOrganizationRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ActionsGetAllowedActionsOrganization`,
 		trace.WithAttributes(otelogen.OperationID(`actions/get-allowed-actions-organization`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -903,7 +903,7 @@ func (s *Server) handleActionsGetAllowedActionsOrganizationRequest(args map[stri
 // HandleActionsGetAllowedActionsRepositoryRequest handles actions/get-allowed-actions-repository operation.
 //
 // GET /repos/{owner}/{repo}/actions/permissions/selected-actions
-func (s *Server) handleActionsGetAllowedActionsRepositoryRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleActionsGetAllowedActionsRepositoryRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ActionsGetAllowedActionsRepository`,
 		trace.WithAttributes(otelogen.OperationID(`actions/get-allowed-actions-repository`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -932,7 +932,7 @@ func (s *Server) handleActionsGetAllowedActionsRepositoryRequest(args map[string
 // HandleActionsGetArtifactRequest handles actions/get-artifact operation.
 //
 // GET /repos/{owner}/{repo}/actions/artifacts/{artifact_id}
-func (s *Server) handleActionsGetArtifactRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleActionsGetArtifactRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ActionsGetArtifact`,
 		trace.WithAttributes(otelogen.OperationID(`actions/get-artifact`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -961,7 +961,7 @@ func (s *Server) handleActionsGetArtifactRequest(args map[string]string, w http.
 // HandleActionsGetEnvironmentPublicKeyRequest handles actions/get-environment-public-key operation.
 //
 // GET /repositories/{repository_id}/environments/{environment_name}/secrets/public-key
-func (s *Server) handleActionsGetEnvironmentPublicKeyRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleActionsGetEnvironmentPublicKeyRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ActionsGetEnvironmentPublicKey`,
 		trace.WithAttributes(otelogen.OperationID(`actions/get-environment-public-key`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -990,7 +990,7 @@ func (s *Server) handleActionsGetEnvironmentPublicKeyRequest(args map[string]str
 // HandleActionsGetEnvironmentSecretRequest handles actions/get-environment-secret operation.
 //
 // GET /repositories/{repository_id}/environments/{environment_name}/secrets/{secret_name}
-func (s *Server) handleActionsGetEnvironmentSecretRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleActionsGetEnvironmentSecretRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ActionsGetEnvironmentSecret`,
 		trace.WithAttributes(otelogen.OperationID(`actions/get-environment-secret`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -1019,7 +1019,7 @@ func (s *Server) handleActionsGetEnvironmentSecretRequest(args map[string]string
 // HandleActionsGetGithubActionsPermissionsOrganizationRequest handles actions/get-github-actions-permissions-organization operation.
 //
 // GET /orgs/{org}/actions/permissions
-func (s *Server) handleActionsGetGithubActionsPermissionsOrganizationRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleActionsGetGithubActionsPermissionsOrganizationRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ActionsGetGithubActionsPermissionsOrganization`,
 		trace.WithAttributes(otelogen.OperationID(`actions/get-github-actions-permissions-organization`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -1048,7 +1048,7 @@ func (s *Server) handleActionsGetGithubActionsPermissionsOrganizationRequest(arg
 // HandleActionsGetGithubActionsPermissionsRepositoryRequest handles actions/get-github-actions-permissions-repository operation.
 //
 // GET /repos/{owner}/{repo}/actions/permissions
-func (s *Server) handleActionsGetGithubActionsPermissionsRepositoryRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleActionsGetGithubActionsPermissionsRepositoryRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ActionsGetGithubActionsPermissionsRepository`,
 		trace.WithAttributes(otelogen.OperationID(`actions/get-github-actions-permissions-repository`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -1077,7 +1077,7 @@ func (s *Server) handleActionsGetGithubActionsPermissionsRepositoryRequest(args 
 // HandleActionsGetJobForWorkflowRunRequest handles actions/get-job-for-workflow-run operation.
 //
 // GET /repos/{owner}/{repo}/actions/jobs/{job_id}
-func (s *Server) handleActionsGetJobForWorkflowRunRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleActionsGetJobForWorkflowRunRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ActionsGetJobForWorkflowRun`,
 		trace.WithAttributes(otelogen.OperationID(`actions/get-job-for-workflow-run`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -1106,7 +1106,7 @@ func (s *Server) handleActionsGetJobForWorkflowRunRequest(args map[string]string
 // HandleActionsGetOrgPublicKeyRequest handles actions/get-org-public-key operation.
 //
 // GET /orgs/{org}/actions/secrets/public-key
-func (s *Server) handleActionsGetOrgPublicKeyRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleActionsGetOrgPublicKeyRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ActionsGetOrgPublicKey`,
 		trace.WithAttributes(otelogen.OperationID(`actions/get-org-public-key`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -1135,7 +1135,7 @@ func (s *Server) handleActionsGetOrgPublicKeyRequest(args map[string]string, w h
 // HandleActionsGetOrgSecretRequest handles actions/get-org-secret operation.
 //
 // GET /orgs/{org}/actions/secrets/{secret_name}
-func (s *Server) handleActionsGetOrgSecretRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleActionsGetOrgSecretRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ActionsGetOrgSecret`,
 		trace.WithAttributes(otelogen.OperationID(`actions/get-org-secret`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -1164,7 +1164,7 @@ func (s *Server) handleActionsGetOrgSecretRequest(args map[string]string, w http
 // HandleActionsGetRepoPublicKeyRequest handles actions/get-repo-public-key operation.
 //
 // GET /repos/{owner}/{repo}/actions/secrets/public-key
-func (s *Server) handleActionsGetRepoPublicKeyRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleActionsGetRepoPublicKeyRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ActionsGetRepoPublicKey`,
 		trace.WithAttributes(otelogen.OperationID(`actions/get-repo-public-key`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -1193,7 +1193,7 @@ func (s *Server) handleActionsGetRepoPublicKeyRequest(args map[string]string, w 
 // HandleActionsGetRepoSecretRequest handles actions/get-repo-secret operation.
 //
 // GET /repos/{owner}/{repo}/actions/secrets/{secret_name}
-func (s *Server) handleActionsGetRepoSecretRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleActionsGetRepoSecretRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ActionsGetRepoSecret`,
 		trace.WithAttributes(otelogen.OperationID(`actions/get-repo-secret`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -1222,7 +1222,7 @@ func (s *Server) handleActionsGetRepoSecretRequest(args map[string]string, w htt
 // HandleActionsGetReviewsForRunRequest handles actions/get-reviews-for-run operation.
 //
 // GET /repos/{owner}/{repo}/actions/runs/{run_id}/approvals
-func (s *Server) handleActionsGetReviewsForRunRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleActionsGetReviewsForRunRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ActionsGetReviewsForRun`,
 		trace.WithAttributes(otelogen.OperationID(`actions/get-reviews-for-run`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -1251,7 +1251,7 @@ func (s *Server) handleActionsGetReviewsForRunRequest(args map[string]string, w 
 // HandleActionsGetSelfHostedRunnerForOrgRequest handles actions/get-self-hosted-runner-for-org operation.
 //
 // GET /orgs/{org}/actions/runners/{runner_id}
-func (s *Server) handleActionsGetSelfHostedRunnerForOrgRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleActionsGetSelfHostedRunnerForOrgRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ActionsGetSelfHostedRunnerForOrg`,
 		trace.WithAttributes(otelogen.OperationID(`actions/get-self-hosted-runner-for-org`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -1280,7 +1280,7 @@ func (s *Server) handleActionsGetSelfHostedRunnerForOrgRequest(args map[string]s
 // HandleActionsGetSelfHostedRunnerForRepoRequest handles actions/get-self-hosted-runner-for-repo operation.
 //
 // GET /repos/{owner}/{repo}/actions/runners/{runner_id}
-func (s *Server) handleActionsGetSelfHostedRunnerForRepoRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleActionsGetSelfHostedRunnerForRepoRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ActionsGetSelfHostedRunnerForRepo`,
 		trace.WithAttributes(otelogen.OperationID(`actions/get-self-hosted-runner-for-repo`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -1309,7 +1309,7 @@ func (s *Server) handleActionsGetSelfHostedRunnerForRepoRequest(args map[string]
 // HandleActionsGetSelfHostedRunnerGroupForOrgRequest handles actions/get-self-hosted-runner-group-for-org operation.
 //
 // GET /orgs/{org}/actions/runner-groups/{runner_group_id}
-func (s *Server) handleActionsGetSelfHostedRunnerGroupForOrgRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleActionsGetSelfHostedRunnerGroupForOrgRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ActionsGetSelfHostedRunnerGroupForOrg`,
 		trace.WithAttributes(otelogen.OperationID(`actions/get-self-hosted-runner-group-for-org`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -1338,7 +1338,7 @@ func (s *Server) handleActionsGetSelfHostedRunnerGroupForOrgRequest(args map[str
 // HandleActionsGetWorkflowRunRequest handles actions/get-workflow-run operation.
 //
 // GET /repos/{owner}/{repo}/actions/runs/{run_id}
-func (s *Server) handleActionsGetWorkflowRunRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleActionsGetWorkflowRunRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ActionsGetWorkflowRun`,
 		trace.WithAttributes(otelogen.OperationID(`actions/get-workflow-run`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -1367,7 +1367,7 @@ func (s *Server) handleActionsGetWorkflowRunRequest(args map[string]string, w ht
 // HandleActionsGetWorkflowRunUsageRequest handles actions/get-workflow-run-usage operation.
 //
 // GET /repos/{owner}/{repo}/actions/runs/{run_id}/timing
-func (s *Server) handleActionsGetWorkflowRunUsageRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleActionsGetWorkflowRunUsageRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ActionsGetWorkflowRunUsage`,
 		trace.WithAttributes(otelogen.OperationID(`actions/get-workflow-run-usage`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -1396,7 +1396,7 @@ func (s *Server) handleActionsGetWorkflowRunUsageRequest(args map[string]string,
 // HandleActionsListArtifactsForRepoRequest handles actions/list-artifacts-for-repo operation.
 //
 // GET /repos/{owner}/{repo}/actions/artifacts
-func (s *Server) handleActionsListArtifactsForRepoRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleActionsListArtifactsForRepoRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ActionsListArtifactsForRepo`,
 		trace.WithAttributes(otelogen.OperationID(`actions/list-artifacts-for-repo`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -1425,7 +1425,7 @@ func (s *Server) handleActionsListArtifactsForRepoRequest(args map[string]string
 // HandleActionsListEnvironmentSecretsRequest handles actions/list-environment-secrets operation.
 //
 // GET /repositories/{repository_id}/environments/{environment_name}/secrets
-func (s *Server) handleActionsListEnvironmentSecretsRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleActionsListEnvironmentSecretsRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ActionsListEnvironmentSecrets`,
 		trace.WithAttributes(otelogen.OperationID(`actions/list-environment-secrets`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -1454,7 +1454,7 @@ func (s *Server) handleActionsListEnvironmentSecretsRequest(args map[string]stri
 // HandleActionsListJobsForWorkflowRunRequest handles actions/list-jobs-for-workflow-run operation.
 //
 // GET /repos/{owner}/{repo}/actions/runs/{run_id}/jobs
-func (s *Server) handleActionsListJobsForWorkflowRunRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleActionsListJobsForWorkflowRunRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ActionsListJobsForWorkflowRun`,
 		trace.WithAttributes(otelogen.OperationID(`actions/list-jobs-for-workflow-run`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -1483,7 +1483,7 @@ func (s *Server) handleActionsListJobsForWorkflowRunRequest(args map[string]stri
 // HandleActionsListOrgSecretsRequest handles actions/list-org-secrets operation.
 //
 // GET /orgs/{org}/actions/secrets
-func (s *Server) handleActionsListOrgSecretsRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleActionsListOrgSecretsRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ActionsListOrgSecrets`,
 		trace.WithAttributes(otelogen.OperationID(`actions/list-org-secrets`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -1512,7 +1512,7 @@ func (s *Server) handleActionsListOrgSecretsRequest(args map[string]string, w ht
 // HandleActionsListRepoAccessToSelfHostedRunnerGroupInOrgRequest handles actions/list-repo-access-to-self-hosted-runner-group-in-org operation.
 //
 // GET /orgs/{org}/actions/runner-groups/{runner_group_id}/repositories
-func (s *Server) handleActionsListRepoAccessToSelfHostedRunnerGroupInOrgRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleActionsListRepoAccessToSelfHostedRunnerGroupInOrgRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ActionsListRepoAccessToSelfHostedRunnerGroupInOrg`,
 		trace.WithAttributes(otelogen.OperationID(`actions/list-repo-access-to-self-hosted-runner-group-in-org`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -1541,7 +1541,7 @@ func (s *Server) handleActionsListRepoAccessToSelfHostedRunnerGroupInOrgRequest(
 // HandleActionsListRepoSecretsRequest handles actions/list-repo-secrets operation.
 //
 // GET /repos/{owner}/{repo}/actions/secrets
-func (s *Server) handleActionsListRepoSecretsRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleActionsListRepoSecretsRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ActionsListRepoSecrets`,
 		trace.WithAttributes(otelogen.OperationID(`actions/list-repo-secrets`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -1570,7 +1570,7 @@ func (s *Server) handleActionsListRepoSecretsRequest(args map[string]string, w h
 // HandleActionsListRepoWorkflowsRequest handles actions/list-repo-workflows operation.
 //
 // GET /repos/{owner}/{repo}/actions/workflows
-func (s *Server) handleActionsListRepoWorkflowsRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleActionsListRepoWorkflowsRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ActionsListRepoWorkflows`,
 		trace.WithAttributes(otelogen.OperationID(`actions/list-repo-workflows`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -1599,7 +1599,7 @@ func (s *Server) handleActionsListRepoWorkflowsRequest(args map[string]string, w
 // HandleActionsListRunnerApplicationsForOrgRequest handles actions/list-runner-applications-for-org operation.
 //
 // GET /orgs/{org}/actions/runners/downloads
-func (s *Server) handleActionsListRunnerApplicationsForOrgRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleActionsListRunnerApplicationsForOrgRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ActionsListRunnerApplicationsForOrg`,
 		trace.WithAttributes(otelogen.OperationID(`actions/list-runner-applications-for-org`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -1628,7 +1628,7 @@ func (s *Server) handleActionsListRunnerApplicationsForOrgRequest(args map[strin
 // HandleActionsListRunnerApplicationsForRepoRequest handles actions/list-runner-applications-for-repo operation.
 //
 // GET /repos/{owner}/{repo}/actions/runners/downloads
-func (s *Server) handleActionsListRunnerApplicationsForRepoRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleActionsListRunnerApplicationsForRepoRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ActionsListRunnerApplicationsForRepo`,
 		trace.WithAttributes(otelogen.OperationID(`actions/list-runner-applications-for-repo`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -1657,7 +1657,7 @@ func (s *Server) handleActionsListRunnerApplicationsForRepoRequest(args map[stri
 // HandleActionsListSelectedReposForOrgSecretRequest handles actions/list-selected-repos-for-org-secret operation.
 //
 // GET /orgs/{org}/actions/secrets/{secret_name}/repositories
-func (s *Server) handleActionsListSelectedReposForOrgSecretRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleActionsListSelectedReposForOrgSecretRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ActionsListSelectedReposForOrgSecret`,
 		trace.WithAttributes(otelogen.OperationID(`actions/list-selected-repos-for-org-secret`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -1686,7 +1686,7 @@ func (s *Server) handleActionsListSelectedReposForOrgSecretRequest(args map[stri
 // HandleActionsListSelectedRepositoriesEnabledGithubActionsOrganizationRequest handles actions/list-selected-repositories-enabled-github-actions-organization operation.
 //
 // GET /orgs/{org}/actions/permissions/repositories
-func (s *Server) handleActionsListSelectedRepositoriesEnabledGithubActionsOrganizationRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleActionsListSelectedRepositoriesEnabledGithubActionsOrganizationRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ActionsListSelectedRepositoriesEnabledGithubActionsOrganization`,
 		trace.WithAttributes(otelogen.OperationID(`actions/list-selected-repositories-enabled-github-actions-organization`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -1715,7 +1715,7 @@ func (s *Server) handleActionsListSelectedRepositoriesEnabledGithubActionsOrgani
 // HandleActionsListSelfHostedRunnerGroupsForOrgRequest handles actions/list-self-hosted-runner-groups-for-org operation.
 //
 // GET /orgs/{org}/actions/runner-groups
-func (s *Server) handleActionsListSelfHostedRunnerGroupsForOrgRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleActionsListSelfHostedRunnerGroupsForOrgRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ActionsListSelfHostedRunnerGroupsForOrg`,
 		trace.WithAttributes(otelogen.OperationID(`actions/list-self-hosted-runner-groups-for-org`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -1744,7 +1744,7 @@ func (s *Server) handleActionsListSelfHostedRunnerGroupsForOrgRequest(args map[s
 // HandleActionsListSelfHostedRunnersForOrgRequest handles actions/list-self-hosted-runners-for-org operation.
 //
 // GET /orgs/{org}/actions/runners
-func (s *Server) handleActionsListSelfHostedRunnersForOrgRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleActionsListSelfHostedRunnersForOrgRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ActionsListSelfHostedRunnersForOrg`,
 		trace.WithAttributes(otelogen.OperationID(`actions/list-self-hosted-runners-for-org`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -1773,7 +1773,7 @@ func (s *Server) handleActionsListSelfHostedRunnersForOrgRequest(args map[string
 // HandleActionsListSelfHostedRunnersForRepoRequest handles actions/list-self-hosted-runners-for-repo operation.
 //
 // GET /repos/{owner}/{repo}/actions/runners
-func (s *Server) handleActionsListSelfHostedRunnersForRepoRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleActionsListSelfHostedRunnersForRepoRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ActionsListSelfHostedRunnersForRepo`,
 		trace.WithAttributes(otelogen.OperationID(`actions/list-self-hosted-runners-for-repo`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -1802,7 +1802,7 @@ func (s *Server) handleActionsListSelfHostedRunnersForRepoRequest(args map[strin
 // HandleActionsListSelfHostedRunnersInGroupForOrgRequest handles actions/list-self-hosted-runners-in-group-for-org operation.
 //
 // GET /orgs/{org}/actions/runner-groups/{runner_group_id}/runners
-func (s *Server) handleActionsListSelfHostedRunnersInGroupForOrgRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleActionsListSelfHostedRunnersInGroupForOrgRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ActionsListSelfHostedRunnersInGroupForOrg`,
 		trace.WithAttributes(otelogen.OperationID(`actions/list-self-hosted-runners-in-group-for-org`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -1831,7 +1831,7 @@ func (s *Server) handleActionsListSelfHostedRunnersInGroupForOrgRequest(args map
 // HandleActionsListWorkflowRunArtifactsRequest handles actions/list-workflow-run-artifacts operation.
 //
 // GET /repos/{owner}/{repo}/actions/runs/{run_id}/artifacts
-func (s *Server) handleActionsListWorkflowRunArtifactsRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleActionsListWorkflowRunArtifactsRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ActionsListWorkflowRunArtifacts`,
 		trace.WithAttributes(otelogen.OperationID(`actions/list-workflow-run-artifacts`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -1860,7 +1860,7 @@ func (s *Server) handleActionsListWorkflowRunArtifactsRequest(args map[string]st
 // HandleActionsListWorkflowRunsForRepoRequest handles actions/list-workflow-runs-for-repo operation.
 //
 // GET /repos/{owner}/{repo}/actions/runs
-func (s *Server) handleActionsListWorkflowRunsForRepoRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleActionsListWorkflowRunsForRepoRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ActionsListWorkflowRunsForRepo`,
 		trace.WithAttributes(otelogen.OperationID(`actions/list-workflow-runs-for-repo`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -1889,7 +1889,7 @@ func (s *Server) handleActionsListWorkflowRunsForRepoRequest(args map[string]str
 // HandleActionsReRunWorkflowRequest handles actions/re-run-workflow operation.
 //
 // POST /repos/{owner}/{repo}/actions/runs/{run_id}/rerun
-func (s *Server) handleActionsReRunWorkflowRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleActionsReRunWorkflowRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ActionsReRunWorkflow`,
 		trace.WithAttributes(otelogen.OperationID(`actions/re-run-workflow`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -1918,7 +1918,7 @@ func (s *Server) handleActionsReRunWorkflowRequest(args map[string]string, w htt
 // HandleActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrgRequest handles actions/remove-repo-access-to-self-hosted-runner-group-in-org operation.
 //
 // DELETE /orgs/{org}/actions/runner-groups/{runner_group_id}/repositories/{repository_id}
-func (s *Server) handleActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrgRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrgRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrg`,
 		trace.WithAttributes(otelogen.OperationID(`actions/remove-repo-access-to-self-hosted-runner-group-in-org`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -1947,7 +1947,7 @@ func (s *Server) handleActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrgReques
 // HandleActionsRemoveSelectedRepoFromOrgSecretRequest handles actions/remove-selected-repo-from-org-secret operation.
 //
 // DELETE /orgs/{org}/actions/secrets/{secret_name}/repositories/{repository_id}
-func (s *Server) handleActionsRemoveSelectedRepoFromOrgSecretRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleActionsRemoveSelectedRepoFromOrgSecretRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ActionsRemoveSelectedRepoFromOrgSecret`,
 		trace.WithAttributes(otelogen.OperationID(`actions/remove-selected-repo-from-org-secret`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -1976,7 +1976,7 @@ func (s *Server) handleActionsRemoveSelectedRepoFromOrgSecretRequest(args map[st
 // HandleActionsRemoveSelfHostedRunnerFromGroupForOrgRequest handles actions/remove-self-hosted-runner-from-group-for-org operation.
 //
 // DELETE /orgs/{org}/actions/runner-groups/{runner_group_id}/runners/{runner_id}
-func (s *Server) handleActionsRemoveSelfHostedRunnerFromGroupForOrgRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleActionsRemoveSelfHostedRunnerFromGroupForOrgRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ActionsRemoveSelfHostedRunnerFromGroupForOrg`,
 		trace.WithAttributes(otelogen.OperationID(`actions/remove-self-hosted-runner-from-group-for-org`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -2005,7 +2005,7 @@ func (s *Server) handleActionsRemoveSelfHostedRunnerFromGroupForOrgRequest(args 
 // HandleActionsRetryWorkflowRequest handles actions/retry-workflow operation.
 //
 // POST /repos/{owner}/{repo}/actions/runs/{run_id}/retry
-func (s *Server) handleActionsRetryWorkflowRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleActionsRetryWorkflowRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ActionsRetryWorkflow`,
 		trace.WithAttributes(otelogen.OperationID(`actions/retry-workflow`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -2034,7 +2034,7 @@ func (s *Server) handleActionsRetryWorkflowRequest(args map[string]string, w htt
 // HandleActionsReviewPendingDeploymentsForRunRequest handles actions/review-pending-deployments-for-run operation.
 //
 // POST /repos/{owner}/{repo}/actions/runs/{run_id}/pending_deployments
-func (s *Server) handleActionsReviewPendingDeploymentsForRunRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleActionsReviewPendingDeploymentsForRunRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ActionsReviewPendingDeploymentsForRun`,
 		trace.WithAttributes(otelogen.OperationID(`actions/review-pending-deployments-for-run`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -2069,7 +2069,7 @@ func (s *Server) handleActionsReviewPendingDeploymentsForRunRequest(args map[str
 // HandleActionsSetAllowedActionsOrganizationRequest handles actions/set-allowed-actions-organization operation.
 //
 // PUT /orgs/{org}/actions/permissions/selected-actions
-func (s *Server) handleActionsSetAllowedActionsOrganizationRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleActionsSetAllowedActionsOrganizationRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ActionsSetAllowedActionsOrganization`,
 		trace.WithAttributes(otelogen.OperationID(`actions/set-allowed-actions-organization`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -2104,7 +2104,7 @@ func (s *Server) handleActionsSetAllowedActionsOrganizationRequest(args map[stri
 // HandleActionsSetAllowedActionsRepositoryRequest handles actions/set-allowed-actions-repository operation.
 //
 // PUT /repos/{owner}/{repo}/actions/permissions/selected-actions
-func (s *Server) handleActionsSetAllowedActionsRepositoryRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleActionsSetAllowedActionsRepositoryRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ActionsSetAllowedActionsRepository`,
 		trace.WithAttributes(otelogen.OperationID(`actions/set-allowed-actions-repository`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -2139,7 +2139,7 @@ func (s *Server) handleActionsSetAllowedActionsRepositoryRequest(args map[string
 // HandleActionsSetGithubActionsPermissionsOrganizationRequest handles actions/set-github-actions-permissions-organization operation.
 //
 // PUT /orgs/{org}/actions/permissions
-func (s *Server) handleActionsSetGithubActionsPermissionsOrganizationRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleActionsSetGithubActionsPermissionsOrganizationRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ActionsSetGithubActionsPermissionsOrganization`,
 		trace.WithAttributes(otelogen.OperationID(`actions/set-github-actions-permissions-organization`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -2174,7 +2174,7 @@ func (s *Server) handleActionsSetGithubActionsPermissionsOrganizationRequest(arg
 // HandleActionsSetGithubActionsPermissionsRepositoryRequest handles actions/set-github-actions-permissions-repository operation.
 //
 // PUT /repos/{owner}/{repo}/actions/permissions
-func (s *Server) handleActionsSetGithubActionsPermissionsRepositoryRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleActionsSetGithubActionsPermissionsRepositoryRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ActionsSetGithubActionsPermissionsRepository`,
 		trace.WithAttributes(otelogen.OperationID(`actions/set-github-actions-permissions-repository`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -2209,7 +2209,7 @@ func (s *Server) handleActionsSetGithubActionsPermissionsRepositoryRequest(args 
 // HandleActionsSetRepoAccessToSelfHostedRunnerGroupInOrgRequest handles actions/set-repo-access-to-self-hosted-runner-group-in-org operation.
 //
 // PUT /orgs/{org}/actions/runner-groups/{runner_group_id}/repositories
-func (s *Server) handleActionsSetRepoAccessToSelfHostedRunnerGroupInOrgRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleActionsSetRepoAccessToSelfHostedRunnerGroupInOrgRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ActionsSetRepoAccessToSelfHostedRunnerGroupInOrg`,
 		trace.WithAttributes(otelogen.OperationID(`actions/set-repo-access-to-self-hosted-runner-group-in-org`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -2244,7 +2244,7 @@ func (s *Server) handleActionsSetRepoAccessToSelfHostedRunnerGroupInOrgRequest(a
 // HandleActionsSetSelectedReposForOrgSecretRequest handles actions/set-selected-repos-for-org-secret operation.
 //
 // PUT /orgs/{org}/actions/secrets/{secret_name}/repositories
-func (s *Server) handleActionsSetSelectedReposForOrgSecretRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleActionsSetSelectedReposForOrgSecretRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ActionsSetSelectedReposForOrgSecret`,
 		trace.WithAttributes(otelogen.OperationID(`actions/set-selected-repos-for-org-secret`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -2279,7 +2279,7 @@ func (s *Server) handleActionsSetSelectedReposForOrgSecretRequest(args map[strin
 // HandleActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationRequest handles actions/set-selected-repositories-enabled-github-actions-organization operation.
 //
 // PUT /orgs/{org}/actions/permissions/repositories
-func (s *Server) handleActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ActionsSetSelectedRepositoriesEnabledGithubActionsOrganization`,
 		trace.WithAttributes(otelogen.OperationID(`actions/set-selected-repositories-enabled-github-actions-organization`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -2314,7 +2314,7 @@ func (s *Server) handleActionsSetSelectedRepositoriesEnabledGithubActionsOrganiz
 // HandleActionsSetSelfHostedRunnersInGroupForOrgRequest handles actions/set-self-hosted-runners-in-group-for-org operation.
 //
 // PUT /orgs/{org}/actions/runner-groups/{runner_group_id}/runners
-func (s *Server) handleActionsSetSelfHostedRunnersInGroupForOrgRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleActionsSetSelfHostedRunnersInGroupForOrgRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ActionsSetSelfHostedRunnersInGroupForOrg`,
 		trace.WithAttributes(otelogen.OperationID(`actions/set-self-hosted-runners-in-group-for-org`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -2349,7 +2349,7 @@ func (s *Server) handleActionsSetSelfHostedRunnersInGroupForOrgRequest(args map[
 // HandleActionsUpdateSelfHostedRunnerGroupForOrgRequest handles actions/update-self-hosted-runner-group-for-org operation.
 //
 // PATCH /orgs/{org}/actions/runner-groups/{runner_group_id}
-func (s *Server) handleActionsUpdateSelfHostedRunnerGroupForOrgRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleActionsUpdateSelfHostedRunnerGroupForOrgRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ActionsUpdateSelfHostedRunnerGroupForOrg`,
 		trace.WithAttributes(otelogen.OperationID(`actions/update-self-hosted-runner-group-for-org`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -2384,7 +2384,7 @@ func (s *Server) handleActionsUpdateSelfHostedRunnerGroupForOrgRequest(args map[
 // HandleActivityCheckRepoIsStarredByAuthenticatedUserRequest handles activity/check-repo-is-starred-by-authenticated-user operation.
 //
 // GET /user/starred/{owner}/{repo}
-func (s *Server) handleActivityCheckRepoIsStarredByAuthenticatedUserRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleActivityCheckRepoIsStarredByAuthenticatedUserRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ActivityCheckRepoIsStarredByAuthenticatedUser`,
 		trace.WithAttributes(otelogen.OperationID(`activity/check-repo-is-starred-by-authenticated-user`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -2413,7 +2413,7 @@ func (s *Server) handleActivityCheckRepoIsStarredByAuthenticatedUserRequest(args
 // HandleActivityDeleteRepoSubscriptionRequest handles activity/delete-repo-subscription operation.
 //
 // DELETE /repos/{owner}/{repo}/subscription
-func (s *Server) handleActivityDeleteRepoSubscriptionRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleActivityDeleteRepoSubscriptionRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ActivityDeleteRepoSubscription`,
 		trace.WithAttributes(otelogen.OperationID(`activity/delete-repo-subscription`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -2442,7 +2442,7 @@ func (s *Server) handleActivityDeleteRepoSubscriptionRequest(args map[string]str
 // HandleActivityDeleteThreadSubscriptionRequest handles activity/delete-thread-subscription operation.
 //
 // DELETE /notifications/threads/{thread_id}/subscription
-func (s *Server) handleActivityDeleteThreadSubscriptionRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleActivityDeleteThreadSubscriptionRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ActivityDeleteThreadSubscription`,
 		trace.WithAttributes(otelogen.OperationID(`activity/delete-thread-subscription`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -2471,7 +2471,7 @@ func (s *Server) handleActivityDeleteThreadSubscriptionRequest(args map[string]s
 // HandleActivityGetFeedsRequest handles activity/get-feeds operation.
 //
 // GET /feeds
-func (s *Server) handleActivityGetFeedsRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleActivityGetFeedsRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ActivityGetFeeds`,
 		trace.WithAttributes(otelogen.OperationID(`activity/get-feeds`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -2494,7 +2494,7 @@ func (s *Server) handleActivityGetFeedsRequest(args map[string]string, w http.Re
 // HandleActivityGetRepoSubscriptionRequest handles activity/get-repo-subscription operation.
 //
 // GET /repos/{owner}/{repo}/subscription
-func (s *Server) handleActivityGetRepoSubscriptionRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleActivityGetRepoSubscriptionRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ActivityGetRepoSubscription`,
 		trace.WithAttributes(otelogen.OperationID(`activity/get-repo-subscription`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -2523,7 +2523,7 @@ func (s *Server) handleActivityGetRepoSubscriptionRequest(args map[string]string
 // HandleActivityGetThreadRequest handles activity/get-thread operation.
 //
 // GET /notifications/threads/{thread_id}
-func (s *Server) handleActivityGetThreadRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleActivityGetThreadRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ActivityGetThread`,
 		trace.WithAttributes(otelogen.OperationID(`activity/get-thread`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -2552,7 +2552,7 @@ func (s *Server) handleActivityGetThreadRequest(args map[string]string, w http.R
 // HandleActivityGetThreadSubscriptionForAuthenticatedUserRequest handles activity/get-thread-subscription-for-authenticated-user operation.
 //
 // GET /notifications/threads/{thread_id}/subscription
-func (s *Server) handleActivityGetThreadSubscriptionForAuthenticatedUserRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleActivityGetThreadSubscriptionForAuthenticatedUserRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ActivityGetThreadSubscriptionForAuthenticatedUser`,
 		trace.WithAttributes(otelogen.OperationID(`activity/get-thread-subscription-for-authenticated-user`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -2581,7 +2581,7 @@ func (s *Server) handleActivityGetThreadSubscriptionForAuthenticatedUserRequest(
 // HandleActivityListEventsForAuthenticatedUserRequest handles activity/list-events-for-authenticated-user operation.
 //
 // GET /users/{username}/events
-func (s *Server) handleActivityListEventsForAuthenticatedUserRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleActivityListEventsForAuthenticatedUserRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ActivityListEventsForAuthenticatedUser`,
 		trace.WithAttributes(otelogen.OperationID(`activity/list-events-for-authenticated-user`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -2610,7 +2610,7 @@ func (s *Server) handleActivityListEventsForAuthenticatedUserRequest(args map[st
 // HandleActivityListNotificationsForAuthenticatedUserRequest handles activity/list-notifications-for-authenticated-user operation.
 //
 // GET /notifications
-func (s *Server) handleActivityListNotificationsForAuthenticatedUserRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleActivityListNotificationsForAuthenticatedUserRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ActivityListNotificationsForAuthenticatedUser`,
 		trace.WithAttributes(otelogen.OperationID(`activity/list-notifications-for-authenticated-user`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -2639,7 +2639,7 @@ func (s *Server) handleActivityListNotificationsForAuthenticatedUserRequest(args
 // HandleActivityListOrgEventsForAuthenticatedUserRequest handles activity/list-org-events-for-authenticated-user operation.
 //
 // GET /users/{username}/events/orgs/{org}
-func (s *Server) handleActivityListOrgEventsForAuthenticatedUserRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleActivityListOrgEventsForAuthenticatedUserRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ActivityListOrgEventsForAuthenticatedUser`,
 		trace.WithAttributes(otelogen.OperationID(`activity/list-org-events-for-authenticated-user`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -2668,7 +2668,7 @@ func (s *Server) handleActivityListOrgEventsForAuthenticatedUserRequest(args map
 // HandleActivityListPublicEventsRequest handles activity/list-public-events operation.
 //
 // GET /events
-func (s *Server) handleActivityListPublicEventsRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleActivityListPublicEventsRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ActivityListPublicEvents`,
 		trace.WithAttributes(otelogen.OperationID(`activity/list-public-events`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -2697,7 +2697,7 @@ func (s *Server) handleActivityListPublicEventsRequest(args map[string]string, w
 // HandleActivityListPublicEventsForRepoNetworkRequest handles activity/list-public-events-for-repo-network operation.
 //
 // GET /networks/{owner}/{repo}/events
-func (s *Server) handleActivityListPublicEventsForRepoNetworkRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleActivityListPublicEventsForRepoNetworkRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ActivityListPublicEventsForRepoNetwork`,
 		trace.WithAttributes(otelogen.OperationID(`activity/list-public-events-for-repo-network`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -2726,7 +2726,7 @@ func (s *Server) handleActivityListPublicEventsForRepoNetworkRequest(args map[st
 // HandleActivityListPublicEventsForUserRequest handles activity/list-public-events-for-user operation.
 //
 // GET /users/{username}/events/public
-func (s *Server) handleActivityListPublicEventsForUserRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleActivityListPublicEventsForUserRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ActivityListPublicEventsForUser`,
 		trace.WithAttributes(otelogen.OperationID(`activity/list-public-events-for-user`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -2755,7 +2755,7 @@ func (s *Server) handleActivityListPublicEventsForUserRequest(args map[string]st
 // HandleActivityListPublicOrgEventsRequest handles activity/list-public-org-events operation.
 //
 // GET /orgs/{org}/events
-func (s *Server) handleActivityListPublicOrgEventsRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleActivityListPublicOrgEventsRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ActivityListPublicOrgEvents`,
 		trace.WithAttributes(otelogen.OperationID(`activity/list-public-org-events`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -2784,7 +2784,7 @@ func (s *Server) handleActivityListPublicOrgEventsRequest(args map[string]string
 // HandleActivityListReceivedEventsForUserRequest handles activity/list-received-events-for-user operation.
 //
 // GET /users/{username}/received_events
-func (s *Server) handleActivityListReceivedEventsForUserRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleActivityListReceivedEventsForUserRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ActivityListReceivedEventsForUser`,
 		trace.WithAttributes(otelogen.OperationID(`activity/list-received-events-for-user`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -2813,7 +2813,7 @@ func (s *Server) handleActivityListReceivedEventsForUserRequest(args map[string]
 // HandleActivityListReceivedPublicEventsForUserRequest handles activity/list-received-public-events-for-user operation.
 //
 // GET /users/{username}/received_events/public
-func (s *Server) handleActivityListReceivedPublicEventsForUserRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleActivityListReceivedPublicEventsForUserRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ActivityListReceivedPublicEventsForUser`,
 		trace.WithAttributes(otelogen.OperationID(`activity/list-received-public-events-for-user`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -2842,7 +2842,7 @@ func (s *Server) handleActivityListReceivedPublicEventsForUserRequest(args map[s
 // HandleActivityListRepoEventsRequest handles activity/list-repo-events operation.
 //
 // GET /repos/{owner}/{repo}/events
-func (s *Server) handleActivityListRepoEventsRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleActivityListRepoEventsRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ActivityListRepoEvents`,
 		trace.WithAttributes(otelogen.OperationID(`activity/list-repo-events`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -2871,7 +2871,7 @@ func (s *Server) handleActivityListRepoEventsRequest(args map[string]string, w h
 // HandleActivityListRepoNotificationsForAuthenticatedUserRequest handles activity/list-repo-notifications-for-authenticated-user operation.
 //
 // GET /repos/{owner}/{repo}/notifications
-func (s *Server) handleActivityListRepoNotificationsForAuthenticatedUserRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleActivityListRepoNotificationsForAuthenticatedUserRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ActivityListRepoNotificationsForAuthenticatedUser`,
 		trace.WithAttributes(otelogen.OperationID(`activity/list-repo-notifications-for-authenticated-user`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -2900,7 +2900,7 @@ func (s *Server) handleActivityListRepoNotificationsForAuthenticatedUserRequest(
 // HandleActivityListReposStarredByAuthenticatedUserRequest handles activity/list-repos-starred-by-authenticated-user operation.
 //
 // GET /user/starred
-func (s *Server) handleActivityListReposStarredByAuthenticatedUserRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleActivityListReposStarredByAuthenticatedUserRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ActivityListReposStarredByAuthenticatedUser`,
 		trace.WithAttributes(otelogen.OperationID(`activity/list-repos-starred-by-authenticated-user`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -2929,7 +2929,7 @@ func (s *Server) handleActivityListReposStarredByAuthenticatedUserRequest(args m
 // HandleActivityListReposWatchedByUserRequest handles activity/list-repos-watched-by-user operation.
 //
 // GET /users/{username}/subscriptions
-func (s *Server) handleActivityListReposWatchedByUserRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleActivityListReposWatchedByUserRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ActivityListReposWatchedByUser`,
 		trace.WithAttributes(otelogen.OperationID(`activity/list-repos-watched-by-user`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -2958,7 +2958,7 @@ func (s *Server) handleActivityListReposWatchedByUserRequest(args map[string]str
 // HandleActivityListWatchedReposForAuthenticatedUserRequest handles activity/list-watched-repos-for-authenticated-user operation.
 //
 // GET /user/subscriptions
-func (s *Server) handleActivityListWatchedReposForAuthenticatedUserRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleActivityListWatchedReposForAuthenticatedUserRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ActivityListWatchedReposForAuthenticatedUser`,
 		trace.WithAttributes(otelogen.OperationID(`activity/list-watched-repos-for-authenticated-user`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -2987,7 +2987,7 @@ func (s *Server) handleActivityListWatchedReposForAuthenticatedUserRequest(args 
 // HandleActivityListWatchersForRepoRequest handles activity/list-watchers-for-repo operation.
 //
 // GET /repos/{owner}/{repo}/subscribers
-func (s *Server) handleActivityListWatchersForRepoRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleActivityListWatchersForRepoRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ActivityListWatchersForRepo`,
 		trace.WithAttributes(otelogen.OperationID(`activity/list-watchers-for-repo`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -3016,7 +3016,7 @@ func (s *Server) handleActivityListWatchersForRepoRequest(args map[string]string
 // HandleActivityMarkNotificationsAsReadRequest handles activity/mark-notifications-as-read operation.
 //
 // PUT /notifications
-func (s *Server) handleActivityMarkNotificationsAsReadRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleActivityMarkNotificationsAsReadRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ActivityMarkNotificationsAsRead`,
 		trace.WithAttributes(otelogen.OperationID(`activity/mark-notifications-as-read`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -3045,7 +3045,7 @@ func (s *Server) handleActivityMarkNotificationsAsReadRequest(args map[string]st
 // HandleActivityMarkRepoNotificationsAsReadRequest handles activity/mark-repo-notifications-as-read operation.
 //
 // PUT /repos/{owner}/{repo}/notifications
-func (s *Server) handleActivityMarkRepoNotificationsAsReadRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleActivityMarkRepoNotificationsAsReadRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ActivityMarkRepoNotificationsAsRead`,
 		trace.WithAttributes(otelogen.OperationID(`activity/mark-repo-notifications-as-read`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -3080,7 +3080,7 @@ func (s *Server) handleActivityMarkRepoNotificationsAsReadRequest(args map[strin
 // HandleActivityMarkThreadAsReadRequest handles activity/mark-thread-as-read operation.
 //
 // PATCH /notifications/threads/{thread_id}
-func (s *Server) handleActivityMarkThreadAsReadRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleActivityMarkThreadAsReadRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ActivityMarkThreadAsRead`,
 		trace.WithAttributes(otelogen.OperationID(`activity/mark-thread-as-read`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -3109,7 +3109,7 @@ func (s *Server) handleActivityMarkThreadAsReadRequest(args map[string]string, w
 // HandleActivitySetRepoSubscriptionRequest handles activity/set-repo-subscription operation.
 //
 // PUT /repos/{owner}/{repo}/subscription
-func (s *Server) handleActivitySetRepoSubscriptionRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleActivitySetRepoSubscriptionRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ActivitySetRepoSubscription`,
 		trace.WithAttributes(otelogen.OperationID(`activity/set-repo-subscription`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -3144,7 +3144,7 @@ func (s *Server) handleActivitySetRepoSubscriptionRequest(args map[string]string
 // HandleActivitySetThreadSubscriptionRequest handles activity/set-thread-subscription operation.
 //
 // PUT /notifications/threads/{thread_id}/subscription
-func (s *Server) handleActivitySetThreadSubscriptionRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleActivitySetThreadSubscriptionRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ActivitySetThreadSubscription`,
 		trace.WithAttributes(otelogen.OperationID(`activity/set-thread-subscription`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -3179,7 +3179,7 @@ func (s *Server) handleActivitySetThreadSubscriptionRequest(args map[string]stri
 // HandleActivityStarRepoForAuthenticatedUserRequest handles activity/star-repo-for-authenticated-user operation.
 //
 // PUT /user/starred/{owner}/{repo}
-func (s *Server) handleActivityStarRepoForAuthenticatedUserRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleActivityStarRepoForAuthenticatedUserRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ActivityStarRepoForAuthenticatedUser`,
 		trace.WithAttributes(otelogen.OperationID(`activity/star-repo-for-authenticated-user`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -3208,7 +3208,7 @@ func (s *Server) handleActivityStarRepoForAuthenticatedUserRequest(args map[stri
 // HandleActivityUnstarRepoForAuthenticatedUserRequest handles activity/unstar-repo-for-authenticated-user operation.
 //
 // DELETE /user/starred/{owner}/{repo}
-func (s *Server) handleActivityUnstarRepoForAuthenticatedUserRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleActivityUnstarRepoForAuthenticatedUserRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ActivityUnstarRepoForAuthenticatedUser`,
 		trace.WithAttributes(otelogen.OperationID(`activity/unstar-repo-for-authenticated-user`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -3237,7 +3237,7 @@ func (s *Server) handleActivityUnstarRepoForAuthenticatedUserRequest(args map[st
 // HandleAppsAddRepoToInstallationRequest handles apps/add-repo-to-installation operation.
 //
 // PUT /user/installations/{installation_id}/repositories/{repository_id}
-func (s *Server) handleAppsAddRepoToInstallationRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleAppsAddRepoToInstallationRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `AppsAddRepoToInstallation`,
 		trace.WithAttributes(otelogen.OperationID(`apps/add-repo-to-installation`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -3266,7 +3266,7 @@ func (s *Server) handleAppsAddRepoToInstallationRequest(args map[string]string, 
 // HandleAppsCheckTokenRequest handles apps/check-token operation.
 //
 // POST /applications/{client_id}/token
-func (s *Server) handleAppsCheckTokenRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleAppsCheckTokenRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `AppsCheckToken`,
 		trace.WithAttributes(otelogen.OperationID(`apps/check-token`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -3301,7 +3301,7 @@ func (s *Server) handleAppsCheckTokenRequest(args map[string]string, w http.Resp
 // HandleAppsCreateContentAttachmentRequest handles apps/create-content-attachment operation.
 //
 // POST /repos/{owner}/{repo}/content_references/{content_reference_id}/attachments
-func (s *Server) handleAppsCreateContentAttachmentRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleAppsCreateContentAttachmentRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `AppsCreateContentAttachment`,
 		trace.WithAttributes(otelogen.OperationID(`apps/create-content-attachment`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -3336,7 +3336,7 @@ func (s *Server) handleAppsCreateContentAttachmentRequest(args map[string]string
 // HandleAppsCreateInstallationAccessTokenRequest handles apps/create-installation-access-token operation.
 //
 // POST /app/installations/{installation_id}/access_tokens
-func (s *Server) handleAppsCreateInstallationAccessTokenRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleAppsCreateInstallationAccessTokenRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `AppsCreateInstallationAccessToken`,
 		trace.WithAttributes(otelogen.OperationID(`apps/create-installation-access-token`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -3371,7 +3371,7 @@ func (s *Server) handleAppsCreateInstallationAccessTokenRequest(args map[string]
 // HandleAppsDeleteAuthorizationRequest handles apps/delete-authorization operation.
 //
 // DELETE /applications/{client_id}/grant
-func (s *Server) handleAppsDeleteAuthorizationRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleAppsDeleteAuthorizationRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `AppsDeleteAuthorization`,
 		trace.WithAttributes(otelogen.OperationID(`apps/delete-authorization`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -3406,7 +3406,7 @@ func (s *Server) handleAppsDeleteAuthorizationRequest(args map[string]string, w 
 // HandleAppsDeleteInstallationRequest handles apps/delete-installation operation.
 //
 // DELETE /app/installations/{installation_id}
-func (s *Server) handleAppsDeleteInstallationRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleAppsDeleteInstallationRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `AppsDeleteInstallation`,
 		trace.WithAttributes(otelogen.OperationID(`apps/delete-installation`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -3435,7 +3435,7 @@ func (s *Server) handleAppsDeleteInstallationRequest(args map[string]string, w h
 // HandleAppsDeleteTokenRequest handles apps/delete-token operation.
 //
 // DELETE /applications/{client_id}/token
-func (s *Server) handleAppsDeleteTokenRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleAppsDeleteTokenRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `AppsDeleteToken`,
 		trace.WithAttributes(otelogen.OperationID(`apps/delete-token`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -3470,7 +3470,7 @@ func (s *Server) handleAppsDeleteTokenRequest(args map[string]string, w http.Res
 // HandleAppsGetAuthenticatedRequest handles apps/get-authenticated operation.
 //
 // GET /app
-func (s *Server) handleAppsGetAuthenticatedRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleAppsGetAuthenticatedRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `AppsGetAuthenticated`,
 		trace.WithAttributes(otelogen.OperationID(`apps/get-authenticated`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -3493,7 +3493,7 @@ func (s *Server) handleAppsGetAuthenticatedRequest(args map[string]string, w htt
 // HandleAppsGetBySlugRequest handles apps/get-by-slug operation.
 //
 // GET /apps/{app_slug}
-func (s *Server) handleAppsGetBySlugRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleAppsGetBySlugRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `AppsGetBySlug`,
 		trace.WithAttributes(otelogen.OperationID(`apps/get-by-slug`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -3522,7 +3522,7 @@ func (s *Server) handleAppsGetBySlugRequest(args map[string]string, w http.Respo
 // HandleAppsGetSubscriptionPlanForAccountRequest handles apps/get-subscription-plan-for-account operation.
 //
 // GET /marketplace_listing/accounts/{account_id}
-func (s *Server) handleAppsGetSubscriptionPlanForAccountRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleAppsGetSubscriptionPlanForAccountRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `AppsGetSubscriptionPlanForAccount`,
 		trace.WithAttributes(otelogen.OperationID(`apps/get-subscription-plan-for-account`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -3551,7 +3551,7 @@ func (s *Server) handleAppsGetSubscriptionPlanForAccountRequest(args map[string]
 // HandleAppsGetSubscriptionPlanForAccountStubbedRequest handles apps/get-subscription-plan-for-account-stubbed operation.
 //
 // GET /marketplace_listing/stubbed/accounts/{account_id}
-func (s *Server) handleAppsGetSubscriptionPlanForAccountStubbedRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleAppsGetSubscriptionPlanForAccountStubbedRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `AppsGetSubscriptionPlanForAccountStubbed`,
 		trace.WithAttributes(otelogen.OperationID(`apps/get-subscription-plan-for-account-stubbed`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -3580,7 +3580,7 @@ func (s *Server) handleAppsGetSubscriptionPlanForAccountStubbedRequest(args map[
 // HandleAppsGetWebhookConfigForAppRequest handles apps/get-webhook-config-for-app operation.
 //
 // GET /app/hook/config
-func (s *Server) handleAppsGetWebhookConfigForAppRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleAppsGetWebhookConfigForAppRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `AppsGetWebhookConfigForApp`,
 		trace.WithAttributes(otelogen.OperationID(`apps/get-webhook-config-for-app`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -3603,7 +3603,7 @@ func (s *Server) handleAppsGetWebhookConfigForAppRequest(args map[string]string,
 // HandleAppsGetWebhookDeliveryRequest handles apps/get-webhook-delivery operation.
 //
 // GET /app/hook/deliveries/{delivery_id}
-func (s *Server) handleAppsGetWebhookDeliveryRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleAppsGetWebhookDeliveryRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `AppsGetWebhookDelivery`,
 		trace.WithAttributes(otelogen.OperationID(`apps/get-webhook-delivery`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -3632,7 +3632,7 @@ func (s *Server) handleAppsGetWebhookDeliveryRequest(args map[string]string, w h
 // HandleAppsListAccountsForPlanRequest handles apps/list-accounts-for-plan operation.
 //
 // GET /marketplace_listing/plans/{plan_id}/accounts
-func (s *Server) handleAppsListAccountsForPlanRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleAppsListAccountsForPlanRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `AppsListAccountsForPlan`,
 		trace.WithAttributes(otelogen.OperationID(`apps/list-accounts-for-plan`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -3661,7 +3661,7 @@ func (s *Server) handleAppsListAccountsForPlanRequest(args map[string]string, w 
 // HandleAppsListAccountsForPlanStubbedRequest handles apps/list-accounts-for-plan-stubbed operation.
 //
 // GET /marketplace_listing/stubbed/plans/{plan_id}/accounts
-func (s *Server) handleAppsListAccountsForPlanStubbedRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleAppsListAccountsForPlanStubbedRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `AppsListAccountsForPlanStubbed`,
 		trace.WithAttributes(otelogen.OperationID(`apps/list-accounts-for-plan-stubbed`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -3690,7 +3690,7 @@ func (s *Server) handleAppsListAccountsForPlanStubbedRequest(args map[string]str
 // HandleAppsListInstallationReposForAuthenticatedUserRequest handles apps/list-installation-repos-for-authenticated-user operation.
 //
 // GET /user/installations/{installation_id}/repositories
-func (s *Server) handleAppsListInstallationReposForAuthenticatedUserRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleAppsListInstallationReposForAuthenticatedUserRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `AppsListInstallationReposForAuthenticatedUser`,
 		trace.WithAttributes(otelogen.OperationID(`apps/list-installation-repos-for-authenticated-user`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -3719,7 +3719,7 @@ func (s *Server) handleAppsListInstallationReposForAuthenticatedUserRequest(args
 // HandleAppsListPlansRequest handles apps/list-plans operation.
 //
 // GET /marketplace_listing/plans
-func (s *Server) handleAppsListPlansRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleAppsListPlansRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `AppsListPlans`,
 		trace.WithAttributes(otelogen.OperationID(`apps/list-plans`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -3748,7 +3748,7 @@ func (s *Server) handleAppsListPlansRequest(args map[string]string, w http.Respo
 // HandleAppsListPlansStubbedRequest handles apps/list-plans-stubbed operation.
 //
 // GET /marketplace_listing/stubbed/plans
-func (s *Server) handleAppsListPlansStubbedRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleAppsListPlansStubbedRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `AppsListPlansStubbed`,
 		trace.WithAttributes(otelogen.OperationID(`apps/list-plans-stubbed`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -3777,7 +3777,7 @@ func (s *Server) handleAppsListPlansStubbedRequest(args map[string]string, w htt
 // HandleAppsListReposAccessibleToInstallationRequest handles apps/list-repos-accessible-to-installation operation.
 //
 // GET /installation/repositories
-func (s *Server) handleAppsListReposAccessibleToInstallationRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleAppsListReposAccessibleToInstallationRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `AppsListReposAccessibleToInstallation`,
 		trace.WithAttributes(otelogen.OperationID(`apps/list-repos-accessible-to-installation`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -3806,7 +3806,7 @@ func (s *Server) handleAppsListReposAccessibleToInstallationRequest(args map[str
 // HandleAppsListSubscriptionsForAuthenticatedUserRequest handles apps/list-subscriptions-for-authenticated-user operation.
 //
 // GET /user/marketplace_purchases
-func (s *Server) handleAppsListSubscriptionsForAuthenticatedUserRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleAppsListSubscriptionsForAuthenticatedUserRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `AppsListSubscriptionsForAuthenticatedUser`,
 		trace.WithAttributes(otelogen.OperationID(`apps/list-subscriptions-for-authenticated-user`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -3835,7 +3835,7 @@ func (s *Server) handleAppsListSubscriptionsForAuthenticatedUserRequest(args map
 // HandleAppsListSubscriptionsForAuthenticatedUserStubbedRequest handles apps/list-subscriptions-for-authenticated-user-stubbed operation.
 //
 // GET /user/marketplace_purchases/stubbed
-func (s *Server) handleAppsListSubscriptionsForAuthenticatedUserStubbedRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleAppsListSubscriptionsForAuthenticatedUserStubbedRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `AppsListSubscriptionsForAuthenticatedUserStubbed`,
 		trace.WithAttributes(otelogen.OperationID(`apps/list-subscriptions-for-authenticated-user-stubbed`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -3864,7 +3864,7 @@ func (s *Server) handleAppsListSubscriptionsForAuthenticatedUserStubbedRequest(a
 // HandleAppsListWebhookDeliveriesRequest handles apps/list-webhook-deliveries operation.
 //
 // GET /app/hook/deliveries
-func (s *Server) handleAppsListWebhookDeliveriesRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleAppsListWebhookDeliveriesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `AppsListWebhookDeliveries`,
 		trace.WithAttributes(otelogen.OperationID(`apps/list-webhook-deliveries`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -3893,7 +3893,7 @@ func (s *Server) handleAppsListWebhookDeliveriesRequest(args map[string]string, 
 // HandleAppsRedeliverWebhookDeliveryRequest handles apps/redeliver-webhook-delivery operation.
 //
 // POST /app/hook/deliveries/{delivery_id}/attempts
-func (s *Server) handleAppsRedeliverWebhookDeliveryRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleAppsRedeliverWebhookDeliveryRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `AppsRedeliverWebhookDelivery`,
 		trace.WithAttributes(otelogen.OperationID(`apps/redeliver-webhook-delivery`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -3922,7 +3922,7 @@ func (s *Server) handleAppsRedeliverWebhookDeliveryRequest(args map[string]strin
 // HandleAppsRemoveRepoFromInstallationRequest handles apps/remove-repo-from-installation operation.
 //
 // DELETE /user/installations/{installation_id}/repositories/{repository_id}
-func (s *Server) handleAppsRemoveRepoFromInstallationRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleAppsRemoveRepoFromInstallationRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `AppsRemoveRepoFromInstallation`,
 		trace.WithAttributes(otelogen.OperationID(`apps/remove-repo-from-installation`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -3951,7 +3951,7 @@ func (s *Server) handleAppsRemoveRepoFromInstallationRequest(args map[string]str
 // HandleAppsResetTokenRequest handles apps/reset-token operation.
 //
 // PATCH /applications/{client_id}/token
-func (s *Server) handleAppsResetTokenRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleAppsResetTokenRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `AppsResetToken`,
 		trace.WithAttributes(otelogen.OperationID(`apps/reset-token`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -3986,7 +3986,7 @@ func (s *Server) handleAppsResetTokenRequest(args map[string]string, w http.Resp
 // HandleAppsRevokeInstallationAccessTokenRequest handles apps/revoke-installation-access-token operation.
 //
 // DELETE /installation/token
-func (s *Server) handleAppsRevokeInstallationAccessTokenRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleAppsRevokeInstallationAccessTokenRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `AppsRevokeInstallationAccessToken`,
 		trace.WithAttributes(otelogen.OperationID(`apps/revoke-installation-access-token`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -4009,7 +4009,7 @@ func (s *Server) handleAppsRevokeInstallationAccessTokenRequest(args map[string]
 // HandleAppsScopeTokenRequest handles apps/scope-token operation.
 //
 // POST /applications/{client_id}/token/scoped
-func (s *Server) handleAppsScopeTokenRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleAppsScopeTokenRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `AppsScopeToken`,
 		trace.WithAttributes(otelogen.OperationID(`apps/scope-token`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -4044,7 +4044,7 @@ func (s *Server) handleAppsScopeTokenRequest(args map[string]string, w http.Resp
 // HandleAppsSuspendInstallationRequest handles apps/suspend-installation operation.
 //
 // PUT /app/installations/{installation_id}/suspended
-func (s *Server) handleAppsSuspendInstallationRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleAppsSuspendInstallationRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `AppsSuspendInstallation`,
 		trace.WithAttributes(otelogen.OperationID(`apps/suspend-installation`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -4073,7 +4073,7 @@ func (s *Server) handleAppsSuspendInstallationRequest(args map[string]string, w 
 // HandleAppsUnsuspendInstallationRequest handles apps/unsuspend-installation operation.
 //
 // DELETE /app/installations/{installation_id}/suspended
-func (s *Server) handleAppsUnsuspendInstallationRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleAppsUnsuspendInstallationRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `AppsUnsuspendInstallation`,
 		trace.WithAttributes(otelogen.OperationID(`apps/unsuspend-installation`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -4102,7 +4102,7 @@ func (s *Server) handleAppsUnsuspendInstallationRequest(args map[string]string, 
 // HandleAppsUpdateWebhookConfigForAppRequest handles apps/update-webhook-config-for-app operation.
 //
 // PATCH /app/hook/config
-func (s *Server) handleAppsUpdateWebhookConfigForAppRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleAppsUpdateWebhookConfigForAppRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `AppsUpdateWebhookConfigForApp`,
 		trace.WithAttributes(otelogen.OperationID(`apps/update-webhook-config-for-app`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -4131,7 +4131,7 @@ func (s *Server) handleAppsUpdateWebhookConfigForAppRequest(args map[string]stri
 // HandleBillingGetGithubActionsBillingGheRequest handles billing/get-github-actions-billing-ghe operation.
 //
 // GET /enterprises/{enterprise}/settings/billing/actions
-func (s *Server) handleBillingGetGithubActionsBillingGheRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleBillingGetGithubActionsBillingGheRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `BillingGetGithubActionsBillingGhe`,
 		trace.WithAttributes(otelogen.OperationID(`billing/get-github-actions-billing-ghe`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -4160,7 +4160,7 @@ func (s *Server) handleBillingGetGithubActionsBillingGheRequest(args map[string]
 // HandleBillingGetGithubActionsBillingOrgRequest handles billing/get-github-actions-billing-org operation.
 //
 // GET /orgs/{org}/settings/billing/actions
-func (s *Server) handleBillingGetGithubActionsBillingOrgRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleBillingGetGithubActionsBillingOrgRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `BillingGetGithubActionsBillingOrg`,
 		trace.WithAttributes(otelogen.OperationID(`billing/get-github-actions-billing-org`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -4189,7 +4189,7 @@ func (s *Server) handleBillingGetGithubActionsBillingOrgRequest(args map[string]
 // HandleBillingGetGithubActionsBillingUserRequest handles billing/get-github-actions-billing-user operation.
 //
 // GET /users/{username}/settings/billing/actions
-func (s *Server) handleBillingGetGithubActionsBillingUserRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleBillingGetGithubActionsBillingUserRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `BillingGetGithubActionsBillingUser`,
 		trace.WithAttributes(otelogen.OperationID(`billing/get-github-actions-billing-user`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -4218,7 +4218,7 @@ func (s *Server) handleBillingGetGithubActionsBillingUserRequest(args map[string
 // HandleBillingGetGithubPackagesBillingGheRequest handles billing/get-github-packages-billing-ghe operation.
 //
 // GET /enterprises/{enterprise}/settings/billing/packages
-func (s *Server) handleBillingGetGithubPackagesBillingGheRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleBillingGetGithubPackagesBillingGheRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `BillingGetGithubPackagesBillingGhe`,
 		trace.WithAttributes(otelogen.OperationID(`billing/get-github-packages-billing-ghe`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -4247,7 +4247,7 @@ func (s *Server) handleBillingGetGithubPackagesBillingGheRequest(args map[string
 // HandleBillingGetGithubPackagesBillingOrgRequest handles billing/get-github-packages-billing-org operation.
 //
 // GET /orgs/{org}/settings/billing/packages
-func (s *Server) handleBillingGetGithubPackagesBillingOrgRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleBillingGetGithubPackagesBillingOrgRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `BillingGetGithubPackagesBillingOrg`,
 		trace.WithAttributes(otelogen.OperationID(`billing/get-github-packages-billing-org`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -4276,7 +4276,7 @@ func (s *Server) handleBillingGetGithubPackagesBillingOrgRequest(args map[string
 // HandleBillingGetGithubPackagesBillingUserRequest handles billing/get-github-packages-billing-user operation.
 //
 // GET /users/{username}/settings/billing/packages
-func (s *Server) handleBillingGetGithubPackagesBillingUserRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleBillingGetGithubPackagesBillingUserRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `BillingGetGithubPackagesBillingUser`,
 		trace.WithAttributes(otelogen.OperationID(`billing/get-github-packages-billing-user`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -4305,7 +4305,7 @@ func (s *Server) handleBillingGetGithubPackagesBillingUserRequest(args map[strin
 // HandleBillingGetSharedStorageBillingGheRequest handles billing/get-shared-storage-billing-ghe operation.
 //
 // GET /enterprises/{enterprise}/settings/billing/shared-storage
-func (s *Server) handleBillingGetSharedStorageBillingGheRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleBillingGetSharedStorageBillingGheRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `BillingGetSharedStorageBillingGhe`,
 		trace.WithAttributes(otelogen.OperationID(`billing/get-shared-storage-billing-ghe`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -4334,7 +4334,7 @@ func (s *Server) handleBillingGetSharedStorageBillingGheRequest(args map[string]
 // HandleBillingGetSharedStorageBillingOrgRequest handles billing/get-shared-storage-billing-org operation.
 //
 // GET /orgs/{org}/settings/billing/shared-storage
-func (s *Server) handleBillingGetSharedStorageBillingOrgRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleBillingGetSharedStorageBillingOrgRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `BillingGetSharedStorageBillingOrg`,
 		trace.WithAttributes(otelogen.OperationID(`billing/get-shared-storage-billing-org`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -4363,7 +4363,7 @@ func (s *Server) handleBillingGetSharedStorageBillingOrgRequest(args map[string]
 // HandleBillingGetSharedStorageBillingUserRequest handles billing/get-shared-storage-billing-user operation.
 //
 // GET /users/{username}/settings/billing/shared-storage
-func (s *Server) handleBillingGetSharedStorageBillingUserRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleBillingGetSharedStorageBillingUserRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `BillingGetSharedStorageBillingUser`,
 		trace.WithAttributes(otelogen.OperationID(`billing/get-shared-storage-billing-user`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -4392,7 +4392,7 @@ func (s *Server) handleBillingGetSharedStorageBillingUserRequest(args map[string
 // HandleChecksCreateSuiteRequest handles checks/create-suite operation.
 //
 // POST /repos/{owner}/{repo}/check-suites
-func (s *Server) handleChecksCreateSuiteRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleChecksCreateSuiteRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ChecksCreateSuite`,
 		trace.WithAttributes(otelogen.OperationID(`checks/create-suite`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -4427,7 +4427,7 @@ func (s *Server) handleChecksCreateSuiteRequest(args map[string]string, w http.R
 // HandleChecksGetRequest handles checks/get operation.
 //
 // GET /repos/{owner}/{repo}/check-runs/{check_run_id}
-func (s *Server) handleChecksGetRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleChecksGetRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ChecksGet`,
 		trace.WithAttributes(otelogen.OperationID(`checks/get`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -4456,7 +4456,7 @@ func (s *Server) handleChecksGetRequest(args map[string]string, w http.ResponseW
 // HandleChecksGetSuiteRequest handles checks/get-suite operation.
 //
 // GET /repos/{owner}/{repo}/check-suites/{check_suite_id}
-func (s *Server) handleChecksGetSuiteRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleChecksGetSuiteRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ChecksGetSuite`,
 		trace.WithAttributes(otelogen.OperationID(`checks/get-suite`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -4485,7 +4485,7 @@ func (s *Server) handleChecksGetSuiteRequest(args map[string]string, w http.Resp
 // HandleChecksListAnnotationsRequest handles checks/list-annotations operation.
 //
 // GET /repos/{owner}/{repo}/check-runs/{check_run_id}/annotations
-func (s *Server) handleChecksListAnnotationsRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleChecksListAnnotationsRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ChecksListAnnotations`,
 		trace.WithAttributes(otelogen.OperationID(`checks/list-annotations`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -4514,7 +4514,7 @@ func (s *Server) handleChecksListAnnotationsRequest(args map[string]string, w ht
 // HandleChecksListForRefRequest handles checks/list-for-ref operation.
 //
 // GET /repos/{owner}/{repo}/commits/{ref}/check-runs
-func (s *Server) handleChecksListForRefRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleChecksListForRefRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ChecksListForRef`,
 		trace.WithAttributes(otelogen.OperationID(`checks/list-for-ref`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -4543,7 +4543,7 @@ func (s *Server) handleChecksListForRefRequest(args map[string]string, w http.Re
 // HandleChecksListForSuiteRequest handles checks/list-for-suite operation.
 //
 // GET /repos/{owner}/{repo}/check-suites/{check_suite_id}/check-runs
-func (s *Server) handleChecksListForSuiteRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleChecksListForSuiteRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ChecksListForSuite`,
 		trace.WithAttributes(otelogen.OperationID(`checks/list-for-suite`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -4572,7 +4572,7 @@ func (s *Server) handleChecksListForSuiteRequest(args map[string]string, w http.
 // HandleChecksListSuitesForRefRequest handles checks/list-suites-for-ref operation.
 //
 // GET /repos/{owner}/{repo}/commits/{ref}/check-suites
-func (s *Server) handleChecksListSuitesForRefRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleChecksListSuitesForRefRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ChecksListSuitesForRef`,
 		trace.WithAttributes(otelogen.OperationID(`checks/list-suites-for-ref`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -4601,7 +4601,7 @@ func (s *Server) handleChecksListSuitesForRefRequest(args map[string]string, w h
 // HandleChecksRerequestSuiteRequest handles checks/rerequest-suite operation.
 //
 // POST /repos/{owner}/{repo}/check-suites/{check_suite_id}/rerequest
-func (s *Server) handleChecksRerequestSuiteRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleChecksRerequestSuiteRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ChecksRerequestSuite`,
 		trace.WithAttributes(otelogen.OperationID(`checks/rerequest-suite`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -4630,7 +4630,7 @@ func (s *Server) handleChecksRerequestSuiteRequest(args map[string]string, w htt
 // HandleChecksSetSuitesPreferencesRequest handles checks/set-suites-preferences operation.
 //
 // PATCH /repos/{owner}/{repo}/check-suites/preferences
-func (s *Server) handleChecksSetSuitesPreferencesRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleChecksSetSuitesPreferencesRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ChecksSetSuitesPreferences`,
 		trace.WithAttributes(otelogen.OperationID(`checks/set-suites-preferences`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -4665,7 +4665,7 @@ func (s *Server) handleChecksSetSuitesPreferencesRequest(args map[string]string,
 // HandleCodeScanningDeleteAnalysisRequest handles code-scanning/delete-analysis operation.
 //
 // DELETE /repos/{owner}/{repo}/code-scanning/analyses/{analysis_id}
-func (s *Server) handleCodeScanningDeleteAnalysisRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleCodeScanningDeleteAnalysisRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `CodeScanningDeleteAnalysis`,
 		trace.WithAttributes(otelogen.OperationID(`code-scanning/delete-analysis`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -4694,7 +4694,7 @@ func (s *Server) handleCodeScanningDeleteAnalysisRequest(args map[string]string,
 // HandleCodeScanningGetAlertRequest handles code-scanning/get-alert operation.
 //
 // GET /repos/{owner}/{repo}/code-scanning/alerts/{alert_number}
-func (s *Server) handleCodeScanningGetAlertRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleCodeScanningGetAlertRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `CodeScanningGetAlert`,
 		trace.WithAttributes(otelogen.OperationID(`code-scanning/get-alert`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -4723,7 +4723,7 @@ func (s *Server) handleCodeScanningGetAlertRequest(args map[string]string, w htt
 // HandleCodeScanningGetAnalysisRequest handles code-scanning/get-analysis operation.
 //
 // GET /repos/{owner}/{repo}/code-scanning/analyses/{analysis_id}
-func (s *Server) handleCodeScanningGetAnalysisRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleCodeScanningGetAnalysisRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `CodeScanningGetAnalysis`,
 		trace.WithAttributes(otelogen.OperationID(`code-scanning/get-analysis`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -4752,7 +4752,7 @@ func (s *Server) handleCodeScanningGetAnalysisRequest(args map[string]string, w 
 // HandleCodeScanningGetSarifRequest handles code-scanning/get-sarif operation.
 //
 // GET /repos/{owner}/{repo}/code-scanning/sarifs/{sarif_id}
-func (s *Server) handleCodeScanningGetSarifRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleCodeScanningGetSarifRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `CodeScanningGetSarif`,
 		trace.WithAttributes(otelogen.OperationID(`code-scanning/get-sarif`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -4781,7 +4781,7 @@ func (s *Server) handleCodeScanningGetSarifRequest(args map[string]string, w htt
 // HandleCodeScanningListAlertInstancesRequest handles code-scanning/list-alert-instances operation.
 //
 // GET /repos/{owner}/{repo}/code-scanning/alerts/{alert_number}/instances
-func (s *Server) handleCodeScanningListAlertInstancesRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleCodeScanningListAlertInstancesRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `CodeScanningListAlertInstances`,
 		trace.WithAttributes(otelogen.OperationID(`code-scanning/list-alert-instances`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -4810,7 +4810,7 @@ func (s *Server) handleCodeScanningListAlertInstancesRequest(args map[string]str
 // HandleCodeScanningListAlertsForRepoRequest handles code-scanning/list-alerts-for-repo operation.
 //
 // GET /repos/{owner}/{repo}/code-scanning/alerts
-func (s *Server) handleCodeScanningListAlertsForRepoRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleCodeScanningListAlertsForRepoRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `CodeScanningListAlertsForRepo`,
 		trace.WithAttributes(otelogen.OperationID(`code-scanning/list-alerts-for-repo`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -4839,7 +4839,7 @@ func (s *Server) handleCodeScanningListAlertsForRepoRequest(args map[string]stri
 // HandleCodeScanningListRecentAnalysesRequest handles code-scanning/list-recent-analyses operation.
 //
 // GET /repos/{owner}/{repo}/code-scanning/analyses
-func (s *Server) handleCodeScanningListRecentAnalysesRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleCodeScanningListRecentAnalysesRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `CodeScanningListRecentAnalyses`,
 		trace.WithAttributes(otelogen.OperationID(`code-scanning/list-recent-analyses`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -4868,7 +4868,7 @@ func (s *Server) handleCodeScanningListRecentAnalysesRequest(args map[string]str
 // HandleCodeScanningUpdateAlertRequest handles code-scanning/update-alert operation.
 //
 // PATCH /repos/{owner}/{repo}/code-scanning/alerts/{alert_number}
-func (s *Server) handleCodeScanningUpdateAlertRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleCodeScanningUpdateAlertRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `CodeScanningUpdateAlert`,
 		trace.WithAttributes(otelogen.OperationID(`code-scanning/update-alert`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -4903,7 +4903,7 @@ func (s *Server) handleCodeScanningUpdateAlertRequest(args map[string]string, w 
 // HandleCodeScanningUploadSarifRequest handles code-scanning/upload-sarif operation.
 //
 // POST /repos/{owner}/{repo}/code-scanning/sarifs
-func (s *Server) handleCodeScanningUploadSarifRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleCodeScanningUploadSarifRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `CodeScanningUploadSarif`,
 		trace.WithAttributes(otelogen.OperationID(`code-scanning/upload-sarif`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -4938,7 +4938,7 @@ func (s *Server) handleCodeScanningUploadSarifRequest(args map[string]string, w 
 // HandleCodesOfConductGetAllCodesOfConductRequest handles codes-of-conduct/get-all-codes-of-conduct operation.
 //
 // GET /codes_of_conduct
-func (s *Server) handleCodesOfConductGetAllCodesOfConductRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleCodesOfConductGetAllCodesOfConductRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `CodesOfConductGetAllCodesOfConduct`,
 		trace.WithAttributes(otelogen.OperationID(`codes-of-conduct/get-all-codes-of-conduct`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -4961,7 +4961,7 @@ func (s *Server) handleCodesOfConductGetAllCodesOfConductRequest(args map[string
 // HandleCodesOfConductGetConductCodeRequest handles codes-of-conduct/get-conduct-code operation.
 //
 // GET /codes_of_conduct/{key}
-func (s *Server) handleCodesOfConductGetConductCodeRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleCodesOfConductGetConductCodeRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `CodesOfConductGetConductCode`,
 		trace.WithAttributes(otelogen.OperationID(`codes-of-conduct/get-conduct-code`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -4990,7 +4990,7 @@ func (s *Server) handleCodesOfConductGetConductCodeRequest(args map[string]strin
 // HandleEmojisGetRequest handles emojis/get operation.
 //
 // GET /emojis
-func (s *Server) handleEmojisGetRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleEmojisGetRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `EmojisGet`,
 		trace.WithAttributes(otelogen.OperationID(`emojis/get`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -5013,7 +5013,7 @@ func (s *Server) handleEmojisGetRequest(args map[string]string, w http.ResponseW
 // HandleEnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterpriseRequest handles enterprise-admin/add-org-access-to-self-hosted-runner-group-in-enterprise operation.
 //
 // PUT /enterprises/{enterprise}/actions/runner-groups/{runner_group_id}/organizations/{org_id}
-func (s *Server) handleEnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterpriseRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleEnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterpriseRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `EnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterprise`,
 		trace.WithAttributes(otelogen.OperationID(`enterprise-admin/add-org-access-to-self-hosted-runner-group-in-enterprise`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -5042,7 +5042,7 @@ func (s *Server) handleEnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnter
 // HandleEnterpriseAdminAddSelfHostedRunnerToGroupForEnterpriseRequest handles enterprise-admin/add-self-hosted-runner-to-group-for-enterprise operation.
 //
 // PUT /enterprises/{enterprise}/actions/runner-groups/{runner_group_id}/runners/{runner_id}
-func (s *Server) handleEnterpriseAdminAddSelfHostedRunnerToGroupForEnterpriseRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleEnterpriseAdminAddSelfHostedRunnerToGroupForEnterpriseRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `EnterpriseAdminAddSelfHostedRunnerToGroupForEnterprise`,
 		trace.WithAttributes(otelogen.OperationID(`enterprise-admin/add-self-hosted-runner-to-group-for-enterprise`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -5071,7 +5071,7 @@ func (s *Server) handleEnterpriseAdminAddSelfHostedRunnerToGroupForEnterpriseReq
 // HandleEnterpriseAdminCreateRegistrationTokenForEnterpriseRequest handles enterprise-admin/create-registration-token-for-enterprise operation.
 //
 // POST /enterprises/{enterprise}/actions/runners/registration-token
-func (s *Server) handleEnterpriseAdminCreateRegistrationTokenForEnterpriseRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleEnterpriseAdminCreateRegistrationTokenForEnterpriseRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `EnterpriseAdminCreateRegistrationTokenForEnterprise`,
 		trace.WithAttributes(otelogen.OperationID(`enterprise-admin/create-registration-token-for-enterprise`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -5100,7 +5100,7 @@ func (s *Server) handleEnterpriseAdminCreateRegistrationTokenForEnterpriseReques
 // HandleEnterpriseAdminCreateRemoveTokenForEnterpriseRequest handles enterprise-admin/create-remove-token-for-enterprise operation.
 //
 // POST /enterprises/{enterprise}/actions/runners/remove-token
-func (s *Server) handleEnterpriseAdminCreateRemoveTokenForEnterpriseRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleEnterpriseAdminCreateRemoveTokenForEnterpriseRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `EnterpriseAdminCreateRemoveTokenForEnterprise`,
 		trace.WithAttributes(otelogen.OperationID(`enterprise-admin/create-remove-token-for-enterprise`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -5129,7 +5129,7 @@ func (s *Server) handleEnterpriseAdminCreateRemoveTokenForEnterpriseRequest(args
 // HandleEnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseRequest handles enterprise-admin/create-self-hosted-runner-group-for-enterprise operation.
 //
 // POST /enterprises/{enterprise}/actions/runner-groups
-func (s *Server) handleEnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleEnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `EnterpriseAdminCreateSelfHostedRunnerGroupForEnterprise`,
 		trace.WithAttributes(otelogen.OperationID(`enterprise-admin/create-self-hosted-runner-group-for-enterprise`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -5164,7 +5164,7 @@ func (s *Server) handleEnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseRe
 // HandleEnterpriseAdminDeleteScimGroupFromEnterpriseRequest handles enterprise-admin/delete-scim-group-from-enterprise operation.
 //
 // DELETE /scim/v2/enterprises/{enterprise}/Groups/{scim_group_id}
-func (s *Server) handleEnterpriseAdminDeleteScimGroupFromEnterpriseRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleEnterpriseAdminDeleteScimGroupFromEnterpriseRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `EnterpriseAdminDeleteScimGroupFromEnterprise`,
 		trace.WithAttributes(otelogen.OperationID(`enterprise-admin/delete-scim-group-from-enterprise`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -5193,7 +5193,7 @@ func (s *Server) handleEnterpriseAdminDeleteScimGroupFromEnterpriseRequest(args 
 // HandleEnterpriseAdminDeleteSelfHostedRunnerFromEnterpriseRequest handles enterprise-admin/delete-self-hosted-runner-from-enterprise operation.
 //
 // DELETE /enterprises/{enterprise}/actions/runners/{runner_id}
-func (s *Server) handleEnterpriseAdminDeleteSelfHostedRunnerFromEnterpriseRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleEnterpriseAdminDeleteSelfHostedRunnerFromEnterpriseRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `EnterpriseAdminDeleteSelfHostedRunnerFromEnterprise`,
 		trace.WithAttributes(otelogen.OperationID(`enterprise-admin/delete-self-hosted-runner-from-enterprise`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -5222,7 +5222,7 @@ func (s *Server) handleEnterpriseAdminDeleteSelfHostedRunnerFromEnterpriseReques
 // HandleEnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterpriseRequest handles enterprise-admin/delete-self-hosted-runner-group-from-enterprise operation.
 //
 // DELETE /enterprises/{enterprise}/actions/runner-groups/{runner_group_id}
-func (s *Server) handleEnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterpriseRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleEnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterpriseRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `EnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterprise`,
 		trace.WithAttributes(otelogen.OperationID(`enterprise-admin/delete-self-hosted-runner-group-from-enterprise`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -5251,7 +5251,7 @@ func (s *Server) handleEnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterpriseR
 // HandleEnterpriseAdminDeleteUserFromEnterpriseRequest handles enterprise-admin/delete-user-from-enterprise operation.
 //
 // DELETE /scim/v2/enterprises/{enterprise}/Users/{scim_user_id}
-func (s *Server) handleEnterpriseAdminDeleteUserFromEnterpriseRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleEnterpriseAdminDeleteUserFromEnterpriseRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `EnterpriseAdminDeleteUserFromEnterprise`,
 		trace.WithAttributes(otelogen.OperationID(`enterprise-admin/delete-user-from-enterprise`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -5280,7 +5280,7 @@ func (s *Server) handleEnterpriseAdminDeleteUserFromEnterpriseRequest(args map[s
 // HandleEnterpriseAdminDisableSelectedOrganizationGithubActionsEnterpriseRequest handles enterprise-admin/disable-selected-organization-github-actions-enterprise operation.
 //
 // DELETE /enterprises/{enterprise}/actions/permissions/organizations/{org_id}
-func (s *Server) handleEnterpriseAdminDisableSelectedOrganizationGithubActionsEnterpriseRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleEnterpriseAdminDisableSelectedOrganizationGithubActionsEnterpriseRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `EnterpriseAdminDisableSelectedOrganizationGithubActionsEnterprise`,
 		trace.WithAttributes(otelogen.OperationID(`enterprise-admin/disable-selected-organization-github-actions-enterprise`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -5309,7 +5309,7 @@ func (s *Server) handleEnterpriseAdminDisableSelectedOrganizationGithubActionsEn
 // HandleEnterpriseAdminEnableSelectedOrganizationGithubActionsEnterpriseRequest handles enterprise-admin/enable-selected-organization-github-actions-enterprise operation.
 //
 // PUT /enterprises/{enterprise}/actions/permissions/organizations/{org_id}
-func (s *Server) handleEnterpriseAdminEnableSelectedOrganizationGithubActionsEnterpriseRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleEnterpriseAdminEnableSelectedOrganizationGithubActionsEnterpriseRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `EnterpriseAdminEnableSelectedOrganizationGithubActionsEnterprise`,
 		trace.WithAttributes(otelogen.OperationID(`enterprise-admin/enable-selected-organization-github-actions-enterprise`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -5338,7 +5338,7 @@ func (s *Server) handleEnterpriseAdminEnableSelectedOrganizationGithubActionsEnt
 // HandleEnterpriseAdminGetAllowedActionsEnterpriseRequest handles enterprise-admin/get-allowed-actions-enterprise operation.
 //
 // GET /enterprises/{enterprise}/actions/permissions/selected-actions
-func (s *Server) handleEnterpriseAdminGetAllowedActionsEnterpriseRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleEnterpriseAdminGetAllowedActionsEnterpriseRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `EnterpriseAdminGetAllowedActionsEnterprise`,
 		trace.WithAttributes(otelogen.OperationID(`enterprise-admin/get-allowed-actions-enterprise`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -5367,7 +5367,7 @@ func (s *Server) handleEnterpriseAdminGetAllowedActionsEnterpriseRequest(args ma
 // HandleEnterpriseAdminGetAuditLogRequest handles enterprise-admin/get-audit-log operation.
 //
 // GET /enterprises/{enterprise}/audit-log
-func (s *Server) handleEnterpriseAdminGetAuditLogRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleEnterpriseAdminGetAuditLogRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `EnterpriseAdminGetAuditLog`,
 		trace.WithAttributes(otelogen.OperationID(`enterprise-admin/get-audit-log`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -5396,7 +5396,7 @@ func (s *Server) handleEnterpriseAdminGetAuditLogRequest(args map[string]string,
 // HandleEnterpriseAdminGetGithubActionsPermissionsEnterpriseRequest handles enterprise-admin/get-github-actions-permissions-enterprise operation.
 //
 // GET /enterprises/{enterprise}/actions/permissions
-func (s *Server) handleEnterpriseAdminGetGithubActionsPermissionsEnterpriseRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleEnterpriseAdminGetGithubActionsPermissionsEnterpriseRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `EnterpriseAdminGetGithubActionsPermissionsEnterprise`,
 		trace.WithAttributes(otelogen.OperationID(`enterprise-admin/get-github-actions-permissions-enterprise`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -5425,7 +5425,7 @@ func (s *Server) handleEnterpriseAdminGetGithubActionsPermissionsEnterpriseReque
 // HandleEnterpriseAdminGetProvisioningInformationForEnterpriseGroupRequest handles enterprise-admin/get-provisioning-information-for-enterprise-group operation.
 //
 // GET /scim/v2/enterprises/{enterprise}/Groups/{scim_group_id}
-func (s *Server) handleEnterpriseAdminGetProvisioningInformationForEnterpriseGroupRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleEnterpriseAdminGetProvisioningInformationForEnterpriseGroupRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `EnterpriseAdminGetProvisioningInformationForEnterpriseGroup`,
 		trace.WithAttributes(otelogen.OperationID(`enterprise-admin/get-provisioning-information-for-enterprise-group`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -5454,7 +5454,7 @@ func (s *Server) handleEnterpriseAdminGetProvisioningInformationForEnterpriseGro
 // HandleEnterpriseAdminGetProvisioningInformationForEnterpriseUserRequest handles enterprise-admin/get-provisioning-information-for-enterprise-user operation.
 //
 // GET /scim/v2/enterprises/{enterprise}/Users/{scim_user_id}
-func (s *Server) handleEnterpriseAdminGetProvisioningInformationForEnterpriseUserRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleEnterpriseAdminGetProvisioningInformationForEnterpriseUserRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `EnterpriseAdminGetProvisioningInformationForEnterpriseUser`,
 		trace.WithAttributes(otelogen.OperationID(`enterprise-admin/get-provisioning-information-for-enterprise-user`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -5483,7 +5483,7 @@ func (s *Server) handleEnterpriseAdminGetProvisioningInformationForEnterpriseUse
 // HandleEnterpriseAdminGetSelfHostedRunnerForEnterpriseRequest handles enterprise-admin/get-self-hosted-runner-for-enterprise operation.
 //
 // GET /enterprises/{enterprise}/actions/runners/{runner_id}
-func (s *Server) handleEnterpriseAdminGetSelfHostedRunnerForEnterpriseRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleEnterpriseAdminGetSelfHostedRunnerForEnterpriseRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `EnterpriseAdminGetSelfHostedRunnerForEnterprise`,
 		trace.WithAttributes(otelogen.OperationID(`enterprise-admin/get-self-hosted-runner-for-enterprise`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -5512,7 +5512,7 @@ func (s *Server) handleEnterpriseAdminGetSelfHostedRunnerForEnterpriseRequest(ar
 // HandleEnterpriseAdminGetSelfHostedRunnerGroupForEnterpriseRequest handles enterprise-admin/get-self-hosted-runner-group-for-enterprise operation.
 //
 // GET /enterprises/{enterprise}/actions/runner-groups/{runner_group_id}
-func (s *Server) handleEnterpriseAdminGetSelfHostedRunnerGroupForEnterpriseRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleEnterpriseAdminGetSelfHostedRunnerGroupForEnterpriseRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `EnterpriseAdminGetSelfHostedRunnerGroupForEnterprise`,
 		trace.WithAttributes(otelogen.OperationID(`enterprise-admin/get-self-hosted-runner-group-for-enterprise`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -5541,7 +5541,7 @@ func (s *Server) handleEnterpriseAdminGetSelfHostedRunnerGroupForEnterpriseReque
 // HandleEnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseRequest handles enterprise-admin/list-org-access-to-self-hosted-runner-group-in-enterprise operation.
 //
 // GET /enterprises/{enterprise}/actions/runner-groups/{runner_group_id}/organizations
-func (s *Server) handleEnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleEnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `EnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterprise`,
 		trace.WithAttributes(otelogen.OperationID(`enterprise-admin/list-org-access-to-self-hosted-runner-group-in-enterprise`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -5570,7 +5570,7 @@ func (s *Server) handleEnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnte
 // HandleEnterpriseAdminListProvisionedGroupsEnterpriseRequest handles enterprise-admin/list-provisioned-groups-enterprise operation.
 //
 // GET /scim/v2/enterprises/{enterprise}/Groups
-func (s *Server) handleEnterpriseAdminListProvisionedGroupsEnterpriseRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleEnterpriseAdminListProvisionedGroupsEnterpriseRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `EnterpriseAdminListProvisionedGroupsEnterprise`,
 		trace.WithAttributes(otelogen.OperationID(`enterprise-admin/list-provisioned-groups-enterprise`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -5599,7 +5599,7 @@ func (s *Server) handleEnterpriseAdminListProvisionedGroupsEnterpriseRequest(arg
 // HandleEnterpriseAdminListProvisionedIdentitiesEnterpriseRequest handles enterprise-admin/list-provisioned-identities-enterprise operation.
 //
 // GET /scim/v2/enterprises/{enterprise}/Users
-func (s *Server) handleEnterpriseAdminListProvisionedIdentitiesEnterpriseRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleEnterpriseAdminListProvisionedIdentitiesEnterpriseRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `EnterpriseAdminListProvisionedIdentitiesEnterprise`,
 		trace.WithAttributes(otelogen.OperationID(`enterprise-admin/list-provisioned-identities-enterprise`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -5628,7 +5628,7 @@ func (s *Server) handleEnterpriseAdminListProvisionedIdentitiesEnterpriseRequest
 // HandleEnterpriseAdminListRunnerApplicationsForEnterpriseRequest handles enterprise-admin/list-runner-applications-for-enterprise operation.
 //
 // GET /enterprises/{enterprise}/actions/runners/downloads
-func (s *Server) handleEnterpriseAdminListRunnerApplicationsForEnterpriseRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleEnterpriseAdminListRunnerApplicationsForEnterpriseRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `EnterpriseAdminListRunnerApplicationsForEnterprise`,
 		trace.WithAttributes(otelogen.OperationID(`enterprise-admin/list-runner-applications-for-enterprise`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -5657,7 +5657,7 @@ func (s *Server) handleEnterpriseAdminListRunnerApplicationsForEnterpriseRequest
 // HandleEnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterpriseRequest handles enterprise-admin/list-selected-organizations-enabled-github-actions-enterprise operation.
 //
 // GET /enterprises/{enterprise}/actions/permissions/organizations
-func (s *Server) handleEnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterpriseRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleEnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterpriseRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `EnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterprise`,
 		trace.WithAttributes(otelogen.OperationID(`enterprise-admin/list-selected-organizations-enabled-github-actions-enterprise`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -5686,7 +5686,7 @@ func (s *Server) handleEnterpriseAdminListSelectedOrganizationsEnabledGithubActi
 // HandleEnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseRequest handles enterprise-admin/list-self-hosted-runner-groups-for-enterprise operation.
 //
 // GET /enterprises/{enterprise}/actions/runner-groups
-func (s *Server) handleEnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleEnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `EnterpriseAdminListSelfHostedRunnerGroupsForEnterprise`,
 		trace.WithAttributes(otelogen.OperationID(`enterprise-admin/list-self-hosted-runner-groups-for-enterprise`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -5715,7 +5715,7 @@ func (s *Server) handleEnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseReq
 // HandleEnterpriseAdminListSelfHostedRunnersForEnterpriseRequest handles enterprise-admin/list-self-hosted-runners-for-enterprise operation.
 //
 // GET /enterprises/{enterprise}/actions/runners
-func (s *Server) handleEnterpriseAdminListSelfHostedRunnersForEnterpriseRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleEnterpriseAdminListSelfHostedRunnersForEnterpriseRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `EnterpriseAdminListSelfHostedRunnersForEnterprise`,
 		trace.WithAttributes(otelogen.OperationID(`enterprise-admin/list-self-hosted-runners-for-enterprise`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -5744,7 +5744,7 @@ func (s *Server) handleEnterpriseAdminListSelfHostedRunnersForEnterpriseRequest(
 // HandleEnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseRequest handles enterprise-admin/list-self-hosted-runners-in-group-for-enterprise operation.
 //
 // GET /enterprises/{enterprise}/actions/runner-groups/{runner_group_id}/runners
-func (s *Server) handleEnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleEnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `EnterpriseAdminListSelfHostedRunnersInGroupForEnterprise`,
 		trace.WithAttributes(otelogen.OperationID(`enterprise-admin/list-self-hosted-runners-in-group-for-enterprise`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -5773,7 +5773,7 @@ func (s *Server) handleEnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseR
 // HandleEnterpriseAdminProvisionAndInviteEnterpriseGroupRequest handles enterprise-admin/provision-and-invite-enterprise-group operation.
 //
 // POST /scim/v2/enterprises/{enterprise}/Groups
-func (s *Server) handleEnterpriseAdminProvisionAndInviteEnterpriseGroupRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleEnterpriseAdminProvisionAndInviteEnterpriseGroupRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `EnterpriseAdminProvisionAndInviteEnterpriseGroup`,
 		trace.WithAttributes(otelogen.OperationID(`enterprise-admin/provision-and-invite-enterprise-group`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -5808,7 +5808,7 @@ func (s *Server) handleEnterpriseAdminProvisionAndInviteEnterpriseGroupRequest(a
 // HandleEnterpriseAdminProvisionAndInviteEnterpriseUserRequest handles enterprise-admin/provision-and-invite-enterprise-user operation.
 //
 // POST /scim/v2/enterprises/{enterprise}/Users
-func (s *Server) handleEnterpriseAdminProvisionAndInviteEnterpriseUserRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleEnterpriseAdminProvisionAndInviteEnterpriseUserRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `EnterpriseAdminProvisionAndInviteEnterpriseUser`,
 		trace.WithAttributes(otelogen.OperationID(`enterprise-admin/provision-and-invite-enterprise-user`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -5843,7 +5843,7 @@ func (s *Server) handleEnterpriseAdminProvisionAndInviteEnterpriseUserRequest(ar
 // HandleEnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterpriseRequest handles enterprise-admin/remove-org-access-to-self-hosted-runner-group-in-enterprise operation.
 //
 // DELETE /enterprises/{enterprise}/actions/runner-groups/{runner_group_id}/organizations/{org_id}
-func (s *Server) handleEnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterpriseRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleEnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterpriseRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `EnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterprise`,
 		trace.WithAttributes(otelogen.OperationID(`enterprise-admin/remove-org-access-to-self-hosted-runner-group-in-enterprise`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -5872,7 +5872,7 @@ func (s *Server) handleEnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEn
 // HandleEnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterpriseRequest handles enterprise-admin/remove-self-hosted-runner-from-group-for-enterprise operation.
 //
 // DELETE /enterprises/{enterprise}/actions/runner-groups/{runner_group_id}/runners/{runner_id}
-func (s *Server) handleEnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterpriseRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleEnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterpriseRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `EnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterprise`,
 		trace.WithAttributes(otelogen.OperationID(`enterprise-admin/remove-self-hosted-runner-from-group-for-enterprise`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -5901,7 +5901,7 @@ func (s *Server) handleEnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterpri
 // HandleEnterpriseAdminSetAllowedActionsEnterpriseRequest handles enterprise-admin/set-allowed-actions-enterprise operation.
 //
 // PUT /enterprises/{enterprise}/actions/permissions/selected-actions
-func (s *Server) handleEnterpriseAdminSetAllowedActionsEnterpriseRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleEnterpriseAdminSetAllowedActionsEnterpriseRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `EnterpriseAdminSetAllowedActionsEnterprise`,
 		trace.WithAttributes(otelogen.OperationID(`enterprise-admin/set-allowed-actions-enterprise`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -5936,7 +5936,7 @@ func (s *Server) handleEnterpriseAdminSetAllowedActionsEnterpriseRequest(args ma
 // HandleEnterpriseAdminSetGithubActionsPermissionsEnterpriseRequest handles enterprise-admin/set-github-actions-permissions-enterprise operation.
 //
 // PUT /enterprises/{enterprise}/actions/permissions
-func (s *Server) handleEnterpriseAdminSetGithubActionsPermissionsEnterpriseRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleEnterpriseAdminSetGithubActionsPermissionsEnterpriseRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `EnterpriseAdminSetGithubActionsPermissionsEnterprise`,
 		trace.WithAttributes(otelogen.OperationID(`enterprise-admin/set-github-actions-permissions-enterprise`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -5971,7 +5971,7 @@ func (s *Server) handleEnterpriseAdminSetGithubActionsPermissionsEnterpriseReque
 // HandleEnterpriseAdminSetInformationForProvisionedEnterpriseGroupRequest handles enterprise-admin/set-information-for-provisioned-enterprise-group operation.
 //
 // PUT /scim/v2/enterprises/{enterprise}/Groups/{scim_group_id}
-func (s *Server) handleEnterpriseAdminSetInformationForProvisionedEnterpriseGroupRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleEnterpriseAdminSetInformationForProvisionedEnterpriseGroupRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `EnterpriseAdminSetInformationForProvisionedEnterpriseGroup`,
 		trace.WithAttributes(otelogen.OperationID(`enterprise-admin/set-information-for-provisioned-enterprise-group`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -6006,7 +6006,7 @@ func (s *Server) handleEnterpriseAdminSetInformationForProvisionedEnterpriseGrou
 // HandleEnterpriseAdminSetInformationForProvisionedEnterpriseUserRequest handles enterprise-admin/set-information-for-provisioned-enterprise-user operation.
 //
 // PUT /scim/v2/enterprises/{enterprise}/Users/{scim_user_id}
-func (s *Server) handleEnterpriseAdminSetInformationForProvisionedEnterpriseUserRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleEnterpriseAdminSetInformationForProvisionedEnterpriseUserRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `EnterpriseAdminSetInformationForProvisionedEnterpriseUser`,
 		trace.WithAttributes(otelogen.OperationID(`enterprise-admin/set-information-for-provisioned-enterprise-user`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -6041,7 +6041,7 @@ func (s *Server) handleEnterpriseAdminSetInformationForProvisionedEnterpriseUser
 // HandleEnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseRequest handles enterprise-admin/set-org-access-to-self-hosted-runner-group-in-enterprise operation.
 //
 // PUT /enterprises/{enterprise}/actions/runner-groups/{runner_group_id}/organizations
-func (s *Server) handleEnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleEnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterprise`,
 		trace.WithAttributes(otelogen.OperationID(`enterprise-admin/set-org-access-to-self-hosted-runner-group-in-enterprise`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -6076,7 +6076,7 @@ func (s *Server) handleEnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnter
 // HandleEnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseRequest handles enterprise-admin/set-selected-organizations-enabled-github-actions-enterprise operation.
 //
 // PUT /enterprises/{enterprise}/actions/permissions/organizations
-func (s *Server) handleEnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleEnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterprise`,
 		trace.WithAttributes(otelogen.OperationID(`enterprise-admin/set-selected-organizations-enabled-github-actions-enterprise`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -6111,7 +6111,7 @@ func (s *Server) handleEnterpriseAdminSetSelectedOrganizationsEnabledGithubActio
 // HandleEnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseRequest handles enterprise-admin/set-self-hosted-runners-in-group-for-enterprise operation.
 //
 // PUT /enterprises/{enterprise}/actions/runner-groups/{runner_group_id}/runners
-func (s *Server) handleEnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleEnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `EnterpriseAdminSetSelfHostedRunnersInGroupForEnterprise`,
 		trace.WithAttributes(otelogen.OperationID(`enterprise-admin/set-self-hosted-runners-in-group-for-enterprise`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -6146,7 +6146,7 @@ func (s *Server) handleEnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseRe
 // HandleEnterpriseAdminUpdateAttributeForEnterpriseGroupRequest handles enterprise-admin/update-attribute-for-enterprise-group operation.
 //
 // PATCH /scim/v2/enterprises/{enterprise}/Groups/{scim_group_id}
-func (s *Server) handleEnterpriseAdminUpdateAttributeForEnterpriseGroupRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleEnterpriseAdminUpdateAttributeForEnterpriseGroupRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `EnterpriseAdminUpdateAttributeForEnterpriseGroup`,
 		trace.WithAttributes(otelogen.OperationID(`enterprise-admin/update-attribute-for-enterprise-group`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -6181,7 +6181,7 @@ func (s *Server) handleEnterpriseAdminUpdateAttributeForEnterpriseGroupRequest(a
 // HandleEnterpriseAdminUpdateAttributeForEnterpriseUserRequest handles enterprise-admin/update-attribute-for-enterprise-user operation.
 //
 // PATCH /scim/v2/enterprises/{enterprise}/Users/{scim_user_id}
-func (s *Server) handleEnterpriseAdminUpdateAttributeForEnterpriseUserRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleEnterpriseAdminUpdateAttributeForEnterpriseUserRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `EnterpriseAdminUpdateAttributeForEnterpriseUser`,
 		trace.WithAttributes(otelogen.OperationID(`enterprise-admin/update-attribute-for-enterprise-user`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -6216,7 +6216,7 @@ func (s *Server) handleEnterpriseAdminUpdateAttributeForEnterpriseUserRequest(ar
 // HandleEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseRequest handles enterprise-admin/update-self-hosted-runner-group-for-enterprise operation.
 //
 // PATCH /enterprises/{enterprise}/actions/runner-groups/{runner_group_id}
-func (s *Server) handleEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterprise`,
 		trace.WithAttributes(otelogen.OperationID(`enterprise-admin/update-self-hosted-runner-group-for-enterprise`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -6251,7 +6251,7 @@ func (s *Server) handleEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseRe
 // HandleGistsCheckIsStarredRequest handles gists/check-is-starred operation.
 //
 // GET /gists/{gist_id}/star
-func (s *Server) handleGistsCheckIsStarredRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleGistsCheckIsStarredRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `GistsCheckIsStarred`,
 		trace.WithAttributes(otelogen.OperationID(`gists/check-is-starred`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -6280,7 +6280,7 @@ func (s *Server) handleGistsCheckIsStarredRequest(args map[string]string, w http
 // HandleGistsCreateRequest handles gists/create operation.
 //
 // POST /gists
-func (s *Server) handleGistsCreateRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleGistsCreateRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `GistsCreate`,
 		trace.WithAttributes(otelogen.OperationID(`gists/create`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -6309,7 +6309,7 @@ func (s *Server) handleGistsCreateRequest(args map[string]string, w http.Respons
 // HandleGistsCreateCommentRequest handles gists/create-comment operation.
 //
 // POST /gists/{gist_id}/comments
-func (s *Server) handleGistsCreateCommentRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleGistsCreateCommentRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `GistsCreateComment`,
 		trace.WithAttributes(otelogen.OperationID(`gists/create-comment`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -6344,7 +6344,7 @@ func (s *Server) handleGistsCreateCommentRequest(args map[string]string, w http.
 // HandleGistsDeleteRequest handles gists/delete operation.
 //
 // DELETE /gists/{gist_id}
-func (s *Server) handleGistsDeleteRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleGistsDeleteRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `GistsDelete`,
 		trace.WithAttributes(otelogen.OperationID(`gists/delete`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -6373,7 +6373,7 @@ func (s *Server) handleGistsDeleteRequest(args map[string]string, w http.Respons
 // HandleGistsDeleteCommentRequest handles gists/delete-comment operation.
 //
 // DELETE /gists/{gist_id}/comments/{comment_id}
-func (s *Server) handleGistsDeleteCommentRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleGistsDeleteCommentRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `GistsDeleteComment`,
 		trace.WithAttributes(otelogen.OperationID(`gists/delete-comment`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -6402,7 +6402,7 @@ func (s *Server) handleGistsDeleteCommentRequest(args map[string]string, w http.
 // HandleGistsForkRequest handles gists/fork operation.
 //
 // POST /gists/{gist_id}/forks
-func (s *Server) handleGistsForkRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleGistsForkRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `GistsFork`,
 		trace.WithAttributes(otelogen.OperationID(`gists/fork`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -6431,7 +6431,7 @@ func (s *Server) handleGistsForkRequest(args map[string]string, w http.ResponseW
 // HandleGistsGetRequest handles gists/get operation.
 //
 // GET /gists/{gist_id}
-func (s *Server) handleGistsGetRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleGistsGetRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `GistsGet`,
 		trace.WithAttributes(otelogen.OperationID(`gists/get`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -6460,7 +6460,7 @@ func (s *Server) handleGistsGetRequest(args map[string]string, w http.ResponseWr
 // HandleGistsGetCommentRequest handles gists/get-comment operation.
 //
 // GET /gists/{gist_id}/comments/{comment_id}
-func (s *Server) handleGistsGetCommentRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleGistsGetCommentRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `GistsGetComment`,
 		trace.WithAttributes(otelogen.OperationID(`gists/get-comment`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -6489,7 +6489,7 @@ func (s *Server) handleGistsGetCommentRequest(args map[string]string, w http.Res
 // HandleGistsGetRevisionRequest handles gists/get-revision operation.
 //
 // GET /gists/{gist_id}/{sha}
-func (s *Server) handleGistsGetRevisionRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleGistsGetRevisionRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `GistsGetRevision`,
 		trace.WithAttributes(otelogen.OperationID(`gists/get-revision`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -6518,7 +6518,7 @@ func (s *Server) handleGistsGetRevisionRequest(args map[string]string, w http.Re
 // HandleGistsListRequest handles gists/list operation.
 //
 // GET /gists
-func (s *Server) handleGistsListRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleGistsListRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `GistsList`,
 		trace.WithAttributes(otelogen.OperationID(`gists/list`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -6547,7 +6547,7 @@ func (s *Server) handleGistsListRequest(args map[string]string, w http.ResponseW
 // HandleGistsListCommentsRequest handles gists/list-comments operation.
 //
 // GET /gists/{gist_id}/comments
-func (s *Server) handleGistsListCommentsRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleGistsListCommentsRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `GistsListComments`,
 		trace.WithAttributes(otelogen.OperationID(`gists/list-comments`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -6576,7 +6576,7 @@ func (s *Server) handleGistsListCommentsRequest(args map[string]string, w http.R
 // HandleGistsListCommitsRequest handles gists/list-commits operation.
 //
 // GET /gists/{gist_id}/commits
-func (s *Server) handleGistsListCommitsRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleGistsListCommitsRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `GistsListCommits`,
 		trace.WithAttributes(otelogen.OperationID(`gists/list-commits`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -6605,7 +6605,7 @@ func (s *Server) handleGistsListCommitsRequest(args map[string]string, w http.Re
 // HandleGistsListForUserRequest handles gists/list-for-user operation.
 //
 // GET /users/{username}/gists
-func (s *Server) handleGistsListForUserRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleGistsListForUserRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `GistsListForUser`,
 		trace.WithAttributes(otelogen.OperationID(`gists/list-for-user`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -6634,7 +6634,7 @@ func (s *Server) handleGistsListForUserRequest(args map[string]string, w http.Re
 // HandleGistsListForksRequest handles gists/list-forks operation.
 //
 // GET /gists/{gist_id}/forks
-func (s *Server) handleGistsListForksRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleGistsListForksRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `GistsListForks`,
 		trace.WithAttributes(otelogen.OperationID(`gists/list-forks`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -6663,7 +6663,7 @@ func (s *Server) handleGistsListForksRequest(args map[string]string, w http.Resp
 // HandleGistsListPublicRequest handles gists/list-public operation.
 //
 // GET /gists/public
-func (s *Server) handleGistsListPublicRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleGistsListPublicRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `GistsListPublic`,
 		trace.WithAttributes(otelogen.OperationID(`gists/list-public`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -6692,7 +6692,7 @@ func (s *Server) handleGistsListPublicRequest(args map[string]string, w http.Res
 // HandleGistsListStarredRequest handles gists/list-starred operation.
 //
 // GET /gists/starred
-func (s *Server) handleGistsListStarredRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleGistsListStarredRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `GistsListStarred`,
 		trace.WithAttributes(otelogen.OperationID(`gists/list-starred`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -6721,7 +6721,7 @@ func (s *Server) handleGistsListStarredRequest(args map[string]string, w http.Re
 // HandleGistsStarRequest handles gists/star operation.
 //
 // PUT /gists/{gist_id}/star
-func (s *Server) handleGistsStarRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleGistsStarRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `GistsStar`,
 		trace.WithAttributes(otelogen.OperationID(`gists/star`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -6750,7 +6750,7 @@ func (s *Server) handleGistsStarRequest(args map[string]string, w http.ResponseW
 // HandleGistsUnstarRequest handles gists/unstar operation.
 //
 // DELETE /gists/{gist_id}/star
-func (s *Server) handleGistsUnstarRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleGistsUnstarRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `GistsUnstar`,
 		trace.WithAttributes(otelogen.OperationID(`gists/unstar`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -6779,7 +6779,7 @@ func (s *Server) handleGistsUnstarRequest(args map[string]string, w http.Respons
 // HandleGistsUpdateCommentRequest handles gists/update-comment operation.
 //
 // PATCH /gists/{gist_id}/comments/{comment_id}
-func (s *Server) handleGistsUpdateCommentRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleGistsUpdateCommentRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `GistsUpdateComment`,
 		trace.WithAttributes(otelogen.OperationID(`gists/update-comment`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -6814,7 +6814,7 @@ func (s *Server) handleGistsUpdateCommentRequest(args map[string]string, w http.
 // HandleGitCreateBlobRequest handles git/create-blob operation.
 //
 // POST /repos/{owner}/{repo}/git/blobs
-func (s *Server) handleGitCreateBlobRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleGitCreateBlobRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `GitCreateBlob`,
 		trace.WithAttributes(otelogen.OperationID(`git/create-blob`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -6849,7 +6849,7 @@ func (s *Server) handleGitCreateBlobRequest(args map[string]string, w http.Respo
 // HandleGitCreateCommitRequest handles git/create-commit operation.
 //
 // POST /repos/{owner}/{repo}/git/commits
-func (s *Server) handleGitCreateCommitRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleGitCreateCommitRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `GitCreateCommit`,
 		trace.WithAttributes(otelogen.OperationID(`git/create-commit`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -6884,7 +6884,7 @@ func (s *Server) handleGitCreateCommitRequest(args map[string]string, w http.Res
 // HandleGitCreateRefRequest handles git/create-ref operation.
 //
 // POST /repos/{owner}/{repo}/git/refs
-func (s *Server) handleGitCreateRefRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleGitCreateRefRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `GitCreateRef`,
 		trace.WithAttributes(otelogen.OperationID(`git/create-ref`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -6919,7 +6919,7 @@ func (s *Server) handleGitCreateRefRequest(args map[string]string, w http.Respon
 // HandleGitCreateTagRequest handles git/create-tag operation.
 //
 // POST /repos/{owner}/{repo}/git/tags
-func (s *Server) handleGitCreateTagRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleGitCreateTagRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `GitCreateTag`,
 		trace.WithAttributes(otelogen.OperationID(`git/create-tag`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -6954,7 +6954,7 @@ func (s *Server) handleGitCreateTagRequest(args map[string]string, w http.Respon
 // HandleGitCreateTreeRequest handles git/create-tree operation.
 //
 // POST /repos/{owner}/{repo}/git/trees
-func (s *Server) handleGitCreateTreeRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleGitCreateTreeRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `GitCreateTree`,
 		trace.WithAttributes(otelogen.OperationID(`git/create-tree`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -6989,7 +6989,7 @@ func (s *Server) handleGitCreateTreeRequest(args map[string]string, w http.Respo
 // HandleGitDeleteRefRequest handles git/delete-ref operation.
 //
 // DELETE /repos/{owner}/{repo}/git/refs/{ref}
-func (s *Server) handleGitDeleteRefRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleGitDeleteRefRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `GitDeleteRef`,
 		trace.WithAttributes(otelogen.OperationID(`git/delete-ref`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -7018,7 +7018,7 @@ func (s *Server) handleGitDeleteRefRequest(args map[string]string, w http.Respon
 // HandleGitGetBlobRequest handles git/get-blob operation.
 //
 // GET /repos/{owner}/{repo}/git/blobs/{file_sha}
-func (s *Server) handleGitGetBlobRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleGitGetBlobRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `GitGetBlob`,
 		trace.WithAttributes(otelogen.OperationID(`git/get-blob`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -7047,7 +7047,7 @@ func (s *Server) handleGitGetBlobRequest(args map[string]string, w http.Response
 // HandleGitGetCommitRequest handles git/get-commit operation.
 //
 // GET /repos/{owner}/{repo}/git/commits/{commit_sha}
-func (s *Server) handleGitGetCommitRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleGitGetCommitRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `GitGetCommit`,
 		trace.WithAttributes(otelogen.OperationID(`git/get-commit`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -7076,7 +7076,7 @@ func (s *Server) handleGitGetCommitRequest(args map[string]string, w http.Respon
 // HandleGitGetRefRequest handles git/get-ref operation.
 //
 // GET /repos/{owner}/{repo}/git/ref/{ref}
-func (s *Server) handleGitGetRefRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleGitGetRefRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `GitGetRef`,
 		trace.WithAttributes(otelogen.OperationID(`git/get-ref`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -7105,7 +7105,7 @@ func (s *Server) handleGitGetRefRequest(args map[string]string, w http.ResponseW
 // HandleGitGetTagRequest handles git/get-tag operation.
 //
 // GET /repos/{owner}/{repo}/git/tags/{tag_sha}
-func (s *Server) handleGitGetTagRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleGitGetTagRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `GitGetTag`,
 		trace.WithAttributes(otelogen.OperationID(`git/get-tag`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -7134,7 +7134,7 @@ func (s *Server) handleGitGetTagRequest(args map[string]string, w http.ResponseW
 // HandleGitGetTreeRequest handles git/get-tree operation.
 //
 // GET /repos/{owner}/{repo}/git/trees/{tree_sha}
-func (s *Server) handleGitGetTreeRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleGitGetTreeRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `GitGetTree`,
 		trace.WithAttributes(otelogen.OperationID(`git/get-tree`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -7163,7 +7163,7 @@ func (s *Server) handleGitGetTreeRequest(args map[string]string, w http.Response
 // HandleGitListMatchingRefsRequest handles git/list-matching-refs operation.
 //
 // GET /repos/{owner}/{repo}/git/matching-refs/{ref}
-func (s *Server) handleGitListMatchingRefsRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleGitListMatchingRefsRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `GitListMatchingRefs`,
 		trace.WithAttributes(otelogen.OperationID(`git/list-matching-refs`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -7192,7 +7192,7 @@ func (s *Server) handleGitListMatchingRefsRequest(args map[string]string, w http
 // HandleGitUpdateRefRequest handles git/update-ref operation.
 //
 // PATCH /repos/{owner}/{repo}/git/refs/{ref}
-func (s *Server) handleGitUpdateRefRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleGitUpdateRefRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `GitUpdateRef`,
 		trace.WithAttributes(otelogen.OperationID(`git/update-ref`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -7227,7 +7227,7 @@ func (s *Server) handleGitUpdateRefRequest(args map[string]string, w http.Respon
 // HandleGitignoreGetAllTemplatesRequest handles gitignore/get-all-templates operation.
 //
 // GET /gitignore/templates
-func (s *Server) handleGitignoreGetAllTemplatesRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleGitignoreGetAllTemplatesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `GitignoreGetAllTemplates`,
 		trace.WithAttributes(otelogen.OperationID(`gitignore/get-all-templates`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -7250,7 +7250,7 @@ func (s *Server) handleGitignoreGetAllTemplatesRequest(args map[string]string, w
 // HandleGitignoreGetTemplateRequest handles gitignore/get-template operation.
 //
 // GET /gitignore/templates/{name}
-func (s *Server) handleGitignoreGetTemplateRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleGitignoreGetTemplateRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `GitignoreGetTemplate`,
 		trace.WithAttributes(otelogen.OperationID(`gitignore/get-template`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -7279,7 +7279,7 @@ func (s *Server) handleGitignoreGetTemplateRequest(args map[string]string, w htt
 // HandleInteractionsRemoveRestrictionsForAuthenticatedUserRequest handles interactions/remove-restrictions-for-authenticated-user operation.
 //
 // DELETE /user/interaction-limits
-func (s *Server) handleInteractionsRemoveRestrictionsForAuthenticatedUserRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleInteractionsRemoveRestrictionsForAuthenticatedUserRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `InteractionsRemoveRestrictionsForAuthenticatedUser`,
 		trace.WithAttributes(otelogen.OperationID(`interactions/remove-restrictions-for-authenticated-user`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -7302,7 +7302,7 @@ func (s *Server) handleInteractionsRemoveRestrictionsForAuthenticatedUserRequest
 // HandleInteractionsRemoveRestrictionsForOrgRequest handles interactions/remove-restrictions-for-org operation.
 //
 // DELETE /orgs/{org}/interaction-limits
-func (s *Server) handleInteractionsRemoveRestrictionsForOrgRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleInteractionsRemoveRestrictionsForOrgRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `InteractionsRemoveRestrictionsForOrg`,
 		trace.WithAttributes(otelogen.OperationID(`interactions/remove-restrictions-for-org`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -7331,7 +7331,7 @@ func (s *Server) handleInteractionsRemoveRestrictionsForOrgRequest(args map[stri
 // HandleInteractionsRemoveRestrictionsForRepoRequest handles interactions/remove-restrictions-for-repo operation.
 //
 // DELETE /repos/{owner}/{repo}/interaction-limits
-func (s *Server) handleInteractionsRemoveRestrictionsForRepoRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleInteractionsRemoveRestrictionsForRepoRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `InteractionsRemoveRestrictionsForRepo`,
 		trace.WithAttributes(otelogen.OperationID(`interactions/remove-restrictions-for-repo`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -7360,7 +7360,7 @@ func (s *Server) handleInteractionsRemoveRestrictionsForRepoRequest(args map[str
 // HandleInteractionsSetRestrictionsForAuthenticatedUserRequest handles interactions/set-restrictions-for-authenticated-user operation.
 //
 // PUT /user/interaction-limits
-func (s *Server) handleInteractionsSetRestrictionsForAuthenticatedUserRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleInteractionsSetRestrictionsForAuthenticatedUserRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `InteractionsSetRestrictionsForAuthenticatedUser`,
 		trace.WithAttributes(otelogen.OperationID(`interactions/set-restrictions-for-authenticated-user`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -7389,7 +7389,7 @@ func (s *Server) handleInteractionsSetRestrictionsForAuthenticatedUserRequest(ar
 // HandleInteractionsSetRestrictionsForOrgRequest handles interactions/set-restrictions-for-org operation.
 //
 // PUT /orgs/{org}/interaction-limits
-func (s *Server) handleInteractionsSetRestrictionsForOrgRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleInteractionsSetRestrictionsForOrgRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `InteractionsSetRestrictionsForOrg`,
 		trace.WithAttributes(otelogen.OperationID(`interactions/set-restrictions-for-org`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -7424,7 +7424,7 @@ func (s *Server) handleInteractionsSetRestrictionsForOrgRequest(args map[string]
 // HandleInteractionsSetRestrictionsForRepoRequest handles interactions/set-restrictions-for-repo operation.
 //
 // PUT /repos/{owner}/{repo}/interaction-limits
-func (s *Server) handleInteractionsSetRestrictionsForRepoRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleInteractionsSetRestrictionsForRepoRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `InteractionsSetRestrictionsForRepo`,
 		trace.WithAttributes(otelogen.OperationID(`interactions/set-restrictions-for-repo`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -7459,7 +7459,7 @@ func (s *Server) handleInteractionsSetRestrictionsForRepoRequest(args map[string
 // HandleIssuesAddAssigneesRequest handles issues/add-assignees operation.
 //
 // POST /repos/{owner}/{repo}/issues/{issue_number}/assignees
-func (s *Server) handleIssuesAddAssigneesRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleIssuesAddAssigneesRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `IssuesAddAssignees`,
 		trace.WithAttributes(otelogen.OperationID(`issues/add-assignees`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -7494,7 +7494,7 @@ func (s *Server) handleIssuesAddAssigneesRequest(args map[string]string, w http.
 // HandleIssuesCheckUserCanBeAssignedRequest handles issues/check-user-can-be-assigned operation.
 //
 // GET /repos/{owner}/{repo}/assignees/{assignee}
-func (s *Server) handleIssuesCheckUserCanBeAssignedRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleIssuesCheckUserCanBeAssignedRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `IssuesCheckUserCanBeAssigned`,
 		trace.WithAttributes(otelogen.OperationID(`issues/check-user-can-be-assigned`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -7523,7 +7523,7 @@ func (s *Server) handleIssuesCheckUserCanBeAssignedRequest(args map[string]strin
 // HandleIssuesCreateRequest handles issues/create operation.
 //
 // POST /repos/{owner}/{repo}/issues
-func (s *Server) handleIssuesCreateRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleIssuesCreateRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `IssuesCreate`,
 		trace.WithAttributes(otelogen.OperationID(`issues/create`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -7558,7 +7558,7 @@ func (s *Server) handleIssuesCreateRequest(args map[string]string, w http.Respon
 // HandleIssuesCreateCommentRequest handles issues/create-comment operation.
 //
 // POST /repos/{owner}/{repo}/issues/{issue_number}/comments
-func (s *Server) handleIssuesCreateCommentRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleIssuesCreateCommentRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `IssuesCreateComment`,
 		trace.WithAttributes(otelogen.OperationID(`issues/create-comment`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -7593,7 +7593,7 @@ func (s *Server) handleIssuesCreateCommentRequest(args map[string]string, w http
 // HandleIssuesCreateLabelRequest handles issues/create-label operation.
 //
 // POST /repos/{owner}/{repo}/labels
-func (s *Server) handleIssuesCreateLabelRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleIssuesCreateLabelRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `IssuesCreateLabel`,
 		trace.WithAttributes(otelogen.OperationID(`issues/create-label`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -7628,7 +7628,7 @@ func (s *Server) handleIssuesCreateLabelRequest(args map[string]string, w http.R
 // HandleIssuesCreateMilestoneRequest handles issues/create-milestone operation.
 //
 // POST /repos/{owner}/{repo}/milestones
-func (s *Server) handleIssuesCreateMilestoneRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleIssuesCreateMilestoneRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `IssuesCreateMilestone`,
 		trace.WithAttributes(otelogen.OperationID(`issues/create-milestone`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -7663,7 +7663,7 @@ func (s *Server) handleIssuesCreateMilestoneRequest(args map[string]string, w ht
 // HandleIssuesDeleteCommentRequest handles issues/delete-comment operation.
 //
 // DELETE /repos/{owner}/{repo}/issues/comments/{comment_id}
-func (s *Server) handleIssuesDeleteCommentRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleIssuesDeleteCommentRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `IssuesDeleteComment`,
 		trace.WithAttributes(otelogen.OperationID(`issues/delete-comment`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -7692,7 +7692,7 @@ func (s *Server) handleIssuesDeleteCommentRequest(args map[string]string, w http
 // HandleIssuesDeleteLabelRequest handles issues/delete-label operation.
 //
 // DELETE /repos/{owner}/{repo}/labels/{name}
-func (s *Server) handleIssuesDeleteLabelRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleIssuesDeleteLabelRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `IssuesDeleteLabel`,
 		trace.WithAttributes(otelogen.OperationID(`issues/delete-label`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -7721,7 +7721,7 @@ func (s *Server) handleIssuesDeleteLabelRequest(args map[string]string, w http.R
 // HandleIssuesDeleteMilestoneRequest handles issues/delete-milestone operation.
 //
 // DELETE /repos/{owner}/{repo}/milestones/{milestone_number}
-func (s *Server) handleIssuesDeleteMilestoneRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleIssuesDeleteMilestoneRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `IssuesDeleteMilestone`,
 		trace.WithAttributes(otelogen.OperationID(`issues/delete-milestone`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -7750,7 +7750,7 @@ func (s *Server) handleIssuesDeleteMilestoneRequest(args map[string]string, w ht
 // HandleIssuesGetRequest handles issues/get operation.
 //
 // GET /repos/{owner}/{repo}/issues/{issue_number}
-func (s *Server) handleIssuesGetRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleIssuesGetRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `IssuesGet`,
 		trace.WithAttributes(otelogen.OperationID(`issues/get`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -7779,7 +7779,7 @@ func (s *Server) handleIssuesGetRequest(args map[string]string, w http.ResponseW
 // HandleIssuesGetCommentRequest handles issues/get-comment operation.
 //
 // GET /repos/{owner}/{repo}/issues/comments/{comment_id}
-func (s *Server) handleIssuesGetCommentRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleIssuesGetCommentRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `IssuesGetComment`,
 		trace.WithAttributes(otelogen.OperationID(`issues/get-comment`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -7808,7 +7808,7 @@ func (s *Server) handleIssuesGetCommentRequest(args map[string]string, w http.Re
 // HandleIssuesGetEventRequest handles issues/get-event operation.
 //
 // GET /repos/{owner}/{repo}/issues/events/{event_id}
-func (s *Server) handleIssuesGetEventRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleIssuesGetEventRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `IssuesGetEvent`,
 		trace.WithAttributes(otelogen.OperationID(`issues/get-event`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -7837,7 +7837,7 @@ func (s *Server) handleIssuesGetEventRequest(args map[string]string, w http.Resp
 // HandleIssuesGetLabelRequest handles issues/get-label operation.
 //
 // GET /repos/{owner}/{repo}/labels/{name}
-func (s *Server) handleIssuesGetLabelRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleIssuesGetLabelRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `IssuesGetLabel`,
 		trace.WithAttributes(otelogen.OperationID(`issues/get-label`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -7866,7 +7866,7 @@ func (s *Server) handleIssuesGetLabelRequest(args map[string]string, w http.Resp
 // HandleIssuesGetMilestoneRequest handles issues/get-milestone operation.
 //
 // GET /repos/{owner}/{repo}/milestones/{milestone_number}
-func (s *Server) handleIssuesGetMilestoneRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleIssuesGetMilestoneRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `IssuesGetMilestone`,
 		trace.WithAttributes(otelogen.OperationID(`issues/get-milestone`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -7895,7 +7895,7 @@ func (s *Server) handleIssuesGetMilestoneRequest(args map[string]string, w http.
 // HandleIssuesListRequest handles issues/list operation.
 //
 // GET /issues
-func (s *Server) handleIssuesListRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleIssuesListRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `IssuesList`,
 		trace.WithAttributes(otelogen.OperationID(`issues/list`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -7924,7 +7924,7 @@ func (s *Server) handleIssuesListRequest(args map[string]string, w http.Response
 // HandleIssuesListAssigneesRequest handles issues/list-assignees operation.
 //
 // GET /repos/{owner}/{repo}/assignees
-func (s *Server) handleIssuesListAssigneesRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleIssuesListAssigneesRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `IssuesListAssignees`,
 		trace.WithAttributes(otelogen.OperationID(`issues/list-assignees`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -7953,7 +7953,7 @@ func (s *Server) handleIssuesListAssigneesRequest(args map[string]string, w http
 // HandleIssuesListCommentsRequest handles issues/list-comments operation.
 //
 // GET /repos/{owner}/{repo}/issues/{issue_number}/comments
-func (s *Server) handleIssuesListCommentsRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleIssuesListCommentsRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `IssuesListComments`,
 		trace.WithAttributes(otelogen.OperationID(`issues/list-comments`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -7982,7 +7982,7 @@ func (s *Server) handleIssuesListCommentsRequest(args map[string]string, w http.
 // HandleIssuesListCommentsForRepoRequest handles issues/list-comments-for-repo operation.
 //
 // GET /repos/{owner}/{repo}/issues/comments
-func (s *Server) handleIssuesListCommentsForRepoRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleIssuesListCommentsForRepoRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `IssuesListCommentsForRepo`,
 		trace.WithAttributes(otelogen.OperationID(`issues/list-comments-for-repo`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -8011,7 +8011,7 @@ func (s *Server) handleIssuesListCommentsForRepoRequest(args map[string]string, 
 // HandleIssuesListEventsForRepoRequest handles issues/list-events-for-repo operation.
 //
 // GET /repos/{owner}/{repo}/issues/events
-func (s *Server) handleIssuesListEventsForRepoRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleIssuesListEventsForRepoRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `IssuesListEventsForRepo`,
 		trace.WithAttributes(otelogen.OperationID(`issues/list-events-for-repo`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -8040,7 +8040,7 @@ func (s *Server) handleIssuesListEventsForRepoRequest(args map[string]string, w 
 // HandleIssuesListForAuthenticatedUserRequest handles issues/list-for-authenticated-user operation.
 //
 // GET /user/issues
-func (s *Server) handleIssuesListForAuthenticatedUserRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleIssuesListForAuthenticatedUserRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `IssuesListForAuthenticatedUser`,
 		trace.WithAttributes(otelogen.OperationID(`issues/list-for-authenticated-user`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -8069,7 +8069,7 @@ func (s *Server) handleIssuesListForAuthenticatedUserRequest(args map[string]str
 // HandleIssuesListForOrgRequest handles issues/list-for-org operation.
 //
 // GET /orgs/{org}/issues
-func (s *Server) handleIssuesListForOrgRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleIssuesListForOrgRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `IssuesListForOrg`,
 		trace.WithAttributes(otelogen.OperationID(`issues/list-for-org`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -8098,7 +8098,7 @@ func (s *Server) handleIssuesListForOrgRequest(args map[string]string, w http.Re
 // HandleIssuesListForRepoRequest handles issues/list-for-repo operation.
 //
 // GET /repos/{owner}/{repo}/issues
-func (s *Server) handleIssuesListForRepoRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleIssuesListForRepoRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `IssuesListForRepo`,
 		trace.WithAttributes(otelogen.OperationID(`issues/list-for-repo`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -8127,7 +8127,7 @@ func (s *Server) handleIssuesListForRepoRequest(args map[string]string, w http.R
 // HandleIssuesListLabelsForMilestoneRequest handles issues/list-labels-for-milestone operation.
 //
 // GET /repos/{owner}/{repo}/milestones/{milestone_number}/labels
-func (s *Server) handleIssuesListLabelsForMilestoneRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleIssuesListLabelsForMilestoneRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `IssuesListLabelsForMilestone`,
 		trace.WithAttributes(otelogen.OperationID(`issues/list-labels-for-milestone`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -8156,7 +8156,7 @@ func (s *Server) handleIssuesListLabelsForMilestoneRequest(args map[string]strin
 // HandleIssuesListLabelsForRepoRequest handles issues/list-labels-for-repo operation.
 //
 // GET /repos/{owner}/{repo}/labels
-func (s *Server) handleIssuesListLabelsForRepoRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleIssuesListLabelsForRepoRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `IssuesListLabelsForRepo`,
 		trace.WithAttributes(otelogen.OperationID(`issues/list-labels-for-repo`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -8185,7 +8185,7 @@ func (s *Server) handleIssuesListLabelsForRepoRequest(args map[string]string, w 
 // HandleIssuesListLabelsOnIssueRequest handles issues/list-labels-on-issue operation.
 //
 // GET /repos/{owner}/{repo}/issues/{issue_number}/labels
-func (s *Server) handleIssuesListLabelsOnIssueRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleIssuesListLabelsOnIssueRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `IssuesListLabelsOnIssue`,
 		trace.WithAttributes(otelogen.OperationID(`issues/list-labels-on-issue`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -8214,7 +8214,7 @@ func (s *Server) handleIssuesListLabelsOnIssueRequest(args map[string]string, w 
 // HandleIssuesListMilestonesRequest handles issues/list-milestones operation.
 //
 // GET /repos/{owner}/{repo}/milestones
-func (s *Server) handleIssuesListMilestonesRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleIssuesListMilestonesRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `IssuesListMilestones`,
 		trace.WithAttributes(otelogen.OperationID(`issues/list-milestones`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -8243,7 +8243,7 @@ func (s *Server) handleIssuesListMilestonesRequest(args map[string]string, w htt
 // HandleIssuesLockRequest handles issues/lock operation.
 //
 // PUT /repos/{owner}/{repo}/issues/{issue_number}/lock
-func (s *Server) handleIssuesLockRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleIssuesLockRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `IssuesLock`,
 		trace.WithAttributes(otelogen.OperationID(`issues/lock`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -8278,7 +8278,7 @@ func (s *Server) handleIssuesLockRequest(args map[string]string, w http.Response
 // HandleIssuesRemoveAllLabelsRequest handles issues/remove-all-labels operation.
 //
 // DELETE /repos/{owner}/{repo}/issues/{issue_number}/labels
-func (s *Server) handleIssuesRemoveAllLabelsRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleIssuesRemoveAllLabelsRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `IssuesRemoveAllLabels`,
 		trace.WithAttributes(otelogen.OperationID(`issues/remove-all-labels`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -8307,7 +8307,7 @@ func (s *Server) handleIssuesRemoveAllLabelsRequest(args map[string]string, w ht
 // HandleIssuesRemoveAssigneesRequest handles issues/remove-assignees operation.
 //
 // DELETE /repos/{owner}/{repo}/issues/{issue_number}/assignees
-func (s *Server) handleIssuesRemoveAssigneesRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleIssuesRemoveAssigneesRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `IssuesRemoveAssignees`,
 		trace.WithAttributes(otelogen.OperationID(`issues/remove-assignees`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -8342,7 +8342,7 @@ func (s *Server) handleIssuesRemoveAssigneesRequest(args map[string]string, w ht
 // HandleIssuesRemoveLabelRequest handles issues/remove-label operation.
 //
 // DELETE /repos/{owner}/{repo}/issues/{issue_number}/labels/{name}
-func (s *Server) handleIssuesRemoveLabelRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleIssuesRemoveLabelRequest(args [4]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `IssuesRemoveLabel`,
 		trace.WithAttributes(otelogen.OperationID(`issues/remove-label`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -8371,7 +8371,7 @@ func (s *Server) handleIssuesRemoveLabelRequest(args map[string]string, w http.R
 // HandleIssuesUnlockRequest handles issues/unlock operation.
 //
 // DELETE /repos/{owner}/{repo}/issues/{issue_number}/lock
-func (s *Server) handleIssuesUnlockRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleIssuesUnlockRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `IssuesUnlock`,
 		trace.WithAttributes(otelogen.OperationID(`issues/unlock`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -8400,7 +8400,7 @@ func (s *Server) handleIssuesUnlockRequest(args map[string]string, w http.Respon
 // HandleIssuesUpdateRequest handles issues/update operation.
 //
 // PATCH /repos/{owner}/{repo}/issues/{issue_number}
-func (s *Server) handleIssuesUpdateRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleIssuesUpdateRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `IssuesUpdate`,
 		trace.WithAttributes(otelogen.OperationID(`issues/update`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -8435,7 +8435,7 @@ func (s *Server) handleIssuesUpdateRequest(args map[string]string, w http.Respon
 // HandleIssuesUpdateCommentRequest handles issues/update-comment operation.
 //
 // PATCH /repos/{owner}/{repo}/issues/comments/{comment_id}
-func (s *Server) handleIssuesUpdateCommentRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleIssuesUpdateCommentRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `IssuesUpdateComment`,
 		trace.WithAttributes(otelogen.OperationID(`issues/update-comment`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -8470,7 +8470,7 @@ func (s *Server) handleIssuesUpdateCommentRequest(args map[string]string, w http
 // HandleIssuesUpdateLabelRequest handles issues/update-label operation.
 //
 // PATCH /repos/{owner}/{repo}/labels/{name}
-func (s *Server) handleIssuesUpdateLabelRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleIssuesUpdateLabelRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `IssuesUpdateLabel`,
 		trace.WithAttributes(otelogen.OperationID(`issues/update-label`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -8505,7 +8505,7 @@ func (s *Server) handleIssuesUpdateLabelRequest(args map[string]string, w http.R
 // HandleIssuesUpdateMilestoneRequest handles issues/update-milestone operation.
 //
 // PATCH /repos/{owner}/{repo}/milestones/{milestone_number}
-func (s *Server) handleIssuesUpdateMilestoneRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleIssuesUpdateMilestoneRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `IssuesUpdateMilestone`,
 		trace.WithAttributes(otelogen.OperationID(`issues/update-milestone`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -8540,7 +8540,7 @@ func (s *Server) handleIssuesUpdateMilestoneRequest(args map[string]string, w ht
 // HandleLicensesGetRequest handles licenses/get operation.
 //
 // GET /licenses/{license}
-func (s *Server) handleLicensesGetRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleLicensesGetRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `LicensesGet`,
 		trace.WithAttributes(otelogen.OperationID(`licenses/get`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -8569,7 +8569,7 @@ func (s *Server) handleLicensesGetRequest(args map[string]string, w http.Respons
 // HandleLicensesGetAllCommonlyUsedRequest handles licenses/get-all-commonly-used operation.
 //
 // GET /licenses
-func (s *Server) handleLicensesGetAllCommonlyUsedRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleLicensesGetAllCommonlyUsedRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `LicensesGetAllCommonlyUsed`,
 		trace.WithAttributes(otelogen.OperationID(`licenses/get-all-commonly-used`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -8598,7 +8598,7 @@ func (s *Server) handleLicensesGetAllCommonlyUsedRequest(args map[string]string,
 // HandleLicensesGetForRepoRequest handles licenses/get-for-repo operation.
 //
 // GET /repos/{owner}/{repo}/license
-func (s *Server) handleLicensesGetForRepoRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleLicensesGetForRepoRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `LicensesGetForRepo`,
 		trace.WithAttributes(otelogen.OperationID(`licenses/get-for-repo`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -8627,7 +8627,7 @@ func (s *Server) handleLicensesGetForRepoRequest(args map[string]string, w http.
 // HandleMetaGetRequest handles meta/get operation.
 //
 // GET /meta
-func (s *Server) handleMetaGetRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleMetaGetRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `MetaGet`,
 		trace.WithAttributes(otelogen.OperationID(`meta/get`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -8650,7 +8650,7 @@ func (s *Server) handleMetaGetRequest(args map[string]string, w http.ResponseWri
 // HandleMetaRootRequest handles meta/root operation.
 //
 // GET /
-func (s *Server) handleMetaRootRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleMetaRootRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `MetaRoot`,
 		trace.WithAttributes(otelogen.OperationID(`meta/root`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -8673,7 +8673,7 @@ func (s *Server) handleMetaRootRequest(args map[string]string, w http.ResponseWr
 // HandleMigrationsCancelImportRequest handles migrations/cancel-import operation.
 //
 // DELETE /repos/{owner}/{repo}/import
-func (s *Server) handleMigrationsCancelImportRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleMigrationsCancelImportRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `MigrationsCancelImport`,
 		trace.WithAttributes(otelogen.OperationID(`migrations/cancel-import`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -8702,7 +8702,7 @@ func (s *Server) handleMigrationsCancelImportRequest(args map[string]string, w h
 // HandleMigrationsDeleteArchiveForAuthenticatedUserRequest handles migrations/delete-archive-for-authenticated-user operation.
 //
 // DELETE /user/migrations/{migration_id}/archive
-func (s *Server) handleMigrationsDeleteArchiveForAuthenticatedUserRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleMigrationsDeleteArchiveForAuthenticatedUserRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `MigrationsDeleteArchiveForAuthenticatedUser`,
 		trace.WithAttributes(otelogen.OperationID(`migrations/delete-archive-for-authenticated-user`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -8731,7 +8731,7 @@ func (s *Server) handleMigrationsDeleteArchiveForAuthenticatedUserRequest(args m
 // HandleMigrationsDeleteArchiveForOrgRequest handles migrations/delete-archive-for-org operation.
 //
 // DELETE /orgs/{org}/migrations/{migration_id}/archive
-func (s *Server) handleMigrationsDeleteArchiveForOrgRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleMigrationsDeleteArchiveForOrgRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `MigrationsDeleteArchiveForOrg`,
 		trace.WithAttributes(otelogen.OperationID(`migrations/delete-archive-for-org`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -8760,7 +8760,7 @@ func (s *Server) handleMigrationsDeleteArchiveForOrgRequest(args map[string]stri
 // HandleMigrationsDownloadArchiveForOrgRequest handles migrations/download-archive-for-org operation.
 //
 // GET /orgs/{org}/migrations/{migration_id}/archive
-func (s *Server) handleMigrationsDownloadArchiveForOrgRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleMigrationsDownloadArchiveForOrgRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `MigrationsDownloadArchiveForOrg`,
 		trace.WithAttributes(otelogen.OperationID(`migrations/download-archive-for-org`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -8789,7 +8789,7 @@ func (s *Server) handleMigrationsDownloadArchiveForOrgRequest(args map[string]st
 // HandleMigrationsGetArchiveForAuthenticatedUserRequest handles migrations/get-archive-for-authenticated-user operation.
 //
 // GET /user/migrations/{migration_id}/archive
-func (s *Server) handleMigrationsGetArchiveForAuthenticatedUserRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleMigrationsGetArchiveForAuthenticatedUserRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `MigrationsGetArchiveForAuthenticatedUser`,
 		trace.WithAttributes(otelogen.OperationID(`migrations/get-archive-for-authenticated-user`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -8818,7 +8818,7 @@ func (s *Server) handleMigrationsGetArchiveForAuthenticatedUserRequest(args map[
 // HandleMigrationsGetCommitAuthorsRequest handles migrations/get-commit-authors operation.
 //
 // GET /repos/{owner}/{repo}/import/authors
-func (s *Server) handleMigrationsGetCommitAuthorsRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleMigrationsGetCommitAuthorsRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `MigrationsGetCommitAuthors`,
 		trace.WithAttributes(otelogen.OperationID(`migrations/get-commit-authors`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -8847,7 +8847,7 @@ func (s *Server) handleMigrationsGetCommitAuthorsRequest(args map[string]string,
 // HandleMigrationsGetImportStatusRequest handles migrations/get-import-status operation.
 //
 // GET /repos/{owner}/{repo}/import
-func (s *Server) handleMigrationsGetImportStatusRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleMigrationsGetImportStatusRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `MigrationsGetImportStatus`,
 		trace.WithAttributes(otelogen.OperationID(`migrations/get-import-status`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -8876,7 +8876,7 @@ func (s *Server) handleMigrationsGetImportStatusRequest(args map[string]string, 
 // HandleMigrationsGetLargeFilesRequest handles migrations/get-large-files operation.
 //
 // GET /repos/{owner}/{repo}/import/large_files
-func (s *Server) handleMigrationsGetLargeFilesRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleMigrationsGetLargeFilesRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `MigrationsGetLargeFiles`,
 		trace.WithAttributes(otelogen.OperationID(`migrations/get-large-files`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -8905,7 +8905,7 @@ func (s *Server) handleMigrationsGetLargeFilesRequest(args map[string]string, w 
 // HandleMigrationsGetStatusForAuthenticatedUserRequest handles migrations/get-status-for-authenticated-user operation.
 //
 // GET /user/migrations/{migration_id}
-func (s *Server) handleMigrationsGetStatusForAuthenticatedUserRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleMigrationsGetStatusForAuthenticatedUserRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `MigrationsGetStatusForAuthenticatedUser`,
 		trace.WithAttributes(otelogen.OperationID(`migrations/get-status-for-authenticated-user`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -8934,7 +8934,7 @@ func (s *Server) handleMigrationsGetStatusForAuthenticatedUserRequest(args map[s
 // HandleMigrationsGetStatusForOrgRequest handles migrations/get-status-for-org operation.
 //
 // GET /orgs/{org}/migrations/{migration_id}
-func (s *Server) handleMigrationsGetStatusForOrgRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleMigrationsGetStatusForOrgRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `MigrationsGetStatusForOrg`,
 		trace.WithAttributes(otelogen.OperationID(`migrations/get-status-for-org`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -8963,7 +8963,7 @@ func (s *Server) handleMigrationsGetStatusForOrgRequest(args map[string]string, 
 // HandleMigrationsListForAuthenticatedUserRequest handles migrations/list-for-authenticated-user operation.
 //
 // GET /user/migrations
-func (s *Server) handleMigrationsListForAuthenticatedUserRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleMigrationsListForAuthenticatedUserRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `MigrationsListForAuthenticatedUser`,
 		trace.WithAttributes(otelogen.OperationID(`migrations/list-for-authenticated-user`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -8992,7 +8992,7 @@ func (s *Server) handleMigrationsListForAuthenticatedUserRequest(args map[string
 // HandleMigrationsListForOrgRequest handles migrations/list-for-org operation.
 //
 // GET /orgs/{org}/migrations
-func (s *Server) handleMigrationsListForOrgRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleMigrationsListForOrgRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `MigrationsListForOrg`,
 		trace.WithAttributes(otelogen.OperationID(`migrations/list-for-org`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -9021,7 +9021,7 @@ func (s *Server) handleMigrationsListForOrgRequest(args map[string]string, w htt
 // HandleMigrationsListReposForOrgRequest handles migrations/list-repos-for-org operation.
 //
 // GET /orgs/{org}/migrations/{migration_id}/repositories
-func (s *Server) handleMigrationsListReposForOrgRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleMigrationsListReposForOrgRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `MigrationsListReposForOrg`,
 		trace.WithAttributes(otelogen.OperationID(`migrations/list-repos-for-org`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -9050,7 +9050,7 @@ func (s *Server) handleMigrationsListReposForOrgRequest(args map[string]string, 
 // HandleMigrationsListReposForUserRequest handles migrations/list-repos-for-user operation.
 //
 // GET /user/migrations/{migration_id}/repositories
-func (s *Server) handleMigrationsListReposForUserRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleMigrationsListReposForUserRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `MigrationsListReposForUser`,
 		trace.WithAttributes(otelogen.OperationID(`migrations/list-repos-for-user`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -9079,7 +9079,7 @@ func (s *Server) handleMigrationsListReposForUserRequest(args map[string]string,
 // HandleMigrationsMapCommitAuthorRequest handles migrations/map-commit-author operation.
 //
 // PATCH /repos/{owner}/{repo}/import/authors/{author_id}
-func (s *Server) handleMigrationsMapCommitAuthorRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleMigrationsMapCommitAuthorRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `MigrationsMapCommitAuthor`,
 		trace.WithAttributes(otelogen.OperationID(`migrations/map-commit-author`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -9114,7 +9114,7 @@ func (s *Server) handleMigrationsMapCommitAuthorRequest(args map[string]string, 
 // HandleMigrationsSetLfsPreferenceRequest handles migrations/set-lfs-preference operation.
 //
 // PATCH /repos/{owner}/{repo}/import/lfs
-func (s *Server) handleMigrationsSetLfsPreferenceRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleMigrationsSetLfsPreferenceRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `MigrationsSetLfsPreference`,
 		trace.WithAttributes(otelogen.OperationID(`migrations/set-lfs-preference`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -9149,7 +9149,7 @@ func (s *Server) handleMigrationsSetLfsPreferenceRequest(args map[string]string,
 // HandleMigrationsStartForAuthenticatedUserRequest handles migrations/start-for-authenticated-user operation.
 //
 // POST /user/migrations
-func (s *Server) handleMigrationsStartForAuthenticatedUserRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleMigrationsStartForAuthenticatedUserRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `MigrationsStartForAuthenticatedUser`,
 		trace.WithAttributes(otelogen.OperationID(`migrations/start-for-authenticated-user`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -9178,7 +9178,7 @@ func (s *Server) handleMigrationsStartForAuthenticatedUserRequest(args map[strin
 // HandleMigrationsStartForOrgRequest handles migrations/start-for-org operation.
 //
 // POST /orgs/{org}/migrations
-func (s *Server) handleMigrationsStartForOrgRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleMigrationsStartForOrgRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `MigrationsStartForOrg`,
 		trace.WithAttributes(otelogen.OperationID(`migrations/start-for-org`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -9213,7 +9213,7 @@ func (s *Server) handleMigrationsStartForOrgRequest(args map[string]string, w ht
 // HandleMigrationsStartImportRequest handles migrations/start-import operation.
 //
 // PUT /repos/{owner}/{repo}/import
-func (s *Server) handleMigrationsStartImportRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleMigrationsStartImportRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `MigrationsStartImport`,
 		trace.WithAttributes(otelogen.OperationID(`migrations/start-import`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -9248,7 +9248,7 @@ func (s *Server) handleMigrationsStartImportRequest(args map[string]string, w ht
 // HandleMigrationsUnlockRepoForAuthenticatedUserRequest handles migrations/unlock-repo-for-authenticated-user operation.
 //
 // DELETE /user/migrations/{migration_id}/repos/{repo_name}/lock
-func (s *Server) handleMigrationsUnlockRepoForAuthenticatedUserRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleMigrationsUnlockRepoForAuthenticatedUserRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `MigrationsUnlockRepoForAuthenticatedUser`,
 		trace.WithAttributes(otelogen.OperationID(`migrations/unlock-repo-for-authenticated-user`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -9277,7 +9277,7 @@ func (s *Server) handleMigrationsUnlockRepoForAuthenticatedUserRequest(args map[
 // HandleMigrationsUnlockRepoForOrgRequest handles migrations/unlock-repo-for-org operation.
 //
 // DELETE /orgs/{org}/migrations/{migration_id}/repos/{repo_name}/lock
-func (s *Server) handleMigrationsUnlockRepoForOrgRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleMigrationsUnlockRepoForOrgRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `MigrationsUnlockRepoForOrg`,
 		trace.WithAttributes(otelogen.OperationID(`migrations/unlock-repo-for-org`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -9306,7 +9306,7 @@ func (s *Server) handleMigrationsUnlockRepoForOrgRequest(args map[string]string,
 // HandleMigrationsUpdateImportRequest handles migrations/update-import operation.
 //
 // PATCH /repos/{owner}/{repo}/import
-func (s *Server) handleMigrationsUpdateImportRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleMigrationsUpdateImportRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `MigrationsUpdateImport`,
 		trace.WithAttributes(otelogen.OperationID(`migrations/update-import`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -9341,7 +9341,7 @@ func (s *Server) handleMigrationsUpdateImportRequest(args map[string]string, w h
 // HandleOAuthAuthorizationsCreateAuthorizationRequest handles oauth-authorizations/create-authorization operation.
 //
 // POST /authorizations
-func (s *Server) handleOAuthAuthorizationsCreateAuthorizationRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleOAuthAuthorizationsCreateAuthorizationRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `OAuthAuthorizationsCreateAuthorization`,
 		trace.WithAttributes(otelogen.OperationID(`oauth-authorizations/create-authorization`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -9370,7 +9370,7 @@ func (s *Server) handleOAuthAuthorizationsCreateAuthorizationRequest(args map[st
 // HandleOAuthAuthorizationsDeleteAuthorizationRequest handles oauth-authorizations/delete-authorization operation.
 //
 // DELETE /authorizations/{authorization_id}
-func (s *Server) handleOAuthAuthorizationsDeleteAuthorizationRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleOAuthAuthorizationsDeleteAuthorizationRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `OAuthAuthorizationsDeleteAuthorization`,
 		trace.WithAttributes(otelogen.OperationID(`oauth-authorizations/delete-authorization`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -9399,7 +9399,7 @@ func (s *Server) handleOAuthAuthorizationsDeleteAuthorizationRequest(args map[st
 // HandleOAuthAuthorizationsDeleteGrantRequest handles oauth-authorizations/delete-grant operation.
 //
 // DELETE /applications/grants/{grant_id}
-func (s *Server) handleOAuthAuthorizationsDeleteGrantRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleOAuthAuthorizationsDeleteGrantRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `OAuthAuthorizationsDeleteGrant`,
 		trace.WithAttributes(otelogen.OperationID(`oauth-authorizations/delete-grant`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -9428,7 +9428,7 @@ func (s *Server) handleOAuthAuthorizationsDeleteGrantRequest(args map[string]str
 // HandleOAuthAuthorizationsGetAuthorizationRequest handles oauth-authorizations/get-authorization operation.
 //
 // GET /authorizations/{authorization_id}
-func (s *Server) handleOAuthAuthorizationsGetAuthorizationRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleOAuthAuthorizationsGetAuthorizationRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `OAuthAuthorizationsGetAuthorization`,
 		trace.WithAttributes(otelogen.OperationID(`oauth-authorizations/get-authorization`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -9457,7 +9457,7 @@ func (s *Server) handleOAuthAuthorizationsGetAuthorizationRequest(args map[strin
 // HandleOAuthAuthorizationsGetGrantRequest handles oauth-authorizations/get-grant operation.
 //
 // GET /applications/grants/{grant_id}
-func (s *Server) handleOAuthAuthorizationsGetGrantRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleOAuthAuthorizationsGetGrantRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `OAuthAuthorizationsGetGrant`,
 		trace.WithAttributes(otelogen.OperationID(`oauth-authorizations/get-grant`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -9486,7 +9486,7 @@ func (s *Server) handleOAuthAuthorizationsGetGrantRequest(args map[string]string
 // HandleOAuthAuthorizationsGetOrCreateAuthorizationForAppRequest handles oauth-authorizations/get-or-create-authorization-for-app operation.
 //
 // PUT /authorizations/clients/{client_id}
-func (s *Server) handleOAuthAuthorizationsGetOrCreateAuthorizationForAppRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleOAuthAuthorizationsGetOrCreateAuthorizationForAppRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `OAuthAuthorizationsGetOrCreateAuthorizationForApp`,
 		trace.WithAttributes(otelogen.OperationID(`oauth-authorizations/get-or-create-authorization-for-app`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -9521,7 +9521,7 @@ func (s *Server) handleOAuthAuthorizationsGetOrCreateAuthorizationForAppRequest(
 // HandleOAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintRequest handles oauth-authorizations/get-or-create-authorization-for-app-and-fingerprint operation.
 //
 // PUT /authorizations/clients/{client_id}/{fingerprint}
-func (s *Server) handleOAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleOAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `OAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprint`,
 		trace.WithAttributes(otelogen.OperationID(`oauth-authorizations/get-or-create-authorization-for-app-and-fingerprint`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -9556,7 +9556,7 @@ func (s *Server) handleOAuthAuthorizationsGetOrCreateAuthorizationForAppAndFinge
 // HandleOAuthAuthorizationsListAuthorizationsRequest handles oauth-authorizations/list-authorizations operation.
 //
 // GET /authorizations
-func (s *Server) handleOAuthAuthorizationsListAuthorizationsRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleOAuthAuthorizationsListAuthorizationsRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `OAuthAuthorizationsListAuthorizations`,
 		trace.WithAttributes(otelogen.OperationID(`oauth-authorizations/list-authorizations`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -9585,7 +9585,7 @@ func (s *Server) handleOAuthAuthorizationsListAuthorizationsRequest(args map[str
 // HandleOAuthAuthorizationsListGrantsRequest handles oauth-authorizations/list-grants operation.
 //
 // GET /applications/grants
-func (s *Server) handleOAuthAuthorizationsListGrantsRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleOAuthAuthorizationsListGrantsRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `OAuthAuthorizationsListGrants`,
 		trace.WithAttributes(otelogen.OperationID(`oauth-authorizations/list-grants`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -9614,7 +9614,7 @@ func (s *Server) handleOAuthAuthorizationsListGrantsRequest(args map[string]stri
 // HandleOAuthAuthorizationsUpdateAuthorizationRequest handles oauth-authorizations/update-authorization operation.
 //
 // PATCH /authorizations/{authorization_id}
-func (s *Server) handleOAuthAuthorizationsUpdateAuthorizationRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleOAuthAuthorizationsUpdateAuthorizationRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `OAuthAuthorizationsUpdateAuthorization`,
 		trace.WithAttributes(otelogen.OperationID(`oauth-authorizations/update-authorization`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -9649,7 +9649,7 @@ func (s *Server) handleOAuthAuthorizationsUpdateAuthorizationRequest(args map[st
 // HandleOrgsBlockUserRequest handles orgs/block-user operation.
 //
 // PUT /orgs/{org}/blocks/{username}
-func (s *Server) handleOrgsBlockUserRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleOrgsBlockUserRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `OrgsBlockUser`,
 		trace.WithAttributes(otelogen.OperationID(`orgs/block-user`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -9678,7 +9678,7 @@ func (s *Server) handleOrgsBlockUserRequest(args map[string]string, w http.Respo
 // HandleOrgsCancelInvitationRequest handles orgs/cancel-invitation operation.
 //
 // DELETE /orgs/{org}/invitations/{invitation_id}
-func (s *Server) handleOrgsCancelInvitationRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleOrgsCancelInvitationRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `OrgsCancelInvitation`,
 		trace.WithAttributes(otelogen.OperationID(`orgs/cancel-invitation`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -9707,7 +9707,7 @@ func (s *Server) handleOrgsCancelInvitationRequest(args map[string]string, w htt
 // HandleOrgsCheckBlockedUserRequest handles orgs/check-blocked-user operation.
 //
 // GET /orgs/{org}/blocks/{username}
-func (s *Server) handleOrgsCheckBlockedUserRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleOrgsCheckBlockedUserRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `OrgsCheckBlockedUser`,
 		trace.WithAttributes(otelogen.OperationID(`orgs/check-blocked-user`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -9736,7 +9736,7 @@ func (s *Server) handleOrgsCheckBlockedUserRequest(args map[string]string, w htt
 // HandleOrgsCheckMembershipForUserRequest handles orgs/check-membership-for-user operation.
 //
 // GET /orgs/{org}/members/{username}
-func (s *Server) handleOrgsCheckMembershipForUserRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleOrgsCheckMembershipForUserRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `OrgsCheckMembershipForUser`,
 		trace.WithAttributes(otelogen.OperationID(`orgs/check-membership-for-user`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -9765,7 +9765,7 @@ func (s *Server) handleOrgsCheckMembershipForUserRequest(args map[string]string,
 // HandleOrgsCheckPublicMembershipForUserRequest handles orgs/check-public-membership-for-user operation.
 //
 // GET /orgs/{org}/public_members/{username}
-func (s *Server) handleOrgsCheckPublicMembershipForUserRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleOrgsCheckPublicMembershipForUserRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `OrgsCheckPublicMembershipForUser`,
 		trace.WithAttributes(otelogen.OperationID(`orgs/check-public-membership-for-user`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -9794,7 +9794,7 @@ func (s *Server) handleOrgsCheckPublicMembershipForUserRequest(args map[string]s
 // HandleOrgsConvertMemberToOutsideCollaboratorRequest handles orgs/convert-member-to-outside-collaborator operation.
 //
 // PUT /orgs/{org}/outside_collaborators/{username}
-func (s *Server) handleOrgsConvertMemberToOutsideCollaboratorRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleOrgsConvertMemberToOutsideCollaboratorRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `OrgsConvertMemberToOutsideCollaborator`,
 		trace.WithAttributes(otelogen.OperationID(`orgs/convert-member-to-outside-collaborator`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -9823,7 +9823,7 @@ func (s *Server) handleOrgsConvertMemberToOutsideCollaboratorRequest(args map[st
 // HandleOrgsCreateInvitationRequest handles orgs/create-invitation operation.
 //
 // POST /orgs/{org}/invitations
-func (s *Server) handleOrgsCreateInvitationRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleOrgsCreateInvitationRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `OrgsCreateInvitation`,
 		trace.WithAttributes(otelogen.OperationID(`orgs/create-invitation`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -9858,7 +9858,7 @@ func (s *Server) handleOrgsCreateInvitationRequest(args map[string]string, w htt
 // HandleOrgsCreateWebhookRequest handles orgs/create-webhook operation.
 //
 // POST /orgs/{org}/hooks
-func (s *Server) handleOrgsCreateWebhookRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleOrgsCreateWebhookRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `OrgsCreateWebhook`,
 		trace.WithAttributes(otelogen.OperationID(`orgs/create-webhook`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -9893,7 +9893,7 @@ func (s *Server) handleOrgsCreateWebhookRequest(args map[string]string, w http.R
 // HandleOrgsDeleteWebhookRequest handles orgs/delete-webhook operation.
 //
 // DELETE /orgs/{org}/hooks/{hook_id}
-func (s *Server) handleOrgsDeleteWebhookRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleOrgsDeleteWebhookRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `OrgsDeleteWebhook`,
 		trace.WithAttributes(otelogen.OperationID(`orgs/delete-webhook`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -9922,7 +9922,7 @@ func (s *Server) handleOrgsDeleteWebhookRequest(args map[string]string, w http.R
 // HandleOrgsGetRequest handles orgs/get operation.
 //
 // GET /orgs/{org}
-func (s *Server) handleOrgsGetRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleOrgsGetRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `OrgsGet`,
 		trace.WithAttributes(otelogen.OperationID(`orgs/get`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -9951,7 +9951,7 @@ func (s *Server) handleOrgsGetRequest(args map[string]string, w http.ResponseWri
 // HandleOrgsGetAuditLogRequest handles orgs/get-audit-log operation.
 //
 // GET /orgs/{org}/audit-log
-func (s *Server) handleOrgsGetAuditLogRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleOrgsGetAuditLogRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `OrgsGetAuditLog`,
 		trace.WithAttributes(otelogen.OperationID(`orgs/get-audit-log`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -9980,7 +9980,7 @@ func (s *Server) handleOrgsGetAuditLogRequest(args map[string]string, w http.Res
 // HandleOrgsGetMembershipForAuthenticatedUserRequest handles orgs/get-membership-for-authenticated-user operation.
 //
 // GET /user/memberships/orgs/{org}
-func (s *Server) handleOrgsGetMembershipForAuthenticatedUserRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleOrgsGetMembershipForAuthenticatedUserRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `OrgsGetMembershipForAuthenticatedUser`,
 		trace.WithAttributes(otelogen.OperationID(`orgs/get-membership-for-authenticated-user`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -10009,7 +10009,7 @@ func (s *Server) handleOrgsGetMembershipForAuthenticatedUserRequest(args map[str
 // HandleOrgsGetMembershipForUserRequest handles orgs/get-membership-for-user operation.
 //
 // GET /orgs/{org}/memberships/{username}
-func (s *Server) handleOrgsGetMembershipForUserRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleOrgsGetMembershipForUserRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `OrgsGetMembershipForUser`,
 		trace.WithAttributes(otelogen.OperationID(`orgs/get-membership-for-user`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -10038,7 +10038,7 @@ func (s *Server) handleOrgsGetMembershipForUserRequest(args map[string]string, w
 // HandleOrgsGetWebhookRequest handles orgs/get-webhook operation.
 //
 // GET /orgs/{org}/hooks/{hook_id}
-func (s *Server) handleOrgsGetWebhookRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleOrgsGetWebhookRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `OrgsGetWebhook`,
 		trace.WithAttributes(otelogen.OperationID(`orgs/get-webhook`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -10067,7 +10067,7 @@ func (s *Server) handleOrgsGetWebhookRequest(args map[string]string, w http.Resp
 // HandleOrgsGetWebhookConfigForOrgRequest handles orgs/get-webhook-config-for-org operation.
 //
 // GET /orgs/{org}/hooks/{hook_id}/config
-func (s *Server) handleOrgsGetWebhookConfigForOrgRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleOrgsGetWebhookConfigForOrgRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `OrgsGetWebhookConfigForOrg`,
 		trace.WithAttributes(otelogen.OperationID(`orgs/get-webhook-config-for-org`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -10096,7 +10096,7 @@ func (s *Server) handleOrgsGetWebhookConfigForOrgRequest(args map[string]string,
 // HandleOrgsGetWebhookDeliveryRequest handles orgs/get-webhook-delivery operation.
 //
 // GET /orgs/{org}/hooks/{hook_id}/deliveries/{delivery_id}
-func (s *Server) handleOrgsGetWebhookDeliveryRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleOrgsGetWebhookDeliveryRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `OrgsGetWebhookDelivery`,
 		trace.WithAttributes(otelogen.OperationID(`orgs/get-webhook-delivery`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -10125,7 +10125,7 @@ func (s *Server) handleOrgsGetWebhookDeliveryRequest(args map[string]string, w h
 // HandleOrgsListRequest handles orgs/list operation.
 //
 // GET /organizations
-func (s *Server) handleOrgsListRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleOrgsListRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `OrgsList`,
 		trace.WithAttributes(otelogen.OperationID(`orgs/list`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -10154,7 +10154,7 @@ func (s *Server) handleOrgsListRequest(args map[string]string, w http.ResponseWr
 // HandleOrgsListBlockedUsersRequest handles orgs/list-blocked-users operation.
 //
 // GET /orgs/{org}/blocks
-func (s *Server) handleOrgsListBlockedUsersRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleOrgsListBlockedUsersRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `OrgsListBlockedUsers`,
 		trace.WithAttributes(otelogen.OperationID(`orgs/list-blocked-users`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -10183,7 +10183,7 @@ func (s *Server) handleOrgsListBlockedUsersRequest(args map[string]string, w htt
 // HandleOrgsListFailedInvitationsRequest handles orgs/list-failed-invitations operation.
 //
 // GET /orgs/{org}/failed_invitations
-func (s *Server) handleOrgsListFailedInvitationsRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleOrgsListFailedInvitationsRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `OrgsListFailedInvitations`,
 		trace.WithAttributes(otelogen.OperationID(`orgs/list-failed-invitations`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -10212,7 +10212,7 @@ func (s *Server) handleOrgsListFailedInvitationsRequest(args map[string]string, 
 // HandleOrgsListForAuthenticatedUserRequest handles orgs/list-for-authenticated-user operation.
 //
 // GET /user/orgs
-func (s *Server) handleOrgsListForAuthenticatedUserRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleOrgsListForAuthenticatedUserRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `OrgsListForAuthenticatedUser`,
 		trace.WithAttributes(otelogen.OperationID(`orgs/list-for-authenticated-user`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -10241,7 +10241,7 @@ func (s *Server) handleOrgsListForAuthenticatedUserRequest(args map[string]strin
 // HandleOrgsListForUserRequest handles orgs/list-for-user operation.
 //
 // GET /users/{username}/orgs
-func (s *Server) handleOrgsListForUserRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleOrgsListForUserRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `OrgsListForUser`,
 		trace.WithAttributes(otelogen.OperationID(`orgs/list-for-user`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -10270,7 +10270,7 @@ func (s *Server) handleOrgsListForUserRequest(args map[string]string, w http.Res
 // HandleOrgsListInvitationTeamsRequest handles orgs/list-invitation-teams operation.
 //
 // GET /orgs/{org}/invitations/{invitation_id}/teams
-func (s *Server) handleOrgsListInvitationTeamsRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleOrgsListInvitationTeamsRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `OrgsListInvitationTeams`,
 		trace.WithAttributes(otelogen.OperationID(`orgs/list-invitation-teams`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -10299,7 +10299,7 @@ func (s *Server) handleOrgsListInvitationTeamsRequest(args map[string]string, w 
 // HandleOrgsListMembersRequest handles orgs/list-members operation.
 //
 // GET /orgs/{org}/members
-func (s *Server) handleOrgsListMembersRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleOrgsListMembersRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `OrgsListMembers`,
 		trace.WithAttributes(otelogen.OperationID(`orgs/list-members`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -10328,7 +10328,7 @@ func (s *Server) handleOrgsListMembersRequest(args map[string]string, w http.Res
 // HandleOrgsListMembershipsForAuthenticatedUserRequest handles orgs/list-memberships-for-authenticated-user operation.
 //
 // GET /user/memberships/orgs
-func (s *Server) handleOrgsListMembershipsForAuthenticatedUserRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleOrgsListMembershipsForAuthenticatedUserRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `OrgsListMembershipsForAuthenticatedUser`,
 		trace.WithAttributes(otelogen.OperationID(`orgs/list-memberships-for-authenticated-user`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -10357,7 +10357,7 @@ func (s *Server) handleOrgsListMembershipsForAuthenticatedUserRequest(args map[s
 // HandleOrgsListOutsideCollaboratorsRequest handles orgs/list-outside-collaborators operation.
 //
 // GET /orgs/{org}/outside_collaborators
-func (s *Server) handleOrgsListOutsideCollaboratorsRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleOrgsListOutsideCollaboratorsRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `OrgsListOutsideCollaborators`,
 		trace.WithAttributes(otelogen.OperationID(`orgs/list-outside-collaborators`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -10386,7 +10386,7 @@ func (s *Server) handleOrgsListOutsideCollaboratorsRequest(args map[string]strin
 // HandleOrgsListPendingInvitationsRequest handles orgs/list-pending-invitations operation.
 //
 // GET /orgs/{org}/invitations
-func (s *Server) handleOrgsListPendingInvitationsRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleOrgsListPendingInvitationsRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `OrgsListPendingInvitations`,
 		trace.WithAttributes(otelogen.OperationID(`orgs/list-pending-invitations`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -10415,7 +10415,7 @@ func (s *Server) handleOrgsListPendingInvitationsRequest(args map[string]string,
 // HandleOrgsListPublicMembersRequest handles orgs/list-public-members operation.
 //
 // GET /orgs/{org}/public_members
-func (s *Server) handleOrgsListPublicMembersRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleOrgsListPublicMembersRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `OrgsListPublicMembers`,
 		trace.WithAttributes(otelogen.OperationID(`orgs/list-public-members`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -10444,7 +10444,7 @@ func (s *Server) handleOrgsListPublicMembersRequest(args map[string]string, w ht
 // HandleOrgsListSamlSSOAuthorizationsRequest handles orgs/list-saml-sso-authorizations operation.
 //
 // GET /orgs/{org}/credential-authorizations
-func (s *Server) handleOrgsListSamlSSOAuthorizationsRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleOrgsListSamlSSOAuthorizationsRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `OrgsListSamlSSOAuthorizations`,
 		trace.WithAttributes(otelogen.OperationID(`orgs/list-saml-sso-authorizations`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -10473,7 +10473,7 @@ func (s *Server) handleOrgsListSamlSSOAuthorizationsRequest(args map[string]stri
 // HandleOrgsListWebhookDeliveriesRequest handles orgs/list-webhook-deliveries operation.
 //
 // GET /orgs/{org}/hooks/{hook_id}/deliveries
-func (s *Server) handleOrgsListWebhookDeliveriesRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleOrgsListWebhookDeliveriesRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `OrgsListWebhookDeliveries`,
 		trace.WithAttributes(otelogen.OperationID(`orgs/list-webhook-deliveries`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -10502,7 +10502,7 @@ func (s *Server) handleOrgsListWebhookDeliveriesRequest(args map[string]string, 
 // HandleOrgsListWebhooksRequest handles orgs/list-webhooks operation.
 //
 // GET /orgs/{org}/hooks
-func (s *Server) handleOrgsListWebhooksRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleOrgsListWebhooksRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `OrgsListWebhooks`,
 		trace.WithAttributes(otelogen.OperationID(`orgs/list-webhooks`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -10531,7 +10531,7 @@ func (s *Server) handleOrgsListWebhooksRequest(args map[string]string, w http.Re
 // HandleOrgsPingWebhookRequest handles orgs/ping-webhook operation.
 //
 // POST /orgs/{org}/hooks/{hook_id}/pings
-func (s *Server) handleOrgsPingWebhookRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleOrgsPingWebhookRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `OrgsPingWebhook`,
 		trace.WithAttributes(otelogen.OperationID(`orgs/ping-webhook`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -10560,7 +10560,7 @@ func (s *Server) handleOrgsPingWebhookRequest(args map[string]string, w http.Res
 // HandleOrgsRedeliverWebhookDeliveryRequest handles orgs/redeliver-webhook-delivery operation.
 //
 // POST /orgs/{org}/hooks/{hook_id}/deliveries/{delivery_id}/attempts
-func (s *Server) handleOrgsRedeliverWebhookDeliveryRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleOrgsRedeliverWebhookDeliveryRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `OrgsRedeliverWebhookDelivery`,
 		trace.WithAttributes(otelogen.OperationID(`orgs/redeliver-webhook-delivery`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -10589,7 +10589,7 @@ func (s *Server) handleOrgsRedeliverWebhookDeliveryRequest(args map[string]strin
 // HandleOrgsRemoveMemberRequest handles orgs/remove-member operation.
 //
 // DELETE /orgs/{org}/members/{username}
-func (s *Server) handleOrgsRemoveMemberRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleOrgsRemoveMemberRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `OrgsRemoveMember`,
 		trace.WithAttributes(otelogen.OperationID(`orgs/remove-member`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -10618,7 +10618,7 @@ func (s *Server) handleOrgsRemoveMemberRequest(args map[string]string, w http.Re
 // HandleOrgsRemoveMembershipForUserRequest handles orgs/remove-membership-for-user operation.
 //
 // DELETE /orgs/{org}/memberships/{username}
-func (s *Server) handleOrgsRemoveMembershipForUserRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleOrgsRemoveMembershipForUserRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `OrgsRemoveMembershipForUser`,
 		trace.WithAttributes(otelogen.OperationID(`orgs/remove-membership-for-user`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -10647,7 +10647,7 @@ func (s *Server) handleOrgsRemoveMembershipForUserRequest(args map[string]string
 // HandleOrgsRemoveOutsideCollaboratorRequest handles orgs/remove-outside-collaborator operation.
 //
 // DELETE /orgs/{org}/outside_collaborators/{username}
-func (s *Server) handleOrgsRemoveOutsideCollaboratorRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleOrgsRemoveOutsideCollaboratorRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `OrgsRemoveOutsideCollaborator`,
 		trace.WithAttributes(otelogen.OperationID(`orgs/remove-outside-collaborator`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -10676,7 +10676,7 @@ func (s *Server) handleOrgsRemoveOutsideCollaboratorRequest(args map[string]stri
 // HandleOrgsRemovePublicMembershipForAuthenticatedUserRequest handles orgs/remove-public-membership-for-authenticated-user operation.
 //
 // DELETE /orgs/{org}/public_members/{username}
-func (s *Server) handleOrgsRemovePublicMembershipForAuthenticatedUserRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleOrgsRemovePublicMembershipForAuthenticatedUserRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `OrgsRemovePublicMembershipForAuthenticatedUser`,
 		trace.WithAttributes(otelogen.OperationID(`orgs/remove-public-membership-for-authenticated-user`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -10705,7 +10705,7 @@ func (s *Server) handleOrgsRemovePublicMembershipForAuthenticatedUserRequest(arg
 // HandleOrgsRemoveSamlSSOAuthorizationRequest handles orgs/remove-saml-sso-authorization operation.
 //
 // DELETE /orgs/{org}/credential-authorizations/{credential_id}
-func (s *Server) handleOrgsRemoveSamlSSOAuthorizationRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleOrgsRemoveSamlSSOAuthorizationRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `OrgsRemoveSamlSSOAuthorization`,
 		trace.WithAttributes(otelogen.OperationID(`orgs/remove-saml-sso-authorization`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -10734,7 +10734,7 @@ func (s *Server) handleOrgsRemoveSamlSSOAuthorizationRequest(args map[string]str
 // HandleOrgsSetMembershipForUserRequest handles orgs/set-membership-for-user operation.
 //
 // PUT /orgs/{org}/memberships/{username}
-func (s *Server) handleOrgsSetMembershipForUserRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleOrgsSetMembershipForUserRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `OrgsSetMembershipForUser`,
 		trace.WithAttributes(otelogen.OperationID(`orgs/set-membership-for-user`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -10769,7 +10769,7 @@ func (s *Server) handleOrgsSetMembershipForUserRequest(args map[string]string, w
 // HandleOrgsSetPublicMembershipForAuthenticatedUserRequest handles orgs/set-public-membership-for-authenticated-user operation.
 //
 // PUT /orgs/{org}/public_members/{username}
-func (s *Server) handleOrgsSetPublicMembershipForAuthenticatedUserRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleOrgsSetPublicMembershipForAuthenticatedUserRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `OrgsSetPublicMembershipForAuthenticatedUser`,
 		trace.WithAttributes(otelogen.OperationID(`orgs/set-public-membership-for-authenticated-user`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -10798,7 +10798,7 @@ func (s *Server) handleOrgsSetPublicMembershipForAuthenticatedUserRequest(args m
 // HandleOrgsUnblockUserRequest handles orgs/unblock-user operation.
 //
 // DELETE /orgs/{org}/blocks/{username}
-func (s *Server) handleOrgsUnblockUserRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleOrgsUnblockUserRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `OrgsUnblockUser`,
 		trace.WithAttributes(otelogen.OperationID(`orgs/unblock-user`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -10827,7 +10827,7 @@ func (s *Server) handleOrgsUnblockUserRequest(args map[string]string, w http.Res
 // HandleOrgsUpdateMembershipForAuthenticatedUserRequest handles orgs/update-membership-for-authenticated-user operation.
 //
 // PATCH /user/memberships/orgs/{org}
-func (s *Server) handleOrgsUpdateMembershipForAuthenticatedUserRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleOrgsUpdateMembershipForAuthenticatedUserRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `OrgsUpdateMembershipForAuthenticatedUser`,
 		trace.WithAttributes(otelogen.OperationID(`orgs/update-membership-for-authenticated-user`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -10862,7 +10862,7 @@ func (s *Server) handleOrgsUpdateMembershipForAuthenticatedUserRequest(args map[
 // HandleOrgsUpdateWebhookRequest handles orgs/update-webhook operation.
 //
 // PATCH /orgs/{org}/hooks/{hook_id}
-func (s *Server) handleOrgsUpdateWebhookRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleOrgsUpdateWebhookRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `OrgsUpdateWebhook`,
 		trace.WithAttributes(otelogen.OperationID(`orgs/update-webhook`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -10897,7 +10897,7 @@ func (s *Server) handleOrgsUpdateWebhookRequest(args map[string]string, w http.R
 // HandleOrgsUpdateWebhookConfigForOrgRequest handles orgs/update-webhook-config-for-org operation.
 //
 // PATCH /orgs/{org}/hooks/{hook_id}/config
-func (s *Server) handleOrgsUpdateWebhookConfigForOrgRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleOrgsUpdateWebhookConfigForOrgRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `OrgsUpdateWebhookConfigForOrg`,
 		trace.WithAttributes(otelogen.OperationID(`orgs/update-webhook-config-for-org`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -10932,7 +10932,7 @@ func (s *Server) handleOrgsUpdateWebhookConfigForOrgRequest(args map[string]stri
 // HandlePackagesDeletePackageForAuthenticatedUserRequest handles packages/delete-package-for-authenticated-user operation.
 //
 // DELETE /user/packages/{package_type}/{package_name}
-func (s *Server) handlePackagesDeletePackageForAuthenticatedUserRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handlePackagesDeletePackageForAuthenticatedUserRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `PackagesDeletePackageForAuthenticatedUser`,
 		trace.WithAttributes(otelogen.OperationID(`packages/delete-package-for-authenticated-user`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -10961,7 +10961,7 @@ func (s *Server) handlePackagesDeletePackageForAuthenticatedUserRequest(args map
 // HandlePackagesDeletePackageForOrgRequest handles packages/delete-package-for-org operation.
 //
 // DELETE /orgs/{org}/packages/{package_type}/{package_name}
-func (s *Server) handlePackagesDeletePackageForOrgRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handlePackagesDeletePackageForOrgRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `PackagesDeletePackageForOrg`,
 		trace.WithAttributes(otelogen.OperationID(`packages/delete-package-for-org`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -10990,7 +10990,7 @@ func (s *Server) handlePackagesDeletePackageForOrgRequest(args map[string]string
 // HandlePackagesDeletePackageForUserRequest handles packages/delete-package-for-user operation.
 //
 // DELETE /users/{username}/packages/{package_type}/{package_name}
-func (s *Server) handlePackagesDeletePackageForUserRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handlePackagesDeletePackageForUserRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `PackagesDeletePackageForUser`,
 		trace.WithAttributes(otelogen.OperationID(`packages/delete-package-for-user`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -11019,7 +11019,7 @@ func (s *Server) handlePackagesDeletePackageForUserRequest(args map[string]strin
 // HandlePackagesDeletePackageVersionForAuthenticatedUserRequest handles packages/delete-package-version-for-authenticated-user operation.
 //
 // DELETE /user/packages/{package_type}/{package_name}/versions/{package_version_id}
-func (s *Server) handlePackagesDeletePackageVersionForAuthenticatedUserRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handlePackagesDeletePackageVersionForAuthenticatedUserRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `PackagesDeletePackageVersionForAuthenticatedUser`,
 		trace.WithAttributes(otelogen.OperationID(`packages/delete-package-version-for-authenticated-user`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -11048,7 +11048,7 @@ func (s *Server) handlePackagesDeletePackageVersionForAuthenticatedUserRequest(a
 // HandlePackagesDeletePackageVersionForOrgRequest handles packages/delete-package-version-for-org operation.
 //
 // DELETE /orgs/{org}/packages/{package_type}/{package_name}/versions/{package_version_id}
-func (s *Server) handlePackagesDeletePackageVersionForOrgRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handlePackagesDeletePackageVersionForOrgRequest(args [4]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `PackagesDeletePackageVersionForOrg`,
 		trace.WithAttributes(otelogen.OperationID(`packages/delete-package-version-for-org`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -11077,7 +11077,7 @@ func (s *Server) handlePackagesDeletePackageVersionForOrgRequest(args map[string
 // HandlePackagesDeletePackageVersionForUserRequest handles packages/delete-package-version-for-user operation.
 //
 // DELETE /users/{username}/packages/{package_type}/{package_name}/versions/{package_version_id}
-func (s *Server) handlePackagesDeletePackageVersionForUserRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handlePackagesDeletePackageVersionForUserRequest(args [4]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `PackagesDeletePackageVersionForUser`,
 		trace.WithAttributes(otelogen.OperationID(`packages/delete-package-version-for-user`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -11106,7 +11106,7 @@ func (s *Server) handlePackagesDeletePackageVersionForUserRequest(args map[strin
 // HandlePackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserRequest handles packages/get-all-package-versions-for-package-owned-by-authenticated-user operation.
 //
 // GET /user/packages/{package_type}/{package_name}/versions
-func (s *Server) handlePackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handlePackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUser`,
 		trace.WithAttributes(otelogen.OperationID(`packages/get-all-package-versions-for-package-owned-by-authenticated-user`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -11135,7 +11135,7 @@ func (s *Server) handlePackagesGetAllPackageVersionsForPackageOwnedByAuthenticat
 // HandlePackagesGetAllPackageVersionsForPackageOwnedByOrgRequest handles packages/get-all-package-versions-for-package-owned-by-org operation.
 //
 // GET /orgs/{org}/packages/{package_type}/{package_name}/versions
-func (s *Server) handlePackagesGetAllPackageVersionsForPackageOwnedByOrgRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handlePackagesGetAllPackageVersionsForPackageOwnedByOrgRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `PackagesGetAllPackageVersionsForPackageOwnedByOrg`,
 		trace.WithAttributes(otelogen.OperationID(`packages/get-all-package-versions-for-package-owned-by-org`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -11164,7 +11164,7 @@ func (s *Server) handlePackagesGetAllPackageVersionsForPackageOwnedByOrgRequest(
 // HandlePackagesGetAllPackageVersionsForPackageOwnedByUserRequest handles packages/get-all-package-versions-for-package-owned-by-user operation.
 //
 // GET /users/{username}/packages/{package_type}/{package_name}/versions
-func (s *Server) handlePackagesGetAllPackageVersionsForPackageOwnedByUserRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handlePackagesGetAllPackageVersionsForPackageOwnedByUserRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `PackagesGetAllPackageVersionsForPackageOwnedByUser`,
 		trace.WithAttributes(otelogen.OperationID(`packages/get-all-package-versions-for-package-owned-by-user`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -11193,7 +11193,7 @@ func (s *Server) handlePackagesGetAllPackageVersionsForPackageOwnedByUserRequest
 // HandlePackagesGetPackageForAuthenticatedUserRequest handles packages/get-package-for-authenticated-user operation.
 //
 // GET /user/packages/{package_type}/{package_name}
-func (s *Server) handlePackagesGetPackageForAuthenticatedUserRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handlePackagesGetPackageForAuthenticatedUserRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `PackagesGetPackageForAuthenticatedUser`,
 		trace.WithAttributes(otelogen.OperationID(`packages/get-package-for-authenticated-user`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -11222,7 +11222,7 @@ func (s *Server) handlePackagesGetPackageForAuthenticatedUserRequest(args map[st
 // HandlePackagesGetPackageForOrganizationRequest handles packages/get-package-for-organization operation.
 //
 // GET /orgs/{org}/packages/{package_type}/{package_name}
-func (s *Server) handlePackagesGetPackageForOrganizationRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handlePackagesGetPackageForOrganizationRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `PackagesGetPackageForOrganization`,
 		trace.WithAttributes(otelogen.OperationID(`packages/get-package-for-organization`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -11251,7 +11251,7 @@ func (s *Server) handlePackagesGetPackageForOrganizationRequest(args map[string]
 // HandlePackagesGetPackageForUserRequest handles packages/get-package-for-user operation.
 //
 // GET /users/{username}/packages/{package_type}/{package_name}
-func (s *Server) handlePackagesGetPackageForUserRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handlePackagesGetPackageForUserRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `PackagesGetPackageForUser`,
 		trace.WithAttributes(otelogen.OperationID(`packages/get-package-for-user`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -11280,7 +11280,7 @@ func (s *Server) handlePackagesGetPackageForUserRequest(args map[string]string, 
 // HandlePackagesGetPackageVersionForAuthenticatedUserRequest handles packages/get-package-version-for-authenticated-user operation.
 //
 // GET /user/packages/{package_type}/{package_name}/versions/{package_version_id}
-func (s *Server) handlePackagesGetPackageVersionForAuthenticatedUserRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handlePackagesGetPackageVersionForAuthenticatedUserRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `PackagesGetPackageVersionForAuthenticatedUser`,
 		trace.WithAttributes(otelogen.OperationID(`packages/get-package-version-for-authenticated-user`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -11309,7 +11309,7 @@ func (s *Server) handlePackagesGetPackageVersionForAuthenticatedUserRequest(args
 // HandlePackagesGetPackageVersionForOrganizationRequest handles packages/get-package-version-for-organization operation.
 //
 // GET /orgs/{org}/packages/{package_type}/{package_name}/versions/{package_version_id}
-func (s *Server) handlePackagesGetPackageVersionForOrganizationRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handlePackagesGetPackageVersionForOrganizationRequest(args [4]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `PackagesGetPackageVersionForOrganization`,
 		trace.WithAttributes(otelogen.OperationID(`packages/get-package-version-for-organization`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -11338,7 +11338,7 @@ func (s *Server) handlePackagesGetPackageVersionForOrganizationRequest(args map[
 // HandlePackagesGetPackageVersionForUserRequest handles packages/get-package-version-for-user operation.
 //
 // GET /users/{username}/packages/{package_type}/{package_name}/versions/{package_version_id}
-func (s *Server) handlePackagesGetPackageVersionForUserRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handlePackagesGetPackageVersionForUserRequest(args [4]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `PackagesGetPackageVersionForUser`,
 		trace.WithAttributes(otelogen.OperationID(`packages/get-package-version-for-user`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -11367,7 +11367,7 @@ func (s *Server) handlePackagesGetPackageVersionForUserRequest(args map[string]s
 // HandlePackagesListPackagesForAuthenticatedUserRequest handles packages/list-packages-for-authenticated-user operation.
 //
 // GET /user/packages
-func (s *Server) handlePackagesListPackagesForAuthenticatedUserRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handlePackagesListPackagesForAuthenticatedUserRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `PackagesListPackagesForAuthenticatedUser`,
 		trace.WithAttributes(otelogen.OperationID(`packages/list-packages-for-authenticated-user`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -11396,7 +11396,7 @@ func (s *Server) handlePackagesListPackagesForAuthenticatedUserRequest(args map[
 // HandlePackagesListPackagesForOrganizationRequest handles packages/list-packages-for-organization operation.
 //
 // GET /orgs/{org}/packages
-func (s *Server) handlePackagesListPackagesForOrganizationRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handlePackagesListPackagesForOrganizationRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `PackagesListPackagesForOrganization`,
 		trace.WithAttributes(otelogen.OperationID(`packages/list-packages-for-organization`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -11425,7 +11425,7 @@ func (s *Server) handlePackagesListPackagesForOrganizationRequest(args map[strin
 // HandlePackagesListPackagesForUserRequest handles packages/list-packages-for-user operation.
 //
 // GET /users/{username}/packages
-func (s *Server) handlePackagesListPackagesForUserRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handlePackagesListPackagesForUserRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `PackagesListPackagesForUser`,
 		trace.WithAttributes(otelogen.OperationID(`packages/list-packages-for-user`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -11454,7 +11454,7 @@ func (s *Server) handlePackagesListPackagesForUserRequest(args map[string]string
 // HandlePackagesRestorePackageForAuthenticatedUserRequest handles packages/restore-package-for-authenticated-user operation.
 //
 // POST /user/packages/{package_type}/{package_name}/restore
-func (s *Server) handlePackagesRestorePackageForAuthenticatedUserRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handlePackagesRestorePackageForAuthenticatedUserRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `PackagesRestorePackageForAuthenticatedUser`,
 		trace.WithAttributes(otelogen.OperationID(`packages/restore-package-for-authenticated-user`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -11483,7 +11483,7 @@ func (s *Server) handlePackagesRestorePackageForAuthenticatedUserRequest(args ma
 // HandlePackagesRestorePackageForOrgRequest handles packages/restore-package-for-org operation.
 //
 // POST /orgs/{org}/packages/{package_type}/{package_name}/restore
-func (s *Server) handlePackagesRestorePackageForOrgRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handlePackagesRestorePackageForOrgRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `PackagesRestorePackageForOrg`,
 		trace.WithAttributes(otelogen.OperationID(`packages/restore-package-for-org`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -11512,7 +11512,7 @@ func (s *Server) handlePackagesRestorePackageForOrgRequest(args map[string]strin
 // HandlePackagesRestorePackageForUserRequest handles packages/restore-package-for-user operation.
 //
 // POST /users/{username}/packages/{package_type}/{package_name}/restore
-func (s *Server) handlePackagesRestorePackageForUserRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handlePackagesRestorePackageForUserRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `PackagesRestorePackageForUser`,
 		trace.WithAttributes(otelogen.OperationID(`packages/restore-package-for-user`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -11541,7 +11541,7 @@ func (s *Server) handlePackagesRestorePackageForUserRequest(args map[string]stri
 // HandlePackagesRestorePackageVersionForAuthenticatedUserRequest handles packages/restore-package-version-for-authenticated-user operation.
 //
 // POST /user/packages/{package_type}/{package_name}/versions/{package_version_id}/restore
-func (s *Server) handlePackagesRestorePackageVersionForAuthenticatedUserRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handlePackagesRestorePackageVersionForAuthenticatedUserRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `PackagesRestorePackageVersionForAuthenticatedUser`,
 		trace.WithAttributes(otelogen.OperationID(`packages/restore-package-version-for-authenticated-user`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -11570,7 +11570,7 @@ func (s *Server) handlePackagesRestorePackageVersionForAuthenticatedUserRequest(
 // HandlePackagesRestorePackageVersionForOrgRequest handles packages/restore-package-version-for-org operation.
 //
 // POST /orgs/{org}/packages/{package_type}/{package_name}/versions/{package_version_id}/restore
-func (s *Server) handlePackagesRestorePackageVersionForOrgRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handlePackagesRestorePackageVersionForOrgRequest(args [4]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `PackagesRestorePackageVersionForOrg`,
 		trace.WithAttributes(otelogen.OperationID(`packages/restore-package-version-for-org`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -11599,7 +11599,7 @@ func (s *Server) handlePackagesRestorePackageVersionForOrgRequest(args map[strin
 // HandlePackagesRestorePackageVersionForUserRequest handles packages/restore-package-version-for-user operation.
 //
 // POST /users/{username}/packages/{package_type}/{package_name}/versions/{package_version_id}/restore
-func (s *Server) handlePackagesRestorePackageVersionForUserRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handlePackagesRestorePackageVersionForUserRequest(args [4]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `PackagesRestorePackageVersionForUser`,
 		trace.WithAttributes(otelogen.OperationID(`packages/restore-package-version-for-user`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -11628,7 +11628,7 @@ func (s *Server) handlePackagesRestorePackageVersionForUserRequest(args map[stri
 // HandleProjectsAddCollaboratorRequest handles projects/add-collaborator operation.
 //
 // PUT /projects/{project_id}/collaborators/{username}
-func (s *Server) handleProjectsAddCollaboratorRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleProjectsAddCollaboratorRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ProjectsAddCollaborator`,
 		trace.WithAttributes(otelogen.OperationID(`projects/add-collaborator`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -11663,7 +11663,7 @@ func (s *Server) handleProjectsAddCollaboratorRequest(args map[string]string, w 
 // HandleProjectsCreateColumnRequest handles projects/create-column operation.
 //
 // POST /projects/{project_id}/columns
-func (s *Server) handleProjectsCreateColumnRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleProjectsCreateColumnRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ProjectsCreateColumn`,
 		trace.WithAttributes(otelogen.OperationID(`projects/create-column`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -11698,7 +11698,7 @@ func (s *Server) handleProjectsCreateColumnRequest(args map[string]string, w htt
 // HandleProjectsCreateForAuthenticatedUserRequest handles projects/create-for-authenticated-user operation.
 //
 // POST /user/projects
-func (s *Server) handleProjectsCreateForAuthenticatedUserRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleProjectsCreateForAuthenticatedUserRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ProjectsCreateForAuthenticatedUser`,
 		trace.WithAttributes(otelogen.OperationID(`projects/create-for-authenticated-user`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -11727,7 +11727,7 @@ func (s *Server) handleProjectsCreateForAuthenticatedUserRequest(args map[string
 // HandleProjectsCreateForOrgRequest handles projects/create-for-org operation.
 //
 // POST /orgs/{org}/projects
-func (s *Server) handleProjectsCreateForOrgRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleProjectsCreateForOrgRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ProjectsCreateForOrg`,
 		trace.WithAttributes(otelogen.OperationID(`projects/create-for-org`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -11762,7 +11762,7 @@ func (s *Server) handleProjectsCreateForOrgRequest(args map[string]string, w htt
 // HandleProjectsCreateForRepoRequest handles projects/create-for-repo operation.
 //
 // POST /repos/{owner}/{repo}/projects
-func (s *Server) handleProjectsCreateForRepoRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleProjectsCreateForRepoRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ProjectsCreateForRepo`,
 		trace.WithAttributes(otelogen.OperationID(`projects/create-for-repo`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -11797,7 +11797,7 @@ func (s *Server) handleProjectsCreateForRepoRequest(args map[string]string, w ht
 // HandleProjectsDeleteRequest handles projects/delete operation.
 //
 // DELETE /projects/{project_id}
-func (s *Server) handleProjectsDeleteRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleProjectsDeleteRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ProjectsDelete`,
 		trace.WithAttributes(otelogen.OperationID(`projects/delete`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -11826,7 +11826,7 @@ func (s *Server) handleProjectsDeleteRequest(args map[string]string, w http.Resp
 // HandleProjectsDeleteCardRequest handles projects/delete-card operation.
 //
 // DELETE /projects/columns/cards/{card_id}
-func (s *Server) handleProjectsDeleteCardRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleProjectsDeleteCardRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ProjectsDeleteCard`,
 		trace.WithAttributes(otelogen.OperationID(`projects/delete-card`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -11855,7 +11855,7 @@ func (s *Server) handleProjectsDeleteCardRequest(args map[string]string, w http.
 // HandleProjectsDeleteColumnRequest handles projects/delete-column operation.
 //
 // DELETE /projects/columns/{column_id}
-func (s *Server) handleProjectsDeleteColumnRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleProjectsDeleteColumnRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ProjectsDeleteColumn`,
 		trace.WithAttributes(otelogen.OperationID(`projects/delete-column`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -11884,7 +11884,7 @@ func (s *Server) handleProjectsDeleteColumnRequest(args map[string]string, w htt
 // HandleProjectsGetRequest handles projects/get operation.
 //
 // GET /projects/{project_id}
-func (s *Server) handleProjectsGetRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleProjectsGetRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ProjectsGet`,
 		trace.WithAttributes(otelogen.OperationID(`projects/get`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -11913,7 +11913,7 @@ func (s *Server) handleProjectsGetRequest(args map[string]string, w http.Respons
 // HandleProjectsGetCardRequest handles projects/get-card operation.
 //
 // GET /projects/columns/cards/{card_id}
-func (s *Server) handleProjectsGetCardRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleProjectsGetCardRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ProjectsGetCard`,
 		trace.WithAttributes(otelogen.OperationID(`projects/get-card`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -11942,7 +11942,7 @@ func (s *Server) handleProjectsGetCardRequest(args map[string]string, w http.Res
 // HandleProjectsGetColumnRequest handles projects/get-column operation.
 //
 // GET /projects/columns/{column_id}
-func (s *Server) handleProjectsGetColumnRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleProjectsGetColumnRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ProjectsGetColumn`,
 		trace.WithAttributes(otelogen.OperationID(`projects/get-column`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -11971,7 +11971,7 @@ func (s *Server) handleProjectsGetColumnRequest(args map[string]string, w http.R
 // HandleProjectsGetPermissionForUserRequest handles projects/get-permission-for-user operation.
 //
 // GET /projects/{project_id}/collaborators/{username}/permission
-func (s *Server) handleProjectsGetPermissionForUserRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleProjectsGetPermissionForUserRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ProjectsGetPermissionForUser`,
 		trace.WithAttributes(otelogen.OperationID(`projects/get-permission-for-user`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -12000,7 +12000,7 @@ func (s *Server) handleProjectsGetPermissionForUserRequest(args map[string]strin
 // HandleProjectsListCardsRequest handles projects/list-cards operation.
 //
 // GET /projects/columns/{column_id}/cards
-func (s *Server) handleProjectsListCardsRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleProjectsListCardsRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ProjectsListCards`,
 		trace.WithAttributes(otelogen.OperationID(`projects/list-cards`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -12029,7 +12029,7 @@ func (s *Server) handleProjectsListCardsRequest(args map[string]string, w http.R
 // HandleProjectsListCollaboratorsRequest handles projects/list-collaborators operation.
 //
 // GET /projects/{project_id}/collaborators
-func (s *Server) handleProjectsListCollaboratorsRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleProjectsListCollaboratorsRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ProjectsListCollaborators`,
 		trace.WithAttributes(otelogen.OperationID(`projects/list-collaborators`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -12058,7 +12058,7 @@ func (s *Server) handleProjectsListCollaboratorsRequest(args map[string]string, 
 // HandleProjectsListColumnsRequest handles projects/list-columns operation.
 //
 // GET /projects/{project_id}/columns
-func (s *Server) handleProjectsListColumnsRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleProjectsListColumnsRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ProjectsListColumns`,
 		trace.WithAttributes(otelogen.OperationID(`projects/list-columns`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -12087,7 +12087,7 @@ func (s *Server) handleProjectsListColumnsRequest(args map[string]string, w http
 // HandleProjectsListForOrgRequest handles projects/list-for-org operation.
 //
 // GET /orgs/{org}/projects
-func (s *Server) handleProjectsListForOrgRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleProjectsListForOrgRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ProjectsListForOrg`,
 		trace.WithAttributes(otelogen.OperationID(`projects/list-for-org`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -12116,7 +12116,7 @@ func (s *Server) handleProjectsListForOrgRequest(args map[string]string, w http.
 // HandleProjectsListForRepoRequest handles projects/list-for-repo operation.
 //
 // GET /repos/{owner}/{repo}/projects
-func (s *Server) handleProjectsListForRepoRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleProjectsListForRepoRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ProjectsListForRepo`,
 		trace.WithAttributes(otelogen.OperationID(`projects/list-for-repo`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -12145,7 +12145,7 @@ func (s *Server) handleProjectsListForRepoRequest(args map[string]string, w http
 // HandleProjectsListForUserRequest handles projects/list-for-user operation.
 //
 // GET /users/{username}/projects
-func (s *Server) handleProjectsListForUserRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleProjectsListForUserRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ProjectsListForUser`,
 		trace.WithAttributes(otelogen.OperationID(`projects/list-for-user`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -12174,7 +12174,7 @@ func (s *Server) handleProjectsListForUserRequest(args map[string]string, w http
 // HandleProjectsMoveCardRequest handles projects/move-card operation.
 //
 // POST /projects/columns/cards/{card_id}/moves
-func (s *Server) handleProjectsMoveCardRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleProjectsMoveCardRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ProjectsMoveCard`,
 		trace.WithAttributes(otelogen.OperationID(`projects/move-card`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -12209,7 +12209,7 @@ func (s *Server) handleProjectsMoveCardRequest(args map[string]string, w http.Re
 // HandleProjectsMoveColumnRequest handles projects/move-column operation.
 //
 // POST /projects/columns/{column_id}/moves
-func (s *Server) handleProjectsMoveColumnRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleProjectsMoveColumnRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ProjectsMoveColumn`,
 		trace.WithAttributes(otelogen.OperationID(`projects/move-column`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -12244,7 +12244,7 @@ func (s *Server) handleProjectsMoveColumnRequest(args map[string]string, w http.
 // HandleProjectsRemoveCollaboratorRequest handles projects/remove-collaborator operation.
 //
 // DELETE /projects/{project_id}/collaborators/{username}
-func (s *Server) handleProjectsRemoveCollaboratorRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleProjectsRemoveCollaboratorRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ProjectsRemoveCollaborator`,
 		trace.WithAttributes(otelogen.OperationID(`projects/remove-collaborator`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -12273,7 +12273,7 @@ func (s *Server) handleProjectsRemoveCollaboratorRequest(args map[string]string,
 // HandleProjectsUpdateRequest handles projects/update operation.
 //
 // PATCH /projects/{project_id}
-func (s *Server) handleProjectsUpdateRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleProjectsUpdateRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ProjectsUpdate`,
 		trace.WithAttributes(otelogen.OperationID(`projects/update`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -12308,7 +12308,7 @@ func (s *Server) handleProjectsUpdateRequest(args map[string]string, w http.Resp
 // HandleProjectsUpdateCardRequest handles projects/update-card operation.
 //
 // PATCH /projects/columns/cards/{card_id}
-func (s *Server) handleProjectsUpdateCardRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleProjectsUpdateCardRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ProjectsUpdateCard`,
 		trace.WithAttributes(otelogen.OperationID(`projects/update-card`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -12343,7 +12343,7 @@ func (s *Server) handleProjectsUpdateCardRequest(args map[string]string, w http.
 // HandleProjectsUpdateColumnRequest handles projects/update-column operation.
 //
 // PATCH /projects/columns/{column_id}
-func (s *Server) handleProjectsUpdateColumnRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleProjectsUpdateColumnRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ProjectsUpdateColumn`,
 		trace.WithAttributes(otelogen.OperationID(`projects/update-column`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -12378,7 +12378,7 @@ func (s *Server) handleProjectsUpdateColumnRequest(args map[string]string, w htt
 // HandlePullsCheckIfMergedRequest handles pulls/check-if-merged operation.
 //
 // GET /repos/{owner}/{repo}/pulls/{pull_number}/merge
-func (s *Server) handlePullsCheckIfMergedRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handlePullsCheckIfMergedRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `PullsCheckIfMerged`,
 		trace.WithAttributes(otelogen.OperationID(`pulls/check-if-merged`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -12407,7 +12407,7 @@ func (s *Server) handlePullsCheckIfMergedRequest(args map[string]string, w http.
 // HandlePullsCreateRequest handles pulls/create operation.
 //
 // POST /repos/{owner}/{repo}/pulls
-func (s *Server) handlePullsCreateRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handlePullsCreateRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `PullsCreate`,
 		trace.WithAttributes(otelogen.OperationID(`pulls/create`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -12442,7 +12442,7 @@ func (s *Server) handlePullsCreateRequest(args map[string]string, w http.Respons
 // HandlePullsCreateReplyForReviewCommentRequest handles pulls/create-reply-for-review-comment operation.
 //
 // POST /repos/{owner}/{repo}/pulls/{pull_number}/comments/{comment_id}/replies
-func (s *Server) handlePullsCreateReplyForReviewCommentRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handlePullsCreateReplyForReviewCommentRequest(args [4]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `PullsCreateReplyForReviewComment`,
 		trace.WithAttributes(otelogen.OperationID(`pulls/create-reply-for-review-comment`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -12477,7 +12477,7 @@ func (s *Server) handlePullsCreateReplyForReviewCommentRequest(args map[string]s
 // HandlePullsCreateReviewRequest handles pulls/create-review operation.
 //
 // POST /repos/{owner}/{repo}/pulls/{pull_number}/reviews
-func (s *Server) handlePullsCreateReviewRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handlePullsCreateReviewRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `PullsCreateReview`,
 		trace.WithAttributes(otelogen.OperationID(`pulls/create-review`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -12512,7 +12512,7 @@ func (s *Server) handlePullsCreateReviewRequest(args map[string]string, w http.R
 // HandlePullsCreateReviewCommentRequest handles pulls/create-review-comment operation.
 //
 // POST /repos/{owner}/{repo}/pulls/{pull_number}/comments
-func (s *Server) handlePullsCreateReviewCommentRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handlePullsCreateReviewCommentRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `PullsCreateReviewComment`,
 		trace.WithAttributes(otelogen.OperationID(`pulls/create-review-comment`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -12547,7 +12547,7 @@ func (s *Server) handlePullsCreateReviewCommentRequest(args map[string]string, w
 // HandlePullsDeletePendingReviewRequest handles pulls/delete-pending-review operation.
 //
 // DELETE /repos/{owner}/{repo}/pulls/{pull_number}/reviews/{review_id}
-func (s *Server) handlePullsDeletePendingReviewRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handlePullsDeletePendingReviewRequest(args [4]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `PullsDeletePendingReview`,
 		trace.WithAttributes(otelogen.OperationID(`pulls/delete-pending-review`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -12576,7 +12576,7 @@ func (s *Server) handlePullsDeletePendingReviewRequest(args map[string]string, w
 // HandlePullsDeleteReviewCommentRequest handles pulls/delete-review-comment operation.
 //
 // DELETE /repos/{owner}/{repo}/pulls/comments/{comment_id}
-func (s *Server) handlePullsDeleteReviewCommentRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handlePullsDeleteReviewCommentRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `PullsDeleteReviewComment`,
 		trace.WithAttributes(otelogen.OperationID(`pulls/delete-review-comment`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -12605,7 +12605,7 @@ func (s *Server) handlePullsDeleteReviewCommentRequest(args map[string]string, w
 // HandlePullsDismissReviewRequest handles pulls/dismiss-review operation.
 //
 // PUT /repos/{owner}/{repo}/pulls/{pull_number}/reviews/{review_id}/dismissals
-func (s *Server) handlePullsDismissReviewRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handlePullsDismissReviewRequest(args [4]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `PullsDismissReview`,
 		trace.WithAttributes(otelogen.OperationID(`pulls/dismiss-review`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -12640,7 +12640,7 @@ func (s *Server) handlePullsDismissReviewRequest(args map[string]string, w http.
 // HandlePullsGetRequest handles pulls/get operation.
 //
 // GET /repos/{owner}/{repo}/pulls/{pull_number}
-func (s *Server) handlePullsGetRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handlePullsGetRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `PullsGet`,
 		trace.WithAttributes(otelogen.OperationID(`pulls/get`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -12669,7 +12669,7 @@ func (s *Server) handlePullsGetRequest(args map[string]string, w http.ResponseWr
 // HandlePullsGetReviewRequest handles pulls/get-review operation.
 //
 // GET /repos/{owner}/{repo}/pulls/{pull_number}/reviews/{review_id}
-func (s *Server) handlePullsGetReviewRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handlePullsGetReviewRequest(args [4]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `PullsGetReview`,
 		trace.WithAttributes(otelogen.OperationID(`pulls/get-review`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -12698,7 +12698,7 @@ func (s *Server) handlePullsGetReviewRequest(args map[string]string, w http.Resp
 // HandlePullsGetReviewCommentRequest handles pulls/get-review-comment operation.
 //
 // GET /repos/{owner}/{repo}/pulls/comments/{comment_id}
-func (s *Server) handlePullsGetReviewCommentRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handlePullsGetReviewCommentRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `PullsGetReviewComment`,
 		trace.WithAttributes(otelogen.OperationID(`pulls/get-review-comment`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -12727,7 +12727,7 @@ func (s *Server) handlePullsGetReviewCommentRequest(args map[string]string, w ht
 // HandlePullsListRequest handles pulls/list operation.
 //
 // GET /repos/{owner}/{repo}/pulls
-func (s *Server) handlePullsListRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handlePullsListRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `PullsList`,
 		trace.WithAttributes(otelogen.OperationID(`pulls/list`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -12756,7 +12756,7 @@ func (s *Server) handlePullsListRequest(args map[string]string, w http.ResponseW
 // HandlePullsListCommentsForReviewRequest handles pulls/list-comments-for-review operation.
 //
 // GET /repos/{owner}/{repo}/pulls/{pull_number}/reviews/{review_id}/comments
-func (s *Server) handlePullsListCommentsForReviewRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handlePullsListCommentsForReviewRequest(args [4]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `PullsListCommentsForReview`,
 		trace.WithAttributes(otelogen.OperationID(`pulls/list-comments-for-review`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -12785,7 +12785,7 @@ func (s *Server) handlePullsListCommentsForReviewRequest(args map[string]string,
 // HandlePullsListCommitsRequest handles pulls/list-commits operation.
 //
 // GET /repos/{owner}/{repo}/pulls/{pull_number}/commits
-func (s *Server) handlePullsListCommitsRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handlePullsListCommitsRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `PullsListCommits`,
 		trace.WithAttributes(otelogen.OperationID(`pulls/list-commits`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -12814,7 +12814,7 @@ func (s *Server) handlePullsListCommitsRequest(args map[string]string, w http.Re
 // HandlePullsListFilesRequest handles pulls/list-files operation.
 //
 // GET /repos/{owner}/{repo}/pulls/{pull_number}/files
-func (s *Server) handlePullsListFilesRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handlePullsListFilesRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `PullsListFiles`,
 		trace.WithAttributes(otelogen.OperationID(`pulls/list-files`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -12843,7 +12843,7 @@ func (s *Server) handlePullsListFilesRequest(args map[string]string, w http.Resp
 // HandlePullsListRequestedReviewersRequest handles pulls/list-requested-reviewers operation.
 //
 // GET /repos/{owner}/{repo}/pulls/{pull_number}/requested_reviewers
-func (s *Server) handlePullsListRequestedReviewersRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handlePullsListRequestedReviewersRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `PullsListRequestedReviewers`,
 		trace.WithAttributes(otelogen.OperationID(`pulls/list-requested-reviewers`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -12872,7 +12872,7 @@ func (s *Server) handlePullsListRequestedReviewersRequest(args map[string]string
 // HandlePullsListReviewCommentsRequest handles pulls/list-review-comments operation.
 //
 // GET /repos/{owner}/{repo}/pulls/{pull_number}/comments
-func (s *Server) handlePullsListReviewCommentsRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handlePullsListReviewCommentsRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `PullsListReviewComments`,
 		trace.WithAttributes(otelogen.OperationID(`pulls/list-review-comments`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -12901,7 +12901,7 @@ func (s *Server) handlePullsListReviewCommentsRequest(args map[string]string, w 
 // HandlePullsListReviewCommentsForRepoRequest handles pulls/list-review-comments-for-repo operation.
 //
 // GET /repos/{owner}/{repo}/pulls/comments
-func (s *Server) handlePullsListReviewCommentsForRepoRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handlePullsListReviewCommentsForRepoRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `PullsListReviewCommentsForRepo`,
 		trace.WithAttributes(otelogen.OperationID(`pulls/list-review-comments-for-repo`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -12930,7 +12930,7 @@ func (s *Server) handlePullsListReviewCommentsForRepoRequest(args map[string]str
 // HandlePullsListReviewsRequest handles pulls/list-reviews operation.
 //
 // GET /repos/{owner}/{repo}/pulls/{pull_number}/reviews
-func (s *Server) handlePullsListReviewsRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handlePullsListReviewsRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `PullsListReviews`,
 		trace.WithAttributes(otelogen.OperationID(`pulls/list-reviews`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -12959,7 +12959,7 @@ func (s *Server) handlePullsListReviewsRequest(args map[string]string, w http.Re
 // HandlePullsMergeRequest handles pulls/merge operation.
 //
 // PUT /repos/{owner}/{repo}/pulls/{pull_number}/merge
-func (s *Server) handlePullsMergeRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handlePullsMergeRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `PullsMerge`,
 		trace.WithAttributes(otelogen.OperationID(`pulls/merge`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -12994,7 +12994,7 @@ func (s *Server) handlePullsMergeRequest(args map[string]string, w http.Response
 // HandlePullsRemoveRequestedReviewersRequest handles pulls/remove-requested-reviewers operation.
 //
 // DELETE /repos/{owner}/{repo}/pulls/{pull_number}/requested_reviewers
-func (s *Server) handlePullsRemoveRequestedReviewersRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handlePullsRemoveRequestedReviewersRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `PullsRemoveRequestedReviewers`,
 		trace.WithAttributes(otelogen.OperationID(`pulls/remove-requested-reviewers`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -13029,7 +13029,7 @@ func (s *Server) handlePullsRemoveRequestedReviewersRequest(args map[string]stri
 // HandlePullsSubmitReviewRequest handles pulls/submit-review operation.
 //
 // POST /repos/{owner}/{repo}/pulls/{pull_number}/reviews/{review_id}/events
-func (s *Server) handlePullsSubmitReviewRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handlePullsSubmitReviewRequest(args [4]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `PullsSubmitReview`,
 		trace.WithAttributes(otelogen.OperationID(`pulls/submit-review`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -13064,7 +13064,7 @@ func (s *Server) handlePullsSubmitReviewRequest(args map[string]string, w http.R
 // HandlePullsUpdateRequest handles pulls/update operation.
 //
 // PATCH /repos/{owner}/{repo}/pulls/{pull_number}
-func (s *Server) handlePullsUpdateRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handlePullsUpdateRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `PullsUpdate`,
 		trace.WithAttributes(otelogen.OperationID(`pulls/update`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -13099,7 +13099,7 @@ func (s *Server) handlePullsUpdateRequest(args map[string]string, w http.Respons
 // HandlePullsUpdateBranchRequest handles pulls/update-branch operation.
 //
 // PUT /repos/{owner}/{repo}/pulls/{pull_number}/update-branch
-func (s *Server) handlePullsUpdateBranchRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handlePullsUpdateBranchRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `PullsUpdateBranch`,
 		trace.WithAttributes(otelogen.OperationID(`pulls/update-branch`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -13134,7 +13134,7 @@ func (s *Server) handlePullsUpdateBranchRequest(args map[string]string, w http.R
 // HandlePullsUpdateReviewRequest handles pulls/update-review operation.
 //
 // PUT /repos/{owner}/{repo}/pulls/{pull_number}/reviews/{review_id}
-func (s *Server) handlePullsUpdateReviewRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handlePullsUpdateReviewRequest(args [4]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `PullsUpdateReview`,
 		trace.WithAttributes(otelogen.OperationID(`pulls/update-review`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -13169,7 +13169,7 @@ func (s *Server) handlePullsUpdateReviewRequest(args map[string]string, w http.R
 // HandlePullsUpdateReviewCommentRequest handles pulls/update-review-comment operation.
 //
 // PATCH /repos/{owner}/{repo}/pulls/comments/{comment_id}
-func (s *Server) handlePullsUpdateReviewCommentRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handlePullsUpdateReviewCommentRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `PullsUpdateReviewComment`,
 		trace.WithAttributes(otelogen.OperationID(`pulls/update-review-comment`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -13204,7 +13204,7 @@ func (s *Server) handlePullsUpdateReviewCommentRequest(args map[string]string, w
 // HandleRateLimitGetRequest handles rate-limit/get operation.
 //
 // GET /rate_limit
-func (s *Server) handleRateLimitGetRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleRateLimitGetRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `RateLimitGet`,
 		trace.WithAttributes(otelogen.OperationID(`rate-limit/get`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -13227,7 +13227,7 @@ func (s *Server) handleRateLimitGetRequest(args map[string]string, w http.Respon
 // HandleReactionsCreateForCommitCommentRequest handles reactions/create-for-commit-comment operation.
 //
 // POST /repos/{owner}/{repo}/comments/{comment_id}/reactions
-func (s *Server) handleReactionsCreateForCommitCommentRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReactionsCreateForCommitCommentRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReactionsCreateForCommitComment`,
 		trace.WithAttributes(otelogen.OperationID(`reactions/create-for-commit-comment`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -13262,7 +13262,7 @@ func (s *Server) handleReactionsCreateForCommitCommentRequest(args map[string]st
 // HandleReactionsCreateForIssueRequest handles reactions/create-for-issue operation.
 //
 // POST /repos/{owner}/{repo}/issues/{issue_number}/reactions
-func (s *Server) handleReactionsCreateForIssueRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReactionsCreateForIssueRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReactionsCreateForIssue`,
 		trace.WithAttributes(otelogen.OperationID(`reactions/create-for-issue`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -13297,7 +13297,7 @@ func (s *Server) handleReactionsCreateForIssueRequest(args map[string]string, w 
 // HandleReactionsCreateForIssueCommentRequest handles reactions/create-for-issue-comment operation.
 //
 // POST /repos/{owner}/{repo}/issues/comments/{comment_id}/reactions
-func (s *Server) handleReactionsCreateForIssueCommentRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReactionsCreateForIssueCommentRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReactionsCreateForIssueComment`,
 		trace.WithAttributes(otelogen.OperationID(`reactions/create-for-issue-comment`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -13332,7 +13332,7 @@ func (s *Server) handleReactionsCreateForIssueCommentRequest(args map[string]str
 // HandleReactionsCreateForPullRequestReviewCommentRequest handles reactions/create-for-pull-request-review-comment operation.
 //
 // POST /repos/{owner}/{repo}/pulls/comments/{comment_id}/reactions
-func (s *Server) handleReactionsCreateForPullRequestReviewCommentRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReactionsCreateForPullRequestReviewCommentRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReactionsCreateForPullRequestReviewComment`,
 		trace.WithAttributes(otelogen.OperationID(`reactions/create-for-pull-request-review-comment`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -13367,7 +13367,7 @@ func (s *Server) handleReactionsCreateForPullRequestReviewCommentRequest(args ma
 // HandleReactionsCreateForReleaseRequest handles reactions/create-for-release operation.
 //
 // POST /repos/{owner}/{repo}/releases/{release_id}/reactions
-func (s *Server) handleReactionsCreateForReleaseRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReactionsCreateForReleaseRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReactionsCreateForRelease`,
 		trace.WithAttributes(otelogen.OperationID(`reactions/create-for-release`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -13402,7 +13402,7 @@ func (s *Server) handleReactionsCreateForReleaseRequest(args map[string]string, 
 // HandleReactionsCreateForTeamDiscussionCommentInOrgRequest handles reactions/create-for-team-discussion-comment-in-org operation.
 //
 // POST /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments/{comment_number}/reactions
-func (s *Server) handleReactionsCreateForTeamDiscussionCommentInOrgRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReactionsCreateForTeamDiscussionCommentInOrgRequest(args [4]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReactionsCreateForTeamDiscussionCommentInOrg`,
 		trace.WithAttributes(otelogen.OperationID(`reactions/create-for-team-discussion-comment-in-org`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -13437,7 +13437,7 @@ func (s *Server) handleReactionsCreateForTeamDiscussionCommentInOrgRequest(args 
 // HandleReactionsCreateForTeamDiscussionCommentLegacyRequest handles reactions/create-for-team-discussion-comment-legacy operation.
 //
 // POST /teams/{team_id}/discussions/{discussion_number}/comments/{comment_number}/reactions
-func (s *Server) handleReactionsCreateForTeamDiscussionCommentLegacyRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReactionsCreateForTeamDiscussionCommentLegacyRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReactionsCreateForTeamDiscussionCommentLegacy`,
 		trace.WithAttributes(otelogen.OperationID(`reactions/create-for-team-discussion-comment-legacy`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -13472,7 +13472,7 @@ func (s *Server) handleReactionsCreateForTeamDiscussionCommentLegacyRequest(args
 // HandleReactionsCreateForTeamDiscussionInOrgRequest handles reactions/create-for-team-discussion-in-org operation.
 //
 // POST /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/reactions
-func (s *Server) handleReactionsCreateForTeamDiscussionInOrgRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReactionsCreateForTeamDiscussionInOrgRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReactionsCreateForTeamDiscussionInOrg`,
 		trace.WithAttributes(otelogen.OperationID(`reactions/create-for-team-discussion-in-org`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -13507,7 +13507,7 @@ func (s *Server) handleReactionsCreateForTeamDiscussionInOrgRequest(args map[str
 // HandleReactionsCreateForTeamDiscussionLegacyRequest handles reactions/create-for-team-discussion-legacy operation.
 //
 // POST /teams/{team_id}/discussions/{discussion_number}/reactions
-func (s *Server) handleReactionsCreateForTeamDiscussionLegacyRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReactionsCreateForTeamDiscussionLegacyRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReactionsCreateForTeamDiscussionLegacy`,
 		trace.WithAttributes(otelogen.OperationID(`reactions/create-for-team-discussion-legacy`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -13542,7 +13542,7 @@ func (s *Server) handleReactionsCreateForTeamDiscussionLegacyRequest(args map[st
 // HandleReactionsDeleteForCommitCommentRequest handles reactions/delete-for-commit-comment operation.
 //
 // DELETE /repos/{owner}/{repo}/comments/{comment_id}/reactions/{reaction_id}
-func (s *Server) handleReactionsDeleteForCommitCommentRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReactionsDeleteForCommitCommentRequest(args [4]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReactionsDeleteForCommitComment`,
 		trace.WithAttributes(otelogen.OperationID(`reactions/delete-for-commit-comment`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -13571,7 +13571,7 @@ func (s *Server) handleReactionsDeleteForCommitCommentRequest(args map[string]st
 // HandleReactionsDeleteForIssueRequest handles reactions/delete-for-issue operation.
 //
 // DELETE /repos/{owner}/{repo}/issues/{issue_number}/reactions/{reaction_id}
-func (s *Server) handleReactionsDeleteForIssueRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReactionsDeleteForIssueRequest(args [4]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReactionsDeleteForIssue`,
 		trace.WithAttributes(otelogen.OperationID(`reactions/delete-for-issue`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -13600,7 +13600,7 @@ func (s *Server) handleReactionsDeleteForIssueRequest(args map[string]string, w 
 // HandleReactionsDeleteForIssueCommentRequest handles reactions/delete-for-issue-comment operation.
 //
 // DELETE /repos/{owner}/{repo}/issues/comments/{comment_id}/reactions/{reaction_id}
-func (s *Server) handleReactionsDeleteForIssueCommentRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReactionsDeleteForIssueCommentRequest(args [4]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReactionsDeleteForIssueComment`,
 		trace.WithAttributes(otelogen.OperationID(`reactions/delete-for-issue-comment`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -13629,7 +13629,7 @@ func (s *Server) handleReactionsDeleteForIssueCommentRequest(args map[string]str
 // HandleReactionsDeleteForPullRequestCommentRequest handles reactions/delete-for-pull-request-comment operation.
 //
 // DELETE /repos/{owner}/{repo}/pulls/comments/{comment_id}/reactions/{reaction_id}
-func (s *Server) handleReactionsDeleteForPullRequestCommentRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReactionsDeleteForPullRequestCommentRequest(args [4]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReactionsDeleteForPullRequestComment`,
 		trace.WithAttributes(otelogen.OperationID(`reactions/delete-for-pull-request-comment`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -13658,7 +13658,7 @@ func (s *Server) handleReactionsDeleteForPullRequestCommentRequest(args map[stri
 // HandleReactionsDeleteForTeamDiscussionRequest handles reactions/delete-for-team-discussion operation.
 //
 // DELETE /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/reactions/{reaction_id}
-func (s *Server) handleReactionsDeleteForTeamDiscussionRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReactionsDeleteForTeamDiscussionRequest(args [4]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReactionsDeleteForTeamDiscussion`,
 		trace.WithAttributes(otelogen.OperationID(`reactions/delete-for-team-discussion`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -13687,7 +13687,7 @@ func (s *Server) handleReactionsDeleteForTeamDiscussionRequest(args map[string]s
 // HandleReactionsDeleteForTeamDiscussionCommentRequest handles reactions/delete-for-team-discussion-comment operation.
 //
 // DELETE /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments/{comment_number}/reactions/{reaction_id}
-func (s *Server) handleReactionsDeleteForTeamDiscussionCommentRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReactionsDeleteForTeamDiscussionCommentRequest(args [5]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReactionsDeleteForTeamDiscussionComment`,
 		trace.WithAttributes(otelogen.OperationID(`reactions/delete-for-team-discussion-comment`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -13716,7 +13716,7 @@ func (s *Server) handleReactionsDeleteForTeamDiscussionCommentRequest(args map[s
 // HandleReactionsDeleteLegacyRequest handles reactions/delete-legacy operation.
 //
 // DELETE /reactions/{reaction_id}
-func (s *Server) handleReactionsDeleteLegacyRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReactionsDeleteLegacyRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReactionsDeleteLegacy`,
 		trace.WithAttributes(otelogen.OperationID(`reactions/delete-legacy`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -13745,7 +13745,7 @@ func (s *Server) handleReactionsDeleteLegacyRequest(args map[string]string, w ht
 // HandleReactionsListForCommitCommentRequest handles reactions/list-for-commit-comment operation.
 //
 // GET /repos/{owner}/{repo}/comments/{comment_id}/reactions
-func (s *Server) handleReactionsListForCommitCommentRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReactionsListForCommitCommentRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReactionsListForCommitComment`,
 		trace.WithAttributes(otelogen.OperationID(`reactions/list-for-commit-comment`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -13774,7 +13774,7 @@ func (s *Server) handleReactionsListForCommitCommentRequest(args map[string]stri
 // HandleReactionsListForIssueRequest handles reactions/list-for-issue operation.
 //
 // GET /repos/{owner}/{repo}/issues/{issue_number}/reactions
-func (s *Server) handleReactionsListForIssueRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReactionsListForIssueRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReactionsListForIssue`,
 		trace.WithAttributes(otelogen.OperationID(`reactions/list-for-issue`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -13803,7 +13803,7 @@ func (s *Server) handleReactionsListForIssueRequest(args map[string]string, w ht
 // HandleReactionsListForIssueCommentRequest handles reactions/list-for-issue-comment operation.
 //
 // GET /repos/{owner}/{repo}/issues/comments/{comment_id}/reactions
-func (s *Server) handleReactionsListForIssueCommentRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReactionsListForIssueCommentRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReactionsListForIssueComment`,
 		trace.WithAttributes(otelogen.OperationID(`reactions/list-for-issue-comment`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -13832,7 +13832,7 @@ func (s *Server) handleReactionsListForIssueCommentRequest(args map[string]strin
 // HandleReactionsListForPullRequestReviewCommentRequest handles reactions/list-for-pull-request-review-comment operation.
 //
 // GET /repos/{owner}/{repo}/pulls/comments/{comment_id}/reactions
-func (s *Server) handleReactionsListForPullRequestReviewCommentRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReactionsListForPullRequestReviewCommentRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReactionsListForPullRequestReviewComment`,
 		trace.WithAttributes(otelogen.OperationID(`reactions/list-for-pull-request-review-comment`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -13861,7 +13861,7 @@ func (s *Server) handleReactionsListForPullRequestReviewCommentRequest(args map[
 // HandleReactionsListForTeamDiscussionCommentInOrgRequest handles reactions/list-for-team-discussion-comment-in-org operation.
 //
 // GET /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments/{comment_number}/reactions
-func (s *Server) handleReactionsListForTeamDiscussionCommentInOrgRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReactionsListForTeamDiscussionCommentInOrgRequest(args [4]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReactionsListForTeamDiscussionCommentInOrg`,
 		trace.WithAttributes(otelogen.OperationID(`reactions/list-for-team-discussion-comment-in-org`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -13890,7 +13890,7 @@ func (s *Server) handleReactionsListForTeamDiscussionCommentInOrgRequest(args ma
 // HandleReactionsListForTeamDiscussionCommentLegacyRequest handles reactions/list-for-team-discussion-comment-legacy operation.
 //
 // GET /teams/{team_id}/discussions/{discussion_number}/comments/{comment_number}/reactions
-func (s *Server) handleReactionsListForTeamDiscussionCommentLegacyRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReactionsListForTeamDiscussionCommentLegacyRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReactionsListForTeamDiscussionCommentLegacy`,
 		trace.WithAttributes(otelogen.OperationID(`reactions/list-for-team-discussion-comment-legacy`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -13919,7 +13919,7 @@ func (s *Server) handleReactionsListForTeamDiscussionCommentLegacyRequest(args m
 // HandleReactionsListForTeamDiscussionInOrgRequest handles reactions/list-for-team-discussion-in-org operation.
 //
 // GET /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/reactions
-func (s *Server) handleReactionsListForTeamDiscussionInOrgRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReactionsListForTeamDiscussionInOrgRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReactionsListForTeamDiscussionInOrg`,
 		trace.WithAttributes(otelogen.OperationID(`reactions/list-for-team-discussion-in-org`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -13948,7 +13948,7 @@ func (s *Server) handleReactionsListForTeamDiscussionInOrgRequest(args map[strin
 // HandleReactionsListForTeamDiscussionLegacyRequest handles reactions/list-for-team-discussion-legacy operation.
 //
 // GET /teams/{team_id}/discussions/{discussion_number}/reactions
-func (s *Server) handleReactionsListForTeamDiscussionLegacyRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReactionsListForTeamDiscussionLegacyRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReactionsListForTeamDiscussionLegacy`,
 		trace.WithAttributes(otelogen.OperationID(`reactions/list-for-team-discussion-legacy`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -13977,7 +13977,7 @@ func (s *Server) handleReactionsListForTeamDiscussionLegacyRequest(args map[stri
 // HandleReposAcceptInvitationRequest handles repos/accept-invitation operation.
 //
 // PATCH /user/repository_invitations/{invitation_id}
-func (s *Server) handleReposAcceptInvitationRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReposAcceptInvitationRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposAcceptInvitation`,
 		trace.WithAttributes(otelogen.OperationID(`repos/accept-invitation`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -14006,7 +14006,7 @@ func (s *Server) handleReposAcceptInvitationRequest(args map[string]string, w ht
 // HandleReposAddAppAccessRestrictionsRequest handles repos/add-app-access-restrictions operation.
 //
 // POST /repos/{owner}/{repo}/branches/{branch}/protection/restrictions/apps
-func (s *Server) handleReposAddAppAccessRestrictionsRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReposAddAppAccessRestrictionsRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposAddAppAccessRestrictions`,
 		trace.WithAttributes(otelogen.OperationID(`repos/add-app-access-restrictions`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -14041,7 +14041,7 @@ func (s *Server) handleReposAddAppAccessRestrictionsRequest(args map[string]stri
 // HandleReposAddCollaboratorRequest handles repos/add-collaborator operation.
 //
 // PUT /repos/{owner}/{repo}/collaborators/{username}
-func (s *Server) handleReposAddCollaboratorRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReposAddCollaboratorRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposAddCollaborator`,
 		trace.WithAttributes(otelogen.OperationID(`repos/add-collaborator`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -14076,7 +14076,7 @@ func (s *Server) handleReposAddCollaboratorRequest(args map[string]string, w htt
 // HandleReposAddStatusCheckContextsRequest handles repos/add-status-check-contexts operation.
 //
 // POST /repos/{owner}/{repo}/branches/{branch}/protection/required_status_checks/contexts
-func (s *Server) handleReposAddStatusCheckContextsRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReposAddStatusCheckContextsRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposAddStatusCheckContexts`,
 		trace.WithAttributes(otelogen.OperationID(`repos/add-status-check-contexts`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -14111,7 +14111,7 @@ func (s *Server) handleReposAddStatusCheckContextsRequest(args map[string]string
 // HandleReposAddTeamAccessRestrictionsRequest handles repos/add-team-access-restrictions operation.
 //
 // POST /repos/{owner}/{repo}/branches/{branch}/protection/restrictions/teams
-func (s *Server) handleReposAddTeamAccessRestrictionsRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReposAddTeamAccessRestrictionsRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposAddTeamAccessRestrictions`,
 		trace.WithAttributes(otelogen.OperationID(`repos/add-team-access-restrictions`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -14146,7 +14146,7 @@ func (s *Server) handleReposAddTeamAccessRestrictionsRequest(args map[string]str
 // HandleReposAddUserAccessRestrictionsRequest handles repos/add-user-access-restrictions operation.
 //
 // POST /repos/{owner}/{repo}/branches/{branch}/protection/restrictions/users
-func (s *Server) handleReposAddUserAccessRestrictionsRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReposAddUserAccessRestrictionsRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposAddUserAccessRestrictions`,
 		trace.WithAttributes(otelogen.OperationID(`repos/add-user-access-restrictions`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -14181,7 +14181,7 @@ func (s *Server) handleReposAddUserAccessRestrictionsRequest(args map[string]str
 // HandleReposCheckCollaboratorRequest handles repos/check-collaborator operation.
 //
 // GET /repos/{owner}/{repo}/collaborators/{username}
-func (s *Server) handleReposCheckCollaboratorRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReposCheckCollaboratorRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposCheckCollaborator`,
 		trace.WithAttributes(otelogen.OperationID(`repos/check-collaborator`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -14210,7 +14210,7 @@ func (s *Server) handleReposCheckCollaboratorRequest(args map[string]string, w h
 // HandleReposCheckVulnerabilityAlertsRequest handles repos/check-vulnerability-alerts operation.
 //
 // GET /repos/{owner}/{repo}/vulnerability-alerts
-func (s *Server) handleReposCheckVulnerabilityAlertsRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReposCheckVulnerabilityAlertsRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposCheckVulnerabilityAlerts`,
 		trace.WithAttributes(otelogen.OperationID(`repos/check-vulnerability-alerts`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -14239,7 +14239,7 @@ func (s *Server) handleReposCheckVulnerabilityAlertsRequest(args map[string]stri
 // HandleReposCompareCommitsRequest handles repos/compare-commits operation.
 //
 // GET /repos/{owner}/{repo}/compare/{basehead}
-func (s *Server) handleReposCompareCommitsRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReposCompareCommitsRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposCompareCommits`,
 		trace.WithAttributes(otelogen.OperationID(`repos/compare-commits`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -14268,7 +14268,7 @@ func (s *Server) handleReposCompareCommitsRequest(args map[string]string, w http
 // HandleReposCreateAutolinkRequest handles repos/create-autolink operation.
 //
 // POST /repos/{owner}/{repo}/autolinks
-func (s *Server) handleReposCreateAutolinkRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReposCreateAutolinkRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposCreateAutolink`,
 		trace.WithAttributes(otelogen.OperationID(`repos/create-autolink`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -14303,7 +14303,7 @@ func (s *Server) handleReposCreateAutolinkRequest(args map[string]string, w http
 // HandleReposCreateCommitCommentRequest handles repos/create-commit-comment operation.
 //
 // POST /repos/{owner}/{repo}/commits/{commit_sha}/comments
-func (s *Server) handleReposCreateCommitCommentRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReposCreateCommitCommentRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposCreateCommitComment`,
 		trace.WithAttributes(otelogen.OperationID(`repos/create-commit-comment`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -14338,7 +14338,7 @@ func (s *Server) handleReposCreateCommitCommentRequest(args map[string]string, w
 // HandleReposCreateCommitSignatureProtectionRequest handles repos/create-commit-signature-protection operation.
 //
 // POST /repos/{owner}/{repo}/branches/{branch}/protection/required_signatures
-func (s *Server) handleReposCreateCommitSignatureProtectionRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReposCreateCommitSignatureProtectionRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposCreateCommitSignatureProtection`,
 		trace.WithAttributes(otelogen.OperationID(`repos/create-commit-signature-protection`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -14367,7 +14367,7 @@ func (s *Server) handleReposCreateCommitSignatureProtectionRequest(args map[stri
 // HandleReposCreateCommitStatusRequest handles repos/create-commit-status operation.
 //
 // POST /repos/{owner}/{repo}/statuses/{sha}
-func (s *Server) handleReposCreateCommitStatusRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReposCreateCommitStatusRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposCreateCommitStatus`,
 		trace.WithAttributes(otelogen.OperationID(`repos/create-commit-status`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -14402,7 +14402,7 @@ func (s *Server) handleReposCreateCommitStatusRequest(args map[string]string, w 
 // HandleReposCreateDeployKeyRequest handles repos/create-deploy-key operation.
 //
 // POST /repos/{owner}/{repo}/keys
-func (s *Server) handleReposCreateDeployKeyRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReposCreateDeployKeyRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposCreateDeployKey`,
 		trace.WithAttributes(otelogen.OperationID(`repos/create-deploy-key`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -14437,7 +14437,7 @@ func (s *Server) handleReposCreateDeployKeyRequest(args map[string]string, w htt
 // HandleReposCreateDeploymentRequest handles repos/create-deployment operation.
 //
 // POST /repos/{owner}/{repo}/deployments
-func (s *Server) handleReposCreateDeploymentRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReposCreateDeploymentRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposCreateDeployment`,
 		trace.WithAttributes(otelogen.OperationID(`repos/create-deployment`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -14472,7 +14472,7 @@ func (s *Server) handleReposCreateDeploymentRequest(args map[string]string, w ht
 // HandleReposCreateDeploymentStatusRequest handles repos/create-deployment-status operation.
 //
 // POST /repos/{owner}/{repo}/deployments/{deployment_id}/statuses
-func (s *Server) handleReposCreateDeploymentStatusRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReposCreateDeploymentStatusRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposCreateDeploymentStatus`,
 		trace.WithAttributes(otelogen.OperationID(`repos/create-deployment-status`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -14507,7 +14507,7 @@ func (s *Server) handleReposCreateDeploymentStatusRequest(args map[string]string
 // HandleReposCreateDispatchEventRequest handles repos/create-dispatch-event operation.
 //
 // POST /repos/{owner}/{repo}/dispatches
-func (s *Server) handleReposCreateDispatchEventRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReposCreateDispatchEventRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposCreateDispatchEvent`,
 		trace.WithAttributes(otelogen.OperationID(`repos/create-dispatch-event`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -14542,7 +14542,7 @@ func (s *Server) handleReposCreateDispatchEventRequest(args map[string]string, w
 // HandleReposCreateForAuthenticatedUserRequest handles repos/create-for-authenticated-user operation.
 //
 // POST /user/repos
-func (s *Server) handleReposCreateForAuthenticatedUserRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReposCreateForAuthenticatedUserRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposCreateForAuthenticatedUser`,
 		trace.WithAttributes(otelogen.OperationID(`repos/create-for-authenticated-user`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -14571,7 +14571,7 @@ func (s *Server) handleReposCreateForAuthenticatedUserRequest(args map[string]st
 // HandleReposCreateForkRequest handles repos/create-fork operation.
 //
 // POST /repos/{owner}/{repo}/forks
-func (s *Server) handleReposCreateForkRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReposCreateForkRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposCreateFork`,
 		trace.WithAttributes(otelogen.OperationID(`repos/create-fork`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -14606,7 +14606,7 @@ func (s *Server) handleReposCreateForkRequest(args map[string]string, w http.Res
 // HandleReposCreateInOrgRequest handles repos/create-in-org operation.
 //
 // POST /orgs/{org}/repos
-func (s *Server) handleReposCreateInOrgRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReposCreateInOrgRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposCreateInOrg`,
 		trace.WithAttributes(otelogen.OperationID(`repos/create-in-org`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -14641,7 +14641,7 @@ func (s *Server) handleReposCreateInOrgRequest(args map[string]string, w http.Re
 // HandleReposCreateOrUpdateFileContentsRequest handles repos/create-or-update-file-contents operation.
 //
 // PUT /repos/{owner}/{repo}/contents/{path}
-func (s *Server) handleReposCreateOrUpdateFileContentsRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReposCreateOrUpdateFileContentsRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposCreateOrUpdateFileContents`,
 		trace.WithAttributes(otelogen.OperationID(`repos/create-or-update-file-contents`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -14676,7 +14676,7 @@ func (s *Server) handleReposCreateOrUpdateFileContentsRequest(args map[string]st
 // HandleReposCreatePagesSiteRequest handles repos/create-pages-site operation.
 //
 // POST /repos/{owner}/{repo}/pages
-func (s *Server) handleReposCreatePagesSiteRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReposCreatePagesSiteRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposCreatePagesSite`,
 		trace.WithAttributes(otelogen.OperationID(`repos/create-pages-site`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -14711,7 +14711,7 @@ func (s *Server) handleReposCreatePagesSiteRequest(args map[string]string, w htt
 // HandleReposCreateReleaseRequest handles repos/create-release operation.
 //
 // POST /repos/{owner}/{repo}/releases
-func (s *Server) handleReposCreateReleaseRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReposCreateReleaseRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposCreateRelease`,
 		trace.WithAttributes(otelogen.OperationID(`repos/create-release`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -14746,7 +14746,7 @@ func (s *Server) handleReposCreateReleaseRequest(args map[string]string, w http.
 // HandleReposCreateUsingTemplateRequest handles repos/create-using-template operation.
 //
 // POST /repos/{template_owner}/{template_repo}/generate
-func (s *Server) handleReposCreateUsingTemplateRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReposCreateUsingTemplateRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposCreateUsingTemplate`,
 		trace.WithAttributes(otelogen.OperationID(`repos/create-using-template`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -14781,7 +14781,7 @@ func (s *Server) handleReposCreateUsingTemplateRequest(args map[string]string, w
 // HandleReposCreateWebhookRequest handles repos/create-webhook operation.
 //
 // POST /repos/{owner}/{repo}/hooks
-func (s *Server) handleReposCreateWebhookRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReposCreateWebhookRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposCreateWebhook`,
 		trace.WithAttributes(otelogen.OperationID(`repos/create-webhook`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -14816,7 +14816,7 @@ func (s *Server) handleReposCreateWebhookRequest(args map[string]string, w http.
 // HandleReposDeclineInvitationRequest handles repos/decline-invitation operation.
 //
 // DELETE /user/repository_invitations/{invitation_id}
-func (s *Server) handleReposDeclineInvitationRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReposDeclineInvitationRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposDeclineInvitation`,
 		trace.WithAttributes(otelogen.OperationID(`repos/decline-invitation`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -14845,7 +14845,7 @@ func (s *Server) handleReposDeclineInvitationRequest(args map[string]string, w h
 // HandleReposDeleteRequest handles repos/delete operation.
 //
 // DELETE /repos/{owner}/{repo}
-func (s *Server) handleReposDeleteRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReposDeleteRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposDelete`,
 		trace.WithAttributes(otelogen.OperationID(`repos/delete`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -14874,7 +14874,7 @@ func (s *Server) handleReposDeleteRequest(args map[string]string, w http.Respons
 // HandleReposDeleteAccessRestrictionsRequest handles repos/delete-access-restrictions operation.
 //
 // DELETE /repos/{owner}/{repo}/branches/{branch}/protection/restrictions
-func (s *Server) handleReposDeleteAccessRestrictionsRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReposDeleteAccessRestrictionsRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposDeleteAccessRestrictions`,
 		trace.WithAttributes(otelogen.OperationID(`repos/delete-access-restrictions`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -14903,7 +14903,7 @@ func (s *Server) handleReposDeleteAccessRestrictionsRequest(args map[string]stri
 // HandleReposDeleteAdminBranchProtectionRequest handles repos/delete-admin-branch-protection operation.
 //
 // DELETE /repos/{owner}/{repo}/branches/{branch}/protection/enforce_admins
-func (s *Server) handleReposDeleteAdminBranchProtectionRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReposDeleteAdminBranchProtectionRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposDeleteAdminBranchProtection`,
 		trace.WithAttributes(otelogen.OperationID(`repos/delete-admin-branch-protection`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -14932,7 +14932,7 @@ func (s *Server) handleReposDeleteAdminBranchProtectionRequest(args map[string]s
 // HandleReposDeleteAnEnvironmentRequest handles repos/delete-an-environment operation.
 //
 // DELETE /repos/{owner}/{repo}/environments/{environment_name}
-func (s *Server) handleReposDeleteAnEnvironmentRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReposDeleteAnEnvironmentRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposDeleteAnEnvironment`,
 		trace.WithAttributes(otelogen.OperationID(`repos/delete-an-environment`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -14961,7 +14961,7 @@ func (s *Server) handleReposDeleteAnEnvironmentRequest(args map[string]string, w
 // HandleReposDeleteAutolinkRequest handles repos/delete-autolink operation.
 //
 // DELETE /repos/{owner}/{repo}/autolinks/{autolink_id}
-func (s *Server) handleReposDeleteAutolinkRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReposDeleteAutolinkRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposDeleteAutolink`,
 		trace.WithAttributes(otelogen.OperationID(`repos/delete-autolink`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -14990,7 +14990,7 @@ func (s *Server) handleReposDeleteAutolinkRequest(args map[string]string, w http
 // HandleReposDeleteBranchProtectionRequest handles repos/delete-branch-protection operation.
 //
 // DELETE /repos/{owner}/{repo}/branches/{branch}/protection
-func (s *Server) handleReposDeleteBranchProtectionRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReposDeleteBranchProtectionRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposDeleteBranchProtection`,
 		trace.WithAttributes(otelogen.OperationID(`repos/delete-branch-protection`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -15019,7 +15019,7 @@ func (s *Server) handleReposDeleteBranchProtectionRequest(args map[string]string
 // HandleReposDeleteCommitCommentRequest handles repos/delete-commit-comment operation.
 //
 // DELETE /repos/{owner}/{repo}/comments/{comment_id}
-func (s *Server) handleReposDeleteCommitCommentRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReposDeleteCommitCommentRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposDeleteCommitComment`,
 		trace.WithAttributes(otelogen.OperationID(`repos/delete-commit-comment`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -15048,7 +15048,7 @@ func (s *Server) handleReposDeleteCommitCommentRequest(args map[string]string, w
 // HandleReposDeleteCommitSignatureProtectionRequest handles repos/delete-commit-signature-protection operation.
 //
 // DELETE /repos/{owner}/{repo}/branches/{branch}/protection/required_signatures
-func (s *Server) handleReposDeleteCommitSignatureProtectionRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReposDeleteCommitSignatureProtectionRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposDeleteCommitSignatureProtection`,
 		trace.WithAttributes(otelogen.OperationID(`repos/delete-commit-signature-protection`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -15077,7 +15077,7 @@ func (s *Server) handleReposDeleteCommitSignatureProtectionRequest(args map[stri
 // HandleReposDeleteDeployKeyRequest handles repos/delete-deploy-key operation.
 //
 // DELETE /repos/{owner}/{repo}/keys/{key_id}
-func (s *Server) handleReposDeleteDeployKeyRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReposDeleteDeployKeyRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposDeleteDeployKey`,
 		trace.WithAttributes(otelogen.OperationID(`repos/delete-deploy-key`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -15106,7 +15106,7 @@ func (s *Server) handleReposDeleteDeployKeyRequest(args map[string]string, w htt
 // HandleReposDeleteDeploymentRequest handles repos/delete-deployment operation.
 //
 // DELETE /repos/{owner}/{repo}/deployments/{deployment_id}
-func (s *Server) handleReposDeleteDeploymentRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReposDeleteDeploymentRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposDeleteDeployment`,
 		trace.WithAttributes(otelogen.OperationID(`repos/delete-deployment`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -15135,7 +15135,7 @@ func (s *Server) handleReposDeleteDeploymentRequest(args map[string]string, w ht
 // HandleReposDeleteFileRequest handles repos/delete-file operation.
 //
 // DELETE /repos/{owner}/{repo}/contents/{path}
-func (s *Server) handleReposDeleteFileRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReposDeleteFileRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposDeleteFile`,
 		trace.WithAttributes(otelogen.OperationID(`repos/delete-file`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -15170,7 +15170,7 @@ func (s *Server) handleReposDeleteFileRequest(args map[string]string, w http.Res
 // HandleReposDeleteInvitationRequest handles repos/delete-invitation operation.
 //
 // DELETE /repos/{owner}/{repo}/invitations/{invitation_id}
-func (s *Server) handleReposDeleteInvitationRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReposDeleteInvitationRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposDeleteInvitation`,
 		trace.WithAttributes(otelogen.OperationID(`repos/delete-invitation`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -15199,7 +15199,7 @@ func (s *Server) handleReposDeleteInvitationRequest(args map[string]string, w ht
 // HandleReposDeletePagesSiteRequest handles repos/delete-pages-site operation.
 //
 // DELETE /repos/{owner}/{repo}/pages
-func (s *Server) handleReposDeletePagesSiteRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReposDeletePagesSiteRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposDeletePagesSite`,
 		trace.WithAttributes(otelogen.OperationID(`repos/delete-pages-site`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -15228,7 +15228,7 @@ func (s *Server) handleReposDeletePagesSiteRequest(args map[string]string, w htt
 // HandleReposDeletePullRequestReviewProtectionRequest handles repos/delete-pull-request-review-protection operation.
 //
 // DELETE /repos/{owner}/{repo}/branches/{branch}/protection/required_pull_request_reviews
-func (s *Server) handleReposDeletePullRequestReviewProtectionRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReposDeletePullRequestReviewProtectionRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposDeletePullRequestReviewProtection`,
 		trace.WithAttributes(otelogen.OperationID(`repos/delete-pull-request-review-protection`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -15257,7 +15257,7 @@ func (s *Server) handleReposDeletePullRequestReviewProtectionRequest(args map[st
 // HandleReposDeleteReleaseRequest handles repos/delete-release operation.
 //
 // DELETE /repos/{owner}/{repo}/releases/{release_id}
-func (s *Server) handleReposDeleteReleaseRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReposDeleteReleaseRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposDeleteRelease`,
 		trace.WithAttributes(otelogen.OperationID(`repos/delete-release`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -15286,7 +15286,7 @@ func (s *Server) handleReposDeleteReleaseRequest(args map[string]string, w http.
 // HandleReposDeleteReleaseAssetRequest handles repos/delete-release-asset operation.
 //
 // DELETE /repos/{owner}/{repo}/releases/assets/{asset_id}
-func (s *Server) handleReposDeleteReleaseAssetRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReposDeleteReleaseAssetRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposDeleteReleaseAsset`,
 		trace.WithAttributes(otelogen.OperationID(`repos/delete-release-asset`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -15315,7 +15315,7 @@ func (s *Server) handleReposDeleteReleaseAssetRequest(args map[string]string, w 
 // HandleReposDeleteWebhookRequest handles repos/delete-webhook operation.
 //
 // DELETE /repos/{owner}/{repo}/hooks/{hook_id}
-func (s *Server) handleReposDeleteWebhookRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReposDeleteWebhookRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposDeleteWebhook`,
 		trace.WithAttributes(otelogen.OperationID(`repos/delete-webhook`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -15344,7 +15344,7 @@ func (s *Server) handleReposDeleteWebhookRequest(args map[string]string, w http.
 // HandleReposDisableAutomatedSecurityFixesRequest handles repos/disable-automated-security-fixes operation.
 //
 // DELETE /repos/{owner}/{repo}/automated-security-fixes
-func (s *Server) handleReposDisableAutomatedSecurityFixesRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReposDisableAutomatedSecurityFixesRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposDisableAutomatedSecurityFixes`,
 		trace.WithAttributes(otelogen.OperationID(`repos/disable-automated-security-fixes`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -15373,7 +15373,7 @@ func (s *Server) handleReposDisableAutomatedSecurityFixesRequest(args map[string
 // HandleReposDisableLfsForRepoRequest handles repos/disable-lfs-for-repo operation.
 //
 // DELETE /repos/{owner}/{repo}/lfs
-func (s *Server) handleReposDisableLfsForRepoRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReposDisableLfsForRepoRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposDisableLfsForRepo`,
 		trace.WithAttributes(otelogen.OperationID(`repos/disable-lfs-for-repo`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -15402,7 +15402,7 @@ func (s *Server) handleReposDisableLfsForRepoRequest(args map[string]string, w h
 // HandleReposDisableVulnerabilityAlertsRequest handles repos/disable-vulnerability-alerts operation.
 //
 // DELETE /repos/{owner}/{repo}/vulnerability-alerts
-func (s *Server) handleReposDisableVulnerabilityAlertsRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReposDisableVulnerabilityAlertsRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposDisableVulnerabilityAlerts`,
 		trace.WithAttributes(otelogen.OperationID(`repos/disable-vulnerability-alerts`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -15431,7 +15431,7 @@ func (s *Server) handleReposDisableVulnerabilityAlertsRequest(args map[string]st
 // HandleReposDownloadTarballArchiveRequest handles repos/download-tarball-archive operation.
 //
 // GET /repos/{owner}/{repo}/tarball/{ref}
-func (s *Server) handleReposDownloadTarballArchiveRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReposDownloadTarballArchiveRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposDownloadTarballArchive`,
 		trace.WithAttributes(otelogen.OperationID(`repos/download-tarball-archive`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -15460,7 +15460,7 @@ func (s *Server) handleReposDownloadTarballArchiveRequest(args map[string]string
 // HandleReposDownloadZipballArchiveRequest handles repos/download-zipball-archive operation.
 //
 // GET /repos/{owner}/{repo}/zipball/{ref}
-func (s *Server) handleReposDownloadZipballArchiveRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReposDownloadZipballArchiveRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposDownloadZipballArchive`,
 		trace.WithAttributes(otelogen.OperationID(`repos/download-zipball-archive`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -15489,7 +15489,7 @@ func (s *Server) handleReposDownloadZipballArchiveRequest(args map[string]string
 // HandleReposEnableAutomatedSecurityFixesRequest handles repos/enable-automated-security-fixes operation.
 //
 // PUT /repos/{owner}/{repo}/automated-security-fixes
-func (s *Server) handleReposEnableAutomatedSecurityFixesRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReposEnableAutomatedSecurityFixesRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposEnableAutomatedSecurityFixes`,
 		trace.WithAttributes(otelogen.OperationID(`repos/enable-automated-security-fixes`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -15518,7 +15518,7 @@ func (s *Server) handleReposEnableAutomatedSecurityFixesRequest(args map[string]
 // HandleReposEnableLfsForRepoRequest handles repos/enable-lfs-for-repo operation.
 //
 // PUT /repos/{owner}/{repo}/lfs
-func (s *Server) handleReposEnableLfsForRepoRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReposEnableLfsForRepoRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposEnableLfsForRepo`,
 		trace.WithAttributes(otelogen.OperationID(`repos/enable-lfs-for-repo`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -15547,7 +15547,7 @@ func (s *Server) handleReposEnableLfsForRepoRequest(args map[string]string, w ht
 // HandleReposEnableVulnerabilityAlertsRequest handles repos/enable-vulnerability-alerts operation.
 //
 // PUT /repos/{owner}/{repo}/vulnerability-alerts
-func (s *Server) handleReposEnableVulnerabilityAlertsRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReposEnableVulnerabilityAlertsRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposEnableVulnerabilityAlerts`,
 		trace.WithAttributes(otelogen.OperationID(`repos/enable-vulnerability-alerts`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -15576,7 +15576,7 @@ func (s *Server) handleReposEnableVulnerabilityAlertsRequest(args map[string]str
 // HandleReposGetRequest handles repos/get operation.
 //
 // GET /repos/{owner}/{repo}
-func (s *Server) handleReposGetRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReposGetRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposGet`,
 		trace.WithAttributes(otelogen.OperationID(`repos/get`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -15605,7 +15605,7 @@ func (s *Server) handleReposGetRequest(args map[string]string, w http.ResponseWr
 // HandleReposGetAccessRestrictionsRequest handles repos/get-access-restrictions operation.
 //
 // GET /repos/{owner}/{repo}/branches/{branch}/protection/restrictions
-func (s *Server) handleReposGetAccessRestrictionsRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReposGetAccessRestrictionsRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposGetAccessRestrictions`,
 		trace.WithAttributes(otelogen.OperationID(`repos/get-access-restrictions`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -15634,7 +15634,7 @@ func (s *Server) handleReposGetAccessRestrictionsRequest(args map[string]string,
 // HandleReposGetAdminBranchProtectionRequest handles repos/get-admin-branch-protection operation.
 //
 // GET /repos/{owner}/{repo}/branches/{branch}/protection/enforce_admins
-func (s *Server) handleReposGetAdminBranchProtectionRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReposGetAdminBranchProtectionRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposGetAdminBranchProtection`,
 		trace.WithAttributes(otelogen.OperationID(`repos/get-admin-branch-protection`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -15663,7 +15663,7 @@ func (s *Server) handleReposGetAdminBranchProtectionRequest(args map[string]stri
 // HandleReposGetAllStatusCheckContextsRequest handles repos/get-all-status-check-contexts operation.
 //
 // GET /repos/{owner}/{repo}/branches/{branch}/protection/required_status_checks/contexts
-func (s *Server) handleReposGetAllStatusCheckContextsRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReposGetAllStatusCheckContextsRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposGetAllStatusCheckContexts`,
 		trace.WithAttributes(otelogen.OperationID(`repos/get-all-status-check-contexts`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -15692,7 +15692,7 @@ func (s *Server) handleReposGetAllStatusCheckContextsRequest(args map[string]str
 // HandleReposGetAllTopicsRequest handles repos/get-all-topics operation.
 //
 // GET /repos/{owner}/{repo}/topics
-func (s *Server) handleReposGetAllTopicsRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReposGetAllTopicsRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposGetAllTopics`,
 		trace.WithAttributes(otelogen.OperationID(`repos/get-all-topics`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -15721,7 +15721,7 @@ func (s *Server) handleReposGetAllTopicsRequest(args map[string]string, w http.R
 // HandleReposGetAppsWithAccessToProtectedBranchRequest handles repos/get-apps-with-access-to-protected-branch operation.
 //
 // GET /repos/{owner}/{repo}/branches/{branch}/protection/restrictions/apps
-func (s *Server) handleReposGetAppsWithAccessToProtectedBranchRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReposGetAppsWithAccessToProtectedBranchRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposGetAppsWithAccessToProtectedBranch`,
 		trace.WithAttributes(otelogen.OperationID(`repos/get-apps-with-access-to-protected-branch`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -15750,7 +15750,7 @@ func (s *Server) handleReposGetAppsWithAccessToProtectedBranchRequest(args map[s
 // HandleReposGetAutolinkRequest handles repos/get-autolink operation.
 //
 // GET /repos/{owner}/{repo}/autolinks/{autolink_id}
-func (s *Server) handleReposGetAutolinkRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReposGetAutolinkRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposGetAutolink`,
 		trace.WithAttributes(otelogen.OperationID(`repos/get-autolink`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -15779,7 +15779,7 @@ func (s *Server) handleReposGetAutolinkRequest(args map[string]string, w http.Re
 // HandleReposGetBranchRequest handles repos/get-branch operation.
 //
 // GET /repos/{owner}/{repo}/branches/{branch}
-func (s *Server) handleReposGetBranchRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReposGetBranchRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposGetBranch`,
 		trace.WithAttributes(otelogen.OperationID(`repos/get-branch`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -15808,7 +15808,7 @@ func (s *Server) handleReposGetBranchRequest(args map[string]string, w http.Resp
 // HandleReposGetBranchProtectionRequest handles repos/get-branch-protection operation.
 //
 // GET /repos/{owner}/{repo}/branches/{branch}/protection
-func (s *Server) handleReposGetBranchProtectionRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReposGetBranchProtectionRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposGetBranchProtection`,
 		trace.WithAttributes(otelogen.OperationID(`repos/get-branch-protection`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -15837,7 +15837,7 @@ func (s *Server) handleReposGetBranchProtectionRequest(args map[string]string, w
 // HandleReposGetClonesRequest handles repos/get-clones operation.
 //
 // GET /repos/{owner}/{repo}/traffic/clones
-func (s *Server) handleReposGetClonesRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReposGetClonesRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposGetClones`,
 		trace.WithAttributes(otelogen.OperationID(`repos/get-clones`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -15866,7 +15866,7 @@ func (s *Server) handleReposGetClonesRequest(args map[string]string, w http.Resp
 // HandleReposGetCodeFrequencyStatsRequest handles repos/get-code-frequency-stats operation.
 //
 // GET /repos/{owner}/{repo}/stats/code_frequency
-func (s *Server) handleReposGetCodeFrequencyStatsRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReposGetCodeFrequencyStatsRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposGetCodeFrequencyStats`,
 		trace.WithAttributes(otelogen.OperationID(`repos/get-code-frequency-stats`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -15895,7 +15895,7 @@ func (s *Server) handleReposGetCodeFrequencyStatsRequest(args map[string]string,
 // HandleReposGetCollaboratorPermissionLevelRequest handles repos/get-collaborator-permission-level operation.
 //
 // GET /repos/{owner}/{repo}/collaborators/{username}/permission
-func (s *Server) handleReposGetCollaboratorPermissionLevelRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReposGetCollaboratorPermissionLevelRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposGetCollaboratorPermissionLevel`,
 		trace.WithAttributes(otelogen.OperationID(`repos/get-collaborator-permission-level`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -15924,7 +15924,7 @@ func (s *Server) handleReposGetCollaboratorPermissionLevelRequest(args map[strin
 // HandleReposGetCombinedStatusForRefRequest handles repos/get-combined-status-for-ref operation.
 //
 // GET /repos/{owner}/{repo}/commits/{ref}/status
-func (s *Server) handleReposGetCombinedStatusForRefRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReposGetCombinedStatusForRefRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposGetCombinedStatusForRef`,
 		trace.WithAttributes(otelogen.OperationID(`repos/get-combined-status-for-ref`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -15953,7 +15953,7 @@ func (s *Server) handleReposGetCombinedStatusForRefRequest(args map[string]strin
 // HandleReposGetCommitRequest handles repos/get-commit operation.
 //
 // GET /repos/{owner}/{repo}/commits/{ref}
-func (s *Server) handleReposGetCommitRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReposGetCommitRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposGetCommit`,
 		trace.WithAttributes(otelogen.OperationID(`repos/get-commit`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -15982,7 +15982,7 @@ func (s *Server) handleReposGetCommitRequest(args map[string]string, w http.Resp
 // HandleReposGetCommitActivityStatsRequest handles repos/get-commit-activity-stats operation.
 //
 // GET /repos/{owner}/{repo}/stats/commit_activity
-func (s *Server) handleReposGetCommitActivityStatsRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReposGetCommitActivityStatsRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposGetCommitActivityStats`,
 		trace.WithAttributes(otelogen.OperationID(`repos/get-commit-activity-stats`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -16011,7 +16011,7 @@ func (s *Server) handleReposGetCommitActivityStatsRequest(args map[string]string
 // HandleReposGetCommitCommentRequest handles repos/get-commit-comment operation.
 //
 // GET /repos/{owner}/{repo}/comments/{comment_id}
-func (s *Server) handleReposGetCommitCommentRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReposGetCommitCommentRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposGetCommitComment`,
 		trace.WithAttributes(otelogen.OperationID(`repos/get-commit-comment`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -16040,7 +16040,7 @@ func (s *Server) handleReposGetCommitCommentRequest(args map[string]string, w ht
 // HandleReposGetCommitSignatureProtectionRequest handles repos/get-commit-signature-protection operation.
 //
 // GET /repos/{owner}/{repo}/branches/{branch}/protection/required_signatures
-func (s *Server) handleReposGetCommitSignatureProtectionRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReposGetCommitSignatureProtectionRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposGetCommitSignatureProtection`,
 		trace.WithAttributes(otelogen.OperationID(`repos/get-commit-signature-protection`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -16069,7 +16069,7 @@ func (s *Server) handleReposGetCommitSignatureProtectionRequest(args map[string]
 // HandleReposGetCommunityProfileMetricsRequest handles repos/get-community-profile-metrics operation.
 //
 // GET /repos/{owner}/{repo}/community/profile
-func (s *Server) handleReposGetCommunityProfileMetricsRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReposGetCommunityProfileMetricsRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposGetCommunityProfileMetrics`,
 		trace.WithAttributes(otelogen.OperationID(`repos/get-community-profile-metrics`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -16098,7 +16098,7 @@ func (s *Server) handleReposGetCommunityProfileMetricsRequest(args map[string]st
 // HandleReposGetContributorsStatsRequest handles repos/get-contributors-stats operation.
 //
 // GET /repos/{owner}/{repo}/stats/contributors
-func (s *Server) handleReposGetContributorsStatsRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReposGetContributorsStatsRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposGetContributorsStats`,
 		trace.WithAttributes(otelogen.OperationID(`repos/get-contributors-stats`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -16127,7 +16127,7 @@ func (s *Server) handleReposGetContributorsStatsRequest(args map[string]string, 
 // HandleReposGetDeployKeyRequest handles repos/get-deploy-key operation.
 //
 // GET /repos/{owner}/{repo}/keys/{key_id}
-func (s *Server) handleReposGetDeployKeyRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReposGetDeployKeyRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposGetDeployKey`,
 		trace.WithAttributes(otelogen.OperationID(`repos/get-deploy-key`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -16156,7 +16156,7 @@ func (s *Server) handleReposGetDeployKeyRequest(args map[string]string, w http.R
 // HandleReposGetDeploymentRequest handles repos/get-deployment operation.
 //
 // GET /repos/{owner}/{repo}/deployments/{deployment_id}
-func (s *Server) handleReposGetDeploymentRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReposGetDeploymentRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposGetDeployment`,
 		trace.WithAttributes(otelogen.OperationID(`repos/get-deployment`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -16185,7 +16185,7 @@ func (s *Server) handleReposGetDeploymentRequest(args map[string]string, w http.
 // HandleReposGetDeploymentStatusRequest handles repos/get-deployment-status operation.
 //
 // GET /repos/{owner}/{repo}/deployments/{deployment_id}/statuses/{status_id}
-func (s *Server) handleReposGetDeploymentStatusRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReposGetDeploymentStatusRequest(args [4]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposGetDeploymentStatus`,
 		trace.WithAttributes(otelogen.OperationID(`repos/get-deployment-status`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -16214,7 +16214,7 @@ func (s *Server) handleReposGetDeploymentStatusRequest(args map[string]string, w
 // HandleReposGetLatestPagesBuildRequest handles repos/get-latest-pages-build operation.
 //
 // GET /repos/{owner}/{repo}/pages/builds/latest
-func (s *Server) handleReposGetLatestPagesBuildRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReposGetLatestPagesBuildRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposGetLatestPagesBuild`,
 		trace.WithAttributes(otelogen.OperationID(`repos/get-latest-pages-build`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -16243,7 +16243,7 @@ func (s *Server) handleReposGetLatestPagesBuildRequest(args map[string]string, w
 // HandleReposGetLatestReleaseRequest handles repos/get-latest-release operation.
 //
 // GET /repos/{owner}/{repo}/releases/latest
-func (s *Server) handleReposGetLatestReleaseRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReposGetLatestReleaseRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposGetLatestRelease`,
 		trace.WithAttributes(otelogen.OperationID(`repos/get-latest-release`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -16272,7 +16272,7 @@ func (s *Server) handleReposGetLatestReleaseRequest(args map[string]string, w ht
 // HandleReposGetPagesRequest handles repos/get-pages operation.
 //
 // GET /repos/{owner}/{repo}/pages
-func (s *Server) handleReposGetPagesRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReposGetPagesRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposGetPages`,
 		trace.WithAttributes(otelogen.OperationID(`repos/get-pages`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -16301,7 +16301,7 @@ func (s *Server) handleReposGetPagesRequest(args map[string]string, w http.Respo
 // HandleReposGetPagesBuildRequest handles repos/get-pages-build operation.
 //
 // GET /repos/{owner}/{repo}/pages/builds/{build_id}
-func (s *Server) handleReposGetPagesBuildRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReposGetPagesBuildRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposGetPagesBuild`,
 		trace.WithAttributes(otelogen.OperationID(`repos/get-pages-build`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -16330,7 +16330,7 @@ func (s *Server) handleReposGetPagesBuildRequest(args map[string]string, w http.
 // HandleReposGetPagesHealthCheckRequest handles repos/get-pages-health-check operation.
 //
 // GET /repos/{owner}/{repo}/pages/health
-func (s *Server) handleReposGetPagesHealthCheckRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReposGetPagesHealthCheckRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposGetPagesHealthCheck`,
 		trace.WithAttributes(otelogen.OperationID(`repos/get-pages-health-check`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -16359,7 +16359,7 @@ func (s *Server) handleReposGetPagesHealthCheckRequest(args map[string]string, w
 // HandleReposGetParticipationStatsRequest handles repos/get-participation-stats operation.
 //
 // GET /repos/{owner}/{repo}/stats/participation
-func (s *Server) handleReposGetParticipationStatsRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReposGetParticipationStatsRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposGetParticipationStats`,
 		trace.WithAttributes(otelogen.OperationID(`repos/get-participation-stats`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -16388,7 +16388,7 @@ func (s *Server) handleReposGetParticipationStatsRequest(args map[string]string,
 // HandleReposGetPullRequestReviewProtectionRequest handles repos/get-pull-request-review-protection operation.
 //
 // GET /repos/{owner}/{repo}/branches/{branch}/protection/required_pull_request_reviews
-func (s *Server) handleReposGetPullRequestReviewProtectionRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReposGetPullRequestReviewProtectionRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposGetPullRequestReviewProtection`,
 		trace.WithAttributes(otelogen.OperationID(`repos/get-pull-request-review-protection`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -16417,7 +16417,7 @@ func (s *Server) handleReposGetPullRequestReviewProtectionRequest(args map[strin
 // HandleReposGetPunchCardStatsRequest handles repos/get-punch-card-stats operation.
 //
 // GET /repos/{owner}/{repo}/stats/punch_card
-func (s *Server) handleReposGetPunchCardStatsRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReposGetPunchCardStatsRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposGetPunchCardStats`,
 		trace.WithAttributes(otelogen.OperationID(`repos/get-punch-card-stats`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -16446,7 +16446,7 @@ func (s *Server) handleReposGetPunchCardStatsRequest(args map[string]string, w h
 // HandleReposGetReadmeRequest handles repos/get-readme operation.
 //
 // GET /repos/{owner}/{repo}/readme
-func (s *Server) handleReposGetReadmeRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReposGetReadmeRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposGetReadme`,
 		trace.WithAttributes(otelogen.OperationID(`repos/get-readme`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -16475,7 +16475,7 @@ func (s *Server) handleReposGetReadmeRequest(args map[string]string, w http.Resp
 // HandleReposGetReadmeInDirectoryRequest handles repos/get-readme-in-directory operation.
 //
 // GET /repos/{owner}/{repo}/readme/{dir}
-func (s *Server) handleReposGetReadmeInDirectoryRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReposGetReadmeInDirectoryRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposGetReadmeInDirectory`,
 		trace.WithAttributes(otelogen.OperationID(`repos/get-readme-in-directory`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -16504,7 +16504,7 @@ func (s *Server) handleReposGetReadmeInDirectoryRequest(args map[string]string, 
 // HandleReposGetReleaseRequest handles repos/get-release operation.
 //
 // GET /repos/{owner}/{repo}/releases/{release_id}
-func (s *Server) handleReposGetReleaseRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReposGetReleaseRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposGetRelease`,
 		trace.WithAttributes(otelogen.OperationID(`repos/get-release`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -16533,7 +16533,7 @@ func (s *Server) handleReposGetReleaseRequest(args map[string]string, w http.Res
 // HandleReposGetReleaseAssetRequest handles repos/get-release-asset operation.
 //
 // GET /repos/{owner}/{repo}/releases/assets/{asset_id}
-func (s *Server) handleReposGetReleaseAssetRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReposGetReleaseAssetRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposGetReleaseAsset`,
 		trace.WithAttributes(otelogen.OperationID(`repos/get-release-asset`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -16562,7 +16562,7 @@ func (s *Server) handleReposGetReleaseAssetRequest(args map[string]string, w htt
 // HandleReposGetReleaseByTagRequest handles repos/get-release-by-tag operation.
 //
 // GET /repos/{owner}/{repo}/releases/tags/{tag}
-func (s *Server) handleReposGetReleaseByTagRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReposGetReleaseByTagRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposGetReleaseByTag`,
 		trace.WithAttributes(otelogen.OperationID(`repos/get-release-by-tag`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -16591,7 +16591,7 @@ func (s *Server) handleReposGetReleaseByTagRequest(args map[string]string, w htt
 // HandleReposGetStatusChecksProtectionRequest handles repos/get-status-checks-protection operation.
 //
 // GET /repos/{owner}/{repo}/branches/{branch}/protection/required_status_checks
-func (s *Server) handleReposGetStatusChecksProtectionRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReposGetStatusChecksProtectionRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposGetStatusChecksProtection`,
 		trace.WithAttributes(otelogen.OperationID(`repos/get-status-checks-protection`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -16620,7 +16620,7 @@ func (s *Server) handleReposGetStatusChecksProtectionRequest(args map[string]str
 // HandleReposGetTeamsWithAccessToProtectedBranchRequest handles repos/get-teams-with-access-to-protected-branch operation.
 //
 // GET /repos/{owner}/{repo}/branches/{branch}/protection/restrictions/teams
-func (s *Server) handleReposGetTeamsWithAccessToProtectedBranchRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReposGetTeamsWithAccessToProtectedBranchRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposGetTeamsWithAccessToProtectedBranch`,
 		trace.WithAttributes(otelogen.OperationID(`repos/get-teams-with-access-to-protected-branch`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -16649,7 +16649,7 @@ func (s *Server) handleReposGetTeamsWithAccessToProtectedBranchRequest(args map[
 // HandleReposGetTopPathsRequest handles repos/get-top-paths operation.
 //
 // GET /repos/{owner}/{repo}/traffic/popular/paths
-func (s *Server) handleReposGetTopPathsRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReposGetTopPathsRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposGetTopPaths`,
 		trace.WithAttributes(otelogen.OperationID(`repos/get-top-paths`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -16678,7 +16678,7 @@ func (s *Server) handleReposGetTopPathsRequest(args map[string]string, w http.Re
 // HandleReposGetTopReferrersRequest handles repos/get-top-referrers operation.
 //
 // GET /repos/{owner}/{repo}/traffic/popular/referrers
-func (s *Server) handleReposGetTopReferrersRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReposGetTopReferrersRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposGetTopReferrers`,
 		trace.WithAttributes(otelogen.OperationID(`repos/get-top-referrers`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -16707,7 +16707,7 @@ func (s *Server) handleReposGetTopReferrersRequest(args map[string]string, w htt
 // HandleReposGetUsersWithAccessToProtectedBranchRequest handles repos/get-users-with-access-to-protected-branch operation.
 //
 // GET /repos/{owner}/{repo}/branches/{branch}/protection/restrictions/users
-func (s *Server) handleReposGetUsersWithAccessToProtectedBranchRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReposGetUsersWithAccessToProtectedBranchRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposGetUsersWithAccessToProtectedBranch`,
 		trace.WithAttributes(otelogen.OperationID(`repos/get-users-with-access-to-protected-branch`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -16736,7 +16736,7 @@ func (s *Server) handleReposGetUsersWithAccessToProtectedBranchRequest(args map[
 // HandleReposGetViewsRequest handles repos/get-views operation.
 //
 // GET /repos/{owner}/{repo}/traffic/views
-func (s *Server) handleReposGetViewsRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReposGetViewsRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposGetViews`,
 		trace.WithAttributes(otelogen.OperationID(`repos/get-views`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -16765,7 +16765,7 @@ func (s *Server) handleReposGetViewsRequest(args map[string]string, w http.Respo
 // HandleReposGetWebhookRequest handles repos/get-webhook operation.
 //
 // GET /repos/{owner}/{repo}/hooks/{hook_id}
-func (s *Server) handleReposGetWebhookRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReposGetWebhookRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposGetWebhook`,
 		trace.WithAttributes(otelogen.OperationID(`repos/get-webhook`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -16794,7 +16794,7 @@ func (s *Server) handleReposGetWebhookRequest(args map[string]string, w http.Res
 // HandleReposGetWebhookConfigForRepoRequest handles repos/get-webhook-config-for-repo operation.
 //
 // GET /repos/{owner}/{repo}/hooks/{hook_id}/config
-func (s *Server) handleReposGetWebhookConfigForRepoRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReposGetWebhookConfigForRepoRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposGetWebhookConfigForRepo`,
 		trace.WithAttributes(otelogen.OperationID(`repos/get-webhook-config-for-repo`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -16823,7 +16823,7 @@ func (s *Server) handleReposGetWebhookConfigForRepoRequest(args map[string]strin
 // HandleReposGetWebhookDeliveryRequest handles repos/get-webhook-delivery operation.
 //
 // GET /repos/{owner}/{repo}/hooks/{hook_id}/deliveries/{delivery_id}
-func (s *Server) handleReposGetWebhookDeliveryRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReposGetWebhookDeliveryRequest(args [4]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposGetWebhookDelivery`,
 		trace.WithAttributes(otelogen.OperationID(`repos/get-webhook-delivery`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -16852,7 +16852,7 @@ func (s *Server) handleReposGetWebhookDeliveryRequest(args map[string]string, w 
 // HandleReposListAutolinksRequest handles repos/list-autolinks operation.
 //
 // GET /repos/{owner}/{repo}/autolinks
-func (s *Server) handleReposListAutolinksRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReposListAutolinksRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposListAutolinks`,
 		trace.WithAttributes(otelogen.OperationID(`repos/list-autolinks`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -16881,7 +16881,7 @@ func (s *Server) handleReposListAutolinksRequest(args map[string]string, w http.
 // HandleReposListBranchesRequest handles repos/list-branches operation.
 //
 // GET /repos/{owner}/{repo}/branches
-func (s *Server) handleReposListBranchesRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReposListBranchesRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposListBranches`,
 		trace.WithAttributes(otelogen.OperationID(`repos/list-branches`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -16910,7 +16910,7 @@ func (s *Server) handleReposListBranchesRequest(args map[string]string, w http.R
 // HandleReposListBranchesForHeadCommitRequest handles repos/list-branches-for-head-commit operation.
 //
 // GET /repos/{owner}/{repo}/commits/{commit_sha}/branches-where-head
-func (s *Server) handleReposListBranchesForHeadCommitRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReposListBranchesForHeadCommitRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposListBranchesForHeadCommit`,
 		trace.WithAttributes(otelogen.OperationID(`repos/list-branches-for-head-commit`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -16939,7 +16939,7 @@ func (s *Server) handleReposListBranchesForHeadCommitRequest(args map[string]str
 // HandleReposListCollaboratorsRequest handles repos/list-collaborators operation.
 //
 // GET /repos/{owner}/{repo}/collaborators
-func (s *Server) handleReposListCollaboratorsRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReposListCollaboratorsRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposListCollaborators`,
 		trace.WithAttributes(otelogen.OperationID(`repos/list-collaborators`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -16968,7 +16968,7 @@ func (s *Server) handleReposListCollaboratorsRequest(args map[string]string, w h
 // HandleReposListCommentsForCommitRequest handles repos/list-comments-for-commit operation.
 //
 // GET /repos/{owner}/{repo}/commits/{commit_sha}/comments
-func (s *Server) handleReposListCommentsForCommitRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReposListCommentsForCommitRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposListCommentsForCommit`,
 		trace.WithAttributes(otelogen.OperationID(`repos/list-comments-for-commit`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -16997,7 +16997,7 @@ func (s *Server) handleReposListCommentsForCommitRequest(args map[string]string,
 // HandleReposListCommitCommentsForRepoRequest handles repos/list-commit-comments-for-repo operation.
 //
 // GET /repos/{owner}/{repo}/comments
-func (s *Server) handleReposListCommitCommentsForRepoRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReposListCommitCommentsForRepoRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposListCommitCommentsForRepo`,
 		trace.WithAttributes(otelogen.OperationID(`repos/list-commit-comments-for-repo`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -17026,7 +17026,7 @@ func (s *Server) handleReposListCommitCommentsForRepoRequest(args map[string]str
 // HandleReposListCommitStatusesForRefRequest handles repos/list-commit-statuses-for-ref operation.
 //
 // GET /repos/{owner}/{repo}/commits/{ref}/statuses
-func (s *Server) handleReposListCommitStatusesForRefRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReposListCommitStatusesForRefRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposListCommitStatusesForRef`,
 		trace.WithAttributes(otelogen.OperationID(`repos/list-commit-statuses-for-ref`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -17055,7 +17055,7 @@ func (s *Server) handleReposListCommitStatusesForRefRequest(args map[string]stri
 // HandleReposListCommitsRequest handles repos/list-commits operation.
 //
 // GET /repos/{owner}/{repo}/commits
-func (s *Server) handleReposListCommitsRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReposListCommitsRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposListCommits`,
 		trace.WithAttributes(otelogen.OperationID(`repos/list-commits`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -17084,7 +17084,7 @@ func (s *Server) handleReposListCommitsRequest(args map[string]string, w http.Re
 // HandleReposListContributorsRequest handles repos/list-contributors operation.
 //
 // GET /repos/{owner}/{repo}/contributors
-func (s *Server) handleReposListContributorsRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReposListContributorsRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposListContributors`,
 		trace.WithAttributes(otelogen.OperationID(`repos/list-contributors`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -17113,7 +17113,7 @@ func (s *Server) handleReposListContributorsRequest(args map[string]string, w ht
 // HandleReposListDeployKeysRequest handles repos/list-deploy-keys operation.
 //
 // GET /repos/{owner}/{repo}/keys
-func (s *Server) handleReposListDeployKeysRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReposListDeployKeysRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposListDeployKeys`,
 		trace.WithAttributes(otelogen.OperationID(`repos/list-deploy-keys`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -17142,7 +17142,7 @@ func (s *Server) handleReposListDeployKeysRequest(args map[string]string, w http
 // HandleReposListDeploymentStatusesRequest handles repos/list-deployment-statuses operation.
 //
 // GET /repos/{owner}/{repo}/deployments/{deployment_id}/statuses
-func (s *Server) handleReposListDeploymentStatusesRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReposListDeploymentStatusesRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposListDeploymentStatuses`,
 		trace.WithAttributes(otelogen.OperationID(`repos/list-deployment-statuses`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -17171,7 +17171,7 @@ func (s *Server) handleReposListDeploymentStatusesRequest(args map[string]string
 // HandleReposListDeploymentsRequest handles repos/list-deployments operation.
 //
 // GET /repos/{owner}/{repo}/deployments
-func (s *Server) handleReposListDeploymentsRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReposListDeploymentsRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposListDeployments`,
 		trace.WithAttributes(otelogen.OperationID(`repos/list-deployments`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -17200,7 +17200,7 @@ func (s *Server) handleReposListDeploymentsRequest(args map[string]string, w htt
 // HandleReposListForAuthenticatedUserRequest handles repos/list-for-authenticated-user operation.
 //
 // GET /user/repos
-func (s *Server) handleReposListForAuthenticatedUserRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReposListForAuthenticatedUserRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposListForAuthenticatedUser`,
 		trace.WithAttributes(otelogen.OperationID(`repos/list-for-authenticated-user`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -17229,7 +17229,7 @@ func (s *Server) handleReposListForAuthenticatedUserRequest(args map[string]stri
 // HandleReposListForOrgRequest handles repos/list-for-org operation.
 //
 // GET /orgs/{org}/repos
-func (s *Server) handleReposListForOrgRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReposListForOrgRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposListForOrg`,
 		trace.WithAttributes(otelogen.OperationID(`repos/list-for-org`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -17258,7 +17258,7 @@ func (s *Server) handleReposListForOrgRequest(args map[string]string, w http.Res
 // HandleReposListForUserRequest handles repos/list-for-user operation.
 //
 // GET /users/{username}/repos
-func (s *Server) handleReposListForUserRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReposListForUserRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposListForUser`,
 		trace.WithAttributes(otelogen.OperationID(`repos/list-for-user`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -17287,7 +17287,7 @@ func (s *Server) handleReposListForUserRequest(args map[string]string, w http.Re
 // HandleReposListForksRequest handles repos/list-forks operation.
 //
 // GET /repos/{owner}/{repo}/forks
-func (s *Server) handleReposListForksRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReposListForksRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposListForks`,
 		trace.WithAttributes(otelogen.OperationID(`repos/list-forks`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -17316,7 +17316,7 @@ func (s *Server) handleReposListForksRequest(args map[string]string, w http.Resp
 // HandleReposListInvitationsRequest handles repos/list-invitations operation.
 //
 // GET /repos/{owner}/{repo}/invitations
-func (s *Server) handleReposListInvitationsRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReposListInvitationsRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposListInvitations`,
 		trace.WithAttributes(otelogen.OperationID(`repos/list-invitations`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -17345,7 +17345,7 @@ func (s *Server) handleReposListInvitationsRequest(args map[string]string, w htt
 // HandleReposListInvitationsForAuthenticatedUserRequest handles repos/list-invitations-for-authenticated-user operation.
 //
 // GET /user/repository_invitations
-func (s *Server) handleReposListInvitationsForAuthenticatedUserRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReposListInvitationsForAuthenticatedUserRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposListInvitationsForAuthenticatedUser`,
 		trace.WithAttributes(otelogen.OperationID(`repos/list-invitations-for-authenticated-user`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -17374,7 +17374,7 @@ func (s *Server) handleReposListInvitationsForAuthenticatedUserRequest(args map[
 // HandleReposListLanguagesRequest handles repos/list-languages operation.
 //
 // GET /repos/{owner}/{repo}/languages
-func (s *Server) handleReposListLanguagesRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReposListLanguagesRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposListLanguages`,
 		trace.WithAttributes(otelogen.OperationID(`repos/list-languages`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -17403,7 +17403,7 @@ func (s *Server) handleReposListLanguagesRequest(args map[string]string, w http.
 // HandleReposListPagesBuildsRequest handles repos/list-pages-builds operation.
 //
 // GET /repos/{owner}/{repo}/pages/builds
-func (s *Server) handleReposListPagesBuildsRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReposListPagesBuildsRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposListPagesBuilds`,
 		trace.WithAttributes(otelogen.OperationID(`repos/list-pages-builds`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -17432,7 +17432,7 @@ func (s *Server) handleReposListPagesBuildsRequest(args map[string]string, w htt
 // HandleReposListPublicRequest handles repos/list-public operation.
 //
 // GET /repositories
-func (s *Server) handleReposListPublicRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReposListPublicRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposListPublic`,
 		trace.WithAttributes(otelogen.OperationID(`repos/list-public`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -17461,7 +17461,7 @@ func (s *Server) handleReposListPublicRequest(args map[string]string, w http.Res
 // HandleReposListPullRequestsAssociatedWithCommitRequest handles repos/list-pull-requests-associated-with-commit operation.
 //
 // GET /repos/{owner}/{repo}/commits/{commit_sha}/pulls
-func (s *Server) handleReposListPullRequestsAssociatedWithCommitRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReposListPullRequestsAssociatedWithCommitRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposListPullRequestsAssociatedWithCommit`,
 		trace.WithAttributes(otelogen.OperationID(`repos/list-pull-requests-associated-with-commit`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -17490,7 +17490,7 @@ func (s *Server) handleReposListPullRequestsAssociatedWithCommitRequest(args map
 // HandleReposListReleaseAssetsRequest handles repos/list-release-assets operation.
 //
 // GET /repos/{owner}/{repo}/releases/{release_id}/assets
-func (s *Server) handleReposListReleaseAssetsRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReposListReleaseAssetsRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposListReleaseAssets`,
 		trace.WithAttributes(otelogen.OperationID(`repos/list-release-assets`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -17519,7 +17519,7 @@ func (s *Server) handleReposListReleaseAssetsRequest(args map[string]string, w h
 // HandleReposListReleasesRequest handles repos/list-releases operation.
 //
 // GET /repos/{owner}/{repo}/releases
-func (s *Server) handleReposListReleasesRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReposListReleasesRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposListReleases`,
 		trace.WithAttributes(otelogen.OperationID(`repos/list-releases`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -17548,7 +17548,7 @@ func (s *Server) handleReposListReleasesRequest(args map[string]string, w http.R
 // HandleReposListTagsRequest handles repos/list-tags operation.
 //
 // GET /repos/{owner}/{repo}/tags
-func (s *Server) handleReposListTagsRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReposListTagsRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposListTags`,
 		trace.WithAttributes(otelogen.OperationID(`repos/list-tags`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -17577,7 +17577,7 @@ func (s *Server) handleReposListTagsRequest(args map[string]string, w http.Respo
 // HandleReposListTeamsRequest handles repos/list-teams operation.
 //
 // GET /repos/{owner}/{repo}/teams
-func (s *Server) handleReposListTeamsRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReposListTeamsRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposListTeams`,
 		trace.WithAttributes(otelogen.OperationID(`repos/list-teams`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -17606,7 +17606,7 @@ func (s *Server) handleReposListTeamsRequest(args map[string]string, w http.Resp
 // HandleReposListWebhookDeliveriesRequest handles repos/list-webhook-deliveries operation.
 //
 // GET /repos/{owner}/{repo}/hooks/{hook_id}/deliveries
-func (s *Server) handleReposListWebhookDeliveriesRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReposListWebhookDeliveriesRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposListWebhookDeliveries`,
 		trace.WithAttributes(otelogen.OperationID(`repos/list-webhook-deliveries`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -17635,7 +17635,7 @@ func (s *Server) handleReposListWebhookDeliveriesRequest(args map[string]string,
 // HandleReposListWebhooksRequest handles repos/list-webhooks operation.
 //
 // GET /repos/{owner}/{repo}/hooks
-func (s *Server) handleReposListWebhooksRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReposListWebhooksRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposListWebhooks`,
 		trace.WithAttributes(otelogen.OperationID(`repos/list-webhooks`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -17664,7 +17664,7 @@ func (s *Server) handleReposListWebhooksRequest(args map[string]string, w http.R
 // HandleReposMergeRequest handles repos/merge operation.
 //
 // POST /repos/{owner}/{repo}/merges
-func (s *Server) handleReposMergeRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReposMergeRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposMerge`,
 		trace.WithAttributes(otelogen.OperationID(`repos/merge`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -17699,7 +17699,7 @@ func (s *Server) handleReposMergeRequest(args map[string]string, w http.Response
 // HandleReposMergeUpstreamRequest handles repos/merge-upstream operation.
 //
 // POST /repos/{owner}/{repo}/merge-upstream
-func (s *Server) handleReposMergeUpstreamRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReposMergeUpstreamRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposMergeUpstream`,
 		trace.WithAttributes(otelogen.OperationID(`repos/merge-upstream`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -17734,7 +17734,7 @@ func (s *Server) handleReposMergeUpstreamRequest(args map[string]string, w http.
 // HandleReposPingWebhookRequest handles repos/ping-webhook operation.
 //
 // POST /repos/{owner}/{repo}/hooks/{hook_id}/pings
-func (s *Server) handleReposPingWebhookRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReposPingWebhookRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposPingWebhook`,
 		trace.WithAttributes(otelogen.OperationID(`repos/ping-webhook`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -17763,7 +17763,7 @@ func (s *Server) handleReposPingWebhookRequest(args map[string]string, w http.Re
 // HandleReposRedeliverWebhookDeliveryRequest handles repos/redeliver-webhook-delivery operation.
 //
 // POST /repos/{owner}/{repo}/hooks/{hook_id}/deliveries/{delivery_id}/attempts
-func (s *Server) handleReposRedeliverWebhookDeliveryRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReposRedeliverWebhookDeliveryRequest(args [4]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposRedeliverWebhookDelivery`,
 		trace.WithAttributes(otelogen.OperationID(`repos/redeliver-webhook-delivery`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -17792,7 +17792,7 @@ func (s *Server) handleReposRedeliverWebhookDeliveryRequest(args map[string]stri
 // HandleReposRemoveAppAccessRestrictionsRequest handles repos/remove-app-access-restrictions operation.
 //
 // DELETE /repos/{owner}/{repo}/branches/{branch}/protection/restrictions/apps
-func (s *Server) handleReposRemoveAppAccessRestrictionsRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReposRemoveAppAccessRestrictionsRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposRemoveAppAccessRestrictions`,
 		trace.WithAttributes(otelogen.OperationID(`repos/remove-app-access-restrictions`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -17827,7 +17827,7 @@ func (s *Server) handleReposRemoveAppAccessRestrictionsRequest(args map[string]s
 // HandleReposRemoveCollaboratorRequest handles repos/remove-collaborator operation.
 //
 // DELETE /repos/{owner}/{repo}/collaborators/{username}
-func (s *Server) handleReposRemoveCollaboratorRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReposRemoveCollaboratorRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposRemoveCollaborator`,
 		trace.WithAttributes(otelogen.OperationID(`repos/remove-collaborator`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -17856,7 +17856,7 @@ func (s *Server) handleReposRemoveCollaboratorRequest(args map[string]string, w 
 // HandleReposRemoveStatusCheckContextsRequest handles repos/remove-status-check-contexts operation.
 //
 // DELETE /repos/{owner}/{repo}/branches/{branch}/protection/required_status_checks/contexts
-func (s *Server) handleReposRemoveStatusCheckContextsRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReposRemoveStatusCheckContextsRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposRemoveStatusCheckContexts`,
 		trace.WithAttributes(otelogen.OperationID(`repos/remove-status-check-contexts`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -17891,7 +17891,7 @@ func (s *Server) handleReposRemoveStatusCheckContextsRequest(args map[string]str
 // HandleReposRemoveStatusCheckProtectionRequest handles repos/remove-status-check-protection operation.
 //
 // DELETE /repos/{owner}/{repo}/branches/{branch}/protection/required_status_checks
-func (s *Server) handleReposRemoveStatusCheckProtectionRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReposRemoveStatusCheckProtectionRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposRemoveStatusCheckProtection`,
 		trace.WithAttributes(otelogen.OperationID(`repos/remove-status-check-protection`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -17920,7 +17920,7 @@ func (s *Server) handleReposRemoveStatusCheckProtectionRequest(args map[string]s
 // HandleReposRemoveTeamAccessRestrictionsRequest handles repos/remove-team-access-restrictions operation.
 //
 // DELETE /repos/{owner}/{repo}/branches/{branch}/protection/restrictions/teams
-func (s *Server) handleReposRemoveTeamAccessRestrictionsRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReposRemoveTeamAccessRestrictionsRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposRemoveTeamAccessRestrictions`,
 		trace.WithAttributes(otelogen.OperationID(`repos/remove-team-access-restrictions`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -17955,7 +17955,7 @@ func (s *Server) handleReposRemoveTeamAccessRestrictionsRequest(args map[string]
 // HandleReposRemoveUserAccessRestrictionsRequest handles repos/remove-user-access-restrictions operation.
 //
 // DELETE /repos/{owner}/{repo}/branches/{branch}/protection/restrictions/users
-func (s *Server) handleReposRemoveUserAccessRestrictionsRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReposRemoveUserAccessRestrictionsRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposRemoveUserAccessRestrictions`,
 		trace.WithAttributes(otelogen.OperationID(`repos/remove-user-access-restrictions`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -17990,7 +17990,7 @@ func (s *Server) handleReposRemoveUserAccessRestrictionsRequest(args map[string]
 // HandleReposRenameBranchRequest handles repos/rename-branch operation.
 //
 // POST /repos/{owner}/{repo}/branches/{branch}/rename
-func (s *Server) handleReposRenameBranchRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReposRenameBranchRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposRenameBranch`,
 		trace.WithAttributes(otelogen.OperationID(`repos/rename-branch`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -18025,7 +18025,7 @@ func (s *Server) handleReposRenameBranchRequest(args map[string]string, w http.R
 // HandleReposReplaceAllTopicsRequest handles repos/replace-all-topics operation.
 //
 // PUT /repos/{owner}/{repo}/topics
-func (s *Server) handleReposReplaceAllTopicsRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReposReplaceAllTopicsRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposReplaceAllTopics`,
 		trace.WithAttributes(otelogen.OperationID(`repos/replace-all-topics`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -18060,7 +18060,7 @@ func (s *Server) handleReposReplaceAllTopicsRequest(args map[string]string, w ht
 // HandleReposRequestPagesBuildRequest handles repos/request-pages-build operation.
 //
 // POST /repos/{owner}/{repo}/pages/builds
-func (s *Server) handleReposRequestPagesBuildRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReposRequestPagesBuildRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposRequestPagesBuild`,
 		trace.WithAttributes(otelogen.OperationID(`repos/request-pages-build`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -18089,7 +18089,7 @@ func (s *Server) handleReposRequestPagesBuildRequest(args map[string]string, w h
 // HandleReposSetAdminBranchProtectionRequest handles repos/set-admin-branch-protection operation.
 //
 // POST /repos/{owner}/{repo}/branches/{branch}/protection/enforce_admins
-func (s *Server) handleReposSetAdminBranchProtectionRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReposSetAdminBranchProtectionRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposSetAdminBranchProtection`,
 		trace.WithAttributes(otelogen.OperationID(`repos/set-admin-branch-protection`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -18118,7 +18118,7 @@ func (s *Server) handleReposSetAdminBranchProtectionRequest(args map[string]stri
 // HandleReposSetAppAccessRestrictionsRequest handles repos/set-app-access-restrictions operation.
 //
 // PUT /repos/{owner}/{repo}/branches/{branch}/protection/restrictions/apps
-func (s *Server) handleReposSetAppAccessRestrictionsRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReposSetAppAccessRestrictionsRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposSetAppAccessRestrictions`,
 		trace.WithAttributes(otelogen.OperationID(`repos/set-app-access-restrictions`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -18153,7 +18153,7 @@ func (s *Server) handleReposSetAppAccessRestrictionsRequest(args map[string]stri
 // HandleReposSetStatusCheckContextsRequest handles repos/set-status-check-contexts operation.
 //
 // PUT /repos/{owner}/{repo}/branches/{branch}/protection/required_status_checks/contexts
-func (s *Server) handleReposSetStatusCheckContextsRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReposSetStatusCheckContextsRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposSetStatusCheckContexts`,
 		trace.WithAttributes(otelogen.OperationID(`repos/set-status-check-contexts`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -18188,7 +18188,7 @@ func (s *Server) handleReposSetStatusCheckContextsRequest(args map[string]string
 // HandleReposSetTeamAccessRestrictionsRequest handles repos/set-team-access-restrictions operation.
 //
 // PUT /repos/{owner}/{repo}/branches/{branch}/protection/restrictions/teams
-func (s *Server) handleReposSetTeamAccessRestrictionsRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReposSetTeamAccessRestrictionsRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposSetTeamAccessRestrictions`,
 		trace.WithAttributes(otelogen.OperationID(`repos/set-team-access-restrictions`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -18223,7 +18223,7 @@ func (s *Server) handleReposSetTeamAccessRestrictionsRequest(args map[string]str
 // HandleReposSetUserAccessRestrictionsRequest handles repos/set-user-access-restrictions operation.
 //
 // PUT /repos/{owner}/{repo}/branches/{branch}/protection/restrictions/users
-func (s *Server) handleReposSetUserAccessRestrictionsRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReposSetUserAccessRestrictionsRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposSetUserAccessRestrictions`,
 		trace.WithAttributes(otelogen.OperationID(`repos/set-user-access-restrictions`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -18258,7 +18258,7 @@ func (s *Server) handleReposSetUserAccessRestrictionsRequest(args map[string]str
 // HandleReposTestPushWebhookRequest handles repos/test-push-webhook operation.
 //
 // POST /repos/{owner}/{repo}/hooks/{hook_id}/tests
-func (s *Server) handleReposTestPushWebhookRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReposTestPushWebhookRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposTestPushWebhook`,
 		trace.WithAttributes(otelogen.OperationID(`repos/test-push-webhook`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -18287,7 +18287,7 @@ func (s *Server) handleReposTestPushWebhookRequest(args map[string]string, w htt
 // HandleReposTransferRequest handles repos/transfer operation.
 //
 // POST /repos/{owner}/{repo}/transfer
-func (s *Server) handleReposTransferRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReposTransferRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposTransfer`,
 		trace.WithAttributes(otelogen.OperationID(`repos/transfer`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -18322,7 +18322,7 @@ func (s *Server) handleReposTransferRequest(args map[string]string, w http.Respo
 // HandleReposUpdateRequest handles repos/update operation.
 //
 // PATCH /repos/{owner}/{repo}
-func (s *Server) handleReposUpdateRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReposUpdateRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposUpdate`,
 		trace.WithAttributes(otelogen.OperationID(`repos/update`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -18357,7 +18357,7 @@ func (s *Server) handleReposUpdateRequest(args map[string]string, w http.Respons
 // HandleReposUpdateBranchProtectionRequest handles repos/update-branch-protection operation.
 //
 // PUT /repos/{owner}/{repo}/branches/{branch}/protection
-func (s *Server) handleReposUpdateBranchProtectionRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReposUpdateBranchProtectionRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposUpdateBranchProtection`,
 		trace.WithAttributes(otelogen.OperationID(`repos/update-branch-protection`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -18392,7 +18392,7 @@ func (s *Server) handleReposUpdateBranchProtectionRequest(args map[string]string
 // HandleReposUpdateCommitCommentRequest handles repos/update-commit-comment operation.
 //
 // PATCH /repos/{owner}/{repo}/comments/{comment_id}
-func (s *Server) handleReposUpdateCommitCommentRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReposUpdateCommitCommentRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposUpdateCommitComment`,
 		trace.WithAttributes(otelogen.OperationID(`repos/update-commit-comment`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -18427,7 +18427,7 @@ func (s *Server) handleReposUpdateCommitCommentRequest(args map[string]string, w
 // HandleReposUpdateInvitationRequest handles repos/update-invitation operation.
 //
 // PATCH /repos/{owner}/{repo}/invitations/{invitation_id}
-func (s *Server) handleReposUpdateInvitationRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReposUpdateInvitationRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposUpdateInvitation`,
 		trace.WithAttributes(otelogen.OperationID(`repos/update-invitation`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -18462,7 +18462,7 @@ func (s *Server) handleReposUpdateInvitationRequest(args map[string]string, w ht
 // HandleReposUpdatePullRequestReviewProtectionRequest handles repos/update-pull-request-review-protection operation.
 //
 // PATCH /repos/{owner}/{repo}/branches/{branch}/protection/required_pull_request_reviews
-func (s *Server) handleReposUpdatePullRequestReviewProtectionRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReposUpdatePullRequestReviewProtectionRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposUpdatePullRequestReviewProtection`,
 		trace.WithAttributes(otelogen.OperationID(`repos/update-pull-request-review-protection`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -18497,7 +18497,7 @@ func (s *Server) handleReposUpdatePullRequestReviewProtectionRequest(args map[st
 // HandleReposUpdateReleaseRequest handles repos/update-release operation.
 //
 // PATCH /repos/{owner}/{repo}/releases/{release_id}
-func (s *Server) handleReposUpdateReleaseRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReposUpdateReleaseRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposUpdateRelease`,
 		trace.WithAttributes(otelogen.OperationID(`repos/update-release`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -18532,7 +18532,7 @@ func (s *Server) handleReposUpdateReleaseRequest(args map[string]string, w http.
 // HandleReposUpdateReleaseAssetRequest handles repos/update-release-asset operation.
 //
 // PATCH /repos/{owner}/{repo}/releases/assets/{asset_id}
-func (s *Server) handleReposUpdateReleaseAssetRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReposUpdateReleaseAssetRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposUpdateReleaseAsset`,
 		trace.WithAttributes(otelogen.OperationID(`repos/update-release-asset`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -18567,7 +18567,7 @@ func (s *Server) handleReposUpdateReleaseAssetRequest(args map[string]string, w 
 // HandleReposUpdateStatusCheckProtectionRequest handles repos/update-status-check-protection operation.
 //
 // PATCH /repos/{owner}/{repo}/branches/{branch}/protection/required_status_checks
-func (s *Server) handleReposUpdateStatusCheckProtectionRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReposUpdateStatusCheckProtectionRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposUpdateStatusCheckProtection`,
 		trace.WithAttributes(otelogen.OperationID(`repos/update-status-check-protection`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -18602,7 +18602,7 @@ func (s *Server) handleReposUpdateStatusCheckProtectionRequest(args map[string]s
 // HandleReposUpdateWebhookRequest handles repos/update-webhook operation.
 //
 // PATCH /repos/{owner}/{repo}/hooks/{hook_id}
-func (s *Server) handleReposUpdateWebhookRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReposUpdateWebhookRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposUpdateWebhook`,
 		trace.WithAttributes(otelogen.OperationID(`repos/update-webhook`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -18637,7 +18637,7 @@ func (s *Server) handleReposUpdateWebhookRequest(args map[string]string, w http.
 // HandleReposUpdateWebhookConfigForRepoRequest handles repos/update-webhook-config-for-repo operation.
 //
 // PATCH /repos/{owner}/{repo}/hooks/{hook_id}/config
-func (s *Server) handleReposUpdateWebhookConfigForRepoRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReposUpdateWebhookConfigForRepoRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReposUpdateWebhookConfigForRepo`,
 		trace.WithAttributes(otelogen.OperationID(`repos/update-webhook-config-for-repo`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -18672,7 +18672,7 @@ func (s *Server) handleReposUpdateWebhookConfigForRepoRequest(args map[string]st
 // HandleScimDeleteUserFromOrgRequest handles scim/delete-user-from-org operation.
 //
 // DELETE /scim/v2/organizations/{org}/Users/{scim_user_id}
-func (s *Server) handleScimDeleteUserFromOrgRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleScimDeleteUserFromOrgRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ScimDeleteUserFromOrg`,
 		trace.WithAttributes(otelogen.OperationID(`scim/delete-user-from-org`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -18701,7 +18701,7 @@ func (s *Server) handleScimDeleteUserFromOrgRequest(args map[string]string, w ht
 // HandleSearchCodeRequest handles search/code operation.
 //
 // GET /search/code
-func (s *Server) handleSearchCodeRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleSearchCodeRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `SearchCode`,
 		trace.WithAttributes(otelogen.OperationID(`search/code`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -18730,7 +18730,7 @@ func (s *Server) handleSearchCodeRequest(args map[string]string, w http.Response
 // HandleSearchCommitsRequest handles search/commits operation.
 //
 // GET /search/commits
-func (s *Server) handleSearchCommitsRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleSearchCommitsRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `SearchCommits`,
 		trace.WithAttributes(otelogen.OperationID(`search/commits`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -18759,7 +18759,7 @@ func (s *Server) handleSearchCommitsRequest(args map[string]string, w http.Respo
 // HandleSearchIssuesAndPullRequestsRequest handles search/issues-and-pull-requests operation.
 //
 // GET /search/issues
-func (s *Server) handleSearchIssuesAndPullRequestsRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleSearchIssuesAndPullRequestsRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `SearchIssuesAndPullRequests`,
 		trace.WithAttributes(otelogen.OperationID(`search/issues-and-pull-requests`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -18788,7 +18788,7 @@ func (s *Server) handleSearchIssuesAndPullRequestsRequest(args map[string]string
 // HandleSearchLabelsRequest handles search/labels operation.
 //
 // GET /search/labels
-func (s *Server) handleSearchLabelsRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleSearchLabelsRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `SearchLabels`,
 		trace.WithAttributes(otelogen.OperationID(`search/labels`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -18817,7 +18817,7 @@ func (s *Server) handleSearchLabelsRequest(args map[string]string, w http.Respon
 // HandleSearchReposRequest handles search/repos operation.
 //
 // GET /search/repositories
-func (s *Server) handleSearchReposRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleSearchReposRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `SearchRepos`,
 		trace.WithAttributes(otelogen.OperationID(`search/repos`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -18846,7 +18846,7 @@ func (s *Server) handleSearchReposRequest(args map[string]string, w http.Respons
 // HandleSearchTopicsRequest handles search/topics operation.
 //
 // GET /search/topics
-func (s *Server) handleSearchTopicsRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleSearchTopicsRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `SearchTopics`,
 		trace.WithAttributes(otelogen.OperationID(`search/topics`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -18875,7 +18875,7 @@ func (s *Server) handleSearchTopicsRequest(args map[string]string, w http.Respon
 // HandleSearchUsersRequest handles search/users operation.
 //
 // GET /search/users
-func (s *Server) handleSearchUsersRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleSearchUsersRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `SearchUsers`,
 		trace.WithAttributes(otelogen.OperationID(`search/users`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -18904,7 +18904,7 @@ func (s *Server) handleSearchUsersRequest(args map[string]string, w http.Respons
 // HandleSecretScanningGetAlertRequest handles secret-scanning/get-alert operation.
 //
 // GET /repos/{owner}/{repo}/secret-scanning/alerts/{alert_number}
-func (s *Server) handleSecretScanningGetAlertRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleSecretScanningGetAlertRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `SecretScanningGetAlert`,
 		trace.WithAttributes(otelogen.OperationID(`secret-scanning/get-alert`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -18933,7 +18933,7 @@ func (s *Server) handleSecretScanningGetAlertRequest(args map[string]string, w h
 // HandleSecretScanningListAlertsForOrgRequest handles secret-scanning/list-alerts-for-org operation.
 //
 // GET /orgs/{org}/secret-scanning/alerts
-func (s *Server) handleSecretScanningListAlertsForOrgRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleSecretScanningListAlertsForOrgRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `SecretScanningListAlertsForOrg`,
 		trace.WithAttributes(otelogen.OperationID(`secret-scanning/list-alerts-for-org`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -18962,7 +18962,7 @@ func (s *Server) handleSecretScanningListAlertsForOrgRequest(args map[string]str
 // HandleSecretScanningListAlertsForRepoRequest handles secret-scanning/list-alerts-for-repo operation.
 //
 // GET /repos/{owner}/{repo}/secret-scanning/alerts
-func (s *Server) handleSecretScanningListAlertsForRepoRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleSecretScanningListAlertsForRepoRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `SecretScanningListAlertsForRepo`,
 		trace.WithAttributes(otelogen.OperationID(`secret-scanning/list-alerts-for-repo`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -18991,7 +18991,7 @@ func (s *Server) handleSecretScanningListAlertsForRepoRequest(args map[string]st
 // HandleSecretScanningUpdateAlertRequest handles secret-scanning/update-alert operation.
 //
 // PATCH /repos/{owner}/{repo}/secret-scanning/alerts/{alert_number}
-func (s *Server) handleSecretScanningUpdateAlertRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleSecretScanningUpdateAlertRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `SecretScanningUpdateAlert`,
 		trace.WithAttributes(otelogen.OperationID(`secret-scanning/update-alert`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -19026,7 +19026,7 @@ func (s *Server) handleSecretScanningUpdateAlertRequest(args map[string]string, 
 // HandleTeamsAddMemberLegacyRequest handles teams/add-member-legacy operation.
 //
 // PUT /teams/{team_id}/members/{username}
-func (s *Server) handleTeamsAddMemberLegacyRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleTeamsAddMemberLegacyRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `TeamsAddMemberLegacy`,
 		trace.WithAttributes(otelogen.OperationID(`teams/add-member-legacy`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -19055,7 +19055,7 @@ func (s *Server) handleTeamsAddMemberLegacyRequest(args map[string]string, w htt
 // HandleTeamsAddOrUpdateMembershipForUserInOrgRequest handles teams/add-or-update-membership-for-user-in-org operation.
 //
 // PUT /orgs/{org}/teams/{team_slug}/memberships/{username}
-func (s *Server) handleTeamsAddOrUpdateMembershipForUserInOrgRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleTeamsAddOrUpdateMembershipForUserInOrgRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `TeamsAddOrUpdateMembershipForUserInOrg`,
 		trace.WithAttributes(otelogen.OperationID(`teams/add-or-update-membership-for-user-in-org`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -19090,7 +19090,7 @@ func (s *Server) handleTeamsAddOrUpdateMembershipForUserInOrgRequest(args map[st
 // HandleTeamsAddOrUpdateMembershipForUserLegacyRequest handles teams/add-or-update-membership-for-user-legacy operation.
 //
 // PUT /teams/{team_id}/memberships/{username}
-func (s *Server) handleTeamsAddOrUpdateMembershipForUserLegacyRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleTeamsAddOrUpdateMembershipForUserLegacyRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `TeamsAddOrUpdateMembershipForUserLegacy`,
 		trace.WithAttributes(otelogen.OperationID(`teams/add-or-update-membership-for-user-legacy`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -19125,7 +19125,7 @@ func (s *Server) handleTeamsAddOrUpdateMembershipForUserLegacyRequest(args map[s
 // HandleTeamsAddOrUpdateProjectPermissionsInOrgRequest handles teams/add-or-update-project-permissions-in-org operation.
 //
 // PUT /orgs/{org}/teams/{team_slug}/projects/{project_id}
-func (s *Server) handleTeamsAddOrUpdateProjectPermissionsInOrgRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleTeamsAddOrUpdateProjectPermissionsInOrgRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `TeamsAddOrUpdateProjectPermissionsInOrg`,
 		trace.WithAttributes(otelogen.OperationID(`teams/add-or-update-project-permissions-in-org`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -19160,7 +19160,7 @@ func (s *Server) handleTeamsAddOrUpdateProjectPermissionsInOrgRequest(args map[s
 // HandleTeamsAddOrUpdateProjectPermissionsLegacyRequest handles teams/add-or-update-project-permissions-legacy operation.
 //
 // PUT /teams/{team_id}/projects/{project_id}
-func (s *Server) handleTeamsAddOrUpdateProjectPermissionsLegacyRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleTeamsAddOrUpdateProjectPermissionsLegacyRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `TeamsAddOrUpdateProjectPermissionsLegacy`,
 		trace.WithAttributes(otelogen.OperationID(`teams/add-or-update-project-permissions-legacy`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -19195,7 +19195,7 @@ func (s *Server) handleTeamsAddOrUpdateProjectPermissionsLegacyRequest(args map[
 // HandleTeamsAddOrUpdateRepoPermissionsInOrgRequest handles teams/add-or-update-repo-permissions-in-org operation.
 //
 // PUT /orgs/{org}/teams/{team_slug}/repos/{owner}/{repo}
-func (s *Server) handleTeamsAddOrUpdateRepoPermissionsInOrgRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleTeamsAddOrUpdateRepoPermissionsInOrgRequest(args [4]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `TeamsAddOrUpdateRepoPermissionsInOrg`,
 		trace.WithAttributes(otelogen.OperationID(`teams/add-or-update-repo-permissions-in-org`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -19230,7 +19230,7 @@ func (s *Server) handleTeamsAddOrUpdateRepoPermissionsInOrgRequest(args map[stri
 // HandleTeamsAddOrUpdateRepoPermissionsLegacyRequest handles teams/add-or-update-repo-permissions-legacy operation.
 //
 // PUT /teams/{team_id}/repos/{owner}/{repo}
-func (s *Server) handleTeamsAddOrUpdateRepoPermissionsLegacyRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleTeamsAddOrUpdateRepoPermissionsLegacyRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `TeamsAddOrUpdateRepoPermissionsLegacy`,
 		trace.WithAttributes(otelogen.OperationID(`teams/add-or-update-repo-permissions-legacy`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -19265,7 +19265,7 @@ func (s *Server) handleTeamsAddOrUpdateRepoPermissionsLegacyRequest(args map[str
 // HandleTeamsCheckPermissionsForProjectInOrgRequest handles teams/check-permissions-for-project-in-org operation.
 //
 // GET /orgs/{org}/teams/{team_slug}/projects/{project_id}
-func (s *Server) handleTeamsCheckPermissionsForProjectInOrgRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleTeamsCheckPermissionsForProjectInOrgRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `TeamsCheckPermissionsForProjectInOrg`,
 		trace.WithAttributes(otelogen.OperationID(`teams/check-permissions-for-project-in-org`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -19294,7 +19294,7 @@ func (s *Server) handleTeamsCheckPermissionsForProjectInOrgRequest(args map[stri
 // HandleTeamsCheckPermissionsForProjectLegacyRequest handles teams/check-permissions-for-project-legacy operation.
 //
 // GET /teams/{team_id}/projects/{project_id}
-func (s *Server) handleTeamsCheckPermissionsForProjectLegacyRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleTeamsCheckPermissionsForProjectLegacyRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `TeamsCheckPermissionsForProjectLegacy`,
 		trace.WithAttributes(otelogen.OperationID(`teams/check-permissions-for-project-legacy`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -19323,7 +19323,7 @@ func (s *Server) handleTeamsCheckPermissionsForProjectLegacyRequest(args map[str
 // HandleTeamsCheckPermissionsForRepoInOrgRequest handles teams/check-permissions-for-repo-in-org operation.
 //
 // GET /orgs/{org}/teams/{team_slug}/repos/{owner}/{repo}
-func (s *Server) handleTeamsCheckPermissionsForRepoInOrgRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleTeamsCheckPermissionsForRepoInOrgRequest(args [4]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `TeamsCheckPermissionsForRepoInOrg`,
 		trace.WithAttributes(otelogen.OperationID(`teams/check-permissions-for-repo-in-org`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -19352,7 +19352,7 @@ func (s *Server) handleTeamsCheckPermissionsForRepoInOrgRequest(args map[string]
 // HandleTeamsCheckPermissionsForRepoLegacyRequest handles teams/check-permissions-for-repo-legacy operation.
 //
 // GET /teams/{team_id}/repos/{owner}/{repo}
-func (s *Server) handleTeamsCheckPermissionsForRepoLegacyRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleTeamsCheckPermissionsForRepoLegacyRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `TeamsCheckPermissionsForRepoLegacy`,
 		trace.WithAttributes(otelogen.OperationID(`teams/check-permissions-for-repo-legacy`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -19381,7 +19381,7 @@ func (s *Server) handleTeamsCheckPermissionsForRepoLegacyRequest(args map[string
 // HandleTeamsCreateRequest handles teams/create operation.
 //
 // POST /orgs/{org}/teams
-func (s *Server) handleTeamsCreateRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleTeamsCreateRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `TeamsCreate`,
 		trace.WithAttributes(otelogen.OperationID(`teams/create`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -19416,7 +19416,7 @@ func (s *Server) handleTeamsCreateRequest(args map[string]string, w http.Respons
 // HandleTeamsCreateDiscussionCommentInOrgRequest handles teams/create-discussion-comment-in-org operation.
 //
 // POST /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments
-func (s *Server) handleTeamsCreateDiscussionCommentInOrgRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleTeamsCreateDiscussionCommentInOrgRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `TeamsCreateDiscussionCommentInOrg`,
 		trace.WithAttributes(otelogen.OperationID(`teams/create-discussion-comment-in-org`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -19451,7 +19451,7 @@ func (s *Server) handleTeamsCreateDiscussionCommentInOrgRequest(args map[string]
 // HandleTeamsCreateDiscussionCommentLegacyRequest handles teams/create-discussion-comment-legacy operation.
 //
 // POST /teams/{team_id}/discussions/{discussion_number}/comments
-func (s *Server) handleTeamsCreateDiscussionCommentLegacyRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleTeamsCreateDiscussionCommentLegacyRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `TeamsCreateDiscussionCommentLegacy`,
 		trace.WithAttributes(otelogen.OperationID(`teams/create-discussion-comment-legacy`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -19486,7 +19486,7 @@ func (s *Server) handleTeamsCreateDiscussionCommentLegacyRequest(args map[string
 // HandleTeamsCreateDiscussionInOrgRequest handles teams/create-discussion-in-org operation.
 //
 // POST /orgs/{org}/teams/{team_slug}/discussions
-func (s *Server) handleTeamsCreateDiscussionInOrgRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleTeamsCreateDiscussionInOrgRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `TeamsCreateDiscussionInOrg`,
 		trace.WithAttributes(otelogen.OperationID(`teams/create-discussion-in-org`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -19521,7 +19521,7 @@ func (s *Server) handleTeamsCreateDiscussionInOrgRequest(args map[string]string,
 // HandleTeamsCreateDiscussionLegacyRequest handles teams/create-discussion-legacy operation.
 //
 // POST /teams/{team_id}/discussions
-func (s *Server) handleTeamsCreateDiscussionLegacyRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleTeamsCreateDiscussionLegacyRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `TeamsCreateDiscussionLegacy`,
 		trace.WithAttributes(otelogen.OperationID(`teams/create-discussion-legacy`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -19556,7 +19556,7 @@ func (s *Server) handleTeamsCreateDiscussionLegacyRequest(args map[string]string
 // HandleTeamsCreateOrUpdateIdpGroupConnectionsInOrgRequest handles teams/create-or-update-idp-group-connections-in-org operation.
 //
 // PATCH /orgs/{org}/teams/{team_slug}/team-sync/group-mappings
-func (s *Server) handleTeamsCreateOrUpdateIdpGroupConnectionsInOrgRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleTeamsCreateOrUpdateIdpGroupConnectionsInOrgRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `TeamsCreateOrUpdateIdpGroupConnectionsInOrg`,
 		trace.WithAttributes(otelogen.OperationID(`teams/create-or-update-idp-group-connections-in-org`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -19591,7 +19591,7 @@ func (s *Server) handleTeamsCreateOrUpdateIdpGroupConnectionsInOrgRequest(args m
 // HandleTeamsCreateOrUpdateIdpGroupConnectionsLegacyRequest handles teams/create-or-update-idp-group-connections-legacy operation.
 //
 // PATCH /teams/{team_id}/team-sync/group-mappings
-func (s *Server) handleTeamsCreateOrUpdateIdpGroupConnectionsLegacyRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleTeamsCreateOrUpdateIdpGroupConnectionsLegacyRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `TeamsCreateOrUpdateIdpGroupConnectionsLegacy`,
 		trace.WithAttributes(otelogen.OperationID(`teams/create-or-update-idp-group-connections-legacy`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -19626,7 +19626,7 @@ func (s *Server) handleTeamsCreateOrUpdateIdpGroupConnectionsLegacyRequest(args 
 // HandleTeamsDeleteDiscussionCommentInOrgRequest handles teams/delete-discussion-comment-in-org operation.
 //
 // DELETE /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments/{comment_number}
-func (s *Server) handleTeamsDeleteDiscussionCommentInOrgRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleTeamsDeleteDiscussionCommentInOrgRequest(args [4]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `TeamsDeleteDiscussionCommentInOrg`,
 		trace.WithAttributes(otelogen.OperationID(`teams/delete-discussion-comment-in-org`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -19655,7 +19655,7 @@ func (s *Server) handleTeamsDeleteDiscussionCommentInOrgRequest(args map[string]
 // HandleTeamsDeleteDiscussionCommentLegacyRequest handles teams/delete-discussion-comment-legacy operation.
 //
 // DELETE /teams/{team_id}/discussions/{discussion_number}/comments/{comment_number}
-func (s *Server) handleTeamsDeleteDiscussionCommentLegacyRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleTeamsDeleteDiscussionCommentLegacyRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `TeamsDeleteDiscussionCommentLegacy`,
 		trace.WithAttributes(otelogen.OperationID(`teams/delete-discussion-comment-legacy`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -19684,7 +19684,7 @@ func (s *Server) handleTeamsDeleteDiscussionCommentLegacyRequest(args map[string
 // HandleTeamsDeleteDiscussionInOrgRequest handles teams/delete-discussion-in-org operation.
 //
 // DELETE /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}
-func (s *Server) handleTeamsDeleteDiscussionInOrgRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleTeamsDeleteDiscussionInOrgRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `TeamsDeleteDiscussionInOrg`,
 		trace.WithAttributes(otelogen.OperationID(`teams/delete-discussion-in-org`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -19713,7 +19713,7 @@ func (s *Server) handleTeamsDeleteDiscussionInOrgRequest(args map[string]string,
 // HandleTeamsDeleteDiscussionLegacyRequest handles teams/delete-discussion-legacy operation.
 //
 // DELETE /teams/{team_id}/discussions/{discussion_number}
-func (s *Server) handleTeamsDeleteDiscussionLegacyRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleTeamsDeleteDiscussionLegacyRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `TeamsDeleteDiscussionLegacy`,
 		trace.WithAttributes(otelogen.OperationID(`teams/delete-discussion-legacy`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -19742,7 +19742,7 @@ func (s *Server) handleTeamsDeleteDiscussionLegacyRequest(args map[string]string
 // HandleTeamsDeleteInOrgRequest handles teams/delete-in-org operation.
 //
 // DELETE /orgs/{org}/teams/{team_slug}
-func (s *Server) handleTeamsDeleteInOrgRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleTeamsDeleteInOrgRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `TeamsDeleteInOrg`,
 		trace.WithAttributes(otelogen.OperationID(`teams/delete-in-org`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -19771,7 +19771,7 @@ func (s *Server) handleTeamsDeleteInOrgRequest(args map[string]string, w http.Re
 // HandleTeamsDeleteLegacyRequest handles teams/delete-legacy operation.
 //
 // DELETE /teams/{team_id}
-func (s *Server) handleTeamsDeleteLegacyRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleTeamsDeleteLegacyRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `TeamsDeleteLegacy`,
 		trace.WithAttributes(otelogen.OperationID(`teams/delete-legacy`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -19800,7 +19800,7 @@ func (s *Server) handleTeamsDeleteLegacyRequest(args map[string]string, w http.R
 // HandleTeamsGetByNameRequest handles teams/get-by-name operation.
 //
 // GET /orgs/{org}/teams/{team_slug}
-func (s *Server) handleTeamsGetByNameRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleTeamsGetByNameRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `TeamsGetByName`,
 		trace.WithAttributes(otelogen.OperationID(`teams/get-by-name`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -19829,7 +19829,7 @@ func (s *Server) handleTeamsGetByNameRequest(args map[string]string, w http.Resp
 // HandleTeamsGetDiscussionCommentInOrgRequest handles teams/get-discussion-comment-in-org operation.
 //
 // GET /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments/{comment_number}
-func (s *Server) handleTeamsGetDiscussionCommentInOrgRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleTeamsGetDiscussionCommentInOrgRequest(args [4]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `TeamsGetDiscussionCommentInOrg`,
 		trace.WithAttributes(otelogen.OperationID(`teams/get-discussion-comment-in-org`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -19858,7 +19858,7 @@ func (s *Server) handleTeamsGetDiscussionCommentInOrgRequest(args map[string]str
 // HandleTeamsGetDiscussionCommentLegacyRequest handles teams/get-discussion-comment-legacy operation.
 //
 // GET /teams/{team_id}/discussions/{discussion_number}/comments/{comment_number}
-func (s *Server) handleTeamsGetDiscussionCommentLegacyRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleTeamsGetDiscussionCommentLegacyRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `TeamsGetDiscussionCommentLegacy`,
 		trace.WithAttributes(otelogen.OperationID(`teams/get-discussion-comment-legacy`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -19887,7 +19887,7 @@ func (s *Server) handleTeamsGetDiscussionCommentLegacyRequest(args map[string]st
 // HandleTeamsGetDiscussionInOrgRequest handles teams/get-discussion-in-org operation.
 //
 // GET /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}
-func (s *Server) handleTeamsGetDiscussionInOrgRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleTeamsGetDiscussionInOrgRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `TeamsGetDiscussionInOrg`,
 		trace.WithAttributes(otelogen.OperationID(`teams/get-discussion-in-org`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -19916,7 +19916,7 @@ func (s *Server) handleTeamsGetDiscussionInOrgRequest(args map[string]string, w 
 // HandleTeamsGetDiscussionLegacyRequest handles teams/get-discussion-legacy operation.
 //
 // GET /teams/{team_id}/discussions/{discussion_number}
-func (s *Server) handleTeamsGetDiscussionLegacyRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleTeamsGetDiscussionLegacyRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `TeamsGetDiscussionLegacy`,
 		trace.WithAttributes(otelogen.OperationID(`teams/get-discussion-legacy`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -19945,7 +19945,7 @@ func (s *Server) handleTeamsGetDiscussionLegacyRequest(args map[string]string, w
 // HandleTeamsGetLegacyRequest handles teams/get-legacy operation.
 //
 // GET /teams/{team_id}
-func (s *Server) handleTeamsGetLegacyRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleTeamsGetLegacyRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `TeamsGetLegacy`,
 		trace.WithAttributes(otelogen.OperationID(`teams/get-legacy`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -19974,7 +19974,7 @@ func (s *Server) handleTeamsGetLegacyRequest(args map[string]string, w http.Resp
 // HandleTeamsGetMemberLegacyRequest handles teams/get-member-legacy operation.
 //
 // GET /teams/{team_id}/members/{username}
-func (s *Server) handleTeamsGetMemberLegacyRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleTeamsGetMemberLegacyRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `TeamsGetMemberLegacy`,
 		trace.WithAttributes(otelogen.OperationID(`teams/get-member-legacy`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -20003,7 +20003,7 @@ func (s *Server) handleTeamsGetMemberLegacyRequest(args map[string]string, w htt
 // HandleTeamsGetMembershipForUserInOrgRequest handles teams/get-membership-for-user-in-org operation.
 //
 // GET /orgs/{org}/teams/{team_slug}/memberships/{username}
-func (s *Server) handleTeamsGetMembershipForUserInOrgRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleTeamsGetMembershipForUserInOrgRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `TeamsGetMembershipForUserInOrg`,
 		trace.WithAttributes(otelogen.OperationID(`teams/get-membership-for-user-in-org`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -20032,7 +20032,7 @@ func (s *Server) handleTeamsGetMembershipForUserInOrgRequest(args map[string]str
 // HandleTeamsGetMembershipForUserLegacyRequest handles teams/get-membership-for-user-legacy operation.
 //
 // GET /teams/{team_id}/memberships/{username}
-func (s *Server) handleTeamsGetMembershipForUserLegacyRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleTeamsGetMembershipForUserLegacyRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `TeamsGetMembershipForUserLegacy`,
 		trace.WithAttributes(otelogen.OperationID(`teams/get-membership-for-user-legacy`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -20061,7 +20061,7 @@ func (s *Server) handleTeamsGetMembershipForUserLegacyRequest(args map[string]st
 // HandleTeamsListRequest handles teams/list operation.
 //
 // GET /orgs/{org}/teams
-func (s *Server) handleTeamsListRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleTeamsListRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `TeamsList`,
 		trace.WithAttributes(otelogen.OperationID(`teams/list`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -20090,7 +20090,7 @@ func (s *Server) handleTeamsListRequest(args map[string]string, w http.ResponseW
 // HandleTeamsListChildInOrgRequest handles teams/list-child-in-org operation.
 //
 // GET /orgs/{org}/teams/{team_slug}/teams
-func (s *Server) handleTeamsListChildInOrgRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleTeamsListChildInOrgRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `TeamsListChildInOrg`,
 		trace.WithAttributes(otelogen.OperationID(`teams/list-child-in-org`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -20119,7 +20119,7 @@ func (s *Server) handleTeamsListChildInOrgRequest(args map[string]string, w http
 // HandleTeamsListChildLegacyRequest handles teams/list-child-legacy operation.
 //
 // GET /teams/{team_id}/teams
-func (s *Server) handleTeamsListChildLegacyRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleTeamsListChildLegacyRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `TeamsListChildLegacy`,
 		trace.WithAttributes(otelogen.OperationID(`teams/list-child-legacy`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -20148,7 +20148,7 @@ func (s *Server) handleTeamsListChildLegacyRequest(args map[string]string, w htt
 // HandleTeamsListDiscussionCommentsInOrgRequest handles teams/list-discussion-comments-in-org operation.
 //
 // GET /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments
-func (s *Server) handleTeamsListDiscussionCommentsInOrgRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleTeamsListDiscussionCommentsInOrgRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `TeamsListDiscussionCommentsInOrg`,
 		trace.WithAttributes(otelogen.OperationID(`teams/list-discussion-comments-in-org`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -20177,7 +20177,7 @@ func (s *Server) handleTeamsListDiscussionCommentsInOrgRequest(args map[string]s
 // HandleTeamsListDiscussionCommentsLegacyRequest handles teams/list-discussion-comments-legacy operation.
 //
 // GET /teams/{team_id}/discussions/{discussion_number}/comments
-func (s *Server) handleTeamsListDiscussionCommentsLegacyRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleTeamsListDiscussionCommentsLegacyRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `TeamsListDiscussionCommentsLegacy`,
 		trace.WithAttributes(otelogen.OperationID(`teams/list-discussion-comments-legacy`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -20206,7 +20206,7 @@ func (s *Server) handleTeamsListDiscussionCommentsLegacyRequest(args map[string]
 // HandleTeamsListDiscussionsInOrgRequest handles teams/list-discussions-in-org operation.
 //
 // GET /orgs/{org}/teams/{team_slug}/discussions
-func (s *Server) handleTeamsListDiscussionsInOrgRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleTeamsListDiscussionsInOrgRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `TeamsListDiscussionsInOrg`,
 		trace.WithAttributes(otelogen.OperationID(`teams/list-discussions-in-org`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -20235,7 +20235,7 @@ func (s *Server) handleTeamsListDiscussionsInOrgRequest(args map[string]string, 
 // HandleTeamsListDiscussionsLegacyRequest handles teams/list-discussions-legacy operation.
 //
 // GET /teams/{team_id}/discussions
-func (s *Server) handleTeamsListDiscussionsLegacyRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleTeamsListDiscussionsLegacyRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `TeamsListDiscussionsLegacy`,
 		trace.WithAttributes(otelogen.OperationID(`teams/list-discussions-legacy`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -20264,7 +20264,7 @@ func (s *Server) handleTeamsListDiscussionsLegacyRequest(args map[string]string,
 // HandleTeamsListForAuthenticatedUserRequest handles teams/list-for-authenticated-user operation.
 //
 // GET /user/teams
-func (s *Server) handleTeamsListForAuthenticatedUserRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleTeamsListForAuthenticatedUserRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `TeamsListForAuthenticatedUser`,
 		trace.WithAttributes(otelogen.OperationID(`teams/list-for-authenticated-user`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -20293,7 +20293,7 @@ func (s *Server) handleTeamsListForAuthenticatedUserRequest(args map[string]stri
 // HandleTeamsListIdpGroupsForLegacyRequest handles teams/list-idp-groups-for-legacy operation.
 //
 // GET /teams/{team_id}/team-sync/group-mappings
-func (s *Server) handleTeamsListIdpGroupsForLegacyRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleTeamsListIdpGroupsForLegacyRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `TeamsListIdpGroupsForLegacy`,
 		trace.WithAttributes(otelogen.OperationID(`teams/list-idp-groups-for-legacy`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -20322,7 +20322,7 @@ func (s *Server) handleTeamsListIdpGroupsForLegacyRequest(args map[string]string
 // HandleTeamsListIdpGroupsForOrgRequest handles teams/list-idp-groups-for-org operation.
 //
 // GET /orgs/{org}/team-sync/groups
-func (s *Server) handleTeamsListIdpGroupsForOrgRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleTeamsListIdpGroupsForOrgRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `TeamsListIdpGroupsForOrg`,
 		trace.WithAttributes(otelogen.OperationID(`teams/list-idp-groups-for-org`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -20351,7 +20351,7 @@ func (s *Server) handleTeamsListIdpGroupsForOrgRequest(args map[string]string, w
 // HandleTeamsListIdpGroupsInOrgRequest handles teams/list-idp-groups-in-org operation.
 //
 // GET /orgs/{org}/teams/{team_slug}/team-sync/group-mappings
-func (s *Server) handleTeamsListIdpGroupsInOrgRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleTeamsListIdpGroupsInOrgRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `TeamsListIdpGroupsInOrg`,
 		trace.WithAttributes(otelogen.OperationID(`teams/list-idp-groups-in-org`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -20380,7 +20380,7 @@ func (s *Server) handleTeamsListIdpGroupsInOrgRequest(args map[string]string, w 
 // HandleTeamsListMembersInOrgRequest handles teams/list-members-in-org operation.
 //
 // GET /orgs/{org}/teams/{team_slug}/members
-func (s *Server) handleTeamsListMembersInOrgRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleTeamsListMembersInOrgRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `TeamsListMembersInOrg`,
 		trace.WithAttributes(otelogen.OperationID(`teams/list-members-in-org`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -20409,7 +20409,7 @@ func (s *Server) handleTeamsListMembersInOrgRequest(args map[string]string, w ht
 // HandleTeamsListMembersLegacyRequest handles teams/list-members-legacy operation.
 //
 // GET /teams/{team_id}/members
-func (s *Server) handleTeamsListMembersLegacyRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleTeamsListMembersLegacyRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `TeamsListMembersLegacy`,
 		trace.WithAttributes(otelogen.OperationID(`teams/list-members-legacy`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -20438,7 +20438,7 @@ func (s *Server) handleTeamsListMembersLegacyRequest(args map[string]string, w h
 // HandleTeamsListPendingInvitationsInOrgRequest handles teams/list-pending-invitations-in-org operation.
 //
 // GET /orgs/{org}/teams/{team_slug}/invitations
-func (s *Server) handleTeamsListPendingInvitationsInOrgRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleTeamsListPendingInvitationsInOrgRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `TeamsListPendingInvitationsInOrg`,
 		trace.WithAttributes(otelogen.OperationID(`teams/list-pending-invitations-in-org`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -20467,7 +20467,7 @@ func (s *Server) handleTeamsListPendingInvitationsInOrgRequest(args map[string]s
 // HandleTeamsListPendingInvitationsLegacyRequest handles teams/list-pending-invitations-legacy operation.
 //
 // GET /teams/{team_id}/invitations
-func (s *Server) handleTeamsListPendingInvitationsLegacyRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleTeamsListPendingInvitationsLegacyRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `TeamsListPendingInvitationsLegacy`,
 		trace.WithAttributes(otelogen.OperationID(`teams/list-pending-invitations-legacy`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -20496,7 +20496,7 @@ func (s *Server) handleTeamsListPendingInvitationsLegacyRequest(args map[string]
 // HandleTeamsListProjectsInOrgRequest handles teams/list-projects-in-org operation.
 //
 // GET /orgs/{org}/teams/{team_slug}/projects
-func (s *Server) handleTeamsListProjectsInOrgRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleTeamsListProjectsInOrgRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `TeamsListProjectsInOrg`,
 		trace.WithAttributes(otelogen.OperationID(`teams/list-projects-in-org`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -20525,7 +20525,7 @@ func (s *Server) handleTeamsListProjectsInOrgRequest(args map[string]string, w h
 // HandleTeamsListProjectsLegacyRequest handles teams/list-projects-legacy operation.
 //
 // GET /teams/{team_id}/projects
-func (s *Server) handleTeamsListProjectsLegacyRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleTeamsListProjectsLegacyRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `TeamsListProjectsLegacy`,
 		trace.WithAttributes(otelogen.OperationID(`teams/list-projects-legacy`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -20554,7 +20554,7 @@ func (s *Server) handleTeamsListProjectsLegacyRequest(args map[string]string, w 
 // HandleTeamsListReposInOrgRequest handles teams/list-repos-in-org operation.
 //
 // GET /orgs/{org}/teams/{team_slug}/repos
-func (s *Server) handleTeamsListReposInOrgRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleTeamsListReposInOrgRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `TeamsListReposInOrg`,
 		trace.WithAttributes(otelogen.OperationID(`teams/list-repos-in-org`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -20583,7 +20583,7 @@ func (s *Server) handleTeamsListReposInOrgRequest(args map[string]string, w http
 // HandleTeamsListReposLegacyRequest handles teams/list-repos-legacy operation.
 //
 // GET /teams/{team_id}/repos
-func (s *Server) handleTeamsListReposLegacyRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleTeamsListReposLegacyRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `TeamsListReposLegacy`,
 		trace.WithAttributes(otelogen.OperationID(`teams/list-repos-legacy`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -20612,7 +20612,7 @@ func (s *Server) handleTeamsListReposLegacyRequest(args map[string]string, w htt
 // HandleTeamsRemoveMemberLegacyRequest handles teams/remove-member-legacy operation.
 //
 // DELETE /teams/{team_id}/members/{username}
-func (s *Server) handleTeamsRemoveMemberLegacyRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleTeamsRemoveMemberLegacyRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `TeamsRemoveMemberLegacy`,
 		trace.WithAttributes(otelogen.OperationID(`teams/remove-member-legacy`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -20641,7 +20641,7 @@ func (s *Server) handleTeamsRemoveMemberLegacyRequest(args map[string]string, w 
 // HandleTeamsRemoveMembershipForUserInOrgRequest handles teams/remove-membership-for-user-in-org operation.
 //
 // DELETE /orgs/{org}/teams/{team_slug}/memberships/{username}
-func (s *Server) handleTeamsRemoveMembershipForUserInOrgRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleTeamsRemoveMembershipForUserInOrgRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `TeamsRemoveMembershipForUserInOrg`,
 		trace.WithAttributes(otelogen.OperationID(`teams/remove-membership-for-user-in-org`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -20670,7 +20670,7 @@ func (s *Server) handleTeamsRemoveMembershipForUserInOrgRequest(args map[string]
 // HandleTeamsRemoveMembershipForUserLegacyRequest handles teams/remove-membership-for-user-legacy operation.
 //
 // DELETE /teams/{team_id}/memberships/{username}
-func (s *Server) handleTeamsRemoveMembershipForUserLegacyRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleTeamsRemoveMembershipForUserLegacyRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `TeamsRemoveMembershipForUserLegacy`,
 		trace.WithAttributes(otelogen.OperationID(`teams/remove-membership-for-user-legacy`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -20699,7 +20699,7 @@ func (s *Server) handleTeamsRemoveMembershipForUserLegacyRequest(args map[string
 // HandleTeamsRemoveProjectInOrgRequest handles teams/remove-project-in-org operation.
 //
 // DELETE /orgs/{org}/teams/{team_slug}/projects/{project_id}
-func (s *Server) handleTeamsRemoveProjectInOrgRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleTeamsRemoveProjectInOrgRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `TeamsRemoveProjectInOrg`,
 		trace.WithAttributes(otelogen.OperationID(`teams/remove-project-in-org`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -20728,7 +20728,7 @@ func (s *Server) handleTeamsRemoveProjectInOrgRequest(args map[string]string, w 
 // HandleTeamsRemoveProjectLegacyRequest handles teams/remove-project-legacy operation.
 //
 // DELETE /teams/{team_id}/projects/{project_id}
-func (s *Server) handleTeamsRemoveProjectLegacyRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleTeamsRemoveProjectLegacyRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `TeamsRemoveProjectLegacy`,
 		trace.WithAttributes(otelogen.OperationID(`teams/remove-project-legacy`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -20757,7 +20757,7 @@ func (s *Server) handleTeamsRemoveProjectLegacyRequest(args map[string]string, w
 // HandleTeamsRemoveRepoInOrgRequest handles teams/remove-repo-in-org operation.
 //
 // DELETE /orgs/{org}/teams/{team_slug}/repos/{owner}/{repo}
-func (s *Server) handleTeamsRemoveRepoInOrgRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleTeamsRemoveRepoInOrgRequest(args [4]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `TeamsRemoveRepoInOrg`,
 		trace.WithAttributes(otelogen.OperationID(`teams/remove-repo-in-org`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -20786,7 +20786,7 @@ func (s *Server) handleTeamsRemoveRepoInOrgRequest(args map[string]string, w htt
 // HandleTeamsRemoveRepoLegacyRequest handles teams/remove-repo-legacy operation.
 //
 // DELETE /teams/{team_id}/repos/{owner}/{repo}
-func (s *Server) handleTeamsRemoveRepoLegacyRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleTeamsRemoveRepoLegacyRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `TeamsRemoveRepoLegacy`,
 		trace.WithAttributes(otelogen.OperationID(`teams/remove-repo-legacy`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -20815,7 +20815,7 @@ func (s *Server) handleTeamsRemoveRepoLegacyRequest(args map[string]string, w ht
 // HandleTeamsUpdateDiscussionCommentInOrgRequest handles teams/update-discussion-comment-in-org operation.
 //
 // PATCH /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments/{comment_number}
-func (s *Server) handleTeamsUpdateDiscussionCommentInOrgRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleTeamsUpdateDiscussionCommentInOrgRequest(args [4]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `TeamsUpdateDiscussionCommentInOrg`,
 		trace.WithAttributes(otelogen.OperationID(`teams/update-discussion-comment-in-org`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -20850,7 +20850,7 @@ func (s *Server) handleTeamsUpdateDiscussionCommentInOrgRequest(args map[string]
 // HandleTeamsUpdateDiscussionCommentLegacyRequest handles teams/update-discussion-comment-legacy operation.
 //
 // PATCH /teams/{team_id}/discussions/{discussion_number}/comments/{comment_number}
-func (s *Server) handleTeamsUpdateDiscussionCommentLegacyRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleTeamsUpdateDiscussionCommentLegacyRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `TeamsUpdateDiscussionCommentLegacy`,
 		trace.WithAttributes(otelogen.OperationID(`teams/update-discussion-comment-legacy`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -20885,7 +20885,7 @@ func (s *Server) handleTeamsUpdateDiscussionCommentLegacyRequest(args map[string
 // HandleTeamsUpdateDiscussionInOrgRequest handles teams/update-discussion-in-org operation.
 //
 // PATCH /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}
-func (s *Server) handleTeamsUpdateDiscussionInOrgRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleTeamsUpdateDiscussionInOrgRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `TeamsUpdateDiscussionInOrg`,
 		trace.WithAttributes(otelogen.OperationID(`teams/update-discussion-in-org`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -20920,7 +20920,7 @@ func (s *Server) handleTeamsUpdateDiscussionInOrgRequest(args map[string]string,
 // HandleTeamsUpdateDiscussionLegacyRequest handles teams/update-discussion-legacy operation.
 //
 // PATCH /teams/{team_id}/discussions/{discussion_number}
-func (s *Server) handleTeamsUpdateDiscussionLegacyRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleTeamsUpdateDiscussionLegacyRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `TeamsUpdateDiscussionLegacy`,
 		trace.WithAttributes(otelogen.OperationID(`teams/update-discussion-legacy`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -20955,7 +20955,7 @@ func (s *Server) handleTeamsUpdateDiscussionLegacyRequest(args map[string]string
 // HandleTeamsUpdateInOrgRequest handles teams/update-in-org operation.
 //
 // PATCH /orgs/{org}/teams/{team_slug}
-func (s *Server) handleTeamsUpdateInOrgRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleTeamsUpdateInOrgRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `TeamsUpdateInOrg`,
 		trace.WithAttributes(otelogen.OperationID(`teams/update-in-org`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -20990,7 +20990,7 @@ func (s *Server) handleTeamsUpdateInOrgRequest(args map[string]string, w http.Re
 // HandleTeamsUpdateLegacyRequest handles teams/update-legacy operation.
 //
 // PATCH /teams/{team_id}
-func (s *Server) handleTeamsUpdateLegacyRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleTeamsUpdateLegacyRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `TeamsUpdateLegacy`,
 		trace.WithAttributes(otelogen.OperationID(`teams/update-legacy`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -21025,7 +21025,7 @@ func (s *Server) handleTeamsUpdateLegacyRequest(args map[string]string, w http.R
 // HandleUsersAddEmailForAuthenticatedRequest handles users/add-email-for-authenticated operation.
 //
 // POST /user/emails
-func (s *Server) handleUsersAddEmailForAuthenticatedRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleUsersAddEmailForAuthenticatedRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `UsersAddEmailForAuthenticated`,
 		trace.WithAttributes(otelogen.OperationID(`users/add-email-for-authenticated`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -21054,7 +21054,7 @@ func (s *Server) handleUsersAddEmailForAuthenticatedRequest(args map[string]stri
 // HandleUsersBlockRequest handles users/block operation.
 //
 // PUT /user/blocks/{username}
-func (s *Server) handleUsersBlockRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleUsersBlockRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `UsersBlock`,
 		trace.WithAttributes(otelogen.OperationID(`users/block`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -21083,7 +21083,7 @@ func (s *Server) handleUsersBlockRequest(args map[string]string, w http.Response
 // HandleUsersCheckBlockedRequest handles users/check-blocked operation.
 //
 // GET /user/blocks/{username}
-func (s *Server) handleUsersCheckBlockedRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleUsersCheckBlockedRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `UsersCheckBlocked`,
 		trace.WithAttributes(otelogen.OperationID(`users/check-blocked`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -21112,7 +21112,7 @@ func (s *Server) handleUsersCheckBlockedRequest(args map[string]string, w http.R
 // HandleUsersCheckFollowingForUserRequest handles users/check-following-for-user operation.
 //
 // GET /users/{username}/following/{target_user}
-func (s *Server) handleUsersCheckFollowingForUserRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleUsersCheckFollowingForUserRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `UsersCheckFollowingForUser`,
 		trace.WithAttributes(otelogen.OperationID(`users/check-following-for-user`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -21141,7 +21141,7 @@ func (s *Server) handleUsersCheckFollowingForUserRequest(args map[string]string,
 // HandleUsersCheckPersonIsFollowedByAuthenticatedRequest handles users/check-person-is-followed-by-authenticated operation.
 //
 // GET /user/following/{username}
-func (s *Server) handleUsersCheckPersonIsFollowedByAuthenticatedRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleUsersCheckPersonIsFollowedByAuthenticatedRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `UsersCheckPersonIsFollowedByAuthenticated`,
 		trace.WithAttributes(otelogen.OperationID(`users/check-person-is-followed-by-authenticated`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -21170,7 +21170,7 @@ func (s *Server) handleUsersCheckPersonIsFollowedByAuthenticatedRequest(args map
 // HandleUsersCreateGpgKeyForAuthenticatedRequest handles users/create-gpg-key-for-authenticated operation.
 //
 // POST /user/gpg_keys
-func (s *Server) handleUsersCreateGpgKeyForAuthenticatedRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleUsersCreateGpgKeyForAuthenticatedRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `UsersCreateGpgKeyForAuthenticated`,
 		trace.WithAttributes(otelogen.OperationID(`users/create-gpg-key-for-authenticated`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -21199,7 +21199,7 @@ func (s *Server) handleUsersCreateGpgKeyForAuthenticatedRequest(args map[string]
 // HandleUsersCreatePublicSSHKeyForAuthenticatedRequest handles users/create-public-ssh-key-for-authenticated operation.
 //
 // POST /user/keys
-func (s *Server) handleUsersCreatePublicSSHKeyForAuthenticatedRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleUsersCreatePublicSSHKeyForAuthenticatedRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `UsersCreatePublicSSHKeyForAuthenticated`,
 		trace.WithAttributes(otelogen.OperationID(`users/create-public-ssh-key-for-authenticated`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -21228,7 +21228,7 @@ func (s *Server) handleUsersCreatePublicSSHKeyForAuthenticatedRequest(args map[s
 // HandleUsersDeleteEmailForAuthenticatedRequest handles users/delete-email-for-authenticated operation.
 //
 // DELETE /user/emails
-func (s *Server) handleUsersDeleteEmailForAuthenticatedRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleUsersDeleteEmailForAuthenticatedRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `UsersDeleteEmailForAuthenticated`,
 		trace.WithAttributes(otelogen.OperationID(`users/delete-email-for-authenticated`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -21257,7 +21257,7 @@ func (s *Server) handleUsersDeleteEmailForAuthenticatedRequest(args map[string]s
 // HandleUsersDeleteGpgKeyForAuthenticatedRequest handles users/delete-gpg-key-for-authenticated operation.
 //
 // DELETE /user/gpg_keys/{gpg_key_id}
-func (s *Server) handleUsersDeleteGpgKeyForAuthenticatedRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleUsersDeleteGpgKeyForAuthenticatedRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `UsersDeleteGpgKeyForAuthenticated`,
 		trace.WithAttributes(otelogen.OperationID(`users/delete-gpg-key-for-authenticated`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -21286,7 +21286,7 @@ func (s *Server) handleUsersDeleteGpgKeyForAuthenticatedRequest(args map[string]
 // HandleUsersDeletePublicSSHKeyForAuthenticatedRequest handles users/delete-public-ssh-key-for-authenticated operation.
 //
 // DELETE /user/keys/{key_id}
-func (s *Server) handleUsersDeletePublicSSHKeyForAuthenticatedRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleUsersDeletePublicSSHKeyForAuthenticatedRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `UsersDeletePublicSSHKeyForAuthenticated`,
 		trace.WithAttributes(otelogen.OperationID(`users/delete-public-ssh-key-for-authenticated`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -21315,7 +21315,7 @@ func (s *Server) handleUsersDeletePublicSSHKeyForAuthenticatedRequest(args map[s
 // HandleUsersFollowRequest handles users/follow operation.
 //
 // PUT /user/following/{username}
-func (s *Server) handleUsersFollowRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleUsersFollowRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `UsersFollow`,
 		trace.WithAttributes(otelogen.OperationID(`users/follow`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -21344,7 +21344,7 @@ func (s *Server) handleUsersFollowRequest(args map[string]string, w http.Respons
 // HandleUsersGetAuthenticatedRequest handles users/get-authenticated operation.
 //
 // GET /user
-func (s *Server) handleUsersGetAuthenticatedRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleUsersGetAuthenticatedRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `UsersGetAuthenticated`,
 		trace.WithAttributes(otelogen.OperationID(`users/get-authenticated`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -21367,7 +21367,7 @@ func (s *Server) handleUsersGetAuthenticatedRequest(args map[string]string, w ht
 // HandleUsersGetByUsernameRequest handles users/get-by-username operation.
 //
 // GET /users/{username}
-func (s *Server) handleUsersGetByUsernameRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleUsersGetByUsernameRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `UsersGetByUsername`,
 		trace.WithAttributes(otelogen.OperationID(`users/get-by-username`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -21396,7 +21396,7 @@ func (s *Server) handleUsersGetByUsernameRequest(args map[string]string, w http.
 // HandleUsersGetContextForUserRequest handles users/get-context-for-user operation.
 //
 // GET /users/{username}/hovercard
-func (s *Server) handleUsersGetContextForUserRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleUsersGetContextForUserRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `UsersGetContextForUser`,
 		trace.WithAttributes(otelogen.OperationID(`users/get-context-for-user`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -21425,7 +21425,7 @@ func (s *Server) handleUsersGetContextForUserRequest(args map[string]string, w h
 // HandleUsersGetGpgKeyForAuthenticatedRequest handles users/get-gpg-key-for-authenticated operation.
 //
 // GET /user/gpg_keys/{gpg_key_id}
-func (s *Server) handleUsersGetGpgKeyForAuthenticatedRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleUsersGetGpgKeyForAuthenticatedRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `UsersGetGpgKeyForAuthenticated`,
 		trace.WithAttributes(otelogen.OperationID(`users/get-gpg-key-for-authenticated`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -21454,7 +21454,7 @@ func (s *Server) handleUsersGetGpgKeyForAuthenticatedRequest(args map[string]str
 // HandleUsersGetPublicSSHKeyForAuthenticatedRequest handles users/get-public-ssh-key-for-authenticated operation.
 //
 // GET /user/keys/{key_id}
-func (s *Server) handleUsersGetPublicSSHKeyForAuthenticatedRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleUsersGetPublicSSHKeyForAuthenticatedRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `UsersGetPublicSSHKeyForAuthenticated`,
 		trace.WithAttributes(otelogen.OperationID(`users/get-public-ssh-key-for-authenticated`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -21483,7 +21483,7 @@ func (s *Server) handleUsersGetPublicSSHKeyForAuthenticatedRequest(args map[stri
 // HandleUsersListRequest handles users/list operation.
 //
 // GET /users
-func (s *Server) handleUsersListRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleUsersListRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `UsersList`,
 		trace.WithAttributes(otelogen.OperationID(`users/list`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -21512,7 +21512,7 @@ func (s *Server) handleUsersListRequest(args map[string]string, w http.ResponseW
 // HandleUsersListBlockedByAuthenticatedRequest handles users/list-blocked-by-authenticated operation.
 //
 // GET /user/blocks
-func (s *Server) handleUsersListBlockedByAuthenticatedRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleUsersListBlockedByAuthenticatedRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `UsersListBlockedByAuthenticated`,
 		trace.WithAttributes(otelogen.OperationID(`users/list-blocked-by-authenticated`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -21535,7 +21535,7 @@ func (s *Server) handleUsersListBlockedByAuthenticatedRequest(args map[string]st
 // HandleUsersListEmailsForAuthenticatedRequest handles users/list-emails-for-authenticated operation.
 //
 // GET /user/emails
-func (s *Server) handleUsersListEmailsForAuthenticatedRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleUsersListEmailsForAuthenticatedRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `UsersListEmailsForAuthenticated`,
 		trace.WithAttributes(otelogen.OperationID(`users/list-emails-for-authenticated`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -21564,7 +21564,7 @@ func (s *Server) handleUsersListEmailsForAuthenticatedRequest(args map[string]st
 // HandleUsersListFollowedByAuthenticatedRequest handles users/list-followed-by-authenticated operation.
 //
 // GET /user/following
-func (s *Server) handleUsersListFollowedByAuthenticatedRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleUsersListFollowedByAuthenticatedRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `UsersListFollowedByAuthenticated`,
 		trace.WithAttributes(otelogen.OperationID(`users/list-followed-by-authenticated`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -21593,7 +21593,7 @@ func (s *Server) handleUsersListFollowedByAuthenticatedRequest(args map[string]s
 // HandleUsersListFollowersForAuthenticatedUserRequest handles users/list-followers-for-authenticated-user operation.
 //
 // GET /user/followers
-func (s *Server) handleUsersListFollowersForAuthenticatedUserRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleUsersListFollowersForAuthenticatedUserRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `UsersListFollowersForAuthenticatedUser`,
 		trace.WithAttributes(otelogen.OperationID(`users/list-followers-for-authenticated-user`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -21622,7 +21622,7 @@ func (s *Server) handleUsersListFollowersForAuthenticatedUserRequest(args map[st
 // HandleUsersListFollowersForUserRequest handles users/list-followers-for-user operation.
 //
 // GET /users/{username}/followers
-func (s *Server) handleUsersListFollowersForUserRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleUsersListFollowersForUserRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `UsersListFollowersForUser`,
 		trace.WithAttributes(otelogen.OperationID(`users/list-followers-for-user`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -21651,7 +21651,7 @@ func (s *Server) handleUsersListFollowersForUserRequest(args map[string]string, 
 // HandleUsersListFollowingForUserRequest handles users/list-following-for-user operation.
 //
 // GET /users/{username}/following
-func (s *Server) handleUsersListFollowingForUserRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleUsersListFollowingForUserRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `UsersListFollowingForUser`,
 		trace.WithAttributes(otelogen.OperationID(`users/list-following-for-user`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -21680,7 +21680,7 @@ func (s *Server) handleUsersListFollowingForUserRequest(args map[string]string, 
 // HandleUsersListGpgKeysForAuthenticatedRequest handles users/list-gpg-keys-for-authenticated operation.
 //
 // GET /user/gpg_keys
-func (s *Server) handleUsersListGpgKeysForAuthenticatedRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleUsersListGpgKeysForAuthenticatedRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `UsersListGpgKeysForAuthenticated`,
 		trace.WithAttributes(otelogen.OperationID(`users/list-gpg-keys-for-authenticated`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -21709,7 +21709,7 @@ func (s *Server) handleUsersListGpgKeysForAuthenticatedRequest(args map[string]s
 // HandleUsersListGpgKeysForUserRequest handles users/list-gpg-keys-for-user operation.
 //
 // GET /users/{username}/gpg_keys
-func (s *Server) handleUsersListGpgKeysForUserRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleUsersListGpgKeysForUserRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `UsersListGpgKeysForUser`,
 		trace.WithAttributes(otelogen.OperationID(`users/list-gpg-keys-for-user`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -21738,7 +21738,7 @@ func (s *Server) handleUsersListGpgKeysForUserRequest(args map[string]string, w 
 // HandleUsersListPublicEmailsForAuthenticatedRequest handles users/list-public-emails-for-authenticated operation.
 //
 // GET /user/public_emails
-func (s *Server) handleUsersListPublicEmailsForAuthenticatedRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleUsersListPublicEmailsForAuthenticatedRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `UsersListPublicEmailsForAuthenticated`,
 		trace.WithAttributes(otelogen.OperationID(`users/list-public-emails-for-authenticated`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -21767,7 +21767,7 @@ func (s *Server) handleUsersListPublicEmailsForAuthenticatedRequest(args map[str
 // HandleUsersListPublicKeysForUserRequest handles users/list-public-keys-for-user operation.
 //
 // GET /users/{username}/keys
-func (s *Server) handleUsersListPublicKeysForUserRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleUsersListPublicKeysForUserRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `UsersListPublicKeysForUser`,
 		trace.WithAttributes(otelogen.OperationID(`users/list-public-keys-for-user`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -21796,7 +21796,7 @@ func (s *Server) handleUsersListPublicKeysForUserRequest(args map[string]string,
 // HandleUsersListPublicSSHKeysForAuthenticatedRequest handles users/list-public-ssh-keys-for-authenticated operation.
 //
 // GET /user/keys
-func (s *Server) handleUsersListPublicSSHKeysForAuthenticatedRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleUsersListPublicSSHKeysForAuthenticatedRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `UsersListPublicSSHKeysForAuthenticated`,
 		trace.WithAttributes(otelogen.OperationID(`users/list-public-ssh-keys-for-authenticated`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -21825,7 +21825,7 @@ func (s *Server) handleUsersListPublicSSHKeysForAuthenticatedRequest(args map[st
 // HandleUsersSetPrimaryEmailVisibilityForAuthenticatedRequest handles users/set-primary-email-visibility-for-authenticated operation.
 //
 // PATCH /user/email/visibility
-func (s *Server) handleUsersSetPrimaryEmailVisibilityForAuthenticatedRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleUsersSetPrimaryEmailVisibilityForAuthenticatedRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `UsersSetPrimaryEmailVisibilityForAuthenticated`,
 		trace.WithAttributes(otelogen.OperationID(`users/set-primary-email-visibility-for-authenticated`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -21854,7 +21854,7 @@ func (s *Server) handleUsersSetPrimaryEmailVisibilityForAuthenticatedRequest(arg
 // HandleUsersUnblockRequest handles users/unblock operation.
 //
 // DELETE /user/blocks/{username}
-func (s *Server) handleUsersUnblockRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleUsersUnblockRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `UsersUnblock`,
 		trace.WithAttributes(otelogen.OperationID(`users/unblock`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -21883,7 +21883,7 @@ func (s *Server) handleUsersUnblockRequest(args map[string]string, w http.Respon
 // HandleUsersUnfollowRequest handles users/unfollow operation.
 //
 // DELETE /user/following/{username}
-func (s *Server) handleUsersUnfollowRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleUsersUnfollowRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `UsersUnfollow`,
 		trace.WithAttributes(otelogen.OperationID(`users/unfollow`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -21912,7 +21912,7 @@ func (s *Server) handleUsersUnfollowRequest(args map[string]string, w http.Respo
 // HandleUsersUpdateAuthenticatedRequest handles users/update-authenticated operation.
 //
 // PATCH /user
-func (s *Server) handleUsersUpdateAuthenticatedRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleUsersUpdateAuthenticatedRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `UsersUpdateAuthenticated`,
 		trace.WithAttributes(otelogen.OperationID(`users/update-authenticated`)),
 		trace.WithSpanKind(trace.SpanKindServer),

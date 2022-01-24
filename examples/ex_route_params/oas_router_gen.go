@@ -76,8 +76,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 		s.notFound(w, r)
 		return
 	}
-
-	args := map[string]string{}
+	args := [2]string{}
 	// Static code generated router with unwrapped path search.
 	switch r.Method {
 	case "GET":
@@ -93,7 +92,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 			}
 
 			if len(elem) == 0 {
-				s.handleDataGetAnyRequest(args, w, r)
+				s.handleDataGetAnyRequest([0]string{}, w, r)
+
 				return
 			}
 			switch elem[0] {
@@ -108,11 +108,14 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				// Match until "/"
 				idx := strings.IndexByte(elem, '/')
 				if idx > 0 {
-					args["id"] = elem[:idx]
+					args[0] = elem[:idx]
 					elem = elem[idx:]
 
 					if len(elem) == 0 {
-						s.handleDataGetIDRequest(args, w, r)
+						s.handleDataGetIDRequest([1]string{
+							args[0],
+						}, w, r)
+
 						return
 					}
 					switch elem[0] {
@@ -125,12 +128,16 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 						// Param: "key"
 						// Leaf parameter
-						args["key"] = elem
+						args[1] = elem
 						elem = ""
 
 						if len(elem) == 0 {
 							// Leaf: DataGet
-							s.handleDataGetRequest(args, w, r)
+							s.handleDataGetRequest([2]string{
+								args[0],
+								args[1],
+							}, w, r)
+
 							return
 						}
 					}
@@ -139,4 +146,98 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 		}
 	}
 	s.notFound(w, r)
+}
+
+// Route is route object.
+type Route struct {
+	name  string
+	count int
+	args  [2]string
+}
+
+// OperationID returns OpenAPI operationId.
+func (r Route) OperationID() string {
+	return r.name
+}
+
+// Args returns parsed arguments.
+func (r Route) Args() []string {
+	return r.args[:r.count]
+}
+
+// FindRoute finds Route for given method and path.
+func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
+	var (
+		args = [2]string{}
+		elem = path
+	)
+	r.args = args
+
+	// Static code generated router with unwrapped path search.
+	switch method {
+	case "GET":
+		if len(elem) == 0 {
+			break
+		}
+		switch elem[0] {
+		case '/': // Prefix: "/name"
+			if l := len("/name"); len(elem) >= l && elem[0:l] == "/name" {
+				elem = elem[l:]
+			} else {
+				break
+			}
+
+			if len(elem) == 0 {
+				r.name = "DataGetAny"
+				r.args = args
+				r.count = 0
+				return r, true
+			}
+			switch elem[0] {
+			case '/': // Prefix: "/"
+				if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+					elem = elem[l:]
+				} else {
+					break
+				}
+
+				// Param: "id"
+				// Match until "/"
+				idx := strings.IndexByte(elem, '/')
+				if idx > 0 {
+					args[0] = elem[:idx]
+					elem = elem[idx:]
+
+					if len(elem) == 0 {
+						r.name = "DataGetID"
+						r.args = args
+						r.count = 1
+						return r, true
+					}
+					switch elem[0] {
+					case '/': // Prefix: "/"
+						if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+							elem = elem[l:]
+						} else {
+							break
+						}
+
+						// Param: "key"
+						// Leaf parameter
+						args[1] = elem
+						elem = ""
+
+						if len(elem) == 0 {
+							// Leaf: DataGet
+							r.name = "DataGet"
+							r.args = args
+							r.count = 2
+							return r, true
+						}
+					}
+				}
+			}
+		}
+	}
+	return r, false
 }

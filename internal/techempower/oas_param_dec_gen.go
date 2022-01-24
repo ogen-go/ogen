@@ -64,7 +64,7 @@ var (
 	_ = sync.Pool{}
 )
 
-func decodeCachingParams(args map[string]string, r *http.Request) (CachingParams, error) {
+func decodeCachingParams(args [0]string, r *http.Request) (CachingParams, error) {
 	var (
 		params    CachingParams
 		queryArgs = r.URL.Query()
@@ -102,7 +102,7 @@ func decodeCachingParams(args map[string]string, r *http.Request) (CachingParams
 	return params, nil
 }
 
-func decodeQueriesParams(args map[string]string, r *http.Request) (QueriesParams, error) {
+func decodeQueriesParams(args [0]string, r *http.Request) (QueriesParams, error) {
 	var (
 		params    QueriesParams
 		queryArgs = r.URL.Query()
@@ -140,7 +140,7 @@ func decodeQueriesParams(args map[string]string, r *http.Request) (QueriesParams
 	return params, nil
 }
 
-func decodeUpdatesParams(args map[string]string, r *http.Request) (UpdatesParams, error) {
+func decodeUpdatesParams(args [0]string, r *http.Request) (UpdatesParams, error) {
 	var (
 		params    UpdatesParams
 		queryArgs = r.URL.Query()

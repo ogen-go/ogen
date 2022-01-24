@@ -76,8 +76,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 		s.notFound(w, r)
 		return
 	}
-
-	args := map[string]string{}
+	args := [1]string{}
 	// Static code generated router with unwrapped path search.
 	switch r.Method {
 	case "GET":
@@ -93,7 +92,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 			}
 
 			if len(elem) == 0 {
-				s.handleListPetsRequest(args, w, r)
+				s.handleListPetsRequest([0]string{}, w, r)
+
 				return
 			}
 			switch elem[0] {
@@ -106,12 +106,15 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 				// Param: "petId"
 				// Leaf parameter
-				args["petId"] = elem
+				args[0] = elem
 				elem = ""
 
 				if len(elem) == 0 {
 					// Leaf: ShowPetById
-					s.handleShowPetByIdRequest(args, w, r)
+					s.handleShowPetByIdRequest([1]string{
+						args[0],
+					}, w, r)
+
 					return
 				}
 			}
@@ -130,10 +133,102 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 			if len(elem) == 0 {
 				// Leaf: CreatePets
-				s.handleCreatePetsRequest(args, w, r)
+				s.handleCreatePetsRequest([0]string{}, w, r)
+
 				return
 			}
 		}
 	}
 	s.notFound(w, r)
+}
+
+// Route is route object.
+type Route struct {
+	name  string
+	count int
+	args  [1]string
+}
+
+// OperationID returns OpenAPI operationId.
+func (r Route) OperationID() string {
+	return r.name
+}
+
+// Args returns parsed arguments.
+func (r Route) Args() []string {
+	return r.args[:r.count]
+}
+
+// FindRoute finds Route for given method and path.
+func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
+	var (
+		args = [1]string{}
+		elem = path
+	)
+	r.args = args
+
+	// Static code generated router with unwrapped path search.
+	switch method {
+	case "GET":
+		if len(elem) == 0 {
+			break
+		}
+		switch elem[0] {
+		case '/': // Prefix: "/pets"
+			if l := len("/pets"); len(elem) >= l && elem[0:l] == "/pets" {
+				elem = elem[l:]
+			} else {
+				break
+			}
+
+			if len(elem) == 0 {
+				r.name = "ListPets"
+				r.args = args
+				r.count = 0
+				return r, true
+			}
+			switch elem[0] {
+			case '/': // Prefix: "/"
+				if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+					elem = elem[l:]
+				} else {
+					break
+				}
+
+				// Param: "petId"
+				// Leaf parameter
+				args[0] = elem
+				elem = ""
+
+				if len(elem) == 0 {
+					// Leaf: ShowPetById
+					r.name = "ShowPetById"
+					r.args = args
+					r.count = 1
+					return r, true
+				}
+			}
+		}
+	case "POST":
+		if len(elem) == 0 {
+			break
+		}
+		switch elem[0] {
+		case '/': // Prefix: "/pets"
+			if l := len("/pets"); len(elem) >= l && elem[0:l] == "/pets" {
+				elem = elem[l:]
+			} else {
+				break
+			}
+
+			if len(elem) == 0 {
+				// Leaf: CreatePets
+				r.name = "CreatePets"
+				r.args = args
+				r.count = 0
+				return r, true
+			}
+		}
+	}
+	return r, false
 }

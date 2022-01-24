@@ -64,13 +64,13 @@ var (
 	_ = sync.Pool{}
 )
 
-func decodeDeletePetParams(args map[string]string, r *http.Request) (DeletePetParams, error) {
+func decodeDeletePetParams(args [1]string, r *http.Request) (DeletePetParams, error) {
 	var (
 		params DeletePetParams
 	)
 	// Decode path: id.
 	{
-		param := args["id"]
+		param := args[0]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "id",
