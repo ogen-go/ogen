@@ -1,12 +1,6 @@
 {{ define "req_json/enc"}}
-buf := getBuf()
 e := jx.GetWriter()
-defer jx.PutWriter(e)
 {{ template "json/enc" req_enc_elem $ }}
-if _, err := e.WriteTo(buf); err != nil {
-	putBuf(buf)
-	return nil, err
-}
 {{ end }}
 
 {{- /*gotype: github.com/ogen-go/ogen/gen.TemplateConfig*/ -}}
@@ -23,7 +17,7 @@ func encode{{ $op.Name }}Request{{ $contentType.Name }}(req {{ $op.Request.Type.
 	return req, nil
 	{{- else if $contentType.JSON }}
 	{{- template "req_json/enc" $type }}
-	return buf, nil
+	return e, nil
 	{{- else }}
 	return nil, errors.New(`{{ $contentType }} encoder not implemented`)
 	{{- end }}

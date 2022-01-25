@@ -132,8 +132,8 @@ func (c *Client) AddStickerToSet(ctx context.Context, request AddStickerToSet) (
 	if err != nil {
 		return res, err
 	}
-	defer putBuf(buf)
-	reqBody = buf
+	defer jx.PutWriter(buf)
+	reqBody = bytes.NewReader(buf.Buf)
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/addStickerToSet"
@@ -194,8 +194,8 @@ func (c *Client) AnswerCallbackQuery(ctx context.Context, request AnswerCallback
 	if err != nil {
 		return res, err
 	}
-	defer putBuf(buf)
-	reqBody = buf
+	defer jx.PutWriter(buf)
+	reqBody = bytes.NewReader(buf.Buf)
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/answerCallbackQuery"
@@ -256,8 +256,8 @@ func (c *Client) AnswerInlineQuery(ctx context.Context, request AnswerInlineQuer
 	if err != nil {
 		return res, err
 	}
-	defer putBuf(buf)
-	reqBody = buf
+	defer jx.PutWriter(buf)
+	reqBody = bytes.NewReader(buf.Buf)
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/answerInlineQuery"
@@ -310,8 +310,8 @@ func (c *Client) AnswerPreCheckoutQuery(ctx context.Context, request AnswerPreCh
 	if err != nil {
 		return res, err
 	}
-	defer putBuf(buf)
-	reqBody = buf
+	defer jx.PutWriter(buf)
+	reqBody = bytes.NewReader(buf.Buf)
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/answerPreCheckoutQuery"
@@ -372,8 +372,8 @@ func (c *Client) AnswerShippingQuery(ctx context.Context, request AnswerShipping
 	if err != nil {
 		return res, err
 	}
-	defer putBuf(buf)
-	reqBody = buf
+	defer jx.PutWriter(buf)
+	reqBody = bytes.NewReader(buf.Buf)
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/answerShippingQuery"
@@ -426,8 +426,8 @@ func (c *Client) ApproveChatJoinRequest(ctx context.Context, request ApproveChat
 	if err != nil {
 		return res, err
 	}
-	defer putBuf(buf)
-	reqBody = buf
+	defer jx.PutWriter(buf)
+	reqBody = bytes.NewReader(buf.Buf)
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/approveChatJoinRequest"
@@ -480,8 +480,8 @@ func (c *Client) BanChatMember(ctx context.Context, request BanChatMember) (res 
 	if err != nil {
 		return res, err
 	}
-	defer putBuf(buf)
-	reqBody = buf
+	defer jx.PutWriter(buf)
+	reqBody = bytes.NewReader(buf.Buf)
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/banChatMember"
@@ -534,8 +534,8 @@ func (c *Client) BanChatSenderChat(ctx context.Context, request BanChatSenderCha
 	if err != nil {
 		return res, err
 	}
-	defer putBuf(buf)
-	reqBody = buf
+	defer jx.PutWriter(buf)
+	reqBody = bytes.NewReader(buf.Buf)
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/banChatSenderChat"
@@ -636,8 +636,8 @@ func (c *Client) CopyMessage(ctx context.Context, request CopyMessage) (res Resu
 	if err != nil {
 		return res, err
 	}
-	defer putBuf(buf)
-	reqBody = buf
+	defer jx.PutWriter(buf)
+	reqBody = bytes.NewReader(buf.Buf)
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/copyMessage"
@@ -698,8 +698,8 @@ func (c *Client) CreateChatInviteLink(ctx context.Context, request CreateChatInv
 	if err != nil {
 		return res, err
 	}
-	defer putBuf(buf)
-	reqBody = buf
+	defer jx.PutWriter(buf)
+	reqBody = bytes.NewReader(buf.Buf)
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/createChatInviteLink"
@@ -760,8 +760,8 @@ func (c *Client) CreateNewStickerSet(ctx context.Context, request CreateNewStick
 	if err != nil {
 		return res, err
 	}
-	defer putBuf(buf)
-	reqBody = buf
+	defer jx.PutWriter(buf)
+	reqBody = bytes.NewReader(buf.Buf)
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/createNewStickerSet"
@@ -814,8 +814,8 @@ func (c *Client) DeclineChatJoinRequest(ctx context.Context, request DeclineChat
 	if err != nil {
 		return res, err
 	}
-	defer putBuf(buf)
-	reqBody = buf
+	defer jx.PutWriter(buf)
+	reqBody = bytes.NewReader(buf.Buf)
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/declineChatJoinRequest"
@@ -868,8 +868,8 @@ func (c *Client) DeleteChatPhoto(ctx context.Context, request DeleteChatPhoto) (
 	if err != nil {
 		return res, err
 	}
-	defer putBuf(buf)
-	reqBody = buf
+	defer jx.PutWriter(buf)
+	reqBody = bytes.NewReader(buf.Buf)
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/deleteChatPhoto"
@@ -922,8 +922,8 @@ func (c *Client) DeleteChatStickerSet(ctx context.Context, request DeleteChatSti
 	if err != nil {
 		return res, err
 	}
-	defer putBuf(buf)
-	reqBody = buf
+	defer jx.PutWriter(buf)
+	reqBody = bytes.NewReader(buf.Buf)
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/deleteChatStickerSet"
@@ -976,8 +976,8 @@ func (c *Client) DeleteMessage(ctx context.Context, request DeleteMessage) (res 
 	if err != nil {
 		return res, err
 	}
-	defer putBuf(buf)
-	reqBody = buf
+	defer jx.PutWriter(buf)
+	reqBody = bytes.NewReader(buf.Buf)
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/deleteMessage"
@@ -1030,8 +1030,8 @@ func (c *Client) DeleteMyCommands(ctx context.Context, request OptDeleteMyComman
 	if err != nil {
 		return res, err
 	}
-	defer putBuf(buf)
-	reqBody = buf
+	defer jx.PutWriter(buf)
+	reqBody = bytes.NewReader(buf.Buf)
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/deleteMyCommands"
@@ -1084,8 +1084,8 @@ func (c *Client) DeleteStickerFromSet(ctx context.Context, request DeleteSticker
 	if err != nil {
 		return res, err
 	}
-	defer putBuf(buf)
-	reqBody = buf
+	defer jx.PutWriter(buf)
+	reqBody = bytes.NewReader(buf.Buf)
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/deleteStickerFromSet"
@@ -1138,8 +1138,8 @@ func (c *Client) DeleteWebhook(ctx context.Context, request OptDeleteWebhook) (r
 	if err != nil {
 		return res, err
 	}
-	defer putBuf(buf)
-	reqBody = buf
+	defer jx.PutWriter(buf)
+	reqBody = bytes.NewReader(buf.Buf)
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/deleteWebhook"
@@ -1200,8 +1200,8 @@ func (c *Client) EditChatInviteLink(ctx context.Context, request EditChatInviteL
 	if err != nil {
 		return res, err
 	}
-	defer putBuf(buf)
-	reqBody = buf
+	defer jx.PutWriter(buf)
+	reqBody = bytes.NewReader(buf.Buf)
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/editChatInviteLink"
@@ -1262,8 +1262,8 @@ func (c *Client) EditMessageCaption(ctx context.Context, request EditMessageCapt
 	if err != nil {
 		return res, err
 	}
-	defer putBuf(buf)
-	reqBody = buf
+	defer jx.PutWriter(buf)
+	reqBody = bytes.NewReader(buf.Buf)
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/editMessageCaption"
@@ -1324,8 +1324,8 @@ func (c *Client) EditMessageLiveLocation(ctx context.Context, request EditMessag
 	if err != nil {
 		return res, err
 	}
-	defer putBuf(buf)
-	reqBody = buf
+	defer jx.PutWriter(buf)
+	reqBody = bytes.NewReader(buf.Buf)
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/editMessageLiveLocation"
@@ -1386,8 +1386,8 @@ func (c *Client) EditMessageMedia(ctx context.Context, request EditMessageMedia)
 	if err != nil {
 		return res, err
 	}
-	defer putBuf(buf)
-	reqBody = buf
+	defer jx.PutWriter(buf)
+	reqBody = bytes.NewReader(buf.Buf)
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/editMessageMedia"
@@ -1448,8 +1448,8 @@ func (c *Client) EditMessageReplyMarkup(ctx context.Context, request EditMessage
 	if err != nil {
 		return res, err
 	}
-	defer putBuf(buf)
-	reqBody = buf
+	defer jx.PutWriter(buf)
+	reqBody = bytes.NewReader(buf.Buf)
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/editMessageReplyMarkup"
@@ -1510,8 +1510,8 @@ func (c *Client) EditMessageText(ctx context.Context, request EditMessageText) (
 	if err != nil {
 		return res, err
 	}
-	defer putBuf(buf)
-	reqBody = buf
+	defer jx.PutWriter(buf)
+	reqBody = bytes.NewReader(buf.Buf)
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/editMessageText"
@@ -1564,8 +1564,8 @@ func (c *Client) ExportChatInviteLink(ctx context.Context, request ExportChatInv
 	if err != nil {
 		return res, err
 	}
-	defer putBuf(buf)
-	reqBody = buf
+	defer jx.PutWriter(buf)
+	reqBody = bytes.NewReader(buf.Buf)
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/exportChatInviteLink"
@@ -1618,8 +1618,8 @@ func (c *Client) ForwardMessage(ctx context.Context, request ForwardMessage) (re
 	if err != nil {
 		return res, err
 	}
-	defer putBuf(buf)
-	reqBody = buf
+	defer jx.PutWriter(buf)
+	reqBody = bytes.NewReader(buf.Buf)
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/forwardMessage"
@@ -1672,8 +1672,8 @@ func (c *Client) GetChat(ctx context.Context, request GetChat) (res ResultChat, 
 	if err != nil {
 		return res, err
 	}
-	defer putBuf(buf)
-	reqBody = buf
+	defer jx.PutWriter(buf)
+	reqBody = bytes.NewReader(buf.Buf)
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/getChat"
@@ -1726,8 +1726,8 @@ func (c *Client) GetChatAdministrators(ctx context.Context, request GetChatAdmin
 	if err != nil {
 		return res, err
 	}
-	defer putBuf(buf)
-	reqBody = buf
+	defer jx.PutWriter(buf)
+	reqBody = bytes.NewReader(buf.Buf)
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/getChatAdministrators"
@@ -1780,8 +1780,8 @@ func (c *Client) GetChatMember(ctx context.Context, request GetChatMember) (res 
 	if err != nil {
 		return res, err
 	}
-	defer putBuf(buf)
-	reqBody = buf
+	defer jx.PutWriter(buf)
+	reqBody = bytes.NewReader(buf.Buf)
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/getChatMember"
@@ -1834,8 +1834,8 @@ func (c *Client) GetChatMemberCount(ctx context.Context, request GetChatMemberCo
 	if err != nil {
 		return res, err
 	}
-	defer putBuf(buf)
-	reqBody = buf
+	defer jx.PutWriter(buf)
+	reqBody = bytes.NewReader(buf.Buf)
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/getChatMemberCount"
@@ -1888,8 +1888,8 @@ func (c *Client) GetFile(ctx context.Context, request GetFile) (res Result, err 
 	if err != nil {
 		return res, err
 	}
-	defer putBuf(buf)
-	reqBody = buf
+	defer jx.PutWriter(buf)
+	reqBody = bytes.NewReader(buf.Buf)
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/getFile"
@@ -1942,8 +1942,8 @@ func (c *Client) GetGameHighScores(ctx context.Context, request GetGameHighScore
 	if err != nil {
 		return res, err
 	}
-	defer putBuf(buf)
-	reqBody = buf
+	defer jx.PutWriter(buf)
+	reqBody = bytes.NewReader(buf.Buf)
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/getGameHighScores"
@@ -2036,8 +2036,8 @@ func (c *Client) GetMyCommands(ctx context.Context, request OptGetMyCommands) (r
 	if err != nil {
 		return res, err
 	}
-	defer putBuf(buf)
-	reqBody = buf
+	defer jx.PutWriter(buf)
+	reqBody = bytes.NewReader(buf.Buf)
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/getMyCommands"
@@ -2090,8 +2090,8 @@ func (c *Client) GetStickerSet(ctx context.Context, request GetStickerSet) (res 
 	if err != nil {
 		return res, err
 	}
-	defer putBuf(buf)
-	reqBody = buf
+	defer jx.PutWriter(buf)
+	reqBody = bytes.NewReader(buf.Buf)
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/getStickerSet"
@@ -2160,8 +2160,8 @@ func (c *Client) GetUpdates(ctx context.Context, request OptGetUpdates) (res Res
 	if err != nil {
 		return res, err
 	}
-	defer putBuf(buf)
-	reqBody = buf
+	defer jx.PutWriter(buf)
+	reqBody = bytes.NewReader(buf.Buf)
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/getUpdates"
@@ -2222,8 +2222,8 @@ func (c *Client) GetUserProfilePhotos(ctx context.Context, request GetUserProfil
 	if err != nil {
 		return res, err
 	}
-	defer putBuf(buf)
-	reqBody = buf
+	defer jx.PutWriter(buf)
+	reqBody = bytes.NewReader(buf.Buf)
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/getUserProfilePhotos"
@@ -2316,8 +2316,8 @@ func (c *Client) LeaveChat(ctx context.Context, request LeaveChat) (res Result, 
 	if err != nil {
 		return res, err
 	}
-	defer putBuf(buf)
-	reqBody = buf
+	defer jx.PutWriter(buf)
+	reqBody = bytes.NewReader(buf.Buf)
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/leaveChat"
@@ -2410,8 +2410,8 @@ func (c *Client) PinChatMessage(ctx context.Context, request PinChatMessage) (re
 	if err != nil {
 		return res, err
 	}
-	defer putBuf(buf)
-	reqBody = buf
+	defer jx.PutWriter(buf)
+	reqBody = bytes.NewReader(buf.Buf)
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/pinChatMessage"
@@ -2464,8 +2464,8 @@ func (c *Client) PromoteChatMember(ctx context.Context, request PromoteChatMembe
 	if err != nil {
 		return res, err
 	}
-	defer putBuf(buf)
-	reqBody = buf
+	defer jx.PutWriter(buf)
+	reqBody = bytes.NewReader(buf.Buf)
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/promoteChatMember"
@@ -2518,8 +2518,8 @@ func (c *Client) RestrictChatMember(ctx context.Context, request RestrictChatMem
 	if err != nil {
 		return res, err
 	}
-	defer putBuf(buf)
-	reqBody = buf
+	defer jx.PutWriter(buf)
+	reqBody = bytes.NewReader(buf.Buf)
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/restrictChatMember"
@@ -2572,8 +2572,8 @@ func (c *Client) RevokeChatInviteLink(ctx context.Context, request RevokeChatInv
 	if err != nil {
 		return res, err
 	}
-	defer putBuf(buf)
-	reqBody = buf
+	defer jx.PutWriter(buf)
+	reqBody = bytes.NewReader(buf.Buf)
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/revokeChatInviteLink"
@@ -2634,8 +2634,8 @@ func (c *Client) SendAnimation(ctx context.Context, request SendAnimation) (res 
 	if err != nil {
 		return res, err
 	}
-	defer putBuf(buf)
-	reqBody = buf
+	defer jx.PutWriter(buf)
+	reqBody = bytes.NewReader(buf.Buf)
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/sendAnimation"
@@ -2696,8 +2696,8 @@ func (c *Client) SendAudio(ctx context.Context, request SendAudio) (res ResultMe
 	if err != nil {
 		return res, err
 	}
-	defer putBuf(buf)
-	reqBody = buf
+	defer jx.PutWriter(buf)
+	reqBody = bytes.NewReader(buf.Buf)
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/sendAudio"
@@ -2750,8 +2750,8 @@ func (c *Client) SendChatAction(ctx context.Context, request SendChatAction) (re
 	if err != nil {
 		return res, err
 	}
-	defer putBuf(buf)
-	reqBody = buf
+	defer jx.PutWriter(buf)
+	reqBody = bytes.NewReader(buf.Buf)
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/sendChatAction"
@@ -2812,8 +2812,8 @@ func (c *Client) SendContact(ctx context.Context, request SendContact) (res Resu
 	if err != nil {
 		return res, err
 	}
-	defer putBuf(buf)
-	reqBody = buf
+	defer jx.PutWriter(buf)
+	reqBody = bytes.NewReader(buf.Buf)
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/sendContact"
@@ -2874,8 +2874,8 @@ func (c *Client) SendDice(ctx context.Context, request SendDice) (res ResultMess
 	if err != nil {
 		return res, err
 	}
-	defer putBuf(buf)
-	reqBody = buf
+	defer jx.PutWriter(buf)
+	reqBody = bytes.NewReader(buf.Buf)
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/sendDice"
@@ -2936,8 +2936,8 @@ func (c *Client) SendDocument(ctx context.Context, request SendDocument) (res Re
 	if err != nil {
 		return res, err
 	}
-	defer putBuf(buf)
-	reqBody = buf
+	defer jx.PutWriter(buf)
+	reqBody = bytes.NewReader(buf.Buf)
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/sendDocument"
@@ -2998,8 +2998,8 @@ func (c *Client) SendGame(ctx context.Context, request SendGame) (res ResultMess
 	if err != nil {
 		return res, err
 	}
-	defer putBuf(buf)
-	reqBody = buf
+	defer jx.PutWriter(buf)
+	reqBody = bytes.NewReader(buf.Buf)
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/sendGame"
@@ -3060,8 +3060,8 @@ func (c *Client) SendInvoice(ctx context.Context, request SendInvoice) (res Resu
 	if err != nil {
 		return res, err
 	}
-	defer putBuf(buf)
-	reqBody = buf
+	defer jx.PutWriter(buf)
+	reqBody = bytes.NewReader(buf.Buf)
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/sendInvoice"
@@ -3122,8 +3122,8 @@ func (c *Client) SendLocation(ctx context.Context, request SendLocation) (res Re
 	if err != nil {
 		return res, err
 	}
-	defer putBuf(buf)
-	reqBody = buf
+	defer jx.PutWriter(buf)
+	reqBody = bytes.NewReader(buf.Buf)
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/sendLocation"
@@ -3184,8 +3184,8 @@ func (c *Client) SendMediaGroup(ctx context.Context, request SendMediaGroup) (re
 	if err != nil {
 		return res, err
 	}
-	defer putBuf(buf)
-	reqBody = buf
+	defer jx.PutWriter(buf)
+	reqBody = bytes.NewReader(buf.Buf)
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/sendMediaGroup"
@@ -3246,8 +3246,8 @@ func (c *Client) SendMessage(ctx context.Context, request SendMessage) (res Resu
 	if err != nil {
 		return res, err
 	}
-	defer putBuf(buf)
-	reqBody = buf
+	defer jx.PutWriter(buf)
+	reqBody = bytes.NewReader(buf.Buf)
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/sendMessage"
@@ -3308,8 +3308,8 @@ func (c *Client) SendPhoto(ctx context.Context, request SendPhoto) (res ResultMe
 	if err != nil {
 		return res, err
 	}
-	defer putBuf(buf)
-	reqBody = buf
+	defer jx.PutWriter(buf)
+	reqBody = bytes.NewReader(buf.Buf)
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/sendPhoto"
@@ -3370,8 +3370,8 @@ func (c *Client) SendPoll(ctx context.Context, request SendPoll) (res ResultMess
 	if err != nil {
 		return res, err
 	}
-	defer putBuf(buf)
-	reqBody = buf
+	defer jx.PutWriter(buf)
+	reqBody = bytes.NewReader(buf.Buf)
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/sendPoll"
@@ -3432,8 +3432,8 @@ func (c *Client) SendSticker(ctx context.Context, request SendSticker) (res Resu
 	if err != nil {
 		return res, err
 	}
-	defer putBuf(buf)
-	reqBody = buf
+	defer jx.PutWriter(buf)
+	reqBody = bytes.NewReader(buf.Buf)
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/sendSticker"
@@ -3494,8 +3494,8 @@ func (c *Client) SendVenue(ctx context.Context, request SendVenue) (res ResultMe
 	if err != nil {
 		return res, err
 	}
-	defer putBuf(buf)
-	reqBody = buf
+	defer jx.PutWriter(buf)
+	reqBody = bytes.NewReader(buf.Buf)
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/sendVenue"
@@ -3556,8 +3556,8 @@ func (c *Client) SendVideo(ctx context.Context, request SendVideo) (res ResultMe
 	if err != nil {
 		return res, err
 	}
-	defer putBuf(buf)
-	reqBody = buf
+	defer jx.PutWriter(buf)
+	reqBody = bytes.NewReader(buf.Buf)
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/sendVideo"
@@ -3618,8 +3618,8 @@ func (c *Client) SendVideoNote(ctx context.Context, request SendVideoNote) (res 
 	if err != nil {
 		return res, err
 	}
-	defer putBuf(buf)
-	reqBody = buf
+	defer jx.PutWriter(buf)
+	reqBody = bytes.NewReader(buf.Buf)
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/sendVideoNote"
@@ -3680,8 +3680,8 @@ func (c *Client) SendVoice(ctx context.Context, request SendVoice) (res ResultMe
 	if err != nil {
 		return res, err
 	}
-	defer putBuf(buf)
-	reqBody = buf
+	defer jx.PutWriter(buf)
+	reqBody = bytes.NewReader(buf.Buf)
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/sendVoice"
@@ -3742,8 +3742,8 @@ func (c *Client) SetChatAdministratorCustomTitle(ctx context.Context, request Se
 	if err != nil {
 		return res, err
 	}
-	defer putBuf(buf)
-	reqBody = buf
+	defer jx.PutWriter(buf)
+	reqBody = bytes.NewReader(buf.Buf)
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/setChatAdministratorCustomTitle"
@@ -3804,8 +3804,8 @@ func (c *Client) SetChatDescription(ctx context.Context, request SetChatDescript
 	if err != nil {
 		return res, err
 	}
-	defer putBuf(buf)
-	reqBody = buf
+	defer jx.PutWriter(buf)
+	reqBody = bytes.NewReader(buf.Buf)
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/setChatDescription"
@@ -3858,8 +3858,8 @@ func (c *Client) SetChatPermissions(ctx context.Context, request SetChatPermissi
 	if err != nil {
 		return res, err
 	}
-	defer putBuf(buf)
-	reqBody = buf
+	defer jx.PutWriter(buf)
+	reqBody = bytes.NewReader(buf.Buf)
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/setChatPermissions"
@@ -3912,8 +3912,8 @@ func (c *Client) SetChatPhoto(ctx context.Context, request SetChatPhoto) (res Re
 	if err != nil {
 		return res, err
 	}
-	defer putBuf(buf)
-	reqBody = buf
+	defer jx.PutWriter(buf)
+	reqBody = bytes.NewReader(buf.Buf)
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/setChatPhoto"
@@ -3966,8 +3966,8 @@ func (c *Client) SetChatStickerSet(ctx context.Context, request SetChatStickerSe
 	if err != nil {
 		return res, err
 	}
-	defer putBuf(buf)
-	reqBody = buf
+	defer jx.PutWriter(buf)
+	reqBody = bytes.NewReader(buf.Buf)
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/setChatStickerSet"
@@ -4028,8 +4028,8 @@ func (c *Client) SetChatTitle(ctx context.Context, request SetChatTitle) (res Re
 	if err != nil {
 		return res, err
 	}
-	defer putBuf(buf)
-	reqBody = buf
+	defer jx.PutWriter(buf)
+	reqBody = bytes.NewReader(buf.Buf)
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/setChatTitle"
@@ -4082,8 +4082,8 @@ func (c *Client) SetGameScore(ctx context.Context, request SetGameScore) (res Re
 	if err != nil {
 		return res, err
 	}
-	defer putBuf(buf)
-	reqBody = buf
+	defer jx.PutWriter(buf)
+	reqBody = bytes.NewReader(buf.Buf)
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/setGameScore"
@@ -4144,8 +4144,8 @@ func (c *Client) SetMyCommands(ctx context.Context, request SetMyCommands) (res 
 	if err != nil {
 		return res, err
 	}
-	defer putBuf(buf)
-	reqBody = buf
+	defer jx.PutWriter(buf)
+	reqBody = bytes.NewReader(buf.Buf)
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/setMyCommands"
@@ -4206,8 +4206,8 @@ func (c *Client) SetPassportDataErrors(ctx context.Context, request SetPassportD
 	if err != nil {
 		return res, err
 	}
-	defer putBuf(buf)
-	reqBody = buf
+	defer jx.PutWriter(buf)
+	reqBody = bytes.NewReader(buf.Buf)
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/setPassportDataErrors"
@@ -4260,8 +4260,8 @@ func (c *Client) SetStickerPositionInSet(ctx context.Context, request SetSticker
 	if err != nil {
 		return res, err
 	}
-	defer putBuf(buf)
-	reqBody = buf
+	defer jx.PutWriter(buf)
+	reqBody = bytes.NewReader(buf.Buf)
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/setStickerPositionInSet"
@@ -4314,8 +4314,8 @@ func (c *Client) SetStickerSetThumb(ctx context.Context, request SetStickerSetTh
 	if err != nil {
 		return res, err
 	}
-	defer putBuf(buf)
-	reqBody = buf
+	defer jx.PutWriter(buf)
+	reqBody = bytes.NewReader(buf.Buf)
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/setStickerSetThumb"
@@ -4368,8 +4368,8 @@ func (c *Client) SetWebhook(ctx context.Context, request SetWebhook) (res Result
 	if err != nil {
 		return res, err
 	}
-	defer putBuf(buf)
-	reqBody = buf
+	defer jx.PutWriter(buf)
+	reqBody = bytes.NewReader(buf.Buf)
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/setWebhook"
@@ -4430,8 +4430,8 @@ func (c *Client) StopMessageLiveLocation(ctx context.Context, request StopMessag
 	if err != nil {
 		return res, err
 	}
-	defer putBuf(buf)
-	reqBody = buf
+	defer jx.PutWriter(buf)
+	reqBody = bytes.NewReader(buf.Buf)
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/stopMessageLiveLocation"
@@ -4492,8 +4492,8 @@ func (c *Client) StopPoll(ctx context.Context, request StopPoll) (res ResultPoll
 	if err != nil {
 		return res, err
 	}
-	defer putBuf(buf)
-	reqBody = buf
+	defer jx.PutWriter(buf)
+	reqBody = bytes.NewReader(buf.Buf)
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/stopPoll"
@@ -4546,8 +4546,8 @@ func (c *Client) UnbanChatMember(ctx context.Context, request UnbanChatMember) (
 	if err != nil {
 		return res, err
 	}
-	defer putBuf(buf)
-	reqBody = buf
+	defer jx.PutWriter(buf)
+	reqBody = bytes.NewReader(buf.Buf)
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/unbanChatMember"
@@ -4600,8 +4600,8 @@ func (c *Client) UnbanChatSenderChat(ctx context.Context, request UnbanChatSende
 	if err != nil {
 		return res, err
 	}
-	defer putBuf(buf)
-	reqBody = buf
+	defer jx.PutWriter(buf)
+	reqBody = bytes.NewReader(buf.Buf)
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/unbanChatSenderChat"
@@ -4654,8 +4654,8 @@ func (c *Client) UnpinAllChatMessages(ctx context.Context, request UnpinAllChatM
 	if err != nil {
 		return res, err
 	}
-	defer putBuf(buf)
-	reqBody = buf
+	defer jx.PutWriter(buf)
+	reqBody = bytes.NewReader(buf.Buf)
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/unpinAllChatMessages"
@@ -4708,8 +4708,8 @@ func (c *Client) UnpinChatMessage(ctx context.Context, request UnpinChatMessage)
 	if err != nil {
 		return res, err
 	}
-	defer putBuf(buf)
-	reqBody = buf
+	defer jx.PutWriter(buf)
+	reqBody = bytes.NewReader(buf.Buf)
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/unpinChatMessage"
@@ -4762,8 +4762,8 @@ func (c *Client) UploadStickerFile(ctx context.Context, request UploadStickerFil
 	if err != nil {
 		return res, err
 	}
-	defer putBuf(buf)
-	reqBody = buf
+	defer jx.PutWriter(buf)
+	reqBody = bytes.NewReader(buf.Buf)
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/uploadStickerFile"

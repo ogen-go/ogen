@@ -96,15 +96,17 @@ func (c *Client) {{ $op.Name }}(ctx context.Context {{ if $op.Request }}, reques
 	{{- $requestsLength := len $op.Request.Contents }}
 	{{- if eq $requestsLength 1 }}
 	{{- range $contentType, $type := $op.Request.Contents }}
-	contentType = "{{$contentType}}"
-	buf, err := encode{{ $op.Name }}Request{{ $contentType.Name }}(request, span)
-	if err != nil {
-		return res, err
-	}
-	{{- if $contentType.JSON }}
-	defer putBuf(buf)
-	{{- end }}
-	reqBody = buf
+		contentType = "{{$contentType}}"
+		buf, err := encode{{ $op.Name }}Request{{ $contentType.Name }}(request, span)
+		if err != nil {
+			return res, err
+		}
+		{{- if $contentType.JSON }}
+		defer jx.PutWriter(buf)
+		reqBody = bytes.NewReader(buf.Buf)
+		{{- else }}
+		reqBody = buf
+		{{- end }}
 	{{- end }}
 	{{- else }}
 	{{- /* Multiple requests */}}
@@ -117,9 +119,11 @@ func (c *Client) {{ $op.Name }}(ctx context.Context {{ if $op.Request }}, reques
 			return res, err
 		}
 		{{- if $contentType.JSON }}
-		defer putBuf(buf)
-		{{- end }}
+		defer jx.PutWriter(buf)
+		reqBody = bytes.NewReader(buf.Buf)
+		{{- else }}
 		reqBody = buf
+		{{- end }}
 	{{- end }}
 	default:
 		return nil, "", errors.Errorf("unexpected request type: %T", req)

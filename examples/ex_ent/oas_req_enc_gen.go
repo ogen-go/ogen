@@ -64,72 +64,42 @@ var (
 	_ = sync.Pool{}
 )
 
-func encodeCreatePetRequestJSON(req CreatePetReq, span trace.Span) (data *bytes.Buffer, err error) {
-	buf := getBuf()
+func encodeCreatePetRequestJSON(req CreatePetReq, span trace.Span) (data *jx.Writer, err error) {
 	e := jx.GetWriter()
-	defer jx.PutWriter(e)
 
 	req.Encode(e)
-	if _, err := e.WriteTo(buf); err != nil {
-		putBuf(buf)
-		return nil, err
-	}
 
-	return buf, nil
+	return e, nil
 }
 
-func encodeCreatePetCategoriesRequestJSON(req CreatePetCategoriesReq, span trace.Span) (data *bytes.Buffer, err error) {
-	buf := getBuf()
+func encodeCreatePetCategoriesRequestJSON(req CreatePetCategoriesReq, span trace.Span) (data *jx.Writer, err error) {
 	e := jx.GetWriter()
-	defer jx.PutWriter(e)
 
 	req.Encode(e)
-	if _, err := e.WriteTo(buf); err != nil {
-		putBuf(buf)
-		return nil, err
-	}
 
-	return buf, nil
+	return e, nil
 }
 
-func encodeCreatePetFriendsRequestJSON(req CreatePetFriendsReq, span trace.Span) (data *bytes.Buffer, err error) {
-	buf := getBuf()
+func encodeCreatePetFriendsRequestJSON(req CreatePetFriendsReq, span trace.Span) (data *jx.Writer, err error) {
 	e := jx.GetWriter()
-	defer jx.PutWriter(e)
 
 	req.Encode(e)
-	if _, err := e.WriteTo(buf); err != nil {
-		putBuf(buf)
-		return nil, err
-	}
 
-	return buf, nil
+	return e, nil
 }
 
-func encodeCreatePetOwnerRequestJSON(req CreatePetOwnerReq, span trace.Span) (data *bytes.Buffer, err error) {
-	buf := getBuf()
+func encodeCreatePetOwnerRequestJSON(req CreatePetOwnerReq, span trace.Span) (data *jx.Writer, err error) {
 	e := jx.GetWriter()
-	defer jx.PutWriter(e)
 
 	req.Encode(e)
-	if _, err := e.WriteTo(buf); err != nil {
-		putBuf(buf)
-		return nil, err
-	}
 
-	return buf, nil
+	return e, nil
 }
 
-func encodeUpdatePetRequestJSON(req UpdatePetReq, span trace.Span) (data *bytes.Buffer, err error) {
-	buf := getBuf()
+func encodeUpdatePetRequestJSON(req UpdatePetReq, span trace.Span) (data *jx.Writer, err error) {
 	e := jx.GetWriter()
-	defer jx.PutWriter(e)
 
 	req.Encode(e)
-	if _, err := e.WriteTo(buf); err != nil {
-		putBuf(buf)
-		return nil, err
-	}
 
-	return buf, nil
+	return e, nil
 }
