@@ -363,8 +363,8 @@ func (c *Client) FoobarPost(ctx context.Context, request OptPet) (res FoobarPost
 	if err != nil {
 		return res, err
 	}
-	defer putBuf(buf)
-	reqBody = buf
+	defer jx.PutWriter(buf)
+	reqBody = bytes.NewReader(buf.Buf)
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/foobar"
@@ -526,8 +526,8 @@ func (c *Client) PetCreate(ctx context.Context, request OptPet) (res Pet, err er
 	if err != nil {
 		return res, err
 	}
-	defer putBuf(buf)
-	reqBody = buf
+	defer jx.PutWriter(buf)
+	reqBody = bytes.NewReader(buf.Buf)
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/pet"
@@ -927,8 +927,8 @@ func (c *Client) PetUpdateNameAliasPost(ctx context.Context, request OptPetName)
 	if err != nil {
 		return res, err
 	}
-	defer putBuf(buf)
-	reqBody = buf
+	defer jx.PutWriter(buf)
+	reqBody = bytes.NewReader(buf.Buf)
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/pet/updateNameAlias"
@@ -1004,8 +1004,8 @@ func (c *Client) PetUpdateNamePost(ctx context.Context, request OptString) (res 
 	if err != nil {
 		return res, err
 	}
-	defer putBuf(buf)
-	reqBody = buf
+	defer jx.PutWriter(buf)
+	reqBody = bytes.NewReader(buf.Buf)
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/pet/updateName"

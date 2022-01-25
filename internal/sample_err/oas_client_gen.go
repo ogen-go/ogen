@@ -124,8 +124,8 @@ func (c *Client) DataCreate(ctx context.Context, request OptData) (res Data, err
 	if err != nil {
 		return res, err
 	}
-	defer putBuf(buf)
-	reqBody = buf
+	defer jx.PutWriter(buf)
+	reqBody = bytes.NewReader(buf.Buf)
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/data"

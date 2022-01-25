@@ -64,64 +64,40 @@ var (
 	_ = sync.Pool{}
 )
 
-func encodeFoobarPostRequestJSON(req OptPet, span trace.Span) (data *bytes.Buffer, err error) {
-	buf := getBuf()
+func encodeFoobarPostRequestJSON(req OptPet, span trace.Span) (data *jx.Writer, err error) {
 	e := jx.GetWriter()
-	defer jx.PutWriter(e)
 	if req.Set {
 		req.Encode(e)
 	}
-	if _, err := e.WriteTo(buf); err != nil {
-		putBuf(buf)
-		return nil, err
-	}
 
-	return buf, nil
+	return e, nil
 }
 
-func encodePetCreateRequestJSON(req OptPet, span trace.Span) (data *bytes.Buffer, err error) {
-	buf := getBuf()
+func encodePetCreateRequestJSON(req OptPet, span trace.Span) (data *jx.Writer, err error) {
 	e := jx.GetWriter()
-	defer jx.PutWriter(e)
 	if req.Set {
 		req.Encode(e)
 	}
-	if _, err := e.WriteTo(buf); err != nil {
-		putBuf(buf)
-		return nil, err
-	}
 
-	return buf, nil
+	return e, nil
 }
 
-func encodePetUpdateNameAliasPostRequestJSON(req OptPetName, span trace.Span) (data *bytes.Buffer, err error) {
-	buf := getBuf()
+func encodePetUpdateNameAliasPostRequestJSON(req OptPetName, span trace.Span) (data *jx.Writer, err error) {
 	e := jx.GetWriter()
-	defer jx.PutWriter(e)
 	if req.Set {
 		req.Encode(e)
 	}
-	if _, err := e.WriteTo(buf); err != nil {
-		putBuf(buf)
-		return nil, err
-	}
 
-	return buf, nil
+	return e, nil
 }
 
-func encodePetUpdateNamePostRequestJSON(req OptString, span trace.Span) (data *bytes.Buffer, err error) {
-	buf := getBuf()
+func encodePetUpdateNamePostRequestJSON(req OptString, span trace.Span) (data *jx.Writer, err error) {
 	e := jx.GetWriter()
-	defer jx.PutWriter(e)
 	if req.Set {
 		req.Encode(e)
 	}
-	if _, err := e.WriteTo(buf); err != nil {
-		putBuf(buf)
-		return nil, err
-	}
 
-	return buf, nil
+	return e, nil
 }
 
 func encodePetUploadAvatarByIDRequestOctetStream(req Stream, span trace.Span) (data io.Reader, err error) {

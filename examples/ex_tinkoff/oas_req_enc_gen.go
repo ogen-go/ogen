@@ -64,73 +64,43 @@ var (
 	_ = sync.Pool{}
 )
 
-func encodeOrdersLimitOrderPostRequestJSON(req LimitOrderRequest, span trace.Span) (data *bytes.Buffer, err error) {
-	buf := getBuf()
+func encodeOrdersLimitOrderPostRequestJSON(req LimitOrderRequest, span trace.Span) (data *jx.Writer, err error) {
 	e := jx.GetWriter()
-	defer jx.PutWriter(e)
 
 	req.Encode(e)
-	if _, err := e.WriteTo(buf); err != nil {
-		putBuf(buf)
-		return nil, err
-	}
 
-	return buf, nil
+	return e, nil
 }
 
-func encodeOrdersMarketOrderPostRequestJSON(req MarketOrderRequest, span trace.Span) (data *bytes.Buffer, err error) {
-	buf := getBuf()
+func encodeOrdersMarketOrderPostRequestJSON(req MarketOrderRequest, span trace.Span) (data *jx.Writer, err error) {
 	e := jx.GetWriter()
-	defer jx.PutWriter(e)
 
 	req.Encode(e)
-	if _, err := e.WriteTo(buf); err != nil {
-		putBuf(buf)
-		return nil, err
-	}
 
-	return buf, nil
+	return e, nil
 }
 
-func encodeSandboxCurrenciesBalancePostRequestJSON(req SandboxSetCurrencyBalanceRequest, span trace.Span) (data *bytes.Buffer, err error) {
-	buf := getBuf()
+func encodeSandboxCurrenciesBalancePostRequestJSON(req SandboxSetCurrencyBalanceRequest, span trace.Span) (data *jx.Writer, err error) {
 	e := jx.GetWriter()
-	defer jx.PutWriter(e)
 
 	req.Encode(e)
-	if _, err := e.WriteTo(buf); err != nil {
-		putBuf(buf)
-		return nil, err
-	}
 
-	return buf, nil
+	return e, nil
 }
 
-func encodeSandboxPositionsBalancePostRequestJSON(req SandboxSetPositionBalanceRequest, span trace.Span) (data *bytes.Buffer, err error) {
-	buf := getBuf()
+func encodeSandboxPositionsBalancePostRequestJSON(req SandboxSetPositionBalanceRequest, span trace.Span) (data *jx.Writer, err error) {
 	e := jx.GetWriter()
-	defer jx.PutWriter(e)
 
 	req.Encode(e)
-	if _, err := e.WriteTo(buf); err != nil {
-		putBuf(buf)
-		return nil, err
-	}
 
-	return buf, nil
+	return e, nil
 }
 
-func encodeSandboxRegisterPostRequestJSON(req OptSandboxRegisterRequest, span trace.Span) (data *bytes.Buffer, err error) {
-	buf := getBuf()
+func encodeSandboxRegisterPostRequestJSON(req OptSandboxRegisterRequest, span trace.Span) (data *jx.Writer, err error) {
 	e := jx.GetWriter()
-	defer jx.PutWriter(e)
 	if req.Set {
 		req.Encode(e)
 	}
-	if _, err := e.WriteTo(buf); err != nil {
-		putBuf(buf)
-		return nil, err
-	}
 
-	return buf, nil
+	return e, nil
 }

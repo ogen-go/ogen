@@ -124,8 +124,8 @@ func (c *Client) CreatePet(ctx context.Context, request CreatePetReq) (res Creat
 	if err != nil {
 		return res, err
 	}
-	defer putBuf(buf)
-	reqBody = buf
+	defer jx.PutWriter(buf)
+	reqBody = bytes.NewReader(buf.Buf)
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/pets"
@@ -178,8 +178,8 @@ func (c *Client) CreatePetCategories(ctx context.Context, request CreatePetCateg
 	if err != nil {
 		return res, err
 	}
-	defer putBuf(buf)
-	reqBody = buf
+	defer jx.PutWriter(buf)
+	reqBody = bytes.NewReader(buf.Buf)
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/pets/"
@@ -247,8 +247,8 @@ func (c *Client) CreatePetFriends(ctx context.Context, request CreatePetFriendsR
 	if err != nil {
 		return res, err
 	}
-	defer putBuf(buf)
-	reqBody = buf
+	defer jx.PutWriter(buf)
+	reqBody = bytes.NewReader(buf.Buf)
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/pets/"
@@ -316,8 +316,8 @@ func (c *Client) CreatePetOwner(ctx context.Context, request CreatePetOwnerReq, 
 	if err != nil {
 		return res, err
 	}
-	defer putBuf(buf)
-	reqBody = buf
+	defer jx.PutWriter(buf)
+	reqBody = bytes.NewReader(buf.Buf)
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/pets/"
@@ -858,8 +858,8 @@ func (c *Client) UpdatePet(ctx context.Context, request UpdatePetReq, params Upd
 	if err != nil {
 		return res, err
 	}
-	defer putBuf(buf)
-	reqBody = buf
+	defer jx.PutWriter(buf)
+	reqBody = bytes.NewReader(buf.Buf)
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/pets/"
