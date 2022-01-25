@@ -1,6 +1,7 @@
 {{- /*gotype: github.com/ogen-go/ogen/gen.TemplateConfig*/ -}}
 {{ define "router" }}
 {{ template "header" $ }}
+{{- $router := $.Router }}
 
 func (s *Server) notFound(w http.ResponseWriter, r *http.Request) {
 	http.NotFound(w, r)
@@ -15,31 +16,79 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	args := map[string]string{}
+	{{- if gt $router.MaxParametersCount 0 }}
+	args := [{{ $router.MaxParametersCount }}]string{}
+	{{- end }}
 	// Static code generated router with unwrapped path search.
 	switch r.Method {
-	{{- range $m := $.Methods }}
+	{{- range $m := $router.Methods }}
 	case "{{ $m.Method }}":
-		{{- template "route_edge" $m.Tree.Root }}
+		{{- template "route_edge" router_elem $m.Tree.Root 0 }}
 	{{- end }}
 	}
 	s.notFound(w, r)
 }
+
+// Route is route object.
+type Route struct {
+	name string
+	count int
+	args [{{ $router.MaxParametersCount }}]string
+}
+
+// OperationID returns OpenAPI operationId.
+func (r Route) OperationID() string {
+	return r.name
+}
+
+// Args returns parsed arguments.
+func (r Route) Args() []string {
+	return r.args[:r.count]
+}
+
+// FindRoute finds Route for given method and path.
+func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
+	var (
+		args = [{{ $router.MaxParametersCount }}]string{}
+		elem = path
+	)
+	r.args = args
+
+	// Static code generated router with unwrapped path search.
+	switch method {
+	{{- range $m := $router.Methods }}
+	case "{{ $m.Method }}":
+		{{- template "find_edge" router_elem $m.Tree.Root 0 }}
+	{{- end }}
+	}
+	return r, false
+}
+
+{{ end }}
+
+{{ define "route_handle_request" }}
+{{- /*gotype: github.com/ogen-go/ogen/internal/ir.Operation*/ -}}
+s.handle{{ $.Name }}Request([{{ $.PathParamsCount }}]string{
+	{{- range $i, $_ := times $.PathParamsCount }}
+	args[{{ $i }}],
+	{{- end }}
+}, w, r)
 {{ end }}
 
 {{ define "route_edge" }}
-{{- /*gotype: github.com/ogen-go/ogen/gen.RouteNode*/ -}}
-{{- if $.IsLeaf }}
+{{- /*gotype: github.com/ogen-go/ogen/gen.RouterElem*/ -}}
+{{- $r := $.Route }}
+{{- if $r.IsLeaf }}
 	if len(elem) == 0 {
-		// Leaf: {{ $.Operation.Name }}
-		s.handle{{ $.Operation.Name }}Request(args, w, r)
+		// Leaf: {{ $r.Operation.Name }}
+		{{ template "route_handle_request" $r.Operation }}
 		return
 	}
 {{- else }}
-	{{- with $child := $.StaticChildren }}
+	{{- with $child := $r.StaticChildren }}
 		if len(elem) == 0 {
-			{{- with $op := $.Operation }}
-			s.handle{{ $op.Name }}Request(args, w, r)
+			{{- with $op := $r.Operation }}
+			{{ template "route_handle_request" $op }}
 			return
 			{{- else }}
 			break
@@ -53,11 +102,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 			} else {
 				break
 			}
-			{{ template "route_edge" $c }}
+			{{ template "route_edge" router_elem $c $.ParameterIndex }}
 		{{- end }}
 		}
 	{{- end }}
-	{{- with $child := $.ParamChildren }}
+	{{- with $child := $r.ParamChildren }}
 		{{- range $c := $child }}
 			// Param: {{ printf "%q" $c.ParamName }}
 			{{- with $tails := $c.Tails }}
@@ -70,15 +119,79 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 			idx := strings.IndexAny(elem, {{ printf "%q" $tails }})
 			{{- end }}
 			if idx > 0 {
-				args[{{ printf "%q" $c.ParamName }}] = elem[:idx]
+				args[{{ $.ParameterIndex }}] = elem[:idx]
 				elem = elem[idx:]
-				{{ template "route_edge" $c }}
+				{{ template "route_edge" router_elem $c $.ParameterIndex }}
 			}
 			{{- else }}
 			// Leaf parameter
-			args[{{ printf "%q" $c.ParamName }}] = elem
+			args[{{ $.ParameterIndex }}] = elem
 			elem = ""
-			{{ template "route_edge" $c }}
+			{{ template "route_edge" router_elem $c $.ParameterIndex }}
+			{{- end }}
+		{{- end }}
+	{{- end }}
+{{- end }}
+
+{{- end }}
+
+{{ define "find_edge" }}
+{{- /*gotype: github.com/ogen-go/ogen/gen.RouterElem*/ -}}
+{{- $r := $.Route }}
+{{- if $r.IsLeaf }}
+	if len(elem) == 0 {
+		// Leaf: {{ $r.Operation.Name }}
+		r.name = {{ printf "%q" $r.Operation.Name }}
+		r.args = args
+		r.count = {{ $.ParameterIndex }}
+		return r, true
+	}
+{{- else }}
+	{{- with $child := $r.StaticChildren }}
+		if len(elem) == 0 {
+			{{- with $op := $r.Operation }}
+			r.name = {{ printf "%q" $op.Name }}
+			r.args = args
+			r.count = {{ $.ParameterIndex }}
+			return r, true
+			{{- else }}
+			break
+			{{- end }}
+		}
+		switch elem[0] {
+		{{- range $c := $child }}
+		case {{ printf "%q" $c.Head }}: // Prefix: {{ printf "%q" $c.Prefix }}
+			if l := len({{ printf "%q" $c.Prefix }}); len(elem) >= l && elem[0:l] == {{ printf "%q" $c.Prefix }} {
+				elem = elem[l:]
+			} else {
+				break
+			}
+			{{ template "find_edge" router_elem $c $.ParameterIndex }}
+		{{- end }}
+		}
+	{{- end }}
+	{{- with $child := $r.ParamChildren }}
+		{{- range $c := $child }}
+			// Param: {{ printf "%q" $c.ParamName }}
+			{{- with $tails := $c.Tails }}
+
+			{{- if eq (len $tails) 1 }}
+			// Match until {{ printf "%q" $tails }}
+			idx := strings.IndexByte(elem, {{ printf "%q" (index $tails 0) }})
+			{{- else }}
+			// Match until one of {{ printf "%q" $tails }}
+			idx := strings.IndexAny(elem, {{ printf "%q" $tails }})
+			{{- end }}
+			if idx > 0 {
+				args[{{ $.ParameterIndex }}] = elem[:idx]
+				elem = elem[idx:]
+				{{ template "find_edge" router_elem $c $.ParameterIndex }}
+			}
+			{{- else }}
+			// Leaf parameter
+			args[{{ $.ParameterIndex }}] = elem
+			elem = ""
+			{{ template "find_edge" router_elem $c $.ParameterIndex }}
 			{{- end }}
 		{{- end }}
 	{{- end }}

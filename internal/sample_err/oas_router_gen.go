@@ -76,8 +76,6 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 		s.notFound(w, r)
 		return
 	}
-
-	args := map[string]string{}
 	// Static code generated router with unwrapped path search.
 	switch r.Method {
 	case "GET":
@@ -94,7 +92,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 			if len(elem) == 0 {
 				// Leaf: DataGet
-				s.handleDataGetRequest(args, w, r)
+				s.handleDataGetRequest([0]string{}, w, r)
+
 				return
 			}
 		}
@@ -112,10 +111,82 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 			if len(elem) == 0 {
 				// Leaf: DataCreate
-				s.handleDataCreateRequest(args, w, r)
+				s.handleDataCreateRequest([0]string{}, w, r)
+
 				return
 			}
 		}
 	}
 	s.notFound(w, r)
+}
+
+// Route is route object.
+type Route struct {
+	name  string
+	count int
+	args  [0]string
+}
+
+// OperationID returns OpenAPI operationId.
+func (r Route) OperationID() string {
+	return r.name
+}
+
+// Args returns parsed arguments.
+func (r Route) Args() []string {
+	return r.args[:r.count]
+}
+
+// FindRoute finds Route for given method and path.
+func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
+	var (
+		args = [0]string{}
+		elem = path
+	)
+	r.args = args
+
+	// Static code generated router with unwrapped path search.
+	switch method {
+	case "GET":
+		if len(elem) == 0 {
+			break
+		}
+		switch elem[0] {
+		case '/': // Prefix: "/data"
+			if l := len("/data"); len(elem) >= l && elem[0:l] == "/data" {
+				elem = elem[l:]
+			} else {
+				break
+			}
+
+			if len(elem) == 0 {
+				// Leaf: DataGet
+				r.name = "DataGet"
+				r.args = args
+				r.count = 0
+				return r, true
+			}
+		}
+	case "POST":
+		if len(elem) == 0 {
+			break
+		}
+		switch elem[0] {
+		case '/': // Prefix: "/data"
+			if l := len("/data"); len(elem) >= l && elem[0:l] == "/data" {
+				elem = elem[l:]
+			} else {
+				break
+			}
+
+			if len(elem) == 0 {
+				// Leaf: DataCreate
+				r.name = "DataCreate"
+				r.args = args
+				r.count = 0
+				return r, true
+			}
+		}
+	}
+	return r, false
 }

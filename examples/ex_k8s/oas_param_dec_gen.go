@@ -64,7 +64,7 @@ var (
 	_ = sync.Pool{}
 )
 
-func decodeListAdmissionregistrationV1MutatingWebhookConfigurationParams(args map[string]string, r *http.Request) (ListAdmissionregistrationV1MutatingWebhookConfigurationParams, error) {
+func decodeListAdmissionregistrationV1MutatingWebhookConfigurationParams(args [0]string, r *http.Request) (ListAdmissionregistrationV1MutatingWebhookConfigurationParams, error) {
 	var (
 		params    ListAdmissionregistrationV1MutatingWebhookConfigurationParams
 		queryArgs = r.URL.Query()
@@ -422,7 +422,7 @@ func decodeListAdmissionregistrationV1MutatingWebhookConfigurationParams(args ma
 	return params, nil
 }
 
-func decodeListAdmissionregistrationV1ValidatingWebhookConfigurationParams(args map[string]string, r *http.Request) (ListAdmissionregistrationV1ValidatingWebhookConfigurationParams, error) {
+func decodeListAdmissionregistrationV1ValidatingWebhookConfigurationParams(args [0]string, r *http.Request) (ListAdmissionregistrationV1ValidatingWebhookConfigurationParams, error) {
 	var (
 		params    ListAdmissionregistrationV1ValidatingWebhookConfigurationParams
 		queryArgs = r.URL.Query()
@@ -780,7 +780,7 @@ func decodeListAdmissionregistrationV1ValidatingWebhookConfigurationParams(args 
 	return params, nil
 }
 
-func decodeListApiextensionsV1CustomResourceDefinitionParams(args map[string]string, r *http.Request) (ListApiextensionsV1CustomResourceDefinitionParams, error) {
+func decodeListApiextensionsV1CustomResourceDefinitionParams(args [0]string, r *http.Request) (ListApiextensionsV1CustomResourceDefinitionParams, error) {
 	var (
 		params    ListApiextensionsV1CustomResourceDefinitionParams
 		queryArgs = r.URL.Query()
@@ -1138,7 +1138,7 @@ func decodeListApiextensionsV1CustomResourceDefinitionParams(args map[string]str
 	return params, nil
 }
 
-func decodeListApiregistrationV1APIServiceParams(args map[string]string, r *http.Request) (ListApiregistrationV1APIServiceParams, error) {
+func decodeListApiregistrationV1APIServiceParams(args [0]string, r *http.Request) (ListApiregistrationV1APIServiceParams, error) {
 	var (
 		params    ListApiregistrationV1APIServiceParams
 		queryArgs = r.URL.Query()
@@ -1496,7 +1496,7 @@ func decodeListApiregistrationV1APIServiceParams(args map[string]string, r *http
 	return params, nil
 }
 
-func decodeListAppsV1ControllerRevisionForAllNamespacesParams(args map[string]string, r *http.Request) (ListAppsV1ControllerRevisionForAllNamespacesParams, error) {
+func decodeListAppsV1ControllerRevisionForAllNamespacesParams(args [0]string, r *http.Request) (ListAppsV1ControllerRevisionForAllNamespacesParams, error) {
 	var (
 		params    ListAppsV1ControllerRevisionForAllNamespacesParams
 		queryArgs = r.URL.Query()
@@ -1854,7 +1854,7 @@ func decodeListAppsV1ControllerRevisionForAllNamespacesParams(args map[string]st
 	return params, nil
 }
 
-func decodeListAppsV1DaemonSetForAllNamespacesParams(args map[string]string, r *http.Request) (ListAppsV1DaemonSetForAllNamespacesParams, error) {
+func decodeListAppsV1DaemonSetForAllNamespacesParams(args [0]string, r *http.Request) (ListAppsV1DaemonSetForAllNamespacesParams, error) {
 	var (
 		params    ListAppsV1DaemonSetForAllNamespacesParams
 		queryArgs = r.URL.Query()
@@ -2212,7 +2212,7 @@ func decodeListAppsV1DaemonSetForAllNamespacesParams(args map[string]string, r *
 	return params, nil
 }
 
-func decodeListAppsV1DeploymentForAllNamespacesParams(args map[string]string, r *http.Request) (ListAppsV1DeploymentForAllNamespacesParams, error) {
+func decodeListAppsV1DeploymentForAllNamespacesParams(args [0]string, r *http.Request) (ListAppsV1DeploymentForAllNamespacesParams, error) {
 	var (
 		params    ListAppsV1DeploymentForAllNamespacesParams
 		queryArgs = r.URL.Query()
@@ -2570,7 +2570,7 @@ func decodeListAppsV1DeploymentForAllNamespacesParams(args map[string]string, r 
 	return params, nil
 }
 
-func decodeListAppsV1NamespacedControllerRevisionParams(args map[string]string, r *http.Request) (ListAppsV1NamespacedControllerRevisionParams, error) {
+func decodeListAppsV1NamespacedControllerRevisionParams(args [1]string, r *http.Request) (ListAppsV1NamespacedControllerRevisionParams, error) {
 	var (
 		params    ListAppsV1NamespacedControllerRevisionParams
 		queryArgs = r.URL.Query()
@@ -2892,7 +2892,7 @@ func decodeListAppsV1NamespacedControllerRevisionParams(args map[string]string, 
 	}
 	// Decode path: namespace.
 	{
-		param := args["namespace"]
+		param := args[0]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "namespace",
@@ -2959,7 +2959,7 @@ func decodeListAppsV1NamespacedControllerRevisionParams(args map[string]string, 
 	return params, nil
 }
 
-func decodeListAppsV1NamespacedDaemonSetParams(args map[string]string, r *http.Request) (ListAppsV1NamespacedDaemonSetParams, error) {
+func decodeListAppsV1NamespacedDaemonSetParams(args [1]string, r *http.Request) (ListAppsV1NamespacedDaemonSetParams, error) {
 	var (
 		params    ListAppsV1NamespacedDaemonSetParams
 		queryArgs = r.URL.Query()
@@ -3281,7 +3281,7 @@ func decodeListAppsV1NamespacedDaemonSetParams(args map[string]string, r *http.R
 	}
 	// Decode path: namespace.
 	{
-		param := args["namespace"]
+		param := args[0]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "namespace",
@@ -3348,7 +3348,7 @@ func decodeListAppsV1NamespacedDaemonSetParams(args map[string]string, r *http.R
 	return params, nil
 }
 
-func decodeListAppsV1NamespacedDeploymentParams(args map[string]string, r *http.Request) (ListAppsV1NamespacedDeploymentParams, error) {
+func decodeListAppsV1NamespacedDeploymentParams(args [1]string, r *http.Request) (ListAppsV1NamespacedDeploymentParams, error) {
 	var (
 		params    ListAppsV1NamespacedDeploymentParams
 		queryArgs = r.URL.Query()
@@ -3670,7 +3670,7 @@ func decodeListAppsV1NamespacedDeploymentParams(args map[string]string, r *http.
 	}
 	// Decode path: namespace.
 	{
-		param := args["namespace"]
+		param := args[0]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "namespace",
@@ -3737,7 +3737,7 @@ func decodeListAppsV1NamespacedDeploymentParams(args map[string]string, r *http.
 	return params, nil
 }
 
-func decodeListAppsV1NamespacedReplicaSetParams(args map[string]string, r *http.Request) (ListAppsV1NamespacedReplicaSetParams, error) {
+func decodeListAppsV1NamespacedReplicaSetParams(args [1]string, r *http.Request) (ListAppsV1NamespacedReplicaSetParams, error) {
 	var (
 		params    ListAppsV1NamespacedReplicaSetParams
 		queryArgs = r.URL.Query()
@@ -4059,7 +4059,7 @@ func decodeListAppsV1NamespacedReplicaSetParams(args map[string]string, r *http.
 	}
 	// Decode path: namespace.
 	{
-		param := args["namespace"]
+		param := args[0]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "namespace",
@@ -4126,7 +4126,7 @@ func decodeListAppsV1NamespacedReplicaSetParams(args map[string]string, r *http.
 	return params, nil
 }
 
-func decodeListAppsV1NamespacedStatefulSetParams(args map[string]string, r *http.Request) (ListAppsV1NamespacedStatefulSetParams, error) {
+func decodeListAppsV1NamespacedStatefulSetParams(args [1]string, r *http.Request) (ListAppsV1NamespacedStatefulSetParams, error) {
 	var (
 		params    ListAppsV1NamespacedStatefulSetParams
 		queryArgs = r.URL.Query()
@@ -4448,7 +4448,7 @@ func decodeListAppsV1NamespacedStatefulSetParams(args map[string]string, r *http
 	}
 	// Decode path: namespace.
 	{
-		param := args["namespace"]
+		param := args[0]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "namespace",
@@ -4515,7 +4515,7 @@ func decodeListAppsV1NamespacedStatefulSetParams(args map[string]string, r *http
 	return params, nil
 }
 
-func decodeListAppsV1ReplicaSetForAllNamespacesParams(args map[string]string, r *http.Request) (ListAppsV1ReplicaSetForAllNamespacesParams, error) {
+func decodeListAppsV1ReplicaSetForAllNamespacesParams(args [0]string, r *http.Request) (ListAppsV1ReplicaSetForAllNamespacesParams, error) {
 	var (
 		params    ListAppsV1ReplicaSetForAllNamespacesParams
 		queryArgs = r.URL.Query()
@@ -4873,7 +4873,7 @@ func decodeListAppsV1ReplicaSetForAllNamespacesParams(args map[string]string, r 
 	return params, nil
 }
 
-func decodeListAppsV1StatefulSetForAllNamespacesParams(args map[string]string, r *http.Request) (ListAppsV1StatefulSetForAllNamespacesParams, error) {
+func decodeListAppsV1StatefulSetForAllNamespacesParams(args [0]string, r *http.Request) (ListAppsV1StatefulSetForAllNamespacesParams, error) {
 	var (
 		params    ListAppsV1StatefulSetForAllNamespacesParams
 		queryArgs = r.URL.Query()
@@ -5231,7 +5231,7 @@ func decodeListAppsV1StatefulSetForAllNamespacesParams(args map[string]string, r
 	return params, nil
 }
 
-func decodeListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesParams(args map[string]string, r *http.Request) (ListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesParams, error) {
+func decodeListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesParams(args [0]string, r *http.Request) (ListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesParams, error) {
 	var (
 		params    ListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesParams
 		queryArgs = r.URL.Query()
@@ -5589,7 +5589,7 @@ func decodeListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesParams(args m
 	return params, nil
 }
 
-func decodeListAutoscalingV1NamespacedHorizontalPodAutoscalerParams(args map[string]string, r *http.Request) (ListAutoscalingV1NamespacedHorizontalPodAutoscalerParams, error) {
+func decodeListAutoscalingV1NamespacedHorizontalPodAutoscalerParams(args [1]string, r *http.Request) (ListAutoscalingV1NamespacedHorizontalPodAutoscalerParams, error) {
 	var (
 		params    ListAutoscalingV1NamespacedHorizontalPodAutoscalerParams
 		queryArgs = r.URL.Query()
@@ -5911,7 +5911,7 @@ func decodeListAutoscalingV1NamespacedHorizontalPodAutoscalerParams(args map[str
 	}
 	// Decode path: namespace.
 	{
-		param := args["namespace"]
+		param := args[0]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "namespace",
@@ -5978,7 +5978,7 @@ func decodeListAutoscalingV1NamespacedHorizontalPodAutoscalerParams(args map[str
 	return params, nil
 }
 
-func decodeListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespacesParams(args map[string]string, r *http.Request) (ListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespacesParams, error) {
+func decodeListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespacesParams(args [0]string, r *http.Request) (ListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespacesParams, error) {
 	var (
 		params    ListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespacesParams
 		queryArgs = r.URL.Query()
@@ -6336,7 +6336,7 @@ func decodeListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespacesParams(a
 	return params, nil
 }
 
-func decodeListAutoscalingV2beta1NamespacedHorizontalPodAutoscalerParams(args map[string]string, r *http.Request) (ListAutoscalingV2beta1NamespacedHorizontalPodAutoscalerParams, error) {
+func decodeListAutoscalingV2beta1NamespacedHorizontalPodAutoscalerParams(args [1]string, r *http.Request) (ListAutoscalingV2beta1NamespacedHorizontalPodAutoscalerParams, error) {
 	var (
 		params    ListAutoscalingV2beta1NamespacedHorizontalPodAutoscalerParams
 		queryArgs = r.URL.Query()
@@ -6658,7 +6658,7 @@ func decodeListAutoscalingV2beta1NamespacedHorizontalPodAutoscalerParams(args ma
 	}
 	// Decode path: namespace.
 	{
-		param := args["namespace"]
+		param := args[0]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "namespace",
@@ -6725,7 +6725,7 @@ func decodeListAutoscalingV2beta1NamespacedHorizontalPodAutoscalerParams(args ma
 	return params, nil
 }
 
-func decodeListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespacesParams(args map[string]string, r *http.Request) (ListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespacesParams, error) {
+func decodeListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespacesParams(args [0]string, r *http.Request) (ListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespacesParams, error) {
 	var (
 		params    ListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespacesParams
 		queryArgs = r.URL.Query()
@@ -7083,7 +7083,7 @@ func decodeListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespacesParams(a
 	return params, nil
 }
 
-func decodeListAutoscalingV2beta2NamespacedHorizontalPodAutoscalerParams(args map[string]string, r *http.Request) (ListAutoscalingV2beta2NamespacedHorizontalPodAutoscalerParams, error) {
+func decodeListAutoscalingV2beta2NamespacedHorizontalPodAutoscalerParams(args [1]string, r *http.Request) (ListAutoscalingV2beta2NamespacedHorizontalPodAutoscalerParams, error) {
 	var (
 		params    ListAutoscalingV2beta2NamespacedHorizontalPodAutoscalerParams
 		queryArgs = r.URL.Query()
@@ -7405,7 +7405,7 @@ func decodeListAutoscalingV2beta2NamespacedHorizontalPodAutoscalerParams(args ma
 	}
 	// Decode path: namespace.
 	{
-		param := args["namespace"]
+		param := args[0]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "namespace",
@@ -7472,7 +7472,7 @@ func decodeListAutoscalingV2beta2NamespacedHorizontalPodAutoscalerParams(args ma
 	return params, nil
 }
 
-func decodeListBatchV1CronJobForAllNamespacesParams(args map[string]string, r *http.Request) (ListBatchV1CronJobForAllNamespacesParams, error) {
+func decodeListBatchV1CronJobForAllNamespacesParams(args [0]string, r *http.Request) (ListBatchV1CronJobForAllNamespacesParams, error) {
 	var (
 		params    ListBatchV1CronJobForAllNamespacesParams
 		queryArgs = r.URL.Query()
@@ -7830,7 +7830,7 @@ func decodeListBatchV1CronJobForAllNamespacesParams(args map[string]string, r *h
 	return params, nil
 }
 
-func decodeListBatchV1JobForAllNamespacesParams(args map[string]string, r *http.Request) (ListBatchV1JobForAllNamespacesParams, error) {
+func decodeListBatchV1JobForAllNamespacesParams(args [0]string, r *http.Request) (ListBatchV1JobForAllNamespacesParams, error) {
 	var (
 		params    ListBatchV1JobForAllNamespacesParams
 		queryArgs = r.URL.Query()
@@ -8188,7 +8188,7 @@ func decodeListBatchV1JobForAllNamespacesParams(args map[string]string, r *http.
 	return params, nil
 }
 
-func decodeListBatchV1NamespacedCronJobParams(args map[string]string, r *http.Request) (ListBatchV1NamespacedCronJobParams, error) {
+func decodeListBatchV1NamespacedCronJobParams(args [1]string, r *http.Request) (ListBatchV1NamespacedCronJobParams, error) {
 	var (
 		params    ListBatchV1NamespacedCronJobParams
 		queryArgs = r.URL.Query()
@@ -8510,7 +8510,7 @@ func decodeListBatchV1NamespacedCronJobParams(args map[string]string, r *http.Re
 	}
 	// Decode path: namespace.
 	{
-		param := args["namespace"]
+		param := args[0]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "namespace",
@@ -8577,7 +8577,7 @@ func decodeListBatchV1NamespacedCronJobParams(args map[string]string, r *http.Re
 	return params, nil
 }
 
-func decodeListBatchV1NamespacedJobParams(args map[string]string, r *http.Request) (ListBatchV1NamespacedJobParams, error) {
+func decodeListBatchV1NamespacedJobParams(args [1]string, r *http.Request) (ListBatchV1NamespacedJobParams, error) {
 	var (
 		params    ListBatchV1NamespacedJobParams
 		queryArgs = r.URL.Query()
@@ -8899,7 +8899,7 @@ func decodeListBatchV1NamespacedJobParams(args map[string]string, r *http.Reques
 	}
 	// Decode path: namespace.
 	{
-		param := args["namespace"]
+		param := args[0]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "namespace",
@@ -8966,7 +8966,7 @@ func decodeListBatchV1NamespacedJobParams(args map[string]string, r *http.Reques
 	return params, nil
 }
 
-func decodeListBatchV1beta1CronJobForAllNamespacesParams(args map[string]string, r *http.Request) (ListBatchV1beta1CronJobForAllNamespacesParams, error) {
+func decodeListBatchV1beta1CronJobForAllNamespacesParams(args [0]string, r *http.Request) (ListBatchV1beta1CronJobForAllNamespacesParams, error) {
 	var (
 		params    ListBatchV1beta1CronJobForAllNamespacesParams
 		queryArgs = r.URL.Query()
@@ -9324,7 +9324,7 @@ func decodeListBatchV1beta1CronJobForAllNamespacesParams(args map[string]string,
 	return params, nil
 }
 
-func decodeListBatchV1beta1NamespacedCronJobParams(args map[string]string, r *http.Request) (ListBatchV1beta1NamespacedCronJobParams, error) {
+func decodeListBatchV1beta1NamespacedCronJobParams(args [1]string, r *http.Request) (ListBatchV1beta1NamespacedCronJobParams, error) {
 	var (
 		params    ListBatchV1beta1NamespacedCronJobParams
 		queryArgs = r.URL.Query()
@@ -9646,7 +9646,7 @@ func decodeListBatchV1beta1NamespacedCronJobParams(args map[string]string, r *ht
 	}
 	// Decode path: namespace.
 	{
-		param := args["namespace"]
+		param := args[0]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "namespace",
@@ -9713,7 +9713,7 @@ func decodeListBatchV1beta1NamespacedCronJobParams(args map[string]string, r *ht
 	return params, nil
 }
 
-func decodeListCertificatesV1CertificateSigningRequestParams(args map[string]string, r *http.Request) (ListCertificatesV1CertificateSigningRequestParams, error) {
+func decodeListCertificatesV1CertificateSigningRequestParams(args [0]string, r *http.Request) (ListCertificatesV1CertificateSigningRequestParams, error) {
 	var (
 		params    ListCertificatesV1CertificateSigningRequestParams
 		queryArgs = r.URL.Query()
@@ -10071,7 +10071,7 @@ func decodeListCertificatesV1CertificateSigningRequestParams(args map[string]str
 	return params, nil
 }
 
-func decodeListCoordinationV1LeaseForAllNamespacesParams(args map[string]string, r *http.Request) (ListCoordinationV1LeaseForAllNamespacesParams, error) {
+func decodeListCoordinationV1LeaseForAllNamespacesParams(args [0]string, r *http.Request) (ListCoordinationV1LeaseForAllNamespacesParams, error) {
 	var (
 		params    ListCoordinationV1LeaseForAllNamespacesParams
 		queryArgs = r.URL.Query()
@@ -10429,7 +10429,7 @@ func decodeListCoordinationV1LeaseForAllNamespacesParams(args map[string]string,
 	return params, nil
 }
 
-func decodeListCoordinationV1NamespacedLeaseParams(args map[string]string, r *http.Request) (ListCoordinationV1NamespacedLeaseParams, error) {
+func decodeListCoordinationV1NamespacedLeaseParams(args [1]string, r *http.Request) (ListCoordinationV1NamespacedLeaseParams, error) {
 	var (
 		params    ListCoordinationV1NamespacedLeaseParams
 		queryArgs = r.URL.Query()
@@ -10751,7 +10751,7 @@ func decodeListCoordinationV1NamespacedLeaseParams(args map[string]string, r *ht
 	}
 	// Decode path: namespace.
 	{
-		param := args["namespace"]
+		param := args[0]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "namespace",
@@ -10818,7 +10818,7 @@ func decodeListCoordinationV1NamespacedLeaseParams(args map[string]string, r *ht
 	return params, nil
 }
 
-func decodeListCoreV1ComponentStatusParams(args map[string]string, r *http.Request) (ListCoreV1ComponentStatusParams, error) {
+func decodeListCoreV1ComponentStatusParams(args [0]string, r *http.Request) (ListCoreV1ComponentStatusParams, error) {
 	var (
 		params    ListCoreV1ComponentStatusParams
 		queryArgs = r.URL.Query()
@@ -11176,7 +11176,7 @@ func decodeListCoreV1ComponentStatusParams(args map[string]string, r *http.Reque
 	return params, nil
 }
 
-func decodeListCoreV1ConfigMapForAllNamespacesParams(args map[string]string, r *http.Request) (ListCoreV1ConfigMapForAllNamespacesParams, error) {
+func decodeListCoreV1ConfigMapForAllNamespacesParams(args [0]string, r *http.Request) (ListCoreV1ConfigMapForAllNamespacesParams, error) {
 	var (
 		params    ListCoreV1ConfigMapForAllNamespacesParams
 		queryArgs = r.URL.Query()
@@ -11534,7 +11534,7 @@ func decodeListCoreV1ConfigMapForAllNamespacesParams(args map[string]string, r *
 	return params, nil
 }
 
-func decodeListCoreV1EndpointsForAllNamespacesParams(args map[string]string, r *http.Request) (ListCoreV1EndpointsForAllNamespacesParams, error) {
+func decodeListCoreV1EndpointsForAllNamespacesParams(args [0]string, r *http.Request) (ListCoreV1EndpointsForAllNamespacesParams, error) {
 	var (
 		params    ListCoreV1EndpointsForAllNamespacesParams
 		queryArgs = r.URL.Query()
@@ -11892,7 +11892,7 @@ func decodeListCoreV1EndpointsForAllNamespacesParams(args map[string]string, r *
 	return params, nil
 }
 
-func decodeListCoreV1EventForAllNamespacesParams(args map[string]string, r *http.Request) (ListCoreV1EventForAllNamespacesParams, error) {
+func decodeListCoreV1EventForAllNamespacesParams(args [0]string, r *http.Request) (ListCoreV1EventForAllNamespacesParams, error) {
 	var (
 		params    ListCoreV1EventForAllNamespacesParams
 		queryArgs = r.URL.Query()
@@ -12250,7 +12250,7 @@ func decodeListCoreV1EventForAllNamespacesParams(args map[string]string, r *http
 	return params, nil
 }
 
-func decodeListCoreV1LimitRangeForAllNamespacesParams(args map[string]string, r *http.Request) (ListCoreV1LimitRangeForAllNamespacesParams, error) {
+func decodeListCoreV1LimitRangeForAllNamespacesParams(args [0]string, r *http.Request) (ListCoreV1LimitRangeForAllNamespacesParams, error) {
 	var (
 		params    ListCoreV1LimitRangeForAllNamespacesParams
 		queryArgs = r.URL.Query()
@@ -12608,7 +12608,7 @@ func decodeListCoreV1LimitRangeForAllNamespacesParams(args map[string]string, r 
 	return params, nil
 }
 
-func decodeListCoreV1NamespaceParams(args map[string]string, r *http.Request) (ListCoreV1NamespaceParams, error) {
+func decodeListCoreV1NamespaceParams(args [0]string, r *http.Request) (ListCoreV1NamespaceParams, error) {
 	var (
 		params    ListCoreV1NamespaceParams
 		queryArgs = r.URL.Query()
@@ -12966,7 +12966,7 @@ func decodeListCoreV1NamespaceParams(args map[string]string, r *http.Request) (L
 	return params, nil
 }
 
-func decodeListCoreV1NamespacedConfigMapParams(args map[string]string, r *http.Request) (ListCoreV1NamespacedConfigMapParams, error) {
+func decodeListCoreV1NamespacedConfigMapParams(args [1]string, r *http.Request) (ListCoreV1NamespacedConfigMapParams, error) {
 	var (
 		params    ListCoreV1NamespacedConfigMapParams
 		queryArgs = r.URL.Query()
@@ -13288,7 +13288,7 @@ func decodeListCoreV1NamespacedConfigMapParams(args map[string]string, r *http.R
 	}
 	// Decode path: namespace.
 	{
-		param := args["namespace"]
+		param := args[0]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "namespace",
@@ -13355,7 +13355,7 @@ func decodeListCoreV1NamespacedConfigMapParams(args map[string]string, r *http.R
 	return params, nil
 }
 
-func decodeListCoreV1NamespacedEndpointsParams(args map[string]string, r *http.Request) (ListCoreV1NamespacedEndpointsParams, error) {
+func decodeListCoreV1NamespacedEndpointsParams(args [1]string, r *http.Request) (ListCoreV1NamespacedEndpointsParams, error) {
 	var (
 		params    ListCoreV1NamespacedEndpointsParams
 		queryArgs = r.URL.Query()
@@ -13677,7 +13677,7 @@ func decodeListCoreV1NamespacedEndpointsParams(args map[string]string, r *http.R
 	}
 	// Decode path: namespace.
 	{
-		param := args["namespace"]
+		param := args[0]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "namespace",
@@ -13744,7 +13744,7 @@ func decodeListCoreV1NamespacedEndpointsParams(args map[string]string, r *http.R
 	return params, nil
 }
 
-func decodeListCoreV1NamespacedEventParams(args map[string]string, r *http.Request) (ListCoreV1NamespacedEventParams, error) {
+func decodeListCoreV1NamespacedEventParams(args [1]string, r *http.Request) (ListCoreV1NamespacedEventParams, error) {
 	var (
 		params    ListCoreV1NamespacedEventParams
 		queryArgs = r.URL.Query()
@@ -14066,7 +14066,7 @@ func decodeListCoreV1NamespacedEventParams(args map[string]string, r *http.Reque
 	}
 	// Decode path: namespace.
 	{
-		param := args["namespace"]
+		param := args[0]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "namespace",
@@ -14133,7 +14133,7 @@ func decodeListCoreV1NamespacedEventParams(args map[string]string, r *http.Reque
 	return params, nil
 }
 
-func decodeListCoreV1NamespacedLimitRangeParams(args map[string]string, r *http.Request) (ListCoreV1NamespacedLimitRangeParams, error) {
+func decodeListCoreV1NamespacedLimitRangeParams(args [1]string, r *http.Request) (ListCoreV1NamespacedLimitRangeParams, error) {
 	var (
 		params    ListCoreV1NamespacedLimitRangeParams
 		queryArgs = r.URL.Query()
@@ -14455,7 +14455,7 @@ func decodeListCoreV1NamespacedLimitRangeParams(args map[string]string, r *http.
 	}
 	// Decode path: namespace.
 	{
-		param := args["namespace"]
+		param := args[0]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "namespace",
@@ -14522,7 +14522,7 @@ func decodeListCoreV1NamespacedLimitRangeParams(args map[string]string, r *http.
 	return params, nil
 }
 
-func decodeListCoreV1NamespacedPersistentVolumeClaimParams(args map[string]string, r *http.Request) (ListCoreV1NamespacedPersistentVolumeClaimParams, error) {
+func decodeListCoreV1NamespacedPersistentVolumeClaimParams(args [1]string, r *http.Request) (ListCoreV1NamespacedPersistentVolumeClaimParams, error) {
 	var (
 		params    ListCoreV1NamespacedPersistentVolumeClaimParams
 		queryArgs = r.URL.Query()
@@ -14844,7 +14844,7 @@ func decodeListCoreV1NamespacedPersistentVolumeClaimParams(args map[string]strin
 	}
 	// Decode path: namespace.
 	{
-		param := args["namespace"]
+		param := args[0]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "namespace",
@@ -14911,7 +14911,7 @@ func decodeListCoreV1NamespacedPersistentVolumeClaimParams(args map[string]strin
 	return params, nil
 }
 
-func decodeListCoreV1NamespacedPodParams(args map[string]string, r *http.Request) (ListCoreV1NamespacedPodParams, error) {
+func decodeListCoreV1NamespacedPodParams(args [1]string, r *http.Request) (ListCoreV1NamespacedPodParams, error) {
 	var (
 		params    ListCoreV1NamespacedPodParams
 		queryArgs = r.URL.Query()
@@ -15233,7 +15233,7 @@ func decodeListCoreV1NamespacedPodParams(args map[string]string, r *http.Request
 	}
 	// Decode path: namespace.
 	{
-		param := args["namespace"]
+		param := args[0]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "namespace",
@@ -15300,7 +15300,7 @@ func decodeListCoreV1NamespacedPodParams(args map[string]string, r *http.Request
 	return params, nil
 }
 
-func decodeListCoreV1NamespacedPodTemplateParams(args map[string]string, r *http.Request) (ListCoreV1NamespacedPodTemplateParams, error) {
+func decodeListCoreV1NamespacedPodTemplateParams(args [1]string, r *http.Request) (ListCoreV1NamespacedPodTemplateParams, error) {
 	var (
 		params    ListCoreV1NamespacedPodTemplateParams
 		queryArgs = r.URL.Query()
@@ -15622,7 +15622,7 @@ func decodeListCoreV1NamespacedPodTemplateParams(args map[string]string, r *http
 	}
 	// Decode path: namespace.
 	{
-		param := args["namespace"]
+		param := args[0]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "namespace",
@@ -15689,7 +15689,7 @@ func decodeListCoreV1NamespacedPodTemplateParams(args map[string]string, r *http
 	return params, nil
 }
 
-func decodeListCoreV1NamespacedReplicationControllerParams(args map[string]string, r *http.Request) (ListCoreV1NamespacedReplicationControllerParams, error) {
+func decodeListCoreV1NamespacedReplicationControllerParams(args [1]string, r *http.Request) (ListCoreV1NamespacedReplicationControllerParams, error) {
 	var (
 		params    ListCoreV1NamespacedReplicationControllerParams
 		queryArgs = r.URL.Query()
@@ -16011,7 +16011,7 @@ func decodeListCoreV1NamespacedReplicationControllerParams(args map[string]strin
 	}
 	// Decode path: namespace.
 	{
-		param := args["namespace"]
+		param := args[0]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "namespace",
@@ -16078,7 +16078,7 @@ func decodeListCoreV1NamespacedReplicationControllerParams(args map[string]strin
 	return params, nil
 }
 
-func decodeListCoreV1NamespacedResourceQuotaParams(args map[string]string, r *http.Request) (ListCoreV1NamespacedResourceQuotaParams, error) {
+func decodeListCoreV1NamespacedResourceQuotaParams(args [1]string, r *http.Request) (ListCoreV1NamespacedResourceQuotaParams, error) {
 	var (
 		params    ListCoreV1NamespacedResourceQuotaParams
 		queryArgs = r.URL.Query()
@@ -16400,7 +16400,7 @@ func decodeListCoreV1NamespacedResourceQuotaParams(args map[string]string, r *ht
 	}
 	// Decode path: namespace.
 	{
-		param := args["namespace"]
+		param := args[0]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "namespace",
@@ -16467,7 +16467,7 @@ func decodeListCoreV1NamespacedResourceQuotaParams(args map[string]string, r *ht
 	return params, nil
 }
 
-func decodeListCoreV1NamespacedSecretParams(args map[string]string, r *http.Request) (ListCoreV1NamespacedSecretParams, error) {
+func decodeListCoreV1NamespacedSecretParams(args [1]string, r *http.Request) (ListCoreV1NamespacedSecretParams, error) {
 	var (
 		params    ListCoreV1NamespacedSecretParams
 		queryArgs = r.URL.Query()
@@ -16789,7 +16789,7 @@ func decodeListCoreV1NamespacedSecretParams(args map[string]string, r *http.Requ
 	}
 	// Decode path: namespace.
 	{
-		param := args["namespace"]
+		param := args[0]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "namespace",
@@ -16856,7 +16856,7 @@ func decodeListCoreV1NamespacedSecretParams(args map[string]string, r *http.Requ
 	return params, nil
 }
 
-func decodeListCoreV1NamespacedServiceParams(args map[string]string, r *http.Request) (ListCoreV1NamespacedServiceParams, error) {
+func decodeListCoreV1NamespacedServiceParams(args [1]string, r *http.Request) (ListCoreV1NamespacedServiceParams, error) {
 	var (
 		params    ListCoreV1NamespacedServiceParams
 		queryArgs = r.URL.Query()
@@ -17178,7 +17178,7 @@ func decodeListCoreV1NamespacedServiceParams(args map[string]string, r *http.Req
 	}
 	// Decode path: namespace.
 	{
-		param := args["namespace"]
+		param := args[0]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "namespace",
@@ -17245,7 +17245,7 @@ func decodeListCoreV1NamespacedServiceParams(args map[string]string, r *http.Req
 	return params, nil
 }
 
-func decodeListCoreV1NamespacedServiceAccountParams(args map[string]string, r *http.Request) (ListCoreV1NamespacedServiceAccountParams, error) {
+func decodeListCoreV1NamespacedServiceAccountParams(args [1]string, r *http.Request) (ListCoreV1NamespacedServiceAccountParams, error) {
 	var (
 		params    ListCoreV1NamespacedServiceAccountParams
 		queryArgs = r.URL.Query()
@@ -17567,7 +17567,7 @@ func decodeListCoreV1NamespacedServiceAccountParams(args map[string]string, r *h
 	}
 	// Decode path: namespace.
 	{
-		param := args["namespace"]
+		param := args[0]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "namespace",
@@ -17634,7 +17634,7 @@ func decodeListCoreV1NamespacedServiceAccountParams(args map[string]string, r *h
 	return params, nil
 }
 
-func decodeListCoreV1NodeParams(args map[string]string, r *http.Request) (ListCoreV1NodeParams, error) {
+func decodeListCoreV1NodeParams(args [0]string, r *http.Request) (ListCoreV1NodeParams, error) {
 	var (
 		params    ListCoreV1NodeParams
 		queryArgs = r.URL.Query()
@@ -17992,7 +17992,7 @@ func decodeListCoreV1NodeParams(args map[string]string, r *http.Request) (ListCo
 	return params, nil
 }
 
-func decodeListCoreV1PersistentVolumeParams(args map[string]string, r *http.Request) (ListCoreV1PersistentVolumeParams, error) {
+func decodeListCoreV1PersistentVolumeParams(args [0]string, r *http.Request) (ListCoreV1PersistentVolumeParams, error) {
 	var (
 		params    ListCoreV1PersistentVolumeParams
 		queryArgs = r.URL.Query()
@@ -18350,7 +18350,7 @@ func decodeListCoreV1PersistentVolumeParams(args map[string]string, r *http.Requ
 	return params, nil
 }
 
-func decodeListCoreV1PersistentVolumeClaimForAllNamespacesParams(args map[string]string, r *http.Request) (ListCoreV1PersistentVolumeClaimForAllNamespacesParams, error) {
+func decodeListCoreV1PersistentVolumeClaimForAllNamespacesParams(args [0]string, r *http.Request) (ListCoreV1PersistentVolumeClaimForAllNamespacesParams, error) {
 	var (
 		params    ListCoreV1PersistentVolumeClaimForAllNamespacesParams
 		queryArgs = r.URL.Query()
@@ -18708,7 +18708,7 @@ func decodeListCoreV1PersistentVolumeClaimForAllNamespacesParams(args map[string
 	return params, nil
 }
 
-func decodeListCoreV1PodForAllNamespacesParams(args map[string]string, r *http.Request) (ListCoreV1PodForAllNamespacesParams, error) {
+func decodeListCoreV1PodForAllNamespacesParams(args [0]string, r *http.Request) (ListCoreV1PodForAllNamespacesParams, error) {
 	var (
 		params    ListCoreV1PodForAllNamespacesParams
 		queryArgs = r.URL.Query()
@@ -19066,7 +19066,7 @@ func decodeListCoreV1PodForAllNamespacesParams(args map[string]string, r *http.R
 	return params, nil
 }
 
-func decodeListCoreV1PodTemplateForAllNamespacesParams(args map[string]string, r *http.Request) (ListCoreV1PodTemplateForAllNamespacesParams, error) {
+func decodeListCoreV1PodTemplateForAllNamespacesParams(args [0]string, r *http.Request) (ListCoreV1PodTemplateForAllNamespacesParams, error) {
 	var (
 		params    ListCoreV1PodTemplateForAllNamespacesParams
 		queryArgs = r.URL.Query()
@@ -19424,7 +19424,7 @@ func decodeListCoreV1PodTemplateForAllNamespacesParams(args map[string]string, r
 	return params, nil
 }
 
-func decodeListCoreV1ReplicationControllerForAllNamespacesParams(args map[string]string, r *http.Request) (ListCoreV1ReplicationControllerForAllNamespacesParams, error) {
+func decodeListCoreV1ReplicationControllerForAllNamespacesParams(args [0]string, r *http.Request) (ListCoreV1ReplicationControllerForAllNamespacesParams, error) {
 	var (
 		params    ListCoreV1ReplicationControllerForAllNamespacesParams
 		queryArgs = r.URL.Query()
@@ -19782,7 +19782,7 @@ func decodeListCoreV1ReplicationControllerForAllNamespacesParams(args map[string
 	return params, nil
 }
 
-func decodeListCoreV1ResourceQuotaForAllNamespacesParams(args map[string]string, r *http.Request) (ListCoreV1ResourceQuotaForAllNamespacesParams, error) {
+func decodeListCoreV1ResourceQuotaForAllNamespacesParams(args [0]string, r *http.Request) (ListCoreV1ResourceQuotaForAllNamespacesParams, error) {
 	var (
 		params    ListCoreV1ResourceQuotaForAllNamespacesParams
 		queryArgs = r.URL.Query()
@@ -20140,7 +20140,7 @@ func decodeListCoreV1ResourceQuotaForAllNamespacesParams(args map[string]string,
 	return params, nil
 }
 
-func decodeListCoreV1SecretForAllNamespacesParams(args map[string]string, r *http.Request) (ListCoreV1SecretForAllNamespacesParams, error) {
+func decodeListCoreV1SecretForAllNamespacesParams(args [0]string, r *http.Request) (ListCoreV1SecretForAllNamespacesParams, error) {
 	var (
 		params    ListCoreV1SecretForAllNamespacesParams
 		queryArgs = r.URL.Query()
@@ -20498,7 +20498,7 @@ func decodeListCoreV1SecretForAllNamespacesParams(args map[string]string, r *htt
 	return params, nil
 }
 
-func decodeListCoreV1ServiceAccountForAllNamespacesParams(args map[string]string, r *http.Request) (ListCoreV1ServiceAccountForAllNamespacesParams, error) {
+func decodeListCoreV1ServiceAccountForAllNamespacesParams(args [0]string, r *http.Request) (ListCoreV1ServiceAccountForAllNamespacesParams, error) {
 	var (
 		params    ListCoreV1ServiceAccountForAllNamespacesParams
 		queryArgs = r.URL.Query()
@@ -20856,7 +20856,7 @@ func decodeListCoreV1ServiceAccountForAllNamespacesParams(args map[string]string
 	return params, nil
 }
 
-func decodeListCoreV1ServiceForAllNamespacesParams(args map[string]string, r *http.Request) (ListCoreV1ServiceForAllNamespacesParams, error) {
+func decodeListCoreV1ServiceForAllNamespacesParams(args [0]string, r *http.Request) (ListCoreV1ServiceForAllNamespacesParams, error) {
 	var (
 		params    ListCoreV1ServiceForAllNamespacesParams
 		queryArgs = r.URL.Query()
@@ -21214,7 +21214,7 @@ func decodeListCoreV1ServiceForAllNamespacesParams(args map[string]string, r *ht
 	return params, nil
 }
 
-func decodeListDiscoveryV1EndpointSliceForAllNamespacesParams(args map[string]string, r *http.Request) (ListDiscoveryV1EndpointSliceForAllNamespacesParams, error) {
+func decodeListDiscoveryV1EndpointSliceForAllNamespacesParams(args [0]string, r *http.Request) (ListDiscoveryV1EndpointSliceForAllNamespacesParams, error) {
 	var (
 		params    ListDiscoveryV1EndpointSliceForAllNamespacesParams
 		queryArgs = r.URL.Query()
@@ -21572,7 +21572,7 @@ func decodeListDiscoveryV1EndpointSliceForAllNamespacesParams(args map[string]st
 	return params, nil
 }
 
-func decodeListDiscoveryV1NamespacedEndpointSliceParams(args map[string]string, r *http.Request) (ListDiscoveryV1NamespacedEndpointSliceParams, error) {
+func decodeListDiscoveryV1NamespacedEndpointSliceParams(args [1]string, r *http.Request) (ListDiscoveryV1NamespacedEndpointSliceParams, error) {
 	var (
 		params    ListDiscoveryV1NamespacedEndpointSliceParams
 		queryArgs = r.URL.Query()
@@ -21894,7 +21894,7 @@ func decodeListDiscoveryV1NamespacedEndpointSliceParams(args map[string]string, 
 	}
 	// Decode path: namespace.
 	{
-		param := args["namespace"]
+		param := args[0]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "namespace",
@@ -21961,7 +21961,7 @@ func decodeListDiscoveryV1NamespacedEndpointSliceParams(args map[string]string, 
 	return params, nil
 }
 
-func decodeListDiscoveryV1beta1EndpointSliceForAllNamespacesParams(args map[string]string, r *http.Request) (ListDiscoveryV1beta1EndpointSliceForAllNamespacesParams, error) {
+func decodeListDiscoveryV1beta1EndpointSliceForAllNamespacesParams(args [0]string, r *http.Request) (ListDiscoveryV1beta1EndpointSliceForAllNamespacesParams, error) {
 	var (
 		params    ListDiscoveryV1beta1EndpointSliceForAllNamespacesParams
 		queryArgs = r.URL.Query()
@@ -22319,7 +22319,7 @@ func decodeListDiscoveryV1beta1EndpointSliceForAllNamespacesParams(args map[stri
 	return params, nil
 }
 
-func decodeListDiscoveryV1beta1NamespacedEndpointSliceParams(args map[string]string, r *http.Request) (ListDiscoveryV1beta1NamespacedEndpointSliceParams, error) {
+func decodeListDiscoveryV1beta1NamespacedEndpointSliceParams(args [1]string, r *http.Request) (ListDiscoveryV1beta1NamespacedEndpointSliceParams, error) {
 	var (
 		params    ListDiscoveryV1beta1NamespacedEndpointSliceParams
 		queryArgs = r.URL.Query()
@@ -22641,7 +22641,7 @@ func decodeListDiscoveryV1beta1NamespacedEndpointSliceParams(args map[string]str
 	}
 	// Decode path: namespace.
 	{
-		param := args["namespace"]
+		param := args[0]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "namespace",
@@ -22708,7 +22708,7 @@ func decodeListDiscoveryV1beta1NamespacedEndpointSliceParams(args map[string]str
 	return params, nil
 }
 
-func decodeListEventsV1EventForAllNamespacesParams(args map[string]string, r *http.Request) (ListEventsV1EventForAllNamespacesParams, error) {
+func decodeListEventsV1EventForAllNamespacesParams(args [0]string, r *http.Request) (ListEventsV1EventForAllNamespacesParams, error) {
 	var (
 		params    ListEventsV1EventForAllNamespacesParams
 		queryArgs = r.URL.Query()
@@ -23066,7 +23066,7 @@ func decodeListEventsV1EventForAllNamespacesParams(args map[string]string, r *ht
 	return params, nil
 }
 
-func decodeListEventsV1NamespacedEventParams(args map[string]string, r *http.Request) (ListEventsV1NamespacedEventParams, error) {
+func decodeListEventsV1NamespacedEventParams(args [1]string, r *http.Request) (ListEventsV1NamespacedEventParams, error) {
 	var (
 		params    ListEventsV1NamespacedEventParams
 		queryArgs = r.URL.Query()
@@ -23388,7 +23388,7 @@ func decodeListEventsV1NamespacedEventParams(args map[string]string, r *http.Req
 	}
 	// Decode path: namespace.
 	{
-		param := args["namespace"]
+		param := args[0]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "namespace",
@@ -23455,7 +23455,7 @@ func decodeListEventsV1NamespacedEventParams(args map[string]string, r *http.Req
 	return params, nil
 }
 
-func decodeListEventsV1beta1EventForAllNamespacesParams(args map[string]string, r *http.Request) (ListEventsV1beta1EventForAllNamespacesParams, error) {
+func decodeListEventsV1beta1EventForAllNamespacesParams(args [0]string, r *http.Request) (ListEventsV1beta1EventForAllNamespacesParams, error) {
 	var (
 		params    ListEventsV1beta1EventForAllNamespacesParams
 		queryArgs = r.URL.Query()
@@ -23813,7 +23813,7 @@ func decodeListEventsV1beta1EventForAllNamespacesParams(args map[string]string, 
 	return params, nil
 }
 
-func decodeListEventsV1beta1NamespacedEventParams(args map[string]string, r *http.Request) (ListEventsV1beta1NamespacedEventParams, error) {
+func decodeListEventsV1beta1NamespacedEventParams(args [1]string, r *http.Request) (ListEventsV1beta1NamespacedEventParams, error) {
 	var (
 		params    ListEventsV1beta1NamespacedEventParams
 		queryArgs = r.URL.Query()
@@ -24135,7 +24135,7 @@ func decodeListEventsV1beta1NamespacedEventParams(args map[string]string, r *htt
 	}
 	// Decode path: namespace.
 	{
-		param := args["namespace"]
+		param := args[0]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "namespace",
@@ -24202,7 +24202,7 @@ func decodeListEventsV1beta1NamespacedEventParams(args map[string]string, r *htt
 	return params, nil
 }
 
-func decodeListFlowcontrolApiserverV1beta1FlowSchemaParams(args map[string]string, r *http.Request) (ListFlowcontrolApiserverV1beta1FlowSchemaParams, error) {
+func decodeListFlowcontrolApiserverV1beta1FlowSchemaParams(args [0]string, r *http.Request) (ListFlowcontrolApiserverV1beta1FlowSchemaParams, error) {
 	var (
 		params    ListFlowcontrolApiserverV1beta1FlowSchemaParams
 		queryArgs = r.URL.Query()
@@ -24560,7 +24560,7 @@ func decodeListFlowcontrolApiserverV1beta1FlowSchemaParams(args map[string]strin
 	return params, nil
 }
 
-func decodeListFlowcontrolApiserverV1beta1PriorityLevelConfigurationParams(args map[string]string, r *http.Request) (ListFlowcontrolApiserverV1beta1PriorityLevelConfigurationParams, error) {
+func decodeListFlowcontrolApiserverV1beta1PriorityLevelConfigurationParams(args [0]string, r *http.Request) (ListFlowcontrolApiserverV1beta1PriorityLevelConfigurationParams, error) {
 	var (
 		params    ListFlowcontrolApiserverV1beta1PriorityLevelConfigurationParams
 		queryArgs = r.URL.Query()
@@ -24918,7 +24918,7 @@ func decodeListFlowcontrolApiserverV1beta1PriorityLevelConfigurationParams(args 
 	return params, nil
 }
 
-func decodeListFlowcontrolApiserverV1beta2FlowSchemaParams(args map[string]string, r *http.Request) (ListFlowcontrolApiserverV1beta2FlowSchemaParams, error) {
+func decodeListFlowcontrolApiserverV1beta2FlowSchemaParams(args [0]string, r *http.Request) (ListFlowcontrolApiserverV1beta2FlowSchemaParams, error) {
 	var (
 		params    ListFlowcontrolApiserverV1beta2FlowSchemaParams
 		queryArgs = r.URL.Query()
@@ -25276,7 +25276,7 @@ func decodeListFlowcontrolApiserverV1beta2FlowSchemaParams(args map[string]strin
 	return params, nil
 }
 
-func decodeListFlowcontrolApiserverV1beta2PriorityLevelConfigurationParams(args map[string]string, r *http.Request) (ListFlowcontrolApiserverV1beta2PriorityLevelConfigurationParams, error) {
+func decodeListFlowcontrolApiserverV1beta2PriorityLevelConfigurationParams(args [0]string, r *http.Request) (ListFlowcontrolApiserverV1beta2PriorityLevelConfigurationParams, error) {
 	var (
 		params    ListFlowcontrolApiserverV1beta2PriorityLevelConfigurationParams
 		queryArgs = r.URL.Query()
@@ -25634,7 +25634,7 @@ func decodeListFlowcontrolApiserverV1beta2PriorityLevelConfigurationParams(args 
 	return params, nil
 }
 
-func decodeListInternalApiserverV1alpha1StorageVersionParams(args map[string]string, r *http.Request) (ListInternalApiserverV1alpha1StorageVersionParams, error) {
+func decodeListInternalApiserverV1alpha1StorageVersionParams(args [0]string, r *http.Request) (ListInternalApiserverV1alpha1StorageVersionParams, error) {
 	var (
 		params    ListInternalApiserverV1alpha1StorageVersionParams
 		queryArgs = r.URL.Query()
@@ -25992,7 +25992,7 @@ func decodeListInternalApiserverV1alpha1StorageVersionParams(args map[string]str
 	return params, nil
 }
 
-func decodeListNetworkingV1IngressClassParams(args map[string]string, r *http.Request) (ListNetworkingV1IngressClassParams, error) {
+func decodeListNetworkingV1IngressClassParams(args [0]string, r *http.Request) (ListNetworkingV1IngressClassParams, error) {
 	var (
 		params    ListNetworkingV1IngressClassParams
 		queryArgs = r.URL.Query()
@@ -26350,7 +26350,7 @@ func decodeListNetworkingV1IngressClassParams(args map[string]string, r *http.Re
 	return params, nil
 }
 
-func decodeListNetworkingV1IngressForAllNamespacesParams(args map[string]string, r *http.Request) (ListNetworkingV1IngressForAllNamespacesParams, error) {
+func decodeListNetworkingV1IngressForAllNamespacesParams(args [0]string, r *http.Request) (ListNetworkingV1IngressForAllNamespacesParams, error) {
 	var (
 		params    ListNetworkingV1IngressForAllNamespacesParams
 		queryArgs = r.URL.Query()
@@ -26708,7 +26708,7 @@ func decodeListNetworkingV1IngressForAllNamespacesParams(args map[string]string,
 	return params, nil
 }
 
-func decodeListNetworkingV1NamespacedIngressParams(args map[string]string, r *http.Request) (ListNetworkingV1NamespacedIngressParams, error) {
+func decodeListNetworkingV1NamespacedIngressParams(args [1]string, r *http.Request) (ListNetworkingV1NamespacedIngressParams, error) {
 	var (
 		params    ListNetworkingV1NamespacedIngressParams
 		queryArgs = r.URL.Query()
@@ -27030,7 +27030,7 @@ func decodeListNetworkingV1NamespacedIngressParams(args map[string]string, r *ht
 	}
 	// Decode path: namespace.
 	{
-		param := args["namespace"]
+		param := args[0]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "namespace",
@@ -27097,7 +27097,7 @@ func decodeListNetworkingV1NamespacedIngressParams(args map[string]string, r *ht
 	return params, nil
 }
 
-func decodeListNetworkingV1NamespacedNetworkPolicyParams(args map[string]string, r *http.Request) (ListNetworkingV1NamespacedNetworkPolicyParams, error) {
+func decodeListNetworkingV1NamespacedNetworkPolicyParams(args [1]string, r *http.Request) (ListNetworkingV1NamespacedNetworkPolicyParams, error) {
 	var (
 		params    ListNetworkingV1NamespacedNetworkPolicyParams
 		queryArgs = r.URL.Query()
@@ -27419,7 +27419,7 @@ func decodeListNetworkingV1NamespacedNetworkPolicyParams(args map[string]string,
 	}
 	// Decode path: namespace.
 	{
-		param := args["namespace"]
+		param := args[0]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "namespace",
@@ -27486,7 +27486,7 @@ func decodeListNetworkingV1NamespacedNetworkPolicyParams(args map[string]string,
 	return params, nil
 }
 
-func decodeListNetworkingV1NetworkPolicyForAllNamespacesParams(args map[string]string, r *http.Request) (ListNetworkingV1NetworkPolicyForAllNamespacesParams, error) {
+func decodeListNetworkingV1NetworkPolicyForAllNamespacesParams(args [0]string, r *http.Request) (ListNetworkingV1NetworkPolicyForAllNamespacesParams, error) {
 	var (
 		params    ListNetworkingV1NetworkPolicyForAllNamespacesParams
 		queryArgs = r.URL.Query()
@@ -27844,7 +27844,7 @@ func decodeListNetworkingV1NetworkPolicyForAllNamespacesParams(args map[string]s
 	return params, nil
 }
 
-func decodeListNodeV1RuntimeClassParams(args map[string]string, r *http.Request) (ListNodeV1RuntimeClassParams, error) {
+func decodeListNodeV1RuntimeClassParams(args [0]string, r *http.Request) (ListNodeV1RuntimeClassParams, error) {
 	var (
 		params    ListNodeV1RuntimeClassParams
 		queryArgs = r.URL.Query()
@@ -28202,7 +28202,7 @@ func decodeListNodeV1RuntimeClassParams(args map[string]string, r *http.Request)
 	return params, nil
 }
 
-func decodeListNodeV1alpha1RuntimeClassParams(args map[string]string, r *http.Request) (ListNodeV1alpha1RuntimeClassParams, error) {
+func decodeListNodeV1alpha1RuntimeClassParams(args [0]string, r *http.Request) (ListNodeV1alpha1RuntimeClassParams, error) {
 	var (
 		params    ListNodeV1alpha1RuntimeClassParams
 		queryArgs = r.URL.Query()
@@ -28560,7 +28560,7 @@ func decodeListNodeV1alpha1RuntimeClassParams(args map[string]string, r *http.Re
 	return params, nil
 }
 
-func decodeListNodeV1beta1RuntimeClassParams(args map[string]string, r *http.Request) (ListNodeV1beta1RuntimeClassParams, error) {
+func decodeListNodeV1beta1RuntimeClassParams(args [0]string, r *http.Request) (ListNodeV1beta1RuntimeClassParams, error) {
 	var (
 		params    ListNodeV1beta1RuntimeClassParams
 		queryArgs = r.URL.Query()
@@ -28918,7 +28918,7 @@ func decodeListNodeV1beta1RuntimeClassParams(args map[string]string, r *http.Req
 	return params, nil
 }
 
-func decodeListPolicyV1NamespacedPodDisruptionBudgetParams(args map[string]string, r *http.Request) (ListPolicyV1NamespacedPodDisruptionBudgetParams, error) {
+func decodeListPolicyV1NamespacedPodDisruptionBudgetParams(args [1]string, r *http.Request) (ListPolicyV1NamespacedPodDisruptionBudgetParams, error) {
 	var (
 		params    ListPolicyV1NamespacedPodDisruptionBudgetParams
 		queryArgs = r.URL.Query()
@@ -29240,7 +29240,7 @@ func decodeListPolicyV1NamespacedPodDisruptionBudgetParams(args map[string]strin
 	}
 	// Decode path: namespace.
 	{
-		param := args["namespace"]
+		param := args[0]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "namespace",
@@ -29307,7 +29307,7 @@ func decodeListPolicyV1NamespacedPodDisruptionBudgetParams(args map[string]strin
 	return params, nil
 }
 
-func decodeListPolicyV1PodDisruptionBudgetForAllNamespacesParams(args map[string]string, r *http.Request) (ListPolicyV1PodDisruptionBudgetForAllNamespacesParams, error) {
+func decodeListPolicyV1PodDisruptionBudgetForAllNamespacesParams(args [0]string, r *http.Request) (ListPolicyV1PodDisruptionBudgetForAllNamespacesParams, error) {
 	var (
 		params    ListPolicyV1PodDisruptionBudgetForAllNamespacesParams
 		queryArgs = r.URL.Query()
@@ -29665,7 +29665,7 @@ func decodeListPolicyV1PodDisruptionBudgetForAllNamespacesParams(args map[string
 	return params, nil
 }
 
-func decodeListPolicyV1beta1NamespacedPodDisruptionBudgetParams(args map[string]string, r *http.Request) (ListPolicyV1beta1NamespacedPodDisruptionBudgetParams, error) {
+func decodeListPolicyV1beta1NamespacedPodDisruptionBudgetParams(args [1]string, r *http.Request) (ListPolicyV1beta1NamespacedPodDisruptionBudgetParams, error) {
 	var (
 		params    ListPolicyV1beta1NamespacedPodDisruptionBudgetParams
 		queryArgs = r.URL.Query()
@@ -29987,7 +29987,7 @@ func decodeListPolicyV1beta1NamespacedPodDisruptionBudgetParams(args map[string]
 	}
 	// Decode path: namespace.
 	{
-		param := args["namespace"]
+		param := args[0]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "namespace",
@@ -30054,7 +30054,7 @@ func decodeListPolicyV1beta1NamespacedPodDisruptionBudgetParams(args map[string]
 	return params, nil
 }
 
-func decodeListPolicyV1beta1PodDisruptionBudgetForAllNamespacesParams(args map[string]string, r *http.Request) (ListPolicyV1beta1PodDisruptionBudgetForAllNamespacesParams, error) {
+func decodeListPolicyV1beta1PodDisruptionBudgetForAllNamespacesParams(args [0]string, r *http.Request) (ListPolicyV1beta1PodDisruptionBudgetForAllNamespacesParams, error) {
 	var (
 		params    ListPolicyV1beta1PodDisruptionBudgetForAllNamespacesParams
 		queryArgs = r.URL.Query()
@@ -30412,7 +30412,7 @@ func decodeListPolicyV1beta1PodDisruptionBudgetForAllNamespacesParams(args map[s
 	return params, nil
 }
 
-func decodeListPolicyV1beta1PodSecurityPolicyParams(args map[string]string, r *http.Request) (ListPolicyV1beta1PodSecurityPolicyParams, error) {
+func decodeListPolicyV1beta1PodSecurityPolicyParams(args [0]string, r *http.Request) (ListPolicyV1beta1PodSecurityPolicyParams, error) {
 	var (
 		params    ListPolicyV1beta1PodSecurityPolicyParams
 		queryArgs = r.URL.Query()
@@ -30770,7 +30770,7 @@ func decodeListPolicyV1beta1PodSecurityPolicyParams(args map[string]string, r *h
 	return params, nil
 }
 
-func decodeListRbacAuthorizationV1ClusterRoleParams(args map[string]string, r *http.Request) (ListRbacAuthorizationV1ClusterRoleParams, error) {
+func decodeListRbacAuthorizationV1ClusterRoleParams(args [0]string, r *http.Request) (ListRbacAuthorizationV1ClusterRoleParams, error) {
 	var (
 		params    ListRbacAuthorizationV1ClusterRoleParams
 		queryArgs = r.URL.Query()
@@ -31128,7 +31128,7 @@ func decodeListRbacAuthorizationV1ClusterRoleParams(args map[string]string, r *h
 	return params, nil
 }
 
-func decodeListRbacAuthorizationV1ClusterRoleBindingParams(args map[string]string, r *http.Request) (ListRbacAuthorizationV1ClusterRoleBindingParams, error) {
+func decodeListRbacAuthorizationV1ClusterRoleBindingParams(args [0]string, r *http.Request) (ListRbacAuthorizationV1ClusterRoleBindingParams, error) {
 	var (
 		params    ListRbacAuthorizationV1ClusterRoleBindingParams
 		queryArgs = r.URL.Query()
@@ -31486,7 +31486,7 @@ func decodeListRbacAuthorizationV1ClusterRoleBindingParams(args map[string]strin
 	return params, nil
 }
 
-func decodeListRbacAuthorizationV1NamespacedRoleParams(args map[string]string, r *http.Request) (ListRbacAuthorizationV1NamespacedRoleParams, error) {
+func decodeListRbacAuthorizationV1NamespacedRoleParams(args [1]string, r *http.Request) (ListRbacAuthorizationV1NamespacedRoleParams, error) {
 	var (
 		params    ListRbacAuthorizationV1NamespacedRoleParams
 		queryArgs = r.URL.Query()
@@ -31808,7 +31808,7 @@ func decodeListRbacAuthorizationV1NamespacedRoleParams(args map[string]string, r
 	}
 	// Decode path: namespace.
 	{
-		param := args["namespace"]
+		param := args[0]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "namespace",
@@ -31875,7 +31875,7 @@ func decodeListRbacAuthorizationV1NamespacedRoleParams(args map[string]string, r
 	return params, nil
 }
 
-func decodeListRbacAuthorizationV1NamespacedRoleBindingParams(args map[string]string, r *http.Request) (ListRbacAuthorizationV1NamespacedRoleBindingParams, error) {
+func decodeListRbacAuthorizationV1NamespacedRoleBindingParams(args [1]string, r *http.Request) (ListRbacAuthorizationV1NamespacedRoleBindingParams, error) {
 	var (
 		params    ListRbacAuthorizationV1NamespacedRoleBindingParams
 		queryArgs = r.URL.Query()
@@ -32197,7 +32197,7 @@ func decodeListRbacAuthorizationV1NamespacedRoleBindingParams(args map[string]st
 	}
 	// Decode path: namespace.
 	{
-		param := args["namespace"]
+		param := args[0]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "namespace",
@@ -32264,7 +32264,7 @@ func decodeListRbacAuthorizationV1NamespacedRoleBindingParams(args map[string]st
 	return params, nil
 }
 
-func decodeListRbacAuthorizationV1RoleBindingForAllNamespacesParams(args map[string]string, r *http.Request) (ListRbacAuthorizationV1RoleBindingForAllNamespacesParams, error) {
+func decodeListRbacAuthorizationV1RoleBindingForAllNamespacesParams(args [0]string, r *http.Request) (ListRbacAuthorizationV1RoleBindingForAllNamespacesParams, error) {
 	var (
 		params    ListRbacAuthorizationV1RoleBindingForAllNamespacesParams
 		queryArgs = r.URL.Query()
@@ -32622,7 +32622,7 @@ func decodeListRbacAuthorizationV1RoleBindingForAllNamespacesParams(args map[str
 	return params, nil
 }
 
-func decodeListRbacAuthorizationV1RoleForAllNamespacesParams(args map[string]string, r *http.Request) (ListRbacAuthorizationV1RoleForAllNamespacesParams, error) {
+func decodeListRbacAuthorizationV1RoleForAllNamespacesParams(args [0]string, r *http.Request) (ListRbacAuthorizationV1RoleForAllNamespacesParams, error) {
 	var (
 		params    ListRbacAuthorizationV1RoleForAllNamespacesParams
 		queryArgs = r.URL.Query()
@@ -32980,7 +32980,7 @@ func decodeListRbacAuthorizationV1RoleForAllNamespacesParams(args map[string]str
 	return params, nil
 }
 
-func decodeListSchedulingV1PriorityClassParams(args map[string]string, r *http.Request) (ListSchedulingV1PriorityClassParams, error) {
+func decodeListSchedulingV1PriorityClassParams(args [0]string, r *http.Request) (ListSchedulingV1PriorityClassParams, error) {
 	var (
 		params    ListSchedulingV1PriorityClassParams
 		queryArgs = r.URL.Query()
@@ -33338,7 +33338,7 @@ func decodeListSchedulingV1PriorityClassParams(args map[string]string, r *http.R
 	return params, nil
 }
 
-func decodeListStorageV1CSIDriverParams(args map[string]string, r *http.Request) (ListStorageV1CSIDriverParams, error) {
+func decodeListStorageV1CSIDriverParams(args [0]string, r *http.Request) (ListStorageV1CSIDriverParams, error) {
 	var (
 		params    ListStorageV1CSIDriverParams
 		queryArgs = r.URL.Query()
@@ -33696,7 +33696,7 @@ func decodeListStorageV1CSIDriverParams(args map[string]string, r *http.Request)
 	return params, nil
 }
 
-func decodeListStorageV1CSINodeParams(args map[string]string, r *http.Request) (ListStorageV1CSINodeParams, error) {
+func decodeListStorageV1CSINodeParams(args [0]string, r *http.Request) (ListStorageV1CSINodeParams, error) {
 	var (
 		params    ListStorageV1CSINodeParams
 		queryArgs = r.URL.Query()
@@ -34054,7 +34054,7 @@ func decodeListStorageV1CSINodeParams(args map[string]string, r *http.Request) (
 	return params, nil
 }
 
-func decodeListStorageV1StorageClassParams(args map[string]string, r *http.Request) (ListStorageV1StorageClassParams, error) {
+func decodeListStorageV1StorageClassParams(args [0]string, r *http.Request) (ListStorageV1StorageClassParams, error) {
 	var (
 		params    ListStorageV1StorageClassParams
 		queryArgs = r.URL.Query()
@@ -34412,7 +34412,7 @@ func decodeListStorageV1StorageClassParams(args map[string]string, r *http.Reque
 	return params, nil
 }
 
-func decodeListStorageV1VolumeAttachmentParams(args map[string]string, r *http.Request) (ListStorageV1VolumeAttachmentParams, error) {
+func decodeListStorageV1VolumeAttachmentParams(args [0]string, r *http.Request) (ListStorageV1VolumeAttachmentParams, error) {
 	var (
 		params    ListStorageV1VolumeAttachmentParams
 		queryArgs = r.URL.Query()
@@ -34770,7 +34770,7 @@ func decodeListStorageV1VolumeAttachmentParams(args map[string]string, r *http.R
 	return params, nil
 }
 
-func decodeListStorageV1alpha1CSIStorageCapacityForAllNamespacesParams(args map[string]string, r *http.Request) (ListStorageV1alpha1CSIStorageCapacityForAllNamespacesParams, error) {
+func decodeListStorageV1alpha1CSIStorageCapacityForAllNamespacesParams(args [0]string, r *http.Request) (ListStorageV1alpha1CSIStorageCapacityForAllNamespacesParams, error) {
 	var (
 		params    ListStorageV1alpha1CSIStorageCapacityForAllNamespacesParams
 		queryArgs = r.URL.Query()
@@ -35128,7 +35128,7 @@ func decodeListStorageV1alpha1CSIStorageCapacityForAllNamespacesParams(args map[
 	return params, nil
 }
 
-func decodeListStorageV1alpha1NamespacedCSIStorageCapacityParams(args map[string]string, r *http.Request) (ListStorageV1alpha1NamespacedCSIStorageCapacityParams, error) {
+func decodeListStorageV1alpha1NamespacedCSIStorageCapacityParams(args [1]string, r *http.Request) (ListStorageV1alpha1NamespacedCSIStorageCapacityParams, error) {
 	var (
 		params    ListStorageV1alpha1NamespacedCSIStorageCapacityParams
 		queryArgs = r.URL.Query()
@@ -35450,7 +35450,7 @@ func decodeListStorageV1alpha1NamespacedCSIStorageCapacityParams(args map[string
 	}
 	// Decode path: namespace.
 	{
-		param := args["namespace"]
+		param := args[0]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "namespace",
@@ -35517,7 +35517,7 @@ func decodeListStorageV1alpha1NamespacedCSIStorageCapacityParams(args map[string
 	return params, nil
 }
 
-func decodeListStorageV1beta1CSIStorageCapacityForAllNamespacesParams(args map[string]string, r *http.Request) (ListStorageV1beta1CSIStorageCapacityForAllNamespacesParams, error) {
+func decodeListStorageV1beta1CSIStorageCapacityForAllNamespacesParams(args [0]string, r *http.Request) (ListStorageV1beta1CSIStorageCapacityForAllNamespacesParams, error) {
 	var (
 		params    ListStorageV1beta1CSIStorageCapacityForAllNamespacesParams
 		queryArgs = r.URL.Query()
@@ -35875,7 +35875,7 @@ func decodeListStorageV1beta1CSIStorageCapacityForAllNamespacesParams(args map[s
 	return params, nil
 }
 
-func decodeListStorageV1beta1NamespacedCSIStorageCapacityParams(args map[string]string, r *http.Request) (ListStorageV1beta1NamespacedCSIStorageCapacityParams, error) {
+func decodeListStorageV1beta1NamespacedCSIStorageCapacityParams(args [1]string, r *http.Request) (ListStorageV1beta1NamespacedCSIStorageCapacityParams, error) {
 	var (
 		params    ListStorageV1beta1NamespacedCSIStorageCapacityParams
 		queryArgs = r.URL.Query()
@@ -36197,7 +36197,7 @@ func decodeListStorageV1beta1NamespacedCSIStorageCapacityParams(args map[string]
 	}
 	// Decode path: namespace.
 	{
-		param := args["namespace"]
+		param := args[0]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "namespace",
@@ -36264,13 +36264,13 @@ func decodeListStorageV1beta1NamespacedCSIStorageCapacityParams(args map[string]
 	return params, nil
 }
 
-func decodeLogFileHandlerParams(args map[string]string, r *http.Request) (LogFileHandlerParams, error) {
+func decodeLogFileHandlerParams(args [1]string, r *http.Request) (LogFileHandlerParams, error) {
 	var (
 		params LogFileHandlerParams
 	)
 	// Decode path: logpath.
 	{
-		param := args["logpath"]
+		param := args[0]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "logpath",
@@ -36302,14 +36302,14 @@ func decodeLogFileHandlerParams(args map[string]string, r *http.Request) (LogFil
 	return params, nil
 }
 
-func decodeReadAdmissionregistrationV1MutatingWebhookConfigurationParams(args map[string]string, r *http.Request) (ReadAdmissionregistrationV1MutatingWebhookConfigurationParams, error) {
+func decodeReadAdmissionregistrationV1MutatingWebhookConfigurationParams(args [1]string, r *http.Request) (ReadAdmissionregistrationV1MutatingWebhookConfigurationParams, error) {
 	var (
 		params    ReadAdmissionregistrationV1MutatingWebhookConfigurationParams
 		queryArgs = r.URL.Query()
 	)
 	// Decode path: name.
 	{
-		param := args["name"]
+		param := args[0]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "name",
@@ -36376,14 +36376,14 @@ func decodeReadAdmissionregistrationV1MutatingWebhookConfigurationParams(args ma
 	return params, nil
 }
 
-func decodeReadAdmissionregistrationV1ValidatingWebhookConfigurationParams(args map[string]string, r *http.Request) (ReadAdmissionregistrationV1ValidatingWebhookConfigurationParams, error) {
+func decodeReadAdmissionregistrationV1ValidatingWebhookConfigurationParams(args [1]string, r *http.Request) (ReadAdmissionregistrationV1ValidatingWebhookConfigurationParams, error) {
 	var (
 		params    ReadAdmissionregistrationV1ValidatingWebhookConfigurationParams
 		queryArgs = r.URL.Query()
 	)
 	// Decode path: name.
 	{
-		param := args["name"]
+		param := args[0]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "name",
@@ -36450,14 +36450,14 @@ func decodeReadAdmissionregistrationV1ValidatingWebhookConfigurationParams(args 
 	return params, nil
 }
 
-func decodeReadApiextensionsV1CustomResourceDefinitionParams(args map[string]string, r *http.Request) (ReadApiextensionsV1CustomResourceDefinitionParams, error) {
+func decodeReadApiextensionsV1CustomResourceDefinitionParams(args [1]string, r *http.Request) (ReadApiextensionsV1CustomResourceDefinitionParams, error) {
 	var (
 		params    ReadApiextensionsV1CustomResourceDefinitionParams
 		queryArgs = r.URL.Query()
 	)
 	// Decode path: name.
 	{
-		param := args["name"]
+		param := args[0]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "name",
@@ -36524,14 +36524,14 @@ func decodeReadApiextensionsV1CustomResourceDefinitionParams(args map[string]str
 	return params, nil
 }
 
-func decodeReadApiextensionsV1CustomResourceDefinitionStatusParams(args map[string]string, r *http.Request) (ReadApiextensionsV1CustomResourceDefinitionStatusParams, error) {
+func decodeReadApiextensionsV1CustomResourceDefinitionStatusParams(args [1]string, r *http.Request) (ReadApiextensionsV1CustomResourceDefinitionStatusParams, error) {
 	var (
 		params    ReadApiextensionsV1CustomResourceDefinitionStatusParams
 		queryArgs = r.URL.Query()
 	)
 	// Decode path: name.
 	{
-		param := args["name"]
+		param := args[0]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "name",
@@ -36598,14 +36598,14 @@ func decodeReadApiextensionsV1CustomResourceDefinitionStatusParams(args map[stri
 	return params, nil
 }
 
-func decodeReadApiregistrationV1APIServiceParams(args map[string]string, r *http.Request) (ReadApiregistrationV1APIServiceParams, error) {
+func decodeReadApiregistrationV1APIServiceParams(args [1]string, r *http.Request) (ReadApiregistrationV1APIServiceParams, error) {
 	var (
 		params    ReadApiregistrationV1APIServiceParams
 		queryArgs = r.URL.Query()
 	)
 	// Decode path: name.
 	{
-		param := args["name"]
+		param := args[0]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "name",
@@ -36672,14 +36672,14 @@ func decodeReadApiregistrationV1APIServiceParams(args map[string]string, r *http
 	return params, nil
 }
 
-func decodeReadApiregistrationV1APIServiceStatusParams(args map[string]string, r *http.Request) (ReadApiregistrationV1APIServiceStatusParams, error) {
+func decodeReadApiregistrationV1APIServiceStatusParams(args [1]string, r *http.Request) (ReadApiregistrationV1APIServiceStatusParams, error) {
 	var (
 		params    ReadApiregistrationV1APIServiceStatusParams
 		queryArgs = r.URL.Query()
 	)
 	// Decode path: name.
 	{
-		param := args["name"]
+		param := args[0]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "name",
@@ -36746,14 +36746,14 @@ func decodeReadApiregistrationV1APIServiceStatusParams(args map[string]string, r
 	return params, nil
 }
 
-func decodeReadAppsV1NamespacedControllerRevisionParams(args map[string]string, r *http.Request) (ReadAppsV1NamespacedControllerRevisionParams, error) {
+func decodeReadAppsV1NamespacedControllerRevisionParams(args [2]string, r *http.Request) (ReadAppsV1NamespacedControllerRevisionParams, error) {
 	var (
 		params    ReadAppsV1NamespacedControllerRevisionParams
 		queryArgs = r.URL.Query()
 	)
 	// Decode path: name.
 	{
-		param := args["name"]
+		param := args[1]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "name",
@@ -36784,7 +36784,7 @@ func decodeReadAppsV1NamespacedControllerRevisionParams(args map[string]string, 
 	}
 	// Decode path: namespace.
 	{
-		param := args["namespace"]
+		param := args[0]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "namespace",
@@ -36851,14 +36851,14 @@ func decodeReadAppsV1NamespacedControllerRevisionParams(args map[string]string, 
 	return params, nil
 }
 
-func decodeReadAppsV1NamespacedDaemonSetParams(args map[string]string, r *http.Request) (ReadAppsV1NamespacedDaemonSetParams, error) {
+func decodeReadAppsV1NamespacedDaemonSetParams(args [2]string, r *http.Request) (ReadAppsV1NamespacedDaemonSetParams, error) {
 	var (
 		params    ReadAppsV1NamespacedDaemonSetParams
 		queryArgs = r.URL.Query()
 	)
 	// Decode path: name.
 	{
-		param := args["name"]
+		param := args[1]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "name",
@@ -36889,7 +36889,7 @@ func decodeReadAppsV1NamespacedDaemonSetParams(args map[string]string, r *http.R
 	}
 	// Decode path: namespace.
 	{
-		param := args["namespace"]
+		param := args[0]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "namespace",
@@ -36956,14 +36956,14 @@ func decodeReadAppsV1NamespacedDaemonSetParams(args map[string]string, r *http.R
 	return params, nil
 }
 
-func decodeReadAppsV1NamespacedDaemonSetStatusParams(args map[string]string, r *http.Request) (ReadAppsV1NamespacedDaemonSetStatusParams, error) {
+func decodeReadAppsV1NamespacedDaemonSetStatusParams(args [2]string, r *http.Request) (ReadAppsV1NamespacedDaemonSetStatusParams, error) {
 	var (
 		params    ReadAppsV1NamespacedDaemonSetStatusParams
 		queryArgs = r.URL.Query()
 	)
 	// Decode path: name.
 	{
-		param := args["name"]
+		param := args[1]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "name",
@@ -36994,7 +36994,7 @@ func decodeReadAppsV1NamespacedDaemonSetStatusParams(args map[string]string, r *
 	}
 	// Decode path: namespace.
 	{
-		param := args["namespace"]
+		param := args[0]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "namespace",
@@ -37061,14 +37061,14 @@ func decodeReadAppsV1NamespacedDaemonSetStatusParams(args map[string]string, r *
 	return params, nil
 }
 
-func decodeReadAppsV1NamespacedDeploymentParams(args map[string]string, r *http.Request) (ReadAppsV1NamespacedDeploymentParams, error) {
+func decodeReadAppsV1NamespacedDeploymentParams(args [2]string, r *http.Request) (ReadAppsV1NamespacedDeploymentParams, error) {
 	var (
 		params    ReadAppsV1NamespacedDeploymentParams
 		queryArgs = r.URL.Query()
 	)
 	// Decode path: name.
 	{
-		param := args["name"]
+		param := args[1]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "name",
@@ -37099,7 +37099,7 @@ func decodeReadAppsV1NamespacedDeploymentParams(args map[string]string, r *http.
 	}
 	// Decode path: namespace.
 	{
-		param := args["namespace"]
+		param := args[0]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "namespace",
@@ -37166,14 +37166,14 @@ func decodeReadAppsV1NamespacedDeploymentParams(args map[string]string, r *http.
 	return params, nil
 }
 
-func decodeReadAppsV1NamespacedDeploymentScaleParams(args map[string]string, r *http.Request) (ReadAppsV1NamespacedDeploymentScaleParams, error) {
+func decodeReadAppsV1NamespacedDeploymentScaleParams(args [2]string, r *http.Request) (ReadAppsV1NamespacedDeploymentScaleParams, error) {
 	var (
 		params    ReadAppsV1NamespacedDeploymentScaleParams
 		queryArgs = r.URL.Query()
 	)
 	// Decode path: name.
 	{
-		param := args["name"]
+		param := args[1]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "name",
@@ -37204,7 +37204,7 @@ func decodeReadAppsV1NamespacedDeploymentScaleParams(args map[string]string, r *
 	}
 	// Decode path: namespace.
 	{
-		param := args["namespace"]
+		param := args[0]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "namespace",
@@ -37271,14 +37271,14 @@ func decodeReadAppsV1NamespacedDeploymentScaleParams(args map[string]string, r *
 	return params, nil
 }
 
-func decodeReadAppsV1NamespacedDeploymentStatusParams(args map[string]string, r *http.Request) (ReadAppsV1NamespacedDeploymentStatusParams, error) {
+func decodeReadAppsV1NamespacedDeploymentStatusParams(args [2]string, r *http.Request) (ReadAppsV1NamespacedDeploymentStatusParams, error) {
 	var (
 		params    ReadAppsV1NamespacedDeploymentStatusParams
 		queryArgs = r.URL.Query()
 	)
 	// Decode path: name.
 	{
-		param := args["name"]
+		param := args[1]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "name",
@@ -37309,7 +37309,7 @@ func decodeReadAppsV1NamespacedDeploymentStatusParams(args map[string]string, r 
 	}
 	// Decode path: namespace.
 	{
-		param := args["namespace"]
+		param := args[0]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "namespace",
@@ -37376,14 +37376,14 @@ func decodeReadAppsV1NamespacedDeploymentStatusParams(args map[string]string, r 
 	return params, nil
 }
 
-func decodeReadAppsV1NamespacedReplicaSetParams(args map[string]string, r *http.Request) (ReadAppsV1NamespacedReplicaSetParams, error) {
+func decodeReadAppsV1NamespacedReplicaSetParams(args [2]string, r *http.Request) (ReadAppsV1NamespacedReplicaSetParams, error) {
 	var (
 		params    ReadAppsV1NamespacedReplicaSetParams
 		queryArgs = r.URL.Query()
 	)
 	// Decode path: name.
 	{
-		param := args["name"]
+		param := args[1]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "name",
@@ -37414,7 +37414,7 @@ func decodeReadAppsV1NamespacedReplicaSetParams(args map[string]string, r *http.
 	}
 	// Decode path: namespace.
 	{
-		param := args["namespace"]
+		param := args[0]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "namespace",
@@ -37481,14 +37481,14 @@ func decodeReadAppsV1NamespacedReplicaSetParams(args map[string]string, r *http.
 	return params, nil
 }
 
-func decodeReadAppsV1NamespacedReplicaSetScaleParams(args map[string]string, r *http.Request) (ReadAppsV1NamespacedReplicaSetScaleParams, error) {
+func decodeReadAppsV1NamespacedReplicaSetScaleParams(args [2]string, r *http.Request) (ReadAppsV1NamespacedReplicaSetScaleParams, error) {
 	var (
 		params    ReadAppsV1NamespacedReplicaSetScaleParams
 		queryArgs = r.URL.Query()
 	)
 	// Decode path: name.
 	{
-		param := args["name"]
+		param := args[1]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "name",
@@ -37519,7 +37519,7 @@ func decodeReadAppsV1NamespacedReplicaSetScaleParams(args map[string]string, r *
 	}
 	// Decode path: namespace.
 	{
-		param := args["namespace"]
+		param := args[0]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "namespace",
@@ -37586,14 +37586,14 @@ func decodeReadAppsV1NamespacedReplicaSetScaleParams(args map[string]string, r *
 	return params, nil
 }
 
-func decodeReadAppsV1NamespacedReplicaSetStatusParams(args map[string]string, r *http.Request) (ReadAppsV1NamespacedReplicaSetStatusParams, error) {
+func decodeReadAppsV1NamespacedReplicaSetStatusParams(args [2]string, r *http.Request) (ReadAppsV1NamespacedReplicaSetStatusParams, error) {
 	var (
 		params    ReadAppsV1NamespacedReplicaSetStatusParams
 		queryArgs = r.URL.Query()
 	)
 	// Decode path: name.
 	{
-		param := args["name"]
+		param := args[1]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "name",
@@ -37624,7 +37624,7 @@ func decodeReadAppsV1NamespacedReplicaSetStatusParams(args map[string]string, r 
 	}
 	// Decode path: namespace.
 	{
-		param := args["namespace"]
+		param := args[0]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "namespace",
@@ -37691,14 +37691,14 @@ func decodeReadAppsV1NamespacedReplicaSetStatusParams(args map[string]string, r 
 	return params, nil
 }
 
-func decodeReadAppsV1NamespacedStatefulSetParams(args map[string]string, r *http.Request) (ReadAppsV1NamespacedStatefulSetParams, error) {
+func decodeReadAppsV1NamespacedStatefulSetParams(args [2]string, r *http.Request) (ReadAppsV1NamespacedStatefulSetParams, error) {
 	var (
 		params    ReadAppsV1NamespacedStatefulSetParams
 		queryArgs = r.URL.Query()
 	)
 	// Decode path: name.
 	{
-		param := args["name"]
+		param := args[1]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "name",
@@ -37729,7 +37729,7 @@ func decodeReadAppsV1NamespacedStatefulSetParams(args map[string]string, r *http
 	}
 	// Decode path: namespace.
 	{
-		param := args["namespace"]
+		param := args[0]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "namespace",
@@ -37796,14 +37796,14 @@ func decodeReadAppsV1NamespacedStatefulSetParams(args map[string]string, r *http
 	return params, nil
 }
 
-func decodeReadAppsV1NamespacedStatefulSetScaleParams(args map[string]string, r *http.Request) (ReadAppsV1NamespacedStatefulSetScaleParams, error) {
+func decodeReadAppsV1NamespacedStatefulSetScaleParams(args [2]string, r *http.Request) (ReadAppsV1NamespacedStatefulSetScaleParams, error) {
 	var (
 		params    ReadAppsV1NamespacedStatefulSetScaleParams
 		queryArgs = r.URL.Query()
 	)
 	// Decode path: name.
 	{
-		param := args["name"]
+		param := args[1]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "name",
@@ -37834,7 +37834,7 @@ func decodeReadAppsV1NamespacedStatefulSetScaleParams(args map[string]string, r 
 	}
 	// Decode path: namespace.
 	{
-		param := args["namespace"]
+		param := args[0]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "namespace",
@@ -37901,14 +37901,14 @@ func decodeReadAppsV1NamespacedStatefulSetScaleParams(args map[string]string, r 
 	return params, nil
 }
 
-func decodeReadAppsV1NamespacedStatefulSetStatusParams(args map[string]string, r *http.Request) (ReadAppsV1NamespacedStatefulSetStatusParams, error) {
+func decodeReadAppsV1NamespacedStatefulSetStatusParams(args [2]string, r *http.Request) (ReadAppsV1NamespacedStatefulSetStatusParams, error) {
 	var (
 		params    ReadAppsV1NamespacedStatefulSetStatusParams
 		queryArgs = r.URL.Query()
 	)
 	// Decode path: name.
 	{
-		param := args["name"]
+		param := args[1]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "name",
@@ -37939,7 +37939,7 @@ func decodeReadAppsV1NamespacedStatefulSetStatusParams(args map[string]string, r
 	}
 	// Decode path: namespace.
 	{
-		param := args["namespace"]
+		param := args[0]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "namespace",
@@ -38006,14 +38006,14 @@ func decodeReadAppsV1NamespacedStatefulSetStatusParams(args map[string]string, r
 	return params, nil
 }
 
-func decodeReadAutoscalingV1NamespacedHorizontalPodAutoscalerParams(args map[string]string, r *http.Request) (ReadAutoscalingV1NamespacedHorizontalPodAutoscalerParams, error) {
+func decodeReadAutoscalingV1NamespacedHorizontalPodAutoscalerParams(args [2]string, r *http.Request) (ReadAutoscalingV1NamespacedHorizontalPodAutoscalerParams, error) {
 	var (
 		params    ReadAutoscalingV1NamespacedHorizontalPodAutoscalerParams
 		queryArgs = r.URL.Query()
 	)
 	// Decode path: name.
 	{
-		param := args["name"]
+		param := args[1]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "name",
@@ -38044,7 +38044,7 @@ func decodeReadAutoscalingV1NamespacedHorizontalPodAutoscalerParams(args map[str
 	}
 	// Decode path: namespace.
 	{
-		param := args["namespace"]
+		param := args[0]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "namespace",
@@ -38111,14 +38111,14 @@ func decodeReadAutoscalingV1NamespacedHorizontalPodAutoscalerParams(args map[str
 	return params, nil
 }
 
-func decodeReadAutoscalingV1NamespacedHorizontalPodAutoscalerStatusParams(args map[string]string, r *http.Request) (ReadAutoscalingV1NamespacedHorizontalPodAutoscalerStatusParams, error) {
+func decodeReadAutoscalingV1NamespacedHorizontalPodAutoscalerStatusParams(args [2]string, r *http.Request) (ReadAutoscalingV1NamespacedHorizontalPodAutoscalerStatusParams, error) {
 	var (
 		params    ReadAutoscalingV1NamespacedHorizontalPodAutoscalerStatusParams
 		queryArgs = r.URL.Query()
 	)
 	// Decode path: name.
 	{
-		param := args["name"]
+		param := args[1]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "name",
@@ -38149,7 +38149,7 @@ func decodeReadAutoscalingV1NamespacedHorizontalPodAutoscalerStatusParams(args m
 	}
 	// Decode path: namespace.
 	{
-		param := args["namespace"]
+		param := args[0]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "namespace",
@@ -38216,14 +38216,14 @@ func decodeReadAutoscalingV1NamespacedHorizontalPodAutoscalerStatusParams(args m
 	return params, nil
 }
 
-func decodeReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerParams(args map[string]string, r *http.Request) (ReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerParams, error) {
+func decodeReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerParams(args [2]string, r *http.Request) (ReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerParams, error) {
 	var (
 		params    ReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerParams
 		queryArgs = r.URL.Query()
 	)
 	// Decode path: name.
 	{
-		param := args["name"]
+		param := args[1]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "name",
@@ -38254,7 +38254,7 @@ func decodeReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerParams(args ma
 	}
 	// Decode path: namespace.
 	{
-		param := args["namespace"]
+		param := args[0]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "namespace",
@@ -38321,14 +38321,14 @@ func decodeReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerParams(args ma
 	return params, nil
 }
 
-func decodeReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatusParams(args map[string]string, r *http.Request) (ReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatusParams, error) {
+func decodeReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatusParams(args [2]string, r *http.Request) (ReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatusParams, error) {
 	var (
 		params    ReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatusParams
 		queryArgs = r.URL.Query()
 	)
 	// Decode path: name.
 	{
-		param := args["name"]
+		param := args[1]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "name",
@@ -38359,7 +38359,7 @@ func decodeReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatusParams(a
 	}
 	// Decode path: namespace.
 	{
-		param := args["namespace"]
+		param := args[0]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "namespace",
@@ -38426,14 +38426,14 @@ func decodeReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatusParams(a
 	return params, nil
 }
 
-func decodeReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerParams(args map[string]string, r *http.Request) (ReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerParams, error) {
+func decodeReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerParams(args [2]string, r *http.Request) (ReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerParams, error) {
 	var (
 		params    ReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerParams
 		queryArgs = r.URL.Query()
 	)
 	// Decode path: name.
 	{
-		param := args["name"]
+		param := args[1]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "name",
@@ -38464,7 +38464,7 @@ func decodeReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerParams(args ma
 	}
 	// Decode path: namespace.
 	{
-		param := args["namespace"]
+		param := args[0]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "namespace",
@@ -38531,14 +38531,14 @@ func decodeReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerParams(args ma
 	return params, nil
 }
 
-func decodeReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatusParams(args map[string]string, r *http.Request) (ReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatusParams, error) {
+func decodeReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatusParams(args [2]string, r *http.Request) (ReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatusParams, error) {
 	var (
 		params    ReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatusParams
 		queryArgs = r.URL.Query()
 	)
 	// Decode path: name.
 	{
-		param := args["name"]
+		param := args[1]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "name",
@@ -38569,7 +38569,7 @@ func decodeReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatusParams(a
 	}
 	// Decode path: namespace.
 	{
-		param := args["namespace"]
+		param := args[0]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "namespace",
@@ -38636,14 +38636,14 @@ func decodeReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatusParams(a
 	return params, nil
 }
 
-func decodeReadBatchV1NamespacedCronJobParams(args map[string]string, r *http.Request) (ReadBatchV1NamespacedCronJobParams, error) {
+func decodeReadBatchV1NamespacedCronJobParams(args [2]string, r *http.Request) (ReadBatchV1NamespacedCronJobParams, error) {
 	var (
 		params    ReadBatchV1NamespacedCronJobParams
 		queryArgs = r.URL.Query()
 	)
 	// Decode path: name.
 	{
-		param := args["name"]
+		param := args[1]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "name",
@@ -38674,7 +38674,7 @@ func decodeReadBatchV1NamespacedCronJobParams(args map[string]string, r *http.Re
 	}
 	// Decode path: namespace.
 	{
-		param := args["namespace"]
+		param := args[0]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "namespace",
@@ -38741,14 +38741,14 @@ func decodeReadBatchV1NamespacedCronJobParams(args map[string]string, r *http.Re
 	return params, nil
 }
 
-func decodeReadBatchV1NamespacedCronJobStatusParams(args map[string]string, r *http.Request) (ReadBatchV1NamespacedCronJobStatusParams, error) {
+func decodeReadBatchV1NamespacedCronJobStatusParams(args [2]string, r *http.Request) (ReadBatchV1NamespacedCronJobStatusParams, error) {
 	var (
 		params    ReadBatchV1NamespacedCronJobStatusParams
 		queryArgs = r.URL.Query()
 	)
 	// Decode path: name.
 	{
-		param := args["name"]
+		param := args[1]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "name",
@@ -38779,7 +38779,7 @@ func decodeReadBatchV1NamespacedCronJobStatusParams(args map[string]string, r *h
 	}
 	// Decode path: namespace.
 	{
-		param := args["namespace"]
+		param := args[0]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "namespace",
@@ -38846,14 +38846,14 @@ func decodeReadBatchV1NamespacedCronJobStatusParams(args map[string]string, r *h
 	return params, nil
 }
 
-func decodeReadBatchV1NamespacedJobParams(args map[string]string, r *http.Request) (ReadBatchV1NamespacedJobParams, error) {
+func decodeReadBatchV1NamespacedJobParams(args [2]string, r *http.Request) (ReadBatchV1NamespacedJobParams, error) {
 	var (
 		params    ReadBatchV1NamespacedJobParams
 		queryArgs = r.URL.Query()
 	)
 	// Decode path: name.
 	{
-		param := args["name"]
+		param := args[1]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "name",
@@ -38884,7 +38884,7 @@ func decodeReadBatchV1NamespacedJobParams(args map[string]string, r *http.Reques
 	}
 	// Decode path: namespace.
 	{
-		param := args["namespace"]
+		param := args[0]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "namespace",
@@ -38951,14 +38951,14 @@ func decodeReadBatchV1NamespacedJobParams(args map[string]string, r *http.Reques
 	return params, nil
 }
 
-func decodeReadBatchV1NamespacedJobStatusParams(args map[string]string, r *http.Request) (ReadBatchV1NamespacedJobStatusParams, error) {
+func decodeReadBatchV1NamespacedJobStatusParams(args [2]string, r *http.Request) (ReadBatchV1NamespacedJobStatusParams, error) {
 	var (
 		params    ReadBatchV1NamespacedJobStatusParams
 		queryArgs = r.URL.Query()
 	)
 	// Decode path: name.
 	{
-		param := args["name"]
+		param := args[1]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "name",
@@ -38989,7 +38989,7 @@ func decodeReadBatchV1NamespacedJobStatusParams(args map[string]string, r *http.
 	}
 	// Decode path: namespace.
 	{
-		param := args["namespace"]
+		param := args[0]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "namespace",
@@ -39056,14 +39056,14 @@ func decodeReadBatchV1NamespacedJobStatusParams(args map[string]string, r *http.
 	return params, nil
 }
 
-func decodeReadBatchV1beta1NamespacedCronJobParams(args map[string]string, r *http.Request) (ReadBatchV1beta1NamespacedCronJobParams, error) {
+func decodeReadBatchV1beta1NamespacedCronJobParams(args [2]string, r *http.Request) (ReadBatchV1beta1NamespacedCronJobParams, error) {
 	var (
 		params    ReadBatchV1beta1NamespacedCronJobParams
 		queryArgs = r.URL.Query()
 	)
 	// Decode path: name.
 	{
-		param := args["name"]
+		param := args[1]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "name",
@@ -39094,7 +39094,7 @@ func decodeReadBatchV1beta1NamespacedCronJobParams(args map[string]string, r *ht
 	}
 	// Decode path: namespace.
 	{
-		param := args["namespace"]
+		param := args[0]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "namespace",
@@ -39161,14 +39161,14 @@ func decodeReadBatchV1beta1NamespacedCronJobParams(args map[string]string, r *ht
 	return params, nil
 }
 
-func decodeReadBatchV1beta1NamespacedCronJobStatusParams(args map[string]string, r *http.Request) (ReadBatchV1beta1NamespacedCronJobStatusParams, error) {
+func decodeReadBatchV1beta1NamespacedCronJobStatusParams(args [2]string, r *http.Request) (ReadBatchV1beta1NamespacedCronJobStatusParams, error) {
 	var (
 		params    ReadBatchV1beta1NamespacedCronJobStatusParams
 		queryArgs = r.URL.Query()
 	)
 	// Decode path: name.
 	{
-		param := args["name"]
+		param := args[1]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "name",
@@ -39199,7 +39199,7 @@ func decodeReadBatchV1beta1NamespacedCronJobStatusParams(args map[string]string,
 	}
 	// Decode path: namespace.
 	{
-		param := args["namespace"]
+		param := args[0]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "namespace",
@@ -39266,14 +39266,14 @@ func decodeReadBatchV1beta1NamespacedCronJobStatusParams(args map[string]string,
 	return params, nil
 }
 
-func decodeReadCertificatesV1CertificateSigningRequestParams(args map[string]string, r *http.Request) (ReadCertificatesV1CertificateSigningRequestParams, error) {
+func decodeReadCertificatesV1CertificateSigningRequestParams(args [1]string, r *http.Request) (ReadCertificatesV1CertificateSigningRequestParams, error) {
 	var (
 		params    ReadCertificatesV1CertificateSigningRequestParams
 		queryArgs = r.URL.Query()
 	)
 	// Decode path: name.
 	{
-		param := args["name"]
+		param := args[0]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "name",
@@ -39340,14 +39340,14 @@ func decodeReadCertificatesV1CertificateSigningRequestParams(args map[string]str
 	return params, nil
 }
 
-func decodeReadCertificatesV1CertificateSigningRequestApprovalParams(args map[string]string, r *http.Request) (ReadCertificatesV1CertificateSigningRequestApprovalParams, error) {
+func decodeReadCertificatesV1CertificateSigningRequestApprovalParams(args [1]string, r *http.Request) (ReadCertificatesV1CertificateSigningRequestApprovalParams, error) {
 	var (
 		params    ReadCertificatesV1CertificateSigningRequestApprovalParams
 		queryArgs = r.URL.Query()
 	)
 	// Decode path: name.
 	{
-		param := args["name"]
+		param := args[0]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "name",
@@ -39414,14 +39414,14 @@ func decodeReadCertificatesV1CertificateSigningRequestApprovalParams(args map[st
 	return params, nil
 }
 
-func decodeReadCertificatesV1CertificateSigningRequestStatusParams(args map[string]string, r *http.Request) (ReadCertificatesV1CertificateSigningRequestStatusParams, error) {
+func decodeReadCertificatesV1CertificateSigningRequestStatusParams(args [1]string, r *http.Request) (ReadCertificatesV1CertificateSigningRequestStatusParams, error) {
 	var (
 		params    ReadCertificatesV1CertificateSigningRequestStatusParams
 		queryArgs = r.URL.Query()
 	)
 	// Decode path: name.
 	{
-		param := args["name"]
+		param := args[0]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "name",
@@ -39488,14 +39488,14 @@ func decodeReadCertificatesV1CertificateSigningRequestStatusParams(args map[stri
 	return params, nil
 }
 
-func decodeReadCoordinationV1NamespacedLeaseParams(args map[string]string, r *http.Request) (ReadCoordinationV1NamespacedLeaseParams, error) {
+func decodeReadCoordinationV1NamespacedLeaseParams(args [2]string, r *http.Request) (ReadCoordinationV1NamespacedLeaseParams, error) {
 	var (
 		params    ReadCoordinationV1NamespacedLeaseParams
 		queryArgs = r.URL.Query()
 	)
 	// Decode path: name.
 	{
-		param := args["name"]
+		param := args[1]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "name",
@@ -39526,7 +39526,7 @@ func decodeReadCoordinationV1NamespacedLeaseParams(args map[string]string, r *ht
 	}
 	// Decode path: namespace.
 	{
-		param := args["namespace"]
+		param := args[0]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "namespace",
@@ -39593,14 +39593,14 @@ func decodeReadCoordinationV1NamespacedLeaseParams(args map[string]string, r *ht
 	return params, nil
 }
 
-func decodeReadCoreV1ComponentStatusParams(args map[string]string, r *http.Request) (ReadCoreV1ComponentStatusParams, error) {
+func decodeReadCoreV1ComponentStatusParams(args [1]string, r *http.Request) (ReadCoreV1ComponentStatusParams, error) {
 	var (
 		params    ReadCoreV1ComponentStatusParams
 		queryArgs = r.URL.Query()
 	)
 	// Decode path: name.
 	{
-		param := args["name"]
+		param := args[0]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "name",
@@ -39667,14 +39667,14 @@ func decodeReadCoreV1ComponentStatusParams(args map[string]string, r *http.Reque
 	return params, nil
 }
 
-func decodeReadCoreV1NamespaceParams(args map[string]string, r *http.Request) (ReadCoreV1NamespaceParams, error) {
+func decodeReadCoreV1NamespaceParams(args [1]string, r *http.Request) (ReadCoreV1NamespaceParams, error) {
 	var (
 		params    ReadCoreV1NamespaceParams
 		queryArgs = r.URL.Query()
 	)
 	// Decode path: name.
 	{
-		param := args["name"]
+		param := args[0]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "name",
@@ -39741,14 +39741,14 @@ func decodeReadCoreV1NamespaceParams(args map[string]string, r *http.Request) (R
 	return params, nil
 }
 
-func decodeReadCoreV1NamespaceStatusParams(args map[string]string, r *http.Request) (ReadCoreV1NamespaceStatusParams, error) {
+func decodeReadCoreV1NamespaceStatusParams(args [1]string, r *http.Request) (ReadCoreV1NamespaceStatusParams, error) {
 	var (
 		params    ReadCoreV1NamespaceStatusParams
 		queryArgs = r.URL.Query()
 	)
 	// Decode path: name.
 	{
-		param := args["name"]
+		param := args[0]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "name",
@@ -39815,14 +39815,14 @@ func decodeReadCoreV1NamespaceStatusParams(args map[string]string, r *http.Reque
 	return params, nil
 }
 
-func decodeReadCoreV1NamespacedConfigMapParams(args map[string]string, r *http.Request) (ReadCoreV1NamespacedConfigMapParams, error) {
+func decodeReadCoreV1NamespacedConfigMapParams(args [2]string, r *http.Request) (ReadCoreV1NamespacedConfigMapParams, error) {
 	var (
 		params    ReadCoreV1NamespacedConfigMapParams
 		queryArgs = r.URL.Query()
 	)
 	// Decode path: name.
 	{
-		param := args["name"]
+		param := args[1]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "name",
@@ -39853,7 +39853,7 @@ func decodeReadCoreV1NamespacedConfigMapParams(args map[string]string, r *http.R
 	}
 	// Decode path: namespace.
 	{
-		param := args["namespace"]
+		param := args[0]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "namespace",
@@ -39920,14 +39920,14 @@ func decodeReadCoreV1NamespacedConfigMapParams(args map[string]string, r *http.R
 	return params, nil
 }
 
-func decodeReadCoreV1NamespacedEndpointsParams(args map[string]string, r *http.Request) (ReadCoreV1NamespacedEndpointsParams, error) {
+func decodeReadCoreV1NamespacedEndpointsParams(args [2]string, r *http.Request) (ReadCoreV1NamespacedEndpointsParams, error) {
 	var (
 		params    ReadCoreV1NamespacedEndpointsParams
 		queryArgs = r.URL.Query()
 	)
 	// Decode path: name.
 	{
-		param := args["name"]
+		param := args[1]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "name",
@@ -39958,7 +39958,7 @@ func decodeReadCoreV1NamespacedEndpointsParams(args map[string]string, r *http.R
 	}
 	// Decode path: namespace.
 	{
-		param := args["namespace"]
+		param := args[0]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "namespace",
@@ -40025,14 +40025,14 @@ func decodeReadCoreV1NamespacedEndpointsParams(args map[string]string, r *http.R
 	return params, nil
 }
 
-func decodeReadCoreV1NamespacedEventParams(args map[string]string, r *http.Request) (ReadCoreV1NamespacedEventParams, error) {
+func decodeReadCoreV1NamespacedEventParams(args [2]string, r *http.Request) (ReadCoreV1NamespacedEventParams, error) {
 	var (
 		params    ReadCoreV1NamespacedEventParams
 		queryArgs = r.URL.Query()
 	)
 	// Decode path: name.
 	{
-		param := args["name"]
+		param := args[1]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "name",
@@ -40063,7 +40063,7 @@ func decodeReadCoreV1NamespacedEventParams(args map[string]string, r *http.Reque
 	}
 	// Decode path: namespace.
 	{
-		param := args["namespace"]
+		param := args[0]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "namespace",
@@ -40130,14 +40130,14 @@ func decodeReadCoreV1NamespacedEventParams(args map[string]string, r *http.Reque
 	return params, nil
 }
 
-func decodeReadCoreV1NamespacedLimitRangeParams(args map[string]string, r *http.Request) (ReadCoreV1NamespacedLimitRangeParams, error) {
+func decodeReadCoreV1NamespacedLimitRangeParams(args [2]string, r *http.Request) (ReadCoreV1NamespacedLimitRangeParams, error) {
 	var (
 		params    ReadCoreV1NamespacedLimitRangeParams
 		queryArgs = r.URL.Query()
 	)
 	// Decode path: name.
 	{
-		param := args["name"]
+		param := args[1]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "name",
@@ -40168,7 +40168,7 @@ func decodeReadCoreV1NamespacedLimitRangeParams(args map[string]string, r *http.
 	}
 	// Decode path: namespace.
 	{
-		param := args["namespace"]
+		param := args[0]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "namespace",
@@ -40235,14 +40235,14 @@ func decodeReadCoreV1NamespacedLimitRangeParams(args map[string]string, r *http.
 	return params, nil
 }
 
-func decodeReadCoreV1NamespacedPersistentVolumeClaimParams(args map[string]string, r *http.Request) (ReadCoreV1NamespacedPersistentVolumeClaimParams, error) {
+func decodeReadCoreV1NamespacedPersistentVolumeClaimParams(args [2]string, r *http.Request) (ReadCoreV1NamespacedPersistentVolumeClaimParams, error) {
 	var (
 		params    ReadCoreV1NamespacedPersistentVolumeClaimParams
 		queryArgs = r.URL.Query()
 	)
 	// Decode path: name.
 	{
-		param := args["name"]
+		param := args[1]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "name",
@@ -40273,7 +40273,7 @@ func decodeReadCoreV1NamespacedPersistentVolumeClaimParams(args map[string]strin
 	}
 	// Decode path: namespace.
 	{
-		param := args["namespace"]
+		param := args[0]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "namespace",
@@ -40340,14 +40340,14 @@ func decodeReadCoreV1NamespacedPersistentVolumeClaimParams(args map[string]strin
 	return params, nil
 }
 
-func decodeReadCoreV1NamespacedPersistentVolumeClaimStatusParams(args map[string]string, r *http.Request) (ReadCoreV1NamespacedPersistentVolumeClaimStatusParams, error) {
+func decodeReadCoreV1NamespacedPersistentVolumeClaimStatusParams(args [2]string, r *http.Request) (ReadCoreV1NamespacedPersistentVolumeClaimStatusParams, error) {
 	var (
 		params    ReadCoreV1NamespacedPersistentVolumeClaimStatusParams
 		queryArgs = r.URL.Query()
 	)
 	// Decode path: name.
 	{
-		param := args["name"]
+		param := args[1]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "name",
@@ -40378,7 +40378,7 @@ func decodeReadCoreV1NamespacedPersistentVolumeClaimStatusParams(args map[string
 	}
 	// Decode path: namespace.
 	{
-		param := args["namespace"]
+		param := args[0]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "namespace",
@@ -40445,14 +40445,14 @@ func decodeReadCoreV1NamespacedPersistentVolumeClaimStatusParams(args map[string
 	return params, nil
 }
 
-func decodeReadCoreV1NamespacedPodParams(args map[string]string, r *http.Request) (ReadCoreV1NamespacedPodParams, error) {
+func decodeReadCoreV1NamespacedPodParams(args [2]string, r *http.Request) (ReadCoreV1NamespacedPodParams, error) {
 	var (
 		params    ReadCoreV1NamespacedPodParams
 		queryArgs = r.URL.Query()
 	)
 	// Decode path: name.
 	{
-		param := args["name"]
+		param := args[1]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "name",
@@ -40483,7 +40483,7 @@ func decodeReadCoreV1NamespacedPodParams(args map[string]string, r *http.Request
 	}
 	// Decode path: namespace.
 	{
-		param := args["namespace"]
+		param := args[0]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "namespace",
@@ -40550,14 +40550,14 @@ func decodeReadCoreV1NamespacedPodParams(args map[string]string, r *http.Request
 	return params, nil
 }
 
-func decodeReadCoreV1NamespacedPodEphemeralcontainersParams(args map[string]string, r *http.Request) (ReadCoreV1NamespacedPodEphemeralcontainersParams, error) {
+func decodeReadCoreV1NamespacedPodEphemeralcontainersParams(args [2]string, r *http.Request) (ReadCoreV1NamespacedPodEphemeralcontainersParams, error) {
 	var (
 		params    ReadCoreV1NamespacedPodEphemeralcontainersParams
 		queryArgs = r.URL.Query()
 	)
 	// Decode path: name.
 	{
-		param := args["name"]
+		param := args[1]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "name",
@@ -40588,7 +40588,7 @@ func decodeReadCoreV1NamespacedPodEphemeralcontainersParams(args map[string]stri
 	}
 	// Decode path: namespace.
 	{
-		param := args["namespace"]
+		param := args[0]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "namespace",
@@ -40655,7 +40655,7 @@ func decodeReadCoreV1NamespacedPodEphemeralcontainersParams(args map[string]stri
 	return params, nil
 }
 
-func decodeReadCoreV1NamespacedPodLogParams(args map[string]string, r *http.Request) (ReadCoreV1NamespacedPodLogParams, error) {
+func decodeReadCoreV1NamespacedPodLogParams(args [2]string, r *http.Request) (ReadCoreV1NamespacedPodLogParams, error) {
 	var (
 		params    ReadCoreV1NamespacedPodLogParams
 		queryArgs = r.URL.Query()
@@ -40802,7 +40802,7 @@ func decodeReadCoreV1NamespacedPodLogParams(args map[string]string, r *http.Requ
 	}
 	// Decode path: name.
 	{
-		param := args["name"]
+		param := args[1]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "name",
@@ -40833,7 +40833,7 @@ func decodeReadCoreV1NamespacedPodLogParams(args map[string]string, r *http.Requ
 	}
 	// Decode path: namespace.
 	{
-		param := args["namespace"]
+		param := args[0]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "namespace",
@@ -41040,14 +41040,14 @@ func decodeReadCoreV1NamespacedPodLogParams(args map[string]string, r *http.Requ
 	return params, nil
 }
 
-func decodeReadCoreV1NamespacedPodStatusParams(args map[string]string, r *http.Request) (ReadCoreV1NamespacedPodStatusParams, error) {
+func decodeReadCoreV1NamespacedPodStatusParams(args [2]string, r *http.Request) (ReadCoreV1NamespacedPodStatusParams, error) {
 	var (
 		params    ReadCoreV1NamespacedPodStatusParams
 		queryArgs = r.URL.Query()
 	)
 	// Decode path: name.
 	{
-		param := args["name"]
+		param := args[1]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "name",
@@ -41078,7 +41078,7 @@ func decodeReadCoreV1NamespacedPodStatusParams(args map[string]string, r *http.R
 	}
 	// Decode path: namespace.
 	{
-		param := args["namespace"]
+		param := args[0]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "namespace",
@@ -41145,14 +41145,14 @@ func decodeReadCoreV1NamespacedPodStatusParams(args map[string]string, r *http.R
 	return params, nil
 }
 
-func decodeReadCoreV1NamespacedPodTemplateParams(args map[string]string, r *http.Request) (ReadCoreV1NamespacedPodTemplateParams, error) {
+func decodeReadCoreV1NamespacedPodTemplateParams(args [2]string, r *http.Request) (ReadCoreV1NamespacedPodTemplateParams, error) {
 	var (
 		params    ReadCoreV1NamespacedPodTemplateParams
 		queryArgs = r.URL.Query()
 	)
 	// Decode path: name.
 	{
-		param := args["name"]
+		param := args[1]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "name",
@@ -41183,7 +41183,7 @@ func decodeReadCoreV1NamespacedPodTemplateParams(args map[string]string, r *http
 	}
 	// Decode path: namespace.
 	{
-		param := args["namespace"]
+		param := args[0]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "namespace",
@@ -41250,14 +41250,14 @@ func decodeReadCoreV1NamespacedPodTemplateParams(args map[string]string, r *http
 	return params, nil
 }
 
-func decodeReadCoreV1NamespacedReplicationControllerParams(args map[string]string, r *http.Request) (ReadCoreV1NamespacedReplicationControllerParams, error) {
+func decodeReadCoreV1NamespacedReplicationControllerParams(args [2]string, r *http.Request) (ReadCoreV1NamespacedReplicationControllerParams, error) {
 	var (
 		params    ReadCoreV1NamespacedReplicationControllerParams
 		queryArgs = r.URL.Query()
 	)
 	// Decode path: name.
 	{
-		param := args["name"]
+		param := args[1]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "name",
@@ -41288,7 +41288,7 @@ func decodeReadCoreV1NamespacedReplicationControllerParams(args map[string]strin
 	}
 	// Decode path: namespace.
 	{
-		param := args["namespace"]
+		param := args[0]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "namespace",
@@ -41355,14 +41355,14 @@ func decodeReadCoreV1NamespacedReplicationControllerParams(args map[string]strin
 	return params, nil
 }
 
-func decodeReadCoreV1NamespacedReplicationControllerScaleParams(args map[string]string, r *http.Request) (ReadCoreV1NamespacedReplicationControllerScaleParams, error) {
+func decodeReadCoreV1NamespacedReplicationControllerScaleParams(args [2]string, r *http.Request) (ReadCoreV1NamespacedReplicationControllerScaleParams, error) {
 	var (
 		params    ReadCoreV1NamespacedReplicationControllerScaleParams
 		queryArgs = r.URL.Query()
 	)
 	// Decode path: name.
 	{
-		param := args["name"]
+		param := args[1]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "name",
@@ -41393,7 +41393,7 @@ func decodeReadCoreV1NamespacedReplicationControllerScaleParams(args map[string]
 	}
 	// Decode path: namespace.
 	{
-		param := args["namespace"]
+		param := args[0]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "namespace",
@@ -41460,14 +41460,14 @@ func decodeReadCoreV1NamespacedReplicationControllerScaleParams(args map[string]
 	return params, nil
 }
 
-func decodeReadCoreV1NamespacedReplicationControllerStatusParams(args map[string]string, r *http.Request) (ReadCoreV1NamespacedReplicationControllerStatusParams, error) {
+func decodeReadCoreV1NamespacedReplicationControllerStatusParams(args [2]string, r *http.Request) (ReadCoreV1NamespacedReplicationControllerStatusParams, error) {
 	var (
 		params    ReadCoreV1NamespacedReplicationControllerStatusParams
 		queryArgs = r.URL.Query()
 	)
 	// Decode path: name.
 	{
-		param := args["name"]
+		param := args[1]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "name",
@@ -41498,7 +41498,7 @@ func decodeReadCoreV1NamespacedReplicationControllerStatusParams(args map[string
 	}
 	// Decode path: namespace.
 	{
-		param := args["namespace"]
+		param := args[0]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "namespace",
@@ -41565,14 +41565,14 @@ func decodeReadCoreV1NamespacedReplicationControllerStatusParams(args map[string
 	return params, nil
 }
 
-func decodeReadCoreV1NamespacedResourceQuotaParams(args map[string]string, r *http.Request) (ReadCoreV1NamespacedResourceQuotaParams, error) {
+func decodeReadCoreV1NamespacedResourceQuotaParams(args [2]string, r *http.Request) (ReadCoreV1NamespacedResourceQuotaParams, error) {
 	var (
 		params    ReadCoreV1NamespacedResourceQuotaParams
 		queryArgs = r.URL.Query()
 	)
 	// Decode path: name.
 	{
-		param := args["name"]
+		param := args[1]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "name",
@@ -41603,7 +41603,7 @@ func decodeReadCoreV1NamespacedResourceQuotaParams(args map[string]string, r *ht
 	}
 	// Decode path: namespace.
 	{
-		param := args["namespace"]
+		param := args[0]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "namespace",
@@ -41670,14 +41670,14 @@ func decodeReadCoreV1NamespacedResourceQuotaParams(args map[string]string, r *ht
 	return params, nil
 }
 
-func decodeReadCoreV1NamespacedResourceQuotaStatusParams(args map[string]string, r *http.Request) (ReadCoreV1NamespacedResourceQuotaStatusParams, error) {
+func decodeReadCoreV1NamespacedResourceQuotaStatusParams(args [2]string, r *http.Request) (ReadCoreV1NamespacedResourceQuotaStatusParams, error) {
 	var (
 		params    ReadCoreV1NamespacedResourceQuotaStatusParams
 		queryArgs = r.URL.Query()
 	)
 	// Decode path: name.
 	{
-		param := args["name"]
+		param := args[1]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "name",
@@ -41708,7 +41708,7 @@ func decodeReadCoreV1NamespacedResourceQuotaStatusParams(args map[string]string,
 	}
 	// Decode path: namespace.
 	{
-		param := args["namespace"]
+		param := args[0]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "namespace",
@@ -41775,14 +41775,14 @@ func decodeReadCoreV1NamespacedResourceQuotaStatusParams(args map[string]string,
 	return params, nil
 }
 
-func decodeReadCoreV1NamespacedSecretParams(args map[string]string, r *http.Request) (ReadCoreV1NamespacedSecretParams, error) {
+func decodeReadCoreV1NamespacedSecretParams(args [2]string, r *http.Request) (ReadCoreV1NamespacedSecretParams, error) {
 	var (
 		params    ReadCoreV1NamespacedSecretParams
 		queryArgs = r.URL.Query()
 	)
 	// Decode path: name.
 	{
-		param := args["name"]
+		param := args[1]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "name",
@@ -41813,7 +41813,7 @@ func decodeReadCoreV1NamespacedSecretParams(args map[string]string, r *http.Requ
 	}
 	// Decode path: namespace.
 	{
-		param := args["namespace"]
+		param := args[0]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "namespace",
@@ -41880,14 +41880,14 @@ func decodeReadCoreV1NamespacedSecretParams(args map[string]string, r *http.Requ
 	return params, nil
 }
 
-func decodeReadCoreV1NamespacedServiceParams(args map[string]string, r *http.Request) (ReadCoreV1NamespacedServiceParams, error) {
+func decodeReadCoreV1NamespacedServiceParams(args [2]string, r *http.Request) (ReadCoreV1NamespacedServiceParams, error) {
 	var (
 		params    ReadCoreV1NamespacedServiceParams
 		queryArgs = r.URL.Query()
 	)
 	// Decode path: name.
 	{
-		param := args["name"]
+		param := args[1]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "name",
@@ -41918,7 +41918,7 @@ func decodeReadCoreV1NamespacedServiceParams(args map[string]string, r *http.Req
 	}
 	// Decode path: namespace.
 	{
-		param := args["namespace"]
+		param := args[0]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "namespace",
@@ -41985,14 +41985,14 @@ func decodeReadCoreV1NamespacedServiceParams(args map[string]string, r *http.Req
 	return params, nil
 }
 
-func decodeReadCoreV1NamespacedServiceAccountParams(args map[string]string, r *http.Request) (ReadCoreV1NamespacedServiceAccountParams, error) {
+func decodeReadCoreV1NamespacedServiceAccountParams(args [2]string, r *http.Request) (ReadCoreV1NamespacedServiceAccountParams, error) {
 	var (
 		params    ReadCoreV1NamespacedServiceAccountParams
 		queryArgs = r.URL.Query()
 	)
 	// Decode path: name.
 	{
-		param := args["name"]
+		param := args[1]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "name",
@@ -42023,7 +42023,7 @@ func decodeReadCoreV1NamespacedServiceAccountParams(args map[string]string, r *h
 	}
 	// Decode path: namespace.
 	{
-		param := args["namespace"]
+		param := args[0]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "namespace",
@@ -42090,14 +42090,14 @@ func decodeReadCoreV1NamespacedServiceAccountParams(args map[string]string, r *h
 	return params, nil
 }
 
-func decodeReadCoreV1NamespacedServiceStatusParams(args map[string]string, r *http.Request) (ReadCoreV1NamespacedServiceStatusParams, error) {
+func decodeReadCoreV1NamespacedServiceStatusParams(args [2]string, r *http.Request) (ReadCoreV1NamespacedServiceStatusParams, error) {
 	var (
 		params    ReadCoreV1NamespacedServiceStatusParams
 		queryArgs = r.URL.Query()
 	)
 	// Decode path: name.
 	{
-		param := args["name"]
+		param := args[1]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "name",
@@ -42128,7 +42128,7 @@ func decodeReadCoreV1NamespacedServiceStatusParams(args map[string]string, r *ht
 	}
 	// Decode path: namespace.
 	{
-		param := args["namespace"]
+		param := args[0]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "namespace",
@@ -42195,14 +42195,14 @@ func decodeReadCoreV1NamespacedServiceStatusParams(args map[string]string, r *ht
 	return params, nil
 }
 
-func decodeReadCoreV1NodeParams(args map[string]string, r *http.Request) (ReadCoreV1NodeParams, error) {
+func decodeReadCoreV1NodeParams(args [1]string, r *http.Request) (ReadCoreV1NodeParams, error) {
 	var (
 		params    ReadCoreV1NodeParams
 		queryArgs = r.URL.Query()
 	)
 	// Decode path: name.
 	{
-		param := args["name"]
+		param := args[0]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "name",
@@ -42269,14 +42269,14 @@ func decodeReadCoreV1NodeParams(args map[string]string, r *http.Request) (ReadCo
 	return params, nil
 }
 
-func decodeReadCoreV1NodeStatusParams(args map[string]string, r *http.Request) (ReadCoreV1NodeStatusParams, error) {
+func decodeReadCoreV1NodeStatusParams(args [1]string, r *http.Request) (ReadCoreV1NodeStatusParams, error) {
 	var (
 		params    ReadCoreV1NodeStatusParams
 		queryArgs = r.URL.Query()
 	)
 	// Decode path: name.
 	{
-		param := args["name"]
+		param := args[0]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "name",
@@ -42343,14 +42343,14 @@ func decodeReadCoreV1NodeStatusParams(args map[string]string, r *http.Request) (
 	return params, nil
 }
 
-func decodeReadCoreV1PersistentVolumeParams(args map[string]string, r *http.Request) (ReadCoreV1PersistentVolumeParams, error) {
+func decodeReadCoreV1PersistentVolumeParams(args [1]string, r *http.Request) (ReadCoreV1PersistentVolumeParams, error) {
 	var (
 		params    ReadCoreV1PersistentVolumeParams
 		queryArgs = r.URL.Query()
 	)
 	// Decode path: name.
 	{
-		param := args["name"]
+		param := args[0]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "name",
@@ -42417,14 +42417,14 @@ func decodeReadCoreV1PersistentVolumeParams(args map[string]string, r *http.Requ
 	return params, nil
 }
 
-func decodeReadCoreV1PersistentVolumeStatusParams(args map[string]string, r *http.Request) (ReadCoreV1PersistentVolumeStatusParams, error) {
+func decodeReadCoreV1PersistentVolumeStatusParams(args [1]string, r *http.Request) (ReadCoreV1PersistentVolumeStatusParams, error) {
 	var (
 		params    ReadCoreV1PersistentVolumeStatusParams
 		queryArgs = r.URL.Query()
 	)
 	// Decode path: name.
 	{
-		param := args["name"]
+		param := args[0]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "name",
@@ -42491,14 +42491,14 @@ func decodeReadCoreV1PersistentVolumeStatusParams(args map[string]string, r *htt
 	return params, nil
 }
 
-func decodeReadDiscoveryV1NamespacedEndpointSliceParams(args map[string]string, r *http.Request) (ReadDiscoveryV1NamespacedEndpointSliceParams, error) {
+func decodeReadDiscoveryV1NamespacedEndpointSliceParams(args [2]string, r *http.Request) (ReadDiscoveryV1NamespacedEndpointSliceParams, error) {
 	var (
 		params    ReadDiscoveryV1NamespacedEndpointSliceParams
 		queryArgs = r.URL.Query()
 	)
 	// Decode path: name.
 	{
-		param := args["name"]
+		param := args[1]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "name",
@@ -42529,7 +42529,7 @@ func decodeReadDiscoveryV1NamespacedEndpointSliceParams(args map[string]string, 
 	}
 	// Decode path: namespace.
 	{
-		param := args["namespace"]
+		param := args[0]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "namespace",
@@ -42596,14 +42596,14 @@ func decodeReadDiscoveryV1NamespacedEndpointSliceParams(args map[string]string, 
 	return params, nil
 }
 
-func decodeReadDiscoveryV1beta1NamespacedEndpointSliceParams(args map[string]string, r *http.Request) (ReadDiscoveryV1beta1NamespacedEndpointSliceParams, error) {
+func decodeReadDiscoveryV1beta1NamespacedEndpointSliceParams(args [2]string, r *http.Request) (ReadDiscoveryV1beta1NamespacedEndpointSliceParams, error) {
 	var (
 		params    ReadDiscoveryV1beta1NamespacedEndpointSliceParams
 		queryArgs = r.URL.Query()
 	)
 	// Decode path: name.
 	{
-		param := args["name"]
+		param := args[1]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "name",
@@ -42634,7 +42634,7 @@ func decodeReadDiscoveryV1beta1NamespacedEndpointSliceParams(args map[string]str
 	}
 	// Decode path: namespace.
 	{
-		param := args["namespace"]
+		param := args[0]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "namespace",
@@ -42701,14 +42701,14 @@ func decodeReadDiscoveryV1beta1NamespacedEndpointSliceParams(args map[string]str
 	return params, nil
 }
 
-func decodeReadEventsV1NamespacedEventParams(args map[string]string, r *http.Request) (ReadEventsV1NamespacedEventParams, error) {
+func decodeReadEventsV1NamespacedEventParams(args [2]string, r *http.Request) (ReadEventsV1NamespacedEventParams, error) {
 	var (
 		params    ReadEventsV1NamespacedEventParams
 		queryArgs = r.URL.Query()
 	)
 	// Decode path: name.
 	{
-		param := args["name"]
+		param := args[1]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "name",
@@ -42739,7 +42739,7 @@ func decodeReadEventsV1NamespacedEventParams(args map[string]string, r *http.Req
 	}
 	// Decode path: namespace.
 	{
-		param := args["namespace"]
+		param := args[0]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "namespace",
@@ -42806,14 +42806,14 @@ func decodeReadEventsV1NamespacedEventParams(args map[string]string, r *http.Req
 	return params, nil
 }
 
-func decodeReadEventsV1beta1NamespacedEventParams(args map[string]string, r *http.Request) (ReadEventsV1beta1NamespacedEventParams, error) {
+func decodeReadEventsV1beta1NamespacedEventParams(args [2]string, r *http.Request) (ReadEventsV1beta1NamespacedEventParams, error) {
 	var (
 		params    ReadEventsV1beta1NamespacedEventParams
 		queryArgs = r.URL.Query()
 	)
 	// Decode path: name.
 	{
-		param := args["name"]
+		param := args[1]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "name",
@@ -42844,7 +42844,7 @@ func decodeReadEventsV1beta1NamespacedEventParams(args map[string]string, r *htt
 	}
 	// Decode path: namespace.
 	{
-		param := args["namespace"]
+		param := args[0]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "namespace",
@@ -42911,14 +42911,14 @@ func decodeReadEventsV1beta1NamespacedEventParams(args map[string]string, r *htt
 	return params, nil
 }
 
-func decodeReadFlowcontrolApiserverV1beta1FlowSchemaParams(args map[string]string, r *http.Request) (ReadFlowcontrolApiserverV1beta1FlowSchemaParams, error) {
+func decodeReadFlowcontrolApiserverV1beta1FlowSchemaParams(args [1]string, r *http.Request) (ReadFlowcontrolApiserverV1beta1FlowSchemaParams, error) {
 	var (
 		params    ReadFlowcontrolApiserverV1beta1FlowSchemaParams
 		queryArgs = r.URL.Query()
 	)
 	// Decode path: name.
 	{
-		param := args["name"]
+		param := args[0]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "name",
@@ -42985,14 +42985,14 @@ func decodeReadFlowcontrolApiserverV1beta1FlowSchemaParams(args map[string]strin
 	return params, nil
 }
 
-func decodeReadFlowcontrolApiserverV1beta1FlowSchemaStatusParams(args map[string]string, r *http.Request) (ReadFlowcontrolApiserverV1beta1FlowSchemaStatusParams, error) {
+func decodeReadFlowcontrolApiserverV1beta1FlowSchemaStatusParams(args [1]string, r *http.Request) (ReadFlowcontrolApiserverV1beta1FlowSchemaStatusParams, error) {
 	var (
 		params    ReadFlowcontrolApiserverV1beta1FlowSchemaStatusParams
 		queryArgs = r.URL.Query()
 	)
 	// Decode path: name.
 	{
-		param := args["name"]
+		param := args[0]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "name",
@@ -43059,14 +43059,14 @@ func decodeReadFlowcontrolApiserverV1beta1FlowSchemaStatusParams(args map[string
 	return params, nil
 }
 
-func decodeReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationParams(args map[string]string, r *http.Request) (ReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationParams, error) {
+func decodeReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationParams(args [1]string, r *http.Request) (ReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationParams, error) {
 	var (
 		params    ReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationParams
 		queryArgs = r.URL.Query()
 	)
 	// Decode path: name.
 	{
-		param := args["name"]
+		param := args[0]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "name",
@@ -43133,14 +43133,14 @@ func decodeReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationParams(args 
 	return params, nil
 }
 
-func decodeReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationStatusParams(args map[string]string, r *http.Request) (ReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationStatusParams, error) {
+func decodeReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationStatusParams(args [1]string, r *http.Request) (ReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationStatusParams, error) {
 	var (
 		params    ReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationStatusParams
 		queryArgs = r.URL.Query()
 	)
 	// Decode path: name.
 	{
-		param := args["name"]
+		param := args[0]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "name",
@@ -43207,14 +43207,14 @@ func decodeReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationStatusParams
 	return params, nil
 }
 
-func decodeReadFlowcontrolApiserverV1beta2FlowSchemaParams(args map[string]string, r *http.Request) (ReadFlowcontrolApiserverV1beta2FlowSchemaParams, error) {
+func decodeReadFlowcontrolApiserverV1beta2FlowSchemaParams(args [1]string, r *http.Request) (ReadFlowcontrolApiserverV1beta2FlowSchemaParams, error) {
 	var (
 		params    ReadFlowcontrolApiserverV1beta2FlowSchemaParams
 		queryArgs = r.URL.Query()
 	)
 	// Decode path: name.
 	{
-		param := args["name"]
+		param := args[0]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "name",
@@ -43281,14 +43281,14 @@ func decodeReadFlowcontrolApiserverV1beta2FlowSchemaParams(args map[string]strin
 	return params, nil
 }
 
-func decodeReadFlowcontrolApiserverV1beta2FlowSchemaStatusParams(args map[string]string, r *http.Request) (ReadFlowcontrolApiserverV1beta2FlowSchemaStatusParams, error) {
+func decodeReadFlowcontrolApiserverV1beta2FlowSchemaStatusParams(args [1]string, r *http.Request) (ReadFlowcontrolApiserverV1beta2FlowSchemaStatusParams, error) {
 	var (
 		params    ReadFlowcontrolApiserverV1beta2FlowSchemaStatusParams
 		queryArgs = r.URL.Query()
 	)
 	// Decode path: name.
 	{
-		param := args["name"]
+		param := args[0]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "name",
@@ -43355,14 +43355,14 @@ func decodeReadFlowcontrolApiserverV1beta2FlowSchemaStatusParams(args map[string
 	return params, nil
 }
 
-func decodeReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationParams(args map[string]string, r *http.Request) (ReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationParams, error) {
+func decodeReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationParams(args [1]string, r *http.Request) (ReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationParams, error) {
 	var (
 		params    ReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationParams
 		queryArgs = r.URL.Query()
 	)
 	// Decode path: name.
 	{
-		param := args["name"]
+		param := args[0]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "name",
@@ -43429,14 +43429,14 @@ func decodeReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationParams(args 
 	return params, nil
 }
 
-func decodeReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationStatusParams(args map[string]string, r *http.Request) (ReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationStatusParams, error) {
+func decodeReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationStatusParams(args [1]string, r *http.Request) (ReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationStatusParams, error) {
 	var (
 		params    ReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationStatusParams
 		queryArgs = r.URL.Query()
 	)
 	// Decode path: name.
 	{
-		param := args["name"]
+		param := args[0]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "name",
@@ -43503,14 +43503,14 @@ func decodeReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationStatusParams
 	return params, nil
 }
 
-func decodeReadInternalApiserverV1alpha1StorageVersionParams(args map[string]string, r *http.Request) (ReadInternalApiserverV1alpha1StorageVersionParams, error) {
+func decodeReadInternalApiserverV1alpha1StorageVersionParams(args [1]string, r *http.Request) (ReadInternalApiserverV1alpha1StorageVersionParams, error) {
 	var (
 		params    ReadInternalApiserverV1alpha1StorageVersionParams
 		queryArgs = r.URL.Query()
 	)
 	// Decode path: name.
 	{
-		param := args["name"]
+		param := args[0]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "name",
@@ -43577,14 +43577,14 @@ func decodeReadInternalApiserverV1alpha1StorageVersionParams(args map[string]str
 	return params, nil
 }
 
-func decodeReadInternalApiserverV1alpha1StorageVersionStatusParams(args map[string]string, r *http.Request) (ReadInternalApiserverV1alpha1StorageVersionStatusParams, error) {
+func decodeReadInternalApiserverV1alpha1StorageVersionStatusParams(args [1]string, r *http.Request) (ReadInternalApiserverV1alpha1StorageVersionStatusParams, error) {
 	var (
 		params    ReadInternalApiserverV1alpha1StorageVersionStatusParams
 		queryArgs = r.URL.Query()
 	)
 	// Decode path: name.
 	{
-		param := args["name"]
+		param := args[0]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "name",
@@ -43651,14 +43651,14 @@ func decodeReadInternalApiserverV1alpha1StorageVersionStatusParams(args map[stri
 	return params, nil
 }
 
-func decodeReadNetworkingV1IngressClassParams(args map[string]string, r *http.Request) (ReadNetworkingV1IngressClassParams, error) {
+func decodeReadNetworkingV1IngressClassParams(args [1]string, r *http.Request) (ReadNetworkingV1IngressClassParams, error) {
 	var (
 		params    ReadNetworkingV1IngressClassParams
 		queryArgs = r.URL.Query()
 	)
 	// Decode path: name.
 	{
-		param := args["name"]
+		param := args[0]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "name",
@@ -43725,14 +43725,14 @@ func decodeReadNetworkingV1IngressClassParams(args map[string]string, r *http.Re
 	return params, nil
 }
 
-func decodeReadNetworkingV1NamespacedIngressParams(args map[string]string, r *http.Request) (ReadNetworkingV1NamespacedIngressParams, error) {
+func decodeReadNetworkingV1NamespacedIngressParams(args [2]string, r *http.Request) (ReadNetworkingV1NamespacedIngressParams, error) {
 	var (
 		params    ReadNetworkingV1NamespacedIngressParams
 		queryArgs = r.URL.Query()
 	)
 	// Decode path: name.
 	{
-		param := args["name"]
+		param := args[1]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "name",
@@ -43763,7 +43763,7 @@ func decodeReadNetworkingV1NamespacedIngressParams(args map[string]string, r *ht
 	}
 	// Decode path: namespace.
 	{
-		param := args["namespace"]
+		param := args[0]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "namespace",
@@ -43830,14 +43830,14 @@ func decodeReadNetworkingV1NamespacedIngressParams(args map[string]string, r *ht
 	return params, nil
 }
 
-func decodeReadNetworkingV1NamespacedIngressStatusParams(args map[string]string, r *http.Request) (ReadNetworkingV1NamespacedIngressStatusParams, error) {
+func decodeReadNetworkingV1NamespacedIngressStatusParams(args [2]string, r *http.Request) (ReadNetworkingV1NamespacedIngressStatusParams, error) {
 	var (
 		params    ReadNetworkingV1NamespacedIngressStatusParams
 		queryArgs = r.URL.Query()
 	)
 	// Decode path: name.
 	{
-		param := args["name"]
+		param := args[1]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "name",
@@ -43868,7 +43868,7 @@ func decodeReadNetworkingV1NamespacedIngressStatusParams(args map[string]string,
 	}
 	// Decode path: namespace.
 	{
-		param := args["namespace"]
+		param := args[0]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "namespace",
@@ -43935,14 +43935,14 @@ func decodeReadNetworkingV1NamespacedIngressStatusParams(args map[string]string,
 	return params, nil
 }
 
-func decodeReadNetworkingV1NamespacedNetworkPolicyParams(args map[string]string, r *http.Request) (ReadNetworkingV1NamespacedNetworkPolicyParams, error) {
+func decodeReadNetworkingV1NamespacedNetworkPolicyParams(args [2]string, r *http.Request) (ReadNetworkingV1NamespacedNetworkPolicyParams, error) {
 	var (
 		params    ReadNetworkingV1NamespacedNetworkPolicyParams
 		queryArgs = r.URL.Query()
 	)
 	// Decode path: name.
 	{
-		param := args["name"]
+		param := args[1]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "name",
@@ -43973,7 +43973,7 @@ func decodeReadNetworkingV1NamespacedNetworkPolicyParams(args map[string]string,
 	}
 	// Decode path: namespace.
 	{
-		param := args["namespace"]
+		param := args[0]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "namespace",
@@ -44040,14 +44040,14 @@ func decodeReadNetworkingV1NamespacedNetworkPolicyParams(args map[string]string,
 	return params, nil
 }
 
-func decodeReadNodeV1RuntimeClassParams(args map[string]string, r *http.Request) (ReadNodeV1RuntimeClassParams, error) {
+func decodeReadNodeV1RuntimeClassParams(args [1]string, r *http.Request) (ReadNodeV1RuntimeClassParams, error) {
 	var (
 		params    ReadNodeV1RuntimeClassParams
 		queryArgs = r.URL.Query()
 	)
 	// Decode path: name.
 	{
-		param := args["name"]
+		param := args[0]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "name",
@@ -44114,14 +44114,14 @@ func decodeReadNodeV1RuntimeClassParams(args map[string]string, r *http.Request)
 	return params, nil
 }
 
-func decodeReadNodeV1alpha1RuntimeClassParams(args map[string]string, r *http.Request) (ReadNodeV1alpha1RuntimeClassParams, error) {
+func decodeReadNodeV1alpha1RuntimeClassParams(args [1]string, r *http.Request) (ReadNodeV1alpha1RuntimeClassParams, error) {
 	var (
 		params    ReadNodeV1alpha1RuntimeClassParams
 		queryArgs = r.URL.Query()
 	)
 	// Decode path: name.
 	{
-		param := args["name"]
+		param := args[0]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "name",
@@ -44188,14 +44188,14 @@ func decodeReadNodeV1alpha1RuntimeClassParams(args map[string]string, r *http.Re
 	return params, nil
 }
 
-func decodeReadNodeV1beta1RuntimeClassParams(args map[string]string, r *http.Request) (ReadNodeV1beta1RuntimeClassParams, error) {
+func decodeReadNodeV1beta1RuntimeClassParams(args [1]string, r *http.Request) (ReadNodeV1beta1RuntimeClassParams, error) {
 	var (
 		params    ReadNodeV1beta1RuntimeClassParams
 		queryArgs = r.URL.Query()
 	)
 	// Decode path: name.
 	{
-		param := args["name"]
+		param := args[0]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "name",
@@ -44262,14 +44262,14 @@ func decodeReadNodeV1beta1RuntimeClassParams(args map[string]string, r *http.Req
 	return params, nil
 }
 
-func decodeReadPolicyV1NamespacedPodDisruptionBudgetParams(args map[string]string, r *http.Request) (ReadPolicyV1NamespacedPodDisruptionBudgetParams, error) {
+func decodeReadPolicyV1NamespacedPodDisruptionBudgetParams(args [2]string, r *http.Request) (ReadPolicyV1NamespacedPodDisruptionBudgetParams, error) {
 	var (
 		params    ReadPolicyV1NamespacedPodDisruptionBudgetParams
 		queryArgs = r.URL.Query()
 	)
 	// Decode path: name.
 	{
-		param := args["name"]
+		param := args[1]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "name",
@@ -44300,7 +44300,7 @@ func decodeReadPolicyV1NamespacedPodDisruptionBudgetParams(args map[string]strin
 	}
 	// Decode path: namespace.
 	{
-		param := args["namespace"]
+		param := args[0]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "namespace",
@@ -44367,14 +44367,14 @@ func decodeReadPolicyV1NamespacedPodDisruptionBudgetParams(args map[string]strin
 	return params, nil
 }
 
-func decodeReadPolicyV1NamespacedPodDisruptionBudgetStatusParams(args map[string]string, r *http.Request) (ReadPolicyV1NamespacedPodDisruptionBudgetStatusParams, error) {
+func decodeReadPolicyV1NamespacedPodDisruptionBudgetStatusParams(args [2]string, r *http.Request) (ReadPolicyV1NamespacedPodDisruptionBudgetStatusParams, error) {
 	var (
 		params    ReadPolicyV1NamespacedPodDisruptionBudgetStatusParams
 		queryArgs = r.URL.Query()
 	)
 	// Decode path: name.
 	{
-		param := args["name"]
+		param := args[1]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "name",
@@ -44405,7 +44405,7 @@ func decodeReadPolicyV1NamespacedPodDisruptionBudgetStatusParams(args map[string
 	}
 	// Decode path: namespace.
 	{
-		param := args["namespace"]
+		param := args[0]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "namespace",
@@ -44472,14 +44472,14 @@ func decodeReadPolicyV1NamespacedPodDisruptionBudgetStatusParams(args map[string
 	return params, nil
 }
 
-func decodeReadPolicyV1beta1NamespacedPodDisruptionBudgetParams(args map[string]string, r *http.Request) (ReadPolicyV1beta1NamespacedPodDisruptionBudgetParams, error) {
+func decodeReadPolicyV1beta1NamespacedPodDisruptionBudgetParams(args [2]string, r *http.Request) (ReadPolicyV1beta1NamespacedPodDisruptionBudgetParams, error) {
 	var (
 		params    ReadPolicyV1beta1NamespacedPodDisruptionBudgetParams
 		queryArgs = r.URL.Query()
 	)
 	// Decode path: name.
 	{
-		param := args["name"]
+		param := args[1]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "name",
@@ -44510,7 +44510,7 @@ func decodeReadPolicyV1beta1NamespacedPodDisruptionBudgetParams(args map[string]
 	}
 	// Decode path: namespace.
 	{
-		param := args["namespace"]
+		param := args[0]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "namespace",
@@ -44577,14 +44577,14 @@ func decodeReadPolicyV1beta1NamespacedPodDisruptionBudgetParams(args map[string]
 	return params, nil
 }
 
-func decodeReadPolicyV1beta1NamespacedPodDisruptionBudgetStatusParams(args map[string]string, r *http.Request) (ReadPolicyV1beta1NamespacedPodDisruptionBudgetStatusParams, error) {
+func decodeReadPolicyV1beta1NamespacedPodDisruptionBudgetStatusParams(args [2]string, r *http.Request) (ReadPolicyV1beta1NamespacedPodDisruptionBudgetStatusParams, error) {
 	var (
 		params    ReadPolicyV1beta1NamespacedPodDisruptionBudgetStatusParams
 		queryArgs = r.URL.Query()
 	)
 	// Decode path: name.
 	{
-		param := args["name"]
+		param := args[1]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "name",
@@ -44615,7 +44615,7 @@ func decodeReadPolicyV1beta1NamespacedPodDisruptionBudgetStatusParams(args map[s
 	}
 	// Decode path: namespace.
 	{
-		param := args["namespace"]
+		param := args[0]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "namespace",
@@ -44682,14 +44682,14 @@ func decodeReadPolicyV1beta1NamespacedPodDisruptionBudgetStatusParams(args map[s
 	return params, nil
 }
 
-func decodeReadPolicyV1beta1PodSecurityPolicyParams(args map[string]string, r *http.Request) (ReadPolicyV1beta1PodSecurityPolicyParams, error) {
+func decodeReadPolicyV1beta1PodSecurityPolicyParams(args [1]string, r *http.Request) (ReadPolicyV1beta1PodSecurityPolicyParams, error) {
 	var (
 		params    ReadPolicyV1beta1PodSecurityPolicyParams
 		queryArgs = r.URL.Query()
 	)
 	// Decode path: name.
 	{
-		param := args["name"]
+		param := args[0]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "name",
@@ -44756,14 +44756,14 @@ func decodeReadPolicyV1beta1PodSecurityPolicyParams(args map[string]string, r *h
 	return params, nil
 }
 
-func decodeReadRbacAuthorizationV1ClusterRoleParams(args map[string]string, r *http.Request) (ReadRbacAuthorizationV1ClusterRoleParams, error) {
+func decodeReadRbacAuthorizationV1ClusterRoleParams(args [1]string, r *http.Request) (ReadRbacAuthorizationV1ClusterRoleParams, error) {
 	var (
 		params    ReadRbacAuthorizationV1ClusterRoleParams
 		queryArgs = r.URL.Query()
 	)
 	// Decode path: name.
 	{
-		param := args["name"]
+		param := args[0]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "name",
@@ -44830,14 +44830,14 @@ func decodeReadRbacAuthorizationV1ClusterRoleParams(args map[string]string, r *h
 	return params, nil
 }
 
-func decodeReadRbacAuthorizationV1ClusterRoleBindingParams(args map[string]string, r *http.Request) (ReadRbacAuthorizationV1ClusterRoleBindingParams, error) {
+func decodeReadRbacAuthorizationV1ClusterRoleBindingParams(args [1]string, r *http.Request) (ReadRbacAuthorizationV1ClusterRoleBindingParams, error) {
 	var (
 		params    ReadRbacAuthorizationV1ClusterRoleBindingParams
 		queryArgs = r.URL.Query()
 	)
 	// Decode path: name.
 	{
-		param := args["name"]
+		param := args[0]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "name",
@@ -44904,14 +44904,14 @@ func decodeReadRbacAuthorizationV1ClusterRoleBindingParams(args map[string]strin
 	return params, nil
 }
 
-func decodeReadRbacAuthorizationV1NamespacedRoleParams(args map[string]string, r *http.Request) (ReadRbacAuthorizationV1NamespacedRoleParams, error) {
+func decodeReadRbacAuthorizationV1NamespacedRoleParams(args [2]string, r *http.Request) (ReadRbacAuthorizationV1NamespacedRoleParams, error) {
 	var (
 		params    ReadRbacAuthorizationV1NamespacedRoleParams
 		queryArgs = r.URL.Query()
 	)
 	// Decode path: name.
 	{
-		param := args["name"]
+		param := args[1]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "name",
@@ -44942,7 +44942,7 @@ func decodeReadRbacAuthorizationV1NamespacedRoleParams(args map[string]string, r
 	}
 	// Decode path: namespace.
 	{
-		param := args["namespace"]
+		param := args[0]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "namespace",
@@ -45009,14 +45009,14 @@ func decodeReadRbacAuthorizationV1NamespacedRoleParams(args map[string]string, r
 	return params, nil
 }
 
-func decodeReadRbacAuthorizationV1NamespacedRoleBindingParams(args map[string]string, r *http.Request) (ReadRbacAuthorizationV1NamespacedRoleBindingParams, error) {
+func decodeReadRbacAuthorizationV1NamespacedRoleBindingParams(args [2]string, r *http.Request) (ReadRbacAuthorizationV1NamespacedRoleBindingParams, error) {
 	var (
 		params    ReadRbacAuthorizationV1NamespacedRoleBindingParams
 		queryArgs = r.URL.Query()
 	)
 	// Decode path: name.
 	{
-		param := args["name"]
+		param := args[1]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "name",
@@ -45047,7 +45047,7 @@ func decodeReadRbacAuthorizationV1NamespacedRoleBindingParams(args map[string]st
 	}
 	// Decode path: namespace.
 	{
-		param := args["namespace"]
+		param := args[0]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "namespace",
@@ -45114,14 +45114,14 @@ func decodeReadRbacAuthorizationV1NamespacedRoleBindingParams(args map[string]st
 	return params, nil
 }
 
-func decodeReadSchedulingV1PriorityClassParams(args map[string]string, r *http.Request) (ReadSchedulingV1PriorityClassParams, error) {
+func decodeReadSchedulingV1PriorityClassParams(args [1]string, r *http.Request) (ReadSchedulingV1PriorityClassParams, error) {
 	var (
 		params    ReadSchedulingV1PriorityClassParams
 		queryArgs = r.URL.Query()
 	)
 	// Decode path: name.
 	{
-		param := args["name"]
+		param := args[0]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "name",
@@ -45188,14 +45188,14 @@ func decodeReadSchedulingV1PriorityClassParams(args map[string]string, r *http.R
 	return params, nil
 }
 
-func decodeReadStorageV1CSIDriverParams(args map[string]string, r *http.Request) (ReadStorageV1CSIDriverParams, error) {
+func decodeReadStorageV1CSIDriverParams(args [1]string, r *http.Request) (ReadStorageV1CSIDriverParams, error) {
 	var (
 		params    ReadStorageV1CSIDriverParams
 		queryArgs = r.URL.Query()
 	)
 	// Decode path: name.
 	{
-		param := args["name"]
+		param := args[0]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "name",
@@ -45262,14 +45262,14 @@ func decodeReadStorageV1CSIDriverParams(args map[string]string, r *http.Request)
 	return params, nil
 }
 
-func decodeReadStorageV1CSINodeParams(args map[string]string, r *http.Request) (ReadStorageV1CSINodeParams, error) {
+func decodeReadStorageV1CSINodeParams(args [1]string, r *http.Request) (ReadStorageV1CSINodeParams, error) {
 	var (
 		params    ReadStorageV1CSINodeParams
 		queryArgs = r.URL.Query()
 	)
 	// Decode path: name.
 	{
-		param := args["name"]
+		param := args[0]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "name",
@@ -45336,14 +45336,14 @@ func decodeReadStorageV1CSINodeParams(args map[string]string, r *http.Request) (
 	return params, nil
 }
 
-func decodeReadStorageV1StorageClassParams(args map[string]string, r *http.Request) (ReadStorageV1StorageClassParams, error) {
+func decodeReadStorageV1StorageClassParams(args [1]string, r *http.Request) (ReadStorageV1StorageClassParams, error) {
 	var (
 		params    ReadStorageV1StorageClassParams
 		queryArgs = r.URL.Query()
 	)
 	// Decode path: name.
 	{
-		param := args["name"]
+		param := args[0]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "name",
@@ -45410,14 +45410,14 @@ func decodeReadStorageV1StorageClassParams(args map[string]string, r *http.Reque
 	return params, nil
 }
 
-func decodeReadStorageV1VolumeAttachmentParams(args map[string]string, r *http.Request) (ReadStorageV1VolumeAttachmentParams, error) {
+func decodeReadStorageV1VolumeAttachmentParams(args [1]string, r *http.Request) (ReadStorageV1VolumeAttachmentParams, error) {
 	var (
 		params    ReadStorageV1VolumeAttachmentParams
 		queryArgs = r.URL.Query()
 	)
 	// Decode path: name.
 	{
-		param := args["name"]
+		param := args[0]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "name",
@@ -45484,14 +45484,14 @@ func decodeReadStorageV1VolumeAttachmentParams(args map[string]string, r *http.R
 	return params, nil
 }
 
-func decodeReadStorageV1VolumeAttachmentStatusParams(args map[string]string, r *http.Request) (ReadStorageV1VolumeAttachmentStatusParams, error) {
+func decodeReadStorageV1VolumeAttachmentStatusParams(args [1]string, r *http.Request) (ReadStorageV1VolumeAttachmentStatusParams, error) {
 	var (
 		params    ReadStorageV1VolumeAttachmentStatusParams
 		queryArgs = r.URL.Query()
 	)
 	// Decode path: name.
 	{
-		param := args["name"]
+		param := args[0]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "name",
@@ -45558,14 +45558,14 @@ func decodeReadStorageV1VolumeAttachmentStatusParams(args map[string]string, r *
 	return params, nil
 }
 
-func decodeReadStorageV1alpha1NamespacedCSIStorageCapacityParams(args map[string]string, r *http.Request) (ReadStorageV1alpha1NamespacedCSIStorageCapacityParams, error) {
+func decodeReadStorageV1alpha1NamespacedCSIStorageCapacityParams(args [2]string, r *http.Request) (ReadStorageV1alpha1NamespacedCSIStorageCapacityParams, error) {
 	var (
 		params    ReadStorageV1alpha1NamespacedCSIStorageCapacityParams
 		queryArgs = r.URL.Query()
 	)
 	// Decode path: name.
 	{
-		param := args["name"]
+		param := args[1]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "name",
@@ -45596,7 +45596,7 @@ func decodeReadStorageV1alpha1NamespacedCSIStorageCapacityParams(args map[string
 	}
 	// Decode path: namespace.
 	{
-		param := args["namespace"]
+		param := args[0]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "namespace",
@@ -45663,14 +45663,14 @@ func decodeReadStorageV1alpha1NamespacedCSIStorageCapacityParams(args map[string
 	return params, nil
 }
 
-func decodeReadStorageV1beta1NamespacedCSIStorageCapacityParams(args map[string]string, r *http.Request) (ReadStorageV1beta1NamespacedCSIStorageCapacityParams, error) {
+func decodeReadStorageV1beta1NamespacedCSIStorageCapacityParams(args [2]string, r *http.Request) (ReadStorageV1beta1NamespacedCSIStorageCapacityParams, error) {
 	var (
 		params    ReadStorageV1beta1NamespacedCSIStorageCapacityParams
 		queryArgs = r.URL.Query()
 	)
 	// Decode path: name.
 	{
-		param := args["name"]
+		param := args[1]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "name",
@@ -45701,7 +45701,7 @@ func decodeReadStorageV1beta1NamespacedCSIStorageCapacityParams(args map[string]
 	}
 	// Decode path: namespace.
 	{
-		param := args["namespace"]
+		param := args[0]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "namespace",
@@ -45768,7 +45768,7 @@ func decodeReadStorageV1beta1NamespacedCSIStorageCapacityParams(args map[string]
 	return params, nil
 }
 
-func decodeWatchAdmissionregistrationV1MutatingWebhookConfigurationParams(args map[string]string, r *http.Request) (WatchAdmissionregistrationV1MutatingWebhookConfigurationParams, error) {
+func decodeWatchAdmissionregistrationV1MutatingWebhookConfigurationParams(args [1]string, r *http.Request) (WatchAdmissionregistrationV1MutatingWebhookConfigurationParams, error) {
 	var (
 		params    WatchAdmissionregistrationV1MutatingWebhookConfigurationParams
 		queryArgs = r.URL.Query()
@@ -45950,7 +45950,7 @@ func decodeWatchAdmissionregistrationV1MutatingWebhookConfigurationParams(args m
 	}
 	// Decode path: name.
 	{
-		param := args["name"]
+		param := args[0]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "name",
@@ -46157,7 +46157,7 @@ func decodeWatchAdmissionregistrationV1MutatingWebhookConfigurationParams(args m
 	return params, nil
 }
 
-func decodeWatchAdmissionregistrationV1MutatingWebhookConfigurationListParams(args map[string]string, r *http.Request) (WatchAdmissionregistrationV1MutatingWebhookConfigurationListParams, error) {
+func decodeWatchAdmissionregistrationV1MutatingWebhookConfigurationListParams(args [0]string, r *http.Request) (WatchAdmissionregistrationV1MutatingWebhookConfigurationListParams, error) {
 	var (
 		params    WatchAdmissionregistrationV1MutatingWebhookConfigurationListParams
 		queryArgs = r.URL.Query()
@@ -46515,7 +46515,7 @@ func decodeWatchAdmissionregistrationV1MutatingWebhookConfigurationListParams(ar
 	return params, nil
 }
 
-func decodeWatchAdmissionregistrationV1ValidatingWebhookConfigurationParams(args map[string]string, r *http.Request) (WatchAdmissionregistrationV1ValidatingWebhookConfigurationParams, error) {
+func decodeWatchAdmissionregistrationV1ValidatingWebhookConfigurationParams(args [1]string, r *http.Request) (WatchAdmissionregistrationV1ValidatingWebhookConfigurationParams, error) {
 	var (
 		params    WatchAdmissionregistrationV1ValidatingWebhookConfigurationParams
 		queryArgs = r.URL.Query()
@@ -46697,7 +46697,7 @@ func decodeWatchAdmissionregistrationV1ValidatingWebhookConfigurationParams(args
 	}
 	// Decode path: name.
 	{
-		param := args["name"]
+		param := args[0]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "name",
@@ -46904,7 +46904,7 @@ func decodeWatchAdmissionregistrationV1ValidatingWebhookConfigurationParams(args
 	return params, nil
 }
 
-func decodeWatchAdmissionregistrationV1ValidatingWebhookConfigurationListParams(args map[string]string, r *http.Request) (WatchAdmissionregistrationV1ValidatingWebhookConfigurationListParams, error) {
+func decodeWatchAdmissionregistrationV1ValidatingWebhookConfigurationListParams(args [0]string, r *http.Request) (WatchAdmissionregistrationV1ValidatingWebhookConfigurationListParams, error) {
 	var (
 		params    WatchAdmissionregistrationV1ValidatingWebhookConfigurationListParams
 		queryArgs = r.URL.Query()
@@ -47262,7 +47262,7 @@ func decodeWatchAdmissionregistrationV1ValidatingWebhookConfigurationListParams(
 	return params, nil
 }
 
-func decodeWatchApiextensionsV1CustomResourceDefinitionParams(args map[string]string, r *http.Request) (WatchApiextensionsV1CustomResourceDefinitionParams, error) {
+func decodeWatchApiextensionsV1CustomResourceDefinitionParams(args [1]string, r *http.Request) (WatchApiextensionsV1CustomResourceDefinitionParams, error) {
 	var (
 		params    WatchApiextensionsV1CustomResourceDefinitionParams
 		queryArgs = r.URL.Query()
@@ -47444,7 +47444,7 @@ func decodeWatchApiextensionsV1CustomResourceDefinitionParams(args map[string]st
 	}
 	// Decode path: name.
 	{
-		param := args["name"]
+		param := args[0]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "name",
@@ -47651,7 +47651,7 @@ func decodeWatchApiextensionsV1CustomResourceDefinitionParams(args map[string]st
 	return params, nil
 }
 
-func decodeWatchApiextensionsV1CustomResourceDefinitionListParams(args map[string]string, r *http.Request) (WatchApiextensionsV1CustomResourceDefinitionListParams, error) {
+func decodeWatchApiextensionsV1CustomResourceDefinitionListParams(args [0]string, r *http.Request) (WatchApiextensionsV1CustomResourceDefinitionListParams, error) {
 	var (
 		params    WatchApiextensionsV1CustomResourceDefinitionListParams
 		queryArgs = r.URL.Query()
@@ -48009,7 +48009,7 @@ func decodeWatchApiextensionsV1CustomResourceDefinitionListParams(args map[strin
 	return params, nil
 }
 
-func decodeWatchApiregistrationV1APIServiceParams(args map[string]string, r *http.Request) (WatchApiregistrationV1APIServiceParams, error) {
+func decodeWatchApiregistrationV1APIServiceParams(args [1]string, r *http.Request) (WatchApiregistrationV1APIServiceParams, error) {
 	var (
 		params    WatchApiregistrationV1APIServiceParams
 		queryArgs = r.URL.Query()
@@ -48191,7 +48191,7 @@ func decodeWatchApiregistrationV1APIServiceParams(args map[string]string, r *htt
 	}
 	// Decode path: name.
 	{
-		param := args["name"]
+		param := args[0]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "name",
@@ -48398,7 +48398,7 @@ func decodeWatchApiregistrationV1APIServiceParams(args map[string]string, r *htt
 	return params, nil
 }
 
-func decodeWatchApiregistrationV1APIServiceListParams(args map[string]string, r *http.Request) (WatchApiregistrationV1APIServiceListParams, error) {
+func decodeWatchApiregistrationV1APIServiceListParams(args [0]string, r *http.Request) (WatchApiregistrationV1APIServiceListParams, error) {
 	var (
 		params    WatchApiregistrationV1APIServiceListParams
 		queryArgs = r.URL.Query()
@@ -48756,7 +48756,7 @@ func decodeWatchApiregistrationV1APIServiceListParams(args map[string]string, r 
 	return params, nil
 }
 
-func decodeWatchAppsV1ControllerRevisionListForAllNamespacesParams(args map[string]string, r *http.Request) (WatchAppsV1ControllerRevisionListForAllNamespacesParams, error) {
+func decodeWatchAppsV1ControllerRevisionListForAllNamespacesParams(args [0]string, r *http.Request) (WatchAppsV1ControllerRevisionListForAllNamespacesParams, error) {
 	var (
 		params    WatchAppsV1ControllerRevisionListForAllNamespacesParams
 		queryArgs = r.URL.Query()
@@ -49114,7 +49114,7 @@ func decodeWatchAppsV1ControllerRevisionListForAllNamespacesParams(args map[stri
 	return params, nil
 }
 
-func decodeWatchAppsV1DaemonSetListForAllNamespacesParams(args map[string]string, r *http.Request) (WatchAppsV1DaemonSetListForAllNamespacesParams, error) {
+func decodeWatchAppsV1DaemonSetListForAllNamespacesParams(args [0]string, r *http.Request) (WatchAppsV1DaemonSetListForAllNamespacesParams, error) {
 	var (
 		params    WatchAppsV1DaemonSetListForAllNamespacesParams
 		queryArgs = r.URL.Query()
@@ -49472,7 +49472,7 @@ func decodeWatchAppsV1DaemonSetListForAllNamespacesParams(args map[string]string
 	return params, nil
 }
 
-func decodeWatchAppsV1DeploymentListForAllNamespacesParams(args map[string]string, r *http.Request) (WatchAppsV1DeploymentListForAllNamespacesParams, error) {
+func decodeWatchAppsV1DeploymentListForAllNamespacesParams(args [0]string, r *http.Request) (WatchAppsV1DeploymentListForAllNamespacesParams, error) {
 	var (
 		params    WatchAppsV1DeploymentListForAllNamespacesParams
 		queryArgs = r.URL.Query()
@@ -49830,7 +49830,7 @@ func decodeWatchAppsV1DeploymentListForAllNamespacesParams(args map[string]strin
 	return params, nil
 }
 
-func decodeWatchAppsV1NamespacedControllerRevisionParams(args map[string]string, r *http.Request) (WatchAppsV1NamespacedControllerRevisionParams, error) {
+func decodeWatchAppsV1NamespacedControllerRevisionParams(args [2]string, r *http.Request) (WatchAppsV1NamespacedControllerRevisionParams, error) {
 	var (
 		params    WatchAppsV1NamespacedControllerRevisionParams
 		queryArgs = r.URL.Query()
@@ -50012,7 +50012,7 @@ func decodeWatchAppsV1NamespacedControllerRevisionParams(args map[string]string,
 	}
 	// Decode path: name.
 	{
-		param := args["name"]
+		param := args[1]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "name",
@@ -50043,7 +50043,7 @@ func decodeWatchAppsV1NamespacedControllerRevisionParams(args map[string]string,
 	}
 	// Decode path: namespace.
 	{
-		param := args["namespace"]
+		param := args[0]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "namespace",
@@ -50250,7 +50250,7 @@ func decodeWatchAppsV1NamespacedControllerRevisionParams(args map[string]string,
 	return params, nil
 }
 
-func decodeWatchAppsV1NamespacedControllerRevisionListParams(args map[string]string, r *http.Request) (WatchAppsV1NamespacedControllerRevisionListParams, error) {
+func decodeWatchAppsV1NamespacedControllerRevisionListParams(args [1]string, r *http.Request) (WatchAppsV1NamespacedControllerRevisionListParams, error) {
 	var (
 		params    WatchAppsV1NamespacedControllerRevisionListParams
 		queryArgs = r.URL.Query()
@@ -50432,7 +50432,7 @@ func decodeWatchAppsV1NamespacedControllerRevisionListParams(args map[string]str
 	}
 	// Decode path: namespace.
 	{
-		param := args["namespace"]
+		param := args[0]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "namespace",
@@ -50639,7 +50639,7 @@ func decodeWatchAppsV1NamespacedControllerRevisionListParams(args map[string]str
 	return params, nil
 }
 
-func decodeWatchAppsV1NamespacedDaemonSetParams(args map[string]string, r *http.Request) (WatchAppsV1NamespacedDaemonSetParams, error) {
+func decodeWatchAppsV1NamespacedDaemonSetParams(args [2]string, r *http.Request) (WatchAppsV1NamespacedDaemonSetParams, error) {
 	var (
 		params    WatchAppsV1NamespacedDaemonSetParams
 		queryArgs = r.URL.Query()
@@ -50821,7 +50821,7 @@ func decodeWatchAppsV1NamespacedDaemonSetParams(args map[string]string, r *http.
 	}
 	// Decode path: name.
 	{
-		param := args["name"]
+		param := args[1]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "name",
@@ -50852,7 +50852,7 @@ func decodeWatchAppsV1NamespacedDaemonSetParams(args map[string]string, r *http.
 	}
 	// Decode path: namespace.
 	{
-		param := args["namespace"]
+		param := args[0]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "namespace",
@@ -51059,7 +51059,7 @@ func decodeWatchAppsV1NamespacedDaemonSetParams(args map[string]string, r *http.
 	return params, nil
 }
 
-func decodeWatchAppsV1NamespacedDaemonSetListParams(args map[string]string, r *http.Request) (WatchAppsV1NamespacedDaemonSetListParams, error) {
+func decodeWatchAppsV1NamespacedDaemonSetListParams(args [1]string, r *http.Request) (WatchAppsV1NamespacedDaemonSetListParams, error) {
 	var (
 		params    WatchAppsV1NamespacedDaemonSetListParams
 		queryArgs = r.URL.Query()
@@ -51241,7 +51241,7 @@ func decodeWatchAppsV1NamespacedDaemonSetListParams(args map[string]string, r *h
 	}
 	// Decode path: namespace.
 	{
-		param := args["namespace"]
+		param := args[0]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "namespace",
@@ -51448,7 +51448,7 @@ func decodeWatchAppsV1NamespacedDaemonSetListParams(args map[string]string, r *h
 	return params, nil
 }
 
-func decodeWatchAppsV1NamespacedDeploymentParams(args map[string]string, r *http.Request) (WatchAppsV1NamespacedDeploymentParams, error) {
+func decodeWatchAppsV1NamespacedDeploymentParams(args [2]string, r *http.Request) (WatchAppsV1NamespacedDeploymentParams, error) {
 	var (
 		params    WatchAppsV1NamespacedDeploymentParams
 		queryArgs = r.URL.Query()
@@ -51630,7 +51630,7 @@ func decodeWatchAppsV1NamespacedDeploymentParams(args map[string]string, r *http
 	}
 	// Decode path: name.
 	{
-		param := args["name"]
+		param := args[1]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "name",
@@ -51661,7 +51661,7 @@ func decodeWatchAppsV1NamespacedDeploymentParams(args map[string]string, r *http
 	}
 	// Decode path: namespace.
 	{
-		param := args["namespace"]
+		param := args[0]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "namespace",
@@ -51868,7 +51868,7 @@ func decodeWatchAppsV1NamespacedDeploymentParams(args map[string]string, r *http
 	return params, nil
 }
 
-func decodeWatchAppsV1NamespacedDeploymentListParams(args map[string]string, r *http.Request) (WatchAppsV1NamespacedDeploymentListParams, error) {
+func decodeWatchAppsV1NamespacedDeploymentListParams(args [1]string, r *http.Request) (WatchAppsV1NamespacedDeploymentListParams, error) {
 	var (
 		params    WatchAppsV1NamespacedDeploymentListParams
 		queryArgs = r.URL.Query()
@@ -52050,7 +52050,7 @@ func decodeWatchAppsV1NamespacedDeploymentListParams(args map[string]string, r *
 	}
 	// Decode path: namespace.
 	{
-		param := args["namespace"]
+		param := args[0]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "namespace",
@@ -52257,7 +52257,7 @@ func decodeWatchAppsV1NamespacedDeploymentListParams(args map[string]string, r *
 	return params, nil
 }
 
-func decodeWatchAppsV1NamespacedReplicaSetParams(args map[string]string, r *http.Request) (WatchAppsV1NamespacedReplicaSetParams, error) {
+func decodeWatchAppsV1NamespacedReplicaSetParams(args [2]string, r *http.Request) (WatchAppsV1NamespacedReplicaSetParams, error) {
 	var (
 		params    WatchAppsV1NamespacedReplicaSetParams
 		queryArgs = r.URL.Query()
@@ -52439,7 +52439,7 @@ func decodeWatchAppsV1NamespacedReplicaSetParams(args map[string]string, r *http
 	}
 	// Decode path: name.
 	{
-		param := args["name"]
+		param := args[1]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "name",
@@ -52470,7 +52470,7 @@ func decodeWatchAppsV1NamespacedReplicaSetParams(args map[string]string, r *http
 	}
 	// Decode path: namespace.
 	{
-		param := args["namespace"]
+		param := args[0]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "namespace",
@@ -52677,7 +52677,7 @@ func decodeWatchAppsV1NamespacedReplicaSetParams(args map[string]string, r *http
 	return params, nil
 }
 
-func decodeWatchAppsV1NamespacedReplicaSetListParams(args map[string]string, r *http.Request) (WatchAppsV1NamespacedReplicaSetListParams, error) {
+func decodeWatchAppsV1NamespacedReplicaSetListParams(args [1]string, r *http.Request) (WatchAppsV1NamespacedReplicaSetListParams, error) {
 	var (
 		params    WatchAppsV1NamespacedReplicaSetListParams
 		queryArgs = r.URL.Query()
@@ -52859,7 +52859,7 @@ func decodeWatchAppsV1NamespacedReplicaSetListParams(args map[string]string, r *
 	}
 	// Decode path: namespace.
 	{
-		param := args["namespace"]
+		param := args[0]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "namespace",
@@ -53066,7 +53066,7 @@ func decodeWatchAppsV1NamespacedReplicaSetListParams(args map[string]string, r *
 	return params, nil
 }
 
-func decodeWatchAppsV1NamespacedStatefulSetParams(args map[string]string, r *http.Request) (WatchAppsV1NamespacedStatefulSetParams, error) {
+func decodeWatchAppsV1NamespacedStatefulSetParams(args [2]string, r *http.Request) (WatchAppsV1NamespacedStatefulSetParams, error) {
 	var (
 		params    WatchAppsV1NamespacedStatefulSetParams
 		queryArgs = r.URL.Query()
@@ -53248,7 +53248,7 @@ func decodeWatchAppsV1NamespacedStatefulSetParams(args map[string]string, r *htt
 	}
 	// Decode path: name.
 	{
-		param := args["name"]
+		param := args[1]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "name",
@@ -53279,7 +53279,7 @@ func decodeWatchAppsV1NamespacedStatefulSetParams(args map[string]string, r *htt
 	}
 	// Decode path: namespace.
 	{
-		param := args["namespace"]
+		param := args[0]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "namespace",
@@ -53486,7 +53486,7 @@ func decodeWatchAppsV1NamespacedStatefulSetParams(args map[string]string, r *htt
 	return params, nil
 }
 
-func decodeWatchAppsV1NamespacedStatefulSetListParams(args map[string]string, r *http.Request) (WatchAppsV1NamespacedStatefulSetListParams, error) {
+func decodeWatchAppsV1NamespacedStatefulSetListParams(args [1]string, r *http.Request) (WatchAppsV1NamespacedStatefulSetListParams, error) {
 	var (
 		params    WatchAppsV1NamespacedStatefulSetListParams
 		queryArgs = r.URL.Query()
@@ -53668,7 +53668,7 @@ func decodeWatchAppsV1NamespacedStatefulSetListParams(args map[string]string, r 
 	}
 	// Decode path: namespace.
 	{
-		param := args["namespace"]
+		param := args[0]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "namespace",
@@ -53875,7 +53875,7 @@ func decodeWatchAppsV1NamespacedStatefulSetListParams(args map[string]string, r 
 	return params, nil
 }
 
-func decodeWatchAppsV1ReplicaSetListForAllNamespacesParams(args map[string]string, r *http.Request) (WatchAppsV1ReplicaSetListForAllNamespacesParams, error) {
+func decodeWatchAppsV1ReplicaSetListForAllNamespacesParams(args [0]string, r *http.Request) (WatchAppsV1ReplicaSetListForAllNamespacesParams, error) {
 	var (
 		params    WatchAppsV1ReplicaSetListForAllNamespacesParams
 		queryArgs = r.URL.Query()
@@ -54233,7 +54233,7 @@ func decodeWatchAppsV1ReplicaSetListForAllNamespacesParams(args map[string]strin
 	return params, nil
 }
 
-func decodeWatchAppsV1StatefulSetListForAllNamespacesParams(args map[string]string, r *http.Request) (WatchAppsV1StatefulSetListForAllNamespacesParams, error) {
+func decodeWatchAppsV1StatefulSetListForAllNamespacesParams(args [0]string, r *http.Request) (WatchAppsV1StatefulSetListForAllNamespacesParams, error) {
 	var (
 		params    WatchAppsV1StatefulSetListForAllNamespacesParams
 		queryArgs = r.URL.Query()
@@ -54591,7 +54591,7 @@ func decodeWatchAppsV1StatefulSetListForAllNamespacesParams(args map[string]stri
 	return params, nil
 }
 
-func decodeWatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespacesParams(args map[string]string, r *http.Request) (WatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespacesParams, error) {
+func decodeWatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespacesParams(args [0]string, r *http.Request) (WatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespacesParams, error) {
 	var (
 		params    WatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespacesParams
 		queryArgs = r.URL.Query()
@@ -54949,7 +54949,7 @@ func decodeWatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespacesParams(a
 	return params, nil
 }
 
-func decodeWatchAutoscalingV1NamespacedHorizontalPodAutoscalerParams(args map[string]string, r *http.Request) (WatchAutoscalingV1NamespacedHorizontalPodAutoscalerParams, error) {
+func decodeWatchAutoscalingV1NamespacedHorizontalPodAutoscalerParams(args [2]string, r *http.Request) (WatchAutoscalingV1NamespacedHorizontalPodAutoscalerParams, error) {
 	var (
 		params    WatchAutoscalingV1NamespacedHorizontalPodAutoscalerParams
 		queryArgs = r.URL.Query()
@@ -55131,7 +55131,7 @@ func decodeWatchAutoscalingV1NamespacedHorizontalPodAutoscalerParams(args map[st
 	}
 	// Decode path: name.
 	{
-		param := args["name"]
+		param := args[1]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "name",
@@ -55162,7 +55162,7 @@ func decodeWatchAutoscalingV1NamespacedHorizontalPodAutoscalerParams(args map[st
 	}
 	// Decode path: namespace.
 	{
-		param := args["namespace"]
+		param := args[0]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "namespace",
@@ -55369,7 +55369,7 @@ func decodeWatchAutoscalingV1NamespacedHorizontalPodAutoscalerParams(args map[st
 	return params, nil
 }
 
-func decodeWatchAutoscalingV1NamespacedHorizontalPodAutoscalerListParams(args map[string]string, r *http.Request) (WatchAutoscalingV1NamespacedHorizontalPodAutoscalerListParams, error) {
+func decodeWatchAutoscalingV1NamespacedHorizontalPodAutoscalerListParams(args [1]string, r *http.Request) (WatchAutoscalingV1NamespacedHorizontalPodAutoscalerListParams, error) {
 	var (
 		params    WatchAutoscalingV1NamespacedHorizontalPodAutoscalerListParams
 		queryArgs = r.URL.Query()
@@ -55551,7 +55551,7 @@ func decodeWatchAutoscalingV1NamespacedHorizontalPodAutoscalerListParams(args ma
 	}
 	// Decode path: namespace.
 	{
-		param := args["namespace"]
+		param := args[0]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "namespace",
@@ -55758,7 +55758,7 @@ func decodeWatchAutoscalingV1NamespacedHorizontalPodAutoscalerListParams(args ma
 	return params, nil
 }
 
-func decodeWatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespacesParams(args map[string]string, r *http.Request) (WatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespacesParams, error) {
+func decodeWatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespacesParams(args [0]string, r *http.Request) (WatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespacesParams, error) {
 	var (
 		params    WatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespacesParams
 		queryArgs = r.URL.Query()
@@ -56116,7 +56116,7 @@ func decodeWatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespacesPar
 	return params, nil
 }
 
-func decodeWatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerParams(args map[string]string, r *http.Request) (WatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerParams, error) {
+func decodeWatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerParams(args [2]string, r *http.Request) (WatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerParams, error) {
 	var (
 		params    WatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerParams
 		queryArgs = r.URL.Query()
@@ -56298,7 +56298,7 @@ func decodeWatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerParams(args m
 	}
 	// Decode path: name.
 	{
-		param := args["name"]
+		param := args[1]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "name",
@@ -56329,7 +56329,7 @@ func decodeWatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerParams(args m
 	}
 	// Decode path: namespace.
 	{
-		param := args["namespace"]
+		param := args[0]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "namespace",
@@ -56536,7 +56536,7 @@ func decodeWatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerParams(args m
 	return params, nil
 }
 
-func decodeWatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerListParams(args map[string]string, r *http.Request) (WatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerListParams, error) {
+func decodeWatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerListParams(args [1]string, r *http.Request) (WatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerListParams, error) {
 	var (
 		params    WatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerListParams
 		queryArgs = r.URL.Query()
@@ -56718,7 +56718,7 @@ func decodeWatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerListParams(ar
 	}
 	// Decode path: namespace.
 	{
-		param := args["namespace"]
+		param := args[0]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "namespace",
@@ -56925,7 +56925,7 @@ func decodeWatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerListParams(ar
 	return params, nil
 }
 
-func decodeWatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespacesParams(args map[string]string, r *http.Request) (WatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespacesParams, error) {
+func decodeWatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespacesParams(args [0]string, r *http.Request) (WatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespacesParams, error) {
 	var (
 		params    WatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespacesParams
 		queryArgs = r.URL.Query()
@@ -57283,7 +57283,7 @@ func decodeWatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespacesPar
 	return params, nil
 }
 
-func decodeWatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerParams(args map[string]string, r *http.Request) (WatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerParams, error) {
+func decodeWatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerParams(args [2]string, r *http.Request) (WatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerParams, error) {
 	var (
 		params    WatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerParams
 		queryArgs = r.URL.Query()
@@ -57465,7 +57465,7 @@ func decodeWatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerParams(args m
 	}
 	// Decode path: name.
 	{
-		param := args["name"]
+		param := args[1]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "name",
@@ -57496,7 +57496,7 @@ func decodeWatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerParams(args m
 	}
 	// Decode path: namespace.
 	{
-		param := args["namespace"]
+		param := args[0]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "namespace",
@@ -57703,7 +57703,7 @@ func decodeWatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerParams(args m
 	return params, nil
 }
 
-func decodeWatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerListParams(args map[string]string, r *http.Request) (WatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerListParams, error) {
+func decodeWatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerListParams(args [1]string, r *http.Request) (WatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerListParams, error) {
 	var (
 		params    WatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerListParams
 		queryArgs = r.URL.Query()
@@ -57885,7 +57885,7 @@ func decodeWatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerListParams(ar
 	}
 	// Decode path: namespace.
 	{
-		param := args["namespace"]
+		param := args[0]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "namespace",
@@ -58092,7 +58092,7 @@ func decodeWatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerListParams(ar
 	return params, nil
 }
 
-func decodeWatchBatchV1CronJobListForAllNamespacesParams(args map[string]string, r *http.Request) (WatchBatchV1CronJobListForAllNamespacesParams, error) {
+func decodeWatchBatchV1CronJobListForAllNamespacesParams(args [0]string, r *http.Request) (WatchBatchV1CronJobListForAllNamespacesParams, error) {
 	var (
 		params    WatchBatchV1CronJobListForAllNamespacesParams
 		queryArgs = r.URL.Query()
@@ -58450,7 +58450,7 @@ func decodeWatchBatchV1CronJobListForAllNamespacesParams(args map[string]string,
 	return params, nil
 }
 
-func decodeWatchBatchV1JobListForAllNamespacesParams(args map[string]string, r *http.Request) (WatchBatchV1JobListForAllNamespacesParams, error) {
+func decodeWatchBatchV1JobListForAllNamespacesParams(args [0]string, r *http.Request) (WatchBatchV1JobListForAllNamespacesParams, error) {
 	var (
 		params    WatchBatchV1JobListForAllNamespacesParams
 		queryArgs = r.URL.Query()
@@ -58808,7 +58808,7 @@ func decodeWatchBatchV1JobListForAllNamespacesParams(args map[string]string, r *
 	return params, nil
 }
 
-func decodeWatchBatchV1NamespacedCronJobParams(args map[string]string, r *http.Request) (WatchBatchV1NamespacedCronJobParams, error) {
+func decodeWatchBatchV1NamespacedCronJobParams(args [2]string, r *http.Request) (WatchBatchV1NamespacedCronJobParams, error) {
 	var (
 		params    WatchBatchV1NamespacedCronJobParams
 		queryArgs = r.URL.Query()
@@ -58990,7 +58990,7 @@ func decodeWatchBatchV1NamespacedCronJobParams(args map[string]string, r *http.R
 	}
 	// Decode path: name.
 	{
-		param := args["name"]
+		param := args[1]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "name",
@@ -59021,7 +59021,7 @@ func decodeWatchBatchV1NamespacedCronJobParams(args map[string]string, r *http.R
 	}
 	// Decode path: namespace.
 	{
-		param := args["namespace"]
+		param := args[0]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "namespace",
@@ -59228,7 +59228,7 @@ func decodeWatchBatchV1NamespacedCronJobParams(args map[string]string, r *http.R
 	return params, nil
 }
 
-func decodeWatchBatchV1NamespacedCronJobListParams(args map[string]string, r *http.Request) (WatchBatchV1NamespacedCronJobListParams, error) {
+func decodeWatchBatchV1NamespacedCronJobListParams(args [1]string, r *http.Request) (WatchBatchV1NamespacedCronJobListParams, error) {
 	var (
 		params    WatchBatchV1NamespacedCronJobListParams
 		queryArgs = r.URL.Query()
@@ -59410,7 +59410,7 @@ func decodeWatchBatchV1NamespacedCronJobListParams(args map[string]string, r *ht
 	}
 	// Decode path: namespace.
 	{
-		param := args["namespace"]
+		param := args[0]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "namespace",
@@ -59617,7 +59617,7 @@ func decodeWatchBatchV1NamespacedCronJobListParams(args map[string]string, r *ht
 	return params, nil
 }
 
-func decodeWatchBatchV1NamespacedJobParams(args map[string]string, r *http.Request) (WatchBatchV1NamespacedJobParams, error) {
+func decodeWatchBatchV1NamespacedJobParams(args [2]string, r *http.Request) (WatchBatchV1NamespacedJobParams, error) {
 	var (
 		params    WatchBatchV1NamespacedJobParams
 		queryArgs = r.URL.Query()
@@ -59799,7 +59799,7 @@ func decodeWatchBatchV1NamespacedJobParams(args map[string]string, r *http.Reque
 	}
 	// Decode path: name.
 	{
-		param := args["name"]
+		param := args[1]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "name",
@@ -59830,7 +59830,7 @@ func decodeWatchBatchV1NamespacedJobParams(args map[string]string, r *http.Reque
 	}
 	// Decode path: namespace.
 	{
-		param := args["namespace"]
+		param := args[0]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "namespace",
@@ -60037,7 +60037,7 @@ func decodeWatchBatchV1NamespacedJobParams(args map[string]string, r *http.Reque
 	return params, nil
 }
 
-func decodeWatchBatchV1NamespacedJobListParams(args map[string]string, r *http.Request) (WatchBatchV1NamespacedJobListParams, error) {
+func decodeWatchBatchV1NamespacedJobListParams(args [1]string, r *http.Request) (WatchBatchV1NamespacedJobListParams, error) {
 	var (
 		params    WatchBatchV1NamespacedJobListParams
 		queryArgs = r.URL.Query()
@@ -60219,7 +60219,7 @@ func decodeWatchBatchV1NamespacedJobListParams(args map[string]string, r *http.R
 	}
 	// Decode path: namespace.
 	{
-		param := args["namespace"]
+		param := args[0]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "namespace",
@@ -60426,7 +60426,7 @@ func decodeWatchBatchV1NamespacedJobListParams(args map[string]string, r *http.R
 	return params, nil
 }
 
-func decodeWatchBatchV1beta1CronJobListForAllNamespacesParams(args map[string]string, r *http.Request) (WatchBatchV1beta1CronJobListForAllNamespacesParams, error) {
+func decodeWatchBatchV1beta1CronJobListForAllNamespacesParams(args [0]string, r *http.Request) (WatchBatchV1beta1CronJobListForAllNamespacesParams, error) {
 	var (
 		params    WatchBatchV1beta1CronJobListForAllNamespacesParams
 		queryArgs = r.URL.Query()
@@ -60784,7 +60784,7 @@ func decodeWatchBatchV1beta1CronJobListForAllNamespacesParams(args map[string]st
 	return params, nil
 }
 
-func decodeWatchBatchV1beta1NamespacedCronJobParams(args map[string]string, r *http.Request) (WatchBatchV1beta1NamespacedCronJobParams, error) {
+func decodeWatchBatchV1beta1NamespacedCronJobParams(args [2]string, r *http.Request) (WatchBatchV1beta1NamespacedCronJobParams, error) {
 	var (
 		params    WatchBatchV1beta1NamespacedCronJobParams
 		queryArgs = r.URL.Query()
@@ -60966,7 +60966,7 @@ func decodeWatchBatchV1beta1NamespacedCronJobParams(args map[string]string, r *h
 	}
 	// Decode path: name.
 	{
-		param := args["name"]
+		param := args[1]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "name",
@@ -60997,7 +60997,7 @@ func decodeWatchBatchV1beta1NamespacedCronJobParams(args map[string]string, r *h
 	}
 	// Decode path: namespace.
 	{
-		param := args["namespace"]
+		param := args[0]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "namespace",
@@ -61204,7 +61204,7 @@ func decodeWatchBatchV1beta1NamespacedCronJobParams(args map[string]string, r *h
 	return params, nil
 }
 
-func decodeWatchBatchV1beta1NamespacedCronJobListParams(args map[string]string, r *http.Request) (WatchBatchV1beta1NamespacedCronJobListParams, error) {
+func decodeWatchBatchV1beta1NamespacedCronJobListParams(args [1]string, r *http.Request) (WatchBatchV1beta1NamespacedCronJobListParams, error) {
 	var (
 		params    WatchBatchV1beta1NamespacedCronJobListParams
 		queryArgs = r.URL.Query()
@@ -61386,7 +61386,7 @@ func decodeWatchBatchV1beta1NamespacedCronJobListParams(args map[string]string, 
 	}
 	// Decode path: namespace.
 	{
-		param := args["namespace"]
+		param := args[0]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "namespace",
@@ -61593,7 +61593,7 @@ func decodeWatchBatchV1beta1NamespacedCronJobListParams(args map[string]string, 
 	return params, nil
 }
 
-func decodeWatchCertificatesV1CertificateSigningRequestParams(args map[string]string, r *http.Request) (WatchCertificatesV1CertificateSigningRequestParams, error) {
+func decodeWatchCertificatesV1CertificateSigningRequestParams(args [1]string, r *http.Request) (WatchCertificatesV1CertificateSigningRequestParams, error) {
 	var (
 		params    WatchCertificatesV1CertificateSigningRequestParams
 		queryArgs = r.URL.Query()
@@ -61775,7 +61775,7 @@ func decodeWatchCertificatesV1CertificateSigningRequestParams(args map[string]st
 	}
 	// Decode path: name.
 	{
-		param := args["name"]
+		param := args[0]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "name",
@@ -61982,7 +61982,7 @@ func decodeWatchCertificatesV1CertificateSigningRequestParams(args map[string]st
 	return params, nil
 }
 
-func decodeWatchCertificatesV1CertificateSigningRequestListParams(args map[string]string, r *http.Request) (WatchCertificatesV1CertificateSigningRequestListParams, error) {
+func decodeWatchCertificatesV1CertificateSigningRequestListParams(args [0]string, r *http.Request) (WatchCertificatesV1CertificateSigningRequestListParams, error) {
 	var (
 		params    WatchCertificatesV1CertificateSigningRequestListParams
 		queryArgs = r.URL.Query()
@@ -62340,7 +62340,7 @@ func decodeWatchCertificatesV1CertificateSigningRequestListParams(args map[strin
 	return params, nil
 }
 
-func decodeWatchCoordinationV1LeaseListForAllNamespacesParams(args map[string]string, r *http.Request) (WatchCoordinationV1LeaseListForAllNamespacesParams, error) {
+func decodeWatchCoordinationV1LeaseListForAllNamespacesParams(args [0]string, r *http.Request) (WatchCoordinationV1LeaseListForAllNamespacesParams, error) {
 	var (
 		params    WatchCoordinationV1LeaseListForAllNamespacesParams
 		queryArgs = r.URL.Query()
@@ -62698,7 +62698,7 @@ func decodeWatchCoordinationV1LeaseListForAllNamespacesParams(args map[string]st
 	return params, nil
 }
 
-func decodeWatchCoordinationV1NamespacedLeaseParams(args map[string]string, r *http.Request) (WatchCoordinationV1NamespacedLeaseParams, error) {
+func decodeWatchCoordinationV1NamespacedLeaseParams(args [2]string, r *http.Request) (WatchCoordinationV1NamespacedLeaseParams, error) {
 	var (
 		params    WatchCoordinationV1NamespacedLeaseParams
 		queryArgs = r.URL.Query()
@@ -62880,7 +62880,7 @@ func decodeWatchCoordinationV1NamespacedLeaseParams(args map[string]string, r *h
 	}
 	// Decode path: name.
 	{
-		param := args["name"]
+		param := args[1]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "name",
@@ -62911,7 +62911,7 @@ func decodeWatchCoordinationV1NamespacedLeaseParams(args map[string]string, r *h
 	}
 	// Decode path: namespace.
 	{
-		param := args["namespace"]
+		param := args[0]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "namespace",
@@ -63118,7 +63118,7 @@ func decodeWatchCoordinationV1NamespacedLeaseParams(args map[string]string, r *h
 	return params, nil
 }
 
-func decodeWatchCoordinationV1NamespacedLeaseListParams(args map[string]string, r *http.Request) (WatchCoordinationV1NamespacedLeaseListParams, error) {
+func decodeWatchCoordinationV1NamespacedLeaseListParams(args [1]string, r *http.Request) (WatchCoordinationV1NamespacedLeaseListParams, error) {
 	var (
 		params    WatchCoordinationV1NamespacedLeaseListParams
 		queryArgs = r.URL.Query()
@@ -63300,7 +63300,7 @@ func decodeWatchCoordinationV1NamespacedLeaseListParams(args map[string]string, 
 	}
 	// Decode path: namespace.
 	{
-		param := args["namespace"]
+		param := args[0]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "namespace",
@@ -63507,7 +63507,7 @@ func decodeWatchCoordinationV1NamespacedLeaseListParams(args map[string]string, 
 	return params, nil
 }
 
-func decodeWatchCoreV1ConfigMapListForAllNamespacesParams(args map[string]string, r *http.Request) (WatchCoreV1ConfigMapListForAllNamespacesParams, error) {
+func decodeWatchCoreV1ConfigMapListForAllNamespacesParams(args [0]string, r *http.Request) (WatchCoreV1ConfigMapListForAllNamespacesParams, error) {
 	var (
 		params    WatchCoreV1ConfigMapListForAllNamespacesParams
 		queryArgs = r.URL.Query()
@@ -63865,7 +63865,7 @@ func decodeWatchCoreV1ConfigMapListForAllNamespacesParams(args map[string]string
 	return params, nil
 }
 
-func decodeWatchCoreV1EndpointsListForAllNamespacesParams(args map[string]string, r *http.Request) (WatchCoreV1EndpointsListForAllNamespacesParams, error) {
+func decodeWatchCoreV1EndpointsListForAllNamespacesParams(args [0]string, r *http.Request) (WatchCoreV1EndpointsListForAllNamespacesParams, error) {
 	var (
 		params    WatchCoreV1EndpointsListForAllNamespacesParams
 		queryArgs = r.URL.Query()
@@ -64223,7 +64223,7 @@ func decodeWatchCoreV1EndpointsListForAllNamespacesParams(args map[string]string
 	return params, nil
 }
 
-func decodeWatchCoreV1EventListForAllNamespacesParams(args map[string]string, r *http.Request) (WatchCoreV1EventListForAllNamespacesParams, error) {
+func decodeWatchCoreV1EventListForAllNamespacesParams(args [0]string, r *http.Request) (WatchCoreV1EventListForAllNamespacesParams, error) {
 	var (
 		params    WatchCoreV1EventListForAllNamespacesParams
 		queryArgs = r.URL.Query()
@@ -64581,7 +64581,7 @@ func decodeWatchCoreV1EventListForAllNamespacesParams(args map[string]string, r 
 	return params, nil
 }
 
-func decodeWatchCoreV1LimitRangeListForAllNamespacesParams(args map[string]string, r *http.Request) (WatchCoreV1LimitRangeListForAllNamespacesParams, error) {
+func decodeWatchCoreV1LimitRangeListForAllNamespacesParams(args [0]string, r *http.Request) (WatchCoreV1LimitRangeListForAllNamespacesParams, error) {
 	var (
 		params    WatchCoreV1LimitRangeListForAllNamespacesParams
 		queryArgs = r.URL.Query()
@@ -64939,7 +64939,7 @@ func decodeWatchCoreV1LimitRangeListForAllNamespacesParams(args map[string]strin
 	return params, nil
 }
 
-func decodeWatchCoreV1NamespaceParams(args map[string]string, r *http.Request) (WatchCoreV1NamespaceParams, error) {
+func decodeWatchCoreV1NamespaceParams(args [1]string, r *http.Request) (WatchCoreV1NamespaceParams, error) {
 	var (
 		params    WatchCoreV1NamespaceParams
 		queryArgs = r.URL.Query()
@@ -65121,7 +65121,7 @@ func decodeWatchCoreV1NamespaceParams(args map[string]string, r *http.Request) (
 	}
 	// Decode path: name.
 	{
-		param := args["name"]
+		param := args[0]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "name",
@@ -65328,7 +65328,7 @@ func decodeWatchCoreV1NamespaceParams(args map[string]string, r *http.Request) (
 	return params, nil
 }
 
-func decodeWatchCoreV1NamespaceListParams(args map[string]string, r *http.Request) (WatchCoreV1NamespaceListParams, error) {
+func decodeWatchCoreV1NamespaceListParams(args [0]string, r *http.Request) (WatchCoreV1NamespaceListParams, error) {
 	var (
 		params    WatchCoreV1NamespaceListParams
 		queryArgs = r.URL.Query()
@@ -65686,7 +65686,7 @@ func decodeWatchCoreV1NamespaceListParams(args map[string]string, r *http.Reques
 	return params, nil
 }
 
-func decodeWatchCoreV1NamespacedConfigMapParams(args map[string]string, r *http.Request) (WatchCoreV1NamespacedConfigMapParams, error) {
+func decodeWatchCoreV1NamespacedConfigMapParams(args [2]string, r *http.Request) (WatchCoreV1NamespacedConfigMapParams, error) {
 	var (
 		params    WatchCoreV1NamespacedConfigMapParams
 		queryArgs = r.URL.Query()
@@ -65868,7 +65868,7 @@ func decodeWatchCoreV1NamespacedConfigMapParams(args map[string]string, r *http.
 	}
 	// Decode path: name.
 	{
-		param := args["name"]
+		param := args[1]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "name",
@@ -65899,7 +65899,7 @@ func decodeWatchCoreV1NamespacedConfigMapParams(args map[string]string, r *http.
 	}
 	// Decode path: namespace.
 	{
-		param := args["namespace"]
+		param := args[0]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "namespace",
@@ -66106,7 +66106,7 @@ func decodeWatchCoreV1NamespacedConfigMapParams(args map[string]string, r *http.
 	return params, nil
 }
 
-func decodeWatchCoreV1NamespacedConfigMapListParams(args map[string]string, r *http.Request) (WatchCoreV1NamespacedConfigMapListParams, error) {
+func decodeWatchCoreV1NamespacedConfigMapListParams(args [1]string, r *http.Request) (WatchCoreV1NamespacedConfigMapListParams, error) {
 	var (
 		params    WatchCoreV1NamespacedConfigMapListParams
 		queryArgs = r.URL.Query()
@@ -66288,7 +66288,7 @@ func decodeWatchCoreV1NamespacedConfigMapListParams(args map[string]string, r *h
 	}
 	// Decode path: namespace.
 	{
-		param := args["namespace"]
+		param := args[0]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "namespace",
@@ -66495,7 +66495,7 @@ func decodeWatchCoreV1NamespacedConfigMapListParams(args map[string]string, r *h
 	return params, nil
 }
 
-func decodeWatchCoreV1NamespacedEndpointsParams(args map[string]string, r *http.Request) (WatchCoreV1NamespacedEndpointsParams, error) {
+func decodeWatchCoreV1NamespacedEndpointsParams(args [2]string, r *http.Request) (WatchCoreV1NamespacedEndpointsParams, error) {
 	var (
 		params    WatchCoreV1NamespacedEndpointsParams
 		queryArgs = r.URL.Query()
@@ -66677,7 +66677,7 @@ func decodeWatchCoreV1NamespacedEndpointsParams(args map[string]string, r *http.
 	}
 	// Decode path: name.
 	{
-		param := args["name"]
+		param := args[1]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "name",
@@ -66708,7 +66708,7 @@ func decodeWatchCoreV1NamespacedEndpointsParams(args map[string]string, r *http.
 	}
 	// Decode path: namespace.
 	{
-		param := args["namespace"]
+		param := args[0]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "namespace",
@@ -66915,7 +66915,7 @@ func decodeWatchCoreV1NamespacedEndpointsParams(args map[string]string, r *http.
 	return params, nil
 }
 
-func decodeWatchCoreV1NamespacedEndpointsListParams(args map[string]string, r *http.Request) (WatchCoreV1NamespacedEndpointsListParams, error) {
+func decodeWatchCoreV1NamespacedEndpointsListParams(args [1]string, r *http.Request) (WatchCoreV1NamespacedEndpointsListParams, error) {
 	var (
 		params    WatchCoreV1NamespacedEndpointsListParams
 		queryArgs = r.URL.Query()
@@ -67097,7 +67097,7 @@ func decodeWatchCoreV1NamespacedEndpointsListParams(args map[string]string, r *h
 	}
 	// Decode path: namespace.
 	{
-		param := args["namespace"]
+		param := args[0]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "namespace",
@@ -67304,7 +67304,7 @@ func decodeWatchCoreV1NamespacedEndpointsListParams(args map[string]string, r *h
 	return params, nil
 }
 
-func decodeWatchCoreV1NamespacedEventParams(args map[string]string, r *http.Request) (WatchCoreV1NamespacedEventParams, error) {
+func decodeWatchCoreV1NamespacedEventParams(args [2]string, r *http.Request) (WatchCoreV1NamespacedEventParams, error) {
 	var (
 		params    WatchCoreV1NamespacedEventParams
 		queryArgs = r.URL.Query()
@@ -67486,7 +67486,7 @@ func decodeWatchCoreV1NamespacedEventParams(args map[string]string, r *http.Requ
 	}
 	// Decode path: name.
 	{
-		param := args["name"]
+		param := args[1]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "name",
@@ -67517,7 +67517,7 @@ func decodeWatchCoreV1NamespacedEventParams(args map[string]string, r *http.Requ
 	}
 	// Decode path: namespace.
 	{
-		param := args["namespace"]
+		param := args[0]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "namespace",
@@ -67724,7 +67724,7 @@ func decodeWatchCoreV1NamespacedEventParams(args map[string]string, r *http.Requ
 	return params, nil
 }
 
-func decodeWatchCoreV1NamespacedEventListParams(args map[string]string, r *http.Request) (WatchCoreV1NamespacedEventListParams, error) {
+func decodeWatchCoreV1NamespacedEventListParams(args [1]string, r *http.Request) (WatchCoreV1NamespacedEventListParams, error) {
 	var (
 		params    WatchCoreV1NamespacedEventListParams
 		queryArgs = r.URL.Query()
@@ -67906,7 +67906,7 @@ func decodeWatchCoreV1NamespacedEventListParams(args map[string]string, r *http.
 	}
 	// Decode path: namespace.
 	{
-		param := args["namespace"]
+		param := args[0]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "namespace",
@@ -68113,7 +68113,7 @@ func decodeWatchCoreV1NamespacedEventListParams(args map[string]string, r *http.
 	return params, nil
 }
 
-func decodeWatchCoreV1NamespacedLimitRangeParams(args map[string]string, r *http.Request) (WatchCoreV1NamespacedLimitRangeParams, error) {
+func decodeWatchCoreV1NamespacedLimitRangeParams(args [2]string, r *http.Request) (WatchCoreV1NamespacedLimitRangeParams, error) {
 	var (
 		params    WatchCoreV1NamespacedLimitRangeParams
 		queryArgs = r.URL.Query()
@@ -68295,7 +68295,7 @@ func decodeWatchCoreV1NamespacedLimitRangeParams(args map[string]string, r *http
 	}
 	// Decode path: name.
 	{
-		param := args["name"]
+		param := args[1]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "name",
@@ -68326,7 +68326,7 @@ func decodeWatchCoreV1NamespacedLimitRangeParams(args map[string]string, r *http
 	}
 	// Decode path: namespace.
 	{
-		param := args["namespace"]
+		param := args[0]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "namespace",
@@ -68533,7 +68533,7 @@ func decodeWatchCoreV1NamespacedLimitRangeParams(args map[string]string, r *http
 	return params, nil
 }
 
-func decodeWatchCoreV1NamespacedLimitRangeListParams(args map[string]string, r *http.Request) (WatchCoreV1NamespacedLimitRangeListParams, error) {
+func decodeWatchCoreV1NamespacedLimitRangeListParams(args [1]string, r *http.Request) (WatchCoreV1NamespacedLimitRangeListParams, error) {
 	var (
 		params    WatchCoreV1NamespacedLimitRangeListParams
 		queryArgs = r.URL.Query()
@@ -68715,7 +68715,7 @@ func decodeWatchCoreV1NamespacedLimitRangeListParams(args map[string]string, r *
 	}
 	// Decode path: namespace.
 	{
-		param := args["namespace"]
+		param := args[0]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "namespace",
@@ -68922,7 +68922,7 @@ func decodeWatchCoreV1NamespacedLimitRangeListParams(args map[string]string, r *
 	return params, nil
 }
 
-func decodeWatchCoreV1NamespacedPersistentVolumeClaimParams(args map[string]string, r *http.Request) (WatchCoreV1NamespacedPersistentVolumeClaimParams, error) {
+func decodeWatchCoreV1NamespacedPersistentVolumeClaimParams(args [2]string, r *http.Request) (WatchCoreV1NamespacedPersistentVolumeClaimParams, error) {
 	var (
 		params    WatchCoreV1NamespacedPersistentVolumeClaimParams
 		queryArgs = r.URL.Query()
@@ -69104,7 +69104,7 @@ func decodeWatchCoreV1NamespacedPersistentVolumeClaimParams(args map[string]stri
 	}
 	// Decode path: name.
 	{
-		param := args["name"]
+		param := args[1]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "name",
@@ -69135,7 +69135,7 @@ func decodeWatchCoreV1NamespacedPersistentVolumeClaimParams(args map[string]stri
 	}
 	// Decode path: namespace.
 	{
-		param := args["namespace"]
+		param := args[0]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "namespace",
@@ -69342,7 +69342,7 @@ func decodeWatchCoreV1NamespacedPersistentVolumeClaimParams(args map[string]stri
 	return params, nil
 }
 
-func decodeWatchCoreV1NamespacedPersistentVolumeClaimListParams(args map[string]string, r *http.Request) (WatchCoreV1NamespacedPersistentVolumeClaimListParams, error) {
+func decodeWatchCoreV1NamespacedPersistentVolumeClaimListParams(args [1]string, r *http.Request) (WatchCoreV1NamespacedPersistentVolumeClaimListParams, error) {
 	var (
 		params    WatchCoreV1NamespacedPersistentVolumeClaimListParams
 		queryArgs = r.URL.Query()
@@ -69524,7 +69524,7 @@ func decodeWatchCoreV1NamespacedPersistentVolumeClaimListParams(args map[string]
 	}
 	// Decode path: namespace.
 	{
-		param := args["namespace"]
+		param := args[0]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "namespace",
@@ -69731,7 +69731,7 @@ func decodeWatchCoreV1NamespacedPersistentVolumeClaimListParams(args map[string]
 	return params, nil
 }
 
-func decodeWatchCoreV1NamespacedPodParams(args map[string]string, r *http.Request) (WatchCoreV1NamespacedPodParams, error) {
+func decodeWatchCoreV1NamespacedPodParams(args [2]string, r *http.Request) (WatchCoreV1NamespacedPodParams, error) {
 	var (
 		params    WatchCoreV1NamespacedPodParams
 		queryArgs = r.URL.Query()
@@ -69913,7 +69913,7 @@ func decodeWatchCoreV1NamespacedPodParams(args map[string]string, r *http.Reques
 	}
 	// Decode path: name.
 	{
-		param := args["name"]
+		param := args[1]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "name",
@@ -69944,7 +69944,7 @@ func decodeWatchCoreV1NamespacedPodParams(args map[string]string, r *http.Reques
 	}
 	// Decode path: namespace.
 	{
-		param := args["namespace"]
+		param := args[0]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "namespace",
@@ -70151,7 +70151,7 @@ func decodeWatchCoreV1NamespacedPodParams(args map[string]string, r *http.Reques
 	return params, nil
 }
 
-func decodeWatchCoreV1NamespacedPodListParams(args map[string]string, r *http.Request) (WatchCoreV1NamespacedPodListParams, error) {
+func decodeWatchCoreV1NamespacedPodListParams(args [1]string, r *http.Request) (WatchCoreV1NamespacedPodListParams, error) {
 	var (
 		params    WatchCoreV1NamespacedPodListParams
 		queryArgs = r.URL.Query()
@@ -70333,7 +70333,7 @@ func decodeWatchCoreV1NamespacedPodListParams(args map[string]string, r *http.Re
 	}
 	// Decode path: namespace.
 	{
-		param := args["namespace"]
+		param := args[0]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "namespace",
@@ -70540,7 +70540,7 @@ func decodeWatchCoreV1NamespacedPodListParams(args map[string]string, r *http.Re
 	return params, nil
 }
 
-func decodeWatchCoreV1NamespacedPodTemplateParams(args map[string]string, r *http.Request) (WatchCoreV1NamespacedPodTemplateParams, error) {
+func decodeWatchCoreV1NamespacedPodTemplateParams(args [2]string, r *http.Request) (WatchCoreV1NamespacedPodTemplateParams, error) {
 	var (
 		params    WatchCoreV1NamespacedPodTemplateParams
 		queryArgs = r.URL.Query()
@@ -70722,7 +70722,7 @@ func decodeWatchCoreV1NamespacedPodTemplateParams(args map[string]string, r *htt
 	}
 	// Decode path: name.
 	{
-		param := args["name"]
+		param := args[1]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "name",
@@ -70753,7 +70753,7 @@ func decodeWatchCoreV1NamespacedPodTemplateParams(args map[string]string, r *htt
 	}
 	// Decode path: namespace.
 	{
-		param := args["namespace"]
+		param := args[0]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "namespace",
@@ -70960,7 +70960,7 @@ func decodeWatchCoreV1NamespacedPodTemplateParams(args map[string]string, r *htt
 	return params, nil
 }
 
-func decodeWatchCoreV1NamespacedPodTemplateListParams(args map[string]string, r *http.Request) (WatchCoreV1NamespacedPodTemplateListParams, error) {
+func decodeWatchCoreV1NamespacedPodTemplateListParams(args [1]string, r *http.Request) (WatchCoreV1NamespacedPodTemplateListParams, error) {
 	var (
 		params    WatchCoreV1NamespacedPodTemplateListParams
 		queryArgs = r.URL.Query()
@@ -71142,7 +71142,7 @@ func decodeWatchCoreV1NamespacedPodTemplateListParams(args map[string]string, r 
 	}
 	// Decode path: namespace.
 	{
-		param := args["namespace"]
+		param := args[0]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "namespace",
@@ -71349,7 +71349,7 @@ func decodeWatchCoreV1NamespacedPodTemplateListParams(args map[string]string, r 
 	return params, nil
 }
 
-func decodeWatchCoreV1NamespacedReplicationControllerParams(args map[string]string, r *http.Request) (WatchCoreV1NamespacedReplicationControllerParams, error) {
+func decodeWatchCoreV1NamespacedReplicationControllerParams(args [2]string, r *http.Request) (WatchCoreV1NamespacedReplicationControllerParams, error) {
 	var (
 		params    WatchCoreV1NamespacedReplicationControllerParams
 		queryArgs = r.URL.Query()
@@ -71531,7 +71531,7 @@ func decodeWatchCoreV1NamespacedReplicationControllerParams(args map[string]stri
 	}
 	// Decode path: name.
 	{
-		param := args["name"]
+		param := args[1]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "name",
@@ -71562,7 +71562,7 @@ func decodeWatchCoreV1NamespacedReplicationControllerParams(args map[string]stri
 	}
 	// Decode path: namespace.
 	{
-		param := args["namespace"]
+		param := args[0]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "namespace",
@@ -71769,7 +71769,7 @@ func decodeWatchCoreV1NamespacedReplicationControllerParams(args map[string]stri
 	return params, nil
 }
 
-func decodeWatchCoreV1NamespacedReplicationControllerListParams(args map[string]string, r *http.Request) (WatchCoreV1NamespacedReplicationControllerListParams, error) {
+func decodeWatchCoreV1NamespacedReplicationControllerListParams(args [1]string, r *http.Request) (WatchCoreV1NamespacedReplicationControllerListParams, error) {
 	var (
 		params    WatchCoreV1NamespacedReplicationControllerListParams
 		queryArgs = r.URL.Query()
@@ -71951,7 +71951,7 @@ func decodeWatchCoreV1NamespacedReplicationControllerListParams(args map[string]
 	}
 	// Decode path: namespace.
 	{
-		param := args["namespace"]
+		param := args[0]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "namespace",
@@ -72158,7 +72158,7 @@ func decodeWatchCoreV1NamespacedReplicationControllerListParams(args map[string]
 	return params, nil
 }
 
-func decodeWatchCoreV1NamespacedResourceQuotaParams(args map[string]string, r *http.Request) (WatchCoreV1NamespacedResourceQuotaParams, error) {
+func decodeWatchCoreV1NamespacedResourceQuotaParams(args [2]string, r *http.Request) (WatchCoreV1NamespacedResourceQuotaParams, error) {
 	var (
 		params    WatchCoreV1NamespacedResourceQuotaParams
 		queryArgs = r.URL.Query()
@@ -72340,7 +72340,7 @@ func decodeWatchCoreV1NamespacedResourceQuotaParams(args map[string]string, r *h
 	}
 	// Decode path: name.
 	{
-		param := args["name"]
+		param := args[1]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "name",
@@ -72371,7 +72371,7 @@ func decodeWatchCoreV1NamespacedResourceQuotaParams(args map[string]string, r *h
 	}
 	// Decode path: namespace.
 	{
-		param := args["namespace"]
+		param := args[0]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "namespace",
@@ -72578,7 +72578,7 @@ func decodeWatchCoreV1NamespacedResourceQuotaParams(args map[string]string, r *h
 	return params, nil
 }
 
-func decodeWatchCoreV1NamespacedResourceQuotaListParams(args map[string]string, r *http.Request) (WatchCoreV1NamespacedResourceQuotaListParams, error) {
+func decodeWatchCoreV1NamespacedResourceQuotaListParams(args [1]string, r *http.Request) (WatchCoreV1NamespacedResourceQuotaListParams, error) {
 	var (
 		params    WatchCoreV1NamespacedResourceQuotaListParams
 		queryArgs = r.URL.Query()
@@ -72760,7 +72760,7 @@ func decodeWatchCoreV1NamespacedResourceQuotaListParams(args map[string]string, 
 	}
 	// Decode path: namespace.
 	{
-		param := args["namespace"]
+		param := args[0]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "namespace",
@@ -72967,7 +72967,7 @@ func decodeWatchCoreV1NamespacedResourceQuotaListParams(args map[string]string, 
 	return params, nil
 }
 
-func decodeWatchCoreV1NamespacedSecretParams(args map[string]string, r *http.Request) (WatchCoreV1NamespacedSecretParams, error) {
+func decodeWatchCoreV1NamespacedSecretParams(args [2]string, r *http.Request) (WatchCoreV1NamespacedSecretParams, error) {
 	var (
 		params    WatchCoreV1NamespacedSecretParams
 		queryArgs = r.URL.Query()
@@ -73149,7 +73149,7 @@ func decodeWatchCoreV1NamespacedSecretParams(args map[string]string, r *http.Req
 	}
 	// Decode path: name.
 	{
-		param := args["name"]
+		param := args[1]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "name",
@@ -73180,7 +73180,7 @@ func decodeWatchCoreV1NamespacedSecretParams(args map[string]string, r *http.Req
 	}
 	// Decode path: namespace.
 	{
-		param := args["namespace"]
+		param := args[0]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "namespace",
@@ -73387,7 +73387,7 @@ func decodeWatchCoreV1NamespacedSecretParams(args map[string]string, r *http.Req
 	return params, nil
 }
 
-func decodeWatchCoreV1NamespacedSecretListParams(args map[string]string, r *http.Request) (WatchCoreV1NamespacedSecretListParams, error) {
+func decodeWatchCoreV1NamespacedSecretListParams(args [1]string, r *http.Request) (WatchCoreV1NamespacedSecretListParams, error) {
 	var (
 		params    WatchCoreV1NamespacedSecretListParams
 		queryArgs = r.URL.Query()
@@ -73569,7 +73569,7 @@ func decodeWatchCoreV1NamespacedSecretListParams(args map[string]string, r *http
 	}
 	// Decode path: namespace.
 	{
-		param := args["namespace"]
+		param := args[0]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "namespace",
@@ -73776,7 +73776,7 @@ func decodeWatchCoreV1NamespacedSecretListParams(args map[string]string, r *http
 	return params, nil
 }
 
-func decodeWatchCoreV1NamespacedServiceParams(args map[string]string, r *http.Request) (WatchCoreV1NamespacedServiceParams, error) {
+func decodeWatchCoreV1NamespacedServiceParams(args [2]string, r *http.Request) (WatchCoreV1NamespacedServiceParams, error) {
 	var (
 		params    WatchCoreV1NamespacedServiceParams
 		queryArgs = r.URL.Query()
@@ -73958,7 +73958,7 @@ func decodeWatchCoreV1NamespacedServiceParams(args map[string]string, r *http.Re
 	}
 	// Decode path: name.
 	{
-		param := args["name"]
+		param := args[1]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "name",
@@ -73989,7 +73989,7 @@ func decodeWatchCoreV1NamespacedServiceParams(args map[string]string, r *http.Re
 	}
 	// Decode path: namespace.
 	{
-		param := args["namespace"]
+		param := args[0]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "namespace",
@@ -74196,7 +74196,7 @@ func decodeWatchCoreV1NamespacedServiceParams(args map[string]string, r *http.Re
 	return params, nil
 }
 
-func decodeWatchCoreV1NamespacedServiceAccountParams(args map[string]string, r *http.Request) (WatchCoreV1NamespacedServiceAccountParams, error) {
+func decodeWatchCoreV1NamespacedServiceAccountParams(args [2]string, r *http.Request) (WatchCoreV1NamespacedServiceAccountParams, error) {
 	var (
 		params    WatchCoreV1NamespacedServiceAccountParams
 		queryArgs = r.URL.Query()
@@ -74378,7 +74378,7 @@ func decodeWatchCoreV1NamespacedServiceAccountParams(args map[string]string, r *
 	}
 	// Decode path: name.
 	{
-		param := args["name"]
+		param := args[1]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "name",
@@ -74409,7 +74409,7 @@ func decodeWatchCoreV1NamespacedServiceAccountParams(args map[string]string, r *
 	}
 	// Decode path: namespace.
 	{
-		param := args["namespace"]
+		param := args[0]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "namespace",
@@ -74616,7 +74616,7 @@ func decodeWatchCoreV1NamespacedServiceAccountParams(args map[string]string, r *
 	return params, nil
 }
 
-func decodeWatchCoreV1NamespacedServiceAccountListParams(args map[string]string, r *http.Request) (WatchCoreV1NamespacedServiceAccountListParams, error) {
+func decodeWatchCoreV1NamespacedServiceAccountListParams(args [1]string, r *http.Request) (WatchCoreV1NamespacedServiceAccountListParams, error) {
 	var (
 		params    WatchCoreV1NamespacedServiceAccountListParams
 		queryArgs = r.URL.Query()
@@ -74798,7 +74798,7 @@ func decodeWatchCoreV1NamespacedServiceAccountListParams(args map[string]string,
 	}
 	// Decode path: namespace.
 	{
-		param := args["namespace"]
+		param := args[0]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "namespace",
@@ -75005,7 +75005,7 @@ func decodeWatchCoreV1NamespacedServiceAccountListParams(args map[string]string,
 	return params, nil
 }
 
-func decodeWatchCoreV1NamespacedServiceListParams(args map[string]string, r *http.Request) (WatchCoreV1NamespacedServiceListParams, error) {
+func decodeWatchCoreV1NamespacedServiceListParams(args [1]string, r *http.Request) (WatchCoreV1NamespacedServiceListParams, error) {
 	var (
 		params    WatchCoreV1NamespacedServiceListParams
 		queryArgs = r.URL.Query()
@@ -75187,7 +75187,7 @@ func decodeWatchCoreV1NamespacedServiceListParams(args map[string]string, r *htt
 	}
 	// Decode path: namespace.
 	{
-		param := args["namespace"]
+		param := args[0]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "namespace",
@@ -75394,7 +75394,7 @@ func decodeWatchCoreV1NamespacedServiceListParams(args map[string]string, r *htt
 	return params, nil
 }
 
-func decodeWatchCoreV1NodeParams(args map[string]string, r *http.Request) (WatchCoreV1NodeParams, error) {
+func decodeWatchCoreV1NodeParams(args [1]string, r *http.Request) (WatchCoreV1NodeParams, error) {
 	var (
 		params    WatchCoreV1NodeParams
 		queryArgs = r.URL.Query()
@@ -75576,7 +75576,7 @@ func decodeWatchCoreV1NodeParams(args map[string]string, r *http.Request) (Watch
 	}
 	// Decode path: name.
 	{
-		param := args["name"]
+		param := args[0]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "name",
@@ -75783,7 +75783,7 @@ func decodeWatchCoreV1NodeParams(args map[string]string, r *http.Request) (Watch
 	return params, nil
 }
 
-func decodeWatchCoreV1NodeListParams(args map[string]string, r *http.Request) (WatchCoreV1NodeListParams, error) {
+func decodeWatchCoreV1NodeListParams(args [0]string, r *http.Request) (WatchCoreV1NodeListParams, error) {
 	var (
 		params    WatchCoreV1NodeListParams
 		queryArgs = r.URL.Query()
@@ -76141,7 +76141,7 @@ func decodeWatchCoreV1NodeListParams(args map[string]string, r *http.Request) (W
 	return params, nil
 }
 
-func decodeWatchCoreV1PersistentVolumeParams(args map[string]string, r *http.Request) (WatchCoreV1PersistentVolumeParams, error) {
+func decodeWatchCoreV1PersistentVolumeParams(args [1]string, r *http.Request) (WatchCoreV1PersistentVolumeParams, error) {
 	var (
 		params    WatchCoreV1PersistentVolumeParams
 		queryArgs = r.URL.Query()
@@ -76323,7 +76323,7 @@ func decodeWatchCoreV1PersistentVolumeParams(args map[string]string, r *http.Req
 	}
 	// Decode path: name.
 	{
-		param := args["name"]
+		param := args[0]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "name",
@@ -76530,7 +76530,7 @@ func decodeWatchCoreV1PersistentVolumeParams(args map[string]string, r *http.Req
 	return params, nil
 }
 
-func decodeWatchCoreV1PersistentVolumeClaimListForAllNamespacesParams(args map[string]string, r *http.Request) (WatchCoreV1PersistentVolumeClaimListForAllNamespacesParams, error) {
+func decodeWatchCoreV1PersistentVolumeClaimListForAllNamespacesParams(args [0]string, r *http.Request) (WatchCoreV1PersistentVolumeClaimListForAllNamespacesParams, error) {
 	var (
 		params    WatchCoreV1PersistentVolumeClaimListForAllNamespacesParams
 		queryArgs = r.URL.Query()
@@ -76888,7 +76888,7 @@ func decodeWatchCoreV1PersistentVolumeClaimListForAllNamespacesParams(args map[s
 	return params, nil
 }
 
-func decodeWatchCoreV1PersistentVolumeListParams(args map[string]string, r *http.Request) (WatchCoreV1PersistentVolumeListParams, error) {
+func decodeWatchCoreV1PersistentVolumeListParams(args [0]string, r *http.Request) (WatchCoreV1PersistentVolumeListParams, error) {
 	var (
 		params    WatchCoreV1PersistentVolumeListParams
 		queryArgs = r.URL.Query()
@@ -77246,7 +77246,7 @@ func decodeWatchCoreV1PersistentVolumeListParams(args map[string]string, r *http
 	return params, nil
 }
 
-func decodeWatchCoreV1PodListForAllNamespacesParams(args map[string]string, r *http.Request) (WatchCoreV1PodListForAllNamespacesParams, error) {
+func decodeWatchCoreV1PodListForAllNamespacesParams(args [0]string, r *http.Request) (WatchCoreV1PodListForAllNamespacesParams, error) {
 	var (
 		params    WatchCoreV1PodListForAllNamespacesParams
 		queryArgs = r.URL.Query()
@@ -77604,7 +77604,7 @@ func decodeWatchCoreV1PodListForAllNamespacesParams(args map[string]string, r *h
 	return params, nil
 }
 
-func decodeWatchCoreV1PodTemplateListForAllNamespacesParams(args map[string]string, r *http.Request) (WatchCoreV1PodTemplateListForAllNamespacesParams, error) {
+func decodeWatchCoreV1PodTemplateListForAllNamespacesParams(args [0]string, r *http.Request) (WatchCoreV1PodTemplateListForAllNamespacesParams, error) {
 	var (
 		params    WatchCoreV1PodTemplateListForAllNamespacesParams
 		queryArgs = r.URL.Query()
@@ -77962,7 +77962,7 @@ func decodeWatchCoreV1PodTemplateListForAllNamespacesParams(args map[string]stri
 	return params, nil
 }
 
-func decodeWatchCoreV1ReplicationControllerListForAllNamespacesParams(args map[string]string, r *http.Request) (WatchCoreV1ReplicationControllerListForAllNamespacesParams, error) {
+func decodeWatchCoreV1ReplicationControllerListForAllNamespacesParams(args [0]string, r *http.Request) (WatchCoreV1ReplicationControllerListForAllNamespacesParams, error) {
 	var (
 		params    WatchCoreV1ReplicationControllerListForAllNamespacesParams
 		queryArgs = r.URL.Query()
@@ -78320,7 +78320,7 @@ func decodeWatchCoreV1ReplicationControllerListForAllNamespacesParams(args map[s
 	return params, nil
 }
 
-func decodeWatchCoreV1ResourceQuotaListForAllNamespacesParams(args map[string]string, r *http.Request) (WatchCoreV1ResourceQuotaListForAllNamespacesParams, error) {
+func decodeWatchCoreV1ResourceQuotaListForAllNamespacesParams(args [0]string, r *http.Request) (WatchCoreV1ResourceQuotaListForAllNamespacesParams, error) {
 	var (
 		params    WatchCoreV1ResourceQuotaListForAllNamespacesParams
 		queryArgs = r.URL.Query()
@@ -78678,7 +78678,7 @@ func decodeWatchCoreV1ResourceQuotaListForAllNamespacesParams(args map[string]st
 	return params, nil
 }
 
-func decodeWatchCoreV1SecretListForAllNamespacesParams(args map[string]string, r *http.Request) (WatchCoreV1SecretListForAllNamespacesParams, error) {
+func decodeWatchCoreV1SecretListForAllNamespacesParams(args [0]string, r *http.Request) (WatchCoreV1SecretListForAllNamespacesParams, error) {
 	var (
 		params    WatchCoreV1SecretListForAllNamespacesParams
 		queryArgs = r.URL.Query()
@@ -79036,7 +79036,7 @@ func decodeWatchCoreV1SecretListForAllNamespacesParams(args map[string]string, r
 	return params, nil
 }
 
-func decodeWatchCoreV1ServiceAccountListForAllNamespacesParams(args map[string]string, r *http.Request) (WatchCoreV1ServiceAccountListForAllNamespacesParams, error) {
+func decodeWatchCoreV1ServiceAccountListForAllNamespacesParams(args [0]string, r *http.Request) (WatchCoreV1ServiceAccountListForAllNamespacesParams, error) {
 	var (
 		params    WatchCoreV1ServiceAccountListForAllNamespacesParams
 		queryArgs = r.URL.Query()
@@ -79394,7 +79394,7 @@ func decodeWatchCoreV1ServiceAccountListForAllNamespacesParams(args map[string]s
 	return params, nil
 }
 
-func decodeWatchCoreV1ServiceListForAllNamespacesParams(args map[string]string, r *http.Request) (WatchCoreV1ServiceListForAllNamespacesParams, error) {
+func decodeWatchCoreV1ServiceListForAllNamespacesParams(args [0]string, r *http.Request) (WatchCoreV1ServiceListForAllNamespacesParams, error) {
 	var (
 		params    WatchCoreV1ServiceListForAllNamespacesParams
 		queryArgs = r.URL.Query()
@@ -79752,7 +79752,7 @@ func decodeWatchCoreV1ServiceListForAllNamespacesParams(args map[string]string, 
 	return params, nil
 }
 
-func decodeWatchDiscoveryV1EndpointSliceListForAllNamespacesParams(args map[string]string, r *http.Request) (WatchDiscoveryV1EndpointSliceListForAllNamespacesParams, error) {
+func decodeWatchDiscoveryV1EndpointSliceListForAllNamespacesParams(args [0]string, r *http.Request) (WatchDiscoveryV1EndpointSliceListForAllNamespacesParams, error) {
 	var (
 		params    WatchDiscoveryV1EndpointSliceListForAllNamespacesParams
 		queryArgs = r.URL.Query()
@@ -80110,7 +80110,7 @@ func decodeWatchDiscoveryV1EndpointSliceListForAllNamespacesParams(args map[stri
 	return params, nil
 }
 
-func decodeWatchDiscoveryV1NamespacedEndpointSliceParams(args map[string]string, r *http.Request) (WatchDiscoveryV1NamespacedEndpointSliceParams, error) {
+func decodeWatchDiscoveryV1NamespacedEndpointSliceParams(args [2]string, r *http.Request) (WatchDiscoveryV1NamespacedEndpointSliceParams, error) {
 	var (
 		params    WatchDiscoveryV1NamespacedEndpointSliceParams
 		queryArgs = r.URL.Query()
@@ -80292,7 +80292,7 @@ func decodeWatchDiscoveryV1NamespacedEndpointSliceParams(args map[string]string,
 	}
 	// Decode path: name.
 	{
-		param := args["name"]
+		param := args[1]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "name",
@@ -80323,7 +80323,7 @@ func decodeWatchDiscoveryV1NamespacedEndpointSliceParams(args map[string]string,
 	}
 	// Decode path: namespace.
 	{
-		param := args["namespace"]
+		param := args[0]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "namespace",
@@ -80530,7 +80530,7 @@ func decodeWatchDiscoveryV1NamespacedEndpointSliceParams(args map[string]string,
 	return params, nil
 }
 
-func decodeWatchDiscoveryV1NamespacedEndpointSliceListParams(args map[string]string, r *http.Request) (WatchDiscoveryV1NamespacedEndpointSliceListParams, error) {
+func decodeWatchDiscoveryV1NamespacedEndpointSliceListParams(args [1]string, r *http.Request) (WatchDiscoveryV1NamespacedEndpointSliceListParams, error) {
 	var (
 		params    WatchDiscoveryV1NamespacedEndpointSliceListParams
 		queryArgs = r.URL.Query()
@@ -80712,7 +80712,7 @@ func decodeWatchDiscoveryV1NamespacedEndpointSliceListParams(args map[string]str
 	}
 	// Decode path: namespace.
 	{
-		param := args["namespace"]
+		param := args[0]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "namespace",
@@ -80919,7 +80919,7 @@ func decodeWatchDiscoveryV1NamespacedEndpointSliceListParams(args map[string]str
 	return params, nil
 }
 
-func decodeWatchDiscoveryV1beta1EndpointSliceListForAllNamespacesParams(args map[string]string, r *http.Request) (WatchDiscoveryV1beta1EndpointSliceListForAllNamespacesParams, error) {
+func decodeWatchDiscoveryV1beta1EndpointSliceListForAllNamespacesParams(args [0]string, r *http.Request) (WatchDiscoveryV1beta1EndpointSliceListForAllNamespacesParams, error) {
 	var (
 		params    WatchDiscoveryV1beta1EndpointSliceListForAllNamespacesParams
 		queryArgs = r.URL.Query()
@@ -81277,7 +81277,7 @@ func decodeWatchDiscoveryV1beta1EndpointSliceListForAllNamespacesParams(args map
 	return params, nil
 }
 
-func decodeWatchDiscoveryV1beta1NamespacedEndpointSliceParams(args map[string]string, r *http.Request) (WatchDiscoveryV1beta1NamespacedEndpointSliceParams, error) {
+func decodeWatchDiscoveryV1beta1NamespacedEndpointSliceParams(args [2]string, r *http.Request) (WatchDiscoveryV1beta1NamespacedEndpointSliceParams, error) {
 	var (
 		params    WatchDiscoveryV1beta1NamespacedEndpointSliceParams
 		queryArgs = r.URL.Query()
@@ -81459,7 +81459,7 @@ func decodeWatchDiscoveryV1beta1NamespacedEndpointSliceParams(args map[string]st
 	}
 	// Decode path: name.
 	{
-		param := args["name"]
+		param := args[1]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "name",
@@ -81490,7 +81490,7 @@ func decodeWatchDiscoveryV1beta1NamespacedEndpointSliceParams(args map[string]st
 	}
 	// Decode path: namespace.
 	{
-		param := args["namespace"]
+		param := args[0]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "namespace",
@@ -81697,7 +81697,7 @@ func decodeWatchDiscoveryV1beta1NamespacedEndpointSliceParams(args map[string]st
 	return params, nil
 }
 
-func decodeWatchDiscoveryV1beta1NamespacedEndpointSliceListParams(args map[string]string, r *http.Request) (WatchDiscoveryV1beta1NamespacedEndpointSliceListParams, error) {
+func decodeWatchDiscoveryV1beta1NamespacedEndpointSliceListParams(args [1]string, r *http.Request) (WatchDiscoveryV1beta1NamespacedEndpointSliceListParams, error) {
 	var (
 		params    WatchDiscoveryV1beta1NamespacedEndpointSliceListParams
 		queryArgs = r.URL.Query()
@@ -81879,7 +81879,7 @@ func decodeWatchDiscoveryV1beta1NamespacedEndpointSliceListParams(args map[strin
 	}
 	// Decode path: namespace.
 	{
-		param := args["namespace"]
+		param := args[0]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "namespace",
@@ -82086,7 +82086,7 @@ func decodeWatchDiscoveryV1beta1NamespacedEndpointSliceListParams(args map[strin
 	return params, nil
 }
 
-func decodeWatchEventsV1EventListForAllNamespacesParams(args map[string]string, r *http.Request) (WatchEventsV1EventListForAllNamespacesParams, error) {
+func decodeWatchEventsV1EventListForAllNamespacesParams(args [0]string, r *http.Request) (WatchEventsV1EventListForAllNamespacesParams, error) {
 	var (
 		params    WatchEventsV1EventListForAllNamespacesParams
 		queryArgs = r.URL.Query()
@@ -82444,7 +82444,7 @@ func decodeWatchEventsV1EventListForAllNamespacesParams(args map[string]string, 
 	return params, nil
 }
 
-func decodeWatchEventsV1NamespacedEventParams(args map[string]string, r *http.Request) (WatchEventsV1NamespacedEventParams, error) {
+func decodeWatchEventsV1NamespacedEventParams(args [2]string, r *http.Request) (WatchEventsV1NamespacedEventParams, error) {
 	var (
 		params    WatchEventsV1NamespacedEventParams
 		queryArgs = r.URL.Query()
@@ -82626,7 +82626,7 @@ func decodeWatchEventsV1NamespacedEventParams(args map[string]string, r *http.Re
 	}
 	// Decode path: name.
 	{
-		param := args["name"]
+		param := args[1]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "name",
@@ -82657,7 +82657,7 @@ func decodeWatchEventsV1NamespacedEventParams(args map[string]string, r *http.Re
 	}
 	// Decode path: namespace.
 	{
-		param := args["namespace"]
+		param := args[0]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "namespace",
@@ -82864,7 +82864,7 @@ func decodeWatchEventsV1NamespacedEventParams(args map[string]string, r *http.Re
 	return params, nil
 }
 
-func decodeWatchEventsV1NamespacedEventListParams(args map[string]string, r *http.Request) (WatchEventsV1NamespacedEventListParams, error) {
+func decodeWatchEventsV1NamespacedEventListParams(args [1]string, r *http.Request) (WatchEventsV1NamespacedEventListParams, error) {
 	var (
 		params    WatchEventsV1NamespacedEventListParams
 		queryArgs = r.URL.Query()
@@ -83046,7 +83046,7 @@ func decodeWatchEventsV1NamespacedEventListParams(args map[string]string, r *htt
 	}
 	// Decode path: namespace.
 	{
-		param := args["namespace"]
+		param := args[0]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "namespace",
@@ -83253,7 +83253,7 @@ func decodeWatchEventsV1NamespacedEventListParams(args map[string]string, r *htt
 	return params, nil
 }
 
-func decodeWatchEventsV1beta1EventListForAllNamespacesParams(args map[string]string, r *http.Request) (WatchEventsV1beta1EventListForAllNamespacesParams, error) {
+func decodeWatchEventsV1beta1EventListForAllNamespacesParams(args [0]string, r *http.Request) (WatchEventsV1beta1EventListForAllNamespacesParams, error) {
 	var (
 		params    WatchEventsV1beta1EventListForAllNamespacesParams
 		queryArgs = r.URL.Query()
@@ -83611,7 +83611,7 @@ func decodeWatchEventsV1beta1EventListForAllNamespacesParams(args map[string]str
 	return params, nil
 }
 
-func decodeWatchEventsV1beta1NamespacedEventParams(args map[string]string, r *http.Request) (WatchEventsV1beta1NamespacedEventParams, error) {
+func decodeWatchEventsV1beta1NamespacedEventParams(args [2]string, r *http.Request) (WatchEventsV1beta1NamespacedEventParams, error) {
 	var (
 		params    WatchEventsV1beta1NamespacedEventParams
 		queryArgs = r.URL.Query()
@@ -83793,7 +83793,7 @@ func decodeWatchEventsV1beta1NamespacedEventParams(args map[string]string, r *ht
 	}
 	// Decode path: name.
 	{
-		param := args["name"]
+		param := args[1]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "name",
@@ -83824,7 +83824,7 @@ func decodeWatchEventsV1beta1NamespacedEventParams(args map[string]string, r *ht
 	}
 	// Decode path: namespace.
 	{
-		param := args["namespace"]
+		param := args[0]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "namespace",
@@ -84031,7 +84031,7 @@ func decodeWatchEventsV1beta1NamespacedEventParams(args map[string]string, r *ht
 	return params, nil
 }
 
-func decodeWatchEventsV1beta1NamespacedEventListParams(args map[string]string, r *http.Request) (WatchEventsV1beta1NamespacedEventListParams, error) {
+func decodeWatchEventsV1beta1NamespacedEventListParams(args [1]string, r *http.Request) (WatchEventsV1beta1NamespacedEventListParams, error) {
 	var (
 		params    WatchEventsV1beta1NamespacedEventListParams
 		queryArgs = r.URL.Query()
@@ -84213,7 +84213,7 @@ func decodeWatchEventsV1beta1NamespacedEventListParams(args map[string]string, r
 	}
 	// Decode path: namespace.
 	{
-		param := args["namespace"]
+		param := args[0]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "namespace",
@@ -84420,7 +84420,7 @@ func decodeWatchEventsV1beta1NamespacedEventListParams(args map[string]string, r
 	return params, nil
 }
 
-func decodeWatchFlowcontrolApiserverV1beta1FlowSchemaParams(args map[string]string, r *http.Request) (WatchFlowcontrolApiserverV1beta1FlowSchemaParams, error) {
+func decodeWatchFlowcontrolApiserverV1beta1FlowSchemaParams(args [1]string, r *http.Request) (WatchFlowcontrolApiserverV1beta1FlowSchemaParams, error) {
 	var (
 		params    WatchFlowcontrolApiserverV1beta1FlowSchemaParams
 		queryArgs = r.URL.Query()
@@ -84602,7 +84602,7 @@ func decodeWatchFlowcontrolApiserverV1beta1FlowSchemaParams(args map[string]stri
 	}
 	// Decode path: name.
 	{
-		param := args["name"]
+		param := args[0]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "name",
@@ -84809,7 +84809,7 @@ func decodeWatchFlowcontrolApiserverV1beta1FlowSchemaParams(args map[string]stri
 	return params, nil
 }
 
-func decodeWatchFlowcontrolApiserverV1beta1FlowSchemaListParams(args map[string]string, r *http.Request) (WatchFlowcontrolApiserverV1beta1FlowSchemaListParams, error) {
+func decodeWatchFlowcontrolApiserverV1beta1FlowSchemaListParams(args [0]string, r *http.Request) (WatchFlowcontrolApiserverV1beta1FlowSchemaListParams, error) {
 	var (
 		params    WatchFlowcontrolApiserverV1beta1FlowSchemaListParams
 		queryArgs = r.URL.Query()
@@ -85167,7 +85167,7 @@ func decodeWatchFlowcontrolApiserverV1beta1FlowSchemaListParams(args map[string]
 	return params, nil
 }
 
-func decodeWatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationParams(args map[string]string, r *http.Request) (WatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationParams, error) {
+func decodeWatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationParams(args [1]string, r *http.Request) (WatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationParams, error) {
 	var (
 		params    WatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationParams
 		queryArgs = r.URL.Query()
@@ -85349,7 +85349,7 @@ func decodeWatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationParams(args
 	}
 	// Decode path: name.
 	{
-		param := args["name"]
+		param := args[0]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "name",
@@ -85556,7 +85556,7 @@ func decodeWatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationParams(args
 	return params, nil
 }
 
-func decodeWatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationListParams(args map[string]string, r *http.Request) (WatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationListParams, error) {
+func decodeWatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationListParams(args [0]string, r *http.Request) (WatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationListParams, error) {
 	var (
 		params    WatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationListParams
 		queryArgs = r.URL.Query()
@@ -85914,7 +85914,7 @@ func decodeWatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationListParams(
 	return params, nil
 }
 
-func decodeWatchFlowcontrolApiserverV1beta2FlowSchemaParams(args map[string]string, r *http.Request) (WatchFlowcontrolApiserverV1beta2FlowSchemaParams, error) {
+func decodeWatchFlowcontrolApiserverV1beta2FlowSchemaParams(args [1]string, r *http.Request) (WatchFlowcontrolApiserverV1beta2FlowSchemaParams, error) {
 	var (
 		params    WatchFlowcontrolApiserverV1beta2FlowSchemaParams
 		queryArgs = r.URL.Query()
@@ -86096,7 +86096,7 @@ func decodeWatchFlowcontrolApiserverV1beta2FlowSchemaParams(args map[string]stri
 	}
 	// Decode path: name.
 	{
-		param := args["name"]
+		param := args[0]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "name",
@@ -86303,7 +86303,7 @@ func decodeWatchFlowcontrolApiserverV1beta2FlowSchemaParams(args map[string]stri
 	return params, nil
 }
 
-func decodeWatchFlowcontrolApiserverV1beta2FlowSchemaListParams(args map[string]string, r *http.Request) (WatchFlowcontrolApiserverV1beta2FlowSchemaListParams, error) {
+func decodeWatchFlowcontrolApiserverV1beta2FlowSchemaListParams(args [0]string, r *http.Request) (WatchFlowcontrolApiserverV1beta2FlowSchemaListParams, error) {
 	var (
 		params    WatchFlowcontrolApiserverV1beta2FlowSchemaListParams
 		queryArgs = r.URL.Query()
@@ -86661,7 +86661,7 @@ func decodeWatchFlowcontrolApiserverV1beta2FlowSchemaListParams(args map[string]
 	return params, nil
 }
 
-func decodeWatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationParams(args map[string]string, r *http.Request) (WatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationParams, error) {
+func decodeWatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationParams(args [1]string, r *http.Request) (WatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationParams, error) {
 	var (
 		params    WatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationParams
 		queryArgs = r.URL.Query()
@@ -86843,7 +86843,7 @@ func decodeWatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationParams(args
 	}
 	// Decode path: name.
 	{
-		param := args["name"]
+		param := args[0]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "name",
@@ -87050,7 +87050,7 @@ func decodeWatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationParams(args
 	return params, nil
 }
 
-func decodeWatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationListParams(args map[string]string, r *http.Request) (WatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationListParams, error) {
+func decodeWatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationListParams(args [0]string, r *http.Request) (WatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationListParams, error) {
 	var (
 		params    WatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationListParams
 		queryArgs = r.URL.Query()
@@ -87408,7 +87408,7 @@ func decodeWatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationListParams(
 	return params, nil
 }
 
-func decodeWatchInternalApiserverV1alpha1StorageVersionParams(args map[string]string, r *http.Request) (WatchInternalApiserverV1alpha1StorageVersionParams, error) {
+func decodeWatchInternalApiserverV1alpha1StorageVersionParams(args [1]string, r *http.Request) (WatchInternalApiserverV1alpha1StorageVersionParams, error) {
 	var (
 		params    WatchInternalApiserverV1alpha1StorageVersionParams
 		queryArgs = r.URL.Query()
@@ -87590,7 +87590,7 @@ func decodeWatchInternalApiserverV1alpha1StorageVersionParams(args map[string]st
 	}
 	// Decode path: name.
 	{
-		param := args["name"]
+		param := args[0]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "name",
@@ -87797,7 +87797,7 @@ func decodeWatchInternalApiserverV1alpha1StorageVersionParams(args map[string]st
 	return params, nil
 }
 
-func decodeWatchInternalApiserverV1alpha1StorageVersionListParams(args map[string]string, r *http.Request) (WatchInternalApiserverV1alpha1StorageVersionListParams, error) {
+func decodeWatchInternalApiserverV1alpha1StorageVersionListParams(args [0]string, r *http.Request) (WatchInternalApiserverV1alpha1StorageVersionListParams, error) {
 	var (
 		params    WatchInternalApiserverV1alpha1StorageVersionListParams
 		queryArgs = r.URL.Query()
@@ -88155,7 +88155,7 @@ func decodeWatchInternalApiserverV1alpha1StorageVersionListParams(args map[strin
 	return params, nil
 }
 
-func decodeWatchNetworkingV1IngressClassParams(args map[string]string, r *http.Request) (WatchNetworkingV1IngressClassParams, error) {
+func decodeWatchNetworkingV1IngressClassParams(args [1]string, r *http.Request) (WatchNetworkingV1IngressClassParams, error) {
 	var (
 		params    WatchNetworkingV1IngressClassParams
 		queryArgs = r.URL.Query()
@@ -88337,7 +88337,7 @@ func decodeWatchNetworkingV1IngressClassParams(args map[string]string, r *http.R
 	}
 	// Decode path: name.
 	{
-		param := args["name"]
+		param := args[0]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "name",
@@ -88544,7 +88544,7 @@ func decodeWatchNetworkingV1IngressClassParams(args map[string]string, r *http.R
 	return params, nil
 }
 
-func decodeWatchNetworkingV1IngressClassListParams(args map[string]string, r *http.Request) (WatchNetworkingV1IngressClassListParams, error) {
+func decodeWatchNetworkingV1IngressClassListParams(args [0]string, r *http.Request) (WatchNetworkingV1IngressClassListParams, error) {
 	var (
 		params    WatchNetworkingV1IngressClassListParams
 		queryArgs = r.URL.Query()
@@ -88902,7 +88902,7 @@ func decodeWatchNetworkingV1IngressClassListParams(args map[string]string, r *ht
 	return params, nil
 }
 
-func decodeWatchNetworkingV1IngressListForAllNamespacesParams(args map[string]string, r *http.Request) (WatchNetworkingV1IngressListForAllNamespacesParams, error) {
+func decodeWatchNetworkingV1IngressListForAllNamespacesParams(args [0]string, r *http.Request) (WatchNetworkingV1IngressListForAllNamespacesParams, error) {
 	var (
 		params    WatchNetworkingV1IngressListForAllNamespacesParams
 		queryArgs = r.URL.Query()
@@ -89260,7 +89260,7 @@ func decodeWatchNetworkingV1IngressListForAllNamespacesParams(args map[string]st
 	return params, nil
 }
 
-func decodeWatchNetworkingV1NamespacedIngressParams(args map[string]string, r *http.Request) (WatchNetworkingV1NamespacedIngressParams, error) {
+func decodeWatchNetworkingV1NamespacedIngressParams(args [2]string, r *http.Request) (WatchNetworkingV1NamespacedIngressParams, error) {
 	var (
 		params    WatchNetworkingV1NamespacedIngressParams
 		queryArgs = r.URL.Query()
@@ -89442,7 +89442,7 @@ func decodeWatchNetworkingV1NamespacedIngressParams(args map[string]string, r *h
 	}
 	// Decode path: name.
 	{
-		param := args["name"]
+		param := args[1]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "name",
@@ -89473,7 +89473,7 @@ func decodeWatchNetworkingV1NamespacedIngressParams(args map[string]string, r *h
 	}
 	// Decode path: namespace.
 	{
-		param := args["namespace"]
+		param := args[0]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "namespace",
@@ -89680,7 +89680,7 @@ func decodeWatchNetworkingV1NamespacedIngressParams(args map[string]string, r *h
 	return params, nil
 }
 
-func decodeWatchNetworkingV1NamespacedIngressListParams(args map[string]string, r *http.Request) (WatchNetworkingV1NamespacedIngressListParams, error) {
+func decodeWatchNetworkingV1NamespacedIngressListParams(args [1]string, r *http.Request) (WatchNetworkingV1NamespacedIngressListParams, error) {
 	var (
 		params    WatchNetworkingV1NamespacedIngressListParams
 		queryArgs = r.URL.Query()
@@ -89862,7 +89862,7 @@ func decodeWatchNetworkingV1NamespacedIngressListParams(args map[string]string, 
 	}
 	// Decode path: namespace.
 	{
-		param := args["namespace"]
+		param := args[0]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "namespace",
@@ -90069,7 +90069,7 @@ func decodeWatchNetworkingV1NamespacedIngressListParams(args map[string]string, 
 	return params, nil
 }
 
-func decodeWatchNetworkingV1NamespacedNetworkPolicyParams(args map[string]string, r *http.Request) (WatchNetworkingV1NamespacedNetworkPolicyParams, error) {
+func decodeWatchNetworkingV1NamespacedNetworkPolicyParams(args [2]string, r *http.Request) (WatchNetworkingV1NamespacedNetworkPolicyParams, error) {
 	var (
 		params    WatchNetworkingV1NamespacedNetworkPolicyParams
 		queryArgs = r.URL.Query()
@@ -90251,7 +90251,7 @@ func decodeWatchNetworkingV1NamespacedNetworkPolicyParams(args map[string]string
 	}
 	// Decode path: name.
 	{
-		param := args["name"]
+		param := args[1]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "name",
@@ -90282,7 +90282,7 @@ func decodeWatchNetworkingV1NamespacedNetworkPolicyParams(args map[string]string
 	}
 	// Decode path: namespace.
 	{
-		param := args["namespace"]
+		param := args[0]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "namespace",
@@ -90489,7 +90489,7 @@ func decodeWatchNetworkingV1NamespacedNetworkPolicyParams(args map[string]string
 	return params, nil
 }
 
-func decodeWatchNetworkingV1NamespacedNetworkPolicyListParams(args map[string]string, r *http.Request) (WatchNetworkingV1NamespacedNetworkPolicyListParams, error) {
+func decodeWatchNetworkingV1NamespacedNetworkPolicyListParams(args [1]string, r *http.Request) (WatchNetworkingV1NamespacedNetworkPolicyListParams, error) {
 	var (
 		params    WatchNetworkingV1NamespacedNetworkPolicyListParams
 		queryArgs = r.URL.Query()
@@ -90671,7 +90671,7 @@ func decodeWatchNetworkingV1NamespacedNetworkPolicyListParams(args map[string]st
 	}
 	// Decode path: namespace.
 	{
-		param := args["namespace"]
+		param := args[0]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "namespace",
@@ -90878,7 +90878,7 @@ func decodeWatchNetworkingV1NamespacedNetworkPolicyListParams(args map[string]st
 	return params, nil
 }
 
-func decodeWatchNetworkingV1NetworkPolicyListForAllNamespacesParams(args map[string]string, r *http.Request) (WatchNetworkingV1NetworkPolicyListForAllNamespacesParams, error) {
+func decodeWatchNetworkingV1NetworkPolicyListForAllNamespacesParams(args [0]string, r *http.Request) (WatchNetworkingV1NetworkPolicyListForAllNamespacesParams, error) {
 	var (
 		params    WatchNetworkingV1NetworkPolicyListForAllNamespacesParams
 		queryArgs = r.URL.Query()
@@ -91236,7 +91236,7 @@ func decodeWatchNetworkingV1NetworkPolicyListForAllNamespacesParams(args map[str
 	return params, nil
 }
 
-func decodeWatchNodeV1RuntimeClassParams(args map[string]string, r *http.Request) (WatchNodeV1RuntimeClassParams, error) {
+func decodeWatchNodeV1RuntimeClassParams(args [1]string, r *http.Request) (WatchNodeV1RuntimeClassParams, error) {
 	var (
 		params    WatchNodeV1RuntimeClassParams
 		queryArgs = r.URL.Query()
@@ -91418,7 +91418,7 @@ func decodeWatchNodeV1RuntimeClassParams(args map[string]string, r *http.Request
 	}
 	// Decode path: name.
 	{
-		param := args["name"]
+		param := args[0]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "name",
@@ -91625,7 +91625,7 @@ func decodeWatchNodeV1RuntimeClassParams(args map[string]string, r *http.Request
 	return params, nil
 }
 
-func decodeWatchNodeV1RuntimeClassListParams(args map[string]string, r *http.Request) (WatchNodeV1RuntimeClassListParams, error) {
+func decodeWatchNodeV1RuntimeClassListParams(args [0]string, r *http.Request) (WatchNodeV1RuntimeClassListParams, error) {
 	var (
 		params    WatchNodeV1RuntimeClassListParams
 		queryArgs = r.URL.Query()
@@ -91983,7 +91983,7 @@ func decodeWatchNodeV1RuntimeClassListParams(args map[string]string, r *http.Req
 	return params, nil
 }
 
-func decodeWatchNodeV1alpha1RuntimeClassParams(args map[string]string, r *http.Request) (WatchNodeV1alpha1RuntimeClassParams, error) {
+func decodeWatchNodeV1alpha1RuntimeClassParams(args [1]string, r *http.Request) (WatchNodeV1alpha1RuntimeClassParams, error) {
 	var (
 		params    WatchNodeV1alpha1RuntimeClassParams
 		queryArgs = r.URL.Query()
@@ -92165,7 +92165,7 @@ func decodeWatchNodeV1alpha1RuntimeClassParams(args map[string]string, r *http.R
 	}
 	// Decode path: name.
 	{
-		param := args["name"]
+		param := args[0]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "name",
@@ -92372,7 +92372,7 @@ func decodeWatchNodeV1alpha1RuntimeClassParams(args map[string]string, r *http.R
 	return params, nil
 }
 
-func decodeWatchNodeV1alpha1RuntimeClassListParams(args map[string]string, r *http.Request) (WatchNodeV1alpha1RuntimeClassListParams, error) {
+func decodeWatchNodeV1alpha1RuntimeClassListParams(args [0]string, r *http.Request) (WatchNodeV1alpha1RuntimeClassListParams, error) {
 	var (
 		params    WatchNodeV1alpha1RuntimeClassListParams
 		queryArgs = r.URL.Query()
@@ -92730,7 +92730,7 @@ func decodeWatchNodeV1alpha1RuntimeClassListParams(args map[string]string, r *ht
 	return params, nil
 }
 
-func decodeWatchNodeV1beta1RuntimeClassParams(args map[string]string, r *http.Request) (WatchNodeV1beta1RuntimeClassParams, error) {
+func decodeWatchNodeV1beta1RuntimeClassParams(args [1]string, r *http.Request) (WatchNodeV1beta1RuntimeClassParams, error) {
 	var (
 		params    WatchNodeV1beta1RuntimeClassParams
 		queryArgs = r.URL.Query()
@@ -92912,7 +92912,7 @@ func decodeWatchNodeV1beta1RuntimeClassParams(args map[string]string, r *http.Re
 	}
 	// Decode path: name.
 	{
-		param := args["name"]
+		param := args[0]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "name",
@@ -93119,7 +93119,7 @@ func decodeWatchNodeV1beta1RuntimeClassParams(args map[string]string, r *http.Re
 	return params, nil
 }
 
-func decodeWatchNodeV1beta1RuntimeClassListParams(args map[string]string, r *http.Request) (WatchNodeV1beta1RuntimeClassListParams, error) {
+func decodeWatchNodeV1beta1RuntimeClassListParams(args [0]string, r *http.Request) (WatchNodeV1beta1RuntimeClassListParams, error) {
 	var (
 		params    WatchNodeV1beta1RuntimeClassListParams
 		queryArgs = r.URL.Query()
@@ -93477,7 +93477,7 @@ func decodeWatchNodeV1beta1RuntimeClassListParams(args map[string]string, r *htt
 	return params, nil
 }
 
-func decodeWatchPolicyV1NamespacedPodDisruptionBudgetParams(args map[string]string, r *http.Request) (WatchPolicyV1NamespacedPodDisruptionBudgetParams, error) {
+func decodeWatchPolicyV1NamespacedPodDisruptionBudgetParams(args [2]string, r *http.Request) (WatchPolicyV1NamespacedPodDisruptionBudgetParams, error) {
 	var (
 		params    WatchPolicyV1NamespacedPodDisruptionBudgetParams
 		queryArgs = r.URL.Query()
@@ -93659,7 +93659,7 @@ func decodeWatchPolicyV1NamespacedPodDisruptionBudgetParams(args map[string]stri
 	}
 	// Decode path: name.
 	{
-		param := args["name"]
+		param := args[1]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "name",
@@ -93690,7 +93690,7 @@ func decodeWatchPolicyV1NamespacedPodDisruptionBudgetParams(args map[string]stri
 	}
 	// Decode path: namespace.
 	{
-		param := args["namespace"]
+		param := args[0]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "namespace",
@@ -93897,7 +93897,7 @@ func decodeWatchPolicyV1NamespacedPodDisruptionBudgetParams(args map[string]stri
 	return params, nil
 }
 
-func decodeWatchPolicyV1NamespacedPodDisruptionBudgetListParams(args map[string]string, r *http.Request) (WatchPolicyV1NamespacedPodDisruptionBudgetListParams, error) {
+func decodeWatchPolicyV1NamespacedPodDisruptionBudgetListParams(args [1]string, r *http.Request) (WatchPolicyV1NamespacedPodDisruptionBudgetListParams, error) {
 	var (
 		params    WatchPolicyV1NamespacedPodDisruptionBudgetListParams
 		queryArgs = r.URL.Query()
@@ -94079,7 +94079,7 @@ func decodeWatchPolicyV1NamespacedPodDisruptionBudgetListParams(args map[string]
 	}
 	// Decode path: namespace.
 	{
-		param := args["namespace"]
+		param := args[0]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "namespace",
@@ -94286,7 +94286,7 @@ func decodeWatchPolicyV1NamespacedPodDisruptionBudgetListParams(args map[string]
 	return params, nil
 }
 
-func decodeWatchPolicyV1PodDisruptionBudgetListForAllNamespacesParams(args map[string]string, r *http.Request) (WatchPolicyV1PodDisruptionBudgetListForAllNamespacesParams, error) {
+func decodeWatchPolicyV1PodDisruptionBudgetListForAllNamespacesParams(args [0]string, r *http.Request) (WatchPolicyV1PodDisruptionBudgetListForAllNamespacesParams, error) {
 	var (
 		params    WatchPolicyV1PodDisruptionBudgetListForAllNamespacesParams
 		queryArgs = r.URL.Query()
@@ -94644,7 +94644,7 @@ func decodeWatchPolicyV1PodDisruptionBudgetListForAllNamespacesParams(args map[s
 	return params, nil
 }
 
-func decodeWatchPolicyV1beta1NamespacedPodDisruptionBudgetParams(args map[string]string, r *http.Request) (WatchPolicyV1beta1NamespacedPodDisruptionBudgetParams, error) {
+func decodeWatchPolicyV1beta1NamespacedPodDisruptionBudgetParams(args [2]string, r *http.Request) (WatchPolicyV1beta1NamespacedPodDisruptionBudgetParams, error) {
 	var (
 		params    WatchPolicyV1beta1NamespacedPodDisruptionBudgetParams
 		queryArgs = r.URL.Query()
@@ -94826,7 +94826,7 @@ func decodeWatchPolicyV1beta1NamespacedPodDisruptionBudgetParams(args map[string
 	}
 	// Decode path: name.
 	{
-		param := args["name"]
+		param := args[1]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "name",
@@ -94857,7 +94857,7 @@ func decodeWatchPolicyV1beta1NamespacedPodDisruptionBudgetParams(args map[string
 	}
 	// Decode path: namespace.
 	{
-		param := args["namespace"]
+		param := args[0]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "namespace",
@@ -95064,7 +95064,7 @@ func decodeWatchPolicyV1beta1NamespacedPodDisruptionBudgetParams(args map[string
 	return params, nil
 }
 
-func decodeWatchPolicyV1beta1NamespacedPodDisruptionBudgetListParams(args map[string]string, r *http.Request) (WatchPolicyV1beta1NamespacedPodDisruptionBudgetListParams, error) {
+func decodeWatchPolicyV1beta1NamespacedPodDisruptionBudgetListParams(args [1]string, r *http.Request) (WatchPolicyV1beta1NamespacedPodDisruptionBudgetListParams, error) {
 	var (
 		params    WatchPolicyV1beta1NamespacedPodDisruptionBudgetListParams
 		queryArgs = r.URL.Query()
@@ -95246,7 +95246,7 @@ func decodeWatchPolicyV1beta1NamespacedPodDisruptionBudgetListParams(args map[st
 	}
 	// Decode path: namespace.
 	{
-		param := args["namespace"]
+		param := args[0]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "namespace",
@@ -95453,7 +95453,7 @@ func decodeWatchPolicyV1beta1NamespacedPodDisruptionBudgetListParams(args map[st
 	return params, nil
 }
 
-func decodeWatchPolicyV1beta1PodDisruptionBudgetListForAllNamespacesParams(args map[string]string, r *http.Request) (WatchPolicyV1beta1PodDisruptionBudgetListForAllNamespacesParams, error) {
+func decodeWatchPolicyV1beta1PodDisruptionBudgetListForAllNamespacesParams(args [0]string, r *http.Request) (WatchPolicyV1beta1PodDisruptionBudgetListForAllNamespacesParams, error) {
 	var (
 		params    WatchPolicyV1beta1PodDisruptionBudgetListForAllNamespacesParams
 		queryArgs = r.URL.Query()
@@ -95811,7 +95811,7 @@ func decodeWatchPolicyV1beta1PodDisruptionBudgetListForAllNamespacesParams(args 
 	return params, nil
 }
 
-func decodeWatchPolicyV1beta1PodSecurityPolicyParams(args map[string]string, r *http.Request) (WatchPolicyV1beta1PodSecurityPolicyParams, error) {
+func decodeWatchPolicyV1beta1PodSecurityPolicyParams(args [1]string, r *http.Request) (WatchPolicyV1beta1PodSecurityPolicyParams, error) {
 	var (
 		params    WatchPolicyV1beta1PodSecurityPolicyParams
 		queryArgs = r.URL.Query()
@@ -95993,7 +95993,7 @@ func decodeWatchPolicyV1beta1PodSecurityPolicyParams(args map[string]string, r *
 	}
 	// Decode path: name.
 	{
-		param := args["name"]
+		param := args[0]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "name",
@@ -96200,7 +96200,7 @@ func decodeWatchPolicyV1beta1PodSecurityPolicyParams(args map[string]string, r *
 	return params, nil
 }
 
-func decodeWatchPolicyV1beta1PodSecurityPolicyListParams(args map[string]string, r *http.Request) (WatchPolicyV1beta1PodSecurityPolicyListParams, error) {
+func decodeWatchPolicyV1beta1PodSecurityPolicyListParams(args [0]string, r *http.Request) (WatchPolicyV1beta1PodSecurityPolicyListParams, error) {
 	var (
 		params    WatchPolicyV1beta1PodSecurityPolicyListParams
 		queryArgs = r.URL.Query()
@@ -96558,7 +96558,7 @@ func decodeWatchPolicyV1beta1PodSecurityPolicyListParams(args map[string]string,
 	return params, nil
 }
 
-func decodeWatchRbacAuthorizationV1ClusterRoleParams(args map[string]string, r *http.Request) (WatchRbacAuthorizationV1ClusterRoleParams, error) {
+func decodeWatchRbacAuthorizationV1ClusterRoleParams(args [1]string, r *http.Request) (WatchRbacAuthorizationV1ClusterRoleParams, error) {
 	var (
 		params    WatchRbacAuthorizationV1ClusterRoleParams
 		queryArgs = r.URL.Query()
@@ -96740,7 +96740,7 @@ func decodeWatchRbacAuthorizationV1ClusterRoleParams(args map[string]string, r *
 	}
 	// Decode path: name.
 	{
-		param := args["name"]
+		param := args[0]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "name",
@@ -96947,7 +96947,7 @@ func decodeWatchRbacAuthorizationV1ClusterRoleParams(args map[string]string, r *
 	return params, nil
 }
 
-func decodeWatchRbacAuthorizationV1ClusterRoleBindingParams(args map[string]string, r *http.Request) (WatchRbacAuthorizationV1ClusterRoleBindingParams, error) {
+func decodeWatchRbacAuthorizationV1ClusterRoleBindingParams(args [1]string, r *http.Request) (WatchRbacAuthorizationV1ClusterRoleBindingParams, error) {
 	var (
 		params    WatchRbacAuthorizationV1ClusterRoleBindingParams
 		queryArgs = r.URL.Query()
@@ -97129,7 +97129,7 @@ func decodeWatchRbacAuthorizationV1ClusterRoleBindingParams(args map[string]stri
 	}
 	// Decode path: name.
 	{
-		param := args["name"]
+		param := args[0]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "name",
@@ -97336,7 +97336,7 @@ func decodeWatchRbacAuthorizationV1ClusterRoleBindingParams(args map[string]stri
 	return params, nil
 }
 
-func decodeWatchRbacAuthorizationV1ClusterRoleBindingListParams(args map[string]string, r *http.Request) (WatchRbacAuthorizationV1ClusterRoleBindingListParams, error) {
+func decodeWatchRbacAuthorizationV1ClusterRoleBindingListParams(args [0]string, r *http.Request) (WatchRbacAuthorizationV1ClusterRoleBindingListParams, error) {
 	var (
 		params    WatchRbacAuthorizationV1ClusterRoleBindingListParams
 		queryArgs = r.URL.Query()
@@ -97694,7 +97694,7 @@ func decodeWatchRbacAuthorizationV1ClusterRoleBindingListParams(args map[string]
 	return params, nil
 }
 
-func decodeWatchRbacAuthorizationV1ClusterRoleListParams(args map[string]string, r *http.Request) (WatchRbacAuthorizationV1ClusterRoleListParams, error) {
+func decodeWatchRbacAuthorizationV1ClusterRoleListParams(args [0]string, r *http.Request) (WatchRbacAuthorizationV1ClusterRoleListParams, error) {
 	var (
 		params    WatchRbacAuthorizationV1ClusterRoleListParams
 		queryArgs = r.URL.Query()
@@ -98052,7 +98052,7 @@ func decodeWatchRbacAuthorizationV1ClusterRoleListParams(args map[string]string,
 	return params, nil
 }
 
-func decodeWatchRbacAuthorizationV1NamespacedRoleParams(args map[string]string, r *http.Request) (WatchRbacAuthorizationV1NamespacedRoleParams, error) {
+func decodeWatchRbacAuthorizationV1NamespacedRoleParams(args [2]string, r *http.Request) (WatchRbacAuthorizationV1NamespacedRoleParams, error) {
 	var (
 		params    WatchRbacAuthorizationV1NamespacedRoleParams
 		queryArgs = r.URL.Query()
@@ -98234,7 +98234,7 @@ func decodeWatchRbacAuthorizationV1NamespacedRoleParams(args map[string]string, 
 	}
 	// Decode path: name.
 	{
-		param := args["name"]
+		param := args[1]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "name",
@@ -98265,7 +98265,7 @@ func decodeWatchRbacAuthorizationV1NamespacedRoleParams(args map[string]string, 
 	}
 	// Decode path: namespace.
 	{
-		param := args["namespace"]
+		param := args[0]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "namespace",
@@ -98472,7 +98472,7 @@ func decodeWatchRbacAuthorizationV1NamespacedRoleParams(args map[string]string, 
 	return params, nil
 }
 
-func decodeWatchRbacAuthorizationV1NamespacedRoleBindingParams(args map[string]string, r *http.Request) (WatchRbacAuthorizationV1NamespacedRoleBindingParams, error) {
+func decodeWatchRbacAuthorizationV1NamespacedRoleBindingParams(args [2]string, r *http.Request) (WatchRbacAuthorizationV1NamespacedRoleBindingParams, error) {
 	var (
 		params    WatchRbacAuthorizationV1NamespacedRoleBindingParams
 		queryArgs = r.URL.Query()
@@ -98654,7 +98654,7 @@ func decodeWatchRbacAuthorizationV1NamespacedRoleBindingParams(args map[string]s
 	}
 	// Decode path: name.
 	{
-		param := args["name"]
+		param := args[1]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "name",
@@ -98685,7 +98685,7 @@ func decodeWatchRbacAuthorizationV1NamespacedRoleBindingParams(args map[string]s
 	}
 	// Decode path: namespace.
 	{
-		param := args["namespace"]
+		param := args[0]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "namespace",
@@ -98892,7 +98892,7 @@ func decodeWatchRbacAuthorizationV1NamespacedRoleBindingParams(args map[string]s
 	return params, nil
 }
 
-func decodeWatchRbacAuthorizationV1NamespacedRoleBindingListParams(args map[string]string, r *http.Request) (WatchRbacAuthorizationV1NamespacedRoleBindingListParams, error) {
+func decodeWatchRbacAuthorizationV1NamespacedRoleBindingListParams(args [1]string, r *http.Request) (WatchRbacAuthorizationV1NamespacedRoleBindingListParams, error) {
 	var (
 		params    WatchRbacAuthorizationV1NamespacedRoleBindingListParams
 		queryArgs = r.URL.Query()
@@ -99074,7 +99074,7 @@ func decodeWatchRbacAuthorizationV1NamespacedRoleBindingListParams(args map[stri
 	}
 	// Decode path: namespace.
 	{
-		param := args["namespace"]
+		param := args[0]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "namespace",
@@ -99281,7 +99281,7 @@ func decodeWatchRbacAuthorizationV1NamespacedRoleBindingListParams(args map[stri
 	return params, nil
 }
 
-func decodeWatchRbacAuthorizationV1NamespacedRoleListParams(args map[string]string, r *http.Request) (WatchRbacAuthorizationV1NamespacedRoleListParams, error) {
+func decodeWatchRbacAuthorizationV1NamespacedRoleListParams(args [1]string, r *http.Request) (WatchRbacAuthorizationV1NamespacedRoleListParams, error) {
 	var (
 		params    WatchRbacAuthorizationV1NamespacedRoleListParams
 		queryArgs = r.URL.Query()
@@ -99463,7 +99463,7 @@ func decodeWatchRbacAuthorizationV1NamespacedRoleListParams(args map[string]stri
 	}
 	// Decode path: namespace.
 	{
-		param := args["namespace"]
+		param := args[0]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "namespace",
@@ -99670,7 +99670,7 @@ func decodeWatchRbacAuthorizationV1NamespacedRoleListParams(args map[string]stri
 	return params, nil
 }
 
-func decodeWatchRbacAuthorizationV1RoleBindingListForAllNamespacesParams(args map[string]string, r *http.Request) (WatchRbacAuthorizationV1RoleBindingListForAllNamespacesParams, error) {
+func decodeWatchRbacAuthorizationV1RoleBindingListForAllNamespacesParams(args [0]string, r *http.Request) (WatchRbacAuthorizationV1RoleBindingListForAllNamespacesParams, error) {
 	var (
 		params    WatchRbacAuthorizationV1RoleBindingListForAllNamespacesParams
 		queryArgs = r.URL.Query()
@@ -100028,7 +100028,7 @@ func decodeWatchRbacAuthorizationV1RoleBindingListForAllNamespacesParams(args ma
 	return params, nil
 }
 
-func decodeWatchRbacAuthorizationV1RoleListForAllNamespacesParams(args map[string]string, r *http.Request) (WatchRbacAuthorizationV1RoleListForAllNamespacesParams, error) {
+func decodeWatchRbacAuthorizationV1RoleListForAllNamespacesParams(args [0]string, r *http.Request) (WatchRbacAuthorizationV1RoleListForAllNamespacesParams, error) {
 	var (
 		params    WatchRbacAuthorizationV1RoleListForAllNamespacesParams
 		queryArgs = r.URL.Query()
@@ -100386,7 +100386,7 @@ func decodeWatchRbacAuthorizationV1RoleListForAllNamespacesParams(args map[strin
 	return params, nil
 }
 
-func decodeWatchSchedulingV1PriorityClassParams(args map[string]string, r *http.Request) (WatchSchedulingV1PriorityClassParams, error) {
+func decodeWatchSchedulingV1PriorityClassParams(args [1]string, r *http.Request) (WatchSchedulingV1PriorityClassParams, error) {
 	var (
 		params    WatchSchedulingV1PriorityClassParams
 		queryArgs = r.URL.Query()
@@ -100568,7 +100568,7 @@ func decodeWatchSchedulingV1PriorityClassParams(args map[string]string, r *http.
 	}
 	// Decode path: name.
 	{
-		param := args["name"]
+		param := args[0]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "name",
@@ -100775,7 +100775,7 @@ func decodeWatchSchedulingV1PriorityClassParams(args map[string]string, r *http.
 	return params, nil
 }
 
-func decodeWatchSchedulingV1PriorityClassListParams(args map[string]string, r *http.Request) (WatchSchedulingV1PriorityClassListParams, error) {
+func decodeWatchSchedulingV1PriorityClassListParams(args [0]string, r *http.Request) (WatchSchedulingV1PriorityClassListParams, error) {
 	var (
 		params    WatchSchedulingV1PriorityClassListParams
 		queryArgs = r.URL.Query()
@@ -101133,7 +101133,7 @@ func decodeWatchSchedulingV1PriorityClassListParams(args map[string]string, r *h
 	return params, nil
 }
 
-func decodeWatchStorageV1CSIDriverParams(args map[string]string, r *http.Request) (WatchStorageV1CSIDriverParams, error) {
+func decodeWatchStorageV1CSIDriverParams(args [1]string, r *http.Request) (WatchStorageV1CSIDriverParams, error) {
 	var (
 		params    WatchStorageV1CSIDriverParams
 		queryArgs = r.URL.Query()
@@ -101315,7 +101315,7 @@ func decodeWatchStorageV1CSIDriverParams(args map[string]string, r *http.Request
 	}
 	// Decode path: name.
 	{
-		param := args["name"]
+		param := args[0]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "name",
@@ -101522,7 +101522,7 @@ func decodeWatchStorageV1CSIDriverParams(args map[string]string, r *http.Request
 	return params, nil
 }
 
-func decodeWatchStorageV1CSIDriverListParams(args map[string]string, r *http.Request) (WatchStorageV1CSIDriverListParams, error) {
+func decodeWatchStorageV1CSIDriverListParams(args [0]string, r *http.Request) (WatchStorageV1CSIDriverListParams, error) {
 	var (
 		params    WatchStorageV1CSIDriverListParams
 		queryArgs = r.URL.Query()
@@ -101880,7 +101880,7 @@ func decodeWatchStorageV1CSIDriverListParams(args map[string]string, r *http.Req
 	return params, nil
 }
 
-func decodeWatchStorageV1CSINodeParams(args map[string]string, r *http.Request) (WatchStorageV1CSINodeParams, error) {
+func decodeWatchStorageV1CSINodeParams(args [1]string, r *http.Request) (WatchStorageV1CSINodeParams, error) {
 	var (
 		params    WatchStorageV1CSINodeParams
 		queryArgs = r.URL.Query()
@@ -102062,7 +102062,7 @@ func decodeWatchStorageV1CSINodeParams(args map[string]string, r *http.Request) 
 	}
 	// Decode path: name.
 	{
-		param := args["name"]
+		param := args[0]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "name",
@@ -102269,7 +102269,7 @@ func decodeWatchStorageV1CSINodeParams(args map[string]string, r *http.Request) 
 	return params, nil
 }
 
-func decodeWatchStorageV1CSINodeListParams(args map[string]string, r *http.Request) (WatchStorageV1CSINodeListParams, error) {
+func decodeWatchStorageV1CSINodeListParams(args [0]string, r *http.Request) (WatchStorageV1CSINodeListParams, error) {
 	var (
 		params    WatchStorageV1CSINodeListParams
 		queryArgs = r.URL.Query()
@@ -102627,7 +102627,7 @@ func decodeWatchStorageV1CSINodeListParams(args map[string]string, r *http.Reque
 	return params, nil
 }
 
-func decodeWatchStorageV1StorageClassParams(args map[string]string, r *http.Request) (WatchStorageV1StorageClassParams, error) {
+func decodeWatchStorageV1StorageClassParams(args [1]string, r *http.Request) (WatchStorageV1StorageClassParams, error) {
 	var (
 		params    WatchStorageV1StorageClassParams
 		queryArgs = r.URL.Query()
@@ -102809,7 +102809,7 @@ func decodeWatchStorageV1StorageClassParams(args map[string]string, r *http.Requ
 	}
 	// Decode path: name.
 	{
-		param := args["name"]
+		param := args[0]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "name",
@@ -103016,7 +103016,7 @@ func decodeWatchStorageV1StorageClassParams(args map[string]string, r *http.Requ
 	return params, nil
 }
 
-func decodeWatchStorageV1StorageClassListParams(args map[string]string, r *http.Request) (WatchStorageV1StorageClassListParams, error) {
+func decodeWatchStorageV1StorageClassListParams(args [0]string, r *http.Request) (WatchStorageV1StorageClassListParams, error) {
 	var (
 		params    WatchStorageV1StorageClassListParams
 		queryArgs = r.URL.Query()
@@ -103374,7 +103374,7 @@ func decodeWatchStorageV1StorageClassListParams(args map[string]string, r *http.
 	return params, nil
 }
 
-func decodeWatchStorageV1VolumeAttachmentParams(args map[string]string, r *http.Request) (WatchStorageV1VolumeAttachmentParams, error) {
+func decodeWatchStorageV1VolumeAttachmentParams(args [1]string, r *http.Request) (WatchStorageV1VolumeAttachmentParams, error) {
 	var (
 		params    WatchStorageV1VolumeAttachmentParams
 		queryArgs = r.URL.Query()
@@ -103556,7 +103556,7 @@ func decodeWatchStorageV1VolumeAttachmentParams(args map[string]string, r *http.
 	}
 	// Decode path: name.
 	{
-		param := args["name"]
+		param := args[0]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "name",
@@ -103763,7 +103763,7 @@ func decodeWatchStorageV1VolumeAttachmentParams(args map[string]string, r *http.
 	return params, nil
 }
 
-func decodeWatchStorageV1VolumeAttachmentListParams(args map[string]string, r *http.Request) (WatchStorageV1VolumeAttachmentListParams, error) {
+func decodeWatchStorageV1VolumeAttachmentListParams(args [0]string, r *http.Request) (WatchStorageV1VolumeAttachmentListParams, error) {
 	var (
 		params    WatchStorageV1VolumeAttachmentListParams
 		queryArgs = r.URL.Query()
@@ -104121,7 +104121,7 @@ func decodeWatchStorageV1VolumeAttachmentListParams(args map[string]string, r *h
 	return params, nil
 }
 
-func decodeWatchStorageV1alpha1CSIStorageCapacityListForAllNamespacesParams(args map[string]string, r *http.Request) (WatchStorageV1alpha1CSIStorageCapacityListForAllNamespacesParams, error) {
+func decodeWatchStorageV1alpha1CSIStorageCapacityListForAllNamespacesParams(args [0]string, r *http.Request) (WatchStorageV1alpha1CSIStorageCapacityListForAllNamespacesParams, error) {
 	var (
 		params    WatchStorageV1alpha1CSIStorageCapacityListForAllNamespacesParams
 		queryArgs = r.URL.Query()
@@ -104479,7 +104479,7 @@ func decodeWatchStorageV1alpha1CSIStorageCapacityListForAllNamespacesParams(args
 	return params, nil
 }
 
-func decodeWatchStorageV1alpha1NamespacedCSIStorageCapacityParams(args map[string]string, r *http.Request) (WatchStorageV1alpha1NamespacedCSIStorageCapacityParams, error) {
+func decodeWatchStorageV1alpha1NamespacedCSIStorageCapacityParams(args [2]string, r *http.Request) (WatchStorageV1alpha1NamespacedCSIStorageCapacityParams, error) {
 	var (
 		params    WatchStorageV1alpha1NamespacedCSIStorageCapacityParams
 		queryArgs = r.URL.Query()
@@ -104661,7 +104661,7 @@ func decodeWatchStorageV1alpha1NamespacedCSIStorageCapacityParams(args map[strin
 	}
 	// Decode path: name.
 	{
-		param := args["name"]
+		param := args[1]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "name",
@@ -104692,7 +104692,7 @@ func decodeWatchStorageV1alpha1NamespacedCSIStorageCapacityParams(args map[strin
 	}
 	// Decode path: namespace.
 	{
-		param := args["namespace"]
+		param := args[0]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "namespace",
@@ -104899,7 +104899,7 @@ func decodeWatchStorageV1alpha1NamespacedCSIStorageCapacityParams(args map[strin
 	return params, nil
 }
 
-func decodeWatchStorageV1alpha1NamespacedCSIStorageCapacityListParams(args map[string]string, r *http.Request) (WatchStorageV1alpha1NamespacedCSIStorageCapacityListParams, error) {
+func decodeWatchStorageV1alpha1NamespacedCSIStorageCapacityListParams(args [1]string, r *http.Request) (WatchStorageV1alpha1NamespacedCSIStorageCapacityListParams, error) {
 	var (
 		params    WatchStorageV1alpha1NamespacedCSIStorageCapacityListParams
 		queryArgs = r.URL.Query()
@@ -105081,7 +105081,7 @@ func decodeWatchStorageV1alpha1NamespacedCSIStorageCapacityListParams(args map[s
 	}
 	// Decode path: namespace.
 	{
-		param := args["namespace"]
+		param := args[0]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "namespace",
@@ -105288,7 +105288,7 @@ func decodeWatchStorageV1alpha1NamespacedCSIStorageCapacityListParams(args map[s
 	return params, nil
 }
 
-func decodeWatchStorageV1beta1CSIStorageCapacityListForAllNamespacesParams(args map[string]string, r *http.Request) (WatchStorageV1beta1CSIStorageCapacityListForAllNamespacesParams, error) {
+func decodeWatchStorageV1beta1CSIStorageCapacityListForAllNamespacesParams(args [0]string, r *http.Request) (WatchStorageV1beta1CSIStorageCapacityListForAllNamespacesParams, error) {
 	var (
 		params    WatchStorageV1beta1CSIStorageCapacityListForAllNamespacesParams
 		queryArgs = r.URL.Query()
@@ -105646,7 +105646,7 @@ func decodeWatchStorageV1beta1CSIStorageCapacityListForAllNamespacesParams(args 
 	return params, nil
 }
 
-func decodeWatchStorageV1beta1NamespacedCSIStorageCapacityParams(args map[string]string, r *http.Request) (WatchStorageV1beta1NamespacedCSIStorageCapacityParams, error) {
+func decodeWatchStorageV1beta1NamespacedCSIStorageCapacityParams(args [2]string, r *http.Request) (WatchStorageV1beta1NamespacedCSIStorageCapacityParams, error) {
 	var (
 		params    WatchStorageV1beta1NamespacedCSIStorageCapacityParams
 		queryArgs = r.URL.Query()
@@ -105828,7 +105828,7 @@ func decodeWatchStorageV1beta1NamespacedCSIStorageCapacityParams(args map[string
 	}
 	// Decode path: name.
 	{
-		param := args["name"]
+		param := args[1]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "name",
@@ -105859,7 +105859,7 @@ func decodeWatchStorageV1beta1NamespacedCSIStorageCapacityParams(args map[string
 	}
 	// Decode path: namespace.
 	{
-		param := args["namespace"]
+		param := args[0]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "namespace",
@@ -106066,7 +106066,7 @@ func decodeWatchStorageV1beta1NamespacedCSIStorageCapacityParams(args map[string
 	return params, nil
 }
 
-func decodeWatchStorageV1beta1NamespacedCSIStorageCapacityListParams(args map[string]string, r *http.Request) (WatchStorageV1beta1NamespacedCSIStorageCapacityListParams, error) {
+func decodeWatchStorageV1beta1NamespacedCSIStorageCapacityListParams(args [1]string, r *http.Request) (WatchStorageV1beta1NamespacedCSIStorageCapacityListParams, error) {
 	var (
 		params    WatchStorageV1beta1NamespacedCSIStorageCapacityListParams
 		queryArgs = r.URL.Query()
@@ -106248,7 +106248,7 @@ func decodeWatchStorageV1beta1NamespacedCSIStorageCapacityListParams(args map[st
 	}
 	// Decode path: namespace.
 	{
-		param := args["namespace"]
+		param := args[0]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "namespace",

@@ -67,7 +67,7 @@ var (
 // HandleCachingRequest handles Caching operation.
 //
 // GET /cached-worlds
-func (s *Server) handleCachingRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleCachingRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `Caching`,
 		trace.WithAttributes(otelogen.OperationID(`Caching`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -96,7 +96,7 @@ func (s *Server) handleCachingRequest(args map[string]string, w http.ResponseWri
 // HandleDBRequest handles DB operation.
 //
 // GET /db
-func (s *Server) handleDBRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleDBRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `DB`,
 		trace.WithAttributes(otelogen.OperationID(`DB`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -119,7 +119,7 @@ func (s *Server) handleDBRequest(args map[string]string, w http.ResponseWriter, 
 // HandleJSONRequest handles json operation.
 //
 // GET /json
-func (s *Server) handleJSONRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleJSONRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `JSON`,
 		trace.WithAttributes(otelogen.OperationID(`json`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -142,7 +142,7 @@ func (s *Server) handleJSONRequest(args map[string]string, w http.ResponseWriter
 // HandleQueriesRequest handles Queries operation.
 //
 // GET /queries
-func (s *Server) handleQueriesRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleQueriesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `Queries`,
 		trace.WithAttributes(otelogen.OperationID(`Queries`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -171,7 +171,7 @@ func (s *Server) handleQueriesRequest(args map[string]string, w http.ResponseWri
 // HandleUpdatesRequest handles Updates operation.
 //
 // GET /updates
-func (s *Server) handleUpdatesRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleUpdatesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `Updates`,
 		trace.WithAttributes(otelogen.OperationID(`Updates`)),
 		trace.WithSpanKind(trace.SpanKindServer),

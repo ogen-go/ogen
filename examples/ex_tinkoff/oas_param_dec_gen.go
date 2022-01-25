@@ -64,7 +64,7 @@ var (
 	_ = sync.Pool{}
 )
 
-func decodeMarketCandlesGetParams(args map[string]string, r *http.Request) (MarketCandlesGetParams, error) {
+func decodeMarketCandlesGetParams(args [0]string, r *http.Request) (MarketCandlesGetParams, error) {
 	var (
 		params    MarketCandlesGetParams
 		queryArgs = r.URL.Query()
@@ -200,7 +200,7 @@ func decodeMarketCandlesGetParams(args map[string]string, r *http.Request) (Mark
 	return params, nil
 }
 
-func decodeMarketOrderbookGetParams(args map[string]string, r *http.Request) (MarketOrderbookGetParams, error) {
+func decodeMarketOrderbookGetParams(args [0]string, r *http.Request) (MarketOrderbookGetParams, error) {
 	var (
 		params    MarketOrderbookGetParams
 		queryArgs = r.URL.Query()
@@ -268,7 +268,7 @@ func decodeMarketOrderbookGetParams(args map[string]string, r *http.Request) (Ma
 	return params, nil
 }
 
-func decodeMarketSearchByFigiGetParams(args map[string]string, r *http.Request) (MarketSearchByFigiGetParams, error) {
+func decodeMarketSearchByFigiGetParams(args [0]string, r *http.Request) (MarketSearchByFigiGetParams, error) {
 	var (
 		params    MarketSearchByFigiGetParams
 		queryArgs = r.URL.Query()
@@ -306,7 +306,7 @@ func decodeMarketSearchByFigiGetParams(args map[string]string, r *http.Request) 
 	return params, nil
 }
 
-func decodeMarketSearchByTickerGetParams(args map[string]string, r *http.Request) (MarketSearchByTickerGetParams, error) {
+func decodeMarketSearchByTickerGetParams(args [0]string, r *http.Request) (MarketSearchByTickerGetParams, error) {
 	var (
 		params    MarketSearchByTickerGetParams
 		queryArgs = r.URL.Query()
@@ -344,7 +344,7 @@ func decodeMarketSearchByTickerGetParams(args map[string]string, r *http.Request
 	return params, nil
 }
 
-func decodeOperationsGetParams(args map[string]string, r *http.Request) (OperationsGetParams, error) {
+func decodeOperationsGetParams(args [0]string, r *http.Request) (OperationsGetParams, error) {
 	var (
 		params    OperationsGetParams
 		queryArgs = r.URL.Query()
@@ -482,7 +482,7 @@ func decodeOperationsGetParams(args map[string]string, r *http.Request) (Operati
 	return params, nil
 }
 
-func decodeOrdersCancelPostParams(args map[string]string, r *http.Request) (OrdersCancelPostParams, error) {
+func decodeOrdersCancelPostParams(args [0]string, r *http.Request) (OrdersCancelPostParams, error) {
 	var (
 		params    OrdersCancelPostParams
 		queryArgs = r.URL.Query()
@@ -555,7 +555,7 @@ func decodeOrdersCancelPostParams(args map[string]string, r *http.Request) (Orde
 	return params, nil
 }
 
-func decodeOrdersGetParams(args map[string]string, r *http.Request) (OrdersGetParams, error) {
+func decodeOrdersGetParams(args [0]string, r *http.Request) (OrdersGetParams, error) {
 	var (
 		params    OrdersGetParams
 		queryArgs = r.URL.Query()
@@ -598,7 +598,7 @@ func decodeOrdersGetParams(args map[string]string, r *http.Request) (OrdersGetPa
 	return params, nil
 }
 
-func decodeOrdersLimitOrderPostParams(args map[string]string, r *http.Request) (OrdersLimitOrderPostParams, error) {
+func decodeOrdersLimitOrderPostParams(args [0]string, r *http.Request) (OrdersLimitOrderPostParams, error) {
 	var (
 		params    OrdersLimitOrderPostParams
 		queryArgs = r.URL.Query()
@@ -671,7 +671,7 @@ func decodeOrdersLimitOrderPostParams(args map[string]string, r *http.Request) (
 	return params, nil
 }
 
-func decodeOrdersMarketOrderPostParams(args map[string]string, r *http.Request) (OrdersMarketOrderPostParams, error) {
+func decodeOrdersMarketOrderPostParams(args [0]string, r *http.Request) (OrdersMarketOrderPostParams, error) {
 	var (
 		params    OrdersMarketOrderPostParams
 		queryArgs = r.URL.Query()
@@ -744,7 +744,7 @@ func decodeOrdersMarketOrderPostParams(args map[string]string, r *http.Request) 
 	return params, nil
 }
 
-func decodePortfolioCurrenciesGetParams(args map[string]string, r *http.Request) (PortfolioCurrenciesGetParams, error) {
+func decodePortfolioCurrenciesGetParams(args [0]string, r *http.Request) (PortfolioCurrenciesGetParams, error) {
 	var (
 		params    PortfolioCurrenciesGetParams
 		queryArgs = r.URL.Query()
@@ -787,7 +787,7 @@ func decodePortfolioCurrenciesGetParams(args map[string]string, r *http.Request)
 	return params, nil
 }
 
-func decodePortfolioGetParams(args map[string]string, r *http.Request) (PortfolioGetParams, error) {
+func decodePortfolioGetParams(args [0]string, r *http.Request) (PortfolioGetParams, error) {
 	var (
 		params    PortfolioGetParams
 		queryArgs = r.URL.Query()
@@ -830,7 +830,7 @@ func decodePortfolioGetParams(args map[string]string, r *http.Request) (Portfoli
 	return params, nil
 }
 
-func decodeSandboxClearPostParams(args map[string]string, r *http.Request) (SandboxClearPostParams, error) {
+func decodeSandboxClearPostParams(args [0]string, r *http.Request) (SandboxClearPostParams, error) {
 	var (
 		params    SandboxClearPostParams
 		queryArgs = r.URL.Query()
@@ -873,7 +873,7 @@ func decodeSandboxClearPostParams(args map[string]string, r *http.Request) (Sand
 	return params, nil
 }
 
-func decodeSandboxCurrenciesBalancePostParams(args map[string]string, r *http.Request) (SandboxCurrenciesBalancePostParams, error) {
+func decodeSandboxCurrenciesBalancePostParams(args [0]string, r *http.Request) (SandboxCurrenciesBalancePostParams, error) {
 	var (
 		params    SandboxCurrenciesBalancePostParams
 		queryArgs = r.URL.Query()
@@ -916,7 +916,7 @@ func decodeSandboxCurrenciesBalancePostParams(args map[string]string, r *http.Re
 	return params, nil
 }
 
-func decodeSandboxPositionsBalancePostParams(args map[string]string, r *http.Request) (SandboxPositionsBalancePostParams, error) {
+func decodeSandboxPositionsBalancePostParams(args [0]string, r *http.Request) (SandboxPositionsBalancePostParams, error) {
 	var (
 		params    SandboxPositionsBalancePostParams
 		queryArgs = r.URL.Query()
@@ -959,7 +959,7 @@ func decodeSandboxPositionsBalancePostParams(args map[string]string, r *http.Req
 	return params, nil
 }
 
-func decodeSandboxRemovePostParams(args map[string]string, r *http.Request) (SandboxRemovePostParams, error) {
+func decodeSandboxRemovePostParams(args [0]string, r *http.Request) (SandboxRemovePostParams, error) {
 	var (
 		params    SandboxRemovePostParams
 		queryArgs = r.URL.Query()

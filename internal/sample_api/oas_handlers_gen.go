@@ -67,7 +67,7 @@ var (
 // HandleDataGetFormatRequest handles dataGetFormat operation.
 //
 // GET /name/{id}/{foo}1234{bar}-{baz}!{kek}
-func (s *Server) handleDataGetFormatRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleDataGetFormatRequest(args [5]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `DataGetFormat`,
 		trace.WithAttributes(otelogen.OperationID(`dataGetFormat`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -96,7 +96,7 @@ func (s *Server) handleDataGetFormatRequest(args map[string]string, w http.Respo
 // HandleErrorGetRequest handles errorGet operation.
 //
 // GET /error
-func (s *Server) handleErrorGetRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleErrorGetRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ErrorGet`,
 		trace.WithAttributes(otelogen.OperationID(`errorGet`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -119,7 +119,7 @@ func (s *Server) handleErrorGetRequest(args map[string]string, w http.ResponseWr
 // HandleFoobarGetRequest handles foobarGet operation.
 //
 // GET /foobar
-func (s *Server) handleFoobarGetRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleFoobarGetRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `FoobarGet`,
 		trace.WithAttributes(otelogen.OperationID(`foobarGet`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -148,7 +148,7 @@ func (s *Server) handleFoobarGetRequest(args map[string]string, w http.ResponseW
 // HandleFoobarPostRequest handles foobarPost operation.
 //
 // POST /foobar
-func (s *Server) handleFoobarPostRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleFoobarPostRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `FoobarPost`,
 		trace.WithAttributes(otelogen.OperationID(`foobarPost`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -177,7 +177,7 @@ func (s *Server) handleFoobarPostRequest(args map[string]string, w http.Response
 // HandleFoobarPutRequest handles  operation.
 //
 // PUT /foobar
-func (s *Server) handleFoobarPutRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleFoobarPutRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `FoobarPut`,
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
@@ -199,7 +199,7 @@ func (s *Server) handleFoobarPutRequest(args map[string]string, w http.ResponseW
 // HandleGetHeaderRequest handles getHeader operation.
 //
 // GET /test/header
-func (s *Server) handleGetHeaderRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleGetHeaderRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `GetHeader`,
 		trace.WithAttributes(otelogen.OperationID(`getHeader`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -228,7 +228,7 @@ func (s *Server) handleGetHeaderRequest(args map[string]string, w http.ResponseW
 // HandlePetCreateRequest handles petCreate operation.
 //
 // POST /pet
-func (s *Server) handlePetCreateRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handlePetCreateRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `PetCreate`,
 		trace.WithAttributes(otelogen.OperationID(`petCreate`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -257,7 +257,7 @@ func (s *Server) handlePetCreateRequest(args map[string]string, w http.ResponseW
 // HandlePetFriendsNamesByIDRequest handles petFriendsNamesByID operation.
 //
 // GET /pet/friendNames/{id}
-func (s *Server) handlePetFriendsNamesByIDRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handlePetFriendsNamesByIDRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `PetFriendsNamesByID`,
 		trace.WithAttributes(otelogen.OperationID(`petFriendsNamesByID`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -286,7 +286,7 @@ func (s *Server) handlePetFriendsNamesByIDRequest(args map[string]string, w http
 // HandlePetGetRequest handles petGet operation.
 //
 // GET /pet
-func (s *Server) handlePetGetRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handlePetGetRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `PetGet`,
 		trace.WithAttributes(otelogen.OperationID(`petGet`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -315,7 +315,7 @@ func (s *Server) handlePetGetRequest(args map[string]string, w http.ResponseWrit
 // HandlePetGetAvatarByIDRequest handles petGetAvatarByID operation.
 //
 // GET /pet/avatar
-func (s *Server) handlePetGetAvatarByIDRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handlePetGetAvatarByIDRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `PetGetAvatarByID`,
 		trace.WithAttributes(otelogen.OperationID(`petGetAvatarByID`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -344,7 +344,7 @@ func (s *Server) handlePetGetAvatarByIDRequest(args map[string]string, w http.Re
 // HandlePetGetByNameRequest handles petGetByName operation.
 //
 // GET /pet/{name}
-func (s *Server) handlePetGetByNameRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handlePetGetByNameRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `PetGetByName`,
 		trace.WithAttributes(otelogen.OperationID(`petGetByName`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -373,7 +373,7 @@ func (s *Server) handlePetGetByNameRequest(args map[string]string, w http.Respon
 // HandlePetNameByIDRequest handles petNameByID operation.
 //
 // GET /pet/name/{id}
-func (s *Server) handlePetNameByIDRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handlePetNameByIDRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `PetNameByID`,
 		trace.WithAttributes(otelogen.OperationID(`petNameByID`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -402,7 +402,7 @@ func (s *Server) handlePetNameByIDRequest(args map[string]string, w http.Respons
 // HandlePetUpdateNameAliasPostRequest handles  operation.
 //
 // POST /pet/updateNameAlias
-func (s *Server) handlePetUpdateNameAliasPostRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handlePetUpdateNameAliasPostRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `PetUpdateNameAliasPost`,
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
@@ -430,7 +430,7 @@ func (s *Server) handlePetUpdateNameAliasPostRequest(args map[string]string, w h
 // HandlePetUpdateNamePostRequest handles  operation.
 //
 // POST /pet/updateName
-func (s *Server) handlePetUpdateNamePostRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handlePetUpdateNamePostRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `PetUpdateNamePost`,
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
@@ -458,7 +458,7 @@ func (s *Server) handlePetUpdateNamePostRequest(args map[string]string, w http.R
 // HandlePetUploadAvatarByIDRequest handles petUploadAvatarByID operation.
 //
 // POST /pet/avatar
-func (s *Server) handlePetUploadAvatarByIDRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handlePetUploadAvatarByIDRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `PetUploadAvatarByID`,
 		trace.WithAttributes(otelogen.OperationID(`petUploadAvatarByID`)),
 		trace.WithSpanKind(trace.SpanKindServer),

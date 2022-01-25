@@ -67,7 +67,7 @@ var (
 // HandleGetBookRequest handles getBook operation.
 //
 // GET /api/gallery/{book_id}
-func (s *Server) handleGetBookRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleGetBookRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `GetBook`,
 		trace.WithAttributes(otelogen.OperationID(`getBook`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -96,7 +96,7 @@ func (s *Server) handleGetBookRequest(args map[string]string, w http.ResponseWri
 // HandleGetPageCoverImageRequest handles getPageCoverImage operation.
 //
 // GET /galleries/{media_id}/cover.{format}
-func (s *Server) handleGetPageCoverImageRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleGetPageCoverImageRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `GetPageCoverImage`,
 		trace.WithAttributes(otelogen.OperationID(`getPageCoverImage`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -125,7 +125,7 @@ func (s *Server) handleGetPageCoverImageRequest(args map[string]string, w http.R
 // HandleGetPageImageRequest handles getPageImage operation.
 //
 // GET /galleries/{media_id}/{page}.{format}
-func (s *Server) handleGetPageImageRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleGetPageImageRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `GetPageImage`,
 		trace.WithAttributes(otelogen.OperationID(`getPageImage`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -154,7 +154,7 @@ func (s *Server) handleGetPageImageRequest(args map[string]string, w http.Respon
 // HandleGetPageThumbnailImageRequest handles getPageThumbnailImage operation.
 //
 // GET /galleries/{media_id}/{page}t.{format}
-func (s *Server) handleGetPageThumbnailImageRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleGetPageThumbnailImageRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `GetPageThumbnailImage`,
 		trace.WithAttributes(otelogen.OperationID(`getPageThumbnailImage`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -183,7 +183,7 @@ func (s *Server) handleGetPageThumbnailImageRequest(args map[string]string, w ht
 // HandleSearchRequest handles search operation.
 //
 // GET /api/galleries/search
-func (s *Server) handleSearchRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleSearchRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `Search`,
 		trace.WithAttributes(otelogen.OperationID(`search`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -212,7 +212,7 @@ func (s *Server) handleSearchRequest(args map[string]string, w http.ResponseWrit
 // HandleSearchByTagIDRequest handles searchByTagID operation.
 //
 // GET /api/galleries/tagged
-func (s *Server) handleSearchByTagIDRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleSearchByTagIDRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `SearchByTagID`,
 		trace.WithAttributes(otelogen.OperationID(`searchByTagID`)),
 		trace.WithSpanKind(trace.SpanKindServer),

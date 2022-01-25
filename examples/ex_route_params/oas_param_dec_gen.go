@@ -64,13 +64,13 @@ var (
 	_ = sync.Pool{}
 )
 
-func decodeDataGetParams(args map[string]string, r *http.Request) (DataGetParams, error) {
+func decodeDataGetParams(args [2]string, r *http.Request) (DataGetParams, error) {
 	var (
 		params DataGetParams
 	)
 	// Decode path: id.
 	{
-		param := args["id"]
+		param := args[0]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "id",
@@ -101,7 +101,7 @@ func decodeDataGetParams(args map[string]string, r *http.Request) (DataGetParams
 	}
 	// Decode path: key.
 	{
-		param := args["key"]
+		param := args[1]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "key",
@@ -133,13 +133,13 @@ func decodeDataGetParams(args map[string]string, r *http.Request) (DataGetParams
 	return params, nil
 }
 
-func decodeDataGetIDParams(args map[string]string, r *http.Request) (DataGetIDParams, error) {
+func decodeDataGetIDParams(args [1]string, r *http.Request) (DataGetIDParams, error) {
 	var (
 		params DataGetIDParams
 	)
 	// Decode path: id.
 	{
-		param := args["id"]
+		param := args[0]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "id",

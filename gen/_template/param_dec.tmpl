@@ -7,7 +7,7 @@
 {{- range $op := $.Operations }}{{/* Range over methods */}}
 {{ if $op.Params }}{{/* Check parameters existence */}}
 
-func decode{{ $op.Name }}Params(args map[string]string, r *http.Request) ({{ $op.Name }}Params, error) {
+func decode{{ $op.Name }}Params(args [{{ $op.PathParamsCount }}]string, r *http.Request) ({{ $op.Name }}Params, error) {
 	var (
 		params {{ $op.Name }}Params
 		{{- if $op.HasQueryParams }}
@@ -50,7 +50,7 @@ func decode{{ $op.Name }}Params(args map[string]string, r *http.Request) ({{ $op
 	}
 	{{- else if $p.Spec.In.Path }}
 	{
-		param := args["{{ $p.Spec.Name }}"]
+		param := args[{{ $op.PathParamIndex $p.Spec.Name }}]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param: "{{ $p.Spec.Name}}",

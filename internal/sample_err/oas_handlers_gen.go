@@ -67,7 +67,7 @@ var (
 // HandleDataCreateRequest handles dataCreate operation.
 //
 // POST /data
-func (s *Server) handleDataCreateRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleDataCreateRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `DataCreate`,
 		trace.WithAttributes(otelogen.OperationID(`dataCreate`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -101,7 +101,7 @@ func (s *Server) handleDataCreateRequest(args map[string]string, w http.Response
 // HandleDataGetRequest handles dataGet operation.
 //
 // GET /data
-func (s *Server) handleDataGetRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleDataGetRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `DataGet`,
 		trace.WithAttributes(otelogen.OperationID(`dataGet`)),
 		trace.WithSpanKind(trace.SpanKindServer),

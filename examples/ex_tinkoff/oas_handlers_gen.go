@@ -67,7 +67,7 @@ var (
 // HandleMarketBondsGetRequest handles  operation.
 //
 // GET /market/bonds
-func (s *Server) handleMarketBondsGetRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleMarketBondsGetRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `MarketBondsGet`,
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
@@ -89,7 +89,7 @@ func (s *Server) handleMarketBondsGetRequest(args map[string]string, w http.Resp
 // HandleMarketCandlesGetRequest handles  operation.
 //
 // GET /market/candles
-func (s *Server) handleMarketCandlesGetRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleMarketCandlesGetRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `MarketCandlesGet`,
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
@@ -117,7 +117,7 @@ func (s *Server) handleMarketCandlesGetRequest(args map[string]string, w http.Re
 // HandleMarketCurrenciesGetRequest handles  operation.
 //
 // GET /market/currencies
-func (s *Server) handleMarketCurrenciesGetRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleMarketCurrenciesGetRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `MarketCurrenciesGet`,
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
@@ -139,7 +139,7 @@ func (s *Server) handleMarketCurrenciesGetRequest(args map[string]string, w http
 // HandleMarketEtfsGetRequest handles  operation.
 //
 // GET /market/etfs
-func (s *Server) handleMarketEtfsGetRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleMarketEtfsGetRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `MarketEtfsGet`,
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
@@ -161,7 +161,7 @@ func (s *Server) handleMarketEtfsGetRequest(args map[string]string, w http.Respo
 // HandleMarketOrderbookGetRequest handles  operation.
 //
 // GET /market/orderbook
-func (s *Server) handleMarketOrderbookGetRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleMarketOrderbookGetRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `MarketOrderbookGet`,
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
@@ -189,7 +189,7 @@ func (s *Server) handleMarketOrderbookGetRequest(args map[string]string, w http.
 // HandleMarketSearchByFigiGetRequest handles  operation.
 //
 // GET /market/search/by-figi
-func (s *Server) handleMarketSearchByFigiGetRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleMarketSearchByFigiGetRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `MarketSearchByFigiGet`,
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
@@ -217,7 +217,7 @@ func (s *Server) handleMarketSearchByFigiGetRequest(args map[string]string, w ht
 // HandleMarketSearchByTickerGetRequest handles  operation.
 //
 // GET /market/search/by-ticker
-func (s *Server) handleMarketSearchByTickerGetRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleMarketSearchByTickerGetRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `MarketSearchByTickerGet`,
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
@@ -245,7 +245,7 @@ func (s *Server) handleMarketSearchByTickerGetRequest(args map[string]string, w 
 // HandleMarketStocksGetRequest handles  operation.
 //
 // GET /market/stocks
-func (s *Server) handleMarketStocksGetRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleMarketStocksGetRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `MarketStocksGet`,
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
@@ -267,7 +267,7 @@ func (s *Server) handleMarketStocksGetRequest(args map[string]string, w http.Res
 // HandleOperationsGetRequest handles  operation.
 //
 // GET /operations
-func (s *Server) handleOperationsGetRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleOperationsGetRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `OperationsGet`,
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
@@ -295,7 +295,7 @@ func (s *Server) handleOperationsGetRequest(args map[string]string, w http.Respo
 // HandleOrdersCancelPostRequest handles  operation.
 //
 // POST /orders/cancel
-func (s *Server) handleOrdersCancelPostRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleOrdersCancelPostRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `OrdersCancelPost`,
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
@@ -323,7 +323,7 @@ func (s *Server) handleOrdersCancelPostRequest(args map[string]string, w http.Re
 // HandleOrdersGetRequest handles  operation.
 //
 // GET /orders
-func (s *Server) handleOrdersGetRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleOrdersGetRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `OrdersGet`,
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
@@ -351,7 +351,7 @@ func (s *Server) handleOrdersGetRequest(args map[string]string, w http.ResponseW
 // HandleOrdersLimitOrderPostRequest handles  operation.
 //
 // POST /orders/limit-order
-func (s *Server) handleOrdersLimitOrderPostRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleOrdersLimitOrderPostRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `OrdersLimitOrderPost`,
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
@@ -385,7 +385,7 @@ func (s *Server) handleOrdersLimitOrderPostRequest(args map[string]string, w htt
 // HandleOrdersMarketOrderPostRequest handles  operation.
 //
 // POST /orders/market-order
-func (s *Server) handleOrdersMarketOrderPostRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleOrdersMarketOrderPostRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `OrdersMarketOrderPost`,
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
@@ -419,7 +419,7 @@ func (s *Server) handleOrdersMarketOrderPostRequest(args map[string]string, w ht
 // HandlePortfolioCurrenciesGetRequest handles  operation.
 //
 // GET /portfolio/currencies
-func (s *Server) handlePortfolioCurrenciesGetRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handlePortfolioCurrenciesGetRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `PortfolioCurrenciesGet`,
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
@@ -447,7 +447,7 @@ func (s *Server) handlePortfolioCurrenciesGetRequest(args map[string]string, w h
 // HandlePortfolioGetRequest handles  operation.
 //
 // GET /portfolio
-func (s *Server) handlePortfolioGetRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handlePortfolioGetRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `PortfolioGet`,
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
@@ -475,7 +475,7 @@ func (s *Server) handlePortfolioGetRequest(args map[string]string, w http.Respon
 // HandleSandboxClearPostRequest handles  operation.
 //
 // POST /sandbox/clear
-func (s *Server) handleSandboxClearPostRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleSandboxClearPostRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `SandboxClearPost`,
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
@@ -503,7 +503,7 @@ func (s *Server) handleSandboxClearPostRequest(args map[string]string, w http.Re
 // HandleSandboxCurrenciesBalancePostRequest handles  operation.
 //
 // POST /sandbox/currencies/balance
-func (s *Server) handleSandboxCurrenciesBalancePostRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleSandboxCurrenciesBalancePostRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `SandboxCurrenciesBalancePost`,
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
@@ -537,7 +537,7 @@ func (s *Server) handleSandboxCurrenciesBalancePostRequest(args map[string]strin
 // HandleSandboxPositionsBalancePostRequest handles  operation.
 //
 // POST /sandbox/positions/balance
-func (s *Server) handleSandboxPositionsBalancePostRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleSandboxPositionsBalancePostRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `SandboxPositionsBalancePost`,
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
@@ -571,7 +571,7 @@ func (s *Server) handleSandboxPositionsBalancePostRequest(args map[string]string
 // HandleSandboxRegisterPostRequest handles  operation.
 //
 // POST /sandbox/register
-func (s *Server) handleSandboxRegisterPostRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleSandboxRegisterPostRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `SandboxRegisterPost`,
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
@@ -599,7 +599,7 @@ func (s *Server) handleSandboxRegisterPostRequest(args map[string]string, w http
 // HandleSandboxRemovePostRequest handles  operation.
 //
 // POST /sandbox/remove
-func (s *Server) handleSandboxRemovePostRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleSandboxRemovePostRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `SandboxRemovePost`,
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
@@ -627,7 +627,7 @@ func (s *Server) handleSandboxRemovePostRequest(args map[string]string, w http.R
 // HandleUserAccountsGetRequest handles  operation.
 //
 // GET /user/accounts
-func (s *Server) handleUserAccountsGetRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleUserAccountsGetRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `UserAccountsGet`,
 		trace.WithSpanKind(trace.SpanKindServer),
 	)

@@ -67,7 +67,7 @@ var (
 // HandleGetAPIVersionsRequest handles getAPIVersions operation.
 //
 // GET /apis/
-func (s *Server) handleGetAPIVersionsRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleGetAPIVersionsRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `GetAPIVersions`,
 		trace.WithAttributes(otelogen.OperationID(`getAPIVersions`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -90,7 +90,7 @@ func (s *Server) handleGetAPIVersionsRequest(args map[string]string, w http.Resp
 // HandleGetAdmissionregistrationAPIGroupRequest handles getAdmissionregistrationAPIGroup operation.
 //
 // GET /apis/admissionregistration.k8s.io/
-func (s *Server) handleGetAdmissionregistrationAPIGroupRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleGetAdmissionregistrationAPIGroupRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `GetAdmissionregistrationAPIGroup`,
 		trace.WithAttributes(otelogen.OperationID(`getAdmissionregistrationAPIGroup`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -113,7 +113,7 @@ func (s *Server) handleGetAdmissionregistrationAPIGroupRequest(args map[string]s
 // HandleGetAdmissionregistrationV1APIResourcesRequest handles getAdmissionregistrationV1APIResources operation.
 //
 // GET /apis/admissionregistration.k8s.io/v1/
-func (s *Server) handleGetAdmissionregistrationV1APIResourcesRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleGetAdmissionregistrationV1APIResourcesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `GetAdmissionregistrationV1APIResources`,
 		trace.WithAttributes(otelogen.OperationID(`getAdmissionregistrationV1APIResources`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -136,7 +136,7 @@ func (s *Server) handleGetAdmissionregistrationV1APIResourcesRequest(args map[st
 // HandleGetApiextensionsAPIGroupRequest handles getApiextensionsAPIGroup operation.
 //
 // GET /apis/apiextensions.k8s.io/
-func (s *Server) handleGetApiextensionsAPIGroupRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleGetApiextensionsAPIGroupRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `GetApiextensionsAPIGroup`,
 		trace.WithAttributes(otelogen.OperationID(`getApiextensionsAPIGroup`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -159,7 +159,7 @@ func (s *Server) handleGetApiextensionsAPIGroupRequest(args map[string]string, w
 // HandleGetApiextensionsV1APIResourcesRequest handles getApiextensionsV1APIResources operation.
 //
 // GET /apis/apiextensions.k8s.io/v1/
-func (s *Server) handleGetApiextensionsV1APIResourcesRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleGetApiextensionsV1APIResourcesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `GetApiextensionsV1APIResources`,
 		trace.WithAttributes(otelogen.OperationID(`getApiextensionsV1APIResources`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -182,7 +182,7 @@ func (s *Server) handleGetApiextensionsV1APIResourcesRequest(args map[string]str
 // HandleGetApiregistrationAPIGroupRequest handles getApiregistrationAPIGroup operation.
 //
 // GET /apis/apiregistration.k8s.io/
-func (s *Server) handleGetApiregistrationAPIGroupRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleGetApiregistrationAPIGroupRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `GetApiregistrationAPIGroup`,
 		trace.WithAttributes(otelogen.OperationID(`getApiregistrationAPIGroup`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -205,7 +205,7 @@ func (s *Server) handleGetApiregistrationAPIGroupRequest(args map[string]string,
 // HandleGetApiregistrationV1APIResourcesRequest handles getApiregistrationV1APIResources operation.
 //
 // GET /apis/apiregistration.k8s.io/v1/
-func (s *Server) handleGetApiregistrationV1APIResourcesRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleGetApiregistrationV1APIResourcesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `GetApiregistrationV1APIResources`,
 		trace.WithAttributes(otelogen.OperationID(`getApiregistrationV1APIResources`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -228,7 +228,7 @@ func (s *Server) handleGetApiregistrationV1APIResourcesRequest(args map[string]s
 // HandleGetAppsAPIGroupRequest handles getAppsAPIGroup operation.
 //
 // GET /apis/apps/
-func (s *Server) handleGetAppsAPIGroupRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleGetAppsAPIGroupRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `GetAppsAPIGroup`,
 		trace.WithAttributes(otelogen.OperationID(`getAppsAPIGroup`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -251,7 +251,7 @@ func (s *Server) handleGetAppsAPIGroupRequest(args map[string]string, w http.Res
 // HandleGetAppsV1APIResourcesRequest handles getAppsV1APIResources operation.
 //
 // GET /apis/apps/v1/
-func (s *Server) handleGetAppsV1APIResourcesRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleGetAppsV1APIResourcesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `GetAppsV1APIResources`,
 		trace.WithAttributes(otelogen.OperationID(`getAppsV1APIResources`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -274,7 +274,7 @@ func (s *Server) handleGetAppsV1APIResourcesRequest(args map[string]string, w ht
 // HandleGetAuthenticationAPIGroupRequest handles getAuthenticationAPIGroup operation.
 //
 // GET /apis/authentication.k8s.io/
-func (s *Server) handleGetAuthenticationAPIGroupRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleGetAuthenticationAPIGroupRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `GetAuthenticationAPIGroup`,
 		trace.WithAttributes(otelogen.OperationID(`getAuthenticationAPIGroup`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -297,7 +297,7 @@ func (s *Server) handleGetAuthenticationAPIGroupRequest(args map[string]string, 
 // HandleGetAuthenticationV1APIResourcesRequest handles getAuthenticationV1APIResources operation.
 //
 // GET /apis/authentication.k8s.io/v1/
-func (s *Server) handleGetAuthenticationV1APIResourcesRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleGetAuthenticationV1APIResourcesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `GetAuthenticationV1APIResources`,
 		trace.WithAttributes(otelogen.OperationID(`getAuthenticationV1APIResources`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -320,7 +320,7 @@ func (s *Server) handleGetAuthenticationV1APIResourcesRequest(args map[string]st
 // HandleGetAuthorizationAPIGroupRequest handles getAuthorizationAPIGroup operation.
 //
 // GET /apis/authorization.k8s.io/
-func (s *Server) handleGetAuthorizationAPIGroupRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleGetAuthorizationAPIGroupRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `GetAuthorizationAPIGroup`,
 		trace.WithAttributes(otelogen.OperationID(`getAuthorizationAPIGroup`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -343,7 +343,7 @@ func (s *Server) handleGetAuthorizationAPIGroupRequest(args map[string]string, w
 // HandleGetAuthorizationV1APIResourcesRequest handles getAuthorizationV1APIResources operation.
 //
 // GET /apis/authorization.k8s.io/v1/
-func (s *Server) handleGetAuthorizationV1APIResourcesRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleGetAuthorizationV1APIResourcesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `GetAuthorizationV1APIResources`,
 		trace.WithAttributes(otelogen.OperationID(`getAuthorizationV1APIResources`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -366,7 +366,7 @@ func (s *Server) handleGetAuthorizationV1APIResourcesRequest(args map[string]str
 // HandleGetAutoscalingAPIGroupRequest handles getAutoscalingAPIGroup operation.
 //
 // GET /apis/autoscaling/
-func (s *Server) handleGetAutoscalingAPIGroupRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleGetAutoscalingAPIGroupRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `GetAutoscalingAPIGroup`,
 		trace.WithAttributes(otelogen.OperationID(`getAutoscalingAPIGroup`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -389,7 +389,7 @@ func (s *Server) handleGetAutoscalingAPIGroupRequest(args map[string]string, w h
 // HandleGetAutoscalingV1APIResourcesRequest handles getAutoscalingV1APIResources operation.
 //
 // GET /apis/autoscaling/v1/
-func (s *Server) handleGetAutoscalingV1APIResourcesRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleGetAutoscalingV1APIResourcesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `GetAutoscalingV1APIResources`,
 		trace.WithAttributes(otelogen.OperationID(`getAutoscalingV1APIResources`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -412,7 +412,7 @@ func (s *Server) handleGetAutoscalingV1APIResourcesRequest(args map[string]strin
 // HandleGetAutoscalingV2beta1APIResourcesRequest handles getAutoscalingV2beta1APIResources operation.
 //
 // GET /apis/autoscaling/v2beta1/
-func (s *Server) handleGetAutoscalingV2beta1APIResourcesRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleGetAutoscalingV2beta1APIResourcesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `GetAutoscalingV2beta1APIResources`,
 		trace.WithAttributes(otelogen.OperationID(`getAutoscalingV2beta1APIResources`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -435,7 +435,7 @@ func (s *Server) handleGetAutoscalingV2beta1APIResourcesRequest(args map[string]
 // HandleGetAutoscalingV2beta2APIResourcesRequest handles getAutoscalingV2beta2APIResources operation.
 //
 // GET /apis/autoscaling/v2beta2/
-func (s *Server) handleGetAutoscalingV2beta2APIResourcesRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleGetAutoscalingV2beta2APIResourcesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `GetAutoscalingV2beta2APIResources`,
 		trace.WithAttributes(otelogen.OperationID(`getAutoscalingV2beta2APIResources`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -458,7 +458,7 @@ func (s *Server) handleGetAutoscalingV2beta2APIResourcesRequest(args map[string]
 // HandleGetBatchAPIGroupRequest handles getBatchAPIGroup operation.
 //
 // GET /apis/batch/
-func (s *Server) handleGetBatchAPIGroupRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleGetBatchAPIGroupRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `GetBatchAPIGroup`,
 		trace.WithAttributes(otelogen.OperationID(`getBatchAPIGroup`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -481,7 +481,7 @@ func (s *Server) handleGetBatchAPIGroupRequest(args map[string]string, w http.Re
 // HandleGetBatchV1APIResourcesRequest handles getBatchV1APIResources operation.
 //
 // GET /apis/batch/v1/
-func (s *Server) handleGetBatchV1APIResourcesRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleGetBatchV1APIResourcesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `GetBatchV1APIResources`,
 		trace.WithAttributes(otelogen.OperationID(`getBatchV1APIResources`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -504,7 +504,7 @@ func (s *Server) handleGetBatchV1APIResourcesRequest(args map[string]string, w h
 // HandleGetBatchV1beta1APIResourcesRequest handles getBatchV1beta1APIResources operation.
 //
 // GET /apis/batch/v1beta1/
-func (s *Server) handleGetBatchV1beta1APIResourcesRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleGetBatchV1beta1APIResourcesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `GetBatchV1beta1APIResources`,
 		trace.WithAttributes(otelogen.OperationID(`getBatchV1beta1APIResources`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -527,7 +527,7 @@ func (s *Server) handleGetBatchV1beta1APIResourcesRequest(args map[string]string
 // HandleGetCertificatesAPIGroupRequest handles getCertificatesAPIGroup operation.
 //
 // GET /apis/certificates.k8s.io/
-func (s *Server) handleGetCertificatesAPIGroupRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleGetCertificatesAPIGroupRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `GetCertificatesAPIGroup`,
 		trace.WithAttributes(otelogen.OperationID(`getCertificatesAPIGroup`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -550,7 +550,7 @@ func (s *Server) handleGetCertificatesAPIGroupRequest(args map[string]string, w 
 // HandleGetCertificatesV1APIResourcesRequest handles getCertificatesV1APIResources operation.
 //
 // GET /apis/certificates.k8s.io/v1/
-func (s *Server) handleGetCertificatesV1APIResourcesRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleGetCertificatesV1APIResourcesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `GetCertificatesV1APIResources`,
 		trace.WithAttributes(otelogen.OperationID(`getCertificatesV1APIResources`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -573,7 +573,7 @@ func (s *Server) handleGetCertificatesV1APIResourcesRequest(args map[string]stri
 // HandleGetCodeVersionRequest handles getCodeVersion operation.
 //
 // GET /version/
-func (s *Server) handleGetCodeVersionRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleGetCodeVersionRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `GetCodeVersion`,
 		trace.WithAttributes(otelogen.OperationID(`getCodeVersion`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -596,7 +596,7 @@ func (s *Server) handleGetCodeVersionRequest(args map[string]string, w http.Resp
 // HandleGetCoordinationAPIGroupRequest handles getCoordinationAPIGroup operation.
 //
 // GET /apis/coordination.k8s.io/
-func (s *Server) handleGetCoordinationAPIGroupRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleGetCoordinationAPIGroupRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `GetCoordinationAPIGroup`,
 		trace.WithAttributes(otelogen.OperationID(`getCoordinationAPIGroup`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -619,7 +619,7 @@ func (s *Server) handleGetCoordinationAPIGroupRequest(args map[string]string, w 
 // HandleGetCoordinationV1APIResourcesRequest handles getCoordinationV1APIResources operation.
 //
 // GET /apis/coordination.k8s.io/v1/
-func (s *Server) handleGetCoordinationV1APIResourcesRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleGetCoordinationV1APIResourcesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `GetCoordinationV1APIResources`,
 		trace.WithAttributes(otelogen.OperationID(`getCoordinationV1APIResources`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -642,7 +642,7 @@ func (s *Server) handleGetCoordinationV1APIResourcesRequest(args map[string]stri
 // HandleGetCoreAPIVersionsRequest handles getCoreAPIVersions operation.
 //
 // GET /api/
-func (s *Server) handleGetCoreAPIVersionsRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleGetCoreAPIVersionsRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `GetCoreAPIVersions`,
 		trace.WithAttributes(otelogen.OperationID(`getCoreAPIVersions`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -665,7 +665,7 @@ func (s *Server) handleGetCoreAPIVersionsRequest(args map[string]string, w http.
 // HandleGetCoreV1APIResourcesRequest handles getCoreV1APIResources operation.
 //
 // GET /api/v1/
-func (s *Server) handleGetCoreV1APIResourcesRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleGetCoreV1APIResourcesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `GetCoreV1APIResources`,
 		trace.WithAttributes(otelogen.OperationID(`getCoreV1APIResources`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -688,7 +688,7 @@ func (s *Server) handleGetCoreV1APIResourcesRequest(args map[string]string, w ht
 // HandleGetDiscoveryAPIGroupRequest handles getDiscoveryAPIGroup operation.
 //
 // GET /apis/discovery.k8s.io/
-func (s *Server) handleGetDiscoveryAPIGroupRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleGetDiscoveryAPIGroupRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `GetDiscoveryAPIGroup`,
 		trace.WithAttributes(otelogen.OperationID(`getDiscoveryAPIGroup`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -711,7 +711,7 @@ func (s *Server) handleGetDiscoveryAPIGroupRequest(args map[string]string, w htt
 // HandleGetDiscoveryV1APIResourcesRequest handles getDiscoveryV1APIResources operation.
 //
 // GET /apis/discovery.k8s.io/v1/
-func (s *Server) handleGetDiscoveryV1APIResourcesRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleGetDiscoveryV1APIResourcesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `GetDiscoveryV1APIResources`,
 		trace.WithAttributes(otelogen.OperationID(`getDiscoveryV1APIResources`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -734,7 +734,7 @@ func (s *Server) handleGetDiscoveryV1APIResourcesRequest(args map[string]string,
 // HandleGetDiscoveryV1beta1APIResourcesRequest handles getDiscoveryV1beta1APIResources operation.
 //
 // GET /apis/discovery.k8s.io/v1beta1/
-func (s *Server) handleGetDiscoveryV1beta1APIResourcesRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleGetDiscoveryV1beta1APIResourcesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `GetDiscoveryV1beta1APIResources`,
 		trace.WithAttributes(otelogen.OperationID(`getDiscoveryV1beta1APIResources`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -757,7 +757,7 @@ func (s *Server) handleGetDiscoveryV1beta1APIResourcesRequest(args map[string]st
 // HandleGetEventsAPIGroupRequest handles getEventsAPIGroup operation.
 //
 // GET /apis/events.k8s.io/
-func (s *Server) handleGetEventsAPIGroupRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleGetEventsAPIGroupRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `GetEventsAPIGroup`,
 		trace.WithAttributes(otelogen.OperationID(`getEventsAPIGroup`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -780,7 +780,7 @@ func (s *Server) handleGetEventsAPIGroupRequest(args map[string]string, w http.R
 // HandleGetEventsV1APIResourcesRequest handles getEventsV1APIResources operation.
 //
 // GET /apis/events.k8s.io/v1/
-func (s *Server) handleGetEventsV1APIResourcesRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleGetEventsV1APIResourcesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `GetEventsV1APIResources`,
 		trace.WithAttributes(otelogen.OperationID(`getEventsV1APIResources`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -803,7 +803,7 @@ func (s *Server) handleGetEventsV1APIResourcesRequest(args map[string]string, w 
 // HandleGetEventsV1beta1APIResourcesRequest handles getEventsV1beta1APIResources operation.
 //
 // GET /apis/events.k8s.io/v1beta1/
-func (s *Server) handleGetEventsV1beta1APIResourcesRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleGetEventsV1beta1APIResourcesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `GetEventsV1beta1APIResources`,
 		trace.WithAttributes(otelogen.OperationID(`getEventsV1beta1APIResources`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -826,7 +826,7 @@ func (s *Server) handleGetEventsV1beta1APIResourcesRequest(args map[string]strin
 // HandleGetFlowcontrolApiserverAPIGroupRequest handles getFlowcontrolApiserverAPIGroup operation.
 //
 // GET /apis/flowcontrol.apiserver.k8s.io/
-func (s *Server) handleGetFlowcontrolApiserverAPIGroupRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleGetFlowcontrolApiserverAPIGroupRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `GetFlowcontrolApiserverAPIGroup`,
 		trace.WithAttributes(otelogen.OperationID(`getFlowcontrolApiserverAPIGroup`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -849,7 +849,7 @@ func (s *Server) handleGetFlowcontrolApiserverAPIGroupRequest(args map[string]st
 // HandleGetFlowcontrolApiserverV1beta1APIResourcesRequest handles getFlowcontrolApiserverV1beta1APIResources operation.
 //
 // GET /apis/flowcontrol.apiserver.k8s.io/v1beta1/
-func (s *Server) handleGetFlowcontrolApiserverV1beta1APIResourcesRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleGetFlowcontrolApiserverV1beta1APIResourcesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `GetFlowcontrolApiserverV1beta1APIResources`,
 		trace.WithAttributes(otelogen.OperationID(`getFlowcontrolApiserverV1beta1APIResources`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -872,7 +872,7 @@ func (s *Server) handleGetFlowcontrolApiserverV1beta1APIResourcesRequest(args ma
 // HandleGetFlowcontrolApiserverV1beta2APIResourcesRequest handles getFlowcontrolApiserverV1beta2APIResources operation.
 //
 // GET /apis/flowcontrol.apiserver.k8s.io/v1beta2/
-func (s *Server) handleGetFlowcontrolApiserverV1beta2APIResourcesRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleGetFlowcontrolApiserverV1beta2APIResourcesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `GetFlowcontrolApiserverV1beta2APIResources`,
 		trace.WithAttributes(otelogen.OperationID(`getFlowcontrolApiserverV1beta2APIResources`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -895,7 +895,7 @@ func (s *Server) handleGetFlowcontrolApiserverV1beta2APIResourcesRequest(args ma
 // HandleGetInternalApiserverAPIGroupRequest handles getInternalApiserverAPIGroup operation.
 //
 // GET /apis/internal.apiserver.k8s.io/
-func (s *Server) handleGetInternalApiserverAPIGroupRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleGetInternalApiserverAPIGroupRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `GetInternalApiserverAPIGroup`,
 		trace.WithAttributes(otelogen.OperationID(`getInternalApiserverAPIGroup`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -918,7 +918,7 @@ func (s *Server) handleGetInternalApiserverAPIGroupRequest(args map[string]strin
 // HandleGetInternalApiserverV1alpha1APIResourcesRequest handles getInternalApiserverV1alpha1APIResources operation.
 //
 // GET /apis/internal.apiserver.k8s.io/v1alpha1/
-func (s *Server) handleGetInternalApiserverV1alpha1APIResourcesRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleGetInternalApiserverV1alpha1APIResourcesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `GetInternalApiserverV1alpha1APIResources`,
 		trace.WithAttributes(otelogen.OperationID(`getInternalApiserverV1alpha1APIResources`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -941,7 +941,7 @@ func (s *Server) handleGetInternalApiserverV1alpha1APIResourcesRequest(args map[
 // HandleGetNetworkingAPIGroupRequest handles getNetworkingAPIGroup operation.
 //
 // GET /apis/networking.k8s.io/
-func (s *Server) handleGetNetworkingAPIGroupRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleGetNetworkingAPIGroupRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `GetNetworkingAPIGroup`,
 		trace.WithAttributes(otelogen.OperationID(`getNetworkingAPIGroup`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -964,7 +964,7 @@ func (s *Server) handleGetNetworkingAPIGroupRequest(args map[string]string, w ht
 // HandleGetNetworkingV1APIResourcesRequest handles getNetworkingV1APIResources operation.
 //
 // GET /apis/networking.k8s.io/v1/
-func (s *Server) handleGetNetworkingV1APIResourcesRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleGetNetworkingV1APIResourcesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `GetNetworkingV1APIResources`,
 		trace.WithAttributes(otelogen.OperationID(`getNetworkingV1APIResources`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -987,7 +987,7 @@ func (s *Server) handleGetNetworkingV1APIResourcesRequest(args map[string]string
 // HandleGetNodeAPIGroupRequest handles getNodeAPIGroup operation.
 //
 // GET /apis/node.k8s.io/
-func (s *Server) handleGetNodeAPIGroupRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleGetNodeAPIGroupRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `GetNodeAPIGroup`,
 		trace.WithAttributes(otelogen.OperationID(`getNodeAPIGroup`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -1010,7 +1010,7 @@ func (s *Server) handleGetNodeAPIGroupRequest(args map[string]string, w http.Res
 // HandleGetNodeV1APIResourcesRequest handles getNodeV1APIResources operation.
 //
 // GET /apis/node.k8s.io/v1/
-func (s *Server) handleGetNodeV1APIResourcesRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleGetNodeV1APIResourcesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `GetNodeV1APIResources`,
 		trace.WithAttributes(otelogen.OperationID(`getNodeV1APIResources`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -1033,7 +1033,7 @@ func (s *Server) handleGetNodeV1APIResourcesRequest(args map[string]string, w ht
 // HandleGetNodeV1alpha1APIResourcesRequest handles getNodeV1alpha1APIResources operation.
 //
 // GET /apis/node.k8s.io/v1alpha1/
-func (s *Server) handleGetNodeV1alpha1APIResourcesRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleGetNodeV1alpha1APIResourcesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `GetNodeV1alpha1APIResources`,
 		trace.WithAttributes(otelogen.OperationID(`getNodeV1alpha1APIResources`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -1056,7 +1056,7 @@ func (s *Server) handleGetNodeV1alpha1APIResourcesRequest(args map[string]string
 // HandleGetNodeV1beta1APIResourcesRequest handles getNodeV1beta1APIResources operation.
 //
 // GET /apis/node.k8s.io/v1beta1/
-func (s *Server) handleGetNodeV1beta1APIResourcesRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleGetNodeV1beta1APIResourcesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `GetNodeV1beta1APIResources`,
 		trace.WithAttributes(otelogen.OperationID(`getNodeV1beta1APIResources`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -1079,7 +1079,7 @@ func (s *Server) handleGetNodeV1beta1APIResourcesRequest(args map[string]string,
 // HandleGetPolicyAPIGroupRequest handles getPolicyAPIGroup operation.
 //
 // GET /apis/policy/
-func (s *Server) handleGetPolicyAPIGroupRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleGetPolicyAPIGroupRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `GetPolicyAPIGroup`,
 		trace.WithAttributes(otelogen.OperationID(`getPolicyAPIGroup`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -1102,7 +1102,7 @@ func (s *Server) handleGetPolicyAPIGroupRequest(args map[string]string, w http.R
 // HandleGetPolicyV1APIResourcesRequest handles getPolicyV1APIResources operation.
 //
 // GET /apis/policy/v1/
-func (s *Server) handleGetPolicyV1APIResourcesRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleGetPolicyV1APIResourcesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `GetPolicyV1APIResources`,
 		trace.WithAttributes(otelogen.OperationID(`getPolicyV1APIResources`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -1125,7 +1125,7 @@ func (s *Server) handleGetPolicyV1APIResourcesRequest(args map[string]string, w 
 // HandleGetPolicyV1beta1APIResourcesRequest handles getPolicyV1beta1APIResources operation.
 //
 // GET /apis/policy/v1beta1/
-func (s *Server) handleGetPolicyV1beta1APIResourcesRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleGetPolicyV1beta1APIResourcesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `GetPolicyV1beta1APIResources`,
 		trace.WithAttributes(otelogen.OperationID(`getPolicyV1beta1APIResources`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -1148,7 +1148,7 @@ func (s *Server) handleGetPolicyV1beta1APIResourcesRequest(args map[string]strin
 // HandleGetRbacAuthorizationAPIGroupRequest handles getRbacAuthorizationAPIGroup operation.
 //
 // GET /apis/rbac.authorization.k8s.io/
-func (s *Server) handleGetRbacAuthorizationAPIGroupRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleGetRbacAuthorizationAPIGroupRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `GetRbacAuthorizationAPIGroup`,
 		trace.WithAttributes(otelogen.OperationID(`getRbacAuthorizationAPIGroup`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -1171,7 +1171,7 @@ func (s *Server) handleGetRbacAuthorizationAPIGroupRequest(args map[string]strin
 // HandleGetRbacAuthorizationV1APIResourcesRequest handles getRbacAuthorizationV1APIResources operation.
 //
 // GET /apis/rbac.authorization.k8s.io/v1/
-func (s *Server) handleGetRbacAuthorizationV1APIResourcesRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleGetRbacAuthorizationV1APIResourcesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `GetRbacAuthorizationV1APIResources`,
 		trace.WithAttributes(otelogen.OperationID(`getRbacAuthorizationV1APIResources`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -1194,7 +1194,7 @@ func (s *Server) handleGetRbacAuthorizationV1APIResourcesRequest(args map[string
 // HandleGetSchedulingAPIGroupRequest handles getSchedulingAPIGroup operation.
 //
 // GET /apis/scheduling.k8s.io/
-func (s *Server) handleGetSchedulingAPIGroupRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleGetSchedulingAPIGroupRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `GetSchedulingAPIGroup`,
 		trace.WithAttributes(otelogen.OperationID(`getSchedulingAPIGroup`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -1217,7 +1217,7 @@ func (s *Server) handleGetSchedulingAPIGroupRequest(args map[string]string, w ht
 // HandleGetSchedulingV1APIResourcesRequest handles getSchedulingV1APIResources operation.
 //
 // GET /apis/scheduling.k8s.io/v1/
-func (s *Server) handleGetSchedulingV1APIResourcesRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleGetSchedulingV1APIResourcesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `GetSchedulingV1APIResources`,
 		trace.WithAttributes(otelogen.OperationID(`getSchedulingV1APIResources`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -1240,7 +1240,7 @@ func (s *Server) handleGetSchedulingV1APIResourcesRequest(args map[string]string
 // HandleGetServiceAccountIssuerOpenIDConfigurationRequest handles getServiceAccountIssuerOpenIDConfiguration operation.
 //
 // GET /.well-known/openid-configuration/
-func (s *Server) handleGetServiceAccountIssuerOpenIDConfigurationRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleGetServiceAccountIssuerOpenIDConfigurationRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `GetServiceAccountIssuerOpenIDConfiguration`,
 		trace.WithAttributes(otelogen.OperationID(`getServiceAccountIssuerOpenIDConfiguration`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -1263,7 +1263,7 @@ func (s *Server) handleGetServiceAccountIssuerOpenIDConfigurationRequest(args ma
 // HandleGetStorageAPIGroupRequest handles getStorageAPIGroup operation.
 //
 // GET /apis/storage.k8s.io/
-func (s *Server) handleGetStorageAPIGroupRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleGetStorageAPIGroupRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `GetStorageAPIGroup`,
 		trace.WithAttributes(otelogen.OperationID(`getStorageAPIGroup`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -1286,7 +1286,7 @@ func (s *Server) handleGetStorageAPIGroupRequest(args map[string]string, w http.
 // HandleGetStorageV1APIResourcesRequest handles getStorageV1APIResources operation.
 //
 // GET /apis/storage.k8s.io/v1/
-func (s *Server) handleGetStorageV1APIResourcesRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleGetStorageV1APIResourcesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `GetStorageV1APIResources`,
 		trace.WithAttributes(otelogen.OperationID(`getStorageV1APIResources`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -1309,7 +1309,7 @@ func (s *Server) handleGetStorageV1APIResourcesRequest(args map[string]string, w
 // HandleGetStorageV1alpha1APIResourcesRequest handles getStorageV1alpha1APIResources operation.
 //
 // GET /apis/storage.k8s.io/v1alpha1/
-func (s *Server) handleGetStorageV1alpha1APIResourcesRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleGetStorageV1alpha1APIResourcesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `GetStorageV1alpha1APIResources`,
 		trace.WithAttributes(otelogen.OperationID(`getStorageV1alpha1APIResources`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -1332,7 +1332,7 @@ func (s *Server) handleGetStorageV1alpha1APIResourcesRequest(args map[string]str
 // HandleGetStorageV1beta1APIResourcesRequest handles getStorageV1beta1APIResources operation.
 //
 // GET /apis/storage.k8s.io/v1beta1/
-func (s *Server) handleGetStorageV1beta1APIResourcesRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleGetStorageV1beta1APIResourcesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `GetStorageV1beta1APIResources`,
 		trace.WithAttributes(otelogen.OperationID(`getStorageV1beta1APIResources`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -1355,7 +1355,7 @@ func (s *Server) handleGetStorageV1beta1APIResourcesRequest(args map[string]stri
 // HandleListAdmissionregistrationV1MutatingWebhookConfigurationRequest handles listAdmissionregistrationV1MutatingWebhookConfiguration operation.
 //
 // GET /apis/admissionregistration.k8s.io/v1/mutatingwebhookconfigurations
-func (s *Server) handleListAdmissionregistrationV1MutatingWebhookConfigurationRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleListAdmissionregistrationV1MutatingWebhookConfigurationRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ListAdmissionregistrationV1MutatingWebhookConfiguration`,
 		trace.WithAttributes(otelogen.OperationID(`listAdmissionregistrationV1MutatingWebhookConfiguration`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -1384,7 +1384,7 @@ func (s *Server) handleListAdmissionregistrationV1MutatingWebhookConfigurationRe
 // HandleListAdmissionregistrationV1ValidatingWebhookConfigurationRequest handles listAdmissionregistrationV1ValidatingWebhookConfiguration operation.
 //
 // GET /apis/admissionregistration.k8s.io/v1/validatingwebhookconfigurations
-func (s *Server) handleListAdmissionregistrationV1ValidatingWebhookConfigurationRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleListAdmissionregistrationV1ValidatingWebhookConfigurationRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ListAdmissionregistrationV1ValidatingWebhookConfiguration`,
 		trace.WithAttributes(otelogen.OperationID(`listAdmissionregistrationV1ValidatingWebhookConfiguration`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -1413,7 +1413,7 @@ func (s *Server) handleListAdmissionregistrationV1ValidatingWebhookConfiguration
 // HandleListApiextensionsV1CustomResourceDefinitionRequest handles listApiextensionsV1CustomResourceDefinition operation.
 //
 // GET /apis/apiextensions.k8s.io/v1/customresourcedefinitions
-func (s *Server) handleListApiextensionsV1CustomResourceDefinitionRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleListApiextensionsV1CustomResourceDefinitionRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ListApiextensionsV1CustomResourceDefinition`,
 		trace.WithAttributes(otelogen.OperationID(`listApiextensionsV1CustomResourceDefinition`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -1442,7 +1442,7 @@ func (s *Server) handleListApiextensionsV1CustomResourceDefinitionRequest(args m
 // HandleListApiregistrationV1APIServiceRequest handles listApiregistrationV1APIService operation.
 //
 // GET /apis/apiregistration.k8s.io/v1/apiservices
-func (s *Server) handleListApiregistrationV1APIServiceRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleListApiregistrationV1APIServiceRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ListApiregistrationV1APIService`,
 		trace.WithAttributes(otelogen.OperationID(`listApiregistrationV1APIService`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -1471,7 +1471,7 @@ func (s *Server) handleListApiregistrationV1APIServiceRequest(args map[string]st
 // HandleListAppsV1ControllerRevisionForAllNamespacesRequest handles listAppsV1ControllerRevisionForAllNamespaces operation.
 //
 // GET /apis/apps/v1/controllerrevisions
-func (s *Server) handleListAppsV1ControllerRevisionForAllNamespacesRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleListAppsV1ControllerRevisionForAllNamespacesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ListAppsV1ControllerRevisionForAllNamespaces`,
 		trace.WithAttributes(otelogen.OperationID(`listAppsV1ControllerRevisionForAllNamespaces`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -1500,7 +1500,7 @@ func (s *Server) handleListAppsV1ControllerRevisionForAllNamespacesRequest(args 
 // HandleListAppsV1DaemonSetForAllNamespacesRequest handles listAppsV1DaemonSetForAllNamespaces operation.
 //
 // GET /apis/apps/v1/daemonsets
-func (s *Server) handleListAppsV1DaemonSetForAllNamespacesRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleListAppsV1DaemonSetForAllNamespacesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ListAppsV1DaemonSetForAllNamespaces`,
 		trace.WithAttributes(otelogen.OperationID(`listAppsV1DaemonSetForAllNamespaces`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -1529,7 +1529,7 @@ func (s *Server) handleListAppsV1DaemonSetForAllNamespacesRequest(args map[strin
 // HandleListAppsV1DeploymentForAllNamespacesRequest handles listAppsV1DeploymentForAllNamespaces operation.
 //
 // GET /apis/apps/v1/deployments
-func (s *Server) handleListAppsV1DeploymentForAllNamespacesRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleListAppsV1DeploymentForAllNamespacesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ListAppsV1DeploymentForAllNamespaces`,
 		trace.WithAttributes(otelogen.OperationID(`listAppsV1DeploymentForAllNamespaces`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -1558,7 +1558,7 @@ func (s *Server) handleListAppsV1DeploymentForAllNamespacesRequest(args map[stri
 // HandleListAppsV1NamespacedControllerRevisionRequest handles listAppsV1NamespacedControllerRevision operation.
 //
 // GET /apis/apps/v1/namespaces/{namespace}/controllerrevisions
-func (s *Server) handleListAppsV1NamespacedControllerRevisionRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleListAppsV1NamespacedControllerRevisionRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ListAppsV1NamespacedControllerRevision`,
 		trace.WithAttributes(otelogen.OperationID(`listAppsV1NamespacedControllerRevision`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -1587,7 +1587,7 @@ func (s *Server) handleListAppsV1NamespacedControllerRevisionRequest(args map[st
 // HandleListAppsV1NamespacedDaemonSetRequest handles listAppsV1NamespacedDaemonSet operation.
 //
 // GET /apis/apps/v1/namespaces/{namespace}/daemonsets
-func (s *Server) handleListAppsV1NamespacedDaemonSetRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleListAppsV1NamespacedDaemonSetRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ListAppsV1NamespacedDaemonSet`,
 		trace.WithAttributes(otelogen.OperationID(`listAppsV1NamespacedDaemonSet`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -1616,7 +1616,7 @@ func (s *Server) handleListAppsV1NamespacedDaemonSetRequest(args map[string]stri
 // HandleListAppsV1NamespacedDeploymentRequest handles listAppsV1NamespacedDeployment operation.
 //
 // GET /apis/apps/v1/namespaces/{namespace}/deployments
-func (s *Server) handleListAppsV1NamespacedDeploymentRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleListAppsV1NamespacedDeploymentRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ListAppsV1NamespacedDeployment`,
 		trace.WithAttributes(otelogen.OperationID(`listAppsV1NamespacedDeployment`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -1645,7 +1645,7 @@ func (s *Server) handleListAppsV1NamespacedDeploymentRequest(args map[string]str
 // HandleListAppsV1NamespacedReplicaSetRequest handles listAppsV1NamespacedReplicaSet operation.
 //
 // GET /apis/apps/v1/namespaces/{namespace}/replicasets
-func (s *Server) handleListAppsV1NamespacedReplicaSetRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleListAppsV1NamespacedReplicaSetRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ListAppsV1NamespacedReplicaSet`,
 		trace.WithAttributes(otelogen.OperationID(`listAppsV1NamespacedReplicaSet`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -1674,7 +1674,7 @@ func (s *Server) handleListAppsV1NamespacedReplicaSetRequest(args map[string]str
 // HandleListAppsV1NamespacedStatefulSetRequest handles listAppsV1NamespacedStatefulSet operation.
 //
 // GET /apis/apps/v1/namespaces/{namespace}/statefulsets
-func (s *Server) handleListAppsV1NamespacedStatefulSetRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleListAppsV1NamespacedStatefulSetRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ListAppsV1NamespacedStatefulSet`,
 		trace.WithAttributes(otelogen.OperationID(`listAppsV1NamespacedStatefulSet`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -1703,7 +1703,7 @@ func (s *Server) handleListAppsV1NamespacedStatefulSetRequest(args map[string]st
 // HandleListAppsV1ReplicaSetForAllNamespacesRequest handles listAppsV1ReplicaSetForAllNamespaces operation.
 //
 // GET /apis/apps/v1/replicasets
-func (s *Server) handleListAppsV1ReplicaSetForAllNamespacesRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleListAppsV1ReplicaSetForAllNamespacesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ListAppsV1ReplicaSetForAllNamespaces`,
 		trace.WithAttributes(otelogen.OperationID(`listAppsV1ReplicaSetForAllNamespaces`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -1732,7 +1732,7 @@ func (s *Server) handleListAppsV1ReplicaSetForAllNamespacesRequest(args map[stri
 // HandleListAppsV1StatefulSetForAllNamespacesRequest handles listAppsV1StatefulSetForAllNamespaces operation.
 //
 // GET /apis/apps/v1/statefulsets
-func (s *Server) handleListAppsV1StatefulSetForAllNamespacesRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleListAppsV1StatefulSetForAllNamespacesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ListAppsV1StatefulSetForAllNamespaces`,
 		trace.WithAttributes(otelogen.OperationID(`listAppsV1StatefulSetForAllNamespaces`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -1761,7 +1761,7 @@ func (s *Server) handleListAppsV1StatefulSetForAllNamespacesRequest(args map[str
 // HandleListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesRequest handles listAutoscalingV1HorizontalPodAutoscalerForAllNamespaces operation.
 //
 // GET /apis/autoscaling/v1/horizontalpodautoscalers
-func (s *Server) handleListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ListAutoscalingV1HorizontalPodAutoscalerForAllNamespaces`,
 		trace.WithAttributes(otelogen.OperationID(`listAutoscalingV1HorizontalPodAutoscalerForAllNamespaces`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -1790,7 +1790,7 @@ func (s *Server) handleListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesR
 // HandleListAutoscalingV1NamespacedHorizontalPodAutoscalerRequest handles listAutoscalingV1NamespacedHorizontalPodAutoscaler operation.
 //
 // GET /apis/autoscaling/v1/namespaces/{namespace}/horizontalpodautoscalers
-func (s *Server) handleListAutoscalingV1NamespacedHorizontalPodAutoscalerRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleListAutoscalingV1NamespacedHorizontalPodAutoscalerRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ListAutoscalingV1NamespacedHorizontalPodAutoscaler`,
 		trace.WithAttributes(otelogen.OperationID(`listAutoscalingV1NamespacedHorizontalPodAutoscaler`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -1819,7 +1819,7 @@ func (s *Server) handleListAutoscalingV1NamespacedHorizontalPodAutoscalerRequest
 // HandleListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespacesRequest handles listAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespaces operation.
 //
 // GET /apis/autoscaling/v2beta1/horizontalpodautoscalers
-func (s *Server) handleListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespacesRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespacesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespaces`,
 		trace.WithAttributes(otelogen.OperationID(`listAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespaces`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -1848,7 +1848,7 @@ func (s *Server) handleListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamesp
 // HandleListAutoscalingV2beta1NamespacedHorizontalPodAutoscalerRequest handles listAutoscalingV2beta1NamespacedHorizontalPodAutoscaler operation.
 //
 // GET /apis/autoscaling/v2beta1/namespaces/{namespace}/horizontalpodautoscalers
-func (s *Server) handleListAutoscalingV2beta1NamespacedHorizontalPodAutoscalerRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleListAutoscalingV2beta1NamespacedHorizontalPodAutoscalerRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ListAutoscalingV2beta1NamespacedHorizontalPodAutoscaler`,
 		trace.WithAttributes(otelogen.OperationID(`listAutoscalingV2beta1NamespacedHorizontalPodAutoscaler`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -1877,7 +1877,7 @@ func (s *Server) handleListAutoscalingV2beta1NamespacedHorizontalPodAutoscalerRe
 // HandleListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespacesRequest handles listAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespaces operation.
 //
 // GET /apis/autoscaling/v2beta2/horizontalpodautoscalers
-func (s *Server) handleListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespacesRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespacesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespaces`,
 		trace.WithAttributes(otelogen.OperationID(`listAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespaces`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -1906,7 +1906,7 @@ func (s *Server) handleListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamesp
 // HandleListAutoscalingV2beta2NamespacedHorizontalPodAutoscalerRequest handles listAutoscalingV2beta2NamespacedHorizontalPodAutoscaler operation.
 //
 // GET /apis/autoscaling/v2beta2/namespaces/{namespace}/horizontalpodautoscalers
-func (s *Server) handleListAutoscalingV2beta2NamespacedHorizontalPodAutoscalerRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleListAutoscalingV2beta2NamespacedHorizontalPodAutoscalerRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ListAutoscalingV2beta2NamespacedHorizontalPodAutoscaler`,
 		trace.WithAttributes(otelogen.OperationID(`listAutoscalingV2beta2NamespacedHorizontalPodAutoscaler`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -1935,7 +1935,7 @@ func (s *Server) handleListAutoscalingV2beta2NamespacedHorizontalPodAutoscalerRe
 // HandleListBatchV1CronJobForAllNamespacesRequest handles listBatchV1CronJobForAllNamespaces operation.
 //
 // GET /apis/batch/v1/cronjobs
-func (s *Server) handleListBatchV1CronJobForAllNamespacesRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleListBatchV1CronJobForAllNamespacesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ListBatchV1CronJobForAllNamespaces`,
 		trace.WithAttributes(otelogen.OperationID(`listBatchV1CronJobForAllNamespaces`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -1964,7 +1964,7 @@ func (s *Server) handleListBatchV1CronJobForAllNamespacesRequest(args map[string
 // HandleListBatchV1JobForAllNamespacesRequest handles listBatchV1JobForAllNamespaces operation.
 //
 // GET /apis/batch/v1/jobs
-func (s *Server) handleListBatchV1JobForAllNamespacesRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleListBatchV1JobForAllNamespacesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ListBatchV1JobForAllNamespaces`,
 		trace.WithAttributes(otelogen.OperationID(`listBatchV1JobForAllNamespaces`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -1993,7 +1993,7 @@ func (s *Server) handleListBatchV1JobForAllNamespacesRequest(args map[string]str
 // HandleListBatchV1NamespacedCronJobRequest handles listBatchV1NamespacedCronJob operation.
 //
 // GET /apis/batch/v1/namespaces/{namespace}/cronjobs
-func (s *Server) handleListBatchV1NamespacedCronJobRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleListBatchV1NamespacedCronJobRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ListBatchV1NamespacedCronJob`,
 		trace.WithAttributes(otelogen.OperationID(`listBatchV1NamespacedCronJob`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -2022,7 +2022,7 @@ func (s *Server) handleListBatchV1NamespacedCronJobRequest(args map[string]strin
 // HandleListBatchV1NamespacedJobRequest handles listBatchV1NamespacedJob operation.
 //
 // GET /apis/batch/v1/namespaces/{namespace}/jobs
-func (s *Server) handleListBatchV1NamespacedJobRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleListBatchV1NamespacedJobRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ListBatchV1NamespacedJob`,
 		trace.WithAttributes(otelogen.OperationID(`listBatchV1NamespacedJob`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -2051,7 +2051,7 @@ func (s *Server) handleListBatchV1NamespacedJobRequest(args map[string]string, w
 // HandleListBatchV1beta1CronJobForAllNamespacesRequest handles listBatchV1beta1CronJobForAllNamespaces operation.
 //
 // GET /apis/batch/v1beta1/cronjobs
-func (s *Server) handleListBatchV1beta1CronJobForAllNamespacesRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleListBatchV1beta1CronJobForAllNamespacesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ListBatchV1beta1CronJobForAllNamespaces`,
 		trace.WithAttributes(otelogen.OperationID(`listBatchV1beta1CronJobForAllNamespaces`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -2080,7 +2080,7 @@ func (s *Server) handleListBatchV1beta1CronJobForAllNamespacesRequest(args map[s
 // HandleListBatchV1beta1NamespacedCronJobRequest handles listBatchV1beta1NamespacedCronJob operation.
 //
 // GET /apis/batch/v1beta1/namespaces/{namespace}/cronjobs
-func (s *Server) handleListBatchV1beta1NamespacedCronJobRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleListBatchV1beta1NamespacedCronJobRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ListBatchV1beta1NamespacedCronJob`,
 		trace.WithAttributes(otelogen.OperationID(`listBatchV1beta1NamespacedCronJob`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -2109,7 +2109,7 @@ func (s *Server) handleListBatchV1beta1NamespacedCronJobRequest(args map[string]
 // HandleListCertificatesV1CertificateSigningRequestRequest handles listCertificatesV1CertificateSigningRequest operation.
 //
 // GET /apis/certificates.k8s.io/v1/certificatesigningrequests
-func (s *Server) handleListCertificatesV1CertificateSigningRequestRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleListCertificatesV1CertificateSigningRequestRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ListCertificatesV1CertificateSigningRequest`,
 		trace.WithAttributes(otelogen.OperationID(`listCertificatesV1CertificateSigningRequest`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -2138,7 +2138,7 @@ func (s *Server) handleListCertificatesV1CertificateSigningRequestRequest(args m
 // HandleListCoordinationV1LeaseForAllNamespacesRequest handles listCoordinationV1LeaseForAllNamespaces operation.
 //
 // GET /apis/coordination.k8s.io/v1/leases
-func (s *Server) handleListCoordinationV1LeaseForAllNamespacesRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleListCoordinationV1LeaseForAllNamespacesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ListCoordinationV1LeaseForAllNamespaces`,
 		trace.WithAttributes(otelogen.OperationID(`listCoordinationV1LeaseForAllNamespaces`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -2167,7 +2167,7 @@ func (s *Server) handleListCoordinationV1LeaseForAllNamespacesRequest(args map[s
 // HandleListCoordinationV1NamespacedLeaseRequest handles listCoordinationV1NamespacedLease operation.
 //
 // GET /apis/coordination.k8s.io/v1/namespaces/{namespace}/leases
-func (s *Server) handleListCoordinationV1NamespacedLeaseRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleListCoordinationV1NamespacedLeaseRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ListCoordinationV1NamespacedLease`,
 		trace.WithAttributes(otelogen.OperationID(`listCoordinationV1NamespacedLease`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -2196,7 +2196,7 @@ func (s *Server) handleListCoordinationV1NamespacedLeaseRequest(args map[string]
 // HandleListCoreV1ComponentStatusRequest handles listCoreV1ComponentStatus operation.
 //
 // GET /api/v1/componentstatuses
-func (s *Server) handleListCoreV1ComponentStatusRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleListCoreV1ComponentStatusRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ListCoreV1ComponentStatus`,
 		trace.WithAttributes(otelogen.OperationID(`listCoreV1ComponentStatus`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -2225,7 +2225,7 @@ func (s *Server) handleListCoreV1ComponentStatusRequest(args map[string]string, 
 // HandleListCoreV1ConfigMapForAllNamespacesRequest handles listCoreV1ConfigMapForAllNamespaces operation.
 //
 // GET /api/v1/configmaps
-func (s *Server) handleListCoreV1ConfigMapForAllNamespacesRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleListCoreV1ConfigMapForAllNamespacesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ListCoreV1ConfigMapForAllNamespaces`,
 		trace.WithAttributes(otelogen.OperationID(`listCoreV1ConfigMapForAllNamespaces`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -2254,7 +2254,7 @@ func (s *Server) handleListCoreV1ConfigMapForAllNamespacesRequest(args map[strin
 // HandleListCoreV1EndpointsForAllNamespacesRequest handles listCoreV1EndpointsForAllNamespaces operation.
 //
 // GET /api/v1/endpoints
-func (s *Server) handleListCoreV1EndpointsForAllNamespacesRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleListCoreV1EndpointsForAllNamespacesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ListCoreV1EndpointsForAllNamespaces`,
 		trace.WithAttributes(otelogen.OperationID(`listCoreV1EndpointsForAllNamespaces`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -2283,7 +2283,7 @@ func (s *Server) handleListCoreV1EndpointsForAllNamespacesRequest(args map[strin
 // HandleListCoreV1EventForAllNamespacesRequest handles listCoreV1EventForAllNamespaces operation.
 //
 // GET /api/v1/events
-func (s *Server) handleListCoreV1EventForAllNamespacesRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleListCoreV1EventForAllNamespacesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ListCoreV1EventForAllNamespaces`,
 		trace.WithAttributes(otelogen.OperationID(`listCoreV1EventForAllNamespaces`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -2312,7 +2312,7 @@ func (s *Server) handleListCoreV1EventForAllNamespacesRequest(args map[string]st
 // HandleListCoreV1LimitRangeForAllNamespacesRequest handles listCoreV1LimitRangeForAllNamespaces operation.
 //
 // GET /api/v1/limitranges
-func (s *Server) handleListCoreV1LimitRangeForAllNamespacesRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleListCoreV1LimitRangeForAllNamespacesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ListCoreV1LimitRangeForAllNamespaces`,
 		trace.WithAttributes(otelogen.OperationID(`listCoreV1LimitRangeForAllNamespaces`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -2341,7 +2341,7 @@ func (s *Server) handleListCoreV1LimitRangeForAllNamespacesRequest(args map[stri
 // HandleListCoreV1NamespaceRequest handles listCoreV1Namespace operation.
 //
 // GET /api/v1/namespaces
-func (s *Server) handleListCoreV1NamespaceRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleListCoreV1NamespaceRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ListCoreV1Namespace`,
 		trace.WithAttributes(otelogen.OperationID(`listCoreV1Namespace`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -2370,7 +2370,7 @@ func (s *Server) handleListCoreV1NamespaceRequest(args map[string]string, w http
 // HandleListCoreV1NamespacedConfigMapRequest handles listCoreV1NamespacedConfigMap operation.
 //
 // GET /api/v1/namespaces/{namespace}/configmaps
-func (s *Server) handleListCoreV1NamespacedConfigMapRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleListCoreV1NamespacedConfigMapRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ListCoreV1NamespacedConfigMap`,
 		trace.WithAttributes(otelogen.OperationID(`listCoreV1NamespacedConfigMap`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -2399,7 +2399,7 @@ func (s *Server) handleListCoreV1NamespacedConfigMapRequest(args map[string]stri
 // HandleListCoreV1NamespacedEndpointsRequest handles listCoreV1NamespacedEndpoints operation.
 //
 // GET /api/v1/namespaces/{namespace}/endpoints
-func (s *Server) handleListCoreV1NamespacedEndpointsRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleListCoreV1NamespacedEndpointsRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ListCoreV1NamespacedEndpoints`,
 		trace.WithAttributes(otelogen.OperationID(`listCoreV1NamespacedEndpoints`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -2428,7 +2428,7 @@ func (s *Server) handleListCoreV1NamespacedEndpointsRequest(args map[string]stri
 // HandleListCoreV1NamespacedEventRequest handles listCoreV1NamespacedEvent operation.
 //
 // GET /api/v1/namespaces/{namespace}/events
-func (s *Server) handleListCoreV1NamespacedEventRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleListCoreV1NamespacedEventRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ListCoreV1NamespacedEvent`,
 		trace.WithAttributes(otelogen.OperationID(`listCoreV1NamespacedEvent`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -2457,7 +2457,7 @@ func (s *Server) handleListCoreV1NamespacedEventRequest(args map[string]string, 
 // HandleListCoreV1NamespacedLimitRangeRequest handles listCoreV1NamespacedLimitRange operation.
 //
 // GET /api/v1/namespaces/{namespace}/limitranges
-func (s *Server) handleListCoreV1NamespacedLimitRangeRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleListCoreV1NamespacedLimitRangeRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ListCoreV1NamespacedLimitRange`,
 		trace.WithAttributes(otelogen.OperationID(`listCoreV1NamespacedLimitRange`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -2486,7 +2486,7 @@ func (s *Server) handleListCoreV1NamespacedLimitRangeRequest(args map[string]str
 // HandleListCoreV1NamespacedPersistentVolumeClaimRequest handles listCoreV1NamespacedPersistentVolumeClaim operation.
 //
 // GET /api/v1/namespaces/{namespace}/persistentvolumeclaims
-func (s *Server) handleListCoreV1NamespacedPersistentVolumeClaimRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleListCoreV1NamespacedPersistentVolumeClaimRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ListCoreV1NamespacedPersistentVolumeClaim`,
 		trace.WithAttributes(otelogen.OperationID(`listCoreV1NamespacedPersistentVolumeClaim`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -2515,7 +2515,7 @@ func (s *Server) handleListCoreV1NamespacedPersistentVolumeClaimRequest(args map
 // HandleListCoreV1NamespacedPodRequest handles listCoreV1NamespacedPod operation.
 //
 // GET /api/v1/namespaces/{namespace}/pods
-func (s *Server) handleListCoreV1NamespacedPodRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleListCoreV1NamespacedPodRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ListCoreV1NamespacedPod`,
 		trace.WithAttributes(otelogen.OperationID(`listCoreV1NamespacedPod`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -2544,7 +2544,7 @@ func (s *Server) handleListCoreV1NamespacedPodRequest(args map[string]string, w 
 // HandleListCoreV1NamespacedPodTemplateRequest handles listCoreV1NamespacedPodTemplate operation.
 //
 // GET /api/v1/namespaces/{namespace}/podtemplates
-func (s *Server) handleListCoreV1NamespacedPodTemplateRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleListCoreV1NamespacedPodTemplateRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ListCoreV1NamespacedPodTemplate`,
 		trace.WithAttributes(otelogen.OperationID(`listCoreV1NamespacedPodTemplate`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -2573,7 +2573,7 @@ func (s *Server) handleListCoreV1NamespacedPodTemplateRequest(args map[string]st
 // HandleListCoreV1NamespacedReplicationControllerRequest handles listCoreV1NamespacedReplicationController operation.
 //
 // GET /api/v1/namespaces/{namespace}/replicationcontrollers
-func (s *Server) handleListCoreV1NamespacedReplicationControllerRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleListCoreV1NamespacedReplicationControllerRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ListCoreV1NamespacedReplicationController`,
 		trace.WithAttributes(otelogen.OperationID(`listCoreV1NamespacedReplicationController`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -2602,7 +2602,7 @@ func (s *Server) handleListCoreV1NamespacedReplicationControllerRequest(args map
 // HandleListCoreV1NamespacedResourceQuotaRequest handles listCoreV1NamespacedResourceQuota operation.
 //
 // GET /api/v1/namespaces/{namespace}/resourcequotas
-func (s *Server) handleListCoreV1NamespacedResourceQuotaRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleListCoreV1NamespacedResourceQuotaRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ListCoreV1NamespacedResourceQuota`,
 		trace.WithAttributes(otelogen.OperationID(`listCoreV1NamespacedResourceQuota`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -2631,7 +2631,7 @@ func (s *Server) handleListCoreV1NamespacedResourceQuotaRequest(args map[string]
 // HandleListCoreV1NamespacedSecretRequest handles listCoreV1NamespacedSecret operation.
 //
 // GET /api/v1/namespaces/{namespace}/secrets
-func (s *Server) handleListCoreV1NamespacedSecretRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleListCoreV1NamespacedSecretRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ListCoreV1NamespacedSecret`,
 		trace.WithAttributes(otelogen.OperationID(`listCoreV1NamespacedSecret`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -2660,7 +2660,7 @@ func (s *Server) handleListCoreV1NamespacedSecretRequest(args map[string]string,
 // HandleListCoreV1NamespacedServiceRequest handles listCoreV1NamespacedService operation.
 //
 // GET /api/v1/namespaces/{namespace}/services
-func (s *Server) handleListCoreV1NamespacedServiceRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleListCoreV1NamespacedServiceRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ListCoreV1NamespacedService`,
 		trace.WithAttributes(otelogen.OperationID(`listCoreV1NamespacedService`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -2689,7 +2689,7 @@ func (s *Server) handleListCoreV1NamespacedServiceRequest(args map[string]string
 // HandleListCoreV1NamespacedServiceAccountRequest handles listCoreV1NamespacedServiceAccount operation.
 //
 // GET /api/v1/namespaces/{namespace}/serviceaccounts
-func (s *Server) handleListCoreV1NamespacedServiceAccountRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleListCoreV1NamespacedServiceAccountRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ListCoreV1NamespacedServiceAccount`,
 		trace.WithAttributes(otelogen.OperationID(`listCoreV1NamespacedServiceAccount`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -2718,7 +2718,7 @@ func (s *Server) handleListCoreV1NamespacedServiceAccountRequest(args map[string
 // HandleListCoreV1NodeRequest handles listCoreV1Node operation.
 //
 // GET /api/v1/nodes
-func (s *Server) handleListCoreV1NodeRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleListCoreV1NodeRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ListCoreV1Node`,
 		trace.WithAttributes(otelogen.OperationID(`listCoreV1Node`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -2747,7 +2747,7 @@ func (s *Server) handleListCoreV1NodeRequest(args map[string]string, w http.Resp
 // HandleListCoreV1PersistentVolumeRequest handles listCoreV1PersistentVolume operation.
 //
 // GET /api/v1/persistentvolumes
-func (s *Server) handleListCoreV1PersistentVolumeRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleListCoreV1PersistentVolumeRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ListCoreV1PersistentVolume`,
 		trace.WithAttributes(otelogen.OperationID(`listCoreV1PersistentVolume`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -2776,7 +2776,7 @@ func (s *Server) handleListCoreV1PersistentVolumeRequest(args map[string]string,
 // HandleListCoreV1PersistentVolumeClaimForAllNamespacesRequest handles listCoreV1PersistentVolumeClaimForAllNamespaces operation.
 //
 // GET /api/v1/persistentvolumeclaims
-func (s *Server) handleListCoreV1PersistentVolumeClaimForAllNamespacesRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleListCoreV1PersistentVolumeClaimForAllNamespacesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ListCoreV1PersistentVolumeClaimForAllNamespaces`,
 		trace.WithAttributes(otelogen.OperationID(`listCoreV1PersistentVolumeClaimForAllNamespaces`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -2805,7 +2805,7 @@ func (s *Server) handleListCoreV1PersistentVolumeClaimForAllNamespacesRequest(ar
 // HandleListCoreV1PodForAllNamespacesRequest handles listCoreV1PodForAllNamespaces operation.
 //
 // GET /api/v1/pods
-func (s *Server) handleListCoreV1PodForAllNamespacesRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleListCoreV1PodForAllNamespacesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ListCoreV1PodForAllNamespaces`,
 		trace.WithAttributes(otelogen.OperationID(`listCoreV1PodForAllNamespaces`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -2834,7 +2834,7 @@ func (s *Server) handleListCoreV1PodForAllNamespacesRequest(args map[string]stri
 // HandleListCoreV1PodTemplateForAllNamespacesRequest handles listCoreV1PodTemplateForAllNamespaces operation.
 //
 // GET /api/v1/podtemplates
-func (s *Server) handleListCoreV1PodTemplateForAllNamespacesRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleListCoreV1PodTemplateForAllNamespacesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ListCoreV1PodTemplateForAllNamespaces`,
 		trace.WithAttributes(otelogen.OperationID(`listCoreV1PodTemplateForAllNamespaces`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -2863,7 +2863,7 @@ func (s *Server) handleListCoreV1PodTemplateForAllNamespacesRequest(args map[str
 // HandleListCoreV1ReplicationControllerForAllNamespacesRequest handles listCoreV1ReplicationControllerForAllNamespaces operation.
 //
 // GET /api/v1/replicationcontrollers
-func (s *Server) handleListCoreV1ReplicationControllerForAllNamespacesRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleListCoreV1ReplicationControllerForAllNamespacesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ListCoreV1ReplicationControllerForAllNamespaces`,
 		trace.WithAttributes(otelogen.OperationID(`listCoreV1ReplicationControllerForAllNamespaces`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -2892,7 +2892,7 @@ func (s *Server) handleListCoreV1ReplicationControllerForAllNamespacesRequest(ar
 // HandleListCoreV1ResourceQuotaForAllNamespacesRequest handles listCoreV1ResourceQuotaForAllNamespaces operation.
 //
 // GET /api/v1/resourcequotas
-func (s *Server) handleListCoreV1ResourceQuotaForAllNamespacesRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleListCoreV1ResourceQuotaForAllNamespacesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ListCoreV1ResourceQuotaForAllNamespaces`,
 		trace.WithAttributes(otelogen.OperationID(`listCoreV1ResourceQuotaForAllNamespaces`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -2921,7 +2921,7 @@ func (s *Server) handleListCoreV1ResourceQuotaForAllNamespacesRequest(args map[s
 // HandleListCoreV1SecretForAllNamespacesRequest handles listCoreV1SecretForAllNamespaces operation.
 //
 // GET /api/v1/secrets
-func (s *Server) handleListCoreV1SecretForAllNamespacesRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleListCoreV1SecretForAllNamespacesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ListCoreV1SecretForAllNamespaces`,
 		trace.WithAttributes(otelogen.OperationID(`listCoreV1SecretForAllNamespaces`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -2950,7 +2950,7 @@ func (s *Server) handleListCoreV1SecretForAllNamespacesRequest(args map[string]s
 // HandleListCoreV1ServiceAccountForAllNamespacesRequest handles listCoreV1ServiceAccountForAllNamespaces operation.
 //
 // GET /api/v1/serviceaccounts
-func (s *Server) handleListCoreV1ServiceAccountForAllNamespacesRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleListCoreV1ServiceAccountForAllNamespacesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ListCoreV1ServiceAccountForAllNamespaces`,
 		trace.WithAttributes(otelogen.OperationID(`listCoreV1ServiceAccountForAllNamespaces`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -2979,7 +2979,7 @@ func (s *Server) handleListCoreV1ServiceAccountForAllNamespacesRequest(args map[
 // HandleListCoreV1ServiceForAllNamespacesRequest handles listCoreV1ServiceForAllNamespaces operation.
 //
 // GET /api/v1/services
-func (s *Server) handleListCoreV1ServiceForAllNamespacesRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleListCoreV1ServiceForAllNamespacesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ListCoreV1ServiceForAllNamespaces`,
 		trace.WithAttributes(otelogen.OperationID(`listCoreV1ServiceForAllNamespaces`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -3008,7 +3008,7 @@ func (s *Server) handleListCoreV1ServiceForAllNamespacesRequest(args map[string]
 // HandleListDiscoveryV1EndpointSliceForAllNamespacesRequest handles listDiscoveryV1EndpointSliceForAllNamespaces operation.
 //
 // GET /apis/discovery.k8s.io/v1/endpointslices
-func (s *Server) handleListDiscoveryV1EndpointSliceForAllNamespacesRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleListDiscoveryV1EndpointSliceForAllNamespacesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ListDiscoveryV1EndpointSliceForAllNamespaces`,
 		trace.WithAttributes(otelogen.OperationID(`listDiscoveryV1EndpointSliceForAllNamespaces`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -3037,7 +3037,7 @@ func (s *Server) handleListDiscoveryV1EndpointSliceForAllNamespacesRequest(args 
 // HandleListDiscoveryV1NamespacedEndpointSliceRequest handles listDiscoveryV1NamespacedEndpointSlice operation.
 //
 // GET /apis/discovery.k8s.io/v1/namespaces/{namespace}/endpointslices
-func (s *Server) handleListDiscoveryV1NamespacedEndpointSliceRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleListDiscoveryV1NamespacedEndpointSliceRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ListDiscoveryV1NamespacedEndpointSlice`,
 		trace.WithAttributes(otelogen.OperationID(`listDiscoveryV1NamespacedEndpointSlice`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -3066,7 +3066,7 @@ func (s *Server) handleListDiscoveryV1NamespacedEndpointSliceRequest(args map[st
 // HandleListDiscoveryV1beta1EndpointSliceForAllNamespacesRequest handles listDiscoveryV1beta1EndpointSliceForAllNamespaces operation.
 //
 // GET /apis/discovery.k8s.io/v1beta1/endpointslices
-func (s *Server) handleListDiscoveryV1beta1EndpointSliceForAllNamespacesRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleListDiscoveryV1beta1EndpointSliceForAllNamespacesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ListDiscoveryV1beta1EndpointSliceForAllNamespaces`,
 		trace.WithAttributes(otelogen.OperationID(`listDiscoveryV1beta1EndpointSliceForAllNamespaces`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -3095,7 +3095,7 @@ func (s *Server) handleListDiscoveryV1beta1EndpointSliceForAllNamespacesRequest(
 // HandleListDiscoveryV1beta1NamespacedEndpointSliceRequest handles listDiscoveryV1beta1NamespacedEndpointSlice operation.
 //
 // GET /apis/discovery.k8s.io/v1beta1/namespaces/{namespace}/endpointslices
-func (s *Server) handleListDiscoveryV1beta1NamespacedEndpointSliceRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleListDiscoveryV1beta1NamespacedEndpointSliceRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ListDiscoveryV1beta1NamespacedEndpointSlice`,
 		trace.WithAttributes(otelogen.OperationID(`listDiscoveryV1beta1NamespacedEndpointSlice`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -3124,7 +3124,7 @@ func (s *Server) handleListDiscoveryV1beta1NamespacedEndpointSliceRequest(args m
 // HandleListEventsV1EventForAllNamespacesRequest handles listEventsV1EventForAllNamespaces operation.
 //
 // GET /apis/events.k8s.io/v1/events
-func (s *Server) handleListEventsV1EventForAllNamespacesRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleListEventsV1EventForAllNamespacesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ListEventsV1EventForAllNamespaces`,
 		trace.WithAttributes(otelogen.OperationID(`listEventsV1EventForAllNamespaces`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -3153,7 +3153,7 @@ func (s *Server) handleListEventsV1EventForAllNamespacesRequest(args map[string]
 // HandleListEventsV1NamespacedEventRequest handles listEventsV1NamespacedEvent operation.
 //
 // GET /apis/events.k8s.io/v1/namespaces/{namespace}/events
-func (s *Server) handleListEventsV1NamespacedEventRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleListEventsV1NamespacedEventRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ListEventsV1NamespacedEvent`,
 		trace.WithAttributes(otelogen.OperationID(`listEventsV1NamespacedEvent`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -3182,7 +3182,7 @@ func (s *Server) handleListEventsV1NamespacedEventRequest(args map[string]string
 // HandleListEventsV1beta1EventForAllNamespacesRequest handles listEventsV1beta1EventForAllNamespaces operation.
 //
 // GET /apis/events.k8s.io/v1beta1/events
-func (s *Server) handleListEventsV1beta1EventForAllNamespacesRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleListEventsV1beta1EventForAllNamespacesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ListEventsV1beta1EventForAllNamespaces`,
 		trace.WithAttributes(otelogen.OperationID(`listEventsV1beta1EventForAllNamespaces`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -3211,7 +3211,7 @@ func (s *Server) handleListEventsV1beta1EventForAllNamespacesRequest(args map[st
 // HandleListEventsV1beta1NamespacedEventRequest handles listEventsV1beta1NamespacedEvent operation.
 //
 // GET /apis/events.k8s.io/v1beta1/namespaces/{namespace}/events
-func (s *Server) handleListEventsV1beta1NamespacedEventRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleListEventsV1beta1NamespacedEventRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ListEventsV1beta1NamespacedEvent`,
 		trace.WithAttributes(otelogen.OperationID(`listEventsV1beta1NamespacedEvent`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -3240,7 +3240,7 @@ func (s *Server) handleListEventsV1beta1NamespacedEventRequest(args map[string]s
 // HandleListFlowcontrolApiserverV1beta1FlowSchemaRequest handles listFlowcontrolApiserverV1beta1FlowSchema operation.
 //
 // GET /apis/flowcontrol.apiserver.k8s.io/v1beta1/flowschemas
-func (s *Server) handleListFlowcontrolApiserverV1beta1FlowSchemaRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleListFlowcontrolApiserverV1beta1FlowSchemaRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ListFlowcontrolApiserverV1beta1FlowSchema`,
 		trace.WithAttributes(otelogen.OperationID(`listFlowcontrolApiserverV1beta1FlowSchema`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -3269,7 +3269,7 @@ func (s *Server) handleListFlowcontrolApiserverV1beta1FlowSchemaRequest(args map
 // HandleListFlowcontrolApiserverV1beta1PriorityLevelConfigurationRequest handles listFlowcontrolApiserverV1beta1PriorityLevelConfiguration operation.
 //
 // GET /apis/flowcontrol.apiserver.k8s.io/v1beta1/prioritylevelconfigurations
-func (s *Server) handleListFlowcontrolApiserverV1beta1PriorityLevelConfigurationRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleListFlowcontrolApiserverV1beta1PriorityLevelConfigurationRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ListFlowcontrolApiserverV1beta1PriorityLevelConfiguration`,
 		trace.WithAttributes(otelogen.OperationID(`listFlowcontrolApiserverV1beta1PriorityLevelConfiguration`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -3298,7 +3298,7 @@ func (s *Server) handleListFlowcontrolApiserverV1beta1PriorityLevelConfiguration
 // HandleListFlowcontrolApiserverV1beta2FlowSchemaRequest handles listFlowcontrolApiserverV1beta2FlowSchema operation.
 //
 // GET /apis/flowcontrol.apiserver.k8s.io/v1beta2/flowschemas
-func (s *Server) handleListFlowcontrolApiserverV1beta2FlowSchemaRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleListFlowcontrolApiserverV1beta2FlowSchemaRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ListFlowcontrolApiserverV1beta2FlowSchema`,
 		trace.WithAttributes(otelogen.OperationID(`listFlowcontrolApiserverV1beta2FlowSchema`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -3327,7 +3327,7 @@ func (s *Server) handleListFlowcontrolApiserverV1beta2FlowSchemaRequest(args map
 // HandleListFlowcontrolApiserverV1beta2PriorityLevelConfigurationRequest handles listFlowcontrolApiserverV1beta2PriorityLevelConfiguration operation.
 //
 // GET /apis/flowcontrol.apiserver.k8s.io/v1beta2/prioritylevelconfigurations
-func (s *Server) handleListFlowcontrolApiserverV1beta2PriorityLevelConfigurationRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleListFlowcontrolApiserverV1beta2PriorityLevelConfigurationRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ListFlowcontrolApiserverV1beta2PriorityLevelConfiguration`,
 		trace.WithAttributes(otelogen.OperationID(`listFlowcontrolApiserverV1beta2PriorityLevelConfiguration`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -3356,7 +3356,7 @@ func (s *Server) handleListFlowcontrolApiserverV1beta2PriorityLevelConfiguration
 // HandleListInternalApiserverV1alpha1StorageVersionRequest handles listInternalApiserverV1alpha1StorageVersion operation.
 //
 // GET /apis/internal.apiserver.k8s.io/v1alpha1/storageversions
-func (s *Server) handleListInternalApiserverV1alpha1StorageVersionRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleListInternalApiserverV1alpha1StorageVersionRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ListInternalApiserverV1alpha1StorageVersion`,
 		trace.WithAttributes(otelogen.OperationID(`listInternalApiserverV1alpha1StorageVersion`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -3385,7 +3385,7 @@ func (s *Server) handleListInternalApiserverV1alpha1StorageVersionRequest(args m
 // HandleListNetworkingV1IngressClassRequest handles listNetworkingV1IngressClass operation.
 //
 // GET /apis/networking.k8s.io/v1/ingressclasses
-func (s *Server) handleListNetworkingV1IngressClassRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleListNetworkingV1IngressClassRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ListNetworkingV1IngressClass`,
 		trace.WithAttributes(otelogen.OperationID(`listNetworkingV1IngressClass`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -3414,7 +3414,7 @@ func (s *Server) handleListNetworkingV1IngressClassRequest(args map[string]strin
 // HandleListNetworkingV1IngressForAllNamespacesRequest handles listNetworkingV1IngressForAllNamespaces operation.
 //
 // GET /apis/networking.k8s.io/v1/ingresses
-func (s *Server) handleListNetworkingV1IngressForAllNamespacesRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleListNetworkingV1IngressForAllNamespacesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ListNetworkingV1IngressForAllNamespaces`,
 		trace.WithAttributes(otelogen.OperationID(`listNetworkingV1IngressForAllNamespaces`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -3443,7 +3443,7 @@ func (s *Server) handleListNetworkingV1IngressForAllNamespacesRequest(args map[s
 // HandleListNetworkingV1NamespacedIngressRequest handles listNetworkingV1NamespacedIngress operation.
 //
 // GET /apis/networking.k8s.io/v1/namespaces/{namespace}/ingresses
-func (s *Server) handleListNetworkingV1NamespacedIngressRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleListNetworkingV1NamespacedIngressRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ListNetworkingV1NamespacedIngress`,
 		trace.WithAttributes(otelogen.OperationID(`listNetworkingV1NamespacedIngress`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -3472,7 +3472,7 @@ func (s *Server) handleListNetworkingV1NamespacedIngressRequest(args map[string]
 // HandleListNetworkingV1NamespacedNetworkPolicyRequest handles listNetworkingV1NamespacedNetworkPolicy operation.
 //
 // GET /apis/networking.k8s.io/v1/namespaces/{namespace}/networkpolicies
-func (s *Server) handleListNetworkingV1NamespacedNetworkPolicyRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleListNetworkingV1NamespacedNetworkPolicyRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ListNetworkingV1NamespacedNetworkPolicy`,
 		trace.WithAttributes(otelogen.OperationID(`listNetworkingV1NamespacedNetworkPolicy`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -3501,7 +3501,7 @@ func (s *Server) handleListNetworkingV1NamespacedNetworkPolicyRequest(args map[s
 // HandleListNetworkingV1NetworkPolicyForAllNamespacesRequest handles listNetworkingV1NetworkPolicyForAllNamespaces operation.
 //
 // GET /apis/networking.k8s.io/v1/networkpolicies
-func (s *Server) handleListNetworkingV1NetworkPolicyForAllNamespacesRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleListNetworkingV1NetworkPolicyForAllNamespacesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ListNetworkingV1NetworkPolicyForAllNamespaces`,
 		trace.WithAttributes(otelogen.OperationID(`listNetworkingV1NetworkPolicyForAllNamespaces`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -3530,7 +3530,7 @@ func (s *Server) handleListNetworkingV1NetworkPolicyForAllNamespacesRequest(args
 // HandleListNodeV1RuntimeClassRequest handles listNodeV1RuntimeClass operation.
 //
 // GET /apis/node.k8s.io/v1/runtimeclasses
-func (s *Server) handleListNodeV1RuntimeClassRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleListNodeV1RuntimeClassRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ListNodeV1RuntimeClass`,
 		trace.WithAttributes(otelogen.OperationID(`listNodeV1RuntimeClass`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -3559,7 +3559,7 @@ func (s *Server) handleListNodeV1RuntimeClassRequest(args map[string]string, w h
 // HandleListNodeV1alpha1RuntimeClassRequest handles listNodeV1alpha1RuntimeClass operation.
 //
 // GET /apis/node.k8s.io/v1alpha1/runtimeclasses
-func (s *Server) handleListNodeV1alpha1RuntimeClassRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleListNodeV1alpha1RuntimeClassRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ListNodeV1alpha1RuntimeClass`,
 		trace.WithAttributes(otelogen.OperationID(`listNodeV1alpha1RuntimeClass`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -3588,7 +3588,7 @@ func (s *Server) handleListNodeV1alpha1RuntimeClassRequest(args map[string]strin
 // HandleListNodeV1beta1RuntimeClassRequest handles listNodeV1beta1RuntimeClass operation.
 //
 // GET /apis/node.k8s.io/v1beta1/runtimeclasses
-func (s *Server) handleListNodeV1beta1RuntimeClassRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleListNodeV1beta1RuntimeClassRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ListNodeV1beta1RuntimeClass`,
 		trace.WithAttributes(otelogen.OperationID(`listNodeV1beta1RuntimeClass`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -3617,7 +3617,7 @@ func (s *Server) handleListNodeV1beta1RuntimeClassRequest(args map[string]string
 // HandleListPolicyV1NamespacedPodDisruptionBudgetRequest handles listPolicyV1NamespacedPodDisruptionBudget operation.
 //
 // GET /apis/policy/v1/namespaces/{namespace}/poddisruptionbudgets
-func (s *Server) handleListPolicyV1NamespacedPodDisruptionBudgetRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleListPolicyV1NamespacedPodDisruptionBudgetRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ListPolicyV1NamespacedPodDisruptionBudget`,
 		trace.WithAttributes(otelogen.OperationID(`listPolicyV1NamespacedPodDisruptionBudget`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -3646,7 +3646,7 @@ func (s *Server) handleListPolicyV1NamespacedPodDisruptionBudgetRequest(args map
 // HandleListPolicyV1PodDisruptionBudgetForAllNamespacesRequest handles listPolicyV1PodDisruptionBudgetForAllNamespaces operation.
 //
 // GET /apis/policy/v1/poddisruptionbudgets
-func (s *Server) handleListPolicyV1PodDisruptionBudgetForAllNamespacesRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleListPolicyV1PodDisruptionBudgetForAllNamespacesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ListPolicyV1PodDisruptionBudgetForAllNamespaces`,
 		trace.WithAttributes(otelogen.OperationID(`listPolicyV1PodDisruptionBudgetForAllNamespaces`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -3675,7 +3675,7 @@ func (s *Server) handleListPolicyV1PodDisruptionBudgetForAllNamespacesRequest(ar
 // HandleListPolicyV1beta1NamespacedPodDisruptionBudgetRequest handles listPolicyV1beta1NamespacedPodDisruptionBudget operation.
 //
 // GET /apis/policy/v1beta1/namespaces/{namespace}/poddisruptionbudgets
-func (s *Server) handleListPolicyV1beta1NamespacedPodDisruptionBudgetRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleListPolicyV1beta1NamespacedPodDisruptionBudgetRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ListPolicyV1beta1NamespacedPodDisruptionBudget`,
 		trace.WithAttributes(otelogen.OperationID(`listPolicyV1beta1NamespacedPodDisruptionBudget`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -3704,7 +3704,7 @@ func (s *Server) handleListPolicyV1beta1NamespacedPodDisruptionBudgetRequest(arg
 // HandleListPolicyV1beta1PodDisruptionBudgetForAllNamespacesRequest handles listPolicyV1beta1PodDisruptionBudgetForAllNamespaces operation.
 //
 // GET /apis/policy/v1beta1/poddisruptionbudgets
-func (s *Server) handleListPolicyV1beta1PodDisruptionBudgetForAllNamespacesRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleListPolicyV1beta1PodDisruptionBudgetForAllNamespacesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ListPolicyV1beta1PodDisruptionBudgetForAllNamespaces`,
 		trace.WithAttributes(otelogen.OperationID(`listPolicyV1beta1PodDisruptionBudgetForAllNamespaces`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -3733,7 +3733,7 @@ func (s *Server) handleListPolicyV1beta1PodDisruptionBudgetForAllNamespacesReque
 // HandleListPolicyV1beta1PodSecurityPolicyRequest handles listPolicyV1beta1PodSecurityPolicy operation.
 //
 // GET /apis/policy/v1beta1/podsecuritypolicies
-func (s *Server) handleListPolicyV1beta1PodSecurityPolicyRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleListPolicyV1beta1PodSecurityPolicyRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ListPolicyV1beta1PodSecurityPolicy`,
 		trace.WithAttributes(otelogen.OperationID(`listPolicyV1beta1PodSecurityPolicy`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -3762,7 +3762,7 @@ func (s *Server) handleListPolicyV1beta1PodSecurityPolicyRequest(args map[string
 // HandleListRbacAuthorizationV1ClusterRoleRequest handles listRbacAuthorizationV1ClusterRole operation.
 //
 // GET /apis/rbac.authorization.k8s.io/v1/clusterroles
-func (s *Server) handleListRbacAuthorizationV1ClusterRoleRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleListRbacAuthorizationV1ClusterRoleRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ListRbacAuthorizationV1ClusterRole`,
 		trace.WithAttributes(otelogen.OperationID(`listRbacAuthorizationV1ClusterRole`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -3791,7 +3791,7 @@ func (s *Server) handleListRbacAuthorizationV1ClusterRoleRequest(args map[string
 // HandleListRbacAuthorizationV1ClusterRoleBindingRequest handles listRbacAuthorizationV1ClusterRoleBinding operation.
 //
 // GET /apis/rbac.authorization.k8s.io/v1/clusterrolebindings
-func (s *Server) handleListRbacAuthorizationV1ClusterRoleBindingRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleListRbacAuthorizationV1ClusterRoleBindingRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ListRbacAuthorizationV1ClusterRoleBinding`,
 		trace.WithAttributes(otelogen.OperationID(`listRbacAuthorizationV1ClusterRoleBinding`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -3820,7 +3820,7 @@ func (s *Server) handleListRbacAuthorizationV1ClusterRoleBindingRequest(args map
 // HandleListRbacAuthorizationV1NamespacedRoleRequest handles listRbacAuthorizationV1NamespacedRole operation.
 //
 // GET /apis/rbac.authorization.k8s.io/v1/namespaces/{namespace}/roles
-func (s *Server) handleListRbacAuthorizationV1NamespacedRoleRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleListRbacAuthorizationV1NamespacedRoleRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ListRbacAuthorizationV1NamespacedRole`,
 		trace.WithAttributes(otelogen.OperationID(`listRbacAuthorizationV1NamespacedRole`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -3849,7 +3849,7 @@ func (s *Server) handleListRbacAuthorizationV1NamespacedRoleRequest(args map[str
 // HandleListRbacAuthorizationV1NamespacedRoleBindingRequest handles listRbacAuthorizationV1NamespacedRoleBinding operation.
 //
 // GET /apis/rbac.authorization.k8s.io/v1/namespaces/{namespace}/rolebindings
-func (s *Server) handleListRbacAuthorizationV1NamespacedRoleBindingRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleListRbacAuthorizationV1NamespacedRoleBindingRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ListRbacAuthorizationV1NamespacedRoleBinding`,
 		trace.WithAttributes(otelogen.OperationID(`listRbacAuthorizationV1NamespacedRoleBinding`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -3878,7 +3878,7 @@ func (s *Server) handleListRbacAuthorizationV1NamespacedRoleBindingRequest(args 
 // HandleListRbacAuthorizationV1RoleBindingForAllNamespacesRequest handles listRbacAuthorizationV1RoleBindingForAllNamespaces operation.
 //
 // GET /apis/rbac.authorization.k8s.io/v1/rolebindings
-func (s *Server) handleListRbacAuthorizationV1RoleBindingForAllNamespacesRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleListRbacAuthorizationV1RoleBindingForAllNamespacesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ListRbacAuthorizationV1RoleBindingForAllNamespaces`,
 		trace.WithAttributes(otelogen.OperationID(`listRbacAuthorizationV1RoleBindingForAllNamespaces`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -3907,7 +3907,7 @@ func (s *Server) handleListRbacAuthorizationV1RoleBindingForAllNamespacesRequest
 // HandleListRbacAuthorizationV1RoleForAllNamespacesRequest handles listRbacAuthorizationV1RoleForAllNamespaces operation.
 //
 // GET /apis/rbac.authorization.k8s.io/v1/roles
-func (s *Server) handleListRbacAuthorizationV1RoleForAllNamespacesRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleListRbacAuthorizationV1RoleForAllNamespacesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ListRbacAuthorizationV1RoleForAllNamespaces`,
 		trace.WithAttributes(otelogen.OperationID(`listRbacAuthorizationV1RoleForAllNamespaces`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -3936,7 +3936,7 @@ func (s *Server) handleListRbacAuthorizationV1RoleForAllNamespacesRequest(args m
 // HandleListSchedulingV1PriorityClassRequest handles listSchedulingV1PriorityClass operation.
 //
 // GET /apis/scheduling.k8s.io/v1/priorityclasses
-func (s *Server) handleListSchedulingV1PriorityClassRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleListSchedulingV1PriorityClassRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ListSchedulingV1PriorityClass`,
 		trace.WithAttributes(otelogen.OperationID(`listSchedulingV1PriorityClass`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -3965,7 +3965,7 @@ func (s *Server) handleListSchedulingV1PriorityClassRequest(args map[string]stri
 // HandleListStorageV1CSIDriverRequest handles listStorageV1CSIDriver operation.
 //
 // GET /apis/storage.k8s.io/v1/csidrivers
-func (s *Server) handleListStorageV1CSIDriverRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleListStorageV1CSIDriverRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ListStorageV1CSIDriver`,
 		trace.WithAttributes(otelogen.OperationID(`listStorageV1CSIDriver`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -3994,7 +3994,7 @@ func (s *Server) handleListStorageV1CSIDriverRequest(args map[string]string, w h
 // HandleListStorageV1CSINodeRequest handles listStorageV1CSINode operation.
 //
 // GET /apis/storage.k8s.io/v1/csinodes
-func (s *Server) handleListStorageV1CSINodeRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleListStorageV1CSINodeRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ListStorageV1CSINode`,
 		trace.WithAttributes(otelogen.OperationID(`listStorageV1CSINode`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -4023,7 +4023,7 @@ func (s *Server) handleListStorageV1CSINodeRequest(args map[string]string, w htt
 // HandleListStorageV1StorageClassRequest handles listStorageV1StorageClass operation.
 //
 // GET /apis/storage.k8s.io/v1/storageclasses
-func (s *Server) handleListStorageV1StorageClassRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleListStorageV1StorageClassRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ListStorageV1StorageClass`,
 		trace.WithAttributes(otelogen.OperationID(`listStorageV1StorageClass`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -4052,7 +4052,7 @@ func (s *Server) handleListStorageV1StorageClassRequest(args map[string]string, 
 // HandleListStorageV1VolumeAttachmentRequest handles listStorageV1VolumeAttachment operation.
 //
 // GET /apis/storage.k8s.io/v1/volumeattachments
-func (s *Server) handleListStorageV1VolumeAttachmentRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleListStorageV1VolumeAttachmentRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ListStorageV1VolumeAttachment`,
 		trace.WithAttributes(otelogen.OperationID(`listStorageV1VolumeAttachment`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -4081,7 +4081,7 @@ func (s *Server) handleListStorageV1VolumeAttachmentRequest(args map[string]stri
 // HandleListStorageV1alpha1CSIStorageCapacityForAllNamespacesRequest handles listStorageV1alpha1CSIStorageCapacityForAllNamespaces operation.
 //
 // GET /apis/storage.k8s.io/v1alpha1/csistoragecapacities
-func (s *Server) handleListStorageV1alpha1CSIStorageCapacityForAllNamespacesRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleListStorageV1alpha1CSIStorageCapacityForAllNamespacesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ListStorageV1alpha1CSIStorageCapacityForAllNamespaces`,
 		trace.WithAttributes(otelogen.OperationID(`listStorageV1alpha1CSIStorageCapacityForAllNamespaces`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -4110,7 +4110,7 @@ func (s *Server) handleListStorageV1alpha1CSIStorageCapacityForAllNamespacesRequ
 // HandleListStorageV1alpha1NamespacedCSIStorageCapacityRequest handles listStorageV1alpha1NamespacedCSIStorageCapacity operation.
 //
 // GET /apis/storage.k8s.io/v1alpha1/namespaces/{namespace}/csistoragecapacities
-func (s *Server) handleListStorageV1alpha1NamespacedCSIStorageCapacityRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleListStorageV1alpha1NamespacedCSIStorageCapacityRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ListStorageV1alpha1NamespacedCSIStorageCapacity`,
 		trace.WithAttributes(otelogen.OperationID(`listStorageV1alpha1NamespacedCSIStorageCapacity`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -4139,7 +4139,7 @@ func (s *Server) handleListStorageV1alpha1NamespacedCSIStorageCapacityRequest(ar
 // HandleListStorageV1beta1CSIStorageCapacityForAllNamespacesRequest handles listStorageV1beta1CSIStorageCapacityForAllNamespaces operation.
 //
 // GET /apis/storage.k8s.io/v1beta1/csistoragecapacities
-func (s *Server) handleListStorageV1beta1CSIStorageCapacityForAllNamespacesRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleListStorageV1beta1CSIStorageCapacityForAllNamespacesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ListStorageV1beta1CSIStorageCapacityForAllNamespaces`,
 		trace.WithAttributes(otelogen.OperationID(`listStorageV1beta1CSIStorageCapacityForAllNamespaces`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -4168,7 +4168,7 @@ func (s *Server) handleListStorageV1beta1CSIStorageCapacityForAllNamespacesReque
 // HandleListStorageV1beta1NamespacedCSIStorageCapacityRequest handles listStorageV1beta1NamespacedCSIStorageCapacity operation.
 //
 // GET /apis/storage.k8s.io/v1beta1/namespaces/{namespace}/csistoragecapacities
-func (s *Server) handleListStorageV1beta1NamespacedCSIStorageCapacityRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleListStorageV1beta1NamespacedCSIStorageCapacityRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ListStorageV1beta1NamespacedCSIStorageCapacity`,
 		trace.WithAttributes(otelogen.OperationID(`listStorageV1beta1NamespacedCSIStorageCapacity`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -4197,7 +4197,7 @@ func (s *Server) handleListStorageV1beta1NamespacedCSIStorageCapacityRequest(arg
 // HandleLogFileHandlerRequest handles logFileHandler operation.
 //
 // GET /logs/{logpath}
-func (s *Server) handleLogFileHandlerRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleLogFileHandlerRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `LogFileHandler`,
 		trace.WithAttributes(otelogen.OperationID(`logFileHandler`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -4226,7 +4226,7 @@ func (s *Server) handleLogFileHandlerRequest(args map[string]string, w http.Resp
 // HandleLogFileListHandlerRequest handles logFileListHandler operation.
 //
 // GET /logs/
-func (s *Server) handleLogFileListHandlerRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleLogFileListHandlerRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `LogFileListHandler`,
 		trace.WithAttributes(otelogen.OperationID(`logFileListHandler`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -4249,7 +4249,7 @@ func (s *Server) handleLogFileListHandlerRequest(args map[string]string, w http.
 // HandleReadAdmissionregistrationV1MutatingWebhookConfigurationRequest handles readAdmissionregistrationV1MutatingWebhookConfiguration operation.
 //
 // GET /apis/admissionregistration.k8s.io/v1/mutatingwebhookconfigurations/{name}
-func (s *Server) handleReadAdmissionregistrationV1MutatingWebhookConfigurationRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReadAdmissionregistrationV1MutatingWebhookConfigurationRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReadAdmissionregistrationV1MutatingWebhookConfiguration`,
 		trace.WithAttributes(otelogen.OperationID(`readAdmissionregistrationV1MutatingWebhookConfiguration`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -4278,7 +4278,7 @@ func (s *Server) handleReadAdmissionregistrationV1MutatingWebhookConfigurationRe
 // HandleReadAdmissionregistrationV1ValidatingWebhookConfigurationRequest handles readAdmissionregistrationV1ValidatingWebhookConfiguration operation.
 //
 // GET /apis/admissionregistration.k8s.io/v1/validatingwebhookconfigurations/{name}
-func (s *Server) handleReadAdmissionregistrationV1ValidatingWebhookConfigurationRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReadAdmissionregistrationV1ValidatingWebhookConfigurationRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReadAdmissionregistrationV1ValidatingWebhookConfiguration`,
 		trace.WithAttributes(otelogen.OperationID(`readAdmissionregistrationV1ValidatingWebhookConfiguration`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -4307,7 +4307,7 @@ func (s *Server) handleReadAdmissionregistrationV1ValidatingWebhookConfiguration
 // HandleReadApiextensionsV1CustomResourceDefinitionRequest handles readApiextensionsV1CustomResourceDefinition operation.
 //
 // GET /apis/apiextensions.k8s.io/v1/customresourcedefinitions/{name}
-func (s *Server) handleReadApiextensionsV1CustomResourceDefinitionRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReadApiextensionsV1CustomResourceDefinitionRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReadApiextensionsV1CustomResourceDefinition`,
 		trace.WithAttributes(otelogen.OperationID(`readApiextensionsV1CustomResourceDefinition`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -4336,7 +4336,7 @@ func (s *Server) handleReadApiextensionsV1CustomResourceDefinitionRequest(args m
 // HandleReadApiextensionsV1CustomResourceDefinitionStatusRequest handles readApiextensionsV1CustomResourceDefinitionStatus operation.
 //
 // GET /apis/apiextensions.k8s.io/v1/customresourcedefinitions/{name}/status
-func (s *Server) handleReadApiextensionsV1CustomResourceDefinitionStatusRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReadApiextensionsV1CustomResourceDefinitionStatusRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReadApiextensionsV1CustomResourceDefinitionStatus`,
 		trace.WithAttributes(otelogen.OperationID(`readApiextensionsV1CustomResourceDefinitionStatus`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -4365,7 +4365,7 @@ func (s *Server) handleReadApiextensionsV1CustomResourceDefinitionStatusRequest(
 // HandleReadApiregistrationV1APIServiceRequest handles readApiregistrationV1APIService operation.
 //
 // GET /apis/apiregistration.k8s.io/v1/apiservices/{name}
-func (s *Server) handleReadApiregistrationV1APIServiceRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReadApiregistrationV1APIServiceRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReadApiregistrationV1APIService`,
 		trace.WithAttributes(otelogen.OperationID(`readApiregistrationV1APIService`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -4394,7 +4394,7 @@ func (s *Server) handleReadApiregistrationV1APIServiceRequest(args map[string]st
 // HandleReadApiregistrationV1APIServiceStatusRequest handles readApiregistrationV1APIServiceStatus operation.
 //
 // GET /apis/apiregistration.k8s.io/v1/apiservices/{name}/status
-func (s *Server) handleReadApiregistrationV1APIServiceStatusRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReadApiregistrationV1APIServiceStatusRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReadApiregistrationV1APIServiceStatus`,
 		trace.WithAttributes(otelogen.OperationID(`readApiregistrationV1APIServiceStatus`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -4423,7 +4423,7 @@ func (s *Server) handleReadApiregistrationV1APIServiceStatusRequest(args map[str
 // HandleReadAppsV1NamespacedControllerRevisionRequest handles readAppsV1NamespacedControllerRevision operation.
 //
 // GET /apis/apps/v1/namespaces/{namespace}/controllerrevisions/{name}
-func (s *Server) handleReadAppsV1NamespacedControllerRevisionRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReadAppsV1NamespacedControllerRevisionRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReadAppsV1NamespacedControllerRevision`,
 		trace.WithAttributes(otelogen.OperationID(`readAppsV1NamespacedControllerRevision`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -4452,7 +4452,7 @@ func (s *Server) handleReadAppsV1NamespacedControllerRevisionRequest(args map[st
 // HandleReadAppsV1NamespacedDaemonSetRequest handles readAppsV1NamespacedDaemonSet operation.
 //
 // GET /apis/apps/v1/namespaces/{namespace}/daemonsets/{name}
-func (s *Server) handleReadAppsV1NamespacedDaemonSetRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReadAppsV1NamespacedDaemonSetRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReadAppsV1NamespacedDaemonSet`,
 		trace.WithAttributes(otelogen.OperationID(`readAppsV1NamespacedDaemonSet`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -4481,7 +4481,7 @@ func (s *Server) handleReadAppsV1NamespacedDaemonSetRequest(args map[string]stri
 // HandleReadAppsV1NamespacedDaemonSetStatusRequest handles readAppsV1NamespacedDaemonSetStatus operation.
 //
 // GET /apis/apps/v1/namespaces/{namespace}/daemonsets/{name}/status
-func (s *Server) handleReadAppsV1NamespacedDaemonSetStatusRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReadAppsV1NamespacedDaemonSetStatusRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReadAppsV1NamespacedDaemonSetStatus`,
 		trace.WithAttributes(otelogen.OperationID(`readAppsV1NamespacedDaemonSetStatus`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -4510,7 +4510,7 @@ func (s *Server) handleReadAppsV1NamespacedDaemonSetStatusRequest(args map[strin
 // HandleReadAppsV1NamespacedDeploymentRequest handles readAppsV1NamespacedDeployment operation.
 //
 // GET /apis/apps/v1/namespaces/{namespace}/deployments/{name}
-func (s *Server) handleReadAppsV1NamespacedDeploymentRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReadAppsV1NamespacedDeploymentRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReadAppsV1NamespacedDeployment`,
 		trace.WithAttributes(otelogen.OperationID(`readAppsV1NamespacedDeployment`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -4539,7 +4539,7 @@ func (s *Server) handleReadAppsV1NamespacedDeploymentRequest(args map[string]str
 // HandleReadAppsV1NamespacedDeploymentScaleRequest handles readAppsV1NamespacedDeploymentScale operation.
 //
 // GET /apis/apps/v1/namespaces/{namespace}/deployments/{name}/scale
-func (s *Server) handleReadAppsV1NamespacedDeploymentScaleRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReadAppsV1NamespacedDeploymentScaleRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReadAppsV1NamespacedDeploymentScale`,
 		trace.WithAttributes(otelogen.OperationID(`readAppsV1NamespacedDeploymentScale`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -4568,7 +4568,7 @@ func (s *Server) handleReadAppsV1NamespacedDeploymentScaleRequest(args map[strin
 // HandleReadAppsV1NamespacedDeploymentStatusRequest handles readAppsV1NamespacedDeploymentStatus operation.
 //
 // GET /apis/apps/v1/namespaces/{namespace}/deployments/{name}/status
-func (s *Server) handleReadAppsV1NamespacedDeploymentStatusRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReadAppsV1NamespacedDeploymentStatusRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReadAppsV1NamespacedDeploymentStatus`,
 		trace.WithAttributes(otelogen.OperationID(`readAppsV1NamespacedDeploymentStatus`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -4597,7 +4597,7 @@ func (s *Server) handleReadAppsV1NamespacedDeploymentStatusRequest(args map[stri
 // HandleReadAppsV1NamespacedReplicaSetRequest handles readAppsV1NamespacedReplicaSet operation.
 //
 // GET /apis/apps/v1/namespaces/{namespace}/replicasets/{name}
-func (s *Server) handleReadAppsV1NamespacedReplicaSetRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReadAppsV1NamespacedReplicaSetRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReadAppsV1NamespacedReplicaSet`,
 		trace.WithAttributes(otelogen.OperationID(`readAppsV1NamespacedReplicaSet`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -4626,7 +4626,7 @@ func (s *Server) handleReadAppsV1NamespacedReplicaSetRequest(args map[string]str
 // HandleReadAppsV1NamespacedReplicaSetScaleRequest handles readAppsV1NamespacedReplicaSetScale operation.
 //
 // GET /apis/apps/v1/namespaces/{namespace}/replicasets/{name}/scale
-func (s *Server) handleReadAppsV1NamespacedReplicaSetScaleRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReadAppsV1NamespacedReplicaSetScaleRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReadAppsV1NamespacedReplicaSetScale`,
 		trace.WithAttributes(otelogen.OperationID(`readAppsV1NamespacedReplicaSetScale`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -4655,7 +4655,7 @@ func (s *Server) handleReadAppsV1NamespacedReplicaSetScaleRequest(args map[strin
 // HandleReadAppsV1NamespacedReplicaSetStatusRequest handles readAppsV1NamespacedReplicaSetStatus operation.
 //
 // GET /apis/apps/v1/namespaces/{namespace}/replicasets/{name}/status
-func (s *Server) handleReadAppsV1NamespacedReplicaSetStatusRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReadAppsV1NamespacedReplicaSetStatusRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReadAppsV1NamespacedReplicaSetStatus`,
 		trace.WithAttributes(otelogen.OperationID(`readAppsV1NamespacedReplicaSetStatus`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -4684,7 +4684,7 @@ func (s *Server) handleReadAppsV1NamespacedReplicaSetStatusRequest(args map[stri
 // HandleReadAppsV1NamespacedStatefulSetRequest handles readAppsV1NamespacedStatefulSet operation.
 //
 // GET /apis/apps/v1/namespaces/{namespace}/statefulsets/{name}
-func (s *Server) handleReadAppsV1NamespacedStatefulSetRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReadAppsV1NamespacedStatefulSetRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReadAppsV1NamespacedStatefulSet`,
 		trace.WithAttributes(otelogen.OperationID(`readAppsV1NamespacedStatefulSet`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -4713,7 +4713,7 @@ func (s *Server) handleReadAppsV1NamespacedStatefulSetRequest(args map[string]st
 // HandleReadAppsV1NamespacedStatefulSetScaleRequest handles readAppsV1NamespacedStatefulSetScale operation.
 //
 // GET /apis/apps/v1/namespaces/{namespace}/statefulsets/{name}/scale
-func (s *Server) handleReadAppsV1NamespacedStatefulSetScaleRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReadAppsV1NamespacedStatefulSetScaleRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReadAppsV1NamespacedStatefulSetScale`,
 		trace.WithAttributes(otelogen.OperationID(`readAppsV1NamespacedStatefulSetScale`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -4742,7 +4742,7 @@ func (s *Server) handleReadAppsV1NamespacedStatefulSetScaleRequest(args map[stri
 // HandleReadAppsV1NamespacedStatefulSetStatusRequest handles readAppsV1NamespacedStatefulSetStatus operation.
 //
 // GET /apis/apps/v1/namespaces/{namespace}/statefulsets/{name}/status
-func (s *Server) handleReadAppsV1NamespacedStatefulSetStatusRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReadAppsV1NamespacedStatefulSetStatusRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReadAppsV1NamespacedStatefulSetStatus`,
 		trace.WithAttributes(otelogen.OperationID(`readAppsV1NamespacedStatefulSetStatus`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -4771,7 +4771,7 @@ func (s *Server) handleReadAppsV1NamespacedStatefulSetStatusRequest(args map[str
 // HandleReadAutoscalingV1NamespacedHorizontalPodAutoscalerRequest handles readAutoscalingV1NamespacedHorizontalPodAutoscaler operation.
 //
 // GET /apis/autoscaling/v1/namespaces/{namespace}/horizontalpodautoscalers/{name}
-func (s *Server) handleReadAutoscalingV1NamespacedHorizontalPodAutoscalerRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReadAutoscalingV1NamespacedHorizontalPodAutoscalerRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReadAutoscalingV1NamespacedHorizontalPodAutoscaler`,
 		trace.WithAttributes(otelogen.OperationID(`readAutoscalingV1NamespacedHorizontalPodAutoscaler`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -4800,7 +4800,7 @@ func (s *Server) handleReadAutoscalingV1NamespacedHorizontalPodAutoscalerRequest
 // HandleReadAutoscalingV1NamespacedHorizontalPodAutoscalerStatusRequest handles readAutoscalingV1NamespacedHorizontalPodAutoscalerStatus operation.
 //
 // GET /apis/autoscaling/v1/namespaces/{namespace}/horizontalpodautoscalers/{name}/status
-func (s *Server) handleReadAutoscalingV1NamespacedHorizontalPodAutoscalerStatusRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReadAutoscalingV1NamespacedHorizontalPodAutoscalerStatusRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReadAutoscalingV1NamespacedHorizontalPodAutoscalerStatus`,
 		trace.WithAttributes(otelogen.OperationID(`readAutoscalingV1NamespacedHorizontalPodAutoscalerStatus`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -4829,7 +4829,7 @@ func (s *Server) handleReadAutoscalingV1NamespacedHorizontalPodAutoscalerStatusR
 // HandleReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerRequest handles readAutoscalingV2beta1NamespacedHorizontalPodAutoscaler operation.
 //
 // GET /apis/autoscaling/v2beta1/namespaces/{namespace}/horizontalpodautoscalers/{name}
-func (s *Server) handleReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReadAutoscalingV2beta1NamespacedHorizontalPodAutoscaler`,
 		trace.WithAttributes(otelogen.OperationID(`readAutoscalingV2beta1NamespacedHorizontalPodAutoscaler`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -4858,7 +4858,7 @@ func (s *Server) handleReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerRe
 // HandleReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatusRequest handles readAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatus operation.
 //
 // GET /apis/autoscaling/v2beta1/namespaces/{namespace}/horizontalpodautoscalers/{name}/status
-func (s *Server) handleReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatusRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatusRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatus`,
 		trace.WithAttributes(otelogen.OperationID(`readAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatus`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -4887,7 +4887,7 @@ func (s *Server) handleReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerSt
 // HandleReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerRequest handles readAutoscalingV2beta2NamespacedHorizontalPodAutoscaler operation.
 //
 // GET /apis/autoscaling/v2beta2/namespaces/{namespace}/horizontalpodautoscalers/{name}
-func (s *Server) handleReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReadAutoscalingV2beta2NamespacedHorizontalPodAutoscaler`,
 		trace.WithAttributes(otelogen.OperationID(`readAutoscalingV2beta2NamespacedHorizontalPodAutoscaler`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -4916,7 +4916,7 @@ func (s *Server) handleReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerRe
 // HandleReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatusRequest handles readAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatus operation.
 //
 // GET /apis/autoscaling/v2beta2/namespaces/{namespace}/horizontalpodautoscalers/{name}/status
-func (s *Server) handleReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatusRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatusRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatus`,
 		trace.WithAttributes(otelogen.OperationID(`readAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatus`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -4945,7 +4945,7 @@ func (s *Server) handleReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerSt
 // HandleReadBatchV1NamespacedCronJobRequest handles readBatchV1NamespacedCronJob operation.
 //
 // GET /apis/batch/v1/namespaces/{namespace}/cronjobs/{name}
-func (s *Server) handleReadBatchV1NamespacedCronJobRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReadBatchV1NamespacedCronJobRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReadBatchV1NamespacedCronJob`,
 		trace.WithAttributes(otelogen.OperationID(`readBatchV1NamespacedCronJob`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -4974,7 +4974,7 @@ func (s *Server) handleReadBatchV1NamespacedCronJobRequest(args map[string]strin
 // HandleReadBatchV1NamespacedCronJobStatusRequest handles readBatchV1NamespacedCronJobStatus operation.
 //
 // GET /apis/batch/v1/namespaces/{namespace}/cronjobs/{name}/status
-func (s *Server) handleReadBatchV1NamespacedCronJobStatusRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReadBatchV1NamespacedCronJobStatusRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReadBatchV1NamespacedCronJobStatus`,
 		trace.WithAttributes(otelogen.OperationID(`readBatchV1NamespacedCronJobStatus`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -5003,7 +5003,7 @@ func (s *Server) handleReadBatchV1NamespacedCronJobStatusRequest(args map[string
 // HandleReadBatchV1NamespacedJobRequest handles readBatchV1NamespacedJob operation.
 //
 // GET /apis/batch/v1/namespaces/{namespace}/jobs/{name}
-func (s *Server) handleReadBatchV1NamespacedJobRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReadBatchV1NamespacedJobRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReadBatchV1NamespacedJob`,
 		trace.WithAttributes(otelogen.OperationID(`readBatchV1NamespacedJob`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -5032,7 +5032,7 @@ func (s *Server) handleReadBatchV1NamespacedJobRequest(args map[string]string, w
 // HandleReadBatchV1NamespacedJobStatusRequest handles readBatchV1NamespacedJobStatus operation.
 //
 // GET /apis/batch/v1/namespaces/{namespace}/jobs/{name}/status
-func (s *Server) handleReadBatchV1NamespacedJobStatusRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReadBatchV1NamespacedJobStatusRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReadBatchV1NamespacedJobStatus`,
 		trace.WithAttributes(otelogen.OperationID(`readBatchV1NamespacedJobStatus`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -5061,7 +5061,7 @@ func (s *Server) handleReadBatchV1NamespacedJobStatusRequest(args map[string]str
 // HandleReadBatchV1beta1NamespacedCronJobRequest handles readBatchV1beta1NamespacedCronJob operation.
 //
 // GET /apis/batch/v1beta1/namespaces/{namespace}/cronjobs/{name}
-func (s *Server) handleReadBatchV1beta1NamespacedCronJobRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReadBatchV1beta1NamespacedCronJobRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReadBatchV1beta1NamespacedCronJob`,
 		trace.WithAttributes(otelogen.OperationID(`readBatchV1beta1NamespacedCronJob`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -5090,7 +5090,7 @@ func (s *Server) handleReadBatchV1beta1NamespacedCronJobRequest(args map[string]
 // HandleReadBatchV1beta1NamespacedCronJobStatusRequest handles readBatchV1beta1NamespacedCronJobStatus operation.
 //
 // GET /apis/batch/v1beta1/namespaces/{namespace}/cronjobs/{name}/status
-func (s *Server) handleReadBatchV1beta1NamespacedCronJobStatusRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReadBatchV1beta1NamespacedCronJobStatusRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReadBatchV1beta1NamespacedCronJobStatus`,
 		trace.WithAttributes(otelogen.OperationID(`readBatchV1beta1NamespacedCronJobStatus`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -5119,7 +5119,7 @@ func (s *Server) handleReadBatchV1beta1NamespacedCronJobStatusRequest(args map[s
 // HandleReadCertificatesV1CertificateSigningRequestRequest handles readCertificatesV1CertificateSigningRequest operation.
 //
 // GET /apis/certificates.k8s.io/v1/certificatesigningrequests/{name}
-func (s *Server) handleReadCertificatesV1CertificateSigningRequestRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReadCertificatesV1CertificateSigningRequestRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReadCertificatesV1CertificateSigningRequest`,
 		trace.WithAttributes(otelogen.OperationID(`readCertificatesV1CertificateSigningRequest`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -5148,7 +5148,7 @@ func (s *Server) handleReadCertificatesV1CertificateSigningRequestRequest(args m
 // HandleReadCertificatesV1CertificateSigningRequestApprovalRequest handles readCertificatesV1CertificateSigningRequestApproval operation.
 //
 // GET /apis/certificates.k8s.io/v1/certificatesigningrequests/{name}/approval
-func (s *Server) handleReadCertificatesV1CertificateSigningRequestApprovalRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReadCertificatesV1CertificateSigningRequestApprovalRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReadCertificatesV1CertificateSigningRequestApproval`,
 		trace.WithAttributes(otelogen.OperationID(`readCertificatesV1CertificateSigningRequestApproval`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -5177,7 +5177,7 @@ func (s *Server) handleReadCertificatesV1CertificateSigningRequestApprovalReques
 // HandleReadCertificatesV1CertificateSigningRequestStatusRequest handles readCertificatesV1CertificateSigningRequestStatus operation.
 //
 // GET /apis/certificates.k8s.io/v1/certificatesigningrequests/{name}/status
-func (s *Server) handleReadCertificatesV1CertificateSigningRequestStatusRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReadCertificatesV1CertificateSigningRequestStatusRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReadCertificatesV1CertificateSigningRequestStatus`,
 		trace.WithAttributes(otelogen.OperationID(`readCertificatesV1CertificateSigningRequestStatus`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -5206,7 +5206,7 @@ func (s *Server) handleReadCertificatesV1CertificateSigningRequestStatusRequest(
 // HandleReadCoordinationV1NamespacedLeaseRequest handles readCoordinationV1NamespacedLease operation.
 //
 // GET /apis/coordination.k8s.io/v1/namespaces/{namespace}/leases/{name}
-func (s *Server) handleReadCoordinationV1NamespacedLeaseRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReadCoordinationV1NamespacedLeaseRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReadCoordinationV1NamespacedLease`,
 		trace.WithAttributes(otelogen.OperationID(`readCoordinationV1NamespacedLease`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -5235,7 +5235,7 @@ func (s *Server) handleReadCoordinationV1NamespacedLeaseRequest(args map[string]
 // HandleReadCoreV1ComponentStatusRequest handles readCoreV1ComponentStatus operation.
 //
 // GET /api/v1/componentstatuses/{name}
-func (s *Server) handleReadCoreV1ComponentStatusRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReadCoreV1ComponentStatusRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReadCoreV1ComponentStatus`,
 		trace.WithAttributes(otelogen.OperationID(`readCoreV1ComponentStatus`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -5264,7 +5264,7 @@ func (s *Server) handleReadCoreV1ComponentStatusRequest(args map[string]string, 
 // HandleReadCoreV1NamespaceRequest handles readCoreV1Namespace operation.
 //
 // GET /api/v1/namespaces/{name}
-func (s *Server) handleReadCoreV1NamespaceRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReadCoreV1NamespaceRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReadCoreV1Namespace`,
 		trace.WithAttributes(otelogen.OperationID(`readCoreV1Namespace`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -5293,7 +5293,7 @@ func (s *Server) handleReadCoreV1NamespaceRequest(args map[string]string, w http
 // HandleReadCoreV1NamespaceStatusRequest handles readCoreV1NamespaceStatus operation.
 //
 // GET /api/v1/namespaces/{name}/status
-func (s *Server) handleReadCoreV1NamespaceStatusRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReadCoreV1NamespaceStatusRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReadCoreV1NamespaceStatus`,
 		trace.WithAttributes(otelogen.OperationID(`readCoreV1NamespaceStatus`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -5322,7 +5322,7 @@ func (s *Server) handleReadCoreV1NamespaceStatusRequest(args map[string]string, 
 // HandleReadCoreV1NamespacedConfigMapRequest handles readCoreV1NamespacedConfigMap operation.
 //
 // GET /api/v1/namespaces/{namespace}/configmaps/{name}
-func (s *Server) handleReadCoreV1NamespacedConfigMapRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReadCoreV1NamespacedConfigMapRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReadCoreV1NamespacedConfigMap`,
 		trace.WithAttributes(otelogen.OperationID(`readCoreV1NamespacedConfigMap`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -5351,7 +5351,7 @@ func (s *Server) handleReadCoreV1NamespacedConfigMapRequest(args map[string]stri
 // HandleReadCoreV1NamespacedEndpointsRequest handles readCoreV1NamespacedEndpoints operation.
 //
 // GET /api/v1/namespaces/{namespace}/endpoints/{name}
-func (s *Server) handleReadCoreV1NamespacedEndpointsRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReadCoreV1NamespacedEndpointsRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReadCoreV1NamespacedEndpoints`,
 		trace.WithAttributes(otelogen.OperationID(`readCoreV1NamespacedEndpoints`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -5380,7 +5380,7 @@ func (s *Server) handleReadCoreV1NamespacedEndpointsRequest(args map[string]stri
 // HandleReadCoreV1NamespacedEventRequest handles readCoreV1NamespacedEvent operation.
 //
 // GET /api/v1/namespaces/{namespace}/events/{name}
-func (s *Server) handleReadCoreV1NamespacedEventRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReadCoreV1NamespacedEventRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReadCoreV1NamespacedEvent`,
 		trace.WithAttributes(otelogen.OperationID(`readCoreV1NamespacedEvent`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -5409,7 +5409,7 @@ func (s *Server) handleReadCoreV1NamespacedEventRequest(args map[string]string, 
 // HandleReadCoreV1NamespacedLimitRangeRequest handles readCoreV1NamespacedLimitRange operation.
 //
 // GET /api/v1/namespaces/{namespace}/limitranges/{name}
-func (s *Server) handleReadCoreV1NamespacedLimitRangeRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReadCoreV1NamespacedLimitRangeRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReadCoreV1NamespacedLimitRange`,
 		trace.WithAttributes(otelogen.OperationID(`readCoreV1NamespacedLimitRange`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -5438,7 +5438,7 @@ func (s *Server) handleReadCoreV1NamespacedLimitRangeRequest(args map[string]str
 // HandleReadCoreV1NamespacedPersistentVolumeClaimRequest handles readCoreV1NamespacedPersistentVolumeClaim operation.
 //
 // GET /api/v1/namespaces/{namespace}/persistentvolumeclaims/{name}
-func (s *Server) handleReadCoreV1NamespacedPersistentVolumeClaimRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReadCoreV1NamespacedPersistentVolumeClaimRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReadCoreV1NamespacedPersistentVolumeClaim`,
 		trace.WithAttributes(otelogen.OperationID(`readCoreV1NamespacedPersistentVolumeClaim`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -5467,7 +5467,7 @@ func (s *Server) handleReadCoreV1NamespacedPersistentVolumeClaimRequest(args map
 // HandleReadCoreV1NamespacedPersistentVolumeClaimStatusRequest handles readCoreV1NamespacedPersistentVolumeClaimStatus operation.
 //
 // GET /api/v1/namespaces/{namespace}/persistentvolumeclaims/{name}/status
-func (s *Server) handleReadCoreV1NamespacedPersistentVolumeClaimStatusRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReadCoreV1NamespacedPersistentVolumeClaimStatusRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReadCoreV1NamespacedPersistentVolumeClaimStatus`,
 		trace.WithAttributes(otelogen.OperationID(`readCoreV1NamespacedPersistentVolumeClaimStatus`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -5496,7 +5496,7 @@ func (s *Server) handleReadCoreV1NamespacedPersistentVolumeClaimStatusRequest(ar
 // HandleReadCoreV1NamespacedPodRequest handles readCoreV1NamespacedPod operation.
 //
 // GET /api/v1/namespaces/{namespace}/pods/{name}
-func (s *Server) handleReadCoreV1NamespacedPodRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReadCoreV1NamespacedPodRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReadCoreV1NamespacedPod`,
 		trace.WithAttributes(otelogen.OperationID(`readCoreV1NamespacedPod`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -5525,7 +5525,7 @@ func (s *Server) handleReadCoreV1NamespacedPodRequest(args map[string]string, w 
 // HandleReadCoreV1NamespacedPodEphemeralcontainersRequest handles readCoreV1NamespacedPodEphemeralcontainers operation.
 //
 // GET /api/v1/namespaces/{namespace}/pods/{name}/ephemeralcontainers
-func (s *Server) handleReadCoreV1NamespacedPodEphemeralcontainersRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReadCoreV1NamespacedPodEphemeralcontainersRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReadCoreV1NamespacedPodEphemeralcontainers`,
 		trace.WithAttributes(otelogen.OperationID(`readCoreV1NamespacedPodEphemeralcontainers`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -5554,7 +5554,7 @@ func (s *Server) handleReadCoreV1NamespacedPodEphemeralcontainersRequest(args ma
 // HandleReadCoreV1NamespacedPodLogRequest handles readCoreV1NamespacedPodLog operation.
 //
 // GET /api/v1/namespaces/{namespace}/pods/{name}/log
-func (s *Server) handleReadCoreV1NamespacedPodLogRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReadCoreV1NamespacedPodLogRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReadCoreV1NamespacedPodLog`,
 		trace.WithAttributes(otelogen.OperationID(`readCoreV1NamespacedPodLog`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -5583,7 +5583,7 @@ func (s *Server) handleReadCoreV1NamespacedPodLogRequest(args map[string]string,
 // HandleReadCoreV1NamespacedPodStatusRequest handles readCoreV1NamespacedPodStatus operation.
 //
 // GET /api/v1/namespaces/{namespace}/pods/{name}/status
-func (s *Server) handleReadCoreV1NamespacedPodStatusRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReadCoreV1NamespacedPodStatusRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReadCoreV1NamespacedPodStatus`,
 		trace.WithAttributes(otelogen.OperationID(`readCoreV1NamespacedPodStatus`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -5612,7 +5612,7 @@ func (s *Server) handleReadCoreV1NamespacedPodStatusRequest(args map[string]stri
 // HandleReadCoreV1NamespacedPodTemplateRequest handles readCoreV1NamespacedPodTemplate operation.
 //
 // GET /api/v1/namespaces/{namespace}/podtemplates/{name}
-func (s *Server) handleReadCoreV1NamespacedPodTemplateRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReadCoreV1NamespacedPodTemplateRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReadCoreV1NamespacedPodTemplate`,
 		trace.WithAttributes(otelogen.OperationID(`readCoreV1NamespacedPodTemplate`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -5641,7 +5641,7 @@ func (s *Server) handleReadCoreV1NamespacedPodTemplateRequest(args map[string]st
 // HandleReadCoreV1NamespacedReplicationControllerRequest handles readCoreV1NamespacedReplicationController operation.
 //
 // GET /api/v1/namespaces/{namespace}/replicationcontrollers/{name}
-func (s *Server) handleReadCoreV1NamespacedReplicationControllerRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReadCoreV1NamespacedReplicationControllerRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReadCoreV1NamespacedReplicationController`,
 		trace.WithAttributes(otelogen.OperationID(`readCoreV1NamespacedReplicationController`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -5670,7 +5670,7 @@ func (s *Server) handleReadCoreV1NamespacedReplicationControllerRequest(args map
 // HandleReadCoreV1NamespacedReplicationControllerScaleRequest handles readCoreV1NamespacedReplicationControllerScale operation.
 //
 // GET /api/v1/namespaces/{namespace}/replicationcontrollers/{name}/scale
-func (s *Server) handleReadCoreV1NamespacedReplicationControllerScaleRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReadCoreV1NamespacedReplicationControllerScaleRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReadCoreV1NamespacedReplicationControllerScale`,
 		trace.WithAttributes(otelogen.OperationID(`readCoreV1NamespacedReplicationControllerScale`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -5699,7 +5699,7 @@ func (s *Server) handleReadCoreV1NamespacedReplicationControllerScaleRequest(arg
 // HandleReadCoreV1NamespacedReplicationControllerStatusRequest handles readCoreV1NamespacedReplicationControllerStatus operation.
 //
 // GET /api/v1/namespaces/{namespace}/replicationcontrollers/{name}/status
-func (s *Server) handleReadCoreV1NamespacedReplicationControllerStatusRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReadCoreV1NamespacedReplicationControllerStatusRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReadCoreV1NamespacedReplicationControllerStatus`,
 		trace.WithAttributes(otelogen.OperationID(`readCoreV1NamespacedReplicationControllerStatus`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -5728,7 +5728,7 @@ func (s *Server) handleReadCoreV1NamespacedReplicationControllerStatusRequest(ar
 // HandleReadCoreV1NamespacedResourceQuotaRequest handles readCoreV1NamespacedResourceQuota operation.
 //
 // GET /api/v1/namespaces/{namespace}/resourcequotas/{name}
-func (s *Server) handleReadCoreV1NamespacedResourceQuotaRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReadCoreV1NamespacedResourceQuotaRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReadCoreV1NamespacedResourceQuota`,
 		trace.WithAttributes(otelogen.OperationID(`readCoreV1NamespacedResourceQuota`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -5757,7 +5757,7 @@ func (s *Server) handleReadCoreV1NamespacedResourceQuotaRequest(args map[string]
 // HandleReadCoreV1NamespacedResourceQuotaStatusRequest handles readCoreV1NamespacedResourceQuotaStatus operation.
 //
 // GET /api/v1/namespaces/{namespace}/resourcequotas/{name}/status
-func (s *Server) handleReadCoreV1NamespacedResourceQuotaStatusRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReadCoreV1NamespacedResourceQuotaStatusRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReadCoreV1NamespacedResourceQuotaStatus`,
 		trace.WithAttributes(otelogen.OperationID(`readCoreV1NamespacedResourceQuotaStatus`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -5786,7 +5786,7 @@ func (s *Server) handleReadCoreV1NamespacedResourceQuotaStatusRequest(args map[s
 // HandleReadCoreV1NamespacedSecretRequest handles readCoreV1NamespacedSecret operation.
 //
 // GET /api/v1/namespaces/{namespace}/secrets/{name}
-func (s *Server) handleReadCoreV1NamespacedSecretRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReadCoreV1NamespacedSecretRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReadCoreV1NamespacedSecret`,
 		trace.WithAttributes(otelogen.OperationID(`readCoreV1NamespacedSecret`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -5815,7 +5815,7 @@ func (s *Server) handleReadCoreV1NamespacedSecretRequest(args map[string]string,
 // HandleReadCoreV1NamespacedServiceRequest handles readCoreV1NamespacedService operation.
 //
 // GET /api/v1/namespaces/{namespace}/services/{name}
-func (s *Server) handleReadCoreV1NamespacedServiceRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReadCoreV1NamespacedServiceRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReadCoreV1NamespacedService`,
 		trace.WithAttributes(otelogen.OperationID(`readCoreV1NamespacedService`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -5844,7 +5844,7 @@ func (s *Server) handleReadCoreV1NamespacedServiceRequest(args map[string]string
 // HandleReadCoreV1NamespacedServiceAccountRequest handles readCoreV1NamespacedServiceAccount operation.
 //
 // GET /api/v1/namespaces/{namespace}/serviceaccounts/{name}
-func (s *Server) handleReadCoreV1NamespacedServiceAccountRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReadCoreV1NamespacedServiceAccountRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReadCoreV1NamespacedServiceAccount`,
 		trace.WithAttributes(otelogen.OperationID(`readCoreV1NamespacedServiceAccount`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -5873,7 +5873,7 @@ func (s *Server) handleReadCoreV1NamespacedServiceAccountRequest(args map[string
 // HandleReadCoreV1NamespacedServiceStatusRequest handles readCoreV1NamespacedServiceStatus operation.
 //
 // GET /api/v1/namespaces/{namespace}/services/{name}/status
-func (s *Server) handleReadCoreV1NamespacedServiceStatusRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReadCoreV1NamespacedServiceStatusRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReadCoreV1NamespacedServiceStatus`,
 		trace.WithAttributes(otelogen.OperationID(`readCoreV1NamespacedServiceStatus`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -5902,7 +5902,7 @@ func (s *Server) handleReadCoreV1NamespacedServiceStatusRequest(args map[string]
 // HandleReadCoreV1NodeRequest handles readCoreV1Node operation.
 //
 // GET /api/v1/nodes/{name}
-func (s *Server) handleReadCoreV1NodeRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReadCoreV1NodeRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReadCoreV1Node`,
 		trace.WithAttributes(otelogen.OperationID(`readCoreV1Node`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -5931,7 +5931,7 @@ func (s *Server) handleReadCoreV1NodeRequest(args map[string]string, w http.Resp
 // HandleReadCoreV1NodeStatusRequest handles readCoreV1NodeStatus operation.
 //
 // GET /api/v1/nodes/{name}/status
-func (s *Server) handleReadCoreV1NodeStatusRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReadCoreV1NodeStatusRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReadCoreV1NodeStatus`,
 		trace.WithAttributes(otelogen.OperationID(`readCoreV1NodeStatus`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -5960,7 +5960,7 @@ func (s *Server) handleReadCoreV1NodeStatusRequest(args map[string]string, w htt
 // HandleReadCoreV1PersistentVolumeRequest handles readCoreV1PersistentVolume operation.
 //
 // GET /api/v1/persistentvolumes/{name}
-func (s *Server) handleReadCoreV1PersistentVolumeRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReadCoreV1PersistentVolumeRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReadCoreV1PersistentVolume`,
 		trace.WithAttributes(otelogen.OperationID(`readCoreV1PersistentVolume`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -5989,7 +5989,7 @@ func (s *Server) handleReadCoreV1PersistentVolumeRequest(args map[string]string,
 // HandleReadCoreV1PersistentVolumeStatusRequest handles readCoreV1PersistentVolumeStatus operation.
 //
 // GET /api/v1/persistentvolumes/{name}/status
-func (s *Server) handleReadCoreV1PersistentVolumeStatusRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReadCoreV1PersistentVolumeStatusRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReadCoreV1PersistentVolumeStatus`,
 		trace.WithAttributes(otelogen.OperationID(`readCoreV1PersistentVolumeStatus`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -6018,7 +6018,7 @@ func (s *Server) handleReadCoreV1PersistentVolumeStatusRequest(args map[string]s
 // HandleReadDiscoveryV1NamespacedEndpointSliceRequest handles readDiscoveryV1NamespacedEndpointSlice operation.
 //
 // GET /apis/discovery.k8s.io/v1/namespaces/{namespace}/endpointslices/{name}
-func (s *Server) handleReadDiscoveryV1NamespacedEndpointSliceRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReadDiscoveryV1NamespacedEndpointSliceRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReadDiscoveryV1NamespacedEndpointSlice`,
 		trace.WithAttributes(otelogen.OperationID(`readDiscoveryV1NamespacedEndpointSlice`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -6047,7 +6047,7 @@ func (s *Server) handleReadDiscoveryV1NamespacedEndpointSliceRequest(args map[st
 // HandleReadDiscoveryV1beta1NamespacedEndpointSliceRequest handles readDiscoveryV1beta1NamespacedEndpointSlice operation.
 //
 // GET /apis/discovery.k8s.io/v1beta1/namespaces/{namespace}/endpointslices/{name}
-func (s *Server) handleReadDiscoveryV1beta1NamespacedEndpointSliceRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReadDiscoveryV1beta1NamespacedEndpointSliceRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReadDiscoveryV1beta1NamespacedEndpointSlice`,
 		trace.WithAttributes(otelogen.OperationID(`readDiscoveryV1beta1NamespacedEndpointSlice`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -6076,7 +6076,7 @@ func (s *Server) handleReadDiscoveryV1beta1NamespacedEndpointSliceRequest(args m
 // HandleReadEventsV1NamespacedEventRequest handles readEventsV1NamespacedEvent operation.
 //
 // GET /apis/events.k8s.io/v1/namespaces/{namespace}/events/{name}
-func (s *Server) handleReadEventsV1NamespacedEventRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReadEventsV1NamespacedEventRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReadEventsV1NamespacedEvent`,
 		trace.WithAttributes(otelogen.OperationID(`readEventsV1NamespacedEvent`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -6105,7 +6105,7 @@ func (s *Server) handleReadEventsV1NamespacedEventRequest(args map[string]string
 // HandleReadEventsV1beta1NamespacedEventRequest handles readEventsV1beta1NamespacedEvent operation.
 //
 // GET /apis/events.k8s.io/v1beta1/namespaces/{namespace}/events/{name}
-func (s *Server) handleReadEventsV1beta1NamespacedEventRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReadEventsV1beta1NamespacedEventRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReadEventsV1beta1NamespacedEvent`,
 		trace.WithAttributes(otelogen.OperationID(`readEventsV1beta1NamespacedEvent`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -6134,7 +6134,7 @@ func (s *Server) handleReadEventsV1beta1NamespacedEventRequest(args map[string]s
 // HandleReadFlowcontrolApiserverV1beta1FlowSchemaRequest handles readFlowcontrolApiserverV1beta1FlowSchema operation.
 //
 // GET /apis/flowcontrol.apiserver.k8s.io/v1beta1/flowschemas/{name}
-func (s *Server) handleReadFlowcontrolApiserverV1beta1FlowSchemaRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReadFlowcontrolApiserverV1beta1FlowSchemaRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReadFlowcontrolApiserverV1beta1FlowSchema`,
 		trace.WithAttributes(otelogen.OperationID(`readFlowcontrolApiserverV1beta1FlowSchema`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -6163,7 +6163,7 @@ func (s *Server) handleReadFlowcontrolApiserverV1beta1FlowSchemaRequest(args map
 // HandleReadFlowcontrolApiserverV1beta1FlowSchemaStatusRequest handles readFlowcontrolApiserverV1beta1FlowSchemaStatus operation.
 //
 // GET /apis/flowcontrol.apiserver.k8s.io/v1beta1/flowschemas/{name}/status
-func (s *Server) handleReadFlowcontrolApiserverV1beta1FlowSchemaStatusRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReadFlowcontrolApiserverV1beta1FlowSchemaStatusRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReadFlowcontrolApiserverV1beta1FlowSchemaStatus`,
 		trace.WithAttributes(otelogen.OperationID(`readFlowcontrolApiserverV1beta1FlowSchemaStatus`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -6192,7 +6192,7 @@ func (s *Server) handleReadFlowcontrolApiserverV1beta1FlowSchemaStatusRequest(ar
 // HandleReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationRequest handles readFlowcontrolApiserverV1beta1PriorityLevelConfiguration operation.
 //
 // GET /apis/flowcontrol.apiserver.k8s.io/v1beta1/prioritylevelconfigurations/{name}
-func (s *Server) handleReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReadFlowcontrolApiserverV1beta1PriorityLevelConfiguration`,
 		trace.WithAttributes(otelogen.OperationID(`readFlowcontrolApiserverV1beta1PriorityLevelConfiguration`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -6221,7 +6221,7 @@ func (s *Server) handleReadFlowcontrolApiserverV1beta1PriorityLevelConfiguration
 // HandleReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationStatusRequest handles readFlowcontrolApiserverV1beta1PriorityLevelConfigurationStatus operation.
 //
 // GET /apis/flowcontrol.apiserver.k8s.io/v1beta1/prioritylevelconfigurations/{name}/status
-func (s *Server) handleReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationStatusRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationStatusRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationStatus`,
 		trace.WithAttributes(otelogen.OperationID(`readFlowcontrolApiserverV1beta1PriorityLevelConfigurationStatus`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -6250,7 +6250,7 @@ func (s *Server) handleReadFlowcontrolApiserverV1beta1PriorityLevelConfiguration
 // HandleReadFlowcontrolApiserverV1beta2FlowSchemaRequest handles readFlowcontrolApiserverV1beta2FlowSchema operation.
 //
 // GET /apis/flowcontrol.apiserver.k8s.io/v1beta2/flowschemas/{name}
-func (s *Server) handleReadFlowcontrolApiserverV1beta2FlowSchemaRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReadFlowcontrolApiserverV1beta2FlowSchemaRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReadFlowcontrolApiserverV1beta2FlowSchema`,
 		trace.WithAttributes(otelogen.OperationID(`readFlowcontrolApiserverV1beta2FlowSchema`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -6279,7 +6279,7 @@ func (s *Server) handleReadFlowcontrolApiserverV1beta2FlowSchemaRequest(args map
 // HandleReadFlowcontrolApiserverV1beta2FlowSchemaStatusRequest handles readFlowcontrolApiserverV1beta2FlowSchemaStatus operation.
 //
 // GET /apis/flowcontrol.apiserver.k8s.io/v1beta2/flowschemas/{name}/status
-func (s *Server) handleReadFlowcontrolApiserverV1beta2FlowSchemaStatusRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReadFlowcontrolApiserverV1beta2FlowSchemaStatusRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReadFlowcontrolApiserverV1beta2FlowSchemaStatus`,
 		trace.WithAttributes(otelogen.OperationID(`readFlowcontrolApiserverV1beta2FlowSchemaStatus`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -6308,7 +6308,7 @@ func (s *Server) handleReadFlowcontrolApiserverV1beta2FlowSchemaStatusRequest(ar
 // HandleReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationRequest handles readFlowcontrolApiserverV1beta2PriorityLevelConfiguration operation.
 //
 // GET /apis/flowcontrol.apiserver.k8s.io/v1beta2/prioritylevelconfigurations/{name}
-func (s *Server) handleReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReadFlowcontrolApiserverV1beta2PriorityLevelConfiguration`,
 		trace.WithAttributes(otelogen.OperationID(`readFlowcontrolApiserverV1beta2PriorityLevelConfiguration`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -6337,7 +6337,7 @@ func (s *Server) handleReadFlowcontrolApiserverV1beta2PriorityLevelConfiguration
 // HandleReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationStatusRequest handles readFlowcontrolApiserverV1beta2PriorityLevelConfigurationStatus operation.
 //
 // GET /apis/flowcontrol.apiserver.k8s.io/v1beta2/prioritylevelconfigurations/{name}/status
-func (s *Server) handleReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationStatusRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationStatusRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationStatus`,
 		trace.WithAttributes(otelogen.OperationID(`readFlowcontrolApiserverV1beta2PriorityLevelConfigurationStatus`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -6366,7 +6366,7 @@ func (s *Server) handleReadFlowcontrolApiserverV1beta2PriorityLevelConfiguration
 // HandleReadInternalApiserverV1alpha1StorageVersionRequest handles readInternalApiserverV1alpha1StorageVersion operation.
 //
 // GET /apis/internal.apiserver.k8s.io/v1alpha1/storageversions/{name}
-func (s *Server) handleReadInternalApiserverV1alpha1StorageVersionRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReadInternalApiserverV1alpha1StorageVersionRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReadInternalApiserverV1alpha1StorageVersion`,
 		trace.WithAttributes(otelogen.OperationID(`readInternalApiserverV1alpha1StorageVersion`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -6395,7 +6395,7 @@ func (s *Server) handleReadInternalApiserverV1alpha1StorageVersionRequest(args m
 // HandleReadInternalApiserverV1alpha1StorageVersionStatusRequest handles readInternalApiserverV1alpha1StorageVersionStatus operation.
 //
 // GET /apis/internal.apiserver.k8s.io/v1alpha1/storageversions/{name}/status
-func (s *Server) handleReadInternalApiserverV1alpha1StorageVersionStatusRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReadInternalApiserverV1alpha1StorageVersionStatusRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReadInternalApiserverV1alpha1StorageVersionStatus`,
 		trace.WithAttributes(otelogen.OperationID(`readInternalApiserverV1alpha1StorageVersionStatus`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -6424,7 +6424,7 @@ func (s *Server) handleReadInternalApiserverV1alpha1StorageVersionStatusRequest(
 // HandleReadNetworkingV1IngressClassRequest handles readNetworkingV1IngressClass operation.
 //
 // GET /apis/networking.k8s.io/v1/ingressclasses/{name}
-func (s *Server) handleReadNetworkingV1IngressClassRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReadNetworkingV1IngressClassRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReadNetworkingV1IngressClass`,
 		trace.WithAttributes(otelogen.OperationID(`readNetworkingV1IngressClass`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -6453,7 +6453,7 @@ func (s *Server) handleReadNetworkingV1IngressClassRequest(args map[string]strin
 // HandleReadNetworkingV1NamespacedIngressRequest handles readNetworkingV1NamespacedIngress operation.
 //
 // GET /apis/networking.k8s.io/v1/namespaces/{namespace}/ingresses/{name}
-func (s *Server) handleReadNetworkingV1NamespacedIngressRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReadNetworkingV1NamespacedIngressRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReadNetworkingV1NamespacedIngress`,
 		trace.WithAttributes(otelogen.OperationID(`readNetworkingV1NamespacedIngress`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -6482,7 +6482,7 @@ func (s *Server) handleReadNetworkingV1NamespacedIngressRequest(args map[string]
 // HandleReadNetworkingV1NamespacedIngressStatusRequest handles readNetworkingV1NamespacedIngressStatus operation.
 //
 // GET /apis/networking.k8s.io/v1/namespaces/{namespace}/ingresses/{name}/status
-func (s *Server) handleReadNetworkingV1NamespacedIngressStatusRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReadNetworkingV1NamespacedIngressStatusRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReadNetworkingV1NamespacedIngressStatus`,
 		trace.WithAttributes(otelogen.OperationID(`readNetworkingV1NamespacedIngressStatus`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -6511,7 +6511,7 @@ func (s *Server) handleReadNetworkingV1NamespacedIngressStatusRequest(args map[s
 // HandleReadNetworkingV1NamespacedNetworkPolicyRequest handles readNetworkingV1NamespacedNetworkPolicy operation.
 //
 // GET /apis/networking.k8s.io/v1/namespaces/{namespace}/networkpolicies/{name}
-func (s *Server) handleReadNetworkingV1NamespacedNetworkPolicyRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReadNetworkingV1NamespacedNetworkPolicyRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReadNetworkingV1NamespacedNetworkPolicy`,
 		trace.WithAttributes(otelogen.OperationID(`readNetworkingV1NamespacedNetworkPolicy`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -6540,7 +6540,7 @@ func (s *Server) handleReadNetworkingV1NamespacedNetworkPolicyRequest(args map[s
 // HandleReadNodeV1RuntimeClassRequest handles readNodeV1RuntimeClass operation.
 //
 // GET /apis/node.k8s.io/v1/runtimeclasses/{name}
-func (s *Server) handleReadNodeV1RuntimeClassRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReadNodeV1RuntimeClassRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReadNodeV1RuntimeClass`,
 		trace.WithAttributes(otelogen.OperationID(`readNodeV1RuntimeClass`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -6569,7 +6569,7 @@ func (s *Server) handleReadNodeV1RuntimeClassRequest(args map[string]string, w h
 // HandleReadNodeV1alpha1RuntimeClassRequest handles readNodeV1alpha1RuntimeClass operation.
 //
 // GET /apis/node.k8s.io/v1alpha1/runtimeclasses/{name}
-func (s *Server) handleReadNodeV1alpha1RuntimeClassRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReadNodeV1alpha1RuntimeClassRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReadNodeV1alpha1RuntimeClass`,
 		trace.WithAttributes(otelogen.OperationID(`readNodeV1alpha1RuntimeClass`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -6598,7 +6598,7 @@ func (s *Server) handleReadNodeV1alpha1RuntimeClassRequest(args map[string]strin
 // HandleReadNodeV1beta1RuntimeClassRequest handles readNodeV1beta1RuntimeClass operation.
 //
 // GET /apis/node.k8s.io/v1beta1/runtimeclasses/{name}
-func (s *Server) handleReadNodeV1beta1RuntimeClassRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReadNodeV1beta1RuntimeClassRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReadNodeV1beta1RuntimeClass`,
 		trace.WithAttributes(otelogen.OperationID(`readNodeV1beta1RuntimeClass`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -6627,7 +6627,7 @@ func (s *Server) handleReadNodeV1beta1RuntimeClassRequest(args map[string]string
 // HandleReadPolicyV1NamespacedPodDisruptionBudgetRequest handles readPolicyV1NamespacedPodDisruptionBudget operation.
 //
 // GET /apis/policy/v1/namespaces/{namespace}/poddisruptionbudgets/{name}
-func (s *Server) handleReadPolicyV1NamespacedPodDisruptionBudgetRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReadPolicyV1NamespacedPodDisruptionBudgetRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReadPolicyV1NamespacedPodDisruptionBudget`,
 		trace.WithAttributes(otelogen.OperationID(`readPolicyV1NamespacedPodDisruptionBudget`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -6656,7 +6656,7 @@ func (s *Server) handleReadPolicyV1NamespacedPodDisruptionBudgetRequest(args map
 // HandleReadPolicyV1NamespacedPodDisruptionBudgetStatusRequest handles readPolicyV1NamespacedPodDisruptionBudgetStatus operation.
 //
 // GET /apis/policy/v1/namespaces/{namespace}/poddisruptionbudgets/{name}/status
-func (s *Server) handleReadPolicyV1NamespacedPodDisruptionBudgetStatusRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReadPolicyV1NamespacedPodDisruptionBudgetStatusRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReadPolicyV1NamespacedPodDisruptionBudgetStatus`,
 		trace.WithAttributes(otelogen.OperationID(`readPolicyV1NamespacedPodDisruptionBudgetStatus`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -6685,7 +6685,7 @@ func (s *Server) handleReadPolicyV1NamespacedPodDisruptionBudgetStatusRequest(ar
 // HandleReadPolicyV1beta1NamespacedPodDisruptionBudgetRequest handles readPolicyV1beta1NamespacedPodDisruptionBudget operation.
 //
 // GET /apis/policy/v1beta1/namespaces/{namespace}/poddisruptionbudgets/{name}
-func (s *Server) handleReadPolicyV1beta1NamespacedPodDisruptionBudgetRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReadPolicyV1beta1NamespacedPodDisruptionBudgetRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReadPolicyV1beta1NamespacedPodDisruptionBudget`,
 		trace.WithAttributes(otelogen.OperationID(`readPolicyV1beta1NamespacedPodDisruptionBudget`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -6714,7 +6714,7 @@ func (s *Server) handleReadPolicyV1beta1NamespacedPodDisruptionBudgetRequest(arg
 // HandleReadPolicyV1beta1NamespacedPodDisruptionBudgetStatusRequest handles readPolicyV1beta1NamespacedPodDisruptionBudgetStatus operation.
 //
 // GET /apis/policy/v1beta1/namespaces/{namespace}/poddisruptionbudgets/{name}/status
-func (s *Server) handleReadPolicyV1beta1NamespacedPodDisruptionBudgetStatusRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReadPolicyV1beta1NamespacedPodDisruptionBudgetStatusRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReadPolicyV1beta1NamespacedPodDisruptionBudgetStatus`,
 		trace.WithAttributes(otelogen.OperationID(`readPolicyV1beta1NamespacedPodDisruptionBudgetStatus`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -6743,7 +6743,7 @@ func (s *Server) handleReadPolicyV1beta1NamespacedPodDisruptionBudgetStatusReque
 // HandleReadPolicyV1beta1PodSecurityPolicyRequest handles readPolicyV1beta1PodSecurityPolicy operation.
 //
 // GET /apis/policy/v1beta1/podsecuritypolicies/{name}
-func (s *Server) handleReadPolicyV1beta1PodSecurityPolicyRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReadPolicyV1beta1PodSecurityPolicyRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReadPolicyV1beta1PodSecurityPolicy`,
 		trace.WithAttributes(otelogen.OperationID(`readPolicyV1beta1PodSecurityPolicy`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -6772,7 +6772,7 @@ func (s *Server) handleReadPolicyV1beta1PodSecurityPolicyRequest(args map[string
 // HandleReadRbacAuthorizationV1ClusterRoleRequest handles readRbacAuthorizationV1ClusterRole operation.
 //
 // GET /apis/rbac.authorization.k8s.io/v1/clusterroles/{name}
-func (s *Server) handleReadRbacAuthorizationV1ClusterRoleRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReadRbacAuthorizationV1ClusterRoleRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReadRbacAuthorizationV1ClusterRole`,
 		trace.WithAttributes(otelogen.OperationID(`readRbacAuthorizationV1ClusterRole`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -6801,7 +6801,7 @@ func (s *Server) handleReadRbacAuthorizationV1ClusterRoleRequest(args map[string
 // HandleReadRbacAuthorizationV1ClusterRoleBindingRequest handles readRbacAuthorizationV1ClusterRoleBinding operation.
 //
 // GET /apis/rbac.authorization.k8s.io/v1/clusterrolebindings/{name}
-func (s *Server) handleReadRbacAuthorizationV1ClusterRoleBindingRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReadRbacAuthorizationV1ClusterRoleBindingRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReadRbacAuthorizationV1ClusterRoleBinding`,
 		trace.WithAttributes(otelogen.OperationID(`readRbacAuthorizationV1ClusterRoleBinding`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -6830,7 +6830,7 @@ func (s *Server) handleReadRbacAuthorizationV1ClusterRoleBindingRequest(args map
 // HandleReadRbacAuthorizationV1NamespacedRoleRequest handles readRbacAuthorizationV1NamespacedRole operation.
 //
 // GET /apis/rbac.authorization.k8s.io/v1/namespaces/{namespace}/roles/{name}
-func (s *Server) handleReadRbacAuthorizationV1NamespacedRoleRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReadRbacAuthorizationV1NamespacedRoleRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReadRbacAuthorizationV1NamespacedRole`,
 		trace.WithAttributes(otelogen.OperationID(`readRbacAuthorizationV1NamespacedRole`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -6859,7 +6859,7 @@ func (s *Server) handleReadRbacAuthorizationV1NamespacedRoleRequest(args map[str
 // HandleReadRbacAuthorizationV1NamespacedRoleBindingRequest handles readRbacAuthorizationV1NamespacedRoleBinding operation.
 //
 // GET /apis/rbac.authorization.k8s.io/v1/namespaces/{namespace}/rolebindings/{name}
-func (s *Server) handleReadRbacAuthorizationV1NamespacedRoleBindingRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReadRbacAuthorizationV1NamespacedRoleBindingRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReadRbacAuthorizationV1NamespacedRoleBinding`,
 		trace.WithAttributes(otelogen.OperationID(`readRbacAuthorizationV1NamespacedRoleBinding`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -6888,7 +6888,7 @@ func (s *Server) handleReadRbacAuthorizationV1NamespacedRoleBindingRequest(args 
 // HandleReadSchedulingV1PriorityClassRequest handles readSchedulingV1PriorityClass operation.
 //
 // GET /apis/scheduling.k8s.io/v1/priorityclasses/{name}
-func (s *Server) handleReadSchedulingV1PriorityClassRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReadSchedulingV1PriorityClassRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReadSchedulingV1PriorityClass`,
 		trace.WithAttributes(otelogen.OperationID(`readSchedulingV1PriorityClass`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -6917,7 +6917,7 @@ func (s *Server) handleReadSchedulingV1PriorityClassRequest(args map[string]stri
 // HandleReadStorageV1CSIDriverRequest handles readStorageV1CSIDriver operation.
 //
 // GET /apis/storage.k8s.io/v1/csidrivers/{name}
-func (s *Server) handleReadStorageV1CSIDriverRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReadStorageV1CSIDriverRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReadStorageV1CSIDriver`,
 		trace.WithAttributes(otelogen.OperationID(`readStorageV1CSIDriver`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -6946,7 +6946,7 @@ func (s *Server) handleReadStorageV1CSIDriverRequest(args map[string]string, w h
 // HandleReadStorageV1CSINodeRequest handles readStorageV1CSINode operation.
 //
 // GET /apis/storage.k8s.io/v1/csinodes/{name}
-func (s *Server) handleReadStorageV1CSINodeRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReadStorageV1CSINodeRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReadStorageV1CSINode`,
 		trace.WithAttributes(otelogen.OperationID(`readStorageV1CSINode`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -6975,7 +6975,7 @@ func (s *Server) handleReadStorageV1CSINodeRequest(args map[string]string, w htt
 // HandleReadStorageV1StorageClassRequest handles readStorageV1StorageClass operation.
 //
 // GET /apis/storage.k8s.io/v1/storageclasses/{name}
-func (s *Server) handleReadStorageV1StorageClassRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReadStorageV1StorageClassRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReadStorageV1StorageClass`,
 		trace.WithAttributes(otelogen.OperationID(`readStorageV1StorageClass`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -7004,7 +7004,7 @@ func (s *Server) handleReadStorageV1StorageClassRequest(args map[string]string, 
 // HandleReadStorageV1VolumeAttachmentRequest handles readStorageV1VolumeAttachment operation.
 //
 // GET /apis/storage.k8s.io/v1/volumeattachments/{name}
-func (s *Server) handleReadStorageV1VolumeAttachmentRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReadStorageV1VolumeAttachmentRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReadStorageV1VolumeAttachment`,
 		trace.WithAttributes(otelogen.OperationID(`readStorageV1VolumeAttachment`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -7033,7 +7033,7 @@ func (s *Server) handleReadStorageV1VolumeAttachmentRequest(args map[string]stri
 // HandleReadStorageV1VolumeAttachmentStatusRequest handles readStorageV1VolumeAttachmentStatus operation.
 //
 // GET /apis/storage.k8s.io/v1/volumeattachments/{name}/status
-func (s *Server) handleReadStorageV1VolumeAttachmentStatusRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReadStorageV1VolumeAttachmentStatusRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReadStorageV1VolumeAttachmentStatus`,
 		trace.WithAttributes(otelogen.OperationID(`readStorageV1VolumeAttachmentStatus`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -7062,7 +7062,7 @@ func (s *Server) handleReadStorageV1VolumeAttachmentStatusRequest(args map[strin
 // HandleReadStorageV1alpha1NamespacedCSIStorageCapacityRequest handles readStorageV1alpha1NamespacedCSIStorageCapacity operation.
 //
 // GET /apis/storage.k8s.io/v1alpha1/namespaces/{namespace}/csistoragecapacities/{name}
-func (s *Server) handleReadStorageV1alpha1NamespacedCSIStorageCapacityRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReadStorageV1alpha1NamespacedCSIStorageCapacityRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReadStorageV1alpha1NamespacedCSIStorageCapacity`,
 		trace.WithAttributes(otelogen.OperationID(`readStorageV1alpha1NamespacedCSIStorageCapacity`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -7091,7 +7091,7 @@ func (s *Server) handleReadStorageV1alpha1NamespacedCSIStorageCapacityRequest(ar
 // HandleReadStorageV1beta1NamespacedCSIStorageCapacityRequest handles readStorageV1beta1NamespacedCSIStorageCapacity operation.
 //
 // GET /apis/storage.k8s.io/v1beta1/namespaces/{namespace}/csistoragecapacities/{name}
-func (s *Server) handleReadStorageV1beta1NamespacedCSIStorageCapacityRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleReadStorageV1beta1NamespacedCSIStorageCapacityRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `ReadStorageV1beta1NamespacedCSIStorageCapacity`,
 		trace.WithAttributes(otelogen.OperationID(`readStorageV1beta1NamespacedCSIStorageCapacity`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -7120,7 +7120,7 @@ func (s *Server) handleReadStorageV1beta1NamespacedCSIStorageCapacityRequest(arg
 // HandleWatchAdmissionregistrationV1MutatingWebhookConfigurationRequest handles watchAdmissionregistrationV1MutatingWebhookConfiguration operation.
 //
 // GET /apis/admissionregistration.k8s.io/v1/watch/mutatingwebhookconfigurations/{name}
-func (s *Server) handleWatchAdmissionregistrationV1MutatingWebhookConfigurationRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleWatchAdmissionregistrationV1MutatingWebhookConfigurationRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `WatchAdmissionregistrationV1MutatingWebhookConfiguration`,
 		trace.WithAttributes(otelogen.OperationID(`watchAdmissionregistrationV1MutatingWebhookConfiguration`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -7149,7 +7149,7 @@ func (s *Server) handleWatchAdmissionregistrationV1MutatingWebhookConfigurationR
 // HandleWatchAdmissionregistrationV1MutatingWebhookConfigurationListRequest handles watchAdmissionregistrationV1MutatingWebhookConfigurationList operation.
 //
 // GET /apis/admissionregistration.k8s.io/v1/watch/mutatingwebhookconfigurations
-func (s *Server) handleWatchAdmissionregistrationV1MutatingWebhookConfigurationListRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleWatchAdmissionregistrationV1MutatingWebhookConfigurationListRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `WatchAdmissionregistrationV1MutatingWebhookConfigurationList`,
 		trace.WithAttributes(otelogen.OperationID(`watchAdmissionregistrationV1MutatingWebhookConfigurationList`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -7178,7 +7178,7 @@ func (s *Server) handleWatchAdmissionregistrationV1MutatingWebhookConfigurationL
 // HandleWatchAdmissionregistrationV1ValidatingWebhookConfigurationRequest handles watchAdmissionregistrationV1ValidatingWebhookConfiguration operation.
 //
 // GET /apis/admissionregistration.k8s.io/v1/watch/validatingwebhookconfigurations/{name}
-func (s *Server) handleWatchAdmissionregistrationV1ValidatingWebhookConfigurationRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleWatchAdmissionregistrationV1ValidatingWebhookConfigurationRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `WatchAdmissionregistrationV1ValidatingWebhookConfiguration`,
 		trace.WithAttributes(otelogen.OperationID(`watchAdmissionregistrationV1ValidatingWebhookConfiguration`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -7207,7 +7207,7 @@ func (s *Server) handleWatchAdmissionregistrationV1ValidatingWebhookConfiguratio
 // HandleWatchAdmissionregistrationV1ValidatingWebhookConfigurationListRequest handles watchAdmissionregistrationV1ValidatingWebhookConfigurationList operation.
 //
 // GET /apis/admissionregistration.k8s.io/v1/watch/validatingwebhookconfigurations
-func (s *Server) handleWatchAdmissionregistrationV1ValidatingWebhookConfigurationListRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleWatchAdmissionregistrationV1ValidatingWebhookConfigurationListRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `WatchAdmissionregistrationV1ValidatingWebhookConfigurationList`,
 		trace.WithAttributes(otelogen.OperationID(`watchAdmissionregistrationV1ValidatingWebhookConfigurationList`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -7236,7 +7236,7 @@ func (s *Server) handleWatchAdmissionregistrationV1ValidatingWebhookConfiguratio
 // HandleWatchApiextensionsV1CustomResourceDefinitionRequest handles watchApiextensionsV1CustomResourceDefinition operation.
 //
 // GET /apis/apiextensions.k8s.io/v1/watch/customresourcedefinitions/{name}
-func (s *Server) handleWatchApiextensionsV1CustomResourceDefinitionRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleWatchApiextensionsV1CustomResourceDefinitionRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `WatchApiextensionsV1CustomResourceDefinition`,
 		trace.WithAttributes(otelogen.OperationID(`watchApiextensionsV1CustomResourceDefinition`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -7265,7 +7265,7 @@ func (s *Server) handleWatchApiextensionsV1CustomResourceDefinitionRequest(args 
 // HandleWatchApiextensionsV1CustomResourceDefinitionListRequest handles watchApiextensionsV1CustomResourceDefinitionList operation.
 //
 // GET /apis/apiextensions.k8s.io/v1/watch/customresourcedefinitions
-func (s *Server) handleWatchApiextensionsV1CustomResourceDefinitionListRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleWatchApiextensionsV1CustomResourceDefinitionListRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `WatchApiextensionsV1CustomResourceDefinitionList`,
 		trace.WithAttributes(otelogen.OperationID(`watchApiextensionsV1CustomResourceDefinitionList`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -7294,7 +7294,7 @@ func (s *Server) handleWatchApiextensionsV1CustomResourceDefinitionListRequest(a
 // HandleWatchApiregistrationV1APIServiceRequest handles watchApiregistrationV1APIService operation.
 //
 // GET /apis/apiregistration.k8s.io/v1/watch/apiservices/{name}
-func (s *Server) handleWatchApiregistrationV1APIServiceRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleWatchApiregistrationV1APIServiceRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `WatchApiregistrationV1APIService`,
 		trace.WithAttributes(otelogen.OperationID(`watchApiregistrationV1APIService`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -7323,7 +7323,7 @@ func (s *Server) handleWatchApiregistrationV1APIServiceRequest(args map[string]s
 // HandleWatchApiregistrationV1APIServiceListRequest handles watchApiregistrationV1APIServiceList operation.
 //
 // GET /apis/apiregistration.k8s.io/v1/watch/apiservices
-func (s *Server) handleWatchApiregistrationV1APIServiceListRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleWatchApiregistrationV1APIServiceListRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `WatchApiregistrationV1APIServiceList`,
 		trace.WithAttributes(otelogen.OperationID(`watchApiregistrationV1APIServiceList`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -7352,7 +7352,7 @@ func (s *Server) handleWatchApiregistrationV1APIServiceListRequest(args map[stri
 // HandleWatchAppsV1ControllerRevisionListForAllNamespacesRequest handles watchAppsV1ControllerRevisionListForAllNamespaces operation.
 //
 // GET /apis/apps/v1/watch/controllerrevisions
-func (s *Server) handleWatchAppsV1ControllerRevisionListForAllNamespacesRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleWatchAppsV1ControllerRevisionListForAllNamespacesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `WatchAppsV1ControllerRevisionListForAllNamespaces`,
 		trace.WithAttributes(otelogen.OperationID(`watchAppsV1ControllerRevisionListForAllNamespaces`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -7381,7 +7381,7 @@ func (s *Server) handleWatchAppsV1ControllerRevisionListForAllNamespacesRequest(
 // HandleWatchAppsV1DaemonSetListForAllNamespacesRequest handles watchAppsV1DaemonSetListForAllNamespaces operation.
 //
 // GET /apis/apps/v1/watch/daemonsets
-func (s *Server) handleWatchAppsV1DaemonSetListForAllNamespacesRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleWatchAppsV1DaemonSetListForAllNamespacesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `WatchAppsV1DaemonSetListForAllNamespaces`,
 		trace.WithAttributes(otelogen.OperationID(`watchAppsV1DaemonSetListForAllNamespaces`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -7410,7 +7410,7 @@ func (s *Server) handleWatchAppsV1DaemonSetListForAllNamespacesRequest(args map[
 // HandleWatchAppsV1DeploymentListForAllNamespacesRequest handles watchAppsV1DeploymentListForAllNamespaces operation.
 //
 // GET /apis/apps/v1/watch/deployments
-func (s *Server) handleWatchAppsV1DeploymentListForAllNamespacesRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleWatchAppsV1DeploymentListForAllNamespacesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `WatchAppsV1DeploymentListForAllNamespaces`,
 		trace.WithAttributes(otelogen.OperationID(`watchAppsV1DeploymentListForAllNamespaces`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -7439,7 +7439,7 @@ func (s *Server) handleWatchAppsV1DeploymentListForAllNamespacesRequest(args map
 // HandleWatchAppsV1NamespacedControllerRevisionRequest handles watchAppsV1NamespacedControllerRevision operation.
 //
 // GET /apis/apps/v1/watch/namespaces/{namespace}/controllerrevisions/{name}
-func (s *Server) handleWatchAppsV1NamespacedControllerRevisionRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleWatchAppsV1NamespacedControllerRevisionRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `WatchAppsV1NamespacedControllerRevision`,
 		trace.WithAttributes(otelogen.OperationID(`watchAppsV1NamespacedControllerRevision`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -7468,7 +7468,7 @@ func (s *Server) handleWatchAppsV1NamespacedControllerRevisionRequest(args map[s
 // HandleWatchAppsV1NamespacedControllerRevisionListRequest handles watchAppsV1NamespacedControllerRevisionList operation.
 //
 // GET /apis/apps/v1/watch/namespaces/{namespace}/controllerrevisions
-func (s *Server) handleWatchAppsV1NamespacedControllerRevisionListRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleWatchAppsV1NamespacedControllerRevisionListRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `WatchAppsV1NamespacedControllerRevisionList`,
 		trace.WithAttributes(otelogen.OperationID(`watchAppsV1NamespacedControllerRevisionList`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -7497,7 +7497,7 @@ func (s *Server) handleWatchAppsV1NamespacedControllerRevisionListRequest(args m
 // HandleWatchAppsV1NamespacedDaemonSetRequest handles watchAppsV1NamespacedDaemonSet operation.
 //
 // GET /apis/apps/v1/watch/namespaces/{namespace}/daemonsets/{name}
-func (s *Server) handleWatchAppsV1NamespacedDaemonSetRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleWatchAppsV1NamespacedDaemonSetRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `WatchAppsV1NamespacedDaemonSet`,
 		trace.WithAttributes(otelogen.OperationID(`watchAppsV1NamespacedDaemonSet`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -7526,7 +7526,7 @@ func (s *Server) handleWatchAppsV1NamespacedDaemonSetRequest(args map[string]str
 // HandleWatchAppsV1NamespacedDaemonSetListRequest handles watchAppsV1NamespacedDaemonSetList operation.
 //
 // GET /apis/apps/v1/watch/namespaces/{namespace}/daemonsets
-func (s *Server) handleWatchAppsV1NamespacedDaemonSetListRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleWatchAppsV1NamespacedDaemonSetListRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `WatchAppsV1NamespacedDaemonSetList`,
 		trace.WithAttributes(otelogen.OperationID(`watchAppsV1NamespacedDaemonSetList`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -7555,7 +7555,7 @@ func (s *Server) handleWatchAppsV1NamespacedDaemonSetListRequest(args map[string
 // HandleWatchAppsV1NamespacedDeploymentRequest handles watchAppsV1NamespacedDeployment operation.
 //
 // GET /apis/apps/v1/watch/namespaces/{namespace}/deployments/{name}
-func (s *Server) handleWatchAppsV1NamespacedDeploymentRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleWatchAppsV1NamespacedDeploymentRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `WatchAppsV1NamespacedDeployment`,
 		trace.WithAttributes(otelogen.OperationID(`watchAppsV1NamespacedDeployment`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -7584,7 +7584,7 @@ func (s *Server) handleWatchAppsV1NamespacedDeploymentRequest(args map[string]st
 // HandleWatchAppsV1NamespacedDeploymentListRequest handles watchAppsV1NamespacedDeploymentList operation.
 //
 // GET /apis/apps/v1/watch/namespaces/{namespace}/deployments
-func (s *Server) handleWatchAppsV1NamespacedDeploymentListRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleWatchAppsV1NamespacedDeploymentListRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `WatchAppsV1NamespacedDeploymentList`,
 		trace.WithAttributes(otelogen.OperationID(`watchAppsV1NamespacedDeploymentList`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -7613,7 +7613,7 @@ func (s *Server) handleWatchAppsV1NamespacedDeploymentListRequest(args map[strin
 // HandleWatchAppsV1NamespacedReplicaSetRequest handles watchAppsV1NamespacedReplicaSet operation.
 //
 // GET /apis/apps/v1/watch/namespaces/{namespace}/replicasets/{name}
-func (s *Server) handleWatchAppsV1NamespacedReplicaSetRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleWatchAppsV1NamespacedReplicaSetRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `WatchAppsV1NamespacedReplicaSet`,
 		trace.WithAttributes(otelogen.OperationID(`watchAppsV1NamespacedReplicaSet`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -7642,7 +7642,7 @@ func (s *Server) handleWatchAppsV1NamespacedReplicaSetRequest(args map[string]st
 // HandleWatchAppsV1NamespacedReplicaSetListRequest handles watchAppsV1NamespacedReplicaSetList operation.
 //
 // GET /apis/apps/v1/watch/namespaces/{namespace}/replicasets
-func (s *Server) handleWatchAppsV1NamespacedReplicaSetListRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleWatchAppsV1NamespacedReplicaSetListRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `WatchAppsV1NamespacedReplicaSetList`,
 		trace.WithAttributes(otelogen.OperationID(`watchAppsV1NamespacedReplicaSetList`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -7671,7 +7671,7 @@ func (s *Server) handleWatchAppsV1NamespacedReplicaSetListRequest(args map[strin
 // HandleWatchAppsV1NamespacedStatefulSetRequest handles watchAppsV1NamespacedStatefulSet operation.
 //
 // GET /apis/apps/v1/watch/namespaces/{namespace}/statefulsets/{name}
-func (s *Server) handleWatchAppsV1NamespacedStatefulSetRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleWatchAppsV1NamespacedStatefulSetRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `WatchAppsV1NamespacedStatefulSet`,
 		trace.WithAttributes(otelogen.OperationID(`watchAppsV1NamespacedStatefulSet`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -7700,7 +7700,7 @@ func (s *Server) handleWatchAppsV1NamespacedStatefulSetRequest(args map[string]s
 // HandleWatchAppsV1NamespacedStatefulSetListRequest handles watchAppsV1NamespacedStatefulSetList operation.
 //
 // GET /apis/apps/v1/watch/namespaces/{namespace}/statefulsets
-func (s *Server) handleWatchAppsV1NamespacedStatefulSetListRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleWatchAppsV1NamespacedStatefulSetListRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `WatchAppsV1NamespacedStatefulSetList`,
 		trace.WithAttributes(otelogen.OperationID(`watchAppsV1NamespacedStatefulSetList`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -7729,7 +7729,7 @@ func (s *Server) handleWatchAppsV1NamespacedStatefulSetListRequest(args map[stri
 // HandleWatchAppsV1ReplicaSetListForAllNamespacesRequest handles watchAppsV1ReplicaSetListForAllNamespaces operation.
 //
 // GET /apis/apps/v1/watch/replicasets
-func (s *Server) handleWatchAppsV1ReplicaSetListForAllNamespacesRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleWatchAppsV1ReplicaSetListForAllNamespacesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `WatchAppsV1ReplicaSetListForAllNamespaces`,
 		trace.WithAttributes(otelogen.OperationID(`watchAppsV1ReplicaSetListForAllNamespaces`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -7758,7 +7758,7 @@ func (s *Server) handleWatchAppsV1ReplicaSetListForAllNamespacesRequest(args map
 // HandleWatchAppsV1StatefulSetListForAllNamespacesRequest handles watchAppsV1StatefulSetListForAllNamespaces operation.
 //
 // GET /apis/apps/v1/watch/statefulsets
-func (s *Server) handleWatchAppsV1StatefulSetListForAllNamespacesRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleWatchAppsV1StatefulSetListForAllNamespacesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `WatchAppsV1StatefulSetListForAllNamespaces`,
 		trace.WithAttributes(otelogen.OperationID(`watchAppsV1StatefulSetListForAllNamespaces`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -7787,7 +7787,7 @@ func (s *Server) handleWatchAppsV1StatefulSetListForAllNamespacesRequest(args ma
 // HandleWatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespacesRequest handles watchAutoscalingV1HorizontalPodAutoscalerListForAllNamespaces operation.
 //
 // GET /apis/autoscaling/v1/watch/horizontalpodautoscalers
-func (s *Server) handleWatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespacesRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleWatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespacesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `WatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespaces`,
 		trace.WithAttributes(otelogen.OperationID(`watchAutoscalingV1HorizontalPodAutoscalerListForAllNamespaces`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -7816,7 +7816,7 @@ func (s *Server) handleWatchAutoscalingV1HorizontalPodAutoscalerListForAllNamesp
 // HandleWatchAutoscalingV1NamespacedHorizontalPodAutoscalerRequest handles watchAutoscalingV1NamespacedHorizontalPodAutoscaler operation.
 //
 // GET /apis/autoscaling/v1/watch/namespaces/{namespace}/horizontalpodautoscalers/{name}
-func (s *Server) handleWatchAutoscalingV1NamespacedHorizontalPodAutoscalerRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleWatchAutoscalingV1NamespacedHorizontalPodAutoscalerRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `WatchAutoscalingV1NamespacedHorizontalPodAutoscaler`,
 		trace.WithAttributes(otelogen.OperationID(`watchAutoscalingV1NamespacedHorizontalPodAutoscaler`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -7845,7 +7845,7 @@ func (s *Server) handleWatchAutoscalingV1NamespacedHorizontalPodAutoscalerReques
 // HandleWatchAutoscalingV1NamespacedHorizontalPodAutoscalerListRequest handles watchAutoscalingV1NamespacedHorizontalPodAutoscalerList operation.
 //
 // GET /apis/autoscaling/v1/watch/namespaces/{namespace}/horizontalpodautoscalers
-func (s *Server) handleWatchAutoscalingV1NamespacedHorizontalPodAutoscalerListRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleWatchAutoscalingV1NamespacedHorizontalPodAutoscalerListRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `WatchAutoscalingV1NamespacedHorizontalPodAutoscalerList`,
 		trace.WithAttributes(otelogen.OperationID(`watchAutoscalingV1NamespacedHorizontalPodAutoscalerList`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -7874,7 +7874,7 @@ func (s *Server) handleWatchAutoscalingV1NamespacedHorizontalPodAutoscalerListRe
 // HandleWatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespacesRequest handles watchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespaces operation.
 //
 // GET /apis/autoscaling/v2beta1/watch/horizontalpodautoscalers
-func (s *Server) handleWatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespacesRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleWatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespacesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `WatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespaces`,
 		trace.WithAttributes(otelogen.OperationID(`watchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespaces`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -7903,7 +7903,7 @@ func (s *Server) handleWatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllN
 // HandleWatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerRequest handles watchAutoscalingV2beta1NamespacedHorizontalPodAutoscaler operation.
 //
 // GET /apis/autoscaling/v2beta1/watch/namespaces/{namespace}/horizontalpodautoscalers/{name}
-func (s *Server) handleWatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleWatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `WatchAutoscalingV2beta1NamespacedHorizontalPodAutoscaler`,
 		trace.WithAttributes(otelogen.OperationID(`watchAutoscalingV2beta1NamespacedHorizontalPodAutoscaler`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -7932,7 +7932,7 @@ func (s *Server) handleWatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerR
 // HandleWatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerListRequest handles watchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerList operation.
 //
 // GET /apis/autoscaling/v2beta1/watch/namespaces/{namespace}/horizontalpodautoscalers
-func (s *Server) handleWatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerListRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleWatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerListRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `WatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerList`,
 		trace.WithAttributes(otelogen.OperationID(`watchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerList`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -7961,7 +7961,7 @@ func (s *Server) handleWatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerL
 // HandleWatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespacesRequest handles watchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespaces operation.
 //
 // GET /apis/autoscaling/v2beta2/watch/horizontalpodautoscalers
-func (s *Server) handleWatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespacesRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleWatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespacesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `WatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespaces`,
 		trace.WithAttributes(otelogen.OperationID(`watchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespaces`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -7990,7 +7990,7 @@ func (s *Server) handleWatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllN
 // HandleWatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerRequest handles watchAutoscalingV2beta2NamespacedHorizontalPodAutoscaler operation.
 //
 // GET /apis/autoscaling/v2beta2/watch/namespaces/{namespace}/horizontalpodautoscalers/{name}
-func (s *Server) handleWatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleWatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `WatchAutoscalingV2beta2NamespacedHorizontalPodAutoscaler`,
 		trace.WithAttributes(otelogen.OperationID(`watchAutoscalingV2beta2NamespacedHorizontalPodAutoscaler`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -8019,7 +8019,7 @@ func (s *Server) handleWatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerR
 // HandleWatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerListRequest handles watchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerList operation.
 //
 // GET /apis/autoscaling/v2beta2/watch/namespaces/{namespace}/horizontalpodautoscalers
-func (s *Server) handleWatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerListRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleWatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerListRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `WatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerList`,
 		trace.WithAttributes(otelogen.OperationID(`watchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerList`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -8048,7 +8048,7 @@ func (s *Server) handleWatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerL
 // HandleWatchBatchV1CronJobListForAllNamespacesRequest handles watchBatchV1CronJobListForAllNamespaces operation.
 //
 // GET /apis/batch/v1/watch/cronjobs
-func (s *Server) handleWatchBatchV1CronJobListForAllNamespacesRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleWatchBatchV1CronJobListForAllNamespacesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `WatchBatchV1CronJobListForAllNamespaces`,
 		trace.WithAttributes(otelogen.OperationID(`watchBatchV1CronJobListForAllNamespaces`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -8077,7 +8077,7 @@ func (s *Server) handleWatchBatchV1CronJobListForAllNamespacesRequest(args map[s
 // HandleWatchBatchV1JobListForAllNamespacesRequest handles watchBatchV1JobListForAllNamespaces operation.
 //
 // GET /apis/batch/v1/watch/jobs
-func (s *Server) handleWatchBatchV1JobListForAllNamespacesRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleWatchBatchV1JobListForAllNamespacesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `WatchBatchV1JobListForAllNamespaces`,
 		trace.WithAttributes(otelogen.OperationID(`watchBatchV1JobListForAllNamespaces`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -8106,7 +8106,7 @@ func (s *Server) handleWatchBatchV1JobListForAllNamespacesRequest(args map[strin
 // HandleWatchBatchV1NamespacedCronJobRequest handles watchBatchV1NamespacedCronJob operation.
 //
 // GET /apis/batch/v1/watch/namespaces/{namespace}/cronjobs/{name}
-func (s *Server) handleWatchBatchV1NamespacedCronJobRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleWatchBatchV1NamespacedCronJobRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `WatchBatchV1NamespacedCronJob`,
 		trace.WithAttributes(otelogen.OperationID(`watchBatchV1NamespacedCronJob`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -8135,7 +8135,7 @@ func (s *Server) handleWatchBatchV1NamespacedCronJobRequest(args map[string]stri
 // HandleWatchBatchV1NamespacedCronJobListRequest handles watchBatchV1NamespacedCronJobList operation.
 //
 // GET /apis/batch/v1/watch/namespaces/{namespace}/cronjobs
-func (s *Server) handleWatchBatchV1NamespacedCronJobListRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleWatchBatchV1NamespacedCronJobListRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `WatchBatchV1NamespacedCronJobList`,
 		trace.WithAttributes(otelogen.OperationID(`watchBatchV1NamespacedCronJobList`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -8164,7 +8164,7 @@ func (s *Server) handleWatchBatchV1NamespacedCronJobListRequest(args map[string]
 // HandleWatchBatchV1NamespacedJobRequest handles watchBatchV1NamespacedJob operation.
 //
 // GET /apis/batch/v1/watch/namespaces/{namespace}/jobs/{name}
-func (s *Server) handleWatchBatchV1NamespacedJobRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleWatchBatchV1NamespacedJobRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `WatchBatchV1NamespacedJob`,
 		trace.WithAttributes(otelogen.OperationID(`watchBatchV1NamespacedJob`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -8193,7 +8193,7 @@ func (s *Server) handleWatchBatchV1NamespacedJobRequest(args map[string]string, 
 // HandleWatchBatchV1NamespacedJobListRequest handles watchBatchV1NamespacedJobList operation.
 //
 // GET /apis/batch/v1/watch/namespaces/{namespace}/jobs
-func (s *Server) handleWatchBatchV1NamespacedJobListRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleWatchBatchV1NamespacedJobListRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `WatchBatchV1NamespacedJobList`,
 		trace.WithAttributes(otelogen.OperationID(`watchBatchV1NamespacedJobList`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -8222,7 +8222,7 @@ func (s *Server) handleWatchBatchV1NamespacedJobListRequest(args map[string]stri
 // HandleWatchBatchV1beta1CronJobListForAllNamespacesRequest handles watchBatchV1beta1CronJobListForAllNamespaces operation.
 //
 // GET /apis/batch/v1beta1/watch/cronjobs
-func (s *Server) handleWatchBatchV1beta1CronJobListForAllNamespacesRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleWatchBatchV1beta1CronJobListForAllNamespacesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `WatchBatchV1beta1CronJobListForAllNamespaces`,
 		trace.WithAttributes(otelogen.OperationID(`watchBatchV1beta1CronJobListForAllNamespaces`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -8251,7 +8251,7 @@ func (s *Server) handleWatchBatchV1beta1CronJobListForAllNamespacesRequest(args 
 // HandleWatchBatchV1beta1NamespacedCronJobRequest handles watchBatchV1beta1NamespacedCronJob operation.
 //
 // GET /apis/batch/v1beta1/watch/namespaces/{namespace}/cronjobs/{name}
-func (s *Server) handleWatchBatchV1beta1NamespacedCronJobRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleWatchBatchV1beta1NamespacedCronJobRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `WatchBatchV1beta1NamespacedCronJob`,
 		trace.WithAttributes(otelogen.OperationID(`watchBatchV1beta1NamespacedCronJob`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -8280,7 +8280,7 @@ func (s *Server) handleWatchBatchV1beta1NamespacedCronJobRequest(args map[string
 // HandleWatchBatchV1beta1NamespacedCronJobListRequest handles watchBatchV1beta1NamespacedCronJobList operation.
 //
 // GET /apis/batch/v1beta1/watch/namespaces/{namespace}/cronjobs
-func (s *Server) handleWatchBatchV1beta1NamespacedCronJobListRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleWatchBatchV1beta1NamespacedCronJobListRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `WatchBatchV1beta1NamespacedCronJobList`,
 		trace.WithAttributes(otelogen.OperationID(`watchBatchV1beta1NamespacedCronJobList`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -8309,7 +8309,7 @@ func (s *Server) handleWatchBatchV1beta1NamespacedCronJobListRequest(args map[st
 // HandleWatchCertificatesV1CertificateSigningRequestRequest handles watchCertificatesV1CertificateSigningRequest operation.
 //
 // GET /apis/certificates.k8s.io/v1/watch/certificatesigningrequests/{name}
-func (s *Server) handleWatchCertificatesV1CertificateSigningRequestRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleWatchCertificatesV1CertificateSigningRequestRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `WatchCertificatesV1CertificateSigningRequest`,
 		trace.WithAttributes(otelogen.OperationID(`watchCertificatesV1CertificateSigningRequest`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -8338,7 +8338,7 @@ func (s *Server) handleWatchCertificatesV1CertificateSigningRequestRequest(args 
 // HandleWatchCertificatesV1CertificateSigningRequestListRequest handles watchCertificatesV1CertificateSigningRequestList operation.
 //
 // GET /apis/certificates.k8s.io/v1/watch/certificatesigningrequests
-func (s *Server) handleWatchCertificatesV1CertificateSigningRequestListRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleWatchCertificatesV1CertificateSigningRequestListRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `WatchCertificatesV1CertificateSigningRequestList`,
 		trace.WithAttributes(otelogen.OperationID(`watchCertificatesV1CertificateSigningRequestList`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -8367,7 +8367,7 @@ func (s *Server) handleWatchCertificatesV1CertificateSigningRequestListRequest(a
 // HandleWatchCoordinationV1LeaseListForAllNamespacesRequest handles watchCoordinationV1LeaseListForAllNamespaces operation.
 //
 // GET /apis/coordination.k8s.io/v1/watch/leases
-func (s *Server) handleWatchCoordinationV1LeaseListForAllNamespacesRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleWatchCoordinationV1LeaseListForAllNamespacesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `WatchCoordinationV1LeaseListForAllNamespaces`,
 		trace.WithAttributes(otelogen.OperationID(`watchCoordinationV1LeaseListForAllNamespaces`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -8396,7 +8396,7 @@ func (s *Server) handleWatchCoordinationV1LeaseListForAllNamespacesRequest(args 
 // HandleWatchCoordinationV1NamespacedLeaseRequest handles watchCoordinationV1NamespacedLease operation.
 //
 // GET /apis/coordination.k8s.io/v1/watch/namespaces/{namespace}/leases/{name}
-func (s *Server) handleWatchCoordinationV1NamespacedLeaseRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleWatchCoordinationV1NamespacedLeaseRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `WatchCoordinationV1NamespacedLease`,
 		trace.WithAttributes(otelogen.OperationID(`watchCoordinationV1NamespacedLease`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -8425,7 +8425,7 @@ func (s *Server) handleWatchCoordinationV1NamespacedLeaseRequest(args map[string
 // HandleWatchCoordinationV1NamespacedLeaseListRequest handles watchCoordinationV1NamespacedLeaseList operation.
 //
 // GET /apis/coordination.k8s.io/v1/watch/namespaces/{namespace}/leases
-func (s *Server) handleWatchCoordinationV1NamespacedLeaseListRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleWatchCoordinationV1NamespacedLeaseListRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `WatchCoordinationV1NamespacedLeaseList`,
 		trace.WithAttributes(otelogen.OperationID(`watchCoordinationV1NamespacedLeaseList`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -8454,7 +8454,7 @@ func (s *Server) handleWatchCoordinationV1NamespacedLeaseListRequest(args map[st
 // HandleWatchCoreV1ConfigMapListForAllNamespacesRequest handles watchCoreV1ConfigMapListForAllNamespaces operation.
 //
 // GET /api/v1/watch/configmaps
-func (s *Server) handleWatchCoreV1ConfigMapListForAllNamespacesRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleWatchCoreV1ConfigMapListForAllNamespacesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `WatchCoreV1ConfigMapListForAllNamespaces`,
 		trace.WithAttributes(otelogen.OperationID(`watchCoreV1ConfigMapListForAllNamespaces`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -8483,7 +8483,7 @@ func (s *Server) handleWatchCoreV1ConfigMapListForAllNamespacesRequest(args map[
 // HandleWatchCoreV1EndpointsListForAllNamespacesRequest handles watchCoreV1EndpointsListForAllNamespaces operation.
 //
 // GET /api/v1/watch/endpoints
-func (s *Server) handleWatchCoreV1EndpointsListForAllNamespacesRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleWatchCoreV1EndpointsListForAllNamespacesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `WatchCoreV1EndpointsListForAllNamespaces`,
 		trace.WithAttributes(otelogen.OperationID(`watchCoreV1EndpointsListForAllNamespaces`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -8512,7 +8512,7 @@ func (s *Server) handleWatchCoreV1EndpointsListForAllNamespacesRequest(args map[
 // HandleWatchCoreV1EventListForAllNamespacesRequest handles watchCoreV1EventListForAllNamespaces operation.
 //
 // GET /api/v1/watch/events
-func (s *Server) handleWatchCoreV1EventListForAllNamespacesRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleWatchCoreV1EventListForAllNamespacesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `WatchCoreV1EventListForAllNamespaces`,
 		trace.WithAttributes(otelogen.OperationID(`watchCoreV1EventListForAllNamespaces`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -8541,7 +8541,7 @@ func (s *Server) handleWatchCoreV1EventListForAllNamespacesRequest(args map[stri
 // HandleWatchCoreV1LimitRangeListForAllNamespacesRequest handles watchCoreV1LimitRangeListForAllNamespaces operation.
 //
 // GET /api/v1/watch/limitranges
-func (s *Server) handleWatchCoreV1LimitRangeListForAllNamespacesRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleWatchCoreV1LimitRangeListForAllNamespacesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `WatchCoreV1LimitRangeListForAllNamespaces`,
 		trace.WithAttributes(otelogen.OperationID(`watchCoreV1LimitRangeListForAllNamespaces`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -8570,7 +8570,7 @@ func (s *Server) handleWatchCoreV1LimitRangeListForAllNamespacesRequest(args map
 // HandleWatchCoreV1NamespaceRequest handles watchCoreV1Namespace operation.
 //
 // GET /api/v1/watch/namespaces/{name}
-func (s *Server) handleWatchCoreV1NamespaceRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleWatchCoreV1NamespaceRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `WatchCoreV1Namespace`,
 		trace.WithAttributes(otelogen.OperationID(`watchCoreV1Namespace`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -8599,7 +8599,7 @@ func (s *Server) handleWatchCoreV1NamespaceRequest(args map[string]string, w htt
 // HandleWatchCoreV1NamespaceListRequest handles watchCoreV1NamespaceList operation.
 //
 // GET /api/v1/watch/namespaces
-func (s *Server) handleWatchCoreV1NamespaceListRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleWatchCoreV1NamespaceListRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `WatchCoreV1NamespaceList`,
 		trace.WithAttributes(otelogen.OperationID(`watchCoreV1NamespaceList`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -8628,7 +8628,7 @@ func (s *Server) handleWatchCoreV1NamespaceListRequest(args map[string]string, w
 // HandleWatchCoreV1NamespacedConfigMapRequest handles watchCoreV1NamespacedConfigMap operation.
 //
 // GET /api/v1/watch/namespaces/{namespace}/configmaps/{name}
-func (s *Server) handleWatchCoreV1NamespacedConfigMapRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleWatchCoreV1NamespacedConfigMapRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `WatchCoreV1NamespacedConfigMap`,
 		trace.WithAttributes(otelogen.OperationID(`watchCoreV1NamespacedConfigMap`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -8657,7 +8657,7 @@ func (s *Server) handleWatchCoreV1NamespacedConfigMapRequest(args map[string]str
 // HandleWatchCoreV1NamespacedConfigMapListRequest handles watchCoreV1NamespacedConfigMapList operation.
 //
 // GET /api/v1/watch/namespaces/{namespace}/configmaps
-func (s *Server) handleWatchCoreV1NamespacedConfigMapListRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleWatchCoreV1NamespacedConfigMapListRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `WatchCoreV1NamespacedConfigMapList`,
 		trace.WithAttributes(otelogen.OperationID(`watchCoreV1NamespacedConfigMapList`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -8686,7 +8686,7 @@ func (s *Server) handleWatchCoreV1NamespacedConfigMapListRequest(args map[string
 // HandleWatchCoreV1NamespacedEndpointsRequest handles watchCoreV1NamespacedEndpoints operation.
 //
 // GET /api/v1/watch/namespaces/{namespace}/endpoints/{name}
-func (s *Server) handleWatchCoreV1NamespacedEndpointsRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleWatchCoreV1NamespacedEndpointsRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `WatchCoreV1NamespacedEndpoints`,
 		trace.WithAttributes(otelogen.OperationID(`watchCoreV1NamespacedEndpoints`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -8715,7 +8715,7 @@ func (s *Server) handleWatchCoreV1NamespacedEndpointsRequest(args map[string]str
 // HandleWatchCoreV1NamespacedEndpointsListRequest handles watchCoreV1NamespacedEndpointsList operation.
 //
 // GET /api/v1/watch/namespaces/{namespace}/endpoints
-func (s *Server) handleWatchCoreV1NamespacedEndpointsListRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleWatchCoreV1NamespacedEndpointsListRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `WatchCoreV1NamespacedEndpointsList`,
 		trace.WithAttributes(otelogen.OperationID(`watchCoreV1NamespacedEndpointsList`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -8744,7 +8744,7 @@ func (s *Server) handleWatchCoreV1NamespacedEndpointsListRequest(args map[string
 // HandleWatchCoreV1NamespacedEventRequest handles watchCoreV1NamespacedEvent operation.
 //
 // GET /api/v1/watch/namespaces/{namespace}/events/{name}
-func (s *Server) handleWatchCoreV1NamespacedEventRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleWatchCoreV1NamespacedEventRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `WatchCoreV1NamespacedEvent`,
 		trace.WithAttributes(otelogen.OperationID(`watchCoreV1NamespacedEvent`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -8773,7 +8773,7 @@ func (s *Server) handleWatchCoreV1NamespacedEventRequest(args map[string]string,
 // HandleWatchCoreV1NamespacedEventListRequest handles watchCoreV1NamespacedEventList operation.
 //
 // GET /api/v1/watch/namespaces/{namespace}/events
-func (s *Server) handleWatchCoreV1NamespacedEventListRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleWatchCoreV1NamespacedEventListRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `WatchCoreV1NamespacedEventList`,
 		trace.WithAttributes(otelogen.OperationID(`watchCoreV1NamespacedEventList`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -8802,7 +8802,7 @@ func (s *Server) handleWatchCoreV1NamespacedEventListRequest(args map[string]str
 // HandleWatchCoreV1NamespacedLimitRangeRequest handles watchCoreV1NamespacedLimitRange operation.
 //
 // GET /api/v1/watch/namespaces/{namespace}/limitranges/{name}
-func (s *Server) handleWatchCoreV1NamespacedLimitRangeRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleWatchCoreV1NamespacedLimitRangeRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `WatchCoreV1NamespacedLimitRange`,
 		trace.WithAttributes(otelogen.OperationID(`watchCoreV1NamespacedLimitRange`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -8831,7 +8831,7 @@ func (s *Server) handleWatchCoreV1NamespacedLimitRangeRequest(args map[string]st
 // HandleWatchCoreV1NamespacedLimitRangeListRequest handles watchCoreV1NamespacedLimitRangeList operation.
 //
 // GET /api/v1/watch/namespaces/{namespace}/limitranges
-func (s *Server) handleWatchCoreV1NamespacedLimitRangeListRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleWatchCoreV1NamespacedLimitRangeListRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `WatchCoreV1NamespacedLimitRangeList`,
 		trace.WithAttributes(otelogen.OperationID(`watchCoreV1NamespacedLimitRangeList`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -8860,7 +8860,7 @@ func (s *Server) handleWatchCoreV1NamespacedLimitRangeListRequest(args map[strin
 // HandleWatchCoreV1NamespacedPersistentVolumeClaimRequest handles watchCoreV1NamespacedPersistentVolumeClaim operation.
 //
 // GET /api/v1/watch/namespaces/{namespace}/persistentvolumeclaims/{name}
-func (s *Server) handleWatchCoreV1NamespacedPersistentVolumeClaimRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleWatchCoreV1NamespacedPersistentVolumeClaimRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `WatchCoreV1NamespacedPersistentVolumeClaim`,
 		trace.WithAttributes(otelogen.OperationID(`watchCoreV1NamespacedPersistentVolumeClaim`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -8889,7 +8889,7 @@ func (s *Server) handleWatchCoreV1NamespacedPersistentVolumeClaimRequest(args ma
 // HandleWatchCoreV1NamespacedPersistentVolumeClaimListRequest handles watchCoreV1NamespacedPersistentVolumeClaimList operation.
 //
 // GET /api/v1/watch/namespaces/{namespace}/persistentvolumeclaims
-func (s *Server) handleWatchCoreV1NamespacedPersistentVolumeClaimListRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleWatchCoreV1NamespacedPersistentVolumeClaimListRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `WatchCoreV1NamespacedPersistentVolumeClaimList`,
 		trace.WithAttributes(otelogen.OperationID(`watchCoreV1NamespacedPersistentVolumeClaimList`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -8918,7 +8918,7 @@ func (s *Server) handleWatchCoreV1NamespacedPersistentVolumeClaimListRequest(arg
 // HandleWatchCoreV1NamespacedPodRequest handles watchCoreV1NamespacedPod operation.
 //
 // GET /api/v1/watch/namespaces/{namespace}/pods/{name}
-func (s *Server) handleWatchCoreV1NamespacedPodRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleWatchCoreV1NamespacedPodRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `WatchCoreV1NamespacedPod`,
 		trace.WithAttributes(otelogen.OperationID(`watchCoreV1NamespacedPod`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -8947,7 +8947,7 @@ func (s *Server) handleWatchCoreV1NamespacedPodRequest(args map[string]string, w
 // HandleWatchCoreV1NamespacedPodListRequest handles watchCoreV1NamespacedPodList operation.
 //
 // GET /api/v1/watch/namespaces/{namespace}/pods
-func (s *Server) handleWatchCoreV1NamespacedPodListRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleWatchCoreV1NamespacedPodListRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `WatchCoreV1NamespacedPodList`,
 		trace.WithAttributes(otelogen.OperationID(`watchCoreV1NamespacedPodList`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -8976,7 +8976,7 @@ func (s *Server) handleWatchCoreV1NamespacedPodListRequest(args map[string]strin
 // HandleWatchCoreV1NamespacedPodTemplateRequest handles watchCoreV1NamespacedPodTemplate operation.
 //
 // GET /api/v1/watch/namespaces/{namespace}/podtemplates/{name}
-func (s *Server) handleWatchCoreV1NamespacedPodTemplateRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleWatchCoreV1NamespacedPodTemplateRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `WatchCoreV1NamespacedPodTemplate`,
 		trace.WithAttributes(otelogen.OperationID(`watchCoreV1NamespacedPodTemplate`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -9005,7 +9005,7 @@ func (s *Server) handleWatchCoreV1NamespacedPodTemplateRequest(args map[string]s
 // HandleWatchCoreV1NamespacedPodTemplateListRequest handles watchCoreV1NamespacedPodTemplateList operation.
 //
 // GET /api/v1/watch/namespaces/{namespace}/podtemplates
-func (s *Server) handleWatchCoreV1NamespacedPodTemplateListRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleWatchCoreV1NamespacedPodTemplateListRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `WatchCoreV1NamespacedPodTemplateList`,
 		trace.WithAttributes(otelogen.OperationID(`watchCoreV1NamespacedPodTemplateList`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -9034,7 +9034,7 @@ func (s *Server) handleWatchCoreV1NamespacedPodTemplateListRequest(args map[stri
 // HandleWatchCoreV1NamespacedReplicationControllerRequest handles watchCoreV1NamespacedReplicationController operation.
 //
 // GET /api/v1/watch/namespaces/{namespace}/replicationcontrollers/{name}
-func (s *Server) handleWatchCoreV1NamespacedReplicationControllerRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleWatchCoreV1NamespacedReplicationControllerRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `WatchCoreV1NamespacedReplicationController`,
 		trace.WithAttributes(otelogen.OperationID(`watchCoreV1NamespacedReplicationController`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -9063,7 +9063,7 @@ func (s *Server) handleWatchCoreV1NamespacedReplicationControllerRequest(args ma
 // HandleWatchCoreV1NamespacedReplicationControllerListRequest handles watchCoreV1NamespacedReplicationControllerList operation.
 //
 // GET /api/v1/watch/namespaces/{namespace}/replicationcontrollers
-func (s *Server) handleWatchCoreV1NamespacedReplicationControllerListRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleWatchCoreV1NamespacedReplicationControllerListRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `WatchCoreV1NamespacedReplicationControllerList`,
 		trace.WithAttributes(otelogen.OperationID(`watchCoreV1NamespacedReplicationControllerList`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -9092,7 +9092,7 @@ func (s *Server) handleWatchCoreV1NamespacedReplicationControllerListRequest(arg
 // HandleWatchCoreV1NamespacedResourceQuotaRequest handles watchCoreV1NamespacedResourceQuota operation.
 //
 // GET /api/v1/watch/namespaces/{namespace}/resourcequotas/{name}
-func (s *Server) handleWatchCoreV1NamespacedResourceQuotaRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleWatchCoreV1NamespacedResourceQuotaRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `WatchCoreV1NamespacedResourceQuota`,
 		trace.WithAttributes(otelogen.OperationID(`watchCoreV1NamespacedResourceQuota`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -9121,7 +9121,7 @@ func (s *Server) handleWatchCoreV1NamespacedResourceQuotaRequest(args map[string
 // HandleWatchCoreV1NamespacedResourceQuotaListRequest handles watchCoreV1NamespacedResourceQuotaList operation.
 //
 // GET /api/v1/watch/namespaces/{namespace}/resourcequotas
-func (s *Server) handleWatchCoreV1NamespacedResourceQuotaListRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleWatchCoreV1NamespacedResourceQuotaListRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `WatchCoreV1NamespacedResourceQuotaList`,
 		trace.WithAttributes(otelogen.OperationID(`watchCoreV1NamespacedResourceQuotaList`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -9150,7 +9150,7 @@ func (s *Server) handleWatchCoreV1NamespacedResourceQuotaListRequest(args map[st
 // HandleWatchCoreV1NamespacedSecretRequest handles watchCoreV1NamespacedSecret operation.
 //
 // GET /api/v1/watch/namespaces/{namespace}/secrets/{name}
-func (s *Server) handleWatchCoreV1NamespacedSecretRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleWatchCoreV1NamespacedSecretRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `WatchCoreV1NamespacedSecret`,
 		trace.WithAttributes(otelogen.OperationID(`watchCoreV1NamespacedSecret`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -9179,7 +9179,7 @@ func (s *Server) handleWatchCoreV1NamespacedSecretRequest(args map[string]string
 // HandleWatchCoreV1NamespacedSecretListRequest handles watchCoreV1NamespacedSecretList operation.
 //
 // GET /api/v1/watch/namespaces/{namespace}/secrets
-func (s *Server) handleWatchCoreV1NamespacedSecretListRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleWatchCoreV1NamespacedSecretListRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `WatchCoreV1NamespacedSecretList`,
 		trace.WithAttributes(otelogen.OperationID(`watchCoreV1NamespacedSecretList`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -9208,7 +9208,7 @@ func (s *Server) handleWatchCoreV1NamespacedSecretListRequest(args map[string]st
 // HandleWatchCoreV1NamespacedServiceRequest handles watchCoreV1NamespacedService operation.
 //
 // GET /api/v1/watch/namespaces/{namespace}/services/{name}
-func (s *Server) handleWatchCoreV1NamespacedServiceRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleWatchCoreV1NamespacedServiceRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `WatchCoreV1NamespacedService`,
 		trace.WithAttributes(otelogen.OperationID(`watchCoreV1NamespacedService`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -9237,7 +9237,7 @@ func (s *Server) handleWatchCoreV1NamespacedServiceRequest(args map[string]strin
 // HandleWatchCoreV1NamespacedServiceAccountRequest handles watchCoreV1NamespacedServiceAccount operation.
 //
 // GET /api/v1/watch/namespaces/{namespace}/serviceaccounts/{name}
-func (s *Server) handleWatchCoreV1NamespacedServiceAccountRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleWatchCoreV1NamespacedServiceAccountRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `WatchCoreV1NamespacedServiceAccount`,
 		trace.WithAttributes(otelogen.OperationID(`watchCoreV1NamespacedServiceAccount`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -9266,7 +9266,7 @@ func (s *Server) handleWatchCoreV1NamespacedServiceAccountRequest(args map[strin
 // HandleWatchCoreV1NamespacedServiceAccountListRequest handles watchCoreV1NamespacedServiceAccountList operation.
 //
 // GET /api/v1/watch/namespaces/{namespace}/serviceaccounts
-func (s *Server) handleWatchCoreV1NamespacedServiceAccountListRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleWatchCoreV1NamespacedServiceAccountListRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `WatchCoreV1NamespacedServiceAccountList`,
 		trace.WithAttributes(otelogen.OperationID(`watchCoreV1NamespacedServiceAccountList`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -9295,7 +9295,7 @@ func (s *Server) handleWatchCoreV1NamespacedServiceAccountListRequest(args map[s
 // HandleWatchCoreV1NamespacedServiceListRequest handles watchCoreV1NamespacedServiceList operation.
 //
 // GET /api/v1/watch/namespaces/{namespace}/services
-func (s *Server) handleWatchCoreV1NamespacedServiceListRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleWatchCoreV1NamespacedServiceListRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `WatchCoreV1NamespacedServiceList`,
 		trace.WithAttributes(otelogen.OperationID(`watchCoreV1NamespacedServiceList`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -9324,7 +9324,7 @@ func (s *Server) handleWatchCoreV1NamespacedServiceListRequest(args map[string]s
 // HandleWatchCoreV1NodeRequest handles watchCoreV1Node operation.
 //
 // GET /api/v1/watch/nodes/{name}
-func (s *Server) handleWatchCoreV1NodeRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleWatchCoreV1NodeRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `WatchCoreV1Node`,
 		trace.WithAttributes(otelogen.OperationID(`watchCoreV1Node`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -9353,7 +9353,7 @@ func (s *Server) handleWatchCoreV1NodeRequest(args map[string]string, w http.Res
 // HandleWatchCoreV1NodeListRequest handles watchCoreV1NodeList operation.
 //
 // GET /api/v1/watch/nodes
-func (s *Server) handleWatchCoreV1NodeListRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleWatchCoreV1NodeListRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `WatchCoreV1NodeList`,
 		trace.WithAttributes(otelogen.OperationID(`watchCoreV1NodeList`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -9382,7 +9382,7 @@ func (s *Server) handleWatchCoreV1NodeListRequest(args map[string]string, w http
 // HandleWatchCoreV1PersistentVolumeRequest handles watchCoreV1PersistentVolume operation.
 //
 // GET /api/v1/watch/persistentvolumes/{name}
-func (s *Server) handleWatchCoreV1PersistentVolumeRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleWatchCoreV1PersistentVolumeRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `WatchCoreV1PersistentVolume`,
 		trace.WithAttributes(otelogen.OperationID(`watchCoreV1PersistentVolume`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -9411,7 +9411,7 @@ func (s *Server) handleWatchCoreV1PersistentVolumeRequest(args map[string]string
 // HandleWatchCoreV1PersistentVolumeClaimListForAllNamespacesRequest handles watchCoreV1PersistentVolumeClaimListForAllNamespaces operation.
 //
 // GET /api/v1/watch/persistentvolumeclaims
-func (s *Server) handleWatchCoreV1PersistentVolumeClaimListForAllNamespacesRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleWatchCoreV1PersistentVolumeClaimListForAllNamespacesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `WatchCoreV1PersistentVolumeClaimListForAllNamespaces`,
 		trace.WithAttributes(otelogen.OperationID(`watchCoreV1PersistentVolumeClaimListForAllNamespaces`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -9440,7 +9440,7 @@ func (s *Server) handleWatchCoreV1PersistentVolumeClaimListForAllNamespacesReque
 // HandleWatchCoreV1PersistentVolumeListRequest handles watchCoreV1PersistentVolumeList operation.
 //
 // GET /api/v1/watch/persistentvolumes
-func (s *Server) handleWatchCoreV1PersistentVolumeListRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleWatchCoreV1PersistentVolumeListRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `WatchCoreV1PersistentVolumeList`,
 		trace.WithAttributes(otelogen.OperationID(`watchCoreV1PersistentVolumeList`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -9469,7 +9469,7 @@ func (s *Server) handleWatchCoreV1PersistentVolumeListRequest(args map[string]st
 // HandleWatchCoreV1PodListForAllNamespacesRequest handles watchCoreV1PodListForAllNamespaces operation.
 //
 // GET /api/v1/watch/pods
-func (s *Server) handleWatchCoreV1PodListForAllNamespacesRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleWatchCoreV1PodListForAllNamespacesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `WatchCoreV1PodListForAllNamespaces`,
 		trace.WithAttributes(otelogen.OperationID(`watchCoreV1PodListForAllNamespaces`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -9498,7 +9498,7 @@ func (s *Server) handleWatchCoreV1PodListForAllNamespacesRequest(args map[string
 // HandleWatchCoreV1PodTemplateListForAllNamespacesRequest handles watchCoreV1PodTemplateListForAllNamespaces operation.
 //
 // GET /api/v1/watch/podtemplates
-func (s *Server) handleWatchCoreV1PodTemplateListForAllNamespacesRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleWatchCoreV1PodTemplateListForAllNamespacesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `WatchCoreV1PodTemplateListForAllNamespaces`,
 		trace.WithAttributes(otelogen.OperationID(`watchCoreV1PodTemplateListForAllNamespaces`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -9527,7 +9527,7 @@ func (s *Server) handleWatchCoreV1PodTemplateListForAllNamespacesRequest(args ma
 // HandleWatchCoreV1ReplicationControllerListForAllNamespacesRequest handles watchCoreV1ReplicationControllerListForAllNamespaces operation.
 //
 // GET /api/v1/watch/replicationcontrollers
-func (s *Server) handleWatchCoreV1ReplicationControllerListForAllNamespacesRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleWatchCoreV1ReplicationControllerListForAllNamespacesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `WatchCoreV1ReplicationControllerListForAllNamespaces`,
 		trace.WithAttributes(otelogen.OperationID(`watchCoreV1ReplicationControllerListForAllNamespaces`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -9556,7 +9556,7 @@ func (s *Server) handleWatchCoreV1ReplicationControllerListForAllNamespacesReque
 // HandleWatchCoreV1ResourceQuotaListForAllNamespacesRequest handles watchCoreV1ResourceQuotaListForAllNamespaces operation.
 //
 // GET /api/v1/watch/resourcequotas
-func (s *Server) handleWatchCoreV1ResourceQuotaListForAllNamespacesRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleWatchCoreV1ResourceQuotaListForAllNamespacesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `WatchCoreV1ResourceQuotaListForAllNamespaces`,
 		trace.WithAttributes(otelogen.OperationID(`watchCoreV1ResourceQuotaListForAllNamespaces`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -9585,7 +9585,7 @@ func (s *Server) handleWatchCoreV1ResourceQuotaListForAllNamespacesRequest(args 
 // HandleWatchCoreV1SecretListForAllNamespacesRequest handles watchCoreV1SecretListForAllNamespaces operation.
 //
 // GET /api/v1/watch/secrets
-func (s *Server) handleWatchCoreV1SecretListForAllNamespacesRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleWatchCoreV1SecretListForAllNamespacesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `WatchCoreV1SecretListForAllNamespaces`,
 		trace.WithAttributes(otelogen.OperationID(`watchCoreV1SecretListForAllNamespaces`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -9614,7 +9614,7 @@ func (s *Server) handleWatchCoreV1SecretListForAllNamespacesRequest(args map[str
 // HandleWatchCoreV1ServiceAccountListForAllNamespacesRequest handles watchCoreV1ServiceAccountListForAllNamespaces operation.
 //
 // GET /api/v1/watch/serviceaccounts
-func (s *Server) handleWatchCoreV1ServiceAccountListForAllNamespacesRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleWatchCoreV1ServiceAccountListForAllNamespacesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `WatchCoreV1ServiceAccountListForAllNamespaces`,
 		trace.WithAttributes(otelogen.OperationID(`watchCoreV1ServiceAccountListForAllNamespaces`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -9643,7 +9643,7 @@ func (s *Server) handleWatchCoreV1ServiceAccountListForAllNamespacesRequest(args
 // HandleWatchCoreV1ServiceListForAllNamespacesRequest handles watchCoreV1ServiceListForAllNamespaces operation.
 //
 // GET /api/v1/watch/services
-func (s *Server) handleWatchCoreV1ServiceListForAllNamespacesRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleWatchCoreV1ServiceListForAllNamespacesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `WatchCoreV1ServiceListForAllNamespaces`,
 		trace.WithAttributes(otelogen.OperationID(`watchCoreV1ServiceListForAllNamespaces`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -9672,7 +9672,7 @@ func (s *Server) handleWatchCoreV1ServiceListForAllNamespacesRequest(args map[st
 // HandleWatchDiscoveryV1EndpointSliceListForAllNamespacesRequest handles watchDiscoveryV1EndpointSliceListForAllNamespaces operation.
 //
 // GET /apis/discovery.k8s.io/v1/watch/endpointslices
-func (s *Server) handleWatchDiscoveryV1EndpointSliceListForAllNamespacesRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleWatchDiscoveryV1EndpointSliceListForAllNamespacesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `WatchDiscoveryV1EndpointSliceListForAllNamespaces`,
 		trace.WithAttributes(otelogen.OperationID(`watchDiscoveryV1EndpointSliceListForAllNamespaces`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -9701,7 +9701,7 @@ func (s *Server) handleWatchDiscoveryV1EndpointSliceListForAllNamespacesRequest(
 // HandleWatchDiscoveryV1NamespacedEndpointSliceRequest handles watchDiscoveryV1NamespacedEndpointSlice operation.
 //
 // GET /apis/discovery.k8s.io/v1/watch/namespaces/{namespace}/endpointslices/{name}
-func (s *Server) handleWatchDiscoveryV1NamespacedEndpointSliceRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleWatchDiscoveryV1NamespacedEndpointSliceRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `WatchDiscoveryV1NamespacedEndpointSlice`,
 		trace.WithAttributes(otelogen.OperationID(`watchDiscoveryV1NamespacedEndpointSlice`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -9730,7 +9730,7 @@ func (s *Server) handleWatchDiscoveryV1NamespacedEndpointSliceRequest(args map[s
 // HandleWatchDiscoveryV1NamespacedEndpointSliceListRequest handles watchDiscoveryV1NamespacedEndpointSliceList operation.
 //
 // GET /apis/discovery.k8s.io/v1/watch/namespaces/{namespace}/endpointslices
-func (s *Server) handleWatchDiscoveryV1NamespacedEndpointSliceListRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleWatchDiscoveryV1NamespacedEndpointSliceListRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `WatchDiscoveryV1NamespacedEndpointSliceList`,
 		trace.WithAttributes(otelogen.OperationID(`watchDiscoveryV1NamespacedEndpointSliceList`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -9759,7 +9759,7 @@ func (s *Server) handleWatchDiscoveryV1NamespacedEndpointSliceListRequest(args m
 // HandleWatchDiscoveryV1beta1EndpointSliceListForAllNamespacesRequest handles watchDiscoveryV1beta1EndpointSliceListForAllNamespaces operation.
 //
 // GET /apis/discovery.k8s.io/v1beta1/watch/endpointslices
-func (s *Server) handleWatchDiscoveryV1beta1EndpointSliceListForAllNamespacesRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleWatchDiscoveryV1beta1EndpointSliceListForAllNamespacesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `WatchDiscoveryV1beta1EndpointSliceListForAllNamespaces`,
 		trace.WithAttributes(otelogen.OperationID(`watchDiscoveryV1beta1EndpointSliceListForAllNamespaces`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -9788,7 +9788,7 @@ func (s *Server) handleWatchDiscoveryV1beta1EndpointSliceListForAllNamespacesReq
 // HandleWatchDiscoveryV1beta1NamespacedEndpointSliceRequest handles watchDiscoveryV1beta1NamespacedEndpointSlice operation.
 //
 // GET /apis/discovery.k8s.io/v1beta1/watch/namespaces/{namespace}/endpointslices/{name}
-func (s *Server) handleWatchDiscoveryV1beta1NamespacedEndpointSliceRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleWatchDiscoveryV1beta1NamespacedEndpointSliceRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `WatchDiscoveryV1beta1NamespacedEndpointSlice`,
 		trace.WithAttributes(otelogen.OperationID(`watchDiscoveryV1beta1NamespacedEndpointSlice`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -9817,7 +9817,7 @@ func (s *Server) handleWatchDiscoveryV1beta1NamespacedEndpointSliceRequest(args 
 // HandleWatchDiscoveryV1beta1NamespacedEndpointSliceListRequest handles watchDiscoveryV1beta1NamespacedEndpointSliceList operation.
 //
 // GET /apis/discovery.k8s.io/v1beta1/watch/namespaces/{namespace}/endpointslices
-func (s *Server) handleWatchDiscoveryV1beta1NamespacedEndpointSliceListRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleWatchDiscoveryV1beta1NamespacedEndpointSliceListRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `WatchDiscoveryV1beta1NamespacedEndpointSliceList`,
 		trace.WithAttributes(otelogen.OperationID(`watchDiscoveryV1beta1NamespacedEndpointSliceList`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -9846,7 +9846,7 @@ func (s *Server) handleWatchDiscoveryV1beta1NamespacedEndpointSliceListRequest(a
 // HandleWatchEventsV1EventListForAllNamespacesRequest handles watchEventsV1EventListForAllNamespaces operation.
 //
 // GET /apis/events.k8s.io/v1/watch/events
-func (s *Server) handleWatchEventsV1EventListForAllNamespacesRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleWatchEventsV1EventListForAllNamespacesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `WatchEventsV1EventListForAllNamespaces`,
 		trace.WithAttributes(otelogen.OperationID(`watchEventsV1EventListForAllNamespaces`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -9875,7 +9875,7 @@ func (s *Server) handleWatchEventsV1EventListForAllNamespacesRequest(args map[st
 // HandleWatchEventsV1NamespacedEventRequest handles watchEventsV1NamespacedEvent operation.
 //
 // GET /apis/events.k8s.io/v1/watch/namespaces/{namespace}/events/{name}
-func (s *Server) handleWatchEventsV1NamespacedEventRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleWatchEventsV1NamespacedEventRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `WatchEventsV1NamespacedEvent`,
 		trace.WithAttributes(otelogen.OperationID(`watchEventsV1NamespacedEvent`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -9904,7 +9904,7 @@ func (s *Server) handleWatchEventsV1NamespacedEventRequest(args map[string]strin
 // HandleWatchEventsV1NamespacedEventListRequest handles watchEventsV1NamespacedEventList operation.
 //
 // GET /apis/events.k8s.io/v1/watch/namespaces/{namespace}/events
-func (s *Server) handleWatchEventsV1NamespacedEventListRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleWatchEventsV1NamespacedEventListRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `WatchEventsV1NamespacedEventList`,
 		trace.WithAttributes(otelogen.OperationID(`watchEventsV1NamespacedEventList`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -9933,7 +9933,7 @@ func (s *Server) handleWatchEventsV1NamespacedEventListRequest(args map[string]s
 // HandleWatchEventsV1beta1EventListForAllNamespacesRequest handles watchEventsV1beta1EventListForAllNamespaces operation.
 //
 // GET /apis/events.k8s.io/v1beta1/watch/events
-func (s *Server) handleWatchEventsV1beta1EventListForAllNamespacesRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleWatchEventsV1beta1EventListForAllNamespacesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `WatchEventsV1beta1EventListForAllNamespaces`,
 		trace.WithAttributes(otelogen.OperationID(`watchEventsV1beta1EventListForAllNamespaces`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -9962,7 +9962,7 @@ func (s *Server) handleWatchEventsV1beta1EventListForAllNamespacesRequest(args m
 // HandleWatchEventsV1beta1NamespacedEventRequest handles watchEventsV1beta1NamespacedEvent operation.
 //
 // GET /apis/events.k8s.io/v1beta1/watch/namespaces/{namespace}/events/{name}
-func (s *Server) handleWatchEventsV1beta1NamespacedEventRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleWatchEventsV1beta1NamespacedEventRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `WatchEventsV1beta1NamespacedEvent`,
 		trace.WithAttributes(otelogen.OperationID(`watchEventsV1beta1NamespacedEvent`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -9991,7 +9991,7 @@ func (s *Server) handleWatchEventsV1beta1NamespacedEventRequest(args map[string]
 // HandleWatchEventsV1beta1NamespacedEventListRequest handles watchEventsV1beta1NamespacedEventList operation.
 //
 // GET /apis/events.k8s.io/v1beta1/watch/namespaces/{namespace}/events
-func (s *Server) handleWatchEventsV1beta1NamespacedEventListRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleWatchEventsV1beta1NamespacedEventListRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `WatchEventsV1beta1NamespacedEventList`,
 		trace.WithAttributes(otelogen.OperationID(`watchEventsV1beta1NamespacedEventList`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -10020,7 +10020,7 @@ func (s *Server) handleWatchEventsV1beta1NamespacedEventListRequest(args map[str
 // HandleWatchFlowcontrolApiserverV1beta1FlowSchemaRequest handles watchFlowcontrolApiserverV1beta1FlowSchema operation.
 //
 // GET /apis/flowcontrol.apiserver.k8s.io/v1beta1/watch/flowschemas/{name}
-func (s *Server) handleWatchFlowcontrolApiserverV1beta1FlowSchemaRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleWatchFlowcontrolApiserverV1beta1FlowSchemaRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `WatchFlowcontrolApiserverV1beta1FlowSchema`,
 		trace.WithAttributes(otelogen.OperationID(`watchFlowcontrolApiserverV1beta1FlowSchema`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -10049,7 +10049,7 @@ func (s *Server) handleWatchFlowcontrolApiserverV1beta1FlowSchemaRequest(args ma
 // HandleWatchFlowcontrolApiserverV1beta1FlowSchemaListRequest handles watchFlowcontrolApiserverV1beta1FlowSchemaList operation.
 //
 // GET /apis/flowcontrol.apiserver.k8s.io/v1beta1/watch/flowschemas
-func (s *Server) handleWatchFlowcontrolApiserverV1beta1FlowSchemaListRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleWatchFlowcontrolApiserverV1beta1FlowSchemaListRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `WatchFlowcontrolApiserverV1beta1FlowSchemaList`,
 		trace.WithAttributes(otelogen.OperationID(`watchFlowcontrolApiserverV1beta1FlowSchemaList`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -10078,7 +10078,7 @@ func (s *Server) handleWatchFlowcontrolApiserverV1beta1FlowSchemaListRequest(arg
 // HandleWatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationRequest handles watchFlowcontrolApiserverV1beta1PriorityLevelConfiguration operation.
 //
 // GET /apis/flowcontrol.apiserver.k8s.io/v1beta1/watch/prioritylevelconfigurations/{name}
-func (s *Server) handleWatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleWatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `WatchFlowcontrolApiserverV1beta1PriorityLevelConfiguration`,
 		trace.WithAttributes(otelogen.OperationID(`watchFlowcontrolApiserverV1beta1PriorityLevelConfiguration`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -10107,7 +10107,7 @@ func (s *Server) handleWatchFlowcontrolApiserverV1beta1PriorityLevelConfiguratio
 // HandleWatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationListRequest handles watchFlowcontrolApiserverV1beta1PriorityLevelConfigurationList operation.
 //
 // GET /apis/flowcontrol.apiserver.k8s.io/v1beta1/watch/prioritylevelconfigurations
-func (s *Server) handleWatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationListRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleWatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationListRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `WatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationList`,
 		trace.WithAttributes(otelogen.OperationID(`watchFlowcontrolApiserverV1beta1PriorityLevelConfigurationList`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -10136,7 +10136,7 @@ func (s *Server) handleWatchFlowcontrolApiserverV1beta1PriorityLevelConfiguratio
 // HandleWatchFlowcontrolApiserverV1beta2FlowSchemaRequest handles watchFlowcontrolApiserverV1beta2FlowSchema operation.
 //
 // GET /apis/flowcontrol.apiserver.k8s.io/v1beta2/watch/flowschemas/{name}
-func (s *Server) handleWatchFlowcontrolApiserverV1beta2FlowSchemaRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleWatchFlowcontrolApiserverV1beta2FlowSchemaRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `WatchFlowcontrolApiserverV1beta2FlowSchema`,
 		trace.WithAttributes(otelogen.OperationID(`watchFlowcontrolApiserverV1beta2FlowSchema`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -10165,7 +10165,7 @@ func (s *Server) handleWatchFlowcontrolApiserverV1beta2FlowSchemaRequest(args ma
 // HandleWatchFlowcontrolApiserverV1beta2FlowSchemaListRequest handles watchFlowcontrolApiserverV1beta2FlowSchemaList operation.
 //
 // GET /apis/flowcontrol.apiserver.k8s.io/v1beta2/watch/flowschemas
-func (s *Server) handleWatchFlowcontrolApiserverV1beta2FlowSchemaListRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleWatchFlowcontrolApiserverV1beta2FlowSchemaListRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `WatchFlowcontrolApiserverV1beta2FlowSchemaList`,
 		trace.WithAttributes(otelogen.OperationID(`watchFlowcontrolApiserverV1beta2FlowSchemaList`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -10194,7 +10194,7 @@ func (s *Server) handleWatchFlowcontrolApiserverV1beta2FlowSchemaListRequest(arg
 // HandleWatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationRequest handles watchFlowcontrolApiserverV1beta2PriorityLevelConfiguration operation.
 //
 // GET /apis/flowcontrol.apiserver.k8s.io/v1beta2/watch/prioritylevelconfigurations/{name}
-func (s *Server) handleWatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleWatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `WatchFlowcontrolApiserverV1beta2PriorityLevelConfiguration`,
 		trace.WithAttributes(otelogen.OperationID(`watchFlowcontrolApiserverV1beta2PriorityLevelConfiguration`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -10223,7 +10223,7 @@ func (s *Server) handleWatchFlowcontrolApiserverV1beta2PriorityLevelConfiguratio
 // HandleWatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationListRequest handles watchFlowcontrolApiserverV1beta2PriorityLevelConfigurationList operation.
 //
 // GET /apis/flowcontrol.apiserver.k8s.io/v1beta2/watch/prioritylevelconfigurations
-func (s *Server) handleWatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationListRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleWatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationListRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `WatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationList`,
 		trace.WithAttributes(otelogen.OperationID(`watchFlowcontrolApiserverV1beta2PriorityLevelConfigurationList`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -10252,7 +10252,7 @@ func (s *Server) handleWatchFlowcontrolApiserverV1beta2PriorityLevelConfiguratio
 // HandleWatchInternalApiserverV1alpha1StorageVersionRequest handles watchInternalApiserverV1alpha1StorageVersion operation.
 //
 // GET /apis/internal.apiserver.k8s.io/v1alpha1/watch/storageversions/{name}
-func (s *Server) handleWatchInternalApiserverV1alpha1StorageVersionRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleWatchInternalApiserverV1alpha1StorageVersionRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `WatchInternalApiserverV1alpha1StorageVersion`,
 		trace.WithAttributes(otelogen.OperationID(`watchInternalApiserverV1alpha1StorageVersion`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -10281,7 +10281,7 @@ func (s *Server) handleWatchInternalApiserverV1alpha1StorageVersionRequest(args 
 // HandleWatchInternalApiserverV1alpha1StorageVersionListRequest handles watchInternalApiserverV1alpha1StorageVersionList operation.
 //
 // GET /apis/internal.apiserver.k8s.io/v1alpha1/watch/storageversions
-func (s *Server) handleWatchInternalApiserverV1alpha1StorageVersionListRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleWatchInternalApiserverV1alpha1StorageVersionListRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `WatchInternalApiserverV1alpha1StorageVersionList`,
 		trace.WithAttributes(otelogen.OperationID(`watchInternalApiserverV1alpha1StorageVersionList`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -10310,7 +10310,7 @@ func (s *Server) handleWatchInternalApiserverV1alpha1StorageVersionListRequest(a
 // HandleWatchNetworkingV1IngressClassRequest handles watchNetworkingV1IngressClass operation.
 //
 // GET /apis/networking.k8s.io/v1/watch/ingressclasses/{name}
-func (s *Server) handleWatchNetworkingV1IngressClassRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleWatchNetworkingV1IngressClassRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `WatchNetworkingV1IngressClass`,
 		trace.WithAttributes(otelogen.OperationID(`watchNetworkingV1IngressClass`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -10339,7 +10339,7 @@ func (s *Server) handleWatchNetworkingV1IngressClassRequest(args map[string]stri
 // HandleWatchNetworkingV1IngressClassListRequest handles watchNetworkingV1IngressClassList operation.
 //
 // GET /apis/networking.k8s.io/v1/watch/ingressclasses
-func (s *Server) handleWatchNetworkingV1IngressClassListRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleWatchNetworkingV1IngressClassListRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `WatchNetworkingV1IngressClassList`,
 		trace.WithAttributes(otelogen.OperationID(`watchNetworkingV1IngressClassList`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -10368,7 +10368,7 @@ func (s *Server) handleWatchNetworkingV1IngressClassListRequest(args map[string]
 // HandleWatchNetworkingV1IngressListForAllNamespacesRequest handles watchNetworkingV1IngressListForAllNamespaces operation.
 //
 // GET /apis/networking.k8s.io/v1/watch/ingresses
-func (s *Server) handleWatchNetworkingV1IngressListForAllNamespacesRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleWatchNetworkingV1IngressListForAllNamespacesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `WatchNetworkingV1IngressListForAllNamespaces`,
 		trace.WithAttributes(otelogen.OperationID(`watchNetworkingV1IngressListForAllNamespaces`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -10397,7 +10397,7 @@ func (s *Server) handleWatchNetworkingV1IngressListForAllNamespacesRequest(args 
 // HandleWatchNetworkingV1NamespacedIngressRequest handles watchNetworkingV1NamespacedIngress operation.
 //
 // GET /apis/networking.k8s.io/v1/watch/namespaces/{namespace}/ingresses/{name}
-func (s *Server) handleWatchNetworkingV1NamespacedIngressRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleWatchNetworkingV1NamespacedIngressRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `WatchNetworkingV1NamespacedIngress`,
 		trace.WithAttributes(otelogen.OperationID(`watchNetworkingV1NamespacedIngress`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -10426,7 +10426,7 @@ func (s *Server) handleWatchNetworkingV1NamespacedIngressRequest(args map[string
 // HandleWatchNetworkingV1NamespacedIngressListRequest handles watchNetworkingV1NamespacedIngressList operation.
 //
 // GET /apis/networking.k8s.io/v1/watch/namespaces/{namespace}/ingresses
-func (s *Server) handleWatchNetworkingV1NamespacedIngressListRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleWatchNetworkingV1NamespacedIngressListRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `WatchNetworkingV1NamespacedIngressList`,
 		trace.WithAttributes(otelogen.OperationID(`watchNetworkingV1NamespacedIngressList`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -10455,7 +10455,7 @@ func (s *Server) handleWatchNetworkingV1NamespacedIngressListRequest(args map[st
 // HandleWatchNetworkingV1NamespacedNetworkPolicyRequest handles watchNetworkingV1NamespacedNetworkPolicy operation.
 //
 // GET /apis/networking.k8s.io/v1/watch/namespaces/{namespace}/networkpolicies/{name}
-func (s *Server) handleWatchNetworkingV1NamespacedNetworkPolicyRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleWatchNetworkingV1NamespacedNetworkPolicyRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `WatchNetworkingV1NamespacedNetworkPolicy`,
 		trace.WithAttributes(otelogen.OperationID(`watchNetworkingV1NamespacedNetworkPolicy`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -10484,7 +10484,7 @@ func (s *Server) handleWatchNetworkingV1NamespacedNetworkPolicyRequest(args map[
 // HandleWatchNetworkingV1NamespacedNetworkPolicyListRequest handles watchNetworkingV1NamespacedNetworkPolicyList operation.
 //
 // GET /apis/networking.k8s.io/v1/watch/namespaces/{namespace}/networkpolicies
-func (s *Server) handleWatchNetworkingV1NamespacedNetworkPolicyListRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleWatchNetworkingV1NamespacedNetworkPolicyListRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `WatchNetworkingV1NamespacedNetworkPolicyList`,
 		trace.WithAttributes(otelogen.OperationID(`watchNetworkingV1NamespacedNetworkPolicyList`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -10513,7 +10513,7 @@ func (s *Server) handleWatchNetworkingV1NamespacedNetworkPolicyListRequest(args 
 // HandleWatchNetworkingV1NetworkPolicyListForAllNamespacesRequest handles watchNetworkingV1NetworkPolicyListForAllNamespaces operation.
 //
 // GET /apis/networking.k8s.io/v1/watch/networkpolicies
-func (s *Server) handleWatchNetworkingV1NetworkPolicyListForAllNamespacesRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleWatchNetworkingV1NetworkPolicyListForAllNamespacesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `WatchNetworkingV1NetworkPolicyListForAllNamespaces`,
 		trace.WithAttributes(otelogen.OperationID(`watchNetworkingV1NetworkPolicyListForAllNamespaces`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -10542,7 +10542,7 @@ func (s *Server) handleWatchNetworkingV1NetworkPolicyListForAllNamespacesRequest
 // HandleWatchNodeV1RuntimeClassRequest handles watchNodeV1RuntimeClass operation.
 //
 // GET /apis/node.k8s.io/v1/watch/runtimeclasses/{name}
-func (s *Server) handleWatchNodeV1RuntimeClassRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleWatchNodeV1RuntimeClassRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `WatchNodeV1RuntimeClass`,
 		trace.WithAttributes(otelogen.OperationID(`watchNodeV1RuntimeClass`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -10571,7 +10571,7 @@ func (s *Server) handleWatchNodeV1RuntimeClassRequest(args map[string]string, w 
 // HandleWatchNodeV1RuntimeClassListRequest handles watchNodeV1RuntimeClassList operation.
 //
 // GET /apis/node.k8s.io/v1/watch/runtimeclasses
-func (s *Server) handleWatchNodeV1RuntimeClassListRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleWatchNodeV1RuntimeClassListRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `WatchNodeV1RuntimeClassList`,
 		trace.WithAttributes(otelogen.OperationID(`watchNodeV1RuntimeClassList`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -10600,7 +10600,7 @@ func (s *Server) handleWatchNodeV1RuntimeClassListRequest(args map[string]string
 // HandleWatchNodeV1alpha1RuntimeClassRequest handles watchNodeV1alpha1RuntimeClass operation.
 //
 // GET /apis/node.k8s.io/v1alpha1/watch/runtimeclasses/{name}
-func (s *Server) handleWatchNodeV1alpha1RuntimeClassRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleWatchNodeV1alpha1RuntimeClassRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `WatchNodeV1alpha1RuntimeClass`,
 		trace.WithAttributes(otelogen.OperationID(`watchNodeV1alpha1RuntimeClass`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -10629,7 +10629,7 @@ func (s *Server) handleWatchNodeV1alpha1RuntimeClassRequest(args map[string]stri
 // HandleWatchNodeV1alpha1RuntimeClassListRequest handles watchNodeV1alpha1RuntimeClassList operation.
 //
 // GET /apis/node.k8s.io/v1alpha1/watch/runtimeclasses
-func (s *Server) handleWatchNodeV1alpha1RuntimeClassListRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleWatchNodeV1alpha1RuntimeClassListRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `WatchNodeV1alpha1RuntimeClassList`,
 		trace.WithAttributes(otelogen.OperationID(`watchNodeV1alpha1RuntimeClassList`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -10658,7 +10658,7 @@ func (s *Server) handleWatchNodeV1alpha1RuntimeClassListRequest(args map[string]
 // HandleWatchNodeV1beta1RuntimeClassRequest handles watchNodeV1beta1RuntimeClass operation.
 //
 // GET /apis/node.k8s.io/v1beta1/watch/runtimeclasses/{name}
-func (s *Server) handleWatchNodeV1beta1RuntimeClassRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleWatchNodeV1beta1RuntimeClassRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `WatchNodeV1beta1RuntimeClass`,
 		trace.WithAttributes(otelogen.OperationID(`watchNodeV1beta1RuntimeClass`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -10687,7 +10687,7 @@ func (s *Server) handleWatchNodeV1beta1RuntimeClassRequest(args map[string]strin
 // HandleWatchNodeV1beta1RuntimeClassListRequest handles watchNodeV1beta1RuntimeClassList operation.
 //
 // GET /apis/node.k8s.io/v1beta1/watch/runtimeclasses
-func (s *Server) handleWatchNodeV1beta1RuntimeClassListRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleWatchNodeV1beta1RuntimeClassListRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `WatchNodeV1beta1RuntimeClassList`,
 		trace.WithAttributes(otelogen.OperationID(`watchNodeV1beta1RuntimeClassList`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -10716,7 +10716,7 @@ func (s *Server) handleWatchNodeV1beta1RuntimeClassListRequest(args map[string]s
 // HandleWatchPolicyV1NamespacedPodDisruptionBudgetRequest handles watchPolicyV1NamespacedPodDisruptionBudget operation.
 //
 // GET /apis/policy/v1/watch/namespaces/{namespace}/poddisruptionbudgets/{name}
-func (s *Server) handleWatchPolicyV1NamespacedPodDisruptionBudgetRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleWatchPolicyV1NamespacedPodDisruptionBudgetRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `WatchPolicyV1NamespacedPodDisruptionBudget`,
 		trace.WithAttributes(otelogen.OperationID(`watchPolicyV1NamespacedPodDisruptionBudget`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -10745,7 +10745,7 @@ func (s *Server) handleWatchPolicyV1NamespacedPodDisruptionBudgetRequest(args ma
 // HandleWatchPolicyV1NamespacedPodDisruptionBudgetListRequest handles watchPolicyV1NamespacedPodDisruptionBudgetList operation.
 //
 // GET /apis/policy/v1/watch/namespaces/{namespace}/poddisruptionbudgets
-func (s *Server) handleWatchPolicyV1NamespacedPodDisruptionBudgetListRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleWatchPolicyV1NamespacedPodDisruptionBudgetListRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `WatchPolicyV1NamespacedPodDisruptionBudgetList`,
 		trace.WithAttributes(otelogen.OperationID(`watchPolicyV1NamespacedPodDisruptionBudgetList`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -10774,7 +10774,7 @@ func (s *Server) handleWatchPolicyV1NamespacedPodDisruptionBudgetListRequest(arg
 // HandleWatchPolicyV1PodDisruptionBudgetListForAllNamespacesRequest handles watchPolicyV1PodDisruptionBudgetListForAllNamespaces operation.
 //
 // GET /apis/policy/v1/watch/poddisruptionbudgets
-func (s *Server) handleWatchPolicyV1PodDisruptionBudgetListForAllNamespacesRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleWatchPolicyV1PodDisruptionBudgetListForAllNamespacesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `WatchPolicyV1PodDisruptionBudgetListForAllNamespaces`,
 		trace.WithAttributes(otelogen.OperationID(`watchPolicyV1PodDisruptionBudgetListForAllNamespaces`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -10803,7 +10803,7 @@ func (s *Server) handleWatchPolicyV1PodDisruptionBudgetListForAllNamespacesReque
 // HandleWatchPolicyV1beta1NamespacedPodDisruptionBudgetRequest handles watchPolicyV1beta1NamespacedPodDisruptionBudget operation.
 //
 // GET /apis/policy/v1beta1/watch/namespaces/{namespace}/poddisruptionbudgets/{name}
-func (s *Server) handleWatchPolicyV1beta1NamespacedPodDisruptionBudgetRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleWatchPolicyV1beta1NamespacedPodDisruptionBudgetRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `WatchPolicyV1beta1NamespacedPodDisruptionBudget`,
 		trace.WithAttributes(otelogen.OperationID(`watchPolicyV1beta1NamespacedPodDisruptionBudget`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -10832,7 +10832,7 @@ func (s *Server) handleWatchPolicyV1beta1NamespacedPodDisruptionBudgetRequest(ar
 // HandleWatchPolicyV1beta1NamespacedPodDisruptionBudgetListRequest handles watchPolicyV1beta1NamespacedPodDisruptionBudgetList operation.
 //
 // GET /apis/policy/v1beta1/watch/namespaces/{namespace}/poddisruptionbudgets
-func (s *Server) handleWatchPolicyV1beta1NamespacedPodDisruptionBudgetListRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleWatchPolicyV1beta1NamespacedPodDisruptionBudgetListRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `WatchPolicyV1beta1NamespacedPodDisruptionBudgetList`,
 		trace.WithAttributes(otelogen.OperationID(`watchPolicyV1beta1NamespacedPodDisruptionBudgetList`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -10861,7 +10861,7 @@ func (s *Server) handleWatchPolicyV1beta1NamespacedPodDisruptionBudgetListReques
 // HandleWatchPolicyV1beta1PodDisruptionBudgetListForAllNamespacesRequest handles watchPolicyV1beta1PodDisruptionBudgetListForAllNamespaces operation.
 //
 // GET /apis/policy/v1beta1/watch/poddisruptionbudgets
-func (s *Server) handleWatchPolicyV1beta1PodDisruptionBudgetListForAllNamespacesRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleWatchPolicyV1beta1PodDisruptionBudgetListForAllNamespacesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `WatchPolicyV1beta1PodDisruptionBudgetListForAllNamespaces`,
 		trace.WithAttributes(otelogen.OperationID(`watchPolicyV1beta1PodDisruptionBudgetListForAllNamespaces`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -10890,7 +10890,7 @@ func (s *Server) handleWatchPolicyV1beta1PodDisruptionBudgetListForAllNamespaces
 // HandleWatchPolicyV1beta1PodSecurityPolicyRequest handles watchPolicyV1beta1PodSecurityPolicy operation.
 //
 // GET /apis/policy/v1beta1/watch/podsecuritypolicies/{name}
-func (s *Server) handleWatchPolicyV1beta1PodSecurityPolicyRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleWatchPolicyV1beta1PodSecurityPolicyRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `WatchPolicyV1beta1PodSecurityPolicy`,
 		trace.WithAttributes(otelogen.OperationID(`watchPolicyV1beta1PodSecurityPolicy`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -10919,7 +10919,7 @@ func (s *Server) handleWatchPolicyV1beta1PodSecurityPolicyRequest(args map[strin
 // HandleWatchPolicyV1beta1PodSecurityPolicyListRequest handles watchPolicyV1beta1PodSecurityPolicyList operation.
 //
 // GET /apis/policy/v1beta1/watch/podsecuritypolicies
-func (s *Server) handleWatchPolicyV1beta1PodSecurityPolicyListRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleWatchPolicyV1beta1PodSecurityPolicyListRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `WatchPolicyV1beta1PodSecurityPolicyList`,
 		trace.WithAttributes(otelogen.OperationID(`watchPolicyV1beta1PodSecurityPolicyList`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -10948,7 +10948,7 @@ func (s *Server) handleWatchPolicyV1beta1PodSecurityPolicyListRequest(args map[s
 // HandleWatchRbacAuthorizationV1ClusterRoleRequest handles watchRbacAuthorizationV1ClusterRole operation.
 //
 // GET /apis/rbac.authorization.k8s.io/v1/watch/clusterroles/{name}
-func (s *Server) handleWatchRbacAuthorizationV1ClusterRoleRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleWatchRbacAuthorizationV1ClusterRoleRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `WatchRbacAuthorizationV1ClusterRole`,
 		trace.WithAttributes(otelogen.OperationID(`watchRbacAuthorizationV1ClusterRole`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -10977,7 +10977,7 @@ func (s *Server) handleWatchRbacAuthorizationV1ClusterRoleRequest(args map[strin
 // HandleWatchRbacAuthorizationV1ClusterRoleBindingRequest handles watchRbacAuthorizationV1ClusterRoleBinding operation.
 //
 // GET /apis/rbac.authorization.k8s.io/v1/watch/clusterrolebindings/{name}
-func (s *Server) handleWatchRbacAuthorizationV1ClusterRoleBindingRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleWatchRbacAuthorizationV1ClusterRoleBindingRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `WatchRbacAuthorizationV1ClusterRoleBinding`,
 		trace.WithAttributes(otelogen.OperationID(`watchRbacAuthorizationV1ClusterRoleBinding`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -11006,7 +11006,7 @@ func (s *Server) handleWatchRbacAuthorizationV1ClusterRoleBindingRequest(args ma
 // HandleWatchRbacAuthorizationV1ClusterRoleBindingListRequest handles watchRbacAuthorizationV1ClusterRoleBindingList operation.
 //
 // GET /apis/rbac.authorization.k8s.io/v1/watch/clusterrolebindings
-func (s *Server) handleWatchRbacAuthorizationV1ClusterRoleBindingListRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleWatchRbacAuthorizationV1ClusterRoleBindingListRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `WatchRbacAuthorizationV1ClusterRoleBindingList`,
 		trace.WithAttributes(otelogen.OperationID(`watchRbacAuthorizationV1ClusterRoleBindingList`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -11035,7 +11035,7 @@ func (s *Server) handleWatchRbacAuthorizationV1ClusterRoleBindingListRequest(arg
 // HandleWatchRbacAuthorizationV1ClusterRoleListRequest handles watchRbacAuthorizationV1ClusterRoleList operation.
 //
 // GET /apis/rbac.authorization.k8s.io/v1/watch/clusterroles
-func (s *Server) handleWatchRbacAuthorizationV1ClusterRoleListRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleWatchRbacAuthorizationV1ClusterRoleListRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `WatchRbacAuthorizationV1ClusterRoleList`,
 		trace.WithAttributes(otelogen.OperationID(`watchRbacAuthorizationV1ClusterRoleList`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -11064,7 +11064,7 @@ func (s *Server) handleWatchRbacAuthorizationV1ClusterRoleListRequest(args map[s
 // HandleWatchRbacAuthorizationV1NamespacedRoleRequest handles watchRbacAuthorizationV1NamespacedRole operation.
 //
 // GET /apis/rbac.authorization.k8s.io/v1/watch/namespaces/{namespace}/roles/{name}
-func (s *Server) handleWatchRbacAuthorizationV1NamespacedRoleRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleWatchRbacAuthorizationV1NamespacedRoleRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `WatchRbacAuthorizationV1NamespacedRole`,
 		trace.WithAttributes(otelogen.OperationID(`watchRbacAuthorizationV1NamespacedRole`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -11093,7 +11093,7 @@ func (s *Server) handleWatchRbacAuthorizationV1NamespacedRoleRequest(args map[st
 // HandleWatchRbacAuthorizationV1NamespacedRoleBindingRequest handles watchRbacAuthorizationV1NamespacedRoleBinding operation.
 //
 // GET /apis/rbac.authorization.k8s.io/v1/watch/namespaces/{namespace}/rolebindings/{name}
-func (s *Server) handleWatchRbacAuthorizationV1NamespacedRoleBindingRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleWatchRbacAuthorizationV1NamespacedRoleBindingRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `WatchRbacAuthorizationV1NamespacedRoleBinding`,
 		trace.WithAttributes(otelogen.OperationID(`watchRbacAuthorizationV1NamespacedRoleBinding`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -11122,7 +11122,7 @@ func (s *Server) handleWatchRbacAuthorizationV1NamespacedRoleBindingRequest(args
 // HandleWatchRbacAuthorizationV1NamespacedRoleBindingListRequest handles watchRbacAuthorizationV1NamespacedRoleBindingList operation.
 //
 // GET /apis/rbac.authorization.k8s.io/v1/watch/namespaces/{namespace}/rolebindings
-func (s *Server) handleWatchRbacAuthorizationV1NamespacedRoleBindingListRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleWatchRbacAuthorizationV1NamespacedRoleBindingListRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `WatchRbacAuthorizationV1NamespacedRoleBindingList`,
 		trace.WithAttributes(otelogen.OperationID(`watchRbacAuthorizationV1NamespacedRoleBindingList`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -11151,7 +11151,7 @@ func (s *Server) handleWatchRbacAuthorizationV1NamespacedRoleBindingListRequest(
 // HandleWatchRbacAuthorizationV1NamespacedRoleListRequest handles watchRbacAuthorizationV1NamespacedRoleList operation.
 //
 // GET /apis/rbac.authorization.k8s.io/v1/watch/namespaces/{namespace}/roles
-func (s *Server) handleWatchRbacAuthorizationV1NamespacedRoleListRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleWatchRbacAuthorizationV1NamespacedRoleListRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `WatchRbacAuthorizationV1NamespacedRoleList`,
 		trace.WithAttributes(otelogen.OperationID(`watchRbacAuthorizationV1NamespacedRoleList`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -11180,7 +11180,7 @@ func (s *Server) handleWatchRbacAuthorizationV1NamespacedRoleListRequest(args ma
 // HandleWatchRbacAuthorizationV1RoleBindingListForAllNamespacesRequest handles watchRbacAuthorizationV1RoleBindingListForAllNamespaces operation.
 //
 // GET /apis/rbac.authorization.k8s.io/v1/watch/rolebindings
-func (s *Server) handleWatchRbacAuthorizationV1RoleBindingListForAllNamespacesRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleWatchRbacAuthorizationV1RoleBindingListForAllNamespacesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `WatchRbacAuthorizationV1RoleBindingListForAllNamespaces`,
 		trace.WithAttributes(otelogen.OperationID(`watchRbacAuthorizationV1RoleBindingListForAllNamespaces`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -11209,7 +11209,7 @@ func (s *Server) handleWatchRbacAuthorizationV1RoleBindingListForAllNamespacesRe
 // HandleWatchRbacAuthorizationV1RoleListForAllNamespacesRequest handles watchRbacAuthorizationV1RoleListForAllNamespaces operation.
 //
 // GET /apis/rbac.authorization.k8s.io/v1/watch/roles
-func (s *Server) handleWatchRbacAuthorizationV1RoleListForAllNamespacesRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleWatchRbacAuthorizationV1RoleListForAllNamespacesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `WatchRbacAuthorizationV1RoleListForAllNamespaces`,
 		trace.WithAttributes(otelogen.OperationID(`watchRbacAuthorizationV1RoleListForAllNamespaces`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -11238,7 +11238,7 @@ func (s *Server) handleWatchRbacAuthorizationV1RoleListForAllNamespacesRequest(a
 // HandleWatchSchedulingV1PriorityClassRequest handles watchSchedulingV1PriorityClass operation.
 //
 // GET /apis/scheduling.k8s.io/v1/watch/priorityclasses/{name}
-func (s *Server) handleWatchSchedulingV1PriorityClassRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleWatchSchedulingV1PriorityClassRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `WatchSchedulingV1PriorityClass`,
 		trace.WithAttributes(otelogen.OperationID(`watchSchedulingV1PriorityClass`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -11267,7 +11267,7 @@ func (s *Server) handleWatchSchedulingV1PriorityClassRequest(args map[string]str
 // HandleWatchSchedulingV1PriorityClassListRequest handles watchSchedulingV1PriorityClassList operation.
 //
 // GET /apis/scheduling.k8s.io/v1/watch/priorityclasses
-func (s *Server) handleWatchSchedulingV1PriorityClassListRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleWatchSchedulingV1PriorityClassListRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `WatchSchedulingV1PriorityClassList`,
 		trace.WithAttributes(otelogen.OperationID(`watchSchedulingV1PriorityClassList`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -11296,7 +11296,7 @@ func (s *Server) handleWatchSchedulingV1PriorityClassListRequest(args map[string
 // HandleWatchStorageV1CSIDriverRequest handles watchStorageV1CSIDriver operation.
 //
 // GET /apis/storage.k8s.io/v1/watch/csidrivers/{name}
-func (s *Server) handleWatchStorageV1CSIDriverRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleWatchStorageV1CSIDriverRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `WatchStorageV1CSIDriver`,
 		trace.WithAttributes(otelogen.OperationID(`watchStorageV1CSIDriver`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -11325,7 +11325,7 @@ func (s *Server) handleWatchStorageV1CSIDriverRequest(args map[string]string, w 
 // HandleWatchStorageV1CSIDriverListRequest handles watchStorageV1CSIDriverList operation.
 //
 // GET /apis/storage.k8s.io/v1/watch/csidrivers
-func (s *Server) handleWatchStorageV1CSIDriverListRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleWatchStorageV1CSIDriverListRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `WatchStorageV1CSIDriverList`,
 		trace.WithAttributes(otelogen.OperationID(`watchStorageV1CSIDriverList`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -11354,7 +11354,7 @@ func (s *Server) handleWatchStorageV1CSIDriverListRequest(args map[string]string
 // HandleWatchStorageV1CSINodeRequest handles watchStorageV1CSINode operation.
 //
 // GET /apis/storage.k8s.io/v1/watch/csinodes/{name}
-func (s *Server) handleWatchStorageV1CSINodeRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleWatchStorageV1CSINodeRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `WatchStorageV1CSINode`,
 		trace.WithAttributes(otelogen.OperationID(`watchStorageV1CSINode`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -11383,7 +11383,7 @@ func (s *Server) handleWatchStorageV1CSINodeRequest(args map[string]string, w ht
 // HandleWatchStorageV1CSINodeListRequest handles watchStorageV1CSINodeList operation.
 //
 // GET /apis/storage.k8s.io/v1/watch/csinodes
-func (s *Server) handleWatchStorageV1CSINodeListRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleWatchStorageV1CSINodeListRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `WatchStorageV1CSINodeList`,
 		trace.WithAttributes(otelogen.OperationID(`watchStorageV1CSINodeList`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -11412,7 +11412,7 @@ func (s *Server) handleWatchStorageV1CSINodeListRequest(args map[string]string, 
 // HandleWatchStorageV1StorageClassRequest handles watchStorageV1StorageClass operation.
 //
 // GET /apis/storage.k8s.io/v1/watch/storageclasses/{name}
-func (s *Server) handleWatchStorageV1StorageClassRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleWatchStorageV1StorageClassRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `WatchStorageV1StorageClass`,
 		trace.WithAttributes(otelogen.OperationID(`watchStorageV1StorageClass`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -11441,7 +11441,7 @@ func (s *Server) handleWatchStorageV1StorageClassRequest(args map[string]string,
 // HandleWatchStorageV1StorageClassListRequest handles watchStorageV1StorageClassList operation.
 //
 // GET /apis/storage.k8s.io/v1/watch/storageclasses
-func (s *Server) handleWatchStorageV1StorageClassListRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleWatchStorageV1StorageClassListRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `WatchStorageV1StorageClassList`,
 		trace.WithAttributes(otelogen.OperationID(`watchStorageV1StorageClassList`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -11470,7 +11470,7 @@ func (s *Server) handleWatchStorageV1StorageClassListRequest(args map[string]str
 // HandleWatchStorageV1VolumeAttachmentRequest handles watchStorageV1VolumeAttachment operation.
 //
 // GET /apis/storage.k8s.io/v1/watch/volumeattachments/{name}
-func (s *Server) handleWatchStorageV1VolumeAttachmentRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleWatchStorageV1VolumeAttachmentRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `WatchStorageV1VolumeAttachment`,
 		trace.WithAttributes(otelogen.OperationID(`watchStorageV1VolumeAttachment`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -11499,7 +11499,7 @@ func (s *Server) handleWatchStorageV1VolumeAttachmentRequest(args map[string]str
 // HandleWatchStorageV1VolumeAttachmentListRequest handles watchStorageV1VolumeAttachmentList operation.
 //
 // GET /apis/storage.k8s.io/v1/watch/volumeattachments
-func (s *Server) handleWatchStorageV1VolumeAttachmentListRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleWatchStorageV1VolumeAttachmentListRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `WatchStorageV1VolumeAttachmentList`,
 		trace.WithAttributes(otelogen.OperationID(`watchStorageV1VolumeAttachmentList`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -11528,7 +11528,7 @@ func (s *Server) handleWatchStorageV1VolumeAttachmentListRequest(args map[string
 // HandleWatchStorageV1alpha1CSIStorageCapacityListForAllNamespacesRequest handles watchStorageV1alpha1CSIStorageCapacityListForAllNamespaces operation.
 //
 // GET /apis/storage.k8s.io/v1alpha1/watch/csistoragecapacities
-func (s *Server) handleWatchStorageV1alpha1CSIStorageCapacityListForAllNamespacesRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleWatchStorageV1alpha1CSIStorageCapacityListForAllNamespacesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `WatchStorageV1alpha1CSIStorageCapacityListForAllNamespaces`,
 		trace.WithAttributes(otelogen.OperationID(`watchStorageV1alpha1CSIStorageCapacityListForAllNamespaces`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -11557,7 +11557,7 @@ func (s *Server) handleWatchStorageV1alpha1CSIStorageCapacityListForAllNamespace
 // HandleWatchStorageV1alpha1NamespacedCSIStorageCapacityRequest handles watchStorageV1alpha1NamespacedCSIStorageCapacity operation.
 //
 // GET /apis/storage.k8s.io/v1alpha1/watch/namespaces/{namespace}/csistoragecapacities/{name}
-func (s *Server) handleWatchStorageV1alpha1NamespacedCSIStorageCapacityRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleWatchStorageV1alpha1NamespacedCSIStorageCapacityRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `WatchStorageV1alpha1NamespacedCSIStorageCapacity`,
 		trace.WithAttributes(otelogen.OperationID(`watchStorageV1alpha1NamespacedCSIStorageCapacity`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -11586,7 +11586,7 @@ func (s *Server) handleWatchStorageV1alpha1NamespacedCSIStorageCapacityRequest(a
 // HandleWatchStorageV1alpha1NamespacedCSIStorageCapacityListRequest handles watchStorageV1alpha1NamespacedCSIStorageCapacityList operation.
 //
 // GET /apis/storage.k8s.io/v1alpha1/watch/namespaces/{namespace}/csistoragecapacities
-func (s *Server) handleWatchStorageV1alpha1NamespacedCSIStorageCapacityListRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleWatchStorageV1alpha1NamespacedCSIStorageCapacityListRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `WatchStorageV1alpha1NamespacedCSIStorageCapacityList`,
 		trace.WithAttributes(otelogen.OperationID(`watchStorageV1alpha1NamespacedCSIStorageCapacityList`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -11615,7 +11615,7 @@ func (s *Server) handleWatchStorageV1alpha1NamespacedCSIStorageCapacityListReque
 // HandleWatchStorageV1beta1CSIStorageCapacityListForAllNamespacesRequest handles watchStorageV1beta1CSIStorageCapacityListForAllNamespaces operation.
 //
 // GET /apis/storage.k8s.io/v1beta1/watch/csistoragecapacities
-func (s *Server) handleWatchStorageV1beta1CSIStorageCapacityListForAllNamespacesRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleWatchStorageV1beta1CSIStorageCapacityListForAllNamespacesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `WatchStorageV1beta1CSIStorageCapacityListForAllNamespaces`,
 		trace.WithAttributes(otelogen.OperationID(`watchStorageV1beta1CSIStorageCapacityListForAllNamespaces`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -11644,7 +11644,7 @@ func (s *Server) handleWatchStorageV1beta1CSIStorageCapacityListForAllNamespaces
 // HandleWatchStorageV1beta1NamespacedCSIStorageCapacityRequest handles watchStorageV1beta1NamespacedCSIStorageCapacity operation.
 //
 // GET /apis/storage.k8s.io/v1beta1/watch/namespaces/{namespace}/csistoragecapacities/{name}
-func (s *Server) handleWatchStorageV1beta1NamespacedCSIStorageCapacityRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleWatchStorageV1beta1NamespacedCSIStorageCapacityRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `WatchStorageV1beta1NamespacedCSIStorageCapacity`,
 		trace.WithAttributes(otelogen.OperationID(`watchStorageV1beta1NamespacedCSIStorageCapacity`)),
 		trace.WithSpanKind(trace.SpanKindServer),
@@ -11673,7 +11673,7 @@ func (s *Server) handleWatchStorageV1beta1NamespacedCSIStorageCapacityRequest(ar
 // HandleWatchStorageV1beta1NamespacedCSIStorageCapacityListRequest handles watchStorageV1beta1NamespacedCSIStorageCapacityList operation.
 //
 // GET /apis/storage.k8s.io/v1beta1/watch/namespaces/{namespace}/csistoragecapacities
-func (s *Server) handleWatchStorageV1beta1NamespacedCSIStorageCapacityListRequest(args map[string]string, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleWatchStorageV1beta1NamespacedCSIStorageCapacityListRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	ctx, span := s.cfg.Tracer.Start(r.Context(), `WatchStorageV1beta1NamespacedCSIStorageCapacityList`,
 		trace.WithAttributes(otelogen.OperationID(`watchStorageV1beta1NamespacedCSIStorageCapacityList`)),
 		trace.WithSpanKind(trace.SpanKindServer),

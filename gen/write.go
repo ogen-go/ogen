@@ -20,7 +20,7 @@ type TemplateConfig struct {
 	Interfaces map[string]*ir.Type
 	Error      *ir.StatusResponse
 	ErrorType  *ir.Type
-	Methods    []MethodRoute
+	Router     Router
 }
 
 // RegexStrings returns slice of all unique regex validators.
@@ -116,7 +116,7 @@ func (g *Generator) WriteSource(fs FileSystem, pkgName string) error {
 		URITypes:   g.uriTypes,
 		Interfaces: g.interfaces,
 		Error:      g.errType,
-		Methods:    g.router.Methods,
+		Router:     g.router,
 	}
 	if cfg.Error != nil {
 		cfg.ErrorType = cfg.Error.Contents[ir.ContentTypeJSON]

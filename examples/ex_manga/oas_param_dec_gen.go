@@ -64,13 +64,13 @@ var (
 	_ = sync.Pool{}
 )
 
-func decodeGetBookParams(args map[string]string, r *http.Request) (GetBookParams, error) {
+func decodeGetBookParams(args [1]string, r *http.Request) (GetBookParams, error) {
 	var (
 		params GetBookParams
 	)
 	// Decode path: book_id.
 	{
-		param := args["book_id"]
+		param := args[0]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "book_id",
@@ -102,13 +102,13 @@ func decodeGetBookParams(args map[string]string, r *http.Request) (GetBookParams
 	return params, nil
 }
 
-func decodeGetPageCoverImageParams(args map[string]string, r *http.Request) (GetPageCoverImageParams, error) {
+func decodeGetPageCoverImageParams(args [2]string, r *http.Request) (GetPageCoverImageParams, error) {
 	var (
 		params GetPageCoverImageParams
 	)
 	// Decode path: media_id.
 	{
-		param := args["media_id"]
+		param := args[0]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "media_id",
@@ -139,7 +139,7 @@ func decodeGetPageCoverImageParams(args map[string]string, r *http.Request) (Get
 	}
 	// Decode path: format.
 	{
-		param := args["format"]
+		param := args[1]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "format",
@@ -171,13 +171,13 @@ func decodeGetPageCoverImageParams(args map[string]string, r *http.Request) (Get
 	return params, nil
 }
 
-func decodeGetPageImageParams(args map[string]string, r *http.Request) (GetPageImageParams, error) {
+func decodeGetPageImageParams(args [3]string, r *http.Request) (GetPageImageParams, error) {
 	var (
 		params GetPageImageParams
 	)
 	// Decode path: media_id.
 	{
-		param := args["media_id"]
+		param := args[0]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "media_id",
@@ -208,7 +208,7 @@ func decodeGetPageImageParams(args map[string]string, r *http.Request) (GetPageI
 	}
 	// Decode path: page.
 	{
-		param := args["page"]
+		param := args[1]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "page",
@@ -239,7 +239,7 @@ func decodeGetPageImageParams(args map[string]string, r *http.Request) (GetPageI
 	}
 	// Decode path: format.
 	{
-		param := args["format"]
+		param := args[2]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "format",
@@ -271,13 +271,13 @@ func decodeGetPageImageParams(args map[string]string, r *http.Request) (GetPageI
 	return params, nil
 }
 
-func decodeGetPageThumbnailImageParams(args map[string]string, r *http.Request) (GetPageThumbnailImageParams, error) {
+func decodeGetPageThumbnailImageParams(args [3]string, r *http.Request) (GetPageThumbnailImageParams, error) {
 	var (
 		params GetPageThumbnailImageParams
 	)
 	// Decode path: media_id.
 	{
-		param := args["media_id"]
+		param := args[0]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "media_id",
@@ -308,7 +308,7 @@ func decodeGetPageThumbnailImageParams(args map[string]string, r *http.Request) 
 	}
 	// Decode path: page.
 	{
-		param := args["page"]
+		param := args[1]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "page",
@@ -339,7 +339,7 @@ func decodeGetPageThumbnailImageParams(args map[string]string, r *http.Request) 
 	}
 	// Decode path: format.
 	{
-		param := args["format"]
+		param := args[2]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param:   "format",
@@ -371,7 +371,7 @@ func decodeGetPageThumbnailImageParams(args map[string]string, r *http.Request) 
 	return params, nil
 }
 
-func decodeSearchParams(args map[string]string, r *http.Request) (SearchParams, error) {
+func decodeSearchParams(args [0]string, r *http.Request) (SearchParams, error) {
 	var (
 		params    SearchParams
 		queryArgs = r.URL.Query()
@@ -444,7 +444,7 @@ func decodeSearchParams(args map[string]string, r *http.Request) (SearchParams, 
 	return params, nil
 }
 
-func decodeSearchByTagIDParams(args map[string]string, r *http.Request) (SearchByTagIDParams, error) {
+func decodeSearchByTagIDParams(args [0]string, r *http.Request) (SearchByTagIDParams, error) {
 	var (
 		params    SearchByTagIDParams
 		queryArgs = r.URL.Query()
