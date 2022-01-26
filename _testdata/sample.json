@@ -523,6 +523,44 @@
           }
         }
       },
+      "NullableEnums": {
+        "type": "object",
+        "required": [
+          "only_nullable",
+          "only_null_value",
+          "both"
+        ],
+        "properties": {
+          "only_nullable": {
+            "type": "string",
+            "nullable": true,
+            "description": "must not be nullable",
+            "enum": [
+              "asc",
+              "desc"
+            ]
+          },
+          "only_null_value": {
+            "type": "string",
+            "description": "must be nullable",
+            "enum": [
+              "asc",
+              "desc",
+              null
+            ]
+          },
+          "both": {
+            "type": "string",
+            "nullable": true,
+            "description": "must be nullable",
+            "enum": [
+              "asc",
+              "desc",
+              null
+            ]
+          }
+        }
+      },
       "Data": {
         "type": "object",
         "required": [
@@ -561,6 +599,9 @@
           "base64": {
             "type": "string",
             "format": "byte"
+          },
+          "nullable_enum": {
+            "$ref": "#/components/schemas/NullableEnums"
           }
         }
       },
