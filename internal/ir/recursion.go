@@ -10,8 +10,8 @@ func (t *Type) RecursiveTo(target *Type) bool {
 }
 
 func (t *Type) recursive(target *Type, path *walkpath) bool {
-	if t.Is(KindPrimitive, KindPointer, KindArray, KindEnum) ||
-		target.Is(KindPrimitive, KindPointer, KindArray, KindEnum) {
+	if t.Is(KindPrimitive, KindPointer, KindMap, KindArray, KindEnum) ||
+		target.Is(KindPrimitive, KindPointer, KindMap, KindArray, KindEnum) {
 		return false
 	}
 

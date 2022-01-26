@@ -18,6 +18,11 @@ type JSON struct {
 
 type JSONFields []*Field
 
+// NotEmpty whether field slice is not empty.
+func (j JSONFields) NotEmpty() bool {
+	return len(j) != 0
+}
+
 // FirstRequiredIndex returns first required field index.
 //
 // Or -1 if there is no required fields.

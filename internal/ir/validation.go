@@ -71,6 +71,8 @@ func (t *Type) needValidation(path *walkpath) (result bool) {
 			}
 		}
 		return false
+	case KindMap:
+		return t.Item.needValidation(path)
 	case KindStream:
 		return false
 	default:

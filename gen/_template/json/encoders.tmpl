@@ -3,6 +3,8 @@
 
 {{- if $.IsStruct }}
 	{{- template "json/encoders_struct" $ }}
+{{- else if $.IsMap }}
+	{{- template "json/encoders_map" $ }}
 {{- else if $.IsGeneric }}
 	{{- template "json/encoders_generic" $ }}
 {{- else if $.IsEnum }}

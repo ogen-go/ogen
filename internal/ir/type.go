@@ -14,6 +14,7 @@ type Kind string
 const (
 	KindPrimitive Kind = "primitive"
 	KindArray     Kind = "array"
+	KindMap       Kind = "map"
 	KindAlias     Kind = "alias"
 	KindEnum      Kind = "enum"
 	KindStruct    Kind = "struct"
@@ -79,7 +80,7 @@ type Type struct {
 	PointerTo        *Type               // only for pointer
 	SumOf            []*Type             // only for sum
 	SumSpec          SumSpec             // only for sum
-	Item             *Type               // only for array
+	Item             *Type               // only for array, map
 	EnumVariants     []*EnumVariant      // only for enum
 	Fields           []*Field            // only for struct
 	Implements       map[*Type]struct{}  // only for struct, alias, enum
@@ -158,7 +159,7 @@ func (t *Type) Is(vs ...Kind) bool {
 }
 
 func (t *Type) Implement(i *Type) {
-	if !t.Is(KindStruct, KindAlias, KindSum, KindStream) || !i.Is(KindInterface) {
+	if !t.Is(KindStruct, KindMap, KindAlias, KindSum, KindStream) || !i.Is(KindInterface) {
 		panic("unreachable")
 	}
 
@@ -171,7 +172,7 @@ func (t *Type) Implement(i *Type) {
 }
 
 func (t *Type) Unimplement(i *Type) {
-	if !t.Is(KindStruct, KindAlias, KindSum) || !i.Is(KindInterface) {
+	if !t.Is(KindStruct, KindMap, KindAlias, KindSum) || !i.Is(KindInterface) {
 		panic("unreachable")
 	}
 
@@ -195,7 +196,7 @@ func (t *Type) Go() string {
 		return "[]" + t.Item.Go()
 	case KindPointer:
 		return "*" + t.PointerTo.Go()
-	case KindStruct, KindAlias, KindInterface, KindGeneric, KindEnum, KindSum, KindStream:
+	case KindStruct, KindMap, KindAlias, KindInterface, KindGeneric, KindEnum, KindSum, KindStream:
 		return t.Name
 	default:
 		panic(fmt.Sprintf("unexpected kind: %s", t.Kind))
@@ -207,7 +208,7 @@ func (t *Type) Methods() []string {
 	switch t.Kind {
 	case KindInterface:
 		ms = t.InterfaceMethods
-	case KindStruct, KindAlias, KindEnum, KindGeneric, KindSum, KindStream:
+	case KindStruct, KindMap, KindAlias, KindEnum, KindGeneric, KindSum, KindStream:
 		for i := range t.Implements {
 			for m := range i.InterfaceMethods {
 				ms[m] = struct{}{}

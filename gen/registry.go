@@ -31,7 +31,7 @@ func (g *Generator) saveType(t *ir.Type) {
 }
 
 func (g *Generator) saveRef(ref string, t *ir.Type) {
-	if !t.Is(ir.KindStruct, ir.KindEnum, ir.KindAlias, ir.KindGeneric, ir.KindSum) {
+	if !t.Is(ir.KindStruct, ir.KindMap, ir.KindEnum, ir.KindAlias, ir.KindGeneric, ir.KindSum) {
 		panic("unreachable")
 	}
 

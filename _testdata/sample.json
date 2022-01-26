@@ -523,6 +523,12 @@
           }
         }
       },
+      "StringMap": {
+        "type": "object",
+        "additionalProperties": {
+          "type": "string"
+        }
+      },
       "NullableEnums": {
         "type": "object",
         "required": [
@@ -745,6 +751,9 @@
           },
           "testArray2": {
             "$ref": "#/components/schemas/ArrayTest"
+          },
+          "testMap": {
+            "$ref": "#/components/schemas/StringMap"
           },
           "testDate": {
             "type": "string",
