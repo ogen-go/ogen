@@ -110,16 +110,26 @@ func (s Data) Encode(e *jx.Writer) {
 		e.RawStr("\"base64\"" + ":")
 		e.Base64(s.Base64)
 	}
+	{
+		if s.NullableEnum.Set {
+			e.Comma()
+		}
+		if s.NullableEnum.Set {
+			e.RawStr("\"nullable_enum\"" + ":")
+			s.NullableEnum.Encode(e)
+		}
+	}
 	e.ObjEnd()
 }
 
-var jsonFieldsNameOfData = [6]string{
+var jsonFieldsNameOfData = [7]string{
 	0: "id",
 	1: "description",
 	2: "email",
 	3: "hostname",
 	4: "format",
 	5: "base64",
+	6: "nullable_enum",
 }
 
 // Decode decodes Data from json.
@@ -166,6 +176,11 @@ func (s *Data) Decode(d *jx.Decoder) error {
 			v, err := d.Base64()
 			s.Base64 = []byte(v)
 			if err != nil {
+				return err
+			}
+		case "nullable_enum":
+			s.NullableEnum.Reset()
+			if err := s.NullableEnum.Decode(d); err != nil {
 				return err
 			}
 		default:
@@ -783,6 +798,74 @@ func (s *ID) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// Encode encodes NullableEnumsBoth as json.
+func (o NilNullableEnumsBoth) Encode(e *jx.Writer) {
+	if o.Null {
+		e.Null()
+		return
+	}
+	e.Str(string(o.Value))
+}
+
+// Decode decodes NullableEnumsBoth from json.
+func (o *NilNullableEnumsBoth) Decode(d *jx.Decoder) error {
+	if o == nil {
+		return errors.New(`invalid: unable to decode NilNullableEnumsBoth to nil`)
+	}
+	switch d.Next() {
+	case jx.String:
+		o.Null = false
+		if err := o.Value.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	case jx.Null:
+		if err := d.Null(); err != nil {
+			return err
+		}
+		var v NullableEnumsBoth
+		o.Value = v
+		o.Null = true
+		return nil
+	default:
+		return errors.Errorf(`unexpected type %q while reading NilNullableEnumsBoth`, d.Next())
+	}
+}
+
+// Encode encodes NullableEnumsOnlyNullValue as json.
+func (o NilNullableEnumsOnlyNullValue) Encode(e *jx.Writer) {
+	if o.Null {
+		e.Null()
+		return
+	}
+	e.Str(string(o.Value))
+}
+
+// Decode decodes NullableEnumsOnlyNullValue from json.
+func (o *NilNullableEnumsOnlyNullValue) Decode(d *jx.Decoder) error {
+	if o == nil {
+		return errors.New(`invalid: unable to decode NilNullableEnumsOnlyNullValue to nil`)
+	}
+	switch d.Next() {
+	case jx.String:
+		o.Null = false
+		if err := o.Value.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	case jx.Null:
+		if err := d.Null(); err != nil {
+			return err
+		}
+		var v NullableEnumsOnlyNullValue
+		o.Value = v
+		o.Null = true
+		return nil
+	default:
+		return errors.Errorf(`unexpected type %q while reading NilNullableEnumsOnlyNullValue`, d.Next())
+	}
+}
+
 // Encode encodes string as json.
 func (o NilString) Encode(e *jx.Writer) {
 	if o.Null {
@@ -845,6 +928,190 @@ func (s *NotFound) Decode(d *jx.Decoder) error {
 		return nil
 	}); err != nil {
 		return err
+	}
+
+	return nil
+}
+
+// Encode implements json.Marshaler.
+func (s NullableEnums) Encode(e *jx.Writer) {
+	e.ObjStart()
+	var (
+		first = true
+		_     = first
+	)
+	{
+		if !first {
+			e.Comma()
+		}
+		first = false
+
+		e.RawStr("\"only_nullable\"" + ":")
+		s.OnlyNullable.Encode(e)
+	}
+	{
+		e.Comma()
+
+		e.RawStr("\"only_null_value\"" + ":")
+		s.OnlyNullValue.Encode(e)
+	}
+	{
+		e.Comma()
+
+		e.RawStr("\"both\"" + ":")
+		s.Both.Encode(e)
+	}
+	e.ObjEnd()
+}
+
+var jsonFieldsNameOfNullableEnums = [3]string{
+	0: "only_nullable",
+	1: "only_null_value",
+	2: "both",
+}
+
+// Decode decodes NullableEnums from json.
+func (s *NullableEnums) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode NullableEnums to nil`)
+	}
+	var requiredBitSet [1]uint8
+
+	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
+		switch string(k) {
+		case "only_nullable":
+			requiredBitSet[0] |= 1 << 0
+			if err := s.OnlyNullable.Decode(d); err != nil {
+				return err
+			}
+		case "only_null_value":
+			requiredBitSet[0] |= 1 << 1
+			if err := s.OnlyNullValue.Decode(d); err != nil {
+				return err
+			}
+		case "both":
+			requiredBitSet[0] |= 1 << 2
+			if err := s.Both.Decode(d); err != nil {
+				return err
+			}
+		default:
+			return d.Skip()
+		}
+		return nil
+	}); err != nil {
+		return err
+	}
+	var failures []validate.FieldError
+	for i, mask := range [1]uint8{
+		0b00000111,
+	} {
+		if result := (requiredBitSet[i] & mask) ^ mask; result != 0 {
+			// Mask only required fields and check equality to mask using XOR.
+			//
+			// If XOR result is not zero, result is not equal to expected, so some fields are missed.
+			// Bits of fields which would be set are actually bits of missed fields.
+			missed := bits.OnesCount8(result)
+			for bitN := 0; bitN < missed; bitN++ {
+				bitIdx := bits.TrailingZeros8(result)
+				fieldIdx := i*8 + bitIdx
+				var name string
+				if fieldIdx < len(jsonFieldsNameOfNullableEnums) {
+					name = jsonFieldsNameOfNullableEnums[fieldIdx]
+				} else {
+					name = strconv.Itoa(fieldIdx)
+				}
+				failures = append(failures, validate.FieldError{
+					Name:  name,
+					Error: validate.ErrFieldRequired,
+				})
+				// Reset bit.
+				result &^= 1 << bitIdx
+			}
+		}
+	}
+	if len(failures) > 0 {
+		return &validate.Error{Fields: failures}
+	}
+
+	return nil
+}
+
+// Encode encodes NullableEnumsBoth as json.
+func (s NullableEnumsBoth) Encode(e *jx.Writer) {
+	e.Str(string(s))
+}
+
+// Decode decodes NullableEnumsBoth from json.
+func (s *NullableEnumsBoth) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode NullableEnumsBoth to nil`)
+	}
+	v, err := d.StrBytes()
+	if err != nil {
+		return err
+	}
+	// Try to use constant string.
+	switch NullableEnumsBoth(v) {
+	case NullableEnumsBothAsc:
+		*s = NullableEnumsBothAsc
+	case NullableEnumsBothDesc:
+		*s = NullableEnumsBothDesc
+	default:
+		*s = NullableEnumsBoth(v)
+	}
+
+	return nil
+}
+
+// Encode encodes NullableEnumsOnlyNullValue as json.
+func (s NullableEnumsOnlyNullValue) Encode(e *jx.Writer) {
+	e.Str(string(s))
+}
+
+// Decode decodes NullableEnumsOnlyNullValue from json.
+func (s *NullableEnumsOnlyNullValue) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode NullableEnumsOnlyNullValue to nil`)
+	}
+	v, err := d.StrBytes()
+	if err != nil {
+		return err
+	}
+	// Try to use constant string.
+	switch NullableEnumsOnlyNullValue(v) {
+	case NullableEnumsOnlyNullValueAsc:
+		*s = NullableEnumsOnlyNullValueAsc
+	case NullableEnumsOnlyNullValueDesc:
+		*s = NullableEnumsOnlyNullValueDesc
+	default:
+		*s = NullableEnumsOnlyNullValue(v)
+	}
+
+	return nil
+}
+
+// Encode encodes NullableEnumsOnlyNullable as json.
+func (s NullableEnumsOnlyNullable) Encode(e *jx.Writer) {
+	e.Str(string(s))
+}
+
+// Decode decodes NullableEnumsOnlyNullable from json.
+func (s *NullableEnumsOnlyNullable) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New(`invalid: unable to decode NullableEnumsOnlyNullable to nil`)
+	}
+	v, err := d.StrBytes()
+	if err != nil {
+		return err
+	}
+	// Try to use constant string.
+	switch NullableEnumsOnlyNullable(v) {
+	case NullableEnumsOnlyNullableAsc:
+		*s = NullableEnumsOnlyNullableAsc
+	case NullableEnumsOnlyNullableDesc:
+		*s = NullableEnumsOnlyNullableDesc
+	default:
+		*s = NullableEnumsOnlyNullable(v)
 	}
 
 	return nil
@@ -1016,6 +1283,31 @@ func (o *OptNilString) Decode(d *jx.Decoder) error {
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptNilString`, d.Next())
+	}
+}
+
+// Encode encodes NullableEnums as json.
+func (o OptNullableEnums) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
+	o.Value.Encode(e)
+}
+
+// Decode decodes NullableEnums from json.
+func (o *OptNullableEnums) Decode(d *jx.Decoder) error {
+	if o == nil {
+		return errors.New(`invalid: unable to decode OptNullableEnums to nil`)
+	}
+	switch d.Next() {
+	case jx.Object:
+		o.Set = true
+		if err := o.Value.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	default:
+		return errors.Errorf(`unexpected type %q while reading OptNullableEnums`, d.Next())
 	}
 }
 

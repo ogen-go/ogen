@@ -307,3 +307,23 @@ func TestValidateRequired(t *testing.T) {
 		})
 	}
 }
+
+func TestNullableEnum(t *testing.T) {
+	for _, tc := range []struct {
+		Type json.Unmarshaler
+		Err  bool
+	}{
+		{new(api.NullableEnumsOnlyNullable), true},
+		{new(api.NilNullableEnumsOnlyNullValue), false},
+		{new(api.NilNullableEnumsBoth), false},
+	} {
+		t.Run(fmt.Sprintf("%T", tc.Type), func(t *testing.T) {
+			checker := require.NoError
+			if tc.Err {
+				checker = require.Error
+			}
+			checker(t, tc.Type.Decode(jx.DecodeStr(`null`)))
+			require.NoError(t, tc.Type.Decode(jx.DecodeStr(`"asc"`)))
+		})
+	}
+}

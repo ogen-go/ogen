@@ -66,12 +66,13 @@ var (
 
 // Ref: #/components/schemas/Data
 type Data struct {
-	ID          ID              `json:"id"`
-	Description DataDescription `json:"description"`
-	Email       string          `json:"email"`
-	Hostname    string          `json:"hostname"`
-	Format      string          `json:"format"`
-	Base64      []byte          `json:"base64"`
+	ID           ID               `json:"id"`
+	Description  DataDescription  `json:"description"`
+	Email        string           `json:"email"`
+	Hostname     string           `json:"hostname"`
+	Format       string           `json:"format"`
+	Base64       []byte           `json:"base64"`
+	NullableEnum OptNullableEnums `json:"nullable_enum"`
 }
 
 // DataDescription represents sum type.
@@ -249,6 +250,82 @@ func NewIntID(v int) ID {
 	return s
 }
 
+// NewNilNullableEnumsBoth returns new NilNullableEnumsBoth with value set to v.
+func NewNilNullableEnumsBoth(v NullableEnumsBoth) NilNullableEnumsBoth {
+	return NilNullableEnumsBoth{
+		Value: v,
+	}
+}
+
+// NilNullableEnumsBoth is nullable NullableEnumsBoth.
+type NilNullableEnumsBoth struct {
+	Value NullableEnumsBoth
+	Null  bool
+}
+
+// SetTo sets value to v.
+func (o *NilNullableEnumsBoth) SetTo(v NullableEnumsBoth) {
+	o.Null = false
+	o.Value = v
+}
+
+// IsSet returns true if value is Null.
+func (o NilNullableEnumsBoth) IsNull() bool { return o.Null }
+
+// Get returns value and boolean that denotes whether value was set.
+func (o NilNullableEnumsBoth) Get() (v NullableEnumsBoth, ok bool) {
+	if o.Null {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o NilNullableEnumsBoth) Or(d NullableEnumsBoth) NullableEnumsBoth {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
+// NewNilNullableEnumsOnlyNullValue returns new NilNullableEnumsOnlyNullValue with value set to v.
+func NewNilNullableEnumsOnlyNullValue(v NullableEnumsOnlyNullValue) NilNullableEnumsOnlyNullValue {
+	return NilNullableEnumsOnlyNullValue{
+		Value: v,
+	}
+}
+
+// NilNullableEnumsOnlyNullValue is nullable NullableEnumsOnlyNullValue.
+type NilNullableEnumsOnlyNullValue struct {
+	Value NullableEnumsOnlyNullValue
+	Null  bool
+}
+
+// SetTo sets value to v.
+func (o *NilNullableEnumsOnlyNullValue) SetTo(v NullableEnumsOnlyNullValue) {
+	o.Null = false
+	o.Value = v
+}
+
+// IsSet returns true if value is Null.
+func (o NilNullableEnumsOnlyNullValue) IsNull() bool { return o.Null }
+
+// Get returns value and boolean that denotes whether value was set.
+func (o NilNullableEnumsOnlyNullValue) Get() (v NullableEnumsOnlyNullValue, ok bool) {
+	if o.Null {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o NilNullableEnumsOnlyNullValue) Or(d NullableEnumsOnlyNullValue) NullableEnumsOnlyNullValue {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewNilString returns new NilString with value set to v.
 func NewNilString(v string) NilString {
 	return NilString{
@@ -294,6 +371,34 @@ func (*NotFound) foobarGetRes()           {}
 func (*NotFound) foobarPostRes()          {}
 func (*NotFound) petGetAvatarByIDRes()    {}
 func (*NotFound) petUploadAvatarByIDRes() {}
+
+// Ref: #/components/schemas/NullableEnums
+type NullableEnums struct {
+	OnlyNullable  NullableEnumsOnlyNullable     `json:"only_nullable"`
+	OnlyNullValue NilNullableEnumsOnlyNullValue `json:"only_null_value"`
+	Both          NilNullableEnumsBoth          `json:"both"`
+}
+
+type NullableEnumsBoth string
+
+const (
+	NullableEnumsBothAsc  NullableEnumsBoth = "asc"
+	NullableEnumsBothDesc NullableEnumsBoth = "desc"
+)
+
+type NullableEnumsOnlyNullValue string
+
+const (
+	NullableEnumsOnlyNullValueAsc  NullableEnumsOnlyNullValue = "asc"
+	NullableEnumsOnlyNullValueDesc NullableEnumsOnlyNullValue = "desc"
+)
+
+type NullableEnumsOnlyNullable string
+
+const (
+	NullableEnumsOnlyNullableAsc  NullableEnumsOnlyNullable = "asc"
+	NullableEnumsOnlyNullableDesc NullableEnumsOnlyNullable = "desc"
+)
 
 // NewOptData returns new OptData with value set to v.
 func NewOptData(v Data) OptData {
@@ -574,6 +679,52 @@ func (o OptNilString) Get() (v string, ok bool) {
 
 // Or returns value if set, or given parameter if does not.
 func (o OptNilString) Or(d string) string {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
+// NewOptNullableEnums returns new OptNullableEnums with value set to v.
+func NewOptNullableEnums(v NullableEnums) OptNullableEnums {
+	return OptNullableEnums{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptNullableEnums is optional NullableEnums.
+type OptNullableEnums struct {
+	Value NullableEnums
+	Set   bool
+}
+
+// IsSet returns true if OptNullableEnums was set.
+func (o OptNullableEnums) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptNullableEnums) Reset() {
+	var v NullableEnums
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptNullableEnums) SetTo(v NullableEnums) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptNullableEnums) Get() (v NullableEnums, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptNullableEnums) Or(d NullableEnums) NullableEnums {
 	if v, ok := o.Get(); ok {
 		return v
 	}
