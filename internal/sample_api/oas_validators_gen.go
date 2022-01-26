@@ -123,6 +123,25 @@ func (s Data) Validate() error {
 			Error: err,
 		})
 	}
+	if err := func() error {
+		if s.NullableEnum.Set {
+			if err := func() error {
+				if err := s.NullableEnum.Value.Validate(); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return err
+			}
+		}
+		return nil
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "nullable_enum",
+			Error: err,
+		})
+	}
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
@@ -153,6 +172,79 @@ func (s Hash) Validate() error {
 		return &validate.Error{Fields: failures}
 	}
 	return nil
+}
+
+func (s NullableEnums) Validate() error {
+	var failures []validate.FieldError
+	if err := func() error {
+		if err := s.OnlyNullable.Validate(); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "only_nullable",
+			Error: err,
+		})
+	}
+	if err := func() error {
+		if err := s.OnlyNullValue.Value.Validate(); err != nil {
+			return err
+		}
+		return nil
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "only_null_value",
+			Error: err,
+		})
+	}
+	if err := func() error {
+		if err := s.Both.Value.Validate(); err != nil {
+			return err
+		}
+		return nil
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "both",
+			Error: err,
+		})
+	}
+	if len(failures) > 0 {
+		return &validate.Error{Fields: failures}
+	}
+	return nil
+}
+func (s NullableEnumsBoth) Validate() error {
+	switch s {
+	case "asc":
+		return nil
+	case "desc":
+		return nil
+	default:
+		return errors.Errorf("invalid value: %v", s)
+	}
+}
+func (s NullableEnumsOnlyNullValue) Validate() error {
+	switch s {
+	case "asc":
+		return nil
+	case "desc":
+		return nil
+	default:
+		return errors.Errorf("invalid value: %v", s)
+	}
+}
+func (s NullableEnumsOnlyNullable) Validate() error {
+	switch s {
+	case "asc":
+		return nil
+	case "desc":
+		return nil
+	default:
+		return errors.Errorf("invalid value: %v", s)
+	}
 }
 
 func (s Pet) Validate() error {

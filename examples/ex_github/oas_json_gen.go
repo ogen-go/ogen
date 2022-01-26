@@ -64233,108 +64233,6 @@ func (o *NilCheckRunCheckSuite) Decode(d *jx.Decoder) error {
 	}
 }
 
-// Encode encodes CheckRunConclusion as json.
-func (o NilCheckRunConclusion) Encode(e *jx.Writer) {
-	if o.Null {
-		e.Null()
-		return
-	}
-	e.Str(string(o.Value))
-}
-
-// Decode decodes CheckRunConclusion from json.
-func (o *NilCheckRunConclusion) Decode(d *jx.Decoder) error {
-	if o == nil {
-		return errors.New(`invalid: unable to decode NilCheckRunConclusion to nil`)
-	}
-	switch d.Next() {
-	case jx.String:
-		o.Null = false
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	case jx.Null:
-		if err := d.Null(); err != nil {
-			return err
-		}
-		var v CheckRunConclusion
-		o.Value = v
-		o.Null = true
-		return nil
-	default:
-		return errors.Errorf(`unexpected type %q while reading NilCheckRunConclusion`, d.Next())
-	}
-}
-
-// Encode encodes CheckSuiteConclusion as json.
-func (o NilCheckSuiteConclusion) Encode(e *jx.Writer) {
-	if o.Null {
-		e.Null()
-		return
-	}
-	e.Str(string(o.Value))
-}
-
-// Decode decodes CheckSuiteConclusion from json.
-func (o *NilCheckSuiteConclusion) Decode(d *jx.Decoder) error {
-	if o == nil {
-		return errors.New(`invalid: unable to decode NilCheckSuiteConclusion to nil`)
-	}
-	switch d.Next() {
-	case jx.String:
-		o.Null = false
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	case jx.Null:
-		if err := d.Null(); err != nil {
-			return err
-		}
-		var v CheckSuiteConclusion
-		o.Value = v
-		o.Null = true
-		return nil
-	default:
-		return errors.Errorf(`unexpected type %q while reading NilCheckSuiteConclusion`, d.Next())
-	}
-}
-
-// Encode encodes CheckSuiteStatus as json.
-func (o NilCheckSuiteStatus) Encode(e *jx.Writer) {
-	if o.Null {
-		e.Null()
-		return
-	}
-	e.Str(string(o.Value))
-}
-
-// Decode decodes CheckSuiteStatus from json.
-func (o *NilCheckSuiteStatus) Decode(d *jx.Decoder) error {
-	if o == nil {
-		return errors.New(`invalid: unable to decode NilCheckSuiteStatus to nil`)
-	}
-	switch d.Next() {
-	case jx.String:
-		o.Null = false
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	case jx.Null:
-		if err := d.Null(); err != nil {
-			return err
-		}
-		var v CheckSuiteStatus
-		o.Value = v
-		o.Null = true
-		return nil
-	default:
-		return errors.Errorf(`unexpected type %q while reading NilCheckSuiteStatus`, d.Next())
-	}
-}
-
 // Encode encodes CodeScanningAlertDismissedAt as json.
 func (o NilCodeScanningAlertDismissedAt) Encode(e *jx.Writer) {
 	if o.Null {
@@ -64841,40 +64739,6 @@ func (o *NilNullableTeamSimple) Decode(d *jx.Decoder) error {
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading NilNullableTeamSimple`, d.Next())
-	}
-}
-
-// Encode encodes PageStatus as json.
-func (o NilPageStatus) Encode(e *jx.Writer) {
-	if o.Null {
-		e.Null()
-		return
-	}
-	e.Str(string(o.Value))
-}
-
-// Decode decodes PageStatus from json.
-func (o *NilPageStatus) Decode(d *jx.Decoder) error {
-	if o == nil {
-		return errors.New(`invalid: unable to decode NilPageStatus to nil`)
-	}
-	switch d.Next() {
-	case jx.String:
-		o.Null = false
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	case jx.Null:
-		if err := d.Null(); err != nil {
-			return err
-		}
-		var v PageStatus
-		o.Value = v
-		o.Null = true
-		return nil
-	default:
-		return errors.Errorf(`unexpected type %q while reading NilPageStatus`, d.Next())
 	}
 }
 
@@ -75935,6 +75799,81 @@ func (o *OptCodeScanningAlertLocation) Decode(d *jx.Decoder) error {
 	}
 }
 
+// Encode encodes CodeScanningAlertRuleSecuritySeverityLevel as json.
+func (o OptCodeScanningAlertRuleSecuritySeverityLevel) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
+	e.Str(string(o.Value))
+}
+
+// Decode decodes CodeScanningAlertRuleSecuritySeverityLevel from json.
+func (o *OptCodeScanningAlertRuleSecuritySeverityLevel) Decode(d *jx.Decoder) error {
+	if o == nil {
+		return errors.New(`invalid: unable to decode OptCodeScanningAlertRuleSecuritySeverityLevel to nil`)
+	}
+	switch d.Next() {
+	case jx.String:
+		o.Set = true
+		if err := o.Value.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	default:
+		return errors.Errorf(`unexpected type %q while reading OptCodeScanningAlertRuleSecuritySeverityLevel`, d.Next())
+	}
+}
+
+// Encode encodes CodeScanningAlertRuleSeverity as json.
+func (o OptCodeScanningAlertRuleSeverity) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
+	e.Str(string(o.Value))
+}
+
+// Decode decodes CodeScanningAlertRuleSeverity from json.
+func (o *OptCodeScanningAlertRuleSeverity) Decode(d *jx.Decoder) error {
+	if o == nil {
+		return errors.New(`invalid: unable to decode OptCodeScanningAlertRuleSeverity to nil`)
+	}
+	switch d.Next() {
+	case jx.String:
+		o.Set = true
+		if err := o.Value.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	default:
+		return errors.Errorf(`unexpected type %q while reading OptCodeScanningAlertRuleSeverity`, d.Next())
+	}
+}
+
+// Encode encodes CodeScanningAlertRuleSummarySeverity as json.
+func (o OptCodeScanningAlertRuleSummarySeverity) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
+	e.Str(string(o.Value))
+}
+
+// Decode decodes CodeScanningAlertRuleSummarySeverity from json.
+func (o *OptCodeScanningAlertRuleSummarySeverity) Decode(d *jx.Decoder) error {
+	if o == nil {
+		return errors.New(`invalid: unable to decode OptCodeScanningAlertRuleSummarySeverity to nil`)
+	}
+	switch d.Next() {
+	case jx.String:
+		o.Set = true
+		if err := o.Value.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	default:
+		return errors.Errorf(`unexpected type %q while reading OptCodeScanningAlertRuleSummarySeverity`, d.Next())
+	}
+}
+
 // Encode encodes CodeScanningAlertState as json.
 func (o OptCodeScanningAlertState) Encode(e *jx.Writer) {
 	if !o.Set {
@@ -78225,123 +78164,6 @@ func (o *OptNilCodeScanningAlertDismissedReason) Decode(d *jx.Decoder) error {
 	}
 }
 
-// Encode encodes CodeScanningAlertRuleSecuritySeverityLevel as json.
-func (o OptNilCodeScanningAlertRuleSecuritySeverityLevel) Encode(e *jx.Writer) {
-	if !o.Set {
-		return
-	}
-	if o.Null {
-		e.Null()
-		return
-	}
-	e.Str(string(o.Value))
-}
-
-// Decode decodes CodeScanningAlertRuleSecuritySeverityLevel from json.
-func (o *OptNilCodeScanningAlertRuleSecuritySeverityLevel) Decode(d *jx.Decoder) error {
-	if o == nil {
-		return errors.New(`invalid: unable to decode OptNilCodeScanningAlertRuleSecuritySeverityLevel to nil`)
-	}
-	switch d.Next() {
-	case jx.String:
-		o.Set = true
-		o.Null = false
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	case jx.Null:
-		if err := d.Null(); err != nil {
-			return err
-		}
-		var v CodeScanningAlertRuleSecuritySeverityLevel
-		o.Value = v
-		o.Set = true
-		o.Null = true
-		return nil
-	default:
-		return errors.Errorf(`unexpected type %q while reading OptNilCodeScanningAlertRuleSecuritySeverityLevel`, d.Next())
-	}
-}
-
-// Encode encodes CodeScanningAlertRuleSeverity as json.
-func (o OptNilCodeScanningAlertRuleSeverity) Encode(e *jx.Writer) {
-	if !o.Set {
-		return
-	}
-	if o.Null {
-		e.Null()
-		return
-	}
-	e.Str(string(o.Value))
-}
-
-// Decode decodes CodeScanningAlertRuleSeverity from json.
-func (o *OptNilCodeScanningAlertRuleSeverity) Decode(d *jx.Decoder) error {
-	if o == nil {
-		return errors.New(`invalid: unable to decode OptNilCodeScanningAlertRuleSeverity to nil`)
-	}
-	switch d.Next() {
-	case jx.String:
-		o.Set = true
-		o.Null = false
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	case jx.Null:
-		if err := d.Null(); err != nil {
-			return err
-		}
-		var v CodeScanningAlertRuleSeverity
-		o.Value = v
-		o.Set = true
-		o.Null = true
-		return nil
-	default:
-		return errors.Errorf(`unexpected type %q while reading OptNilCodeScanningAlertRuleSeverity`, d.Next())
-	}
-}
-
-// Encode encodes CodeScanningAlertRuleSummarySeverity as json.
-func (o OptNilCodeScanningAlertRuleSummarySeverity) Encode(e *jx.Writer) {
-	if !o.Set {
-		return
-	}
-	if o.Null {
-		e.Null()
-		return
-	}
-	e.Str(string(o.Value))
-}
-
-// Decode decodes CodeScanningAlertRuleSummarySeverity from json.
-func (o *OptNilCodeScanningAlertRuleSummarySeverity) Decode(d *jx.Decoder) error {
-	if o == nil {
-		return errors.New(`invalid: unable to decode OptNilCodeScanningAlertRuleSummarySeverity to nil`)
-	}
-	switch d.Next() {
-	case jx.String:
-		o.Set = true
-		o.Null = false
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	case jx.Null:
-		if err := d.Null(); err != nil {
-			return err
-		}
-		var v CodeScanningAlertRuleSummarySeverity
-		o.Value = v
-		o.Set = true
-		o.Null = true
-		return nil
-	default:
-		return errors.Errorf(`unexpected type %q while reading OptNilCodeScanningAlertRuleSummarySeverity`, d.Next())
-	}
-}
-
 // Encode encodes CodeScanningAnalysisToolGUID as json.
 func (o OptNilCodeScanningAnalysisToolGUID) Encode(e *jx.Writer) {
 	if !o.Set {
@@ -79140,45 +78962,6 @@ func (o *OptNilNullableTeamSimple) Decode(d *jx.Decoder) error {
 	}
 }
 
-// Encode encodes PageProtectedDomainState as json.
-func (o OptNilPageProtectedDomainState) Encode(e *jx.Writer) {
-	if !o.Set {
-		return
-	}
-	if o.Null {
-		e.Null()
-		return
-	}
-	e.Str(string(o.Value))
-}
-
-// Decode decodes PageProtectedDomainState from json.
-func (o *OptNilPageProtectedDomainState) Decode(d *jx.Decoder) error {
-	if o == nil {
-		return errors.New(`invalid: unable to decode OptNilPageProtectedDomainState to nil`)
-	}
-	switch d.Next() {
-	case jx.String:
-		o.Set = true
-		o.Null = false
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	case jx.Null:
-		if err := d.Null(); err != nil {
-			return err
-		}
-		var v PageProtectedDomainState
-		o.Value = v
-		o.Set = true
-		o.Null = true
-		return nil
-	default:
-		return errors.Errorf(`unexpected type %q while reading OptNilPageProtectedDomainState`, d.Next())
-	}
-}
-
 // Encode encodes PagesHealthCheckAltDomain as json.
 func (o OptNilPagesHealthCheckAltDomain) Encode(e *jx.Writer) {
 	if !o.Set {
@@ -79215,45 +78998,6 @@ func (o *OptNilPagesHealthCheckAltDomain) Decode(d *jx.Decoder) error {
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptNilPagesHealthCheckAltDomain`, d.Next())
-	}
-}
-
-// Encode encodes PullRequestReviewCommentStartSide as json.
-func (o OptNilPullRequestReviewCommentStartSide) Encode(e *jx.Writer) {
-	if !o.Set {
-		return
-	}
-	if o.Null {
-		e.Null()
-		return
-	}
-	e.Str(string(o.Value))
-}
-
-// Decode decodes PullRequestReviewCommentStartSide from json.
-func (o *OptNilPullRequestReviewCommentStartSide) Decode(d *jx.Decoder) error {
-	if o == nil {
-		return errors.New(`invalid: unable to decode OptNilPullRequestReviewCommentStartSide to nil`)
-	}
-	switch d.Next() {
-	case jx.String:
-		o.Set = true
-		o.Null = false
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	case jx.Null:
-		if err := d.Null(); err != nil {
-			return err
-		}
-		var v PullRequestReviewCommentStartSide
-		o.Value = v
-		o.Set = true
-		o.Null = true
-		return nil
-	default:
-		return errors.Errorf(`unexpected type %q while reading OptNilPullRequestReviewCommentStartSide`, d.Next())
 	}
 }
 
@@ -79367,45 +79111,6 @@ func (o *OptNilRepositoryTemplateRepository) Decode(d *jx.Decoder) error {
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptNilRepositoryTemplateRepository`, d.Next())
-	}
-}
-
-// Encode encodes ReviewCommentStartSide as json.
-func (o OptNilReviewCommentStartSide) Encode(e *jx.Writer) {
-	if !o.Set {
-		return
-	}
-	if o.Null {
-		e.Null()
-		return
-	}
-	e.Str(string(o.Value))
-}
-
-// Decode decodes ReviewCommentStartSide from json.
-func (o *OptNilReviewCommentStartSide) Decode(d *jx.Decoder) error {
-	if o == nil {
-		return errors.New(`invalid: unable to decode OptNilReviewCommentStartSide to nil`)
-	}
-	switch d.Next() {
-	case jx.String:
-		o.Set = true
-		o.Null = false
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	case jx.Null:
-		if err := d.Null(); err != nil {
-			return err
-		}
-		var v ReviewCommentStartSide
-		o.Value = v
-		o.Set = true
-		o.Null = true
-		return nil
-	default:
-		return errors.Errorf(`unexpected type %q while reading OptNilReviewCommentStartSide`, d.Next())
 	}
 }
 
@@ -80581,6 +80286,31 @@ func (o *OptPackagesListPackagesForUserVisibility) Decode(d *jx.Decoder) error {
 	}
 }
 
+// Encode encodes PageProtectedDomainState as json.
+func (o OptPageProtectedDomainState) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
+	e.Str(string(o.Value))
+}
+
+// Decode decodes PageProtectedDomainState from json.
+func (o *OptPageProtectedDomainState) Decode(d *jx.Decoder) error {
+	if o == nil {
+		return errors.New(`invalid: unable to decode OptPageProtectedDomainState to nil`)
+	}
+	switch d.Next() {
+	case jx.String:
+		o.Set = true
+		if err := o.Value.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	default:
+		return errors.Errorf(`unexpected type %q while reading OptPageProtectedDomainState`, d.Next())
+	}
+}
+
 // Encode encodes PagesHTTPSCertificate as json.
 func (o OptPagesHTTPSCertificate) Encode(e *jx.Writer) {
 	if !o.Set {
@@ -81353,6 +81083,31 @@ func (o *OptPullRequestReviewCommentSide) Decode(d *jx.Decoder) error {
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptPullRequestReviewCommentSide`, d.Next())
+	}
+}
+
+// Encode encodes PullRequestReviewCommentStartSide as json.
+func (o OptPullRequestReviewCommentStartSide) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
+	e.Str(string(o.Value))
+}
+
+// Decode decodes PullRequestReviewCommentStartSide from json.
+func (o *OptPullRequestReviewCommentStartSide) Decode(d *jx.Decoder) error {
+	if o == nil {
+		return errors.New(`invalid: unable to decode OptPullRequestReviewCommentStartSide to nil`)
+	}
+	switch d.Next() {
+	case jx.String:
+		o.Set = true
+		if err := o.Value.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	default:
+		return errors.Errorf(`unexpected type %q while reading OptPullRequestReviewCommentStartSide`, d.Next())
 	}
 }
 
@@ -83514,6 +83269,31 @@ func (o *OptReviewCommentSide) Decode(d *jx.Decoder) error {
 		return nil
 	default:
 		return errors.Errorf(`unexpected type %q while reading OptReviewCommentSide`, d.Next())
+	}
+}
+
+// Encode encodes ReviewCommentStartSide as json.
+func (o OptReviewCommentStartSide) Encode(e *jx.Writer) {
+	if !o.Set {
+		return
+	}
+	e.Str(string(o.Value))
+}
+
+// Decode decodes ReviewCommentStartSide from json.
+func (o *OptReviewCommentStartSide) Decode(d *jx.Decoder) error {
+	if o == nil {
+		return errors.New(`invalid: unable to decode OptReviewCommentStartSide to nil`)
+	}
+	switch d.Next() {
+	case jx.String:
+		o.Set = true
+		if err := o.Value.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	default:
+		return errors.Errorf(`unexpected type %q while reading OptReviewCommentStartSide`, d.Next())
 	}
 }
 
