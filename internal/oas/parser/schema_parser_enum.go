@@ -14,10 +14,12 @@ func parseEnumValues(typ oas.SchemaType, rawValues []json.RawMessage) ([]interfa
 		values []interface{}
 		unique = map[interface{}]struct{}{}
 	)
+	nullable := false
 	for _, raw := range rawValues {
 		val, err := parseJSONValue(typ, raw)
 		if err != nil {
 			if errors.Is(err, errNullValue) {
+				nullable = true
 				continue
 			}
 			return nil, errors.Wrapf(err, "parse value %q", raw)
@@ -30,7 +32,9 @@ func parseEnumValues(typ oas.SchemaType, rawValues []json.RawMessage) ([]interfa
 		unique[val] = struct{}{}
 		values = append(values, val)
 	}
-
+	if nullable {
+		values = append(values, nil)
+	}
 	return values, nil
 }
 

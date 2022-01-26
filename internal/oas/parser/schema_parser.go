@@ -225,7 +225,33 @@ func (p *schemaParser) resolve(ref string) (*oas.Schema, error) {
 
 func (p *schemaParser) extendInfo(schema *ogen.Schema, s *oas.Schema) *oas.Schema {
 	s.Description = schema.Description
-	s.Nullable = schema.Nullable
+	// Workaround: handle nullable enums correctly.
+	//
+	// Notice that nullable enum requires `null` in value list.
+	//
+	// See https://github.com/OAI/OpenAPI-Specification/blob/main/proposals/2019-10-31-Clarify-Nullable.md#if-a-schema-specifies-nullable-true-and-enum-1-2-3-does-that-schema-allow-null-values-see-1900.
+	if len(s.Enum) < 1 {
+		s.Nullable = schema.Nullable
+	} else {
+		// Check that enum contains `null` value.
+		for _, v := range s.Enum {
+			if v == nil {
+				s.Nullable = true
+				break
+			}
+		}
+		// Filter all `null`s.
+		if s.Nullable {
+			n := 0
+			for _, v := range s.Enum {
+				if v != nil {
+					s.Enum[n] = v
+					n++
+				}
+			}
+			s.Enum = s.Enum[:n]
+		}
+	}
 	if d := schema.Discriminator; d != nil {
 		s.Discriminator = &oas.Discriminator{
 			PropertyName: d.PropertyName,
