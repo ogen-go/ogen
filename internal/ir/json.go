@@ -31,6 +31,7 @@ func (j JSONFields) FirstRequiredIndex() int {
 		if typ := f.Type; typ.IsGeneric() && typ.GenericVariant.Optional ||
 			typ.Is(
 				KindStruct,
+				KindMap,
 				KindEnum,
 				KindPointer,
 				KindSum,

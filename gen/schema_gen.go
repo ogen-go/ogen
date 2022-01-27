@@ -71,7 +71,7 @@ func (g *schemaGen) generate(name string, schema *oas.Schema) (_ *ir.Type, err e
 			return t
 		}
 
-		if t.Is(ir.KindStruct, ir.KindEnum, ir.KindSum) {
+		if t.Is(ir.KindStruct, ir.KindMap, ir.KindEnum, ir.KindSum) {
 			g.side = append(g.side, t)
 		}
 

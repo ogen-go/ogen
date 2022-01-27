@@ -19,7 +19,7 @@ func (g *Generator) saveIface(t *ir.Type) {
 }
 
 func (g *Generator) saveType(t *ir.Type) {
-	if !t.Is(ir.KindStruct, ir.KindEnum, ir.KindAlias, ir.KindGeneric, ir.KindSum, ir.KindStream) {
+	if !t.Is(ir.KindStruct, ir.KindMap, ir.KindEnum, ir.KindAlias, ir.KindGeneric, ir.KindSum, ir.KindStream) {
 		panic("unreachable")
 	}
 
